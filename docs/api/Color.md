@@ -20,6 +20,7 @@
 - [Color](#Color-classmethod)
 - [HSL](#HSL-classmethod)
 - [HSV](#HSV-classmethod)
+- [Input](#Input-classmethod)
 - [RGB](#RGB-classmethod)
 
 
@@ -98,6 +99,24 @@ Node [Combine Color](https://docs.blender.org/manual/en/latest/modeling/geometry
 
 ### Returns:
 - socket `color`
+
+<sub>Go to [top](#class-Color) [data structure](../structure.md)</sub>
+
+## Input <sub>*classmethod*</sub>
+
+```python
+def Input(cls, value=0., name="Float", min_value=None, max_value=None, description=""):
+
+```
+### Args:
+- value: Initial value. Not changed if the group input socket already exists
+- name: Input socket name. Avoid homonyms!
+- min_value: minimum value
+- max_value: maxium value
+- description: user help
+
+### Returns:
+- Color
 
 <sub>Go to [top](#class-Color) [data structure](../structure.md)</sub>
 

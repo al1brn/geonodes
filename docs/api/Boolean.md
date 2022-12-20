@@ -4,6 +4,7 @@
 ## Class methods
 
 - [Boolean](#Boolean-classmethod)
+- [Input](#Input-classmethod)
 
 
 ## Methods
@@ -32,6 +33,24 @@ Node [Boolean](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 
 ### Returns:
 - socket `boolean`
+
+<sub>Go to [top](#class-Boolean) [data structure](../structure.md)</sub>
+
+## Input <sub>*classmethod*</sub>
+
+```python
+def Input(cls, value=0., name="Float", min_value=None, max_value=None, description=""):
+
+```
+### Args:
+- value: Initial value. Not changed if the group input socket already exists
+- name: Input socket name. Avoid homonyms!
+- min_value: minimum value
+- max_value: maxium value
+- description: user help
+
+### Returns:
+- Boolean
 
 <sub>Go to [top](#class-Boolean) [data structure](../structure.md)</sub>
 

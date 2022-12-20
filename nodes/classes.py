@@ -72,6 +72,21 @@ class Float(geosocks.Float):
         return nodes.Math(value0=self, value1=None, value2=None, operation='ABSOLUTE', use_clamp=clamp).value
 
 
+    def add(self, value):
+        """ Node Math.
+
+        Node reference [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html)
+        Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
+
+        Args:
+            value: Float or Integer or Vector
+
+        Returns:
+        self + value
+        """
+        return nodes.Math(value0=value0, value1=value1, value2=value2, operation=operation, use_clamp=clamp)
+
+
     def arccos(self, value=None, clamp=False):
         """ Node Math.
 
@@ -321,6 +336,36 @@ class Float(geosocks.Float):
             socket 'value'
         """
         return nodes.Math(value0=self, value1=value, value2=None, operation='COSINE', use_clamp=clamp).value
+
+
+    def multiply(self, value):
+        """ Node Math.
+
+        Node reference [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html)
+        Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
+
+        Args:
+            value: Float
+
+        Returns:
+        self / value
+        """
+        return nodes.Math(value0=value0, value1=value1, value2=value2, operation=operation, use_clamp=clamp)
+
+
+    def multiply(self, value):
+        """ Node Math.
+
+        Node reference [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html)
+        Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
+
+        Args:
+            value: Float
+
+        Returns:
+        self / value
+        """
+        return nodes.Math(value0=value0, value1=value1, value2=value2, operation=operation, use_clamp=clamp)
 
 
     def equal(self, b=None, epsilon=None):
@@ -1120,6 +1165,36 @@ class Float(geosocks.Float):
         return nodes.Math(value0=self, value1=None, value2=None, operation='SQRT', use_clamp=clamp).value
 
 
+    def add(self, value):
+        """ Node Math.
+
+        Node reference [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html)
+        Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
+
+        Args:
+            value: Float or Integer or Vector
+
+        Returns:
+        self - value
+        """
+        return nodes.Math(value0=value0, value1=value1, value2=value2, operation=operation, use_clamp=clamp)
+
+
+    def add(self, value):
+        """ Node Math.
+
+        Node reference [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html)
+        Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
+
+        Args:
+            value: Float or Integer or Vector
+
+        Returns:
+        self - value
+        """
+        return nodes.Math(value0=value0, value1=value1, value2=value2, operation=operation, use_clamp=clamp)
+
+
     def switch(self, switch=None, true=None):
         """ Node Switch.
 
@@ -1322,6 +1397,21 @@ class Integer(geosocks.Integer):
         return nodes.Math(value0=self, value1=None, value2=None, operation='ABSOLUTE', use_clamp=clamp).value
 
 
+    def add(self, value):
+        """ Node Math.
+
+        Node reference [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html)
+        Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
+
+        Args:
+            value: Float or Integer or Vector
+
+        Returns:
+        self + value
+        """
+        return nodes.Math(value0=value0, value1=value1, value2=value2, operation=operation, use_clamp=clamp)
+
+
     def arccos(self, value=None, clamp=False):
         """ Node Math.
 
@@ -1496,6 +1586,36 @@ class Integer(geosocks.Integer):
             socket 'value'
         """
         return nodes.Math(value0=self, value1=value, value2=None, operation='COSINE', use_clamp=clamp).value
+
+
+    def multiply(self, value):
+        """ Node Math.
+
+        Node reference [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html)
+        Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
+
+        Args:
+            value: Float
+
+        Returns:
+        self / value
+        """
+        return nodes.Math(value0=value0, value1=value1, value2=value2, operation=operation, use_clamp=clamp)
+
+
+    def multiply(self, value):
+        """ Node Math.
+
+        Node reference [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html)
+        Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
+
+        Args:
+            value: Float
+
+        Returns:
+        self / value
+        """
+        return nodes.Math(value0=value0, value1=value1, value2=value2, operation=operation, use_clamp=clamp)
 
 
     def equal(self, b=None):
@@ -2139,6 +2259,36 @@ class Integer(geosocks.Integer):
         return nodes.Math(value0=self, value1=None, value2=None, operation='SQRT', use_clamp=clamp).value
 
 
+    def add(self, value):
+        """ Node Math.
+
+        Node reference [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html)
+        Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
+
+        Args:
+            value: Float or Integer or Vector
+
+        Returns:
+        self - value
+        """
+        return nodes.Math(value0=value0, value1=value1, value2=value2, operation=operation, use_clamp=clamp)
+
+
+    def add(self, value):
+        """ Node Math.
+
+        Node reference [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html)
+        Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
+
+        Args:
+            value: Float or Integer or Vector
+
+        Returns:
+        self - value
+        """
+        return nodes.Math(value0=value0, value1=value1, value2=value2, operation=operation, use_clamp=clamp)
+
+
     def switch(self, switch=None, true=None):
         """ Node Switch.
 
@@ -2260,6 +2410,2395 @@ class Integer(geosocks.Integer):
             socket 'value'
         """
         return nodes.Math(value0=self, value1=max, value2=min, operation='WRAP', use_clamp=clamp).value
+
+
+
+
+class Boolean(geosocks.Boolean):
+    @classmethod
+    def Boolean(cls, boolean=False):
+        """ Node Boolean.
+
+        Node reference [Boolean](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/boolean.html)
+        Developer reference [FunctionNodeInputBool](https://docs.blender.org/api/current/bpy.types.FunctionNodeInputBool.html)
+
+        Args:
+            boolean (bool): False
+
+        Returns:
+            socket 'boolean'
+        """
+        return cls(nodes.Boolean(boolean=boolean).boolean)
+
+
+    def b_and(self, boolean1=None):
+        """ Node BooleanMath.
+
+        Node reference [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/boolean_math.html)
+        Developer reference [FunctionNodeBooleanMath](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html)
+
+        Args:
+            boolean1: Boolean
+
+        Returns:
+            socket 'boolean'
+        """
+        return nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='AND').boolean
+
+
+    def b_not(self):
+        """ Node BooleanMath.
+
+        Node reference [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/boolean_math.html)
+        Developer reference [FunctionNodeBooleanMath](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html)
+
+        Returns:
+            socket 'boolean'
+        """
+        return nodes.BooleanMath(boolean0=self, boolean1=None, operation='NOT').boolean
+
+
+    def b_or(self, boolean1=None):
+        """ Node BooleanMath.
+
+        Node reference [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/boolean_math.html)
+        Developer reference [FunctionNodeBooleanMath](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html)
+
+        Args:
+            boolean1: Boolean
+
+        Returns:
+            socket 'boolean'
+        """
+        return nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='OR').boolean
+
+
+    def imply(self, boolean1=None):
+        """ Node BooleanMath.
+
+        Node reference [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/boolean_math.html)
+        Developer reference [FunctionNodeBooleanMath](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html)
+
+        Args:
+            boolean1: Boolean
+
+        Returns:
+            socket 'boolean'
+        """
+        return nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='IMPLY').boolean
+
+
+    def nand(self, boolean1=None):
+        """ Node BooleanMath.
+
+        Node reference [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/boolean_math.html)
+        Developer reference [FunctionNodeBooleanMath](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html)
+
+        Args:
+            boolean1: Boolean
+
+        Returns:
+            socket 'boolean'
+        """
+        return nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='NAND').boolean
+
+
+    def nimply(self, boolean1=None):
+        """ Node BooleanMath.
+
+        Node reference [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/boolean_math.html)
+        Developer reference [FunctionNodeBooleanMath](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html)
+
+        Args:
+            boolean1: Boolean
+
+        Returns:
+            socket 'boolean'
+        """
+        return nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='NIMPLY').boolean
+
+
+    def nor(self, boolean1=None):
+        """ Node BooleanMath.
+
+        Node reference [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/boolean_math.html)
+        Developer reference [FunctionNodeBooleanMath](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html)
+
+        Args:
+            boolean1: Boolean
+
+        Returns:
+            socket 'boolean'
+        """
+        return nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='NOR').boolean
+
+
+    def switch(self, switch=None, true=None):
+        """ Node Switch.
+
+        Node reference [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html)
+        Developer reference [GeometryNodeSwitch](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
+
+        Args:
+            switch: ['Boolean', 'Boolean']
+            true: ['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'String', 'Geometry', 'Object', 'Collection', 'Texture', 'Material', 'Image']
+
+        Returns:
+            socket 'output'
+        """
+        return nodes.Switch(switch=switch, false=self, true=true, input_type='BOOLEAN').output
+
+
+    def xnor(self, boolean1=None):
+        """ Node BooleanMath.
+
+        Node reference [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/boolean_math.html)
+        Developer reference [FunctionNodeBooleanMath](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html)
+
+        Args:
+            boolean1: Boolean
+
+        Returns:
+            socket 'boolean'
+        """
+        return nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='XNOR').boolean
+
+
+    def xor(self, boolean1=None):
+        """ Node BooleanMath.
+
+        Node reference [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/boolean_math.html)
+        Developer reference [FunctionNodeBooleanMath](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html)
+
+        Args:
+            boolean1: Boolean
+
+        Returns:
+            socket 'boolean'
+        """
+        return nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='XOR').boolean
+
+
+
+
+class String(geosocks.String):
+    @staticmethod
+    def LineBreak():
+        """ Node SpecialCharacters.
+
+        Node reference [Special Characters](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/special_characters.html)
+        Developer reference [FunctionNodeInputSpecialCharacters](https://docs.blender.org/api/current/bpy.types.FunctionNodeInputSpecialCharacters.html)
+
+        Returns:
+            socket 'line_break'
+        """
+        return nodes.SpecialCharacters().line_break
+
+
+    @classmethod
+    def String(cls, string=''):
+        """ Node String.
+
+        Node reference [String](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/string.html)
+        Developer reference [FunctionNodeInputString](https://docs.blender.org/api/current/bpy.types.FunctionNodeInputString.html)
+
+        Args:
+            string (str): ''
+
+        Returns:
+            socket 'string'
+        """
+        return cls(nodes.String(string=string).string)
+
+
+    @staticmethod
+    def Tab():
+        """ Node SpecialCharacters.
+
+        Node reference [Special Characters](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/special_characters.html)
+        Developer reference [FunctionNodeInputSpecialCharacters](https://docs.blender.org/api/current/bpy.types.FunctionNodeInputSpecialCharacters.html)
+
+        Returns:
+            socket 'tab'
+        """
+        return nodes.SpecialCharacters().tab
+
+
+    def equal(self, b=None):
+        """ Node Compare.
+
+        Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
+        Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
+
+        Args:
+            b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+
+        Returns:
+            socket 'result'
+        """
+        return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type='STRING', mode='ELEMENT', operation='EQUAL').result
+
+
+    def join(*strings, delimiter=None):
+        """ Node JoinStrings.
+
+        Node reference [Join Strings](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/join_strings.html)
+        Developer reference [GeometryNodeStringJoin](https://docs.blender.org/api/current/bpy.types.GeometryNodeStringJoin.html)
+
+        Args:
+            strings: <m>String
+            delimiter: String
+
+        Returns:
+            socket 'string'
+        """
+        return nodes.JoinStrings(*strings, delimiter=delimiter).string
+
+
+    @property
+    def length(self):
+        """ Node StringLength.
+
+        Node reference [String Length](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/string_length.html)
+        Developer reference [FunctionNodeStringLength](https://docs.blender.org/api/current/bpy.types.FunctionNodeStringLength.html)
+
+        Returns:
+            socket 'length'
+        """
+        return nodes.StringLength(string=self).length
+
+
+    def not_equal(self, b=None):
+        """ Node Compare.
+
+        Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
+        Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
+
+        Args:
+            b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+
+        Returns:
+            socket 'result'
+        """
+        return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type='STRING', mode='ELEMENT', operation='NOT_EQUAL').result
+
+
+    def replace(self, find=None, replace=None):
+        """ Node ReplaceString.
+
+        Node reference [Replace String](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/replace_string.html)
+        Developer reference [FunctionNodeReplaceString](https://docs.blender.org/api/current/bpy.types.FunctionNodeReplaceString.html)
+
+        Args:
+            find: String
+            replace: String
+
+        Returns:
+            socket 'string'
+        """
+        return nodes.ReplaceString(string=self, find=find, replace=replace).string
+
+
+    def slice(self, position=None, length=None):
+        """ Node SliceString.
+
+        Node reference [Slice String](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/slice_string.html)
+        Developer reference [FunctionNodeSliceString](https://docs.blender.org/api/current/bpy.types.FunctionNodeSliceString.html)
+
+        Args:
+            position: Integer
+            length: Integer
+
+        Returns:
+            socket 'string'
+        """
+        return nodes.SliceString(string=self, position=position, length=length).string
+
+
+    def switch(self, switch=None, true=None):
+        """ Node Switch.
+
+        Node reference [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html)
+        Developer reference [GeometryNodeSwitch](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
+
+        Args:
+            switch: ['Boolean', 'Boolean']
+            true: ['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'String', 'Geometry', 'Object', 'Collection', 'Texture', 'Material', 'Image']
+
+        Returns:
+            socket 'output'
+        """
+        return nodes.Switch(switch=switch, false=self, true=true, input_type='STRING').output
+
+
+    def to_curves(self, string=None, size=None, character_spacing=None, word_spacing=None, line_spacing=None, text_box_width=None, text_box_height=None, align_x='LEFT', align_y='TOP_BASELINE', overflow='OVERFLOW', pivot_mode='BOTTOM_LEFT'):
+        """ Node StringToCurves.
+
+        Node reference [String to Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/string_to_curves.html)
+        Developer reference [GeometryNodeStringToCurves](https://docs.blender.org/api/current/bpy.types.GeometryNodeStringToCurves.html)
+
+        Args:
+            string: String
+            size: Float
+            character_spacing: Float
+            word_spacing: Float
+            line_spacing: Float
+            text_box_width: Float
+            text_box_height: Float
+            align_x (str): 'LEFT' in [LEFT, CENTER, RIGHT, JUSTIFY, FLUSH]
+            align_y (str): 'TOP_BASELINE' in [TOP_BASELINE, TOP, MIDDLE, BOTTOM_BASELINE, BOTTOM]
+            overflow (str): 'OVERFLOW' in [OVERFLOW, SCALE_TO_FIT, TRUNCATE]
+            pivot_mode (str): 'BOTTOM_LEFT' in [MIDPOINT, TOP_LEFT, TOP_CENTER,... , BOTTOM_LEFT, BOTTOM_CENTER, BOTTOM_RIGHT]
+
+        Returns:
+            tuple ('curve_instances', 'line', 'pivot_point')
+        """
+        node = nodes.StringToCurves(string=string, size=size, character_spacing=character_spacing, word_spacing=word_spacing, line_spacing=line_spacing, text_box_width=text_box_width, text_box_height=text_box_height, align_x=align_x, align_y=align_y, overflow=overflow, pivot_mode=pivot_mode)
+        return Instances(node.curve_instances), node.line, node.pivot_point
+
+
+
+
+class Vector(geosocks.Vector):
+    @classmethod
+    def Combine(cls, x=None, y=None, z=None):
+        """ Node CombineXyz.
+
+        Node reference [Combine XYZ](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/combine_xyz.html)
+        Developer reference [ShaderNodeCombineXYZ](https://docs.blender.org/api/current/bpy.types.ShaderNodeCombineXYZ.html)
+
+        Args:
+            x: Float
+            y: Float
+            z: Float
+
+        Returns:
+            socket 'vector'
+        """
+        return cls(nodes.CombineXyz(x=x, y=y, z=z).vector)
+
+
+    @classmethod
+    def Vector(cls, vector=[0.0, 0.0, 0.0]):
+        """ Node Vector.
+
+        Node reference [Vector](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/vector.html)
+        Developer reference [FunctionNodeInputVector](https://docs.blender.org/api/current/bpy.types.FunctionNodeInputVector.html)
+
+        Args:
+            vector (list): [0.0, 0.0, 0.0]
+
+        Returns:
+            socket 'vector'
+        """
+        return cls(nodes.Vector(vector=vector).vector)
+
+
+    def abs(self):
+        """ Node VectorMath.
+
+        Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
+        Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
+
+        Returns:
+            socket 'vector'
+        """
+        return nodes.VectorMath(vector0=self, vector1=None, vector2=None, scale=None, operation='ABSOLUTE').vector
+
+
+    def absolute(self):
+        """ Node VectorMath.
+
+        Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
+        Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
+
+        Returns:
+            socket 'vector'
+        """
+        return nodes.VectorMath(vector0=self, vector1=None, vector2=None, scale=None, operation='ABSOLUTE').vector
+
+
+    def add(self, vector=None):
+        """ Node VectorMath.
+
+        Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
+        Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
+
+        Args:
+            vector: Vector
+
+        Returns:
+            socket 'vector'
+        """
+        return nodes.VectorMath(vector0=self, vector1=vector, vector2=None, scale=None, operation='ADD').vector
+
+
+    def align_euler_to_vector(self, factor=None, vector=None, axis='X', pivot_axis='AUTO'):
+        """ Node AlignEulerToVector.
+
+        Node reference [Align Euler to Vector](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/align_euler_to_vector.html)
+        Developer reference [FunctionNodeAlignEulerToVector](https://docs.blender.org/api/current/bpy.types.FunctionNodeAlignEulerToVector.html)
+
+        Args:
+            factor: Float
+            vector: Vector
+            axis (str): 'X' in [X, Y, Z]
+            pivot_axis (str): 'AUTO' in [AUTO, X, Y, Z]
+
+        Returns:
+            node with sockets ['rotation']
+        """
+        return self.stack(nodes.AlignEulerToVector(rotation=self, factor=factor, vector=vector, axis=axis, pivot_axis=pivot_axis))
+
+
+    def average_equal(self, b=None, epsilon=None):
+        """ Node Compare.
+
+        Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
+        Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
+
+        Args:
+            b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+            epsilon: Float
+
+        Returns:
+            socket 'result'
+        """
+        return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=epsilon, data_type='VECTOR', mode='AVERAGE', operation='EQUAL').result
+
+
+    def average_greater_equal(self, b=None):
+        """ Node Compare.
+
+        Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
+        Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
+
+        Args:
+            b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+
+        Returns:
+            socket 'result'
+        """
+        return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type='VECTOR', mode='AVERAGE', operation='GREATER_EQUAL').result
+
+
+    def average_greater_than(self, b=None):
+        """ Node Compare.
+
+        Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
+        Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
+
+        Args:
+            b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+
+        Returns:
+            socket 'result'
+        """
+        return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type='VECTOR', mode='AVERAGE', operation='GREATER_THAN').result
+
+
+    def average_less_equal(self, b=None):
+        """ Node Compare.
+
+        Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
+        Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
+
+        Args:
+            b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+
+        Returns:
+            socket 'result'
+        """
+        return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type='VECTOR', mode='AVERAGE', operation='LESS_EQUAL').result
+
+
+    def average_less_than(self, b=None):
+        """ Node Compare.
+
+        Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
+        Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
+
+        Args:
+            b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+
+        Returns:
+            socket 'result'
+        """
+        return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type='VECTOR', mode='AVERAGE', operation='LESS_THAN').result
+
+
+    def average_not_equal(self, b=None, epsilon=None):
+        """ Node Compare.
+
+        Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
+        Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
+
+        Args:
+            b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+            epsilon: Float
+
+        Returns:
+            socket 'result'
+        """
+        return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=epsilon, data_type='VECTOR', mode='AVERAGE', operation='NOT_EQUAL').result
+
+
+    def ceil(self):
+        """ Node VectorMath.
+
+        Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
+        Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
+
+        Returns:
+            socket 'vector'
+        """
+        return nodes.VectorMath(vector0=self, vector1=None, vector2=None, scale=None, operation='CEIL').vector
+
+
+    def compare(self, b=None, c=None, angle=None, epsilon=None, mode='ELEMENT', operation='GREATER_THAN'):
+        """ Node Compare.
+
+        Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
+        Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
+
+        Args:
+            b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+            c: Float
+            angle: Float
+            epsilon: Float
+            mode (str): 'ELEMENT' in [ELEMENT, LENGTH, AVERAGE, DOT_PRODUCT, DIRECTION]
+            operation (str): 'GREATER_THAN' in [LESS_THAN, LESS_EQUAL, GREATER_THAN, GREATER_EQUAL, EQUAL, NOT_EQUAL]
+
+        Returns:
+            socket 'result'
+        """
+        return nodes.Compare(a=self, b=b, c=c, angle=angle, epsilon=epsilon, data_type='VECTOR', mode=mode, operation=operation).result
+
+
+    def cos(self):
+        """ Node VectorMath.
+
+        Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
+        Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
+
+        Returns:
+            socket 'vector'
+        """
+        return nodes.VectorMath(vector0=self, vector1=None, vector2=None, scale=None, operation='COSINE').vector
+
+
+    def cosine(self):
+        """ Node VectorMath.
+
+        Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
+        Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
+
+        Returns:
+            socket 'vector'
+        """
+        return nodes.VectorMath(vector0=self, vector1=None, vector2=None, scale=None, operation='COSINE').vector
+
+
+    def cross(self, vector=None):
+        """ Node VectorMath.
+
+        Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
+        Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
+
+        Args:
+            vector: Vector
+
+        Returns:
+            socket 'vector'
+        """
+        return nodes.VectorMath(vector0=self, vector1=vector, vector2=None, scale=None, operation='CROSS_PRODUCT').vector
+
+
+    def cross_product(self, vector=None):
+        """ Node VectorMath.
+
+        Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
+        Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
+
+        Args:
+            vector: Vector
+
+        Returns:
+            socket 'vector'
+        """
+        return nodes.VectorMath(vector0=self, vector1=vector, vector2=None, scale=None, operation='CROSS_PRODUCT').vector
+
+
+    def curves(self, fac=None):
+        """ Node VectorCurves.
+
+        Node reference [Vector Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_curves.html)
+        Developer reference [ShaderNodeVectorCurve](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorCurve.html)
+
+        Args:
+            fac: Float
+
+        Returns:
+            socket 'vector'
+        """
+        return nodes.VectorCurves(fac=fac, vector=self).vector
+
+
+    def direction_equal(self, b=None, angle=None, epsilon=None):
+        """ Node Compare.
+
+        Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
+        Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
+
+        Args:
+            b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+            angle: Float
+            epsilon: Float
+
+        Returns:
+            socket 'result'
+        """
+        return nodes.Compare(a=self, b=b, c=None, angle=angle, epsilon=epsilon, data_type='VECTOR', mode='DIRECTION', operation='EQUAL').result
+
+
+    def direction_greater_equal(self, b=None, angle=None):
+        """ Node Compare.
+
+        Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
+        Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
+
+        Args:
+            b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+            angle: Float
+
+        Returns:
+            socket 'result'
+        """
+        return nodes.Compare(a=self, b=b, c=None, angle=angle, epsilon=None, data_type='VECTOR', mode='DIRECTION', operation='GREATER_EQUAL').result
+
+
+    def direction_greater_than(self, b=None, angle=None):
+        """ Node Compare.
+
+        Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
+        Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
+
+        Args:
+            b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+            angle: Float
+
+        Returns:
+            socket 'result'
+        """
+        return nodes.Compare(a=self, b=b, c=None, angle=angle, epsilon=None, data_type='VECTOR', mode='DIRECTION', operation='GREATER_THAN').result
+
+
+    def direction_less_equal(self, b=None, angle=None):
+        """ Node Compare.
+
+        Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
+        Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
+
+        Args:
+            b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+            angle: Float
+
+        Returns:
+            socket 'result'
+        """
+        return nodes.Compare(a=self, b=b, c=None, angle=angle, epsilon=None, data_type='VECTOR', mode='DIRECTION', operation='LESS_EQUAL').result
+
+
+    def direction_less_than(self, b=None, angle=None):
+        """ Node Compare.
+
+        Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
+        Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
+
+        Args:
+            b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+            angle: Float
+
+        Returns:
+            socket 'result'
+        """
+        return nodes.Compare(a=self, b=b, c=None, angle=angle, epsilon=None, data_type='VECTOR', mode='DIRECTION', operation='LESS_THAN').result
+
+
+    def direction_not_equal(self, b=None, angle=None, epsilon=None):
+        """ Node Compare.
+
+        Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
+        Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
+
+        Args:
+            b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+            angle: Float
+            epsilon: Float
+
+        Returns:
+            socket 'result'
+        """
+        return nodes.Compare(a=self, b=b, c=None, angle=angle, epsilon=epsilon, data_type='VECTOR', mode='DIRECTION', operation='NOT_EQUAL').result
+
+
+    def distance(self, vector=None):
+        """ Node VectorMath.
+
+        Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
+        Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
+
+        Args:
+            vector: Vector
+
+        Returns:
+            socket 'value'
+        """
+        return nodes.VectorMath(vector0=self, vector1=vector, vector2=None, scale=None, operation='DISTANCE').value
+
+
+    def div(self, vector=None):
+        """ Node VectorMath.
+
+        Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
+        Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
+
+        Args:
+            vector: Vector
+
+        Returns:
+            socket 'vector'
+        """
+        return nodes.VectorMath(vector0=self, vector1=vector, vector2=None, scale=None, operation='DIVIDE').vector
+
+
+    def divide(self, vector=None):
+        """ Node VectorMath.
+
+        Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
+        Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
+
+        Args:
+            vector: Vector
+
+        Returns:
+            socket 'vector'
+        """
+        return nodes.VectorMath(vector0=self, vector1=vector, vector2=None, scale=None, operation='DIVIDE').vector
+
+
+    def dot(self, vector=None):
+        """ Node VectorMath.
+
+        Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
+        Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
+
+        Args:
+            vector: Vector
+
+        Returns:
+            socket 'value'
+        """
+        return nodes.VectorMath(vector0=self, vector1=vector, vector2=None, scale=None, operation='DOT_PRODUCT').value
+
+
+    def dot_product(self, vector=None):
+        """ Node VectorMath.
+
+        Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
+        Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
+
+        Args:
+            vector: Vector
+
+        Returns:
+            socket 'value'
+        """
+        return nodes.VectorMath(vector0=self, vector1=vector, vector2=None, scale=None, operation='DOT_PRODUCT').value
+
+
+    def dot_product_equal(self, b=None, c=None, epsilon=None):
+        """ Node Compare.
+
+        Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
+        Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
+
+        Args:
+            b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+            c: Float
+            epsilon: Float
+
+        Returns:
+            socket 'result'
+        """
+        return nodes.Compare(a=self, b=b, c=c, angle=None, epsilon=epsilon, data_type='VECTOR', mode='DOT_PRODUCT', operation='EQUAL').result
+
+
+    def dot_product_greater_equal(self, b=None, c=None):
+        """ Node Compare.
+
+        Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
+        Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
+
+        Args:
+            b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+            c: Float
+
+        Returns:
+            socket 'result'
+        """
+        return nodes.Compare(a=self, b=b, c=c, angle=None, epsilon=None, data_type='VECTOR', mode='DOT_PRODUCT', operation='GREATER_EQUAL').result
+
+
+    def dot_product_greater_than(self, b=None, c=None):
+        """ Node Compare.
+
+        Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
+        Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
+
+        Args:
+            b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+            c: Float
+
+        Returns:
+            socket 'result'
+        """
+        return nodes.Compare(a=self, b=b, c=c, angle=None, epsilon=None, data_type='VECTOR', mode='DOT_PRODUCT', operation='GREATER_THAN').result
+
+
+    def dot_product_less_equal(self, b=None, c=None):
+        """ Node Compare.
+
+        Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
+        Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
+
+        Args:
+            b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+            c: Float
+
+        Returns:
+            socket 'result'
+        """
+        return nodes.Compare(a=self, b=b, c=c, angle=None, epsilon=None, data_type='VECTOR', mode='DOT_PRODUCT', operation='LESS_EQUAL').result
+
+
+    def dot_product_less_than(self, b=None, c=None):
+        """ Node Compare.
+
+        Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
+        Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
+
+        Args:
+            b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+            c: Float
+
+        Returns:
+            socket 'result'
+        """
+        return nodes.Compare(a=self, b=b, c=c, angle=None, epsilon=None, data_type='VECTOR', mode='DOT_PRODUCT', operation='LESS_THAN').result
+
+
+    def dot_product_not_equal(self, b=None, c=None, epsilon=None):
+        """ Node Compare.
+
+        Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
+        Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
+
+        Args:
+            b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+            c: Float
+            epsilon: Float
+
+        Returns:
+            socket 'result'
+        """
+        return nodes.Compare(a=self, b=b, c=c, angle=None, epsilon=epsilon, data_type='VECTOR', mode='DOT_PRODUCT', operation='NOT_EQUAL').result
+
+
+    def elements_equal(self, b=None, epsilon=None):
+        """ Node Compare.
+
+        Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
+        Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
+
+        Args:
+            b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+            epsilon: Float
+
+        Returns:
+            socket 'result'
+        """
+        return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=epsilon, data_type='VECTOR', mode='ELEMENT', operation='EQUAL').result
+
+
+    def elements_greater_equal(self, b=None):
+        """ Node Compare.
+
+        Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
+        Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
+
+        Args:
+            b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+
+        Returns:
+            socket 'result'
+        """
+        return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type='VECTOR', mode='ELEMENT', operation='GREATER_EQUAL').result
+
+
+    def elements_greater_than(self, b=None):
+        """ Node Compare.
+
+        Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
+        Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
+
+        Args:
+            b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+
+        Returns:
+            socket 'result'
+        """
+        return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type='VECTOR', mode='ELEMENT', operation='GREATER_THAN').result
+
+
+    def elements_less_equal(self, b=None):
+        """ Node Compare.
+
+        Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
+        Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
+
+        Args:
+            b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+
+        Returns:
+            socket 'result'
+        """
+        return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type='VECTOR', mode='ELEMENT', operation='LESS_EQUAL').result
+
+
+    def elements_less_than(self, b=None):
+        """ Node Compare.
+
+        Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
+        Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
+
+        Args:
+            b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+
+        Returns:
+            socket 'result'
+        """
+        return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type='VECTOR', mode='ELEMENT', operation='LESS_THAN').result
+
+
+    def elements_not_equal(self, b=None, epsilon=None):
+        """ Node Compare.
+
+        Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
+        Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
+
+        Args:
+            b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+            epsilon: Float
+
+        Returns:
+            socket 'result'
+        """
+        return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=epsilon, data_type='VECTOR', mode='ELEMENT', operation='NOT_EQUAL').result
+
+
+    def face_forward(self, incident=None, reference=None):
+        """ Node VectorMath.
+
+        Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
+        Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
+
+        Args:
+            incident: Vector
+            reference: Vector
+
+        Returns:
+            socket 'vector'
+        """
+        return nodes.VectorMath(vector0=self, vector1=incident, vector2=reference, scale=None, operation='FACEFORWARD').vector
+
+
+    def floor(self):
+        """ Node VectorMath.
+
+        Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
+        Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
+
+        Returns:
+            socket 'vector'
+        """
+        return nodes.VectorMath(vector0=self, vector1=None, vector2=None, scale=None, operation='FLOOR').vector
+
+
+    def fract(self):
+        """ Node VectorMath.
+
+        Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
+        Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
+
+        Returns:
+            socket 'vector'
+        """
+        return nodes.VectorMath(vector0=self, vector1=None, vector2=None, scale=None, operation='FRACTION').vector
+
+
+    def fraction(self):
+        """ Node VectorMath.
+
+        Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
+        Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
+
+        Returns:
+            socket 'vector'
+        """
+        return nodes.VectorMath(vector0=self, vector1=None, vector2=None, scale=None, operation='FRACTION').vector
+
+
+    @property
+    def length(self):
+        """ Node VectorMath.
+
+        Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
+        Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
+
+        Returns:
+            socket 'value'
+        """
+        return nodes.VectorMath(vector0=self, vector1=None, vector2=None, scale=None, operation='LENGTH').value
+
+
+    def length_equal(self, b=None, epsilon=None):
+        """ Node Compare.
+
+        Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
+        Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
+
+        Args:
+            b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+            epsilon: Float
+
+        Returns:
+            socket 'result'
+        """
+        return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=epsilon, data_type='VECTOR', mode='LENGTH', operation='EQUAL').result
+
+
+    def length_greater_equal(self, b=None):
+        """ Node Compare.
+
+        Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
+        Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
+
+        Args:
+            b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+
+        Returns:
+            socket 'result'
+        """
+        return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type='VECTOR', mode='LENGTH', operation='GREATER_EQUAL').result
+
+
+    def length_greater_than(self, b=None):
+        """ Node Compare.
+
+        Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
+        Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
+
+        Args:
+            b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+
+        Returns:
+            socket 'result'
+        """
+        return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type='VECTOR', mode='LENGTH', operation='GREATER_THAN').result
+
+
+    def length_less_equal(self, b=None):
+        """ Node Compare.
+
+        Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
+        Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
+
+        Args:
+            b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+
+        Returns:
+            socket 'result'
+        """
+        return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type='VECTOR', mode='LENGTH', operation='LESS_EQUAL').result
+
+
+    def length_less_than(self, b=None):
+        """ Node Compare.
+
+        Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
+        Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
+
+        Args:
+            b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+
+        Returns:
+            socket 'result'
+        """
+        return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type='VECTOR', mode='LENGTH', operation='LESS_THAN').result
+
+
+    def length_not_equal(self, b=None, epsilon=None):
+        """ Node Compare.
+
+        Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
+        Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
+
+        Args:
+            b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+            epsilon: Float
+
+        Returns:
+            socket 'result'
+        """
+        return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=epsilon, data_type='VECTOR', mode='LENGTH', operation='NOT_EQUAL').result
+
+
+    def map_range(self, from_min=None, from_max=None, to_min=None, to_max=None, steps=None, clamp=True, interpolation_type='LINEAR'):
+        """ Node MapRange.
+
+        Node reference [Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/map_range.html)
+        Developer reference [ShaderNodeMapRange](https://docs.blender.org/api/current/bpy.types.ShaderNodeMapRange.html)
+
+        Args:
+            from_min: ['Float', 'Vector']
+            from_max: ['Float', 'Vector']
+            to_min: ['Float', 'Vector']
+            to_max: ['Float', 'Vector']
+            steps: ['Float', 'Vector']
+            clamp (bool): True
+            interpolation_type (str): 'LINEAR' in [LINEAR, STEPPED, SMOOTHSTEP, SMOOTHERSTEP]
+
+        Returns:
+            socket 'vector'
+        """
+        return nodes.MapRange(value=None, from_min=from_min, from_max=from_max, to_min=to_min, to_max=to_max, steps=steps, vector=self, clamp=clamp, data_type='FLOAT_VECTOR', interpolation_type=interpolation_type).vector
+
+
+    def map_range_linear(self, from_min=None, from_max=None, to_min=None, to_max=None, clamp=True):
+        """ Node MapRange.
+
+        Node reference [Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/map_range.html)
+        Developer reference [ShaderNodeMapRange](https://docs.blender.org/api/current/bpy.types.ShaderNodeMapRange.html)
+
+        Args:
+            from_min: ['Float', 'Vector']
+            from_max: ['Float', 'Vector']
+            to_min: ['Float', 'Vector']
+            to_max: ['Float', 'Vector']
+            clamp (bool): True
+
+        Returns:
+            socket 'vector'
+        """
+        return nodes.MapRange(value=None, from_min=from_min, from_max=from_max, to_min=to_min, to_max=to_max, steps=None, vector=self, clamp=clamp, data_type='FLOAT_VECTOR', interpolation_type='LINEAR').vector
+
+
+    def map_range_smooth(self, from_min=None, from_max=None, to_min=None, to_max=None, clamp=True):
+        """ Node MapRange.
+
+        Node reference [Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/map_range.html)
+        Developer reference [ShaderNodeMapRange](https://docs.blender.org/api/current/bpy.types.ShaderNodeMapRange.html)
+
+        Args:
+            from_min: ['Float', 'Vector']
+            from_max: ['Float', 'Vector']
+            to_min: ['Float', 'Vector']
+            to_max: ['Float', 'Vector']
+            clamp (bool): True
+
+        Returns:
+            socket 'vector'
+        """
+        return nodes.MapRange(value=None, from_min=from_min, from_max=from_max, to_min=to_min, to_max=to_max, steps=None, vector=self, clamp=clamp, data_type='FLOAT_VECTOR', interpolation_type='SMOOTHSTEP').vector
+
+
+    def map_range_smoother(self, from_min=None, from_max=None, to_min=None, to_max=None, clamp=True):
+        """ Node MapRange.
+
+        Node reference [Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/map_range.html)
+        Developer reference [ShaderNodeMapRange](https://docs.blender.org/api/current/bpy.types.ShaderNodeMapRange.html)
+
+        Args:
+            from_min: ['Float', 'Vector']
+            from_max: ['Float', 'Vector']
+            to_min: ['Float', 'Vector']
+            to_max: ['Float', 'Vector']
+            clamp (bool): True
+
+        Returns:
+            socket 'vector'
+        """
+        return nodes.MapRange(value=None, from_min=from_min, from_max=from_max, to_min=to_min, to_max=to_max, steps=None, vector=self, clamp=clamp, data_type='FLOAT_VECTOR', interpolation_type='SMOOTHERSTEP').vector
+
+
+    def map_range_stepped(self, from_min=None, from_max=None, to_min=None, to_max=None, steps=None, clamp=True):
+        """ Node MapRange.
+
+        Node reference [Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/map_range.html)
+        Developer reference [ShaderNodeMapRange](https://docs.blender.org/api/current/bpy.types.ShaderNodeMapRange.html)
+
+        Args:
+            from_min: ['Float', 'Vector']
+            from_max: ['Float', 'Vector']
+            to_min: ['Float', 'Vector']
+            to_max: ['Float', 'Vector']
+            steps: ['Float', 'Vector']
+            clamp (bool): True
+
+        Returns:
+            socket 'vector'
+        """
+        return nodes.MapRange(value=None, from_min=from_min, from_max=from_max, to_min=to_min, to_max=to_max, steps=steps, vector=self, clamp=clamp, data_type='FLOAT_VECTOR', interpolation_type='STEPPED').vector
+
+
+    def max(self, vector=None):
+        """ Node VectorMath.
+
+        Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
+        Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
+
+        Args:
+            vector: Vector
+
+        Returns:
+            socket 'vector'
+        """
+        return nodes.VectorMath(vector0=self, vector1=vector, vector2=None, scale=None, operation='MAXIMUM').vector
+
+
+    def maximum(self, vector=None):
+        """ Node VectorMath.
+
+        Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
+        Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
+
+        Args:
+            vector: Vector
+
+        Returns:
+            socket 'vector'
+        """
+        return nodes.VectorMath(vector0=self, vector1=vector, vector2=None, scale=None, operation='MAXIMUM').vector
+
+
+    def min(self, vector=None):
+        """ Node VectorMath.
+
+        Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
+        Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
+
+        Args:
+            vector: Vector
+
+        Returns:
+            socket 'vector'
+        """
+        return nodes.VectorMath(vector0=self, vector1=vector, vector2=None, scale=None, operation='MINIMUM').vector
+
+
+    def minimum(self, vector=None):
+        """ Node VectorMath.
+
+        Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
+        Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
+
+        Args:
+            vector: Vector
+
+        Returns:
+            socket 'vector'
+        """
+        return nodes.VectorMath(vector0=self, vector1=vector, vector2=None, scale=None, operation='MINIMUM').vector
+
+
+    def mix(self, factor=None, vector=None, clamp_factor=True, factor_mode='UNIFORM'):
+        """ Node Mix.
+
+        Node reference [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html)
+        Developer reference [ShaderNodeMix](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
+
+        Args:
+            factor: ['Float', 'Vector']
+            vector: ['Float', 'Vector', 'Color']
+            clamp_factor (bool): True
+            factor_mode (str): 'UNIFORM' in [UNIFORM, NON_UNIFORM]
+
+        Returns:
+            socket 'result'
+        """
+        return nodes.Mix(factor=factor, a=self, b=vector, blend_type=MIX, clamp_factor=clamp_factor, clamp_result=False, data_type='VECTOR', factor_mode=factor_mode).result
+
+
+    def mix_non_uniform(self, factor=None, vector=None, clamp_factor=True):
+        """ Node Mix.
+
+        Node reference [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html)
+        Developer reference [ShaderNodeMix](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
+
+        Args:
+            factor: ['Float', 'Vector']
+            vector: ['Float', 'Vector', 'Color']
+            clamp_factor (bool): True
+
+        Returns:
+            socket 'result'
+        """
+        return nodes.Mix(factor=factor, a=self, b=vector, blend_type=MIX, clamp_factor=clamp_factor, clamp_result=False, data_type='VECTOR', factor_mode='NON_UNIFORM').result
+
+
+    def mix_uniform(self, vector=None, clamp_factor=True):
+        """ Node Mix.
+
+        Node reference [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html)
+        Developer reference [ShaderNodeMix](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
+
+        Args:
+            vector: ['Float', 'Vector', 'Color']
+            clamp_factor (bool): True
+
+        Returns:
+            socket 'result'
+        """
+        return nodes.Mix(factor=None, a=self, b=vector, blend_type=MIX, clamp_factor=clamp_factor, clamp_result=False, data_type='VECTOR', factor_mode='UNIFORM').result
+
+
+    def modulo(self, vector=None):
+        """ Node VectorMath.
+
+        Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
+        Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
+
+        Args:
+            vector: Vector
+
+        Returns:
+            socket 'vector'
+        """
+        return nodes.VectorMath(vector0=self, vector1=vector, vector2=None, scale=None, operation='MODULO').vector
+
+
+    def mul(self, vector=None):
+        """ Node VectorMath.
+
+        Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
+        Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
+
+        Args:
+            vector: Vector
+
+        Returns:
+            socket 'vector'
+        """
+        return nodes.VectorMath(vector0=self, vector1=vector, vector2=None, scale=None, operation='MULTIPLY').vector
+
+
+    def mul_add(self, multiplier=None, addend=None):
+        """ Node VectorMath.
+
+        Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
+        Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
+
+        Args:
+            multiplier: Vector
+            addend: Vector
+
+        Returns:
+            socket 'vector'
+        """
+        return nodes.VectorMath(vector0=self, vector1=multiplier, vector2=addend, scale=None, operation='MULTIPLY_ADD').vector
+
+
+    def multiply(self, vector=None):
+        """ Node VectorMath.
+
+        Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
+        Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
+
+        Args:
+            vector: Vector
+
+        Returns:
+            socket 'vector'
+        """
+        return nodes.VectorMath(vector0=self, vector1=vector, vector2=None, scale=None, operation='MULTIPLY').vector
+
+
+    def multiply_add(self, multiplier=None, addend=None):
+        """ Node VectorMath.
+
+        Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
+        Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
+
+        Args:
+            multiplier: Vector
+            addend: Vector
+
+        Returns:
+            socket 'vector'
+        """
+        return nodes.VectorMath(vector0=self, vector1=multiplier, vector2=addend, scale=None, operation='MULTIPLY_ADD').vector
+
+
+    def normalize(self):
+        """ Node VectorMath.
+
+        Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
+        Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
+
+        Returns:
+            socket 'vector'
+        """
+        return nodes.VectorMath(vector0=self, vector1=None, vector2=None, scale=None, operation='NORMALIZE').vector
+
+
+    def project(self, vector=None):
+        """ Node VectorMath.
+
+        Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
+        Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
+
+        Args:
+            vector: Vector
+
+        Returns:
+            socket 'vector'
+        """
+        return nodes.VectorMath(vector0=self, vector1=vector, vector2=None, scale=None, operation='PROJECT').vector
+
+
+    def reflect(self, vector=None):
+        """ Node VectorMath.
+
+        Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
+        Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
+
+        Args:
+            vector: Vector
+
+        Returns:
+            socket 'vector'
+        """
+        return nodes.VectorMath(vector0=self, vector1=vector, vector2=None, scale=None, operation='REFLECT').vector
+
+
+    def refract(self, vector=None, ior=None):
+        """ Node VectorMath.
+
+        Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
+        Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
+
+        Args:
+            vector: Vector
+            ior: Float
+
+        Returns:
+            socket 'vector'
+        """
+        return nodes.VectorMath(vector0=self, vector1=vector, vector2=None, scale=ior, operation='REFRACT').vector
+
+
+    def rotate_axis_angle(self, center=None, axis=None, angle=None, invert=False):
+        """ Node VectorRotate.
+
+        Node reference [Vector Rotate](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_rotate.html)
+        Developer reference [ShaderNodeVectorRotate](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorRotate.html)
+
+        Args:
+            center: Vector
+            axis: Vector
+            angle: Float
+            invert (bool): False
+
+        Returns:
+            socket 'vector'
+        """
+        return nodes.VectorRotate(vector=self, center=center, axis=axis, angle=angle, rotation=None, invert=invert, rotation_type='AXIS_ANGLE').vector
+
+
+    def rotate_euler(self, center=None, rotation=None, invert=False):
+        """ Node VectorRotate.
+
+        Node reference [Vector Rotate](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_rotate.html)
+        Developer reference [ShaderNodeVectorRotate](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorRotate.html)
+
+        Args:
+            center: Vector
+            rotation: Vector
+            invert (bool): False
+
+        Returns:
+            socket 'vector'
+        """
+        return nodes.VectorRotate(vector=self, center=center, axis=None, angle=None, rotation=rotation, invert=invert, rotation_type='EULER_XYZ').vector
+
+
+    def rotate_x(self, center=None, angle=None, invert=False):
+        """ Node VectorRotate.
+
+        Node reference [Vector Rotate](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_rotate.html)
+        Developer reference [ShaderNodeVectorRotate](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorRotate.html)
+
+        Args:
+            center: Vector
+            angle: Float
+            invert (bool): False
+
+        Returns:
+            socket 'vector'
+        """
+        return nodes.VectorRotate(vector=self, center=center, axis=None, angle=angle, rotation=None, invert=invert, rotation_type='X_AXIS').vector
+
+
+    def rotate_y(self, center=None, angle=None, invert=False):
+        """ Node VectorRotate.
+
+        Node reference [Vector Rotate](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_rotate.html)
+        Developer reference [ShaderNodeVectorRotate](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorRotate.html)
+
+        Args:
+            center: Vector
+            angle: Float
+            invert (bool): False
+
+        Returns:
+            socket 'vector'
+        """
+        return nodes.VectorRotate(vector=self, center=center, axis=None, angle=angle, rotation=None, invert=invert, rotation_type='Y_AXIS').vector
+
+
+    def rotate_z(self, center=None, angle=None, invert=False):
+        """ Node VectorRotate.
+
+        Node reference [Vector Rotate](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_rotate.html)
+        Developer reference [ShaderNodeVectorRotate](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorRotate.html)
+
+        Args:
+            center: Vector
+            angle: Float
+            invert (bool): False
+
+        Returns:
+            socket 'vector'
+        """
+        return nodes.VectorRotate(vector=self, center=center, axis=None, angle=angle, rotation=None, invert=invert, rotation_type='Z_AXIS').vector
+
+
+    def scale(self, scale=None):
+        """ Node VectorMath.
+
+        Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
+        Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
+
+        Args:
+            scale: Float
+
+        Returns:
+            socket 'vector'
+        """
+        return nodes.VectorMath(vector0=self, vector1=None, vector2=None, scale=scale, operation='SCALE').vector
+
+
+    @property
+    def separate(self):
+        """ Node SeparateXyz.
+
+        Node reference [Separate XYZ](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/separate_xyz.html)
+        Developer reference [ShaderNodeSeparateXYZ](https://docs.blender.org/api/current/bpy.types.ShaderNodeSeparateXYZ.html)
+
+        Returns:
+            node with sockets ['x', 'y', 'z']
+        """
+        if not hasattr(self, '_c_shadernodeseparatexyz'):
+            self._c_shadernodeseparatexyz = nodes.SeparateXyz(vector=self)
+        return self._c_shadernodeseparatexyz
+
+
+    def sin(self):
+        """ Node VectorMath.
+
+        Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
+        Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
+
+        Returns:
+            socket 'vector'
+        """
+        return nodes.VectorMath(vector0=self, vector1=None, vector2=None, scale=None, operation='SINE').vector
+
+
+    def sine(self):
+        """ Node VectorMath.
+
+        Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
+        Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
+
+        Returns:
+            socket 'vector'
+        """
+        return nodes.VectorMath(vector0=self, vector1=None, vector2=None, scale=None, operation='SINE').vector
+
+
+    def snap(self, increment=None):
+        """ Node VectorMath.
+
+        Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
+        Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
+
+        Args:
+            increment: Vector
+
+        Returns:
+            socket 'vector'
+        """
+        return nodes.VectorMath(vector0=self, vector1=increment, vector2=None, scale=None, operation='SNAP').vector
+
+
+    def sub(self, vector=None):
+        """ Node VectorMath.
+
+        Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
+        Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
+
+        Args:
+            vector: Vector
+
+        Returns:
+            socket 'vector'
+        """
+        return nodes.VectorMath(vector0=self, vector1=vector, vector2=None, scale=None, operation='SUBTRACT').vector
+
+
+    def subtract(self, vector=None):
+        """ Node VectorMath.
+
+        Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
+        Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
+
+        Args:
+            vector: Vector
+
+        Returns:
+            socket 'vector'
+        """
+        return nodes.VectorMath(vector0=self, vector1=vector, vector2=None, scale=None, operation='SUBTRACT').vector
+
+
+    def switch(self, switch=None, true=None):
+        """ Node Switch.
+
+        Node reference [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html)
+        Developer reference [GeometryNodeSwitch](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
+
+        Args:
+            switch: ['Boolean', 'Boolean']
+            true: ['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'String', 'Geometry', 'Object', 'Collection', 'Texture', 'Material', 'Image']
+
+        Returns:
+            socket 'output'
+        """
+        return nodes.Switch(switch=switch, false=self, true=true, input_type='VECTOR').output
+
+
+    def tan(self):
+        """ Node VectorMath.
+
+        Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
+        Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
+
+        Returns:
+            socket 'vector'
+        """
+        return nodes.VectorMath(vector0=self, vector1=None, vector2=None, scale=None, operation='TANGENT').vector
+
+
+    def tangent(self):
+        """ Node VectorMath.
+
+        Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
+        Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
+
+        Returns:
+            socket 'vector'
+        """
+        return nodes.VectorMath(vector0=self, vector1=None, vector2=None, scale=None, operation='TANGENT').vector
+
+
+    def wrap(self, max=None, min=None):
+        """ Node VectorMath.
+
+        Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
+        Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
+
+        Args:
+            max: Vector
+            min: Vector
+
+        Returns:
+            socket 'vector'
+        """
+        return nodes.VectorMath(vector0=self, vector1=max, vector2=min, scale=None, operation='WRAP').vector
+
+
+
+
+class Color(geosocks.Color):
+    @classmethod
+    def Color(cls):
+        """ Node Color.
+
+        Node reference [Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/color.html)
+        Developer reference [FunctionNodeInputColor](https://docs.blender.org/api/current/bpy.types.FunctionNodeInputColor.html)
+
+        Returns:
+            socket 'color'
+        """
+        return cls(nodes.Color().color)
+
+
+    @classmethod
+    def HSL(cls, hue=None, saturation=None, lightness=None, alpha=None):
+        """ Node CombineColor.
+
+        Node reference [Combine Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/combine_color.html)
+        Developer reference [FunctionNodeCombineColor](https://docs.blender.org/api/current/bpy.types.FunctionNodeCombineColor.html)
+
+        Args:
+            hue: Float
+            saturation: Float
+            lightness: Float
+            alpha: Float
+
+        Returns:
+            socket 'color'
+        """
+        return cls(nodes.CombineColor(red=hue, green=saturation, blue=lightness, alpha=alpha, mode='HSV').color)
+
+
+    @classmethod
+    def HSV(cls, hue=None, saturation=None, value=None, alpha=None):
+        """ Node CombineColor.
+
+        Node reference [Combine Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/combine_color.html)
+        Developer reference [FunctionNodeCombineColor](https://docs.blender.org/api/current/bpy.types.FunctionNodeCombineColor.html)
+
+        Args:
+            hue: Float
+            saturation: Float
+            value: Float
+            alpha: Float
+
+        Returns:
+            socket 'color'
+        """
+        return cls(nodes.CombineColor(red=hue, green=saturation, blue=value, alpha=alpha, mode='HSV').color)
+
+
+    @classmethod
+    def RGB(cls, red=None, green=None, blue=None, alpha=None):
+        """ Node CombineColor.
+
+        Node reference [Combine Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/combine_color.html)
+        Developer reference [FunctionNodeCombineColor](https://docs.blender.org/api/current/bpy.types.FunctionNodeCombineColor.html)
+
+        Args:
+            red: Float
+            green: Float
+            blue: Float
+            alpha: Float
+
+        Returns:
+            socket 'color'
+        """
+        return cls(nodes.CombineColor(red=red, green=green, blue=blue, alpha=alpha, mode='RGB').color)
+
+
+    @property
+    def alpha(self):
+        """ Node SeparateColor.
+
+        Node reference [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html)
+        Developer reference [FunctionNodeSeparateColor](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html)
+
+        Returns:
+            socket 'alpha'
+        """
+        return nodes.SeparateColor(color=self, mode=RGB).alpha
+
+
+    @property
+    def blue(self):
+        """ Node SeparateColor.
+
+        Node reference [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html)
+        Developer reference [FunctionNodeSeparateColor](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html)
+
+        Returns:
+            socket 'blue'
+        """
+        return nodes.SeparateColor(color=self, mode=RGB).blue
+
+
+    def brighter(self, b=None):
+        """ Node Compare.
+
+        Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
+        Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
+
+        Args:
+            b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+
+        Returns:
+            socket 'result'
+        """
+        return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type='COLOR', mode='ELEMENT', operation='BRIGHTER').result
+
+
+    def compare(self, b=None, epsilon=None, operation='GREATER_THAN'):
+        """ Node Compare.
+
+        Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
+        Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
+
+        Args:
+            b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+            epsilon: Float
+            operation (str): 'GREATER_THAN' in [LESS_THAN, LESS_EQUAL, GREATER_THAN, GREATER_EQUAL, EQUAL, NOT_EQUAL]
+
+        Returns:
+            socket 'result'
+        """
+        return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=epsilon, data_type='COLOR', mode='ELEMENT', operation=operation).result
+
+
+    def darker(self, b=None):
+        """ Node Compare.
+
+        Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
+        Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
+
+        Args:
+            b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+
+        Returns:
+            socket 'result'
+        """
+        return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type='COLOR', mode='ELEMENT', operation='DARKER').result
+
+
+    def equal(self, b=None, epsilon=None):
+        """ Node Compare.
+
+        Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
+        Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
+
+        Args:
+            b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+            epsilon: Float
+
+        Returns:
+            socket 'result'
+        """
+        return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=epsilon, data_type='COLOR', mode='ELEMENT', operation='EQUAL').result
+
+
+    def equal(self, b=None, epsilon=None):
+        """ Node Compare.
+
+        Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
+        Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
+
+        Args:
+            b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+            epsilon: Float
+
+        Returns:
+            socket 'result'
+        """
+        return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=epsilon, data_type='COLOR', mode='ELEMENT', operation='EQUAL').result
+
+
+    @property
+    def green(self):
+        """ Node SeparateColor.
+
+        Node reference [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html)
+        Developer reference [FunctionNodeSeparateColor](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html)
+
+        Returns:
+            socket 'green'
+        """
+        return nodes.SeparateColor(color=self, mode=RGB).green
+
+
+    @property
+    def hsl(self):
+        """ Node SeparateColor.
+
+        Node reference [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html)
+        Developer reference [FunctionNodeSeparateColor](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html)
+
+        Returns:
+            tuple ('red', 'green', 'blue', 'alpha')
+        """
+        node = nodes.SeparateColor(color=self, mode='HSL')
+        return node.red, node.green, node.blue, node.alpha
+
+
+    @property
+    def hsv(self):
+        """ Node SeparateColor.
+
+        Node reference [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html)
+        Developer reference [FunctionNodeSeparateColor](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html)
+
+        Returns:
+            tuple ('red', 'green', 'blue', 'alpha')
+        """
+        node = nodes.SeparateColor(color=self, mode='HSV')
+        return node.red, node.green, node.blue, node.alpha
+
+
+    @property
+    def hue(self):
+        """ Node SeparateColor.
+
+        Node reference [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html)
+        Developer reference [FunctionNodeSeparateColor](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html)
+
+        Returns:
+            socket 'red'
+        """
+        return nodes.SeparateColor(color=self, mode=HSV).red
+
+
+    @property
+    def lightness(self):
+        """ Node SeparateColor.
+
+        Node reference [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html)
+        Developer reference [FunctionNodeSeparateColor](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html)
+
+        Returns:
+            socket 'blue'
+        """
+        return nodes.SeparateColor(color=self, mode=HSL).blue
+
+
+    def mix(self, factor=None, color=None, blend_type='MIX', clamp_factor=True, clamp_result=False):
+        """ Node Mix.
+
+        Node reference [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html)
+        Developer reference [ShaderNodeMix](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
+
+        Args:
+            factor: ['Float', 'Vector']
+            color: ['Float', 'Vector', 'Color']
+            blend_type (str): 'MIX' in [MIX, DARKEN, MULTIPLY, BURN, LIGHTEN,... , SATURATION, COLOR, VALUE]
+            clamp_factor (bool): True
+            clamp_result (bool): False
+
+        Returns:
+            socket 'result'
+        """
+        return nodes.Mix(factor=factor, a=self, b=color, blend_type=blend_type, clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='COLOR', factor_mode='UNIFORM').result
+
+
+    def mix_add(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
+        """ Node Mix.
+
+        Node reference [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html)
+        Developer reference [ShaderNodeMix](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
+
+        Args:
+            factor: ['Float', 'Vector']
+            color: ['Float', 'Vector', 'Color']
+            clamp_factor (bool): True
+            clamp_result (bool): False
+
+        Returns:
+            socket 'result'
+        """
+        return nodes.Mix(factor=factor, a=self, b=color, blend_type='ADD', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='COLOR', factor_mode='UNIFORM').result
+
+
+    def mix_burn(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
+        """ Node Mix.
+
+        Node reference [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html)
+        Developer reference [ShaderNodeMix](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
+
+        Args:
+            factor: ['Float', 'Vector']
+            color: ['Float', 'Vector', 'Color']
+            clamp_factor (bool): True
+            clamp_result (bool): False
+
+        Returns:
+            socket 'result'
+        """
+        return nodes.Mix(factor=factor, a=self, b=color, blend_type='BURN', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='COLOR', factor_mode='UNIFORM').result
+
+
+    def mix_color(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
+        """ Node Mix.
+
+        Node reference [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html)
+        Developer reference [ShaderNodeMix](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
+
+        Args:
+            factor: ['Float', 'Vector']
+            color: ['Float', 'Vector', 'Color']
+            clamp_factor (bool): True
+            clamp_result (bool): False
+
+        Returns:
+            socket 'result'
+        """
+        return nodes.Mix(factor=factor, a=self, b=color, blend_type='COLOR', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='COLOR', factor_mode='UNIFORM').result
+
+
+    def mix_darken(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
+        """ Node Mix.
+
+        Node reference [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html)
+        Developer reference [ShaderNodeMix](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
+
+        Args:
+            factor: ['Float', 'Vector']
+            color: ['Float', 'Vector', 'Color']
+            clamp_factor (bool): True
+            clamp_result (bool): False
+
+        Returns:
+            socket 'result'
+        """
+        return nodes.Mix(factor=factor, a=self, b=color, blend_type='DARKEN', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='COLOR', factor_mode='UNIFORM').result
+
+
+    def mix_difference(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
+        """ Node Mix.
+
+        Node reference [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html)
+        Developer reference [ShaderNodeMix](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
+
+        Args:
+            factor: ['Float', 'Vector']
+            color: ['Float', 'Vector', 'Color']
+            clamp_factor (bool): True
+            clamp_result (bool): False
+
+        Returns:
+            socket 'result'
+        """
+        return nodes.Mix(factor=factor, a=self, b=color, blend_type='DIFFERENCE', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='COLOR', factor_mode='UNIFORM').result
+
+
+    def mix_divide(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
+        """ Node Mix.
+
+        Node reference [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html)
+        Developer reference [ShaderNodeMix](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
+
+        Args:
+            factor: ['Float', 'Vector']
+            color: ['Float', 'Vector', 'Color']
+            clamp_factor (bool): True
+            clamp_result (bool): False
+
+        Returns:
+            socket 'result'
+        """
+        return nodes.Mix(factor=factor, a=self, b=color, blend_type='DIVIDE', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='COLOR', factor_mode='UNIFORM').result
+
+
+    def mix_dodge(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
+        """ Node Mix.
+
+        Node reference [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html)
+        Developer reference [ShaderNodeMix](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
+
+        Args:
+            factor: ['Float', 'Vector']
+            color: ['Float', 'Vector', 'Color']
+            clamp_factor (bool): True
+            clamp_result (bool): False
+
+        Returns:
+            socket 'result'
+        """
+        return nodes.Mix(factor=factor, a=self, b=color, blend_type='DODGE', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='COLOR', factor_mode='UNIFORM').result
+
+
+    def mix_hue(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
+        """ Node Mix.
+
+        Node reference [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html)
+        Developer reference [ShaderNodeMix](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
+
+        Args:
+            factor: ['Float', 'Vector']
+            color: ['Float', 'Vector', 'Color']
+            clamp_factor (bool): True
+            clamp_result (bool): False
+
+        Returns:
+            socket 'result'
+        """
+        return nodes.Mix(factor=factor, a=self, b=color, blend_type='HUE', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='COLOR', factor_mode='UNIFORM').result
+
+
+    def mix_lighten(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
+        """ Node Mix.
+
+        Node reference [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html)
+        Developer reference [ShaderNodeMix](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
+
+        Args:
+            factor: ['Float', 'Vector']
+            color: ['Float', 'Vector', 'Color']
+            clamp_factor (bool): True
+            clamp_result (bool): False
+
+        Returns:
+            socket 'result'
+        """
+        return nodes.Mix(factor=factor, a=self, b=color, blend_type='LIGHTEN', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='COLOR', factor_mode='UNIFORM').result
+
+
+    def mix_linear_light(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
+        """ Node Mix.
+
+        Node reference [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html)
+        Developer reference [ShaderNodeMix](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
+
+        Args:
+            factor: ['Float', 'Vector']
+            color: ['Float', 'Vector', 'Color']
+            clamp_factor (bool): True
+            clamp_result (bool): False
+
+        Returns:
+            socket 'result'
+        """
+        return nodes.Mix(factor=factor, a=self, b=color, blend_type='LINEAR_LIGHT', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='COLOR', factor_mode='UNIFORM').result
+
+
+    def mix_multiply(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
+        """ Node Mix.
+
+        Node reference [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html)
+        Developer reference [ShaderNodeMix](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
+
+        Args:
+            factor: ['Float', 'Vector']
+            color: ['Float', 'Vector', 'Color']
+            clamp_factor (bool): True
+            clamp_result (bool): False
+
+        Returns:
+            socket 'result'
+        """
+        return nodes.Mix(factor=factor, a=self, b=color, blend_type='MULTIPLY', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='COLOR', factor_mode='UNIFORM').result
+
+
+    def mix_overlay(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
+        """ Node Mix.
+
+        Node reference [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html)
+        Developer reference [ShaderNodeMix](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
+
+        Args:
+            factor: ['Float', 'Vector']
+            color: ['Float', 'Vector', 'Color']
+            clamp_factor (bool): True
+            clamp_result (bool): False
+
+        Returns:
+            socket 'result'
+        """
+        return nodes.Mix(factor=factor, a=self, b=color, blend_type='OVERLAY', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='COLOR', factor_mode='UNIFORM').result
+
+
+    def mix_saturation(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
+        """ Node Mix.
+
+        Node reference [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html)
+        Developer reference [ShaderNodeMix](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
+
+        Args:
+            factor: ['Float', 'Vector']
+            color: ['Float', 'Vector', 'Color']
+            clamp_factor (bool): True
+            clamp_result (bool): False
+
+        Returns:
+            socket 'result'
+        """
+        return nodes.Mix(factor=factor, a=self, b=color, blend_type='SATURATION', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='COLOR', factor_mode='UNIFORM').result
+
+
+    def mix_screen(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
+        """ Node Mix.
+
+        Node reference [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html)
+        Developer reference [ShaderNodeMix](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
+
+        Args:
+            factor: ['Float', 'Vector']
+            color: ['Float', 'Vector', 'Color']
+            clamp_factor (bool): True
+            clamp_result (bool): False
+
+        Returns:
+            socket 'result'
+        """
+        return nodes.Mix(factor=factor, a=self, b=color, blend_type='SCREEN', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='COLOR', factor_mode='UNIFORM').result
+
+
+    def mix_soft_light(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
+        """ Node Mix.
+
+        Node reference [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html)
+        Developer reference [ShaderNodeMix](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
+
+        Args:
+            factor: ['Float', 'Vector']
+            color: ['Float', 'Vector', 'Color']
+            clamp_factor (bool): True
+            clamp_result (bool): False
+
+        Returns:
+            socket 'result'
+        """
+        return nodes.Mix(factor=factor, a=self, b=color, blend_type='SOFT_LIGHT', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='COLOR', factor_mode='UNIFORM').result
+
+
+    def mix_subtract(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
+        """ Node Mix.
+
+        Node reference [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html)
+        Developer reference [ShaderNodeMix](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
+
+        Args:
+            factor: ['Float', 'Vector']
+            color: ['Float', 'Vector', 'Color']
+            clamp_factor (bool): True
+            clamp_result (bool): False
+
+        Returns:
+            socket 'result'
+        """
+        return nodes.Mix(factor=factor, a=self, b=color, blend_type='SUBTRACT', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='COLOR', factor_mode='UNIFORM').result
+
+
+    def mix_value(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
+        """ Node Mix.
+
+        Node reference [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html)
+        Developer reference [ShaderNodeMix](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
+
+        Args:
+            factor: ['Float', 'Vector']
+            color: ['Float', 'Vector', 'Color']
+            clamp_factor (bool): True
+            clamp_result (bool): False
+
+        Returns:
+            socket 'result'
+        """
+        return nodes.Mix(factor=factor, a=self, b=color, blend_type='VALUE', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='COLOR', factor_mode='UNIFORM').result
+
+
+    @property
+    def red(self):
+        """ Node SeparateColor.
+
+        Node reference [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html)
+        Developer reference [FunctionNodeSeparateColor](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html)
+
+        Returns:
+            socket 'red'
+        """
+        return nodes.SeparateColor(color=self, mode=RGB).red
+
+
+    @property
+    def rgb(self):
+        """ Node SeparateColor.
+
+        Node reference [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html)
+        Developer reference [FunctionNodeSeparateColor](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html)
+
+        Returns:
+            tuple ('red', 'green', 'blue', 'alpha')
+        """
+        node = nodes.SeparateColor(color=self, mode='RGB')
+        return node.red, node.green, node.blue, node.alpha
+
+
+    @property
+    def rgb_curves(self, fac=None):
+        """ Node RgbCurves.
+
+        Node reference [RGB Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/rgb_curves.html)
+        Developer reference [ShaderNodeRGBCurve](https://docs.blender.org/api/current/bpy.types.ShaderNodeRGBCurve.html)
+
+        Returns:
+            node with sockets ['color']
+        """
+        return nodes.RgbCurves(fac=fac, color=self)
+
+
+    @property
+    def saturation(self):
+        """ Node SeparateColor.
+
+        Node reference [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html)
+        Developer reference [FunctionNodeSeparateColor](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html)
+
+        Returns:
+            socket 'green'
+        """
+        return nodes.SeparateColor(color=self, mode=HSV).green
+
+
+    def switch(self, switch=None, true=None):
+        """ Node Switch.
+
+        Node reference [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html)
+        Developer reference [GeometryNodeSwitch](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
+
+        Args:
+            switch: ['Boolean', 'Boolean']
+            true: ['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'String', 'Geometry', 'Object', 'Collection', 'Texture', 'Material', 'Image']
+
+        Returns:
+            socket 'output'
+        """
+        return nodes.Switch(switch=switch, false=self, true=true, input_type='RGBA').output
+
+
+    @property
+    def value(self):
+        """ Node SeparateColor.
+
+        Node reference [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html)
+        Developer reference [FunctionNodeSeparateColor](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html)
+
+        Returns:
+            socket 'blue'
+        """
+        return nodes.SeparateColor(color=self, mode=HSV).blue
 
 
 
@@ -5201,2217 +7740,6 @@ class Instances(Geometry):
 
 
 
-class Color(geosocks.Color):
-    @classmethod
-    def Color(cls):
-        """ Node Color.
-
-        Node reference [Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/color.html)
-        Developer reference [FunctionNodeInputColor](https://docs.blender.org/api/current/bpy.types.FunctionNodeInputColor.html)
-
-        Returns:
-            socket 'color'
-        """
-        return cls(nodes.Color().color)
-
-
-    @classmethod
-    def HSL(cls, hue=None, saturation=None, lightness=None, alpha=None):
-        """ Node CombineColor.
-
-        Node reference [Combine Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/combine_color.html)
-        Developer reference [FunctionNodeCombineColor](https://docs.blender.org/api/current/bpy.types.FunctionNodeCombineColor.html)
-
-        Args:
-            hue: Float
-            saturation: Float
-            lightness: Float
-            alpha: Float
-
-        Returns:
-            socket 'color'
-        """
-        return cls(nodes.CombineColor(red=hue, green=saturation, blue=lightness, alpha=alpha, mode='HSV').color)
-
-
-    @classmethod
-    def HSV(cls, hue=None, saturation=None, value=None, alpha=None):
-        """ Node CombineColor.
-
-        Node reference [Combine Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/combine_color.html)
-        Developer reference [FunctionNodeCombineColor](https://docs.blender.org/api/current/bpy.types.FunctionNodeCombineColor.html)
-
-        Args:
-            hue: Float
-            saturation: Float
-            value: Float
-            alpha: Float
-
-        Returns:
-            socket 'color'
-        """
-        return cls(nodes.CombineColor(red=hue, green=saturation, blue=value, alpha=alpha, mode='HSV').color)
-
-
-    @classmethod
-    def RGB(cls, red=None, green=None, blue=None, alpha=None):
-        """ Node CombineColor.
-
-        Node reference [Combine Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/combine_color.html)
-        Developer reference [FunctionNodeCombineColor](https://docs.blender.org/api/current/bpy.types.FunctionNodeCombineColor.html)
-
-        Args:
-            red: Float
-            green: Float
-            blue: Float
-            alpha: Float
-
-        Returns:
-            socket 'color'
-        """
-        return cls(nodes.CombineColor(red=red, green=green, blue=blue, alpha=alpha, mode='RGB').color)
-
-
-    @property
-    def alpha(self):
-        """ Node SeparateColor.
-
-        Node reference [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html)
-        Developer reference [FunctionNodeSeparateColor](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html)
-
-        Returns:
-            socket 'alpha'
-        """
-        return nodes.SeparateColor(color=self, mode=RGB).alpha
-
-
-    @property
-    def blue(self):
-        """ Node SeparateColor.
-
-        Node reference [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html)
-        Developer reference [FunctionNodeSeparateColor](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html)
-
-        Returns:
-            socket 'blue'
-        """
-        return nodes.SeparateColor(color=self, mode=RGB).blue
-
-
-    def brighter(self, b=None):
-        """ Node Compare.
-
-        Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
-        Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
-
-        Args:
-            b: ['Float', 'Integer', 'Vector', 'Color', 'String']
-
-        Returns:
-            socket 'result'
-        """
-        return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type='COLOR', mode='ELEMENT', operation='BRIGHTER').result
-
-
-    def compare(self, b=None, epsilon=None, operation='GREATER_THAN'):
-        """ Node Compare.
-
-        Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
-        Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
-
-        Args:
-            b: ['Float', 'Integer', 'Vector', 'Color', 'String']
-            epsilon: Float
-            operation (str): 'GREATER_THAN' in [LESS_THAN, LESS_EQUAL, GREATER_THAN, GREATER_EQUAL, EQUAL, NOT_EQUAL]
-
-        Returns:
-            socket 'result'
-        """
-        return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=epsilon, data_type='COLOR', mode='ELEMENT', operation=operation).result
-
-
-    def darker(self, b=None):
-        """ Node Compare.
-
-        Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
-        Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
-
-        Args:
-            b: ['Float', 'Integer', 'Vector', 'Color', 'String']
-
-        Returns:
-            socket 'result'
-        """
-        return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type='COLOR', mode='ELEMENT', operation='DARKER').result
-
-
-    def equal(self, b=None, epsilon=None):
-        """ Node Compare.
-
-        Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
-        Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
-
-        Args:
-            b: ['Float', 'Integer', 'Vector', 'Color', 'String']
-            epsilon: Float
-
-        Returns:
-            socket 'result'
-        """
-        return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=epsilon, data_type='COLOR', mode='ELEMENT', operation='EQUAL').result
-
-
-    def equal(self, b=None, epsilon=None):
-        """ Node Compare.
-
-        Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
-        Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
-
-        Args:
-            b: ['Float', 'Integer', 'Vector', 'Color', 'String']
-            epsilon: Float
-
-        Returns:
-            socket 'result'
-        """
-        return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=epsilon, data_type='COLOR', mode='ELEMENT', operation='EQUAL').result
-
-
-    @property
-    def green(self):
-        """ Node SeparateColor.
-
-        Node reference [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html)
-        Developer reference [FunctionNodeSeparateColor](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html)
-
-        Returns:
-            socket 'green'
-        """
-        return nodes.SeparateColor(color=self, mode=RGB).green
-
-
-    @property
-    def hsl(self):
-        """ Node SeparateColor.
-
-        Node reference [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html)
-        Developer reference [FunctionNodeSeparateColor](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html)
-
-        Returns:
-            tuple ('red', 'green', 'blue', 'alpha')
-        """
-        node = nodes.SeparateColor(color=self, mode='HSL')
-        return node.red, node.green, node.blue, node.alpha
-
-
-    @property
-    def hsv(self):
-        """ Node SeparateColor.
-
-        Node reference [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html)
-        Developer reference [FunctionNodeSeparateColor](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html)
-
-        Returns:
-            tuple ('red', 'green', 'blue', 'alpha')
-        """
-        node = nodes.SeparateColor(color=self, mode='HSV')
-        return node.red, node.green, node.blue, node.alpha
-
-
-    @property
-    def hue(self):
-        """ Node SeparateColor.
-
-        Node reference [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html)
-        Developer reference [FunctionNodeSeparateColor](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html)
-
-        Returns:
-            socket 'red'
-        """
-        return nodes.SeparateColor(color=self, mode=HSV).red
-
-
-    @property
-    def lightness(self):
-        """ Node SeparateColor.
-
-        Node reference [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html)
-        Developer reference [FunctionNodeSeparateColor](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html)
-
-        Returns:
-            socket 'blue'
-        """
-        return nodes.SeparateColor(color=self, mode=HSL).blue
-
-
-    def mix(self, factor=None, color=None, blend_type='MIX', clamp_factor=True, clamp_result=False):
-        """ Node Mix.
-
-        Node reference [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html)
-        Developer reference [ShaderNodeMix](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
-
-        Args:
-            factor: ['Float', 'Vector']
-            color: ['Float', 'Vector', 'Color']
-            blend_type (str): 'MIX' in [MIX, DARKEN, MULTIPLY, BURN, LIGHTEN,... , SATURATION, COLOR, VALUE]
-            clamp_factor (bool): True
-            clamp_result (bool): False
-
-        Returns:
-            socket 'result'
-        """
-        return nodes.Mix(factor=factor, a=self, b=color, blend_type=blend_type, clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='COLOR', factor_mode='UNIFORM').result
-
-
-    def mix_add(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
-        """ Node Mix.
-
-        Node reference [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html)
-        Developer reference [ShaderNodeMix](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
-
-        Args:
-            factor: ['Float', 'Vector']
-            color: ['Float', 'Vector', 'Color']
-            clamp_factor (bool): True
-            clamp_result (bool): False
-
-        Returns:
-            socket 'result'
-        """
-        return nodes.Mix(factor=factor, a=self, b=color, blend_type='ADD', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='COLOR', factor_mode='UNIFORM').result
-
-
-    def mix_burn(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
-        """ Node Mix.
-
-        Node reference [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html)
-        Developer reference [ShaderNodeMix](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
-
-        Args:
-            factor: ['Float', 'Vector']
-            color: ['Float', 'Vector', 'Color']
-            clamp_factor (bool): True
-            clamp_result (bool): False
-
-        Returns:
-            socket 'result'
-        """
-        return nodes.Mix(factor=factor, a=self, b=color, blend_type='BURN', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='COLOR', factor_mode='UNIFORM').result
-
-
-    def mix_color(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
-        """ Node Mix.
-
-        Node reference [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html)
-        Developer reference [ShaderNodeMix](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
-
-        Args:
-            factor: ['Float', 'Vector']
-            color: ['Float', 'Vector', 'Color']
-            clamp_factor (bool): True
-            clamp_result (bool): False
-
-        Returns:
-            socket 'result'
-        """
-        return nodes.Mix(factor=factor, a=self, b=color, blend_type='COLOR', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='COLOR', factor_mode='UNIFORM').result
-
-
-    def mix_darken(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
-        """ Node Mix.
-
-        Node reference [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html)
-        Developer reference [ShaderNodeMix](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
-
-        Args:
-            factor: ['Float', 'Vector']
-            color: ['Float', 'Vector', 'Color']
-            clamp_factor (bool): True
-            clamp_result (bool): False
-
-        Returns:
-            socket 'result'
-        """
-        return nodes.Mix(factor=factor, a=self, b=color, blend_type='DARKEN', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='COLOR', factor_mode='UNIFORM').result
-
-
-    def mix_difference(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
-        """ Node Mix.
-
-        Node reference [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html)
-        Developer reference [ShaderNodeMix](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
-
-        Args:
-            factor: ['Float', 'Vector']
-            color: ['Float', 'Vector', 'Color']
-            clamp_factor (bool): True
-            clamp_result (bool): False
-
-        Returns:
-            socket 'result'
-        """
-        return nodes.Mix(factor=factor, a=self, b=color, blend_type='DIFFERENCE', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='COLOR', factor_mode='UNIFORM').result
-
-
-    def mix_divide(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
-        """ Node Mix.
-
-        Node reference [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html)
-        Developer reference [ShaderNodeMix](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
-
-        Args:
-            factor: ['Float', 'Vector']
-            color: ['Float', 'Vector', 'Color']
-            clamp_factor (bool): True
-            clamp_result (bool): False
-
-        Returns:
-            socket 'result'
-        """
-        return nodes.Mix(factor=factor, a=self, b=color, blend_type='DIVIDE', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='COLOR', factor_mode='UNIFORM').result
-
-
-    def mix_dodge(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
-        """ Node Mix.
-
-        Node reference [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html)
-        Developer reference [ShaderNodeMix](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
-
-        Args:
-            factor: ['Float', 'Vector']
-            color: ['Float', 'Vector', 'Color']
-            clamp_factor (bool): True
-            clamp_result (bool): False
-
-        Returns:
-            socket 'result'
-        """
-        return nodes.Mix(factor=factor, a=self, b=color, blend_type='DODGE', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='COLOR', factor_mode='UNIFORM').result
-
-
-    def mix_hue(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
-        """ Node Mix.
-
-        Node reference [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html)
-        Developer reference [ShaderNodeMix](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
-
-        Args:
-            factor: ['Float', 'Vector']
-            color: ['Float', 'Vector', 'Color']
-            clamp_factor (bool): True
-            clamp_result (bool): False
-
-        Returns:
-            socket 'result'
-        """
-        return nodes.Mix(factor=factor, a=self, b=color, blend_type='HUE', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='COLOR', factor_mode='UNIFORM').result
-
-
-    def mix_lighten(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
-        """ Node Mix.
-
-        Node reference [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html)
-        Developer reference [ShaderNodeMix](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
-
-        Args:
-            factor: ['Float', 'Vector']
-            color: ['Float', 'Vector', 'Color']
-            clamp_factor (bool): True
-            clamp_result (bool): False
-
-        Returns:
-            socket 'result'
-        """
-        return nodes.Mix(factor=factor, a=self, b=color, blend_type='LIGHTEN', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='COLOR', factor_mode='UNIFORM').result
-
-
-    def mix_linear_light(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
-        """ Node Mix.
-
-        Node reference [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html)
-        Developer reference [ShaderNodeMix](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
-
-        Args:
-            factor: ['Float', 'Vector']
-            color: ['Float', 'Vector', 'Color']
-            clamp_factor (bool): True
-            clamp_result (bool): False
-
-        Returns:
-            socket 'result'
-        """
-        return nodes.Mix(factor=factor, a=self, b=color, blend_type='LINEAR_LIGHT', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='COLOR', factor_mode='UNIFORM').result
-
-
-    def mix_multiply(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
-        """ Node Mix.
-
-        Node reference [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html)
-        Developer reference [ShaderNodeMix](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
-
-        Args:
-            factor: ['Float', 'Vector']
-            color: ['Float', 'Vector', 'Color']
-            clamp_factor (bool): True
-            clamp_result (bool): False
-
-        Returns:
-            socket 'result'
-        """
-        return nodes.Mix(factor=factor, a=self, b=color, blend_type='MULTIPLY', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='COLOR', factor_mode='UNIFORM').result
-
-
-    def mix_overlay(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
-        """ Node Mix.
-
-        Node reference [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html)
-        Developer reference [ShaderNodeMix](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
-
-        Args:
-            factor: ['Float', 'Vector']
-            color: ['Float', 'Vector', 'Color']
-            clamp_factor (bool): True
-            clamp_result (bool): False
-
-        Returns:
-            socket 'result'
-        """
-        return nodes.Mix(factor=factor, a=self, b=color, blend_type='OVERLAY', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='COLOR', factor_mode='UNIFORM').result
-
-
-    def mix_saturation(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
-        """ Node Mix.
-
-        Node reference [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html)
-        Developer reference [ShaderNodeMix](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
-
-        Args:
-            factor: ['Float', 'Vector']
-            color: ['Float', 'Vector', 'Color']
-            clamp_factor (bool): True
-            clamp_result (bool): False
-
-        Returns:
-            socket 'result'
-        """
-        return nodes.Mix(factor=factor, a=self, b=color, blend_type='SATURATION', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='COLOR', factor_mode='UNIFORM').result
-
-
-    def mix_screen(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
-        """ Node Mix.
-
-        Node reference [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html)
-        Developer reference [ShaderNodeMix](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
-
-        Args:
-            factor: ['Float', 'Vector']
-            color: ['Float', 'Vector', 'Color']
-            clamp_factor (bool): True
-            clamp_result (bool): False
-
-        Returns:
-            socket 'result'
-        """
-        return nodes.Mix(factor=factor, a=self, b=color, blend_type='SCREEN', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='COLOR', factor_mode='UNIFORM').result
-
-
-    def mix_soft_light(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
-        """ Node Mix.
-
-        Node reference [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html)
-        Developer reference [ShaderNodeMix](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
-
-        Args:
-            factor: ['Float', 'Vector']
-            color: ['Float', 'Vector', 'Color']
-            clamp_factor (bool): True
-            clamp_result (bool): False
-
-        Returns:
-            socket 'result'
-        """
-        return nodes.Mix(factor=factor, a=self, b=color, blend_type='SOFT_LIGHT', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='COLOR', factor_mode='UNIFORM').result
-
-
-    def mix_subtract(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
-        """ Node Mix.
-
-        Node reference [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html)
-        Developer reference [ShaderNodeMix](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
-
-        Args:
-            factor: ['Float', 'Vector']
-            color: ['Float', 'Vector', 'Color']
-            clamp_factor (bool): True
-            clamp_result (bool): False
-
-        Returns:
-            socket 'result'
-        """
-        return nodes.Mix(factor=factor, a=self, b=color, blend_type='SUBTRACT', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='COLOR', factor_mode='UNIFORM').result
-
-
-    def mix_value(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
-        """ Node Mix.
-
-        Node reference [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html)
-        Developer reference [ShaderNodeMix](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
-
-        Args:
-            factor: ['Float', 'Vector']
-            color: ['Float', 'Vector', 'Color']
-            clamp_factor (bool): True
-            clamp_result (bool): False
-
-        Returns:
-            socket 'result'
-        """
-        return nodes.Mix(factor=factor, a=self, b=color, blend_type='VALUE', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='COLOR', factor_mode='UNIFORM').result
-
-
-    @property
-    def red(self):
-        """ Node SeparateColor.
-
-        Node reference [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html)
-        Developer reference [FunctionNodeSeparateColor](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html)
-
-        Returns:
-            socket 'red'
-        """
-        return nodes.SeparateColor(color=self, mode=RGB).red
-
-
-    @property
-    def rgb(self):
-        """ Node SeparateColor.
-
-        Node reference [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html)
-        Developer reference [FunctionNodeSeparateColor](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html)
-
-        Returns:
-            tuple ('red', 'green', 'blue', 'alpha')
-        """
-        node = nodes.SeparateColor(color=self, mode='RGB')
-        return node.red, node.green, node.blue, node.alpha
-
-
-    @property
-    def rgb_curves(self, fac=None):
-        """ Node RgbCurves.
-
-        Node reference [RGB Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/rgb_curves.html)
-        Developer reference [ShaderNodeRGBCurve](https://docs.blender.org/api/current/bpy.types.ShaderNodeRGBCurve.html)
-
-        Returns:
-            node with sockets ['color']
-        """
-        return nodes.RgbCurves(fac=fac, color=self)
-
-
-    @property
-    def saturation(self):
-        """ Node SeparateColor.
-
-        Node reference [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html)
-        Developer reference [FunctionNodeSeparateColor](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html)
-
-        Returns:
-            socket 'green'
-        """
-        return nodes.SeparateColor(color=self, mode=HSV).green
-
-
-    def switch(self, switch=None, true=None):
-        """ Node Switch.
-
-        Node reference [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html)
-        Developer reference [GeometryNodeSwitch](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
-
-        Args:
-            switch: ['Boolean', 'Boolean']
-            true: ['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'String', 'Geometry', 'Object', 'Collection', 'Texture', 'Material', 'Image']
-
-        Returns:
-            socket 'output'
-        """
-        return nodes.Switch(switch=switch, false=self, true=true, input_type='RGBA').output
-
-
-    @property
-    def value(self):
-        """ Node SeparateColor.
-
-        Node reference [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html)
-        Developer reference [FunctionNodeSeparateColor](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html)
-
-        Returns:
-            socket 'blue'
-        """
-        return nodes.SeparateColor(color=self, mode=HSV).blue
-
-
-
-
-class Vector(geosocks.Vector):
-    @classmethod
-    def Combine(cls, x=None, y=None, z=None):
-        """ Node CombineXyz.
-
-        Node reference [Combine XYZ](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/combine_xyz.html)
-        Developer reference [ShaderNodeCombineXYZ](https://docs.blender.org/api/current/bpy.types.ShaderNodeCombineXYZ.html)
-
-        Args:
-            x: Float
-            y: Float
-            z: Float
-
-        Returns:
-            socket 'vector'
-        """
-        return cls(nodes.CombineXyz(x=x, y=y, z=z).vector)
-
-
-    @classmethod
-    def Vector(cls, vector=[0.0, 0.0, 0.0]):
-        """ Node Vector.
-
-        Node reference [Vector](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/vector.html)
-        Developer reference [FunctionNodeInputVector](https://docs.blender.org/api/current/bpy.types.FunctionNodeInputVector.html)
-
-        Args:
-            vector (list): [0.0, 0.0, 0.0]
-
-        Returns:
-            socket 'vector'
-        """
-        return cls(nodes.Vector(vector=vector).vector)
-
-
-    def abs(self):
-        """ Node VectorMath.
-
-        Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
-        Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
-
-        Returns:
-            socket 'vector'
-        """
-        return nodes.VectorMath(vector0=self, vector1=None, vector2=None, scale=None, operation='ABSOLUTE').vector
-
-
-    def absolute(self):
-        """ Node VectorMath.
-
-        Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
-        Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
-
-        Returns:
-            socket 'vector'
-        """
-        return nodes.VectorMath(vector0=self, vector1=None, vector2=None, scale=None, operation='ABSOLUTE').vector
-
-
-    def add(self, vector=None):
-        """ Node VectorMath.
-
-        Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
-        Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
-
-        Args:
-            vector: Vector
-
-        Returns:
-            socket 'vector'
-        """
-        return nodes.VectorMath(vector0=self, vector1=vector, vector2=None, scale=None, operation='ADD').vector
-
-
-    def align_euler_to_vector(self, factor=None, vector=None, axis='X', pivot_axis='AUTO'):
-        """ Node AlignEulerToVector.
-
-        Node reference [Align Euler to Vector](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/align_euler_to_vector.html)
-        Developer reference [FunctionNodeAlignEulerToVector](https://docs.blender.org/api/current/bpy.types.FunctionNodeAlignEulerToVector.html)
-
-        Args:
-            factor: Float
-            vector: Vector
-            axis (str): 'X' in [X, Y, Z]
-            pivot_axis (str): 'AUTO' in [AUTO, X, Y, Z]
-
-        Returns:
-            node with sockets ['rotation']
-        """
-        return self.stack(nodes.AlignEulerToVector(rotation=self, factor=factor, vector=vector, axis=axis, pivot_axis=pivot_axis))
-
-
-    def average_equal(self, b=None, epsilon=None):
-        """ Node Compare.
-
-        Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
-        Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
-
-        Args:
-            b: ['Float', 'Integer', 'Vector', 'Color', 'String']
-            epsilon: Float
-
-        Returns:
-            socket 'result'
-        """
-        return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=epsilon, data_type='VECTOR', mode='AVERAGE', operation='EQUAL').result
-
-
-    def average_greater_equal(self, b=None):
-        """ Node Compare.
-
-        Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
-        Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
-
-        Args:
-            b: ['Float', 'Integer', 'Vector', 'Color', 'String']
-
-        Returns:
-            socket 'result'
-        """
-        return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type='VECTOR', mode='AVERAGE', operation='GREATER_EQUAL').result
-
-
-    def average_greater_than(self, b=None):
-        """ Node Compare.
-
-        Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
-        Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
-
-        Args:
-            b: ['Float', 'Integer', 'Vector', 'Color', 'String']
-
-        Returns:
-            socket 'result'
-        """
-        return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type='VECTOR', mode='AVERAGE', operation='GREATER_THAN').result
-
-
-    def average_less_equal(self, b=None):
-        """ Node Compare.
-
-        Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
-        Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
-
-        Args:
-            b: ['Float', 'Integer', 'Vector', 'Color', 'String']
-
-        Returns:
-            socket 'result'
-        """
-        return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type='VECTOR', mode='AVERAGE', operation='LESS_EQUAL').result
-
-
-    def average_less_than(self, b=None):
-        """ Node Compare.
-
-        Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
-        Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
-
-        Args:
-            b: ['Float', 'Integer', 'Vector', 'Color', 'String']
-
-        Returns:
-            socket 'result'
-        """
-        return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type='VECTOR', mode='AVERAGE', operation='LESS_THAN').result
-
-
-    def average_not_equal(self, b=None, epsilon=None):
-        """ Node Compare.
-
-        Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
-        Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
-
-        Args:
-            b: ['Float', 'Integer', 'Vector', 'Color', 'String']
-            epsilon: Float
-
-        Returns:
-            socket 'result'
-        """
-        return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=epsilon, data_type='VECTOR', mode='AVERAGE', operation='NOT_EQUAL').result
-
-
-    def ceil(self):
-        """ Node VectorMath.
-
-        Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
-        Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
-
-        Returns:
-            socket 'vector'
-        """
-        return nodes.VectorMath(vector0=self, vector1=None, vector2=None, scale=None, operation='CEIL').vector
-
-
-    def compare(self, b=None, c=None, angle=None, epsilon=None, mode='ELEMENT', operation='GREATER_THAN'):
-        """ Node Compare.
-
-        Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
-        Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
-
-        Args:
-            b: ['Float', 'Integer', 'Vector', 'Color', 'String']
-            c: Float
-            angle: Float
-            epsilon: Float
-            mode (str): 'ELEMENT' in [ELEMENT, LENGTH, AVERAGE, DOT_PRODUCT, DIRECTION]
-            operation (str): 'GREATER_THAN' in [LESS_THAN, LESS_EQUAL, GREATER_THAN, GREATER_EQUAL, EQUAL, NOT_EQUAL]
-
-        Returns:
-            socket 'result'
-        """
-        return nodes.Compare(a=self, b=b, c=c, angle=angle, epsilon=epsilon, data_type='VECTOR', mode=mode, operation=operation).result
-
-
-    def cos(self):
-        """ Node VectorMath.
-
-        Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
-        Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
-
-        Returns:
-            socket 'vector'
-        """
-        return nodes.VectorMath(vector0=self, vector1=None, vector2=None, scale=None, operation='COSINE').vector
-
-
-    def cosine(self):
-        """ Node VectorMath.
-
-        Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
-        Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
-
-        Returns:
-            socket 'vector'
-        """
-        return nodes.VectorMath(vector0=self, vector1=None, vector2=None, scale=None, operation='COSINE').vector
-
-
-    def cross(self, vector=None):
-        """ Node VectorMath.
-
-        Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
-        Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
-
-        Args:
-            vector: Vector
-
-        Returns:
-            socket 'vector'
-        """
-        return nodes.VectorMath(vector0=self, vector1=vector, vector2=None, scale=None, operation='CROSS_PRODUCT').vector
-
-
-    def cross_product(self, vector=None):
-        """ Node VectorMath.
-
-        Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
-        Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
-
-        Args:
-            vector: Vector
-
-        Returns:
-            socket 'vector'
-        """
-        return nodes.VectorMath(vector0=self, vector1=vector, vector2=None, scale=None, operation='CROSS_PRODUCT').vector
-
-
-    def curves(self, fac=None):
-        """ Node VectorCurves.
-
-        Node reference [Vector Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_curves.html)
-        Developer reference [ShaderNodeVectorCurve](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorCurve.html)
-
-        Args:
-            fac: Float
-
-        Returns:
-            socket 'vector'
-        """
-        return nodes.VectorCurves(fac=fac, vector=self).vector
-
-
-    def direction_equal(self, b=None, angle=None, epsilon=None):
-        """ Node Compare.
-
-        Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
-        Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
-
-        Args:
-            b: ['Float', 'Integer', 'Vector', 'Color', 'String']
-            angle: Float
-            epsilon: Float
-
-        Returns:
-            socket 'result'
-        """
-        return nodes.Compare(a=self, b=b, c=None, angle=angle, epsilon=epsilon, data_type='VECTOR', mode='DIRECTION', operation='EQUAL').result
-
-
-    def direction_greater_equal(self, b=None, angle=None):
-        """ Node Compare.
-
-        Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
-        Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
-
-        Args:
-            b: ['Float', 'Integer', 'Vector', 'Color', 'String']
-            angle: Float
-
-        Returns:
-            socket 'result'
-        """
-        return nodes.Compare(a=self, b=b, c=None, angle=angle, epsilon=None, data_type='VECTOR', mode='DIRECTION', operation='GREATER_EQUAL').result
-
-
-    def direction_greater_than(self, b=None, angle=None):
-        """ Node Compare.
-
-        Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
-        Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
-
-        Args:
-            b: ['Float', 'Integer', 'Vector', 'Color', 'String']
-            angle: Float
-
-        Returns:
-            socket 'result'
-        """
-        return nodes.Compare(a=self, b=b, c=None, angle=angle, epsilon=None, data_type='VECTOR', mode='DIRECTION', operation='GREATER_THAN').result
-
-
-    def direction_less_equal(self, b=None, angle=None):
-        """ Node Compare.
-
-        Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
-        Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
-
-        Args:
-            b: ['Float', 'Integer', 'Vector', 'Color', 'String']
-            angle: Float
-
-        Returns:
-            socket 'result'
-        """
-        return nodes.Compare(a=self, b=b, c=None, angle=angle, epsilon=None, data_type='VECTOR', mode='DIRECTION', operation='LESS_EQUAL').result
-
-
-    def direction_less_than(self, b=None, angle=None):
-        """ Node Compare.
-
-        Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
-        Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
-
-        Args:
-            b: ['Float', 'Integer', 'Vector', 'Color', 'String']
-            angle: Float
-
-        Returns:
-            socket 'result'
-        """
-        return nodes.Compare(a=self, b=b, c=None, angle=angle, epsilon=None, data_type='VECTOR', mode='DIRECTION', operation='LESS_THAN').result
-
-
-    def direction_not_equal(self, b=None, angle=None, epsilon=None):
-        """ Node Compare.
-
-        Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
-        Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
-
-        Args:
-            b: ['Float', 'Integer', 'Vector', 'Color', 'String']
-            angle: Float
-            epsilon: Float
-
-        Returns:
-            socket 'result'
-        """
-        return nodes.Compare(a=self, b=b, c=None, angle=angle, epsilon=epsilon, data_type='VECTOR', mode='DIRECTION', operation='NOT_EQUAL').result
-
-
-    def distance(self, vector=None):
-        """ Node VectorMath.
-
-        Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
-        Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
-
-        Args:
-            vector: Vector
-
-        Returns:
-            socket 'value'
-        """
-        return nodes.VectorMath(vector0=self, vector1=vector, vector2=None, scale=None, operation='DISTANCE').value
-
-
-    def div(self, vector=None):
-        """ Node VectorMath.
-
-        Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
-        Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
-
-        Args:
-            vector: Vector
-
-        Returns:
-            socket 'vector'
-        """
-        return nodes.VectorMath(vector0=self, vector1=vector, vector2=None, scale=None, operation='DIVIDE').vector
-
-
-    def divide(self, vector=None):
-        """ Node VectorMath.
-
-        Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
-        Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
-
-        Args:
-            vector: Vector
-
-        Returns:
-            socket 'vector'
-        """
-        return nodes.VectorMath(vector0=self, vector1=vector, vector2=None, scale=None, operation='DIVIDE').vector
-
-
-    def dot(self, vector=None):
-        """ Node VectorMath.
-
-        Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
-        Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
-
-        Args:
-            vector: Vector
-
-        Returns:
-            socket 'value'
-        """
-        return nodes.VectorMath(vector0=self, vector1=vector, vector2=None, scale=None, operation='DOT_PRODUCT').value
-
-
-    def dot_product(self, vector=None):
-        """ Node VectorMath.
-
-        Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
-        Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
-
-        Args:
-            vector: Vector
-
-        Returns:
-            socket 'value'
-        """
-        return nodes.VectorMath(vector0=self, vector1=vector, vector2=None, scale=None, operation='DOT_PRODUCT').value
-
-
-    def dot_product_equal(self, b=None, c=None, epsilon=None):
-        """ Node Compare.
-
-        Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
-        Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
-
-        Args:
-            b: ['Float', 'Integer', 'Vector', 'Color', 'String']
-            c: Float
-            epsilon: Float
-
-        Returns:
-            socket 'result'
-        """
-        return nodes.Compare(a=self, b=b, c=c, angle=None, epsilon=epsilon, data_type='VECTOR', mode='DOT_PRODUCT', operation='EQUAL').result
-
-
-    def dot_product_greater_equal(self, b=None, c=None):
-        """ Node Compare.
-
-        Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
-        Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
-
-        Args:
-            b: ['Float', 'Integer', 'Vector', 'Color', 'String']
-            c: Float
-
-        Returns:
-            socket 'result'
-        """
-        return nodes.Compare(a=self, b=b, c=c, angle=None, epsilon=None, data_type='VECTOR', mode='DOT_PRODUCT', operation='GREATER_EQUAL').result
-
-
-    def dot_product_greater_than(self, b=None, c=None):
-        """ Node Compare.
-
-        Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
-        Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
-
-        Args:
-            b: ['Float', 'Integer', 'Vector', 'Color', 'String']
-            c: Float
-
-        Returns:
-            socket 'result'
-        """
-        return nodes.Compare(a=self, b=b, c=c, angle=None, epsilon=None, data_type='VECTOR', mode='DOT_PRODUCT', operation='GREATER_THAN').result
-
-
-    def dot_product_less_equal(self, b=None, c=None):
-        """ Node Compare.
-
-        Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
-        Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
-
-        Args:
-            b: ['Float', 'Integer', 'Vector', 'Color', 'String']
-            c: Float
-
-        Returns:
-            socket 'result'
-        """
-        return nodes.Compare(a=self, b=b, c=c, angle=None, epsilon=None, data_type='VECTOR', mode='DOT_PRODUCT', operation='LESS_EQUAL').result
-
-
-    def dot_product_less_than(self, b=None, c=None):
-        """ Node Compare.
-
-        Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
-        Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
-
-        Args:
-            b: ['Float', 'Integer', 'Vector', 'Color', 'String']
-            c: Float
-
-        Returns:
-            socket 'result'
-        """
-        return nodes.Compare(a=self, b=b, c=c, angle=None, epsilon=None, data_type='VECTOR', mode='DOT_PRODUCT', operation='LESS_THAN').result
-
-
-    def dot_product_not_equal(self, b=None, c=None, epsilon=None):
-        """ Node Compare.
-
-        Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
-        Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
-
-        Args:
-            b: ['Float', 'Integer', 'Vector', 'Color', 'String']
-            c: Float
-            epsilon: Float
-
-        Returns:
-            socket 'result'
-        """
-        return nodes.Compare(a=self, b=b, c=c, angle=None, epsilon=epsilon, data_type='VECTOR', mode='DOT_PRODUCT', operation='NOT_EQUAL').result
-
-
-    def elements_equal(self, b=None, epsilon=None):
-        """ Node Compare.
-
-        Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
-        Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
-
-        Args:
-            b: ['Float', 'Integer', 'Vector', 'Color', 'String']
-            epsilon: Float
-
-        Returns:
-            socket 'result'
-        """
-        return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=epsilon, data_type='VECTOR', mode='ELEMENT', operation='EQUAL').result
-
-
-    def elements_greater_equal(self, b=None):
-        """ Node Compare.
-
-        Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
-        Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
-
-        Args:
-            b: ['Float', 'Integer', 'Vector', 'Color', 'String']
-
-        Returns:
-            socket 'result'
-        """
-        return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type='VECTOR', mode='ELEMENT', operation='GREATER_EQUAL').result
-
-
-    def elements_greater_than(self, b=None):
-        """ Node Compare.
-
-        Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
-        Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
-
-        Args:
-            b: ['Float', 'Integer', 'Vector', 'Color', 'String']
-
-        Returns:
-            socket 'result'
-        """
-        return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type='VECTOR', mode='ELEMENT', operation='GREATER_THAN').result
-
-
-    def elements_less_equal(self, b=None):
-        """ Node Compare.
-
-        Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
-        Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
-
-        Args:
-            b: ['Float', 'Integer', 'Vector', 'Color', 'String']
-
-        Returns:
-            socket 'result'
-        """
-        return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type='VECTOR', mode='ELEMENT', operation='LESS_EQUAL').result
-
-
-    def elements_less_than(self, b=None):
-        """ Node Compare.
-
-        Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
-        Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
-
-        Args:
-            b: ['Float', 'Integer', 'Vector', 'Color', 'String']
-
-        Returns:
-            socket 'result'
-        """
-        return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type='VECTOR', mode='ELEMENT', operation='LESS_THAN').result
-
-
-    def elements_not_equal(self, b=None, epsilon=None):
-        """ Node Compare.
-
-        Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
-        Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
-
-        Args:
-            b: ['Float', 'Integer', 'Vector', 'Color', 'String']
-            epsilon: Float
-
-        Returns:
-            socket 'result'
-        """
-        return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=epsilon, data_type='VECTOR', mode='ELEMENT', operation='NOT_EQUAL').result
-
-
-    def face_forward(self, incident=None, reference=None):
-        """ Node VectorMath.
-
-        Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
-        Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
-
-        Args:
-            incident: Vector
-            reference: Vector
-
-        Returns:
-            socket 'vector'
-        """
-        return nodes.VectorMath(vector0=self, vector1=incident, vector2=reference, scale=None, operation='FACEFORWARD').vector
-
-
-    def floor(self):
-        """ Node VectorMath.
-
-        Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
-        Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
-
-        Returns:
-            socket 'vector'
-        """
-        return nodes.VectorMath(vector0=self, vector1=None, vector2=None, scale=None, operation='FLOOR').vector
-
-
-    def fract(self):
-        """ Node VectorMath.
-
-        Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
-        Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
-
-        Returns:
-            socket 'vector'
-        """
-        return nodes.VectorMath(vector0=self, vector1=None, vector2=None, scale=None, operation='FRACTION').vector
-
-
-    def fraction(self):
-        """ Node VectorMath.
-
-        Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
-        Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
-
-        Returns:
-            socket 'vector'
-        """
-        return nodes.VectorMath(vector0=self, vector1=None, vector2=None, scale=None, operation='FRACTION').vector
-
-
-    @property
-    def length(self):
-        """ Node VectorMath.
-
-        Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
-        Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
-
-        Returns:
-            socket 'value'
-        """
-        return nodes.VectorMath(vector0=self, vector1=None, vector2=None, scale=None, operation='LENGTH').value
-
-
-    def length_equal(self, b=None, epsilon=None):
-        """ Node Compare.
-
-        Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
-        Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
-
-        Args:
-            b: ['Float', 'Integer', 'Vector', 'Color', 'String']
-            epsilon: Float
-
-        Returns:
-            socket 'result'
-        """
-        return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=epsilon, data_type='VECTOR', mode='LENGTH', operation='EQUAL').result
-
-
-    def length_greater_equal(self, b=None):
-        """ Node Compare.
-
-        Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
-        Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
-
-        Args:
-            b: ['Float', 'Integer', 'Vector', 'Color', 'String']
-
-        Returns:
-            socket 'result'
-        """
-        return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type='VECTOR', mode='LENGTH', operation='GREATER_EQUAL').result
-
-
-    def length_greater_than(self, b=None):
-        """ Node Compare.
-
-        Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
-        Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
-
-        Args:
-            b: ['Float', 'Integer', 'Vector', 'Color', 'String']
-
-        Returns:
-            socket 'result'
-        """
-        return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type='VECTOR', mode='LENGTH', operation='GREATER_THAN').result
-
-
-    def length_less_equal(self, b=None):
-        """ Node Compare.
-
-        Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
-        Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
-
-        Args:
-            b: ['Float', 'Integer', 'Vector', 'Color', 'String']
-
-        Returns:
-            socket 'result'
-        """
-        return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type='VECTOR', mode='LENGTH', operation='LESS_EQUAL').result
-
-
-    def length_less_than(self, b=None):
-        """ Node Compare.
-
-        Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
-        Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
-
-        Args:
-            b: ['Float', 'Integer', 'Vector', 'Color', 'String']
-
-        Returns:
-            socket 'result'
-        """
-        return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type='VECTOR', mode='LENGTH', operation='LESS_THAN').result
-
-
-    def length_not_equal(self, b=None, epsilon=None):
-        """ Node Compare.
-
-        Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
-        Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
-
-        Args:
-            b: ['Float', 'Integer', 'Vector', 'Color', 'String']
-            epsilon: Float
-
-        Returns:
-            socket 'result'
-        """
-        return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=epsilon, data_type='VECTOR', mode='LENGTH', operation='NOT_EQUAL').result
-
-
-    def map_range(self, from_min=None, from_max=None, to_min=None, to_max=None, steps=None, clamp=True, interpolation_type='LINEAR'):
-        """ Node MapRange.
-
-        Node reference [Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/map_range.html)
-        Developer reference [ShaderNodeMapRange](https://docs.blender.org/api/current/bpy.types.ShaderNodeMapRange.html)
-
-        Args:
-            from_min: ['Float', 'Vector']
-            from_max: ['Float', 'Vector']
-            to_min: ['Float', 'Vector']
-            to_max: ['Float', 'Vector']
-            steps: ['Float', 'Vector']
-            clamp (bool): True
-            interpolation_type (str): 'LINEAR' in [LINEAR, STEPPED, SMOOTHSTEP, SMOOTHERSTEP]
-
-        Returns:
-            socket 'vector'
-        """
-        return nodes.MapRange(value=None, from_min=from_min, from_max=from_max, to_min=to_min, to_max=to_max, steps=steps, vector=self, clamp=clamp, data_type='FLOAT_VECTOR', interpolation_type=interpolation_type).vector
-
-
-    def map_range_linear(self, from_min=None, from_max=None, to_min=None, to_max=None, clamp=True):
-        """ Node MapRange.
-
-        Node reference [Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/map_range.html)
-        Developer reference [ShaderNodeMapRange](https://docs.blender.org/api/current/bpy.types.ShaderNodeMapRange.html)
-
-        Args:
-            from_min: ['Float', 'Vector']
-            from_max: ['Float', 'Vector']
-            to_min: ['Float', 'Vector']
-            to_max: ['Float', 'Vector']
-            clamp (bool): True
-
-        Returns:
-            socket 'vector'
-        """
-        return nodes.MapRange(value=None, from_min=from_min, from_max=from_max, to_min=to_min, to_max=to_max, steps=None, vector=self, clamp=clamp, data_type='FLOAT_VECTOR', interpolation_type='LINEAR').vector
-
-
-    def map_range_smooth(self, from_min=None, from_max=None, to_min=None, to_max=None, clamp=True):
-        """ Node MapRange.
-
-        Node reference [Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/map_range.html)
-        Developer reference [ShaderNodeMapRange](https://docs.blender.org/api/current/bpy.types.ShaderNodeMapRange.html)
-
-        Args:
-            from_min: ['Float', 'Vector']
-            from_max: ['Float', 'Vector']
-            to_min: ['Float', 'Vector']
-            to_max: ['Float', 'Vector']
-            clamp (bool): True
-
-        Returns:
-            socket 'vector'
-        """
-        return nodes.MapRange(value=None, from_min=from_min, from_max=from_max, to_min=to_min, to_max=to_max, steps=None, vector=self, clamp=clamp, data_type='FLOAT_VECTOR', interpolation_type='SMOOTHSTEP').vector
-
-
-    def map_range_smoother(self, from_min=None, from_max=None, to_min=None, to_max=None, clamp=True):
-        """ Node MapRange.
-
-        Node reference [Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/map_range.html)
-        Developer reference [ShaderNodeMapRange](https://docs.blender.org/api/current/bpy.types.ShaderNodeMapRange.html)
-
-        Args:
-            from_min: ['Float', 'Vector']
-            from_max: ['Float', 'Vector']
-            to_min: ['Float', 'Vector']
-            to_max: ['Float', 'Vector']
-            clamp (bool): True
-
-        Returns:
-            socket 'vector'
-        """
-        return nodes.MapRange(value=None, from_min=from_min, from_max=from_max, to_min=to_min, to_max=to_max, steps=None, vector=self, clamp=clamp, data_type='FLOAT_VECTOR', interpolation_type='SMOOTHERSTEP').vector
-
-
-    def map_range_stepped(self, from_min=None, from_max=None, to_min=None, to_max=None, steps=None, clamp=True):
-        """ Node MapRange.
-
-        Node reference [Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/map_range.html)
-        Developer reference [ShaderNodeMapRange](https://docs.blender.org/api/current/bpy.types.ShaderNodeMapRange.html)
-
-        Args:
-            from_min: ['Float', 'Vector']
-            from_max: ['Float', 'Vector']
-            to_min: ['Float', 'Vector']
-            to_max: ['Float', 'Vector']
-            steps: ['Float', 'Vector']
-            clamp (bool): True
-
-        Returns:
-            socket 'vector'
-        """
-        return nodes.MapRange(value=None, from_min=from_min, from_max=from_max, to_min=to_min, to_max=to_max, steps=steps, vector=self, clamp=clamp, data_type='FLOAT_VECTOR', interpolation_type='STEPPED').vector
-
-
-    def max(self, vector=None):
-        """ Node VectorMath.
-
-        Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
-        Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
-
-        Args:
-            vector: Vector
-
-        Returns:
-            socket 'vector'
-        """
-        return nodes.VectorMath(vector0=self, vector1=vector, vector2=None, scale=None, operation='MAXIMUM').vector
-
-
-    def maximum(self, vector=None):
-        """ Node VectorMath.
-
-        Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
-        Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
-
-        Args:
-            vector: Vector
-
-        Returns:
-            socket 'vector'
-        """
-        return nodes.VectorMath(vector0=self, vector1=vector, vector2=None, scale=None, operation='MAXIMUM').vector
-
-
-    def min(self, vector=None):
-        """ Node VectorMath.
-
-        Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
-        Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
-
-        Args:
-            vector: Vector
-
-        Returns:
-            socket 'vector'
-        """
-        return nodes.VectorMath(vector0=self, vector1=vector, vector2=None, scale=None, operation='MINIMUM').vector
-
-
-    def minimum(self, vector=None):
-        """ Node VectorMath.
-
-        Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
-        Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
-
-        Args:
-            vector: Vector
-
-        Returns:
-            socket 'vector'
-        """
-        return nodes.VectorMath(vector0=self, vector1=vector, vector2=None, scale=None, operation='MINIMUM').vector
-
-
-    def mix(self, factor=None, vector=None, clamp_factor=True, factor_mode='UNIFORM'):
-        """ Node Mix.
-
-        Node reference [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html)
-        Developer reference [ShaderNodeMix](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
-
-        Args:
-            factor: ['Float', 'Vector']
-            vector: ['Float', 'Vector', 'Color']
-            clamp_factor (bool): True
-            factor_mode (str): 'UNIFORM' in [UNIFORM, NON_UNIFORM]
-
-        Returns:
-            socket 'result'
-        """
-        return nodes.Mix(factor=factor, a=self, b=vector, blend_type=MIX, clamp_factor=clamp_factor, clamp_result=False, data_type='VECTOR', factor_mode=factor_mode).result
-
-
-    def mix_non_uniform(self, factor=None, vector=None, clamp_factor=True):
-        """ Node Mix.
-
-        Node reference [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html)
-        Developer reference [ShaderNodeMix](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
-
-        Args:
-            factor: ['Float', 'Vector']
-            vector: ['Float', 'Vector', 'Color']
-            clamp_factor (bool): True
-
-        Returns:
-            socket 'result'
-        """
-        return nodes.Mix(factor=factor, a=self, b=vector, blend_type=MIX, clamp_factor=clamp_factor, clamp_result=False, data_type='VECTOR', factor_mode='NON_UNIFORM').result
-
-
-    def mix_uniform(self, vector=None, clamp_factor=True):
-        """ Node Mix.
-
-        Node reference [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html)
-        Developer reference [ShaderNodeMix](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
-
-        Args:
-            vector: ['Float', 'Vector', 'Color']
-            clamp_factor (bool): True
-
-        Returns:
-            socket 'result'
-        """
-        return nodes.Mix(factor=None, a=self, b=vector, blend_type=MIX, clamp_factor=clamp_factor, clamp_result=False, data_type='VECTOR', factor_mode='UNIFORM').result
-
-
-    def modulo(self, vector=None):
-        """ Node VectorMath.
-
-        Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
-        Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
-
-        Args:
-            vector: Vector
-
-        Returns:
-            socket 'vector'
-        """
-        return nodes.VectorMath(vector0=self, vector1=vector, vector2=None, scale=None, operation='MODULO').vector
-
-
-    def mul(self, vector=None):
-        """ Node VectorMath.
-
-        Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
-        Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
-
-        Args:
-            vector: Vector
-
-        Returns:
-            socket 'vector'
-        """
-        return nodes.VectorMath(vector0=self, vector1=vector, vector2=None, scale=None, operation='MULTIPLY').vector
-
-
-    def mul_add(self, multiplier=None, addend=None):
-        """ Node VectorMath.
-
-        Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
-        Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
-
-        Args:
-            multiplier: Vector
-            addend: Vector
-
-        Returns:
-            socket 'vector'
-        """
-        return nodes.VectorMath(vector0=self, vector1=multiplier, vector2=addend, scale=None, operation='MULTIPLY_ADD').vector
-
-
-    def multiply(self, vector=None):
-        """ Node VectorMath.
-
-        Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
-        Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
-
-        Args:
-            vector: Vector
-
-        Returns:
-            socket 'vector'
-        """
-        return nodes.VectorMath(vector0=self, vector1=vector, vector2=None, scale=None, operation='MULTIPLY').vector
-
-
-    def multiply_add(self, multiplier=None, addend=None):
-        """ Node VectorMath.
-
-        Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
-        Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
-
-        Args:
-            multiplier: Vector
-            addend: Vector
-
-        Returns:
-            socket 'vector'
-        """
-        return nodes.VectorMath(vector0=self, vector1=multiplier, vector2=addend, scale=None, operation='MULTIPLY_ADD').vector
-
-
-    def normalize(self):
-        """ Node VectorMath.
-
-        Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
-        Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
-
-        Returns:
-            socket 'vector'
-        """
-        return nodes.VectorMath(vector0=self, vector1=None, vector2=None, scale=None, operation='NORMALIZE').vector
-
-
-    def project(self, vector=None):
-        """ Node VectorMath.
-
-        Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
-        Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
-
-        Args:
-            vector: Vector
-
-        Returns:
-            socket 'vector'
-        """
-        return nodes.VectorMath(vector0=self, vector1=vector, vector2=None, scale=None, operation='PROJECT').vector
-
-
-    def reflect(self, vector=None):
-        """ Node VectorMath.
-
-        Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
-        Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
-
-        Args:
-            vector: Vector
-
-        Returns:
-            socket 'vector'
-        """
-        return nodes.VectorMath(vector0=self, vector1=vector, vector2=None, scale=None, operation='REFLECT').vector
-
-
-    def refract(self, vector=None, ior=None):
-        """ Node VectorMath.
-
-        Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
-        Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
-
-        Args:
-            vector: Vector
-            ior: Float
-
-        Returns:
-            socket 'vector'
-        """
-        return nodes.VectorMath(vector0=self, vector1=vector, vector2=None, scale=ior, operation='REFRACT').vector
-
-
-    def rotate_axis_angle(self, center=None, axis=None, angle=None, invert=False):
-        """ Node VectorRotate.
-
-        Node reference [Vector Rotate](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_rotate.html)
-        Developer reference [ShaderNodeVectorRotate](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorRotate.html)
-
-        Args:
-            center: Vector
-            axis: Vector
-            angle: Float
-            invert (bool): False
-
-        Returns:
-            socket 'vector'
-        """
-        return nodes.VectorRotate(vector=self, center=center, axis=axis, angle=angle, rotation=None, invert=invert, rotation_type='AXIS_ANGLE').vector
-
-
-    def rotate_euler(self, center=None, rotation=None, invert=False):
-        """ Node VectorRotate.
-
-        Node reference [Vector Rotate](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_rotate.html)
-        Developer reference [ShaderNodeVectorRotate](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorRotate.html)
-
-        Args:
-            center: Vector
-            rotation: Vector
-            invert (bool): False
-
-        Returns:
-            socket 'vector'
-        """
-        return nodes.VectorRotate(vector=self, center=center, axis=None, angle=None, rotation=rotation, invert=invert, rotation_type='EULER_XYZ').vector
-
-
-    def rotate_x(self, center=None, angle=None, invert=False):
-        """ Node VectorRotate.
-
-        Node reference [Vector Rotate](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_rotate.html)
-        Developer reference [ShaderNodeVectorRotate](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorRotate.html)
-
-        Args:
-            center: Vector
-            angle: Float
-            invert (bool): False
-
-        Returns:
-            socket 'vector'
-        """
-        return nodes.VectorRotate(vector=self, center=center, axis=None, angle=angle, rotation=None, invert=invert, rotation_type='X_AXIS').vector
-
-
-    def rotate_y(self, center=None, angle=None, invert=False):
-        """ Node VectorRotate.
-
-        Node reference [Vector Rotate](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_rotate.html)
-        Developer reference [ShaderNodeVectorRotate](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorRotate.html)
-
-        Args:
-            center: Vector
-            angle: Float
-            invert (bool): False
-
-        Returns:
-            socket 'vector'
-        """
-        return nodes.VectorRotate(vector=self, center=center, axis=None, angle=angle, rotation=None, invert=invert, rotation_type='Y_AXIS').vector
-
-
-    def rotate_z(self, center=None, angle=None, invert=False):
-        """ Node VectorRotate.
-
-        Node reference [Vector Rotate](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_rotate.html)
-        Developer reference [ShaderNodeVectorRotate](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorRotate.html)
-
-        Args:
-            center: Vector
-            angle: Float
-            invert (bool): False
-
-        Returns:
-            socket 'vector'
-        """
-        return nodes.VectorRotate(vector=self, center=center, axis=None, angle=angle, rotation=None, invert=invert, rotation_type='Z_AXIS').vector
-
-
-    def scale(self, scale=None):
-        """ Node VectorMath.
-
-        Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
-        Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
-
-        Args:
-            scale: Float
-
-        Returns:
-            socket 'vector'
-        """
-        return nodes.VectorMath(vector0=self, vector1=None, vector2=None, scale=scale, operation='SCALE').vector
-
-
-    @property
-    def separate(self):
-        """ Node SeparateXyz.
-
-        Node reference [Separate XYZ](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/separate_xyz.html)
-        Developer reference [ShaderNodeSeparateXYZ](https://docs.blender.org/api/current/bpy.types.ShaderNodeSeparateXYZ.html)
-
-        Returns:
-            node with sockets ['x', 'y', 'z']
-        """
-        if not hasattr(self, '_c_shadernodeseparatexyz'):
-            self._c_shadernodeseparatexyz = nodes.SeparateXyz(vector=self)
-        return self._c_shadernodeseparatexyz
-
-
-    def sin(self):
-        """ Node VectorMath.
-
-        Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
-        Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
-
-        Returns:
-            socket 'vector'
-        """
-        return nodes.VectorMath(vector0=self, vector1=None, vector2=None, scale=None, operation='SINE').vector
-
-
-    def sine(self):
-        """ Node VectorMath.
-
-        Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
-        Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
-
-        Returns:
-            socket 'vector'
-        """
-        return nodes.VectorMath(vector0=self, vector1=None, vector2=None, scale=None, operation='SINE').vector
-
-
-    def snap(self, increment=None):
-        """ Node VectorMath.
-
-        Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
-        Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
-
-        Args:
-            increment: Vector
-
-        Returns:
-            socket 'vector'
-        """
-        return nodes.VectorMath(vector0=self, vector1=increment, vector2=None, scale=None, operation='SNAP').vector
-
-
-    def sub(self, vector=None):
-        """ Node VectorMath.
-
-        Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
-        Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
-
-        Args:
-            vector: Vector
-
-        Returns:
-            socket 'vector'
-        """
-        return nodes.VectorMath(vector0=self, vector1=vector, vector2=None, scale=None, operation='SUBTRACT').vector
-
-
-    def subtract(self, vector=None):
-        """ Node VectorMath.
-
-        Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
-        Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
-
-        Args:
-            vector: Vector
-
-        Returns:
-            socket 'vector'
-        """
-        return nodes.VectorMath(vector0=self, vector1=vector, vector2=None, scale=None, operation='SUBTRACT').vector
-
-
-    def switch(self, switch=None, true=None):
-        """ Node Switch.
-
-        Node reference [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html)
-        Developer reference [GeometryNodeSwitch](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
-
-        Args:
-            switch: ['Boolean', 'Boolean']
-            true: ['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'String', 'Geometry', 'Object', 'Collection', 'Texture', 'Material', 'Image']
-
-        Returns:
-            socket 'output'
-        """
-        return nodes.Switch(switch=switch, false=self, true=true, input_type='VECTOR').output
-
-
-    def tan(self):
-        """ Node VectorMath.
-
-        Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
-        Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
-
-        Returns:
-            socket 'vector'
-        """
-        return nodes.VectorMath(vector0=self, vector1=None, vector2=None, scale=None, operation='TANGENT').vector
-
-
-    def tangent(self):
-        """ Node VectorMath.
-
-        Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
-        Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
-
-        Returns:
-            socket 'vector'
-        """
-        return nodes.VectorMath(vector0=self, vector1=None, vector2=None, scale=None, operation='TANGENT').vector
-
-
-    def wrap(self, max=None, min=None):
-        """ Node VectorMath.
-
-        Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
-        Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
-
-        Args:
-            max: Vector
-            min: Vector
-
-        Returns:
-            socket 'vector'
-        """
-        return nodes.VectorMath(vector0=self, vector1=max, vector2=min, scale=None, operation='WRAP').vector
-
-
-
-
-class Boolean(geosocks.Boolean):
-    @classmethod
-    def Boolean(cls, boolean=False):
-        """ Node Boolean.
-
-        Node reference [Boolean](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/boolean.html)
-        Developer reference [FunctionNodeInputBool](https://docs.blender.org/api/current/bpy.types.FunctionNodeInputBool.html)
-
-        Args:
-            boolean (bool): False
-
-        Returns:
-            socket 'boolean'
-        """
-        return cls(nodes.Boolean(boolean=boolean).boolean)
-
-
-    def b_and(self, boolean1=None):
-        """ Node BooleanMath.
-
-        Node reference [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/boolean_math.html)
-        Developer reference [FunctionNodeBooleanMath](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html)
-
-        Args:
-            boolean1: Boolean
-
-        Returns:
-            socket 'boolean'
-        """
-        return nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='AND').boolean
-
-
-    def b_not(self):
-        """ Node BooleanMath.
-
-        Node reference [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/boolean_math.html)
-        Developer reference [FunctionNodeBooleanMath](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html)
-
-        Returns:
-            socket 'boolean'
-        """
-        return nodes.BooleanMath(boolean0=self, boolean1=None, operation='NOT').boolean
-
-
-    def b_or(self, boolean1=None):
-        """ Node BooleanMath.
-
-        Node reference [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/boolean_math.html)
-        Developer reference [FunctionNodeBooleanMath](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html)
-
-        Args:
-            boolean1: Boolean
-
-        Returns:
-            socket 'boolean'
-        """
-        return nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='OR').boolean
-
-
-    def imply(self, boolean1=None):
-        """ Node BooleanMath.
-
-        Node reference [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/boolean_math.html)
-        Developer reference [FunctionNodeBooleanMath](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html)
-
-        Args:
-            boolean1: Boolean
-
-        Returns:
-            socket 'boolean'
-        """
-        return nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='IMPLY').boolean
-
-
-    def nand(self, boolean1=None):
-        """ Node BooleanMath.
-
-        Node reference [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/boolean_math.html)
-        Developer reference [FunctionNodeBooleanMath](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html)
-
-        Args:
-            boolean1: Boolean
-
-        Returns:
-            socket 'boolean'
-        """
-        return nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='NAND').boolean
-
-
-    def nimply(self, boolean1=None):
-        """ Node BooleanMath.
-
-        Node reference [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/boolean_math.html)
-        Developer reference [FunctionNodeBooleanMath](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html)
-
-        Args:
-            boolean1: Boolean
-
-        Returns:
-            socket 'boolean'
-        """
-        return nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='NIMPLY').boolean
-
-
-    def nor(self, boolean1=None):
-        """ Node BooleanMath.
-
-        Node reference [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/boolean_math.html)
-        Developer reference [FunctionNodeBooleanMath](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html)
-
-        Args:
-            boolean1: Boolean
-
-        Returns:
-            socket 'boolean'
-        """
-        return nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='NOR').boolean
-
-
-    def switch(self, switch=None, true=None):
-        """ Node Switch.
-
-        Node reference [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html)
-        Developer reference [GeometryNodeSwitch](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
-
-        Args:
-            switch: ['Boolean', 'Boolean']
-            true: ['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'String', 'Geometry', 'Object', 'Collection', 'Texture', 'Material', 'Image']
-
-        Returns:
-            socket 'output'
-        """
-        return nodes.Switch(switch=switch, false=self, true=true, input_type='BOOLEAN').output
-
-
-    def xnor(self, boolean1=None):
-        """ Node BooleanMath.
-
-        Node reference [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/boolean_math.html)
-        Developer reference [FunctionNodeBooleanMath](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html)
-
-        Args:
-            boolean1: Boolean
-
-        Returns:
-            socket 'boolean'
-        """
-        return nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='XNOR').boolean
-
-
-    def xor(self, boolean1=None):
-        """ Node BooleanMath.
-
-        Node reference [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/boolean_math.html)
-        Developer reference [FunctionNodeBooleanMath](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html)
-
-        Args:
-            boolean1: Boolean
-
-        Returns:
-            socket 'boolean'
-        """
-        return nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='XOR').boolean
-
-
-
-
 class Material(geosocks.Material):
     @classmethod
     def Material(cls):
@@ -7557,184 +7885,6 @@ class Object(geosocks.Object):
             socket 'output'
         """
         return nodes.Switch(switch=switch, false=self, true=true, input_type='OBJECT').output
-
-
-
-
-class String(geosocks.String):
-    @staticmethod
-    def LineBreak():
-        """ Node SpecialCharacters.
-
-        Node reference [Special Characters](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/special_characters.html)
-        Developer reference [FunctionNodeInputSpecialCharacters](https://docs.blender.org/api/current/bpy.types.FunctionNodeInputSpecialCharacters.html)
-
-        Returns:
-            socket 'line_break'
-        """
-        return nodes.SpecialCharacters().line_break
-
-
-    @classmethod
-    def String(cls, string=''):
-        """ Node String.
-
-        Node reference [String](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/string.html)
-        Developer reference [FunctionNodeInputString](https://docs.blender.org/api/current/bpy.types.FunctionNodeInputString.html)
-
-        Args:
-            string (str): ''
-
-        Returns:
-            socket 'string'
-        """
-        return cls(nodes.String(string=string).string)
-
-
-    @staticmethod
-    def Tab():
-        """ Node SpecialCharacters.
-
-        Node reference [Special Characters](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/special_characters.html)
-        Developer reference [FunctionNodeInputSpecialCharacters](https://docs.blender.org/api/current/bpy.types.FunctionNodeInputSpecialCharacters.html)
-
-        Returns:
-            socket 'tab'
-        """
-        return nodes.SpecialCharacters().tab
-
-
-    def equal(self, b=None):
-        """ Node Compare.
-
-        Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
-        Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
-
-        Args:
-            b: ['Float', 'Integer', 'Vector', 'Color', 'String']
-
-        Returns:
-            socket 'result'
-        """
-        return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type='STRING', mode='ELEMENT', operation='EQUAL').result
-
-
-    def join(*strings, delimiter=None):
-        """ Node JoinStrings.
-
-        Node reference [Join Strings](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/join_strings.html)
-        Developer reference [GeometryNodeStringJoin](https://docs.blender.org/api/current/bpy.types.GeometryNodeStringJoin.html)
-
-        Args:
-            strings: <m>String
-            delimiter: String
-
-        Returns:
-            socket 'string'
-        """
-        return nodes.JoinStrings(*strings, delimiter=delimiter).string
-
-
-    @property
-    def length(self):
-        """ Node StringLength.
-
-        Node reference [String Length](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/string_length.html)
-        Developer reference [FunctionNodeStringLength](https://docs.blender.org/api/current/bpy.types.FunctionNodeStringLength.html)
-
-        Returns:
-            socket 'length'
-        """
-        return nodes.StringLength(string=self).length
-
-
-    def not_equal(self, b=None):
-        """ Node Compare.
-
-        Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
-        Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
-
-        Args:
-            b: ['Float', 'Integer', 'Vector', 'Color', 'String']
-
-        Returns:
-            socket 'result'
-        """
-        return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type='STRING', mode='ELEMENT', operation='NOT_EQUAL').result
-
-
-    def replace(self, find=None, replace=None):
-        """ Node ReplaceString.
-
-        Node reference [Replace String](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/replace_string.html)
-        Developer reference [FunctionNodeReplaceString](https://docs.blender.org/api/current/bpy.types.FunctionNodeReplaceString.html)
-
-        Args:
-            find: String
-            replace: String
-
-        Returns:
-            socket 'string'
-        """
-        return nodes.ReplaceString(string=self, find=find, replace=replace).string
-
-
-    def slice(self, position=None, length=None):
-        """ Node SliceString.
-
-        Node reference [Slice String](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/slice_string.html)
-        Developer reference [FunctionNodeSliceString](https://docs.blender.org/api/current/bpy.types.FunctionNodeSliceString.html)
-
-        Args:
-            position: Integer
-            length: Integer
-
-        Returns:
-            socket 'string'
-        """
-        return nodes.SliceString(string=self, position=position, length=length).string
-
-
-    def switch(self, switch=None, true=None):
-        """ Node Switch.
-
-        Node reference [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html)
-        Developer reference [GeometryNodeSwitch](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
-
-        Args:
-            switch: ['Boolean', 'Boolean']
-            true: ['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'String', 'Geometry', 'Object', 'Collection', 'Texture', 'Material', 'Image']
-
-        Returns:
-            socket 'output'
-        """
-        return nodes.Switch(switch=switch, false=self, true=true, input_type='STRING').output
-
-
-    def to_curves(self, string=None, size=None, character_spacing=None, word_spacing=None, line_spacing=None, text_box_width=None, text_box_height=None, align_x='LEFT', align_y='TOP_BASELINE', overflow='OVERFLOW', pivot_mode='BOTTOM_LEFT'):
-        """ Node StringToCurves.
-
-        Node reference [String to Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/string_to_curves.html)
-        Developer reference [GeometryNodeStringToCurves](https://docs.blender.org/api/current/bpy.types.GeometryNodeStringToCurves.html)
-
-        Args:
-            string: String
-            size: Float
-            character_spacing: Float
-            word_spacing: Float
-            line_spacing: Float
-            text_box_width: Float
-            text_box_height: Float
-            align_x (str): 'LEFT' in [LEFT, CENTER, RIGHT, JUSTIFY, FLUSH]
-            align_y (str): 'TOP_BASELINE' in [TOP_BASELINE, TOP, MIDDLE, BOTTOM_BASELINE, BOTTOM]
-            overflow (str): 'OVERFLOW' in [OVERFLOW, SCALE_TO_FIT, TRUNCATE]
-            pivot_mode (str): 'BOTTOM_LEFT' in [MIDPOINT, TOP_LEFT, TOP_CENTER,... , BOTTOM_LEFT, BOTTOM_CENTER, BOTTOM_RIGHT]
-
-        Returns:
-            tuple ('curve_instances', 'line', 'pivot_point')
-        """
-        node = nodes.StringToCurves(string=string, size=size, character_spacing=character_spacing, word_spacing=word_spacing, line_spacing=line_spacing, text_box_width=text_box_width, text_box_height=text_box_height, align_x=align_x, align_y=align_y, overflow=overflow, pivot_mode=pivot_mode)
-        return Instances(node.curve_instances), node.line, node.pivot_point
 
 
 

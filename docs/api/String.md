@@ -6,6 +6,7 @@
 
 ## Class methods
 
+- [Input](#Input-classmethod)
 - [String](#String-classmethod)
 
 ## Static methods
@@ -22,6 +23,24 @@
 - [slice](#slice)
 - [switch](#switch)
 - [to_curves](#to_curves)
+
+## Input <sub>*classmethod*</sub>
+
+```python
+def Input(cls, value=0., name="Float", min_value=None, max_value=None, description=""):
+
+```
+### Args:
+- value: Initial value. Not changed if the group input socket already exists
+- name: Input socket name. Avoid homonyms!
+- min_value: minimum value
+- max_value: maxium value
+- description: user help
+
+### Returns:
+- String
+
+<sub>Go to [top](#class-String) [data structure](../structure.md)</sub>
 
 ## LineBreak <sub>*staticmethod*</sub>
 

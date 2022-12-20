@@ -16,6 +16,7 @@
 
 - [abs](#abs)
 - [absolute](#absolute)
+- [add](#add)
 - [arccos](#arccos)
 - [arccosine](#arccosine)
 - [arcsin](#arcsin)
@@ -31,6 +32,8 @@
 - [cos](#cos)
 - [cosh](#cosh)
 - [cosine](#cosine)
+- [div](#div)
+- [divide](#divide)
 - [equal](#equal)
 - [exp](#exp)
 - [exponent](#exponent)
@@ -81,6 +84,8 @@
 - [smooth_minimum](#smooth_minimum)
 - [snap](#snap)
 - [sqrt](#sqrt)
+- [sub](#sub)
+- [subtract](#subtract)
 - [switch](#switch)
 - [tan](#tan)
 - [tangent](#tangent)
@@ -112,7 +117,7 @@ def Input(cls, value=0., name="Float", min_value=None, max_value=None, descripti
 
 ```
 ### Args:
-- value: Initial value. Not changed if the group input already exists
+- value: Initial value. Not changed if the group input socket already exists
 - name: Input socket name. Avoid homonyms!
 - min_value: minimum value
 - max_value: maxium value
@@ -178,6 +183,22 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 
 ### Returns:
 - socket `value`
+
+<sub>Go to [top](#class-Float) [data structure](../structure.md)</sub>
+
+## add
+
+```python
+def add(self, value):
+
+```
+Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
+
+### Args:
+- value: Float or Integer or Vector
+
+### Returns:
+- self + value
 
 <sub>Go to [top](#class-Float) [data structure](../structure.md)</sub>
 
@@ -444,6 +465,38 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 
 ### Returns:
 - socket `value`
+
+<sub>Go to [top](#class-Float) [data structure](../structure.md)</sub>
+
+## div
+
+```python
+def multiply(self, value):
+
+```
+Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
+
+### Args:
+- value: Float
+
+### Returns:
+- self / value
+
+<sub>Go to [top](#class-Float) [data structure](../structure.md)</sub>
+
+## divide
+
+```python
+def multiply(self, value):
+
+```
+Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
+
+### Args:
+- value: Float
+
+### Returns:
+- self / value
 
 <sub>Go to [top](#class-Float) [data structure](../structure.md)</sub>
 
@@ -1291,6 +1344,38 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 
 ### Returns:
 - socket `value`
+
+<sub>Go to [top](#class-Float) [data structure](../structure.md)</sub>
+
+## sub
+
+```python
+def add(self, value):
+
+```
+Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
+
+### Args:
+- value: Float or Integer or Vector
+
+### Returns:
+- self - value
+
+<sub>Go to [top](#class-Float) [data structure](../structure.md)</sub>
+
+## subtract
+
+```python
+def add(self, value):
+
+```
+Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
+
+### Args:
+- value: Float or Integer or Vector
+
+### Returns:
+- self - value
 
 <sub>Go to [top](#class-Float) [data structure](../structure.md)</sub>
 
