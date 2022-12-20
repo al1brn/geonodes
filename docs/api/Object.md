@@ -3,6 +3,7 @@
 
 ## Class methods
 
+- [Input](#Input-classmethod)
 - [Self](#Self-classmethod)
 
 
@@ -14,6 +15,26 @@
 - [rotation](#rotation)
 - [scale](#scale)
 - [switch](#switch)
+
+## Input <sub>*classmethod*</sub>
+
+```python
+def Input(cls, value=None, name="CLASS_METHOD", description=""):
+
+```
+Used to create an input socket in the Group Input node.
+Even if homonyms are accepted, it is recommended to avoid to create to input sockets with the same name.
+The initial value can be either a valid Blender Object or the name of an existing Blender Object.
+
+### Args:
+- value: Blender Object or name of an existing Blender Object
+- name: Input socket name. Avoid homonyms!
+- description: user help
+
+### Returns:
+- Object
+
+<sub>Go to [top](#class-Object) [data structure](../structure.md)</sub>
 
 ## Self <sub>*classmethod*</sub>
 

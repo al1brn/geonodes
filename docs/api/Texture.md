@@ -1,6 +1,9 @@
 # class Texture
 
 
+## Class methods
+
+- [Input](#Input-classmethod)
 
 ## Static methods
 
@@ -45,6 +48,26 @@
 ## Methods
 
 - [switch](#switch)
+
+## Input <sub>*classmethod*</sub>
+
+```python
+def Input(cls, value=None, name="CLASS_METHOD", description=""):
+
+```
+Used to create an input socket in the Group Input node.
+Even if homonyms are accepted, it is recommended to avoid to create to input sockets with the same name.
+The initial value can be either a valid Blender Texture or the name of an existing Blender Texture.
+
+### Args:
+- value: Blender Texture or name of an existing Blender Texture
+- name: Input socket name. Avoid homonyms!
+- description: user help
+
+### Returns:
+- Texture
+
+<sub>Go to [top](#class-Texture) [data structure](../structure.md)</sub>
 
 ## brick <sub>*staticmethod*</sub>
 

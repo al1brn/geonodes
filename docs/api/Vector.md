@@ -122,9 +122,12 @@ Node [Combine XYZ](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 ## Input <sub>*classmethod*</sub>
 
 ```python
-def Input(cls, value=0., name="Float", min_value=None, max_value=None, description=""):
+def Input(cls, value=None, name="CLASS_METHOD", min_value=None, max_value=None, description=""):
 
 ```
+Used to create an input socket in the Group Input node.
+Even if homonyms are accepted, it is recommended to avoid to create to input sockets with the same name.
+
 ### Args:
 - value: Initial value. Not changed if the group input socket already exists
 - name: Input socket name. Avoid homonyms!

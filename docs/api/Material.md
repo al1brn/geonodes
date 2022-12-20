@@ -3,12 +3,33 @@
 
 ## Class methods
 
+- [Input](#Input-classmethod)
 - [Material](#Material-classmethod)
 
 
 ## Methods
 
 - [switch](#switch)
+
+## Input <sub>*classmethod*</sub>
+
+```python
+def Input(cls, value=None, name="CLASS_METHOD", description=""):
+
+```
+Used to create an input socket in the Group Input node.
+Even if homonyms are accepted, it is recommended to avoid to create to input sockets with the same name.
+The initial value can be either a valid Blender Material or the name of an existing Blender Material.
+
+### Args:
+- value: Blender Material or name of an existing Blender Material
+- name: Input socket name. Avoid homonyms!
+- description: user help
+
+### Returns:
+- Material
+
+<sub>Go to [top](#class-Material) [data structure](../structure.md)</sub>
 
 ## Material <sub>*classmethod*</sub>
 

@@ -1,12 +1,35 @@
 # class Image
 
 
+## Class methods
+
+- [Input](#Input-classmethod)
 
 
 ## Methods
 
 - [switch](#switch)
 - [texture](#texture)
+
+## Input <sub>*classmethod*</sub>
+
+```python
+def Input(cls, value=None, name="CLASS_METHOD", description=""):
+
+```
+Used to create an input socket in the Group Input node.
+Even if homonyms are accepted, it is recommended to avoid to create to input sockets with the same name.
+The initial value can be either a valid Blender Image or the name of an existing Blender Image.
+
+### Args:
+- value: Blender Image or name of an existing Blender Image
+- name: Input socket name. Avoid homonyms!
+- description: user help
+
+### Returns:
+- Image
+
+<sub>Go to [top](#class-Image) [data structure](../structure.md)</sub>
 
 ## switch
 
