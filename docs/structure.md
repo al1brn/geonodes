@@ -1,19 +1,15 @@
 # API structure
 
-## Scripting geometry
+## Basic types
 
-Geometry nodes are global functions operating on geometry passed through sockets.
+- [Boolean](api/Boolean.md)
+- [Integer](api/Integer.md)
+- [Float](api/Float.md)
+- [Vector](api/Vector.md)
+- [Color](api/Color.md)
+- [String](api/String.md)
 
-**geonodes** presents the nodes sockets as classes and the nodes as methods.
-
-Rather than thinking : _"What are the inputs of the 'Set Curve Tilt' node to change the tilt of spline #2?"_,
-you take benefit of an object oriented language and simply write:
-
-```python
-curve.splines[2].tilt = 1
-```
-
-### Geometry classes
+## Geometry types
 
 The geometry classes are:
 - [Mesh](api/Mesh.md)
@@ -22,7 +18,7 @@ The geometry classes are:
 - [Instances](api/Instances.md)
 - [Volume](api/Volume.md)
 
-### Domains
+## Domain types
 
 In geometry nodes, attributes refer to [domains](https://al1brn.github.io/geonodes/domains.html) such as Point, Corner, Face, Spline... 
 
@@ -39,3 +35,16 @@ In geometry nodes, attributes refer to [domains](https://al1brn.github.io/geonod
   - points [CloudPoint](api/CloudPoint.md)
 - Instances
   - inst [Instance](api/Instance.md)
+
+## Blender types
+
+- [Collection](api/Collection.md)
+- [Object](api/Object.md)
+- [Texture](api/Texture.md)
+- [Image](api/Image.md)
+- [Material](api/Material.md)
+
+
+
+
+
