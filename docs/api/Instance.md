@@ -2,18 +2,18 @@
 
 ## Properties
 
-- [(rotation](rotation-property)
-- [(scale](scale-property)
+- [rotation](#rotation-property)
+- [scale](#scale-property)
 
 
 
 ## Methods
 
-- [(domain_size](domain_size)
-- [(rotate](rotate)
-- [(set_scale](set_scale)
-- [(to_points](to_points)
-- [(translate](translate)
+- [domain_size](#domain_size)
+- [rotate](#rotate)
+- [set_scale](#set_scale)
+- [to_points](#to_points)
+- [translate](#translate)
 
 ## domain_size
 

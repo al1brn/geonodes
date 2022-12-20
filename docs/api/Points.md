@@ -2,21 +2,21 @@
 
 ## Properties
 
-- [(domain_size](domain_size-property)
+- [domain_size](#domain_size-property)
 
 ## Class methods
 
-- [(Points](Points-classmethod)
+- [Points](#Points-classmethod)
 
 
 ## Methods
 
-- [(instance_on_points](instance_on_points)
-- [(set_point_radius](set_point_radius)
-- [(to_vertices](to_vertices)
-- [(to_volume](to_volume)
-- [(to_volume_amount](to_volume_amount)
-- [(to_volume_size](to_volume_size)
+- [instance_on_points](#instance_on_points)
+- [set_point_radius](#set_point_radius)
+- [to_vertices](#to_vertices)
+- [to_volume](#to_volume)
+- [to_volume_amount](#to_volume_amount)
+- [to_volume_size](#to_volume_size)
 
 ## Points *classmethod*
 

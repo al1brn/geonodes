@@ -5,7 +5,7 @@
 
 ## Methods
 
-- [(domain_size](domain_size)
+- [domain_size](#domain_size)
 
 ## domain_size
 

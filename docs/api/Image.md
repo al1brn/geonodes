@@ -5,8 +5,8 @@
 
 ## Methods
 
-- [(switch](switch)
-- [(texture](texture)
+- [switch](#switch)
+- [texture](#texture)
 
 ## switch
 

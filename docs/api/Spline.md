@@ -2,28 +2,28 @@
 
 ## Properties
 
-- [(cyclic](cyclic-property)
-- [(length](length-property)
-- [(material](material-property)
-- [(normal](normal-property)
-- [(resolution](resolution-property)
-- [(type](type-property)
+- [cyclic](#cyclic-property)
+- [length](#length-property)
+- [material](#material-property)
+- [normal](#normal-property)
+- [resolution](#resolution-property)
+- [type](#type-property)
 
 
 
 ## Methods
 
-- [(domain_size](domain_size)
-- [(points](points)
-- [(resample](resample)
-- [(resample_count](resample_count)
-- [(resample_evaluated](resample_evaluated)
-- [(resample_length](resample_length)
-- [(set_cyclic](set_cyclic)
-- [(set_material](set_material)
-- [(set_normal](set_normal)
-- [(set_resolution](set_resolution)
-- [(set_type](set_type)
+- [domain_size](#domain_size)
+- [points](#points)
+- [resample](#resample)
+- [resample_count](#resample_count)
+- [resample_evaluated](#resample_evaluated)
+- [resample_length](#resample_length)
+- [set_cyclic](#set_cyclic)
+- [set_material](#set_material)
+- [set_normal](#set_normal)
+- [set_resolution](#set_resolution)
+- [set_type](#set_type)
 
 ## cyclic *property*
 

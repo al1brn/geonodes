@@ -3,15 +3,15 @@
 
 ## Class methods
 
-- [(Cube](Cube-classmethod)
+- [Cube](#Cube-classmethod)
 
 
 ## Methods
 
-- [(distribute_points](distribute_points)
-- [(distribute_points_grid](distribute_points_grid)
-- [(distribute_points_random](distribute_points_random)
-- [(to_mesh](to_mesh)
+- [distribute_points](#distribute_points)
+- [distribute_points_grid](#distribute_points_grid)
+- [distribute_points_random](#distribute_points_random)
+- [to_mesh](#to_mesh)
 
 ## Cube *classmethod*
 

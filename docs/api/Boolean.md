@@ -3,21 +3,21 @@
 
 ## Class methods
 
-- [(Boolean](Boolean-classmethod)
+- [Boolean](#Boolean-classmethod)
 
 
 ## Methods
 
-- [(b_and](b_and)
-- [(b_not](b_not)
-- [(b_or](b_or)
-- [(imply](imply)
-- [(nand](nand)
-- [(nimply](nimply)
-- [(nor](nor)
-- [(switch](switch)
-- [(xnor](xnor)
-- [(xor](xor)
+- [b_and](#b_and)
+- [b_not](#b_not)
+- [b_or](#b_or)
+- [imply](#imply)
+- [nand](#nand)
+- [nimply](#nimply)
+- [nor](#nor)
+- [switch](#switch)
+- [xnor](#xnor)
+- [xor](#xor)
 
 ## Boolean *classmethod*
 

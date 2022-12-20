@@ -2,15 +2,15 @@
 
 ## Properties
 
-- [(radius](radius-property)
+- [radius](#radius-property)
 
 
 
 ## Methods
 
-- [(domain_size](domain_size)
-- [(instance_on_points](instance_on_points)
-- [(to_vertices](to_vertices)
+- [domain_size](#domain_size)
+- [instance_on_points](#instance_on_points)
+- [to_vertices](#to_vertices)
 
 ## domain_size
 

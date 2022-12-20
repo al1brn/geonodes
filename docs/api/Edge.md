@@ -2,28 +2,28 @@
 
 ## Properties
 
-- [(angle](angle-property)
-- [(neighbors](neighbors-property)
-- [(signed_angle](signed_angle-property)
-- [(unsigned_angle](unsigned_angle-property)
-- [(vertices](vertices-property)
-- [(vertices_index](vertices_index-property)
-- [(vertices_position](vertices_position-property)
+- [angle](#angle-property)
+- [neighbors](#neighbors-property)
+- [signed_angle](#signed_angle-property)
+- [unsigned_angle](#unsigned_angle-property)
+- [vertices](#vertices-property)
+- [vertices_index](#vertices_index-property)
+- [vertices_position](#vertices_position-property)
 
 
 
 ## Methods
 
-- [(delete_all](delete_all)
-- [(delete_edges](delete_edges)
-- [(delete_faces](delete_faces)
-- [(domain_size](domain_size)
-- [(edge_paths_to_curves](edge_paths_to_curves)
-- [(extrude](extrude)
-- [(scale_single_axis](scale_single_axis)
-- [(scale_uniform](scale_uniform)
-- [(split](split)
-- [(to_curve](to_curve)
+- [delete_all](#delete_all)
+- [delete_edges](#delete_edges)
+- [delete_faces](#delete_faces)
+- [domain_size](#domain_size)
+- [edge_paths_to_curves](#edge_paths_to_curves)
+- [extrude](#extrude)
+- [scale_single_axis](#scale_single_axis)
+- [scale_uniform](#scale_uniform)
+- [split](#split)
+- [to_curve](#to_curve)
 
 ## angle *property*
 

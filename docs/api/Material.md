@@ -3,12 +3,12 @@
 
 ## Class methods
 
-- [(Material](Material-classmethod)
+- [Material](#Material-classmethod)
 
 
 ## Methods
 
-- [(switch](switch)
+- [switch](#switch)
 
 ## Material *classmethod*
 

@@ -2,23 +2,23 @@
 
 ## Properties
 
-- [(neighbors](neighbors-property)
-- [(neighbors_face_count](neighbors_face_count-property)
-- [(neighbors_vertex_count](neighbors_vertex_count-property)
+- [neighbors](#neighbors-property)
+- [neighbors_face_count](#neighbors_face_count-property)
+- [neighbors_vertex_count](#neighbors_vertex_count-property)
 
 
 
 ## Methods
 
-- [(delete_all](delete_all)
-- [(delete_edges](delete_edges)
-- [(delete_faces](delete_faces)
-- [(domain_size](domain_size)
-- [(extrude](extrude)
-- [(instance_on_points](instance_on_points)
-- [(merge_by_distance](merge_by_distance)
-- [(to_points](to_points)
-- [(to_volume](to_volume)
+- [delete_all](#delete_all)
+- [delete_edges](#delete_edges)
+- [delete_faces](#delete_faces)
+- [domain_size](#domain_size)
+- [extrude](#extrude)
+- [instance_on_points](#instance_on_points)
+- [merge_by_distance](#merge_by_distance)
+- [to_points](#to_points)
+- [to_volume](#to_volume)
 
 ## delete_all
 

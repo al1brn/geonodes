@@ -3,15 +3,15 @@
 
 ## Class methods
 
-- [(AxisAngle](AxisAngle-classmethod)
-- [(Euler](Euler-classmethod)
+- [AxisAngle](#AxisAngle-classmethod)
+- [Euler](#Euler-classmethod)
 
 
 ## Methods
 
-- [(align_to_vector](align_to_vector)
-- [(rotate_axis_angle](rotate_axis_angle)
-- [(rotate_euler](rotate_euler)
+- [align_to_vector](#align_to_vector)
+- [rotate_axis_angle](#rotate_axis_angle)
+- [rotate_euler](#rotate_euler)
 
 ## AxisAngle *classmethod*
 

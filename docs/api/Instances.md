@@ -2,23 +2,23 @@
 
 ## Properties
 
-- [(domain_size](domain_size-property)
-- [(rotation](rotation-property)
-- [(scale](scale-property)
+- [domain_size](#domain_size-property)
+- [rotation](#rotation-property)
+- [scale](#scale-property)
 
 ## Class methods
 
-- [(InstanceOnPoints](InstanceOnPoints-classmethod)
+- [InstanceOnPoints](#InstanceOnPoints-classmethod)
 
 
 ## Methods
 
-- [(on_points](on_points)
-- [(realize](realize)
-- [(rotate](rotate)
-- [(set_scale](set_scale)
-- [(to_points](to_points)
-- [(translate](translate)
+- [on_points](#on_points)
+- [realize](#realize)
+- [rotate](#rotate)
+- [set_scale](#set_scale)
+- [to_points](#to_points)
+- [translate](#translate)
 
 ## InstanceOnPoints *classmethod*
 

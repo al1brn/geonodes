@@ -3,17 +3,17 @@
 
 ## Class methods
 
-- [(Self](Self-classmethod)
+- [Self](#Self-classmethod)
 
 
 ## Methods
 
-- [(geometry](geometry)
-- [(info](info)
-- [(location](location)
-- [(rotation](rotation)
-- [(scale](scale)
-- [(switch](switch)
+- [geometry](#geometry)
+- [info](#info)
+- [location](#location)
+- [rotation](#rotation)
+- [scale](#scale)
+- [switch](#switch)
 
 ## Self *classmethod*
 
