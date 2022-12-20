@@ -1,10 +1,65 @@
-# class {class_name}
+# class Curve
 
-## Arc *classmethod* {#Arc}
+## title
+
+- [(gen.fname(wnode)](domain_size-property)
+- [(gen.fname(wnode)](length-property)
+- [(gen.fname(wnode)](point_count-property)
+- [(gen.fname(wnode)](spline_count-property)
+
+## title
+
+- [(gen.fname(wnode)](Arc-classmethod)
+- [(gen.fname(wnode)](ArcFromPoints-classmethod)
+- [(gen.fname(wnode)](Circle-classmethod)
+- [(gen.fname(wnode)](CircleFromPoints-classmethod)
+- [(gen.fname(wnode)](Line-classmethod)
+- [(gen.fname(wnode)](LineDirection-classmethod)
+- [(gen.fname(wnode)](QuadraticBezier-classmethod)
+- [(gen.fname(wnode)](Quadrilateral-classmethod)
+- [(gen.fname(wnode)](Spiral-classmethod)
+- [(gen.fname(wnode)](Star-classmethod)
+- [(gen.fname(wnode)](bezier_segment-classmethod)
+
+## title
+
+
+## title
+
+- [(gen.fname(wnode)](curve_of_point)
+- [(gen.fname(wnode)](deform_on_surface)
+- [(gen.fname(wnode)](fill)
+- [(gen.fname(wnode)](fill_ngons)
+- [(gen.fname(wnode)](fill_triangles)
+- [(gen.fname(wnode)](fillet)
+- [(gen.fname(wnode)](fillet_bezier)
+- [(gen.fname(wnode)](fillet_poly)
+- [(gen.fname(wnode)](instance_on_points)
+- [(gen.fname(wnode)](offset_point)
+- [(gen.fname(wnode)](points_of_curve)
+- [(gen.fname(wnode)](resample)
+- [(gen.fname(wnode)](resample_count)
+- [(gen.fname(wnode)](resample_evaluated)
+- [(gen.fname(wnode)](resample_length)
+- [(gen.fname(wnode)](reverse)
+- [(gen.fname(wnode)](sample)
+- [(gen.fname(wnode)](subdivide)
+- [(gen.fname(wnode)](to_mesh)
+- [(gen.fname(wnode)](to_points)
+- [(gen.fname(wnode)](to_points_count)
+- [(gen.fname(wnode)](to_points_evaluated)
+- [(gen.fname(wnode)](to_points_length)
+- [(gen.fname(wnode)](trim)
+- [(gen.fname(wnode)](trim_factor)
+- [(gen.fname(wnode)](trim_length)
+
+## Arc *classmethod*
+
+{#Arc}
 
 > def Arc(cls, resolution=None, radius=None, start_angle=None, sweep_angle=None, connect_center=None, invert_arc=None):
 
-Node [Arc](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Arc](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve_primitives/arc.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveArc.html) )
 
         ### Args:
 - resolution: Integer
@@ -18,11 +73,13 @@ Node [Arc](node.blender_ref) ( [api](node.blender_python_ref) )
 
   socket 'curve'
 
-## ArcFromPoints *classmethod* {#ArcFromPoints}
+## ArcFromPoints *classmethod*
+
+{#ArcFromPoints}
 
 > def ArcFromPoints(cls, resolution=None, start=None, middle=None, end=None, offset_angle=None, connect_center=None, invert_arc=None):
 
-Node [Arc](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Arc](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve_primitives/arc.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveArc.html) )
 
         ### Args:
 - resolution: Integer
@@ -37,11 +94,13 @@ Node [Arc](node.blender_ref) ( [api](node.blender_python_ref) )
 
 - node with sockets ['curve', 'center', 'normal', 'radius']
 
-## Circle *classmethod* {#Circle}
+## Circle *classmethod*
+
+{#Circle}
 
 > def Circle(cls, resolution=None, radius=None):
 
-Node [Curve Circle](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Curve Circle](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve_primitives/curve_circle.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurvePrimitiveCircle.html) )
 
         ### Args:
 - resolution: Integer
@@ -51,11 +110,13 @@ Node [Curve Circle](node.blender_ref) ( [api](node.blender_python_ref) )
 
   socket 'curve'
 
-## CircleFromPoints *classmethod* {#CircleFromPoints}
+## CircleFromPoints *classmethod*
+
+{#CircleFromPoints}
 
 > def CircleFromPoints(cls, resolution=None, point_1=None, point_2=None, point_3=None):
 
-Node [Curve Circle](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Curve Circle](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve_primitives/curve_circle.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurvePrimitiveCircle.html) )
 
         ### Args:
 - resolution: Integer
@@ -67,11 +128,13 @@ Node [Curve Circle](node.blender_ref) ( [api](node.blender_python_ref) )
 
 - node with sockets ['curve', 'center']
 
-## Line *classmethod* {#Line}
+## Line *classmethod*
+
+{#Line}
 
 > def Line(cls, start=None, end=None):
 
-Node [Curve Line](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Curve Line](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve_primitives/curve_line.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurvePrimitiveLine.html) )
 
         ### Args:
 - start: Vector
@@ -81,11 +144,13 @@ Node [Curve Line](node.blender_ref) ( [api](node.blender_python_ref) )
 
   socket 'curve'
 
-## LineDirection *classmethod* {#LineDirection}
+## LineDirection *classmethod*
+
+{#LineDirection}
 
 > def LineDirection(cls, start=None, direction=None, length=None):
 
-Node [Curve Line](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Curve Line](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve_primitives/curve_line.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurvePrimitiveLine.html) )
 
         ### Args:
 - start: Vector
@@ -96,11 +161,13 @@ Node [Curve Line](node.blender_ref) ( [api](node.blender_python_ref) )
 
   socket 'curve'
 
-## QuadraticBezier *classmethod* {#QuadraticBezier}
+## QuadraticBezier *classmethod*
+
+{#QuadraticBezier}
 
 > def QuadraticBezier(cls, resolution=None, start=None, middle=None, end=None):
 
-Node [Quadratic Bezier](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Quadratic Bezier](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve_primitives/quadratic_bezier.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveQuadraticBezier.html) )
 
         ### Args:
 - resolution: Integer
@@ -112,11 +179,13 @@ Node [Quadratic Bezier](node.blender_ref) ( [api](node.blender_python_ref) )
 
   socket 'curve'
 
-## Quadrilateral *classmethod* {#Quadrilateral}
+## Quadrilateral *classmethod*
+
+{#Quadrilateral}
 
 > def Quadrilateral(cls, width=None, height=None, bottom_width=None, top_width=None, offset=None, bottom_height=None, top_height=None, point_1=None, point_2=None, point_3=None, point_4=None, mode='RECTANGLE'):
 
-Node [Quadrilateral](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Quadrilateral](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve_primitives/quadrilateral.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurvePrimitiveQuadrilateral.html) )
 
         ### Args:
 - width: Float
@@ -136,11 +205,13 @@ Node [Quadrilateral](node.blender_ref) ( [api](node.blender_python_ref) )
 
   socket 'curve'
 
-## Spiral *classmethod* {#Spiral}
+## Spiral *classmethod*
+
+{#Spiral}
 
 > def Spiral(cls, resolution=None, rotations=None, start_radius=None, end_radius=None, height=None, reverse=None):
 
-Node [Spiral](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Spiral](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve_primitives/curve_spiral.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveSpiral.html) )
 
         ### Args:
 - resolution: Integer
@@ -154,11 +225,13 @@ Node [Spiral](node.blender_ref) ( [api](node.blender_python_ref) )
 
   socket 'curve'
 
-## Star *classmethod* {#Star}
+## Star *classmethod*
+
+{#Star}
 
 > def Star(cls, points=None, inner_radius=None, outer_radius=None, twist=None):
 
-Node [Star](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Star](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve_primitives/star.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveStar.html) )
 
         ### Args:
 - points: Integer
@@ -170,11 +243,13 @@ Node [Star](node.blender_ref) ( [api](node.blender_python_ref) )
 
 - node with sockets ['curve', 'outer_points']
 
-## bezier_segment *classmethod* {#bezier_segment}
+## bezier_segment *classmethod*
+
+{#bezier_segment}
 
 > def bezier_segment(cls, resolution=None, start=None, start_handle=None, end_handle=None, end=None, mode='POSITION'):
 
-Node [Bezier Segment](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Bezier Segment](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve_primitives/bezier_segment.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurvePrimitiveBezierSegment.html) )
 
         ### Args:
 - resolution: Integer
@@ -188,11 +263,13 @@ Node [Bezier Segment](node.blender_ref) ( [api](node.blender_python_ref) )
 
   socket 'curve'
 
-## curve_of_point {#curve_of_point}
+## curve_of_point
+
+{#curve_of_point}
 
 > def curve_of_point(self, point_index=None):
 
-Node [Curve of Point](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Curve of Point](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve_topology/curve_of_point.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveOfPoint.html) )
 
         ### Args:
 - point_index: Integer
@@ -201,21 +278,25 @@ Node [Curve of Point](node.blender_ref) ( [api](node.blender_python_ref) )
 
 - tuple ('curve_index', 'index_in_curve')
 
-## deform_on_surface {#deform_on_surface}
+## deform_on_surface
+
+{#deform_on_surface}
 
 > def deform_on_surface(self):
 
-Node [Deform Curves on Surface](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Deform Curves on Surface](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/deform_curves_on_surface.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeDeformCurvesOnSurface.html) )
 
 ### Returns:
 
 - node with sockets ['curves']
 
-## domain_size *property* {#domain_size}
+## domain_size *property*
+
+{#domain_size}
 
 > def domain_size(self):
 
-Node [Domain Size](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html) )
 
 Node implemented as property.
 
@@ -223,11 +304,13 @@ Node implemented as property.
 
 - node with sockets ['point_count', 'edge_count', 'face_count', 'face_corner_count', 'spline_count', 'instance_count']
 
-## fill {#fill}
+## fill
+
+{#fill}
 
 > def fill(self, curve=None, mode='TRIANGLES'):
 
-Node [Fill Curve](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Fill Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/fill_curve.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeFillCurve.html) )
 
         ### Args:
 - curve: Curve
@@ -237,11 +320,13 @@ Node [Fill Curve](node.blender_ref) ( [api](node.blender_python_ref) )
 
   socket 'mesh' of class Mesh
 
-## fill_ngons {#fill_ngons}
+## fill_ngons
+
+{#fill_ngons}
 
 > def fill_ngons(self, curve=None):
 
-Node [Fill Curve](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Fill Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/fill_curve.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeFillCurve.html) )
 
         ### Args:
 - curve: Curve
@@ -250,11 +335,13 @@ Node [Fill Curve](node.blender_ref) ( [api](node.blender_python_ref) )
 
   socket 'mesh' of class Mesh
 
-## fill_triangles {#fill_triangles}
+## fill_triangles
+
+{#fill_triangles}
 
 > def fill_triangles(self, curve=None):
 
-Node [Fill Curve](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Fill Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/fill_curve.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeFillCurve.html) )
 
         ### Args:
 - curve: Curve
@@ -263,11 +350,13 @@ Node [Fill Curve](node.blender_ref) ( [api](node.blender_python_ref) )
 
   socket 'mesh' of class Mesh
 
-## fillet {#fillet}
+## fillet
+
+{#fillet}
 
 > def fillet(self, count=None, radius=None, limit_radius=None, mode='BEZIER'):
 
-Node [Fillet Curve](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Fillet Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/fillet_curve.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeFilletCurve.html) )
 
         ### Args:
 - count: Integer
@@ -279,11 +368,13 @@ Node [Fillet Curve](node.blender_ref) ( [api](node.blender_python_ref) )
 
 - node with sockets ['curve']
 
-## fillet_bezier {#fillet_bezier}
+## fillet_bezier
+
+{#fillet_bezier}
 
 > def fillet_bezier(self, radius=None, limit_radius=None):
 
-Node [Fillet Curve](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Fillet Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/fillet_curve.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeFilletCurve.html) )
 
         ### Args:
 - radius: Float
@@ -293,11 +384,13 @@ Node [Fillet Curve](node.blender_ref) ( [api](node.blender_python_ref) )
 
 - node with sockets ['curve']
 
-## fillet_poly {#fillet_poly}
+## fillet_poly
+
+{#fillet_poly}
 
 > def fillet_poly(self, count=None, radius=None, limit_radius=None):
 
-Node [Fillet Curve](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Fillet Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/fillet_curve.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeFilletCurve.html) )
 
         ### Args:
 - count: Integer
@@ -308,11 +401,13 @@ Node [Fillet Curve](node.blender_ref) ( [api](node.blender_python_ref) )
 
 - node with sockets ['curve']
 
-## instance_on_points {#instance_on_points}
+## instance_on_points
+
+{#instance_on_points}
 
 > def instance_on_points(self, selection=None, instance=None, pick_instance=None, instance_index=None, rotation=None, scale=None):
 
-Node [Instance on Points](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Instance on Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instance_on_points.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInstanceOnPoints.html) )
 
         ### Args:
 - selection: Boolean
@@ -326,11 +421,13 @@ Node [Instance on Points](node.blender_ref) ( [api](node.blender_python_ref) )
 
   socket 'instances'
 
-## length *property* {#length}
+## length *property*
+
+{#length}
 
 > def length(self):
 
-Node [Curve Length](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Curve Length](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/curve_length.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveLength.html) )
 
 Node implemented as property.
 
@@ -338,11 +435,13 @@ Node implemented as property.
 
   socket 'length'
 
-## offset_point {#offset_point}
+## offset_point
+
+{#offset_point}
 
 > def offset_point(self, point_index=None, offset=None):
 
-Node [Offset Point in Curve](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Offset Point in Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve_topology/offset_point_in_curve.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeOffsetPointInCurve.html) )
 
         ### Args:
 - point_index: Integer
@@ -352,11 +451,13 @@ Node [Offset Point in Curve](node.blender_ref) ( [api](node.blender_python_ref) 
 
 - tuple ('is_valid_offset', 'point_index')
 
-## point_count *property* {#point_count}
+## point_count *property*
+
+{#point_count}
 
 > def point_count(self):
 
-Node [Domain Size](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html) )
 
 Node implemented as property.
 
@@ -364,11 +465,13 @@ Node implemented as property.
 
   socket 'point_count'
 
-## points_of_curve {#points_of_curve}
+## points_of_curve
+
+{#points_of_curve}
 
 > def points_of_curve(self, curve_index=None, weights=None, sort_index=None):
 
-Node [Points of Curve](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Points of Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve_topology/points_of_curve.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodePointsOfCurve.html) )
 
         ### Args:
 - curve_index: Integer
@@ -379,11 +482,13 @@ Node [Points of Curve](node.blender_ref) ( [api](node.blender_python_ref) )
 
 - tuple ('point_index', 'total')
 
-## resample {#resample}
+## resample
+
+{#resample}
 
 > def resample(self, selection=None, count=None, length=None, mode='COUNT'):
 
-Node [Resample Curve](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Resample Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/resample_curve.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeResampleCurve.html) )
 
         ### Args:
 - selection: Boolean
@@ -395,11 +500,13 @@ Node [Resample Curve](node.blender_ref) ( [api](node.blender_python_ref) )
 
 - node with sockets ['curve']
 
-## resample_count {#resample_count}
+## resample_count
+
+{#resample_count}
 
 > def resample_count(self, selection=None, count=None):
 
-Node [Resample Curve](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Resample Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/resample_curve.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeResampleCurve.html) )
 
         ### Args:
 - selection: Boolean
@@ -409,11 +516,13 @@ Node [Resample Curve](node.blender_ref) ( [api](node.blender_python_ref) )
 
 - node with sockets ['curve']
 
-## resample_evaluated {#resample_evaluated}
+## resample_evaluated
+
+{#resample_evaluated}
 
 > def resample_evaluated(self, selection=None):
 
-Node [Resample Curve](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Resample Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/resample_curve.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeResampleCurve.html) )
 
         ### Args:
 - selection: Boolean
@@ -422,11 +531,13 @@ Node [Resample Curve](node.blender_ref) ( [api](node.blender_python_ref) )
 
 - node with sockets ['curve']
 
-## resample_length {#resample_length}
+## resample_length
+
+{#resample_length}
 
 > def resample_length(self, selection=None, length=None):
 
-Node [Resample Curve](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Resample Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/resample_curve.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeResampleCurve.html) )
 
         ### Args:
 - selection: Boolean
@@ -436,11 +547,13 @@ Node [Resample Curve](node.blender_ref) ( [api](node.blender_python_ref) )
 
 - node with sockets ['curve']
 
-## reverse {#reverse}
+## reverse
+
+{#reverse}
 
 > def reverse(self, selection=None):
 
-Node [Reverse Curve](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Reverse Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/reverse_curve.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeReverseCurve.html) )
 
         ### Args:
 - selection: Boolean
@@ -449,11 +562,13 @@ Node [Reverse Curve](node.blender_ref) ( [api](node.blender_python_ref) )
 
 - node with sockets ['curve']
 
-## sample {#sample}
+## sample
+
+{#sample}
 
 > def sample(self, value=None, factor=None, length=None, curve_index=None, data_type='FLOAT', mode='FACTOR', use_all_curves=False):
 
-Node [Sample Curve](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Sample Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/sample_curve.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSampleCurve.html) )
 
         ### Args:
 - value: ['Float', 'Integer', 'Vector', 'Color', 'Boolean']
@@ -468,11 +583,13 @@ Node [Sample Curve](node.blender_ref) ( [api](node.blender_python_ref) )
 
 - node with sockets ['value', 'position', 'tangent', 'normal']
 
-## spline_count *property* {#spline_count}
+## spline_count *property*
+
+{#spline_count}
 
 > def spline_count(self):
 
-Node [Domain Size](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html) )
 
 Node implemented as property.
 
@@ -480,11 +597,13 @@ Node implemented as property.
 
   socket 'spline_count'
 
-## subdivide {#subdivide}
+## subdivide
+
+{#subdivide}
 
 > def subdivide(self, cuts=None):
 
-Node [Subdivide Curve](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Subdivide Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/subdivide_curve.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSubdivideCurve.html) )
 
         ### Args:
 - cuts: Integer
@@ -493,11 +612,13 @@ Node [Subdivide Curve](node.blender_ref) ( [api](node.blender_python_ref) )
 
 - node with sockets ['curve']
 
-## to_mesh {#to_mesh}
+## to_mesh
+
+{#to_mesh}
 
 > def to_mesh(self, profile_curve=None, fill_caps=None):
 
-Node [Curve to Mesh](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Curve to Mesh](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/curve_to_mesh.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveToMesh.html) )
 
         ### Args:
 - profile_curve: Geometry
@@ -507,11 +628,13 @@ Node [Curve to Mesh](node.blender_ref) ( [api](node.blender_python_ref) )
 
   socket 'mesh' of class Mesh
 
-## to_points {#to_points}
+## to_points
+
+{#to_points}
 
 > def to_points(self, count=None, length=None, mode='COUNT'):
 
-Node [Curve to Points](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Curve to Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/curve_to_points.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveToPoints.html) )
 
         ### Args:
 - count: Integer
@@ -522,11 +645,13 @@ Node [Curve to Points](node.blender_ref) ( [api](node.blender_python_ref) )
 
 - tuple ('points', 'tangent', 'normal', 'rotation')
 
-## to_points_count {#to_points_count}
+## to_points_count
+
+{#to_points_count}
 
 > def to_points_count(self, count=None):
 
-Node [Curve to Points](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Curve to Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/curve_to_points.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveToPoints.html) )
 
         ### Args:
 - count: Integer
@@ -535,21 +660,25 @@ Node [Curve to Points](node.blender_ref) ( [api](node.blender_python_ref) )
 
 - tuple ('points', 'tangent', 'normal', 'rotation')
 
-## to_points_evaluated {#to_points_evaluated}
+## to_points_evaluated
+
+{#to_points_evaluated}
 
 > def to_points_evaluated(self):
 
-Node [Curve to Points](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Curve to Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/curve_to_points.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveToPoints.html) )
 
 ### Returns:
 
 - tuple ('points', 'tangent', 'normal', 'rotation')
 
-## to_points_length {#to_points_length}
+## to_points_length
+
+{#to_points_length}
 
 > def to_points_length(self, length=None):
 
-Node [Curve to Points](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Curve to Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/curve_to_points.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveToPoints.html) )
 
         ### Args:
 - length: Float
@@ -558,11 +687,13 @@ Node [Curve to Points](node.blender_ref) ( [api](node.blender_python_ref) )
 
 - tuple ('points', 'tangent', 'normal', 'rotation')
 
-## trim {#trim}
+## trim
+
+{#trim}
 
 > def trim(self, start=None, end=None, mode='FACTOR'):
 
-Node [Trim Curve](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Trim Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/trim_curve.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeTrimCurve.html) )
 
         ### Args:
 - mode (str): 'FACTOR' in [FACTOR, LENGTH]
@@ -571,11 +702,13 @@ Node [Trim Curve](node.blender_ref) ( [api](node.blender_python_ref) )
 
 - node with sockets ['curve']
 
-## trim_factor {#trim_factor}
+## trim_factor
+
+{#trim_factor}
 
 > def trim_factor(self, start=None, end=None, mode='FACTOR'):
 
-Node [Trim Curve](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Trim Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/trim_curve.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeTrimCurve.html) )
 
         ### Args:
 - start: Float
@@ -586,11 +719,13 @@ Node [Trim Curve](node.blender_ref) ( [api](node.blender_python_ref) )
 
 - node with sockets ['curve']
 
-## trim_length {#trim_length}
+## trim_length
+
+{#trim_length}
 
 > def trim_length(self, start=None, end=None, mode='FACTOR'):
 
-Node [Trim Curve](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Trim Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/trim_curve.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeTrimCurve.html) )
 
         ### Args:
 - start: Float

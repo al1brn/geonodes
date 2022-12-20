@@ -1,20 +1,38 @@
-# class {class_name}
+# class Material
 
-## Material *classmethod* {#Material}
+## title
+
+
+## title
+
+- [(gen.fname(wnode)](Material-classmethod)
+
+## title
+
+
+## title
+
+- [(gen.fname(wnode)](switch)
+
+## Material *classmethod*
+
+{#Material}
 
 > def Material(cls):
 
-Node [Material](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Material](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/material.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMaterial.html) )
 
 ### Returns:
 
   socket 'material'
 
-## switch {#switch}
+## switch
+
+{#switch}
 
 > def switch(self, switch=None, true=None):
 
-Node [Switch](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html) )
 
         ### Args:
 - switch: ['Boolean', 'Boolean']

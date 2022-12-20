@@ -1,10 +1,87 @@
-# class {class_name}
+# class Geometry
 
-## Collection *classmethod* {#Collection}
+## title
+
+- [(gen.fname(wnode)](ID-property)
+- [(gen.fname(wnode)](bounding_box-property)
+- [(gen.fname(wnode)](bounding_box_min-property)
+- [(gen.fname(wnode)](bounding_box_min-property)
+- [(gen.fname(wnode)](convex_hull-property)
+- [(gen.fname(wnode)](curve_component-property)
+- [(gen.fname(wnode)](domain_size-property)
+- [(gen.fname(wnode)](index-property)
+- [(gen.fname(wnode)](instances_component-property)
+- [(gen.fname(wnode)](is_viewport-property)
+- [(gen.fname(wnode)](material_index-property)
+- [(gen.fname(wnode)](mesh_component-property)
+- [(gen.fname(wnode)](normal-property)
+- [(gen.fname(wnode)](points_component-property)
+- [(gen.fname(wnode)](position-property)
+- [(gen.fname(wnode)](radius-property)
+- [(gen.fname(wnode)](separate_components-property)
+- [(gen.fname(wnode)](volume_component-property)
+
+## title
+
+- [(gen.fname(wnode)](Collection-classmethod)
+
+## title
+
+
+## title
+
+- [(gen.fname(wnode)](attribute_statistic)
+- [(gen.fname(wnode)](capture_attribute)
+- [(gen.fname(wnode)](capture_attribute_node)
+- [(gen.fname(wnode)](delete)
+- [(gen.fname(wnode)](duplicate)
+- [(gen.fname(wnode)](field_at_index)
+- [(gen.fname(wnode)](get_named_boolean)
+- [(gen.fname(wnode)](get_named_color)
+- [(gen.fname(wnode)](get_named_float)
+- [(gen.fname(wnode)](get_named_integer)
+- [(gen.fname(wnode)](get_named_vector)
+- [(gen.fname(wnode)](join)
+- [(gen.fname(wnode)](material_selection)
+- [(gen.fname(wnode)](merge_by_distance)
+- [(gen.fname(wnode)](named_attribute)
+- [(gen.fname(wnode)](proximity)
+- [(gen.fname(wnode)](proximity_edges)
+- [(gen.fname(wnode)](proximity_facess)
+- [(gen.fname(wnode)](proximity_points)
+- [(gen.fname(wnode)](random_boolean)
+- [(gen.fname(wnode)](random_float)
+- [(gen.fname(wnode)](random_integer)
+- [(gen.fname(wnode)](random_vector)
+- [(gen.fname(wnode)](raycast)
+- [(gen.fname(wnode)](raycast_interpolated)
+- [(gen.fname(wnode)](raycast_nearest)
+- [(gen.fname(wnode)](remove_named_attribute)
+- [(gen.fname(wnode)](replace_material)
+- [(gen.fname(wnode)](sample_index)
+- [(gen.fname(wnode)](sample_nearest)
+- [(gen.fname(wnode)](separate)
+- [(gen.fname(wnode)](set_ID)
+- [(gen.fname(wnode)](set_material)
+- [(gen.fname(wnode)](set_material_index)
+- [(gen.fname(wnode)](set_named_boolean)
+- [(gen.fname(wnode)](set_named_color)
+- [(gen.fname(wnode)](set_named_float)
+- [(gen.fname(wnode)](set_named_integer)
+- [(gen.fname(wnode)](set_named_vector)
+- [(gen.fname(wnode)](set_position)
+- [(gen.fname(wnode)](store_named_attribute)
+- [(gen.fname(wnode)](switch)
+- [(gen.fname(wnode)](to_instance)
+- [(gen.fname(wnode)](transform)
+
+## Collection *classmethod*
+
+{#Collection}
 
 > def Collection(cls, collection=None, separate_children=None, reset_children=None, transform_space='ORIGINAL'):
 
-Node [Collection Info](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Collection Info](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/collection_info.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeCollectionInfo.html) )
 
         ### Args:
 - collection: Collection
@@ -16,21 +93,25 @@ Node [Collection Info](node.blender_ref) ( [api](node.blender_python_ref) )
 
   socket 'geometry'
 
-## ID *property* {#ID}
+## ID *property*
+
+{#ID}
 
 > def ID(self):
 
-Node [ID](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [ID](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/id.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputID.html) )
 
 ### Returns:
 
   socket 'ID'
 
-## attribute_statistic {#attribute_statistic}
+## attribute_statistic
+
+{#attribute_statistic}
 
 > def attribute_statistic(self, selection=None, attribute=None, domain='POINT'):
 
-Node [Attribute Statistic](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Attribute Statistic](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/attribute_statistic.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeStatistic.html) )
 
         ### Args:
 - selection: Boolean
@@ -41,11 +122,13 @@ Node [Attribute Statistic](node.blender_ref) ( [api](node.blender_python_ref) )
 
 - node with sockets ['mean', 'median', 'sum', 'min', 'max', 'range', 'standard_deviation', 'variance']
 
-## bounding_box *property* {#bounding_box}
+## bounding_box *property*
+
+{#bounding_box}
 
 > def bounding_box(self):
 
-Node [Bounding Box](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Bounding Box](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/bounding_box.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeBoundBox.html) )
 
 Node implemented as property.
 
@@ -53,11 +136,13 @@ Node implemented as property.
 
   socket 'bounding_box' of class Mesh
 
-## bounding_box_min *property* {#bounding_box_min}
+## bounding_box_min *property*
+
+{#bounding_box_min}
 
 > def bounding_box_min(self):
 
-Node [Bounding Box](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Bounding Box](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/bounding_box.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeBoundBox.html) )
 
 Node implemented as property.
 
@@ -65,11 +150,13 @@ Node implemented as property.
 
   socket 'min'
 
-## bounding_box_min *property* {#bounding_box_min}
+## bounding_box_min *property*
+
+{#bounding_box_min}
 
 > def bounding_box_min(self):
 
-Node [Bounding Box](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Bounding Box](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/bounding_box.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeBoundBox.html) )
 
 Node implemented as property.
 
@@ -77,11 +164,13 @@ Node implemented as property.
 
   socket 'max'
 
-## capture_attribute {#capture_attribute}
+## capture_attribute
+
+{#capture_attribute}
 
 > def capture_attribute(self, value=None, domain='POINT'):
 
-Node [Capture Attribute](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Capture Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/capture_attribute.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeCaptureAttribute.html) )
 
         ### Args:
 - value: ['Vector', 'Float', 'Color', 'Boolean', 'Integer']
@@ -91,11 +180,13 @@ Node [Capture Attribute](node.blender_ref) ( [api](node.blender_python_ref) )
 
   socket 'attribute'
 
-## capture_attribute_node {#capture_attribute_node}
+## capture_attribute_node
+
+{#capture_attribute_node}
 
 > def capture_attribute_node(self, geometry=None, value=None, data_type='FLOAT', domain='POINT'):
 
-Node [Capture Attribute](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Capture Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/capture_attribute.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeCaptureAttribute.html) )
 
         ### Args:
 - geometry: Geometry
@@ -107,11 +198,13 @@ Node [Capture Attribute](node.blender_ref) ( [api](node.blender_python_ref) )
 
 - node with sockets ['geometry', 'attribute']
 
-## convex_hull *property* {#convex_hull}
+## convex_hull *property*
+
+{#convex_hull}
 
 > def convex_hull(self):
 
-Node [Convex Hull](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Convex Hull](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/convex_hull.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeConvexHull.html) )
 
 Node implemented as property.
 
@@ -119,11 +212,13 @@ Node implemented as property.
 
   socket 'convex_hull' of class Mesh
 
-## curve_component *property* {#curve_component}
+## curve_component *property*
+
+{#curve_component}
 
 > def curve_component(self):
 
-Node [Separate Components](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Separate Components](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/separate_components.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSeparateComponents.html) )
 
 Node implemented as property.
 
@@ -131,11 +226,13 @@ Node implemented as property.
 
   socket 'curve' of class Curve
 
-## delete {#delete}
+## delete
+
+{#delete}
 
 > def delete(self, selection=None, domain='POINT', mode='ALL'):
 
-Node [Delete Geometry](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/delete_geometry.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeDeleteGeometry.html) )
 
         ### Args:
 - selection: Boolean
@@ -146,11 +243,13 @@ Node [Delete Geometry](node.blender_ref) ( [api](node.blender_python_ref) )
 
 - node with sockets ['geometry']
 
-## domain_size *property* {#domain_size}
+## domain_size *property*
+
+{#domain_size}
 
 > def domain_size(self, component='MESH'):
 
-Node [Domain Size](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html) )
 
 Node implemented as property.
 
@@ -158,11 +257,13 @@ Node implemented as property.
 
 - node with sockets ['point_count', 'edge_count', 'face_count', 'face_corner_count', 'spline_count', 'instance_count']
 
-## duplicate {#duplicate}
+## duplicate
+
+{#duplicate}
 
 > def duplicate(self, selection=None, amount=None, domain='POINT'):
 
-Node [Duplicate Elements](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Duplicate Elements](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/duplicate_elements.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeDuplicateElements.html) )
 
         ### Args:
 - selection: Boolean
@@ -173,11 +274,13 @@ Node [Duplicate Elements](node.blender_ref) ( [api](node.blender_python_ref) )
 
   socket 'duplicate_index'
 
-## field_at_index {#field_at_index}
+## field_at_index
+
+{#field_at_index}
 
 > def field_at_index(self, index=None, value=None, domain='POINT'):
 
-Node [Field at Index](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Field at Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/field_at_index.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeFieldAtIndex.html) )
 
         ### Args:
 - index: Integer
@@ -188,11 +291,13 @@ Node [Field at Index](node.blender_ref) ( [api](node.blender_python_ref) )
 
   socket 'value'
 
-## get_named_boolean {#get_named_boolean}
+## get_named_boolean
+
+{#get_named_boolean}
 
 > def get_named_boolean(self, name=None):
 
-Node [Named Attribute](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/named_attribute.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputNamedAttribute.html) )
 
         ### Args:
 - name: String
@@ -201,11 +306,13 @@ Node [Named Attribute](node.blender_ref) ( [api](node.blender_python_ref) )
 
   socket 'attribute'
 
-## get_named_color {#get_named_color}
+## get_named_color
+
+{#get_named_color}
 
 > def get_named_color(self, name=None):
 
-Node [Named Attribute](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/named_attribute.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputNamedAttribute.html) )
 
         ### Args:
 - name: String
@@ -214,11 +321,13 @@ Node [Named Attribute](node.blender_ref) ( [api](node.blender_python_ref) )
 
   socket 'attribute'
 
-## get_named_float {#get_named_float}
+## get_named_float
+
+{#get_named_float}
 
 > def get_named_float(self, name=None):
 
-Node [Named Attribute](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/named_attribute.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputNamedAttribute.html) )
 
         ### Args:
 - name: String
@@ -227,11 +336,13 @@ Node [Named Attribute](node.blender_ref) ( [api](node.blender_python_ref) )
 
   socket 'attribute'
 
-## get_named_integer {#get_named_integer}
+## get_named_integer
+
+{#get_named_integer}
 
 > def get_named_integer(self, name=None):
 
-Node [Named Attribute](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/named_attribute.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputNamedAttribute.html) )
 
         ### Args:
 - name: String
@@ -240,11 +351,13 @@ Node [Named Attribute](node.blender_ref) ( [api](node.blender_python_ref) )
 
   socket 'attribute'
 
-## get_named_vector {#get_named_vector}
+## get_named_vector
+
+{#get_named_vector}
 
 > def get_named_vector(self, name=None):
 
-Node [Named Attribute](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/named_attribute.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputNamedAttribute.html) )
 
         ### Args:
 - name: String
@@ -253,21 +366,25 @@ Node [Named Attribute](node.blender_ref) ( [api](node.blender_python_ref) )
 
   socket 'attribute'
 
-## index *property* {#index}
+## index *property*
+
+{#index}
 
 > def index(self):
 
-Node [Index](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/input_index.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputIndex.html) )
 
 ### Returns:
 
   socket 'index'
 
-## instances_component *property* {#instances_component}
+## instances_component *property*
+
+{#instances_component}
 
 > def instances_component(self):
 
-Node [Separate Components](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Separate Components](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/separate_components.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSeparateComponents.html) )
 
 Node implemented as property.
 
@@ -275,21 +392,25 @@ Node implemented as property.
 
   socket 'instances' of class Instances
 
-## is_viewport *property* {#is_viewport}
+## is_viewport *property*
+
+{#is_viewport}
 
 > def is_viewport(self):
 
-Node [Is Viewport](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Is Viewport](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/is_viewport.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeIsViewport.html) )
 
 ### Returns:
 
   socket 'is_viewport'
 
-## join {#join}
+## join
+
+{#join}
 
 > def join(*geometry):
 
-Node [Join Geometry](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Join Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/join_geometry.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeJoinGeometry.html) )
 
         ### Args:
 - geometry: <m>Geometry
@@ -298,21 +419,25 @@ Node [Join Geometry](node.blender_ref) ( [api](node.blender_python_ref) )
 
 - node with sockets ['geometry']
 
-## material_index *property* {#material_index}
+## material_index *property*
+
+{#material_index}
 
 > def material_index(self):
 
-Node [Material Index](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Material Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/material_index.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMaterialIndex.html) )
 
 ### Returns:
 
   socket 'material_index'
 
-## material_selection {#material_selection}
+## material_selection
+
+{#material_selection}
 
 > def material_selection(self, material=None):
 
-Node [Material Selection](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Material Selection](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/material_selection.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeMaterialSelection.html) )
 
         ### Args:
 - material: Material
@@ -321,11 +446,13 @@ Node [Material Selection](node.blender_ref) ( [api](node.blender_python_ref) )
 
   socket 'selection'
 
-## merge_by_distance {#merge_by_distance}
+## merge_by_distance
+
+{#merge_by_distance}
 
 > def merge_by_distance(self, selection=None, distance=None, mode='ALL'):
 
-Node [Merge by Distance](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Merge by Distance](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/merge_by_distance.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeMergeByDistance.html) )
 
         ### Args:
 - selection: Boolean
@@ -336,11 +463,13 @@ Node [Merge by Distance](node.blender_ref) ( [api](node.blender_python_ref) )
 
 - node with sockets ['geometry']
 
-## mesh_component *property* {#mesh_component}
+## mesh_component *property*
+
+{#mesh_component}
 
 > def mesh_component(self):
 
-Node [Separate Components](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Separate Components](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/separate_components.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSeparateComponents.html) )
 
 Node implemented as property.
 
@@ -348,11 +477,13 @@ Node implemented as property.
 
   socket 'mesh' of class Mesh
 
-## named_attribute {#named_attribute}
+## named_attribute
+
+{#named_attribute}
 
 > def named_attribute(self, name=None, data_type='FLOAT'):
 
-Node [Named Attribute](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/named_attribute.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputNamedAttribute.html) )
 
         ### Args:
 - name: String
@@ -362,21 +493,25 @@ Node [Named Attribute](node.blender_ref) ( [api](node.blender_python_ref) )
 
   socket 'attribute'
 
-## normal *property* {#normal}
+## normal *property*
+
+{#normal}
 
 > def normal(self):
 
-Node [Normal](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Normal](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/normal.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputNormal.html) )
 
 ### Returns:
 
   socket 'normal'
 
-## points_component *property* {#points_component}
+## points_component *property*
+
+{#points_component}
 
 > def points_component(self):
 
-Node [Separate Components](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Separate Components](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/separate_components.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSeparateComponents.html) )
 
 Node implemented as property.
 
@@ -384,21 +519,25 @@ Node implemented as property.
 
   socket 'point_cloud' of class Points
 
-## position *property* {#position}
+## position *property*
+
+{#position}
 
 > def position(self):
 
-Node [Position](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Position](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/position.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputPosition.html) )
 
 ### Returns:
 
   socket 'position'
 
-## proximity {#proximity}
+## proximity
+
+{#proximity}
 
 > def proximity(self, target=None, source_position=None, target_element='FACES'):
 
-Node [Geometry Proximity](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Geometry Proximity](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/geometry_proximity.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeProximity.html) )
 
         ### Args:
 - target: Geometry
@@ -409,11 +548,13 @@ Node [Geometry Proximity](node.blender_ref) ( [api](node.blender_python_ref) )
 
   socket 'distance'
 
-## proximity_edges {#proximity_edges}
+## proximity_edges
+
+{#proximity_edges}
 
 > def proximity_edges(self, target=None, source_position=None):
 
-Node [Geometry Proximity](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Geometry Proximity](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/geometry_proximity.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeProximity.html) )
 
         ### Args:
 - target: Geometry
@@ -423,11 +564,13 @@ Node [Geometry Proximity](node.blender_ref) ( [api](node.blender_python_ref) )
 
   socket 'distance'
 
-## proximity_facess {#proximity_facess}
+## proximity_facess
+
+{#proximity_facess}
 
 > def proximity_facess(self, target=None, source_position=None):
 
-Node [Geometry Proximity](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Geometry Proximity](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/geometry_proximity.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeProximity.html) )
 
         ### Args:
 - target: Geometry
@@ -437,11 +580,13 @@ Node [Geometry Proximity](node.blender_ref) ( [api](node.blender_python_ref) )
 
   socket 'distance'
 
-## proximity_points {#proximity_points}
+## proximity_points
+
+{#proximity_points}
 
 > def proximity_points(self, target=None, source_position=None):
 
-Node [Geometry Proximity](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Geometry Proximity](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/geometry_proximity.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeProximity.html) )
 
         ### Args:
 - target: Geometry
@@ -451,21 +596,25 @@ Node [Geometry Proximity](node.blender_ref) ( [api](node.blender_python_ref) )
 
   socket 'distance'
 
-## radius *property* {#radius}
+## radius *property*
+
+{#radius}
 
 > def radius(self):
 
-Node [Radius](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Radius](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/radius.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputRadius.html) )
 
 ### Returns:
 
   socket 'radius'
 
-## random_boolean {#random_boolean}
+## random_boolean
+
+{#random_boolean}
 
 > def random_boolean(self, probability=None, ID=None, seed=None):
 
-Node [Random Value](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Random Value](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/random_value.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeRandomValue.html) )
 
         ### Args:
 - probability: Float
@@ -476,11 +625,13 @@ Node [Random Value](node.blender_ref) ( [api](node.blender_python_ref) )
 
   socket 'value'
 
-## random_float {#random_float}
+## random_float
+
+{#random_float}
 
 > def random_float(self, min=None, max=None, ID=None, seed=None):
 
-Node [Random Value](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Random Value](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/random_value.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeRandomValue.html) )
 
         ### Args:
 - min: ['Vector', 'Float', 'Integer']
@@ -492,11 +643,13 @@ Node [Random Value](node.blender_ref) ( [api](node.blender_python_ref) )
 
   socket 'value'
 
-## random_integer {#random_integer}
+## random_integer
+
+{#random_integer}
 
 > def random_integer(self, min=None, max=None, ID=None, seed=None):
 
-Node [Random Value](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Random Value](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/random_value.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeRandomValue.html) )
 
         ### Args:
 - min: ['Vector', 'Float', 'Integer']
@@ -508,11 +661,13 @@ Node [Random Value](node.blender_ref) ( [api](node.blender_python_ref) )
 
   socket 'value'
 
-## random_vector {#random_vector}
+## random_vector
+
+{#random_vector}
 
 > def random_vector(self, min=None, max=None, ID=None, seed=None):
 
-Node [Random Value](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Random Value](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/random_value.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeRandomValue.html) )
 
         ### Args:
 - min: ['Vector', 'Float', 'Integer']
@@ -524,11 +679,13 @@ Node [Random Value](node.blender_ref) ( [api](node.blender_python_ref) )
 
   socket 'value'
 
-## raycast {#raycast}
+## raycast
+
+{#raycast}
 
 > def raycast(self, target_geometry=None, attribute=None, source_position=None, ray_direction=None, ray_length=None, mapping='INTERPOLATED'):
 
-Node [Raycast](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Raycast](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/raycast.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeRaycast.html) )
 
         ### Args:
 - target_geometry: Geometry
@@ -542,11 +699,13 @@ Node [Raycast](node.blender_ref) ( [api](node.blender_python_ref) )
 
 - node with sockets ['is_hit', 'hit_position', 'hit_normal', 'hit_distance', 'attribute']
 
-## raycast_interpolated {#raycast_interpolated}
+## raycast_interpolated
+
+{#raycast_interpolated}
 
 > def raycast_interpolated(self, target_geometry=None, attribute=None, source_position=None, ray_direction=None, ray_length=None):
 
-Node [Raycast](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Raycast](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/raycast.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeRaycast.html) )
 
         ### Args:
 - target_geometry: Geometry
@@ -559,11 +718,13 @@ Node [Raycast](node.blender_ref) ( [api](node.blender_python_ref) )
 
 - node with sockets ['is_hit', 'hit_position', 'hit_normal', 'hit_distance', 'attribute']
 
-## raycast_nearest {#raycast_nearest}
+## raycast_nearest
+
+{#raycast_nearest}
 
 > def raycast_nearest(self, target_geometry=None, attribute=None, source_position=None, ray_direction=None, ray_length=None):
 
-Node [Raycast](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Raycast](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/raycast.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeRaycast.html) )
 
         ### Args:
 - target_geometry: Geometry
@@ -576,11 +737,13 @@ Node [Raycast](node.blender_ref) ( [api](node.blender_python_ref) )
 
 - node with sockets ['is_hit', 'hit_position', 'hit_normal', 'hit_distance', 'attribute']
 
-## remove_named_attribute {#remove_named_attribute}
+## remove_named_attribute
+
+{#remove_named_attribute}
 
 > def remove_named_attribute(self, name=None):
 
-Node [Remove Named Attribute](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Remove Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/remove_named_attribute.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeRemoveAttribute.html) )
 
         ### Args:
 - name: String
@@ -589,11 +752,13 @@ Node [Remove Named Attribute](node.blender_ref) ( [api](node.blender_python_ref)
 
 - node with sockets ['geometry']
 
-## replace_material {#replace_material}
+## replace_material
+
+{#replace_material}
 
 > def replace_material(self, old=None, new=None):
 
-Node [Replace Material](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Replace Material](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/replace_material.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeReplaceMaterial.html) )
 
         ### Args:
 - old: Material
@@ -603,11 +768,13 @@ Node [Replace Material](node.blender_ref) ( [api](node.blender_python_ref) )
 
 - node with sockets ['geometry']
 
-## sample_index {#sample_index}
+## sample_index
+
+{#sample_index}
 
 > def sample_index(self, value=None, index=None, clamp=False, domain='POINT'):
 
-Node [Sample Index](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Sample Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/sample_index.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSampleIndex.html) )
 
         ### Args:
 - value: ['Float', 'Integer', 'Vector', 'Color', 'Boolean']
@@ -619,11 +786,13 @@ Node [Sample Index](node.blender_ref) ( [api](node.blender_python_ref) )
 
   socket 'value'
 
-## sample_nearest {#sample_nearest}
+## sample_nearest
+
+{#sample_nearest}
 
 > def sample_nearest(self, sample_position=None, domain='POINT'):
 
-Node [Sample Nearest](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Sample Nearest](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/sample_nearest.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSampleNearest.html) )
 
         ### Args:
 - sample_position: Vector
@@ -633,11 +802,13 @@ Node [Sample Nearest](node.blender_ref) ( [api](node.blender_python_ref) )
 
   socket 'index'
 
-## separate {#separate}
+## separate
+
+{#separate}
 
 > def separate(self, geometry=None, selection=None, domain='POINT'):
 
-Node [Separate Geometry](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Separate Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/separate_geometry.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSeparateGeometry.html) )
 
         ### Args:
 - geometry: Geometry
@@ -648,11 +819,13 @@ Node [Separate Geometry](node.blender_ref) ( [api](node.blender_python_ref) )
 
 - tuple ('selection', 'inverted')
 
-## separate_components *property* {#separate_components}
+## separate_components *property*
+
+{#separate_components}
 
 > def separate_components(self):
 
-Node [Separate Components](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Separate Components](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/separate_components.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSeparateComponents.html) )
 
 Node implemented as property.
 
@@ -660,11 +833,13 @@ Node implemented as property.
 
 - node with sockets ['mesh', 'point_cloud', 'curve', 'volume', 'instances']
 
-## set_ID {#set_ID}
+## set_ID
+
+{#set_ID}
 
 > def set_ID(self, selection=None, ID=None):
 
-Node [Set ID](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Set ID](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/set_id.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetID.html) )
 
         ### Args:
 - selection: Boolean
@@ -674,11 +849,13 @@ Node [Set ID](node.blender_ref) ( [api](node.blender_python_ref) )
 
 - node with sockets ['geometry']
 
-## set_material {#set_material}
+## set_material
+
+{#set_material}
 
 > def set_material(self, selection=None, material=None):
 
-Node [Set Material](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Set Material](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/set_material.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetMaterial.html) )
 
         ### Args:
 - selection: Boolean
@@ -688,11 +865,13 @@ Node [Set Material](node.blender_ref) ( [api](node.blender_python_ref) )
 
 - node with sockets ['geometry']
 
-## set_material_index {#set_material_index}
+## set_material_index
+
+{#set_material_index}
 
 > def set_material_index(self, selection=None, material_index=None):
 
-Node [Set Material Index](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Set Material Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/set_material_index.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetMaterialIndex.html) )
 
         ### Args:
 - selection: Boolean
@@ -702,11 +881,13 @@ Node [Set Material Index](node.blender_ref) ( [api](node.blender_python_ref) )
 
 - node with sockets ['geometry']
 
-## set_named_boolean {#set_named_boolean}
+## set_named_boolean
+
+{#set_named_boolean}
 
 > def set_named_boolean(self, name=None, value=None, domain='POINT'):
 
-Node [Store Named Attribute](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Store Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/store_named_attribute.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeStoreNamedAttribute.html) )
 
         ### Args:
 - name: String
@@ -717,11 +898,13 @@ Node [Store Named Attribute](node.blender_ref) ( [api](node.blender_python_ref) 
 
 - node with sockets ['geometry']
 
-## set_named_color {#set_named_color}
+## set_named_color
+
+{#set_named_color}
 
 > def set_named_color(self, name=None, value=None, domain='POINT'):
 
-Node [Store Named Attribute](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Store Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/store_named_attribute.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeStoreNamedAttribute.html) )
 
         ### Args:
 - name: String
@@ -732,11 +915,13 @@ Node [Store Named Attribute](node.blender_ref) ( [api](node.blender_python_ref) 
 
 - node with sockets ['geometry']
 
-## set_named_float {#set_named_float}
+## set_named_float
+
+{#set_named_float}
 
 > def set_named_float(self, name=None, value=None, domain='POINT'):
 
-Node [Store Named Attribute](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Store Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/store_named_attribute.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeStoreNamedAttribute.html) )
 
         ### Args:
 - name: String
@@ -747,11 +932,13 @@ Node [Store Named Attribute](node.blender_ref) ( [api](node.blender_python_ref) 
 
 - node with sockets ['geometry']
 
-## set_named_integer {#set_named_integer}
+## set_named_integer
+
+{#set_named_integer}
 
 > def set_named_integer(self, name=None, value=None, domain='POINT'):
 
-Node [Store Named Attribute](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Store Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/store_named_attribute.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeStoreNamedAttribute.html) )
 
         ### Args:
 - name: String
@@ -762,11 +949,13 @@ Node [Store Named Attribute](node.blender_ref) ( [api](node.blender_python_ref) 
 
 - node with sockets ['geometry']
 
-## set_named_vector {#set_named_vector}
+## set_named_vector
+
+{#set_named_vector}
 
 > def set_named_vector(self, name=None, value=None, domain='POINT'):
 
-Node [Store Named Attribute](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Store Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/store_named_attribute.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeStoreNamedAttribute.html) )
 
         ### Args:
 - name: String
@@ -777,11 +966,13 @@ Node [Store Named Attribute](node.blender_ref) ( [api](node.blender_python_ref) 
 
 - node with sockets ['geometry']
 
-## set_position {#set_position}
+## set_position
+
+{#set_position}
 
 > def set_position(self, selection=None, position=None, offset=None):
 
-Node [Set Position](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Set Position](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/set_position.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetPosition.html) )
 
         ### Args:
 - selection: Boolean
@@ -792,11 +983,13 @@ Node [Set Position](node.blender_ref) ( [api](node.blender_python_ref) )
 
 - node with sockets ['geometry']
 
-## store_named_attribute {#store_named_attribute}
+## store_named_attribute
+
+{#store_named_attribute}
 
 > def store_named_attribute(self, name=None, value=None, domain='POINT'):
 
-Node [Store Named Attribute](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Store Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/store_named_attribute.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeStoreNamedAttribute.html) )
 
         ### Args:
 - name: String
@@ -807,11 +1000,13 @@ Node [Store Named Attribute](node.blender_ref) ( [api](node.blender_python_ref) 
 
 - node with sockets ['geometry']
 
-## switch {#switch}
+## switch
+
+{#switch}
 
 > def switch(self, switch=None, true=None):
 
-Node [Switch](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html) )
 
         ### Args:
 - switch: ['Boolean', 'Boolean']
@@ -821,11 +1016,13 @@ Node [Switch](node.blender_ref) ( [api](node.blender_python_ref) )
 
   socket 'output'
 
-## to_instance {#to_instance}
+## to_instance
+
+{#to_instance}
 
 > def to_instance(*geometry):
 
-Node [Geometry to Instance](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Geometry to Instance](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/geometry_to_instance.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeGeometryToInstance.html) )
 
         ### Args:
 - geometry: <m>Geometry
@@ -834,11 +1031,13 @@ Node [Geometry to Instance](node.blender_ref) ( [api](node.blender_python_ref) )
 
   socket 'instances' of class Instances
 
-## transform {#transform}
+## transform
+
+{#transform}
 
 > def transform(self, translation=None, rotation=None, scale=None):
 
-Node [Transform](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Transform](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/transform.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeTransform.html) )
 
         ### Args:
 - translation: Vector
@@ -849,11 +1048,13 @@ Node [Transform](node.blender_ref) ( [api](node.blender_python_ref) )
 
 - node with sockets ['geometry']
 
-## volume_component *property* {#volume_component}
+## volume_component *property*
+
+{#volume_component}
 
 > def volume_component(self):
 
-Node [Separate Components](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Separate Components](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/separate_components.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSeparateComponents.html) )
 
 Node implemented as property.
 

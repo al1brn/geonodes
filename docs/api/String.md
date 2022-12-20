@@ -1,20 +1,47 @@
-# class {class_name}
+# class String
 
-## LineBreak *staticmethod* {#LineBreak}
+## title
+
+- [(gen.fname(wnode)](length-property)
+
+## title
+
+- [(gen.fname(wnode)](String-classmethod)
+
+## title
+
+- [(gen.fname(wnode)](LineBreak-staticmethod)
+- [(gen.fname(wnode)](Tab-staticmethod)
+
+## title
+
+- [(gen.fname(wnode)](equal)
+- [(gen.fname(wnode)](join)
+- [(gen.fname(wnode)](not_equal)
+- [(gen.fname(wnode)](replace)
+- [(gen.fname(wnode)](slice)
+- [(gen.fname(wnode)](switch)
+- [(gen.fname(wnode)](to_curves)
+
+## LineBreak *staticmethod*
+
+{#LineBreak}
 
 > def LineBreak():
 
-Node [Special Characters](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Special Characters](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/special_characters.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeInputSpecialCharacters.html) )
 
 ### Returns:
 
   socket 'line_break'
 
-## String *classmethod* {#String}
+## String *classmethod*
+
+{#String}
 
 > def String(cls, string=''):
 
-Node [String](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [String](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/string.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeInputString.html) )
 
         ### Args:
 - string (str): ''
@@ -23,21 +50,25 @@ Node [String](node.blender_ref) ( [api](node.blender_python_ref) )
 
   socket 'string'
 
-## Tab *staticmethod* {#Tab}
+## Tab *staticmethod*
+
+{#Tab}
 
 > def Tab():
 
-Node [Special Characters](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Special Characters](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/special_characters.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeInputSpecialCharacters.html) )
 
 ### Returns:
 
   socket 'tab'
 
-## equal {#equal}
+## equal
+
+{#equal}
 
 > def equal(self, b=None):
 
-Node [Compare](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html) )
 
         ### Args:
 - b: ['Float', 'Integer', 'Vector', 'Color', 'String']
@@ -46,11 +77,13 @@ Node [Compare](node.blender_ref) ( [api](node.blender_python_ref) )
 
   socket 'result'
 
-## join {#join}
+## join
+
+{#join}
 
 > def join(*strings, delimiter=None):
 
-Node [Join Strings](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Join Strings](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/join_strings.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeStringJoin.html) )
 
         ### Args:
 - strings: <m>String
@@ -60,11 +93,13 @@ Node [Join Strings](node.blender_ref) ( [api](node.blender_python_ref) )
 
   socket 'string'
 
-## length *property* {#length}
+## length *property*
+
+{#length}
 
 > def length(self):
 
-Node [String Length](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [String Length](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/string_length.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeStringLength.html) )
 
 Node implemented as property.
 
@@ -72,11 +107,13 @@ Node implemented as property.
 
   socket 'length'
 
-## not_equal {#not_equal}
+## not_equal
+
+{#not_equal}
 
 > def not_equal(self, b=None):
 
-Node [Compare](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html) )
 
         ### Args:
 - b: ['Float', 'Integer', 'Vector', 'Color', 'String']
@@ -85,11 +122,13 @@ Node [Compare](node.blender_ref) ( [api](node.blender_python_ref) )
 
   socket 'result'
 
-## replace {#replace}
+## replace
+
+{#replace}
 
 > def replace(self, find=None, replace=None):
 
-Node [Replace String](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Replace String](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/replace_string.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeReplaceString.html) )
 
         ### Args:
 - find: String
@@ -99,11 +138,13 @@ Node [Replace String](node.blender_ref) ( [api](node.blender_python_ref) )
 
   socket 'string'
 
-## slice {#slice}
+## slice
+
+{#slice}
 
 > def slice(self, position=None, length=None):
 
-Node [Slice String](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Slice String](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/slice_string.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeSliceString.html) )
 
         ### Args:
 - position: Integer
@@ -113,11 +154,13 @@ Node [Slice String](node.blender_ref) ( [api](node.blender_python_ref) )
 
   socket 'string'
 
-## switch {#switch}
+## switch
+
+{#switch}
 
 > def switch(self, switch=None, true=None):
 
-Node [Switch](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html) )
 
         ### Args:
 - switch: ['Boolean', 'Boolean']
@@ -127,11 +170,13 @@ Node [Switch](node.blender_ref) ( [api](node.blender_python_ref) )
 
   socket 'output'
 
-## to_curves {#to_curves}
+## to_curves
+
+{#to_curves}
 
 > def to_curves(self, string=None, size=None, character_spacing=None, word_spacing=None, line_spacing=None, text_box_width=None, text_box_height=None, align_x='LEFT', align_y='TOP_BASELINE', overflow='OVERFLOW', pivot_mode='BOTTOM_LEFT'):
 
-Node [String to Curves](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [String to Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/string_to_curves.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeStringToCurves.html) )
 
         ### Args:
 - string: String

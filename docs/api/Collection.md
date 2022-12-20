@@ -1,10 +1,25 @@
-# class {class_name}
+# class Collection
 
-## switch {#switch}
+## title
+
+
+## title
+
+
+## title
+
+
+## title
+
+- [(gen.fname(wnode)](switch)
+
+## switch
+
+{#switch}
 
 > def switch(self, switch=None, true=None):
 
-Node [Switch](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html) )
 
         ### Args:
 - switch: ['Boolean', 'Boolean']

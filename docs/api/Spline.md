@@ -1,31 +1,66 @@
-# class {class_name}
+# class Spline
 
-## cyclic *property* {#cyclic}
+## title
+
+- [(gen.fname(wnode)](cyclic-property)
+- [(gen.fname(wnode)](length-property)
+- [(gen.fname(wnode)](material-property)
+- [(gen.fname(wnode)](normal-property)
+- [(gen.fname(wnode)](resolution-property)
+- [(gen.fname(wnode)](type-property)
+
+## title
+
+
+## title
+
+
+## title
+
+- [(gen.fname(wnode)](domain_size)
+- [(gen.fname(wnode)](points)
+- [(gen.fname(wnode)](resample)
+- [(gen.fname(wnode)](resample_count)
+- [(gen.fname(wnode)](resample_evaluated)
+- [(gen.fname(wnode)](resample_length)
+- [(gen.fname(wnode)](set_cyclic)
+- [(gen.fname(wnode)](set_material)
+- [(gen.fname(wnode)](set_normal)
+- [(gen.fname(wnode)](set_resolution)
+- [(gen.fname(wnode)](set_type)
+
+## cyclic *property*
+
+{#cyclic}
 
 > def cyclic(self):
 
-Node [Is Spline Cyclic](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Is Spline Cyclic](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/is_spline_cyclic.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputSplineCyclic.html) )
 
 ### Returns:
 
   socket 'cyclic'
 
-## cyclic *etter* {#cyclic}
+## cyclic *etter*
+
+{#cyclic}
 
 > def cyclic(self, attr_value):
 
-Node [Set Spline Cyclic](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Set Spline Cyclic](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/set_spline_cyclic.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetSplineCyclic.html) )
 
 Node implemented as property setter.
 
         ###Args:- attr_value: cyclic
 
 
-## domain_size {#domain_size}
+## domain_size
+
+{#domain_size}
 
 > def __len__(self):
 
-Node [Domain Size](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html) )
 
         ### Args:
 - geometry: Geometry
@@ -35,63 +70,75 @@ Node [Domain Size](node.blender_ref) ( [api](node.blender_python_ref) )
 
 - node with sockets ['point_count', 'edge_count', 'face_count', 'face_corner_count', 'spline_count', 'instance_count']
 
-## length *property* {#length}
+## length *property*
+
+{#length}
 
 > def length(self):
 
-Node [Spline Length](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Spline Length](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/spline_length.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSplineLength.html) )
 
 ### Returns:
 
 - tuple ('length', 'point_count')
 
-## material *property* {#material}
+## material *property*
+
+{#material}
 
 > def material(self):
 
-Node [Set Material](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Set Material](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/set_material.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetMaterial.html) )
 
 'material' is a write only property.
 Raise an exception if attempt to read.
 
 
-## material *etter* {#material}
+## material *etter*
+
+{#material}
 
 > def material(self, attr_value):
 
-Node [Set Material](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Set Material](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/set_material.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetMaterial.html) )
 
 Node implemented as property setter.
 
         ###Args:- attr_value: material
 
 
-## normal *property* {#normal}
+## normal *property*
+
+{#normal}
 
 > def normal(self):
 
-Node [Normal](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Normal](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/normal.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputNormal.html) )
 
 ### Returns:
 
   socket 'normal'
 
-## normal *etter* {#normal}
+## normal *etter*
+
+{#normal}
 
 > def normal(self, attr_value):
 
-Node [Set Curve Normal](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Set Curve Normal](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/set_curve_normal.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetCurveNormal.html) )
 
 Node implemented as property setter.
 
         ###Args:- attr_value: mode
 
 
-## points {#points}
+## points
+
+{#points}
 
 > def points(self, weights=None, sort_index=None):
 
-Node [Points of Curve](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Points of Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve_topology/points_of_curve.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodePointsOfCurve.html) )
 
         ### Args:
 - weights: Float
@@ -101,11 +148,13 @@ Node [Points of Curve](node.blender_ref) ( [api](node.blender_python_ref) )
 
 - tuple ('point_index', 'total')
 
-## resample {#resample}
+## resample
+
+{#resample}
 
 > def resample(self, count=None, length=None, mode='COUNT'):
 
-Node [Resample Curve](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Resample Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/resample_curve.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeResampleCurve.html) )
 
         ### Args:
 - count: Integer
@@ -116,11 +165,13 @@ Node [Resample Curve](node.blender_ref) ( [api](node.blender_python_ref) )
 
 - node with sockets ['curve']
 
-## resample_count {#resample_count}
+## resample_count
+
+{#resample_count}
 
 > def resample_count(self, count=None):
 
-Node [Resample Curve](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Resample Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/resample_curve.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeResampleCurve.html) )
 
         ### Args:
 - count: Integer
@@ -129,21 +180,25 @@ Node [Resample Curve](node.blender_ref) ( [api](node.blender_python_ref) )
 
 - node with sockets ['curve']
 
-## resample_evaluated {#resample_evaluated}
+## resample_evaluated
+
+{#resample_evaluated}
 
 > def resample_evaluated(self):
 
-Node [Resample Curve](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Resample Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/resample_curve.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeResampleCurve.html) )
 
 ### Returns:
 
 - node with sockets ['curve']
 
-## resample_length {#resample_length}
+## resample_length
+
+{#resample_length}
 
 > def resample_length(self, length=None):
 
-Node [Resample Curve](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Resample Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/resample_curve.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeResampleCurve.html) )
 
         ### Args:
 - length: Float
@@ -152,32 +207,38 @@ Node [Resample Curve](node.blender_ref) ( [api](node.blender_python_ref) )
 
 - node with sockets ['curve']
 
-## resolution *property* {#resolution}
+## resolution *property*
+
+{#resolution}
 
 > def resolution(self):
 
-Node [Spline Resolution](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Spline Resolution](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/spline_resolution.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputSplineResolution.html) )
 
 ### Returns:
 
   socket 'resolution'
 
-## resolution *etter* {#resolution}
+## resolution *etter*
+
+{#resolution}
 
 > def resolution(self, attr_value):
 
-Node [Set Spline Resolution](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Set Spline Resolution](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/set_spline_resolution.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetSplineResolution.html) )
 
 Node implemented as property setter.
 
         ###Args:- attr_value: resolution
 
 
-## set_cyclic {#set_cyclic}
+## set_cyclic
+
+{#set_cyclic}
 
 > def set_cyclic(self, cyclic=None):
 
-Node [Set Spline Cyclic](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Set Spline Cyclic](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/set_spline_cyclic.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetSplineCyclic.html) )
 
         ### Args:
 - cyclic: Boolean
@@ -186,11 +247,13 @@ Node [Set Spline Cyclic](node.blender_ref) ( [api](node.blender_python_ref) )
 
 - node with sockets ['geometry']
 
-## set_material {#set_material}
+## set_material
+
+{#set_material}
 
 > def set_material(self, material=None):
 
-Node [Set Material](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Set Material](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/set_material.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetMaterial.html) )
 
         ### Args:
 - material: Material
@@ -199,11 +262,13 @@ Node [Set Material](node.blender_ref) ( [api](node.blender_python_ref) )
 
 - node with sockets ['geometry']
 
-## set_normal {#set_normal}
+## set_normal
+
+{#set_normal}
 
 > def set_normal(self, mode='MINIMUM_TWIST'):
 
-Node [Set Curve Normal](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Set Curve Normal](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/set_curve_normal.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetCurveNormal.html) )
 
         ### Args:
 - mode (str): 'MINIMUM_TWIST' in [MINIMUM_TWIST, Z_UP]
@@ -212,11 +277,13 @@ Node [Set Curve Normal](node.blender_ref) ( [api](node.blender_python_ref) )
 
 - node with sockets ['curve']
 
-## set_resolution {#set_resolution}
+## set_resolution
+
+{#set_resolution}
 
 > def set_resolution(self, resolution=None):
 
-Node [Set Spline Resolution](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Set Spline Resolution](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/set_spline_resolution.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetSplineResolution.html) )
 
         ### Args:
 - resolution: Integer
@@ -225,11 +292,13 @@ Node [Set Spline Resolution](node.blender_ref) ( [api](node.blender_python_ref) 
 
 - node with sockets ['geometry']
 
-## set_type {#set_type}
+## set_type
+
+{#set_type}
 
 > def set_type(self, spline_type='POLY'):
 
-Node [Set Spline Type](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Set Spline Type](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/set_spline_type.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveSplineType.html) )
 
         ### Args:
 - spline_type (str): 'POLY' in [CATMULL_ROM, POLY, BEZIER, NURBS]
@@ -238,21 +307,25 @@ Node [Set Spline Type](node.blender_ref) ( [api](node.blender_python_ref) )
 
 - node with sockets ['curve']
 
-## type *property* {#type}
+## type *property*
+
+{#type}
 
 > def type(self):
 
-Node [Set Spline Type](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Set Spline Type](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/set_spline_type.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveSplineType.html) )
 
 'type' is a write only property.
 Raise an exception if attempt to read.
 
 
-## type *etter* {#type}
+## type *etter*
+
+{#type}
 
 > def type(self, attr_value):
 
-Node [Set Spline Type](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Set Spline Type](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/set_spline_type.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveSplineType.html) )
 
 Node implemented as property setter.
 

@@ -1,10 +1,29 @@
-# class {class_name}
+# class Volume
 
-## Cube *classmethod* {#Cube}
+## title
+
+
+## title
+
+- [(gen.fname(wnode)](Cube-classmethod)
+
+## title
+
+
+## title
+
+- [(gen.fname(wnode)](distribute_points)
+- [(gen.fname(wnode)](distribute_points_grid)
+- [(gen.fname(wnode)](distribute_points_random)
+- [(gen.fname(wnode)](to_mesh)
+
+## Cube *classmethod*
+
+{#Cube}
 
 > def Cube(cls, density=None, background=None, min=None, max=None, resolution_x=None, resolution_y=None, resolution_z=None):
 
-Node [Volume Cube](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Volume Cube](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/volume/volume_cube.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeVolumeCube.html) )
 
         ### Args:
 - density: Float
@@ -19,11 +38,13 @@ Node [Volume Cube](node.blender_ref) ( [api](node.blender_python_ref) )
 
   socket 'volume'
 
-## distribute_points {#distribute_points}
+## distribute_points
+
+{#distribute_points}
 
 > def distribute_points(self, density=None, seed=None, spacing=None, threshold=None, mode='DENSITY_RANDOM'):
 
-Node [Distribute Points in Volume](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Distribute Points in Volume](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/point/distribute_points_in_volume.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeDistributePointsInVolume.html) )
 
         ### Args:
 - density: Float
@@ -36,11 +57,13 @@ Node [Distribute Points in Volume](node.blender_ref) ( [api](node.blender_python
 
   socket 'points' of class Points
 
-## distribute_points_grid {#distribute_points_grid}
+## distribute_points_grid
+
+{#distribute_points_grid}
 
 > def distribute_points_grid(self, spacing=None, threshold=None):
 
-Node [Distribute Points in Volume](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Distribute Points in Volume](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/point/distribute_points_in_volume.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeDistributePointsInVolume.html) )
 
         ### Args:
 - spacing: Vector
@@ -50,11 +73,13 @@ Node [Distribute Points in Volume](node.blender_ref) ( [api](node.blender_python
 
   socket 'points' of class Points
 
-## distribute_points_random {#distribute_points_random}
+## distribute_points_random
+
+{#distribute_points_random}
 
 > def distribute_points_random(self, density=None, seed=None):
 
-Node [Distribute Points in Volume](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Distribute Points in Volume](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/point/distribute_points_in_volume.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeDistributePointsInVolume.html) )
 
         ### Args:
 - density: Float
@@ -64,11 +89,13 @@ Node [Distribute Points in Volume](node.blender_ref) ( [api](node.blender_python
 
   socket 'points' of class Points
 
-## to_mesh {#to_mesh}
+## to_mesh
+
+{#to_mesh}
 
 > def to_mesh(self, voxel_size=None, voxel_amount=None, threshold=None, adaptivity=None, resolution_mode='GRID'):
 
-Node [Volume to Mesh](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Volume to Mesh](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/volume/volume_to_mesh.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeVolumeToMesh.html) )
 
         ### Args:
 - voxel_size: Float

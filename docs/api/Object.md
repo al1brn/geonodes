@@ -1,20 +1,43 @@
-# class {class_name}
+# class Object
 
-## Self *classmethod* {#Self}
+## title
+
+
+## title
+
+- [(gen.fname(wnode)](Self-classmethod)
+
+## title
+
+
+## title
+
+- [(gen.fname(wnode)](geometry)
+- [(gen.fname(wnode)](info)
+- [(gen.fname(wnode)](location)
+- [(gen.fname(wnode)](rotation)
+- [(gen.fname(wnode)](scale)
+- [(gen.fname(wnode)](switch)
+
+## Self *classmethod*
+
+{#Self}
 
 > def Self(cls):
 
-Node [Self Object](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Self Object](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/self_object.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSelfObject.html) )
 
 ### Returns:
 
   socket 'self_object'
 
-## geometry {#geometry}
+## geometry
+
+{#geometry}
 
 > def geometry(self, object=None, as_instance=None, transform_space='ORIGINAL'):
 
-Node [Object Info](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Object Info](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/object_info.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeObjectInfo.html) )
 
         ### Args:
 - object: Object
@@ -25,11 +48,13 @@ Node [Object Info](node.blender_ref) ( [api](node.blender_python_ref) )
 
   socket 'geometry'
 
-## info {#info}
+## info
+
+{#info}
 
 > def info(self, object=None, as_instance=None, transform_space='ORIGINAL'):
 
-Node [Object Info](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Object Info](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/object_info.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeObjectInfo.html) )
 
         ### Args:
 - object: Object
@@ -40,11 +65,13 @@ Node [Object Info](node.blender_ref) ( [api](node.blender_python_ref) )
 
 - node with sockets ['location', 'rotation', 'scale', 'geometry']
 
-## location {#location}
+## location
+
+{#location}
 
 > def location(self, object=None, as_instance=None, transform_space='ORIGINAL'):
 
-Node [Object Info](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Object Info](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/object_info.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeObjectInfo.html) )
 
         ### Args:
 - object: Object
@@ -55,11 +82,13 @@ Node [Object Info](node.blender_ref) ( [api](node.blender_python_ref) )
 
   socket 'location'
 
-## rotation {#rotation}
+## rotation
+
+{#rotation}
 
 > def rotation(self, object=None, as_instance=None, transform_space='ORIGINAL'):
 
-Node [Object Info](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Object Info](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/object_info.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeObjectInfo.html) )
 
         ### Args:
 - object: Object
@@ -70,11 +99,13 @@ Node [Object Info](node.blender_ref) ( [api](node.blender_python_ref) )
 
   socket 'rotation'
 
-## scale {#scale}
+## scale
+
+{#scale}
 
 > def scale(self, object=None, as_instance=None, transform_space='ORIGINAL'):
 
-Node [Object Info](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Object Info](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/object_info.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeObjectInfo.html) )
 
         ### Args:
 - object: Object
@@ -85,11 +116,13 @@ Node [Object Info](node.blender_ref) ( [api](node.blender_python_ref) )
 
   socket 'scale'
 
-## switch {#switch}
+## switch
+
+{#switch}
 
 > def switch(self, switch=None, true=None):
 
-Node [Switch](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html) )
 
         ### Args:
 - switch: ['Boolean', 'Boolean']

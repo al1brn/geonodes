@@ -1,10 +1,26 @@
-# class {class_name}
+# class Image
 
-## switch {#switch}
+## title
+
+
+## title
+
+
+## title
+
+
+## title
+
+- [(gen.fname(wnode)](switch)
+- [(gen.fname(wnode)](texture)
+
+## switch
+
+{#switch}
 
 > def switch(self, switch=None, true=None):
 
-Node [Switch](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html) )
 
         ### Args:
 - switch: ['Boolean', 'Boolean']
@@ -14,11 +30,13 @@ Node [Switch](node.blender_ref) ( [api](node.blender_python_ref) )
 
   socket 'output'
 
-## texture {#texture}
+## texture
+
+{#texture}
 
 > def texture(self, vector=None, frame=None, extension='REPEAT', interpolation='Linear'):
 
-Node [Image Texture](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Image Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/image.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeImageTexture.html) )
 
         ### Args:
 - vector: Vector

@@ -1,10 +1,28 @@
-# class {class_name}
+# class CloudPoint
 
-## domain_size {#domain_size}
+## title
+
+- [(gen.fname(wnode)](radius-property)
+
+## title
+
+
+## title
+
+
+## title
+
+- [(gen.fname(wnode)](domain_size)
+- [(gen.fname(wnode)](instance_on_points)
+- [(gen.fname(wnode)](to_vertices)
+
+## domain_size
+
+{#domain_size}
 
 > def __len__(self):
 
-Node [Domain Size](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html) )
 
         ### Args:
 - geometry: Geometry
@@ -14,11 +32,13 @@ Node [Domain Size](node.blender_ref) ( [api](node.blender_python_ref) )
 
 - node with sockets ['point_count', 'edge_count', 'face_count', 'face_corner_count', 'spline_count', 'instance_count']
 
-## instance_on_points {#instance_on_points}
+## instance_on_points
+
+{#instance_on_points}
 
 > def instance_on_points(self, instance=None, pick_instance=None, instance_index=None, rotation=None, scale=None):
 
-Node [Instance on Points](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Instance on Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instance_on_points.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInstanceOnPoints.html) )
 
         ### Args:
 - instance: Geometry
@@ -31,32 +51,38 @@ Node [Instance on Points](node.blender_ref) ( [api](node.blender_python_ref) )
 
   socket 'instances' of class Instances
 
-## radius *property* {#radius}
+## radius *property*
+
+{#radius}
 
 > def radius(self):
 
-Node [Radius](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Radius](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/radius.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputRadius.html) )
 
 ### Returns:
 
   socket 'radius'
 
-## radius *etter* {#radius}
+## radius *etter*
+
+{#radius}
 
 > def radius(self, attr_value):
 
-Node [Set Point Radius](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Set Point Radius](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/point/set_point_radius.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetPointRadius.html) )
 
 Node implemented as property setter.
 
         ###Args:- attr_value: radius
 
 
-## to_vertices {#to_vertices}
+## to_vertices
+
+{#to_vertices}
 
 > def to_vertices(self, points=None):
 
-Node [Points to Vertices](node.blender_ref) ( [api](node.blender_python_ref) )
+Node [Points to Vertices](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/point/points_to_vertices.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodePointsToVertices.html) )
 
         ### Args:
 - points: Points
