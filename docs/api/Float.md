@@ -89,7 +89,7 @@
 - [truncate](#truncate)
 - [wrap](#wrap)
 
-## Frame <span style="color:blue">*classmethod*</span>
+## Frame <sub>*classmethod*</sub>
 
 ```python
 def Frame(cls):
@@ -103,7 +103,7 @@ Node [Scene Time](https://docs.blender.org/manual/en/latest/modeling/geometry_no
 
 <sub>Go to [top](#class-Float)</sub>
 
-## Seconds <span style="color:blue">*classmethod*</span>
+## Seconds <sub>*classmethod*</sub>
 
 ```python
 def Seconds(cls):
@@ -117,7 +117,7 @@ Node [Scene Time](https://docs.blender.org/manual/en/latest/modeling/geometry_no
 
 <sub>Go to [top](#class-Float)</sub>
 
-## Value <span style="color:blue">*classmethod*</span>
+## Value <sub>*classmethod*</sub>
 
 ```python
 def Value(cls):
@@ -360,7 +360,7 @@ Node [Clamp](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/u
 
 <sub>Go to [top](#class-Float)</sub>
 
-## color_ramp <span style="color:blue">*property*</span>
+## color_ramp <sub>*property*</sub>
 
 ```python
 def color_ramp(self):

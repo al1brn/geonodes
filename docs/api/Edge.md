@@ -25,7 +25,7 @@
 - [split](#split)
 - [to_curve](#to_curve)
 
-## angle <span style="color:blue">*property*</span>
+## angle <sub>*property*</sub>
 
 ```python
 def angle(self):
@@ -136,7 +136,7 @@ Node [Extrude Mesh](https://docs.blender.org/manual/en/latest/modeling/geometry_
 
 <sub>Go to [top](#class-Edge)</sub>
 
-## neighbors <span style="color:blue">*property*</span>
+## neighbors <sub>*property*</sub>
 
 ```python
 def neighbors(self):
@@ -187,7 +187,7 @@ Node [Scale Elements](https://docs.blender.org/manual/en/latest/modeling/geometr
 
 <sub>Go to [top](#class-Edge)</sub>
 
-## signed_angle <span style="color:blue">*property*</span>
+## signed_angle <sub>*property*</sub>
 
 ```python
 def signed_angle(self):
@@ -229,7 +229,7 @@ Node [Mesh to Curve](https://docs.blender.org/manual/en/latest/modeling/geometry
 
 <sub>Go to [top](#class-Edge)</sub>
 
-## unsigned_angle <span style="color:blue">*property*</span>
+## unsigned_angle <sub>*property*</sub>
 
 ```python
 def unsigned_angle(self):
@@ -243,7 +243,7 @@ Node [Edge Angle](https://docs.blender.org/manual/en/latest/modeling/geometry_no
 
 <sub>Go to [top](#class-Edge)</sub>
 
-## vertices <span style="color:blue">*property*</span>
+## vertices <sub>*property*</sub>
 
 ```python
 def vertices(self):
@@ -257,7 +257,7 @@ Node [Edge Vertices](https://docs.blender.org/manual/en/latest/modeling/geometry
 
 <sub>Go to [top](#class-Edge)</sub>
 
-## vertices_index <span style="color:blue">*property*</span>
+## vertices_index <sub>*property*</sub>
 
 ```python
 def vertices_index(self):
@@ -271,7 +271,7 @@ Node [Edge Vertices](https://docs.blender.org/manual/en/latest/modeling/geometry
 
 <sub>Go to [top](#class-Edge)</sub>
 
-## vertices_position <span style="color:blue">*property*</span>
+## vertices_position <sub>*property*</sub>
 
 ```python
 def vertices_position(self):

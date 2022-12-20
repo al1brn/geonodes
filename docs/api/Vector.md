@@ -100,7 +100,7 @@
 - [tangent](#tangent)
 - [wrap](#wrap)
 
-## Combine <span style="color:blue">*classmethod*</span>
+## Combine <sub>*classmethod*</sub>
 
 ```python
 def Combine(cls, x=None, y=None, z=None):
@@ -119,7 +119,7 @@ Node [Combine XYZ](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 
 <sub>Go to [top](#class-Vector)</sub>
 
-## Vector <span style="color:blue">*classmethod*</span>
+## Vector <sub>*classmethod*</sub>
 
 ```python
 def Vector(cls, vector=[0.0, 0.0, 0.0]):
@@ -889,7 +889,7 @@ Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 
 <sub>Go to [top](#class-Vector)</sub>
 
-## length <span style="color:blue">*property*</span>
+## length <sub>*property*</sub>
 
 ```python
 def length(self):
@@ -1508,7 +1508,7 @@ Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 
 <sub>Go to [top](#class-Vector)</sub>
 
-## separate <span style="color:blue">*property*</span>
+## separate <sub>*property*</sub>
 
 ```python
 def separate(self):

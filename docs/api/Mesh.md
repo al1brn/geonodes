@@ -64,7 +64,7 @@
 - [triangulate](#triangulate)
 - [uv_unwrap](#uv_unwrap)
 
-## Circle <span style="color:blue">*classmethod*</span>
+## Circle <sub>*classmethod*</sub>
 
 ```python
 def Circle(cls, vertices=None, radius=None, fill_type='NONE'):
@@ -83,7 +83,7 @@ Node [Mesh Circle](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 
 <sub>Go to [top](#class-Mesh)</sub>
 
-## Circle <span style="color:blue">*classmethod*</span>
+## Circle <sub>*classmethod*</sub>
 
 ```python
 def Circle(cls, segments=None, rings=None, radius=None):
@@ -102,7 +102,7 @@ Node [UV Sphere](https://docs.blender.org/manual/en/latest/modeling/geometry_nod
 
 <sub>Go to [top](#class-Mesh)</sub>
 
-## Cone <span style="color:blue">*staticmethod*</span>
+## Cone <sub>*staticmethod*</sub>
 
 ```python
 def Cone(vertices=None, side_segments=None, fill_segments=None, radius_top=None, radius_bottom=None, depth=None, fill_type='NGON'):
@@ -125,7 +125,7 @@ Node [Cone](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/me
 
 <sub>Go to [top](#class-Mesh)</sub>
 
-## Cube <span style="color:blue">*classmethod*</span>
+## Cube <sub>*classmethod*</sub>
 
 ```python
 def Cube(cls, size=None, vertices_x=None, vertices_y=None, vertices_z=None):
@@ -145,7 +145,7 @@ Node [Cube](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/me
 
 <sub>Go to [top](#class-Mesh)</sub>
 
-## Cylinder <span style="color:blue">*staticmethod*</span>
+## Cylinder <sub>*staticmethod*</sub>
 
 ```python
 def Cylinder(vertices=None, side_segments=None, fill_segments=None, radius=None, depth=None, fill_type='NGON'):
@@ -167,7 +167,7 @@ Node [Cylinder](https://docs.blender.org/manual/en/latest/modeling/geometry_node
 
 <sub>Go to [top](#class-Mesh)</sub>
 
-## Grid <span style="color:blue">*classmethod*</span>
+## Grid <sub>*classmethod*</sub>
 
 ```python
 def Grid(cls, size_x=None, size_y=None, vertices_x=None, vertices_y=None):
@@ -187,7 +187,7 @@ Node [Grid](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/me
 
 <sub>Go to [top](#class-Mesh)</sub>
 
-## IcoSphere <span style="color:blue">*classmethod*</span>
+## IcoSphere <sub>*classmethod*</sub>
 
 ```python
 def IcoSphere(cls, radius=None, subdivisions=None):
@@ -205,7 +205,7 @@ Node [Ico Sphere](https://docs.blender.org/manual/en/latest/modeling/geometry_no
 
 <sub>Go to [top](#class-Mesh)</sub>
 
-## Line <span style="color:blue">*classmethod*</span>
+## Line <sub>*classmethod*</sub>
 
 ```python
 def Line(cls, count=None, resolution=None, start_location=None, offset=None, count_mode='TOTAL', mode='OFFSET'):
@@ -227,7 +227,7 @@ Node [Mesh Line](https://docs.blender.org/manual/en/latest/modeling/geometry_nod
 
 <sub>Go to [top](#class-Mesh)</sub>
 
-## LineEndPoints <span style="color:blue">*classmethod*</span>
+## LineEndPoints <sub>*classmethod*</sub>
 
 ```python
 def LineEndPoints(cls, count=None, start_location=None, end_location=None):
@@ -246,7 +246,7 @@ Node [Mesh Line](https://docs.blender.org/manual/en/latest/modeling/geometry_nod
 
 <sub>Go to [top](#class-Mesh)</sub>
 
-## LineEndPointsResolution <span style="color:blue">*classmethod*</span>
+## LineEndPointsResolution <sub>*classmethod*</sub>
 
 ```python
 def LineEndPointsResolution(cls, resolution=None, start_location=None, end_location=None):
@@ -265,7 +265,7 @@ Node [Mesh Line](https://docs.blender.org/manual/en/latest/modeling/geometry_nod
 
 <sub>Go to [top](#class-Mesh)</sub>
 
-## LineOffset <span style="color:blue">*classmethod*</span>
+## LineOffset <sub>*classmethod*</sub>
 
 ```python
 def LineOffset(cls, count=None, start_location=None, offset=None):
@@ -284,7 +284,7 @@ Node [Mesh Line](https://docs.blender.org/manual/en/latest/modeling/geometry_nod
 
 <sub>Go to [top](#class-Mesh)</sub>
 
-## LineOffsetResolution <span style="color:blue">*classmethod*</span>
+## LineOffsetResolution <sub>*classmethod*</sub>
 
 ```python
 def LineOffsetResolution(cls, resolution=None, start_location=None, offset=None):
@@ -360,7 +360,7 @@ Node [Mesh Boolean](https://docs.blender.org/manual/en/latest/modeling/geometry_
 
 <sub>Go to [top](#class-Mesh)</sub>
 
-## corner_count <span style="color:blue">*property*</span>
+## corner_count <sub>*property*</sub>
 
 ```python
 def corner_count(self):
@@ -453,7 +453,7 @@ Node [Distribute Points on Faces](https://docs.blender.org/manual/en/latest/mode
 
 <sub>Go to [top](#class-Mesh)</sub>
 
-## domain_size <span style="color:blue">*property*</span>
+## domain_size <sub>*property*</sub>
 
 ```python
 def domain_size(self):
@@ -487,7 +487,7 @@ Node [Dual Mesh](https://docs.blender.org/manual/en/latest/modeling/geometry_nod
 
 <sub>Go to [top](#class-Mesh)</sub>
 
-## edge_count <span style="color:blue">*property*</span>
+## edge_count <sub>*property*</sub>
 
 ```python
 def edge_count(self):
@@ -560,7 +560,7 @@ Node [Extrude Mesh](https://docs.blender.org/manual/en/latest/modeling/geometry_
 
 <sub>Go to [top](#class-Mesh)</sub>
 
-## face_count <span style="color:blue">*property*</span>
+## face_count <sub>*property*</sub>
 
 ```python
 def face_count(self):
@@ -663,7 +663,7 @@ Node [Is Shade Smooth](https://docs.blender.org/manual/en/latest/modeling/geomet
 
 <sub>Go to [top](#class-Mesh)</sub>
 
-## island <span style="color:blue">*property*</span>
+## island <sub>*property*</sub>
 
 ```python
 def island(self):
@@ -677,7 +677,7 @@ Node [Mesh Island](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 
 <sub>Go to [top](#class-Mesh)</sub>
 
-## island_count <span style="color:blue">*property*</span>
+## island_count <sub>*property*</sub>
 
 ```python
 def island_count(self):
@@ -691,7 +691,7 @@ Node [Mesh Island](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 
 <sub>Go to [top](#class-Mesh)</sub>
 
-## island_index <span style="color:blue">*property*</span>
+## island_index <sub>*property*</sub>
 
 ```python
 def island_index(self):
@@ -725,7 +725,7 @@ Node [Pack UV Islands](https://docs.blender.org/manual/en/latest/modeling/geomet
 
 <sub>Go to [top](#class-Mesh)</sub>
 
-## point_count <span style="color:blue">*property*</span>
+## point_count <sub>*property*</sub>
 
 ```python
 def point_count(self):

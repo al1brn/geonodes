@@ -13,7 +13,7 @@
 - [distribute_points_random](#distribute_points_random)
 - [to_mesh](#to_mesh)
 
-## Cube <span style="color:blue">*classmethod*</span>
+## Cube <sub>*classmethod*</sub>
 
 ```python
 def Cube(cls, density=None, background=None, min=None, max=None, resolution_x=None, resolution_y=None, resolution_z=None):

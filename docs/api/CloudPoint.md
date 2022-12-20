@@ -51,7 +51,7 @@ Node [Instance on Points](https://docs.blender.org/manual/en/latest/modeling/geo
 
 <sub>Go to [top](#class-CloudPoint)</sub>
 
-## radius <span style="color:blue">*property*</span>
+## radius <sub>*property*</sub>
 
 ```python
 def radius(self):
@@ -65,7 +65,7 @@ Node [Radius](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/
 
 <sub>Go to [top](#class-CloudPoint)</sub>
 
-## radius <span style="color:blue">*etter*</span>
+## radius <sub>*etter*</sub>
 
 ```python
 def radius(self, attr_value):

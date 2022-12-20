@@ -232,7 +232,7 @@ Node [Instance on Points](https://docs.blender.org/manual/en/latest/modeling/geo
 
 <sub>Go to [top](#class-ControlPoint)</sub>
 
-## left_handle_positions <span style="color:blue">*property*</span>
+## left_handle_positions <sub>*property*</sub>
 
 ```python
 def left_handle_positions(self):
@@ -246,7 +246,7 @@ Node [Curve Handle Positions](https://docs.blender.org/manual/en/latest/modeling
 
 <sub>Go to [top](#class-ControlPoint)</sub>
 
-## left_handle_positions <span style="color:blue">*etter*</span>
+## left_handle_positions <sub>*etter*</sub>
 
 ```python
 def left_handle_positions(self, attr_value):
@@ -278,7 +278,7 @@ Node [Offset Point in Curve](https://docs.blender.org/manual/en/latest/modeling/
 
 <sub>Go to [top](#class-ControlPoint)</sub>
 
-## parameter <span style="color:blue">*property*</span>
+## parameter <sub>*property*</sub>
 
 ```python
 def parameter(self):
@@ -292,7 +292,7 @@ Node [Spline Parameter](https://docs.blender.org/manual/en/latest/modeling/geome
 
 <sub>Go to [top](#class-ControlPoint)</sub>
 
-## parameter_factor <span style="color:blue">*property*</span>
+## parameter_factor <sub>*property*</sub>
 
 ```python
 def parameter_factor(self):
@@ -306,7 +306,7 @@ Node [Spline Parameter](https://docs.blender.org/manual/en/latest/modeling/geome
 
 <sub>Go to [top](#class-ControlPoint)</sub>
 
-## parameter_index <span style="color:blue">*property*</span>
+## parameter_index <sub>*property*</sub>
 
 ```python
 def parameter_index(self):
@@ -320,7 +320,7 @@ Node [Spline Parameter](https://docs.blender.org/manual/en/latest/modeling/geome
 
 <sub>Go to [top](#class-ControlPoint)</sub>
 
-## parameter_length <span style="color:blue">*property*</span>
+## parameter_length <sub>*property*</sub>
 
 ```python
 def parameter_length(self):
@@ -334,7 +334,7 @@ Node [Spline Parameter](https://docs.blender.org/manual/en/latest/modeling/geome
 
 <sub>Go to [top](#class-ControlPoint)</sub>
 
-## radius <span style="color:blue">*property*</span>
+## radius <sub>*property*</sub>
 
 ```python
 def radius(self):
@@ -348,7 +348,7 @@ Node [Radius](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/
 
 <sub>Go to [top](#class-ControlPoint)</sub>
 
-## radius <span style="color:blue">*etter*</span>
+## radius <sub>*etter*</sub>
 
 ```python
 def radius(self, attr_value):
@@ -363,7 +363,7 @@ Node implemented as property setter.
 
 <sub>Go to [top](#class-ControlPoint)</sub>
 
-## right_handle_positions <span style="color:blue">*property*</span>
+## right_handle_positions <sub>*property*</sub>
 
 ```python
 def right_handle_positions(self):
@@ -377,7 +377,7 @@ Node [Curve Handle Positions](https://docs.blender.org/manual/en/latest/modeling
 
 <sub>Go to [top](#class-ControlPoint)</sub>
 
-## right_handle_positions <span style="color:blue">*etter*</span>
+## right_handle_positions <sub>*etter*</sub>
 
 ```python
 def right_handle_positions(self, attr_value):
@@ -521,7 +521,7 @@ Node [Set Curve Tilt](https://docs.blender.org/manual/en/latest/modeling/geometr
 
 <sub>Go to [top](#class-ControlPoint)</sub>
 
-## tangent <span style="color:blue">*property*</span>
+## tangent <sub>*property*</sub>
 
 ```python
 def tangent(self):
@@ -535,7 +535,7 @@ Node [Curve Tangent](https://docs.blender.org/manual/en/latest/modeling/geometry
 
 <sub>Go to [top](#class-ControlPoint)</sub>
 
-## tilt <span style="color:blue">*property*</span>
+## tilt <sub>*property*</sub>
 
 ```python
 def tilt(self):
@@ -549,7 +549,7 @@ Node [Curve Tilt](https://docs.blender.org/manual/en/latest/modeling/geometry_no
 
 <sub>Go to [top](#class-ControlPoint)</sub>
 
-## tilt <span style="color:blue">*etter*</span>
+## tilt <sub>*etter*</sub>
 
 ```python
 def tilt(self, attr_value):

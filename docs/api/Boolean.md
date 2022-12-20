@@ -19,7 +19,7 @@
 - [xnor](#xnor)
 - [xor](#xor)
 
-## Boolean <span style="color:blue">*classmethod*</span>
+## Boolean <sub>*classmethod*</sub>
 
 ```python
 def Boolean(cls, boolean=False):

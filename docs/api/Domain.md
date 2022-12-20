@@ -52,7 +52,7 @@
 - [set_position](#set_position)
 - [store_named_attribute](#store_named_attribute)
 
-## ID <span style="color:blue">*property*</span>
+## ID <sub>*property*</sub>
 
 ```python
 def ID(self):
@@ -66,7 +66,7 @@ Node [ID](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/inpu
 
 <sub>Go to [top](#class-Domain)</sub>
 
-## ID <span style="color:blue">*etter*</span>
+## ID <sub>*etter*</sub>
 
 ```python
 def ID(self, attr_value):
@@ -286,7 +286,7 @@ Node [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geomet
 
 <sub>Go to [top](#class-Domain)</sub>
 
-## domain_index <span style="color:blue">*property*</span>
+## domain_index <sub>*property*</sub>
 
 ```python
 def domain_index(self):
@@ -420,7 +420,7 @@ Node [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geomet
 
 <sub>Go to [top](#class-Domain)</sub>
 
-## index <span style="color:blue">*property*</span>
+## index <sub>*property*</sub>
 
 ```python
 def index(self):
@@ -434,7 +434,7 @@ Node [Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/i
 
 <sub>Go to [top](#class-Domain)</sub>
 
-## material_index <span style="color:blue">*property*</span>
+## material_index <sub>*property*</sub>
 
 ```python
 def material_index(self):
@@ -483,7 +483,7 @@ Node [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geomet
 
 <sub>Go to [top](#class-Domain)</sub>
 
-## normal <span style="color:blue">*property*</span>
+## normal <sub>*property*</sub>
 
 ```python
 def normal(self):
@@ -497,7 +497,7 @@ Node [Normal](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/
 
 <sub>Go to [top](#class-Domain)</sub>
 
-## position <span style="color:blue">*property*</span>
+## position <sub>*property*</sub>
 
 ```python
 def position(self):
@@ -511,7 +511,7 @@ Node [Position](https://docs.blender.org/manual/en/latest/modeling/geometry_node
 
 <sub>Go to [top](#class-Domain)</sub>
 
-## position <span style="color:blue">*etter*</span>
+## position <sub>*etter*</sub>
 
 ```python
 def position(self, attr_value):

@@ -46,7 +46,7 @@
 
 - [switch](#switch)
 
-## brick <span style="color:blue">*staticmethod*</span>
+## brick <sub>*staticmethod*</sub>
 
 ```python
 def brick(vector=None, color1=None, color2=None, mortar=None, scale=None, mortar_size=None, mortar_smooth=None, bias=None, brick_width=None, row_height=None, offset=0.5, offset_frequency=2, squash=1.0, squash_frequency=2):
@@ -76,7 +76,7 @@ Node [Brick Texture](https://docs.blender.org/manual/en/latest/modeling/geometry
 
 <sub>Go to [top](#class-Texture)</sub>
 
-## checker <span style="color:blue">*staticmethod*</span>
+## checker <sub>*staticmethod*</sub>
 
 ```python
 def checker(vector=None, color1=None, color2=None, scale=None):
@@ -96,7 +96,7 @@ Node [Checker Texture](https://docs.blender.org/manual/en/latest/modeling/geomet
 
 <sub>Go to [top](#class-Texture)</sub>
 
-## gradient <span style="color:blue">*staticmethod*</span>
+## gradient <sub>*staticmethod*</sub>
 
 ```python
 def gradient(vector=None, gradient_type='LINEAR'):
@@ -114,7 +114,7 @@ Node [Gradient Texture](https://docs.blender.org/manual/en/latest/modeling/geome
 
 <sub>Go to [top](#class-Texture)</sub>
 
-## gradient_diagonal <span style="color:blue">*staticmethod*</span>
+## gradient_diagonal <sub>*staticmethod*</sub>
 
 ```python
 def gradient_diagonal(vector=None):
@@ -131,7 +131,7 @@ Node [Gradient Texture](https://docs.blender.org/manual/en/latest/modeling/geome
 
 <sub>Go to [top](#class-Texture)</sub>
 
-## gradient_easing <span style="color:blue">*staticmethod*</span>
+## gradient_easing <sub>*staticmethod*</sub>
 
 ```python
 def gradient_easing(vector=None):
@@ -148,7 +148,7 @@ Node [Gradient Texture](https://docs.blender.org/manual/en/latest/modeling/geome
 
 <sub>Go to [top](#class-Texture)</sub>
 
-## gradient_linear <span style="color:blue">*staticmethod*</span>
+## gradient_linear <sub>*staticmethod*</sub>
 
 ```python
 def gradient_linear(vector=None):
@@ -165,7 +165,7 @@ Node [Gradient Texture](https://docs.blender.org/manual/en/latest/modeling/geome
 
 <sub>Go to [top](#class-Texture)</sub>
 
-## gradient_quadratic <span style="color:blue">*staticmethod*</span>
+## gradient_quadratic <sub>*staticmethod*</sub>
 
 ```python
 def gradient_quadratic(vector=None):
@@ -182,7 +182,7 @@ Node [Gradient Texture](https://docs.blender.org/manual/en/latest/modeling/geome
 
 <sub>Go to [top](#class-Texture)</sub>
 
-## gradient_quadratic_sphere <span style="color:blue">*staticmethod*</span>
+## gradient_quadratic_sphere <sub>*staticmethod*</sub>
 
 ```python
 def gradient_quadratic_sphere(vector=None):
@@ -199,7 +199,7 @@ Node [Gradient Texture](https://docs.blender.org/manual/en/latest/modeling/geome
 
 <sub>Go to [top](#class-Texture)</sub>
 
-## gradient_radial <span style="color:blue">*staticmethod*</span>
+## gradient_radial <sub>*staticmethod*</sub>
 
 ```python
 def gradient_radial(vector=None):
@@ -216,7 +216,7 @@ Node [Gradient Texture](https://docs.blender.org/manual/en/latest/modeling/geome
 
 <sub>Go to [top](#class-Texture)</sub>
 
-## gradient_spherical <span style="color:blue">*staticmethod*</span>
+## gradient_spherical <sub>*staticmethod*</sub>
 
 ```python
 def gradient_spherical(vector=None):
@@ -233,7 +233,7 @@ Node [Gradient Texture](https://docs.blender.org/manual/en/latest/modeling/geome
 
 <sub>Go to [top](#class-Texture)</sub>
 
-## image <span style="color:blue">*staticmethod*</span>
+## image <sub>*staticmethod*</sub>
 
 ```python
 def image(image=None, vector=None, frame=None, extension='REPEAT', interpolation='Linear'):
@@ -254,7 +254,7 @@ Node [Image Texture](https://docs.blender.org/manual/en/latest/modeling/geometry
 
 <sub>Go to [top](#class-Texture)</sub>
 
-## magic <span style="color:blue">*staticmethod*</span>
+## magic <sub>*staticmethod*</sub>
 
 ```python
 def magic(vector=None, scale=None, distortion=None, turbulence_depth=2):
@@ -274,7 +274,7 @@ Node [Magic Texture](https://docs.blender.org/manual/en/latest/modeling/geometry
 
 <sub>Go to [top](#class-Texture)</sub>
 
-## musgrave <span style="color:blue">*staticmethod*</span>
+## musgrave <sub>*staticmethod*</sub>
 
 ```python
 def musgrave(vector=None, w=None, scale=None, detail=None, dimension=None, lacunarity=None, offset=None, gain=None, musgrave_dimensions='3D', musgrave_type='FBM'):
@@ -300,7 +300,7 @@ Node [Musgrave Texture](https://docs.blender.org/manual/en/latest/modeling/geome
 
 <sub>Go to [top](#class-Texture)</sub>
 
-## noise <span style="color:blue">*staticmethod*</span>
+## noise <sub>*staticmethod*</sub>
 
 ```python
 def noise(vector=None, w=None, scale=None, detail=None, roughness=None, distortion=None, noise_dimensions='3D'):
@@ -323,7 +323,7 @@ Node [Noise Texture](https://docs.blender.org/manual/en/latest/modeling/geometry
 
 <sub>Go to [top](#class-Texture)</sub>
 
-## noise_1D <span style="color:blue">*staticmethod*</span>
+## noise_1D <sub>*staticmethod*</sub>
 
 ```python
 def noise_1D(w=None, scale=None, detail=None, roughness=None, distortion=None):
@@ -344,7 +344,7 @@ Node [Noise Texture](https://docs.blender.org/manual/en/latest/modeling/geometry
 
 <sub>Go to [top](#class-Texture)</sub>
 
-## noise_2D <span style="color:blue">*staticmethod*</span>
+## noise_2D <sub>*staticmethod*</sub>
 
 ```python
 def noise_2D(vector=None, scale=None, detail=None, roughness=None, distortion=None):
@@ -365,7 +365,7 @@ Node [Noise Texture](https://docs.blender.org/manual/en/latest/modeling/geometry
 
 <sub>Go to [top](#class-Texture)</sub>
 
-## noise_3D <span style="color:blue">*staticmethod*</span>
+## noise_3D <sub>*staticmethod*</sub>
 
 ```python
 def noise_3D(vector=None, scale=None, detail=None, roughness=None, distortion=None):
@@ -386,7 +386,7 @@ Node [Noise Texture](https://docs.blender.org/manual/en/latest/modeling/geometry
 
 <sub>Go to [top](#class-Texture)</sub>
 
-## noise_4D <span style="color:blue">*staticmethod*</span>
+## noise_4D <sub>*staticmethod*</sub>
 
 ```python
 def noise_4D(vector=None, w=None, scale=None, detail=None, roughness=None, distortion=None):
@@ -426,7 +426,7 @@ Node [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/
 
 <sub>Go to [top](#class-Texture)</sub>
 
-## voronoi <span style="color:blue">*staticmethod*</span>
+## voronoi <sub>*staticmethod*</sub>
 
 ```python
 def voronoi(vector=None, w=None, scale=None, smoothness=None, exponent=None, randomness=None, distance='EUCLIDEAN', feature='F1', voronoi_dimensions='3D'):
@@ -451,7 +451,7 @@ Node [Voronoi Texture](https://docs.blender.org/manual/en/latest/modeling/geomet
 
 <sub>Go to [top](#class-Texture)</sub>
 
-## voronoi_1D <span style="color:blue">*staticmethod*</span>
+## voronoi_1D <sub>*staticmethod*</sub>
 
 ```python
 def voronoi_1D(w=None, scale=None, smoothness=None, exponent=None, randomness=None, distance='EUCLIDEAN', feature='F1', voronoi_dimensions='3D'):
@@ -475,7 +475,7 @@ Node [Voronoi Texture](https://docs.blender.org/manual/en/latest/modeling/geomet
 
 <sub>Go to [top](#class-Texture)</sub>
 
-## voronoi_2D <span style="color:blue">*staticmethod*</span>
+## voronoi_2D <sub>*staticmethod*</sub>
 
 ```python
 def voronoi_2D(vector=None, scale=None, smoothness=None, exponent=None, randomness=None, distance='EUCLIDEAN', feature='F1', voronoi_dimensions='3D'):
@@ -499,7 +499,7 @@ Node [Voronoi Texture](https://docs.blender.org/manual/en/latest/modeling/geomet
 
 <sub>Go to [top](#class-Texture)</sub>
 
-## voronoi_3D <span style="color:blue">*staticmethod*</span>
+## voronoi_3D <sub>*staticmethod*</sub>
 
 ```python
 def voronoi_3D(vector=None, scale=None, smoothness=None, exponent=None, randomness=None, distance='EUCLIDEAN', feature='F1', voronoi_dimensions='3D'):
@@ -523,7 +523,7 @@ Node [Voronoi Texture](https://docs.blender.org/manual/en/latest/modeling/geomet
 
 <sub>Go to [top](#class-Texture)</sub>
 
-## voronoi_4D <span style="color:blue">*staticmethod*</span>
+## voronoi_4D <sub>*staticmethod*</sub>
 
 ```python
 def voronoi_4D(vector=None, w=None, scale=None, smoothness=None, exponent=None, randomness=None, distance='EUCLIDEAN', feature='F1', voronoi_dimensions='3D'):
@@ -548,7 +548,7 @@ Node [Voronoi Texture](https://docs.blender.org/manual/en/latest/modeling/geomet
 
 <sub>Go to [top](#class-Texture)</sub>
 
-## wave <span style="color:blue">*staticmethod*</span>
+## wave <sub>*staticmethod*</sub>
 
 ```python
 def wave(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, bands_direction='X', rings_direction='X', wave_profile='SIN', wave_type='BANDS'):
@@ -575,7 +575,7 @@ Node [Wave Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_
 
 <sub>Go to [top](#class-Texture)</sub>
 
-## wave_bands <span style="color:blue">*staticmethod*</span>
+## wave_bands <sub>*staticmethod*</sub>
 
 ```python
 def wave_bands(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X', wave_profile='SIN'):
@@ -600,7 +600,7 @@ Node [Wave Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_
 
 <sub>Go to [top](#class-Texture)</sub>
 
-## wave_bands_saw <span style="color:blue">*staticmethod*</span>
+## wave_bands_saw <sub>*staticmethod*</sub>
 
 ```python
 def wave_bands_saw(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X'):
@@ -624,7 +624,7 @@ Node [Wave Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_
 
 <sub>Go to [top](#class-Texture)</sub>
 
-## wave_bands_sine <span style="color:blue">*staticmethod*</span>
+## wave_bands_sine <sub>*staticmethod*</sub>
 
 ```python
 def wave_bands_sine(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X'):
@@ -648,7 +648,7 @@ Node [Wave Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_
 
 <sub>Go to [top](#class-Texture)</sub>
 
-## wave_bands_triangle <span style="color:blue">*staticmethod*</span>
+## wave_bands_triangle <sub>*staticmethod*</sub>
 
 ```python
 def wave_bands_triangle(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X'):
@@ -672,7 +672,7 @@ Node [Wave Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_
 
 <sub>Go to [top](#class-Texture)</sub>
 
-## wave_rings <span style="color:blue">*staticmethod*</span>
+## wave_rings <sub>*staticmethod*</sub>
 
 ```python
 def wave_rings(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X', wave_profile='SIN'):
@@ -697,7 +697,7 @@ Node [Wave Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_
 
 <sub>Go to [top](#class-Texture)</sub>
 
-## wave_rings_saw <span style="color:blue">*staticmethod*</span>
+## wave_rings_saw <sub>*staticmethod*</sub>
 
 ```python
 def wave_rings_saw(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X'):
@@ -721,7 +721,7 @@ Node [Wave Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_
 
 <sub>Go to [top](#class-Texture)</sub>
 
-## wave_rings_sine <span style="color:blue">*staticmethod*</span>
+## wave_rings_sine <sub>*staticmethod*</sub>
 
 ```python
 def wave_rings_sine(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X'):
@@ -745,7 +745,7 @@ Node [Wave Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_
 
 <sub>Go to [top](#class-Texture)</sub>
 
-## wave_rings_triangle <span style="color:blue">*staticmethod*</span>
+## wave_rings_triangle <sub>*staticmethod*</sub>
 
 ```python
 def wave_rings_triangle(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X'):
@@ -769,7 +769,7 @@ Node [Wave Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_
 
 <sub>Go to [top](#class-Texture)</sub>
 
-## white_noise <span style="color:blue">*staticmethod*</span>
+## white_noise <sub>*staticmethod*</sub>
 
 ```python
 def white_noise(vector=None, w=None, noise_dimensions='3D'):
@@ -788,7 +788,7 @@ Node [White Noise Texture](https://docs.blender.org/manual/en/latest/modeling/ge
 
 <sub>Go to [top](#class-Texture)</sub>
 
-## white_noise_1D <span style="color:blue">*staticmethod*</span>
+## white_noise_1D <sub>*staticmethod*</sub>
 
 ```python
 def white_noise_1D(w=None):
@@ -805,7 +805,7 @@ Node [White Noise Texture](https://docs.blender.org/manual/en/latest/modeling/ge
 
 <sub>Go to [top](#class-Texture)</sub>
 
-## white_noise_2D <span style="color:blue">*staticmethod*</span>
+## white_noise_2D <sub>*staticmethod*</sub>
 
 ```python
 def white_noise_2D(vector=None):
@@ -822,7 +822,7 @@ Node [White Noise Texture](https://docs.blender.org/manual/en/latest/modeling/ge
 
 <sub>Go to [top](#class-Texture)</sub>
 
-## white_noise_3D <span style="color:blue">*staticmethod*</span>
+## white_noise_3D <sub>*staticmethod*</sub>
 
 ```python
 def white_noise_3D(vector=None):
@@ -839,7 +839,7 @@ Node [White Noise Texture](https://docs.blender.org/manual/en/latest/modeling/ge
 
 <sub>Go to [top](#class-Texture)</sub>
 
-## white_noise_4D <span style="color:blue">*staticmethod*</span>
+## white_noise_4D <sub>*staticmethod*</sub>
 
 ```python
 def white_noise_4D(vector=None, w=None):

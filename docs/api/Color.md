@@ -50,7 +50,7 @@
 - [mix_value](#mix_value)
 - [switch](#switch)
 
-## Color <span style="color:blue">*classmethod*</span>
+## Color <sub>*classmethod*</sub>
 
 ```python
 def Color(cls):
@@ -64,7 +64,7 @@ Node [Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/i
 
 <sub>Go to [top](#class-Color)</sub>
 
-## HSL <span style="color:blue">*classmethod*</span>
+## HSL <sub>*classmethod*</sub>
 
 ```python
 def HSL(cls, hue=None, saturation=None, lightness=None, alpha=None):
@@ -84,7 +84,7 @@ Node [Combine Color](https://docs.blender.org/manual/en/latest/modeling/geometry
 
 <sub>Go to [top](#class-Color)</sub>
 
-## HSV <span style="color:blue">*classmethod*</span>
+## HSV <sub>*classmethod*</sub>
 
 ```python
 def HSV(cls, hue=None, saturation=None, value=None, alpha=None):
@@ -104,7 +104,7 @@ Node [Combine Color](https://docs.blender.org/manual/en/latest/modeling/geometry
 
 <sub>Go to [top](#class-Color)</sub>
 
-## RGB <span style="color:blue">*classmethod*</span>
+## RGB <sub>*classmethod*</sub>
 
 ```python
 def RGB(cls, red=None, green=None, blue=None, alpha=None):
@@ -124,7 +124,7 @@ Node [Combine Color](https://docs.blender.org/manual/en/latest/modeling/geometry
 
 <sub>Go to [top](#class-Color)</sub>
 
-## alpha <span style="color:blue">*property*</span>
+## alpha <sub>*property*</sub>
 
 ```python
 def alpha(self):
@@ -140,7 +140,7 @@ Node implemented as property.
 
 <sub>Go to [top](#class-Color)</sub>
 
-## blue <span style="color:blue">*property*</span>
+## blue <sub>*property*</sub>
 
 ```python
 def blue(self):
@@ -245,7 +245,7 @@ Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 
 <sub>Go to [top](#class-Color)</sub>
 
-## green <span style="color:blue">*property*</span>
+## green <sub>*property*</sub>
 
 ```python
 def green(self):
@@ -261,7 +261,7 @@ Node implemented as property.
 
 <sub>Go to [top](#class-Color)</sub>
 
-## hsl <span style="color:blue">*property*</span>
+## hsl <sub>*property*</sub>
 
 ```python
 def hsl(self):
@@ -277,7 +277,7 @@ Node implemented as property.
 
 <sub>Go to [top](#class-Color)</sub>
 
-## hsv <span style="color:blue">*property*</span>
+## hsv <sub>*property*</sub>
 
 ```python
 def hsv(self):
@@ -293,7 +293,7 @@ Node implemented as property.
 
 <sub>Go to [top](#class-Color)</sub>
 
-## hue <span style="color:blue">*property*</span>
+## hue <sub>*property*</sub>
 
 ```python
 def hue(self):
@@ -309,7 +309,7 @@ Node implemented as property.
 
 <sub>Go to [top](#class-Color)</sub>
 
-## lightness <span style="color:blue">*property*</span>
+## lightness <sub>*property*</sub>
 
 ```python
 def lightness(self):
@@ -686,7 +686,7 @@ Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/col
 
 <sub>Go to [top](#class-Color)</sub>
 
-## red <span style="color:blue">*property*</span>
+## red <sub>*property*</sub>
 
 ```python
 def red(self):
@@ -702,7 +702,7 @@ Node implemented as property.
 
 <sub>Go to [top](#class-Color)</sub>
 
-## rgb <span style="color:blue">*property*</span>
+## rgb <sub>*property*</sub>
 
 ```python
 def rgb(self):
@@ -718,7 +718,7 @@ Node implemented as property.
 
 <sub>Go to [top](#class-Color)</sub>
 
-## rgb_curves <span style="color:blue">*property*</span>
+## rgb_curves <sub>*property*</sub>
 
 ```python
 def rgb_curves(self, fac=None):
@@ -734,7 +734,7 @@ Node implemented as property.
 
 <sub>Go to [top](#class-Color)</sub>
 
-## saturation <span style="color:blue">*property*</span>
+## saturation <sub>*property*</sub>
 
 ```python
 def saturation(self):
@@ -768,7 +768,7 @@ Node [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/
 
 <sub>Go to [top](#class-Color)</sub>
 
-## value <span style="color:blue">*property*</span>
+## value <sub>*property*</sub>
 
 ```python
 def value(self):

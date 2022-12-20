@@ -73,7 +73,7 @@
 - [to_instance](#to_instance)
 - [transform](#transform)
 
-## Collection <span style="color:blue">*classmethod*</span>
+## Collection <sub>*classmethod*</sub>
 
 ```python
 def Collection(cls, collection=None, separate_children=None, reset_children=None, transform_space='ORIGINAL'):
@@ -93,7 +93,7 @@ Node [Collection Info](https://docs.blender.org/manual/en/latest/modeling/geomet
 
 <sub>Go to [top](#class-Geometry)</sub>
 
-## ID <span style="color:blue">*property*</span>
+## ID <sub>*property*</sub>
 
 ```python
 def ID(self):
@@ -126,7 +126,7 @@ Node [Attribute Statistic](https://docs.blender.org/manual/en/latest/modeling/ge
 
 <sub>Go to [top](#class-Geometry)</sub>
 
-## bounding_box <span style="color:blue">*property*</span>
+## bounding_box <sub>*property*</sub>
 
 ```python
 def bounding_box(self):
@@ -142,7 +142,7 @@ Node implemented as property.
 
 <sub>Go to [top](#class-Geometry)</sub>
 
-## bounding_box_min <span style="color:blue">*property*</span>
+## bounding_box_min <sub>*property*</sub>
 
 ```python
 def bounding_box_min(self):
@@ -158,7 +158,7 @@ Node implemented as property.
 
 <sub>Go to [top](#class-Geometry)</sub>
 
-## bounding_box_min <span style="color:blue">*property*</span>
+## bounding_box_min <sub>*property*</sub>
 
 ```python
 def bounding_box_min(self):
@@ -212,7 +212,7 @@ Node [Capture Attribute](https://docs.blender.org/manual/en/latest/modeling/geom
 
 <sub>Go to [top](#class-Geometry)</sub>
 
-## convex_hull <span style="color:blue">*property*</span>
+## convex_hull <sub>*property*</sub>
 
 ```python
 def convex_hull(self):
@@ -228,7 +228,7 @@ Node implemented as property.
 
 <sub>Go to [top](#class-Geometry)</sub>
 
-## curve_component <span style="color:blue">*property*</span>
+## curve_component <sub>*property*</sub>
 
 ```python
 def curve_component(self):
@@ -263,7 +263,7 @@ Node [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geomet
 
 <sub>Go to [top](#class-Geometry)</sub>
 
-## domain_size <span style="color:blue">*property*</span>
+## domain_size <sub>*property*</sub>
 
 ```python
 def domain_size(self, component='MESH'):
@@ -402,7 +402,7 @@ Node [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geomet
 
 <sub>Go to [top](#class-Geometry)</sub>
 
-## index <span style="color:blue">*property*</span>
+## index <sub>*property*</sub>
 
 ```python
 def index(self):
@@ -416,7 +416,7 @@ Node [Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/i
 
 <sub>Go to [top](#class-Geometry)</sub>
 
-## instances_component <span style="color:blue">*property*</span>
+## instances_component <sub>*property*</sub>
 
 ```python
 def instances_component(self):
@@ -432,7 +432,7 @@ Node implemented as property.
 
 <sub>Go to [top](#class-Geometry)</sub>
 
-## is_viewport <span style="color:blue">*property*</span>
+## is_viewport <sub>*property*</sub>
 
 ```python
 def is_viewport(self):
@@ -463,7 +463,7 @@ Node [Join Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry
 
 <sub>Go to [top](#class-Geometry)</sub>
 
-## material_index <span style="color:blue">*property*</span>
+## material_index <sub>*property*</sub>
 
 ```python
 def material_index(self):
@@ -513,7 +513,7 @@ Node [Merge by Distance](https://docs.blender.org/manual/en/latest/modeling/geom
 
 <sub>Go to [top](#class-Geometry)</sub>
 
-## mesh_component <span style="color:blue">*property*</span>
+## mesh_component <sub>*property*</sub>
 
 ```python
 def mesh_component(self):
@@ -547,7 +547,7 @@ Node [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geomet
 
 <sub>Go to [top](#class-Geometry)</sub>
 
-## normal <span style="color:blue">*property*</span>
+## normal <sub>*property*</sub>
 
 ```python
 def normal(self):
@@ -561,7 +561,7 @@ Node [Normal](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/
 
 <sub>Go to [top](#class-Geometry)</sub>
 
-## points_component <span style="color:blue">*property*</span>
+## points_component <sub>*property*</sub>
 
 ```python
 def points_component(self):
@@ -577,7 +577,7 @@ Node implemented as property.
 
 <sub>Go to [top](#class-Geometry)</sub>
 
-## position <span style="color:blue">*property*</span>
+## position <sub>*property*</sub>
 
 ```python
 def position(self):
@@ -664,7 +664,7 @@ Node [Geometry Proximity](https://docs.blender.org/manual/en/latest/modeling/geo
 
 <sub>Go to [top](#class-Geometry)</sub>
 
-## radius <span style="color:blue">*property*</span>
+## radius <sub>*property*</sub>
 
 ```python
 def radius(self):
@@ -913,7 +913,7 @@ Node [Separate Geometry](https://docs.blender.org/manual/en/latest/modeling/geom
 
 <sub>Go to [top](#class-Geometry)</sub>
 
-## separate_components <span style="color:blue">*property*</span>
+## separate_components <sub>*property*</sub>
 
 ```python
 def separate_components(self):
@@ -1170,7 +1170,7 @@ Node [Transform](https://docs.blender.org/manual/en/latest/modeling/geometry_nod
 
 <sub>Go to [top](#class-Geometry)</sub>
 
-## volume_component <span style="color:blue">*property*</span>
+## volume_component <sub>*property*</sub>
 
 ```python
 def volume_component(self):

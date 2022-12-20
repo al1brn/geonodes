@@ -13,7 +13,7 @@
 - [rotate_axis_angle](#rotate_axis_angle)
 - [rotate_euler](#rotate_euler)
 
-## AxisAngle <span style="color:blue">*classmethod*</span>
+## AxisAngle <sub>*classmethod*</sub>
 
 ```python
 def AxisAngle(cls, rotation=None, axis=None, angle=None, space='OBJECT'):
@@ -33,7 +33,7 @@ Node [Rotate Euler](https://docs.blender.org/manual/en/latest/modeling/geometry_
 
 <sub>Go to [top](#class-Rotation)</sub>
 
-## Euler <span style="color:blue">*classmethod*</span>
+## Euler <sub>*classmethod*</sub>
 
 ```python
 def Euler(cls, rotation=None, rotate_by=None, space='OBJECT'):

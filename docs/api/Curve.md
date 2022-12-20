@@ -51,7 +51,7 @@
 - [trim_factor](#trim_factor)
 - [trim_length](#trim_length)
 
-## Arc <span style="color:blue">*classmethod*</span>
+## Arc <sub>*classmethod*</sub>
 
 ```python
 def Arc(cls, resolution=None, radius=None, start_angle=None, sweep_angle=None, connect_center=None, invert_arc=None):
@@ -73,7 +73,7 @@ Node [Arc](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/cur
 
 <sub>Go to [top](#class-Curve)</sub>
 
-## ArcFromPoints <span style="color:blue">*classmethod*</span>
+## ArcFromPoints <sub>*classmethod*</sub>
 
 ```python
 def ArcFromPoints(cls, resolution=None, start=None, middle=None, end=None, offset_angle=None, connect_center=None, invert_arc=None):
@@ -96,7 +96,7 @@ Node [Arc](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/cur
 
 <sub>Go to [top](#class-Curve)</sub>
 
-## Circle <span style="color:blue">*classmethod*</span>
+## Circle <sub>*classmethod*</sub>
 
 ```python
 def Circle(cls, resolution=None, radius=None):
@@ -114,7 +114,7 @@ Node [Curve Circle](https://docs.blender.org/manual/en/latest/modeling/geometry_
 
 <sub>Go to [top](#class-Curve)</sub>
 
-## CircleFromPoints <span style="color:blue">*classmethod*</span>
+## CircleFromPoints <sub>*classmethod*</sub>
 
 ```python
 def CircleFromPoints(cls, resolution=None, point_1=None, point_2=None, point_3=None):
@@ -134,7 +134,7 @@ Node [Curve Circle](https://docs.blender.org/manual/en/latest/modeling/geometry_
 
 <sub>Go to [top](#class-Curve)</sub>
 
-## Line <span style="color:blue">*classmethod*</span>
+## Line <sub>*classmethod*</sub>
 
 ```python
 def Line(cls, start=None, end=None):
@@ -152,7 +152,7 @@ Node [Curve Line](https://docs.blender.org/manual/en/latest/modeling/geometry_no
 
 <sub>Go to [top](#class-Curve)</sub>
 
-## LineDirection <span style="color:blue">*classmethod*</span>
+## LineDirection <sub>*classmethod*</sub>
 
 ```python
 def LineDirection(cls, start=None, direction=None, length=None):
@@ -171,7 +171,7 @@ Node [Curve Line](https://docs.blender.org/manual/en/latest/modeling/geometry_no
 
 <sub>Go to [top](#class-Curve)</sub>
 
-## QuadraticBezier <span style="color:blue">*classmethod*</span>
+## QuadraticBezier <sub>*classmethod*</sub>
 
 ```python
 def QuadraticBezier(cls, resolution=None, start=None, middle=None, end=None):
@@ -191,7 +191,7 @@ Node [Quadratic Bezier](https://docs.blender.org/manual/en/latest/modeling/geome
 
 <sub>Go to [top](#class-Curve)</sub>
 
-## Quadrilateral <span style="color:blue">*classmethod*</span>
+## Quadrilateral <sub>*classmethod*</sub>
 
 ```python
 def Quadrilateral(cls, width=None, height=None, bottom_width=None, top_width=None, offset=None, bottom_height=None, top_height=None, point_1=None, point_2=None, point_3=None, point_4=None, mode='RECTANGLE'):
@@ -219,7 +219,7 @@ Node [Quadrilateral](https://docs.blender.org/manual/en/latest/modeling/geometry
 
 <sub>Go to [top](#class-Curve)</sub>
 
-## Spiral <span style="color:blue">*classmethod*</span>
+## Spiral <sub>*classmethod*</sub>
 
 ```python
 def Spiral(cls, resolution=None, rotations=None, start_radius=None, end_radius=None, height=None, reverse=None):
@@ -241,7 +241,7 @@ Node [Spiral](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/
 
 <sub>Go to [top](#class-Curve)</sub>
 
-## Star <span style="color:blue">*classmethod*</span>
+## Star <sub>*classmethod*</sub>
 
 ```python
 def Star(cls, points=None, inner_radius=None, outer_radius=None, twist=None):
@@ -261,7 +261,7 @@ Node [Star](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/cu
 
 <sub>Go to [top](#class-Curve)</sub>
 
-## bezier_segment <span style="color:blue">*classmethod*</span>
+## bezier_segment <sub>*classmethod*</sub>
 
 ```python
 def bezier_segment(cls, resolution=None, start=None, start_handle=None, end_handle=None, end=None, mode='POSITION'):
@@ -314,7 +314,7 @@ Node [Deform Curves on Surface](https://docs.blender.org/manual/en/latest/modeli
 
 <sub>Go to [top](#class-Curve)</sub>
 
-## domain_size <span style="color:blue">*property*</span>
+## domain_size <sub>*property*</sub>
 
 ```python
 def domain_size(self):
@@ -461,7 +461,7 @@ Node [Instance on Points](https://docs.blender.org/manual/en/latest/modeling/geo
 
 <sub>Go to [top](#class-Curve)</sub>
 
-## length <span style="color:blue">*property*</span>
+## length <sub>*property*</sub>
 
 ```python
 def length(self):
@@ -495,7 +495,7 @@ Node [Offset Point in Curve](https://docs.blender.org/manual/en/latest/modeling/
 
 <sub>Go to [top](#class-Curve)</sub>
 
-## point_count <span style="color:blue">*property*</span>
+## point_count <sub>*property*</sub>
 
 ```python
 def point_count(self):
@@ -643,7 +643,7 @@ Node [Sample Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_
 
 <sub>Go to [top](#class-Curve)</sub>
 
-## spline_count <span style="color:blue">*property*</span>
+## spline_count <sub>*property*</sub>
 
 ```python
 def spline_count(self):

@@ -20,7 +20,7 @@
 - [to_points](#to_points)
 - [translate](#translate)
 
-## InstanceOnPoints <span style="color:blue">*classmethod*</span>
+## InstanceOnPoints <sub>*classmethod*</sub>
 
 ```python
 def InstanceOnPoints(cls, points=None, selection=None, instance=None, pick_instance=None, instance_index=None, rotation=None, scale=None):
@@ -43,7 +43,7 @@ Node [Instance on Points](https://docs.blender.org/manual/en/latest/modeling/geo
 
 <sub>Go to [top](#class-Instances)</sub>
 
-## domain_size <span style="color:blue">*property*</span>
+## domain_size <sub>*property*</sub>
 
 ```python
 def domain_size(self):
@@ -119,7 +119,7 @@ Node [Rotate Instances](https://docs.blender.org/manual/en/latest/modeling/geome
 
 <sub>Go to [top](#class-Instances)</sub>
 
-## rotation <span style="color:blue">*property*</span>
+## rotation <sub>*property*</sub>
 
 ```python
 def rotation(self):
@@ -133,7 +133,7 @@ Node [Instance Rotation](https://docs.blender.org/manual/en/latest/modeling/geom
 
 <sub>Go to [top](#class-Instances)</sub>
 
-## scale <span style="color:blue">*property*</span>
+## scale <sub>*property*</sub>
 
 ```python
 def scale(self):

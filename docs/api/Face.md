@@ -34,7 +34,7 @@
 - [triangulate](#triangulate)
 - [uv_unwrap](#uv_unwrap)
 
-## area <span style="color:blue">*property*</span>
+## area <sub>*property*</sub>
 
 ```python
 def area(self):
@@ -210,7 +210,7 @@ Node [Face is Planar](https://docs.blender.org/manual/en/latest/modeling/geometr
 
 <sub>Go to [top](#class-Face)</sub>
 
-## island <span style="color:blue">*property*</span>
+## island <sub>*property*</sub>
 
 ```python
 def island(self):
@@ -224,7 +224,7 @@ Node [Mesh Island](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 
 <sub>Go to [top](#class-Face)</sub>
 
-## island_count <span style="color:blue">*property*</span>
+## island_count <sub>*property*</sub>
 
 ```python
 def island_count(self):
@@ -238,7 +238,7 @@ Node [Mesh Island](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 
 <sub>Go to [top](#class-Face)</sub>
 
-## island_index <span style="color:blue">*property*</span>
+## island_index <sub>*property*</sub>
 
 ```python
 def island_index(self):
@@ -252,7 +252,7 @@ Node [Mesh Island](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 
 <sub>Go to [top](#class-Face)</sub>
 
-## material <span style="color:blue">*property*</span>
+## material <sub>*property*</sub>
 
 ```python
 def material(self):
@@ -266,7 +266,7 @@ Raise an exception if attempt to read.
 
 <sub>Go to [top](#class-Face)</sub>
 
-## material <span style="color:blue">*etter*</span>
+## material <sub>*etter*</sub>
 
 ```python
 def material(self, attr_value):
@@ -281,7 +281,7 @@ Node implemented as property setter.
 
 <sub>Go to [top](#class-Face)</sub>
 
-## neighbors <span style="color:blue">*property*</span>
+## neighbors <sub>*property*</sub>
 
 ```python
 def neighbors(self):
@@ -295,7 +295,7 @@ Node [Face Neighbors](https://docs.blender.org/manual/en/latest/modeling/geometr
 
 <sub>Go to [top](#class-Face)</sub>
 
-## neighbors_face_count <span style="color:blue">*property*</span>
+## neighbors_face_count <sub>*property*</sub>
 
 ```python
 def neighbors_face_count(self):
@@ -309,7 +309,7 @@ Node [Face Neighbors](https://docs.blender.org/manual/en/latest/modeling/geometr
 
 <sub>Go to [top](#class-Face)</sub>
 
-## neighbors_vertex_count <span style="color:blue">*property*</span>
+## neighbors_vertex_count <sub>*property*</sub>
 
 ```python
 def neighbors_vertex_count(self):
@@ -413,7 +413,7 @@ Node [Set Shade Smooth](https://docs.blender.org/manual/en/latest/modeling/geome
 
 <sub>Go to [top](#class-Face)</sub>
 
-## shade_smooth <span style="color:blue">*property*</span>
+## shade_smooth <sub>*property*</sub>
 
 ```python
 def shade_smooth(self):
@@ -427,7 +427,7 @@ Node [Is Shade Smooth](https://docs.blender.org/manual/en/latest/modeling/geomet
 
 <sub>Go to [top](#class-Face)</sub>
 
-## shade_smooth <span style="color:blue">*etter*</span>
+## shade_smooth <sub>*etter*</sub>
 
 ```python
 def shade_smooth(self, attr_value):

@@ -15,7 +15,7 @@
 - [scale](#scale)
 - [switch](#switch)
 
-## Self <span style="color:blue">*classmethod*</span>
+## Self <sub>*classmethod*</sub>
 
 ```python
 def Self(cls):

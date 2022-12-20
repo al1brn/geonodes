@@ -52,7 +52,7 @@ Node [Rotate Instances](https://docs.blender.org/manual/en/latest/modeling/geome
 
 <sub>Go to [top](#class-Instance)</sub>
 
-## rotation <span style="color:blue">*property*</span>
+## rotation <sub>*property*</sub>
 
 ```python
 def rotation(self):
@@ -66,7 +66,7 @@ Node [Instance Rotation](https://docs.blender.org/manual/en/latest/modeling/geom
 
 <sub>Go to [top](#class-Instance)</sub>
 
-## scale <span style="color:blue">*property*</span>
+## scale <sub>*property*</sub>
 
 ```python
 def scale(self):

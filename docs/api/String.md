@@ -23,7 +23,7 @@
 - [switch](#switch)
 - [to_curves](#to_curves)
 
-## LineBreak <span style="color:blue">*staticmethod*</span>
+## LineBreak <sub>*staticmethod*</sub>
 
 ```python
 def LineBreak():
@@ -37,7 +37,7 @@ Node [Special Characters](https://docs.blender.org/manual/en/latest/modeling/geo
 
 <sub>Go to [top](#class-String)</sub>
 
-## String <span style="color:blue">*classmethod*</span>
+## String <sub>*classmethod*</sub>
 
 ```python
 def String(cls, string=''):
@@ -54,7 +54,7 @@ Node [String](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/
 
 <sub>Go to [top](#class-String)</sub>
 
-## Tab <span style="color:blue">*staticmethod*</span>
+## Tab <sub>*staticmethod*</sub>
 
 ```python
 def Tab():
@@ -103,7 +103,7 @@ Node [Join Strings](https://docs.blender.org/manual/en/latest/modeling/geometry_
 
 <sub>Go to [top](#class-String)</sub>
 
-## length <span style="color:blue">*property*</span>
+## length <sub>*property*</sub>
 
 ```python
 def length(self):

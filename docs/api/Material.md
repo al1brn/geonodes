@@ -10,7 +10,7 @@
 
 - [switch](#switch)
 
-## Material <span style="color:blue">*classmethod*</span>
+## Material <sub>*classmethod*</sub>
 
 ```python
 def Material(cls):

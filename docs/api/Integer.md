@@ -69,7 +69,7 @@
 - [to_string](#to_string)
 - [wrap](#wrap)
 
-## Integer <span style="color:blue">*classmethod*</span>
+## Integer <sub>*classmethod*</sub>
 
 ```python
 def Integer(cls, integer=0):

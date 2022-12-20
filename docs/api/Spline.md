@@ -25,7 +25,7 @@
 - [set_resolution](#set_resolution)
 - [set_type](#set_type)
 
-## cyclic <span style="color:blue">*property*</span>
+## cyclic <sub>*property*</sub>
 
 ```python
 def cyclic(self):
@@ -39,7 +39,7 @@ Node [Is Spline Cyclic](https://docs.blender.org/manual/en/latest/modeling/geome
 
 <sub>Go to [top](#class-Spline)</sub>
 
-## cyclic <span style="color:blue">*etter*</span>
+## cyclic <sub>*etter*</sub>
 
 ```python
 def cyclic(self, attr_value):
@@ -72,7 +72,7 @@ Node [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 
 <sub>Go to [top](#class-Spline)</sub>
 
-## length <span style="color:blue">*property*</span>
+## length <sub>*property*</sub>
 
 ```python
 def length(self):
@@ -86,7 +86,7 @@ Node [Spline Length](https://docs.blender.org/manual/en/latest/modeling/geometry
 
 <sub>Go to [top](#class-Spline)</sub>
 
-## material <span style="color:blue">*property*</span>
+## material <sub>*property*</sub>
 
 ```python
 def material(self):
@@ -100,7 +100,7 @@ Raise an exception if attempt to read.
 
 <sub>Go to [top](#class-Spline)</sub>
 
-## material <span style="color:blue">*etter*</span>
+## material <sub>*etter*</sub>
 
 ```python
 def material(self, attr_value):
@@ -115,7 +115,7 @@ Node implemented as property setter.
 
 <sub>Go to [top](#class-Spline)</sub>
 
-## normal <span style="color:blue">*property*</span>
+## normal <sub>*property*</sub>
 
 ```python
 def normal(self):
@@ -129,7 +129,7 @@ Node [Normal](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/
 
 <sub>Go to [top](#class-Spline)</sub>
 
-## normal <span style="color:blue">*etter*</span>
+## normal <sub>*etter*</sub>
 
 ```python
 def normal(self, attr_value):
@@ -229,7 +229,7 @@ Node [Resample Curve](https://docs.blender.org/manual/en/latest/modeling/geometr
 
 <sub>Go to [top](#class-Spline)</sub>
 
-## resolution <span style="color:blue">*property*</span>
+## resolution <sub>*property*</sub>
 
 ```python
 def resolution(self):
@@ -243,7 +243,7 @@ Node [Spline Resolution](https://docs.blender.org/manual/en/latest/modeling/geom
 
 <sub>Go to [top](#class-Spline)</sub>
 
-## resolution <span style="color:blue">*etter*</span>
+## resolution <sub>*etter*</sub>
 
 ```python
 def resolution(self, attr_value):
@@ -343,7 +343,7 @@ Node [Set Spline Type](https://docs.blender.org/manual/en/latest/modeling/geomet
 
 <sub>Go to [top](#class-Spline)</sub>
 
-## type <span style="color:blue">*property*</span>
+## type <sub>*property*</sub>
 
 ```python
 def type(self):
@@ -357,7 +357,7 @@ Raise an exception if attempt to read.
 
 <sub>Go to [top](#class-Spline)</sub>
 
-## type <span style="color:blue">*etter*</span>
+## type <sub>*etter*</sub>
 
 ```python
 def type(self, attr_value):

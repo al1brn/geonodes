@@ -18,7 +18,7 @@
 - [to_volume_amount](#to_volume_amount)
 - [to_volume_size](#to_volume_size)
 
-## Points <span style="color:blue">*classmethod*</span>
+## Points <sub>*classmethod*</sub>
 
 ```python
 def Points(cls, count=None, position=None, radius=None):
@@ -37,7 +37,7 @@ Node [Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/
 
 <sub>Go to [top](#class-Points)</sub>
 
-## domain_size <span style="color:blue">*property*</span>
+## domain_size <sub>*property*</sub>
 
 ```python
 def domain_size(self):

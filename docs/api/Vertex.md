@@ -138,7 +138,7 @@ Node [Merge by Distance](https://docs.blender.org/manual/en/latest/modeling/geom
 
 <sub>Go to [top](#class-Vertex)</sub>
 
-## neighbors <span style="color:blue">*property*</span>
+## neighbors <sub>*property*</sub>
 
 ```python
 def neighbors(self):
@@ -152,7 +152,7 @@ Node [Vertex Neighbors](https://docs.blender.org/manual/en/latest/modeling/geome
 
 <sub>Go to [top](#class-Vertex)</sub>
 
-## neighbors_face_count <span style="color:blue">*property*</span>
+## neighbors_face_count <sub>*property*</sub>
 
 ```python
 def neighbors_face_count(self):
@@ -166,7 +166,7 @@ Node [Vertex Neighbors](https://docs.blender.org/manual/en/latest/modeling/geome
 
 <sub>Go to [top](#class-Vertex)</sub>
 
-## neighbors_vertex_count <span style="color:blue">*property*</span>
+## neighbors_vertex_count <sub>*property*</sub>
 
 ```python
 def neighbors_vertex_count(self):
