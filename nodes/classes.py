@@ -1202,8 +1202,8 @@ class Float(geosocks.Float):
         Developer reference [GeometryNodeSwitch](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
 
         Args:
-            switch: ['Boolean', 'Boolean']
-            true: ['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'String', 'Geometry', 'Object', 'Collection', 'Texture', 'Material', 'Image']
+            switch: Boolean
+            false: Float
 
         Returns:
             socket 'output'
@@ -2296,8 +2296,8 @@ class Integer(geosocks.Integer):
         Developer reference [GeometryNodeSwitch](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
 
         Args:
-            switch: ['Boolean', 'Boolean']
-            true: ['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'String', 'Geometry', 'Object', 'Collection', 'Texture', 'Material', 'Image']
+            switch: Boolean
+            false: Integer
 
         Returns:
             socket 'output'
@@ -2540,8 +2540,8 @@ class Boolean(geosocks.Boolean):
         Developer reference [GeometryNodeSwitch](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
 
         Args:
-            switch: ['Boolean', 'Boolean']
-            true: ['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'String', 'Geometry', 'Object', 'Collection', 'Texture', 'Material', 'Image']
+            switch: Boolean
+            false: Boolean
 
         Returns:
             socket 'output'
@@ -2722,8 +2722,8 @@ class String(geosocks.String):
         Developer reference [GeometryNodeSwitch](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
 
         Args:
-            switch: ['Boolean', 'Boolean']
-            true: ['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'String', 'Geometry', 'Object', 'Collection', 'Texture', 'Material', 'Image']
+            switch: Boolean
+            false: String
 
         Returns:
             socket 'output'
@@ -4100,8 +4100,8 @@ class Vector(geosocks.Vector):
         Developer reference [GeometryNodeSwitch](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
 
         Args:
-            switch: ['Boolean', 'Boolean']
-            true: ['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'String', 'Geometry', 'Object', 'Collection', 'Texture', 'Material', 'Image']
+            switch: Boolean
+            false: Vector
 
         Returns:
             socket 'output'
@@ -4779,8 +4779,8 @@ class Color(geosocks.Color):
         Developer reference [GeometryNodeSwitch](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
 
         Args:
-            switch: ['Boolean', 'Boolean']
-            true: ['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'String', 'Geometry', 'Object', 'Collection', 'Texture', 'Material', 'Image']
+            switch: Boolean
+            false: Color
 
         Returns:
             socket 'output'
@@ -4811,8 +4811,8 @@ class Collection(geosocks.Collection):
         Developer reference [GeometryNodeSwitch](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
 
         Args:
-            switch: ['Boolean', 'Boolean']
-            true: ['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'String', 'Geometry', 'Object', 'Collection', 'Texture', 'Material', 'Image']
+            switch: Boolean
+            false: Collection
 
         Returns:
             socket 'output'
@@ -4928,8 +4928,8 @@ class Object(geosocks.Object):
         Developer reference [GeometryNodeSwitch](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
 
         Args:
-            switch: ['Boolean', 'Boolean']
-            true: ['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'String', 'Geometry', 'Object', 'Collection', 'Texture', 'Material', 'Image']
+            switch: Boolean
+            false: Object
 
         Returns:
             socket 'output'
@@ -4947,8 +4947,8 @@ class Image(geosocks.Image):
         Developer reference [GeometryNodeSwitch](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
 
         Args:
-            switch: ['Boolean', 'Boolean']
-            true: ['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'String', 'Geometry', 'Object', 'Collection', 'Texture', 'Material', 'Image']
+            switch: Boolean
+            false: Image
 
         Returns:
             socket 'output'
@@ -5346,8 +5346,8 @@ class Texture(geosocks.Texture):
         Developer reference [GeometryNodeSwitch](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
 
         Args:
-            switch: ['Boolean', 'Boolean']
-            true: ['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'String', 'Geometry', 'Object', 'Collection', 'Texture', 'Material', 'Image']
+            switch: Boolean
+            false: Texture
 
         Returns:
             socket 'output'
@@ -5809,8 +5809,8 @@ class Material(geosocks.Material):
         Developer reference [GeometryNodeSwitch](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
 
         Args:
-            switch: ['Boolean', 'Boolean']
-            true: ['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'String', 'Geometry', 'Object', 'Collection', 'Texture', 'Material', 'Image']
+            switch: Boolean
+            false: Material
 
         Returns:
             socket 'output'
@@ -6780,8 +6780,8 @@ class Geometry(geosocks.Geometry):
         Developer reference [GeometryNodeSwitch](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
 
         Args:
-            switch: ['Boolean', 'Boolean']
-            true: ['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'String', 'Geometry', 'Object', 'Collection', 'Texture', 'Material', 'Image']
+            switch: Boolean
+            false: Geometry
 
         Returns:
             socket 'output'
