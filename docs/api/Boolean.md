@@ -33,7 +33,7 @@ Node [Boolean](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 ### Returns:
 - socket `boolean`
 
-<sub>Go to [top](#class-Boolean)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Boolean) [data structure](../structure.md)</sub>
 
 ## b_and
 
@@ -49,7 +49,7 @@ Node [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_
 ### Returns:
 - socket `boolean`
 
-<sub>Go to [top](#class-Boolean)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Boolean) [data structure](../structure.md)</sub>
 
 ## b_not
 
@@ -62,7 +62,7 @@ Node [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_
 ### Returns:
 - socket `boolean`
 
-<sub>Go to [top](#class-Boolean)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Boolean) [data structure](../structure.md)</sub>
 
 ## b_or
 
@@ -78,7 +78,7 @@ Node [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_
 ### Returns:
 - socket `boolean`
 
-<sub>Go to [top](#class-Boolean)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Boolean) [data structure](../structure.md)</sub>
 
 ## imply
 
@@ -94,7 +94,7 @@ Node [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_
 ### Returns:
 - socket `boolean`
 
-<sub>Go to [top](#class-Boolean)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Boolean) [data structure](../structure.md)</sub>
 
 ## nand
 
@@ -110,7 +110,7 @@ Node [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_
 ### Returns:
 - socket `boolean`
 
-<sub>Go to [top](#class-Boolean)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Boolean) [data structure](../structure.md)</sub>
 
 ## nimply
 
@@ -126,7 +126,7 @@ Node [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_
 ### Returns:
 - socket `boolean`
 
-<sub>Go to [top](#class-Boolean)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Boolean) [data structure](../structure.md)</sub>
 
 ## nor
 
@@ -142,7 +142,7 @@ Node [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_
 ### Returns:
 - socket `boolean`
 
-<sub>Go to [top](#class-Boolean)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Boolean) [data structure](../structure.md)</sub>
 
 ## switch
 
@@ -159,7 +159,7 @@ Node [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/
 ### Returns:
 - socket `output`
 
-<sub>Go to [top](#class-Boolean)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Boolean) [data structure](../structure.md)</sub>
 
 ## xnor
 
@@ -175,7 +175,7 @@ Node [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_
 ### Returns:
 - socket `boolean`
 
-<sub>Go to [top](#class-Boolean)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Boolean) [data structure](../structure.md)</sub>
 
 ## xor
 
@@ -191,5 +191,5 @@ Node [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_
 ### Returns:
 - socket `boolean`
 
-<sub>Go to [top](#class-Boolean)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Boolean) [data structure](../structure.md)</sub>
 

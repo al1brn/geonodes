@@ -30,7 +30,7 @@ Node [Rotate Euler](https://docs.blender.org/manual/en/latest/modeling/geometry_
 ### Returns:
 - socket `rotation`
 
-<sub>Go to [top](#class-Rotation)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Rotation) [data structure](../structure.md)</sub>
 
 ## Euler <sub>*classmethod*</sub>
 
@@ -48,7 +48,7 @@ Node [Rotate Euler](https://docs.blender.org/manual/en/latest/modeling/geometry_
 ### Returns:
 - socket `rotation`
 
-<sub>Go to [top](#class-Rotation)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Rotation) [data structure](../structure.md)</sub>
 
 ## align_to_vector
 
@@ -67,7 +67,7 @@ Node [Align Euler to Vector](https://docs.blender.org/manual/en/latest/modeling/
 ### Returns:
 - self
 
-<sub>Go to [top](#class-Rotation)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Rotation) [data structure](../structure.md)</sub>
 
 ## rotate_axis_angle
 
@@ -85,7 +85,7 @@ Node [Rotate Euler](https://docs.blender.org/manual/en/latest/modeling/geometry_
 ### Returns:
 - socket `rotation`
 
-<sub>Go to [top](#class-Rotation)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Rotation) [data structure](../structure.md)</sub>
 
 ## rotate_euler
 
@@ -102,5 +102,5 @@ Node [Rotate Euler](https://docs.blender.org/manual/en/latest/modeling/geometry_
 ### Returns:
 - socket `rotation`
 
-<sub>Go to [top](#class-Rotation)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Rotation) [data structure](../structure.md)</sub>
 

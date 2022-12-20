@@ -63,7 +63,7 @@ Node [ID](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/inpu
 ### Returns:
 - socket `ID`
 
-<sub>Go to [top](#class-Domain)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Domain) [data structure](../structure.md)</sub>
 
 ## ID <sub>*etter*</sub>
 
@@ -79,7 +79,7 @@ Node implemented as property setter.
 - attr_value: ID
 
 
-<sub>Go to [top](#class-Domain)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Domain) [data structure](../structure.md)</sub>
 
 ## accumulate_field
 
@@ -96,7 +96,7 @@ Node [Accumulate Field](https://docs.blender.org/manual/en/latest/modeling/geome
 ### Returns:
 - tuple ('`leading`', '`trailing`', '`total`')
 
-<sub>Go to [top](#class-Domain)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Domain) [data structure](../structure.md)</sub>
 
 ## attribute_max
 
@@ -112,7 +112,7 @@ Node [Attribute Statistic](https://docs.blender.org/manual/en/latest/modeling/ge
 ### Returns:
 - socket `max`
 
-<sub>Go to [top](#class-Domain)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Domain) [data structure](../structure.md)</sub>
 
 ## attribute_mean
 
@@ -128,7 +128,7 @@ Node [Attribute Statistic](https://docs.blender.org/manual/en/latest/modeling/ge
 ### Returns:
 - socket `mean`
 
-<sub>Go to [top](#class-Domain)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Domain) [data structure](../structure.md)</sub>
 
 ## attribute_median
 
@@ -144,7 +144,7 @@ Node [Attribute Statistic](https://docs.blender.org/manual/en/latest/modeling/ge
 ### Returns:
 - socket `median`
 
-<sub>Go to [top](#class-Domain)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Domain) [data structure](../structure.md)</sub>
 
 ## attribute_min
 
@@ -160,7 +160,7 @@ Node [Attribute Statistic](https://docs.blender.org/manual/en/latest/modeling/ge
 ### Returns:
 - socket `min`
 
-<sub>Go to [top](#class-Domain)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Domain) [data structure](../structure.md)</sub>
 
 ## attribute_range
 
@@ -176,7 +176,7 @@ Node [Attribute Statistic](https://docs.blender.org/manual/en/latest/modeling/ge
 ### Returns:
 - socket `range`
 
-<sub>Go to [top](#class-Domain)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Domain) [data structure](../structure.md)</sub>
 
 ## attribute_statistic
 
@@ -192,7 +192,7 @@ Node [Attribute Statistic](https://docs.blender.org/manual/en/latest/modeling/ge
 ### Returns:
 - node with sockets ['mean', 'median', 'sum', 'min', 'max', 'range', 'standard_deviation', 'variance']
 
-<sub>Go to [top](#class-Domain)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Domain) [data structure](../structure.md)</sub>
 
 ## attribute_std
 
@@ -208,7 +208,7 @@ Node [Attribute Statistic](https://docs.blender.org/manual/en/latest/modeling/ge
 ### Returns:
 - socket `standard_deviation`
 
-<sub>Go to [top](#class-Domain)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Domain) [data structure](../structure.md)</sub>
 
 ## attribute_sum
 
@@ -224,7 +224,7 @@ Node [Attribute Statistic](https://docs.blender.org/manual/en/latest/modeling/ge
 ### Returns:
 - socket `sum`
 
-<sub>Go to [top](#class-Domain)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Domain) [data structure](../structure.md)</sub>
 
 ## attribute_var
 
@@ -240,7 +240,7 @@ Node [Attribute Statistic](https://docs.blender.org/manual/en/latest/modeling/ge
 ### Returns:
 - socket `variance`
 
-<sub>Go to [top](#class-Domain)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Domain) [data structure](../structure.md)</sub>
 
 ## capture_attribute
 
@@ -256,7 +256,7 @@ Node [Capture Attribute](https://docs.blender.org/manual/en/latest/modeling/geom
 ### Returns:
 - socket `attribute`
 
-<sub>Go to [top](#class-Domain)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Domain) [data structure](../structure.md)</sub>
 
 ## delete
 
@@ -272,7 +272,7 @@ Node [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geomet
 ### Returns:
 - self
 
-<sub>Go to [top](#class-Domain)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Domain) [data structure](../structure.md)</sub>
 
 ## domain_index <sub>*property*</sub>
 
@@ -285,7 +285,7 @@ Node [Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/i
 ### Returns:
 - socket `index`
 
-<sub>Go to [top](#class-Domain)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Domain) [data structure](../structure.md)</sub>
 
 ## duplicate
 
@@ -301,7 +301,7 @@ Node [Duplicate Elements](https://docs.blender.org/manual/en/latest/modeling/geo
 ### Returns:
 - socket `duplicate_index`
 
-<sub>Go to [top](#class-Domain)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Domain) [data structure](../structure.md)</sub>
 
 ## field_at_index
 
@@ -318,7 +318,7 @@ Node [Field at Index](https://docs.blender.org/manual/en/latest/modeling/geometr
 ### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-Domain)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Domain) [data structure](../structure.md)</sub>
 
 ## get_named_boolean
 
@@ -334,7 +334,7 @@ Node [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geomet
 ### Returns:
 - socket `attribute`
 
-<sub>Go to [top](#class-Domain)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Domain) [data structure](../structure.md)</sub>
 
 ## get_named_color
 
@@ -350,7 +350,7 @@ Node [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geomet
 ### Returns:
 - socket `attribute`
 
-<sub>Go to [top](#class-Domain)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Domain) [data structure](../structure.md)</sub>
 
 ## get_named_float
 
@@ -366,7 +366,7 @@ Node [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geomet
 ### Returns:
 - socket `attribute`
 
-<sub>Go to [top](#class-Domain)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Domain) [data structure](../structure.md)</sub>
 
 ## get_named_integer
 
@@ -382,7 +382,7 @@ Node [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geomet
 ### Returns:
 - socket `attribute`
 
-<sub>Go to [top](#class-Domain)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Domain) [data structure](../structure.md)</sub>
 
 ## get_named_vector
 
@@ -398,7 +398,7 @@ Node [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geomet
 ### Returns:
 - socket `attribute`
 
-<sub>Go to [top](#class-Domain)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Domain) [data structure](../structure.md)</sub>
 
 ## index <sub>*property*</sub>
 
@@ -411,7 +411,7 @@ Node [Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/i
 ### Returns:
 - socket `index`
 
-<sub>Go to [top](#class-Domain)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Domain) [data structure](../structure.md)</sub>
 
 ## material_index <sub>*property*</sub>
 
@@ -424,7 +424,7 @@ Node [Material Index](https://docs.blender.org/manual/en/latest/modeling/geometr
 ### Returns:
 - socket `material_index`
 
-<sub>Go to [top](#class-Domain)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Domain) [data structure](../structure.md)</sub>
 
 ## material_selection
 
@@ -440,7 +440,7 @@ Node [Material Selection](https://docs.blender.org/manual/en/latest/modeling/geo
 ### Returns:
 - socket `selection`
 
-<sub>Go to [top](#class-Domain)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Domain) [data structure](../structure.md)</sub>
 
 ## named_attribute
 
@@ -457,7 +457,7 @@ Node [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geomet
 ### Returns:
 - socket `attribute`
 
-<sub>Go to [top](#class-Domain)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Domain) [data structure](../structure.md)</sub>
 
 ## normal <sub>*property*</sub>
 
@@ -470,7 +470,7 @@ Node [Normal](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/
 ### Returns:
 - socket `normal`
 
-<sub>Go to [top](#class-Domain)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Domain) [data structure](../structure.md)</sub>
 
 ## position <sub>*property*</sub>
 
@@ -483,7 +483,7 @@ Node [Position](https://docs.blender.org/manual/en/latest/modeling/geometry_node
 ### Returns:
 - socket `position`
 
-<sub>Go to [top](#class-Domain)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Domain) [data structure](../structure.md)</sub>
 
 ## position <sub>*etter*</sub>
 
@@ -499,7 +499,7 @@ Node implemented as property setter.
 - attr_value: position
 
 
-<sub>Go to [top](#class-Domain)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Domain) [data structure](../structure.md)</sub>
 
 ## random_boolean
 
@@ -517,7 +517,7 @@ Node [Random Value](https://docs.blender.org/manual/en/latest/modeling/geometry_
 ### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-Domain)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Domain) [data structure](../structure.md)</sub>
 
 ## random_float
 
@@ -536,7 +536,7 @@ Node [Random Value](https://docs.blender.org/manual/en/latest/modeling/geometry_
 ### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-Domain)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Domain) [data structure](../structure.md)</sub>
 
 ## random_integer
 
@@ -555,7 +555,7 @@ Node [Random Value](https://docs.blender.org/manual/en/latest/modeling/geometry_
 ### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-Domain)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Domain) [data structure](../structure.md)</sub>
 
 ## random_vector
 
@@ -574,7 +574,7 @@ Node [Random Value](https://docs.blender.org/manual/en/latest/modeling/geometry_
 ### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-Domain)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Domain) [data structure](../structure.md)</sub>
 
 ## remove_named_attribute
 
@@ -590,7 +590,7 @@ Node [Remove Named Attribute](https://docs.blender.org/manual/en/latest/modeling
 ### Returns:
 - self
 
-<sub>Go to [top](#class-Domain)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Domain) [data structure](../structure.md)</sub>
 
 ## sample_index
 
@@ -608,7 +608,7 @@ Node [Sample Index](https://docs.blender.org/manual/en/latest/modeling/geometry_
 ### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-Domain)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Domain) [data structure](../structure.md)</sub>
 
 ## sample_nearest
 
@@ -624,7 +624,7 @@ Node [Sample Nearest](https://docs.blender.org/manual/en/latest/modeling/geometr
 ### Returns:
 - socket `index`
 
-<sub>Go to [top](#class-Domain)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Domain) [data structure](../structure.md)</sub>
 
 ## separate
 
@@ -640,7 +640,7 @@ Node [Separate Geometry](https://docs.blender.org/manual/en/latest/modeling/geom
 ### Returns:
 - tuple ('`selection`', '`inverted`')
 
-<sub>Go to [top](#class-Domain)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Domain) [data structure](../structure.md)</sub>
 
 ## set_ID
 
@@ -656,7 +656,7 @@ Node [Set ID](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/
 ### Returns:
 - self
 
-<sub>Go to [top](#class-Domain)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Domain) [data structure](../structure.md)</sub>
 
 ## set_material_index
 
@@ -672,7 +672,7 @@ Node [Set Material Index](https://docs.blender.org/manual/en/latest/modeling/geo
 ### Returns:
 - self
 
-<sub>Go to [top](#class-Domain)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Domain) [data structure](../structure.md)</sub>
 
 ## set_named_boolean
 
@@ -689,7 +689,7 @@ Node [Store Named Attribute](https://docs.blender.org/manual/en/latest/modeling/
 ### Returns:
 - self
 
-<sub>Go to [top](#class-Domain)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Domain) [data structure](../structure.md)</sub>
 
 ## set_named_color
 
@@ -706,7 +706,7 @@ Node [Store Named Attribute](https://docs.blender.org/manual/en/latest/modeling/
 ### Returns:
 - self
 
-<sub>Go to [top](#class-Domain)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Domain) [data structure](../structure.md)</sub>
 
 ## set_named_float
 
@@ -723,7 +723,7 @@ Node [Store Named Attribute](https://docs.blender.org/manual/en/latest/modeling/
 ### Returns:
 - self
 
-<sub>Go to [top](#class-Domain)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Domain) [data structure](../structure.md)</sub>
 
 ## set_named_integer
 
@@ -740,7 +740,7 @@ Node [Store Named Attribute](https://docs.blender.org/manual/en/latest/modeling/
 ### Returns:
 - self
 
-<sub>Go to [top](#class-Domain)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Domain) [data structure](../structure.md)</sub>
 
 ## set_named_vector
 
@@ -757,7 +757,7 @@ Node [Store Named Attribute](https://docs.blender.org/manual/en/latest/modeling/
 ### Returns:
 - self
 
-<sub>Go to [top](#class-Domain)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Domain) [data structure](../structure.md)</sub>
 
 ## set_position
 
@@ -774,7 +774,7 @@ Node [Set Position](https://docs.blender.org/manual/en/latest/modeling/geometry_
 ### Returns:
 - self
 
-<sub>Go to [top](#class-Domain)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Domain) [data structure](../structure.md)</sub>
 
 ## store_named_attribute
 
@@ -791,5 +791,5 @@ Node [Store Named Attribute](https://docs.blender.org/manual/en/latest/modeling/
 ### Returns:
 - self
 
-<sub>Go to [top](#class-Domain)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Domain) [data structure](../structure.md)</sub>
 

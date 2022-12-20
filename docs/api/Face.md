@@ -45,7 +45,7 @@ Node [Face Area](https://docs.blender.org/manual/en/latest/modeling/geometry_nod
 ### Returns:
 - node with sockets ['area']
 
-<sub>Go to [top](#class-Face)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Face) [data structure](../structure.md)</sub>
 
 ## delete_all
 
@@ -58,7 +58,7 @@ Node [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geomet
 ### Returns:
 - self
 
-<sub>Go to [top](#class-Face)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Face) [data structure](../structure.md)</sub>
 
 ## delete_edges
 
@@ -71,7 +71,7 @@ Node [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geomet
 ### Returns:
 - self
 
-<sub>Go to [top](#class-Face)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Face) [data structure](../structure.md)</sub>
 
 ## delete_faces
 
@@ -84,7 +84,7 @@ Node [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geomet
 ### Returns:
 - self
 
-<sub>Go to [top](#class-Face)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Face) [data structure](../structure.md)</sub>
 
 ## distribute_points_poisson
 
@@ -103,7 +103,7 @@ Node [Distribute Points on Faces](https://docs.blender.org/manual/en/latest/mode
 ### Returns:
 - tuple ('`points`', '`normal`', '`rotation`')
 
-<sub>Go to [top](#class-Face)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Face) [data structure](../structure.md)</sub>
 
 ## distribute_points_random
 
@@ -120,7 +120,7 @@ Node [Distribute Points on Faces](https://docs.blender.org/manual/en/latest/mode
 ### Returns:
 - tuple ('`points`', '`normal`', '`rotation`')
 
-<sub>Go to [top](#class-Face)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Face) [data structure](../structure.md)</sub>
 
 ## domain_size
 
@@ -137,7 +137,7 @@ Node [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 ### Returns:
 - node with sockets ['point_count', 'edge_count', 'face_count', 'face_corner_count', 'spline_count', 'instance_count']
 
-<sub>Go to [top](#class-Face)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Face) [data structure](../structure.md)</sub>
 
 ## extrude
 
@@ -155,7 +155,7 @@ Node [Extrude Mesh](https://docs.blender.org/manual/en/latest/modeling/geometry_
 ### Returns:
 - tuple ('`top`', '`side`')
 
-<sub>Go to [top](#class-Face)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Face) [data structure](../structure.md)</sub>
 
 ## face_set_boundaries
 
@@ -168,7 +168,7 @@ Node [Face Set Boundaries](https://docs.blender.org/manual/en/latest/modeling/ge
 ### Returns:
 - socket `boundary_edges`
 
-<sub>Go to [top](#class-Face)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Face) [data structure](../structure.md)</sub>
 
 ## flip
 
@@ -181,7 +181,7 @@ Node [Flip Faces](https://docs.blender.org/manual/en/latest/modeling/geometry_no
 ### Returns:
 - self
 
-<sub>Go to [top](#class-Face)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Face) [data structure](../structure.md)</sub>
 
 ## is_planar
 
@@ -197,7 +197,7 @@ Node [Face is Planar](https://docs.blender.org/manual/en/latest/modeling/geometr
 ### Returns:
 - socket `planar`
 
-<sub>Go to [top](#class-Face)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Face) [data structure](../structure.md)</sub>
 
 ## island <sub>*property*</sub>
 
@@ -210,7 +210,7 @@ Node [Mesh Island](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 ### Returns:
 - node with sockets ['island_index', 'island_count']
 
-<sub>Go to [top](#class-Face)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Face) [data structure](../structure.md)</sub>
 
 ## island_count <sub>*property*</sub>
 
@@ -223,7 +223,7 @@ Node [Mesh Island](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 ### Returns:
 - socket `island_count`
 
-<sub>Go to [top](#class-Face)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Face) [data structure](../structure.md)</sub>
 
 ## island_index <sub>*property*</sub>
 
@@ -236,7 +236,7 @@ Node [Mesh Island](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 ### Returns:
 - socket `island_index`
 
-<sub>Go to [top](#class-Face)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Face) [data structure](../structure.md)</sub>
 
 ## material <sub>*property*</sub>
 
@@ -250,7 +250,7 @@ Node [Set Material](https://docs.blender.org/manual/en/latest/modeling/geometry_
 Raise an exception if attempt to read.
 
 
-<sub>Go to [top](#class-Face)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Face) [data structure](../structure.md)</sub>
 
 ## material <sub>*etter*</sub>
 
@@ -266,7 +266,7 @@ Node implemented as property setter.
 - attr_value: material
 
 
-<sub>Go to [top](#class-Face)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Face) [data structure](../structure.md)</sub>
 
 ## neighbors <sub>*property*</sub>
 
@@ -279,7 +279,7 @@ Node [Face Neighbors](https://docs.blender.org/manual/en/latest/modeling/geometr
 ### Returns:
 - node with sockets ['vertex_count', 'face_count']
 
-<sub>Go to [top](#class-Face)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Face) [data structure](../structure.md)</sub>
 
 ## neighbors_face_count <sub>*property*</sub>
 
@@ -292,7 +292,7 @@ Node [Face Neighbors](https://docs.blender.org/manual/en/latest/modeling/geometr
 ### Returns:
 - socket `face_count`
 
-<sub>Go to [top](#class-Face)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Face) [data structure](../structure.md)</sub>
 
 ## neighbors_vertex_count <sub>*property*</sub>
 
@@ -305,7 +305,7 @@ Node [Face Neighbors](https://docs.blender.org/manual/en/latest/modeling/geometr
 ### Returns:
 - socket `vertex_count`
 
-<sub>Go to [top](#class-Face)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Face) [data structure](../structure.md)</sub>
 
 ## pack_uv_islands
 
@@ -323,7 +323,7 @@ Node [Pack UV Islands](https://docs.blender.org/manual/en/latest/modeling/geomet
 ### Returns:
 - socket `uv`
 
-<sub>Go to [top](#class-Face)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Face) [data structure](../structure.md)</sub>
 
 ## scale_single_axis
 
@@ -341,7 +341,7 @@ Node [Scale Elements](https://docs.blender.org/manual/en/latest/modeling/geometr
 ### Returns:
 - self
 
-<sub>Go to [top](#class-Face)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Face) [data structure](../structure.md)</sub>
 
 ## scale_uniform
 
@@ -358,7 +358,7 @@ Node [Scale Elements](https://docs.blender.org/manual/en/latest/modeling/geometr
 ### Returns:
 - self
 
-<sub>Go to [top](#class-Face)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Face) [data structure](../structure.md)</sub>
 
 ## set_material
 
@@ -374,7 +374,7 @@ Node [Set Material](https://docs.blender.org/manual/en/latest/modeling/geometry_
 ### Returns:
 - self
 
-<sub>Go to [top](#class-Face)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Face) [data structure](../structure.md)</sub>
 
 ## set_shade_smooth
 
@@ -390,7 +390,7 @@ Node [Set Shade Smooth](https://docs.blender.org/manual/en/latest/modeling/geome
 ### Returns:
 - self
 
-<sub>Go to [top](#class-Face)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Face) [data structure](../structure.md)</sub>
 
 ## shade_smooth <sub>*property*</sub>
 
@@ -403,7 +403,7 @@ Node [Is Shade Smooth](https://docs.blender.org/manual/en/latest/modeling/geomet
 ### Returns:
 - socket `smooth`
 
-<sub>Go to [top](#class-Face)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Face) [data structure](../structure.md)</sub>
 
 ## shade_smooth <sub>*etter*</sub>
 
@@ -419,7 +419,7 @@ Node implemented as property setter.
 - attr_value: shade_smooth
 
 
-<sub>Go to [top](#class-Face)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Face) [data structure](../structure.md)</sub>
 
 ## triangulate
 
@@ -437,7 +437,7 @@ Node [Triangulate](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 ### Returns:
 - self
 
-<sub>Go to [top](#class-Face)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Face) [data structure](../structure.md)</sub>
 
 ## uv_unwrap
 
@@ -456,5 +456,5 @@ Node [UV Unwrap](https://docs.blender.org/manual/en/latest/modeling/geometry_nod
 ### Returns:
 - socket `uv`
 
-<sub>Go to [top](#class-Face)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Face) [data structure](../structure.md)</sub>
 

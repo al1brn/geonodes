@@ -30,7 +30,7 @@ Node [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 ### Returns:
 - node with sockets ['point_count', 'edge_count', 'face_count', 'face_corner_count', 'spline_count', 'instance_count']
 
-<sub>Go to [top](#class-Instance)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Instance) [data structure](../structure.md)</sub>
 
 ## rotate
 
@@ -48,7 +48,7 @@ Node [Rotate Instances](https://docs.blender.org/manual/en/latest/modeling/geome
 ### Returns:
 - self
 
-<sub>Go to [top](#class-Instance)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Instance) [data structure](../structure.md)</sub>
 
 ## rotation <sub>*property*</sub>
 
@@ -61,7 +61,7 @@ Node [Instance Rotation](https://docs.blender.org/manual/en/latest/modeling/geom
 ### Returns:
 - socket `rotation`
 
-<sub>Go to [top](#class-Instance)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Instance) [data structure](../structure.md)</sub>
 
 ## scale <sub>*property*</sub>
 
@@ -74,7 +74,7 @@ Node [Instance Scale](https://docs.blender.org/manual/en/latest/modeling/geometr
 ### Returns:
 - socket `scale`
 
-<sub>Go to [top](#class-Instance)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Instance) [data structure](../structure.md)</sub>
 
 ## set_scale
 
@@ -92,7 +92,7 @@ Node [Scale Instances](https://docs.blender.org/manual/en/latest/modeling/geomet
 ### Returns:
 - self
 
-<sub>Go to [top](#class-Instance)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Instance) [data structure](../structure.md)</sub>
 
 ## to_points
 
@@ -109,7 +109,7 @@ Node [Instances to Points](https://docs.blender.org/manual/en/latest/modeling/ge
 ### Returns:
 - socket `points` of class Points
 
-<sub>Go to [top](#class-Instance)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Instance) [data structure](../structure.md)</sub>
 
 ## translate
 
@@ -126,5 +126,5 @@ Node [Translate Instances](https://docs.blender.org/manual/en/latest/modeling/ge
 ### Returns:
 - self
 
-<sub>Go to [top](#class-Instance)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Instance) [data structure](../structure.md)</sub>
 

@@ -80,7 +80,7 @@ Node [Mesh Circle](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 ### Returns:
 - socket `mesh`
 
-<sub>Go to [top](#class-Mesh)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Mesh) [data structure](../structure.md)</sub>
 
 ## Circle <sub>*classmethod*</sub>
 
@@ -98,7 +98,7 @@ Node [UV Sphere](https://docs.blender.org/manual/en/latest/modeling/geometry_nod
 ### Returns:
 - socket `mesh`
 
-<sub>Go to [top](#class-Mesh)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Mesh) [data structure](../structure.md)</sub>
 
 ## Cone <sub>*staticmethod*</sub>
 
@@ -120,7 +120,7 @@ Node [Cone](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/me
 ### Returns:
 - tuple ('`mesh`', '`top`', '`bottom`', '`side`')
 
-<sub>Go to [top](#class-Mesh)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Mesh) [data structure](../structure.md)</sub>
 
 ## Cube <sub>*classmethod*</sub>
 
@@ -139,7 +139,7 @@ Node [Cube](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/me
 ### Returns:
 - socket `mesh`
 
-<sub>Go to [top](#class-Mesh)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Mesh) [data structure](../structure.md)</sub>
 
 ## Cylinder <sub>*staticmethod*</sub>
 
@@ -160,7 +160,7 @@ Node [Cylinder](https://docs.blender.org/manual/en/latest/modeling/geometry_node
 ### Returns:
 - tuple ('`mesh`', '`top`', '`bottom`', '`side`')
 
-<sub>Go to [top](#class-Mesh)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Mesh) [data structure](../structure.md)</sub>
 
 ## Grid <sub>*classmethod*</sub>
 
@@ -179,7 +179,7 @@ Node [Grid](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/me
 ### Returns:
 - socket `mesh`
 
-<sub>Go to [top](#class-Mesh)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Mesh) [data structure](../structure.md)</sub>
 
 ## IcoSphere <sub>*classmethod*</sub>
 
@@ -196,7 +196,7 @@ Node [Ico Sphere](https://docs.blender.org/manual/en/latest/modeling/geometry_no
 ### Returns:
 - socket `mesh`
 
-<sub>Go to [top](#class-Mesh)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Mesh) [data structure](../structure.md)</sub>
 
 ## Line <sub>*classmethod*</sub>
 
@@ -217,7 +217,7 @@ Node [Mesh Line](https://docs.blender.org/manual/en/latest/modeling/geometry_nod
 ### Returns:
 - socket `mesh`
 
-<sub>Go to [top](#class-Mesh)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Mesh) [data structure](../structure.md)</sub>
 
 ## LineEndPoints <sub>*classmethod*</sub>
 
@@ -235,7 +235,7 @@ Node [Mesh Line](https://docs.blender.org/manual/en/latest/modeling/geometry_nod
 ### Returns:
 - socket `mesh`
 
-<sub>Go to [top](#class-Mesh)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Mesh) [data structure](../structure.md)</sub>
 
 ## LineEndPointsResolution <sub>*classmethod*</sub>
 
@@ -253,7 +253,7 @@ Node [Mesh Line](https://docs.blender.org/manual/en/latest/modeling/geometry_nod
 ### Returns:
 - socket `mesh`
 
-<sub>Go to [top](#class-Mesh)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Mesh) [data structure](../structure.md)</sub>
 
 ## LineOffset <sub>*classmethod*</sub>
 
@@ -271,7 +271,7 @@ Node [Mesh Line](https://docs.blender.org/manual/en/latest/modeling/geometry_nod
 ### Returns:
 - socket `mesh`
 
-<sub>Go to [top](#class-Mesh)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Mesh) [data structure](../structure.md)</sub>
 
 ## LineOffsetResolution <sub>*classmethod*</sub>
 
@@ -289,7 +289,7 @@ Node [Mesh Line](https://docs.blender.org/manual/en/latest/modeling/geometry_nod
 ### Returns:
 - socket `mesh`
 
-<sub>Go to [top](#class-Mesh)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Mesh) [data structure](../structure.md)</sub>
 
 ## boolean_difference
 
@@ -307,7 +307,7 @@ Node [Mesh Boolean](https://docs.blender.org/manual/en/latest/modeling/geometry_
 ### Returns:
 - socket `intersecting_edges`
 
-<sub>Go to [top](#class-Mesh)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Mesh) [data structure](../structure.md)</sub>
 
 ## boolean_intersect
 
@@ -325,7 +325,7 @@ Node [Mesh Boolean](https://docs.blender.org/manual/en/latest/modeling/geometry_
 ### Returns:
 - socket `intersecting_edges`
 
-<sub>Go to [top](#class-Mesh)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Mesh) [data structure](../structure.md)</sub>
 
 ## boolean_union
 
@@ -343,7 +343,7 @@ Node [Mesh Boolean](https://docs.blender.org/manual/en/latest/modeling/geometry_
 ### Returns:
 - socket `intersecting_edges`
 
-<sub>Go to [top](#class-Mesh)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Mesh) [data structure](../structure.md)</sub>
 
 ## corner_count <sub>*property*</sub>
 
@@ -356,7 +356,7 @@ Node [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 ### Returns:
 - socket `face_corner_count`
 
-<sub>Go to [top](#class-Mesh)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Mesh) [data structure](../structure.md)</sub>
 
 ## delete_all
 
@@ -373,7 +373,7 @@ Node [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geomet
 ### Returns:
 - self
 
-<sub>Go to [top](#class-Mesh)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Mesh) [data structure](../structure.md)</sub>
 
 ## delete_edges
 
@@ -390,7 +390,7 @@ Node [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geomet
 ### Returns:
 - self
 
-<sub>Go to [top](#class-Mesh)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Mesh) [data structure](../structure.md)</sub>
 
 ## delete_faces
 
@@ -407,7 +407,7 @@ Node [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geomet
 ### Returns:
 - self
 
-<sub>Go to [top](#class-Mesh)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Mesh) [data structure](../structure.md)</sub>
 
 ## distribute_points_on_faces
 
@@ -429,7 +429,7 @@ Node [Distribute Points on Faces](https://docs.blender.org/manual/en/latest/mode
 ### Returns:
 - tuple ('`points`', '`normal`', '`rotation`')
 
-<sub>Go to [top](#class-Mesh)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Mesh) [data structure](../structure.md)</sub>
 
 ## domain_size <sub>*property*</sub>
 
@@ -442,7 +442,7 @@ Node [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 ### Returns:
 - node with sockets ['point_count', 'edge_count', 'face_count', 'face_corner_count', 'spline_count', 'instance_count']
 
-<sub>Go to [top](#class-Mesh)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Mesh) [data structure](../structure.md)</sub>
 
 ## dual_mesh
 
@@ -459,7 +459,7 @@ Node [Dual Mesh](https://docs.blender.org/manual/en/latest/modeling/geometry_nod
 ### Returns:
 - socket `dual_mesh` of class Mesh
 
-<sub>Go to [top](#class-Mesh)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Mesh) [data structure](../structure.md)</sub>
 
 ## edge_count <sub>*property*</sub>
 
@@ -472,7 +472,7 @@ Node [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 ### Returns:
 - socket `edge_count`
 
-<sub>Go to [top](#class-Mesh)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Mesh) [data structure](../structure.md)</sub>
 
 ## edge_paths_to_curves
 
@@ -489,7 +489,7 @@ Node [Edge Paths to Curves](https://docs.blender.org/manual/en/latest/modeling/g
 ### Returns:
 - socket `curves` of class Curve
 
-<sub>Go to [top](#class-Mesh)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Mesh) [data structure](../structure.md)</sub>
 
 ## edge_paths_to_selection
 
@@ -506,7 +506,7 @@ Node [Edge Paths to Selection](https://docs.blender.org/manual/en/latest/modelin
 ### Returns:
 - socket `selection`
 
-<sub>Go to [top](#class-Mesh)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Mesh) [data structure](../structure.md)</sub>
 
 ## extrude
 
@@ -526,7 +526,7 @@ Node [Extrude Mesh](https://docs.blender.org/manual/en/latest/modeling/geometry_
 ### Returns:
 - tuple ('`top`', '`side`')
 
-<sub>Go to [top](#class-Mesh)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Mesh) [data structure](../structure.md)</sub>
 
 ## face_count <sub>*property*</sub>
 
@@ -539,7 +539,7 @@ Node [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 ### Returns:
 - socket `face_count`
 
-<sub>Go to [top](#class-Mesh)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Mesh) [data structure](../structure.md)</sub>
 
 ## face_is_planar
 
@@ -555,7 +555,7 @@ Node [Face is Planar](https://docs.blender.org/manual/en/latest/modeling/geometr
 ### Returns:
 - socket `planar`
 
-<sub>Go to [top](#class-Mesh)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Mesh) [data structure](../structure.md)</sub>
 
 ## face_set_boundaries
 
@@ -571,7 +571,7 @@ Node [Face Set Boundaries](https://docs.blender.org/manual/en/latest/modeling/ge
 ### Returns:
 - socket `boundary_edges`
 
-<sub>Go to [top](#class-Mesh)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Mesh) [data structure](../structure.md)</sub>
 
 ## flip_faces
 
@@ -587,7 +587,7 @@ Node [Flip Faces](https://docs.blender.org/manual/en/latest/modeling/geometry_no
 ### Returns:
 - self
 
-<sub>Go to [top](#class-Mesh)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Mesh) [data structure](../structure.md)</sub>
 
 ## instance_on_points
 
@@ -608,7 +608,7 @@ Node [Instance on Points](https://docs.blender.org/manual/en/latest/modeling/geo
 ### Returns:
 - socket `instances`
 
-<sub>Go to [top](#class-Mesh)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Mesh) [data structure](../structure.md)</sub>
 
 ## is_shade_smooth
 
@@ -621,7 +621,7 @@ Node [Is Shade Smooth](https://docs.blender.org/manual/en/latest/modeling/geomet
 ### Returns:
 - socket `smooth`
 
-<sub>Go to [top](#class-Mesh)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Mesh) [data structure](../structure.md)</sub>
 
 ## island <sub>*property*</sub>
 
@@ -634,7 +634,7 @@ Node [Mesh Island](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 ### Returns:
 - node with sockets ['island_index', 'island_count']
 
-<sub>Go to [top](#class-Mesh)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Mesh) [data structure](../structure.md)</sub>
 
 ## island_count <sub>*property*</sub>
 
@@ -647,7 +647,7 @@ Node [Mesh Island](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 ### Returns:
 - socket `island_count`
 
-<sub>Go to [top](#class-Mesh)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Mesh) [data structure](../structure.md)</sub>
 
 ## island_index <sub>*property*</sub>
 
@@ -660,7 +660,7 @@ Node [Mesh Island](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 ### Returns:
 - socket `island_index`
 
-<sub>Go to [top](#class-Mesh)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Mesh) [data structure](../structure.md)</sub>
 
 ## pack_uv_islands
 
@@ -679,7 +679,7 @@ Node [Pack UV Islands](https://docs.blender.org/manual/en/latest/modeling/geomet
 ### Returns:
 - socket `uv`
 
-<sub>Go to [top](#class-Mesh)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Mesh) [data structure](../structure.md)</sub>
 
 ## point_count <sub>*property*</sub>
 
@@ -692,7 +692,7 @@ Node [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 ### Returns:
 - socket `point_count`
 
-<sub>Go to [top](#class-Mesh)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Mesh) [data structure](../structure.md)</sub>
 
 ## sample_nearest_surface
 
@@ -709,7 +709,7 @@ Node [Sample Nearest Surface](https://docs.blender.org/manual/en/latest/modeling
 ### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-Mesh)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Mesh) [data structure](../structure.md)</sub>
 
 ## sample_uv_surface
 
@@ -727,7 +727,7 @@ Node [Sample UV Surface](https://docs.blender.org/manual/en/latest/modeling/geom
 ### Returns:
 - tuple ('`value`', '`is_valid`')
 
-<sub>Go to [top](#class-Mesh)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Mesh) [data structure](../structure.md)</sub>
 
 ## scale_elements
 
@@ -748,7 +748,7 @@ Node [Scale Elements](https://docs.blender.org/manual/en/latest/modeling/geometr
 ### Returns:
 - self
 
-<sub>Go to [top](#class-Mesh)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Mesh) [data structure](../structure.md)</sub>
 
 ## scale_single_axis
 
@@ -768,7 +768,7 @@ Node [Scale Elements](https://docs.blender.org/manual/en/latest/modeling/geometr
 ### Returns:
 - self
 
-<sub>Go to [top](#class-Mesh)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Mesh) [data structure](../structure.md)</sub>
 
 ## scale_uniform
 
@@ -787,7 +787,7 @@ Node [Scale Elements](https://docs.blender.org/manual/en/latest/modeling/geometr
 ### Returns:
 - self
 
-<sub>Go to [top](#class-Mesh)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Mesh) [data structure](../structure.md)</sub>
 
 ## set_shade_smooth
 
@@ -804,7 +804,7 @@ Node [Set Shade Smooth](https://docs.blender.org/manual/en/latest/modeling/geome
 ### Returns:
 - self
 
-<sub>Go to [top](#class-Mesh)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Mesh) [data structure](../structure.md)</sub>
 
 ## shortest_edge_paths
 
@@ -821,7 +821,7 @@ Node [Shortest Edge Paths](https://docs.blender.org/manual/en/latest/modeling/ge
 ### Returns:
 - tuple ('`next_vertex_index`', '`total_cost`')
 
-<sub>Go to [top](#class-Mesh)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Mesh) [data structure](../structure.md)</sub>
 
 ## split_edges
 
@@ -837,7 +837,7 @@ Node [Split Edges](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 ### Returns:
 - self
 
-<sub>Go to [top](#class-Mesh)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Mesh) [data structure](../structure.md)</sub>
 
 ## subdivide
 
@@ -853,7 +853,7 @@ Node [Subdivide Mesh](https://docs.blender.org/manual/en/latest/modeling/geometr
 ### Returns:
 - self
 
-<sub>Go to [top](#class-Mesh)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Mesh) [data structure](../structure.md)</sub>
 
 ## subdivision_surface
 
@@ -873,7 +873,7 @@ Node [Subdivision Surface](https://docs.blender.org/manual/en/latest/modeling/ge
 ### Returns:
 - self
 
-<sub>Go to [top](#class-Mesh)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Mesh) [data structure](../structure.md)</sub>
 
 ## to_curve
 
@@ -889,7 +889,7 @@ Node [Mesh to Curve](https://docs.blender.org/manual/en/latest/modeling/geometry
 ### Returns:
 - socket `curve` of class Curve
 
-<sub>Go to [top](#class-Mesh)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Mesh) [data structure](../structure.md)</sub>
 
 ## to_points
 
@@ -908,7 +908,7 @@ Node [Mesh to Points](https://docs.blender.org/manual/en/latest/modeling/geometr
 ### Returns:
 - socket `points` of class Points
 
-<sub>Go to [top](#class-Mesh)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Mesh) [data structure](../structure.md)</sub>
 
 ## to_volume
 
@@ -930,7 +930,7 @@ Node [Mesh to Volume](https://docs.blender.org/manual/en/latest/modeling/geometr
 ### Returns:
 - socket `volume` of class Volume
 
-<sub>Go to [top](#class-Mesh)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Mesh) [data structure](../structure.md)</sub>
 
 ## triangulate
 
@@ -949,7 +949,7 @@ Node [Triangulate](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 ### Returns:
 - self
 
-<sub>Go to [top](#class-Mesh)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Mesh) [data structure](../structure.md)</sub>
 
 ## uv_unwrap
 
@@ -969,5 +969,5 @@ Node [UV Unwrap](https://docs.blender.org/manual/en/latest/modeling/geometry_nod
 ### Returns:
 - socket `uv`
 
-<sub>Go to [top](#class-Mesh)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Mesh) [data structure](../structure.md)</sub>
 

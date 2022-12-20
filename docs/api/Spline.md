@@ -36,7 +36,7 @@ Node [Is Spline Cyclic](https://docs.blender.org/manual/en/latest/modeling/geome
 ### Returns:
 - socket `cyclic`
 
-<sub>Go to [top](#class-Spline)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Spline) [data structure](../structure.md)</sub>
 
 ## cyclic <sub>*etter*</sub>
 
@@ -52,7 +52,7 @@ Node implemented as property setter.
 - attr_value: cyclic
 
 
-<sub>Go to [top](#class-Spline)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Spline) [data structure](../structure.md)</sub>
 
 ## domain_size
 
@@ -69,7 +69,7 @@ Node [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 ### Returns:
 - node with sockets ['point_count', 'edge_count', 'face_count', 'face_corner_count', 'spline_count', 'instance_count']
 
-<sub>Go to [top](#class-Spline)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Spline) [data structure](../structure.md)</sub>
 
 ## length <sub>*property*</sub>
 
@@ -82,7 +82,7 @@ Node [Spline Length](https://docs.blender.org/manual/en/latest/modeling/geometry
 ### Returns:
 - tuple ('`length`', '`point_count`')
 
-<sub>Go to [top](#class-Spline)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Spline) [data structure](../structure.md)</sub>
 
 ## material <sub>*property*</sub>
 
@@ -96,7 +96,7 @@ Node [Set Material](https://docs.blender.org/manual/en/latest/modeling/geometry_
 Raise an exception if attempt to read.
 
 
-<sub>Go to [top](#class-Spline)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Spline) [data structure](../structure.md)</sub>
 
 ## material <sub>*etter*</sub>
 
@@ -112,7 +112,7 @@ Node implemented as property setter.
 - attr_value: material
 
 
-<sub>Go to [top](#class-Spline)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Spline) [data structure](../structure.md)</sub>
 
 ## normal <sub>*property*</sub>
 
@@ -125,7 +125,7 @@ Node [Normal](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/
 ### Returns:
 - socket `normal`
 
-<sub>Go to [top](#class-Spline)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Spline) [data structure](../structure.md)</sub>
 
 ## normal <sub>*etter*</sub>
 
@@ -141,7 +141,7 @@ Node implemented as property setter.
 - attr_value: mode
 
 
-<sub>Go to [top](#class-Spline)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Spline) [data structure](../structure.md)</sub>
 
 ## points
 
@@ -158,7 +158,7 @@ Node [Points of Curve](https://docs.blender.org/manual/en/latest/modeling/geomet
 ### Returns:
 - tuple ('`point_index`', '`total`')
 
-<sub>Go to [top](#class-Spline)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Spline) [data structure](../structure.md)</sub>
 
 ## resample
 
@@ -176,7 +176,7 @@ Node [Resample Curve](https://docs.blender.org/manual/en/latest/modeling/geometr
 ### Returns:
 - self
 
-<sub>Go to [top](#class-Spline)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Spline) [data structure](../structure.md)</sub>
 
 ## resample_count
 
@@ -192,7 +192,7 @@ Node [Resample Curve](https://docs.blender.org/manual/en/latest/modeling/geometr
 ### Returns:
 - self
 
-<sub>Go to [top](#class-Spline)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Spline) [data structure](../structure.md)</sub>
 
 ## resample_evaluated
 
@@ -205,7 +205,7 @@ Node [Resample Curve](https://docs.blender.org/manual/en/latest/modeling/geometr
 ### Returns:
 - self
 
-<sub>Go to [top](#class-Spline)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Spline) [data structure](../structure.md)</sub>
 
 ## resample_length
 
@@ -221,7 +221,7 @@ Node [Resample Curve](https://docs.blender.org/manual/en/latest/modeling/geometr
 ### Returns:
 - self
 
-<sub>Go to [top](#class-Spline)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Spline) [data structure](../structure.md)</sub>
 
 ## resolution <sub>*property*</sub>
 
@@ -234,7 +234,7 @@ Node [Spline Resolution](https://docs.blender.org/manual/en/latest/modeling/geom
 ### Returns:
 - socket `resolution`
 
-<sub>Go to [top](#class-Spline)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Spline) [data structure](../structure.md)</sub>
 
 ## resolution <sub>*etter*</sub>
 
@@ -250,7 +250,7 @@ Node implemented as property setter.
 - attr_value: resolution
 
 
-<sub>Go to [top](#class-Spline)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Spline) [data structure](../structure.md)</sub>
 
 ## set_cyclic
 
@@ -266,7 +266,7 @@ Node [Set Spline Cyclic](https://docs.blender.org/manual/en/latest/modeling/geom
 ### Returns:
 - self
 
-<sub>Go to [top](#class-Spline)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Spline) [data structure](../structure.md)</sub>
 
 ## set_material
 
@@ -282,7 +282,7 @@ Node [Set Material](https://docs.blender.org/manual/en/latest/modeling/geometry_
 ### Returns:
 - self
 
-<sub>Go to [top](#class-Spline)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Spline) [data structure](../structure.md)</sub>
 
 ## set_normal
 
@@ -298,7 +298,7 @@ Node [Set Curve Normal](https://docs.blender.org/manual/en/latest/modeling/geome
 ### Returns:
 - self
 
-<sub>Go to [top](#class-Spline)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Spline) [data structure](../structure.md)</sub>
 
 ## set_resolution
 
@@ -314,7 +314,7 @@ Node [Set Spline Resolution](https://docs.blender.org/manual/en/latest/modeling/
 ### Returns:
 - self
 
-<sub>Go to [top](#class-Spline)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Spline) [data structure](../structure.md)</sub>
 
 ## set_type
 
@@ -330,7 +330,7 @@ Node [Set Spline Type](https://docs.blender.org/manual/en/latest/modeling/geomet
 ### Returns:
 - self
 
-<sub>Go to [top](#class-Spline)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Spline) [data structure](../structure.md)</sub>
 
 ## type <sub>*property*</sub>
 
@@ -344,7 +344,7 @@ Node [Set Spline Type](https://docs.blender.org/manual/en/latest/modeling/geomet
 Raise an exception if attempt to read.
 
 
-<sub>Go to [top](#class-Spline)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Spline) [data structure](../structure.md)</sub>
 
 ## type <sub>*etter*</sub>
 
@@ -360,5 +360,5 @@ Node implemented as property setter.
 - attr_value: spline_type
 
 
-<sub>Go to [top](#class-Spline)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-Spline) [data structure](../structure.md)</sub>
 

@@ -47,7 +47,7 @@ Node [Curve of Point](https://docs.blender.org/manual/en/latest/modeling/geometr
 ### Returns:
 - tuple ('`curve_index`', '`index_in_curve`')
 
-<sub>Go to [top](#class-ControlPoint)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-ControlPoint) [data structure](../structure.md)</sub>
 
 ## domain_size
 
@@ -64,7 +64,7 @@ Node [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 ### Returns:
 - node with sockets ['point_count', 'edge_count', 'face_count', 'face_corner_count', 'spline_count', 'instance_count']
 
-<sub>Go to [top](#class-ControlPoint)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-ControlPoint) [data structure](../structure.md)</sub>
 
 ## endpoint_selection
 
@@ -81,7 +81,7 @@ Node [Endpoint Selection](https://docs.blender.org/manual/en/latest/modeling/geo
 ### Returns:
 - socket `selection`
 
-<sub>Go to [top](#class-ControlPoint)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-ControlPoint) [data structure](../structure.md)</sub>
 
 ## handle_positions
 
@@ -97,7 +97,7 @@ Node [Curve Handle Positions](https://docs.blender.org/manual/en/latest/modeling
 ### Returns:
 - node with sockets ['left', 'right']
 
-<sub>Go to [top](#class-ControlPoint)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-ControlPoint) [data structure](../structure.md)</sub>
 
 ## handle_type_selection
 
@@ -114,7 +114,7 @@ Node [Handle Type Selection](https://docs.blender.org/manual/en/latest/modeling/
 ### Returns:
 - node with sockets ['selection']
 
-<sub>Go to [top](#class-ControlPoint)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-ControlPoint) [data structure](../structure.md)</sub>
 
 ## handle_type_selection
 
@@ -131,7 +131,7 @@ Node [Handle Type Selection](https://docs.blender.org/manual/en/latest/modeling/
 ### Returns:
 - node with sockets ['selection']
 
-<sub>Go to [top](#class-ControlPoint)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-ControlPoint) [data structure](../structure.md)</sub>
 
 ## handle_type_selection
 
@@ -148,7 +148,7 @@ Node [Handle Type Selection](https://docs.blender.org/manual/en/latest/modeling/
 ### Returns:
 - node with sockets ['selection']
 
-<sub>Go to [top](#class-ControlPoint)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-ControlPoint) [data structure](../structure.md)</sub>
 
 ## handle_type_selection
 
@@ -165,7 +165,7 @@ Node [Handle Type Selection](https://docs.blender.org/manual/en/latest/modeling/
 ### Returns:
 - node with sockets ['selection']
 
-<sub>Go to [top](#class-ControlPoint)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-ControlPoint) [data structure](../structure.md)</sub>
 
 ## handle_type_selection
 
@@ -182,7 +182,7 @@ Node [Handle Type Selection](https://docs.blender.org/manual/en/latest/modeling/
 ### Returns:
 - node with sockets ['selection']
 
-<sub>Go to [top](#class-ControlPoint)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-ControlPoint) [data structure](../structure.md)</sub>
 
 ## handle_type_selection_node
 
@@ -199,7 +199,7 @@ Node [Handle Type Selection](https://docs.blender.org/manual/en/latest/modeling/
 ### Returns:
 - socket `selection`
 
-<sub>Go to [top](#class-ControlPoint)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-ControlPoint) [data structure](../structure.md)</sub>
 
 ## instance_on_points
 
@@ -219,7 +219,7 @@ Node [Instance on Points](https://docs.blender.org/manual/en/latest/modeling/geo
 ### Returns:
 - socket `instances` of class Instances
 
-<sub>Go to [top](#class-ControlPoint)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-ControlPoint) [data structure](../structure.md)</sub>
 
 ## left_handle_positions <sub>*property*</sub>
 
@@ -232,7 +232,7 @@ Node [Curve Handle Positions](https://docs.blender.org/manual/en/latest/modeling
 ### Returns:
 - socket `left`
 
-<sub>Go to [top](#class-ControlPoint)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-ControlPoint) [data structure](../structure.md)</sub>
 
 ## left_handle_positions <sub>*etter*</sub>
 
@@ -248,7 +248,7 @@ Node implemented as property setter.
 - attr_value: position
 
 
-<sub>Go to [top](#class-ControlPoint)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-ControlPoint) [data structure](../structure.md)</sub>
 
 ## offset
 
@@ -264,7 +264,7 @@ Node [Offset Point in Curve](https://docs.blender.org/manual/en/latest/modeling/
 ### Returns:
 - tuple ('`is_valid_offset`', '`point_index`')
 
-<sub>Go to [top](#class-ControlPoint)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-ControlPoint) [data structure](../structure.md)</sub>
 
 ## parameter <sub>*property*</sub>
 
@@ -277,7 +277,7 @@ Node [Spline Parameter](https://docs.blender.org/manual/en/latest/modeling/geome
 ### Returns:
 - tuple ('`factor`', '`length`', '`index`')
 
-<sub>Go to [top](#class-ControlPoint)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-ControlPoint) [data structure](../structure.md)</sub>
 
 ## parameter_factor <sub>*property*</sub>
 
@@ -290,7 +290,7 @@ Node [Spline Parameter](https://docs.blender.org/manual/en/latest/modeling/geome
 ### Returns:
 - socket `factor`
 
-<sub>Go to [top](#class-ControlPoint)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-ControlPoint) [data structure](../structure.md)</sub>
 
 ## parameter_index <sub>*property*</sub>
 
@@ -303,7 +303,7 @@ Node [Spline Parameter](https://docs.blender.org/manual/en/latest/modeling/geome
 ### Returns:
 - socket `index`
 
-<sub>Go to [top](#class-ControlPoint)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-ControlPoint) [data structure](../structure.md)</sub>
 
 ## parameter_length <sub>*property*</sub>
 
@@ -316,7 +316,7 @@ Node [Spline Parameter](https://docs.blender.org/manual/en/latest/modeling/geome
 ### Returns:
 - socket `length`
 
-<sub>Go to [top](#class-ControlPoint)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-ControlPoint) [data structure](../structure.md)</sub>
 
 ## radius <sub>*property*</sub>
 
@@ -329,7 +329,7 @@ Node [Radius](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/
 ### Returns:
 - socket `radius`
 
-<sub>Go to [top](#class-ControlPoint)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-ControlPoint) [data structure](../structure.md)</sub>
 
 ## radius <sub>*etter*</sub>
 
@@ -345,7 +345,7 @@ Node implemented as property setter.
 - attr_value: radius
 
 
-<sub>Go to [top](#class-ControlPoint)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-ControlPoint) [data structure](../structure.md)</sub>
 
 ## right_handle_positions <sub>*property*</sub>
 
@@ -358,7 +358,7 @@ Node [Curve Handle Positions](https://docs.blender.org/manual/en/latest/modeling
 ### Returns:
 - socket `right`
 
-<sub>Go to [top](#class-ControlPoint)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-ControlPoint) [data structure](../structure.md)</sub>
 
 ## right_handle_positions <sub>*etter*</sub>
 
@@ -374,7 +374,7 @@ Node implemented as property setter.
 - attr_value: position
 
 
-<sub>Go to [top](#class-ControlPoint)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-ControlPoint) [data structure](../structure.md)</sub>
 
 ## set_handle_positions
 
@@ -392,7 +392,7 @@ Node [Set Handle Positions](https://docs.blender.org/manual/en/latest/modeling/g
 ### Returns:
 - self
 
-<sub>Go to [top](#class-ControlPoint)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-ControlPoint) [data structure](../structure.md)</sub>
 
 ## set_handle_positions_left
 
@@ -410,7 +410,7 @@ Node [Set Handle Positions](https://docs.blender.org/manual/en/latest/modeling/g
 ### Returns:
 - self
 
-<sub>Go to [top](#class-ControlPoint)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-ControlPoint) [data structure](../structure.md)</sub>
 
 ## set_handle_positions_right
 
@@ -428,7 +428,7 @@ Node [Set Handle Positions](https://docs.blender.org/manual/en/latest/modeling/g
 ### Returns:
 - self
 
-<sub>Go to [top](#class-ControlPoint)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-ControlPoint) [data structure](../structure.md)</sub>
 
 ## set_handle_type
 
@@ -447,7 +447,7 @@ Node [Set Handle Type](https://docs.blender.org/manual/en/latest/modeling/geomet
 ### Returns:
 - node with sockets ['curve']
 
-<sub>Go to [top](#class-ControlPoint)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-ControlPoint) [data structure](../structure.md)</sub>
 
 ## set_handle_type_node
 
@@ -464,7 +464,7 @@ Node [Set Handle Type](https://docs.blender.org/manual/en/latest/modeling/geomet
 ### Returns:
 - self
 
-<sub>Go to [top](#class-ControlPoint)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-ControlPoint) [data structure](../structure.md)</sub>
 
 ## set_radius
 
@@ -480,7 +480,7 @@ Node [Set Curve Radius](https://docs.blender.org/manual/en/latest/modeling/geome
 ### Returns:
 - self
 
-<sub>Go to [top](#class-ControlPoint)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-ControlPoint) [data structure](../structure.md)</sub>
 
 ## set_tilt
 
@@ -496,7 +496,7 @@ Node [Set Curve Tilt](https://docs.blender.org/manual/en/latest/modeling/geometr
 ### Returns:
 - self
 
-<sub>Go to [top](#class-ControlPoint)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-ControlPoint) [data structure](../structure.md)</sub>
 
 ## tangent <sub>*property*</sub>
 
@@ -509,7 +509,7 @@ Node [Curve Tangent](https://docs.blender.org/manual/en/latest/modeling/geometry
 ### Returns:
 - socket `tangent`
 
-<sub>Go to [top](#class-ControlPoint)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-ControlPoint) [data structure](../structure.md)</sub>
 
 ## tilt <sub>*property*</sub>
 
@@ -522,7 +522,7 @@ Node [Curve Tilt](https://docs.blender.org/manual/en/latest/modeling/geometry_no
 ### Returns:
 - socket `tilt`
 
-<sub>Go to [top](#class-ControlPoint)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-ControlPoint) [data structure](../structure.md)</sub>
 
 ## tilt <sub>*etter*</sub>
 
@@ -538,5 +538,5 @@ Node implemented as property setter.
 - attr_value: tilt
 
 
-<sub>Go to [top](#class-ControlPoint)</sub> [data structure](../structure.md)
+<sub>Go to [top](#class-ControlPoint) [data structure](../structure.md)</sub>
 
