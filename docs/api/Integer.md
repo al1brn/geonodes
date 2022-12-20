@@ -725,11 +725,11 @@ def multiply(self, value):
 ```
 Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
 
-        ###Args:
+        ### Args:
 - value: Float or Integer or Vector
 
 ### Returns:
-- {line}
+- self * value
 
 <sub>Go to [top](#class-Integer) [data structure](../structure.md)</sub>
 
@@ -759,11 +759,11 @@ def multiply(self, value):
 ```
 Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
 
-        ###Args:
+        ### Args:
 - value: Float or Integer or Vector
 
 ### Returns:
-- {line}
+- self * value
 
 <sub>Go to [top](#class-Integer) [data structure](../structure.md)</sub>
 

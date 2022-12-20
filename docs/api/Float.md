@@ -111,7 +111,7 @@ Node [Scene Time](https://docs.blender.org/manual/en/latest/modeling/geometry_no
 def Input(cls, value=0., name="Float", min_value=None, max_value=None, description=""):
 
 ```
-        ###Args:
+        ### Args:
 - value: Initial value. Not changed if the group input already exists
 - name: Input socket name. Avoid homonyms!
 - min_value: minimum value
@@ -119,7 +119,7 @@ def Input(cls, value=0., name="Float", min_value=None, max_value=None, descripti
 - description: user help
 
 ### Returns:
-- {line}
+- Float
 
 <sub>Go to [top](#class-Float) [data structure](../structure.md)</sub>
 
@@ -1017,11 +1017,11 @@ def multiply(self, value):
 ```
 Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
 
-        ###Args:
+        ### Args:
 - value: Float or Integer or Vector
 
 ### Returns:
-- {line}
+- self * value
 
 <sub>Go to [top](#class-Float) [data structure](../structure.md)</sub>
 
@@ -1051,11 +1051,11 @@ def multiply(self, value):
 ```
 Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
 
-        ###Args:
+        ### Args:
 - value: Float or Integer or Vector
 
 ### Returns:
-- {line}
+- self * value
 
 <sub>Go to [top](#class-Float) [data structure](../structure.md)</sub>
 

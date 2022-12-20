@@ -262,7 +262,7 @@ Node [Set Material](https://docs.blender.org/manual/en/latest/modeling/geometry_
 
 Node implemented as property setter.
 
-        ###Args:
+        ### Args:
 - attr_value: material
 
 
@@ -415,7 +415,7 @@ Node [Set Shade Smooth](https://docs.blender.org/manual/en/latest/modeling/geome
 
 Node implemented as property setter.
 
-        ###Args:
+        ### Args:
 - attr_value: shade_smooth
 
 
