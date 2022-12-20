@@ -25,229 +25,230 @@
 - [split](#split)
 - [to_curve](#to_curve)
 
-## angle *property*
+## angle <span style="color:blue">*property*</span>
 
-```python
-def angle(self):
+<sub>Go to [top](#class-Edge)</sub>```python
+<sub>Go to [top](#class-Edge)</sub>def angle(self):
 
-```
-Node [Edge Angle](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/edge_angle.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshEdgeAngle.html) )
+<sub>Go to [top](#class-Edge)</sub>```
+<sub>Go to [top](#class-Edge)</sub>Node [Edge Angle](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/edge_angle.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshEdgeAngle.html) )
 
-### Returns:
+<sub>Go to [top](#class-Edge)</sub>### Returns:
 
-- node with sockets ['unsigned_angle', 'signed_angle']
+<sub>Go to [top](#class-Edge)</sub>- node with sockets ['unsigned_angle', 'signed_angle']
+<sub>Go to [top](#class-Edge)</sub>
+<sub>Go to [top](#class-Edge)</sub>## delete_all
 
-## delete_all
+<sub>Go to [top](#class-Edge)</sub>```python
+<sub>Go to [top](#class-Edge)</sub>def delete_all(self):
 
-```python
-def delete_all(self):
+<sub>Go to [top](#class-Edge)</sub>```
+<sub>Go to [top](#class-Edge)</sub>Node [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/delete_geometry.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeDeleteGeometry.html) )
 
-```
-Node [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/delete_geometry.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeDeleteGeometry.html) )
+<sub>Go to [top](#class-Edge)</sub>### Returns:
 
-### Returns:
+<sub>Go to [top](#class-Edge)</sub>- node with sockets ['geometry']
+<sub>Go to [top](#class-Edge)</sub>
+<sub>Go to [top](#class-Edge)</sub>## delete_edges
 
-- node with sockets ['geometry']
+<sub>Go to [top](#class-Edge)</sub>```python
+<sub>Go to [top](#class-Edge)</sub>def delete_edges(self):
 
-## delete_edges
+<sub>Go to [top](#class-Edge)</sub>```
+<sub>Go to [top](#class-Edge)</sub>Node [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/delete_geometry.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeDeleteGeometry.html) )
 
-```python
-def delete_edges(self):
+<sub>Go to [top](#class-Edge)</sub>### Returns:
 
-```
-Node [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/delete_geometry.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeDeleteGeometry.html) )
+<sub>Go to [top](#class-Edge)</sub>- node with sockets ['geometry']
+<sub>Go to [top](#class-Edge)</sub>
+<sub>Go to [top](#class-Edge)</sub>## delete_faces
 
-### Returns:
+<sub>Go to [top](#class-Edge)</sub>```python
+<sub>Go to [top](#class-Edge)</sub>def delete_faces(self):
 
-- node with sockets ['geometry']
+<sub>Go to [top](#class-Edge)</sub>```
+<sub>Go to [top](#class-Edge)</sub>Node [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/delete_geometry.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeDeleteGeometry.html) )
 
-## delete_faces
+<sub>Go to [top](#class-Edge)</sub>### Returns:
 
-```python
-def delete_faces(self):
+<sub>Go to [top](#class-Edge)</sub>- node with sockets ['geometry']
+<sub>Go to [top](#class-Edge)</sub>
+<sub>Go to [top](#class-Edge)</sub>## domain_size
 
-```
-Node [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/delete_geometry.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeDeleteGeometry.html) )
+<sub>Go to [top](#class-Edge)</sub>```python
+<sub>Go to [top](#class-Edge)</sub>def __len__(self):
 
-### Returns:
+<sub>Go to [top](#class-Edge)</sub>```
+<sub>Go to [top](#class-Edge)</sub>Node [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html) )
 
-- node with sockets ['geometry']
+<sub>Go to [top](#class-Edge)</sub>### Args:
+<sub>Go to [top](#class-Edge)</sub>- geometry: Geometry
+<sub>Go to [top](#class-Edge)</sub>- component (str): 'MESH' in [MESH, POINTCLOUD, CURVE, INSTANCES]
+<sub>Go to [top](#class-Edge)</sub>
+<sub>Go to [top](#class-Edge)</sub>### Returns:
 
-## domain_size
+<sub>Go to [top](#class-Edge)</sub>- node with sockets ['point_count', 'edge_count', 'face_count', 'face_corner_count', 'spline_count', 'instance_count']
+<sub>Go to [top](#class-Edge)</sub>
+<sub>Go to [top](#class-Edge)</sub>## edge_paths_to_curves
 
-```python
-def __len__(self):
+<sub>Go to [top](#class-Edge)</sub>```python
+<sub>Go to [top](#class-Edge)</sub>def edge_paths_to_curves(self, start_vertices=None, next_vertex_index=None):
 
-```
-Node [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html) )
+<sub>Go to [top](#class-Edge)</sub>```
+<sub>Go to [top](#class-Edge)</sub>Node [Edge Paths to Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/edge_paths_to_curves.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeEdgePathsToCurves.html) )
 
-### Args:
-- geometry: Geometry
-- component (str): 'MESH' in [MESH, POINTCLOUD, CURVE, INSTANCES]
+<sub>Go to [top](#class-Edge)</sub>### Args:
+<sub>Go to [top](#class-Edge)</sub>- start_vertices: Boolean
+<sub>Go to [top](#class-Edge)</sub>- next_vertex_index: Integer
+<sub>Go to [top](#class-Edge)</sub>
+<sub>Go to [top](#class-Edge)</sub>### Returns:
 
-### Returns:
+<sub>Go to [top](#class-Edge)</sub>  socket 'curves'<sub>Go to [top](#class-Edge)</sub> of class Curve
+<sub>Go to [top](#class-Edge)</sub>
+<sub>Go to [top](#class-Edge)</sub>## extrude
 
-- node with sockets ['point_count', 'edge_count', 'face_count', 'face_corner_count', 'spline_count', 'instance_count']
+<sub>Go to [top](#class-Edge)</sub>```python
+<sub>Go to [top](#class-Edge)</sub>def extrude(self, offset=None, offset_scale=None, individual=None):
 
-## edge_paths_to_curves
+<sub>Go to [top](#class-Edge)</sub>```
+<sub>Go to [top](#class-Edge)</sub>Node [Extrude Mesh](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/extrude_mesh.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeExtrudeMesh.html) )
 
-```python
-def edge_paths_to_curves(self, start_vertices=None, next_vertex_index=None):
+<sub>Go to [top](#class-Edge)</sub>### Args:
+<sub>Go to [top](#class-Edge)</sub>- offset: Vector
+<sub>Go to [top](#class-Edge)</sub>- offset_scale: Float
+<sub>Go to [top](#class-Edge)</sub>- individual: Boolean
+<sub>Go to [top](#class-Edge)</sub>
+<sub>Go to [top](#class-Edge)</sub>### Returns:
 
-```
-Node [Edge Paths to Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/edge_paths_to_curves.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeEdgePathsToCurves.html) )
+<sub>Go to [top](#class-Edge)</sub>- tuple ('top', 'side')
+<sub>Go to [top](#class-Edge)</sub>
+<sub>Go to [top](#class-Edge)</sub>## neighbors <span style="color:blue">*property*</span>
 
-### Args:
-- start_vertices: Boolean
-- next_vertex_index: Integer
+<sub>Go to [top](#class-Edge)</sub>```python
+<sub>Go to [top](#class-Edge)</sub>def neighbors(self):
 
-### Returns:
+<sub>Go to [top](#class-Edge)</sub>```
+<sub>Go to [top](#class-Edge)</sub>Node [Edge Neighbors](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/edge_neighbors.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshEdgeNeighbors.html) )
 
-  socket 'curves' of class Curve
+<sub>Go to [top](#class-Edge)</sub>### Returns:
 
-## extrude
+<sub>Go to [top](#class-Edge)</sub>  socket 'face_count'<sub>Go to [top](#class-Edge)</sub>
+<sub>Go to [top](#class-Edge)</sub>
+<sub>Go to [top](#class-Edge)</sub>## scale_single_axis
 
-```python
-def extrude(self, offset=None, offset_scale=None, individual=None):
+<sub>Go to [top](#class-Edge)</sub>```python
+<sub>Go to [top](#class-Edge)</sub>def scale_single_axis(self, scale=None, center=None, axis=None):
 
-```
-Node [Extrude Mesh](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/extrude_mesh.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeExtrudeMesh.html) )
+<sub>Go to [top](#class-Edge)</sub>```
+<sub>Go to [top](#class-Edge)</sub>Node [Scale Elements](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/scale_elements.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeScaleElements.html) )
 
-### Args:
-- offset: Vector
-- offset_scale: Float
-- individual: Boolean
+<sub>Go to [top](#class-Edge)</sub>### Args:
+<sub>Go to [top](#class-Edge)</sub>- scale: Float
+<sub>Go to [top](#class-Edge)</sub>- center: Vector
+<sub>Go to [top](#class-Edge)</sub>- axis: Vector
+<sub>Go to [top](#class-Edge)</sub>
+<sub>Go to [top](#class-Edge)</sub>### Returns:
 
-### Returns:
+<sub>Go to [top](#class-Edge)</sub>- node with sockets ['geometry']
+<sub>Go to [top](#class-Edge)</sub>
+<sub>Go to [top](#class-Edge)</sub>## scale_uniform
 
-- tuple ('top', 'side')
+<sub>Go to [top](#class-Edge)</sub>```python
+<sub>Go to [top](#class-Edge)</sub>def scale_uniform(self, scale=None, center=None):
 
-## neighbors *property*
+<sub>Go to [top](#class-Edge)</sub>```
+<sub>Go to [top](#class-Edge)</sub>Node [Scale Elements](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/scale_elements.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeScaleElements.html) )
 
-```python
-def neighbors(self):
+<sub>Go to [top](#class-Edge)</sub>### Args:
+<sub>Go to [top](#class-Edge)</sub>- scale: Float
+<sub>Go to [top](#class-Edge)</sub>- center: Vector
+<sub>Go to [top](#class-Edge)</sub>
+<sub>Go to [top](#class-Edge)</sub>### Returns:
 
-```
-Node [Edge Neighbors](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/edge_neighbors.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshEdgeNeighbors.html) )
+<sub>Go to [top](#class-Edge)</sub>- node with sockets ['geometry']
+<sub>Go to [top](#class-Edge)</sub>
+<sub>Go to [top](#class-Edge)</sub>## signed_angle <span style="color:blue">*property*</span>
 
-### Returns:
+<sub>Go to [top](#class-Edge)</sub>```python
+<sub>Go to [top](#class-Edge)</sub>def signed_angle(self):
 
-  socket 'face_count'
+<sub>Go to [top](#class-Edge)</sub>```
+<sub>Go to [top](#class-Edge)</sub>Node [Edge Angle](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/edge_angle.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshEdgeAngle.html) )
 
-## scale_single_axis
+<sub>Go to [top](#class-Edge)</sub>### Returns:
 
-```python
-def scale_single_axis(self, scale=None, center=None, axis=None):
+<sub>Go to [top](#class-Edge)</sub>  socket 'signed_angle'<sub>Go to [top](#class-Edge)</sub>
+<sub>Go to [top](#class-Edge)</sub>
+<sub>Go to [top](#class-Edge)</sub>## split
 
-```
-Node [Scale Elements](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/scale_elements.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeScaleElements.html) )
+<sub>Go to [top](#class-Edge)</sub>```python
+<sub>Go to [top](#class-Edge)</sub>def split(self):
 
-### Args:
-- scale: Float
-- center: Vector
-- axis: Vector
+<sub>Go to [top](#class-Edge)</sub>```
+<sub>Go to [top](#class-Edge)</sub>Node [Split Edges](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/split_edges.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSplitEdges.html) )
 
-### Returns:
+<sub>Go to [top](#class-Edge)</sub>### Returns:
 
-- node with sockets ['geometry']
+<sub>Go to [top](#class-Edge)</sub>- node with sockets ['mesh']
+<sub>Go to [top](#class-Edge)</sub>
+<sub>Go to [top](#class-Edge)</sub>## to_curve
 
-## scale_uniform
+<sub>Go to [top](#class-Edge)</sub>```python
+<sub>Go to [top](#class-Edge)</sub>def to_curve(self):
 
-```python
-def scale_uniform(self, scale=None, center=None):
+<sub>Go to [top](#class-Edge)</sub>```
+<sub>Go to [top](#class-Edge)</sub>Node [Mesh to Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/mesh_to_curve.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshToCurve.html) )
 
-```
-Node [Scale Elements](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/scale_elements.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeScaleElements.html) )
+<sub>Go to [top](#class-Edge)</sub>### Returns:
 
-### Args:
-- scale: Float
-- center: Vector
+<sub>Go to [top](#class-Edge)</sub>  socket 'curve'<sub>Go to [top](#class-Edge)</sub> of class Curve
+<sub>Go to [top](#class-Edge)</sub>
+<sub>Go to [top](#class-Edge)</sub>## unsigned_angle <span style="color:blue">*property*</span>
 
-### Returns:
+<sub>Go to [top](#class-Edge)</sub>```python
+<sub>Go to [top](#class-Edge)</sub>def unsigned_angle(self):
 
-- node with sockets ['geometry']
+<sub>Go to [top](#class-Edge)</sub>```
+<sub>Go to [top](#class-Edge)</sub>Node [Edge Angle](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/edge_angle.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshEdgeAngle.html) )
 
-## signed_angle *property*
+<sub>Go to [top](#class-Edge)</sub>### Returns:
 
-```python
-def signed_angle(self):
+<sub>Go to [top](#class-Edge)</sub>  socket 'unsigned_angle'<sub>Go to [top](#class-Edge)</sub>
+<sub>Go to [top](#class-Edge)</sub>
+<sub>Go to [top](#class-Edge)</sub>## vertices <span style="color:blue">*property*</span>
 
-```
-Node [Edge Angle](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/edge_angle.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshEdgeAngle.html) )
+<sub>Go to [top](#class-Edge)</sub>```python
+<sub>Go to [top](#class-Edge)</sub>def vertices(self):
 
-### Returns:
+<sub>Go to [top](#class-Edge)</sub>```
+<sub>Go to [top](#class-Edge)</sub>Node [Edge Vertices](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/edge_vertices.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshEdgeVertices.html) )
 
-  socket 'signed_angle'
+<sub>Go to [top](#class-Edge)</sub>### Returns:
 
-## split
+<sub>Go to [top](#class-Edge)</sub>- node with sockets ['vertex_index_1', 'vertex_index_2', 'position_1', 'position_2']
+<sub>Go to [top](#class-Edge)</sub>
+<sub>Go to [top](#class-Edge)</sub>## vertices_index <span style="color:blue">*property*</span>
 
-```python
-def split(self):
+<sub>Go to [top](#class-Edge)</sub>```python
+<sub>Go to [top](#class-Edge)</sub>def vertices_index(self):
 
-```
-Node [Split Edges](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/split_edges.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSplitEdges.html) )
+<sub>Go to [top](#class-Edge)</sub>```
+<sub>Go to [top](#class-Edge)</sub>Node [Edge Vertices](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/edge_vertices.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshEdgeVertices.html) )
 
-### Returns:
+<sub>Go to [top](#class-Edge)</sub>### Returns:
 
-- node with sockets ['mesh']
+<sub>Go to [top](#class-Edge)</sub>- tuple ('vertex_index_1', 'vertex_index_2')
+<sub>Go to [top](#class-Edge)</sub>
+<sub>Go to [top](#class-Edge)</sub>## vertices_position <span style="color:blue">*property*</span>
 
-## to_curve
+<sub>Go to [top](#class-Edge)</sub>```python
+<sub>Go to [top](#class-Edge)</sub>def vertices_position(self):
 
-```python
-def to_curve(self):
+<sub>Go to [top](#class-Edge)</sub>```
+<sub>Go to [top](#class-Edge)</sub>Node [Edge Vertices](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/edge_vertices.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshEdgeVertices.html) )
 
-```
-Node [Mesh to Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/mesh_to_curve.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshToCurve.html) )
+<sub>Go to [top](#class-Edge)</sub>### Returns:
 
-### Returns:
-
-  socket 'curve' of class Curve
-
-## unsigned_angle *property*
-
-```python
-def unsigned_angle(self):
-
-```
-Node [Edge Angle](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/edge_angle.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshEdgeAngle.html) )
-
-### Returns:
-
-  socket 'unsigned_angle'
-
-## vertices *property*
-
-```python
-def vertices(self):
-
-```
-Node [Edge Vertices](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/edge_vertices.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshEdgeVertices.html) )
-
-### Returns:
-
-- node with sockets ['vertex_index_1', 'vertex_index_2', 'position_1', 'position_2']
-
-## vertices_index *property*
-
-```python
-def vertices_index(self):
-
-```
-Node [Edge Vertices](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/edge_vertices.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshEdgeVertices.html) )
-
-### Returns:
-
-- tuple ('vertex_index_1', 'vertex_index_2')
-
-## vertices_position *property*
-
-```python
-def vertices_position(self):
-
-```
-Node [Edge Vertices](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/edge_vertices.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshEdgeVertices.html) )
-
-### Returns:
-
-- tuple ('position_1', 'position_2')
-
+<sub>Go to [top](#class-Edge)</sub>- tuple ('position_1', 'position_2')
+<sub>Go to [top](#class-Edge)</sub>
+<sub>Go to [top](#class-Edge)</sub>

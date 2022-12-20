@@ -100,1390 +100,1391 @@
 - [tangent](#tangent)
 - [wrap](#wrap)
 
-## Combine *classmethod*
+## Combine <span style="color:blue">*classmethod*</span>
 
-```python
-def Combine(cls, x=None, y=None, z=None):
+<sub>Go to [top](#class-Vector)</sub>```python
+<sub>Go to [top](#class-Vector)</sub>def Combine(cls, x=None, y=None, z=None):
 
-```
-Node [Combine XYZ](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/combine_xyz.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeCombineXYZ.html) )
+<sub>Go to [top](#class-Vector)</sub>```
+<sub>Go to [top](#class-Vector)</sub>Node [Combine XYZ](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/combine_xyz.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeCombineXYZ.html) )
 
-### Args:
-- x: Float
-- y: Float
-- z: Float
+<sub>Go to [top](#class-Vector)</sub>### Args:
+<sub>Go to [top](#class-Vector)</sub>- x: Float
+<sub>Go to [top](#class-Vector)</sub>- y: Float
+<sub>Go to [top](#class-Vector)</sub>- z: Float
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>### Returns:
 
-### Returns:
+<sub>Go to [top](#class-Vector)</sub>  socket 'vector'<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>## Vector <span style="color:blue">*classmethod*</span>
 
-  socket 'vector'
+<sub>Go to [top](#class-Vector)</sub>```python
+<sub>Go to [top](#class-Vector)</sub>def Vector(cls, vector=[0.0, 0.0, 0.0]):
 
-## Vector *classmethod*
+<sub>Go to [top](#class-Vector)</sub>```
+<sub>Go to [top](#class-Vector)</sub>Node [Vector](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/vector.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeInputVector.html) )
 
-```python
-def Vector(cls, vector=[0.0, 0.0, 0.0]):
+<sub>Go to [top](#class-Vector)</sub>### Args:
+<sub>Go to [top](#class-Vector)</sub>- vector (list): [0.0, 0.0, 0.0]
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>### Returns:
 
-```
-Node [Vector](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/vector.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeInputVector.html) )
+<sub>Go to [top](#class-Vector)</sub>  socket 'vector'<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>## abs
 
-### Args:
-- vector (list): [0.0, 0.0, 0.0]
+<sub>Go to [top](#class-Vector)</sub>```python
+<sub>Go to [top](#class-Vector)</sub>def abs(self):
 
-### Returns:
+<sub>Go to [top](#class-Vector)</sub>```
+<sub>Go to [top](#class-Vector)</sub>Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html) )
 
-  socket 'vector'
+<sub>Go to [top](#class-Vector)</sub>### Returns:
 
-## abs
+<sub>Go to [top](#class-Vector)</sub>  socket 'vector'<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>## absolute
 
-```python
-def abs(self):
+<sub>Go to [top](#class-Vector)</sub>```python
+<sub>Go to [top](#class-Vector)</sub>def absolute(self):
 
-```
-Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html) )
+<sub>Go to [top](#class-Vector)</sub>```
+<sub>Go to [top](#class-Vector)</sub>Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html) )
 
-### Returns:
+<sub>Go to [top](#class-Vector)</sub>### Returns:
 
-  socket 'vector'
+<sub>Go to [top](#class-Vector)</sub>  socket 'vector'<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>## add
 
-## absolute
+<sub>Go to [top](#class-Vector)</sub>```python
+<sub>Go to [top](#class-Vector)</sub>def add(self, vector=None):
 
-```python
-def absolute(self):
+<sub>Go to [top](#class-Vector)</sub>```
+<sub>Go to [top](#class-Vector)</sub>Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html) )
 
-```
-Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html) )
+<sub>Go to [top](#class-Vector)</sub>### Args:
+<sub>Go to [top](#class-Vector)</sub>- vector: Vector
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>### Returns:
 
-### Returns:
+<sub>Go to [top](#class-Vector)</sub>  socket 'vector'<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>## align_euler_to_vector
 
-  socket 'vector'
+<sub>Go to [top](#class-Vector)</sub>```python
+<sub>Go to [top](#class-Vector)</sub>def align_euler_to_vector(self, factor=None, vector=None, axis='X', pivot_axis='AUTO'):
 
-## add
+<sub>Go to [top](#class-Vector)</sub>```
+<sub>Go to [top](#class-Vector)</sub>Node [Align Euler to Vector](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/align_euler_to_vector.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeAlignEulerToVector.html) )
 
-```python
-def add(self, vector=None):
+<sub>Go to [top](#class-Vector)</sub>### Args:
+<sub>Go to [top](#class-Vector)</sub>- factor: Float
+<sub>Go to [top](#class-Vector)</sub>- vector: Vector
+<sub>Go to [top](#class-Vector)</sub>- axis (str): 'X' in [X, Y, Z]
+<sub>Go to [top](#class-Vector)</sub>- pivot_axis (str): 'AUTO' in [AUTO, X, Y, Z]
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>### Returns:
 
-```
-Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html) )
+<sub>Go to [top](#class-Vector)</sub>- node with sockets ['rotation']
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>## average_equal
 
-### Args:
-- vector: Vector
+<sub>Go to [top](#class-Vector)</sub>```python
+<sub>Go to [top](#class-Vector)</sub>def average_equal(self, b=None, epsilon=None):
 
-### Returns:
+<sub>Go to [top](#class-Vector)</sub>```
+<sub>Go to [top](#class-Vector)</sub>Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html) )
 
-  socket 'vector'
+<sub>Go to [top](#class-Vector)</sub>### Args:
+<sub>Go to [top](#class-Vector)</sub>- b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+<sub>Go to [top](#class-Vector)</sub>- epsilon: Float
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>### Returns:
 
-## align_euler_to_vector
+<sub>Go to [top](#class-Vector)</sub>  socket 'result'<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>## average_greater_equal
 
-```python
-def align_euler_to_vector(self, factor=None, vector=None, axis='X', pivot_axis='AUTO'):
+<sub>Go to [top](#class-Vector)</sub>```python
+<sub>Go to [top](#class-Vector)</sub>def average_greater_equal(self, b=None):
 
-```
-Node [Align Euler to Vector](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/align_euler_to_vector.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeAlignEulerToVector.html) )
+<sub>Go to [top](#class-Vector)</sub>```
+<sub>Go to [top](#class-Vector)</sub>Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html) )
 
-### Args:
-- factor: Float
-- vector: Vector
-- axis (str): 'X' in [X, Y, Z]
-- pivot_axis (str): 'AUTO' in [AUTO, X, Y, Z]
+<sub>Go to [top](#class-Vector)</sub>### Args:
+<sub>Go to [top](#class-Vector)</sub>- b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>### Returns:
 
-### Returns:
+<sub>Go to [top](#class-Vector)</sub>  socket 'result'<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>## average_greater_than
 
-- node with sockets ['rotation']
+<sub>Go to [top](#class-Vector)</sub>```python
+<sub>Go to [top](#class-Vector)</sub>def average_greater_than(self, b=None):
 
-## average_equal
+<sub>Go to [top](#class-Vector)</sub>```
+<sub>Go to [top](#class-Vector)</sub>Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html) )
 
-```python
-def average_equal(self, b=None, epsilon=None):
+<sub>Go to [top](#class-Vector)</sub>### Args:
+<sub>Go to [top](#class-Vector)</sub>- b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>### Returns:
 
-```
-Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html) )
+<sub>Go to [top](#class-Vector)</sub>  socket 'result'<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>## average_less_equal
 
-### Args:
-- b: ['Float', 'Integer', 'Vector', 'Color', 'String']
-- epsilon: Float
+<sub>Go to [top](#class-Vector)</sub>```python
+<sub>Go to [top](#class-Vector)</sub>def average_less_equal(self, b=None):
 
-### Returns:
+<sub>Go to [top](#class-Vector)</sub>```
+<sub>Go to [top](#class-Vector)</sub>Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html) )
 
-  socket 'result'
+<sub>Go to [top](#class-Vector)</sub>### Args:
+<sub>Go to [top](#class-Vector)</sub>- b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>### Returns:
 
-## average_greater_equal
+<sub>Go to [top](#class-Vector)</sub>  socket 'result'<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>## average_less_than
 
-```python
-def average_greater_equal(self, b=None):
+<sub>Go to [top](#class-Vector)</sub>```python
+<sub>Go to [top](#class-Vector)</sub>def average_less_than(self, b=None):
 
-```
-Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html) )
+<sub>Go to [top](#class-Vector)</sub>```
+<sub>Go to [top](#class-Vector)</sub>Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html) )
 
-### Args:
-- b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+<sub>Go to [top](#class-Vector)</sub>### Args:
+<sub>Go to [top](#class-Vector)</sub>- b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>### Returns:
 
-### Returns:
+<sub>Go to [top](#class-Vector)</sub>  socket 'result'<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>## average_not_equal
 
-  socket 'result'
+<sub>Go to [top](#class-Vector)</sub>```python
+<sub>Go to [top](#class-Vector)</sub>def average_not_equal(self, b=None, epsilon=None):
 
-## average_greater_than
+<sub>Go to [top](#class-Vector)</sub>```
+<sub>Go to [top](#class-Vector)</sub>Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html) )
 
-```python
-def average_greater_than(self, b=None):
+<sub>Go to [top](#class-Vector)</sub>### Args:
+<sub>Go to [top](#class-Vector)</sub>- b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+<sub>Go to [top](#class-Vector)</sub>- epsilon: Float
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>### Returns:
 
-```
-Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html) )
+<sub>Go to [top](#class-Vector)</sub>  socket 'result'<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>## ceil
 
-### Args:
-- b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+<sub>Go to [top](#class-Vector)</sub>```python
+<sub>Go to [top](#class-Vector)</sub>def ceil(self):
 
-### Returns:
+<sub>Go to [top](#class-Vector)</sub>```
+<sub>Go to [top](#class-Vector)</sub>Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html) )
 
-  socket 'result'
+<sub>Go to [top](#class-Vector)</sub>### Returns:
 
-## average_less_equal
+<sub>Go to [top](#class-Vector)</sub>  socket 'vector'<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>## compare
 
-```python
-def average_less_equal(self, b=None):
+<sub>Go to [top](#class-Vector)</sub>```python
+<sub>Go to [top](#class-Vector)</sub>def compare(self, b=None, c=None, angle=None, epsilon=None, mode='ELEMENT', operation='GREATER_THAN'):
 
-```
-Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html) )
+<sub>Go to [top](#class-Vector)</sub>```
+<sub>Go to [top](#class-Vector)</sub>Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html) )
 
-### Args:
-- b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+<sub>Go to [top](#class-Vector)</sub>### Args:
+<sub>Go to [top](#class-Vector)</sub>- b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+<sub>Go to [top](#class-Vector)</sub>- c: Float
+<sub>Go to [top](#class-Vector)</sub>- angle: Float
+<sub>Go to [top](#class-Vector)</sub>- epsilon: Float
+<sub>Go to [top](#class-Vector)</sub>- mode (str): 'ELEMENT' in [ELEMENT, LENGTH, AVERAGE, DOT_PRODUCT, DIRECTION]
+<sub>Go to [top](#class-Vector)</sub>- operation (str): 'GREATER_THAN' in [LESS_THAN, LESS_EQUAL, GREATER_THAN, GREATER_EQUAL, EQUAL, NOT_EQUAL]
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>### Returns:
 
-### Returns:
+<sub>Go to [top](#class-Vector)</sub>  socket 'result'<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>## cos
 
-  socket 'result'
+<sub>Go to [top](#class-Vector)</sub>```python
+<sub>Go to [top](#class-Vector)</sub>def cos(self):
 
-## average_less_than
+<sub>Go to [top](#class-Vector)</sub>```
+<sub>Go to [top](#class-Vector)</sub>Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html) )
 
-```python
-def average_less_than(self, b=None):
+<sub>Go to [top](#class-Vector)</sub>### Returns:
 
-```
-Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html) )
+<sub>Go to [top](#class-Vector)</sub>  socket 'vector'<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>## cosine
 
-### Args:
-- b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+<sub>Go to [top](#class-Vector)</sub>```python
+<sub>Go to [top](#class-Vector)</sub>def cosine(self):
 
-### Returns:
+<sub>Go to [top](#class-Vector)</sub>```
+<sub>Go to [top](#class-Vector)</sub>Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html) )
 
-  socket 'result'
+<sub>Go to [top](#class-Vector)</sub>### Returns:
 
-## average_not_equal
+<sub>Go to [top](#class-Vector)</sub>  socket 'vector'<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>## cross
 
-```python
-def average_not_equal(self, b=None, epsilon=None):
+<sub>Go to [top](#class-Vector)</sub>```python
+<sub>Go to [top](#class-Vector)</sub>def cross(self, vector=None):
 
-```
-Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html) )
+<sub>Go to [top](#class-Vector)</sub>```
+<sub>Go to [top](#class-Vector)</sub>Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html) )
 
-### Args:
-- b: ['Float', 'Integer', 'Vector', 'Color', 'String']
-- epsilon: Float
+<sub>Go to [top](#class-Vector)</sub>### Args:
+<sub>Go to [top](#class-Vector)</sub>- vector: Vector
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>### Returns:
 
-### Returns:
+<sub>Go to [top](#class-Vector)</sub>  socket 'vector'<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>## cross_product
 
-  socket 'result'
+<sub>Go to [top](#class-Vector)</sub>```python
+<sub>Go to [top](#class-Vector)</sub>def cross_product(self, vector=None):
 
-## ceil
+<sub>Go to [top](#class-Vector)</sub>```
+<sub>Go to [top](#class-Vector)</sub>Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html) )
 
-```python
-def ceil(self):
+<sub>Go to [top](#class-Vector)</sub>### Args:
+<sub>Go to [top](#class-Vector)</sub>- vector: Vector
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>### Returns:
 
-```
-Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html) )
+<sub>Go to [top](#class-Vector)</sub>  socket 'vector'<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>## curves
 
-### Returns:
+<sub>Go to [top](#class-Vector)</sub>```python
+<sub>Go to [top](#class-Vector)</sub>def curves(self, fac=None):
 
-  socket 'vector'
+<sub>Go to [top](#class-Vector)</sub>```
+<sub>Go to [top](#class-Vector)</sub>Node [Vector Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_curves.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorCurve.html) )
 
-## compare
+<sub>Go to [top](#class-Vector)</sub>### Args:
+<sub>Go to [top](#class-Vector)</sub>- fac: Float
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>### Returns:
 
-```python
-def compare(self, b=None, c=None, angle=None, epsilon=None, mode='ELEMENT', operation='GREATER_THAN'):
+<sub>Go to [top](#class-Vector)</sub>  socket 'vector'<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>## direction_equal
 
-```
-Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html) )
+<sub>Go to [top](#class-Vector)</sub>```python
+<sub>Go to [top](#class-Vector)</sub>def direction_equal(self, b=None, angle=None, epsilon=None):
 
-### Args:
-- b: ['Float', 'Integer', 'Vector', 'Color', 'String']
-- c: Float
-- angle: Float
-- epsilon: Float
-- mode (str): 'ELEMENT' in [ELEMENT, LENGTH, AVERAGE, DOT_PRODUCT, DIRECTION]
-- operation (str): 'GREATER_THAN' in [LESS_THAN, LESS_EQUAL, GREATER_THAN, GREATER_EQUAL, EQUAL, NOT_EQUAL]
+<sub>Go to [top](#class-Vector)</sub>```
+<sub>Go to [top](#class-Vector)</sub>Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html) )
 
-### Returns:
+<sub>Go to [top](#class-Vector)</sub>### Args:
+<sub>Go to [top](#class-Vector)</sub>- b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+<sub>Go to [top](#class-Vector)</sub>- angle: Float
+<sub>Go to [top](#class-Vector)</sub>- epsilon: Float
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>### Returns:
 
-  socket 'result'
+<sub>Go to [top](#class-Vector)</sub>  socket 'result'<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>## direction_greater_equal
 
-## cos
+<sub>Go to [top](#class-Vector)</sub>```python
+<sub>Go to [top](#class-Vector)</sub>def direction_greater_equal(self, b=None, angle=None):
 
-```python
-def cos(self):
+<sub>Go to [top](#class-Vector)</sub>```
+<sub>Go to [top](#class-Vector)</sub>Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html) )
 
-```
-Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html) )
+<sub>Go to [top](#class-Vector)</sub>### Args:
+<sub>Go to [top](#class-Vector)</sub>- b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+<sub>Go to [top](#class-Vector)</sub>- angle: Float
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>### Returns:
 
-### Returns:
+<sub>Go to [top](#class-Vector)</sub>  socket 'result'<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>## direction_greater_than
 
-  socket 'vector'
+<sub>Go to [top](#class-Vector)</sub>```python
+<sub>Go to [top](#class-Vector)</sub>def direction_greater_than(self, b=None, angle=None):
 
-## cosine
+<sub>Go to [top](#class-Vector)</sub>```
+<sub>Go to [top](#class-Vector)</sub>Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html) )
 
-```python
-def cosine(self):
+<sub>Go to [top](#class-Vector)</sub>### Args:
+<sub>Go to [top](#class-Vector)</sub>- b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+<sub>Go to [top](#class-Vector)</sub>- angle: Float
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>### Returns:
 
-```
-Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html) )
+<sub>Go to [top](#class-Vector)</sub>  socket 'result'<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>## direction_less_equal
 
-### Returns:
+<sub>Go to [top](#class-Vector)</sub>```python
+<sub>Go to [top](#class-Vector)</sub>def direction_less_equal(self, b=None, angle=None):
 
-  socket 'vector'
+<sub>Go to [top](#class-Vector)</sub>```
+<sub>Go to [top](#class-Vector)</sub>Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html) )
 
-## cross
+<sub>Go to [top](#class-Vector)</sub>### Args:
+<sub>Go to [top](#class-Vector)</sub>- b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+<sub>Go to [top](#class-Vector)</sub>- angle: Float
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>### Returns:
 
-```python
-def cross(self, vector=None):
+<sub>Go to [top](#class-Vector)</sub>  socket 'result'<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>## direction_less_than
 
-```
-Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html) )
+<sub>Go to [top](#class-Vector)</sub>```python
+<sub>Go to [top](#class-Vector)</sub>def direction_less_than(self, b=None, angle=None):
 
-### Args:
-- vector: Vector
+<sub>Go to [top](#class-Vector)</sub>```
+<sub>Go to [top](#class-Vector)</sub>Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html) )
 
-### Returns:
+<sub>Go to [top](#class-Vector)</sub>### Args:
+<sub>Go to [top](#class-Vector)</sub>- b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+<sub>Go to [top](#class-Vector)</sub>- angle: Float
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>### Returns:
 
-  socket 'vector'
+<sub>Go to [top](#class-Vector)</sub>  socket 'result'<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>## direction_not_equal
 
-## cross_product
+<sub>Go to [top](#class-Vector)</sub>```python
+<sub>Go to [top](#class-Vector)</sub>def direction_not_equal(self, b=None, angle=None, epsilon=None):
 
-```python
-def cross_product(self, vector=None):
+<sub>Go to [top](#class-Vector)</sub>```
+<sub>Go to [top](#class-Vector)</sub>Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html) )
 
-```
-Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html) )
+<sub>Go to [top](#class-Vector)</sub>### Args:
+<sub>Go to [top](#class-Vector)</sub>- b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+<sub>Go to [top](#class-Vector)</sub>- angle: Float
+<sub>Go to [top](#class-Vector)</sub>- epsilon: Float
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>### Returns:
 
-### Args:
-- vector: Vector
+<sub>Go to [top](#class-Vector)</sub>  socket 'result'<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>## distance
 
-### Returns:
+<sub>Go to [top](#class-Vector)</sub>```python
+<sub>Go to [top](#class-Vector)</sub>def distance(self, vector=None):
 
-  socket 'vector'
+<sub>Go to [top](#class-Vector)</sub>```
+<sub>Go to [top](#class-Vector)</sub>Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html) )
 
-## curves
+<sub>Go to [top](#class-Vector)</sub>### Args:
+<sub>Go to [top](#class-Vector)</sub>- vector: Vector
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>### Returns:
 
-```python
-def curves(self, fac=None):
+<sub>Go to [top](#class-Vector)</sub>  socket 'value'<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>## div
 
-```
-Node [Vector Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_curves.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorCurve.html) )
+<sub>Go to [top](#class-Vector)</sub>```python
+<sub>Go to [top](#class-Vector)</sub>def div(self, vector=None):
 
-### Args:
-- fac: Float
+<sub>Go to [top](#class-Vector)</sub>```
+<sub>Go to [top](#class-Vector)</sub>Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html) )
 
-### Returns:
+<sub>Go to [top](#class-Vector)</sub>### Args:
+<sub>Go to [top](#class-Vector)</sub>- vector: Vector
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>### Returns:
 
-  socket 'vector'
+<sub>Go to [top](#class-Vector)</sub>  socket 'vector'<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>## divide
 
-## direction_equal
+<sub>Go to [top](#class-Vector)</sub>```python
+<sub>Go to [top](#class-Vector)</sub>def divide(self, vector=None):
 
-```python
-def direction_equal(self, b=None, angle=None, epsilon=None):
+<sub>Go to [top](#class-Vector)</sub>```
+<sub>Go to [top](#class-Vector)</sub>Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html) )
 
-```
-Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html) )
+<sub>Go to [top](#class-Vector)</sub>### Args:
+<sub>Go to [top](#class-Vector)</sub>- vector: Vector
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>### Returns:
 
-### Args:
-- b: ['Float', 'Integer', 'Vector', 'Color', 'String']
-- angle: Float
-- epsilon: Float
+<sub>Go to [top](#class-Vector)</sub>  socket 'vector'<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>## dot
 
-### Returns:
+<sub>Go to [top](#class-Vector)</sub>```python
+<sub>Go to [top](#class-Vector)</sub>def dot(self, vector=None):
 
-  socket 'result'
+<sub>Go to [top](#class-Vector)</sub>```
+<sub>Go to [top](#class-Vector)</sub>Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html) )
 
-## direction_greater_equal
+<sub>Go to [top](#class-Vector)</sub>### Args:
+<sub>Go to [top](#class-Vector)</sub>- vector: Vector
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>### Returns:
 
-```python
-def direction_greater_equal(self, b=None, angle=None):
+<sub>Go to [top](#class-Vector)</sub>  socket 'value'<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>## dot_product
 
-```
-Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html) )
+<sub>Go to [top](#class-Vector)</sub>```python
+<sub>Go to [top](#class-Vector)</sub>def dot_product(self, vector=None):
 
-### Args:
-- b: ['Float', 'Integer', 'Vector', 'Color', 'String']
-- angle: Float
+<sub>Go to [top](#class-Vector)</sub>```
+<sub>Go to [top](#class-Vector)</sub>Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html) )
 
-### Returns:
+<sub>Go to [top](#class-Vector)</sub>### Args:
+<sub>Go to [top](#class-Vector)</sub>- vector: Vector
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>### Returns:
 
-  socket 'result'
+<sub>Go to [top](#class-Vector)</sub>  socket 'value'<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>## dot_product_equal
 
-## direction_greater_than
+<sub>Go to [top](#class-Vector)</sub>```python
+<sub>Go to [top](#class-Vector)</sub>def dot_product_equal(self, b=None, c=None, epsilon=None):
 
-```python
-def direction_greater_than(self, b=None, angle=None):
+<sub>Go to [top](#class-Vector)</sub>```
+<sub>Go to [top](#class-Vector)</sub>Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html) )
 
-```
-Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html) )
+<sub>Go to [top](#class-Vector)</sub>### Args:
+<sub>Go to [top](#class-Vector)</sub>- b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+<sub>Go to [top](#class-Vector)</sub>- c: Float
+<sub>Go to [top](#class-Vector)</sub>- epsilon: Float
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>### Returns:
 
-### Args:
-- b: ['Float', 'Integer', 'Vector', 'Color', 'String']
-- angle: Float
+<sub>Go to [top](#class-Vector)</sub>  socket 'result'<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>## dot_product_greater_equal
 
-### Returns:
+<sub>Go to [top](#class-Vector)</sub>```python
+<sub>Go to [top](#class-Vector)</sub>def dot_product_greater_equal(self, b=None, c=None):
 
-  socket 'result'
+<sub>Go to [top](#class-Vector)</sub>```
+<sub>Go to [top](#class-Vector)</sub>Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html) )
 
-## direction_less_equal
+<sub>Go to [top](#class-Vector)</sub>### Args:
+<sub>Go to [top](#class-Vector)</sub>- b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+<sub>Go to [top](#class-Vector)</sub>- c: Float
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>### Returns:
 
-```python
-def direction_less_equal(self, b=None, angle=None):
+<sub>Go to [top](#class-Vector)</sub>  socket 'result'<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>## dot_product_greater_than
 
-```
-Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html) )
+<sub>Go to [top](#class-Vector)</sub>```python
+<sub>Go to [top](#class-Vector)</sub>def dot_product_greater_than(self, b=None, c=None):
 
-### Args:
-- b: ['Float', 'Integer', 'Vector', 'Color', 'String']
-- angle: Float
+<sub>Go to [top](#class-Vector)</sub>```
+<sub>Go to [top](#class-Vector)</sub>Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html) )
 
-### Returns:
+<sub>Go to [top](#class-Vector)</sub>### Args:
+<sub>Go to [top](#class-Vector)</sub>- b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+<sub>Go to [top](#class-Vector)</sub>- c: Float
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>### Returns:
 
-  socket 'result'
+<sub>Go to [top](#class-Vector)</sub>  socket 'result'<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>## dot_product_less_equal
 
-## direction_less_than
+<sub>Go to [top](#class-Vector)</sub>```python
+<sub>Go to [top](#class-Vector)</sub>def dot_product_less_equal(self, b=None, c=None):
 
-```python
-def direction_less_than(self, b=None, angle=None):
+<sub>Go to [top](#class-Vector)</sub>```
+<sub>Go to [top](#class-Vector)</sub>Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html) )
 
-```
-Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html) )
+<sub>Go to [top](#class-Vector)</sub>### Args:
+<sub>Go to [top](#class-Vector)</sub>- b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+<sub>Go to [top](#class-Vector)</sub>- c: Float
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>### Returns:
 
-### Args:
-- b: ['Float', 'Integer', 'Vector', 'Color', 'String']
-- angle: Float
+<sub>Go to [top](#class-Vector)</sub>  socket 'result'<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>## dot_product_less_than
 
-### Returns:
+<sub>Go to [top](#class-Vector)</sub>```python
+<sub>Go to [top](#class-Vector)</sub>def dot_product_less_than(self, b=None, c=None):
 
-  socket 'result'
+<sub>Go to [top](#class-Vector)</sub>```
+<sub>Go to [top](#class-Vector)</sub>Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html) )
 
-## direction_not_equal
+<sub>Go to [top](#class-Vector)</sub>### Args:
+<sub>Go to [top](#class-Vector)</sub>- b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+<sub>Go to [top](#class-Vector)</sub>- c: Float
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>### Returns:
 
-```python
-def direction_not_equal(self, b=None, angle=None, epsilon=None):
+<sub>Go to [top](#class-Vector)</sub>  socket 'result'<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>## dot_product_not_equal
 
-```
-Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html) )
+<sub>Go to [top](#class-Vector)</sub>```python
+<sub>Go to [top](#class-Vector)</sub>def dot_product_not_equal(self, b=None, c=None, epsilon=None):
 
-### Args:
-- b: ['Float', 'Integer', 'Vector', 'Color', 'String']
-- angle: Float
-- epsilon: Float
+<sub>Go to [top](#class-Vector)</sub>```
+<sub>Go to [top](#class-Vector)</sub>Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html) )
 
-### Returns:
+<sub>Go to [top](#class-Vector)</sub>### Args:
+<sub>Go to [top](#class-Vector)</sub>- b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+<sub>Go to [top](#class-Vector)</sub>- c: Float
+<sub>Go to [top](#class-Vector)</sub>- epsilon: Float
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>### Returns:
 
-  socket 'result'
+<sub>Go to [top](#class-Vector)</sub>  socket 'result'<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>## elements_equal
 
-## distance
+<sub>Go to [top](#class-Vector)</sub>```python
+<sub>Go to [top](#class-Vector)</sub>def elements_equal(self, b=None, epsilon=None):
 
-```python
-def distance(self, vector=None):
+<sub>Go to [top](#class-Vector)</sub>```
+<sub>Go to [top](#class-Vector)</sub>Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html) )
 
-```
-Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html) )
+<sub>Go to [top](#class-Vector)</sub>### Args:
+<sub>Go to [top](#class-Vector)</sub>- b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+<sub>Go to [top](#class-Vector)</sub>- epsilon: Float
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>### Returns:
 
-### Args:
-- vector: Vector
+<sub>Go to [top](#class-Vector)</sub>  socket 'result'<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>## elements_greater_equal
 
-### Returns:
+<sub>Go to [top](#class-Vector)</sub>```python
+<sub>Go to [top](#class-Vector)</sub>def elements_greater_equal(self, b=None):
 
-  socket 'value'
+<sub>Go to [top](#class-Vector)</sub>```
+<sub>Go to [top](#class-Vector)</sub>Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html) )
 
-## div
+<sub>Go to [top](#class-Vector)</sub>### Args:
+<sub>Go to [top](#class-Vector)</sub>- b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>### Returns:
 
-```python
-def div(self, vector=None):
+<sub>Go to [top](#class-Vector)</sub>  socket 'result'<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>## elements_greater_than
 
-```
-Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html) )
+<sub>Go to [top](#class-Vector)</sub>```python
+<sub>Go to [top](#class-Vector)</sub>def elements_greater_than(self, b=None):
 
-### Args:
-- vector: Vector
+<sub>Go to [top](#class-Vector)</sub>```
+<sub>Go to [top](#class-Vector)</sub>Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html) )
 
-### Returns:
+<sub>Go to [top](#class-Vector)</sub>### Args:
+<sub>Go to [top](#class-Vector)</sub>- b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>### Returns:
 
-  socket 'vector'
+<sub>Go to [top](#class-Vector)</sub>  socket 'result'<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>## elements_less_equal
 
-## divide
+<sub>Go to [top](#class-Vector)</sub>```python
+<sub>Go to [top](#class-Vector)</sub>def elements_less_equal(self, b=None):
 
-```python
-def divide(self, vector=None):
+<sub>Go to [top](#class-Vector)</sub>```
+<sub>Go to [top](#class-Vector)</sub>Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html) )
 
-```
-Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html) )
+<sub>Go to [top](#class-Vector)</sub>### Args:
+<sub>Go to [top](#class-Vector)</sub>- b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>### Returns:
 
-### Args:
-- vector: Vector
+<sub>Go to [top](#class-Vector)</sub>  socket 'result'<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>## elements_less_than
 
-### Returns:
+<sub>Go to [top](#class-Vector)</sub>```python
+<sub>Go to [top](#class-Vector)</sub>def elements_less_than(self, b=None):
 
-  socket 'vector'
+<sub>Go to [top](#class-Vector)</sub>```
+<sub>Go to [top](#class-Vector)</sub>Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html) )
 
-## dot
+<sub>Go to [top](#class-Vector)</sub>### Args:
+<sub>Go to [top](#class-Vector)</sub>- b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>### Returns:
 
-```python
-def dot(self, vector=None):
+<sub>Go to [top](#class-Vector)</sub>  socket 'result'<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>## elements_not_equal
 
-```
-Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html) )
+<sub>Go to [top](#class-Vector)</sub>```python
+<sub>Go to [top](#class-Vector)</sub>def elements_not_equal(self, b=None, epsilon=None):
 
-### Args:
-- vector: Vector
+<sub>Go to [top](#class-Vector)</sub>```
+<sub>Go to [top](#class-Vector)</sub>Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html) )
 
-### Returns:
+<sub>Go to [top](#class-Vector)</sub>### Args:
+<sub>Go to [top](#class-Vector)</sub>- b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+<sub>Go to [top](#class-Vector)</sub>- epsilon: Float
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>### Returns:
 
-  socket 'value'
+<sub>Go to [top](#class-Vector)</sub>  socket 'result'<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>## face_forward
 
-## dot_product
+<sub>Go to [top](#class-Vector)</sub>```python
+<sub>Go to [top](#class-Vector)</sub>def face_forward(self, incident=None, reference=None):
 
-```python
-def dot_product(self, vector=None):
+<sub>Go to [top](#class-Vector)</sub>```
+<sub>Go to [top](#class-Vector)</sub>Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html) )
 
-```
-Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html) )
+<sub>Go to [top](#class-Vector)</sub>### Args:
+<sub>Go to [top](#class-Vector)</sub>- incident: Vector
+<sub>Go to [top](#class-Vector)</sub>- reference: Vector
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>### Returns:
 
-### Args:
-- vector: Vector
+<sub>Go to [top](#class-Vector)</sub>  socket 'vector'<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>## floor
 
-### Returns:
+<sub>Go to [top](#class-Vector)</sub>```python
+<sub>Go to [top](#class-Vector)</sub>def floor(self):
 
-  socket 'value'
+<sub>Go to [top](#class-Vector)</sub>```
+<sub>Go to [top](#class-Vector)</sub>Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html) )
 
-## dot_product_equal
+<sub>Go to [top](#class-Vector)</sub>### Returns:
 
-```python
-def dot_product_equal(self, b=None, c=None, epsilon=None):
+<sub>Go to [top](#class-Vector)</sub>  socket 'vector'<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>## fract
 
-```
-Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html) )
+<sub>Go to [top](#class-Vector)</sub>```python
+<sub>Go to [top](#class-Vector)</sub>def fract(self):
 
-### Args:
-- b: ['Float', 'Integer', 'Vector', 'Color', 'String']
-- c: Float
-- epsilon: Float
+<sub>Go to [top](#class-Vector)</sub>```
+<sub>Go to [top](#class-Vector)</sub>Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html) )
 
-### Returns:
+<sub>Go to [top](#class-Vector)</sub>### Returns:
 
-  socket 'result'
+<sub>Go to [top](#class-Vector)</sub>  socket 'vector'<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>## fraction
 
-## dot_product_greater_equal
+<sub>Go to [top](#class-Vector)</sub>```python
+<sub>Go to [top](#class-Vector)</sub>def fraction(self):
 
-```python
-def dot_product_greater_equal(self, b=None, c=None):
+<sub>Go to [top](#class-Vector)</sub>```
+<sub>Go to [top](#class-Vector)</sub>Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html) )
 
-```
-Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html) )
+<sub>Go to [top](#class-Vector)</sub>### Returns:
 
-### Args:
-- b: ['Float', 'Integer', 'Vector', 'Color', 'String']
-- c: Float
+<sub>Go to [top](#class-Vector)</sub>  socket 'vector'<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>## length <span style="color:blue">*property*</span>
 
-### Returns:
+<sub>Go to [top](#class-Vector)</sub>```python
+<sub>Go to [top](#class-Vector)</sub>def length(self):
 
-  socket 'result'
+<sub>Go to [top](#class-Vector)</sub>```
+<sub>Go to [top](#class-Vector)</sub>Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html) )
 
-## dot_product_greater_than
+<sub>Go to [top](#class-Vector)</sub>Node implemented as property.
 
-```python
-def dot_product_greater_than(self, b=None, c=None):
+<sub>Go to [top](#class-Vector)</sub>### Returns:
 
-```
-Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html) )
+<sub>Go to [top](#class-Vector)</sub>  socket 'value'<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>## length_equal
 
-### Args:
-- b: ['Float', 'Integer', 'Vector', 'Color', 'String']
-- c: Float
+<sub>Go to [top](#class-Vector)</sub>```python
+<sub>Go to [top](#class-Vector)</sub>def length_equal(self, b=None, epsilon=None):
 
-### Returns:
+<sub>Go to [top](#class-Vector)</sub>```
+<sub>Go to [top](#class-Vector)</sub>Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html) )
 
-  socket 'result'
+<sub>Go to [top](#class-Vector)</sub>### Args:
+<sub>Go to [top](#class-Vector)</sub>- b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+<sub>Go to [top](#class-Vector)</sub>- epsilon: Float
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>### Returns:
 
-## dot_product_less_equal
+<sub>Go to [top](#class-Vector)</sub>  socket 'result'<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>## length_greater_equal
 
-```python
-def dot_product_less_equal(self, b=None, c=None):
+<sub>Go to [top](#class-Vector)</sub>```python
+<sub>Go to [top](#class-Vector)</sub>def length_greater_equal(self, b=None):
 
-```
-Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html) )
+<sub>Go to [top](#class-Vector)</sub>```
+<sub>Go to [top](#class-Vector)</sub>Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html) )
 
-### Args:
-- b: ['Float', 'Integer', 'Vector', 'Color', 'String']
-- c: Float
+<sub>Go to [top](#class-Vector)</sub>### Args:
+<sub>Go to [top](#class-Vector)</sub>- b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>### Returns:
 
-### Returns:
+<sub>Go to [top](#class-Vector)</sub>  socket 'result'<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>## length_greater_than
 
-  socket 'result'
+<sub>Go to [top](#class-Vector)</sub>```python
+<sub>Go to [top](#class-Vector)</sub>def length_greater_than(self, b=None):
 
-## dot_product_less_than
+<sub>Go to [top](#class-Vector)</sub>```
+<sub>Go to [top](#class-Vector)</sub>Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html) )
 
-```python
-def dot_product_less_than(self, b=None, c=None):
+<sub>Go to [top](#class-Vector)</sub>### Args:
+<sub>Go to [top](#class-Vector)</sub>- b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>### Returns:
 
-```
-Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html) )
+<sub>Go to [top](#class-Vector)</sub>  socket 'result'<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>## length_less_equal
 
-### Args:
-- b: ['Float', 'Integer', 'Vector', 'Color', 'String']
-- c: Float
+<sub>Go to [top](#class-Vector)</sub>```python
+<sub>Go to [top](#class-Vector)</sub>def length_less_equal(self, b=None):
 
-### Returns:
+<sub>Go to [top](#class-Vector)</sub>```
+<sub>Go to [top](#class-Vector)</sub>Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html) )
 
-  socket 'result'
+<sub>Go to [top](#class-Vector)</sub>### Args:
+<sub>Go to [top](#class-Vector)</sub>- b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>### Returns:
 
-## dot_product_not_equal
+<sub>Go to [top](#class-Vector)</sub>  socket 'result'<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>## length_less_than
 
-```python
-def dot_product_not_equal(self, b=None, c=None, epsilon=None):
+<sub>Go to [top](#class-Vector)</sub>```python
+<sub>Go to [top](#class-Vector)</sub>def length_less_than(self, b=None):
 
-```
-Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html) )
+<sub>Go to [top](#class-Vector)</sub>```
+<sub>Go to [top](#class-Vector)</sub>Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html) )
 
-### Args:
-- b: ['Float', 'Integer', 'Vector', 'Color', 'String']
-- c: Float
-- epsilon: Float
+<sub>Go to [top](#class-Vector)</sub>### Args:
+<sub>Go to [top](#class-Vector)</sub>- b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>### Returns:
 
-### Returns:
+<sub>Go to [top](#class-Vector)</sub>  socket 'result'<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>## length_not_equal
 
-  socket 'result'
+<sub>Go to [top](#class-Vector)</sub>```python
+<sub>Go to [top](#class-Vector)</sub>def length_not_equal(self, b=None, epsilon=None):
 
-## elements_equal
+<sub>Go to [top](#class-Vector)</sub>```
+<sub>Go to [top](#class-Vector)</sub>Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html) )
 
-```python
-def elements_equal(self, b=None, epsilon=None):
+<sub>Go to [top](#class-Vector)</sub>### Args:
+<sub>Go to [top](#class-Vector)</sub>- b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+<sub>Go to [top](#class-Vector)</sub>- epsilon: Float
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>### Returns:
 
-```
-Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html) )
+<sub>Go to [top](#class-Vector)</sub>  socket 'result'<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>## map_range
 
-### Args:
-- b: ['Float', 'Integer', 'Vector', 'Color', 'String']
-- epsilon: Float
+<sub>Go to [top](#class-Vector)</sub>```python
+<sub>Go to [top](#class-Vector)</sub>def map_range(self, from_min=None, from_max=None, to_min=None, to_max=None, steps=None, clamp=True, interpolation_type='LINEAR'):
 
-### Returns:
+<sub>Go to [top](#class-Vector)</sub>```
+<sub>Go to [top](#class-Vector)</sub>Node [Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/map_range.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMapRange.html) )
 
-  socket 'result'
+<sub>Go to [top](#class-Vector)</sub>### Args:
+<sub>Go to [top](#class-Vector)</sub>- from_min: ['Float', 'Vector']
+<sub>Go to [top](#class-Vector)</sub>- from_max: ['Float', 'Vector']
+<sub>Go to [top](#class-Vector)</sub>- to_min: ['Float', 'Vector']
+<sub>Go to [top](#class-Vector)</sub>- to_max: ['Float', 'Vector']
+<sub>Go to [top](#class-Vector)</sub>- steps: ['Float', 'Vector']
+<sub>Go to [top](#class-Vector)</sub>- clamp (bool): True
+<sub>Go to [top](#class-Vector)</sub>- interpolation_type (str): 'LINEAR' in [LINEAR, STEPPED, SMOOTHSTEP, SMOOTHERSTEP]
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>### Returns:
 
-## elements_greater_equal
+<sub>Go to [top](#class-Vector)</sub>  socket 'vector'<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>## map_range_linear
 
-```python
-def elements_greater_equal(self, b=None):
+<sub>Go to [top](#class-Vector)</sub>```python
+<sub>Go to [top](#class-Vector)</sub>def map_range_linear(self, from_min=None, from_max=None, to_min=None, to_max=None, clamp=True):
 
-```
-Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html) )
+<sub>Go to [top](#class-Vector)</sub>```
+<sub>Go to [top](#class-Vector)</sub>Node [Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/map_range.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMapRange.html) )
 
-### Args:
-- b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+<sub>Go to [top](#class-Vector)</sub>### Args:
+<sub>Go to [top](#class-Vector)</sub>- from_min: ['Float', 'Vector']
+<sub>Go to [top](#class-Vector)</sub>- from_max: ['Float', 'Vector']
+<sub>Go to [top](#class-Vector)</sub>- to_min: ['Float', 'Vector']
+<sub>Go to [top](#class-Vector)</sub>- to_max: ['Float', 'Vector']
+<sub>Go to [top](#class-Vector)</sub>- clamp (bool): True
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>### Returns:
 
-### Returns:
+<sub>Go to [top](#class-Vector)</sub>  socket 'vector'<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>## map_range_smooth
 
-  socket 'result'
+<sub>Go to [top](#class-Vector)</sub>```python
+<sub>Go to [top](#class-Vector)</sub>def map_range_smooth(self, from_min=None, from_max=None, to_min=None, to_max=None, clamp=True):
 
-## elements_greater_than
+<sub>Go to [top](#class-Vector)</sub>```
+<sub>Go to [top](#class-Vector)</sub>Node [Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/map_range.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMapRange.html) )
 
-```python
-def elements_greater_than(self, b=None):
+<sub>Go to [top](#class-Vector)</sub>### Args:
+<sub>Go to [top](#class-Vector)</sub>- from_min: ['Float', 'Vector']
+<sub>Go to [top](#class-Vector)</sub>- from_max: ['Float', 'Vector']
+<sub>Go to [top](#class-Vector)</sub>- to_min: ['Float', 'Vector']
+<sub>Go to [top](#class-Vector)</sub>- to_max: ['Float', 'Vector']
+<sub>Go to [top](#class-Vector)</sub>- clamp (bool): True
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>### Returns:
 
-```
-Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html) )
+<sub>Go to [top](#class-Vector)</sub>  socket 'vector'<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>## map_range_smoother
 
-### Args:
-- b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+<sub>Go to [top](#class-Vector)</sub>```python
+<sub>Go to [top](#class-Vector)</sub>def map_range_smoother(self, from_min=None, from_max=None, to_min=None, to_max=None, clamp=True):
 
-### Returns:
+<sub>Go to [top](#class-Vector)</sub>```
+<sub>Go to [top](#class-Vector)</sub>Node [Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/map_range.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMapRange.html) )
 
-  socket 'result'
+<sub>Go to [top](#class-Vector)</sub>### Args:
+<sub>Go to [top](#class-Vector)</sub>- from_min: ['Float', 'Vector']
+<sub>Go to [top](#class-Vector)</sub>- from_max: ['Float', 'Vector']
+<sub>Go to [top](#class-Vector)</sub>- to_min: ['Float', 'Vector']
+<sub>Go to [top](#class-Vector)</sub>- to_max: ['Float', 'Vector']
+<sub>Go to [top](#class-Vector)</sub>- clamp (bool): True
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>### Returns:
 
-## elements_less_equal
+<sub>Go to [top](#class-Vector)</sub>  socket 'vector'<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>## map_range_stepped
 
-```python
-def elements_less_equal(self, b=None):
+<sub>Go to [top](#class-Vector)</sub>```python
+<sub>Go to [top](#class-Vector)</sub>def map_range_stepped(self, from_min=None, from_max=None, to_min=None, to_max=None, steps=None, clamp=True):
 
-```
-Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html) )
+<sub>Go to [top](#class-Vector)</sub>```
+<sub>Go to [top](#class-Vector)</sub>Node [Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/map_range.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMapRange.html) )
 
-### Args:
-- b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+<sub>Go to [top](#class-Vector)</sub>### Args:
+<sub>Go to [top](#class-Vector)</sub>- from_min: ['Float', 'Vector']
+<sub>Go to [top](#class-Vector)</sub>- from_max: ['Float', 'Vector']
+<sub>Go to [top](#class-Vector)</sub>- to_min: ['Float', 'Vector']
+<sub>Go to [top](#class-Vector)</sub>- to_max: ['Float', 'Vector']
+<sub>Go to [top](#class-Vector)</sub>- steps: ['Float', 'Vector']
+<sub>Go to [top](#class-Vector)</sub>- clamp (bool): True
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>### Returns:
 
-### Returns:
+<sub>Go to [top](#class-Vector)</sub>  socket 'vector'<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>## max
 
-  socket 'result'
+<sub>Go to [top](#class-Vector)</sub>```python
+<sub>Go to [top](#class-Vector)</sub>def max(self, vector=None):
 
-## elements_less_than
+<sub>Go to [top](#class-Vector)</sub>```
+<sub>Go to [top](#class-Vector)</sub>Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html) )
 
-```python
-def elements_less_than(self, b=None):
+<sub>Go to [top](#class-Vector)</sub>### Args:
+<sub>Go to [top](#class-Vector)</sub>- vector: Vector
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>### Returns:
 
-```
-Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html) )
+<sub>Go to [top](#class-Vector)</sub>  socket 'vector'<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>## maximum
 
-### Args:
-- b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+<sub>Go to [top](#class-Vector)</sub>```python
+<sub>Go to [top](#class-Vector)</sub>def maximum(self, vector=None):
 
-### Returns:
+<sub>Go to [top](#class-Vector)</sub>```
+<sub>Go to [top](#class-Vector)</sub>Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html) )
 
-  socket 'result'
+<sub>Go to [top](#class-Vector)</sub>### Args:
+<sub>Go to [top](#class-Vector)</sub>- vector: Vector
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>### Returns:
 
-## elements_not_equal
+<sub>Go to [top](#class-Vector)</sub>  socket 'vector'<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>## min
 
-```python
-def elements_not_equal(self, b=None, epsilon=None):
+<sub>Go to [top](#class-Vector)</sub>```python
+<sub>Go to [top](#class-Vector)</sub>def min(self, vector=None):
 
-```
-Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html) )
+<sub>Go to [top](#class-Vector)</sub>```
+<sub>Go to [top](#class-Vector)</sub>Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html) )
 
-### Args:
-- b: ['Float', 'Integer', 'Vector', 'Color', 'String']
-- epsilon: Float
+<sub>Go to [top](#class-Vector)</sub>### Args:
+<sub>Go to [top](#class-Vector)</sub>- vector: Vector
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>### Returns:
 
-### Returns:
+<sub>Go to [top](#class-Vector)</sub>  socket 'vector'<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>## minimum
 
-  socket 'result'
+<sub>Go to [top](#class-Vector)</sub>```python
+<sub>Go to [top](#class-Vector)</sub>def minimum(self, vector=None):
 
-## face_forward
+<sub>Go to [top](#class-Vector)</sub>```
+<sub>Go to [top](#class-Vector)</sub>Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html) )
 
-```python
-def face_forward(self, incident=None, reference=None):
+<sub>Go to [top](#class-Vector)</sub>### Args:
+<sub>Go to [top](#class-Vector)</sub>- vector: Vector
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>### Returns:
 
-```
-Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html) )
+<sub>Go to [top](#class-Vector)</sub>  socket 'vector'<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>## mix
 
-### Args:
-- incident: Vector
-- reference: Vector
+<sub>Go to [top](#class-Vector)</sub>```python
+<sub>Go to [top](#class-Vector)</sub>def mix(self, factor=None, vector=None, clamp_factor=True, factor_mode='UNIFORM'):
 
-### Returns:
+<sub>Go to [top](#class-Vector)</sub>```
+<sub>Go to [top](#class-Vector)</sub>Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html) )
 
-  socket 'vector'
+<sub>Go to [top](#class-Vector)</sub>### Args:
+<sub>Go to [top](#class-Vector)</sub>- factor: ['Float', 'Vector']
+<sub>Go to [top](#class-Vector)</sub>- vector: ['Float', 'Vector', 'Color']
+<sub>Go to [top](#class-Vector)</sub>- clamp_factor (bool): True
+<sub>Go to [top](#class-Vector)</sub>- factor_mode (str): 'UNIFORM' in [UNIFORM, NON_UNIFORM]
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>### Returns:
 
-## floor
+<sub>Go to [top](#class-Vector)</sub>  socket 'result'<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>## mix_non_uniform
 
-```python
-def floor(self):
+<sub>Go to [top](#class-Vector)</sub>```python
+<sub>Go to [top](#class-Vector)</sub>def mix_non_uniform(self, factor=None, vector=None, clamp_factor=True):
 
-```
-Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html) )
+<sub>Go to [top](#class-Vector)</sub>```
+<sub>Go to [top](#class-Vector)</sub>Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html) )
 
-### Returns:
+<sub>Go to [top](#class-Vector)</sub>### Args:
+<sub>Go to [top](#class-Vector)</sub>- factor: ['Float', 'Vector']
+<sub>Go to [top](#class-Vector)</sub>- vector: ['Float', 'Vector', 'Color']
+<sub>Go to [top](#class-Vector)</sub>- clamp_factor (bool): True
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>### Returns:
 
-  socket 'vector'
+<sub>Go to [top](#class-Vector)</sub>  socket 'result'<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>## mix_uniform
 
-## fract
+<sub>Go to [top](#class-Vector)</sub>```python
+<sub>Go to [top](#class-Vector)</sub>def mix_uniform(self, vector=None, clamp_factor=True):
 
-```python
-def fract(self):
+<sub>Go to [top](#class-Vector)</sub>```
+<sub>Go to [top](#class-Vector)</sub>Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html) )
 
-```
-Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html) )
+<sub>Go to [top](#class-Vector)</sub>### Args:
+<sub>Go to [top](#class-Vector)</sub>- vector: ['Float', 'Vector', 'Color']
+<sub>Go to [top](#class-Vector)</sub>- clamp_factor (bool): True
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>### Returns:
 
-### Returns:
+<sub>Go to [top](#class-Vector)</sub>  socket 'result'<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>## modulo
 
-  socket 'vector'
+<sub>Go to [top](#class-Vector)</sub>```python
+<sub>Go to [top](#class-Vector)</sub>def modulo(self, vector=None):
 
-## fraction
+<sub>Go to [top](#class-Vector)</sub>```
+<sub>Go to [top](#class-Vector)</sub>Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html) )
 
-```python
-def fraction(self):
+<sub>Go to [top](#class-Vector)</sub>### Args:
+<sub>Go to [top](#class-Vector)</sub>- vector: Vector
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>### Returns:
 
-```
-Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html) )
+<sub>Go to [top](#class-Vector)</sub>  socket 'vector'<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>## mul
 
-### Returns:
+<sub>Go to [top](#class-Vector)</sub>```python
+<sub>Go to [top](#class-Vector)</sub>def mul(self, vector=None):
 
-  socket 'vector'
+<sub>Go to [top](#class-Vector)</sub>```
+<sub>Go to [top](#class-Vector)</sub>Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html) )
 
-## length *property*
+<sub>Go to [top](#class-Vector)</sub>### Args:
+<sub>Go to [top](#class-Vector)</sub>- vector: Vector
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>### Returns:
 
-```python
-def length(self):
+<sub>Go to [top](#class-Vector)</sub>  socket 'vector'<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>## mul_add
 
-```
-Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html) )
+<sub>Go to [top](#class-Vector)</sub>```python
+<sub>Go to [top](#class-Vector)</sub>def mul_add(self, multiplier=None, addend=None):
 
-Node implemented as property.
+<sub>Go to [top](#class-Vector)</sub>```
+<sub>Go to [top](#class-Vector)</sub>Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html) )
 
-### Returns:
+<sub>Go to [top](#class-Vector)</sub>### Args:
+<sub>Go to [top](#class-Vector)</sub>- multiplier: Vector
+<sub>Go to [top](#class-Vector)</sub>- addend: Vector
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>### Returns:
 
-  socket 'value'
+<sub>Go to [top](#class-Vector)</sub>  socket 'vector'<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>## multiply
 
-## length_equal
+<sub>Go to [top](#class-Vector)</sub>```python
+<sub>Go to [top](#class-Vector)</sub>def multiply(self, vector=None):
 
-```python
-def length_equal(self, b=None, epsilon=None):
+<sub>Go to [top](#class-Vector)</sub>```
+<sub>Go to [top](#class-Vector)</sub>Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html) )
 
-```
-Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html) )
+<sub>Go to [top](#class-Vector)</sub>### Args:
+<sub>Go to [top](#class-Vector)</sub>- vector: Vector
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>### Returns:
 
-### Args:
-- b: ['Float', 'Integer', 'Vector', 'Color', 'String']
-- epsilon: Float
+<sub>Go to [top](#class-Vector)</sub>  socket 'vector'<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>## multiply_add
 
-### Returns:
+<sub>Go to [top](#class-Vector)</sub>```python
+<sub>Go to [top](#class-Vector)</sub>def multiply_add(self, multiplier=None, addend=None):
 
-  socket 'result'
+<sub>Go to [top](#class-Vector)</sub>```
+<sub>Go to [top](#class-Vector)</sub>Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html) )
 
-## length_greater_equal
+<sub>Go to [top](#class-Vector)</sub>### Args:
+<sub>Go to [top](#class-Vector)</sub>- multiplier: Vector
+<sub>Go to [top](#class-Vector)</sub>- addend: Vector
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>### Returns:
 
-```python
-def length_greater_equal(self, b=None):
+<sub>Go to [top](#class-Vector)</sub>  socket 'vector'<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>## normalize
 
-```
-Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html) )
+<sub>Go to [top](#class-Vector)</sub>```python
+<sub>Go to [top](#class-Vector)</sub>def normalize(self):
 
-### Args:
-- b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+<sub>Go to [top](#class-Vector)</sub>```
+<sub>Go to [top](#class-Vector)</sub>Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html) )
 
-### Returns:
+<sub>Go to [top](#class-Vector)</sub>### Returns:
 
-  socket 'result'
+<sub>Go to [top](#class-Vector)</sub>  socket 'vector'<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>## project
 
-## length_greater_than
+<sub>Go to [top](#class-Vector)</sub>```python
+<sub>Go to [top](#class-Vector)</sub>def project(self, vector=None):
 
-```python
-def length_greater_than(self, b=None):
+<sub>Go to [top](#class-Vector)</sub>```
+<sub>Go to [top](#class-Vector)</sub>Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html) )
 
-```
-Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html) )
+<sub>Go to [top](#class-Vector)</sub>### Args:
+<sub>Go to [top](#class-Vector)</sub>- vector: Vector
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>### Returns:
 
-### Args:
-- b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+<sub>Go to [top](#class-Vector)</sub>  socket 'vector'<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>## reflect
 
-### Returns:
+<sub>Go to [top](#class-Vector)</sub>```python
+<sub>Go to [top](#class-Vector)</sub>def reflect(self, vector=None):
 
-  socket 'result'
+<sub>Go to [top](#class-Vector)</sub>```
+<sub>Go to [top](#class-Vector)</sub>Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html) )
 
-## length_less_equal
+<sub>Go to [top](#class-Vector)</sub>### Args:
+<sub>Go to [top](#class-Vector)</sub>- vector: Vector
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>### Returns:
 
-```python
-def length_less_equal(self, b=None):
+<sub>Go to [top](#class-Vector)</sub>  socket 'vector'<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>## refract
 
-```
-Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html) )
+<sub>Go to [top](#class-Vector)</sub>```python
+<sub>Go to [top](#class-Vector)</sub>def refract(self, vector=None, ior=None):
 
-### Args:
-- b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+<sub>Go to [top](#class-Vector)</sub>```
+<sub>Go to [top](#class-Vector)</sub>Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html) )
 
-### Returns:
+<sub>Go to [top](#class-Vector)</sub>### Args:
+<sub>Go to [top](#class-Vector)</sub>- vector: Vector
+<sub>Go to [top](#class-Vector)</sub>- ior: Float
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>### Returns:
 
-  socket 'result'
+<sub>Go to [top](#class-Vector)</sub>  socket 'vector'<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>## rotate_axis_angle
 
-## length_less_than
+<sub>Go to [top](#class-Vector)</sub>```python
+<sub>Go to [top](#class-Vector)</sub>def rotate_axis_angle(self, center=None, axis=None, angle=None, invert=False):
 
-```python
-def length_less_than(self, b=None):
+<sub>Go to [top](#class-Vector)</sub>```
+<sub>Go to [top](#class-Vector)</sub>Node [Vector Rotate](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_rotate.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorRotate.html) )
 
-```
-Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html) )
+<sub>Go to [top](#class-Vector)</sub>### Args:
+<sub>Go to [top](#class-Vector)</sub>- center: Vector
+<sub>Go to [top](#class-Vector)</sub>- axis: Vector
+<sub>Go to [top](#class-Vector)</sub>- angle: Float
+<sub>Go to [top](#class-Vector)</sub>- invert (bool): False
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>### Returns:
 
-### Args:
-- b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+<sub>Go to [top](#class-Vector)</sub>  socket 'vector'<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>## rotate_euler
 
-### Returns:
+<sub>Go to [top](#class-Vector)</sub>```python
+<sub>Go to [top](#class-Vector)</sub>def rotate_euler(self, center=None, rotation=None, invert=False):
 
-  socket 'result'
+<sub>Go to [top](#class-Vector)</sub>```
+<sub>Go to [top](#class-Vector)</sub>Node [Vector Rotate](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_rotate.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorRotate.html) )
 
-## length_not_equal
+<sub>Go to [top](#class-Vector)</sub>### Args:
+<sub>Go to [top](#class-Vector)</sub>- center: Vector
+<sub>Go to [top](#class-Vector)</sub>- rotation: Vector
+<sub>Go to [top](#class-Vector)</sub>- invert (bool): False
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>### Returns:
 
-```python
-def length_not_equal(self, b=None, epsilon=None):
+<sub>Go to [top](#class-Vector)</sub>  socket 'vector'<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>## rotate_x
 
-```
-Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html) )
+<sub>Go to [top](#class-Vector)</sub>```python
+<sub>Go to [top](#class-Vector)</sub>def rotate_x(self, center=None, angle=None, invert=False):
 
-### Args:
-- b: ['Float', 'Integer', 'Vector', 'Color', 'String']
-- epsilon: Float
+<sub>Go to [top](#class-Vector)</sub>```
+<sub>Go to [top](#class-Vector)</sub>Node [Vector Rotate](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_rotate.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorRotate.html) )
 
-### Returns:
+<sub>Go to [top](#class-Vector)</sub>### Args:
+<sub>Go to [top](#class-Vector)</sub>- center: Vector
+<sub>Go to [top](#class-Vector)</sub>- angle: Float
+<sub>Go to [top](#class-Vector)</sub>- invert (bool): False
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>### Returns:
 
-  socket 'result'
+<sub>Go to [top](#class-Vector)</sub>  socket 'vector'<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>## rotate_y
 
-## map_range
+<sub>Go to [top](#class-Vector)</sub>```python
+<sub>Go to [top](#class-Vector)</sub>def rotate_y(self, center=None, angle=None, invert=False):
 
-```python
-def map_range(self, from_min=None, from_max=None, to_min=None, to_max=None, steps=None, clamp=True, interpolation_type='LINEAR'):
+<sub>Go to [top](#class-Vector)</sub>```
+<sub>Go to [top](#class-Vector)</sub>Node [Vector Rotate](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_rotate.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorRotate.html) )
 
-```
-Node [Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/map_range.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMapRange.html) )
+<sub>Go to [top](#class-Vector)</sub>### Args:
+<sub>Go to [top](#class-Vector)</sub>- center: Vector
+<sub>Go to [top](#class-Vector)</sub>- angle: Float
+<sub>Go to [top](#class-Vector)</sub>- invert (bool): False
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>### Returns:
 
-### Args:
-- from_min: ['Float', 'Vector']
-- from_max: ['Float', 'Vector']
-- to_min: ['Float', 'Vector']
-- to_max: ['Float', 'Vector']
-- steps: ['Float', 'Vector']
-- clamp (bool): True
-- interpolation_type (str): 'LINEAR' in [LINEAR, STEPPED, SMOOTHSTEP, SMOOTHERSTEP]
+<sub>Go to [top](#class-Vector)</sub>  socket 'vector'<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>## rotate_z
 
-### Returns:
+<sub>Go to [top](#class-Vector)</sub>```python
+<sub>Go to [top](#class-Vector)</sub>def rotate_z(self, center=None, angle=None, invert=False):
 
-  socket 'vector'
+<sub>Go to [top](#class-Vector)</sub>```
+<sub>Go to [top](#class-Vector)</sub>Node [Vector Rotate](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_rotate.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorRotate.html) )
 
-## map_range_linear
+<sub>Go to [top](#class-Vector)</sub>### Args:
+<sub>Go to [top](#class-Vector)</sub>- center: Vector
+<sub>Go to [top](#class-Vector)</sub>- angle: Float
+<sub>Go to [top](#class-Vector)</sub>- invert (bool): False
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>### Returns:
 
-```python
-def map_range_linear(self, from_min=None, from_max=None, to_min=None, to_max=None, clamp=True):
+<sub>Go to [top](#class-Vector)</sub>  socket 'vector'<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>## scale
 
-```
-Node [Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/map_range.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMapRange.html) )
+<sub>Go to [top](#class-Vector)</sub>```python
+<sub>Go to [top](#class-Vector)</sub>def scale(self, scale=None):
 
-### Args:
-- from_min: ['Float', 'Vector']
-- from_max: ['Float', 'Vector']
-- to_min: ['Float', 'Vector']
-- to_max: ['Float', 'Vector']
-- clamp (bool): True
+<sub>Go to [top](#class-Vector)</sub>```
+<sub>Go to [top](#class-Vector)</sub>Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html) )
 
-### Returns:
+<sub>Go to [top](#class-Vector)</sub>### Args:
+<sub>Go to [top](#class-Vector)</sub>- scale: Float
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>### Returns:
 
-  socket 'vector'
+<sub>Go to [top](#class-Vector)</sub>  socket 'vector'<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>## separate <span style="color:blue">*property*</span>
 
-## map_range_smooth
+<sub>Go to [top](#class-Vector)</sub>```python
+<sub>Go to [top](#class-Vector)</sub>def separate(self):
 
-```python
-def map_range_smooth(self, from_min=None, from_max=None, to_min=None, to_max=None, clamp=True):
+<sub>Go to [top](#class-Vector)</sub>```
+<sub>Go to [top](#class-Vector)</sub>Node [Separate XYZ](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/separate_xyz.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeSeparateXYZ.html) )
 
-```
-Node [Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/map_range.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMapRange.html) )
+<sub>Go to [top](#class-Vector)</sub>Node implemented as property.
 
-### Args:
-- from_min: ['Float', 'Vector']
-- from_max: ['Float', 'Vector']
-- to_min: ['Float', 'Vector']
-- to_max: ['Float', 'Vector']
-- clamp (bool): True
+<sub>Go to [top](#class-Vector)</sub>### Returns:
 
-### Returns:
+<sub>Go to [top](#class-Vector)</sub>- node with sockets ['x', 'y', 'z']
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>## sin
 
-  socket 'vector'
+<sub>Go to [top](#class-Vector)</sub>```python
+<sub>Go to [top](#class-Vector)</sub>def sin(self):
 
-## map_range_smoother
+<sub>Go to [top](#class-Vector)</sub>```
+<sub>Go to [top](#class-Vector)</sub>Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html) )
 
-```python
-def map_range_smoother(self, from_min=None, from_max=None, to_min=None, to_max=None, clamp=True):
+<sub>Go to [top](#class-Vector)</sub>### Returns:
 
-```
-Node [Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/map_range.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMapRange.html) )
+<sub>Go to [top](#class-Vector)</sub>  socket 'vector'<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>## sine
 
-### Args:
-- from_min: ['Float', 'Vector']
-- from_max: ['Float', 'Vector']
-- to_min: ['Float', 'Vector']
-- to_max: ['Float', 'Vector']
-- clamp (bool): True
+<sub>Go to [top](#class-Vector)</sub>```python
+<sub>Go to [top](#class-Vector)</sub>def sine(self):
 
-### Returns:
+<sub>Go to [top](#class-Vector)</sub>```
+<sub>Go to [top](#class-Vector)</sub>Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html) )
 
-  socket 'vector'
+<sub>Go to [top](#class-Vector)</sub>### Returns:
 
-## map_range_stepped
+<sub>Go to [top](#class-Vector)</sub>  socket 'vector'<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>## snap
 
-```python
-def map_range_stepped(self, from_min=None, from_max=None, to_min=None, to_max=None, steps=None, clamp=True):
+<sub>Go to [top](#class-Vector)</sub>```python
+<sub>Go to [top](#class-Vector)</sub>def snap(self, increment=None):
 
-```
-Node [Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/map_range.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMapRange.html) )
+<sub>Go to [top](#class-Vector)</sub>```
+<sub>Go to [top](#class-Vector)</sub>Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html) )
 
-### Args:
-- from_min: ['Float', 'Vector']
-- from_max: ['Float', 'Vector']
-- to_min: ['Float', 'Vector']
-- to_max: ['Float', 'Vector']
-- steps: ['Float', 'Vector']
-- clamp (bool): True
+<sub>Go to [top](#class-Vector)</sub>### Args:
+<sub>Go to [top](#class-Vector)</sub>- increment: Vector
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>### Returns:
 
-### Returns:
+<sub>Go to [top](#class-Vector)</sub>  socket 'vector'<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>## sub
 
-  socket 'vector'
+<sub>Go to [top](#class-Vector)</sub>```python
+<sub>Go to [top](#class-Vector)</sub>def sub(self, vector=None):
 
-## max
+<sub>Go to [top](#class-Vector)</sub>```
+<sub>Go to [top](#class-Vector)</sub>Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html) )
 
-```python
-def max(self, vector=None):
+<sub>Go to [top](#class-Vector)</sub>### Args:
+<sub>Go to [top](#class-Vector)</sub>- vector: Vector
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>### Returns:
 
-```
-Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html) )
+<sub>Go to [top](#class-Vector)</sub>  socket 'vector'<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>## subtract
 
-### Args:
-- vector: Vector
+<sub>Go to [top](#class-Vector)</sub>```python
+<sub>Go to [top](#class-Vector)</sub>def subtract(self, vector=None):
 
-### Returns:
+<sub>Go to [top](#class-Vector)</sub>```
+<sub>Go to [top](#class-Vector)</sub>Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html) )
 
-  socket 'vector'
+<sub>Go to [top](#class-Vector)</sub>### Args:
+<sub>Go to [top](#class-Vector)</sub>- vector: Vector
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>### Returns:
 
-## maximum
+<sub>Go to [top](#class-Vector)</sub>  socket 'vector'<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>## switch
 
-```python
-def maximum(self, vector=None):
+<sub>Go to [top](#class-Vector)</sub>```python
+<sub>Go to [top](#class-Vector)</sub>def switch(self, switch=None, true=None):
 
-```
-Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html) )
+<sub>Go to [top](#class-Vector)</sub>```
+<sub>Go to [top](#class-Vector)</sub>Node [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html) )
 
-### Args:
-- vector: Vector
+<sub>Go to [top](#class-Vector)</sub>### Args:
+<sub>Go to [top](#class-Vector)</sub>- switch: ['Boolean', 'Boolean']
+<sub>Go to [top](#class-Vector)</sub>- true: ['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'String', 'Geometry', 'Object', 'Collection', 'Texture', 'Material', 'Image']
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>### Returns:
 
-### Returns:
+<sub>Go to [top](#class-Vector)</sub>  socket 'output'<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>## tan
 
-  socket 'vector'
+<sub>Go to [top](#class-Vector)</sub>```python
+<sub>Go to [top](#class-Vector)</sub>def tan(self):
 
-## min
+<sub>Go to [top](#class-Vector)</sub>```
+<sub>Go to [top](#class-Vector)</sub>Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html) )
 
-```python
-def min(self, vector=None):
+<sub>Go to [top](#class-Vector)</sub>### Returns:
 
-```
-Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html) )
+<sub>Go to [top](#class-Vector)</sub>  socket 'vector'<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>## tangent
 
-### Args:
-- vector: Vector
+<sub>Go to [top](#class-Vector)</sub>```python
+<sub>Go to [top](#class-Vector)</sub>def tangent(self):
 
-### Returns:
+<sub>Go to [top](#class-Vector)</sub>```
+<sub>Go to [top](#class-Vector)</sub>Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html) )
 
-  socket 'vector'
+<sub>Go to [top](#class-Vector)</sub>### Returns:
 
-## minimum
+<sub>Go to [top](#class-Vector)</sub>  socket 'vector'<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>## wrap
 
-```python
-def minimum(self, vector=None):
+<sub>Go to [top](#class-Vector)</sub>```python
+<sub>Go to [top](#class-Vector)</sub>def wrap(self, max=None, min=None):
 
-```
-Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html) )
+<sub>Go to [top](#class-Vector)</sub>```
+<sub>Go to [top](#class-Vector)</sub>Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html) )
 
-### Args:
-- vector: Vector
+<sub>Go to [top](#class-Vector)</sub>### Args:
+<sub>Go to [top](#class-Vector)</sub>- max: Vector
+<sub>Go to [top](#class-Vector)</sub>- min: Vector
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>### Returns:
 
-### Returns:
-
-  socket 'vector'
-
-## mix
-
-```python
-def mix(self, factor=None, vector=None, clamp_factor=True, factor_mode='UNIFORM'):
-
-```
-Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html) )
-
-### Args:
-- factor: ['Float', 'Vector']
-- vector: ['Float', 'Vector', 'Color']
-- clamp_factor (bool): True
-- factor_mode (str): 'UNIFORM' in [UNIFORM, NON_UNIFORM]
-
-### Returns:
-
-  socket 'result'
-
-## mix_non_uniform
-
-```python
-def mix_non_uniform(self, factor=None, vector=None, clamp_factor=True):
-
-```
-Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html) )
-
-### Args:
-- factor: ['Float', 'Vector']
-- vector: ['Float', 'Vector', 'Color']
-- clamp_factor (bool): True
-
-### Returns:
-
-  socket 'result'
-
-## mix_uniform
-
-```python
-def mix_uniform(self, vector=None, clamp_factor=True):
-
-```
-Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html) )
-
-### Args:
-- vector: ['Float', 'Vector', 'Color']
-- clamp_factor (bool): True
-
-### Returns:
-
-  socket 'result'
-
-## modulo
-
-```python
-def modulo(self, vector=None):
-
-```
-Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html) )
-
-### Args:
-- vector: Vector
-
-### Returns:
-
-  socket 'vector'
-
-## mul
-
-```python
-def mul(self, vector=None):
-
-```
-Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html) )
-
-### Args:
-- vector: Vector
-
-### Returns:
-
-  socket 'vector'
-
-## mul_add
-
-```python
-def mul_add(self, multiplier=None, addend=None):
-
-```
-Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html) )
-
-### Args:
-- multiplier: Vector
-- addend: Vector
-
-### Returns:
-
-  socket 'vector'
-
-## multiply
-
-```python
-def multiply(self, vector=None):
-
-```
-Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html) )
-
-### Args:
-- vector: Vector
-
-### Returns:
-
-  socket 'vector'
-
-## multiply_add
-
-```python
-def multiply_add(self, multiplier=None, addend=None):
-
-```
-Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html) )
-
-### Args:
-- multiplier: Vector
-- addend: Vector
-
-### Returns:
-
-  socket 'vector'
-
-## normalize
-
-```python
-def normalize(self):
-
-```
-Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html) )
-
-### Returns:
-
-  socket 'vector'
-
-## project
-
-```python
-def project(self, vector=None):
-
-```
-Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html) )
-
-### Args:
-- vector: Vector
-
-### Returns:
-
-  socket 'vector'
-
-## reflect
-
-```python
-def reflect(self, vector=None):
-
-```
-Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html) )
-
-### Args:
-- vector: Vector
-
-### Returns:
-
-  socket 'vector'
-
-## refract
-
-```python
-def refract(self, vector=None, ior=None):
-
-```
-Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html) )
-
-### Args:
-- vector: Vector
-- ior: Float
-
-### Returns:
-
-  socket 'vector'
-
-## rotate_axis_angle
-
-```python
-def rotate_axis_angle(self, center=None, axis=None, angle=None, invert=False):
-
-```
-Node [Vector Rotate](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_rotate.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorRotate.html) )
-
-### Args:
-- center: Vector
-- axis: Vector
-- angle: Float
-- invert (bool): False
-
-### Returns:
-
-  socket 'vector'
-
-## rotate_euler
-
-```python
-def rotate_euler(self, center=None, rotation=None, invert=False):
-
-```
-Node [Vector Rotate](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_rotate.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorRotate.html) )
-
-### Args:
-- center: Vector
-- rotation: Vector
-- invert (bool): False
-
-### Returns:
-
-  socket 'vector'
-
-## rotate_x
-
-```python
-def rotate_x(self, center=None, angle=None, invert=False):
-
-```
-Node [Vector Rotate](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_rotate.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorRotate.html) )
-
-### Args:
-- center: Vector
-- angle: Float
-- invert (bool): False
-
-### Returns:
-
-  socket 'vector'
-
-## rotate_y
-
-```python
-def rotate_y(self, center=None, angle=None, invert=False):
-
-```
-Node [Vector Rotate](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_rotate.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorRotate.html) )
-
-### Args:
-- center: Vector
-- angle: Float
-- invert (bool): False
-
-### Returns:
-
-  socket 'vector'
-
-## rotate_z
-
-```python
-def rotate_z(self, center=None, angle=None, invert=False):
-
-```
-Node [Vector Rotate](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_rotate.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorRotate.html) )
-
-### Args:
-- center: Vector
-- angle: Float
-- invert (bool): False
-
-### Returns:
-
-  socket 'vector'
-
-## scale
-
-```python
-def scale(self, scale=None):
-
-```
-Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html) )
-
-### Args:
-- scale: Float
-
-### Returns:
-
-  socket 'vector'
-
-## separate *property*
-
-```python
-def separate(self):
-
-```
-Node [Separate XYZ](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/separate_xyz.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeSeparateXYZ.html) )
-
-Node implemented as property.
-
-### Returns:
-
-- node with sockets ['x', 'y', 'z']
-
-## sin
-
-```python
-def sin(self):
-
-```
-Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html) )
-
-### Returns:
-
-  socket 'vector'
-
-## sine
-
-```python
-def sine(self):
-
-```
-Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html) )
-
-### Returns:
-
-  socket 'vector'
-
-## snap
-
-```python
-def snap(self, increment=None):
-
-```
-Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html) )
-
-### Args:
-- increment: Vector
-
-### Returns:
-
-  socket 'vector'
-
-## sub
-
-```python
-def sub(self, vector=None):
-
-```
-Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html) )
-
-### Args:
-- vector: Vector
-
-### Returns:
-
-  socket 'vector'
-
-## subtract
-
-```python
-def subtract(self, vector=None):
-
-```
-Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html) )
-
-### Args:
-- vector: Vector
-
-### Returns:
-
-  socket 'vector'
-
-## switch
-
-```python
-def switch(self, switch=None, true=None):
-
-```
-Node [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html) )
-
-### Args:
-- switch: ['Boolean', 'Boolean']
-- true: ['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'String', 'Geometry', 'Object', 'Collection', 'Texture', 'Material', 'Image']
-
-### Returns:
-
-  socket 'output'
-
-## tan
-
-```python
-def tan(self):
-
-```
-Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html) )
-
-### Returns:
-
-  socket 'vector'
-
-## tangent
-
-```python
-def tangent(self):
-
-```
-Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html) )
-
-### Returns:
-
-  socket 'vector'
-
-## wrap
-
-```python
-def wrap(self, max=None, min=None):
-
-```
-Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html) )
-
-### Args:
-- max: Vector
-- min: Vector
-
-### Returns:
-
-  socket 'vector'
-
+<sub>Go to [top](#class-Vector)</sub>  socket 'vector'<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>
+<sub>Go to [top](#class-Vector)</sub>

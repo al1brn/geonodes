@@ -50,657 +50,658 @@
 - [mix_value](#mix_value)
 - [switch](#switch)
 
-## Color *classmethod*
+## Color <span style="color:blue">*classmethod*</span>
 
-```python
-def Color(cls):
+<sub>Go to [top](#class-Color)</sub>```python
+<sub>Go to [top](#class-Color)</sub>def Color(cls):
 
-```
-Node [Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/color.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeInputColor.html) )
+<sub>Go to [top](#class-Color)</sub>```
+<sub>Go to [top](#class-Color)</sub>Node [Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/color.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeInputColor.html) )
 
-### Returns:
+<sub>Go to [top](#class-Color)</sub>### Returns:
 
-  socket 'color'
+<sub>Go to [top](#class-Color)</sub>  socket 'color'<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub>## HSL <span style="color:blue">*classmethod*</span>
 
-## HSL *classmethod*
+<sub>Go to [top](#class-Color)</sub>```python
+<sub>Go to [top](#class-Color)</sub>def HSL(cls, hue=None, saturation=None, lightness=None, alpha=None):
 
-```python
-def HSL(cls, hue=None, saturation=None, lightness=None, alpha=None):
+<sub>Go to [top](#class-Color)</sub>```
+<sub>Go to [top](#class-Color)</sub>Node [Combine Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/combine_color.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeCombineColor.html) )
 
-```
-Node [Combine Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/combine_color.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeCombineColor.html) )
+<sub>Go to [top](#class-Color)</sub>### Args:
+<sub>Go to [top](#class-Color)</sub>- hue: Float
+<sub>Go to [top](#class-Color)</sub>- saturation: Float
+<sub>Go to [top](#class-Color)</sub>- lightness: Float
+<sub>Go to [top](#class-Color)</sub>- alpha: Float
+<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub>### Returns:
 
-### Args:
-- hue: Float
-- saturation: Float
-- lightness: Float
-- alpha: Float
+<sub>Go to [top](#class-Color)</sub>  socket 'color'<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub>## HSV <span style="color:blue">*classmethod*</span>
 
-### Returns:
+<sub>Go to [top](#class-Color)</sub>```python
+<sub>Go to [top](#class-Color)</sub>def HSV(cls, hue=None, saturation=None, value=None, alpha=None):
 
-  socket 'color'
+<sub>Go to [top](#class-Color)</sub>```
+<sub>Go to [top](#class-Color)</sub>Node [Combine Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/combine_color.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeCombineColor.html) )
 
-## HSV *classmethod*
+<sub>Go to [top](#class-Color)</sub>### Args:
+<sub>Go to [top](#class-Color)</sub>- hue: Float
+<sub>Go to [top](#class-Color)</sub>- saturation: Float
+<sub>Go to [top](#class-Color)</sub>- value: Float
+<sub>Go to [top](#class-Color)</sub>- alpha: Float
+<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub>### Returns:
 
-```python
-def HSV(cls, hue=None, saturation=None, value=None, alpha=None):
+<sub>Go to [top](#class-Color)</sub>  socket 'color'<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub>## RGB <span style="color:blue">*classmethod*</span>
 
-```
-Node [Combine Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/combine_color.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeCombineColor.html) )
+<sub>Go to [top](#class-Color)</sub>```python
+<sub>Go to [top](#class-Color)</sub>def RGB(cls, red=None, green=None, blue=None, alpha=None):
 
-### Args:
-- hue: Float
-- saturation: Float
-- value: Float
-- alpha: Float
+<sub>Go to [top](#class-Color)</sub>```
+<sub>Go to [top](#class-Color)</sub>Node [Combine Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/combine_color.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeCombineColor.html) )
 
-### Returns:
+<sub>Go to [top](#class-Color)</sub>### Args:
+<sub>Go to [top](#class-Color)</sub>- red: Float
+<sub>Go to [top](#class-Color)</sub>- green: Float
+<sub>Go to [top](#class-Color)</sub>- blue: Float
+<sub>Go to [top](#class-Color)</sub>- alpha: Float
+<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub>### Returns:
 
-  socket 'color'
+<sub>Go to [top](#class-Color)</sub>  socket 'color'<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub>## alpha <span style="color:blue">*property*</span>
 
-## RGB *classmethod*
+<sub>Go to [top](#class-Color)</sub>```python
+<sub>Go to [top](#class-Color)</sub>def alpha(self):
 
-```python
-def RGB(cls, red=None, green=None, blue=None, alpha=None):
+<sub>Go to [top](#class-Color)</sub>```
+<sub>Go to [top](#class-Color)</sub>Node [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html) )
 
-```
-Node [Combine Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/combine_color.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeCombineColor.html) )
+<sub>Go to [top](#class-Color)</sub>Node implemented as property.
 
-### Args:
-- red: Float
-- green: Float
-- blue: Float
-- alpha: Float
+<sub>Go to [top](#class-Color)</sub>### Returns:
 
-### Returns:
+<sub>Go to [top](#class-Color)</sub>  socket 'alpha'<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub>## blue <span style="color:blue">*property*</span>
 
-  socket 'color'
+<sub>Go to [top](#class-Color)</sub>```python
+<sub>Go to [top](#class-Color)</sub>def blue(self):
 
-## alpha *property*
+<sub>Go to [top](#class-Color)</sub>```
+<sub>Go to [top](#class-Color)</sub>Node [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html) )
 
-```python
-def alpha(self):
+<sub>Go to [top](#class-Color)</sub>Node implemented as property.
 
-```
-Node [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html) )
+<sub>Go to [top](#class-Color)</sub>### Returns:
 
-Node implemented as property.
+<sub>Go to [top](#class-Color)</sub>  socket 'blue'<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub>## brighter
 
-### Returns:
+<sub>Go to [top](#class-Color)</sub>```python
+<sub>Go to [top](#class-Color)</sub>def brighter(self, b=None):
 
-  socket 'alpha'
+<sub>Go to [top](#class-Color)</sub>```
+<sub>Go to [top](#class-Color)</sub>Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html) )
 
-## blue *property*
+<sub>Go to [top](#class-Color)</sub>### Args:
+<sub>Go to [top](#class-Color)</sub>- b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub>### Returns:
 
-```python
-def blue(self):
+<sub>Go to [top](#class-Color)</sub>  socket 'result'<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub>## compare
 
-```
-Node [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html) )
+<sub>Go to [top](#class-Color)</sub>```python
+<sub>Go to [top](#class-Color)</sub>def compare(self, b=None, epsilon=None, operation='GREATER_THAN'):
 
-Node implemented as property.
+<sub>Go to [top](#class-Color)</sub>```
+<sub>Go to [top](#class-Color)</sub>Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html) )
 
-### Returns:
+<sub>Go to [top](#class-Color)</sub>### Args:
+<sub>Go to [top](#class-Color)</sub>- b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+<sub>Go to [top](#class-Color)</sub>- epsilon: Float
+<sub>Go to [top](#class-Color)</sub>- operation (str): 'GREATER_THAN' in [LESS_THAN, LESS_EQUAL, GREATER_THAN, GREATER_EQUAL, EQUAL, NOT_EQUAL]
+<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub>### Returns:
 
-  socket 'blue'
+<sub>Go to [top](#class-Color)</sub>  socket 'result'<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub>## darker
 
-## brighter
+<sub>Go to [top](#class-Color)</sub>```python
+<sub>Go to [top](#class-Color)</sub>def darker(self, b=None):
 
-```python
-def brighter(self, b=None):
+<sub>Go to [top](#class-Color)</sub>```
+<sub>Go to [top](#class-Color)</sub>Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html) )
 
-```
-Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html) )
+<sub>Go to [top](#class-Color)</sub>### Args:
+<sub>Go to [top](#class-Color)</sub>- b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub>### Returns:
 
-### Args:
-- b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+<sub>Go to [top](#class-Color)</sub>  socket 'result'<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub>## equal
 
-### Returns:
+<sub>Go to [top](#class-Color)</sub>```python
+<sub>Go to [top](#class-Color)</sub>def equal(self, b=None, epsilon=None):
 
-  socket 'result'
+<sub>Go to [top](#class-Color)</sub>```
+<sub>Go to [top](#class-Color)</sub>Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html) )
 
-## compare
+<sub>Go to [top](#class-Color)</sub>### Args:
+<sub>Go to [top](#class-Color)</sub>- b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+<sub>Go to [top](#class-Color)</sub>- epsilon: Float
+<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub>### Returns:
 
-```python
-def compare(self, b=None, epsilon=None, operation='GREATER_THAN'):
+<sub>Go to [top](#class-Color)</sub>  socket 'result'<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub>## equal
 
-```
-Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html) )
+<sub>Go to [top](#class-Color)</sub>```python
+<sub>Go to [top](#class-Color)</sub>def equal(self, b=None, epsilon=None):
 
-### Args:
-- b: ['Float', 'Integer', 'Vector', 'Color', 'String']
-- epsilon: Float
-- operation (str): 'GREATER_THAN' in [LESS_THAN, LESS_EQUAL, GREATER_THAN, GREATER_EQUAL, EQUAL, NOT_EQUAL]
+<sub>Go to [top](#class-Color)</sub>```
+<sub>Go to [top](#class-Color)</sub>Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html) )
 
-### Returns:
+<sub>Go to [top](#class-Color)</sub>### Args:
+<sub>Go to [top](#class-Color)</sub>- b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+<sub>Go to [top](#class-Color)</sub>- epsilon: Float
+<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub>### Returns:
 
-  socket 'result'
+<sub>Go to [top](#class-Color)</sub>  socket 'result'<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub>## green <span style="color:blue">*property*</span>
 
-## darker
+<sub>Go to [top](#class-Color)</sub>```python
+<sub>Go to [top](#class-Color)</sub>def green(self):
 
-```python
-def darker(self, b=None):
+<sub>Go to [top](#class-Color)</sub>```
+<sub>Go to [top](#class-Color)</sub>Node [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html) )
 
-```
-Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html) )
+<sub>Go to [top](#class-Color)</sub>Node implemented as property.
 
-### Args:
-- b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+<sub>Go to [top](#class-Color)</sub>### Returns:
 
-### Returns:
+<sub>Go to [top](#class-Color)</sub>  socket 'green'<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub>## hsl <span style="color:blue">*property*</span>
 
-  socket 'result'
+<sub>Go to [top](#class-Color)</sub>```python
+<sub>Go to [top](#class-Color)</sub>def hsl(self):
 
-## equal
+<sub>Go to [top](#class-Color)</sub>```
+<sub>Go to [top](#class-Color)</sub>Node [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html) )
 
-```python
-def equal(self, b=None, epsilon=None):
+<sub>Go to [top](#class-Color)</sub>Node implemented as property.
 
-```
-Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html) )
+<sub>Go to [top](#class-Color)</sub>### Returns:
 
-### Args:
-- b: ['Float', 'Integer', 'Vector', 'Color', 'String']
-- epsilon: Float
+<sub>Go to [top](#class-Color)</sub>- tuple ('red', 'green', 'blue', 'alpha')
+<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub>## hsv <span style="color:blue">*property*</span>
 
-### Returns:
+<sub>Go to [top](#class-Color)</sub>```python
+<sub>Go to [top](#class-Color)</sub>def hsv(self):
 
-  socket 'result'
+<sub>Go to [top](#class-Color)</sub>```
+<sub>Go to [top](#class-Color)</sub>Node [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html) )
 
-## equal
+<sub>Go to [top](#class-Color)</sub>Node implemented as property.
 
-```python
-def equal(self, b=None, epsilon=None):
+<sub>Go to [top](#class-Color)</sub>### Returns:
 
-```
-Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html) )
+<sub>Go to [top](#class-Color)</sub>- tuple ('red', 'green', 'blue', 'alpha')
+<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub>## hue <span style="color:blue">*property*</span>
 
-### Args:
-- b: ['Float', 'Integer', 'Vector', 'Color', 'String']
-- epsilon: Float
+<sub>Go to [top](#class-Color)</sub>```python
+<sub>Go to [top](#class-Color)</sub>def hue(self):
 
-### Returns:
+<sub>Go to [top](#class-Color)</sub>```
+<sub>Go to [top](#class-Color)</sub>Node [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html) )
 
-  socket 'result'
+<sub>Go to [top](#class-Color)</sub>Node implemented as property.
 
-## green *property*
+<sub>Go to [top](#class-Color)</sub>### Returns:
 
-```python
-def green(self):
+<sub>Go to [top](#class-Color)</sub>  socket 'red'<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub>## lightness <span style="color:blue">*property*</span>
 
-```
-Node [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html) )
+<sub>Go to [top](#class-Color)</sub>```python
+<sub>Go to [top](#class-Color)</sub>def lightness(self):
 
-Node implemented as property.
+<sub>Go to [top](#class-Color)</sub>```
+<sub>Go to [top](#class-Color)</sub>Node [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html) )
 
-### Returns:
+<sub>Go to [top](#class-Color)</sub>Node implemented as property.
 
-  socket 'green'
+<sub>Go to [top](#class-Color)</sub>### Returns:
 
-## hsl *property*
+<sub>Go to [top](#class-Color)</sub>  socket 'blue'<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub>## mix
 
-```python
-def hsl(self):
+<sub>Go to [top](#class-Color)</sub>```python
+<sub>Go to [top](#class-Color)</sub>def mix(self, factor=None, color=None, blend_type='MIX', clamp_factor=True, clamp_result=False):
 
-```
-Node [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html) )
+<sub>Go to [top](#class-Color)</sub>```
+<sub>Go to [top](#class-Color)</sub>Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html) )
 
-Node implemented as property.
+<sub>Go to [top](#class-Color)</sub>### Args:
+<sub>Go to [top](#class-Color)</sub>- factor: ['Float', 'Vector']
+<sub>Go to [top](#class-Color)</sub>- color: ['Float', 'Vector', 'Color']
+<sub>Go to [top](#class-Color)</sub>- blend_type (str): 'MIX' in [MIX, DARKEN, MULTIPLY, BURN, LIGHTEN,... , SATURATION, COLOR, VALUE]
+<sub>Go to [top](#class-Color)</sub>- clamp_factor (bool): True
+<sub>Go to [top](#class-Color)</sub>- clamp_result (bool): False
+<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub>### Returns:
 
-### Returns:
+<sub>Go to [top](#class-Color)</sub>  socket 'result'<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub>## mix_add
 
-- tuple ('red', 'green', 'blue', 'alpha')
+<sub>Go to [top](#class-Color)</sub>```python
+<sub>Go to [top](#class-Color)</sub>def mix_add(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
 
-## hsv *property*
+<sub>Go to [top](#class-Color)</sub>```
+<sub>Go to [top](#class-Color)</sub>Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html) )
 
-```python
-def hsv(self):
+<sub>Go to [top](#class-Color)</sub>### Args:
+<sub>Go to [top](#class-Color)</sub>- factor: ['Float', 'Vector']
+<sub>Go to [top](#class-Color)</sub>- color: ['Float', 'Vector', 'Color']
+<sub>Go to [top](#class-Color)</sub>- clamp_factor (bool): True
+<sub>Go to [top](#class-Color)</sub>- clamp_result (bool): False
+<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub>### Returns:
 
-```
-Node [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html) )
+<sub>Go to [top](#class-Color)</sub>  socket 'result'<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub>## mix_burn
 
-Node implemented as property.
+<sub>Go to [top](#class-Color)</sub>```python
+<sub>Go to [top](#class-Color)</sub>def mix_burn(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
 
-### Returns:
+<sub>Go to [top](#class-Color)</sub>```
+<sub>Go to [top](#class-Color)</sub>Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html) )
 
-- tuple ('red', 'green', 'blue', 'alpha')
+<sub>Go to [top](#class-Color)</sub>### Args:
+<sub>Go to [top](#class-Color)</sub>- factor: ['Float', 'Vector']
+<sub>Go to [top](#class-Color)</sub>- color: ['Float', 'Vector', 'Color']
+<sub>Go to [top](#class-Color)</sub>- clamp_factor (bool): True
+<sub>Go to [top](#class-Color)</sub>- clamp_result (bool): False
+<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub>### Returns:
 
-## hue *property*
+<sub>Go to [top](#class-Color)</sub>  socket 'result'<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub>## mix_color
 
-```python
-def hue(self):
+<sub>Go to [top](#class-Color)</sub>```python
+<sub>Go to [top](#class-Color)</sub>def mix_color(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
 
-```
-Node [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html) )
+<sub>Go to [top](#class-Color)</sub>```
+<sub>Go to [top](#class-Color)</sub>Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html) )
 
-Node implemented as property.
+<sub>Go to [top](#class-Color)</sub>### Args:
+<sub>Go to [top](#class-Color)</sub>- factor: ['Float', 'Vector']
+<sub>Go to [top](#class-Color)</sub>- color: ['Float', 'Vector', 'Color']
+<sub>Go to [top](#class-Color)</sub>- clamp_factor (bool): True
+<sub>Go to [top](#class-Color)</sub>- clamp_result (bool): False
+<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub>### Returns:
 
-### Returns:
+<sub>Go to [top](#class-Color)</sub>  socket 'result'<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub>## mix_darken
 
-  socket 'red'
+<sub>Go to [top](#class-Color)</sub>```python
+<sub>Go to [top](#class-Color)</sub>def mix_darken(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
 
-## lightness *property*
+<sub>Go to [top](#class-Color)</sub>```
+<sub>Go to [top](#class-Color)</sub>Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html) )
 
-```python
-def lightness(self):
+<sub>Go to [top](#class-Color)</sub>### Args:
+<sub>Go to [top](#class-Color)</sub>- factor: ['Float', 'Vector']
+<sub>Go to [top](#class-Color)</sub>- color: ['Float', 'Vector', 'Color']
+<sub>Go to [top](#class-Color)</sub>- clamp_factor (bool): True
+<sub>Go to [top](#class-Color)</sub>- clamp_result (bool): False
+<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub>### Returns:
 
-```
-Node [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html) )
+<sub>Go to [top](#class-Color)</sub>  socket 'result'<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub>## mix_difference
 
-Node implemented as property.
+<sub>Go to [top](#class-Color)</sub>```python
+<sub>Go to [top](#class-Color)</sub>def mix_difference(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
 
-### Returns:
+<sub>Go to [top](#class-Color)</sub>```
+<sub>Go to [top](#class-Color)</sub>Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html) )
 
-  socket 'blue'
+<sub>Go to [top](#class-Color)</sub>### Args:
+<sub>Go to [top](#class-Color)</sub>- factor: ['Float', 'Vector']
+<sub>Go to [top](#class-Color)</sub>- color: ['Float', 'Vector', 'Color']
+<sub>Go to [top](#class-Color)</sub>- clamp_factor (bool): True
+<sub>Go to [top](#class-Color)</sub>- clamp_result (bool): False
+<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub>### Returns:
 
-## mix
+<sub>Go to [top](#class-Color)</sub>  socket 'result'<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub>## mix_divide
 
-```python
-def mix(self, factor=None, color=None, blend_type='MIX', clamp_factor=True, clamp_result=False):
+<sub>Go to [top](#class-Color)</sub>```python
+<sub>Go to [top](#class-Color)</sub>def mix_divide(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
 
-```
-Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html) )
+<sub>Go to [top](#class-Color)</sub>```
+<sub>Go to [top](#class-Color)</sub>Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html) )
 
-### Args:
-- factor: ['Float', 'Vector']
-- color: ['Float', 'Vector', 'Color']
-- blend_type (str): 'MIX' in [MIX, DARKEN, MULTIPLY, BURN, LIGHTEN,... , SATURATION, COLOR, VALUE]
-- clamp_factor (bool): True
-- clamp_result (bool): False
+<sub>Go to [top](#class-Color)</sub>### Args:
+<sub>Go to [top](#class-Color)</sub>- factor: ['Float', 'Vector']
+<sub>Go to [top](#class-Color)</sub>- color: ['Float', 'Vector', 'Color']
+<sub>Go to [top](#class-Color)</sub>- clamp_factor (bool): True
+<sub>Go to [top](#class-Color)</sub>- clamp_result (bool): False
+<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub>### Returns:
 
-### Returns:
+<sub>Go to [top](#class-Color)</sub>  socket 'result'<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub>## mix_dodge
 
-  socket 'result'
+<sub>Go to [top](#class-Color)</sub>```python
+<sub>Go to [top](#class-Color)</sub>def mix_dodge(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
 
-## mix_add
+<sub>Go to [top](#class-Color)</sub>```
+<sub>Go to [top](#class-Color)</sub>Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html) )
 
-```python
-def mix_add(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
+<sub>Go to [top](#class-Color)</sub>### Args:
+<sub>Go to [top](#class-Color)</sub>- factor: ['Float', 'Vector']
+<sub>Go to [top](#class-Color)</sub>- color: ['Float', 'Vector', 'Color']
+<sub>Go to [top](#class-Color)</sub>- clamp_factor (bool): True
+<sub>Go to [top](#class-Color)</sub>- clamp_result (bool): False
+<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub>### Returns:
 
-```
-Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html) )
+<sub>Go to [top](#class-Color)</sub>  socket 'result'<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub>## mix_hue
 
-### Args:
-- factor: ['Float', 'Vector']
-- color: ['Float', 'Vector', 'Color']
-- clamp_factor (bool): True
-- clamp_result (bool): False
+<sub>Go to [top](#class-Color)</sub>```python
+<sub>Go to [top](#class-Color)</sub>def mix_hue(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
 
-### Returns:
+<sub>Go to [top](#class-Color)</sub>```
+<sub>Go to [top](#class-Color)</sub>Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html) )
 
-  socket 'result'
+<sub>Go to [top](#class-Color)</sub>### Args:
+<sub>Go to [top](#class-Color)</sub>- factor: ['Float', 'Vector']
+<sub>Go to [top](#class-Color)</sub>- color: ['Float', 'Vector', 'Color']
+<sub>Go to [top](#class-Color)</sub>- clamp_factor (bool): True
+<sub>Go to [top](#class-Color)</sub>- clamp_result (bool): False
+<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub>### Returns:
 
-## mix_burn
+<sub>Go to [top](#class-Color)</sub>  socket 'result'<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub>## mix_lighten
 
-```python
-def mix_burn(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
+<sub>Go to [top](#class-Color)</sub>```python
+<sub>Go to [top](#class-Color)</sub>def mix_lighten(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
+
+<sub>Go to [top](#class-Color)</sub>```
+<sub>Go to [top](#class-Color)</sub>Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html) )
+
+<sub>Go to [top](#class-Color)</sub>### Args:
+<sub>Go to [top](#class-Color)</sub>- factor: ['Float', 'Vector']
+<sub>Go to [top](#class-Color)</sub>- color: ['Float', 'Vector', 'Color']
+<sub>Go to [top](#class-Color)</sub>- clamp_factor (bool): True
+<sub>Go to [top](#class-Color)</sub>- clamp_result (bool): False
+<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub>### Returns:
+
+<sub>Go to [top](#class-Color)</sub>  socket 'result'<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub>## mix_linear_light
+
+<sub>Go to [top](#class-Color)</sub>```python
+<sub>Go to [top](#class-Color)</sub>def mix_linear_light(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
+
+<sub>Go to [top](#class-Color)</sub>```
+<sub>Go to [top](#class-Color)</sub>Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html) )
+
+<sub>Go to [top](#class-Color)</sub>### Args:
+<sub>Go to [top](#class-Color)</sub>- factor: ['Float', 'Vector']
+<sub>Go to [top](#class-Color)</sub>- color: ['Float', 'Vector', 'Color']
+<sub>Go to [top](#class-Color)</sub>- clamp_factor (bool): True
+<sub>Go to [top](#class-Color)</sub>- clamp_result (bool): False
+<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub>### Returns:
+
+<sub>Go to [top](#class-Color)</sub>  socket 'result'<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub>## mix_multiply
+
+<sub>Go to [top](#class-Color)</sub>```python
+<sub>Go to [top](#class-Color)</sub>def mix_multiply(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
+
+<sub>Go to [top](#class-Color)</sub>```
+<sub>Go to [top](#class-Color)</sub>Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html) )
+
+<sub>Go to [top](#class-Color)</sub>### Args:
+<sub>Go to [top](#class-Color)</sub>- factor: ['Float', 'Vector']
+<sub>Go to [top](#class-Color)</sub>- color: ['Float', 'Vector', 'Color']
+<sub>Go to [top](#class-Color)</sub>- clamp_factor (bool): True
+<sub>Go to [top](#class-Color)</sub>- clamp_result (bool): False
+<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub>### Returns:
+
+<sub>Go to [top](#class-Color)</sub>  socket 'result'<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub>## mix_overlay
+
+<sub>Go to [top](#class-Color)</sub>```python
+<sub>Go to [top](#class-Color)</sub>def mix_overlay(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
+
+<sub>Go to [top](#class-Color)</sub>```
+<sub>Go to [top](#class-Color)</sub>Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html) )
+
+<sub>Go to [top](#class-Color)</sub>### Args:
+<sub>Go to [top](#class-Color)</sub>- factor: ['Float', 'Vector']
+<sub>Go to [top](#class-Color)</sub>- color: ['Float', 'Vector', 'Color']
+<sub>Go to [top](#class-Color)</sub>- clamp_factor (bool): True
+<sub>Go to [top](#class-Color)</sub>- clamp_result (bool): False
+<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub>### Returns:
+
+<sub>Go to [top](#class-Color)</sub>  socket 'result'<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub>## mix_saturation
+
+<sub>Go to [top](#class-Color)</sub>```python
+<sub>Go to [top](#class-Color)</sub>def mix_saturation(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
+
+<sub>Go to [top](#class-Color)</sub>```
+<sub>Go to [top](#class-Color)</sub>Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html) )
+
+<sub>Go to [top](#class-Color)</sub>### Args:
+<sub>Go to [top](#class-Color)</sub>- factor: ['Float', 'Vector']
+<sub>Go to [top](#class-Color)</sub>- color: ['Float', 'Vector', 'Color']
+<sub>Go to [top](#class-Color)</sub>- clamp_factor (bool): True
+<sub>Go to [top](#class-Color)</sub>- clamp_result (bool): False
+<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub>### Returns:
 
-```
-Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html) )
+<sub>Go to [top](#class-Color)</sub>  socket 'result'<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub>## mix_screen
 
-### Args:
-- factor: ['Float', 'Vector']
-- color: ['Float', 'Vector', 'Color']
-- clamp_factor (bool): True
-- clamp_result (bool): False
+<sub>Go to [top](#class-Color)</sub>```python
+<sub>Go to [top](#class-Color)</sub>def mix_screen(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
 
-### Returns:
+<sub>Go to [top](#class-Color)</sub>```
+<sub>Go to [top](#class-Color)</sub>Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html) )
 
-  socket 'result'
+<sub>Go to [top](#class-Color)</sub>### Args:
+<sub>Go to [top](#class-Color)</sub>- factor: ['Float', 'Vector']
+<sub>Go to [top](#class-Color)</sub>- color: ['Float', 'Vector', 'Color']
+<sub>Go to [top](#class-Color)</sub>- clamp_factor (bool): True
+<sub>Go to [top](#class-Color)</sub>- clamp_result (bool): False
+<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub>### Returns:
 
-## mix_color
+<sub>Go to [top](#class-Color)</sub>  socket 'result'<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub>## mix_soft_light
 
-```python
-def mix_color(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
+<sub>Go to [top](#class-Color)</sub>```python
+<sub>Go to [top](#class-Color)</sub>def mix_soft_light(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
 
-```
-Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html) )
+<sub>Go to [top](#class-Color)</sub>```
+<sub>Go to [top](#class-Color)</sub>Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html) )
 
-### Args:
-- factor: ['Float', 'Vector']
-- color: ['Float', 'Vector', 'Color']
-- clamp_factor (bool): True
-- clamp_result (bool): False
+<sub>Go to [top](#class-Color)</sub>### Args:
+<sub>Go to [top](#class-Color)</sub>- factor: ['Float', 'Vector']
+<sub>Go to [top](#class-Color)</sub>- color: ['Float', 'Vector', 'Color']
+<sub>Go to [top](#class-Color)</sub>- clamp_factor (bool): True
+<sub>Go to [top](#class-Color)</sub>- clamp_result (bool): False
+<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub>### Returns:
 
-### Returns:
+<sub>Go to [top](#class-Color)</sub>  socket 'result'<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub>## mix_subtract
 
-  socket 'result'
+<sub>Go to [top](#class-Color)</sub>```python
+<sub>Go to [top](#class-Color)</sub>def mix_subtract(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
 
-## mix_darken
+<sub>Go to [top](#class-Color)</sub>```
+<sub>Go to [top](#class-Color)</sub>Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html) )
 
-```python
-def mix_darken(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
+<sub>Go to [top](#class-Color)</sub>### Args:
+<sub>Go to [top](#class-Color)</sub>- factor: ['Float', 'Vector']
+<sub>Go to [top](#class-Color)</sub>- color: ['Float', 'Vector', 'Color']
+<sub>Go to [top](#class-Color)</sub>- clamp_factor (bool): True
+<sub>Go to [top](#class-Color)</sub>- clamp_result (bool): False
+<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub>### Returns:
 
-```
-Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html) )
+<sub>Go to [top](#class-Color)</sub>  socket 'result'<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub>## mix_value
 
-### Args:
-- factor: ['Float', 'Vector']
-- color: ['Float', 'Vector', 'Color']
-- clamp_factor (bool): True
-- clamp_result (bool): False
+<sub>Go to [top](#class-Color)</sub>```python
+<sub>Go to [top](#class-Color)</sub>def mix_value(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
 
-### Returns:
+<sub>Go to [top](#class-Color)</sub>```
+<sub>Go to [top](#class-Color)</sub>Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html) )
 
-  socket 'result'
+<sub>Go to [top](#class-Color)</sub>### Args:
+<sub>Go to [top](#class-Color)</sub>- factor: ['Float', 'Vector']
+<sub>Go to [top](#class-Color)</sub>- color: ['Float', 'Vector', 'Color']
+<sub>Go to [top](#class-Color)</sub>- clamp_factor (bool): True
+<sub>Go to [top](#class-Color)</sub>- clamp_result (bool): False
+<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub>### Returns:
 
-## mix_difference
+<sub>Go to [top](#class-Color)</sub>  socket 'result'<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub>## red <span style="color:blue">*property*</span>
 
-```python
-def mix_difference(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
+<sub>Go to [top](#class-Color)</sub>```python
+<sub>Go to [top](#class-Color)</sub>def red(self):
 
-```
-Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html) )
+<sub>Go to [top](#class-Color)</sub>```
+<sub>Go to [top](#class-Color)</sub>Node [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html) )
 
-### Args:
-- factor: ['Float', 'Vector']
-- color: ['Float', 'Vector', 'Color']
-- clamp_factor (bool): True
-- clamp_result (bool): False
+<sub>Go to [top](#class-Color)</sub>Node implemented as property.
 
-### Returns:
+<sub>Go to [top](#class-Color)</sub>### Returns:
 
-  socket 'result'
+<sub>Go to [top](#class-Color)</sub>  socket 'red'<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub>## rgb <span style="color:blue">*property*</span>
 
-## mix_divide
+<sub>Go to [top](#class-Color)</sub>```python
+<sub>Go to [top](#class-Color)</sub>def rgb(self):
 
-```python
-def mix_divide(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
+<sub>Go to [top](#class-Color)</sub>```
+<sub>Go to [top](#class-Color)</sub>Node [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html) )
 
-```
-Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html) )
+<sub>Go to [top](#class-Color)</sub>Node implemented as property.
 
-### Args:
-- factor: ['Float', 'Vector']
-- color: ['Float', 'Vector', 'Color']
-- clamp_factor (bool): True
-- clamp_result (bool): False
+<sub>Go to [top](#class-Color)</sub>### Returns:
 
-### Returns:
+<sub>Go to [top](#class-Color)</sub>- tuple ('red', 'green', 'blue', 'alpha')
+<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub>## rgb_curves <span style="color:blue">*property*</span>
 
-  socket 'result'
+<sub>Go to [top](#class-Color)</sub>```python
+<sub>Go to [top](#class-Color)</sub>def rgb_curves(self, fac=None):
 
-## mix_dodge
+<sub>Go to [top](#class-Color)</sub>```
+<sub>Go to [top](#class-Color)</sub>Node [RGB Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/rgb_curves.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeRGBCurve.html) )
 
-```python
-def mix_dodge(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
+<sub>Go to [top](#class-Color)</sub>Node implemented as property.
 
-```
-Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html) )
+<sub>Go to [top](#class-Color)</sub>### Returns:
 
-### Args:
-- factor: ['Float', 'Vector']
-- color: ['Float', 'Vector', 'Color']
-- clamp_factor (bool): True
-- clamp_result (bool): False
+<sub>Go to [top](#class-Color)</sub>- node with sockets ['color']
+<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub>## saturation <span style="color:blue">*property*</span>
 
-### Returns:
+<sub>Go to [top](#class-Color)</sub>```python
+<sub>Go to [top](#class-Color)</sub>def saturation(self):
 
-  socket 'result'
+<sub>Go to [top](#class-Color)</sub>```
+<sub>Go to [top](#class-Color)</sub>Node [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html) )
 
-## mix_hue
+<sub>Go to [top](#class-Color)</sub>Node implemented as property.
 
-```python
-def mix_hue(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
+<sub>Go to [top](#class-Color)</sub>### Returns:
 
-```
-Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html) )
+<sub>Go to [top](#class-Color)</sub>  socket 'green'<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub>## switch
 
-### Args:
-- factor: ['Float', 'Vector']
-- color: ['Float', 'Vector', 'Color']
-- clamp_factor (bool): True
-- clamp_result (bool): False
+<sub>Go to [top](#class-Color)</sub>```python
+<sub>Go to [top](#class-Color)</sub>def switch(self, switch=None, true=None):
 
-### Returns:
+<sub>Go to [top](#class-Color)</sub>```
+<sub>Go to [top](#class-Color)</sub>Node [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html) )
 
-  socket 'result'
+<sub>Go to [top](#class-Color)</sub>### Args:
+<sub>Go to [top](#class-Color)</sub>- switch: ['Boolean', 'Boolean']
+<sub>Go to [top](#class-Color)</sub>- true: ['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'String', 'Geometry', 'Object', 'Collection', 'Texture', 'Material', 'Image']
+<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub>### Returns:
 
-## mix_lighten
+<sub>Go to [top](#class-Color)</sub>  socket 'output'<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub>## value <span style="color:blue">*property*</span>
 
-```python
-def mix_lighten(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
+<sub>Go to [top](#class-Color)</sub>```python
+<sub>Go to [top](#class-Color)</sub>def value(self):
 
-```
-Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html) )
+<sub>Go to [top](#class-Color)</sub>```
+<sub>Go to [top](#class-Color)</sub>Node [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html) )
 
-### Args:
-- factor: ['Float', 'Vector']
-- color: ['Float', 'Vector', 'Color']
-- clamp_factor (bool): True
-- clamp_result (bool): False
+<sub>Go to [top](#class-Color)</sub>Node implemented as property.
 
-### Returns:
+<sub>Go to [top](#class-Color)</sub>### Returns:
 
-  socket 'result'
-
-## mix_linear_light
-
-```python
-def mix_linear_light(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
-
-```
-Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html) )
-
-### Args:
-- factor: ['Float', 'Vector']
-- color: ['Float', 'Vector', 'Color']
-- clamp_factor (bool): True
-- clamp_result (bool): False
-
-### Returns:
-
-  socket 'result'
-
-## mix_multiply
-
-```python
-def mix_multiply(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
-
-```
-Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html) )
-
-### Args:
-- factor: ['Float', 'Vector']
-- color: ['Float', 'Vector', 'Color']
-- clamp_factor (bool): True
-- clamp_result (bool): False
-
-### Returns:
-
-  socket 'result'
-
-## mix_overlay
-
-```python
-def mix_overlay(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
-
-```
-Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html) )
-
-### Args:
-- factor: ['Float', 'Vector']
-- color: ['Float', 'Vector', 'Color']
-- clamp_factor (bool): True
-- clamp_result (bool): False
-
-### Returns:
-
-  socket 'result'
-
-## mix_saturation
-
-```python
-def mix_saturation(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
-
-```
-Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html) )
-
-### Args:
-- factor: ['Float', 'Vector']
-- color: ['Float', 'Vector', 'Color']
-- clamp_factor (bool): True
-- clamp_result (bool): False
-
-### Returns:
-
-  socket 'result'
-
-## mix_screen
-
-```python
-def mix_screen(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
-
-```
-Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html) )
-
-### Args:
-- factor: ['Float', 'Vector']
-- color: ['Float', 'Vector', 'Color']
-- clamp_factor (bool): True
-- clamp_result (bool): False
-
-### Returns:
-
-  socket 'result'
-
-## mix_soft_light
-
-```python
-def mix_soft_light(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
-
-```
-Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html) )
-
-### Args:
-- factor: ['Float', 'Vector']
-- color: ['Float', 'Vector', 'Color']
-- clamp_factor (bool): True
-- clamp_result (bool): False
-
-### Returns:
-
-  socket 'result'
-
-## mix_subtract
-
-```python
-def mix_subtract(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
-
-```
-Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html) )
-
-### Args:
-- factor: ['Float', 'Vector']
-- color: ['Float', 'Vector', 'Color']
-- clamp_factor (bool): True
-- clamp_result (bool): False
-
-### Returns:
-
-  socket 'result'
-
-## mix_value
-
-```python
-def mix_value(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
-
-```
-Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html) )
-
-### Args:
-- factor: ['Float', 'Vector']
-- color: ['Float', 'Vector', 'Color']
-- clamp_factor (bool): True
-- clamp_result (bool): False
-
-### Returns:
-
-  socket 'result'
-
-## red *property*
-
-```python
-def red(self):
-
-```
-Node [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html) )
-
-Node implemented as property.
-
-### Returns:
-
-  socket 'red'
-
-## rgb *property*
-
-```python
-def rgb(self):
-
-```
-Node [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html) )
-
-Node implemented as property.
-
-### Returns:
-
-- tuple ('red', 'green', 'blue', 'alpha')
-
-## rgb_curves *property*
-
-```python
-def rgb_curves(self, fac=None):
-
-```
-Node [RGB Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/rgb_curves.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeRGBCurve.html) )
-
-Node implemented as property.
-
-### Returns:
-
-- node with sockets ['color']
-
-## saturation *property*
-
-```python
-def saturation(self):
-
-```
-Node [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html) )
-
-Node implemented as property.
-
-### Returns:
-
-  socket 'green'
-
-## switch
-
-```python
-def switch(self, switch=None, true=None):
-
-```
-Node [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html) )
-
-### Args:
-- switch: ['Boolean', 'Boolean']
-- true: ['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'String', 'Geometry', 'Object', 'Collection', 'Texture', 'Material', 'Image']
-
-### Returns:
-
-  socket 'output'
-
-## value *property*
-
-```python
-def value(self):
-
-```
-Node [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html) )
-
-Node implemented as property.
-
-### Returns:
-
-  socket 'blue'
-
+<sub>Go to [top](#class-Color)</sub>  socket 'blue'<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub>

@@ -25,306 +25,307 @@
 - [set_resolution](#set_resolution)
 - [set_type](#set_type)
 
-## cyclic *property*
+## cyclic <span style="color:blue">*property*</span>
 
-```python
-def cyclic(self):
+<sub>Go to [top](#class-Spline)</sub>```python
+<sub>Go to [top](#class-Spline)</sub>def cyclic(self):
 
-```
-Node [Is Spline Cyclic](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/is_spline_cyclic.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputSplineCyclic.html) )
+<sub>Go to [top](#class-Spline)</sub>```
+<sub>Go to [top](#class-Spline)</sub>Node [Is Spline Cyclic](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/is_spline_cyclic.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputSplineCyclic.html) )
 
-### Returns:
+<sub>Go to [top](#class-Spline)</sub>### Returns:
 
-  socket 'cyclic'
+<sub>Go to [top](#class-Spline)</sub>  socket 'cyclic'<sub>Go to [top](#class-Spline)</sub>
+<sub>Go to [top](#class-Spline)</sub>
+<sub>Go to [top](#class-Spline)</sub>## cyclic <span style="color:blue">*etter*</span>
 
-## cyclic *etter*
+<sub>Go to [top](#class-Spline)</sub>```python
+<sub>Go to [top](#class-Spline)</sub>def cyclic(self, attr_value):
 
-```python
-def cyclic(self, attr_value):
+<sub>Go to [top](#class-Spline)</sub>```
+<sub>Go to [top](#class-Spline)</sub>Node [Set Spline Cyclic](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/set_spline_cyclic.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetSplineCyclic.html) )
 
-```
-Node [Set Spline Cyclic](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/set_spline_cyclic.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetSplineCyclic.html) )
+<sub>Go to [top](#class-Spline)</sub>Node implemented as property setter.
 
-Node implemented as property setter.
+<sub>Go to [top](#class-Spline)</sub>        ###Args:<sub>Go to [top](#class-Spline)</sub>- attr_value: cyclic
+<sub>Go to [top](#class-Spline)</sub>
+<sub>Go to [top](#class-Spline)</sub>
+<sub>Go to [top](#class-Spline)</sub>## domain_size
 
-        ###Args:- attr_value: cyclic
+<sub>Go to [top](#class-Spline)</sub>```python
+<sub>Go to [top](#class-Spline)</sub>def __len__(self):
 
+<sub>Go to [top](#class-Spline)</sub>```
+<sub>Go to [top](#class-Spline)</sub>Node [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html) )
 
-## domain_size
+<sub>Go to [top](#class-Spline)</sub>### Args:
+<sub>Go to [top](#class-Spline)</sub>- geometry: Geometry
+<sub>Go to [top](#class-Spline)</sub>- component (str): 'MESH' in [MESH, POINTCLOUD, CURVE, INSTANCES]
+<sub>Go to [top](#class-Spline)</sub>
+<sub>Go to [top](#class-Spline)</sub>### Returns:
 
-```python
-def __len__(self):
+<sub>Go to [top](#class-Spline)</sub>- node with sockets ['point_count', 'edge_count', 'face_count', 'face_corner_count', 'spline_count', 'instance_count']
+<sub>Go to [top](#class-Spline)</sub>
+<sub>Go to [top](#class-Spline)</sub>## length <span style="color:blue">*property*</span>
 
-```
-Node [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html) )
+<sub>Go to [top](#class-Spline)</sub>```python
+<sub>Go to [top](#class-Spline)</sub>def length(self):
 
-### Args:
-- geometry: Geometry
-- component (str): 'MESH' in [MESH, POINTCLOUD, CURVE, INSTANCES]
+<sub>Go to [top](#class-Spline)</sub>```
+<sub>Go to [top](#class-Spline)</sub>Node [Spline Length](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/spline_length.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSplineLength.html) )
 
-### Returns:
+<sub>Go to [top](#class-Spline)</sub>### Returns:
 
-- node with sockets ['point_count', 'edge_count', 'face_count', 'face_corner_count', 'spline_count', 'instance_count']
+<sub>Go to [top](#class-Spline)</sub>- tuple ('length', 'point_count')
+<sub>Go to [top](#class-Spline)</sub>
+<sub>Go to [top](#class-Spline)</sub>## material <span style="color:blue">*property*</span>
 
-## length *property*
+<sub>Go to [top](#class-Spline)</sub>```python
+<sub>Go to [top](#class-Spline)</sub>def material(self):
 
-```python
-def length(self):
+<sub>Go to [top](#class-Spline)</sub>```
+<sub>Go to [top](#class-Spline)</sub>Node [Set Material](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/set_material.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetMaterial.html) )
 
-```
-Node [Spline Length](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/spline_length.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSplineLength.html) )
-
-### Returns:
-
-- tuple ('length', 'point_count')
-
-## material *property*
-
-```python
-def material(self):
-
-```
-Node [Set Material](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/set_material.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetMaterial.html) )
-
-'material' is a write only property.
+<sub>Go to [top](#class-Spline)</sub>'material' is a write only property.
 Raise an exception if attempt to read.
 
+<sub>Go to [top](#class-Spline)</sub>
+<sub>Go to [top](#class-Spline)</sub>## material <span style="color:blue">*etter*</span>
 
-## material *etter*
+<sub>Go to [top](#class-Spline)</sub>```python
+<sub>Go to [top](#class-Spline)</sub>def material(self, attr_value):
 
-```python
-def material(self, attr_value):
+<sub>Go to [top](#class-Spline)</sub>```
+<sub>Go to [top](#class-Spline)</sub>Node [Set Material](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/set_material.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetMaterial.html) )
 
-```
-Node [Set Material](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/set_material.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetMaterial.html) )
+<sub>Go to [top](#class-Spline)</sub>Node implemented as property setter.
 
-Node implemented as property setter.
+<sub>Go to [top](#class-Spline)</sub>        ###Args:<sub>Go to [top](#class-Spline)</sub>- attr_value: material
+<sub>Go to [top](#class-Spline)</sub>
+<sub>Go to [top](#class-Spline)</sub>
+<sub>Go to [top](#class-Spline)</sub>## normal <span style="color:blue">*property*</span>
 
-        ###Args:- attr_value: material
+<sub>Go to [top](#class-Spline)</sub>```python
+<sub>Go to [top](#class-Spline)</sub>def normal(self):
 
+<sub>Go to [top](#class-Spline)</sub>```
+<sub>Go to [top](#class-Spline)</sub>Node [Normal](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/normal.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputNormal.html) )
 
-## normal *property*
+<sub>Go to [top](#class-Spline)</sub>### Returns:
 
-```python
-def normal(self):
+<sub>Go to [top](#class-Spline)</sub>  socket 'normal'<sub>Go to [top](#class-Spline)</sub>
+<sub>Go to [top](#class-Spline)</sub>
+<sub>Go to [top](#class-Spline)</sub>## normal <span style="color:blue">*etter*</span>
 
-```
-Node [Normal](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/normal.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputNormal.html) )
+<sub>Go to [top](#class-Spline)</sub>```python
+<sub>Go to [top](#class-Spline)</sub>def normal(self, attr_value):
 
-### Returns:
+<sub>Go to [top](#class-Spline)</sub>```
+<sub>Go to [top](#class-Spline)</sub>Node [Set Curve Normal](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/set_curve_normal.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetCurveNormal.html) )
 
-  socket 'normal'
+<sub>Go to [top](#class-Spline)</sub>Node implemented as property setter.
 
-## normal *etter*
+<sub>Go to [top](#class-Spline)</sub>        ###Args:<sub>Go to [top](#class-Spline)</sub>- attr_value: mode
+<sub>Go to [top](#class-Spline)</sub>
+<sub>Go to [top](#class-Spline)</sub>
+<sub>Go to [top](#class-Spline)</sub>## points
 
-```python
-def normal(self, attr_value):
+<sub>Go to [top](#class-Spline)</sub>```python
+<sub>Go to [top](#class-Spline)</sub>def points(self, weights=None, sort_index=None):
 
-```
-Node [Set Curve Normal](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/set_curve_normal.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetCurveNormal.html) )
+<sub>Go to [top](#class-Spline)</sub>```
+<sub>Go to [top](#class-Spline)</sub>Node [Points of Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve_topology/points_of_curve.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodePointsOfCurve.html) )
 
-Node implemented as property setter.
+<sub>Go to [top](#class-Spline)</sub>### Args:
+<sub>Go to [top](#class-Spline)</sub>- weights: Float
+<sub>Go to [top](#class-Spline)</sub>- sort_index: Integer
+<sub>Go to [top](#class-Spline)</sub>
+<sub>Go to [top](#class-Spline)</sub>### Returns:
 
-        ###Args:- attr_value: mode
+<sub>Go to [top](#class-Spline)</sub>- tuple ('point_index', 'total')
+<sub>Go to [top](#class-Spline)</sub>
+<sub>Go to [top](#class-Spline)</sub>## resample
 
+<sub>Go to [top](#class-Spline)</sub>```python
+<sub>Go to [top](#class-Spline)</sub>def resample(self, count=None, length=None, mode='COUNT'):
 
-## points
+<sub>Go to [top](#class-Spline)</sub>```
+<sub>Go to [top](#class-Spline)</sub>Node [Resample Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/resample_curve.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeResampleCurve.html) )
 
-```python
-def points(self, weights=None, sort_index=None):
+<sub>Go to [top](#class-Spline)</sub>### Args:
+<sub>Go to [top](#class-Spline)</sub>- count: Integer
+<sub>Go to [top](#class-Spline)</sub>- length: Float
+<sub>Go to [top](#class-Spline)</sub>- mode (str): 'COUNT' in [EVALUATED, COUNT, LENGTH]
+<sub>Go to [top](#class-Spline)</sub>
+<sub>Go to [top](#class-Spline)</sub>### Returns:
 
-```
-Node [Points of Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve_topology/points_of_curve.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodePointsOfCurve.html) )
+<sub>Go to [top](#class-Spline)</sub>- node with sockets ['curve']
+<sub>Go to [top](#class-Spline)</sub>
+<sub>Go to [top](#class-Spline)</sub>## resample_count
 
-### Args:
-- weights: Float
-- sort_index: Integer
+<sub>Go to [top](#class-Spline)</sub>```python
+<sub>Go to [top](#class-Spline)</sub>def resample_count(self, count=None):
 
-### Returns:
+<sub>Go to [top](#class-Spline)</sub>```
+<sub>Go to [top](#class-Spline)</sub>Node [Resample Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/resample_curve.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeResampleCurve.html) )
 
-- tuple ('point_index', 'total')
+<sub>Go to [top](#class-Spline)</sub>### Args:
+<sub>Go to [top](#class-Spline)</sub>- count: Integer
+<sub>Go to [top](#class-Spline)</sub>
+<sub>Go to [top](#class-Spline)</sub>### Returns:
 
-## resample
+<sub>Go to [top](#class-Spline)</sub>- node with sockets ['curve']
+<sub>Go to [top](#class-Spline)</sub>
+<sub>Go to [top](#class-Spline)</sub>## resample_evaluated
 
-```python
-def resample(self, count=None, length=None, mode='COUNT'):
+<sub>Go to [top](#class-Spline)</sub>```python
+<sub>Go to [top](#class-Spline)</sub>def resample_evaluated(self):
 
-```
-Node [Resample Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/resample_curve.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeResampleCurve.html) )
+<sub>Go to [top](#class-Spline)</sub>```
+<sub>Go to [top](#class-Spline)</sub>Node [Resample Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/resample_curve.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeResampleCurve.html) )
 
-### Args:
-- count: Integer
-- length: Float
-- mode (str): 'COUNT' in [EVALUATED, COUNT, LENGTH]
+<sub>Go to [top](#class-Spline)</sub>### Returns:
 
-### Returns:
+<sub>Go to [top](#class-Spline)</sub>- node with sockets ['curve']
+<sub>Go to [top](#class-Spline)</sub>
+<sub>Go to [top](#class-Spline)</sub>## resample_length
 
-- node with sockets ['curve']
+<sub>Go to [top](#class-Spline)</sub>```python
+<sub>Go to [top](#class-Spline)</sub>def resample_length(self, length=None):
 
-## resample_count
+<sub>Go to [top](#class-Spline)</sub>```
+<sub>Go to [top](#class-Spline)</sub>Node [Resample Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/resample_curve.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeResampleCurve.html) )
 
-```python
-def resample_count(self, count=None):
+<sub>Go to [top](#class-Spline)</sub>### Args:
+<sub>Go to [top](#class-Spline)</sub>- length: Float
+<sub>Go to [top](#class-Spline)</sub>
+<sub>Go to [top](#class-Spline)</sub>### Returns:
 
-```
-Node [Resample Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/resample_curve.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeResampleCurve.html) )
+<sub>Go to [top](#class-Spline)</sub>- node with sockets ['curve']
+<sub>Go to [top](#class-Spline)</sub>
+<sub>Go to [top](#class-Spline)</sub>## resolution <span style="color:blue">*property*</span>
 
-### Args:
-- count: Integer
+<sub>Go to [top](#class-Spline)</sub>```python
+<sub>Go to [top](#class-Spline)</sub>def resolution(self):
 
-### Returns:
+<sub>Go to [top](#class-Spline)</sub>```
+<sub>Go to [top](#class-Spline)</sub>Node [Spline Resolution](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/spline_resolution.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputSplineResolution.html) )
 
-- node with sockets ['curve']
+<sub>Go to [top](#class-Spline)</sub>### Returns:
 
-## resample_evaluated
+<sub>Go to [top](#class-Spline)</sub>  socket 'resolution'<sub>Go to [top](#class-Spline)</sub>
+<sub>Go to [top](#class-Spline)</sub>
+<sub>Go to [top](#class-Spline)</sub>## resolution <span style="color:blue">*etter*</span>
 
-```python
-def resample_evaluated(self):
+<sub>Go to [top](#class-Spline)</sub>```python
+<sub>Go to [top](#class-Spline)</sub>def resolution(self, attr_value):
 
-```
-Node [Resample Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/resample_curve.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeResampleCurve.html) )
+<sub>Go to [top](#class-Spline)</sub>```
+<sub>Go to [top](#class-Spline)</sub>Node [Set Spline Resolution](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/set_spline_resolution.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetSplineResolution.html) )
 
-### Returns:
+<sub>Go to [top](#class-Spline)</sub>Node implemented as property setter.
 
-- node with sockets ['curve']
+<sub>Go to [top](#class-Spline)</sub>        ###Args:<sub>Go to [top](#class-Spline)</sub>- attr_value: resolution
+<sub>Go to [top](#class-Spline)</sub>
+<sub>Go to [top](#class-Spline)</sub>
+<sub>Go to [top](#class-Spline)</sub>## set_cyclic
 
-## resample_length
+<sub>Go to [top](#class-Spline)</sub>```python
+<sub>Go to [top](#class-Spline)</sub>def set_cyclic(self, cyclic=None):
 
-```python
-def resample_length(self, length=None):
+<sub>Go to [top](#class-Spline)</sub>```
+<sub>Go to [top](#class-Spline)</sub>Node [Set Spline Cyclic](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/set_spline_cyclic.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetSplineCyclic.html) )
 
-```
-Node [Resample Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/resample_curve.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeResampleCurve.html) )
+<sub>Go to [top](#class-Spline)</sub>### Args:
+<sub>Go to [top](#class-Spline)</sub>- cyclic: Boolean
+<sub>Go to [top](#class-Spline)</sub>
+<sub>Go to [top](#class-Spline)</sub>### Returns:
 
-### Args:
-- length: Float
+<sub>Go to [top](#class-Spline)</sub>- node with sockets ['geometry']
+<sub>Go to [top](#class-Spline)</sub>
+<sub>Go to [top](#class-Spline)</sub>## set_material
 
-### Returns:
+<sub>Go to [top](#class-Spline)</sub>```python
+<sub>Go to [top](#class-Spline)</sub>def set_material(self, material=None):
 
-- node with sockets ['curve']
+<sub>Go to [top](#class-Spline)</sub>```
+<sub>Go to [top](#class-Spline)</sub>Node [Set Material](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/set_material.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetMaterial.html) )
 
-## resolution *property*
+<sub>Go to [top](#class-Spline)</sub>### Args:
+<sub>Go to [top](#class-Spline)</sub>- material: Material
+<sub>Go to [top](#class-Spline)</sub>
+<sub>Go to [top](#class-Spline)</sub>### Returns:
 
-```python
-def resolution(self):
+<sub>Go to [top](#class-Spline)</sub>- node with sockets ['geometry']
+<sub>Go to [top](#class-Spline)</sub>
+<sub>Go to [top](#class-Spline)</sub>## set_normal
 
-```
-Node [Spline Resolution](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/spline_resolution.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputSplineResolution.html) )
+<sub>Go to [top](#class-Spline)</sub>```python
+<sub>Go to [top](#class-Spline)</sub>def set_normal(self, mode='MINIMUM_TWIST'):
 
-### Returns:
+<sub>Go to [top](#class-Spline)</sub>```
+<sub>Go to [top](#class-Spline)</sub>Node [Set Curve Normal](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/set_curve_normal.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetCurveNormal.html) )
 
-  socket 'resolution'
+<sub>Go to [top](#class-Spline)</sub>### Args:
+<sub>Go to [top](#class-Spline)</sub>- mode (str): 'MINIMUM_TWIST' in [MINIMUM_TWIST, Z_UP]
+<sub>Go to [top](#class-Spline)</sub>
+<sub>Go to [top](#class-Spline)</sub>### Returns:
 
-## resolution *etter*
+<sub>Go to [top](#class-Spline)</sub>- node with sockets ['curve']
+<sub>Go to [top](#class-Spline)</sub>
+<sub>Go to [top](#class-Spline)</sub>## set_resolution
 
-```python
-def resolution(self, attr_value):
+<sub>Go to [top](#class-Spline)</sub>```python
+<sub>Go to [top](#class-Spline)</sub>def set_resolution(self, resolution=None):
 
-```
-Node [Set Spline Resolution](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/set_spline_resolution.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetSplineResolution.html) )
+<sub>Go to [top](#class-Spline)</sub>```
+<sub>Go to [top](#class-Spline)</sub>Node [Set Spline Resolution](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/set_spline_resolution.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetSplineResolution.html) )
 
-Node implemented as property setter.
+<sub>Go to [top](#class-Spline)</sub>### Args:
+<sub>Go to [top](#class-Spline)</sub>- resolution: Integer
+<sub>Go to [top](#class-Spline)</sub>
+<sub>Go to [top](#class-Spline)</sub>### Returns:
 
-        ###Args:- attr_value: resolution
+<sub>Go to [top](#class-Spline)</sub>- node with sockets ['geometry']
+<sub>Go to [top](#class-Spline)</sub>
+<sub>Go to [top](#class-Spline)</sub>## set_type
 
+<sub>Go to [top](#class-Spline)</sub>```python
+<sub>Go to [top](#class-Spline)</sub>def set_type(self, spline_type='POLY'):
 
-## set_cyclic
+<sub>Go to [top](#class-Spline)</sub>```
+<sub>Go to [top](#class-Spline)</sub>Node [Set Spline Type](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/set_spline_type.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveSplineType.html) )
 
-```python
-def set_cyclic(self, cyclic=None):
+<sub>Go to [top](#class-Spline)</sub>### Args:
+<sub>Go to [top](#class-Spline)</sub>- spline_type (str): 'POLY' in [CATMULL_ROM, POLY, BEZIER, NURBS]
+<sub>Go to [top](#class-Spline)</sub>
+<sub>Go to [top](#class-Spline)</sub>### Returns:
 
-```
-Node [Set Spline Cyclic](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/set_spline_cyclic.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetSplineCyclic.html) )
+<sub>Go to [top](#class-Spline)</sub>- node with sockets ['curve']
+<sub>Go to [top](#class-Spline)</sub>
+<sub>Go to [top](#class-Spline)</sub>## type <span style="color:blue">*property*</span>
 
-### Args:
-- cyclic: Boolean
+<sub>Go to [top](#class-Spline)</sub>```python
+<sub>Go to [top](#class-Spline)</sub>def type(self):
 
-### Returns:
+<sub>Go to [top](#class-Spline)</sub>```
+<sub>Go to [top](#class-Spline)</sub>Node [Set Spline Type](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/set_spline_type.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveSplineType.html) )
 
-- node with sockets ['geometry']
-
-## set_material
-
-```python
-def set_material(self, material=None):
-
-```
-Node [Set Material](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/set_material.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetMaterial.html) )
-
-### Args:
-- material: Material
-
-### Returns:
-
-- node with sockets ['geometry']
-
-## set_normal
-
-```python
-def set_normal(self, mode='MINIMUM_TWIST'):
-
-```
-Node [Set Curve Normal](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/set_curve_normal.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetCurveNormal.html) )
-
-### Args:
-- mode (str): 'MINIMUM_TWIST' in [MINIMUM_TWIST, Z_UP]
-
-### Returns:
-
-- node with sockets ['curve']
-
-## set_resolution
-
-```python
-def set_resolution(self, resolution=None):
-
-```
-Node [Set Spline Resolution](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/set_spline_resolution.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetSplineResolution.html) )
-
-### Args:
-- resolution: Integer
-
-### Returns:
-
-- node with sockets ['geometry']
-
-## set_type
-
-```python
-def set_type(self, spline_type='POLY'):
-
-```
-Node [Set Spline Type](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/set_spline_type.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveSplineType.html) )
-
-### Args:
-- spline_type (str): 'POLY' in [CATMULL_ROM, POLY, BEZIER, NURBS]
-
-### Returns:
-
-- node with sockets ['curve']
-
-## type *property*
-
-```python
-def type(self):
-
-```
-Node [Set Spline Type](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/set_spline_type.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveSplineType.html) )
-
-'type' is a write only property.
+<sub>Go to [top](#class-Spline)</sub>'type' is a write only property.
 Raise an exception if attempt to read.
 
+<sub>Go to [top](#class-Spline)</sub>
+<sub>Go to [top](#class-Spline)</sub>## type <span style="color:blue">*etter*</span>
 
-## type *etter*
+<sub>Go to [top](#class-Spline)</sub>```python
+<sub>Go to [top](#class-Spline)</sub>def type(self, attr_value):
 
-```python
-def type(self, attr_value):
+<sub>Go to [top](#class-Spline)</sub>```
+<sub>Go to [top](#class-Spline)</sub>Node [Set Spline Type](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/set_spline_type.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveSplineType.html) )
 
-```
-Node [Set Spline Type](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/set_spline_type.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveSplineType.html) )
+<sub>Go to [top](#class-Spline)</sub>Node implemented as property setter.
 
-Node implemented as property setter.
-
-        ###Args:- attr_value: spline_type
-
-
+<sub>Go to [top](#class-Spline)</sub>        ###Args:<sub>Go to [top](#class-Spline)</sub>- attr_value: spline_type
+<sub>Go to [top](#class-Spline)</sub>
+<sub>Go to [top](#class-Spline)</sub>
+<sub>Go to [top](#class-Spline)</sub>

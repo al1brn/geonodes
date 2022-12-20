@@ -89,1241 +89,1242 @@
 - [truncate](#truncate)
 - [wrap](#wrap)
 
-## Frame *classmethod*
+## Frame <span style="color:blue">*classmethod*</span>
 
-```python
-def Frame(cls):
+<sub>Go to [top](#class-Float)</sub>```python
+<sub>Go to [top](#class-Float)</sub>def Frame(cls):
 
-```
-Node [Scene Time](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/scene_time.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputSceneTime.html) )
+<sub>Go to [top](#class-Float)</sub>```
+<sub>Go to [top](#class-Float)</sub>Node [Scene Time](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/scene_time.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputSceneTime.html) )
 
-### Returns:
+<sub>Go to [top](#class-Float)</sub>### Returns:
 
-  socket 'frame'
+<sub>Go to [top](#class-Float)</sub>  socket 'frame'<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>## Seconds <span style="color:blue">*classmethod*</span>
 
-## Seconds *classmethod*
+<sub>Go to [top](#class-Float)</sub>```python
+<sub>Go to [top](#class-Float)</sub>def Seconds(cls):
 
-```python
-def Seconds(cls):
+<sub>Go to [top](#class-Float)</sub>```
+<sub>Go to [top](#class-Float)</sub>Node [Scene Time](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/scene_time.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputSceneTime.html) )
 
-```
-Node [Scene Time](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/scene_time.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputSceneTime.html) )
+<sub>Go to [top](#class-Float)</sub>### Returns:
 
-### Returns:
+<sub>Go to [top](#class-Float)</sub>  socket 'seconds'<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>## Value <span style="color:blue">*classmethod*</span>
 
-  socket 'seconds'
+<sub>Go to [top](#class-Float)</sub>```python
+<sub>Go to [top](#class-Float)</sub>def Value(cls):
 
-## Value *classmethod*
+<sub>Go to [top](#class-Float)</sub>```
+<sub>Go to [top](#class-Float)</sub>Node [Value](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/value.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeValue.html) )
 
-```python
-def Value(cls):
+<sub>Go to [top](#class-Float)</sub>### Returns:
 
-```
-Node [Value](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/value.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeValue.html) )
+<sub>Go to [top](#class-Float)</sub>  socket 'value'<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>## abs
 
-### Returns:
+<sub>Go to [top](#class-Float)</sub>```python
+<sub>Go to [top](#class-Float)</sub>def abs(self, clamp=False):
 
-  socket 'value'
+<sub>Go to [top](#class-Float)</sub>```
+<sub>Go to [top](#class-Float)</sub>Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
 
-## abs
+<sub>Go to [top](#class-Float)</sub>### Args:
+<sub>Go to [top](#class-Float)</sub>- clamp (bool): False
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>### Returns:
 
-```python
-def abs(self, clamp=False):
+<sub>Go to [top](#class-Float)</sub>  socket 'value'<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>## absolute
 
-```
-Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
+<sub>Go to [top](#class-Float)</sub>```python
+<sub>Go to [top](#class-Float)</sub>def absolute(self, clamp=False):
 
-### Args:
-- clamp (bool): False
+<sub>Go to [top](#class-Float)</sub>```
+<sub>Go to [top](#class-Float)</sub>Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
 
-### Returns:
+<sub>Go to [top](#class-Float)</sub>### Args:
+<sub>Go to [top](#class-Float)</sub>- clamp (bool): False
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>### Returns:
 
-  socket 'value'
+<sub>Go to [top](#class-Float)</sub>  socket 'value'<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>## arccos
 
-## absolute
+<sub>Go to [top](#class-Float)</sub>```python
+<sub>Go to [top](#class-Float)</sub>def arccos(self, value=None, clamp=False):
 
-```python
-def absolute(self, clamp=False):
+<sub>Go to [top](#class-Float)</sub>```
+<sub>Go to [top](#class-Float)</sub>Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
 
-```
-Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
+<sub>Go to [top](#class-Float)</sub>### Args:
+<sub>Go to [top](#class-Float)</sub>- value: Float
+<sub>Go to [top](#class-Float)</sub>- clamp (bool): False
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>### Returns:
 
-### Args:
-- clamp (bool): False
+<sub>Go to [top](#class-Float)</sub>  socket 'value'<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>## arccosine
 
-### Returns:
+<sub>Go to [top](#class-Float)</sub>```python
+<sub>Go to [top](#class-Float)</sub>def arccosine(self, value=None, clamp=False):
 
-  socket 'value'
+<sub>Go to [top](#class-Float)</sub>```
+<sub>Go to [top](#class-Float)</sub>Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
 
-## arccos
+<sub>Go to [top](#class-Float)</sub>### Args:
+<sub>Go to [top](#class-Float)</sub>- value: Float
+<sub>Go to [top](#class-Float)</sub>- clamp (bool): False
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>### Returns:
 
-```python
-def arccos(self, value=None, clamp=False):
+<sub>Go to [top](#class-Float)</sub>  socket 'value'<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>## arcsin
 
-```
-Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
+<sub>Go to [top](#class-Float)</sub>```python
+<sub>Go to [top](#class-Float)</sub>def arcsin(self, value=None, clamp=False):
 
-### Args:
-- value: Float
-- clamp (bool): False
+<sub>Go to [top](#class-Float)</sub>```
+<sub>Go to [top](#class-Float)</sub>Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
 
-### Returns:
+<sub>Go to [top](#class-Float)</sub>### Args:
+<sub>Go to [top](#class-Float)</sub>- value: Float
+<sub>Go to [top](#class-Float)</sub>- clamp (bool): False
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>### Returns:
 
-  socket 'value'
+<sub>Go to [top](#class-Float)</sub>  socket 'value'<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>## arcsine
 
-## arccosine
+<sub>Go to [top](#class-Float)</sub>```python
+<sub>Go to [top](#class-Float)</sub>def arcsine(self, value=None, clamp=False):
 
-```python
-def arccosine(self, value=None, clamp=False):
+<sub>Go to [top](#class-Float)</sub>```
+<sub>Go to [top](#class-Float)</sub>Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
 
-```
-Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
+<sub>Go to [top](#class-Float)</sub>### Args:
+<sub>Go to [top](#class-Float)</sub>- value: Float
+<sub>Go to [top](#class-Float)</sub>- clamp (bool): False
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>### Returns:
 
-### Args:
-- value: Float
-- clamp (bool): False
+<sub>Go to [top](#class-Float)</sub>  socket 'value'<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>## arctan
 
-### Returns:
+<sub>Go to [top](#class-Float)</sub>```python
+<sub>Go to [top](#class-Float)</sub>def arctan(self, value=None, clamp=False):
 
-  socket 'value'
+<sub>Go to [top](#class-Float)</sub>```
+<sub>Go to [top](#class-Float)</sub>Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
 
-## arcsin
+<sub>Go to [top](#class-Float)</sub>### Args:
+<sub>Go to [top](#class-Float)</sub>- value: Float
+<sub>Go to [top](#class-Float)</sub>- clamp (bool): False
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>### Returns:
 
-```python
-def arcsin(self, value=None, clamp=False):
+<sub>Go to [top](#class-Float)</sub>  socket 'value'<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>## arctan2
 
-```
-Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
+<sub>Go to [top](#class-Float)</sub>```python
+<sub>Go to [top](#class-Float)</sub>def arctan2(self, value1=None, clamp=False):
 
-### Args:
-- value: Float
-- clamp (bool): False
+<sub>Go to [top](#class-Float)</sub>```
+<sub>Go to [top](#class-Float)</sub>Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
 
-### Returns:
+<sub>Go to [top](#class-Float)</sub>### Args:
+<sub>Go to [top](#class-Float)</sub>- value1: Float
+<sub>Go to [top](#class-Float)</sub>- clamp (bool): False
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>### Returns:
 
-  socket 'value'
+<sub>Go to [top](#class-Float)</sub>  socket 'value'<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>## arctangent
 
-## arcsine
+<sub>Go to [top](#class-Float)</sub>```python
+<sub>Go to [top](#class-Float)</sub>def arctangent(self, value=None, clamp=False):
 
-```python
-def arcsine(self, value=None, clamp=False):
+<sub>Go to [top](#class-Float)</sub>```
+<sub>Go to [top](#class-Float)</sub>Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
 
-```
-Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
+<sub>Go to [top](#class-Float)</sub>### Args:
+<sub>Go to [top](#class-Float)</sub>- value: Float
+<sub>Go to [top](#class-Float)</sub>- clamp (bool): False
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>### Returns:
 
-### Args:
-- value: Float
-- clamp (bool): False
+<sub>Go to [top](#class-Float)</sub>  socket 'value'<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>## ceiling
 
-### Returns:
+<sub>Go to [top](#class-Float)</sub>```python
+<sub>Go to [top](#class-Float)</sub>def ceiling(self):
 
-  socket 'value'
+<sub>Go to [top](#class-Float)</sub>```
+<sub>Go to [top](#class-Float)</sub>Node [Float to Integer](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/float_to_integer.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeFloatToInt.html) )
 
-## arctan
+<sub>Go to [top](#class-Float)</sub>### Returns:
 
-```python
-def arctan(self, value=None, clamp=False):
+<sub>Go to [top](#class-Float)</sub>  socket 'integer'<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>## clamp
 
-```
-Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
+<sub>Go to [top](#class-Float)</sub>```python
+<sub>Go to [top](#class-Float)</sub>def clamp(self, min=None, max=None, clamp_type='MINMAX'):
 
-### Args:
-- value: Float
-- clamp (bool): False
+<sub>Go to [top](#class-Float)</sub>```
+<sub>Go to [top](#class-Float)</sub>Node [Clamp](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/clamp.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeClamp.html) )
 
-### Returns:
+<sub>Go to [top](#class-Float)</sub>### Args:
+<sub>Go to [top](#class-Float)</sub>- min: Float
+<sub>Go to [top](#class-Float)</sub>- max: Float
+<sub>Go to [top](#class-Float)</sub>- clamp_type (str): 'MINMAX' in [MINMAX, RANGE]
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>### Returns:
 
-  socket 'value'
+<sub>Go to [top](#class-Float)</sub>  socket 'result'<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>## clamp_min_max
 
-## arctan2
+<sub>Go to [top](#class-Float)</sub>```python
+<sub>Go to [top](#class-Float)</sub>def clamp_min_max(self, min=None, max=None):
 
-```python
-def arctan2(self, value1=None, clamp=False):
+<sub>Go to [top](#class-Float)</sub>```
+<sub>Go to [top](#class-Float)</sub>Node [Clamp](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/clamp.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeClamp.html) )
 
-```
-Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
+<sub>Go to [top](#class-Float)</sub>### Args:
+<sub>Go to [top](#class-Float)</sub>- min: Float
+<sub>Go to [top](#class-Float)</sub>- max: Float
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>### Returns:
 
-### Args:
-- value1: Float
-- clamp (bool): False
+<sub>Go to [top](#class-Float)</sub>  socket 'result'<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>## clamp_range
 
-### Returns:
+<sub>Go to [top](#class-Float)</sub>```python
+<sub>Go to [top](#class-Float)</sub>def clamp_range(self, min=None, max=None):
 
-  socket 'value'
+<sub>Go to [top](#class-Float)</sub>```
+<sub>Go to [top](#class-Float)</sub>Node [Clamp](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/clamp.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeClamp.html) )
 
-## arctangent
+<sub>Go to [top](#class-Float)</sub>### Args:
+<sub>Go to [top](#class-Float)</sub>- min: Float
+<sub>Go to [top](#class-Float)</sub>- max: Float
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>### Returns:
 
-```python
-def arctangent(self, value=None, clamp=False):
+<sub>Go to [top](#class-Float)</sub>  socket 'result'<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>## color_ramp <span style="color:blue">*property*</span>
 
-```
-Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
+<sub>Go to [top](#class-Float)</sub>```python
+<sub>Go to [top](#class-Float)</sub>def color_ramp(self):
 
-### Args:
-- value: Float
-- clamp (bool): False
+<sub>Go to [top](#class-Float)</sub>```
+<sub>Go to [top](#class-Float)</sub>Node [ColorRamp](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/color_ramp.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeValToRGB.html) )
 
-### Returns:
+<sub>Go to [top](#class-Float)</sub>Node implemented as property.
 
-  socket 'value'
+<sub>Go to [top](#class-Float)</sub>### Returns:
 
-## ceiling
+<sub>Go to [top](#class-Float)</sub>- node with sockets ['color', 'alpha']
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>## compare
 
-```python
-def ceiling(self):
+<sub>Go to [top](#class-Float)</sub>```python
+<sub>Go to [top](#class-Float)</sub>def compare(self, b=None, epsilon=None, operation='GREATER_THAN'):
 
-```
-Node [Float to Integer](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/float_to_integer.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeFloatToInt.html) )
+<sub>Go to [top](#class-Float)</sub>```
+<sub>Go to [top](#class-Float)</sub>Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html) )
 
-### Returns:
+<sub>Go to [top](#class-Float)</sub>### Args:
+<sub>Go to [top](#class-Float)</sub>- b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+<sub>Go to [top](#class-Float)</sub>- epsilon: Float
+<sub>Go to [top](#class-Float)</sub>- operation (str): 'GREATER_THAN' in [LESS_THAN, LESS_EQUAL, GREATER_THAN, GREATER_EQUAL, EQUAL, NOT_EQUAL]
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>### Returns:
 
-  socket 'integer'
+<sub>Go to [top](#class-Float)</sub>  socket 'result'<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>## cos
 
-## clamp
+<sub>Go to [top](#class-Float)</sub>```python
+<sub>Go to [top](#class-Float)</sub>def cos(self, value=None, clamp=False):
 
-```python
-def clamp(self, min=None, max=None, clamp_type='MINMAX'):
+<sub>Go to [top](#class-Float)</sub>```
+<sub>Go to [top](#class-Float)</sub>Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
 
-```
-Node [Clamp](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/clamp.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeClamp.html) )
+<sub>Go to [top](#class-Float)</sub>### Args:
+<sub>Go to [top](#class-Float)</sub>- value: Float
+<sub>Go to [top](#class-Float)</sub>- clamp (bool): False
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>### Returns:
 
-### Args:
-- min: Float
-- max: Float
-- clamp_type (str): 'MINMAX' in [MINMAX, RANGE]
+<sub>Go to [top](#class-Float)</sub>  socket 'value'<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>## cosh
 
-### Returns:
+<sub>Go to [top](#class-Float)</sub>```python
+<sub>Go to [top](#class-Float)</sub>def cosh(self, value=None, clamp=False):
 
-  socket 'result'
+<sub>Go to [top](#class-Float)</sub>```
+<sub>Go to [top](#class-Float)</sub>Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
 
-## clamp_min_max
+<sub>Go to [top](#class-Float)</sub>### Args:
+<sub>Go to [top](#class-Float)</sub>- value: Float
+<sub>Go to [top](#class-Float)</sub>- clamp (bool): False
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>### Returns:
 
-```python
-def clamp_min_max(self, min=None, max=None):
+<sub>Go to [top](#class-Float)</sub>  socket 'value'<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>## cosine
 
-```
-Node [Clamp](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/clamp.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeClamp.html) )
+<sub>Go to [top](#class-Float)</sub>```python
+<sub>Go to [top](#class-Float)</sub>def cosine(self, value=None, clamp=False):
 
-### Args:
-- min: Float
-- max: Float
+<sub>Go to [top](#class-Float)</sub>```
+<sub>Go to [top](#class-Float)</sub>Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
 
-### Returns:
+<sub>Go to [top](#class-Float)</sub>### Args:
+<sub>Go to [top](#class-Float)</sub>- value: Float
+<sub>Go to [top](#class-Float)</sub>- clamp (bool): False
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>### Returns:
 
-  socket 'result'
+<sub>Go to [top](#class-Float)</sub>  socket 'value'<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>## equal
 
-## clamp_range
+<sub>Go to [top](#class-Float)</sub>```python
+<sub>Go to [top](#class-Float)</sub>def equal(self, b=None, epsilon=None):
 
-```python
-def clamp_range(self, min=None, max=None):
+<sub>Go to [top](#class-Float)</sub>```
+<sub>Go to [top](#class-Float)</sub>Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html) )
 
-```
-Node [Clamp](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/clamp.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeClamp.html) )
+<sub>Go to [top](#class-Float)</sub>### Args:
+<sub>Go to [top](#class-Float)</sub>- b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+<sub>Go to [top](#class-Float)</sub>- epsilon: Float
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>### Returns:
 
-### Args:
-- min: Float
-- max: Float
+<sub>Go to [top](#class-Float)</sub>  socket 'result'<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>## exp
 
-### Returns:
+<sub>Go to [top](#class-Float)</sub>```python
+<sub>Go to [top](#class-Float)</sub>def exp(self, clamp=False):
 
-  socket 'result'
+<sub>Go to [top](#class-Float)</sub>```
+<sub>Go to [top](#class-Float)</sub>Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
 
-## color_ramp *property*
+<sub>Go to [top](#class-Float)</sub>### Args:
+<sub>Go to [top](#class-Float)</sub>- clamp (bool): False
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>### Returns:
 
-```python
-def color_ramp(self):
+<sub>Go to [top](#class-Float)</sub>  socket 'value'<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>## exponent
 
-```
-Node [ColorRamp](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/color_ramp.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeValToRGB.html) )
+<sub>Go to [top](#class-Float)</sub>```python
+<sub>Go to [top](#class-Float)</sub>def exponent(self, clamp=False):
 
-Node implemented as property.
+<sub>Go to [top](#class-Float)</sub>```
+<sub>Go to [top](#class-Float)</sub>Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
 
-### Returns:
+<sub>Go to [top](#class-Float)</sub>### Args:
+<sub>Go to [top](#class-Float)</sub>- clamp (bool): False
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>### Returns:
 
-- node with sockets ['color', 'alpha']
+<sub>Go to [top](#class-Float)</sub>  socket 'value'<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>## fact
 
-## compare
+<sub>Go to [top](#class-Float)</sub>```python
+<sub>Go to [top](#class-Float)</sub>def fact(self, clamp=False):
 
-```python
-def compare(self, b=None, epsilon=None, operation='GREATER_THAN'):
+<sub>Go to [top](#class-Float)</sub>```
+<sub>Go to [top](#class-Float)</sub>Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
 
-```
-Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html) )
+<sub>Go to [top](#class-Float)</sub>### Args:
+<sub>Go to [top](#class-Float)</sub>- clamp (bool): False
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>### Returns:
 
-### Args:
-- b: ['Float', 'Integer', 'Vector', 'Color', 'String']
-- epsilon: Float
-- operation (str): 'GREATER_THAN' in [LESS_THAN, LESS_EQUAL, GREATER_THAN, GREATER_EQUAL, EQUAL, NOT_EQUAL]
+<sub>Go to [top](#class-Float)</sub>  socket 'value'<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>## float_curve
 
-### Returns:
+<sub>Go to [top](#class-Float)</sub>```python
+<sub>Go to [top](#class-Float)</sub>def float_curve(self, factor=None):
 
-  socket 'result'
+<sub>Go to [top](#class-Float)</sub>```
+<sub>Go to [top](#class-Float)</sub>Node [Float Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/float_curve.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeFloatCurve.html) )
 
-## cos
+<sub>Go to [top](#class-Float)</sub>### Args:
+<sub>Go to [top](#class-Float)</sub>- factor: Float
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>### Returns:
 
-```python
-def cos(self, value=None, clamp=False):
+<sub>Go to [top](#class-Float)</sub>  socket 'value'<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>## floor
 
-```
-Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
+<sub>Go to [top](#class-Float)</sub>```python
+<sub>Go to [top](#class-Float)</sub>def floor(self):
 
-### Args:
-- value: Float
-- clamp (bool): False
+<sub>Go to [top](#class-Float)</sub>```
+<sub>Go to [top](#class-Float)</sub>Node [Float to Integer](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/float_to_integer.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeFloatToInt.html) )
 
-### Returns:
+<sub>Go to [top](#class-Float)</sub>### Returns:
 
-  socket 'value'
+<sub>Go to [top](#class-Float)</sub>  socket 'integer'<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>## fraction
 
-## cosh
+<sub>Go to [top](#class-Float)</sub>```python
+<sub>Go to [top](#class-Float)</sub>def fraction(self, clamp=False):
 
-```python
-def cosh(self, value=None, clamp=False):
+<sub>Go to [top](#class-Float)</sub>```
+<sub>Go to [top](#class-Float)</sub>Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
 
-```
-Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
+<sub>Go to [top](#class-Float)</sub>### Args:
+<sub>Go to [top](#class-Float)</sub>- clamp (bool): False
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>### Returns:
 
-### Args:
-- value: Float
-- clamp (bool): False
+<sub>Go to [top](#class-Float)</sub>  socket 'value'<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>## greater_equal
 
-### Returns:
+<sub>Go to [top](#class-Float)</sub>```python
+<sub>Go to [top](#class-Float)</sub>def greater_equal(self, b=None):
 
-  socket 'value'
+<sub>Go to [top](#class-Float)</sub>```
+<sub>Go to [top](#class-Float)</sub>Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html) )
 
-## cosine
+<sub>Go to [top](#class-Float)</sub>### Args:
+<sub>Go to [top](#class-Float)</sub>- b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>### Returns:
 
-```python
-def cosine(self, value=None, clamp=False):
+<sub>Go to [top](#class-Float)</sub>  socket 'result'<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>## greater_than
 
-```
-Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
+<sub>Go to [top](#class-Float)</sub>```python
+<sub>Go to [top](#class-Float)</sub>def greater_than(self, b=None):
 
-### Args:
-- value: Float
-- clamp (bool): False
+<sub>Go to [top](#class-Float)</sub>```
+<sub>Go to [top](#class-Float)</sub>Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html) )
 
-### Returns:
+<sub>Go to [top](#class-Float)</sub>### Args:
+<sub>Go to [top](#class-Float)</sub>- b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>### Returns:
 
-  socket 'value'
+<sub>Go to [top](#class-Float)</sub>  socket 'result'<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>## inverse_sqrt
 
-## equal
+<sub>Go to [top](#class-Float)</sub>```python
+<sub>Go to [top](#class-Float)</sub>def inverse_sqrt(self, clamp=False):
 
-```python
-def equal(self, b=None, epsilon=None):
+<sub>Go to [top](#class-Float)</sub>```
+<sub>Go to [top](#class-Float)</sub>Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
 
-```
-Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html) )
+<sub>Go to [top](#class-Float)</sub>### Args:
+<sub>Go to [top](#class-Float)</sub>- clamp (bool): False
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>### Returns:
 
-### Args:
-- b: ['Float', 'Integer', 'Vector', 'Color', 'String']
-- epsilon: Float
+<sub>Go to [top](#class-Float)</sub>  socket 'value'<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>## less_equal
 
-### Returns:
+<sub>Go to [top](#class-Float)</sub>```python
+<sub>Go to [top](#class-Float)</sub>def less_equal(self, b=None):
 
-  socket 'result'
+<sub>Go to [top](#class-Float)</sub>```
+<sub>Go to [top](#class-Float)</sub>Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html) )
 
-## exp
+<sub>Go to [top](#class-Float)</sub>### Args:
+<sub>Go to [top](#class-Float)</sub>- b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>### Returns:
 
-```python
-def exp(self, clamp=False):
+<sub>Go to [top](#class-Float)</sub>  socket 'result'<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>## less_than
 
-```
-Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
+<sub>Go to [top](#class-Float)</sub>```python
+<sub>Go to [top](#class-Float)</sub>def less_than(self, b=None):
 
-### Args:
-- clamp (bool): False
+<sub>Go to [top](#class-Float)</sub>```
+<sub>Go to [top](#class-Float)</sub>Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html) )
 
-### Returns:
+<sub>Go to [top](#class-Float)</sub>### Args:
+<sub>Go to [top](#class-Float)</sub>- b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>### Returns:
 
-  socket 'value'
+<sub>Go to [top](#class-Float)</sub>  socket 'result'<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>## log
 
-## exponent
+<sub>Go to [top](#class-Float)</sub>```python
+<sub>Go to [top](#class-Float)</sub>def log(self, base=None, clamp=False):
 
-```python
-def exponent(self, clamp=False):
+<sub>Go to [top](#class-Float)</sub>```
+<sub>Go to [top](#class-Float)</sub>Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
 
-```
-Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
+<sub>Go to [top](#class-Float)</sub>### Args:
+<sub>Go to [top](#class-Float)</sub>- base: Float
+<sub>Go to [top](#class-Float)</sub>- clamp (bool): False
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>### Returns:
 
-### Args:
-- clamp (bool): False
+<sub>Go to [top](#class-Float)</sub>  socket 'value'<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>## logarithm
 
-### Returns:
+<sub>Go to [top](#class-Float)</sub>```python
+<sub>Go to [top](#class-Float)</sub>def logarithm(self, base=None, clamp=False):
 
-  socket 'value'
+<sub>Go to [top](#class-Float)</sub>```
+<sub>Go to [top](#class-Float)</sub>Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
 
-## fact
+<sub>Go to [top](#class-Float)</sub>### Args:
+<sub>Go to [top](#class-Float)</sub>- base: Float
+<sub>Go to [top](#class-Float)</sub>- clamp (bool): False
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>### Returns:
 
-```python
-def fact(self, clamp=False):
+<sub>Go to [top](#class-Float)</sub>  socket 'value'<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>## map_range
 
-```
-Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
+<sub>Go to [top](#class-Float)</sub>```python
+<sub>Go to [top](#class-Float)</sub>def map_range(self, from_min=None, from_max=None, to_min=None, to_max=None, steps=None, clamp=True, interpolation_type='LINEAR'):
 
-### Args:
-- clamp (bool): False
+<sub>Go to [top](#class-Float)</sub>```
+<sub>Go to [top](#class-Float)</sub>Node [Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/map_range.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMapRange.html) )
 
-### Returns:
+<sub>Go to [top](#class-Float)</sub>### Args:
+<sub>Go to [top](#class-Float)</sub>- from_min: ['Float', 'Vector']
+<sub>Go to [top](#class-Float)</sub>- from_max: ['Float', 'Vector']
+<sub>Go to [top](#class-Float)</sub>- to_min: ['Float', 'Vector']
+<sub>Go to [top](#class-Float)</sub>- to_max: ['Float', 'Vector']
+<sub>Go to [top](#class-Float)</sub>- steps: ['Float', 'Vector']
+<sub>Go to [top](#class-Float)</sub>- clamp (bool): True
+<sub>Go to [top](#class-Float)</sub>- interpolation_type (str): 'LINEAR' in [LINEAR, STEPPED, SMOOTHSTEP, SMOOTHERSTEP]
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>### Returns:
 
-  socket 'value'
+<sub>Go to [top](#class-Float)</sub>  socket 'result'<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>## map_range_linear
 
-## float_curve
+<sub>Go to [top](#class-Float)</sub>```python
+<sub>Go to [top](#class-Float)</sub>def map_range_linear(self, from_min=None, from_max=None, to_min=None, to_max=None, clamp=True):
 
-```python
-def float_curve(self, factor=None):
+<sub>Go to [top](#class-Float)</sub>```
+<sub>Go to [top](#class-Float)</sub>Node [Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/map_range.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMapRange.html) )
 
-```
-Node [Float Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/float_curve.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeFloatCurve.html) )
+<sub>Go to [top](#class-Float)</sub>### Args:
+<sub>Go to [top](#class-Float)</sub>- from_min: ['Float', 'Vector']
+<sub>Go to [top](#class-Float)</sub>- from_max: ['Float', 'Vector']
+<sub>Go to [top](#class-Float)</sub>- to_min: ['Float', 'Vector']
+<sub>Go to [top](#class-Float)</sub>- to_max: ['Float', 'Vector']
+<sub>Go to [top](#class-Float)</sub>- clamp (bool): True
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>### Returns:
 
-### Args:
-- factor: Float
+<sub>Go to [top](#class-Float)</sub>  socket 'result'<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>## map_range_smooth
 
-### Returns:
+<sub>Go to [top](#class-Float)</sub>```python
+<sub>Go to [top](#class-Float)</sub>def map_range_smooth(self, from_min=None, from_max=None, to_min=None, to_max=None, clamp=True):
 
-  socket 'value'
+<sub>Go to [top](#class-Float)</sub>```
+<sub>Go to [top](#class-Float)</sub>Node [Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/map_range.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMapRange.html) )
 
-## floor
+<sub>Go to [top](#class-Float)</sub>### Args:
+<sub>Go to [top](#class-Float)</sub>- from_min: ['Float', 'Vector']
+<sub>Go to [top](#class-Float)</sub>- from_max: ['Float', 'Vector']
+<sub>Go to [top](#class-Float)</sub>- to_min: ['Float', 'Vector']
+<sub>Go to [top](#class-Float)</sub>- to_max: ['Float', 'Vector']
+<sub>Go to [top](#class-Float)</sub>- clamp (bool): True
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>### Returns:
 
-```python
-def floor(self):
+<sub>Go to [top](#class-Float)</sub>  socket 'result'<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>## map_range_smoother
 
-```
-Node [Float to Integer](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/float_to_integer.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeFloatToInt.html) )
+<sub>Go to [top](#class-Float)</sub>```python
+<sub>Go to [top](#class-Float)</sub>def map_range_smoother(self, from_min=None, from_max=None, to_min=None, to_max=None, clamp=True):
 
-### Returns:
+<sub>Go to [top](#class-Float)</sub>```
+<sub>Go to [top](#class-Float)</sub>Node [Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/map_range.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMapRange.html) )
 
-  socket 'integer'
+<sub>Go to [top](#class-Float)</sub>### Args:
+<sub>Go to [top](#class-Float)</sub>- from_min: ['Float', 'Vector']
+<sub>Go to [top](#class-Float)</sub>- from_max: ['Float', 'Vector']
+<sub>Go to [top](#class-Float)</sub>- to_min: ['Float', 'Vector']
+<sub>Go to [top](#class-Float)</sub>- to_max: ['Float', 'Vector']
+<sub>Go to [top](#class-Float)</sub>- clamp (bool): True
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>### Returns:
 
-## fraction
+<sub>Go to [top](#class-Float)</sub>  socket 'result'<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>## map_range_stepped
 
-```python
-def fraction(self, clamp=False):
+<sub>Go to [top](#class-Float)</sub>```python
+<sub>Go to [top](#class-Float)</sub>def map_range_stepped(self, from_min=None, from_max=None, to_min=None, to_max=None, steps=None, clamp=True):
 
-```
-Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
+<sub>Go to [top](#class-Float)</sub>```
+<sub>Go to [top](#class-Float)</sub>Node [Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/map_range.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMapRange.html) )
 
-### Args:
-- clamp (bool): False
+<sub>Go to [top](#class-Float)</sub>### Args:
+<sub>Go to [top](#class-Float)</sub>- from_min: ['Float', 'Vector']
+<sub>Go to [top](#class-Float)</sub>- from_max: ['Float', 'Vector']
+<sub>Go to [top](#class-Float)</sub>- to_min: ['Float', 'Vector']
+<sub>Go to [top](#class-Float)</sub>- to_max: ['Float', 'Vector']
+<sub>Go to [top](#class-Float)</sub>- steps: ['Float', 'Vector']
+<sub>Go to [top](#class-Float)</sub>- clamp (bool): True
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>### Returns:
 
-### Returns:
+<sub>Go to [top](#class-Float)</sub>  socket 'result'<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>## math_ceil
 
-  socket 'value'
+<sub>Go to [top](#class-Float)</sub>```python
+<sub>Go to [top](#class-Float)</sub>def math_ceil(self, clamp=False):
 
-## greater_equal
+<sub>Go to [top](#class-Float)</sub>```
+<sub>Go to [top](#class-Float)</sub>Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
 
-```python
-def greater_equal(self, b=None):
+<sub>Go to [top](#class-Float)</sub>### Args:
+<sub>Go to [top](#class-Float)</sub>- clamp (bool): False
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>### Returns:
 
-```
-Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html) )
+<sub>Go to [top](#class-Float)</sub>  socket 'value'<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>## math_compare
 
-### Args:
-- b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+<sub>Go to [top](#class-Float)</sub>```python
+<sub>Go to [top](#class-Float)</sub>def math_compare(self, value=None, epsilon=None, clamp=False):
 
-### Returns:
+<sub>Go to [top](#class-Float)</sub>```
+<sub>Go to [top](#class-Float)</sub>Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
 
-  socket 'result'
+<sub>Go to [top](#class-Float)</sub>### Args:
+<sub>Go to [top](#class-Float)</sub>- value: Float
+<sub>Go to [top](#class-Float)</sub>- epsilon: Float
+<sub>Go to [top](#class-Float)</sub>- clamp (bool): False
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>### Returns:
 
-## greater_than
+<sub>Go to [top](#class-Float)</sub>  socket 'value'<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>## math_floor
 
-```python
-def greater_than(self, b=None):
+<sub>Go to [top](#class-Float)</sub>```python
+<sub>Go to [top](#class-Float)</sub>def math_floor(self, clamp=False):
 
-```
-Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html) )
+<sub>Go to [top](#class-Float)</sub>```
+<sub>Go to [top](#class-Float)</sub>Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
 
-### Args:
-- b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+<sub>Go to [top](#class-Float)</sub>### Args:
+<sub>Go to [top](#class-Float)</sub>- clamp (bool): False
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>### Returns:
 
-### Returns:
+<sub>Go to [top](#class-Float)</sub>  socket 'value'<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>## math_greater_than
 
-  socket 'result'
+<sub>Go to [top](#class-Float)</sub>```python
+<sub>Go to [top](#class-Float)</sub>def math_greater_than(self, threshold=None, clamp=False):
 
-## inverse_sqrt
+<sub>Go to [top](#class-Float)</sub>```
+<sub>Go to [top](#class-Float)</sub>Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
 
-```python
-def inverse_sqrt(self, clamp=False):
+<sub>Go to [top](#class-Float)</sub>### Args:
+<sub>Go to [top](#class-Float)</sub>- threshold: Float
+<sub>Go to [top](#class-Float)</sub>- clamp (bool): False
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>### Returns:
 
-```
-Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
+<sub>Go to [top](#class-Float)</sub>  socket 'value'<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>## math_less_than
 
-### Args:
-- clamp (bool): False
+<sub>Go to [top](#class-Float)</sub>```python
+<sub>Go to [top](#class-Float)</sub>def math_less_than(self, threshold=None, clamp=False):
 
-### Returns:
+<sub>Go to [top](#class-Float)</sub>```
+<sub>Go to [top](#class-Float)</sub>Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
 
-  socket 'value'
+<sub>Go to [top](#class-Float)</sub>### Args:
+<sub>Go to [top](#class-Float)</sub>- threshold: Float
+<sub>Go to [top](#class-Float)</sub>- clamp (bool): False
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>### Returns:
 
-## less_equal
+<sub>Go to [top](#class-Float)</sub>  socket 'value'<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>## math_round
 
-```python
-def less_equal(self, b=None):
+<sub>Go to [top](#class-Float)</sub>```python
+<sub>Go to [top](#class-Float)</sub>def math_round(self, clamp=False):
 
-```
-Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html) )
+<sub>Go to [top](#class-Float)</sub>```
+<sub>Go to [top](#class-Float)</sub>Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
 
-### Args:
-- b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+<sub>Go to [top](#class-Float)</sub>### Args:
+<sub>Go to [top](#class-Float)</sub>- clamp (bool): False
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>### Returns:
 
-### Returns:
+<sub>Go to [top](#class-Float)</sub>  socket 'value'<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>## math_trunc
 
-  socket 'result'
+<sub>Go to [top](#class-Float)</sub>```python
+<sub>Go to [top](#class-Float)</sub>def math_trunc(self, clamp=False):
 
-## less_than
+<sub>Go to [top](#class-Float)</sub>```
+<sub>Go to [top](#class-Float)</sub>Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
 
-```python
-def less_than(self, b=None):
+<sub>Go to [top](#class-Float)</sub>### Args:
+<sub>Go to [top](#class-Float)</sub>- clamp (bool): False
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>### Returns:
 
-```
-Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html) )
+<sub>Go to [top](#class-Float)</sub>  socket 'value'<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>## math_truncate
 
-### Args:
-- b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+<sub>Go to [top](#class-Float)</sub>```python
+<sub>Go to [top](#class-Float)</sub>def math_truncate(self, clamp=False):
 
-### Returns:
+<sub>Go to [top](#class-Float)</sub>```
+<sub>Go to [top](#class-Float)</sub>Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
 
-  socket 'result'
+<sub>Go to [top](#class-Float)</sub>### Args:
+<sub>Go to [top](#class-Float)</sub>- clamp (bool): False
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>### Returns:
 
-## log
+<sub>Go to [top](#class-Float)</sub>  socket 'value'<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>## max
 
-```python
-def log(self, base=None, clamp=False):
+<sub>Go to [top](#class-Float)</sub>```python
+<sub>Go to [top](#class-Float)</sub>def max(self, value=None, clamp=False):
 
-```
-Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
+<sub>Go to [top](#class-Float)</sub>```
+<sub>Go to [top](#class-Float)</sub>Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
 
-### Args:
-- base: Float
-- clamp (bool): False
+<sub>Go to [top](#class-Float)</sub>### Args:
+<sub>Go to [top](#class-Float)</sub>- value: Float
+<sub>Go to [top](#class-Float)</sub>- clamp (bool): False
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>### Returns:
 
-### Returns:
+<sub>Go to [top](#class-Float)</sub>  socket 'value'<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>## maximum
 
-  socket 'value'
+<sub>Go to [top](#class-Float)</sub>```python
+<sub>Go to [top](#class-Float)</sub>def maximum(self, value=None, clamp=False):
 
-## logarithm
+<sub>Go to [top](#class-Float)</sub>```
+<sub>Go to [top](#class-Float)</sub>Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
 
-```python
-def logarithm(self, base=None, clamp=False):
+<sub>Go to [top](#class-Float)</sub>### Args:
+<sub>Go to [top](#class-Float)</sub>- value: Float
+<sub>Go to [top](#class-Float)</sub>- clamp (bool): False
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>### Returns:
 
-```
-Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
+<sub>Go to [top](#class-Float)</sub>  socket 'value'<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>## min
 
-### Args:
-- base: Float
-- clamp (bool): False
+<sub>Go to [top](#class-Float)</sub>```python
+<sub>Go to [top](#class-Float)</sub>def min(self, value=None, clamp=False):
 
-### Returns:
+<sub>Go to [top](#class-Float)</sub>```
+<sub>Go to [top](#class-Float)</sub>Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
 
-  socket 'value'
+<sub>Go to [top](#class-Float)</sub>### Args:
+<sub>Go to [top](#class-Float)</sub>- value: Float
+<sub>Go to [top](#class-Float)</sub>- clamp (bool): False
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>### Returns:
 
-## map_range
+<sub>Go to [top](#class-Float)</sub>  socket 'value'<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>## minimum
 
-```python
-def map_range(self, from_min=None, from_max=None, to_min=None, to_max=None, steps=None, clamp=True, interpolation_type='LINEAR'):
+<sub>Go to [top](#class-Float)</sub>```python
+<sub>Go to [top](#class-Float)</sub>def minimum(self, value=None, clamp=False):
 
-```
-Node [Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/map_range.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMapRange.html) )
+<sub>Go to [top](#class-Float)</sub>```
+<sub>Go to [top](#class-Float)</sub>Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
 
-### Args:
-- from_min: ['Float', 'Vector']
-- from_max: ['Float', 'Vector']
-- to_min: ['Float', 'Vector']
-- to_max: ['Float', 'Vector']
-- steps: ['Float', 'Vector']
-- clamp (bool): True
-- interpolation_type (str): 'LINEAR' in [LINEAR, STEPPED, SMOOTHSTEP, SMOOTHERSTEP]
+<sub>Go to [top](#class-Float)</sub>### Args:
+<sub>Go to [top](#class-Float)</sub>- value: Float
+<sub>Go to [top](#class-Float)</sub>- clamp (bool): False
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>### Returns:
 
-### Returns:
+<sub>Go to [top](#class-Float)</sub>  socket 'value'<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>## mix
 
-  socket 'result'
+<sub>Go to [top](#class-Float)</sub>```python
+<sub>Go to [top](#class-Float)</sub>def mix(self, factor=None, value=None, clamp_factor=True):
 
-## map_range_linear
+<sub>Go to [top](#class-Float)</sub>```
+<sub>Go to [top](#class-Float)</sub>Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html) )
 
-```python
-def map_range_linear(self, from_min=None, from_max=None, to_min=None, to_max=None, clamp=True):
+<sub>Go to [top](#class-Float)</sub>### Args:
+<sub>Go to [top](#class-Float)</sub>- factor: ['Float', 'Vector']
+<sub>Go to [top](#class-Float)</sub>- value: ['Float', 'Vector', 'Color']
+<sub>Go to [top](#class-Float)</sub>- clamp_factor (bool): True
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>### Returns:
 
-```
-Node [Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/map_range.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMapRange.html) )
+<sub>Go to [top](#class-Float)</sub>  socket 'result'<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>## modulo
 
-### Args:
-- from_min: ['Float', 'Vector']
-- from_max: ['Float', 'Vector']
-- to_min: ['Float', 'Vector']
-- to_max: ['Float', 'Vector']
-- clamp (bool): True
+<sub>Go to [top](#class-Float)</sub>```python
+<sub>Go to [top](#class-Float)</sub>def modulo(self, value=None, clamp=False):
 
-### Returns:
+<sub>Go to [top](#class-Float)</sub>```
+<sub>Go to [top](#class-Float)</sub>Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
 
-  socket 'result'
+<sub>Go to [top](#class-Float)</sub>### Args:
+<sub>Go to [top](#class-Float)</sub>- value: Float
+<sub>Go to [top](#class-Float)</sub>- clamp (bool): False
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>### Returns:
 
-## map_range_smooth
+<sub>Go to [top](#class-Float)</sub>  socket 'value'<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>## mul_add
 
-```python
-def map_range_smooth(self, from_min=None, from_max=None, to_min=None, to_max=None, clamp=True):
+<sub>Go to [top](#class-Float)</sub>```python
+<sub>Go to [top](#class-Float)</sub>def mul_add(self, multiplier=None, addend=None, clamp=False):
 
-```
-Node [Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/map_range.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMapRange.html) )
+<sub>Go to [top](#class-Float)</sub>```
+<sub>Go to [top](#class-Float)</sub>Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
 
-### Args:
-- from_min: ['Float', 'Vector']
-- from_max: ['Float', 'Vector']
-- to_min: ['Float', 'Vector']
-- to_max: ['Float', 'Vector']
-- clamp (bool): True
+<sub>Go to [top](#class-Float)</sub>### Args:
+<sub>Go to [top](#class-Float)</sub>- multiplier: Float
+<sub>Go to [top](#class-Float)</sub>- addend: Float
+<sub>Go to [top](#class-Float)</sub>- clamp (bool): False
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>### Returns:
 
-### Returns:
+<sub>Go to [top](#class-Float)</sub>  socket 'value'<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>## multiply_add
 
-  socket 'result'
+<sub>Go to [top](#class-Float)</sub>```python
+<sub>Go to [top](#class-Float)</sub>def multiply_add(self, multiplier=None, addend=None, clamp=False):
 
-## map_range_smoother
+<sub>Go to [top](#class-Float)</sub>```
+<sub>Go to [top](#class-Float)</sub>Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
 
-```python
-def map_range_smoother(self, from_min=None, from_max=None, to_min=None, to_max=None, clamp=True):
+<sub>Go to [top](#class-Float)</sub>### Args:
+<sub>Go to [top](#class-Float)</sub>- multiplier: Float
+<sub>Go to [top](#class-Float)</sub>- addend: Float
+<sub>Go to [top](#class-Float)</sub>- clamp (bool): False
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>### Returns:
 
-```
-Node [Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/map_range.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMapRange.html) )
+<sub>Go to [top](#class-Float)</sub>  socket 'value'<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>## not_equal
 
-### Args:
-- from_min: ['Float', 'Vector']
-- from_max: ['Float', 'Vector']
-- to_min: ['Float', 'Vector']
-- to_max: ['Float', 'Vector']
-- clamp (bool): True
+<sub>Go to [top](#class-Float)</sub>```python
+<sub>Go to [top](#class-Float)</sub>def not_equal(self, b=None, epsilon=None):
 
-### Returns:
+<sub>Go to [top](#class-Float)</sub>```
+<sub>Go to [top](#class-Float)</sub>Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html) )
 
-  socket 'result'
+<sub>Go to [top](#class-Float)</sub>### Args:
+<sub>Go to [top](#class-Float)</sub>- b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+<sub>Go to [top](#class-Float)</sub>- epsilon: Float
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>### Returns:
 
-## map_range_stepped
+<sub>Go to [top](#class-Float)</sub>  socket 'result'<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>## ping_pong
 
-```python
-def map_range_stepped(self, from_min=None, from_max=None, to_min=None, to_max=None, steps=None, clamp=True):
+<sub>Go to [top](#class-Float)</sub>```python
+<sub>Go to [top](#class-Float)</sub>def ping_pong(self, scale=None, clamp=False):
 
-```
-Node [Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/map_range.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMapRange.html) )
+<sub>Go to [top](#class-Float)</sub>```
+<sub>Go to [top](#class-Float)</sub>Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
 
-### Args:
-- from_min: ['Float', 'Vector']
-- from_max: ['Float', 'Vector']
-- to_min: ['Float', 'Vector']
-- to_max: ['Float', 'Vector']
-- steps: ['Float', 'Vector']
-- clamp (bool): True
+<sub>Go to [top](#class-Float)</sub>### Args:
+<sub>Go to [top](#class-Float)</sub>- scale: Float
+<sub>Go to [top](#class-Float)</sub>- clamp (bool): False
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>### Returns:
 
-### Returns:
+<sub>Go to [top](#class-Float)</sub>  socket 'value'<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>## pow
 
-  socket 'result'
+<sub>Go to [top](#class-Float)</sub>```python
+<sub>Go to [top](#class-Float)</sub>def pow(self, exponent=None, clamp=False):
 
-## math_ceil
+<sub>Go to [top](#class-Float)</sub>```
+<sub>Go to [top](#class-Float)</sub>Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
 
-```python
-def math_ceil(self, clamp=False):
+<sub>Go to [top](#class-Float)</sub>### Args:
+<sub>Go to [top](#class-Float)</sub>- exponent: Float
+<sub>Go to [top](#class-Float)</sub>- clamp (bool): False
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>### Returns:
 
-```
-Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
+<sub>Go to [top](#class-Float)</sub>  socket 'value'<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>## power
 
-### Args:
-- clamp (bool): False
+<sub>Go to [top](#class-Float)</sub>```python
+<sub>Go to [top](#class-Float)</sub>def power(self, exponent=None, clamp=False):
 
-### Returns:
+<sub>Go to [top](#class-Float)</sub>```
+<sub>Go to [top](#class-Float)</sub>Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
 
-  socket 'value'
+<sub>Go to [top](#class-Float)</sub>### Args:
+<sub>Go to [top](#class-Float)</sub>- exponent: Float
+<sub>Go to [top](#class-Float)</sub>- clamp (bool): False
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>### Returns:
 
-## math_compare
+<sub>Go to [top](#class-Float)</sub>  socket 'value'<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>## round
 
-```python
-def math_compare(self, value=None, epsilon=None, clamp=False):
+<sub>Go to [top](#class-Float)</sub>```python
+<sub>Go to [top](#class-Float)</sub>def round(self):
 
-```
-Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
+<sub>Go to [top](#class-Float)</sub>```
+<sub>Go to [top](#class-Float)</sub>Node [Float to Integer](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/float_to_integer.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeFloatToInt.html) )
 
-### Args:
-- value: Float
-- epsilon: Float
-- clamp (bool): False
+<sub>Go to [top](#class-Float)</sub>### Returns:
 
-### Returns:
+<sub>Go to [top](#class-Float)</sub>  socket 'integer'<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>## sign
 
-  socket 'value'
+<sub>Go to [top](#class-Float)</sub>```python
+<sub>Go to [top](#class-Float)</sub>def sign(self, clamp=False):
 
-## math_floor
+<sub>Go to [top](#class-Float)</sub>```
+<sub>Go to [top](#class-Float)</sub>Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
 
-```python
-def math_floor(self, clamp=False):
+<sub>Go to [top](#class-Float)</sub>### Args:
+<sub>Go to [top](#class-Float)</sub>- clamp (bool): False
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>### Returns:
 
-```
-Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
+<sub>Go to [top](#class-Float)</sub>  socket 'value'<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>## sin
 
-### Args:
-- clamp (bool): False
+<sub>Go to [top](#class-Float)</sub>```python
+<sub>Go to [top](#class-Float)</sub>def sin(self, value=None, clamp=False):
 
-### Returns:
+<sub>Go to [top](#class-Float)</sub>```
+<sub>Go to [top](#class-Float)</sub>Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
 
-  socket 'value'
+<sub>Go to [top](#class-Float)</sub>### Args:
+<sub>Go to [top](#class-Float)</sub>- value: Float
+<sub>Go to [top](#class-Float)</sub>- clamp (bool): False
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>### Returns:
 
-## math_greater_than
+<sub>Go to [top](#class-Float)</sub>  socket 'value'<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>## sine
 
-```python
-def math_greater_than(self, threshold=None, clamp=False):
+<sub>Go to [top](#class-Float)</sub>```python
+<sub>Go to [top](#class-Float)</sub>def sine(self, value=None, clamp=False):
 
-```
-Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
+<sub>Go to [top](#class-Float)</sub>```
+<sub>Go to [top](#class-Float)</sub>Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
 
-### Args:
-- threshold: Float
-- clamp (bool): False
+<sub>Go to [top](#class-Float)</sub>### Args:
+<sub>Go to [top](#class-Float)</sub>- value: Float
+<sub>Go to [top](#class-Float)</sub>- clamp (bool): False
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>### Returns:
 
-### Returns:
+<sub>Go to [top](#class-Float)</sub>  socket 'value'<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>## sinh
 
-  socket 'value'
+<sub>Go to [top](#class-Float)</sub>```python
+<sub>Go to [top](#class-Float)</sub>def sinh(self, value=None, clamp=False):
 
-## math_less_than
+<sub>Go to [top](#class-Float)</sub>```
+<sub>Go to [top](#class-Float)</sub>Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
 
-```python
-def math_less_than(self, threshold=None, clamp=False):
+<sub>Go to [top](#class-Float)</sub>### Args:
+<sub>Go to [top](#class-Float)</sub>- value: Float
+<sub>Go to [top](#class-Float)</sub>- clamp (bool): False
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>### Returns:
 
-```
-Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
+<sub>Go to [top](#class-Float)</sub>  socket 'value'<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>## smooth_maximum
 
-### Args:
-- threshold: Float
-- clamp (bool): False
+<sub>Go to [top](#class-Float)</sub>```python
+<sub>Go to [top](#class-Float)</sub>def smooth_maximum(self, value=None, distance=None, clamp=False):
 
-### Returns:
+<sub>Go to [top](#class-Float)</sub>```
+<sub>Go to [top](#class-Float)</sub>Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
 
-  socket 'value'
+<sub>Go to [top](#class-Float)</sub>### Args:
+<sub>Go to [top](#class-Float)</sub>- value: Float
+<sub>Go to [top](#class-Float)</sub>- distance: Float
+<sub>Go to [top](#class-Float)</sub>- clamp (bool): False
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>### Returns:
 
-## math_round
+<sub>Go to [top](#class-Float)</sub>  socket 'value'<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>## smooth_minimum
 
-```python
-def math_round(self, clamp=False):
+<sub>Go to [top](#class-Float)</sub>```python
+<sub>Go to [top](#class-Float)</sub>def smooth_minimum(self, value=None, distance=None, clamp=False):
 
-```
-Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
+<sub>Go to [top](#class-Float)</sub>```
+<sub>Go to [top](#class-Float)</sub>Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
 
-### Args:
-- clamp (bool): False
+<sub>Go to [top](#class-Float)</sub>### Args:
+<sub>Go to [top](#class-Float)</sub>- value: Float
+<sub>Go to [top](#class-Float)</sub>- distance: Float
+<sub>Go to [top](#class-Float)</sub>- clamp (bool): False
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>### Returns:
 
-### Returns:
+<sub>Go to [top](#class-Float)</sub>  socket 'value'<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>## snap
 
-  socket 'value'
+<sub>Go to [top](#class-Float)</sub>```python
+<sub>Go to [top](#class-Float)</sub>def snap(self, increment=None, clamp=False):
 
-## math_trunc
+<sub>Go to [top](#class-Float)</sub>```
+<sub>Go to [top](#class-Float)</sub>Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
 
-```python
-def math_trunc(self, clamp=False):
+<sub>Go to [top](#class-Float)</sub>### Args:
+<sub>Go to [top](#class-Float)</sub>- increment: Float
+<sub>Go to [top](#class-Float)</sub>- clamp (bool): False
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>### Returns:
 
-```
-Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
+<sub>Go to [top](#class-Float)</sub>  socket 'value'<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>## sqrt
 
-### Args:
-- clamp (bool): False
+<sub>Go to [top](#class-Float)</sub>```python
+<sub>Go to [top](#class-Float)</sub>def sqrt(self, clamp=False):
 
-### Returns:
+<sub>Go to [top](#class-Float)</sub>```
+<sub>Go to [top](#class-Float)</sub>Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
 
-  socket 'value'
+<sub>Go to [top](#class-Float)</sub>### Args:
+<sub>Go to [top](#class-Float)</sub>- clamp (bool): False
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>### Returns:
 
-## math_truncate
+<sub>Go to [top](#class-Float)</sub>  socket 'value'<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>## switch
 
-```python
-def math_truncate(self, clamp=False):
+<sub>Go to [top](#class-Float)</sub>```python
+<sub>Go to [top](#class-Float)</sub>def switch(self, switch=None, true=None):
 
-```
-Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
+<sub>Go to [top](#class-Float)</sub>```
+<sub>Go to [top](#class-Float)</sub>Node [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html) )
 
-### Args:
-- clamp (bool): False
+<sub>Go to [top](#class-Float)</sub>### Args:
+<sub>Go to [top](#class-Float)</sub>- switch: ['Boolean', 'Boolean']
+<sub>Go to [top](#class-Float)</sub>- true: ['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'String', 'Geometry', 'Object', 'Collection', 'Texture', 'Material', 'Image']
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>### Returns:
 
-### Returns:
+<sub>Go to [top](#class-Float)</sub>  socket 'output'<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>## tan
 
-  socket 'value'
+<sub>Go to [top](#class-Float)</sub>```python
+<sub>Go to [top](#class-Float)</sub>def tan(self, value=None, clamp=False):
 
-## max
+<sub>Go to [top](#class-Float)</sub>```
+<sub>Go to [top](#class-Float)</sub>Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
 
-```python
-def max(self, value=None, clamp=False):
+<sub>Go to [top](#class-Float)</sub>### Args:
+<sub>Go to [top](#class-Float)</sub>- value: Float
+<sub>Go to [top](#class-Float)</sub>- clamp (bool): False
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>### Returns:
 
-```
-Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
+<sub>Go to [top](#class-Float)</sub>  socket 'value'<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>## tangent
 
-### Args:
-- value: Float
-- clamp (bool): False
+<sub>Go to [top](#class-Float)</sub>```python
+<sub>Go to [top](#class-Float)</sub>def tangent(self, value=None, clamp=False):
 
-### Returns:
+<sub>Go to [top](#class-Float)</sub>```
+<sub>Go to [top](#class-Float)</sub>Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
 
-  socket 'value'
+<sub>Go to [top](#class-Float)</sub>### Args:
+<sub>Go to [top](#class-Float)</sub>- value: Float
+<sub>Go to [top](#class-Float)</sub>- clamp (bool): False
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>### Returns:
 
-## maximum
+<sub>Go to [top](#class-Float)</sub>  socket 'value'<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>## tanh
 
-```python
-def maximum(self, value=None, clamp=False):
+<sub>Go to [top](#class-Float)</sub>```python
+<sub>Go to [top](#class-Float)</sub>def tanh(self, value=None, clamp=False):
 
-```
-Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
+<sub>Go to [top](#class-Float)</sub>```
+<sub>Go to [top](#class-Float)</sub>Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
 
-### Args:
-- value: Float
-- clamp (bool): False
+<sub>Go to [top](#class-Float)</sub>### Args:
+<sub>Go to [top](#class-Float)</sub>- value: Float
+<sub>Go to [top](#class-Float)</sub>- clamp (bool): False
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>### Returns:
 
-### Returns:
+<sub>Go to [top](#class-Float)</sub>  socket 'value'<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>## to_degrees
 
-  socket 'value'
+<sub>Go to [top](#class-Float)</sub>```python
+<sub>Go to [top](#class-Float)</sub>def to_degrees(self, clamp=False):
 
-## min
+<sub>Go to [top](#class-Float)</sub>```
+<sub>Go to [top](#class-Float)</sub>Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
 
-```python
-def min(self, value=None, clamp=False):
+<sub>Go to [top](#class-Float)</sub>### Args:
+<sub>Go to [top](#class-Float)</sub>- clamp (bool): False
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>### Returns:
 
-```
-Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
+<sub>Go to [top](#class-Float)</sub>  socket 'value'<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>## to_integer
 
-### Args:
-- value: Float
-- clamp (bool): False
+<sub>Go to [top](#class-Float)</sub>```python
+<sub>Go to [top](#class-Float)</sub>def to_integer(self, rounding_mode='ROUND'):
 
-### Returns:
+<sub>Go to [top](#class-Float)</sub>```
+<sub>Go to [top](#class-Float)</sub>Node [Float to Integer](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/float_to_integer.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeFloatToInt.html) )
 
-  socket 'value'
+<sub>Go to [top](#class-Float)</sub>### Args:
+<sub>Go to [top](#class-Float)</sub>- rounding_mode (str): 'ROUND' in [ROUND, FLOOR, CEILING, TRUNCATE]
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>### Returns:
 
-## minimum
+<sub>Go to [top](#class-Float)</sub>  socket 'integer'<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>## to_radians
 
-```python
-def minimum(self, value=None, clamp=False):
+<sub>Go to [top](#class-Float)</sub>```python
+<sub>Go to [top](#class-Float)</sub>def to_radians(self, clamp=False):
 
-```
-Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
+<sub>Go to [top](#class-Float)</sub>```
+<sub>Go to [top](#class-Float)</sub>Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
 
-### Args:
-- value: Float
-- clamp (bool): False
+<sub>Go to [top](#class-Float)</sub>### Args:
+<sub>Go to [top](#class-Float)</sub>- clamp (bool): False
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>### Returns:
 
-### Returns:
+<sub>Go to [top](#class-Float)</sub>  socket 'value'<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>## to_string
 
-  socket 'value'
+<sub>Go to [top](#class-Float)</sub>```python
+<sub>Go to [top](#class-Float)</sub>def to_string(self, decimals=None):
 
-## mix
+<sub>Go to [top](#class-Float)</sub>```
+<sub>Go to [top](#class-Float)</sub>Node [Value to String](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/value_to_string.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeValueToString.html) )
 
-```python
-def mix(self, factor=None, value=None, clamp_factor=True):
+<sub>Go to [top](#class-Float)</sub>### Args:
+<sub>Go to [top](#class-Float)</sub>- decimals: Integer
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>### Returns:
 
-```
-Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html) )
+<sub>Go to [top](#class-Float)</sub>  socket 'string'<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>## truncate
 
-### Args:
-- factor: ['Float', 'Vector']
-- value: ['Float', 'Vector', 'Color']
-- clamp_factor (bool): True
+<sub>Go to [top](#class-Float)</sub>```python
+<sub>Go to [top](#class-Float)</sub>def truncate(self):
 
-### Returns:
+<sub>Go to [top](#class-Float)</sub>```
+<sub>Go to [top](#class-Float)</sub>Node [Float to Integer](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/float_to_integer.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeFloatToInt.html) )
 
-  socket 'result'
+<sub>Go to [top](#class-Float)</sub>### Returns:
 
-## modulo
+<sub>Go to [top](#class-Float)</sub>  socket 'integer'<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>## wrap
 
-```python
-def modulo(self, value=None, clamp=False):
+<sub>Go to [top](#class-Float)</sub>```python
+<sub>Go to [top](#class-Float)</sub>def wrap(self, max=None, min=None, clamp=False):
 
-```
-Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
+<sub>Go to [top](#class-Float)</sub>```
+<sub>Go to [top](#class-Float)</sub>Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
 
-### Args:
-- value: Float
-- clamp (bool): False
+<sub>Go to [top](#class-Float)</sub>### Args:
+<sub>Go to [top](#class-Float)</sub>- max: Float
+<sub>Go to [top](#class-Float)</sub>- min: Float
+<sub>Go to [top](#class-Float)</sub>- clamp (bool): False
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>### Returns:
 
-### Returns:
-
-  socket 'value'
-
-## mul_add
-
-```python
-def mul_add(self, multiplier=None, addend=None, clamp=False):
-
-```
-Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
-
-### Args:
-- multiplier: Float
-- addend: Float
-- clamp (bool): False
-
-### Returns:
-
-  socket 'value'
-
-## multiply_add
-
-```python
-def multiply_add(self, multiplier=None, addend=None, clamp=False):
-
-```
-Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
-
-### Args:
-- multiplier: Float
-- addend: Float
-- clamp (bool): False
-
-### Returns:
-
-  socket 'value'
-
-## not_equal
-
-```python
-def not_equal(self, b=None, epsilon=None):
-
-```
-Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html) )
-
-### Args:
-- b: ['Float', 'Integer', 'Vector', 'Color', 'String']
-- epsilon: Float
-
-### Returns:
-
-  socket 'result'
-
-## ping_pong
-
-```python
-def ping_pong(self, scale=None, clamp=False):
-
-```
-Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
-
-### Args:
-- scale: Float
-- clamp (bool): False
-
-### Returns:
-
-  socket 'value'
-
-## pow
-
-```python
-def pow(self, exponent=None, clamp=False):
-
-```
-Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
-
-### Args:
-- exponent: Float
-- clamp (bool): False
-
-### Returns:
-
-  socket 'value'
-
-## power
-
-```python
-def power(self, exponent=None, clamp=False):
-
-```
-Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
-
-### Args:
-- exponent: Float
-- clamp (bool): False
-
-### Returns:
-
-  socket 'value'
-
-## round
-
-```python
-def round(self):
-
-```
-Node [Float to Integer](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/float_to_integer.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeFloatToInt.html) )
-
-### Returns:
-
-  socket 'integer'
-
-## sign
-
-```python
-def sign(self, clamp=False):
-
-```
-Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
-
-### Args:
-- clamp (bool): False
-
-### Returns:
-
-  socket 'value'
-
-## sin
-
-```python
-def sin(self, value=None, clamp=False):
-
-```
-Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
-
-### Args:
-- value: Float
-- clamp (bool): False
-
-### Returns:
-
-  socket 'value'
-
-## sine
-
-```python
-def sine(self, value=None, clamp=False):
-
-```
-Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
-
-### Args:
-- value: Float
-- clamp (bool): False
-
-### Returns:
-
-  socket 'value'
-
-## sinh
-
-```python
-def sinh(self, value=None, clamp=False):
-
-```
-Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
-
-### Args:
-- value: Float
-- clamp (bool): False
-
-### Returns:
-
-  socket 'value'
-
-## smooth_maximum
-
-```python
-def smooth_maximum(self, value=None, distance=None, clamp=False):
-
-```
-Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
-
-### Args:
-- value: Float
-- distance: Float
-- clamp (bool): False
-
-### Returns:
-
-  socket 'value'
-
-## smooth_minimum
-
-```python
-def smooth_minimum(self, value=None, distance=None, clamp=False):
-
-```
-Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
-
-### Args:
-- value: Float
-- distance: Float
-- clamp (bool): False
-
-### Returns:
-
-  socket 'value'
-
-## snap
-
-```python
-def snap(self, increment=None, clamp=False):
-
-```
-Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
-
-### Args:
-- increment: Float
-- clamp (bool): False
-
-### Returns:
-
-  socket 'value'
-
-## sqrt
-
-```python
-def sqrt(self, clamp=False):
-
-```
-Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
-
-### Args:
-- clamp (bool): False
-
-### Returns:
-
-  socket 'value'
-
-## switch
-
-```python
-def switch(self, switch=None, true=None):
-
-```
-Node [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html) )
-
-### Args:
-- switch: ['Boolean', 'Boolean']
-- true: ['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'String', 'Geometry', 'Object', 'Collection', 'Texture', 'Material', 'Image']
-
-### Returns:
-
-  socket 'output'
-
-## tan
-
-```python
-def tan(self, value=None, clamp=False):
-
-```
-Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
-
-### Args:
-- value: Float
-- clamp (bool): False
-
-### Returns:
-
-  socket 'value'
-
-## tangent
-
-```python
-def tangent(self, value=None, clamp=False):
-
-```
-Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
-
-### Args:
-- value: Float
-- clamp (bool): False
-
-### Returns:
-
-  socket 'value'
-
-## tanh
-
-```python
-def tanh(self, value=None, clamp=False):
-
-```
-Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
-
-### Args:
-- value: Float
-- clamp (bool): False
-
-### Returns:
-
-  socket 'value'
-
-## to_degrees
-
-```python
-def to_degrees(self, clamp=False):
-
-```
-Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
-
-### Args:
-- clamp (bool): False
-
-### Returns:
-
-  socket 'value'
-
-## to_integer
-
-```python
-def to_integer(self, rounding_mode='ROUND'):
-
-```
-Node [Float to Integer](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/float_to_integer.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeFloatToInt.html) )
-
-### Args:
-- rounding_mode (str): 'ROUND' in [ROUND, FLOOR, CEILING, TRUNCATE]
-
-### Returns:
-
-  socket 'integer'
-
-## to_radians
-
-```python
-def to_radians(self, clamp=False):
-
-```
-Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
-
-### Args:
-- clamp (bool): False
-
-### Returns:
-
-  socket 'value'
-
-## to_string
-
-```python
-def to_string(self, decimals=None):
-
-```
-Node [Value to String](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/value_to_string.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeValueToString.html) )
-
-### Args:
-- decimals: Integer
-
-### Returns:
-
-  socket 'string'
-
-## truncate
-
-```python
-def truncate(self):
-
-```
-Node [Float to Integer](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/float_to_integer.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeFloatToInt.html) )
-
-### Returns:
-
-  socket 'integer'
-
-## wrap
-
-```python
-def wrap(self, max=None, min=None, clamp=False):
-
-```
-Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
-
-### Args:
-- max: Float
-- min: Float
-- clamp (bool): False
-
-### Returns:
-
-  socket 'value'
-
+<sub>Go to [top](#class-Float)</sub>  socket 'value'<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>
+<sub>Go to [top](#class-Float)</sub>

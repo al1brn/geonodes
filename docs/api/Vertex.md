@@ -22,179 +22,180 @@
 
 ## delete_all
 
-```python
-def delete_all(self):
+<sub>Go to [top](#class-Vertex)</sub>```python
+<sub>Go to [top](#class-Vertex)</sub>def delete_all(self):
 
-```
-Node [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/delete_geometry.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeDeleteGeometry.html) )
+<sub>Go to [top](#class-Vertex)</sub>```
+<sub>Go to [top](#class-Vertex)</sub>Node [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/delete_geometry.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeDeleteGeometry.html) )
 
-### Returns:
+<sub>Go to [top](#class-Vertex)</sub>### Returns:
 
-- node with sockets ['geometry']
+<sub>Go to [top](#class-Vertex)</sub>- node with sockets ['geometry']
+<sub>Go to [top](#class-Vertex)</sub>
+<sub>Go to [top](#class-Vertex)</sub>## delete_edges
 
-## delete_edges
+<sub>Go to [top](#class-Vertex)</sub>```python
+<sub>Go to [top](#class-Vertex)</sub>def delete_edges(self):
 
-```python
-def delete_edges(self):
+<sub>Go to [top](#class-Vertex)</sub>```
+<sub>Go to [top](#class-Vertex)</sub>Node [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/delete_geometry.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeDeleteGeometry.html) )
 
-```
-Node [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/delete_geometry.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeDeleteGeometry.html) )
+<sub>Go to [top](#class-Vertex)</sub>### Returns:
 
-### Returns:
+<sub>Go to [top](#class-Vertex)</sub>- node with sockets ['geometry']
+<sub>Go to [top](#class-Vertex)</sub>
+<sub>Go to [top](#class-Vertex)</sub>## delete_faces
 
-- node with sockets ['geometry']
+<sub>Go to [top](#class-Vertex)</sub>```python
+<sub>Go to [top](#class-Vertex)</sub>def delete_faces(self):
 
-## delete_faces
+<sub>Go to [top](#class-Vertex)</sub>```
+<sub>Go to [top](#class-Vertex)</sub>Node [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/delete_geometry.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeDeleteGeometry.html) )
 
-```python
-def delete_faces(self):
+<sub>Go to [top](#class-Vertex)</sub>### Returns:
 
-```
-Node [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/delete_geometry.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeDeleteGeometry.html) )
+<sub>Go to [top](#class-Vertex)</sub>- node with sockets ['geometry']
+<sub>Go to [top](#class-Vertex)</sub>
+<sub>Go to [top](#class-Vertex)</sub>## domain_size
 
-### Returns:
+<sub>Go to [top](#class-Vertex)</sub>```python
+<sub>Go to [top](#class-Vertex)</sub>def __len__(self):
 
-- node with sockets ['geometry']
+<sub>Go to [top](#class-Vertex)</sub>```
+<sub>Go to [top](#class-Vertex)</sub>Node [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html) )
 
-## domain_size
+<sub>Go to [top](#class-Vertex)</sub>### Args:
+<sub>Go to [top](#class-Vertex)</sub>- geometry: Geometry
+<sub>Go to [top](#class-Vertex)</sub>- component (str): 'MESH' in [MESH, POINTCLOUD, CURVE, INSTANCES]
+<sub>Go to [top](#class-Vertex)</sub>
+<sub>Go to [top](#class-Vertex)</sub>### Returns:
 
-```python
-def __len__(self):
+<sub>Go to [top](#class-Vertex)</sub>- node with sockets ['point_count', 'edge_count', 'face_count', 'face_corner_count', 'spline_count', 'instance_count']
+<sub>Go to [top](#class-Vertex)</sub>
+<sub>Go to [top](#class-Vertex)</sub>## extrude
 
-```
-Node [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html) )
+<sub>Go to [top](#class-Vertex)</sub>```python
+<sub>Go to [top](#class-Vertex)</sub>def extrude(self, offset=None, offset_scale=None, individual=None):
 
-### Args:
-- geometry: Geometry
-- component (str): 'MESH' in [MESH, POINTCLOUD, CURVE, INSTANCES]
+<sub>Go to [top](#class-Vertex)</sub>```
+<sub>Go to [top](#class-Vertex)</sub>Node [Extrude Mesh](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/extrude_mesh.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeExtrudeMesh.html) )
 
-### Returns:
+<sub>Go to [top](#class-Vertex)</sub>### Args:
+<sub>Go to [top](#class-Vertex)</sub>- offset: Vector
+<sub>Go to [top](#class-Vertex)</sub>- offset_scale: Float
+<sub>Go to [top](#class-Vertex)</sub>- individual: Boolean
+<sub>Go to [top](#class-Vertex)</sub>
+<sub>Go to [top](#class-Vertex)</sub>### Returns:
 
-- node with sockets ['point_count', 'edge_count', 'face_count', 'face_corner_count', 'spline_count', 'instance_count']
+<sub>Go to [top](#class-Vertex)</sub>- tuple ('top', 'side')
+<sub>Go to [top](#class-Vertex)</sub>
+<sub>Go to [top](#class-Vertex)</sub>## instance_on_points
 
-## extrude
+<sub>Go to [top](#class-Vertex)</sub>```python
+<sub>Go to [top](#class-Vertex)</sub>def instance_on_points(self, instance=None, pick_instance=None, instance_index=None, rotation=None, scale=None):
 
-```python
-def extrude(self, offset=None, offset_scale=None, individual=None):
+<sub>Go to [top](#class-Vertex)</sub>```
+<sub>Go to [top](#class-Vertex)</sub>Node [Instance on Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instance_on_points.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInstanceOnPoints.html) )
 
-```
-Node [Extrude Mesh](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/extrude_mesh.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeExtrudeMesh.html) )
+<sub>Go to [top](#class-Vertex)</sub>### Args:
+<sub>Go to [top](#class-Vertex)</sub>- instance: Geometry
+<sub>Go to [top](#class-Vertex)</sub>- pick_instance: Boolean
+<sub>Go to [top](#class-Vertex)</sub>- instance_index: Integer
+<sub>Go to [top](#class-Vertex)</sub>- rotation: Vector
+<sub>Go to [top](#class-Vertex)</sub>- scale: Vector
+<sub>Go to [top](#class-Vertex)</sub>
+<sub>Go to [top](#class-Vertex)</sub>### Returns:
 
-### Args:
-- offset: Vector
-- offset_scale: Float
-- individual: Boolean
+<sub>Go to [top](#class-Vertex)</sub>  socket 'instances'<sub>Go to [top](#class-Vertex)</sub> of class Instances
+<sub>Go to [top](#class-Vertex)</sub>
+<sub>Go to [top](#class-Vertex)</sub>## merge_by_distance
 
-### Returns:
+<sub>Go to [top](#class-Vertex)</sub>```python
+<sub>Go to [top](#class-Vertex)</sub>def merge_by_distance(self, distance=None, mode='ALL'):
 
-- tuple ('top', 'side')
+<sub>Go to [top](#class-Vertex)</sub>```
+<sub>Go to [top](#class-Vertex)</sub>Node [Merge by Distance](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/merge_by_distance.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeMergeByDistance.html) )
 
-## instance_on_points
+<sub>Go to [top](#class-Vertex)</sub>### Args:
+<sub>Go to [top](#class-Vertex)</sub>- distance: Float
+<sub>Go to [top](#class-Vertex)</sub>- mode (str): 'ALL' in [ALL, CONNECTED]
+<sub>Go to [top](#class-Vertex)</sub>
+<sub>Go to [top](#class-Vertex)</sub>### Returns:
 
-```python
-def instance_on_points(self, instance=None, pick_instance=None, instance_index=None, rotation=None, scale=None):
+<sub>Go to [top](#class-Vertex)</sub>- node with sockets ['geometry']
+<sub>Go to [top](#class-Vertex)</sub>
+<sub>Go to [top](#class-Vertex)</sub>## neighbors <span style="color:blue">*property*</span>
 
-```
-Node [Instance on Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instance_on_points.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInstanceOnPoints.html) )
+<sub>Go to [top](#class-Vertex)</sub>```python
+<sub>Go to [top](#class-Vertex)</sub>def neighbors(self):
 
-### Args:
-- instance: Geometry
-- pick_instance: Boolean
-- instance_index: Integer
-- rotation: Vector
-- scale: Vector
+<sub>Go to [top](#class-Vertex)</sub>```
+<sub>Go to [top](#class-Vertex)</sub>Node [Vertex Neighbors](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/vertex_neighbors.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshVertexNeighbors.html) )
 
-### Returns:
+<sub>Go to [top](#class-Vertex)</sub>### Returns:
 
-  socket 'instances' of class Instances
+<sub>Go to [top](#class-Vertex)</sub>- node with sockets ['vertex_count', 'face_count']
+<sub>Go to [top](#class-Vertex)</sub>
+<sub>Go to [top](#class-Vertex)</sub>## neighbors_face_count <span style="color:blue">*property*</span>
 
-## merge_by_distance
+<sub>Go to [top](#class-Vertex)</sub>```python
+<sub>Go to [top](#class-Vertex)</sub>def neighbors_face_count(self):
 
-```python
-def merge_by_distance(self, distance=None, mode='ALL'):
+<sub>Go to [top](#class-Vertex)</sub>```
+<sub>Go to [top](#class-Vertex)</sub>Node [Vertex Neighbors](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/vertex_neighbors.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshVertexNeighbors.html) )
 
-```
-Node [Merge by Distance](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/merge_by_distance.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeMergeByDistance.html) )
+<sub>Go to [top](#class-Vertex)</sub>### Returns:
 
-### Args:
-- distance: Float
-- mode (str): 'ALL' in [ALL, CONNECTED]
+<sub>Go to [top](#class-Vertex)</sub>  socket 'face_count'<sub>Go to [top](#class-Vertex)</sub>
+<sub>Go to [top](#class-Vertex)</sub>
+<sub>Go to [top](#class-Vertex)</sub>## neighbors_vertex_count <span style="color:blue">*property*</span>
 
-### Returns:
+<sub>Go to [top](#class-Vertex)</sub>```python
+<sub>Go to [top](#class-Vertex)</sub>def neighbors_vertex_count(self):
 
-- node with sockets ['geometry']
+<sub>Go to [top](#class-Vertex)</sub>```
+<sub>Go to [top](#class-Vertex)</sub>Node [Vertex Neighbors](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/vertex_neighbors.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshVertexNeighbors.html) )
 
-## neighbors *property*
+<sub>Go to [top](#class-Vertex)</sub>### Returns:
 
-```python
-def neighbors(self):
+<sub>Go to [top](#class-Vertex)</sub>  socket 'vertex_count'<sub>Go to [top](#class-Vertex)</sub>
+<sub>Go to [top](#class-Vertex)</sub>
+<sub>Go to [top](#class-Vertex)</sub>## to_points
 
-```
-Node [Vertex Neighbors](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/vertex_neighbors.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshVertexNeighbors.html) )
+<sub>Go to [top](#class-Vertex)</sub>```python
+<sub>Go to [top](#class-Vertex)</sub>def to_points(self, position=None, radius=None, mode='VERTICES'):
 
-### Returns:
+<sub>Go to [top](#class-Vertex)</sub>```
+<sub>Go to [top](#class-Vertex)</sub>Node [Mesh to Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/mesh_to_points.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshToPoints.html) )
 
-- node with sockets ['vertex_count', 'face_count']
+<sub>Go to [top](#class-Vertex)</sub>### Args:
+<sub>Go to [top](#class-Vertex)</sub>- position: Vector
+<sub>Go to [top](#class-Vertex)</sub>- radius: Float
+<sub>Go to [top](#class-Vertex)</sub>- mode (str): 'VERTICES' in [VERTICES, EDGES, FACES, CORNERS]
+<sub>Go to [top](#class-Vertex)</sub>
+<sub>Go to [top](#class-Vertex)</sub>### Returns:
 
-## neighbors_face_count *property*
+<sub>Go to [top](#class-Vertex)</sub>  socket 'points'<sub>Go to [top](#class-Vertex)</sub> of class Points
+<sub>Go to [top](#class-Vertex)</sub>
+<sub>Go to [top](#class-Vertex)</sub>## to_volume
 
-```python
-def neighbors_face_count(self):
+<sub>Go to [top](#class-Vertex)</sub>```python
+<sub>Go to [top](#class-Vertex)</sub>def to_volume(self, density=None, voxel_size=None, voxel_amount=None, exterior_band_width=None, interior_band_width=None, fill_volume=None, resolution_mode='VOXEL_AMOUNT'):
 
-```
-Node [Vertex Neighbors](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/vertex_neighbors.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshVertexNeighbors.html) )
+<sub>Go to [top](#class-Vertex)</sub>```
+<sub>Go to [top](#class-Vertex)</sub>Node [Mesh to Volume](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/mesh_to_volume.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshToVolume.html) )
 
-### Returns:
+<sub>Go to [top](#class-Vertex)</sub>### Args:
+<sub>Go to [top](#class-Vertex)</sub>- density: Float
+<sub>Go to [top](#class-Vertex)</sub>- voxel_size: Float
+<sub>Go to [top](#class-Vertex)</sub>- voxel_amount: Float
+<sub>Go to [top](#class-Vertex)</sub>- exterior_band_width: Float
+<sub>Go to [top](#class-Vertex)</sub>- interior_band_width: Float
+<sub>Go to [top](#class-Vertex)</sub>- fill_volume: Boolean
+<sub>Go to [top](#class-Vertex)</sub>- resolution_mode (str): 'VOXEL_AMOUNT' in [VOXEL_AMOUNT, VOXEL_SIZE]
+<sub>Go to [top](#class-Vertex)</sub>
+<sub>Go to [top](#class-Vertex)</sub>### Returns:
 
-  socket 'face_count'
-
-## neighbors_vertex_count *property*
-
-```python
-def neighbors_vertex_count(self):
-
-```
-Node [Vertex Neighbors](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/vertex_neighbors.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshVertexNeighbors.html) )
-
-### Returns:
-
-  socket 'vertex_count'
-
-## to_points
-
-```python
-def to_points(self, position=None, radius=None, mode='VERTICES'):
-
-```
-Node [Mesh to Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/mesh_to_points.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshToPoints.html) )
-
-### Args:
-- position: Vector
-- radius: Float
-- mode (str): 'VERTICES' in [VERTICES, EDGES, FACES, CORNERS]
-
-### Returns:
-
-  socket 'points' of class Points
-
-## to_volume
-
-```python
-def to_volume(self, density=None, voxel_size=None, voxel_amount=None, exterior_band_width=None, interior_band_width=None, fill_volume=None, resolution_mode='VOXEL_AMOUNT'):
-
-```
-Node [Mesh to Volume](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/mesh_to_volume.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshToVolume.html) )
-
-### Args:
-- density: Float
-- voxel_size: Float
-- voxel_amount: Float
-- exterior_band_width: Float
-- interior_band_width: Float
-- fill_volume: Boolean
-- resolution_mode (str): 'VOXEL_AMOUNT' in [VOXEL_AMOUNT, VOXEL_SIZE]
-
-### Returns:
-
-  socket 'volume' of class Volume
-
+<sub>Go to [top](#class-Vertex)</sub>  socket 'volume'<sub>Go to [top](#class-Vertex)</sub> of class Volume
+<sub>Go to [top](#class-Vertex)</sub>
+<sub>Go to [top](#class-Vertex)</sub>
