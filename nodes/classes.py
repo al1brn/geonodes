@@ -1203,7 +1203,7 @@ class Float(geosocks.Float):
 
         Args:
             switch: Boolean
-            false: Float
+            true: Float
 
         Returns:
             socket 'output'
@@ -2297,7 +2297,7 @@ class Integer(geosocks.Integer):
 
         Args:
             switch: Boolean
-            false: Integer
+            true: Integer
 
         Returns:
             socket 'output'
@@ -2541,7 +2541,7 @@ class Boolean(geosocks.Boolean):
 
         Args:
             switch: Boolean
-            false: Boolean
+            true: Boolean
 
         Returns:
             socket 'output'
@@ -2723,7 +2723,7 @@ class String(geosocks.String):
 
         Args:
             switch: Boolean
-            false: String
+            true: String
 
         Returns:
             socket 'output'
@@ -4101,7 +4101,7 @@ class Vector(geosocks.Vector):
 
         Args:
             switch: Boolean
-            false: Vector
+            true: Vector
 
         Returns:
             socket 'output'
@@ -4780,7 +4780,7 @@ class Color(geosocks.Color):
 
         Args:
             switch: Boolean
-            false: Color
+            true: Color
 
         Returns:
             socket 'output'
@@ -4812,7 +4812,7 @@ class Collection(geosocks.Collection):
 
         Args:
             switch: Boolean
-            false: Collection
+            true: Collection
 
         Returns:
             socket 'output'
@@ -4929,7 +4929,7 @@ class Object(geosocks.Object):
 
         Args:
             switch: Boolean
-            false: Object
+            true: Object
 
         Returns:
             socket 'output'
@@ -4948,7 +4948,7 @@ class Image(geosocks.Image):
 
         Args:
             switch: Boolean
-            false: Image
+            true: Image
 
         Returns:
             socket 'output'
@@ -5347,7 +5347,7 @@ class Texture(geosocks.Texture):
 
         Args:
             switch: Boolean
-            false: Texture
+            true: Texture
 
         Returns:
             socket 'output'
@@ -5810,7 +5810,7 @@ class Material(geosocks.Material):
 
         Args:
             switch: Boolean
-            false: Material
+            true: Material
 
         Returns:
             socket 'output'
@@ -6781,7 +6781,7 @@ class Geometry(geosocks.Geometry):
 
         Args:
             switch: Boolean
-            false: Geometry
+            true: Geometry
 
         Returns:
             socket 'output'

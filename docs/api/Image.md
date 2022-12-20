@@ -41,7 +41,7 @@ Node [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/
 
 ### Args:
 - switch: Boolean
-- false: Image
+- true: Image
 
 ### Returns:
 - socket `output`

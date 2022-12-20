@@ -722,7 +722,7 @@ Node [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/
 
 ### Args:
 - switch: Boolean
-- false: Color
+- true: Color
 
 ### Returns:
 - socket `output`

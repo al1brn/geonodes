@@ -1105,7 +1105,7 @@ Node [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/
 
 ### Args:
 - switch: Boolean
-- false: Integer
+- true: Integer
 
 ### Returns:
 - socket `output`

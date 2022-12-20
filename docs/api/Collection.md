@@ -40,7 +40,7 @@ Node [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/
 
 ### Args:
 - switch: Boolean
-- false: Collection
+- true: Collection
 
 ### Returns:
 - socket `output`

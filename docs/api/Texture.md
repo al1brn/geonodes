@@ -423,7 +423,7 @@ Node [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/
 
 ### Args:
 - switch: Boolean
-- false: Texture
+- true: Texture
 
 ### Returns:
 - socket `output`
