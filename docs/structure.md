@@ -17,10 +17,10 @@ curve.splines[2].tilt = 1
 
 The geometry classes are:
 - [Mesh](api/Mesh.md)
-- [Curve](https://al1brn.github.io/geonodes/sockets/curve.html)
-- [Points](https://al1brn.github.io/geonodes/sockets/points.html)
-- [Instances](https://al1brn.github.io/geonodes/sockets/instances.html)
-- [Volume](https://al1brn.github.io/geonodes/sockets/volume.html)
+- [Curve](api/Curve.md)
+- [Points](api/Points.md)
+- [Instances](api/Instances.md)
+- [Volume](api/Volume.md)
 
 ### Domains
 
