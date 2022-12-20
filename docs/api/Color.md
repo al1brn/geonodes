@@ -61,7 +61,7 @@ Node [Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/i
 ### Returns:
 - socket `color`
 
-<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub> [data structure](../structure.md)
 
 ## HSL <sub>*classmethod*</sub>
 
@@ -80,7 +80,7 @@ Node [Combine Color](https://docs.blender.org/manual/en/latest/modeling/geometry
 ### Returns:
 - socket `color`
 
-<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub> [data structure](../structure.md)
 
 ## HSV <sub>*classmethod*</sub>
 
@@ -99,7 +99,7 @@ Node [Combine Color](https://docs.blender.org/manual/en/latest/modeling/geometry
 ### Returns:
 - socket `color`
 
-<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub> [data structure](../structure.md)
 
 ## RGB <sub>*classmethod*</sub>
 
@@ -118,7 +118,7 @@ Node [Combine Color](https://docs.blender.org/manual/en/latest/modeling/geometry
 ### Returns:
 - socket `color`
 
-<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub> [data structure](../structure.md)
 
 ## alpha <sub>*property*</sub>
 
@@ -128,12 +128,10 @@ def alpha(self):
 ```
 Node [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html) )
 
-Node implemented as property.
-
 ### Returns:
 - socket `alpha`
 
-<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub> [data structure](../structure.md)
 
 ## blue <sub>*property*</sub>
 
@@ -143,12 +141,10 @@ def blue(self):
 ```
 Node [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html) )
 
-Node implemented as property.
-
 ### Returns:
 - socket `blue`
 
-<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub> [data structure](../structure.md)
 
 ## brighter
 
@@ -164,7 +160,7 @@ Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 ### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub> [data structure](../structure.md)
 
 ## compare
 
@@ -182,7 +178,7 @@ Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 ### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub> [data structure](../structure.md)
 
 ## darker
 
@@ -198,7 +194,7 @@ Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 ### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub> [data structure](../structure.md)
 
 ## equal
 
@@ -215,7 +211,7 @@ Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 ### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub> [data structure](../structure.md)
 
 ## equal
 
@@ -232,7 +228,7 @@ Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 ### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub> [data structure](../structure.md)
 
 ## green <sub>*property*</sub>
 
@@ -242,12 +238,10 @@ def green(self):
 ```
 Node [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html) )
 
-Node implemented as property.
-
 ### Returns:
 - socket `green`
 
-<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub> [data structure](../structure.md)
 
 ## hsl <sub>*property*</sub>
 
@@ -257,12 +251,10 @@ def hsl(self):
 ```
 Node [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html) )
 
-Node implemented as property.
-
 ### Returns:
 - tuple ('`red`', '`green`', '`blue`', '`alpha`')
 
-<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub> [data structure](../structure.md)
 
 ## hsv <sub>*property*</sub>
 
@@ -272,12 +264,10 @@ def hsv(self):
 ```
 Node [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html) )
 
-Node implemented as property.
-
 ### Returns:
 - tuple ('`red`', '`green`', '`blue`', '`alpha`')
 
-<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub> [data structure](../structure.md)
 
 ## hue <sub>*property*</sub>
 
@@ -287,12 +277,10 @@ def hue(self):
 ```
 Node [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html) )
 
-Node implemented as property.
-
 ### Returns:
 - socket `red`
 
-<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub> [data structure](../structure.md)
 
 ## lightness <sub>*property*</sub>
 
@@ -302,12 +290,10 @@ def lightness(self):
 ```
 Node [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html) )
 
-Node implemented as property.
-
 ### Returns:
 - socket `blue`
 
-<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub> [data structure](../structure.md)
 
 ## mix
 
@@ -327,7 +313,7 @@ Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/col
 ### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub> [data structure](../structure.md)
 
 ## mix_add
 
@@ -346,7 +332,7 @@ Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/col
 ### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub> [data structure](../structure.md)
 
 ## mix_burn
 
@@ -365,7 +351,7 @@ Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/col
 ### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub> [data structure](../structure.md)
 
 ## mix_color
 
@@ -384,7 +370,7 @@ Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/col
 ### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub> [data structure](../structure.md)
 
 ## mix_darken
 
@@ -403,7 +389,7 @@ Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/col
 ### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub> [data structure](../structure.md)
 
 ## mix_difference
 
@@ -422,7 +408,7 @@ Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/col
 ### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub> [data structure](../structure.md)
 
 ## mix_divide
 
@@ -441,7 +427,7 @@ Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/col
 ### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub> [data structure](../structure.md)
 
 ## mix_dodge
 
@@ -460,7 +446,7 @@ Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/col
 ### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub> [data structure](../structure.md)
 
 ## mix_hue
 
@@ -479,7 +465,7 @@ Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/col
 ### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub> [data structure](../structure.md)
 
 ## mix_lighten
 
@@ -498,7 +484,7 @@ Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/col
 ### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub> [data structure](../structure.md)
 
 ## mix_linear_light
 
@@ -517,7 +503,7 @@ Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/col
 ### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub> [data structure](../structure.md)
 
 ## mix_multiply
 
@@ -536,7 +522,7 @@ Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/col
 ### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub> [data structure](../structure.md)
 
 ## mix_overlay
 
@@ -555,7 +541,7 @@ Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/col
 ### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub> [data structure](../structure.md)
 
 ## mix_saturation
 
@@ -574,7 +560,7 @@ Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/col
 ### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub> [data structure](../structure.md)
 
 ## mix_screen
 
@@ -593,7 +579,7 @@ Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/col
 ### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub> [data structure](../structure.md)
 
 ## mix_soft_light
 
@@ -612,7 +598,7 @@ Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/col
 ### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub> [data structure](../structure.md)
 
 ## mix_subtract
 
@@ -631,7 +617,7 @@ Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/col
 ### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub> [data structure](../structure.md)
 
 ## mix_value
 
@@ -650,7 +636,7 @@ Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/col
 ### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub> [data structure](../structure.md)
 
 ## red <sub>*property*</sub>
 
@@ -660,12 +646,10 @@ def red(self):
 ```
 Node [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html) )
 
-Node implemented as property.
-
 ### Returns:
 - socket `red`
 
-<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub> [data structure](../structure.md)
 
 ## rgb <sub>*property*</sub>
 
@@ -675,12 +659,10 @@ def rgb(self):
 ```
 Node [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html) )
 
-Node implemented as property.
-
 ### Returns:
 - tuple ('`red`', '`green`', '`blue`', '`alpha`')
 
-<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub> [data structure](../structure.md)
 
 ## rgb_curves <sub>*property*</sub>
 
@@ -690,12 +672,10 @@ def rgb_curves(self, fac=None):
 ```
 Node [RGB Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/rgb_curves.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeRGBCurve.html) )
 
-Node implemented as property.
-
 ### Returns:
 - node with sockets ['color']
 
-<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub> [data structure](../structure.md)
 
 ## saturation <sub>*property*</sub>
 
@@ -705,12 +685,10 @@ def saturation(self):
 ```
 Node [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html) )
 
-Node implemented as property.
-
 ### Returns:
 - socket `green`
 
-<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub> [data structure](../structure.md)
 
 ## switch
 
@@ -727,7 +705,7 @@ Node [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/
 ### Returns:
 - socket `output`
 
-<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub> [data structure](../structure.md)
 
 ## value <sub>*property*</sub>
 
@@ -737,10 +715,8 @@ def value(self):
 ```
 Node [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html) )
 
-Node implemented as property.
-
 ### Returns:
 - socket `blue`
 
-<sub>Go to [top](#class-Color)</sub>
+<sub>Go to [top](#class-Color)</sub> [data structure](../structure.md)
 

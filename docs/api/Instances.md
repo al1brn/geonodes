@@ -40,7 +40,7 @@ Node [Instance on Points](https://docs.blender.org/manual/en/latest/modeling/geo
 ### Returns:
 - socket `instances`
 
-<sub>Go to [top](#class-Instances)</sub>
+<sub>Go to [top](#class-Instances)</sub> [data structure](../structure.md)
 
 ## domain_size <sub>*property*</sub>
 
@@ -50,12 +50,10 @@ def domain_size(self):
 ```
 Node [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html) )
 
-Node implemented as property.
-
 ### Returns:
 - socket `instance_count`
 
-<sub>Go to [top](#class-Instances)</sub>
+<sub>Go to [top](#class-Instances)</sub> [data structure](../structure.md)
 
 ## on_points
 
@@ -76,7 +74,7 @@ Node [Instance on Points](https://docs.blender.org/manual/en/latest/modeling/geo
 ### Returns:
 - socket `instances`
 
-<sub>Go to [top](#class-Instances)</sub>
+<sub>Go to [top](#class-Instances)</sub> [data structure](../structure.md)
 
 ## realize
 
@@ -93,7 +91,7 @@ Node [Realize Instances](https://docs.blender.org/manual/en/latest/modeling/geom
 ### Returns:
 - socket `geometry`
 
-<sub>Go to [top](#class-Instances)</sub>
+<sub>Go to [top](#class-Instances)</sub> [data structure](../structure.md)
 
 ## rotate
 
@@ -112,7 +110,7 @@ Node [Rotate Instances](https://docs.blender.org/manual/en/latest/modeling/geome
 ### Returns:
 - self
 
-<sub>Go to [top](#class-Instances)</sub>
+<sub>Go to [top](#class-Instances)</sub> [data structure](../structure.md)
 
 ## rotation <sub>*property*</sub>
 
@@ -125,7 +123,7 @@ Node [Instance Rotation](https://docs.blender.org/manual/en/latest/modeling/geom
 ### Returns:
 - socket `rotation`
 
-<sub>Go to [top](#class-Instances)</sub>
+<sub>Go to [top](#class-Instances)</sub> [data structure](../structure.md)
 
 ## scale <sub>*property*</sub>
 
@@ -138,7 +136,7 @@ Node [Instance Scale](https://docs.blender.org/manual/en/latest/modeling/geometr
 ### Returns:
 - socket `scale`
 
-<sub>Go to [top](#class-Instances)</sub>
+<sub>Go to [top](#class-Instances)</sub> [data structure](../structure.md)
 
 ## set_scale
 
@@ -157,7 +155,7 @@ Node [Scale Instances](https://docs.blender.org/manual/en/latest/modeling/geomet
 ### Returns:
 - self
 
-<sub>Go to [top](#class-Instances)</sub>
+<sub>Go to [top](#class-Instances)</sub> [data structure](../structure.md)
 
 ## to_points
 
@@ -175,7 +173,7 @@ Node [Instances to Points](https://docs.blender.org/manual/en/latest/modeling/ge
 ### Returns:
 - socket `points` of class Points
 
-<sub>Go to [top](#class-Instances)</sub>
+<sub>Go to [top](#class-Instances)</sub> [data structure](../structure.md)
 
 ## translate
 
@@ -193,5 +191,5 @@ Node [Translate Instances](https://docs.blender.org/manual/en/latest/modeling/ge
 ### Returns:
 - self
 
-<sub>Go to [top](#class-Instances)</sub>
+<sub>Go to [top](#class-Instances)</sub> [data structure](../structure.md)
 

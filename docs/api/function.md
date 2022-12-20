@@ -147,7 +147,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 ### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-function)</sub>
+<sub>Go to [top](#class-function)</sub> [data structure](../structure.md)
 
 ## absolute
 
@@ -164,7 +164,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 ### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-function)</sub>
+<sub>Go to [top](#class-function)</sub> [data structure](../structure.md)
 
 ## add
 
@@ -182,7 +182,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 ### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-function)</sub>
+<sub>Go to [top](#class-function)</sub> [data structure](../structure.md)
 
 ## align_euler_to_vector
 
@@ -202,7 +202,7 @@ Node [Align Euler to Vector](https://docs.blender.org/manual/en/latest/modeling/
 ### Returns:
 - socket `rotation`
 
-<sub>Go to [top](#class-function)</sub>
+<sub>Go to [top](#class-function)</sub> [data structure](../structure.md)
 
 ## arccos
 
@@ -219,7 +219,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 ### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-function)</sub>
+<sub>Go to [top](#class-function)</sub> [data structure](../structure.md)
 
 ## arccosine
 
@@ -236,7 +236,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 ### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-function)</sub>
+<sub>Go to [top](#class-function)</sub> [data structure](../structure.md)
 
 ## arcsin
 
@@ -253,7 +253,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 ### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-function)</sub>
+<sub>Go to [top](#class-function)</sub> [data structure](../structure.md)
 
 ## arcsine
 
@@ -270,7 +270,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 ### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-function)</sub>
+<sub>Go to [top](#class-function)</sub> [data structure](../structure.md)
 
 ## arctan
 
@@ -287,7 +287,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 ### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-function)</sub>
+<sub>Go to [top](#class-function)</sub> [data structure](../structure.md)
 
 ## arctan2
 
@@ -305,7 +305,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 ### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-function)</sub>
+<sub>Go to [top](#class-function)</sub> [data structure](../structure.md)
 
 ## arctangent
 
@@ -322,7 +322,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 ### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-function)</sub>
+<sub>Go to [top](#class-function)</sub> [data structure](../structure.md)
 
 ## b_and
 
@@ -339,7 +339,7 @@ Node [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_
 ### Returns:
 - socket `boolean`
 
-<sub>Go to [top](#class-function)</sub>
+<sub>Go to [top](#class-function)</sub> [data structure](../structure.md)
 
 ## b_not
 
@@ -355,7 +355,7 @@ Node [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_
 ### Returns:
 - socket `boolean`
 
-<sub>Go to [top](#class-function)</sub>
+<sub>Go to [top](#class-function)</sub> [data structure](../structure.md)
 
 ## b_or
 
@@ -372,7 +372,7 @@ Node [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_
 ### Returns:
 - socket `boolean`
 
-<sub>Go to [top](#class-function)</sub>
+<sub>Go to [top](#class-function)</sub> [data structure](../structure.md)
 
 ## clamp
 
@@ -391,7 +391,7 @@ Node [Clamp](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/u
 ### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-function)</sub>
+<sub>Go to [top](#class-function)</sub> [data structure](../structure.md)
 
 ## clamp_min_max
 
@@ -409,7 +409,7 @@ Node [Clamp](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/u
 ### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-function)</sub>
+<sub>Go to [top](#class-function)</sub> [data structure](../structure.md)
 
 ## clamp_range
 
@@ -427,7 +427,7 @@ Node [Clamp](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/u
 ### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-function)</sub>
+<sub>Go to [top](#class-function)</sub> [data structure](../structure.md)
 
 ## color_add
 
@@ -447,7 +447,7 @@ Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/col
 ### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-function)</sub>
+<sub>Go to [top](#class-function)</sub> [data structure](../structure.md)
 
 ## color_burn
 
@@ -467,7 +467,7 @@ Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/col
 ### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-function)</sub>
+<sub>Go to [top](#class-function)</sub> [data structure](../structure.md)
 
 ## color_color
 
@@ -487,7 +487,7 @@ Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/col
 ### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-function)</sub>
+<sub>Go to [top](#class-function)</sub> [data structure](../structure.md)
 
 ## color_darken
 
@@ -507,7 +507,7 @@ Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/col
 ### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-function)</sub>
+<sub>Go to [top](#class-function)</sub> [data structure](../structure.md)
 
 ## color_difference
 
@@ -527,7 +527,7 @@ Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/col
 ### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-function)</sub>
+<sub>Go to [top](#class-function)</sub> [data structure](../structure.md)
 
 ## color_divide
 
@@ -547,7 +547,7 @@ Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/col
 ### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-function)</sub>
+<sub>Go to [top](#class-function)</sub> [data structure](../structure.md)
 
 ## color_dodge
 
@@ -567,7 +567,7 @@ Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/col
 ### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-function)</sub>
+<sub>Go to [top](#class-function)</sub> [data structure](../structure.md)
 
 ## color_hue
 
@@ -587,7 +587,7 @@ Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/col
 ### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-function)</sub>
+<sub>Go to [top](#class-function)</sub> [data structure](../structure.md)
 
 ## color_lighten
 
@@ -607,7 +607,7 @@ Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/col
 ### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-function)</sub>
+<sub>Go to [top](#class-function)</sub> [data structure](../structure.md)
 
 ## color_linear_light
 
@@ -627,7 +627,7 @@ Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/col
 ### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-function)</sub>
+<sub>Go to [top](#class-function)</sub> [data structure](../structure.md)
 
 ## color_mix
 
@@ -648,7 +648,7 @@ Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/col
 ### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-function)</sub>
+<sub>Go to [top](#class-function)</sub> [data structure](../structure.md)
 
 ## color_multiply
 
@@ -668,7 +668,7 @@ Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/col
 ### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-function)</sub>
+<sub>Go to [top](#class-function)</sub> [data structure](../structure.md)
 
 ## color_overlay
 
@@ -688,7 +688,7 @@ Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/col
 ### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-function)</sub>
+<sub>Go to [top](#class-function)</sub> [data structure](../structure.md)
 
 ## color_ramp
 
@@ -704,7 +704,7 @@ Node [ColorRamp](https://docs.blender.org/manual/en/latest/modeling/geometry_nod
 ### Returns:
 - node with sockets ['color', 'alpha']
 
-<sub>Go to [top](#class-function)</sub>
+<sub>Go to [top](#class-function)</sub> [data structure](../structure.md)
 
 ## color_saturation
 
@@ -724,7 +724,7 @@ Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/col
 ### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-function)</sub>
+<sub>Go to [top](#class-function)</sub> [data structure](../structure.md)
 
 ## color_screen
 
@@ -744,7 +744,7 @@ Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/col
 ### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-function)</sub>
+<sub>Go to [top](#class-function)</sub> [data structure](../structure.md)
 
 ## color_soft_light
 
@@ -764,7 +764,7 @@ Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/col
 ### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-function)</sub>
+<sub>Go to [top](#class-function)</sub> [data structure](../structure.md)
 
 ## color_subtract
 
@@ -784,7 +784,7 @@ Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/col
 ### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-function)</sub>
+<sub>Go to [top](#class-function)</sub> [data structure](../structure.md)
 
 ## color_value
 
@@ -804,7 +804,7 @@ Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/col
 ### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-function)</sub>
+<sub>Go to [top](#class-function)</sub> [data structure](../structure.md)
 
 ## combine_hsl
 
@@ -823,7 +823,7 @@ Node [Combine Color](https://docs.blender.org/manual/en/latest/modeling/geometry
 ### Returns:
 - socket `color`
 
-<sub>Go to [top](#class-function)</sub>
+<sub>Go to [top](#class-function)</sub> [data structure](../structure.md)
 
 ## combine_hsv
 
@@ -842,7 +842,7 @@ Node [Combine Color](https://docs.blender.org/manual/en/latest/modeling/geometry
 ### Returns:
 - socket `color`
 
-<sub>Go to [top](#class-function)</sub>
+<sub>Go to [top](#class-function)</sub> [data structure](../structure.md)
 
 ## combine_rgb
 
@@ -861,7 +861,7 @@ Node [Combine Color](https://docs.blender.org/manual/en/latest/modeling/geometry
 ### Returns:
 - socket `color`
 
-<sub>Go to [top](#class-function)</sub>
+<sub>Go to [top](#class-function)</sub> [data structure](../structure.md)
 
 ## compare
 
@@ -884,7 +884,7 @@ Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 ### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-function)</sub>
+<sub>Go to [top](#class-function)</sub> [data structure](../structure.md)
 
 ## cos
 
@@ -901,7 +901,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 ### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-function)</sub>
+<sub>Go to [top](#class-function)</sub> [data structure](../structure.md)
 
 ## cosh
 
@@ -918,7 +918,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 ### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-function)</sub>
+<sub>Go to [top](#class-function)</sub> [data structure](../structure.md)
 
 ## cosine
 
@@ -935,7 +935,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 ### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-function)</sub>
+<sub>Go to [top](#class-function)</sub> [data structure](../structure.md)
 
 ## div
 
@@ -953,7 +953,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 ### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-function)</sub>
+<sub>Go to [top](#class-function)</sub> [data structure](../structure.md)
 
 ## divide
 
@@ -971,7 +971,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 ### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-function)</sub>
+<sub>Go to [top](#class-function)</sub> [data structure](../structure.md)
 
 ## exp
 
@@ -988,7 +988,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 ### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-function)</sub>
+<sub>Go to [top](#class-function)</sub> [data structure](../structure.md)
 
 ## exponent
 
@@ -1005,7 +1005,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 ### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-function)</sub>
+<sub>Go to [top](#class-function)</sub> [data structure](../structure.md)
 
 ## float_mix
 
@@ -1024,7 +1024,7 @@ Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/col
 ### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-function)</sub>
+<sub>Go to [top](#class-function)</sub> [data structure](../structure.md)
 
 ## fraction
 
@@ -1041,7 +1041,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 ### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-function)</sub>
+<sub>Go to [top](#class-function)</sub> [data structure](../structure.md)
 
 ## geometry_to_instance
 
@@ -1057,7 +1057,7 @@ Node [Geometry to Instance](https://docs.blender.org/manual/en/latest/modeling/g
 ### Returns:
 - socket `instances` of class Instances
 
-<sub>Go to [top](#class-function)</sub>
+<sub>Go to [top](#class-function)</sub> [data structure](../structure.md)
 
 ## imply
 
@@ -1074,7 +1074,7 @@ Node [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_
 ### Returns:
 - socket `boolean`
 
-<sub>Go to [top](#class-function)</sub>
+<sub>Go to [top](#class-function)</sub> [data structure](../structure.md)
 
 ## inverse_sqrt
 
@@ -1091,7 +1091,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 ### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-function)</sub>
+<sub>Go to [top](#class-function)</sub> [data structure](../structure.md)
 
 ## join_geometry
 
@@ -1107,7 +1107,7 @@ Node [Join Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry
 ### Returns:
 - socket `geometry`
 
-<sub>Go to [top](#class-function)</sub>
+<sub>Go to [top](#class-function)</sub> [data structure](../structure.md)
 
 ## join_strings
 
@@ -1124,7 +1124,7 @@ Node [Join Strings](https://docs.blender.org/manual/en/latest/modeling/geometry_
 ### Returns:
 - socket `string`
 
-<sub>Go to [top](#class-function)</sub>
+<sub>Go to [top](#class-function)</sub> [data structure](../structure.md)
 
 ## log
 
@@ -1142,7 +1142,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 ### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-function)</sub>
+<sub>Go to [top](#class-function)</sub> [data structure](../structure.md)
 
 ## logarithm
 
@@ -1160,7 +1160,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 ### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-function)</sub>
+<sub>Go to [top](#class-function)</sub> [data structure](../structure.md)
 
 ## math
 
@@ -1180,7 +1180,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 ### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-function)</sub>
+<sub>Go to [top](#class-function)</sub> [data structure](../structure.md)
 
 ## math_ceil
 
@@ -1197,7 +1197,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 ### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-function)</sub>
+<sub>Go to [top](#class-function)</sub> [data structure](../structure.md)
 
 ## math_compare
 
@@ -1216,7 +1216,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 ### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-function)</sub>
+<sub>Go to [top](#class-function)</sub> [data structure](../structure.md)
 
 ## math_floor
 
@@ -1233,7 +1233,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 ### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-function)</sub>
+<sub>Go to [top](#class-function)</sub> [data structure](../structure.md)
 
 ## math_greater_than
 
@@ -1251,7 +1251,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 ### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-function)</sub>
+<sub>Go to [top](#class-function)</sub> [data structure](../structure.md)
 
 ## math_less_than
 
@@ -1269,7 +1269,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 ### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-function)</sub>
+<sub>Go to [top](#class-function)</sub> [data structure](../structure.md)
 
 ## math_round
 
@@ -1286,7 +1286,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 ### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-function)</sub>
+<sub>Go to [top](#class-function)</sub> [data structure](../structure.md)
 
 ## math_trun
 
@@ -1303,7 +1303,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 ### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-function)</sub>
+<sub>Go to [top](#class-function)</sub> [data structure](../structure.md)
 
 ## math_truncate
 
@@ -1320,7 +1320,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 ### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-function)</sub>
+<sub>Go to [top](#class-function)</sub> [data structure](../structure.md)
 
 ## max
 
@@ -1338,7 +1338,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 ### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-function)</sub>
+<sub>Go to [top](#class-function)</sub> [data structure](../structure.md)
 
 ## maximum
 
@@ -1356,7 +1356,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 ### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-function)</sub>
+<sub>Go to [top](#class-function)</sub> [data structure](../structure.md)
 
 ## min
 
@@ -1374,7 +1374,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 ### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-function)</sub>
+<sub>Go to [top](#class-function)</sub> [data structure](../structure.md)
 
 ## minimum
 
@@ -1392,7 +1392,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 ### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-function)</sub>
+<sub>Go to [top](#class-function)</sub> [data structure](../structure.md)
 
 ## modulo
 
@@ -1410,7 +1410,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 ### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-function)</sub>
+<sub>Go to [top](#class-function)</sub> [data structure](../structure.md)
 
 ## mul
 
@@ -1428,7 +1428,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 ### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-function)</sub>
+<sub>Go to [top](#class-function)</sub> [data structure](../structure.md)
 
 ## mul_add
 
@@ -1447,7 +1447,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 ### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-function)</sub>
+<sub>Go to [top](#class-function)</sub> [data structure](../structure.md)
 
 ## multiply
 
@@ -1465,7 +1465,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 ### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-function)</sub>
+<sub>Go to [top](#class-function)</sub> [data structure](../structure.md)
 
 ## multiply_add
 
@@ -1484,7 +1484,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 ### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-function)</sub>
+<sub>Go to [top](#class-function)</sub> [data structure](../structure.md)
 
 ## nand
 
@@ -1501,7 +1501,7 @@ Node [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_
 ### Returns:
 - socket `boolean`
 
-<sub>Go to [top](#class-function)</sub>
+<sub>Go to [top](#class-function)</sub> [data structure](../structure.md)
 
 ## nimply
 
@@ -1518,7 +1518,7 @@ Node [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_
 ### Returns:
 - socket `boolean`
 
-<sub>Go to [top](#class-function)</sub>
+<sub>Go to [top](#class-function)</sub> [data structure](../structure.md)
 
 ## nor
 
@@ -1535,7 +1535,7 @@ Node [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_
 ### Returns:
 - socket `boolean`
 
-<sub>Go to [top](#class-function)</sub>
+<sub>Go to [top](#class-function)</sub> [data structure](../structure.md)
 
 ## ping_pong
 
@@ -1553,7 +1553,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 ### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-function)</sub>
+<sub>Go to [top](#class-function)</sub> [data structure](../structure.md)
 
 ## power
 
@@ -1571,7 +1571,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 ### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-function)</sub>
+<sub>Go to [top](#class-function)</sub> [data structure](../structure.md)
 
 ## random_boolean
 
@@ -1589,7 +1589,7 @@ Node [Random Value](https://docs.blender.org/manual/en/latest/modeling/geometry_
 ### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-function)</sub>
+<sub>Go to [top](#class-function)</sub> [data structure](../structure.md)
 
 ## random_float
 
@@ -1608,7 +1608,7 @@ Node [Random Value](https://docs.blender.org/manual/en/latest/modeling/geometry_
 ### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-function)</sub>
+<sub>Go to [top](#class-function)</sub> [data structure](../structure.md)
 
 ## random_integer
 
@@ -1627,7 +1627,7 @@ Node [Random Value](https://docs.blender.org/manual/en/latest/modeling/geometry_
 ### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-function)</sub>
+<sub>Go to [top](#class-function)</sub> [data structure](../structure.md)
 
 ## random_vector
 
@@ -1646,7 +1646,7 @@ Node [Random Value](https://docs.blender.org/manual/en/latest/modeling/geometry_
 ### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-function)</sub>
+<sub>Go to [top](#class-function)</sub> [data structure](../structure.md)
 
 ## replace_string
 
@@ -1664,7 +1664,7 @@ Node [Replace String](https://docs.blender.org/manual/en/latest/modeling/geometr
 ### Returns:
 - socket `string`
 
-<sub>Go to [top](#class-function)</sub>
+<sub>Go to [top](#class-function)</sub> [data structure](../structure.md)
 
 ## rgb_curves
 
@@ -1681,7 +1681,7 @@ Node [RGB Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_no
 ### Returns:
 - node with sockets ['color']
 
-<sub>Go to [top](#class-function)</sub>
+<sub>Go to [top](#class-function)</sub> [data structure](../structure.md)
 
 ## rotate_axis_angle
 
@@ -1700,7 +1700,7 @@ Node [Rotate Euler](https://docs.blender.org/manual/en/latest/modeling/geometry_
 ### Returns:
 - socket `rotation`
 
-<sub>Go to [top](#class-function)</sub>
+<sub>Go to [top](#class-function)</sub> [data structure](../structure.md)
 
 ## rotate_euler
 
@@ -1718,7 +1718,7 @@ Node [Rotate Euler](https://docs.blender.org/manual/en/latest/modeling/geometry_
 ### Returns:
 - socket `rotation`
 
-<sub>Go to [top](#class-function)</sub>
+<sub>Go to [top](#class-function)</sub> [data structure](../structure.md)
 
 ## separate_hsl
 
@@ -1734,7 +1734,7 @@ Node [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometr
 ### Returns:
 - tuple ('`red`', '`green`', '`blue`', '`alpha`')
 
-<sub>Go to [top](#class-function)</sub>
+<sub>Go to [top](#class-function)</sub> [data structure](../structure.md)
 
 ## separate_hsv
 
@@ -1750,7 +1750,7 @@ Node [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometr
 ### Returns:
 - tuple ('`red`', '`green`', '`blue`', '`alpha`')
 
-<sub>Go to [top](#class-function)</sub>
+<sub>Go to [top](#class-function)</sub> [data structure](../structure.md)
 
 ## separate_rgb
 
@@ -1766,7 +1766,7 @@ Node [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometr
 ### Returns:
 - tuple ('`red`', '`green`', '`blue`', '`alpha`')
 
-<sub>Go to [top](#class-function)</sub>
+<sub>Go to [top](#class-function)</sub> [data structure](../structure.md)
 
 ## sign
 
@@ -1783,7 +1783,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 ### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-function)</sub>
+<sub>Go to [top](#class-function)</sub> [data structure](../structure.md)
 
 ## sin
 
@@ -1800,7 +1800,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 ### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-function)</sub>
+<sub>Go to [top](#class-function)</sub> [data structure](../structure.md)
 
 ## sine
 
@@ -1817,7 +1817,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 ### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-function)</sub>
+<sub>Go to [top](#class-function)</sub> [data structure](../structure.md)
 
 ## sinh
 
@@ -1834,7 +1834,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 ### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-function)</sub>
+<sub>Go to [top](#class-function)</sub> [data structure](../structure.md)
 
 ## slice_string
 
@@ -1852,7 +1852,7 @@ Node [Slice String](https://docs.blender.org/manual/en/latest/modeling/geometry_
 ### Returns:
 - socket `string`
 
-<sub>Go to [top](#class-function)</sub>
+<sub>Go to [top](#class-function)</sub> [data structure](../structure.md)
 
 ## smooth_maximum
 
@@ -1871,7 +1871,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 ### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-function)</sub>
+<sub>Go to [top](#class-function)</sub> [data structure](../structure.md)
 
 ## smooth_minimum
 
@@ -1890,7 +1890,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 ### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-function)</sub>
+<sub>Go to [top](#class-function)</sub> [data structure](../structure.md)
 
 ## snap
 
@@ -1908,7 +1908,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 ### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-function)</sub>
+<sub>Go to [top](#class-function)</sub> [data structure](../structure.md)
 
 ## sqrt
 
@@ -1925,7 +1925,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 ### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-function)</sub>
+<sub>Go to [top](#class-function)</sub> [data structure](../structure.md)
 
 ## string_length
 
@@ -1941,7 +1941,7 @@ Node [String Length](https://docs.blender.org/manual/en/latest/modeling/geometry
 ### Returns:
 - socket `length`
 
-<sub>Go to [top](#class-function)</sub>
+<sub>Go to [top](#class-function)</sub> [data structure](../structure.md)
 
 ## string_to_curves
 
@@ -1967,7 +1967,7 @@ Node [String to Curves](https://docs.blender.org/manual/en/latest/modeling/geome
 ### Returns:
 - tuple ('`curve_instances`', '`line`', '`pivot_point`')
 
-<sub>Go to [top](#class-function)</sub>
+<sub>Go to [top](#class-function)</sub> [data structure](../structure.md)
 
 ## sub
 
@@ -1985,7 +1985,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 ### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-function)</sub>
+<sub>Go to [top](#class-function)</sub> [data structure](../structure.md)
 
 ## subtract
 
@@ -2003,7 +2003,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 ### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-function)</sub>
+<sub>Go to [top](#class-function)</sub> [data structure](../structure.md)
 
 ## switch
 
@@ -2022,7 +2022,7 @@ Node [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/
 ### Returns:
 - socket `output`
 
-<sub>Go to [top](#class-function)</sub>
+<sub>Go to [top](#class-function)</sub> [data structure](../structure.md)
 
 ## switch_boolean
 
@@ -2040,7 +2040,7 @@ Node [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/
 ### Returns:
 - socket `output`
 
-<sub>Go to [top](#class-function)</sub>
+<sub>Go to [top](#class-function)</sub> [data structure](../structure.md)
 
 ## switch_collection
 
@@ -2058,7 +2058,7 @@ Node [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/
 ### Returns:
 - socket `output`
 
-<sub>Go to [top](#class-function)</sub>
+<sub>Go to [top](#class-function)</sub> [data structure](../structure.md)
 
 ## switch_color
 
@@ -2076,7 +2076,7 @@ Node [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/
 ### Returns:
 - socket `output`
 
-<sub>Go to [top](#class-function)</sub>
+<sub>Go to [top](#class-function)</sub> [data structure](../structure.md)
 
 ## switch_float
 
@@ -2094,7 +2094,7 @@ Node [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/
 ### Returns:
 - socket `output`
 
-<sub>Go to [top](#class-function)</sub>
+<sub>Go to [top](#class-function)</sub> [data structure](../structure.md)
 
 ## switch_geometry
 
@@ -2112,7 +2112,7 @@ Node [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/
 ### Returns:
 - socket `output`
 
-<sub>Go to [top](#class-function)</sub>
+<sub>Go to [top](#class-function)</sub> [data structure](../structure.md)
 
 ## switch_image
 
@@ -2130,7 +2130,7 @@ Node [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/
 ### Returns:
 - socket `output`
 
-<sub>Go to [top](#class-function)</sub>
+<sub>Go to [top](#class-function)</sub> [data structure](../structure.md)
 
 ## switch_integer
 
@@ -2148,7 +2148,7 @@ Node [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/
 ### Returns:
 - socket `output`
 
-<sub>Go to [top](#class-function)</sub>
+<sub>Go to [top](#class-function)</sub> [data structure](../structure.md)
 
 ## switch_material
 
@@ -2166,7 +2166,7 @@ Node [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/
 ### Returns:
 - socket `output`
 
-<sub>Go to [top](#class-function)</sub>
+<sub>Go to [top](#class-function)</sub> [data structure](../structure.md)
 
 ## switch_object
 
@@ -2184,7 +2184,7 @@ Node [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/
 ### Returns:
 - socket `output`
 
-<sub>Go to [top](#class-function)</sub>
+<sub>Go to [top](#class-function)</sub> [data structure](../structure.md)
 
 ## switch_string
 
@@ -2202,7 +2202,7 @@ Node [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/
 ### Returns:
 - socket `output`
 
-<sub>Go to [top](#class-function)</sub>
+<sub>Go to [top](#class-function)</sub> [data structure](../structure.md)
 
 ## switch_texture
 
@@ -2220,7 +2220,7 @@ Node [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/
 ### Returns:
 - socket `output`
 
-<sub>Go to [top](#class-function)</sub>
+<sub>Go to [top](#class-function)</sub> [data structure](../structure.md)
 
 ## switch_vector
 
@@ -2238,7 +2238,7 @@ Node [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/
 ### Returns:
 - socket `output`
 
-<sub>Go to [top](#class-function)</sub>
+<sub>Go to [top](#class-function)</sub> [data structure](../structure.md)
 
 ## tan
 
@@ -2255,7 +2255,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 ### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-function)</sub>
+<sub>Go to [top](#class-function)</sub> [data structure](../structure.md)
 
 ## tangent
 
@@ -2272,7 +2272,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 ### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-function)</sub>
+<sub>Go to [top](#class-function)</sub> [data structure](../structure.md)
 
 ## tanh
 
@@ -2289,7 +2289,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 ### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-function)</sub>
+<sub>Go to [top](#class-function)</sub> [data structure](../structure.md)
 
 ## to_degrees
 
@@ -2306,7 +2306,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 ### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-function)</sub>
+<sub>Go to [top](#class-function)</sub> [data structure](../structure.md)
 
 ## to_radians
 
@@ -2323,7 +2323,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 ### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-function)</sub>
+<sub>Go to [top](#class-function)</sub> [data structure](../structure.md)
 
 ## value_to_string
 
@@ -2340,7 +2340,7 @@ Node [Value to String](https://docs.blender.org/manual/en/latest/modeling/geomet
 ### Returns:
 - socket `string`
 
-<sub>Go to [top](#class-function)</sub>
+<sub>Go to [top](#class-function)</sub> [data structure](../structure.md)
 
 ## vector_mix
 
@@ -2360,7 +2360,7 @@ Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/col
 ### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-function)</sub>
+<sub>Go to [top](#class-function)</sub> [data structure](../structure.md)
 
 ## wrap
 
@@ -2379,7 +2379,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 ### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-function)</sub>
+<sub>Go to [top](#class-function)</sub> [data structure](../structure.md)
 
 ## xnor
 
@@ -2396,7 +2396,7 @@ Node [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_
 ### Returns:
 - socket `boolean`
 
-<sub>Go to [top](#class-function)</sub>
+<sub>Go to [top](#class-function)</sub> [data structure](../structure.md)
 
 ## xor
 
@@ -2413,5 +2413,5 @@ Node [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_
 ### Returns:
 - socket `boolean`
 
-<sub>Go to [top](#class-function)</sub>
+<sub>Go to [top](#class-function)</sub> [data structure](../structure.md)
 

@@ -34,7 +34,7 @@ Node [Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/
 ### Returns:
 - socket `geometry`
 
-<sub>Go to [top](#class-Points)</sub>
+<sub>Go to [top](#class-Points)</sub> [data structure](../structure.md)
 
 ## domain_size <sub>*property*</sub>
 
@@ -44,12 +44,10 @@ def domain_size(self):
 ```
 Node [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html) )
 
-Node implemented as property.
-
 ### Returns:
 - socket `point_count`
 
-<sub>Go to [top](#class-Points)</sub>
+<sub>Go to [top](#class-Points)</sub> [data structure](../structure.md)
 
 ## instance_on_points
 
@@ -70,7 +68,7 @@ Node [Instance on Points](https://docs.blender.org/manual/en/latest/modeling/geo
 ### Returns:
 - socket `instances`
 
-<sub>Go to [top](#class-Points)</sub>
+<sub>Go to [top](#class-Points)</sub> [data structure](../structure.md)
 
 ## set_point_radius
 
@@ -87,7 +85,7 @@ Node [Set Point Radius](https://docs.blender.org/manual/en/latest/modeling/geome
 ### Returns:
 - self
 
-<sub>Go to [top](#class-Points)</sub>
+<sub>Go to [top](#class-Points)</sub> [data structure](../structure.md)
 
 ## to_vertices
 
@@ -104,7 +102,7 @@ Node [Points to Vertices](https://docs.blender.org/manual/en/latest/modeling/geo
 ### Returns:
 - socket `mesh` of class Mesh
 
-<sub>Go to [top](#class-Points)</sub>
+<sub>Go to [top](#class-Points)</sub> [data structure](../structure.md)
 
 ## to_volume
 
@@ -124,7 +122,7 @@ Node [Points to Volume](https://docs.blender.org/manual/en/latest/modeling/geome
 ### Returns:
 - socket `volume` of class Volume
 
-<sub>Go to [top](#class-Points)</sub>
+<sub>Go to [top](#class-Points)</sub> [data structure](../structure.md)
 
 ## to_volume_amount
 
@@ -142,7 +140,7 @@ Node [Points to Volume](https://docs.blender.org/manual/en/latest/modeling/geome
 ### Returns:
 - socket `volume` of class Volume
 
-<sub>Go to [top](#class-Points)</sub>
+<sub>Go to [top](#class-Points)</sub> [data structure](../structure.md)
 
 ## to_volume_size
 
@@ -160,5 +158,5 @@ Node [Points to Volume](https://docs.blender.org/manual/en/latest/modeling/geome
 ### Returns:
 - socket `volume` of class Volume
 
-<sub>Go to [top](#class-Points)</sub>
+<sub>Go to [top](#class-Points)</sub> [data structure](../structure.md)
 

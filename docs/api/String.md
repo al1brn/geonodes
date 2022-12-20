@@ -34,7 +34,7 @@ Node [Special Characters](https://docs.blender.org/manual/en/latest/modeling/geo
 ### Returns:
 - socket `line_break`
 
-<sub>Go to [top](#class-String)</sub>
+<sub>Go to [top](#class-String)</sub> [data structure](../structure.md)
 
 ## String <sub>*classmethod*</sub>
 
@@ -50,7 +50,7 @@ Node [String](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/
 ### Returns:
 - socket `string`
 
-<sub>Go to [top](#class-String)</sub>
+<sub>Go to [top](#class-String)</sub> [data structure](../structure.md)
 
 ## Tab <sub>*staticmethod*</sub>
 
@@ -63,7 +63,7 @@ Node [Special Characters](https://docs.blender.org/manual/en/latest/modeling/geo
 ### Returns:
 - socket `tab`
 
-<sub>Go to [top](#class-String)</sub>
+<sub>Go to [top](#class-String)</sub> [data structure](../structure.md)
 
 ## equal
 
@@ -79,7 +79,7 @@ Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 ### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-String)</sub>
+<sub>Go to [top](#class-String)</sub> [data structure](../structure.md)
 
 ## join
 
@@ -96,7 +96,7 @@ Node [Join Strings](https://docs.blender.org/manual/en/latest/modeling/geometry_
 ### Returns:
 - socket `string`
 
-<sub>Go to [top](#class-String)</sub>
+<sub>Go to [top](#class-String)</sub> [data structure](../structure.md)
 
 ## length <sub>*property*</sub>
 
@@ -106,12 +106,10 @@ def length(self):
 ```
 Node [String Length](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/string_length.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeStringLength.html) )
 
-Node implemented as property.
-
 ### Returns:
 - socket `length`
 
-<sub>Go to [top](#class-String)</sub>
+<sub>Go to [top](#class-String)</sub> [data structure](../structure.md)
 
 ## not_equal
 
@@ -127,7 +125,7 @@ Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 ### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-String)</sub>
+<sub>Go to [top](#class-String)</sub> [data structure](../structure.md)
 
 ## replace
 
@@ -144,7 +142,7 @@ Node [Replace String](https://docs.blender.org/manual/en/latest/modeling/geometr
 ### Returns:
 - socket `string`
 
-<sub>Go to [top](#class-String)</sub>
+<sub>Go to [top](#class-String)</sub> [data structure](../structure.md)
 
 ## slice
 
@@ -161,7 +159,7 @@ Node [Slice String](https://docs.blender.org/manual/en/latest/modeling/geometry_
 ### Returns:
 - socket `string`
 
-<sub>Go to [top](#class-String)</sub>
+<sub>Go to [top](#class-String)</sub> [data structure](../structure.md)
 
 ## switch
 
@@ -178,7 +176,7 @@ Node [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/
 ### Returns:
 - socket `output`
 
-<sub>Go to [top](#class-String)</sub>
+<sub>Go to [top](#class-String)</sub> [data structure](../structure.md)
 
 ## to_curves
 
@@ -204,5 +202,5 @@ Node [String to Curves](https://docs.blender.org/manual/en/latest/modeling/geome
 ### Returns:
 - tuple ('`curve_instances`', '`line`', '`pivot_point`')
 
-<sub>Go to [top](#class-String)</sub>
+<sub>Go to [top](#class-String)</sub> [data structure](../structure.md)
 

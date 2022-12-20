@@ -22,5 +22,5 @@ Node [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/
 ### Returns:
 - socket `output`
 
-<sub>Go to [top](#class-Collection)</sub>
+<sub>Go to [top](#class-Collection)</sub> [data structure](../structure.md)
 

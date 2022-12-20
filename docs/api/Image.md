@@ -23,7 +23,7 @@ Node [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/
 ### Returns:
 - socket `output`
 
-<sub>Go to [top](#class-Image)</sub>
+<sub>Go to [top](#class-Image)</sub> [data structure](../structure.md)
 
 ## texture
 
@@ -42,5 +42,5 @@ Node [Image Texture](https://docs.blender.org/manual/en/latest/modeling/geometry
 ### Returns:
 - tuple ('`color`', '`alpha`')
 
-<sub>Go to [top](#class-Image)</sub>
+<sub>Go to [top](#class-Image)</sub> [data structure](../structure.md)
 

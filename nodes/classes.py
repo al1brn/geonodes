@@ -60,8 +60,6 @@ class Geometry(geosocks.Geometry):
         Node reference [Bounding Box](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/bounding_box.html)
         Developer reference [GeometryNodeBoundBox](https://docs.blender.org/api/current/bpy.types.GeometryNodeBoundBox.html)
 
-        Node implemented as property.
-
         Returns:
             socket 'bounding_box' of class Mesh
         """
@@ -77,8 +75,6 @@ class Geometry(geosocks.Geometry):
         Node reference [Bounding Box](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/bounding_box.html)
         Developer reference [GeometryNodeBoundBox](https://docs.blender.org/api/current/bpy.types.GeometryNodeBoundBox.html)
 
-        Node implemented as property.
-
         Returns:
             socket 'min'
         """
@@ -93,8 +89,6 @@ class Geometry(geosocks.Geometry):
 
         Node reference [Bounding Box](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/bounding_box.html)
         Developer reference [GeometryNodeBoundBox](https://docs.blender.org/api/current/bpy.types.GeometryNodeBoundBox.html)
-
-        Node implemented as property.
 
         Returns:
             socket 'max'
@@ -146,8 +140,6 @@ class Geometry(geosocks.Geometry):
         Node reference [Convex Hull](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/convex_hull.html)
         Developer reference [GeometryNodeConvexHull](https://docs.blender.org/api/current/bpy.types.GeometryNodeConvexHull.html)
 
-        Node implemented as property.
-
         Returns:
             socket 'convex_hull' of class Mesh
         """
@@ -160,8 +152,6 @@ class Geometry(geosocks.Geometry):
 
         Node reference [Separate Components](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/separate_components.html)
         Developer reference [GeometryNodeSeparateComponents](https://docs.blender.org/api/current/bpy.types.GeometryNodeSeparateComponents.html)
-
-        Node implemented as property.
 
         Returns:
             socket 'curve' of class Curve
@@ -194,8 +184,6 @@ class Geometry(geosocks.Geometry):
 
         Node reference [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html)
         Developer reference [GeometryNodeAttributeDomainSize](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html)
-
-        Node implemented as property.
 
         Returns:
             node with sockets ['point_count', 'edge_count', 'face_count', 'face_corner_count', 'spline_count', 'instance_count']
@@ -335,8 +323,6 @@ class Geometry(geosocks.Geometry):
         Node reference [Separate Components](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/separate_components.html)
         Developer reference [GeometryNodeSeparateComponents](https://docs.blender.org/api/current/bpy.types.GeometryNodeSeparateComponents.html)
 
-        Node implemented as property.
-
         Returns:
             socket 'instances' of class Instances
         """
@@ -427,8 +413,6 @@ class Geometry(geosocks.Geometry):
         Node reference [Separate Components](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/separate_components.html)
         Developer reference [GeometryNodeSeparateComponents](https://docs.blender.org/api/current/bpy.types.GeometryNodeSeparateComponents.html)
 
-        Node implemented as property.
-
         Returns:
             socket 'mesh' of class Mesh
         """
@@ -472,8 +456,6 @@ class Geometry(geosocks.Geometry):
 
         Node reference [Separate Components](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/separate_components.html)
         Developer reference [GeometryNodeSeparateComponents](https://docs.blender.org/api/current/bpy.types.GeometryNodeSeparateComponents.html)
-
-        Node implemented as property.
 
         Returns:
             socket 'point_cloud' of class Points
@@ -797,8 +779,6 @@ class Geometry(geosocks.Geometry):
         Node reference [Separate Components](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/separate_components.html)
         Developer reference [GeometryNodeSeparateComponents](https://docs.blender.org/api/current/bpy.types.GeometryNodeSeparateComponents.html)
 
-        Node implemented as property.
-
         Returns:
             node with sockets ['mesh', 'point_cloud', 'curve', 'volume', 'instances']
         """
@@ -1029,8 +1009,6 @@ class Geometry(geosocks.Geometry):
 
         Node reference [Separate Components](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/separate_components.html)
         Developer reference [GeometryNodeSeparateComponents](https://docs.blender.org/api/current/bpy.types.GeometryNodeSeparateComponents.html)
-
-        Node implemented as property.
 
         Returns:
             socket 'volume' of class Volume
@@ -1330,8 +1308,6 @@ class Mesh(Geometry):
         Node reference [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html)
         Developer reference [GeometryNodeAttributeDomainSize](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html)
 
-        Node implemented as property.
-
         Returns:
             socket 'face_corner_count'
         """
@@ -1417,8 +1393,6 @@ class Mesh(Geometry):
         Node reference [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html)
         Developer reference [GeometryNodeAttributeDomainSize](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html)
 
-        Node implemented as property.
-
         Returns:
             node with sockets ['point_count', 'edge_count', 'face_count', 'face_corner_count', 'spline_count', 'instance_count']
         """
@@ -1449,8 +1423,6 @@ class Mesh(Geometry):
 
         Node reference [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html)
         Developer reference [GeometryNodeAttributeDomainSize](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html)
-
-        Node implemented as property.
 
         Returns:
             socket 'edge_count'
@@ -1518,8 +1490,6 @@ class Mesh(Geometry):
 
         Node reference [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html)
         Developer reference [GeometryNodeAttributeDomainSize](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html)
-
-        Node implemented as property.
 
         Returns:
             socket 'face_count'
@@ -1675,8 +1645,6 @@ class Mesh(Geometry):
 
         Node reference [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html)
         Developer reference [GeometryNodeAttributeDomainSize](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html)
-
-        Node implemented as property.
 
         Returns:
             socket 'point_count'
@@ -2211,8 +2179,6 @@ class Curve(Geometry):
         Node reference [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html)
         Developer reference [GeometryNodeAttributeDomainSize](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html)
 
-        Node implemented as property.
-
         Returns:
             node with sockets ['point_count', 'edge_count', 'face_count', 'face_corner_count', 'spline_count', 'instance_count']
         """
@@ -2345,8 +2311,6 @@ class Curve(Geometry):
         Node reference [Curve Length](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/curve_length.html)
         Developer reference [GeometryNodeCurveLength](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveLength.html)
 
-        Node implemented as property.
-
         Returns:
             socket 'length'
         """
@@ -2376,8 +2340,6 @@ class Curve(Geometry):
 
         Node reference [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html)
         Developer reference [GeometryNodeAttributeDomainSize](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html)
-
-        Node implemented as property.
 
         Returns:
             socket 'point_count'
@@ -2512,8 +2474,6 @@ class Curve(Geometry):
 
         Node reference [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html)
         Developer reference [GeometryNodeAttributeDomainSize](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html)
-
-        Node implemented as property.
 
         Returns:
             socket 'spline_count'
@@ -2694,8 +2654,6 @@ class Points(Geometry):
         Node reference [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html)
         Developer reference [GeometryNodeAttributeDomainSize](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html)
 
-        Node implemented as property.
-
         Returns:
             socket 'point_count'
         """
@@ -2840,8 +2798,6 @@ class Instances(Geometry):
 
         Node reference [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html)
         Developer reference [GeometryNodeAttributeDomainSize](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html)
-
-        Node implemented as property.
 
         Returns:
             socket 'instance_count'
@@ -3234,8 +3190,6 @@ class Float(geosocks.Float):
 
         Node reference [ColorRamp](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/color_ramp.html)
         Developer reference [ShaderNodeValToRGB](https://docs.blender.org/api/current/bpy.types.ShaderNodeValToRGB.html)
-
-        Node implemented as property.
 
         Returns:
             node with sockets ['color', 'alpha']
@@ -4308,8 +4262,6 @@ class Color(geosocks.Color):
         Node reference [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html)
         Developer reference [FunctionNodeSeparateColor](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html)
 
-        Node implemented as property.
-
         Returns:
             socket 'alpha'
         """
@@ -4322,8 +4274,6 @@ class Color(geosocks.Color):
 
         Node reference [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html)
         Developer reference [FunctionNodeSeparateColor](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html)
-
-        Node implemented as property.
 
         Returns:
             socket 'blue'
@@ -4417,8 +4367,6 @@ class Color(geosocks.Color):
         Node reference [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html)
         Developer reference [FunctionNodeSeparateColor](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html)
 
-        Node implemented as property.
-
         Returns:
             socket 'green'
         """
@@ -4431,8 +4379,6 @@ class Color(geosocks.Color):
 
         Node reference [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html)
         Developer reference [FunctionNodeSeparateColor](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html)
-
-        Node implemented as property.
 
         Returns:
             tuple ('red', 'green', 'blue', 'alpha')
@@ -4448,8 +4394,6 @@ class Color(geosocks.Color):
         Node reference [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html)
         Developer reference [FunctionNodeSeparateColor](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html)
 
-        Node implemented as property.
-
         Returns:
             tuple ('red', 'green', 'blue', 'alpha')
         """
@@ -4464,8 +4408,6 @@ class Color(geosocks.Color):
         Node reference [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html)
         Developer reference [FunctionNodeSeparateColor](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html)
 
-        Node implemented as property.
-
         Returns:
             socket 'red'
         """
@@ -4478,8 +4420,6 @@ class Color(geosocks.Color):
 
         Node reference [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html)
         Developer reference [FunctionNodeSeparateColor](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html)
-
-        Node implemented as property.
 
         Returns:
             socket 'blue'
@@ -4819,8 +4759,6 @@ class Color(geosocks.Color):
         Node reference [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html)
         Developer reference [FunctionNodeSeparateColor](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html)
 
-        Node implemented as property.
-
         Returns:
             socket 'red'
         """
@@ -4833,8 +4771,6 @@ class Color(geosocks.Color):
 
         Node reference [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html)
         Developer reference [FunctionNodeSeparateColor](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html)
-
-        Node implemented as property.
 
         Returns:
             tuple ('red', 'green', 'blue', 'alpha')
@@ -4850,8 +4786,6 @@ class Color(geosocks.Color):
         Node reference [RGB Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/rgb_curves.html)
         Developer reference [ShaderNodeRGBCurve](https://docs.blender.org/api/current/bpy.types.ShaderNodeRGBCurve.html)
 
-        Node implemented as property.
-
         Returns:
             node with sockets ['color']
         """
@@ -4864,8 +4798,6 @@ class Color(geosocks.Color):
 
         Node reference [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html)
         Developer reference [FunctionNodeSeparateColor](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html)
-
-        Node implemented as property.
 
         Returns:
             socket 'green'
@@ -4895,8 +4827,6 @@ class Color(geosocks.Color):
 
         Node reference [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html)
         Developer reference [FunctionNodeSeparateColor](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html)
-
-        Node implemented as property.
 
         Returns:
             socket 'blue'
@@ -5613,8 +5543,6 @@ class Vector(geosocks.Vector):
         Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
         Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 
-        Node implemented as property.
-
         Returns:
             socket 'value'
         """
@@ -6164,8 +6092,6 @@ class Vector(geosocks.Vector):
 
         Node reference [Separate XYZ](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/separate_xyz.html)
         Developer reference [ShaderNodeSeparateXYZ](https://docs.blender.org/api/current/bpy.types.ShaderNodeSeparateXYZ.html)
-
-        Node implemented as property.
 
         Returns:
             node with sockets ['x', 'y', 'z']
@@ -7657,8 +7583,6 @@ class String(geosocks.String):
 
         Node reference [String Length](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/string_length.html)
         Developer reference [FunctionNodeStringLength](https://docs.blender.org/api/current/bpy.types.FunctionNodeStringLength.html)
-
-        Node implemented as property.
 
         Returns:
             socket 'length'

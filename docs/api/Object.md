@@ -26,7 +26,7 @@ Node [Self Object](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 ### Returns:
 - socket `self_object`
 
-<sub>Go to [top](#class-Object)</sub>
+<sub>Go to [top](#class-Object)</sub> [data structure](../structure.md)
 
 ## geometry
 
@@ -44,7 +44,7 @@ Node [Object Info](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 ### Returns:
 - socket `geometry`
 
-<sub>Go to [top](#class-Object)</sub>
+<sub>Go to [top](#class-Object)</sub> [data structure](../structure.md)
 
 ## info
 
@@ -62,7 +62,7 @@ Node [Object Info](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 ### Returns:
 - node with sockets ['location', 'rotation', 'scale', 'geometry']
 
-<sub>Go to [top](#class-Object)</sub>
+<sub>Go to [top](#class-Object)</sub> [data structure](../structure.md)
 
 ## location
 
@@ -80,7 +80,7 @@ Node [Object Info](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 ### Returns:
 - socket `location`
 
-<sub>Go to [top](#class-Object)</sub>
+<sub>Go to [top](#class-Object)</sub> [data structure](../structure.md)
 
 ## rotation
 
@@ -98,7 +98,7 @@ Node [Object Info](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 ### Returns:
 - socket `rotation`
 
-<sub>Go to [top](#class-Object)</sub>
+<sub>Go to [top](#class-Object)</sub> [data structure](../structure.md)
 
 ## scale
 
@@ -116,7 +116,7 @@ Node [Object Info](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 ### Returns:
 - socket `scale`
 
-<sub>Go to [top](#class-Object)</sub>
+<sub>Go to [top](#class-Object)</sub> [data structure](../structure.md)
 
 ## switch
 
@@ -133,5 +133,5 @@ Node [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/
 ### Returns:
 - socket `output`
 
-<sub>Go to [top](#class-Object)</sub>
+<sub>Go to [top](#class-Object)</sub> [data structure](../structure.md)
 

@@ -22,5 +22,5 @@ Node [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 ### Returns:
 - node with sockets ['point_count', 'edge_count', 'face_count', 'face_corner_count', 'spline_count', 'instance_count']
 
-<sub>Go to [top](#class-Corner)</sub>
+<sub>Go to [top](#class-Corner)</sub> [data structure](../structure.md)
 

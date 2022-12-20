@@ -90,7 +90,7 @@ Node [Collection Info](https://docs.blender.org/manual/en/latest/modeling/geomet
 ### Returns:
 - socket `geometry`
 
-<sub>Go to [top](#class-Geometry)</sub>
+<sub>Go to [top](#class-Geometry)</sub> [data structure](../structure.md)
 
 ## ID <sub>*property*</sub>
 
@@ -103,7 +103,7 @@ Node [ID](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/inpu
 ### Returns:
 - socket `ID`
 
-<sub>Go to [top](#class-Geometry)</sub>
+<sub>Go to [top](#class-Geometry)</sub> [data structure](../structure.md)
 
 ## attribute_statistic
 
@@ -121,7 +121,7 @@ Node [Attribute Statistic](https://docs.blender.org/manual/en/latest/modeling/ge
 ### Returns:
 - node with sockets ['mean', 'median', 'sum', 'min', 'max', 'range', 'standard_deviation', 'variance']
 
-<sub>Go to [top](#class-Geometry)</sub>
+<sub>Go to [top](#class-Geometry)</sub> [data structure](../structure.md)
 
 ## bounding_box <sub>*property*</sub>
 
@@ -131,12 +131,10 @@ def bounding_box(self):
 ```
 Node [Bounding Box](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/bounding_box.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeBoundBox.html) )
 
-Node implemented as property.
-
 ### Returns:
 - socket `bounding_box` of class Mesh
 
-<sub>Go to [top](#class-Geometry)</sub>
+<sub>Go to [top](#class-Geometry)</sub> [data structure](../structure.md)
 
 ## bounding_box_min <sub>*property*</sub>
 
@@ -145,13 +143,11 @@ def bounding_box_min(self):
 
 ```
 Node [Bounding Box](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/bounding_box.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeBoundBox.html) )
-
-Node implemented as property.
 
 ### Returns:
 - socket `min`
 
-<sub>Go to [top](#class-Geometry)</sub>
+<sub>Go to [top](#class-Geometry)</sub> [data structure](../structure.md)
 
 ## bounding_box_min <sub>*property*</sub>
 
@@ -161,12 +157,10 @@ def bounding_box_min(self):
 ```
 Node [Bounding Box](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/bounding_box.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeBoundBox.html) )
 
-Node implemented as property.
-
 ### Returns:
 - socket `max`
 
-<sub>Go to [top](#class-Geometry)</sub>
+<sub>Go to [top](#class-Geometry)</sub> [data structure](../structure.md)
 
 ## capture_attribute
 
@@ -183,7 +177,7 @@ Node [Capture Attribute](https://docs.blender.org/manual/en/latest/modeling/geom
 ### Returns:
 - socket `attribute`
 
-<sub>Go to [top](#class-Geometry)</sub>
+<sub>Go to [top](#class-Geometry)</sub> [data structure](../structure.md)
 
 ## capture_attribute_node
 
@@ -202,7 +196,7 @@ Node [Capture Attribute](https://docs.blender.org/manual/en/latest/modeling/geom
 ### Returns:
 - node with sockets ['geometry', 'attribute']
 
-<sub>Go to [top](#class-Geometry)</sub>
+<sub>Go to [top](#class-Geometry)</sub> [data structure](../structure.md)
 
 ## convex_hull <sub>*property*</sub>
 
@@ -212,12 +206,10 @@ def convex_hull(self):
 ```
 Node [Convex Hull](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/convex_hull.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeConvexHull.html) )
 
-Node implemented as property.
-
 ### Returns:
 - socket `convex_hull` of class Mesh
 
-<sub>Go to [top](#class-Geometry)</sub>
+<sub>Go to [top](#class-Geometry)</sub> [data structure](../structure.md)
 
 ## curve_component <sub>*property*</sub>
 
@@ -227,12 +219,10 @@ def curve_component(self):
 ```
 Node [Separate Components](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/separate_components.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSeparateComponents.html) )
 
-Node implemented as property.
-
 ### Returns:
 - socket `curve` of class Curve
 
-<sub>Go to [top](#class-Geometry)</sub>
+<sub>Go to [top](#class-Geometry)</sub> [data structure](../structure.md)
 
 ## delete
 
@@ -250,7 +240,7 @@ Node [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geomet
 ### Returns:
 - self
 
-<sub>Go to [top](#class-Geometry)</sub>
+<sub>Go to [top](#class-Geometry)</sub> [data structure](../structure.md)
 
 ## domain_size <sub>*property*</sub>
 
@@ -260,12 +250,10 @@ def domain_size(self, component='MESH'):
 ```
 Node [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html) )
 
-Node implemented as property.
-
 ### Returns:
 - node with sockets ['point_count', 'edge_count', 'face_count', 'face_corner_count', 'spline_count', 'instance_count']
 
-<sub>Go to [top](#class-Geometry)</sub>
+<sub>Go to [top](#class-Geometry)</sub> [data structure](../structure.md)
 
 ## duplicate
 
@@ -283,7 +271,7 @@ Node [Duplicate Elements](https://docs.blender.org/manual/en/latest/modeling/geo
 ### Returns:
 - socket `duplicate_index`
 
-<sub>Go to [top](#class-Geometry)</sub>
+<sub>Go to [top](#class-Geometry)</sub> [data structure](../structure.md)
 
 ## field_at_index
 
@@ -301,7 +289,7 @@ Node [Field at Index](https://docs.blender.org/manual/en/latest/modeling/geometr
 ### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-Geometry)</sub>
+<sub>Go to [top](#class-Geometry)</sub> [data structure](../structure.md)
 
 ## get_named_boolean
 
@@ -317,7 +305,7 @@ Node [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geomet
 ### Returns:
 - socket `attribute`
 
-<sub>Go to [top](#class-Geometry)</sub>
+<sub>Go to [top](#class-Geometry)</sub> [data structure](../structure.md)
 
 ## get_named_color
 
@@ -333,7 +321,7 @@ Node [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geomet
 ### Returns:
 - socket `attribute`
 
-<sub>Go to [top](#class-Geometry)</sub>
+<sub>Go to [top](#class-Geometry)</sub> [data structure](../structure.md)
 
 ## get_named_float
 
@@ -349,7 +337,7 @@ Node [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geomet
 ### Returns:
 - socket `attribute`
 
-<sub>Go to [top](#class-Geometry)</sub>
+<sub>Go to [top](#class-Geometry)</sub> [data structure](../structure.md)
 
 ## get_named_integer
 
@@ -365,7 +353,7 @@ Node [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geomet
 ### Returns:
 - socket `attribute`
 
-<sub>Go to [top](#class-Geometry)</sub>
+<sub>Go to [top](#class-Geometry)</sub> [data structure](../structure.md)
 
 ## get_named_vector
 
@@ -381,7 +369,7 @@ Node [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geomet
 ### Returns:
 - socket `attribute`
 
-<sub>Go to [top](#class-Geometry)</sub>
+<sub>Go to [top](#class-Geometry)</sub> [data structure](../structure.md)
 
 ## index <sub>*property*</sub>
 
@@ -394,7 +382,7 @@ Node [Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/i
 ### Returns:
 - socket `index`
 
-<sub>Go to [top](#class-Geometry)</sub>
+<sub>Go to [top](#class-Geometry)</sub> [data structure](../structure.md)
 
 ## instances_component <sub>*property*</sub>
 
@@ -404,12 +392,10 @@ def instances_component(self):
 ```
 Node [Separate Components](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/separate_components.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSeparateComponents.html) )
 
-Node implemented as property.
-
 ### Returns:
 - socket `instances` of class Instances
 
-<sub>Go to [top](#class-Geometry)</sub>
+<sub>Go to [top](#class-Geometry)</sub> [data structure](../structure.md)
 
 ## is_viewport <sub>*property*</sub>
 
@@ -422,7 +408,7 @@ Node [Is Viewport](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 ### Returns:
 - socket `is_viewport`
 
-<sub>Go to [top](#class-Geometry)</sub>
+<sub>Go to [top](#class-Geometry)</sub> [data structure](../structure.md)
 
 ## join
 
@@ -438,7 +424,7 @@ Node [Join Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry
 ### Returns:
 - self
 
-<sub>Go to [top](#class-Geometry)</sub>
+<sub>Go to [top](#class-Geometry)</sub> [data structure](../structure.md)
 
 ## material_index <sub>*property*</sub>
 
@@ -451,7 +437,7 @@ Node [Material Index](https://docs.blender.org/manual/en/latest/modeling/geometr
 ### Returns:
 - socket `material_index`
 
-<sub>Go to [top](#class-Geometry)</sub>
+<sub>Go to [top](#class-Geometry)</sub> [data structure](../structure.md)
 
 ## material_selection
 
@@ -467,7 +453,7 @@ Node [Material Selection](https://docs.blender.org/manual/en/latest/modeling/geo
 ### Returns:
 - socket `selection`
 
-<sub>Go to [top](#class-Geometry)</sub>
+<sub>Go to [top](#class-Geometry)</sub> [data structure](../structure.md)
 
 ## merge_by_distance
 
@@ -485,7 +471,7 @@ Node [Merge by Distance](https://docs.blender.org/manual/en/latest/modeling/geom
 ### Returns:
 - self
 
-<sub>Go to [top](#class-Geometry)</sub>
+<sub>Go to [top](#class-Geometry)</sub> [data structure](../structure.md)
 
 ## mesh_component <sub>*property*</sub>
 
@@ -495,12 +481,10 @@ def mesh_component(self):
 ```
 Node [Separate Components](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/separate_components.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSeparateComponents.html) )
 
-Node implemented as property.
-
 ### Returns:
 - socket `mesh` of class Mesh
 
-<sub>Go to [top](#class-Geometry)</sub>
+<sub>Go to [top](#class-Geometry)</sub> [data structure](../structure.md)
 
 ## named_attribute
 
@@ -517,7 +501,7 @@ Node [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geomet
 ### Returns:
 - socket `attribute`
 
-<sub>Go to [top](#class-Geometry)</sub>
+<sub>Go to [top](#class-Geometry)</sub> [data structure](../structure.md)
 
 ## normal <sub>*property*</sub>
 
@@ -530,7 +514,7 @@ Node [Normal](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/
 ### Returns:
 - socket `normal`
 
-<sub>Go to [top](#class-Geometry)</sub>
+<sub>Go to [top](#class-Geometry)</sub> [data structure](../structure.md)
 
 ## points_component <sub>*property*</sub>
 
@@ -540,12 +524,10 @@ def points_component(self):
 ```
 Node [Separate Components](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/separate_components.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSeparateComponents.html) )
 
-Node implemented as property.
-
 ### Returns:
 - socket `point_cloud` of class Points
 
-<sub>Go to [top](#class-Geometry)</sub>
+<sub>Go to [top](#class-Geometry)</sub> [data structure](../structure.md)
 
 ## position <sub>*property*</sub>
 
@@ -558,7 +540,7 @@ Node [Position](https://docs.blender.org/manual/en/latest/modeling/geometry_node
 ### Returns:
 - socket `position`
 
-<sub>Go to [top](#class-Geometry)</sub>
+<sub>Go to [top](#class-Geometry)</sub> [data structure](../structure.md)
 
 ## proximity
 
@@ -576,7 +558,7 @@ Node [Geometry Proximity](https://docs.blender.org/manual/en/latest/modeling/geo
 ### Returns:
 - socket `distance`
 
-<sub>Go to [top](#class-Geometry)</sub>
+<sub>Go to [top](#class-Geometry)</sub> [data structure](../structure.md)
 
 ## proximity_edges
 
@@ -593,7 +575,7 @@ Node [Geometry Proximity](https://docs.blender.org/manual/en/latest/modeling/geo
 ### Returns:
 - socket `distance`
 
-<sub>Go to [top](#class-Geometry)</sub>
+<sub>Go to [top](#class-Geometry)</sub> [data structure](../structure.md)
 
 ## proximity_facess
 
@@ -610,7 +592,7 @@ Node [Geometry Proximity](https://docs.blender.org/manual/en/latest/modeling/geo
 ### Returns:
 - socket `distance`
 
-<sub>Go to [top](#class-Geometry)</sub>
+<sub>Go to [top](#class-Geometry)</sub> [data structure](../structure.md)
 
 ## proximity_points
 
@@ -627,7 +609,7 @@ Node [Geometry Proximity](https://docs.blender.org/manual/en/latest/modeling/geo
 ### Returns:
 - socket `distance`
 
-<sub>Go to [top](#class-Geometry)</sub>
+<sub>Go to [top](#class-Geometry)</sub> [data structure](../structure.md)
 
 ## radius <sub>*property*</sub>
 
@@ -640,7 +622,7 @@ Node [Radius](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/
 ### Returns:
 - socket `radius`
 
-<sub>Go to [top](#class-Geometry)</sub>
+<sub>Go to [top](#class-Geometry)</sub> [data structure](../structure.md)
 
 ## random_boolean
 
@@ -658,7 +640,7 @@ Node [Random Value](https://docs.blender.org/manual/en/latest/modeling/geometry_
 ### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-Geometry)</sub>
+<sub>Go to [top](#class-Geometry)</sub> [data structure](../structure.md)
 
 ## random_float
 
@@ -677,7 +659,7 @@ Node [Random Value](https://docs.blender.org/manual/en/latest/modeling/geometry_
 ### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-Geometry)</sub>
+<sub>Go to [top](#class-Geometry)</sub> [data structure](../structure.md)
 
 ## random_integer
 
@@ -696,7 +678,7 @@ Node [Random Value](https://docs.blender.org/manual/en/latest/modeling/geometry_
 ### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-Geometry)</sub>
+<sub>Go to [top](#class-Geometry)</sub> [data structure](../structure.md)
 
 ## random_vector
 
@@ -715,7 +697,7 @@ Node [Random Value](https://docs.blender.org/manual/en/latest/modeling/geometry_
 ### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-Geometry)</sub>
+<sub>Go to [top](#class-Geometry)</sub> [data structure](../structure.md)
 
 ## raycast
 
@@ -736,7 +718,7 @@ Node [Raycast](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 ### Returns:
 - node with sockets ['is_hit', 'hit_position', 'hit_normal', 'hit_distance', 'attribute']
 
-<sub>Go to [top](#class-Geometry)</sub>
+<sub>Go to [top](#class-Geometry)</sub> [data structure](../structure.md)
 
 ## raycast_interpolated
 
@@ -756,7 +738,7 @@ Node [Raycast](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 ### Returns:
 - node with sockets ['is_hit', 'hit_position', 'hit_normal', 'hit_distance', 'attribute']
 
-<sub>Go to [top](#class-Geometry)</sub>
+<sub>Go to [top](#class-Geometry)</sub> [data structure](../structure.md)
 
 ## raycast_nearest
 
@@ -776,7 +758,7 @@ Node [Raycast](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 ### Returns:
 - node with sockets ['is_hit', 'hit_position', 'hit_normal', 'hit_distance', 'attribute']
 
-<sub>Go to [top](#class-Geometry)</sub>
+<sub>Go to [top](#class-Geometry)</sub> [data structure](../structure.md)
 
 ## remove_named_attribute
 
@@ -792,7 +774,7 @@ Node [Remove Named Attribute](https://docs.blender.org/manual/en/latest/modeling
 ### Returns:
 - self
 
-<sub>Go to [top](#class-Geometry)</sub>
+<sub>Go to [top](#class-Geometry)</sub> [data structure](../structure.md)
 
 ## replace_material
 
@@ -809,7 +791,7 @@ Node [Replace Material](https://docs.blender.org/manual/en/latest/modeling/geome
 ### Returns:
 - self
 
-<sub>Go to [top](#class-Geometry)</sub>
+<sub>Go to [top](#class-Geometry)</sub> [data structure](../structure.md)
 
 ## sample_index
 
@@ -828,7 +810,7 @@ Node [Sample Index](https://docs.blender.org/manual/en/latest/modeling/geometry_
 ### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-Geometry)</sub>
+<sub>Go to [top](#class-Geometry)</sub> [data structure](../structure.md)
 
 ## sample_nearest
 
@@ -845,7 +827,7 @@ Node [Sample Nearest](https://docs.blender.org/manual/en/latest/modeling/geometr
 ### Returns:
 - socket `index`
 
-<sub>Go to [top](#class-Geometry)</sub>
+<sub>Go to [top](#class-Geometry)</sub> [data structure](../structure.md)
 
 ## separate
 
@@ -863,7 +845,7 @@ Node [Separate Geometry](https://docs.blender.org/manual/en/latest/modeling/geom
 ### Returns:
 - tuple ('`selection`', '`inverted`')
 
-<sub>Go to [top](#class-Geometry)</sub>
+<sub>Go to [top](#class-Geometry)</sub> [data structure](../structure.md)
 
 ## separate_components <sub>*property*</sub>
 
@@ -873,12 +855,10 @@ def separate_components(self):
 ```
 Node [Separate Components](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/separate_components.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSeparateComponents.html) )
 
-Node implemented as property.
-
 ### Returns:
 - node with sockets ['mesh', 'point_cloud', 'curve', 'volume', 'instances']
 
-<sub>Go to [top](#class-Geometry)</sub>
+<sub>Go to [top](#class-Geometry)</sub> [data structure](../structure.md)
 
 ## set_ID
 
@@ -895,7 +875,7 @@ Node [Set ID](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/
 ### Returns:
 - self
 
-<sub>Go to [top](#class-Geometry)</sub>
+<sub>Go to [top](#class-Geometry)</sub> [data structure](../structure.md)
 
 ## set_material
 
@@ -912,7 +892,7 @@ Node [Set Material](https://docs.blender.org/manual/en/latest/modeling/geometry_
 ### Returns:
 - self
 
-<sub>Go to [top](#class-Geometry)</sub>
+<sub>Go to [top](#class-Geometry)</sub> [data structure](../structure.md)
 
 ## set_material_index
 
@@ -929,7 +909,7 @@ Node [Set Material Index](https://docs.blender.org/manual/en/latest/modeling/geo
 ### Returns:
 - self
 
-<sub>Go to [top](#class-Geometry)</sub>
+<sub>Go to [top](#class-Geometry)</sub> [data structure](../structure.md)
 
 ## set_named_boolean
 
@@ -947,7 +927,7 @@ Node [Store Named Attribute](https://docs.blender.org/manual/en/latest/modeling/
 ### Returns:
 - self
 
-<sub>Go to [top](#class-Geometry)</sub>
+<sub>Go to [top](#class-Geometry)</sub> [data structure](../structure.md)
 
 ## set_named_color
 
@@ -965,7 +945,7 @@ Node [Store Named Attribute](https://docs.blender.org/manual/en/latest/modeling/
 ### Returns:
 - self
 
-<sub>Go to [top](#class-Geometry)</sub>
+<sub>Go to [top](#class-Geometry)</sub> [data structure](../structure.md)
 
 ## set_named_float
 
@@ -983,7 +963,7 @@ Node [Store Named Attribute](https://docs.blender.org/manual/en/latest/modeling/
 ### Returns:
 - self
 
-<sub>Go to [top](#class-Geometry)</sub>
+<sub>Go to [top](#class-Geometry)</sub> [data structure](../structure.md)
 
 ## set_named_integer
 
@@ -1001,7 +981,7 @@ Node [Store Named Attribute](https://docs.blender.org/manual/en/latest/modeling/
 ### Returns:
 - self
 
-<sub>Go to [top](#class-Geometry)</sub>
+<sub>Go to [top](#class-Geometry)</sub> [data structure](../structure.md)
 
 ## set_named_vector
 
@@ -1019,7 +999,7 @@ Node [Store Named Attribute](https://docs.blender.org/manual/en/latest/modeling/
 ### Returns:
 - self
 
-<sub>Go to [top](#class-Geometry)</sub>
+<sub>Go to [top](#class-Geometry)</sub> [data structure](../structure.md)
 
 ## set_position
 
@@ -1037,7 +1017,7 @@ Node [Set Position](https://docs.blender.org/manual/en/latest/modeling/geometry_
 ### Returns:
 - self
 
-<sub>Go to [top](#class-Geometry)</sub>
+<sub>Go to [top](#class-Geometry)</sub> [data structure](../structure.md)
 
 ## store_named_attribute
 
@@ -1055,7 +1035,7 @@ Node [Store Named Attribute](https://docs.blender.org/manual/en/latest/modeling/
 ### Returns:
 - self
 
-<sub>Go to [top](#class-Geometry)</sub>
+<sub>Go to [top](#class-Geometry)</sub> [data structure](../structure.md)
 
 ## switch
 
@@ -1072,7 +1052,7 @@ Node [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/
 ### Returns:
 - socket `output`
 
-<sub>Go to [top](#class-Geometry)</sub>
+<sub>Go to [top](#class-Geometry)</sub> [data structure](../structure.md)
 
 ## to_instance
 
@@ -1088,7 +1068,7 @@ Node [Geometry to Instance](https://docs.blender.org/manual/en/latest/modeling/g
 ### Returns:
 - socket `instances` of class Instances
 
-<sub>Go to [top](#class-Geometry)</sub>
+<sub>Go to [top](#class-Geometry)</sub> [data structure](../structure.md)
 
 ## transform
 
@@ -1106,7 +1086,7 @@ Node [Transform](https://docs.blender.org/manual/en/latest/modeling/geometry_nod
 ### Returns:
 - self
 
-<sub>Go to [top](#class-Geometry)</sub>
+<sub>Go to [top](#class-Geometry)</sub> [data structure](../structure.md)
 
 ## volume_component <sub>*property*</sub>
 
@@ -1116,10 +1096,8 @@ def volume_component(self):
 ```
 Node [Separate Components](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/separate_components.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSeparateComponents.html) )
 
-Node implemented as property.
-
 ### Returns:
 - socket `volume` of class Volume
 
-<sub>Go to [top](#class-Geometry)</sub>
+<sub>Go to [top](#class-Geometry)</sub> [data structure](../structure.md)
 
