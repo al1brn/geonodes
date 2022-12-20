@@ -14,13 +14,13 @@
 
 ## domain_size
 
-{#domain_size}
+```python
+def __len__(self):
 
-> def __len__(self):
-
+```
 Node [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html) )
 
-        ### Args:
+### Args:
 - geometry: Geometry
 - component (str): 'MESH' in [MESH, POINTCLOUD, CURVE, INSTANCES]
 
@@ -30,13 +30,13 @@ Node [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 
 ## instance_on_points
 
-{#instance_on_points}
+```python
+def instance_on_points(self, instance=None, pick_instance=None, instance_index=None, rotation=None, scale=None):
 
-> def instance_on_points(self, instance=None, pick_instance=None, instance_index=None, rotation=None, scale=None):
-
+```
 Node [Instance on Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instance_on_points.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInstanceOnPoints.html) )
 
-        ### Args:
+### Args:
 - instance: Geometry
 - pick_instance: Boolean
 - instance_index: Integer
@@ -49,10 +49,10 @@ Node [Instance on Points](https://docs.blender.org/manual/en/latest/modeling/geo
 
 ## radius *property*
 
-{#radius}
+```python
+def radius(self):
 
-> def radius(self):
-
+```
 Node [Radius](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/radius.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputRadius.html) )
 
 ### Returns:
@@ -61,10 +61,10 @@ Node [Radius](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/
 
 ## radius *etter*
 
-{#radius}
+```python
+def radius(self, attr_value):
 
-> def radius(self, attr_value):
-
+```
 Node [Set Point Radius](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/point/set_point_radius.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetPointRadius.html) )
 
 Node implemented as property setter.
@@ -74,13 +74,13 @@ Node implemented as property setter.
 
 ## to_vertices
 
-{#to_vertices}
+```python
+def to_vertices(self, points=None):
 
-> def to_vertices(self, points=None):
-
+```
 Node [Points to Vertices](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/point/points_to_vertices.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodePointsToVertices.html) )
 
-        ### Args:
+### Args:
 - points: Points
 
 ### Returns:

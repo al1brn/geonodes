@@ -27,10 +27,10 @@
 
 ## angle *property*
 
-{#angle}
+```python
+def angle(self):
 
-> def angle(self):
-
+```
 Node [Edge Angle](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/edge_angle.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshEdgeAngle.html) )
 
 ### Returns:
@@ -39,10 +39,10 @@ Node [Edge Angle](https://docs.blender.org/manual/en/latest/modeling/geometry_no
 
 ## delete_all
 
-{#delete_all}
+```python
+def delete_all(self):
 
-> def delete_all(self):
-
+```
 Node [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/delete_geometry.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeDeleteGeometry.html) )
 
 ### Returns:
@@ -51,10 +51,10 @@ Node [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geomet
 
 ## delete_edges
 
-{#delete_edges}
+```python
+def delete_edges(self):
 
-> def delete_edges(self):
-
+```
 Node [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/delete_geometry.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeDeleteGeometry.html) )
 
 ### Returns:
@@ -63,10 +63,10 @@ Node [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geomet
 
 ## delete_faces
 
-{#delete_faces}
+```python
+def delete_faces(self):
 
-> def delete_faces(self):
-
+```
 Node [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/delete_geometry.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeDeleteGeometry.html) )
 
 ### Returns:
@@ -75,13 +75,13 @@ Node [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geomet
 
 ## domain_size
 
-{#domain_size}
+```python
+def __len__(self):
 
-> def __len__(self):
-
+```
 Node [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html) )
 
-        ### Args:
+### Args:
 - geometry: Geometry
 - component (str): 'MESH' in [MESH, POINTCLOUD, CURVE, INSTANCES]
 
@@ -91,13 +91,13 @@ Node [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 
 ## edge_paths_to_curves
 
-{#edge_paths_to_curves}
+```python
+def edge_paths_to_curves(self, start_vertices=None, next_vertex_index=None):
 
-> def edge_paths_to_curves(self, start_vertices=None, next_vertex_index=None):
-
+```
 Node [Edge Paths to Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/edge_paths_to_curves.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeEdgePathsToCurves.html) )
 
-        ### Args:
+### Args:
 - start_vertices: Boolean
 - next_vertex_index: Integer
 
@@ -107,13 +107,13 @@ Node [Edge Paths to Curves](https://docs.blender.org/manual/en/latest/modeling/g
 
 ## extrude
 
-{#extrude}
+```python
+def extrude(self, offset=None, offset_scale=None, individual=None):
 
-> def extrude(self, offset=None, offset_scale=None, individual=None):
-
+```
 Node [Extrude Mesh](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/extrude_mesh.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeExtrudeMesh.html) )
 
-        ### Args:
+### Args:
 - offset: Vector
 - offset_scale: Float
 - individual: Boolean
@@ -124,10 +124,10 @@ Node [Extrude Mesh](https://docs.blender.org/manual/en/latest/modeling/geometry_
 
 ## neighbors *property*
 
-{#neighbors}
+```python
+def neighbors(self):
 
-> def neighbors(self):
-
+```
 Node [Edge Neighbors](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/edge_neighbors.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshEdgeNeighbors.html) )
 
 ### Returns:
@@ -136,13 +136,13 @@ Node [Edge Neighbors](https://docs.blender.org/manual/en/latest/modeling/geometr
 
 ## scale_single_axis
 
-{#scale_single_axis}
+```python
+def scale_single_axis(self, scale=None, center=None, axis=None):
 
-> def scale_single_axis(self, scale=None, center=None, axis=None):
-
+```
 Node [Scale Elements](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/scale_elements.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeScaleElements.html) )
 
-        ### Args:
+### Args:
 - scale: Float
 - center: Vector
 - axis: Vector
@@ -153,13 +153,13 @@ Node [Scale Elements](https://docs.blender.org/manual/en/latest/modeling/geometr
 
 ## scale_uniform
 
-{#scale_uniform}
+```python
+def scale_uniform(self, scale=None, center=None):
 
-> def scale_uniform(self, scale=None, center=None):
-
+```
 Node [Scale Elements](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/scale_elements.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeScaleElements.html) )
 
-        ### Args:
+### Args:
 - scale: Float
 - center: Vector
 
@@ -169,10 +169,10 @@ Node [Scale Elements](https://docs.blender.org/manual/en/latest/modeling/geometr
 
 ## signed_angle *property*
 
-{#signed_angle}
+```python
+def signed_angle(self):
 
-> def signed_angle(self):
-
+```
 Node [Edge Angle](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/edge_angle.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshEdgeAngle.html) )
 
 ### Returns:
@@ -181,10 +181,10 @@ Node [Edge Angle](https://docs.blender.org/manual/en/latest/modeling/geometry_no
 
 ## split
 
-{#split}
+```python
+def split(self):
 
-> def split(self):
-
+```
 Node [Split Edges](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/split_edges.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSplitEdges.html) )
 
 ### Returns:
@@ -193,10 +193,10 @@ Node [Split Edges](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 
 ## to_curve
 
-{#to_curve}
+```python
+def to_curve(self):
 
-> def to_curve(self):
-
+```
 Node [Mesh to Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/mesh_to_curve.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshToCurve.html) )
 
 ### Returns:
@@ -205,10 +205,10 @@ Node [Mesh to Curve](https://docs.blender.org/manual/en/latest/modeling/geometry
 
 ## unsigned_angle *property*
 
-{#unsigned_angle}
+```python
+def unsigned_angle(self):
 
-> def unsigned_angle(self):
-
+```
 Node [Edge Angle](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/edge_angle.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshEdgeAngle.html) )
 
 ### Returns:
@@ -217,10 +217,10 @@ Node [Edge Angle](https://docs.blender.org/manual/en/latest/modeling/geometry_no
 
 ## vertices *property*
 
-{#vertices}
+```python
+def vertices(self):
 
-> def vertices(self):
-
+```
 Node [Edge Vertices](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/edge_vertices.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshEdgeVertices.html) )
 
 ### Returns:
@@ -229,10 +229,10 @@ Node [Edge Vertices](https://docs.blender.org/manual/en/latest/modeling/geometry
 
 ## vertices_index *property*
 
-{#vertices_index}
+```python
+def vertices_index(self):
 
-> def vertices_index(self):
-
+```
 Node [Edge Vertices](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/edge_vertices.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshEdgeVertices.html) )
 
 ### Returns:
@@ -241,10 +241,10 @@ Node [Edge Vertices](https://docs.blender.org/manual/en/latest/modeling/geometry
 
 ## vertices_position *property*
 
-{#vertices_position}
+```python
+def vertices_position(self):
 
-> def vertices_position(self):
-
+```
 Node [Edge Vertices](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/edge_vertices.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshEdgeVertices.html) )
 
 ### Returns:

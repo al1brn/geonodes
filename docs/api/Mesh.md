@@ -66,13 +66,13 @@
 
 ## Circle *classmethod*
 
-{#Circle}
+```python
+def Circle(cls, vertices=None, radius=None, fill_type='NONE'):
 
-> def Circle(cls, vertices=None, radius=None, fill_type='NONE'):
-
+```
 Node [Mesh Circle](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh_primitives/mesh_circle.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshCircle.html) )
 
-        ### Args:
+### Args:
 - vertices: Integer
 - radius: Float
 - fill_type (str): 'NONE' in [NONE, NGON, TRIANGLE_FAN]
@@ -83,13 +83,13 @@ Node [Mesh Circle](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 
 ## Circle *classmethod*
 
-{#Circle}
+```python
+def Circle(cls, segments=None, rings=None, radius=None):
 
-> def Circle(cls, segments=None, rings=None, radius=None):
-
+```
 Node [UV Sphere](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh_primitives/uv_sphere.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshUVSphere.html) )
 
-        ### Args:
+### Args:
 - segments: Integer
 - rings: Integer
 - radius: Float
@@ -100,13 +100,13 @@ Node [UV Sphere](https://docs.blender.org/manual/en/latest/modeling/geometry_nod
 
 ## Cone *staticmethod*
 
-{#Cone}
+```python
+def Cone(vertices=None, side_segments=None, fill_segments=None, radius_top=None, radius_bottom=None, depth=None, fill_type='NGON'):
 
-> def Cone(vertices=None, side_segments=None, fill_segments=None, radius_top=None, radius_bottom=None, depth=None, fill_type='NGON'):
-
+```
 Node [Cone](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh_primitives/cone.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshCone.html) )
 
-        ### Args:
+### Args:
 - vertices: Integer
 - side_segments: Integer
 - fill_segments: Integer
@@ -121,13 +121,13 @@ Node [Cone](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/me
 
 ## Cube *classmethod*
 
-{#Cube}
+```python
+def Cube(cls, size=None, vertices_x=None, vertices_y=None, vertices_z=None):
 
-> def Cube(cls, size=None, vertices_x=None, vertices_y=None, vertices_z=None):
-
+```
 Node [Cube](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh_primitives/cube.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshCube.html) )
 
-        ### Args:
+### Args:
 - size: Vector
 - vertices_x: Integer
 - vertices_y: Integer
@@ -139,13 +139,13 @@ Node [Cube](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/me
 
 ## Cylinder *staticmethod*
 
-{#Cylinder}
+```python
+def Cylinder(vertices=None, side_segments=None, fill_segments=None, radius=None, depth=None, fill_type='NGON'):
 
-> def Cylinder(vertices=None, side_segments=None, fill_segments=None, radius=None, depth=None, fill_type='NGON'):
-
+```
 Node [Cylinder](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh_primitives/cylinder.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshCylinder.html) )
 
-        ### Args:
+### Args:
 - vertices: Integer
 - side_segments: Integer
 - fill_segments: Integer
@@ -159,13 +159,13 @@ Node [Cylinder](https://docs.blender.org/manual/en/latest/modeling/geometry_node
 
 ## Grid *classmethod*
 
-{#Grid}
+```python
+def Grid(cls, size_x=None, size_y=None, vertices_x=None, vertices_y=None):
 
-> def Grid(cls, size_x=None, size_y=None, vertices_x=None, vertices_y=None):
-
+```
 Node [Grid](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh_primitives/grid.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshGrid.html) )
 
-        ### Args:
+### Args:
 - size_x: Float
 - size_y: Float
 - vertices_x: Integer
@@ -177,13 +177,13 @@ Node [Grid](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/me
 
 ## IcoSphere *classmethod*
 
-{#IcoSphere}
+```python
+def IcoSphere(cls, radius=None, subdivisions=None):
 
-> def IcoSphere(cls, radius=None, subdivisions=None):
-
+```
 Node [Ico Sphere](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh_primitives/icosphere.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshIcoSphere.html) )
 
-        ### Args:
+### Args:
 - radius: Float
 - subdivisions: Integer
 
@@ -193,13 +193,13 @@ Node [Ico Sphere](https://docs.blender.org/manual/en/latest/modeling/geometry_no
 
 ## Line *classmethod*
 
-{#Line}
+```python
+def Line(cls, count=None, resolution=None, start_location=None, offset=None, count_mode='TOTAL', mode='OFFSET'):
 
-> def Line(cls, count=None, resolution=None, start_location=None, offset=None, count_mode='TOTAL', mode='OFFSET'):
-
+```
 Node [Mesh Line](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh_primitives/mesh_line.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshLine.html) )
 
-        ### Args:
+### Args:
 - count: Integer
 - resolution: Float
 - start_location: Vector
@@ -213,13 +213,13 @@ Node [Mesh Line](https://docs.blender.org/manual/en/latest/modeling/geometry_nod
 
 ## LineEndPoints *classmethod*
 
-{#LineEndPoints}
+```python
+def LineEndPoints(cls, count=None, start_location=None, end_location=None):
 
-> def LineEndPoints(cls, count=None, start_location=None, end_location=None):
-
+```
 Node [Mesh Line](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh_primitives/mesh_line.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshLine.html) )
 
-        ### Args:
+### Args:
 - count: Integer
 - start_location: Vector
 - end_location: Vector
@@ -230,13 +230,13 @@ Node [Mesh Line](https://docs.blender.org/manual/en/latest/modeling/geometry_nod
 
 ## LineEndPointsResolution *classmethod*
 
-{#LineEndPointsResolution}
+```python
+def LineEndPointsResolution(cls, resolution=None, start_location=None, end_location=None):
 
-> def LineEndPointsResolution(cls, resolution=None, start_location=None, end_location=None):
-
+```
 Node [Mesh Line](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh_primitives/mesh_line.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshLine.html) )
 
-        ### Args:
+### Args:
 - resolution: Float
 - start_location: Vector
 - end_location: Vector
@@ -247,13 +247,13 @@ Node [Mesh Line](https://docs.blender.org/manual/en/latest/modeling/geometry_nod
 
 ## LineOffset *classmethod*
 
-{#LineOffset}
+```python
+def LineOffset(cls, count=None, start_location=None, offset=None):
 
-> def LineOffset(cls, count=None, start_location=None, offset=None):
-
+```
 Node [Mesh Line](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh_primitives/mesh_line.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshLine.html) )
 
-        ### Args:
+### Args:
 - count: Integer
 - start_location: Vector
 - offset: Vector
@@ -264,13 +264,13 @@ Node [Mesh Line](https://docs.blender.org/manual/en/latest/modeling/geometry_nod
 
 ## LineOffsetResolution *classmethod*
 
-{#LineOffsetResolution}
+```python
+def LineOffsetResolution(cls, resolution=None, start_location=None, offset=None):
 
-> def LineOffsetResolution(cls, resolution=None, start_location=None, offset=None):
-
+```
 Node [Mesh Line](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh_primitives/mesh_line.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshLine.html) )
 
-        ### Args:
+### Args:
 - resolution: Float
 - start_location: Vector
 - offset: Vector
@@ -281,13 +281,13 @@ Node [Mesh Line](https://docs.blender.org/manual/en/latest/modeling/geometry_nod
 
 ## boolean_difference
 
-{#boolean_difference}
+```python
+def boolean_difference(self, *mesh_2, self_intersection=None, hole_tolerant=None):
 
-> def boolean_difference(self, *mesh_2, self_intersection=None, hole_tolerant=None):
-
+```
 Node [Mesh Boolean](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/mesh_boolean.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshBoolean.html) )
 
-        ### Args:
+### Args:
 - mesh_2: <m>Geometry
 - self_intersection: Boolean
 - hole_tolerant: Boolean
@@ -298,13 +298,13 @@ Node [Mesh Boolean](https://docs.blender.org/manual/en/latest/modeling/geometry_
 
 ## boolean_intersect
 
-{#boolean_intersect}
+```python
+def boolean_intersect(*mesh_2, self_intersection=None, hole_tolerant=None):
 
-> def boolean_intersect(*mesh_2, self_intersection=None, hole_tolerant=None):
-
+```
 Node [Mesh Boolean](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/mesh_boolean.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshBoolean.html) )
 
-        ### Args:
+### Args:
 - mesh_2: <m>Geometry
 - self_intersection: Boolean
 - hole_tolerant: Boolean
@@ -315,13 +315,13 @@ Node [Mesh Boolean](https://docs.blender.org/manual/en/latest/modeling/geometry_
 
 ## boolean_union
 
-{#boolean_union}
+```python
+def boolean_union(*mesh_2, self_intersection=None, hole_tolerant=None):
 
-> def boolean_union(*mesh_2, self_intersection=None, hole_tolerant=None):
-
+```
 Node [Mesh Boolean](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/mesh_boolean.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshBoolean.html) )
 
-        ### Args:
+### Args:
 - mesh_2: <m>Geometry
 - self_intersection: Boolean
 - hole_tolerant: Boolean
@@ -332,10 +332,10 @@ Node [Mesh Boolean](https://docs.blender.org/manual/en/latest/modeling/geometry_
 
 ## corner_count *property*
 
-{#corner_count}
+```python
+def corner_count(self):
 
-> def corner_count(self):
-
+```
 Node [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html) )
 
 Node implemented as property.
@@ -346,13 +346,13 @@ Node implemented as property.
 
 ## delete_all
 
-{#delete_all}
+```python
+def delete_all(self, selection=None, domain='POINT'):
 
-> def delete_all(self, selection=None, domain='POINT'):
-
+```
 Node [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/delete_geometry.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeDeleteGeometry.html) )
 
-        ### Args:
+### Args:
 - selection: Boolean
 - domain (str): 'POINT' in [POINT, EDGE, FACE, CURVE, INSTANCE]
 
@@ -362,13 +362,13 @@ Node [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geomet
 
 ## delete_edges
 
-{#delete_edges}
+```python
+def delete_edges(self, selection=None, domain='POINT'):
 
-> def delete_edges(self, selection=None, domain='POINT'):
-
+```
 Node [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/delete_geometry.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeDeleteGeometry.html) )
 
-        ### Args:
+### Args:
 - selection: Boolean
 - domain (str): 'POINT' in [POINT, EDGE, FACE, CURVE, INSTANCE]
 
@@ -378,13 +378,13 @@ Node [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geomet
 
 ## delete_faces
 
-{#delete_faces}
+```python
+def delete_faces(self, selection=None, domain='POINT'):
 
-> def delete_faces(self, selection=None, domain='POINT'):
-
+```
 Node [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/delete_geometry.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeDeleteGeometry.html) )
 
-        ### Args:
+### Args:
 - selection: Boolean
 - domain (str): 'POINT' in [POINT, EDGE, FACE, CURVE, INSTANCE]
 
@@ -394,13 +394,13 @@ Node [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geomet
 
 ## distribute_points_on_faces
 
-{#distribute_points_on_faces}
+```python
+def distribute_points_on_faces(self, selection=None, distance_min=None, density_max=None, density=None, density_factor=None, seed=None, distribute_method='RANDOM'):
 
-> def distribute_points_on_faces(self, selection=None, distance_min=None, density_max=None, density=None, density_factor=None, seed=None, distribute_method='RANDOM'):
-
+```
 Node [Distribute Points on Faces](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/point/distribute_points_on_faces.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeDistributePointsOnFaces.html) )
 
-        ### Args:
+### Args:
 - selection: Boolean
 - distance_min: Float
 - density_max: Float
@@ -415,10 +415,10 @@ Node [Distribute Points on Faces](https://docs.blender.org/manual/en/latest/mode
 
 ## domain_size *property*
 
-{#domain_size}
+```python
+def domain_size(self):
 
-> def domain_size(self):
-
+```
 Node [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html) )
 
 Node implemented as property.
@@ -429,13 +429,13 @@ Node implemented as property.
 
 ## dual_mesh
 
-{#dual_mesh}
+```python
+def dual_mesh(self, mesh=None, keep_boundaries=None):
 
-> def dual_mesh(self, mesh=None, keep_boundaries=None):
-
+```
 Node [Dual Mesh](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/dual_mesh.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeDualMesh.html) )
 
-        ### Args:
+### Args:
 - mesh: Mesh
 - keep_boundaries: Boolean
 
@@ -445,10 +445,10 @@ Node [Dual Mesh](https://docs.blender.org/manual/en/latest/modeling/geometry_nod
 
 ## edge_count *property*
 
-{#edge_count}
+```python
+def edge_count(self):
 
-> def edge_count(self):
-
+```
 Node [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html) )
 
 Node implemented as property.
@@ -459,13 +459,13 @@ Node implemented as property.
 
 ## edge_paths_to_curves
 
-{#edge_paths_to_curves}
+```python
+def edge_paths_to_curves(self, start_vertices=None, next_vertex_index=None):
 
-> def edge_paths_to_curves(self, start_vertices=None, next_vertex_index=None):
-
+```
 Node [Edge Paths to Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/edge_paths_to_curves.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeEdgePathsToCurves.html) )
 
-        ### Args:
+### Args:
 - start_vertices: Boolean
 - next_vertex_index: Integer
 
@@ -475,13 +475,13 @@ Node [Edge Paths to Curves](https://docs.blender.org/manual/en/latest/modeling/g
 
 ## edge_paths_to_selection
 
-{#edge_paths_to_selection}
+```python
+def edge_paths_to_selection(self, start_vertices=None, next_vertex_index=None):
 
-> def edge_paths_to_selection(self, start_vertices=None, next_vertex_index=None):
-
+```
 Node [Edge Paths to Selection](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/edge_paths_to_selection.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeEdgePathsToSelection.html) )
 
-        ### Args:
+### Args:
 - start_vertices: Boolean
 - next_vertex_index: Integer
 
@@ -491,13 +491,13 @@ Node [Edge Paths to Selection](https://docs.blender.org/manual/en/latest/modelin
 
 ## extrude
 
-{#extrude}
+```python
+def extrude(self, selection=None, offset=None, offset_scale=None, individual=None, mode='FACES'):
 
-> def extrude(self, selection=None, offset=None, offset_scale=None, individual=None, mode='FACES'):
-
+```
 Node [Extrude Mesh](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/extrude_mesh.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeExtrudeMesh.html) )
 
-        ### Args:
+### Args:
 - selection: Boolean
 - offset: Vector
 - offset_scale: Float
@@ -510,10 +510,10 @@ Node [Extrude Mesh](https://docs.blender.org/manual/en/latest/modeling/geometry_
 
 ## face_count *property*
 
-{#face_count}
+```python
+def face_count(self):
 
-> def face_count(self):
-
+```
 Node [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html) )
 
 Node implemented as property.
@@ -524,13 +524,13 @@ Node implemented as property.
 
 ## face_is_planar
 
-{#face_is_planar}
+```python
+def face_is_planar(self, threshold=None):
 
-> def face_is_planar(self, threshold=None):
-
+```
 Node [Face is Planar](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/face_is_planar.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshFaceIsPlanar.html) )
 
-        ### Args:
+### Args:
 - threshold: Float
 
 ### Returns:
@@ -539,13 +539,13 @@ Node [Face is Planar](https://docs.blender.org/manual/en/latest/modeling/geometr
 
 ## face_set_boundaries
 
-{#face_set_boundaries}
+```python
+def face_set_boundaries(self, face_set=None):
 
-> def face_set_boundaries(self, face_set=None):
-
+```
 Node [Face Set Boundaries](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/face_set_boundaries.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshFaceSetBoundaries.html) )
 
-        ### Args:
+### Args:
 - face_set: Integer
 
 ### Returns:
@@ -554,13 +554,13 @@ Node [Face Set Boundaries](https://docs.blender.org/manual/en/latest/modeling/ge
 
 ## flip_faces
 
-{#flip_faces}
+```python
+def flip_faces(self, selection=None):
 
-> def flip_faces(self, selection=None):
-
+```
 Node [Flip Faces](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/flip_faces.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeFlipFaces.html) )
 
-        ### Args:
+### Args:
 - selection: Boolean
 
 ### Returns:
@@ -569,13 +569,13 @@ Node [Flip Faces](https://docs.blender.org/manual/en/latest/modeling/geometry_no
 
 ## instance_on_points
 
-{#instance_on_points}
+```python
+def instance_on_points(self, selection=None, instance=None, pick_instance=None, instance_index=None, rotation=None, scale=None):
 
-> def instance_on_points(self, selection=None, instance=None, pick_instance=None, instance_index=None, rotation=None, scale=None):
-
+```
 Node [Instance on Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instance_on_points.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInstanceOnPoints.html) )
 
-        ### Args:
+### Args:
 - selection: Boolean
 - instance: Geometry
 - pick_instance: Boolean
@@ -589,10 +589,10 @@ Node [Instance on Points](https://docs.blender.org/manual/en/latest/modeling/geo
 
 ## is_shade_smooth
 
-{#is_shade_smooth}
+```python
+def is_shade_smooth(self):
 
-> def is_shade_smooth(self):
-
+```
 Node [Is Shade Smooth](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/is_shade_smooth.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputShadeSmooth.html) )
 
 ### Returns:
@@ -601,10 +601,10 @@ Node [Is Shade Smooth](https://docs.blender.org/manual/en/latest/modeling/geomet
 
 ## island *property*
 
-{#island}
+```python
+def island(self):
 
-> def island(self):
-
+```
 Node [Mesh Island](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/mesh_island.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshIsland.html) )
 
 ### Returns:
@@ -613,10 +613,10 @@ Node [Mesh Island](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 
 ## island_count *property*
 
-{#island_count}
+```python
+def island_count(self):
 
-> def island_count(self):
-
+```
 Node [Mesh Island](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/mesh_island.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshIsland.html) )
 
 ### Returns:
@@ -625,10 +625,10 @@ Node [Mesh Island](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 
 ## island_index *property*
 
-{#island_index}
+```python
+def island_index(self):
 
-> def island_index(self):
-
+```
 Node [Mesh Island](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/mesh_island.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshIsland.html) )
 
 ### Returns:
@@ -637,13 +637,13 @@ Node [Mesh Island](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 
 ## pack_uv_islands
 
-{#pack_uv_islands}
+```python
+def pack_uv_islands(self, uv=None, selection=None, margin=None, rotate=None):
 
-> def pack_uv_islands(self, uv=None, selection=None, margin=None, rotate=None):
-
+```
 Node [Pack UV Islands](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/uv/pack_uv_islands.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeUVPackIslands.html) )
 
-        ### Args:
+### Args:
 - uv: Vector
 - selection: Boolean
 - margin: Float
@@ -655,10 +655,10 @@ Node [Pack UV Islands](https://docs.blender.org/manual/en/latest/modeling/geomet
 
 ## point_count *property*
 
-{#point_count}
+```python
+def point_count(self):
 
-> def point_count(self):
-
+```
 Node [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html) )
 
 Node implemented as property.
@@ -669,13 +669,13 @@ Node implemented as property.
 
 ## sample_nearest_surface
 
-{#sample_nearest_surface}
+```python
+def sample_nearest_surface(self, value=None, sample_position=None):
 
-> def sample_nearest_surface(self, value=None, sample_position=None):
-
+```
 Node [Sample Nearest Surface](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/sample_nearest_surface.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSampleNearestSurface.html) )
 
-        ### Args:
+### Args:
 - value: ['Float', 'Integer', 'Vector', 'Color', 'Boolean']
 - sample_position: Vector
 
@@ -685,13 +685,13 @@ Node [Sample Nearest Surface](https://docs.blender.org/manual/en/latest/modeling
 
 ## sample_uv_surface
 
-{#sample_uv_surface}
+```python
+def sample_uv_surface(self, value=None, source_uv_map=None, sample_uv=None):
 
-> def sample_uv_surface(self, value=None, source_uv_map=None, sample_uv=None):
-
+```
 Node [Sample UV Surface](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/sample_uv_surface.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSampleUVSurface.html) )
 
-        ### Args:
+### Args:
 - value: ['Float', 'Integer', 'Vector', 'Color', 'Boolean']
 - source_uv_map: Vector
 - sample_uv: Vector
@@ -702,13 +702,13 @@ Node [Sample UV Surface](https://docs.blender.org/manual/en/latest/modeling/geom
 
 ## scale_elements
 
-{#scale_elements}
+```python
+def scale_elements(self, selection=None, scale=None, center=None, axis=None, domain='FACE', scale_mode='UNIFORM'):
 
-> def scale_elements(self, selection=None, scale=None, center=None, axis=None, domain='FACE', scale_mode='UNIFORM'):
-
+```
 Node [Scale Elements](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/scale_elements.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeScaleElements.html) )
 
-        ### Args:
+### Args:
 - selection: Boolean
 - scale: Float
 - center: Vector
@@ -722,13 +722,13 @@ Node [Scale Elements](https://docs.blender.org/manual/en/latest/modeling/geometr
 
 ## scale_single_axis
 
-{#scale_single_axis}
+```python
+def scale_single_axis(self, selection=None, scale=None, center=None, axis=None, domain='FACE'):
 
-> def scale_single_axis(self, selection=None, scale=None, center=None, axis=None, domain='FACE'):
-
+```
 Node [Scale Elements](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/scale_elements.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeScaleElements.html) )
 
-        ### Args:
+### Args:
 - selection: Boolean
 - scale: Float
 - center: Vector
@@ -741,13 +741,13 @@ Node [Scale Elements](https://docs.blender.org/manual/en/latest/modeling/geometr
 
 ## scale_uniform
 
-{#scale_uniform}
+```python
+def scale_uniform(self, selection=None, scale=None, center=None, domain='FACE'):
 
-> def scale_uniform(self, selection=None, scale=None, center=None, domain='FACE'):
-
+```
 Node [Scale Elements](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/scale_elements.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeScaleElements.html) )
 
-        ### Args:
+### Args:
 - selection: Boolean
 - scale: Float
 - center: Vector
@@ -759,13 +759,13 @@ Node [Scale Elements](https://docs.blender.org/manual/en/latest/modeling/geometr
 
 ## set_shade_smooth
 
-{#set_shade_smooth}
+```python
+def set_shade_smooth(self, selection=None, shade_smooth=None):
 
-> def set_shade_smooth(self, selection=None, shade_smooth=None):
-
+```
 Node [Set Shade Smooth](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/set_shade_smooth.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetShadeSmooth.html) )
 
-        ### Args:
+### Args:
 - selection: Boolean
 - shade_smooth: Boolean
 
@@ -775,13 +775,13 @@ Node [Set Shade Smooth](https://docs.blender.org/manual/en/latest/modeling/geome
 
 ## shortest_edge_paths
 
-{#shortest_edge_paths}
+```python
+def shortest_edge_paths(self, end_vertex=None, edge_cost=None):
 
-> def shortest_edge_paths(self, end_vertex=None, edge_cost=None):
-
+```
 Node [Shortest Edge Paths](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/shortest_edge_paths.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputShortestEdgePaths.html) )
 
-        ### Args:
+### Args:
 - end_vertex: Boolean
 - edge_cost: Float
 
@@ -791,13 +791,13 @@ Node [Shortest Edge Paths](https://docs.blender.org/manual/en/latest/modeling/ge
 
 ## split_edges
 
-{#split_edges}
+```python
+def split_edges(self, selection=None):
 
-> def split_edges(self, selection=None):
-
+```
 Node [Split Edges](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/split_edges.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSplitEdges.html) )
 
-        ### Args:
+### Args:
 - selection: Boolean
 
 ### Returns:
@@ -806,13 +806,13 @@ Node [Split Edges](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 
 ## subdivide
 
-{#subdivide}
+```python
+def subdivide(self, level=None):
 
-> def subdivide(self, level=None):
-
+```
 Node [Subdivide Mesh](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/subdivide_mesh.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSubdivideMesh.html) )
 
-        ### Args:
+### Args:
 - level: Integer
 
 ### Returns:
@@ -821,13 +821,13 @@ Node [Subdivide Mesh](https://docs.blender.org/manual/en/latest/modeling/geometr
 
 ## subdivision_surface
 
-{#subdivision_surface}
+```python
+def subdivision_surface(self, level=None, edge_crease=None, vertex_crease=None, boundary_smooth='ALL', uv_smooth='PRESERVE_BOUNDARIES'):
 
-> def subdivision_surface(self, level=None, edge_crease=None, vertex_crease=None, boundary_smooth='ALL', uv_smooth='PRESERVE_BOUNDARIES'):
-
+```
 Node [Subdivision Surface](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/subdivision_surface.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSubdivisionSurface.html) )
 
-        ### Args:
+### Args:
 - level: Integer
 - edge_crease: Float
 - vertex_crease: Float
@@ -840,13 +840,13 @@ Node [Subdivision Surface](https://docs.blender.org/manual/en/latest/modeling/ge
 
 ## to_curve
 
-{#to_curve}
+```python
+def to_curve(self, selection=None):
 
-> def to_curve(self, selection=None):
-
+```
 Node [Mesh to Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/mesh_to_curve.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshToCurve.html) )
 
-        ### Args:
+### Args:
 - selection: Boolean
 
 ### Returns:
@@ -855,13 +855,13 @@ Node [Mesh to Curve](https://docs.blender.org/manual/en/latest/modeling/geometry
 
 ## to_points
 
-{#to_points}
+```python
+def to_points(self, selection=None, position=None, radius=None, mode='VERTICES'):
 
-> def to_points(self, selection=None, position=None, radius=None, mode='VERTICES'):
-
+```
 Node [Mesh to Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/mesh_to_points.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshToPoints.html) )
 
-        ### Args:
+### Args:
 - selection: Boolean
 - position: Vector
 - radius: Float
@@ -873,13 +873,13 @@ Node [Mesh to Points](https://docs.blender.org/manual/en/latest/modeling/geometr
 
 ## to_volume
 
-{#to_volume}
+```python
+def to_volume(self, density=None, voxel_size=None, voxel_amount=None, exterior_band_width=None, interior_band_width=None, fill_volume=None, resolution_mode='VOXEL_AMOUNT'):
 
-> def to_volume(self, density=None, voxel_size=None, voxel_amount=None, exterior_band_width=None, interior_band_width=None, fill_volume=None, resolution_mode='VOXEL_AMOUNT'):
-
+```
 Node [Mesh to Volume](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/mesh_to_volume.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshToVolume.html) )
 
-        ### Args:
+### Args:
 - density: Float
 - voxel_size: Float
 - voxel_amount: Float
@@ -894,13 +894,13 @@ Node [Mesh to Volume](https://docs.blender.org/manual/en/latest/modeling/geometr
 
 ## triangulate
 
-{#triangulate}
+```python
+def triangulate(self, selection=None, minimum_vertices=None, ngon_method='BEAUTY', quad_method='SHORTEST_DIAGONAL'):
 
-> def triangulate(self, selection=None, minimum_vertices=None, ngon_method='BEAUTY', quad_method='SHORTEST_DIAGONAL'):
-
+```
 Node [Triangulate](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/triangulate.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeTriangulate.html) )
 
-        ### Args:
+### Args:
 - selection: Boolean
 - minimum_vertices: Integer
 - ngon_method (str): 'BEAUTY' in [BEAUTY, CLIP]
@@ -912,13 +912,13 @@ Node [Triangulate](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 
 ## uv_unwrap
 
-{#uv_unwrap}
+```python
+def uv_unwrap(self, selection=None, seam=None, margin=None, fill_holes=None, method='ANGLE_BASED'):
 
-> def uv_unwrap(self, selection=None, seam=None, margin=None, fill_holes=None, method='ANGLE_BASED'):
-
+```
 Node [UV Unwrap](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/uv/uv_unwrap.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeUVUnwrap.html) )
 
-        ### Args:
+### Args:
 - selection: Boolean
 - seam: Boolean
 - margin: Float

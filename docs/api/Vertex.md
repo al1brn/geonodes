@@ -22,10 +22,10 @@
 
 ## delete_all
 
-{#delete_all}
+```python
+def delete_all(self):
 
-> def delete_all(self):
-
+```
 Node [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/delete_geometry.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeDeleteGeometry.html) )
 
 ### Returns:
@@ -34,10 +34,10 @@ Node [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geomet
 
 ## delete_edges
 
-{#delete_edges}
+```python
+def delete_edges(self):
 
-> def delete_edges(self):
-
+```
 Node [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/delete_geometry.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeDeleteGeometry.html) )
 
 ### Returns:
@@ -46,10 +46,10 @@ Node [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geomet
 
 ## delete_faces
 
-{#delete_faces}
+```python
+def delete_faces(self):
 
-> def delete_faces(self):
-
+```
 Node [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/delete_geometry.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeDeleteGeometry.html) )
 
 ### Returns:
@@ -58,13 +58,13 @@ Node [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geomet
 
 ## domain_size
 
-{#domain_size}
+```python
+def __len__(self):
 
-> def __len__(self):
-
+```
 Node [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html) )
 
-        ### Args:
+### Args:
 - geometry: Geometry
 - component (str): 'MESH' in [MESH, POINTCLOUD, CURVE, INSTANCES]
 
@@ -74,13 +74,13 @@ Node [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 
 ## extrude
 
-{#extrude}
+```python
+def extrude(self, offset=None, offset_scale=None, individual=None):
 
-> def extrude(self, offset=None, offset_scale=None, individual=None):
-
+```
 Node [Extrude Mesh](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/extrude_mesh.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeExtrudeMesh.html) )
 
-        ### Args:
+### Args:
 - offset: Vector
 - offset_scale: Float
 - individual: Boolean
@@ -91,13 +91,13 @@ Node [Extrude Mesh](https://docs.blender.org/manual/en/latest/modeling/geometry_
 
 ## instance_on_points
 
-{#instance_on_points}
+```python
+def instance_on_points(self, instance=None, pick_instance=None, instance_index=None, rotation=None, scale=None):
 
-> def instance_on_points(self, instance=None, pick_instance=None, instance_index=None, rotation=None, scale=None):
-
+```
 Node [Instance on Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instance_on_points.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInstanceOnPoints.html) )
 
-        ### Args:
+### Args:
 - instance: Geometry
 - pick_instance: Boolean
 - instance_index: Integer
@@ -110,13 +110,13 @@ Node [Instance on Points](https://docs.blender.org/manual/en/latest/modeling/geo
 
 ## merge_by_distance
 
-{#merge_by_distance}
+```python
+def merge_by_distance(self, distance=None, mode='ALL'):
 
-> def merge_by_distance(self, distance=None, mode='ALL'):
-
+```
 Node [Merge by Distance](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/merge_by_distance.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeMergeByDistance.html) )
 
-        ### Args:
+### Args:
 - distance: Float
 - mode (str): 'ALL' in [ALL, CONNECTED]
 
@@ -126,10 +126,10 @@ Node [Merge by Distance](https://docs.blender.org/manual/en/latest/modeling/geom
 
 ## neighbors *property*
 
-{#neighbors}
+```python
+def neighbors(self):
 
-> def neighbors(self):
-
+```
 Node [Vertex Neighbors](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/vertex_neighbors.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshVertexNeighbors.html) )
 
 ### Returns:
@@ -138,10 +138,10 @@ Node [Vertex Neighbors](https://docs.blender.org/manual/en/latest/modeling/geome
 
 ## neighbors_face_count *property*
 
-{#neighbors_face_count}
+```python
+def neighbors_face_count(self):
 
-> def neighbors_face_count(self):
-
+```
 Node [Vertex Neighbors](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/vertex_neighbors.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshVertexNeighbors.html) )
 
 ### Returns:
@@ -150,10 +150,10 @@ Node [Vertex Neighbors](https://docs.blender.org/manual/en/latest/modeling/geome
 
 ## neighbors_vertex_count *property*
 
-{#neighbors_vertex_count}
+```python
+def neighbors_vertex_count(self):
 
-> def neighbors_vertex_count(self):
-
+```
 Node [Vertex Neighbors](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/vertex_neighbors.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshVertexNeighbors.html) )
 
 ### Returns:
@@ -162,13 +162,13 @@ Node [Vertex Neighbors](https://docs.blender.org/manual/en/latest/modeling/geome
 
 ## to_points
 
-{#to_points}
+```python
+def to_points(self, position=None, radius=None, mode='VERTICES'):
 
-> def to_points(self, position=None, radius=None, mode='VERTICES'):
-
+```
 Node [Mesh to Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/mesh_to_points.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshToPoints.html) )
 
-        ### Args:
+### Args:
 - position: Vector
 - radius: Float
 - mode (str): 'VERTICES' in [VERTICES, EDGES, FACES, CORNERS]
@@ -179,13 +179,13 @@ Node [Mesh to Points](https://docs.blender.org/manual/en/latest/modeling/geometr
 
 ## to_volume
 
-{#to_volume}
+```python
+def to_volume(self, density=None, voxel_size=None, voxel_amount=None, exterior_band_width=None, interior_band_width=None, fill_volume=None, resolution_mode='VOXEL_AMOUNT'):
 
-> def to_volume(self, density=None, voxel_size=None, voxel_amount=None, exterior_band_width=None, interior_band_width=None, fill_volume=None, resolution_mode='VOXEL_AMOUNT'):
-
+```
 Node [Mesh to Volume](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/mesh_to_volume.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshToVolume.html) )
 
-        ### Args:
+### Args:
 - density: Float
 - voxel_size: Float
 - voxel_amount: Float

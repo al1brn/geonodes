@@ -27,10 +27,10 @@
 
 ## cyclic *property*
 
-{#cyclic}
+```python
+def cyclic(self):
 
-> def cyclic(self):
-
+```
 Node [Is Spline Cyclic](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/is_spline_cyclic.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputSplineCyclic.html) )
 
 ### Returns:
@@ -39,10 +39,10 @@ Node [Is Spline Cyclic](https://docs.blender.org/manual/en/latest/modeling/geome
 
 ## cyclic *etter*
 
-{#cyclic}
+```python
+def cyclic(self, attr_value):
 
-> def cyclic(self, attr_value):
-
+```
 Node [Set Spline Cyclic](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/set_spline_cyclic.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetSplineCyclic.html) )
 
 Node implemented as property setter.
@@ -52,13 +52,13 @@ Node implemented as property setter.
 
 ## domain_size
 
-{#domain_size}
+```python
+def __len__(self):
 
-> def __len__(self):
-
+```
 Node [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html) )
 
-        ### Args:
+### Args:
 - geometry: Geometry
 - component (str): 'MESH' in [MESH, POINTCLOUD, CURVE, INSTANCES]
 
@@ -68,10 +68,10 @@ Node [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 
 ## length *property*
 
-{#length}
+```python
+def length(self):
 
-> def length(self):
-
+```
 Node [Spline Length](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/spline_length.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSplineLength.html) )
 
 ### Returns:
@@ -80,10 +80,10 @@ Node [Spline Length](https://docs.blender.org/manual/en/latest/modeling/geometry
 
 ## material *property*
 
-{#material}
+```python
+def material(self):
 
-> def material(self):
-
+```
 Node [Set Material](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/set_material.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetMaterial.html) )
 
 'material' is a write only property.
@@ -92,10 +92,10 @@ Raise an exception if attempt to read.
 
 ## material *etter*
 
-{#material}
+```python
+def material(self, attr_value):
 
-> def material(self, attr_value):
-
+```
 Node [Set Material](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/set_material.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetMaterial.html) )
 
 Node implemented as property setter.
@@ -105,10 +105,10 @@ Node implemented as property setter.
 
 ## normal *property*
 
-{#normal}
+```python
+def normal(self):
 
-> def normal(self):
-
+```
 Node [Normal](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/normal.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputNormal.html) )
 
 ### Returns:
@@ -117,10 +117,10 @@ Node [Normal](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/
 
 ## normal *etter*
 
-{#normal}
+```python
+def normal(self, attr_value):
 
-> def normal(self, attr_value):
-
+```
 Node [Set Curve Normal](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/set_curve_normal.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetCurveNormal.html) )
 
 Node implemented as property setter.
@@ -130,13 +130,13 @@ Node implemented as property setter.
 
 ## points
 
-{#points}
+```python
+def points(self, weights=None, sort_index=None):
 
-> def points(self, weights=None, sort_index=None):
-
+```
 Node [Points of Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve_topology/points_of_curve.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodePointsOfCurve.html) )
 
-        ### Args:
+### Args:
 - weights: Float
 - sort_index: Integer
 
@@ -146,13 +146,13 @@ Node [Points of Curve](https://docs.blender.org/manual/en/latest/modeling/geomet
 
 ## resample
 
-{#resample}
+```python
+def resample(self, count=None, length=None, mode='COUNT'):
 
-> def resample(self, count=None, length=None, mode='COUNT'):
-
+```
 Node [Resample Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/resample_curve.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeResampleCurve.html) )
 
-        ### Args:
+### Args:
 - count: Integer
 - length: Float
 - mode (str): 'COUNT' in [EVALUATED, COUNT, LENGTH]
@@ -163,13 +163,13 @@ Node [Resample Curve](https://docs.blender.org/manual/en/latest/modeling/geometr
 
 ## resample_count
 
-{#resample_count}
+```python
+def resample_count(self, count=None):
 
-> def resample_count(self, count=None):
-
+```
 Node [Resample Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/resample_curve.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeResampleCurve.html) )
 
-        ### Args:
+### Args:
 - count: Integer
 
 ### Returns:
@@ -178,10 +178,10 @@ Node [Resample Curve](https://docs.blender.org/manual/en/latest/modeling/geometr
 
 ## resample_evaluated
 
-{#resample_evaluated}
+```python
+def resample_evaluated(self):
 
-> def resample_evaluated(self):
-
+```
 Node [Resample Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/resample_curve.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeResampleCurve.html) )
 
 ### Returns:
@@ -190,13 +190,13 @@ Node [Resample Curve](https://docs.blender.org/manual/en/latest/modeling/geometr
 
 ## resample_length
 
-{#resample_length}
+```python
+def resample_length(self, length=None):
 
-> def resample_length(self, length=None):
-
+```
 Node [Resample Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/resample_curve.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeResampleCurve.html) )
 
-        ### Args:
+### Args:
 - length: Float
 
 ### Returns:
@@ -205,10 +205,10 @@ Node [Resample Curve](https://docs.blender.org/manual/en/latest/modeling/geometr
 
 ## resolution *property*
 
-{#resolution}
+```python
+def resolution(self):
 
-> def resolution(self):
-
+```
 Node [Spline Resolution](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/spline_resolution.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputSplineResolution.html) )
 
 ### Returns:
@@ -217,10 +217,10 @@ Node [Spline Resolution](https://docs.blender.org/manual/en/latest/modeling/geom
 
 ## resolution *etter*
 
-{#resolution}
+```python
+def resolution(self, attr_value):
 
-> def resolution(self, attr_value):
-
+```
 Node [Set Spline Resolution](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/set_spline_resolution.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetSplineResolution.html) )
 
 Node implemented as property setter.
@@ -230,13 +230,13 @@ Node implemented as property setter.
 
 ## set_cyclic
 
-{#set_cyclic}
+```python
+def set_cyclic(self, cyclic=None):
 
-> def set_cyclic(self, cyclic=None):
-
+```
 Node [Set Spline Cyclic](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/set_spline_cyclic.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetSplineCyclic.html) )
 
-        ### Args:
+### Args:
 - cyclic: Boolean
 
 ### Returns:
@@ -245,13 +245,13 @@ Node [Set Spline Cyclic](https://docs.blender.org/manual/en/latest/modeling/geom
 
 ## set_material
 
-{#set_material}
+```python
+def set_material(self, material=None):
 
-> def set_material(self, material=None):
-
+```
 Node [Set Material](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/set_material.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetMaterial.html) )
 
-        ### Args:
+### Args:
 - material: Material
 
 ### Returns:
@@ -260,13 +260,13 @@ Node [Set Material](https://docs.blender.org/manual/en/latest/modeling/geometry_
 
 ## set_normal
 
-{#set_normal}
+```python
+def set_normal(self, mode='MINIMUM_TWIST'):
 
-> def set_normal(self, mode='MINIMUM_TWIST'):
-
+```
 Node [Set Curve Normal](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/set_curve_normal.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetCurveNormal.html) )
 
-        ### Args:
+### Args:
 - mode (str): 'MINIMUM_TWIST' in [MINIMUM_TWIST, Z_UP]
 
 ### Returns:
@@ -275,13 +275,13 @@ Node [Set Curve Normal](https://docs.blender.org/manual/en/latest/modeling/geome
 
 ## set_resolution
 
-{#set_resolution}
+```python
+def set_resolution(self, resolution=None):
 
-> def set_resolution(self, resolution=None):
-
+```
 Node [Set Spline Resolution](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/set_spline_resolution.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetSplineResolution.html) )
 
-        ### Args:
+### Args:
 - resolution: Integer
 
 ### Returns:
@@ -290,13 +290,13 @@ Node [Set Spline Resolution](https://docs.blender.org/manual/en/latest/modeling/
 
 ## set_type
 
-{#set_type}
+```python
+def set_type(self, spline_type='POLY'):
 
-> def set_type(self, spline_type='POLY'):
-
+```
 Node [Set Spline Type](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/set_spline_type.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveSplineType.html) )
 
-        ### Args:
+### Args:
 - spline_type (str): 'POLY' in [CATMULL_ROM, POLY, BEZIER, NURBS]
 
 ### Returns:
@@ -305,10 +305,10 @@ Node [Set Spline Type](https://docs.blender.org/manual/en/latest/modeling/geomet
 
 ## type *property*
 
-{#type}
+```python
+def type(self):
 
-> def type(self):
-
+```
 Node [Set Spline Type](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/set_spline_type.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveSplineType.html) )
 
 'type' is a write only property.
@@ -317,10 +317,10 @@ Raise an exception if attempt to read.
 
 ## type *etter*
 
-{#type}
+```python
+def type(self, attr_value):
 
-> def type(self, attr_value):
-
+```
 Node [Set Spline Type](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/set_spline_type.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveSplineType.html) )
 
 Node implemented as property setter.

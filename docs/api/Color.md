@@ -52,10 +52,10 @@
 
 ## Color *classmethod*
 
-{#Color}
+```python
+def Color(cls):
 
-> def Color(cls):
-
+```
 Node [Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/color.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeInputColor.html) )
 
 ### Returns:
@@ -64,13 +64,13 @@ Node [Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/i
 
 ## HSL *classmethod*
 
-{#HSL}
+```python
+def HSL(cls, hue=None, saturation=None, lightness=None, alpha=None):
 
-> def HSL(cls, hue=None, saturation=None, lightness=None, alpha=None):
-
+```
 Node [Combine Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/combine_color.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeCombineColor.html) )
 
-        ### Args:
+### Args:
 - hue: Float
 - saturation: Float
 - lightness: Float
@@ -82,13 +82,13 @@ Node [Combine Color](https://docs.blender.org/manual/en/latest/modeling/geometry
 
 ## HSV *classmethod*
 
-{#HSV}
+```python
+def HSV(cls, hue=None, saturation=None, value=None, alpha=None):
 
-> def HSV(cls, hue=None, saturation=None, value=None, alpha=None):
-
+```
 Node [Combine Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/combine_color.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeCombineColor.html) )
 
-        ### Args:
+### Args:
 - hue: Float
 - saturation: Float
 - value: Float
@@ -100,13 +100,13 @@ Node [Combine Color](https://docs.blender.org/manual/en/latest/modeling/geometry
 
 ## RGB *classmethod*
 
-{#RGB}
+```python
+def RGB(cls, red=None, green=None, blue=None, alpha=None):
 
-> def RGB(cls, red=None, green=None, blue=None, alpha=None):
-
+```
 Node [Combine Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/combine_color.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeCombineColor.html) )
 
-        ### Args:
+### Args:
 - red: Float
 - green: Float
 - blue: Float
@@ -118,10 +118,10 @@ Node [Combine Color](https://docs.blender.org/manual/en/latest/modeling/geometry
 
 ## alpha *property*
 
-{#alpha}
+```python
+def alpha(self):
 
-> def alpha(self):
-
+```
 Node [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html) )
 
 Node implemented as property.
@@ -132,10 +132,10 @@ Node implemented as property.
 
 ## blue *property*
 
-{#blue}
+```python
+def blue(self):
 
-> def blue(self):
-
+```
 Node [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html) )
 
 Node implemented as property.
@@ -146,13 +146,13 @@ Node implemented as property.
 
 ## brighter
 
-{#brighter}
+```python
+def brighter(self, b=None):
 
-> def brighter(self, b=None):
-
+```
 Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html) )
 
-        ### Args:
+### Args:
 - b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 
 ### Returns:
@@ -161,13 +161,13 @@ Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 
 ## compare
 
-{#compare}
+```python
+def compare(self, b=None, epsilon=None, operation='GREATER_THAN'):
 
-> def compare(self, b=None, epsilon=None, operation='GREATER_THAN'):
-
+```
 Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html) )
 
-        ### Args:
+### Args:
 - b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 - epsilon: Float
 - operation (str): 'GREATER_THAN' in [LESS_THAN, LESS_EQUAL, GREATER_THAN, GREATER_EQUAL, EQUAL, NOT_EQUAL]
@@ -178,13 +178,13 @@ Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 
 ## darker
 
-{#darker}
+```python
+def darker(self, b=None):
 
-> def darker(self, b=None):
-
+```
 Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html) )
 
-        ### Args:
+### Args:
 - b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 
 ### Returns:
@@ -193,13 +193,13 @@ Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 
 ## equal
 
-{#equal}
+```python
+def equal(self, b=None, epsilon=None):
 
-> def equal(self, b=None, epsilon=None):
-
+```
 Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html) )
 
-        ### Args:
+### Args:
 - b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 - epsilon: Float
 
@@ -209,13 +209,13 @@ Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 
 ## equal
 
-{#equal}
+```python
+def equal(self, b=None, epsilon=None):
 
-> def equal(self, b=None, epsilon=None):
-
+```
 Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html) )
 
-        ### Args:
+### Args:
 - b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 - epsilon: Float
 
@@ -225,10 +225,10 @@ Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 
 ## green *property*
 
-{#green}
+```python
+def green(self):
 
-> def green(self):
-
+```
 Node [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html) )
 
 Node implemented as property.
@@ -239,10 +239,10 @@ Node implemented as property.
 
 ## hsl *property*
 
-{#hsl}
+```python
+def hsl(self):
 
-> def hsl(self):
-
+```
 Node [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html) )
 
 Node implemented as property.
@@ -253,10 +253,10 @@ Node implemented as property.
 
 ## hsv *property*
 
-{#hsv}
+```python
+def hsv(self):
 
-> def hsv(self):
-
+```
 Node [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html) )
 
 Node implemented as property.
@@ -267,10 +267,10 @@ Node implemented as property.
 
 ## hue *property*
 
-{#hue}
+```python
+def hue(self):
 
-> def hue(self):
-
+```
 Node [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html) )
 
 Node implemented as property.
@@ -281,10 +281,10 @@ Node implemented as property.
 
 ## lightness *property*
 
-{#lightness}
+```python
+def lightness(self):
 
-> def lightness(self):
-
+```
 Node [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html) )
 
 Node implemented as property.
@@ -295,13 +295,13 @@ Node implemented as property.
 
 ## mix
 
-{#mix}
+```python
+def mix(self, factor=None, color=None, blend_type='MIX', clamp_factor=True, clamp_result=False):
 
-> def mix(self, factor=None, color=None, blend_type='MIX', clamp_factor=True, clamp_result=False):
-
+```
 Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html) )
 
-        ### Args:
+### Args:
 - factor: ['Float', 'Vector']
 - color: ['Float', 'Vector', 'Color']
 - blend_type (str): 'MIX' in [MIX, DARKEN, MULTIPLY, BURN, LIGHTEN,... , SATURATION, COLOR, VALUE]
@@ -314,13 +314,13 @@ Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/col
 
 ## mix_add
 
-{#mix_add}
+```python
+def mix_add(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
 
-> def mix_add(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
-
+```
 Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html) )
 
-        ### Args:
+### Args:
 - factor: ['Float', 'Vector']
 - color: ['Float', 'Vector', 'Color']
 - clamp_factor (bool): True
@@ -332,13 +332,13 @@ Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/col
 
 ## mix_burn
 
-{#mix_burn}
+```python
+def mix_burn(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
 
-> def mix_burn(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
-
+```
 Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html) )
 
-        ### Args:
+### Args:
 - factor: ['Float', 'Vector']
 - color: ['Float', 'Vector', 'Color']
 - clamp_factor (bool): True
@@ -350,13 +350,13 @@ Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/col
 
 ## mix_color
 
-{#mix_color}
+```python
+def mix_color(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
 
-> def mix_color(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
-
+```
 Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html) )
 
-        ### Args:
+### Args:
 - factor: ['Float', 'Vector']
 - color: ['Float', 'Vector', 'Color']
 - clamp_factor (bool): True
@@ -368,13 +368,13 @@ Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/col
 
 ## mix_darken
 
-{#mix_darken}
+```python
+def mix_darken(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
 
-> def mix_darken(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
-
+```
 Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html) )
 
-        ### Args:
+### Args:
 - factor: ['Float', 'Vector']
 - color: ['Float', 'Vector', 'Color']
 - clamp_factor (bool): True
@@ -386,13 +386,13 @@ Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/col
 
 ## mix_difference
 
-{#mix_difference}
+```python
+def mix_difference(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
 
-> def mix_difference(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
-
+```
 Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html) )
 
-        ### Args:
+### Args:
 - factor: ['Float', 'Vector']
 - color: ['Float', 'Vector', 'Color']
 - clamp_factor (bool): True
@@ -404,13 +404,13 @@ Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/col
 
 ## mix_divide
 
-{#mix_divide}
+```python
+def mix_divide(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
 
-> def mix_divide(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
-
+```
 Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html) )
 
-        ### Args:
+### Args:
 - factor: ['Float', 'Vector']
 - color: ['Float', 'Vector', 'Color']
 - clamp_factor (bool): True
@@ -422,13 +422,13 @@ Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/col
 
 ## mix_dodge
 
-{#mix_dodge}
+```python
+def mix_dodge(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
 
-> def mix_dodge(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
-
+```
 Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html) )
 
-        ### Args:
+### Args:
 - factor: ['Float', 'Vector']
 - color: ['Float', 'Vector', 'Color']
 - clamp_factor (bool): True
@@ -440,13 +440,13 @@ Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/col
 
 ## mix_hue
 
-{#mix_hue}
+```python
+def mix_hue(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
 
-> def mix_hue(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
-
+```
 Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html) )
 
-        ### Args:
+### Args:
 - factor: ['Float', 'Vector']
 - color: ['Float', 'Vector', 'Color']
 - clamp_factor (bool): True
@@ -458,13 +458,13 @@ Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/col
 
 ## mix_lighten
 
-{#mix_lighten}
+```python
+def mix_lighten(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
 
-> def mix_lighten(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
-
+```
 Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html) )
 
-        ### Args:
+### Args:
 - factor: ['Float', 'Vector']
 - color: ['Float', 'Vector', 'Color']
 - clamp_factor (bool): True
@@ -476,13 +476,13 @@ Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/col
 
 ## mix_linear_light
 
-{#mix_linear_light}
+```python
+def mix_linear_light(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
 
-> def mix_linear_light(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
-
+```
 Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html) )
 
-        ### Args:
+### Args:
 - factor: ['Float', 'Vector']
 - color: ['Float', 'Vector', 'Color']
 - clamp_factor (bool): True
@@ -494,13 +494,13 @@ Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/col
 
 ## mix_multiply
 
-{#mix_multiply}
+```python
+def mix_multiply(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
 
-> def mix_multiply(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
-
+```
 Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html) )
 
-        ### Args:
+### Args:
 - factor: ['Float', 'Vector']
 - color: ['Float', 'Vector', 'Color']
 - clamp_factor (bool): True
@@ -512,13 +512,13 @@ Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/col
 
 ## mix_overlay
 
-{#mix_overlay}
+```python
+def mix_overlay(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
 
-> def mix_overlay(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
-
+```
 Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html) )
 
-        ### Args:
+### Args:
 - factor: ['Float', 'Vector']
 - color: ['Float', 'Vector', 'Color']
 - clamp_factor (bool): True
@@ -530,13 +530,13 @@ Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/col
 
 ## mix_saturation
 
-{#mix_saturation}
+```python
+def mix_saturation(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
 
-> def mix_saturation(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
-
+```
 Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html) )
 
-        ### Args:
+### Args:
 - factor: ['Float', 'Vector']
 - color: ['Float', 'Vector', 'Color']
 - clamp_factor (bool): True
@@ -548,13 +548,13 @@ Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/col
 
 ## mix_screen
 
-{#mix_screen}
+```python
+def mix_screen(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
 
-> def mix_screen(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
-
+```
 Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html) )
 
-        ### Args:
+### Args:
 - factor: ['Float', 'Vector']
 - color: ['Float', 'Vector', 'Color']
 - clamp_factor (bool): True
@@ -566,13 +566,13 @@ Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/col
 
 ## mix_soft_light
 
-{#mix_soft_light}
+```python
+def mix_soft_light(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
 
-> def mix_soft_light(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
-
+```
 Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html) )
 
-        ### Args:
+### Args:
 - factor: ['Float', 'Vector']
 - color: ['Float', 'Vector', 'Color']
 - clamp_factor (bool): True
@@ -584,13 +584,13 @@ Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/col
 
 ## mix_subtract
 
-{#mix_subtract}
+```python
+def mix_subtract(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
 
-> def mix_subtract(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
-
+```
 Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html) )
 
-        ### Args:
+### Args:
 - factor: ['Float', 'Vector']
 - color: ['Float', 'Vector', 'Color']
 - clamp_factor (bool): True
@@ -602,13 +602,13 @@ Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/col
 
 ## mix_value
 
-{#mix_value}
+```python
+def mix_value(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
 
-> def mix_value(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
-
+```
 Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html) )
 
-        ### Args:
+### Args:
 - factor: ['Float', 'Vector']
 - color: ['Float', 'Vector', 'Color']
 - clamp_factor (bool): True
@@ -620,10 +620,10 @@ Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/col
 
 ## red *property*
 
-{#red}
+```python
+def red(self):
 
-> def red(self):
-
+```
 Node [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html) )
 
 Node implemented as property.
@@ -634,10 +634,10 @@ Node implemented as property.
 
 ## rgb *property*
 
-{#rgb}
+```python
+def rgb(self):
 
-> def rgb(self):
-
+```
 Node [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html) )
 
 Node implemented as property.
@@ -648,10 +648,10 @@ Node implemented as property.
 
 ## rgb_curves *property*
 
-{#rgb_curves}
+```python
+def rgb_curves(self, fac=None):
 
-> def rgb_curves(self, fac=None):
-
+```
 Node [RGB Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/rgb_curves.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeRGBCurve.html) )
 
 Node implemented as property.
@@ -662,10 +662,10 @@ Node implemented as property.
 
 ## saturation *property*
 
-{#saturation}
+```python
+def saturation(self):
 
-> def saturation(self):
-
+```
 Node [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html) )
 
 Node implemented as property.
@@ -676,13 +676,13 @@ Node implemented as property.
 
 ## switch
 
-{#switch}
+```python
+def switch(self, switch=None, true=None):
 
-> def switch(self, switch=None, true=None):
-
+```
 Node [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html) )
 
-        ### Args:
+### Args:
 - switch: ['Boolean', 'Boolean']
 - true: ['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'String', 'Geometry', 'Object', 'Collection', 'Texture', 'Material', 'Image']
 
@@ -692,10 +692,10 @@ Node [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/
 
 ## value *property*
 
-{#value}
+```python
+def value(self):
 
-> def value(self):
-
+```
 Node [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html) )
 
 Node implemented as property.

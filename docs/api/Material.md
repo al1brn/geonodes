@@ -12,10 +12,10 @@
 
 ## Material *classmethod*
 
-{#Material}
+```python
+def Material(cls):
 
-> def Material(cls):
-
+```
 Node [Material](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/material.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMaterial.html) )
 
 ### Returns:
@@ -24,13 +24,13 @@ Node [Material](https://docs.blender.org/manual/en/latest/modeling/geometry_node
 
 ## switch
 
-{#switch}
+```python
+def switch(self, switch=None, true=None):
 
-> def switch(self, switch=None, true=None):
-
+```
 Node [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html) )
 
-        ### Args:
+### Args:
 - switch: ['Boolean', 'Boolean']
 - true: ['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'String', 'Geometry', 'Object', 'Collection', 'Texture', 'Material', 'Image']
 

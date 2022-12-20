@@ -20,13 +20,13 @@
 
 ## Points *classmethod*
 
-{#Points}
+```python
+def Points(cls, count=None, position=None, radius=None):
 
-> def Points(cls, count=None, position=None, radius=None):
-
+```
 Node [Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/point/points.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodePoints.html) )
 
-        ### Args:
+### Args:
 - count: Integer
 - position: Vector
 - radius: Float
@@ -37,10 +37,10 @@ Node [Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/
 
 ## domain_size *property*
 
-{#domain_size}
+```python
+def domain_size(self):
 
-> def domain_size(self):
-
+```
 Node [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html) )
 
 Node implemented as property.
@@ -51,13 +51,13 @@ Node implemented as property.
 
 ## instance_on_points
 
-{#instance_on_points}
+```python
+def instance_on_points(self, selection=None, instance=None, pick_instance=None, instance_index=None, rotation=None, scale=None):
 
-> def instance_on_points(self, selection=None, instance=None, pick_instance=None, instance_index=None, rotation=None, scale=None):
-
+```
 Node [Instance on Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instance_on_points.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInstanceOnPoints.html) )
 
-        ### Args:
+### Args:
 - selection: Boolean
 - instance: Geometry
 - pick_instance: Boolean
@@ -71,13 +71,13 @@ Node [Instance on Points](https://docs.blender.org/manual/en/latest/modeling/geo
 
 ## set_point_radius
 
-{#set_point_radius}
+```python
+def set_point_radius(self, selection=None, radius=None):
 
-> def set_point_radius(self, selection=None, radius=None):
-
+```
 Node [Set Point Radius](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/point/set_point_radius.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetPointRadius.html) )
 
-        ### Args:
+### Args:
 - selection: Boolean
 - radius: Float
 
@@ -87,13 +87,13 @@ Node [Set Point Radius](https://docs.blender.org/manual/en/latest/modeling/geome
 
 ## to_vertices
 
-{#to_vertices}
+```python
+def to_vertices(self, points=None, selection=None):
 
-> def to_vertices(self, points=None, selection=None):
-
+```
 Node [Points to Vertices](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/point/points_to_vertices.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodePointsToVertices.html) )
 
-        ### Args:
+### Args:
 - points: Points
 - selection: Boolean
 
@@ -103,13 +103,13 @@ Node [Points to Vertices](https://docs.blender.org/manual/en/latest/modeling/geo
 
 ## to_volume
 
-{#to_volume}
+```python
+def to_volume(self, density=None, voxel_size=None, voxel_amount=None, radius=None, resolution_mode='VOXEL_AMOUNT'):
 
-> def to_volume(self, density=None, voxel_size=None, voxel_amount=None, radius=None, resolution_mode='VOXEL_AMOUNT'):
-
+```
 Node [Points to Volume](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/point/points_to_volume.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodePointsToVolume.html) )
 
-        ### Args:
+### Args:
 - density: Float
 - voxel_size: Float
 - voxel_amount: Float
@@ -122,13 +122,13 @@ Node [Points to Volume](https://docs.blender.org/manual/en/latest/modeling/geome
 
 ## to_volume_amount
 
-{#to_volume_amount}
+```python
+def to_volume_amount(self, density=None, voxel_amount=None, radius=None):
 
-> def to_volume_amount(self, density=None, voxel_amount=None, radius=None):
-
+```
 Node [Points to Volume](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/point/points_to_volume.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodePointsToVolume.html) )
 
-        ### Args:
+### Args:
 - density: Float
 - voxel_amount: Float
 - radius: Float
@@ -139,13 +139,13 @@ Node [Points to Volume](https://docs.blender.org/manual/en/latest/modeling/geome
 
 ## to_volume_size
 
-{#to_volume_size}
+```python
+def to_volume_size(self, density=None, voxel_size=None, radius=None):
 
-> def to_volume_size(self, density=None, voxel_size=None, radius=None):
-
+```
 Node [Points to Volume](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/point/points_to_volume.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodePointsToVolume.html) )
 
-        ### Args:
+### Args:
 - density: Float
 - voxel_size: Float
 - radius: Float

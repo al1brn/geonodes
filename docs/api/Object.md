@@ -17,10 +17,10 @@
 
 ## Self *classmethod*
 
-{#Self}
+```python
+def Self(cls):
 
-> def Self(cls):
-
+```
 Node [Self Object](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/self_object.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSelfObject.html) )
 
 ### Returns:
@@ -29,13 +29,13 @@ Node [Self Object](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 
 ## geometry
 
-{#geometry}
+```python
+def geometry(self, object=None, as_instance=None, transform_space='ORIGINAL'):
 
-> def geometry(self, object=None, as_instance=None, transform_space='ORIGINAL'):
-
+```
 Node [Object Info](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/object_info.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeObjectInfo.html) )
 
-        ### Args:
+### Args:
 - object: Object
 - as_instance: Boolean
 - transform_space (str): 'ORIGINAL' in [ORIGINAL, RELATIVE]
@@ -46,13 +46,13 @@ Node [Object Info](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 
 ## info
 
-{#info}
+```python
+def info(self, object=None, as_instance=None, transform_space='ORIGINAL'):
 
-> def info(self, object=None, as_instance=None, transform_space='ORIGINAL'):
-
+```
 Node [Object Info](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/object_info.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeObjectInfo.html) )
 
-        ### Args:
+### Args:
 - object: Object
 - as_instance: Boolean
 - transform_space (str): 'ORIGINAL' in [ORIGINAL, RELATIVE]
@@ -63,13 +63,13 @@ Node [Object Info](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 
 ## location
 
-{#location}
+```python
+def location(self, object=None, as_instance=None, transform_space='ORIGINAL'):
 
-> def location(self, object=None, as_instance=None, transform_space='ORIGINAL'):
-
+```
 Node [Object Info](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/object_info.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeObjectInfo.html) )
 
-        ### Args:
+### Args:
 - object: Object
 - as_instance: Boolean
 - transform_space (str): 'ORIGINAL' in [ORIGINAL, RELATIVE]
@@ -80,13 +80,13 @@ Node [Object Info](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 
 ## rotation
 
-{#rotation}
+```python
+def rotation(self, object=None, as_instance=None, transform_space='ORIGINAL'):
 
-> def rotation(self, object=None, as_instance=None, transform_space='ORIGINAL'):
-
+```
 Node [Object Info](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/object_info.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeObjectInfo.html) )
 
-        ### Args:
+### Args:
 - object: Object
 - as_instance: Boolean
 - transform_space (str): 'ORIGINAL' in [ORIGINAL, RELATIVE]
@@ -97,13 +97,13 @@ Node [Object Info](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 
 ## scale
 
-{#scale}
+```python
+def scale(self, object=None, as_instance=None, transform_space='ORIGINAL'):
 
-> def scale(self, object=None, as_instance=None, transform_space='ORIGINAL'):
-
+```
 Node [Object Info](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/object_info.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeObjectInfo.html) )
 
-        ### Args:
+### Args:
 - object: Object
 - as_instance: Boolean
 - transform_space (str): 'ORIGINAL' in [ORIGINAL, RELATIVE]
@@ -114,13 +114,13 @@ Node [Object Info](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 
 ## switch
 
-{#switch}
+```python
+def switch(self, switch=None, true=None):
 
-> def switch(self, switch=None, true=None):
-
+```
 Node [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html) )
 
-        ### Args:
+### Args:
 - switch: ['Boolean', 'Boolean']
 - true: ['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'String', 'Geometry', 'Object', 'Collection', 'Texture', 'Material', 'Image']
 

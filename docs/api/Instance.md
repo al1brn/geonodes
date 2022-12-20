@@ -17,13 +17,13 @@
 
 ## domain_size
 
-{#domain_size}
+```python
+def __len__(self):
 
-> def __len__(self):
-
+```
 Node [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html) )
 
-        ### Args:
+### Args:
 - geometry: Geometry
 - component (str): 'MESH' in [MESH, POINTCLOUD, CURVE, INSTANCES]
 
@@ -33,13 +33,13 @@ Node [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 
 ## rotate
 
-{#rotate}
+```python
+def rotate(self, rotation=None, pivot_point=None, local_space=None):
 
-> def rotate(self, rotation=None, pivot_point=None, local_space=None):
-
+```
 Node [Rotate Instances](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/rotate_instances.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeRotateInstances.html) )
 
-        ### Args:
+### Args:
 - rotation: Vector
 - pivot_point: Vector
 - local_space: Boolean
@@ -50,10 +50,10 @@ Node [Rotate Instances](https://docs.blender.org/manual/en/latest/modeling/geome
 
 ## rotation *property*
 
-{#rotation}
+```python
+def rotation(self):
 
-> def rotation(self):
-
+```
 Node [Instance Rotation](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instance_rotation.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputInstanceRotation.html) )
 
 ### Returns:
@@ -62,10 +62,10 @@ Node [Instance Rotation](https://docs.blender.org/manual/en/latest/modeling/geom
 
 ## scale *property*
 
-{#scale}
+```python
+def scale(self):
 
-> def scale(self):
-
+```
 Node [Instance Scale](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instance_scale.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputInstanceScale.html) )
 
 ### Returns:
@@ -74,13 +74,13 @@ Node [Instance Scale](https://docs.blender.org/manual/en/latest/modeling/geometr
 
 ## set_scale
 
-{#set_scale}
+```python
+def set_scale(self, scale=None, center=None, local_space=None):
 
-> def set_scale(self, scale=None, center=None, local_space=None):
-
+```
 Node [Scale Instances](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/scale_instances.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeScaleInstances.html) )
 
-        ### Args:
+### Args:
 - scale: Vector
 - center: Vector
 - local_space: Boolean
@@ -91,13 +91,13 @@ Node [Scale Instances](https://docs.blender.org/manual/en/latest/modeling/geomet
 
 ## to_points
 
-{#to_points}
+```python
+def to_points(self, position=None, radius=None):
 
-> def to_points(self, position=None, radius=None):
-
+```
 Node [Instances to Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instances_to_points.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInstancesToPoints.html) )
 
-        ### Args:
+### Args:
 - position: Vector
 - radius: Float
 
@@ -107,13 +107,13 @@ Node [Instances to Points](https://docs.blender.org/manual/en/latest/modeling/ge
 
 ## translate
 
-{#translate}
+```python
+def translate(self, translation=None, local_space=None):
 
-> def translate(self, translation=None, local_space=None):
-
+```
 Node [Translate Instances](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/translate_instances.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeTranslateInstances.html) )
 
-        ### Args:
+### Args:
 - translation: Vector
 - local_space: Boolean
 

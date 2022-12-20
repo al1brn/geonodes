@@ -25,10 +25,10 @@
 
 ## LineBreak *staticmethod*
 
-{#LineBreak}
+```python
+def LineBreak():
 
-> def LineBreak():
-
+```
 Node [Special Characters](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/special_characters.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeInputSpecialCharacters.html) )
 
 ### Returns:
@@ -37,13 +37,13 @@ Node [Special Characters](https://docs.blender.org/manual/en/latest/modeling/geo
 
 ## String *classmethod*
 
-{#String}
+```python
+def String(cls, string=''):
 
-> def String(cls, string=''):
-
+```
 Node [String](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/string.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeInputString.html) )
 
-        ### Args:
+### Args:
 - string (str): ''
 
 ### Returns:
@@ -52,10 +52,10 @@ Node [String](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/
 
 ## Tab *staticmethod*
 
-{#Tab}
+```python
+def Tab():
 
-> def Tab():
-
+```
 Node [Special Characters](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/special_characters.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeInputSpecialCharacters.html) )
 
 ### Returns:
@@ -64,13 +64,13 @@ Node [Special Characters](https://docs.blender.org/manual/en/latest/modeling/geo
 
 ## equal
 
-{#equal}
+```python
+def equal(self, b=None):
 
-> def equal(self, b=None):
-
+```
 Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html) )
 
-        ### Args:
+### Args:
 - b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 
 ### Returns:
@@ -79,13 +79,13 @@ Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 
 ## join
 
-{#join}
+```python
+def join(*strings, delimiter=None):
 
-> def join(*strings, delimiter=None):
-
+```
 Node [Join Strings](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/join_strings.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeStringJoin.html) )
 
-        ### Args:
+### Args:
 - strings: <m>String
 - delimiter: String
 
@@ -95,10 +95,10 @@ Node [Join Strings](https://docs.blender.org/manual/en/latest/modeling/geometry_
 
 ## length *property*
 
-{#length}
+```python
+def length(self):
 
-> def length(self):
-
+```
 Node [String Length](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/string_length.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeStringLength.html) )
 
 Node implemented as property.
@@ -109,13 +109,13 @@ Node implemented as property.
 
 ## not_equal
 
-{#not_equal}
+```python
+def not_equal(self, b=None):
 
-> def not_equal(self, b=None):
-
+```
 Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html) )
 
-        ### Args:
+### Args:
 - b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 
 ### Returns:
@@ -124,13 +124,13 @@ Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 
 ## replace
 
-{#replace}
+```python
+def replace(self, find=None, replace=None):
 
-> def replace(self, find=None, replace=None):
-
+```
 Node [Replace String](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/replace_string.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeReplaceString.html) )
 
-        ### Args:
+### Args:
 - find: String
 - replace: String
 
@@ -140,13 +140,13 @@ Node [Replace String](https://docs.blender.org/manual/en/latest/modeling/geometr
 
 ## slice
 
-{#slice}
+```python
+def slice(self, position=None, length=None):
 
-> def slice(self, position=None, length=None):
-
+```
 Node [Slice String](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/slice_string.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeSliceString.html) )
 
-        ### Args:
+### Args:
 - position: Integer
 - length: Integer
 
@@ -156,13 +156,13 @@ Node [Slice String](https://docs.blender.org/manual/en/latest/modeling/geometry_
 
 ## switch
 
-{#switch}
+```python
+def switch(self, switch=None, true=None):
 
-> def switch(self, switch=None, true=None):
-
+```
 Node [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html) )
 
-        ### Args:
+### Args:
 - switch: ['Boolean', 'Boolean']
 - true: ['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'String', 'Geometry', 'Object', 'Collection', 'Texture', 'Material', 'Image']
 
@@ -172,13 +172,13 @@ Node [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/
 
 ## to_curves
 
-{#to_curves}
+```python
+def to_curves(self, string=None, size=None, character_spacing=None, word_spacing=None, line_spacing=None, text_box_width=None, text_box_height=None, align_x='LEFT', align_y='TOP_BASELINE', overflow='OVERFLOW', pivot_mode='BOTTOM_LEFT'):
 
-> def to_curves(self, string=None, size=None, character_spacing=None, word_spacing=None, line_spacing=None, text_box_width=None, text_box_height=None, align_x='LEFT', align_y='TOP_BASELINE', overflow='OVERFLOW', pivot_mode='BOTTOM_LEFT'):
-
+```
 Node [String to Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/string_to_curves.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeStringToCurves.html) )
 
-        ### Args:
+### Args:
 - string: String
 - size: Float
 - character_spacing: Float

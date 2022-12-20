@@ -36,10 +36,10 @@
 
 ## area *property*
 
-{#area}
+```python
+def area(self):
 
-> def area(self):
-
+```
 Node [Face Area](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/face_area.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshFaceArea.html) )
 
 ### Returns:
@@ -48,10 +48,10 @@ Node [Face Area](https://docs.blender.org/manual/en/latest/modeling/geometry_nod
 
 ## delete_all
 
-{#delete_all}
+```python
+def delete_all(self):
 
-> def delete_all(self):
-
+```
 Node [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/delete_geometry.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeDeleteGeometry.html) )
 
 ### Returns:
@@ -60,10 +60,10 @@ Node [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geomet
 
 ## delete_edges
 
-{#delete_edges}
+```python
+def delete_edges(self):
 
-> def delete_edges(self):
-
+```
 Node [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/delete_geometry.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeDeleteGeometry.html) )
 
 ### Returns:
@@ -72,10 +72,10 @@ Node [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geomet
 
 ## delete_faces
 
-{#delete_faces}
+```python
+def delete_faces(self):
 
-> def delete_faces(self):
-
+```
 Node [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/delete_geometry.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeDeleteGeometry.html) )
 
 ### Returns:
@@ -84,13 +84,13 @@ Node [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geomet
 
 ## distribute_points_poisson
 
-{#distribute_points_poisson}
+```python
+def distribute_points_poisson(self, distance_min=None, density_max=None, density_factor=None, seed=None):
 
-> def distribute_points_poisson(self, distance_min=None, density_max=None, density_factor=None, seed=None):
-
+```
 Node [Distribute Points on Faces](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/point/distribute_points_on_faces.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeDistributePointsOnFaces.html) )
 
-        ### Args:
+### Args:
 - distance_min: Float
 - density_max: Float
 - density_factor: Float
@@ -102,13 +102,13 @@ Node [Distribute Points on Faces](https://docs.blender.org/manual/en/latest/mode
 
 ## distribute_points_random
 
-{#distribute_points_random}
+```python
+def distribute_points_random(self, density=None, seed=None):
 
-> def distribute_points_random(self, density=None, seed=None):
-
+```
 Node [Distribute Points on Faces](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/point/distribute_points_on_faces.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeDistributePointsOnFaces.html) )
 
-        ### Args:
+### Args:
 - density: Float
 - seed: Integer
 
@@ -118,13 +118,13 @@ Node [Distribute Points on Faces](https://docs.blender.org/manual/en/latest/mode
 
 ## domain_size
 
-{#domain_size}
+```python
+def __len__(self):
 
-> def __len__(self):
-
+```
 Node [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html) )
 
-        ### Args:
+### Args:
 - geometry: Geometry
 - component (str): 'MESH' in [MESH, POINTCLOUD, CURVE, INSTANCES]
 
@@ -134,13 +134,13 @@ Node [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 
 ## extrude
 
-{#extrude}
+```python
+def extrude(self, offset=None, offset_scale=None, individual=None):
 
-> def extrude(self, offset=None, offset_scale=None, individual=None):
-
+```
 Node [Extrude Mesh](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/extrude_mesh.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeExtrudeMesh.html) )
 
-        ### Args:
+### Args:
 - offset: Vector
 - offset_scale: Float
 - individual: Boolean
@@ -151,10 +151,10 @@ Node [Extrude Mesh](https://docs.blender.org/manual/en/latest/modeling/geometry_
 
 ## face_set_boundaries
 
-{#face_set_boundaries}
+```python
+def face_set_boundaries(self):
 
-> def face_set_boundaries(self):
-
+```
 Node [Face Set Boundaries](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/face_set_boundaries.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshFaceSetBoundaries.html) )
 
 ### Returns:
@@ -163,10 +163,10 @@ Node [Face Set Boundaries](https://docs.blender.org/manual/en/latest/modeling/ge
 
 ## flip
 
-{#flip}
+```python
+def flip(self):
 
-> def flip(self):
-
+```
 Node [Flip Faces](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/flip_faces.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeFlipFaces.html) )
 
 ### Returns:
@@ -175,13 +175,13 @@ Node [Flip Faces](https://docs.blender.org/manual/en/latest/modeling/geometry_no
 
 ## is_planar
 
-{#is_planar}
+```python
+def is_planar(self, threshold=None):
 
-> def is_planar(self, threshold=None):
-
+```
 Node [Face is Planar](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/face_is_planar.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshFaceIsPlanar.html) )
 
-        ### Args:
+### Args:
 - threshold: Float
 
 ### Returns:
@@ -190,10 +190,10 @@ Node [Face is Planar](https://docs.blender.org/manual/en/latest/modeling/geometr
 
 ## island *property*
 
-{#island}
+```python
+def island(self):
 
-> def island(self):
-
+```
 Node [Mesh Island](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/mesh_island.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshIsland.html) )
 
 ### Returns:
@@ -202,10 +202,10 @@ Node [Mesh Island](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 
 ## island_count *property*
 
-{#island_count}
+```python
+def island_count(self):
 
-> def island_count(self):
-
+```
 Node [Mesh Island](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/mesh_island.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshIsland.html) )
 
 ### Returns:
@@ -214,10 +214,10 @@ Node [Mesh Island](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 
 ## island_index *property*
 
-{#island_index}
+```python
+def island_index(self):
 
-> def island_index(self):
-
+```
 Node [Mesh Island](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/mesh_island.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshIsland.html) )
 
 ### Returns:
@@ -226,10 +226,10 @@ Node [Mesh Island](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 
 ## material *property*
 
-{#material}
+```python
+def material(self):
 
-> def material(self):
-
+```
 Node [Set Material](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/set_material.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetMaterial.html) )
 
 'material' is a write only property.
@@ -238,10 +238,10 @@ Raise an exception if attempt to read.
 
 ## material *etter*
 
-{#material}
+```python
+def material(self, attr_value):
 
-> def material(self, attr_value):
-
+```
 Node [Set Material](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/set_material.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetMaterial.html) )
 
 Node implemented as property setter.
@@ -251,10 +251,10 @@ Node implemented as property setter.
 
 ## neighbors *property*
 
-{#neighbors}
+```python
+def neighbors(self):
 
-> def neighbors(self):
-
+```
 Node [Face Neighbors](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/face_neighbors.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshFaceNeighbors.html) )
 
 ### Returns:
@@ -263,10 +263,10 @@ Node [Face Neighbors](https://docs.blender.org/manual/en/latest/modeling/geometr
 
 ## neighbors_face_count *property*
 
-{#neighbors_face_count}
+```python
+def neighbors_face_count(self):
 
-> def neighbors_face_count(self):
-
+```
 Node [Face Neighbors](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/face_neighbors.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshFaceNeighbors.html) )
 
 ### Returns:
@@ -275,10 +275,10 @@ Node [Face Neighbors](https://docs.blender.org/manual/en/latest/modeling/geometr
 
 ## neighbors_vertex_count *property*
 
-{#neighbors_vertex_count}
+```python
+def neighbors_vertex_count(self):
 
-> def neighbors_vertex_count(self):
-
+```
 Node [Face Neighbors](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/face_neighbors.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshFaceNeighbors.html) )
 
 ### Returns:
@@ -287,13 +287,13 @@ Node [Face Neighbors](https://docs.blender.org/manual/en/latest/modeling/geometr
 
 ## pack_uv_islands
 
-{#pack_uv_islands}
+```python
+def pack_uv_islands(self, uv=None, margin=None, rotate=None):
 
-> def pack_uv_islands(self, uv=None, margin=None, rotate=None):
-
+```
 Node [Pack UV Islands](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/uv/pack_uv_islands.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeUVPackIslands.html) )
 
-        ### Args:
+### Args:
 - uv: Vector
 - margin: Float
 - rotate: Boolean
@@ -304,13 +304,13 @@ Node [Pack UV Islands](https://docs.blender.org/manual/en/latest/modeling/geomet
 
 ## scale_single_axis
 
-{#scale_single_axis}
+```python
+def scale_single_axis(self, scale=None, center=None, axis=None):
 
-> def scale_single_axis(self, scale=None, center=None, axis=None):
-
+```
 Node [Scale Elements](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/scale_elements.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeScaleElements.html) )
 
-        ### Args:
+### Args:
 - scale: Float
 - center: Vector
 - axis: Vector
@@ -321,13 +321,13 @@ Node [Scale Elements](https://docs.blender.org/manual/en/latest/modeling/geometr
 
 ## scale_uniform
 
-{#scale_uniform}
+```python
+def scale_uniform(self, scale=None, center=None):
 
-> def scale_uniform(self, scale=None, center=None):
-
+```
 Node [Scale Elements](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/scale_elements.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeScaleElements.html) )
 
-        ### Args:
+### Args:
 - scale: Float
 - center: Vector
 
@@ -337,13 +337,13 @@ Node [Scale Elements](https://docs.blender.org/manual/en/latest/modeling/geometr
 
 ## set_material
 
-{#set_material}
+```python
+def set_material(self, material=None):
 
-> def set_material(self, material=None):
-
+```
 Node [Set Material](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/set_material.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetMaterial.html) )
 
-        ### Args:
+### Args:
 - material: Material
 
 ### Returns:
@@ -352,13 +352,13 @@ Node [Set Material](https://docs.blender.org/manual/en/latest/modeling/geometry_
 
 ## set_shade_smooth
 
-{#set_shade_smooth}
+```python
+def set_shade_smooth(self, shade_smooth=None):
 
-> def set_shade_smooth(self, shade_smooth=None):
-
+```
 Node [Set Shade Smooth](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/set_shade_smooth.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetShadeSmooth.html) )
 
-        ### Args:
+### Args:
 - shade_smooth: Boolean
 
 ### Returns:
@@ -367,10 +367,10 @@ Node [Set Shade Smooth](https://docs.blender.org/manual/en/latest/modeling/geome
 
 ## shade_smooth *property*
 
-{#shade_smooth}
+```python
+def shade_smooth(self):
 
-> def shade_smooth(self):
-
+```
 Node [Is Shade Smooth](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/is_shade_smooth.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputShadeSmooth.html) )
 
 ### Returns:
@@ -379,10 +379,10 @@ Node [Is Shade Smooth](https://docs.blender.org/manual/en/latest/modeling/geomet
 
 ## shade_smooth *etter*
 
-{#shade_smooth}
+```python
+def shade_smooth(self, attr_value):
 
-> def shade_smooth(self, attr_value):
-
+```
 Node [Set Shade Smooth](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/set_shade_smooth.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetShadeSmooth.html) )
 
 Node implemented as property setter.
@@ -392,13 +392,13 @@ Node implemented as property setter.
 
 ## triangulate
 
-{#triangulate}
+```python
+def triangulate(self, minimum_vertices=None, ngon_method='BEAUTY', quad_method='SHORTEST_DIAGONAL'):
 
-> def triangulate(self, minimum_vertices=None, ngon_method='BEAUTY', quad_method='SHORTEST_DIAGONAL'):
-
+```
 Node [Triangulate](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/triangulate.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeTriangulate.html) )
 
-        ### Args:
+### Args:
 - minimum_vertices: Integer
 - ngon_method (str): 'BEAUTY' in [BEAUTY, CLIP]
 - quad_method (str): 'SHORTEST_DIAGONAL' in [BEAUTY, FIXED, FIXED_ALTERNATE, SHORTEST_DIAGONAL, LONGEST_DIAGONAL]
@@ -409,13 +409,13 @@ Node [Triangulate](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 
 ## uv_unwrap
 
-{#uv_unwrap}
+```python
+def uv_unwrap(self, seam=None, margin=None, fill_holes=None, method='ANGLE_BASED'):
 
-> def uv_unwrap(self, seam=None, margin=None, fill_holes=None, method='ANGLE_BASED'):
-
+```
 Node [UV Unwrap](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/uv/uv_unwrap.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeUVUnwrap.html) )
 
-        ### Args:
+### Args:
 - seam: Boolean
 - margin: Float
 - fill_holes: Boolean

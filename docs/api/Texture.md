@@ -48,13 +48,13 @@
 
 ## brick *staticmethod*
 
-{#brick}
+```python
+def brick(vector=None, color1=None, color2=None, mortar=None, scale=None, mortar_size=None, mortar_smooth=None, bias=None, brick_width=None, row_height=None, offset=0.5, offset_frequency=2, squash=1.0, squash_frequency=2):
 
-> def brick(vector=None, color1=None, color2=None, mortar=None, scale=None, mortar_size=None, mortar_smooth=None, bias=None, brick_width=None, row_height=None, offset=0.5, offset_frequency=2, squash=1.0, squash_frequency=2):
-
+```
 Node [Brick Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/brick.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexBrick.html) )
 
-        ### Args:
+### Args:
 - vector: Vector
 - color1: Color
 - color2: Color
@@ -76,13 +76,13 @@ Node [Brick Texture](https://docs.blender.org/manual/en/latest/modeling/geometry
 
 ## checker *staticmethod*
 
-{#checker}
+```python
+def checker(vector=None, color1=None, color2=None, scale=None):
 
-> def checker(vector=None, color1=None, color2=None, scale=None):
-
+```
 Node [Checker Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/checker.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexChecker.html) )
 
-        ### Args:
+### Args:
 - vector: Vector
 - color1: Color
 - color2: Color
@@ -94,13 +94,13 @@ Node [Checker Texture](https://docs.blender.org/manual/en/latest/modeling/geomet
 
 ## gradient *staticmethod*
 
-{#gradient}
+```python
+def gradient(vector=None, gradient_type='LINEAR'):
 
-> def gradient(vector=None, gradient_type='LINEAR'):
-
+```
 Node [Gradient Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/gradient.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexGradient.html) )
 
-        ### Args:
+### Args:
 - vector: Vector
 - gradient_type (str): 'LINEAR' in [LINEAR, QUADRATIC, EASING, DIAGONAL, SPHERICAL, QUADRATIC_SPHERE, RADIAL]
 
@@ -110,13 +110,13 @@ Node [Gradient Texture](https://docs.blender.org/manual/en/latest/modeling/geome
 
 ## gradient_diagonal *staticmethod*
 
-{#gradient_diagonal}
+```python
+def gradient_diagonal(vector=None):
 
-> def gradient_diagonal(vector=None):
-
+```
 Node [Gradient Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/gradient.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexGradient.html) )
 
-        ### Args:
+### Args:
 - vector: Vector
 
 ### Returns:
@@ -125,13 +125,13 @@ Node [Gradient Texture](https://docs.blender.org/manual/en/latest/modeling/geome
 
 ## gradient_easing *staticmethod*
 
-{#gradient_easing}
+```python
+def gradient_easing(vector=None):
 
-> def gradient_easing(vector=None):
-
+```
 Node [Gradient Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/gradient.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexGradient.html) )
 
-        ### Args:
+### Args:
 - vector: Vector
 
 ### Returns:
@@ -140,13 +140,13 @@ Node [Gradient Texture](https://docs.blender.org/manual/en/latest/modeling/geome
 
 ## gradient_linear *staticmethod*
 
-{#gradient_linear}
+```python
+def gradient_linear(vector=None):
 
-> def gradient_linear(vector=None):
-
+```
 Node [Gradient Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/gradient.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexGradient.html) )
 
-        ### Args:
+### Args:
 - vector: Vector
 
 ### Returns:
@@ -155,13 +155,13 @@ Node [Gradient Texture](https://docs.blender.org/manual/en/latest/modeling/geome
 
 ## gradient_quadratic *staticmethod*
 
-{#gradient_quadratic}
+```python
+def gradient_quadratic(vector=None):
 
-> def gradient_quadratic(vector=None):
-
+```
 Node [Gradient Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/gradient.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexGradient.html) )
 
-        ### Args:
+### Args:
 - vector: Vector
 
 ### Returns:
@@ -170,13 +170,13 @@ Node [Gradient Texture](https://docs.blender.org/manual/en/latest/modeling/geome
 
 ## gradient_quadratic_sphere *staticmethod*
 
-{#gradient_quadratic_sphere}
+```python
+def gradient_quadratic_sphere(vector=None):
 
-> def gradient_quadratic_sphere(vector=None):
-
+```
 Node [Gradient Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/gradient.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexGradient.html) )
 
-        ### Args:
+### Args:
 - vector: Vector
 
 ### Returns:
@@ -185,13 +185,13 @@ Node [Gradient Texture](https://docs.blender.org/manual/en/latest/modeling/geome
 
 ## gradient_radial *staticmethod*
 
-{#gradient_radial}
+```python
+def gradient_radial(vector=None):
 
-> def gradient_radial(vector=None):
-
+```
 Node [Gradient Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/gradient.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexGradient.html) )
 
-        ### Args:
+### Args:
 - vector: Vector
 
 ### Returns:
@@ -200,13 +200,13 @@ Node [Gradient Texture](https://docs.blender.org/manual/en/latest/modeling/geome
 
 ## gradient_spherical *staticmethod*
 
-{#gradient_spherical}
+```python
+def gradient_spherical(vector=None):
 
-> def gradient_spherical(vector=None):
-
+```
 Node [Gradient Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/gradient.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexGradient.html) )
 
-        ### Args:
+### Args:
 - vector: Vector
 
 ### Returns:
@@ -215,13 +215,13 @@ Node [Gradient Texture](https://docs.blender.org/manual/en/latest/modeling/geome
 
 ## image *staticmethod*
 
-{#image}
+```python
+def image(image=None, vector=None, frame=None, extension='REPEAT', interpolation='Linear'):
 
-> def image(image=None, vector=None, frame=None, extension='REPEAT', interpolation='Linear'):
-
+```
 Node [Image Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/image.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeImageTexture.html) )
 
-        ### Args:
+### Args:
 - image: Image
 - vector: Vector
 - frame: Integer
@@ -234,13 +234,13 @@ Node [Image Texture](https://docs.blender.org/manual/en/latest/modeling/geometry
 
 ## magic *staticmethod*
 
-{#magic}
+```python
+def magic(vector=None, scale=None, distortion=None, turbulence_depth=2):
 
-> def magic(vector=None, scale=None, distortion=None, turbulence_depth=2):
-
+```
 Node [Magic Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/magic.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexMagic.html) )
 
-        ### Args:
+### Args:
 - vector: Vector
 - scale: Float
 - distortion: Float
@@ -252,13 +252,13 @@ Node [Magic Texture](https://docs.blender.org/manual/en/latest/modeling/geometry
 
 ## musgrave *staticmethod*
 
-{#musgrave}
+```python
+def musgrave(vector=None, w=None, scale=None, detail=None, dimension=None, lacunarity=None, offset=None, gain=None, musgrave_dimensions='3D', musgrave_type='FBM'):
 
-> def musgrave(vector=None, w=None, scale=None, detail=None, dimension=None, lacunarity=None, offset=None, gain=None, musgrave_dimensions='3D', musgrave_type='FBM'):
-
+```
 Node [Musgrave Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/musgrave.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexMusgrave.html) )
 
-        ### Args:
+### Args:
 - vector: Vector
 - w: Float
 - scale: Float
@@ -276,13 +276,13 @@ Node [Musgrave Texture](https://docs.blender.org/manual/en/latest/modeling/geome
 
 ## noise *staticmethod*
 
-{#noise}
+```python
+def noise(vector=None, w=None, scale=None, detail=None, roughness=None, distortion=None, noise_dimensions='3D'):
 
-> def noise(vector=None, w=None, scale=None, detail=None, roughness=None, distortion=None, noise_dimensions='3D'):
-
+```
 Node [Noise Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/noise.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexNoise.html) )
 
-        ### Args:
+### Args:
 - vector: Vector
 - w: Float
 - scale: Float
@@ -297,13 +297,13 @@ Node [Noise Texture](https://docs.blender.org/manual/en/latest/modeling/geometry
 
 ## noise_1D *staticmethod*
 
-{#noise_1D}
+```python
+def noise_1D(w=None, scale=None, detail=None, roughness=None, distortion=None):
 
-> def noise_1D(w=None, scale=None, detail=None, roughness=None, distortion=None):
-
+```
 Node [Noise Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/noise.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexNoise.html) )
 
-        ### Args:
+### Args:
 - w: Float
 - scale: Float
 - detail: Float
@@ -316,13 +316,13 @@ Node [Noise Texture](https://docs.blender.org/manual/en/latest/modeling/geometry
 
 ## noise_2D *staticmethod*
 
-{#noise_2D}
+```python
+def noise_2D(vector=None, scale=None, detail=None, roughness=None, distortion=None):
 
-> def noise_2D(vector=None, scale=None, detail=None, roughness=None, distortion=None):
-
+```
 Node [Noise Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/noise.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexNoise.html) )
 
-        ### Args:
+### Args:
 - vector: Vector
 - scale: Float
 - detail: Float
@@ -335,13 +335,13 @@ Node [Noise Texture](https://docs.blender.org/manual/en/latest/modeling/geometry
 
 ## noise_3D *staticmethod*
 
-{#noise_3D}
+```python
+def noise_3D(vector=None, scale=None, detail=None, roughness=None, distortion=None):
 
-> def noise_3D(vector=None, scale=None, detail=None, roughness=None, distortion=None):
-
+```
 Node [Noise Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/noise.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexNoise.html) )
 
-        ### Args:
+### Args:
 - vector: Vector
 - scale: Float
 - detail: Float
@@ -354,13 +354,13 @@ Node [Noise Texture](https://docs.blender.org/manual/en/latest/modeling/geometry
 
 ## noise_4D *staticmethod*
 
-{#noise_4D}
+```python
+def noise_4D(vector=None, w=None, scale=None, detail=None, roughness=None, distortion=None):
 
-> def noise_4D(vector=None, w=None, scale=None, detail=None, roughness=None, distortion=None):
-
+```
 Node [Noise Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/noise.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexNoise.html) )
 
-        ### Args:
+### Args:
 - vector: Vector
 - w: Float
 - scale: Float
@@ -374,13 +374,13 @@ Node [Noise Texture](https://docs.blender.org/manual/en/latest/modeling/geometry
 
 ## switch
 
-{#switch}
+```python
+def switch(self, switch=None, true=None):
 
-> def switch(self, switch=None, true=None):
-
+```
 Node [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html) )
 
-        ### Args:
+### Args:
 - switch: ['Boolean', 'Boolean']
 - true: ['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'String', 'Geometry', 'Object', 'Collection', 'Texture', 'Material', 'Image']
 
@@ -390,13 +390,13 @@ Node [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/
 
 ## voronoi *staticmethod*
 
-{#voronoi}
+```python
+def voronoi(vector=None, w=None, scale=None, smoothness=None, exponent=None, randomness=None, distance='EUCLIDEAN', feature='F1', voronoi_dimensions='3D'):
 
-> def voronoi(vector=None, w=None, scale=None, smoothness=None, exponent=None, randomness=None, distance='EUCLIDEAN', feature='F1', voronoi_dimensions='3D'):
-
+```
 Node [Voronoi Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/voronoi.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexVoronoi.html) )
 
-        ### Args:
+### Args:
 - vector: Vector
 - w: Float
 - scale: Float
@@ -413,13 +413,13 @@ Node [Voronoi Texture](https://docs.blender.org/manual/en/latest/modeling/geomet
 
 ## voronoi_1D *staticmethod*
 
-{#voronoi_1D}
+```python
+def voronoi_1D(w=None, scale=None, smoothness=None, exponent=None, randomness=None, distance='EUCLIDEAN', feature='F1', voronoi_dimensions='3D'):
 
-> def voronoi_1D(w=None, scale=None, smoothness=None, exponent=None, randomness=None, distance='EUCLIDEAN', feature='F1', voronoi_dimensions='3D'):
-
+```
 Node [Voronoi Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/voronoi.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexVoronoi.html) )
 
-        ### Args:
+### Args:
 - w: Float
 - scale: Float
 - smoothness: Float
@@ -435,13 +435,13 @@ Node [Voronoi Texture](https://docs.blender.org/manual/en/latest/modeling/geomet
 
 ## voronoi_2D *staticmethod*
 
-{#voronoi_2D}
+```python
+def voronoi_2D(vector=None, scale=None, smoothness=None, exponent=None, randomness=None, distance='EUCLIDEAN', feature='F1', voronoi_dimensions='3D'):
 
-> def voronoi_2D(vector=None, scale=None, smoothness=None, exponent=None, randomness=None, distance='EUCLIDEAN', feature='F1', voronoi_dimensions='3D'):
-
+```
 Node [Voronoi Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/voronoi.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexVoronoi.html) )
 
-        ### Args:
+### Args:
 - vector: Vector
 - scale: Float
 - smoothness: Float
@@ -457,13 +457,13 @@ Node [Voronoi Texture](https://docs.blender.org/manual/en/latest/modeling/geomet
 
 ## voronoi_3D *staticmethod*
 
-{#voronoi_3D}
+```python
+def voronoi_3D(vector=None, scale=None, smoothness=None, exponent=None, randomness=None, distance='EUCLIDEAN', feature='F1', voronoi_dimensions='3D'):
 
-> def voronoi_3D(vector=None, scale=None, smoothness=None, exponent=None, randomness=None, distance='EUCLIDEAN', feature='F1', voronoi_dimensions='3D'):
-
+```
 Node [Voronoi Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/voronoi.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexVoronoi.html) )
 
-        ### Args:
+### Args:
 - vector: Vector
 - scale: Float
 - smoothness: Float
@@ -479,13 +479,13 @@ Node [Voronoi Texture](https://docs.blender.org/manual/en/latest/modeling/geomet
 
 ## voronoi_4D *staticmethod*
 
-{#voronoi_4D}
+```python
+def voronoi_4D(vector=None, w=None, scale=None, smoothness=None, exponent=None, randomness=None, distance='EUCLIDEAN', feature='F1', voronoi_dimensions='3D'):
 
-> def voronoi_4D(vector=None, w=None, scale=None, smoothness=None, exponent=None, randomness=None, distance='EUCLIDEAN', feature='F1', voronoi_dimensions='3D'):
-
+```
 Node [Voronoi Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/voronoi.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexVoronoi.html) )
 
-        ### Args:
+### Args:
 - vector: Vector
 - w: Float
 - scale: Float
@@ -502,13 +502,13 @@ Node [Voronoi Texture](https://docs.blender.org/manual/en/latest/modeling/geomet
 
 ## wave *staticmethod*
 
-{#wave}
+```python
+def wave(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, bands_direction='X', rings_direction='X', wave_profile='SIN', wave_type='BANDS'):
 
-> def wave(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, bands_direction='X', rings_direction='X', wave_profile='SIN', wave_type='BANDS'):
-
+```
 Node [Wave Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/wave.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWave.html) )
 
-        ### Args:
+### Args:
 - vector: Vector
 - scale: Float
 - distortion: Float
@@ -527,13 +527,13 @@ Node [Wave Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_
 
 ## wave_bands *staticmethod*
 
-{#wave_bands}
+```python
+def wave_bands(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X', wave_profile='SIN'):
 
-> def wave_bands(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X', wave_profile='SIN'):
-
+```
 Node [Wave Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/wave.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWave.html) )
 
-        ### Args:
+### Args:
 - vector: Vector
 - scale: Float
 - distortion: Float
@@ -550,13 +550,13 @@ Node [Wave Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_
 
 ## wave_bands_saw *staticmethod*
 
-{#wave_bands_saw}
+```python
+def wave_bands_saw(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X'):
 
-> def wave_bands_saw(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X'):
-
+```
 Node [Wave Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/wave.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWave.html) )
 
-        ### Args:
+### Args:
 - vector: Vector
 - scale: Float
 - distortion: Float
@@ -572,13 +572,13 @@ Node [Wave Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_
 
 ## wave_bands_sine *staticmethod*
 
-{#wave_bands_sine}
+```python
+def wave_bands_sine(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X'):
 
-> def wave_bands_sine(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X'):
-
+```
 Node [Wave Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/wave.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWave.html) )
 
-        ### Args:
+### Args:
 - vector: Vector
 - scale: Float
 - distortion: Float
@@ -594,13 +594,13 @@ Node [Wave Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_
 
 ## wave_bands_triangle *staticmethod*
 
-{#wave_bands_triangle}
+```python
+def wave_bands_triangle(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X'):
 
-> def wave_bands_triangle(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X'):
-
+```
 Node [Wave Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/wave.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWave.html) )
 
-        ### Args:
+### Args:
 - vector: Vector
 - scale: Float
 - distortion: Float
@@ -616,13 +616,13 @@ Node [Wave Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_
 
 ## wave_rings *staticmethod*
 
-{#wave_rings}
+```python
+def wave_rings(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X', wave_profile='SIN'):
 
-> def wave_rings(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X', wave_profile='SIN'):
-
+```
 Node [Wave Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/wave.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWave.html) )
 
-        ### Args:
+### Args:
 - vector: Vector
 - scale: Float
 - distortion: Float
@@ -639,13 +639,13 @@ Node [Wave Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_
 
 ## wave_rings_saw *staticmethod*
 
-{#wave_rings_saw}
+```python
+def wave_rings_saw(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X'):
 
-> def wave_rings_saw(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X'):
-
+```
 Node [Wave Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/wave.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWave.html) )
 
-        ### Args:
+### Args:
 - vector: Vector
 - scale: Float
 - distortion: Float
@@ -661,13 +661,13 @@ Node [Wave Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_
 
 ## wave_rings_sine *staticmethod*
 
-{#wave_rings_sine}
+```python
+def wave_rings_sine(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X'):
 
-> def wave_rings_sine(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X'):
-
+```
 Node [Wave Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/wave.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWave.html) )
 
-        ### Args:
+### Args:
 - vector: Vector
 - scale: Float
 - distortion: Float
@@ -683,13 +683,13 @@ Node [Wave Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_
 
 ## wave_rings_triangle *staticmethod*
 
-{#wave_rings_triangle}
+```python
+def wave_rings_triangle(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X'):
 
-> def wave_rings_triangle(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X'):
-
+```
 Node [Wave Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/wave.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWave.html) )
 
-        ### Args:
+### Args:
 - vector: Vector
 - scale: Float
 - distortion: Float
@@ -705,13 +705,13 @@ Node [Wave Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_
 
 ## white_noise *staticmethod*
 
-{#white_noise}
+```python
+def white_noise(vector=None, w=None, noise_dimensions='3D'):
 
-> def white_noise(vector=None, w=None, noise_dimensions='3D'):
-
+```
 Node [White Noise Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/white_noise.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWhiteNoise.html) )
 
-        ### Args:
+### Args:
 - vector: Vector
 - w: Float
 - noise_dimensions (str): '3D' in [1D, 2D, 3D, 4D]
@@ -722,13 +722,13 @@ Node [White Noise Texture](https://docs.blender.org/manual/en/latest/modeling/ge
 
 ## white_noise_1D *staticmethod*
 
-{#white_noise_1D}
+```python
+def white_noise_1D(w=None):
 
-> def white_noise_1D(w=None):
-
+```
 Node [White Noise Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/white_noise.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWhiteNoise.html) )
 
-        ### Args:
+### Args:
 - w: Float
 
 ### Returns:
@@ -737,13 +737,13 @@ Node [White Noise Texture](https://docs.blender.org/manual/en/latest/modeling/ge
 
 ## white_noise_2D *staticmethod*
 
-{#white_noise_2D}
+```python
+def white_noise_2D(vector=None):
 
-> def white_noise_2D(vector=None):
-
+```
 Node [White Noise Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/white_noise.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWhiteNoise.html) )
 
-        ### Args:
+### Args:
 - vector: Vector
 
 ### Returns:
@@ -752,13 +752,13 @@ Node [White Noise Texture](https://docs.blender.org/manual/en/latest/modeling/ge
 
 ## white_noise_3D *staticmethod*
 
-{#white_noise_3D}
+```python
+def white_noise_3D(vector=None):
 
-> def white_noise_3D(vector=None):
-
+```
 Node [White Noise Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/white_noise.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWhiteNoise.html) )
 
-        ### Args:
+### Args:
 - vector: Vector
 
 ### Returns:
@@ -767,13 +767,13 @@ Node [White Noise Texture](https://docs.blender.org/manual/en/latest/modeling/ge
 
 ## white_noise_4D *staticmethod*
 
-{#white_noise_4D}
+```python
+def white_noise_4D(vector=None, w=None):
 
-> def white_noise_4D(vector=None, w=None):
-
+```
 Node [White Noise Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/white_noise.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWhiteNoise.html) )
 
-        ### Args:
+### Args:
 - vector: Vector
 - w: Float
 
