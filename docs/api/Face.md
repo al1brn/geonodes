@@ -58,7 +58,7 @@ Node [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geomet
 
 ### Returns:
 
-- node with sockets ['geometry']
+- self
 
 <sub>Go to [top](#class-Face)</sub>
 
@@ -72,7 +72,7 @@ Node [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geomet
 
 ### Returns:
 
-- node with sockets ['geometry']
+- self
 
 <sub>Go to [top](#class-Face)</sub>
 
@@ -86,7 +86,7 @@ Node [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geomet
 
 ### Returns:
 
-- node with sockets ['geometry']
+- self
 
 <sub>Go to [top](#class-Face)</sub>
 
@@ -189,7 +189,7 @@ Node [Flip Faces](https://docs.blender.org/manual/en/latest/modeling/geometry_no
 
 ### Returns:
 
-- node with sockets ['mesh']
+- self
 
 <sub>Go to [top](#class-Face)</sub>
 
@@ -357,7 +357,7 @@ Node [Scale Elements](https://docs.blender.org/manual/en/latest/modeling/geometr
 
 ### Returns:
 
-- node with sockets ['geometry']
+- self
 
 <sub>Go to [top](#class-Face)</sub>
 
@@ -375,7 +375,7 @@ Node [Scale Elements](https://docs.blender.org/manual/en/latest/modeling/geometr
 
 ### Returns:
 
-- node with sockets ['geometry']
+- self
 
 <sub>Go to [top](#class-Face)</sub>
 
@@ -392,7 +392,7 @@ Node [Set Material](https://docs.blender.org/manual/en/latest/modeling/geometry_
 
 ### Returns:
 
-- node with sockets ['geometry']
+- self
 
 <sub>Go to [top](#class-Face)</sub>
 
@@ -409,7 +409,7 @@ Node [Set Shade Smooth](https://docs.blender.org/manual/en/latest/modeling/geome
 
 ### Returns:
 
-- node with sockets ['geometry']
+- self
 
 <sub>Go to [top](#class-Face)</sub>
 
@@ -457,7 +457,7 @@ Node [Triangulate](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 
 ### Returns:
 
-- node with sockets ['mesh']
+- self
 
 <sub>Go to [top](#class-Face)</sub>
 

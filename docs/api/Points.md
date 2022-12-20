@@ -89,7 +89,7 @@ Node [Set Point Radius](https://docs.blender.org/manual/en/latest/modeling/geome
 
 ### Returns:
 
-- node with sockets ['points']
+- self
 
 <sub>Go to [top](#class-Points)</sub>
 

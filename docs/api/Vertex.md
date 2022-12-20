@@ -30,7 +30,7 @@ Node [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geomet
 
 ### Returns:
 
-- node with sockets ['geometry']
+- self
 
 <sub>Go to [top](#class-Vertex)</sub>
 
@@ -44,7 +44,7 @@ Node [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geomet
 
 ### Returns:
 
-- node with sockets ['geometry']
+- self
 
 <sub>Go to [top](#class-Vertex)</sub>
 
@@ -58,7 +58,7 @@ Node [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geomet
 
 ### Returns:
 
-- node with sockets ['geometry']
+- self
 
 <sub>Go to [top](#class-Vertex)</sub>
 
@@ -134,7 +134,7 @@ Node [Merge by Distance](https://docs.blender.org/manual/en/latest/modeling/geom
 
 ### Returns:
 
-- node with sockets ['geometry']
+- self
 
 <sub>Go to [top](#class-Vertex)</sub>
 

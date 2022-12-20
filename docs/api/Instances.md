@@ -115,7 +115,7 @@ Node [Rotate Instances](https://docs.blender.org/manual/en/latest/modeling/geome
 
 ### Returns:
 
-- node with sockets ['instances']
+- self
 
 <sub>Go to [top](#class-Instances)</sub>
 
@@ -163,7 +163,7 @@ Node [Scale Instances](https://docs.blender.org/manual/en/latest/modeling/geomet
 
 ### Returns:
 
-- node with sockets ['instances']
+- self
 
 <sub>Go to [top](#class-Instances)</sub>
 
@@ -201,7 +201,7 @@ Node [Translate Instances](https://docs.blender.org/manual/en/latest/modeling/ge
 
 ### Returns:
 
-- node with sockets ['instances']
+- self
 
 <sub>Go to [top](#class-Instances)</sub>
 

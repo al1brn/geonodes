@@ -310,7 +310,7 @@ Node [Deform Curves on Surface](https://docs.blender.org/manual/en/latest/modeli
 
 ### Returns:
 
-- node with sockets ['curves']
+- self
 
 <sub>Go to [top](#class-Curve)</sub>
 
@@ -398,7 +398,7 @@ Node [Fillet Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_
 
 ### Returns:
 
-- node with sockets ['curve']
+- self
 
 <sub>Go to [top](#class-Curve)</sub>
 
@@ -416,7 +416,7 @@ Node [Fillet Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_
 
 ### Returns:
 
-- node with sockets ['curve']
+- self
 
 <sub>Go to [top](#class-Curve)</sub>
 
@@ -435,7 +435,7 @@ Node [Fillet Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_
 
 ### Returns:
 
-- node with sockets ['curve']
+- self
 
 <sub>Go to [top](#class-Curve)</sub>
 
@@ -546,7 +546,7 @@ Node [Resample Curve](https://docs.blender.org/manual/en/latest/modeling/geometr
 
 ### Returns:
 
-- node with sockets ['curve']
+- self
 
 <sub>Go to [top](#class-Curve)</sub>
 
@@ -564,7 +564,7 @@ Node [Resample Curve](https://docs.blender.org/manual/en/latest/modeling/geometr
 
 ### Returns:
 
-- node with sockets ['curve']
+- self
 
 <sub>Go to [top](#class-Curve)</sub>
 
@@ -581,7 +581,7 @@ Node [Resample Curve](https://docs.blender.org/manual/en/latest/modeling/geometr
 
 ### Returns:
 
-- node with sockets ['curve']
+- self
 
 <sub>Go to [top](#class-Curve)</sub>
 
@@ -599,7 +599,7 @@ Node [Resample Curve](https://docs.blender.org/manual/en/latest/modeling/geometr
 
 ### Returns:
 
-- node with sockets ['curve']
+- self
 
 <sub>Go to [top](#class-Curve)</sub>
 
@@ -616,7 +616,7 @@ Node [Reverse Curve](https://docs.blender.org/manual/en/latest/modeling/geometry
 
 ### Returns:
 
-- node with sockets ['curve']
+- self
 
 <sub>Go to [top](#class-Curve)</sub>
 
@@ -639,7 +639,7 @@ Node [Sample Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_
 
 ### Returns:
 
-- node with sockets ['value', 'position', 'tangent', 'normal']
+- self
 
 <sub>Go to [top](#class-Curve)</sub>
 
@@ -672,7 +672,7 @@ Node [Subdivide Curve](https://docs.blender.org/manual/en/latest/modeling/geomet
 
 ### Returns:
 
-- node with sockets ['curve']
+- self
 
 <sub>Go to [top](#class-Curve)</sub>
 
@@ -774,7 +774,7 @@ Node [Trim Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_no
 
 ### Returns:
 
-- node with sockets ['curve']
+- self
 
 <sub>Go to [top](#class-Curve)</sub>
 
@@ -793,7 +793,7 @@ Node [Trim Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_no
 
 ### Returns:
 
-- node with sockets ['curve']
+- self
 
 <sub>Go to [top](#class-Curve)</sub>
 
@@ -812,7 +812,7 @@ Node [Trim Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_no
 
 ### Returns:
 
-- node with sockets ['curve']
+- self
 
 <sub>Go to [top](#class-Curve)</sub>
 

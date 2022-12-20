@@ -68,7 +68,7 @@ Node [Align Euler to Vector](https://docs.blender.org/manual/en/latest/modeling/
 
 ### Returns:
 
-- node with sockets ['rotation']
+- self
 
 <sub>Go to [top](#class-Rotation)</sub>
 

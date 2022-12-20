@@ -407,7 +407,7 @@ Node [Set Handle Positions](https://docs.blender.org/manual/en/latest/modeling/g
 
 ### Returns:
 
-- node with sockets ['curve']
+- self
 
 <sub>Go to [top](#class-ControlPoint)</sub>
 
@@ -426,7 +426,7 @@ Node [Set Handle Positions](https://docs.blender.org/manual/en/latest/modeling/g
 
 ### Returns:
 
-- node with sockets ['curve']
+- self
 
 <sub>Go to [top](#class-ControlPoint)</sub>
 
@@ -445,7 +445,7 @@ Node [Set Handle Positions](https://docs.blender.org/manual/en/latest/modeling/g
 
 ### Returns:
 
-- node with sockets ['curve']
+- self
 
 <sub>Go to [top](#class-ControlPoint)</sub>
 
@@ -483,7 +483,7 @@ Node [Set Handle Type](https://docs.blender.org/manual/en/latest/modeling/geomet
 
 ### Returns:
 
-- node with sockets ['curve']
+- self
 
 <sub>Go to [top](#class-ControlPoint)</sub>
 
@@ -500,7 +500,7 @@ Node [Set Curve Radius](https://docs.blender.org/manual/en/latest/modeling/geome
 
 ### Returns:
 
-- node with sockets ['curve']
+- self
 
 <sub>Go to [top](#class-ControlPoint)</sub>
 
@@ -517,7 +517,7 @@ Node [Set Curve Tilt](https://docs.blender.org/manual/en/latest/modeling/geometr
 
 ### Returns:
 
-- node with sockets ['curve']
+- self
 
 <sub>Go to [top](#class-ControlPoint)</sub>
 

@@ -177,7 +177,7 @@ Node [Resample Curve](https://docs.blender.org/manual/en/latest/modeling/geometr
 
 ### Returns:
 
-- node with sockets ['curve']
+- self
 
 <sub>Go to [top](#class-Spline)</sub>
 
@@ -194,7 +194,7 @@ Node [Resample Curve](https://docs.blender.org/manual/en/latest/modeling/geometr
 
 ### Returns:
 
-- node with sockets ['curve']
+- self
 
 <sub>Go to [top](#class-Spline)</sub>
 
@@ -208,7 +208,7 @@ Node [Resample Curve](https://docs.blender.org/manual/en/latest/modeling/geometr
 
 ### Returns:
 
-- node with sockets ['curve']
+- self
 
 <sub>Go to [top](#class-Spline)</sub>
 
@@ -225,7 +225,7 @@ Node [Resample Curve](https://docs.blender.org/manual/en/latest/modeling/geometr
 
 ### Returns:
 
-- node with sockets ['curve']
+- self
 
 <sub>Go to [top](#class-Spline)</sub>
 
@@ -271,7 +271,7 @@ Node [Set Spline Cyclic](https://docs.blender.org/manual/en/latest/modeling/geom
 
 ### Returns:
 
-- node with sockets ['geometry']
+- self
 
 <sub>Go to [top](#class-Spline)</sub>
 
@@ -288,7 +288,7 @@ Node [Set Material](https://docs.blender.org/manual/en/latest/modeling/geometry_
 
 ### Returns:
 
-- node with sockets ['geometry']
+- self
 
 <sub>Go to [top](#class-Spline)</sub>
 
@@ -305,7 +305,7 @@ Node [Set Curve Normal](https://docs.blender.org/manual/en/latest/modeling/geome
 
 ### Returns:
 
-- node with sockets ['curve']
+- self
 
 <sub>Go to [top](#class-Spline)</sub>
 
@@ -322,7 +322,7 @@ Node [Set Spline Resolution](https://docs.blender.org/manual/en/latest/modeling/
 
 ### Returns:
 
-- node with sockets ['geometry']
+- self
 
 <sub>Go to [top](#class-Spline)</sub>
 
@@ -339,7 +339,7 @@ Node [Set Spline Type](https://docs.blender.org/manual/en/latest/modeling/geomet
 
 ### Returns:
 
-- node with sockets ['curve']
+- self
 
 <sub>Go to [top](#class-Spline)</sub>
 

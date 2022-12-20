@@ -259,7 +259,7 @@ Node [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geomet
 
 ### Returns:
 
-- node with sockets ['geometry']
+- self
 
 <sub>Go to [top](#class-Geometry)</sub>
 
@@ -459,7 +459,7 @@ Node [Join Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry
 
 ### Returns:
 
-- node with sockets ['geometry']
+- self
 
 <sub>Go to [top](#class-Geometry)</sub>
 
@@ -509,7 +509,7 @@ Node [Merge by Distance](https://docs.blender.org/manual/en/latest/modeling/geom
 
 ### Returns:
 
-- node with sockets ['geometry']
+- self
 
 <sub>Go to [top](#class-Geometry)</sub>
 
@@ -834,7 +834,7 @@ Node [Remove Named Attribute](https://docs.blender.org/manual/en/latest/modeling
 
 ### Returns:
 
-- node with sockets ['geometry']
+- self
 
 <sub>Go to [top](#class-Geometry)</sub>
 
@@ -852,7 +852,7 @@ Node [Replace Material](https://docs.blender.org/manual/en/latest/modeling/geome
 
 ### Returns:
 
-- node with sockets ['geometry']
+- self
 
 <sub>Go to [top](#class-Geometry)</sub>
 
@@ -943,7 +943,7 @@ Node [Set ID](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/
 
 ### Returns:
 
-- node with sockets ['geometry']
+- self
 
 <sub>Go to [top](#class-Geometry)</sub>
 
@@ -961,7 +961,7 @@ Node [Set Material](https://docs.blender.org/manual/en/latest/modeling/geometry_
 
 ### Returns:
 
-- node with sockets ['geometry']
+- self
 
 <sub>Go to [top](#class-Geometry)</sub>
 
@@ -979,7 +979,7 @@ Node [Set Material Index](https://docs.blender.org/manual/en/latest/modeling/geo
 
 ### Returns:
 
-- node with sockets ['geometry']
+- self
 
 <sub>Go to [top](#class-Geometry)</sub>
 
@@ -998,7 +998,7 @@ Node [Store Named Attribute](https://docs.blender.org/manual/en/latest/modeling/
 
 ### Returns:
 
-- node with sockets ['geometry']
+- self
 
 <sub>Go to [top](#class-Geometry)</sub>
 
@@ -1017,7 +1017,7 @@ Node [Store Named Attribute](https://docs.blender.org/manual/en/latest/modeling/
 
 ### Returns:
 
-- node with sockets ['geometry']
+- self
 
 <sub>Go to [top](#class-Geometry)</sub>
 
@@ -1036,7 +1036,7 @@ Node [Store Named Attribute](https://docs.blender.org/manual/en/latest/modeling/
 
 ### Returns:
 
-- node with sockets ['geometry']
+- self
 
 <sub>Go to [top](#class-Geometry)</sub>
 
@@ -1055,7 +1055,7 @@ Node [Store Named Attribute](https://docs.blender.org/manual/en/latest/modeling/
 
 ### Returns:
 
-- node with sockets ['geometry']
+- self
 
 <sub>Go to [top](#class-Geometry)</sub>
 
@@ -1074,7 +1074,7 @@ Node [Store Named Attribute](https://docs.blender.org/manual/en/latest/modeling/
 
 ### Returns:
 
-- node with sockets ['geometry']
+- self
 
 <sub>Go to [top](#class-Geometry)</sub>
 
@@ -1093,7 +1093,7 @@ Node [Set Position](https://docs.blender.org/manual/en/latest/modeling/geometry_
 
 ### Returns:
 
-- node with sockets ['geometry']
+- self
 
 <sub>Go to [top](#class-Geometry)</sub>
 
@@ -1112,7 +1112,7 @@ Node [Store Named Attribute](https://docs.blender.org/manual/en/latest/modeling/
 
 ### Returns:
 
-- node with sockets ['geometry']
+- self
 
 <sub>Go to [top](#class-Geometry)</sub>
 
@@ -1166,7 +1166,7 @@ Node [Transform](https://docs.blender.org/manual/en/latest/modeling/geometry_nod
 
 ### Returns:
 
-- node with sockets ['geometry']
+- self
 
 <sub>Go to [top](#class-Geometry)</sub>
 

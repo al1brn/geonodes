@@ -282,7 +282,7 @@ Node [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geomet
 
 ### Returns:
 
-- node with sockets ['geometry']
+- self
 
 <sub>Go to [top](#class-Domain)</sub>
 
@@ -618,7 +618,7 @@ Node [Remove Named Attribute](https://docs.blender.org/manual/en/latest/modeling
 
 ### Returns:
 
-- node with sockets ['geometry']
+- self
 
 <sub>Go to [top](#class-Domain)</sub>
 
@@ -688,7 +688,7 @@ Node [Set ID](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/
 
 ### Returns:
 
-- node with sockets ['geometry']
+- self
 
 <sub>Go to [top](#class-Domain)</sub>
 
@@ -705,7 +705,7 @@ Node [Set Material Index](https://docs.blender.org/manual/en/latest/modeling/geo
 
 ### Returns:
 
-- node with sockets ['geometry']
+- self
 
 <sub>Go to [top](#class-Domain)</sub>
 
@@ -723,7 +723,7 @@ Node [Store Named Attribute](https://docs.blender.org/manual/en/latest/modeling/
 
 ### Returns:
 
-- node with sockets ['geometry']
+- self
 
 <sub>Go to [top](#class-Domain)</sub>
 
@@ -741,7 +741,7 @@ Node [Store Named Attribute](https://docs.blender.org/manual/en/latest/modeling/
 
 ### Returns:
 
-- node with sockets ['geometry']
+- self
 
 <sub>Go to [top](#class-Domain)</sub>
 
@@ -759,7 +759,7 @@ Node [Store Named Attribute](https://docs.blender.org/manual/en/latest/modeling/
 
 ### Returns:
 
-- node with sockets ['geometry']
+- self
 
 <sub>Go to [top](#class-Domain)</sub>
 
@@ -777,7 +777,7 @@ Node [Store Named Attribute](https://docs.blender.org/manual/en/latest/modeling/
 
 ### Returns:
 
-- node with sockets ['geometry']
+- self
 
 <sub>Go to [top](#class-Domain)</sub>
 
@@ -795,7 +795,7 @@ Node [Store Named Attribute](https://docs.blender.org/manual/en/latest/modeling/
 
 ### Returns:
 
-- node with sockets ['geometry']
+- self
 
 <sub>Go to [top](#class-Domain)</sub>
 
@@ -813,7 +813,7 @@ Node [Set Position](https://docs.blender.org/manual/en/latest/modeling/geometry_
 
 ### Returns:
 
-- node with sockets ['geometry']
+- self
 
 <sub>Go to [top](#class-Domain)</sub>
 
@@ -831,7 +831,7 @@ Node [Store Named Attribute](https://docs.blender.org/manual/en/latest/modeling/
 
 ### Returns:
 
-- node with sockets ['geometry']
+- self
 
 <sub>Go to [top](#class-Domain)</sub>
 
