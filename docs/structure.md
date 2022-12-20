@@ -28,14 +28,14 @@ In geometry nodes, attributes refer to [domains](https://al1brn.github.io/geonod
 
 **geonodes** implement [domains](https://al1brn.github.io/geonodes/domains.html) as properties of geometry classes.
 - Mesh
-  - [verts](https://al1brn.github.io/geonodes/domains/vertex.html)
-  - [faces](https://al1brn.github.io/geonodes/domains/face.html)
-  - [edges](https://al1brn.github.io/geonodes/domains/edge.html)
-  - [corners](https://al1brn.github.io/geonodes/domains/corner.html)
+  - verts [Vertex](api/Vertex.md)
+  - faces [Face](api/Face.md)
+  - edges [Edge](api/Edge.md)
+  - corners [Corner](api/Corner.md)
 - Curve
-  - [points](https://al1brn.github.io/geonodes/domains/controlpoint.html)
-  - [splines](https://al1brn.github.io/geonodes/domains/spline.html)
+  - points [ControlPoint]api/ControlPoint.md)
+  - spline [Spline](api/Spline.md)
 - Points cloud
-  - [points](https://al1brn.github.io/geonodes/domains/cloudpoint.html)
+  - points [CloudPoint](api/CloudPoint.md)
 - Instances
-  - [insts](https://al1brn.github.io/geonodes/domains/instance.html)
+  - inst [Instance](api/Instance.md)
