@@ -68,7 +68,6 @@ Node [Arc](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/cur
 - invert_arc: Boolean
 
 ### Returns:
-
 - socket `curve`
 
 <sub>Go to [top](#class-Curve)</sub>
@@ -91,7 +90,6 @@ Node [Arc](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/cur
 - invert_arc: Boolean
 
 ### Returns:
-
 - node with sockets ['curve', 'center', 'normal', 'radius']
 
 <sub>Go to [top](#class-Curve)</sub>
@@ -109,7 +107,6 @@ Node [Curve Circle](https://docs.blender.org/manual/en/latest/modeling/geometry_
 - radius: Float
 
 ### Returns:
-
 - socket `curve`
 
 <sub>Go to [top](#class-Curve)</sub>
@@ -129,7 +126,6 @@ Node [Curve Circle](https://docs.blender.org/manual/en/latest/modeling/geometry_
 - point_3: Vector
 
 ### Returns:
-
 - node with sockets ['curve', 'center']
 
 <sub>Go to [top](#class-Curve)</sub>
@@ -147,7 +143,6 @@ Node [Curve Line](https://docs.blender.org/manual/en/latest/modeling/geometry_no
 - end: Vector
 
 ### Returns:
-
 - socket `curve`
 
 <sub>Go to [top](#class-Curve)</sub>
@@ -166,7 +161,6 @@ Node [Curve Line](https://docs.blender.org/manual/en/latest/modeling/geometry_no
 - length: Float
 
 ### Returns:
-
 - socket `curve`
 
 <sub>Go to [top](#class-Curve)</sub>
@@ -186,7 +180,6 @@ Node [Quadratic Bezier](https://docs.blender.org/manual/en/latest/modeling/geome
 - end: Vector
 
 ### Returns:
-
 - socket `curve`
 
 <sub>Go to [top](#class-Curve)</sub>
@@ -214,7 +207,6 @@ Node [Quadrilateral](https://docs.blender.org/manual/en/latest/modeling/geometry
 - mode (str): 'RECTANGLE' in [RECTANGLE, PARALLELOGRAM, TRAPEZOID, KITE, POINTS]
 
 ### Returns:
-
 - socket `curve`
 
 <sub>Go to [top](#class-Curve)</sub>
@@ -236,7 +228,6 @@ Node [Spiral](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/
 - reverse: Boolean
 
 ### Returns:
-
 - socket `curve`
 
 <sub>Go to [top](#class-Curve)</sub>
@@ -256,7 +247,6 @@ Node [Star](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/cu
 - twist: Float
 
 ### Returns:
-
 - node with sockets ['curve', 'outer_points']
 
 <sub>Go to [top](#class-Curve)</sub>
@@ -278,7 +268,6 @@ Node [Bezier Segment](https://docs.blender.org/manual/en/latest/modeling/geometr
 - mode (str): 'POSITION' in [POSITION, OFFSET]
 
 ### Returns:
-
 - socket `curve`
 
 <sub>Go to [top](#class-Curve)</sub>
@@ -295,7 +284,6 @@ Node [Curve of Point](https://docs.blender.org/manual/en/latest/modeling/geometr
 - point_index: Integer
 
 ### Returns:
-
 - tuple ('`curve_index`', '`index_in_curve`')
 
 <sub>Go to [top](#class-Curve)</sub>
@@ -309,7 +297,6 @@ def deform_on_surface(self):
 Node [Deform Curves on Surface](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/deform_curves_on_surface.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeDeformCurvesOnSurface.html) )
 
 ### Returns:
-
 - self
 
 <sub>Go to [top](#class-Curve)</sub>
@@ -325,7 +312,6 @@ Node [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 Node implemented as property.
 
 ### Returns:
-
 - node with sockets ['point_count', 'edge_count', 'face_count', 'face_corner_count', 'spline_count', 'instance_count']
 
 <sub>Go to [top](#class-Curve)</sub>
@@ -343,7 +329,6 @@ Node [Fill Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_no
 - mode (str): 'TRIANGLES' in [TRIANGLES, NGONS]
 
 ### Returns:
-
 - socket `mesh` of class Mesh
 
 <sub>Go to [top](#class-Curve)</sub>
@@ -360,7 +345,6 @@ Node [Fill Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_no
 - curve: Curve
 
 ### Returns:
-
 - socket `mesh` of class Mesh
 
 <sub>Go to [top](#class-Curve)</sub>
@@ -377,7 +361,6 @@ Node [Fill Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_no
 - curve: Curve
 
 ### Returns:
-
 - socket `mesh` of class Mesh
 
 <sub>Go to [top](#class-Curve)</sub>
@@ -397,7 +380,6 @@ Node [Fillet Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_
 - mode (str): 'BEZIER' in [BEZIER, POLY]
 
 ### Returns:
-
 - self
 
 <sub>Go to [top](#class-Curve)</sub>
@@ -415,7 +397,6 @@ Node [Fillet Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_
 - limit_radius: Boolean
 
 ### Returns:
-
 - self
 
 <sub>Go to [top](#class-Curve)</sub>
@@ -434,7 +415,6 @@ Node [Fillet Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_
 - limit_radius: Boolean
 
 ### Returns:
-
 - self
 
 <sub>Go to [top](#class-Curve)</sub>
@@ -456,7 +436,6 @@ Node [Instance on Points](https://docs.blender.org/manual/en/latest/modeling/geo
 - scale: Vector
 
 ### Returns:
-
 - socket `instances`
 
 <sub>Go to [top](#class-Curve)</sub>
@@ -472,7 +451,6 @@ Node [Curve Length](https://docs.blender.org/manual/en/latest/modeling/geometry_
 Node implemented as property.
 
 ### Returns:
-
 - socket `length`
 
 <sub>Go to [top](#class-Curve)</sub>
@@ -490,7 +468,6 @@ Node [Offset Point in Curve](https://docs.blender.org/manual/en/latest/modeling/
 - offset: Integer
 
 ### Returns:
-
 - tuple ('`is_valid_offset`', '`point_index`')
 
 <sub>Go to [top](#class-Curve)</sub>
@@ -506,7 +483,6 @@ Node [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 Node implemented as property.
 
 ### Returns:
-
 - socket `point_count`
 
 <sub>Go to [top](#class-Curve)</sub>
@@ -525,7 +501,6 @@ Node [Points of Curve](https://docs.blender.org/manual/en/latest/modeling/geomet
 - sort_index: Integer
 
 ### Returns:
-
 - tuple ('`point_index`', '`total`')
 
 <sub>Go to [top](#class-Curve)</sub>
@@ -545,7 +520,6 @@ Node [Resample Curve](https://docs.blender.org/manual/en/latest/modeling/geometr
 - mode (str): 'COUNT' in [EVALUATED, COUNT, LENGTH]
 
 ### Returns:
-
 - self
 
 <sub>Go to [top](#class-Curve)</sub>
@@ -563,7 +537,6 @@ Node [Resample Curve](https://docs.blender.org/manual/en/latest/modeling/geometr
 - count: Integer
 
 ### Returns:
-
 - self
 
 <sub>Go to [top](#class-Curve)</sub>
@@ -580,7 +553,6 @@ Node [Resample Curve](https://docs.blender.org/manual/en/latest/modeling/geometr
 - selection: Boolean
 
 ### Returns:
-
 - self
 
 <sub>Go to [top](#class-Curve)</sub>
@@ -598,7 +570,6 @@ Node [Resample Curve](https://docs.blender.org/manual/en/latest/modeling/geometr
 - length: Float
 
 ### Returns:
-
 - self
 
 <sub>Go to [top](#class-Curve)</sub>
@@ -615,7 +586,6 @@ Node [Reverse Curve](https://docs.blender.org/manual/en/latest/modeling/geometry
 - selection: Boolean
 
 ### Returns:
-
 - self
 
 <sub>Go to [top](#class-Curve)</sub>
@@ -638,7 +608,6 @@ Node [Sample Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_
 - use_all_curves (bool): False
 
 ### Returns:
-
 - self
 
 <sub>Go to [top](#class-Curve)</sub>
@@ -654,7 +623,6 @@ Node [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 Node implemented as property.
 
 ### Returns:
-
 - socket `spline_count`
 
 <sub>Go to [top](#class-Curve)</sub>
@@ -671,7 +639,6 @@ Node [Subdivide Curve](https://docs.blender.org/manual/en/latest/modeling/geomet
 - cuts: Integer
 
 ### Returns:
-
 - self
 
 <sub>Go to [top](#class-Curve)</sub>
@@ -689,7 +656,6 @@ Node [Curve to Mesh](https://docs.blender.org/manual/en/latest/modeling/geometry
 - fill_caps: Boolean
 
 ### Returns:
-
 - socket `mesh` of class Mesh
 
 <sub>Go to [top](#class-Curve)</sub>
@@ -708,7 +674,6 @@ Node [Curve to Points](https://docs.blender.org/manual/en/latest/modeling/geomet
 - mode (str): 'COUNT' in [EVALUATED, COUNT, LENGTH]
 
 ### Returns:
-
 - tuple ('`points`', '`tangent`', '`normal`', '`rotation`')
 
 <sub>Go to [top](#class-Curve)</sub>
@@ -725,7 +690,6 @@ Node [Curve to Points](https://docs.blender.org/manual/en/latest/modeling/geomet
 - count: Integer
 
 ### Returns:
-
 - tuple ('`points`', '`tangent`', '`normal`', '`rotation`')
 
 <sub>Go to [top](#class-Curve)</sub>
@@ -739,7 +703,6 @@ def to_points_evaluated(self):
 Node [Curve to Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/curve_to_points.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveToPoints.html) )
 
 ### Returns:
-
 - tuple ('`points`', '`tangent`', '`normal`', '`rotation`')
 
 <sub>Go to [top](#class-Curve)</sub>
@@ -756,7 +719,6 @@ Node [Curve to Points](https://docs.blender.org/manual/en/latest/modeling/geomet
 - length: Float
 
 ### Returns:
-
 - tuple ('`points`', '`tangent`', '`normal`', '`rotation`')
 
 <sub>Go to [top](#class-Curve)</sub>
@@ -773,7 +735,6 @@ Node [Trim Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_no
 - mode (str): 'FACTOR' in [FACTOR, LENGTH]
 
 ### Returns:
-
 - self
 
 <sub>Go to [top](#class-Curve)</sub>
@@ -792,7 +753,6 @@ Node [Trim Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_no
 - mode (str): 'FACTOR' in [FACTOR, LENGTH]
 
 ### Returns:
-
 - self
 
 <sub>Go to [top](#class-Curve)</sub>
@@ -811,7 +771,6 @@ Node [Trim Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_no
 - mode (str): 'FACTOR' in [FACTOR, LENGTH]
 
 ### Returns:
-
 - self
 
 <sub>Go to [top](#class-Curve)</sub>

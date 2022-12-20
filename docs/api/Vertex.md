@@ -29,7 +29,6 @@ def delete_all(self):
 Node [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/delete_geometry.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeDeleteGeometry.html) )
 
 ### Returns:
-
 - self
 
 <sub>Go to [top](#class-Vertex)</sub>
@@ -43,7 +42,6 @@ def delete_edges(self):
 Node [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/delete_geometry.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeDeleteGeometry.html) )
 
 ### Returns:
-
 - self
 
 <sub>Go to [top](#class-Vertex)</sub>
@@ -57,7 +55,6 @@ def delete_faces(self):
 Node [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/delete_geometry.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeDeleteGeometry.html) )
 
 ### Returns:
-
 - self
 
 <sub>Go to [top](#class-Vertex)</sub>
@@ -75,7 +72,6 @@ Node [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 - component (str): 'MESH' in [MESH, POINTCLOUD, CURVE, INSTANCES]
 
 ### Returns:
-
 - node with sockets ['point_count', 'edge_count', 'face_count', 'face_corner_count', 'spline_count', 'instance_count']
 
 <sub>Go to [top](#class-Vertex)</sub>
@@ -94,7 +90,6 @@ Node [Extrude Mesh](https://docs.blender.org/manual/en/latest/modeling/geometry_
 - individual: Boolean
 
 ### Returns:
-
 - tuple ('`top`', '`side`')
 
 <sub>Go to [top](#class-Vertex)</sub>
@@ -115,7 +110,6 @@ Node [Instance on Points](https://docs.blender.org/manual/en/latest/modeling/geo
 - scale: Vector
 
 ### Returns:
-
 - socket `instances` of class Instances
 
 <sub>Go to [top](#class-Vertex)</sub>
@@ -133,7 +127,6 @@ Node [Merge by Distance](https://docs.blender.org/manual/en/latest/modeling/geom
 - mode (str): 'ALL' in [ALL, CONNECTED]
 
 ### Returns:
-
 - self
 
 <sub>Go to [top](#class-Vertex)</sub>
@@ -147,7 +140,6 @@ def neighbors(self):
 Node [Vertex Neighbors](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/vertex_neighbors.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshVertexNeighbors.html) )
 
 ### Returns:
-
 - node with sockets ['vertex_count', 'face_count']
 
 <sub>Go to [top](#class-Vertex)</sub>
@@ -161,7 +153,6 @@ def neighbors_face_count(self):
 Node [Vertex Neighbors](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/vertex_neighbors.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshVertexNeighbors.html) )
 
 ### Returns:
-
 - socket `face_count`
 
 <sub>Go to [top](#class-Vertex)</sub>
@@ -175,7 +166,6 @@ def neighbors_vertex_count(self):
 Node [Vertex Neighbors](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/vertex_neighbors.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshVertexNeighbors.html) )
 
 ### Returns:
-
 - socket `vertex_count`
 
 <sub>Go to [top](#class-Vertex)</sub>
@@ -194,7 +184,6 @@ Node [Mesh to Points](https://docs.blender.org/manual/en/latest/modeling/geometr
 - mode (str): 'VERTICES' in [VERTICES, EDGES, FACES, CORNERS]
 
 ### Returns:
-
 - socket `points` of class Points
 
 <sub>Go to [top](#class-Vertex)</sub>
@@ -217,7 +206,6 @@ Node [Mesh to Volume](https://docs.blender.org/manual/en/latest/modeling/geometr
 - resolution_mode (str): 'VOXEL_AMOUNT' in [VOXEL_AMOUNT, VOXEL_SIZE]
 
 ### Returns:
-
 - socket `volume` of class Volume
 
 <sub>Go to [top](#class-Vertex)</sub>

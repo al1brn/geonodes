@@ -31,7 +31,6 @@ Node [Volume Cube](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 - resolution_z: Integer
 
 ### Returns:
-
 - socket `volume`
 
 <sub>Go to [top](#class-Volume)</sub>
@@ -52,7 +51,6 @@ Node [Distribute Points in Volume](https://docs.blender.org/manual/en/latest/mod
 - mode (str): 'DENSITY_RANDOM' in [DENSITY_RANDOM, DENSITY_GRID]
 
 ### Returns:
-
 - socket `points` of class Points
 
 <sub>Go to [top](#class-Volume)</sub>
@@ -70,7 +68,6 @@ Node [Distribute Points in Volume](https://docs.blender.org/manual/en/latest/mod
 - threshold: Float
 
 ### Returns:
-
 - socket `points` of class Points
 
 <sub>Go to [top](#class-Volume)</sub>
@@ -88,7 +85,6 @@ Node [Distribute Points in Volume](https://docs.blender.org/manual/en/latest/mod
 - seed: Integer
 
 ### Returns:
-
 - socket `points` of class Points
 
 <sub>Go to [top](#class-Volume)</sub>
@@ -109,7 +105,6 @@ Node [Volume to Mesh](https://docs.blender.org/manual/en/latest/modeling/geometr
 - resolution_mode (str): 'GRID' in [GRID, VOXEL_AMOUNT, VOXEL_SIZE]
 
 ### Returns:
-
 - socket `mesh` of class Mesh
 
 <sub>Go to [top](#class-Volume)</sub>

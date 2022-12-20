@@ -25,7 +25,6 @@ Node [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 - component (str): 'MESH' in [MESH, POINTCLOUD, CURVE, INSTANCES]
 
 ### Returns:
-
 - node with sockets ['point_count', 'edge_count', 'face_count', 'face_corner_count', 'spline_count', 'instance_count']
 
 <sub>Go to [top](#class-CloudPoint)</sub>
@@ -46,7 +45,6 @@ Node [Instance on Points](https://docs.blender.org/manual/en/latest/modeling/geo
 - scale: Vector
 
 ### Returns:
-
 - socket `instances` of class Instances
 
 <sub>Go to [top](#class-CloudPoint)</sub>
@@ -60,7 +58,6 @@ def radius(self):
 Node [Radius](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/radius.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputRadius.html) )
 
 ### Returns:
-
 - socket `radius`
 
 <sub>Go to [top](#class-CloudPoint)</sub>
@@ -75,7 +72,8 @@ Node [Set Point Radius](https://docs.blender.org/manual/en/latest/modeling/geome
 
 Node implemented as property setter.
 
-        ###Args:- attr_value: radius
+        ###Args:
+- attr_value: radius
 
 
 <sub>Go to [top](#class-CloudPoint)</sub>
@@ -92,7 +90,6 @@ Node [Points to Vertices](https://docs.blender.org/manual/en/latest/modeling/geo
 - points: Points
 
 ### Returns:
-
 - socket `mesh` of class Mesh
 
 <sub>Go to [top](#class-CloudPoint)</sub>

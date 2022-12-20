@@ -78,7 +78,6 @@ Node [Mesh Circle](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 - fill_type (str): 'NONE' in [NONE, NGON, TRIANGLE_FAN]
 
 ### Returns:
-
 - socket `mesh`
 
 <sub>Go to [top](#class-Mesh)</sub>
@@ -97,7 +96,6 @@ Node [UV Sphere](https://docs.blender.org/manual/en/latest/modeling/geometry_nod
 - radius: Float
 
 ### Returns:
-
 - socket `mesh`
 
 <sub>Go to [top](#class-Mesh)</sub>
@@ -120,7 +118,6 @@ Node [Cone](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/me
 - fill_type (str): 'NGON' in [NONE, NGON, TRIANGLE_FAN]
 
 ### Returns:
-
 - tuple ('`mesh`', '`top`', '`bottom`', '`side`')
 
 <sub>Go to [top](#class-Mesh)</sub>
@@ -140,7 +137,6 @@ Node [Cube](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/me
 - vertices_z: Integer
 
 ### Returns:
-
 - socket `mesh`
 
 <sub>Go to [top](#class-Mesh)</sub>
@@ -162,7 +158,6 @@ Node [Cylinder](https://docs.blender.org/manual/en/latest/modeling/geometry_node
 - fill_type (str): 'NGON' in [NONE, NGON, TRIANGLE_FAN]
 
 ### Returns:
-
 - tuple ('`mesh`', '`top`', '`bottom`', '`side`')
 
 <sub>Go to [top](#class-Mesh)</sub>
@@ -182,7 +177,6 @@ Node [Grid](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/me
 - vertices_y: Integer
 
 ### Returns:
-
 - socket `mesh`
 
 <sub>Go to [top](#class-Mesh)</sub>
@@ -200,7 +194,6 @@ Node [Ico Sphere](https://docs.blender.org/manual/en/latest/modeling/geometry_no
 - subdivisions: Integer
 
 ### Returns:
-
 - socket `mesh`
 
 <sub>Go to [top](#class-Mesh)</sub>
@@ -222,7 +215,6 @@ Node [Mesh Line](https://docs.blender.org/manual/en/latest/modeling/geometry_nod
 - mode (str): 'OFFSET' in [OFFSET, END_POINTS]
 
 ### Returns:
-
 - socket `mesh`
 
 <sub>Go to [top](#class-Mesh)</sub>
@@ -241,7 +233,6 @@ Node [Mesh Line](https://docs.blender.org/manual/en/latest/modeling/geometry_nod
 - end_location: Vector
 
 ### Returns:
-
 - socket `mesh`
 
 <sub>Go to [top](#class-Mesh)</sub>
@@ -260,7 +251,6 @@ Node [Mesh Line](https://docs.blender.org/manual/en/latest/modeling/geometry_nod
 - end_location: Vector
 
 ### Returns:
-
 - socket `mesh`
 
 <sub>Go to [top](#class-Mesh)</sub>
@@ -279,7 +269,6 @@ Node [Mesh Line](https://docs.blender.org/manual/en/latest/modeling/geometry_nod
 - offset: Vector
 
 ### Returns:
-
 - socket `mesh`
 
 <sub>Go to [top](#class-Mesh)</sub>
@@ -298,7 +287,6 @@ Node [Mesh Line](https://docs.blender.org/manual/en/latest/modeling/geometry_nod
 - offset: Vector
 
 ### Returns:
-
 - socket `mesh`
 
 <sub>Go to [top](#class-Mesh)</sub>
@@ -317,7 +305,6 @@ Node [Mesh Boolean](https://docs.blender.org/manual/en/latest/modeling/geometry_
 - hole_tolerant: Boolean
 
 ### Returns:
-
 - socket `intersecting_edges`
 
 <sub>Go to [top](#class-Mesh)</sub>
@@ -336,7 +323,6 @@ Node [Mesh Boolean](https://docs.blender.org/manual/en/latest/modeling/geometry_
 - hole_tolerant: Boolean
 
 ### Returns:
-
 - socket `intersecting_edges`
 
 <sub>Go to [top](#class-Mesh)</sub>
@@ -355,7 +341,6 @@ Node [Mesh Boolean](https://docs.blender.org/manual/en/latest/modeling/geometry_
 - hole_tolerant: Boolean
 
 ### Returns:
-
 - socket `intersecting_edges`
 
 <sub>Go to [top](#class-Mesh)</sub>
@@ -371,7 +356,6 @@ Node [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 Node implemented as property.
 
 ### Returns:
-
 - socket `face_corner_count`
 
 <sub>Go to [top](#class-Mesh)</sub>
@@ -389,7 +373,6 @@ Node [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geomet
 - domain (str): 'POINT' in [POINT, EDGE, FACE, CURVE, INSTANCE]
 
 ### Returns:
-
 - self
 
 <sub>Go to [top](#class-Mesh)</sub>
@@ -407,7 +390,6 @@ Node [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geomet
 - domain (str): 'POINT' in [POINT, EDGE, FACE, CURVE, INSTANCE]
 
 ### Returns:
-
 - self
 
 <sub>Go to [top](#class-Mesh)</sub>
@@ -425,7 +407,6 @@ Node [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geomet
 - domain (str): 'POINT' in [POINT, EDGE, FACE, CURVE, INSTANCE]
 
 ### Returns:
-
 - self
 
 <sub>Go to [top](#class-Mesh)</sub>
@@ -448,7 +429,6 @@ Node [Distribute Points on Faces](https://docs.blender.org/manual/en/latest/mode
 - distribute_method (str): 'RANDOM' in [RANDOM, POISSON]
 
 ### Returns:
-
 - tuple ('`points`', '`normal`', '`rotation`')
 
 <sub>Go to [top](#class-Mesh)</sub>
@@ -464,7 +444,6 @@ Node [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 Node implemented as property.
 
 ### Returns:
-
 - node with sockets ['point_count', 'edge_count', 'face_count', 'face_corner_count', 'spline_count', 'instance_count']
 
 <sub>Go to [top](#class-Mesh)</sub>
@@ -482,7 +461,6 @@ Node [Dual Mesh](https://docs.blender.org/manual/en/latest/modeling/geometry_nod
 - keep_boundaries: Boolean
 
 ### Returns:
-
 - socket `dual_mesh` of class Mesh
 
 <sub>Go to [top](#class-Mesh)</sub>
@@ -498,7 +476,6 @@ Node [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 Node implemented as property.
 
 ### Returns:
-
 - socket `edge_count`
 
 <sub>Go to [top](#class-Mesh)</sub>
@@ -516,7 +493,6 @@ Node [Edge Paths to Curves](https://docs.blender.org/manual/en/latest/modeling/g
 - next_vertex_index: Integer
 
 ### Returns:
-
 - socket `curves` of class Curve
 
 <sub>Go to [top](#class-Mesh)</sub>
@@ -534,7 +510,6 @@ Node [Edge Paths to Selection](https://docs.blender.org/manual/en/latest/modelin
 - next_vertex_index: Integer
 
 ### Returns:
-
 - socket `selection`
 
 <sub>Go to [top](#class-Mesh)</sub>
@@ -555,7 +530,6 @@ Node [Extrude Mesh](https://docs.blender.org/manual/en/latest/modeling/geometry_
 - mode (str): 'FACES' in [VERTICES, EDGES, FACES]
 
 ### Returns:
-
 - tuple ('`top`', '`side`')
 
 <sub>Go to [top](#class-Mesh)</sub>
@@ -571,7 +545,6 @@ Node [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 Node implemented as property.
 
 ### Returns:
-
 - socket `face_count`
 
 <sub>Go to [top](#class-Mesh)</sub>
@@ -588,7 +561,6 @@ Node [Face is Planar](https://docs.blender.org/manual/en/latest/modeling/geometr
 - threshold: Float
 
 ### Returns:
-
 - socket `planar`
 
 <sub>Go to [top](#class-Mesh)</sub>
@@ -605,7 +577,6 @@ Node [Face Set Boundaries](https://docs.blender.org/manual/en/latest/modeling/ge
 - face_set: Integer
 
 ### Returns:
-
 - socket `boundary_edges`
 
 <sub>Go to [top](#class-Mesh)</sub>
@@ -622,7 +593,6 @@ Node [Flip Faces](https://docs.blender.org/manual/en/latest/modeling/geometry_no
 - selection: Boolean
 
 ### Returns:
-
 - self
 
 <sub>Go to [top](#class-Mesh)</sub>
@@ -644,7 +614,6 @@ Node [Instance on Points](https://docs.blender.org/manual/en/latest/modeling/geo
 - scale: Vector
 
 ### Returns:
-
 - socket `instances`
 
 <sub>Go to [top](#class-Mesh)</sub>
@@ -658,7 +627,6 @@ def is_shade_smooth(self):
 Node [Is Shade Smooth](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/is_shade_smooth.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputShadeSmooth.html) )
 
 ### Returns:
-
 - socket `smooth`
 
 <sub>Go to [top](#class-Mesh)</sub>
@@ -672,7 +640,6 @@ def island(self):
 Node [Mesh Island](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/mesh_island.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshIsland.html) )
 
 ### Returns:
-
 - node with sockets ['island_index', 'island_count']
 
 <sub>Go to [top](#class-Mesh)</sub>
@@ -686,7 +653,6 @@ def island_count(self):
 Node [Mesh Island](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/mesh_island.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshIsland.html) )
 
 ### Returns:
-
 - socket `island_count`
 
 <sub>Go to [top](#class-Mesh)</sub>
@@ -700,7 +666,6 @@ def island_index(self):
 Node [Mesh Island](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/mesh_island.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshIsland.html) )
 
 ### Returns:
-
 - socket `island_index`
 
 <sub>Go to [top](#class-Mesh)</sub>
@@ -720,7 +685,6 @@ Node [Pack UV Islands](https://docs.blender.org/manual/en/latest/modeling/geomet
 - rotate: Boolean
 
 ### Returns:
-
 - socket `uv`
 
 <sub>Go to [top](#class-Mesh)</sub>
@@ -736,7 +700,6 @@ Node [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 Node implemented as property.
 
 ### Returns:
-
 - socket `point_count`
 
 <sub>Go to [top](#class-Mesh)</sub>
@@ -754,7 +717,6 @@ Node [Sample Nearest Surface](https://docs.blender.org/manual/en/latest/modeling
 - sample_position: Vector
 
 ### Returns:
-
 - socket `value`
 
 <sub>Go to [top](#class-Mesh)</sub>
@@ -773,7 +735,6 @@ Node [Sample UV Surface](https://docs.blender.org/manual/en/latest/modeling/geom
 - sample_uv: Vector
 
 ### Returns:
-
 - tuple ('`value`', '`is_valid`')
 
 <sub>Go to [top](#class-Mesh)</sub>
@@ -795,7 +756,6 @@ Node [Scale Elements](https://docs.blender.org/manual/en/latest/modeling/geometr
 - scale_mode (str): 'UNIFORM' in [UNIFORM, SINGLE_AXIS]
 
 ### Returns:
-
 - self
 
 <sub>Go to [top](#class-Mesh)</sub>
@@ -816,7 +776,6 @@ Node [Scale Elements](https://docs.blender.org/manual/en/latest/modeling/geometr
 - domain (str): 'FACE' in [FACE, EDGE]
 
 ### Returns:
-
 - self
 
 <sub>Go to [top](#class-Mesh)</sub>
@@ -836,7 +795,6 @@ Node [Scale Elements](https://docs.blender.org/manual/en/latest/modeling/geometr
 - domain (str): 'FACE' in [FACE, EDGE]
 
 ### Returns:
-
 - self
 
 <sub>Go to [top](#class-Mesh)</sub>
@@ -854,7 +812,6 @@ Node [Set Shade Smooth](https://docs.blender.org/manual/en/latest/modeling/geome
 - shade_smooth: Boolean
 
 ### Returns:
-
 - self
 
 <sub>Go to [top](#class-Mesh)</sub>
@@ -872,7 +829,6 @@ Node [Shortest Edge Paths](https://docs.blender.org/manual/en/latest/modeling/ge
 - edge_cost: Float
 
 ### Returns:
-
 - tuple ('`next_vertex_index`', '`total_cost`')
 
 <sub>Go to [top](#class-Mesh)</sub>
@@ -889,7 +845,6 @@ Node [Split Edges](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 - selection: Boolean
 
 ### Returns:
-
 - self
 
 <sub>Go to [top](#class-Mesh)</sub>
@@ -906,7 +861,6 @@ Node [Subdivide Mesh](https://docs.blender.org/manual/en/latest/modeling/geometr
 - level: Integer
 
 ### Returns:
-
 - self
 
 <sub>Go to [top](#class-Mesh)</sub>
@@ -927,7 +881,6 @@ Node [Subdivision Surface](https://docs.blender.org/manual/en/latest/modeling/ge
 - uv_smooth (str): 'PRESERVE_BOUNDARIES' in [NONE, PRESERVE_CORNERS, PRESERVE_CORNERS_AND_JUNCTIONS, PRESERVE_CORNERS_JUNCTIONS_AND_CONCAVE, PRESERVE_BOUNDARIES, SMOOTH_ALL]
 
 ### Returns:
-
 - self
 
 <sub>Go to [top](#class-Mesh)</sub>
@@ -944,7 +897,6 @@ Node [Mesh to Curve](https://docs.blender.org/manual/en/latest/modeling/geometry
 - selection: Boolean
 
 ### Returns:
-
 - socket `curve` of class Curve
 
 <sub>Go to [top](#class-Mesh)</sub>
@@ -964,7 +916,6 @@ Node [Mesh to Points](https://docs.blender.org/manual/en/latest/modeling/geometr
 - mode (str): 'VERTICES' in [VERTICES, EDGES, FACES, CORNERS]
 
 ### Returns:
-
 - socket `points` of class Points
 
 <sub>Go to [top](#class-Mesh)</sub>
@@ -987,7 +938,6 @@ Node [Mesh to Volume](https://docs.blender.org/manual/en/latest/modeling/geometr
 - resolution_mode (str): 'VOXEL_AMOUNT' in [VOXEL_AMOUNT, VOXEL_SIZE]
 
 ### Returns:
-
 - socket `volume` of class Volume
 
 <sub>Go to [top](#class-Mesh)</sub>
@@ -1007,7 +957,6 @@ Node [Triangulate](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 - quad_method (str): 'SHORTEST_DIAGONAL' in [BEAUTY, FIXED, FIXED_ALTERNATE, SHORTEST_DIAGONAL, LONGEST_DIAGONAL]
 
 ### Returns:
-
 - self
 
 <sub>Go to [top](#class-Mesh)</sub>
@@ -1028,7 +977,6 @@ Node [UV Unwrap](https://docs.blender.org/manual/en/latest/modeling/geometry_nod
 - method (str): 'ANGLE_BASED' in [ANGLE_BASED, CONFORMAL]
 
 ### Returns:
-
 - socket `uv`
 
 <sub>Go to [top](#class-Mesh)</sub>

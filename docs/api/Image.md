@@ -21,7 +21,6 @@ Node [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/
 - true: ['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'String', 'Geometry', 'Object', 'Collection', 'Texture', 'Material', 'Image']
 
 ### Returns:
-
 - socket `output`
 
 <sub>Go to [top](#class-Image)</sub>
@@ -41,7 +40,6 @@ Node [Image Texture](https://docs.blender.org/manual/en/latest/modeling/geometry
 - interpolation (str): 'Linear' in [Linear, Closest, Cubic]
 
 ### Returns:
-
 - tuple ('`color`', '`alpha`')
 
 <sub>Go to [top](#class-Image)</sub>

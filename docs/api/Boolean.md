@@ -31,7 +31,6 @@ Node [Boolean](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 - boolean (bool): False
 
 ### Returns:
-
 - socket `boolean`
 
 <sub>Go to [top](#class-Boolean)</sub>
@@ -48,7 +47,6 @@ Node [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_
 - boolean1: Boolean
 
 ### Returns:
-
 - socket `boolean`
 
 <sub>Go to [top](#class-Boolean)</sub>
@@ -62,7 +60,6 @@ def b_not(self):
 Node [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/boolean_math.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html) )
 
 ### Returns:
-
 - socket `boolean`
 
 <sub>Go to [top](#class-Boolean)</sub>
@@ -79,7 +76,6 @@ Node [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_
 - boolean1: Boolean
 
 ### Returns:
-
 - socket `boolean`
 
 <sub>Go to [top](#class-Boolean)</sub>
@@ -96,7 +92,6 @@ Node [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_
 - boolean1: Boolean
 
 ### Returns:
-
 - socket `boolean`
 
 <sub>Go to [top](#class-Boolean)</sub>
@@ -113,7 +108,6 @@ Node [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_
 - boolean1: Boolean
 
 ### Returns:
-
 - socket `boolean`
 
 <sub>Go to [top](#class-Boolean)</sub>
@@ -130,7 +124,6 @@ Node [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_
 - boolean1: Boolean
 
 ### Returns:
-
 - socket `boolean`
 
 <sub>Go to [top](#class-Boolean)</sub>
@@ -147,7 +140,6 @@ Node [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_
 - boolean1: Boolean
 
 ### Returns:
-
 - socket `boolean`
 
 <sub>Go to [top](#class-Boolean)</sub>
@@ -165,7 +157,6 @@ Node [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/
 - true: ['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'String', 'Geometry', 'Object', 'Collection', 'Texture', 'Material', 'Image']
 
 ### Returns:
-
 - socket `output`
 
 <sub>Go to [top](#class-Boolean)</sub>
@@ -182,7 +173,6 @@ Node [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_
 - boolean1: Boolean
 
 ### Returns:
-
 - socket `boolean`
 
 <sub>Go to [top](#class-Boolean)</sub>
@@ -199,7 +189,6 @@ Node [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_
 - boolean1: Boolean
 
 ### Returns:
-
 - socket `boolean`
 
 <sub>Go to [top](#class-Boolean)</sub>

@@ -32,7 +32,6 @@ Node [Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/
 - radius: Float
 
 ### Returns:
-
 - socket `geometry`
 
 <sub>Go to [top](#class-Points)</sub>
@@ -48,7 +47,6 @@ Node [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 Node implemented as property.
 
 ### Returns:
-
 - socket `point_count`
 
 <sub>Go to [top](#class-Points)</sub>
@@ -70,7 +68,6 @@ Node [Instance on Points](https://docs.blender.org/manual/en/latest/modeling/geo
 - scale: Vector
 
 ### Returns:
-
 - socket `instances`
 
 <sub>Go to [top](#class-Points)</sub>
@@ -88,7 +85,6 @@ Node [Set Point Radius](https://docs.blender.org/manual/en/latest/modeling/geome
 - radius: Float
 
 ### Returns:
-
 - self
 
 <sub>Go to [top](#class-Points)</sub>
@@ -106,7 +102,6 @@ Node [Points to Vertices](https://docs.blender.org/manual/en/latest/modeling/geo
 - selection: Boolean
 
 ### Returns:
-
 - socket `mesh` of class Mesh
 
 <sub>Go to [top](#class-Points)</sub>
@@ -127,7 +122,6 @@ Node [Points to Volume](https://docs.blender.org/manual/en/latest/modeling/geome
 - resolution_mode (str): 'VOXEL_AMOUNT' in [VOXEL_AMOUNT, VOXEL_SIZE]
 
 ### Returns:
-
 - socket `volume` of class Volume
 
 <sub>Go to [top](#class-Points)</sub>
@@ -146,7 +140,6 @@ Node [Points to Volume](https://docs.blender.org/manual/en/latest/modeling/geome
 - radius: Float
 
 ### Returns:
-
 - socket `volume` of class Volume
 
 <sub>Go to [top](#class-Points)</sub>
@@ -165,7 +158,6 @@ Node [Points to Volume](https://docs.blender.org/manual/en/latest/modeling/geome
 - radius: Float
 
 ### Returns:
-
 - socket `volume` of class Volume
 
 <sub>Go to [top](#class-Points)</sub>

@@ -114,7 +114,6 @@ Node [Combine XYZ](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 - z: Float
 
 ### Returns:
-
 - socket `vector`
 
 <sub>Go to [top](#class-Vector)</sub>
@@ -131,7 +130,6 @@ Node [Vector](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/
 - vector (list): [0.0, 0.0, 0.0]
 
 ### Returns:
-
 - socket `vector`
 
 <sub>Go to [top](#class-Vector)</sub>
@@ -145,7 +143,6 @@ def abs(self):
 Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html) )
 
 ### Returns:
-
 - socket `vector`
 
 <sub>Go to [top](#class-Vector)</sub>
@@ -159,7 +156,6 @@ def absolute(self):
 Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html) )
 
 ### Returns:
-
 - socket `vector`
 
 <sub>Go to [top](#class-Vector)</sub>
@@ -176,7 +172,6 @@ Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 - vector: Vector
 
 ### Returns:
-
 - socket `vector`
 
 <sub>Go to [top](#class-Vector)</sub>
@@ -196,7 +191,6 @@ Node [Align Euler to Vector](https://docs.blender.org/manual/en/latest/modeling/
 - pivot_axis (str): 'AUTO' in [AUTO, X, Y, Z]
 
 ### Returns:
-
 - self
 
 <sub>Go to [top](#class-Vector)</sub>
@@ -214,7 +208,6 @@ Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 - epsilon: Float
 
 ### Returns:
-
 - socket `result`
 
 <sub>Go to [top](#class-Vector)</sub>
@@ -231,7 +224,6 @@ Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 - b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 
 ### Returns:
-
 - socket `result`
 
 <sub>Go to [top](#class-Vector)</sub>
@@ -248,7 +240,6 @@ Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 - b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 
 ### Returns:
-
 - socket `result`
 
 <sub>Go to [top](#class-Vector)</sub>
@@ -265,7 +256,6 @@ Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 - b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 
 ### Returns:
-
 - socket `result`
 
 <sub>Go to [top](#class-Vector)</sub>
@@ -282,7 +272,6 @@ Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 - b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 
 ### Returns:
-
 - socket `result`
 
 <sub>Go to [top](#class-Vector)</sub>
@@ -300,7 +289,6 @@ Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 - epsilon: Float
 
 ### Returns:
-
 - socket `result`
 
 <sub>Go to [top](#class-Vector)</sub>
@@ -314,7 +302,6 @@ def ceil(self):
 Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html) )
 
 ### Returns:
-
 - socket `vector`
 
 <sub>Go to [top](#class-Vector)</sub>
@@ -336,7 +323,6 @@ Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 - operation (str): 'GREATER_THAN' in [LESS_THAN, LESS_EQUAL, GREATER_THAN, GREATER_EQUAL, EQUAL, NOT_EQUAL]
 
 ### Returns:
-
 - socket `result`
 
 <sub>Go to [top](#class-Vector)</sub>
@@ -350,7 +336,6 @@ def cos(self):
 Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html) )
 
 ### Returns:
-
 - socket `vector`
 
 <sub>Go to [top](#class-Vector)</sub>
@@ -364,7 +349,6 @@ def cosine(self):
 Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html) )
 
 ### Returns:
-
 - socket `vector`
 
 <sub>Go to [top](#class-Vector)</sub>
@@ -381,7 +365,6 @@ Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 - vector: Vector
 
 ### Returns:
-
 - socket `vector`
 
 <sub>Go to [top](#class-Vector)</sub>
@@ -398,7 +381,6 @@ Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 - vector: Vector
 
 ### Returns:
-
 - socket `vector`
 
 <sub>Go to [top](#class-Vector)</sub>
@@ -415,7 +397,6 @@ Node [Vector Curves](https://docs.blender.org/manual/en/latest/modeling/geometry
 - fac: Float
 
 ### Returns:
-
 - socket `vector`
 
 <sub>Go to [top](#class-Vector)</sub>
@@ -434,7 +415,6 @@ Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 - epsilon: Float
 
 ### Returns:
-
 - socket `result`
 
 <sub>Go to [top](#class-Vector)</sub>
@@ -452,7 +432,6 @@ Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 - angle: Float
 
 ### Returns:
-
 - socket `result`
 
 <sub>Go to [top](#class-Vector)</sub>
@@ -470,7 +449,6 @@ Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 - angle: Float
 
 ### Returns:
-
 - socket `result`
 
 <sub>Go to [top](#class-Vector)</sub>
@@ -488,7 +466,6 @@ Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 - angle: Float
 
 ### Returns:
-
 - socket `result`
 
 <sub>Go to [top](#class-Vector)</sub>
@@ -506,7 +483,6 @@ Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 - angle: Float
 
 ### Returns:
-
 - socket `result`
 
 <sub>Go to [top](#class-Vector)</sub>
@@ -525,7 +501,6 @@ Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 - epsilon: Float
 
 ### Returns:
-
 - socket `result`
 
 <sub>Go to [top](#class-Vector)</sub>
@@ -542,7 +517,6 @@ Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 - vector: Vector
 
 ### Returns:
-
 - socket `value`
 
 <sub>Go to [top](#class-Vector)</sub>
@@ -559,7 +533,6 @@ Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 - vector: Vector
 
 ### Returns:
-
 - socket `vector`
 
 <sub>Go to [top](#class-Vector)</sub>
@@ -576,7 +549,6 @@ Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 - vector: Vector
 
 ### Returns:
-
 - socket `vector`
 
 <sub>Go to [top](#class-Vector)</sub>
@@ -593,7 +565,6 @@ Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 - vector: Vector
 
 ### Returns:
-
 - socket `value`
 
 <sub>Go to [top](#class-Vector)</sub>
@@ -610,7 +581,6 @@ Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 - vector: Vector
 
 ### Returns:
-
 - socket `value`
 
 <sub>Go to [top](#class-Vector)</sub>
@@ -629,7 +599,6 @@ Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 - epsilon: Float
 
 ### Returns:
-
 - socket `result`
 
 <sub>Go to [top](#class-Vector)</sub>
@@ -647,7 +616,6 @@ Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 - c: Float
 
 ### Returns:
-
 - socket `result`
 
 <sub>Go to [top](#class-Vector)</sub>
@@ -665,7 +633,6 @@ Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 - c: Float
 
 ### Returns:
-
 - socket `result`
 
 <sub>Go to [top](#class-Vector)</sub>
@@ -683,7 +650,6 @@ Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 - c: Float
 
 ### Returns:
-
 - socket `result`
 
 <sub>Go to [top](#class-Vector)</sub>
@@ -701,7 +667,6 @@ Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 - c: Float
 
 ### Returns:
-
 - socket `result`
 
 <sub>Go to [top](#class-Vector)</sub>
@@ -720,7 +685,6 @@ Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 - epsilon: Float
 
 ### Returns:
-
 - socket `result`
 
 <sub>Go to [top](#class-Vector)</sub>
@@ -738,7 +702,6 @@ Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 - epsilon: Float
 
 ### Returns:
-
 - socket `result`
 
 <sub>Go to [top](#class-Vector)</sub>
@@ -755,7 +718,6 @@ Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 - b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 
 ### Returns:
-
 - socket `result`
 
 <sub>Go to [top](#class-Vector)</sub>
@@ -772,7 +734,6 @@ Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 - b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 
 ### Returns:
-
 - socket `result`
 
 <sub>Go to [top](#class-Vector)</sub>
@@ -789,7 +750,6 @@ Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 - b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 
 ### Returns:
-
 - socket `result`
 
 <sub>Go to [top](#class-Vector)</sub>
@@ -806,7 +766,6 @@ Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 - b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 
 ### Returns:
-
 - socket `result`
 
 <sub>Go to [top](#class-Vector)</sub>
@@ -824,7 +783,6 @@ Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 - epsilon: Float
 
 ### Returns:
-
 - socket `result`
 
 <sub>Go to [top](#class-Vector)</sub>
@@ -842,7 +800,6 @@ Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 - reference: Vector
 
 ### Returns:
-
 - socket `vector`
 
 <sub>Go to [top](#class-Vector)</sub>
@@ -856,7 +813,6 @@ def floor(self):
 Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html) )
 
 ### Returns:
-
 - socket `vector`
 
 <sub>Go to [top](#class-Vector)</sub>
@@ -870,7 +826,6 @@ def fract(self):
 Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html) )
 
 ### Returns:
-
 - socket `vector`
 
 <sub>Go to [top](#class-Vector)</sub>
@@ -884,7 +839,6 @@ def fraction(self):
 Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html) )
 
 ### Returns:
-
 - socket `vector`
 
 <sub>Go to [top](#class-Vector)</sub>
@@ -900,7 +854,6 @@ Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 Node implemented as property.
 
 ### Returns:
-
 - socket `value`
 
 <sub>Go to [top](#class-Vector)</sub>
@@ -918,7 +871,6 @@ Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 - epsilon: Float
 
 ### Returns:
-
 - socket `result`
 
 <sub>Go to [top](#class-Vector)</sub>
@@ -935,7 +887,6 @@ Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 - b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 
 ### Returns:
-
 - socket `result`
 
 <sub>Go to [top](#class-Vector)</sub>
@@ -952,7 +903,6 @@ Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 - b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 
 ### Returns:
-
 - socket `result`
 
 <sub>Go to [top](#class-Vector)</sub>
@@ -969,7 +919,6 @@ Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 - b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 
 ### Returns:
-
 - socket `result`
 
 <sub>Go to [top](#class-Vector)</sub>
@@ -986,7 +935,6 @@ Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 - b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 
 ### Returns:
-
 - socket `result`
 
 <sub>Go to [top](#class-Vector)</sub>
@@ -1004,7 +952,6 @@ Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 - epsilon: Float
 
 ### Returns:
-
 - socket `result`
 
 <sub>Go to [top](#class-Vector)</sub>
@@ -1027,7 +974,6 @@ Node [Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nod
 - interpolation_type (str): 'LINEAR' in [LINEAR, STEPPED, SMOOTHSTEP, SMOOTHERSTEP]
 
 ### Returns:
-
 - socket `vector`
 
 <sub>Go to [top](#class-Vector)</sub>
@@ -1048,7 +994,6 @@ Node [Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nod
 - clamp (bool): True
 
 ### Returns:
-
 - socket `vector`
 
 <sub>Go to [top](#class-Vector)</sub>
@@ -1069,7 +1014,6 @@ Node [Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nod
 - clamp (bool): True
 
 ### Returns:
-
 - socket `vector`
 
 <sub>Go to [top](#class-Vector)</sub>
@@ -1090,7 +1034,6 @@ Node [Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nod
 - clamp (bool): True
 
 ### Returns:
-
 - socket `vector`
 
 <sub>Go to [top](#class-Vector)</sub>
@@ -1112,7 +1055,6 @@ Node [Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nod
 - clamp (bool): True
 
 ### Returns:
-
 - socket `vector`
 
 <sub>Go to [top](#class-Vector)</sub>
@@ -1129,7 +1071,6 @@ Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 - vector: Vector
 
 ### Returns:
-
 - socket `vector`
 
 <sub>Go to [top](#class-Vector)</sub>
@@ -1146,7 +1087,6 @@ Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 - vector: Vector
 
 ### Returns:
-
 - socket `vector`
 
 <sub>Go to [top](#class-Vector)</sub>
@@ -1163,7 +1103,6 @@ Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 - vector: Vector
 
 ### Returns:
-
 - socket `vector`
 
 <sub>Go to [top](#class-Vector)</sub>
@@ -1180,7 +1119,6 @@ Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 - vector: Vector
 
 ### Returns:
-
 - socket `vector`
 
 <sub>Go to [top](#class-Vector)</sub>
@@ -1200,7 +1138,6 @@ Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/col
 - factor_mode (str): 'UNIFORM' in [UNIFORM, NON_UNIFORM]
 
 ### Returns:
-
 - socket `result`
 
 <sub>Go to [top](#class-Vector)</sub>
@@ -1219,7 +1156,6 @@ Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/col
 - clamp_factor (bool): True
 
 ### Returns:
-
 - socket `result`
 
 <sub>Go to [top](#class-Vector)</sub>
@@ -1237,7 +1173,6 @@ Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/col
 - clamp_factor (bool): True
 
 ### Returns:
-
 - socket `result`
 
 <sub>Go to [top](#class-Vector)</sub>
@@ -1254,7 +1189,6 @@ Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 - vector: Vector
 
 ### Returns:
-
 - socket `vector`
 
 <sub>Go to [top](#class-Vector)</sub>
@@ -1271,7 +1205,6 @@ Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 - vector: Vector
 
 ### Returns:
-
 - socket `vector`
 
 <sub>Go to [top](#class-Vector)</sub>
@@ -1289,7 +1222,6 @@ Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 - addend: Vector
 
 ### Returns:
-
 - socket `vector`
 
 <sub>Go to [top](#class-Vector)</sub>
@@ -1306,7 +1238,6 @@ Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 - vector: Vector
 
 ### Returns:
-
 - socket `vector`
 
 <sub>Go to [top](#class-Vector)</sub>
@@ -1324,7 +1255,6 @@ Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 - addend: Vector
 
 ### Returns:
-
 - socket `vector`
 
 <sub>Go to [top](#class-Vector)</sub>
@@ -1338,7 +1268,6 @@ def normalize(self):
 Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html) )
 
 ### Returns:
-
 - socket `vector`
 
 <sub>Go to [top](#class-Vector)</sub>
@@ -1355,7 +1284,6 @@ Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 - vector: Vector
 
 ### Returns:
-
 - socket `vector`
 
 <sub>Go to [top](#class-Vector)</sub>
@@ -1372,7 +1300,6 @@ Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 - vector: Vector
 
 ### Returns:
-
 - socket `vector`
 
 <sub>Go to [top](#class-Vector)</sub>
@@ -1390,7 +1317,6 @@ Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 - ior: Float
 
 ### Returns:
-
 - socket `vector`
 
 <sub>Go to [top](#class-Vector)</sub>
@@ -1410,7 +1336,6 @@ Node [Vector Rotate](https://docs.blender.org/manual/en/latest/modeling/geometry
 - invert (bool): False
 
 ### Returns:
-
 - socket `vector`
 
 <sub>Go to [top](#class-Vector)</sub>
@@ -1429,7 +1354,6 @@ Node [Vector Rotate](https://docs.blender.org/manual/en/latest/modeling/geometry
 - invert (bool): False
 
 ### Returns:
-
 - socket `vector`
 
 <sub>Go to [top](#class-Vector)</sub>
@@ -1448,7 +1372,6 @@ Node [Vector Rotate](https://docs.blender.org/manual/en/latest/modeling/geometry
 - invert (bool): False
 
 ### Returns:
-
 - socket `vector`
 
 <sub>Go to [top](#class-Vector)</sub>
@@ -1467,7 +1390,6 @@ Node [Vector Rotate](https://docs.blender.org/manual/en/latest/modeling/geometry
 - invert (bool): False
 
 ### Returns:
-
 - socket `vector`
 
 <sub>Go to [top](#class-Vector)</sub>
@@ -1486,7 +1408,6 @@ Node [Vector Rotate](https://docs.blender.org/manual/en/latest/modeling/geometry
 - invert (bool): False
 
 ### Returns:
-
 - socket `vector`
 
 <sub>Go to [top](#class-Vector)</sub>
@@ -1503,7 +1424,6 @@ Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 - scale: Float
 
 ### Returns:
-
 - socket `vector`
 
 <sub>Go to [top](#class-Vector)</sub>
@@ -1519,7 +1439,6 @@ Node [Separate XYZ](https://docs.blender.org/manual/en/latest/modeling/geometry_
 Node implemented as property.
 
 ### Returns:
-
 - node with sockets ['x', 'y', 'z']
 
 <sub>Go to [top](#class-Vector)</sub>
@@ -1533,7 +1452,6 @@ def sin(self):
 Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html) )
 
 ### Returns:
-
 - socket `vector`
 
 <sub>Go to [top](#class-Vector)</sub>
@@ -1547,7 +1465,6 @@ def sine(self):
 Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html) )
 
 ### Returns:
-
 - socket `vector`
 
 <sub>Go to [top](#class-Vector)</sub>
@@ -1564,7 +1481,6 @@ Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 - increment: Vector
 
 ### Returns:
-
 - socket `vector`
 
 <sub>Go to [top](#class-Vector)</sub>
@@ -1581,7 +1497,6 @@ Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 - vector: Vector
 
 ### Returns:
-
 - socket `vector`
 
 <sub>Go to [top](#class-Vector)</sub>
@@ -1598,7 +1513,6 @@ Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 - vector: Vector
 
 ### Returns:
-
 - socket `vector`
 
 <sub>Go to [top](#class-Vector)</sub>
@@ -1616,7 +1530,6 @@ Node [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/
 - true: ['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'String', 'Geometry', 'Object', 'Collection', 'Texture', 'Material', 'Image']
 
 ### Returns:
-
 - socket `output`
 
 <sub>Go to [top](#class-Vector)</sub>
@@ -1630,7 +1543,6 @@ def tan(self):
 Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html) )
 
 ### Returns:
-
 - socket `vector`
 
 <sub>Go to [top](#class-Vector)</sub>
@@ -1644,7 +1556,6 @@ def tangent(self):
 Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html) )
 
 ### Returns:
-
 - socket `vector`
 
 <sub>Go to [top](#class-Vector)</sub>
@@ -1662,7 +1573,6 @@ Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 - min: Vector
 
 ### Returns:
-
 - socket `vector`
 
 <sub>Go to [top](#class-Vector)</sub>

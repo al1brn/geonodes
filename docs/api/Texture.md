@@ -71,7 +71,6 @@ Node [Brick Texture](https://docs.blender.org/manual/en/latest/modeling/geometry
 - squash_frequency (int): 2
 
 ### Returns:
-
 - tuple ('`color`', '`fac`')
 
 <sub>Go to [top](#class-Texture)</sub>
@@ -91,7 +90,6 @@ Node [Checker Texture](https://docs.blender.org/manual/en/latest/modeling/geomet
 - scale: Float
 
 ### Returns:
-
 - tuple ('`color`', '`fac`')
 
 <sub>Go to [top](#class-Texture)</sub>
@@ -109,7 +107,6 @@ Node [Gradient Texture](https://docs.blender.org/manual/en/latest/modeling/geome
 - gradient_type (str): 'LINEAR' in [LINEAR, QUADRATIC, EASING, DIAGONAL, SPHERICAL, QUADRATIC_SPHERE, RADIAL]
 
 ### Returns:
-
 - tuple ('`color`', '`fac`')
 
 <sub>Go to [top](#class-Texture)</sub>
@@ -126,7 +123,6 @@ Node [Gradient Texture](https://docs.blender.org/manual/en/latest/modeling/geome
 - vector: Vector
 
 ### Returns:
-
 - tuple ('`color`', '`fac`')
 
 <sub>Go to [top](#class-Texture)</sub>
@@ -143,7 +139,6 @@ Node [Gradient Texture](https://docs.blender.org/manual/en/latest/modeling/geome
 - vector: Vector
 
 ### Returns:
-
 - tuple ('`color`', '`fac`')
 
 <sub>Go to [top](#class-Texture)</sub>
@@ -160,7 +155,6 @@ Node [Gradient Texture](https://docs.blender.org/manual/en/latest/modeling/geome
 - vector: Vector
 
 ### Returns:
-
 - tuple ('`color`', '`fac`')
 
 <sub>Go to [top](#class-Texture)</sub>
@@ -177,7 +171,6 @@ Node [Gradient Texture](https://docs.blender.org/manual/en/latest/modeling/geome
 - vector: Vector
 
 ### Returns:
-
 - tuple ('`color`', '`fac`')
 
 <sub>Go to [top](#class-Texture)</sub>
@@ -194,7 +187,6 @@ Node [Gradient Texture](https://docs.blender.org/manual/en/latest/modeling/geome
 - vector: Vector
 
 ### Returns:
-
 - tuple ('`color`', '`fac`')
 
 <sub>Go to [top](#class-Texture)</sub>
@@ -211,7 +203,6 @@ Node [Gradient Texture](https://docs.blender.org/manual/en/latest/modeling/geome
 - vector: Vector
 
 ### Returns:
-
 - tuple ('`color`', '`fac`')
 
 <sub>Go to [top](#class-Texture)</sub>
@@ -228,7 +219,6 @@ Node [Gradient Texture](https://docs.blender.org/manual/en/latest/modeling/geome
 - vector: Vector
 
 ### Returns:
-
 - tuple ('`color`', '`fac`')
 
 <sub>Go to [top](#class-Texture)</sub>
@@ -249,7 +239,6 @@ Node [Image Texture](https://docs.blender.org/manual/en/latest/modeling/geometry
 - interpolation (str): 'Linear' in [Linear, Closest, Cubic]
 
 ### Returns:
-
 - tuple ('`color`', '`alpha`')
 
 <sub>Go to [top](#class-Texture)</sub>
@@ -269,7 +258,6 @@ Node [Magic Texture](https://docs.blender.org/manual/en/latest/modeling/geometry
 - turbulence_depth (int): 2
 
 ### Returns:
-
 - tuple ('`color`', '`fac`')
 
 <sub>Go to [top](#class-Texture)</sub>
@@ -295,7 +283,6 @@ Node [Musgrave Texture](https://docs.blender.org/manual/en/latest/modeling/geome
 - musgrave_type (str): 'FBM' in [MULTIFRACTAL, RIDGED_MULTIFRACTAL, HYBRID_MULTIFRACTAL, FBM, HETERO_TERRAIN]
 
 ### Returns:
-
 - socket `fac`
 
 <sub>Go to [top](#class-Texture)</sub>
@@ -318,7 +305,6 @@ Node [Noise Texture](https://docs.blender.org/manual/en/latest/modeling/geometry
 - noise_dimensions (str): '3D' in [1D, 2D, 3D, 4D]
 
 ### Returns:
-
 - tuple ('`color`', '`fac`')
 
 <sub>Go to [top](#class-Texture)</sub>
@@ -339,7 +325,6 @@ Node [Noise Texture](https://docs.blender.org/manual/en/latest/modeling/geometry
 - distortion: Float
 
 ### Returns:
-
 - tuple ('`color`', '`fac`')
 
 <sub>Go to [top](#class-Texture)</sub>
@@ -360,7 +345,6 @@ Node [Noise Texture](https://docs.blender.org/manual/en/latest/modeling/geometry
 - distortion: Float
 
 ### Returns:
-
 - tuple ('`color`', '`fac`')
 
 <sub>Go to [top](#class-Texture)</sub>
@@ -381,7 +365,6 @@ Node [Noise Texture](https://docs.blender.org/manual/en/latest/modeling/geometry
 - distortion: Float
 
 ### Returns:
-
 - tuple ('`color`', '`fac`')
 
 <sub>Go to [top](#class-Texture)</sub>
@@ -403,7 +386,6 @@ Node [Noise Texture](https://docs.blender.org/manual/en/latest/modeling/geometry
 - distortion: Float
 
 ### Returns:
-
 - tuple ('`color`', '`fac`')
 
 <sub>Go to [top](#class-Texture)</sub>
@@ -421,7 +403,6 @@ Node [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/
 - true: ['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'String', 'Geometry', 'Object', 'Collection', 'Texture', 'Material', 'Image']
 
 ### Returns:
-
 - socket `output`
 
 <sub>Go to [top](#class-Texture)</sub>
@@ -446,7 +427,6 @@ Node [Voronoi Texture](https://docs.blender.org/manual/en/latest/modeling/geomet
 - voronoi_dimensions (str): '3D' in [1D, 2D, 3D, 4D]
 
 ### Returns:
-
 - tuple ('`distance`', '`color`', '`position`', '`w`')
 
 <sub>Go to [top](#class-Texture)</sub>
@@ -470,7 +450,6 @@ Node [Voronoi Texture](https://docs.blender.org/manual/en/latest/modeling/geomet
 - voronoi_dimensions (str): '3D' in [1D, 2D, 3D, 4D]
 
 ### Returns:
-
 - tuple ('`distance`', '`color`', '`w`')
 
 <sub>Go to [top](#class-Texture)</sub>
@@ -494,7 +473,6 @@ Node [Voronoi Texture](https://docs.blender.org/manual/en/latest/modeling/geomet
 - voronoi_dimensions (str): '3D' in [1D, 2D, 3D, 4D]
 
 ### Returns:
-
 - tuple ('`distance`', '`color`', '`position`')
 
 <sub>Go to [top](#class-Texture)</sub>
@@ -518,7 +496,6 @@ Node [Voronoi Texture](https://docs.blender.org/manual/en/latest/modeling/geomet
 - voronoi_dimensions (str): '3D' in [1D, 2D, 3D, 4D]
 
 ### Returns:
-
 - tuple ('`distance`', '`color`', '`position`')
 
 <sub>Go to [top](#class-Texture)</sub>
@@ -543,7 +520,6 @@ Node [Voronoi Texture](https://docs.blender.org/manual/en/latest/modeling/geomet
 - voronoi_dimensions (str): '3D' in [1D, 2D, 3D, 4D]
 
 ### Returns:
-
 - tuple ('`distance`', '`color`', '`position`', '`w`')
 
 <sub>Go to [top](#class-Texture)</sub>
@@ -570,7 +546,6 @@ Node [Wave Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_
 - wave_type (str): 'BANDS' in [BANDS, RINGS]
 
 ### Returns:
-
 - tuple ('`color`', '`fac`')
 
 <sub>Go to [top](#class-Texture)</sub>
@@ -595,7 +570,6 @@ Node [Wave Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_
 - wave_profile (str): 'SIN' in [SIN, SAW, TRI]
 
 ### Returns:
-
 - tuple ('`color`', '`fac`')
 
 <sub>Go to [top](#class-Texture)</sub>
@@ -619,7 +593,6 @@ Node [Wave Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_
 - direction (str): 'X' in [X, Y, Z, DIAGONAL]
 
 ### Returns:
-
 - tuple ('`color`', '`fac`')
 
 <sub>Go to [top](#class-Texture)</sub>
@@ -643,7 +616,6 @@ Node [Wave Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_
 - direction (str): 'X' in [X, Y, Z, DIAGONAL]
 
 ### Returns:
-
 - tuple ('`color`', '`fac`')
 
 <sub>Go to [top](#class-Texture)</sub>
@@ -667,7 +639,6 @@ Node [Wave Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_
 - direction (str): 'X' in [X, Y, Z, DIAGONAL]
 
 ### Returns:
-
 - tuple ('`color`', '`fac`')
 
 <sub>Go to [top](#class-Texture)</sub>
@@ -692,7 +663,6 @@ Node [Wave Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_
 - wave_profile (str): 'SIN' in [SIN, SAW, TRI]
 
 ### Returns:
-
 - tuple ('`color`', '`fac`')
 
 <sub>Go to [top](#class-Texture)</sub>
@@ -716,7 +686,6 @@ Node [Wave Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_
 - direction (str): 'X' in [X, Y, Z, SPHERICAL]
 
 ### Returns:
-
 - tuple ('`color`', '`fac`')
 
 <sub>Go to [top](#class-Texture)</sub>
@@ -740,7 +709,6 @@ Node [Wave Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_
 - direction (str): 'X' in [X, Y, Z, SPHERICAL]
 
 ### Returns:
-
 - tuple ('`color`', '`fac`')
 
 <sub>Go to [top](#class-Texture)</sub>
@@ -764,7 +732,6 @@ Node [Wave Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_
 - direction (str): 'X' in [X, Y, Z, SPHERICAL]
 
 ### Returns:
-
 - tuple ('`color`', '`fac`')
 
 <sub>Go to [top](#class-Texture)</sub>
@@ -783,7 +750,6 @@ Node [White Noise Texture](https://docs.blender.org/manual/en/latest/modeling/ge
 - noise_dimensions (str): '3D' in [1D, 2D, 3D, 4D]
 
 ### Returns:
-
 - tuple ('`value`', '`color`')
 
 <sub>Go to [top](#class-Texture)</sub>
@@ -800,7 +766,6 @@ Node [White Noise Texture](https://docs.blender.org/manual/en/latest/modeling/ge
 - w: Float
 
 ### Returns:
-
 - tuple ('`value`', '`color`')
 
 <sub>Go to [top](#class-Texture)</sub>
@@ -817,7 +782,6 @@ Node [White Noise Texture](https://docs.blender.org/manual/en/latest/modeling/ge
 - vector: Vector
 
 ### Returns:
-
 - tuple ('`value`', '`color`')
 
 <sub>Go to [top](#class-Texture)</sub>
@@ -834,7 +798,6 @@ Node [White Noise Texture](https://docs.blender.org/manual/en/latest/modeling/ge
 - vector: Vector
 
 ### Returns:
-
 - tuple ('`value`', '`color`')
 
 <sub>Go to [top](#class-Texture)</sub>
@@ -852,7 +815,6 @@ Node [White Noise Texture](https://docs.blender.org/manual/en/latest/modeling/ge
 - w: Float
 
 ### Returns:
-
 - tuple ('`value`', '`color`')
 
 <sub>Go to [top](#class-Texture)</sub>

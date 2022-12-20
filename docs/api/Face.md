@@ -43,7 +43,6 @@ def area(self):
 Node [Face Area](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/face_area.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshFaceArea.html) )
 
 ### Returns:
-
 - node with sockets ['area']
 
 <sub>Go to [top](#class-Face)</sub>
@@ -57,7 +56,6 @@ def delete_all(self):
 Node [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/delete_geometry.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeDeleteGeometry.html) )
 
 ### Returns:
-
 - self
 
 <sub>Go to [top](#class-Face)</sub>
@@ -71,7 +69,6 @@ def delete_edges(self):
 Node [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/delete_geometry.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeDeleteGeometry.html) )
 
 ### Returns:
-
 - self
 
 <sub>Go to [top](#class-Face)</sub>
@@ -85,7 +82,6 @@ def delete_faces(self):
 Node [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/delete_geometry.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeDeleteGeometry.html) )
 
 ### Returns:
-
 - self
 
 <sub>Go to [top](#class-Face)</sub>
@@ -105,7 +101,6 @@ Node [Distribute Points on Faces](https://docs.blender.org/manual/en/latest/mode
 - seed: Integer
 
 ### Returns:
-
 - tuple ('`points`', '`normal`', '`rotation`')
 
 <sub>Go to [top](#class-Face)</sub>
@@ -123,7 +118,6 @@ Node [Distribute Points on Faces](https://docs.blender.org/manual/en/latest/mode
 - seed: Integer
 
 ### Returns:
-
 - tuple ('`points`', '`normal`', '`rotation`')
 
 <sub>Go to [top](#class-Face)</sub>
@@ -141,7 +135,6 @@ Node [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 - component (str): 'MESH' in [MESH, POINTCLOUD, CURVE, INSTANCES]
 
 ### Returns:
-
 - node with sockets ['point_count', 'edge_count', 'face_count', 'face_corner_count', 'spline_count', 'instance_count']
 
 <sub>Go to [top](#class-Face)</sub>
@@ -160,7 +153,6 @@ Node [Extrude Mesh](https://docs.blender.org/manual/en/latest/modeling/geometry_
 - individual: Boolean
 
 ### Returns:
-
 - tuple ('`top`', '`side`')
 
 <sub>Go to [top](#class-Face)</sub>
@@ -174,7 +166,6 @@ def face_set_boundaries(self):
 Node [Face Set Boundaries](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/face_set_boundaries.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshFaceSetBoundaries.html) )
 
 ### Returns:
-
 - socket `boundary_edges`
 
 <sub>Go to [top](#class-Face)</sub>
@@ -188,7 +179,6 @@ def flip(self):
 Node [Flip Faces](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/flip_faces.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeFlipFaces.html) )
 
 ### Returns:
-
 - self
 
 <sub>Go to [top](#class-Face)</sub>
@@ -205,7 +195,6 @@ Node [Face is Planar](https://docs.blender.org/manual/en/latest/modeling/geometr
 - threshold: Float
 
 ### Returns:
-
 - socket `planar`
 
 <sub>Go to [top](#class-Face)</sub>
@@ -219,7 +208,6 @@ def island(self):
 Node [Mesh Island](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/mesh_island.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshIsland.html) )
 
 ### Returns:
-
 - node with sockets ['island_index', 'island_count']
 
 <sub>Go to [top](#class-Face)</sub>
@@ -233,7 +221,6 @@ def island_count(self):
 Node [Mesh Island](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/mesh_island.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshIsland.html) )
 
 ### Returns:
-
 - socket `island_count`
 
 <sub>Go to [top](#class-Face)</sub>
@@ -247,7 +234,6 @@ def island_index(self):
 Node [Mesh Island](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/mesh_island.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshIsland.html) )
 
 ### Returns:
-
 - socket `island_index`
 
 <sub>Go to [top](#class-Face)</sub>
@@ -276,7 +262,8 @@ Node [Set Material](https://docs.blender.org/manual/en/latest/modeling/geometry_
 
 Node implemented as property setter.
 
-        ###Args:- attr_value: material
+        ###Args:
+- attr_value: material
 
 
 <sub>Go to [top](#class-Face)</sub>
@@ -290,7 +277,6 @@ def neighbors(self):
 Node [Face Neighbors](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/face_neighbors.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshFaceNeighbors.html) )
 
 ### Returns:
-
 - node with sockets ['vertex_count', 'face_count']
 
 <sub>Go to [top](#class-Face)</sub>
@@ -304,7 +290,6 @@ def neighbors_face_count(self):
 Node [Face Neighbors](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/face_neighbors.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshFaceNeighbors.html) )
 
 ### Returns:
-
 - socket `face_count`
 
 <sub>Go to [top](#class-Face)</sub>
@@ -318,7 +303,6 @@ def neighbors_vertex_count(self):
 Node [Face Neighbors](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/face_neighbors.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshFaceNeighbors.html) )
 
 ### Returns:
-
 - socket `vertex_count`
 
 <sub>Go to [top](#class-Face)</sub>
@@ -337,7 +321,6 @@ Node [Pack UV Islands](https://docs.blender.org/manual/en/latest/modeling/geomet
 - rotate: Boolean
 
 ### Returns:
-
 - socket `uv`
 
 <sub>Go to [top](#class-Face)</sub>
@@ -356,7 +339,6 @@ Node [Scale Elements](https://docs.blender.org/manual/en/latest/modeling/geometr
 - axis: Vector
 
 ### Returns:
-
 - self
 
 <sub>Go to [top](#class-Face)</sub>
@@ -374,7 +356,6 @@ Node [Scale Elements](https://docs.blender.org/manual/en/latest/modeling/geometr
 - center: Vector
 
 ### Returns:
-
 - self
 
 <sub>Go to [top](#class-Face)</sub>
@@ -391,7 +372,6 @@ Node [Set Material](https://docs.blender.org/manual/en/latest/modeling/geometry_
 - material: Material
 
 ### Returns:
-
 - self
 
 <sub>Go to [top](#class-Face)</sub>
@@ -408,7 +388,6 @@ Node [Set Shade Smooth](https://docs.blender.org/manual/en/latest/modeling/geome
 - shade_smooth: Boolean
 
 ### Returns:
-
 - self
 
 <sub>Go to [top](#class-Face)</sub>
@@ -422,7 +401,6 @@ def shade_smooth(self):
 Node [Is Shade Smooth](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/is_shade_smooth.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputShadeSmooth.html) )
 
 ### Returns:
-
 - socket `smooth`
 
 <sub>Go to [top](#class-Face)</sub>
@@ -437,7 +415,8 @@ Node [Set Shade Smooth](https://docs.blender.org/manual/en/latest/modeling/geome
 
 Node implemented as property setter.
 
-        ###Args:- attr_value: shade_smooth
+        ###Args:
+- attr_value: shade_smooth
 
 
 <sub>Go to [top](#class-Face)</sub>
@@ -456,7 +435,6 @@ Node [Triangulate](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 - quad_method (str): 'SHORTEST_DIAGONAL' in [BEAUTY, FIXED, FIXED_ALTERNATE, SHORTEST_DIAGONAL, LONGEST_DIAGONAL]
 
 ### Returns:
-
 - self
 
 <sub>Go to [top](#class-Face)</sub>
@@ -476,7 +454,6 @@ Node [UV Unwrap](https://docs.blender.org/manual/en/latest/modeling/geometry_nod
 - method (str): 'ANGLE_BASED' in [ANGLE_BASED, CONFORMAL]
 
 ### Returns:
-
 - socket `uv`
 
 <sub>Go to [top](#class-Face)</sub>

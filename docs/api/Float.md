@@ -98,7 +98,6 @@ def Frame(cls):
 Node [Scene Time](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/scene_time.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputSceneTime.html) )
 
 ### Returns:
-
 - socket `frame`
 
 <sub>Go to [top](#class-Float)</sub>
@@ -112,7 +111,6 @@ def Seconds(cls):
 Node [Scene Time](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/scene_time.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputSceneTime.html) )
 
 ### Returns:
-
 - socket `seconds`
 
 <sub>Go to [top](#class-Float)</sub>
@@ -126,7 +124,6 @@ def Value(cls):
 Node [Value](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/value.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeValue.html) )
 
 ### Returns:
-
 - socket `value`
 
 <sub>Go to [top](#class-Float)</sub>
@@ -143,7 +140,6 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 - clamp (bool): False
 
 ### Returns:
-
 - socket `value`
 
 <sub>Go to [top](#class-Float)</sub>
@@ -160,7 +156,6 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 - clamp (bool): False
 
 ### Returns:
-
 - socket `value`
 
 <sub>Go to [top](#class-Float)</sub>
@@ -178,7 +173,6 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 - clamp (bool): False
 
 ### Returns:
-
 - socket `value`
 
 <sub>Go to [top](#class-Float)</sub>
@@ -196,7 +190,6 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 - clamp (bool): False
 
 ### Returns:
-
 - socket `value`
 
 <sub>Go to [top](#class-Float)</sub>
@@ -214,7 +207,6 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 - clamp (bool): False
 
 ### Returns:
-
 - socket `value`
 
 <sub>Go to [top](#class-Float)</sub>
@@ -232,7 +224,6 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 - clamp (bool): False
 
 ### Returns:
-
 - socket `value`
 
 <sub>Go to [top](#class-Float)</sub>
@@ -250,7 +241,6 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 - clamp (bool): False
 
 ### Returns:
-
 - socket `value`
 
 <sub>Go to [top](#class-Float)</sub>
@@ -268,7 +258,6 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 - clamp (bool): False
 
 ### Returns:
-
 - socket `value`
 
 <sub>Go to [top](#class-Float)</sub>
@@ -286,7 +275,6 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 - clamp (bool): False
 
 ### Returns:
-
 - socket `value`
 
 <sub>Go to [top](#class-Float)</sub>
@@ -300,7 +288,6 @@ def ceiling(self):
 Node [Float to Integer](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/float_to_integer.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeFloatToInt.html) )
 
 ### Returns:
-
 - socket `integer`
 
 <sub>Go to [top](#class-Float)</sub>
@@ -319,7 +306,6 @@ Node [Clamp](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/u
 - clamp_type (str): 'MINMAX' in [MINMAX, RANGE]
 
 ### Returns:
-
 - socket `result`
 
 <sub>Go to [top](#class-Float)</sub>
@@ -337,7 +323,6 @@ Node [Clamp](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/u
 - max: Float
 
 ### Returns:
-
 - socket `result`
 
 <sub>Go to [top](#class-Float)</sub>
@@ -355,7 +340,6 @@ Node [Clamp](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/u
 - max: Float
 
 ### Returns:
-
 - socket `result`
 
 <sub>Go to [top](#class-Float)</sub>
@@ -371,7 +355,6 @@ Node [ColorRamp](https://docs.blender.org/manual/en/latest/modeling/geometry_nod
 Node implemented as property.
 
 ### Returns:
-
 - node with sockets ['color', 'alpha']
 
 <sub>Go to [top](#class-Float)</sub>
@@ -390,7 +373,6 @@ Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 - operation (str): 'GREATER_THAN' in [LESS_THAN, LESS_EQUAL, GREATER_THAN, GREATER_EQUAL, EQUAL, NOT_EQUAL]
 
 ### Returns:
-
 - socket `result`
 
 <sub>Go to [top](#class-Float)</sub>
@@ -408,7 +390,6 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 - clamp (bool): False
 
 ### Returns:
-
 - socket `value`
 
 <sub>Go to [top](#class-Float)</sub>
@@ -426,7 +407,6 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 - clamp (bool): False
 
 ### Returns:
-
 - socket `value`
 
 <sub>Go to [top](#class-Float)</sub>
@@ -444,7 +424,6 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 - clamp (bool): False
 
 ### Returns:
-
 - socket `value`
 
 <sub>Go to [top](#class-Float)</sub>
@@ -462,7 +441,6 @@ Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 - epsilon: Float
 
 ### Returns:
-
 - socket `result`
 
 <sub>Go to [top](#class-Float)</sub>
@@ -479,7 +457,6 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 - clamp (bool): False
 
 ### Returns:
-
 - socket `value`
 
 <sub>Go to [top](#class-Float)</sub>
@@ -496,7 +473,6 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 - clamp (bool): False
 
 ### Returns:
-
 - socket `value`
 
 <sub>Go to [top](#class-Float)</sub>
@@ -513,7 +489,6 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 - clamp (bool): False
 
 ### Returns:
-
 - socket `value`
 
 <sub>Go to [top](#class-Float)</sub>
@@ -530,7 +505,6 @@ Node [Float Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 - factor: Float
 
 ### Returns:
-
 - socket `value`
 
 <sub>Go to [top](#class-Float)</sub>
@@ -544,7 +518,6 @@ def floor(self):
 Node [Float to Integer](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/float_to_integer.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeFloatToInt.html) )
 
 ### Returns:
-
 - socket `integer`
 
 <sub>Go to [top](#class-Float)</sub>
@@ -561,7 +534,6 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 - clamp (bool): False
 
 ### Returns:
-
 - socket `value`
 
 <sub>Go to [top](#class-Float)</sub>
@@ -578,7 +550,6 @@ Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 - b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 
 ### Returns:
-
 - socket `result`
 
 <sub>Go to [top](#class-Float)</sub>
@@ -595,7 +566,6 @@ Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 - b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 
 ### Returns:
-
 - socket `result`
 
 <sub>Go to [top](#class-Float)</sub>
@@ -612,7 +582,6 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 - clamp (bool): False
 
 ### Returns:
-
 - socket `value`
 
 <sub>Go to [top](#class-Float)</sub>
@@ -629,7 +598,6 @@ Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 - b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 
 ### Returns:
-
 - socket `result`
 
 <sub>Go to [top](#class-Float)</sub>
@@ -646,7 +614,6 @@ Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 - b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 
 ### Returns:
-
 - socket `result`
 
 <sub>Go to [top](#class-Float)</sub>
@@ -664,7 +631,6 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 - clamp (bool): False
 
 ### Returns:
-
 - socket `value`
 
 <sub>Go to [top](#class-Float)</sub>
@@ -682,7 +648,6 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 - clamp (bool): False
 
 ### Returns:
-
 - socket `value`
 
 <sub>Go to [top](#class-Float)</sub>
@@ -705,7 +670,6 @@ Node [Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nod
 - interpolation_type (str): 'LINEAR' in [LINEAR, STEPPED, SMOOTHSTEP, SMOOTHERSTEP]
 
 ### Returns:
-
 - socket `result`
 
 <sub>Go to [top](#class-Float)</sub>
@@ -726,7 +690,6 @@ Node [Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nod
 - clamp (bool): True
 
 ### Returns:
-
 - socket `result`
 
 <sub>Go to [top](#class-Float)</sub>
@@ -747,7 +710,6 @@ Node [Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nod
 - clamp (bool): True
 
 ### Returns:
-
 - socket `result`
 
 <sub>Go to [top](#class-Float)</sub>
@@ -768,7 +730,6 @@ Node [Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nod
 - clamp (bool): True
 
 ### Returns:
-
 - socket `result`
 
 <sub>Go to [top](#class-Float)</sub>
@@ -790,7 +751,6 @@ Node [Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nod
 - clamp (bool): True
 
 ### Returns:
-
 - socket `result`
 
 <sub>Go to [top](#class-Float)</sub>
@@ -807,7 +767,6 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 - clamp (bool): False
 
 ### Returns:
-
 - socket `value`
 
 <sub>Go to [top](#class-Float)</sub>
@@ -826,7 +785,6 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 - clamp (bool): False
 
 ### Returns:
-
 - socket `value`
 
 <sub>Go to [top](#class-Float)</sub>
@@ -843,7 +801,6 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 - clamp (bool): False
 
 ### Returns:
-
 - socket `value`
 
 <sub>Go to [top](#class-Float)</sub>
@@ -861,7 +818,6 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 - clamp (bool): False
 
 ### Returns:
-
 - socket `value`
 
 <sub>Go to [top](#class-Float)</sub>
@@ -879,7 +835,6 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 - clamp (bool): False
 
 ### Returns:
-
 - socket `value`
 
 <sub>Go to [top](#class-Float)</sub>
@@ -896,7 +851,6 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 - clamp (bool): False
 
 ### Returns:
-
 - socket `value`
 
 <sub>Go to [top](#class-Float)</sub>
@@ -913,7 +867,6 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 - clamp (bool): False
 
 ### Returns:
-
 - socket `value`
 
 <sub>Go to [top](#class-Float)</sub>
@@ -930,7 +883,6 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 - clamp (bool): False
 
 ### Returns:
-
 - socket `value`
 
 <sub>Go to [top](#class-Float)</sub>
@@ -948,7 +900,6 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 - clamp (bool): False
 
 ### Returns:
-
 - socket `value`
 
 <sub>Go to [top](#class-Float)</sub>
@@ -966,7 +917,6 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 - clamp (bool): False
 
 ### Returns:
-
 - socket `value`
 
 <sub>Go to [top](#class-Float)</sub>
@@ -984,7 +934,6 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 - clamp (bool): False
 
 ### Returns:
-
 - socket `value`
 
 <sub>Go to [top](#class-Float)</sub>
@@ -1002,7 +951,6 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 - clamp (bool): False
 
 ### Returns:
-
 - socket `value`
 
 <sub>Go to [top](#class-Float)</sub>
@@ -1021,7 +969,6 @@ Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/col
 - clamp_factor (bool): True
 
 ### Returns:
-
 - socket `result`
 
 <sub>Go to [top](#class-Float)</sub>
@@ -1039,7 +986,6 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 - clamp (bool): False
 
 ### Returns:
-
 - socket `value`
 
 <sub>Go to [top](#class-Float)</sub>
@@ -1058,7 +1004,6 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 - clamp (bool): False
 
 ### Returns:
-
 - socket `value`
 
 <sub>Go to [top](#class-Float)</sub>
@@ -1077,7 +1022,6 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 - clamp (bool): False
 
 ### Returns:
-
 - socket `value`
 
 <sub>Go to [top](#class-Float)</sub>
@@ -1095,7 +1039,6 @@ Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 - epsilon: Float
 
 ### Returns:
-
 - socket `result`
 
 <sub>Go to [top](#class-Float)</sub>
@@ -1113,7 +1056,6 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 - clamp (bool): False
 
 ### Returns:
-
 - socket `value`
 
 <sub>Go to [top](#class-Float)</sub>
@@ -1131,7 +1073,6 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 - clamp (bool): False
 
 ### Returns:
-
 - socket `value`
 
 <sub>Go to [top](#class-Float)</sub>
@@ -1149,7 +1090,6 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 - clamp (bool): False
 
 ### Returns:
-
 - socket `value`
 
 <sub>Go to [top](#class-Float)</sub>
@@ -1163,7 +1103,6 @@ def round(self):
 Node [Float to Integer](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/float_to_integer.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeFloatToInt.html) )
 
 ### Returns:
-
 - socket `integer`
 
 <sub>Go to [top](#class-Float)</sub>
@@ -1180,7 +1119,6 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 - clamp (bool): False
 
 ### Returns:
-
 - socket `value`
 
 <sub>Go to [top](#class-Float)</sub>
@@ -1198,7 +1136,6 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 - clamp (bool): False
 
 ### Returns:
-
 - socket `value`
 
 <sub>Go to [top](#class-Float)</sub>
@@ -1216,7 +1153,6 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 - clamp (bool): False
 
 ### Returns:
-
 - socket `value`
 
 <sub>Go to [top](#class-Float)</sub>
@@ -1234,7 +1170,6 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 - clamp (bool): False
 
 ### Returns:
-
 - socket `value`
 
 <sub>Go to [top](#class-Float)</sub>
@@ -1253,7 +1188,6 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 - clamp (bool): False
 
 ### Returns:
-
 - socket `value`
 
 <sub>Go to [top](#class-Float)</sub>
@@ -1272,7 +1206,6 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 - clamp (bool): False
 
 ### Returns:
-
 - socket `value`
 
 <sub>Go to [top](#class-Float)</sub>
@@ -1290,7 +1223,6 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 - clamp (bool): False
 
 ### Returns:
-
 - socket `value`
 
 <sub>Go to [top](#class-Float)</sub>
@@ -1307,7 +1239,6 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 - clamp (bool): False
 
 ### Returns:
-
 - socket `value`
 
 <sub>Go to [top](#class-Float)</sub>
@@ -1325,7 +1256,6 @@ Node [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/
 - true: ['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'String', 'Geometry', 'Object', 'Collection', 'Texture', 'Material', 'Image']
 
 ### Returns:
-
 - socket `output`
 
 <sub>Go to [top](#class-Float)</sub>
@@ -1343,7 +1273,6 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 - clamp (bool): False
 
 ### Returns:
-
 - socket `value`
 
 <sub>Go to [top](#class-Float)</sub>
@@ -1361,7 +1290,6 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 - clamp (bool): False
 
 ### Returns:
-
 - socket `value`
 
 <sub>Go to [top](#class-Float)</sub>
@@ -1379,7 +1307,6 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 - clamp (bool): False
 
 ### Returns:
-
 - socket `value`
 
 <sub>Go to [top](#class-Float)</sub>
@@ -1396,7 +1323,6 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 - clamp (bool): False
 
 ### Returns:
-
 - socket `value`
 
 <sub>Go to [top](#class-Float)</sub>
@@ -1413,7 +1339,6 @@ Node [Float to Integer](https://docs.blender.org/manual/en/latest/modeling/geome
 - rounding_mode (str): 'ROUND' in [ROUND, FLOOR, CEILING, TRUNCATE]
 
 ### Returns:
-
 - socket `integer`
 
 <sub>Go to [top](#class-Float)</sub>
@@ -1430,7 +1355,6 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 - clamp (bool): False
 
 ### Returns:
-
 - socket `value`
 
 <sub>Go to [top](#class-Float)</sub>
@@ -1447,7 +1371,6 @@ Node [Value to String](https://docs.blender.org/manual/en/latest/modeling/geomet
 - decimals: Integer
 
 ### Returns:
-
 - socket `string`
 
 <sub>Go to [top](#class-Float)</sub>
@@ -1461,7 +1384,6 @@ def truncate(self):
 Node [Float to Integer](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/float_to_integer.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeFloatToInt.html) )
 
 ### Returns:
-
 - socket `integer`
 
 <sub>Go to [top](#class-Float)</sub>
@@ -1480,7 +1402,6 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 - clamp (bool): False
 
 ### Returns:
-
 - socket `value`
 
 <sub>Go to [top](#class-Float)</sub>

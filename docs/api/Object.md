@@ -24,7 +24,6 @@ def Self(cls):
 Node [Self Object](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/self_object.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSelfObject.html) )
 
 ### Returns:
-
 - socket `self_object`
 
 <sub>Go to [top](#class-Object)</sub>
@@ -43,7 +42,6 @@ Node [Object Info](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 - transform_space (str): 'ORIGINAL' in [ORIGINAL, RELATIVE]
 
 ### Returns:
-
 - socket `geometry`
 
 <sub>Go to [top](#class-Object)</sub>
@@ -62,7 +60,6 @@ Node [Object Info](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 - transform_space (str): 'ORIGINAL' in [ORIGINAL, RELATIVE]
 
 ### Returns:
-
 - node with sockets ['location', 'rotation', 'scale', 'geometry']
 
 <sub>Go to [top](#class-Object)</sub>
@@ -81,7 +78,6 @@ Node [Object Info](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 - transform_space (str): 'ORIGINAL' in [ORIGINAL, RELATIVE]
 
 ### Returns:
-
 - socket `location`
 
 <sub>Go to [top](#class-Object)</sub>
@@ -100,7 +96,6 @@ Node [Object Info](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 - transform_space (str): 'ORIGINAL' in [ORIGINAL, RELATIVE]
 
 ### Returns:
-
 - socket `rotation`
 
 <sub>Go to [top](#class-Object)</sub>
@@ -119,7 +114,6 @@ Node [Object Info](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 - transform_space (str): 'ORIGINAL' in [ORIGINAL, RELATIVE]
 
 ### Returns:
-
 - socket `scale`
 
 <sub>Go to [top](#class-Object)</sub>
@@ -137,7 +131,6 @@ Node [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/
 - true: ['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'String', 'Geometry', 'Object', 'Collection', 'Texture', 'Material', 'Image']
 
 ### Returns:
-
 - socket `output`
 
 <sub>Go to [top](#class-Object)</sub>

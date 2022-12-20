@@ -28,7 +28,6 @@ Node [Rotate Euler](https://docs.blender.org/manual/en/latest/modeling/geometry_
 - space (str): 'OBJECT' in [OBJECT, LOCAL]
 
 ### Returns:
-
 - socket `rotation`
 
 <sub>Go to [top](#class-Rotation)</sub>
@@ -47,7 +46,6 @@ Node [Rotate Euler](https://docs.blender.org/manual/en/latest/modeling/geometry_
 - space (str): 'OBJECT' in [OBJECT, LOCAL]
 
 ### Returns:
-
 - socket `rotation`
 
 <sub>Go to [top](#class-Rotation)</sub>
@@ -67,7 +65,6 @@ Node [Align Euler to Vector](https://docs.blender.org/manual/en/latest/modeling/
 - pivot_axis (str): 'AUTO' in [AUTO, X, Y, Z]
 
 ### Returns:
-
 - self
 
 <sub>Go to [top](#class-Rotation)</sub>
@@ -86,7 +83,6 @@ Node [Rotate Euler](https://docs.blender.org/manual/en/latest/modeling/geometry_
 - space (str): 'OBJECT' in [OBJECT, LOCAL]
 
 ### Returns:
-
 - socket `rotation`
 
 <sub>Go to [top](#class-Rotation)</sub>
@@ -104,7 +100,6 @@ Node [Rotate Euler](https://docs.blender.org/manual/en/latest/modeling/geometry_
 - space (str): 'OBJECT' in [OBJECT, LOCAL]
 
 ### Returns:
-
 - socket `rotation`
 
 <sub>Go to [top](#class-Rotation)</sub>

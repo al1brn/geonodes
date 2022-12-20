@@ -32,7 +32,6 @@ def LineBreak():
 Node [Special Characters](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/special_characters.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeInputSpecialCharacters.html) )
 
 ### Returns:
-
 - socket `line_break`
 
 <sub>Go to [top](#class-String)</sub>
@@ -49,7 +48,6 @@ Node [String](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/
 - string (str): ''
 
 ### Returns:
-
 - socket `string`
 
 <sub>Go to [top](#class-String)</sub>
@@ -63,7 +61,6 @@ def Tab():
 Node [Special Characters](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/special_characters.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeInputSpecialCharacters.html) )
 
 ### Returns:
-
 - socket `tab`
 
 <sub>Go to [top](#class-String)</sub>
@@ -80,7 +77,6 @@ Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 - b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 
 ### Returns:
-
 - socket `result`
 
 <sub>Go to [top](#class-String)</sub>
@@ -98,7 +94,6 @@ Node [Join Strings](https://docs.blender.org/manual/en/latest/modeling/geometry_
 - delimiter: String
 
 ### Returns:
-
 - socket `string`
 
 <sub>Go to [top](#class-String)</sub>
@@ -114,7 +109,6 @@ Node [String Length](https://docs.blender.org/manual/en/latest/modeling/geometry
 Node implemented as property.
 
 ### Returns:
-
 - socket `length`
 
 <sub>Go to [top](#class-String)</sub>
@@ -131,7 +125,6 @@ Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 - b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 
 ### Returns:
-
 - socket `result`
 
 <sub>Go to [top](#class-String)</sub>
@@ -149,7 +142,6 @@ Node [Replace String](https://docs.blender.org/manual/en/latest/modeling/geometr
 - replace: String
 
 ### Returns:
-
 - socket `string`
 
 <sub>Go to [top](#class-String)</sub>
@@ -167,7 +159,6 @@ Node [Slice String](https://docs.blender.org/manual/en/latest/modeling/geometry_
 - length: Integer
 
 ### Returns:
-
 - socket `string`
 
 <sub>Go to [top](#class-String)</sub>
@@ -185,7 +176,6 @@ Node [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/
 - true: ['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'String', 'Geometry', 'Object', 'Collection', 'Texture', 'Material', 'Image']
 
 ### Returns:
-
 - socket `output`
 
 <sub>Go to [top](#class-String)</sub>
@@ -212,7 +202,6 @@ Node [String to Curves](https://docs.blender.org/manual/en/latest/modeling/geome
 - pivot_mode (str): 'BOTTOM_LEFT' in [MIDPOINT, TOP_LEFT, TOP_CENTER,... , BOTTOM_LEFT, BOTTOM_CENTER, BOTTOM_RIGHT]
 
 ### Returns:
-
 - tuple ('`curve_instances`', '`line`', '`pivot_point`')
 
 <sub>Go to [top](#class-String)</sub>

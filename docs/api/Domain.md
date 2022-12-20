@@ -61,7 +61,6 @@ def ID(self):
 Node [ID](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/id.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputID.html) )
 
 ### Returns:
-
 - socket `ID`
 
 <sub>Go to [top](#class-Domain)</sub>
@@ -76,7 +75,8 @@ Node [Set ID](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/
 
 Node implemented as property setter.
 
-        ###Args:- attr_value: ID
+        ###Args:
+- attr_value: ID
 
 
 <sub>Go to [top](#class-Domain)</sub>
@@ -94,7 +94,6 @@ Node [Accumulate Field](https://docs.blender.org/manual/en/latest/modeling/geome
 - group_index: Integer
 
 ### Returns:
-
 - tuple ('`leading`', '`trailing`', '`total`')
 
 <sub>Go to [top](#class-Domain)</sub>
@@ -111,7 +110,6 @@ Node [Attribute Statistic](https://docs.blender.org/manual/en/latest/modeling/ge
 - attribute: ['Float', 'Vector']
 
 ### Returns:
-
 - socket `max`
 
 <sub>Go to [top](#class-Domain)</sub>
@@ -128,7 +126,6 @@ Node [Attribute Statistic](https://docs.blender.org/manual/en/latest/modeling/ge
 - attribute: ['Float', 'Vector']
 
 ### Returns:
-
 - socket `mean`
 
 <sub>Go to [top](#class-Domain)</sub>
@@ -145,7 +142,6 @@ Node [Attribute Statistic](https://docs.blender.org/manual/en/latest/modeling/ge
 - attribute: ['Float', 'Vector']
 
 ### Returns:
-
 - socket `median`
 
 <sub>Go to [top](#class-Domain)</sub>
@@ -162,7 +158,6 @@ Node [Attribute Statistic](https://docs.blender.org/manual/en/latest/modeling/ge
 - attribute: ['Float', 'Vector']
 
 ### Returns:
-
 - socket `min`
 
 <sub>Go to [top](#class-Domain)</sub>
@@ -179,7 +174,6 @@ Node [Attribute Statistic](https://docs.blender.org/manual/en/latest/modeling/ge
 - attribute: ['Float', 'Vector']
 
 ### Returns:
-
 - socket `range`
 
 <sub>Go to [top](#class-Domain)</sub>
@@ -196,7 +190,6 @@ Node [Attribute Statistic](https://docs.blender.org/manual/en/latest/modeling/ge
 - attribute: ['Float', 'Vector']
 
 ### Returns:
-
 - node with sockets ['mean', 'median', 'sum', 'min', 'max', 'range', 'standard_deviation', 'variance']
 
 <sub>Go to [top](#class-Domain)</sub>
@@ -213,7 +206,6 @@ Node [Attribute Statistic](https://docs.blender.org/manual/en/latest/modeling/ge
 - attribute: ['Float', 'Vector']
 
 ### Returns:
-
 - socket `standard_deviation`
 
 <sub>Go to [top](#class-Domain)</sub>
@@ -230,7 +222,6 @@ Node [Attribute Statistic](https://docs.blender.org/manual/en/latest/modeling/ge
 - attribute: ['Float', 'Vector']
 
 ### Returns:
-
 - socket `sum`
 
 <sub>Go to [top](#class-Domain)</sub>
@@ -247,7 +238,6 @@ Node [Attribute Statistic](https://docs.blender.org/manual/en/latest/modeling/ge
 - attribute: ['Float', 'Vector']
 
 ### Returns:
-
 - socket `variance`
 
 <sub>Go to [top](#class-Domain)</sub>
@@ -264,7 +254,6 @@ Node [Capture Attribute](https://docs.blender.org/manual/en/latest/modeling/geom
 - value: ['Vector', 'Float', 'Color', 'Boolean', 'Integer']
 
 ### Returns:
-
 - socket `attribute`
 
 <sub>Go to [top](#class-Domain)</sub>
@@ -281,7 +270,6 @@ Node [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geomet
 - mode (str): 'ALL' in [ALL, EDGE_FACE, ONLY_FACE]
 
 ### Returns:
-
 - self
 
 <sub>Go to [top](#class-Domain)</sub>
@@ -295,7 +283,6 @@ def domain_index(self):
 Node [Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/input_index.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputIndex.html) )
 
 ### Returns:
-
 - socket `index`
 
 <sub>Go to [top](#class-Domain)</sub>
@@ -312,7 +299,6 @@ Node [Duplicate Elements](https://docs.blender.org/manual/en/latest/modeling/geo
 - amount: Integer
 
 ### Returns:
-
 - socket `duplicate_index`
 
 <sub>Go to [top](#class-Domain)</sub>
@@ -330,7 +316,6 @@ Node [Field at Index](https://docs.blender.org/manual/en/latest/modeling/geometr
 - value: ['Float', 'Integer', 'Vector', 'Color', 'Boolean']
 
 ### Returns:
-
 - socket `value`
 
 <sub>Go to [top](#class-Domain)</sub>
@@ -347,7 +332,6 @@ Node [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geomet
 - name: String
 
 ### Returns:
-
 - socket `attribute`
 
 <sub>Go to [top](#class-Domain)</sub>
@@ -364,7 +348,6 @@ Node [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geomet
 - name: String
 
 ### Returns:
-
 - socket `attribute`
 
 <sub>Go to [top](#class-Domain)</sub>
@@ -381,7 +364,6 @@ Node [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geomet
 - name: String
 
 ### Returns:
-
 - socket `attribute`
 
 <sub>Go to [top](#class-Domain)</sub>
@@ -398,7 +380,6 @@ Node [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geomet
 - name: String
 
 ### Returns:
-
 - socket `attribute`
 
 <sub>Go to [top](#class-Domain)</sub>
@@ -415,7 +396,6 @@ Node [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geomet
 - name: String
 
 ### Returns:
-
 - socket `attribute`
 
 <sub>Go to [top](#class-Domain)</sub>
@@ -429,7 +409,6 @@ def index(self):
 Node [Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/input_index.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputIndex.html) )
 
 ### Returns:
-
 - socket `index`
 
 <sub>Go to [top](#class-Domain)</sub>
@@ -443,7 +422,6 @@ def material_index(self):
 Node [Material Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/material_index.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMaterialIndex.html) )
 
 ### Returns:
-
 - socket `material_index`
 
 <sub>Go to [top](#class-Domain)</sub>
@@ -460,7 +438,6 @@ Node [Material Selection](https://docs.blender.org/manual/en/latest/modeling/geo
 - material: Material
 
 ### Returns:
-
 - socket `selection`
 
 <sub>Go to [top](#class-Domain)</sub>
@@ -478,7 +455,6 @@ Node [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geomet
 - data_type (str): 'FLOAT' in [FLOAT, INT, FLOAT_VECTOR, FLOAT_COLOR, BOOLEAN]
 
 ### Returns:
-
 - socket `attribute`
 
 <sub>Go to [top](#class-Domain)</sub>
@@ -492,7 +468,6 @@ def normal(self):
 Node [Normal](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/normal.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputNormal.html) )
 
 ### Returns:
-
 - socket `normal`
 
 <sub>Go to [top](#class-Domain)</sub>
@@ -506,7 +481,6 @@ def position(self):
 Node [Position](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/position.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputPosition.html) )
 
 ### Returns:
-
 - socket `position`
 
 <sub>Go to [top](#class-Domain)</sub>
@@ -521,7 +495,8 @@ Node [Set Position](https://docs.blender.org/manual/en/latest/modeling/geometry_
 
 Node implemented as property setter.
 
-        ###Args:- attr_value: position
+        ###Args:
+- attr_value: position
 
 
 <sub>Go to [top](#class-Domain)</sub>
@@ -540,7 +515,6 @@ Node [Random Value](https://docs.blender.org/manual/en/latest/modeling/geometry_
 - seed: Integer
 
 ### Returns:
-
 - socket `value`
 
 <sub>Go to [top](#class-Domain)</sub>
@@ -560,7 +534,6 @@ Node [Random Value](https://docs.blender.org/manual/en/latest/modeling/geometry_
 - seed: Integer
 
 ### Returns:
-
 - socket `value`
 
 <sub>Go to [top](#class-Domain)</sub>
@@ -580,7 +553,6 @@ Node [Random Value](https://docs.blender.org/manual/en/latest/modeling/geometry_
 - seed: Integer
 
 ### Returns:
-
 - socket `value`
 
 <sub>Go to [top](#class-Domain)</sub>
@@ -600,7 +572,6 @@ Node [Random Value](https://docs.blender.org/manual/en/latest/modeling/geometry_
 - seed: Integer
 
 ### Returns:
-
 - socket `value`
 
 <sub>Go to [top](#class-Domain)</sub>
@@ -617,7 +588,6 @@ Node [Remove Named Attribute](https://docs.blender.org/manual/en/latest/modeling
 - name: String
 
 ### Returns:
-
 - self
 
 <sub>Go to [top](#class-Domain)</sub>
@@ -636,7 +606,6 @@ Node [Sample Index](https://docs.blender.org/manual/en/latest/modeling/geometry_
 - clamp (bool): False
 
 ### Returns:
-
 - socket `value`
 
 <sub>Go to [top](#class-Domain)</sub>
@@ -653,7 +622,6 @@ Node [Sample Nearest](https://docs.blender.org/manual/en/latest/modeling/geometr
 - sample_position: Vector
 
 ### Returns:
-
 - socket `index`
 
 <sub>Go to [top](#class-Domain)</sub>
@@ -670,7 +638,6 @@ Node [Separate Geometry](https://docs.blender.org/manual/en/latest/modeling/geom
 - geometry: Geometry
 
 ### Returns:
-
 - tuple ('`selection`', '`inverted`')
 
 <sub>Go to [top](#class-Domain)</sub>
@@ -687,7 +654,6 @@ Node [Set ID](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/
 - ID: Integer
 
 ### Returns:
-
 - self
 
 <sub>Go to [top](#class-Domain)</sub>
@@ -704,7 +670,6 @@ Node [Set Material Index](https://docs.blender.org/manual/en/latest/modeling/geo
 - material_index: Integer
 
 ### Returns:
-
 - self
 
 <sub>Go to [top](#class-Domain)</sub>
@@ -722,7 +687,6 @@ Node [Store Named Attribute](https://docs.blender.org/manual/en/latest/modeling/
 - value: ['Vector', 'Float', 'Color', 'Boolean', 'Integer']
 
 ### Returns:
-
 - self
 
 <sub>Go to [top](#class-Domain)</sub>
@@ -740,7 +704,6 @@ Node [Store Named Attribute](https://docs.blender.org/manual/en/latest/modeling/
 - value: ['Vector', 'Float', 'Color', 'Boolean', 'Integer']
 
 ### Returns:
-
 - self
 
 <sub>Go to [top](#class-Domain)</sub>
@@ -758,7 +721,6 @@ Node [Store Named Attribute](https://docs.blender.org/manual/en/latest/modeling/
 - value: ['Vector', 'Float', 'Color', 'Boolean', 'Integer']
 
 ### Returns:
-
 - self
 
 <sub>Go to [top](#class-Domain)</sub>
@@ -776,7 +738,6 @@ Node [Store Named Attribute](https://docs.blender.org/manual/en/latest/modeling/
 - value: ['Vector', 'Float', 'Color', 'Boolean', 'Integer']
 
 ### Returns:
-
 - self
 
 <sub>Go to [top](#class-Domain)</sub>
@@ -794,7 +755,6 @@ Node [Store Named Attribute](https://docs.blender.org/manual/en/latest/modeling/
 - value: ['Vector', 'Float', 'Color', 'Boolean', 'Integer']
 
 ### Returns:
-
 - self
 
 <sub>Go to [top](#class-Domain)</sub>
@@ -812,7 +772,6 @@ Node [Set Position](https://docs.blender.org/manual/en/latest/modeling/geometry_
 - offset: Vector
 
 ### Returns:
-
 - self
 
 <sub>Go to [top](#class-Domain)</sub>
@@ -830,7 +789,6 @@ Node [Store Named Attribute](https://docs.blender.org/manual/en/latest/modeling/
 - value: ['Vector', 'Float', 'Color', 'Boolean', 'Integer']
 
 ### Returns:
-
 - self
 
 <sub>Go to [top](#class-Domain)</sub>

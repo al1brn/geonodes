@@ -45,7 +45,6 @@ def curve(self):
 Node [Curve of Point](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve_topology/curve_of_point.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveOfPoint.html) )
 
 ### Returns:
-
 - tuple ('`curve_index`', '`index_in_curve`')
 
 <sub>Go to [top](#class-ControlPoint)</sub>
@@ -63,7 +62,6 @@ Node [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 - component (str): 'MESH' in [MESH, POINTCLOUD, CURVE, INSTANCES]
 
 ### Returns:
-
 - node with sockets ['point_count', 'edge_count', 'face_count', 'face_corner_count', 'spline_count', 'instance_count']
 
 <sub>Go to [top](#class-ControlPoint)</sub>
@@ -81,7 +79,6 @@ Node [Endpoint Selection](https://docs.blender.org/manual/en/latest/modeling/geo
 - end_size: Integer
 
 ### Returns:
-
 - socket `selection`
 
 <sub>Go to [top](#class-ControlPoint)</sub>
@@ -98,7 +95,6 @@ Node [Curve Handle Positions](https://docs.blender.org/manual/en/latest/modeling
 - relative: Boolean
 
 ### Returns:
-
 - node with sockets ['left', 'right']
 
 <sub>Go to [top](#class-ControlPoint)</sub>
@@ -116,7 +112,6 @@ Node [Handle Type Selection](https://docs.blender.org/manual/en/latest/modeling/
 - mode (set): {'RIGHT', 'LEFT'}
 
 ### Returns:
-
 - node with sockets ['selection']
 
 <sub>Go to [top](#class-ControlPoint)</sub>
@@ -134,7 +129,6 @@ Node [Handle Type Selection](https://docs.blender.org/manual/en/latest/modeling/
 - mode (set): {'RIGHT', 'LEFT'}
 
 ### Returns:
-
 - node with sockets ['selection']
 
 <sub>Go to [top](#class-ControlPoint)</sub>
@@ -152,7 +146,6 @@ Node [Handle Type Selection](https://docs.blender.org/manual/en/latest/modeling/
 - mode (set): {'RIGHT', 'LEFT'}
 
 ### Returns:
-
 - node with sockets ['selection']
 
 <sub>Go to [top](#class-ControlPoint)</sub>
@@ -170,7 +163,6 @@ Node [Handle Type Selection](https://docs.blender.org/manual/en/latest/modeling/
 - mode (set): {'RIGHT', 'LEFT'}
 
 ### Returns:
-
 - node with sockets ['selection']
 
 <sub>Go to [top](#class-ControlPoint)</sub>
@@ -188,7 +180,6 @@ Node [Handle Type Selection](https://docs.blender.org/manual/en/latest/modeling/
 - mode (set): {'RIGHT', 'LEFT'}
 
 ### Returns:
-
 - node with sockets ['selection']
 
 <sub>Go to [top](#class-ControlPoint)</sub>
@@ -206,7 +197,6 @@ Node [Handle Type Selection](https://docs.blender.org/manual/en/latest/modeling/
 - mode (set): {'RIGHT', 'LEFT'}
 
 ### Returns:
-
 - socket `selection`
 
 <sub>Go to [top](#class-ControlPoint)</sub>
@@ -227,7 +217,6 @@ Node [Instance on Points](https://docs.blender.org/manual/en/latest/modeling/geo
 - scale: Vector
 
 ### Returns:
-
 - socket `instances` of class Instances
 
 <sub>Go to [top](#class-ControlPoint)</sub>
@@ -241,7 +230,6 @@ def left_handle_positions(self):
 Node [Curve Handle Positions](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/curve_handle_position.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputCurveHandlePositions.html) )
 
 ### Returns:
-
 - socket `left`
 
 <sub>Go to [top](#class-ControlPoint)</sub>
@@ -256,7 +244,8 @@ Node [Set Handle Positions](https://docs.blender.org/manual/en/latest/modeling/g
 
 Node implemented as property setter.
 
-        ###Args:- attr_value: position
+        ###Args:
+- attr_value: position
 
 
 <sub>Go to [top](#class-ControlPoint)</sub>
@@ -273,7 +262,6 @@ Node [Offset Point in Curve](https://docs.blender.org/manual/en/latest/modeling/
 - offset: Integer
 
 ### Returns:
-
 - tuple ('`is_valid_offset`', '`point_index`')
 
 <sub>Go to [top](#class-ControlPoint)</sub>
@@ -287,7 +275,6 @@ def parameter(self):
 Node [Spline Parameter](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/spline_parameter.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSplineParameter.html) )
 
 ### Returns:
-
 - tuple ('`factor`', '`length`', '`index`')
 
 <sub>Go to [top](#class-ControlPoint)</sub>
@@ -301,7 +288,6 @@ def parameter_factor(self):
 Node [Spline Parameter](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/spline_parameter.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSplineParameter.html) )
 
 ### Returns:
-
 - socket `factor`
 
 <sub>Go to [top](#class-ControlPoint)</sub>
@@ -315,7 +301,6 @@ def parameter_index(self):
 Node [Spline Parameter](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/spline_parameter.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSplineParameter.html) )
 
 ### Returns:
-
 - socket `index`
 
 <sub>Go to [top](#class-ControlPoint)</sub>
@@ -329,7 +314,6 @@ def parameter_length(self):
 Node [Spline Parameter](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/spline_parameter.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSplineParameter.html) )
 
 ### Returns:
-
 - socket `length`
 
 <sub>Go to [top](#class-ControlPoint)</sub>
@@ -343,7 +327,6 @@ def radius(self):
 Node [Radius](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/radius.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputRadius.html) )
 
 ### Returns:
-
 - socket `radius`
 
 <sub>Go to [top](#class-ControlPoint)</sub>
@@ -358,7 +341,8 @@ Node [Set Curve Radius](https://docs.blender.org/manual/en/latest/modeling/geome
 
 Node implemented as property setter.
 
-        ###Args:- attr_value: radius
+        ###Args:
+- attr_value: radius
 
 
 <sub>Go to [top](#class-ControlPoint)</sub>
@@ -372,7 +356,6 @@ def right_handle_positions(self):
 Node [Curve Handle Positions](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/curve_handle_position.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputCurveHandlePositions.html) )
 
 ### Returns:
-
 - socket `right`
 
 <sub>Go to [top](#class-ControlPoint)</sub>
@@ -387,7 +370,8 @@ Node [Set Handle Positions](https://docs.blender.org/manual/en/latest/modeling/g
 
 Node implemented as property setter.
 
-        ###Args:- attr_value: position
+        ###Args:
+- attr_value: position
 
 
 <sub>Go to [top](#class-ControlPoint)</sub>
@@ -406,7 +390,6 @@ Node [Set Handle Positions](https://docs.blender.org/manual/en/latest/modeling/g
 - mode (str): 'LEFT' in [LEFT, RIGHT]
 
 ### Returns:
-
 - self
 
 <sub>Go to [top](#class-ControlPoint)</sub>
@@ -425,7 +408,6 @@ Node [Set Handle Positions](https://docs.blender.org/manual/en/latest/modeling/g
 - offset: Vector
 
 ### Returns:
-
 - self
 
 <sub>Go to [top](#class-ControlPoint)</sub>
@@ -444,7 +426,6 @@ Node [Set Handle Positions](https://docs.blender.org/manual/en/latest/modeling/g
 - offset: Vector
 
 ### Returns:
-
 - self
 
 <sub>Go to [top](#class-ControlPoint)</sub>
@@ -464,7 +445,6 @@ Node [Set Handle Type](https://docs.blender.org/manual/en/latest/modeling/geomet
 - mode (set): {'RIGHT', 'LEFT'}
 
 ### Returns:
-
 - node with sockets ['curve']
 
 <sub>Go to [top](#class-ControlPoint)</sub>
@@ -482,7 +462,6 @@ Node [Set Handle Type](https://docs.blender.org/manual/en/latest/modeling/geomet
 - mode (set): {'RIGHT', 'LEFT'}
 
 ### Returns:
-
 - self
 
 <sub>Go to [top](#class-ControlPoint)</sub>
@@ -499,7 +478,6 @@ Node [Set Curve Radius](https://docs.blender.org/manual/en/latest/modeling/geome
 - radius: Float
 
 ### Returns:
-
 - self
 
 <sub>Go to [top](#class-ControlPoint)</sub>
@@ -516,7 +494,6 @@ Node [Set Curve Tilt](https://docs.blender.org/manual/en/latest/modeling/geometr
 - tilt: Float
 
 ### Returns:
-
 - self
 
 <sub>Go to [top](#class-ControlPoint)</sub>
@@ -530,7 +507,6 @@ def tangent(self):
 Node [Curve Tangent](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/curve_tangent.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputTangent.html) )
 
 ### Returns:
-
 - socket `tangent`
 
 <sub>Go to [top](#class-ControlPoint)</sub>
@@ -544,7 +520,6 @@ def tilt(self):
 Node [Curve Tilt](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/curve_tilt.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputCurveTilt.html) )
 
 ### Returns:
-
 - socket `tilt`
 
 <sub>Go to [top](#class-ControlPoint)</sub>
@@ -559,7 +534,8 @@ Node [Set Curve Tilt](https://docs.blender.org/manual/en/latest/modeling/geometr
 
 Node implemented as property setter.
 
-        ###Args:- attr_value: tilt
+        ###Args:
+- attr_value: tilt
 
 
 <sub>Go to [top](#class-ControlPoint)</sub>

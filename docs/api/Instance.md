@@ -28,7 +28,6 @@ Node [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 - component (str): 'MESH' in [MESH, POINTCLOUD, CURVE, INSTANCES]
 
 ### Returns:
-
 - node with sockets ['point_count', 'edge_count', 'face_count', 'face_corner_count', 'spline_count', 'instance_count']
 
 <sub>Go to [top](#class-Instance)</sub>
@@ -47,7 +46,6 @@ Node [Rotate Instances](https://docs.blender.org/manual/en/latest/modeling/geome
 - local_space: Boolean
 
 ### Returns:
-
 - self
 
 <sub>Go to [top](#class-Instance)</sub>
@@ -61,7 +59,6 @@ def rotation(self):
 Node [Instance Rotation](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instance_rotation.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputInstanceRotation.html) )
 
 ### Returns:
-
 - socket `rotation`
 
 <sub>Go to [top](#class-Instance)</sub>
@@ -75,7 +72,6 @@ def scale(self):
 Node [Instance Scale](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instance_scale.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputInstanceScale.html) )
 
 ### Returns:
-
 - socket `scale`
 
 <sub>Go to [top](#class-Instance)</sub>
@@ -94,7 +90,6 @@ Node [Scale Instances](https://docs.blender.org/manual/en/latest/modeling/geomet
 - local_space: Boolean
 
 ### Returns:
-
 - self
 
 <sub>Go to [top](#class-Instance)</sub>
@@ -112,7 +107,6 @@ Node [Instances to Points](https://docs.blender.org/manual/en/latest/modeling/ge
 - radius: Float
 
 ### Returns:
-
 - socket `points` of class Points
 
 <sub>Go to [top](#class-Instance)</sub>
@@ -130,7 +124,6 @@ Node [Translate Instances](https://docs.blender.org/manual/en/latest/modeling/ge
 - local_space: Boolean
 
 ### Returns:
-
 - self
 
 <sub>Go to [top](#class-Instance)</sub>

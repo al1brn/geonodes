@@ -34,7 +34,6 @@ def cyclic(self):
 Node [Is Spline Cyclic](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/is_spline_cyclic.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputSplineCyclic.html) )
 
 ### Returns:
-
 - socket `cyclic`
 
 <sub>Go to [top](#class-Spline)</sub>
@@ -49,7 +48,8 @@ Node [Set Spline Cyclic](https://docs.blender.org/manual/en/latest/modeling/geom
 
 Node implemented as property setter.
 
-        ###Args:- attr_value: cyclic
+        ###Args:
+- attr_value: cyclic
 
 
 <sub>Go to [top](#class-Spline)</sub>
@@ -67,7 +67,6 @@ Node [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 - component (str): 'MESH' in [MESH, POINTCLOUD, CURVE, INSTANCES]
 
 ### Returns:
-
 - node with sockets ['point_count', 'edge_count', 'face_count', 'face_corner_count', 'spline_count', 'instance_count']
 
 <sub>Go to [top](#class-Spline)</sub>
@@ -81,7 +80,6 @@ def length(self):
 Node [Spline Length](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/spline_length.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSplineLength.html) )
 
 ### Returns:
-
 - tuple ('`length`', '`point_count`')
 
 <sub>Go to [top](#class-Spline)</sub>
@@ -110,7 +108,8 @@ Node [Set Material](https://docs.blender.org/manual/en/latest/modeling/geometry_
 
 Node implemented as property setter.
 
-        ###Args:- attr_value: material
+        ###Args:
+- attr_value: material
 
 
 <sub>Go to [top](#class-Spline)</sub>
@@ -124,7 +123,6 @@ def normal(self):
 Node [Normal](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/normal.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputNormal.html) )
 
 ### Returns:
-
 - socket `normal`
 
 <sub>Go to [top](#class-Spline)</sub>
@@ -139,7 +137,8 @@ Node [Set Curve Normal](https://docs.blender.org/manual/en/latest/modeling/geome
 
 Node implemented as property setter.
 
-        ###Args:- attr_value: mode
+        ###Args:
+- attr_value: mode
 
 
 <sub>Go to [top](#class-Spline)</sub>
@@ -157,7 +156,6 @@ Node [Points of Curve](https://docs.blender.org/manual/en/latest/modeling/geomet
 - sort_index: Integer
 
 ### Returns:
-
 - tuple ('`point_index`', '`total`')
 
 <sub>Go to [top](#class-Spline)</sub>
@@ -176,7 +174,6 @@ Node [Resample Curve](https://docs.blender.org/manual/en/latest/modeling/geometr
 - mode (str): 'COUNT' in [EVALUATED, COUNT, LENGTH]
 
 ### Returns:
-
 - self
 
 <sub>Go to [top](#class-Spline)</sub>
@@ -193,7 +190,6 @@ Node [Resample Curve](https://docs.blender.org/manual/en/latest/modeling/geometr
 - count: Integer
 
 ### Returns:
-
 - self
 
 <sub>Go to [top](#class-Spline)</sub>
@@ -207,7 +203,6 @@ def resample_evaluated(self):
 Node [Resample Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/resample_curve.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeResampleCurve.html) )
 
 ### Returns:
-
 - self
 
 <sub>Go to [top](#class-Spline)</sub>
@@ -224,7 +219,6 @@ Node [Resample Curve](https://docs.blender.org/manual/en/latest/modeling/geometr
 - length: Float
 
 ### Returns:
-
 - self
 
 <sub>Go to [top](#class-Spline)</sub>
@@ -238,7 +232,6 @@ def resolution(self):
 Node [Spline Resolution](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/spline_resolution.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputSplineResolution.html) )
 
 ### Returns:
-
 - socket `resolution`
 
 <sub>Go to [top](#class-Spline)</sub>
@@ -253,7 +246,8 @@ Node [Set Spline Resolution](https://docs.blender.org/manual/en/latest/modeling/
 
 Node implemented as property setter.
 
-        ###Args:- attr_value: resolution
+        ###Args:
+- attr_value: resolution
 
 
 <sub>Go to [top](#class-Spline)</sub>
@@ -270,7 +264,6 @@ Node [Set Spline Cyclic](https://docs.blender.org/manual/en/latest/modeling/geom
 - cyclic: Boolean
 
 ### Returns:
-
 - self
 
 <sub>Go to [top](#class-Spline)</sub>
@@ -287,7 +280,6 @@ Node [Set Material](https://docs.blender.org/manual/en/latest/modeling/geometry_
 - material: Material
 
 ### Returns:
-
 - self
 
 <sub>Go to [top](#class-Spline)</sub>
@@ -304,7 +296,6 @@ Node [Set Curve Normal](https://docs.blender.org/manual/en/latest/modeling/geome
 - mode (str): 'MINIMUM_TWIST' in [MINIMUM_TWIST, Z_UP]
 
 ### Returns:
-
 - self
 
 <sub>Go to [top](#class-Spline)</sub>
@@ -321,7 +312,6 @@ Node [Set Spline Resolution](https://docs.blender.org/manual/en/latest/modeling/
 - resolution: Integer
 
 ### Returns:
-
 - self
 
 <sub>Go to [top](#class-Spline)</sub>
@@ -338,7 +328,6 @@ Node [Set Spline Type](https://docs.blender.org/manual/en/latest/modeling/geomet
 - spline_type (str): 'POLY' in [CATMULL_ROM, POLY, BEZIER, NURBS]
 
 ### Returns:
-
 - self
 
 <sub>Go to [top](#class-Spline)</sub>
@@ -367,7 +356,8 @@ Node [Set Spline Type](https://docs.blender.org/manual/en/latest/modeling/geomet
 
 Node implemented as property setter.
 
-        ###Args:- attr_value: spline_type
+        ###Args:
+- attr_value: spline_type
 
 
 <sub>Go to [top](#class-Spline)</sub>
