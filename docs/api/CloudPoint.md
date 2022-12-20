@@ -47,7 +47,7 @@ Node [Instance on Points](https://docs.blender.org/manual/en/latest/modeling/geo
 
 ### Returns:
 
-  socket 'instances' of class Instances
+- socket `instances` of class Instances
 
 <sub>Go to [top](#class-CloudPoint)</sub>
 
@@ -61,7 +61,7 @@ Node [Radius](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/
 
 ### Returns:
 
-  socket 'radius'
+- socket `radius`
 
 <sub>Go to [top](#class-CloudPoint)</sub>
 
@@ -93,7 +93,7 @@ Node [Points to Vertices](https://docs.blender.org/manual/en/latest/modeling/geo
 
 ### Returns:
 
-  socket 'mesh' of class Mesh
+- socket `mesh` of class Mesh
 
 <sub>Go to [top](#class-CloudPoint)</sub>
 

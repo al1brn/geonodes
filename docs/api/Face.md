@@ -106,7 +106,7 @@ Node [Distribute Points on Faces](https://docs.blender.org/manual/en/latest/mode
 
 ### Returns:
 
-- tuple ('points', 'normal', 'rotation')
+- tuple ('`points`', '`normal`', '`rotation`')
 
 <sub>Go to [top](#class-Face)</sub>
 
@@ -124,7 +124,7 @@ Node [Distribute Points on Faces](https://docs.blender.org/manual/en/latest/mode
 
 ### Returns:
 
-- tuple ('points', 'normal', 'rotation')
+- tuple ('`points`', '`normal`', '`rotation`')
 
 <sub>Go to [top](#class-Face)</sub>
 
@@ -161,7 +161,7 @@ Node [Extrude Mesh](https://docs.blender.org/manual/en/latest/modeling/geometry_
 
 ### Returns:
 
-- tuple ('top', 'side')
+- tuple ('`top`', '`side`')
 
 <sub>Go to [top](#class-Face)</sub>
 
@@ -175,7 +175,7 @@ Node [Face Set Boundaries](https://docs.blender.org/manual/en/latest/modeling/ge
 
 ### Returns:
 
-  socket 'boundary_edges'
+- socket `boundary_edges`
 
 <sub>Go to [top](#class-Face)</sub>
 
@@ -206,7 +206,7 @@ Node [Face is Planar](https://docs.blender.org/manual/en/latest/modeling/geometr
 
 ### Returns:
 
-  socket 'planar'
+- socket `planar`
 
 <sub>Go to [top](#class-Face)</sub>
 
@@ -234,7 +234,7 @@ Node [Mesh Island](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 
 ### Returns:
 
-  socket 'island_count'
+- socket `island_count`
 
 <sub>Go to [top](#class-Face)</sub>
 
@@ -248,7 +248,7 @@ Node [Mesh Island](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 
 ### Returns:
 
-  socket 'island_index'
+- socket `island_index`
 
 <sub>Go to [top](#class-Face)</sub>
 
@@ -305,7 +305,7 @@ Node [Face Neighbors](https://docs.blender.org/manual/en/latest/modeling/geometr
 
 ### Returns:
 
-  socket 'face_count'
+- socket `face_count`
 
 <sub>Go to [top](#class-Face)</sub>
 
@@ -319,7 +319,7 @@ Node [Face Neighbors](https://docs.blender.org/manual/en/latest/modeling/geometr
 
 ### Returns:
 
-  socket 'vertex_count'
+- socket `vertex_count`
 
 <sub>Go to [top](#class-Face)</sub>
 
@@ -338,7 +338,7 @@ Node [Pack UV Islands](https://docs.blender.org/manual/en/latest/modeling/geomet
 
 ### Returns:
 
-  socket 'uv'
+- socket `uv`
 
 <sub>Go to [top](#class-Face)</sub>
 
@@ -423,7 +423,7 @@ Node [Is Shade Smooth](https://docs.blender.org/manual/en/latest/modeling/geomet
 
 ### Returns:
 
-  socket 'smooth'
+- socket `smooth`
 
 <sub>Go to [top](#class-Face)</sub>
 
@@ -477,7 +477,7 @@ Node [UV Unwrap](https://docs.blender.org/manual/en/latest/modeling/geometry_nod
 
 ### Returns:
 
-  socket 'uv'
+- socket `uv`
 
 <sub>Go to [top](#class-Face)</sub>
 

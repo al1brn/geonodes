@@ -62,7 +62,7 @@ Node [ID](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/inpu
 
 ### Returns:
 
-  socket 'ID'
+- socket `ID`
 
 <sub>Go to [top](#class-Domain)</sub>
 
@@ -95,7 +95,7 @@ Node [Accumulate Field](https://docs.blender.org/manual/en/latest/modeling/geome
 
 ### Returns:
 
-- tuple ('leading', 'trailing', 'total')
+- tuple ('`leading`', '`trailing`', '`total`')
 
 <sub>Go to [top](#class-Domain)</sub>
 
@@ -112,7 +112,7 @@ Node [Attribute Statistic](https://docs.blender.org/manual/en/latest/modeling/ge
 
 ### Returns:
 
-  socket 'max'
+- socket `max`
 
 <sub>Go to [top](#class-Domain)</sub>
 
@@ -129,7 +129,7 @@ Node [Attribute Statistic](https://docs.blender.org/manual/en/latest/modeling/ge
 
 ### Returns:
 
-  socket 'mean'
+- socket `mean`
 
 <sub>Go to [top](#class-Domain)</sub>
 
@@ -146,7 +146,7 @@ Node [Attribute Statistic](https://docs.blender.org/manual/en/latest/modeling/ge
 
 ### Returns:
 
-  socket 'median'
+- socket `median`
 
 <sub>Go to [top](#class-Domain)</sub>
 
@@ -163,7 +163,7 @@ Node [Attribute Statistic](https://docs.blender.org/manual/en/latest/modeling/ge
 
 ### Returns:
 
-  socket 'min'
+- socket `min`
 
 <sub>Go to [top](#class-Domain)</sub>
 
@@ -180,7 +180,7 @@ Node [Attribute Statistic](https://docs.blender.org/manual/en/latest/modeling/ge
 
 ### Returns:
 
-  socket 'range'
+- socket `range`
 
 <sub>Go to [top](#class-Domain)</sub>
 
@@ -214,7 +214,7 @@ Node [Attribute Statistic](https://docs.blender.org/manual/en/latest/modeling/ge
 
 ### Returns:
 
-  socket 'standard_deviation'
+- socket `standard_deviation`
 
 <sub>Go to [top](#class-Domain)</sub>
 
@@ -231,7 +231,7 @@ Node [Attribute Statistic](https://docs.blender.org/manual/en/latest/modeling/ge
 
 ### Returns:
 
-  socket 'sum'
+- socket `sum`
 
 <sub>Go to [top](#class-Domain)</sub>
 
@@ -248,7 +248,7 @@ Node [Attribute Statistic](https://docs.blender.org/manual/en/latest/modeling/ge
 
 ### Returns:
 
-  socket 'variance'
+- socket `variance`
 
 <sub>Go to [top](#class-Domain)</sub>
 
@@ -265,7 +265,7 @@ Node [Capture Attribute](https://docs.blender.org/manual/en/latest/modeling/geom
 
 ### Returns:
 
-  socket 'attribute'
+- socket `attribute`
 
 <sub>Go to [top](#class-Domain)</sub>
 
@@ -296,7 +296,7 @@ Node [Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/i
 
 ### Returns:
 
-  socket 'index'
+- socket `index`
 
 <sub>Go to [top](#class-Domain)</sub>
 
@@ -313,7 +313,7 @@ Node [Duplicate Elements](https://docs.blender.org/manual/en/latest/modeling/geo
 
 ### Returns:
 
-  socket 'duplicate_index'
+- socket `duplicate_index`
 
 <sub>Go to [top](#class-Domain)</sub>
 
@@ -331,7 +331,7 @@ Node [Field at Index](https://docs.blender.org/manual/en/latest/modeling/geometr
 
 ### Returns:
 
-  socket 'value'
+- socket `value`
 
 <sub>Go to [top](#class-Domain)</sub>
 
@@ -348,7 +348,7 @@ Node [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geomet
 
 ### Returns:
 
-  socket 'attribute'
+- socket `attribute`
 
 <sub>Go to [top](#class-Domain)</sub>
 
@@ -365,7 +365,7 @@ Node [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geomet
 
 ### Returns:
 
-  socket 'attribute'
+- socket `attribute`
 
 <sub>Go to [top](#class-Domain)</sub>
 
@@ -382,7 +382,7 @@ Node [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geomet
 
 ### Returns:
 
-  socket 'attribute'
+- socket `attribute`
 
 <sub>Go to [top](#class-Domain)</sub>
 
@@ -399,7 +399,7 @@ Node [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geomet
 
 ### Returns:
 
-  socket 'attribute'
+- socket `attribute`
 
 <sub>Go to [top](#class-Domain)</sub>
 
@@ -416,7 +416,7 @@ Node [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geomet
 
 ### Returns:
 
-  socket 'attribute'
+- socket `attribute`
 
 <sub>Go to [top](#class-Domain)</sub>
 
@@ -430,7 +430,7 @@ Node [Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/i
 
 ### Returns:
 
-  socket 'index'
+- socket `index`
 
 <sub>Go to [top](#class-Domain)</sub>
 
@@ -444,7 +444,7 @@ Node [Material Index](https://docs.blender.org/manual/en/latest/modeling/geometr
 
 ### Returns:
 
-  socket 'material_index'
+- socket `material_index`
 
 <sub>Go to [top](#class-Domain)</sub>
 
@@ -461,7 +461,7 @@ Node [Material Selection](https://docs.blender.org/manual/en/latest/modeling/geo
 
 ### Returns:
 
-  socket 'selection'
+- socket `selection`
 
 <sub>Go to [top](#class-Domain)</sub>
 
@@ -479,7 +479,7 @@ Node [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geomet
 
 ### Returns:
 
-  socket 'attribute'
+- socket `attribute`
 
 <sub>Go to [top](#class-Domain)</sub>
 
@@ -493,7 +493,7 @@ Node [Normal](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/
 
 ### Returns:
 
-  socket 'normal'
+- socket `normal`
 
 <sub>Go to [top](#class-Domain)</sub>
 
@@ -507,7 +507,7 @@ Node [Position](https://docs.blender.org/manual/en/latest/modeling/geometry_node
 
 ### Returns:
 
-  socket 'position'
+- socket `position`
 
 <sub>Go to [top](#class-Domain)</sub>
 
@@ -541,7 +541,7 @@ Node [Random Value](https://docs.blender.org/manual/en/latest/modeling/geometry_
 
 ### Returns:
 
-  socket 'value'
+- socket `value`
 
 <sub>Go to [top](#class-Domain)</sub>
 
@@ -561,7 +561,7 @@ Node [Random Value](https://docs.blender.org/manual/en/latest/modeling/geometry_
 
 ### Returns:
 
-  socket 'value'
+- socket `value`
 
 <sub>Go to [top](#class-Domain)</sub>
 
@@ -581,7 +581,7 @@ Node [Random Value](https://docs.blender.org/manual/en/latest/modeling/geometry_
 
 ### Returns:
 
-  socket 'value'
+- socket `value`
 
 <sub>Go to [top](#class-Domain)</sub>
 
@@ -601,7 +601,7 @@ Node [Random Value](https://docs.blender.org/manual/en/latest/modeling/geometry_
 
 ### Returns:
 
-  socket 'value'
+- socket `value`
 
 <sub>Go to [top](#class-Domain)</sub>
 
@@ -637,7 +637,7 @@ Node [Sample Index](https://docs.blender.org/manual/en/latest/modeling/geometry_
 
 ### Returns:
 
-  socket 'value'
+- socket `value`
 
 <sub>Go to [top](#class-Domain)</sub>
 
@@ -654,7 +654,7 @@ Node [Sample Nearest](https://docs.blender.org/manual/en/latest/modeling/geometr
 
 ### Returns:
 
-  socket 'index'
+- socket `index`
 
 <sub>Go to [top](#class-Domain)</sub>
 
@@ -671,7 +671,7 @@ Node [Separate Geometry](https://docs.blender.org/manual/en/latest/modeling/geom
 
 ### Returns:
 
-- tuple ('selection', 'inverted')
+- tuple ('`selection`', '`inverted`')
 
 <sub>Go to [top](#class-Domain)</sub>
 

@@ -79,7 +79,7 @@ Node [Mesh Circle](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 
 ### Returns:
 
-  socket 'mesh'
+- socket `mesh`
 
 <sub>Go to [top](#class-Mesh)</sub>
 
@@ -98,7 +98,7 @@ Node [UV Sphere](https://docs.blender.org/manual/en/latest/modeling/geometry_nod
 
 ### Returns:
 
-  socket 'mesh'
+- socket `mesh`
 
 <sub>Go to [top](#class-Mesh)</sub>
 
@@ -121,7 +121,7 @@ Node [Cone](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/me
 
 ### Returns:
 
-- tuple ('mesh', 'top', 'bottom', 'side')
+- tuple ('`mesh`', '`top`', '`bottom`', '`side`')
 
 <sub>Go to [top](#class-Mesh)</sub>
 
@@ -141,7 +141,7 @@ Node [Cube](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/me
 
 ### Returns:
 
-  socket 'mesh'
+- socket `mesh`
 
 <sub>Go to [top](#class-Mesh)</sub>
 
@@ -163,7 +163,7 @@ Node [Cylinder](https://docs.blender.org/manual/en/latest/modeling/geometry_node
 
 ### Returns:
 
-- tuple ('mesh', 'top', 'bottom', 'side')
+- tuple ('`mesh`', '`top`', '`bottom`', '`side`')
 
 <sub>Go to [top](#class-Mesh)</sub>
 
@@ -183,7 +183,7 @@ Node [Grid](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/me
 
 ### Returns:
 
-  socket 'mesh'
+- socket `mesh`
 
 <sub>Go to [top](#class-Mesh)</sub>
 
@@ -201,7 +201,7 @@ Node [Ico Sphere](https://docs.blender.org/manual/en/latest/modeling/geometry_no
 
 ### Returns:
 
-  socket 'mesh'
+- socket `mesh`
 
 <sub>Go to [top](#class-Mesh)</sub>
 
@@ -223,7 +223,7 @@ Node [Mesh Line](https://docs.blender.org/manual/en/latest/modeling/geometry_nod
 
 ### Returns:
 
-  socket 'mesh'
+- socket `mesh`
 
 <sub>Go to [top](#class-Mesh)</sub>
 
@@ -242,7 +242,7 @@ Node [Mesh Line](https://docs.blender.org/manual/en/latest/modeling/geometry_nod
 
 ### Returns:
 
-  socket 'mesh'
+- socket `mesh`
 
 <sub>Go to [top](#class-Mesh)</sub>
 
@@ -261,7 +261,7 @@ Node [Mesh Line](https://docs.blender.org/manual/en/latest/modeling/geometry_nod
 
 ### Returns:
 
-  socket 'mesh'
+- socket `mesh`
 
 <sub>Go to [top](#class-Mesh)</sub>
 
@@ -280,7 +280,7 @@ Node [Mesh Line](https://docs.blender.org/manual/en/latest/modeling/geometry_nod
 
 ### Returns:
 
-  socket 'mesh'
+- socket `mesh`
 
 <sub>Go to [top](#class-Mesh)</sub>
 
@@ -299,7 +299,7 @@ Node [Mesh Line](https://docs.blender.org/manual/en/latest/modeling/geometry_nod
 
 ### Returns:
 
-  socket 'mesh'
+- socket `mesh`
 
 <sub>Go to [top](#class-Mesh)</sub>
 
@@ -318,7 +318,7 @@ Node [Mesh Boolean](https://docs.blender.org/manual/en/latest/modeling/geometry_
 
 ### Returns:
 
-  socket 'intersecting_edges'
+- socket `intersecting_edges`
 
 <sub>Go to [top](#class-Mesh)</sub>
 
@@ -337,7 +337,7 @@ Node [Mesh Boolean](https://docs.blender.org/manual/en/latest/modeling/geometry_
 
 ### Returns:
 
-  socket 'intersecting_edges'
+- socket `intersecting_edges`
 
 <sub>Go to [top](#class-Mesh)</sub>
 
@@ -356,7 +356,7 @@ Node [Mesh Boolean](https://docs.blender.org/manual/en/latest/modeling/geometry_
 
 ### Returns:
 
-  socket 'intersecting_edges'
+- socket `intersecting_edges`
 
 <sub>Go to [top](#class-Mesh)</sub>
 
@@ -372,7 +372,7 @@ Node implemented as property.
 
 ### Returns:
 
-  socket 'face_corner_count'
+- socket `face_corner_count`
 
 <sub>Go to [top](#class-Mesh)</sub>
 
@@ -449,7 +449,7 @@ Node [Distribute Points on Faces](https://docs.blender.org/manual/en/latest/mode
 
 ### Returns:
 
-- tuple ('points', 'normal', 'rotation')
+- tuple ('`points`', '`normal`', '`rotation`')
 
 <sub>Go to [top](#class-Mesh)</sub>
 
@@ -483,7 +483,7 @@ Node [Dual Mesh](https://docs.blender.org/manual/en/latest/modeling/geometry_nod
 
 ### Returns:
 
-  socket 'dual_mesh' of class Mesh
+- socket `dual_mesh` of class Mesh
 
 <sub>Go to [top](#class-Mesh)</sub>
 
@@ -499,7 +499,7 @@ Node implemented as property.
 
 ### Returns:
 
-  socket 'edge_count'
+- socket `edge_count`
 
 <sub>Go to [top](#class-Mesh)</sub>
 
@@ -517,7 +517,7 @@ Node [Edge Paths to Curves](https://docs.blender.org/manual/en/latest/modeling/g
 
 ### Returns:
 
-  socket 'curves' of class Curve
+- socket `curves` of class Curve
 
 <sub>Go to [top](#class-Mesh)</sub>
 
@@ -535,7 +535,7 @@ Node [Edge Paths to Selection](https://docs.blender.org/manual/en/latest/modelin
 
 ### Returns:
 
-  socket 'selection'
+- socket `selection`
 
 <sub>Go to [top](#class-Mesh)</sub>
 
@@ -556,7 +556,7 @@ Node [Extrude Mesh](https://docs.blender.org/manual/en/latest/modeling/geometry_
 
 ### Returns:
 
-- tuple ('top', 'side')
+- tuple ('`top`', '`side`')
 
 <sub>Go to [top](#class-Mesh)</sub>
 
@@ -572,7 +572,7 @@ Node implemented as property.
 
 ### Returns:
 
-  socket 'face_count'
+- socket `face_count`
 
 <sub>Go to [top](#class-Mesh)</sub>
 
@@ -589,7 +589,7 @@ Node [Face is Planar](https://docs.blender.org/manual/en/latest/modeling/geometr
 
 ### Returns:
 
-  socket 'planar'
+- socket `planar`
 
 <sub>Go to [top](#class-Mesh)</sub>
 
@@ -606,7 +606,7 @@ Node [Face Set Boundaries](https://docs.blender.org/manual/en/latest/modeling/ge
 
 ### Returns:
 
-  socket 'boundary_edges'
+- socket `boundary_edges`
 
 <sub>Go to [top](#class-Mesh)</sub>
 
@@ -645,7 +645,7 @@ Node [Instance on Points](https://docs.blender.org/manual/en/latest/modeling/geo
 
 ### Returns:
 
-  socket 'instances'
+- socket `instances`
 
 <sub>Go to [top](#class-Mesh)</sub>
 
@@ -659,7 +659,7 @@ Node [Is Shade Smooth](https://docs.blender.org/manual/en/latest/modeling/geomet
 
 ### Returns:
 
-  socket 'smooth'
+- socket `smooth`
 
 <sub>Go to [top](#class-Mesh)</sub>
 
@@ -687,7 +687,7 @@ Node [Mesh Island](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 
 ### Returns:
 
-  socket 'island_count'
+- socket `island_count`
 
 <sub>Go to [top](#class-Mesh)</sub>
 
@@ -701,7 +701,7 @@ Node [Mesh Island](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 
 ### Returns:
 
-  socket 'island_index'
+- socket `island_index`
 
 <sub>Go to [top](#class-Mesh)</sub>
 
@@ -721,7 +721,7 @@ Node [Pack UV Islands](https://docs.blender.org/manual/en/latest/modeling/geomet
 
 ### Returns:
 
-  socket 'uv'
+- socket `uv`
 
 <sub>Go to [top](#class-Mesh)</sub>
 
@@ -737,7 +737,7 @@ Node implemented as property.
 
 ### Returns:
 
-  socket 'point_count'
+- socket `point_count`
 
 <sub>Go to [top](#class-Mesh)</sub>
 
@@ -755,7 +755,7 @@ Node [Sample Nearest Surface](https://docs.blender.org/manual/en/latest/modeling
 
 ### Returns:
 
-  socket 'value'
+- socket `value`
 
 <sub>Go to [top](#class-Mesh)</sub>
 
@@ -774,7 +774,7 @@ Node [Sample UV Surface](https://docs.blender.org/manual/en/latest/modeling/geom
 
 ### Returns:
 
-- tuple ('value', 'is_valid')
+- tuple ('`value`', '`is_valid`')
 
 <sub>Go to [top](#class-Mesh)</sub>
 
@@ -873,7 +873,7 @@ Node [Shortest Edge Paths](https://docs.blender.org/manual/en/latest/modeling/ge
 
 ### Returns:
 
-- tuple ('next_vertex_index', 'total_cost')
+- tuple ('`next_vertex_index`', '`total_cost`')
 
 <sub>Go to [top](#class-Mesh)</sub>
 
@@ -945,7 +945,7 @@ Node [Mesh to Curve](https://docs.blender.org/manual/en/latest/modeling/geometry
 
 ### Returns:
 
-  socket 'curve' of class Curve
+- socket `curve` of class Curve
 
 <sub>Go to [top](#class-Mesh)</sub>
 
@@ -965,7 +965,7 @@ Node [Mesh to Points](https://docs.blender.org/manual/en/latest/modeling/geometr
 
 ### Returns:
 
-  socket 'points' of class Points
+- socket `points` of class Points
 
 <sub>Go to [top](#class-Mesh)</sub>
 
@@ -988,7 +988,7 @@ Node [Mesh to Volume](https://docs.blender.org/manual/en/latest/modeling/geometr
 
 ### Returns:
 
-  socket 'volume' of class Volume
+- socket `volume` of class Volume
 
 <sub>Go to [top](#class-Mesh)</sub>
 
@@ -1029,7 +1029,7 @@ Node [UV Unwrap](https://docs.blender.org/manual/en/latest/modeling/geometry_nod
 
 ### Returns:
 
-  socket 'uv'
+- socket `uv`
 
 <sub>Go to [top](#class-Mesh)</sub>
 

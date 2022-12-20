@@ -32,7 +32,7 @@ Node [Boolean](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 
 ### Returns:
 
-  socket 'boolean'
+- socket `boolean`
 
 <sub>Go to [top](#class-Boolean)</sub>
 
@@ -49,7 +49,7 @@ Node [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_
 
 ### Returns:
 
-  socket 'boolean'
+- socket `boolean`
 
 <sub>Go to [top](#class-Boolean)</sub>
 
@@ -63,7 +63,7 @@ Node [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_
 
 ### Returns:
 
-  socket 'boolean'
+- socket `boolean`
 
 <sub>Go to [top](#class-Boolean)</sub>
 
@@ -80,7 +80,7 @@ Node [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_
 
 ### Returns:
 
-  socket 'boolean'
+- socket `boolean`
 
 <sub>Go to [top](#class-Boolean)</sub>
 
@@ -97,7 +97,7 @@ Node [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_
 
 ### Returns:
 
-  socket 'boolean'
+- socket `boolean`
 
 <sub>Go to [top](#class-Boolean)</sub>
 
@@ -114,7 +114,7 @@ Node [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_
 
 ### Returns:
 
-  socket 'boolean'
+- socket `boolean`
 
 <sub>Go to [top](#class-Boolean)</sub>
 
@@ -131,7 +131,7 @@ Node [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_
 
 ### Returns:
 
-  socket 'boolean'
+- socket `boolean`
 
 <sub>Go to [top](#class-Boolean)</sub>
 
@@ -148,7 +148,7 @@ Node [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_
 
 ### Returns:
 
-  socket 'boolean'
+- socket `boolean`
 
 <sub>Go to [top](#class-Boolean)</sub>
 
@@ -166,7 +166,7 @@ Node [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/
 
 ### Returns:
 
-  socket 'output'
+- socket `output`
 
 <sub>Go to [top](#class-Boolean)</sub>
 
@@ -183,7 +183,7 @@ Node [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_
 
 ### Returns:
 
-  socket 'boolean'
+- socket `boolean`
 
 <sub>Go to [top](#class-Boolean)</sub>
 
@@ -200,7 +200,7 @@ Node [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_
 
 ### Returns:
 
-  socket 'boolean'
+- socket `boolean`
 
 <sub>Go to [top](#class-Boolean)</sub>
 

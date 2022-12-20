@@ -39,7 +39,7 @@ Node [Instance on Points](https://docs.blender.org/manual/en/latest/modeling/geo
 
 ### Returns:
 
-  socket 'instances'
+- socket `instances`
 
 <sub>Go to [top](#class-Instances)</sub>
 
@@ -55,7 +55,7 @@ Node implemented as property.
 
 ### Returns:
 
-  socket 'instance_count'
+- socket `instance_count`
 
 <sub>Go to [top](#class-Instances)</sub>
 
@@ -77,7 +77,7 @@ Node [Instance on Points](https://docs.blender.org/manual/en/latest/modeling/geo
 
 ### Returns:
 
-  socket 'instances'
+- socket `instances`
 
 <sub>Go to [top](#class-Instances)</sub>
 
@@ -95,7 +95,7 @@ Node [Realize Instances](https://docs.blender.org/manual/en/latest/modeling/geom
 
 ### Returns:
 
-  socket 'geometry'
+- socket `geometry`
 
 <sub>Go to [top](#class-Instances)</sub>
 
@@ -129,7 +129,7 @@ Node [Instance Rotation](https://docs.blender.org/manual/en/latest/modeling/geom
 
 ### Returns:
 
-  socket 'rotation'
+- socket `rotation`
 
 <sub>Go to [top](#class-Instances)</sub>
 
@@ -143,7 +143,7 @@ Node [Instance Scale](https://docs.blender.org/manual/en/latest/modeling/geometr
 
 ### Returns:
 
-  socket 'scale'
+- socket `scale`
 
 <sub>Go to [top](#class-Instances)</sub>
 
@@ -182,7 +182,7 @@ Node [Instances to Points](https://docs.blender.org/manual/en/latest/modeling/ge
 
 ### Returns:
 
-  socket 'points' of class Points
+- socket `points` of class Points
 
 <sub>Go to [top](#class-Instances)</sub>
 

@@ -113,7 +113,7 @@ Node [Edge Paths to Curves](https://docs.blender.org/manual/en/latest/modeling/g
 
 ### Returns:
 
-  socket 'curves' of class Curve
+- socket `curves` of class Curve
 
 <sub>Go to [top](#class-Edge)</sub>
 
@@ -132,7 +132,7 @@ Node [Extrude Mesh](https://docs.blender.org/manual/en/latest/modeling/geometry_
 
 ### Returns:
 
-- tuple ('top', 'side')
+- tuple ('`top`', '`side`')
 
 <sub>Go to [top](#class-Edge)</sub>
 
@@ -146,7 +146,7 @@ Node [Edge Neighbors](https://docs.blender.org/manual/en/latest/modeling/geometr
 
 ### Returns:
 
-  socket 'face_count'
+- socket `face_count`
 
 <sub>Go to [top](#class-Edge)</sub>
 
@@ -197,7 +197,7 @@ Node [Edge Angle](https://docs.blender.org/manual/en/latest/modeling/geometry_no
 
 ### Returns:
 
-  socket 'signed_angle'
+- socket `signed_angle`
 
 <sub>Go to [top](#class-Edge)</sub>
 
@@ -225,7 +225,7 @@ Node [Mesh to Curve](https://docs.blender.org/manual/en/latest/modeling/geometry
 
 ### Returns:
 
-  socket 'curve' of class Curve
+- socket `curve` of class Curve
 
 <sub>Go to [top](#class-Edge)</sub>
 
@@ -239,7 +239,7 @@ Node [Edge Angle](https://docs.blender.org/manual/en/latest/modeling/geometry_no
 
 ### Returns:
 
-  socket 'unsigned_angle'
+- socket `unsigned_angle`
 
 <sub>Go to [top](#class-Edge)</sub>
 
@@ -267,7 +267,7 @@ Node [Edge Vertices](https://docs.blender.org/manual/en/latest/modeling/geometry
 
 ### Returns:
 
-- tuple ('vertex_index_1', 'vertex_index_2')
+- tuple ('`vertex_index_1`', '`vertex_index_2`')
 
 <sub>Go to [top](#class-Edge)</sub>
 
@@ -281,7 +281,7 @@ Node [Edge Vertices](https://docs.blender.org/manual/en/latest/modeling/geometry
 
 ### Returns:
 
-- tuple ('position_1', 'position_2')
+- tuple ('`position_1`', '`position_2`')
 
 <sub>Go to [top](#class-Edge)</sub>
 

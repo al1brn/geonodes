@@ -62,7 +62,7 @@ Node [Instance Rotation](https://docs.blender.org/manual/en/latest/modeling/geom
 
 ### Returns:
 
-  socket 'rotation'
+- socket `rotation`
 
 <sub>Go to [top](#class-Instance)</sub>
 
@@ -76,7 +76,7 @@ Node [Instance Scale](https://docs.blender.org/manual/en/latest/modeling/geometr
 
 ### Returns:
 
-  socket 'scale'
+- socket `scale`
 
 <sub>Go to [top](#class-Instance)</sub>
 
@@ -113,7 +113,7 @@ Node [Instances to Points](https://docs.blender.org/manual/en/latest/modeling/ge
 
 ### Returns:
 
-  socket 'points' of class Points
+- socket `points` of class Points
 
 <sub>Go to [top](#class-Instance)</sub>
 

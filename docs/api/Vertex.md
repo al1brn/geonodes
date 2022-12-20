@@ -95,7 +95,7 @@ Node [Extrude Mesh](https://docs.blender.org/manual/en/latest/modeling/geometry_
 
 ### Returns:
 
-- tuple ('top', 'side')
+- tuple ('`top`', '`side`')
 
 <sub>Go to [top](#class-Vertex)</sub>
 
@@ -116,7 +116,7 @@ Node [Instance on Points](https://docs.blender.org/manual/en/latest/modeling/geo
 
 ### Returns:
 
-  socket 'instances' of class Instances
+- socket `instances` of class Instances
 
 <sub>Go to [top](#class-Vertex)</sub>
 
@@ -162,7 +162,7 @@ Node [Vertex Neighbors](https://docs.blender.org/manual/en/latest/modeling/geome
 
 ### Returns:
 
-  socket 'face_count'
+- socket `face_count`
 
 <sub>Go to [top](#class-Vertex)</sub>
 
@@ -176,7 +176,7 @@ Node [Vertex Neighbors](https://docs.blender.org/manual/en/latest/modeling/geome
 
 ### Returns:
 
-  socket 'vertex_count'
+- socket `vertex_count`
 
 <sub>Go to [top](#class-Vertex)</sub>
 
@@ -195,7 +195,7 @@ Node [Mesh to Points](https://docs.blender.org/manual/en/latest/modeling/geometr
 
 ### Returns:
 
-  socket 'points' of class Points
+- socket `points` of class Points
 
 <sub>Go to [top](#class-Vertex)</sub>
 
@@ -218,7 +218,7 @@ Node [Mesh to Volume](https://docs.blender.org/manual/en/latest/modeling/geometr
 
 ### Returns:
 
-  socket 'volume' of class Volume
+- socket `volume` of class Volume
 
 <sub>Go to [top](#class-Vertex)</sub>
 

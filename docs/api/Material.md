@@ -20,7 +20,7 @@ Node [Material](https://docs.blender.org/manual/en/latest/modeling/geometry_node
 
 ### Returns:
 
-  socket 'material'
+- socket `material`
 
 <sub>Go to [top](#class-Material)</sub>
 
@@ -38,7 +38,7 @@ Node [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/
 
 ### Returns:
 
-  socket 'output'
+- socket `output`
 
 <sub>Go to [top](#class-Material)</sub>
 

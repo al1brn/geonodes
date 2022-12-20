@@ -33,7 +33,7 @@ Node [Special Characters](https://docs.blender.org/manual/en/latest/modeling/geo
 
 ### Returns:
 
-  socket 'line_break'
+- socket `line_break`
 
 <sub>Go to [top](#class-String)</sub>
 
@@ -50,7 +50,7 @@ Node [String](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/
 
 ### Returns:
 
-  socket 'string'
+- socket `string`
 
 <sub>Go to [top](#class-String)</sub>
 
@@ -64,7 +64,7 @@ Node [Special Characters](https://docs.blender.org/manual/en/latest/modeling/geo
 
 ### Returns:
 
-  socket 'tab'
+- socket `tab`
 
 <sub>Go to [top](#class-String)</sub>
 
@@ -81,7 +81,7 @@ Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 
 ### Returns:
 
-  socket 'result'
+- socket `result`
 
 <sub>Go to [top](#class-String)</sub>
 
@@ -99,7 +99,7 @@ Node [Join Strings](https://docs.blender.org/manual/en/latest/modeling/geometry_
 
 ### Returns:
 
-  socket 'string'
+- socket `string`
 
 <sub>Go to [top](#class-String)</sub>
 
@@ -115,7 +115,7 @@ Node implemented as property.
 
 ### Returns:
 
-  socket 'length'
+- socket `length`
 
 <sub>Go to [top](#class-String)</sub>
 
@@ -132,7 +132,7 @@ Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 
 ### Returns:
 
-  socket 'result'
+- socket `result`
 
 <sub>Go to [top](#class-String)</sub>
 
@@ -150,7 +150,7 @@ Node [Replace String](https://docs.blender.org/manual/en/latest/modeling/geometr
 
 ### Returns:
 
-  socket 'string'
+- socket `string`
 
 <sub>Go to [top](#class-String)</sub>
 
@@ -168,7 +168,7 @@ Node [Slice String](https://docs.blender.org/manual/en/latest/modeling/geometry_
 
 ### Returns:
 
-  socket 'string'
+- socket `string`
 
 <sub>Go to [top](#class-String)</sub>
 
@@ -186,7 +186,7 @@ Node [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/
 
 ### Returns:
 
-  socket 'output'
+- socket `output`
 
 <sub>Go to [top](#class-String)</sub>
 
@@ -213,7 +213,7 @@ Node [String to Curves](https://docs.blender.org/manual/en/latest/modeling/geome
 
 ### Returns:
 
-- tuple ('curve_instances', 'line', 'pivot_point')
+- tuple ('`curve_instances`', '`line`', '`pivot_point`')
 
 <sub>Go to [top](#class-String)</sub>
 

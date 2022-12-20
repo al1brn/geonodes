@@ -60,7 +60,7 @@ Node [Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/i
 
 ### Returns:
 
-  socket 'color'
+- socket `color`
 
 <sub>Go to [top](#class-Color)</sub>
 
@@ -80,7 +80,7 @@ Node [Combine Color](https://docs.blender.org/manual/en/latest/modeling/geometry
 
 ### Returns:
 
-  socket 'color'
+- socket `color`
 
 <sub>Go to [top](#class-Color)</sub>
 
@@ -100,7 +100,7 @@ Node [Combine Color](https://docs.blender.org/manual/en/latest/modeling/geometry
 
 ### Returns:
 
-  socket 'color'
+- socket `color`
 
 <sub>Go to [top](#class-Color)</sub>
 
@@ -120,7 +120,7 @@ Node [Combine Color](https://docs.blender.org/manual/en/latest/modeling/geometry
 
 ### Returns:
 
-  socket 'color'
+- socket `color`
 
 <sub>Go to [top](#class-Color)</sub>
 
@@ -136,7 +136,7 @@ Node implemented as property.
 
 ### Returns:
 
-  socket 'alpha'
+- socket `alpha`
 
 <sub>Go to [top](#class-Color)</sub>
 
@@ -152,7 +152,7 @@ Node implemented as property.
 
 ### Returns:
 
-  socket 'blue'
+- socket `blue`
 
 <sub>Go to [top](#class-Color)</sub>
 
@@ -169,7 +169,7 @@ Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 
 ### Returns:
 
-  socket 'result'
+- socket `result`
 
 <sub>Go to [top](#class-Color)</sub>
 
@@ -188,7 +188,7 @@ Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 
 ### Returns:
 
-  socket 'result'
+- socket `result`
 
 <sub>Go to [top](#class-Color)</sub>
 
@@ -205,7 +205,7 @@ Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 
 ### Returns:
 
-  socket 'result'
+- socket `result`
 
 <sub>Go to [top](#class-Color)</sub>
 
@@ -223,7 +223,7 @@ Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 
 ### Returns:
 
-  socket 'result'
+- socket `result`
 
 <sub>Go to [top](#class-Color)</sub>
 
@@ -241,7 +241,7 @@ Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 
 ### Returns:
 
-  socket 'result'
+- socket `result`
 
 <sub>Go to [top](#class-Color)</sub>
 
@@ -257,7 +257,7 @@ Node implemented as property.
 
 ### Returns:
 
-  socket 'green'
+- socket `green`
 
 <sub>Go to [top](#class-Color)</sub>
 
@@ -273,7 +273,7 @@ Node implemented as property.
 
 ### Returns:
 
-- tuple ('red', 'green', 'blue', 'alpha')
+- tuple ('`red`', '`green`', '`blue`', '`alpha`')
 
 <sub>Go to [top](#class-Color)</sub>
 
@@ -289,7 +289,7 @@ Node implemented as property.
 
 ### Returns:
 
-- tuple ('red', 'green', 'blue', 'alpha')
+- tuple ('`red`', '`green`', '`blue`', '`alpha`')
 
 <sub>Go to [top](#class-Color)</sub>
 
@@ -305,7 +305,7 @@ Node implemented as property.
 
 ### Returns:
 
-  socket 'red'
+- socket `red`
 
 <sub>Go to [top](#class-Color)</sub>
 
@@ -321,7 +321,7 @@ Node implemented as property.
 
 ### Returns:
 
-  socket 'blue'
+- socket `blue`
 
 <sub>Go to [top](#class-Color)</sub>
 
@@ -342,7 +342,7 @@ Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/col
 
 ### Returns:
 
-  socket 'result'
+- socket `result`
 
 <sub>Go to [top](#class-Color)</sub>
 
@@ -362,7 +362,7 @@ Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/col
 
 ### Returns:
 
-  socket 'result'
+- socket `result`
 
 <sub>Go to [top](#class-Color)</sub>
 
@@ -382,7 +382,7 @@ Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/col
 
 ### Returns:
 
-  socket 'result'
+- socket `result`
 
 <sub>Go to [top](#class-Color)</sub>
 
@@ -402,7 +402,7 @@ Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/col
 
 ### Returns:
 
-  socket 'result'
+- socket `result`
 
 <sub>Go to [top](#class-Color)</sub>
 
@@ -422,7 +422,7 @@ Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/col
 
 ### Returns:
 
-  socket 'result'
+- socket `result`
 
 <sub>Go to [top](#class-Color)</sub>
 
@@ -442,7 +442,7 @@ Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/col
 
 ### Returns:
 
-  socket 'result'
+- socket `result`
 
 <sub>Go to [top](#class-Color)</sub>
 
@@ -462,7 +462,7 @@ Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/col
 
 ### Returns:
 
-  socket 'result'
+- socket `result`
 
 <sub>Go to [top](#class-Color)</sub>
 
@@ -482,7 +482,7 @@ Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/col
 
 ### Returns:
 
-  socket 'result'
+- socket `result`
 
 <sub>Go to [top](#class-Color)</sub>
 
@@ -502,7 +502,7 @@ Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/col
 
 ### Returns:
 
-  socket 'result'
+- socket `result`
 
 <sub>Go to [top](#class-Color)</sub>
 
@@ -522,7 +522,7 @@ Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/col
 
 ### Returns:
 
-  socket 'result'
+- socket `result`
 
 <sub>Go to [top](#class-Color)</sub>
 
@@ -542,7 +542,7 @@ Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/col
 
 ### Returns:
 
-  socket 'result'
+- socket `result`
 
 <sub>Go to [top](#class-Color)</sub>
 
@@ -562,7 +562,7 @@ Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/col
 
 ### Returns:
 
-  socket 'result'
+- socket `result`
 
 <sub>Go to [top](#class-Color)</sub>
 
@@ -582,7 +582,7 @@ Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/col
 
 ### Returns:
 
-  socket 'result'
+- socket `result`
 
 <sub>Go to [top](#class-Color)</sub>
 
@@ -602,7 +602,7 @@ Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/col
 
 ### Returns:
 
-  socket 'result'
+- socket `result`
 
 <sub>Go to [top](#class-Color)</sub>
 
@@ -622,7 +622,7 @@ Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/col
 
 ### Returns:
 
-  socket 'result'
+- socket `result`
 
 <sub>Go to [top](#class-Color)</sub>
 
@@ -642,7 +642,7 @@ Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/col
 
 ### Returns:
 
-  socket 'result'
+- socket `result`
 
 <sub>Go to [top](#class-Color)</sub>
 
@@ -662,7 +662,7 @@ Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/col
 
 ### Returns:
 
-  socket 'result'
+- socket `result`
 
 <sub>Go to [top](#class-Color)</sub>
 
@@ -682,7 +682,7 @@ Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/col
 
 ### Returns:
 
-  socket 'result'
+- socket `result`
 
 <sub>Go to [top](#class-Color)</sub>
 
@@ -698,7 +698,7 @@ Node implemented as property.
 
 ### Returns:
 
-  socket 'red'
+- socket `red`
 
 <sub>Go to [top](#class-Color)</sub>
 
@@ -714,7 +714,7 @@ Node implemented as property.
 
 ### Returns:
 
-- tuple ('red', 'green', 'blue', 'alpha')
+- tuple ('`red`', '`green`', '`blue`', '`alpha`')
 
 <sub>Go to [top](#class-Color)</sub>
 
@@ -746,7 +746,7 @@ Node implemented as property.
 
 ### Returns:
 
-  socket 'green'
+- socket `green`
 
 <sub>Go to [top](#class-Color)</sub>
 
@@ -764,7 +764,7 @@ Node [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/
 
 ### Returns:
 
-  socket 'output'
+- socket `output`
 
 <sub>Go to [top](#class-Color)</sub>
 
@@ -780,7 +780,7 @@ Node implemented as property.
 
 ### Returns:
 
-  socket 'blue'
+- socket `blue`
 
 <sub>Go to [top](#class-Color)</sub>
 

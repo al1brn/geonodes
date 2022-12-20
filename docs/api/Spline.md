@@ -35,7 +35,7 @@ Node [Is Spline Cyclic](https://docs.blender.org/manual/en/latest/modeling/geome
 
 ### Returns:
 
-  socket 'cyclic'
+- socket `cyclic`
 
 <sub>Go to [top](#class-Spline)</sub>
 
@@ -82,7 +82,7 @@ Node [Spline Length](https://docs.blender.org/manual/en/latest/modeling/geometry
 
 ### Returns:
 
-- tuple ('length', 'point_count')
+- tuple ('`length`', '`point_count`')
 
 <sub>Go to [top](#class-Spline)</sub>
 
@@ -125,7 +125,7 @@ Node [Normal](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/
 
 ### Returns:
 
-  socket 'normal'
+- socket `normal`
 
 <sub>Go to [top](#class-Spline)</sub>
 
@@ -158,7 +158,7 @@ Node [Points of Curve](https://docs.blender.org/manual/en/latest/modeling/geomet
 
 ### Returns:
 
-- tuple ('point_index', 'total')
+- tuple ('`point_index`', '`total`')
 
 <sub>Go to [top](#class-Spline)</sub>
 
@@ -239,7 +239,7 @@ Node [Spline Resolution](https://docs.blender.org/manual/en/latest/modeling/geom
 
 ### Returns:
 
-  socket 'resolution'
+- socket `resolution`
 
 <sub>Go to [top](#class-Spline)</sub>
 

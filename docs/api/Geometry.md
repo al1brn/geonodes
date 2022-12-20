@@ -89,7 +89,7 @@ Node [Collection Info](https://docs.blender.org/manual/en/latest/modeling/geomet
 
 ### Returns:
 
-  socket 'geometry'
+- socket `geometry`
 
 <sub>Go to [top](#class-Geometry)</sub>
 
@@ -103,7 +103,7 @@ Node [ID](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/inpu
 
 ### Returns:
 
-  socket 'ID'
+- socket `ID`
 
 <sub>Go to [top](#class-Geometry)</sub>
 
@@ -138,7 +138,7 @@ Node implemented as property.
 
 ### Returns:
 
-  socket 'bounding_box' of class Mesh
+- socket `bounding_box` of class Mesh
 
 <sub>Go to [top](#class-Geometry)</sub>
 
@@ -154,7 +154,7 @@ Node implemented as property.
 
 ### Returns:
 
-  socket 'min'
+- socket `min`
 
 <sub>Go to [top](#class-Geometry)</sub>
 
@@ -170,7 +170,7 @@ Node implemented as property.
 
 ### Returns:
 
-  socket 'max'
+- socket `max`
 
 <sub>Go to [top](#class-Geometry)</sub>
 
@@ -188,7 +188,7 @@ Node [Capture Attribute](https://docs.blender.org/manual/en/latest/modeling/geom
 
 ### Returns:
 
-  socket 'attribute'
+- socket `attribute`
 
 <sub>Go to [top](#class-Geometry)</sub>
 
@@ -224,7 +224,7 @@ Node implemented as property.
 
 ### Returns:
 
-  socket 'convex_hull' of class Mesh
+- socket `convex_hull` of class Mesh
 
 <sub>Go to [top](#class-Geometry)</sub>
 
@@ -240,7 +240,7 @@ Node implemented as property.
 
 ### Returns:
 
-  socket 'curve' of class Curve
+- socket `curve` of class Curve
 
 <sub>Go to [top](#class-Geometry)</sub>
 
@@ -294,7 +294,7 @@ Node [Duplicate Elements](https://docs.blender.org/manual/en/latest/modeling/geo
 
 ### Returns:
 
-  socket 'duplicate_index'
+- socket `duplicate_index`
 
 <sub>Go to [top](#class-Geometry)</sub>
 
@@ -313,7 +313,7 @@ Node [Field at Index](https://docs.blender.org/manual/en/latest/modeling/geometr
 
 ### Returns:
 
-  socket 'value'
+- socket `value`
 
 <sub>Go to [top](#class-Geometry)</sub>
 
@@ -330,7 +330,7 @@ Node [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geomet
 
 ### Returns:
 
-  socket 'attribute'
+- socket `attribute`
 
 <sub>Go to [top](#class-Geometry)</sub>
 
@@ -347,7 +347,7 @@ Node [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geomet
 
 ### Returns:
 
-  socket 'attribute'
+- socket `attribute`
 
 <sub>Go to [top](#class-Geometry)</sub>
 
@@ -364,7 +364,7 @@ Node [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geomet
 
 ### Returns:
 
-  socket 'attribute'
+- socket `attribute`
 
 <sub>Go to [top](#class-Geometry)</sub>
 
@@ -381,7 +381,7 @@ Node [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geomet
 
 ### Returns:
 
-  socket 'attribute'
+- socket `attribute`
 
 <sub>Go to [top](#class-Geometry)</sub>
 
@@ -398,7 +398,7 @@ Node [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geomet
 
 ### Returns:
 
-  socket 'attribute'
+- socket `attribute`
 
 <sub>Go to [top](#class-Geometry)</sub>
 
@@ -412,7 +412,7 @@ Node [Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/i
 
 ### Returns:
 
-  socket 'index'
+- socket `index`
 
 <sub>Go to [top](#class-Geometry)</sub>
 
@@ -428,7 +428,7 @@ Node implemented as property.
 
 ### Returns:
 
-  socket 'instances' of class Instances
+- socket `instances` of class Instances
 
 <sub>Go to [top](#class-Geometry)</sub>
 
@@ -442,7 +442,7 @@ Node [Is Viewport](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 
 ### Returns:
 
-  socket 'is_viewport'
+- socket `is_viewport`
 
 <sub>Go to [top](#class-Geometry)</sub>
 
@@ -473,7 +473,7 @@ Node [Material Index](https://docs.blender.org/manual/en/latest/modeling/geometr
 
 ### Returns:
 
-  socket 'material_index'
+- socket `material_index`
 
 <sub>Go to [top](#class-Geometry)</sub>
 
@@ -490,7 +490,7 @@ Node [Material Selection](https://docs.blender.org/manual/en/latest/modeling/geo
 
 ### Returns:
 
-  socket 'selection'
+- socket `selection`
 
 <sub>Go to [top](#class-Geometry)</sub>
 
@@ -525,7 +525,7 @@ Node implemented as property.
 
 ### Returns:
 
-  socket 'mesh' of class Mesh
+- socket `mesh` of class Mesh
 
 <sub>Go to [top](#class-Geometry)</sub>
 
@@ -543,7 +543,7 @@ Node [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geomet
 
 ### Returns:
 
-  socket 'attribute'
+- socket `attribute`
 
 <sub>Go to [top](#class-Geometry)</sub>
 
@@ -557,7 +557,7 @@ Node [Normal](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/
 
 ### Returns:
 
-  socket 'normal'
+- socket `normal`
 
 <sub>Go to [top](#class-Geometry)</sub>
 
@@ -573,7 +573,7 @@ Node implemented as property.
 
 ### Returns:
 
-  socket 'point_cloud' of class Points
+- socket `point_cloud` of class Points
 
 <sub>Go to [top](#class-Geometry)</sub>
 
@@ -587,7 +587,7 @@ Node [Position](https://docs.blender.org/manual/en/latest/modeling/geometry_node
 
 ### Returns:
 
-  socket 'position'
+- socket `position`
 
 <sub>Go to [top](#class-Geometry)</sub>
 
@@ -606,7 +606,7 @@ Node [Geometry Proximity](https://docs.blender.org/manual/en/latest/modeling/geo
 
 ### Returns:
 
-  socket 'distance'
+- socket `distance`
 
 <sub>Go to [top](#class-Geometry)</sub>
 
@@ -624,7 +624,7 @@ Node [Geometry Proximity](https://docs.blender.org/manual/en/latest/modeling/geo
 
 ### Returns:
 
-  socket 'distance'
+- socket `distance`
 
 <sub>Go to [top](#class-Geometry)</sub>
 
@@ -642,7 +642,7 @@ Node [Geometry Proximity](https://docs.blender.org/manual/en/latest/modeling/geo
 
 ### Returns:
 
-  socket 'distance'
+- socket `distance`
 
 <sub>Go to [top](#class-Geometry)</sub>
 
@@ -660,7 +660,7 @@ Node [Geometry Proximity](https://docs.blender.org/manual/en/latest/modeling/geo
 
 ### Returns:
 
-  socket 'distance'
+- socket `distance`
 
 <sub>Go to [top](#class-Geometry)</sub>
 
@@ -674,7 +674,7 @@ Node [Radius](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/
 
 ### Returns:
 
-  socket 'radius'
+- socket `radius`
 
 <sub>Go to [top](#class-Geometry)</sub>
 
@@ -693,7 +693,7 @@ Node [Random Value](https://docs.blender.org/manual/en/latest/modeling/geometry_
 
 ### Returns:
 
-  socket 'value'
+- socket `value`
 
 <sub>Go to [top](#class-Geometry)</sub>
 
@@ -713,7 +713,7 @@ Node [Random Value](https://docs.blender.org/manual/en/latest/modeling/geometry_
 
 ### Returns:
 
-  socket 'value'
+- socket `value`
 
 <sub>Go to [top](#class-Geometry)</sub>
 
@@ -733,7 +733,7 @@ Node [Random Value](https://docs.blender.org/manual/en/latest/modeling/geometry_
 
 ### Returns:
 
-  socket 'value'
+- socket `value`
 
 <sub>Go to [top](#class-Geometry)</sub>
 
@@ -753,7 +753,7 @@ Node [Random Value](https://docs.blender.org/manual/en/latest/modeling/geometry_
 
 ### Returns:
 
-  socket 'value'
+- socket `value`
 
 <sub>Go to [top](#class-Geometry)</sub>
 
@@ -872,7 +872,7 @@ Node [Sample Index](https://docs.blender.org/manual/en/latest/modeling/geometry_
 
 ### Returns:
 
-  socket 'value'
+- socket `value`
 
 <sub>Go to [top](#class-Geometry)</sub>
 
@@ -890,7 +890,7 @@ Node [Sample Nearest](https://docs.blender.org/manual/en/latest/modeling/geometr
 
 ### Returns:
 
-  socket 'index'
+- socket `index`
 
 <sub>Go to [top](#class-Geometry)</sub>
 
@@ -909,7 +909,7 @@ Node [Separate Geometry](https://docs.blender.org/manual/en/latest/modeling/geom
 
 ### Returns:
 
-- tuple ('selection', 'inverted')
+- tuple ('`selection`', '`inverted`')
 
 <sub>Go to [top](#class-Geometry)</sub>
 
@@ -1130,7 +1130,7 @@ Node [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/
 
 ### Returns:
 
-  socket 'output'
+- socket `output`
 
 <sub>Go to [top](#class-Geometry)</sub>
 
@@ -1147,7 +1147,7 @@ Node [Geometry to Instance](https://docs.blender.org/manual/en/latest/modeling/g
 
 ### Returns:
 
-  socket 'instances' of class Instances
+- socket `instances` of class Instances
 
 <sub>Go to [top](#class-Geometry)</sub>
 
@@ -1182,7 +1182,7 @@ Node implemented as property.
 
 ### Returns:
 
-  socket 'volume' of class Volume
+- socket `volume` of class Volume
 
 <sub>Go to [top](#class-Geometry)</sub>
 

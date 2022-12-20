@@ -82,7 +82,7 @@ Node [Integer](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 
 ### Returns:
 
-  socket 'integer'
+- socket `integer`
 
 <sub>Go to [top](#class-Integer)</sub>
 
@@ -99,7 +99,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 
 ### Returns:
 
-  socket 'value'
+- socket `value`
 
 <sub>Go to [top](#class-Integer)</sub>
 
@@ -116,7 +116,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 
 ### Returns:
 
-  socket 'value'
+- socket `value`
 
 <sub>Go to [top](#class-Integer)</sub>
 
@@ -134,7 +134,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 
 ### Returns:
 
-  socket 'value'
+- socket `value`
 
 <sub>Go to [top](#class-Integer)</sub>
 
@@ -152,7 +152,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 
 ### Returns:
 
-  socket 'value'
+- socket `value`
 
 <sub>Go to [top](#class-Integer)</sub>
 
@@ -170,7 +170,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 
 ### Returns:
 
-  socket 'value'
+- socket `value`
 
 <sub>Go to [top](#class-Integer)</sub>
 
@@ -188,7 +188,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 
 ### Returns:
 
-  socket 'value'
+- socket `value`
 
 <sub>Go to [top](#class-Integer)</sub>
 
@@ -206,7 +206,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 
 ### Returns:
 
-  socket 'value'
+- socket `value`
 
 <sub>Go to [top](#class-Integer)</sub>
 
@@ -224,7 +224,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 
 ### Returns:
 
-  socket 'value'
+- socket `value`
 
 <sub>Go to [top](#class-Integer)</sub>
 
@@ -242,7 +242,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 
 ### Returns:
 
-  socket 'value'
+- socket `value`
 
 <sub>Go to [top](#class-Integer)</sub>
 
@@ -260,7 +260,7 @@ Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 
 ### Returns:
 
-  socket 'result'
+- socket `result`
 
 <sub>Go to [top](#class-Integer)</sub>
 
@@ -278,7 +278,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 
 ### Returns:
 
-  socket 'value'
+- socket `value`
 
 <sub>Go to [top](#class-Integer)</sub>
 
@@ -296,7 +296,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 
 ### Returns:
 
-  socket 'value'
+- socket `value`
 
 <sub>Go to [top](#class-Integer)</sub>
 
@@ -314,7 +314,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 
 ### Returns:
 
-  socket 'value'
+- socket `value`
 
 <sub>Go to [top](#class-Integer)</sub>
 
@@ -331,7 +331,7 @@ Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 
 ### Returns:
 
-  socket 'result'
+- socket `result`
 
 <sub>Go to [top](#class-Integer)</sub>
 
@@ -348,7 +348,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 
 ### Returns:
 
-  socket 'value'
+- socket `value`
 
 <sub>Go to [top](#class-Integer)</sub>
 
@@ -365,7 +365,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 
 ### Returns:
 
-  socket 'value'
+- socket `value`
 
 <sub>Go to [top](#class-Integer)</sub>
 
@@ -382,7 +382,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 
 ### Returns:
 
-  socket 'value'
+- socket `value`
 
 <sub>Go to [top](#class-Integer)</sub>
 
@@ -399,7 +399,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 
 ### Returns:
 
-  socket 'value'
+- socket `value`
 
 <sub>Go to [top](#class-Integer)</sub>
 
@@ -416,7 +416,7 @@ Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 
 ### Returns:
 
-  socket 'result'
+- socket `result`
 
 <sub>Go to [top](#class-Integer)</sub>
 
@@ -433,7 +433,7 @@ Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 
 ### Returns:
 
-  socket 'result'
+- socket `result`
 
 <sub>Go to [top](#class-Integer)</sub>
 
@@ -450,7 +450,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 
 ### Returns:
 
-  socket 'value'
+- socket `value`
 
 <sub>Go to [top](#class-Integer)</sub>
 
@@ -467,7 +467,7 @@ Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 
 ### Returns:
 
-  socket 'result'
+- socket `result`
 
 <sub>Go to [top](#class-Integer)</sub>
 
@@ -484,7 +484,7 @@ Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 
 ### Returns:
 
-  socket 'result'
+- socket `result`
 
 <sub>Go to [top](#class-Integer)</sub>
 
@@ -502,7 +502,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 
 ### Returns:
 
-  socket 'value'
+- socket `value`
 
 <sub>Go to [top](#class-Integer)</sub>
 
@@ -520,7 +520,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 
 ### Returns:
 
-  socket 'value'
+- socket `value`
 
 <sub>Go to [top](#class-Integer)</sub>
 
@@ -537,7 +537,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 
 ### Returns:
 
-  socket 'value'
+- socket `value`
 
 <sub>Go to [top](#class-Integer)</sub>
 
@@ -556,7 +556,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 
 ### Returns:
 
-  socket 'value'
+- socket `value`
 
 <sub>Go to [top](#class-Integer)</sub>
 
@@ -573,7 +573,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 
 ### Returns:
 
-  socket 'value'
+- socket `value`
 
 <sub>Go to [top](#class-Integer)</sub>
 
@@ -591,7 +591,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 
 ### Returns:
 
-  socket 'value'
+- socket `value`
 
 <sub>Go to [top](#class-Integer)</sub>
 
@@ -609,7 +609,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 
 ### Returns:
 
-  socket 'value'
+- socket `value`
 
 <sub>Go to [top](#class-Integer)</sub>
 
@@ -626,7 +626,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 
 ### Returns:
 
-  socket 'value'
+- socket `value`
 
 <sub>Go to [top](#class-Integer)</sub>
 
@@ -643,7 +643,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 
 ### Returns:
 
-  socket 'value'
+- socket `value`
 
 <sub>Go to [top](#class-Integer)</sub>
 
@@ -660,7 +660,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 
 ### Returns:
 
-  socket 'value'
+- socket `value`
 
 <sub>Go to [top](#class-Integer)</sub>
 
@@ -678,7 +678,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 
 ### Returns:
 
-  socket 'value'
+- socket `value`
 
 <sub>Go to [top](#class-Integer)</sub>
 
@@ -696,7 +696,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 
 ### Returns:
 
-  socket 'value'
+- socket `value`
 
 <sub>Go to [top](#class-Integer)</sub>
 
@@ -714,7 +714,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 
 ### Returns:
 
-  socket 'value'
+- socket `value`
 
 <sub>Go to [top](#class-Integer)</sub>
 
@@ -732,7 +732,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 
 ### Returns:
 
-  socket 'value'
+- socket `value`
 
 <sub>Go to [top](#class-Integer)</sub>
 
@@ -750,7 +750,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 
 ### Returns:
 
-  socket 'value'
+- socket `value`
 
 <sub>Go to [top](#class-Integer)</sub>
 
@@ -769,7 +769,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 
 ### Returns:
 
-  socket 'value'
+- socket `value`
 
 <sub>Go to [top](#class-Integer)</sub>
 
@@ -788,7 +788,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 
 ### Returns:
 
-  socket 'value'
+- socket `value`
 
 <sub>Go to [top](#class-Integer)</sub>
 
@@ -805,7 +805,7 @@ Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 
 ### Returns:
 
-  socket 'result'
+- socket `result`
 
 <sub>Go to [top](#class-Integer)</sub>
 
@@ -823,7 +823,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 
 ### Returns:
 
-  socket 'value'
+- socket `value`
 
 <sub>Go to [top](#class-Integer)</sub>
 
@@ -841,7 +841,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 
 ### Returns:
 
-  socket 'value'
+- socket `value`
 
 <sub>Go to [top](#class-Integer)</sub>
 
@@ -859,7 +859,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 
 ### Returns:
 
-  socket 'value'
+- socket `value`
 
 <sub>Go to [top](#class-Integer)</sub>
 
@@ -876,7 +876,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 
 ### Returns:
 
-  socket 'value'
+- socket `value`
 
 <sub>Go to [top](#class-Integer)</sub>
 
@@ -894,7 +894,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 
 ### Returns:
 
-  socket 'value'
+- socket `value`
 
 <sub>Go to [top](#class-Integer)</sub>
 
@@ -912,7 +912,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 
 ### Returns:
 
-  socket 'value'
+- socket `value`
 
 <sub>Go to [top](#class-Integer)</sub>
 
@@ -930,7 +930,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 
 ### Returns:
 
-  socket 'value'
+- socket `value`
 
 <sub>Go to [top](#class-Integer)</sub>
 
@@ -949,7 +949,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 
 ### Returns:
 
-  socket 'value'
+- socket `value`
 
 <sub>Go to [top](#class-Integer)</sub>
 
@@ -968,7 +968,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 
 ### Returns:
 
-  socket 'value'
+- socket `value`
 
 <sub>Go to [top](#class-Integer)</sub>
 
@@ -986,7 +986,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 
 ### Returns:
 
-  socket 'value'
+- socket `value`
 
 <sub>Go to [top](#class-Integer)</sub>
 
@@ -1003,7 +1003,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 
 ### Returns:
 
-  socket 'value'
+- socket `value`
 
 <sub>Go to [top](#class-Integer)</sub>
 
@@ -1021,7 +1021,7 @@ Node [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/
 
 ### Returns:
 
-  socket 'output'
+- socket `output`
 
 <sub>Go to [top](#class-Integer)</sub>
 
@@ -1039,7 +1039,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 
 ### Returns:
 
-  socket 'value'
+- socket `value`
 
 <sub>Go to [top](#class-Integer)</sub>
 
@@ -1057,7 +1057,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 
 ### Returns:
 
-  socket 'value'
+- socket `value`
 
 <sub>Go to [top](#class-Integer)</sub>
 
@@ -1075,7 +1075,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 
 ### Returns:
 
-  socket 'value'
+- socket `value`
 
 <sub>Go to [top](#class-Integer)</sub>
 
@@ -1092,7 +1092,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 
 ### Returns:
 
-  socket 'value'
+- socket `value`
 
 <sub>Go to [top](#class-Integer)</sub>
 
@@ -1109,7 +1109,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 
 ### Returns:
 
-  socket 'value'
+- socket `value`
 
 <sub>Go to [top](#class-Integer)</sub>
 
@@ -1123,7 +1123,7 @@ Node [Value to String](https://docs.blender.org/manual/en/latest/modeling/geomet
 
 ### Returns:
 
-  socket 'string'
+- socket `string`
 
 <sub>Go to [top](#class-Integer)</sub>
 
@@ -1142,7 +1142,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 
 ### Returns:
 
-  socket 'value'
+- socket `value`
 
 <sub>Go to [top](#class-Integer)</sub>
 

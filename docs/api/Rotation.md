@@ -29,7 +29,7 @@ Node [Rotate Euler](https://docs.blender.org/manual/en/latest/modeling/geometry_
 
 ### Returns:
 
-  socket 'rotation'
+- socket `rotation`
 
 <sub>Go to [top](#class-Rotation)</sub>
 
@@ -48,7 +48,7 @@ Node [Rotate Euler](https://docs.blender.org/manual/en/latest/modeling/geometry_
 
 ### Returns:
 
-  socket 'rotation'
+- socket `rotation`
 
 <sub>Go to [top](#class-Rotation)</sub>
 
@@ -87,7 +87,7 @@ Node [Rotate Euler](https://docs.blender.org/manual/en/latest/modeling/geometry_
 
 ### Returns:
 
-  socket 'rotation'
+- socket `rotation`
 
 <sub>Go to [top](#class-Rotation)</sub>
 
@@ -105,7 +105,7 @@ Node [Rotate Euler](https://docs.blender.org/manual/en/latest/modeling/geometry_
 
 ### Returns:
 
-  socket 'rotation'
+- socket `rotation`
 
 <sub>Go to [top](#class-Rotation)</sub>
 

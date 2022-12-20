@@ -46,7 +46,7 @@ Node [Curve of Point](https://docs.blender.org/manual/en/latest/modeling/geometr
 
 ### Returns:
 
-- tuple ('curve_index', 'index_in_curve')
+- tuple ('`curve_index`', '`index_in_curve`')
 
 <sub>Go to [top](#class-ControlPoint)</sub>
 
@@ -82,7 +82,7 @@ Node [Endpoint Selection](https://docs.blender.org/manual/en/latest/modeling/geo
 
 ### Returns:
 
-  socket 'selection'
+- socket `selection`
 
 <sub>Go to [top](#class-ControlPoint)</sub>
 
@@ -207,7 +207,7 @@ Node [Handle Type Selection](https://docs.blender.org/manual/en/latest/modeling/
 
 ### Returns:
 
-  socket 'selection'
+- socket `selection`
 
 <sub>Go to [top](#class-ControlPoint)</sub>
 
@@ -228,7 +228,7 @@ Node [Instance on Points](https://docs.blender.org/manual/en/latest/modeling/geo
 
 ### Returns:
 
-  socket 'instances' of class Instances
+- socket `instances` of class Instances
 
 <sub>Go to [top](#class-ControlPoint)</sub>
 
@@ -242,7 +242,7 @@ Node [Curve Handle Positions](https://docs.blender.org/manual/en/latest/modeling
 
 ### Returns:
 
-  socket 'left'
+- socket `left`
 
 <sub>Go to [top](#class-ControlPoint)</sub>
 
@@ -274,7 +274,7 @@ Node [Offset Point in Curve](https://docs.blender.org/manual/en/latest/modeling/
 
 ### Returns:
 
-- tuple ('is_valid_offset', 'point_index')
+- tuple ('`is_valid_offset`', '`point_index`')
 
 <sub>Go to [top](#class-ControlPoint)</sub>
 
@@ -288,7 +288,7 @@ Node [Spline Parameter](https://docs.blender.org/manual/en/latest/modeling/geome
 
 ### Returns:
 
-- tuple ('factor', 'length', 'index')
+- tuple ('`factor`', '`length`', '`index`')
 
 <sub>Go to [top](#class-ControlPoint)</sub>
 
@@ -302,7 +302,7 @@ Node [Spline Parameter](https://docs.blender.org/manual/en/latest/modeling/geome
 
 ### Returns:
 
-  socket 'factor'
+- socket `factor`
 
 <sub>Go to [top](#class-ControlPoint)</sub>
 
@@ -316,7 +316,7 @@ Node [Spline Parameter](https://docs.blender.org/manual/en/latest/modeling/geome
 
 ### Returns:
 
-  socket 'index'
+- socket `index`
 
 <sub>Go to [top](#class-ControlPoint)</sub>
 
@@ -330,7 +330,7 @@ Node [Spline Parameter](https://docs.blender.org/manual/en/latest/modeling/geome
 
 ### Returns:
 
-  socket 'length'
+- socket `length`
 
 <sub>Go to [top](#class-ControlPoint)</sub>
 
@@ -344,7 +344,7 @@ Node [Radius](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/
 
 ### Returns:
 
-  socket 'radius'
+- socket `radius`
 
 <sub>Go to [top](#class-ControlPoint)</sub>
 
@@ -373,7 +373,7 @@ Node [Curve Handle Positions](https://docs.blender.org/manual/en/latest/modeling
 
 ### Returns:
 
-  socket 'right'
+- socket `right`
 
 <sub>Go to [top](#class-ControlPoint)</sub>
 
@@ -531,7 +531,7 @@ Node [Curve Tangent](https://docs.blender.org/manual/en/latest/modeling/geometry
 
 ### Returns:
 
-  socket 'tangent'
+- socket `tangent`
 
 <sub>Go to [top](#class-ControlPoint)</sub>
 
@@ -545,7 +545,7 @@ Node [Curve Tilt](https://docs.blender.org/manual/en/latest/modeling/geometry_no
 
 ### Returns:
 
-  socket 'tilt'
+- socket `tilt`
 
 <sub>Go to [top](#class-ControlPoint)</sub>
 
