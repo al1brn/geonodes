@@ -1,26 +1,24 @@
 # class Instances
 
-## title
+## Properties
 
-- [(gen.fname(wnode)](domain_size-property)
-- [(gen.fname(wnode)](rotation-property)
-- [(gen.fname(wnode)](scale-property)
+- [(domain_size](domain_size-property)
+- [(rotation](rotation-property)
+- [(scale](scale-property)
 
-## title
+## Class methods
 
-- [(gen.fname(wnode)](InstanceOnPoints-classmethod)
-
-## title
+- [(InstanceOnPoints](InstanceOnPoints-classmethod)
 
 
-## title
+## Methods
 
-- [(gen.fname(wnode)](on_points)
-- [(gen.fname(wnode)](realize)
-- [(gen.fname(wnode)](rotate)
-- [(gen.fname(wnode)](set_scale)
-- [(gen.fname(wnode)](to_points)
-- [(gen.fname(wnode)](translate)
+- [(on_points](on_points)
+- [(realize](realize)
+- [(rotate](rotate)
+- [(set_scale](set_scale)
+- [(to_points](to_points)
+- [(translate](translate)
 
 ## InstanceOnPoints *classmethod*
 

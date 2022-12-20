@@ -1,24 +1,22 @@
 # class Points
 
-## title
+## Properties
 
-- [(gen.fname(wnode)](domain_size-property)
+- [(domain_size](domain_size-property)
 
-## title
+## Class methods
 
-- [(gen.fname(wnode)](Points-classmethod)
-
-## title
+- [(Points](Points-classmethod)
 
 
-## title
+## Methods
 
-- [(gen.fname(wnode)](instance_on_points)
-- [(gen.fname(wnode)](set_point_radius)
-- [(gen.fname(wnode)](to_vertices)
-- [(gen.fname(wnode)](to_volume)
-- [(gen.fname(wnode)](to_volume_amount)
-- [(gen.fname(wnode)](to_volume_size)
+- [(instance_on_points](instance_on_points)
+- [(set_point_radius](set_point_radius)
+- [(to_vertices](to_vertices)
+- [(to_volume](to_volume)
+- [(to_volume_amount](to_volume_amount)
+- [(to_volume_size](to_volume_size)
 
 ## Points *classmethod*
 

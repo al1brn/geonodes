@@ -1,20 +1,16 @@
 # class CloudPoint
 
-## title
+## Properties
 
-- [(gen.fname(wnode)](radius-property)
-
-## title
+- [(radius](radius-property)
 
 
-## title
 
+## Methods
 
-## title
-
-- [(gen.fname(wnode)](domain_size)
-- [(gen.fname(wnode)](instance_on_points)
-- [(gen.fname(wnode)](to_vertices)
+- [(domain_size](domain_size)
+- [(instance_on_points](instance_on_points)
+- [(to_vertices](to_vertices)
 
 ## domain_size
 

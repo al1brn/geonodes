@@ -1,17 +1,11 @@
 # class Corner
 
-## title
 
 
-## title
 
+## Methods
 
-## title
-
-
-## title
-
-- [(gen.fname(wnode)](domain_size)
+- [(domain_size](domain_size)
 
 ## domain_size
 

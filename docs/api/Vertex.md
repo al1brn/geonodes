@@ -1,28 +1,24 @@
 # class Vertex
 
-## title
+## Properties
 
-- [(gen.fname(wnode)](neighbors-property)
-- [(gen.fname(wnode)](neighbors_face_count-property)
-- [(gen.fname(wnode)](neighbors_vertex_count-property)
-
-## title
+- [(neighbors](neighbors-property)
+- [(neighbors_face_count](neighbors_face_count-property)
+- [(neighbors_vertex_count](neighbors_vertex_count-property)
 
 
-## title
 
+## Methods
 
-## title
-
-- [(gen.fname(wnode)](delete_all)
-- [(gen.fname(wnode)](delete_edges)
-- [(gen.fname(wnode)](delete_faces)
-- [(gen.fname(wnode)](domain_size)
-- [(gen.fname(wnode)](extrude)
-- [(gen.fname(wnode)](instance_on_points)
-- [(gen.fname(wnode)](merge_by_distance)
-- [(gen.fname(wnode)](to_points)
-- [(gen.fname(wnode)](to_volume)
+- [(delete_all](delete_all)
+- [(delete_edges](delete_edges)
+- [(delete_faces](delete_faces)
+- [(domain_size](domain_size)
+- [(extrude](extrude)
+- [(instance_on_points](instance_on_points)
+- [(merge_by_distance](merge_by_distance)
+- [(to_points](to_points)
+- [(to_volume](to_volume)
 
 ## delete_all
 

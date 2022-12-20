@@ -1,18 +1,14 @@
 # class Material
 
-## title
+
+## Class methods
+
+- [(Material](Material-classmethod)
 
 
-## title
+## Methods
 
-- [(gen.fname(wnode)](Material-classmethod)
-
-## title
-
-
-## title
-
-- [(gen.fname(wnode)](switch)
+- [(switch](switch)
 
 ## Material *classmethod*
 

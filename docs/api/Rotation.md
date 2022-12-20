@@ -1,21 +1,17 @@
 # class Rotation
 
-## title
+
+## Class methods
+
+- [(AxisAngle](AxisAngle-classmethod)
+- [(Euler](Euler-classmethod)
 
 
-## title
+## Methods
 
-- [(gen.fname(wnode)](AxisAngle-classmethod)
-- [(gen.fname(wnode)](Euler-classmethod)
-
-## title
-
-
-## title
-
-- [(gen.fname(wnode)](align_to_vector)
-- [(gen.fname(wnode)](rotate_axis_angle)
-- [(gen.fname(wnode)](rotate_euler)
+- [(align_to_vector](align_to_vector)
+- [(rotate_axis_angle](rotate_axis_angle)
+- [(rotate_euler](rotate_euler)
 
 ## AxisAngle *classmethod*
 

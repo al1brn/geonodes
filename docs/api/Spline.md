@@ -1,33 +1,29 @@
 # class Spline
 
-## title
+## Properties
 
-- [(gen.fname(wnode)](cyclic-property)
-- [(gen.fname(wnode)](length-property)
-- [(gen.fname(wnode)](material-property)
-- [(gen.fname(wnode)](normal-property)
-- [(gen.fname(wnode)](resolution-property)
-- [(gen.fname(wnode)](type-property)
-
-## title
+- [(cyclic](cyclic-property)
+- [(length](length-property)
+- [(material](material-property)
+- [(normal](normal-property)
+- [(resolution](resolution-property)
+- [(type](type-property)
 
 
-## title
 
+## Methods
 
-## title
-
-- [(gen.fname(wnode)](domain_size)
-- [(gen.fname(wnode)](points)
-- [(gen.fname(wnode)](resample)
-- [(gen.fname(wnode)](resample_count)
-- [(gen.fname(wnode)](resample_evaluated)
-- [(gen.fname(wnode)](resample_length)
-- [(gen.fname(wnode)](set_cyclic)
-- [(gen.fname(wnode)](set_material)
-- [(gen.fname(wnode)](set_normal)
-- [(gen.fname(wnode)](set_resolution)
-- [(gen.fname(wnode)](set_type)
+- [(domain_size](domain_size)
+- [(points](points)
+- [(resample](resample)
+- [(resample_count](resample_count)
+- [(resample_evaluated](resample_evaluated)
+- [(resample_length](resample_length)
+- [(set_cyclic](set_cyclic)
+- [(set_material](set_material)
+- [(set_normal](set_normal)
+- [(set_resolution](set_resolution)
+- [(set_type](set_type)
 
 ## cyclic *property*
 

@@ -1,33 +1,29 @@
 # class Edge
 
-## title
+## Properties
 
-- [(gen.fname(wnode)](angle-property)
-- [(gen.fname(wnode)](neighbors-property)
-- [(gen.fname(wnode)](signed_angle-property)
-- [(gen.fname(wnode)](unsigned_angle-property)
-- [(gen.fname(wnode)](vertices-property)
-- [(gen.fname(wnode)](vertices_index-property)
-- [(gen.fname(wnode)](vertices_position-property)
-
-## title
+- [(angle](angle-property)
+- [(neighbors](neighbors-property)
+- [(signed_angle](signed_angle-property)
+- [(unsigned_angle](unsigned_angle-property)
+- [(vertices](vertices-property)
+- [(vertices_index](vertices_index-property)
+- [(vertices_position](vertices_position-property)
 
 
-## title
 
+## Methods
 
-## title
-
-- [(gen.fname(wnode)](delete_all)
-- [(gen.fname(wnode)](delete_edges)
-- [(gen.fname(wnode)](delete_faces)
-- [(gen.fname(wnode)](domain_size)
-- [(gen.fname(wnode)](edge_paths_to_curves)
-- [(gen.fname(wnode)](extrude)
-- [(gen.fname(wnode)](scale_single_axis)
-- [(gen.fname(wnode)](scale_uniform)
-- [(gen.fname(wnode)](split)
-- [(gen.fname(wnode)](to_curve)
+- [(delete_all](delete_all)
+- [(delete_edges](delete_edges)
+- [(delete_faces](delete_faces)
+- [(domain_size](domain_size)
+- [(edge_paths_to_curves](edge_paths_to_curves)
+- [(extrude](extrude)
+- [(scale_single_axis](scale_single_axis)
+- [(scale_uniform](scale_uniform)
+- [(split](split)
+- [(to_curve](to_curve)
 
 ## angle *property*
 

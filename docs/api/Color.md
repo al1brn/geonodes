@@ -1,56 +1,54 @@
 # class Color
 
-## title
+## Properties
 
-- [(gen.fname(wnode)](alpha-property)
-- [(gen.fname(wnode)](blue-property)
-- [(gen.fname(wnode)](green-property)
-- [(gen.fname(wnode)](hsl-property)
-- [(gen.fname(wnode)](hsv-property)
-- [(gen.fname(wnode)](hue-property)
-- [(gen.fname(wnode)](lightness-property)
-- [(gen.fname(wnode)](red-property)
-- [(gen.fname(wnode)](rgb-property)
-- [(gen.fname(wnode)](rgb_curves-property)
-- [(gen.fname(wnode)](saturation-property)
-- [(gen.fname(wnode)](value-property)
+- [(alpha](alpha-property)
+- [(blue](blue-property)
+- [(green](green-property)
+- [(hsl](hsl-property)
+- [(hsv](hsv-property)
+- [(hue](hue-property)
+- [(lightness](lightness-property)
+- [(red](red-property)
+- [(rgb](rgb-property)
+- [(rgb_curves](rgb_curves-property)
+- [(saturation](saturation-property)
+- [(value](value-property)
 
-## title
+## Class methods
 
-- [(gen.fname(wnode)](Color-classmethod)
-- [(gen.fname(wnode)](HSL-classmethod)
-- [(gen.fname(wnode)](HSV-classmethod)
-- [(gen.fname(wnode)](RGB-classmethod)
-
-## title
+- [(Color](Color-classmethod)
+- [(HSL](HSL-classmethod)
+- [(HSV](HSV-classmethod)
+- [(RGB](RGB-classmethod)
 
 
-## title
+## Methods
 
-- [(gen.fname(wnode)](brighter)
-- [(gen.fname(wnode)](compare)
-- [(gen.fname(wnode)](darker)
-- [(gen.fname(wnode)](equal)
-- [(gen.fname(wnode)](equal)
-- [(gen.fname(wnode)](mix)
-- [(gen.fname(wnode)](mix_add)
-- [(gen.fname(wnode)](mix_burn)
-- [(gen.fname(wnode)](mix_color)
-- [(gen.fname(wnode)](mix_darken)
-- [(gen.fname(wnode)](mix_difference)
-- [(gen.fname(wnode)](mix_divide)
-- [(gen.fname(wnode)](mix_dodge)
-- [(gen.fname(wnode)](mix_hue)
-- [(gen.fname(wnode)](mix_lighten)
-- [(gen.fname(wnode)](mix_linear_light)
-- [(gen.fname(wnode)](mix_multiply)
-- [(gen.fname(wnode)](mix_overlay)
-- [(gen.fname(wnode)](mix_saturation)
-- [(gen.fname(wnode)](mix_screen)
-- [(gen.fname(wnode)](mix_soft_light)
-- [(gen.fname(wnode)](mix_subtract)
-- [(gen.fname(wnode)](mix_value)
-- [(gen.fname(wnode)](switch)
+- [(brighter](brighter)
+- [(compare](compare)
+- [(darker](darker)
+- [(equal](equal)
+- [(equal](equal)
+- [(mix](mix)
+- [(mix_add](mix_add)
+- [(mix_burn](mix_burn)
+- [(mix_color](mix_color)
+- [(mix_darken](mix_darken)
+- [(mix_difference](mix_difference)
+- [(mix_divide](mix_divide)
+- [(mix_dodge](mix_dodge)
+- [(mix_hue](mix_hue)
+- [(mix_lighten](mix_lighten)
+- [(mix_linear_light](mix_linear_light)
+- [(mix_multiply](mix_multiply)
+- [(mix_overlay](mix_overlay)
+- [(mix_saturation](mix_saturation)
+- [(mix_screen](mix_screen)
+- [(mix_soft_light](mix_soft_light)
+- [(mix_subtract](mix_subtract)
+- [(mix_value](mix_value)
+- [(switch](switch)
 
 ## Color *classmethod*
 

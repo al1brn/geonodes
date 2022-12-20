@@ -1,18 +1,12 @@
 # class Image
 
-## title
 
 
-## title
 
+## Methods
 
-## title
-
-
-## title
-
-- [(gen.fname(wnode)](switch)
-- [(gen.fname(wnode)](texture)
+- [(switch](switch)
+- [(texture](texture)
 
 ## switch
 

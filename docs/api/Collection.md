@@ -1,17 +1,11 @@
 # class Collection
 
-## title
 
 
-## title
 
+## Methods
 
-## title
-
-
-## title
-
-- [(gen.fname(wnode)](switch)
+- [(switch](switch)
 
 ## switch
 

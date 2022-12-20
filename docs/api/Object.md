@@ -1,23 +1,19 @@
 # class Object
 
-## title
+
+## Class methods
+
+- [(Self](Self-classmethod)
 
 
-## title
+## Methods
 
-- [(gen.fname(wnode)](Self-classmethod)
-
-## title
-
-
-## title
-
-- [(gen.fname(wnode)](geometry)
-- [(gen.fname(wnode)](info)
-- [(gen.fname(wnode)](location)
-- [(gen.fname(wnode)](rotation)
-- [(gen.fname(wnode)](scale)
-- [(gen.fname(wnode)](switch)
+- [(geometry](geometry)
+- [(info](info)
+- [(location](location)
+- [(rotation](rotation)
+- [(scale](scale)
+- [(switch](switch)
 
 ## Self *classmethod*
 

@@ -1,27 +1,27 @@
 # class String
 
-## title
+## Properties
 
-- [(gen.fname(wnode)](length-property)
+- [(length](length-property)
 
-## title
+## Class methods
 
-- [(gen.fname(wnode)](String-classmethod)
+- [(String](String-classmethod)
 
-## title
+## Static methods
 
-- [(gen.fname(wnode)](LineBreak-staticmethod)
-- [(gen.fname(wnode)](Tab-staticmethod)
+- [(LineBreak](LineBreak-staticmethod)
+- [(Tab](Tab-staticmethod)
 
-## title
+## Methods
 
-- [(gen.fname(wnode)](equal)
-- [(gen.fname(wnode)](join)
-- [(gen.fname(wnode)](not_equal)
-- [(gen.fname(wnode)](replace)
-- [(gen.fname(wnode)](slice)
-- [(gen.fname(wnode)](switch)
-- [(gen.fname(wnode)](to_curves)
+- [(equal](equal)
+- [(join](join)
+- [(not_equal](not_equal)
+- [(replace](replace)
+- [(slice](slice)
+- [(switch](switch)
+- [(to_curves](to_curves)
 
 ## LineBreak *staticmethod*
 

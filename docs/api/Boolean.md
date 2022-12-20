@@ -1,27 +1,23 @@
 # class Boolean
 
-## title
+
+## Class methods
+
+- [(Boolean](Boolean-classmethod)
 
 
-## title
+## Methods
 
-- [(gen.fname(wnode)](Boolean-classmethod)
-
-## title
-
-
-## title
-
-- [(gen.fname(wnode)](b_and)
-- [(gen.fname(wnode)](b_not)
-- [(gen.fname(wnode)](b_or)
-- [(gen.fname(wnode)](imply)
-- [(gen.fname(wnode)](nand)
-- [(gen.fname(wnode)](nimply)
-- [(gen.fname(wnode)](nor)
-- [(gen.fname(wnode)](switch)
-- [(gen.fname(wnode)](xnor)
-- [(gen.fname(wnode)](xor)
+- [(b_and](b_and)
+- [(b_not](b_not)
+- [(b_or](b_or)
+- [(imply](imply)
+- [(nand](nand)
+- [(nimply](nimply)
+- [(nor](nor)
+- [(switch](switch)
+- [(xnor](xnor)
+- [(xor](xor)
 
 ## Boolean *classmethod*
 

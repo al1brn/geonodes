@@ -1,21 +1,17 @@
 # class Volume
 
-## title
+
+## Class methods
+
+- [(Cube](Cube-classmethod)
 
 
-## title
+## Methods
 
-- [(gen.fname(wnode)](Cube-classmethod)
-
-## title
-
-
-## title
-
-- [(gen.fname(wnode)](distribute_points)
-- [(gen.fname(wnode)](distribute_points_grid)
-- [(gen.fname(wnode)](distribute_points_random)
-- [(gen.fname(wnode)](to_mesh)
+- [(distribute_points](distribute_points)
+- [(distribute_points_grid](distribute_points_grid)
+- [(distribute_points_random](distribute_points_random)
+- [(to_mesh](to_mesh)
 
 ## Cube *classmethod*
 

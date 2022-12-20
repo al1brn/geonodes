@@ -1,23 +1,19 @@
 # class Instance
 
-## title
+## Properties
 
-- [(gen.fname(wnode)](rotation-property)
-- [(gen.fname(wnode)](scale-property)
-
-## title
+- [(rotation](rotation-property)
+- [(scale](scale-property)
 
 
-## title
 
+## Methods
 
-## title
-
-- [(gen.fname(wnode)](domain_size)
-- [(gen.fname(wnode)](rotate)
-- [(gen.fname(wnode)](set_scale)
-- [(gen.fname(wnode)](to_points)
-- [(gen.fname(wnode)](translate)
+- [(domain_size](domain_size)
+- [(rotate](rotate)
+- [(set_scale](set_scale)
+- [(to_points](to_points)
+- [(translate](translate)
 
 ## domain_size
 

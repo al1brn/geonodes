@@ -1,42 +1,38 @@
 # class Face
 
-## title
+## Properties
 
-- [(gen.fname(wnode)](area-property)
-- [(gen.fname(wnode)](island-property)
-- [(gen.fname(wnode)](island_count-property)
-- [(gen.fname(wnode)](island_index-property)
-- [(gen.fname(wnode)](material-property)
-- [(gen.fname(wnode)](neighbors-property)
-- [(gen.fname(wnode)](neighbors_face_count-property)
-- [(gen.fname(wnode)](neighbors_vertex_count-property)
-- [(gen.fname(wnode)](shade_smooth-property)
-
-## title
+- [(area](area-property)
+- [(island](island-property)
+- [(island_count](island_count-property)
+- [(island_index](island_index-property)
+- [(material](material-property)
+- [(neighbors](neighbors-property)
+- [(neighbors_face_count](neighbors_face_count-property)
+- [(neighbors_vertex_count](neighbors_vertex_count-property)
+- [(shade_smooth](shade_smooth-property)
 
 
-## title
 
+## Methods
 
-## title
-
-- [(gen.fname(wnode)](delete_all)
-- [(gen.fname(wnode)](delete_edges)
-- [(gen.fname(wnode)](delete_faces)
-- [(gen.fname(wnode)](distribute_points_poisson)
-- [(gen.fname(wnode)](distribute_points_random)
-- [(gen.fname(wnode)](domain_size)
-- [(gen.fname(wnode)](extrude)
-- [(gen.fname(wnode)](face_set_boundaries)
-- [(gen.fname(wnode)](flip)
-- [(gen.fname(wnode)](is_planar)
-- [(gen.fname(wnode)](pack_uv_islands)
-- [(gen.fname(wnode)](scale_single_axis)
-- [(gen.fname(wnode)](scale_uniform)
-- [(gen.fname(wnode)](set_material)
-- [(gen.fname(wnode)](set_shade_smooth)
-- [(gen.fname(wnode)](triangulate)
-- [(gen.fname(wnode)](uv_unwrap)
+- [(delete_all](delete_all)
+- [(delete_edges](delete_edges)
+- [(delete_faces](delete_faces)
+- [(distribute_points_poisson](distribute_points_poisson)
+- [(distribute_points_random](distribute_points_random)
+- [(domain_size](domain_size)
+- [(extrude](extrude)
+- [(face_set_boundaries](face_set_boundaries)
+- [(flip](flip)
+- [(is_planar](is_planar)
+- [(pack_uv_islands](pack_uv_islands)
+- [(scale_single_axis](scale_single_axis)
+- [(scale_uniform](scale_uniform)
+- [(set_material](set_material)
+- [(set_shade_smooth](set_shade_smooth)
+- [(triangulate](triangulate)
+- [(uv_unwrap](uv_unwrap)
 
 ## area *property*
 

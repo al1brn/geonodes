@@ -1,57 +1,55 @@
 # class Curve
 
-## title
+## Properties
 
-- [(gen.fname(wnode)](domain_size-property)
-- [(gen.fname(wnode)](length-property)
-- [(gen.fname(wnode)](point_count-property)
-- [(gen.fname(wnode)](spline_count-property)
+- [(domain_size](domain_size-property)
+- [(length](length-property)
+- [(point_count](point_count-property)
+- [(spline_count](spline_count-property)
 
-## title
+## Class methods
 
-- [(gen.fname(wnode)](Arc-classmethod)
-- [(gen.fname(wnode)](ArcFromPoints-classmethod)
-- [(gen.fname(wnode)](Circle-classmethod)
-- [(gen.fname(wnode)](CircleFromPoints-classmethod)
-- [(gen.fname(wnode)](Line-classmethod)
-- [(gen.fname(wnode)](LineDirection-classmethod)
-- [(gen.fname(wnode)](QuadraticBezier-classmethod)
-- [(gen.fname(wnode)](Quadrilateral-classmethod)
-- [(gen.fname(wnode)](Spiral-classmethod)
-- [(gen.fname(wnode)](Star-classmethod)
-- [(gen.fname(wnode)](bezier_segment-classmethod)
-
-## title
+- [(Arc](Arc-classmethod)
+- [(ArcFromPoints](ArcFromPoints-classmethod)
+- [(Circle](Circle-classmethod)
+- [(CircleFromPoints](CircleFromPoints-classmethod)
+- [(Line](Line-classmethod)
+- [(LineDirection](LineDirection-classmethod)
+- [(QuadraticBezier](QuadraticBezier-classmethod)
+- [(Quadrilateral](Quadrilateral-classmethod)
+- [(Spiral](Spiral-classmethod)
+- [(Star](Star-classmethod)
+- [(bezier_segment](bezier_segment-classmethod)
 
 
-## title
+## Methods
 
-- [(gen.fname(wnode)](curve_of_point)
-- [(gen.fname(wnode)](deform_on_surface)
-- [(gen.fname(wnode)](fill)
-- [(gen.fname(wnode)](fill_ngons)
-- [(gen.fname(wnode)](fill_triangles)
-- [(gen.fname(wnode)](fillet)
-- [(gen.fname(wnode)](fillet_bezier)
-- [(gen.fname(wnode)](fillet_poly)
-- [(gen.fname(wnode)](instance_on_points)
-- [(gen.fname(wnode)](offset_point)
-- [(gen.fname(wnode)](points_of_curve)
-- [(gen.fname(wnode)](resample)
-- [(gen.fname(wnode)](resample_count)
-- [(gen.fname(wnode)](resample_evaluated)
-- [(gen.fname(wnode)](resample_length)
-- [(gen.fname(wnode)](reverse)
-- [(gen.fname(wnode)](sample)
-- [(gen.fname(wnode)](subdivide)
-- [(gen.fname(wnode)](to_mesh)
-- [(gen.fname(wnode)](to_points)
-- [(gen.fname(wnode)](to_points_count)
-- [(gen.fname(wnode)](to_points_evaluated)
-- [(gen.fname(wnode)](to_points_length)
-- [(gen.fname(wnode)](trim)
-- [(gen.fname(wnode)](trim_factor)
-- [(gen.fname(wnode)](trim_length)
+- [(curve_of_point](curve_of_point)
+- [(deform_on_surface](deform_on_surface)
+- [(fill](fill)
+- [(fill_ngons](fill_ngons)
+- [(fill_triangles](fill_triangles)
+- [(fillet](fillet)
+- [(fillet_bezier](fillet_bezier)
+- [(fillet_poly](fillet_poly)
+- [(instance_on_points](instance_on_points)
+- [(offset_point](offset_point)
+- [(points_of_curve](points_of_curve)
+- [(resample](resample)
+- [(resample_count](resample_count)
+- [(resample_evaluated](resample_evaluated)
+- [(resample_length](resample_length)
+- [(reverse](reverse)
+- [(sample](sample)
+- [(subdivide](subdivide)
+- [(to_mesh](to_mesh)
+- [(to_points](to_points)
+- [(to_points_count](to_points_count)
+- [(to_points_evaluated](to_points_evaluated)
+- [(to_points_length](to_points_length)
+- [(trim](trim)
+- [(trim_factor](trim_factor)
+- [(trim_length](trim_length)
 
 ## Arc *classmethod*
 

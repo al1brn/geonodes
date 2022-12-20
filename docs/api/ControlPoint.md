@@ -1,44 +1,40 @@
 # class ControlPoint
 
-## title
+## Properties
 
-- [(gen.fname(wnode)](left_handle_positions-property)
-- [(gen.fname(wnode)](parameter-property)
-- [(gen.fname(wnode)](parameter_factor-property)
-- [(gen.fname(wnode)](parameter_index-property)
-- [(gen.fname(wnode)](parameter_length-property)
-- [(gen.fname(wnode)](radius-property)
-- [(gen.fname(wnode)](right_handle_positions-property)
-- [(gen.fname(wnode)](tangent-property)
-- [(gen.fname(wnode)](tilt-property)
-
-## title
+- [(left_handle_positions](left_handle_positions-property)
+- [(parameter](parameter-property)
+- [(parameter_factor](parameter_factor-property)
+- [(parameter_index](parameter_index-property)
+- [(parameter_length](parameter_length-property)
+- [(radius](radius-property)
+- [(right_handle_positions](right_handle_positions-property)
+- [(tangent](tangent-property)
+- [(tilt](tilt-property)
 
 
-## title
 
+## Methods
 
-## title
-
-- [(gen.fname(wnode)](curve)
-- [(gen.fname(wnode)](domain_size)
-- [(gen.fname(wnode)](endpoint_selection)
-- [(gen.fname(wnode)](handle_positions)
-- [(gen.fname(wnode)](handle_type_selection)
-- [(gen.fname(wnode)](handle_type_selection)
-- [(gen.fname(wnode)](handle_type_selection)
-- [(gen.fname(wnode)](handle_type_selection)
-- [(gen.fname(wnode)](handle_type_selection)
-- [(gen.fname(wnode)](handle_type_selection_node)
-- [(gen.fname(wnode)](instance_on_points)
-- [(gen.fname(wnode)](offset)
-- [(gen.fname(wnode)](set_handle_positions)
-- [(gen.fname(wnode)](set_handle_positions_left)
-- [(gen.fname(wnode)](set_handle_positions_right)
-- [(gen.fname(wnode)](set_handle_type)
-- [(gen.fname(wnode)](set_handle_type_node)
-- [(gen.fname(wnode)](set_radius)
-- [(gen.fname(wnode)](set_tilt)
+- [(curve](curve)
+- [(domain_size](domain_size)
+- [(endpoint_selection](endpoint_selection)
+- [(handle_positions](handle_positions)
+- [(handle_type_selection](handle_type_selection)
+- [(handle_type_selection](handle_type_selection)
+- [(handle_type_selection](handle_type_selection)
+- [(handle_type_selection](handle_type_selection)
+- [(handle_type_selection](handle_type_selection)
+- [(handle_type_selection_node](handle_type_selection_node)
+- [(instance_on_points](instance_on_points)
+- [(offset](offset)
+- [(set_handle_positions](set_handle_positions)
+- [(set_handle_positions_left](set_handle_positions_left)
+- [(set_handle_positions_right](set_handle_positions_right)
+- [(set_handle_type](set_handle_type)
+- [(set_handle_type_node](set_handle_type_node)
+- [(set_radius](set_radius)
+- [(set_tilt](set_tilt)
 
 ## curve
 
