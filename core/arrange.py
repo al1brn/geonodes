@@ -8,7 +8,7 @@ Created on Wed Aug 24 07:40:10 2022
 
 from pprint import pprint
 
-from mathutils import Vector
+from mathutils import Vector, Color
 import bpy
 
 
@@ -1093,6 +1093,7 @@ def frame_outputs(tree):
 # Delete single nodes
 
 def delete_single_nodes(tree):
+    
     nodes = []
     for node in tree.nodes:
 
@@ -1115,7 +1116,11 @@ def delete_single_nodes(tree):
             nodes.append(node)
         
     for node in nodes:
-        tree.nodes.remove(node)
+        if node.bl_idname in ['NodeGroupInput']:
+            tree.nodes.remove(node)
+        #node.use_custom_color = True
+        #node.color = Color((1, 0, 0))
+
         
     return len(nodes)
 

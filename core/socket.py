@@ -15,6 +15,8 @@ from pprint import pprint
 import logging
 logger = logging.getLogger('geonodes')
 
+from geonodes.core import context
+
 import bpy
 
 # =============================================================================================================================
@@ -91,8 +93,6 @@ class Socket:
 
     def __init__(self, socket, node=None):
         
-        from geonodes.core.tree import Tree
-        
         # ----- A class Object doesn't have a constructor Node
         
         self.data_socket = socket # Used in domain. This is a DataSocket for sure.
@@ -114,7 +114,7 @@ class Socket:
                 raise RuntimeError(f"A Socket instance needs a socket to be initialized, not {socket}.")
                 
             if node is None:
-                self.node = Tree.TREE.get_bnode_wrapper(self.bsocket.node)
+                self.node = context.tree.TREE.get_bnode_wrapper(self.bsocket.node)
             else:
                 self.node = node
                 
@@ -396,9 +396,114 @@ class Socket:
                     return 'FLOAT_VECTOR'
                 elif len(value) == 4:
                     return 'FLOAT_COLOR'
-        
-        raise RuntimeError(f"Unknown data type code: '{value}'")
+                
+    # ----------------------------------------------------------------------------------------------------
+    # Convert a python value to a type matching the one of the socket
+    # Doesn't take DataSocket as input
+    # Used in socket input when exact matching is required
     
+    def convert_python_type(self, value, raise_exception=True):
+        
+        import bpy.types
+        import mathutils
+        
+        if value is None:
+            return None
+        
+        if self.bl_idname == 'NodeSocketBool':
+            return bool(value)
+        
+        elif self.bl_idname in ['NodeSocketInt', 'NodeSocketIntUnsigned']:
+            return int(value)
+        
+        elif self.bl_idname in ['NodeSocketFloat', 'NodeSocketFloatFactor', 'NodeSocketFloatAngle', 'NodeSocketFloatDistance']:
+            return int(value)
+        
+        elif self.bl_idname in ['NodeSocketVector', 'NodeSocketVectorEuler', 'NodeSocketVectorXYZ', 'NodeSocketVectorTranslation']:
+            if isinstance(value, (mathutils.Vector, mathutils.Euler)):
+                return value
+            
+            if hasattr(value, '__len__'):
+                if len(value) == 1:
+                    return (value[0],)*3
+                elif len(value) == 4:
+                    return tuple(value[:3])
+                else:
+                    return value
+            else:
+                return (value,)*3
+        
+        elif self.bl_idname == 'NodeSocketColor':
+
+            if isinstance(value, mathutils.Color):
+                return value
+            
+            if hasattr(value, '__len__'):
+                if len(value) == 1:
+                    return (value[0],)*4
+                elif len(value) == 3:
+                    return value + (1,)
+                else:
+                    return value
+            else:
+                return (value,)*4
+        
+        elif self.bl_idname == 'NodeSocketString':
+            return str(value)
+        
+        elif self.bl_idname == 'NodeSocketCollection':
+            if isinstance(value, bpy.types.Collection):
+                return value
+            
+            obj = bpy.data.collections.get(value)
+            if obj is None and raise_exception:
+                raise Exception(f"Collection named '{value}' not found.")
+            return obj
+        
+        elif self.bl_idname == 'NodeSocketImage':
+            if isinstance(value, bpy.types.Image):
+                return value
+            
+            obj = bpy.data.images.get(value)
+            if obj is None and raise_exception:
+                raise Exception(f"Image named '{value}' not found.")
+            return obj
+        
+        elif self.bl_idname == 'NodeSocketMaterial':
+            if isinstance(value, bpy.types.Material):
+                return value
+            
+            obj = bpy.data.materials.get(value)
+            if obj is None and raise_exception:
+                raise Exception(f"Material named '{value}' not found.")
+            return obj
+        
+        elif self.bl_idname == 'NodeSocketObject':
+            if isinstance(value, bpy.types.Object):
+                return value
+            
+            obj = bpy.data.objects.get(value)
+            if obj is None and raise_exception:
+                raise Exception(f"Object named '{value}' not found.")
+            return obj
+        
+        elif self.bl_idname == 'NodeSocketTexture':
+            if isinstance(value, bpy.types.Texture):
+                return value
+            
+            obj = bpy.data.textures.get(value)
+            if obj is None and raise_exception:
+                raise Exception(f"Texture named '{value}' not found.")
+            return obj
+        
+        elif self.bl_idname == 'NodeSocketGeometry':
+            if raise_exception:
+                raise Exception(f"Impossible to convert {value} to a geometry socket value")
+            return None
+        
+        else:
+            raise Exception(f"Impossible to initialize socket '{self.name}' of type {self.bl_idname} with value {value}.")
+
     # ----------------------------------------------------------------------------------------------------
     # Class name from socket bl_idname
     
@@ -736,7 +841,7 @@ class DataSocket(Socket):
     # ----------------------------------------------------------------------------------------------------
     # Utility changing the output sockets refered by the DataSocket instance
     
-    def stack(self, node):
+    def stack(self, node, socket_name=None):
         """ Change the wrapped socket
         
         :param node: The new node owning the output socket to wrap
@@ -780,279 +885,15 @@ class DataSocket(Socket):
         
         """
         
-        self.node    = node
-        self.bsocket = node.bnode.outputs[0]
+        self.node = node
+        if socket_name is None:
+            self.bsocket = node.bnode.outputs[0]
+        else:
+            self.bsocket = getattr(node, socket_name).bsocket
         self.reset_properties()
 
         return self
-    
-    # ----------------------------------------------------------------------------------------------------
-    # Plug (for input sockets only)
-    
-    @staticmethod
-    def plug_bsocket(bsocket, *values):
-        """ Plug the values to the input Blender socket.
-        
-        :param bsocket: The input socket to plug into 
-        :param values: The output sockets. More than one values can be passed
-            if the input socket is multi input.
-        :type bsocket: bpy.types.NodeSocket, Socket
-        :type values: array of bpy.types.NodeSocket, Socket, values
 
-        .. warning:: bsocket must be an **input socket** and values must be **output sockets-like**.
-        
-        This static method is called by the DataClass method :func:`plug`.
-        
-        This method is the one which links an output socket of a node to the input
-        socket of another one.
-        
-        If the socket is multi input, the plug method is called once per provided value.
-        If a value is None, nothing happens.
-        
-        A not None value can be:
-            
-        - either a valid value for the socket (eg: 123 for Integer socket)
-        - or an output socket of another Node
-            
-        When it is a socket, it can be a Blender socket or a DataSocket
-        """
-        
-        from geonodes.core.tree import Tree
-
-        # ====================================================================================================
-        # Let's have a not None single value to plug
-        
-        if bsocket.is_output:
-            raise RuntimeError(f"Method 'plug' can only be used with input sockets, not {bsocket}.")
-        
-        # ----- Nothing to plug
-
-        if len(values) == 0:
-            return
-
-        # -----If several output sockets to plug, let's loop on the list
-        
-        if len(values) > 1:
-            if not bsocket.is_multi_input:
-                raise RuntimeError(f"Input socket {bsocket} is not multi input: impossible to plug multiple sockets: {values}.")
-                
-            for v in values:
-                DataSocket.plug_bsocket(bsocket, v)
-                
-            return
-        
-        # ----- Let's make sure the only one thing to plug is not None
-        
-        value = values[0]
-        if value is None:
-            return        
-        
-        # ====================================================================================================
-        # Ok now: value is the only one thing to plug
-        # It can be a value or a socket (or directly a blender output socket)
-        
-        # ----------------------------------------------------------------------------------------------------
-        # Let's get the blender socket if it is the case
-        
-        out_socket = None
-        
-        # ----- A Blender socket
-        
-        if isinstance(value, bpy.types.NodeSocket):
-            out_socket = value
-            
-        # ----- A geonodes DataSocket
-            
-        elif Socket.is_socket(value):
-            
-            # Node is None: particular cases
-            
-            if value.node is None:
-                if hasattr(value, 'bobject'):        # An object socket not connected to input
-                    value = value.bobject
-                    
-                elif hasattr(value, 'bcollection'):  # Same for colleciton
-                    value = value.bcollection
-                    
-                else:
-                    raise RuntimeError("Impossible to plug a socket with a None Node: {value}.")
-            else:
-                out_socket = value.get_blender_socket()
-                
-        # ----------------------------------------------------------------------------------------------------
-        # It is actually a blender socket, let's plug it
-        
-        if out_socket is not None:
-            
-            Tree.TREE.btree.links.new(bsocket, out_socket, verify_limits=True)
-            
-            return
-
-        # ====================================================================================================
-        # Value is a python value
-        # - either a simple type (str, int, bool, float)
-        # - or a tuple
-        # - or a Blender type such as Image, Texture, Object...
-        #
-        # Some checks are required to see if we have to transform the value into a socket
-        
-        # ----------------------------------------------------------------------------------------------------
-        # We have to plug a Color or a Vector
-        
-        ndim = None
-        if hasattr(bsocket, 'default_value') and hasattr(bsocket.default_value, '__len__'):
-            ndim = len(bsocket.default_value)
-            
-        if ndim is not None:
-            
-            # Broadcast 1 --> 3
-            if not hasattr(value, '__len__'):
-                value = (value,) * ndim
-                
-            # Color --> Vector
-            elif ndim == 3 and len(value) == 4:
-                value = (value[0], value[1], value[2])
-                
-            # Vector --> Color
-            elif ndim == 4 and len(value) == 3:
-                value += (value[0], value[1], value[2], 1.)
-                
-            # ----- Transform a triplet (a, b, c) where one value is a socket to a vector
-            # This is necessarily done if hide_value is True
-            
-            to_vector = False
-            
-            for v in value:
-                if Socket.is_socket(v):
-                    to_vector = True
-                    break
-                
-            if to_vector or bsocket.hide_value:
-
-                from geonodes import Vector, Color
-
-                if ndim == 3:
-                    DataSocket.plug_bsocket(bsocket, Vector(value).bsocket)
-                else:
-                    DataSocket.plug_bsocket(bsocket, Color(value).bsocket)
-                    
-                return
-            
-        # ----------------------------------------------------------------------------------------------------
-        # The value is str, it can be the name of the Blender resource to plug
-        
-        if isinstance(value, str):
-            
-            # ----- Material
-            
-            if isinstance(bsocket, bpy.types.NodeSocketMaterial):
-                try:
-                    value = bpy.data.materials[value]
-                except:
-                    raise RuntimeError(f"Material '{value}' not found.")
-                    
-            # ----- Collection
-            
-            elif isinstance(bsocket, bpy.types.NodeSocketCollection):
-                try:
-                    value = bpy.data.collections[value]
-                except:
-                    raise RuntimeError(f"Collection '{value}' not found.")
-                    
-            # ----- Object
-            
-            elif isinstance(bsocket, bpy.types.NodeSocketObject):
-                try:
-                    value = bpy.data.objects[value]
-                except:
-                    raise RuntimeError(f"Object '{value}' not found.")
-                    
-            # ----- Image
-            
-            elif isinstance(bsocket, bpy.types.NodeSocketImage):
-                try:
-                    value = bpy.data.images[value]
-                except:
-                    raise RuntimeError(f"Image '{value}' not found.")
-                    
-            # ----- Texture
-            
-            elif isinstance(bsocket, bpy.types.NodeSocketTexture):
-                try:
-                    value = bpy.data.textures[value]
-                except:
-                    raise RuntimeError(f"Texture '{value}' not found.")
-                    
-        # ----------------------------------------------------------------------------------------------------
-        # If hide_value is True, changing default_value is useless, we need to use a socket
-        # This test need to be done only for simple values since:
-        # - Vector and Color are already done
-        # - Blender resources have not 'python type' equivalent, but the name which is done
-        
-        if bsocket.hide_value:
-            
-            if isinstance(value, int):
-                from geonodes import Integer
-                DataSocket.plug_bsocket(bsocket, Integer(value).bsocket)
-                return
-
-            if isinstance(value, bool):
-                from geonodes import Boolean
-                DataSocket.plug_bsocket(bsocket, Boolean(value).bsocket)
-                return
-
-            if isinstance(value, float):
-                from geonodes import Float
-                DataSocket.plug_bsocket(bsocket, Float(value).bsocket)
-                return
-
-            if isinstance(value, str):
-                from geonodes import String
-                DataSocket.plug_bsocket(bsocket, String(value).bsocket)
-                return
-
-        # ----------------------------------------------------------------------------------------------------
-        # Multi input not manageeable with values
-        
-        if bsocket.is_multi_input:
-            raise RuntimeError(f"The socket {bsocket} is multi input. Impossible to plug the value {value}.")
-            
-        # ----------------------------------------------------------------------------------------------------
-        # One can easily try to plug a node, rather than a socket, let's give detailed information
-        
-        if isinstance(value, Node):
-            print("-"*80)
-            print("It is not possible to plug a Node to a socket!")
-            print(f"You tried to plug the node {value} to the socket '{bsocket.name}' of type '{bsocket.bl_idname}'.")
-            print("You certainly want to plug one of the output sockets of the node. The output socket(s) are:")
-            for i, name in enumerate(value.outsockets):
-                print(f"   - {i}: {name}")
-            print("-"*80)
-            print()
-            
-            raise RuntimeError(f"Impossible the plug the node {value} to the socket '{bsocket.name}'. See details above.")
-
-        # ----------------------------------------------------------------------------------------------------
-        # We can try to plug the value into the default value
-        
-        ok = True
-        try:
-            bsocket.default_value = value
-
-        except Exception as e:
-            msg = str(e)
-            ok = False
-            
-        if not ok:
-            logging.critical(f"Impossible to plug the value '{value}' to the socket '{bsocket.name}' of node '{bsocket.node.name}'")
-            logging.critical(f"    The value type is: {type(value)}")
-            logging.critical(f"    The expected type for socket default value is: {type(bsocket.default_value)}")
-            logging.critical(f"    Default value len: {len(bsocket.default_value) if hasattr(bsocket.default_value, '__len__') else 'no length'}")
-            logging.critical(f"    Error message: {msg}")
-            logging.critical("")
-            
-            raise RuntimeError(f"Impossible to set the default value {value} to socket {bsocket}.\n Error: {msg}")
-            
     # ----------------------------------------------------------------------------------------------------
     # Plug (for input sockets only)
             
@@ -1065,7 +906,7 @@ class DataSocket(Socket):
         
         see :func:`plug_bsocket`
         """
-        DataSocket.plug_bsocket(self.bsocket, *values)
+        context.plug_to_socket(self.bsocket, *values)
         
     # ----------------------------------------------------------------------------------------------------
     # To group output (for output sockets only)

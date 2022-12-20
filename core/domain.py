@@ -8,8 +8,6 @@ Created on Wed Dec 14 16:57:33 2022
 
 from geonodes.core.socket import Socket
 from geonodes.core.node import Node
-from geonodes.nodes import nodes
-from geonodes.nodes.nodes import create_node
 
 
 import logging
@@ -244,7 +242,6 @@ class Domain:
     @property
     def domain(cls):
         return {
-            'Domain'        : None,
             'Vertex'        : 'POINT',
             'Edge'          : 'EDGE',
             'Face'          : 'FACE',
@@ -278,7 +275,7 @@ class Domain:
     
     @staticmethod
     def value_data_type(socket, default=None):
-        return self.data_socket.value_data_type(socket, default=default)
+        return Socket.value_data_type(socket, default=default)
 
     # ----------------------------------------------------------------------------------------------------
     # Select domain either by a bool or by int(s)
@@ -327,14 +324,15 @@ class Domain:
     # ----------------------------------------------------------------------------------------------------
     # Stack
     
-    def socket_stack(self, node):
+    def socket_stack(self, node, socket_name=None):
         """ Make the owning socket jump to the output socket of the node passed in argumment.
         
         Args:
             node (Node): The node to jump to
+            socket_name: The name of the output socket (first one if None)
         """
         self.reset_cache()
-        return self.data_socket.stack(node)
+        return self.data_socket.stack(node, socket_name=socket_name)
     
     # ----------------------------------------------------------------------------------------------------
     # Def a node as attribute node
@@ -431,41 +429,49 @@ class Domain:
     @property
     def as_verts(self):
         """ Type cast to Vertex."""
+        from geonodes.nodes.classes import Vertex
         return Vertex(self.data_socket)
         
     @property
     def as_edges(self):
         """ Type cast to Edge."""
+        from geonodes.nodes.classes import Edge
         return Edge(self.data_socket)
         
     @property
     def as_faces(self):
         """ Type cast to Face."""
+        from geonodes.nodes.classes import Face
         return Face(self.data_socket)
         
     @property
     def as_corners(self):
         """ Type cast to Corner."""
+        from geonodes.nodes.classes import Corner
         return Corner(self.data_socket)
         
     @property
     def as_control_points(self):
         """ Type cast to ControlPoint."""
+        from geonodes.nodes.classes import ControlPoint
         return ControlPoint(self.data_socket)
 
     @property
     def as_splines(self):
         """ Type cast to Spline."""
+        from geonodes.nodes.classes import Spline
         return Spline(self.data_socket)
         
     @property
     def as_cloud_points(self):
         """ Type cast to CloudPoint."""
+        from geonodes.nodes.classes import CloudPoint
         return CloudPoint(self.data_socket)
         
     @property
     def as_insts(self):
         """ Type cast to Instance."""
+        from geonodes.nodes.classes import Instance
         return Instance(self.data_socket)
     
 

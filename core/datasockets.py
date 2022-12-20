@@ -10,7 +10,7 @@ from geonodes.core.socket import DataSocket
 from geonodes.core.node import Node
 from geonodes.core.tree import Tree
 
-from geonodes import nodes
+from geonodes.nodes import nodes
 
 import logging
 logger = logging.getLogger('geonodes')
@@ -187,6 +187,9 @@ class IntFloat(DataSocket):
             return nodes.VectorMath(vector0=self, vector1=value1, operation='SUBTRACT', label=node_label, node_color=node_color).vector
 
         return nodes.Math(value0=self, value1=value1, operation='SUBTRACT', label=node_label, node_color=node_color).value
+    
+    def sub(self, value1=None, node_label = None, node_color = None):
+        return self.subtract(value1=value1)
 
     def multiply(self, value1=None, node_label = None, node_color = None):
         """ Multiply two values.
@@ -205,9 +208,13 @@ class IntFloat(DataSocket):
         from geonodes import nodes
         
         if self.is_vector(value1):
-            return nodes.VectorMath(vector0=self, vector1=value1, operation='MULTIPLY', label=node_label, node_color=node_color).vector
+            #return nodes.VectorMath(vector0=self, vector1=value1, operation='MULTIPLY', label=node_label, node_color=node_color).vector
+            return nodes.VectorMath(vector0=value1, scale=self, operation='SCALE', label=node_label, node_color=node_color).vector
 
         return nodes.Math(value0=self, value1=value1, operation='MULTIPLY', label=node_label, node_color=node_color).value
+    
+    def mul(self, value1=None, node_label = None, node_color = None):
+        return self.multiply(value1=value1)
 
     def divide(self, value1=None, node_label = None, node_color = None):
         """ Divide two values.
@@ -230,8 +237,8 @@ class IntFloat(DataSocket):
 
         return nodes.Math(value0=self, value1=value1, operation='DIVIDE', label=node_label, node_color=node_color).value
     
-    
-    
+    def div(self, value1=None, node_label = None, node_color = None):
+        return self.divide(value1=value1)
     
     def __neg__(self):
         return self.multiply(-1)
@@ -390,7 +397,6 @@ class Float(IntFloat):
         Returns:
             Float: The Float data socket
         """
-        
         return cls(Tree.TREE.new_input('Float', value=value, name=name, min_value=min_value, max_value=max_value, description=description))
         
     @classmethod
@@ -789,7 +795,7 @@ class Vector(DataSocket):
         .. blid:: ShaderNodeCombineXYZ
         """
         
-        if hasattr(self, 'bypass_gbs') or (self.separate_ is None and self.x_ is None and self.y_ is None and self.z_ is None):
+        if hasattr(self, 'bypass_gbs') or ((not hasattr(self, '_c_separate')) and self.x_ is None and self.y_ is None and self.z_ is None):
             return super().get_blender_socket()
         
         else:
@@ -1442,16 +1448,41 @@ class Geometry(DataSocket):
     
     def __init__(self, socket, node=None, label=None):
         
-        from geonodes.nodes.classes import Vertex
+        #from geonodes.nodes import domains
         
-        self.points = Vertex(self) # Initialized before super().__init__ which can override points
+        #self.points = Vertex(self) # Initialized before super().__init__ which can override points
         
         super().__init__(socket, node=node, label=label)
     
     
-    def reset_properties(self):
+    def init_domains(self):
+
+        from geonodes.nodes import domains
+
+        super().init_domains()
         
-        super().reset_properties()
+        type_name = type(self).__name__
+        if type_name == 'Mesh':
+            self.verts   = domains.Vertex(self)
+            self.edges   = domains.Edge(self)
+            self.faces   = domains.Face(self)
+            self.corners = domains.Corner(self)
+            self.points  = self.verts
+            
+        elif type_name == 'Curve':
+            self.points  = domains.ControlPoint(self)
+            self.splines = domains.Spline(self)
+            
+        elif type_name == 'Points':
+            self.points  = domains.CloudPoint(self)
+            
+        elif type_name == 'Instances':
+            self.insts  = domains.Instance(self)
+            
+        else:
+            # Points must exist!
+            self.points  = domains.CloudPoint(self)
+            
         
         
     @property
@@ -1646,7 +1677,7 @@ class Collection(DataSocket):
         return coll
     
     @classmethod
-    def Input(cls, name="Collection", description=""):
+    def Input(cls, value=None, name="Collection", description=""):
         """ Create a Collection input socket in the Group Input Node
         
         Args:
@@ -1657,7 +1688,7 @@ class Collection(DataSocket):
             Collection: The Collection data socket
         """
         
-        return cls(Tree.TREE.new_input('Collection', name = name, description = description))
+        return cls(Tree.TREE.new_input('Collection', name = name, value=value, description = description))
             
             
 # -----------------------------------------------------------------------------------------------------------------------------
@@ -1687,7 +1718,7 @@ class Object(DataSocket):
         return obj
     
     @classmethod
-    def Input(cls, name="Object", description=""):
+    def Input(cls, value=None, name="Object", description=""):
         """ Create an Object input socket in the Group Input Node
         
         Args:
@@ -1698,7 +1729,7 @@ class Object(DataSocket):
             Object: The Object data socket
         """
         
-        return cls(Tree.TREE.new_input('Object', name=name, description=description))
+        return cls(Tree.TREE.new_input('Object', name=name, value=value, description=description))
             
 # -----------------------------------------------------------------------------------------------------------------------------
 # Material
@@ -1722,7 +1753,7 @@ class Material(DataSocket):
 
     
     @classmethod
-    def Input(cls, name="Material", description=""):
+    def Input(cls, value=None, name="Material", description=""):
         """ Create a Material input socket in the Group Input Node
         
         Args:
@@ -1733,7 +1764,7 @@ class Material(DataSocket):
             Material: The Material data socket
         """
         
-        return cls(Tree.TREE.new_input('Material', name=name, description=description))
+        return cls(Tree.TREE.new_input('Material', name=name, value=value, description=description))
     
 # -----------------------------------------------------------------------------------------------------------------------------
 # Other classes
@@ -1741,7 +1772,7 @@ class Material(DataSocket):
 class Texture(DataSocket):
 
     @classmethod
-    def Input(cls, name="Texture", description=""):
+    def Input(cls, value=None, name="Texture", description=""):
         """ Create a Texture input socket in the Group Input Node
         
         Args:
@@ -1752,12 +1783,12 @@ class Texture(DataSocket):
             Texture: The Texture data socket
         """
         
-        return cls(Tree.TREE.new_input('Texture', name=name, description=description))
+        return cls(Tree.TREE.new_input('Texture', name=name, value=value, description=description))
     
 class Image(DataSocket):
     
     @classmethod
-    def Input(cls, name="Image", description=""):
+    def Input(cls, value = None, name="Image", description=""):
         """ Create an Image input socket in the Group Input Node
         
         Args:
@@ -1768,7 +1799,7 @@ class Image(DataSocket):
             Image: The Image data socket
         """
         
-        return cls(Tree.TREE.new_input('Image', name=name, description=description))
+        return cls(Tree.TREE.new_input('Image', name=name, value=value, description=description))
     
             
             
