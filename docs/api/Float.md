@@ -7,6 +7,7 @@
 ## Class methods
 
 - [Frame](#Frame-classmethod)
+- [Input](#Input-classmethod)
 - [Seconds](#Seconds-classmethod)
 - [Value](#Value-classmethod)
 
@@ -63,7 +64,9 @@
 - [minimum](#minimum)
 - [mix](#mix)
 - [modulo](#modulo)
+- [mul](#mul)
 - [mul_add](#mul_add)
+- [multiply](#multiply)
 - [multiply_add](#multiply_add)
 - [not_equal](#not_equal)
 - [ping_pong](#ping_pong)
@@ -99,6 +102,24 @@ Node [Scene Time](https://docs.blender.org/manual/en/latest/modeling/geometry_no
 
 ### Returns:
 - socket `frame`
+
+<sub>Go to [top](#class-Float) [data structure](../structure.md)</sub>
+
+## Input <sub>*classmethod*</sub>
+
+```python
+def Input(cls, value=0., name="Float", min_value=None, max_value=None, description=""):
+
+```
+        ###Args:
+- value: Initial value. Not changed if the group input already exists
+- name: Input socket name. Avoid homonyms!
+- min_value: minimum value
+- max_value: maxium value
+- description: user help
+
+### Returns:
+- {line}
 
 <sub>Go to [top](#class-Float) [data structure](../structure.md)</sub>
 
@@ -988,6 +1009,22 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 
 <sub>Go to [top](#class-Float) [data structure](../structure.md)</sub>
 
+## mul
+
+```python
+def multiply(self, value):
+
+```
+Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
+
+        ###Args:
+- value: Float or Integer or Vector
+
+### Returns:
+- {line}
+
+<sub>Go to [top](#class-Float) [data structure](../structure.md)</sub>
+
 ## mul_add
 
 ```python
@@ -1003,6 +1040,22 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 
 ### Returns:
 - socket `value`
+
+<sub>Go to [top](#class-Float) [data structure](../structure.md)</sub>
+
+## multiply
+
+```python
+def multiply(self, value):
+
+```
+Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
+
+        ###Args:
+- value: Float or Integer or Vector
+
+### Returns:
+- {line}
 
 <sub>Go to [top](#class-Float) [data structure](../structure.md)</sub>
 

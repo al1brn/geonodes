@@ -146,99 +146,98 @@ class Boolean(DataSocket):
 
 class IntFloat(DataSocket):
     
-    def add(self, value1=None, node_label = None, node_color = None):
+    def add(self, value=None, node_label = None, node_color = None):
         """ Add two values.
         
             Args:
-                value1: Float
+                value: Float
                 node_label (str): Node label
                 node_color (color): Node background color
                 
             Returns:
                 Float
                 
-            If value1 is a Vector or a Color, VectorMath node is used rather than Math.
+            If value is a Vector or a Color, VectorMath node is used rather than Math.
         """
         
         from geonodes import nodes
         
-        if self.is_vector(value1):
-            return nodes.VectorMath(vector0=self, vector1=value1, operation='ADD', label=node_label, node_color=node_color).vector
+        if self.is_vector(value):
+            return nodes.VectorMath(vector0=self, vector1=value, operation='ADD', label=node_label, node_color=node_color).vector
 
-        return nodes.Math(value0=self, value1=value1, operation='ADD', label=node_label, node_color=node_color).value
+        return nodes.Math(value0=self, value1=value, operation='ADD', label=node_label, node_color=node_color).value
 
-    def subtract(self, value1=None, node_label = None, node_color = None):
+    def subtract(self, value=None, node_label = None, node_color = None):
         """ Subtract two values.
         
             Args:
-                value1: Float
+                value: Float
                 node_label (str): Node label
                 node_color (color): Node background color
                 
             Returns:
                 Float
                 
-            If value1 is a Vector or a Color, VectorMath node is used rather than Math.
+            If value is a Vector or a Color, VectorMath node is used rather than Math.
         """
 
         from geonodes import nodes
         
-        if self.is_vector(value1):
-            return nodes.VectorMath(vector0=self, vector1=value1, operation='SUBTRACT', label=node_label, node_color=node_color).vector
+        if self.is_vector(value):
+            return nodes.VectorMath(vector0=self, vector1=value, operation='SUBTRACT', label=node_label, node_color=node_color).vector
 
-        return nodes.Math(value0=self, value1=value1, operation='SUBTRACT', label=node_label, node_color=node_color).value
+        return nodes.Math(value0=self, value1=value, operation='SUBTRACT', label=node_label, node_color=node_color).value
     
-    def sub(self, value1=None, node_label = None, node_color = None):
-        return self.subtract(value1=value1)
+    def sub(self, value=None, node_label = None, node_color = None):
+        return self.subtract(value=value)
 
-    def multiply(self, value1=None, node_label = None, node_color = None):
+    def multiply(self, value=None, node_label = None, node_color = None):
         """ Multiply two values.
         
             Args:
-                value1: Float
+                value: Float
                 node_label (str): Node label
                 node_color (color): Node background color
                 
             Returns:
                 Float
                 
-            If value1 is a Vector or a Color, VectorMath node is used rather than Math.
+            If value is a Vector or a Color, VectorMath node is used rather than Math.
         """
 
         from geonodes import nodes
         
-        if self.is_vector(value1):
-            #return nodes.VectorMath(vector0=self, vector1=value1, operation='MULTIPLY', label=node_label, node_color=node_color).vector
-            return nodes.VectorMath(vector0=value1, scale=self, operation='SCALE', label=node_label, node_color=node_color).vector
+        if self.is_vector(value):
+            return nodes.VectorMath(vector0=value, scale=self, operation='SCALE', label=node_label, node_color=node_color).vector
 
-        return nodes.Math(value0=self, value1=value1, operation='MULTIPLY', label=node_label, node_color=node_color).value
+        return nodes.Math(value0=self, value1=value, operation='MULTIPLY', label=node_label, node_color=node_color).value
     
-    def mul(self, value1=None, node_label = None, node_color = None):
-        return self.multiply(value1=value1)
+    def mul(self, value=None, node_label = None, node_color = None):
+        return self.multiply(value=value)
 
-    def divide(self, value1=None, node_label = None, node_color = None):
+    def divide(self, value=None, node_label = None, node_color = None):
         """ Divide two values.
         
             Args:
-                value1: Float
+                value: Float
                 node_label (str): Node label
                 node_color (color): Node background color
                 
             Returns:
                 Float
                 
-            If value1 is a Vector or a Color, VectorMath node is used rather than Math.
+            If value is a Vector or a Color, VectorMath node is used rather than Math.
         """
 
         from geonodes import nodes
         
-        if self.is_vector(value1):
-            return nodes.VectorMath(vector0=self, vector1=value1, operation='DIVIDE', label=node_label, node_color=node_color).vector
+        if self.is_vector(value):
+            return nodes.VectorMath(vector0=self, vector1=value, operation='DIVIDE', label=node_label, node_color=node_color).vector
 
-        return nodes.Math(value0=self, value1=value1, operation='DIVIDE', label=node_label, node_color=node_color).value
+        return nodes.Math(value0=self, value1=value, operation='DIVIDE', label=node_label, node_color=node_color).value
     
-    def div(self, value1=None, node_label = None, node_color = None):
-        return self.divide(value1=value1)
+    def div(self, value=None, node_label = None, node_color = None):
+        return self.divide(value=value)
     
     def __neg__(self):
         return self.multiply(-1)
