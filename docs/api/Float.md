@@ -111,7 +111,7 @@ Node [Scene Time](https://docs.blender.org/manual/en/latest/modeling/geometry_no
 def Input(cls, value=0., name="Float", min_value=None, max_value=None, description=""):
 
 ```
-        ### Args:
+### Args:
 - value: Initial value. Not changed if the group input already exists
 - name: Input socket name. Avoid homonyms!
 - min_value: minimum value
@@ -1017,7 +1017,7 @@ def multiply(self, value):
 ```
 Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
 
-        ### Args:
+### Args:
 - value: Float or Integer or Vector
 
 ### Returns:
@@ -1051,7 +1051,7 @@ def multiply(self, value):
 ```
 Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
 
-        ### Args:
+### Args:
 - value: Float or Integer or Vector
 
 ### Returns:

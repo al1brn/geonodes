@@ -48,7 +48,7 @@ Node [Set Spline Cyclic](https://docs.blender.org/manual/en/latest/modeling/geom
 
 Node implemented as property setter.
 
-        ### Args:
+### Args:
 - attr_value: cyclic
 
 
@@ -108,7 +108,7 @@ Node [Set Material](https://docs.blender.org/manual/en/latest/modeling/geometry_
 
 Node implemented as property setter.
 
-        ### Args:
+### Args:
 - attr_value: material
 
 
@@ -137,7 +137,7 @@ Node [Set Curve Normal](https://docs.blender.org/manual/en/latest/modeling/geome
 
 Node implemented as property setter.
 
-        ### Args:
+### Args:
 - attr_value: mode
 
 
@@ -246,7 +246,7 @@ Node [Set Spline Resolution](https://docs.blender.org/manual/en/latest/modeling/
 
 Node implemented as property setter.
 
-        ### Args:
+### Args:
 - attr_value: resolution
 
 
@@ -356,7 +356,7 @@ Node [Set Spline Type](https://docs.blender.org/manual/en/latest/modeling/geomet
 
 Node implemented as property setter.
 
-        ### Args:
+### Args:
 - attr_value: spline_type
 
 

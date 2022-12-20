@@ -75,7 +75,7 @@ Node [Set ID](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/
 
 Node implemented as property setter.
 
-        ### Args:
+### Args:
 - attr_value: ID
 
 
@@ -495,7 +495,7 @@ Node [Set Position](https://docs.blender.org/manual/en/latest/modeling/geometry_
 
 Node implemented as property setter.
 
-        ### Args:
+### Args:
 - attr_value: position
 
 
