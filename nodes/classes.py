@@ -2592,7 +2592,7 @@ class Curve(Geometry):
         return self.stack(nodes.TrimCurve(curve=self, start0=start, start1=start, end0=start, end1=end, mode=mode))
 
 
-    def trim_factor(self, start=None, end=None, mode='FACTOR'):
+    def trim_factor(self, start=None, end=None):
         """ Node TrimCurve.
 
         Node reference [Trim Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/trim_curve.html)
@@ -2601,15 +2601,14 @@ class Curve(Geometry):
         Args:
             start: Float
             end: Float
-            mode (str): 'FACTOR' in [FACTOR, LENGTH]
 
         Returns:
             node with sockets ['curve']
         """
-        return self.stack(nodes.TrimCurve(curve=self, start0=start, start1=None, end0=end, end1=None, mode=mode))
+        return self.stack(nodes.TrimCurve(curve=self, start0=start, start1=None, end0=end, end1=None, mode='FACTOR'))
 
 
-    def trim_length(self, start=None, end=None, mode='FACTOR'):
+    def trim_length(self, start=None, end=None):
         """ Node TrimCurve.
 
         Node reference [Trim Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/trim_curve.html)
@@ -2618,12 +2617,11 @@ class Curve(Geometry):
         Args:
             start: Float
             end: Float
-            mode (str): 'FACTOR' in [FACTOR, LENGTH]
 
         Returns:
             node with sockets ['curve']
         """
-        return self.stack(nodes.TrimCurve(curve=self, start0=None, start1=start, end0=None, end1=end, mode=mode))
+        return self.stack(nodes.TrimCurve(curve=self, start0=None, start1=start, end0=None, end1=end, mode='LENGTH'))
 
 
 

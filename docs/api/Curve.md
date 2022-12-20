@@ -734,7 +734,7 @@ Node [Trim Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_no
 ## trim_factor
 
 ```python
-def trim_factor(self, start=None, end=None, mode='FACTOR'):
+def trim_factor(self, start=None, end=None):
 
 ```
 Node [Trim Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/trim_curve.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeTrimCurve.html) )
@@ -742,7 +742,6 @@ Node [Trim Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_no
 ### Args:
 - start: Float
 - end: Float
-- mode (str): 'FACTOR' in [FACTOR, LENGTH]
 
 ### Returns:
 - self
@@ -752,7 +751,7 @@ Node [Trim Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_no
 ## trim_length
 
 ```python
-def trim_length(self, start=None, end=None, mode='FACTOR'):
+def trim_length(self, start=None, end=None):
 
 ```
 Node [Trim Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/trim_curve.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeTrimCurve.html) )
@@ -760,7 +759,6 @@ Node [Trim Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_no
 ### Args:
 - start: Float
 - end: Float
-- mode (str): 'FACTOR' in [FACTOR, LENGTH]
 
 ### Returns:
 - self
