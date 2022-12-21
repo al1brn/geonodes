@@ -13,7 +13,7 @@ from geonodes import nodes
 node = nodes.BooleanMath(boolean0=None, boolean1=None, operation='AND')
 ```
 
-#### Input socket arguments:
+### Args:#### Input socket arguments:
 
 - **boolean0**: [Boolean](Boolean.md)
 - **boolean1**: [Boolean](Boolean.md)
@@ -22,7 +22,7 @@ node = nodes.BooleanMath(boolean0=None, boolean1=None, operation='AND')
 
 - **operation** (str): default = 'AND' in ('AND', 'OR', 'NOT', 'NAND', 'NOR', 'XNOR', 'XOR', 'IMPLY', 'NIMPLY')
 
-#### Output sockets:
+### Output sockets:
 
 - **boolean** : [Boolean](Boolean.md)
 

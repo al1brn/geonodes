@@ -13,7 +13,7 @@ from geonodes import nodes
 node = nodes.MagicTexture(vector=None, scale=None, distortion=None, turbulence_depth=2)
 ```
 
-#### Input socket arguments:
+### Args:#### Input socket arguments:
 
 - **vector**: [Vector](Vector.md)
 - **scale**: [Float](Float.md)
@@ -23,7 +23,7 @@ node = nodes.MagicTexture(vector=None, scale=None, distortion=None, turbulence_d
 
 - **turbulence_depth** (int): default = 2
 
-#### Output sockets:
+### Output sockets:
 
 - **color** : [Color](Color.md)
 - **fac** : [Float](Float.md)

@@ -13,7 +13,7 @@ from geonodes import nodes
 node = nodes.FillCurve(curve=None, mode='TRIANGLES')
 ```
 
-#### Input socket arguments:
+### Args:#### Input socket arguments:
 
 - **curve**: [Curve](Curve.md)
 
@@ -21,7 +21,7 @@ node = nodes.FillCurve(curve=None, mode='TRIANGLES')
 
 - **mode** (str): default = 'TRIANGLES' in ('TRIANGLES', 'NGONS')
 
-#### Output sockets:
+### Output sockets:
 
 - **mesh** : [Mesh](Mesh.md)
 

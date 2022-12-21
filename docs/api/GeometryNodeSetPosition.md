@@ -13,14 +13,14 @@ from geonodes import nodes
 node = nodes.SetPosition(geometry=None, selection=None, position=None, offset=None)
 ```
 
-#### Input socket arguments:
+### Args:#### Input socket arguments:
 
 - **geometry**: [Geometry](Geometry.md)
 - **selection**: [Boolean](Boolean.md)
 - **position**: [Vector](Vector.md)
 - **offset**: [Vector](Vector.md)
 
-#### Output sockets:
+### Output sockets:
 
 - **geometry** : [Geometry](Geometry.md)
 

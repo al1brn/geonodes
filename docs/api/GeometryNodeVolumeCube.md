@@ -13,7 +13,7 @@ from geonodes import nodes
 node = nodes.VolumeCube(density=None, background=None, min=None, max=None, resolution_x=None, resolution_y=None, resolution_z=None)
 ```
 
-#### Input socket arguments:
+### Args:#### Input socket arguments:
 
 - **density**: [Float](Float.md)
 - **background**: [Float](Float.md)
@@ -23,7 +23,7 @@ node = nodes.VolumeCube(density=None, background=None, min=None, max=None, resol
 - **resolution_y**: [Integer](Integer.md)
 - **resolution_z**: [Integer](Integer.md)
 
-#### Output sockets:
+### Output sockets:
 
 - **volume** : [Volume](Volume.md)
 

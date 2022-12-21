@@ -13,12 +13,12 @@ from geonodes import nodes
 node = nodes.RgbCurves(fac=None, color=None)
 ```
 
-#### Input socket arguments:
+### Args:#### Input socket arguments:
 
 - **fac**: [Float](Float.md)
 - **color**: [Color](Color.md)
 
-#### Output sockets:
+### Output sockets:
 
 - **color** : [Color](Color.md)
 

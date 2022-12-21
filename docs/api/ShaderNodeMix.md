@@ -13,7 +13,7 @@ from geonodes import nodes
 node = nodes.Mix(factor=None, a=None, b=None, blend_type='MIX', clamp_factor=True, clamp_result=False, data_type='FLOAT', factor_mode='UNIFORM')
 ```
 
-#### Input socket arguments:
+### Args:#### Input socket arguments:
 
 - **factor**: **data_type** dependant
 - **a**: **data_type** dependant
@@ -27,7 +27,7 @@ node = nodes.Mix(factor=None, a=None, b=None, blend_type='MIX', clamp_factor=Tru
 - **data_type** (str): default = 'FLOAT' in ('FLOAT', 'VECTOR', 'RGBA')
 - **factor_mode** (str): default = 'UNIFORM' in ('UNIFORM', 'NON_UNIFORM')
 
-#### Output sockets:
+### Output sockets:
 
 - **result** : ``data_type`` dependant
 

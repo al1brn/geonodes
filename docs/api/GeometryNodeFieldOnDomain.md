@@ -13,7 +13,7 @@ from geonodes import nodes
 node = nodes.InterpolateDomain(value=None, data_type='FLOAT', domain='POINT')
 ```
 
-#### Input socket arguments:
+### Args:#### Input socket arguments:
 
 - **value**: **data_type** dependant
 
@@ -22,7 +22,7 @@ node = nodes.InterpolateDomain(value=None, data_type='FLOAT', domain='POINT')
 - **data_type** (str): default = 'FLOAT' in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN')
 - **domain** (str): default = 'POINT' in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
 
-#### Output sockets:
+### Output sockets:
 
 - **value** : ``data_type`` dependant
 

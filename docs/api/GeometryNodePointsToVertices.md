@@ -13,12 +13,12 @@ from geonodes import nodes
 node = nodes.PointsToVertices(points=None, selection=None)
 ```
 
-#### Input socket arguments:
+### Args:#### Input socket arguments:
 
 - **points**: [Points](Points.md)
 - **selection**: [Boolean](Boolean.md)
 
-#### Output sockets:
+### Output sockets:
 
 - **mesh** : [Mesh](Mesh.md)
 

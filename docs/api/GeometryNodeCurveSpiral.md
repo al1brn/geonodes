@@ -13,7 +13,7 @@ from geonodes import nodes
 node = nodes.Spiral(resolution=None, rotations=None, start_radius=None, end_radius=None, height=None, reverse=None)
 ```
 
-#### Input socket arguments:
+### Args:#### Input socket arguments:
 
 - **resolution**: [Integer](Integer.md)
 - **rotations**: [Float](Float.md)
@@ -22,7 +22,7 @@ node = nodes.Spiral(resolution=None, rotations=None, start_radius=None, end_radi
 - **height**: [Float](Float.md)
 - **reverse**: [Boolean](Boolean.md)
 
-#### Output sockets:
+### Output sockets:
 
 - **curve** : [Curve](Curve.md)
 

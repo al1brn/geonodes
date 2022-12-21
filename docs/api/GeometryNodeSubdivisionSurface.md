@@ -13,7 +13,7 @@ from geonodes import nodes
 node = nodes.SubdivisionSurface(mesh=None, level=None, edge_crease=None, vertex_crease=None, boundary_smooth='ALL', uv_smooth='PRESERVE_BOUNDARIES')
 ```
 
-#### Input socket arguments:
+### Args:#### Input socket arguments:
 
 - **mesh**: [Mesh](Mesh.md)
 - **level**: [Integer](Integer.md)
@@ -25,7 +25,7 @@ node = nodes.SubdivisionSurface(mesh=None, level=None, edge_crease=None, vertex_
 - **boundary_smooth** (str): default = 'ALL' in ('PRESERVE_CORNERS', 'ALL')
 - **uv_smooth** (str): default = 'PRESERVE_BOUNDARIES' in ('NONE', 'PRESERVE_CORNERS', 'PRESERVE_CORNERS_AND_JUNCTIONS', 'PRESERVE_CORNERS_JUNCTIONS_AND_CONCAVE', 'PRESERVE_BOUNDARIES', 'SMOOTH_ALL')
 
-#### Output sockets:
+### Output sockets:
 
 - **mesh** : [Mesh](Mesh.md)
 

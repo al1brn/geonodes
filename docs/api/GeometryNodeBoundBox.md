@@ -13,11 +13,11 @@ from geonodes import nodes
 node = nodes.BoundingBox(geometry=None)
 ```
 
-#### Input socket arguments:
+### Args:#### Input socket arguments:
 
 - **geometry**: [Geometry](Geometry.md)
 
-#### Output sockets:
+### Output sockets:
 
 - **bounding_box** : [Geometry](Geometry.md)
 - **min** : [Vector](Vector.md)

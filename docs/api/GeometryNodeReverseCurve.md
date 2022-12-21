@@ -13,12 +13,12 @@ from geonodes import nodes
 node = nodes.ReverseCurve(curve=None, selection=None)
 ```
 
-#### Input socket arguments:
+### Args:#### Input socket arguments:
 
 - **curve**: [Curve](Curve.md)
 - **selection**: [Boolean](Boolean.md)
 
-#### Output sockets:
+### Output sockets:
 
 - **curve** : [Curve](Curve.md)
 

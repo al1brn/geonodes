@@ -13,12 +13,12 @@ from geonodes import nodes
 node = nodes.IcoSphere(radius=None, subdivisions=None)
 ```
 
-#### Input socket arguments:
+### Args:#### Input socket arguments:
 
 - **radius**: [Float](Float.md)
 - **subdivisions**: [Integer](Integer.md)
 
-#### Output sockets:
+### Output sockets:
 
 - **mesh** : [Mesh](Mesh.md)
 

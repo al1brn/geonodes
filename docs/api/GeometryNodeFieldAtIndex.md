@@ -13,7 +13,7 @@ from geonodes import nodes
 node = nodes.FieldAtIndex(index=None, value=None, data_type='FLOAT', domain='POINT')
 ```
 
-#### Input socket arguments:
+### Args:#### Input socket arguments:
 
 - **index**: [Integer](Integer.md)
 - **value**: **data_type** dependant
@@ -23,7 +23,7 @@ node = nodes.FieldAtIndex(index=None, value=None, data_type='FLOAT', domain='POI
 - **data_type** (str): default = 'FLOAT' in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN')
 - **domain** (str): default = 'POINT' in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
 
-#### Output sockets:
+### Output sockets:
 
 - **value** : ``data_type`` dependant
 

@@ -13,7 +13,7 @@ from geonodes import nodes
 node = nodes.Material()
 ```
 
-#### Output sockets:
+### Output sockets:
 
 - **material** : [Material](Material.md)
 

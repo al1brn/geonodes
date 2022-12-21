@@ -13,7 +13,7 @@ from geonodes import nodes
 node = nodes.RandomValue(min=None, max=None, probability=None, ID=None, seed=None, data_type='FLOAT')
 ```
 
-#### Input socket arguments:
+### Args:#### Input socket arguments:
 
 - **min**: **data_type** dependant
 - **max**: **data_type** dependant
@@ -25,7 +25,7 @@ node = nodes.RandomValue(min=None, max=None, probability=None, ID=None, seed=Non
 
 - **data_type** (str): default = 'FLOAT' in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'BOOLEAN')
 
-#### Output sockets:
+### Output sockets:
 
 - **value** : ``data_type`` dependant
 

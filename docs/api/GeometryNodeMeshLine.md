@@ -13,7 +13,7 @@ from geonodes import nodes
 node = nodes.MeshLine(count=None, resolution=None, start_location=None, offset=None, count_mode='TOTAL', mode='OFFSET')
 ```
 
-#### Input socket arguments:
+### Args:#### Input socket arguments:
 
 - **count**: [Integer](Integer.md)
 - **resolution**: [Float](Float.md)
@@ -25,7 +25,7 @@ node = nodes.MeshLine(count=None, resolution=None, start_location=None, offset=N
 - **count_mode** (str): default = 'TOTAL' in ('TOTAL', 'RESOLUTION')
 - **mode** (str): default = 'OFFSET' in ('OFFSET', 'END_POINTS')
 
-#### Output sockets:
+### Output sockets:
 
 - **mesh** : [Mesh](Mesh.md)
 

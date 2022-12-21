@@ -13,11 +13,11 @@ from geonodes import nodes
 node = nodes.VertexOfCorner(corner_index=None)
 ```
 
-#### Input socket arguments:
+### Args:#### Input socket arguments:
 
 - **corner_index**: [Integer](Integer.md)
 
-#### Output sockets:
+### Output sockets:
 
 - **vertex_index** : [Integer](Integer.md)
 

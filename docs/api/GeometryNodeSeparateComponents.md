@@ -13,11 +13,11 @@ from geonodes import nodes
 node = nodes.SeparateComponents(geometry=None)
 ```
 
-#### Input socket arguments:
+### Args:#### Input socket arguments:
 
 - **geometry**: [Geometry](Geometry.md)
 
-#### Output sockets:
+### Output sockets:
 
 - **mesh** : [Mesh](Mesh.md)
 - **point_cloud** : [Geometry](Geometry.md)

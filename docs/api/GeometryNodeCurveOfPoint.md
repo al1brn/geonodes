@@ -13,11 +13,11 @@ from geonodes import nodes
 node = nodes.CurveOfPoint(point_index=None)
 ```
 
-#### Input socket arguments:
+### Args:#### Input socket arguments:
 
 - **point_index**: [Integer](Integer.md)
 
-#### Output sockets:
+### Output sockets:
 
 - **curve_index** : [Integer](Integer.md)
 - **index_in_curve** : [Integer](Integer.md)

@@ -13,13 +13,13 @@ from geonodes import nodes
 node = nodes.SetSplineCyclic(geometry=None, selection=None, cyclic=None)
 ```
 
-#### Input socket arguments:
+### Args:#### Input socket arguments:
 
 - **geometry**: [Geometry](Geometry.md)
 - **selection**: [Boolean](Boolean.md)
 - **cyclic**: [Boolean](Boolean.md)
 
-#### Output sockets:
+### Output sockets:
 
 - **geometry** : [Geometry](Geometry.md)
 

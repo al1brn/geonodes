@@ -13,7 +13,7 @@ from geonodes import nodes
 node = nodes.ObjectInfo(object=None, as_instance=None, transform_space='ORIGINAL')
 ```
 
-#### Input socket arguments:
+### Args:#### Input socket arguments:
 
 - **object**: [Object](Object.md)
 - **as_instance**: [Boolean](Boolean.md)
@@ -22,7 +22,7 @@ node = nodes.ObjectInfo(object=None, as_instance=None, transform_space='ORIGINAL
 
 - **transform_space** (str): default = 'ORIGINAL' in ('ORIGINAL', 'RELATIVE')
 
-#### Output sockets:
+### Output sockets:
 
 - **location** : [Vector](Vector.md)
 - **rotation** : [Vector](Vector.md)

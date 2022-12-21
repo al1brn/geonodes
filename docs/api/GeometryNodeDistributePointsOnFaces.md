@@ -13,7 +13,7 @@ from geonodes import nodes
 node = nodes.DistributePointsOnFaces(mesh=None, selection=None, distance_min=None, density_max=None, density=None, density_factor=None, seed=None, distribute_method='RANDOM')
 ```
 
-#### Input socket arguments:
+### Args:#### Input socket arguments:
 
 - **mesh**: [Mesh](Mesh.md)
 - **selection**: [Boolean](Boolean.md)
@@ -27,7 +27,7 @@ node = nodes.DistributePointsOnFaces(mesh=None, selection=None, distance_min=Non
 
 - **distribute_method** (str): default = 'RANDOM' in ('RANDOM', 'POISSON')
 
-#### Output sockets:
+### Output sockets:
 
 - **points** : [Points](Points.md)
 - **normal** : [Vector](Vector.md)

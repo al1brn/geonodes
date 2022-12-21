@@ -13,7 +13,7 @@ from geonodes import nodes
 node = nodes.Cylinder(vertices=None, side_segments=None, fill_segments=None, radius=None, depth=None, fill_type='NGON')
 ```
 
-#### Input socket arguments:
+### Args:#### Input socket arguments:
 
 - **vertices**: [Integer](Integer.md)
 - **side_segments**: [Integer](Integer.md)
@@ -25,7 +25,7 @@ node = nodes.Cylinder(vertices=None, side_segments=None, fill_segments=None, rad
 
 - **fill_type** (str): default = 'NGON' in ('NONE', 'NGON', 'TRIANGLE_FAN')
 
-#### Output sockets:
+### Output sockets:
 
 - **mesh** : [Mesh](Mesh.md)
 - **top** : [Boolean](Boolean.md)

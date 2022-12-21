@@ -13,12 +13,12 @@ from geonodes import nodes
 node = nodes.DualMesh(mesh=None, keep_boundaries=None)
 ```
 
-#### Input socket arguments:
+### Args:#### Input socket arguments:
 
 - **mesh**: [Mesh](Mesh.md)
 - **keep_boundaries**: [Boolean](Boolean.md)
 
-#### Output sockets:
+### Output sockets:
 
 - **dual_mesh** : [Geometry](Geometry.md)
 

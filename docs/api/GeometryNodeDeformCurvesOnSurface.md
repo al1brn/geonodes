@@ -13,11 +13,11 @@ from geonodes import nodes
 node = nodes.DeformCurvesOnSurface(curves=None)
 ```
 
-#### Input socket arguments:
+### Args:#### Input socket arguments:
 
 - **curves**: [Curve](Curve.md)
 
-#### Output sockets:
+### Output sockets:
 
 - **curves** : [Curve](Curve.md)
 

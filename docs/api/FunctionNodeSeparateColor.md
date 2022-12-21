@@ -13,7 +13,7 @@ from geonodes import nodes
 node = nodes.SeparateColor(color=None, mode='RGB')
 ```
 
-#### Input socket arguments:
+### Args:#### Input socket arguments:
 
 - **color**: [Color](Color.md)
 
@@ -21,7 +21,7 @@ node = nodes.SeparateColor(color=None, mode='RGB')
 
 - **mode** (str): default = 'RGB' in ('RGB', 'HSV', 'HSL')
 
-#### Output sockets:
+### Output sockets:
 
 - **red** : [Float](Float.md)
 - **green** : [Float](Float.md)

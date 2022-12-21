@@ -13,11 +13,11 @@ from geonodes import nodes
 node = nodes.Vector(vector=[0.0, 0.0, 0.0])
 ```
 
-#### Node parameter arguments:
+### Args:#### Node parameter arguments:
 
 - **vector** (Vector): default = [0.0, 0.0, 0.0]
 
-#### Output sockets:
+### Output sockets:
 
 - **vector** : [Vector](Vector.md)
 

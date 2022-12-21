@@ -13,11 +13,11 @@ from geonodes import nodes
 node = nodes.ColorRamp(fac=None)
 ```
 
-#### Input socket arguments:
+### Args:#### Input socket arguments:
 
 - **fac**: [Float](Float.md)
 
-#### Output sockets:
+### Output sockets:
 
 - **color** : [Color](Color.md)
 - **alpha** : [Float](Float.md)

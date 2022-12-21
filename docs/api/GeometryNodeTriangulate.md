@@ -13,7 +13,7 @@ from geonodes import nodes
 node = nodes.Triangulate(mesh=None, selection=None, minimum_vertices=None, ngon_method='BEAUTY', quad_method='SHORTEST_DIAGONAL')
 ```
 
-#### Input socket arguments:
+### Args:#### Input socket arguments:
 
 - **mesh**: [Mesh](Mesh.md)
 - **selection**: [Boolean](Boolean.md)
@@ -24,7 +24,7 @@ node = nodes.Triangulate(mesh=None, selection=None, minimum_vertices=None, ngon_
 - **ngon_method** (str): default = 'BEAUTY' in ('BEAUTY', 'CLIP')
 - **quad_method** (str): default = 'SHORTEST_DIAGONAL' in ('BEAUTY', 'FIXED', 'FIXED_ALTERNATE', 'SHORTEST_DIAGONAL', 'LONGEST_DIAGONAL')
 
-#### Output sockets:
+### Output sockets:
 
 - **mesh** : [Mesh](Mesh.md)
 

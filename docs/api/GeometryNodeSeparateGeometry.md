@@ -13,7 +13,7 @@ from geonodes import nodes
 node = nodes.SeparateGeometry(geometry=None, selection=None, domain='POINT')
 ```
 
-#### Input socket arguments:
+### Args:#### Input socket arguments:
 
 - **geometry**: [Geometry](Geometry.md)
 - **selection**: [Boolean](Boolean.md)
@@ -22,7 +22,7 @@ node = nodes.SeparateGeometry(geometry=None, selection=None, domain='POINT')
 
 - **domain** (str): default = 'POINT' in ('POINT', 'EDGE', 'FACE', 'CURVE', 'INSTANCE')
 
-#### Output sockets:
+### Output sockets:
 
 - **selection** : [Geometry](Geometry.md)
 - **inverted** : [Geometry](Geometry.md)

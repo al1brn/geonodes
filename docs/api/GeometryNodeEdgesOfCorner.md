@@ -13,11 +13,11 @@ from geonodes import nodes
 node = nodes.EdgesOfCorner(corner_index=None)
 ```
 
-#### Input socket arguments:
+### Args:#### Input socket arguments:
 
 - **corner_index**: [Integer](Integer.md)
 
-#### Output sockets:
+### Output sockets:
 
 - **next_edge_index** : [Integer](Integer.md)
 - **previous_edge_index** : [Integer](Integer.md)

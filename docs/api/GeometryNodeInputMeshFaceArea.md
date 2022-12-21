@@ -13,7 +13,7 @@ from geonodes import nodes
 node = nodes.FaceArea()
 ```
 
-#### Output sockets:
+### Output sockets:
 
 - **area** : [Float](Float.md)
 

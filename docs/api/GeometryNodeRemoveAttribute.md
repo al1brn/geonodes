@@ -13,12 +13,12 @@ from geonodes import nodes
 node = nodes.RemoveNamedAttribute(geometry=None, name=None)
 ```
 
-#### Input socket arguments:
+### Args:#### Input socket arguments:
 
 - **geometry**: [Geometry](Geometry.md)
 - **name**: [String](String.md)
 
-#### Output sockets:
+### Output sockets:
 
 - **geometry** : [Geometry](Geometry.md)
 

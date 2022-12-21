@@ -13,13 +13,13 @@ from geonodes import nodes
 node = nodes.PointsOfCurve(curve_index=None, weights=None, sort_index=None)
 ```
 
-#### Input socket arguments:
+### Args:#### Input socket arguments:
 
 - **curve_index**: [Integer](Integer.md)
 - **weights**: [Float](Float.md)
 - **sort_index**: [Integer](Integer.md)
 
-#### Output sockets:
+### Output sockets:
 
 - **point_index** : [Integer](Integer.md)
 - **total** : [Integer](Integer.md)

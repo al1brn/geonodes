@@ -13,7 +13,7 @@ from geonodes import nodes
 node = nodes.SetSplineType(curve=None, selection=None, spline_type='POLY')
 ```
 
-#### Input socket arguments:
+### Args:#### Input socket arguments:
 
 - **curve**: [Curve](Curve.md)
 - **selection**: [Boolean](Boolean.md)
@@ -22,7 +22,7 @@ node = nodes.SetSplineType(curve=None, selection=None, spline_type='POLY')
 
 - **spline_type** (str): default = 'POLY' in ('CATMULL_ROM', 'POLY', 'BEZIER', 'NURBS')
 
-#### Output sockets:
+### Output sockets:
 
 - **curve** : [Curve](Curve.md)
 

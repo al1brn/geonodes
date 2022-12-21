@@ -13,7 +13,7 @@ from geonodes import nodes
 node = nodes.Compare(a=None, b=None, c=None, angle=None, epsilon=None, data_type='FLOAT', mode='ELEMENT', operation='GREATER_THAN')
 ```
 
-#### Input socket arguments:
+### Args:#### Input socket arguments:
 
 - **a**: **data_type** dependant
 - **b**: **data_type** dependant
@@ -27,7 +27,7 @@ node = nodes.Compare(a=None, b=None, c=None, angle=None, epsilon=None, data_type
 - **mode** (str): default = 'ELEMENT' in ('ELEMENT', 'LENGTH', 'AVERAGE', 'DOT_PRODUCT', 'DIRECTION')
 - **operation** (str): default = 'GREATER_THAN' in ('LESS_THAN', 'LESS_EQUAL', 'GREATER_THAN', 'GREATER_EQUAL', 'EQUAL', 'NOT_EQUAL')
 
-#### Output sockets:
+### Output sockets:
 
 - **result** : [Boolean](Boolean.md)
 

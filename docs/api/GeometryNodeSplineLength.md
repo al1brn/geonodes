@@ -13,7 +13,7 @@ from geonodes import nodes
 node = nodes.SplineLength()
 ```
 
-#### Output sockets:
+### Output sockets:
 
 - **length** : [Float](Float.md)
 - **point_count** : [Integer](Integer.md)

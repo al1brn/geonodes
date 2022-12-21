@@ -13,7 +13,7 @@ from geonodes import nodes
 node = nodes.Switch(switch=None, false=None, true=None, input_type='GEOMETRY')
 ```
 
-#### Input socket arguments:
+### Args:#### Input socket arguments:
 
 - **switch**: **input_type** dependant
 - **false**: **input_type** dependant
@@ -23,7 +23,7 @@ node = nodes.Switch(switch=None, false=None, true=None, input_type='GEOMETRY')
 
 - **input_type** (str): default = 'GEOMETRY' in ('FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'STRING', 'RGBA', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'TEXTURE', 'MATERIAL')
 
-#### Output sockets:
+### Output sockets:
 
 - **output** : ``input_type`` dependant
 

@@ -13,7 +13,7 @@ from geonodes import nodes
 node = nodes.RotateEuler(rotation=None, rotate_by=None, axis=None, angle=None, space='OBJECT', type='EULER')
 ```
 
-#### Input socket arguments:
+### Args:#### Input socket arguments:
 
 - **rotation**: [Vector](Vector.md)
 - **rotate_by**: [Vector](Vector.md)
@@ -25,7 +25,7 @@ node = nodes.RotateEuler(rotation=None, rotate_by=None, axis=None, angle=None, s
 - **space** (str): default = 'OBJECT' in ('OBJECT', 'LOCAL')
 - **type** (str): default = 'EULER' in ('AXIS_ANGLE', 'EULER')
 
-#### Output sockets:
+### Output sockets:
 
 - **rotation** : [Vector](Vector.md)
 

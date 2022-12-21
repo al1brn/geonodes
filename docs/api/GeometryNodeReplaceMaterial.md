@@ -13,13 +13,13 @@ from geonodes import nodes
 node = nodes.ReplaceMaterial(geometry=None, old=None, new=None)
 ```
 
-#### Input socket arguments:
+### Args:#### Input socket arguments:
 
 - **geometry**: [Geometry](Geometry.md)
 - **old**: [Material](Material.md)
 - **new**: [Material](Material.md)
 
-#### Output sockets:
+### Output sockets:
 
 - **geometry** : [Geometry](Geometry.md)
 

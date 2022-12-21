@@ -13,7 +13,7 @@ from geonodes import nodes
 node = nodes.Index()
 ```
 
-#### Output sockets:
+### Output sockets:
 
 - **index** : [Integer](Integer.md)
 

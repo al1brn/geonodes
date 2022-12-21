@@ -13,7 +13,7 @@ from geonodes import nodes
 node = nodes.CurveToPoints(curve=None, count=None, length=None, mode='COUNT')
 ```
 
-#### Input socket arguments:
+### Args:#### Input socket arguments:
 
 - **curve**: [Curve](Curve.md)
 - **count**: [Integer](Integer.md)
@@ -23,7 +23,7 @@ node = nodes.CurveToPoints(curve=None, count=None, length=None, mode='COUNT')
 
 - **mode** (str): default = 'COUNT' in ('EVALUATED', 'COUNT', 'LENGTH')
 
-#### Output sockets:
+### Output sockets:
 
 - **points** : [Points](Points.md)
 - **tangent** : [Vector](Vector.md)

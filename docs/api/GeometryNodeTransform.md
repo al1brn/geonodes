@@ -13,14 +13,14 @@ from geonodes import nodes
 node = nodes.Transform(geometry=None, translation=None, rotation=None, scale=None)
 ```
 
-#### Input socket arguments:
+### Args:#### Input socket arguments:
 
 - **geometry**: [Geometry](Geometry.md)
 - **translation**: [Vector](Vector.md)
 - **rotation**: [Vector](Vector.md)
 - **scale**: [Vector](Vector.md)
 
-#### Output sockets:
+### Output sockets:
 
 - **geometry** : [Geometry](Geometry.md)
 

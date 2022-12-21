@@ -13,7 +13,7 @@ from geonodes import nodes
 node = nodes.AlignEulerToVector(rotation=None, factor=None, vector=None, axis='X', pivot_axis='AUTO')
 ```
 
-#### Input socket arguments:
+### Args:#### Input socket arguments:
 
 - **rotation**: [Vector](Vector.md)
 - **factor**: [Float](Float.md)
@@ -24,7 +24,7 @@ node = nodes.AlignEulerToVector(rotation=None, factor=None, vector=None, axis='X
 - **axis** (str): default = 'X' in ('X', 'Y', 'Z')
 - **pivot_axis** (str): default = 'AUTO' in ('AUTO', 'X', 'Y', 'Z')
 
-#### Output sockets:
+### Output sockets:
 
 - **rotation** : [Vector](Vector.md)
 

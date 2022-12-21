@@ -13,7 +13,7 @@ from geonodes import nodes
 node = nodes.StringToCurves(string=None, size=None, character_spacing=None, word_spacing=None, line_spacing=None, text_box_width=None, text_box_height=None, align_x='LEFT', align_y='TOP_BASELINE', overflow='OVERFLOW', pivot_mode='BOTTOM_LEFT')
 ```
 
-#### Input socket arguments:
+### Args:#### Input socket arguments:
 
 - **string**: [String](String.md)
 - **size**: [Float](Float.md)
@@ -30,7 +30,7 @@ node = nodes.StringToCurves(string=None, size=None, character_spacing=None, word
 - **overflow** (str): default = 'OVERFLOW' in ('OVERFLOW', 'SCALE_TO_FIT', 'TRUNCATE')
 - **pivot_mode** (str): default = 'BOTTOM_LEFT' in ('MIDPOINT', 'TOP_LEFT', 'TOP_CENTER', 'TOP_RIGHT', 'BOTTOM_LEFT', 'BOTTOM_CENTER', 'BOTTOM_RIGHT')
 
-#### Output sockets:
+### Output sockets:
 
 - **curve_instances** : [Geometry](Geometry.md)
 - **remainder** : [String](String.md)

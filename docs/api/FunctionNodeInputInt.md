@@ -13,11 +13,11 @@ from geonodes import nodes
 node = nodes.Integer(integer=0)
 ```
 
-#### Node parameter arguments:
+### Args:#### Node parameter arguments:
 
 - **integer** (int): default = 0
 
-#### Output sockets:
+### Output sockets:
 
 - **integer** : [Integer](Integer.md)
 

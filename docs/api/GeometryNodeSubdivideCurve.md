@@ -13,12 +13,12 @@ from geonodes import nodes
 node = nodes.SubdivideCurve(curve=None, cuts=None)
 ```
 
-#### Input socket arguments:
+### Args:#### Input socket arguments:
 
 - **curve**: [Curve](Curve.md)
 - **cuts**: [Integer](Integer.md)
 
-#### Output sockets:
+### Output sockets:
 
 - **curve** : [Curve](Curve.md)
 

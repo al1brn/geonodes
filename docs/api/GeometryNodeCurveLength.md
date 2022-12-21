@@ -13,11 +13,11 @@ from geonodes import nodes
 node = nodes.CurveLength(curve=None)
 ```
 
-#### Input socket arguments:
+### Args:#### Input socket arguments:
 
 - **curve**: [Curve](Curve.md)
 
-#### Output sockets:
+### Output sockets:
 
 - **length** : [Float](Float.md)
 

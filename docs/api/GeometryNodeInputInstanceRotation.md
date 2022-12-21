@@ -13,7 +13,7 @@ from geonodes import nodes
 node = nodes.InstanceRotation()
 ```
 
-#### Output sockets:
+### Output sockets:
 
 - **rotation** : [Vector](Vector.md)
 

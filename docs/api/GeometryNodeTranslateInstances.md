@@ -13,14 +13,14 @@ from geonodes import nodes
 node = nodes.TranslateInstances(instances=None, selection=None, translation=None, local_space=None)
 ```
 
-#### Input socket arguments:
+### Args:#### Input socket arguments:
 
 - **instances**: [Instances](Instances.md)
 - **selection**: [Boolean](Boolean.md)
 - **translation**: [Vector](Vector.md)
 - **local_space**: [Boolean](Boolean.md)
 
-#### Output sockets:
+### Output sockets:
 
 - **instances** : [Instances](Instances.md)
 

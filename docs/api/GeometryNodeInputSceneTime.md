@@ -13,7 +13,7 @@ from geonodes import nodes
 node = nodes.SceneTime()
 ```
 
-#### Output sockets:
+### Output sockets:
 
 - **seconds** : [Float](Float.md)
 - **frame** : [Float](Float.md)

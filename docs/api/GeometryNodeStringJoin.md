@@ -13,12 +13,12 @@ from geonodes import nodes
 node = nodes.JoinStrings(*strings, delimiter=None)
 ```
 
-#### Input socket arguments:
+### Args:#### Input socket arguments:
 
 - **delimiter**: [String](String.md)
 - **strings**: *[String](String.md)
 
-#### Output sockets:
+### Output sockets:
 
 - **string** : [String](String.md)
 

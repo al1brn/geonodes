@@ -13,7 +13,7 @@ from geonodes import nodes
 node = nodes.DeleteGeometry(geometry=None, selection=None, domain='POINT', mode='ALL')
 ```
 
-#### Input socket arguments:
+### Args:#### Input socket arguments:
 
 - **geometry**: [Geometry](Geometry.md)
 - **selection**: [Boolean](Boolean.md)
@@ -23,7 +23,7 @@ node = nodes.DeleteGeometry(geometry=None, selection=None, domain='POINT', mode=
 - **domain** (str): default = 'POINT' in ('POINT', 'EDGE', 'FACE', 'CURVE', 'INSTANCE')
 - **mode** (str): default = 'ALL' in ('ALL', 'EDGE_FACE', 'ONLY_FACE')
 
-#### Output sockets:
+### Output sockets:
 
 - **geometry** : [Geometry](Geometry.md)
 

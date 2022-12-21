@@ -13,7 +13,7 @@ from geonodes import nodes
 node = nodes.SetHandleType(curve=None, selection=None, handle_type='AUTO', mode={'RIGHT', 'LEFT'})
 ```
 
-#### Input socket arguments:
+### Args:#### Input socket arguments:
 
 - **curve**: [Curve](Curve.md)
 - **selection**: [Boolean](Boolean.md)
@@ -23,7 +23,7 @@ node = nodes.SetHandleType(curve=None, selection=None, handle_type='AUTO', mode=
 - **handle_type** (str): default = 'AUTO' in ('FREE', 'AUTO', 'VECTOR', 'ALIGN')
 - **mode** (set): default = {'RIGHT', 'LEFT'}
 
-#### Output sockets:
+### Output sockets:
 
 - **curve** : [Curve](Curve.md)
 

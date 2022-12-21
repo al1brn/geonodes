@@ -13,12 +13,12 @@ from geonodes import nodes
 node = nodes.HandleTypeSelection(handle_type='AUTO', mode={'RIGHT', 'LEFT'})
 ```
 
-#### Node parameter arguments:
+### Args:#### Node parameter arguments:
 
 - **handle_type** (str): default = 'AUTO' in ('FREE', 'AUTO', 'VECTOR', 'ALIGN')
 - **mode** (set): default = {'RIGHT', 'LEFT'}
 
-#### Output sockets:
+### Output sockets:
 
 - **selection** : [Boolean](Boolean.md)
 

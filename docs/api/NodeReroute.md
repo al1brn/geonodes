@@ -13,11 +13,11 @@ from geonodes import nodes
 node = nodes.Reroute(input=None)
 ```
 
-#### Input socket arguments:
+### Args:#### Input socket arguments:
 
 - **input**: [Color](Color.md)
 
-#### Output sockets:
+### Output sockets:
 
 - **output** : [Color](Color.md)
 

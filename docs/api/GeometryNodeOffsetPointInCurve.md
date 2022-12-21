@@ -13,12 +13,12 @@ from geonodes import nodes
 node = nodes.OffsetPointInCurve(point_index=None, offset=None)
 ```
 
-#### Input socket arguments:
+### Args:#### Input socket arguments:
 
 - **point_index**: [Integer](Integer.md)
 - **offset**: [Integer](Integer.md)
 
-#### Output sockets:
+### Output sockets:
 
 - **is_valid_offset** : [Boolean](Boolean.md)
 - **point_index** : [Integer](Integer.md)

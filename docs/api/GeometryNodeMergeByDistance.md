@@ -13,7 +13,7 @@ from geonodes import nodes
 node = nodes.MergeByDistance(geometry=None, selection=None, distance=None, mode='ALL')
 ```
 
-#### Input socket arguments:
+### Args:#### Input socket arguments:
 
 - **geometry**: [Geometry](Geometry.md)
 - **selection**: [Boolean](Boolean.md)
@@ -23,7 +23,7 @@ node = nodes.MergeByDistance(geometry=None, selection=None, distance=None, mode=
 
 - **mode** (str): default = 'ALL' in ('ALL', 'CONNECTED')
 
-#### Output sockets:
+### Output sockets:
 
 - **geometry** : [Geometry](Geometry.md)
 

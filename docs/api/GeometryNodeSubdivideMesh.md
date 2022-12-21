@@ -13,12 +13,12 @@ from geonodes import nodes
 node = nodes.SubdivideMesh(mesh=None, level=None)
 ```
 
-#### Input socket arguments:
+### Args:#### Input socket arguments:
 
 - **mesh**: [Mesh](Mesh.md)
 - **level**: [Integer](Integer.md)
 
-#### Output sockets:
+### Output sockets:
 
 - **mesh** : [Mesh](Mesh.md)
 

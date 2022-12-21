@@ -13,7 +13,7 @@ from geonodes import nodes
 node = nodes.SampleNearest(geometry=None, sample_position=None, domain='POINT')
 ```
 
-#### Input socket arguments:
+### Args:#### Input socket arguments:
 
 - **geometry**: [Geometry](Geometry.md)
 - **sample_position**: [Vector](Vector.md)
@@ -22,7 +22,7 @@ node = nodes.SampleNearest(geometry=None, sample_position=None, domain='POINT')
 
 - **domain** (str): default = 'POINT' in ('POINT', 'EDGE', 'FACE', 'CORNER')
 
-#### Output sockets:
+### Output sockets:
 
 - **index** : [Integer](Integer.md)
 

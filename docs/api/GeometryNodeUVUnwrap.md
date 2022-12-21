@@ -13,7 +13,7 @@ from geonodes import nodes
 node = nodes.UvUnwrap(selection=None, seam=None, margin=None, fill_holes=None, method='ANGLE_BASED')
 ```
 
-#### Input socket arguments:
+### Args:#### Input socket arguments:
 
 - **selection**: [Boolean](Boolean.md)
 - **seam**: [Boolean](Boolean.md)
@@ -24,7 +24,7 @@ node = nodes.UvUnwrap(selection=None, seam=None, margin=None, fill_holes=None, m
 
 - **method** (str): default = 'ANGLE_BASED' in ('ANGLE_BASED', 'CONFORMAL')
 
-#### Output sockets:
+### Output sockets:
 
 - **uv** : [Vector](Vector.md)
 

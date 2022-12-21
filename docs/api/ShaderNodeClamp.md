@@ -13,7 +13,7 @@ from geonodes import nodes
 node = nodes.Clamp(value=None, min=None, max=None, clamp_type='MINMAX')
 ```
 
-#### Input socket arguments:
+### Args:#### Input socket arguments:
 
 - **value**: [Float](Float.md)
 - **min**: [Float](Float.md)
@@ -23,7 +23,7 @@ node = nodes.Clamp(value=None, min=None, max=None, clamp_type='MINMAX')
 
 - **clamp_type** (str): default = 'MINMAX' in ('MINMAX', 'RANGE')
 
-#### Output sockets:
+### Output sockets:
 
 - **result** : [Float](Float.md)
 

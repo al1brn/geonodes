@@ -13,7 +13,7 @@ from geonodes import nodes
 node = nodes.SpecialCharacters()
 ```
 
-#### Output sockets:
+### Output sockets:
 
 - **line_break** : [String](String.md)
 - **tab** : [String](String.md)

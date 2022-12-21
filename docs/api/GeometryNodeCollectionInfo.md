@@ -13,7 +13,7 @@ from geonodes import nodes
 node = nodes.CollectionInfo(collection=None, separate_children=None, reset_children=None, transform_space='ORIGINAL')
 ```
 
-#### Input socket arguments:
+### Args:#### Input socket arguments:
 
 - **collection**: [Collection](Collection.md)
 - **separate_children**: [Boolean](Boolean.md)
@@ -23,7 +23,7 @@ node = nodes.CollectionInfo(collection=None, separate_children=None, reset_child
 
 - **transform_space** (str): default = 'ORIGINAL' in ('ORIGINAL', 'RELATIVE')
 
-#### Output sockets:
+### Output sockets:
 
 - **geometry** : [Geometry](Geometry.md)
 

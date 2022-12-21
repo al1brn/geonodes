@@ -13,7 +13,7 @@ from geonodes import nodes
 node = nodes.Position()
 ```
 
-#### Output sockets:
+### Output sockets:
 
 - **position** : [Vector](Vector.md)
 

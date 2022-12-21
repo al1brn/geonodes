@@ -13,7 +13,7 @@ from geonodes import nodes
 node = nodes.RotateInstances(instances=None, selection=None, rotation=None, pivot_point=None, local_space=None)
 ```
 
-#### Input socket arguments:
+### Args:#### Input socket arguments:
 
 - **instances**: [Instances](Instances.md)
 - **selection**: [Boolean](Boolean.md)
@@ -21,7 +21,7 @@ node = nodes.RotateInstances(instances=None, selection=None, rotation=None, pivo
 - **pivot_point**: [Vector](Vector.md)
 - **local_space**: [Boolean](Boolean.md)
 
-#### Output sockets:
+### Output sockets:
 
 - **instances** : [Instances](Instances.md)
 

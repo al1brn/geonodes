@@ -13,7 +13,7 @@ from geonodes import nodes
 node = nodes.IsViewport()
 ```
 
-#### Output sockets:
+### Output sockets:
 
 - **is_viewport** : [Boolean](Boolean.md)
 

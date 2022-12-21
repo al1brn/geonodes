@@ -13,11 +13,11 @@ from geonodes import nodes
 node = nodes.FaceIsPlanar(threshold=None)
 ```
 
-#### Input socket arguments:
+### Args:#### Input socket arguments:
 
 - **threshold**: [Float](Float.md)
 
-#### Output sockets:
+### Output sockets:
 
 - **planar** : [Boolean](Boolean.md)
 

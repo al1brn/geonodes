@@ -13,7 +13,7 @@ from geonodes import nodes
 node = nodes.ScaleElements(geometry=None, selection=None, scale=None, center=None, axis=None, domain='FACE', scale_mode='UNIFORM')
 ```
 
-#### Input socket arguments:
+### Args:#### Input socket arguments:
 
 - **geometry**: [Geometry](Geometry.md)
 - **selection**: [Boolean](Boolean.md)
@@ -26,7 +26,7 @@ node = nodes.ScaleElements(geometry=None, selection=None, scale=None, center=Non
 - **domain** (str): default = 'FACE' in ('FACE', 'EDGE')
 - **scale_mode** (str): default = 'UNIFORM' in ('UNIFORM', 'SINGLE_AXIS')
 
-#### Output sockets:
+### Output sockets:
 
 - **geometry** : [Geometry](Geometry.md)
 

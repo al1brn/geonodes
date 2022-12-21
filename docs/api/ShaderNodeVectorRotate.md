@@ -13,7 +13,7 @@ from geonodes import nodes
 node = nodes.VectorRotate(vector=None, center=None, axis=None, angle=None, rotation=None, invert=False, rotation_type='AXIS_ANGLE')
 ```
 
-#### Input socket arguments:
+### Args:#### Input socket arguments:
 
 - **vector**: [Vector](Vector.md)
 - **center**: [Vector](Vector.md)
@@ -26,7 +26,7 @@ node = nodes.VectorRotate(vector=None, center=None, axis=None, angle=None, rotat
 - **invert** (bool): default = False
 - **rotation_type** (str): default = 'AXIS_ANGLE' in ('AXIS_ANGLE', 'X_AXIS', 'Y_AXIS', 'Z_AXIS', 'EULER_XYZ')
 
-#### Output sockets:
+### Output sockets:
 
 - **vector** : [Vector](Vector.md)
 

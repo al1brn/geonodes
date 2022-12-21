@@ -13,7 +13,7 @@ from geonodes import nodes
 node = nodes.InstanceOnPoints(points=None, selection=None, instance=None, pick_instance=None, instance_index=None, rotation=None, scale=None)
 ```
 
-#### Input socket arguments:
+### Args:#### Input socket arguments:
 
 - **points**: [Points](Points.md)
 - **selection**: [Boolean](Boolean.md)
@@ -23,7 +23,7 @@ node = nodes.InstanceOnPoints(points=None, selection=None, instance=None, pick_i
 - **rotation**: [Vector](Vector.md)
 - **scale**: [Vector](Vector.md)
 
-#### Output sockets:
+### Output sockets:
 
 - **instances** : [Instances](Instances.md)
 

@@ -13,7 +13,7 @@ from geonodes import nodes
 node = nodes.GradientTexture(vector=None, gradient_type='LINEAR')
 ```
 
-#### Input socket arguments:
+### Args:#### Input socket arguments:
 
 - **vector**: [Vector](Vector.md)
 
@@ -21,7 +21,7 @@ node = nodes.GradientTexture(vector=None, gradient_type='LINEAR')
 
 - **gradient_type** (str): default = 'LINEAR' in ('LINEAR', 'QUADRATIC', 'EASING', 'DIAGONAL', 'SPHERICAL', 'QUADRATIC_SPHERE', 'RADIAL')
 
-#### Output sockets:
+### Output sockets:
 
 - **color** : [Color](Color.md)
 - **fac** : [Float](Float.md)

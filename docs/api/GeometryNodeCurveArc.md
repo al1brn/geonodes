@@ -13,7 +13,7 @@ from geonodes import nodes
 node = nodes.Arc(resolution=None, start=None, middle=None, end=None, radius=None, start_angle=None, sweep_angle=None, offset_angle=None, connect_center=None, invert_arc=None, mode='RADIUS')
 ```
 
-#### Input socket arguments:
+### Args:#### Input socket arguments:
 
 - **resolution**: [Integer](Integer.md)
 - **start**: [Vector](Vector.md)
@@ -30,7 +30,7 @@ node = nodes.Arc(resolution=None, start=None, middle=None, end=None, radius=None
 
 - **mode** (str): default = 'RADIUS' in ('POINTS', 'RADIUS')
 
-#### Output sockets:
+### Output sockets:
 
 - **curve** : [Curve](Curve.md)
 - **center** : [Vector](Vector.md)

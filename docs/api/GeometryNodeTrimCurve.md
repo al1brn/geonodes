@@ -13,7 +13,7 @@ from geonodes import nodes
 node = nodes.TrimCurve(curve=None, start0=None, start1=None, end0=None, end1=None, mode='FACTOR')
 ```
 
-#### Input socket arguments:
+### Args:#### Input socket arguments:
 
 - **curve**: [Curve](Curve.md)
 - **start0**: [Float](Float.md)
@@ -25,7 +25,7 @@ node = nodes.TrimCurve(curve=None, start0=None, start1=None, end0=None, end1=Non
 
 - **mode** (str): default = 'FACTOR' in ('FACTOR', 'LENGTH')
 
-#### Output sockets:
+### Output sockets:
 
 - **curve** : [Curve](Curve.md)
 

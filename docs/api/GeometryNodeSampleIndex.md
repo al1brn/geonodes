@@ -13,7 +13,7 @@ from geonodes import nodes
 node = nodes.SampleIndex(geometry=None, value=None, index=None, clamp=False, data_type='FLOAT', domain='POINT')
 ```
 
-#### Input socket arguments:
+### Args:#### Input socket arguments:
 
 - **geometry**: [Geometry](Geometry.md)
 - **value**: **data_type** dependant
@@ -25,7 +25,7 @@ node = nodes.SampleIndex(geometry=None, value=None, index=None, clamp=False, dat
 - **data_type** (str): default = 'FLOAT' in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN')
 - **domain** (str): default = 'POINT' in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
 
-#### Output sockets:
+### Output sockets:
 
 - **value** : ``data_type`` dependant
 

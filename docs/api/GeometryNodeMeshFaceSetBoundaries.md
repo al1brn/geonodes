@@ -13,11 +13,11 @@ from geonodes import nodes
 node = nodes.FaceSetBoundaries(face_set=None)
 ```
 
-#### Input socket arguments:
+### Args:#### Input socket arguments:
 
 - **face_set**: [Integer](Integer.md)
 
-#### Output sockets:
+### Output sockets:
 
 - **boundary_edges** : [Boolean](Boolean.md)
 

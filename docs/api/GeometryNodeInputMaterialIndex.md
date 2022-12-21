@@ -13,7 +13,7 @@ from geonodes import nodes
 node = nodes.MaterialIndex()
 ```
 
-#### Output sockets:
+### Output sockets:
 
 - **material_index** : [Integer](Integer.md)
 

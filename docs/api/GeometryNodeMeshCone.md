@@ -13,7 +13,7 @@ from geonodes import nodes
 node = nodes.Cone(vertices=None, side_segments=None, fill_segments=None, radius_top=None, radius_bottom=None, depth=None, fill_type='NGON')
 ```
 
-#### Input socket arguments:
+### Args:#### Input socket arguments:
 
 - **vertices**: [Integer](Integer.md)
 - **side_segments**: [Integer](Integer.md)
@@ -26,7 +26,7 @@ node = nodes.Cone(vertices=None, side_segments=None, fill_segments=None, radius_
 
 - **fill_type** (str): default = 'NGON' in ('NONE', 'NGON', 'TRIANGLE_FAN')
 
-#### Output sockets:
+### Output sockets:
 
 - **mesh** : [Mesh](Mesh.md)
 - **top** : [Boolean](Boolean.md)

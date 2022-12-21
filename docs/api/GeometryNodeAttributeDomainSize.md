@@ -13,7 +13,7 @@ from geonodes import nodes
 node = nodes.DomainSize(geometry=None, component='MESH')
 ```
 
-#### Input socket arguments:
+### Args:#### Input socket arguments:
 
 - **geometry**: [Geometry](Geometry.md)
 
@@ -21,7 +21,7 @@ node = nodes.DomainSize(geometry=None, component='MESH')
 
 - **component** (str): default = 'MESH' in ('MESH', 'POINTCLOUD', 'CURVE', 'INSTANCES')
 
-#### Output sockets:
+### Output sockets:
 
 - **point_count** : [Integer](Integer.md)
 - **edge_count** : [Integer](Integer.md)

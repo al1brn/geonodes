@@ -13,13 +13,13 @@ from geonodes import nodes
 node = nodes.ReplaceString(string=None, find=None, replace=None)
 ```
 
-#### Input socket arguments:
+### Args:#### Input socket arguments:
 
 - **string**: [String](String.md)
 - **find**: [String](String.md)
 - **replace**: [String](String.md)
 
-#### Output sockets:
+### Output sockets:
 
 - **string** : [String](String.md)
 

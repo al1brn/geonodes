@@ -13,7 +13,7 @@ from geonodes import nodes
 node = nodes.AccumulateField(value=None, group_index=None, data_type='FLOAT', domain='POINT')
 ```
 
-#### Input socket arguments:
+### Args:#### Input socket arguments:
 
 - **value**: **data_type** dependant
 - **group_index**: [Integer](Integer.md)
@@ -23,7 +23,7 @@ node = nodes.AccumulateField(value=None, group_index=None, data_type='FLOAT', do
 - **data_type** (str): default = 'FLOAT' in ('FLOAT', 'INT', 'FLOAT_VECTOR')
 - **domain** (str): default = 'POINT' in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
 
-#### Output sockets:
+### Output sockets:
 
 - **leading** : ``data_type`` dependant
 - **trailing** : ``data_type`` dependant

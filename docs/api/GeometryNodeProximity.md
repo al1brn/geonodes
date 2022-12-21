@@ -13,7 +13,7 @@ from geonodes import nodes
 node = nodes.GeometryProximity(target=None, source_position=None, target_element='FACES')
 ```
 
-#### Input socket arguments:
+### Args:#### Input socket arguments:
 
 - **target**: [Geometry](Geometry.md)
 - **source_position**: [Vector](Vector.md)
@@ -22,7 +22,7 @@ node = nodes.GeometryProximity(target=None, source_position=None, target_element
 
 - **target_element** (str): default = 'FACES' in ('POINTS', 'EDGES', 'FACES')
 
-#### Output sockets:
+### Output sockets:
 
 - **position** : [Vector](Vector.md)
 - **distance** : [Float](Float.md)

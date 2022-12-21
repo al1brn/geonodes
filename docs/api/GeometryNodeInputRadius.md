@@ -13,7 +13,7 @@ from geonodes import nodes
 node = nodes.Radius()
 ```
 
-#### Output sockets:
+### Output sockets:
 
 - **radius** : [Float](Float.md)
 

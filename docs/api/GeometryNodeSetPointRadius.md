@@ -13,13 +13,13 @@ from geonodes import nodes
 node = nodes.SetPointRadius(points=None, selection=None, radius=None)
 ```
 
-#### Input socket arguments:
+### Args:#### Input socket arguments:
 
 - **points**: [Points](Points.md)
 - **selection**: [Boolean](Boolean.md)
 - **radius**: [Float](Float.md)
 
-#### Output sockets:
+### Output sockets:
 
 - **points** : [Points](Points.md)
 

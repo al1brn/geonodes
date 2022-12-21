@@ -13,7 +13,7 @@ from geonodes import nodes
 node = nodes.ExtrudeMesh(mesh=None, selection=None, offset=None, offset_scale=None, individual=None, mode='FACES')
 ```
 
-#### Input socket arguments:
+### Args:#### Input socket arguments:
 
 - **mesh**: [Mesh](Mesh.md)
 - **selection**: [Boolean](Boolean.md)
@@ -25,7 +25,7 @@ node = nodes.ExtrudeMesh(mesh=None, selection=None, offset=None, offset_scale=No
 
 - **mode** (str): default = 'FACES' in ('VERTICES', 'EDGES', 'FACES')
 
-#### Output sockets:
+### Output sockets:
 
 - **mesh** : [Mesh](Mesh.md)
 - **top** : [Boolean](Boolean.md)

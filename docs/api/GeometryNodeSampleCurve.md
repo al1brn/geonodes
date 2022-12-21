@@ -13,7 +13,7 @@ from geonodes import nodes
 node = nodes.SampleCurve(curves=None, value=None, factor=None, length=None, curve_index=None, data_type='FLOAT', mode='FACTOR', use_all_curves=False)
 ```
 
-#### Input socket arguments:
+### Args:#### Input socket arguments:
 
 - **curves**: [Curve](Curve.md)
 - **value**: **data_type** dependant
@@ -27,7 +27,7 @@ node = nodes.SampleCurve(curves=None, value=None, factor=None, length=None, curv
 - **mode** (str): default = 'FACTOR' in ('FACTOR', 'LENGTH')
 - **use_all_curves** (bool): default = False
 
-#### Output sockets:
+### Output sockets:
 
 - **value** : ``data_type`` dependant
 - **position** : [Vector](Vector.md)

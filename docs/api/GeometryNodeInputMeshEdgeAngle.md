@@ -13,7 +13,7 @@ from geonodes import nodes
 node = nodes.EdgeAngle()
 ```
 
-#### Output sockets:
+### Output sockets:
 
 - **unsigned_angle** : [Float](Float.md)
 - **signed_angle** : [Float](Float.md)

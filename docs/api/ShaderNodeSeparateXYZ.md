@@ -13,11 +13,11 @@ from geonodes import nodes
 node = nodes.SeparateXyz(vector=None)
 ```
 
-#### Input socket arguments:
+### Args:#### Input socket arguments:
 
 - **vector**: [Vector](Vector.md)
 
-#### Output sockets:
+### Output sockets:
 
 - **x** : [Float](Float.md)
 - **y** : [Float](Float.md)

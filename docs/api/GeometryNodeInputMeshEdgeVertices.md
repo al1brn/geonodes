@@ -13,7 +13,7 @@ from geonodes import nodes
 node = nodes.EdgeVertices()
 ```
 
-#### Output sockets:
+### Output sockets:
 
 - **vertex_index_1** : [Integer](Integer.md)
 - **vertex_index_2** : [Integer](Integer.md)

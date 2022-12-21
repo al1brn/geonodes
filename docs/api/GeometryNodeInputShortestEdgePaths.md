@@ -13,12 +13,12 @@ from geonodes import nodes
 node = nodes.ShortestEdgePaths(end_vertex=None, edge_cost=None)
 ```
 
-#### Input socket arguments:
+### Args:#### Input socket arguments:
 
 - **end_vertex**: [Boolean](Boolean.md)
 - **edge_cost**: [Float](Float.md)
 
-#### Output sockets:
+### Output sockets:
 
 - **next_vertex_index** : [Integer](Integer.md)
 - **total_cost** : [Float](Float.md)

@@ -13,7 +13,7 @@ from geonodes import nodes
 node = nodes.CurveTangent()
 ```
 
-#### Output sockets:
+### Output sockets:
 
 - **tangent** : [Vector](Vector.md)
 

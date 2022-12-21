@@ -13,7 +13,7 @@ from geonodes import nodes
 node = nodes.WaveTexture(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, bands_direction='X', rings_direction='X', wave_profile='SIN', wave_type='BANDS')
 ```
 
-#### Input socket arguments:
+### Args:#### Input socket arguments:
 
 - **vector**: [Vector](Vector.md)
 - **scale**: [Float](Float.md)
@@ -30,7 +30,7 @@ node = nodes.WaveTexture(vector=None, scale=None, distortion=None, detail=None, 
 - **wave_profile** (str): default = 'SIN' in ('SIN', 'SAW', 'TRI')
 - **wave_type** (str): default = 'BANDS' in ('BANDS', 'RINGS')
 
-#### Output sockets:
+### Output sockets:
 
 - **color** : [Color](Color.md)
 - **fac** : [Float](Float.md)

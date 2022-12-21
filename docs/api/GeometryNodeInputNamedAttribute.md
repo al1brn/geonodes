@@ -13,7 +13,7 @@ from geonodes import nodes
 node = nodes.NamedAttribute(name=None, data_type='FLOAT')
 ```
 
-#### Input socket arguments:
+### Args:#### Input socket arguments:
 
 - **name**: [String](String.md)
 
@@ -21,7 +21,7 @@ node = nodes.NamedAttribute(name=None, data_type='FLOAT')
 
 - **data_type** (str): default = 'FLOAT' in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN')
 
-#### Output sockets:
+### Output sockets:
 
 - **attribute** : ``data_type`` dependant
 

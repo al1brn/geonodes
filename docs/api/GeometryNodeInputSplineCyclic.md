@@ -13,7 +13,7 @@ from geonodes import nodes
 node = nodes.IsSplineCyclic()
 ```
 
-#### Output sockets:
+### Output sockets:
 
 - **cyclic** : [Boolean](Boolean.md)
 

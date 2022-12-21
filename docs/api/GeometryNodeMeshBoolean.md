@@ -13,7 +13,7 @@ from geonodes import nodes
 node = nodes.MeshBoolean(*mesh_2, mesh_1=None, self_intersection=None, hole_tolerant=None, operation='DIFFERENCE')
 ```
 
-#### Input socket arguments:
+### Args:#### Input socket arguments:
 
 - **mesh_1**: [Geometry](Geometry.md)
 - **mesh_2**: *[Geometry](Geometry.md)
@@ -24,7 +24,7 @@ node = nodes.MeshBoolean(*mesh_2, mesh_1=None, self_intersection=None, hole_tole
 
 - **operation** (str): default = 'DIFFERENCE' in ('INTERSECT', 'UNION', 'DIFFERENCE')
 
-#### Output sockets:
+### Output sockets:
 
 - **mesh** : [Mesh](Mesh.md)
 - **intersecting_edges** : [Boolean](Boolean.md)

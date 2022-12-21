@@ -13,7 +13,7 @@ from geonodes import nodes
 node = nodes.PointsToVolume(points=None, density=None, voxel_size=None, voxel_amount=None, radius=None, resolution_mode='VOXEL_AMOUNT')
 ```
 
-#### Input socket arguments:
+### Args:#### Input socket arguments:
 
 - **points**: [Points](Points.md)
 - **density**: [Float](Float.md)
@@ -25,7 +25,7 @@ node = nodes.PointsToVolume(points=None, density=None, voxel_size=None, voxel_am
 
 - **resolution_mode** (str): default = 'VOXEL_AMOUNT' in ('VOXEL_AMOUNT', 'VOXEL_SIZE')
 
-#### Output sockets:
+### Output sockets:
 
 - **volume** : [Volume](Volume.md)
 

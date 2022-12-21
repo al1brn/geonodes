@@ -13,7 +13,7 @@ from geonodes import nodes
 node = nodes.CombineColor(red=None, green=None, blue=None, alpha=None, mode='RGB')
 ```
 
-#### Input socket arguments:
+### Args:#### Input socket arguments:
 
 - **red**: [Float](Float.md)
 - **green**: [Float](Float.md)
@@ -24,7 +24,7 @@ node = nodes.CombineColor(red=None, green=None, blue=None, alpha=None, mode='RGB
 
 - **mode** (str): default = 'RGB' in ('RGB', 'HSV', 'HSL')
 
-#### Output sockets:
+### Output sockets:
 
 - **color** : [Color](Color.md)
 

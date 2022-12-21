@@ -13,13 +13,13 @@ from geonodes import nodes
 node = nodes.SetSplineResolution(geometry=None, selection=None, resolution=None)
 ```
 
-#### Input socket arguments:
+### Args:#### Input socket arguments:
 
 - **geometry**: [Geometry](Geometry.md)
 - **selection**: [Boolean](Boolean.md)
 - **resolution**: [Integer](Integer.md)
 
-#### Output sockets:
+### Output sockets:
 
 - **geometry** : [Geometry](Geometry.md)
 

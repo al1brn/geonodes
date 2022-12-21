@@ -13,11 +13,11 @@ from geonodes import nodes
 node = nodes.GeometryToInstance(*geometry)
 ```
 
-#### Input socket arguments:
+### Args:#### Input socket arguments:
 
 - **geometry**: *[Geometry](Geometry.md)
 
-#### Output sockets:
+### Output sockets:
 
 - **instances** : [Instances](Instances.md)
 

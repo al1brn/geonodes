@@ -13,13 +13,13 @@ from geonodes import nodes
 node = nodes.Points(count=None, position=None, radius=None)
 ```
 
-#### Input socket arguments:
+### Args:#### Input socket arguments:
 
 - **count**: [Integer](Integer.md)
 - **position**: [Vector](Vector.md)
 - **radius**: [Float](Float.md)
 
-#### Output sockets:
+### Output sockets:
 
 - **geometry** : [Geometry](Geometry.md)
 

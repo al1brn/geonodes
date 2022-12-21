@@ -13,11 +13,11 @@ from geonodes import nodes
 node = nodes.Boolean(boolean=False)
 ```
 
-#### Node parameter arguments:
+### Args:#### Node parameter arguments:
 
 - **boolean** (bool): default = False
 
-#### Output sockets:
+### Output sockets:
 
 - **boolean** : [Boolean](Boolean.md)
 

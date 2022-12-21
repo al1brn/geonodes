@@ -13,7 +13,7 @@ from geonodes import nodes
 node = nodes.VertexNeighbors()
 ```
 
-#### Output sockets:
+### Output sockets:
 
 - **vertex_count** : [Integer](Integer.md)
 - **face_count** : [Integer](Integer.md)

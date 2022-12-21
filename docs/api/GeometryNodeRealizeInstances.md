@@ -13,7 +13,7 @@ from geonodes import nodes
 node = nodes.RealizeInstances(geometry=None, legacy_behavior=False)
 ```
 
-#### Input socket arguments:
+### Args:#### Input socket arguments:
 
 - **geometry**: [Geometry](Geometry.md)
 
@@ -21,7 +21,7 @@ node = nodes.RealizeInstances(geometry=None, legacy_behavior=False)
 
 - **legacy_behavior** (bool): default = False
 
-#### Output sockets:
+### Output sockets:
 
 - **geometry** : [Geometry](Geometry.md)
 

@@ -13,7 +13,7 @@ from geonodes import nodes
 node = nodes.GroupOutput(geometry=None, is_active_output=True)
 ```
 
-#### Input socket arguments:
+### Args:#### Input socket arguments:
 
 - **geometry**: [Geometry](Geometry.md)
 

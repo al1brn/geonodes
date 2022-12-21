@@ -13,7 +13,7 @@ from geonodes import nodes
 node = nodes.InstanceScale()
 ```
 
-#### Output sockets:
+### Output sockets:
 
 - **scale** : [Vector](Vector.md)
 

@@ -13,7 +13,7 @@ from geonodes import nodes
 node = nodes.VectorMath(vector0=None, vector1=None, vector2=None, scale=None, operation='ADD')
 ```
 
-#### Input socket arguments:
+### Args:#### Input socket arguments:
 
 - **vector0**: [Vector](Vector.md)
 - **vector1**: [Vector](Vector.md)
@@ -24,7 +24,7 @@ node = nodes.VectorMath(vector0=None, vector1=None, vector2=None, scale=None, op
 
 - **operation** (str): default = 'ADD' in ('ADD', 'SUBTRACT', 'MULTIPLY', 'DIVIDE', 'MULTIPLY_ADD', 'CROSS_PRODUCT', 'PROJECT', 'REFLECT', 'REFRACT', 'FACEFORWARD', 'DOT_PRODUCT', 'DISTANCE', 'LENGTH', 'SCALE', 'NORMALIZE', 'ABSOLUTE', 'MINIMUM', 'MAXIMUM', 'FLOOR', 'CEIL', 'FRACTION', 'MODULO', 'WRAP', 'SNAP', 'SINE', 'COSINE', 'TANGENT')
 
-#### Output sockets:
+### Output sockets:
 
 - **vector** : [Vector](Vector.md)
 - **value** : [Float](Float.md)

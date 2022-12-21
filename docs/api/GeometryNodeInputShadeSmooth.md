@@ -13,7 +13,7 @@ from geonodes import nodes
 node = nodes.IsShadeSmooth()
 ```
 
-#### Output sockets:
+### Output sockets:
 
 - **smooth** : [Boolean](Boolean.md)
 

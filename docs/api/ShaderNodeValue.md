@@ -13,7 +13,7 @@ from geonodes import nodes
 node = nodes.Value()
 ```
 
-#### Output sockets:
+### Output sockets:
 
 - **value** : [Float](Float.md)
 

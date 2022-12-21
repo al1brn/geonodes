@@ -13,7 +13,7 @@ from geonodes import nodes
 node = nodes.Math(value0=None, value1=None, value2=None, operation='ADD', use_clamp=False)
 ```
 
-#### Input socket arguments:
+### Args:#### Input socket arguments:
 
 - **value0**: [Float](Float.md)
 - **value1**: [Float](Float.md)
@@ -24,7 +24,7 @@ node = nodes.Math(value0=None, value1=None, value2=None, operation='ADD', use_cl
 - **operation** (str): default = 'ADD' in ('ADD', 'SUBTRACT', 'MULTIPLY', 'DIVIDE', 'MULTIPLY_ADD', 'POWER', 'LOGARITHM', 'SQRT', 'INVERSE_SQRT', 'ABSOLUTE', 'EXPONENT', 'MINIMUM', 'MAXIMUM', 'LESS_THAN', 'GREATER_THAN', 'SIGN', 'COMPARE', 'SMOOTH_MIN', 'SMOOTH_MAX', 'ROUND', 'FLOOR', 'CEIL', 'TRUNC', 'FRACT', 'MODULO', 'WRAP', 'SNAP', 'PINGPONG', 'SINE', 'COSINE', 'TANGENT', 'ARCSINE', 'ARCCOSINE', 'ARCTANGENT', 'ARCTAN2', 'SINH', 'COSH', 'TANH', 'RADIANS', 'DEGREES')
 - **use_clamp** (bool): default = False
 
-#### Output sockets:
+### Output sockets:
 
 - **value** : [Float](Float.md)
 

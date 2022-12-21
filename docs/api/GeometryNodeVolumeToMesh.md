@@ -13,7 +13,7 @@ from geonodes import nodes
 node = nodes.VolumeToMesh(volume=None, voxel_size=None, voxel_amount=None, threshold=None, adaptivity=None, resolution_mode='GRID')
 ```
 
-#### Input socket arguments:
+### Args:#### Input socket arguments:
 
 - **volume**: [Volume](Volume.md)
 - **voxel_size**: [Float](Float.md)
@@ -25,7 +25,7 @@ node = nodes.VolumeToMesh(volume=None, voxel_size=None, voxel_amount=None, thres
 
 - **resolution_mode** (str): default = 'GRID' in ('GRID', 'VOXEL_AMOUNT', 'VOXEL_SIZE')
 
-#### Output sockets:
+### Output sockets:
 
 - **mesh** : [Mesh](Mesh.md)
 

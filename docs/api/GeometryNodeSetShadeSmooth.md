@@ -13,13 +13,13 @@ from geonodes import nodes
 node = nodes.SetShadeSmooth(geometry=None, selection=None, shade_smooth=None)
 ```
 
-#### Input socket arguments:
+### Args:#### Input socket arguments:
 
 - **geometry**: [Geometry](Geometry.md)
 - **selection**: [Boolean](Boolean.md)
 - **shade_smooth**: [Boolean](Boolean.md)
 
-#### Output sockets:
+### Output sockets:
 
 - **geometry** : [Geometry](Geometry.md)
 

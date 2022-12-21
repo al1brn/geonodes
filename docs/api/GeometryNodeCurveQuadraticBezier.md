@@ -13,14 +13,14 @@ from geonodes import nodes
 node = nodes.QuadraticBezier(resolution=None, start=None, middle=None, end=None)
 ```
 
-#### Input socket arguments:
+### Args:#### Input socket arguments:
 
 - **resolution**: [Integer](Integer.md)
 - **start**: [Vector](Vector.md)
 - **middle**: [Vector](Vector.md)
 - **end**: [Vector](Vector.md)
 
-#### Output sockets:
+### Output sockets:
 
 - **curve** : [Curve](Curve.md)
 

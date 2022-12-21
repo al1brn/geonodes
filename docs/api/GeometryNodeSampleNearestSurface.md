@@ -13,7 +13,7 @@ from geonodes import nodes
 node = nodes.SampleNearestSurface(mesh=None, value=None, sample_position=None, data_type='FLOAT')
 ```
 
-#### Input socket arguments:
+### Args:#### Input socket arguments:
 
 - **mesh**: [Mesh](Mesh.md)
 - **value**: **data_type** dependant
@@ -23,7 +23,7 @@ node = nodes.SampleNearestSurface(mesh=None, value=None, sample_position=None, d
 
 - **data_type** (str): default = 'FLOAT' in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN')
 
-#### Output sockets:
+### Output sockets:
 
 - **value** : ``data_type`` dependant
 

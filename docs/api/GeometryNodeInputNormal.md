@@ -13,7 +13,7 @@ from geonodes import nodes
 node = nodes.Normal()
 ```
 
-#### Output sockets:
+### Output sockets:
 
 - **normal** : [Vector](Vector.md)
 

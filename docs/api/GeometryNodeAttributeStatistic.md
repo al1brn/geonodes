@@ -13,7 +13,7 @@ from geonodes import nodes
 node = nodes.AttributeStatistic(geometry=None, selection=None, attribute=None, data_type='FLOAT', domain='POINT')
 ```
 
-#### Input socket arguments:
+### Args:#### Input socket arguments:
 
 - **geometry**: [Geometry](Geometry.md)
 - **selection**: [Boolean](Boolean.md)
@@ -24,7 +24,7 @@ node = nodes.AttributeStatistic(geometry=None, selection=None, attribute=None, d
 - **data_type** (str): default = 'FLOAT' in ('FLOAT', 'FLOAT_VECTOR')
 - **domain** (str): default = 'POINT' in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
 
-#### Output sockets:
+### Output sockets:
 
 - **mean** : ``data_type`` dependant
 - **median** : ``data_type`` dependant

@@ -13,7 +13,7 @@ from geonodes import nodes
 node = nodes.MeshCircle(vertices=None, radius=None, fill_type='NONE')
 ```
 
-#### Input socket arguments:
+### Args:#### Input socket arguments:
 
 - **vertices**: [Integer](Integer.md)
 - **radius**: [Float](Float.md)
@@ -22,7 +22,7 @@ node = nodes.MeshCircle(vertices=None, radius=None, fill_type='NONE')
 
 - **fill_type** (str): default = 'NONE' in ('NONE', 'NGON', 'TRIANGLE_FAN')
 
-#### Output sockets:
+### Output sockets:
 
 - **mesh** : [Mesh](Mesh.md)
 

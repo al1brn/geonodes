@@ -13,7 +13,7 @@ from geonodes import nodes
 node = nodes.CurveCircle(resolution=None, point_1=None, point_2=None, point_3=None, radius=None, mode='RADIUS')
 ```
 
-#### Input socket arguments:
+### Args:#### Input socket arguments:
 
 - **resolution**: [Integer](Integer.md)
 - **point_1**: [Vector](Vector.md)
@@ -25,7 +25,7 @@ node = nodes.CurveCircle(resolution=None, point_1=None, point_2=None, point_3=No
 
 - **mode** (str): default = 'RADIUS' in ('POINTS', 'RADIUS')
 
-#### Output sockets:
+### Output sockets:
 
 - **curve** : [Curve](Curve.md)
 - **center** : [Vector](Vector.md)

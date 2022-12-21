@@ -13,7 +13,7 @@ from geonodes import nodes
 node = nodes.Color()
 ```
 
-#### Output sockets:
+### Output sockets:
 
 - **color** : [Color](Color.md)
 

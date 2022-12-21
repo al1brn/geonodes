@@ -13,13 +13,13 @@ from geonodes import nodes
 node = nodes.CombineXyz(x=None, y=None, z=None)
 ```
 
-#### Input socket arguments:
+### Args:#### Input socket arguments:
 
 - **x**: [Float](Float.md)
 - **y**: [Float](Float.md)
 - **z**: [Float](Float.md)
 
-#### Output sockets:
+### Output sockets:
 
 - **vector** : [Vector](Vector.md)
 

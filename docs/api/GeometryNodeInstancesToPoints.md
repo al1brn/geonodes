@@ -13,14 +13,14 @@ from geonodes import nodes
 node = nodes.InstancesToPoints(instances=None, selection=None, position=None, radius=None)
 ```
 
-#### Input socket arguments:
+### Args:#### Input socket arguments:
 
 - **instances**: [Instances](Instances.md)
 - **selection**: [Boolean](Boolean.md)
 - **position**: [Vector](Vector.md)
 - **radius**: [Float](Float.md)
 
-#### Output sockets:
+### Output sockets:
 
 - **points** : [Points](Points.md)
 

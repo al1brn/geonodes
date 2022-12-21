@@ -13,7 +13,7 @@ from geonodes import nodes
 node = nodes.MeshIsland()
 ```
 
-#### Output sockets:
+### Output sockets:
 
 - **island_index** : [Integer](Integer.md)
 - **island_count** : [Integer](Integer.md)

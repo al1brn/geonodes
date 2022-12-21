@@ -13,14 +13,14 @@ from geonodes import nodes
 node = nodes.CheckerTexture(vector=None, color1=None, color2=None, scale=None)
 ```
 
-#### Input socket arguments:
+### Args:#### Input socket arguments:
 
 - **vector**: [Vector](Vector.md)
 - **color1**: [Color](Color.md)
 - **color2**: [Color](Color.md)
 - **scale**: [Float](Float.md)
 
-#### Output sockets:
+### Output sockets:
 
 - **color** : [Color](Color.md)
 - **fac** : [Float](Float.md)

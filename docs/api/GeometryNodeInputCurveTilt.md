@@ -13,7 +13,7 @@ from geonodes import nodes
 node = nodes.CurveTilt()
 ```
 
-#### Output sockets:
+### Output sockets:
 
 - **tilt** : [Float](Float.md)
 

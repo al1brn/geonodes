@@ -13,7 +13,7 @@ from geonodes import nodes
 node = nodes.SelfObject()
 ```
 
-#### Output sockets:
+### Output sockets:
 
 - **self_object** : [Object](Object.md)
 

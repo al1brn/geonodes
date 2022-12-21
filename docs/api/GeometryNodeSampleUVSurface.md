@@ -13,7 +13,7 @@ from geonodes import nodes
 node = nodes.SampleUvSurface(mesh=None, value=None, source_uv_map=None, sample_uv=None, data_type='FLOAT')
 ```
 
-#### Input socket arguments:
+### Args:#### Input socket arguments:
 
 - **mesh**: [Mesh](Mesh.md)
 - **value**: **data_type** dependant
@@ -24,7 +24,7 @@ node = nodes.SampleUvSurface(mesh=None, value=None, source_uv_map=None, sample_u
 
 - **data_type** (str): default = 'FLOAT' in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN')
 
-#### Output sockets:
+### Output sockets:
 
 - **value** : ``data_type`` dependant
 - **is_valid** : [Boolean](Boolean.md)

@@ -13,7 +13,7 @@ from geonodes import nodes
 node = nodes.EdgeNeighbors()
 ```
 
-#### Output sockets:
+### Output sockets:
 
 - **face_count** : [Integer](Integer.md)
 

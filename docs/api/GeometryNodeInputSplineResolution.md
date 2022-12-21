@@ -13,7 +13,7 @@ from geonodes import nodes
 node = nodes.SplineResolution()
 ```
 
-#### Output sockets:
+### Output sockets:
 
 - **resolution** : [Integer](Integer.md)
 

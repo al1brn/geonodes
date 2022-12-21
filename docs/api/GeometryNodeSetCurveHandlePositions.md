@@ -13,7 +13,7 @@ from geonodes import nodes
 node = nodes.SetHandlePositions(curve=None, selection=None, position=None, offset=None, mode='LEFT')
 ```
 
-#### Input socket arguments:
+### Args:#### Input socket arguments:
 
 - **curve**: [Curve](Curve.md)
 - **selection**: [Boolean](Boolean.md)
@@ -24,7 +24,7 @@ node = nodes.SetHandlePositions(curve=None, selection=None, position=None, offse
 
 - **mode** (str): default = 'LEFT' in ('LEFT', 'RIGHT')
 
-#### Output sockets:
+### Output sockets:
 
 - **curve** : [Curve](Curve.md)
 
