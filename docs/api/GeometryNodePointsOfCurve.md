@@ -30,7 +30,13 @@ node = nodes.PointsOfCurve(curve_index=None, weights=None, sort_index=None)
 
 #### [Curve](Curve.md)
 
- - [points_of_curve](Curve.md#points_of_curve) ```python nodes.PointsOfCurve(curve_index=curve_index, weights=weights, sort_index=sort_index````
+ - [points_of_curve](Curve.md#points_of_curve)
+  ```python
+  nodes.PointsOfCurve(curve_index=curve_index, weights=weights, sort_index=sort_index  ```
+
 #### [Spline](Spline.md)
 
- - [points](Spline.md#points) ```python nodes.PointsOfCurve(curve_index=self.selection_index, weights=weights, sort_index=sort_index````
+ - [points](Spline.md#points)
+  ```python
+  nodes.PointsOfCurve(curve_index=self.selection_index, weights=weights, sort_index=sort_index  ```
+

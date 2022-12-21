@@ -27,4 +27,7 @@ node = nodes.Integer(integer=0)
 
 #### [Integer](Integer.md)
 
- - [Integer](Integer.md#Integer-classmethod) ```python nodes.Integer(integer=integer````
+ - [Integer](Integer.md#Integer-classmethod)
+  ```python
+  nodes.Integer(integer=integer  ```
+

@@ -36,8 +36,23 @@ node = nodes.VectorRotate(vector=None, center=None, axis=None, angle=None, rotat
 
 #### [Vector](Vector.md)
 
- - [rotate_euler](Vector.md#rotate_euler) ```python nodes.VectorRotate(vector=self, center=center, axis=None, angle=None, rotation=rotation, invert=invert, rotation_type='EULER_XYZ'````
- - [rotate_axis_angle](Vector.md#rotate_axis_angle) ```python nodes.VectorRotate(vector=self, center=center, axis=axis, angle=angle, rotation=None, invert=invert, rotation_type='AXIS_ANGLE'````
- - [rotate_x](Vector.md#rotate_x) ```python nodes.VectorRotate(vector=self, center=center, axis=None, angle=angle, rotation=None, invert=invert, rotation_type='X_AXIS'````
- - [rotate_y](Vector.md#rotate_y) ```python nodes.VectorRotate(vector=self, center=center, axis=None, angle=angle, rotation=None, invert=invert, rotation_type='Y_AXIS'````
- - [rotate_z](Vector.md#rotate_z) ```python nodes.VectorRotate(vector=self, center=center, axis=None, angle=angle, rotation=None, invert=invert, rotation_type='Z_AXIS'````
+ - [rotate_euler](Vector.md#rotate_euler)
+  ```python
+  nodes.VectorRotate(vector=self, center=center, axis=None, angle=None, rotation=rotation, invert=invert, rotation_type='EULER_XYZ'  ```
+
+ - [rotate_axis_angle](Vector.md#rotate_axis_angle)
+  ```python
+  nodes.VectorRotate(vector=self, center=center, axis=axis, angle=angle, rotation=None, invert=invert, rotation_type='AXIS_ANGLE'  ```
+
+ - [rotate_x](Vector.md#rotate_x)
+  ```python
+  nodes.VectorRotate(vector=self, center=center, axis=None, angle=angle, rotation=None, invert=invert, rotation_type='X_AXIS'  ```
+
+ - [rotate_y](Vector.md#rotate_y)
+  ```python
+  nodes.VectorRotate(vector=self, center=center, axis=None, angle=angle, rotation=None, invert=invert, rotation_type='Y_AXIS'  ```
+
+ - [rotate_z](Vector.md#rotate_z)
+  ```python
+  nodes.VectorRotate(vector=self, center=center, axis=None, angle=angle, rotation=None, invert=invert, rotation_type='Z_AXIS'  ```
+

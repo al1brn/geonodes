@@ -36,46 +36,103 @@ node = nodes.DomainSize(geometry=None, component='MESH')
 
 #### [CloudPoint](CloudPoint.md)
 
- - [domain_size](CloudPoint.md#domain_size) ```python nodes.DomainSize(geometry=geometry, component=component````
+ - [domain_size](CloudPoint.md#domain_size)
+  ```python
+  nodes.DomainSize(geometry=geometry, component=component  ```
+
 #### [ControlPoint](ControlPoint.md)
 
- - [domain_size](ControlPoint.md#domain_size) ```python nodes.DomainSize(geometry=geometry, component=component````
+ - [domain_size](ControlPoint.md#domain_size)
+  ```python
+  nodes.DomainSize(geometry=geometry, component=component  ```
+
 #### [Corner](Corner.md)
 
- - [domain_size](Corner.md#domain_size) ```python nodes.DomainSize(geometry=geometry, component=component````
+ - [domain_size](Corner.md#domain_size)
+  ```python
+  nodes.DomainSize(geometry=geometry, component=component  ```
+
 #### [Curve](Curve.md)
 
- - [domain_size](Curve.md#domain_size-property) ```python nodes.DomainSize(geometry=self, component='CURVE'````
- - [point_count](Curve.md#point_count-property) ```python nodes.DomainSize(geometry=self, component='CURVE'````
- - [spline_count](Curve.md#spline_count-property) ```python nodes.DomainSize(geometry=self, component='CURVE'````
+ - [domain_size](Curve.md#domain_size-property)
+  ```python
+  nodes.DomainSize(geometry=self, component='CURVE'  ```
+
+ - [point_count](Curve.md#point_count-property)
+  ```python
+  nodes.DomainSize(geometry=self, component='CURVE'  ```
+
+ - [spline_count](Curve.md#spline_count-property)
+  ```python
+  nodes.DomainSize(geometry=self, component='CURVE'  ```
+
 #### [Edge](Edge.md)
 
- - [domain_size](Edge.md#domain_size) ```python nodes.DomainSize(geometry=geometry, component=component````
+ - [domain_size](Edge.md#domain_size)
+  ```python
+  nodes.DomainSize(geometry=geometry, component=component  ```
+
 #### [Face](Face.md)
 
- - [domain_size](Face.md#domain_size) ```python nodes.DomainSize(geometry=geometry, component=component````
+ - [domain_size](Face.md#domain_size)
+  ```python
+  nodes.DomainSize(geometry=geometry, component=component  ```
+
 #### [Geometry](Geometry.md)
 
- - [domain_size](Geometry.md#domain_size-property) ```python nodes.DomainSize(geometry=self, component=component````
+ - [domain_size](Geometry.md#domain_size-property)
+  ```python
+  nodes.DomainSize(geometry=self, component=component  ```
+
 #### [Instance](Instance.md)
 
- - [domain_size](Instance.md#domain_size) ```python nodes.DomainSize(geometry=geometry, component=component````
+ - [domain_size](Instance.md#domain_size)
+  ```python
+  nodes.DomainSize(geometry=geometry, component=component  ```
+
 #### [Instances](Instances.md)
 
- - [domain_size](Instances.md#domain_size-property) ```python nodes.DomainSize(geometry=self, component='INSTANCES'````
+ - [domain_size](Instances.md#domain_size-property)
+  ```python
+  nodes.DomainSize(geometry=self, component='INSTANCES'  ```
+
 #### [Mesh](Mesh.md)
 
- - [domain_size](Mesh.md#domain_size-property) ```python nodes.DomainSize(geometry=self, component='MESH'````
- - [point_count](Mesh.md#point_count-property) ```python nodes.DomainSize(geometry=self, component='MESH'````
- - [face_count](Mesh.md#face_count-property) ```python nodes.DomainSize(geometry=self, component='MESH'````
- - [edge_count](Mesh.md#edge_count-property) ```python nodes.DomainSize(geometry=self, component='MESH'````
- - [corner_count](Mesh.md#corner_count-property) ```python nodes.DomainSize(geometry=self, component='MESH'````
+ - [domain_size](Mesh.md#domain_size-property)
+  ```python
+  nodes.DomainSize(geometry=self, component='MESH'  ```
+
+ - [point_count](Mesh.md#point_count-property)
+  ```python
+  nodes.DomainSize(geometry=self, component='MESH'  ```
+
+ - [face_count](Mesh.md#face_count-property)
+  ```python
+  nodes.DomainSize(geometry=self, component='MESH'  ```
+
+ - [edge_count](Mesh.md#edge_count-property)
+  ```python
+  nodes.DomainSize(geometry=self, component='MESH'  ```
+
+ - [corner_count](Mesh.md#corner_count-property)
+  ```python
+  nodes.DomainSize(geometry=self, component='MESH'  ```
+
 #### [Points](Points.md)
 
- - [domain_size](Points.md#domain_size-property) ```python nodes.DomainSize(geometry=self, component='POINTCLOUD'````
+ - [domain_size](Points.md#domain_size-property)
+  ```python
+  nodes.DomainSize(geometry=self, component='POINTCLOUD'  ```
+
 #### [Spline](Spline.md)
 
- - [domain_size](Spline.md#domain_size) ```python nodes.DomainSize(geometry=geometry, component=component````
+ - [domain_size](Spline.md#domain_size)
+  ```python
+  nodes.DomainSize(geometry=geometry, component=component  ```
+
 #### [Vertex](Vertex.md)
 
- - [domain_size](Vertex.md#domain_size) ```python nodes.DomainSize(geometry=geometry, component=component````
+ - [domain_size](Vertex.md#domain_size)
+  ```python
+  nodes.DomainSize(geometry=geometry, component=component  ```
+

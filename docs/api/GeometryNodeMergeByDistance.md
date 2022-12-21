@@ -33,7 +33,13 @@ node = nodes.MergeByDistance(geometry=None, selection=None, distance=None, mode=
 
 #### [Geometry](Geometry.md)
 
- - [merge_by_distance](Geometry.md#merge_by_distance) ```python nodes.MergeByDistance(geometry=self, selection=selection, distance=distance, mode=mode````
+ - [merge_by_distance](Geometry.md#merge_by_distance)
+  ```python
+  nodes.MergeByDistance(geometry=self, selection=selection, distance=distance, mode=mode  ```
+
 #### [Vertex](Vertex.md)
 
- - [merge_by_distance](Vertex.md#merge_by_distance) ```python nodes.MergeByDistance(geometry=self.data_socket, selection=self.selection, distance=distance, mode=mode````
+ - [merge_by_distance](Vertex.md#merge_by_distance)
+  ```python
+  nodes.MergeByDistance(geometry=self.data_socket, selection=self.selection, distance=distance, mode=mode  ```
+

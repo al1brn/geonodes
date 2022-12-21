@@ -33,4 +33,7 @@ node = nodes.VolumeCube(density=None, background=None, min=None, max=None, resol
 
 #### [Volume](Volume.md)
 
- - [Cube](Volume.md#Cube-classmethod) ```python nodes.VolumeCube(density=density, background=background, min=min, max=max, resolution_x=resolution_x, resolution_y=resolution_y, resolution_z=resolution_z````
+ - [Cube](Volume.md#Cube-classmethod)
+  ```python
+  nodes.VolumeCube(density=density, background=background, min=min, max=max, resolution_x=resolution_x, resolution_y=resolution_y, resolution_z=resolution_z  ```
+

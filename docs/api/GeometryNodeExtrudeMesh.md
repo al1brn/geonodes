@@ -37,13 +37,25 @@ node = nodes.ExtrudeMesh(mesh=None, selection=None, offset=None, offset_scale=No
 
 #### [Edge](Edge.md)
 
- - [extrude](Edge.md#extrude) ```python nodes.ExtrudeMesh(mesh=self.data_socket, selection=self.selection, offset=offset, offset_scale=offset_scale, individual=individual, mode='EDGES'````
+ - [extrude](Edge.md#extrude)
+  ```python
+  nodes.ExtrudeMesh(mesh=self.data_socket, selection=self.selection, offset=offset, offset_scale=offset_scale, individual=individual, mode='EDGES'  ```
+
 #### [Face](Face.md)
 
- - [extrude](Face.md#extrude) ```python nodes.ExtrudeMesh(mesh=self.data_socket, selection=self.selection, offset=offset, offset_scale=offset_scale, individual=individual, mode='FACES'````
+ - [extrude](Face.md#extrude)
+  ```python
+  nodes.ExtrudeMesh(mesh=self.data_socket, selection=self.selection, offset=offset, offset_scale=offset_scale, individual=individual, mode='FACES'  ```
+
 #### [Mesh](Mesh.md)
 
- - [extrude](Mesh.md#extrude) ```python nodes.ExtrudeMesh(mesh=self, selection=selection, offset=offset, offset_scale=offset_scale, individual=individual, mode=mode````
+ - [extrude](Mesh.md#extrude)
+  ```python
+  nodes.ExtrudeMesh(mesh=self, selection=selection, offset=offset, offset_scale=offset_scale, individual=individual, mode=mode  ```
+
 #### [Vertex](Vertex.md)
 
- - [extrude](Vertex.md#extrude) ```python nodes.ExtrudeMesh(mesh=self.data_socket, selection=self.selection, offset=offset, offset_scale=offset_scale, individual=individual, mode='VERTICES'````
+ - [extrude](Vertex.md#extrude)
+  ```python
+  nodes.ExtrudeMesh(mesh=self.data_socket, selection=self.selection, offset=offset, offset_scale=offset_scale, individual=individual, mode='VERTICES'  ```
+

@@ -28,4 +28,7 @@ node = nodes.FloatCurve(factor=None, value=None)
 
 #### [Float](Float.md)
 
- - [float_curve](Float.md#float_curve) ```python nodes.FloatCurve(factor=factor, value=self````
+ - [float_curve](Float.md#float_curve)
+  ```python
+  nodes.FloatCurve(factor=factor, value=self  ```
+

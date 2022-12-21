@@ -29,6 +29,15 @@ node = nodes.BoundingBox(geometry=None)
 
 #### [Geometry](Geometry.md)
 
- - [bounding_box](Geometry.md#bounding_box-property) ```python nodes.BoundingBox(geometry=self````
- - [bounding_box_min](Geometry.md#bounding_box_min-property) ```python nodes.BoundingBox(geometry=self````
- - [bounding_box_min](Geometry.md#bounding_box_min-property) ```python nodes.BoundingBox(geometry=self````
+ - [bounding_box](Geometry.md#bounding_box-property)
+  ```python
+  nodes.BoundingBox(geometry=self  ```
+
+ - [bounding_box_min](Geometry.md#bounding_box_min-property)
+  ```python
+  nodes.BoundingBox(geometry=self  ```
+
+ - [bounding_box_min](Geometry.md#bounding_box_min-property)
+  ```python
+  nodes.BoundingBox(geometry=self  ```
+

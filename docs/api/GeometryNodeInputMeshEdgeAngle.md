@@ -22,6 +22,15 @@ node = nodes.EdgeAngle()
 
 #### [Edge](Edge.md)
 
- - [angle](Edge.md#angle-property) ```python nodes.EdgeAngle(````
- - [unsigned_angle](Edge.md#unsigned_angle-property) ```python nodes.EdgeAngle(````
- - [signed_angle](Edge.md#signed_angle-property) ```python nodes.EdgeAngle(````
+ - [angle](Edge.md#angle-property)
+  ```python
+  nodes.EdgeAngle(  ```
+
+ - [unsigned_angle](Edge.md#unsigned_angle-property)
+  ```python
+  nodes.EdgeAngle(  ```
+
+ - [signed_angle](Edge.md#signed_angle-property)
+  ```python
+  nodes.EdgeAngle(  ```
+

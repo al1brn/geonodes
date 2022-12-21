@@ -21,4 +21,7 @@ node = nodes.IsSplineCyclic()
 
 #### [Spline](Spline.md)
 
- - [cyclic](Spline.md#cyclic-property) ```python nodes.IsSplineCyclic(````
+ - [cyclic](Spline.md#cyclic-property)
+  ```python
+  nodes.IsSplineCyclic(  ```
+

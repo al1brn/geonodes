@@ -21,4 +21,7 @@ node = nodes.Value()
 
 #### [Float](Float.md)
 
- - [Value](Float.md#Value-classmethod) ```python nodes.Value(````
+ - [Value](Float.md#Value-classmethod)
+  ```python
+  nodes.Value(  ```
+

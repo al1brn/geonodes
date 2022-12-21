@@ -39,8 +39,17 @@ node = nodes.DistributePointsOnFaces(mesh=None, selection=None, distance_min=Non
 
 #### [Face](Face.md)
 
- - [distribute_points_random](Face.md#distribute_points_random) ```python nodes.DistributePointsOnFaces(mesh=self.data_socket, selection=self.selection, distance_min=None, density_max=None, density=density, density_factor=None, seed=seed, distribute_method='RANDOM'````
- - [distribute_points_poisson](Face.md#distribute_points_poisson) ```python nodes.DistributePointsOnFaces(mesh=self.data_socket, selection=self.selection, distance_min=distance_min, density_max=density_max, density=None, density_factor=density_factor, seed=seed, distribute_method='POISSON'````
+ - [distribute_points_random](Face.md#distribute_points_random)
+  ```python
+  nodes.DistributePointsOnFaces(mesh=self.data_socket, selection=self.selection, distance_min=None, density_max=None, density=density, density_factor=None, seed=seed, distribute_method='RANDOM'  ```
+
+ - [distribute_points_poisson](Face.md#distribute_points_poisson)
+  ```python
+  nodes.DistributePointsOnFaces(mesh=self.data_socket, selection=self.selection, distance_min=distance_min, density_max=density_max, density=None, density_factor=density_factor, seed=seed, distribute_method='POISSON'  ```
+
 #### [Mesh](Mesh.md)
 
- - [distribute_points_on_faces](Mesh.md#distribute_points_on_faces) ```python nodes.DistributePointsOnFaces(mesh=self, selection=selection, distance_min=distance_min, density_max=density_max, density=density, density_factor=density_factor, seed=seed, distribute_method=distribute_method````
+ - [distribute_points_on_faces](Mesh.md#distribute_points_on_faces)
+  ```python
+  nodes.DistributePointsOnFaces(mesh=self, selection=selection, distance_min=distance_min, density_max=density_max, density=density, density_factor=density_factor, seed=seed, distribute_method=distribute_method  ```
+

@@ -37,8 +37,23 @@ node = nodes.NoiseTexture(vector=None, w=None, scale=None, detail=None, roughnes
 
 #### [Texture](Texture.md)
 
- - [noise](Texture.md#noise-staticmethod) ```python nodes.NoiseTexture(vector=vector, w=w, scale=scale, detail=detail, roughness=roughness, distortion=distortion, noise_dimensions=noise_dimensions````
- - [noise_1D](Texture.md#noise_1D-staticmethod) ```python nodes.NoiseTexture(vector=None, w=w, scale=scale, detail=detail, roughness=roughness, distortion=distortion, noise_dimensions='1D'````
- - [noise_2D](Texture.md#noise_2D-staticmethod) ```python nodes.NoiseTexture(vector=vector, w=None, scale=scale, detail=detail, roughness=roughness, distortion=distortion, noise_dimensions='2D'````
- - [noise_3D](Texture.md#noise_3D-staticmethod) ```python nodes.NoiseTexture(vector=vector, w=None, scale=scale, detail=detail, roughness=roughness, distortion=distortion, noise_dimensions='3D'````
- - [noise_4D](Texture.md#noise_4D-staticmethod) ```python nodes.NoiseTexture(vector=vector, w=w, scale=scale, detail=detail, roughness=roughness, distortion=distortion, noise_dimensions='4D'````
+ - [noise](Texture.md#noise-staticmethod)
+  ```python
+  nodes.NoiseTexture(vector=vector, w=w, scale=scale, detail=detail, roughness=roughness, distortion=distortion, noise_dimensions=noise_dimensions  ```
+
+ - [noise_1D](Texture.md#noise_1D-staticmethod)
+  ```python
+  nodes.NoiseTexture(vector=None, w=w, scale=scale, detail=detail, roughness=roughness, distortion=distortion, noise_dimensions='1D'  ```
+
+ - [noise_2D](Texture.md#noise_2D-staticmethod)
+  ```python
+  nodes.NoiseTexture(vector=vector, w=None, scale=scale, detail=detail, roughness=roughness, distortion=distortion, noise_dimensions='2D'  ```
+
+ - [noise_3D](Texture.md#noise_3D-staticmethod)
+  ```python
+  nodes.NoiseTexture(vector=vector, w=None, scale=scale, detail=detail, roughness=roughness, distortion=distortion, noise_dimensions='3D'  ```
+
+ - [noise_4D](Texture.md#noise_4D-staticmethod)
+  ```python
+  nodes.NoiseTexture(vector=vector, w=w, scale=scale, detail=detail, roughness=roughness, distortion=distortion, noise_dimensions='4D'  ```
+

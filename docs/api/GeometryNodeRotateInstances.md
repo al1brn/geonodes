@@ -31,7 +31,13 @@ node = nodes.RotateInstances(instances=None, selection=None, rotation=None, pivo
 
 #### [Instance](Instance.md)
 
- - [rotate](Instance.md#rotate) ```python nodes.RotateInstances(instances=self.data_socket, selection=self.selection, rotation=rotation, pivot_point=pivot_point, local_space=local_space````
+ - [rotate](Instance.md#rotate)
+  ```python
+  nodes.RotateInstances(instances=self.data_socket, selection=self.selection, rotation=rotation, pivot_point=pivot_point, local_space=local_space  ```
+
 #### [Instances](Instances.md)
 
- - [rotate](Instances.md#rotate) ```python nodes.RotateInstances(instances=self, selection=selection, rotation=rotation, pivot_point=pivot_point, local_space=local_space````
+ - [rotate](Instances.md#rotate)
+  ```python
+  nodes.RotateInstances(instances=self, selection=selection, rotation=rotation, pivot_point=pivot_point, local_space=local_space  ```
+

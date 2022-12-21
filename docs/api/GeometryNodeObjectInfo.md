@@ -35,8 +35,23 @@ node = nodes.ObjectInfo(object=None, as_instance=None, transform_space='ORIGINAL
 
 #### [Object](Object.md)
 
- - [info](Object.md#info) ```python nodes.ObjectInfo(object=object, as_instance=as_instance, transform_space=transform_space````
- - [location](Object.md#location) ```python nodes.ObjectInfo(object=object, as_instance=as_instance, transform_space=transform_space````
- - [rotation](Object.md#rotation) ```python nodes.ObjectInfo(object=object, as_instance=as_instance, transform_space=transform_space````
- - [scale](Object.md#scale) ```python nodes.ObjectInfo(object=object, as_instance=as_instance, transform_space=transform_space````
- - [geometry](Object.md#geometry) ```python nodes.ObjectInfo(object=object, as_instance=as_instance, transform_space=transform_space````
+ - [info](Object.md#info)
+  ```python
+  nodes.ObjectInfo(object=object, as_instance=as_instance, transform_space=transform_space  ```
+
+ - [location](Object.md#location)
+  ```python
+  nodes.ObjectInfo(object=object, as_instance=as_instance, transform_space=transform_space  ```
+
+ - [rotation](Object.md#rotation)
+  ```python
+  nodes.ObjectInfo(object=object, as_instance=as_instance, transform_space=transform_space  ```
+
+ - [scale](Object.md#scale)
+  ```python
+  nodes.ObjectInfo(object=object, as_instance=as_instance, transform_space=transform_space  ```
+
+ - [geometry](Object.md#geometry)
+  ```python
+  nodes.ObjectInfo(object=object, as_instance=as_instance, transform_space=transform_space  ```
+

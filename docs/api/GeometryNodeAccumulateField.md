@@ -40,4 +40,7 @@ node = nodes.AccumulateField(value=None, group_index=None, data_type='FLOAT', do
 
 #### [Domain](Domain.md)
 
- - [accumulate_field](Domain.md#accumulate_field) ```python nodes.AccumulateField(value=value, group_index=group_index, data_type=data_type_, domain=self.domain````
+ - [accumulate_field](Domain.md#accumulate_field)
+  ```python
+  nodes.AccumulateField(value=value, group_index=group_index, data_type=data_type_, domain=self.domain  ```
+

@@ -30,7 +30,13 @@ node = nodes.TranslateInstances(instances=None, selection=None, translation=None
 
 #### [Instance](Instance.md)
 
- - [translate](Instance.md#translate) ```python nodes.TranslateInstances(instances=self.data_socket, selection=self.selection, translation=translation, local_space=local_space````
+ - [translate](Instance.md#translate)
+  ```python
+  nodes.TranslateInstances(instances=self.data_socket, selection=self.selection, translation=translation, local_space=local_space  ```
+
 #### [Instances](Instances.md)
 
- - [translate](Instances.md#translate) ```python nodes.TranslateInstances(instances=self, selection=selection, translation=translation, local_space=local_space````
+ - [translate](Instances.md#translate)
+  ```python
+  nodes.TranslateInstances(instances=self, selection=selection, translation=translation, local_space=local_space  ```
+

@@ -29,7 +29,13 @@ node = nodes.SetMaterialIndex(geometry=None, selection=None, material_index=None
 
 #### [Domain](Domain.md)
 
- - [set_material_index](Domain.md#set_material_index) ```python nodes.SetMaterialIndex(geometry=self.data_socket, selection=self.selection, material_index=material_index````
+ - [set_material_index](Domain.md#set_material_index)
+  ```python
+  nodes.SetMaterialIndex(geometry=self.data_socket, selection=self.selection, material_index=material_index  ```
+
 #### [Geometry](Geometry.md)
 
- - [set_material_index](Geometry.md#set_material_index) ```python nodes.SetMaterialIndex(geometry=self, selection=selection, material_index=material_index````
+ - [set_material_index](Geometry.md#set_material_index)
+  ```python
+  nodes.SetMaterialIndex(geometry=self, selection=selection, material_index=material_index  ```
+

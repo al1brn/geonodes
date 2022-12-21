@@ -35,6 +35,15 @@ node = nodes.MeshBoolean(*mesh_2, mesh_1=None, self_intersection=None, hole_tole
 
 #### [Mesh](Mesh.md)
 
- - [boolean_intersect](Mesh.md#boolean_intersect) ```python nodes.MeshBoolean(*mesh_2, mesh_1=None, self_intersection=self_intersection, hole_tolerant=hole_tolerant, operation='INTERSECT'````
- - [boolean_union](Mesh.md#boolean_union) ```python nodes.MeshBoolean(*mesh_2, mesh_1=None, self_intersection=self_intersection, hole_tolerant=hole_tolerant, operation='UNION'````
- - [boolean_difference](Mesh.md#boolean_difference) ```python nodes.MeshBoolean(*mesh_2, mesh_1=self, self_intersection=self_intersection, hole_tolerant=hole_tolerant, operation='DIFFERENCE'````
+ - [boolean_intersect](Mesh.md#boolean_intersect)
+  ```python
+  nodes.MeshBoolean(*mesh_2, mesh_1=None, self_intersection=self_intersection, hole_tolerant=hole_tolerant, operation='INTERSECT'  ```
+
+ - [boolean_union](Mesh.md#boolean_union)
+  ```python
+  nodes.MeshBoolean(*mesh_2, mesh_1=None, self_intersection=self_intersection, hole_tolerant=hole_tolerant, operation='UNION'  ```
+
+ - [boolean_difference](Mesh.md#boolean_difference)
+  ```python
+  nodes.MeshBoolean(*mesh_2, mesh_1=self, self_intersection=self_intersection, hole_tolerant=hole_tolerant, operation='DIFFERENCE'  ```
+

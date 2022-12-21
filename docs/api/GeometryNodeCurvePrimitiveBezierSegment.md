@@ -35,4 +35,7 @@ node = nodes.BezierSegment(resolution=None, start=None, start_handle=None, end_h
 
 #### [Curve](Curve.md)
 
- - [bezier_segment](Curve.md#bezier_segment-classmethod) ```python nodes.BezierSegment(resolution=resolution, start=start, start_handle=start_handle, end_handle=end_handle, end=end, mode=mode````
+ - [bezier_segment](Curve.md#bezier_segment-classmethod)
+  ```python
+  nodes.BezierSegment(resolution=resolution, start=start, start_handle=start_handle, end_handle=end_handle, end=end, mode=mode  ```
+

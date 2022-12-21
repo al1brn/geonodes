@@ -21,4 +21,7 @@ node = nodes.SplineResolution()
 
 #### [Spline](Spline.md)
 
- - [resolution](Spline.md#resolution-property) ```python nodes.SplineResolution(````
+ - [resolution](Spline.md#resolution-property)
+  ```python
+  nodes.SplineResolution(  ```
+

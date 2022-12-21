@@ -27,4 +27,7 @@ node = nodes.Boolean(boolean=False)
 
 #### [Boolean](Boolean.md)
 
- - [Boolean](Boolean.md#Boolean-classmethod) ```python nodes.Boolean(boolean=boolean````
+ - [Boolean](Boolean.md#Boolean-classmethod)
+  ```python
+  nodes.Boolean(boolean=boolean  ```
+

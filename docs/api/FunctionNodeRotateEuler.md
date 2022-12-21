@@ -35,11 +35,29 @@ node = nodes.RotateEuler(rotation=None, rotate_by=None, axis=None, angle=None, s
 
 #### Global functions
 
- - [rotate_euler](A.md#rotate_euler) ```python nodes.RotateEuler(rotation=rotation, rotate_by=rotate_by, axis=None, angle=None, space=space, type=EULER````
- - [rotate_axis_angle](A.md#rotate_axis_angle) ```python nodes.RotateEuler(rotation=rotation, rotate_by=None, axis=axis, angle=angle, space=space, type=AXIS_ANGLE````
+ - [rotate_euler](A.md#rotate_euler)
+  ```python
+  nodes.RotateEuler(rotation=rotation, rotate_by=rotate_by, axis=None, angle=None, space=space, type=EULER  ```
+
+ - [rotate_axis_angle](A.md#rotate_axis_angle)
+  ```python
+  nodes.RotateEuler(rotation=rotation, rotate_by=None, axis=axis, angle=angle, space=space, type=AXIS_ANGLE  ```
+
 #### [Rotation](Rotation.md)
 
- - [Euler](Rotation.md#Euler-classmethod) ```python nodes.RotateEuler(rotation=rotation, rotate_by=rotate_by, axis=None, angle=None, space=space, type=EULER````
- - [AxisAngle](Rotation.md#AxisAngle-classmethod) ```python nodes.RotateEuler(rotation=rotation, rotate_by=None, axis=axis, angle=angle, space=space, type=AXIS_ANGLE````
- - [rotate_euler](Rotation.md#rotate_euler) ```python nodes.RotateEuler(rotation=self, rotate_by=rotate_by, axis=None, angle=None, space=space, type=EULER````
- - [rotate_axis_angle](Rotation.md#rotate_axis_angle) ```python nodes.RotateEuler(rotation=self, rotate_by=None, axis=axis, angle=angle, space=space, type=AXIS_ANGLE````
+ - [Euler](Rotation.md#Euler-classmethod)
+  ```python
+  nodes.RotateEuler(rotation=rotation, rotate_by=rotate_by, axis=None, angle=None, space=space, type=EULER  ```
+
+ - [AxisAngle](Rotation.md#AxisAngle-classmethod)
+  ```python
+  nodes.RotateEuler(rotation=rotation, rotate_by=None, axis=axis, angle=angle, space=space, type=AXIS_ANGLE  ```
+
+ - [rotate_euler](Rotation.md#rotate_euler)
+  ```python
+  nodes.RotateEuler(rotation=self, rotate_by=rotate_by, axis=None, angle=None, space=space, type=EULER  ```
+
+ - [rotate_axis_angle](Rotation.md#rotate_axis_angle)
+  ```python
+  nodes.RotateEuler(rotation=self, rotate_by=None, axis=axis, angle=angle, space=space, type=AXIS_ANGLE  ```
+

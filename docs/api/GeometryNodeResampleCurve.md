@@ -34,13 +34,37 @@ node = nodes.ResampleCurve(curve=None, selection=None, count=None, length=None, 
 
 #### [Curve](Curve.md)
 
- - [resample](Curve.md#resample) ```python nodes.ResampleCurve(curve=self, selection=selection, count=count, length=length, mode=mode````
- - [resample_count](Curve.md#resample_count) ```python nodes.ResampleCurve(curve=self, selection=selection, count=count, length=0.1, mode='COUNT'````
- - [resample_length](Curve.md#resample_length) ```python nodes.ResampleCurve(curve=self, selection=selection, count=10, length=length, mode='LENGTH'````
- - [resample_evaluated](Curve.md#resample_evaluated) ```python nodes.ResampleCurve(curve=self, selection=selection, count=10, length=0.1, mode='EVALUATED'````
+ - [resample](Curve.md#resample)
+  ```python
+  nodes.ResampleCurve(curve=self, selection=selection, count=count, length=length, mode=mode  ```
+
+ - [resample_count](Curve.md#resample_count)
+  ```python
+  nodes.ResampleCurve(curve=self, selection=selection, count=count, length=0.1, mode='COUNT'  ```
+
+ - [resample_length](Curve.md#resample_length)
+  ```python
+  nodes.ResampleCurve(curve=self, selection=selection, count=10, length=length, mode='LENGTH'  ```
+
+ - [resample_evaluated](Curve.md#resample_evaluated)
+  ```python
+  nodes.ResampleCurve(curve=self, selection=selection, count=10, length=0.1, mode='EVALUATED'  ```
+
 #### [Spline](Spline.md)
 
- - [resample](Spline.md#resample) ```python nodes.ResampleCurve(curve=self.data_socket, selection=self.selection, count=count, length=length, mode=mode````
- - [resample_count](Spline.md#resample_count) ```python nodes.ResampleCurve(curve=self.data_socket, selection=self.selection, count=count, length=0.1, mode='COUNT'````
- - [resample_length](Spline.md#resample_length) ```python nodes.ResampleCurve(curve=self.data_socket, selection=self.selection, count=10, length=length, mode='LENGTH'````
- - [resample_evaluated](Spline.md#resample_evaluated) ```python nodes.ResampleCurve(curve=self.data_socket, selection=self.selection, count=10, length=0.1, mode='EVALUATED'````
+ - [resample](Spline.md#resample)
+  ```python
+  nodes.ResampleCurve(curve=self.data_socket, selection=self.selection, count=count, length=length, mode=mode  ```
+
+ - [resample_count](Spline.md#resample_count)
+  ```python
+  nodes.ResampleCurve(curve=self.data_socket, selection=self.selection, count=count, length=0.1, mode='COUNT'  ```
+
+ - [resample_length](Spline.md#resample_length)
+  ```python
+  nodes.ResampleCurve(curve=self.data_socket, selection=self.selection, count=10, length=length, mode='LENGTH'  ```
+
+ - [resample_evaluated](Spline.md#resample_evaluated)
+  ```python
+  nodes.ResampleCurve(curve=self.data_socket, selection=self.selection, count=10, length=0.1, mode='EVALUATED'  ```
+

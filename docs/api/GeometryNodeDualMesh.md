@@ -28,4 +28,7 @@ node = nodes.DualMesh(mesh=None, keep_boundaries=None)
 
 #### [Mesh](Mesh.md)
 
- - [dual_mesh](Mesh.md#dual_mesh) ```python nodes.DualMesh(mesh=mesh, keep_boundaries=keep_boundaries````
+ - [dual_mesh](Mesh.md#dual_mesh)
+  ```python
+  nodes.DualMesh(mesh=mesh, keep_boundaries=keep_boundaries  ```
+

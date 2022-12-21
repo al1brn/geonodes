@@ -29,4 +29,7 @@ node = nodes.UvSphere(segments=None, rings=None, radius=None)
 
 #### [Mesh](Mesh.md)
 
- - [Circle](Mesh.md#Circle-classmethod) ```python nodes.UvSphere(segments=segments, rings=rings, radius=radius````
+ - [Circle](Mesh.md#Circle-classmethod)
+  ```python
+  nodes.UvSphere(segments=segments, rings=rings, radius=radius  ```
+

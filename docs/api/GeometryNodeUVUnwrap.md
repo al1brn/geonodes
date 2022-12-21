@@ -34,7 +34,13 @@ node = nodes.UvUnwrap(selection=None, seam=None, margin=None, fill_holes=None, m
 
 #### [Face](Face.md)
 
- - [uv_unwrap](Face.md#uv_unwrap) ```python nodes.UvUnwrap(selection=self.selection, seam=seam, margin=margin, fill_holes=fill_holes, method=method````
+ - [uv_unwrap](Face.md#uv_unwrap)
+  ```python
+  nodes.UvUnwrap(selection=self.selection, seam=seam, margin=margin, fill_holes=fill_holes, method=method  ```
+
 #### [Mesh](Mesh.md)
 
- - [uv_unwrap](Mesh.md#uv_unwrap) ```python nodes.UvUnwrap(selection=selection, seam=seam, margin=margin, fill_holes=fill_holes, method=method````
+ - [uv_unwrap](Mesh.md#uv_unwrap)
+  ```python
+  nodes.UvUnwrap(selection=selection, seam=seam, margin=margin, fill_holes=fill_holes, method=method  ```
+

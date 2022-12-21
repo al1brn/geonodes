@@ -21,4 +21,7 @@ node = nodes.SelfObject()
 
 #### [Object](Object.md)
 
- - [Self](Object.md#Self-classmethod) ```python nodes.SelfObject(````
+ - [Self](Object.md#Self-classmethod)
+  ```python
+  nodes.SelfObject(  ```
+

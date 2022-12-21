@@ -21,7 +21,13 @@ node = nodes.Position()
 
 #### [Domain](Domain.md)
 
- - [position](Domain.md#position-property) ```python nodes.Position(````
+ - [position](Domain.md#position-property)
+  ```python
+  nodes.Position(  ```
+
 #### [Geometry](Geometry.md)
 
- - [position](Geometry.md#position-property) ```python nodes.Position(````
+ - [position](Geometry.md#position-property)
+  ```python
+  nodes.Position(  ```
+

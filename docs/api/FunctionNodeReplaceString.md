@@ -29,7 +29,13 @@ node = nodes.ReplaceString(string=None, find=None, replace=None)
 
 #### Global functions
 
- - [replace_string](A.md#replace_string) ```python nodes.ReplaceString(string=string, find=find, replace=replace````
+ - [replace_string](A.md#replace_string)
+  ```python
+  nodes.ReplaceString(string=string, find=find, replace=replace  ```
+
 #### [String](String.md)
 
- - [replace](String.md#replace) ```python nodes.ReplaceString(string=self, find=find, replace=replace````
+ - [replace](String.md#replace)
+  ```python
+  nodes.ReplaceString(string=self, find=find, replace=replace  ```
+

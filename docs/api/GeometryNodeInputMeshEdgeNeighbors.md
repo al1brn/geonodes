@@ -21,4 +21,7 @@ node = nodes.EdgeNeighbors()
 
 #### [Edge](Edge.md)
 
- - [neighbors](Edge.md#neighbors-property) ```python nodes.EdgeNeighbors(````
+ - [neighbors](Edge.md#neighbors-property)
+  ```python
+  nodes.EdgeNeighbors(  ```
+

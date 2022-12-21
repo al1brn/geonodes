@@ -27,4 +27,7 @@ node = nodes.String(string='')
 
 #### [String](String.md)
 
- - [String](String.md#String-classmethod) ```python nodes.String(string=string````
+ - [String](String.md#String-classmethod)
+  ```python
+  nodes.String(string=string  ```
+

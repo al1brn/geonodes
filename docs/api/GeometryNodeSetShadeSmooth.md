@@ -29,8 +29,17 @@ node = nodes.SetShadeSmooth(geometry=None, selection=None, shade_smooth=None)
 
 #### [Face](Face.md)
 
- - [set_shade_smooth](Face.md#set_shade_smooth) ```python nodes.SetShadeSmooth(geometry=self.data_socket, selection=self.selection, shade_smooth=shade_smooth````
- - [shade_smooth](Face.md#shade_smooth) ```python nodes.SetShadeSmooth(geometry=self.data_socket, selection=self.selection, shade_smooth=attr_value````
+ - [set_shade_smooth](Face.md#set_shade_smooth)
+  ```python
+  nodes.SetShadeSmooth(geometry=self.data_socket, selection=self.selection, shade_smooth=shade_smooth  ```
+
+ - [shade_smooth](Face.md#shade_smooth)
+  ```python
+  nodes.SetShadeSmooth(geometry=self.data_socket, selection=self.selection, shade_smooth=attr_value  ```
+
 #### [Mesh](Mesh.md)
 
- - [set_shade_smooth](Mesh.md#set_shade_smooth) ```python nodes.SetShadeSmooth(geometry=self, selection=selection, shade_smooth=shade_smooth````
+ - [set_shade_smooth](Mesh.md#set_shade_smooth)
+  ```python
+  nodes.SetShadeSmooth(geometry=self, selection=selection, shade_smooth=shade_smooth  ```
+

@@ -32,6 +32,15 @@ node = nodes.SetSplineType(curve=None, selection=None, spline_type='POLY')
 
 #### [Spline](Spline.md)
 
- - [set_type](Spline.md#set_type) ```python nodes.SetSplineType(curve=self.data_socket, selection=self.selection, spline_type=spline_type````
- - [type](Spline.md#type-property) ```python nodes.SetSplineType(curve=curve, selection=selection, spline_type=spline_type````
- - [type](Spline.md#type) ```python nodes.SetSplineType(curve=self.data_socket, selection=self.selection, spline_type=attr_value````
+ - [set_type](Spline.md#set_type)
+  ```python
+  nodes.SetSplineType(curve=self.data_socket, selection=self.selection, spline_type=spline_type  ```
+
+ - [type](Spline.md#type-property)
+  ```python
+  nodes.SetSplineType(curve=curve, selection=selection, spline_type=spline_type  ```
+
+ - [type](Spline.md#type)
+  ```python
+  nodes.SetSplineType(curve=self.data_socket, selection=self.selection, spline_type=attr_value  ```
+

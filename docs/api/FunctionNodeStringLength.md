@@ -27,7 +27,13 @@ node = nodes.StringLength(string=None)
 
 #### Global functions
 
- - [string_length](A.md#string_length) ```python nodes.StringLength(string=string````
+ - [string_length](A.md#string_length)
+  ```python
+  nodes.StringLength(string=string  ```
+
 #### [String](String.md)
 
- - [length](String.md#length-property) ```python nodes.StringLength(string=self````
+ - [length](String.md#length-property)
+  ```python
+  nodes.StringLength(string=self  ```
+

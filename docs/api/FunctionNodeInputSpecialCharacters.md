@@ -22,5 +22,11 @@ node = nodes.SpecialCharacters()
 
 #### [String](String.md)
 
- - [LineBreak](String.md#LineBreak-staticmethod) ```python nodes.SpecialCharacters(````
- - [Tab](String.md#Tab-staticmethod) ```python nodes.SpecialCharacters(````
+ - [LineBreak](String.md#LineBreak-staticmethod)
+  ```python
+  nodes.SpecialCharacters(  ```
+
+ - [Tab](String.md#Tab-staticmethod)
+  ```python
+  nodes.SpecialCharacters(  ```
+

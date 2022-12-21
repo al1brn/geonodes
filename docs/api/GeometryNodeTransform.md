@@ -30,4 +30,7 @@ node = nodes.Transform(geometry=None, translation=None, rotation=None, scale=Non
 
 #### [Geometry](Geometry.md)
 
- - [transform](Geometry.md#transform) ```python nodes.Transform(geometry=self, translation=translation, rotation=rotation, scale=scale````
+ - [transform](Geometry.md#transform)
+  ```python
+  nodes.Transform(geometry=self, translation=translation, rotation=rotation, scale=scale  ```
+

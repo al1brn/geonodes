@@ -31,7 +31,13 @@ node = nodes.ScaleInstances(instances=None, selection=None, scale=None, center=N
 
 #### [Instance](Instance.md)
 
- - [set_scale](Instance.md#set_scale) ```python nodes.ScaleInstances(instances=self.data_socket, selection=self.selection, scale=scale, center=center, local_space=local_space````
+ - [set_scale](Instance.md#set_scale)
+  ```python
+  nodes.ScaleInstances(instances=self.data_socket, selection=self.selection, scale=scale, center=center, local_space=local_space  ```
+
 #### [Instances](Instances.md)
 
- - [set_scale](Instances.md#set_scale) ```python nodes.ScaleInstances(instances=self, selection=selection, scale=scale, center=center, local_space=local_space````
+ - [set_scale](Instances.md#set_scale)
+  ```python
+  nodes.ScaleInstances(instances=self, selection=selection, scale=scale, center=center, local_space=local_space  ```
+

@@ -28,7 +28,13 @@ node = nodes.RgbCurves(fac=None, color=None)
 
 #### Global functions
 
- - [rgb_curves](A.md#rgb_curves) ```python nodes.RgbCurves(fac=fac, color=color````
+ - [rgb_curves](A.md#rgb_curves)
+  ```python
+  nodes.RgbCurves(fac=fac, color=color  ```
+
 #### [Color](Color.md)
 
- - [rgb_curves](Color.md#rgb_curves-property) ```python nodes.RgbCurves(fac=fac, color=self````
+ - [rgb_curves](Color.md#rgb_curves-property)
+  ```python
+  nodes.RgbCurves(fac=fac, color=self  ```
+

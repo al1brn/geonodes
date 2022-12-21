@@ -29,5 +29,11 @@ node = nodes.SetSplineCyclic(geometry=None, selection=None, cyclic=None)
 
 #### [Spline](Spline.md)
 
- - [set_cyclic](Spline.md#set_cyclic) ```python nodes.SetSplineCyclic(geometry=self.data_socket, selection=self.selection, cyclic=cyclic````
- - [cyclic](Spline.md#cyclic) ```python nodes.SetSplineCyclic(geometry=self.data_socket, selection=self.selection, cyclic=attr_value````
+ - [set_cyclic](Spline.md#set_cyclic)
+  ```python
+  nodes.SetSplineCyclic(geometry=self.data_socket, selection=self.selection, cyclic=cyclic  ```
+
+ - [cyclic](Spline.md#cyclic)
+  ```python
+  nodes.SetSplineCyclic(geometry=self.data_socket, selection=self.selection, cyclic=attr_value  ```
+

@@ -28,7 +28,13 @@ node = nodes.MeshToCurve(mesh=None, selection=None)
 
 #### [Edge](Edge.md)
 
- - [to_curve](Edge.md#to_curve) ```python nodes.MeshToCurve(mesh=self.data_socket, selection=self.selection````
+ - [to_curve](Edge.md#to_curve)
+  ```python
+  nodes.MeshToCurve(mesh=self.data_socket, selection=self.selection  ```
+
 #### [Mesh](Mesh.md)
 
- - [to_curve](Mesh.md#to_curve) ```python nodes.MeshToCurve(mesh=self, selection=selection````
+ - [to_curve](Mesh.md#to_curve)
+  ```python
+  nodes.MeshToCurve(mesh=self, selection=selection  ```
+

@@ -21,4 +21,7 @@ node = nodes.Material()
 
 #### [Material](Material.md)
 
- - [Material](Material.md#Material-classmethod) ```python nodes.Material(````
+ - [Material](Material.md#Material-classmethod)
+  ```python
+  nodes.Material(  ```
+

@@ -43,5 +43,11 @@ node = nodes.Arc(resolution=None, start=None, middle=None, end=None, radius=None
 
 #### [Curve](Curve.md)
 
- - [Arc](Curve.md#Arc-classmethod) ```python nodes.Arc(resolution=resolution, start=None, middle=None, end=None, radius=radius, start_angle=start_angle, sweep_angle=sweep_angle, offset_angle=None, connect_center=connect_center, invert_arc=invert_arc, mode='RADIUS'````
- - [ArcFromPoints](Curve.md#ArcFromPoints-classmethod) ```python nodes.Arc(resolution=resolution, start=start, middle=middle, end=end, radius=None, start_angle=None, sweep_angle=None, offset_angle=offset_angle, connect_center=connect_center, invert_arc=invert_arc, mode=POINT````
+ - [Arc](Curve.md#Arc-classmethod)
+  ```python
+  nodes.Arc(resolution=resolution, start=None, middle=None, end=None, radius=radius, start_angle=start_angle, sweep_angle=sweep_angle, offset_angle=None, connect_center=connect_center, invert_arc=invert_arc, mode='RADIUS'  ```
+
+ - [ArcFromPoints](Curve.md#ArcFromPoints-classmethod)
+  ```python
+  nodes.Arc(resolution=resolution, start=start, middle=middle, end=end, radius=None, start_angle=None, sweep_angle=None, offset_angle=offset_angle, connect_center=connect_center, invert_arc=invert_arc, mode=POINT  ```
+

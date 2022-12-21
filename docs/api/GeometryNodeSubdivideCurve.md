@@ -28,4 +28,7 @@ node = nodes.SubdivideCurve(curve=None, cuts=None)
 
 #### [Curve](Curve.md)
 
- - [subdivide](Curve.md#subdivide) ```python nodes.SubdivideCurve(curve=self, cuts=cuts````
+ - [subdivide](Curve.md#subdivide)
+  ```python
+  nodes.SubdivideCurve(curve=self, cuts=cuts  ```
+

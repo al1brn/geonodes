@@ -29,14 +29,35 @@ node = nodes.SetMaterial(geometry=None, selection=None, material=None)
 
 #### [Face](Face.md)
 
- - [set_material](Face.md#set_material) ```python nodes.SetMaterial(geometry=self.data_socket, selection=self.selection, material=material````
- - [material](Face.md#material-property) ```python nodes.SetMaterial(geometry=geometry, selection=selection, material=material````
- - [material](Face.md#material) ```python nodes.SetMaterial(geometry=self.data_socket, selection=self.selection, material=attr_value````
+ - [set_material](Face.md#set_material)
+  ```python
+  nodes.SetMaterial(geometry=self.data_socket, selection=self.selection, material=material  ```
+
+ - [material](Face.md#material-property)
+  ```python
+  nodes.SetMaterial(geometry=geometry, selection=selection, material=material  ```
+
+ - [material](Face.md#material)
+  ```python
+  nodes.SetMaterial(geometry=self.data_socket, selection=self.selection, material=attr_value  ```
+
 #### [Geometry](Geometry.md)
 
- - [set_material](Geometry.md#set_material) ```python nodes.SetMaterial(geometry=self, selection=selection, material=material````
+ - [set_material](Geometry.md#set_material)
+  ```python
+  nodes.SetMaterial(geometry=self, selection=selection, material=material  ```
+
 #### [Spline](Spline.md)
 
- - [set_material](Spline.md#set_material) ```python nodes.SetMaterial(geometry=self.data_socket, selection=self.selection, material=material````
- - [material](Spline.md#material-property) ```python nodes.SetMaterial(geometry=geometry, selection=selection, material=material````
- - [material](Spline.md#material) ```python nodes.SetMaterial(geometry=self.data_socket, selection=self.selection, material=attr_value````
+ - [set_material](Spline.md#set_material)
+  ```python
+  nodes.SetMaterial(geometry=self.data_socket, selection=self.selection, material=material  ```
+
+ - [material](Spline.md#material-property)
+  ```python
+  nodes.SetMaterial(geometry=geometry, selection=selection, material=material  ```
+
+ - [material](Spline.md#material)
+  ```python
+  nodes.SetMaterial(geometry=self.data_socket, selection=self.selection, material=attr_value  ```
+

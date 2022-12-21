@@ -21,7 +21,13 @@ node = nodes.IsShadeSmooth()
 
 #### [Face](Face.md)
 
- - [shade_smooth](Face.md#shade_smooth-property) ```python nodes.IsShadeSmooth(````
+ - [shade_smooth](Face.md#shade_smooth-property)
+  ```python
+  nodes.IsShadeSmooth(  ```
+
 #### [Mesh](Mesh.md)
 
- - [is_shade_smooth](Mesh.md#is_shade_smooth) ```python nodes.IsShadeSmooth(````
+ - [is_shade_smooth](Mesh.md#is_shade_smooth)
+  ```python
+  nodes.IsShadeSmooth(  ```
+

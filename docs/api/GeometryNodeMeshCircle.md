@@ -32,4 +32,7 @@ node = nodes.MeshCircle(vertices=None, radius=None, fill_type='NONE')
 
 #### [Mesh](Mesh.md)
 
- - [Circle](Mesh.md#Circle-classmethod) ```python nodes.MeshCircle(vertices=vertices, radius=radius, fill_type=fill_type````
+ - [Circle](Mesh.md#Circle-classmethod)
+  ```python
+  nodes.MeshCircle(vertices=vertices, radius=radius, fill_type=fill_type  ```
+

@@ -22,6 +22,15 @@ node = nodes.FaceNeighbors()
 
 #### [Face](Face.md)
 
- - [neighbors](Face.md#neighbors-property) ```python nodes.FaceNeighbors(````
- - [neighbors_vertex_count](Face.md#neighbors_vertex_count-property) ```python nodes.FaceNeighbors(````
- - [neighbors_face_count](Face.md#neighbors_face_count-property) ```python nodes.FaceNeighbors(````
+ - [neighbors](Face.md#neighbors-property)
+  ```python
+  nodes.FaceNeighbors(  ```
+
+ - [neighbors_vertex_count](Face.md#neighbors_vertex_count-property)
+  ```python
+  nodes.FaceNeighbors(  ```
+
+ - [neighbors_face_count](Face.md#neighbors_face_count-property)
+  ```python
+  nodes.FaceNeighbors(  ```
+

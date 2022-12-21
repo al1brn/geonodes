@@ -31,6 +31,15 @@ node = nodes.FillCurve(curve=None, mode='TRIANGLES')
 
 #### [Curve](Curve.md)
 
- - [fill](Curve.md#fill) ```python nodes.FillCurve(curve=curve, mode=mode````
- - [fill_triangles](Curve.md#fill_triangles) ```python nodes.FillCurve(curve=curve, mode='TRIANGLES'````
- - [fill_ngons](Curve.md#fill_ngons) ```python nodes.FillCurve(curve=curve, mode='NGONS'````
+ - [fill](Curve.md#fill)
+  ```python
+  nodes.FillCurve(curve=curve, mode=mode  ```
+
+ - [fill_triangles](Curve.md#fill_triangles)
+  ```python
+  nodes.FillCurve(curve=curve, mode='TRIANGLES'  ```
+
+ - [fill_ngons](Curve.md#fill_ngons)
+  ```python
+  nodes.FillCurve(curve=curve, mode='NGONS'  ```
+

@@ -29,4 +29,7 @@ node = nodes.SeparateXyz(vector=None)
 
 #### [Vector](Vector.md)
 
- - [separate](Vector.md#separate-property) ```python nodes.SeparateXyz(vector=self````
+ - [separate](Vector.md#separate-property)
+  ```python
+  nodes.SeparateXyz(vector=self  ```
+

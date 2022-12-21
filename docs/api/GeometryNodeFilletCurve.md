@@ -34,6 +34,15 @@ node = nodes.FilletCurve(curve=None, count=None, radius=None, limit_radius=None,
 
 #### [Curve](Curve.md)
 
- - [fillet](Curve.md#fillet) ```python nodes.FilletCurve(curve=self, count=count, radius=radius, limit_radius=limit_radius, mode=mode````
- - [fillet_bezier](Curve.md#fillet_bezier) ```python nodes.FilletCurve(curve=self, count=1, radius=radius, limit_radius=limit_radius, mode='BEZIER'````
- - [fillet_poly](Curve.md#fillet_poly) ```python nodes.FilletCurve(curve=self, count=count, radius=radius, limit_radius=limit_radius, mode='POLY'````
+ - [fillet](Curve.md#fillet)
+  ```python
+  nodes.FilletCurve(curve=self, count=count, radius=radius, limit_radius=limit_radius, mode=mode  ```
+
+ - [fillet_bezier](Curve.md#fillet_bezier)
+  ```python
+  nodes.FilletCurve(curve=self, count=1, radius=radius, limit_radius=limit_radius, mode='BEZIER'  ```
+
+ - [fillet_poly](Curve.md#fillet_poly)
+  ```python
+  nodes.FilletCurve(curve=self, count=count, radius=radius, limit_radius=limit_radius, mode='POLY'  ```
+

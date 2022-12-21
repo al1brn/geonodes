@@ -28,7 +28,13 @@ node = nodes.FlipFaces(mesh=None, selection=None)
 
 #### [Face](Face.md)
 
- - [flip](Face.md#flip) ```python nodes.FlipFaces(mesh=self.data_socket, selection=self.selection````
+ - [flip](Face.md#flip)
+  ```python
+  nodes.FlipFaces(mesh=self.data_socket, selection=self.selection  ```
+
 #### [Mesh](Mesh.md)
 
- - [flip_faces](Mesh.md#flip_faces) ```python nodes.FlipFaces(mesh=self, selection=selection````
+ - [flip_faces](Mesh.md#flip_faces)
+  ```python
+  nodes.FlipFaces(mesh=self, selection=selection  ```
+

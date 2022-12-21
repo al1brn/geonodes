@@ -28,7 +28,13 @@ node = nodes.JoinStrings(*strings, delimiter=None)
 
 #### Global functions
 
- - [join_strings](A.md#join_strings) ```python nodes.JoinStrings(*strings, delimiter=delimiter````
+ - [join_strings](A.md#join_strings)
+  ```python
+  nodes.JoinStrings(*strings, delimiter=delimiter  ```
+
 #### [String](String.md)
 
- - [join](String.md#join) ```python nodes.JoinStrings(*strings, delimiter=delimiter````
+ - [join](String.md#join)
+  ```python
+  nodes.JoinStrings(*strings, delimiter=delimiter  ```
+

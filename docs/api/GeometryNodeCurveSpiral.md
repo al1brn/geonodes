@@ -32,4 +32,7 @@ node = nodes.Spiral(resolution=None, rotations=None, start_radius=None, end_radi
 
 #### [Curve](Curve.md)
 
- - [Spiral](Curve.md#Spiral-classmethod) ```python nodes.Spiral(resolution=resolution, rotations=rotations, start_radius=start_radius, end_radius=end_radius, height=height, reverse=reverse````
+ - [Spiral](Curve.md#Spiral-classmethod)
+  ```python
+  nodes.Spiral(resolution=resolution, rotations=rotations, start_radius=start_radius, end_radius=end_radius, height=height, reverse=reverse  ```
+

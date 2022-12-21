@@ -31,4 +31,7 @@ node = nodes.RealizeInstances(geometry=None, legacy_behavior=False)
 
 #### [Instances](Instances.md)
 
- - [realize](Instances.md#realize) ```python nodes.RealizeInstances(geometry=geometry, legacy_behavior=legacy_behavior````
+ - [realize](Instances.md#realize)
+  ```python
+  nodes.RealizeInstances(geometry=geometry, legacy_behavior=legacy_behavior  ```
+

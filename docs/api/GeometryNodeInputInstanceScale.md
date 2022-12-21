@@ -21,7 +21,13 @@ node = nodes.InstanceScale()
 
 #### [Instance](Instance.md)
 
- - [scale](Instance.md#scale-property) ```python nodes.InstanceScale(````
+ - [scale](Instance.md#scale-property)
+  ```python
+  nodes.InstanceScale(  ```
+
 #### [Instances](Instances.md)
 
- - [scale](Instances.md#scale-property) ```python nodes.InstanceScale(````
+ - [scale](Instances.md#scale-property)
+  ```python
+  nodes.InstanceScale(  ```
+

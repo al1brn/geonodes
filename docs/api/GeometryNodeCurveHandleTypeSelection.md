@@ -28,9 +28,27 @@ node = nodes.HandleTypeSelection(handle_type='AUTO', mode={'RIGHT', 'LEFT'})
 
 #### [ControlPoint](ControlPoint.md)
 
- - [handle_type_selection_node](ControlPoint.md#handle_type_selection_node) ```python nodes.HandleTypeSelection(handle_type=handle_type, mode=mode````
- - [handle_type_selection](ControlPoint.md#handle_type_selection) ```python nodes.HandleTypeSelection(handle_type=handle_type, mode=mode````
- - [handle_type_selection](ControlPoint.md#handle_type_selection) ```python nodes.HandleTypeSelection(handle_type=handle_type, mode=mode````
- - [handle_type_selection](ControlPoint.md#handle_type_selection) ```python nodes.HandleTypeSelection(handle_type=handle_type, mode=mode````
- - [handle_type_selection](ControlPoint.md#handle_type_selection) ```python nodes.HandleTypeSelection(handle_type=handle_type, mode=mode````
- - [handle_type_selection](ControlPoint.md#handle_type_selection) ```python nodes.HandleTypeSelection(handle_type=handle_type, mode=mode````
+ - [handle_type_selection_node](ControlPoint.md#handle_type_selection_node)
+  ```python
+  nodes.HandleTypeSelection(handle_type=handle_type, mode=mode  ```
+
+ - [handle_type_selection](ControlPoint.md#handle_type_selection)
+  ```python
+  nodes.HandleTypeSelection(handle_type=handle_type, mode=mode  ```
+
+ - [handle_type_selection](ControlPoint.md#handle_type_selection)
+  ```python
+  nodes.HandleTypeSelection(handle_type=handle_type, mode=mode  ```
+
+ - [handle_type_selection](ControlPoint.md#handle_type_selection)
+  ```python
+  nodes.HandleTypeSelection(handle_type=handle_type, mode=mode  ```
+
+ - [handle_type_selection](ControlPoint.md#handle_type_selection)
+  ```python
+  nodes.HandleTypeSelection(handle_type=handle_type, mode=mode  ```
+
+ - [handle_type_selection](ControlPoint.md#handle_type_selection)
+  ```python
+  nodes.HandleTypeSelection(handle_type=handle_type, mode=mode  ```
+

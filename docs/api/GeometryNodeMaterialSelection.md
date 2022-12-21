@@ -27,7 +27,13 @@ node = nodes.MaterialSelection(material=None)
 
 #### [Domain](Domain.md)
 
- - [material_selection](Domain.md#material_selection) ```python nodes.MaterialSelection(material=material````
+ - [material_selection](Domain.md#material_selection)
+  ```python
+  nodes.MaterialSelection(material=material  ```
+
 #### [Geometry](Geometry.md)
 
- - [material_selection](Geometry.md#material_selection) ```python nodes.MaterialSelection(material=material````
+ - [material_selection](Geometry.md#material_selection)
+  ```python
+  nodes.MaterialSelection(material=material  ```
+

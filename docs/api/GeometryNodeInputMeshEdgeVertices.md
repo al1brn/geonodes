@@ -24,6 +24,15 @@ node = nodes.EdgeVertices()
 
 #### [Edge](Edge.md)
 
- - [vertices](Edge.md#vertices-property) ```python nodes.EdgeVertices(````
- - [vertices_index](Edge.md#vertices_index-property) ```python nodes.EdgeVertices(````
- - [vertices_position](Edge.md#vertices_position-property) ```python nodes.EdgeVertices(````
+ - [vertices](Edge.md#vertices-property)
+  ```python
+  nodes.EdgeVertices(  ```
+
+ - [vertices_index](Edge.md#vertices_index-property)
+  ```python
+  nodes.EdgeVertices(  ```
+
+ - [vertices_position](Edge.md#vertices_position-property)
+  ```python
+  nodes.EdgeVertices(  ```
+

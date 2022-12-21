@@ -29,4 +29,7 @@ node = nodes.CurveToMesh(curve=None, profile_curve=None, fill_caps=None)
 
 #### [Curve](Curve.md)
 
- - [to_mesh](Curve.md#to_mesh) ```python nodes.CurveToMesh(curve=self, profile_curve=profile_curve, fill_caps=fill_caps````
+ - [to_mesh](Curve.md#to_mesh)
+  ```python
+  nodes.CurveToMesh(curve=self, profile_curve=profile_curve, fill_caps=fill_caps  ```
+

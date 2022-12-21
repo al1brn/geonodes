@@ -21,4 +21,7 @@ node = nodes.Color()
 
 #### [Color](Color.md)
 
- - [Color](Color.md#Color-classmethod) ```python nodes.Color(````
+ - [Color](Color.md#Color-classmethod)
+  ```python
+  nodes.Color(  ```
+

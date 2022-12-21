@@ -29,5 +29,11 @@ node = nodes.SetSplineResolution(geometry=None, selection=None, resolution=None)
 
 #### [Spline](Spline.md)
 
- - [set_resolution](Spline.md#set_resolution) ```python nodes.SetSplineResolution(geometry=self.data_socket, selection=self.selection, resolution=resolution````
- - [resolution](Spline.md#resolution) ```python nodes.SetSplineResolution(geometry=self.data_socket, selection=self.selection, resolution=attr_value````
+ - [set_resolution](Spline.md#set_resolution)
+  ```python
+  nodes.SetSplineResolution(geometry=self.data_socket, selection=self.selection, resolution=resolution  ```
+
+ - [resolution](Spline.md#resolution)
+  ```python
+  nodes.SetSplineResolution(geometry=self.data_socket, selection=self.selection, resolution=attr_value  ```
+

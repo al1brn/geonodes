@@ -21,4 +21,7 @@ node = nodes.FaceArea()
 
 #### [Face](Face.md)
 
- - [area](Face.md#area-property) ```python nodes.FaceArea(````
+ - [area](Face.md#area-property)
+  ```python
+  nodes.FaceArea(  ```
+

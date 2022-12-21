@@ -28,10 +28,19 @@ node = nodes.ValueToString(value=None, decimals=None)
 
 #### Global functions
 
- - [value_to_string](A.md#value_to_string) ```python nodes.ValueToString(value=value, decimals=decimals````
+ - [value_to_string](A.md#value_to_string)
+  ```python
+  nodes.ValueToString(value=value, decimals=decimals  ```
+
 #### [Float](Float.md)
 
- - [to_string](Float.md#to_string) ```python nodes.ValueToString(value=self, decimals=decimals````
+ - [to_string](Float.md#to_string)
+  ```python
+  nodes.ValueToString(value=self, decimals=decimals  ```
+
 #### [Integer](Integer.md)
 
- - [to_string](Integer.md#to_string) ```python nodes.ValueToString(value=self, decimals=0````
+ - [to_string](Integer.md#to_string)
+  ```python
+  nodes.ValueToString(value=self, decimals=0  ```
+

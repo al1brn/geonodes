@@ -27,7 +27,13 @@ node = nodes.FaceIsPlanar(threshold=None)
 
 #### [Face](Face.md)
 
- - [is_planar](Face.md#is_planar) ```python nodes.FaceIsPlanar(threshold=threshold````
+ - [is_planar](Face.md#is_planar)
+  ```python
+  nodes.FaceIsPlanar(threshold=threshold  ```
+
 #### [Mesh](Mesh.md)
 
- - [face_is_planar](Mesh.md#face_is_planar) ```python nodes.FaceIsPlanar(threshold=threshold````
+ - [face_is_planar](Mesh.md#face_is_planar)
+  ```python
+  nodes.FaceIsPlanar(threshold=threshold  ```
+

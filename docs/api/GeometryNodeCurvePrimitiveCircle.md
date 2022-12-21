@@ -36,5 +36,11 @@ node = nodes.CurveCircle(resolution=None, point_1=None, point_2=None, point_3=No
 
 #### [Curve](Curve.md)
 
- - [Circle](Curve.md#Circle-classmethod) ```python nodes.CurveCircle(resolution=resolution, point_1=None, point_2=None, point_3=None, radius=radius, mode='RADIUS'````
- - [CircleFromPoints](Curve.md#CircleFromPoints-classmethod) ```python nodes.CurveCircle(resolution=resolution, point_1=point_1, point_2=point_2, point_3=point_3, radius=None, mode=POINT````
+ - [Circle](Curve.md#Circle-classmethod)
+  ```python
+  nodes.CurveCircle(resolution=resolution, point_1=None, point_2=None, point_3=None, radius=radius, mode='RADIUS'  ```
+
+ - [CircleFromPoints](Curve.md#CircleFromPoints-classmethod)
+  ```python
+  nodes.CurveCircle(resolution=resolution, point_1=point_1, point_2=point_2, point_3=point_3, radius=None, mode=POINT  ```
+

@@ -21,10 +21,19 @@ node = nodes.Normal()
 
 #### [Domain](Domain.md)
 
- - [normal](Domain.md#normal-property) ```python nodes.Normal(````
+ - [normal](Domain.md#normal-property)
+  ```python
+  nodes.Normal(  ```
+
 #### [Geometry](Geometry.md)
 
- - [normal](Geometry.md#normal-property) ```python nodes.Normal(````
+ - [normal](Geometry.md#normal-property)
+  ```python
+  nodes.Normal(  ```
+
 #### [Spline](Spline.md)
 
- - [normal](Spline.md#normal-property) ```python nodes.Normal(````
+ - [normal](Spline.md#normal-property)
+  ```python
+  nodes.Normal(  ```
+

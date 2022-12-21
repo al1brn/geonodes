@@ -41,4 +41,7 @@ node = nodes.Quadrilateral(width=None, height=None, bottom_width=None, top_width
 
 #### [Curve](Curve.md)
 
- - [Quadrilateral](Curve.md#Quadrilateral-classmethod) ```python nodes.Quadrilateral(width=width, height=height, bottom_width=bottom_width, top_width=top_width, offset=offset, bottom_height=bottom_height, top_height=top_height, point_1=point_1, point_2=point_2, point_3=point_3, point_4=point_4, mode=mode````
+ - [Quadrilateral](Curve.md#Quadrilateral-classmethod)
+  ```python
+  nodes.Quadrilateral(width=width, height=height, bottom_width=bottom_width, top_width=top_width, offset=offset, bottom_height=bottom_height, top_height=top_height, point_1=point_1, point_2=point_2, point_3=point_3, point_4=point_4, mode=mode  ```
+

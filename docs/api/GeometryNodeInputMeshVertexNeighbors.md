@@ -22,6 +22,15 @@ node = nodes.VertexNeighbors()
 
 #### [Vertex](Vertex.md)
 
- - [neighbors](Vertex.md#neighbors-property) ```python nodes.VertexNeighbors(````
- - [neighbors_vertex_count](Vertex.md#neighbors_vertex_count-property) ```python nodes.VertexNeighbors(````
- - [neighbors_face_count](Vertex.md#neighbors_face_count-property) ```python nodes.VertexNeighbors(````
+ - [neighbors](Vertex.md#neighbors-property)
+  ```python
+  nodes.VertexNeighbors(  ```
+
+ - [neighbors_vertex_count](Vertex.md#neighbors_vertex_count-property)
+  ```python
+  nodes.VertexNeighbors(  ```
+
+ - [neighbors_face_count](Vertex.md#neighbors_face_count-property)
+  ```python
+  nodes.VertexNeighbors(  ```
+

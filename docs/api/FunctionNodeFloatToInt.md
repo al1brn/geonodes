@@ -31,8 +31,23 @@ node = nodes.FloatToInteger(float=None, rounding_mode='ROUND')
 
 #### [Float](Float.md)
 
- - [to_integer](Float.md#to_integer) ```python nodes.FloatToInteger(float=self, rounding_mode=rounding_mode````
- - [round](Float.md#round) ```python nodes.FloatToInteger(float=self, rounding_mode='ROUND'````
- - [floor](Float.md#floor) ```python nodes.FloatToInteger(float=self, rounding_mode='FLOOR'````
- - [ceiling](Float.md#ceiling) ```python nodes.FloatToInteger(float=self, rounding_mode='CEILING'````
- - [truncate](Float.md#truncate) ```python nodes.FloatToInteger(float=self, rounding_mode='TRUNCATE'````
+ - [to_integer](Float.md#to_integer)
+  ```python
+  nodes.FloatToInteger(float=self, rounding_mode=rounding_mode  ```
+
+ - [round](Float.md#round)
+  ```python
+  nodes.FloatToInteger(float=self, rounding_mode='ROUND'  ```
+
+ - [floor](Float.md#floor)
+  ```python
+  nodes.FloatToInteger(float=self, rounding_mode='FLOOR'  ```
+
+ - [ceiling](Float.md#ceiling)
+  ```python
+  nodes.FloatToInteger(float=self, rounding_mode='CEILING'  ```
+
+ - [truncate](Float.md#truncate)
+  ```python
+  nodes.FloatToInteger(float=self, rounding_mode='TRUNCATE'  ```
+

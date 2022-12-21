@@ -28,7 +28,13 @@ node = nodes.SplitEdges(mesh=None, selection=None)
 
 #### [Edge](Edge.md)
 
- - [split](Edge.md#split) ```python nodes.SplitEdges(mesh=self.data_socket, selection=self.selection````
+ - [split](Edge.md#split)
+  ```python
+  nodes.SplitEdges(mesh=self.data_socket, selection=self.selection  ```
+
 #### [Mesh](Mesh.md)
 
- - [split_edges](Mesh.md#split_edges) ```python nodes.SplitEdges(mesh=self, selection=selection````
+ - [split_edges](Mesh.md#split_edges)
+  ```python
+  nodes.SplitEdges(mesh=self, selection=selection  ```
+

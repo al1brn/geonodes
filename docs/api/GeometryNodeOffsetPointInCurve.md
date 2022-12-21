@@ -29,7 +29,13 @@ node = nodes.OffsetPointInCurve(point_index=None, offset=None)
 
 #### [ControlPoint](ControlPoint.md)
 
- - [offset](ControlPoint.md#offset) ```python nodes.OffsetPointInCurve(point_index=self.selection_index, offset=offset````
+ - [offset](ControlPoint.md#offset)
+  ```python
+  nodes.OffsetPointInCurve(point_index=self.selection_index, offset=offset  ```
+
 #### [Curve](Curve.md)
 
- - [offset_point](Curve.md#offset_point) ```python nodes.OffsetPointInCurve(point_index=point_index, offset=offset````
+ - [offset_point](Curve.md#offset_point)
+  ```python
+  nodes.OffsetPointInCurve(point_index=point_index, offset=offset  ```
+

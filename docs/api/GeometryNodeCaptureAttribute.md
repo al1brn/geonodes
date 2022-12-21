@@ -39,8 +39,17 @@ node = nodes.CaptureAttribute(geometry=None, value=None, data_type='FLOAT', doma
 
 #### [Domain](Domain.md)
 
- - [capture_attribute](Domain.md#capture_attribute) ```python nodes.CaptureAttribute(geometry=self.data_socket, value=value, data_type=data_type_, domain=self.domain````
+ - [capture_attribute](Domain.md#capture_attribute)
+  ```python
+  nodes.CaptureAttribute(geometry=self.data_socket, value=value, data_type=data_type_, domain=self.domain  ```
+
 #### [Geometry](Geometry.md)
 
- - [capture_attribute](Geometry.md#capture_attribute) ```python nodes.CaptureAttribute(geometry=self, value=value, data_type=data_type_, domain=domain````
- - [capture_attribute_node](Geometry.md#capture_attribute_node) ```python nodes.CaptureAttribute(geometry=geometry, value=value, data_type=data_type, domain=domain````
+ - [capture_attribute](Geometry.md#capture_attribute)
+  ```python
+  nodes.CaptureAttribute(geometry=self, value=value, data_type=data_type_, domain=domain  ```
+
+ - [capture_attribute_node](Geometry.md#capture_attribute_node)
+  ```python
+  nodes.CaptureAttribute(geometry=geometry, value=value, data_type=data_type, domain=domain  ```
+

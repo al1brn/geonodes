@@ -30,7 +30,13 @@ node = nodes.PackUvIslands(uv=None, selection=None, margin=None, rotate=None)
 
 #### [Face](Face.md)
 
- - [pack_uv_islands](Face.md#pack_uv_islands) ```python nodes.PackUvIslands(uv=uv, selection=self.selection, margin=margin, rotate=rotate````
+ - [pack_uv_islands](Face.md#pack_uv_islands)
+  ```python
+  nodes.PackUvIslands(uv=uv, selection=self.selection, margin=margin, rotate=rotate  ```
+
 #### [Mesh](Mesh.md)
 
- - [pack_uv_islands](Mesh.md#pack_uv_islands) ```python nodes.PackUvIslands(uv=uv, selection=selection, margin=margin, rotate=rotate````
+ - [pack_uv_islands](Mesh.md#pack_uv_islands)
+  ```python
+  nodes.PackUvIslands(uv=uv, selection=selection, margin=margin, rotate=rotate  ```
+

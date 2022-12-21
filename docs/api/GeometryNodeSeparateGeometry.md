@@ -33,7 +33,13 @@ node = nodes.SeparateGeometry(geometry=None, selection=None, domain='POINT')
 
 #### [Domain](Domain.md)
 
- - [separate](Domain.md#separate) ```python nodes.SeparateGeometry(geometry=geometry, selection=self.selection, domain=self.domain````
+ - [separate](Domain.md#separate)
+  ```python
+  nodes.SeparateGeometry(geometry=geometry, selection=self.selection, domain=self.domain  ```
+
 #### [Geometry](Geometry.md)
 
- - [separate](Geometry.md#separate) ```python nodes.SeparateGeometry(geometry=geometry, selection=selection, domain=domain````
+ - [separate](Geometry.md#separate)
+  ```python
+  nodes.SeparateGeometry(geometry=geometry, selection=selection, domain=domain  ```
+
