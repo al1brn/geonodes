@@ -10,11 +10,11 @@
 
 ## Methods
 
-- [domain_size](#domain_size)
+- [__len__](#__len__)
 - [instance_on_points](#instance_on_points)
 - [to_vertices](#to_vertices)
 
-## domain_size
+## __len__
 
 ```python
 def __len__(self):

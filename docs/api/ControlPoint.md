@@ -18,8 +18,8 @@
 
 ## Methods
 
+- [__len__](#__len__)
 - [curve](#curve)
-- [domain_size](#domain_size)
 - [endpoint_selection](#endpoint_selection)
 - [handle_positions](#handle_positions)
 - [handle_type_selection](#handle_type_selection)
@@ -38,20 +38,7 @@
 - [set_radius](#set_radius)
 - [set_tilt](#set_tilt)
 
-## curve
-
-```python
-def curve(self):
-
-```
-> Node: [Curve of Point](GeometryNodeCurveOfPoint.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve_topology/curve_of_point.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveOfPoint.html)
-
-#### Returns:
-- tuple ('`curve_index`', '`index_in_curve`')
-
-<sub>Go to [top](#class-ControlPoint) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-## domain_size
+## __len__
 
 ```python
 def __len__(self):
@@ -65,6 +52,19 @@ def __len__(self):
 
 #### Returns:
 - node with sockets ['point_count', 'edge_count', 'face_count', 'face_corner_count', 'spline_count', 'instance_count']
+
+<sub>Go to [top](#class-ControlPoint) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+## curve
+
+```python
+def curve(self):
+
+```
+> Node: [Curve of Point](GeometryNodeCurveOfPoint.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve_topology/curve_of_point.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveOfPoint.html)
+
+#### Returns:
+- tuple ('`curve_index`', '`index_in_curve`')
 
 <sub>Go to [top](#class-ControlPoint) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

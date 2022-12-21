@@ -59,19 +59,19 @@
 | [Distribute Points in Volume](GeometryNodeDistributePointsInVolume.md) | [Volume](Volume.md) | - [distribute_points](Volume.md#distribute_points)<br>- [distribute_points_random](Volume.md#distribute_points_random)<br>- [distribute_points_grid](Volume.md#distribute_points_grid)|
 | [Distribute Points on Faces](GeometryNodeDistributePointsOnFaces.md) | [Face](Face.md) | - [distribute_points_random](Face.md#distribute_points_random)<br>- [distribute_points_poisson](Face.md#distribute_points_poisson)|
 |      | [Mesh](Mesh.md) | [distribute_points_on_faces](Mesh.md#distribute_points_on_faces) |
-| [Domain Size](GeometryNodeAttributeDomainSize.md) | [CloudPoint](CloudPoint.md) | [domain_size](CloudPoint.md#domain_size) |
-|      | [ControlPoint](ControlPoint.md) | [domain_size](ControlPoint.md#domain_size) |
-|      | [Corner](Corner.md) | [domain_size](Corner.md#domain_size) |
+| [Domain Size](GeometryNodeAttributeDomainSize.md) | [CloudPoint](CloudPoint.md) | [__len__](CloudPoint.md#__len__) |
+|      | [ControlPoint](ControlPoint.md) | [__len__](ControlPoint.md#__len__) |
+|      | [Corner](Corner.md) | [__len__](Corner.md#__len__) |
 |      | [Curve](Curve.md) | - [domain_size](Curve.md#domain_size-property)<br>- [point_count](Curve.md#point_count-property)<br>- [spline_count](Curve.md#spline_count-property)|
-|      | [Edge](Edge.md) | [domain_size](Edge.md#domain_size) |
-|      | [Face](Face.md) | [domain_size](Face.md#domain_size) |
+|      | [Edge](Edge.md) | [__len__](Edge.md#__len__) |
+|      | [Face](Face.md) | [__len__](Face.md#__len__) |
 |      | [Geometry](Geometry.md) | [domain_size](Geometry.md#domain_size-property) |
-|      | [Instance](Instance.md) | [domain_size](Instance.md#domain_size) |
+|      | [Instance](Instance.md) | [__len__](Instance.md#__len__) |
 |      | [Instances](Instances.md) | [domain_size](Instances.md#domain_size-property) |
 |      | [Mesh](Mesh.md) | [domain_size](Mesh.md#domain_size-property) / [point_count](Mesh.md#point_count-property) / [face_count](Mesh.md#face_count-property) / [edge_count](Mesh.md#edge_count-property) / [corner_count](Mesh.md#corner_count-property) / |
 |      | [Points](Points.md) | [domain_size](Points.md#domain_size-property) |
-|      | [Spline](Spline.md) | [domain_size](Spline.md#domain_size) |
-|      | [Vertex](Vertex.md) | [domain_size](Vertex.md#domain_size) |
+|      | [Spline](Spline.md) | [__len__](Spline.md#__len__) |
+|      | [Vertex](Vertex.md) | [__len__](Vertex.md#__len__) |
 | [Dual Mesh](GeometryNodeDualMesh.md) | [Mesh](Mesh.md) | [dual_mesh](Mesh.md#dual_mesh) |
 | [Duplicate Elements](GeometryNodeDuplicateElements.md) | [Domain](Domain.md) | [duplicate](Domain.md#duplicate) |
 |      | [Geometry](Geometry.md) | [duplicate](Geometry.md#duplicate) |

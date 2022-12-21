@@ -11,13 +11,13 @@
 
 ## Methods
 
-- [domain_size](#domain_size)
+- [__len__](#__len__)
 - [rotate](#rotate)
 - [set_scale](#set_scale)
 - [to_points](#to_points)
 - [translate](#translate)
 
-## domain_size
+## __len__
 
 ```python
 def __len__(self):

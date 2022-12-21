@@ -7,9 +7,9 @@
 
 ## Methods
 
-- [domain_size](#domain_size)
+- [__len__](#__len__)
 
-## domain_size
+## __len__
 
 ```python
 def __len__(self):

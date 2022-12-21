@@ -29,19 +29,19 @@
 |      | [Geometry](Geometry.md) | [attribute_statistic](Geometry.md#attribute_statistic) |
 | [Capture Attribute](GeometryNodeCaptureAttribute.md) | [Domain](Domain.md) | [capture_attribute](Domain.md#capture_attribute) |
 |      | [Geometry](Geometry.md) | - [capture_attribute](Geometry.md#capture_attribute)<br>- [capture_attribute_node](Geometry.md#capture_attribute_node)|
-| [Domain Size](GeometryNodeAttributeDomainSize.md) | [CloudPoint](CloudPoint.md) | [domain_size](CloudPoint.md#domain_size) |
-|      | [ControlPoint](ControlPoint.md) | [domain_size](ControlPoint.md#domain_size) |
-|      | [Corner](Corner.md) | [domain_size](Corner.md#domain_size) |
+| [Domain Size](GeometryNodeAttributeDomainSize.md) | [CloudPoint](CloudPoint.md) | [__len__](CloudPoint.md#__len__) |
+|      | [ControlPoint](ControlPoint.md) | [__len__](ControlPoint.md#__len__) |
+|      | [Corner](Corner.md) | [__len__](Corner.md#__len__) |
 |      | [Curve](Curve.md) | - [domain_size](Curve.md#domain_size-property)<br>- [point_count](Curve.md#point_count-property)<br>- [spline_count](Curve.md#spline_count-property)|
-|      | [Edge](Edge.md) | [domain_size](Edge.md#domain_size) |
-|      | [Face](Face.md) | [domain_size](Face.md#domain_size) |
+|      | [Edge](Edge.md) | [__len__](Edge.md#__len__) |
+|      | [Face](Face.md) | [__len__](Face.md#__len__) |
 |      | [Geometry](Geometry.md) | [domain_size](Geometry.md#domain_size-property) |
-|      | [Instance](Instance.md) | [domain_size](Instance.md#domain_size) |
+|      | [Instance](Instance.md) | [__len__](Instance.md#__len__) |
 |      | [Instances](Instances.md) | [domain_size](Instances.md#domain_size-property) |
 |      | [Mesh](Mesh.md) | [domain_size](Mesh.md#domain_size-property) / [point_count](Mesh.md#point_count-property) / [face_count](Mesh.md#face_count-property) / [edge_count](Mesh.md#edge_count-property) / [corner_count](Mesh.md#corner_count-property) / |
 |      | [Points](Points.md) | [domain_size](Points.md#domain_size-property) |
-|      | [Spline](Spline.md) | [domain_size](Spline.md#domain_size) |
-|      | [Vertex](Vertex.md) | [domain_size](Vertex.md#domain_size) |
+|      | [Spline](Spline.md) | [__len__](Spline.md#__len__) |
+|      | [Vertex](Vertex.md) | [__len__](Vertex.md#__len__) |
 | [Store Named Attribute](GeometryNodeStoreNamedAttribute.md) | [Domain](Domain.md) | [store_named_attribute](Domain.md#store_named_attribute) / [set_named_boolean](Domain.md#set_named_boolean) / [set_named_integer](Domain.md#set_named_integer) / [set_named_float](Domain.md#set_named_float) / [set_named_vector](Domain.md#set_named_vector) / [set_named_color](Domain.md#set_named_color) / |
 |      | [Geometry](Geometry.md) | [store_named_attribute](Geometry.md#store_named_attribute) / [set_named_boolean](Geometry.md#set_named_boolean) / [set_named_integer](Geometry.md#set_named_integer) / [set_named_float](Geometry.md#set_named_float) / [set_named_vector](Geometry.md#set_named_vector) / [set_named_color](Geometry.md#set_named_color) / |
 | [Remove Named Attribute](GeometryNodeRemoveAttribute.md) | [Domain](Domain.md) | [remove_named_attribute](Domain.md#remove_named_attribute) |
