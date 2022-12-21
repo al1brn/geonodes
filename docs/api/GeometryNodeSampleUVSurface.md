@@ -42,5 +42,5 @@ node = nodes.SampleUvSurface(mesh=None, value=None, source_uv_map=None, sample_u
 
 | Name | Definition |
 |------|------------|
- | [sample_uv_surface](Mesh.md#sample_uv_surface) | `def sample_uv_surface(self, value=None, source_uv_map=None, sample_uv=None): |
+ | [sample_uv_surface](Mesh.md#sample_uv_surface) | `def sample_uv_surface(self, value=None, source_uv_map=None, sample_uv=None):` |
 

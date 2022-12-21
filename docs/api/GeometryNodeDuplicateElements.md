@@ -36,11 +36,11 @@ node = nodes.DuplicateElements(geometry=None, selection=None, amount=None, domai
 
 | Name | Definition |
 |------|------------|
- | [duplicate](Domain.md#duplicate) | `def duplicate(self, amount=None): |
+ | [duplicate](Domain.md#duplicate) | `def duplicate(self, amount=None):` |
 
 ### [Geometry](Geometry.md)
 
 | Name | Definition |
 |------|------------|
- | [duplicate](Geometry.md#duplicate) | `def duplicate(self, selection=None, amount=None, domain='POINT'): |
+ | [duplicate](Geometry.md#duplicate) | `def duplicate(self, selection=None, amount=None, domain='POINT'):` |
 

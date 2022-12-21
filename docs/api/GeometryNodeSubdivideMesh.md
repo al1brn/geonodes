@@ -30,5 +30,5 @@ node = nodes.SubdivideMesh(mesh=None, level=None)
 
 | Name | Definition |
 |------|------------|
- | [subdivide](Mesh.md#subdivide) | `def subdivide(self, level=None): |
+ | [subdivide](Mesh.md#subdivide) | `def subdivide(self, level=None):` |
 

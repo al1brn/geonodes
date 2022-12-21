@@ -30,5 +30,5 @@ node = nodes.DualMesh(mesh=None, keep_boundaries=None)
 
 | Name | Definition |
 |------|------------|
- | [dual_mesh](Mesh.md#dual_mesh) | `def dual_mesh(self, mesh=None, keep_boundaries=None): |
+ | [dual_mesh](Mesh.md#dual_mesh) | `def dual_mesh(self, mesh=None, keep_boundaries=None):` |
 

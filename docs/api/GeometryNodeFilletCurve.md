@@ -36,7 +36,7 @@ node = nodes.FilletCurve(curve=None, count=None, radius=None, limit_radius=None,
 
 | Name | Definition |
 |------|------------|
- | [fillet](Curve.md#fillet) | `def fillet(self, count=None, radius=None, limit_radius=None, mode='BEZIER'): |
- | [fillet_bezier](Curve.md#fillet_bezier) | `def fillet_bezier(self, radius=None, limit_radius=None): |
- | [fillet_poly](Curve.md#fillet_poly) | `def fillet_poly(self, count=None, radius=None, limit_radius=None): |
+ | [fillet](Curve.md#fillet) | `def fillet(self, count=None, radius=None, limit_radius=None, mode='BEZIER'):` |
+ | [fillet_bezier](Curve.md#fillet_bezier) | `def fillet_bezier(self, radius=None, limit_radius=None):` |
+ | [fillet_poly](Curve.md#fillet_poly) | `def fillet_poly(self, count=None, radius=None, limit_radius=None):` |
 

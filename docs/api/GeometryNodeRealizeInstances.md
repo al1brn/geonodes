@@ -33,5 +33,5 @@ node = nodes.RealizeInstances(geometry=None, legacy_behavior=False)
 
 | Name | Definition |
 |------|------------|
- | [realize](Instances.md#realize) | `def realize(self, geometry=None, legacy_behavior=False): |
+ | [realize](Instances.md#realize) | `def realize(self, geometry=None, legacy_behavior=False):` |
 

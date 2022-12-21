@@ -30,11 +30,11 @@ node = nodes.ColorRamp(fac=None)
 
 | Name | Definition |
 |------|------------|
- | [color_ramp](A.md#color_ramp) | `def color_ramp(fac=None): |
+ | [color_ramp](A.md#color_ramp) | `def color_ramp(fac=None):` |
 
 ### [Float](Float.md)
 
 | Name | Definition |
 |------|------------|
- | [color_ramp](Float.md#color_ramp-property) | `def color_ramp(self): |
+ | [color_ramp](Float.md#color_ramp-property) | `def color_ramp(self):` |
 

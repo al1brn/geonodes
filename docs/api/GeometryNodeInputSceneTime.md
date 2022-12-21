@@ -24,6 +24,6 @@ node = nodes.SceneTime()
 
 | Name | Definition |
 |------|------------|
- | [Seconds](Float.md#Seconds-classmethod) | `def Seconds(cls): |
- | [Frame](Float.md#Frame-classmethod) | `def Frame(cls): |
+ | [Seconds](Float.md#Seconds-classmethod) | `def Seconds(cls):` |
+ | [Frame](Float.md#Frame-classmethod) | `def Frame(cls):` |
 

@@ -36,6 +36,6 @@ node = nodes.CurveLine(start=None, end=None, direction=None, length=None, mode='
 
 | Name | Definition |
 |------|------------|
- | [Line](Curve.md#Line-classmethod) | `def Line(cls, start=None, end=None): |
- | [LineDirection](Curve.md#LineDirection-classmethod) | `def LineDirection(cls, start=None, direction=None, length=None): |
+ | [Line](Curve.md#Line-classmethod) | `def Line(cls, start=None, end=None):` |
+ | [LineDirection](Curve.md#LineDirection-classmethod) | `def LineDirection(cls, start=None, direction=None, length=None):` |
 

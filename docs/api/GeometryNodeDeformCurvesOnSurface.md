@@ -29,5 +29,5 @@ node = nodes.DeformCurvesOnSurface(curves=None)
 
 | Name | Definition |
 |------|------------|
- | [deform_on_surface](Curve.md#deform_on_surface) | `def deform_on_surface(self): |
+ | [deform_on_surface](Curve.md#deform_on_surface) | `def deform_on_surface(self):` |
 

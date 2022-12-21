@@ -34,11 +34,11 @@ node = nodes.SampleNearest(geometry=None, sample_position=None, domain='POINT')
 
 | Name | Definition |
 |------|------------|
- | [sample_nearest](Domain.md#sample_nearest) | `def sample_nearest(self, sample_position=None): |
+ | [sample_nearest](Domain.md#sample_nearest) | `def sample_nearest(self, sample_position=None):` |
 
 ### [Geometry](Geometry.md)
 
 | Name | Definition |
 |------|------------|
- | [sample_nearest](Geometry.md#sample_nearest) | `def sample_nearest(self, sample_position=None, domain='POINT'): |
+ | [sample_nearest](Geometry.md#sample_nearest) | `def sample_nearest(self, sample_position=None, domain='POINT'):` |
 

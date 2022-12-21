@@ -48,19 +48,19 @@ node = nodes.AttributeStatistic(geometry=None, selection=None, attribute=None, d
 
 | Name | Definition |
 |------|------------|
- | [attribute_statistic](Domain.md#attribute_statistic) | `def attribute_statistic(self, attribute=None): |
- | [attribute_mean](Domain.md#attribute_mean) | `def attribute_mean(self, attribute=None): |
- | [attribute_median](Domain.md#attribute_median) | `def attribute_median(self, attribute=None): |
- | [attribute_sum](Domain.md#attribute_sum) | `def attribute_sum(self, attribute=None): |
- | [attribute_min](Domain.md#attribute_min) | `def attribute_min(self, attribute=None): |
- | [attribute_max](Domain.md#attribute_max) | `def attribute_max(self, attribute=None): |
- | [attribute_range](Domain.md#attribute_range) | `def attribute_range(self, attribute=None): |
- | [attribute_std](Domain.md#attribute_std) | `def attribute_std(self, attribute=None): |
- | [attribute_var](Domain.md#attribute_var) | `def attribute_var(self, attribute=None): |
+ | [attribute_statistic](Domain.md#attribute_statistic) | `def attribute_statistic(self, attribute=None):` |
+ | [attribute_mean](Domain.md#attribute_mean) | `def attribute_mean(self, attribute=None):` |
+ | [attribute_median](Domain.md#attribute_median) | `def attribute_median(self, attribute=None):` |
+ | [attribute_sum](Domain.md#attribute_sum) | `def attribute_sum(self, attribute=None):` |
+ | [attribute_min](Domain.md#attribute_min) | `def attribute_min(self, attribute=None):` |
+ | [attribute_max](Domain.md#attribute_max) | `def attribute_max(self, attribute=None):` |
+ | [attribute_range](Domain.md#attribute_range) | `def attribute_range(self, attribute=None):` |
+ | [attribute_std](Domain.md#attribute_std) | `def attribute_std(self, attribute=None):` |
+ | [attribute_var](Domain.md#attribute_var) | `def attribute_var(self, attribute=None):` |
 
 ### [Geometry](Geometry.md)
 
 | Name | Definition |
 |------|------------|
- | [attribute_statistic](Geometry.md#attribute_statistic) | `def attribute_statistic(self, selection=None, attribute=None, domain='POINT'): |
+ | [attribute_statistic](Geometry.md#attribute_statistic) | `def attribute_statistic(self, selection=None, attribute=None, domain='POINT'):` |
 

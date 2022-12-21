@@ -30,5 +30,5 @@ node = nodes.EndpointSelection(start_size=None, end_size=None)
 
 | Name | Definition |
 |------|------------|
- | [endpoint_selection](ControlPoint.md#endpoint_selection) | `def endpoint_selection(self, start_size=None, end_size=None): |
+ | [endpoint_selection](ControlPoint.md#endpoint_selection) | `def endpoint_selection(self, start_size=None, end_size=None):` |
 

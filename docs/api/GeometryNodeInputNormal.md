@@ -23,17 +23,17 @@ node = nodes.Normal()
 
 | Name | Definition |
 |------|------------|
- | [normal](Domain.md#normal-property) | `def normal(self): |
+ | [normal](Domain.md#normal-property) | `def normal(self):` |
 
 ### [Geometry](Geometry.md)
 
 | Name | Definition |
 |------|------------|
- | [normal](Geometry.md#normal-property) | `def normal(self): |
+ | [normal](Geometry.md#normal-property) | `def normal(self):` |
 
 ### [Spline](Spline.md)
 
 | Name | Definition |
 |------|------------|
- | [normal](Spline.md#normal-property) | `def normal(self): |
+ | [normal](Spline.md#normal-property) | `def normal(self):` |
 

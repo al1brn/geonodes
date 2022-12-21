@@ -23,5 +23,5 @@ node = nodes.SplineResolution()
 
 | Name | Definition |
 |------|------------|
- | [resolution](Spline.md#resolution-property) | `def resolution(self): |
+ | [resolution](Spline.md#resolution-property) | `def resolution(self):` |
 

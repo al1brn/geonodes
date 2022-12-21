@@ -38,6 +38,6 @@ node = nodes.CurveCircle(resolution=None, point_1=None, point_2=None, point_3=No
 
 | Name | Definition |
 |------|------------|
- | [Circle](Curve.md#Circle-classmethod) | `def Circle(cls, resolution=None, radius=None): |
- | [CircleFromPoints](Curve.md#CircleFromPoints-classmethod) | `def CircleFromPoints(cls, resolution=None, point_1=None, point_2=None, point_3=None): |
+ | [Circle](Curve.md#Circle-classmethod) | `def Circle(cls, resolution=None, radius=None):` |
+ | [CircleFromPoints](Curve.md#CircleFromPoints-classmethod) | `def CircleFromPoints(cls, resolution=None, point_1=None, point_2=None, point_3=None):` |
 

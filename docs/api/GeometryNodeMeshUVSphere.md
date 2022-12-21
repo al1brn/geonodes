@@ -31,5 +31,5 @@ node = nodes.UvSphere(segments=None, rings=None, radius=None)
 
 | Name | Definition |
 |------|------------|
- | [Circle](Mesh.md#Circle-classmethod) | `def Circle(cls, segments=None, rings=None, radius=None): |
+ | [Circle](Mesh.md#Circle-classmethod) | `def Circle(cls, segments=None, rings=None, radius=None):` |
 

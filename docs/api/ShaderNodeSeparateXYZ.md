@@ -31,5 +31,5 @@ node = nodes.SeparateXyz(vector=None)
 
 | Name | Definition |
 |------|------------|
- | [separate](Vector.md#separate-property) | `def separate(self): |
+ | [separate](Vector.md#separate-property) | `def separate(self):` |
 

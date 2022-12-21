@@ -29,11 +29,11 @@ node = nodes.FaceIsPlanar(threshold=None)
 
 | Name | Definition |
 |------|------------|
- | [is_planar](Face.md#is_planar) | `def is_planar(self, threshold=None): |
+ | [is_planar](Face.md#is_planar) | `def is_planar(self, threshold=None):` |
 
 ### [Mesh](Mesh.md)
 
 | Name | Definition |
 |------|------------|
- | [face_is_planar](Mesh.md#face_is_planar) | `def face_is_planar(self, threshold=None): |
+ | [face_is_planar](Mesh.md#face_is_planar) | `def face_is_planar(self, threshold=None):` |
 

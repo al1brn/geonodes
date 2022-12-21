@@ -23,11 +23,11 @@ node = nodes.Position()
 
 | Name | Definition |
 |------|------------|
- | [position](Domain.md#position-property) | `def position(self): |
+ | [position](Domain.md#position-property) | `def position(self):` |
 
 ### [Geometry](Geometry.md)
 
 | Name | Definition |
 |------|------------|
- | [position](Geometry.md#position-property) | `def position(self): |
+ | [position](Geometry.md#position-property) | `def position(self):` |
 

@@ -23,5 +23,5 @@ node = nodes.Color()
 
 | Name | Definition |
 |------|------------|
- | [Color](Color.md#Color-classmethod) | `def Color(cls): |
+ | [Color](Color.md#Color-classmethod) | `def Color(cls):` |
 

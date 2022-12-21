@@ -30,11 +30,11 @@ node = nodes.CurveOfPoint(point_index=None)
 
 | Name | Definition |
 |------|------------|
- | [curve](ControlPoint.md#curve) | `def curve(self): |
+ | [curve](ControlPoint.md#curve) | `def curve(self):` |
 
 ### [Curve](Curve.md)
 
 | Name | Definition |
 |------|------------|
- | [curve_of_point](Curve.md#curve_of_point) | `def curve_of_point(self, point_index=None): |
+ | [curve_of_point](Curve.md#curve_of_point) | `def curve_of_point(self, point_index=None):` |
 

@@ -23,5 +23,5 @@ node = nodes.SelfObject()
 
 | Name | Definition |
 |------|------------|
- | [Self](Object.md#Self-classmethod) | `def Self(cls): |
+ | [Self](Object.md#Self-classmethod) | `def Self(cls):` |
 

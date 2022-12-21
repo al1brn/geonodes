@@ -45,6 +45,6 @@ node = nodes.Arc(resolution=None, start=None, middle=None, end=None, radius=None
 
 | Name | Definition |
 |------|------------|
- | [Arc](Curve.md#Arc-classmethod) | `def Arc(cls, resolution=None, radius=None, start_angle=None, sweep_angle=None, connect_center=None, invert_arc=None): |
- | [ArcFromPoints](Curve.md#ArcFromPoints-classmethod) | `def ArcFromPoints(cls, resolution=None, start=None, middle=None, end=None, offset_angle=None, connect_center=None, invert_arc=None): |
+ | [Arc](Curve.md#Arc-classmethod) | `def Arc(cls, resolution=None, radius=None, start_angle=None, sweep_angle=None, connect_center=None, invert_arc=None):` |
+ | [ArcFromPoints](Curve.md#ArcFromPoints-classmethod) | `def ArcFromPoints(cls, resolution=None, start=None, middle=None, end=None, offset_angle=None, connect_center=None, invert_arc=None):` |
 

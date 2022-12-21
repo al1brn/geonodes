@@ -29,11 +29,11 @@ node = nodes.StringLength(string=None)
 
 | Name | Definition |
 |------|------------|
- | [string_length](A.md#string_length) | `def string_length(string=None): |
+ | [string_length](A.md#string_length) | `def string_length(string=None):` |
 
 ### [String](String.md)
 
 | Name | Definition |
 |------|------------|
- | [length](String.md#length-property) | `def length(self): |
+ | [length](String.md#length-property) | `def length(self):` |
 

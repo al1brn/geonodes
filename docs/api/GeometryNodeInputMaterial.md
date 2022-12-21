@@ -23,5 +23,5 @@ node = nodes.Material()
 
 | Name | Definition |
 |------|------------|
- | [Material](Material.md#Material-classmethod) | `def Material(cls): |
+ | [Material](Material.md#Material-classmethod) | `def Material(cls):` |
 

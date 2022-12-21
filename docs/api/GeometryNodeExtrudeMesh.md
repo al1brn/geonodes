@@ -39,23 +39,23 @@ node = nodes.ExtrudeMesh(mesh=None, selection=None, offset=None, offset_scale=No
 
 | Name | Definition |
 |------|------------|
- | [extrude](Edge.md#extrude) | `def extrude(self, offset=None, offset_scale=None, individual=None): |
+ | [extrude](Edge.md#extrude) | `def extrude(self, offset=None, offset_scale=None, individual=None):` |
 
 ### [Face](Face.md)
 
 | Name | Definition |
 |------|------------|
- | [extrude](Face.md#extrude) | `def extrude(self, offset=None, offset_scale=None, individual=None): |
+ | [extrude](Face.md#extrude) | `def extrude(self, offset=None, offset_scale=None, individual=None):` |
 
 ### [Mesh](Mesh.md)
 
 | Name | Definition |
 |------|------------|
- | [extrude](Mesh.md#extrude) | `def extrude(self, selection=None, offset=None, offset_scale=None, individual=None, mode='FACES'): |
+ | [extrude](Mesh.md#extrude) | `def extrude(self, selection=None, offset=None, offset_scale=None, individual=None, mode='FACES'):` |
 
 ### [Vertex](Vertex.md)
 
 | Name | Definition |
 |------|------------|
- | [extrude](Vertex.md#extrude) | `def extrude(self, offset=None, offset_scale=None, individual=None): |
+ | [extrude](Vertex.md#extrude) | `def extrude(self, offset=None, offset_scale=None, individual=None):` |
 

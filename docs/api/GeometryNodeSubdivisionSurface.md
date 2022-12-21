@@ -37,5 +37,5 @@ node = nodes.SubdivisionSurface(mesh=None, level=None, edge_crease=None, vertex_
 
 | Name | Definition |
 |------|------------|
- | [subdivision_surface](Mesh.md#subdivision_surface) | `def subdivision_surface(self, level=None, edge_crease=None, vertex_crease=None, boundary_smooth='ALL', uv_smooth='PRESERVE_BOUNDARIES'): |
+ | [subdivision_surface](Mesh.md#subdivision_surface) | `def subdivision_surface(self, level=None, edge_crease=None, vertex_crease=None, boundary_smooth='ALL', uv_smooth='PRESERVE_BOUNDARIES'):` |
 

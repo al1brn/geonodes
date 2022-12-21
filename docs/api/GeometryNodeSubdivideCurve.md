@@ -30,5 +30,5 @@ node = nodes.SubdivideCurve(curve=None, cuts=None)
 
 | Name | Definition |
 |------|------------|
- | [subdivide](Curve.md#subdivide) | `def subdivide(self, cuts=None): |
+ | [subdivide](Curve.md#subdivide) | `def subdivide(self, cuts=None):` |
 

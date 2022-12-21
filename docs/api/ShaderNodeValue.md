@@ -23,5 +23,5 @@ node = nodes.Value()
 
 | Name | Definition |
 |------|------------|
- | [Value](Float.md#Value-classmethod) | `def Value(cls): |
+ | [Value](Float.md#Value-classmethod) | `def Value(cls):` |
 

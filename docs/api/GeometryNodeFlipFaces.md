@@ -30,11 +30,11 @@ node = nodes.FlipFaces(mesh=None, selection=None)
 
 | Name | Definition |
 |------|------------|
- | [flip](Face.md#flip) | `def flip(self): |
+ | [flip](Face.md#flip) | `def flip(self):` |
 
 ### [Mesh](Mesh.md)
 
 | Name | Definition |
 |------|------------|
- | [flip_faces](Mesh.md#flip_faces) | `def flip_faces(self, selection=None): |
+ | [flip_faces](Mesh.md#flip_faces) | `def flip_faces(self, selection=None):` |
 

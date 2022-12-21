@@ -37,11 +37,11 @@ node = nodes.ImageTexture(image=None, vector=None, frame=None, extension='REPEAT
 
 | Name | Definition |
 |------|------------|
- | [texture](Image.md#texture) | `def texture(self, vector=None, frame=None, extension='REPEAT', interpolation='Linear'): |
+ | [texture](Image.md#texture) | `def texture(self, vector=None, frame=None, extension='REPEAT', interpolation='Linear'):` |
 
 ### [Texture](Texture.md)
 
 | Name | Definition |
 |------|------------|
- | [image](Texture.md#image-staticmethod) | `def image(image=None, vector=None, frame=None, extension='REPEAT', interpolation='Linear'): |
+ | [image](Texture.md#image-staticmethod) | `def image(image=None, vector=None, frame=None, extension='REPEAT', interpolation='Linear'):` |
 

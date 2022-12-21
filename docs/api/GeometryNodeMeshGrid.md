@@ -32,5 +32,5 @@ node = nodes.Grid(size_x=None, size_y=None, vertices_x=None, vertices_y=None)
 
 | Name | Definition |
 |------|------------|
- | [Grid](Mesh.md#Grid-classmethod) | `def Grid(cls, size_x=None, size_y=None, vertices_x=None, vertices_y=None): |
+ | [Grid](Mesh.md#Grid-classmethod) | `def Grid(cls, size_x=None, size_y=None, vertices_x=None, vertices_y=None):` |
 

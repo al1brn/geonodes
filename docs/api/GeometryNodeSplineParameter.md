@@ -25,8 +25,8 @@ node = nodes.SplineParameter()
 
 | Name | Definition |
 |------|------------|
- | [parameter](ControlPoint.md#parameter-property) | `def parameter(self): |
- | [parameter_factor](ControlPoint.md#parameter_factor-property) | `def parameter_factor(self): |
- | [parameter_length](ControlPoint.md#parameter_length-property) | `def parameter_length(self): |
- | [parameter_index](ControlPoint.md#parameter_index-property) | `def parameter_index(self): |
+ | [parameter](ControlPoint.md#parameter-property) | `def parameter(self):` |
+ | [parameter_factor](ControlPoint.md#parameter_factor-property) | `def parameter_factor(self):` |
+ | [parameter_length](ControlPoint.md#parameter_length-property) | `def parameter_length(self):` |
+ | [parameter_index](ControlPoint.md#parameter_index-property) | `def parameter_index(self):` |
 

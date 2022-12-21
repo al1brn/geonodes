@@ -29,11 +29,11 @@ node = nodes.FaceSetBoundaries(face_set=None)
 
 | Name | Definition |
 |------|------------|
- | [face_set_boundaries](Face.md#face_set_boundaries) | `def face_set_boundaries(self): |
+ | [face_set_boundaries](Face.md#face_set_boundaries) | `def face_set_boundaries(self):` |
 
 ### [Mesh](Mesh.md)
 
 | Name | Definition |
 |------|------------|
- | [face_set_boundaries](Mesh.md#face_set_boundaries) | `def face_set_boundaries(self, face_set=None): |
+ | [face_set_boundaries](Mesh.md#face_set_boundaries) | `def face_set_boundaries(self, face_set=None):` |
 

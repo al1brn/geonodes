@@ -23,11 +23,11 @@ node = nodes.InstanceScale()
 
 | Name | Definition |
 |------|------------|
- | [scale](Instance.md#scale-property) | `def scale(self): |
+ | [scale](Instance.md#scale-property) | `def scale(self):` |
 
 ### [Instances](Instances.md)
 
 | Name | Definition |
 |------|------------|
- | [scale](Instances.md#scale-property) | `def scale(self): |
+ | [scale](Instances.md#scale-property) | `def scale(self):` |
 

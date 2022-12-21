@@ -29,5 +29,5 @@ node = nodes.CurveLength(curve=None)
 
 | Name | Definition |
 |------|------------|
- | [length](Curve.md#length-property) | `def length(self): |
+ | [length](Curve.md#length-property) | `def length(self):` |
 

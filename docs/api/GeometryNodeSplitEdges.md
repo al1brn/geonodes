@@ -30,11 +30,11 @@ node = nodes.SplitEdges(mesh=None, selection=None)
 
 | Name | Definition |
 |------|------------|
- | [split](Edge.md#split) | `def split(self): |
+ | [split](Edge.md#split) | `def split(self):` |
 
 ### [Mesh](Mesh.md)
 
 | Name | Definition |
 |------|------------|
- | [split_edges](Mesh.md#split_edges) | `def split_edges(self, selection=None): |
+ | [split_edges](Mesh.md#split_edges) | `def split_edges(self, selection=None):` |
 

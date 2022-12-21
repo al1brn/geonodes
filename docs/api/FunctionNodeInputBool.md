@@ -29,5 +29,5 @@ node = nodes.Boolean(boolean=False)
 
 | Name | Definition |
 |------|------------|
- | [Boolean](Boolean.md#Boolean-classmethod) | `def Boolean(cls, boolean=False): |
+ | [Boolean](Boolean.md#Boolean-classmethod) | `def Boolean(cls, boolean=False):` |
 

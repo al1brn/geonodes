@@ -30,5 +30,5 @@ node = nodes.IcoSphere(radius=None, subdivisions=None)
 
 | Name | Definition |
 |------|------------|
- | [IcoSphere](Mesh.md#IcoSphere-classmethod) | `def IcoSphere(cls, radius=None, subdivisions=None): |
+ | [IcoSphere](Mesh.md#IcoSphere-classmethod) | `def IcoSphere(cls, radius=None, subdivisions=None):` |
 

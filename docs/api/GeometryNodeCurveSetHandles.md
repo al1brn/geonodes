@@ -35,6 +35,6 @@ node = nodes.SetHandleType(curve=None, selection=None, handle_type='AUTO', mode=
 
 | Name | Definition |
 |------|------------|
- | [set_handle_type_node](ControlPoint.md#set_handle_type_node) | `def set_handle_type_node(self, handle_type='AUTO', mode={'RIGHT', 'LEFT'}): |
- | [set_handle_type](ControlPoint.md#set_handle_type) | `def set_handle_type(self, left=True, right=True, handle_type='AUTO'): |
+ | [set_handle_type_node](ControlPoint.md#set_handle_type_node) | `def set_handle_type_node(self, handle_type='AUTO', mode={'RIGHT', 'LEFT'}):` |
+ | [set_handle_type](ControlPoint.md#set_handle_type) | `def set_handle_type(self, left=True, right=True, handle_type='AUTO'):` |
 

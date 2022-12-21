@@ -34,5 +34,5 @@ node = nodes.Spiral(resolution=None, rotations=None, start_radius=None, end_radi
 
 | Name | Definition |
 |------|------------|
- | [Spiral](Curve.md#Spiral-classmethod) | `def Spiral(cls, resolution=None, rotations=None, start_radius=None, end_radius=None, height=None, reverse=None): |
+ | [Spiral](Curve.md#Spiral-classmethod) | `def Spiral(cls, resolution=None, rotations=None, start_radius=None, end_radius=None, height=None, reverse=None):` |
 

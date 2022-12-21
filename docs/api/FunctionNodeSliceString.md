@@ -31,11 +31,11 @@ node = nodes.SliceString(string=None, position=None, length=None)
 
 | Name | Definition |
 |------|------------|
- | [slice_string](A.md#slice_string) | `def slice_string(string=None, position=None, length=None): |
+ | [slice_string](A.md#slice_string) | `def slice_string(string=None, position=None, length=None):` |
 
 ### [String](String.md)
 
 | Name | Definition |
 |------|------------|
- | [slice](String.md#slice) | `def slice(self, position=None, length=None): |
+ | [slice](String.md#slice) | `def slice(self, position=None, length=None):` |
 

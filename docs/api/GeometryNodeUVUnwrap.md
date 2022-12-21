@@ -36,11 +36,11 @@ node = nodes.UvUnwrap(selection=None, seam=None, margin=None, fill_holes=None, m
 
 | Name | Definition |
 |------|------------|
- | [uv_unwrap](Face.md#uv_unwrap) | `def uv_unwrap(self, seam=None, margin=None, fill_holes=None, method='ANGLE_BASED'): |
+ | [uv_unwrap](Face.md#uv_unwrap) | `def uv_unwrap(self, seam=None, margin=None, fill_holes=None, method='ANGLE_BASED'):` |
 
 ### [Mesh](Mesh.md)
 
 | Name | Definition |
 |------|------------|
- | [uv_unwrap](Mesh.md#uv_unwrap) | `def uv_unwrap(self, selection=None, seam=None, margin=None, fill_holes=None, method='ANGLE_BASED'): |
+ | [uv_unwrap](Mesh.md#uv_unwrap) | `def uv_unwrap(self, selection=None, seam=None, margin=None, fill_holes=None, method='ANGLE_BASED'):` |
 

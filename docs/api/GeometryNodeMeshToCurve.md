@@ -30,11 +30,11 @@ node = nodes.MeshToCurve(mesh=None, selection=None)
 
 | Name | Definition |
 |------|------------|
- | [to_curve](Edge.md#to_curve) | `def to_curve(self): |
+ | [to_curve](Edge.md#to_curve) | `def to_curve(self):` |
 
 ### [Mesh](Mesh.md)
 
 | Name | Definition |
 |------|------------|
- | [to_curve](Mesh.md#to_curve) | `def to_curve(self, selection=None): |
+ | [to_curve](Mesh.md#to_curve) | `def to_curve(self, selection=None):` |
 

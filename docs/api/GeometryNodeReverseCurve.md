@@ -30,5 +30,5 @@ node = nodes.ReverseCurve(curve=None, selection=None)
 
 | Name | Definition |
 |------|------------|
- | [reverse](Curve.md#reverse) | `def reverse(self, selection=None): |
+ | [reverse](Curve.md#reverse) | `def reverse(self, selection=None):` |
 

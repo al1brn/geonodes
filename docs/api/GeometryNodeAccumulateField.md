@@ -42,5 +42,5 @@ node = nodes.AccumulateField(value=None, group_index=None, data_type='FLOAT', do
 
 | Name | Definition |
 |------|------------|
- | [accumulate_field](Domain.md#accumulate_field) | `def accumulate_field(self, value=None, group_index=None): |
+ | [accumulate_field](Domain.md#accumulate_field) | `def accumulate_field(self, value=None, group_index=None):` |
 

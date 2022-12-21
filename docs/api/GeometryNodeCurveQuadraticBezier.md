@@ -32,5 +32,5 @@ node = nodes.QuadraticBezier(resolution=None, start=None, middle=None, end=None)
 
 | Name | Definition |
 |------|------------|
- | [QuadraticBezier](Curve.md#QuadraticBezier-classmethod) | `def QuadraticBezier(cls, resolution=None, start=None, middle=None, end=None): |
+ | [QuadraticBezier](Curve.md#QuadraticBezier-classmethod) | `def QuadraticBezier(cls, resolution=None, start=None, middle=None, end=None):` |
 

@@ -31,7 +31,7 @@ node = nodes.BoundingBox(geometry=None)
 
 | Name | Definition |
 |------|------------|
- | [bounding_box](Geometry.md#bounding_box-property) | `def bounding_box(self): |
- | [bounding_box_min](Geometry.md#bounding_box_min-property) | `def bounding_box_min(self): |
- | [bounding_box_min](Geometry.md#bounding_box_min-property) | `def bounding_box_min(self): |
+ | [bounding_box](Geometry.md#bounding_box-property) | `def bounding_box(self):` |
+ | [bounding_box_min](Geometry.md#bounding_box_min-property) | `def bounding_box_min(self):` |
+ | [bounding_box_min](Geometry.md#bounding_box_min-property) | `def bounding_box_min(self):` |
 

@@ -23,17 +23,17 @@ node = nodes.Radius()
 
 | Name | Definition |
 |------|------------|
- | [radius](CloudPoint.md#radius-property) | `def radius(self): |
+ | [radius](CloudPoint.md#radius-property) | `def radius(self):` |
 
 ### [ControlPoint](ControlPoint.md)
 
 | Name | Definition |
 |------|------------|
- | [radius](ControlPoint.md#radius-property) | `def radius(self): |
+ | [radius](ControlPoint.md#radius-property) | `def radius(self):` |
 
 ### [Geometry](Geometry.md)
 
 | Name | Definition |
 |------|------------|
- | [radius](Geometry.md#radius-property) | `def radius(self): |
+ | [radius](Geometry.md#radius-property) | `def radius(self):` |
 

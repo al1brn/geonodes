@@ -47,19 +47,19 @@ node = nodes.MapRange(value=None, from_min=None, from_max=None, to_min=None, to_
 
 | Name | Definition |
 |------|------------|
- | [map_range](Float.md#map_range) | `def map_range(self, from_min=None, from_max=None, to_min=None, to_max=None, steps=None, clamp=True, interpolation_type='LINEAR'): |
- | [map_range_linear](Float.md#map_range_linear) | `def map_range_linear(self, from_min=None, from_max=None, to_min=None, to_max=None, clamp=True): |
- | [map_range_stepped](Float.md#map_range_stepped) | `def map_range_stepped(self, from_min=None, from_max=None, to_min=None, to_max=None, steps=None, clamp=True): |
- | [map_range_smooth](Float.md#map_range_smooth) | `def map_range_smooth(self, from_min=None, from_max=None, to_min=None, to_max=None, clamp=True): |
- | [map_range_smoother](Float.md#map_range_smoother) | `def map_range_smoother(self, from_min=None, from_max=None, to_min=None, to_max=None, clamp=True): |
+ | [map_range](Float.md#map_range) | `def map_range(self, from_min=None, from_max=None, to_min=None, to_max=None, steps=None, clamp=True, interpolation_type='LINEAR'):` |
+ | [map_range_linear](Float.md#map_range_linear) | `def map_range_linear(self, from_min=None, from_max=None, to_min=None, to_max=None, clamp=True):` |
+ | [map_range_stepped](Float.md#map_range_stepped) | `def map_range_stepped(self, from_min=None, from_max=None, to_min=None, to_max=None, steps=None, clamp=True):` |
+ | [map_range_smooth](Float.md#map_range_smooth) | `def map_range_smooth(self, from_min=None, from_max=None, to_min=None, to_max=None, clamp=True):` |
+ | [map_range_smoother](Float.md#map_range_smoother) | `def map_range_smoother(self, from_min=None, from_max=None, to_min=None, to_max=None, clamp=True):` |
 
 ### [Vector](Vector.md)
 
 | Name | Definition |
 |------|------------|
- | [map_range](Vector.md#map_range) | `def map_range(self, from_min=None, from_max=None, to_min=None, to_max=None, steps=None, clamp=True, interpolation_type='LINEAR'): |
- | [map_range_linear](Vector.md#map_range_linear) | `def map_range_linear(self, from_min=None, from_max=None, to_min=None, to_max=None, clamp=True): |
- | [map_range_stepped](Vector.md#map_range_stepped) | `def map_range_stepped(self, from_min=None, from_max=None, to_min=None, to_max=None, steps=None, clamp=True): |
- | [map_range_smooth](Vector.md#map_range_smooth) | `def map_range_smooth(self, from_min=None, from_max=None, to_min=None, to_max=None, clamp=True): |
- | [map_range_smoother](Vector.md#map_range_smoother) | `def map_range_smoother(self, from_min=None, from_max=None, to_min=None, to_max=None, clamp=True): |
+ | [map_range](Vector.md#map_range) | `def map_range(self, from_min=None, from_max=None, to_min=None, to_max=None, steps=None, clamp=True, interpolation_type='LINEAR'):` |
+ | [map_range_linear](Vector.md#map_range_linear) | `def map_range_linear(self, from_min=None, from_max=None, to_min=None, to_max=None, clamp=True):` |
+ | [map_range_stepped](Vector.md#map_range_stepped) | `def map_range_stepped(self, from_min=None, from_max=None, to_min=None, to_max=None, steps=None, clamp=True):` |
+ | [map_range_smooth](Vector.md#map_range_smooth) | `def map_range_smooth(self, from_min=None, from_max=None, to_min=None, to_max=None, clamp=True):` |
+ | [map_range_smoother](Vector.md#map_range_smoother) | `def map_range_smoother(self, from_min=None, from_max=None, to_min=None, to_max=None, clamp=True):` |
 

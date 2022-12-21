@@ -35,43 +35,43 @@ node = nodes.DeleteGeometry(geometry=None, selection=None, domain='POINT', mode=
 
 | Name | Definition |
 |------|------------|
- | [delete](Domain.md#delete) | `def delete(self, mode='ALL'): |
+ | [delete](Domain.md#delete) | `def delete(self, mode='ALL'):` |
 
 ### [Edge](Edge.md)
 
 | Name | Definition |
 |------|------------|
- | [delete_all](Edge.md#delete_all) | `def delete_all(self): |
- | [delete_edges](Edge.md#delete_edges) | `def delete_edges(self): |
- | [delete_faces](Edge.md#delete_faces) | `def delete_faces(self): |
+ | [delete_all](Edge.md#delete_all) | `def delete_all(self):` |
+ | [delete_edges](Edge.md#delete_edges) | `def delete_edges(self):` |
+ | [delete_faces](Edge.md#delete_faces) | `def delete_faces(self):` |
 
 ### [Face](Face.md)
 
 | Name | Definition |
 |------|------------|
- | [delete_all](Face.md#delete_all) | `def delete_all(self): |
- | [delete_edges](Face.md#delete_edges) | `def delete_edges(self): |
- | [delete_faces](Face.md#delete_faces) | `def delete_faces(self): |
+ | [delete_all](Face.md#delete_all) | `def delete_all(self):` |
+ | [delete_edges](Face.md#delete_edges) | `def delete_edges(self):` |
+ | [delete_faces](Face.md#delete_faces) | `def delete_faces(self):` |
 
 ### [Geometry](Geometry.md)
 
 | Name | Definition |
 |------|------------|
- | [delete](Geometry.md#delete) | `def delete(self, selection=None, domain='POINT', mode='ALL'): |
+ | [delete](Geometry.md#delete) | `def delete(self, selection=None, domain='POINT', mode='ALL'):` |
 
 ### [Mesh](Mesh.md)
 
 | Name | Definition |
 |------|------------|
- | [delete_all](Mesh.md#delete_all) | `def delete_all(self, selection=None, domain='POINT'): |
- | [delete_edges](Mesh.md#delete_edges) | `def delete_edges(self, selection=None, domain='POINT'): |
- | [delete_faces](Mesh.md#delete_faces) | `def delete_faces(self, selection=None, domain='POINT'): |
+ | [delete_all](Mesh.md#delete_all) | `def delete_all(self, selection=None, domain='POINT'):` |
+ | [delete_edges](Mesh.md#delete_edges) | `def delete_edges(self, selection=None, domain='POINT'):` |
+ | [delete_faces](Mesh.md#delete_faces) | `def delete_faces(self, selection=None, domain='POINT'):` |
 
 ### [Vertex](Vertex.md)
 
 | Name | Definition |
 |------|------------|
- | [delete_all](Vertex.md#delete_all) | `def delete_all(self): |
- | [delete_edges](Vertex.md#delete_edges) | `def delete_edges(self): |
- | [delete_faces](Vertex.md#delete_faces) | `def delete_faces(self): |
+ | [delete_all](Vertex.md#delete_all) | `def delete_all(self):` |
+ | [delete_edges](Vertex.md#delete_edges) | `def delete_edges(self):` |
+ | [delete_faces](Vertex.md#delete_faces) | `def delete_faces(self):` |
 

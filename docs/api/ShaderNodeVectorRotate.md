@@ -38,9 +38,9 @@ node = nodes.VectorRotate(vector=None, center=None, axis=None, angle=None, rotat
 
 | Name | Definition |
 |------|------------|
- | [rotate_euler](Vector.md#rotate_euler) | `def rotate_euler(self, center=None, rotation=None, invert=False): |
- | [rotate_axis_angle](Vector.md#rotate_axis_angle) | `def rotate_axis_angle(self, center=None, axis=None, angle=None, invert=False): |
- | [rotate_x](Vector.md#rotate_x) | `def rotate_x(self, center=None, angle=None, invert=False): |
- | [rotate_y](Vector.md#rotate_y) | `def rotate_y(self, center=None, angle=None, invert=False): |
- | [rotate_z](Vector.md#rotate_z) | `def rotate_z(self, center=None, angle=None, invert=False): |
+ | [rotate_euler](Vector.md#rotate_euler) | `def rotate_euler(self, center=None, rotation=None, invert=False):` |
+ | [rotate_axis_angle](Vector.md#rotate_axis_angle) | `def rotate_axis_angle(self, center=None, axis=None, angle=None, invert=False):` |
+ | [rotate_x](Vector.md#rotate_x) | `def rotate_x(self, center=None, angle=None, invert=False):` |
+ | [rotate_y](Vector.md#rotate_y) | `def rotate_y(self, center=None, angle=None, invert=False):` |
+ | [rotate_z](Vector.md#rotate_z) | `def rotate_z(self, center=None, angle=None, invert=False):` |
 

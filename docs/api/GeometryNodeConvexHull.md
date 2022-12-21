@@ -29,5 +29,5 @@ node = nodes.ConvexHull(geometry=None)
 
 | Name | Definition |
 |------|------------|
- | [convex_hull](Geometry.md#convex_hull-property) | `def convex_hull(self): |
+ | [convex_hull](Geometry.md#convex_hull-property) | `def convex_hull(self):` |
 

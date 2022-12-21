@@ -24,15 +24,15 @@ node = nodes.MeshIsland()
 
 | Name | Definition |
 |------|------------|
- | [island](Face.md#island-property) | `def island(self): |
- | [island_index](Face.md#island_index-property) | `def island_index(self): |
- | [island_count](Face.md#island_count-property) | `def island_count(self): |
+ | [island](Face.md#island-property) | `def island(self):` |
+ | [island_index](Face.md#island_index-property) | `def island_index(self):` |
+ | [island_count](Face.md#island_count-property) | `def island_count(self):` |
 
 ### [Mesh](Mesh.md)
 
 | Name | Definition |
 |------|------------|
- | [island](Mesh.md#island-property) | `def island(self): |
- | [island_index](Mesh.md#island_index-property) | `def island_index(self): |
- | [island_count](Mesh.md#island_count-property) | `def island_count(self): |
+ | [island](Mesh.md#island-property) | `def island(self):` |
+ | [island_index](Mesh.md#island_index-property) | `def island_index(self):` |
+ | [island_count](Mesh.md#island_count-property) | `def island_count(self):` |
 

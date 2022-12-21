@@ -23,11 +23,11 @@ node = nodes.InstanceRotation()
 
 | Name | Definition |
 |------|------------|
- | [rotation](Instance.md#rotation-property) | `def rotation(self): |
+ | [rotation](Instance.md#rotation-property) | `def rotation(self):` |
 
 ### [Instances](Instances.md)
 
 | Name | Definition |
 |------|------------|
- | [rotation](Instances.md#rotation-property) | `def rotation(self): |
+ | [rotation](Instances.md#rotation-property) | `def rotation(self):` |
 

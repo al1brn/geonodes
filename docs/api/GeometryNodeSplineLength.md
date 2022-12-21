@@ -24,5 +24,5 @@ node = nodes.SplineLength()
 
 | Name | Definition |
 |------|------------|
- | [length](Spline.md#length-property) | `def length(self): |
+ | [length](Spline.md#length-property) | `def length(self):` |
 

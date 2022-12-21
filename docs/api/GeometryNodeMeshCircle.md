@@ -34,5 +34,5 @@ node = nodes.MeshCircle(vertices=None, radius=None, fill_type='NONE')
 
 | Name | Definition |
 |------|------------|
- | [Circle](Mesh.md#Circle-classmethod) | `def Circle(cls, vertices=None, radius=None, fill_type='NONE'): |
+ | [Circle](Mesh.md#Circle-classmethod) | `def Circle(cls, vertices=None, radius=None, fill_type='NONE'):` |
 

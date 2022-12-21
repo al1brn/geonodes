@@ -40,5 +40,5 @@ node = nodes.SampleNearestSurface(mesh=None, value=None, sample_position=None, d
 
 | Name | Definition |
 |------|------------|
- | [sample_nearest_surface](Mesh.md#sample_nearest_surface) | `def sample_nearest_surface(self, value=None, sample_position=None): |
+ | [sample_nearest_surface](Mesh.md#sample_nearest_surface) | `def sample_nearest_surface(self, value=None, sample_position=None):` |
 

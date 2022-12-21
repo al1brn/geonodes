@@ -32,5 +32,5 @@ node = nodes.Cube(size=None, vertices_x=None, vertices_y=None, vertices_z=None)
 
 | Name | Definition |
 |------|------------|
- | [Cube](Mesh.md#Cube-classmethod) | `def Cube(cls, size=None, vertices_x=None, vertices_y=None, vertices_z=None): |
+ | [Cube](Mesh.md#Cube-classmethod) | `def Cube(cls, size=None, vertices_x=None, vertices_y=None, vertices_z=None):` |
 

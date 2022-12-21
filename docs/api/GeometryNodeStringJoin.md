@@ -30,11 +30,11 @@ node = nodes.JoinStrings(*strings, delimiter=None)
 
 | Name | Definition |
 |------|------------|
- | [join_strings](A.md#join_strings) | `def join_strings(*strings, delimiter=None): |
+ | [join_strings](A.md#join_strings) | `def join_strings(*strings, delimiter=None):` |
 
 ### [String](String.md)
 
 | Name | Definition |
 |------|------------|
- | [join](String.md#join) | `def join(*strings, delimiter=None): |
+ | [join](String.md#join) | `def join(*strings, delimiter=None):` |
 

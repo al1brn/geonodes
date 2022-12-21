@@ -41,12 +41,12 @@ node = nodes.CaptureAttribute(geometry=None, value=None, data_type='FLOAT', doma
 
 | Name | Definition |
 |------|------------|
- | [capture_attribute](Domain.md#capture_attribute) | `def capture_attribute(self, value=None): |
+ | [capture_attribute](Domain.md#capture_attribute) | `def capture_attribute(self, value=None):` |
 
 ### [Geometry](Geometry.md)
 
 | Name | Definition |
 |------|------------|
- | [capture_attribute](Geometry.md#capture_attribute) | `def capture_attribute(self, value=None, domain='POINT'): |
- | [capture_attribute_node](Geometry.md#capture_attribute_node) | `def capture_attribute_node(self, geometry=None, value=None, data_type='FLOAT', domain='POINT'): |
+ | [capture_attribute](Geometry.md#capture_attribute) | `def capture_attribute(self, value=None, domain='POINT'):` |
+ | [capture_attribute_node](Geometry.md#capture_attribute_node) | `def capture_attribute_node(self, geometry=None, value=None, data_type='FLOAT', domain='POINT'):` |
 

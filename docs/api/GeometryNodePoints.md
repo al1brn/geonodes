@@ -31,5 +31,5 @@ node = nodes.Points(count=None, position=None, radius=None)
 
 | Name | Definition |
 |------|------------|
- | [Points](Points.md#Points-classmethod) | `def Points(cls, count=None, position=None, radius=None): |
+ | [Points](Points.md#Points-classmethod) | `def Points(cls, count=None, position=None, radius=None):` |
 

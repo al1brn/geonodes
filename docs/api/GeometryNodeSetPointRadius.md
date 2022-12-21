@@ -31,11 +31,11 @@ node = nodes.SetPointRadius(points=None, selection=None, radius=None)
 
 | Name | Definition |
 |------|------------|
- | [radius](CloudPoint.md#radius) | `def radius(self, attr_value): |
+ | [radius](CloudPoint.md#radius) | `def radius(self, attr_value):` |
 
 ### [Points](Points.md)
 
 | Name | Definition |
 |------|------------|
- | [set_point_radius](Points.md#set_point_radius) | `def set_point_radius(self, selection=None, radius=None): |
+ | [set_point_radius](Points.md#set_point_radius) | `def set_point_radius(self, selection=None, radius=None):` |
 

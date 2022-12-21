@@ -34,7 +34,7 @@ node = nodes.SetSplineType(curve=None, selection=None, spline_type='POLY')
 
 | Name | Definition |
 |------|------------|
- | [set_type](Spline.md#set_type) | `def set_type(self, spline_type='POLY'): |
- | [type](Spline.md#type-property) | `def type(self): |
- | [type](Spline.md#type) | `def type(self, attr_value): |
+ | [set_type](Spline.md#set_type) | `def set_type(self, spline_type='POLY'):` |
+ | [type](Spline.md#type-property) | `def type(self):` |
+ | [type](Spline.md#type) | `def type(self, attr_value):` |
 

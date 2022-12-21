@@ -31,5 +31,5 @@ node = nodes.ShortestEdgePaths(end_vertex=None, edge_cost=None)
 
 | Name | Definition |
 |------|------------|
- | [shortest_edge_paths](Mesh.md#shortest_edge_paths) | `def shortest_edge_paths(self, end_vertex=None, edge_cost=None): |
+ | [shortest_edge_paths](Mesh.md#shortest_edge_paths) | `def shortest_edge_paths(self, end_vertex=None, edge_cost=None):` |
 

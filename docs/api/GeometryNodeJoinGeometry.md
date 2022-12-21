@@ -29,11 +29,11 @@ node = nodes.JoinGeometry(*geometry)
 
 | Name | Definition |
 |------|------------|
- | [join_geometry](A.md#join_geometry) | `def join_geometry(*geometry): |
+ | [join_geometry](A.md#join_geometry) | `def join_geometry(*geometry):` |
 
 ### [Geometry](Geometry.md)
 
 | Name | Definition |
 |------|------------|
- | [join](Geometry.md#join) | `def join(*geometry): |
+ | [join](Geometry.md#join) | `def join(*geometry):` |
 

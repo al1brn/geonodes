@@ -36,11 +36,11 @@ node = nodes.Triangulate(mesh=None, selection=None, minimum_vertices=None, ngon_
 
 | Name | Definition |
 |------|------------|
- | [triangulate](Face.md#triangulate) | `def triangulate(self, minimum_vertices=None, ngon_method='BEAUTY', quad_method='SHORTEST_DIAGONAL'): |
+ | [triangulate](Face.md#triangulate) | `def triangulate(self, minimum_vertices=None, ngon_method='BEAUTY', quad_method='SHORTEST_DIAGONAL'):` |
 
 ### [Mesh](Mesh.md)
 
 | Name | Definition |
 |------|------------|
- | [triangulate](Mesh.md#triangulate) | `def triangulate(self, selection=None, minimum_vertices=None, ngon_method='BEAUTY', quad_method='SHORTEST_DIAGONAL'): |
+ | [triangulate](Mesh.md#triangulate) | `def triangulate(self, selection=None, minimum_vertices=None, ngon_method='BEAUTY', quad_method='SHORTEST_DIAGONAL'):` |
 

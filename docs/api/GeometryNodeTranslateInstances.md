@@ -32,11 +32,11 @@ node = nodes.TranslateInstances(instances=None, selection=None, translation=None
 
 | Name | Definition |
 |------|------------|
- | [translate](Instance.md#translate) | `def translate(self, translation=None, local_space=None): |
+ | [translate](Instance.md#translate) | `def translate(self, translation=None, local_space=None):` |
 
 ### [Instances](Instances.md)
 
 | Name | Definition |
 |------|------------|
- | [translate](Instances.md#translate) | `def translate(self, selection=None, translation=None, local_space=None): |
+ | [translate](Instances.md#translate) | `def translate(self, selection=None, translation=None, local_space=None):` |
 

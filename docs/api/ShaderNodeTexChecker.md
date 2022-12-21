@@ -33,5 +33,5 @@ node = nodes.CheckerTexture(vector=None, color1=None, color2=None, scale=None)
 
 | Name | Definition |
 |------|------------|
- | [checker](Texture.md#checker-staticmethod) | `def checker(vector=None, color1=None, color2=None, scale=None): |
+ | [checker](Texture.md#checker-staticmethod) | `def checker(vector=None, color1=None, color2=None, scale=None):` |
 

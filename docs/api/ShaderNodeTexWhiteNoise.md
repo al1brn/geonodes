@@ -35,9 +35,9 @@ node = nodes.WhiteNoiseTexture(vector=None, w=None, noise_dimensions='3D')
 
 | Name | Definition |
 |------|------------|
- | [white_noise](Texture.md#white_noise-staticmethod) | `def white_noise(vector=None, w=None, noise_dimensions='3D'): |
- | [white_noise_1D](Texture.md#white_noise_1D-staticmethod) | `def white_noise_1D(w=None): |
- | [white_noise_2D](Texture.md#white_noise_2D-staticmethod) | `def white_noise_2D(vector=None): |
- | [white_noise_3D](Texture.md#white_noise_3D-staticmethod) | `def white_noise_3D(vector=None): |
- | [white_noise_4D](Texture.md#white_noise_4D-staticmethod) | `def white_noise_4D(vector=None, w=None): |
+ | [white_noise](Texture.md#white_noise-staticmethod) | `def white_noise(vector=None, w=None, noise_dimensions='3D'):` |
+ | [white_noise_1D](Texture.md#white_noise_1D-staticmethod) | `def white_noise_1D(w=None):` |
+ | [white_noise_2D](Texture.md#white_noise_2D-staticmethod) | `def white_noise_2D(vector=None):` |
+ | [white_noise_3D](Texture.md#white_noise_3D-staticmethod) | `def white_noise_3D(vector=None):` |
+ | [white_noise_4D](Texture.md#white_noise_4D-staticmethod) | `def white_noise_4D(vector=None, w=None):` |
 

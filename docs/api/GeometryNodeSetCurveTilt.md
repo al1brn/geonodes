@@ -31,6 +31,6 @@ node = nodes.SetCurveTilt(curve=None, selection=None, tilt=None)
 
 | Name | Definition |
 |------|------------|
- | [set_tilt](ControlPoint.md#set_tilt) | `def set_tilt(self, tilt=None): |
- | [tilt](ControlPoint.md#tilt) | `def tilt(self, attr_value): |
+ | [set_tilt](ControlPoint.md#set_tilt) | `def set_tilt(self, tilt=None):` |
+ | [tilt](ControlPoint.md#tilt) | `def tilt(self, attr_value):` |
 

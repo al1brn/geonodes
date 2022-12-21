@@ -33,5 +33,5 @@ node = nodes.Star(points=None, inner_radius=None, outer_radius=None, twist=None)
 
 | Name | Definition |
 |------|------------|
- | [Star](Curve.md#Star-classmethod) | `def Star(cls, points=None, inner_radius=None, outer_radius=None, twist=None): |
+ | [Star](Curve.md#Star-classmethod) | `def Star(cls, points=None, inner_radius=None, outer_radius=None, twist=None):` |
 

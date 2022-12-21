@@ -31,11 +31,11 @@ node = nodes.ReplaceString(string=None, find=None, replace=None)
 
 | Name | Definition |
 |------|------------|
- | [replace_string](A.md#replace_string) | `def replace_string(string=None, find=None, replace=None): |
+ | [replace_string](A.md#replace_string) | `def replace_string(string=None, find=None, replace=None):` |
 
 ### [String](String.md)
 
 | Name | Definition |
 |------|------------|
- | [replace](String.md#replace) | `def replace(self, find=None, replace=None): |
+ | [replace](String.md#replace) | `def replace(self, find=None, replace=None):` |
 

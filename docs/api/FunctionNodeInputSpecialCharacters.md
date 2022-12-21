@@ -24,6 +24,6 @@ node = nodes.SpecialCharacters()
 
 | Name | Definition |
 |------|------------|
- | [LineBreak](String.md#LineBreak-staticmethod) | `def LineBreak(): |
- | [Tab](String.md#Tab-staticmethod) | `def Tab(): |
+ | [LineBreak](String.md#LineBreak-staticmethod) | `def LineBreak():` |
+ | [Tab](String.md#Tab-staticmethod) | `def Tab():` |
 

@@ -23,5 +23,5 @@ node = nodes.EdgeNeighbors()
 
 | Name | Definition |
 |------|------------|
- | [neighbors](Edge.md#neighbors-property) | `def neighbors(self): |
+ | [neighbors](Edge.md#neighbors-property) | `def neighbors(self):` |
 

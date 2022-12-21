@@ -31,11 +31,11 @@ node = nodes.OffsetPointInCurve(point_index=None, offset=None)
 
 | Name | Definition |
 |------|------------|
- | [offset](ControlPoint.md#offset) | `def offset(self, offset=None): |
+ | [offset](ControlPoint.md#offset) | `def offset(self, offset=None):` |
 
 ### [Curve](Curve.md)
 
 | Name | Definition |
 |------|------------|
- | [offset_point](Curve.md#offset_point) | `def offset_point(self, point_index=None, offset=None): |
+ | [offset_point](Curve.md#offset_point) | `def offset_point(self, point_index=None, offset=None):` |
 

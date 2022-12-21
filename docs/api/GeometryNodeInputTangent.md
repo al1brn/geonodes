@@ -23,5 +23,5 @@ node = nodes.CurveTangent()
 
 | Name | Definition |
 |------|------------|
- | [tangent](ControlPoint.md#tangent-property) | `def tangent(self): |
+ | [tangent](ControlPoint.md#tangent-property) | `def tangent(self):` |
 

@@ -32,11 +32,11 @@ node = nodes.PackUvIslands(uv=None, selection=None, margin=None, rotate=None)
 
 | Name | Definition |
 |------|------------|
- | [pack_uv_islands](Face.md#pack_uv_islands) | `def pack_uv_islands(self, uv=None, margin=None, rotate=None): |
+ | [pack_uv_islands](Face.md#pack_uv_islands) | `def pack_uv_islands(self, uv=None, margin=None, rotate=None):` |
 
 ### [Mesh](Mesh.md)
 
 | Name | Definition |
 |------|------------|
- | [pack_uv_islands](Mesh.md#pack_uv_islands) | `def pack_uv_islands(self, uv=None, selection=None, margin=None, rotate=None): |
+ | [pack_uv_islands](Mesh.md#pack_uv_islands) | `def pack_uv_islands(self, uv=None, selection=None, margin=None, rotate=None):` |
 

@@ -29,11 +29,11 @@ node = nodes.MaterialSelection(material=None)
 
 | Name | Definition |
 |------|------------|
- | [material_selection](Domain.md#material_selection) | `def material_selection(self, material=None): |
+ | [material_selection](Domain.md#material_selection) | `def material_selection(self, material=None):` |
 
 ### [Geometry](Geometry.md)
 
 | Name | Definition |
 |------|------------|
- | [material_selection](Geometry.md#material_selection) | `def material_selection(self, material=None): |
+ | [material_selection](Geometry.md#material_selection) | `def material_selection(self, material=None):` |
 

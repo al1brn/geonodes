@@ -35,11 +35,11 @@ node = nodes.MergeByDistance(geometry=None, selection=None, distance=None, mode=
 
 | Name | Definition |
 |------|------------|
- | [merge_by_distance](Geometry.md#merge_by_distance) | `def merge_by_distance(self, selection=None, distance=None, mode='ALL'): |
+ | [merge_by_distance](Geometry.md#merge_by_distance) | `def merge_by_distance(self, selection=None, distance=None, mode='ALL'):` |
 
 ### [Vertex](Vertex.md)
 
 | Name | Definition |
 |------|------------|
- | [merge_by_distance](Vertex.md#merge_by_distance) | `def merge_by_distance(self, distance=None, mode='ALL'): |
+ | [merge_by_distance](Vertex.md#merge_by_distance) | `def merge_by_distance(self, distance=None, mode='ALL'):` |
 

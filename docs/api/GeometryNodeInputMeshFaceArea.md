@@ -23,5 +23,5 @@ node = nodes.FaceArea()
 
 | Name | Definition |
 |------|------------|
- | [area](Face.md#area-property) | `def area(self): |
+ | [area](Face.md#area-property) | `def area(self):` |
 

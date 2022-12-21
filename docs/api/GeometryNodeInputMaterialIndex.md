@@ -23,11 +23,11 @@ node = nodes.MaterialIndex()
 
 | Name | Definition |
 |------|------------|
- | [material_index](Domain.md#material_index-property) | `def material_index(self): |
+ | [material_index](Domain.md#material_index-property) | `def material_index(self):` |
 
 ### [Geometry](Geometry.md)
 
 | Name | Definition |
 |------|------------|
- | [material_index](Geometry.md#material_index-property) | `def material_index(self): |
+ | [material_index](Geometry.md#material_index-property) | `def material_index(self):` |
 

@@ -23,5 +23,5 @@ node = nodes.IsSplineCyclic()
 
 | Name | Definition |
 |------|------------|
- | [cyclic](Spline.md#cyclic-property) | `def cyclic(self): |
+ | [cyclic](Spline.md#cyclic-property) | `def cyclic(self):` |
 

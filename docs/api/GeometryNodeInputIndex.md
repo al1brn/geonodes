@@ -23,12 +23,12 @@ node = nodes.Index()
 
 | Name | Definition |
 |------|------------|
- | [index](Domain.md#index-property) | `def index(self): |
- | [domain_index](Domain.md#domain_index-property) | `def domain_index(self): |
+ | [index](Domain.md#index-property) | `def index(self):` |
+ | [domain_index](Domain.md#domain_index-property) | `def domain_index(self):` |
 
 ### [Geometry](Geometry.md)
 
 | Name | Definition |
 |------|------------|
- | [index](Geometry.md#index-property) | `def index(self): |
+ | [index](Geometry.md#index-property) | `def index(self):` |
 

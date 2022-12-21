@@ -39,9 +39,9 @@ node = nodes.NoiseTexture(vector=None, w=None, scale=None, detail=None, roughnes
 
 | Name | Definition |
 |------|------------|
- | [noise](Texture.md#noise-staticmethod) | `def noise(vector=None, w=None, scale=None, detail=None, roughness=None, distortion=None, noise_dimensions='3D'): |
- | [noise_1D](Texture.md#noise_1D-staticmethod) | `def noise_1D(w=None, scale=None, detail=None, roughness=None, distortion=None): |
- | [noise_2D](Texture.md#noise_2D-staticmethod) | `def noise_2D(vector=None, scale=None, detail=None, roughness=None, distortion=None): |
- | [noise_3D](Texture.md#noise_3D-staticmethod) | `def noise_3D(vector=None, scale=None, detail=None, roughness=None, distortion=None): |
- | [noise_4D](Texture.md#noise_4D-staticmethod) | `def noise_4D(vector=None, w=None, scale=None, detail=None, roughness=None, distortion=None): |
+ | [noise](Texture.md#noise-staticmethod) | `def noise(vector=None, w=None, scale=None, detail=None, roughness=None, distortion=None, noise_dimensions='3D'):` |
+ | [noise_1D](Texture.md#noise_1D-staticmethod) | `def noise_1D(w=None, scale=None, detail=None, roughness=None, distortion=None):` |
+ | [noise_2D](Texture.md#noise_2D-staticmethod) | `def noise_2D(vector=None, scale=None, detail=None, roughness=None, distortion=None):` |
+ | [noise_3D](Texture.md#noise_3D-staticmethod) | `def noise_3D(vector=None, scale=None, detail=None, roughness=None, distortion=None):` |
+ | [noise_4D](Texture.md#noise_4D-staticmethod) | `def noise_4D(vector=None, w=None, scale=None, detail=None, roughness=None, distortion=None):` |
 

@@ -30,5 +30,5 @@ node = nodes.VectorCurves(fac=None, vector=None)
 
 | Name | Definition |
 |------|------------|
- | [curves](Vector.md#curves) | `def curves(self, fac=None): |
+ | [curves](Vector.md#curves) | `def curves(self, fac=None):` |
 

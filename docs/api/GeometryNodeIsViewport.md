@@ -23,5 +23,5 @@ node = nodes.IsViewport()
 
 | Name | Definition |
 |------|------------|
- | [is_viewport](Geometry.md#is_viewport-property) | `def is_viewport(self): |
+ | [is_viewport](Geometry.md#is_viewport-property) | `def is_viewport(self):` |
 

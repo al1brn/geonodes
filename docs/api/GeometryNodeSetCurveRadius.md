@@ -31,6 +31,6 @@ node = nodes.SetCurveRadius(curve=None, selection=None, radius=None)
 
 | Name | Definition |
 |------|------------|
- | [set_radius](ControlPoint.md#set_radius) | `def set_radius(self, radius=None): |
- | [radius](ControlPoint.md#radius) | `def radius(self, attr_value): |
+ | [set_radius](ControlPoint.md#set_radius) | `def set_radius(self, radius=None):` |
+ | [radius](ControlPoint.md#radius) | `def radius(self, attr_value):` |
 

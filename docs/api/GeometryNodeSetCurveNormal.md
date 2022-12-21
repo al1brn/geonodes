@@ -34,6 +34,6 @@ node = nodes.SetCurveNormal(curve=None, selection=None, mode='MINIMUM_TWIST')
 
 | Name | Definition |
 |------|------------|
- | [set_normal](Spline.md#set_normal) | `def set_normal(self, mode='MINIMUM_TWIST'): |
- | [normal](Spline.md#normal) | `def normal(self, attr_value): |
+ | [set_normal](Spline.md#set_normal) | `def set_normal(self, mode='MINIMUM_TWIST'):` |
+ | [normal](Spline.md#normal) | `def normal(self, attr_value):` |
 

@@ -32,12 +32,12 @@ node = nodes.SetPosition(geometry=None, selection=None, position=None, offset=No
 
 | Name | Definition |
 |------|------------|
- | [set_position](Domain.md#set_position) | `def set_position(self, position=None, offset=None): |
- | [position](Domain.md#position) | `def position(self, attr_value): |
+ | [set_position](Domain.md#set_position) | `def set_position(self, position=None, offset=None):` |
+ | [position](Domain.md#position) | `def position(self, attr_value):` |
 
 ### [Geometry](Geometry.md)
 
 | Name | Definition |
 |------|------------|
- | [set_position](Geometry.md#set_position) | `def set_position(self, selection=None, position=None, offset=None): |
+ | [set_position](Geometry.md#set_position) | `def set_position(self, selection=None, position=None, offset=None):` |
 

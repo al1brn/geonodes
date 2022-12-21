@@ -24,7 +24,7 @@ node = nodes.EdgeAngle()
 
 | Name | Definition |
 |------|------------|
- | [angle](Edge.md#angle-property) | `def angle(self): |
- | [unsigned_angle](Edge.md#unsigned_angle-property) | `def unsigned_angle(self): |
- | [signed_angle](Edge.md#signed_angle-property) | `def signed_angle(self): |
+ | [angle](Edge.md#angle-property) | `def angle(self):` |
+ | [unsigned_angle](Edge.md#unsigned_angle-property) | `def unsigned_angle(self):` |
+ | [signed_angle](Edge.md#signed_angle-property) | `def signed_angle(self):` |
 

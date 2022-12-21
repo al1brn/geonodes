@@ -42,11 +42,11 @@ node = nodes.SampleIndex(geometry=None, value=None, index=None, clamp=False, dat
 
 | Name | Definition |
 |------|------------|
- | [sample_index](Domain.md#sample_index) | `def sample_index(self, value=None, index=None, clamp=False): |
+ | [sample_index](Domain.md#sample_index) | `def sample_index(self, value=None, index=None, clamp=False):` |
 
 ### [Geometry](Geometry.md)
 
 | Name | Definition |
 |------|------------|
- | [sample_index](Geometry.md#sample_index) | `def sample_index(self, value=None, index=None, clamp=False, domain='POINT'): |
+ | [sample_index](Geometry.md#sample_index) | `def sample_index(self, value=None, index=None, clamp=False, domain='POINT'):` |
 

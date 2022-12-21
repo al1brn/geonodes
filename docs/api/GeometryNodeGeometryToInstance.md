@@ -29,11 +29,11 @@ node = nodes.GeometryToInstance(*geometry)
 
 | Name | Definition |
 |------|------------|
- | [geometry_to_instance](A.md#geometry_to_instance) | `def geometry_to_instance(*geometry): |
+ | [geometry_to_instance](A.md#geometry_to_instance) | `def geometry_to_instance(*geometry):` |
 
 ### [Geometry](Geometry.md)
 
 | Name | Definition |
 |------|------------|
- | [to_instance](Geometry.md#to_instance) | `def to_instance(*geometry): |
+ | [to_instance](Geometry.md#to_instance) | `def to_instance(*geometry):` |
 

@@ -29,5 +29,5 @@ node = nodes.Integer(integer=0)
 
 | Name | Definition |
 |------|------------|
- | [Integer](Integer.md#Integer-classmethod) | `def Integer(cls, integer=0): |
+ | [Integer](Integer.md#Integer-classmethod) | `def Integer(cls, integer=0):` |
 

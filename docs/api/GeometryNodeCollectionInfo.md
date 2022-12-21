@@ -35,5 +35,5 @@ node = nodes.CollectionInfo(collection=None, separate_children=None, reset_child
 
 | Name | Definition |
 |------|------------|
- | [Collection](Geometry.md#Collection-classmethod) | `def Collection(cls, collection=None, separate_children=None, reset_children=None, transform_space='ORIGINAL'): |
+ | [Collection](Geometry.md#Collection-classmethod) | `def Collection(cls, collection=None, separate_children=None, reset_children=None, transform_space='ORIGINAL'):` |
 

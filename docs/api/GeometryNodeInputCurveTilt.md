@@ -23,5 +23,5 @@ node = nodes.CurveTilt()
 
 | Name | Definition |
 |------|------------|
- | [tilt](ControlPoint.md#tilt-property) | `def tilt(self): |
+ | [tilt](ControlPoint.md#tilt-property) | `def tilt(self):` |
 

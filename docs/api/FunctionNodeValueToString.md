@@ -30,17 +30,17 @@ node = nodes.ValueToString(value=None, decimals=None)
 
 | Name | Definition |
 |------|------------|
- | [value_to_string](A.md#value_to_string) | `def value_to_string(value=None, decimals=None): |
+ | [value_to_string](A.md#value_to_string) | `def value_to_string(value=None, decimals=None):` |
 
 ### [Float](Float.md)
 
 | Name | Definition |
 |------|------------|
- | [to_string](Float.md#to_string) | `def to_string(self, decimals=None): |
+ | [to_string](Float.md#to_string) | `def to_string(self, decimals=None):` |
 
 ### [Integer](Integer.md)
 
 | Name | Definition |
 |------|------------|
- | [to_string](Integer.md#to_string) | `def to_string(self): |
+ | [to_string](Integer.md#to_string) | `def to_string(self):` |
 

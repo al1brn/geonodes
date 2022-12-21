@@ -32,5 +32,5 @@ node = nodes.Transform(geometry=None, translation=None, rotation=None, scale=Non
 
 | Name | Definition |
 |------|------------|
- | [transform](Geometry.md#transform) | `def transform(self, translation=None, rotation=None, scale=None): |
+ | [transform](Geometry.md#transform) | `def transform(self, translation=None, rotation=None, scale=None):` |
 

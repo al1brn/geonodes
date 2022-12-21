@@ -31,6 +31,6 @@ node = nodes.SetSplineCyclic(geometry=None, selection=None, cyclic=None)
 
 | Name | Definition |
 |------|------------|
- | [set_cyclic](Spline.md#set_cyclic) | `def set_cyclic(self, cyclic=None): |
- | [cyclic](Spline.md#cyclic) | `def cyclic(self, attr_value): |
+ | [set_cyclic](Spline.md#set_cyclic) | `def set_cyclic(self, cyclic=None):` |
+ | [cyclic](Spline.md#cyclic) | `def cyclic(self, attr_value):` |
 

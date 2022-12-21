@@ -36,11 +36,11 @@ node = nodes.MeshToPoints(mesh=None, selection=None, position=None, radius=None,
 
 | Name | Definition |
 |------|------------|
- | [to_points](Mesh.md#to_points) | `def to_points(self, selection=None, position=None, radius=None, mode='VERTICES'): |
+ | [to_points](Mesh.md#to_points) | `def to_points(self, selection=None, position=None, radius=None, mode='VERTICES'):` |
 
 ### [Vertex](Vertex.md)
 
 | Name | Definition |
 |------|------------|
- | [to_points](Vertex.md#to_points) | `def to_points(self, position=None, radius=None, mode='VERTICES'): |
+ | [to_points](Vertex.md#to_points) | `def to_points(self, position=None, radius=None, mode='VERTICES'):` |
 

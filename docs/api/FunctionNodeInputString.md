@@ -29,5 +29,5 @@ node = nodes.String(string='')
 
 | Name | Definition |
 |------|------------|
- | [String](String.md#String-classmethod) | `def String(cls, string=''): |
+ | [String](String.md#String-classmethod) | `def String(cls, string=''):` |
 

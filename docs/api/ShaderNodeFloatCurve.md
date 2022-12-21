@@ -30,5 +30,5 @@ node = nodes.FloatCurve(factor=None, value=None)
 
 | Name | Definition |
 |------|------------|
- | [float_curve](Float.md#float_curve) | `def float_curve(self, factor=None): |
+ | [float_curve](Float.md#float_curve) | `def float_curve(self, factor=None):` |
 

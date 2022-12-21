@@ -31,6 +31,6 @@ node = nodes.SetSplineResolution(geometry=None, selection=None, resolution=None)
 
 | Name | Definition |
 |------|------------|
- | [set_resolution](Spline.md#set_resolution) | `def set_resolution(self, resolution=None): |
- | [resolution](Spline.md#resolution) | `def resolution(self, attr_value): |
+ | [set_resolution](Spline.md#set_resolution) | `def set_resolution(self, resolution=None):` |
+ | [resolution](Spline.md#resolution) | `def resolution(self, attr_value):` |
 
