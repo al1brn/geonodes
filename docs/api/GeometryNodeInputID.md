@@ -21,17 +21,13 @@ node = nodes.ID()
 
 ## Implementation
 
-### [Domain](Domain.md)
-
 | Name | Definition |
 |------|------------|
- | [ID](Domain.md#ID-property) | `def ID(self):` |
+| **[Domain](Domain.md)** |
+| [ID](Domain.md#ID-property) | `def ID(self):` |
 
-### [Geometry](Geometry.md)
-
-| Name | Definition |
-|------|------------|
- | [ID](Geometry.md#ID-property) | `def ID(self):` |
+| **[Geometry](Geometry.md)** |
+| [ID](Geometry.md#ID-property) | `def ID(self):` |
 
 <sub>Go to [top](#node-ID) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

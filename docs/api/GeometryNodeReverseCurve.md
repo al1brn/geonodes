@@ -28,11 +28,10 @@ node = nodes.ReverseCurve(curve=None, selection=None)
 
 ## Implementation
 
-### [Curve](Curve.md)
-
 | Name | Definition |
 |------|------------|
- | [reverse](Curve.md#reverse) | `def reverse(self, selection=None):` |
+| **[Curve](Curve.md)** |
+| [reverse](Curve.md#reverse) | `def reverse(self, selection=None):` |
 
 <sub>Go to [top](#node-Reverse-Curve) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

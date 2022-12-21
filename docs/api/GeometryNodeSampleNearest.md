@@ -32,17 +32,13 @@ node = nodes.SampleNearest(geometry=None, sample_position=None, domain='POINT')
 
 ## Implementation
 
-### [Domain](Domain.md)
-
 | Name | Definition |
 |------|------------|
- | [sample_nearest](Domain.md#sample_nearest) | `def sample_nearest(self, sample_position=None):` |
+| **[Domain](Domain.md)** |
+| [sample_nearest](Domain.md#sample_nearest) | `def sample_nearest(self, sample_position=None):` |
 
-### [Geometry](Geometry.md)
-
-| Name | Definition |
-|------|------------|
- | [sample_nearest](Geometry.md#sample_nearest) | `def sample_nearest(self, sample_position=None, domain='POINT'):` |
+| **[Geometry](Geometry.md)** |
+| [sample_nearest](Geometry.md#sample_nearest) | `def sample_nearest(self, sample_position=None, domain='POINT'):` |
 
 <sub>Go to [top](#node-Sample-Nearest) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

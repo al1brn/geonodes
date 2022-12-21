@@ -37,29 +37,19 @@ node = nodes.ExtrudeMesh(mesh=None, selection=None, offset=None, offset_scale=No
 
 ## Implementation
 
-### [Edge](Edge.md)
-
 | Name | Definition |
 |------|------------|
- | [extrude](Edge.md#extrude) | `def extrude(self, offset=None, offset_scale=None, individual=None):` |
+| **[Edge](Edge.md)** |
+| [extrude](Edge.md#extrude) | `def extrude(self, offset=None, offset_scale=None, individual=None):` |
 
-### [Face](Face.md)
+| **[Face](Face.md)** |
+| [extrude](Face.md#extrude) | `def extrude(self, offset=None, offset_scale=None, individual=None):` |
 
-| Name | Definition |
-|------|------------|
- | [extrude](Face.md#extrude) | `def extrude(self, offset=None, offset_scale=None, individual=None):` |
+| **[Mesh](Mesh.md)** |
+| [extrude](Mesh.md#extrude) | `def extrude(self, selection=None, offset=None, offset_scale=None, individual=None, mode='FACES'):` |
 
-### [Mesh](Mesh.md)
-
-| Name | Definition |
-|------|------------|
- | [extrude](Mesh.md#extrude) | `def extrude(self, selection=None, offset=None, offset_scale=None, individual=None, mode='FACES'):` |
-
-### [Vertex](Vertex.md)
-
-| Name | Definition |
-|------|------------|
- | [extrude](Vertex.md#extrude) | `def extrude(self, offset=None, offset_scale=None, individual=None):` |
+| **[Vertex](Vertex.md)** |
+| [extrude](Vertex.md#extrude) | `def extrude(self, offset=None, offset_scale=None, individual=None):` |
 
 <sub>Go to [top](#node-Extrude-Mesh) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

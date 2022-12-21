@@ -21,23 +21,16 @@ node = nodes.Normal()
 
 ## Implementation
 
-### [Domain](Domain.md)
-
 | Name | Definition |
 |------|------------|
- | [normal](Domain.md#normal-property) | `def normal(self):` |
+| **[Domain](Domain.md)** |
+| [normal](Domain.md#normal-property) | `def normal(self):` |
 
-### [Geometry](Geometry.md)
+| **[Geometry](Geometry.md)** |
+| [normal](Geometry.md#normal-property) | `def normal(self):` |
 
-| Name | Definition |
-|------|------------|
- | [normal](Geometry.md#normal-property) | `def normal(self):` |
-
-### [Spline](Spline.md)
-
-| Name | Definition |
-|------|------------|
- | [normal](Spline.md#normal-property) | `def normal(self):` |
+| **[Spline](Spline.md)** |
+| [normal](Spline.md#normal-property) | `def normal(self):` |
 
 <sub>Go to [top](#node-Normal) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

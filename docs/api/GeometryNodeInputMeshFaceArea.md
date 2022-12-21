@@ -21,11 +21,10 @@ node = nodes.FaceArea()
 
 ## Implementation
 
-### [Face](Face.md)
-
 | Name | Definition |
 |------|------------|
- | [area](Face.md#area-property) | `def area(self):` |
+| **[Face](Face.md)** |
+| [area](Face.md#area-property) | `def area(self):` |
 
 <sub>Go to [top](#node-Face-Area) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

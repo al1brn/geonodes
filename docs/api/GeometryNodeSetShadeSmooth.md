@@ -29,18 +29,14 @@ node = nodes.SetShadeSmooth(geometry=None, selection=None, shade_smooth=None)
 
 ## Implementation
 
-### [Face](Face.md)
-
 | Name | Definition |
 |------|------------|
- | [set_shade_smooth](Face.md#set_shade_smooth) | `def set_shade_smooth(self, shade_smooth=None):` |
- | [shade_smooth](Face.md#shade_smooth) | `def shade_smooth(self, attr_value):` |
+| **[Face](Face.md)** |
+| [set_shade_smooth](Face.md#set_shade_smooth) | `def set_shade_smooth(self, shade_smooth=None):` |
+| [shade_smooth](Face.md#shade_smooth) | `def shade_smooth(self, attr_value):` |
 
-### [Mesh](Mesh.md)
-
-| Name | Definition |
-|------|------------|
- | [set_shade_smooth](Mesh.md#set_shade_smooth) | `def set_shade_smooth(self, selection=None, shade_smooth=None):` |
+| **[Mesh](Mesh.md)** |
+| [set_shade_smooth](Mesh.md#set_shade_smooth) | `def set_shade_smooth(self, selection=None, shade_smooth=None):` |
 
 <sub>Go to [top](#node-Set-Shade-Smooth) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

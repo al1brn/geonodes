@@ -21,11 +21,10 @@ node = nodes.SelfObject()
 
 ## Implementation
 
-### [Object](Object.md)
-
 | Name | Definition |
 |------|------------|
- | [Self](Object.md#Self-classmethod) | `def Self(cls):` |
+| **[Object](Object.md)** |
+| [Self](Object.md#Self-classmethod) | `def Self(cls):` |
 
 <sub>Go to [top](#node-Self-Object) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

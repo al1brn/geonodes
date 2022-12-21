@@ -22,12 +22,11 @@ node = nodes.SpecialCharacters()
 
 ## Implementation
 
-### [String](String.md)
-
 | Name | Definition |
 |------|------------|
- | [LineBreak](String.md#LineBreak-staticmethod) | `def LineBreak():` |
- | [Tab](String.md#Tab-staticmethod) | `def Tab():` |
+| **[String](String.md)** |
+| [LineBreak](String.md#LineBreak-staticmethod) | `def LineBreak():` |
+| [Tab](String.md#Tab-staticmethod) | `def Tab():` |
 
 <sub>Go to [top](#node-Special-Characters) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

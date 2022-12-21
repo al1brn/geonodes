@@ -30,17 +30,13 @@ node = nodes.PointsOfCurve(curve_index=None, weights=None, sort_index=None)
 
 ## Implementation
 
-### [Curve](Curve.md)
-
 | Name | Definition |
 |------|------------|
- | [points_of_curve](Curve.md#points_of_curve) | `def points_of_curve(self, curve_index=None, weights=None, sort_index=None):` |
+| **[Curve](Curve.md)** |
+| [points_of_curve](Curve.md#points_of_curve) | `def points_of_curve(self, curve_index=None, weights=None, sort_index=None):` |
 
-### [Spline](Spline.md)
-
-| Name | Definition |
-|------|------------|
- | [points](Spline.md#points) | `def points(self, weights=None, sort_index=None):` |
+| **[Spline](Spline.md)** |
+| [points](Spline.md#points) | `def points(self, weights=None, sort_index=None):` |
 
 <sub>Go to [top](#node-Points-of-Curve) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

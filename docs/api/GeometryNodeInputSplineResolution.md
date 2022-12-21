@@ -21,11 +21,10 @@ node = nodes.SplineResolution()
 
 ## Implementation
 
-### [Spline](Spline.md)
-
 | Name | Definition |
 |------|------------|
- | [resolution](Spline.md#resolution-property) | `def resolution(self):` |
+| **[Spline](Spline.md)** |
+| [resolution](Spline.md#resolution-property) | `def resolution(self):` |
 
 <sub>Go to [top](#node-Spline-Resolution) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

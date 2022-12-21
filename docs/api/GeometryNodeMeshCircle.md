@@ -32,11 +32,10 @@ node = nodes.MeshCircle(vertices=None, radius=None, fill_type='NONE')
 
 ## Implementation
 
-### [Mesh](Mesh.md)
-
 | Name | Definition |
 |------|------------|
- | [Circle](Mesh.md#Circle-classmethod) | `def Circle(cls, vertices=None, radius=None, fill_type='NONE'):` |
+| **[Mesh](Mesh.md)** |
+| [Circle](Mesh.md#Circle-classmethod) | `def Circle(cls, vertices=None, radius=None, fill_type='NONE'):` |
 
 <sub>Go to [top](#node-Mesh-Circle) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

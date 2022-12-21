@@ -33,11 +33,10 @@ node = nodes.VolumeCube(density=None, background=None, min=None, max=None, resol
 
 ## Implementation
 
-### [Volume](Volume.md)
-
 | Name | Definition |
 |------|------------|
- | [Cube](Volume.md#Cube-classmethod) | `def Cube(cls, density=None, background=None, min=None, max=None, resolution_x=None, resolution_y=None, resolution_z=None):` |
+| **[Volume](Volume.md)** |
+| [Cube](Volume.md#Cube-classmethod) | `def Cube(cls, density=None, background=None, min=None, max=None, resolution_x=None, resolution_y=None, resolution_z=None):` |
 
 <sub>Go to [top](#node-Volume-Cube) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

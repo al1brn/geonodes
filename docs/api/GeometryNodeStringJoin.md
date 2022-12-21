@@ -28,17 +28,13 @@ node = nodes.JoinStrings(*strings, delimiter=None)
 
 ## Implementation
 
-### Global functions
-
 | Name | Definition |
 |------|------------|
- | [join_strings](A.md#join_strings) | `def join_strings(*strings, delimiter=None):` |
+| Global functions |
+| [join_strings](A.md#join_strings) | `def join_strings(*strings, delimiter=None):` |
 
-### [String](String.md)
-
-| Name | Definition |
-|------|------------|
- | [join](String.md#join) | `def join(*strings, delimiter=None):` |
+| **[String](String.md)** |
+| [join](String.md#join) | `def join(*strings, delimiter=None):` |
 
 <sub>Go to [top](#node-Join-Strings) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

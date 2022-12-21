@@ -30,17 +30,13 @@ node = nodes.TranslateInstances(instances=None, selection=None, translation=None
 
 ## Implementation
 
-### [Instance](Instance.md)
-
 | Name | Definition |
 |------|------------|
- | [translate](Instance.md#translate) | `def translate(self, translation=None, local_space=None):` |
+| **[Instance](Instance.md)** |
+| [translate](Instance.md#translate) | `def translate(self, translation=None, local_space=None):` |
 
-### [Instances](Instances.md)
-
-| Name | Definition |
-|------|------------|
- | [translate](Instances.md#translate) | `def translate(self, selection=None, translation=None, local_space=None):` |
+| **[Instances](Instances.md)** |
+| [translate](Instances.md#translate) | `def translate(self, selection=None, translation=None, local_space=None):` |
 
 <sub>Go to [top](#node-Translate-Instances) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

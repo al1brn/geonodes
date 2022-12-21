@@ -34,17 +34,13 @@ node = nodes.UvUnwrap(selection=None, seam=None, margin=None, fill_holes=None, m
 
 ## Implementation
 
-### [Face](Face.md)
-
 | Name | Definition |
 |------|------------|
- | [uv_unwrap](Face.md#uv_unwrap) | `def uv_unwrap(self, seam=None, margin=None, fill_holes=None, method='ANGLE_BASED'):` |
+| **[Face](Face.md)** |
+| [uv_unwrap](Face.md#uv_unwrap) | `def uv_unwrap(self, seam=None, margin=None, fill_holes=None, method='ANGLE_BASED'):` |
 
-### [Mesh](Mesh.md)
-
-| Name | Definition |
-|------|------------|
- | [uv_unwrap](Mesh.md#uv_unwrap) | `def uv_unwrap(self, selection=None, seam=None, margin=None, fill_holes=None, method='ANGLE_BASED'):` |
+| **[Mesh](Mesh.md)** |
+| [uv_unwrap](Mesh.md#uv_unwrap) | `def uv_unwrap(self, selection=None, seam=None, margin=None, fill_holes=None, method='ANGLE_BASED'):` |
 
 <sub>Go to [top](#node-UV-Unwrap) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

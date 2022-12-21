@@ -29,11 +29,10 @@ node = nodes.CombineXyz(x=None, y=None, z=None)
 
 ## Implementation
 
-### [Vector](Vector.md)
-
 | Name | Definition |
 |------|------------|
- | [Combine](Vector.md#Combine-classmethod) | `def Combine(cls, x=None, y=None, z=None):` |
+| **[Vector](Vector.md)** |
+| [Combine](Vector.md#Combine-classmethod) | `def Combine(cls, x=None, y=None, z=None):` |
 
 <sub>Go to [top](#node-Combine-XYZ) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

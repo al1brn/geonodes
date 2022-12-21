@@ -27,11 +27,10 @@ node = nodes.Vector(vector=[0.0, 0.0, 0.0])
 
 ## Implementation
 
-### [Vector](Vector.md)
-
 | Name | Definition |
 |------|------------|
- | [Vector](Vector.md#Vector-classmethod) | `def Vector(cls, vector=[0.0, 0.0, 0.0]):` |
+| **[Vector](Vector.md)** |
+| [Vector](Vector.md#Vector-classmethod) | `def Vector(cls, vector=[0.0, 0.0, 0.0]):` |
 
 <sub>Go to [top](#node-Vector) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

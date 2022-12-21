@@ -33,17 +33,13 @@ node = nodes.MergeByDistance(geometry=None, selection=None, distance=None, mode=
 
 ## Implementation
 
-### [Geometry](Geometry.md)
-
 | Name | Definition |
 |------|------------|
- | [merge_by_distance](Geometry.md#merge_by_distance) | `def merge_by_distance(self, selection=None, distance=None, mode='ALL'):` |
+| **[Geometry](Geometry.md)** |
+| [merge_by_distance](Geometry.md#merge_by_distance) | `def merge_by_distance(self, selection=None, distance=None, mode='ALL'):` |
 
-### [Vertex](Vertex.md)
-
-| Name | Definition |
-|------|------------|
- | [merge_by_distance](Vertex.md#merge_by_distance) | `def merge_by_distance(self, distance=None, mode='ALL'):` |
+| **[Vertex](Vertex.md)** |
+| [merge_by_distance](Vertex.md#merge_by_distance) | `def merge_by_distance(self, distance=None, mode='ALL'):` |
 
 <sub>Go to [top](#node-Merge-by-Distance) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

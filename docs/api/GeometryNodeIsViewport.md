@@ -21,11 +21,10 @@ node = nodes.IsViewport()
 
 ## Implementation
 
-### [Geometry](Geometry.md)
-
 | Name | Definition |
 |------|------------|
- | [is_viewport](Geometry.md#is_viewport-property) | `def is_viewport(self):` |
+| **[Geometry](Geometry.md)** |
+| [is_viewport](Geometry.md#is_viewport-property) | `def is_viewport(self):` |
 
 <sub>Go to [top](#node-Is-Viewport) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

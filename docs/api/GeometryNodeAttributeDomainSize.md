@@ -36,89 +36,52 @@ node = nodes.DomainSize(geometry=None, component='MESH')
 
 ## Implementation
 
-### [CloudPoint](CloudPoint.md)
-
 | Name | Definition |
 |------|------------|
- | [domain_size](CloudPoint.md#domain_size) | `def __len__(self):` |
+| **[CloudPoint](CloudPoint.md)** |
+| [domain_size](CloudPoint.md#domain_size) | `def __len__(self):` |
 
-### [ControlPoint](ControlPoint.md)
+| **[ControlPoint](ControlPoint.md)** |
+| [domain_size](ControlPoint.md#domain_size) | `def __len__(self):` |
 
-| Name | Definition |
-|------|------------|
- | [domain_size](ControlPoint.md#domain_size) | `def __len__(self):` |
+| **[Corner](Corner.md)** |
+| [domain_size](Corner.md#domain_size) | `def __len__(self):` |
 
-### [Corner](Corner.md)
+| **[Curve](Curve.md)** |
+| [domain_size](Curve.md#domain_size-property) | `def domain_size(self):` |
+| [point_count](Curve.md#point_count-property) | `def point_count(self):` |
+| [spline_count](Curve.md#spline_count-property) | `def spline_count(self):` |
 
-| Name | Definition |
-|------|------------|
- | [domain_size](Corner.md#domain_size) | `def __len__(self):` |
+| **[Edge](Edge.md)** |
+| [domain_size](Edge.md#domain_size) | `def __len__(self):` |
 
-### [Curve](Curve.md)
+| **[Face](Face.md)** |
+| [domain_size](Face.md#domain_size) | `def __len__(self):` |
 
-| Name | Definition |
-|------|------------|
- | [domain_size](Curve.md#domain_size-property) | `def domain_size(self):` |
- | [point_count](Curve.md#point_count-property) | `def point_count(self):` |
- | [spline_count](Curve.md#spline_count-property) | `def spline_count(self):` |
+| **[Geometry](Geometry.md)** |
+| [domain_size](Geometry.md#domain_size-property) | `def domain_size(self, component='MESH'):` |
 
-### [Edge](Edge.md)
+| **[Instance](Instance.md)** |
+| [domain_size](Instance.md#domain_size) | `def __len__(self):` |
 
-| Name | Definition |
-|------|------------|
- | [domain_size](Edge.md#domain_size) | `def __len__(self):` |
+| **[Instances](Instances.md)** |
+| [domain_size](Instances.md#domain_size-property) | `def domain_size(self):` |
 
-### [Face](Face.md)
+| **[Mesh](Mesh.md)** |
+| [domain_size](Mesh.md#domain_size-property) | `def domain_size(self):` |
+| [point_count](Mesh.md#point_count-property) | `def point_count(self):` |
+| [face_count](Mesh.md#face_count-property) | `def face_count(self):` |
+| [edge_count](Mesh.md#edge_count-property) | `def edge_count(self):` |
+| [corner_count](Mesh.md#corner_count-property) | `def corner_count(self):` |
 
-| Name | Definition |
-|------|------------|
- | [domain_size](Face.md#domain_size) | `def __len__(self):` |
+| **[Points](Points.md)** |
+| [domain_size](Points.md#domain_size-property) | `def domain_size(self):` |
 
-### [Geometry](Geometry.md)
+| **[Spline](Spline.md)** |
+| [domain_size](Spline.md#domain_size) | `def __len__(self):` |
 
-| Name | Definition |
-|------|------------|
- | [domain_size](Geometry.md#domain_size-property) | `def domain_size(self, component='MESH'):` |
-
-### [Instance](Instance.md)
-
-| Name | Definition |
-|------|------------|
- | [domain_size](Instance.md#domain_size) | `def __len__(self):` |
-
-### [Instances](Instances.md)
-
-| Name | Definition |
-|------|------------|
- | [domain_size](Instances.md#domain_size-property) | `def domain_size(self):` |
-
-### [Mesh](Mesh.md)
-
-| Name | Definition |
-|------|------------|
- | [domain_size](Mesh.md#domain_size-property) | `def domain_size(self):` |
- | [point_count](Mesh.md#point_count-property) | `def point_count(self):` |
- | [face_count](Mesh.md#face_count-property) | `def face_count(self):` |
- | [edge_count](Mesh.md#edge_count-property) | `def edge_count(self):` |
- | [corner_count](Mesh.md#corner_count-property) | `def corner_count(self):` |
-
-### [Points](Points.md)
-
-| Name | Definition |
-|------|------------|
- | [domain_size](Points.md#domain_size-property) | `def domain_size(self):` |
-
-### [Spline](Spline.md)
-
-| Name | Definition |
-|------|------------|
- | [domain_size](Spline.md#domain_size) | `def __len__(self):` |
-
-### [Vertex](Vertex.md)
-
-| Name | Definition |
-|------|------------|
- | [domain_size](Vertex.md#domain_size) | `def __len__(self):` |
+| **[Vertex](Vertex.md)** |
+| [domain_size](Vertex.md#domain_size) | `def __len__(self):` |
 
 <sub>Go to [top](#node-Domain-Size) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

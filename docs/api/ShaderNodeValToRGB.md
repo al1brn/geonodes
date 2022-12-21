@@ -28,17 +28,13 @@ node = nodes.ColorRamp(fac=None)
 
 ## Implementation
 
-### Global functions
-
 | Name | Definition |
 |------|------------|
- | [color_ramp](A.md#color_ramp) | `def color_ramp(fac=None):` |
+| Global functions |
+| [color_ramp](A.md#color_ramp) | `def color_ramp(fac=None):` |
 
-### [Float](Float.md)
-
-| Name | Definition |
-|------|------------|
- | [color_ramp](Float.md#color_ramp-property) | `def color_ramp(self):` |
+| **[Float](Float.md)** |
+| [color_ramp](Float.md#color_ramp-property) | `def color_ramp(self):` |
 
 <sub>Go to [top](#node-ColorRamp) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

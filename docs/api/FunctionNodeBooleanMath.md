@@ -32,33 +32,29 @@ node = nodes.BooleanMath(boolean0=None, boolean1=None, operation='AND')
 
 ## Implementation
 
-### Global functions
-
 | Name | Definition |
 |------|------------|
- | [b_and](A.md#b_and) | `def b_and(boolean0=None, boolean1=None):` |
- | [b_or](A.md#b_or) | `def b_or(boolean0=None, boolean1=None):` |
- | [b_not](A.md#b_not) | `def b_not(boolean0=None):` |
- | [nand](A.md#nand) | `def nand(boolean0=None, boolean1=None):` |
- | [nor](A.md#nor) | `def nor(boolean0=None, boolean1=None):` |
- | [xnor](A.md#xnor) | `def xnor(boolean0=None, boolean1=None):` |
- | [xor](A.md#xor) | `def xor(boolean0=None, boolean1=None):` |
- | [imply](A.md#imply) | `def imply(boolean0=None, boolean1=None):` |
- | [nimply](A.md#nimply) | `def nimply(boolean0=None, boolean1=None):` |
+| Global functions |
+| [b_and](A.md#b_and) | `def b_and(boolean0=None, boolean1=None):` |
+| [b_or](A.md#b_or) | `def b_or(boolean0=None, boolean1=None):` |
+| [b_not](A.md#b_not) | `def b_not(boolean0=None):` |
+| [nand](A.md#nand) | `def nand(boolean0=None, boolean1=None):` |
+| [nor](A.md#nor) | `def nor(boolean0=None, boolean1=None):` |
+| [xnor](A.md#xnor) | `def xnor(boolean0=None, boolean1=None):` |
+| [xor](A.md#xor) | `def xor(boolean0=None, boolean1=None):` |
+| [imply](A.md#imply) | `def imply(boolean0=None, boolean1=None):` |
+| [nimply](A.md#nimply) | `def nimply(boolean0=None, boolean1=None):` |
 
-### [Boolean](Boolean.md)
-
-| Name | Definition |
-|------|------------|
- | [b_and](Boolean.md#b_and) | `def b_and(self, boolean1=None):` |
- | [b_or](Boolean.md#b_or) | `def b_or(self, boolean1=None):` |
- | [b_not](Boolean.md#b_not) | `def b_not(self):` |
- | [nand](Boolean.md#nand) | `def nand(self, boolean1=None):` |
- | [nor](Boolean.md#nor) | `def nor(self, boolean1=None):` |
- | [xnor](Boolean.md#xnor) | `def xnor(self, boolean1=None):` |
- | [xor](Boolean.md#xor) | `def xor(self, boolean1=None):` |
- | [imply](Boolean.md#imply) | `def imply(self, boolean1=None):` |
- | [nimply](Boolean.md#nimply) | `def nimply(self, boolean1=None):` |
+| **[Boolean](Boolean.md)** |
+| [b_and](Boolean.md#b_and) | `def b_and(self, boolean1=None):` |
+| [b_or](Boolean.md#b_or) | `def b_or(self, boolean1=None):` |
+| [b_not](Boolean.md#b_not) | `def b_not(self):` |
+| [nand](Boolean.md#nand) | `def nand(self, boolean1=None):` |
+| [nor](Boolean.md#nor) | `def nor(self, boolean1=None):` |
+| [xnor](Boolean.md#xnor) | `def xnor(self, boolean1=None):` |
+| [xor](Boolean.md#xor) | `def xor(self, boolean1=None):` |
+| [imply](Boolean.md#imply) | `def imply(self, boolean1=None):` |
+| [nimply](Boolean.md#nimply) | `def nimply(self, boolean1=None):` |
 
 <sub>Go to [top](#node-Boolean-Math) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

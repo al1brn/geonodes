@@ -29,12 +29,11 @@ node = nodes.SetSplineResolution(geometry=None, selection=None, resolution=None)
 
 ## Implementation
 
-### [Spline](Spline.md)
-
 | Name | Definition |
 |------|------------|
- | [set_resolution](Spline.md#set_resolution) | `def set_resolution(self, resolution=None):` |
- | [resolution](Spline.md#resolution) | `def resolution(self, attr_value):` |
+| **[Spline](Spline.md)** |
+| [set_resolution](Spline.md#set_resolution) | `def set_resolution(self, resolution=None):` |
+| [resolution](Spline.md#resolution) | `def resolution(self, attr_value):` |
 
 <sub>Go to [top](#node-Set-Spline-Resolution) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

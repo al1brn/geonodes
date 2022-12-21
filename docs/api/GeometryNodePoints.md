@@ -29,11 +29,10 @@ node = nodes.Points(count=None, position=None, radius=None)
 
 ## Implementation
 
-### [Points](Points.md)
-
 | Name | Definition |
 |------|------------|
- | [Points](Points.md#Points-classmethod) | `def Points(cls, count=None, position=None, radius=None):` |
+| **[Points](Points.md)** |
+| [Points](Points.md#Points-classmethod) | `def Points(cls, count=None, position=None, radius=None):` |
 
 <sub>Go to [top](#node-Points) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

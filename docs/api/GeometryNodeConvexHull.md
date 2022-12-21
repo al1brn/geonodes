@@ -27,11 +27,10 @@ node = nodes.ConvexHull(geometry=None)
 
 ## Implementation
 
-### [Geometry](Geometry.md)
-
 | Name | Definition |
 |------|------------|
- | [convex_hull](Geometry.md#convex_hull-property) | `def convex_hull(self):` |
+| **[Geometry](Geometry.md)** |
+| [convex_hull](Geometry.md#convex_hull-property) | `def convex_hull(self):` |
 
 <sub>Go to [top](#node-Convex-Hull) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

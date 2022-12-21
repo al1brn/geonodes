@@ -40,32 +40,25 @@ node = nodes.RandomValue(min=None, max=None, probability=None, ID=None, seed=Non
 - Output sockets : ['value']
 ## Implementation
 
-### Global functions
-
 | Name | Definition |
 |------|------------|
- | [random_float](A.md#random_float) | `def random_float(min=None, max=None, ID=None, seed=None):` |
- | [random_integer](A.md#random_integer) | `def random_integer(min=None, max=None, ID=None, seed=None):` |
- | [random_vector](A.md#random_vector) | `def random_vector(min=None, max=None, ID=None, seed=None):` |
- | [random_boolean](A.md#random_boolean) | `def random_boolean(probability=None, ID=None, seed=None):` |
+| Global functions |
+| [random_float](A.md#random_float) | `def random_float(min=None, max=None, ID=None, seed=None):` |
+| [random_integer](A.md#random_integer) | `def random_integer(min=None, max=None, ID=None, seed=None):` |
+| [random_vector](A.md#random_vector) | `def random_vector(min=None, max=None, ID=None, seed=None):` |
+| [random_boolean](A.md#random_boolean) | `def random_boolean(probability=None, ID=None, seed=None):` |
 
-### [Domain](Domain.md)
+| **[Domain](Domain.md)** |
+| [random_float](Domain.md#random_float) | `def random_float(self, min=None, max=None, ID=None, seed=None):` |
+| [random_integer](Domain.md#random_integer) | `def random_integer(self, min=None, max=None, ID=None, seed=None):` |
+| [random_vector](Domain.md#random_vector) | `def random_vector(self, min=None, max=None, ID=None, seed=None):` |
+| [random_boolean](Domain.md#random_boolean) | `def random_boolean(self, probability=None, ID=None, seed=None):` |
 
-| Name | Definition |
-|------|------------|
- | [random_float](Domain.md#random_float) | `def random_float(self, min=None, max=None, ID=None, seed=None):` |
- | [random_integer](Domain.md#random_integer) | `def random_integer(self, min=None, max=None, ID=None, seed=None):` |
- | [random_vector](Domain.md#random_vector) | `def random_vector(self, min=None, max=None, ID=None, seed=None):` |
- | [random_boolean](Domain.md#random_boolean) | `def random_boolean(self, probability=None, ID=None, seed=None):` |
-
-### [Geometry](Geometry.md)
-
-| Name | Definition |
-|------|------------|
- | [random_float](Geometry.md#random_float) | `def random_float(self, min=None, max=None, ID=None, seed=None):` |
- | [random_integer](Geometry.md#random_integer) | `def random_integer(self, min=None, max=None, ID=None, seed=None):` |
- | [random_vector](Geometry.md#random_vector) | `def random_vector(self, min=None, max=None, ID=None, seed=None):` |
- | [random_boolean](Geometry.md#random_boolean) | `def random_boolean(self, probability=None, ID=None, seed=None):` |
+| **[Geometry](Geometry.md)** |
+| [random_float](Geometry.md#random_float) | `def random_float(self, min=None, max=None, ID=None, seed=None):` |
+| [random_integer](Geometry.md#random_integer) | `def random_integer(self, min=None, max=None, ID=None, seed=None):` |
+| [random_vector](Geometry.md#random_vector) | `def random_vector(self, min=None, max=None, ID=None, seed=None):` |
+| [random_boolean](Geometry.md#random_boolean) | `def random_boolean(self, probability=None, ID=None, seed=None):` |
 
 <sub>Go to [top](#node-Random-Value) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

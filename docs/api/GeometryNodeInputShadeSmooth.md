@@ -21,17 +21,13 @@ node = nodes.IsShadeSmooth()
 
 ## Implementation
 
-### [Face](Face.md)
-
 | Name | Definition |
 |------|------------|
- | [shade_smooth](Face.md#shade_smooth-property) | `def shade_smooth(self):` |
+| **[Face](Face.md)** |
+| [shade_smooth](Face.md#shade_smooth-property) | `def shade_smooth(self):` |
 
-### [Mesh](Mesh.md)
-
-| Name | Definition |
-|------|------------|
- | [is_shade_smooth](Mesh.md#is_shade_smooth) | `def is_shade_smooth(self):` |
+| **[Mesh](Mesh.md)** |
+| [is_shade_smooth](Mesh.md#is_shade_smooth) | `def is_shade_smooth(self):` |
 
 <sub>Go to [top](#node-Is-Shade-Smooth) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

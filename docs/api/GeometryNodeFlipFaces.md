@@ -28,17 +28,13 @@ node = nodes.FlipFaces(mesh=None, selection=None)
 
 ## Implementation
 
-### [Face](Face.md)
-
 | Name | Definition |
 |------|------------|
- | [flip](Face.md#flip) | `def flip(self):` |
+| **[Face](Face.md)** |
+| [flip](Face.md#flip) | `def flip(self):` |
 
-### [Mesh](Mesh.md)
-
-| Name | Definition |
-|------|------------|
- | [flip_faces](Mesh.md#flip_faces) | `def flip_faces(self, selection=None):` |
+| **[Mesh](Mesh.md)** |
+| [flip_faces](Mesh.md#flip_faces) | `def flip_faces(self, selection=None):` |
 
 <sub>Go to [top](#node-Flip-Faces) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

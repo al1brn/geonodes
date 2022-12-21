@@ -29,12 +29,11 @@ node = nodes.SetSplineCyclic(geometry=None, selection=None, cyclic=None)
 
 ## Implementation
 
-### [Spline](Spline.md)
-
 | Name | Definition |
 |------|------------|
- | [set_cyclic](Spline.md#set_cyclic) | `def set_cyclic(self, cyclic=None):` |
- | [cyclic](Spline.md#cyclic) | `def cyclic(self, attr_value):` |
+| **[Spline](Spline.md)** |
+| [set_cyclic](Spline.md#set_cyclic) | `def set_cyclic(self, cyclic=None):` |
+| [cyclic](Spline.md#cyclic) | `def cyclic(self, attr_value):` |
 
 <sub>Go to [top](#node-Set-Spline-Cyclic) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

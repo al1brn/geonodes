@@ -21,11 +21,10 @@ node = nodes.CurveTilt()
 
 ## Implementation
 
-### [ControlPoint](ControlPoint.md)
-
 | Name | Definition |
 |------|------------|
- | [tilt](ControlPoint.md#tilt-property) | `def tilt(self):` |
+| **[ControlPoint](ControlPoint.md)** |
+| [tilt](ControlPoint.md#tilt-property) | `def tilt(self):` |
 
 <sub>Go to [top](#node-Curve-Tilt) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

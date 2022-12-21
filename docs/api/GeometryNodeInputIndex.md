@@ -21,18 +21,14 @@ node = nodes.Index()
 
 ## Implementation
 
-### [Domain](Domain.md)
-
 | Name | Definition |
 |------|------------|
- | [index](Domain.md#index-property) | `def index(self):` |
- | [domain_index](Domain.md#domain_index-property) | `def domain_index(self):` |
+| **[Domain](Domain.md)** |
+| [index](Domain.md#index-property) | `def index(self):` |
+| [domain_index](Domain.md#domain_index-property) | `def domain_index(self):` |
 
-### [Geometry](Geometry.md)
-
-| Name | Definition |
-|------|------------|
- | [index](Geometry.md#index-property) | `def index(self):` |
+| **[Geometry](Geometry.md)** |
+| [index](Geometry.md#index-property) | `def index(self):` |
 
 <sub>Go to [top](#node-Index) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

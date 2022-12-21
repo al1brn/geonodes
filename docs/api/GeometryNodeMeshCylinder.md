@@ -38,11 +38,10 @@ node = nodes.Cylinder(vertices=None, side_segments=None, fill_segments=None, rad
 
 ## Implementation
 
-### [Mesh](Mesh.md)
-
 | Name | Definition |
 |------|------------|
- | [Cylinder](Mesh.md#Cylinder-staticmethod) | `def Cylinder(vertices=None, side_segments=None, fill_segments=None, radius=None, depth=None, fill_type='NGON'):` |
+| **[Mesh](Mesh.md)** |
+| [Cylinder](Mesh.md#Cylinder-staticmethod) | `def Cylinder(vertices=None, side_segments=None, fill_segments=None, radius=None, depth=None, fill_type='NGON'):` |
 
 <sub>Go to [top](#node-Cylinder) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

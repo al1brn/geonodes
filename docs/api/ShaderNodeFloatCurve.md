@@ -28,11 +28,10 @@ node = nodes.FloatCurve(factor=None, value=None)
 
 ## Implementation
 
-### [Float](Float.md)
-
 | Name | Definition |
 |------|------------|
- | [float_curve](Float.md#float_curve) | `def float_curve(self, factor=None):` |
+| **[Float](Float.md)** |
+| [float_curve](Float.md#float_curve) | `def float_curve(self, factor=None):` |
 
 <sub>Go to [top](#node-Float-Curve) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

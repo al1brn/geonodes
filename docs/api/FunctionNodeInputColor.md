@@ -21,11 +21,10 @@ node = nodes.Color()
 
 ## Implementation
 
-### [Color](Color.md)
-
 | Name | Definition |
 |------|------------|
- | [Color](Color.md#Color-classmethod) | `def Color(cls):` |
+| **[Color](Color.md)** |
+| [Color](Color.md#Color-classmethod) | `def Color(cls):` |
 
 <sub>Go to [top](#node-Color) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

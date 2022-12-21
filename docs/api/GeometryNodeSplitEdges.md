@@ -28,17 +28,13 @@ node = nodes.SplitEdges(mesh=None, selection=None)
 
 ## Implementation
 
-### [Edge](Edge.md)
-
 | Name | Definition |
 |------|------------|
- | [split](Edge.md#split) | `def split(self):` |
+| **[Edge](Edge.md)** |
+| [split](Edge.md#split) | `def split(self):` |
 
-### [Mesh](Mesh.md)
-
-| Name | Definition |
-|------|------------|
- | [split_edges](Mesh.md#split_edges) | `def split_edges(self, selection=None):` |
+| **[Mesh](Mesh.md)** |
+| [split_edges](Mesh.md#split_edges) | `def split_edges(self, selection=None):` |
 
 <sub>Go to [top](#node-Split-Edges) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

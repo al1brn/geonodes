@@ -34,11 +34,10 @@ node = nodes.MagicTexture(vector=None, scale=None, distortion=None, turbulence_d
 
 ## Implementation
 
-### [Texture](Texture.md)
-
 | Name | Definition |
 |------|------------|
- | [magic](Texture.md#magic-staticmethod) | `def magic(vector=None, scale=None, distortion=None, turbulence_depth=2):` |
+| **[Texture](Texture.md)** |
+| [magic](Texture.md#magic-staticmethod) | `def magic(vector=None, scale=None, distortion=None, turbulence_depth=2):` |
 
 <sub>Go to [top](#node-Magic-Texture) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

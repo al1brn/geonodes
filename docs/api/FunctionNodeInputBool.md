@@ -27,11 +27,10 @@ node = nodes.Boolean(boolean=False)
 
 ## Implementation
 
-### [Boolean](Boolean.md)
-
 | Name | Definition |
 |------|------------|
- | [Boolean](Boolean.md#Boolean-classmethod) | `def Boolean(cls, boolean=False):` |
+| **[Boolean](Boolean.md)** |
+| [Boolean](Boolean.md#Boolean-classmethod) | `def Boolean(cls, boolean=False):` |
 
 <sub>Go to [top](#node-Boolean) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

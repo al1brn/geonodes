@@ -38,95 +38,58 @@ node = nodes.Switch(switch=None, false=None, true=None, input_type='GEOMETRY')
 - Output sockets : ['output']
 ## Implementation
 
-### Global functions
-
 | Name | Definition |
 |------|------------|
- | [switch](A.md#switch) | `def switch(switch=None, false=None, true=None, input_type='GEOMETRY'):` |
- | [switch_float](A.md#switch_float) | `def switch_float(switch=None, false=None, true=None):` |
- | [switch_integer](A.md#switch_integer) | `def switch_integer(switch=None, false=None, true=None):` |
- | [switch_boolean](A.md#switch_boolean) | `def switch_boolean(switch=None, false=None, true=None):` |
- | [switch_vector](A.md#switch_vector) | `def switch_vector(switch=None, false=None, true=None):` |
- | [switch_string](A.md#switch_string) | `def switch_string(switch=None, false=None, true=None):` |
- | [switch_color](A.md#switch_color) | `def switch_color(switch=None, false=None, true=None):` |
- | [switch_object](A.md#switch_object) | `def switch_object(switch=None, false=None, true=None):` |
- | [switch_image](A.md#switch_image) | `def switch_image(switch=None, false=None, true=None):` |
- | [switch_geometry](A.md#switch_geometry) | `def switch_geometry(switch=None, false=None, true=None):` |
- | [switch_collection](A.md#switch_collection) | `def switch_collection(switch=None, false=None, true=None):` |
- | [switch_texture](A.md#switch_texture) | `def switch_texture(switch=None, false=None, true=None):` |
- | [switch_material](A.md#switch_material) | `def switch_material(switch=None, false=None, true=None):` |
+| Global functions |
+| [switch](A.md#switch) | `def switch(switch=None, false=None, true=None, input_type='GEOMETRY'):` |
+| [switch_float](A.md#switch_float) | `def switch_float(switch=None, false=None, true=None):` |
+| [switch_integer](A.md#switch_integer) | `def switch_integer(switch=None, false=None, true=None):` |
+| [switch_boolean](A.md#switch_boolean) | `def switch_boolean(switch=None, false=None, true=None):` |
+| [switch_vector](A.md#switch_vector) | `def switch_vector(switch=None, false=None, true=None):` |
+| [switch_string](A.md#switch_string) | `def switch_string(switch=None, false=None, true=None):` |
+| [switch_color](A.md#switch_color) | `def switch_color(switch=None, false=None, true=None):` |
+| [switch_object](A.md#switch_object) | `def switch_object(switch=None, false=None, true=None):` |
+| [switch_image](A.md#switch_image) | `def switch_image(switch=None, false=None, true=None):` |
+| [switch_geometry](A.md#switch_geometry) | `def switch_geometry(switch=None, false=None, true=None):` |
+| [switch_collection](A.md#switch_collection) | `def switch_collection(switch=None, false=None, true=None):` |
+| [switch_texture](A.md#switch_texture) | `def switch_texture(switch=None, false=None, true=None):` |
+| [switch_material](A.md#switch_material) | `def switch_material(switch=None, false=None, true=None):` |
 
-### [Boolean](Boolean.md)
+| **[Boolean](Boolean.md)** |
+| [switch](Boolean.md#switch) | `def switch(self, switch=None, true=None):` |
 
-| Name | Definition |
-|------|------------|
- | [switch](Boolean.md#switch) | `def switch(self, switch=None, true=None):` |
+| **[Collection](Collection.md)** |
+| [switch](Collection.md#switch) | `def switch(self, switch=None, true=None):` |
 
-### [Collection](Collection.md)
+| **[Color](Color.md)** |
+| [switch](Color.md#switch) | `def switch(self, switch=None, true=None):` |
 
-| Name | Definition |
-|------|------------|
- | [switch](Collection.md#switch) | `def switch(self, switch=None, true=None):` |
+| **[Float](Float.md)** |
+| [switch](Float.md#switch) | `def switch(self, switch=None, true=None):` |
 
-### [Color](Color.md)
+| **[Geometry](Geometry.md)** |
+| [switch](Geometry.md#switch) | `def switch(self, switch=None, true=None):` |
 
-| Name | Definition |
-|------|------------|
- | [switch](Color.md#switch) | `def switch(self, switch=None, true=None):` |
+| **[Image](Image.md)** |
+| [switch](Image.md#switch) | `def switch(self, switch=None, true=None):` |
 
-### [Float](Float.md)
+| **[Integer](Integer.md)** |
+| [switch](Integer.md#switch) | `def switch(self, switch=None, true=None):` |
 
-| Name | Definition |
-|------|------------|
- | [switch](Float.md#switch) | `def switch(self, switch=None, true=None):` |
+| **[Material](Material.md)** |
+| [switch](Material.md#switch) | `def switch(self, switch=None, true=None):` |
 
-### [Geometry](Geometry.md)
+| **[Object](Object.md)** |
+| [switch](Object.md#switch) | `def switch(self, switch=None, true=None):` |
 
-| Name | Definition |
-|------|------------|
- | [switch](Geometry.md#switch) | `def switch(self, switch=None, true=None):` |
+| **[String](String.md)** |
+| [switch](String.md#switch) | `def switch(self, switch=None, true=None):` |
 
-### [Image](Image.md)
+| **[Texture](Texture.md)** |
+| [switch](Texture.md#switch) | `def switch(self, switch=None, true=None):` |
 
-| Name | Definition |
-|------|------------|
- | [switch](Image.md#switch) | `def switch(self, switch=None, true=None):` |
-
-### [Integer](Integer.md)
-
-| Name | Definition |
-|------|------------|
- | [switch](Integer.md#switch) | `def switch(self, switch=None, true=None):` |
-
-### [Material](Material.md)
-
-| Name | Definition |
-|------|------------|
- | [switch](Material.md#switch) | `def switch(self, switch=None, true=None):` |
-
-### [Object](Object.md)
-
-| Name | Definition |
-|------|------------|
- | [switch](Object.md#switch) | `def switch(self, switch=None, true=None):` |
-
-### [String](String.md)
-
-| Name | Definition |
-|------|------------|
- | [switch](String.md#switch) | `def switch(self, switch=None, true=None):` |
-
-### [Texture](Texture.md)
-
-| Name | Definition |
-|------|------------|
- | [switch](Texture.md#switch) | `def switch(self, switch=None, true=None):` |
-
-### [Vector](Vector.md)
-
-| Name | Definition |
-|------|------------|
- | [switch](Vector.md#switch) | `def switch(self, switch=None, true=None):` |
+| **[Vector](Vector.md)** |
+| [switch](Vector.md#switch) | `def switch(self, switch=None, true=None):` |
 
 <sub>Go to [top](#node-Switch) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

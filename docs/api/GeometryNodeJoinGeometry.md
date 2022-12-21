@@ -27,17 +27,13 @@ node = nodes.JoinGeometry(*geometry)
 
 ## Implementation
 
-### Global functions
-
 | Name | Definition |
 |------|------------|
- | [join_geometry](A.md#join_geometry) | `def join_geometry(*geometry):` |
+| Global functions |
+| [join_geometry](A.md#join_geometry) | `def join_geometry(*geometry):` |
 
-### [Geometry](Geometry.md)
-
-| Name | Definition |
-|------|------------|
- | [join](Geometry.md#join) | `def join(*geometry):` |
+| **[Geometry](Geometry.md)** |
+| [join](Geometry.md#join) | `def join(*geometry):` |
 
 <sub>Go to [top](#node-Join-Geometry) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

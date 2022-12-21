@@ -28,17 +28,13 @@ node = nodes.CurveOfPoint(point_index=None)
 
 ## Implementation
 
-### [ControlPoint](ControlPoint.md)
-
 | Name | Definition |
 |------|------------|
- | [curve](ControlPoint.md#curve) | `def curve(self):` |
+| **[ControlPoint](ControlPoint.md)** |
+| [curve](ControlPoint.md#curve) | `def curve(self):` |
 
-### [Curve](Curve.md)
-
-| Name | Definition |
-|------|------------|
- | [curve_of_point](Curve.md#curve_of_point) | `def curve_of_point(self, point_index=None):` |
+| **[Curve](Curve.md)** |
+| [curve_of_point](Curve.md#curve_of_point) | `def curve_of_point(self, point_index=None):` |
 
 <sub>Go to [top](#node-Curve-of-Point) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

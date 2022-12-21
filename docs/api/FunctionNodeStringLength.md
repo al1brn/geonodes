@@ -27,17 +27,13 @@ node = nodes.StringLength(string=None)
 
 ## Implementation
 
-### Global functions
-
 | Name | Definition |
 |------|------------|
- | [string_length](A.md#string_length) | `def string_length(string=None):` |
+| Global functions |
+| [string_length](A.md#string_length) | `def string_length(string=None):` |
 
-### [String](String.md)
-
-| Name | Definition |
-|------|------------|
- | [length](String.md#length-property) | `def length(self):` |
+| **[String](String.md)** |
+| [length](String.md#length-property) | `def length(self):` |
 
 <sub>Go to [top](#node-String-Length) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

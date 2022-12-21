@@ -33,11 +33,10 @@ node = nodes.CollectionInfo(collection=None, separate_children=None, reset_child
 
 ## Implementation
 
-### [Geometry](Geometry.md)
-
 | Name | Definition |
 |------|------------|
- | [Collection](Geometry.md#Collection-classmethod) | `def Collection(cls, collection=None, separate_children=None, reset_children=None, transform_space='ORIGINAL'):` |
+| **[Geometry](Geometry.md)** |
+| [Collection](Geometry.md#Collection-classmethod) | `def Collection(cls, collection=None, separate_children=None, reset_children=None, transform_space='ORIGINAL'):` |
 
 <sub>Go to [top](#node-Collection-Info) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

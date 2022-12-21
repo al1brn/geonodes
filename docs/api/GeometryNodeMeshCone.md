@@ -39,11 +39,10 @@ node = nodes.Cone(vertices=None, side_segments=None, fill_segments=None, radius_
 
 ## Implementation
 
-### [Mesh](Mesh.md)
-
 | Name | Definition |
 |------|------------|
- | [Cone](Mesh.md#Cone-staticmethod) | `def Cone(vertices=None, side_segments=None, fill_segments=None, radius_top=None, radius_bottom=None, depth=None, fill_type='NGON'):` |
+| **[Mesh](Mesh.md)** |
+| [Cone](Mesh.md#Cone-staticmethod) | `def Cone(vertices=None, side_segments=None, fill_segments=None, radius_top=None, radius_bottom=None, depth=None, fill_type='NGON'):` |
 
 <sub>Go to [top](#node-Cone) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

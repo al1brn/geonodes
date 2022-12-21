@@ -27,11 +27,10 @@ node = nodes.String(string='')
 
 ## Implementation
 
-### [String](String.md)
-
 | Name | Definition |
 |------|------------|
- | [String](String.md#String-classmethod) | `def String(cls, string=''):` |
+| **[String](String.md)** |
+| [String](String.md#String-classmethod) | `def String(cls, string=''):` |
 
 <sub>Go to [top](#node-String) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

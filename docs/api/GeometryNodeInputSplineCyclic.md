@@ -21,11 +21,10 @@ node = nodes.IsSplineCyclic()
 
 ## Implementation
 
-### [Spline](Spline.md)
-
 | Name | Definition |
 |------|------------|
- | [cyclic](Spline.md#cyclic-property) | `def cyclic(self):` |
+| **[Spline](Spline.md)** |
+| [cyclic](Spline.md#cyclic-property) | `def cyclic(self):` |
 
 <sub>Go to [top](#node-Is-Spline-Cyclic) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

@@ -33,12 +33,11 @@ node = nodes.SetHandleType(curve=None, selection=None, handle_type='AUTO', mode=
 
 ## Implementation
 
-### [ControlPoint](ControlPoint.md)
-
 | Name | Definition |
 |------|------------|
- | [set_handle_type_node](ControlPoint.md#set_handle_type_node) | `def set_handle_type_node(self, handle_type='AUTO', mode={'RIGHT', 'LEFT'}):` |
- | [set_handle_type](ControlPoint.md#set_handle_type) | `def set_handle_type(self, left=True, right=True, handle_type='AUTO'):` |
+| **[ControlPoint](ControlPoint.md)** |
+| [set_handle_type_node](ControlPoint.md#set_handle_type_node) | `def set_handle_type_node(self, handle_type='AUTO', mode={'RIGHT', 'LEFT'}):` |
+| [set_handle_type](ControlPoint.md#set_handle_type) | `def set_handle_type(self, left=True, right=True, handle_type='AUTO'):` |
 
 <sub>Go to [top](#node-Set-Handle-Type) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

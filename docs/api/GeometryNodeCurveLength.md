@@ -27,11 +27,10 @@ node = nodes.CurveLength(curve=None)
 
 ## Implementation
 
-### [Curve](Curve.md)
-
 | Name | Definition |
 |------|------------|
- | [length](Curve.md#length-property) | `def length(self):` |
+| **[Curve](Curve.md)** |
+| [length](Curve.md#length-property) | `def length(self):` |
 
 <sub>Go to [top](#node-Curve-Length) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
