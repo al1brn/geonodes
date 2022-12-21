@@ -25,8 +25,9 @@ node = nodes.EdgeAngle()
 | Class or method name | Definition |
 |----------------------|------------|
 | **[Edge](Edge.md)** |
-| [angle](Edge.md#angle-property) | `def angle(self):` |
-| [unsigned_angle](Edge.md#unsigned_angle-property) | `def unsigned_angle(self):` |
-| [signed_angle](Edge.md#signed_angle-property) | `def signed_angle(self):` |
+| [angle](Edge.md#angle-property) | `@property`<br> `def angle(self):` |
+| [unsigned_angle](Edge.md#unsigned_angle-property) | `@property`<br> `def unsigned_angle(self):` |
+| [signed_angle](Edge.md#signed_angle-property) | `@property`<br> `def signed_angle(self):` |
+
 <sub>Go to [top](#node-Edge-Angle) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

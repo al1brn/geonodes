@@ -34,5 +34,6 @@ node = nodes.SplitEdges(mesh=None, selection=None)
 | [split](Edge.md#split) | `def split(self):` |
 | **[Mesh](Mesh.md)** |
 | [split_edges](Mesh.md#split_edges) | `def split_edges(self, selection=None):` |
+
 <sub>Go to [top](#node-Split-Edges) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

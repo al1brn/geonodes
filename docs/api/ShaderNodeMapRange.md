@@ -59,5 +59,6 @@ node = nodes.MapRange(value=None, from_min=None, from_max=None, to_min=None, to_
 | [map_range_stepped](Vector.md#map_range_stepped) | `def map_range_stepped(self, from_min=None, from_max=None, to_min=None, to_max=None, steps=None, clamp=True):` |
 | [map_range_smooth](Vector.md#map_range_smooth) | `def map_range_smooth(self, from_min=None, from_max=None, to_min=None, to_max=None, clamp=True):` |
 | [map_range_smoother](Vector.md#map_range_smoother) | `def map_range_smoother(self, from_min=None, from_max=None, to_min=None, to_max=None, clamp=True):` |
+
 <sub>Go to [top](#node-Map-Range) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

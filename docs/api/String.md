@@ -53,9 +53,9 @@ Even if homonyms are accepted, it is recommended to avoid to create to input soc
 def LineBreak():
 
 ```
-Node [Special Characters](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/special_characters.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeInputSpecialCharacters.html) )
+> Node: [Special Characters](FunctionNodeInputSpecialCharacters.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/special_characters.html) - [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeInputSpecialCharacters.html)
 
-### Returns:
+#### Returns:
 - socket `line_break`
 
 <sub>Go to [top](#class-String) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
@@ -82,9 +82,9 @@ def String(cls, string=''):
 def Tab():
 
 ```
-Node [Special Characters](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/special_characters.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeInputSpecialCharacters.html) )
+> Node: [Special Characters](FunctionNodeInputSpecialCharacters.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/special_characters.html) - [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeInputSpecialCharacters.html)
 
-### Returns:
+#### Returns:
 - socket `tab`
 
 <sub>Go to [top](#class-String) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
@@ -111,13 +111,13 @@ def equal(self, b=None):
 def join(*strings, delimiter=None):
 
 ```
-Node [Join Strings](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/join_strings.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeStringJoin.html) )
+> Node: [Join Strings](GeometryNodeStringJoin.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/join_strings.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeStringJoin.html)
 
-### Args:
+#### Args:
 - strings: <m>String
 - delimiter: String
 
-### Returns:
+#### Returns:
 - socket `string`
 
 <sub>Go to [top](#class-String) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
@@ -128,9 +128,9 @@ Node [Join Strings](https://docs.blender.org/manual/en/latest/modeling/geometry_
 def length(self):
 
 ```
-Node [String Length](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/string_length.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeStringLength.html) )
+> Node: [String Length](FunctionNodeStringLength.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/string_length.html) - [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeStringLength.html)
 
-### Returns:
+#### Returns:
 - socket `length`
 
 <sub>Go to [top](#class-String) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
@@ -157,13 +157,13 @@ def not_equal(self, b=None):
 def replace(self, find=None, replace=None):
 
 ```
-Node [Replace String](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/replace_string.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeReplaceString.html) )
+> Node: [Replace String](FunctionNodeReplaceString.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/replace_string.html) - [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeReplaceString.html)
 
-### Args:
+#### Args:
 - find: String
 - replace: String
 
-### Returns:
+#### Returns:
 - socket `string`
 
 <sub>Go to [top](#class-String) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
@@ -174,13 +174,13 @@ Node [Replace String](https://docs.blender.org/manual/en/latest/modeling/geometr
 def slice(self, position=None, length=None):
 
 ```
-Node [Slice String](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/slice_string.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeSliceString.html) )
+> Node: [Slice String](FunctionNodeSliceString.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/slice_string.html) - [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeSliceString.html)
 
-### Args:
+#### Args:
 - position: Integer
 - length: Integer
 
-### Returns:
+#### Returns:
 - socket `string`
 
 <sub>Go to [top](#class-String) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
@@ -208,9 +208,9 @@ def switch(self, switch=None, true=None):
 def to_curves(self, string=None, size=None, character_spacing=None, word_spacing=None, line_spacing=None, text_box_width=None, text_box_height=None, align_x='LEFT', align_y='TOP_BASELINE', overflow='OVERFLOW', pivot_mode='BOTTOM_LEFT'):
 
 ```
-Node [String to Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/string_to_curves.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeStringToCurves.html) )
+> Node: [String to Curves](GeometryNodeStringToCurves.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/string_to_curves.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeStringToCurves.html)
 
-### Args:
+#### Args:
 - string: String
 - size: Float
 - character_spacing: Float
@@ -223,7 +223,7 @@ Node [String to Curves](https://docs.blender.org/manual/en/latest/modeling/geome
 - overflow (str): 'OVERFLOW' in [OVERFLOW, SCALE_TO_FIT, TRUNCATE]
 - pivot_mode (str): 'BOTTOM_LEFT' in [MIDPOINT, TOP_LEFT, TOP_CENTER,... , BOTTOM_LEFT, BOTTOM_CENTER, BOTTOM_RIGHT]
 
-### Returns:
+#### Returns:
 - tuple ('`curve_instances`', '`line`', '`pivot_point`')
 
 <sub>Go to [top](#class-String) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>

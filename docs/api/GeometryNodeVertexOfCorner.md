@@ -25,5 +25,6 @@ node = nodes.VertexOfCorner(corner_index=None)
 
 - **vertex_index** : [Integer](Integer.md)
 
+
 <sub>Go to [top](#node-Vertex-of-Corner) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

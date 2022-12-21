@@ -33,13 +33,16 @@ node = nodes.SetMaterial(geometry=None, selection=None, material=None)
 |----------------------|------------|
 | **[Face](Face.md)** |
 | [set_material](Face.md#set_material) | `def set_material(self, material=None):` |
-| [material](Face.md#material-property) | `def material(self):` |
-| [material](Face.md#material) | `def material(self, attr_value):` |
+| [material](Face.md#material-property) | `@property`<br> `def material(self):` |
+| [material](Face.md#material) | `@material.setter
+`<br> `def material(self, attr_value):` |
 | **[Geometry](Geometry.md)** |
 | [set_material](Geometry.md#set_material) | `def set_material(self, selection=None, material=None):` |
 | **[Spline](Spline.md)** |
 | [set_material](Spline.md#set_material) | `def set_material(self, material=None):` |
-| [material](Spline.md#material-property) | `def material(self):` |
-| [material](Spline.md#material) | `def material(self, attr_value):` |
+| [material](Spline.md#material-property) | `@property`<br> `def material(self):` |
+| [material](Spline.md#material) | `@material.setter
+`<br> `def material(self, attr_value):` |
+
 <sub>Go to [top](#node-Set-Material) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

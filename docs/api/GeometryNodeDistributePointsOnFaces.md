@@ -46,5 +46,6 @@ node = nodes.DistributePointsOnFaces(mesh=None, selection=None, distance_min=Non
 | [distribute_points_poisson](Face.md#distribute_points_poisson) | `def distribute_points_poisson(self, distance_min=None, density_max=None, density_factor=None, seed=None):` |
 | **[Mesh](Mesh.md)** |
 | [distribute_points_on_faces](Mesh.md#distribute_points_on_faces) | `def distribute_points_on_faces(self, selection=None, distance_min=None, density_max=None, density=None, density_factor=None, seed=None, distribute_method='RANDOM'):` |
+
 <sub>Go to [top](#node-Distribute-Points-on-Faces) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

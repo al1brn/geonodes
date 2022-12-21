@@ -24,6 +24,7 @@ node = nodes.EdgeNeighbors()
 | Class or method name | Definition |
 |----------------------|------------|
 | **[Edge](Edge.md)** |
-| [neighbors](Edge.md#neighbors-property) | `def neighbors(self):` |
+| [neighbors](Edge.md#neighbors-property) | `@property`<br> `def neighbors(self):` |
+
 <sub>Go to [top](#node-Edge-Neighbors) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

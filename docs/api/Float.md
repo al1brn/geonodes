@@ -1506,12 +1506,12 @@ def to_radians(self, clamp=False):
 def to_string(self, decimals=None):
 
 ```
-Node [Value to String](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/value_to_string.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeValueToString.html) )
+> Node: [Value to String](FunctionNodeValueToString.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/value_to_string.html) - [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeValueToString.html)
 
-### Args:
+#### Args:
 - decimals: Integer
 
-### Returns:
+#### Returns:
 - socket `string`
 
 <sub>Go to [top](#class-Float) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>

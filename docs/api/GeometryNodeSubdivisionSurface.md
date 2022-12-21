@@ -39,5 +39,6 @@ node = nodes.SubdivisionSurface(mesh=None, level=None, edge_crease=None, vertex_
 |----------------------|------------|
 | **[Mesh](Mesh.md)** |
 | [subdivision_surface](Mesh.md#subdivision_surface) | `def subdivision_surface(self, level=None, edge_crease=None, vertex_crease=None, boundary_smooth='ALL', uv_smooth='PRESERVE_BOUNDARIES'):` |
+
 <sub>Go to [top](#node-Subdivision-Surface) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

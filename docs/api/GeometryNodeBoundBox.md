@@ -32,8 +32,9 @@ node = nodes.BoundingBox(geometry=None)
 | Class or method name | Definition |
 |----------------------|------------|
 | **[Geometry](Geometry.md)** |
-| [bounding_box](Geometry.md#bounding_box-property) | `def bounding_box(self):` |
-| [bounding_box_min](Geometry.md#bounding_box_min-property) | `def bounding_box_min(self):` |
-| [bounding_box_min](Geometry.md#bounding_box_min-property) | `def bounding_box_min(self):` |
+| [bounding_box](Geometry.md#bounding_box-property) | `@property`<br> `def bounding_box(self):` |
+| [bounding_box_min](Geometry.md#bounding_box_min-property) | `@property`<br> `def bounding_box_min(self):` |
+| [bounding_box_min](Geometry.md#bounding_box_min-property) | `@property`<br> `def bounding_box_min(self):` |
+
 <sub>Go to [top](#node-Bounding-Box) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

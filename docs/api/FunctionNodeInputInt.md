@@ -30,6 +30,7 @@ node = nodes.Integer(integer=0)
 | Class or method name | Definition |
 |----------------------|------------|
 | **[Integer](Integer.md)** |
-| [Integer](Integer.md#Integer-classmethod) | `def Integer(cls, integer=0):` |
+| [Integer](Integer.md#Integer-classmethod) | `@classmethod`<br> `def Integer(cls, integer=0):` |
+
 <sub>Go to [top](#node-Integer) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

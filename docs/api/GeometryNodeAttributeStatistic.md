@@ -60,5 +60,6 @@ node = nodes.AttributeStatistic(geometry=None, selection=None, attribute=None, d
 | [attribute_var](Domain.md#attribute_var) | `def attribute_var(self, attribute=None):` |
 | **[Geometry](Geometry.md)** |
 | [attribute_statistic](Geometry.md#attribute_statistic) | `def attribute_statistic(self, selection=None, attribute=None, domain='POINT'):` |
+
 <sub>Go to [top](#node-Attribute-Statistic) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

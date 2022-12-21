@@ -47,5 +47,6 @@ node = nodes.ExtrudeMesh(mesh=None, selection=None, offset=None, offset_scale=No
 | [extrude](Mesh.md#extrude) | `def extrude(self, selection=None, offset=None, offset_scale=None, individual=None, mode='FACES'):` |
 | **[Vertex](Vertex.md)** |
 | [extrude](Vertex.md#extrude) | `def extrude(self, offset=None, offset_scale=None, individual=None):` |
+
 <sub>Go to [top](#node-Extrude-Mesh) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

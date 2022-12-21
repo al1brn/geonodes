@@ -30,6 +30,7 @@ node = nodes.CurveLength(curve=None)
 | Class or method name | Definition |
 |----------------------|------------|
 | **[Curve](Curve.md)** |
-| [length](Curve.md#length-property) | `def length(self):` |
+| [length](Curve.md#length-property) | `@property`<br> `def length(self):` |
+
 <sub>Go to [top](#node-Curve-Length) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

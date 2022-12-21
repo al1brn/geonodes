@@ -44,5 +44,6 @@ node = nodes.SampleUvSurface(mesh=None, value=None, source_uv_map=None, sample_u
 |----------------------|------------|
 | **[Mesh](Mesh.md)** |
 | [sample_uv_surface](Mesh.md#sample_uv_surface) | `def sample_uv_surface(self, value=None, source_uv_map=None, sample_uv=None):` |
+
 <sub>Go to [top](#node-Sample-UV-Surface) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

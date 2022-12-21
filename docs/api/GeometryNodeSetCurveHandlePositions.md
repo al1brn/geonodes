@@ -40,7 +40,10 @@ node = nodes.SetHandlePositions(curve=None, selection=None, position=None, offse
 | [set_handle_positions](ControlPoint.md#set_handle_positions) | `def set_handle_positions(self, position=None, offset=None, mode='LEFT'):` |
 | [set_handle_positions_left](ControlPoint.md#set_handle_positions_left) | `def set_handle_positions_left(self, curve=None, position=None, offset=None):` |
 | [set_handle_positions_right](ControlPoint.md#set_handle_positions_right) | `def set_handle_positions_right(self, curve=None, position=None, offset=None):` |
-| [left_handle_positions](ControlPoint.md#left_handle_positions) | `def left_handle_positions(self, attr_value):` |
-| [right_handle_positions](ControlPoint.md#right_handle_positions) | `def right_handle_positions(self, attr_value):` |
+| [left_handle_positions](ControlPoint.md#left_handle_positions) | `@left_handle_positions.setter
+`<br> `def left_handle_positions(self, attr_value):` |
+| [right_handle_positions](ControlPoint.md#right_handle_positions) | `@right_handle_positions.setter
+`<br> `def right_handle_positions(self, attr_value):` |
+
 <sub>Go to [top](#node-Set-Handle-Positions) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

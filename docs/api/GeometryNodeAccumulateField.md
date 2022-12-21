@@ -44,5 +44,6 @@ node = nodes.AccumulateField(value=None, group_index=None, data_type='FLOAT', do
 |----------------------|------------|
 | **[Domain](Domain.md)** |
 | [accumulate_field](Domain.md#accumulate_field) | `def accumulate_field(self, value=None, group_index=None):` |
+
 <sub>Go to [top](#node-Accumulate-Field) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

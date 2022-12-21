@@ -24,6 +24,7 @@ node = nodes.Material()
 | Class or method name | Definition |
 |----------------------|------------|
 | **[Material](Material.md)** |
-| [Material](Material.md#Material-classmethod) | `def Material(cls):` |
+| [Material](Material.md#Material-classmethod) | `@classmethod`<br> `def Material(cls):` |
+
 <sub>Go to [top](#node-Material) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

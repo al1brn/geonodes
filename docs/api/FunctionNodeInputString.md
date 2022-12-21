@@ -30,6 +30,7 @@ node = nodes.String(string='')
 | Class or method name | Definition |
 |----------------------|------------|
 | **[String](String.md)** |
-| [String](String.md#String-classmethod) | `def String(cls, string=''):` |
+| [String](String.md#String-classmethod) | `@classmethod`<br> `def String(cls, string=''):` |
+
 <sub>Go to [top](#node-String) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

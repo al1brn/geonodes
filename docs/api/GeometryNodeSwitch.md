@@ -78,5 +78,6 @@ node = nodes.Switch(switch=None, false=None, true=None, input_type='GEOMETRY')
 | [switch](Texture.md#switch) | `def switch(self, switch=None, true=None):` |
 | **[Vector](Vector.md)** |
 | [switch](Vector.md#switch) | `def switch(self, switch=None, true=None):` |
+
 <sub>Go to [top](#node-Switch) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

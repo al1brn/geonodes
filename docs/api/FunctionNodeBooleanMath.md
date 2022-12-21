@@ -54,5 +54,6 @@ node = nodes.BooleanMath(boolean0=None, boolean1=None, operation='AND')
 | [xor](Boolean.md#xor) | `def xor(self, boolean1=None):` |
 | [imply](Boolean.md#imply) | `def imply(self, boolean1=None):` |
 | [nimply](Boolean.md#nimply) | `def nimply(self, boolean1=None):` |
+
 <sub>Go to [top](#node-Boolean-Math) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

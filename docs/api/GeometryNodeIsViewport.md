@@ -24,6 +24,7 @@ node = nodes.IsViewport()
 | Class or method name | Definition |
 |----------------------|------------|
 | **[Geometry](Geometry.md)** |
-| [is_viewport](Geometry.md#is_viewport-property) | `def is_viewport(self):` |
+| [is_viewport](Geometry.md#is_viewport-property) | `@property`<br> `def is_viewport(self):` |
+
 <sub>Go to [top](#node-Is-Viewport) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

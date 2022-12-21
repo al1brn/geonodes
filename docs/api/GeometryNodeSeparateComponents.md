@@ -34,11 +34,12 @@ node = nodes.SeparateComponents(geometry=None)
 | Class or method name | Definition |
 |----------------------|------------|
 | **[Geometry](Geometry.md)** |
-| [separate_components](Geometry.md#separate_components-property) | `def separate_components(self):` |
-| [mesh_component](Geometry.md#mesh_component-property) | `def mesh_component(self):` |
-| [curve_component](Geometry.md#curve_component-property) | `def curve_component(self):` |
-| [points_component](Geometry.md#points_component-property) | `def points_component(self):` |
-| [volume_component](Geometry.md#volume_component-property) | `def volume_component(self):` |
-| [instances_component](Geometry.md#instances_component-property) | `def instances_component(self):` |
+| [separate_components](Geometry.md#separate_components-property) | `@property`<br> `def separate_components(self):` |
+| [mesh_component](Geometry.md#mesh_component-property) | `@property`<br> `def mesh_component(self):` |
+| [curve_component](Geometry.md#curve_component-property) | `@property`<br> `def curve_component(self):` |
+| [points_component](Geometry.md#points_component-property) | `@property`<br> `def points_component(self):` |
+| [volume_component](Geometry.md#volume_component-property) | `@property`<br> `def volume_component(self):` |
+| [instances_component](Geometry.md#instances_component-property) | `@property`<br> `def instances_component(self):` |
+
 <sub>Go to [top](#node-Separate-Components) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

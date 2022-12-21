@@ -33,6 +33,7 @@ node = nodes.RgbCurves(fac=None, color=None)
 | Global functions |
 | [rgb_curves](A.md#rgb_curves) | `def rgb_curves(fac=None, color=None):` |
 | **[Color](Color.md)** |
-| [rgb_curves](Color.md#rgb_curves-property) | `def rgb_curves(self, fac=None):` |
+| [rgb_curves](Color.md#rgb_curves-property) | `@property`<br> `def rgb_curves(self, fac=None):` |
+
 <sub>Go to [top](#node-RGB-Curves) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

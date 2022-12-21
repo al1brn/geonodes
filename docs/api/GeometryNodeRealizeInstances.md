@@ -35,5 +35,6 @@ node = nodes.RealizeInstances(geometry=None, legacy_behavior=False)
 |----------------------|------------|
 | **[Instances](Instances.md)** |
 | [realize](Instances.md#realize) | `def realize(self, geometry=None, legacy_behavior=False):` |
+
 <sub>Go to [top](#node-Realize-Instances) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

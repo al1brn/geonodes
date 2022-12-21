@@ -36,6 +36,8 @@ node = nodes.SetCurveNormal(curve=None, selection=None, mode='MINIMUM_TWIST')
 |----------------------|------------|
 | **[Spline](Spline.md)** |
 | [set_normal](Spline.md#set_normal) | `def set_normal(self, mode='MINIMUM_TWIST'):` |
-| [normal](Spline.md#normal) | `def normal(self, attr_value):` |
+| [normal](Spline.md#normal) | `@normal.setter
+`<br> `def normal(self, attr_value):` |
+
 <sub>Go to [top](#node-Set-Curve-Normal) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

@@ -35,13 +35,14 @@ node = nodes.GradientTexture(vector=None, gradient_type='LINEAR')
 | Class or method name | Definition |
 |----------------------|------------|
 | **[Texture](Texture.md)** |
-| [gradient](Texture.md#gradient-staticmethod) | `def gradient(vector=None, gradient_type='LINEAR'):` |
-| [gradient_linear](Texture.md#gradient_linear-staticmethod) | `def gradient_linear(vector=None):` |
-| [gradient_quadratic](Texture.md#gradient_quadratic-staticmethod) | `def gradient_quadratic(vector=None):` |
-| [gradient_easing](Texture.md#gradient_easing-staticmethod) | `def gradient_easing(vector=None):` |
-| [gradient_diagonal](Texture.md#gradient_diagonal-staticmethod) | `def gradient_diagonal(vector=None):` |
-| [gradient_spherical](Texture.md#gradient_spherical-staticmethod) | `def gradient_spherical(vector=None):` |
-| [gradient_quadratic_sphere](Texture.md#gradient_quadratic_sphere-staticmethod) | `def gradient_quadratic_sphere(vector=None):` |
-| [gradient_radial](Texture.md#gradient_radial-staticmethod) | `def gradient_radial(vector=None):` |
+| [gradient](Texture.md#gradient-staticmethod) | `@staticmethod`<br> `def gradient(vector=None, gradient_type='LINEAR'):` |
+| [gradient_linear](Texture.md#gradient_linear-staticmethod) | `@staticmethod`<br> `def gradient_linear(vector=None):` |
+| [gradient_quadratic](Texture.md#gradient_quadratic-staticmethod) | `@staticmethod`<br> `def gradient_quadratic(vector=None):` |
+| [gradient_easing](Texture.md#gradient_easing-staticmethod) | `@staticmethod`<br> `def gradient_easing(vector=None):` |
+| [gradient_diagonal](Texture.md#gradient_diagonal-staticmethod) | `@staticmethod`<br> `def gradient_diagonal(vector=None):` |
+| [gradient_spherical](Texture.md#gradient_spherical-staticmethod) | `@staticmethod`<br> `def gradient_spherical(vector=None):` |
+| [gradient_quadratic_sphere](Texture.md#gradient_quadratic_sphere-staticmethod) | `@staticmethod`<br> `def gradient_quadratic_sphere(vector=None):` |
+| [gradient_radial](Texture.md#gradient_radial-staticmethod) | `@staticmethod`<br> `def gradient_radial(vector=None):` |
+
 <sub>Go to [top](#node-Gradient-Texture) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

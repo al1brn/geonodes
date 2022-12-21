@@ -49,5 +49,6 @@ node = nodes.SampleCurve(curves=None, value=None, factor=None, length=None, curv
 |----------------------|------------|
 | **[Curve](Curve.md)** |
 | [sample](Curve.md#sample) | `def sample(self, value=None, factor=None, length=None, curve_index=None, data_type='FLOAT', mode='FACTOR', use_all_curves=False):` |
+
 <sub>Go to [top](#node-Sample-Curve) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

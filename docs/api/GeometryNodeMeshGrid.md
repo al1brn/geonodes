@@ -33,6 +33,7 @@ node = nodes.Grid(size_x=None, size_y=None, vertices_x=None, vertices_y=None)
 | Class or method name | Definition |
 |----------------------|------------|
 | **[Mesh](Mesh.md)** |
-| [Grid](Mesh.md#Grid-classmethod) | `def Grid(cls, size_x=None, size_y=None, vertices_x=None, vertices_y=None):` |
+| [Grid](Mesh.md#Grid-classmethod) | `@classmethod`<br> `def Grid(cls, size_x=None, size_y=None, vertices_x=None, vertices_y=None):` |
+
 <sub>Go to [top](#node-Grid) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

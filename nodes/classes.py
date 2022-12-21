@@ -1314,7 +1314,7 @@ class Float(geosocks.Float):
             decimals: Integer
 
         Returns:
-            socket 'string'
+            socket `string`
         """
         return nodes.ValueToString(value=self, decimals=decimals).string
 
@@ -2390,7 +2390,7 @@ class Integer(geosocks.Integer):
         Developer reference [FunctionNodeValueToString](https://docs.blender.org/api/current/bpy.types.FunctionNodeValueToString.html)
 
         Returns:
-            socket 'string'
+            socket `string`
         """
         return nodes.ValueToString(value=self, decimals=0).string
 
@@ -2590,7 +2590,7 @@ class String(geosocks.String):
         Developer reference [FunctionNodeInputSpecialCharacters](https://docs.blender.org/api/current/bpy.types.FunctionNodeInputSpecialCharacters.html)
 
         Returns:
-            socket 'line_break'
+            socket `line_break`
         """
         return nodes.SpecialCharacters().line_break
 
@@ -2619,7 +2619,7 @@ class String(geosocks.String):
         Developer reference [FunctionNodeInputSpecialCharacters](https://docs.blender.org/api/current/bpy.types.FunctionNodeInputSpecialCharacters.html)
 
         Returns:
-            socket 'tab'
+            socket `tab`
         """
         return nodes.SpecialCharacters().tab
 
@@ -2650,7 +2650,7 @@ class String(geosocks.String):
             delimiter: String
 
         Returns:
-            socket 'string'
+            socket `string`
         """
         return nodes.JoinStrings(*strings, delimiter=delimiter).string
 
@@ -2663,7 +2663,7 @@ class String(geosocks.String):
         Developer reference [FunctionNodeStringLength](https://docs.blender.org/api/current/bpy.types.FunctionNodeStringLength.html)
 
         Returns:
-            socket 'length'
+            socket `length`
         """
         return nodes.StringLength(string=self).length
 
@@ -2694,7 +2694,7 @@ class String(geosocks.String):
             replace: String
 
         Returns:
-            socket 'string'
+            socket `string`
         """
         return nodes.ReplaceString(string=self, find=find, replace=replace).string
 
@@ -2710,7 +2710,7 @@ class String(geosocks.String):
             length: Integer
 
         Returns:
-            socket 'string'
+            socket `string`
         """
         return nodes.SliceString(string=self, position=position, length=length).string
 

@@ -35,5 +35,6 @@ node = nodes.SetMaterialIndex(geometry=None, selection=None, material_index=None
 | [set_material_index](Domain.md#set_material_index) | `def set_material_index(self, material_index=None):` |
 | **[Geometry](Geometry.md)** |
 | [set_material_index](Geometry.md#set_material_index) | `def set_material_index(self, selection=None, material_index=None):` |
+
 <sub>Go to [top](#node-Set-Material-Index) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

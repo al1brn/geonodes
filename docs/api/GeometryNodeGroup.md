@@ -15,5 +15,6 @@ node = nodes.Group()
 
 ![Blender Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeGroup.webp)
 
+
 <sub>Go to [top](#node-Group) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

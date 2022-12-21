@@ -24,6 +24,7 @@ node = nodes.FaceArea()
 | Class or method name | Definition |
 |----------------------|------------|
 | **[Face](Face.md)** |
-| [area](Face.md#area-property) | `def area(self):` |
+| [area](Face.md#area-property) | `@property`<br> `def area(self):` |
+
 <sub>Go to [top](#node-Face-Area) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

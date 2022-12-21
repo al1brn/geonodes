@@ -935,7 +935,7 @@ def join_strings(*strings, delimiter=None):
         delimiter: String
 
     Returns:
-        socket 'string'
+        socket `string`
     """
     return nodes.JoinStrings(*strings, delimiter=delimiter).string
 
@@ -1445,7 +1445,7 @@ def replace_string(string=None, find=None, replace=None):
         replace: String
 
     Returns:
-        socket 'string'
+        socket `string`
     """
     return nodes.ReplaceString(string=string, find=find, replace=replace).string
 
@@ -1625,7 +1625,7 @@ def slice_string(string=None, position=None, length=None):
         length: Integer
 
     Returns:
-        socket 'string'
+        socket `string`
     """
     return nodes.SliceString(string=string, position=position, length=length).string
 
@@ -1709,7 +1709,7 @@ def string_length(string=None):
         string: String
 
     Returns:
-        socket 'length'
+        socket `length`
     """
     return nodes.StringLength(string=string).length
 
@@ -2087,7 +2087,7 @@ def value_to_string(value=None, decimals=None):
         decimals: Integer
 
     Returns:
-        socket 'string'
+        socket `string`
     """
     return nodes.ValueToString(value=value, decimals=decimals).string
 

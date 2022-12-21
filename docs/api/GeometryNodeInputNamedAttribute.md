@@ -52,5 +52,6 @@ node = nodes.NamedAttribute(name=None, data_type='FLOAT')
 | [get_named_vector](Geometry.md#get_named_vector) | `def get_named_vector(self, name=None):` |
 | [get_named_color](Geometry.md#get_named_color) | `def get_named_color(self, name=None):` |
 | [get_named_boolean](Geometry.md#get_named_boolean) | `def get_named_boolean(self, name=None):` |
+
 <sub>Go to [top](#node-Named-Attribute) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

@@ -33,5 +33,6 @@ node = nodes.FaceSetBoundaries(face_set=None)
 | [face_set_boundaries](Face.md#face_set_boundaries) | `def face_set_boundaries(self):` |
 | **[Mesh](Mesh.md)** |
 | [face_set_boundaries](Mesh.md#face_set_boundaries) | `def face_set_boundaries(self, face_set=None):` |
+
 <sub>Go to [top](#node-Face-Set-Boundaries) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

@@ -1117,13 +1117,13 @@ def join_geometry(*geometry):
 def join_strings(*strings, delimiter=None):
 
 ```
-Node [Join Strings](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/join_strings.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeStringJoin.html) )
+> Node: [Join Strings](GeometryNodeStringJoin.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/join_strings.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeStringJoin.html)
 
-### Args:
+#### Args:
 - strings: <m>String
 - delimiter: String
 
-### Returns:
+#### Returns:
 - socket `string`
 
 <sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
@@ -1656,14 +1656,14 @@ def random_vector(min=None, max=None, ID=None, seed=None):
 def replace_string(string=None, find=None, replace=None):
 
 ```
-Node [Replace String](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/replace_string.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeReplaceString.html) )
+> Node: [Replace String](FunctionNodeReplaceString.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/replace_string.html) - [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeReplaceString.html)
 
-### Args:
+#### Args:
 - string: String
 - find: String
 - replace: String
 
-### Returns:
+#### Returns:
 - socket `string`
 
 <sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
@@ -1844,14 +1844,14 @@ def sinh(value=None, clamp=False):
 def slice_string(string=None, position=None, length=None):
 
 ```
-Node [Slice String](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/slice_string.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeSliceString.html) )
+> Node: [Slice String](FunctionNodeSliceString.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/slice_string.html) - [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeSliceString.html)
 
-### Args:
+#### Args:
 - string: String
 - position: Integer
 - length: Integer
 
-### Returns:
+#### Returns:
 - socket `string`
 
 <sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
@@ -1935,12 +1935,12 @@ def sqrt(value=None, clamp=False):
 def string_length(string=None):
 
 ```
-Node [String Length](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/string_length.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeStringLength.html) )
+> Node: [String Length](FunctionNodeStringLength.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/string_length.html) - [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeStringLength.html)
 
-### Args:
+#### Args:
 - string: String
 
-### Returns:
+#### Returns:
 - socket `length`
 
 <sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
@@ -1951,9 +1951,9 @@ Node [String Length](https://docs.blender.org/manual/en/latest/modeling/geometry
 def string_to_curves(string=None, size=None, character_spacing=None, word_spacing=None, line_spacing=None, text_box_width=None, text_box_height=None, align_x='LEFT', align_y='TOP_BASELINE', overflow='OVERFLOW', pivot_mode='BOTTOM_LEFT'):
 
 ```
-Node [String to Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/string_to_curves.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeStringToCurves.html) )
+> Node: [String to Curves](GeometryNodeStringToCurves.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/string_to_curves.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeStringToCurves.html)
 
-### Args:
+#### Args:
 - string: String
 - size: Float
 - character_spacing: Float
@@ -1966,7 +1966,7 @@ Node [String to Curves](https://docs.blender.org/manual/en/latest/modeling/geome
 - overflow (str): 'OVERFLOW' in [OVERFLOW, SCALE_TO_FIT, TRUNCATE]
 - pivot_mode (str): 'BOTTOM_LEFT' in [MIDPOINT, TOP_LEFT, TOP_CENTER,... , BOTTOM_LEFT, BOTTOM_CENTER, BOTTOM_RIGHT]
 
-### Returns:
+#### Returns:
 - tuple ('`curve_instances`', '`line`', '`pivot_point`')
 
 <sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
@@ -2333,13 +2333,13 @@ def to_radians(value=None, clamp=False):
 def value_to_string(value=None, decimals=None):
 
 ```
-Node [Value to String](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/value_to_string.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeValueToString.html) )
+> Node: [Value to String](FunctionNodeValueToString.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/value_to_string.html) - [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeValueToString.html)
 
-### Args:
+#### Args:
 - value: Float
 - decimals: Integer
 
-### Returns:
+#### Returns:
 - socket `string`
 
 <sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>

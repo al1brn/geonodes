@@ -32,6 +32,7 @@ node = nodes.UvSphere(segments=None, rings=None, radius=None)
 | Class or method name | Definition |
 |----------------------|------------|
 | **[Mesh](Mesh.md)** |
-| [Circle](Mesh.md#Circle-classmethod) | `def Circle(cls, segments=None, rings=None, radius=None):` |
+| [Circle](Mesh.md#Circle-classmethod) | `@classmethod`<br> `def Circle(cls, segments=None, rings=None, radius=None):` |
+
 <sub>Go to [top](#node-UV-Sphere) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

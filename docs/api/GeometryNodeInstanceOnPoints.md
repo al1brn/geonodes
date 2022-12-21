@@ -42,7 +42,7 @@ node = nodes.InstanceOnPoints(points=None, selection=None, instance=None, pick_i
 | **[Curve](Curve.md)** |
 | [instance_on_points](Curve.md#instance_on_points) | `def instance_on_points(self, selection=None, instance=None, pick_instance=None, instance_index=None, rotation=None, scale=None):` |
 | **[Instances](Instances.md)** |
-| [InstanceOnPoints](Instances.md#InstanceOnPoints-classmethod) | `def InstanceOnPoints(cls, points=None, selection=None, instance=None, pick_instance=None, instance_index=None, rotation=None, scale=None):` |
+| [InstanceOnPoints](Instances.md#InstanceOnPoints-classmethod) | `@classmethod`<br> `def InstanceOnPoints(cls, points=None, selection=None, instance=None, pick_instance=None, instance_index=None, rotation=None, scale=None):` |
 | [on_points](Instances.md#on_points) | `def on_points(self, points=None, selection=None, pick_instance=None, instance_index=None, rotation=None, scale=None):` |
 | **[Mesh](Mesh.md)** |
 | [instance_on_points](Mesh.md#instance_on_points) | `def instance_on_points(self, selection=None, instance=None, pick_instance=None, instance_index=None, rotation=None, scale=None):` |
@@ -50,5 +50,6 @@ node = nodes.InstanceOnPoints(points=None, selection=None, instance=None, pick_i
 | [instance_on_points](Points.md#instance_on_points) | `def instance_on_points(self, selection=None, instance=None, pick_instance=None, instance_index=None, rotation=None, scale=None):` |
 | **[Vertex](Vertex.md)** |
 | [instance_on_points](Vertex.md#instance_on_points) | `def instance_on_points(self, instance=None, pick_instance=None, instance_index=None, rotation=None, scale=None):` |
+
 <sub>Go to [top](#node-Instance-on-Points) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

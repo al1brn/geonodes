@@ -36,5 +36,6 @@ node = nodes.InstancesToPoints(instances=None, selection=None, position=None, ra
 | [to_points](Instance.md#to_points) | `def to_points(self, position=None, radius=None):` |
 | **[Instances](Instances.md)** |
 | [to_points](Instances.md#to_points) | `def to_points(self, selection=None, position=None, radius=None):` |
+
 <sub>Go to [top](#node-Instances-to-Points) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

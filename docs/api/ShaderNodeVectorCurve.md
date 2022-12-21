@@ -32,5 +32,6 @@ node = nodes.VectorCurves(fac=None, vector=None)
 |----------------------|------------|
 | **[Vector](Vector.md)** |
 | [curves](Vector.md#curves) | `def curves(self, fac=None):` |
+
 <sub>Go to [top](#node-Vector-Curves) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
