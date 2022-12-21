@@ -1,4 +1,4 @@
-# Node Merge by Distance
+# Node 'Merge by Distance'
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
@@ -42,4 +42,6 @@ node = nodes.MergeByDistance(geometry=None, selection=None, distance=None, mode=
 | Name | Definition |
 |------|------------|
  | [merge_by_distance](Vertex.md#merge_by_distance) | `def merge_by_distance(self, distance=None, mode='ALL'):` |
+
+<sub>Go to [top](#node-{wnode.bnode.name}) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

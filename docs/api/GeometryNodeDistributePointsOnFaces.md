@@ -1,4 +1,4 @@
-# Node Distribute Points on Faces
+# Node 'Distribute Points on Faces'
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
@@ -49,4 +49,6 @@ node = nodes.DistributePointsOnFaces(mesh=None, selection=None, distance_min=Non
 | Name | Definition |
 |------|------------|
  | [distribute_points_on_faces](Mesh.md#distribute_points_on_faces) | `def distribute_points_on_faces(self, selection=None, distance_min=None, density_max=None, density=None, density_factor=None, seed=None, distribute_method='RANDOM'):` |
+
+<sub>Go to [top](#node-{wnode.bnode.name}) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

@@ -1,4 +1,4 @@
-# Node Is Spline Cyclic
+# Node 'Is Spline Cyclic'
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
@@ -24,4 +24,6 @@ node = nodes.IsSplineCyclic()
 | Name | Definition |
 |------|------------|
  | [cyclic](Spline.md#cyclic-property) | `def cyclic(self):` |
+
+<sub>Go to [top](#node-{wnode.bnode.name}) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

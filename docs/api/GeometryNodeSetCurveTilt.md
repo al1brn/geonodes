@@ -1,4 +1,4 @@
-# Node Set Curve Tilt
+# Node 'Set Curve Tilt'
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
@@ -33,4 +33,6 @@ node = nodes.SetCurveTilt(curve=None, selection=None, tilt=None)
 |------|------------|
  | [set_tilt](ControlPoint.md#set_tilt) | `def set_tilt(self, tilt=None):` |
  | [tilt](ControlPoint.md#tilt) | `def tilt(self, attr_value):` |
+
+<sub>Go to [top](#node-{wnode.bnode.name}) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

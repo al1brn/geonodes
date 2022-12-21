@@ -1,4 +1,4 @@
-# Node Volume Cube
+# Node 'Volume Cube'
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
@@ -36,4 +36,6 @@ node = nodes.VolumeCube(density=None, background=None, min=None, max=None, resol
 | Name | Definition |
 |------|------------|
  | [Cube](Volume.md#Cube-classmethod) | `def Cube(cls, density=None, background=None, min=None, max=None, resolution_x=None, resolution_y=None, resolution_z=None):` |
+
+<sub>Go to [top](#node-{wnode.bnode.name}) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

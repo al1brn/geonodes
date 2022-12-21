@@ -1,4 +1,4 @@
-# Node Curve Tilt
+# Node 'Curve Tilt'
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
@@ -24,4 +24,6 @@ node = nodes.CurveTilt()
 | Name | Definition |
 |------|------------|
  | [tilt](ControlPoint.md#tilt-property) | `def tilt(self):` |
+
+<sub>Go to [top](#node-{wnode.bnode.name}) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

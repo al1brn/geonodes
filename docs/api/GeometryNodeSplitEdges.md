@@ -1,4 +1,4 @@
-# Node Split Edges
+# Node 'Split Edges'
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
@@ -37,4 +37,6 @@ node = nodes.SplitEdges(mesh=None, selection=None)
 | Name | Definition |
 |------|------------|
  | [split_edges](Mesh.md#split_edges) | `def split_edges(self, selection=None):` |
+
+<sub>Go to [top](#node-{wnode.bnode.name}) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

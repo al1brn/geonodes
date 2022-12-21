@@ -1,4 +1,4 @@
-# Node Set Point Radius
+# Node 'Set Point Radius'
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
@@ -38,4 +38,6 @@ node = nodes.SetPointRadius(points=None, selection=None, radius=None)
 | Name | Definition |
 |------|------------|
  | [set_point_radius](Points.md#set_point_radius) | `def set_point_radius(self, selection=None, radius=None):` |
+
+<sub>Go to [top](#node-{wnode.bnode.name}) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

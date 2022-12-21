@@ -1,4 +1,4 @@
-# Node Set Handle Type
+# Node 'Set Handle Type'
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
@@ -37,4 +37,6 @@ node = nodes.SetHandleType(curve=None, selection=None, handle_type='AUTO', mode=
 |------|------------|
  | [set_handle_type_node](ControlPoint.md#set_handle_type_node) | `def set_handle_type_node(self, handle_type='AUTO', mode={'RIGHT', 'LEFT'}):` |
  | [set_handle_type](ControlPoint.md#set_handle_type) | `def set_handle_type(self, left=True, right=True, handle_type='AUTO'):` |
+
+<sub>Go to [top](#node-{wnode.bnode.name}) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

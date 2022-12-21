@@ -1,4 +1,4 @@
-# Node Cone
+# Node 'Cone'
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
@@ -42,4 +42,6 @@ node = nodes.Cone(vertices=None, side_segments=None, fill_segments=None, radius_
 | Name | Definition |
 |------|------------|
  | [Cone](Mesh.md#Cone-staticmethod) | `def Cone(vertices=None, side_segments=None, fill_segments=None, radius_top=None, radius_bottom=None, depth=None, fill_type='NGON'):` |
+
+<sub>Go to [top](#node-{wnode.bnode.name}) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

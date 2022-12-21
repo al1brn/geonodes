@@ -1,4 +1,4 @@
-# Node Curve to Mesh
+# Node 'Curve to Mesh'
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
@@ -32,4 +32,6 @@ node = nodes.CurveToMesh(curve=None, profile_curve=None, fill_caps=None)
 | Name | Definition |
 |------|------------|
  | [to_mesh](Curve.md#to_mesh) | `def to_mesh(self, profile_curve=None, fill_caps=None):` |
+
+<sub>Go to [top](#node-{wnode.bnode.name}) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

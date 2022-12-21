@@ -1,4 +1,4 @@
-# Node Group Output
+# Node 'Group Output'
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
@@ -22,4 +22,6 @@ node = nodes.GroupOutput(geometry=None, is_active_output=True)
 #### Node parameter arguments:
 
 - **is_active_output** (bool): default = True
+
+<sub>Go to [top](#node-{wnode.bnode.name}) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

@@ -1,4 +1,4 @@
-# Node Sample Index
+# Node 'Sample Index'
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
@@ -49,4 +49,6 @@ node = nodes.SampleIndex(geometry=None, value=None, index=None, clamp=False, dat
 | Name | Definition |
 |------|------------|
  | [sample_index](Geometry.md#sample_index) | `def sample_index(self, value=None, index=None, clamp=False, domain='POINT'):` |
+
+<sub>Go to [top](#node-{wnode.bnode.name}) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

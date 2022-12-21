@@ -1,4 +1,4 @@
-# Node Slice String
+# Node 'Slice String'
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
@@ -38,4 +38,6 @@ node = nodes.SliceString(string=None, position=None, length=None)
 | Name | Definition |
 |------|------------|
  | [slice](String.md#slice) | `def slice(self, position=None, length=None):` |
+
+<sub>Go to [top](#node-{wnode.bnode.name}) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

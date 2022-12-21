@@ -1,4 +1,4 @@
-# Node Curve Tangent
+# Node 'Curve Tangent'
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
@@ -24,4 +24,6 @@ node = nodes.CurveTangent()
 | Name | Definition |
 |------|------------|
  | [tangent](ControlPoint.md#tangent-property) | `def tangent(self):` |
+
+<sub>Go to [top](#node-{wnode.bnode.name}) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

@@ -1,4 +1,4 @@
-# Node Separate Components
+# Node 'Separate Components'
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
@@ -39,4 +39,6 @@ node = nodes.SeparateComponents(geometry=None)
  | [points_component](Geometry.md#points_component-property) | `def points_component(self):` |
  | [volume_component](Geometry.md#volume_component-property) | `def volume_component(self):` |
  | [instances_component](Geometry.md#instances_component-property) | `def instances_component(self):` |
+
+<sub>Go to [top](#node-{wnode.bnode.name}) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

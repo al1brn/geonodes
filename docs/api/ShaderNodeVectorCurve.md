@@ -1,4 +1,4 @@
-# Node Vector Curves
+# Node 'Vector Curves'
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
@@ -31,4 +31,6 @@ node = nodes.VectorCurves(fac=None, vector=None)
 | Name | Definition |
 |------|------------|
  | [curves](Vector.md#curves) | `def curves(self, fac=None):` |
+
+<sub>Go to [top](#node-{wnode.bnode.name}) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

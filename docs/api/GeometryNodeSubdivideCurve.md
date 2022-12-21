@@ -1,4 +1,4 @@
-# Node Subdivide Curve
+# Node 'Subdivide Curve'
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
@@ -31,4 +31,6 @@ node = nodes.SubdivideCurve(curve=None, cuts=None)
 | Name | Definition |
 |------|------------|
  | [subdivide](Curve.md#subdivide) | `def subdivide(self, cuts=None):` |
+
+<sub>Go to [top](#node-{wnode.bnode.name}) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

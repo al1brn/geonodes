@@ -1,4 +1,4 @@
-# Node Combine XYZ
+# Node 'Combine XYZ'
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
@@ -32,4 +32,6 @@ node = nodes.CombineXyz(x=None, y=None, z=None)
 | Name | Definition |
 |------|------------|
  | [Combine](Vector.md#Combine-classmethod) | `def Combine(cls, x=None, y=None, z=None):` |
+
+<sub>Go to [top](#node-{wnode.bnode.name}) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

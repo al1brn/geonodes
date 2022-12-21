@@ -1,4 +1,4 @@
-# Node Duplicate Elements
+# Node 'Duplicate Elements'
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
@@ -43,4 +43,6 @@ node = nodes.DuplicateElements(geometry=None, selection=None, amount=None, domai
 | Name | Definition |
 |------|------------|
  | [duplicate](Geometry.md#duplicate) | `def duplicate(self, selection=None, amount=None, domain='POINT'):` |
+
+<sub>Go to [top](#node-{wnode.bnode.name}) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

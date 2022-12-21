@@ -1,4 +1,4 @@
-# Node Shortest Edge Paths
+# Node 'Shortest Edge Paths'
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
@@ -32,4 +32,6 @@ node = nodes.ShortestEdgePaths(end_vertex=None, edge_cost=None)
 | Name | Definition |
 |------|------------|
  | [shortest_edge_paths](Mesh.md#shortest_edge_paths) | `def shortest_edge_paths(self, end_vertex=None, edge_cost=None):` |
+
+<sub>Go to [top](#node-{wnode.bnode.name}) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

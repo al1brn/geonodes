@@ -1,4 +1,4 @@
-# Node Integer
+# Node 'Integer'
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
@@ -30,4 +30,6 @@ node = nodes.Integer(integer=0)
 | Name | Definition |
 |------|------------|
  | [Integer](Integer.md#Integer-classmethod) | `def Integer(cls, integer=0):` |
+
+<sub>Go to [top](#node-{wnode.bnode.name}) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

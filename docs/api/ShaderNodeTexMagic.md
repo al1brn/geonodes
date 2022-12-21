@@ -1,4 +1,4 @@
-# Node Magic Texture
+# Node 'Magic Texture'
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
@@ -37,4 +37,6 @@ node = nodes.MagicTexture(vector=None, scale=None, distortion=None, turbulence_d
 | Name | Definition |
 |------|------------|
  | [magic](Texture.md#magic-staticmethod) | `def magic(vector=None, scale=None, distortion=None, turbulence_depth=2):` |
+
+<sub>Go to [top](#node-{wnode.bnode.name}) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

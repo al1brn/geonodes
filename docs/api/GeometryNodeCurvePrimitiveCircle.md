@@ -1,4 +1,4 @@
-# Node Curve Circle
+# Node 'Curve Circle'
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
@@ -40,4 +40,6 @@ node = nodes.CurveCircle(resolution=None, point_1=None, point_2=None, point_3=No
 |------|------------|
  | [Circle](Curve.md#Circle-classmethod) | `def Circle(cls, resolution=None, radius=None):` |
  | [CircleFromPoints](Curve.md#CircleFromPoints-classmethod) | `def CircleFromPoints(cls, resolution=None, point_1=None, point_2=None, point_3=None):` |
+
+<sub>Go to [top](#node-{wnode.bnode.name}) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

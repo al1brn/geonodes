@@ -1,4 +1,4 @@
-# Node Handle Type Selection
+# Node 'Handle Type Selection'
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
@@ -36,4 +36,6 @@ node = nodes.HandleTypeSelection(handle_type='AUTO', mode={'RIGHT', 'LEFT'})
  | [handle_type_selection](ControlPoint.md#handle_type_selection) | `def handle_type_selection_auto(self, left=True, right=True):` |
  | [handle_type_selection](ControlPoint.md#handle_type_selection) | `def handle_type_selection_vector(self, left=True, right=True):` |
  | [handle_type_selection](ControlPoint.md#handle_type_selection) | `def handle_type_selection_align(self, left=True, right=True):` |
+
+<sub>Go to [top](#node-{wnode.bnode.name}) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

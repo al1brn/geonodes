@@ -1,4 +1,4 @@
-# Node Endpoint Selection
+# Node 'Endpoint Selection'
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
@@ -31,4 +31,6 @@ node = nodes.EndpointSelection(start_size=None, end_size=None)
 | Name | Definition |
 |------|------------|
  | [endpoint_selection](ControlPoint.md#endpoint_selection) | `def endpoint_selection(self, start_size=None, end_size=None):` |
+
+<sub>Go to [top](#node-{wnode.bnode.name}) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

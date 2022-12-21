@@ -1,4 +1,4 @@
-# Node Join Geometry
+# Node 'Join Geometry'
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
@@ -36,4 +36,6 @@ node = nodes.JoinGeometry(*geometry)
 | Name | Definition |
 |------|------------|
  | [join](Geometry.md#join) | `def join(*geometry):` |
+
+<sub>Go to [top](#node-{wnode.bnode.name}) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

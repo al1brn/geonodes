@@ -1,4 +1,4 @@
-# Node Star
+# Node 'Star'
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
@@ -34,4 +34,6 @@ node = nodes.Star(points=None, inner_radius=None, outer_radius=None, twist=None)
 | Name | Definition |
 |------|------------|
  | [Star](Curve.md#Star-classmethod) | `def Star(cls, points=None, inner_radius=None, outer_radius=None, twist=None):` |
+
+<sub>Go to [top](#node-{wnode.bnode.name}) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

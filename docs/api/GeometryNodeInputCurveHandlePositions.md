@@ -1,4 +1,4 @@
-# Node Curve Handle Positions
+# Node 'Curve Handle Positions'
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
@@ -33,4 +33,6 @@ node = nodes.CurveHandlePositions(relative=None)
  | [handle_positions](ControlPoint.md#handle_positions) | `def handle_positions(self, relative=None):` |
  | [left_handle_positions](ControlPoint.md#left_handle_positions-property) | `def left_handle_positions(self):` |
  | [right_handle_positions](ControlPoint.md#right_handle_positions-property) | `def right_handle_positions(self):` |
+
+<sub>Go to [top](#node-{wnode.bnode.name}) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

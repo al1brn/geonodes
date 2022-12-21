@@ -1,4 +1,4 @@
-# Node Bezier Segment
+# Node 'Bezier Segment'
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
@@ -38,4 +38,6 @@ node = nodes.BezierSegment(resolution=None, start=None, start_handle=None, end_h
 | Name | Definition |
 |------|------------|
  | [bezier_segment](Curve.md#bezier_segment-classmethod) | `def bezier_segment(cls, resolution=None, start=None, start_handle=None, end_handle=None, end=None, mode='POSITION'):` |
+
+<sub>Go to [top](#node-{wnode.bnode.name}) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

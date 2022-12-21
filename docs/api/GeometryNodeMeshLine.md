@@ -1,4 +1,4 @@
-# Node Mesh Line
+# Node 'Mesh Line'
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
@@ -42,4 +42,6 @@ node = nodes.MeshLine(count=None, resolution=None, start_location=None, offset=N
  | [LineOffset](Mesh.md#LineOffset-classmethod) | `def LineOffset(cls, count=None, start_location=None, offset=None):` |
  | [LineEndPointsResolution](Mesh.md#LineEndPointsResolution-classmethod) | `def LineEndPointsResolution(cls, resolution=None, start_location=None, end_location=None):` |
  | [LineOffsetResolution](Mesh.md#LineOffsetResolution-classmethod) | `def LineOffsetResolution(cls, resolution=None, start_location=None, offset=None):` |
+
+<sub>Go to [top](#node-{wnode.bnode.name}) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

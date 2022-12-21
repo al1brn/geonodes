@@ -1,4 +1,4 @@
-# Node Separate Color
+# Node 'Separate Color'
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
@@ -55,4 +55,6 @@ node = nodes.SeparateColor(color=None, mode='RGB')
  | [saturation](Color.md#saturation-property) | `def saturation(self):` |
  | [value](Color.md#value-property) | `def value(self):` |
  | [lightness](Color.md#lightness-property) | `def lightness(self):` |
+
+<sub>Go to [top](#node-{wnode.bnode.name}) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

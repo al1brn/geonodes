@@ -1,4 +1,4 @@
-# Node Special Characters
+# Node 'Special Characters'
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
@@ -26,4 +26,6 @@ node = nodes.SpecialCharacters()
 |------|------------|
  | [LineBreak](String.md#LineBreak-staticmethod) | `def LineBreak():` |
  | [Tab](String.md#Tab-staticmethod) | `def Tab():` |
+
+<sub>Go to [top](#node-{wnode.bnode.name}) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

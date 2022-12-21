@@ -1,4 +1,4 @@
-# Node Resample Curve
+# Node 'Resample Curve'
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
@@ -49,4 +49,6 @@ node = nodes.ResampleCurve(curve=None, selection=None, count=None, length=None, 
  | [resample_count](Spline.md#resample_count) | `def resample_count(self, count=None):` |
  | [resample_length](Spline.md#resample_length) | `def resample_length(self, length=None):` |
  | [resample_evaluated](Spline.md#resample_evaluated) | `def resample_evaluated(self):` |
+
+<sub>Go to [top](#node-{wnode.bnode.name}) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

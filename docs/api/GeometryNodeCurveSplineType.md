@@ -1,4 +1,4 @@
-# Node Set Spline Type
+# Node 'Set Spline Type'
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
@@ -37,4 +37,6 @@ node = nodes.SetSplineType(curve=None, selection=None, spline_type='POLY')
  | [set_type](Spline.md#set_type) | `def set_type(self, spline_type='POLY'):` |
  | [type](Spline.md#type-property) | `def type(self):` |
  | [type](Spline.md#type) | `def type(self, attr_value):` |
+
+<sub>Go to [top](#node-{wnode.bnode.name}) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

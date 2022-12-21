@@ -1,4 +1,4 @@
-# Node Float to Integer
+# Node 'Float to Integer'
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
@@ -38,4 +38,6 @@ node = nodes.FloatToInteger(float=None, rounding_mode='ROUND')
  | [floor](Float.md#floor) | `def floor(self):` |
  | [ceiling](Float.md#ceiling) | `def ceiling(self):` |
  | [truncate](Float.md#truncate) | `def truncate(self):` |
+
+<sub>Go to [top](#node-{wnode.bnode.name}) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

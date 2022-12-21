@@ -1,4 +1,4 @@
-# Node Edge Paths to Selection
+# Node 'Edge Paths to Selection'
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
@@ -31,4 +31,6 @@ node = nodes.EdgePathsToSelection(start_vertices=None, next_vertex_index=None)
 | Name | Definition |
 |------|------------|
  | [edge_paths_to_selection](Mesh.md#edge_paths_to_selection) | `def edge_paths_to_selection(self, start_vertices=None, next_vertex_index=None):` |
+
+<sub>Go to [top](#node-{wnode.bnode.name}) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

@@ -1,4 +1,4 @@
-# Node Spline Length
+# Node 'Spline Length'
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
@@ -25,4 +25,6 @@ node = nodes.SplineLength()
 | Name | Definition |
 |------|------------|
  | [length](Spline.md#length-property) | `def length(self):` |
+
+<sub>Go to [top](#node-{wnode.bnode.name}) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

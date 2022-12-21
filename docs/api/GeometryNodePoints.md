@@ -1,4 +1,4 @@
-# Node Points
+# Node 'Points'
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
@@ -32,4 +32,6 @@ node = nodes.Points(count=None, position=None, radius=None)
 | Name | Definition |
 |------|------------|
  | [Points](Points.md#Points-classmethod) | `def Points(cls, count=None, position=None, radius=None):` |
+
+<sub>Go to [top](#node-{wnode.bnode.name}) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

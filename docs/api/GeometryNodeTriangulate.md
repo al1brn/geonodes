@@ -1,4 +1,4 @@
-# Node Triangulate
+# Node 'Triangulate'
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
@@ -43,4 +43,6 @@ node = nodes.Triangulate(mesh=None, selection=None, minimum_vertices=None, ngon_
 | Name | Definition |
 |------|------------|
  | [triangulate](Mesh.md#triangulate) | `def triangulate(self, selection=None, minimum_vertices=None, ngon_method='BEAUTY', quad_method='SHORTEST_DIAGONAL'):` |
+
+<sub>Go to [top](#node-{wnode.bnode.name}) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

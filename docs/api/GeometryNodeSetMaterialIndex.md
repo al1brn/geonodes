@@ -1,4 +1,4 @@
-# Node Set Material Index
+# Node 'Set Material Index'
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
@@ -38,4 +38,6 @@ node = nodes.SetMaterialIndex(geometry=None, selection=None, material_index=None
 | Name | Definition |
 |------|------------|
  | [set_material_index](Geometry.md#set_material_index) | `def set_material_index(self, selection=None, material_index=None):` |
+
+<sub>Go to [top](#node-{wnode.bnode.name}) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

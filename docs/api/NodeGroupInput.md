@@ -1,4 +1,4 @@
-# Node Group Input
+# Node 'Group Input'
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
@@ -12,4 +12,6 @@ from geonodes import nodes
 
 node = nodes.GroupInput()
 ```
+
+<sub>Go to [top](#node-{wnode.bnode.name}) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

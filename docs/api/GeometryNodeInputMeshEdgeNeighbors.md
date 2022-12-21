@@ -1,4 +1,4 @@
-# Node Edge Neighbors
+# Node 'Edge Neighbors'
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
@@ -24,4 +24,6 @@ node = nodes.EdgeNeighbors()
 | Name | Definition |
 |------|------------|
  | [neighbors](Edge.md#neighbors-property) | `def neighbors(self):` |
+
+<sub>Go to [top](#node-{wnode.bnode.name}) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

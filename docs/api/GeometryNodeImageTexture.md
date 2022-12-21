@@ -1,4 +1,4 @@
-# Node Image Texture
+# Node 'Image Texture'
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
@@ -44,4 +44,6 @@ node = nodes.ImageTexture(image=None, vector=None, frame=None, extension='REPEAT
 | Name | Definition |
 |------|------------|
  | [image](Texture.md#image-staticmethod) | `def image(image=None, vector=None, frame=None, extension='REPEAT', interpolation='Linear'):` |
+
+<sub>Go to [top](#node-{wnode.bnode.name}) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

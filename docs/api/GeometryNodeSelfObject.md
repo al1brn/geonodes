@@ -1,4 +1,4 @@
-# Node Self Object
+# Node 'Self Object'
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
@@ -24,4 +24,6 @@ node = nodes.SelfObject()
 | Name | Definition |
 |------|------------|
  | [Self](Object.md#Self-classmethod) | `def Self(cls):` |
+
+<sub>Go to [top](#node-{wnode.bnode.name}) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

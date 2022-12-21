@@ -1,4 +1,4 @@
-# Node RGB Curves
+# Node 'RGB Curves'
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
@@ -37,4 +37,6 @@ node = nodes.RgbCurves(fac=None, color=None)
 | Name | Definition |
 |------|------------|
  | [rgb_curves](Color.md#rgb_curves-property) | `def rgb_curves(self, fac=None):` |
+
+<sub>Go to [top](#node-{wnode.bnode.name}) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

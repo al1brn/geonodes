@@ -1,4 +1,4 @@
-# Node UV Sphere
+# Node 'UV Sphere'
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
@@ -32,4 +32,6 @@ node = nodes.UvSphere(segments=None, rings=None, radius=None)
 | Name | Definition |
 |------|------------|
  | [Circle](Mesh.md#Circle-classmethod) | `def Circle(cls, segments=None, rings=None, radius=None):` |
+
+<sub>Go to [top](#node-{wnode.bnode.name}) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

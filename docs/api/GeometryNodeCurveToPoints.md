@@ -1,4 +1,4 @@
-# Node Curve to Points
+# Node 'Curve to Points'
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
@@ -42,4 +42,6 @@ node = nodes.CurveToPoints(curve=None, count=None, length=None, mode='COUNT')
  | [to_points_count](Curve.md#to_points_count) | `def to_points_count(self, count=None):` |
  | [to_points_length](Curve.md#to_points_length) | `def to_points_length(self, length=None):` |
  | [to_points_evaluated](Curve.md#to_points_evaluated) | `def to_points_evaluated(self):` |
+
+<sub>Go to [top](#node-{wnode.bnode.name}) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

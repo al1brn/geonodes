@@ -1,4 +1,4 @@
-# Node Spline Parameter
+# Node 'Spline Parameter'
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
@@ -29,4 +29,6 @@ node = nodes.SplineParameter()
  | [parameter_factor](ControlPoint.md#parameter_factor-property) | `def parameter_factor(self):` |
  | [parameter_length](ControlPoint.md#parameter_length-property) | `def parameter_length(self):` |
  | [parameter_index](ControlPoint.md#parameter_index-property) | `def parameter_index(self):` |
+
+<sub>Go to [top](#node-{wnode.bnode.name}) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

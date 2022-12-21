@@ -1,4 +1,4 @@
-# Node Mix
+# Node 'Mix'
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
@@ -101,4 +101,6 @@ node = nodes.Mix(factor=None, a=None, b=None, blend_type='MIX', clamp_factor=Tru
  | [mix](Vector.md#mix) | `def mix(self, factor=None, vector=None, clamp_factor=True, factor_mode='UNIFORM'):` |
  | [mix_uniform](Vector.md#mix_uniform) | `def mix_uniform(self, vector=None, clamp_factor=True):` |
  | [mix_non_uniform](Vector.md#mix_non_uniform) | `def mix_non_uniform(self, factor=None, vector=None, clamp_factor=True):` |
+
+<sub>Go to [top](#node-{wnode.bnode.name}) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

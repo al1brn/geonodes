@@ -1,4 +1,4 @@
-# Node Align Euler to Vector
+# Node 'Align Euler to Vector'
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
@@ -49,4 +49,6 @@ node = nodes.AlignEulerToVector(rotation=None, factor=None, vector=None, axis='X
 | Name | Definition |
 |------|------------|
  | [align_euler_to_vector](Vector.md#align_euler_to_vector) | `def align_euler_to_vector(self, factor=None, vector=None, axis='X', pivot_axis='AUTO'):` |
+
+<sub>Go to [top](#node-{wnode.bnode.name}) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

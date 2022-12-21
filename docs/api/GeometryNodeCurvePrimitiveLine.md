@@ -1,4 +1,4 @@
-# Node Curve Line
+# Node 'Curve Line'
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
@@ -38,4 +38,6 @@ node = nodes.CurveLine(start=None, end=None, direction=None, length=None, mode='
 |------|------------|
  | [Line](Curve.md#Line-classmethod) | `def Line(cls, start=None, end=None):` |
  | [LineDirection](Curve.md#LineDirection-classmethod) | `def LineDirection(cls, start=None, direction=None, length=None):` |
+
+<sub>Go to [top](#node-{wnode.bnode.name}) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

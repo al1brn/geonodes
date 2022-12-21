@@ -1,4 +1,4 @@
-# Node Sample Nearest Surface
+# Node 'Sample Nearest Surface'
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
@@ -41,4 +41,6 @@ node = nodes.SampleNearestSurface(mesh=None, value=None, sample_position=None, d
 | Name | Definition |
 |------|------------|
  | [sample_nearest_surface](Mesh.md#sample_nearest_surface) | `def sample_nearest_surface(self, value=None, sample_position=None):` |
+
+<sub>Go to [top](#node-{wnode.bnode.name}) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

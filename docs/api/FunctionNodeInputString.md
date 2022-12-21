@@ -1,4 +1,4 @@
-# Node String
+# Node 'String'
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
@@ -30,4 +30,6 @@ node = nodes.String(string='')
 | Name | Definition |
 |------|------------|
  | [String](String.md#String-classmethod) | `def String(cls, string=''):` |
+
+<sub>Go to [top](#node-{wnode.bnode.name}) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

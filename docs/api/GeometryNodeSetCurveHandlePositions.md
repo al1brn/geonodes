@@ -1,4 +1,4 @@
-# Node Set Handle Positions
+# Node 'Set Handle Positions'
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
@@ -41,4 +41,6 @@ node = nodes.SetHandlePositions(curve=None, selection=None, position=None, offse
  | [set_handle_positions_right](ControlPoint.md#set_handle_positions_right) | `def set_handle_positions_right(self, curve=None, position=None, offset=None):` |
  | [left_handle_positions](ControlPoint.md#left_handle_positions) | `def left_handle_positions(self, attr_value):` |
  | [right_handle_positions](ControlPoint.md#right_handle_positions) | `def right_handle_positions(self, attr_value):` |
+
+<sub>Go to [top](#node-{wnode.bnode.name}) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

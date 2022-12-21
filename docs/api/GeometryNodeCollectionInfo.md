@@ -1,4 +1,4 @@
-# Node Collection Info
+# Node 'Collection Info'
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
@@ -36,4 +36,6 @@ node = nodes.CollectionInfo(collection=None, separate_children=None, reset_child
 | Name | Definition |
 |------|------------|
  | [Collection](Geometry.md#Collection-classmethod) | `def Collection(cls, collection=None, separate_children=None, reset_children=None, transform_space='ORIGINAL'):` |
+
+<sub>Go to [top](#node-{wnode.bnode.name}) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

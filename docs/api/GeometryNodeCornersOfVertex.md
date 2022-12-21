@@ -1,4 +1,4 @@
-# Node Corners of Vertex
+# Node 'Corners of Vertex'
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
@@ -25,4 +25,6 @@ node = nodes.CornersOfVertex(vertex_index=None, weights=None, sort_index=None)
 
 - **corner_index** : [Integer](Integer.md)
 - **total** : [Integer](Integer.md)
+
+<sub>Go to [top](#node-{wnode.bnode.name}) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

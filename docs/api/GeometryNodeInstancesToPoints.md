@@ -1,4 +1,4 @@
-# Node Instances to Points
+# Node 'Instances to Points'
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
@@ -39,4 +39,6 @@ node = nodes.InstancesToPoints(instances=None, selection=None, position=None, ra
 | Name | Definition |
 |------|------------|
  | [to_points](Instances.md#to_points) | `def to_points(self, selection=None, position=None, radius=None):` |
+
+<sub>Go to [top](#node-{wnode.bnode.name}) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

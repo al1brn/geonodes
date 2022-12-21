@@ -1,4 +1,4 @@
-# Node Extrude Mesh
+# Node 'Extrude Mesh'
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
@@ -58,4 +58,6 @@ node = nodes.ExtrudeMesh(mesh=None, selection=None, offset=None, offset_scale=No
 | Name | Definition |
 |------|------------|
  | [extrude](Vertex.md#extrude) | `def extrude(self, offset=None, offset_scale=None, individual=None):` |
+
+<sub>Go to [top](#node-{wnode.bnode.name}) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

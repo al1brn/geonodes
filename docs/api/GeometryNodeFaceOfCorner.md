@@ -1,4 +1,4 @@
-# Node Face of Corner
+# Node 'Face of Corner'
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
@@ -23,4 +23,6 @@ node = nodes.FaceOfCorner(corner_index=None)
 
 - **face_index** : [Integer](Integer.md)
 - **index_in_face** : [Integer](Integer.md)
+
+<sub>Go to [top](#node-{wnode.bnode.name}) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

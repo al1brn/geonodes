@@ -1,4 +1,4 @@
-# Node Set Material
+# Node 'Set Material'
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
@@ -48,4 +48,6 @@ node = nodes.SetMaterial(geometry=None, selection=None, material=None)
  | [set_material](Spline.md#set_material) | `def set_material(self, material=None):` |
  | [material](Spline.md#material-property) | `def material(self):` |
  | [material](Spline.md#material) | `def material(self, attr_value):` |
+
+<sub>Go to [top](#node-{wnode.bnode.name}) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

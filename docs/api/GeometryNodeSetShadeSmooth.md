@@ -1,4 +1,4 @@
-# Node Set Shade Smooth
+# Node 'Set Shade Smooth'
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
@@ -39,4 +39,6 @@ node = nodes.SetShadeSmooth(geometry=None, selection=None, shade_smooth=None)
 | Name | Definition |
 |------|------------|
  | [set_shade_smooth](Mesh.md#set_shade_smooth) | `def set_shade_smooth(self, selection=None, shade_smooth=None):` |
+
+<sub>Go to [top](#node-{wnode.bnode.name}) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

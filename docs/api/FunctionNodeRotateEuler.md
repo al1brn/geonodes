@@ -1,4 +1,4 @@
-# Node Rotate Euler
+# Node 'Rotate Euler'
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
@@ -48,4 +48,6 @@ node = nodes.RotateEuler(rotation=None, rotate_by=None, axis=None, angle=None, s
  | [AxisAngle](Rotation.md#AxisAngle-classmethod) | `def AxisAngle(cls, rotation=None, axis=None, angle=None, space='OBJECT'):` |
  | [rotate_euler](Rotation.md#rotate_euler) | `def rotate_euler(self, rotate_by=None, space='OBJECT'):` |
  | [rotate_axis_angle](Rotation.md#rotate_axis_angle) | `def rotate_axis_angle(self, axis=None, angle=None, space='OBJECT'):` |
+
+<sub>Go to [top](#node-{wnode.bnode.name}) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

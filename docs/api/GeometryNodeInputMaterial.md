@@ -1,4 +1,4 @@
-# Node Material
+# Node 'Material'
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
@@ -24,4 +24,6 @@ node = nodes.Material()
 | Name | Definition |
 |------|------------|
  | [Material](Material.md#Material-classmethod) | `def Material(cls):` |
+
+<sub>Go to [top](#node-{wnode.bnode.name}) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

@@ -1,4 +1,4 @@
-# Node Float Curve
+# Node 'Float Curve'
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
@@ -31,4 +31,6 @@ node = nodes.FloatCurve(factor=None, value=None)
 | Name | Definition |
 |------|------------|
  | [float_curve](Float.md#float_curve) | `def float_curve(self, factor=None):` |
+
+<sub>Go to [top](#node-{wnode.bnode.name}) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

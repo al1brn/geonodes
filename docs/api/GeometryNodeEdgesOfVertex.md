@@ -1,4 +1,4 @@
-# Node Edges of Vertex
+# Node 'Edges of Vertex'
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
@@ -25,4 +25,6 @@ node = nodes.EdgesOfVertex(vertex_index=None, weights=None, sort_index=None)
 
 - **edge_index** : [Integer](Integer.md)
 - **total** : [Integer](Integer.md)
+
+<sub>Go to [top](#node-{wnode.bnode.name}) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

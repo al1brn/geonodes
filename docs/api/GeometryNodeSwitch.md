@@ -1,4 +1,4 @@
-# Node Switch
+# Node 'Switch'
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
@@ -125,4 +125,6 @@ node = nodes.Switch(switch=None, false=None, true=None, input_type='GEOMETRY')
 | Name | Definition |
 |------|------------|
  | [switch](Vector.md#switch) | `def switch(self, switch=None, true=None):` |
+
+<sub>Go to [top](#node-{wnode.bnode.name}) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

@@ -1,4 +1,4 @@
-# Node Offset Corner in Face
+# Node 'Offset Corner in Face'
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
@@ -23,4 +23,6 @@ node = nodes.OffsetCornerInFace(corner_index=None, offset=None)
 ### Output sockets:
 
 - **corner_index** : [Integer](Integer.md)
+
+<sub>Go to [top](#node-{wnode.bnode.name}) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

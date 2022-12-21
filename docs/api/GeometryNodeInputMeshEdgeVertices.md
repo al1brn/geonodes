@@ -1,4 +1,4 @@
-# Node Edge Vertices
+# Node 'Edge Vertices'
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
@@ -29,4 +29,6 @@ node = nodes.EdgeVertices()
  | [vertices](Edge.md#vertices-property) | `def vertices(self):` |
  | [vertices_index](Edge.md#vertices_index-property) | `def vertices_index(self):` |
  | [vertices_position](Edge.md#vertices_position-property) | `def vertices_position(self):` |
+
+<sub>Go to [top](#node-{wnode.bnode.name}) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

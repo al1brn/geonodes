@@ -1,4 +1,4 @@
-# Node Vertex of Corner
+# Node 'Vertex of Corner'
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
@@ -22,4 +22,6 @@ node = nodes.VertexOfCorner(corner_index=None)
 ### Output sockets:
 
 - **vertex_index** : [Integer](Integer.md)
+
+<sub>Go to [top](#node-{wnode.bnode.name}) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

@@ -1,4 +1,4 @@
-# Node Rotate Instances
+# Node 'Rotate Instances'
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
@@ -40,4 +40,6 @@ node = nodes.RotateInstances(instances=None, selection=None, rotation=None, pivo
 | Name | Definition |
 |------|------------|
  | [rotate](Instances.md#rotate) | `def rotate(self, selection=None, rotation=None, pivot_point=None, local_space=None):` |
+
+<sub>Go to [top](#node-{wnode.bnode.name}) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

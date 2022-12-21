@@ -1,4 +1,4 @@
-# Node Replace String
+# Node 'Replace String'
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
@@ -38,4 +38,6 @@ node = nodes.ReplaceString(string=None, find=None, replace=None)
 | Name | Definition |
 |------|------------|
  | [replace](String.md#replace) | `def replace(self, find=None, replace=None):` |
+
+<sub>Go to [top](#node-{wnode.bnode.name}) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

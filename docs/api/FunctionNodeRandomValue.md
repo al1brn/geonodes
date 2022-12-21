@@ -1,4 +1,4 @@
-# Node Random Value
+# Node 'Random Value'
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
@@ -64,4 +64,6 @@ node = nodes.RandomValue(min=None, max=None, probability=None, ID=None, seed=Non
  | [random_integer](Geometry.md#random_integer) | `def random_integer(self, min=None, max=None, ID=None, seed=None):` |
  | [random_vector](Geometry.md#random_vector) | `def random_vector(self, min=None, max=None, ID=None, seed=None):` |
  | [random_boolean](Geometry.md#random_boolean) | `def random_boolean(self, probability=None, ID=None, seed=None):` |
+
+<sub>Go to [top](#node-{wnode.bnode.name}) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

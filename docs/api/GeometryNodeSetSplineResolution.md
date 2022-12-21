@@ -1,4 +1,4 @@
-# Node Set Spline Resolution
+# Node 'Set Spline Resolution'
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
@@ -33,4 +33,6 @@ node = nodes.SetSplineResolution(geometry=None, selection=None, resolution=None)
 |------|------------|
  | [set_resolution](Spline.md#set_resolution) | `def set_resolution(self, resolution=None):` |
  | [resolution](Spline.md#resolution) | `def resolution(self, attr_value):` |
+
+<sub>Go to [top](#node-{wnode.bnode.name}) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

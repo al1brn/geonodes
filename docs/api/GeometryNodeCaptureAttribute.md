@@ -1,4 +1,4 @@
-# Node Capture Attribute
+# Node 'Capture Attribute'
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
@@ -49,4 +49,6 @@ node = nodes.CaptureAttribute(geometry=None, value=None, data_type='FLOAT', doma
 |------|------------|
  | [capture_attribute](Geometry.md#capture_attribute) | `def capture_attribute(self, value=None, domain='POINT'):` |
  | [capture_attribute_node](Geometry.md#capture_attribute_node) | `def capture_attribute_node(self, geometry=None, value=None, data_type='FLOAT', domain='POINT'):` |
+
+<sub>Go to [top](#node-{wnode.bnode.name}) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

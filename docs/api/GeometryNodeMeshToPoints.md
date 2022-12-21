@@ -1,4 +1,4 @@
-# Node Mesh to Points
+# Node 'Mesh to Points'
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
@@ -43,4 +43,6 @@ node = nodes.MeshToPoints(mesh=None, selection=None, position=None, radius=None,
 | Name | Definition |
 |------|------------|
  | [to_points](Vertex.md#to_points) | `def to_points(self, position=None, radius=None, mode='VERTICES'):` |
+
+<sub>Go to [top](#node-{wnode.bnode.name}) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

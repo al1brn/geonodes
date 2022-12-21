@@ -1,4 +1,4 @@
-# Node Separate XYZ
+# Node 'Separate XYZ'
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
@@ -32,4 +32,6 @@ node = nodes.SeparateXyz(vector=None)
 | Name | Definition |
 |------|------------|
  | [separate](Vector.md#separate-property) | `def separate(self):` |
+
+<sub>Go to [top](#node-{wnode.bnode.name}) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

@@ -1,4 +1,4 @@
-# Node Cube
+# Node 'Cube'
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
@@ -33,4 +33,6 @@ node = nodes.Cube(size=None, vertices_x=None, vertices_y=None, vertices_z=None)
 | Name | Definition |
 |------|------------|
  | [Cube](Mesh.md#Cube-classmethod) | `def Cube(cls, size=None, vertices_x=None, vertices_y=None, vertices_z=None):` |
+
+<sub>Go to [top](#node-{wnode.bnode.name}) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

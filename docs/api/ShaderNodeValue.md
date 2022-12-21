@@ -1,4 +1,4 @@
-# Node Value
+# Node 'Value'
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
@@ -24,4 +24,6 @@ node = nodes.Value()
 | Name | Definition |
 |------|------------|
  | [Value](Float.md#Value-classmethod) | `def Value(cls):` |
+
+<sub>Go to [top](#node-{wnode.bnode.name}) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

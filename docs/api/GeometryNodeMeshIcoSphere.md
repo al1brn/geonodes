@@ -1,4 +1,4 @@
-# Node Ico Sphere
+# Node 'Ico Sphere'
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
@@ -31,4 +31,6 @@ node = nodes.IcoSphere(radius=None, subdivisions=None)
 | Name | Definition |
 |------|------------|
  | [IcoSphere](Mesh.md#IcoSphere-classmethod) | `def IcoSphere(cls, radius=None, subdivisions=None):` |
+
+<sub>Go to [top](#node-{wnode.bnode.name}) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

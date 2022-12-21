@@ -1,4 +1,4 @@
-# Node Remove Named Attribute
+# Node 'Remove Named Attribute'
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
@@ -37,4 +37,6 @@ node = nodes.RemoveNamedAttribute(geometry=None, name=None)
 | Name | Definition |
 |------|------------|
  | [remove_named_attribute](Geometry.md#remove_named_attribute) | `def remove_named_attribute(self, name=None):` |
+
+<sub>Go to [top](#node-{wnode.bnode.name}) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

@@ -1,4 +1,4 @@
-# Node Scene Time
+# Node 'Scene Time'
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
@@ -26,4 +26,6 @@ node = nodes.SceneTime()
 |------|------------|
  | [Seconds](Float.md#Seconds-classmethod) | `def Seconds(cls):` |
  | [Frame](Float.md#Frame-classmethod) | `def Frame(cls):` |
+
+<sub>Go to [top](#node-{wnode.bnode.name}) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

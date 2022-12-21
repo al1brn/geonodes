@@ -1,4 +1,4 @@
-# Node Pack UV Islands
+# Node 'Pack UV Islands'
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
@@ -39,4 +39,6 @@ node = nodes.PackUvIslands(uv=None, selection=None, margin=None, rotate=None)
 | Name | Definition |
 |------|------------|
  | [pack_uv_islands](Mesh.md#pack_uv_islands) | `def pack_uv_islands(self, uv=None, selection=None, margin=None, rotate=None):` |
+
+<sub>Go to [top](#node-{wnode.bnode.name}) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

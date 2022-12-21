@@ -1,4 +1,4 @@
-# Node Instance Scale
+# Node 'Instance Scale'
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
@@ -30,4 +30,6 @@ node = nodes.InstanceScale()
 | Name | Definition |
 |------|------------|
  | [scale](Instances.md#scale-property) | `def scale(self):` |
+
+<sub>Go to [top](#node-{wnode.bnode.name}) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

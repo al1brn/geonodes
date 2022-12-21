@@ -1,4 +1,4 @@
-# Node Edge Angle
+# Node 'Edge Angle'
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
@@ -27,4 +27,6 @@ node = nodes.EdgeAngle()
  | [angle](Edge.md#angle-property) | `def angle(self):` |
  | [unsigned_angle](Edge.md#unsigned_angle-property) | `def unsigned_angle(self):` |
  | [signed_angle](Edge.md#signed_angle-property) | `def signed_angle(self):` |
+
+<sub>Go to [top](#node-{wnode.bnode.name}) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

@@ -1,4 +1,4 @@
-# Node Join Strings
+# Node 'Join Strings'
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
@@ -37,4 +37,6 @@ node = nodes.JoinStrings(*strings, delimiter=None)
 | Name | Definition |
 |------|------------|
  | [join](String.md#join) | `def join(*strings, delimiter=None):` |
+
+<sub>Go to [top](#node-{wnode.bnode.name}) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

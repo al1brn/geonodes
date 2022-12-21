@@ -1,4 +1,4 @@
-# Node Curve Length
+# Node 'Curve Length'
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
@@ -30,4 +30,6 @@ node = nodes.CurveLength(curve=None)
 | Name | Definition |
 |------|------------|
  | [length](Curve.md#length-property) | `def length(self):` |
+
+<sub>Go to [top](#node-{wnode.bnode.name}) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
