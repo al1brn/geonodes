@@ -23,5 +23,6 @@ node = nodes.EdgeNeighbors()
 
  - [neighbors](Edge.md#neighbors-property)
   ```python
-  nodes.EdgeNeighbors(  ```
+  def neighbors(self)
+  ```
 

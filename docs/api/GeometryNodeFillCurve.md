@@ -33,13 +33,16 @@ node = nodes.FillCurve(curve=None, mode='TRIANGLES')
 
  - [fill](Curve.md#fill)
   ```python
-  nodes.FillCurve(curve=curve, mode=mode  ```
+  def fill(self, curve=None, mode='TRIANGLES')
+  ```
 
  - [fill_triangles](Curve.md#fill_triangles)
   ```python
-  nodes.FillCurve(curve=curve, mode='TRIANGLES'  ```
+  def fill_triangles(self, curve=None)
+  ```
 
  - [fill_ngons](Curve.md#fill_ngons)
   ```python
-  nodes.FillCurve(curve=curve, mode='NGONS'  ```
+  def fill_ngons(self, curve=None)
+  ```
 

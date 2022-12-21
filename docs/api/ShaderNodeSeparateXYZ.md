@@ -31,5 +31,6 @@ node = nodes.SeparateXyz(vector=None)
 
  - [separate](Vector.md#separate-property)
   ```python
-  nodes.SeparateXyz(vector=self  ```
+  def separate(self)
+  ```
 

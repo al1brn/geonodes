@@ -23,11 +23,13 @@ node = nodes.ID()
 
  - [ID](Domain.md#ID-property)
   ```python
-  nodes.ID(  ```
+  def ID(self)
+  ```
 
 #### [Geometry](Geometry.md)
 
  - [ID](Geometry.md#ID-property)
   ```python
-  nodes.ID(  ```
+  def ID(self)
+  ```
 

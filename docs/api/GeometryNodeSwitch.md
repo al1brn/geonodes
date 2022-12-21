@@ -40,125 +40,150 @@ node = nodes.Switch(switch=None, false=None, true=None, input_type='GEOMETRY')
 
  - [switch](A.md#switch)
   ```python
-  nodes.Switch(switch=switch, false=false, true=true, input_type=input_type  ```
+  def switch(switch=None, false=None, true=None, input_type='GEOMETRY')
+  ```
 
  - [switch_float](A.md#switch_float)
   ```python
-  nodes.Switch(switch=switch, false=false, true=true, input_type='FLOAT'  ```
+  def switch_float(switch=None, false=None, true=None)
+  ```
 
  - [switch_integer](A.md#switch_integer)
   ```python
-  nodes.Switch(switch=switch, false=false, true=true, input_type='INT'  ```
+  def switch_integer(switch=None, false=None, true=None)
+  ```
 
  - [switch_boolean](A.md#switch_boolean)
   ```python
-  nodes.Switch(switch=switch, false=false, true=true, input_type='BOOLEAN'  ```
+  def switch_boolean(switch=None, false=None, true=None)
+  ```
 
  - [switch_vector](A.md#switch_vector)
   ```python
-  nodes.Switch(switch=switch, false=false, true=true, input_type='VECTOR'  ```
+  def switch_vector(switch=None, false=None, true=None)
+  ```
 
  - [switch_string](A.md#switch_string)
   ```python
-  nodes.Switch(switch=switch, false=false, true=true, input_type='STRING'  ```
+  def switch_string(switch=None, false=None, true=None)
+  ```
 
  - [switch_color](A.md#switch_color)
   ```python
-  nodes.Switch(switch=switch, false=false, true=true, input_type='RGBA'  ```
+  def switch_color(switch=None, false=None, true=None)
+  ```
 
  - [switch_object](A.md#switch_object)
   ```python
-  nodes.Switch(switch=switch, false=false, true=true, input_type='OBJECT'  ```
+  def switch_object(switch=None, false=None, true=None)
+  ```
 
  - [switch_image](A.md#switch_image)
   ```python
-  nodes.Switch(switch=switch, false=false, true=true, input_type='IMAGE'  ```
+  def switch_image(switch=None, false=None, true=None)
+  ```
 
  - [switch_geometry](A.md#switch_geometry)
   ```python
-  nodes.Switch(switch=switch, false=false, true=true, input_type='GEOMETRY'  ```
+  def switch_geometry(switch=None, false=None, true=None)
+  ```
 
  - [switch_collection](A.md#switch_collection)
   ```python
-  nodes.Switch(switch=switch, false=false, true=true, input_type='COLLECTION'  ```
+  def switch_collection(switch=None, false=None, true=None)
+  ```
 
  - [switch_texture](A.md#switch_texture)
   ```python
-  nodes.Switch(switch=switch, false=false, true=true, input_type='TEXTURE'  ```
+  def switch_texture(switch=None, false=None, true=None)
+  ```
 
  - [switch_material](A.md#switch_material)
   ```python
-  nodes.Switch(switch=switch, false=false, true=true, input_type='MATERIAL'  ```
+  def switch_material(switch=None, false=None, true=None)
+  ```
 
 #### [Boolean](Boolean.md)
 
  - [switch](Boolean.md#switch)
   ```python
-  nodes.Switch(switch=switch, false=self, true=true, input_type='BOOLEAN'  ```
+  def switch(self, switch=None, true=None)
+  ```
 
 #### [Collection](Collection.md)
 
  - [switch](Collection.md#switch)
   ```python
-  nodes.Switch(switch=switch, false=self, true=true, input_type='COLLECTION'  ```
+  def switch(self, switch=None, true=None)
+  ```
 
 #### [Color](Color.md)
 
  - [switch](Color.md#switch)
   ```python
-  nodes.Switch(switch=switch, false=self, true=true, input_type='RGBA'  ```
+  def switch(self, switch=None, true=None)
+  ```
 
 #### [Float](Float.md)
 
  - [switch](Float.md#switch)
   ```python
-  nodes.Switch(switch=switch, false=self, true=true, input_type='FLOAT'  ```
+  def switch(self, switch=None, true=None)
+  ```
 
 #### [Geometry](Geometry.md)
 
  - [switch](Geometry.md#switch)
   ```python
-  nodes.Switch(switch=switch, false=self, true=true, input_type='GEOMETRY'  ```
+  def switch(self, switch=None, true=None)
+  ```
 
 #### [Image](Image.md)
 
  - [switch](Image.md#switch)
   ```python
-  nodes.Switch(switch=switch, false=self, true=true, input_type='IMAGE'  ```
+  def switch(self, switch=None, true=None)
+  ```
 
 #### [Integer](Integer.md)
 
  - [switch](Integer.md#switch)
   ```python
-  nodes.Switch(switch=switch, false=self, true=true, input_type='INT'  ```
+  def switch(self, switch=None, true=None)
+  ```
 
 #### [Material](Material.md)
 
  - [switch](Material.md#switch)
   ```python
-  nodes.Switch(switch=switch, false=self, true=true, input_type='MATERIAL'  ```
+  def switch(self, switch=None, true=None)
+  ```
 
 #### [Object](Object.md)
 
  - [switch](Object.md#switch)
   ```python
-  nodes.Switch(switch=switch, false=self, true=true, input_type='OBJECT'  ```
+  def switch(self, switch=None, true=None)
+  ```
 
 #### [String](String.md)
 
  - [switch](String.md#switch)
   ```python
-  nodes.Switch(switch=switch, false=self, true=true, input_type='STRING'  ```
+  def switch(self, switch=None, true=None)
+  ```
 
 #### [Texture](Texture.md)
 
  - [switch](Texture.md#switch)
   ```python
-  nodes.Switch(switch=switch, false=self, true=true, input_type='TEXTURE'  ```
+  def switch(self, switch=None, true=None)
+  ```
 
 #### [Vector](Vector.md)
 
  - [switch](Vector.md#switch)
   ```python
-  nodes.Switch(switch=switch, false=self, true=true, input_type='VECTOR'  ```
+  def switch(self, switch=None, true=None)
+  ```
 

@@ -32,15 +32,18 @@ node = nodes.SetPosition(geometry=None, selection=None, position=None, offset=No
 
  - [set_position](Domain.md#set_position)
   ```python
-  nodes.SetPosition(geometry=self.data_socket, selection=self.selection, position=position, offset=offset  ```
+  def set_position(self, position=None, offset=None)
+  ```
 
  - [position](Domain.md#position)
   ```python
-  nodes.SetPosition(geometry=self.data_socket, selection=self.selection, position=attr_value, offset=None  ```
+  def position(self, attr_value)
+  ```
 
 #### [Geometry](Geometry.md)
 
  - [set_position](Geometry.md#set_position)
   ```python
-  nodes.SetPosition(geometry=self, selection=selection, position=position, offset=offset  ```
+  def set_position(self, selection=None, position=None, offset=None)
+  ```
 

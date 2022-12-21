@@ -30,11 +30,13 @@ node = nodes.PointsToVertices(points=None, selection=None)
 
  - [to_vertices](CloudPoint.md#to_vertices)
   ```python
-  nodes.PointsToVertices(points=points, selection=self.selection  ```
+  def to_vertices(self, points=None)
+  ```
 
 #### [Points](Points.md)
 
  - [to_vertices](Points.md#to_vertices)
   ```python
-  nodes.PointsToVertices(points=points, selection=selection  ```
+  def to_vertices(self, points=None, selection=None)
+  ```
 

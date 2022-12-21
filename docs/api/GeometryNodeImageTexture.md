@@ -37,11 +37,13 @@ node = nodes.ImageTexture(image=None, vector=None, frame=None, extension='REPEAT
 
  - [texture](Image.md#texture)
   ```python
-  nodes.ImageTexture(image=self, vector=vector, frame=frame, extension=extension, interpolation=interpolation  ```
+  def texture(self, vector=None, frame=None, extension='REPEAT', interpolation='Linear')
+  ```
 
 #### [Texture](Texture.md)
 
  - [image](Texture.md#image-staticmethod)
   ```python
-  nodes.ImageTexture(image=image, vector=vector, frame=frame, extension=extension, interpolation=interpolation  ```
+  def image(image=None, vector=None, frame=None, extension='REPEAT', interpolation='Linear')
+  ```
 

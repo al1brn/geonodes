@@ -41,51 +41,63 @@ node = nodes.StoreNamedAttribute(geometry=None, name=None, value=None, data_type
 
  - [store_named_attribute](Domain.md#store_named_attribute)
   ```python
-  nodes.StoreNamedAttribute(geometry=self.data_socket, name=name, value=value, data_type=data_type_, domain=self.domain  ```
+  def store_named_attribute(self, name=None, value=None)
+  ```
 
  - [set_named_boolean](Domain.md#set_named_boolean)
   ```python
-  nodes.StoreNamedAttribute(geometry=self.data_socket, name=name, value=value, data_type='BOOLEAN', domain=self.domain  ```
+  def set_named_boolean(self, name=None, value=None)
+  ```
 
  - [set_named_integer](Domain.md#set_named_integer)
   ```python
-  nodes.StoreNamedAttribute(geometry=self.data_socket, name=name, value=value, data_type='INT', domain=self.domain  ```
+  def set_named_integer(self, name=None, value=None)
+  ```
 
  - [set_named_float](Domain.md#set_named_float)
   ```python
-  nodes.StoreNamedAttribute(geometry=self.data_socket, name=name, value=value, data_type='FLOAT', domain=self.domain  ```
+  def set_named_float(self, name=None, value=None)
+  ```
 
  - [set_named_vector](Domain.md#set_named_vector)
   ```python
-  nodes.StoreNamedAttribute(geometry=self.data_socket, name=name, value=value, data_type='FLOAT_VECTOR', domain=self.domain  ```
+  def set_named_vector(self, name=None, value=None)
+  ```
 
  - [set_named_color](Domain.md#set_named_color)
   ```python
-  nodes.StoreNamedAttribute(geometry=self.data_socket, name=name, value=value, data_type='FLOAT_COLOR', domain=self.domain  ```
+  def set_named_color(self, name=None, value=None)
+  ```
 
 #### [Geometry](Geometry.md)
 
  - [store_named_attribute](Geometry.md#store_named_attribute)
   ```python
-  nodes.StoreNamedAttribute(geometry=self, name=name, value=value, data_type=data_type_, domain=domain  ```
+  def store_named_attribute(self, name=None, value=None, domain='POINT')
+  ```
 
  - [set_named_boolean](Geometry.md#set_named_boolean)
   ```python
-  nodes.StoreNamedAttribute(geometry=self, name=name, value=value, data_type='BOOLEAN', domain=domain  ```
+  def set_named_boolean(self, name=None, value=None, domain='POINT')
+  ```
 
  - [set_named_integer](Geometry.md#set_named_integer)
   ```python
-  nodes.StoreNamedAttribute(geometry=self, name=name, value=value, data_type='INT', domain=domain  ```
+  def set_named_integer(self, name=None, value=None, domain='POINT')
+  ```
 
  - [set_named_float](Geometry.md#set_named_float)
   ```python
-  nodes.StoreNamedAttribute(geometry=self, name=name, value=value, data_type='FLOAT', domain=domain  ```
+  def set_named_float(self, name=None, value=None, domain='POINT')
+  ```
 
  - [set_named_vector](Geometry.md#set_named_vector)
   ```python
-  nodes.StoreNamedAttribute(geometry=self, name=name, value=value, data_type='FLOAT_VECTOR', domain=domain  ```
+  def set_named_vector(self, name=None, value=None, domain='POINT')
+  ```
 
  - [set_named_color](Geometry.md#set_named_color)
   ```python
-  nodes.StoreNamedAttribute(geometry=self, name=name, value=value, data_type='FLOAT_COLOR', domain=domain  ```
+  def set_named_color(self, name=None, value=None, domain='POINT')
+  ```
 

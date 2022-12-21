@@ -23,11 +23,13 @@ node = nodes.MaterialIndex()
 
  - [material_index](Domain.md#material_index-property)
   ```python
-  nodes.MaterialIndex(  ```
+  def material_index(self)
+  ```
 
 #### [Geometry](Geometry.md)
 
  - [material_index](Geometry.md#material_index-property)
   ```python
-  nodes.MaterialIndex(  ```
+  def material_index(self)
+  ```
 

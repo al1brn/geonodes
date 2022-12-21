@@ -37,21 +37,26 @@ node = nodes.ObjectInfo(object=None, as_instance=None, transform_space='ORIGINAL
 
  - [info](Object.md#info)
   ```python
-  nodes.ObjectInfo(object=object, as_instance=as_instance, transform_space=transform_space  ```
+  def info(self, object=None, as_instance=None, transform_space='ORIGINAL')
+  ```
 
  - [location](Object.md#location)
   ```python
-  nodes.ObjectInfo(object=object, as_instance=as_instance, transform_space=transform_space  ```
+  def location(self, object=None, as_instance=None, transform_space='ORIGINAL')
+  ```
 
  - [rotation](Object.md#rotation)
   ```python
-  nodes.ObjectInfo(object=object, as_instance=as_instance, transform_space=transform_space  ```
+  def rotation(self, object=None, as_instance=None, transform_space='ORIGINAL')
+  ```
 
  - [scale](Object.md#scale)
   ```python
-  nodes.ObjectInfo(object=object, as_instance=as_instance, transform_space=transform_space  ```
+  def scale(self, object=None, as_instance=None, transform_space='ORIGINAL')
+  ```
 
  - [geometry](Object.md#geometry)
   ```python
-  nodes.ObjectInfo(object=object, as_instance=as_instance, transform_space=transform_space  ```
+  def geometry(self, object=None, as_instance=None, transform_space='ORIGINAL')
+  ```
 

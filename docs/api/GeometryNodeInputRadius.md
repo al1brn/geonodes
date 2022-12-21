@@ -23,17 +23,20 @@ node = nodes.Radius()
 
  - [radius](CloudPoint.md#radius-property)
   ```python
-  nodes.Radius(  ```
+  def radius(self)
+  ```
 
 #### [ControlPoint](ControlPoint.md)
 
  - [radius](ControlPoint.md#radius-property)
   ```python
-  nodes.Radius(  ```
+  def radius(self)
+  ```
 
 #### [Geometry](Geometry.md)
 
  - [radius](Geometry.md#radius-property)
   ```python
-  nodes.Radius(  ```
+  def radius(self)
+  ```
 

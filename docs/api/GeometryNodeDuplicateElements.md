@@ -36,11 +36,13 @@ node = nodes.DuplicateElements(geometry=None, selection=None, amount=None, domai
 
  - [duplicate](Domain.md#duplicate)
   ```python
-  nodes.DuplicateElements(geometry=self.data_socket, selection=self.selection, amount=amount, domain=self.domain  ```
+  def duplicate(self, amount=None)
+  ```
 
 #### [Geometry](Geometry.md)
 
  - [duplicate](Geometry.md#duplicate)
   ```python
-  nodes.DuplicateElements(geometry=self, selection=selection, amount=amount, domain=domain  ```
+  def duplicate(self, selection=None, amount=None, domain='POINT')
+  ```
 

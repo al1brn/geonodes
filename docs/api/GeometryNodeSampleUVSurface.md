@@ -42,5 +42,6 @@ node = nodes.SampleUvSurface(mesh=None, value=None, source_uv_map=None, sample_u
 
  - [sample_uv_surface](Mesh.md#sample_uv_surface)
   ```python
-  nodes.SampleUvSurface(mesh=self, value=value, source_uv_map=source_uv_map, sample_uv=sample_uv, data_type=data_type_  ```
+  def sample_uv_surface(self, value=None, source_uv_map=None, sample_uv=None)
+  ```
 

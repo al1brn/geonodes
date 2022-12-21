@@ -43,5 +43,6 @@ node = nodes.Quadrilateral(width=None, height=None, bottom_width=None, top_width
 
  - [Quadrilateral](Curve.md#Quadrilateral-classmethod)
   ```python
-  nodes.Quadrilateral(width=width, height=height, bottom_width=bottom_width, top_width=top_width, offset=offset, bottom_height=bottom_height, top_height=top_height, point_1=point_1, point_2=point_2, point_3=point_3, point_4=point_4, mode=mode  ```
+  def Quadrilateral(cls, width=None, height=None, bottom_width=None, top_width=None, offset=None, bottom_height=None, top_height=None, point_1=None, point_2=None, point_3=None, point_4=None, mode='RECTANGLE')
+  ```
 

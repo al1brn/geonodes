@@ -39,21 +39,26 @@ node = nodes.NoiseTexture(vector=None, w=None, scale=None, detail=None, roughnes
 
  - [noise](Texture.md#noise-staticmethod)
   ```python
-  nodes.NoiseTexture(vector=vector, w=w, scale=scale, detail=detail, roughness=roughness, distortion=distortion, noise_dimensions=noise_dimensions  ```
+  def noise(vector=None, w=None, scale=None, detail=None, roughness=None, distortion=None, noise_dimensions='3D')
+  ```
 
  - [noise_1D](Texture.md#noise_1D-staticmethod)
   ```python
-  nodes.NoiseTexture(vector=None, w=w, scale=scale, detail=detail, roughness=roughness, distortion=distortion, noise_dimensions='1D'  ```
+  def noise_1D(w=None, scale=None, detail=None, roughness=None, distortion=None)
+  ```
 
  - [noise_2D](Texture.md#noise_2D-staticmethod)
   ```python
-  nodes.NoiseTexture(vector=vector, w=None, scale=scale, detail=detail, roughness=roughness, distortion=distortion, noise_dimensions='2D'  ```
+  def noise_2D(vector=None, scale=None, detail=None, roughness=None, distortion=None)
+  ```
 
  - [noise_3D](Texture.md#noise_3D-staticmethod)
   ```python
-  nodes.NoiseTexture(vector=vector, w=None, scale=scale, detail=detail, roughness=roughness, distortion=distortion, noise_dimensions='3D'  ```
+  def noise_3D(vector=None, scale=None, detail=None, roughness=None, distortion=None)
+  ```
 
  - [noise_4D](Texture.md#noise_4D-staticmethod)
   ```python
-  nodes.NoiseTexture(vector=vector, w=w, scale=scale, detail=detail, roughness=roughness, distortion=distortion, noise_dimensions='4D'  ```
+  def noise_4D(vector=None, w=None, scale=None, detail=None, roughness=None, distortion=None)
+  ```
 

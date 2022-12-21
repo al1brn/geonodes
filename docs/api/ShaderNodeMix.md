@@ -44,175 +44,217 @@ node = nodes.Mix(factor=None, a=None, b=None, blend_type='MIX', clamp_factor=Tru
 
  - [float_mix](A.md#float_mix)
   ```python
-  nodes.Mix(factor=factor, a=a, b=b, blend_type=MIX, clamp_factor=clamp_factor, clamp_result=False, data_type='FLOAT', factor_mode='UNIFORM'  ```
+  def float_mix(factor=None, a=None, b=None, clamp_factor=True)
+  ```
 
  - [vector_mix](A.md#vector_mix)
   ```python
-  nodes.Mix(factor=factor, a=a, b=b, blend_type=MIX, clamp_factor=clamp_factor, clamp_result=False, data_type='VECTOR', factor_mode=factor_mode  ```
+  def vector_mix(factor=None, a=None, b=None, clamp_factor=True, factor_mode='UNIFORM')
+  ```
 
  - [color_mix](A.md#color_mix)
   ```python
-  nodes.Mix(factor=factor, a=a, b=b, blend_type=blend_type, clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='COLOR', factor_mode='UNIFORM'  ```
+  def color_mix(factor=None, a=None, b=None, blend_type='MIX', clamp_factor=True, clamp_result=False)
+  ```
 
  - [color_darken](A.md#color_darken)
   ```python
-  nodes.Mix(factor=factor, a=a, b=b, blend_type='DARKEN', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='COLOR', factor_mode='UNIFORM'  ```
+  def color_darken(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False)
+  ```
 
  - [color_multiply](A.md#color_multiply)
   ```python
-  nodes.Mix(factor=factor, a=a, b=b, blend_type='MULTIPLY', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='COLOR', factor_mode='UNIFORM'  ```
+  def color_multiply(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False)
+  ```
 
  - [color_burn](A.md#color_burn)
   ```python
-  nodes.Mix(factor=factor, a=a, b=b, blend_type='BURN', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='COLOR', factor_mode='UNIFORM'  ```
+  def color_burn(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False)
+  ```
 
  - [color_lighten](A.md#color_lighten)
   ```python
-  nodes.Mix(factor=factor, a=a, b=b, blend_type='LIGHTEN', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='COLOR', factor_mode='UNIFORM'  ```
+  def color_lighten(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False)
+  ```
 
  - [color_screen](A.md#color_screen)
   ```python
-  nodes.Mix(factor=factor, a=a, b=b, blend_type='SCREEN', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='COLOR', factor_mode='UNIFORM'  ```
+  def color_screen(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False)
+  ```
 
  - [color_dodge](A.md#color_dodge)
   ```python
-  nodes.Mix(factor=factor, a=a, b=b, blend_type='DODGE', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='COLOR', factor_mode='UNIFORM'  ```
+  def color_dodge(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False)
+  ```
 
  - [color_add](A.md#color_add)
   ```python
-  nodes.Mix(factor=factor, a=a, b=b, blend_type='ADD', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='COLOR', factor_mode='UNIFORM'  ```
+  def color_add(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False)
+  ```
 
  - [color_overlay](A.md#color_overlay)
   ```python
-  nodes.Mix(factor=factor, a=a, b=b, blend_type='OVERLAY', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='COLOR', factor_mode='UNIFORM'  ```
+  def color_overlay(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False)
+  ```
 
  - [color_soft_light](A.md#color_soft_light)
   ```python
-  nodes.Mix(factor=factor, a=a, b=b, blend_type='SOFT_LIGHT', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='COLOR', factor_mode='UNIFORM'  ```
+  def color_soft_light(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False)
+  ```
 
  - [color_linear_light](A.md#color_linear_light)
   ```python
-  nodes.Mix(factor=factor, a=a, b=b, blend_type='LINEAR_LIGHT', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='COLOR', factor_mode='UNIFORM'  ```
+  def color_linear_light(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False)
+  ```
 
  - [color_difference](A.md#color_difference)
   ```python
-  nodes.Mix(factor=factor, a=a, b=b, blend_type='DIFFERENCE', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='COLOR', factor_mode='UNIFORM'  ```
+  def color_difference(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False)
+  ```
 
  - [color_subtract](A.md#color_subtract)
   ```python
-  nodes.Mix(factor=factor, a=a, b=b, blend_type='SUBTRACT', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='COLOR', factor_mode='UNIFORM'  ```
+  def color_subtract(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False)
+  ```
 
  - [color_divide](A.md#color_divide)
   ```python
-  nodes.Mix(factor=factor, a=a, b=b, blend_type='DIVIDE', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='COLOR', factor_mode='UNIFORM'  ```
+  def color_divide(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False)
+  ```
 
  - [color_hue](A.md#color_hue)
   ```python
-  nodes.Mix(factor=factor, a=a, b=b, blend_type='HUE', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='COLOR', factor_mode='UNIFORM'  ```
+  def color_hue(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False)
+  ```
 
  - [color_saturation](A.md#color_saturation)
   ```python
-  nodes.Mix(factor=factor, a=a, b=b, blend_type='SATURATION', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='COLOR', factor_mode='UNIFORM'  ```
+  def color_saturation(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False)
+  ```
 
  - [color_color](A.md#color_color)
   ```python
-  nodes.Mix(factor=factor, a=a, b=b, blend_type='COLOR', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='COLOR', factor_mode='UNIFORM'  ```
+  def color_color(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False)
+  ```
 
  - [color_value](A.md#color_value)
   ```python
-  nodes.Mix(factor=factor, a=a, b=b, blend_type='VALUE', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='COLOR', factor_mode='UNIFORM'  ```
+  def color_value(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False)
+  ```
 
 #### [Color](Color.md)
 
  - [mix](Color.md#mix)
   ```python
-  nodes.Mix(factor=factor, a=self, b=color, blend_type=blend_type, clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='COLOR', factor_mode='UNIFORM'  ```
+  def mix(self, factor=None, color=None, blend_type='MIX', clamp_factor=True, clamp_result=False)
+  ```
 
  - [mix_darken](Color.md#mix_darken)
   ```python
-  nodes.Mix(factor=factor, a=self, b=color, blend_type='DARKEN', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='COLOR', factor_mode='UNIFORM'  ```
+  def mix_darken(self, factor=None, color=None, clamp_factor=True, clamp_result=False)
+  ```
 
  - [mix_multiply](Color.md#mix_multiply)
   ```python
-  nodes.Mix(factor=factor, a=self, b=color, blend_type='MULTIPLY', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='COLOR', factor_mode='UNIFORM'  ```
+  def mix_multiply(self, factor=None, color=None, clamp_factor=True, clamp_result=False)
+  ```
 
  - [mix_burn](Color.md#mix_burn)
   ```python
-  nodes.Mix(factor=factor, a=self, b=color, blend_type='BURN', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='COLOR', factor_mode='UNIFORM'  ```
+  def mix_burn(self, factor=None, color=None, clamp_factor=True, clamp_result=False)
+  ```
 
  - [mix_lighten](Color.md#mix_lighten)
   ```python
-  nodes.Mix(factor=factor, a=self, b=color, blend_type='LIGHTEN', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='COLOR', factor_mode='UNIFORM'  ```
+  def mix_lighten(self, factor=None, color=None, clamp_factor=True, clamp_result=False)
+  ```
 
  - [mix_screen](Color.md#mix_screen)
   ```python
-  nodes.Mix(factor=factor, a=self, b=color, blend_type='SCREEN', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='COLOR', factor_mode='UNIFORM'  ```
+  def mix_screen(self, factor=None, color=None, clamp_factor=True, clamp_result=False)
+  ```
 
  - [mix_dodge](Color.md#mix_dodge)
   ```python
-  nodes.Mix(factor=factor, a=self, b=color, blend_type='DODGE', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='COLOR', factor_mode='UNIFORM'  ```
+  def mix_dodge(self, factor=None, color=None, clamp_factor=True, clamp_result=False)
+  ```
 
  - [mix_add](Color.md#mix_add)
   ```python
-  nodes.Mix(factor=factor, a=self, b=color, blend_type='ADD', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='COLOR', factor_mode='UNIFORM'  ```
+  def mix_add(self, factor=None, color=None, clamp_factor=True, clamp_result=False)
+  ```
 
  - [mix_overlay](Color.md#mix_overlay)
   ```python
-  nodes.Mix(factor=factor, a=self, b=color, blend_type='OVERLAY', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='COLOR', factor_mode='UNIFORM'  ```
+  def mix_overlay(self, factor=None, color=None, clamp_factor=True, clamp_result=False)
+  ```
 
  - [mix_soft_light](Color.md#mix_soft_light)
   ```python
-  nodes.Mix(factor=factor, a=self, b=color, blend_type='SOFT_LIGHT', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='COLOR', factor_mode='UNIFORM'  ```
+  def mix_soft_light(self, factor=None, color=None, clamp_factor=True, clamp_result=False)
+  ```
 
  - [mix_linear_light](Color.md#mix_linear_light)
   ```python
-  nodes.Mix(factor=factor, a=self, b=color, blend_type='LINEAR_LIGHT', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='COLOR', factor_mode='UNIFORM'  ```
+  def mix_linear_light(self, factor=None, color=None, clamp_factor=True, clamp_result=False)
+  ```
 
  - [mix_difference](Color.md#mix_difference)
   ```python
-  nodes.Mix(factor=factor, a=self, b=color, blend_type='DIFFERENCE', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='COLOR', factor_mode='UNIFORM'  ```
+  def mix_difference(self, factor=None, color=None, clamp_factor=True, clamp_result=False)
+  ```
 
  - [mix_subtract](Color.md#mix_subtract)
   ```python
-  nodes.Mix(factor=factor, a=self, b=color, blend_type='SUBTRACT', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='COLOR', factor_mode='UNIFORM'  ```
+  def mix_subtract(self, factor=None, color=None, clamp_factor=True, clamp_result=False)
+  ```
 
  - [mix_divide](Color.md#mix_divide)
   ```python
-  nodes.Mix(factor=factor, a=self, b=color, blend_type='DIVIDE', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='COLOR', factor_mode='UNIFORM'  ```
+  def mix_divide(self, factor=None, color=None, clamp_factor=True, clamp_result=False)
+  ```
 
  - [mix_hue](Color.md#mix_hue)
   ```python
-  nodes.Mix(factor=factor, a=self, b=color, blend_type='HUE', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='COLOR', factor_mode='UNIFORM'  ```
+  def mix_hue(self, factor=None, color=None, clamp_factor=True, clamp_result=False)
+  ```
 
  - [mix_saturation](Color.md#mix_saturation)
   ```python
-  nodes.Mix(factor=factor, a=self, b=color, blend_type='SATURATION', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='COLOR', factor_mode='UNIFORM'  ```
+  def mix_saturation(self, factor=None, color=None, clamp_factor=True, clamp_result=False)
+  ```
 
  - [mix_color](Color.md#mix_color)
   ```python
-  nodes.Mix(factor=factor, a=self, b=color, blend_type='COLOR', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='COLOR', factor_mode='UNIFORM'  ```
+  def mix_color(self, factor=None, color=None, clamp_factor=True, clamp_result=False)
+  ```
 
  - [mix_value](Color.md#mix_value)
   ```python
-  nodes.Mix(factor=factor, a=self, b=color, blend_type='VALUE', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='COLOR', factor_mode='UNIFORM'  ```
+  def mix_value(self, factor=None, color=None, clamp_factor=True, clamp_result=False)
+  ```
 
 #### [Float](Float.md)
 
  - [mix](Float.md#mix)
   ```python
-  nodes.Mix(factor=factor, a=self, b=value, blend_type=MIX, clamp_factor=clamp_factor, clamp_result=False, data_type='FLOAT', factor_mode='UNIFORM'  ```
+  def mix(self, factor=None, value=None, clamp_factor=True)
+  ```
 
 #### [Vector](Vector.md)
 
  - [mix](Vector.md#mix)
   ```python
-  nodes.Mix(factor=factor, a=self, b=vector, blend_type=MIX, clamp_factor=clamp_factor, clamp_result=False, data_type='VECTOR', factor_mode=factor_mode  ```
+  def mix(self, factor=None, vector=None, clamp_factor=True, factor_mode='UNIFORM')
+  ```
 
  - [mix_uniform](Vector.md#mix_uniform)
   ```python
-  nodes.Mix(factor=None, a=self, b=vector, blend_type=MIX, clamp_factor=clamp_factor, clamp_result=False, data_type='VECTOR', factor_mode='UNIFORM'  ```
+  def mix_uniform(self, vector=None, clamp_factor=True)
+  ```
 
  - [mix_non_uniform](Vector.md#mix_non_uniform)
   ```python
-  nodes.Mix(factor=factor, a=self, b=vector, blend_type=MIX, clamp_factor=clamp_factor, clamp_result=False, data_type='VECTOR', factor_mode='NON_UNIFORM'  ```
+  def mix_non_uniform(self, factor=None, vector=None, clamp_factor=True)
+  ```
 

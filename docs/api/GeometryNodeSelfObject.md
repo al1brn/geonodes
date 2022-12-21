@@ -23,5 +23,6 @@ node = nodes.SelfObject()
 
  - [Self](Object.md#Self-classmethod)
   ```python
-  nodes.SelfObject(  ```
+  def Self(cls)
+  ```
 

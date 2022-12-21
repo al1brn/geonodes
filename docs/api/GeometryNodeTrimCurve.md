@@ -37,13 +37,16 @@ node = nodes.TrimCurve(curve=None, start0=None, start1=None, end0=None, end1=Non
 
  - [trim](Curve.md#trim)
   ```python
-  nodes.TrimCurve(curve=self, start0=start, start1=start, end0=start, end1=end, mode=mode  ```
+  def trim(self, start=None, end=None, mode='FACTOR')
+  ```
 
  - [trim_factor](Curve.md#trim_factor)
   ```python
-  nodes.TrimCurve(curve=self, start0=start, start1=None, end0=end, end1=None, mode='FACTOR'  ```
+  def trim_factor(self, start=None, end=None)
+  ```
 
  - [trim_length](Curve.md#trim_length)
   ```python
-  nodes.TrimCurve(curve=self, start0=None, start1=start, end0=None, end1=end, mode='LENGTH'  ```
+  def trim_length(self, start=None, end=None)
+  ```
 

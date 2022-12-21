@@ -30,5 +30,6 @@ node = nodes.FloatCurve(factor=None, value=None)
 
  - [float_curve](Float.md#float_curve)
   ```python
-  nodes.FloatCurve(factor=factor, value=self  ```
+  def float_curve(self, factor=None)
+  ```
 

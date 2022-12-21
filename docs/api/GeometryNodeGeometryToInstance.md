@@ -29,11 +29,13 @@ node = nodes.GeometryToInstance(*geometry)
 
  - [geometry_to_instance](A.md#geometry_to_instance)
   ```python
-  nodes.GeometryToInstance(*geometry  ```
+  def geometry_to_instance(*geometry)
+  ```
 
 #### [Geometry](Geometry.md)
 
  - [to_instance](Geometry.md#to_instance)
   ```python
-  nodes.GeometryToInstance(*geometry  ```
+  def to_instance(*geometry)
+  ```
 

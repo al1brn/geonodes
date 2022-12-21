@@ -37,161 +37,201 @@ node = nodes.VectorMath(vector0=None, vector1=None, vector2=None, scale=None, op
 
  - [add](Vector.md#add)
   ```python
-  nodes.VectorMath(vector0=self, vector1=vector, vector2=None, scale=None, operation='ADD'  ```
+  def add(self, vector=None)
+  ```
 
  - [subtract](Vector.md#subtract)
   ```python
-  nodes.VectorMath(vector0=self, vector1=vector, vector2=None, scale=None, operation='SUBTRACT'  ```
+  def subtract(self, vector=None)
+  ```
 
  - [sub](Vector.md#sub)
   ```python
-  nodes.VectorMath(vector0=self, vector1=vector, vector2=None, scale=None, operation='SUBTRACT'  ```
+  def sub(self, vector=None)
+  ```
 
  - [multiply](Vector.md#multiply)
   ```python
-  nodes.VectorMath(vector0=self, vector1=vector, vector2=None, scale=None, operation='MULTIPLY'  ```
+  def multiply(self, vector=None)
+  ```
 
  - [mul](Vector.md#mul)
   ```python
-  nodes.VectorMath(vector0=self, vector1=vector, vector2=None, scale=None, operation='MULTIPLY'  ```
+  def mul(self, vector=None)
+  ```
 
  - [divide](Vector.md#divide)
   ```python
-  nodes.VectorMath(vector0=self, vector1=vector, vector2=None, scale=None, operation='DIVIDE'  ```
+  def divide(self, vector=None)
+  ```
 
  - [div](Vector.md#div)
   ```python
-  nodes.VectorMath(vector0=self, vector1=vector, vector2=None, scale=None, operation='DIVIDE'  ```
+  def div(self, vector=None)
+  ```
 
  - [multiply_add](Vector.md#multiply_add)
   ```python
-  nodes.VectorMath(vector0=self, vector1=multiplier, vector2=addend, scale=None, operation='MULTIPLY_ADD'  ```
+  def multiply_add(self, multiplier=None, addend=None)
+  ```
 
  - [mul_add](Vector.md#mul_add)
   ```python
-  nodes.VectorMath(vector0=self, vector1=multiplier, vector2=addend, scale=None, operation='MULTIPLY_ADD'  ```
+  def mul_add(self, multiplier=None, addend=None)
+  ```
 
  - [cross_product](Vector.md#cross_product)
   ```python
-  nodes.VectorMath(vector0=self, vector1=vector, vector2=None, scale=None, operation='CROSS_PRODUCT'  ```
+  def cross_product(self, vector=None)
+  ```
 
  - [cross](Vector.md#cross)
   ```python
-  nodes.VectorMath(vector0=self, vector1=vector, vector2=None, scale=None, operation='CROSS_PRODUCT'  ```
+  def cross(self, vector=None)
+  ```
 
  - [project](Vector.md#project)
   ```python
-  nodes.VectorMath(vector0=self, vector1=vector, vector2=None, scale=None, operation='PROJECT'  ```
+  def project(self, vector=None)
+  ```
 
  - [reflect](Vector.md#reflect)
   ```python
-  nodes.VectorMath(vector0=self, vector1=vector, vector2=None, scale=None, operation='REFLECT'  ```
+  def reflect(self, vector=None)
+  ```
 
  - [refract](Vector.md#refract)
   ```python
-  nodes.VectorMath(vector0=self, vector1=vector, vector2=None, scale=ior, operation='REFRACT'  ```
+  def refract(self, vector=None, ior=None)
+  ```
 
  - [face_forward](Vector.md#face_forward)
   ```python
-  nodes.VectorMath(vector0=self, vector1=incident, vector2=reference, scale=None, operation='FACEFORWARD'  ```
+  def face_forward(self, incident=None, reference=None)
+  ```
 
  - [dot_product](Vector.md#dot_product)
   ```python
-  nodes.VectorMath(vector0=self, vector1=vector, vector2=None, scale=None, operation='DOT_PRODUCT'  ```
+  def dot_product(self, vector=None)
+  ```
 
  - [dot](Vector.md#dot)
   ```python
-  nodes.VectorMath(vector0=self, vector1=vector, vector2=None, scale=None, operation='DOT_PRODUCT'  ```
+  def dot(self, vector=None)
+  ```
 
  - [distance](Vector.md#distance)
   ```python
-  nodes.VectorMath(vector0=self, vector1=vector, vector2=None, scale=None, operation='DISTANCE'  ```
+  def distance(self, vector=None)
+  ```
 
  - [length](Vector.md#length-property)
   ```python
-  nodes.VectorMath(vector0=self, vector1=None, vector2=None, scale=None, operation='LENGTH'  ```
+  def length(self)
+  ```
 
  - [scale](Vector.md#scale)
   ```python
-  nodes.VectorMath(vector0=self, vector1=None, vector2=None, scale=scale, operation='SCALE'  ```
+  def scale(self, scale=None)
+  ```
 
  - [normalize](Vector.md#normalize)
   ```python
-  nodes.VectorMath(vector0=self, vector1=None, vector2=None, scale=None, operation='NORMALIZE'  ```
+  def normalize(self)
+  ```
 
  - [absolute](Vector.md#absolute)
   ```python
-  nodes.VectorMath(vector0=self, vector1=None, vector2=None, scale=None, operation='ABSOLUTE'  ```
+  def absolute(self)
+  ```
 
  - [abs](Vector.md#abs)
   ```python
-  nodes.VectorMath(vector0=self, vector1=None, vector2=None, scale=None, operation='ABSOLUTE'  ```
+  def abs(self)
+  ```
 
  - [minimum](Vector.md#minimum)
   ```python
-  nodes.VectorMath(vector0=self, vector1=vector, vector2=None, scale=None, operation='MINIMUM'  ```
+  def minimum(self, vector=None)
+  ```
 
  - [min](Vector.md#min)
   ```python
-  nodes.VectorMath(vector0=self, vector1=vector, vector2=None, scale=None, operation='MINIMUM'  ```
+  def min(self, vector=None)
+  ```
 
  - [maximum](Vector.md#maximum)
   ```python
-  nodes.VectorMath(vector0=self, vector1=vector, vector2=None, scale=None, operation='MAXIMUM'  ```
+  def maximum(self, vector=None)
+  ```
 
  - [max](Vector.md#max)
   ```python
-  nodes.VectorMath(vector0=self, vector1=vector, vector2=None, scale=None, operation='MAXIMUM'  ```
+  def max(self, vector=None)
+  ```
 
  - [floor](Vector.md#floor)
   ```python
-  nodes.VectorMath(vector0=self, vector1=None, vector2=None, scale=None, operation='FLOOR'  ```
+  def floor(self)
+  ```
 
  - [ceil](Vector.md#ceil)
   ```python
-  nodes.VectorMath(vector0=self, vector1=None, vector2=None, scale=None, operation='CEIL'  ```
+  def ceil(self)
+  ```
 
  - [fraction](Vector.md#fraction)
   ```python
-  nodes.VectorMath(vector0=self, vector1=None, vector2=None, scale=None, operation='FRACTION'  ```
+  def fraction(self)
+  ```
 
  - [fract](Vector.md#fract)
   ```python
-  nodes.VectorMath(vector0=self, vector1=None, vector2=None, scale=None, operation='FRACTION'  ```
+  def fract(self)
+  ```
 
  - [modulo](Vector.md#modulo)
   ```python
-  nodes.VectorMath(vector0=self, vector1=vector, vector2=None, scale=None, operation='MODULO'  ```
+  def modulo(self, vector=None)
+  ```
 
  - [wrap](Vector.md#wrap)
   ```python
-  nodes.VectorMath(vector0=self, vector1=max, vector2=min, scale=None, operation='WRAP'  ```
+  def wrap(self, max=None, min=None)
+  ```
 
  - [snap](Vector.md#snap)
   ```python
-  nodes.VectorMath(vector0=self, vector1=increment, vector2=None, scale=None, operation='SNAP'  ```
+  def snap(self, increment=None)
+  ```
 
  - [sine](Vector.md#sine)
   ```python
-  nodes.VectorMath(vector0=self, vector1=None, vector2=None, scale=None, operation='SINE'  ```
+  def sine(self)
+  ```
 
  - [sin](Vector.md#sin)
   ```python
-  nodes.VectorMath(vector0=self, vector1=None, vector2=None, scale=None, operation='SINE'  ```
+  def sin(self)
+  ```
 
  - [cosine](Vector.md#cosine)
   ```python
-  nodes.VectorMath(vector0=self, vector1=None, vector2=None, scale=None, operation='COSINE'  ```
+  def cosine(self)
+  ```
 
  - [cos](Vector.md#cos)
   ```python
-  nodes.VectorMath(vector0=self, vector1=None, vector2=None, scale=None, operation='COSINE'  ```
+  def cos(self)
+  ```
 
  - [tangent](Vector.md#tangent)
   ```python
-  nodes.VectorMath(vector0=self, vector1=None, vector2=None, scale=None, operation='TANGENT'  ```
+  def tangent(self)
+  ```
 
  - [tan](Vector.md#tan)
   ```python
-  nodes.VectorMath(vector0=self, vector1=None, vector2=None, scale=None, operation='TANGENT'  ```
+  def tan(self)
+  ```
 

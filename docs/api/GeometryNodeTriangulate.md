@@ -36,11 +36,13 @@ node = nodes.Triangulate(mesh=None, selection=None, minimum_vertices=None, ngon_
 
  - [triangulate](Face.md#triangulate)
   ```python
-  nodes.Triangulate(mesh=self.data_socket, selection=self.selection, minimum_vertices=minimum_vertices, ngon_method=ngon_method, quad_method=quad_method  ```
+  def triangulate(self, minimum_vertices=None, ngon_method='BEAUTY', quad_method='SHORTEST_DIAGONAL')
+  ```
 
 #### [Mesh](Mesh.md)
 
  - [triangulate](Mesh.md#triangulate)
   ```python
-  nodes.Triangulate(mesh=self, selection=selection, minimum_vertices=minimum_vertices, ngon_method=ngon_method, quad_method=quad_method  ```
+  def triangulate(self, selection=None, minimum_vertices=None, ngon_method='BEAUTY', quad_method='SHORTEST_DIAGONAL')
+  ```
 

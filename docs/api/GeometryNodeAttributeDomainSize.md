@@ -38,101 +38,120 @@ node = nodes.DomainSize(geometry=None, component='MESH')
 
  - [domain_size](CloudPoint.md#domain_size)
   ```python
-  nodes.DomainSize(geometry=geometry, component=component  ```
+  def __len__(self)
+  ```
 
 #### [ControlPoint](ControlPoint.md)
 
  - [domain_size](ControlPoint.md#domain_size)
   ```python
-  nodes.DomainSize(geometry=geometry, component=component  ```
+  def __len__(self)
+  ```
 
 #### [Corner](Corner.md)
 
  - [domain_size](Corner.md#domain_size)
   ```python
-  nodes.DomainSize(geometry=geometry, component=component  ```
+  def __len__(self)
+  ```
 
 #### [Curve](Curve.md)
 
  - [domain_size](Curve.md#domain_size-property)
   ```python
-  nodes.DomainSize(geometry=self, component='CURVE'  ```
+  def domain_size(self)
+  ```
 
  - [point_count](Curve.md#point_count-property)
   ```python
-  nodes.DomainSize(geometry=self, component='CURVE'  ```
+  def point_count(self)
+  ```
 
  - [spline_count](Curve.md#spline_count-property)
   ```python
-  nodes.DomainSize(geometry=self, component='CURVE'  ```
+  def spline_count(self)
+  ```
 
 #### [Edge](Edge.md)
 
  - [domain_size](Edge.md#domain_size)
   ```python
-  nodes.DomainSize(geometry=geometry, component=component  ```
+  def __len__(self)
+  ```
 
 #### [Face](Face.md)
 
  - [domain_size](Face.md#domain_size)
   ```python
-  nodes.DomainSize(geometry=geometry, component=component  ```
+  def __len__(self)
+  ```
 
 #### [Geometry](Geometry.md)
 
  - [domain_size](Geometry.md#domain_size-property)
   ```python
-  nodes.DomainSize(geometry=self, component=component  ```
+  def domain_size(self, component='MESH')
+  ```
 
 #### [Instance](Instance.md)
 
  - [domain_size](Instance.md#domain_size)
   ```python
-  nodes.DomainSize(geometry=geometry, component=component  ```
+  def __len__(self)
+  ```
 
 #### [Instances](Instances.md)
 
  - [domain_size](Instances.md#domain_size-property)
   ```python
-  nodes.DomainSize(geometry=self, component='INSTANCES'  ```
+  def domain_size(self)
+  ```
 
 #### [Mesh](Mesh.md)
 
  - [domain_size](Mesh.md#domain_size-property)
   ```python
-  nodes.DomainSize(geometry=self, component='MESH'  ```
+  def domain_size(self)
+  ```
 
  - [point_count](Mesh.md#point_count-property)
   ```python
-  nodes.DomainSize(geometry=self, component='MESH'  ```
+  def point_count(self)
+  ```
 
  - [face_count](Mesh.md#face_count-property)
   ```python
-  nodes.DomainSize(geometry=self, component='MESH'  ```
+  def face_count(self)
+  ```
 
  - [edge_count](Mesh.md#edge_count-property)
   ```python
-  nodes.DomainSize(geometry=self, component='MESH'  ```
+  def edge_count(self)
+  ```
 
  - [corner_count](Mesh.md#corner_count-property)
   ```python
-  nodes.DomainSize(geometry=self, component='MESH'  ```
+  def corner_count(self)
+  ```
 
 #### [Points](Points.md)
 
  - [domain_size](Points.md#domain_size-property)
   ```python
-  nodes.DomainSize(geometry=self, component='POINTCLOUD'  ```
+  def domain_size(self)
+  ```
 
 #### [Spline](Spline.md)
 
  - [domain_size](Spline.md#domain_size)
   ```python
-  nodes.DomainSize(geometry=geometry, component=component  ```
+  def __len__(self)
+  ```
 
 #### [Vertex](Vertex.md)
 
  - [domain_size](Vertex.md#domain_size)
   ```python
-  nodes.DomainSize(geometry=geometry, component=component  ```
+  def __len__(self)
+  ```
 

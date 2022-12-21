@@ -30,11 +30,13 @@ node = nodes.FlipFaces(mesh=None, selection=None)
 
  - [flip](Face.md#flip)
   ```python
-  nodes.FlipFaces(mesh=self.data_socket, selection=self.selection  ```
+  def flip(self)
+  ```
 
 #### [Mesh](Mesh.md)
 
  - [flip_faces](Mesh.md#flip_faces)
   ```python
-  nodes.FlipFaces(mesh=self, selection=selection  ```
+  def flip_faces(self, selection=None)
+  ```
 

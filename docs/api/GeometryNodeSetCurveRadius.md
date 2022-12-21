@@ -31,9 +31,11 @@ node = nodes.SetCurveRadius(curve=None, selection=None, radius=None)
 
  - [set_radius](ControlPoint.md#set_radius)
   ```python
-  nodes.SetCurveRadius(curve=self.data_socket, selection=self.selection, radius=radius  ```
+  def set_radius(self, radius=None)
+  ```
 
  - [radius](ControlPoint.md#radius)
   ```python
-  nodes.SetCurveRadius(curve=self.data_socket, selection=self.selection, radius=attr_value  ```
+  def radius(self, attr_value)
+  ```
 

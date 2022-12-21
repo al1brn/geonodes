@@ -40,11 +40,13 @@ node = nodes.FieldAtIndex(index=None, value=None, data_type='FLOAT', domain='POI
 
  - [field_at_index](Domain.md#field_at_index)
   ```python
-  nodes.FieldAtIndex(index=index, value=value, data_type=data_type_, domain=self.domain  ```
+  def field_at_index(self, index=None, value=None)
+  ```
 
 #### [Geometry](Geometry.md)
 
  - [field_at_index](Geometry.md#field_at_index)
   ```python
-  nodes.FieldAtIndex(index=index, value=value, data_type=data_type_, domain=domain  ```
+  def field_at_index(self, index=None, value=None, domain='POINT')
+  ```
 

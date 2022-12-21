@@ -30,5 +30,6 @@ node = nodes.ReverseCurve(curve=None, selection=None)
 
  - [reverse](Curve.md#reverse)
   ```python
-  nodes.ReverseCurve(curve=self, selection=selection  ```
+  def reverse(self, selection=None)
+  ```
 

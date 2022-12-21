@@ -33,5 +33,6 @@ node = nodes.CheckerTexture(vector=None, color1=None, color2=None, scale=None)
 
  - [checker](Texture.md#checker-staticmethod)
   ```python
-  nodes.CheckerTexture(vector=vector, color1=color1, color2=color2, scale=scale  ```
+  def checker(vector=None, color1=None, color2=None, scale=None)
+  ```
 

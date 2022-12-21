@@ -30,11 +30,13 @@ node = nodes.RemoveNamedAttribute(geometry=None, name=None)
 
  - [remove_named_attribute](Domain.md#remove_named_attribute)
   ```python
-  nodes.RemoveNamedAttribute(geometry=self.data_socket, name=name  ```
+  def remove_named_attribute(self, name=None)
+  ```
 
 #### [Geometry](Geometry.md)
 
  - [remove_named_attribute](Geometry.md#remove_named_attribute)
   ```python
-  nodes.RemoveNamedAttribute(geometry=self, name=name  ```
+  def remove_named_attribute(self, name=None)
+  ```
 

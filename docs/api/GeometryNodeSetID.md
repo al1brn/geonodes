@@ -31,15 +31,18 @@ node = nodes.SetID(geometry=None, selection=None, ID=None)
 
  - [set_ID](Domain.md#set_ID)
   ```python
-  nodes.SetID(geometry=self.data_socket, selection=self.selection, ID=ID  ```
+  def set_ID(self, ID=None)
+  ```
 
  - [ID](Domain.md#ID)
   ```python
-  nodes.SetID(geometry=self.data_socket, selection=self.selection, ID=attr_value  ```
+  def ID(self, attr_value)
+  ```
 
 #### [Geometry](Geometry.md)
 
  - [set_ID](Geometry.md#set_ID)
   ```python
-  nodes.SetID(geometry=self, selection=selection, ID=ID  ```
+  def set_ID(self, selection=None, ID=None)
+  ```
 

@@ -29,5 +29,6 @@ node = nodes.Vector(vector=[0.0, 0.0, 0.0])
 
  - [Vector](Vector.md#Vector-classmethod)
   ```python
-  nodes.Vector(vector=vector  ```
+  def Vector(cls, vector=[0.0, 0.0, 0.0])
+  ```
 

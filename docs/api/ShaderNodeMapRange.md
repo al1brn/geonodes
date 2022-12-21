@@ -47,43 +47,53 @@ node = nodes.MapRange(value=None, from_min=None, from_max=None, to_min=None, to_
 
  - [map_range](Float.md#map_range)
   ```python
-  nodes.MapRange(value=self, from_min=from_min, from_max=from_max, to_min=to_min, to_max=to_max, steps=steps, vector=None, clamp=clamp, data_type='FLOAT', interpolation_type=interpolation_type  ```
+  def map_range(self, from_min=None, from_max=None, to_min=None, to_max=None, steps=None, clamp=True, interpolation_type='LINEAR')
+  ```
 
  - [map_range_linear](Float.md#map_range_linear)
   ```python
-  nodes.MapRange(value=self, from_min=from_min, from_max=from_max, to_min=to_min, to_max=to_max, steps=None, vector=None, clamp=clamp, data_type='FLOAT', interpolation_type='LINEAR'  ```
+  def map_range_linear(self, from_min=None, from_max=None, to_min=None, to_max=None, clamp=True)
+  ```
 
  - [map_range_stepped](Float.md#map_range_stepped)
   ```python
-  nodes.MapRange(value=self, from_min=from_min, from_max=from_max, to_min=to_min, to_max=to_max, steps=steps, vector=None, clamp=clamp, data_type='FLOAT', interpolation_type='STEPPED'  ```
+  def map_range_stepped(self, from_min=None, from_max=None, to_min=None, to_max=None, steps=None, clamp=True)
+  ```
 
  - [map_range_smooth](Float.md#map_range_smooth)
   ```python
-  nodes.MapRange(value=self, from_min=from_min, from_max=from_max, to_min=to_min, to_max=to_max, steps=None, vector=None, clamp=clamp, data_type='FLOAT', interpolation_type='SMOOTHSTEP'  ```
+  def map_range_smooth(self, from_min=None, from_max=None, to_min=None, to_max=None, clamp=True)
+  ```
 
  - [map_range_smoother](Float.md#map_range_smoother)
   ```python
-  nodes.MapRange(value=self, from_min=from_min, from_max=from_max, to_min=to_min, to_max=to_max, steps=None, vector=None, clamp=clamp, data_type='FLOAT', interpolation_type='SMOOTHERSTEP'  ```
+  def map_range_smoother(self, from_min=None, from_max=None, to_min=None, to_max=None, clamp=True)
+  ```
 
 #### [Vector](Vector.md)
 
  - [map_range](Vector.md#map_range)
   ```python
-  nodes.MapRange(value=None, from_min=from_min, from_max=from_max, to_min=to_min, to_max=to_max, steps=steps, vector=self, clamp=clamp, data_type='FLOAT_VECTOR', interpolation_type=interpolation_type  ```
+  def map_range(self, from_min=None, from_max=None, to_min=None, to_max=None, steps=None, clamp=True, interpolation_type='LINEAR')
+  ```
 
  - [map_range_linear](Vector.md#map_range_linear)
   ```python
-  nodes.MapRange(value=None, from_min=from_min, from_max=from_max, to_min=to_min, to_max=to_max, steps=None, vector=self, clamp=clamp, data_type='FLOAT_VECTOR', interpolation_type='LINEAR'  ```
+  def map_range_linear(self, from_min=None, from_max=None, to_min=None, to_max=None, clamp=True)
+  ```
 
  - [map_range_stepped](Vector.md#map_range_stepped)
   ```python
-  nodes.MapRange(value=None, from_min=from_min, from_max=from_max, to_min=to_min, to_max=to_max, steps=steps, vector=self, clamp=clamp, data_type='FLOAT_VECTOR', interpolation_type='STEPPED'  ```
+  def map_range_stepped(self, from_min=None, from_max=None, to_min=None, to_max=None, steps=None, clamp=True)
+  ```
 
  - [map_range_smooth](Vector.md#map_range_smooth)
   ```python
-  nodes.MapRange(value=None, from_min=from_min, from_max=from_max, to_min=to_min, to_max=to_max, steps=None, vector=self, clamp=clamp, data_type='FLOAT_VECTOR', interpolation_type='SMOOTHSTEP'  ```
+  def map_range_smooth(self, from_min=None, from_max=None, to_min=None, to_max=None, clamp=True)
+  ```
 
  - [map_range_smoother](Vector.md#map_range_smoother)
   ```python
-  nodes.MapRange(value=None, from_min=from_min, from_max=from_max, to_min=to_min, to_max=to_max, steps=None, vector=self, clamp=clamp, data_type='FLOAT_VECTOR', interpolation_type='SMOOTHERSTEP'  ```
+  def map_range_smoother(self, from_min=None, from_max=None, to_min=None, to_max=None, clamp=True)
+  ```
 

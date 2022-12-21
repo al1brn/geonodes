@@ -34,9 +34,11 @@ node = nodes.SetCurveNormal(curve=None, selection=None, mode='MINIMUM_TWIST')
 
  - [set_normal](Spline.md#set_normal)
   ```python
-  nodes.SetCurveNormal(curve=self.data_socket, selection=self.selection, mode=mode  ```
+  def set_normal(self, mode='MINIMUM_TWIST')
+  ```
 
  - [normal](Spline.md#normal)
   ```python
-  nodes.SetCurveNormal(curve=self.data_socket, selection=self.selection, mode=attr_value  ```
+  def normal(self, attr_value)
+  ```
 

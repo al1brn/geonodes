@@ -36,5 +36,6 @@ node = nodes.MagicTexture(vector=None, scale=None, distortion=None, turbulence_d
 
  - [magic](Texture.md#magic-staticmethod)
   ```python
-  nodes.MagicTexture(vector=vector, scale=scale, distortion=distortion, turbulence_depth=turbulence_depth  ```
+  def magic(vector=None, scale=None, distortion=None, turbulence_depth=2)
+  ```
 

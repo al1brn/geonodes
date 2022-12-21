@@ -47,13 +47,16 @@ node = nodes.Raycast(target_geometry=None, attribute=None, source_position=None,
 
  - [raycast](Geometry.md#raycast)
   ```python
-  nodes.Raycast(target_geometry=target_geometry, attribute=attribute, source_position=source_position, ray_direction=ray_direction, ray_length=ray_length, data_type=data_type_, mapping=mapping  ```
+  def raycast(self, target_geometry=None, attribute=None, source_position=None, ray_direction=None, ray_length=None, mapping='INTERPOLATED')
+  ```
 
  - [raycast_interpolated](Geometry.md#raycast_interpolated)
   ```python
-  nodes.Raycast(target_geometry=target_geometry, attribute=attribute, source_position=source_position, ray_direction=ray_direction, ray_length=ray_length, data_type=data_type_, mapping='INTERPOLATED'  ```
+  def raycast_interpolated(self, target_geometry=None, attribute=None, source_position=None, ray_direction=None, ray_length=None)
+  ```
 
  - [raycast_nearest](Geometry.md#raycast_nearest)
   ```python
-  nodes.Raycast(target_geometry=target_geometry, attribute=attribute, source_position=source_position, ray_direction=ray_direction, ray_length=ray_length, data_type=data_type_, mapping='NEAREST'  ```
+  def raycast_nearest(self, target_geometry=None, attribute=None, source_position=None, ray_direction=None, ray_length=None)
+  ```
 

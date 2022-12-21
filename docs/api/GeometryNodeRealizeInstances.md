@@ -33,5 +33,6 @@ node = nodes.RealizeInstances(geometry=None, legacy_behavior=False)
 
  - [realize](Instances.md#realize)
   ```python
-  nodes.RealizeInstances(geometry=geometry, legacy_behavior=legacy_behavior  ```
+  def realize(self, geometry=None, legacy_behavior=False)
+  ```
 

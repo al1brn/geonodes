@@ -30,17 +30,20 @@ node = nodes.ValueToString(value=None, decimals=None)
 
  - [value_to_string](A.md#value_to_string)
   ```python
-  nodes.ValueToString(value=value, decimals=decimals  ```
+  def value_to_string(value=None, decimals=None)
+  ```
 
 #### [Float](Float.md)
 
  - [to_string](Float.md#to_string)
   ```python
-  nodes.ValueToString(value=self, decimals=decimals  ```
+  def to_string(self, decimals=None)
+  ```
 
 #### [Integer](Integer.md)
 
  - [to_string](Integer.md#to_string)
   ```python
-  nodes.ValueToString(value=self, decimals=0  ```
+  def to_string(self)
+  ```
 

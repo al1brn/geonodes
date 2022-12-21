@@ -30,5 +30,6 @@ node = nodes.SubdivideCurve(curve=None, cuts=None)
 
  - [subdivide](Curve.md#subdivide)
   ```python
-  nodes.SubdivideCurve(curve=self, cuts=cuts  ```
+  def subdivide(self, cuts=None)
+  ```
 

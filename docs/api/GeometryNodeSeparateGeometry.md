@@ -35,11 +35,13 @@ node = nodes.SeparateGeometry(geometry=None, selection=None, domain='POINT')
 
  - [separate](Domain.md#separate)
   ```python
-  nodes.SeparateGeometry(geometry=geometry, selection=self.selection, domain=self.domain  ```
+  def separate(self, geometry=None)
+  ```
 
 #### [Geometry](Geometry.md)
 
  - [separate](Geometry.md#separate)
   ```python
-  nodes.SeparateGeometry(geometry=geometry, selection=selection, domain=domain  ```
+  def separate(self, geometry=None, selection=None, domain='POINT')
+  ```
 

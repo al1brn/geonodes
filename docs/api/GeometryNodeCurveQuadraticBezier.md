@@ -32,5 +32,6 @@ node = nodes.QuadraticBezier(resolution=None, start=None, middle=None, end=None)
 
  - [QuadraticBezier](Curve.md#QuadraticBezier-classmethod)
   ```python
-  nodes.QuadraticBezier(resolution=resolution, start=start, middle=middle, end=end  ```
+  def QuadraticBezier(cls, resolution=None, start=None, middle=None, end=None)
+  ```
 

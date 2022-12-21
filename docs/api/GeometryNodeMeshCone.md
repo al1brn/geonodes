@@ -41,5 +41,6 @@ node = nodes.Cone(vertices=None, side_segments=None, fill_segments=None, radius_
 
  - [Cone](Mesh.md#Cone-staticmethod)
   ```python
-  nodes.Cone(vertices=vertices, side_segments=side_segments, fill_segments=fill_segments, radius_top=radius_top, radius_bottom=radius_bottom, depth=depth, fill_type=fill_type  ```
+  def Cone(vertices=None, side_segments=None, fill_segments=None, radius_top=None, radius_bottom=None, depth=None, fill_type='NGON')
+  ```
 

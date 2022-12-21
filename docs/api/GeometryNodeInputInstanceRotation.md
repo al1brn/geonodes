@@ -23,11 +23,13 @@ node = nodes.InstanceRotation()
 
  - [rotation](Instance.md#rotation-property)
   ```python
-  nodes.InstanceRotation(  ```
+  def rotation(self)
+  ```
 
 #### [Instances](Instances.md)
 
  - [rotation](Instances.md#rotation-property)
   ```python
-  nodes.InstanceRotation(  ```
+  def rotation(self)
+  ```
 

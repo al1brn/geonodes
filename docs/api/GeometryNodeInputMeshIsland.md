@@ -24,27 +24,33 @@ node = nodes.MeshIsland()
 
  - [island](Face.md#island-property)
   ```python
-  nodes.MeshIsland(  ```
+  def island(self)
+  ```
 
  - [island_index](Face.md#island_index-property)
   ```python
-  nodes.MeshIsland(  ```
+  def island_index(self)
+  ```
 
  - [island_count](Face.md#island_count-property)
   ```python
-  nodes.MeshIsland(  ```
+  def island_count(self)
+  ```
 
 #### [Mesh](Mesh.md)
 
  - [island](Mesh.md#island-property)
   ```python
-  nodes.MeshIsland(  ```
+  def island(self)
+  ```
 
  - [island_index](Mesh.md#island_index-property)
   ```python
-  nodes.MeshIsland(  ```
+  def island_index(self)
+  ```
 
  - [island_count](Mesh.md#island_count-property)
   ```python
-  nodes.MeshIsland(  ```
+  def island_count(self)
+  ```
 

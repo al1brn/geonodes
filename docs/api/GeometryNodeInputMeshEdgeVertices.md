@@ -26,13 +26,16 @@ node = nodes.EdgeVertices()
 
  - [vertices](Edge.md#vertices-property)
   ```python
-  nodes.EdgeVertices(  ```
+  def vertices(self)
+  ```
 
  - [vertices_index](Edge.md#vertices_index-property)
   ```python
-  nodes.EdgeVertices(  ```
+  def vertices_index(self)
+  ```
 
  - [vertices_position](Edge.md#vertices_position-property)
   ```python
-  nodes.EdgeVertices(  ```
+  def vertices_position(self)
+  ```
 

@@ -29,11 +29,13 @@ node = nodes.FaceSetBoundaries(face_set=None)
 
  - [face_set_boundaries](Face.md#face_set_boundaries)
   ```python
-  nodes.FaceSetBoundaries(face_set=self.selection_index  ```
+  def face_set_boundaries(self)
+  ```
 
 #### [Mesh](Mesh.md)
 
  - [face_set_boundaries](Mesh.md#face_set_boundaries)
   ```python
-  nodes.FaceSetBoundaries(face_set=face_set  ```
+  def face_set_boundaries(self, face_set=None)
+  ```
 

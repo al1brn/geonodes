@@ -23,5 +23,6 @@ node = nodes.CurveTangent()
 
  - [tangent](ControlPoint.md#tangent-property)
   ```python
-  nodes.CurveTangent(  ```
+  def tangent(self)
+  ```
 

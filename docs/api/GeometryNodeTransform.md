@@ -32,5 +32,6 @@ node = nodes.Transform(geometry=None, translation=None, rotation=None, scale=Non
 
  - [transform](Geometry.md#transform)
   ```python
-  nodes.Transform(geometry=self, translation=translation, rotation=rotation, scale=scale  ```
+  def transform(self, translation=None, rotation=None, scale=None)
+  ```
 

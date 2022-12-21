@@ -42,11 +42,13 @@ node = nodes.SampleIndex(geometry=None, value=None, index=None, clamp=False, dat
 
  - [sample_index](Domain.md#sample_index)
   ```python
-  nodes.SampleIndex(geometry=self.data_socket, value=value, index=index, clamp=clamp, data_type=data_type_, domain=self.domain  ```
+  def sample_index(self, value=None, index=None, clamp=False)
+  ```
 
 #### [Geometry](Geometry.md)
 
  - [sample_index](Geometry.md#sample_index)
   ```python
-  nodes.SampleIndex(geometry=self, value=value, index=index, clamp=clamp, data_type=data_type_, domain=domain  ```
+  def sample_index(self, value=None, index=None, clamp=False, domain='POINT')
+  ```
 

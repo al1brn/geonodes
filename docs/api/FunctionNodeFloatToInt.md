@@ -33,21 +33,26 @@ node = nodes.FloatToInteger(float=None, rounding_mode='ROUND')
 
  - [to_integer](Float.md#to_integer)
   ```python
-  nodes.FloatToInteger(float=self, rounding_mode=rounding_mode  ```
+  def to_integer(self, rounding_mode='ROUND')
+  ```
 
  - [round](Float.md#round)
   ```python
-  nodes.FloatToInteger(float=self, rounding_mode='ROUND'  ```
+  def round(self)
+  ```
 
  - [floor](Float.md#floor)
   ```python
-  nodes.FloatToInteger(float=self, rounding_mode='FLOOR'  ```
+  def floor(self)
+  ```
 
  - [ceiling](Float.md#ceiling)
   ```python
-  nodes.FloatToInteger(float=self, rounding_mode='CEILING'  ```
+  def ceiling(self)
+  ```
 
  - [truncate](Float.md#truncate)
   ```python
-  nodes.FloatToInteger(float=self, rounding_mode='TRUNCATE'  ```
+  def truncate(self)
+  ```
 

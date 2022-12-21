@@ -32,11 +32,13 @@ node = nodes.TranslateInstances(instances=None, selection=None, translation=None
 
  - [translate](Instance.md#translate)
   ```python
-  nodes.TranslateInstances(instances=self.data_socket, selection=self.selection, translation=translation, local_space=local_space  ```
+  def translate(self, translation=None, local_space=None)
+  ```
 
 #### [Instances](Instances.md)
 
  - [translate](Instances.md#translate)
   ```python
-  nodes.TranslateInstances(instances=self, selection=selection, translation=translation, local_space=local_space  ```
+  def translate(self, selection=None, translation=None, local_space=None)
+  ```
 

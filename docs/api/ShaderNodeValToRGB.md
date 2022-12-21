@@ -30,11 +30,13 @@ node = nodes.ColorRamp(fac=None)
 
  - [color_ramp](A.md#color_ramp)
   ```python
-  nodes.ColorRamp(fac=fac  ```
+  def color_ramp(fac=None)
+  ```
 
 #### [Float](Float.md)
 
  - [color_ramp](Float.md#color_ramp-property)
   ```python
-  nodes.ColorRamp(fac=self  ```
+  def color_ramp(self)
+  ```
 

@@ -23,5 +23,6 @@ node = nodes.Material()
 
  - [Material](Material.md#Material-classmethod)
   ```python
-  nodes.Material(  ```
+  def Material(cls)
+  ```
 

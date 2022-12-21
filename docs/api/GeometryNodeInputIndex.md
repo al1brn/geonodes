@@ -23,15 +23,18 @@ node = nodes.Index()
 
  - [index](Domain.md#index-property)
   ```python
-  nodes.Index(  ```
+  def index(self)
+  ```
 
  - [domain_index](Domain.md#domain_index-property)
   ```python
-  nodes.Index(  ```
+  def domain_index(self)
+  ```
 
 #### [Geometry](Geometry.md)
 
  - [index](Geometry.md#index-property)
   ```python
-  nodes.Index(  ```
+  def index(self)
+  ```
 

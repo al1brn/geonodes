@@ -31,33 +31,40 @@ node = nodes.SetMaterial(geometry=None, selection=None, material=None)
 
  - [set_material](Face.md#set_material)
   ```python
-  nodes.SetMaterial(geometry=self.data_socket, selection=self.selection, material=material  ```
+  def set_material(self, material=None)
+  ```
 
  - [material](Face.md#material-property)
   ```python
-  nodes.SetMaterial(geometry=geometry, selection=selection, material=material  ```
+  def material(self)
+  ```
 
  - [material](Face.md#material)
   ```python
-  nodes.SetMaterial(geometry=self.data_socket, selection=self.selection, material=attr_value  ```
+  def material(self, attr_value)
+  ```
 
 #### [Geometry](Geometry.md)
 
  - [set_material](Geometry.md#set_material)
   ```python
-  nodes.SetMaterial(geometry=self, selection=selection, material=material  ```
+  def set_material(self, selection=None, material=None)
+  ```
 
 #### [Spline](Spline.md)
 
  - [set_material](Spline.md#set_material)
   ```python
-  nodes.SetMaterial(geometry=self.data_socket, selection=self.selection, material=material  ```
+  def set_material(self, material=None)
+  ```
 
  - [material](Spline.md#material-property)
   ```python
-  nodes.SetMaterial(geometry=geometry, selection=selection, material=material  ```
+  def material(self)
+  ```
 
  - [material](Spline.md#material)
   ```python
-  nodes.SetMaterial(geometry=self.data_socket, selection=self.selection, material=attr_value  ```
+  def material(self, attr_value)
+  ```
 

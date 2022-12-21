@@ -29,5 +29,6 @@ node = nodes.Integer(integer=0)
 
  - [Integer](Integer.md#Integer-classmethod)
   ```python
-  nodes.Integer(integer=integer  ```
+  def Integer(cls, integer=0)
+  ```
 

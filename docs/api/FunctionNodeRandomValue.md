@@ -42,53 +42,65 @@ node = nodes.RandomValue(min=None, max=None, probability=None, ID=None, seed=Non
 
  - [random_float](A.md#random_float)
   ```python
-  nodes.RandomValue(min=min, max=max, probability=None, ID=ID, seed=seed, data_type='FLOAT'  ```
+  def random_float(min=None, max=None, ID=None, seed=None)
+  ```
 
  - [random_integer](A.md#random_integer)
   ```python
-  nodes.RandomValue(min=min, max=max, probability=None, ID=ID, seed=seed, data_type='INT'  ```
+  def random_integer(min=None, max=None, ID=None, seed=None)
+  ```
 
  - [random_vector](A.md#random_vector)
   ```python
-  nodes.RandomValue(min=min, max=max, probability=None, ID=ID, seed=seed, data_type='FLOAT_VECTOR'  ```
+  def random_vector(min=None, max=None, ID=None, seed=None)
+  ```
 
  - [random_boolean](A.md#random_boolean)
   ```python
-  nodes.RandomValue(min=None, max=None, probability=probability, ID=ID, seed=seed, data_type='BOOLEAN'  ```
+  def random_boolean(probability=None, ID=None, seed=None)
+  ```
 
 #### [Domain](Domain.md)
 
  - [random_float](Domain.md#random_float)
   ```python
-  nodes.RandomValue(min=min, max=max, probability=None, ID=ID, seed=seed, data_type='FLOAT'  ```
+  def random_float(self, min=None, max=None, ID=None, seed=None)
+  ```
 
  - [random_integer](Domain.md#random_integer)
   ```python
-  nodes.RandomValue(min=min, max=max, probability=None, ID=ID, seed=seed, data_type='INT'  ```
+  def random_integer(self, min=None, max=None, ID=None, seed=None)
+  ```
 
  - [random_vector](Domain.md#random_vector)
   ```python
-  nodes.RandomValue(min=min, max=max, probability=None, ID=ID, seed=seed, data_type='FLOAT_VECTOR'  ```
+  def random_vector(self, min=None, max=None, ID=None, seed=None)
+  ```
 
  - [random_boolean](Domain.md#random_boolean)
   ```python
-  nodes.RandomValue(min=None, max=None, probability=probability, ID=ID, seed=seed, data_type='BOOLEAN'  ```
+  def random_boolean(self, probability=None, ID=None, seed=None)
+  ```
 
 #### [Geometry](Geometry.md)
 
  - [random_float](Geometry.md#random_float)
   ```python
-  nodes.RandomValue(min=min, max=max, probability=None, ID=ID, seed=seed, data_type='FLOAT'  ```
+  def random_float(self, min=None, max=None, ID=None, seed=None)
+  ```
 
  - [random_integer](Geometry.md#random_integer)
   ```python
-  nodes.RandomValue(min=min, max=max, probability=None, ID=ID, seed=seed, data_type='INT'  ```
+  def random_integer(self, min=None, max=None, ID=None, seed=None)
+  ```
 
  - [random_vector](Geometry.md#random_vector)
   ```python
-  nodes.RandomValue(min=min, max=max, probability=None, ID=ID, seed=seed, data_type='FLOAT_VECTOR'  ```
+  def random_vector(self, min=None, max=None, ID=None, seed=None)
+  ```
 
  - [random_boolean](Geometry.md#random_boolean)
   ```python
-  nodes.RandomValue(min=None, max=None, probability=probability, ID=ID, seed=seed, data_type='BOOLEAN'  ```
+  def random_boolean(self, probability=None, ID=None, seed=None)
+  ```
 

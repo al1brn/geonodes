@@ -36,59 +36,73 @@ node = nodes.SeparateColor(color=None, mode='RGB')
 
  - [separate_rgb](A.md#separate_rgb)
   ```python
-  nodes.SeparateColor(color=color, mode='RGB'  ```
+  def separate_rgb(color=None)
+  ```
 
  - [separate_hsv](A.md#separate_hsv)
   ```python
-  nodes.SeparateColor(color=color, mode='HSV'  ```
+  def separate_hsv(color=None)
+  ```
 
  - [separate_hsl](A.md#separate_hsl)
   ```python
-  nodes.SeparateColor(color=color, mode='HSL'  ```
+  def separate_hsl(color=None)
+  ```
 
 #### [Color](Color.md)
 
  - [rgb](Color.md#rgb-property)
   ```python
-  nodes.SeparateColor(color=self, mode='RGB'  ```
+  def rgb(self)
+  ```
 
  - [hsv](Color.md#hsv-property)
   ```python
-  nodes.SeparateColor(color=self, mode='HSV'  ```
+  def hsv(self)
+  ```
 
  - [hsl](Color.md#hsl-property)
   ```python
-  nodes.SeparateColor(color=self, mode='HSL'  ```
+  def hsl(self)
+  ```
 
  - [alpha](Color.md#alpha-property)
   ```python
-  nodes.SeparateColor(color=self, mode=RGB  ```
+  def alpha(self)
+  ```
 
  - [red](Color.md#red-property)
   ```python
-  nodes.SeparateColor(color=self, mode=RGB  ```
+  def red(self)
+  ```
 
  - [green](Color.md#green-property)
   ```python
-  nodes.SeparateColor(color=self, mode=RGB  ```
+  def green(self)
+  ```
 
  - [blue](Color.md#blue-property)
   ```python
-  nodes.SeparateColor(color=self, mode=RGB  ```
+  def blue(self)
+  ```
 
  - [hue](Color.md#hue-property)
   ```python
-  nodes.SeparateColor(color=self, mode=HSV  ```
+  def hue(self)
+  ```
 
  - [saturation](Color.md#saturation-property)
   ```python
-  nodes.SeparateColor(color=self, mode=HSV  ```
+  def saturation(self)
+  ```
 
  - [value](Color.md#value-property)
   ```python
-  nodes.SeparateColor(color=self, mode=HSV  ```
+  def value(self)
+  ```
 
  - [lightness](Color.md#lightness-property)
   ```python
-  nodes.SeparateColor(color=self, mode=HSL  ```
+  def lightness(self)
+  ```
 

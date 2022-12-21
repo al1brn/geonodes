@@ -36,9 +36,11 @@ node = nodes.CurveLine(start=None, end=None, direction=None, length=None, mode='
 
  - [Line](Curve.md#Line-classmethod)
   ```python
-  nodes.CurveLine(start=start, end=end, direction=None, length=None, mode='POINTS'  ```
+  def Line(cls, start=None, end=None)
+  ```
 
  - [LineDirection](Curve.md#LineDirection-classmethod)
   ```python
-  nodes.CurveLine(start=start, end=None, direction=direction, length=length, mode='DIRECTION'  ```
+  def LineDirection(cls, start=None, direction=None, length=None)
+  ```
 

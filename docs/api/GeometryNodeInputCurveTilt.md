@@ -23,5 +23,6 @@ node = nodes.CurveTilt()
 
  - [tilt](ControlPoint.md#tilt-property)
   ```python
-  nodes.CurveTilt(  ```
+  def tilt(self)
+  ```
 

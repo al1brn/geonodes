@@ -38,33 +38,40 @@ node = nodes.ScaleElements(geometry=None, selection=None, scale=None, center=Non
 
  - [scale_uniform](Edge.md#scale_uniform)
   ```python
-  nodes.ScaleElements(geometry=self.data_socket, selection=self.selection, scale=scale, center=center, axis=None, domain=self.domain, scale_mode='UNIFORM'  ```
+  def scale_uniform(self, scale=None, center=None)
+  ```
 
  - [scale_single_axis](Edge.md#scale_single_axis)
   ```python
-  nodes.ScaleElements(geometry=self.data_socket, selection=self.selection, scale=scale, center=center, axis=axis, domain=self.domain, scale_mode='SINGLE_AXIS'  ```
+  def scale_single_axis(self, scale=None, center=None, axis=None)
+  ```
 
 #### [Face](Face.md)
 
  - [scale_uniform](Face.md#scale_uniform)
   ```python
-  nodes.ScaleElements(geometry=self.data_socket, selection=self.selection, scale=scale, center=center, axis=None, domain=self.domain, scale_mode='UNIFORM'  ```
+  def scale_uniform(self, scale=None, center=None)
+  ```
 
  - [scale_single_axis](Face.md#scale_single_axis)
   ```python
-  nodes.ScaleElements(geometry=self.data_socket, selection=self.selection, scale=scale, center=center, axis=axis, domain=self.domain, scale_mode='SINGLE_AXIS'  ```
+  def scale_single_axis(self, scale=None, center=None, axis=None)
+  ```
 
 #### [Mesh](Mesh.md)
 
  - [scale_elements](Mesh.md#scale_elements)
   ```python
-  nodes.ScaleElements(geometry=self, selection=selection, scale=scale, center=center, axis=axis, domain=domain, scale_mode=scale_mode  ```
+  def scale_elements(self, selection=None, scale=None, center=None, axis=None, domain='FACE', scale_mode='UNIFORM')
+  ```
 
  - [scale_uniform](Mesh.md#scale_uniform)
   ```python
-  nodes.ScaleElements(geometry=self, selection=selection, scale=scale, center=center, axis=None, domain=domain, scale_mode='UNIFORM'  ```
+  def scale_uniform(self, selection=None, scale=None, center=None, domain='FACE')
+  ```
 
  - [scale_single_axis](Mesh.md#scale_single_axis)
   ```python
-  nodes.ScaleElements(geometry=self, selection=selection, scale=scale, center=center, axis=axis, domain=domain, scale_mode='SINGLE_AXIS'  ```
+  def scale_single_axis(self, selection=None, scale=None, center=None, axis=None, domain='FACE')
+  ```
 

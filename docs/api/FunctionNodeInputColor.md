@@ -23,5 +23,6 @@ node = nodes.Color()
 
  - [Color](Color.md#Color-classmethod)
   ```python
-  nodes.Color(  ```
+  def Color(cls)
+  ```
 

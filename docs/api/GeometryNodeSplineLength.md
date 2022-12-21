@@ -24,5 +24,6 @@ node = nodes.SplineLength()
 
  - [length](Spline.md#length-property)
   ```python
-  nodes.SplineLength(  ```
+  def length(self)
+  ```
 

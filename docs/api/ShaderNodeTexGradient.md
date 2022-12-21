@@ -34,33 +34,41 @@ node = nodes.GradientTexture(vector=None, gradient_type='LINEAR')
 
  - [gradient](Texture.md#gradient-staticmethod)
   ```python
-  nodes.GradientTexture(vector=vector, gradient_type=gradient_type  ```
+  def gradient(vector=None, gradient_type='LINEAR')
+  ```
 
  - [gradient_linear](Texture.md#gradient_linear-staticmethod)
   ```python
-  nodes.GradientTexture(vector=vector, gradient_type='LINEAR'  ```
+  def gradient_linear(vector=None)
+  ```
 
  - [gradient_quadratic](Texture.md#gradient_quadratic-staticmethod)
   ```python
-  nodes.GradientTexture(vector=vector, gradient_type='QUADRATIC'  ```
+  def gradient_quadratic(vector=None)
+  ```
 
  - [gradient_easing](Texture.md#gradient_easing-staticmethod)
   ```python
-  nodes.GradientTexture(vector=vector, gradient_type='EASING'  ```
+  def gradient_easing(vector=None)
+  ```
 
  - [gradient_diagonal](Texture.md#gradient_diagonal-staticmethod)
   ```python
-  nodes.GradientTexture(vector=vector, gradient_type='DIAGONAL'  ```
+  def gradient_diagonal(vector=None)
+  ```
 
  - [gradient_spherical](Texture.md#gradient_spherical-staticmethod)
   ```python
-  nodes.GradientTexture(vector=vector, gradient_type='SPHERICAL'  ```
+  def gradient_spherical(vector=None)
+  ```
 
  - [gradient_quadratic_sphere](Texture.md#gradient_quadratic_sphere-staticmethod)
   ```python
-  nodes.GradientTexture(vector=vector, gradient_type='QUADRATIC_SPHERE'  ```
+  def gradient_quadratic_sphere(vector=None)
+  ```
 
  - [gradient_radial](Texture.md#gradient_radial-staticmethod)
   ```python
-  nodes.GradientTexture(vector=vector, gradient_type='RADIAL'  ```
+  def gradient_radial(vector=None)
+  ```
 

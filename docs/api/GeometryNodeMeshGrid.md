@@ -32,5 +32,6 @@ node = nodes.Grid(size_x=None, size_y=None, vertices_x=None, vertices_y=None)
 
  - [Grid](Mesh.md#Grid-classmethod)
   ```python
-  nodes.Grid(size_x=size_x, size_y=size_y, vertices_x=vertices_x, vertices_y=vertices_y  ```
+  def Grid(cls, size_x=None, size_y=None, vertices_x=None, vertices_y=None)
+  ```
 

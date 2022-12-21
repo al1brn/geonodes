@@ -31,11 +31,13 @@ node = nodes.SliceString(string=None, position=None, length=None)
 
  - [slice_string](A.md#slice_string)
   ```python
-  nodes.SliceString(string=string, position=position, length=length  ```
+  def slice_string(string=None, position=None, length=None)
+  ```
 
 #### [String](String.md)
 
  - [slice](String.md#slice)
   ```python
-  nodes.SliceString(string=self, position=position, length=length  ```
+  def slice(self, position=None, length=None)
+  ```
 

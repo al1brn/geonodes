@@ -29,5 +29,6 @@ node = nodes.Boolean(boolean=False)
 
  - [Boolean](Boolean.md#Boolean-classmethod)
   ```python
-  nodes.Boolean(boolean=boolean  ```
+  def Boolean(cls, boolean=False)
+  ```
 

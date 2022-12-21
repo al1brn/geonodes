@@ -23,17 +23,20 @@ node = nodes.Normal()
 
  - [normal](Domain.md#normal-property)
   ```python
-  nodes.Normal(  ```
+  def normal(self)
+  ```
 
 #### [Geometry](Geometry.md)
 
  - [normal](Geometry.md#normal-property)
   ```python
-  nodes.Normal(  ```
+  def normal(self)
+  ```
 
 #### [Spline](Spline.md)
 
  - [normal](Spline.md#normal-property)
   ```python
-  nodes.Normal(  ```
+  def normal(self)
+  ```
 

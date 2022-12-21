@@ -35,45 +35,53 @@ node = nodes.InstanceOnPoints(points=None, selection=None, instance=None, pick_i
 
  - [instance_on_points](CloudPoint.md#instance_on_points)
   ```python
-  nodes.InstanceOnPoints(points=self.data_socket, selection=self.selection, instance=instance, pick_instance=pick_instance, instance_index=instance_index, rotation=rotation, scale=scale  ```
+  def instance_on_points(self, instance=None, pick_instance=None, instance_index=None, rotation=None, scale=None)
+  ```
 
 #### [ControlPoint](ControlPoint.md)
 
  - [instance_on_points](ControlPoint.md#instance_on_points)
   ```python
-  nodes.InstanceOnPoints(points=self.data_socket, selection=self.selection, instance=instance, pick_instance=pick_instance, instance_index=instance_index, rotation=rotation, scale=scale  ```
+  def instance_on_points(self, instance=None, pick_instance=None, instance_index=None, rotation=None, scale=None)
+  ```
 
 #### [Curve](Curve.md)
 
  - [instance_on_points](Curve.md#instance_on_points)
   ```python
-  nodes.InstanceOnPoints(points=self, selection=selection, instance=instance, pick_instance=pick_instance, instance_index=instance_index, rotation=rotation, scale=scale  ```
+  def instance_on_points(self, selection=None, instance=None, pick_instance=None, instance_index=None, rotation=None, scale=None)
+  ```
 
 #### [Instances](Instances.md)
 
  - [InstanceOnPoints](Instances.md#InstanceOnPoints-classmethod)
   ```python
-  nodes.InstanceOnPoints(points=points, selection=selection, instance=instance, pick_instance=pick_instance, instance_index=instance_index, rotation=rotation, scale=scale  ```
+  def InstanceOnPoints(cls, points=None, selection=None, instance=None, pick_instance=None, instance_index=None, rotation=None, scale=None)
+  ```
 
  - [on_points](Instances.md#on_points)
   ```python
-  nodes.InstanceOnPoints(points=points, selection=selection, instance=self, pick_instance=pick_instance, instance_index=instance_index, rotation=rotation, scale=scale  ```
+  def on_points(self, points=None, selection=None, pick_instance=None, instance_index=None, rotation=None, scale=None)
+  ```
 
 #### [Mesh](Mesh.md)
 
  - [instance_on_points](Mesh.md#instance_on_points)
   ```python
-  nodes.InstanceOnPoints(points=self, selection=selection, instance=instance, pick_instance=pick_instance, instance_index=instance_index, rotation=rotation, scale=scale  ```
+  def instance_on_points(self, selection=None, instance=None, pick_instance=None, instance_index=None, rotation=None, scale=None)
+  ```
 
 #### [Points](Points.md)
 
  - [instance_on_points](Points.md#instance_on_points)
   ```python
-  nodes.InstanceOnPoints(points=self, selection=selection, instance=instance, pick_instance=pick_instance, instance_index=instance_index, rotation=rotation, scale=scale  ```
+  def instance_on_points(self, selection=None, instance=None, pick_instance=None, instance_index=None, rotation=None, scale=None)
+  ```
 
 #### [Vertex](Vertex.md)
 
  - [instance_on_points](Vertex.md#instance_on_points)
   ```python
-  nodes.InstanceOnPoints(points=self.data_socket, selection=self.selection, instance=instance, pick_instance=pick_instance, instance_index=instance_index, rotation=rotation, scale=scale  ```
+  def instance_on_points(self, instance=None, pick_instance=None, instance_index=None, rotation=None, scale=None)
+  ```
 

@@ -32,5 +32,6 @@ node = nodes.Cube(size=None, vertices_x=None, vertices_y=None, vertices_z=None)
 
  - [Cube](Mesh.md#Cube-classmethod)
   ```python
-  nodes.Cube(size=size, vertices_x=vertices_x, vertices_y=vertices_y, vertices_z=vertices_z  ```
+  def Cube(cls, size=None, vertices_x=None, vertices_y=None, vertices_z=None)
+  ```
 

@@ -24,9 +24,11 @@ node = nodes.SpecialCharacters()
 
  - [LineBreak](String.md#LineBreak-staticmethod)
   ```python
-  nodes.SpecialCharacters(  ```
+  def LineBreak()
+  ```
 
  - [Tab](String.md#Tab-staticmethod)
   ```python
-  nodes.SpecialCharacters(  ```
+  def Tab()
+  ```
 

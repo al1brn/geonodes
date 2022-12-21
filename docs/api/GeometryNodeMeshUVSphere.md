@@ -31,5 +31,6 @@ node = nodes.UvSphere(segments=None, rings=None, radius=None)
 
  - [Circle](Mesh.md#Circle-classmethod)
   ```python
-  nodes.UvSphere(segments=segments, rings=rings, radius=radius  ```
+  def Circle(cls, segments=None, rings=None, radius=None)
+  ```
 

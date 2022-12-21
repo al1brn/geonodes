@@ -29,11 +29,13 @@ node = nodes.JoinGeometry(*geometry)
 
  - [join_geometry](A.md#join_geometry)
   ```python
-  nodes.JoinGeometry(*geometry  ```
+  def join_geometry(*geometry)
+  ```
 
 #### [Geometry](Geometry.md)
 
  - [join](Geometry.md#join)
   ```python
-  nodes.JoinGeometry(*geometry  ```
+  def join(*geometry)
+  ```
 

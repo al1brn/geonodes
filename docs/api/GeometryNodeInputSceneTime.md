@@ -24,9 +24,11 @@ node = nodes.SceneTime()
 
  - [Seconds](Float.md#Seconds-classmethod)
   ```python
-  nodes.SceneTime(  ```
+  def Seconds(cls)
+  ```
 
  - [Frame](Float.md#Frame-classmethod)
   ```python
-  nodes.SceneTime(  ```
+  def Frame(cls)
+  ```
 

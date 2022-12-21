@@ -37,13 +37,16 @@ node = nodes.PointsToVolume(points=None, density=None, voxel_size=None, voxel_am
 
  - [to_volume](Points.md#to_volume)
   ```python
-  nodes.PointsToVolume(points=self, density=density, voxel_size=voxel_size, voxel_amount=voxel_amount, radius=radius, resolution_mode=resolution_mode  ```
+  def to_volume(self, density=None, voxel_size=None, voxel_amount=None, radius=None, resolution_mode='VOXEL_AMOUNT')
+  ```
 
  - [to_volume_size](Points.md#to_volume_size)
   ```python
-  nodes.PointsToVolume(points=self, density=density, voxel_size=voxel_size, voxel_amount=None, radius=radius, resolution_mode='VOXEL_SIZE'  ```
+  def to_volume_size(self, density=None, voxel_size=None, radius=None)
+  ```
 
  - [to_volume_amount](Points.md#to_volume_amount)
   ```python
-  nodes.PointsToVolume(points=self, density=density, voxel_size=None, voxel_amount=voxel_amount, radius=radius, resolution_mode='VOXEL_AMOUNT'  ```
+  def to_volume_amount(self, density=None, voxel_amount=None, radius=None)
+  ```
 

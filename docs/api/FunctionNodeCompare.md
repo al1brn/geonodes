@@ -44,223 +44,276 @@ node = nodes.Compare(a=None, b=None, c=None, angle=None, epsilon=None, data_type
 
  - [compare](A.md#compare)
   ```python
-  nodes.Compare(a=a, b=b, c=c, angle=angle, epsilon=epsilon, data_type=data_type, mode=mode, operation=operation  ```
+  def compare(a=None, b=None, c=None, angle=None, epsilon=None, data_type='FLOAT', mode='ELEMENT', operation='GREATER_THAN')
+  ```
 
 #### [Color](Color.md)
 
  - [compare](Color.md#compare)
   ```python
-  nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=epsilon, data_type='COLOR', mode='ELEMENT', operation=operation  ```
+  def compare(self, b=None, epsilon=None, operation='GREATER_THAN')
+  ```
 
  - [darker](Color.md#darker)
   ```python
-  nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type='COLOR', mode='ELEMENT', operation='DARKER'  ```
+  def darker(self, b=None)
+  ```
 
  - [brighter](Color.md#brighter)
   ```python
-  nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type='COLOR', mode='ELEMENT', operation='BRIGHTER'  ```
+  def brighter(self, b=None)
+  ```
 
  - [equal](Color.md#equal)
   ```python
-  nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=epsilon, data_type='COLOR', mode='ELEMENT', operation='EQUAL'  ```
+  def equal(self, b=None, epsilon=None)
+  ```
 
  - [equal](Color.md#equal)
   ```python
-  nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=epsilon, data_type='COLOR', mode='ELEMENT', operation='EQUAL'  ```
+  def equal(self, b=None, epsilon=None)
+  ```
 
 #### [Float](Float.md)
 
  - [compare](Float.md#compare)
   ```python
-  nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=epsilon, data_type='FLOAT', mode='ELEMENT', operation=operation  ```
+  def compare(self, b=None, epsilon=None, operation='GREATER_THAN')
+  ```
 
  - [less_than](Float.md#less_than)
   ```python
-  nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type='FLOAT', mode='ELEMENT', operation='LESS_THAN'  ```
+  def less_than(self, b=None)
+  ```
 
  - [less_equal](Float.md#less_equal)
   ```python
-  nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type='FLOAT', mode='ELEMENT', operation='LESS_EQUAL'  ```
+  def less_equal(self, b=None)
+  ```
 
  - [greater_than](Float.md#greater_than)
   ```python
-  nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type='FLOAT', mode='ELEMENT', operation='GREATER_THAN'  ```
+  def greater_than(self, b=None)
+  ```
 
  - [greater_equal](Float.md#greater_equal)
   ```python
-  nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type='FLOAT', mode='ELEMENT', operation='GREATER_EQUAL'  ```
+  def greater_equal(self, b=None)
+  ```
 
  - [equal](Float.md#equal)
   ```python
-  nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=epsilon, data_type='FLOAT', mode='ELEMENT', operation='EQUAL'  ```
+  def equal(self, b=None, epsilon=None)
+  ```
 
  - [not_equal](Float.md#not_equal)
   ```python
-  nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=epsilon, data_type='FLOAT', mode='ELEMENT', operation='NOT_EQUAL'  ```
+  def not_equal(self, b=None, epsilon=None)
+  ```
 
 #### [Integer](Integer.md)
 
  - [compare](Integer.md#compare)
   ```python
-  nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type='INT', mode='ELEMENT', operation=operation  ```
+  def compare(self, b=None, operation='GREATER_THAN')
+  ```
 
  - [less_than](Integer.md#less_than)
   ```python
-  nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type='INT', mode='ELEMENT', operation='LESS_THAN'  ```
+  def less_than(self, b=None)
+  ```
 
  - [less_equal](Integer.md#less_equal)
   ```python
-  nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type='INT', mode='ELEMENT', operation='LESS_EQUAL'  ```
+  def less_equal(self, b=None)
+  ```
 
  - [greater_than](Integer.md#greater_than)
   ```python
-  nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type='INT', mode='ELEMENT', operation='GREATER_THAN'  ```
+  def greater_than(self, b=None)
+  ```
 
  - [greater_equal](Integer.md#greater_equal)
   ```python
-  nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type='INT', mode='ELEMENT', operation='GREATER_EQUAL'  ```
+  def greater_equal(self, b=None)
+  ```
 
  - [equal](Integer.md#equal)
   ```python
-  nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type='INT', mode='ELEMENT', operation='EQUAL'  ```
+  def equal(self, b=None)
+  ```
 
  - [not_equal](Integer.md#not_equal)
   ```python
-  nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type='INT', mode='ELEMENT', operation='NOT_EQUAL'  ```
+  def not_equal(self, b=None)
+  ```
 
 #### [String](String.md)
 
  - [equal](String.md#equal)
   ```python
-  nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type='STRING', mode='ELEMENT', operation='EQUAL'  ```
+  def equal(self, b=None)
+  ```
 
  - [not_equal](String.md#not_equal)
   ```python
-  nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type='STRING', mode='ELEMENT', operation='NOT_EQUAL'  ```
+  def not_equal(self, b=None)
+  ```
 
 #### [Vector](Vector.md)
 
  - [compare](Vector.md#compare)
   ```python
-  nodes.Compare(a=self, b=b, c=c, angle=angle, epsilon=epsilon, data_type='VECTOR', mode=mode, operation=operation  ```
+  def compare(self, b=None, c=None, angle=None, epsilon=None, mode='ELEMENT', operation='GREATER_THAN')
+  ```
 
  - [elements_less_than](Vector.md#elements_less_than)
   ```python
-  nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type='VECTOR', mode='ELEMENT', operation='LESS_THAN'  ```
+  def elements_less_than(self, b=None)
+  ```
 
  - [elements_less_equal](Vector.md#elements_less_equal)
   ```python
-  nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type='VECTOR', mode='ELEMENT', operation='LESS_EQUAL'  ```
+  def elements_less_equal(self, b=None)
+  ```
 
  - [elements_greater_than](Vector.md#elements_greater_than)
   ```python
-  nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type='VECTOR', mode='ELEMENT', operation='GREATER_THAN'  ```
+  def elements_greater_than(self, b=None)
+  ```
 
  - [elements_greater_equal](Vector.md#elements_greater_equal)
   ```python
-  nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type='VECTOR', mode='ELEMENT', operation='GREATER_EQUAL'  ```
+  def elements_greater_equal(self, b=None)
+  ```
 
  - [elements_equal](Vector.md#elements_equal)
   ```python
-  nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=epsilon, data_type='VECTOR', mode='ELEMENT', operation='EQUAL'  ```
+  def elements_equal(self, b=None, epsilon=None)
+  ```
 
  - [elements_not_equal](Vector.md#elements_not_equal)
   ```python
-  nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=epsilon, data_type='VECTOR', mode='ELEMENT', operation='NOT_EQUAL'  ```
+  def elements_not_equal(self, b=None, epsilon=None)
+  ```
 
  - [length_less_than](Vector.md#length_less_than)
   ```python
-  nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type='VECTOR', mode='LENGTH', operation='LESS_THAN'  ```
+  def length_less_than(self, b=None)
+  ```
 
  - [length_less_equal](Vector.md#length_less_equal)
   ```python
-  nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type='VECTOR', mode='LENGTH', operation='LESS_EQUAL'  ```
+  def length_less_equal(self, b=None)
+  ```
 
  - [length_greater_than](Vector.md#length_greater_than)
   ```python
-  nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type='VECTOR', mode='LENGTH', operation='GREATER_THAN'  ```
+  def length_greater_than(self, b=None)
+  ```
 
  - [length_greater_equal](Vector.md#length_greater_equal)
   ```python
-  nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type='VECTOR', mode='LENGTH', operation='GREATER_EQUAL'  ```
+  def length_greater_equal(self, b=None)
+  ```
 
  - [length_equal](Vector.md#length_equal)
   ```python
-  nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=epsilon, data_type='VECTOR', mode='LENGTH', operation='EQUAL'  ```
+  def length_equal(self, b=None, epsilon=None)
+  ```
 
  - [length_not_equal](Vector.md#length_not_equal)
   ```python
-  nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=epsilon, data_type='VECTOR', mode='LENGTH', operation='NOT_EQUAL'  ```
+  def length_not_equal(self, b=None, epsilon=None)
+  ```
 
  - [average_less_than](Vector.md#average_less_than)
   ```python
-  nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type='VECTOR', mode='AVERAGE', operation='LESS_THAN'  ```
+  def average_less_than(self, b=None)
+  ```
 
  - [average_less_equal](Vector.md#average_less_equal)
   ```python
-  nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type='VECTOR', mode='AVERAGE', operation='LESS_EQUAL'  ```
+  def average_less_equal(self, b=None)
+  ```
 
  - [average_greater_than](Vector.md#average_greater_than)
   ```python
-  nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type='VECTOR', mode='AVERAGE', operation='GREATER_THAN'  ```
+  def average_greater_than(self, b=None)
+  ```
 
  - [average_greater_equal](Vector.md#average_greater_equal)
   ```python
-  nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type='VECTOR', mode='AVERAGE', operation='GREATER_EQUAL'  ```
+  def average_greater_equal(self, b=None)
+  ```
 
  - [average_equal](Vector.md#average_equal)
   ```python
-  nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=epsilon, data_type='VECTOR', mode='AVERAGE', operation='EQUAL'  ```
+  def average_equal(self, b=None, epsilon=None)
+  ```
 
  - [average_not_equal](Vector.md#average_not_equal)
   ```python
-  nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=epsilon, data_type='VECTOR', mode='AVERAGE', operation='NOT_EQUAL'  ```
+  def average_not_equal(self, b=None, epsilon=None)
+  ```
 
  - [dot_product_less_than](Vector.md#dot_product_less_than)
   ```python
-  nodes.Compare(a=self, b=b, c=c, angle=None, epsilon=None, data_type='VECTOR', mode='DOT_PRODUCT', operation='LESS_THAN'  ```
+  def dot_product_less_than(self, b=None, c=None)
+  ```
 
  - [dot_product_less_equal](Vector.md#dot_product_less_equal)
   ```python
-  nodes.Compare(a=self, b=b, c=c, angle=None, epsilon=None, data_type='VECTOR', mode='DOT_PRODUCT', operation='LESS_EQUAL'  ```
+  def dot_product_less_equal(self, b=None, c=None)
+  ```
 
  - [dot_product_greater_than](Vector.md#dot_product_greater_than)
   ```python
-  nodes.Compare(a=self, b=b, c=c, angle=None, epsilon=None, data_type='VECTOR', mode='DOT_PRODUCT', operation='GREATER_THAN'  ```
+  def dot_product_greater_than(self, b=None, c=None)
+  ```
 
  - [dot_product_greater_equal](Vector.md#dot_product_greater_equal)
   ```python
-  nodes.Compare(a=self, b=b, c=c, angle=None, epsilon=None, data_type='VECTOR', mode='DOT_PRODUCT', operation='GREATER_EQUAL'  ```
+  def dot_product_greater_equal(self, b=None, c=None)
+  ```
 
  - [dot_product_equal](Vector.md#dot_product_equal)
   ```python
-  nodes.Compare(a=self, b=b, c=c, angle=None, epsilon=epsilon, data_type='VECTOR', mode='DOT_PRODUCT', operation='EQUAL'  ```
+  def dot_product_equal(self, b=None, c=None, epsilon=None)
+  ```
 
  - [dot_product_not_equal](Vector.md#dot_product_not_equal)
   ```python
-  nodes.Compare(a=self, b=b, c=c, angle=None, epsilon=epsilon, data_type='VECTOR', mode='DOT_PRODUCT', operation='NOT_EQUAL'  ```
+  def dot_product_not_equal(self, b=None, c=None, epsilon=None)
+  ```
 
  - [direction_less_than](Vector.md#direction_less_than)
   ```python
-  nodes.Compare(a=self, b=b, c=None, angle=angle, epsilon=None, data_type='VECTOR', mode='DIRECTION', operation='LESS_THAN'  ```
+  def direction_less_than(self, b=None, angle=None)
+  ```
 
  - [direction_less_equal](Vector.md#direction_less_equal)
   ```python
-  nodes.Compare(a=self, b=b, c=None, angle=angle, epsilon=None, data_type='VECTOR', mode='DIRECTION', operation='LESS_EQUAL'  ```
+  def direction_less_equal(self, b=None, angle=None)
+  ```
 
  - [direction_greater_than](Vector.md#direction_greater_than)
   ```python
-  nodes.Compare(a=self, b=b, c=None, angle=angle, epsilon=None, data_type='VECTOR', mode='DIRECTION', operation='GREATER_THAN'  ```
+  def direction_greater_than(self, b=None, angle=None)
+  ```
 
  - [direction_greater_equal](Vector.md#direction_greater_equal)
   ```python
-  nodes.Compare(a=self, b=b, c=None, angle=angle, epsilon=None, data_type='VECTOR', mode='DIRECTION', operation='GREATER_EQUAL'  ```
+  def direction_greater_equal(self, b=None, angle=None)
+  ```
 
  - [direction_equal](Vector.md#direction_equal)
   ```python
-  nodes.Compare(a=self, b=b, c=None, angle=angle, epsilon=epsilon, data_type='VECTOR', mode='DIRECTION', operation='EQUAL'  ```
+  def direction_equal(self, b=None, angle=None, epsilon=None)
+  ```
 
  - [direction_not_equal](Vector.md#direction_not_equal)
   ```python
-  nodes.Compare(a=self, b=b, c=None, angle=angle, epsilon=epsilon, data_type='VECTOR', mode='DIRECTION', operation='NOT_EQUAL'  ```
+  def direction_not_equal(self, b=None, angle=None, epsilon=None)
+  ```
 

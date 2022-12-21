@@ -31,5 +31,6 @@ node = nodes.CombineXyz(x=None, y=None, z=None)
 
  - [Combine](Vector.md#Combine-classmethod)
   ```python
-  nodes.CombineXyz(x=x, y=y, z=z  ```
+  def Combine(cls, x=None, y=None, z=None)
+  ```
 

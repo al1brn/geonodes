@@ -36,11 +36,13 @@ node = nodes.MeshToPoints(mesh=None, selection=None, position=None, radius=None,
 
  - [to_points](Mesh.md#to_points)
   ```python
-  nodes.MeshToPoints(mesh=self, selection=selection, position=position, radius=radius, mode=mode  ```
+  def to_points(self, selection=None, position=None, radius=None, mode='VERTICES')
+  ```
 
 #### [Vertex](Vertex.md)
 
  - [to_points](Vertex.md#to_points)
   ```python
-  nodes.MeshToPoints(mesh=self.data_socket, selection=self.selection, position=position, radius=radius, mode=mode  ```
+  def to_points(self, position=None, radius=None, mode='VERTICES')
+  ```
 

@@ -30,5 +30,6 @@ node = nodes.EndpointSelection(start_size=None, end_size=None)
 
  - [endpoint_selection](ControlPoint.md#endpoint_selection)
   ```python
-  nodes.EndpointSelection(start_size=start_size, end_size=end_size  ```
+  def endpoint_selection(self, start_size=None, end_size=None)
+  ```
 

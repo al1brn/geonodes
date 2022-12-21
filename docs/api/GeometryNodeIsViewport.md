@@ -23,5 +23,6 @@ node = nodes.IsViewport()
 
  - [is_viewport](Geometry.md#is_viewport-property)
   ```python
-  nodes.IsViewport(  ```
+  def is_viewport(self)
+  ```
 

@@ -31,11 +31,13 @@ node = nodes.ReplaceString(string=None, find=None, replace=None)
 
  - [replace_string](A.md#replace_string)
   ```python
-  nodes.ReplaceString(string=string, find=find, replace=replace  ```
+  def replace_string(string=None, find=None, replace=None)
+  ```
 
 #### [String](String.md)
 
  - [replace](String.md#replace)
   ```python
-  nodes.ReplaceString(string=self, find=find, replace=replace  ```
+  def replace(self, find=None, replace=None)
+  ```
 

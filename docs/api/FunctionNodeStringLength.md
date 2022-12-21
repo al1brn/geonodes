@@ -29,11 +29,13 @@ node = nodes.StringLength(string=None)
 
  - [string_length](A.md#string_length)
   ```python
-  nodes.StringLength(string=string  ```
+  def string_length(string=None)
+  ```
 
 #### [String](String.md)
 
  - [length](String.md#length-property)
   ```python
-  nodes.StringLength(string=self  ```
+  def length(self)
+  ```
 

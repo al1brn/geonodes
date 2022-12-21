@@ -37,13 +37,16 @@ node = nodes.DistributePointsInVolume(volume=None, density=None, seed=None, spac
 
  - [distribute_points](Volume.md#distribute_points)
   ```python
-  nodes.DistributePointsInVolume(volume=self, density=density, seed=seed, spacing=spacing, threshold=threshold, mode=mode  ```
+  def distribute_points(self, density=None, seed=None, spacing=None, threshold=None, mode='DENSITY_RANDOM')
+  ```
 
  - [distribute_points_random](Volume.md#distribute_points_random)
   ```python
-  nodes.DistributePointsInVolume(volume=self, density=density, seed=seed, spacing=None, threshold=None, mode='DENSITY_RANDOM'  ```
+  def distribute_points_random(self, density=None, seed=None)
+  ```
 
  - [distribute_points_grid](Volume.md#distribute_points_grid)
   ```python
-  nodes.DistributePointsInVolume(volume=self, density=None, seed=None, spacing=spacing, threshold=threshold, mode='DENSITY_GRID'  ```
+  def distribute_points_grid(self, spacing=None, threshold=None)
+  ```
 

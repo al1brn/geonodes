@@ -31,5 +31,6 @@ node = nodes.ShortestEdgePaths(end_vertex=None, edge_cost=None)
 
  - [shortest_edge_paths](Mesh.md#shortest_edge_paths)
   ```python
-  nodes.ShortestEdgePaths(end_vertex=end_vertex, edge_cost=edge_cost  ```
+  def shortest_edge_paths(self, end_vertex=None, edge_cost=None)
+  ```
 

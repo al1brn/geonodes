@@ -37,13 +37,16 @@ node = nodes.MeshBoolean(*mesh_2, mesh_1=None, self_intersection=None, hole_tole
 
  - [boolean_intersect](Mesh.md#boolean_intersect)
   ```python
-  nodes.MeshBoolean(*mesh_2, mesh_1=None, self_intersection=self_intersection, hole_tolerant=hole_tolerant, operation='INTERSECT'  ```
+  def boolean_intersect(*mesh_2, self_intersection=None, hole_tolerant=None)
+  ```
 
  - [boolean_union](Mesh.md#boolean_union)
   ```python
-  nodes.MeshBoolean(*mesh_2, mesh_1=None, self_intersection=self_intersection, hole_tolerant=hole_tolerant, operation='UNION'  ```
+  def boolean_union(*mesh_2, self_intersection=None, hole_tolerant=None)
+  ```
 
  - [boolean_difference](Mesh.md#boolean_difference)
   ```python
-  nodes.MeshBoolean(*mesh_2, mesh_1=self, self_intersection=self_intersection, hole_tolerant=hole_tolerant, operation='DIFFERENCE'  ```
+  def boolean_difference(self, *mesh_2, self_intersection=None, hole_tolerant=None)
+  ```
 

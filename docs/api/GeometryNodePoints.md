@@ -31,5 +31,6 @@ node = nodes.Points(count=None, position=None, radius=None)
 
  - [Points](Points.md#Points-classmethod)
   ```python
-  nodes.Points(count=count, position=position, radius=radius  ```
+  def Points(cls, count=None, position=None, radius=None)
+  ```
 

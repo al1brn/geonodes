@@ -31,9 +31,11 @@ node = nodes.SetCurveTilt(curve=None, selection=None, tilt=None)
 
  - [set_tilt](ControlPoint.md#set_tilt)
   ```python
-  nodes.SetCurveTilt(curve=self.data_socket, selection=self.selection, tilt=tilt  ```
+  def set_tilt(self, tilt=None)
+  ```
 
  - [tilt](ControlPoint.md#tilt)
   ```python
-  nodes.SetCurveTilt(curve=self.data_socket, selection=self.selection, tilt=attr_value  ```
+  def tilt(self, attr_value)
+  ```
 

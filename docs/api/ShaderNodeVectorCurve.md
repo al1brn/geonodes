@@ -30,5 +30,6 @@ node = nodes.VectorCurves(fac=None, vector=None)
 
  - [curves](Vector.md#curves)
   ```python
-  nodes.VectorCurves(fac=fac, vector=self  ```
+  def curves(self, fac=None)
+  ```
 

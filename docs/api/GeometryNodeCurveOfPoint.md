@@ -30,11 +30,13 @@ node = nodes.CurveOfPoint(point_index=None)
 
  - [curve](ControlPoint.md#curve)
   ```python
-  nodes.CurveOfPoint(point_index=self.selection_index  ```
+  def curve(self)
+  ```
 
 #### [Curve](Curve.md)
 
  - [curve_of_point](Curve.md#curve_of_point)
   ```python
-  nodes.CurveOfPoint(point_index=point_index  ```
+  def curve_of_point(self, point_index=None)
+  ```
 

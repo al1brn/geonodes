@@ -29,5 +29,6 @@ node = nodes.ConvexHull(geometry=None)
 
  - [convex_hull](Geometry.md#convex_hull-property)
   ```python
-  nodes.ConvexHull(geometry=self  ```
+  def convex_hull(self)
+  ```
 

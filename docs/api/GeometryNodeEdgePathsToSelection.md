@@ -30,5 +30,6 @@ node = nodes.EdgePathsToSelection(start_vertices=None, next_vertex_index=None)
 
  - [edge_paths_to_selection](Mesh.md#edge_paths_to_selection)
   ```python
-  nodes.EdgePathsToSelection(start_vertices=start_vertices, next_vertex_index=next_vertex_index  ```
+  def edge_paths_to_selection(self, start_vertices=None, next_vertex_index=None)
+  ```
 

@@ -24,13 +24,16 @@ node = nodes.FaceNeighbors()
 
  - [neighbors](Face.md#neighbors-property)
   ```python
-  nodes.FaceNeighbors(  ```
+  def neighbors(self)
+  ```
 
  - [neighbors_vertex_count](Face.md#neighbors_vertex_count-property)
   ```python
-  nodes.FaceNeighbors(  ```
+  def neighbors_vertex_count(self)
+  ```
 
  - [neighbors_face_count](Face.md#neighbors_face_count-property)
   ```python
-  nodes.FaceNeighbors(  ```
+  def neighbors_face_count(self)
+  ```
 

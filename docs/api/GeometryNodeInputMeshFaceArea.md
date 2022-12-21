@@ -23,5 +23,6 @@ node = nodes.FaceArea()
 
  - [area](Face.md#area-property)
   ```python
-  nodes.FaceArea(  ```
+  def area(self)
+  ```
 

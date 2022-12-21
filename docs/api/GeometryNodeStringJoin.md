@@ -30,11 +30,13 @@ node = nodes.JoinStrings(*strings, delimiter=None)
 
  - [join_strings](A.md#join_strings)
   ```python
-  nodes.JoinStrings(*strings, delimiter=delimiter  ```
+  def join_strings(*strings, delimiter=None)
+  ```
 
 #### [String](String.md)
 
  - [join](String.md#join)
   ```python
-  nodes.JoinStrings(*strings, delimiter=delimiter  ```
+  def join(*strings, delimiter=None)
+  ```
 

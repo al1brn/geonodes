@@ -29,11 +29,13 @@ node = nodes.FaceIsPlanar(threshold=None)
 
  - [is_planar](Face.md#is_planar)
   ```python
-  nodes.FaceIsPlanar(threshold=threshold  ```
+  def is_planar(self, threshold=None)
+  ```
 
 #### [Mesh](Mesh.md)
 
  - [face_is_planar](Mesh.md#face_is_planar)
   ```python
-  nodes.FaceIsPlanar(threshold=threshold  ```
+  def face_is_planar(self, threshold=None)
+  ```
 

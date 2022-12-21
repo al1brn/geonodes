@@ -29,5 +29,6 @@ node = nodes.CurveLength(curve=None)
 
  - [length](Curve.md#length-property)
   ```python
-  nodes.CurveLength(curve=self  ```
+  def length(self)
+  ```
 

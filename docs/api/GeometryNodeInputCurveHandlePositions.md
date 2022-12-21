@@ -30,13 +30,16 @@ node = nodes.CurveHandlePositions(relative=None)
 
  - [handle_positions](ControlPoint.md#handle_positions)
   ```python
-  nodes.CurveHandlePositions(relative=relative  ```
+  def handle_positions(self, relative=None)
+  ```
 
  - [left_handle_positions](ControlPoint.md#left_handle_positions-property)
   ```python
-  nodes.CurveHandlePositions(relative=None  ```
+  def left_handle_positions(self)
+  ```
 
  - [right_handle_positions](ControlPoint.md#right_handle_positions-property)
   ```python
-  nodes.CurveHandlePositions(relative=None  ```
+  def right_handle_positions(self)
+  ```
 

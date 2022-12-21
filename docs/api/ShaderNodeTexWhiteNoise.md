@@ -35,21 +35,26 @@ node = nodes.WhiteNoiseTexture(vector=None, w=None, noise_dimensions='3D')
 
  - [white_noise](Texture.md#white_noise-staticmethod)
   ```python
-  nodes.WhiteNoiseTexture(vector=vector, w=w, noise_dimensions=noise_dimensions  ```
+  def white_noise(vector=None, w=None, noise_dimensions='3D')
+  ```
 
  - [white_noise_1D](Texture.md#white_noise_1D-staticmethod)
   ```python
-  nodes.WhiteNoiseTexture(vector=None, w=w, noise_dimensions='1D'  ```
+  def white_noise_1D(w=None)
+  ```
 
  - [white_noise_2D](Texture.md#white_noise_2D-staticmethod)
   ```python
-  nodes.WhiteNoiseTexture(vector=vector, w=None, noise_dimensions='2D'  ```
+  def white_noise_2D(vector=None)
+  ```
 
  - [white_noise_3D](Texture.md#white_noise_3D-staticmethod)
   ```python
-  nodes.WhiteNoiseTexture(vector=vector, w=None, noise_dimensions='3D'  ```
+  def white_noise_3D(vector=None)
+  ```
 
  - [white_noise_4D](Texture.md#white_noise_4D-staticmethod)
   ```python
-  nodes.WhiteNoiseTexture(vector=vector, w=w, noise_dimensions='3D'  ```
+  def white_noise_4D(vector=None, w=None)
+  ```
 

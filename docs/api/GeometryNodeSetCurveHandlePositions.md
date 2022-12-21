@@ -36,21 +36,26 @@ node = nodes.SetHandlePositions(curve=None, selection=None, position=None, offse
 
  - [set_handle_positions](ControlPoint.md#set_handle_positions)
   ```python
-  nodes.SetHandlePositions(curve=self.data_socket, selection=self.selection, position=position, offset=offset, mode=mode  ```
+  def set_handle_positions(self, position=None, offset=None, mode='LEFT')
+  ```
 
  - [set_handle_positions_left](ControlPoint.md#set_handle_positions_left)
   ```python
-  nodes.SetHandlePositions(curve=curve, selection=self.selection, position=position, offset=offset, mode='LEFT'  ```
+  def set_handle_positions_left(self, curve=None, position=None, offset=None)
+  ```
 
  - [set_handle_positions_right](ControlPoint.md#set_handle_positions_right)
   ```python
-  nodes.SetHandlePositions(curve=curve, selection=self.selection, position=position, offset=offset, mode='RIGHT'  ```
+  def set_handle_positions_right(self, curve=None, position=None, offset=None)
+  ```
 
  - [left_handle_positions](ControlPoint.md#left_handle_positions)
   ```python
-  nodes.SetHandlePositions(curve=curve, selection=self.selection, position=attr_value, offset=offset, mode='LEFT'  ```
+  def left_handle_positions(self, attr_value)
+  ```
 
  - [right_handle_positions](ControlPoint.md#right_handle_positions)
   ```python
-  nodes.SetHandlePositions(curve=curve, selection=self.selection, position=attr_value, offset=offset, mode='RIGHT'  ```
+  def right_handle_positions(self, attr_value)
+  ```
 
