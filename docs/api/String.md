@@ -35,14 +35,14 @@ def Input(cls, value=None, name="CLASS_METHOD", min_value=None, max_value=None, 
 Used to create an input socket in the Group Input node.
 Even if homonyms are accepted, it is recommended to avoid to create to input sockets with the same name.
 
-### Args:
+#### Args:
 - value: Initial value. Not changed if the group input socket already exists
 - name: Input socket name. Avoid homonyms!
 - min_value: minimum value
 - max_value: maxium value
 - description: user help
 
-### Returns:
+#### Returns:
 - String
 
 <sub>Go to [top](#class-String) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
@@ -68,10 +68,10 @@ def String(cls, string=''):
 ```
 Node [String](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/string.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeInputString.html) )
 
-### Args:
+#### Args:
 - string (str): ''
 
-### Returns:
+#### Returns:
 - socket `string`
 
 <sub>Go to [top](#class-String) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
@@ -97,10 +97,10 @@ def equal(self, b=None):
 ```
 Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html) )
 
-### Args:
+#### Args:
 - b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 
-### Returns:
+#### Returns:
 - socket `result`
 
 <sub>Go to [top](#class-String) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
@@ -143,10 +143,10 @@ def not_equal(self, b=None):
 ```
 Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html) )
 
-### Args:
+#### Args:
 - b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 
-### Returns:
+#### Returns:
 - socket `result`
 
 <sub>Go to [top](#class-String) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
@@ -193,11 +193,11 @@ def switch(self, switch=None, true=None):
 ```
 Node [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html) )
 
-### Args:
+#### Args:
 - switch: Boolean
 - true: String
 
-### Returns:
+#### Returns:
 - socket `output`
 
 <sub>Go to [top](#class-String) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>

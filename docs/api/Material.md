@@ -23,12 +23,12 @@ Used to create an input socket in the Group Input node.
 Even if homonyms are accepted, it is recommended to avoid to create to input sockets with the same name.
 The initial value can be either a valid Blender Material or the name of an existing Blender Material.
 
-### Args:
+#### Args:
 - value: Blender Material or name of an existing Blender Material
 - name: Input socket name. Avoid homonyms!
 - description: user help
 
-### Returns:
+#### Returns:
 - Material
 
 <sub>Go to [top](#class-Material) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
@@ -41,7 +41,7 @@ def Material(cls):
 ```
 Node [Material](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/material.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMaterial.html) )
 
-### Returns:
+#### Returns:
 - socket `material`
 
 <sub>Go to [top](#class-Material) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
@@ -54,11 +54,11 @@ def switch(self, switch=None, true=None):
 ```
 Node [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html) )
 
-### Args:
+#### Args:
 - switch: Boolean
 - true: Material
 
-### Returns:
+#### Returns:
 - socket `output`
 
 <sub>Go to [top](#class-Material) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>

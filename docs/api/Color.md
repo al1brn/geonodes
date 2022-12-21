@@ -61,7 +61,7 @@ def Color(cls):
 ```
 Node [Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/color.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeInputColor.html) )
 
-### Returns:
+#### Returns:
 - socket `color`
 
 <sub>Go to [top](#class-Color) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
@@ -74,13 +74,13 @@ def HSL(cls, hue=None, saturation=None, lightness=None, alpha=None):
 ```
 Node [Combine Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/combine_color.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeCombineColor.html) )
 
-### Args:
+#### Args:
 - hue: Float
 - saturation: Float
 - lightness: Float
 - alpha: Float
 
-### Returns:
+#### Returns:
 - socket `color`
 
 <sub>Go to [top](#class-Color) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
@@ -93,13 +93,13 @@ def HSV(cls, hue=None, saturation=None, value=None, alpha=None):
 ```
 Node [Combine Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/combine_color.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeCombineColor.html) )
 
-### Args:
+#### Args:
 - hue: Float
 - saturation: Float
 - value: Float
 - alpha: Float
 
-### Returns:
+#### Returns:
 - socket `color`
 
 <sub>Go to [top](#class-Color) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
@@ -113,14 +113,14 @@ def Input(cls, value=None, name="CLASS_METHOD", min_value=None, max_value=None, 
 Used to create an input socket in the Group Input node.
 Even if homonyms are accepted, it is recommended to avoid to create to input sockets with the same name.
 
-### Args:
+#### Args:
 - value: Initial value. Not changed if the group input socket already exists
 - name: Input socket name. Avoid homonyms!
 - min_value: minimum value
 - max_value: maxium value
 - description: user help
 
-### Returns:
+#### Returns:
 - Color
 
 <sub>Go to [top](#class-Color) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
@@ -133,13 +133,13 @@ def RGB(cls, red=None, green=None, blue=None, alpha=None):
 ```
 Node [Combine Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/combine_color.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeCombineColor.html) )
 
-### Args:
+#### Args:
 - red: Float
 - green: Float
 - blue: Float
 - alpha: Float
 
-### Returns:
+#### Returns:
 - socket `color`
 
 <sub>Go to [top](#class-Color) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
@@ -152,7 +152,7 @@ def alpha(self):
 ```
 Node [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html) )
 
-### Returns:
+#### Returns:
 - socket `alpha`
 
 <sub>Go to [top](#class-Color) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
@@ -165,7 +165,7 @@ def blue(self):
 ```
 Node [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html) )
 
-### Returns:
+#### Returns:
 - socket `blue`
 
 <sub>Go to [top](#class-Color) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
@@ -178,10 +178,10 @@ def brighter(self, b=None):
 ```
 Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html) )
 
-### Args:
+#### Args:
 - b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 
-### Returns:
+#### Returns:
 - socket `result`
 
 <sub>Go to [top](#class-Color) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
@@ -194,12 +194,12 @@ def compare(self, b=None, epsilon=None, operation='GREATER_THAN'):
 ```
 Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html) )
 
-### Args:
+#### Args:
 - b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 - epsilon: Float
 - operation (str): 'GREATER_THAN' in [LESS_THAN, LESS_EQUAL, GREATER_THAN, GREATER_EQUAL, EQUAL, NOT_EQUAL]
 
-### Returns:
+#### Returns:
 - socket `result`
 
 <sub>Go to [top](#class-Color) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
@@ -212,10 +212,10 @@ def darker(self, b=None):
 ```
 Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html) )
 
-### Args:
+#### Args:
 - b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 
-### Returns:
+#### Returns:
 - socket `result`
 
 <sub>Go to [top](#class-Color) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
@@ -228,11 +228,11 @@ def equal(self, b=None, epsilon=None):
 ```
 Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html) )
 
-### Args:
+#### Args:
 - b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 - epsilon: Float
 
-### Returns:
+#### Returns:
 - socket `result`
 
 <sub>Go to [top](#class-Color) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
@@ -245,11 +245,11 @@ def equal(self, b=None, epsilon=None):
 ```
 Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html) )
 
-### Args:
+#### Args:
 - b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 - epsilon: Float
 
-### Returns:
+#### Returns:
 - socket `result`
 
 <sub>Go to [top](#class-Color) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
@@ -262,7 +262,7 @@ def green(self):
 ```
 Node [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html) )
 
-### Returns:
+#### Returns:
 - socket `green`
 
 <sub>Go to [top](#class-Color) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
@@ -275,7 +275,7 @@ def hsl(self):
 ```
 Node [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html) )
 
-### Returns:
+#### Returns:
 - tuple ('`red`', '`green`', '`blue`', '`alpha`')
 
 <sub>Go to [top](#class-Color) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
@@ -288,7 +288,7 @@ def hsv(self):
 ```
 Node [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html) )
 
-### Returns:
+#### Returns:
 - tuple ('`red`', '`green`', '`blue`', '`alpha`')
 
 <sub>Go to [top](#class-Color) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
@@ -301,7 +301,7 @@ def hue(self):
 ```
 Node [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html) )
 
-### Returns:
+#### Returns:
 - socket `red`
 
 <sub>Go to [top](#class-Color) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
@@ -314,7 +314,7 @@ def lightness(self):
 ```
 Node [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html) )
 
-### Returns:
+#### Returns:
 - socket `blue`
 
 <sub>Go to [top](#class-Color) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
@@ -327,14 +327,14 @@ def mix(self, factor=None, color=None, blend_type='MIX', clamp_factor=True, clam
 ```
 Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html) )
 
-### Args:
+#### Args:
 - factor: ['Float', 'Vector']
 - color: ['Float', 'Vector', 'Color']
 - blend_type (str): 'MIX' in [MIX, DARKEN, MULTIPLY, BURN, LIGHTEN,... , SATURATION, COLOR, VALUE]
 - clamp_factor (bool): True
 - clamp_result (bool): False
 
-### Returns:
+#### Returns:
 - socket `result`
 
 <sub>Go to [top](#class-Color) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
@@ -347,13 +347,13 @@ def mix_add(self, factor=None, color=None, clamp_factor=True, clamp_result=False
 ```
 Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html) )
 
-### Args:
+#### Args:
 - factor: ['Float', 'Vector']
 - color: ['Float', 'Vector', 'Color']
 - clamp_factor (bool): True
 - clamp_result (bool): False
 
-### Returns:
+#### Returns:
 - socket `result`
 
 <sub>Go to [top](#class-Color) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
@@ -366,13 +366,13 @@ def mix_burn(self, factor=None, color=None, clamp_factor=True, clamp_result=Fals
 ```
 Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html) )
 
-### Args:
+#### Args:
 - factor: ['Float', 'Vector']
 - color: ['Float', 'Vector', 'Color']
 - clamp_factor (bool): True
 - clamp_result (bool): False
 
-### Returns:
+#### Returns:
 - socket `result`
 
 <sub>Go to [top](#class-Color) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
@@ -385,13 +385,13 @@ def mix_color(self, factor=None, color=None, clamp_factor=True, clamp_result=Fal
 ```
 Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html) )
 
-### Args:
+#### Args:
 - factor: ['Float', 'Vector']
 - color: ['Float', 'Vector', 'Color']
 - clamp_factor (bool): True
 - clamp_result (bool): False
 
-### Returns:
+#### Returns:
 - socket `result`
 
 <sub>Go to [top](#class-Color) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
@@ -404,13 +404,13 @@ def mix_darken(self, factor=None, color=None, clamp_factor=True, clamp_result=Fa
 ```
 Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html) )
 
-### Args:
+#### Args:
 - factor: ['Float', 'Vector']
 - color: ['Float', 'Vector', 'Color']
 - clamp_factor (bool): True
 - clamp_result (bool): False
 
-### Returns:
+#### Returns:
 - socket `result`
 
 <sub>Go to [top](#class-Color) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
@@ -423,13 +423,13 @@ def mix_difference(self, factor=None, color=None, clamp_factor=True, clamp_resul
 ```
 Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html) )
 
-### Args:
+#### Args:
 - factor: ['Float', 'Vector']
 - color: ['Float', 'Vector', 'Color']
 - clamp_factor (bool): True
 - clamp_result (bool): False
 
-### Returns:
+#### Returns:
 - socket `result`
 
 <sub>Go to [top](#class-Color) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
@@ -442,13 +442,13 @@ def mix_divide(self, factor=None, color=None, clamp_factor=True, clamp_result=Fa
 ```
 Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html) )
 
-### Args:
+#### Args:
 - factor: ['Float', 'Vector']
 - color: ['Float', 'Vector', 'Color']
 - clamp_factor (bool): True
 - clamp_result (bool): False
 
-### Returns:
+#### Returns:
 - socket `result`
 
 <sub>Go to [top](#class-Color) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
@@ -461,13 +461,13 @@ def mix_dodge(self, factor=None, color=None, clamp_factor=True, clamp_result=Fal
 ```
 Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html) )
 
-### Args:
+#### Args:
 - factor: ['Float', 'Vector']
 - color: ['Float', 'Vector', 'Color']
 - clamp_factor (bool): True
 - clamp_result (bool): False
 
-### Returns:
+#### Returns:
 - socket `result`
 
 <sub>Go to [top](#class-Color) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
@@ -480,13 +480,13 @@ def mix_hue(self, factor=None, color=None, clamp_factor=True, clamp_result=False
 ```
 Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html) )
 
-### Args:
+#### Args:
 - factor: ['Float', 'Vector']
 - color: ['Float', 'Vector', 'Color']
 - clamp_factor (bool): True
 - clamp_result (bool): False
 
-### Returns:
+#### Returns:
 - socket `result`
 
 <sub>Go to [top](#class-Color) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
@@ -499,13 +499,13 @@ def mix_lighten(self, factor=None, color=None, clamp_factor=True, clamp_result=F
 ```
 Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html) )
 
-### Args:
+#### Args:
 - factor: ['Float', 'Vector']
 - color: ['Float', 'Vector', 'Color']
 - clamp_factor (bool): True
 - clamp_result (bool): False
 
-### Returns:
+#### Returns:
 - socket `result`
 
 <sub>Go to [top](#class-Color) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
@@ -518,13 +518,13 @@ def mix_linear_light(self, factor=None, color=None, clamp_factor=True, clamp_res
 ```
 Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html) )
 
-### Args:
+#### Args:
 - factor: ['Float', 'Vector']
 - color: ['Float', 'Vector', 'Color']
 - clamp_factor (bool): True
 - clamp_result (bool): False
 
-### Returns:
+#### Returns:
 - socket `result`
 
 <sub>Go to [top](#class-Color) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
@@ -537,13 +537,13 @@ def mix_multiply(self, factor=None, color=None, clamp_factor=True, clamp_result=
 ```
 Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html) )
 
-### Args:
+#### Args:
 - factor: ['Float', 'Vector']
 - color: ['Float', 'Vector', 'Color']
 - clamp_factor (bool): True
 - clamp_result (bool): False
 
-### Returns:
+#### Returns:
 - socket `result`
 
 <sub>Go to [top](#class-Color) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
@@ -556,13 +556,13 @@ def mix_overlay(self, factor=None, color=None, clamp_factor=True, clamp_result=F
 ```
 Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html) )
 
-### Args:
+#### Args:
 - factor: ['Float', 'Vector']
 - color: ['Float', 'Vector', 'Color']
 - clamp_factor (bool): True
 - clamp_result (bool): False
 
-### Returns:
+#### Returns:
 - socket `result`
 
 <sub>Go to [top](#class-Color) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
@@ -575,13 +575,13 @@ def mix_saturation(self, factor=None, color=None, clamp_factor=True, clamp_resul
 ```
 Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html) )
 
-### Args:
+#### Args:
 - factor: ['Float', 'Vector']
 - color: ['Float', 'Vector', 'Color']
 - clamp_factor (bool): True
 - clamp_result (bool): False
 
-### Returns:
+#### Returns:
 - socket `result`
 
 <sub>Go to [top](#class-Color) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
@@ -594,13 +594,13 @@ def mix_screen(self, factor=None, color=None, clamp_factor=True, clamp_result=Fa
 ```
 Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html) )
 
-### Args:
+#### Args:
 - factor: ['Float', 'Vector']
 - color: ['Float', 'Vector', 'Color']
 - clamp_factor (bool): True
 - clamp_result (bool): False
 
-### Returns:
+#### Returns:
 - socket `result`
 
 <sub>Go to [top](#class-Color) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
@@ -613,13 +613,13 @@ def mix_soft_light(self, factor=None, color=None, clamp_factor=True, clamp_resul
 ```
 Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html) )
 
-### Args:
+#### Args:
 - factor: ['Float', 'Vector']
 - color: ['Float', 'Vector', 'Color']
 - clamp_factor (bool): True
 - clamp_result (bool): False
 
-### Returns:
+#### Returns:
 - socket `result`
 
 <sub>Go to [top](#class-Color) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
@@ -632,13 +632,13 @@ def mix_subtract(self, factor=None, color=None, clamp_factor=True, clamp_result=
 ```
 Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html) )
 
-### Args:
+#### Args:
 - factor: ['Float', 'Vector']
 - color: ['Float', 'Vector', 'Color']
 - clamp_factor (bool): True
 - clamp_result (bool): False
 
-### Returns:
+#### Returns:
 - socket `result`
 
 <sub>Go to [top](#class-Color) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
@@ -651,13 +651,13 @@ def mix_value(self, factor=None, color=None, clamp_factor=True, clamp_result=Fal
 ```
 Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html) )
 
-### Args:
+#### Args:
 - factor: ['Float', 'Vector']
 - color: ['Float', 'Vector', 'Color']
 - clamp_factor (bool): True
 - clamp_result (bool): False
 
-### Returns:
+#### Returns:
 - socket `result`
 
 <sub>Go to [top](#class-Color) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
@@ -670,7 +670,7 @@ def red(self):
 ```
 Node [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html) )
 
-### Returns:
+#### Returns:
 - socket `red`
 
 <sub>Go to [top](#class-Color) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
@@ -683,7 +683,7 @@ def rgb(self):
 ```
 Node [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html) )
 
-### Returns:
+#### Returns:
 - tuple ('`red`', '`green`', '`blue`', '`alpha`')
 
 <sub>Go to [top](#class-Color) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
@@ -696,7 +696,7 @@ def rgb_curves(self, fac=None):
 ```
 Node [RGB Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/rgb_curves.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeRGBCurve.html) )
 
-### Returns:
+#### Returns:
 - node with sockets ['color']
 
 <sub>Go to [top](#class-Color) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
@@ -709,7 +709,7 @@ def saturation(self):
 ```
 Node [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html) )
 
-### Returns:
+#### Returns:
 - socket `green`
 
 <sub>Go to [top](#class-Color) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
@@ -722,11 +722,11 @@ def switch(self, switch=None, true=None):
 ```
 Node [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html) )
 
-### Args:
+#### Args:
 - switch: Boolean
 - true: Color
 
-### Returns:
+#### Returns:
 - socket `output`
 
 <sub>Go to [top](#class-Color) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
@@ -739,7 +739,7 @@ def value(self):
 ```
 Node [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html) )
 
-### Returns:
+#### Returns:
 - socket `blue`
 
 <sub>Go to [top](#class-Color) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>

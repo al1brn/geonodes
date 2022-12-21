@@ -46,7 +46,7 @@ def curve(self):
 ```
 Node [Curve of Point](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve_topology/curve_of_point.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveOfPoint.html) )
 
-### Returns:
+#### Returns:
 - tuple ('`curve_index`', '`index_in_curve`')
 
 <sub>Go to [top](#class-ControlPoint) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
@@ -59,11 +59,11 @@ def __len__(self):
 ```
 Node [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html) )
 
-### Args:
+#### Args:
 - geometry: Geometry
 - component (str): 'MESH' in [MESH, POINTCLOUD, CURVE, INSTANCES]
 
-### Returns:
+#### Returns:
 - node with sockets ['point_count', 'edge_count', 'face_count', 'face_corner_count', 'spline_count', 'instance_count']
 
 <sub>Go to [top](#class-ControlPoint) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
@@ -76,11 +76,11 @@ def endpoint_selection(self, start_size=None, end_size=None):
 ```
 Node [Endpoint Selection](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/endpoint_selection.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveEndpointSelection.html) )
 
-### Args:
+#### Args:
 - start_size: Integer
 - end_size: Integer
 
-### Returns:
+#### Returns:
 - socket `selection`
 
 <sub>Go to [top](#class-ControlPoint) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
@@ -93,10 +93,10 @@ def handle_positions(self, relative=None):
 ```
 Node [Curve Handle Positions](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/curve_handle_position.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputCurveHandlePositions.html) )
 
-### Args:
+#### Args:
 - relative: Boolean
 
-### Returns:
+#### Returns:
 - node with sockets ['left', 'right']
 
 <sub>Go to [top](#class-ControlPoint) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
@@ -109,11 +109,11 @@ def handle_type_selection(self, left=True, right=True, handle_type='AUTO'):
 ```
 Node [Handle Type Selection](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/handle_type_selection.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveHandleTypeSelection.html) )
 
-### Args:
+#### Args:
 - handle_type (str): 'AUTO' in [FREE, AUTO, VECTOR, ALIGN]
 - mode (set): {'RIGHT', 'LEFT'}
 
-### Returns:
+#### Returns:
 - node with sockets ['selection']
 
 <sub>Go to [top](#class-ControlPoint) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
@@ -126,11 +126,11 @@ def handle_type_selection_free(self, left=True, right=True):
 ```
 Node [Handle Type Selection](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/handle_type_selection.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveHandleTypeSelection.html) )
 
-### Args:
+#### Args:
 - handle_type (str): 'AUTO' in [FREE, AUTO, VECTOR, ALIGN]
 - mode (set): {'RIGHT', 'LEFT'}
 
-### Returns:
+#### Returns:
 - node with sockets ['selection']
 
 <sub>Go to [top](#class-ControlPoint) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
@@ -143,11 +143,11 @@ def handle_type_selection_auto(self, left=True, right=True):
 ```
 Node [Handle Type Selection](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/handle_type_selection.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveHandleTypeSelection.html) )
 
-### Args:
+#### Args:
 - handle_type (str): 'AUTO' in [FREE, AUTO, VECTOR, ALIGN]
 - mode (set): {'RIGHT', 'LEFT'}
 
-### Returns:
+#### Returns:
 - node with sockets ['selection']
 
 <sub>Go to [top](#class-ControlPoint) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
@@ -160,11 +160,11 @@ def handle_type_selection_vector(self, left=True, right=True):
 ```
 Node [Handle Type Selection](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/handle_type_selection.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveHandleTypeSelection.html) )
 
-### Args:
+#### Args:
 - handle_type (str): 'AUTO' in [FREE, AUTO, VECTOR, ALIGN]
 - mode (set): {'RIGHT', 'LEFT'}
 
-### Returns:
+#### Returns:
 - node with sockets ['selection']
 
 <sub>Go to [top](#class-ControlPoint) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
@@ -177,11 +177,11 @@ def handle_type_selection_align(self, left=True, right=True):
 ```
 Node [Handle Type Selection](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/handle_type_selection.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveHandleTypeSelection.html) )
 
-### Args:
+#### Args:
 - handle_type (str): 'AUTO' in [FREE, AUTO, VECTOR, ALIGN]
 - mode (set): {'RIGHT', 'LEFT'}
 
-### Returns:
+#### Returns:
 - node with sockets ['selection']
 
 <sub>Go to [top](#class-ControlPoint) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
@@ -194,11 +194,11 @@ def handle_type_selection_node(self, handle_type='AUTO', mode={'RIGHT', 'LEFT'})
 ```
 Node [Handle Type Selection](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/handle_type_selection.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveHandleTypeSelection.html) )
 
-### Args:
+#### Args:
 - handle_type (str): 'AUTO' in [FREE, AUTO, VECTOR, ALIGN]
 - mode (set): {'RIGHT', 'LEFT'}
 
-### Returns:
+#### Returns:
 - socket `selection`
 
 <sub>Go to [top](#class-ControlPoint) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
@@ -211,14 +211,14 @@ def instance_on_points(self, instance=None, pick_instance=None, instance_index=N
 ```
 Node [Instance on Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instance_on_points.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInstanceOnPoints.html) )
 
-### Args:
+#### Args:
 - instance: Geometry
 - pick_instance: Boolean
 - instance_index: Integer
 - rotation: Vector
 - scale: Vector
 
-### Returns:
+#### Returns:
 - socket `instances` of class Instances
 
 <sub>Go to [top](#class-ControlPoint) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
@@ -231,7 +231,7 @@ def left_handle_positions(self):
 ```
 Node [Curve Handle Positions](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/curve_handle_position.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputCurveHandlePositions.html) )
 
-### Returns:
+#### Returns:
 - socket `left`
 
 <sub>Go to [top](#class-ControlPoint) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
@@ -246,7 +246,7 @@ Node [Set Handle Positions](https://docs.blender.org/manual/en/latest/modeling/g
 
 Node implemented as property setter.
 
-### Args:
+#### Args:
 - attr_value: position
 
 
@@ -260,10 +260,10 @@ def offset(self, offset=None):
 ```
 Node [Offset Point in Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve_topology/offset_point_in_curve.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeOffsetPointInCurve.html) )
 
-### Args:
+#### Args:
 - offset: Integer
 
-### Returns:
+#### Returns:
 - tuple ('`is_valid_offset`', '`point_index`')
 
 <sub>Go to [top](#class-ControlPoint) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
@@ -276,7 +276,7 @@ def parameter(self):
 ```
 Node [Spline Parameter](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/spline_parameter.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSplineParameter.html) )
 
-### Returns:
+#### Returns:
 - tuple ('`factor`', '`length`', '`index`')
 
 <sub>Go to [top](#class-ControlPoint) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
@@ -289,7 +289,7 @@ def parameter_factor(self):
 ```
 Node [Spline Parameter](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/spline_parameter.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSplineParameter.html) )
 
-### Returns:
+#### Returns:
 - socket `factor`
 
 <sub>Go to [top](#class-ControlPoint) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
@@ -302,7 +302,7 @@ def parameter_index(self):
 ```
 Node [Spline Parameter](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/spline_parameter.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSplineParameter.html) )
 
-### Returns:
+#### Returns:
 - socket `index`
 
 <sub>Go to [top](#class-ControlPoint) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
@@ -315,7 +315,7 @@ def parameter_length(self):
 ```
 Node [Spline Parameter](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/spline_parameter.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSplineParameter.html) )
 
-### Returns:
+#### Returns:
 - socket `length`
 
 <sub>Go to [top](#class-ControlPoint) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
@@ -328,7 +328,7 @@ def radius(self):
 ```
 Node [Radius](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/radius.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputRadius.html) )
 
-### Returns:
+#### Returns:
 - socket `radius`
 
 <sub>Go to [top](#class-ControlPoint) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
@@ -343,7 +343,7 @@ Node [Set Curve Radius](https://docs.blender.org/manual/en/latest/modeling/geome
 
 Node implemented as property setter.
 
-### Args:
+#### Args:
 - attr_value: radius
 
 
@@ -357,7 +357,7 @@ def right_handle_positions(self):
 ```
 Node [Curve Handle Positions](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/curve_handle_position.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputCurveHandlePositions.html) )
 
-### Returns:
+#### Returns:
 - socket `right`
 
 <sub>Go to [top](#class-ControlPoint) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
@@ -372,7 +372,7 @@ Node [Set Handle Positions](https://docs.blender.org/manual/en/latest/modeling/g
 
 Node implemented as property setter.
 
-### Args:
+#### Args:
 - attr_value: position
 
 
@@ -386,12 +386,12 @@ def set_handle_positions(self, position=None, offset=None, mode='LEFT'):
 ```
 Node [Set Handle Positions](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/set_handle_positions.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetCurveHandlePositions.html) )
 
-### Args:
+#### Args:
 - position: Vector
 - offset: Vector
 - mode (str): 'LEFT' in [LEFT, RIGHT]
 
-### Returns:
+#### Returns:
 - self
 
 <sub>Go to [top](#class-ControlPoint) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
@@ -404,12 +404,12 @@ def set_handle_positions_left(self, curve=None, position=None, offset=None):
 ```
 Node [Set Handle Positions](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/set_handle_positions.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetCurveHandlePositions.html) )
 
-### Args:
+#### Args:
 - curve: Curve
 - position: Vector
 - offset: Vector
 
-### Returns:
+#### Returns:
 - self
 
 <sub>Go to [top](#class-ControlPoint) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
@@ -422,12 +422,12 @@ def set_handle_positions_right(self, curve=None, position=None, offset=None):
 ```
 Node [Set Handle Positions](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/set_handle_positions.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetCurveHandlePositions.html) )
 
-### Args:
+#### Args:
 - curve: Curve
 - position: Vector
 - offset: Vector
 
-### Returns:
+#### Returns:
 - self
 
 <sub>Go to [top](#class-ControlPoint) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
@@ -440,13 +440,13 @@ def set_handle_type(self, left=True, right=True, handle_type='AUTO'):
 ```
 Node [Set Handle Type](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/set_handle_type.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveSetHandles.html) )
 
-### Args:
+#### Args:
 - curve: Curve
 - selection: Boolean
 - handle_type (str): 'AUTO' in [FREE, AUTO, VECTOR, ALIGN]
 - mode (set): {'RIGHT', 'LEFT'}
 
-### Returns:
+#### Returns:
 - node with sockets ['curve']
 
 <sub>Go to [top](#class-ControlPoint) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
@@ -459,11 +459,11 @@ def set_handle_type_node(self, handle_type='AUTO', mode={'RIGHT', 'LEFT'}):
 ```
 Node [Set Handle Type](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/set_handle_type.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveSetHandles.html) )
 
-### Args:
+#### Args:
 - handle_type (str): 'AUTO' in [FREE, AUTO, VECTOR, ALIGN]
 - mode (set): {'RIGHT', 'LEFT'}
 
-### Returns:
+#### Returns:
 - self
 
 <sub>Go to [top](#class-ControlPoint) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
@@ -476,10 +476,10 @@ def set_radius(self, radius=None):
 ```
 Node [Set Curve Radius](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/set_curve_radius.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetCurveRadius.html) )
 
-### Args:
+#### Args:
 - radius: Float
 
-### Returns:
+#### Returns:
 - self
 
 <sub>Go to [top](#class-ControlPoint) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
@@ -492,10 +492,10 @@ def set_tilt(self, tilt=None):
 ```
 Node [Set Curve Tilt](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/set_curve_tilt.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetCurveTilt.html) )
 
-### Args:
+#### Args:
 - tilt: Float
 
-### Returns:
+#### Returns:
 - self
 
 <sub>Go to [top](#class-ControlPoint) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
@@ -508,7 +508,7 @@ def tangent(self):
 ```
 Node [Curve Tangent](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/curve_tangent.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputTangent.html) )
 
-### Returns:
+#### Returns:
 - socket `tangent`
 
 <sub>Go to [top](#class-ControlPoint) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
@@ -521,7 +521,7 @@ def tilt(self):
 ```
 Node [Curve Tilt](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/curve_tilt.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputCurveTilt.html) )
 
-### Returns:
+#### Returns:
 - socket `tilt`
 
 <sub>Go to [top](#class-ControlPoint) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
@@ -536,7 +536,7 @@ Node [Set Curve Tilt](https://docs.blender.org/manual/en/latest/modeling/geometr
 
 Node implemented as property setter.
 
-### Args:
+#### Args:
 - attr_value: tilt
 
 

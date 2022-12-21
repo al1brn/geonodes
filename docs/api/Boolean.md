@@ -30,10 +30,10 @@ def Boolean(cls, boolean=False):
 ```
 Node [Boolean](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/boolean.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeInputBool.html) )
 
-### Args:
+#### Args:
 - boolean (bool): False
 
-### Returns:
+#### Returns:
 - socket `boolean`
 
 <sub>Go to [top](#class-Boolean) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
@@ -47,14 +47,14 @@ def Input(cls, value=None, name="CLASS_METHOD", min_value=None, max_value=None, 
 Used to create an input socket in the Group Input node.
 Even if homonyms are accepted, it is recommended to avoid to create to input sockets with the same name.
 
-### Args:
+#### Args:
 - value: Initial value. Not changed if the group input socket already exists
 - name: Input socket name. Avoid homonyms!
 - min_value: minimum value
 - max_value: maxium value
 - description: user help
 
-### Returns:
+#### Returns:
 - Boolean
 
 <sub>Go to [top](#class-Boolean) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
@@ -67,10 +67,10 @@ def b_and(self, boolean1=None):
 ```
 Node [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/boolean_math.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html) )
 
-### Args:
+#### Args:
 - boolean1: Boolean
 
-### Returns:
+#### Returns:
 - socket `boolean`
 
 <sub>Go to [top](#class-Boolean) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
@@ -83,7 +83,7 @@ def b_not(self):
 ```
 Node [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/boolean_math.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html) )
 
-### Returns:
+#### Returns:
 - socket `boolean`
 
 <sub>Go to [top](#class-Boolean) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
@@ -96,10 +96,10 @@ def b_or(self, boolean1=None):
 ```
 Node [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/boolean_math.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html) )
 
-### Args:
+#### Args:
 - boolean1: Boolean
 
-### Returns:
+#### Returns:
 - socket `boolean`
 
 <sub>Go to [top](#class-Boolean) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
@@ -112,10 +112,10 @@ def imply(self, boolean1=None):
 ```
 Node [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/boolean_math.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html) )
 
-### Args:
+#### Args:
 - boolean1: Boolean
 
-### Returns:
+#### Returns:
 - socket `boolean`
 
 <sub>Go to [top](#class-Boolean) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
@@ -128,10 +128,10 @@ def nand(self, boolean1=None):
 ```
 Node [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/boolean_math.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html) )
 
-### Args:
+#### Args:
 - boolean1: Boolean
 
-### Returns:
+#### Returns:
 - socket `boolean`
 
 <sub>Go to [top](#class-Boolean) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
@@ -144,10 +144,10 @@ def nimply(self, boolean1=None):
 ```
 Node [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/boolean_math.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html) )
 
-### Args:
+#### Args:
 - boolean1: Boolean
 
-### Returns:
+#### Returns:
 - socket `boolean`
 
 <sub>Go to [top](#class-Boolean) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
@@ -160,10 +160,10 @@ def nor(self, boolean1=None):
 ```
 Node [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/boolean_math.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html) )
 
-### Args:
+#### Args:
 - boolean1: Boolean
 
-### Returns:
+#### Returns:
 - socket `boolean`
 
 <sub>Go to [top](#class-Boolean) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
@@ -176,11 +176,11 @@ def switch(self, switch=None, true=None):
 ```
 Node [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html) )
 
-### Args:
+#### Args:
 - switch: Boolean
 - true: Boolean
 
-### Returns:
+#### Returns:
 - socket `output`
 
 <sub>Go to [top](#class-Boolean) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
@@ -193,10 +193,10 @@ def xnor(self, boolean1=None):
 ```
 Node [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/boolean_math.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html) )
 
-### Args:
+#### Args:
 - boolean1: Boolean
 
-### Returns:
+#### Returns:
 - socket `boolean`
 
 <sub>Go to [top](#class-Boolean) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
@@ -209,10 +209,10 @@ def xor(self, boolean1=None):
 ```
 Node [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/boolean_math.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html) )
 
-### Args:
+#### Args:
 - boolean1: Boolean
 
-### Returns:
+#### Returns:
 - socket `boolean`
 
 <sub>Go to [top](#class-Boolean) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
