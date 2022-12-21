@@ -19,12 +19,12 @@ node = nodes.Normal()
 
 ## Implementation
 
-#### class [Geometry](Geometry.md)
-
- - [normal](Geometry.md#normal-property)
 #### class [Domain](Domain.md)
 
  - [normal](Domain.md#normal-property)
+#### class [Geometry](Geometry.md)
+
+ - [normal](Geometry.md#normal-property)
 #### class [Spline](Spline.md)
 
  - [normal](Spline.md#normal-property)

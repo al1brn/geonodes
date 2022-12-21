@@ -29,9 +29,9 @@ node = nodes.RotateInstances(instances=None, selection=None, rotation=None, pivo
 
 ## Implementation
 
-#### class [Instances](Instances.md)
-
- - [rotate](Instances.md#rotate)
 #### class [Instance](Instance.md)
 
  - [rotate](Instance.md#rotate)
+#### class [Instances](Instances.md)
+
+ - [rotate](Instances.md#rotate)

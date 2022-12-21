@@ -27,9 +27,9 @@ node = nodes.SetPointRadius(points=None, selection=None, radius=None)
 
 ## Implementation
 
-#### class [Points](Points.md)
-
- - [set_point_radius](Points.md#set_point_radius)
 #### class [CloudPoint](CloudPoint.md)
 
  - [radius](CloudPoint.md#radius)
+#### class [Points](Points.md)
+
+ - [set_point_radius](Points.md#set_point_radius)

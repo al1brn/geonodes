@@ -28,9 +28,9 @@ node = nodes.InstancesToPoints(instances=None, selection=None, position=None, ra
 
 ## Implementation
 
-#### class [Instances](Instances.md)
-
- - [to_points](Instances.md#to_points)
 #### class [Instance](Instance.md)
 
  - [to_points](Instance.md#to_points)
+#### class [Instances](Instances.md)
+
+ - [to_points](Instances.md#to_points)

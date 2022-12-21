@@ -26,9 +26,9 @@ node = nodes.JoinStrings(*strings, delimiter=None)
 
 ## Implementation
 
+#### Global functions
+
+ - [join_strings](A.md#join_strings)
 #### class [String](String.md)
 
  - [join](String.md#join)
-#### Global functions
-
- - [join_strings](function.md#join_strings)

@@ -31,9 +31,9 @@ node = nodes.SeparateGeometry(geometry=None, selection=None, domain='POINT')
 
 ## Implementation
 
-#### class [Geometry](Geometry.md)
-
- - [separate](Geometry.md#separate)
 #### class [Domain](Domain.md)
 
  - [separate](Domain.md#separate)
+#### class [Geometry](Geometry.md)
+
+ - [separate](Geometry.md#separate)

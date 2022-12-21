@@ -32,9 +32,9 @@ node = nodes.UvUnwrap(selection=None, seam=None, margin=None, fill_holes=None, m
 
 ## Implementation
 
-#### class [Mesh](Mesh.md)
-
- - [uv_unwrap](Mesh.md#uv_unwrap)
 #### class [Face](Face.md)
 
  - [uv_unwrap](Face.md#uv_unwrap)
+#### class [Mesh](Mesh.md)
+
+ - [uv_unwrap](Mesh.md#uv_unwrap)

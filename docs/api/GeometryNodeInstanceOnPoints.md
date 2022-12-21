@@ -31,25 +31,25 @@ node = nodes.InstanceOnPoints(points=None, selection=None, instance=None, pick_i
 
 ## Implementation
 
-#### class [Mesh](Mesh.md)
+#### class [CloudPoint](CloudPoint.md)
 
- - [instance_on_points](Mesh.md#instance_on_points)
+ - [instance_on_points](CloudPoint.md#instance_on_points)
+#### class [ControlPoint](ControlPoint.md)
+
+ - [instance_on_points](ControlPoint.md#instance_on_points)
 #### class [Curve](Curve.md)
 
  - [instance_on_points](Curve.md#instance_on_points)
-#### class [Points](Points.md)
-
- - [instance_on_points](Points.md#instance_on_points)
 #### class [Instances](Instances.md)
 
  - [InstanceOnPoints](Instances.md#InstanceOnPoints-classmethod)
  - [on_points](Instances.md#on_points)
+#### class [Mesh](Mesh.md)
+
+ - [instance_on_points](Mesh.md#instance_on_points)
+#### class [Points](Points.md)
+
+ - [instance_on_points](Points.md#instance_on_points)
 #### class [Vertex](Vertex.md)
 
  - [instance_on_points](Vertex.md#instance_on_points)
-#### class [ControlPoint](ControlPoint.md)
-
- - [instance_on_points](ControlPoint.md#instance_on_points)
-#### class [CloudPoint](CloudPoint.md)
-
- - [instance_on_points](CloudPoint.md#instance_on_points)

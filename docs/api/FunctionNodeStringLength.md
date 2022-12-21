@@ -25,9 +25,9 @@ node = nodes.StringLength(string=None)
 
 ## Implementation
 
+#### Global functions
+
+ - [string_length](A.md#string_length)
 #### class [String](String.md)
 
  - [length](String.md#length-property)
-#### Global functions
-
- - [string_length](function.md#string_length)

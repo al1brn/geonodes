@@ -26,9 +26,9 @@ node = nodes.SplitEdges(mesh=None, selection=None)
 
 ## Implementation
 
-#### class [Mesh](Mesh.md)
-
- - [split_edges](Mesh.md#split_edges)
 #### class [Edge](Edge.md)
 
  - [split](Edge.md#split)
+#### class [Mesh](Mesh.md)
+
+ - [split_edges](Mesh.md#split_edges)

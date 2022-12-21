@@ -27,9 +27,9 @@ node = nodes.OffsetPointInCurve(point_index=None, offset=None)
 
 ## Implementation
 
-#### class [Curve](Curve.md)
-
- - [offset_point](Curve.md#offset_point)
 #### class [ControlPoint](ControlPoint.md)
 
  - [offset](ControlPoint.md#offset)
+#### class [Curve](Curve.md)
+
+ - [offset_point](Curve.md#offset_point)

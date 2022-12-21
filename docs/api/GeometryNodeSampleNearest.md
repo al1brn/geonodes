@@ -30,9 +30,9 @@ node = nodes.SampleNearest(geometry=None, sample_position=None, domain='POINT')
 
 ## Implementation
 
-#### class [Geometry](Geometry.md)
-
- - [sample_nearest](Geometry.md#sample_nearest)
 #### class [Domain](Domain.md)
 
  - [sample_nearest](Domain.md#sample_nearest)
+#### class [Geometry](Geometry.md)
+
+ - [sample_nearest](Geometry.md#sample_nearest)

@@ -38,9 +38,9 @@ node = nodes.SampleIndex(geometry=None, value=None, index=None, clamp=False, dat
 - Output sockets : ['value']
 ## Implementation
 
-#### class [Geometry](Geometry.md)
-
- - [sample_index](Geometry.md#sample_index)
 #### class [Domain](Domain.md)
 
  - [sample_index](Domain.md#sample_index)
+#### class [Geometry](Geometry.md)
+
+ - [sample_index](Geometry.md#sample_index)

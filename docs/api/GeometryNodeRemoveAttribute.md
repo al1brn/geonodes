@@ -26,9 +26,9 @@ node = nodes.RemoveNamedAttribute(geometry=None, name=None)
 
 ## Implementation
 
-#### class [Geometry](Geometry.md)
-
- - [remove_named_attribute](Geometry.md#remove_named_attribute)
 #### class [Domain](Domain.md)
 
  - [remove_named_attribute](Domain.md#remove_named_attribute)
+#### class [Geometry](Geometry.md)
+
+ - [remove_named_attribute](Geometry.md#remove_named_attribute)

@@ -19,9 +19,9 @@ node = nodes.Position()
 
 ## Implementation
 
-#### class [Geometry](Geometry.md)
-
- - [position](Geometry.md#position-property)
 #### class [Domain](Domain.md)
 
  - [position](Domain.md#position-property)
+#### class [Geometry](Geometry.md)
+
+ - [position](Geometry.md#position-property)

@@ -26,9 +26,9 @@ node = nodes.FlipFaces(mesh=None, selection=None)
 
 ## Implementation
 
-#### class [Mesh](Mesh.md)
-
- - [flip_faces](Mesh.md#flip_faces)
 #### class [Face](Face.md)
 
  - [flip](Face.md#flip)
+#### class [Mesh](Mesh.md)
+
+ - [flip_faces](Mesh.md#flip_faces)

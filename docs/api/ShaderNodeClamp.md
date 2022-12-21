@@ -31,13 +31,13 @@ node = nodes.Clamp(value=None, min=None, max=None, clamp_type='MINMAX')
 
 ## Implementation
 
+#### Global functions
+
+ - [clamp](A.md#clamp)
+ - [clamp_min_max](A.md#clamp_min_max)
+ - [clamp_range](A.md#clamp_range)
 #### class [Float](Float.md)
 
  - [clamp](Float.md#clamp)
  - [clamp_min_max](Float.md#clamp_min_max)
  - [clamp_range](Float.md#clamp_range)
-#### Global functions
-
- - [clamp](function.md#clamp)
- - [clamp_min_max](function.md#clamp_min_max)
- - [clamp_range](function.md#clamp_range)

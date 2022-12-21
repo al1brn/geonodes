@@ -31,12 +31,22 @@ node = nodes.DeleteGeometry(geometry=None, selection=None, domain='POINT', mode=
 
 ## Implementation
 
-#### class [Geometry](Geometry.md)
-
- - [delete](Geometry.md#delete)
 #### class [Domain](Domain.md)
 
  - [delete](Domain.md#delete)
+#### class [Edge](Edge.md)
+
+ - [delete_all](Edge.md#delete_all)
+ - [delete_edges](Edge.md#delete_edges)
+ - [delete_faces](Edge.md#delete_faces)
+#### class [Face](Face.md)
+
+ - [delete_all](Face.md#delete_all)
+ - [delete_edges](Face.md#delete_edges)
+ - [delete_faces](Face.md#delete_faces)
+#### class [Geometry](Geometry.md)
+
+ - [delete](Geometry.md#delete)
 #### class [Mesh](Mesh.md)
 
  - [delete_all](Mesh.md#delete_all)
@@ -47,13 +57,3 @@ node = nodes.DeleteGeometry(geometry=None, selection=None, domain='POINT', mode=
  - [delete_all](Vertex.md#delete_all)
  - [delete_edges](Vertex.md#delete_edges)
  - [delete_faces](Vertex.md#delete_faces)
-#### class [Face](Face.md)
-
- - [delete_all](Face.md#delete_all)
- - [delete_edges](Face.md#delete_edges)
- - [delete_faces](Face.md#delete_faces)
-#### class [Edge](Edge.md)
-
- - [delete_all](Edge.md#delete_all)
- - [delete_edges](Edge.md#delete_edges)
- - [delete_faces](Edge.md#delete_faces)

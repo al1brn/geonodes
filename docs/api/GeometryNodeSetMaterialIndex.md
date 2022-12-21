@@ -27,9 +27,9 @@ node = nodes.SetMaterialIndex(geometry=None, selection=None, material_index=None
 
 ## Implementation
 
-#### class [Geometry](Geometry.md)
-
- - [set_material_index](Geometry.md#set_material_index)
 #### class [Domain](Domain.md)
 
  - [set_material_index](Domain.md#set_material_index)
+#### class [Geometry](Geometry.md)
+
+ - [set_material_index](Geometry.md#set_material_index)

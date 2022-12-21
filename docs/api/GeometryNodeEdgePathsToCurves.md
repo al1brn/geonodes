@@ -27,9 +27,9 @@ node = nodes.EdgePathsToCurves(mesh=None, start_vertices=None, next_vertex_index
 
 ## Implementation
 
-#### class [Mesh](Mesh.md)
-
- - [edge_paths_to_curves](Mesh.md#edge_paths_to_curves)
 #### class [Edge](Edge.md)
 
  - [edge_paths_to_curves](Edge.md#edge_paths_to_curves)
+#### class [Mesh](Mesh.md)
+
+ - [edge_paths_to_curves](Mesh.md#edge_paths_to_curves)

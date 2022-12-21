@@ -19,9 +19,9 @@ node = nodes.IsShadeSmooth()
 
 ## Implementation
 
-#### class [Mesh](Mesh.md)
-
- - [is_shade_smooth](Mesh.md#is_shade_smooth)
 #### class [Face](Face.md)
 
  - [shade_smooth](Face.md#shade_smooth-property)
+#### class [Mesh](Mesh.md)
+
+ - [is_shade_smooth](Mesh.md#is_shade_smooth)

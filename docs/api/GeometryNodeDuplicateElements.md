@@ -32,9 +32,9 @@ node = nodes.DuplicateElements(geometry=None, selection=None, amount=None, domai
 
 ## Implementation
 
-#### class [Geometry](Geometry.md)
-
- - [duplicate](Geometry.md#duplicate)
 #### class [Domain](Domain.md)
 
  - [duplicate](Domain.md#duplicate)
+#### class [Geometry](Geometry.md)
+
+ - [duplicate](Geometry.md#duplicate)

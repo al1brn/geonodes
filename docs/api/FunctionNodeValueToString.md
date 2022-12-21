@@ -26,12 +26,12 @@ node = nodes.ValueToString(value=None, decimals=None)
 
 ## Implementation
 
+#### Global functions
+
+ - [value_to_string](A.md#value_to_string)
 #### class [Float](Float.md)
 
  - [to_string](Float.md#to_string)
 #### class [Integer](Integer.md)
 
  - [to_string](Integer.md#to_string)
-#### Global functions
-
- - [value_to_string](function.md#value_to_string)

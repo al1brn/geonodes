@@ -19,12 +19,12 @@ node = nodes.Radius()
 
 ## Implementation
 
-#### class [Geometry](Geometry.md)
-
- - [radius](Geometry.md#radius-property)
-#### class [ControlPoint](ControlPoint.md)
-
- - [radius](ControlPoint.md#radius-property)
 #### class [CloudPoint](CloudPoint.md)
 
  - [radius](CloudPoint.md#radius-property)
+#### class [ControlPoint](ControlPoint.md)
+
+ - [radius](ControlPoint.md#radius-property)
+#### class [Geometry](Geometry.md)
+
+ - [radius](Geometry.md#radius-property)

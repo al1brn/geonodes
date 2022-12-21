@@ -27,10 +27,10 @@ node = nodes.SetShadeSmooth(geometry=None, selection=None, shade_smooth=None)
 
 ## Implementation
 
-#### class [Mesh](Mesh.md)
-
- - [set_shade_smooth](Mesh.md#set_shade_smooth)
 #### class [Face](Face.md)
 
  - [set_shade_smooth](Face.md#set_shade_smooth)
  - [shade_smooth](Face.md#shade_smooth)
+#### class [Mesh](Mesh.md)
+
+ - [set_shade_smooth](Mesh.md#set_shade_smooth)

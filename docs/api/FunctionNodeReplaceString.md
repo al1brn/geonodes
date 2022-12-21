@@ -27,9 +27,9 @@ node = nodes.ReplaceString(string=None, find=None, replace=None)
 
 ## Implementation
 
+#### Global functions
+
+ - [replace_string](A.md#replace_string)
 #### class [String](String.md)
 
  - [replace](String.md#replace)
-#### Global functions
-
- - [replace_string](function.md#replace_string)

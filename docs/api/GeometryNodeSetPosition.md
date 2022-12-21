@@ -28,10 +28,10 @@ node = nodes.SetPosition(geometry=None, selection=None, position=None, offset=No
 
 ## Implementation
 
-#### class [Geometry](Geometry.md)
-
- - [set_position](Geometry.md#set_position)
 #### class [Domain](Domain.md)
 
  - [set_position](Domain.md#set_position)
  - [position](Domain.md#position)
+#### class [Geometry](Geometry.md)
+
+ - [set_position](Geometry.md#set_position)

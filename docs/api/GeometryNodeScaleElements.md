@@ -34,16 +34,16 @@ node = nodes.ScaleElements(geometry=None, selection=None, scale=None, center=Non
 
 ## Implementation
 
+#### class [Edge](Edge.md)
+
+ - [scale_uniform](Edge.md#scale_uniform)
+ - [scale_single_axis](Edge.md#scale_single_axis)
+#### class [Face](Face.md)
+
+ - [scale_uniform](Face.md#scale_uniform)
+ - [scale_single_axis](Face.md#scale_single_axis)
 #### class [Mesh](Mesh.md)
 
  - [scale_elements](Mesh.md#scale_elements)
  - [scale_uniform](Mesh.md#scale_uniform)
  - [scale_single_axis](Mesh.md#scale_single_axis)
-#### class [Face](Face.md)
-
- - [scale_uniform](Face.md#scale_uniform)
- - [scale_single_axis](Face.md#scale_single_axis)
-#### class [Edge](Edge.md)
-
- - [scale_uniform](Edge.md#scale_uniform)
- - [scale_single_axis](Edge.md#scale_single_axis)

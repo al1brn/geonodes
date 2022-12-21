@@ -37,10 +37,10 @@ node = nodes.DistributePointsOnFaces(mesh=None, selection=None, distance_min=Non
 
 ## Implementation
 
-#### class [Mesh](Mesh.md)
-
- - [distribute_points_on_faces](Mesh.md#distribute_points_on_faces)
 #### class [Face](Face.md)
 
  - [distribute_points_random](Face.md#distribute_points_random)
  - [distribute_points_poisson](Face.md#distribute_points_poisson)
+#### class [Mesh](Mesh.md)
+
+ - [distribute_points_on_faces](Mesh.md#distribute_points_on_faces)

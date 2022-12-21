@@ -30,6 +30,17 @@ node = nodes.BooleanMath(boolean0=None, boolean1=None, operation='AND')
 
 ## Implementation
 
+#### Global functions
+
+ - [b_and](A.md#b_and)
+ - [b_or](A.md#b_or)
+ - [b_not](A.md#b_not)
+ - [nand](A.md#nand)
+ - [nor](A.md#nor)
+ - [xnor](A.md#xnor)
+ - [xor](A.md#xor)
+ - [imply](A.md#imply)
+ - [nimply](A.md#nimply)
 #### class [Boolean](Boolean.md)
 
  - [b_and](Boolean.md#b_and)
@@ -41,14 +52,3 @@ node = nodes.BooleanMath(boolean0=None, boolean1=None, operation='AND')
  - [xor](Boolean.md#xor)
  - [imply](Boolean.md#imply)
  - [nimply](Boolean.md#nimply)
-#### Global functions
-
- - [b_and](function.md#b_and)
- - [b_or](function.md#b_or)
- - [b_not](function.md#b_not)
- - [nand](function.md#nand)
- - [nor](function.md#nor)
- - [xnor](function.md#xnor)
- - [xor](function.md#xor)
- - [imply](function.md#imply)
- - [nimply](function.md#nimply)

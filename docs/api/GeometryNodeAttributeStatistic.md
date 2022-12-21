@@ -44,9 +44,6 @@ node = nodes.AttributeStatistic(geometry=None, selection=None, attribute=None, d
 - Output sockets : ['mean', 'median', 'sum', 'min', 'max', 'range', 'standard_deviation', 'variance']
 ## Implementation
 
-#### class [Geometry](Geometry.md)
-
- - [attribute_statistic](Geometry.md#attribute_statistic)
 #### class [Domain](Domain.md)
 
  - [attribute_statistic](Domain.md#attribute_statistic)
@@ -58,3 +55,6 @@ node = nodes.AttributeStatistic(geometry=None, selection=None, attribute=None, d
  - [attribute_range](Domain.md#attribute_range)
  - [attribute_std](Domain.md#attribute_std)
  - [attribute_var](Domain.md#attribute_var)
+#### class [Geometry](Geometry.md)
+
+ - [attribute_statistic](Geometry.md#attribute_statistic)

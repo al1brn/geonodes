@@ -37,10 +37,10 @@ node = nodes.CaptureAttribute(geometry=None, value=None, data_type='FLOAT', doma
 - Output sockets : ['attribute']
 ## Implementation
 
+#### class [Domain](Domain.md)
+
+ - [capture_attribute](Domain.md#capture_attribute)
 #### class [Geometry](Geometry.md)
 
  - [capture_attribute](Geometry.md#capture_attribute)
  - [capture_attribute_node](Geometry.md#capture_attribute_node)
-#### class [Domain](Domain.md)
-
- - [capture_attribute](Domain.md#capture_attribute)

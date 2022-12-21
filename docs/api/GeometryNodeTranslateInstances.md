@@ -28,9 +28,9 @@ node = nodes.TranslateInstances(instances=None, selection=None, translation=None
 
 ## Implementation
 
-#### class [Instances](Instances.md)
-
- - [translate](Instances.md#translate)
 #### class [Instance](Instance.md)
 
  - [translate](Instance.md#translate)
+#### class [Instances](Instances.md)
+
+ - [translate](Instances.md#translate)

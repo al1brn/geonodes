@@ -29,9 +29,9 @@ node = nodes.ScaleInstances(instances=None, selection=None, scale=None, center=N
 
 ## Implementation
 
-#### class [Instances](Instances.md)
-
- - [set_scale](Instances.md#set_scale)
 #### class [Instance](Instance.md)
 
  - [set_scale](Instance.md#set_scale)
+#### class [Instances](Instances.md)
+
+ - [set_scale](Instances.md#set_scale)

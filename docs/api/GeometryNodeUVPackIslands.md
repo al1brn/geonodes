@@ -28,9 +28,9 @@ node = nodes.PackUvIslands(uv=None, selection=None, margin=None, rotate=None)
 
 ## Implementation
 
-#### class [Mesh](Mesh.md)
-
- - [pack_uv_islands](Mesh.md#pack_uv_islands)
 #### class [Face](Face.md)
 
  - [pack_uv_islands](Face.md#pack_uv_islands)
+#### class [Mesh](Mesh.md)
+
+ - [pack_uv_islands](Mesh.md#pack_uv_islands)

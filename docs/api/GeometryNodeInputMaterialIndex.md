@@ -19,9 +19,9 @@ node = nodes.MaterialIndex()
 
 ## Implementation
 
-#### class [Geometry](Geometry.md)
-
- - [material_index](Geometry.md#material_index-property)
 #### class [Domain](Domain.md)
 
  - [material_index](Domain.md#material_index-property)
+#### class [Geometry](Geometry.md)
+
+ - [material_index](Geometry.md#material_index-property)

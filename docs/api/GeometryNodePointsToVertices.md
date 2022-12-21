@@ -26,9 +26,9 @@ node = nodes.PointsToVertices(points=None, selection=None)
 
 ## Implementation
 
-#### class [Points](Points.md)
-
- - [to_vertices](Points.md#to_vertices)
 #### class [CloudPoint](CloudPoint.md)
 
  - [to_vertices](CloudPoint.md#to_vertices)
+#### class [Points](Points.md)
+
+ - [to_vertices](Points.md#to_vertices)

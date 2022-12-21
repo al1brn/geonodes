@@ -26,9 +26,9 @@ node = nodes.ColorRamp(fac=None)
 
 ## Implementation
 
+#### Global functions
+
+ - [color_ramp](A.md#color_ramp)
 #### class [Float](Float.md)
 
  - [color_ramp](Float.md#color_ramp-property)
-#### Global functions
-
- - [color_ramp](function.md#color_ramp)

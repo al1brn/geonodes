@@ -19,9 +19,9 @@ node = nodes.InstanceRotation()
 
 ## Implementation
 
-#### class [Instances](Instances.md)
-
- - [rotation](Instances.md#rotation-property)
 #### class [Instance](Instance.md)
 
  - [rotation](Instance.md#rotation-property)
+#### class [Instances](Instances.md)
+
+ - [rotation](Instances.md#rotation-property)

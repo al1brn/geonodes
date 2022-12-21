@@ -35,8 +35,8 @@ node = nodes.RotateEuler(rotation=None, rotate_by=None, axis=None, angle=None, s
 
 #### Global functions
 
- - [rotate_euler](function.md#rotate_euler)
- - [rotate_axis_angle](function.md#rotate_axis_angle)
+ - [rotate_euler](A.md#rotate_euler)
+ - [rotate_axis_angle](A.md#rotate_axis_angle)
 #### class [Rotation](Rotation.md)
 
  - [Euler](Rotation.md#Euler-classmethod)

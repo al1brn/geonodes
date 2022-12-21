@@ -32,12 +32,12 @@ node = nodes.AlignEulerToVector(rotation=None, factor=None, vector=None, axis='X
 
 ## Implementation
 
-#### class [Vector](Vector.md)
-
- - [align_euler_to_vector](Vector.md#align_euler_to_vector)
 #### Global functions
 
- - [align_euler_to_vector](function.md#align_euler_to_vector)
+ - [align_euler_to_vector](A.md#align_euler_to_vector)
 #### class [Rotation](Rotation.md)
 
  - [align_to_vector](Rotation.md#align_to_vector)
+#### class [Vector](Vector.md)
+
+ - [align_euler_to_vector](Vector.md#align_euler_to_vector)

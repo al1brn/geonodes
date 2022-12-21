@@ -35,15 +35,15 @@ node = nodes.ExtrudeMesh(mesh=None, selection=None, offset=None, offset_scale=No
 
 ## Implementation
 
+#### class [Edge](Edge.md)
+
+ - [extrude](Edge.md#extrude)
+#### class [Face](Face.md)
+
+ - [extrude](Face.md#extrude)
 #### class [Mesh](Mesh.md)
 
  - [extrude](Mesh.md#extrude)
 #### class [Vertex](Vertex.md)
 
  - [extrude](Vertex.md#extrude)
-#### class [Face](Face.md)
-
- - [extrude](Face.md#extrude)
-#### class [Edge](Edge.md)
-
- - [extrude](Edge.md#extrude)

@@ -40,6 +40,16 @@ node = nodes.Compare(a=None, b=None, c=None, angle=None, epsilon=None, data_type
 - Output sockets : []
 ## Implementation
 
+#### Global functions
+
+ - [compare](A.md#compare)
+#### class [Color](Color.md)
+
+ - [compare](Color.md#compare)
+ - [darker](Color.md#darker)
+ - [brighter](Color.md#brighter)
+ - [equal](Color.md#equal)
+ - [equal](Color.md#equal)
 #### class [Float](Float.md)
 
  - [compare](Float.md#compare)
@@ -95,13 +105,3 @@ node = nodes.Compare(a=None, b=None, c=None, angle=None, epsilon=None, data_type
  - [direction_greater_equal](Vector.md#direction_greater_equal)
  - [direction_equal](Vector.md#direction_equal)
  - [direction_not_equal](Vector.md#direction_not_equal)
-#### class [Color](Color.md)
-
- - [compare](Color.md#compare)
- - [darker](Color.md#darker)
- - [brighter](Color.md#brighter)
- - [equal](Color.md#equal)
- - [equal](Color.md#equal)
-#### Global functions
-
- - [compare](function.md#compare)

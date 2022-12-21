@@ -41,9 +41,9 @@ node = nodes.StringToCurves(string=None, size=None, character_spacing=None, word
 
 ## Implementation
 
+#### Global functions
+
+ - [string_to_curves](A.md#string_to_curves)
 #### class [String](String.md)
 
  - [to_curves](String.md#to_curves)
-#### Global functions
-
- - [string_to_curves](function.md#string_to_curves)

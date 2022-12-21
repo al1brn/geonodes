@@ -38,21 +38,21 @@ node = nodes.RandomValue(min=None, max=None, probability=None, ID=None, seed=Non
 - Output sockets : ['value']
 ## Implementation
 
-#### class [Geometry](Geometry.md)
+#### Global functions
 
- - [random_float](Geometry.md#random_float)
- - [random_integer](Geometry.md#random_integer)
- - [random_vector](Geometry.md#random_vector)
- - [random_boolean](Geometry.md#random_boolean)
+ - [random_float](A.md#random_float)
+ - [random_integer](A.md#random_integer)
+ - [random_vector](A.md#random_vector)
+ - [random_boolean](A.md#random_boolean)
 #### class [Domain](Domain.md)
 
  - [random_float](Domain.md#random_float)
  - [random_integer](Domain.md#random_integer)
  - [random_vector](Domain.md#random_vector)
  - [random_boolean](Domain.md#random_boolean)
-#### Global functions
+#### class [Geometry](Geometry.md)
 
- - [random_float](function.md#random_float)
- - [random_integer](function.md#random_integer)
- - [random_vector](function.md#random_vector)
- - [random_boolean](function.md#random_boolean)
+ - [random_float](Geometry.md#random_float)
+ - [random_integer](Geometry.md#random_integer)
+ - [random_vector](Geometry.md#random_vector)
+ - [random_boolean](Geometry.md#random_boolean)

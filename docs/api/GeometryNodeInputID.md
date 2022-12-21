@@ -19,9 +19,9 @@ node = nodes.ID()
 
 ## Implementation
 
-#### class [Geometry](Geometry.md)
-
- - [ID](Geometry.md#ID-property)
 #### class [Domain](Domain.md)
 
  - [ID](Domain.md#ID-property)
+#### class [Geometry](Geometry.md)
+
+ - [ID](Geometry.md#ID-property)

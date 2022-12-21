@@ -19,9 +19,9 @@ node = nodes.InstanceScale()
 
 ## Implementation
 
-#### class [Instances](Instances.md)
-
- - [scale](Instances.md#scale-property)
 #### class [Instance](Instance.md)
 
  - [scale](Instance.md#scale-property)
+#### class [Instances](Instances.md)
+
+ - [scale](Instances.md#scale-property)

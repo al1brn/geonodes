@@ -26,9 +26,9 @@ node = nodes.RgbCurves(fac=None, color=None)
 
 ## Implementation
 
+#### Global functions
+
+ - [rgb_curves](A.md#rgb_curves)
 #### class [Color](Color.md)
 
  - [rgb_curves](Color.md#rgb_curves-property)
-#### Global functions
-
- - [rgb_curves](function.md#rgb_curves)

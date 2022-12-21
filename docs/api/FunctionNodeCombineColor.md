@@ -32,13 +32,13 @@ node = nodes.CombineColor(red=None, green=None, blue=None, alpha=None, mode='RGB
 
 ## Implementation
 
+#### Global functions
+
+ - [combine_rgb](A.md#combine_rgb)
+ - [combine_hsv](A.md#combine_hsv)
+ - [combine_hsl](A.md#combine_hsl)
 #### class [Color](Color.md)
 
  - [RGB](Color.md#RGB-classmethod)
  - [HSV](Color.md#HSV-classmethod)
  - [HSL](Color.md#HSL-classmethod)
-#### Global functions
-
- - [combine_rgb](function.md#combine_rgb)
- - [combine_hsv](function.md#combine_hsv)
- - [combine_hsl](function.md#combine_hsl)

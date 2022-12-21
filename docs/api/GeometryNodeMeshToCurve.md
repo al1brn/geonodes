@@ -26,9 +26,9 @@ node = nodes.MeshToCurve(mesh=None, selection=None)
 
 ## Implementation
 
-#### class [Mesh](Mesh.md)
-
- - [to_curve](Mesh.md#to_curve)
 #### class [Edge](Edge.md)
 
  - [to_curve](Edge.md#to_curve)
+#### class [Mesh](Mesh.md)
+
+ - [to_curve](Mesh.md#to_curve)

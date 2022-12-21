@@ -27,14 +27,14 @@ node = nodes.SetMaterial(geometry=None, selection=None, material=None)
 
 ## Implementation
 
-#### class [Geometry](Geometry.md)
-
- - [set_material](Geometry.md#set_material)
 #### class [Face](Face.md)
 
  - [set_material](Face.md#set_material)
  - [material](Face.md#material-property)
  - [material](Face.md#material)
+#### class [Geometry](Geometry.md)
+
+ - [set_material](Geometry.md#set_material)
 #### class [Spline](Spline.md)
 
  - [set_material](Spline.md#set_material)

@@ -19,10 +19,10 @@ node = nodes.Index()
 
 ## Implementation
 
-#### class [Geometry](Geometry.md)
-
- - [index](Geometry.md#index-property)
 #### class [Domain](Domain.md)
 
  - [index](Domain.md#index-property)
  - [domain_index](Domain.md#domain_index-property)
+#### class [Geometry](Geometry.md)
+
+ - [index](Geometry.md#index-property)

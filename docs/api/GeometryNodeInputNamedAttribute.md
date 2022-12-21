@@ -34,14 +34,6 @@ node = nodes.NamedAttribute(name=None, data_type='FLOAT')
 - Output sockets : ['attribute']
 ## Implementation
 
-#### class [Geometry](Geometry.md)
-
- - [named_attribute](Geometry.md#named_attribute)
- - [get_named_float](Geometry.md#get_named_float)
- - [get_named_integer](Geometry.md#get_named_integer)
- - [get_named_vector](Geometry.md#get_named_vector)
- - [get_named_color](Geometry.md#get_named_color)
- - [get_named_boolean](Geometry.md#get_named_boolean)
 #### class [Domain](Domain.md)
 
  - [named_attribute](Domain.md#named_attribute)
@@ -50,3 +42,11 @@ node = nodes.NamedAttribute(name=None, data_type='FLOAT')
  - [get_named_vector](Domain.md#get_named_vector)
  - [get_named_color](Domain.md#get_named_color)
  - [get_named_boolean](Domain.md#get_named_boolean)
+#### class [Geometry](Geometry.md)
+
+ - [named_attribute](Geometry.md#named_attribute)
+ - [get_named_float](Geometry.md#get_named_float)
+ - [get_named_integer](Geometry.md#get_named_integer)
+ - [get_named_vector](Geometry.md#get_named_vector)
+ - [get_named_color](Geometry.md#get_named_color)
+ - [get_named_boolean](Geometry.md#get_named_boolean)

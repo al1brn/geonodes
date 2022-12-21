@@ -27,9 +27,9 @@ node = nodes.SliceString(string=None, position=None, length=None)
 
 ## Implementation
 
+#### Global functions
+
+ - [slice_string](A.md#slice_string)
 #### class [String](String.md)
 
  - [slice](String.md#slice)
-#### Global functions
-
- - [slice_string](function.md#slice_string)

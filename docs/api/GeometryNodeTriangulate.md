@@ -32,9 +32,9 @@ node = nodes.Triangulate(mesh=None, selection=None, minimum_vertices=None, ngon_
 
 ## Implementation
 
-#### class [Mesh](Mesh.md)
-
- - [triangulate](Mesh.md#triangulate)
 #### class [Face](Face.md)
 
  - [triangulate](Face.md#triangulate)
+#### class [Mesh](Mesh.md)
+
+ - [triangulate](Mesh.md#triangulate)

@@ -36,54 +36,54 @@ node = nodes.Switch(switch=None, false=None, true=None, input_type='GEOMETRY')
 - Output sockets : ['output']
 ## Implementation
 
-#### class [Float](Float.md)
+#### Global functions
 
- - [switch](Float.md#switch)
-#### class [Integer](Integer.md)
-
- - [switch](Integer.md#switch)
+ - [switch](A.md#switch)
+ - [switch_float](A.md#switch_float)
+ - [switch_integer](A.md#switch_integer)
+ - [switch_boolean](A.md#switch_boolean)
+ - [switch_vector](A.md#switch_vector)
+ - [switch_string](A.md#switch_string)
+ - [switch_color](A.md#switch_color)
+ - [switch_object](A.md#switch_object)
+ - [switch_image](A.md#switch_image)
+ - [switch_geometry](A.md#switch_geometry)
+ - [switch_collection](A.md#switch_collection)
+ - [switch_texture](A.md#switch_texture)
+ - [switch_material](A.md#switch_material)
 #### class [Boolean](Boolean.md)
 
  - [switch](Boolean.md#switch)
-#### class [String](String.md)
-
- - [switch](String.md#switch)
-#### class [Vector](Vector.md)
-
- - [switch](Vector.md#switch)
-#### class [Color](Color.md)
-
- - [switch](Color.md#switch)
 #### class [Collection](Collection.md)
 
  - [switch](Collection.md#switch)
-#### class [Object](Object.md)
+#### class [Color](Color.md)
 
- - [switch](Object.md#switch)
-#### class [Image](Image.md)
+ - [switch](Color.md#switch)
+#### class [Float](Float.md)
 
- - [switch](Image.md#switch)
-#### class [Texture](Texture.md)
-
- - [switch](Texture.md#switch)
-#### class [Material](Material.md)
-
- - [switch](Material.md#switch)
+ - [switch](Float.md#switch)
 #### class [Geometry](Geometry.md)
 
  - [switch](Geometry.md#switch)
-#### Global functions
+#### class [Image](Image.md)
 
- - [switch](function.md#switch)
- - [switch_float](function.md#switch_float)
- - [switch_integer](function.md#switch_integer)
- - [switch_boolean](function.md#switch_boolean)
- - [switch_vector](function.md#switch_vector)
- - [switch_string](function.md#switch_string)
- - [switch_color](function.md#switch_color)
- - [switch_object](function.md#switch_object)
- - [switch_image](function.md#switch_image)
- - [switch_geometry](function.md#switch_geometry)
- - [switch_collection](function.md#switch_collection)
- - [switch_texture](function.md#switch_texture)
- - [switch_material](function.md#switch_material)
+ - [switch](Image.md#switch)
+#### class [Integer](Integer.md)
+
+ - [switch](Integer.md#switch)
+#### class [Material](Material.md)
+
+ - [switch](Material.md#switch)
+#### class [Object](Object.md)
+
+ - [switch](Object.md#switch)
+#### class [String](String.md)
+
+ - [switch](String.md#switch)
+#### class [Texture](Texture.md)
+
+ - [switch](Texture.md#switch)
+#### class [Vector](Vector.md)
+
+ - [switch](Vector.md#switch)

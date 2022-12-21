@@ -32,6 +32,11 @@ node = nodes.SeparateColor(color=None, mode='RGB')
 
 ## Implementation
 
+#### Global functions
+
+ - [separate_rgb](A.md#separate_rgb)
+ - [separate_hsv](A.md#separate_hsv)
+ - [separate_hsl](A.md#separate_hsl)
 #### class [Color](Color.md)
 
  - [rgb](Color.md#rgb-property)
@@ -45,8 +50,3 @@ node = nodes.SeparateColor(color=None, mode='RGB')
  - [saturation](Color.md#saturation-property)
  - [value](Color.md#value-property)
  - [lightness](Color.md#lightness-property)
-#### Global functions
-
- - [separate_rgb](function.md#separate_rgb)
- - [separate_hsv](function.md#separate_hsv)
- - [separate_hsl](function.md#separate_hsl)
