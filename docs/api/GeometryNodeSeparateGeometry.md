@@ -4,7 +4,7 @@
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/separate_geometry.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSeparateGeometry.html)
-- geonodes name: `WNode`
+- geonodes name: `SeparateGeometry`
 - bl_idname: `GeometryNodeSeparateGeometry`
 
 ```python

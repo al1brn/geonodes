@@ -4,7 +4,7 @@
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/wave.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWave.html)
-- geonodes name: `WNode`
+- geonodes name: `WaveTexture`
 - bl_idname: `ShaderNodeTexWave`
 
 ```python

@@ -4,7 +4,7 @@
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/accumulate_field.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeAccumulateField.html)
-- geonodes name: `WNode`
+- geonodes name: `AccumulateField`
 - bl_idname: `GeometryNodeAccumulateField`
 
 ```python

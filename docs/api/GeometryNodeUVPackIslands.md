@@ -4,7 +4,7 @@
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/uv/pack_uv_islands.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeUVPackIslands.html)
-- geonodes name: `WNode`
+- geonodes name: `PackUvIslands`
 - bl_idname: `GeometryNodeUVPackIslands`
 
 ```python

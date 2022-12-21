@@ -4,7 +4,7 @@
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/replace_string.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeReplaceString.html)
-- geonodes name: `WNode`
+- geonodes name: `ReplaceString`
 - bl_idname: `FunctionNodeReplaceString`
 
 ```python

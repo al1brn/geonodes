@@ -4,7 +4,7 @@
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/is_shade_smooth.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputShadeSmooth.html)
-- geonodes name: `WNode`
+- geonodes name: `IsShadeSmooth`
 - bl_idname: `GeometryNodeInputShadeSmooth`
 
 ```python

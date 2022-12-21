@@ -4,7 +4,7 @@
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh_topology/corners_of_face.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeCornersOfFace.html)
-- geonodes name: `WNode`
+- geonodes name: `CornersOfFace`
 - bl_idname: `GeometryNodeCornersOfFace`
 
 ```python

@@ -4,7 +4,7 @@
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
-- geonodes name: `WNode`
+- geonodes name: `Mix`
 - bl_idname: `ShaderNodeMix`
 
 ```python

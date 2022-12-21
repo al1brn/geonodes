@@ -4,7 +4,7 @@
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/spline_parameter.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSplineParameter.html)
-- geonodes name: `WNode`
+- geonodes name: `SplineParameter`
 - bl_idname: `GeometryNodeSplineParameter`
 
 ```python

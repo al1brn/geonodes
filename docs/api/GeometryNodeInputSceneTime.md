@@ -4,7 +4,7 @@
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/scene_time.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputSceneTime.html)
-- geonodes name: `WNode`
+- geonodes name: `SceneTime`
 - bl_idname: `GeometryNodeInputSceneTime`
 
 ```python

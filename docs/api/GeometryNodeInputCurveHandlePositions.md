@@ -4,7 +4,7 @@
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/curve_handle_position.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputCurveHandlePositions.html)
-- geonodes name: `WNode`
+- geonodes name: `CurveHandlePositions`
 - bl_idname: `GeometryNodeInputCurveHandlePositions`
 
 ```python

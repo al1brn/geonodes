@@ -4,7 +4,7 @@
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/dual_mesh.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeDualMesh.html)
-- geonodes name: `WNode`
+- geonodes name: `DualMesh`
 - bl_idname: `GeometryNodeDualMesh`
 
 ```python

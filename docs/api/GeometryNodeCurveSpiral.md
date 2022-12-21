@@ -4,7 +4,7 @@
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve_primitives/curve_spiral.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveSpiral.html)
-- geonodes name: `WNode`
+- geonodes name: `Spiral`
 - bl_idname: `GeometryNodeCurveSpiral`
 
 ```python

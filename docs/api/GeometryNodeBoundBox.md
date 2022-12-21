@@ -4,7 +4,7 @@
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/bounding_box.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeBoundBox.html)
-- geonodes name: `WNode`
+- geonodes name: `BoundingBox`
 - bl_idname: `GeometryNodeBoundBox`
 
 ```python

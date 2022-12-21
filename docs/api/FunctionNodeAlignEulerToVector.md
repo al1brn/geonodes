@@ -4,7 +4,7 @@
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/align_euler_to_vector.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeAlignEulerToVector.html)
-- geonodes name: `WNode`
+- geonodes name: `AlignEulerToVector`
 - bl_idname: `FunctionNodeAlignEulerToVector`
 
 ```python

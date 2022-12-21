@@ -4,7 +4,7 @@
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/set_curve_tilt.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetCurveTilt.html)
-- geonodes name: `WNode`
+- geonodes name: `SetCurveTilt`
 - bl_idname: `GeometryNodeSetCurveTilt`
 
 ```python

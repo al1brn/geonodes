@@ -4,7 +4,7 @@
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/subdivide_curve.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSubdivideCurve.html)
-- geonodes name: `WNode`
+- geonodes name: `SubdivideCurve`
 - bl_idname: `GeometryNodeSubdivideCurve`
 
 ```python

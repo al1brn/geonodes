@@ -4,7 +4,7 @@
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/mesh_boolean.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshBoolean.html)
-- geonodes name: `WNode`
+- geonodes name: `MeshBoolean`
 - bl_idname: `GeometryNodeMeshBoolean`
 
 ```python

@@ -4,7 +4,7 @@
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/join_geometry.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeJoinGeometry.html)
-- geonodes name: `WNode`
+- geonodes name: `JoinGeometry`
 - bl_idname: `GeometryNodeJoinGeometry`
 
 ```python

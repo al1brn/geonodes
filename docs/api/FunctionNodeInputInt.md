@@ -4,7 +4,7 @@
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/integer.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeInputInt.html)
-- geonodes name: `WNode`
+- geonodes name: `Integer`
 - bl_idname: `FunctionNodeInputInt`
 
 ```python

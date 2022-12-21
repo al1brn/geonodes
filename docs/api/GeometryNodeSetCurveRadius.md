@@ -4,7 +4,7 @@
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/set_curve_radius.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetCurveRadius.html)
-- geonodes name: `WNode`
+- geonodes name: `SetCurveRadius`
 - bl_idname: `GeometryNodeSetCurveRadius`
 
 ```python

@@ -4,7 +4,7 @@
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/material_selection.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeMaterialSelection.html)
-- geonodes name: `WNode`
+- geonodes name: `MaterialSelection`
 - bl_idname: `GeometryNodeMaterialSelection`
 
 ```python

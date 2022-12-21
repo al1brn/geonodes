@@ -4,7 +4,7 @@
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/sample_index.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSampleIndex.html)
-- geonodes name: `WNode`
+- geonodes name: `SampleIndex`
 - bl_idname: `GeometryNodeSampleIndex`
 
 ```python

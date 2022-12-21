@@ -4,7 +4,7 @@
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/r.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.NodeGroupInput.html)
-- geonodes name: `WNode`
+- geonodes name: `GroupInput`
 - bl_idname: `NodeGroupInput`
 
 ```python

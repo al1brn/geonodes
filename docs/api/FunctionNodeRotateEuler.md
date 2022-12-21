@@ -4,7 +4,7 @@
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotate_euler.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeRotateEuler.html)
-- geonodes name: `WNode`
+- geonodes name: `RotateEuler`
 - bl_idname: `FunctionNodeRotateEuler`
 
 ```python

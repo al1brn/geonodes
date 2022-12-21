@@ -4,7 +4,7 @@
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/output/viewer.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeViewer.html)
-- geonodes name: `WNode`
+- geonodes name: `Viewer`
 - bl_idname: `GeometryNodeViewer`
 
 ```python

@@ -4,7 +4,7 @@
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/store_named_attribute.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeStoreNamedAttribute.html)
-- geonodes name: `WNode`
+- geonodes name: `StoreNamedAttribute`
 - bl_idname: `GeometryNodeStoreNamedAttribute`
 
 ```python

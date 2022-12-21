@@ -4,7 +4,7 @@
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/triangulate.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeTriangulate.html)
-- geonodes name: `WNode`
+- geonodes name: `Triangulate`
 - bl_idname: `GeometryNodeTriangulate`
 
 ```python

@@ -4,7 +4,7 @@
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/checker.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexChecker.html)
-- geonodes name: `WNode`
+- geonodes name: `CheckerTexture`
 - bl_idname: `ShaderNodeTexChecker`
 
 ```python

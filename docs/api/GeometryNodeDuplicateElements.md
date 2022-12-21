@@ -4,7 +4,7 @@
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/duplicate_elements.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeDuplicateElements.html)
-- geonodes name: `WNode`
+- geonodes name: `DuplicateElements`
 - bl_idname: `GeometryNodeDuplicateElements`
 
 ```python

@@ -4,7 +4,7 @@
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/vertex_neighbors.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshVertexNeighbors.html)
-- geonodes name: `WNode`
+- geonodes name: `VertexNeighbors`
 - bl_idname: `GeometryNodeInputMeshVertexNeighbors`
 
 ```python

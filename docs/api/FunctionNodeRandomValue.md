@@ -4,7 +4,7 @@
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/random_value.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeRandomValue.html)
-- geonodes name: `WNode`
+- geonodes name: `RandomValue`
 - bl_idname: `FunctionNodeRandomValue`
 
 ```python

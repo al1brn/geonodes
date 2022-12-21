@@ -4,7 +4,7 @@
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/set_position.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetPosition.html)
-- geonodes name: `WNode`
+- geonodes name: `SetPosition`
 - bl_idname: `GeometryNodeSetPosition`
 
 ```python

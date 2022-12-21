@@ -4,7 +4,7 @@
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/set_material.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetMaterial.html)
-- geonodes name: `WNode`
+- geonodes name: `SetMaterial`
 - bl_idname: `GeometryNodeSetMaterial`
 
 ```python

@@ -4,7 +4,7 @@
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
-- geonodes name: `WNode`
+- geonodes name: `Math`
 - bl_idname: `ShaderNodeMath`
 
 ```python

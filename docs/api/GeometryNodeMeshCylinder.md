@@ -4,7 +4,7 @@
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh_primitives/cylinder.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshCylinder.html)
-- geonodes name: `WNode`
+- geonodes name: `Cylinder`
 - bl_idname: `GeometryNodeMeshCylinder`
 
 ```python

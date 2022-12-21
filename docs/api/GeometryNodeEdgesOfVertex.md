@@ -4,7 +4,7 @@
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh_topology/edges_of_vertex.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeEdgesOfVertex.html)
-- geonodes name: `WNode`
+- geonodes name: `EdgesOfVertex`
 - bl_idname: `GeometryNodeEdgesOfVertex`
 
 ```python

@@ -4,7 +4,7 @@
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/slice_string.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeSliceString.html)
-- geonodes name: `WNode`
+- geonodes name: `SliceString`
 - bl_idname: `FunctionNodeSliceString`
 
 ```python

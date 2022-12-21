@@ -4,7 +4,7 @@
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/boolean_math.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html)
-- geonodes name: `WNode`
+- geonodes name: `BooleanMath`
 - bl_idname: `FunctionNodeBooleanMath`
 
 ```python

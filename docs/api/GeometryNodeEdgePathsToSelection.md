@@ -4,7 +4,7 @@
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/edge_paths_to_selection.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeEdgePathsToSelection.html)
-- geonodes name: `WNode`
+- geonodes name: `EdgePathsToSelection`
 - bl_idname: `GeometryNodeEdgePathsToSelection`
 
 ```python

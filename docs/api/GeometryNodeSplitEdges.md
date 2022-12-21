@@ -4,7 +4,7 @@
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/split_edges.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSplitEdges.html)
-- geonodes name: `WNode`
+- geonodes name: `SplitEdges`
 - bl_idname: `GeometryNodeSplitEdges`
 
 ```python

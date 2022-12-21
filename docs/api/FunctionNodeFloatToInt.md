@@ -4,7 +4,7 @@
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/float_to_integer.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeFloatToInt.html)
-- geonodes name: `WNode`
+- geonodes name: `FloatToInteger`
 - bl_idname: `FunctionNodeFloatToInt`
 
 ```python

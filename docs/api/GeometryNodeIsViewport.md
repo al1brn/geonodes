@@ -4,7 +4,7 @@
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/is_viewport.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeIsViewport.html)
-- geonodes name: `WNode`
+- geonodes name: `IsViewport`
 - bl_idname: `GeometryNodeIsViewport`
 
 ```python

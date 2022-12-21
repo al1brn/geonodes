@@ -4,7 +4,7 @@
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/sample_nearest_surface.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSampleNearestSurface.html)
-- geonodes name: `WNode`
+- geonodes name: `SampleNearestSurface`
 - bl_idname: `GeometryNodeSampleNearestSurface`
 
 ```python

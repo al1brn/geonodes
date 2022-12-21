@@ -4,7 +4,7 @@
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh_primitives/icosphere.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshIcoSphere.html)
-- geonodes name: `WNode`
+- geonodes name: `IcoSphere`
 - bl_idname: `GeometryNodeMeshIcoSphere`
 
 ```python

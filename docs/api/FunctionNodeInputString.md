@@ -4,7 +4,7 @@
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/string.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeInputString.html)
-- geonodes name: `WNode`
+- geonodes name: `String`
 - bl_idname: `FunctionNodeInputString`
 
 ```python

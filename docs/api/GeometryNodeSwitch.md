@@ -4,7 +4,7 @@
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
-- geonodes name: `WNode`
+- geonodes name: `Switch`
 - bl_idname: `GeometryNodeSwitch`
 
 ```python

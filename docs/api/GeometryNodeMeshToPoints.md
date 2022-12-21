@@ -4,7 +4,7 @@
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/mesh_to_points.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshToPoints.html)
-- geonodes name: `WNode`
+- geonodes name: `MeshToPoints`
 - bl_idname: `GeometryNodeMeshToPoints`
 
 ```python

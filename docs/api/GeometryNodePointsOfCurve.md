@@ -4,7 +4,7 @@
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve_topology/points_of_curve.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodePointsOfCurve.html)
-- geonodes name: `WNode`
+- geonodes name: `PointsOfCurve`
 - bl_idname: `GeometryNodePointsOfCurve`
 
 ```python

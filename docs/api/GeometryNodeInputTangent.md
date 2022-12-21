@@ -4,7 +4,7 @@
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/curve_tangent.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputTangent.html)
-- geonodes name: `WNode`
+- geonodes name: `CurveTangent`
 - bl_idname: `GeometryNodeInputTangent`
 
 ```python

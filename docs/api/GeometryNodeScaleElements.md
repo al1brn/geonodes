@@ -4,7 +4,7 @@
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/scale_elements.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeScaleElements.html)
-- geonodes name: `WNode`
+- geonodes name: `ScaleElements`
 - bl_idname: `GeometryNodeScaleElements`
 
 ```python

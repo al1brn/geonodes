@@ -4,7 +4,7 @@
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/set_id.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetID.html)
-- geonodes name: `WNode`
+- geonodes name: `SetID`
 - bl_idname: `GeometryNodeSetID`
 
 ```python

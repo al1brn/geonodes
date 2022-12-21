@@ -4,7 +4,7 @@
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh_primitives/mesh_line.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshLine.html)
-- geonodes name: `WNode`
+- geonodes name: `MeshLine`
 - bl_idname: `GeometryNodeMeshLine`
 
 ```python

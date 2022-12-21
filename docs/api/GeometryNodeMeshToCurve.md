@@ -4,7 +4,7 @@
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/mesh_to_curve.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshToCurve.html)
-- geonodes name: `WNode`
+- geonodes name: `MeshToCurve`
 - bl_idname: `GeometryNodeMeshToCurve`
 
 ```python

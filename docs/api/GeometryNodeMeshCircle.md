@@ -4,7 +4,7 @@
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh_primitives/mesh_circle.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshCircle.html)
-- geonodes name: `WNode`
+- geonodes name: `MeshCircle`
 - bl_idname: `GeometryNodeMeshCircle`
 
 ```python

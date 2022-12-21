@@ -4,7 +4,7 @@
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/magic.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexMagic.html)
-- geonodes name: `WNode`
+- geonodes name: `MagicTexture`
 - bl_idname: `ShaderNodeTexMagic`
 
 ```python

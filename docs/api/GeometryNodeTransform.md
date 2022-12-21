@@ -4,7 +4,7 @@
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/transform.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeTransform.html)
-- geonodes name: `WNode`
+- geonodes name: `Transform`
 - bl_idname: `GeometryNodeTransform`
 
 ```python

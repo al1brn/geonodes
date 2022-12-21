@@ -4,7 +4,7 @@
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/volume/volume_to_mesh.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeVolumeToMesh.html)
-- geonodes name: `WNode`
+- geonodes name: `VolumeToMesh`
 - bl_idname: `GeometryNodeVolumeToMesh`
 
 ```python

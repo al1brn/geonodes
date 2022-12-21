@@ -4,7 +4,7 @@
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/subdivision_surface.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSubdivisionSurface.html)
-- geonodes name: `WNode`
+- geonodes name: `SubdivisionSurface`
 - bl_idname: `GeometryNodeSubdivisionSurface`
 
 ```python

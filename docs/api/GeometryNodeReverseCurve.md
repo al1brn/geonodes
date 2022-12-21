@@ -4,7 +4,7 @@
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/reverse_curve.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeReverseCurve.html)
-- geonodes name: `WNode`
+- geonodes name: `ReverseCurve`
 - bl_idname: `GeometryNodeReverseCurve`
 
 ```python

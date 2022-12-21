@@ -4,7 +4,7 @@
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/face_set_boundaries.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshFaceSetBoundaries.html)
-- geonodes name: `WNode`
+- geonodes name: `FaceSetBoundaries`
 - bl_idname: `GeometryNodeMeshFaceSetBoundaries`
 
 ```python

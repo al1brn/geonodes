@@ -4,7 +4,7 @@
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh_topology/vertex_of_corner.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeVertexOfCorner.html)
-- geonodes name: `WNode`
+- geonodes name: `VertexOfCorner`
 - bl_idname: `GeometryNodeVertexOfCorner`
 
 ```python

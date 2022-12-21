@@ -4,7 +4,7 @@
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh_topology/offset_corner_in_face.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeOffsetCornerInFace.html)
-- geonodes name: `WNode`
+- geonodes name: `OffsetCornerInFace`
 - bl_idname: `GeometryNodeOffsetCornerInFace`
 
 ```python

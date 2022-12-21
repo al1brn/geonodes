@@ -4,7 +4,7 @@
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/set_spline_resolution.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetSplineResolution.html)
-- geonodes name: `WNode`
+- geonodes name: `SetSplineResolution`
 - bl_idname: `GeometryNodeSetSplineResolution`
 
 ```python

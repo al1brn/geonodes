@@ -4,7 +4,7 @@
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/color.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeInputColor.html)
-- geonodes name: `WNode`
+- geonodes name: `Color`
 - bl_idname: `FunctionNodeInputColor`
 
 ```python

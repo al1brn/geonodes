@@ -4,7 +4,7 @@
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instance_scale.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputInstanceScale.html)
-- geonodes name: `WNode`
+- geonodes name: `InstanceScale`
 - bl_idname: `GeometryNodeInputInstanceScale`
 
 ```python

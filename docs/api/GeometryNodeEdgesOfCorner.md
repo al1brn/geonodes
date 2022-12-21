@@ -4,7 +4,7 @@
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh_topology/edges_of_corner.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeEdgesOfCorner.html)
-- geonodes name: `WNode`
+- geonodes name: `EdgesOfCorner`
 - bl_idname: `GeometryNodeEdgesOfCorner`
 
 ```python

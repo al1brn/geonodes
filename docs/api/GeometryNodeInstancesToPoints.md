@@ -4,7 +4,7 @@
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instances_to_points.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInstancesToPoints.html)
-- geonodes name: `WNode`
+- geonodes name: `InstancesToPoints`
 - bl_idname: `GeometryNodeInstancesToPoints`
 
 ```python

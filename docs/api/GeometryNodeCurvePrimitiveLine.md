@@ -4,7 +4,7 @@
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve_primitives/curve_line.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurvePrimitiveLine.html)
-- geonodes name: `WNode`
+- geonodes name: `CurveLine`
 - bl_idname: `GeometryNodeCurvePrimitiveLine`
 
 ```python

@@ -4,7 +4,7 @@
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/value_to_string.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeValueToString.html)
-- geonodes name: `WNode`
+- geonodes name: `ValueToString`
 - bl_idname: `FunctionNodeValueToString`
 
 ```python

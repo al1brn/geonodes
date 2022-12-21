@@ -4,7 +4,7 @@
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve_primitives/star.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveStar.html)
-- geonodes name: `WNode`
+- geonodes name: `Star`
 - bl_idname: `GeometryNodeCurveStar`
 
 ```python

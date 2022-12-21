@@ -4,7 +4,7 @@
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/flip_faces.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeFlipFaces.html)
-- geonodes name: `WNode`
+- geonodes name: `FlipFaces`
 - bl_idname: `GeometryNodeFlipFaces`
 
 ```python

@@ -4,7 +4,7 @@
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
-- geonodes name: `WNode`
+- geonodes name: `Compare`
 - bl_idname: `FunctionNodeCompare`
 
 ```python

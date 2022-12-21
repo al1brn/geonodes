@@ -4,7 +4,7 @@
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/extrude_mesh.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeExtrudeMesh.html)
-- geonodes name: `WNode`
+- geonodes name: `ExtrudeMesh`
 - bl_idname: `GeometryNodeExtrudeMesh`
 
 ```python

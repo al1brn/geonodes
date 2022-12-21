@@ -4,7 +4,7 @@
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/sample_uv_surface.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSampleUVSurface.html)
-- geonodes name: `WNode`
+- geonodes name: `SampleUvSurface`
 - bl_idname: `GeometryNodeSampleUVSurface`
 
 ```python

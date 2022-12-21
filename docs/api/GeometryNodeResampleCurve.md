@@ -4,7 +4,7 @@
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/resample_curve.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeResampleCurve.html)
-- geonodes name: `WNode`
+- geonodes name: `ResampleCurve`
 - bl_idname: `GeometryNodeResampleCurve`
 
 ```python

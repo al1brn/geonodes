@@ -4,7 +4,7 @@
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/point/distribute_points_in_volume.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeDistributePointsInVolume.html)
-- geonodes name: `WNode`
+- geonodes name: `DistributePointsInVolume`
 - bl_idname: `GeometryNodeDistributePointsInVolume`
 
 ```python

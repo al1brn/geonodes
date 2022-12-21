@@ -4,7 +4,7 @@
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/voronoi.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexVoronoi.html)
-- geonodes name: `WNode`
+- geonodes name: `VoronoiTexture`
 - bl_idname: `ShaderNodeTexVoronoi`
 
 ```python

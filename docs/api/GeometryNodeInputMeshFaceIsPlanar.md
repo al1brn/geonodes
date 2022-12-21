@@ -4,7 +4,7 @@
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/face_is_planar.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshFaceIsPlanar.html)
-- geonodes name: `WNode`
+- geonodes name: `FaceIsPlanar`
 - bl_idname: `GeometryNodeInputMeshFaceIsPlanar`
 
 ```python

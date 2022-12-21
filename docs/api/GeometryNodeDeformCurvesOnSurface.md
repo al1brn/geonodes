@@ -4,7 +4,7 @@
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/deform_curves_on_surface.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeDeformCurvesOnSurface.html)
-- geonodes name: `WNode`
+- geonodes name: `DeformCurvesOnSurface`
 - bl_idname: `GeometryNodeDeformCurvesOnSurface`
 
 ```python

@@ -4,7 +4,7 @@
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/string_to_curves.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeStringToCurves.html)
-- geonodes name: `WNode`
+- geonodes name: `StringToCurves`
 - bl_idname: `GeometryNodeStringToCurves`
 
 ```python

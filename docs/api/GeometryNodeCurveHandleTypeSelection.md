@@ -4,7 +4,7 @@
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/handle_type_selection.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveHandleTypeSelection.html)
-- geonodes name: `WNode`
+- geonodes name: `HandleTypeSelection`
 - bl_idname: `GeometryNodeCurveHandleTypeSelection`
 
 ```python

@@ -4,7 +4,7 @@
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/clamp.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeClamp.html)
-- geonodes name: `WNode`
+- geonodes name: `Clamp`
 - bl_idname: `ShaderNodeClamp`
 
 ```python

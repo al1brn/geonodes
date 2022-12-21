@@ -4,7 +4,7 @@
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/radius.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputRadius.html)
-- geonodes name: `WNode`
+- geonodes name: `Radius`
 - bl_idname: `GeometryNodeInputRadius`
 
 ```python

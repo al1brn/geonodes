@@ -4,7 +4,7 @@
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/combine_xyz.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeCombineXYZ.html)
-- geonodes name: `WNode`
+- geonodes name: `CombineXyz`
 - bl_idname: `ShaderNodeCombineXYZ`
 
 ```python

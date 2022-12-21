@@ -4,7 +4,7 @@
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/join_strings.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeStringJoin.html)
-- geonodes name: `WNode`
+- geonodes name: `JoinStrings`
 - bl_idname: `GeometryNodeStringJoin`
 
 ```python

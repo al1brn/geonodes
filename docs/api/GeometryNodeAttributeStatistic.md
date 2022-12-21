@@ -4,7 +4,7 @@
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/attribute_statistic.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeStatistic.html)
-- geonodes name: `WNode`
+- geonodes name: `AttributeStatistic`
 - bl_idname: `GeometryNodeAttributeStatistic`
 
 ```python

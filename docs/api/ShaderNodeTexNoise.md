@@ -4,7 +4,7 @@
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/noise.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexNoise.html)
-- geonodes name: `WNode`
+- geonodes name: `NoiseTexture`
 - bl_idname: `ShaderNodeTexNoise`
 
 ```python

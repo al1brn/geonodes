@@ -4,7 +4,7 @@
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/edge_angle.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshEdgeAngle.html)
-- geonodes name: `WNode`
+- geonodes name: `EdgeAngle`
 - bl_idname: `GeometryNodeInputMeshEdgeAngle`
 
 ```python

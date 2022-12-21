@@ -4,7 +4,7 @@
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/volume/volume_cube.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeVolumeCube.html)
-- geonodes name: `WNode`
+- geonodes name: `VolumeCube`
 - bl_idname: `GeometryNodeVolumeCube`
 
 ```python

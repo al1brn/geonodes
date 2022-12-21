@@ -4,7 +4,7 @@
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html)
-- geonodes name: `WNode`
+- geonodes name: `DomainSize`
 - bl_idname: `GeometryNodeAttributeDomainSize`
 
 ```python

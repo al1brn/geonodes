@@ -4,7 +4,7 @@
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/realize_instances.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeRealizeInstances.html)
-- geonodes name: `WNode`
+- geonodes name: `RealizeInstances`
 - bl_idname: `GeometryNodeRealizeInstances`
 
 ```python

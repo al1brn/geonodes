@@ -4,7 +4,7 @@
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve_primitives/arc.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveArc.html)
-- geonodes name: `WNode`
+- geonodes name: `Arc`
 - bl_idname: `GeometryNodeCurveArc`
 
 ```python

@@ -4,7 +4,7 @@
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/endpoint_selection.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveEndpointSelection.html)
-- geonodes name: `WNode`
+- geonodes name: `EndpointSelection`
 - bl_idname: `GeometryNodeCurveEndpointSelection`
 
 ```python

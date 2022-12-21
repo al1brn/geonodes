@@ -4,7 +4,7 @@
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/point/points.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodePoints.html)
-- geonodes name: `WNode`
+- geonodes name: `Points`
 - bl_idname: `GeometryNodePoints`
 
 ```python

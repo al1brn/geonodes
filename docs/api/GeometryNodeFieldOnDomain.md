@@ -4,7 +4,7 @@
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/interpolate_domain.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeFieldOnDomain.html)
-- geonodes name: `WNode`
+- geonodes name: `InterpolateDomain`
 - bl_idname: `GeometryNodeFieldOnDomain`
 
 ```python

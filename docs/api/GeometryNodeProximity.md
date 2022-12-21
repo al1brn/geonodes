@@ -4,7 +4,7 @@
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/geometry_proximity.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeProximity.html)
-- geonodes name: `WNode`
+- geonodes name: `GeometryProximity`
 - bl_idname: `GeometryNodeProximity`
 
 ```python
