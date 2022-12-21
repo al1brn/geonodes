@@ -76,7 +76,7 @@ def extrude(self, offset=None, offset_scale=None, individual=None):
 
 #### Returns:
 - tuple ('`top`', '`side`')
-  [Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeExtrudeMesh.webp)
+  ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeExtrudeMesh.webp)
 
 <sub>Go to [top](#class-Vertex) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

@@ -1735,7 +1735,7 @@ def separate_hsl(color=None):
 
 #### Returns:
 - tuple ('`red`', '`green`', '`blue`', '`alpha`')
-  [Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_FunctionNodeSeparateColor.webp)
+  ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_FunctionNodeSeparateColor.webp)
 
 <sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
@@ -1752,7 +1752,7 @@ def separate_hsv(color=None):
 
 #### Returns:
 - tuple ('`red`', '`green`', '`blue`', '`alpha`')
-  [Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_FunctionNodeSeparateColor.webp)
+  ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_FunctionNodeSeparateColor.webp)
 
 <sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
@@ -1769,7 +1769,7 @@ def separate_rgb(color=None):
 
 #### Returns:
 - tuple ('`red`', '`green`', '`blue`', '`alpha`')
-  [Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_FunctionNodeSeparateColor.webp)
+  ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_FunctionNodeSeparateColor.webp)
 
 <sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
@@ -1971,7 +1971,7 @@ def string_to_curves(string=None, size=None, character_spacing=None, word_spacin
 
 #### Returns:
 - tuple ('`curve_instances`', '`line`', '`pivot_point`')
-  [Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeStringToCurves.webp)
+  ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeStringToCurves.webp)
 
 <sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

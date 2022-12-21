@@ -225,7 +225,7 @@ def to_curves(self, string=None, size=None, character_spacing=None, word_spacing
 
 #### Returns:
 - tuple ('`curve_instances`', '`line`', '`pivot_point`')
-  [Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeStringToCurves.webp)
+  ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeStringToCurves.webp)
 
 <sub>Go to [top](#class-String) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

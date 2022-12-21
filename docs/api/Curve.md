@@ -287,7 +287,7 @@ def curve_of_point(self, point_index=None):
 
 #### Returns:
 - tuple ('`curve_index`', '`index_in_curve`')
-  [Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeCurveOfPoint.webp)
+  ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeCurveOfPoint.webp)
 
 <sub>Go to [top](#class-Curve) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
@@ -468,7 +468,7 @@ def offset_point(self, point_index=None, offset=None):
 
 #### Returns:
 - tuple ('`is_valid_offset`', '`point_index`')
-  [Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeOffsetPointInCurve.webp)
+  ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeOffsetPointInCurve.webp)
 
 <sub>Go to [top](#class-Curve) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
@@ -500,7 +500,7 @@ def points_of_curve(self, curve_index=None, weights=None, sort_index=None):
 
 #### Returns:
 - tuple ('`point_index`', '`total`')
-  [Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodePointsOfCurve.webp)
+  ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodePointsOfCurve.webp)
 
 <sub>Go to [top](#class-Curve) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
@@ -672,7 +672,7 @@ def to_points(self, count=None, length=None, mode='COUNT'):
 
 #### Returns:
 - tuple ('`points`', '`tangent`', '`normal`', '`rotation`')
-  [Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeCurveToPoints.webp)
+  ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeCurveToPoints.webp)
 
 <sub>Go to [top](#class-Curve) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
@@ -689,7 +689,7 @@ def to_points_count(self, count=None):
 
 #### Returns:
 - tuple ('`points`', '`tangent`', '`normal`', '`rotation`')
-  [Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeCurveToPoints.webp)
+  ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeCurveToPoints.webp)
 
 <sub>Go to [top](#class-Curve) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
@@ -703,7 +703,7 @@ def to_points_evaluated(self):
 
 #### Returns:
 - tuple ('`points`', '`tangent`', '`normal`', '`rotation`')
-  [Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeCurveToPoints.webp)
+  ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeCurveToPoints.webp)
 
 <sub>Go to [top](#class-Curve) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
@@ -720,7 +720,7 @@ def to_points_length(self, length=None):
 
 #### Returns:
 - tuple ('`points`', '`tangent`', '`normal`', '`rotation`')
-  [Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeCurveToPoints.webp)
+  ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeCurveToPoints.webp)
 
 <sub>Go to [top](#class-Curve) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

@@ -277,7 +277,7 @@ def hsl(self):
 
 #### Returns:
 - tuple ('`red`', '`green`', '`blue`', '`alpha`')
-  [Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_FunctionNodeSeparateColor.webp)
+  ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_FunctionNodeSeparateColor.webp)
 
 <sub>Go to [top](#class-Color) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
@@ -291,7 +291,7 @@ def hsv(self):
 
 #### Returns:
 - tuple ('`red`', '`green`', '`blue`', '`alpha`')
-  [Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_FunctionNodeSeparateColor.webp)
+  ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_FunctionNodeSeparateColor.webp)
 
 <sub>Go to [top](#class-Color) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
@@ -687,7 +687,7 @@ def rgb(self):
 
 #### Returns:
 - tuple ('`red`', '`green`', '`blue`', '`alpha`')
-  [Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_FunctionNodeSeparateColor.webp)
+  ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_FunctionNodeSeparateColor.webp)
 
 <sub>Go to [top](#class-Color) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

@@ -104,7 +104,7 @@ def distribute_points_poisson(self, distance_min=None, density_max=None, density
 
 #### Returns:
 - tuple ('`points`', '`normal`', '`rotation`')
-  [Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeDistributePointsOnFaces.webp)
+  ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeDistributePointsOnFaces.webp)
 
 <sub>Go to [top](#class-Face) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
@@ -122,7 +122,7 @@ def distribute_points_random(self, density=None, seed=None):
 
 #### Returns:
 - tuple ('`points`', '`normal`', '`rotation`')
-  [Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeDistributePointsOnFaces.webp)
+  ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeDistributePointsOnFaces.webp)
 
 <sub>Go to [top](#class-Face) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
@@ -141,7 +141,7 @@ def extrude(self, offset=None, offset_scale=None, individual=None):
 
 #### Returns:
 - tuple ('`top`', '`side`')
-  [Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeExtrudeMesh.webp)
+  ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeExtrudeMesh.webp)
 
 <sub>Go to [top](#class-Face) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

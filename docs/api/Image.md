@@ -66,7 +66,7 @@ def texture(self, vector=None, frame=None, extension='REPEAT', interpolation='Li
 
 #### Returns:
 - tuple ('`color`', '`alpha`')
-  [Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeImageTexture.webp)
+  ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeImageTexture.webp)
 
 <sub>Go to [top](#class-Image) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

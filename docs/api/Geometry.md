@@ -846,7 +846,7 @@ def separate(self, geometry=None, selection=None, domain='POINT'):
 
 #### Returns:
 - tuple ('`selection`', '`inverted`')
-  [Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeSeparateGeometry.webp)
+  ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeSeparateGeometry.webp)
 
 <sub>Go to [top](#class-Geometry) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
