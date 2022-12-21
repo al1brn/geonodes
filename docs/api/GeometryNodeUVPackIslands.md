@@ -13,6 +13,8 @@ from geonodes import nodes
 node = nodes.PackUvIslands(uv=None, selection=None, margin=None, rotate=None)
 ```
 
+[Blender Image](self.node_image_ref)
+
 ### Args:
 
 #### Input socket arguments:

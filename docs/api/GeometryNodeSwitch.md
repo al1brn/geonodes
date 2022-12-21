@@ -13,6 +13,8 @@ from geonodes import nodes
 node = nodes.Switch(switch=None, false=None, true=None, input_type='GEOMETRY')
 ```
 
+[Blender Image](self.node_image_ref)
+
 ### Args:
 
 #### Input socket arguments:

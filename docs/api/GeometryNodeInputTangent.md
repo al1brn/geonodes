@@ -13,6 +13,8 @@ from geonodes import nodes
 node = nodes.CurveTangent()
 ```
 
+[Blender Image](self.node_image_ref)
+
 ### Output sockets:
 
 - **tangent** : [Vector](Vector.md)

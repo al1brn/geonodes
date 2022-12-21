@@ -13,6 +13,8 @@ from geonodes import nodes
 node = nodes.Clamp(value=None, min=None, max=None, clamp_type='MINMAX')
 ```
 
+[Blender Image](self.node_image_ref)
+
 ### Args:
 
 #### Input socket arguments:

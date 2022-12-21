@@ -13,6 +13,8 @@ from geonodes import nodes
 node = nodes.SetCurveNormal(curve=None, selection=None, mode='MINIMUM_TWIST')
 ```
 
+[Blender Image](self.node_image_ref)
+
 ### Args:
 
 #### Input socket arguments:

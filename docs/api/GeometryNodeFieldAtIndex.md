@@ -13,6 +13,8 @@ from geonodes import nodes
 node = nodes.FieldAtIndex(index=None, value=None, data_type='FLOAT', domain='POINT')
 ```
 
+[Blender Image](self.node_image_ref)
+
 ### Args:
 
 #### Input socket arguments:

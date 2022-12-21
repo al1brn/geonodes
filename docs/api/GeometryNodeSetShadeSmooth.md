@@ -13,6 +13,8 @@ from geonodes import nodes
 node = nodes.SetShadeSmooth(geometry=None, selection=None, shade_smooth=None)
 ```
 
+[Blender Image](self.node_image_ref)
+
 ### Args:
 
 #### Input socket arguments:

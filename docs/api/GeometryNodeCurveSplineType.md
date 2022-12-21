@@ -13,6 +13,8 @@ from geonodes import nodes
 node = nodes.SetSplineType(curve=None, selection=None, spline_type='POLY')
 ```
 
+[Blender Image](self.node_image_ref)
+
 ### Args:
 
 #### Input socket arguments:

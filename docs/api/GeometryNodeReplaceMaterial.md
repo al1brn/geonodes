@@ -13,6 +13,8 @@ from geonodes import nodes
 node = nodes.ReplaceMaterial(geometry=None, old=None, new=None)
 ```
 
+[Blender Image](self.node_image_ref)
+
 ### Args:
 
 #### Input socket arguments:

@@ -13,6 +13,8 @@ from geonodes import nodes
 node = nodes.EdgeAngle()
 ```
 
+[Blender Image](self.node_image_ref)
+
 ### Output sockets:
 
 - **unsigned_angle** : [Float](Float.md)

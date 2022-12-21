@@ -13,6 +13,8 @@ from geonodes import nodes
 node = nodes.FaceArea()
 ```
 
+[Blender Image](self.node_image_ref)
+
 ### Output sockets:
 
 - **area** : [Float](Float.md)

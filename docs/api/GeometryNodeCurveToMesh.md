@@ -13,6 +13,8 @@ from geonodes import nodes
 node = nodes.CurveToMesh(curve=None, profile_curve=None, fill_caps=None)
 ```
 
+[Blender Image](self.node_image_ref)
+
 ### Args:
 
 #### Input socket arguments:

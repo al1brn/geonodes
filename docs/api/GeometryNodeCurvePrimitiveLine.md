@@ -13,6 +13,8 @@ from geonodes import nodes
 node = nodes.CurveLine(start=None, end=None, direction=None, length=None, mode='POINTS')
 ```
 
+[Blender Image](self.node_image_ref)
+
 ### Args:
 
 #### Input socket arguments:

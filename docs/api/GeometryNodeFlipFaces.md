@@ -13,6 +13,8 @@ from geonodes import nodes
 node = nodes.FlipFaces(mesh=None, selection=None)
 ```
 
+[Blender Image](self.node_image_ref)
+
 ### Args:
 
 #### Input socket arguments:

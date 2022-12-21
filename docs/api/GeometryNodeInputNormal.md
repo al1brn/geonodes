@@ -13,6 +13,8 @@ from geonodes import nodes
 node = nodes.Normal()
 ```
 
+[Blender Image](self.node_image_ref)
+
 ### Output sockets:
 
 - **normal** : [Vector](Vector.md)

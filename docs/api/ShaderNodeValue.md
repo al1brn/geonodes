@@ -13,6 +13,8 @@ from geonodes import nodes
 node = nodes.Value()
 ```
 
+[Blender Image](self.node_image_ref)
+
 ### Output sockets:
 
 - **value** : [Float](Float.md)

@@ -13,6 +13,8 @@ from geonodes import nodes
 node = nodes.SelfObject()
 ```
 
+[Blender Image](self.node_image_ref)
+
 ### Output sockets:
 
 - **self_object** : [Object](Object.md)

@@ -13,6 +13,8 @@ from geonodes import nodes
 node = nodes.DomainSize(geometry=None, component='MESH')
 ```
 
+[Blender Image](self.node_image_ref)
+
 ### Args:
 
 #### Input socket arguments:

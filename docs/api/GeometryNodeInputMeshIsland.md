@@ -13,6 +13,8 @@ from geonodes import nodes
 node = nodes.MeshIsland()
 ```
 
+[Blender Image](self.node_image_ref)
+
 ### Output sockets:
 
 - **island_index** : [Integer](Integer.md)

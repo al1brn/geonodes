@@ -13,6 +13,8 @@ from geonodes import nodes
 node = nodes.SpecialCharacters()
 ```
 
+[Blender Image](self.node_image_ref)
+
 ### Output sockets:
 
 - **line_break** : [String](String.md)

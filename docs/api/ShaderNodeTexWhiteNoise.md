@@ -13,6 +13,8 @@ from geonodes import nodes
 node = nodes.WhiteNoiseTexture(vector=None, w=None, noise_dimensions='3D')
 ```
 
+[Blender Image](self.node_image_ref)
+
 ### Args:
 
 #### Input socket arguments:

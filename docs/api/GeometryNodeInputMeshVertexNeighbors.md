@@ -13,6 +13,8 @@ from geonodes import nodes
 node = nodes.VertexNeighbors()
 ```
 
+[Blender Image](self.node_image_ref)
+
 ### Output sockets:
 
 - **vertex_count** : [Integer](Integer.md)

@@ -13,6 +13,8 @@ from geonodes import nodes
 node = nodes.FaceOfCorner(corner_index=None)
 ```
 
+[Blender Image](self.node_image_ref)
+
 ### Args:
 
 #### Input socket arguments:

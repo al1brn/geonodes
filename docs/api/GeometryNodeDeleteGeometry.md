@@ -13,6 +13,8 @@ from geonodes import nodes
 node = nodes.DeleteGeometry(geometry=None, selection=None, domain='POINT', mode='ALL')
 ```
 
+[Blender Image](self.node_image_ref)
+
 ### Args:
 
 #### Input socket arguments:

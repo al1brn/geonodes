@@ -13,6 +13,8 @@ from geonodes import nodes
 node = nodes.SampleNearest(geometry=None, sample_position=None, domain='POINT')
 ```
 
+[Blender Image](self.node_image_ref)
+
 ### Args:
 
 #### Input socket arguments:

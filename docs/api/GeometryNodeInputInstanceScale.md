@@ -13,6 +13,8 @@ from geonodes import nodes
 node = nodes.InstanceScale()
 ```
 
+[Blender Image](self.node_image_ref)
+
 ### Output sockets:
 
 - **scale** : [Vector](Vector.md)

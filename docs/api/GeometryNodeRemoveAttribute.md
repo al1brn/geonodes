@@ -13,6 +13,8 @@ from geonodes import nodes
 node = nodes.RemoveNamedAttribute(geometry=None, name=None)
 ```
 
+[Blender Image](self.node_image_ref)
+
 ### Args:
 
 #### Input socket arguments:

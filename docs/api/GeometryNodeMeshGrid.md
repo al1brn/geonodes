@@ -13,6 +13,8 @@ from geonodes import nodes
 node = nodes.Grid(size_x=None, size_y=None, vertices_x=None, vertices_y=None)
 ```
 
+[Blender Image](self.node_image_ref)
+
 ### Args:
 
 #### Input socket arguments:

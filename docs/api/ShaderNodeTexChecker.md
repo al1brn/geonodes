@@ -13,6 +13,8 @@ from geonodes import nodes
 node = nodes.CheckerTexture(vector=None, color1=None, color2=None, scale=None)
 ```
 
+[Blender Image](self.node_image_ref)
+
 ### Args:
 
 #### Input socket arguments:

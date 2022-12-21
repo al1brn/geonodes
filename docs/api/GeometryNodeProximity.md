@@ -13,6 +13,8 @@ from geonodes import nodes
 node = nodes.GeometryProximity(target=None, source_position=None, target_element='FACES')
 ```
 
+[Blender Image](self.node_image_ref)
+
 ### Args:
 
 #### Input socket arguments:

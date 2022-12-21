@@ -13,6 +13,8 @@ from geonodes import nodes
 node = nodes.FloatToInteger(float=None, rounding_mode='ROUND')
 ```
 
+[Blender Image](self.node_image_ref)
+
 ### Args:
 
 #### Input socket arguments:

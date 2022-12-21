@@ -13,6 +13,8 @@ from geonodes import nodes
 node = nodes.EdgeNeighbors()
 ```
 
+[Blender Image](self.node_image_ref)
+
 ### Output sockets:
 
 - **face_count** : [Integer](Integer.md)

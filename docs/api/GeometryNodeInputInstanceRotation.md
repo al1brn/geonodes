@@ -13,6 +13,8 @@ from geonodes import nodes
 node = nodes.InstanceRotation()
 ```
 
+[Blender Image](self.node_image_ref)
+
 ### Output sockets:
 
 - **rotation** : [Vector](Vector.md)

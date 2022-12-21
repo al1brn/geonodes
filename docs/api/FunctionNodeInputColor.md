@@ -13,6 +13,8 @@ from geonodes import nodes
 node = nodes.Color()
 ```
 
+[Blender Image](self.node_image_ref)
+
 ### Output sockets:
 
 - **color** : [Color](Color.md)

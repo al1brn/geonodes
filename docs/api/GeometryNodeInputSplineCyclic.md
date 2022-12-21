@@ -13,6 +13,8 @@ from geonodes import nodes
 node = nodes.IsSplineCyclic()
 ```
 
+[Blender Image](self.node_image_ref)
+
 ### Output sockets:
 
 - **cyclic** : [Boolean](Boolean.md)

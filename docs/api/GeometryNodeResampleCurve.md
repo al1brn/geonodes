@@ -13,6 +13,8 @@ from geonodes import nodes
 node = nodes.ResampleCurve(curve=None, selection=None, count=None, length=None, mode='COUNT')
 ```
 
+[Blender Image](self.node_image_ref)
+
 ### Args:
 
 #### Input socket arguments:

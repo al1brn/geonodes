@@ -13,6 +13,8 @@ from geonodes import nodes
 node = nodes.MergeByDistance(geometry=None, selection=None, distance=None, mode='ALL')
 ```
 
+[Blender Image](self.node_image_ref)
+
 ### Args:
 
 #### Input socket arguments:

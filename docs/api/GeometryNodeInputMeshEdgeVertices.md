@@ -13,6 +13,8 @@ from geonodes import nodes
 node = nodes.EdgeVertices()
 ```
 
+[Blender Image](self.node_image_ref)
+
 ### Output sockets:
 
 - **vertex_index_1** : [Integer](Integer.md)

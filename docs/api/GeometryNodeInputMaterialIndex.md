@@ -13,6 +13,8 @@ from geonodes import nodes
 node = nodes.MaterialIndex()
 ```
 
+[Blender Image](self.node_image_ref)
+
 ### Output sockets:
 
 - **material_index** : [Integer](Integer.md)

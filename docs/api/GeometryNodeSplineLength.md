@@ -13,6 +13,8 @@ from geonodes import nodes
 node = nodes.SplineLength()
 ```
 
+[Blender Image](self.node_image_ref)
+
 ### Output sockets:
 
 - **length** : [Float](Float.md)

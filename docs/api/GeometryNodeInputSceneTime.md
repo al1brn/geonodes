@@ -13,6 +13,8 @@ from geonodes import nodes
 node = nodes.SceneTime()
 ```
 
+[Blender Image](self.node_image_ref)
+
 ### Output sockets:
 
 - **seconds** : [Float](Float.md)

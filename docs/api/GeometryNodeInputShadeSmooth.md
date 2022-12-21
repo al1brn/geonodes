@@ -13,6 +13,8 @@ from geonodes import nodes
 node = nodes.IsShadeSmooth()
 ```
 
+[Blender Image](self.node_image_ref)
+
 ### Output sockets:
 
 - **smooth** : [Boolean](Boolean.md)

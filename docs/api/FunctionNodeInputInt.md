@@ -13,6 +13,8 @@ from geonodes import nodes
 node = nodes.Integer(integer=0)
 ```
 
+[Blender Image](self.node_image_ref)
+
 ### Args:
 
 #### Node parameter arguments:

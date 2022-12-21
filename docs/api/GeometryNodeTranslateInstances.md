@@ -13,6 +13,8 @@ from geonodes import nodes
 node = nodes.TranslateInstances(instances=None, selection=None, translation=None, local_space=None)
 ```
 
+[Blender Image](self.node_image_ref)
+
 ### Args:
 
 #### Input socket arguments:

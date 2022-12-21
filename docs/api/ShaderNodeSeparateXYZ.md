@@ -13,6 +13,8 @@ from geonodes import nodes
 node = nodes.SeparateXyz(vector=None)
 ```
 
+[Blender Image](self.node_image_ref)
+
 ### Args:
 
 #### Input socket arguments:

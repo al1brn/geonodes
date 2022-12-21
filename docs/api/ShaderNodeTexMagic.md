@@ -13,6 +13,8 @@ from geonodes import nodes
 node = nodes.MagicTexture(vector=None, scale=None, distortion=None, turbulence_depth=2)
 ```
 
+[Blender Image](self.node_image_ref)
+
 ### Args:
 
 #### Input socket arguments:

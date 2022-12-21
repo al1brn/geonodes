@@ -13,6 +13,8 @@ from geonodes import nodes
 node = nodes.HandleTypeSelection(handle_type='AUTO', mode={'RIGHT', 'LEFT'})
 ```
 
+[Blender Image](self.node_image_ref)
+
 ### Args:
 
 #### Node parameter arguments:

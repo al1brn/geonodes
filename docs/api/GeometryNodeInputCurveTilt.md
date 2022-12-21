@@ -13,6 +13,8 @@ from geonodes import nodes
 node = nodes.CurveTilt()
 ```
 
+[Blender Image](self.node_image_ref)
+
 ### Output sockets:
 
 - **tilt** : [Float](Float.md)

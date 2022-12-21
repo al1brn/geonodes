@@ -13,6 +13,8 @@ from geonodes import nodes
 node = nodes.GradientTexture(vector=None, gradient_type='LINEAR')
 ```
 
+[Blender Image](self.node_image_ref)
+
 ### Args:
 
 #### Input socket arguments:

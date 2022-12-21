@@ -13,6 +13,8 @@ from geonodes import nodes
 node = nodes.SplineParameter()
 ```
 
+[Blender Image](self.node_image_ref)
+
 ### Output sockets:
 
 - **factor** : [Float](Float.md)

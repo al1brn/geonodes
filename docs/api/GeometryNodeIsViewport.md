@@ -13,6 +13,8 @@ from geonodes import nodes
 node = nodes.IsViewport()
 ```
 
+[Blender Image](self.node_image_ref)
+
 ### Output sockets:
 
 - **is_viewport** : [Boolean](Boolean.md)
