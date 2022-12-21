@@ -15,7 +15,7 @@ node = nodes.Viewer(geometry=None, value=None, data_type='FLOAT', domain='AUTO')
 
 #### Input socket arguments:
 
-- geometry: [Geometry[Geometry.md]
+- geometry: [Geometry](Geometry.md)
 - value: `data_type` dependant
 
 #### Node parameter arguments:

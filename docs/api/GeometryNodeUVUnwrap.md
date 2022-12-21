@@ -15,10 +15,10 @@ node = nodes.UvUnwrap(selection=None, seam=None, margin=None, fill_holes=None, m
 
 #### Input socket arguments:
 
-- selection: [Boolean[Boolean.md]
-- seam: [Boolean[Boolean.md]
-- margin: [Float[Float.md]
-- fill_holes: [Boolean[Boolean.md]
+- selection: [Boolean](Boolean.md)
+- seam: [Boolean](Boolean.md)
+- margin: [Float](Float.md)
+- fill_holes: [Boolean](Boolean.md)
 
 #### Node parameter arguments:
 

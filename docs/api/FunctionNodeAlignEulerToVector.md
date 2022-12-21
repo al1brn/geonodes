@@ -15,9 +15,9 @@ node = nodes.AlignEulerToVector(rotation=None, factor=None, vector=None, axis='X
 
 #### Input socket arguments:
 
-- rotation: [Vector[Vector.md]
-- factor: [Float[Float.md]
-- vector: [Vector[Vector.md]
+- rotation: [Vector](Vector.md)
+- factor: [Float](Float.md)
+- vector: [Vector](Vector.md)
 
 #### Node parameter arguments:
 

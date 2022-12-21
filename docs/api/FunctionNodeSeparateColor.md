@@ -15,7 +15,7 @@ node = nodes.SeparateColor(color=None, mode='RGB')
 
 #### Input socket arguments:
 
-- color: [Color[Color.md]
+- color: [Color](Color.md)
 
 #### Node parameter arguments:
 

@@ -15,10 +15,10 @@ node = nodes.MeshBoolean(*mesh_2, mesh_1=None, self_intersection=None, hole_tole
 
 #### Input socket arguments:
 
-- mesh_1: [Geometry[Geometry.md]
-- mesh_2: *[Geometry[Geometry.md]
-- self_intersection: [Boolean[Boolean.md]
-- hole_tolerant: [Boolean[Boolean.md]
+- mesh_1: [Geometry](Geometry.md)
+- mesh_2: *[Geometry](Geometry.md)
+- self_intersection: [Boolean](Boolean.md)
+- hole_tolerant: [Boolean](Boolean.md)
 
 #### Node parameter arguments:
 

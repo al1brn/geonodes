@@ -15,8 +15,8 @@ node = nodes.VectorCurves(fac=None, vector=None)
 
 #### Input socket arguments:
 
-- fac: [Float[Float.md]
-- vector: [Vector[Vector.md]
+- fac: [Float](Float.md)
+- vector: [Vector](Vector.md)
 
 #### Output sockets:
 

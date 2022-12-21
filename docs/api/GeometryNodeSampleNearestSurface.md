@@ -15,9 +15,9 @@ node = nodes.SampleNearestSurface(mesh=None, value=None, sample_position=None, d
 
 #### Input socket arguments:
 
-- mesh: [Mesh[Mesh.md]
+- mesh: [Mesh](Mesh.md)
 - value: `data_type` dependant
-- sample_position: [Vector[Vector.md]
+- sample_position: [Vector](Vector.md)
 
 #### Node parameter arguments:
 

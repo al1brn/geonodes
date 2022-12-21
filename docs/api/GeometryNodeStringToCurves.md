@@ -15,13 +15,13 @@ node = nodes.StringToCurves(string=None, size=None, character_spacing=None, word
 
 #### Input socket arguments:
 
-- string: [String[String.md]
-- size: [Float[Float.md]
-- character_spacing: [Float[Float.md]
-- word_spacing: [Float[Float.md]
-- line_spacing: [Float[Float.md]
-- text_box_width: [Float[Float.md]
-- text_box_height: [Float[Float.md]
+- string: [String](String.md)
+- size: [Float](Float.md)
+- character_spacing: [Float](Float.md)
+- word_spacing: [Float](Float.md)
+- line_spacing: [Float](Float.md)
+- text_box_width: [Float](Float.md)
+- text_box_height: [Float](Float.md)
 
 #### Node parameter arguments:
 

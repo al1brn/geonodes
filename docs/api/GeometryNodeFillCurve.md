@@ -15,7 +15,7 @@ node = nodes.FillCurve(curve=None, mode='TRIANGLES')
 
 #### Input socket arguments:
 
-- curve: [Curve[Curve.md]
+- curve: [Curve](Curve.md)
 
 #### Node parameter arguments:
 

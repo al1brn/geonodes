@@ -15,8 +15,8 @@ node = nodes.SplitEdges(mesh=None, selection=None)
 
 #### Input socket arguments:
 
-- mesh: [Mesh[Mesh.md]
-- selection: [Boolean[Boolean.md]
+- mesh: [Mesh](Mesh.md)
+- selection: [Boolean](Boolean.md)
 
 #### Output sockets:
 

@@ -15,8 +15,8 @@ node = nodes.SetCurveNormal(curve=None, selection=None, mode='MINIMUM_TWIST')
 
 #### Input socket arguments:
 
-- curve: [Curve[Curve.md]
-- selection: [Boolean[Boolean.md]
+- curve: [Curve](Curve.md)
+- selection: [Boolean](Boolean.md)
 
 #### Node parameter arguments:
 

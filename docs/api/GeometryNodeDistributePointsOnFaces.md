@@ -15,13 +15,13 @@ node = nodes.DistributePointsOnFaces(mesh=None, selection=None, distance_min=Non
 
 #### Input socket arguments:
 
-- mesh: [Mesh[Mesh.md]
-- selection: [Boolean[Boolean.md]
-- distance_min: [Float[Float.md]
-- density_max: [Float[Float.md]
-- density: [Float[Float.md]
-- density_factor: [Float[Float.md]
-- seed: [Integer[Integer.md]
+- mesh: [Mesh](Mesh.md)
+- selection: [Boolean](Boolean.md)
+- distance_min: [Float](Float.md)
+- density_max: [Float](Float.md)
+- density: [Float](Float.md)
+- density_factor: [Float](Float.md)
+- seed: [Integer](Integer.md)
 
 #### Node parameter arguments:
 

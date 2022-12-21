@@ -15,8 +15,8 @@ node = nodes.SampleNearest(geometry=None, sample_position=None, domain='POINT')
 
 #### Input socket arguments:
 
-- geometry: [Geometry[Geometry.md]
-- sample_position: [Vector[Vector.md]
+- geometry: [Geometry](Geometry.md)
+- sample_position: [Vector](Vector.md)
 
 #### Node parameter arguments:
 

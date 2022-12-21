@@ -15,8 +15,8 @@ node = nodes.BooleanMath(boolean0=None, boolean1=None, operation='AND')
 
 #### Input socket arguments:
 
-- boolean0: [Boolean[Boolean.md]
-- boolean1: [Boolean[Boolean.md]
+- boolean0: [Boolean](Boolean.md)
+- boolean1: [Boolean](Boolean.md)
 
 #### Node parameter arguments:
 

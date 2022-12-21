@@ -15,10 +15,10 @@ node = nodes.Grid(size_x=None, size_y=None, vertices_x=None, vertices_y=None)
 
 #### Input socket arguments:
 
-- size_x: [Float[Float.md]
-- size_y: [Float[Float.md]
-- vertices_x: [Integer[Integer.md]
-- vertices_y: [Integer[Integer.md]
+- size_x: [Float](Float.md)
+- size_y: [Float](Float.md)
+- vertices_x: [Integer](Integer.md)
+- vertices_y: [Integer](Integer.md)
 
 #### Output sockets:
 

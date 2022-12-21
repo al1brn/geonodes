@@ -15,11 +15,11 @@ node = nodes.Cylinder(vertices=None, side_segments=None, fill_segments=None, rad
 
 #### Input socket arguments:
 
-- vertices: [Integer[Integer.md]
-- side_segments: [Integer[Integer.md]
-- fill_segments: [Integer[Integer.md]
-- radius: [Float[Float.md]
-- depth: [Float[Float.md]
+- vertices: [Integer](Integer.md)
+- side_segments: [Integer](Integer.md)
+- fill_segments: [Integer](Integer.md)
+- radius: [Float](Float.md)
+- depth: [Float](Float.md)
 
 #### Node parameter arguments:
 

@@ -15,8 +15,8 @@ node = nodes.AttributeStatistic(geometry=None, selection=None, attribute=None, d
 
 #### Input socket arguments:
 
-- geometry: [Geometry[Geometry.md]
-- selection: [Boolean[Boolean.md]
+- geometry: [Geometry](Geometry.md)
+- selection: [Boolean](Boolean.md)
 - attribute: `data_type` dependant
 
 #### Node parameter arguments:

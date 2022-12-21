@@ -15,9 +15,9 @@ node = nodes.ReplaceString(string=None, find=None, replace=None)
 
 #### Input socket arguments:
 
-- string: [String[String.md]
-- find: [String[String.md]
-- replace: [String[String.md]
+- string: [String](String.md)
+- find: [String](String.md)
+- replace: [String](String.md)
 
 #### Output sockets:
 

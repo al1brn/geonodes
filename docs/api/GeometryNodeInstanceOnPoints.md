@@ -15,13 +15,13 @@ node = nodes.InstanceOnPoints(points=None, selection=None, instance=None, pick_i
 
 #### Input socket arguments:
 
-- points: [Points[Points.md]
-- selection: [Boolean[Boolean.md]
-- instance: [Geometry[Geometry.md]
-- pick_instance: [Boolean[Boolean.md]
-- instance_index: [Integer[Integer.md]
-- rotation: [Vector[Vector.md]
-- scale: [Vector[Vector.md]
+- points: [Points](Points.md)
+- selection: [Boolean](Boolean.md)
+- instance: [Geometry](Geometry.md)
+- pick_instance: [Boolean](Boolean.md)
+- instance_index: [Integer](Integer.md)
+- rotation: [Vector](Vector.md)
+- scale: [Vector](Vector.md)
 
 #### Output sockets:
 

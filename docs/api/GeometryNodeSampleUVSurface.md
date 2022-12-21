@@ -15,10 +15,10 @@ node = nodes.SampleUvSurface(mesh=None, value=None, source_uv_map=None, sample_u
 
 #### Input socket arguments:
 
-- mesh: [Mesh[Mesh.md]
+- mesh: [Mesh](Mesh.md)
 - value: `data_type` dependant
-- source_uv_map: [Vector[Vector.md]
-- sample_uv: [Vector[Vector.md]
+- source_uv_map: [Vector](Vector.md)
+- sample_uv: [Vector](Vector.md)
 
 #### Node parameter arguments:
 

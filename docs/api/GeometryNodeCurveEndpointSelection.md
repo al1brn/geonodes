@@ -15,8 +15,8 @@ node = nodes.EndpointSelection(start_size=None, end_size=None)
 
 #### Input socket arguments:
 
-- start_size: [Integer[Integer.md]
-- end_size: [Integer[Integer.md]
+- start_size: [Integer](Integer.md)
+- end_size: [Integer](Integer.md)
 
 #### Output sockets:
 

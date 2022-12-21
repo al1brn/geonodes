@@ -16,7 +16,7 @@ node = nodes.AccumulateField(value=None, group_index=None, data_type='FLOAT', do
 #### Input socket arguments:
 
 - value: `data_type` dependant
-- group_index: [Integer[Integer.md]
+- group_index: [Integer](Integer.md)
 
 #### Node parameter arguments:
 

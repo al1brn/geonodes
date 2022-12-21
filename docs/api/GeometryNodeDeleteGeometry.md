@@ -15,8 +15,8 @@ node = nodes.DeleteGeometry(geometry=None, selection=None, domain='POINT', mode=
 
 #### Input socket arguments:
 
-- geometry: [Geometry[Geometry.md]
-- selection: [Boolean[Boolean.md]
+- geometry: [Geometry](Geometry.md)
+- selection: [Boolean](Boolean.md)
 
 #### Node parameter arguments:
 
