@@ -24,3 +24,8 @@ node = nodes.VectorCurves(fac=None, vector=None)
 
 - **vector** : [Vector](Vector.md)
 
+## Implementation
+
+#### class [{class_name}]({class_name}.md)
+
+ - [<bound method Generator.fname of <generator.code_gen.Method object at 0x16ee55330>>](Vector.md#curves)

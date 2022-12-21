@@ -25,3 +25,9 @@ node = nodes.SetSplineResolution(geometry=None, selection=None, resolution=None)
 
 - **geometry** : [Geometry](Geometry.md)
 
+## Implementation
+
+#### class [{class_name}]({class_name}.md)
+
+ - [<bound method Generator.fname of <generator.code_gen.DomStackMethod object at 0x164097e20>>](Spline.md#set_resolution)
+ - [<bound method Generator.fname of <generator.code_gen.DomSetter object at 0x164097df0>>](Spline.md#resolution)

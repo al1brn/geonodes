@@ -18,3 +18,8 @@ node = nodes.SplineLength()
 - **length** : [Float](Float.md)
 - **point_count** : [Integer](Integer.md)
 
+## Implementation
+
+#### class [{class_name}]({class_name}.md)
+
+ - [<bound method Generator.fname of <generator.code_gen.DomPropAttribute object at 0x164096d10>>](Spline.md#length-property)

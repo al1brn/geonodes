@@ -28,3 +28,8 @@ node = nodes.MeshCircle(vertices=None, radius=None, fill_type='NONE')
 
 - **mesh** : [Mesh](Mesh.md)
 
+## Implementation
+
+#### class [{class_name}]({class_name}.md)
+
+ - [<bound method Generator.fname of <generator.code_gen.Constructor object at 0x1683b3460>>](Mesh.md#Circle-classmethod)

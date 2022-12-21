@@ -25,3 +25,8 @@ node = nodes.SeparateXyz(vector=None)
 - **y** : [Float](Float.md)
 - **z** : [Float](Float.md)
 
+## Implementation
+
+#### class [{class_name}]({class_name}.md)
+
+ - [<bound method Generator.fname of <generator.code_gen.Property object at 0x16ee55360>>](Vector.md#separate-property)

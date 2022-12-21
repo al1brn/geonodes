@@ -30,3 +30,11 @@ node = nodes.Triangulate(mesh=None, selection=None, minimum_vertices=None, ngon_
 
 - **mesh** : [Mesh](Mesh.md)
 
+## Implementation
+
+#### class [{class_name}]({class_name}.md)
+
+ - [<bound method Generator.fname of <generator.code_gen.StackMethod object at 0x1683b2ce0>>](Mesh.md#triangulate)
+#### class [{class_name}]({class_name}.md)
+
+ - [<bound method Generator.fname of <generator.code_gen.DomStackMethod object at 0x1683b0880>>](Face.md#triangulate)

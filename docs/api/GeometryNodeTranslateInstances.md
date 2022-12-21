@@ -26,3 +26,11 @@ node = nodes.TranslateInstances(instances=None, selection=None, translation=None
 
 - **instances** : [Instances](Instances.md)
 
+## Implementation
+
+#### class [{class_name}]({class_name}.md)
+
+ - [<bound method Generator.fname of <generator.code_gen.StackMethod object at 0x1683b0c10>>](Instances.md#translate)
+#### class [{class_name}]({class_name}.md)
+
+ - [<bound method Generator.fname of <generator.code_gen.DomStackMethod object at 0x1683b0640>>](Instance.md#translate)

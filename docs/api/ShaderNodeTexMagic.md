@@ -30,3 +30,8 @@ node = nodes.MagicTexture(vector=None, scale=None, distortion=None, turbulence_d
 - **color** : [Color](Color.md)
 - **fac** : [Float](Float.md)
 
+## Implementation
+
+#### class [{class_name}]({class_name}.md)
+
+ - [<bound method Generator.fname of <generator.code_gen.Static object at 0x1683b0d60>>](Texture.md#magic-staticmethod)

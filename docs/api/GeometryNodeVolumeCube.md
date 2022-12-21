@@ -29,3 +29,8 @@ node = nodes.VolumeCube(density=None, background=None, min=None, max=None, resol
 
 - **volume** : [Volume](Volume.md)
 
+## Implementation
+
+#### class [{class_name}]({class_name}.md)
+
+ - [<bound method Generator.fname of <generator.code_gen.Constructor object at 0x16ee54a60>>](Volume.md#Cube-classmethod)

@@ -31,3 +31,10 @@ node = nodes.DistributePointsInVolume(volume=None, density=None, seed=None, spac
 
 - **points** : [Points](Points.md)
 
+## Implementation
+
+#### class [{class_name}]({class_name}.md)
+
+ - [<bound method Generator.fname of <generator.code_gen.Method object at 0x1683b0f40>>](Volume.md#distribute_points)
+ - [<bound method Generator.fname of <generator.code_gen.Method object at 0x1683b2fb0>>](Volume.md#distribute_points_random)
+ - [<bound method Generator.fname of <generator.code_gen.Method object at 0x1683b21a0>>](Volume.md#distribute_points_grid)

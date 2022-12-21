@@ -23,3 +23,8 @@ node = nodes.DeformCurvesOnSurface(curves=None)
 
 - **curves** : [Curve](Curve.md)
 
+## Implementation
+
+#### class [{class_name}]({class_name}.md)
+
+ - [<bound method Generator.fname of <generator.code_gen.StackMethod object at 0x164097b50>>](Curve.md#deform_on_surface)

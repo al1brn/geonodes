@@ -29,3 +29,8 @@ node = nodes.CollectionInfo(collection=None, separate_children=None, reset_child
 
 - **geometry** : [Geometry](Geometry.md)
 
+## Implementation
+
+#### class [{class_name}]({class_name}.md)
+
+ - [<bound method Generator.fname of <generator.code_gen.Constructor object at 0x1683b16c0>>](Geometry.md#Collection-classmethod)

@@ -26,3 +26,11 @@ node = nodes.PointsOfCurve(curve_index=None, weights=None, sort_index=None)
 - **point_index** : [Integer](Integer.md)
 - **total** : [Integer](Integer.md)
 
+## Implementation
+
+#### class [{class_name}]({class_name}.md)
+
+ - [<bound method Generator.fname of <generator.code_gen.Attribute object at 0x1683b3eb0>>](Curve.md#points_of_curve)
+#### class [{class_name}]({class_name}.md)
+
+ - [<bound method Generator.fname of <generator.code_gen.DomAttribute object at 0x1683b2350>>](Spline.md#points)

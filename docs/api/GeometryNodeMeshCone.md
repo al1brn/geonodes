@@ -35,3 +35,8 @@ node = nodes.Cone(vertices=None, side_segments=None, fill_segments=None, radius_
 - **bottom** : [Boolean](Boolean.md)
 - **side** : [Boolean](Boolean.md)
 
+## Implementation
+
+#### class [{class_name}]({class_name}.md)
+
+ - [<bound method Generator.fname of <generator.code_gen.Static object at 0x1683b1990>>](Mesh.md#Cone-staticmethod)

@@ -34,3 +34,8 @@ node = nodes.SampleNearestSurface(mesh=None, value=None, sample_position=None, d
 - Driving parameter : ``data_type`` in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN')
 - Input sockets  : ['value']
 - Output sockets : ['value']
+## Implementation
+
+#### class [{class_name}]({class_name}.md)
+
+ - [<bound method Generator.fname of <generator.code_gen.Method object at 0x1683b1780>>](Mesh.md#sample_nearest_surface)

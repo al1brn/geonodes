@@ -24,3 +24,11 @@ node = nodes.ColorRamp(fac=None)
 - **color** : [Color](Color.md)
 - **alpha** : [Float](Float.md)
 
+## Implementation
+
+#### class [{class_name}]({class_name}.md)
+
+ - [<bound method Generator.fname of <generator.code_gen.Property object at 0x1639dc430>>](Float.md#color_ramp-property)
+#### Global functions
+
+ - [<bound method Generator.fname of <generator.code_gen.Function object at 0x1639dc3a0>>](function.md#color_ramp)

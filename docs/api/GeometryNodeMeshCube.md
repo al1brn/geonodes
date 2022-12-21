@@ -26,3 +26,8 @@ node = nodes.Cube(size=None, vertices_x=None, vertices_y=None, vertices_z=None)
 
 - **mesh** : [Mesh](Mesh.md)
 
+## Implementation
+
+#### class [{class_name}]({class_name}.md)
+
+ - [<bound method Generator.fname of <generator.code_gen.Constructor object at 0x1683b00a0>>](Mesh.md#Cube-classmethod)

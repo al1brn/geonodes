@@ -30,3 +30,11 @@ node = nodes.MeshToPoints(mesh=None, selection=None, position=None, radius=None,
 
 - **points** : [Points](Points.md)
 
+## Implementation
+
+#### class [{class_name}]({class_name}.md)
+
+ - [<bound method Generator.fname of <generator.code_gen.Method object at 0x1683b3610>>](Mesh.md#to_points)
+#### class [{class_name}]({class_name}.md)
+
+ - [<bound method Generator.fname of <generator.code_gen.DomMethod object at 0x1683b3820>>](Vertex.md#to_points)

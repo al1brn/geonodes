@@ -23,3 +23,8 @@ node = nodes.ConvexHull(geometry=None)
 
 - **convex_hull** : [Geometry](Geometry.md)
 
+## Implementation
+
+#### class [{class_name}]({class_name}.md)
+
+ - [<bound method Generator.fname of <generator.code_gen.Property object at 0x1683b27d0>>](Geometry.md#convex_hull-property)

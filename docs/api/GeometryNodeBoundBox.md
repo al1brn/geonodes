@@ -25,3 +25,10 @@ node = nodes.BoundingBox(geometry=None)
 - **min** : [Vector](Vector.md)
 - **max** : [Vector](Vector.md)
 
+## Implementation
+
+#### class [{class_name}]({class_name}.md)
+
+ - [<bound method Generator.fname of <generator.code_gen.Property object at 0x1683b25f0>>](Geometry.md#bounding_box-property)
+ - [<bound method Generator.fname of <generator.code_gen.Property object at 0x1683b0cd0>>](Geometry.md#bounding_box_min-property)
+ - [<bound method Generator.fname of <generator.code_gen.Property object at 0x1683b3af0>>](Geometry.md#bounding_box_min-property)

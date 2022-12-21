@@ -30,3 +30,23 @@ node = nodes.SeparateColor(color=None, mode='RGB')
 - **blue** : [Float](Float.md)
 - **alpha** : [Float](Float.md)
 
+## Implementation
+
+#### class [{class_name}]({class_name}.md)
+
+ - [<bound method Generator.fname of <generator.code_gen.Property object at 0x1640971f0>>](Color.md#rgb-property)
+ - [<bound method Generator.fname of <generator.code_gen.Property object at 0x1640974f0>>](Color.md#hsv-property)
+ - [<bound method Generator.fname of <generator.code_gen.Property object at 0x164097550>>](Color.md#hsl-property)
+ - [<bound method Generator.fname of <generator.code_gen.Property object at 0x1640961d0>>](Color.md#alpha-property)
+ - [<bound method Generator.fname of <generator.code_gen.Property object at 0x164096320>>](Color.md#red-property)
+ - [<bound method Generator.fname of <generator.code_gen.Property object at 0x164096350>>](Color.md#green-property)
+ - [<bound method Generator.fname of <generator.code_gen.Property object at 0x164097370>>](Color.md#blue-property)
+ - [<bound method Generator.fname of <generator.code_gen.Property object at 0x164097400>>](Color.md#hue-property)
+ - [<bound method Generator.fname of <generator.code_gen.Property object at 0x164097490>>](Color.md#saturation-property)
+ - [<bound method Generator.fname of <generator.code_gen.Property object at 0x164097520>>](Color.md#value-property)
+ - [<bound method Generator.fname of <generator.code_gen.Property object at 0x164097670>>](Color.md#lightness-property)
+#### Global functions
+
+ - [<bound method Generator.fname of <generator.code_gen.Function object at 0x164096110>>](function.md#separate_rgb)
+ - [<bound method Generator.fname of <generator.code_gen.Function object at 0x1640974c0>>](function.md#separate_hsv)
+ - [<bound method Generator.fname of <generator.code_gen.Function object at 0x164097190>>](function.md#separate_hsl)

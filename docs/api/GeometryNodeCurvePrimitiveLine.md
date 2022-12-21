@@ -30,3 +30,9 @@ node = nodes.CurveLine(start=None, end=None, direction=None, length=None, mode='
 
 - **curve** : [Curve](Curve.md)
 
+## Implementation
+
+#### class [{class_name}]({class_name}.md)
+
+ - [<bound method Generator.fname of <generator.code_gen.Constructor object at 0x1683b06d0>>](Curve.md#Line-classmethod)
+ - [<bound method Generator.fname of <generator.code_gen.Constructor object at 0x1683b39d0>>](Curve.md#LineDirection-classmethod)

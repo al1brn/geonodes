@@ -17,3 +17,8 @@ node = nodes.Color()
 
 - **color** : [Color](Color.md)
 
+## Implementation
+
+#### class [{class_name}]({class_name}.md)
+
+ - [<bound method Generator.fname of <generator.code_gen.Constructor object at 0x1683b12d0>>](Color.md#Color-classmethod)

@@ -26,3 +26,11 @@ node = nodes.PackUvIslands(uv=None, selection=None, margin=None, rotate=None)
 
 - **uv** : [Vector](Vector.md)
 
+## Implementation
+
+#### class [{class_name}]({class_name}.md)
+
+ - [<bound method Generator.fname of <generator.code_gen.Attribute object at 0x16ee55450>>](Mesh.md#pack_uv_islands)
+#### class [{class_name}]({class_name}.md)
+
+ - [<bound method Generator.fname of <generator.code_gen.DomAttribute object at 0x16ee55420>>](Face.md#pack_uv_islands)

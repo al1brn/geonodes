@@ -24,3 +24,8 @@ node = nodes.EdgePathsToSelection(start_vertices=None, next_vertex_index=None)
 
 - **selection** : [Boolean](Boolean.md)
 
+## Implementation
+
+#### class [{class_name}]({class_name}.md)
+
+ - [<bound method Generator.fname of <generator.code_gen.Method object at 0x1683b1600>>](Mesh.md#edge_paths_to_selection)

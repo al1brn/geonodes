@@ -24,3 +24,11 @@ node = nodes.JoinStrings(*strings, delimiter=None)
 
 - **string** : [String](String.md)
 
+## Implementation
+
+#### class [{class_name}]({class_name}.md)
+
+ - [<bound method Generator.fname of <generator.code_gen.Method object at 0x168102ad0>>](String.md#join)
+#### Global functions
+
+ - [<bound method Generator.fname of <generator.code_gen.Function object at 0x168102b00>>](function.md#join_strings)

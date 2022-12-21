@@ -27,3 +27,11 @@ node = nodes.RotateInstances(instances=None, selection=None, rotation=None, pivo
 
 - **instances** : [Instances](Instances.md)
 
+## Implementation
+
+#### class [{class_name}]({class_name}.md)
+
+ - [<bound method Generator.fname of <generator.code_gen.StackMethod object at 0x1683b0670>>](Instances.md#rotate)
+#### class [{class_name}]({class_name}.md)
+
+ - [<bound method Generator.fname of <generator.code_gen.DomStackMethod object at 0x1683b0a00>>](Instance.md#rotate)

@@ -27,3 +27,10 @@ node = nodes.FillCurve(curve=None, mode='TRIANGLES')
 
 - **mesh** : [Mesh](Mesh.md)
 
+## Implementation
+
+#### class [{class_name}]({class_name}.md)
+
+ - [<bound method Generator.fname of <generator.code_gen.Method object at 0x164097af0>>](Curve.md#fill)
+ - [<bound method Generator.fname of <generator.code_gen.Method object at 0x164097b80>>](Curve.md#fill_triangles)
+ - [<bound method Generator.fname of <generator.code_gen.Method object at 0x164097a60>>](Curve.md#fill_ngons)

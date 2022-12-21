@@ -36,3 +36,23 @@ node = nodes.RandomValue(min=None, max=None, probability=None, ID=None, seed=Non
 - Driving parameter : ``data_type`` in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'BOOLEAN')
 - Input sockets  : ['min', 'max']
 - Output sockets : ['value']
+## Implementation
+
+#### class [{class_name}]({class_name}.md)
+
+ - [<bound method Generator.fname of <generator.code_gen.Attribute object at 0x16ee55ba0>>](Geometry.md#random_float)
+ - [<bound method Generator.fname of <generator.code_gen.Attribute object at 0x16ee55b70>>](Geometry.md#random_integer)
+ - [<bound method Generator.fname of <generator.code_gen.Attribute object at 0x16ee55b40>>](Geometry.md#random_vector)
+ - [<bound method Generator.fname of <generator.code_gen.Attribute object at 0x16ee55b10>>](Geometry.md#random_boolean)
+#### class [{class_name}]({class_name}.md)
+
+ - [<bound method Generator.fname of <generator.code_gen.DomAttribute object at 0x16ee55ae0>>](Domain.md#random_float)
+ - [<bound method Generator.fname of <generator.code_gen.DomAttribute object at 0x16ee55ab0>>](Domain.md#random_integer)
+ - [<bound method Generator.fname of <generator.code_gen.DomAttribute object at 0x16ee55a80>>](Domain.md#random_vector)
+ - [<bound method Generator.fname of <generator.code_gen.DomAttribute object at 0x16ee55a50>>](Domain.md#random_boolean)
+#### Global functions
+
+ - [<bound method Generator.fname of <generator.code_gen.Function object at 0x16ee55c60>>](function.md#random_float)
+ - [<bound method Generator.fname of <generator.code_gen.Function object at 0x16ee55c30>>](function.md#random_integer)
+ - [<bound method Generator.fname of <generator.code_gen.Function object at 0x16ee55c00>>](function.md#random_vector)
+ - [<bound method Generator.fname of <generator.code_gen.Function object at 0x16ee55bd0>>](function.md#random_boolean)

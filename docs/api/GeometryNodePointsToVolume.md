@@ -31,3 +31,10 @@ node = nodes.PointsToVolume(points=None, density=None, voxel_size=None, voxel_am
 
 - **volume** : [Volume](Volume.md)
 
+## Implementation
+
+#### class [{class_name}]({class_name}.md)
+
+ - [<bound method Generator.fname of <generator.code_gen.Method object at 0x1683b1c90>>](Points.md#to_volume)
+ - [<bound method Generator.fname of <generator.code_gen.Method object at 0x1683b18d0>>](Points.md#to_volume_size)
+ - [<bound method Generator.fname of <generator.code_gen.Method object at 0x1683b0eb0>>](Points.md#to_volume_amount)

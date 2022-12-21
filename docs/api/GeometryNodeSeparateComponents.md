@@ -27,3 +27,13 @@ node = nodes.SeparateComponents(geometry=None)
 - **volume** : [Volume](Volume.md)
 - **instances** : [Instances](Instances.md)
 
+## Implementation
+
+#### class [{class_name}]({class_name}.md)
+
+ - [<bound method Generator.fname of <generator.code_gen.Property object at 0x1683b2200>>](Geometry.md#separate_components-property)
+ - [<bound method Generator.fname of <generator.code_gen.Property object at 0x1683b3d00>>](Geometry.md#mesh_component-property)
+ - [<bound method Generator.fname of <generator.code_gen.Property object at 0x1683b11b0>>](Geometry.md#curve_component-property)
+ - [<bound method Generator.fname of <generator.code_gen.Property object at 0x1683b0af0>>](Geometry.md#points_component-property)
+ - [<bound method Generator.fname of <generator.code_gen.Property object at 0x1683b02e0>>](Geometry.md#volume_component-property)
+ - [<bound method Generator.fname of <generator.code_gen.Property object at 0x1683b28c0>>](Geometry.md#instances_component-property)

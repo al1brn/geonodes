@@ -41,3 +41,19 @@ node = nodes.MapRange(value=None, from_min=None, from_max=None, to_min=None, to_
 - Driving parameter : ``data_type`` in ('FLOAT', 'FLOAT_VECTOR')
 - Input sockets  : ['from_min', 'from_max', 'to_min', 'to_max', 'steps']
 - Output sockets : []
+## Implementation
+
+#### class [{class_name}]({class_name}.md)
+
+ - [<bound method Generator.fname of <generator.code_gen.Method object at 0x16ee572e0>>](Float.md#map_range)
+ - [<bound method Generator.fname of <generator.code_gen.Method object at 0x16ee572b0>>](Float.md#map_range_linear)
+ - [<bound method Generator.fname of <generator.code_gen.Method object at 0x16ee57280>>](Float.md#map_range_stepped)
+ - [<bound method Generator.fname of <generator.code_gen.Method object at 0x16ee57250>>](Float.md#map_range_smooth)
+ - [<bound method Generator.fname of <generator.code_gen.Method object at 0x16ee57220>>](Float.md#map_range_smoother)
+#### class [{class_name}]({class_name}.md)
+
+ - [<bound method Generator.fname of <generator.code_gen.Method object at 0x16ee571c0>>](Vector.md#map_range)
+ - [<bound method Generator.fname of <generator.code_gen.Method object at 0x16ee57190>>](Vector.md#map_range_linear)
+ - [<bound method Generator.fname of <generator.code_gen.Method object at 0x16ee57160>>](Vector.md#map_range_stepped)
+ - [<bound method Generator.fname of <generator.code_gen.Method object at 0x16ee57130>>](Vector.md#map_range_smooth)
+ - [<bound method Generator.fname of <generator.code_gen.Method object at 0x16ee57100>>](Vector.md#map_range_smoother)

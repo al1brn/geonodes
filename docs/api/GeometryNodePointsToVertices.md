@@ -24,3 +24,11 @@ node = nodes.PointsToVertices(points=None, selection=None)
 
 - **mesh** : [Mesh](Mesh.md)
 
+## Implementation
+
+#### class [{class_name}]({class_name}.md)
+
+ - [<bound method Generator.fname of <generator.code_gen.Method object at 0x1683b2c80>>](Points.md#to_vertices)
+#### class [{class_name}]({class_name}.md)
+
+ - [<bound method Generator.fname of <generator.code_gen.DomMethod object at 0x1683b0610>>](CloudPoint.md#to_vertices)

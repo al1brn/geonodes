@@ -30,3 +30,10 @@ node = nodes.FilletCurve(curve=None, count=None, radius=None, limit_radius=None,
 
 - **curve** : [Curve](Curve.md)
 
+## Implementation
+
+#### class [{class_name}]({class_name}.md)
+
+ - [<bound method Generator.fname of <generator.code_gen.StackMethod object at 0x164096ef0>>](Curve.md#fillet)
+ - [<bound method Generator.fname of <generator.code_gen.StackMethod object at 0x164097e80>>](Curve.md#fillet_bezier)
+ - [<bound method Generator.fname of <generator.code_gen.StackMethod object at 0x1640973a0>>](Curve.md#fillet_poly)

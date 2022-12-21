@@ -23,3 +23,8 @@ node = nodes.CurveLength(curve=None)
 
 - **length** : [Float](Float.md)
 
+## Implementation
+
+#### class [{class_name}]({class_name}.md)
+
+ - [<bound method Generator.fname of <generator.code_gen.Property object at 0x164096cb0>>](Curve.md#length-property)

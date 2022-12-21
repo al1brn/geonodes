@@ -20,3 +20,10 @@ node = nodes.EdgeVertices()
 - **position_1** : [Vector](Vector.md)
 - **position_2** : [Vector](Vector.md)
 
+## Implementation
+
+#### class [{class_name}]({class_name}.md)
+
+ - [<bound method Generator.fname of <generator.code_gen.DomPropAttribute object at 0x1683b0c70>>](Edge.md#vertices-property)
+ - [<bound method Generator.fname of <generator.code_gen.DomPropAttribute object at 0x1683b1a80>>](Edge.md#vertices_index-property)
+ - [<bound method Generator.fname of <generator.code_gen.DomPropAttribute object at 0x1683b3640>>](Edge.md#vertices_position-property)

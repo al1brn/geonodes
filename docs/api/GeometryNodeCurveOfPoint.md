@@ -24,3 +24,11 @@ node = nodes.CurveOfPoint(point_index=None)
 - **curve_index** : [Integer](Integer.md)
 - **index_in_curve** : [Integer](Integer.md)
 
+## Implementation
+
+#### class [{class_name}]({class_name}.md)
+
+ - [<bound method Generator.fname of <generator.code_gen.Attribute object at 0x1683b2a70>>](Curve.md#curve_of_point)
+#### class [{class_name}]({class_name}.md)
+
+ - [<bound method Generator.fname of <generator.code_gen.DomAttribute object at 0x1683b3280>>](ControlPoint.md#curve)

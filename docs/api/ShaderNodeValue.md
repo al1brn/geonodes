@@ -17,3 +17,8 @@ node = nodes.Value()
 
 - **value** : [Float](Float.md)
 
+## Implementation
+
+#### class [{class_name}]({class_name}.md)
+
+ - [<bound method Generator.fname of <generator.code_gen.Constructor object at 0x1683b38b0>>](Float.md#Value-classmethod)

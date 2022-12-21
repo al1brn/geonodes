@@ -17,3 +17,11 @@ node = nodes.InstanceScale()
 
 - **scale** : [Vector](Vector.md)
 
+## Implementation
+
+#### class [{class_name}]({class_name}.md)
+
+ - [<bound method Generator.fname of <generator.code_gen.PropAttribute object at 0x1683b37c0>>](Instances.md#scale-property)
+#### class [{class_name}]({class_name}.md)
+
+ - [<bound method Generator.fname of <generator.code_gen.DomPropAttribute object at 0x1683b33a0>>](Instance.md#scale-property)

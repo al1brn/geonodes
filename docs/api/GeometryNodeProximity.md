@@ -29,3 +29,11 @@ node = nodes.GeometryProximity(target=None, source_position=None, target_element
 - **position** : [Vector](Vector.md)
 - **distance** : [Float](Float.md)
 
+## Implementation
+
+#### class [{class_name}]({class_name}.md)
+
+ - [<bound method Generator.fname of <generator.code_gen.Attribute object at 0x1683b27a0>>](Geometry.md#proximity)
+ - [<bound method Generator.fname of <generator.code_gen.Attribute object at 0x1683b3ac0>>](Geometry.md#proximity_points)
+ - [<bound method Generator.fname of <generator.code_gen.Attribute object at 0x1683b31f0>>](Geometry.md#proximity_edges)
+ - [<bound method Generator.fname of <generator.code_gen.Attribute object at 0x1683b0d30>>](Geometry.md#proximity_facess)

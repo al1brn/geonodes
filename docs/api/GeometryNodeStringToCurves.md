@@ -39,3 +39,11 @@ node = nodes.StringToCurves(string=None, size=None, character_spacing=None, word
 - **line** : [Integer](Integer.md)
 - **pivot_point** : [Vector](Vector.md)
 
+## Implementation
+
+#### class [{class_name}]({class_name}.md)
+
+ - [<bound method Generator.fname of <generator.code_gen.Method object at 0x168102950>>](String.md#to_curves)
+#### Global functions
+
+ - [<bound method Generator.fname of <generator.code_gen.Function object at 0x168102980>>](function.md#string_to_curves)

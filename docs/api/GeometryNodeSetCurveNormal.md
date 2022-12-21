@@ -28,3 +28,9 @@ node = nodes.SetCurveNormal(curve=None, selection=None, mode='MINIMUM_TWIST')
 
 - **curve** : [Curve](Curve.md)
 
+## Implementation
+
+#### class [{class_name}]({class_name}.md)
+
+ - [<bound method Generator.fname of <generator.code_gen.DomStackMethod object at 0x164097340>>](Spline.md#set_normal)
+ - [<bound method Generator.fname of <generator.code_gen.DomSetter object at 0x164097a00>>](Spline.md#normal)

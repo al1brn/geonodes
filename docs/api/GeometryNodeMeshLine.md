@@ -31,3 +31,12 @@ node = nodes.MeshLine(count=None, resolution=None, start_location=None, offset=N
 
 - **mesh** : [Mesh](Mesh.md)
 
+## Implementation
+
+#### class [{class_name}]({class_name}.md)
+
+ - [<bound method Generator.fname of <generator.code_gen.Constructor object at 0x1683b18a0>>](Mesh.md#Line-classmethod)
+ - [<bound method Generator.fname of <generator.code_gen.Constructor object at 0x1683b2380>>](Mesh.md#LineEndPoints-classmethod)
+ - [<bound method Generator.fname of <generator.code_gen.Constructor object at 0x1683b3b80>>](Mesh.md#LineOffset-classmethod)
+ - [<bound method Generator.fname of <generator.code_gen.Constructor object at 0x1683b3730>>](Mesh.md#LineEndPointsResolution-classmethod)
+ - [<bound method Generator.fname of <generator.code_gen.Constructor object at 0x1683b3700>>](Mesh.md#LineOffsetResolution-classmethod)

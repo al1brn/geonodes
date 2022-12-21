@@ -25,3 +25,8 @@ node = nodes.Points(count=None, position=None, radius=None)
 
 - **geometry** : [Geometry](Geometry.md)
 
+## Implementation
+
+#### class [{class_name}]({class_name}.md)
+
+ - [<bound method Generator.fname of <generator.code_gen.Constructor object at 0x1683b2ec0>>](Points.md#Points-classmethod)

@@ -31,3 +31,15 @@ node = nodes.RotateEuler(rotation=None, rotate_by=None, axis=None, angle=None, s
 
 - **rotation** : [Vector](Vector.md)
 
+## Implementation
+
+#### Global functions
+
+ - [<bound method Generator.fname of <generator.code_gen.Function object at 0x16ee55a20>>](function.md#rotate_euler)
+ - [<bound method Generator.fname of <generator.code_gen.Function object at 0x16ee559f0>>](function.md#rotate_axis_angle)
+#### class [{class_name}]({class_name}.md)
+
+ - [<bound method Generator.fname of <generator.code_gen.Constructor object at 0x16ee559c0>>](Rotation.md#Euler-classmethod)
+ - [<bound method Generator.fname of <generator.code_gen.Constructor object at 0x16ee55990>>](Rotation.md#AxisAngle-classmethod)
+ - [<bound method Generator.fname of <generator.code_gen.Method object at 0x16ee55960>>](Rotation.md#rotate_euler)
+ - [<bound method Generator.fname of <generator.code_gen.Method object at 0x16ee55930>>](Rotation.md#rotate_axis_angle)

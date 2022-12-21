@@ -32,3 +32,9 @@ node = nodes.CurveCircle(resolution=None, point_1=None, point_2=None, point_3=No
 - **curve** : [Curve](Curve.md)
 - **center** : [Vector](Vector.md)
 
+## Implementation
+
+#### class [{class_name}]({class_name}.md)
+
+ - [<bound method Generator.fname of <generator.code_gen.Constructor object at 0x1683b2a10>>](Curve.md#Circle-classmethod)
+ - [<bound method Generator.fname of <generator.code_gen.Constructor object at 0x1683b1360>>](Curve.md#CircleFromPoints-classmethod)

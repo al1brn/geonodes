@@ -27,3 +27,8 @@ node = nodes.RealizeInstances(geometry=None, legacy_behavior=False)
 
 - **geometry** : [Geometry](Geometry.md)
 
+## Implementation
+
+#### class [{class_name}]({class_name}.md)
+
+ - [<bound method Generator.fname of <generator.code_gen.Method object at 0x1683b2c50>>](Instances.md#realize)

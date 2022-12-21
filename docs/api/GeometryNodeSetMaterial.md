@@ -25,3 +25,18 @@ node = nodes.SetMaterial(geometry=None, selection=None, material=None)
 
 - **geometry** : [Geometry](Geometry.md)
 
+## Implementation
+
+#### class [{class_name}]({class_name}.md)
+
+ - [<bound method Generator.fname of <generator.code_gen.StackMethod object at 0x1683b0970>>](Geometry.md#set_material)
+#### class [{class_name}]({class_name}.md)
+
+ - [<bound method Generator.fname of <generator.code_gen.DomStackMethod object at 0x1683b0f70>>](Face.md#set_material)
+ - [<bound method Generator.fname of <generator.code_gen.PropReadError object at 0x1683b0580>>](Face.md#material-property)
+ - [<bound method Generator.fname of <generator.code_gen.DomSetter object at 0x1683b0fa0>>](Face.md#material)
+#### class [{class_name}]({class_name}.md)
+
+ - [<bound method Generator.fname of <generator.code_gen.DomStackMethod object at 0x1683b0f70>>](Spline.md#set_material)
+ - [<bound method Generator.fname of <generator.code_gen.PropReadError object at 0x1683b0580>>](Spline.md#material-property)
+ - [<bound method Generator.fname of <generator.code_gen.DomSetter object at 0x1683b0fa0>>](Spline.md#material)

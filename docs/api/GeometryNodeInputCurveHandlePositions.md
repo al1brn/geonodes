@@ -24,3 +24,10 @@ node = nodes.CurveHandlePositions(relative=None)
 - **left** : [Vector](Vector.md)
 - **right** : [Vector](Vector.md)
 
+## Implementation
+
+#### class [{class_name}]({class_name}.md)
+
+ - [<bound method Generator.fname of <generator.code_gen.Attribute object at 0x164096e60>>](ControlPoint.md#handle_positions)
+ - [<bound method Generator.fname of <generator.code_gen.DomPropAttribute object at 0x1640975e0>>](ControlPoint.md#left_handle_positions-property)
+ - [<bound method Generator.fname of <generator.code_gen.DomPropAttribute object at 0x164096dd0>>](ControlPoint.md#right_handle_positions-property)

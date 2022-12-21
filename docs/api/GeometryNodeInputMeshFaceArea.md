@@ -17,3 +17,8 @@ node = nodes.FaceArea()
 
 - **area** : [Float](Float.md)
 
+## Implementation
+
+#### class [{class_name}]({class_name}.md)
+
+ - [<bound method Generator.fname of <generator.code_gen.DomPropAttribute object at 0x1683b26b0>>](Face.md#area-property)

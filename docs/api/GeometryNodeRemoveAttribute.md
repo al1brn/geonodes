@@ -24,3 +24,11 @@ node = nodes.RemoveNamedAttribute(geometry=None, name=None)
 
 - **geometry** : [Geometry](Geometry.md)
 
+## Implementation
+
+#### class [{class_name}]({class_name}.md)
+
+ - [<bound method Generator.fname of <generator.code_gen.StackMethod object at 0x1639dc3d0>>](Geometry.md#remove_named_attribute)
+#### class [{class_name}]({class_name}.md)
+
+ - [<bound method Generator.fname of <generator.code_gen.DomStackMethod object at 0x1639dc040>>](Domain.md#remove_named_attribute)

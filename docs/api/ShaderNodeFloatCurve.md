@@ -24,3 +24,8 @@ node = nodes.FloatCurve(factor=None, value=None)
 
 - **value** : [Float](Float.md)
 
+## Implementation
+
+#### class [{class_name}]({class_name}.md)
+
+ - [<bound method Generator.fname of <generator.code_gen.Method object at 0x16ee57430>>](Float.md#float_curve)

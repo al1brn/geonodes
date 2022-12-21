@@ -17,3 +17,11 @@ node = nodes.MaterialIndex()
 
 - **material_index** : [Integer](Integer.md)
 
+## Implementation
+
+#### class [{class_name}]({class_name}.md)
+
+ - [<bound method Generator.fname of <generator.code_gen.PropAttribute object at 0x1683b22c0>>](Geometry.md#material_index-property)
+#### class [{class_name}]({class_name}.md)
+
+ - [<bound method Generator.fname of <generator.code_gen.DomPropAttribute object at 0x1683b0be0>>](Domain.md#material_index-property)

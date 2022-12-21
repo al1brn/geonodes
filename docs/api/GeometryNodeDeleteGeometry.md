@@ -29,3 +29,31 @@ node = nodes.DeleteGeometry(geometry=None, selection=None, domain='POINT', mode=
 
 - **geometry** : [Geometry](Geometry.md)
 
+## Implementation
+
+#### class [{class_name}]({class_name}.md)
+
+ - [<bound method Generator.fname of <generator.code_gen.StackMethod object at 0x1683b1ae0>>](Geometry.md#delete)
+#### class [{class_name}]({class_name}.md)
+
+ - [<bound method Generator.fname of <generator.code_gen.DomStackMethod object at 0x1683b2740>>](Domain.md#delete)
+#### class [{class_name}]({class_name}.md)
+
+ - [<bound method Generator.fname of <generator.code_gen.StackMethod object at 0x1683b1ff0>>](Mesh.md#delete_all)
+ - [<bound method Generator.fname of <generator.code_gen.StackMethod object at 0x1683b20e0>>](Mesh.md#delete_edges)
+ - [<bound method Generator.fname of <generator.code_gen.StackMethod object at 0x1683b2770>>](Mesh.md#delete_faces)
+#### class [{class_name}]({class_name}.md)
+
+ - [<bound method Generator.fname of <generator.code_gen.DomStackMethod object at 0x1683b1d50>>](Vertex.md#delete_all)
+ - [<bound method Generator.fname of <generator.code_gen.DomStackMethod object at 0x1683b32e0>>](Vertex.md#delete_edges)
+ - [<bound method Generator.fname of <generator.code_gen.DomStackMethod object at 0x1683b3a30>>](Vertex.md#delete_faces)
+#### class [{class_name}]({class_name}.md)
+
+ - [<bound method Generator.fname of <generator.code_gen.DomStackMethod object at 0x1683b2b00>>](Face.md#delete_all)
+ - [<bound method Generator.fname of <generator.code_gen.DomStackMethod object at 0x1683b2050>>](Face.md#delete_edges)
+ - [<bound method Generator.fname of <generator.code_gen.DomStackMethod object at 0x1683b3a90>>](Face.md#delete_faces)
+#### class [{class_name}]({class_name}.md)
+
+ - [<bound method Generator.fname of <generator.code_gen.DomStackMethod object at 0x1683b1ed0>>](Edge.md#delete_all)
+ - [<bound method Generator.fname of <generator.code_gen.DomStackMethod object at 0x1683b1e40>>](Edge.md#delete_edges)
+ - [<bound method Generator.fname of <generator.code_gen.DomStackMethod object at 0x1683b1d20>>](Edge.md#delete_faces)

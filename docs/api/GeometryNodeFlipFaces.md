@@ -24,3 +24,11 @@ node = nodes.FlipFaces(mesh=None, selection=None)
 
 - **mesh** : [Mesh](Mesh.md)
 
+## Implementation
+
+#### class [{class_name}]({class_name}.md)
+
+ - [<bound method Generator.fname of <generator.code_gen.StackMethod object at 0x1683b28f0>>](Mesh.md#flip_faces)
+#### class [{class_name}]({class_name}.md)
+
+ - [<bound method Generator.fname of <generator.code_gen.DomStackMethod object at 0x1683b3340>>](Face.md#flip)

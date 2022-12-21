@@ -17,3 +17,8 @@ node = nodes.CurveTilt()
 
 - **tilt** : [Float](Float.md)
 
+## Implementation
+
+#### class [{class_name}]({class_name}.md)
+
+ - [<bound method Generator.fname of <generator.code_gen.DomPropAttribute object at 0x164096f80>>](ControlPoint.md#tilt-property)

@@ -25,3 +25,12 @@ node = nodes.SetShadeSmooth(geometry=None, selection=None, shade_smooth=None)
 
 - **geometry** : [Geometry](Geometry.md)
 
+## Implementation
+
+#### class [{class_name}]({class_name}.md)
+
+ - [<bound method Generator.fname of <generator.code_gen.StackMethod object at 0x1683b2320>>](Mesh.md#set_shade_smooth)
+#### class [{class_name}]({class_name}.md)
+
+ - [<bound method Generator.fname of <generator.code_gen.DomStackMethod object at 0x1683b2530>>](Face.md#set_shade_smooth)
+ - [<bound method Generator.fname of <generator.code_gen.DomSetter object at 0x1683b2d10>>](Face.md#shade_smooth)

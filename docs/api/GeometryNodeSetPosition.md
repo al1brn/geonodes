@@ -26,3 +26,12 @@ node = nodes.SetPosition(geometry=None, selection=None, position=None, offset=No
 
 - **geometry** : [Geometry](Geometry.md)
 
+## Implementation
+
+#### class [{class_name}]({class_name}.md)
+
+ - [<bound method Generator.fname of <generator.code_gen.StackMethod object at 0x1683b1750>>](Geometry.md#set_position)
+#### class [{class_name}]({class_name}.md)
+
+ - [<bound method Generator.fname of <generator.code_gen.DomStackMethod object at 0x1683b1de0>>](Domain.md#set_position)
+ - [<bound method Generator.fname of <generator.code_gen.DomSetter object at 0x1683b0b80>>](Domain.md#position)

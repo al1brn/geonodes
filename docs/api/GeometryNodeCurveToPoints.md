@@ -32,3 +32,11 @@ node = nodes.CurveToPoints(curve=None, count=None, length=None, mode='COUNT')
 - **normal** : [Vector](Vector.md)
 - **rotation** : [Vector](Vector.md)
 
+## Implementation
+
+#### class [{class_name}]({class_name}.md)
+
+ - [<bound method Generator.fname of <generator.code_gen.Method object at 0x164097f70>>](Curve.md#to_points)
+ - [<bound method Generator.fname of <generator.code_gen.Method object at 0x164097880>>](Curve.md#to_points_count)
+ - [<bound method Generator.fname of <generator.code_gen.Method object at 0x1640972e0>>](Curve.md#to_points_length)
+ - [<bound method Generator.fname of <generator.code_gen.Method object at 0x164096140>>](Curve.md#to_points_evaluated)

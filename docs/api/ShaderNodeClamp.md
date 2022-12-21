@@ -29,3 +29,15 @@ node = nodes.Clamp(value=None, min=None, max=None, clamp_type='MINMAX')
 
 - **result** : [Float](Float.md)
 
+## Implementation
+
+#### class [{class_name}]({class_name}.md)
+
+ - [<bound method Generator.fname of <generator.code_gen.Method object at 0x16e44d6c0>>](Float.md#clamp)
+ - [<bound method Generator.fname of <generator.code_gen.Method object at 0x16e44ec20>>](Float.md#clamp_min_max)
+ - [<bound method Generator.fname of <generator.code_gen.Method object at 0x16e44ef50>>](Float.md#clamp_range)
+#### Global functions
+
+ - [<bound method Generator.fname of <generator.code_gen.Function object at 0x16e44d630>>](function.md#clamp)
+ - [<bound method Generator.fname of <generator.code_gen.Function object at 0x16e44d690>>](function.md#clamp_min_max)
+ - [<bound method Generator.fname of <generator.code_gen.Function object at 0x16e44d720>>](function.md#clamp_range)

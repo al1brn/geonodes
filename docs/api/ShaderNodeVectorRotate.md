@@ -32,3 +32,12 @@ node = nodes.VectorRotate(vector=None, center=None, axis=None, angle=None, rotat
 
 - **vector** : [Vector](Vector.md)
 
+## Implementation
+
+#### class [{class_name}]({class_name}.md)
+
+ - [<bound method Generator.fname of <generator.code_gen.Method object at 0x16ee54b80>>](Vector.md#rotate_euler)
+ - [<bound method Generator.fname of <generator.code_gen.Method object at 0x16ee54b50>>](Vector.md#rotate_axis_angle)
+ - [<bound method Generator.fname of <generator.code_gen.Method object at 0x16ee54b20>>](Vector.md#rotate_x)
+ - [<bound method Generator.fname of <generator.code_gen.Method object at 0x16ee54af0>>](Vector.md#rotate_y)
+ - [<bound method Generator.fname of <generator.code_gen.Method object at 0x16ee54ac0>>](Vector.md#rotate_z)

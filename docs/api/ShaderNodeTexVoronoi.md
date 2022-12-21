@@ -38,3 +38,12 @@ node = nodes.VoronoiTexture(vector=None, w=None, scale=None, smoothness=None, ex
 - **w** : [Float](Float.md)
 - **radius** : [Float](Float.md)
 
+## Implementation
+
+#### class [{class_name}]({class_name}.md)
+
+ - [<bound method Generator.fname of <generator.code_gen.Static object at 0x1683b3c10>>](Texture.md#voronoi-staticmethod)
+ - [<bound method Generator.fname of <generator.code_gen.Static object at 0x1683b2dd0>>](Texture.md#voronoi_1D-staticmethod)
+ - [<bound method Generator.fname of <generator.code_gen.Static object at 0x1683b0430>>](Texture.md#voronoi_2D-staticmethod)
+ - [<bound method Generator.fname of <generator.code_gen.Static object at 0x1683b07c0>>](Texture.md#voronoi_3D-staticmethod)
+ - [<bound method Generator.fname of <generator.code_gen.Static object at 0x1683b0ca0>>](Texture.md#voronoi_4D-staticmethod)

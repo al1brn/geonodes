@@ -30,3 +30,11 @@ node = nodes.DuplicateElements(geometry=None, selection=None, amount=None, domai
 - **geometry** : [Geometry](Geometry.md)
 - **duplicate_index** : [Integer](Integer.md)
 
+## Implementation
+
+#### class [{class_name}]({class_name}.md)
+
+ - [<bound method Generator.fname of <generator.code_gen.StackMethod object at 0x1683b2140>>](Geometry.md#duplicate)
+#### class [{class_name}]({class_name}.md)
+
+ - [<bound method Generator.fname of <generator.code_gen.DomStackMethod object at 0x1683b3b50>>](Domain.md#duplicate)

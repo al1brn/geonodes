@@ -27,3 +27,8 @@ node = nodes.CheckerTexture(vector=None, color1=None, color2=None, scale=None)
 - **color** : [Color](Color.md)
 - **fac** : [Float](Float.md)
 
+## Implementation
+
+#### class [{class_name}]({class_name}.md)
+
+ - [<bound method Generator.fname of <generator.code_gen.Static object at 0x1683b0460>>](Texture.md#checker-staticmethod)

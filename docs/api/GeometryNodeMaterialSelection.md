@@ -23,3 +23,11 @@ node = nodes.MaterialSelection(material=None)
 
 - **selection** : [Boolean](Boolean.md)
 
+## Implementation
+
+#### class [{class_name}]({class_name}.md)
+
+ - [<bound method Generator.fname of <generator.code_gen.Attribute object at 0x1683b3880>>](Geometry.md#material_selection)
+#### class [{class_name}]({class_name}.md)
+
+ - [<bound method Generator.fname of <generator.code_gen.DomAttribute object at 0x1683b3d60>>](Domain.md#material_selection)

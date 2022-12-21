@@ -29,3 +29,9 @@ node = nodes.SetHandleType(curve=None, selection=None, handle_type='AUTO', mode=
 
 - **curve** : [Curve](Curve.md)
 
+## Implementation
+
+#### class [{class_name}]({class_name}.md)
+
+ - [<bound method Generator.fname of <generator.code_gen.DomStackMethod object at 0x1640979a0>>](ControlPoint.md#set_handle_type_node)
+ - [<bound method Generator.fname of <generator.code_gen.Source object at 0x164096ce0>>](ControlPoint.md#set_handle_type)

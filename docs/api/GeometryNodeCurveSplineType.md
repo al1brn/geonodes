@@ -28,3 +28,10 @@ node = nodes.SetSplineType(curve=None, selection=None, spline_type='POLY')
 
 - **curve** : [Curve](Curve.md)
 
+## Implementation
+
+#### class [{class_name}]({class_name}.md)
+
+ - [<bound method Generator.fname of <generator.code_gen.DomStackMethod object at 0x1640975b0>>](Spline.md#set_type)
+ - [<bound method Generator.fname of <generator.code_gen.PropReadError object at 0x164096c50>>](Spline.md#type-property)
+ - [<bound method Generator.fname of <generator.code_gen.DomSetter object at 0x1683b1960>>](Spline.md#type)

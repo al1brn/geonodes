@@ -25,3 +25,8 @@ node = nodes.ReplaceMaterial(geometry=None, old=None, new=None)
 
 - **geometry** : [Geometry](Geometry.md)
 
+## Implementation
+
+#### class [{class_name}]({class_name}.md)
+
+ - [<bound method Generator.fname of <generator.code_gen.StackMethod object at 0x1683b25c0>>](Geometry.md#replace_material)

@@ -18,3 +18,10 @@ node = nodes.VertexNeighbors()
 - **vertex_count** : [Integer](Integer.md)
 - **face_count** : [Integer](Integer.md)
 
+## Implementation
+
+#### class [{class_name}]({class_name}.md)
+
+ - [<bound method Generator.fname of <generator.code_gen.DomPropAttribute object at 0x1683b2d70>>](Vertex.md#neighbors-property)
+ - [<bound method Generator.fname of <generator.code_gen.DomPropAttribute object at 0x1683b0520>>](Vertex.md#neighbors_vertex_count-property)
+ - [<bound method Generator.fname of <generator.code_gen.DomPropAttribute object at 0x1683b1270>>](Vertex.md#neighbors_face_count-property)

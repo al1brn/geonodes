@@ -39,3 +39,9 @@ node = nodes.Arc(resolution=None, start=None, middle=None, end=None, radius=None
 - **normal** : [Vector](Vector.md)
 - **radius** : [Float](Float.md)
 
+## Implementation
+
+#### class [{class_name}]({class_name}.md)
+
+ - [<bound method Generator.fname of <generator.code_gen.Constructor object at 0x1683b3160>>](Curve.md#Arc-classmethod)
+ - [<bound method Generator.fname of <generator.code_gen.Constructor object at 0x1683b3ee0>>](Curve.md#ArcFromPoints-classmethod)

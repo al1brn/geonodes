@@ -41,3 +41,10 @@ node = nodes.Raycast(target_geometry=None, attribute=None, source_position=None,
 - Driving parameter : ``data_type`` in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN')
 - Input sockets  : ['attribute']
 - Output sockets : ['attribute']
+## Implementation
+
+#### class [{class_name}]({class_name}.md)
+
+ - [<bound method Generator.fname of <generator.code_gen.Attribute object at 0x1683b0e20>>](Geometry.md#raycast)
+ - [<bound method Generator.fname of <generator.code_gen.Attribute object at 0x1683b2410>>](Geometry.md#raycast_interpolated)
+ - [<bound method Generator.fname of <generator.code_gen.Attribute object at 0x1683b2680>>](Geometry.md#raycast_nearest)

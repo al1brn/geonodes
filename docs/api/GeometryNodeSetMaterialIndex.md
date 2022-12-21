@@ -25,3 +25,11 @@ node = nodes.SetMaterialIndex(geometry=None, selection=None, material_index=None
 
 - **geometry** : [Geometry](Geometry.md)
 
+## Implementation
+
+#### class [{class_name}]({class_name}.md)
+
+ - [<bound method Generator.fname of <generator.code_gen.StackMethod object at 0x1683b0700>>](Geometry.md#set_material_index)
+#### class [{class_name}]({class_name}.md)
+
+ - [<bound method Generator.fname of <generator.code_gen.DomStackMethod object at 0x1683b37f0>>](Domain.md#set_material_index)

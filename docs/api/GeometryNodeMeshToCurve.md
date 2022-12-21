@@ -24,3 +24,11 @@ node = nodes.MeshToCurve(mesh=None, selection=None)
 
 - **curve** : [Curve](Curve.md)
 
+## Implementation
+
+#### class [{class_name}]({class_name}.md)
+
+ - [<bound method Generator.fname of <generator.code_gen.Method object at 0x1683b0bb0>>](Mesh.md#to_curve)
+#### class [{class_name}]({class_name}.md)
+
+ - [<bound method Generator.fname of <generator.code_gen.DomMethod object at 0x1683b26e0>>](Edge.md#to_curve)

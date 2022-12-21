@@ -27,3 +27,8 @@ node = nodes.Star(points=None, inner_radius=None, outer_radius=None, twist=None)
 - **curve** : [Curve](Curve.md)
 - **outer_points** : [Boolean](Boolean.md)
 
+## Implementation
+
+#### class [{class_name}]({class_name}.md)
+
+ - [<bound method Generator.fname of <generator.code_gen.Constructor object at 0x1683b3250>>](Curve.md#Star-classmethod)

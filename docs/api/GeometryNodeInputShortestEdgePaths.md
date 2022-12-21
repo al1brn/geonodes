@@ -25,3 +25,8 @@ node = nodes.ShortestEdgePaths(end_vertex=None, edge_cost=None)
 - **next_vertex_index** : [Integer](Integer.md)
 - **total_cost** : [Float](Float.md)
 
+## Implementation
+
+#### class [{class_name}]({class_name}.md)
+
+ - [<bound method Generator.fname of <generator.code_gen.Attribute object at 0x1683b2110>>](Mesh.md#shortest_edge_paths)

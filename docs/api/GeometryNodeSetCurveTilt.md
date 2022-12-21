@@ -25,3 +25,9 @@ node = nodes.SetCurveTilt(curve=None, selection=None, tilt=None)
 
 - **curve** : [Curve](Curve.md)
 
+## Implementation
+
+#### class [{class_name}]({class_name}.md)
+
+ - [<bound method Generator.fname of <generator.code_gen.DomStackMethod object at 0x164097310>>](ControlPoint.md#set_tilt)
+ - [<bound method Generator.fname of <generator.code_gen.DomSetter object at 0x164097430>>](ControlPoint.md#tilt)

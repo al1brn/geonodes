@@ -17,3 +17,8 @@ node = nodes.IsSplineCyclic()
 
 - **cyclic** : [Boolean](Boolean.md)
 
+## Implementation
+
+#### class [{class_name}]({class_name}.md)
+
+ - [<bound method Generator.fname of <generator.code_gen.PropAttribute object at 0x1640960b0>>](Spline.md#cyclic-property)

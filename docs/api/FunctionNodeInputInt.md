@@ -23,3 +23,8 @@ node = nodes.Integer(integer=0)
 
 - **integer** : [Integer](Integer.md)
 
+## Implementation
+
+#### class [{class_name}]({class_name}.md)
+
+ - [<bound method Generator.fname of <generator.code_gen.Constructor object at 0x1683b23b0>>](Integer.md#Integer-classmethod)

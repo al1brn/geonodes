@@ -25,3 +25,11 @@ node = nodes.OffsetPointInCurve(point_index=None, offset=None)
 - **is_valid_offset** : [Boolean](Boolean.md)
 - **point_index** : [Integer](Integer.md)
 
+## Implementation
+
+#### class [{class_name}]({class_name}.md)
+
+ - [<bound method Generator.fname of <generator.code_gen.Attribute object at 0x1683b1450>>](Curve.md#offset_point)
+#### class [{class_name}]({class_name}.md)
+
+ - [<bound method Generator.fname of <generator.code_gen.DomAttribute object at 0x1683b3790>>](ControlPoint.md#offset)

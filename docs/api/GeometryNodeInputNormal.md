@@ -17,3 +17,14 @@ node = nodes.Normal()
 
 - **normal** : [Vector](Vector.md)
 
+## Implementation
+
+#### class [{class_name}]({class_name}.md)
+
+ - [<bound method Generator.fname of <generator.code_gen.PropAttribute object at 0x1683b3ca0>>](Geometry.md#normal-property)
+#### class [{class_name}]({class_name}.md)
+
+ - [<bound method Generator.fname of <generator.code_gen.DomPropAttribute object at 0x1683b3be0>>](Domain.md#normal-property)
+#### class [{class_name}]({class_name}.md)
+
+ - [<bound method Generator.fname of <generator.code_gen.DomPropAttribute object at 0x1683b2e60>>](Spline.md#normal-property)

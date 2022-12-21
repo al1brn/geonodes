@@ -17,3 +17,11 @@ node = nodes.InstanceRotation()
 
 - **rotation** : [Vector](Vector.md)
 
+## Implementation
+
+#### class [{class_name}]({class_name}.md)
+
+ - [<bound method Generator.fname of <generator.code_gen.PropAttribute object at 0x1683b09a0>>](Instances.md#rotation-property)
+#### class [{class_name}]({class_name}.md)
+
+ - [<bound method Generator.fname of <generator.code_gen.DomPropAttribute object at 0x1683b1ea0>>](Instance.md#rotation-property)

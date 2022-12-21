@@ -17,3 +17,8 @@ node = nodes.EdgeNeighbors()
 
 - **face_count** : [Integer](Integer.md)
 
+## Implementation
+
+#### class [{class_name}]({class_name}.md)
+
+ - [<bound method Generator.fname of <generator.code_gen.DomPropAttribute object at 0x1683b1ab0>>](Edge.md#neighbors-property)
