@@ -29,4 +29,6 @@ node = nodes.Switch(switch=None, false=None, true=None, input_type='GEOMETRY')
 
 #### Shared sockets:
 
-- Driving parameter : ``input_type`` in ('FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'STRING', 'RGBA', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'TEXTURE', 'MATERIAL')- Input sockets  : ['switch', 'false', 'true']- Output sockets : ['output']
+- Driving parameter : ``input_type`` in ('FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'STRING', 'RGBA', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'TEXTURE', 'MATERIAL')
+- Input sockets  : ['switch', 'false', 'true']
+- Output sockets : ['output']

@@ -30,4 +30,6 @@ node = nodes.CaptureAttribute(geometry=None, value=None, data_type='FLOAT', doma
 
 #### Shared sockets:
 
-- Driving parameter : ``data_type`` in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN')- Input sockets  : ['value']- Output sockets : ['attribute']
+- Driving parameter : ``data_type`` in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN')
+- Input sockets  : ['value']
+- Output sockets : ['attribute']

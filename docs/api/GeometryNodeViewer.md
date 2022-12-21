@@ -25,4 +25,6 @@ node = nodes.Viewer(geometry=None, value=None, data_type='FLOAT', domain='AUTO')
 
 #### Shared sockets:
 
-- Driving parameter : ``data_type`` in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN')- Input sockets  : ['value']- Output sockets : []
+- Driving parameter : ``data_type`` in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN')
+- Input sockets  : ['value']
+- Output sockets : []

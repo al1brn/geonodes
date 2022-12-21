@@ -31,4 +31,6 @@ node = nodes.AccumulateField(value=None, group_index=None, data_type='FLOAT', do
 
 #### Shared sockets:
 
-- Driving parameter : ``data_type`` in ('FLOAT', 'INT', 'FLOAT_VECTOR')- Input sockets  : ['value']- Output sockets : ['leading', 'trailing', 'total']
+- Driving parameter : ``data_type`` in ('FLOAT', 'INT', 'FLOAT_VECTOR')
+- Input sockets  : ['value']
+- Output sockets : ['leading', 'trailing', 'total']

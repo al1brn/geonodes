@@ -27,4 +27,6 @@ node = nodes.NamedAttribute(name=None, data_type='FLOAT')
 
 #### Shared sockets:
 
-- Driving parameter : ``data_type`` in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN')- Input sockets  : []- Output sockets : ['attribute']
+- Driving parameter : ``data_type`` in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN')
+- Input sockets  : []
+- Output sockets : ['attribute']

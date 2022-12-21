@@ -36,4 +36,6 @@ node = nodes.MapRange(value=None, from_min=None, from_max=None, to_min=None, to_
 
 #### Shared sockets:
 
-- Driving parameter : ``data_type`` in ('FLOAT', 'FLOAT_VECTOR')- Input sockets  : ['from_min', 'from_max', 'to_min', 'to_max', 'steps']- Output sockets : []
+- Driving parameter : ``data_type`` in ('FLOAT', 'FLOAT_VECTOR')
+- Input sockets  : ['from_min', 'from_max', 'to_min', 'to_max', 'steps']
+- Output sockets : []

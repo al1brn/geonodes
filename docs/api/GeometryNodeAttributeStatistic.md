@@ -37,4 +37,6 @@ node = nodes.AttributeStatistic(geometry=None, selection=None, attribute=None, d
 
 #### Shared sockets:
 
-- Driving parameter : ``data_type`` in ('FLOAT', 'FLOAT_VECTOR')- Input sockets  : ['attribute']- Output sockets : ['mean', 'median', 'sum', 'min', 'max', 'range', 'standard_deviation', 'variance']
+- Driving parameter : ``data_type`` in ('FLOAT', 'FLOAT_VECTOR')
+- Input sockets  : ['attribute']
+- Output sockets : ['mean', 'median', 'sum', 'min', 'max', 'range', 'standard_deviation', 'variance']

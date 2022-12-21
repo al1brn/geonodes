@@ -33,4 +33,6 @@ node = nodes.Compare(a=None, b=None, c=None, angle=None, epsilon=None, data_type
 
 #### Shared sockets:
 
-- Driving parameter : ``data_type`` in ('FLOAT', 'INT', 'VECTOR', 'STRING', 'RGBA')- Input sockets  : ['a', 'b']- Output sockets : []
+- Driving parameter : ``data_type`` in ('FLOAT', 'INT', 'VECTOR', 'STRING', 'RGBA')
+- Input sockets  : ['a', 'b']
+- Output sockets : []

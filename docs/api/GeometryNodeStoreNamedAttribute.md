@@ -30,4 +30,6 @@ node = nodes.StoreNamedAttribute(geometry=None, name=None, value=None, data_type
 
 #### Shared sockets:
 
-- Driving parameter : ``data_type`` in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BYTE_COLOR', 'BOOLEAN')- Input sockets  : ['value']- Output sockets : []
+- Driving parameter : ``data_type`` in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BYTE_COLOR', 'BOOLEAN')
+- Input sockets  : ['value']
+- Output sockets : []

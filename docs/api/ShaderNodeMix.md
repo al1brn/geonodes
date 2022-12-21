@@ -33,4 +33,6 @@ node = nodes.Mix(factor=None, a=None, b=None, blend_type='MIX', clamp_factor=Tru
 
 #### Shared sockets:
 
-- Driving parameter : ``data_type`` in ('FLOAT', 'VECTOR', 'RGBA')- Input sockets  : ['factor', 'a', 'b']- Output sockets : ['result']
+- Driving parameter : ``data_type`` in ('FLOAT', 'VECTOR', 'RGBA')
+- Input sockets  : ['factor', 'a', 'b']
+- Output sockets : ['result']

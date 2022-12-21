@@ -31,4 +31,6 @@ node = nodes.SampleIndex(geometry=None, value=None, index=None, clamp=False, dat
 
 #### Shared sockets:
 
-- Driving parameter : ``data_type`` in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN')- Input sockets  : ['value']- Output sockets : ['value']
+- Driving parameter : ``data_type`` in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN')
+- Input sockets  : ['value']
+- Output sockets : ['value']

@@ -31,4 +31,6 @@ node = nodes.RandomValue(min=None, max=None, probability=None, ID=None, seed=Non
 
 #### Shared sockets:
 
-- Driving parameter : ``data_type`` in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'BOOLEAN')- Input sockets  : ['min', 'max']- Output sockets : ['value']
+- Driving parameter : ``data_type`` in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'BOOLEAN')
+- Input sockets  : ['min', 'max']
+- Output sockets : ['value']

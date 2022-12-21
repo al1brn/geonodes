@@ -31,4 +31,6 @@ node = nodes.SampleUvSurface(mesh=None, value=None, source_uv_map=None, sample_u
 
 #### Shared sockets:
 
-- Driving parameter : ``data_type`` in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN')- Input sockets  : ['value']- Output sockets : ['value']
+- Driving parameter : ``data_type`` in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN')
+- Input sockets  : ['value']
+- Output sockets : ['value']

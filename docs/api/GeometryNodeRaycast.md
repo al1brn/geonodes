@@ -36,4 +36,6 @@ node = nodes.Raycast(target_geometry=None, attribute=None, source_position=None,
 
 #### Shared sockets:
 
-- Driving parameter : ``data_type`` in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN')- Input sockets  : ['attribute']- Output sockets : ['attribute']
+- Driving parameter : ``data_type`` in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN')
+- Input sockets  : ['attribute']
+- Output sockets : ['attribute']
