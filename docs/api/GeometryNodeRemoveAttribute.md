@@ -20,5 +20,5 @@ node = nodes.RemoveNamedAttribute(geometry=None, name=None)
 
 #### Output sockets:
 
-- **geometry** : Geometry
+- **geometry** : [Geometry](Geometry
 

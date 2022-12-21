@@ -32,8 +32,8 @@ node = nodes.Arc(resolution=None, start=None, middle=None, end=None, radius=None
 
 #### Output sockets:
 
-- **curve** : Curve
-- **center** : Vector
-- **normal** : Vector
-- **radius** : Float
+- **curve** : [Curve](Curve
+- **center** : [Vector](Vector
+- **normal** : [Vector](Vector
+- **radius** : [Float](Float
 

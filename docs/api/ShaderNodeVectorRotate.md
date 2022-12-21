@@ -28,5 +28,5 @@ node = nodes.VectorRotate(vector=None, center=None, axis=None, angle=None, rotat
 
 #### Output sockets:
 
-- **vector** : Vector
+- **vector** : [Vector](Vector
 

@@ -25,8 +25,8 @@ node = nodes.CurveToPoints(curve=None, count=None, length=None, mode='COUNT')
 
 #### Output sockets:
 
-- **points** : Points
-- **tangent** : Vector
-- **normal** : Vector
-- **rotation** : Vector
+- **points** : [Points](Points
+- **tangent** : [Vector](Vector
+- **normal** : [Vector](Vector
+- **rotation** : [Vector](Vector
 

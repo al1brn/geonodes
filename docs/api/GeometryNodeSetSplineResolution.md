@@ -21,5 +21,5 @@ node = nodes.SetSplineResolution(geometry=None, selection=None, resolution=None)
 
 #### Output sockets:
 
-- **geometry** : Geometry
+- **geometry** : [Geometry](Geometry
 

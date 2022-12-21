@@ -15,6 +15,6 @@ node = nodes.SpecialCharacters()
 
 #### Output sockets:
 
-- **line_break** : String
-- **tab** : String
+- **line_break** : [String](String
+- **tab** : [String](String
 

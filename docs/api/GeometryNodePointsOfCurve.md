@@ -21,6 +21,6 @@ node = nodes.PointsOfCurve(curve_index=None, weights=None, sort_index=None)
 
 #### Output sockets:
 
-- **point_index** : Integer
-- **total** : Integer
+- **point_index** : [Integer](Integer
+- **total** : [Integer](Integer
 

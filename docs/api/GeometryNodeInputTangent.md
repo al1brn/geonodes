@@ -15,5 +15,5 @@ node = nodes.CurveTangent()
 
 #### Output sockets:
 
-- **tangent** : Vector
+- **tangent** : [Vector](Vector
 

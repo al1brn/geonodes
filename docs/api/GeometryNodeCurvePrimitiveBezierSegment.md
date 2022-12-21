@@ -27,5 +27,5 @@ node = nodes.BezierSegment(resolution=None, start=None, start_handle=None, end_h
 
 #### Output sockets:
 
-- **curve** : Curve
+- **curve** : [Curve](Curve
 

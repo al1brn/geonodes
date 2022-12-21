@@ -21,6 +21,6 @@ node = nodes.EdgesOfVertex(vertex_index=None, weights=None, sort_index=None)
 
 #### Output sockets:
 
-- **edge_index** : Integer
-- **total** : Integer
+- **edge_index** : [Integer](Integer
+- **total** : [Integer](Integer
 

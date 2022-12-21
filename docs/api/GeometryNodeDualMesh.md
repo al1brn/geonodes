@@ -20,5 +20,5 @@ node = nodes.DualMesh(mesh=None, keep_boundaries=None)
 
 #### Output sockets:
 
-- **dual_mesh** : Geometry
+- **dual_mesh** : [Geometry](Geometry
 

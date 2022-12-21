@@ -24,5 +24,5 @@ node = nodes.SetCurveNormal(curve=None, selection=None, mode='MINIMUM_TWIST')
 
 #### Output sockets:
 
-- **curve** : Curve
+- **curve** : [Curve](Curve
 

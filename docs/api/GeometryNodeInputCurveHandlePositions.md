@@ -19,6 +19,6 @@ node = nodes.CurveHandlePositions(relative=None)
 
 #### Output sockets:
 
-- **left** : Vector
-- **right** : Vector
+- **left** : [Vector](Vector
+- **right** : [Vector](Vector
 

@@ -20,5 +20,5 @@ node = nodes.FloatCurve(factor=None, value=None)
 
 #### Output sockets:
 
-- **value** : Float
+- **value** : [Float](Float
 

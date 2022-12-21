@@ -19,5 +19,5 @@ node = nodes.Integer(integer=0)
 
 #### Output sockets:
 
-- **integer** : Integer
+- **integer** : [Integer](Integer
 

@@ -19,5 +19,5 @@ node = nodes.MaterialSelection(material=None)
 
 #### Output sockets:
 
-- **selection** : Boolean
+- **selection** : [Boolean](Boolean
 

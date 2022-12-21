@@ -32,6 +32,6 @@ node = nodes.WaveTexture(vector=None, scale=None, distortion=None, detail=None, 
 
 #### Output sockets:
 
-- **color** : Color
-- **fac** : Float
+- **color** : [Color](Color
+- **fac** : [Float](Float
 

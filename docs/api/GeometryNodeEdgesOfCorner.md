@@ -19,6 +19,6 @@ node = nodes.EdgesOfCorner(corner_index=None)
 
 #### Output sockets:
 
-- **next_edge_index** : Integer
-- **previous_edge_index** : Integer
+- **next_edge_index** : [Integer](Integer
+- **previous_edge_index** : [Integer](Integer
 

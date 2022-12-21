@@ -22,5 +22,5 @@ node = nodes.TranslateInstances(instances=None, selection=None, translation=None
 
 #### Output sockets:
 
-- **instances** : Instances
+- **instances** : [Instances](Instances
 

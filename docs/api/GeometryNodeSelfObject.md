@@ -15,5 +15,5 @@ node = nodes.SelfObject()
 
 #### Output sockets:
 
-- **self_object** : Object
+- **self_object** : [Object](Object
 

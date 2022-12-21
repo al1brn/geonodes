@@ -23,8 +23,8 @@ node = nodes.SeparateColor(color=None, mode='RGB')
 
 #### Output sockets:
 
-- **red** : Float
-- **green** : Float
-- **blue** : Float
-- **alpha** : Float
+- **red** : [Float](Float
+- **green** : [Float](Float
+- **blue** : [Float](Float
+- **alpha** : [Float](Float
 

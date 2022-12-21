@@ -15,6 +15,6 @@ node = nodes.EdgeAngle()
 
 #### Output sockets:
 
-- **unsigned_angle** : Float
-- **signed_angle** : Float
+- **unsigned_angle** : [Float](Float
+- **signed_angle** : [Float](Float
 

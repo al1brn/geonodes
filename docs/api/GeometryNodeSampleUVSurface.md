@@ -27,7 +27,7 @@ node = nodes.SampleUvSurface(mesh=None, value=None, source_uv_map=None, sample_u
 #### Output sockets:
 
 - **value** : ``data_type`` dependant
-- **is_valid** : Boolean
+- **is_valid** : [Boolean](Boolean
 
 #### Shared sockets:
 

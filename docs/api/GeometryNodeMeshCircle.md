@@ -24,5 +24,5 @@ node = nodes.MeshCircle(vertices=None, radius=None, fill_type='NONE')
 
 #### Output sockets:
 
-- **mesh** : Mesh
+- **mesh** : [Mesh](Mesh
 

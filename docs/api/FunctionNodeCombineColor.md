@@ -26,5 +26,5 @@ node = nodes.CombineColor(red=None, green=None, blue=None, alpha=None, mode='RGB
 
 #### Output sockets:
 
-- **color** : Color
+- **color** : [Color](Color
 

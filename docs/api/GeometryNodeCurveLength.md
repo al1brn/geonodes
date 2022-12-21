@@ -19,5 +19,5 @@ node = nodes.CurveLength(curve=None)
 
 #### Output sockets:
 
-- **length** : Float
+- **length** : [Float](Float
 

@@ -22,5 +22,5 @@ node = nodes.QuadraticBezier(resolution=None, start=None, middle=None, end=None)
 
 #### Output sockets:
 
-- **curve** : Curve
+- **curve** : [Curve](Curve
 

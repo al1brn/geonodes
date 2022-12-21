@@ -15,5 +15,5 @@ node = nodes.Index()
 
 #### Output sockets:
 
-- **index** : Integer
+- **index** : [Integer](Integer
 

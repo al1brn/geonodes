@@ -21,5 +21,5 @@ node = nodes.SetMaterialIndex(geometry=None, selection=None, material_index=None
 
 #### Output sockets:
 
-- **geometry** : Geometry
+- **geometry** : [Geometry](Geometry
 

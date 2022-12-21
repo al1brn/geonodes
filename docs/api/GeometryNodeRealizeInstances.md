@@ -23,5 +23,5 @@ node = nodes.RealizeInstances(geometry=None, legacy_behavior=False)
 
 #### Output sockets:
 
-- **geometry** : Geometry
+- **geometry** : [Geometry](Geometry
 

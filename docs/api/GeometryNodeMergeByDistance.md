@@ -25,5 +25,5 @@ node = nodes.MergeByDistance(geometry=None, selection=None, distance=None, mode=
 
 #### Output sockets:
 
-- **geometry** : Geometry
+- **geometry** : [Geometry](Geometry
 

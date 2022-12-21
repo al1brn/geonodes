@@ -19,9 +19,9 @@ node = nodes.SeparateComponents(geometry=None)
 
 #### Output sockets:
 
-- **mesh** : Mesh
-- **point_cloud** : Geometry
-- **curve** : Curve
-- **volume** : Volume
-- **instances** : Instances
+- **mesh** : [Mesh](Mesh
+- **point_cloud** : [Geometry](Geometry
+- **curve** : [Curve](Curve
+- **volume** : [Volume](Volume
+- **instances** : [Instances](Instances
 

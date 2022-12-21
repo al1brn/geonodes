@@ -31,5 +31,5 @@ node = nodes.MusgraveTexture(vector=None, w=None, scale=None, detail=None, dimen
 
 #### Output sockets:
 
-- **fac** : Float
+- **fac** : [Float](Float
 

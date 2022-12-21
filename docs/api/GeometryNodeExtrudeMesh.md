@@ -27,7 +27,7 @@ node = nodes.ExtrudeMesh(mesh=None, selection=None, offset=None, offset_scale=No
 
 #### Output sockets:
 
-- **mesh** : Mesh
-- **top** : Boolean
-- **side** : Boolean
+- **mesh** : [Mesh](Mesh
+- **top** : [Boolean](Boolean
+- **side** : [Boolean](Boolean
 

@@ -21,5 +21,5 @@ node = nodes.ReplaceMaterial(geometry=None, old=None, new=None)
 
 #### Output sockets:
 
-- **geometry** : Geometry
+- **geometry** : [Geometry](Geometry
 

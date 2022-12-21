@@ -15,5 +15,5 @@ node = nodes.IsViewport()
 
 #### Output sockets:
 
-- **is_viewport** : Boolean
+- **is_viewport** : [Boolean](Boolean
 

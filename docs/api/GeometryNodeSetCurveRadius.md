@@ -21,5 +21,5 @@ node = nodes.SetCurveRadius(curve=None, selection=None, radius=None)
 
 #### Output sockets:
 
-- **curve** : Curve
+- **curve** : [Curve](Curve
 

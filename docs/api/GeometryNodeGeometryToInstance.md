@@ -19,5 +19,5 @@ node = nodes.GeometryToInstance(*geometry)
 
 #### Output sockets:
 
-- **instances** : Instances
+- **instances** : [Instances](Instances
 

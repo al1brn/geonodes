@@ -26,5 +26,5 @@ node = nodes.FilletCurve(curve=None, count=None, radius=None, limit_radius=None,
 
 #### Output sockets:
 
-- **curve** : Curve
+- **curve** : [Curve](Curve
 

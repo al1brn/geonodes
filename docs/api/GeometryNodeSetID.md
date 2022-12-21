@@ -21,5 +21,5 @@ node = nodes.SetID(geometry=None, selection=None, ID=None)
 
 #### Output sockets:
 
-- **geometry** : Geometry
+- **geometry** : [Geometry](Geometry
 

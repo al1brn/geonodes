@@ -33,5 +33,5 @@ node = nodes.Quadrilateral(width=None, height=None, bottom_width=None, top_width
 
 #### Output sockets:
 
-- **curve** : Curve
+- **curve** : [Curve](Curve
 

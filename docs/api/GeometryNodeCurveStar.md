@@ -22,6 +22,6 @@ node = nodes.Star(points=None, inner_radius=None, outer_radius=None, twist=None)
 
 #### Output sockets:
 
-- **curve** : Curve
-- **outer_points** : Boolean
+- **curve** : [Curve](Curve
+- **outer_points** : [Boolean](Boolean
 

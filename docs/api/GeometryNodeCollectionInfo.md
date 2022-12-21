@@ -25,5 +25,5 @@ node = nodes.CollectionInfo(collection=None, separate_children=None, reset_child
 
 #### Output sockets:
 
-- **geometry** : Geometry
+- **geometry** : [Geometry](Geometry
 

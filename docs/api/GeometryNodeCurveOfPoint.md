@@ -19,6 +19,6 @@ node = nodes.CurveOfPoint(point_index=None)
 
 #### Output sockets:
 
-- **curve_index** : Integer
-- **index_in_curve** : Integer
+- **curve_index** : [Integer](Integer
+- **index_in_curve** : [Integer](Integer
 

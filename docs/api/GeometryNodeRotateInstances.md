@@ -23,5 +23,5 @@ node = nodes.RotateInstances(instances=None, selection=None, rotation=None, pivo
 
 #### Output sockets:
 
-- **instances** : Instances
+- **instances** : [Instances](Instances
 

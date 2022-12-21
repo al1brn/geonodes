@@ -15,5 +15,5 @@ node = nodes.IsShadeSmooth()
 
 #### Output sockets:
 
-- **smooth** : Boolean
+- **smooth** : [Boolean](Boolean
 

@@ -21,5 +21,5 @@ node = nodes.SetSplineCyclic(geometry=None, selection=None, cyclic=None)
 
 #### Output sockets:
 
-- **geometry** : Geometry
+- **geometry** : [Geometry](Geometry
 

@@ -24,5 +24,5 @@ node = nodes.SampleNearest(geometry=None, sample_position=None, domain='POINT')
 
 #### Output sockets:
 
-- **index** : Integer
+- **index** : [Integer](Integer
 

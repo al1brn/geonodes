@@ -20,5 +20,5 @@ node = nodes.IcoSphere(radius=None, subdivisions=None)
 
 #### Output sockets:
 
-- **mesh** : Mesh
+- **mesh** : [Mesh](Mesh
 

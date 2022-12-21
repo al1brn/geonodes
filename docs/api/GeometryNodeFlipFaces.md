@@ -20,5 +20,5 @@ node = nodes.FlipFaces(mesh=None, selection=None)
 
 #### Output sockets:
 
-- **mesh** : Mesh
+- **mesh** : [Mesh](Mesh
 

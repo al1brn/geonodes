@@ -15,5 +15,5 @@ node = nodes.SplineResolution()
 
 #### Output sockets:
 
-- **resolution** : Integer
+- **resolution** : [Integer](Integer
 

@@ -20,6 +20,6 @@ node = nodes.OffsetPointInCurve(point_index=None, offset=None)
 
 #### Output sockets:
 
-- **is_valid_offset** : Boolean
-- **point_index** : Integer
+- **is_valid_offset** : [Boolean](Boolean
+- **point_index** : [Integer](Integer
 

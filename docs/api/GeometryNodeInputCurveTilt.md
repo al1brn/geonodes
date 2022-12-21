@@ -15,5 +15,5 @@ node = nodes.CurveTilt()
 
 #### Output sockets:
 
-- **tilt** : Float
+- **tilt** : [Float](Float
 

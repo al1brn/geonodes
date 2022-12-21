@@ -21,5 +21,5 @@ node = nodes.SetPointRadius(points=None, selection=None, radius=None)
 
 #### Output sockets:
 
-- **points** : Points
+- **points** : [Points](Points
 

@@ -21,5 +21,5 @@ node = nodes.SliceString(string=None, position=None, length=None)
 
 #### Output sockets:
 
-- **string** : String
+- **string** : [String](String
 

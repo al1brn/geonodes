@@ -20,5 +20,5 @@ node = nodes.HandleTypeSelection(handle_type='AUTO', mode={'RIGHT', 'LEFT'})
 
 #### Output sockets:
 
-- **selection** : Boolean
+- **selection** : [Boolean](Boolean
 

@@ -22,6 +22,6 @@ node = nodes.CheckerTexture(vector=None, color1=None, color2=None, scale=None)
 
 #### Output sockets:
 
-- **color** : Color
-- **fac** : Float
+- **color** : [Color](Color
+- **fac** : [Float](Float
 

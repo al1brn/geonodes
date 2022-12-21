@@ -19,5 +19,5 @@ node = nodes.JoinGeometry(*geometry)
 
 #### Output sockets:
 
-- **geometry** : Geometry
+- **geometry** : [Geometry](Geometry
 

@@ -26,5 +26,5 @@ node = nodes.CurveLine(start=None, end=None, direction=None, length=None, mode='
 
 #### Output sockets:
 
-- **curve** : Curve
+- **curve** : [Curve](Curve
 

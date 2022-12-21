@@ -21,5 +21,5 @@ node = nodes.CurveToMesh(curve=None, profile_curve=None, fill_caps=None)
 
 #### Output sockets:
 
-- **mesh** : Mesh
+- **mesh** : [Mesh](Mesh
 

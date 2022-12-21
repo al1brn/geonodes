@@ -28,5 +28,5 @@ node = nodes.ScaleElements(geometry=None, selection=None, scale=None, center=Non
 
 #### Output sockets:
 
-- **geometry** : Geometry
+- **geometry** : [Geometry](Geometry
 

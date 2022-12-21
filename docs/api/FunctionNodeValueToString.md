@@ -20,5 +20,5 @@ node = nodes.ValueToString(value=None, decimals=None)
 
 #### Output sockets:
 
-- **string** : String
+- **string** : [String](String
 

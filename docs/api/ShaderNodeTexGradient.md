@@ -23,6 +23,6 @@ node = nodes.GradientTexture(vector=None, gradient_type='LINEAR')
 
 #### Output sockets:
 
-- **color** : Color
-- **fac** : Float
+- **color** : [Color](Color
+- **fac** : [Float](Float
 

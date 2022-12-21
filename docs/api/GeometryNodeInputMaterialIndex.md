@@ -15,5 +15,5 @@ node = nodes.MaterialIndex()
 
 #### Output sockets:
 
-- **material_index** : Integer
+- **material_index** : [Integer](Integer
 

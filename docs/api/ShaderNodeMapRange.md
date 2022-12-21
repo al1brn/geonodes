@@ -31,8 +31,8 @@ node = nodes.MapRange(value=None, from_min=None, from_max=None, to_min=None, to_
 
 #### Output sockets:
 
-- **result** : Float
-- **vector** : Vector
+- **result** : [Float](Float
+- **vector** : [Vector](Vector
 
 #### Shared sockets:
 

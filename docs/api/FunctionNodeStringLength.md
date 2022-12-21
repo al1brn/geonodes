@@ -19,5 +19,5 @@ node = nodes.StringLength(string=None)
 
 #### Output sockets:
 
-- **length** : Integer
+- **length** : [Integer](Integer
 

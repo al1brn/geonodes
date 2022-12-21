@@ -26,5 +26,5 @@ node = nodes.MeshToPoints(mesh=None, selection=None, position=None, radius=None,
 
 #### Output sockets:
 
-- **points** : Points
+- **points** : [Points](Points
 

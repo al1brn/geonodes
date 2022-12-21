@@ -15,6 +15,6 @@ node = nodes.SplineLength()
 
 #### Output sockets:
 
-- **length** : Float
-- **point_count** : Integer
+- **length** : [Float](Float
+- **point_count** : [Integer](Integer
 

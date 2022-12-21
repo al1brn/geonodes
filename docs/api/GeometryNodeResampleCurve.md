@@ -26,5 +26,5 @@ node = nodes.ResampleCurve(curve=None, selection=None, count=None, length=None, 
 
 #### Output sockets:
 
-- **curve** : Curve
+- **curve** : [Curve](Curve
 
