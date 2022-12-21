@@ -15,8 +15,8 @@ node = nodes.PointsToVertices(points=None, selection=None)
 
 #### Input socket arguments:
 
-- points: Points
-- selection: Boolean
+- points: [Points[Points.md]
+- selection: [Boolean[Boolean.md]
 
 #### Output sockets:
 

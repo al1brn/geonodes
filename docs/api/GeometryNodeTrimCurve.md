@@ -15,11 +15,11 @@ node = nodes.TrimCurve(curve=None, start0=None, start1=None, end0=None, end1=Non
 
 #### Input socket arguments:
 
-- curve: Curve
-- start0: Float
-- start1: Float
-- end0: Float
-- end1: Float
+- curve: [Curve[Curve.md]
+- start0: [Float[Float.md]
+- start1: [Float[Float.md]
+- end0: [Float[Float.md]
+- end1: [Float[Float.md]
 
 #### Node parameter arguments:
 

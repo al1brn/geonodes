@@ -17,9 +17,9 @@ node = nodes.RandomValue(min=None, max=None, probability=None, ID=None, seed=Non
 
 - min: `data_type` dependant
 - max: `data_type` dependant
-- probability: Float
-- ID: Integer
-- seed: Integer
+- probability: [Float[Float.md]
+- ID: [Integer[Integer.md]
+- seed: [Integer[Integer.md]
 
 #### Node parameter arguments:
 

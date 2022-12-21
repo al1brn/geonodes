@@ -15,9 +15,9 @@ node = nodes.CornersOfVertex(vertex_index=None, weights=None, sort_index=None)
 
 #### Input socket arguments:
 
-- vertex_index: Integer
-- weights: Float
-- sort_index: Integer
+- vertex_index: [Integer[Integer.md]
+- weights: [Float[Float.md]
+- sort_index: [Integer[Integer.md]
 
 #### Output sockets:
 

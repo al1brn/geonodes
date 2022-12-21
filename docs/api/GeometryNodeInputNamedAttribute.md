@@ -15,7 +15,7 @@ node = nodes.NamedAttribute(name=None, data_type='FLOAT')
 
 #### Input socket arguments:
 
-- name: String
+- name: [String[String.md]
 
 #### Node parameter arguments:
 

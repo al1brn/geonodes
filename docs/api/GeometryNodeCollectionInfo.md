@@ -15,9 +15,9 @@ node = nodes.CollectionInfo(collection=None, separate_children=None, reset_child
 
 #### Input socket arguments:
 
-- collection: Collection
-- separate_children: Boolean
-- reset_children: Boolean
+- collection: [Collection[Collection.md]
+- separate_children: [Boolean[Boolean.md]
+- reset_children: [Boolean[Boolean.md]
 
 #### Node parameter arguments:
 

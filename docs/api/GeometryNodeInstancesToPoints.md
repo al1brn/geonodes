@@ -15,10 +15,10 @@ node = nodes.InstancesToPoints(instances=None, selection=None, position=None, ra
 
 #### Input socket arguments:
 
-- instances: Instances
-- selection: Boolean
-- position: Vector
-- radius: Float
+- instances: [Instances[Instances.md]
+- selection: [Boolean[Boolean.md]
+- position: [Vector[Vector.md]
+- radius: [Float[Float.md]
 
 #### Output sockets:
 

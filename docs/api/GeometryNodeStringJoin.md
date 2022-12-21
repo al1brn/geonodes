@@ -15,8 +15,8 @@ node = nodes.JoinStrings(*strings, delimiter=None)
 
 #### Input socket arguments:
 
-- delimiter: String
-- strings: *String
+- delimiter: [String[String.md]
+- strings: *[String[String.md]
 
 #### Output sockets:
 

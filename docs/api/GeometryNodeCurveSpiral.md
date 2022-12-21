@@ -15,12 +15,12 @@ node = nodes.Spiral(resolution=None, rotations=None, start_radius=None, end_radi
 
 #### Input socket arguments:
 
-- resolution: Integer
-- rotations: Float
-- start_radius: Float
-- end_radius: Float
-- height: Float
-- reverse: Boolean
+- resolution: [Integer[Integer.md]
+- rotations: [Float[Float.md]
+- start_radius: [Float[Float.md]
+- end_radius: [Float[Float.md]
+- height: [Float[Float.md]
+- reverse: [Boolean[Boolean.md]
 
 #### Output sockets:
 

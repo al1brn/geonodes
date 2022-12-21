@@ -15,13 +15,13 @@ node = nodes.WaveTexture(vector=None, scale=None, distortion=None, detail=None, 
 
 #### Input socket arguments:
 
-- vector: Vector
-- scale: Float
-- distortion: Float
-- detail: Float
-- detail_scale: Float
-- detail_roughness: Float
-- phase_offset: Float
+- vector: [Vector[Vector.md]
+- scale: [Float[Float.md]
+- distortion: [Float[Float.md]
+- detail: [Float[Float.md]
+- detail_scale: [Float[Float.md]
+- detail_roughness: [Float[Float.md]
+- phase_offset: [Float[Float.md]
 
 #### Node parameter arguments:
 

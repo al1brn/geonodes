@@ -15,16 +15,16 @@ node = nodes.BrickTexture(vector=None, color1=None, color2=None, mortar=None, sc
 
 #### Input socket arguments:
 
-- vector: Vector
-- color1: Color
-- color2: Color
-- mortar: Color
-- scale: Float
-- mortar_size: Float
-- mortar_smooth: Float
-- bias: Float
-- brick_width: Float
-- row_height: Float
+- vector: [Vector[Vector.md]
+- color1: [Color[Color.md]
+- color2: [Color[Color.md]
+- mortar: [Color[Color.md]
+- scale: [Float[Float.md]
+- mortar_size: [Float[Float.md]
+- mortar_smooth: [Float[Float.md]
+- bias: [Float[Float.md]
+- brick_width: [Float[Float.md]
+- row_height: [Float[Float.md]
 
 #### Node parameter arguments:
 

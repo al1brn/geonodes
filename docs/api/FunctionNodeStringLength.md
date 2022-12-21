@@ -15,7 +15,7 @@ node = nodes.StringLength(string=None)
 
 #### Input socket arguments:
 
-- string: String
+- string: [String[String.md]
 
 #### Output sockets:
 

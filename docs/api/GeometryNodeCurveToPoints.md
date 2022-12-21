@@ -15,9 +15,9 @@ node = nodes.CurveToPoints(curve=None, count=None, length=None, mode='COUNT')
 
 #### Input socket arguments:
 
-- curve: Curve
-- count: Integer
-- length: Float
+- curve: [Curve[Curve.md]
+- count: [Integer[Integer.md]
+- length: [Float[Float.md]
 
 #### Node parameter arguments:
 

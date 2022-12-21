@@ -15,8 +15,8 @@ node = nodes.RgbCurves(fac=None, color=None)
 
 #### Input socket arguments:
 
-- fac: Float
-- color: Color
+- fac: [Float[Float.md]
+- color: [Color[Color.md]
 
 #### Output sockets:
 

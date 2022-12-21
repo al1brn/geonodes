@@ -15,7 +15,7 @@ node = nodes.CurveOfPoint(point_index=None)
 
 #### Input socket arguments:
 
-- point_index: Integer
+- point_index: [Integer[Integer.md]
 
 #### Output sockets:
 

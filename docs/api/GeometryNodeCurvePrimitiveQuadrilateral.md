@@ -15,17 +15,17 @@ node = nodes.Quadrilateral(width=None, height=None, bottom_width=None, top_width
 
 #### Input socket arguments:
 
-- width: Float
-- height: Float
-- bottom_width: Float
-- top_width: Float
-- offset: Float
-- bottom_height: Float
-- top_height: Float
-- point_1: Vector
-- point_2: Vector
-- point_3: Vector
-- point_4: Vector
+- width: [Float[Float.md]
+- height: [Float[Float.md]
+- bottom_width: [Float[Float.md]
+- top_width: [Float[Float.md]
+- offset: [Float[Float.md]
+- bottom_height: [Float[Float.md]
+- top_height: [Float[Float.md]
+- point_1: [Vector[Vector.md]
+- point_2: [Vector[Vector.md]
+- point_3: [Vector[Vector.md]
+- point_4: [Vector[Vector.md]
 
 #### Node parameter arguments:
 

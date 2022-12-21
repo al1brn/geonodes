@@ -15,8 +15,8 @@ node = nodes.GeometryProximity(target=None, source_position=None, target_element
 
 #### Input socket arguments:
 
-- target: Geometry
-- source_position: Vector
+- target: [Geometry[Geometry.md]
+- source_position: [Vector[Vector.md]
 
 #### Node parameter arguments:
 

@@ -15,13 +15,13 @@ node = nodes.VolumeCube(density=None, background=None, min=None, max=None, resol
 
 #### Input socket arguments:
 
-- density: Float
-- background: Float
-- min: Vector
-- max: Vector
-- resolution_x: Integer
-- resolution_y: Integer
-- resolution_z: Integer
+- density: [Float[Float.md]
+- background: [Float[Float.md]
+- min: [Vector[Vector.md]
+- max: [Vector[Vector.md]
+- resolution_x: [Integer[Integer.md]
+- resolution_y: [Integer[Integer.md]
+- resolution_z: [Integer[Integer.md]
 
 #### Output sockets:
 

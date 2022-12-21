@@ -15,10 +15,10 @@ node = nodes.SubdivisionSurface(mesh=None, level=None, edge_crease=None, vertex_
 
 #### Input socket arguments:
 
-- mesh: Mesh
-- level: Integer
-- edge_crease: Float
-- vertex_crease: Float
+- mesh: [Mesh[Mesh.md]
+- level: [Integer[Integer.md]
+- edge_crease: [Float[Float.md]
+- vertex_crease: [Float[Float.md]
 
 #### Node parameter arguments:
 

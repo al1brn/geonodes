@@ -15,9 +15,9 @@ node = nodes.Triangulate(mesh=None, selection=None, minimum_vertices=None, ngon_
 
 #### Input socket arguments:
 
-- mesh: Mesh
-- selection: Boolean
-- minimum_vertices: Integer
+- mesh: [Mesh[Mesh.md]
+- selection: [Boolean[Boolean.md]
+- minimum_vertices: [Integer[Integer.md]
 
 #### Node parameter arguments:
 

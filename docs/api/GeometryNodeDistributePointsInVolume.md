@@ -15,11 +15,11 @@ node = nodes.DistributePointsInVolume(volume=None, density=None, seed=None, spac
 
 #### Input socket arguments:
 
-- volume: Volume
-- density: Float
-- seed: Integer
-- spacing: Vector
-- threshold: Float
+- volume: [Volume[Volume.md]
+- density: [Float[Float.md]
+- seed: [Integer[Integer.md]
+- spacing: [Vector[Vector.md]
+- threshold: [Float[Float.md]
 
 #### Node parameter arguments:
 

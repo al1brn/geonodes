@@ -15,7 +15,7 @@ node = nodes.FaceSetBoundaries(face_set=None)
 
 #### Input socket arguments:
 
-- face_set: Integer
+- face_set: [Integer[Integer.md]
 
 #### Output sockets:
 

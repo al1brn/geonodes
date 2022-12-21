@@ -15,10 +15,10 @@ node = nodes.VectorMath(vector0=None, vector1=None, vector2=None, scale=None, op
 
 #### Input socket arguments:
 
-- vector0: Vector
-- vector1: Vector
-- vector2: Vector
-- scale: Float
+- vector0: [Vector[Vector.md]
+- vector1: [Vector[Vector.md]
+- vector2: [Vector[Vector.md]
+- scale: [Float[Float.md]
 
 #### Node parameter arguments:
 

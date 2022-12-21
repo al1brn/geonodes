@@ -15,10 +15,10 @@ node = nodes.QuadraticBezier(resolution=None, start=None, middle=None, end=None)
 
 #### Input socket arguments:
 
-- resolution: Integer
-- start: Vector
-- middle: Vector
-- end: Vector
+- resolution: [Integer[Integer.md]
+- start: [Vector[Vector.md]
+- middle: [Vector[Vector.md]
+- end: [Vector[Vector.md]
 
 #### Output sockets:
 

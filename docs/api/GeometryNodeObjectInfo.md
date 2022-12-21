@@ -15,8 +15,8 @@ node = nodes.ObjectInfo(object=None, as_instance=None, transform_space='ORIGINAL
 
 #### Input socket arguments:
 
-- object: Object
-- as_instance: Boolean
+- object: [Object[Object.md]
+- as_instance: [Boolean[Boolean.md]
 
 #### Node parameter arguments:
 

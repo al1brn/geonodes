@@ -15,9 +15,9 @@ node = nodes.SetShadeSmooth(geometry=None, selection=None, shade_smooth=None)
 
 #### Input socket arguments:
 
-- geometry: Geometry
-- selection: Boolean
-- shade_smooth: Boolean
+- geometry: [Geometry[Geometry.md]
+- selection: [Boolean[Boolean.md]
+- shade_smooth: [Boolean[Boolean.md]
 
 #### Output sockets:
 

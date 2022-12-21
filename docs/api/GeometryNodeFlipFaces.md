@@ -15,8 +15,8 @@ node = nodes.FlipFaces(mesh=None, selection=None)
 
 #### Input socket arguments:
 
-- mesh: Mesh
-- selection: Boolean
+- mesh: [Mesh[Mesh.md]
+- selection: [Boolean[Boolean.md]
 
 #### Output sockets:
 

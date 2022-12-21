@@ -15,8 +15,8 @@ node = nodes.EdgePathsToSelection(start_vertices=None, next_vertex_index=None)
 
 #### Input socket arguments:
 
-- start_vertices: Boolean
-- next_vertex_index: Integer
+- start_vertices: [Boolean[Boolean.md]
+- next_vertex_index: [Integer[Integer.md]
 
 #### Output sockets:
 

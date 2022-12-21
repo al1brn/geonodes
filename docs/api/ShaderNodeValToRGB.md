@@ -15,7 +15,7 @@ node = nodes.ColorRamp(fac=None)
 
 #### Input socket arguments:
 
-- fac: Float
+- fac: [Float[Float.md]
 
 #### Output sockets:
 

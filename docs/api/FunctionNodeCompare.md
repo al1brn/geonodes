@@ -17,9 +17,9 @@ node = nodes.Compare(a=None, b=None, c=None, angle=None, epsilon=None, data_type
 
 - a: `data_type` dependant
 - b: `data_type` dependant
-- c: Float
-- angle: Float
-- epsilon: Float
+- c: [Float[Float.md]
+- angle: [Float[Float.md]
+- epsilon: [Float[Float.md]
 
 #### Node parameter arguments:
 

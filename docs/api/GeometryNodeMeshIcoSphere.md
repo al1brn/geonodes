@@ -15,8 +15,8 @@ node = nodes.IcoSphere(radius=None, subdivisions=None)
 
 #### Input socket arguments:
 
-- radius: Float
-- subdivisions: Integer
+- radius: [Float[Float.md]
+- subdivisions: [Integer[Integer.md]
 
 #### Output sockets:
 

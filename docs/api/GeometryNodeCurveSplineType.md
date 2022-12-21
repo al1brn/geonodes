@@ -15,8 +15,8 @@ node = nodes.SetSplineType(curve=None, selection=None, spline_type='POLY')
 
 #### Input socket arguments:
 
-- curve: Curve
-- selection: Boolean
+- curve: [Curve[Curve.md]
+- selection: [Boolean[Boolean.md]
 
 #### Node parameter arguments:
 

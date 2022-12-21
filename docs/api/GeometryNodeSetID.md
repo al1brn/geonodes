@@ -15,9 +15,9 @@ node = nodes.SetID(geometry=None, selection=None, ID=None)
 
 #### Input socket arguments:
 
-- geometry: Geometry
-- selection: Boolean
-- ID: Integer
+- geometry: [Geometry[Geometry.md]
+- selection: [Boolean[Boolean.md]
+- ID: [Integer[Integer.md]
 
 #### Output sockets:
 

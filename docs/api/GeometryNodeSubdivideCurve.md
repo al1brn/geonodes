@@ -15,8 +15,8 @@ node = nodes.SubdivideCurve(curve=None, cuts=None)
 
 #### Input socket arguments:
 
-- curve: Curve
-- cuts: Integer
+- curve: [Curve[Curve.md]
+- cuts: [Integer[Integer.md]
 
 #### Output sockets:
 

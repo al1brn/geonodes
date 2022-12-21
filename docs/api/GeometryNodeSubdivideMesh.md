@@ -15,8 +15,8 @@ node = nodes.SubdivideMesh(mesh=None, level=None)
 
 #### Input socket arguments:
 
-- mesh: Mesh
-- level: Integer
+- mesh: [Mesh[Mesh.md]
+- level: [Integer[Integer.md]
 
 #### Output sockets:
 

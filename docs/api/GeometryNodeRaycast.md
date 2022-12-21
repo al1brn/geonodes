@@ -15,11 +15,11 @@ node = nodes.Raycast(target_geometry=None, attribute=None, source_position=None,
 
 #### Input socket arguments:
 
-- target_geometry: Geometry
+- target_geometry: [Geometry[Geometry.md]
 - attribute: `data_type` dependant
-- source_position: Vector
-- ray_direction: Vector
-- ray_length: Float
+- source_position: [Vector[Vector.md]
+- ray_direction: [Vector[Vector.md]
+- ray_length: [Float[Float.md]
 
 #### Node parameter arguments:
 

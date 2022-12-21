@@ -15,10 +15,10 @@ node = nodes.CurveLine(start=None, end=None, direction=None, length=None, mode='
 
 #### Input socket arguments:
 
-- start: Vector
-- end: Vector
-- direction: Vector
-- length: Float
+- start: [Vector[Vector.md]
+- end: [Vector[Vector.md]
+- direction: [Vector[Vector.md]
+- length: [Float[Float.md]
 
 #### Node parameter arguments:
 

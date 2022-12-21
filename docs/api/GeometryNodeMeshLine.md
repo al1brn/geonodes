@@ -15,10 +15,10 @@ node = nodes.MeshLine(count=None, resolution=None, start_location=None, offset=N
 
 #### Input socket arguments:
 
-- count: Integer
-- resolution: Float
-- start_location: Vector
-- offset: Vector
+- count: [Integer[Integer.md]
+- resolution: [Float[Float.md]
+- start_location: [Vector[Vector.md]
+- offset: [Vector[Vector.md]
 
 #### Node parameter arguments:
 

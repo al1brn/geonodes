@@ -15,7 +15,7 @@ node = nodes.DomainSize(geometry=None, component='MESH')
 
 #### Input socket arguments:
 
-- geometry: Geometry
+- geometry: [Geometry[Geometry.md]
 
 #### Node parameter arguments:
 

@@ -15,9 +15,9 @@ node = nodes.SetCurveTilt(curve=None, selection=None, tilt=None)
 
 #### Input socket arguments:
 
-- curve: Curve
-- selection: Boolean
-- tilt: Float
+- curve: [Curve[Curve.md]
+- selection: [Boolean[Boolean.md]
+- tilt: [Float[Float.md]
 
 #### Output sockets:
 

@@ -15,9 +15,9 @@ node = nodes.SampleIndex(geometry=None, value=None, index=None, clamp=False, dat
 
 #### Input socket arguments:
 
-- geometry: Geometry
+- geometry: [Geometry[Geometry.md]
 - value: `data_type` dependant
-- index: Integer
+- index: [Integer[Integer.md]
 
 #### Node parameter arguments:
 

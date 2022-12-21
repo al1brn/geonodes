@@ -15,12 +15,12 @@ node = nodes.NoiseTexture(vector=None, w=None, scale=None, detail=None, roughnes
 
 #### Input socket arguments:
 
-- vector: Vector
-- w: Float
-- scale: Float
-- detail: Float
-- roughness: Float
-- distortion: Float
+- vector: [Vector[Vector.md]
+- w: [Float[Float.md]
+- scale: [Float[Float.md]
+- detail: [Float[Float.md]
+- roughness: [Float[Float.md]
+- distortion: [Float[Float.md]
 
 #### Node parameter arguments:
 

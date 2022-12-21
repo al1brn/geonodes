@@ -15,7 +15,7 @@ node = nodes.SeparateXyz(vector=None)
 
 #### Input socket arguments:
 
-- vector: Vector
+- vector: [Vector[Vector.md]
 
 #### Output sockets:
 

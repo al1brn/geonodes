@@ -15,9 +15,9 @@ node = nodes.SetPointRadius(points=None, selection=None, radius=None)
 
 #### Input socket arguments:
 
-- points: Points
-- selection: Boolean
-- radius: Float
+- points: [Points[Points.md]
+- selection: [Boolean[Boolean.md]
+- radius: [Float[Float.md]
 
 #### Output sockets:
 

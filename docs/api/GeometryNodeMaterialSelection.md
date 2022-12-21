@@ -15,7 +15,7 @@ node = nodes.MaterialSelection(material=None)
 
 #### Input socket arguments:
 
-- material: Material
+- material: [Material[Material.md]
 
 #### Output sockets:
 

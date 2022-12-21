@@ -15,8 +15,8 @@ node = nodes.DualMesh(mesh=None, keep_boundaries=None)
 
 #### Input socket arguments:
 
-- mesh: Mesh
-- keep_boundaries: Boolean
+- mesh: [Mesh[Mesh.md]
+- keep_boundaries: [Boolean[Boolean.md]
 
 #### Output sockets:
 

@@ -15,11 +15,11 @@ node = nodes.SampleCurve(curves=None, value=None, factor=None, length=None, curv
 
 #### Input socket arguments:
 
-- curves: Curve
+- curves: [Curve[Curve.md]
 - value: `data_type` dependant
-- factor: Float
-- length: Float
-- curve_index: Integer
+- factor: [Float[Float.md]
+- length: [Float[Float.md]
+- curve_index: [Integer[Integer.md]
 
 #### Node parameter arguments:
 

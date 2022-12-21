@@ -15,9 +15,9 @@ node = nodes.UvSphere(segments=None, rings=None, radius=None)
 
 #### Input socket arguments:
 
-- segments: Integer
-- rings: Integer
-- radius: Float
+- segments: [Integer[Integer.md]
+- rings: [Integer[Integer.md]
+- radius: [Float[Float.md]
 
 #### Output sockets:
 

@@ -15,12 +15,12 @@ node = nodes.Cone(vertices=None, side_segments=None, fill_segments=None, radius_
 
 #### Input socket arguments:
 
-- vertices: Integer
-- side_segments: Integer
-- fill_segments: Integer
-- radius_top: Float
-- radius_bottom: Float
-- depth: Float
+- vertices: [Integer[Integer.md]
+- side_segments: [Integer[Integer.md]
+- fill_segments: [Integer[Integer.md]
+- radius_top: [Float[Float.md]
+- radius_bottom: [Float[Float.md]
+- depth: [Float[Float.md]
 
 #### Node parameter arguments:
 

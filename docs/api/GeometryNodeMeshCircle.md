@@ -15,8 +15,8 @@ node = nodes.MeshCircle(vertices=None, radius=None, fill_type='NONE')
 
 #### Input socket arguments:
 
-- vertices: Integer
-- radius: Float
+- vertices: [Integer[Integer.md]
+- radius: [Float[Float.md]
 
 #### Node parameter arguments:
 

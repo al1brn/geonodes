@@ -15,7 +15,7 @@ node = nodes.GradientTexture(vector=None, gradient_type='LINEAR')
 
 #### Input socket arguments:
 
-- vector: Vector
+- vector: [Vector[Vector.md]
 
 #### Node parameter arguments:
 

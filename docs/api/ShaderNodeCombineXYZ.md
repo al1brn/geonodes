@@ -15,9 +15,9 @@ node = nodes.CombineXyz(x=None, y=None, z=None)
 
 #### Input socket arguments:
 
-- x: Float
-- y: Float
-- z: Float
+- x: [Float[Float.md]
+- y: [Float[Float.md]
+- z: [Float[Float.md]
 
 #### Output sockets:
 

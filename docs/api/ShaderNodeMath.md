@@ -15,9 +15,9 @@ node = nodes.Math(value0=None, value1=None, value2=None, operation='ADD', use_cl
 
 #### Input socket arguments:
 
-- value0: Float
-- value1: Float
-- value2: Float
+- value0: [Float[Float.md]
+- value1: [Float[Float.md]
+- value2: [Float[Float.md]
 
 #### Node parameter arguments:
 

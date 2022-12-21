@@ -15,8 +15,8 @@ node = nodes.ShortestEdgePaths(end_vertex=None, edge_cost=None)
 
 #### Input socket arguments:
 
-- end_vertex: Boolean
-- edge_cost: Float
+- end_vertex: [Boolean[Boolean.md]
+- edge_cost: [Float[Float.md]
 
 #### Output sockets:
 

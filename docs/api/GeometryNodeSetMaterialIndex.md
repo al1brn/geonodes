@@ -15,9 +15,9 @@ node = nodes.SetMaterialIndex(geometry=None, selection=None, material_index=None
 
 #### Input socket arguments:
 
-- geometry: Geometry
-- selection: Boolean
-- material_index: Integer
+- geometry: [Geometry[Geometry.md]
+- selection: [Boolean[Boolean.md]
+- material_index: [Integer[Integer.md]
 
 #### Output sockets:
 

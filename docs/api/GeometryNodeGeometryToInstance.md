@@ -15,7 +15,7 @@ node = nodes.GeometryToInstance(*geometry)
 
 #### Input socket arguments:
 
-- geometry: *Geometry
+- geometry: *[Geometry[Geometry.md]
 
 #### Output sockets:
 

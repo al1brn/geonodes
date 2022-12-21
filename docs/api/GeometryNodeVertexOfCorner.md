@@ -15,7 +15,7 @@ node = nodes.VertexOfCorner(corner_index=None)
 
 #### Input socket arguments:
 
-- corner_index: Integer
+- corner_index: [Integer[Integer.md]
 
 #### Output sockets:
 

@@ -15,7 +15,7 @@ node = nodes.BoundingBox(geometry=None)
 
 #### Input socket arguments:
 
-- geometry: Geometry
+- geometry: [Geometry[Geometry.md]
 
 #### Output sockets:
 

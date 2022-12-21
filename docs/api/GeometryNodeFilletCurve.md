@@ -15,10 +15,10 @@ node = nodes.FilletCurve(curve=None, count=None, radius=None, limit_radius=None,
 
 #### Input socket arguments:
 
-- curve: Curve
-- count: Integer
-- radius: Float
-- limit_radius: Boolean
+- curve: [Curve[Curve.md]
+- count: [Integer[Integer.md]
+- radius: [Float[Float.md]
+- limit_radius: [Boolean[Boolean.md]
 
 #### Node parameter arguments:
 

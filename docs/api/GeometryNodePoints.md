@@ -15,9 +15,9 @@ node = nodes.Points(count=None, position=None, radius=None)
 
 #### Input socket arguments:
 
-- count: Integer
-- position: Vector
-- radius: Float
+- count: [Integer[Integer.md]
+- position: [Vector[Vector.md]
+- radius: [Float[Float.md]
 
 #### Output sockets:
 
