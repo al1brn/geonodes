@@ -1,6 +1,6 @@
 # class Object
 
-> [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)
+> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 
 ## Class methods
@@ -36,7 +36,7 @@ The initial value can be either a valid Blender Object or the name of an existin
 ### Returns:
 - Object
 
-<sub>Go to [top](#class-Object) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Object) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## Self <sub>*classmethod*</sub>
 
@@ -49,7 +49,7 @@ Node [Self Object](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 ### Returns:
 - socket `self_object`
 
-<sub>Go to [top](#class-Object) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Object) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## geometry
 
@@ -67,7 +67,7 @@ Node [Object Info](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 ### Returns:
 - socket `geometry`
 
-<sub>Go to [top](#class-Object) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Object) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## info
 
@@ -85,7 +85,7 @@ Node [Object Info](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 ### Returns:
 - node with sockets ['location', 'rotation', 'scale', 'geometry']
 
-<sub>Go to [top](#class-Object) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Object) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## location
 
@@ -103,7 +103,7 @@ Node [Object Info](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 ### Returns:
 - socket `location`
 
-<sub>Go to [top](#class-Object) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Object) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## rotation
 
@@ -121,7 +121,7 @@ Node [Object Info](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 ### Returns:
 - socket `rotation`
 
-<sub>Go to [top](#class-Object) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Object) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## scale
 
@@ -139,7 +139,7 @@ Node [Object Info](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 ### Returns:
 - socket `scale`
 
-<sub>Go to [top](#class-Object) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Object) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## switch
 
@@ -156,5 +156,5 @@ Node [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/
 ### Returns:
 - socket `output`
 
-<sub>Go to [top](#class-Object) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Object) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

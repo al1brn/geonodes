@@ -11,7 +11,7 @@ class Float(geosocks.Float):
         Developer reference [GeometryNodeInputSceneTime](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputSceneTime.html)
 
         Returns:
-            socket 'frame'
+            socket `frame`
         """
         return cls(nodes.SceneTime().frame)
 
@@ -24,7 +24,7 @@ class Float(geosocks.Float):
         Developer reference [GeometryNodeInputSceneTime](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputSceneTime.html)
 
         Returns:
-            socket 'seconds'
+            socket `seconds`
         """
         return cls(nodes.SceneTime().seconds)
 
@@ -37,7 +37,7 @@ class Float(geosocks.Float):
         Developer reference [ShaderNodeValue](https://docs.blender.org/api/current/bpy.types.ShaderNodeValue.html)
 
         Returns:
-            socket 'value'
+            socket `value`
         """
         return cls(nodes.Value().value)
 
@@ -52,7 +52,7 @@ class Float(geosocks.Float):
             clamp (bool): False
 
         Returns:
-            socket 'value'
+            socket `value`
         """
         return nodes.Math(value0=self, value1=None, value2=None, operation='ABSOLUTE', use_clamp=clamp).value
 
@@ -67,7 +67,7 @@ class Float(geosocks.Float):
             clamp (bool): False
 
         Returns:
-            socket 'value'
+            socket `value`
         """
         return nodes.Math(value0=self, value1=None, value2=None, operation='ABSOLUTE', use_clamp=clamp).value
 
@@ -98,7 +98,7 @@ class Float(geosocks.Float):
             clamp (bool): False
 
         Returns:
-            socket 'value'
+            socket `value`
         """
         return nodes.Math(value0=self, value1=value, value2=None, operation='ARCCOSINE', use_clamp=clamp).value
 
@@ -114,7 +114,7 @@ class Float(geosocks.Float):
             clamp (bool): False
 
         Returns:
-            socket 'value'
+            socket `value`
         """
         return nodes.Math(value0=self, value1=value, value2=None, operation='ARCCOSINE', use_clamp=clamp).value
 
@@ -130,7 +130,7 @@ class Float(geosocks.Float):
             clamp (bool): False
 
         Returns:
-            socket 'value'
+            socket `value`
         """
         return nodes.Math(value0=self, value1=value, value2=None, operation='ARCSINE', use_clamp=clamp).value
 
@@ -146,7 +146,7 @@ class Float(geosocks.Float):
             clamp (bool): False
 
         Returns:
-            socket 'value'
+            socket `value`
         """
         return nodes.Math(value0=self, value1=value, value2=None, operation='ARCSINE', use_clamp=clamp).value
 
@@ -162,7 +162,7 @@ class Float(geosocks.Float):
             clamp (bool): False
 
         Returns:
-            socket 'value'
+            socket `value`
         """
         return nodes.Math(value0=self, value1=value, value2=None, operation='ARCTANGENT', use_clamp=clamp).value
 
@@ -178,7 +178,7 @@ class Float(geosocks.Float):
             clamp (bool): False
 
         Returns:
-            socket 'value'
+            socket `value`
         """
         return nodes.Math(value0=self, value1=value1, value2=None, operation='ARCTAN2', use_clamp=clamp).value
 
@@ -194,7 +194,7 @@ class Float(geosocks.Float):
             clamp (bool): False
 
         Returns:
-            socket 'value'
+            socket `value`
         """
         return nodes.Math(value0=self, value1=value, value2=None, operation='ARCTANGENT', use_clamp=clamp).value
 
@@ -206,7 +206,7 @@ class Float(geosocks.Float):
         Developer reference [FunctionNodeFloatToInt](https://docs.blender.org/api/current/bpy.types.FunctionNodeFloatToInt.html)
 
         Returns:
-            socket 'integer'
+            socket `integer`
         """
         return nodes.FloatToInteger(float=self, rounding_mode='CEILING').integer
 
@@ -223,7 +223,7 @@ class Float(geosocks.Float):
             clamp_type (str): 'MINMAX' in [MINMAX, RANGE]
 
         Returns:
-            socket 'result'
+            socket `result`
         """
         return nodes.Clamp(value=self, min=min, max=max, clamp_type=clamp_type).result
 
@@ -239,7 +239,7 @@ class Float(geosocks.Float):
             max: Float
 
         Returns:
-            socket 'result'
+            socket `result`
         """
         return nodes.Clamp(value=self, min=min, max=max, clamp_type='MINMAX').result
 
@@ -255,7 +255,7 @@ class Float(geosocks.Float):
             max: Float
 
         Returns:
-            socket 'result'
+            socket `result`
         """
         return nodes.Clamp(value=self, min=min, max=max, clamp_type='RANGE').result
 
@@ -285,7 +285,7 @@ class Float(geosocks.Float):
             operation (str): 'GREATER_THAN' in [LESS_THAN, LESS_EQUAL, GREATER_THAN, GREATER_EQUAL, EQUAL, NOT_EQUAL]
 
         Returns:
-            socket 'result'
+            socket `result`
         """
         return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=epsilon, data_type='FLOAT', mode='ELEMENT', operation=operation).result
 
@@ -301,7 +301,7 @@ class Float(geosocks.Float):
             clamp (bool): False
 
         Returns:
-            socket 'value'
+            socket `value`
         """
         return nodes.Math(value0=self, value1=value, value2=None, operation='COSINE', use_clamp=clamp).value
 
@@ -317,7 +317,7 @@ class Float(geosocks.Float):
             clamp (bool): False
 
         Returns:
-            socket 'value'
+            socket `value`
         """
         return nodes.Math(value0=self, value1=value, value2=None, operation='COSH', use_clamp=clamp).value
 
@@ -333,7 +333,7 @@ class Float(geosocks.Float):
             clamp (bool): False
 
         Returns:
-            socket 'value'
+            socket `value`
         """
         return nodes.Math(value0=self, value1=value, value2=None, operation='COSINE', use_clamp=clamp).value
 
@@ -379,7 +379,7 @@ class Float(geosocks.Float):
             epsilon: Float
 
         Returns:
-            socket 'result'
+            socket `result`
         """
         return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=epsilon, data_type='FLOAT', mode='ELEMENT', operation='EQUAL').result
 
@@ -394,7 +394,7 @@ class Float(geosocks.Float):
             clamp (bool): False
 
         Returns:
-            socket 'value'
+            socket `value`
         """
         return nodes.Math(value0=self, value1=None, value2=None, operation='EXPONENT', use_clamp=clamp).value
 
@@ -409,7 +409,7 @@ class Float(geosocks.Float):
             clamp (bool): False
 
         Returns:
-            socket 'value'
+            socket `value`
         """
         return nodes.Math(value0=self, value1=None, value2=None, operation='EXPONENT', use_clamp=clamp).value
 
@@ -424,7 +424,7 @@ class Float(geosocks.Float):
             clamp (bool): False
 
         Returns:
-            socket 'value'
+            socket `value`
         """
         return nodes.Math(value0=self, value1=None, value2=None, operation='FRACT', use_clamp=clamp).value
 
@@ -439,7 +439,7 @@ class Float(geosocks.Float):
             factor: Float
 
         Returns:
-            socket 'value'
+            socket `value`
         """
         return nodes.FloatCurve(factor=factor, value=self).value
 
@@ -451,7 +451,7 @@ class Float(geosocks.Float):
         Developer reference [FunctionNodeFloatToInt](https://docs.blender.org/api/current/bpy.types.FunctionNodeFloatToInt.html)
 
         Returns:
-            socket 'integer'
+            socket `integer`
         """
         return nodes.FloatToInteger(float=self, rounding_mode='FLOOR').integer
 
@@ -466,7 +466,7 @@ class Float(geosocks.Float):
             clamp (bool): False
 
         Returns:
-            socket 'value'
+            socket `value`
         """
         return nodes.Math(value0=self, value1=None, value2=None, operation='FRACT', use_clamp=clamp).value
 
@@ -481,7 +481,7 @@ class Float(geosocks.Float):
             b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 
         Returns:
-            socket 'result'
+            socket `result`
         """
         return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type='FLOAT', mode='ELEMENT', operation='GREATER_EQUAL').result
 
@@ -496,7 +496,7 @@ class Float(geosocks.Float):
             b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 
         Returns:
-            socket 'result'
+            socket `result`
         """
         return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type='FLOAT', mode='ELEMENT', operation='GREATER_THAN').result
 
@@ -511,7 +511,7 @@ class Float(geosocks.Float):
             clamp (bool): False
 
         Returns:
-            socket 'value'
+            socket `value`
         """
         return nodes.Math(value0=self, value1=None, value2=None, operation='INVERSE_SQRT', use_clamp=clamp).value
 
@@ -526,7 +526,7 @@ class Float(geosocks.Float):
             b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 
         Returns:
-            socket 'result'
+            socket `result`
         """
         return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type='FLOAT', mode='ELEMENT', operation='LESS_EQUAL').result
 
@@ -541,7 +541,7 @@ class Float(geosocks.Float):
             b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 
         Returns:
-            socket 'result'
+            socket `result`
         """
         return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type='FLOAT', mode='ELEMENT', operation='LESS_THAN').result
 
@@ -557,7 +557,7 @@ class Float(geosocks.Float):
             clamp (bool): False
 
         Returns:
-            socket 'value'
+            socket `value`
         """
         return nodes.Math(value0=self, value1=base, value2=None, operation='LOGARITHM', use_clamp=clamp).value
 
@@ -573,7 +573,7 @@ class Float(geosocks.Float):
             clamp (bool): False
 
         Returns:
-            socket 'value'
+            socket `value`
         """
         return nodes.Math(value0=self, value1=base, value2=None, operation='LOGARITHM', use_clamp=clamp).value
 
@@ -594,7 +594,7 @@ class Float(geosocks.Float):
             interpolation_type (str): 'LINEAR' in [LINEAR, STEPPED, SMOOTHSTEP, SMOOTHERSTEP]
 
         Returns:
-            socket 'result'
+            socket `result`
         """
         return nodes.MapRange(value=self, from_min=from_min, from_max=from_max, to_min=to_min, to_max=to_max, steps=steps, vector=None, clamp=clamp, data_type='FLOAT', interpolation_type=interpolation_type).result
 
@@ -613,7 +613,7 @@ class Float(geosocks.Float):
             clamp (bool): True
 
         Returns:
-            socket 'result'
+            socket `result`
         """
         return nodes.MapRange(value=self, from_min=from_min, from_max=from_max, to_min=to_min, to_max=to_max, steps=None, vector=None, clamp=clamp, data_type='FLOAT', interpolation_type='LINEAR').result
 
@@ -632,7 +632,7 @@ class Float(geosocks.Float):
             clamp (bool): True
 
         Returns:
-            socket 'result'
+            socket `result`
         """
         return nodes.MapRange(value=self, from_min=from_min, from_max=from_max, to_min=to_min, to_max=to_max, steps=None, vector=None, clamp=clamp, data_type='FLOAT', interpolation_type='SMOOTHSTEP').result
 
@@ -651,7 +651,7 @@ class Float(geosocks.Float):
             clamp (bool): True
 
         Returns:
-            socket 'result'
+            socket `result`
         """
         return nodes.MapRange(value=self, from_min=from_min, from_max=from_max, to_min=to_min, to_max=to_max, steps=None, vector=None, clamp=clamp, data_type='FLOAT', interpolation_type='SMOOTHERSTEP').result
 
@@ -671,7 +671,7 @@ class Float(geosocks.Float):
             clamp (bool): True
 
         Returns:
-            socket 'result'
+            socket `result`
         """
         return nodes.MapRange(value=self, from_min=from_min, from_max=from_max, to_min=to_min, to_max=to_max, steps=steps, vector=None, clamp=clamp, data_type='FLOAT', interpolation_type='STEPPED').result
 
@@ -686,7 +686,7 @@ class Float(geosocks.Float):
             clamp (bool): False
 
         Returns:
-            socket 'value'
+            socket `value`
         """
         return nodes.Math(value0=self, value1=None, value2=None, operation='CEIL', use_clamp=clamp).value
 
@@ -703,7 +703,7 @@ class Float(geosocks.Float):
             clamp (bool): False
 
         Returns:
-            socket 'value'
+            socket `value`
         """
         return nodes.Math(value0=self, value1=value, value2=epsilon, operation='COMPARE', use_clamp=clamp).value
 
@@ -718,7 +718,7 @@ class Float(geosocks.Float):
             clamp (bool): False
 
         Returns:
-            socket 'value'
+            socket `value`
         """
         return nodes.Math(value0=self, value1=None, value2=None, operation='FLOOR', use_clamp=clamp).value
 
@@ -734,7 +734,7 @@ class Float(geosocks.Float):
             clamp (bool): False
 
         Returns:
-            socket 'value'
+            socket `value`
         """
         return nodes.Math(value0=self, value1=threshold, value2=None, operation='GREATER_THAN', use_clamp=clamp).value
 
@@ -750,7 +750,7 @@ class Float(geosocks.Float):
             clamp (bool): False
 
         Returns:
-            socket 'value'
+            socket `value`
         """
         return nodes.Math(value0=self, value1=threshold, value2=None, operation='LESS_THAN', use_clamp=clamp).value
 
@@ -765,7 +765,7 @@ class Float(geosocks.Float):
             clamp (bool): False
 
         Returns:
-            socket 'value'
+            socket `value`
         """
         return nodes.Math(value0=self, value1=None, value2=None, operation='ROUND', use_clamp=clamp).value
 
@@ -780,7 +780,7 @@ class Float(geosocks.Float):
             clamp (bool): False
 
         Returns:
-            socket 'value'
+            socket `value`
         """
         return nodes.Math(value0=self, value1=None, value2=None, operation='TRUNC', use_clamp=clamp).value
 
@@ -795,7 +795,7 @@ class Float(geosocks.Float):
             clamp (bool): False
 
         Returns:
-            socket 'value'
+            socket `value`
         """
         return nodes.Math(value0=self, value1=None, value2=None, operation='TRUNC', use_clamp=clamp).value
 
@@ -811,7 +811,7 @@ class Float(geosocks.Float):
             clamp (bool): False
 
         Returns:
-            socket 'value'
+            socket `value`
         """
         return nodes.Math(value0=self, value1=value, value2=None, operation='MAXIMUM', use_clamp=clamp).value
 
@@ -827,7 +827,7 @@ class Float(geosocks.Float):
             clamp (bool): False
 
         Returns:
-            socket 'value'
+            socket `value`
         """
         return nodes.Math(value0=self, value1=value, value2=None, operation='MAXIMUM', use_clamp=clamp).value
 
@@ -843,7 +843,7 @@ class Float(geosocks.Float):
             clamp (bool): False
 
         Returns:
-            socket 'value'
+            socket `value`
         """
         return nodes.Math(value0=self, value1=value, value2=None, operation='MINIMUM', use_clamp=clamp).value
 
@@ -859,7 +859,7 @@ class Float(geosocks.Float):
             clamp (bool): False
 
         Returns:
-            socket 'value'
+            socket `value`
         """
         return nodes.Math(value0=self, value1=value, value2=None, operation='MINIMUM', use_clamp=clamp).value
 
@@ -876,7 +876,7 @@ class Float(geosocks.Float):
             clamp_factor (bool): True
 
         Returns:
-            socket 'result'
+            socket `result`
         """
         return nodes.Mix(factor=factor, a=self, b=value, blend_type=MIX, clamp_factor=clamp_factor, clamp_result=False, data_type='FLOAT', factor_mode='UNIFORM').result
 
@@ -892,7 +892,7 @@ class Float(geosocks.Float):
             clamp (bool): False
 
         Returns:
-            socket 'value'
+            socket `value`
         """
         return nodes.Math(value0=self, value1=value, value2=None, operation='MODULO', use_clamp=clamp).value
 
@@ -924,7 +924,7 @@ class Float(geosocks.Float):
             clamp (bool): False
 
         Returns:
-            socket 'value'
+            socket `value`
         """
         return nodes.Math(value0=self, value1=multiplier, value2=addend, operation='MULTIPLY_ADD', use_clamp=clamp).value
 
@@ -956,7 +956,7 @@ class Float(geosocks.Float):
             clamp (bool): False
 
         Returns:
-            socket 'value'
+            socket `value`
         """
         return nodes.Math(value0=self, value1=multiplier, value2=addend, operation='MULTIPLY_ADD', use_clamp=clamp).value
 
@@ -972,7 +972,7 @@ class Float(geosocks.Float):
             epsilon: Float
 
         Returns:
-            socket 'result'
+            socket `result`
         """
         return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=epsilon, data_type='FLOAT', mode='ELEMENT', operation='NOT_EQUAL').result
 
@@ -988,7 +988,7 @@ class Float(geosocks.Float):
             clamp (bool): False
 
         Returns:
-            socket 'value'
+            socket `value`
         """
         return nodes.Math(value0=self, value1=scale, value2=None, operation='PINGPONG', use_clamp=clamp).value
 
@@ -1004,7 +1004,7 @@ class Float(geosocks.Float):
             clamp (bool): False
 
         Returns:
-            socket 'value'
+            socket `value`
         """
         return nodes.Math(value0=self, value1=exponent, value2=None, operation='POWER', use_clamp=clamp).value
 
@@ -1020,7 +1020,7 @@ class Float(geosocks.Float):
             clamp (bool): False
 
         Returns:
-            socket 'value'
+            socket `value`
         """
         return nodes.Math(value0=self, value1=exponent, value2=None, operation='POWER', use_clamp=clamp).value
 
@@ -1032,7 +1032,7 @@ class Float(geosocks.Float):
         Developer reference [FunctionNodeFloatToInt](https://docs.blender.org/api/current/bpy.types.FunctionNodeFloatToInt.html)
 
         Returns:
-            socket 'integer'
+            socket `integer`
         """
         return nodes.FloatToInteger(float=self, rounding_mode='ROUND').integer
 
@@ -1047,7 +1047,7 @@ class Float(geosocks.Float):
             clamp (bool): False
 
         Returns:
-            socket 'value'
+            socket `value`
         """
         return nodes.Math(value0=self, value1=None, value2=None, operation='SIGN', use_clamp=clamp).value
 
@@ -1063,7 +1063,7 @@ class Float(geosocks.Float):
             clamp (bool): False
 
         Returns:
-            socket 'value'
+            socket `value`
         """
         return nodes.Math(value0=self, value1=value, value2=None, operation='SINE', use_clamp=clamp).value
 
@@ -1079,7 +1079,7 @@ class Float(geosocks.Float):
             clamp (bool): False
 
         Returns:
-            socket 'value'
+            socket `value`
         """
         return nodes.Math(value0=self, value1=value, value2=None, operation='SINE', use_clamp=clamp).value
 
@@ -1095,7 +1095,7 @@ class Float(geosocks.Float):
             clamp (bool): False
 
         Returns:
-            socket 'value'
+            socket `value`
         """
         return nodes.Math(value0=self, value1=value, value2=None, operation='SINH', use_clamp=clamp).value
 
@@ -1112,7 +1112,7 @@ class Float(geosocks.Float):
             clamp (bool): False
 
         Returns:
-            socket 'value'
+            socket `value`
         """
         return nodes.Math(value0=self, value1=value, value2=distance, operation='SMOOTH_MAX', use_clamp=clamp).value
 
@@ -1129,7 +1129,7 @@ class Float(geosocks.Float):
             clamp (bool): False
 
         Returns:
-            socket 'value'
+            socket `value`
         """
         return nodes.Math(value0=self, value1=value, value2=distance, operation='SMOOTH_MIN', use_clamp=clamp).value
 
@@ -1145,7 +1145,7 @@ class Float(geosocks.Float):
             clamp (bool): False
 
         Returns:
-            socket 'value'
+            socket `value`
         """
         return nodes.Math(value0=self, value1=increment, value2=None, operation='SNAP', use_clamp=clamp).value
 
@@ -1160,7 +1160,7 @@ class Float(geosocks.Float):
             clamp (bool): False
 
         Returns:
-            socket 'value'
+            socket `value`
         """
         return nodes.Math(value0=self, value1=None, value2=None, operation='SQRT', use_clamp=clamp).value
 
@@ -1206,7 +1206,7 @@ class Float(geosocks.Float):
             true: Float
 
         Returns:
-            socket 'output'
+            socket `output`
         """
         return nodes.Switch(switch=switch, false=self, true=true, input_type='FLOAT').output
 
@@ -1222,7 +1222,7 @@ class Float(geosocks.Float):
             clamp (bool): False
 
         Returns:
-            socket 'value'
+            socket `value`
         """
         return nodes.Math(value0=self, value1=value, value2=None, operation='TANGENT', use_clamp=clamp).value
 
@@ -1238,7 +1238,7 @@ class Float(geosocks.Float):
             clamp (bool): False
 
         Returns:
-            socket 'value'
+            socket `value`
         """
         return nodes.Math(value0=self, value1=value, value2=None, operation='TANGENT', use_clamp=clamp).value
 
@@ -1254,7 +1254,7 @@ class Float(geosocks.Float):
             clamp (bool): False
 
         Returns:
-            socket 'value'
+            socket `value`
         """
         return nodes.Math(value0=self, value1=value, value2=None, operation='TANH', use_clamp=clamp).value
 
@@ -1269,7 +1269,7 @@ class Float(geosocks.Float):
             clamp (bool): False
 
         Returns:
-            socket 'value'
+            socket `value`
         """
         return nodes.Math(value0=self, value1=None, value2=None, operation='DEGREES', use_clamp=clamp).value
 
@@ -1284,7 +1284,7 @@ class Float(geosocks.Float):
             rounding_mode (str): 'ROUND' in [ROUND, FLOOR, CEILING, TRUNCATE]
 
         Returns:
-            socket 'integer'
+            socket `integer`
         """
         return nodes.FloatToInteger(float=self, rounding_mode=rounding_mode).integer
 
@@ -1299,7 +1299,7 @@ class Float(geosocks.Float):
             clamp (bool): False
 
         Returns:
-            socket 'value'
+            socket `value`
         """
         return nodes.Math(value0=self, value1=None, value2=None, operation='RADIANS', use_clamp=clamp).value
 
@@ -1326,7 +1326,7 @@ class Float(geosocks.Float):
         Developer reference [FunctionNodeFloatToInt](https://docs.blender.org/api/current/bpy.types.FunctionNodeFloatToInt.html)
 
         Returns:
-            socket 'integer'
+            socket `integer`
         """
         return nodes.FloatToInteger(float=self, rounding_mode='TRUNCATE').integer
 
@@ -1343,7 +1343,7 @@ class Float(geosocks.Float):
             clamp (bool): False
 
         Returns:
-            socket 'value'
+            socket `value`
         """
         return nodes.Math(value0=self, value1=max, value2=min, operation='WRAP', use_clamp=clamp).value
 
@@ -1362,7 +1362,7 @@ class Integer(geosocks.Integer):
             integer (int): 0
 
         Returns:
-            socket 'integer'
+            socket `integer`
         """
         return cls(nodes.Integer(integer=integer).integer)
 
@@ -1377,7 +1377,7 @@ class Integer(geosocks.Integer):
             clamp (bool): False
 
         Returns:
-            socket 'value'
+            socket `value`
         """
         return nodes.Math(value0=self, value1=None, value2=None, operation='ABSOLUTE', use_clamp=clamp).value
 
@@ -1392,7 +1392,7 @@ class Integer(geosocks.Integer):
             clamp (bool): False
 
         Returns:
-            socket 'value'
+            socket `value`
         """
         return nodes.Math(value0=self, value1=None, value2=None, operation='ABSOLUTE', use_clamp=clamp).value
 
@@ -1423,7 +1423,7 @@ class Integer(geosocks.Integer):
             clamp (bool): False
 
         Returns:
-            socket 'value'
+            socket `value`
         """
         return nodes.Math(value0=self, value1=value, value2=None, operation='ARCCOSINE', use_clamp=clamp).value
 
@@ -1439,7 +1439,7 @@ class Integer(geosocks.Integer):
             clamp (bool): False
 
         Returns:
-            socket 'value'
+            socket `value`
         """
         return nodes.Math(value0=self, value1=value, value2=None, operation='ARCCOSINE', use_clamp=clamp).value
 
@@ -1455,7 +1455,7 @@ class Integer(geosocks.Integer):
             clamp (bool): False
 
         Returns:
-            socket 'value'
+            socket `value`
         """
         return nodes.Math(value0=self, value1=value, value2=None, operation='ARCSINE', use_clamp=clamp).value
 
@@ -1471,7 +1471,7 @@ class Integer(geosocks.Integer):
             clamp (bool): False
 
         Returns:
-            socket 'value'
+            socket `value`
         """
         return nodes.Math(value0=self, value1=value, value2=None, operation='ARCSINE', use_clamp=clamp).value
 
@@ -1487,7 +1487,7 @@ class Integer(geosocks.Integer):
             clamp (bool): False
 
         Returns:
-            socket 'value'
+            socket `value`
         """
         return nodes.Math(value0=self, value1=value, value2=None, operation='ARCTANGENT', use_clamp=clamp).value
 
@@ -1503,7 +1503,7 @@ class Integer(geosocks.Integer):
             clamp (bool): False
 
         Returns:
-            socket 'value'
+            socket `value`
         """
         return nodes.Math(value0=self, value1=value1, value2=None, operation='ARCTAN2', use_clamp=clamp).value
 
@@ -1519,7 +1519,7 @@ class Integer(geosocks.Integer):
             clamp (bool): False
 
         Returns:
-            socket 'value'
+            socket `value`
         """
         return nodes.Math(value0=self, value1=value, value2=None, operation='ARCTANGENT', use_clamp=clamp).value
 
@@ -1535,7 +1535,7 @@ class Integer(geosocks.Integer):
             operation (str): 'GREATER_THAN' in [LESS_THAN, LESS_EQUAL, GREATER_THAN, GREATER_EQUAL, EQUAL, NOT_EQUAL]
 
         Returns:
-            socket 'result'
+            socket `result`
         """
         return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type='INT', mode='ELEMENT', operation=operation).result
 
@@ -1551,7 +1551,7 @@ class Integer(geosocks.Integer):
             clamp (bool): False
 
         Returns:
-            socket 'value'
+            socket `value`
         """
         return nodes.Math(value0=self, value1=value, value2=None, operation='COSINE', use_clamp=clamp).value
 
@@ -1567,7 +1567,7 @@ class Integer(geosocks.Integer):
             clamp (bool): False
 
         Returns:
-            socket 'value'
+            socket `value`
         """
         return nodes.Math(value0=self, value1=value, value2=None, operation='COSH', use_clamp=clamp).value
 
@@ -1583,7 +1583,7 @@ class Integer(geosocks.Integer):
             clamp (bool): False
 
         Returns:
-            socket 'value'
+            socket `value`
         """
         return nodes.Math(value0=self, value1=value, value2=None, operation='COSINE', use_clamp=clamp).value
 
@@ -1628,7 +1628,7 @@ class Integer(geosocks.Integer):
             b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 
         Returns:
-            socket 'result'
+            socket `result`
         """
         return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type='INT', mode='ELEMENT', operation='EQUAL').result
 
@@ -1643,7 +1643,7 @@ class Integer(geosocks.Integer):
             clamp (bool): False
 
         Returns:
-            socket 'value'
+            socket `value`
         """
         return nodes.Math(value0=self, value1=None, value2=None, operation='EXPONENT', use_clamp=clamp).value
 
@@ -1658,7 +1658,7 @@ class Integer(geosocks.Integer):
             clamp (bool): False
 
         Returns:
-            socket 'value'
+            socket `value`
         """
         return nodes.Math(value0=self, value1=None, value2=None, operation='EXPONENT', use_clamp=clamp).value
 
@@ -1673,7 +1673,7 @@ class Integer(geosocks.Integer):
             clamp (bool): False
 
         Returns:
-            socket 'value'
+            socket `value`
         """
         return nodes.Math(value0=self, value1=None, value2=None, operation='FRACT', use_clamp=clamp).value
 
@@ -1688,7 +1688,7 @@ class Integer(geosocks.Integer):
             clamp (bool): False
 
         Returns:
-            socket 'value'
+            socket `value`
         """
         return nodes.Math(value0=self, value1=None, value2=None, operation='FRACT', use_clamp=clamp).value
 
@@ -1703,7 +1703,7 @@ class Integer(geosocks.Integer):
             b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 
         Returns:
-            socket 'result'
+            socket `result`
         """
         return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type='INT', mode='ELEMENT', operation='GREATER_EQUAL').result
 
@@ -1718,7 +1718,7 @@ class Integer(geosocks.Integer):
             b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 
         Returns:
-            socket 'result'
+            socket `result`
         """
         return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type='INT', mode='ELEMENT', operation='GREATER_THAN').result
 
@@ -1733,7 +1733,7 @@ class Integer(geosocks.Integer):
             clamp (bool): False
 
         Returns:
-            socket 'value'
+            socket `value`
         """
         return nodes.Math(value0=self, value1=None, value2=None, operation='INVERSE_SQRT', use_clamp=clamp).value
 
@@ -1748,7 +1748,7 @@ class Integer(geosocks.Integer):
             b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 
         Returns:
-            socket 'result'
+            socket `result`
         """
         return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type='INT', mode='ELEMENT', operation='LESS_EQUAL').result
 
@@ -1763,7 +1763,7 @@ class Integer(geosocks.Integer):
             b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 
         Returns:
-            socket 'result'
+            socket `result`
         """
         return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type='INT', mode='ELEMENT', operation='LESS_THAN').result
 
@@ -1779,7 +1779,7 @@ class Integer(geosocks.Integer):
             clamp (bool): False
 
         Returns:
-            socket 'value'
+            socket `value`
         """
         return nodes.Math(value0=self, value1=base, value2=None, operation='LOGARITHM', use_clamp=clamp).value
 
@@ -1795,7 +1795,7 @@ class Integer(geosocks.Integer):
             clamp (bool): False
 
         Returns:
-            socket 'value'
+            socket `value`
         """
         return nodes.Math(value0=self, value1=base, value2=None, operation='LOGARITHM', use_clamp=clamp).value
 
@@ -1810,7 +1810,7 @@ class Integer(geosocks.Integer):
             clamp (bool): False
 
         Returns:
-            socket 'value'
+            socket `value`
         """
         return nodes.Math(value0=self, value1=None, value2=None, operation='CEIL', use_clamp=clamp).value
 
@@ -1827,7 +1827,7 @@ class Integer(geosocks.Integer):
             clamp (bool): False
 
         Returns:
-            socket 'value'
+            socket `value`
         """
         return nodes.Math(value0=self, value1=value, value2=epsilon, operation='COMPARE', use_clamp=clamp).value
 
@@ -1842,7 +1842,7 @@ class Integer(geosocks.Integer):
             clamp (bool): False
 
         Returns:
-            socket 'value'
+            socket `value`
         """
         return nodes.Math(value0=self, value1=None, value2=None, operation='FLOOR', use_clamp=clamp).value
 
@@ -1858,7 +1858,7 @@ class Integer(geosocks.Integer):
             clamp (bool): False
 
         Returns:
-            socket 'value'
+            socket `value`
         """
         return nodes.Math(value0=self, value1=threshold, value2=None, operation='GREATER_THAN', use_clamp=clamp).value
 
@@ -1874,7 +1874,7 @@ class Integer(geosocks.Integer):
             clamp (bool): False
 
         Returns:
-            socket 'value'
+            socket `value`
         """
         return nodes.Math(value0=self, value1=threshold, value2=None, operation='LESS_THAN', use_clamp=clamp).value
 
@@ -1889,7 +1889,7 @@ class Integer(geosocks.Integer):
             clamp (bool): False
 
         Returns:
-            socket 'value'
+            socket `value`
         """
         return nodes.Math(value0=self, value1=None, value2=None, operation='ROUND', use_clamp=clamp).value
 
@@ -1904,7 +1904,7 @@ class Integer(geosocks.Integer):
             clamp (bool): False
 
         Returns:
-            socket 'value'
+            socket `value`
         """
         return nodes.Math(value0=self, value1=None, value2=None, operation='TRUNC', use_clamp=clamp).value
 
@@ -1919,7 +1919,7 @@ class Integer(geosocks.Integer):
             clamp (bool): False
 
         Returns:
-            socket 'value'
+            socket `value`
         """
         return nodes.Math(value0=self, value1=None, value2=None, operation='TRUNC', use_clamp=clamp).value
 
@@ -1935,7 +1935,7 @@ class Integer(geosocks.Integer):
             clamp (bool): False
 
         Returns:
-            socket 'value'
+            socket `value`
         """
         return nodes.Math(value0=self, value1=value, value2=None, operation='MAXIMUM', use_clamp=clamp).value
 
@@ -1951,7 +1951,7 @@ class Integer(geosocks.Integer):
             clamp (bool): False
 
         Returns:
-            socket 'value'
+            socket `value`
         """
         return nodes.Math(value0=self, value1=value, value2=None, operation='MAXIMUM', use_clamp=clamp).value
 
@@ -1967,7 +1967,7 @@ class Integer(geosocks.Integer):
             clamp (bool): False
 
         Returns:
-            socket 'value'
+            socket `value`
         """
         return nodes.Math(value0=self, value1=value, value2=None, operation='MINIMUM', use_clamp=clamp).value
 
@@ -1983,7 +1983,7 @@ class Integer(geosocks.Integer):
             clamp (bool): False
 
         Returns:
-            socket 'value'
+            socket `value`
         """
         return nodes.Math(value0=self, value1=value, value2=None, operation='MINIMUM', use_clamp=clamp).value
 
@@ -1999,7 +1999,7 @@ class Integer(geosocks.Integer):
             clamp (bool): False
 
         Returns:
-            socket 'value'
+            socket `value`
         """
         return nodes.Math(value0=self, value1=value, value2=None, operation='MODULO', use_clamp=clamp).value
 
@@ -2031,7 +2031,7 @@ class Integer(geosocks.Integer):
             clamp (bool): False
 
         Returns:
-            socket 'value'
+            socket `value`
         """
         return nodes.Math(value0=self, value1=multiplier, value2=addend, operation='MULTIPLY_ADD', use_clamp=clamp).value
 
@@ -2063,7 +2063,7 @@ class Integer(geosocks.Integer):
             clamp (bool): False
 
         Returns:
-            socket 'value'
+            socket `value`
         """
         return nodes.Math(value0=self, value1=multiplier, value2=addend, operation='MULTIPLY_ADD', use_clamp=clamp).value
 
@@ -2078,7 +2078,7 @@ class Integer(geosocks.Integer):
             b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 
         Returns:
-            socket 'result'
+            socket `result`
         """
         return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type='INT', mode='ELEMENT', operation='NOT_EQUAL').result
 
@@ -2094,7 +2094,7 @@ class Integer(geosocks.Integer):
             clamp (bool): False
 
         Returns:
-            socket 'value'
+            socket `value`
         """
         return nodes.Math(value0=self, value1=scale, value2=None, operation='PINGPONG', use_clamp=clamp).value
 
@@ -2110,7 +2110,7 @@ class Integer(geosocks.Integer):
             clamp (bool): False
 
         Returns:
-            socket 'value'
+            socket `value`
         """
         return nodes.Math(value0=self, value1=exponent, value2=None, operation='POWER', use_clamp=clamp).value
 
@@ -2126,7 +2126,7 @@ class Integer(geosocks.Integer):
             clamp (bool): False
 
         Returns:
-            socket 'value'
+            socket `value`
         """
         return nodes.Math(value0=self, value1=exponent, value2=None, operation='POWER', use_clamp=clamp).value
 
@@ -2141,7 +2141,7 @@ class Integer(geosocks.Integer):
             clamp (bool): False
 
         Returns:
-            socket 'value'
+            socket `value`
         """
         return nodes.Math(value0=self, value1=None, value2=None, operation='SIGN', use_clamp=clamp).value
 
@@ -2157,7 +2157,7 @@ class Integer(geosocks.Integer):
             clamp (bool): False
 
         Returns:
-            socket 'value'
+            socket `value`
         """
         return nodes.Math(value0=self, value1=value, value2=None, operation='SINE', use_clamp=clamp).value
 
@@ -2173,7 +2173,7 @@ class Integer(geosocks.Integer):
             clamp (bool): False
 
         Returns:
-            socket 'value'
+            socket `value`
         """
         return nodes.Math(value0=self, value1=value, value2=None, operation='SINE', use_clamp=clamp).value
 
@@ -2189,7 +2189,7 @@ class Integer(geosocks.Integer):
             clamp (bool): False
 
         Returns:
-            socket 'value'
+            socket `value`
         """
         return nodes.Math(value0=self, value1=value, value2=None, operation='SINH', use_clamp=clamp).value
 
@@ -2206,7 +2206,7 @@ class Integer(geosocks.Integer):
             clamp (bool): False
 
         Returns:
-            socket 'value'
+            socket `value`
         """
         return nodes.Math(value0=self, value1=value, value2=distance, operation='SMOOTH_MAX', use_clamp=clamp).value
 
@@ -2223,7 +2223,7 @@ class Integer(geosocks.Integer):
             clamp (bool): False
 
         Returns:
-            socket 'value'
+            socket `value`
         """
         return nodes.Math(value0=self, value1=value, value2=distance, operation='SMOOTH_MIN', use_clamp=clamp).value
 
@@ -2239,7 +2239,7 @@ class Integer(geosocks.Integer):
             clamp (bool): False
 
         Returns:
-            socket 'value'
+            socket `value`
         """
         return nodes.Math(value0=self, value1=increment, value2=None, operation='SNAP', use_clamp=clamp).value
 
@@ -2254,7 +2254,7 @@ class Integer(geosocks.Integer):
             clamp (bool): False
 
         Returns:
-            socket 'value'
+            socket `value`
         """
         return nodes.Math(value0=self, value1=None, value2=None, operation='SQRT', use_clamp=clamp).value
 
@@ -2300,7 +2300,7 @@ class Integer(geosocks.Integer):
             true: Integer
 
         Returns:
-            socket 'output'
+            socket `output`
         """
         return nodes.Switch(switch=switch, false=self, true=true, input_type='INT').output
 
@@ -2316,7 +2316,7 @@ class Integer(geosocks.Integer):
             clamp (bool): False
 
         Returns:
-            socket 'value'
+            socket `value`
         """
         return nodes.Math(value0=self, value1=value, value2=None, operation='TANGENT', use_clamp=clamp).value
 
@@ -2332,7 +2332,7 @@ class Integer(geosocks.Integer):
             clamp (bool): False
 
         Returns:
-            socket 'value'
+            socket `value`
         """
         return nodes.Math(value0=self, value1=value, value2=None, operation='TANGENT', use_clamp=clamp).value
 
@@ -2348,7 +2348,7 @@ class Integer(geosocks.Integer):
             clamp (bool): False
 
         Returns:
-            socket 'value'
+            socket `value`
         """
         return nodes.Math(value0=self, value1=value, value2=None, operation='TANH', use_clamp=clamp).value
 
@@ -2363,7 +2363,7 @@ class Integer(geosocks.Integer):
             clamp (bool): False
 
         Returns:
-            socket 'value'
+            socket `value`
         """
         return nodes.Math(value0=self, value1=None, value2=None, operation='DEGREES', use_clamp=clamp).value
 
@@ -2378,7 +2378,7 @@ class Integer(geosocks.Integer):
             clamp (bool): False
 
         Returns:
-            socket 'value'
+            socket `value`
         """
         return nodes.Math(value0=self, value1=None, value2=None, operation='RADIANS', use_clamp=clamp).value
 
@@ -2407,7 +2407,7 @@ class Integer(geosocks.Integer):
             clamp (bool): False
 
         Returns:
-            socket 'value'
+            socket `value`
         """
         return nodes.Math(value0=self, value1=max, value2=min, operation='WRAP', use_clamp=clamp).value
 
@@ -2426,7 +2426,7 @@ class Boolean(geosocks.Boolean):
             boolean (bool): False
 
         Returns:
-            socket 'boolean'
+            socket `boolean`
         """
         return cls(nodes.Boolean(boolean=boolean).boolean)
 
@@ -2441,7 +2441,7 @@ class Boolean(geosocks.Boolean):
             boolean1: Boolean
 
         Returns:
-            socket 'boolean'
+            socket `boolean`
         """
         return nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='AND').boolean
 
@@ -2453,7 +2453,7 @@ class Boolean(geosocks.Boolean):
         Developer reference [FunctionNodeBooleanMath](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html)
 
         Returns:
-            socket 'boolean'
+            socket `boolean`
         """
         return nodes.BooleanMath(boolean0=self, boolean1=None, operation='NOT').boolean
 
@@ -2468,7 +2468,7 @@ class Boolean(geosocks.Boolean):
             boolean1: Boolean
 
         Returns:
-            socket 'boolean'
+            socket `boolean`
         """
         return nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='OR').boolean
 
@@ -2483,7 +2483,7 @@ class Boolean(geosocks.Boolean):
             boolean1: Boolean
 
         Returns:
-            socket 'boolean'
+            socket `boolean`
         """
         return nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='IMPLY').boolean
 
@@ -2498,7 +2498,7 @@ class Boolean(geosocks.Boolean):
             boolean1: Boolean
 
         Returns:
-            socket 'boolean'
+            socket `boolean`
         """
         return nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='NAND').boolean
 
@@ -2513,7 +2513,7 @@ class Boolean(geosocks.Boolean):
             boolean1: Boolean
 
         Returns:
-            socket 'boolean'
+            socket `boolean`
         """
         return nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='NIMPLY').boolean
 
@@ -2528,7 +2528,7 @@ class Boolean(geosocks.Boolean):
             boolean1: Boolean
 
         Returns:
-            socket 'boolean'
+            socket `boolean`
         """
         return nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='NOR').boolean
 
@@ -2544,7 +2544,7 @@ class Boolean(geosocks.Boolean):
             true: Boolean
 
         Returns:
-            socket 'output'
+            socket `output`
         """
         return nodes.Switch(switch=switch, false=self, true=true, input_type='BOOLEAN').output
 
@@ -2559,7 +2559,7 @@ class Boolean(geosocks.Boolean):
             boolean1: Boolean
 
         Returns:
-            socket 'boolean'
+            socket `boolean`
         """
         return nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='XNOR').boolean
 
@@ -2574,7 +2574,7 @@ class Boolean(geosocks.Boolean):
             boolean1: Boolean
 
         Returns:
-            socket 'boolean'
+            socket `boolean`
         """
         return nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='XOR').boolean
 
@@ -2606,7 +2606,7 @@ class String(geosocks.String):
             string (str): ''
 
         Returns:
-            socket 'string'
+            socket `string`
         """
         return cls(nodes.String(string=string).string)
 
@@ -2634,7 +2634,7 @@ class String(geosocks.String):
             b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 
         Returns:
-            socket 'result'
+            socket `result`
         """
         return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type='STRING', mode='ELEMENT', operation='EQUAL').result
 
@@ -2678,7 +2678,7 @@ class String(geosocks.String):
             b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 
         Returns:
-            socket 'result'
+            socket `result`
         """
         return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type='STRING', mode='ELEMENT', operation='NOT_EQUAL').result
 
@@ -2726,7 +2726,7 @@ class String(geosocks.String):
             true: String
 
         Returns:
-            socket 'output'
+            socket `output`
         """
         return nodes.Switch(switch=switch, false=self, true=true, input_type='STRING').output
 
@@ -2773,7 +2773,7 @@ class Vector(geosocks.Vector):
             z: Float
 
         Returns:
-            socket 'vector'
+            socket `vector`
         """
         return cls(nodes.CombineXyz(x=x, y=y, z=z).vector)
 
@@ -2789,7 +2789,7 @@ class Vector(geosocks.Vector):
             vector (list): [0.0, 0.0, 0.0]
 
         Returns:
-            socket 'vector'
+            socket `vector`
         """
         return cls(nodes.Vector(vector=vector).vector)
 
@@ -2801,7 +2801,7 @@ class Vector(geosocks.Vector):
         Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 
         Returns:
-            socket 'vector'
+            socket `vector`
         """
         return nodes.VectorMath(vector0=self, vector1=None, vector2=None, scale=None, operation='ABSOLUTE').vector
 
@@ -2813,7 +2813,7 @@ class Vector(geosocks.Vector):
         Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 
         Returns:
-            socket 'vector'
+            socket `vector`
         """
         return nodes.VectorMath(vector0=self, vector1=None, vector2=None, scale=None, operation='ABSOLUTE').vector
 
@@ -2828,7 +2828,7 @@ class Vector(geosocks.Vector):
             vector: Vector
 
         Returns:
-            socket 'vector'
+            socket `vector`
         """
         return nodes.VectorMath(vector0=self, vector1=vector, vector2=None, scale=None, operation='ADD').vector
 
@@ -2862,7 +2862,7 @@ class Vector(geosocks.Vector):
             epsilon: Float
 
         Returns:
-            socket 'result'
+            socket `result`
         """
         return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=epsilon, data_type='VECTOR', mode='AVERAGE', operation='EQUAL').result
 
@@ -2877,7 +2877,7 @@ class Vector(geosocks.Vector):
             b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 
         Returns:
-            socket 'result'
+            socket `result`
         """
         return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type='VECTOR', mode='AVERAGE', operation='GREATER_EQUAL').result
 
@@ -2892,7 +2892,7 @@ class Vector(geosocks.Vector):
             b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 
         Returns:
-            socket 'result'
+            socket `result`
         """
         return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type='VECTOR', mode='AVERAGE', operation='GREATER_THAN').result
 
@@ -2907,7 +2907,7 @@ class Vector(geosocks.Vector):
             b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 
         Returns:
-            socket 'result'
+            socket `result`
         """
         return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type='VECTOR', mode='AVERAGE', operation='LESS_EQUAL').result
 
@@ -2922,7 +2922,7 @@ class Vector(geosocks.Vector):
             b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 
         Returns:
-            socket 'result'
+            socket `result`
         """
         return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type='VECTOR', mode='AVERAGE', operation='LESS_THAN').result
 
@@ -2938,7 +2938,7 @@ class Vector(geosocks.Vector):
             epsilon: Float
 
         Returns:
-            socket 'result'
+            socket `result`
         """
         return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=epsilon, data_type='VECTOR', mode='AVERAGE', operation='NOT_EQUAL').result
 
@@ -2950,7 +2950,7 @@ class Vector(geosocks.Vector):
         Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 
         Returns:
-            socket 'vector'
+            socket `vector`
         """
         return nodes.VectorMath(vector0=self, vector1=None, vector2=None, scale=None, operation='CEIL').vector
 
@@ -2970,7 +2970,7 @@ class Vector(geosocks.Vector):
             operation (str): 'GREATER_THAN' in [LESS_THAN, LESS_EQUAL, GREATER_THAN, GREATER_EQUAL, EQUAL, NOT_EQUAL]
 
         Returns:
-            socket 'result'
+            socket `result`
         """
         return nodes.Compare(a=self, b=b, c=c, angle=angle, epsilon=epsilon, data_type='VECTOR', mode=mode, operation=operation).result
 
@@ -2982,7 +2982,7 @@ class Vector(geosocks.Vector):
         Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 
         Returns:
-            socket 'vector'
+            socket `vector`
         """
         return nodes.VectorMath(vector0=self, vector1=None, vector2=None, scale=None, operation='COSINE').vector
 
@@ -2994,7 +2994,7 @@ class Vector(geosocks.Vector):
         Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 
         Returns:
-            socket 'vector'
+            socket `vector`
         """
         return nodes.VectorMath(vector0=self, vector1=None, vector2=None, scale=None, operation='COSINE').vector
 
@@ -3009,7 +3009,7 @@ class Vector(geosocks.Vector):
             vector: Vector
 
         Returns:
-            socket 'vector'
+            socket `vector`
         """
         return nodes.VectorMath(vector0=self, vector1=vector, vector2=None, scale=None, operation='CROSS_PRODUCT').vector
 
@@ -3024,7 +3024,7 @@ class Vector(geosocks.Vector):
             vector: Vector
 
         Returns:
-            socket 'vector'
+            socket `vector`
         """
         return nodes.VectorMath(vector0=self, vector1=vector, vector2=None, scale=None, operation='CROSS_PRODUCT').vector
 
@@ -3039,7 +3039,7 @@ class Vector(geosocks.Vector):
             fac: Float
 
         Returns:
-            socket 'vector'
+            socket `vector`
         """
         return nodes.VectorCurves(fac=fac, vector=self).vector
 
@@ -3056,7 +3056,7 @@ class Vector(geosocks.Vector):
             epsilon: Float
 
         Returns:
-            socket 'result'
+            socket `result`
         """
         return nodes.Compare(a=self, b=b, c=None, angle=angle, epsilon=epsilon, data_type='VECTOR', mode='DIRECTION', operation='EQUAL').result
 
@@ -3072,7 +3072,7 @@ class Vector(geosocks.Vector):
             angle: Float
 
         Returns:
-            socket 'result'
+            socket `result`
         """
         return nodes.Compare(a=self, b=b, c=None, angle=angle, epsilon=None, data_type='VECTOR', mode='DIRECTION', operation='GREATER_EQUAL').result
 
@@ -3088,7 +3088,7 @@ class Vector(geosocks.Vector):
             angle: Float
 
         Returns:
-            socket 'result'
+            socket `result`
         """
         return nodes.Compare(a=self, b=b, c=None, angle=angle, epsilon=None, data_type='VECTOR', mode='DIRECTION', operation='GREATER_THAN').result
 
@@ -3104,7 +3104,7 @@ class Vector(geosocks.Vector):
             angle: Float
 
         Returns:
-            socket 'result'
+            socket `result`
         """
         return nodes.Compare(a=self, b=b, c=None, angle=angle, epsilon=None, data_type='VECTOR', mode='DIRECTION', operation='LESS_EQUAL').result
 
@@ -3120,7 +3120,7 @@ class Vector(geosocks.Vector):
             angle: Float
 
         Returns:
-            socket 'result'
+            socket `result`
         """
         return nodes.Compare(a=self, b=b, c=None, angle=angle, epsilon=None, data_type='VECTOR', mode='DIRECTION', operation='LESS_THAN').result
 
@@ -3137,7 +3137,7 @@ class Vector(geosocks.Vector):
             epsilon: Float
 
         Returns:
-            socket 'result'
+            socket `result`
         """
         return nodes.Compare(a=self, b=b, c=None, angle=angle, epsilon=epsilon, data_type='VECTOR', mode='DIRECTION', operation='NOT_EQUAL').result
 
@@ -3152,7 +3152,7 @@ class Vector(geosocks.Vector):
             vector: Vector
 
         Returns:
-            socket 'value'
+            socket `value`
         """
         return nodes.VectorMath(vector0=self, vector1=vector, vector2=None, scale=None, operation='DISTANCE').value
 
@@ -3167,7 +3167,7 @@ class Vector(geosocks.Vector):
             vector: Vector
 
         Returns:
-            socket 'vector'
+            socket `vector`
         """
         return nodes.VectorMath(vector0=self, vector1=vector, vector2=None, scale=None, operation='DIVIDE').vector
 
@@ -3182,7 +3182,7 @@ class Vector(geosocks.Vector):
             vector: Vector
 
         Returns:
-            socket 'vector'
+            socket `vector`
         """
         return nodes.VectorMath(vector0=self, vector1=vector, vector2=None, scale=None, operation='DIVIDE').vector
 
@@ -3197,7 +3197,7 @@ class Vector(geosocks.Vector):
             vector: Vector
 
         Returns:
-            socket 'value'
+            socket `value`
         """
         return nodes.VectorMath(vector0=self, vector1=vector, vector2=None, scale=None, operation='DOT_PRODUCT').value
 
@@ -3212,7 +3212,7 @@ class Vector(geosocks.Vector):
             vector: Vector
 
         Returns:
-            socket 'value'
+            socket `value`
         """
         return nodes.VectorMath(vector0=self, vector1=vector, vector2=None, scale=None, operation='DOT_PRODUCT').value
 
@@ -3229,7 +3229,7 @@ class Vector(geosocks.Vector):
             epsilon: Float
 
         Returns:
-            socket 'result'
+            socket `result`
         """
         return nodes.Compare(a=self, b=b, c=c, angle=None, epsilon=epsilon, data_type='VECTOR', mode='DOT_PRODUCT', operation='EQUAL').result
 
@@ -3245,7 +3245,7 @@ class Vector(geosocks.Vector):
             c: Float
 
         Returns:
-            socket 'result'
+            socket `result`
         """
         return nodes.Compare(a=self, b=b, c=c, angle=None, epsilon=None, data_type='VECTOR', mode='DOT_PRODUCT', operation='GREATER_EQUAL').result
 
@@ -3261,7 +3261,7 @@ class Vector(geosocks.Vector):
             c: Float
 
         Returns:
-            socket 'result'
+            socket `result`
         """
         return nodes.Compare(a=self, b=b, c=c, angle=None, epsilon=None, data_type='VECTOR', mode='DOT_PRODUCT', operation='GREATER_THAN').result
 
@@ -3277,7 +3277,7 @@ class Vector(geosocks.Vector):
             c: Float
 
         Returns:
-            socket 'result'
+            socket `result`
         """
         return nodes.Compare(a=self, b=b, c=c, angle=None, epsilon=None, data_type='VECTOR', mode='DOT_PRODUCT', operation='LESS_EQUAL').result
 
@@ -3293,7 +3293,7 @@ class Vector(geosocks.Vector):
             c: Float
 
         Returns:
-            socket 'result'
+            socket `result`
         """
         return nodes.Compare(a=self, b=b, c=c, angle=None, epsilon=None, data_type='VECTOR', mode='DOT_PRODUCT', operation='LESS_THAN').result
 
@@ -3310,7 +3310,7 @@ class Vector(geosocks.Vector):
             epsilon: Float
 
         Returns:
-            socket 'result'
+            socket `result`
         """
         return nodes.Compare(a=self, b=b, c=c, angle=None, epsilon=epsilon, data_type='VECTOR', mode='DOT_PRODUCT', operation='NOT_EQUAL').result
 
@@ -3326,7 +3326,7 @@ class Vector(geosocks.Vector):
             epsilon: Float
 
         Returns:
-            socket 'result'
+            socket `result`
         """
         return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=epsilon, data_type='VECTOR', mode='ELEMENT', operation='EQUAL').result
 
@@ -3341,7 +3341,7 @@ class Vector(geosocks.Vector):
             b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 
         Returns:
-            socket 'result'
+            socket `result`
         """
         return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type='VECTOR', mode='ELEMENT', operation='GREATER_EQUAL').result
 
@@ -3356,7 +3356,7 @@ class Vector(geosocks.Vector):
             b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 
         Returns:
-            socket 'result'
+            socket `result`
         """
         return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type='VECTOR', mode='ELEMENT', operation='GREATER_THAN').result
 
@@ -3371,7 +3371,7 @@ class Vector(geosocks.Vector):
             b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 
         Returns:
-            socket 'result'
+            socket `result`
         """
         return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type='VECTOR', mode='ELEMENT', operation='LESS_EQUAL').result
 
@@ -3386,7 +3386,7 @@ class Vector(geosocks.Vector):
             b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 
         Returns:
-            socket 'result'
+            socket `result`
         """
         return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type='VECTOR', mode='ELEMENT', operation='LESS_THAN').result
 
@@ -3402,7 +3402,7 @@ class Vector(geosocks.Vector):
             epsilon: Float
 
         Returns:
-            socket 'result'
+            socket `result`
         """
         return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=epsilon, data_type='VECTOR', mode='ELEMENT', operation='NOT_EQUAL').result
 
@@ -3418,7 +3418,7 @@ class Vector(geosocks.Vector):
             reference: Vector
 
         Returns:
-            socket 'vector'
+            socket `vector`
         """
         return nodes.VectorMath(vector0=self, vector1=incident, vector2=reference, scale=None, operation='FACEFORWARD').vector
 
@@ -3430,7 +3430,7 @@ class Vector(geosocks.Vector):
         Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 
         Returns:
-            socket 'vector'
+            socket `vector`
         """
         return nodes.VectorMath(vector0=self, vector1=None, vector2=None, scale=None, operation='FLOOR').vector
 
@@ -3442,7 +3442,7 @@ class Vector(geosocks.Vector):
         Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 
         Returns:
-            socket 'vector'
+            socket `vector`
         """
         return nodes.VectorMath(vector0=self, vector1=None, vector2=None, scale=None, operation='FRACTION').vector
 
@@ -3454,7 +3454,7 @@ class Vector(geosocks.Vector):
         Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 
         Returns:
-            socket 'vector'
+            socket `vector`
         """
         return nodes.VectorMath(vector0=self, vector1=None, vector2=None, scale=None, operation='FRACTION').vector
 
@@ -3467,7 +3467,7 @@ class Vector(geosocks.Vector):
         Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 
         Returns:
-            socket 'value'
+            socket `value`
         """
         return nodes.VectorMath(vector0=self, vector1=None, vector2=None, scale=None, operation='LENGTH').value
 
@@ -3483,7 +3483,7 @@ class Vector(geosocks.Vector):
             epsilon: Float
 
         Returns:
-            socket 'result'
+            socket `result`
         """
         return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=epsilon, data_type='VECTOR', mode='LENGTH', operation='EQUAL').result
 
@@ -3498,7 +3498,7 @@ class Vector(geosocks.Vector):
             b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 
         Returns:
-            socket 'result'
+            socket `result`
         """
         return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type='VECTOR', mode='LENGTH', operation='GREATER_EQUAL').result
 
@@ -3513,7 +3513,7 @@ class Vector(geosocks.Vector):
             b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 
         Returns:
-            socket 'result'
+            socket `result`
         """
         return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type='VECTOR', mode='LENGTH', operation='GREATER_THAN').result
 
@@ -3528,7 +3528,7 @@ class Vector(geosocks.Vector):
             b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 
         Returns:
-            socket 'result'
+            socket `result`
         """
         return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type='VECTOR', mode='LENGTH', operation='LESS_EQUAL').result
 
@@ -3543,7 +3543,7 @@ class Vector(geosocks.Vector):
             b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 
         Returns:
-            socket 'result'
+            socket `result`
         """
         return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type='VECTOR', mode='LENGTH', operation='LESS_THAN').result
 
@@ -3559,7 +3559,7 @@ class Vector(geosocks.Vector):
             epsilon: Float
 
         Returns:
-            socket 'result'
+            socket `result`
         """
         return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=epsilon, data_type='VECTOR', mode='LENGTH', operation='NOT_EQUAL').result
 
@@ -3580,7 +3580,7 @@ class Vector(geosocks.Vector):
             interpolation_type (str): 'LINEAR' in [LINEAR, STEPPED, SMOOTHSTEP, SMOOTHERSTEP]
 
         Returns:
-            socket 'vector'
+            socket `vector`
         """
         return nodes.MapRange(value=None, from_min=from_min, from_max=from_max, to_min=to_min, to_max=to_max, steps=steps, vector=self, clamp=clamp, data_type='FLOAT_VECTOR', interpolation_type=interpolation_type).vector
 
@@ -3599,7 +3599,7 @@ class Vector(geosocks.Vector):
             clamp (bool): True
 
         Returns:
-            socket 'vector'
+            socket `vector`
         """
         return nodes.MapRange(value=None, from_min=from_min, from_max=from_max, to_min=to_min, to_max=to_max, steps=None, vector=self, clamp=clamp, data_type='FLOAT_VECTOR', interpolation_type='LINEAR').vector
 
@@ -3618,7 +3618,7 @@ class Vector(geosocks.Vector):
             clamp (bool): True
 
         Returns:
-            socket 'vector'
+            socket `vector`
         """
         return nodes.MapRange(value=None, from_min=from_min, from_max=from_max, to_min=to_min, to_max=to_max, steps=None, vector=self, clamp=clamp, data_type='FLOAT_VECTOR', interpolation_type='SMOOTHSTEP').vector
 
@@ -3637,7 +3637,7 @@ class Vector(geosocks.Vector):
             clamp (bool): True
 
         Returns:
-            socket 'vector'
+            socket `vector`
         """
         return nodes.MapRange(value=None, from_min=from_min, from_max=from_max, to_min=to_min, to_max=to_max, steps=None, vector=self, clamp=clamp, data_type='FLOAT_VECTOR', interpolation_type='SMOOTHERSTEP').vector
 
@@ -3657,7 +3657,7 @@ class Vector(geosocks.Vector):
             clamp (bool): True
 
         Returns:
-            socket 'vector'
+            socket `vector`
         """
         return nodes.MapRange(value=None, from_min=from_min, from_max=from_max, to_min=to_min, to_max=to_max, steps=steps, vector=self, clamp=clamp, data_type='FLOAT_VECTOR', interpolation_type='STEPPED').vector
 
@@ -3672,7 +3672,7 @@ class Vector(geosocks.Vector):
             vector: Vector
 
         Returns:
-            socket 'vector'
+            socket `vector`
         """
         return nodes.VectorMath(vector0=self, vector1=vector, vector2=None, scale=None, operation='MAXIMUM').vector
 
@@ -3687,7 +3687,7 @@ class Vector(geosocks.Vector):
             vector: Vector
 
         Returns:
-            socket 'vector'
+            socket `vector`
         """
         return nodes.VectorMath(vector0=self, vector1=vector, vector2=None, scale=None, operation='MAXIMUM').vector
 
@@ -3702,7 +3702,7 @@ class Vector(geosocks.Vector):
             vector: Vector
 
         Returns:
-            socket 'vector'
+            socket `vector`
         """
         return nodes.VectorMath(vector0=self, vector1=vector, vector2=None, scale=None, operation='MINIMUM').vector
 
@@ -3717,7 +3717,7 @@ class Vector(geosocks.Vector):
             vector: Vector
 
         Returns:
-            socket 'vector'
+            socket `vector`
         """
         return nodes.VectorMath(vector0=self, vector1=vector, vector2=None, scale=None, operation='MINIMUM').vector
 
@@ -3735,7 +3735,7 @@ class Vector(geosocks.Vector):
             factor_mode (str): 'UNIFORM' in [UNIFORM, NON_UNIFORM]
 
         Returns:
-            socket 'result'
+            socket `result`
         """
         return nodes.Mix(factor=factor, a=self, b=vector, blend_type=MIX, clamp_factor=clamp_factor, clamp_result=False, data_type='VECTOR', factor_mode=factor_mode).result
 
@@ -3752,7 +3752,7 @@ class Vector(geosocks.Vector):
             clamp_factor (bool): True
 
         Returns:
-            socket 'result'
+            socket `result`
         """
         return nodes.Mix(factor=factor, a=self, b=vector, blend_type=MIX, clamp_factor=clamp_factor, clamp_result=False, data_type='VECTOR', factor_mode='NON_UNIFORM').result
 
@@ -3768,7 +3768,7 @@ class Vector(geosocks.Vector):
             clamp_factor (bool): True
 
         Returns:
-            socket 'result'
+            socket `result`
         """
         return nodes.Mix(factor=None, a=self, b=vector, blend_type=MIX, clamp_factor=clamp_factor, clamp_result=False, data_type='VECTOR', factor_mode='UNIFORM').result
 
@@ -3783,7 +3783,7 @@ class Vector(geosocks.Vector):
             vector: Vector
 
         Returns:
-            socket 'vector'
+            socket `vector`
         """
         return nodes.VectorMath(vector0=self, vector1=vector, vector2=None, scale=None, operation='MODULO').vector
 
@@ -3798,7 +3798,7 @@ class Vector(geosocks.Vector):
             vector: Vector
 
         Returns:
-            socket 'vector'
+            socket `vector`
         """
         return nodes.VectorMath(vector0=self, vector1=vector, vector2=None, scale=None, operation='MULTIPLY').vector
 
@@ -3814,7 +3814,7 @@ class Vector(geosocks.Vector):
             addend: Vector
 
         Returns:
-            socket 'vector'
+            socket `vector`
         """
         return nodes.VectorMath(vector0=self, vector1=multiplier, vector2=addend, scale=None, operation='MULTIPLY_ADD').vector
 
@@ -3829,7 +3829,7 @@ class Vector(geosocks.Vector):
             vector: Vector
 
         Returns:
-            socket 'vector'
+            socket `vector`
         """
         return nodes.VectorMath(vector0=self, vector1=vector, vector2=None, scale=None, operation='MULTIPLY').vector
 
@@ -3845,7 +3845,7 @@ class Vector(geosocks.Vector):
             addend: Vector
 
         Returns:
-            socket 'vector'
+            socket `vector`
         """
         return nodes.VectorMath(vector0=self, vector1=multiplier, vector2=addend, scale=None, operation='MULTIPLY_ADD').vector
 
@@ -3857,7 +3857,7 @@ class Vector(geosocks.Vector):
         Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 
         Returns:
-            socket 'vector'
+            socket `vector`
         """
         return nodes.VectorMath(vector0=self, vector1=None, vector2=None, scale=None, operation='NORMALIZE').vector
 
@@ -3872,7 +3872,7 @@ class Vector(geosocks.Vector):
             vector: Vector
 
         Returns:
-            socket 'vector'
+            socket `vector`
         """
         return nodes.VectorMath(vector0=self, vector1=vector, vector2=None, scale=None, operation='PROJECT').vector
 
@@ -3887,7 +3887,7 @@ class Vector(geosocks.Vector):
             vector: Vector
 
         Returns:
-            socket 'vector'
+            socket `vector`
         """
         return nodes.VectorMath(vector0=self, vector1=vector, vector2=None, scale=None, operation='REFLECT').vector
 
@@ -3903,7 +3903,7 @@ class Vector(geosocks.Vector):
             ior: Float
 
         Returns:
-            socket 'vector'
+            socket `vector`
         """
         return nodes.VectorMath(vector0=self, vector1=vector, vector2=None, scale=ior, operation='REFRACT').vector
 
@@ -3921,7 +3921,7 @@ class Vector(geosocks.Vector):
             invert (bool): False
 
         Returns:
-            socket 'vector'
+            socket `vector`
         """
         return nodes.VectorRotate(vector=self, center=center, axis=axis, angle=angle, rotation=None, invert=invert, rotation_type='AXIS_ANGLE').vector
 
@@ -3938,7 +3938,7 @@ class Vector(geosocks.Vector):
             invert (bool): False
 
         Returns:
-            socket 'vector'
+            socket `vector`
         """
         return nodes.VectorRotate(vector=self, center=center, axis=None, angle=None, rotation=rotation, invert=invert, rotation_type='EULER_XYZ').vector
 
@@ -3955,7 +3955,7 @@ class Vector(geosocks.Vector):
             invert (bool): False
 
         Returns:
-            socket 'vector'
+            socket `vector`
         """
         return nodes.VectorRotate(vector=self, center=center, axis=None, angle=angle, rotation=None, invert=invert, rotation_type='X_AXIS').vector
 
@@ -3972,7 +3972,7 @@ class Vector(geosocks.Vector):
             invert (bool): False
 
         Returns:
-            socket 'vector'
+            socket `vector`
         """
         return nodes.VectorRotate(vector=self, center=center, axis=None, angle=angle, rotation=None, invert=invert, rotation_type='Y_AXIS').vector
 
@@ -3989,7 +3989,7 @@ class Vector(geosocks.Vector):
             invert (bool): False
 
         Returns:
-            socket 'vector'
+            socket `vector`
         """
         return nodes.VectorRotate(vector=self, center=center, axis=None, angle=angle, rotation=None, invert=invert, rotation_type='Z_AXIS').vector
 
@@ -4004,7 +4004,7 @@ class Vector(geosocks.Vector):
             scale: Float
 
         Returns:
-            socket 'vector'
+            socket `vector`
         """
         return nodes.VectorMath(vector0=self, vector1=None, vector2=None, scale=scale, operation='SCALE').vector
 
@@ -4031,7 +4031,7 @@ class Vector(geosocks.Vector):
         Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 
         Returns:
-            socket 'vector'
+            socket `vector`
         """
         return nodes.VectorMath(vector0=self, vector1=None, vector2=None, scale=None, operation='SINE').vector
 
@@ -4043,7 +4043,7 @@ class Vector(geosocks.Vector):
         Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 
         Returns:
-            socket 'vector'
+            socket `vector`
         """
         return nodes.VectorMath(vector0=self, vector1=None, vector2=None, scale=None, operation='SINE').vector
 
@@ -4058,7 +4058,7 @@ class Vector(geosocks.Vector):
             increment: Vector
 
         Returns:
-            socket 'vector'
+            socket `vector`
         """
         return nodes.VectorMath(vector0=self, vector1=increment, vector2=None, scale=None, operation='SNAP').vector
 
@@ -4073,7 +4073,7 @@ class Vector(geosocks.Vector):
             vector: Vector
 
         Returns:
-            socket 'vector'
+            socket `vector`
         """
         return nodes.VectorMath(vector0=self, vector1=vector, vector2=None, scale=None, operation='SUBTRACT').vector
 
@@ -4088,7 +4088,7 @@ class Vector(geosocks.Vector):
             vector: Vector
 
         Returns:
-            socket 'vector'
+            socket `vector`
         """
         return nodes.VectorMath(vector0=self, vector1=vector, vector2=None, scale=None, operation='SUBTRACT').vector
 
@@ -4104,7 +4104,7 @@ class Vector(geosocks.Vector):
             true: Vector
 
         Returns:
-            socket 'output'
+            socket `output`
         """
         return nodes.Switch(switch=switch, false=self, true=true, input_type='VECTOR').output
 
@@ -4116,7 +4116,7 @@ class Vector(geosocks.Vector):
         Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 
         Returns:
-            socket 'vector'
+            socket `vector`
         """
         return nodes.VectorMath(vector0=self, vector1=None, vector2=None, scale=None, operation='TANGENT').vector
 
@@ -4128,7 +4128,7 @@ class Vector(geosocks.Vector):
         Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 
         Returns:
-            socket 'vector'
+            socket `vector`
         """
         return nodes.VectorMath(vector0=self, vector1=None, vector2=None, scale=None, operation='TANGENT').vector
 
@@ -4144,7 +4144,7 @@ class Vector(geosocks.Vector):
             min: Vector
 
         Returns:
-            socket 'vector'
+            socket `vector`
         """
         return nodes.VectorMath(vector0=self, vector1=max, vector2=min, scale=None, operation='WRAP').vector
 
@@ -4160,7 +4160,7 @@ class Color(geosocks.Color):
         Developer reference [FunctionNodeInputColor](https://docs.blender.org/api/current/bpy.types.FunctionNodeInputColor.html)
 
         Returns:
-            socket 'color'
+            socket `color`
         """
         return cls(nodes.Color().color)
 
@@ -4179,7 +4179,7 @@ class Color(geosocks.Color):
             alpha: Float
 
         Returns:
-            socket 'color'
+            socket `color`
         """
         return cls(nodes.CombineColor(red=hue, green=saturation, blue=lightness, alpha=alpha, mode='HSV').color)
 
@@ -4198,7 +4198,7 @@ class Color(geosocks.Color):
             alpha: Float
 
         Returns:
-            socket 'color'
+            socket `color`
         """
         return cls(nodes.CombineColor(red=hue, green=saturation, blue=value, alpha=alpha, mode='HSV').color)
 
@@ -4217,7 +4217,7 @@ class Color(geosocks.Color):
             alpha: Float
 
         Returns:
-            socket 'color'
+            socket `color`
         """
         return cls(nodes.CombineColor(red=red, green=green, blue=blue, alpha=alpha, mode='RGB').color)
 
@@ -4230,7 +4230,7 @@ class Color(geosocks.Color):
         Developer reference [FunctionNodeSeparateColor](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html)
 
         Returns:
-            socket 'alpha'
+            socket `alpha`
         """
         return nodes.SeparateColor(color=self, mode=RGB).alpha
 
@@ -4243,7 +4243,7 @@ class Color(geosocks.Color):
         Developer reference [FunctionNodeSeparateColor](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html)
 
         Returns:
-            socket 'blue'
+            socket `blue`
         """
         return nodes.SeparateColor(color=self, mode=RGB).blue
 
@@ -4258,7 +4258,7 @@ class Color(geosocks.Color):
             b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 
         Returns:
-            socket 'result'
+            socket `result`
         """
         return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type='COLOR', mode='ELEMENT', operation='BRIGHTER').result
 
@@ -4275,7 +4275,7 @@ class Color(geosocks.Color):
             operation (str): 'GREATER_THAN' in [LESS_THAN, LESS_EQUAL, GREATER_THAN, GREATER_EQUAL, EQUAL, NOT_EQUAL]
 
         Returns:
-            socket 'result'
+            socket `result`
         """
         return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=epsilon, data_type='COLOR', mode='ELEMENT', operation=operation).result
 
@@ -4290,7 +4290,7 @@ class Color(geosocks.Color):
             b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 
         Returns:
-            socket 'result'
+            socket `result`
         """
         return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type='COLOR', mode='ELEMENT', operation='DARKER').result
 
@@ -4306,7 +4306,7 @@ class Color(geosocks.Color):
             epsilon: Float
 
         Returns:
-            socket 'result'
+            socket `result`
         """
         return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=epsilon, data_type='COLOR', mode='ELEMENT', operation='EQUAL').result
 
@@ -4322,7 +4322,7 @@ class Color(geosocks.Color):
             epsilon: Float
 
         Returns:
-            socket 'result'
+            socket `result`
         """
         return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=epsilon, data_type='COLOR', mode='ELEMENT', operation='EQUAL').result
 
@@ -4335,7 +4335,7 @@ class Color(geosocks.Color):
         Developer reference [FunctionNodeSeparateColor](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html)
 
         Returns:
-            socket 'green'
+            socket `green`
         """
         return nodes.SeparateColor(color=self, mode=RGB).green
 
@@ -4376,7 +4376,7 @@ class Color(geosocks.Color):
         Developer reference [FunctionNodeSeparateColor](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html)
 
         Returns:
-            socket 'red'
+            socket `red`
         """
         return nodes.SeparateColor(color=self, mode=HSV).red
 
@@ -4389,7 +4389,7 @@ class Color(geosocks.Color):
         Developer reference [FunctionNodeSeparateColor](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html)
 
         Returns:
-            socket 'blue'
+            socket `blue`
         """
         return nodes.SeparateColor(color=self, mode=HSL).blue
 
@@ -4408,7 +4408,7 @@ class Color(geosocks.Color):
             clamp_result (bool): False
 
         Returns:
-            socket 'result'
+            socket `result`
         """
         return nodes.Mix(factor=factor, a=self, b=color, blend_type=blend_type, clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='COLOR', factor_mode='UNIFORM').result
 
@@ -4426,7 +4426,7 @@ class Color(geosocks.Color):
             clamp_result (bool): False
 
         Returns:
-            socket 'result'
+            socket `result`
         """
         return nodes.Mix(factor=factor, a=self, b=color, blend_type='ADD', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='COLOR', factor_mode='UNIFORM').result
 
@@ -4444,7 +4444,7 @@ class Color(geosocks.Color):
             clamp_result (bool): False
 
         Returns:
-            socket 'result'
+            socket `result`
         """
         return nodes.Mix(factor=factor, a=self, b=color, blend_type='BURN', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='COLOR', factor_mode='UNIFORM').result
 
@@ -4462,7 +4462,7 @@ class Color(geosocks.Color):
             clamp_result (bool): False
 
         Returns:
-            socket 'result'
+            socket `result`
         """
         return nodes.Mix(factor=factor, a=self, b=color, blend_type='COLOR', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='COLOR', factor_mode='UNIFORM').result
 
@@ -4480,7 +4480,7 @@ class Color(geosocks.Color):
             clamp_result (bool): False
 
         Returns:
-            socket 'result'
+            socket `result`
         """
         return nodes.Mix(factor=factor, a=self, b=color, blend_type='DARKEN', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='COLOR', factor_mode='UNIFORM').result
 
@@ -4498,7 +4498,7 @@ class Color(geosocks.Color):
             clamp_result (bool): False
 
         Returns:
-            socket 'result'
+            socket `result`
         """
         return nodes.Mix(factor=factor, a=self, b=color, blend_type='DIFFERENCE', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='COLOR', factor_mode='UNIFORM').result
 
@@ -4516,7 +4516,7 @@ class Color(geosocks.Color):
             clamp_result (bool): False
 
         Returns:
-            socket 'result'
+            socket `result`
         """
         return nodes.Mix(factor=factor, a=self, b=color, blend_type='DIVIDE', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='COLOR', factor_mode='UNIFORM').result
 
@@ -4534,7 +4534,7 @@ class Color(geosocks.Color):
             clamp_result (bool): False
 
         Returns:
-            socket 'result'
+            socket `result`
         """
         return nodes.Mix(factor=factor, a=self, b=color, blend_type='DODGE', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='COLOR', factor_mode='UNIFORM').result
 
@@ -4552,7 +4552,7 @@ class Color(geosocks.Color):
             clamp_result (bool): False
 
         Returns:
-            socket 'result'
+            socket `result`
         """
         return nodes.Mix(factor=factor, a=self, b=color, blend_type='HUE', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='COLOR', factor_mode='UNIFORM').result
 
@@ -4570,7 +4570,7 @@ class Color(geosocks.Color):
             clamp_result (bool): False
 
         Returns:
-            socket 'result'
+            socket `result`
         """
         return nodes.Mix(factor=factor, a=self, b=color, blend_type='LIGHTEN', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='COLOR', factor_mode='UNIFORM').result
 
@@ -4588,7 +4588,7 @@ class Color(geosocks.Color):
             clamp_result (bool): False
 
         Returns:
-            socket 'result'
+            socket `result`
         """
         return nodes.Mix(factor=factor, a=self, b=color, blend_type='LINEAR_LIGHT', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='COLOR', factor_mode='UNIFORM').result
 
@@ -4606,7 +4606,7 @@ class Color(geosocks.Color):
             clamp_result (bool): False
 
         Returns:
-            socket 'result'
+            socket `result`
         """
         return nodes.Mix(factor=factor, a=self, b=color, blend_type='MULTIPLY', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='COLOR', factor_mode='UNIFORM').result
 
@@ -4624,7 +4624,7 @@ class Color(geosocks.Color):
             clamp_result (bool): False
 
         Returns:
-            socket 'result'
+            socket `result`
         """
         return nodes.Mix(factor=factor, a=self, b=color, blend_type='OVERLAY', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='COLOR', factor_mode='UNIFORM').result
 
@@ -4642,7 +4642,7 @@ class Color(geosocks.Color):
             clamp_result (bool): False
 
         Returns:
-            socket 'result'
+            socket `result`
         """
         return nodes.Mix(factor=factor, a=self, b=color, blend_type='SATURATION', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='COLOR', factor_mode='UNIFORM').result
 
@@ -4660,7 +4660,7 @@ class Color(geosocks.Color):
             clamp_result (bool): False
 
         Returns:
-            socket 'result'
+            socket `result`
         """
         return nodes.Mix(factor=factor, a=self, b=color, blend_type='SCREEN', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='COLOR', factor_mode='UNIFORM').result
 
@@ -4678,7 +4678,7 @@ class Color(geosocks.Color):
             clamp_result (bool): False
 
         Returns:
-            socket 'result'
+            socket `result`
         """
         return nodes.Mix(factor=factor, a=self, b=color, blend_type='SOFT_LIGHT', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='COLOR', factor_mode='UNIFORM').result
 
@@ -4696,7 +4696,7 @@ class Color(geosocks.Color):
             clamp_result (bool): False
 
         Returns:
-            socket 'result'
+            socket `result`
         """
         return nodes.Mix(factor=factor, a=self, b=color, blend_type='SUBTRACT', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='COLOR', factor_mode='UNIFORM').result
 
@@ -4714,7 +4714,7 @@ class Color(geosocks.Color):
             clamp_result (bool): False
 
         Returns:
-            socket 'result'
+            socket `result`
         """
         return nodes.Mix(factor=factor, a=self, b=color, blend_type='VALUE', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='COLOR', factor_mode='UNIFORM').result
 
@@ -4727,7 +4727,7 @@ class Color(geosocks.Color):
         Developer reference [FunctionNodeSeparateColor](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html)
 
         Returns:
-            socket 'red'
+            socket `red`
         """
         return nodes.SeparateColor(color=self, mode=RGB).red
 
@@ -4767,7 +4767,7 @@ class Color(geosocks.Color):
         Developer reference [FunctionNodeSeparateColor](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html)
 
         Returns:
-            socket 'green'
+            socket `green`
         """
         return nodes.SeparateColor(color=self, mode=HSV).green
 
@@ -4783,7 +4783,7 @@ class Color(geosocks.Color):
             true: Color
 
         Returns:
-            socket 'output'
+            socket `output`
         """
         return nodes.Switch(switch=switch, false=self, true=true, input_type='RGBA').output
 
@@ -4796,7 +4796,7 @@ class Color(geosocks.Color):
         Developer reference [FunctionNodeSeparateColor](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html)
 
         Returns:
-            socket 'blue'
+            socket `blue`
         """
         return nodes.SeparateColor(color=self, mode=HSV).blue
 
@@ -4815,7 +4815,7 @@ class Collection(geosocks.Collection):
             true: Collection
 
         Returns:
-            socket 'output'
+            socket `output`
         """
         return nodes.Switch(switch=switch, false=self, true=true, input_type='COLLECTION').output
 
@@ -4831,7 +4831,7 @@ class Object(geosocks.Object):
         Developer reference [GeometryNodeSelfObject](https://docs.blender.org/api/current/bpy.types.GeometryNodeSelfObject.html)
 
         Returns:
-            socket 'self_object'
+            socket `self_object`
         """
         return cls(nodes.SelfObject().self_object)
 
@@ -4848,7 +4848,7 @@ class Object(geosocks.Object):
             transform_space (str): 'ORIGINAL' in [ORIGINAL, RELATIVE]
 
         Returns:
-            socket 'geometry'
+            socket `geometry`
         """
         return nodes.ObjectInfo(object=object, as_instance=as_instance, transform_space=transform_space).geometry
 
@@ -4882,7 +4882,7 @@ class Object(geosocks.Object):
             transform_space (str): 'ORIGINAL' in [ORIGINAL, RELATIVE]
 
         Returns:
-            socket 'location'
+            socket `location`
         """
         return nodes.ObjectInfo(object=object, as_instance=as_instance, transform_space=transform_space).location
 
@@ -4899,7 +4899,7 @@ class Object(geosocks.Object):
             transform_space (str): 'ORIGINAL' in [ORIGINAL, RELATIVE]
 
         Returns:
-            socket 'rotation'
+            socket `rotation`
         """
         return nodes.ObjectInfo(object=object, as_instance=as_instance, transform_space=transform_space).rotation
 
@@ -4916,7 +4916,7 @@ class Object(geosocks.Object):
             transform_space (str): 'ORIGINAL' in [ORIGINAL, RELATIVE]
 
         Returns:
-            socket 'scale'
+            socket `scale`
         """
         return nodes.ObjectInfo(object=object, as_instance=as_instance, transform_space=transform_space).scale
 
@@ -4932,7 +4932,7 @@ class Object(geosocks.Object):
             true: Object
 
         Returns:
-            socket 'output'
+            socket `output`
         """
         return nodes.Switch(switch=switch, false=self, true=true, input_type='OBJECT').output
 
@@ -4951,7 +4951,7 @@ class Image(geosocks.Image):
             true: Image
 
         Returns:
-            socket 'output'
+            socket `output`
         """
         return nodes.Switch(switch=switch, false=self, true=true, input_type='IMAGE').output
 
@@ -5226,7 +5226,7 @@ class Texture(geosocks.Texture):
             musgrave_type (str): 'FBM' in [MULTIFRACTAL, RIDGED_MULTIFRACTAL, HYBRID_MULTIFRACTAL, FBM, HETERO_TERRAIN]
 
         Returns:
-            socket 'fac'
+            socket `fac`
         """
         return nodes.MusgraveTexture(vector=vector, w=w, scale=scale, detail=detail, dimension=dimension, lacunarity=lacunarity, offset=offset, gain=gain, musgrave_dimensions=musgrave_dimensions, musgrave_type=musgrave_type).fac
 
@@ -5350,7 +5350,7 @@ class Texture(geosocks.Texture):
             true: Texture
 
         Returns:
-            socket 'output'
+            socket `output`
         """
         return nodes.Switch(switch=switch, false=self, true=true, input_type='TEXTURE').output
 
@@ -5797,7 +5797,7 @@ class Material(geosocks.Material):
         Developer reference [GeometryNodeInputMaterial](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMaterial.html)
 
         Returns:
-            socket 'material'
+            socket `material`
         """
         return cls(nodes.Material().material)
 
@@ -5813,7 +5813,7 @@ class Material(geosocks.Material):
             true: Material
 
         Returns:
-            socket 'output'
+            socket `output`
         """
         return nodes.Switch(switch=switch, false=self, true=true, input_type='MATERIAL').output
 
@@ -5835,7 +5835,7 @@ class Geometry(geosocks.Geometry):
             transform_space (str): 'ORIGINAL' in [ORIGINAL, RELATIVE]
 
         Returns:
-            socket 'geometry'
+            socket `geometry`
         """
         return cls(nodes.CollectionInfo(collection=collection, separate_children=separate_children, reset_children=reset_children, transform_space=transform_space).geometry)
 
@@ -5848,7 +5848,7 @@ class Geometry(geosocks.Geometry):
         Developer reference [GeometryNodeInputID](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputID.html)
 
         Returns:
-            socket 'ID'
+            socket `ID`
         """
         return self.as_attribute(nodes.ID()).ID
 
@@ -5879,7 +5879,7 @@ class Geometry(geosocks.Geometry):
         Developer reference [GeometryNodeBoundBox](https://docs.blender.org/api/current/bpy.types.GeometryNodeBoundBox.html)
 
         Returns:
-            socket 'bounding_box' of class Mesh
+            socket `bounding_box` [Mesh](Mesh.md)
         """
         if not hasattr(self, '_c_geometrynodeboundbox'):
             self._c_geometrynodeboundbox = nodes.BoundingBox(geometry=self)
@@ -5894,7 +5894,7 @@ class Geometry(geosocks.Geometry):
         Developer reference [GeometryNodeBoundBox](https://docs.blender.org/api/current/bpy.types.GeometryNodeBoundBox.html)
 
         Returns:
-            socket 'min'
+            socket `min`
         """
         if not hasattr(self, '_c_geometrynodeboundbox'):
             self._c_geometrynodeboundbox = nodes.BoundingBox(geometry=self)
@@ -5909,7 +5909,7 @@ class Geometry(geosocks.Geometry):
         Developer reference [GeometryNodeBoundBox](https://docs.blender.org/api/current/bpy.types.GeometryNodeBoundBox.html)
 
         Returns:
-            socket 'max'
+            socket `max`
         """
         if not hasattr(self, '_c_geometrynodeboundbox'):
             self._c_geometrynodeboundbox = nodes.BoundingBox(geometry=self)
@@ -5927,7 +5927,7 @@ class Geometry(geosocks.Geometry):
             domain (str): 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
 
         Returns:
-            socket 'attribute'
+            socket `attribute`
         """
         data_type_ = self.value_data_type(value, 'FLOAT')
         return self.stack(nodes.CaptureAttribute(geometry=self, value=value, data_type=data_type_, domain=domain)).node.attribute
@@ -5959,7 +5959,7 @@ class Geometry(geosocks.Geometry):
         Developer reference [GeometryNodeConvexHull](https://docs.blender.org/api/current/bpy.types.GeometryNodeConvexHull.html)
 
         Returns:
-            socket 'convex_hull' of class Mesh
+            socket `convex_hull` [Mesh](Mesh.md)
         """
         return Mesh(nodes.ConvexHull(geometry=self).convex_hull)
 
@@ -5972,7 +5972,7 @@ class Geometry(geosocks.Geometry):
         Developer reference [GeometryNodeSeparateComponents](https://docs.blender.org/api/current/bpy.types.GeometryNodeSeparateComponents.html)
 
         Returns:
-            socket 'curve' of class Curve
+            socket `curve` [Curve](Curve.md)
         """
         if not hasattr(self, '_c_geometrynodeseparatecomponents'):
             self._c_geometrynodeseparatecomponents = nodes.SeparateComponents(geometry=self)
@@ -6023,7 +6023,7 @@ class Geometry(geosocks.Geometry):
             domain (str): 'POINT' in [POINT, EDGE, FACE, SPLINE, INSTANCE]
 
         Returns:
-            socket 'duplicate_index'
+            socket `duplicate_index`
         """
         return self.stack(nodes.DuplicateElements(geometry=self, selection=selection, amount=amount, domain=domain)).node.duplicate_index
 
@@ -6040,7 +6040,7 @@ class Geometry(geosocks.Geometry):
             domain (str): 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
 
         Returns:
-            socket 'value'
+            socket `value`
         """
         data_type_ = self.value_data_type(value, 'FLOAT')
         return self.as_attribute(nodes.FieldAtIndex(index=index, value=value, data_type=data_type_, domain=domain)).value
@@ -6056,7 +6056,7 @@ class Geometry(geosocks.Geometry):
             name: String
 
         Returns:
-            socket 'attribute'
+            socket `attribute`
         """
         return self.as_attribute(nodes.NamedAttribute(name=name, data_type='BOOLEAN')).attribute
 
@@ -6071,7 +6071,7 @@ class Geometry(geosocks.Geometry):
             name: String
 
         Returns:
-            socket 'attribute'
+            socket `attribute`
         """
         return self.as_attribute(nodes.NamedAttribute(name=name, data_type='FLOAT_COLOR')).attribute
 
@@ -6086,7 +6086,7 @@ class Geometry(geosocks.Geometry):
             name: String
 
         Returns:
-            socket 'attribute'
+            socket `attribute`
         """
         return self.as_attribute(nodes.NamedAttribute(name=name, data_type='FLOAT')).attribute
 
@@ -6101,7 +6101,7 @@ class Geometry(geosocks.Geometry):
             name: String
 
         Returns:
-            socket 'attribute'
+            socket `attribute`
         """
         return self.as_attribute(nodes.NamedAttribute(name=name, data_type='INT')).attribute
 
@@ -6116,7 +6116,7 @@ class Geometry(geosocks.Geometry):
             name: String
 
         Returns:
-            socket 'attribute'
+            socket `attribute`
         """
         return self.as_attribute(nodes.NamedAttribute(name=name, data_type='FLOAT_VECTOR')).attribute
 
@@ -6129,7 +6129,7 @@ class Geometry(geosocks.Geometry):
         Developer reference [GeometryNodeInputIndex](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputIndex.html)
 
         Returns:
-            socket 'index'
+            socket `index`
         """
         return self.as_attribute(nodes.Index()).index
 
@@ -6142,7 +6142,7 @@ class Geometry(geosocks.Geometry):
         Developer reference [GeometryNodeSeparateComponents](https://docs.blender.org/api/current/bpy.types.GeometryNodeSeparateComponents.html)
 
         Returns:
-            socket 'instances' of class Instances
+            socket `instances` [Instances](Instances.md)
         """
         if not hasattr(self, '_c_geometrynodeseparatecomponents'):
             self._c_geometrynodeseparatecomponents = nodes.SeparateComponents(geometry=self)
@@ -6157,7 +6157,7 @@ class Geometry(geosocks.Geometry):
         Developer reference [GeometryNodeIsViewport](https://docs.blender.org/api/current/bpy.types.GeometryNodeIsViewport.html)
 
         Returns:
-            socket 'is_viewport'
+            socket `is_viewport`
         """
         return self.as_attribute(nodes.IsViewport()).is_viewport
 
@@ -6187,7 +6187,7 @@ class Geometry(geosocks.Geometry):
         Developer reference [GeometryNodeInputMaterialIndex](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMaterialIndex.html)
 
         Returns:
-            socket 'material_index'
+            socket `material_index`
         """
         return self.as_attribute(nodes.MaterialIndex()).material_index
 
@@ -6202,7 +6202,7 @@ class Geometry(geosocks.Geometry):
             material: Material
 
         Returns:
-            socket 'selection'
+            socket `selection`
         """
         return self.as_attribute(nodes.MaterialSelection(material=material)).selection
 
@@ -6232,7 +6232,7 @@ class Geometry(geosocks.Geometry):
         Developer reference [GeometryNodeSeparateComponents](https://docs.blender.org/api/current/bpy.types.GeometryNodeSeparateComponents.html)
 
         Returns:
-            socket 'mesh' of class Mesh
+            socket `mesh` [Mesh](Mesh.md)
         """
         if not hasattr(self, '_c_geometrynodeseparatecomponents'):
             self._c_geometrynodeseparatecomponents = nodes.SeparateComponents(geometry=self)
@@ -6250,7 +6250,7 @@ class Geometry(geosocks.Geometry):
             data_type (str): 'FLOAT' in [FLOAT, INT, FLOAT_VECTOR, FLOAT_COLOR, BOOLEAN]
 
         Returns:
-            socket 'attribute'
+            socket `attribute`
         """
         return self.as_attribute(nodes.NamedAttribute(name=name, data_type=data_type)).attribute
 
@@ -6263,7 +6263,7 @@ class Geometry(geosocks.Geometry):
         Developer reference [GeometryNodeInputNormal](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputNormal.html)
 
         Returns:
-            socket 'normal'
+            socket `normal`
         """
         return self.as_attribute(nodes.Normal()).normal
 
@@ -6276,7 +6276,7 @@ class Geometry(geosocks.Geometry):
         Developer reference [GeometryNodeSeparateComponents](https://docs.blender.org/api/current/bpy.types.GeometryNodeSeparateComponents.html)
 
         Returns:
-            socket 'point_cloud' of class Points
+            socket `point_cloud` [Points](Points.md)
         """
         if not hasattr(self, '_c_geometrynodeseparatecomponents'):
             self._c_geometrynodeseparatecomponents = nodes.SeparateComponents(geometry=self)
@@ -6291,7 +6291,7 @@ class Geometry(geosocks.Geometry):
         Developer reference [GeometryNodeInputPosition](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputPosition.html)
 
         Returns:
-            socket 'position'
+            socket `position`
         """
         return self.as_attribute(nodes.Position()).position
 
@@ -6308,7 +6308,7 @@ class Geometry(geosocks.Geometry):
             target_element (str): 'FACES' in [POINTS, EDGES, FACES]
 
         Returns:
-            socket 'distance'
+            socket `distance`
         """
         return self.as_attribute(nodes.GeometryProximity(target=target, source_position=source_position, target_element=target_element)).distance
 
@@ -6324,7 +6324,7 @@ class Geometry(geosocks.Geometry):
             source_position: Vector
 
         Returns:
-            socket 'distance'
+            socket `distance`
         """
         return self.as_attribute(nodes.GeometryProximity(target=target, source_position=source_position, target_element='EDGES')).distance
 
@@ -6340,7 +6340,7 @@ class Geometry(geosocks.Geometry):
             source_position: Vector
 
         Returns:
-            socket 'distance'
+            socket `distance`
         """
         return self.as_attribute(nodes.GeometryProximity(target=target, source_position=source_position, target_element='FACES')).distance
 
@@ -6356,7 +6356,7 @@ class Geometry(geosocks.Geometry):
             source_position: Vector
 
         Returns:
-            socket 'distance'
+            socket `distance`
         """
         return self.as_attribute(nodes.GeometryProximity(target=target, source_position=source_position, target_element='POINTS')).distance
 
@@ -6369,7 +6369,7 @@ class Geometry(geosocks.Geometry):
         Developer reference [GeometryNodeInputRadius](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputRadius.html)
 
         Returns:
-            socket 'radius'
+            socket `radius`
         """
         return self.as_attribute(nodes.Radius()).radius
 
@@ -6386,7 +6386,7 @@ class Geometry(geosocks.Geometry):
             seed: Integer
 
         Returns:
-            socket 'value'
+            socket `value`
         """
         return self.as_attribute(nodes.RandomValue(min=None, max=None, probability=probability, ID=ID, seed=seed, data_type='BOOLEAN')).value
 
@@ -6404,7 +6404,7 @@ class Geometry(geosocks.Geometry):
             seed: Integer
 
         Returns:
-            socket 'value'
+            socket `value`
         """
         return self.as_attribute(nodes.RandomValue(min=min, max=max, probability=None, ID=ID, seed=seed, data_type='FLOAT')).value
 
@@ -6422,7 +6422,7 @@ class Geometry(geosocks.Geometry):
             seed: Integer
 
         Returns:
-            socket 'value'
+            socket `value`
         """
         return self.as_attribute(nodes.RandomValue(min=min, max=max, probability=None, ID=ID, seed=seed, data_type='INT')).value
 
@@ -6440,7 +6440,7 @@ class Geometry(geosocks.Geometry):
             seed: Integer
 
         Returns:
-            socket 'value'
+            socket `value`
         """
         return self.as_attribute(nodes.RandomValue(min=min, max=max, probability=None, ID=ID, seed=seed, data_type='FLOAT_VECTOR')).value
 
@@ -6550,7 +6550,7 @@ class Geometry(geosocks.Geometry):
             domain (str): 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
 
         Returns:
-            socket 'value'
+            socket `value`
         """
         data_type_ = self.value_data_type(value, 'FLOAT')
         return nodes.SampleIndex(geometry=self, value=value, index=index, clamp=clamp, data_type=data_type_, domain=domain).value
@@ -6567,7 +6567,7 @@ class Geometry(geosocks.Geometry):
             domain (str): 'POINT' in [POINT, EDGE, FACE, CORNER]
 
         Returns:
-            socket 'index'
+            socket `index`
         """
         return nodes.SampleNearest(geometry=self, sample_position=sample_position, domain=domain).index
 
@@ -6784,7 +6784,7 @@ class Geometry(geosocks.Geometry):
             true: Geometry
 
         Returns:
-            socket 'output'
+            socket `output`
         """
         return nodes.Switch(switch=switch, false=self, true=true, input_type='GEOMETRY').output
 
@@ -6799,7 +6799,7 @@ class Geometry(geosocks.Geometry):
             geometry: <m>Geometry
 
         Returns:
-            socket 'instances' of class Instances
+            socket `instances` [Instances](Instances.md)
         """
         return Instances(nodes.GeometryToInstance(*geometry).instances)
 
@@ -6829,7 +6829,7 @@ class Geometry(geosocks.Geometry):
         Developer reference [GeometryNodeSeparateComponents](https://docs.blender.org/api/current/bpy.types.GeometryNodeSeparateComponents.html)
 
         Returns:
-            socket 'volume' of class Volume
+            socket `volume` [Volume](Volume.md)
         """
         if not hasattr(self, '_c_geometrynodeseparatecomponents'):
             self._c_geometrynodeseparatecomponents = nodes.SeparateComponents(geometry=self)
@@ -6852,7 +6852,7 @@ class Mesh(Geometry):
             fill_type (str): 'NONE' in [NONE, NGON, TRIANGLE_FAN]
 
         Returns:
-            socket 'mesh'
+            socket `mesh`
         """
         return cls(nodes.MeshCircle(vertices=vertices, radius=radius, fill_type=fill_type).mesh)
 
@@ -6870,7 +6870,7 @@ class Mesh(Geometry):
             radius: Float
 
         Returns:
-            socket 'mesh'
+            socket `mesh`
         """
         return cls(nodes.UvSphere(segments=segments, rings=rings, radius=radius).mesh)
 
@@ -6912,7 +6912,7 @@ class Mesh(Geometry):
             vertices_z: Integer
 
         Returns:
-            socket 'mesh'
+            socket `mesh`
         """
         return cls(nodes.Cube(size=size, vertices_x=vertices_x, vertices_y=vertices_y, vertices_z=vertices_z).mesh)
 
@@ -6953,7 +6953,7 @@ class Mesh(Geometry):
             vertices_y: Integer
 
         Returns:
-            socket 'mesh'
+            socket `mesh`
         """
         return cls(nodes.Grid(size_x=size_x, size_y=size_y, vertices_x=vertices_x, vertices_y=vertices_y).mesh)
 
@@ -6970,7 +6970,7 @@ class Mesh(Geometry):
             subdivisions: Integer
 
         Returns:
-            socket 'mesh'
+            socket `mesh`
         """
         return cls(nodes.IcoSphere(radius=radius, subdivisions=subdivisions).mesh)
 
@@ -6991,7 +6991,7 @@ class Mesh(Geometry):
             mode (str): 'OFFSET' in [OFFSET, END_POINTS]
 
         Returns:
-            socket 'mesh'
+            socket `mesh`
         """
         return cls(nodes.MeshLine(count=count, resolution=resolution, start_location=start_location, offset=offset, count_mode=count_mode, mode=mode).mesh)
 
@@ -7009,7 +7009,7 @@ class Mesh(Geometry):
             end_location: Vector
 
         Returns:
-            socket 'mesh'
+            socket `mesh`
         """
         return cls(nodes.MeshLine(count=count, resolution=None, start_location=start_location, offset=end_location, count_mode='TOTAL', mode=END_POINTS).mesh)
 
@@ -7027,7 +7027,7 @@ class Mesh(Geometry):
             end_location: Vector
 
         Returns:
-            socket 'mesh'
+            socket `mesh`
         """
         return cls(nodes.MeshLine(count=None, resolution=resolution, start_location=start_location, offset=end_location, count_mode='RESOLUTION', mode=END_POINTS).mesh)
 
@@ -7045,7 +7045,7 @@ class Mesh(Geometry):
             offset: Vector
 
         Returns:
-            socket 'mesh'
+            socket `mesh`
         """
         return cls(nodes.MeshLine(count=count, resolution=None, start_location=start_location, offset=offset, count_mode='TOTAL', mode=OFFSET).mesh)
 
@@ -7063,7 +7063,7 @@ class Mesh(Geometry):
             offset: Vector
 
         Returns:
-            socket 'mesh'
+            socket `mesh`
         """
         return cls(nodes.MeshLine(count=None, resolution=resolution, start_location=start_location, offset=offset, count_mode='RESOLUTION', mode=OFFSET).mesh)
 
@@ -7080,7 +7080,7 @@ class Mesh(Geometry):
             hole_tolerant: Boolean
 
         Returns:
-            socket 'intersecting_edges'
+            socket `intersecting_edges`
         """
         return self.stack(nodes.MeshBoolean(*mesh_2, mesh_1=self, self_intersection=self_intersection, hole_tolerant=hole_tolerant, operation='DIFFERENCE')).node.intersecting_edges
 
@@ -7097,7 +7097,7 @@ class Mesh(Geometry):
             hole_tolerant: Boolean
 
         Returns:
-            socket 'intersecting_edges'
+            socket `intersecting_edges`
         """
         return self.stack(nodes.MeshBoolean(*mesh_2, mesh_1=None, self_intersection=self_intersection, hole_tolerant=hole_tolerant, operation='INTERSECT')).node.intersecting_edges
 
@@ -7114,7 +7114,7 @@ class Mesh(Geometry):
             hole_tolerant: Boolean
 
         Returns:
-            socket 'intersecting_edges'
+            socket `intersecting_edges`
         """
         return self.stack(nodes.MeshBoolean(*mesh_2, mesh_1=None, self_intersection=self_intersection, hole_tolerant=hole_tolerant, operation='UNION')).node.intersecting_edges
 
@@ -7127,7 +7127,7 @@ class Mesh(Geometry):
         Developer reference [GeometryNodeAttributeDomainSize](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html)
 
         Returns:
-            socket 'face_corner_count'
+            socket `face_corner_count`
         """
         if not hasattr(self, '_c_geometrynodeattributedomainsize'):
             self._c_geometrynodeattributedomainsize = nodes.DomainSize(geometry=self, component='MESH')
@@ -7230,7 +7230,7 @@ class Mesh(Geometry):
             keep_boundaries: Boolean
 
         Returns:
-            socket 'dual_mesh' of class Mesh
+            socket `dual_mesh` [Mesh](Mesh.md)
         """
         return Mesh(nodes.DualMesh(mesh=mesh, keep_boundaries=keep_boundaries).dual_mesh)
 
@@ -7243,7 +7243,7 @@ class Mesh(Geometry):
         Developer reference [GeometryNodeAttributeDomainSize](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html)
 
         Returns:
-            socket 'edge_count'
+            socket `edge_count`
         """
         if not hasattr(self, '_c_geometrynodeattributedomainsize'):
             self._c_geometrynodeattributedomainsize = nodes.DomainSize(geometry=self, component='MESH')
@@ -7261,7 +7261,7 @@ class Mesh(Geometry):
             next_vertex_index: Integer
 
         Returns:
-            socket 'curves' of class Curve
+            socket `curves` [Curve](Curve.md)
         """
         return Curve(self.as_attribute(nodes.EdgePathsToCurves(mesh=self, start_vertices=start_vertices, next_vertex_index=next_vertex_index)).curves)
 
@@ -7277,7 +7277,7 @@ class Mesh(Geometry):
             next_vertex_index: Integer
 
         Returns:
-            socket 'selection'
+            socket `selection`
         """
         return nodes.EdgePathsToSelection(start_vertices=start_vertices, next_vertex_index=next_vertex_index).selection
 
@@ -7310,7 +7310,7 @@ class Mesh(Geometry):
         Developer reference [GeometryNodeAttributeDomainSize](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html)
 
         Returns:
-            socket 'face_count'
+            socket `face_count`
         """
         if not hasattr(self, '_c_geometrynodeattributedomainsize'):
             self._c_geometrynodeattributedomainsize = nodes.DomainSize(geometry=self, component='MESH')
@@ -7327,7 +7327,7 @@ class Mesh(Geometry):
             threshold: Float
 
         Returns:
-            socket 'planar'
+            socket `planar`
         """
         return self.as_attribute(nodes.FaceIsPlanar(threshold=threshold)).planar
 
@@ -7342,7 +7342,7 @@ class Mesh(Geometry):
             face_set: Integer
 
         Returns:
-            socket 'boundary_edges'
+            socket `boundary_edges`
         """
         return self.as_attribute(nodes.FaceSetBoundaries(face_set=face_set)).boundary_edges
 
@@ -7377,7 +7377,7 @@ class Mesh(Geometry):
             scale: Vector
 
         Returns:
-            socket 'instances'
+            socket `instances`
         """
         return nodes.InstanceOnPoints(points=self, selection=selection, instance=instance, pick_instance=pick_instance, instance_index=instance_index, rotation=rotation, scale=scale).instances
 
@@ -7389,7 +7389,7 @@ class Mesh(Geometry):
         Developer reference [GeometryNodeInputShadeSmooth](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputShadeSmooth.html)
 
         Returns:
-            socket 'smooth'
+            socket `smooth`
         """
         return self.as_attribute(nodes.IsShadeSmooth()).smooth
 
@@ -7417,7 +7417,7 @@ class Mesh(Geometry):
         Developer reference [GeometryNodeInputMeshIsland](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshIsland.html)
 
         Returns:
-            socket 'island_count'
+            socket `island_count`
         """
         if not hasattr(self, '_c_geometrynodeinputmeshisland'):
             self._c_geometrynodeinputmeshisland = self.as_attribute(nodes.MeshIsland())
@@ -7432,7 +7432,7 @@ class Mesh(Geometry):
         Developer reference [GeometryNodeInputMeshIsland](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshIsland.html)
 
         Returns:
-            socket 'island_index'
+            socket `island_index`
         """
         if not hasattr(self, '_c_geometrynodeinputmeshisland'):
             self._c_geometrynodeinputmeshisland = self.as_attribute(nodes.MeshIsland())
@@ -7452,7 +7452,7 @@ class Mesh(Geometry):
             rotate: Boolean
 
         Returns:
-            socket 'uv'
+            socket `uv`
         """
         return self.as_attribute(nodes.PackUvIslands(uv=uv, selection=selection, margin=margin, rotate=rotate)).uv
 
@@ -7465,7 +7465,7 @@ class Mesh(Geometry):
         Developer reference [GeometryNodeAttributeDomainSize](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html)
 
         Returns:
-            socket 'point_count'
+            socket `point_count`
         """
         if not hasattr(self, '_c_geometrynodeattributedomainsize'):
             self._c_geometrynodeattributedomainsize = nodes.DomainSize(geometry=self, component='MESH')
@@ -7483,7 +7483,7 @@ class Mesh(Geometry):
             sample_position: Vector
 
         Returns:
-            socket 'value'
+            socket `value`
         """
         data_type_ = self.value_data_type(value, 'FLOAT')
         return nodes.SampleNearestSurface(mesh=self, value=value, sample_position=sample_position, data_type=data_type_).value
@@ -7657,7 +7657,7 @@ class Mesh(Geometry):
             selection: Boolean
 
         Returns:
-            socket 'curve' of class Curve
+            socket `curve` [Curve](Curve.md)
         """
         return Curve(nodes.MeshToCurve(mesh=self, selection=selection).curve)
 
@@ -7675,7 +7675,7 @@ class Mesh(Geometry):
             mode (str): 'VERTICES' in [VERTICES, EDGES, FACES, CORNERS]
 
         Returns:
-            socket 'points' of class Points
+            socket `points` [Points](Points.md)
         """
         return Points(nodes.MeshToPoints(mesh=self, selection=selection, position=position, radius=radius, mode=mode).points)
 
@@ -7696,7 +7696,7 @@ class Mesh(Geometry):
             resolution_mode (str): 'VOXEL_AMOUNT' in [VOXEL_AMOUNT, VOXEL_SIZE]
 
         Returns:
-            socket 'volume' of class Volume
+            socket `volume` [Volume](Volume.md)
         """
         return Volume(nodes.MeshToVolume(mesh=self, density=density, voxel_size=voxel_size, voxel_amount=voxel_amount, exterior_band_width=exterior_band_width, interior_band_width=interior_band_width, fill_volume=fill_volume, resolution_mode=resolution_mode).volume)
 
@@ -7733,7 +7733,7 @@ class Mesh(Geometry):
             method (str): 'ANGLE_BASED' in [ANGLE_BASED, CONFORMAL]
 
         Returns:
-            socket 'uv'
+            socket `uv`
         """
         return self.as_attribute(nodes.UvUnwrap(selection=selection, seam=seam, margin=margin, fill_holes=fill_holes, method=method)).uv
 
@@ -7757,7 +7757,7 @@ class Curve(Geometry):
             invert_arc: Boolean
 
         Returns:
-            socket 'curve'
+            socket `curve`
         """
         return cls(nodes.Arc(resolution=resolution, start=None, middle=None, end=None, radius=radius, start_angle=start_angle, sweep_angle=sweep_angle, offset_angle=None, connect_center=connect_center, invert_arc=invert_arc, mode='RADIUS').curve)
 
@@ -7796,7 +7796,7 @@ class Curve(Geometry):
             radius: Float
 
         Returns:
-            socket 'curve'
+            socket `curve`
         """
         return cls(nodes.CurveCircle(resolution=resolution, point_1=None, point_2=None, point_3=None, radius=radius, mode='RADIUS').curve)
 
@@ -7832,7 +7832,7 @@ class Curve(Geometry):
             end: Vector
 
         Returns:
-            socket 'curve'
+            socket `curve`
         """
         return cls(nodes.CurveLine(start=start, end=end, direction=None, length=None, mode='POINTS').curve)
 
@@ -7850,7 +7850,7 @@ class Curve(Geometry):
             length: Float
 
         Returns:
-            socket 'curve'
+            socket `curve`
         """
         return cls(nodes.CurveLine(start=start, end=None, direction=direction, length=length, mode='DIRECTION').curve)
 
@@ -7869,7 +7869,7 @@ class Curve(Geometry):
             end: Vector
 
         Returns:
-            socket 'curve'
+            socket `curve`
         """
         return cls(nodes.QuadraticBezier(resolution=resolution, start=start, middle=middle, end=end).curve)
 
@@ -7896,7 +7896,7 @@ class Curve(Geometry):
             mode (str): 'RECTANGLE' in [RECTANGLE, PARALLELOGRAM, TRAPEZOID, KITE, POINTS]
 
         Returns:
-            socket 'curve'
+            socket `curve`
         """
         return cls(nodes.Quadrilateral(width=width, height=height, bottom_width=bottom_width, top_width=top_width, offset=offset, bottom_height=bottom_height, top_height=top_height, point_1=point_1, point_2=point_2, point_3=point_3, point_4=point_4, mode=mode).curve)
 
@@ -7917,7 +7917,7 @@ class Curve(Geometry):
             reverse: Boolean
 
         Returns:
-            socket 'curve'
+            socket `curve`
         """
         return cls(nodes.Spiral(resolution=resolution, rotations=rotations, start_radius=start_radius, end_radius=end_radius, height=height, reverse=reverse).curve)
 
@@ -7957,7 +7957,7 @@ class Curve(Geometry):
             mode (str): 'POSITION' in [POSITION, OFFSET]
 
         Returns:
-            socket 'curve'
+            socket `curve`
         """
         return cls(nodes.BezierSegment(resolution=resolution, start=start, start_handle=start_handle, end_handle=end_handle, end=end, mode=mode).curve)
 
@@ -8016,7 +8016,7 @@ class Curve(Geometry):
             mode (str): 'TRIANGLES' in [TRIANGLES, NGONS]
 
         Returns:
-            socket 'mesh' of class Mesh
+            socket `mesh` [Mesh](Mesh.md)
         """
         return Mesh(nodes.FillCurve(curve=curve, mode=mode).mesh)
 
@@ -8031,7 +8031,7 @@ class Curve(Geometry):
             curve: Curve
 
         Returns:
-            socket 'mesh' of class Mesh
+            socket `mesh` [Mesh](Mesh.md)
         """
         return Mesh(nodes.FillCurve(curve=curve, mode='NGONS').mesh)
 
@@ -8046,7 +8046,7 @@ class Curve(Geometry):
             curve: Curve
 
         Returns:
-            socket 'mesh' of class Mesh
+            socket `mesh` [Mesh](Mesh.md)
         """
         return Mesh(nodes.FillCurve(curve=curve, mode='TRIANGLES').mesh)
 
@@ -8117,7 +8117,7 @@ class Curve(Geometry):
             scale: Vector
 
         Returns:
-            socket 'instances'
+            socket `instances`
         """
         return nodes.InstanceOnPoints(points=self, selection=selection, instance=instance, pick_instance=pick_instance, instance_index=instance_index, rotation=rotation, scale=scale).instances
 
@@ -8130,7 +8130,7 @@ class Curve(Geometry):
         Developer reference [GeometryNodeCurveLength](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveLength.html)
 
         Returns:
-            socket 'length'
+            socket `length`
         """
         return nodes.CurveLength(curve=self).length
 
@@ -8160,7 +8160,7 @@ class Curve(Geometry):
         Developer reference [GeometryNodeAttributeDomainSize](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html)
 
         Returns:
-            socket 'point_count'
+            socket `point_count`
         """
         if not hasattr(self, '_c_geometrynodeattributedomainsize'):
             self._c_geometrynodeattributedomainsize = nodes.DomainSize(geometry=self, component='CURVE')
@@ -8294,7 +8294,7 @@ class Curve(Geometry):
         Developer reference [GeometryNodeAttributeDomainSize](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html)
 
         Returns:
-            socket 'spline_count'
+            socket `spline_count`
         """
         if not hasattr(self, '_c_geometrynodeattributedomainsize'):
             self._c_geometrynodeattributedomainsize = nodes.DomainSize(geometry=self, component='CURVE')
@@ -8327,7 +8327,7 @@ class Curve(Geometry):
             fill_caps: Boolean
 
         Returns:
-            socket 'mesh' of class Mesh
+            socket `mesh` [Mesh](Mesh.md)
         """
         return Mesh(nodes.CurveToMesh(curve=self, profile_curve=profile_curve, fill_caps=fill_caps).mesh)
 
@@ -8458,7 +8458,7 @@ class Points(Geometry):
             radius: Float
 
         Returns:
-            socket 'geometry'
+            socket `geometry`
         """
         return cls(nodes.Points(count=count, position=position, radius=radius).geometry)
 
@@ -8471,7 +8471,7 @@ class Points(Geometry):
         Developer reference [GeometryNodeAttributeDomainSize](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html)
 
         Returns:
-            socket 'point_count'
+            socket `point_count`
         """
         if not hasattr(self, '_c_geometrynodeattributedomainsize'):
             self._c_geometrynodeattributedomainsize = nodes.DomainSize(geometry=self, component='POINTCLOUD')
@@ -8493,7 +8493,7 @@ class Points(Geometry):
             scale: Vector
 
         Returns:
-            socket 'instances'
+            socket `instances`
         """
         return nodes.InstanceOnPoints(points=self, selection=selection, instance=instance, pick_instance=pick_instance, instance_index=instance_index, rotation=rotation, scale=scale).instances
 
@@ -8525,7 +8525,7 @@ class Points(Geometry):
             selection: Boolean
 
         Returns:
-            socket 'mesh' of class Mesh
+            socket `mesh` [Mesh](Mesh.md)
         """
         return Mesh(nodes.PointsToVertices(points=points, selection=selection).mesh)
 
@@ -8544,7 +8544,7 @@ class Points(Geometry):
             resolution_mode (str): 'VOXEL_AMOUNT' in [VOXEL_AMOUNT, VOXEL_SIZE]
 
         Returns:
-            socket 'volume' of class Volume
+            socket `volume` [Volume](Volume.md)
         """
         return Volume(nodes.PointsToVolume(points=self, density=density, voxel_size=voxel_size, voxel_amount=voxel_amount, radius=radius, resolution_mode=resolution_mode).volume)
 
@@ -8561,7 +8561,7 @@ class Points(Geometry):
             radius: Float
 
         Returns:
-            socket 'volume' of class Volume
+            socket `volume` [Volume](Volume.md)
         """
         return Volume(nodes.PointsToVolume(points=self, density=density, voxel_size=None, voxel_amount=voxel_amount, radius=radius, resolution_mode='VOXEL_AMOUNT').volume)
 
@@ -8578,7 +8578,7 @@ class Points(Geometry):
             radius: Float
 
         Returns:
-            socket 'volume' of class Volume
+            socket `volume` [Volume](Volume.md)
         """
         return Volume(nodes.PointsToVolume(points=self, density=density, voxel_size=voxel_size, voxel_amount=None, radius=radius, resolution_mode='VOXEL_SIZE').volume)
 
@@ -8603,7 +8603,7 @@ class Instances(Geometry):
             scale: Vector
 
         Returns:
-            socket 'instances'
+            socket `instances`
         """
         return cls(nodes.InstanceOnPoints(points=points, selection=selection, instance=instance, pick_instance=pick_instance, instance_index=instance_index, rotation=rotation, scale=scale).instances)
 
@@ -8616,7 +8616,7 @@ class Instances(Geometry):
         Developer reference [GeometryNodeAttributeDomainSize](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html)
 
         Returns:
-            socket 'instance_count'
+            socket `instance_count`
         """
         if not hasattr(self, '_c_geometrynodeattributedomainsize'):
             self._c_geometrynodeattributedomainsize = nodes.DomainSize(geometry=self, component='INSTANCES')
@@ -8638,7 +8638,7 @@ class Instances(Geometry):
             scale: Vector
 
         Returns:
-            socket 'instances'
+            socket `instances`
         """
         return nodes.InstanceOnPoints(points=points, selection=selection, instance=self, pick_instance=pick_instance, instance_index=instance_index, rotation=rotation, scale=scale).instances
 
@@ -8654,7 +8654,7 @@ class Instances(Geometry):
             legacy_behavior (bool): False
 
         Returns:
-            socket 'geometry'
+            socket `geometry`
         """
         return nodes.RealizeInstances(geometry=geometry, legacy_behavior=legacy_behavior).geometry
 
@@ -8685,7 +8685,7 @@ class Instances(Geometry):
         Developer reference [GeometryNodeInputInstanceRotation](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputInstanceRotation.html)
 
         Returns:
-            socket 'rotation'
+            socket `rotation`
         """
         return self.as_attribute(nodes.InstanceRotation()).rotation
 
@@ -8698,7 +8698,7 @@ class Instances(Geometry):
         Developer reference [GeometryNodeInputInstanceScale](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputInstanceScale.html)
 
         Returns:
-            socket 'scale'
+            socket `scale`
         """
         return self.as_attribute(nodes.InstanceScale()).scale
 
@@ -8733,7 +8733,7 @@ class Instances(Geometry):
             radius: Float
 
         Returns:
-            socket 'points' of class Points
+            socket `points` [Points](Points.md)
         """
         return Points(nodes.InstancesToPoints(instances=self, selection=selection, position=position, radius=radius).points)
 
@@ -8775,7 +8775,7 @@ class Volume(Geometry):
             resolution_z: Integer
 
         Returns:
-            socket 'volume'
+            socket `volume`
         """
         return cls(nodes.VolumeCube(density=density, background=background, min=min, max=max, resolution_x=resolution_x, resolution_y=resolution_y, resolution_z=resolution_z).volume)
 
@@ -8794,7 +8794,7 @@ class Volume(Geometry):
             mode (str): 'DENSITY_RANDOM' in [DENSITY_RANDOM, DENSITY_GRID]
 
         Returns:
-            socket 'points' of class Points
+            socket `points` [Points](Points.md)
         """
         return Points(nodes.DistributePointsInVolume(volume=self, density=density, seed=seed, spacing=spacing, threshold=threshold, mode=mode).points)
 
@@ -8810,7 +8810,7 @@ class Volume(Geometry):
             threshold: Float
 
         Returns:
-            socket 'points' of class Points
+            socket `points` [Points](Points.md)
         """
         return Points(nodes.DistributePointsInVolume(volume=self, density=None, seed=None, spacing=spacing, threshold=threshold, mode='DENSITY_GRID').points)
 
@@ -8826,7 +8826,7 @@ class Volume(Geometry):
             seed: Integer
 
         Returns:
-            socket 'points' of class Points
+            socket `points` [Points](Points.md)
         """
         return Points(nodes.DistributePointsInVolume(volume=self, density=density, seed=seed, spacing=None, threshold=None, mode='DENSITY_RANDOM').points)
 
@@ -8845,7 +8845,7 @@ class Volume(Geometry):
             resolution_mode (str): 'GRID' in [GRID, VOXEL_AMOUNT, VOXEL_SIZE]
 
         Returns:
-            socket 'mesh' of class Mesh
+            socket `mesh` [Mesh](Mesh.md)
         """
         return Mesh(nodes.VolumeToMesh(volume=self, voxel_size=voxel_size, voxel_amount=voxel_amount, threshold=threshold, adaptivity=adaptivity, resolution_mode=resolution_mode).mesh)
 
@@ -8867,7 +8867,7 @@ class Rotation(Vector):
             space (str): 'OBJECT' in [OBJECT, LOCAL]
 
         Returns:
-            socket 'rotation'
+            socket `rotation`
         """
         return cls(nodes.RotateEuler(rotation=rotation, rotate_by=None, axis=axis, angle=angle, space=space, type=AXIS_ANGLE).rotation)
 
@@ -8885,7 +8885,7 @@ class Rotation(Vector):
             space (str): 'OBJECT' in [OBJECT, LOCAL]
 
         Returns:
-            socket 'rotation'
+            socket `rotation`
         """
         return cls(nodes.RotateEuler(rotation=rotation, rotate_by=rotate_by, axis=None, angle=None, space=space, type=EULER).rotation)
 
@@ -8920,7 +8920,7 @@ class Rotation(Vector):
             space (str): 'OBJECT' in [OBJECT, LOCAL]
 
         Returns:
-            socket 'rotation'
+            socket `rotation`
         """
         return nodes.RotateEuler(rotation=self, rotate_by=None, axis=axis, angle=angle, space=space, type=AXIS_ANGLE).rotation
 
@@ -8936,7 +8936,7 @@ class Rotation(Vector):
             space (str): 'OBJECT' in [OBJECT, LOCAL]
 
         Returns:
-            socket 'rotation'
+            socket `rotation`
         """
         return nodes.RotateEuler(rotation=self, rotate_by=rotate_by, axis=None, angle=None, space=space, type=EULER).rotation
 

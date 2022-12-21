@@ -1,6 +1,6 @@
 # class Edge
 
-> [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)
+> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 ## Properties
 
@@ -38,7 +38,7 @@ Node [Edge Angle](https://docs.blender.org/manual/en/latest/modeling/geometry_no
 ### Returns:
 - node with sockets ['unsigned_angle', 'signed_angle']
 
-<sub>Go to [top](#class-Edge) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Edge) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## delete_all
 
@@ -51,7 +51,7 @@ Node [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geomet
 ### Returns:
 - self
 
-<sub>Go to [top](#class-Edge) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Edge) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## delete_edges
 
@@ -64,7 +64,7 @@ Node [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geomet
 ### Returns:
 - self
 
-<sub>Go to [top](#class-Edge) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Edge) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## delete_faces
 
@@ -77,7 +77,7 @@ Node [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geomet
 ### Returns:
 - self
 
-<sub>Go to [top](#class-Edge) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Edge) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## domain_size
 
@@ -94,7 +94,7 @@ Node [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 ### Returns:
 - node with sockets ['point_count', 'edge_count', 'face_count', 'face_corner_count', 'spline_count', 'instance_count']
 
-<sub>Go to [top](#class-Edge) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Edge) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## edge_paths_to_curves
 
@@ -111,7 +111,7 @@ Node [Edge Paths to Curves](https://docs.blender.org/manual/en/latest/modeling/g
 ### Returns:
 - socket `curves` of class Curve
 
-<sub>Go to [top](#class-Edge) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Edge) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## extrude
 
@@ -129,7 +129,7 @@ Node [Extrude Mesh](https://docs.blender.org/manual/en/latest/modeling/geometry_
 ### Returns:
 - tuple ('`top`', '`side`')
 
-<sub>Go to [top](#class-Edge) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Edge) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## neighbors <sub>*property*</sub>
 
@@ -142,7 +142,7 @@ Node [Edge Neighbors](https://docs.blender.org/manual/en/latest/modeling/geometr
 ### Returns:
 - socket `face_count`
 
-<sub>Go to [top](#class-Edge) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Edge) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## scale_single_axis
 
@@ -160,7 +160,7 @@ Node [Scale Elements](https://docs.blender.org/manual/en/latest/modeling/geometr
 ### Returns:
 - self
 
-<sub>Go to [top](#class-Edge) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Edge) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## scale_uniform
 
@@ -177,7 +177,7 @@ Node [Scale Elements](https://docs.blender.org/manual/en/latest/modeling/geometr
 ### Returns:
 - self
 
-<sub>Go to [top](#class-Edge) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Edge) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## signed_angle <sub>*property*</sub>
 
@@ -190,7 +190,7 @@ Node [Edge Angle](https://docs.blender.org/manual/en/latest/modeling/geometry_no
 ### Returns:
 - socket `signed_angle`
 
-<sub>Go to [top](#class-Edge) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Edge) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## split
 
@@ -203,7 +203,7 @@ Node [Split Edges](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 ### Returns:
 - self
 
-<sub>Go to [top](#class-Edge) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Edge) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## to_curve
 
@@ -216,7 +216,7 @@ Node [Mesh to Curve](https://docs.blender.org/manual/en/latest/modeling/geometry
 ### Returns:
 - socket `curve` of class Curve
 
-<sub>Go to [top](#class-Edge) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Edge) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## unsigned_angle <sub>*property*</sub>
 
@@ -229,7 +229,7 @@ Node [Edge Angle](https://docs.blender.org/manual/en/latest/modeling/geometry_no
 ### Returns:
 - socket `unsigned_angle`
 
-<sub>Go to [top](#class-Edge) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Edge) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## vertices <sub>*property*</sub>
 
@@ -242,7 +242,7 @@ Node [Edge Vertices](https://docs.blender.org/manual/en/latest/modeling/geometry
 ### Returns:
 - node with sockets ['vertex_index_1', 'vertex_index_2', 'position_1', 'position_2']
 
-<sub>Go to [top](#class-Edge) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Edge) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## vertices_index <sub>*property*</sub>
 
@@ -255,7 +255,7 @@ Node [Edge Vertices](https://docs.blender.org/manual/en/latest/modeling/geometry
 ### Returns:
 - tuple ('`vertex_index_1`', '`vertex_index_2`')
 
-<sub>Go to [top](#class-Edge) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Edge) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## vertices_position <sub>*property*</sub>
 
@@ -268,5 +268,5 @@ Node [Edge Vertices](https://docs.blender.org/manual/en/latest/modeling/geometry
 ### Returns:
 - tuple ('`position_1`', '`position_2`')
 
-<sub>Go to [top](#class-Edge) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Edge) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

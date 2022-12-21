@@ -1,6 +1,6 @@
 # class Curve
 
-> [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)
+> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 ## Properties
 
@@ -72,7 +72,7 @@ Node [Arc](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/cur
 ### Returns:
 - socket `curve`
 
-<sub>Go to [top](#class-Curve) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## ArcFromPoints <sub>*classmethod*</sub>
 
@@ -94,7 +94,7 @@ Node [Arc](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/cur
 ### Returns:
 - node with sockets ['curve', 'center', 'normal', 'radius']
 
-<sub>Go to [top](#class-Curve) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## Circle <sub>*classmethod*</sub>
 
@@ -111,7 +111,7 @@ Node [Curve Circle](https://docs.blender.org/manual/en/latest/modeling/geometry_
 ### Returns:
 - socket `curve`
 
-<sub>Go to [top](#class-Curve) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## CircleFromPoints <sub>*classmethod*</sub>
 
@@ -130,7 +130,7 @@ Node [Curve Circle](https://docs.blender.org/manual/en/latest/modeling/geometry_
 ### Returns:
 - node with sockets ['curve', 'center']
 
-<sub>Go to [top](#class-Curve) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## Line <sub>*classmethod*</sub>
 
@@ -147,7 +147,7 @@ Node [Curve Line](https://docs.blender.org/manual/en/latest/modeling/geometry_no
 ### Returns:
 - socket `curve`
 
-<sub>Go to [top](#class-Curve) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## LineDirection <sub>*classmethod*</sub>
 
@@ -165,7 +165,7 @@ Node [Curve Line](https://docs.blender.org/manual/en/latest/modeling/geometry_no
 ### Returns:
 - socket `curve`
 
-<sub>Go to [top](#class-Curve) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## QuadraticBezier <sub>*classmethod*</sub>
 
@@ -184,7 +184,7 @@ Node [Quadratic Bezier](https://docs.blender.org/manual/en/latest/modeling/geome
 ### Returns:
 - socket `curve`
 
-<sub>Go to [top](#class-Curve) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## Quadrilateral <sub>*classmethod*</sub>
 
@@ -211,7 +211,7 @@ Node [Quadrilateral](https://docs.blender.org/manual/en/latest/modeling/geometry
 ### Returns:
 - socket `curve`
 
-<sub>Go to [top](#class-Curve) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## Spiral <sub>*classmethod*</sub>
 
@@ -232,7 +232,7 @@ Node [Spiral](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/
 ### Returns:
 - socket `curve`
 
-<sub>Go to [top](#class-Curve) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## Star <sub>*classmethod*</sub>
 
@@ -251,7 +251,7 @@ Node [Star](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/cu
 ### Returns:
 - node with sockets ['curve', 'outer_points']
 
-<sub>Go to [top](#class-Curve) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## bezier_segment <sub>*classmethod*</sub>
 
@@ -272,7 +272,7 @@ Node [Bezier Segment](https://docs.blender.org/manual/en/latest/modeling/geometr
 ### Returns:
 - socket `curve`
 
-<sub>Go to [top](#class-Curve) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## curve_of_point
 
@@ -288,7 +288,7 @@ Node [Curve of Point](https://docs.blender.org/manual/en/latest/modeling/geometr
 ### Returns:
 - tuple ('`curve_index`', '`index_in_curve`')
 
-<sub>Go to [top](#class-Curve) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## deform_on_surface
 
@@ -301,7 +301,7 @@ Node [Deform Curves on Surface](https://docs.blender.org/manual/en/latest/modeli
 ### Returns:
 - self
 
-<sub>Go to [top](#class-Curve) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## domain_size <sub>*property*</sub>
 
@@ -314,7 +314,7 @@ Node [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 ### Returns:
 - node with sockets ['point_count', 'edge_count', 'face_count', 'face_corner_count', 'spline_count', 'instance_count']
 
-<sub>Go to [top](#class-Curve) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## fill
 
@@ -331,7 +331,7 @@ Node [Fill Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_no
 ### Returns:
 - socket `mesh` of class Mesh
 
-<sub>Go to [top](#class-Curve) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## fill_ngons
 
@@ -347,7 +347,7 @@ Node [Fill Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_no
 ### Returns:
 - socket `mesh` of class Mesh
 
-<sub>Go to [top](#class-Curve) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## fill_triangles
 
@@ -363,7 +363,7 @@ Node [Fill Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_no
 ### Returns:
 - socket `mesh` of class Mesh
 
-<sub>Go to [top](#class-Curve) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## fillet
 
@@ -382,7 +382,7 @@ Node [Fillet Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_
 ### Returns:
 - self
 
-<sub>Go to [top](#class-Curve) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## fillet_bezier
 
@@ -399,7 +399,7 @@ Node [Fillet Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_
 ### Returns:
 - self
 
-<sub>Go to [top](#class-Curve) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## fillet_poly
 
@@ -417,7 +417,7 @@ Node [Fillet Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_
 ### Returns:
 - self
 
-<sub>Go to [top](#class-Curve) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## instance_on_points
 
@@ -438,7 +438,7 @@ Node [Instance on Points](https://docs.blender.org/manual/en/latest/modeling/geo
 ### Returns:
 - socket `instances`
 
-<sub>Go to [top](#class-Curve) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## length <sub>*property*</sub>
 
@@ -451,7 +451,7 @@ Node [Curve Length](https://docs.blender.org/manual/en/latest/modeling/geometry_
 ### Returns:
 - socket `length`
 
-<sub>Go to [top](#class-Curve) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## offset_point
 
@@ -468,7 +468,7 @@ Node [Offset Point in Curve](https://docs.blender.org/manual/en/latest/modeling/
 ### Returns:
 - tuple ('`is_valid_offset`', '`point_index`')
 
-<sub>Go to [top](#class-Curve) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## point_count <sub>*property*</sub>
 
@@ -481,7 +481,7 @@ Node [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 ### Returns:
 - socket `point_count`
 
-<sub>Go to [top](#class-Curve) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## points_of_curve
 
@@ -499,7 +499,7 @@ Node [Points of Curve](https://docs.blender.org/manual/en/latest/modeling/geomet
 ### Returns:
 - tuple ('`point_index`', '`total`')
 
-<sub>Go to [top](#class-Curve) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## resample
 
@@ -518,7 +518,7 @@ Node [Resample Curve](https://docs.blender.org/manual/en/latest/modeling/geometr
 ### Returns:
 - self
 
-<sub>Go to [top](#class-Curve) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## resample_count
 
@@ -535,7 +535,7 @@ Node [Resample Curve](https://docs.blender.org/manual/en/latest/modeling/geometr
 ### Returns:
 - self
 
-<sub>Go to [top](#class-Curve) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## resample_evaluated
 
@@ -551,7 +551,7 @@ Node [Resample Curve](https://docs.blender.org/manual/en/latest/modeling/geometr
 ### Returns:
 - self
 
-<sub>Go to [top](#class-Curve) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## resample_length
 
@@ -568,7 +568,7 @@ Node [Resample Curve](https://docs.blender.org/manual/en/latest/modeling/geometr
 ### Returns:
 - self
 
-<sub>Go to [top](#class-Curve) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## reverse
 
@@ -584,7 +584,7 @@ Node [Reverse Curve](https://docs.blender.org/manual/en/latest/modeling/geometry
 ### Returns:
 - self
 
-<sub>Go to [top](#class-Curve) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## sample
 
@@ -606,7 +606,7 @@ Node [Sample Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_
 ### Returns:
 - self
 
-<sub>Go to [top](#class-Curve) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## spline_count <sub>*property*</sub>
 
@@ -619,7 +619,7 @@ Node [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 ### Returns:
 - socket `spline_count`
 
-<sub>Go to [top](#class-Curve) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## subdivide
 
@@ -635,7 +635,7 @@ Node [Subdivide Curve](https://docs.blender.org/manual/en/latest/modeling/geomet
 ### Returns:
 - self
 
-<sub>Go to [top](#class-Curve) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## to_mesh
 
@@ -652,7 +652,7 @@ Node [Curve to Mesh](https://docs.blender.org/manual/en/latest/modeling/geometry
 ### Returns:
 - socket `mesh` of class Mesh
 
-<sub>Go to [top](#class-Curve) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## to_points
 
@@ -670,7 +670,7 @@ Node [Curve to Points](https://docs.blender.org/manual/en/latest/modeling/geomet
 ### Returns:
 - tuple ('`points`', '`tangent`', '`normal`', '`rotation`')
 
-<sub>Go to [top](#class-Curve) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## to_points_count
 
@@ -686,7 +686,7 @@ Node [Curve to Points](https://docs.blender.org/manual/en/latest/modeling/geomet
 ### Returns:
 - tuple ('`points`', '`tangent`', '`normal`', '`rotation`')
 
-<sub>Go to [top](#class-Curve) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## to_points_evaluated
 
@@ -699,7 +699,7 @@ Node [Curve to Points](https://docs.blender.org/manual/en/latest/modeling/geomet
 ### Returns:
 - tuple ('`points`', '`tangent`', '`normal`', '`rotation`')
 
-<sub>Go to [top](#class-Curve) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## to_points_length
 
@@ -715,7 +715,7 @@ Node [Curve to Points](https://docs.blender.org/manual/en/latest/modeling/geomet
 ### Returns:
 - tuple ('`points`', '`tangent`', '`normal`', '`rotation`')
 
-<sub>Go to [top](#class-Curve) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## trim
 
@@ -731,7 +731,7 @@ Node [Trim Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_no
 ### Returns:
 - self
 
-<sub>Go to [top](#class-Curve) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## trim_factor
 
@@ -748,7 +748,7 @@ Node [Trim Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_no
 ### Returns:
 - self
 
-<sub>Go to [top](#class-Curve) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## trim_length
 
@@ -765,5 +765,5 @@ Node [Trim Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_no
 ### Returns:
 - self
 
-<sub>Go to [top](#class-Curve) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

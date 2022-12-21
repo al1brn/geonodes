@@ -1,6 +1,6 @@
 # class Corner
 
-> [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)
+> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 
 
@@ -24,5 +24,5 @@ Node [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 ### Returns:
 - node with sockets ['point_count', 'edge_count', 'face_count', 'face_corner_count', 'spline_count', 'instance_count']
 
-<sub>Go to [top](#class-Corner) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Corner) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

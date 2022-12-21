@@ -1,6 +1,6 @@
 # class Vector
 
-> [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)
+> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 ## Properties
 
@@ -119,7 +119,7 @@ Node [Combine XYZ](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 ### Returns:
 - socket `vector`
 
-<sub>Go to [top](#class-Vector) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Vector) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## Input <sub>*classmethod*</sub>
 
@@ -140,7 +140,7 @@ Even if homonyms are accepted, it is recommended to avoid to create to input soc
 ### Returns:
 - Vector
 
-<sub>Go to [top](#class-Vector) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Vector) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## Vector <sub>*classmethod*</sub>
 
@@ -156,7 +156,7 @@ Node [Vector](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/
 ### Returns:
 - socket `vector`
 
-<sub>Go to [top](#class-Vector) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Vector) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## abs
 
@@ -169,7 +169,7 @@ Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 ### Returns:
 - socket `vector`
 
-<sub>Go to [top](#class-Vector) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Vector) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## absolute
 
@@ -182,7 +182,7 @@ Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 ### Returns:
 - socket `vector`
 
-<sub>Go to [top](#class-Vector) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Vector) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## add
 
@@ -198,7 +198,7 @@ Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 ### Returns:
 - socket `vector`
 
-<sub>Go to [top](#class-Vector) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Vector) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## align_euler_to_vector
 
@@ -217,7 +217,7 @@ Node [Align Euler to Vector](https://docs.blender.org/manual/en/latest/modeling/
 ### Returns:
 - self
 
-<sub>Go to [top](#class-Vector) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Vector) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## average_equal
 
@@ -234,7 +234,7 @@ Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 ### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-Vector) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Vector) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## average_greater_equal
 
@@ -250,7 +250,7 @@ Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 ### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-Vector) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Vector) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## average_greater_than
 
@@ -266,7 +266,7 @@ Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 ### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-Vector) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Vector) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## average_less_equal
 
@@ -282,7 +282,7 @@ Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 ### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-Vector) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Vector) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## average_less_than
 
@@ -298,7 +298,7 @@ Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 ### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-Vector) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Vector) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## average_not_equal
 
@@ -315,7 +315,7 @@ Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 ### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-Vector) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Vector) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## ceil
 
@@ -328,7 +328,7 @@ Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 ### Returns:
 - socket `vector`
 
-<sub>Go to [top](#class-Vector) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Vector) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## compare
 
@@ -349,7 +349,7 @@ Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 ### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-Vector) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Vector) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## cos
 
@@ -362,7 +362,7 @@ Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 ### Returns:
 - socket `vector`
 
-<sub>Go to [top](#class-Vector) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Vector) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## cosine
 
@@ -375,7 +375,7 @@ Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 ### Returns:
 - socket `vector`
 
-<sub>Go to [top](#class-Vector) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Vector) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## cross
 
@@ -391,7 +391,7 @@ Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 ### Returns:
 - socket `vector`
 
-<sub>Go to [top](#class-Vector) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Vector) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## cross_product
 
@@ -407,7 +407,7 @@ Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 ### Returns:
 - socket `vector`
 
-<sub>Go to [top](#class-Vector) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Vector) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## curves
 
@@ -423,7 +423,7 @@ Node [Vector Curves](https://docs.blender.org/manual/en/latest/modeling/geometry
 ### Returns:
 - socket `vector`
 
-<sub>Go to [top](#class-Vector) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Vector) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## direction_equal
 
@@ -441,7 +441,7 @@ Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 ### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-Vector) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Vector) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## direction_greater_equal
 
@@ -458,7 +458,7 @@ Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 ### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-Vector) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Vector) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## direction_greater_than
 
@@ -475,7 +475,7 @@ Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 ### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-Vector) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Vector) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## direction_less_equal
 
@@ -492,7 +492,7 @@ Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 ### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-Vector) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Vector) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## direction_less_than
 
@@ -509,7 +509,7 @@ Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 ### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-Vector) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Vector) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## direction_not_equal
 
@@ -527,7 +527,7 @@ Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 ### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-Vector) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Vector) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## distance
 
@@ -543,7 +543,7 @@ Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 ### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-Vector) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Vector) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## div
 
@@ -559,7 +559,7 @@ Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 ### Returns:
 - socket `vector`
 
-<sub>Go to [top](#class-Vector) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Vector) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## divide
 
@@ -575,7 +575,7 @@ Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 ### Returns:
 - socket `vector`
 
-<sub>Go to [top](#class-Vector) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Vector) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## dot
 
@@ -591,7 +591,7 @@ Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 ### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-Vector) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Vector) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## dot_product
 
@@ -607,7 +607,7 @@ Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 ### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-Vector) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Vector) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## dot_product_equal
 
@@ -625,7 +625,7 @@ Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 ### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-Vector) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Vector) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## dot_product_greater_equal
 
@@ -642,7 +642,7 @@ Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 ### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-Vector) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Vector) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## dot_product_greater_than
 
@@ -659,7 +659,7 @@ Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 ### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-Vector) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Vector) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## dot_product_less_equal
 
@@ -676,7 +676,7 @@ Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 ### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-Vector) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Vector) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## dot_product_less_than
 
@@ -693,7 +693,7 @@ Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 ### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-Vector) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Vector) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## dot_product_not_equal
 
@@ -711,7 +711,7 @@ Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 ### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-Vector) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Vector) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## elements_equal
 
@@ -728,7 +728,7 @@ Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 ### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-Vector) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Vector) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## elements_greater_equal
 
@@ -744,7 +744,7 @@ Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 ### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-Vector) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Vector) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## elements_greater_than
 
@@ -760,7 +760,7 @@ Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 ### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-Vector) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Vector) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## elements_less_equal
 
@@ -776,7 +776,7 @@ Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 ### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-Vector) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Vector) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## elements_less_than
 
@@ -792,7 +792,7 @@ Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 ### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-Vector) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Vector) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## elements_not_equal
 
@@ -809,7 +809,7 @@ Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 ### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-Vector) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Vector) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## face_forward
 
@@ -826,7 +826,7 @@ Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 ### Returns:
 - socket `vector`
 
-<sub>Go to [top](#class-Vector) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Vector) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## floor
 
@@ -839,7 +839,7 @@ Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 ### Returns:
 - socket `vector`
 
-<sub>Go to [top](#class-Vector) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Vector) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## fract
 
@@ -852,7 +852,7 @@ Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 ### Returns:
 - socket `vector`
 
-<sub>Go to [top](#class-Vector) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Vector) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## fraction
 
@@ -865,7 +865,7 @@ Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 ### Returns:
 - socket `vector`
 
-<sub>Go to [top](#class-Vector) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Vector) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## length <sub>*property*</sub>
 
@@ -878,7 +878,7 @@ Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 ### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-Vector) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Vector) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## length_equal
 
@@ -895,7 +895,7 @@ Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 ### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-Vector) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Vector) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## length_greater_equal
 
@@ -911,7 +911,7 @@ Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 ### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-Vector) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Vector) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## length_greater_than
 
@@ -927,7 +927,7 @@ Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 ### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-Vector) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Vector) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## length_less_equal
 
@@ -943,7 +943,7 @@ Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 ### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-Vector) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Vector) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## length_less_than
 
@@ -959,7 +959,7 @@ Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 ### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-Vector) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Vector) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## length_not_equal
 
@@ -976,7 +976,7 @@ Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 ### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-Vector) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Vector) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## map_range
 
@@ -998,7 +998,7 @@ Node [Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nod
 ### Returns:
 - socket `vector`
 
-<sub>Go to [top](#class-Vector) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Vector) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## map_range_linear
 
@@ -1018,7 +1018,7 @@ Node [Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nod
 ### Returns:
 - socket `vector`
 
-<sub>Go to [top](#class-Vector) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Vector) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## map_range_smooth
 
@@ -1038,7 +1038,7 @@ Node [Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nod
 ### Returns:
 - socket `vector`
 
-<sub>Go to [top](#class-Vector) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Vector) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## map_range_smoother
 
@@ -1058,7 +1058,7 @@ Node [Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nod
 ### Returns:
 - socket `vector`
 
-<sub>Go to [top](#class-Vector) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Vector) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## map_range_stepped
 
@@ -1079,7 +1079,7 @@ Node [Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nod
 ### Returns:
 - socket `vector`
 
-<sub>Go to [top](#class-Vector) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Vector) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## max
 
@@ -1095,7 +1095,7 @@ Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 ### Returns:
 - socket `vector`
 
-<sub>Go to [top](#class-Vector) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Vector) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## maximum
 
@@ -1111,7 +1111,7 @@ Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 ### Returns:
 - socket `vector`
 
-<sub>Go to [top](#class-Vector) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Vector) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## min
 
@@ -1127,7 +1127,7 @@ Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 ### Returns:
 - socket `vector`
 
-<sub>Go to [top](#class-Vector) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Vector) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## minimum
 
@@ -1143,7 +1143,7 @@ Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 ### Returns:
 - socket `vector`
 
-<sub>Go to [top](#class-Vector) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Vector) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## mix
 
@@ -1162,7 +1162,7 @@ Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/col
 ### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-Vector) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Vector) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## mix_non_uniform
 
@@ -1180,7 +1180,7 @@ Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/col
 ### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-Vector) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Vector) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## mix_uniform
 
@@ -1197,7 +1197,7 @@ Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/col
 ### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-Vector) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Vector) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## modulo
 
@@ -1213,7 +1213,7 @@ Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 ### Returns:
 - socket `vector`
 
-<sub>Go to [top](#class-Vector) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Vector) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## mul
 
@@ -1229,7 +1229,7 @@ Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 ### Returns:
 - socket `vector`
 
-<sub>Go to [top](#class-Vector) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Vector) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## mul_add
 
@@ -1246,7 +1246,7 @@ Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 ### Returns:
 - socket `vector`
 
-<sub>Go to [top](#class-Vector) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Vector) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## multiply
 
@@ -1262,7 +1262,7 @@ Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 ### Returns:
 - socket `vector`
 
-<sub>Go to [top](#class-Vector) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Vector) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## multiply_add
 
@@ -1279,7 +1279,7 @@ Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 ### Returns:
 - socket `vector`
 
-<sub>Go to [top](#class-Vector) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Vector) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## normalize
 
@@ -1292,7 +1292,7 @@ Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 ### Returns:
 - socket `vector`
 
-<sub>Go to [top](#class-Vector) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Vector) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## project
 
@@ -1308,7 +1308,7 @@ Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 ### Returns:
 - socket `vector`
 
-<sub>Go to [top](#class-Vector) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Vector) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## reflect
 
@@ -1324,7 +1324,7 @@ Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 ### Returns:
 - socket `vector`
 
-<sub>Go to [top](#class-Vector) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Vector) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## refract
 
@@ -1341,7 +1341,7 @@ Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 ### Returns:
 - socket `vector`
 
-<sub>Go to [top](#class-Vector) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Vector) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## rotate_axis_angle
 
@@ -1360,7 +1360,7 @@ Node [Vector Rotate](https://docs.blender.org/manual/en/latest/modeling/geometry
 ### Returns:
 - socket `vector`
 
-<sub>Go to [top](#class-Vector) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Vector) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## rotate_euler
 
@@ -1378,7 +1378,7 @@ Node [Vector Rotate](https://docs.blender.org/manual/en/latest/modeling/geometry
 ### Returns:
 - socket `vector`
 
-<sub>Go to [top](#class-Vector) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Vector) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## rotate_x
 
@@ -1396,7 +1396,7 @@ Node [Vector Rotate](https://docs.blender.org/manual/en/latest/modeling/geometry
 ### Returns:
 - socket `vector`
 
-<sub>Go to [top](#class-Vector) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Vector) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## rotate_y
 
@@ -1414,7 +1414,7 @@ Node [Vector Rotate](https://docs.blender.org/manual/en/latest/modeling/geometry
 ### Returns:
 - socket `vector`
 
-<sub>Go to [top](#class-Vector) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Vector) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## rotate_z
 
@@ -1432,7 +1432,7 @@ Node [Vector Rotate](https://docs.blender.org/manual/en/latest/modeling/geometry
 ### Returns:
 - socket `vector`
 
-<sub>Go to [top](#class-Vector) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Vector) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## scale
 
@@ -1448,7 +1448,7 @@ Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 ### Returns:
 - socket `vector`
 
-<sub>Go to [top](#class-Vector) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Vector) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## separate <sub>*property*</sub>
 
@@ -1461,7 +1461,7 @@ Node [Separate XYZ](https://docs.blender.org/manual/en/latest/modeling/geometry_
 ### Returns:
 - node with sockets ['x', 'y', 'z']
 
-<sub>Go to [top](#class-Vector) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Vector) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## sin
 
@@ -1474,7 +1474,7 @@ Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 ### Returns:
 - socket `vector`
 
-<sub>Go to [top](#class-Vector) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Vector) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## sine
 
@@ -1487,7 +1487,7 @@ Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 ### Returns:
 - socket `vector`
 
-<sub>Go to [top](#class-Vector) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Vector) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## snap
 
@@ -1503,7 +1503,7 @@ Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 ### Returns:
 - socket `vector`
 
-<sub>Go to [top](#class-Vector) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Vector) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## sub
 
@@ -1519,7 +1519,7 @@ Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 ### Returns:
 - socket `vector`
 
-<sub>Go to [top](#class-Vector) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Vector) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## subtract
 
@@ -1535,7 +1535,7 @@ Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 ### Returns:
 - socket `vector`
 
-<sub>Go to [top](#class-Vector) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Vector) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## switch
 
@@ -1552,7 +1552,7 @@ Node [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/
 ### Returns:
 - socket `output`
 
-<sub>Go to [top](#class-Vector) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Vector) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## tan
 
@@ -1565,7 +1565,7 @@ Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 ### Returns:
 - socket `vector`
 
-<sub>Go to [top](#class-Vector) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Vector) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## tangent
 
@@ -1578,7 +1578,7 @@ Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 ### Returns:
 - socket `vector`
 
-<sub>Go to [top](#class-Vector) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Vector) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## wrap
 
@@ -1595,5 +1595,5 @@ Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 ### Returns:
 - socket `vector`
 
-<sub>Go to [top](#class-Vector) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Vector) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

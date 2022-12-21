@@ -1,6 +1,6 @@
 # class String
 
-> [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)
+> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 ## Properties
 
@@ -45,7 +45,7 @@ Even if homonyms are accepted, it is recommended to avoid to create to input soc
 ### Returns:
 - String
 
-<sub>Go to [top](#class-String) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-String) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## LineBreak <sub>*staticmethod*</sub>
 
@@ -58,7 +58,7 @@ Node [Special Characters](https://docs.blender.org/manual/en/latest/modeling/geo
 ### Returns:
 - socket `line_break`
 
-<sub>Go to [top](#class-String) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-String) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## String <sub>*classmethod*</sub>
 
@@ -74,7 +74,7 @@ Node [String](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/
 ### Returns:
 - socket `string`
 
-<sub>Go to [top](#class-String) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-String) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## Tab <sub>*staticmethod*</sub>
 
@@ -87,7 +87,7 @@ Node [Special Characters](https://docs.blender.org/manual/en/latest/modeling/geo
 ### Returns:
 - socket `tab`
 
-<sub>Go to [top](#class-String) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-String) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## equal
 
@@ -103,7 +103,7 @@ Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 ### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-String) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-String) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## join
 
@@ -120,7 +120,7 @@ Node [Join Strings](https://docs.blender.org/manual/en/latest/modeling/geometry_
 ### Returns:
 - socket `string`
 
-<sub>Go to [top](#class-String) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-String) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## length <sub>*property*</sub>
 
@@ -133,7 +133,7 @@ Node [String Length](https://docs.blender.org/manual/en/latest/modeling/geometry
 ### Returns:
 - socket `length`
 
-<sub>Go to [top](#class-String) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-String) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## not_equal
 
@@ -149,7 +149,7 @@ Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 ### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-String) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-String) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## replace
 
@@ -166,7 +166,7 @@ Node [Replace String](https://docs.blender.org/manual/en/latest/modeling/geometr
 ### Returns:
 - socket `string`
 
-<sub>Go to [top](#class-String) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-String) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## slice
 
@@ -183,7 +183,7 @@ Node [Slice String](https://docs.blender.org/manual/en/latest/modeling/geometry_
 ### Returns:
 - socket `string`
 
-<sub>Go to [top](#class-String) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-String) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## switch
 
@@ -200,7 +200,7 @@ Node [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/
 ### Returns:
 - socket `output`
 
-<sub>Go to [top](#class-String) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-String) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## to_curves
 
@@ -226,5 +226,5 @@ Node [String to Curves](https://docs.blender.org/manual/en/latest/modeling/geome
 ### Returns:
 - tuple ('`curve_instances`', '`line`', '`pivot_point`')
 
-<sub>Go to [top](#class-String) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
+<sub>Go to [top](#class-String) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
