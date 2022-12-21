@@ -1,6 +1,6 @@
 # class Rotation
 
-> [main](./structure.md) - [nodes](ndes.md) - [nodes menu](.nodes_menus.md)
+> [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)
 
 
 ## Class methods
@@ -32,7 +32,7 @@ Node [Rotate Euler](https://docs.blender.org/manual/en/latest/modeling/geometry_
 ### Returns:
 - socket `rotation`
 
-<sub>Go to [top](#class-Rotation) - [main](./structure.md) - [nodes](ndes.md) - [nodes menu](.nodes_menus.md)</sub>
+<sub>Go to [top](#class-Rotation) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
 
 ## Euler <sub>*classmethod*</sub>
 
@@ -50,7 +50,7 @@ Node [Rotate Euler](https://docs.blender.org/manual/en/latest/modeling/geometry_
 ### Returns:
 - socket `rotation`
 
-<sub>Go to [top](#class-Rotation) - [main](./structure.md) - [nodes](ndes.md) - [nodes menu](.nodes_menus.md)</sub>
+<sub>Go to [top](#class-Rotation) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
 
 ## align_to_vector
 
@@ -69,7 +69,7 @@ Node [Align Euler to Vector](https://docs.blender.org/manual/en/latest/modeling/
 ### Returns:
 - self
 
-<sub>Go to [top](#class-Rotation) - [main](./structure.md) - [nodes](ndes.md) - [nodes menu](.nodes_menus.md)</sub>
+<sub>Go to [top](#class-Rotation) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
 
 ## rotate_axis_angle
 
@@ -87,7 +87,7 @@ Node [Rotate Euler](https://docs.blender.org/manual/en/latest/modeling/geometry_
 ### Returns:
 - socket `rotation`
 
-<sub>Go to [top](#class-Rotation) - [main](./structure.md) - [nodes](ndes.md) - [nodes menu](.nodes_menus.md)</sub>
+<sub>Go to [top](#class-Rotation) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
 
 ## rotate_euler
 
@@ -104,5 +104,5 @@ Node [Rotate Euler](https://docs.blender.org/manual/en/latest/modeling/geometry_
 ### Returns:
 - socket `rotation`
 
-<sub>Go to [top](#class-Rotation) - [main](./structure.md) - [nodes](ndes.md) - [nodes menu](.nodes_menus.md)</sub>
+<sub>Go to [top](#class-Rotation) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
 

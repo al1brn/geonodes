@@ -1,6 +1,6 @@
 # class Texture
 
-> [main](./structure.md) - [nodes](ndes.md) - [nodes menu](.nodes_menus.md)
+> [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)
 
 
 ## Class methods
@@ -69,7 +69,7 @@ The initial value can be either a valid Blender Texture or the name of an existi
 ### Returns:
 - Texture
 
-<sub>Go to [top](#class-Texture) - [main](./structure.md) - [nodes](ndes.md) - [nodes menu](.nodes_menus.md)</sub>
+<sub>Go to [top](#class-Texture) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
 
 ## brick <sub>*staticmethod*</sub>
 
@@ -98,7 +98,7 @@ Node [Brick Texture](https://docs.blender.org/manual/en/latest/modeling/geometry
 ### Returns:
 - tuple ('`color`', '`fac`')
 
-<sub>Go to [top](#class-Texture) - [main](./structure.md) - [nodes](ndes.md) - [nodes menu](.nodes_menus.md)</sub>
+<sub>Go to [top](#class-Texture) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
 
 ## checker <sub>*staticmethod*</sub>
 
@@ -117,7 +117,7 @@ Node [Checker Texture](https://docs.blender.org/manual/en/latest/modeling/geomet
 ### Returns:
 - tuple ('`color`', '`fac`')
 
-<sub>Go to [top](#class-Texture) - [main](./structure.md) - [nodes](ndes.md) - [nodes menu](.nodes_menus.md)</sub>
+<sub>Go to [top](#class-Texture) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
 
 ## gradient <sub>*staticmethod*</sub>
 
@@ -134,7 +134,7 @@ Node [Gradient Texture](https://docs.blender.org/manual/en/latest/modeling/geome
 ### Returns:
 - tuple ('`color`', '`fac`')
 
-<sub>Go to [top](#class-Texture) - [main](./structure.md) - [nodes](ndes.md) - [nodes menu](.nodes_menus.md)</sub>
+<sub>Go to [top](#class-Texture) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
 
 ## gradient_diagonal <sub>*staticmethod*</sub>
 
@@ -150,7 +150,7 @@ Node [Gradient Texture](https://docs.blender.org/manual/en/latest/modeling/geome
 ### Returns:
 - tuple ('`color`', '`fac`')
 
-<sub>Go to [top](#class-Texture) - [main](./structure.md) - [nodes](ndes.md) - [nodes menu](.nodes_menus.md)</sub>
+<sub>Go to [top](#class-Texture) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
 
 ## gradient_easing <sub>*staticmethod*</sub>
 
@@ -166,7 +166,7 @@ Node [Gradient Texture](https://docs.blender.org/manual/en/latest/modeling/geome
 ### Returns:
 - tuple ('`color`', '`fac`')
 
-<sub>Go to [top](#class-Texture) - [main](./structure.md) - [nodes](ndes.md) - [nodes menu](.nodes_menus.md)</sub>
+<sub>Go to [top](#class-Texture) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
 
 ## gradient_linear <sub>*staticmethod*</sub>
 
@@ -182,7 +182,7 @@ Node [Gradient Texture](https://docs.blender.org/manual/en/latest/modeling/geome
 ### Returns:
 - tuple ('`color`', '`fac`')
 
-<sub>Go to [top](#class-Texture) - [main](./structure.md) - [nodes](ndes.md) - [nodes menu](.nodes_menus.md)</sub>
+<sub>Go to [top](#class-Texture) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
 
 ## gradient_quadratic <sub>*staticmethod*</sub>
 
@@ -198,7 +198,7 @@ Node [Gradient Texture](https://docs.blender.org/manual/en/latest/modeling/geome
 ### Returns:
 - tuple ('`color`', '`fac`')
 
-<sub>Go to [top](#class-Texture) - [main](./structure.md) - [nodes](ndes.md) - [nodes menu](.nodes_menus.md)</sub>
+<sub>Go to [top](#class-Texture) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
 
 ## gradient_quadratic_sphere <sub>*staticmethod*</sub>
 
@@ -214,7 +214,7 @@ Node [Gradient Texture](https://docs.blender.org/manual/en/latest/modeling/geome
 ### Returns:
 - tuple ('`color`', '`fac`')
 
-<sub>Go to [top](#class-Texture) - [main](./structure.md) - [nodes](ndes.md) - [nodes menu](.nodes_menus.md)</sub>
+<sub>Go to [top](#class-Texture) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
 
 ## gradient_radial <sub>*staticmethod*</sub>
 
@@ -230,7 +230,7 @@ Node [Gradient Texture](https://docs.blender.org/manual/en/latest/modeling/geome
 ### Returns:
 - tuple ('`color`', '`fac`')
 
-<sub>Go to [top](#class-Texture) - [main](./structure.md) - [nodes](ndes.md) - [nodes menu](.nodes_menus.md)</sub>
+<sub>Go to [top](#class-Texture) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
 
 ## gradient_spherical <sub>*staticmethod*</sub>
 
@@ -246,7 +246,7 @@ Node [Gradient Texture](https://docs.blender.org/manual/en/latest/modeling/geome
 ### Returns:
 - tuple ('`color`', '`fac`')
 
-<sub>Go to [top](#class-Texture) - [main](./structure.md) - [nodes](ndes.md) - [nodes menu](.nodes_menus.md)</sub>
+<sub>Go to [top](#class-Texture) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
 
 ## image <sub>*staticmethod*</sub>
 
@@ -266,7 +266,7 @@ Node [Image Texture](https://docs.blender.org/manual/en/latest/modeling/geometry
 ### Returns:
 - tuple ('`color`', '`alpha`')
 
-<sub>Go to [top](#class-Texture) - [main](./structure.md) - [nodes](ndes.md) - [nodes menu](.nodes_menus.md)</sub>
+<sub>Go to [top](#class-Texture) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
 
 ## magic <sub>*staticmethod*</sub>
 
@@ -285,7 +285,7 @@ Node [Magic Texture](https://docs.blender.org/manual/en/latest/modeling/geometry
 ### Returns:
 - tuple ('`color`', '`fac`')
 
-<sub>Go to [top](#class-Texture) - [main](./structure.md) - [nodes](ndes.md) - [nodes menu](.nodes_menus.md)</sub>
+<sub>Go to [top](#class-Texture) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
 
 ## musgrave <sub>*staticmethod*</sub>
 
@@ -310,7 +310,7 @@ Node [Musgrave Texture](https://docs.blender.org/manual/en/latest/modeling/geome
 ### Returns:
 - socket `fac`
 
-<sub>Go to [top](#class-Texture) - [main](./structure.md) - [nodes](ndes.md) - [nodes menu](.nodes_menus.md)</sub>
+<sub>Go to [top](#class-Texture) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
 
 ## noise <sub>*staticmethod*</sub>
 
@@ -332,7 +332,7 @@ Node [Noise Texture](https://docs.blender.org/manual/en/latest/modeling/geometry
 ### Returns:
 - tuple ('`color`', '`fac`')
 
-<sub>Go to [top](#class-Texture) - [main](./structure.md) - [nodes](ndes.md) - [nodes menu](.nodes_menus.md)</sub>
+<sub>Go to [top](#class-Texture) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
 
 ## noise_1D <sub>*staticmethod*</sub>
 
@@ -352,7 +352,7 @@ Node [Noise Texture](https://docs.blender.org/manual/en/latest/modeling/geometry
 ### Returns:
 - tuple ('`color`', '`fac`')
 
-<sub>Go to [top](#class-Texture) - [main](./structure.md) - [nodes](ndes.md) - [nodes menu](.nodes_menus.md)</sub>
+<sub>Go to [top](#class-Texture) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
 
 ## noise_2D <sub>*staticmethod*</sub>
 
@@ -372,7 +372,7 @@ Node [Noise Texture](https://docs.blender.org/manual/en/latest/modeling/geometry
 ### Returns:
 - tuple ('`color`', '`fac`')
 
-<sub>Go to [top](#class-Texture) - [main](./structure.md) - [nodes](ndes.md) - [nodes menu](.nodes_menus.md)</sub>
+<sub>Go to [top](#class-Texture) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
 
 ## noise_3D <sub>*staticmethod*</sub>
 
@@ -392,7 +392,7 @@ Node [Noise Texture](https://docs.blender.org/manual/en/latest/modeling/geometry
 ### Returns:
 - tuple ('`color`', '`fac`')
 
-<sub>Go to [top](#class-Texture) - [main](./structure.md) - [nodes](ndes.md) - [nodes menu](.nodes_menus.md)</sub>
+<sub>Go to [top](#class-Texture) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
 
 ## noise_4D <sub>*staticmethod*</sub>
 
@@ -413,7 +413,7 @@ Node [Noise Texture](https://docs.blender.org/manual/en/latest/modeling/geometry
 ### Returns:
 - tuple ('`color`', '`fac`')
 
-<sub>Go to [top](#class-Texture) - [main](./structure.md) - [nodes](ndes.md) - [nodes menu](.nodes_menus.md)</sub>
+<sub>Go to [top](#class-Texture) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
 
 ## switch
 
@@ -430,7 +430,7 @@ Node [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/
 ### Returns:
 - socket `output`
 
-<sub>Go to [top](#class-Texture) - [main](./structure.md) - [nodes](ndes.md) - [nodes menu](.nodes_menus.md)</sub>
+<sub>Go to [top](#class-Texture) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
 
 ## voronoi <sub>*staticmethod*</sub>
 
@@ -454,7 +454,7 @@ Node [Voronoi Texture](https://docs.blender.org/manual/en/latest/modeling/geomet
 ### Returns:
 - tuple ('`distance`', '`color`', '`position`', '`w`')
 
-<sub>Go to [top](#class-Texture) - [main](./structure.md) - [nodes](ndes.md) - [nodes menu](.nodes_menus.md)</sub>
+<sub>Go to [top](#class-Texture) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
 
 ## voronoi_1D <sub>*staticmethod*</sub>
 
@@ -477,7 +477,7 @@ Node [Voronoi Texture](https://docs.blender.org/manual/en/latest/modeling/geomet
 ### Returns:
 - tuple ('`distance`', '`color`', '`w`')
 
-<sub>Go to [top](#class-Texture) - [main](./structure.md) - [nodes](ndes.md) - [nodes menu](.nodes_menus.md)</sub>
+<sub>Go to [top](#class-Texture) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
 
 ## voronoi_2D <sub>*staticmethod*</sub>
 
@@ -500,7 +500,7 @@ Node [Voronoi Texture](https://docs.blender.org/manual/en/latest/modeling/geomet
 ### Returns:
 - tuple ('`distance`', '`color`', '`position`')
 
-<sub>Go to [top](#class-Texture) - [main](./structure.md) - [nodes](ndes.md) - [nodes menu](.nodes_menus.md)</sub>
+<sub>Go to [top](#class-Texture) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
 
 ## voronoi_3D <sub>*staticmethod*</sub>
 
@@ -523,7 +523,7 @@ Node [Voronoi Texture](https://docs.blender.org/manual/en/latest/modeling/geomet
 ### Returns:
 - tuple ('`distance`', '`color`', '`position`')
 
-<sub>Go to [top](#class-Texture) - [main](./structure.md) - [nodes](ndes.md) - [nodes menu](.nodes_menus.md)</sub>
+<sub>Go to [top](#class-Texture) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
 
 ## voronoi_4D <sub>*staticmethod*</sub>
 
@@ -547,7 +547,7 @@ Node [Voronoi Texture](https://docs.blender.org/manual/en/latest/modeling/geomet
 ### Returns:
 - tuple ('`distance`', '`color`', '`position`', '`w`')
 
-<sub>Go to [top](#class-Texture) - [main](./structure.md) - [nodes](ndes.md) - [nodes menu](.nodes_menus.md)</sub>
+<sub>Go to [top](#class-Texture) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
 
 ## wave <sub>*staticmethod*</sub>
 
@@ -573,7 +573,7 @@ Node [Wave Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_
 ### Returns:
 - tuple ('`color`', '`fac`')
 
-<sub>Go to [top](#class-Texture) - [main](./structure.md) - [nodes](ndes.md) - [nodes menu](.nodes_menus.md)</sub>
+<sub>Go to [top](#class-Texture) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
 
 ## wave_bands <sub>*staticmethod*</sub>
 
@@ -597,7 +597,7 @@ Node [Wave Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_
 ### Returns:
 - tuple ('`color`', '`fac`')
 
-<sub>Go to [top](#class-Texture) - [main](./structure.md) - [nodes](ndes.md) - [nodes menu](.nodes_menus.md)</sub>
+<sub>Go to [top](#class-Texture) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
 
 ## wave_bands_saw <sub>*staticmethod*</sub>
 
@@ -620,7 +620,7 @@ Node [Wave Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_
 ### Returns:
 - tuple ('`color`', '`fac`')
 
-<sub>Go to [top](#class-Texture) - [main](./structure.md) - [nodes](ndes.md) - [nodes menu](.nodes_menus.md)</sub>
+<sub>Go to [top](#class-Texture) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
 
 ## wave_bands_sine <sub>*staticmethod*</sub>
 
@@ -643,7 +643,7 @@ Node [Wave Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_
 ### Returns:
 - tuple ('`color`', '`fac`')
 
-<sub>Go to [top](#class-Texture) - [main](./structure.md) - [nodes](ndes.md) - [nodes menu](.nodes_menus.md)</sub>
+<sub>Go to [top](#class-Texture) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
 
 ## wave_bands_triangle <sub>*staticmethod*</sub>
 
@@ -666,7 +666,7 @@ Node [Wave Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_
 ### Returns:
 - tuple ('`color`', '`fac`')
 
-<sub>Go to [top](#class-Texture) - [main](./structure.md) - [nodes](ndes.md) - [nodes menu](.nodes_menus.md)</sub>
+<sub>Go to [top](#class-Texture) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
 
 ## wave_rings <sub>*staticmethod*</sub>
 
@@ -690,7 +690,7 @@ Node [Wave Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_
 ### Returns:
 - tuple ('`color`', '`fac`')
 
-<sub>Go to [top](#class-Texture) - [main](./structure.md) - [nodes](ndes.md) - [nodes menu](.nodes_menus.md)</sub>
+<sub>Go to [top](#class-Texture) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
 
 ## wave_rings_saw <sub>*staticmethod*</sub>
 
@@ -713,7 +713,7 @@ Node [Wave Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_
 ### Returns:
 - tuple ('`color`', '`fac`')
 
-<sub>Go to [top](#class-Texture) - [main](./structure.md) - [nodes](ndes.md) - [nodes menu](.nodes_menus.md)</sub>
+<sub>Go to [top](#class-Texture) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
 
 ## wave_rings_sine <sub>*staticmethod*</sub>
 
@@ -736,7 +736,7 @@ Node [Wave Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_
 ### Returns:
 - tuple ('`color`', '`fac`')
 
-<sub>Go to [top](#class-Texture) - [main](./structure.md) - [nodes](ndes.md) - [nodes menu](.nodes_menus.md)</sub>
+<sub>Go to [top](#class-Texture) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
 
 ## wave_rings_triangle <sub>*staticmethod*</sub>
 
@@ -759,7 +759,7 @@ Node [Wave Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_
 ### Returns:
 - tuple ('`color`', '`fac`')
 
-<sub>Go to [top](#class-Texture) - [main](./structure.md) - [nodes](ndes.md) - [nodes menu](.nodes_menus.md)</sub>
+<sub>Go to [top](#class-Texture) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
 
 ## white_noise <sub>*staticmethod*</sub>
 
@@ -777,7 +777,7 @@ Node [White Noise Texture](https://docs.blender.org/manual/en/latest/modeling/ge
 ### Returns:
 - tuple ('`value`', '`color`')
 
-<sub>Go to [top](#class-Texture) - [main](./structure.md) - [nodes](ndes.md) - [nodes menu](.nodes_menus.md)</sub>
+<sub>Go to [top](#class-Texture) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
 
 ## white_noise_1D <sub>*staticmethod*</sub>
 
@@ -793,7 +793,7 @@ Node [White Noise Texture](https://docs.blender.org/manual/en/latest/modeling/ge
 ### Returns:
 - tuple ('`value`', '`color`')
 
-<sub>Go to [top](#class-Texture) - [main](./structure.md) - [nodes](ndes.md) - [nodes menu](.nodes_menus.md)</sub>
+<sub>Go to [top](#class-Texture) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
 
 ## white_noise_2D <sub>*staticmethod*</sub>
 
@@ -809,7 +809,7 @@ Node [White Noise Texture](https://docs.blender.org/manual/en/latest/modeling/ge
 ### Returns:
 - tuple ('`value`', '`color`')
 
-<sub>Go to [top](#class-Texture) - [main](./structure.md) - [nodes](ndes.md) - [nodes menu](.nodes_menus.md)</sub>
+<sub>Go to [top](#class-Texture) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
 
 ## white_noise_3D <sub>*staticmethod*</sub>
 
@@ -825,7 +825,7 @@ Node [White Noise Texture](https://docs.blender.org/manual/en/latest/modeling/ge
 ### Returns:
 - tuple ('`value`', '`color`')
 
-<sub>Go to [top](#class-Texture) - [main](./structure.md) - [nodes](ndes.md) - [nodes menu](.nodes_menus.md)</sub>
+<sub>Go to [top](#class-Texture) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
 
 ## white_noise_4D <sub>*staticmethod*</sub>
 
@@ -842,5 +842,5 @@ Node [White Noise Texture](https://docs.blender.org/manual/en/latest/modeling/ge
 ### Returns:
 - tuple ('`value`', '`color`')
 
-<sub>Go to [top](#class-Texture) - [main](./structure.md) - [nodes](ndes.md) - [nodes menu](.nodes_menus.md)</sub>
+<sub>Go to [top](#class-Texture) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
 

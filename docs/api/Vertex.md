@@ -1,6 +1,6 @@
 # class Vertex
 
-> [main](./structure.md) - [nodes](ndes.md) - [nodes menu](.nodes_menus.md)
+> [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)
 
 ## Properties
 
@@ -33,7 +33,7 @@ Node [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geomet
 ### Returns:
 - self
 
-<sub>Go to [top](#class-Vertex) - [main](./structure.md) - [nodes](ndes.md) - [nodes menu](.nodes_menus.md)</sub>
+<sub>Go to [top](#class-Vertex) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
 
 ## delete_edges
 
@@ -46,7 +46,7 @@ Node [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geomet
 ### Returns:
 - self
 
-<sub>Go to [top](#class-Vertex) - [main](./structure.md) - [nodes](ndes.md) - [nodes menu](.nodes_menus.md)</sub>
+<sub>Go to [top](#class-Vertex) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
 
 ## delete_faces
 
@@ -59,7 +59,7 @@ Node [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geomet
 ### Returns:
 - self
 
-<sub>Go to [top](#class-Vertex) - [main](./structure.md) - [nodes](ndes.md) - [nodes menu](.nodes_menus.md)</sub>
+<sub>Go to [top](#class-Vertex) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
 
 ## domain_size
 
@@ -76,7 +76,7 @@ Node [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 ### Returns:
 - node with sockets ['point_count', 'edge_count', 'face_count', 'face_corner_count', 'spline_count', 'instance_count']
 
-<sub>Go to [top](#class-Vertex) - [main](./structure.md) - [nodes](ndes.md) - [nodes menu](.nodes_menus.md)</sub>
+<sub>Go to [top](#class-Vertex) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
 
 ## extrude
 
@@ -94,7 +94,7 @@ Node [Extrude Mesh](https://docs.blender.org/manual/en/latest/modeling/geometry_
 ### Returns:
 - tuple ('`top`', '`side`')
 
-<sub>Go to [top](#class-Vertex) - [main](./structure.md) - [nodes](ndes.md) - [nodes menu](.nodes_menus.md)</sub>
+<sub>Go to [top](#class-Vertex) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
 
 ## instance_on_points
 
@@ -114,7 +114,7 @@ Node [Instance on Points](https://docs.blender.org/manual/en/latest/modeling/geo
 ### Returns:
 - socket `instances` of class Instances
 
-<sub>Go to [top](#class-Vertex) - [main](./structure.md) - [nodes](ndes.md) - [nodes menu](.nodes_menus.md)</sub>
+<sub>Go to [top](#class-Vertex) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
 
 ## merge_by_distance
 
@@ -131,7 +131,7 @@ Node [Merge by Distance](https://docs.blender.org/manual/en/latest/modeling/geom
 ### Returns:
 - self
 
-<sub>Go to [top](#class-Vertex) - [main](./structure.md) - [nodes](ndes.md) - [nodes menu](.nodes_menus.md)</sub>
+<sub>Go to [top](#class-Vertex) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
 
 ## neighbors <sub>*property*</sub>
 
@@ -144,7 +144,7 @@ Node [Vertex Neighbors](https://docs.blender.org/manual/en/latest/modeling/geome
 ### Returns:
 - node with sockets ['vertex_count', 'face_count']
 
-<sub>Go to [top](#class-Vertex) - [main](./structure.md) - [nodes](ndes.md) - [nodes menu](.nodes_menus.md)</sub>
+<sub>Go to [top](#class-Vertex) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
 
 ## neighbors_face_count <sub>*property*</sub>
 
@@ -157,7 +157,7 @@ Node [Vertex Neighbors](https://docs.blender.org/manual/en/latest/modeling/geome
 ### Returns:
 - socket `face_count`
 
-<sub>Go to [top](#class-Vertex) - [main](./structure.md) - [nodes](ndes.md) - [nodes menu](.nodes_menus.md)</sub>
+<sub>Go to [top](#class-Vertex) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
 
 ## neighbors_vertex_count <sub>*property*</sub>
 
@@ -170,7 +170,7 @@ Node [Vertex Neighbors](https://docs.blender.org/manual/en/latest/modeling/geome
 ### Returns:
 - socket `vertex_count`
 
-<sub>Go to [top](#class-Vertex) - [main](./structure.md) - [nodes](ndes.md) - [nodes menu](.nodes_menus.md)</sub>
+<sub>Go to [top](#class-Vertex) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
 
 ## to_points
 
@@ -188,7 +188,7 @@ Node [Mesh to Points](https://docs.blender.org/manual/en/latest/modeling/geometr
 ### Returns:
 - socket `points` of class Points
 
-<sub>Go to [top](#class-Vertex) - [main](./structure.md) - [nodes](ndes.md) - [nodes menu](.nodes_menus.md)</sub>
+<sub>Go to [top](#class-Vertex) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
 
 ## to_volume
 
@@ -210,5 +210,5 @@ Node [Mesh to Volume](https://docs.blender.org/manual/en/latest/modeling/geometr
 ### Returns:
 - socket `volume` of class Volume
 
-<sub>Go to [top](#class-Vertex) - [main](./structure.md) - [nodes](ndes.md) - [nodes menu](.nodes_menus.md)</sub>
+<sub>Go to [top](#class-Vertex) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
 

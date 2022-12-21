@@ -1,6 +1,6 @@
 # class Instances
 
-> [main](./structure.md) - [nodes](ndes.md) - [nodes menu](.nodes_menus.md)
+> [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)
 
 ## Properties
 
@@ -42,7 +42,7 @@ Node [Instance on Points](https://docs.blender.org/manual/en/latest/modeling/geo
 ### Returns:
 - socket `instances`
 
-<sub>Go to [top](#class-Instances) - [main](./structure.md) - [nodes](ndes.md) - [nodes menu](.nodes_menus.md)</sub>
+<sub>Go to [top](#class-Instances) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
 
 ## domain_size <sub>*property*</sub>
 
@@ -55,7 +55,7 @@ Node [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 ### Returns:
 - socket `instance_count`
 
-<sub>Go to [top](#class-Instances) - [main](./structure.md) - [nodes](ndes.md) - [nodes menu](.nodes_menus.md)</sub>
+<sub>Go to [top](#class-Instances) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
 
 ## on_points
 
@@ -76,7 +76,7 @@ Node [Instance on Points](https://docs.blender.org/manual/en/latest/modeling/geo
 ### Returns:
 - socket `instances`
 
-<sub>Go to [top](#class-Instances) - [main](./structure.md) - [nodes](ndes.md) - [nodes menu](.nodes_menus.md)</sub>
+<sub>Go to [top](#class-Instances) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
 
 ## realize
 
@@ -93,7 +93,7 @@ Node [Realize Instances](https://docs.blender.org/manual/en/latest/modeling/geom
 ### Returns:
 - socket `geometry`
 
-<sub>Go to [top](#class-Instances) - [main](./structure.md) - [nodes](ndes.md) - [nodes menu](.nodes_menus.md)</sub>
+<sub>Go to [top](#class-Instances) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
 
 ## rotate
 
@@ -112,7 +112,7 @@ Node [Rotate Instances](https://docs.blender.org/manual/en/latest/modeling/geome
 ### Returns:
 - self
 
-<sub>Go to [top](#class-Instances) - [main](./structure.md) - [nodes](ndes.md) - [nodes menu](.nodes_menus.md)</sub>
+<sub>Go to [top](#class-Instances) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
 
 ## rotation <sub>*property*</sub>
 
@@ -125,7 +125,7 @@ Node [Instance Rotation](https://docs.blender.org/manual/en/latest/modeling/geom
 ### Returns:
 - socket `rotation`
 
-<sub>Go to [top](#class-Instances) - [main](./structure.md) - [nodes](ndes.md) - [nodes menu](.nodes_menus.md)</sub>
+<sub>Go to [top](#class-Instances) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
 
 ## scale <sub>*property*</sub>
 
@@ -138,7 +138,7 @@ Node [Instance Scale](https://docs.blender.org/manual/en/latest/modeling/geometr
 ### Returns:
 - socket `scale`
 
-<sub>Go to [top](#class-Instances) - [main](./structure.md) - [nodes](ndes.md) - [nodes menu](.nodes_menus.md)</sub>
+<sub>Go to [top](#class-Instances) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
 
 ## set_scale
 
@@ -157,7 +157,7 @@ Node [Scale Instances](https://docs.blender.org/manual/en/latest/modeling/geomet
 ### Returns:
 - self
 
-<sub>Go to [top](#class-Instances) - [main](./structure.md) - [nodes](ndes.md) - [nodes menu](.nodes_menus.md)</sub>
+<sub>Go to [top](#class-Instances) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
 
 ## to_points
 
@@ -175,7 +175,7 @@ Node [Instances to Points](https://docs.blender.org/manual/en/latest/modeling/ge
 ### Returns:
 - socket `points` of class Points
 
-<sub>Go to [top](#class-Instances) - [main](./structure.md) - [nodes](ndes.md) - [nodes menu](.nodes_menus.md)</sub>
+<sub>Go to [top](#class-Instances) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
 
 ## translate
 
@@ -193,5 +193,5 @@ Node [Translate Instances](https://docs.blender.org/manual/en/latest/modeling/ge
 ### Returns:
 - self
 
-<sub>Go to [top](#class-Instances) - [main](./structure.md) - [nodes](ndes.md) - [nodes menu](.nodes_menus.md)</sub>
+<sub>Go to [top](#class-Instances) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
 

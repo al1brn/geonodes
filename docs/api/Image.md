@@ -1,6 +1,6 @@
 # class Image
 
-> [main](./structure.md) - [nodes](ndes.md) - [nodes menu](.nodes_menus.md)
+> [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)
 
 
 ## Class methods
@@ -31,7 +31,7 @@ The initial value can be either a valid Blender Image or the name of an existing
 ### Returns:
 - Image
 
-<sub>Go to [top](#class-Image) - [main](./structure.md) - [nodes](ndes.md) - [nodes menu](.nodes_menus.md)</sub>
+<sub>Go to [top](#class-Image) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
 
 ## switch
 
@@ -48,7 +48,7 @@ Node [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/
 ### Returns:
 - socket `output`
 
-<sub>Go to [top](#class-Image) - [main](./structure.md) - [nodes](ndes.md) - [nodes menu](.nodes_menus.md)</sub>
+<sub>Go to [top](#class-Image) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
 
 ## texture
 
@@ -67,5 +67,5 @@ Node [Image Texture](https://docs.blender.org/manual/en/latest/modeling/geometry
 ### Returns:
 - tuple ('`color`', '`alpha`')
 
-<sub>Go to [top](#class-Image) - [main](./structure.md) - [nodes](ndes.md) - [nodes menu](.nodes_menus.md)</sub>
+<sub>Go to [top](#class-Image) - [main](./structure.md) - [nodes](nodes.md) - [nodes menu](nodes_menus.md)</sub>
 
