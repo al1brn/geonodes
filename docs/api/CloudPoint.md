@@ -10,26 +10,9 @@
 
 ## Methods
 
-- [__len__](#__len__)
 - [instance_on_points](#instance_on_points)
+- [len](#len)
 - [to_vertices](#to_vertices)
-
-## __len__
-
-```python
-def __len__(self):
-
-```
-> Node: [Domain Size](GeometryNodeAttributeDomainSize.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html)
-
-#### Args:
-- geometry: Geometry
-- component (str): 'MESH' in [MESH, POINTCLOUD, CURVE, INSTANCES]
-
-#### Returns:
-- node with sockets ['point_count', 'edge_count', 'face_count', 'face_corner_count', 'spline_count', 'instance_count']
-
-<sub>Go to [top](#class-CloudPoint) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## instance_on_points
 
@@ -48,6 +31,23 @@ def instance_on_points(self, instance=None, pick_instance=None, instance_index=N
 
 #### Returns:
 - socket `instances` of class Instances
+
+<sub>Go to [top](#class-CloudPoint) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+## len
+
+```python
+def __len__(self):
+
+```
+> Node: [Domain Size](GeometryNodeAttributeDomainSize.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html)
+
+#### Args:
+- geometry: Geometry
+- component (str): 'MESH' in [MESH, POINTCLOUD, CURVE, INSTANCES]
+
+#### Returns:
+- node with sockets ['point_count', 'edge_count', 'face_count', 'face_corner_count', 'spline_count', 'instance_count']
 
 <sub>Go to [top](#class-CloudPoint) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

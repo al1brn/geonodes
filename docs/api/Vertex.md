@@ -12,32 +12,15 @@
 
 ## Methods
 
-- [__len__](#__len__)
 - [delete_all](#delete_all)
 - [delete_edges](#delete_edges)
 - [delete_faces](#delete_faces)
 - [extrude](#extrude)
 - [instance_on_points](#instance_on_points)
+- [len](#len)
 - [merge_by_distance](#merge_by_distance)
 - [to_points](#to_points)
 - [to_volume](#to_volume)
-
-## __len__
-
-```python
-def __len__(self):
-
-```
-> Node: [Domain Size](GeometryNodeAttributeDomainSize.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html)
-
-#### Args:
-- geometry: Geometry
-- component (str): 'MESH' in [MESH, POINTCLOUD, CURVE, INSTANCES]
-
-#### Returns:
-- node with sockets ['point_count', 'edge_count', 'face_count', 'face_corner_count', 'spline_count', 'instance_count']
-
-<sub>Go to [top](#class-Vertex) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## delete_all
 
@@ -113,6 +96,23 @@ def instance_on_points(self, instance=None, pick_instance=None, instance_index=N
 
 #### Returns:
 - socket `instances` of class Instances
+
+<sub>Go to [top](#class-Vertex) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+## len
+
+```python
+def __len__(self):
+
+```
+> Node: [Domain Size](GeometryNodeAttributeDomainSize.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html)
+
+#### Args:
+- geometry: Geometry
+- component (str): 'MESH' in [MESH, POINTCLOUD, CURVE, INSTANCES]
+
+#### Returns:
+- node with sockets ['point_count', 'edge_count', 'face_count', 'face_corner_count', 'spline_count', 'instance_count']
 
 <sub>Go to [top](#class-Vertex) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

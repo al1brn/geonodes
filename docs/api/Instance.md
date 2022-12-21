@@ -11,13 +11,13 @@
 
 ## Methods
 
-- [__len__](#__len__)
+- [len](#len)
 - [rotate](#rotate)
 - [set_scale](#set_scale)
 - [to_points](#to_points)
 - [translate](#translate)
 
-## __len__
+## len
 
 ```python
 def __len__(self):

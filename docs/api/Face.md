@@ -18,7 +18,6 @@
 
 ## Methods
 
-- [__len__](#__len__)
 - [delete_all](#delete_all)
 - [delete_edges](#delete_edges)
 - [delete_faces](#delete_faces)
@@ -28,6 +27,7 @@
 - [face_set_boundaries](#face_set_boundaries)
 - [flip](#flip)
 - [is_planar](#is_planar)
+- [len](#len)
 - [pack_uv_islands](#pack_uv_islands)
 - [scale_single_axis](#scale_single_axis)
 - [scale_uniform](#scale_uniform)
@@ -35,23 +35,6 @@
 - [set_shade_smooth](#set_shade_smooth)
 - [triangulate](#triangulate)
 - [uv_unwrap](#uv_unwrap)
-
-## __len__
-
-```python
-def __len__(self):
-
-```
-> Node: [Domain Size](GeometryNodeAttributeDomainSize.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html)
-
-#### Args:
-- geometry: Geometry
-- component (str): 'MESH' in [MESH, POINTCLOUD, CURVE, INSTANCES]
-
-#### Returns:
-- node with sockets ['point_count', 'edge_count', 'face_count', 'face_corner_count', 'spline_count', 'instance_count']
-
-<sub>Go to [top](#class-Face) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## area <sub>*property*</sub>
 
@@ -237,6 +220,23 @@ def island_index(self):
 
 #### Returns:
 - socket `island_index`
+
+<sub>Go to [top](#class-Face) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+## len
+
+```python
+def __len__(self):
+
+```
+> Node: [Domain Size](GeometryNodeAttributeDomainSize.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html)
+
+#### Args:
+- geometry: Geometry
+- component (str): 'MESH' in [MESH, POINTCLOUD, CURVE, INSTANCES]
+
+#### Returns:
+- node with sockets ['point_count', 'edge_count', 'face_count', 'face_corner_count', 'spline_count', 'instance_count']
 
 <sub>Go to [top](#class-Face) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

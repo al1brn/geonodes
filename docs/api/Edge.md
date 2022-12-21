@@ -16,33 +16,16 @@
 
 ## Methods
 
-- [__len__](#__len__)
 - [delete_all](#delete_all)
 - [delete_edges](#delete_edges)
 - [delete_faces](#delete_faces)
 - [edge_paths_to_curves](#edge_paths_to_curves)
 - [extrude](#extrude)
+- [len](#len)
 - [scale_single_axis](#scale_single_axis)
 - [scale_uniform](#scale_uniform)
 - [split](#split)
 - [to_curve](#to_curve)
-
-## __len__
-
-```python
-def __len__(self):
-
-```
-> Node: [Domain Size](GeometryNodeAttributeDomainSize.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html)
-
-#### Args:
-- geometry: Geometry
-- component (str): 'MESH' in [MESH, POINTCLOUD, CURVE, INSTANCES]
-
-#### Returns:
-- node with sockets ['point_count', 'edge_count', 'face_count', 'face_corner_count', 'spline_count', 'instance_count']
-
-<sub>Go to [top](#class-Edge) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## angle <sub>*property*</sub>
 
@@ -128,6 +111,23 @@ def extrude(self, offset=None, offset_scale=None, individual=None):
 
 #### Returns:
 - tuple ('`top`', '`side`')
+
+<sub>Go to [top](#class-Edge) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+## len
+
+```python
+def __len__(self):
+
+```
+> Node: [Domain Size](GeometryNodeAttributeDomainSize.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html)
+
+#### Args:
+- geometry: Geometry
+- component (str): 'MESH' in [MESH, POINTCLOUD, CURVE, INSTANCES]
+
+#### Returns:
+- node with sockets ['point_count', 'edge_count', 'face_count', 'face_corner_count', 'spline_count', 'instance_count']
 
 <sub>Go to [top](#class-Edge) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

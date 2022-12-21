@@ -724,22 +724,6 @@ class Domain(geodom.Domain):
 
 
 class Vertex(Domain):
-    def __len__(self):
-        """ Node DomainSize.
-
-        Node reference [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html)
-        Developer reference [GeometryNodeAttributeDomainSize](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html)
-
-        Args:
-            geometry: Geometry
-            component (str): 'MESH' in [MESH, POINTCLOUD, CURVE, INSTANCES]
-
-        Returns:
-            node with sockets ['point_count', 'edge_count', 'face_count', 'face_corner_count', 'spline_count', 'instance_count']
-        """
-        return self.data_socket.point_count
-
-
     def delete_all(self):
         """ Node DeleteGeometry.
 
@@ -811,6 +795,22 @@ class Vertex(Domain):
             socket `instances` [Instances](Instances.md)
         """
         return Instances(nodes.InstanceOnPoints(points=self.data_socket, selection=self.selection, instance=instance, pick_instance=pick_instance, instance_index=instance_index, rotation=rotation, scale=scale).instances)
+
+
+    def __len__(self):
+        """ Node DomainSize.
+
+        Node reference [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html)
+        Developer reference [GeometryNodeAttributeDomainSize](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html)
+
+        Args:
+            geometry: Geometry
+            component (str): 'MESH' in [MESH, POINTCLOUD, CURVE, INSTANCES]
+
+        Returns:
+            node with sockets ['point_count', 'edge_count', 'face_count', 'face_corner_count', 'spline_count', 'instance_count']
+        """
+        return self.data_socket.point_count
 
 
     def merge_by_distance(self, distance=None, mode='ALL'):
@@ -915,22 +915,6 @@ class Vertex(Domain):
 
 
 class Face(Domain):
-    def __len__(self):
-        """ Node DomainSize.
-
-        Node reference [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html)
-        Developer reference [GeometryNodeAttributeDomainSize](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html)
-
-        Args:
-            geometry: Geometry
-            component (str): 'MESH' in [MESH, POINTCLOUD, CURVE, INSTANCES]
-
-        Returns:
-            node with sockets ['point_count', 'edge_count', 'face_count', 'face_corner_count', 'spline_count', 'instance_count']
-        """
-        return self.data_socket.face_count
-
-
     @property
     def area(self):
         """ Node FaceArea.
@@ -1116,6 +1100,22 @@ class Face(Domain):
         if not hasattr(self, '_c_geometrynodeinputmeshisland'):
             self._c_geometrynodeinputmeshisland = self.attribute_node(nodes.MeshIsland())
         return self._c_geometrynodeinputmeshisland.island_index
+
+
+    def __len__(self):
+        """ Node DomainSize.
+
+        Node reference [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html)
+        Developer reference [GeometryNodeAttributeDomainSize](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html)
+
+        Args:
+            geometry: Geometry
+            component (str): 'MESH' in [MESH, POINTCLOUD, CURVE, INSTANCES]
+
+        Returns:
+            node with sockets ['point_count', 'edge_count', 'face_count', 'face_corner_count', 'spline_count', 'instance_count']
+        """
+        return self.data_socket.face_count
 
 
     @property
@@ -1340,22 +1340,6 @@ class Face(Domain):
 
 
 class Edge(Domain):
-    def __len__(self):
-        """ Node DomainSize.
-
-        Node reference [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html)
-        Developer reference [GeometryNodeAttributeDomainSize](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html)
-
-        Args:
-            geometry: Geometry
-            component (str): 'MESH' in [MESH, POINTCLOUD, CURVE, INSTANCES]
-
-        Returns:
-            node with sockets ['point_count', 'edge_count', 'face_count', 'face_corner_count', 'spline_count', 'instance_count']
-        """
-        return self.data_socket.edge_count
-
-
     @property
     def angle(self):
         """ Node EdgeAngle.
@@ -1439,6 +1423,22 @@ class Edge(Domain):
         """
         node = self.socket_stack(nodes.ExtrudeMesh(mesh=self.data_socket, selection=self.selection, offset=offset, offset_scale=offset_scale, individual=individual, mode='EDGES')).node
         return node.top, node.side
+
+
+    def __len__(self):
+        """ Node DomainSize.
+
+        Node reference [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html)
+        Developer reference [GeometryNodeAttributeDomainSize](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html)
+
+        Args:
+            geometry: Geometry
+            component (str): 'MESH' in [MESH, POINTCLOUD, CURVE, INSTANCES]
+
+        Returns:
+            node with sockets ['point_count', 'edge_count', 'face_count', 'face_corner_count', 'spline_count', 'instance_count']
+        """
+        return self.data_socket.edge_count
 
 
     @property
@@ -1610,22 +1610,6 @@ class Corner(Domain):
 
 
 class Spline(Domain):
-    def __len__(self):
-        """ Node DomainSize.
-
-        Node reference [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html)
-        Developer reference [GeometryNodeAttributeDomainSize](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html)
-
-        Args:
-            geometry: Geometry
-            component (str): 'MESH' in [MESH, POINTCLOUD, CURVE, INSTANCES]
-
-        Returns:
-            node with sockets ['point_count', 'edge_count', 'face_count', 'face_corner_count', 'spline_count', 'instance_count']
-        """
-        return self.data_socket.spline_count
-
-
     @property
     def cyclic(self):
         """ Node IsSplineCyclic.
@@ -1653,6 +1637,22 @@ class Spline(Domain):
 
         """
         self.socket_stack(nodes.SetSplineCyclic(geometry=self.data_socket, selection=self.selection, cyclic=attr_value))
+
+
+    def __len__(self):
+        """ Node DomainSize.
+
+        Node reference [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html)
+        Developer reference [GeometryNodeAttributeDomainSize](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html)
+
+        Args:
+            geometry: Geometry
+            component (str): 'MESH' in [MESH, POINTCLOUD, CURVE, INSTANCES]
+
+        Returns:
+            node with sockets ['point_count', 'edge_count', 'face_count', 'face_corner_count', 'spline_count', 'instance_count']
+        """
+        return self.data_socket.spline_count
 
 
     @property
@@ -1941,22 +1941,6 @@ class Spline(Domain):
 
 
 class ControlPoint(Domain):
-    def __len__(self):
-        """ Node DomainSize.
-
-        Node reference [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html)
-        Developer reference [GeometryNodeAttributeDomainSize](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html)
-
-        Args:
-            geometry: Geometry
-            component (str): 'MESH' in [MESH, POINTCLOUD, CURVE, INSTANCES]
-
-        Returns:
-            node with sockets ['point_count', 'edge_count', 'face_count', 'face_corner_count', 'spline_count', 'instance_count']
-        """
-        return self.data_socket.point_count
-
-
     def curve(self):
         """ Node CurveOfPoint.
 
@@ -2145,6 +2129,22 @@ class ControlPoint(Domain):
 
         """
         self.socket_stack(nodes.SetHandlePositions(curve=curve, selection=self.selection, position=attr_value, offset=offset, mode='LEFT'))
+
+
+    def __len__(self):
+        """ Node DomainSize.
+
+        Node reference [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html)
+        Developer reference [GeometryNodeAttributeDomainSize](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html)
+
+        Args:
+            geometry: Geometry
+            component (str): 'MESH' in [MESH, POINTCLOUD, CURVE, INSTANCES]
+
+        Returns:
+            node with sockets ['point_count', 'edge_count', 'face_count', 'face_corner_count', 'spline_count', 'instance_count']
+        """
+        return self.data_socket.point_count
 
 
     def offset(self, offset=None):
@@ -2444,22 +2444,6 @@ class ControlPoint(Domain):
 
 
 class CloudPoint(Domain):
-    def __len__(self):
-        """ Node DomainSize.
-
-        Node reference [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html)
-        Developer reference [GeometryNodeAttributeDomainSize](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html)
-
-        Args:
-            geometry: Geometry
-            component (str): 'MESH' in [MESH, POINTCLOUD, CURVE, INSTANCES]
-
-        Returns:
-            node with sockets ['point_count', 'edge_count', 'face_count', 'face_corner_count', 'spline_count', 'instance_count']
-        """
-        return self.data_socket.point_count
-
-
     def instance_on_points(self, instance=None, pick_instance=None, instance_index=None, rotation=None, scale=None):
         """ Node InstanceOnPoints.
 
@@ -2477,6 +2461,22 @@ class CloudPoint(Domain):
             socket `instances` [Instances](Instances.md)
         """
         return Instances(nodes.InstanceOnPoints(points=self.data_socket, selection=self.selection, instance=instance, pick_instance=pick_instance, instance_index=instance_index, rotation=rotation, scale=scale).instances)
+
+
+    def __len__(self):
+        """ Node DomainSize.
+
+        Node reference [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html)
+        Developer reference [GeometryNodeAttributeDomainSize](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html)
+
+        Args:
+            geometry: Geometry
+            component (str): 'MESH' in [MESH, POINTCLOUD, CURVE, INSTANCES]
+
+        Returns:
+            node with sockets ['point_count', 'edge_count', 'face_count', 'face_corner_count', 'spline_count', 'instance_count']
+        """
+        return self.data_socket.point_count
 
 
     @property

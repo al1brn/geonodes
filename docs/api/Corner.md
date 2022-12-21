@@ -7,9 +7,9 @@
 
 ## Methods
 
-- [__len__](#__len__)
+- [len](#len)
 
-## __len__
+## len
 
 ```python
 def __len__(self):

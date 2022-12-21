@@ -18,7 +18,6 @@
 
 ## Methods
 
-- [__len__](#__len__)
 - [curve](#curve)
 - [endpoint_selection](#endpoint_selection)
 - [handle_positions](#handle_positions)
@@ -29,6 +28,7 @@
 - [handle_type_selection](#handle_type_selection)
 - [handle_type_selection_node](#handle_type_selection_node)
 - [instance_on_points](#instance_on_points)
+- [len](#len)
 - [offset](#offset)
 - [set_handle_positions](#set_handle_positions)
 - [set_handle_positions_left](#set_handle_positions_left)
@@ -37,23 +37,6 @@
 - [set_handle_type_node](#set_handle_type_node)
 - [set_radius](#set_radius)
 - [set_tilt](#set_tilt)
-
-## __len__
-
-```python
-def __len__(self):
-
-```
-> Node: [Domain Size](GeometryNodeAttributeDomainSize.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html)
-
-#### Args:
-- geometry: Geometry
-- component (str): 'MESH' in [MESH, POINTCLOUD, CURVE, INSTANCES]
-
-#### Returns:
-- node with sockets ['point_count', 'edge_count', 'face_count', 'face_corner_count', 'spline_count', 'instance_count']
-
-<sub>Go to [top](#class-ControlPoint) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## curve
 
@@ -249,6 +232,23 @@ Node implemented as property setter.
 #### Args:
 - attr_value: position
 
+
+<sub>Go to [top](#class-ControlPoint) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+## len
+
+```python
+def __len__(self):
+
+```
+> Node: [Domain Size](GeometryNodeAttributeDomainSize.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html)
+
+#### Args:
+- geometry: Geometry
+- component (str): 'MESH' in [MESH, POINTCLOUD, CURVE, INSTANCES]
+
+#### Returns:
+- node with sockets ['point_count', 'edge_count', 'face_count', 'face_corner_count', 'spline_count', 'instance_count']
 
 <sub>Go to [top](#class-ControlPoint) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
