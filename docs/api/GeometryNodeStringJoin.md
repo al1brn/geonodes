@@ -20,5 +20,5 @@ node = nodes.JoinStrings(*strings, delimiter=None)
 
 #### Output sockets:
 
-- **string** : [String](String
+- **string** : [String](String)
 

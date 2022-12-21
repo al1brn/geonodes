@@ -25,5 +25,5 @@ node = nodes.InstanceOnPoints(points=None, selection=None, instance=None, pick_i
 
 #### Output sockets:
 
-- **instances** : [Instances](Instances
+- **instances** : [Instances](Instances)
 

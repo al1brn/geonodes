@@ -26,5 +26,5 @@ node = nodes.AlignEulerToVector(rotation=None, factor=None, vector=None, axis='X
 
 #### Output sockets:
 
-- **rotation** : [Vector](Vector
+- **rotation** : [Vector](Vector)
 

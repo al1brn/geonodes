@@ -19,5 +19,5 @@ node = nodes.String(string='')
 
 #### Output sockets:
 
-- **string** : [String](String
+- **string** : [String](String)
 

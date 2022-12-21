@@ -28,8 +28,8 @@ node = nodes.Cone(vertices=None, side_segments=None, fill_segments=None, radius_
 
 #### Output sockets:
 
-- **mesh** : [Mesh](Mesh
-- **top** : [Boolean](Boolean
-- **bottom** : [Boolean](Boolean
-- **side** : [Boolean](Boolean
+- **mesh** : [Mesh](Mesh)
+- **top** : [Boolean](Boolean)
+- **bottom** : [Boolean](Boolean)
+- **side** : [Boolean](Boolean)
 

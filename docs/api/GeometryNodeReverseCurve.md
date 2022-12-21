@@ -20,5 +20,5 @@ node = nodes.ReverseCurve(curve=None, selection=None)
 
 #### Output sockets:
 
-- **curve** : [Curve](Curve
+- **curve** : [Curve](Curve)
 

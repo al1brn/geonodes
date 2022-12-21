@@ -26,6 +26,6 @@ node = nodes.ImageTexture(image=None, vector=None, frame=None, extension='REPEAT
 
 #### Output sockets:
 
-- **color** : [Color](Color
-- **alpha** : [Float](Float
+- **color** : [Color](Color)
+- **alpha** : [Float](Float)
 

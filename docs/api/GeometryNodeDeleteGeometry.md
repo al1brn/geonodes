@@ -25,5 +25,5 @@ node = nodes.DeleteGeometry(geometry=None, selection=None, domain='POINT', mode=
 
 #### Output sockets:
 
-- **geometry** : [Geometry](Geometry
+- **geometry** : [Geometry](Geometry)
 

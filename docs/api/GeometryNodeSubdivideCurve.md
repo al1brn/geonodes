@@ -20,5 +20,5 @@ node = nodes.SubdivideCurve(curve=None, cuts=None)
 
 #### Output sockets:
 
-- **curve** : [Curve](Curve
+- **curve** : [Curve](Curve)
 

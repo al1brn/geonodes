@@ -30,9 +30,9 @@ node = nodes.VoronoiTexture(vector=None, w=None, scale=None, smoothness=None, ex
 
 #### Output sockets:
 
-- **distance** : [Float](Float
-- **color** : [Color](Color
-- **position** : [Vector](Vector
-- **w** : [Float](Float
-- **radius** : [Float](Float
+- **distance** : [Float](Float)
+- **color** : [Color](Color)
+- **position** : [Vector](Vector)
+- **w** : [Float](Float)
+- **radius** : [Float](Float)
 

@@ -27,5 +27,5 @@ node = nodes.SubdivisionSurface(mesh=None, level=None, edge_crease=None, vertex_
 
 #### Output sockets:
 
-- **mesh** : [Mesh](Mesh
+- **mesh** : [Mesh](Mesh)
 

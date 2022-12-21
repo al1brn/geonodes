@@ -26,5 +26,5 @@ node = nodes.UvUnwrap(selection=None, seam=None, margin=None, fill_holes=None, m
 
 #### Output sockets:
 
-- **uv** : [Vector](Vector
+- **uv** : [Vector](Vector)
 

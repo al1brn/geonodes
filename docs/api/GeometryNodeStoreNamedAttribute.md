@@ -26,7 +26,7 @@ node = nodes.StoreNamedAttribute(geometry=None, name=None, value=None, data_type
 
 #### Output sockets:
 
-- **geometry** : [Geometry](Geometry
+- **geometry** : [Geometry](Geometry)
 
 #### Shared sockets:
 

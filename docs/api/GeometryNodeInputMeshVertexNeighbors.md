@@ -15,6 +15,6 @@ node = nodes.VertexNeighbors()
 
 #### Output sockets:
 
-- **vertex_count** : [Integer](Integer
-- **face_count** : [Integer](Integer
+- **vertex_count** : [Integer](Integer)
+- **face_count** : [Integer](Integer)
 

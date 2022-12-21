@@ -32,8 +32,8 @@ node = nodes.StringToCurves(string=None, size=None, character_spacing=None, word
 
 #### Output sockets:
 
-- **curve_instances** : [Geometry](Geometry
-- **remainder** : [String](String
-- **line** : [Integer](Integer
-- **pivot_point** : [Vector](Vector
+- **curve_instances** : [Geometry](Geometry)
+- **remainder** : [String](String)
+- **line** : [Integer](Integer)
+- **pivot_point** : [Vector](Vector)
 

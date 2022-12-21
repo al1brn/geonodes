@@ -15,5 +15,5 @@ node = nodes.Position()
 
 #### Output sockets:
 
-- **position** : [Vector](Vector
+- **position** : [Vector](Vector)
 

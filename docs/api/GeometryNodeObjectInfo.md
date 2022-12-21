@@ -24,8 +24,8 @@ node = nodes.ObjectInfo(object=None, as_instance=None, transform_space='ORIGINAL
 
 #### Output sockets:
 
-- **location** : [Vector](Vector
-- **rotation** : [Vector](Vector
-- **scale** : [Vector](Vector
-- **geometry** : [Geometry](Geometry
+- **location** : [Vector](Vector)
+- **rotation** : [Vector](Vector)
+- **scale** : [Vector](Vector)
+- **geometry** : [Geometry](Geometry)
 

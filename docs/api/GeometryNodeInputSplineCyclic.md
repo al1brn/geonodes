@@ -15,5 +15,5 @@ node = nodes.IsSplineCyclic()
 
 #### Output sockets:
 
-- **cyclic** : [Boolean](Boolean
+- **cyclic** : [Boolean](Boolean)
 

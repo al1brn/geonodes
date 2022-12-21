@@ -29,7 +29,7 @@ node = nodes.Compare(a=None, b=None, c=None, angle=None, epsilon=None, data_type
 
 #### Output sockets:
 
-- **result** : [Boolean](Boolean
+- **result** : [Boolean](Boolean)
 
 #### Shared sockets:
 

@@ -25,7 +25,7 @@ node = nodes.CaptureAttribute(geometry=None, value=None, data_type='FLOAT', doma
 
 #### Output sockets:
 
-- **geometry** : [Geometry](Geometry
+- **geometry** : [Geometry](Geometry)
 - **attribute** : ``data_type`` dependant
 
 #### Shared sockets:

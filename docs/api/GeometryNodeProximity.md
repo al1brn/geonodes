@@ -24,6 +24,6 @@ node = nodes.GeometryProximity(target=None, source_position=None, target_element
 
 #### Output sockets:
 
-- **position** : [Vector](Vector
-- **distance** : [Float](Float
+- **position** : [Vector](Vector)
+- **distance** : [Float](Float)
 

@@ -27,5 +27,5 @@ node = nodes.RotateEuler(rotation=None, rotate_by=None, axis=None, angle=None, s
 
 #### Output sockets:
 
-- **rotation** : [Vector](Vector
+- **rotation** : [Vector](Vector)
 

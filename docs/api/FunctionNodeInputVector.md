@@ -19,5 +19,5 @@ node = nodes.Vector(vector=[0.0, 0.0, 0.0])
 
 #### Output sockets:
 
-- **vector** : [Vector](Vector
+- **vector** : [Vector](Vector)
 

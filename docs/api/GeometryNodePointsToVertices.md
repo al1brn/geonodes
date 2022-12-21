@@ -20,5 +20,5 @@ node = nodes.PointsToVertices(points=None, selection=None)
 
 #### Output sockets:
 
-- **mesh** : [Mesh](Mesh
+- **mesh** : [Mesh](Mesh)
 

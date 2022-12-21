@@ -22,5 +22,5 @@ node = nodes.SetPosition(geometry=None, selection=None, position=None, offset=No
 
 #### Output sockets:
 
-- **geometry** : [Geometry](Geometry
+- **geometry** : [Geometry](Geometry)
 

@@ -19,6 +19,6 @@ node = nodes.FaceOfCorner(corner_index=None)
 
 #### Output sockets:
 
-- **face_index** : [Integer](Integer
-- **index_in_face** : [Integer](Integer
+- **face_index** : [Integer](Integer)
+- **index_in_face** : [Integer](Integer)
 

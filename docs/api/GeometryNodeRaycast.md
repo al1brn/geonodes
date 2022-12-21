@@ -28,10 +28,10 @@ node = nodes.Raycast(target_geometry=None, attribute=None, source_position=None,
 
 #### Output sockets:
 
-- **is_hit** : [Boolean](Boolean
-- **hit_position** : [Vector](Vector
-- **hit_normal** : [Vector](Vector
-- **hit_distance** : [Float](Float
+- **is_hit** : [Boolean](Boolean)
+- **hit_position** : [Vector](Vector)
+- **hit_normal** : [Vector](Vector)
+- **hit_distance** : [Float](Float)
 - **attribute** : ``data_type`` dependant
 
 #### Shared sockets:

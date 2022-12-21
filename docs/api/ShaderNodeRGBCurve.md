@@ -20,5 +20,5 @@ node = nodes.RgbCurves(fac=None, color=None)
 
 #### Output sockets:
 
-- **color** : [Color](Color
+- **color** : [Color](Color)
 

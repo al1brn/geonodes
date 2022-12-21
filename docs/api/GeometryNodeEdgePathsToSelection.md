@@ -20,5 +20,5 @@ node = nodes.EdgePathsToSelection(start_vertices=None, next_vertex_index=None)
 
 #### Output sockets:
 
-- **selection** : [Boolean](Boolean
+- **selection** : [Boolean](Boolean)
 

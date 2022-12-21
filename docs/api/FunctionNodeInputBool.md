@@ -19,5 +19,5 @@ node = nodes.Boolean(boolean=False)
 
 #### Output sockets:
 
-- **boolean** : [Boolean](Boolean
+- **boolean** : [Boolean](Boolean)
 

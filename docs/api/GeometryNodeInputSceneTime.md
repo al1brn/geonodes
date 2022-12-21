@@ -15,6 +15,6 @@ node = nodes.SceneTime()
 
 #### Output sockets:
 
-- **seconds** : [Float](Float
-- **frame** : [Float](Float
+- **seconds** : [Float](Float)
+- **frame** : [Float](Float)
 

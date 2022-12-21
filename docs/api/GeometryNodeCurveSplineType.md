@@ -24,5 +24,5 @@ node = nodes.SetSplineType(curve=None, selection=None, spline_type='POLY')
 
 #### Output sockets:
 
-- **curve** : [Curve](Curve
+- **curve** : [Curve](Curve)
 

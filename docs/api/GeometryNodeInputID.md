@@ -15,5 +15,5 @@ node = nodes.ID()
 
 #### Output sockets:
 
-- **ID** : [Integer](Integer
+- **ID** : [Integer](Integer)
 

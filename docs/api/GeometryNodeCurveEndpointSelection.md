@@ -20,5 +20,5 @@ node = nodes.EndpointSelection(start_size=None, end_size=None)
 
 #### Output sockets:
 
-- **selection** : [Boolean](Boolean
+- **selection** : [Boolean](Boolean)
 

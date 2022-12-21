@@ -22,5 +22,5 @@ node = nodes.Transform(geometry=None, translation=None, rotation=None, scale=Non
 
 #### Output sockets:
 
-- **geometry** : [Geometry](Geometry
+- **geometry** : [Geometry](Geometry)
 

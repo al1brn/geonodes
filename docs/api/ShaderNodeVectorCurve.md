@@ -20,5 +20,5 @@ node = nodes.VectorCurves(fac=None, vector=None)
 
 #### Output sockets:
 
-- **vector** : [Vector](Vector
+- **vector** : [Vector](Vector)
 

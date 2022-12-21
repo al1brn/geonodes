@@ -15,5 +15,5 @@ node = nodes.InstanceScale()
 
 #### Output sockets:
 
-- **scale** : [Vector](Vector
+- **scale** : [Vector](Vector)
 

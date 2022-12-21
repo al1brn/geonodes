@@ -19,7 +19,7 @@ node = nodes.SeparateXyz(vector=None)
 
 #### Output sockets:
 
-- **x** : [Float](Float
-- **y** : [Float](Float
-- **z** : [Float](Float
+- **x** : [Float](Float)
+- **y** : [Float](Float)
+- **z** : [Float](Float)
 
