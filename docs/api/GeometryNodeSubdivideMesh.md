@@ -28,4 +28,4 @@ node = nodes.SubdivideMesh(mesh=None, level=None)
 
 #### class [Mesh](Mesh.md)
 
- - [<bound method Generator.fname of <generator.code_gen.StackMethod object at 0x16d4f8040>>](Mesh.md#subdivide)
+ - [subdivide](Mesh.md#subdivide)

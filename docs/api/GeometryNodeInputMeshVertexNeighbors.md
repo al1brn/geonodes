@@ -22,6 +22,6 @@ node = nodes.VertexNeighbors()
 
 #### class [Vertex](Vertex.md)
 
- - [<bound method Generator.fname of <generator.code_gen.DomPropAttribute object at 0x16e378df0>>](Vertex.md#neighbors-property)
- - [<bound method Generator.fname of <generator.code_gen.DomPropAttribute object at 0x16e378e20>>](Vertex.md#neighbors_vertex_count-property)
- - [<bound method Generator.fname of <generator.code_gen.DomPropAttribute object at 0x16e379090>>](Vertex.md#neighbors_face_count-property)
+ - [neighbors](Vertex.md#neighbors-property)
+ - [neighbors_vertex_count](Vertex.md#neighbors_vertex_count-property)
+ - [neighbors_face_count](Vertex.md#neighbors_face_count-property)

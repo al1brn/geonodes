@@ -28,4 +28,4 @@ node = nodes.SubdivideCurve(curve=None, cuts=None)
 
 #### class [Curve](Curve.md)
 
- - [<bound method Generator.fname of <generator.code_gen.StackMethod object at 0x16d4fa980>>](Curve.md#subdivide)
+ - [subdivide](Curve.md#subdivide)

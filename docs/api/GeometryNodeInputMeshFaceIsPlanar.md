@@ -27,7 +27,7 @@ node = nodes.FaceIsPlanar(threshold=None)
 
 #### class [Mesh](Mesh.md)
 
- - [<bound method Generator.fname of <generator.code_gen.Attribute object at 0x16e37ab00>>](Mesh.md#face_is_planar)
+ - [face_is_planar](Mesh.md#face_is_planar)
 #### class [Face](Face.md)
 
- - [<bound method Generator.fname of <generator.code_gen.DomAttribute object at 0x16e378ca0>>](Face.md#is_planar)
+ - [is_planar](Face.md#is_planar)

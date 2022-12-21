@@ -29,7 +29,7 @@ node = nodes.OffsetPointInCurve(point_index=None, offset=None)
 
 #### class [Curve](Curve.md)
 
- - [<bound method Generator.fname of <generator.code_gen.Attribute object at 0x16d4f9f00>>](Curve.md#offset_point)
+ - [offset_point](Curve.md#offset_point)
 #### class [ControlPoint](ControlPoint.md)
 
- - [<bound method Generator.fname of <generator.code_gen.DomAttribute object at 0x16d4f9ed0>>](ControlPoint.md#offset)
+ - [offset](ControlPoint.md#offset)

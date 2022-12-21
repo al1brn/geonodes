@@ -27,4 +27,4 @@ node = nodes.Integer(integer=0)
 
 #### class [Integer](Integer.md)
 
- - [<bound method Generator.fname of <generator.code_gen.Constructor object at 0x16d4f9360>>](Integer.md#Integer-classmethod)
+ - [Integer](Integer.md#Integer-classmethod)

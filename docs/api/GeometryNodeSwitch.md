@@ -38,52 +38,52 @@ node = nodes.Switch(switch=None, false=None, true=None, input_type='GEOMETRY')
 
 #### class [Float](Float.md)
 
- - [<bound method Generator.fname of <generator.code_gen.Method object at 0x16e3df5b0>>](Float.md#switch)
+ - [switch](Float.md#switch)
 #### class [Integer](Integer.md)
 
- - [<bound method Generator.fname of <generator.code_gen.Method object at 0x16e3df6d0>>](Integer.md#switch)
+ - [switch](Integer.md#switch)
 #### class [Boolean](Boolean.md)
 
- - [<bound method Generator.fname of <generator.code_gen.Method object at 0x16e3dda50>>](Boolean.md#switch)
+ - [switch](Boolean.md#switch)
 #### class [String](String.md)
 
- - [<bound method Generator.fname of <generator.code_gen.Method object at 0x16e3df010>>](String.md#switch)
+ - [switch](String.md#switch)
 #### class [Vector](Vector.md)
 
- - [<bound method Generator.fname of <generator.code_gen.Method object at 0x16e3dd510>>](Vector.md#switch)
+ - [switch](Vector.md#switch)
 #### class [Color](Color.md)
 
- - [<bound method Generator.fname of <generator.code_gen.Method object at 0x16e3df1c0>>](Color.md#switch)
+ - [switch](Color.md#switch)
 #### class [Collection](Collection.md)
 
- - [<bound method Generator.fname of <generator.code_gen.Method object at 0x16e3df160>>](Collection.md#switch)
+ - [switch](Collection.md#switch)
 #### class [Object](Object.md)
 
- - [<bound method Generator.fname of <generator.code_gen.Method object at 0x16e3df940>>](Object.md#switch)
+ - [switch](Object.md#switch)
 #### class [Image](Image.md)
 
- - [<bound method Generator.fname of <generator.code_gen.Method object at 0x16e3df2b0>>](Image.md#switch)
+ - [switch](Image.md#switch)
 #### class [Texture](Texture.md)
 
- - [<bound method Generator.fname of <generator.code_gen.Method object at 0x16e3de440>>](Texture.md#switch)
+ - [switch](Texture.md#switch)
 #### class [Material](Material.md)
 
- - [<bound method Generator.fname of <generator.code_gen.Method object at 0x16e3dd6f0>>](Material.md#switch)
+ - [switch](Material.md#switch)
 #### class [Geometry](Geometry.md)
 
- - [<bound method Generator.fname of <generator.code_gen.Method object at 0x16e3deef0>>](Geometry.md#switch)
+ - [switch](Geometry.md#switch)
 #### Global functions
 
- - [<bound method Generator.fname of <generator.code_gen.Function object at 0x16e3dd7e0>>](function.md#switch)
- - [<bound method Generator.fname of <generator.code_gen.Function object at 0x16e3df850>>](function.md#switch_float)
- - [<bound method Generator.fname of <generator.code_gen.Function object at 0x16e3df250>>](function.md#switch_integer)
- - [<bound method Generator.fname of <generator.code_gen.Function object at 0x16e3dcdc0>>](function.md#switch_boolean)
- - [<bound method Generator.fname of <generator.code_gen.Function object at 0x16e3df610>>](function.md#switch_vector)
- - [<bound method Generator.fname of <generator.code_gen.Function object at 0x16e3dd810>>](function.md#switch_string)
- - [<bound method Generator.fname of <generator.code_gen.Function object at 0x16e3dc6a0>>](function.md#switch_color)
- - [<bound method Generator.fname of <generator.code_gen.Function object at 0x16e3dc5e0>>](function.md#switch_object)
- - [<bound method Generator.fname of <generator.code_gen.Function object at 0x16e3dd060>>](function.md#switch_image)
- - [<bound method Generator.fname of <generator.code_gen.Function object at 0x16e3dd180>>](function.md#switch_geometry)
- - [<bound method Generator.fname of <generator.code_gen.Function object at 0x16e3dd690>>](function.md#switch_collection)
- - [<bound method Generator.fname of <generator.code_gen.Function object at 0x16e3dcee0>>](function.md#switch_texture)
- - [<bound method Generator.fname of <generator.code_gen.Function object at 0x16e3dcf70>>](function.md#switch_material)
+ - [switch](function.md#switch)
+ - [switch_float](function.md#switch_float)
+ - [switch_integer](function.md#switch_integer)
+ - [switch_boolean](function.md#switch_boolean)
+ - [switch_vector](function.md#switch_vector)
+ - [switch_string](function.md#switch_string)
+ - [switch_color](function.md#switch_color)
+ - [switch_object](function.md#switch_object)
+ - [switch_image](function.md#switch_image)
+ - [switch_geometry](function.md#switch_geometry)
+ - [switch_collection](function.md#switch_collection)
+ - [switch_texture](function.md#switch_texture)
+ - [switch_material](function.md#switch_material)

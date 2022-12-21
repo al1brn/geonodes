@@ -45,4 +45,4 @@ node = nodes.SampleCurve(curves=None, value=None, factor=None, length=None, curv
 
 #### class [Curve](Curve.md)
 
- - [<bound method Generator.fname of <generator.code_gen.StackMethod object at 0x16d4fa9b0>>](Curve.md#sample)
+ - [sample](Curve.md#sample)

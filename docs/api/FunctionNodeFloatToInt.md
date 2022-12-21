@@ -31,8 +31,8 @@ node = nodes.FloatToInteger(float=None, rounding_mode='ROUND')
 
 #### class [Float](Float.md)
 
- - [<bound method Generator.fname of <generator.code_gen.Method object at 0x16e3dc3d0>>](Float.md#to_integer)
- - [<bound method Generator.fname of <generator.code_gen.Method object at 0x16e3dd990>>](Float.md#round)
- - [<bound method Generator.fname of <generator.code_gen.Method object at 0x16e3ddc30>>](Float.md#floor)
- - [<bound method Generator.fname of <generator.code_gen.Method object at 0x16e3dd840>>](Float.md#ceiling)
- - [<bound method Generator.fname of <generator.code_gen.Method object at 0x16e3dcb20>>](Float.md#truncate)
+ - [to_integer](Float.md#to_integer)
+ - [round](Float.md#round)
+ - [floor](Float.md#floor)
+ - [ceiling](Float.md#ceiling)
+ - [truncate](Float.md#truncate)

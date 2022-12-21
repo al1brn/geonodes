@@ -37,13 +37,13 @@ node = nodes.ExtrudeMesh(mesh=None, selection=None, offset=None, offset_scale=No
 
 #### class [Mesh](Mesh.md)
 
- - [<bound method Generator.fname of <generator.code_gen.StackMethod object at 0x16d4f8520>>](Mesh.md#extrude)
+ - [extrude](Mesh.md#extrude)
 #### class [Vertex](Vertex.md)
 
- - [<bound method Generator.fname of <generator.code_gen.DomStackMethod object at 0x16d4f8490>>](Vertex.md#extrude)
+ - [extrude](Vertex.md#extrude)
 #### class [Face](Face.md)
 
- - [<bound method Generator.fname of <generator.code_gen.DomStackMethod object at 0x16d4f84f0>>](Face.md#extrude)
+ - [extrude](Face.md#extrude)
 #### class [Edge](Edge.md)
 
- - [<bound method Generator.fname of <generator.code_gen.DomStackMethod object at 0x16d4f84c0>>](Edge.md#extrude)
+ - [extrude](Edge.md#extrude)

@@ -28,7 +28,7 @@ node = nodes.ColorRamp(fac=None)
 
 #### class [Float](Float.md)
 
- - [<bound method Generator.fname of <generator.code_gen.Property object at 0x16d4fba00>>](Float.md#color_ramp-property)
+ - [color_ramp](Float.md#color_ramp-property)
 #### Global functions
 
- - [<bound method Generator.fname of <generator.code_gen.Function object at 0x16d4fba30>>](function.md#color_ramp)
+ - [color_ramp](function.md#color_ramp)

@@ -28,4 +28,4 @@ node = nodes.VectorCurves(fac=None, vector=None)
 
 #### class [Vector](Vector.md)
 
- - [<bound method Generator.fname of <generator.code_gen.Method object at 0x16e3dded0>>](Vector.md#curves)
+ - [curves](Vector.md#curves)

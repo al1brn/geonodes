@@ -22,6 +22,6 @@ node = nodes.EdgeAngle()
 
 #### class [Edge](Edge.md)
 
- - [<bound method Generator.fname of <generator.code_gen.DomPropAttribute object at 0x16e37a9b0>>](Edge.md#angle-property)
- - [<bound method Generator.fname of <generator.code_gen.DomPropAttribute object at 0x16e37abf0>>](Edge.md#unsigned_angle-property)
- - [<bound method Generator.fname of <generator.code_gen.DomPropAttribute object at 0x16e378d60>>](Edge.md#signed_angle-property)
+ - [angle](Edge.md#angle-property)
+ - [unsigned_angle](Edge.md#unsigned_angle-property)
+ - [signed_angle](Edge.md#signed_angle-property)

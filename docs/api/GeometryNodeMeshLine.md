@@ -35,8 +35,8 @@ node = nodes.MeshLine(count=None, resolution=None, start_location=None, offset=N
 
 #### class [Mesh](Mesh.md)
 
- - [<bound method Generator.fname of <generator.code_gen.Constructor object at 0x16e378340>>](Mesh.md#Line-classmethod)
- - [<bound method Generator.fname of <generator.code_gen.Constructor object at 0x16e3797e0>>](Mesh.md#LineEndPoints-classmethod)
- - [<bound method Generator.fname of <generator.code_gen.Constructor object at 0x16e378430>>](Mesh.md#LineOffset-classmethod)
- - [<bound method Generator.fname of <generator.code_gen.Constructor object at 0x16e3783d0>>](Mesh.md#LineEndPointsResolution-classmethod)
- - [<bound method Generator.fname of <generator.code_gen.Constructor object at 0x16e3783a0>>](Mesh.md#LineOffsetResolution-classmethod)
+ - [Line](Mesh.md#Line-classmethod)
+ - [LineEndPoints](Mesh.md#LineEndPoints-classmethod)
+ - [LineOffset](Mesh.md#LineOffset-classmethod)
+ - [LineEndPointsResolution](Mesh.md#LineEndPointsResolution-classmethod)
+ - [LineOffsetResolution](Mesh.md#LineOffsetResolution-classmethod)

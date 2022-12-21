@@ -40,19 +40,19 @@ node = nodes.RandomValue(min=None, max=None, probability=None, ID=None, seed=Non
 
 #### class [Geometry](Geometry.md)
 
- - [<bound method Generator.fname of <generator.code_gen.Attribute object at 0x16e3de9e0>>](Geometry.md#random_float)
- - [<bound method Generator.fname of <generator.code_gen.Attribute object at 0x16e3de650>>](Geometry.md#random_integer)
- - [<bound method Generator.fname of <generator.code_gen.Attribute object at 0x16e3de980>>](Geometry.md#random_vector)
- - [<bound method Generator.fname of <generator.code_gen.Attribute object at 0x16e3de6b0>>](Geometry.md#random_boolean)
+ - [random_float](Geometry.md#random_float)
+ - [random_integer](Geometry.md#random_integer)
+ - [random_vector](Geometry.md#random_vector)
+ - [random_boolean](Geometry.md#random_boolean)
 #### class [Domain](Domain.md)
 
- - [<bound method Generator.fname of <generator.code_gen.DomAttribute object at 0x16e3de890>>](Domain.md#random_float)
- - [<bound method Generator.fname of <generator.code_gen.DomAttribute object at 0x16e3de920>>](Domain.md#random_integer)
- - [<bound method Generator.fname of <generator.code_gen.DomAttribute object at 0x16e3de950>>](Domain.md#random_vector)
- - [<bound method Generator.fname of <generator.code_gen.DomAttribute object at 0x16e3de680>>](Domain.md#random_boolean)
+ - [random_float](Domain.md#random_float)
+ - [random_integer](Domain.md#random_integer)
+ - [random_vector](Domain.md#random_vector)
+ - [random_boolean](Domain.md#random_boolean)
 #### Global functions
 
- - [<bound method Generator.fname of <generator.code_gen.Function object at 0x16e3deb90>>](function.md#random_float)
- - [<bound method Generator.fname of <generator.code_gen.Function object at 0x16e3deb00>>](function.md#random_integer)
- - [<bound method Generator.fname of <generator.code_gen.Function object at 0x16e3dea40>>](function.md#random_vector)
- - [<bound method Generator.fname of <generator.code_gen.Function object at 0x16e3dea10>>](function.md#random_boolean)
+ - [random_float](function.md#random_float)
+ - [random_integer](function.md#random_integer)
+ - [random_vector](function.md#random_vector)
+ - [random_boolean](function.md#random_boolean)

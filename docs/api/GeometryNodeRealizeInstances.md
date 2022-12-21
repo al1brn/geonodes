@@ -31,4 +31,4 @@ node = nodes.RealizeInstances(geometry=None, legacy_behavior=False)
 
 #### class [Instances](Instances.md)
 
- - [<bound method Generator.fname of <generator.code_gen.Method object at 0x16d4f8a00>>](Instances.md#realize)
+ - [realize](Instances.md#realize)

@@ -34,10 +34,10 @@ node = nodes.AlignEulerToVector(rotation=None, factor=None, vector=None, axis='X
 
 #### class [Vector](Vector.md)
 
- - [<bound method Generator.fname of <generator.code_gen.StackMethod object at 0x16e37a860>>](Vector.md#align_euler_to_vector)
+ - [align_euler_to_vector](Vector.md#align_euler_to_vector)
 #### Global functions
 
- - [<bound method Generator.fname of <generator.code_gen.Function object at 0x16e378ac0>>](function.md#align_euler_to_vector)
+ - [align_euler_to_vector](function.md#align_euler_to_vector)
 #### class [Rotation](Rotation.md)
 
- - [<bound method Generator.fname of <generator.code_gen.StackMethod object at 0x16e37a680>>](Rotation.md#align_to_vector)
+ - [align_to_vector](Rotation.md#align_to_vector)

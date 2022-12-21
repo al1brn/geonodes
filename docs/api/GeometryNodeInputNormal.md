@@ -21,10 +21,10 @@ node = nodes.Normal()
 
 #### class [Geometry](Geometry.md)
 
- - [<bound method Generator.fname of <generator.code_gen.PropAttribute object at 0x16d4f8d60>>](Geometry.md#normal-property)
+ - [normal](Geometry.md#normal-property)
 #### class [Domain](Domain.md)
 
- - [<bound method Generator.fname of <generator.code_gen.DomPropAttribute object at 0x16d4f8d30>>](Domain.md#normal-property)
+ - [normal](Domain.md#normal-property)
 #### class [Spline](Spline.md)
 
- - [<bound method Generator.fname of <generator.code_gen.DomPropAttribute object at 0x16d4f8d00>>](Spline.md#normal-property)
+ - [normal](Spline.md#normal-property)

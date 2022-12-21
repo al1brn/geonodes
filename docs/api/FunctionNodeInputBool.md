@@ -27,4 +27,4 @@ node = nodes.Boolean(boolean=False)
 
 #### class [Boolean](Boolean.md)
 
- - [<bound method Generator.fname of <generator.code_gen.Constructor object at 0x16d4f93f0>>](Boolean.md#Boolean-classmethod)
+ - [Boolean](Boolean.md#Boolean-classmethod)

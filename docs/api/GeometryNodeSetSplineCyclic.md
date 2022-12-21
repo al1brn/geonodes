@@ -29,5 +29,5 @@ node = nodes.SetSplineCyclic(geometry=None, selection=None, cyclic=None)
 
 #### class [Spline](Spline.md)
 
- - [<bound method Generator.fname of <generator.code_gen.DomStackMethod object at 0x16d4fa260>>](Spline.md#set_cyclic)
- - [<bound method Generator.fname of <generator.code_gen.DomSetter object at 0x16d4fa230>>](Spline.md#cyclic)
+ - [set_cyclic](Spline.md#set_cyclic)
+ - [cyclic](Spline.md#cyclic)

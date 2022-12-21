@@ -28,7 +28,7 @@ node = nodes.SplitEdges(mesh=None, selection=None)
 
 #### class [Mesh](Mesh.md)
 
- - [<bound method Generator.fname of <generator.code_gen.StackMethod object at 0x16d4f80a0>>](Mesh.md#split_edges)
+ - [split_edges](Mesh.md#split_edges)
 #### class [Edge](Edge.md)
 
- - [<bound method Generator.fname of <generator.code_gen.DomStackMethod object at 0x16d4f8070>>](Edge.md#split)
+ - [split](Edge.md#split)

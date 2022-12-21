@@ -40,7 +40,7 @@ node = nodes.SampleIndex(geometry=None, value=None, index=None, clamp=False, dat
 
 #### class [Geometry](Geometry.md)
 
- - [<bound method Generator.fname of <generator.code_gen.Method object at 0x16d4f97b0>>](Geometry.md#sample_index)
+ - [sample_index](Geometry.md#sample_index)
 #### class [Domain](Domain.md)
 
- - [<bound method Generator.fname of <generator.code_gen.DomMethod object at 0x16d4f9780>>](Domain.md#sample_index)
+ - [sample_index](Domain.md#sample_index)

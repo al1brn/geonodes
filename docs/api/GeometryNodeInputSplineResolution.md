@@ -21,4 +21,4 @@ node = nodes.SplineResolution()
 
 #### class [Spline](Spline.md)
 
- - [<bound method Generator.fname of <generator.code_gen.DomPropAttribute object at 0x16d4fa530>>](Spline.md#resolution-property)
+ - [resolution](Spline.md#resolution-property)

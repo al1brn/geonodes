@@ -37,7 +37,7 @@ node = nodes.MeshToVolume(mesh=None, density=None, voxel_size=None, voxel_amount
 
 #### class [Mesh](Mesh.md)
 
- - [<bound method Generator.fname of <generator.code_gen.Method object at 0x16d4f82b0>>](Mesh.md#to_volume)
+ - [to_volume](Mesh.md#to_volume)
 #### class [Vertex](Vertex.md)
 
- - [<bound method Generator.fname of <generator.code_gen.DomMethod object at 0x16d4f8280>>](Vertex.md#to_volume)
+ - [to_volume](Vertex.md#to_volume)

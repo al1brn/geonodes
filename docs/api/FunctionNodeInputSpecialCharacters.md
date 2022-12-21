@@ -22,5 +22,5 @@ node = nodes.SpecialCharacters()
 
 #### class [String](String.md)
 
- - [<bound method Generator.fname of <generator.code_gen.Static object at 0x168102650>>](String.md#LineBreak-staticmethod)
- - [<bound method Generator.fname of <generator.code_gen.Static object at 0x168102620>>](String.md#Tab-staticmethod)
+ - [LineBreak](String.md#LineBreak-staticmethod)
+ - [Tab](String.md#Tab-staticmethod)

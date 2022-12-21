@@ -31,4 +31,4 @@ node = nodes.Star(points=None, inner_radius=None, outer_radius=None, twist=None)
 
 #### class [Curve](Curve.md)
 
- - [<bound method Generator.fname of <generator.code_gen.Constructor object at 0x16d4f9f30>>](Curve.md#Star-classmethod)
+ - [Star](Curve.md#Star-classmethod)

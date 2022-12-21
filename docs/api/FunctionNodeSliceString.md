@@ -29,7 +29,7 @@ node = nodes.SliceString(string=None, position=None, length=None)
 
 #### class [String](String.md)
 
- - [<bound method Generator.fname of <generator.code_gen.Method object at 0x168102a10>>](String.md#slice)
+ - [slice](String.md#slice)
 #### Global functions
 
- - [<bound method Generator.fname of <generator.code_gen.Function object at 0x168102a40>>](function.md#slice_string)
+ - [slice_string](function.md#slice_string)

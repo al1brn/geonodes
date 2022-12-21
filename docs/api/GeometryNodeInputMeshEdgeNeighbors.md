@@ -21,4 +21,4 @@ node = nodes.EdgeNeighbors()
 
 #### class [Edge](Edge.md)
 
- - [<bound method Generator.fname of <generator.code_gen.DomPropAttribute object at 0x16e37acb0>>](Edge.md#neighbors-property)
+ - [neighbors](Edge.md#neighbors-property)

@@ -29,4 +29,4 @@ node = nodes.CurveToMesh(curve=None, profile_curve=None, fill_caps=None)
 
 #### class [Curve](Curve.md)
 
- - [<bound method Generator.fname of <generator.code_gen.Method object at 0x16d4fada0>>](Curve.md#to_mesh)
+ - [to_mesh](Curve.md#to_mesh)

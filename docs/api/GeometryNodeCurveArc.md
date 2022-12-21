@@ -43,5 +43,5 @@ node = nodes.Arc(resolution=None, start=None, middle=None, end=None, radius=None
 
 #### class [Curve](Curve.md)
 
- - [<bound method Generator.fname of <generator.code_gen.Constructor object at 0x16d4fa110>>](Curve.md#Arc-classmethod)
- - [<bound method Generator.fname of <generator.code_gen.Constructor object at 0x16d4fa0e0>>](Curve.md#ArcFromPoints-classmethod)
+ - [Arc](Curve.md#Arc-classmethod)
+ - [ArcFromPoints](Curve.md#ArcFromPoints-classmethod)

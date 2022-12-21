@@ -28,7 +28,7 @@ node = nodes.MeshToCurve(mesh=None, selection=None)
 
 #### class [Mesh](Mesh.md)
 
- - [<bound method Generator.fname of <generator.code_gen.Method object at 0x16d4f8370>>](Mesh.md#to_curve)
+ - [to_curve](Mesh.md#to_curve)
 #### class [Edge](Edge.md)
 
- - [<bound method Generator.fname of <generator.code_gen.DomMethod object at 0x16d4f8340>>](Edge.md#to_curve)
+ - [to_curve](Edge.md#to_curve)

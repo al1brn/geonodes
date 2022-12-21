@@ -32,7 +32,7 @@ node = nodes.SampleNearest(geometry=None, sample_position=None, domain='POINT')
 
 #### class [Geometry](Geometry.md)
 
- - [<bound method Generator.fname of <generator.code_gen.Method object at 0x16d4f9750>>](Geometry.md#sample_nearest)
+ - [sample_nearest](Geometry.md#sample_nearest)
 #### class [Domain](Domain.md)
 
- - [<bound method Generator.fname of <generator.code_gen.DomMethod object at 0x16d4f9720>>](Domain.md#sample_nearest)
+ - [sample_nearest](Domain.md#sample_nearest)

@@ -39,4 +39,4 @@ node = nodes.MusgraveTexture(vector=None, w=None, scale=None, detail=None, dimen
 
 #### class [Texture](Texture.md)
 
- - [<bound method Generator.fname of <generator.code_gen.Static object at 0x1683b3190>>](Texture.md#musgrave-staticmethod)
+ - [musgrave](Texture.md#musgrave-staticmethod)

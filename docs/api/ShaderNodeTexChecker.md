@@ -31,4 +31,4 @@ node = nodes.CheckerTexture(vector=None, color1=None, color2=None, scale=None)
 
 #### class [Texture](Texture.md)
 
- - [<bound method Generator.fname of <generator.code_gen.Static object at 0x1683b0dc0>>](Texture.md#checker-staticmethod)
+ - [checker](Texture.md#checker-staticmethod)

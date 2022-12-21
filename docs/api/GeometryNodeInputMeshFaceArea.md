@@ -21,4 +21,4 @@ node = nodes.FaceArea()
 
 #### class [Face](Face.md)
 
- - [<bound method Generator.fname of <generator.code_gen.DomPropAttribute object at 0x16e379510>>](Face.md#area-property)
+ - [area](Face.md#area-property)

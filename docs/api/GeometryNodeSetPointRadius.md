@@ -29,7 +29,7 @@ node = nodes.SetPointRadius(points=None, selection=None, radius=None)
 
 #### class [Points](Points.md)
 
- - [<bound method Generator.fname of <generator.code_gen.StackMethod object at 0x16e379b40>>](Points.md#set_point_radius)
+ - [set_point_radius](Points.md#set_point_radius)
 #### class [CloudPoint](CloudPoint.md)
 
- - [<bound method Generator.fname of <generator.code_gen.DomSetter object at 0x16e3799f0>>](CloudPoint.md#radius)
+ - [radius](CloudPoint.md#radius)

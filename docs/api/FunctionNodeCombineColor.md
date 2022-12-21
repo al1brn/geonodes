@@ -34,11 +34,11 @@ node = nodes.CombineColor(red=None, green=None, blue=None, alpha=None, mode='RGB
 
 #### class [Color](Color.md)
 
- - [<bound method Generator.fname of <generator.code_gen.Constructor object at 0x16d4fb940>>](Color.md#RGB-classmethod)
- - [<bound method Generator.fname of <generator.code_gen.Constructor object at 0x16d4fb910>>](Color.md#HSV-classmethod)
- - [<bound method Generator.fname of <generator.code_gen.Constructor object at 0x16d4fb8e0>>](Color.md#HSL-classmethod)
+ - [RGB](Color.md#RGB-classmethod)
+ - [HSV](Color.md#HSV-classmethod)
+ - [HSL](Color.md#HSL-classmethod)
 #### Global functions
 
- - [<bound method Generator.fname of <generator.code_gen.Function object at 0x16d4fb9d0>>](function.md#combine_rgb)
- - [<bound method Generator.fname of <generator.code_gen.Function object at 0x16d4fb9a0>>](function.md#combine_hsv)
- - [<bound method Generator.fname of <generator.code_gen.Function object at 0x16d4fb970>>](function.md#combine_hsl)
+ - [combine_rgb](function.md#combine_rgb)
+ - [combine_hsv](function.md#combine_hsv)
+ - [combine_hsl](function.md#combine_hsl)

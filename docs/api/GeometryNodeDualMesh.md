@@ -28,4 +28,4 @@ node = nodes.DualMesh(mesh=None, keep_boundaries=None)
 
 #### class [Mesh](Mesh.md)
 
- - [<bound method Generator.fname of <generator.code_gen.Method object at 0x16d4f85e0>>](Mesh.md#dual_mesh)
+ - [dual_mesh](Mesh.md#dual_mesh)

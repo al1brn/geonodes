@@ -29,8 +29,8 @@ node = nodes.SetID(geometry=None, selection=None, ID=None)
 
 #### class [Geometry](Geometry.md)
 
- - [<bound method Generator.fname of <generator.code_gen.StackMethod object at 0x16d4f9510>>](Geometry.md#set_ID)
+ - [set_ID](Geometry.md#set_ID)
 #### class [Domain](Domain.md)
 
- - [<bound method Generator.fname of <generator.code_gen.DomStackMethod object at 0x16d4f94e0>>](Domain.md#set_ID)
- - [<bound method Generator.fname of <generator.code_gen.DomSetter object at 0x16d4f94b0>>](Domain.md#ID)
+ - [set_ID](Domain.md#set_ID)
+ - [ID](Domain.md#ID)

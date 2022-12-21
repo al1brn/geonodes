@@ -29,4 +29,4 @@ node = nodes.CombineXyz(x=None, y=None, z=None)
 
 #### class [Vector](Vector.md)
 
- - [<bound method Generator.fname of <generator.code_gen.Constructor object at 0x16e3dce20>>](Vector.md#Combine-classmethod)
+ - [Combine](Vector.md#Combine-classmethod)

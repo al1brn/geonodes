@@ -27,7 +27,7 @@ node = nodes.StringLength(string=None)
 
 #### class [String](String.md)
 
- - [<bound method Generator.fname of <generator.code_gen.Property object at 0x1681029b0>>](String.md#length-property)
+ - [length](String.md#length-property)
 #### Global functions
 
- - [<bound method Generator.fname of <generator.code_gen.Function object at 0x1681029e0>>](function.md#string_length)
+ - [string_length](function.md#string_length)

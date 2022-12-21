@@ -21,7 +21,7 @@ node = nodes.MaterialIndex()
 
 #### class [Geometry](Geometry.md)
 
- - [<bound method Generator.fname of <generator.code_gen.PropAttribute object at 0x16d4f87c0>>](Geometry.md#material_index-property)
+ - [material_index](Geometry.md#material_index-property)
 #### class [Domain](Domain.md)
 
- - [<bound method Generator.fname of <generator.code_gen.DomPropAttribute object at 0x16d4f8790>>](Domain.md#material_index-property)
+ - [material_index](Domain.md#material_index-property)

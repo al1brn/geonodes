@@ -22,5 +22,5 @@ node = nodes.SceneTime()
 
 #### class [Float](Float.md)
 
- - [<bound method Generator.fname of <generator.code_gen.Constructor object at 0x16d4f8be0>>](Float.md#Seconds-classmethod)
- - [<bound method Generator.fname of <generator.code_gen.Constructor object at 0x16d4f8bb0>>](Float.md#Frame-classmethod)
+ - [Seconds](Float.md#Seconds-classmethod)
+ - [Frame](Float.md#Frame-classmethod)

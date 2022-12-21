@@ -35,7 +35,7 @@ node = nodes.ImageTexture(image=None, vector=None, frame=None, extension='REPEAT
 
 #### class [Image](Image.md)
 
- - [<bound method Generator.fname of <generator.code_gen.Method object at 0x1683b0ee0>>](Image.md#texture)
+ - [texture](Image.md#texture)
 #### class [Texture](Texture.md)
 
- - [<bound method Generator.fname of <generator.code_gen.Static object at 0x1683b22f0>>](Texture.md#image-staticmethod)
+ - [image](Texture.md#image-staticmethod)

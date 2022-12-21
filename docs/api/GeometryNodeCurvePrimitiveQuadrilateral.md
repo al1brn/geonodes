@@ -41,4 +41,4 @@ node = nodes.Quadrilateral(width=None, height=None, bottom_width=None, top_width
 
 #### class [Curve](Curve.md)
 
- - [<bound method Generator.fname of <generator.code_gen.Constructor object at 0x16d4f9f60>>](Curve.md#Quadrilateral-classmethod)
+ - [Quadrilateral](Curve.md#Quadrilateral-classmethod)

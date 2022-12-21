@@ -30,7 +30,7 @@ node = nodes.TranslateInstances(instances=None, selection=None, translation=None
 
 #### class [Instances](Instances.md)
 
- - [<bound method Generator.fname of <generator.code_gen.StackMethod object at 0x16d4f8910>>](Instances.md#translate)
+ - [translate](Instances.md#translate)
 #### class [Instance](Instance.md)
 
- - [<bound method Generator.fname of <generator.code_gen.DomStackMethod object at 0x16d4f88e0>>](Instance.md#translate)
+ - [translate](Instance.md#translate)

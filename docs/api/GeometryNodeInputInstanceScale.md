@@ -21,7 +21,7 @@ node = nodes.InstanceScale()
 
 #### class [Instances](Instances.md)
 
- - [<bound method Generator.fname of <generator.code_gen.PropAttribute object at 0x16d4f88b0>>](Instances.md#scale-property)
+ - [scale](Instances.md#scale-property)
 #### class [Instance](Instance.md)
 
- - [<bound method Generator.fname of <generator.code_gen.DomPropAttribute object at 0x16d4f8880>>](Instance.md#scale-property)
+ - [scale](Instance.md#scale-property)

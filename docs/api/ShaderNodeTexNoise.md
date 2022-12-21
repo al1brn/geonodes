@@ -37,8 +37,8 @@ node = nodes.NoiseTexture(vector=None, w=None, scale=None, detail=None, roughnes
 
 #### class [Texture](Texture.md)
 
- - [<bound method Generator.fname of <generator.code_gen.Static object at 0x1683b15d0>>](Texture.md#noise-staticmethod)
- - [<bound method Generator.fname of <generator.code_gen.Static object at 0x16e37bbe0>>](Texture.md#noise_1D-staticmethod)
- - [<bound method Generator.fname of <generator.code_gen.Static object at 0x16e37a980>>](Texture.md#noise_2D-staticmethod)
- - [<bound method Generator.fname of <generator.code_gen.Static object at 0x16e3785e0>>](Texture.md#noise_3D-staticmethod)
- - [<bound method Generator.fname of <generator.code_gen.Static object at 0x16e378550>>](Texture.md#noise_4D-staticmethod)
+ - [noise](Texture.md#noise-staticmethod)
+ - [noise_1D](Texture.md#noise_1D-staticmethod)
+ - [noise_2D](Texture.md#noise_2D-staticmethod)
+ - [noise_3D](Texture.md#noise_3D-staticmethod)
+ - [noise_4D](Texture.md#noise_4D-staticmethod)

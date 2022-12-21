@@ -28,6 +28,6 @@ node = nodes.CurveHandlePositions(relative=None)
 
 #### class [ControlPoint](ControlPoint.md)
 
- - [<bound method Generator.fname of <generator.code_gen.Attribute object at 0x16d4fa8c0>>](ControlPoint.md#handle_positions)
- - [<bound method Generator.fname of <generator.code_gen.DomPropAttribute object at 0x16d4fa890>>](ControlPoint.md#left_handle_positions-property)
- - [<bound method Generator.fname of <generator.code_gen.DomPropAttribute object at 0x16d4fa860>>](ControlPoint.md#right_handle_positions-property)
+ - [handle_positions](ControlPoint.md#handle_positions)
+ - [left_handle_positions](ControlPoint.md#left_handle_positions-property)
+ - [right_handle_positions](ControlPoint.md#right_handle_positions-property)

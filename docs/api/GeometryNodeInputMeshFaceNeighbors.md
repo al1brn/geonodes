@@ -22,6 +22,6 @@ node = nodes.FaceNeighbors()
 
 #### class [Face](Face.md)
 
- - [<bound method Generator.fname of <generator.code_gen.DomPropAttribute object at 0x16e3795d0>>](Face.md#neighbors-property)
- - [<bound method Generator.fname of <generator.code_gen.DomPropAttribute object at 0x16e3795a0>>](Face.md#neighbors_vertex_count-property)
- - [<bound method Generator.fname of <generator.code_gen.DomPropAttribute object at 0x16e37aa40>>](Face.md#neighbors_face_count-property)
+ - [neighbors](Face.md#neighbors-property)
+ - [neighbors_vertex_count](Face.md#neighbors_vertex_count-property)
+ - [neighbors_face_count](Face.md#neighbors_face_count-property)

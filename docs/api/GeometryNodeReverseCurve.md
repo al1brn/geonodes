@@ -28,4 +28,4 @@ node = nodes.ReverseCurve(curve=None, selection=None)
 
 #### class [Curve](Curve.md)
 
- - [<bound method Generator.fname of <generator.code_gen.StackMethod object at 0x16d4fa9e0>>](Curve.md#reverse)
+ - [reverse](Curve.md#reverse)

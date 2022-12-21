@@ -27,4 +27,4 @@ node = nodes.Vector(vector=[0.0, 0.0, 0.0])
 
 #### class [Vector](Vector.md)
 
- - [<bound method Generator.fname of <generator.code_gen.Constructor object at 0x16d4f9120>>](Vector.md#Vector-classmethod)
+ - [Vector](Vector.md#Vector-classmethod)

@@ -32,4 +32,4 @@ node = nodes.Spiral(resolution=None, rotations=None, start_radius=None, end_radi
 
 #### class [Curve](Curve.md)
 
- - [<bound method Generator.fname of <generator.code_gen.Constructor object at 0x16d4f9fc0>>](Curve.md#Spiral-classmethod)
+ - [Spiral](Curve.md#Spiral-classmethod)

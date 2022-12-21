@@ -21,4 +21,4 @@ node = nodes.IsSplineCyclic()
 
 #### class [Spline](Spline.md)
 
- - [<bound method Generator.fname of <generator.code_gen.PropAttribute object at 0x16d4fa650>>](Spline.md#cyclic-property)
+ - [cyclic](Spline.md#cyclic-property)

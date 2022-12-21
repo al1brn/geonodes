@@ -21,7 +21,7 @@ node = nodes.Position()
 
 #### class [Geometry](Geometry.md)
 
- - [<bound method Generator.fname of <generator.code_gen.PropAttribute object at 0x16d4f8cd0>>](Geometry.md#position-property)
+ - [position](Geometry.md#position-property)
 #### class [Domain](Domain.md)
 
- - [<bound method Generator.fname of <generator.code_gen.DomPropAttribute object at 0x16d4f8ca0>>](Domain.md#position-property)
+ - [position](Domain.md#position-property)

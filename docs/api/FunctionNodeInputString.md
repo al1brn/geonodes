@@ -27,4 +27,4 @@ node = nodes.String(string='')
 
 #### class [String](String.md)
 
- - [<bound method Generator.fname of <generator.code_gen.Constructor object at 0x16d4f9180>>](String.md#String-classmethod)
+ - [String](String.md#String-classmethod)

@@ -29,4 +29,4 @@ node = nodes.ShortestEdgePaths(end_vertex=None, edge_cost=None)
 
 #### class [Mesh](Mesh.md)
 
- - [<bound method Generator.fname of <generator.code_gen.Attribute object at 0x16e378a90>>](Mesh.md#shortest_edge_paths)
+ - [shortest_edge_paths](Mesh.md#shortest_edge_paths)

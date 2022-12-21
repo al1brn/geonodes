@@ -35,4 +35,4 @@ node = nodes.VolumeToMesh(volume=None, voxel_size=None, voxel_amount=None, thres
 
 #### class [Volume](Volume.md)
 
- - [<bound method Generator.fname of <generator.code_gen.Method object at 0x16e3dc700>>](Volume.md#to_mesh)
+ - [to_mesh](Volume.md#to_mesh)

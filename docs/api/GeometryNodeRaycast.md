@@ -45,6 +45,6 @@ node = nodes.Raycast(target_geometry=None, attribute=None, source_position=None,
 
 #### class [Geometry](Geometry.md)
 
- - [<bound method Generator.fname of <generator.code_gen.Attribute object at 0x16d4f9840>>](Geometry.md#raycast)
- - [<bound method Generator.fname of <generator.code_gen.Attribute object at 0x16d4f9810>>](Geometry.md#raycast_interpolated)
- - [<bound method Generator.fname of <generator.code_gen.Attribute object at 0x16d4f97e0>>](Geometry.md#raycast_nearest)
+ - [raycast](Geometry.md#raycast)
+ - [raycast_interpolated](Geometry.md#raycast_interpolated)
+ - [raycast_nearest](Geometry.md#raycast_nearest)

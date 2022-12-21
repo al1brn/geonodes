@@ -33,27 +33,27 @@ node = nodes.DeleteGeometry(geometry=None, selection=None, domain='POINT', mode=
 
 #### class [Geometry](Geometry.md)
 
- - [<bound method Generator.fname of <generator.code_gen.StackMethod object at 0x16d4f9d20>>](Geometry.md#delete)
+ - [delete](Geometry.md#delete)
 #### class [Domain](Domain.md)
 
- - [<bound method Generator.fname of <generator.code_gen.DomStackMethod object at 0x16d4f9c60>>](Domain.md#delete)
+ - [delete](Domain.md#delete)
 #### class [Mesh](Mesh.md)
 
- - [<bound method Generator.fname of <generator.code_gen.StackMethod object at 0x16d4f9cf0>>](Mesh.md#delete_all)
- - [<bound method Generator.fname of <generator.code_gen.StackMethod object at 0x16d4f9cc0>>](Mesh.md#delete_edges)
- - [<bound method Generator.fname of <generator.code_gen.StackMethod object at 0x16d4f9c90>>](Mesh.md#delete_faces)
+ - [delete_all](Mesh.md#delete_all)
+ - [delete_edges](Mesh.md#delete_edges)
+ - [delete_faces](Mesh.md#delete_faces)
 #### class [Vertex](Vertex.md)
 
- - [<bound method Generator.fname of <generator.code_gen.DomStackMethod object at 0x16d4f9c30>>](Vertex.md#delete_all)
- - [<bound method Generator.fname of <generator.code_gen.DomStackMethod object at 0x16d4f9c00>>](Vertex.md#delete_edges)
- - [<bound method Generator.fname of <generator.code_gen.DomStackMethod object at 0x16d4f9bd0>>](Vertex.md#delete_faces)
+ - [delete_all](Vertex.md#delete_all)
+ - [delete_edges](Vertex.md#delete_edges)
+ - [delete_faces](Vertex.md#delete_faces)
 #### class [Face](Face.md)
 
- - [<bound method Generator.fname of <generator.code_gen.DomStackMethod object at 0x16d4f9b10>>](Face.md#delete_all)
- - [<bound method Generator.fname of <generator.code_gen.DomStackMethod object at 0x16d4f9ae0>>](Face.md#delete_edges)
- - [<bound method Generator.fname of <generator.code_gen.DomStackMethod object at 0x16d4f9ab0>>](Face.md#delete_faces)
+ - [delete_all](Face.md#delete_all)
+ - [delete_edges](Face.md#delete_edges)
+ - [delete_faces](Face.md#delete_faces)
 #### class [Edge](Edge.md)
 
- - [<bound method Generator.fname of <generator.code_gen.DomStackMethod object at 0x16d4f9ba0>>](Edge.md#delete_all)
- - [<bound method Generator.fname of <generator.code_gen.DomStackMethod object at 0x16d4f9b70>>](Edge.md#delete_edges)
- - [<bound method Generator.fname of <generator.code_gen.DomStackMethod object at 0x16d4f9b40>>](Edge.md#delete_faces)
+ - [delete_all](Edge.md#delete_all)
+ - [delete_edges](Edge.md#delete_edges)
+ - [delete_faces](Edge.md#delete_faces)

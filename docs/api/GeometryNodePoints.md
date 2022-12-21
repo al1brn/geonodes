@@ -29,4 +29,4 @@ node = nodes.Points(count=None, position=None, radius=None)
 
 #### class [Points](Points.md)
 
- - [<bound method Generator.fname of <generator.code_gen.Constructor object at 0x16e379a80>>](Points.md#Points-classmethod)
+ - [Points](Points.md#Points-classmethod)

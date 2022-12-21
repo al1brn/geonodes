@@ -40,4 +40,4 @@ node = nodes.SampleUvSurface(mesh=None, value=None, source_uv_map=None, sample_u
 
 #### class [Mesh](Mesh.md)
 
- - [<bound method Generator.fname of <generator.code_gen.Method object at 0x16d4f8220>>](Mesh.md#sample_uv_surface)
+ - [sample_uv_surface](Mesh.md#sample_uv_surface)

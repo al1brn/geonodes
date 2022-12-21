@@ -33,5 +33,5 @@ node = nodes.SetHandleType(curve=None, selection=None, handle_type='AUTO', mode=
 
 #### class [ControlPoint](ControlPoint.md)
 
- - [<bound method Generator.fname of <generator.code_gen.DomStackMethod object at 0x16d4fa2c0>>](ControlPoint.md#set_handle_type_node)
- - [<bound method Generator.fname of <generator.code_gen.Source object at 0x16d4fa290>>](ControlPoint.md#set_handle_type)
+ - [set_handle_type_node](ControlPoint.md#set_handle_type_node)
+ - [set_handle_type](ControlPoint.md#set_handle_type)

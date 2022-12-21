@@ -28,7 +28,7 @@ node = nodes.CurveOfPoint(point_index=None)
 
 #### class [Curve](Curve.md)
 
- - [<bound method Generator.fname of <generator.code_gen.Attribute object at 0x16d4f9ea0>>](Curve.md#curve_of_point)
+ - [curve_of_point](Curve.md#curve_of_point)
 #### class [ControlPoint](ControlPoint.md)
 
- - [<bound method Generator.fname of <generator.code_gen.DomAttribute object at 0x16d4f9e70>>](ControlPoint.md#curve)
+ - [curve](ControlPoint.md#curve)

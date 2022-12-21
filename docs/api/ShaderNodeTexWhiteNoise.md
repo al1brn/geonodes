@@ -33,8 +33,8 @@ node = nodes.WhiteNoiseTexture(vector=None, w=None, noise_dimensions='3D')
 
 #### class [Texture](Texture.md)
 
- - [<bound method Generator.fname of <generator.code_gen.Static object at 0x16e378700>>](Texture.md#white_noise-staticmethod)
- - [<bound method Generator.fname of <generator.code_gen.Static object at 0x16e37afe0>>](Texture.md#white_noise_1D-staticmethod)
- - [<bound method Generator.fname of <generator.code_gen.Static object at 0x16e3784f0>>](Texture.md#white_noise_2D-staticmethod)
- - [<bound method Generator.fname of <generator.code_gen.Static object at 0x16e37b5e0>>](Texture.md#white_noise_3D-staticmethod)
- - [<bound method Generator.fname of <generator.code_gen.Static object at 0x16e37a6b0>>](Texture.md#white_noise_4D-staticmethod)
+ - [white_noise](Texture.md#white_noise-staticmethod)
+ - [white_noise_1D](Texture.md#white_noise_1D-staticmethod)
+ - [white_noise_2D](Texture.md#white_noise_2D-staticmethod)
+ - [white_noise_3D](Texture.md#white_noise_3D-staticmethod)
+ - [white_noise_4D](Texture.md#white_noise_4D-staticmethod)

@@ -34,13 +34,13 @@ node = nodes.ResampleCurve(curve=None, selection=None, count=None, length=None, 
 
 #### class [Curve](Curve.md)
 
- - [<bound method Generator.fname of <generator.code_gen.StackMethod object at 0x16d4fab60>>](Curve.md#resample)
- - [<bound method Generator.fname of <generator.code_gen.StackMethod object at 0x16d4fab30>>](Curve.md#resample_count)
- - [<bound method Generator.fname of <generator.code_gen.StackMethod object at 0x16d4fab00>>](Curve.md#resample_length)
- - [<bound method Generator.fname of <generator.code_gen.StackMethod object at 0x16d4faad0>>](Curve.md#resample_evaluated)
+ - [resample](Curve.md#resample)
+ - [resample_count](Curve.md#resample_count)
+ - [resample_length](Curve.md#resample_length)
+ - [resample_evaluated](Curve.md#resample_evaluated)
 #### class [Spline](Spline.md)
 
- - [<bound method Generator.fname of <generator.code_gen.DomStackMethod object at 0x16d4faaa0>>](Spline.md#resample)
- - [<bound method Generator.fname of <generator.code_gen.DomStackMethod object at 0x16d4faa70>>](Spline.md#resample_count)
- - [<bound method Generator.fname of <generator.code_gen.DomStackMethod object at 0x16d4faa40>>](Spline.md#resample_length)
- - [<bound method Generator.fname of <generator.code_gen.DomStackMethod object at 0x16d4faa10>>](Spline.md#resample_evaluated)
+ - [resample](Spline.md#resample)
+ - [resample_count](Spline.md#resample_count)
+ - [resample_length](Spline.md#resample_length)
+ - [resample_evaluated](Spline.md#resample_evaluated)

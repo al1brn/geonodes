@@ -34,8 +34,8 @@ node = nodes.SetHandlePositions(curve=None, selection=None, position=None, offse
 
 #### class [ControlPoint](ControlPoint.md)
 
- - [<bound method Generator.fname of <generator.code_gen.DomStackMethod object at 0x16d4fa3e0>>](ControlPoint.md#set_handle_positions)
- - [<bound method Generator.fname of <generator.code_gen.DomStackMethod object at 0x16d4fa3b0>>](ControlPoint.md#set_handle_positions_left)
- - [<bound method Generator.fname of <generator.code_gen.DomStackMethod object at 0x16d4fa380>>](ControlPoint.md#set_handle_positions_right)
- - [<bound method Generator.fname of <generator.code_gen.DomSetter object at 0x16d4fa350>>](ControlPoint.md#left_handle_positions)
- - [<bound method Generator.fname of <generator.code_gen.DomSetter object at 0x16d4fa320>>](ControlPoint.md#right_handle_positions)
+ - [set_handle_positions](ControlPoint.md#set_handle_positions)
+ - [set_handle_positions_left](ControlPoint.md#set_handle_positions_left)
+ - [set_handle_positions_right](ControlPoint.md#set_handle_positions_right)
+ - [left_handle_positions](ControlPoint.md#left_handle_positions)
+ - [right_handle_positions](ControlPoint.md#right_handle_positions)

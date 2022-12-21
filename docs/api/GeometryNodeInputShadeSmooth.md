@@ -21,7 +21,7 @@ node = nodes.IsShadeSmooth()
 
 #### class [Mesh](Mesh.md)
 
- - [<bound method Generator.fname of <generator.code_gen.Attribute object at 0x16e379240>>](Mesh.md#is_shade_smooth)
+ - [is_shade_smooth](Mesh.md#is_shade_smooth)
 #### class [Face](Face.md)
 
- - [<bound method Generator.fname of <generator.code_gen.DomPropAttribute object at 0x16e378af0>>](Face.md#shade_smooth-property)
+ - [shade_smooth](Face.md#shade_smooth-property)

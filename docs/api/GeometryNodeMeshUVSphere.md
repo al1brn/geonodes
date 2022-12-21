@@ -29,4 +29,4 @@ node = nodes.UvSphere(segments=None, rings=None, radius=None)
 
 #### class [Mesh](Mesh.md)
 
- - [<bound method Generator.fname of <generator.code_gen.Constructor object at 0x16e378310>>](Mesh.md#Circle-classmethod)
+ - [Circle](Mesh.md#Circle-classmethod)

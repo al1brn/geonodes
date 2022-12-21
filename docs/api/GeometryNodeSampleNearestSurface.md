@@ -38,4 +38,4 @@ node = nodes.SampleNearestSurface(mesh=None, value=None, sample_position=None, d
 
 #### class [Mesh](Mesh.md)
 
- - [<bound method Generator.fname of <generator.code_gen.Method object at 0x16d4f8250>>](Mesh.md#sample_nearest_surface)
+ - [sample_nearest_surface](Mesh.md#sample_nearest_surface)

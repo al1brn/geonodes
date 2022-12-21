@@ -30,4 +30,4 @@ node = nodes.Cube(size=None, vertices_x=None, vertices_y=None, vertices_z=None)
 
 #### class [Mesh](Mesh.md)
 
- - [<bound method Generator.fname of <generator.code_gen.Constructor object at 0x16e378160>>](Mesh.md#Cube-classmethod)
+ - [Cube](Mesh.md#Cube-classmethod)

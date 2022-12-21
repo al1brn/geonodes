@@ -29,6 +29,6 @@ node = nodes.BoundingBox(geometry=None)
 
 #### class [Geometry](Geometry.md)
 
- - [<bound method Generator.fname of <generator.code_gen.Property object at 0x16d4f9de0>>](Geometry.md#bounding_box-property)
- - [<bound method Generator.fname of <generator.code_gen.Property object at 0x16d4f9db0>>](Geometry.md#bounding_box_min-property)
- - [<bound method Generator.fname of <generator.code_gen.Property object at 0x16d4f9d80>>](Geometry.md#bounding_box_min-property)
+ - [bounding_box](Geometry.md#bounding_box-property)
+ - [bounding_box_min](Geometry.md#bounding_box_min-property)
+ - [bounding_box_min](Geometry.md#bounding_box_min-property)

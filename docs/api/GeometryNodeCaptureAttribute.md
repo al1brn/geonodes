@@ -39,8 +39,8 @@ node = nodes.CaptureAttribute(geometry=None, value=None, data_type='FLOAT', doma
 
 #### class [Geometry](Geometry.md)
 
- - [<bound method Generator.fname of <generator.code_gen.StackMethod object at 0x16e1a3f70>>](Geometry.md#capture_attribute)
- - [<bound method Generator.fname of <generator.code_gen.Method object at 0x16e1a3d60>>](Geometry.md#capture_attribute_node)
+ - [capture_attribute](Geometry.md#capture_attribute)
+ - [capture_attribute_node](Geometry.md#capture_attribute_node)
 #### class [Domain](Domain.md)
 
- - [<bound method Generator.fname of <generator.code_gen.DomStackMethod object at 0x16e1a3f40>>](Domain.md#capture_attribute)
+ - [capture_attribute](Domain.md#capture_attribute)

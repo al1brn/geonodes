@@ -21,8 +21,8 @@ node = nodes.Index()
 
 #### class [Geometry](Geometry.md)
 
- - [<bound method Generator.fname of <generator.code_gen.PropAttribute object at 0x16d4f9090>>](Geometry.md#index-property)
+ - [index](Geometry.md#index-property)
 #### class [Domain](Domain.md)
 
- - [<bound method Generator.fname of <generator.code_gen.DomPropAttribute object at 0x16d4f9060>>](Domain.md#index-property)
- - [<bound method Generator.fname of <generator.code_gen.DomPropAttribute object at 0x16d4f9030>>](Domain.md#domain_index-property)
+ - [index](Domain.md#index-property)
+ - [domain_index](Domain.md#domain_index-property)

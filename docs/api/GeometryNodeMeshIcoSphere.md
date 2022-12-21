@@ -28,4 +28,4 @@ node = nodes.IcoSphere(radius=None, subdivisions=None)
 
 #### class [Mesh](Mesh.md)
 
- - [<bound method Generator.fname of <generator.code_gen.Constructor object at 0x16e378400>>](Mesh.md#IcoSphere-classmethod)
+ - [IcoSphere](Mesh.md#IcoSphere-classmethod)

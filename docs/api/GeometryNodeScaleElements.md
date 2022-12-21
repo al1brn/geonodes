@@ -36,14 +36,14 @@ node = nodes.ScaleElements(geometry=None, selection=None, scale=None, center=Non
 
 #### class [Mesh](Mesh.md)
 
- - [<bound method Generator.fname of <generator.code_gen.StackMethod object at 0x16d4f81f0>>](Mesh.md#scale_elements)
- - [<bound method Generator.fname of <generator.code_gen.StackMethod object at 0x16d4f81c0>>](Mesh.md#scale_uniform)
- - [<bound method Generator.fname of <generator.code_gen.StackMethod object at 0x16d4f8190>>](Mesh.md#scale_single_axis)
+ - [scale_elements](Mesh.md#scale_elements)
+ - [scale_uniform](Mesh.md#scale_uniform)
+ - [scale_single_axis](Mesh.md#scale_single_axis)
 #### class [Face](Face.md)
 
- - [<bound method Generator.fname of <generator.code_gen.DomStackMethod object at 0x16d4f8160>>](Face.md#scale_uniform)
- - [<bound method Generator.fname of <generator.code_gen.DomStackMethod object at 0x16d4f8130>>](Face.md#scale_single_axis)
+ - [scale_uniform](Face.md#scale_uniform)
+ - [scale_single_axis](Face.md#scale_single_axis)
 #### class [Edge](Edge.md)
 
- - [<bound method Generator.fname of <generator.code_gen.DomStackMethod object at 0x16d4f8100>>](Edge.md#scale_uniform)
- - [<bound method Generator.fname of <generator.code_gen.DomStackMethod object at 0x16d4f80d0>>](Edge.md#scale_single_axis)
+ - [scale_uniform](Edge.md#scale_uniform)
+ - [scale_single_axis](Edge.md#scale_single_axis)

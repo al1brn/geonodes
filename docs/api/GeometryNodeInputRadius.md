@@ -21,10 +21,10 @@ node = nodes.Radius()
 
 #### class [Geometry](Geometry.md)
 
- - [<bound method Generator.fname of <generator.code_gen.PropAttribute object at 0x16d4f8c70>>](Geometry.md#radius-property)
+ - [radius](Geometry.md#radius-property)
 #### class [ControlPoint](ControlPoint.md)
 
- - [<bound method Generator.fname of <generator.code_gen.DomPropAttribute object at 0x16d4f8c40>>](ControlPoint.md#radius-property)
+ - [radius](ControlPoint.md#radius-property)
 #### class [CloudPoint](CloudPoint.md)
 
- - [<bound method Generator.fname of <generator.code_gen.DomPropAttribute object at 0x16d4f8c10>>](CloudPoint.md#radius-property)
+ - [radius](CloudPoint.md#radius-property)

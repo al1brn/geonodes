@@ -39,4 +39,4 @@ node = nodes.Cone(vertices=None, side_segments=None, fill_segments=None, radius_
 
 #### class [Mesh](Mesh.md)
 
- - [<bound method Generator.fname of <generator.code_gen.Static object at 0x16e378100>>](Mesh.md#Cone-staticmethod)
+ - [Cone](Mesh.md#Cone-staticmethod)

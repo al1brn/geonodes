@@ -21,4 +21,4 @@ node = nodes.IsViewport()
 
 #### class [Geometry](Geometry.md)
 
- - [<bound method Generator.fname of <generator.code_gen.PropAttribute object at 0x16d4f9330>>](Geometry.md#is_viewport-property)
+ - [is_viewport](Geometry.md#is_viewport-property)

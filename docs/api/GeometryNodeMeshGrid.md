@@ -30,4 +30,4 @@ node = nodes.Grid(size_x=None, size_y=None, vertices_x=None, vertices_y=None)
 
 #### class [Mesh](Mesh.md)
 
- - [<bound method Generator.fname of <generator.code_gen.Constructor object at 0x16e378130>>](Mesh.md#Grid-classmethod)
+ - [Grid](Mesh.md#Grid-classmethod)

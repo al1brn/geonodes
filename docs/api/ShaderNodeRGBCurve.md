@@ -28,7 +28,7 @@ node = nodes.RgbCurves(fac=None, color=None)
 
 #### class [Color](Color.md)
 
- - [<bound method Generator.fname of <generator.code_gen.Property object at 0x16d4fb0a0>>](Color.md#rgb_curves-property)
+ - [rgb_curves](Color.md#rgb_curves-property)
 #### Global functions
 
- - [<bound method Generator.fname of <generator.code_gen.Function object at 0x16d4fb0d0>>](function.md#rgb_curves)
+ - [rgb_curves](function.md#rgb_curves)

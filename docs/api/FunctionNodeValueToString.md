@@ -28,10 +28,10 @@ node = nodes.ValueToString(value=None, decimals=None)
 
 #### class [Float](Float.md)
 
- - [<bound method Generator.fname of <generator.code_gen.Method object at 0x1681026b0>>](Float.md#to_string)
+ - [to_string](Float.md#to_string)
 #### class [Integer](Integer.md)
 
- - [<bound method Generator.fname of <generator.code_gen.Method object at 0x168102680>>](Integer.md#to_string)
+ - [to_string](Integer.md#to_string)
 #### Global functions
 
- - [<bound method Generator.fname of <generator.code_gen.Function object at 0x1681026e0>>](function.md#value_to_string)
+ - [value_to_string](function.md#value_to_string)

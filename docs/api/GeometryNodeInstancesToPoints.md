@@ -30,7 +30,7 @@ node = nodes.InstancesToPoints(instances=None, selection=None, position=None, ra
 
 #### class [Instances](Instances.md)
 
- - [<bound method Generator.fname of <generator.code_gen.Method object at 0x16d4f8a60>>](Instances.md#to_points)
+ - [to_points](Instances.md#to_points)
 #### class [Instance](Instance.md)
 
- - [<bound method Generator.fname of <generator.code_gen.DomMethod object at 0x16d4f8a30>>](Instance.md#to_points)
+ - [to_points](Instance.md#to_points)

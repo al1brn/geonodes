@@ -38,4 +38,4 @@ node = nodes.Cylinder(vertices=None, side_segments=None, fill_segments=None, rad
 
 #### class [Mesh](Mesh.md)
 
- - [<bound method Generator.fname of <generator.code_gen.Static object at 0x16e378190>>](Mesh.md#Cylinder-staticmethod)
+ - [Cylinder](Mesh.md#Cylinder-staticmethod)

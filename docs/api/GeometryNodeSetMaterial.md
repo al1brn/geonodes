@@ -29,14 +29,14 @@ node = nodes.SetMaterial(geometry=None, selection=None, material=None)
 
 #### class [Geometry](Geometry.md)
 
- - [<bound method Generator.fname of <generator.code_gen.StackMethod object at 0x16d4f8700>>](Geometry.md#set_material)
+ - [set_material](Geometry.md#set_material)
 #### class [Face](Face.md)
 
- - [<bound method Generator.fname of <generator.code_gen.DomStackMethod object at 0x16d4f86d0>>](Face.md#set_material)
- - [<bound method Generator.fname of <generator.code_gen.PropReadError object at 0x16d4f86a0>>](Face.md#material-property)
- - [<bound method Generator.fname of <generator.code_gen.DomSetter object at 0x16d4f8670>>](Face.md#material)
+ - [set_material](Face.md#set_material)
+ - [material](Face.md#material-property)
+ - [material](Face.md#material)
 #### class [Spline](Spline.md)
 
- - [<bound method Generator.fname of <generator.code_gen.DomStackMethod object at 0x16d4f86d0>>](Spline.md#set_material)
- - [<bound method Generator.fname of <generator.code_gen.PropReadError object at 0x16d4f86a0>>](Spline.md#material-property)
- - [<bound method Generator.fname of <generator.code_gen.DomSetter object at 0x16d4f8670>>](Spline.md#material)
+ - [set_material](Spline.md#set_material)
+ - [material](Spline.md#material-property)
+ - [material](Spline.md#material)

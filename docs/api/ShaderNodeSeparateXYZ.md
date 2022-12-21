@@ -29,4 +29,4 @@ node = nodes.SeparateXyz(vector=None)
 
 #### class [Vector](Vector.md)
 
- - [<bound method Generator.fname of <generator.code_gen.Property object at 0x16e3dd360>>](Vector.md#separate-property)
+ - [separate](Vector.md#separate-property)

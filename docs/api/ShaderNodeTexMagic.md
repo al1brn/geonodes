@@ -34,4 +34,4 @@ node = nodes.MagicTexture(vector=None, scale=None, distortion=None, turbulence_d
 
 #### class [Texture](Texture.md)
 
- - [<bound method Generator.fname of <generator.code_gen.Static object at 0x1683b0f10>>](Texture.md#magic-staticmethod)
+ - [magic](Texture.md#magic-staticmethod)

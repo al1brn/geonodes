@@ -22,11 +22,11 @@ node = nodes.MeshIsland()
 
 #### class [Mesh](Mesh.md)
 
- - [<bound method Generator.fname of <generator.code_gen.PropAttribute object at 0x16e378a30>>](Mesh.md#island-property)
- - [<bound method Generator.fname of <generator.code_gen.PropAttribute object at 0x16e378f10>>](Mesh.md#island_index-property)
- - [<bound method Generator.fname of <generator.code_gen.PropAttribute object at 0x16e378fa0>>](Mesh.md#island_count-property)
+ - [island](Mesh.md#island-property)
+ - [island_index](Mesh.md#island_index-property)
+ - [island_count](Mesh.md#island_count-property)
 #### class [Face](Face.md)
 
- - [<bound method Generator.fname of <generator.code_gen.DomPropAttribute object at 0x16e3791e0>>](Face.md#island-property)
- - [<bound method Generator.fname of <generator.code_gen.DomPropAttribute object at 0x16e379210>>](Face.md#island_index-property)
- - [<bound method Generator.fname of <generator.code_gen.DomPropAttribute object at 0x16e378e50>>](Face.md#island_count-property)
+ - [island](Face.md#island-property)
+ - [island_index](Face.md#island_index-property)
+ - [island_count](Face.md#island_count-property)
