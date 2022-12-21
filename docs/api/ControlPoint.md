@@ -1,5 +1,7 @@
 # class ControlPoint
 
+[main](./structure.md) : [nodes](ndes.md) : [nodes menu](.nodes_menu.md)
+
 ## Properties
 
 - [left_handle_positions](#left_handle_positions-property)

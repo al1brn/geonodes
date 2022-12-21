@@ -1,5 +1,7 @@
 # class Mesh
 
+[main](./structure.md) : [nodes](ndes.md) : [nodes menu](.nodes_menu.md)
+
 ## Properties
 
 - [corner_count](#corner_count-property)

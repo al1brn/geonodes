@@ -1,5 +1,7 @@
 # class Face
 
+[main](./structure.md) : [nodes](ndes.md) : [nodes menu](.nodes_menu.md)
+
 ## Properties
 
 - [area](#area-property)

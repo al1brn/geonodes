@@ -1,5 +1,7 @@
 # class Instances
 
+[main](./structure.md) : [nodes](ndes.md) : [nodes menu](.nodes_menu.md)
+
 ## Properties
 
 - [domain_size](#domain_size-property)

@@ -1,5 +1,7 @@
 # class Color
 
+[main](./structure.md) : [nodes](ndes.md) : [nodes menu](.nodes_menu.md)
+
 ## Properties
 
 - [alpha](#alpha-property)

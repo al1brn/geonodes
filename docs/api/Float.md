@@ -1,5 +1,7 @@
 # class Float
 
+[main](./structure.md) : [nodes](ndes.md) : [nodes menu](.nodes_menu.md)
+
 ## Properties
 
 - [color_ramp](#color_ramp-property)

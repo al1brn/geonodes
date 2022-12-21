@@ -1,5 +1,7 @@
 # class Collection
 
+[main](./structure.md) : [nodes](ndes.md) : [nodes menu](.nodes_menu.md)
+
 
 ## Class methods
 

@@ -1,5 +1,7 @@
 # class Geometry
 
+[main](./structure.md) : [nodes](ndes.md) : [nodes menu](.nodes_menu.md)
+
 ## Properties
 
 - [ID](#ID-property)
