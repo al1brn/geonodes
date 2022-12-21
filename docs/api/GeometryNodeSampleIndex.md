@@ -40,13 +40,11 @@ node = nodes.SampleIndex(geometry=None, value=None, index=None, clamp=False, dat
 - Output sockets : ['value']
 ## Implementation
 
-| Name | Definition |
-|------|------------|
+| Class or method name | Definition |
+|----------------------|------------|
 | **[Domain](Domain.md)** |
 | [sample_index](Domain.md#sample_index) | `def sample_index(self, value=None, index=None, clamp=False):` |
-
 | **[Geometry](Geometry.md)** |
 | [sample_index](Geometry.md#sample_index) | `def sample_index(self, value=None, index=None, clamp=False, domain='POINT'):` |
-
 <sub>Go to [top](#node-Sample-Index) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

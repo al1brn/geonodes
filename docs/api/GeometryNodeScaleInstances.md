@@ -31,13 +31,11 @@ node = nodes.ScaleInstances(instances=None, selection=None, scale=None, center=N
 
 ## Implementation
 
-| Name | Definition |
-|------|------------|
+| Class or method name | Definition |
+|----------------------|------------|
 | **[Instance](Instance.md)** |
 | [set_scale](Instance.md#set_scale) | `def set_scale(self, scale=None, center=None, local_space=None):` |
-
 | **[Instances](Instances.md)** |
 | [set_scale](Instances.md#set_scale) | `def set_scale(self, selection=None, scale=None, center=None, local_space=None):` |
-
 <sub>Go to [top](#node-Scale-Instances) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

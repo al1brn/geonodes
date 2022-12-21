@@ -32,8 +32,8 @@ node = nodes.GradientTexture(vector=None, gradient_type='LINEAR')
 
 ## Implementation
 
-| Name | Definition |
-|------|------------|
+| Class or method name | Definition |
+|----------------------|------------|
 | **[Texture](Texture.md)** |
 | [gradient](Texture.md#gradient-staticmethod) | `def gradient(vector=None, gradient_type='LINEAR'):` |
 | [gradient_linear](Texture.md#gradient_linear-staticmethod) | `def gradient_linear(vector=None):` |
@@ -43,6 +43,5 @@ node = nodes.GradientTexture(vector=None, gradient_type='LINEAR')
 | [gradient_spherical](Texture.md#gradient_spherical-staticmethod) | `def gradient_spherical(vector=None):` |
 | [gradient_quadratic_sphere](Texture.md#gradient_quadratic_sphere-staticmethod) | `def gradient_quadratic_sphere(vector=None):` |
 | [gradient_radial](Texture.md#gradient_radial-staticmethod) | `def gradient_radial(vector=None):` |
-
 <sub>Go to [top](#node-Gradient-Texture) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

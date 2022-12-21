@@ -22,10 +22,9 @@ node = nodes.SplineLength()
 
 ## Implementation
 
-| Name | Definition |
-|------|------------|
+| Class or method name | Definition |
+|----------------------|------------|
 | **[Spline](Spline.md)** |
 | [length](Spline.md#length-property) | `def length(self):` |
-
 <sub>Go to [top](#node-Spline-Length) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

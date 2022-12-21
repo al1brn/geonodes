@@ -29,10 +29,9 @@ node = nodes.CurveToMesh(curve=None, profile_curve=None, fill_caps=None)
 
 ## Implementation
 
-| Name | Definition |
-|------|------------|
+| Class or method name | Definition |
+|----------------------|------------|
 | **[Curve](Curve.md)** |
 | [to_mesh](Curve.md#to_mesh) | `def to_mesh(self, profile_curve=None, fill_caps=None):` |
-
 <sub>Go to [top](#node-Curve-to-Mesh) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

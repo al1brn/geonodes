@@ -31,13 +31,11 @@ node = nodes.RotateInstances(instances=None, selection=None, rotation=None, pivo
 
 ## Implementation
 
-| Name | Definition |
-|------|------------|
+| Class or method name | Definition |
+|----------------------|------------|
 | **[Instance](Instance.md)** |
 | [rotate](Instance.md#rotate) | `def rotate(self, rotation=None, pivot_point=None, local_space=None):` |
-
 | **[Instances](Instances.md)** |
 | [rotate](Instances.md#rotate) | `def rotate(self, selection=None, rotation=None, pivot_point=None, local_space=None):` |
-
 <sub>Go to [top](#node-Rotate-Instances) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

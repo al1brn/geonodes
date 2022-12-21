@@ -24,12 +24,11 @@ node = nodes.EdgeVertices()
 
 ## Implementation
 
-| Name | Definition |
-|------|------------|
+| Class or method name | Definition |
+|----------------------|------------|
 | **[Edge](Edge.md)** |
 | [vertices](Edge.md#vertices-property) | `def vertices(self):` |
 | [vertices_index](Edge.md#vertices_index-property) | `def vertices_index(self):` |
 | [vertices_position](Edge.md#vertices_position-property) | `def vertices_position(self):` |
-
 <sub>Go to [top](#node-Edge-Vertices) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

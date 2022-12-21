@@ -29,11 +29,10 @@ node = nodes.SetCurveTilt(curve=None, selection=None, tilt=None)
 
 ## Implementation
 
-| Name | Definition |
-|------|------------|
+| Class or method name | Definition |
+|----------------------|------------|
 | **[ControlPoint](ControlPoint.md)** |
 | [set_tilt](ControlPoint.md#set_tilt) | `def set_tilt(self, tilt=None):` |
 | [tilt](ControlPoint.md#tilt) | `def tilt(self, attr_value):` |
-
 <sub>Go to [top](#node-Set-Curve-Tilt) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

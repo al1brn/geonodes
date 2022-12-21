@@ -34,8 +34,8 @@ node = nodes.Math(value0=None, value1=None, value2=None, operation='ADD', use_cl
 
 ## Implementation
 
-| Name | Definition |
-|------|------------|
+| Class or method name | Definition |
+|----------------------|------------|
 | Global functions |
 | [math](A.md#math) | `def math(value0=None, value1=None, value2=None, operation='ADD', clamp=False):` |
 | [add](A.md#add) | `def add(value0=None, value1=None, clamp=False):` |
@@ -94,7 +94,6 @@ node = nodes.Math(value0=None, value1=None, value2=None, operation='ADD', use_cl
 | [tanh](A.md#tanh) | `def tanh(value=None, clamp=False):` |
 | [to_radians](A.md#to_radians) | `def to_radians(value=None, clamp=False):` |
 | [to_degrees](A.md#to_degrees) | `def to_degrees(value=None, clamp=False):` |
-
 | **[Float](Float.md)** |
 | [add](Float.md#add) | `def add(self, value):` |
 | [subtract](Float.md#subtract) | `def add(self, value):` |
@@ -154,7 +153,6 @@ node = nodes.Math(value0=None, value1=None, value2=None, operation='ADD', use_cl
 | [tanh](Float.md#tanh) | `def tanh(self, value=None, clamp=False):` |
 | [to_radians](Float.md#to_radians) | `def to_radians(self, clamp=False):` |
 | [to_degrees](Float.md#to_degrees) | `def to_degrees(self, clamp=False):` |
-
 | **[Integer](Integer.md)** |
 | [add](Integer.md#add) | `def add(self, value):` |
 | [subtract](Integer.md#subtract) | `def add(self, value):` |
@@ -214,6 +212,5 @@ node = nodes.Math(value0=None, value1=None, value2=None, operation='ADD', use_cl
 | [tanh](Integer.md#tanh) | `def tanh(self, value=None, clamp=False):` |
 | [to_radians](Integer.md#to_radians) | `def to_radians(self, clamp=False):` |
 | [to_degrees](Integer.md#to_degrees) | `def to_degrees(self, clamp=False):` |
-
 <sub>Go to [top](#node-Math) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

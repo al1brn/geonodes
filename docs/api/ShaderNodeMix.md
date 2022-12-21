@@ -42,8 +42,8 @@ node = nodes.Mix(factor=None, a=None, b=None, blend_type='MIX', clamp_factor=Tru
 - Output sockets : ['result']
 ## Implementation
 
-| Name | Definition |
-|------|------------|
+| Class or method name | Definition |
+|----------------------|------------|
 | Global functions |
 | [float_mix](A.md#float_mix) | `def float_mix(factor=None, a=None, b=None, clamp_factor=True):` |
 | [vector_mix](A.md#vector_mix) | `def vector_mix(factor=None, a=None, b=None, clamp_factor=True, factor_mode='UNIFORM'):` |
@@ -65,7 +65,6 @@ node = nodes.Mix(factor=None, a=None, b=None, blend_type='MIX', clamp_factor=Tru
 | [color_saturation](A.md#color_saturation) | `def color_saturation(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False):` |
 | [color_color](A.md#color_color) | `def color_color(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False):` |
 | [color_value](A.md#color_value) | `def color_value(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False):` |
-
 | **[Color](Color.md)** |
 | [mix](Color.md#mix) | `def mix(self, factor=None, color=None, blend_type='MIX', clamp_factor=True, clamp_result=False):` |
 | [mix_darken](Color.md#mix_darken) | `def mix_darken(self, factor=None, color=None, clamp_factor=True, clamp_result=False):` |
@@ -85,14 +84,11 @@ node = nodes.Mix(factor=None, a=None, b=None, blend_type='MIX', clamp_factor=Tru
 | [mix_saturation](Color.md#mix_saturation) | `def mix_saturation(self, factor=None, color=None, clamp_factor=True, clamp_result=False):` |
 | [mix_color](Color.md#mix_color) | `def mix_color(self, factor=None, color=None, clamp_factor=True, clamp_result=False):` |
 | [mix_value](Color.md#mix_value) | `def mix_value(self, factor=None, color=None, clamp_factor=True, clamp_result=False):` |
-
 | **[Float](Float.md)** |
 | [mix](Float.md#mix) | `def mix(self, factor=None, value=None, clamp_factor=True):` |
-
 | **[Vector](Vector.md)** |
 | [mix](Vector.md#mix) | `def mix(self, factor=None, vector=None, clamp_factor=True, factor_mode='UNIFORM'):` |
 | [mix_uniform](Vector.md#mix_uniform) | `def mix_uniform(self, vector=None, clamp_factor=True):` |
 | [mix_non_uniform](Vector.md#mix_non_uniform) | `def mix_non_uniform(self, factor=None, vector=None, clamp_factor=True):` |
-
 <sub>Go to [top](#node-Mix) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

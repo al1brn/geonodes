@@ -29,11 +29,10 @@ node = nodes.SetCurveRadius(curve=None, selection=None, radius=None)
 
 ## Implementation
 
-| Name | Definition |
-|------|------------|
+| Class or method name | Definition |
+|----------------------|------------|
 | **[ControlPoint](ControlPoint.md)** |
 | [set_radius](ControlPoint.md#set_radius) | `def set_radius(self, radius=None):` |
 | [radius](ControlPoint.md#radius) | `def radius(self, attr_value):` |
-
 <sub>Go to [top](#node-Set-Curve-Radius) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

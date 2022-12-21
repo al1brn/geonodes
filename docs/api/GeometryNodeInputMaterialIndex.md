@@ -21,13 +21,11 @@ node = nodes.MaterialIndex()
 
 ## Implementation
 
-| Name | Definition |
-|------|------------|
+| Class or method name | Definition |
+|----------------------|------------|
 | **[Domain](Domain.md)** |
 | [material_index](Domain.md#material_index-property) | `def material_index(self):` |
-
 | **[Geometry](Geometry.md)** |
 | [material_index](Geometry.md#material_index-property) | `def material_index(self):` |
-
 <sub>Go to [top](#node-Material-Index) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

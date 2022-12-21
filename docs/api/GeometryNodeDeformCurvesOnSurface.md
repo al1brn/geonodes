@@ -27,10 +27,9 @@ node = nodes.DeformCurvesOnSurface(curves=None)
 
 ## Implementation
 
-| Name | Definition |
-|------|------------|
+| Class or method name | Definition |
+|----------------------|------------|
 | **[Curve](Curve.md)** |
 | [deform_on_surface](Curve.md#deform_on_surface) | `def deform_on_surface(self):` |
-
 <sub>Go to [top](#node-Deform-Curves-on-Surface) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

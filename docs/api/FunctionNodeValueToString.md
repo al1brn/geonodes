@@ -28,16 +28,13 @@ node = nodes.ValueToString(value=None, decimals=None)
 
 ## Implementation
 
-| Name | Definition |
-|------|------------|
+| Class or method name | Definition |
+|----------------------|------------|
 | Global functions |
 | [value_to_string](A.md#value_to_string) | `def value_to_string(value=None, decimals=None):` |
-
 | **[Float](Float.md)** |
 | [to_string](Float.md#to_string) | `def to_string(self, decimals=None):` |
-
 | **[Integer](Integer.md)** |
 | [to_string](Integer.md#to_string) | `def to_string(self):` |
-
 <sub>Go to [top](#node-Value-to-String) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

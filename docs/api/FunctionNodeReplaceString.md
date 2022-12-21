@@ -29,13 +29,11 @@ node = nodes.ReplaceString(string=None, find=None, replace=None)
 
 ## Implementation
 
-| Name | Definition |
-|------|------------|
+| Class or method name | Definition |
+|----------------------|------------|
 | Global functions |
 | [replace_string](A.md#replace_string) | `def replace_string(string=None, find=None, replace=None):` |
-
 | **[String](String.md)** |
 | [replace](String.md#replace) | `def replace(self, find=None, replace=None):` |
-
 <sub>Go to [top](#node-Replace-String) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

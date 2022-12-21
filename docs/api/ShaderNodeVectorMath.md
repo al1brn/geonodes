@@ -35,8 +35,8 @@ node = nodes.VectorMath(vector0=None, vector1=None, vector2=None, scale=None, op
 
 ## Implementation
 
-| Name | Definition |
-|------|------------|
+| Class or method name | Definition |
+|----------------------|------------|
 | **[Vector](Vector.md)** |
 | [add](Vector.md#add) | `def add(self, vector=None):` |
 | [subtract](Vector.md#subtract) | `def subtract(self, vector=None):` |
@@ -78,6 +78,5 @@ node = nodes.VectorMath(vector0=None, vector1=None, vector2=None, scale=None, op
 | [cos](Vector.md#cos) | `def cos(self):` |
 | [tangent](Vector.md#tangent) | `def tangent(self):` |
 | [tan](Vector.md#tan) | `def tan(self):` |
-
 <sub>Go to [top](#node-Vector-Math) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

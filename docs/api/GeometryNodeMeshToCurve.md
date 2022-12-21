@@ -28,13 +28,11 @@ node = nodes.MeshToCurve(mesh=None, selection=None)
 
 ## Implementation
 
-| Name | Definition |
-|------|------------|
+| Class or method name | Definition |
+|----------------------|------------|
 | **[Edge](Edge.md)** |
 | [to_curve](Edge.md#to_curve) | `def to_curve(self):` |
-
 | **[Mesh](Mesh.md)** |
 | [to_curve](Mesh.md#to_curve) | `def to_curve(self, selection=None):` |
-
 <sub>Go to [top](#node-Mesh-to-Curve) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

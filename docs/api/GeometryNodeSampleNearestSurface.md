@@ -38,10 +38,9 @@ node = nodes.SampleNearestSurface(mesh=None, value=None, sample_position=None, d
 - Output sockets : ['value']
 ## Implementation
 
-| Name | Definition |
-|------|------------|
+| Class or method name | Definition |
+|----------------------|------------|
 | **[Mesh](Mesh.md)** |
 | [sample_nearest_surface](Mesh.md#sample_nearest_surface) | `def sample_nearest_surface(self, value=None, sample_position=None):` |
-
 <sub>Go to [top](#node-Sample-Nearest-Surface) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

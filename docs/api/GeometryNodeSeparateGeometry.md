@@ -33,13 +33,11 @@ node = nodes.SeparateGeometry(geometry=None, selection=None, domain='POINT')
 
 ## Implementation
 
-| Name | Definition |
-|------|------------|
+| Class or method name | Definition |
+|----------------------|------------|
 | **[Domain](Domain.md)** |
 | [separate](Domain.md#separate) | `def separate(self, geometry=None):` |
-
 | **[Geometry](Geometry.md)** |
 | [separate](Geometry.md#separate) | `def separate(self, geometry=None, selection=None, domain='POINT'):` |
-
 <sub>Go to [top](#node-Separate-Geometry) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

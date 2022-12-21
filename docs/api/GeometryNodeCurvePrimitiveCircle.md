@@ -36,11 +36,10 @@ node = nodes.CurveCircle(resolution=None, point_1=None, point_2=None, point_3=No
 
 ## Implementation
 
-| Name | Definition |
-|------|------------|
+| Class or method name | Definition |
+|----------------------|------------|
 | **[Curve](Curve.md)** |
 | [Circle](Curve.md#Circle-classmethod) | `def Circle(cls, resolution=None, radius=None):` |
 | [CircleFromPoints](Curve.md#CircleFromPoints-classmethod) | `def CircleFromPoints(cls, resolution=None, point_1=None, point_2=None, point_3=None):` |
-
 <sub>Go to [top](#node-Curve-Circle) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

@@ -29,10 +29,9 @@ node = nodes.ReplaceMaterial(geometry=None, old=None, new=None)
 
 ## Implementation
 
-| Name | Definition |
-|------|------------|
+| Class or method name | Definition |
+|----------------------|------------|
 | **[Geometry](Geometry.md)** |
 | [replace_material](Geometry.md#replace_material) | `def replace_material(self, old=None, new=None):` |
-
 <sub>Go to [top](#node-Replace-Material) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

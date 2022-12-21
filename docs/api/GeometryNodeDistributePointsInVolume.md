@@ -35,12 +35,11 @@ node = nodes.DistributePointsInVolume(volume=None, density=None, seed=None, spac
 
 ## Implementation
 
-| Name | Definition |
-|------|------------|
+| Class or method name | Definition |
+|----------------------|------------|
 | **[Volume](Volume.md)** |
 | [distribute_points](Volume.md#distribute_points) | `def distribute_points(self, density=None, seed=None, spacing=None, threshold=None, mode='DENSITY_RANDOM'):` |
 | [distribute_points_random](Volume.md#distribute_points_random) | `def distribute_points_random(self, density=None, seed=None):` |
 | [distribute_points_grid](Volume.md#distribute_points_grid) | `def distribute_points_grid(self, spacing=None, threshold=None):` |
-
 <sub>Go to [top](#node-Distribute-Points-in-Volume) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

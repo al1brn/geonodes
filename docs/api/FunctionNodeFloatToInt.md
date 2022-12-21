@@ -31,14 +31,13 @@ node = nodes.FloatToInteger(float=None, rounding_mode='ROUND')
 
 ## Implementation
 
-| Name | Definition |
-|------|------------|
+| Class or method name | Definition |
+|----------------------|------------|
 | **[Float](Float.md)** |
 | [to_integer](Float.md#to_integer) | `def to_integer(self, rounding_mode='ROUND'):` |
 | [round](Float.md#round) | `def round(self):` |
 | [floor](Float.md#floor) | `def floor(self):` |
 | [ceiling](Float.md#ceiling) | `def ceiling(self):` |
 | [truncate](Float.md#truncate) | `def truncate(self):` |
-
 <sub>Go to [top](#node-Float-to-Integer) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

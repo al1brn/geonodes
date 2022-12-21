@@ -34,13 +34,11 @@ node = nodes.DuplicateElements(geometry=None, selection=None, amount=None, domai
 
 ## Implementation
 
-| Name | Definition |
-|------|------------|
+| Class or method name | Definition |
+|----------------------|------------|
 | **[Domain](Domain.md)** |
 | [duplicate](Domain.md#duplicate) | `def duplicate(self, amount=None):` |
-
 | **[Geometry](Geometry.md)** |
 | [duplicate](Geometry.md#duplicate) | `def duplicate(self, selection=None, amount=None, domain='POINT'):` |
-
 <sub>Go to [top](#node-Duplicate-Elements) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

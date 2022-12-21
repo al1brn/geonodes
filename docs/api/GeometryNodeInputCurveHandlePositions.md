@@ -28,12 +28,11 @@ node = nodes.CurveHandlePositions(relative=None)
 
 ## Implementation
 
-| Name | Definition |
-|------|------------|
+| Class or method name | Definition |
+|----------------------|------------|
 | **[ControlPoint](ControlPoint.md)** |
 | [handle_positions](ControlPoint.md#handle_positions) | `def handle_positions(self, relative=None):` |
 | [left_handle_positions](ControlPoint.md#left_handle_positions-property) | `def left_handle_positions(self):` |
 | [right_handle_positions](ControlPoint.md#right_handle_positions-property) | `def right_handle_positions(self):` |
-
 <sub>Go to [top](#node-Curve-Handle-Positions) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

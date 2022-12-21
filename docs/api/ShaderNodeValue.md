@@ -21,10 +21,9 @@ node = nodes.Value()
 
 ## Implementation
 
-| Name | Definition |
-|------|------------|
+| Class or method name | Definition |
+|----------------------|------------|
 | **[Float](Float.md)** |
 | [Value](Float.md#Value-classmethod) | `def Value(cls):` |
-
 <sub>Go to [top](#node-Value) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

@@ -32,8 +32,8 @@ node = nodes.BooleanMath(boolean0=None, boolean1=None, operation='AND')
 
 ## Implementation
 
-| Name | Definition |
-|------|------------|
+| Class or method name | Definition |
+|----------------------|------------|
 | Global functions |
 | [b_and](A.md#b_and) | `def b_and(boolean0=None, boolean1=None):` |
 | [b_or](A.md#b_or) | `def b_or(boolean0=None, boolean1=None):` |
@@ -44,7 +44,6 @@ node = nodes.BooleanMath(boolean0=None, boolean1=None, operation='AND')
 | [xor](A.md#xor) | `def xor(boolean0=None, boolean1=None):` |
 | [imply](A.md#imply) | `def imply(boolean0=None, boolean1=None):` |
 | [nimply](A.md#nimply) | `def nimply(boolean0=None, boolean1=None):` |
-
 | **[Boolean](Boolean.md)** |
 | [b_and](Boolean.md#b_and) | `def b_and(self, boolean1=None):` |
 | [b_or](Boolean.md#b_or) | `def b_or(self, boolean1=None):` |
@@ -55,6 +54,5 @@ node = nodes.BooleanMath(boolean0=None, boolean1=None, operation='AND')
 | [xor](Boolean.md#xor) | `def xor(self, boolean1=None):` |
 | [imply](Boolean.md#imply) | `def imply(self, boolean1=None):` |
 | [nimply](Boolean.md#nimply) | `def nimply(self, boolean1=None):` |
-
 <sub>Go to [top](#node-Boolean-Math) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

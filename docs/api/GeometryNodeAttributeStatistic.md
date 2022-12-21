@@ -46,8 +46,8 @@ node = nodes.AttributeStatistic(geometry=None, selection=None, attribute=None, d
 - Output sockets : ['mean', 'median', 'sum', 'min', 'max', 'range', 'standard_deviation', 'variance']
 ## Implementation
 
-| Name | Definition |
-|------|------------|
+| Class or method name | Definition |
+|----------------------|------------|
 | **[Domain](Domain.md)** |
 | [attribute_statistic](Domain.md#attribute_statistic) | `def attribute_statistic(self, attribute=None):` |
 | [attribute_mean](Domain.md#attribute_mean) | `def attribute_mean(self, attribute=None):` |
@@ -58,9 +58,7 @@ node = nodes.AttributeStatistic(geometry=None, selection=None, attribute=None, d
 | [attribute_range](Domain.md#attribute_range) | `def attribute_range(self, attribute=None):` |
 | [attribute_std](Domain.md#attribute_std) | `def attribute_std(self, attribute=None):` |
 | [attribute_var](Domain.md#attribute_var) | `def attribute_var(self, attribute=None):` |
-
 | **[Geometry](Geometry.md)** |
 | [attribute_statistic](Geometry.md#attribute_statistic) | `def attribute_statistic(self, selection=None, attribute=None, domain='POINT'):` |
-
 <sub>Go to [top](#node-Attribute-Statistic) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

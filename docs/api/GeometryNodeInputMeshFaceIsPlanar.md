@@ -27,13 +27,11 @@ node = nodes.FaceIsPlanar(threshold=None)
 
 ## Implementation
 
-| Name | Definition |
-|------|------------|
+| Class or method name | Definition |
+|----------------------|------------|
 | **[Face](Face.md)** |
 | [is_planar](Face.md#is_planar) | `def is_planar(self, threshold=None):` |
-
 | **[Mesh](Mesh.md)** |
 | [face_is_planar](Mesh.md#face_is_planar) | `def face_is_planar(self, threshold=None):` |
-
 <sub>Go to [top](#node-Face-is-Planar) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

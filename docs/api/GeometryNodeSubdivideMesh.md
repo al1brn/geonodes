@@ -28,10 +28,9 @@ node = nodes.SubdivideMesh(mesh=None, level=None)
 
 ## Implementation
 
-| Name | Definition |
-|------|------------|
+| Class or method name | Definition |
+|----------------------|------------|
 | **[Mesh](Mesh.md)** |
 | [subdivide](Mesh.md#subdivide) | `def subdivide(self, level=None):` |
-
 <sub>Go to [top](#node-Subdivide-Mesh) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

@@ -22,12 +22,11 @@ node = nodes.FaceNeighbors()
 
 ## Implementation
 
-| Name | Definition |
-|------|------------|
+| Class or method name | Definition |
+|----------------------|------------|
 | **[Face](Face.md)** |
 | [neighbors](Face.md#neighbors-property) | `def neighbors(self):` |
 | [neighbors_vertex_count](Face.md#neighbors_vertex_count-property) | `def neighbors_vertex_count(self):` |
 | [neighbors_face_count](Face.md#neighbors_face_count-property) | `def neighbors_face_count(self):` |
-
 <sub>Go to [top](#node-Face-Neighbors) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

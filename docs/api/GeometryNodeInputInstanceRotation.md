@@ -21,13 +21,11 @@ node = nodes.InstanceRotation()
 
 ## Implementation
 
-| Name | Definition |
-|------|------------|
+| Class or method name | Definition |
+|----------------------|------------|
 | **[Instance](Instance.md)** |
 | [rotation](Instance.md#rotation-property) | `def rotation(self):` |
-
 | **[Instances](Instances.md)** |
 | [rotation](Instances.md#rotation-property) | `def rotation(self):` |
-
 <sub>Go to [top](#node-Instance-Rotation) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

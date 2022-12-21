@@ -35,13 +35,11 @@ node = nodes.ImageTexture(image=None, vector=None, frame=None, extension='REPEAT
 
 ## Implementation
 
-| Name | Definition |
-|------|------------|
+| Class or method name | Definition |
+|----------------------|------------|
 | **[Image](Image.md)** |
 | [texture](Image.md#texture) | `def texture(self, vector=None, frame=None, extension='REPEAT', interpolation='Linear'):` |
-
 | **[Texture](Texture.md)** |
 | [image](Texture.md#image-staticmethod) | `def image(image=None, vector=None, frame=None, extension='REPEAT', interpolation='Linear'):` |
-
 <sub>Go to [top](#node-Image-Texture) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

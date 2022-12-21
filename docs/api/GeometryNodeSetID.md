@@ -29,14 +29,12 @@ node = nodes.SetID(geometry=None, selection=None, ID=None)
 
 ## Implementation
 
-| Name | Definition |
-|------|------------|
+| Class or method name | Definition |
+|----------------------|------------|
 | **[Domain](Domain.md)** |
 | [set_ID](Domain.md#set_ID) | `def set_ID(self, ID=None):` |
 | [ID](Domain.md#ID) | `def ID(self, attr_value):` |
-
 | **[Geometry](Geometry.md)** |
 | [set_ID](Geometry.md#set_ID) | `def set_ID(self, selection=None, ID=None):` |
-
 <sub>Go to [top](#node-Set-ID) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

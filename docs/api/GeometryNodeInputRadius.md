@@ -21,16 +21,13 @@ node = nodes.Radius()
 
 ## Implementation
 
-| Name | Definition |
-|------|------------|
+| Class or method name | Definition |
+|----------------------|------------|
 | **[CloudPoint](CloudPoint.md)** |
 | [radius](CloudPoint.md#radius-property) | `def radius(self):` |
-
 | **[ControlPoint](ControlPoint.md)** |
 | [radius](ControlPoint.md#radius-property) | `def radius(self):` |
-
 | **[Geometry](Geometry.md)** |
 | [radius](Geometry.md#radius-property) | `def radius(self):` |
-
 <sub>Go to [top](#node-Radius) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

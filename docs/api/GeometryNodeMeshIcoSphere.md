@@ -28,10 +28,9 @@ node = nodes.IcoSphere(radius=None, subdivisions=None)
 
 ## Implementation
 
-| Name | Definition |
-|------|------------|
+| Class or method name | Definition |
+|----------------------|------------|
 | **[Mesh](Mesh.md)** |
 | [IcoSphere](Mesh.md#IcoSphere-classmethod) | `def IcoSphere(cls, radius=None, subdivisions=None):` |
-
 <sub>Go to [top](#node-Ico-Sphere) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

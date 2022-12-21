@@ -31,10 +31,9 @@ node = nodes.CheckerTexture(vector=None, color1=None, color2=None, scale=None)
 
 ## Implementation
 
-| Name | Definition |
-|------|------------|
+| Class or method name | Definition |
+|----------------------|------------|
 | **[Texture](Texture.md)** |
 | [checker](Texture.md#checker-staticmethod) | `def checker(vector=None, color1=None, color2=None, scale=None):` |
-
 <sub>Go to [top](#node-Checker-Texture) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

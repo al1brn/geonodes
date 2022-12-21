@@ -28,10 +28,9 @@ node = nodes.DualMesh(mesh=None, keep_boundaries=None)
 
 ## Implementation
 
-| Name | Definition |
-|------|------------|
+| Class or method name | Definition |
+|----------------------|------------|
 | **[Mesh](Mesh.md)** |
 | [dual_mesh](Mesh.md#dual_mesh) | `def dual_mesh(self, mesh=None, keep_boundaries=None):` |
-
 <sub>Go to [top](#node-Dual-Mesh) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

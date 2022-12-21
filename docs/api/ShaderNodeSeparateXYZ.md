@@ -29,10 +29,9 @@ node = nodes.SeparateXyz(vector=None)
 
 ## Implementation
 
-| Name | Definition |
-|------|------------|
+| Class or method name | Definition |
+|----------------------|------------|
 | **[Vector](Vector.md)** |
 | [separate](Vector.md#separate-property) | `def separate(self):` |
-
 <sub>Go to [top](#node-Separate-XYZ) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

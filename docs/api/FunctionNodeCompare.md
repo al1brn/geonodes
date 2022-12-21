@@ -42,18 +42,16 @@ node = nodes.Compare(a=None, b=None, c=None, angle=None, epsilon=None, data_type
 - Output sockets : []
 ## Implementation
 
-| Name | Definition |
-|------|------------|
+| Class or method name | Definition |
+|----------------------|------------|
 | Global functions |
 | [compare](A.md#compare) | `def compare(a=None, b=None, c=None, angle=None, epsilon=None, data_type='FLOAT', mode='ELEMENT', operation='GREATER_THAN'):` |
-
 | **[Color](Color.md)** |
 | [compare](Color.md#compare) | `def compare(self, b=None, epsilon=None, operation='GREATER_THAN'):` |
 | [darker](Color.md#darker) | `def darker(self, b=None):` |
 | [brighter](Color.md#brighter) | `def brighter(self, b=None):` |
 | [equal](Color.md#equal) | `def equal(self, b=None, epsilon=None):` |
 | [equal](Color.md#equal) | `def equal(self, b=None, epsilon=None):` |
-
 | **[Float](Float.md)** |
 | [compare](Float.md#compare) | `def compare(self, b=None, epsilon=None, operation='GREATER_THAN'):` |
 | [less_than](Float.md#less_than) | `def less_than(self, b=None):` |
@@ -62,7 +60,6 @@ node = nodes.Compare(a=None, b=None, c=None, angle=None, epsilon=None, data_type
 | [greater_equal](Float.md#greater_equal) | `def greater_equal(self, b=None):` |
 | [equal](Float.md#equal) | `def equal(self, b=None, epsilon=None):` |
 | [not_equal](Float.md#not_equal) | `def not_equal(self, b=None, epsilon=None):` |
-
 | **[Integer](Integer.md)** |
 | [compare](Integer.md#compare) | `def compare(self, b=None, operation='GREATER_THAN'):` |
 | [less_than](Integer.md#less_than) | `def less_than(self, b=None):` |
@@ -71,11 +68,9 @@ node = nodes.Compare(a=None, b=None, c=None, angle=None, epsilon=None, data_type
 | [greater_equal](Integer.md#greater_equal) | `def greater_equal(self, b=None):` |
 | [equal](Integer.md#equal) | `def equal(self, b=None):` |
 | [not_equal](Integer.md#not_equal) | `def not_equal(self, b=None):` |
-
 | **[String](String.md)** |
 | [equal](String.md#equal) | `def equal(self, b=None):` |
 | [not_equal](String.md#not_equal) | `def not_equal(self, b=None):` |
-
 | **[Vector](Vector.md)** |
 | [compare](Vector.md#compare) | `def compare(self, b=None, c=None, angle=None, epsilon=None, mode='ELEMENT', operation='GREATER_THAN'):` |
 | [elements_less_than](Vector.md#elements_less_than) | `def elements_less_than(self, b=None):` |
@@ -108,6 +103,5 @@ node = nodes.Compare(a=None, b=None, c=None, angle=None, epsilon=None, data_type
 | [direction_greater_equal](Vector.md#direction_greater_equal) | `def direction_greater_equal(self, b=None, angle=None):` |
 | [direction_equal](Vector.md#direction_equal) | `def direction_equal(self, b=None, angle=None, epsilon=None):` |
 | [direction_not_equal](Vector.md#direction_not_equal) | `def direction_not_equal(self, b=None, angle=None, epsilon=None):` |
-
 <sub>Go to [top](#node-Compare) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

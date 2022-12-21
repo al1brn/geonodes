@@ -30,10 +30,9 @@ node = nodes.QuadraticBezier(resolution=None, start=None, middle=None, end=None)
 
 ## Implementation
 
-| Name | Definition |
-|------|------------|
+| Class or method name | Definition |
+|----------------------|------------|
 | **[Curve](Curve.md)** |
 | [QuadraticBezier](Curve.md#QuadraticBezier-classmethod) | `def QuadraticBezier(cls, resolution=None, start=None, middle=None, end=None):` |
-
 <sub>Go to [top](#node-Quadratic-Bezier) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

@@ -28,8 +28,8 @@ node = nodes.HandleTypeSelection(handle_type='AUTO', mode={'RIGHT', 'LEFT'})
 
 ## Implementation
 
-| Name | Definition |
-|------|------------|
+| Class or method name | Definition |
+|----------------------|------------|
 | **[ControlPoint](ControlPoint.md)** |
 | [handle_type_selection_node](ControlPoint.md#handle_type_selection_node) | `def handle_type_selection_node(self, handle_type='AUTO', mode={'RIGHT', 'LEFT'}):` |
 | [handle_type_selection](ControlPoint.md#handle_type_selection) | `def handle_type_selection(self, left=True, right=True, handle_type='AUTO'):` |
@@ -37,6 +37,5 @@ node = nodes.HandleTypeSelection(handle_type='AUTO', mode={'RIGHT', 'LEFT'})
 | [handle_type_selection](ControlPoint.md#handle_type_selection) | `def handle_type_selection_auto(self, left=True, right=True):` |
 | [handle_type_selection](ControlPoint.md#handle_type_selection) | `def handle_type_selection_vector(self, left=True, right=True):` |
 | [handle_type_selection](ControlPoint.md#handle_type_selection) | `def handle_type_selection_align(self, left=True, right=True):` |
-
 <sub>Go to [top](#node-Handle-Type-Selection) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

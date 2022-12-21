@@ -28,10 +28,9 @@ node = nodes.EdgePathsToSelection(start_vertices=None, next_vertex_index=None)
 
 ## Implementation
 
-| Name | Definition |
-|------|------------|
+| Class or method name | Definition |
+|----------------------|------------|
 | **[Mesh](Mesh.md)** |
 | [edge_paths_to_selection](Mesh.md#edge_paths_to_selection) | `def edge_paths_to_selection(self, start_vertices=None, next_vertex_index=None):` |
-
 <sub>Go to [top](#node-Edge-Paths-to-Selection) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

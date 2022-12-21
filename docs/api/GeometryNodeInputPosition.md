@@ -21,13 +21,11 @@ node = nodes.Position()
 
 ## Implementation
 
-| Name | Definition |
-|------|------------|
+| Class or method name | Definition |
+|----------------------|------------|
 | **[Domain](Domain.md)** |
 | [position](Domain.md#position-property) | `def position(self):` |
-
 | **[Geometry](Geometry.md)** |
 | [position](Geometry.md#position-property) | `def position(self):` |
-
 <sub>Go to [top](#node-Position) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

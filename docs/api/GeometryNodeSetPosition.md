@@ -30,14 +30,12 @@ node = nodes.SetPosition(geometry=None, selection=None, position=None, offset=No
 
 ## Implementation
 
-| Name | Definition |
-|------|------------|
+| Class or method name | Definition |
+|----------------------|------------|
 | **[Domain](Domain.md)** |
 | [set_position](Domain.md#set_position) | `def set_position(self, position=None, offset=None):` |
 | [position](Domain.md#position) | `def position(self, attr_value):` |
-
 | **[Geometry](Geometry.md)** |
 | [set_position](Geometry.md#set_position) | `def set_position(self, selection=None, position=None, offset=None):` |
-
 <sub>Go to [top](#node-Set-Position) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

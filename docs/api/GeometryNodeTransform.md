@@ -30,10 +30,9 @@ node = nodes.Transform(geometry=None, translation=None, rotation=None, scale=Non
 
 ## Implementation
 
-| Name | Definition |
-|------|------------|
+| Class or method name | Definition |
+|----------------------|------------|
 | **[Geometry](Geometry.md)** |
 | [transform](Geometry.md#transform) | `def transform(self, translation=None, rotation=None, scale=None):` |
-
 <sub>Go to [top](#node-Transform) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
