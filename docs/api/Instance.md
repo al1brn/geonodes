@@ -29,6 +29,8 @@ def __len__(self):
 - geometry: Geometry
 - component (str): 'MESH' in [MESH, POINTCLOUD, CURVE, INSTANCES]
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeAttributeDomainSize.webp)
+
 #### Returns:
 - node with sockets ['point_count', 'edge_count', 'face_count', 'face_corner_count', 'spline_count', 'instance_count']
 
@@ -47,6 +49,8 @@ def rotate(self, rotation=None, pivot_point=None, local_space=None):
 - pivot_point: Vector
 - local_space: Boolean
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeRotateInstances.webp)
+
 #### Returns:
 - self
 
@@ -60,6 +64,8 @@ def rotation(self):
 ```
 > Node: [Instance Rotation](GeometryNodeInputInstanceRotation.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instance_rotation.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputInstanceRotation.html)
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeInputInstanceRotation.webp)
+
 #### Returns:
 - socket `rotation`
 
@@ -72,6 +78,8 @@ def scale(self):
 
 ```
 > Node: [Instance Scale](GeometryNodeInputInstanceScale.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instance_scale.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputInstanceScale.html)
+
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeInputInstanceScale.webp)
 
 #### Returns:
 - socket `scale`
@@ -91,6 +99,8 @@ def set_scale(self, scale=None, center=None, local_space=None):
 - center: Vector
 - local_space: Boolean
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeScaleInstances.webp)
+
 #### Returns:
 - self
 
@@ -108,6 +118,8 @@ def to_points(self, position=None, radius=None):
 - position: Vector
 - radius: Float
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeInstancesToPoints.webp)
+
 #### Returns:
 - socket `points` of class Points
 
@@ -124,6 +136,8 @@ def translate(self, translation=None, local_space=None):
 #### Args:
 - translation: Vector
 - local_space: Boolean
+
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeTranslateInstances.webp)
 
 #### Returns:
 - self

@@ -95,9 +95,10 @@ def brick(vector=None, color1=None, color2=None, mortar=None, scale=None, mortar
 - squash (float): 1.0
 - squash_frequency (int): 2
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexBrick.webp)
+
 #### Returns:
 - tuple ('`color`', '`fac`')
-  ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexBrick.webp)
 
 <sub>Go to [top](#class-Texture) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
@@ -115,9 +116,10 @@ def checker(vector=None, color1=None, color2=None, scale=None):
 - color2: Color
 - scale: Float
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexChecker.webp)
+
 #### Returns:
 - tuple ('`color`', '`fac`')
-  ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexChecker.webp)
 
 <sub>Go to [top](#class-Texture) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
@@ -133,9 +135,10 @@ def gradient(vector=None, gradient_type='LINEAR'):
 - vector: Vector
 - gradient_type (str): 'LINEAR' in [LINEAR, QUADRATIC, EASING, DIAGONAL, SPHERICAL, QUADRATIC_SPHERE, RADIAL]
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexGradient.webp)
+
 #### Returns:
 - tuple ('`color`', '`fac`')
-  ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexGradient.webp)
 
 <sub>Go to [top](#class-Texture) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
@@ -150,9 +153,10 @@ def gradient_diagonal(vector=None):
 #### Args:
 - vector: Vector
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexGradient.webp)
+
 #### Returns:
 - tuple ('`color`', '`fac`')
-  ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexGradient.webp)
 
 <sub>Go to [top](#class-Texture) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
@@ -167,9 +171,10 @@ def gradient_easing(vector=None):
 #### Args:
 - vector: Vector
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexGradient.webp)
+
 #### Returns:
 - tuple ('`color`', '`fac`')
-  ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexGradient.webp)
 
 <sub>Go to [top](#class-Texture) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
@@ -184,9 +189,10 @@ def gradient_linear(vector=None):
 #### Args:
 - vector: Vector
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexGradient.webp)
+
 #### Returns:
 - tuple ('`color`', '`fac`')
-  ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexGradient.webp)
 
 <sub>Go to [top](#class-Texture) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
@@ -201,9 +207,10 @@ def gradient_quadratic(vector=None):
 #### Args:
 - vector: Vector
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexGradient.webp)
+
 #### Returns:
 - tuple ('`color`', '`fac`')
-  ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexGradient.webp)
 
 <sub>Go to [top](#class-Texture) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
@@ -218,9 +225,10 @@ def gradient_quadratic_sphere(vector=None):
 #### Args:
 - vector: Vector
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexGradient.webp)
+
 #### Returns:
 - tuple ('`color`', '`fac`')
-  ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexGradient.webp)
 
 <sub>Go to [top](#class-Texture) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
@@ -235,9 +243,10 @@ def gradient_radial(vector=None):
 #### Args:
 - vector: Vector
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexGradient.webp)
+
 #### Returns:
 - tuple ('`color`', '`fac`')
-  ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexGradient.webp)
 
 <sub>Go to [top](#class-Texture) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
@@ -252,9 +261,10 @@ def gradient_spherical(vector=None):
 #### Args:
 - vector: Vector
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexGradient.webp)
+
 #### Returns:
 - tuple ('`color`', '`fac`')
-  ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexGradient.webp)
 
 <sub>Go to [top](#class-Texture) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
@@ -273,9 +283,10 @@ def image(image=None, vector=None, frame=None, extension='REPEAT', interpolation
 - extension (str): 'REPEAT' in [REPEAT, EXTEND, CLIP]
 - interpolation (str): 'Linear' in [Linear, Closest, Cubic]
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeImageTexture.webp)
+
 #### Returns:
 - tuple ('`color`', '`alpha`')
-  ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeImageTexture.webp)
 
 <sub>Go to [top](#class-Texture) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
@@ -293,9 +304,10 @@ def magic(vector=None, scale=None, distortion=None, turbulence_depth=2):
 - distortion: Float
 - turbulence_depth (int): 2
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexMagic.webp)
+
 #### Returns:
 - tuple ('`color`', '`fac`')
-  ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexMagic.webp)
 
 <sub>Go to [top](#class-Texture) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
@@ -319,6 +331,8 @@ def musgrave(vector=None, w=None, scale=None, detail=None, dimension=None, lacun
 - musgrave_dimensions (str): '3D' in [1D, 2D, 3D, 4D]
 - musgrave_type (str): 'FBM' in [MULTIFRACTAL, RIDGED_MULTIFRACTAL, HYBRID_MULTIFRACTAL, FBM, HETERO_TERRAIN]
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexMusgrave.webp)
+
 #### Returns:
 - socket `fac`
 
@@ -341,9 +355,10 @@ def noise(vector=None, w=None, scale=None, detail=None, roughness=None, distorti
 - distortion: Float
 - noise_dimensions (str): '3D' in [1D, 2D, 3D, 4D]
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexNoise.webp)
+
 #### Returns:
 - tuple ('`color`', '`fac`')
-  ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexNoise.webp)
 
 <sub>Go to [top](#class-Texture) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
@@ -362,9 +377,10 @@ def noise_1D(w=None, scale=None, detail=None, roughness=None, distortion=None):
 - roughness: Float
 - distortion: Float
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexNoise.webp)
+
 #### Returns:
 - tuple ('`color`', '`fac`')
-  ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexNoise.webp)
 
 <sub>Go to [top](#class-Texture) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
@@ -383,9 +399,10 @@ def noise_2D(vector=None, scale=None, detail=None, roughness=None, distortion=No
 - roughness: Float
 - distortion: Float
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexNoise.webp)
+
 #### Returns:
 - tuple ('`color`', '`fac`')
-  ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexNoise.webp)
 
 <sub>Go to [top](#class-Texture) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
@@ -404,9 +421,10 @@ def noise_3D(vector=None, scale=None, detail=None, roughness=None, distortion=No
 - roughness: Float
 - distortion: Float
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexNoise.webp)
+
 #### Returns:
 - tuple ('`color`', '`fac`')
-  ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexNoise.webp)
 
 <sub>Go to [top](#class-Texture) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
@@ -426,9 +444,10 @@ def noise_4D(vector=None, w=None, scale=None, detail=None, roughness=None, disto
 - roughness: Float
 - distortion: Float
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexNoise.webp)
+
 #### Returns:
 - tuple ('`color`', '`fac`')
-  ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexNoise.webp)
 
 <sub>Go to [top](#class-Texture) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
@@ -443,6 +462,8 @@ def switch(self, switch=None, true=None):
 #### Args:
 - switch: Boolean
 - true: Texture
+
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeSwitch.webp)
 
 #### Returns:
 - socket `output`
@@ -468,9 +489,10 @@ def voronoi(vector=None, w=None, scale=None, smoothness=None, exponent=None, ran
 - feature (str): 'F1' in [F1, F2, SMOOTH_F1, DISTANCE_TO_EDGE, N_SPHERE_RADIUS]
 - voronoi_dimensions (str): '3D' in [1D, 2D, 3D, 4D]
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexVoronoi.webp)
+
 #### Returns:
 - tuple ('`distance`', '`color`', '`position`', '`w`')
-  ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexVoronoi.webp)
 
 <sub>Go to [top](#class-Texture) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
@@ -492,9 +514,10 @@ def voronoi_1D(w=None, scale=None, smoothness=None, exponent=None, randomness=No
 - feature (str): 'F1' in [F1, F2, SMOOTH_F1, DISTANCE_TO_EDGE, N_SPHERE_RADIUS]
 - voronoi_dimensions (str): '3D' in [1D, 2D, 3D, 4D]
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexVoronoi.webp)
+
 #### Returns:
 - tuple ('`distance`', '`color`', '`w`')
-  ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexVoronoi.webp)
 
 <sub>Go to [top](#class-Texture) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
@@ -516,9 +539,10 @@ def voronoi_2D(vector=None, scale=None, smoothness=None, exponent=None, randomne
 - feature (str): 'F1' in [F1, F2, SMOOTH_F1, DISTANCE_TO_EDGE, N_SPHERE_RADIUS]
 - voronoi_dimensions (str): '3D' in [1D, 2D, 3D, 4D]
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexVoronoi.webp)
+
 #### Returns:
 - tuple ('`distance`', '`color`', '`position`')
-  ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexVoronoi.webp)
 
 <sub>Go to [top](#class-Texture) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
@@ -540,9 +564,10 @@ def voronoi_3D(vector=None, scale=None, smoothness=None, exponent=None, randomne
 - feature (str): 'F1' in [F1, F2, SMOOTH_F1, DISTANCE_TO_EDGE, N_SPHERE_RADIUS]
 - voronoi_dimensions (str): '3D' in [1D, 2D, 3D, 4D]
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexVoronoi.webp)
+
 #### Returns:
 - tuple ('`distance`', '`color`', '`position`')
-  ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexVoronoi.webp)
 
 <sub>Go to [top](#class-Texture) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
@@ -565,9 +590,10 @@ def voronoi_4D(vector=None, w=None, scale=None, smoothness=None, exponent=None, 
 - feature (str): 'F1' in [F1, F2, SMOOTH_F1, DISTANCE_TO_EDGE, N_SPHERE_RADIUS]
 - voronoi_dimensions (str): '3D' in [1D, 2D, 3D, 4D]
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexVoronoi.webp)
+
 #### Returns:
 - tuple ('`distance`', '`color`', '`position`', '`w`')
-  ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexVoronoi.webp)
 
 <sub>Go to [top](#class-Texture) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
@@ -592,9 +618,10 @@ def wave(vector=None, scale=None, distortion=None, detail=None, detail_scale=Non
 - wave_profile (str): 'SIN' in [SIN, SAW, TRI]
 - wave_type (str): 'BANDS' in [BANDS, RINGS]
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexWave.webp)
+
 #### Returns:
 - tuple ('`color`', '`fac`')
-  ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexWave.webp)
 
 <sub>Go to [top](#class-Texture) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
@@ -617,9 +644,10 @@ def wave_bands(vector=None, scale=None, distortion=None, detail=None, detail_sca
 - direction (str): 'X' in [X, Y, Z, DIAGONAL]
 - wave_profile (str): 'SIN' in [SIN, SAW, TRI]
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexWave.webp)
+
 #### Returns:
 - tuple ('`color`', '`fac`')
-  ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexWave.webp)
 
 <sub>Go to [top](#class-Texture) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
@@ -641,9 +669,10 @@ def wave_bands_saw(vector=None, scale=None, distortion=None, detail=None, detail
 - phase_offset: Float
 - direction (str): 'X' in [X, Y, Z, DIAGONAL]
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexWave.webp)
+
 #### Returns:
 - tuple ('`color`', '`fac`')
-  ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexWave.webp)
 
 <sub>Go to [top](#class-Texture) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
@@ -665,9 +694,10 @@ def wave_bands_sine(vector=None, scale=None, distortion=None, detail=None, detai
 - phase_offset: Float
 - direction (str): 'X' in [X, Y, Z, DIAGONAL]
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexWave.webp)
+
 #### Returns:
 - tuple ('`color`', '`fac`')
-  ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexWave.webp)
 
 <sub>Go to [top](#class-Texture) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
@@ -689,9 +719,10 @@ def wave_bands_triangle(vector=None, scale=None, distortion=None, detail=None, d
 - phase_offset: Float
 - direction (str): 'X' in [X, Y, Z, DIAGONAL]
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexWave.webp)
+
 #### Returns:
 - tuple ('`color`', '`fac`')
-  ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexWave.webp)
 
 <sub>Go to [top](#class-Texture) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
@@ -714,9 +745,10 @@ def wave_rings(vector=None, scale=None, distortion=None, detail=None, detail_sca
 - direction (str): 'X' in [X, Y, Z, SPHERICAL]
 - wave_profile (str): 'SIN' in [SIN, SAW, TRI]
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexWave.webp)
+
 #### Returns:
 - tuple ('`color`', '`fac`')
-  ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexWave.webp)
 
 <sub>Go to [top](#class-Texture) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
@@ -738,9 +770,10 @@ def wave_rings_saw(vector=None, scale=None, distortion=None, detail=None, detail
 - phase_offset: Float
 - direction (str): 'X' in [X, Y, Z, SPHERICAL]
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexWave.webp)
+
 #### Returns:
 - tuple ('`color`', '`fac`')
-  ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexWave.webp)
 
 <sub>Go to [top](#class-Texture) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
@@ -762,9 +795,10 @@ def wave_rings_sine(vector=None, scale=None, distortion=None, detail=None, detai
 - phase_offset: Float
 - direction (str): 'X' in [X, Y, Z, SPHERICAL]
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexWave.webp)
+
 #### Returns:
 - tuple ('`color`', '`fac`')
-  ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexWave.webp)
 
 <sub>Go to [top](#class-Texture) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
@@ -786,9 +820,10 @@ def wave_rings_triangle(vector=None, scale=None, distortion=None, detail=None, d
 - phase_offset: Float
 - direction (str): 'X' in [X, Y, Z, SPHERICAL]
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexWave.webp)
+
 #### Returns:
 - tuple ('`color`', '`fac`')
-  ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexWave.webp)
 
 <sub>Go to [top](#class-Texture) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
@@ -805,9 +840,10 @@ def white_noise(vector=None, w=None, noise_dimensions='3D'):
 - w: Float
 - noise_dimensions (str): '3D' in [1D, 2D, 3D, 4D]
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexWhiteNoise.webp)
+
 #### Returns:
 - tuple ('`value`', '`color`')
-  ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexWhiteNoise.webp)
 
 <sub>Go to [top](#class-Texture) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
@@ -822,9 +858,10 @@ def white_noise_1D(w=None):
 #### Args:
 - w: Float
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexWhiteNoise.webp)
+
 #### Returns:
 - tuple ('`value`', '`color`')
-  ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexWhiteNoise.webp)
 
 <sub>Go to [top](#class-Texture) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
@@ -839,9 +876,10 @@ def white_noise_2D(vector=None):
 #### Args:
 - vector: Vector
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexWhiteNoise.webp)
+
 #### Returns:
 - tuple ('`value`', '`color`')
-  ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexWhiteNoise.webp)
 
 <sub>Go to [top](#class-Texture) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
@@ -856,9 +894,10 @@ def white_noise_3D(vector=None):
 #### Args:
 - vector: Vector
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexWhiteNoise.webp)
+
 #### Returns:
 - tuple ('`value`', '`color`')
-  ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexWhiteNoise.webp)
 
 <sub>Go to [top](#class-Texture) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
@@ -874,9 +913,10 @@ def white_noise_4D(vector=None, w=None):
 - vector: Vector
 - w: Float
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexWhiteNoise.webp)
+
 #### Returns:
 - tuple ('`value`', '`color`')
-  ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexWhiteNoise.webp)
 
 <sub>Go to [top](#class-Texture) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

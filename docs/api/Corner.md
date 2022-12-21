@@ -21,6 +21,8 @@ def __len__(self):
 - geometry: Geometry
 - component (str): 'MESH' in [MESH, POINTCLOUD, CURVE, INSTANCES]
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeAttributeDomainSize.webp)
+
 #### Returns:
 - node with sockets ['point_count', 'edge_count', 'face_count', 'face_corner_count', 'spline_count', 'instance_count']
 

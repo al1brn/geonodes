@@ -45,6 +45,8 @@ def switch(self, switch=None, true=None):
 - switch: Boolean
 - true: Image
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeSwitch.webp)
+
 #### Returns:
 - socket `output`
 
@@ -64,9 +66,10 @@ def texture(self, vector=None, frame=None, extension='REPEAT', interpolation='Li
 - extension (str): 'REPEAT' in [REPEAT, EXTEND, CLIP]
 - interpolation (str): 'Linear' in [Linear, Closest, Cubic]
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeImageTexture.webp)
+
 #### Returns:
 - tuple ('`color`', '`alpha`')
-  ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeImageTexture.webp)
 
 <sub>Go to [top](#class-Image) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

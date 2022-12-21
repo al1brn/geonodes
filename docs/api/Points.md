@@ -33,6 +33,8 @@ def Points(cls, count=None, position=None, radius=None):
 - position: Vector
 - radius: Float
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodePoints.webp)
+
 #### Returns:
 - socket `geometry`
 
@@ -45,6 +47,8 @@ def domain_size(self):
 
 ```
 > Node: [Domain Size](GeometryNodeAttributeDomainSize.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html)
+
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeAttributeDomainSize.webp)
 
 #### Returns:
 - socket `point_count`
@@ -67,6 +71,8 @@ def instance_on_points(self, selection=None, instance=None, pick_instance=None, 
 - rotation: Vector
 - scale: Vector
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeInstanceOnPoints.webp)
+
 #### Returns:
 - socket `instances`
 
@@ -84,6 +90,8 @@ def set_point_radius(self, selection=None, radius=None):
 - selection: Boolean
 - radius: Float
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeSetPointRadius.webp)
+
 #### Returns:
 - self
 
@@ -100,6 +108,8 @@ def to_vertices(self, points=None, selection=None):
 #### Args:
 - points: Points
 - selection: Boolean
+
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodePointsToVertices.webp)
 
 #### Returns:
 - socket `mesh` of class Mesh
@@ -121,6 +131,8 @@ def to_volume(self, density=None, voxel_size=None, voxel_amount=None, radius=Non
 - radius: Float
 - resolution_mode (str): 'VOXEL_AMOUNT' in [VOXEL_AMOUNT, VOXEL_SIZE]
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodePointsToVolume.webp)
+
 #### Returns:
 - socket `volume` of class Volume
 
@@ -139,6 +151,8 @@ def to_volume_amount(self, density=None, voxel_amount=None, radius=None):
 - voxel_amount: Float
 - radius: Float
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodePointsToVolume.webp)
+
 #### Returns:
 - socket `volume` of class Volume
 
@@ -156,6 +170,8 @@ def to_volume_size(self, density=None, voxel_size=None, radius=None):
 - density: Float
 - voxel_size: Float
 - radius: Float
+
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodePointsToVolume.webp)
 
 #### Returns:
 - socket `volume` of class Volume

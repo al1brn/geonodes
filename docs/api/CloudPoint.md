@@ -29,6 +29,8 @@ def instance_on_points(self, instance=None, pick_instance=None, instance_index=N
 - rotation: Vector
 - scale: Vector
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeInstanceOnPoints.webp)
+
 #### Returns:
 - socket `instances` of class Instances
 
@@ -46,6 +48,8 @@ def __len__(self):
 - geometry: Geometry
 - component (str): 'MESH' in [MESH, POINTCLOUD, CURVE, INSTANCES]
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeAttributeDomainSize.webp)
+
 #### Returns:
 - node with sockets ['point_count', 'edge_count', 'face_count', 'face_corner_count', 'spline_count', 'instance_count']
 
@@ -58,6 +62,8 @@ def radius(self):
 
 ```
 > Node: [Radius](GeometryNodeInputRadius.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/radius.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputRadius.html)
+
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeInputRadius.webp)
 
 #### Returns:
 - socket `radius`
@@ -77,6 +83,8 @@ Node implemented as property setter.
 #### Args:
 - attr_value: radius
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeSetPointRadius.webp)
+
 
 <sub>Go to [top](#class-CloudPoint) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
@@ -90,6 +98,8 @@ def to_vertices(self, points=None):
 
 #### Args:
 - points: Points
+
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodePointsToVertices.webp)
 
 #### Returns:
 - socket `mesh` of class Mesh

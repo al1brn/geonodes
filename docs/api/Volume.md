@@ -32,6 +32,8 @@ def Cube(cls, density=None, background=None, min=None, max=None, resolution_x=No
 - resolution_y: Integer
 - resolution_z: Integer
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeVolumeCube.webp)
+
 #### Returns:
 - socket `volume`
 
@@ -52,6 +54,8 @@ def distribute_points(self, density=None, seed=None, spacing=None, threshold=Non
 - threshold: Float
 - mode (str): 'DENSITY_RANDOM' in [DENSITY_RANDOM, DENSITY_GRID]
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeDistributePointsInVolume.webp)
+
 #### Returns:
 - socket `points` of class Points
 
@@ -69,6 +73,8 @@ def distribute_points_grid(self, spacing=None, threshold=None):
 - spacing: Vector
 - threshold: Float
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeDistributePointsInVolume.webp)
+
 #### Returns:
 - socket `points` of class Points
 
@@ -85,6 +91,8 @@ def distribute_points_random(self, density=None, seed=None):
 #### Args:
 - density: Float
 - seed: Integer
+
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeDistributePointsInVolume.webp)
 
 #### Returns:
 - socket `points` of class Points
@@ -105,6 +113,8 @@ def to_mesh(self, voxel_size=None, voxel_amount=None, threshold=None, adaptivity
 - threshold: Float
 - adaptivity: Float
 - resolution_mode (str): 'GRID' in [GRID, VOXEL_AMOUNT, VOXEL_SIZE]
+
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeVolumeToMesh.webp)
 
 #### Returns:
 - socket `mesh` of class Mesh

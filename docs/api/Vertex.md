@@ -30,6 +30,8 @@ def delete_all(self):
 ```
 > Node: [Delete Geometry](GeometryNodeDeleteGeometry.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/delete_geometry.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeDeleteGeometry.html)
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeDeleteGeometry.webp)
+
 #### Returns:
 - self
 
@@ -43,6 +45,8 @@ def delete_edges(self):
 ```
 > Node: [Delete Geometry](GeometryNodeDeleteGeometry.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/delete_geometry.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeDeleteGeometry.html)
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeDeleteGeometry.webp)
+
 #### Returns:
 - self
 
@@ -55,6 +59,8 @@ def delete_faces(self):
 
 ```
 > Node: [Delete Geometry](GeometryNodeDeleteGeometry.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/delete_geometry.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeDeleteGeometry.html)
+
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeDeleteGeometry.webp)
 
 #### Returns:
 - self
@@ -74,9 +80,10 @@ def extrude(self, offset=None, offset_scale=None, individual=None):
 - offset_scale: Float
 - individual: Boolean
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeExtrudeMesh.webp)
+
 #### Returns:
 - tuple ('`top`', '`side`')
-  ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeExtrudeMesh.webp)
 
 <sub>Go to [top](#class-Vertex) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
@@ -95,6 +102,8 @@ def instance_on_points(self, instance=None, pick_instance=None, instance_index=N
 - rotation: Vector
 - scale: Vector
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeInstanceOnPoints.webp)
+
 #### Returns:
 - socket `instances` of class Instances
 
@@ -111,6 +120,8 @@ def __len__(self):
 #### Args:
 - geometry: Geometry
 - component (str): 'MESH' in [MESH, POINTCLOUD, CURVE, INSTANCES]
+
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeAttributeDomainSize.webp)
 
 #### Returns:
 - node with sockets ['point_count', 'edge_count', 'face_count', 'face_corner_count', 'spline_count', 'instance_count']
@@ -129,6 +140,8 @@ def merge_by_distance(self, distance=None, mode='ALL'):
 - distance: Float
 - mode (str): 'ALL' in [ALL, CONNECTED]
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeMergeByDistance.webp)
+
 #### Returns:
 - self
 
@@ -141,6 +154,8 @@ def neighbors(self):
 
 ```
 > Node: [Vertex Neighbors](GeometryNodeInputMeshVertexNeighbors.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/vertex_neighbors.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshVertexNeighbors.html)
+
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeInputMeshVertexNeighbors.webp)
 
 #### Returns:
 - node with sockets ['vertex_count', 'face_count']
@@ -155,6 +170,8 @@ def neighbors_face_count(self):
 ```
 > Node: [Vertex Neighbors](GeometryNodeInputMeshVertexNeighbors.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/vertex_neighbors.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshVertexNeighbors.html)
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeInputMeshVertexNeighbors.webp)
+
 #### Returns:
 - socket `face_count`
 
@@ -167,6 +184,8 @@ def neighbors_vertex_count(self):
 
 ```
 > Node: [Vertex Neighbors](GeometryNodeInputMeshVertexNeighbors.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/vertex_neighbors.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshVertexNeighbors.html)
+
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeInputMeshVertexNeighbors.webp)
 
 #### Returns:
 - socket `vertex_count`
@@ -185,6 +204,8 @@ def to_points(self, position=None, radius=None, mode='VERTICES'):
 - position: Vector
 - radius: Float
 - mode (str): 'VERTICES' in [VERTICES, EDGES, FACES, CORNERS]
+
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeMeshToPoints.webp)
 
 #### Returns:
 - socket `points` of class Points
@@ -207,6 +228,8 @@ def to_volume(self, density=None, voxel_size=None, voxel_amount=None, exterior_b
 - interior_band_width: Float
 - fill_volume: Boolean
 - resolution_mode (str): 'VOXEL_AMOUNT' in [VOXEL_AMOUNT, VOXEL_SIZE]
+
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeMeshToVolume.webp)
 
 #### Returns:
 - socket `volume` of class Volume
