@@ -15,12 +15,12 @@ node = nodes.SetSplineType(curve=None, selection=None, spline_type='POLY')
 
 #### Input socket arguments:
 
-- `curve`: [Curve](Curve.md)
-- `selection`: [Boolean](Boolean.md)
+- **curve**: [Curve](Curve.md)
+- **selection**: [Boolean](Boolean.md)
 
 #### Node parameter arguments:
 
-- spline_type (str): Node parameter, default = 'POLY' in ('CATMULL_ROM', 'POLY', 'BEZIER', 'NURBS')
+- **spline_type** (str): default = 'POLY' in ('CATMULL_ROM', 'POLY', 'BEZIER', 'NURBS')
 
 #### Output sockets:
 

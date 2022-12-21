@@ -15,13 +15,13 @@ node = nodes.CurveToPoints(curve=None, count=None, length=None, mode='COUNT')
 
 #### Input socket arguments:
 
-- `curve`: [Curve](Curve.md)
-- `count`: [Integer](Integer.md)
-- `length`: [Float](Float.md)
+- **curve**: [Curve](Curve.md)
+- **count**: [Integer](Integer.md)
+- **length**: [Float](Float.md)
 
 #### Node parameter arguments:
 
-- mode (str): Node parameter, default = 'COUNT' in ('EVALUATED', 'COUNT', 'LENGTH')
+- **mode** (str): default = 'COUNT' in ('EVALUATED', 'COUNT', 'LENGTH')
 
 #### Output sockets:
 

@@ -15,14 +15,14 @@ node = nodes.SetHandlePositions(curve=None, selection=None, position=None, offse
 
 #### Input socket arguments:
 
-- `curve`: [Curve](Curve.md)
-- `selection`: [Boolean](Boolean.md)
-- `position`: [Vector](Vector.md)
-- `offset`: [Vector](Vector.md)
+- **curve**: [Curve](Curve.md)
+- **selection**: [Boolean](Boolean.md)
+- **position**: [Vector](Vector.md)
+- **offset**: [Vector](Vector.md)
 
 #### Node parameter arguments:
 
-- mode (str): Node parameter, default = 'LEFT' in ('LEFT', 'RIGHT')
+- **mode** (str): default = 'LEFT' in ('LEFT', 'RIGHT')
 
 #### Output sockets:
 

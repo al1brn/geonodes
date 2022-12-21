@@ -15,17 +15,17 @@ node = nodes.Compare(a=None, b=None, c=None, angle=None, epsilon=None, data_type
 
 #### Input socket arguments:
 
-- `a`: `data_type` dependant
-- `b`: `data_type` dependant
-- `c`: [Float](Float.md)
-- `angle`: [Float](Float.md)
-- `epsilon`: [Float](Float.md)
+- **a**: **data_type** dependant
+- **b**: **data_type** dependant
+- **c**: [Float](Float.md)
+- **angle**: [Float](Float.md)
+- **epsilon**: [Float](Float.md)
 
 #### Node parameter arguments:
 
-- data_type (str): Node parameter, default = 'FLOAT' in ('FLOAT', 'INT', 'VECTOR', 'STRING', 'RGBA')
-- mode (str): Node parameter, default = 'ELEMENT' in ('ELEMENT', 'LENGTH', 'AVERAGE', 'DOT_PRODUCT', 'DIRECTION')
-- operation (str): Node parameter, default = 'GREATER_THAN' in ('LESS_THAN', 'LESS_EQUAL', 'GREATER_THAN', 'GREATER_EQUAL', 'EQUAL', 'NOT_EQUAL')
+- **data_type** (str): default = 'FLOAT' in ('FLOAT', 'INT', 'VECTOR', 'STRING', 'RGBA')
+- **mode** (str): default = 'ELEMENT' in ('ELEMENT', 'LENGTH', 'AVERAGE', 'DOT_PRODUCT', 'DIRECTION')
+- **operation** (str): default = 'GREATER_THAN' in ('LESS_THAN', 'LESS_EQUAL', 'GREATER_THAN', 'GREATER_EQUAL', 'EQUAL', 'NOT_EQUAL')
 
 #### Output sockets:
 

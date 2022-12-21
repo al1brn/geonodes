@@ -15,13 +15,13 @@ node = nodes.DuplicateElements(geometry=None, selection=None, amount=None, domai
 
 #### Input socket arguments:
 
-- `geometry`: [Geometry](Geometry.md)
-- `selection`: [Boolean](Boolean.md)
-- `amount`: [Integer](Integer.md)
+- **geometry**: [Geometry](Geometry.md)
+- **selection**: [Boolean](Boolean.md)
+- **amount**: [Integer](Integer.md)
 
 #### Node parameter arguments:
 
-- domain (str): Node parameter, default = 'POINT' in ('POINT', 'EDGE', 'FACE', 'SPLINE', 'INSTANCE')
+- **domain** (str): default = 'POINT' in ('POINT', 'EDGE', 'FACE', 'SPLINE', 'INSTANCE')
 
 #### Output sockets:
 

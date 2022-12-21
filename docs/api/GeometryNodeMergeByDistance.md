@@ -15,13 +15,13 @@ node = nodes.MergeByDistance(geometry=None, selection=None, distance=None, mode=
 
 #### Input socket arguments:
 
-- `geometry`: [Geometry](Geometry.md)
-- `selection`: [Boolean](Boolean.md)
-- `distance`: [Float](Float.md)
+- **geometry**: [Geometry](Geometry.md)
+- **selection**: [Boolean](Boolean.md)
+- **distance**: [Float](Float.md)
 
 #### Node parameter arguments:
 
-- mode (str): Node parameter, default = 'ALL' in ('ALL', 'CONNECTED')
+- **mode** (str): default = 'ALL' in ('ALL', 'CONNECTED')
 
 #### Output sockets:
 

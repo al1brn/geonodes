@@ -15,17 +15,17 @@ node = nodes.SampleCurve(curves=None, value=None, factor=None, length=None, curv
 
 #### Input socket arguments:
 
-- `curves`: [Curve](Curve.md)
-- `value`: `data_type` dependant
-- `factor`: [Float](Float.md)
-- `length`: [Float](Float.md)
-- `curve_index`: [Integer](Integer.md)
+- **curves**: [Curve](Curve.md)
+- **value**: **data_type** dependant
+- **factor**: [Float](Float.md)
+- **length**: [Float](Float.md)
+- **curve_index**: [Integer](Integer.md)
 
 #### Node parameter arguments:
 
-- data_type (str): Node parameter, default = 'FLOAT' in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN')
-- mode (str): Node parameter, default = 'FACTOR' in ('FACTOR', 'LENGTH')
-- use_all_curves (bool): Node parameter, default = False
+- **data_type** (str): default = 'FLOAT' in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN')
+- **mode** (str): default = 'FACTOR' in ('FACTOR', 'LENGTH')
+- **use_all_curves** (bool): default = False
 
 #### Output sockets:
 

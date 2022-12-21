@@ -15,10 +15,10 @@ node = nodes.Cube(size=None, vertices_x=None, vertices_y=None, vertices_z=None)
 
 #### Input socket arguments:
 
-- `size`: [Vector](Vector.md)
-- `vertices_x`: [Integer](Integer.md)
-- `vertices_y`: [Integer](Integer.md)
-- `vertices_z`: [Integer](Integer.md)
+- **size**: [Vector](Vector.md)
+- **vertices_x**: [Integer](Integer.md)
+- **vertices_y**: [Integer](Integer.md)
+- **vertices_z**: [Integer](Integer.md)
 
 #### Output sockets:
 

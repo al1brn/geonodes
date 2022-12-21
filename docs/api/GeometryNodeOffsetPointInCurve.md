@@ -15,8 +15,8 @@ node = nodes.OffsetPointInCurve(point_index=None, offset=None)
 
 #### Input socket arguments:
 
-- `point_index`: [Integer](Integer.md)
-- `offset`: [Integer](Integer.md)
+- **point_index**: [Integer](Integer.md)
+- **offset**: [Integer](Integer.md)
 
 #### Output sockets:
 

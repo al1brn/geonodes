@@ -15,11 +15,11 @@ node = nodes.DomainSize(geometry=None, component='MESH')
 
 #### Input socket arguments:
 
-- `geometry`: [Geometry](Geometry.md)
+- **geometry**: [Geometry](Geometry.md)
 
 #### Node parameter arguments:
 
-- component (str): Node parameter, default = 'MESH' in ('MESH', 'POINTCLOUD', 'CURVE', 'INSTANCES')
+- **component** (str): default = 'MESH' in ('MESH', 'POINTCLOUD', 'CURVE', 'INSTANCES')
 
 #### Output sockets:
 

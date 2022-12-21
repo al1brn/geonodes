@@ -15,17 +15,17 @@ node = nodes.Mix(factor=None, a=None, b=None, blend_type='MIX', clamp_factor=Tru
 
 #### Input socket arguments:
 
-- `factor`: `data_type` dependant
-- `a`: `data_type` dependant
-- `b`: `data_type` dependant
+- **factor**: **data_type** dependant
+- **a**: **data_type** dependant
+- **b**: **data_type** dependant
 
 #### Node parameter arguments:
 
-- blend_type (str): Node parameter, default = 'MIX' in ('MIX', 'DARKEN', 'MULTIPLY', 'BURN', 'LIGHTEN', 'SCREEN', 'DODGE', 'ADD', 'OVERLAY', 'SOFT_LIGHT', 'LINEAR_LIGHT', 'DIFFERENCE', 'SUBTRACT', 'DIVIDE', 'HUE', 'SATURATION', 'COLOR', 'VALUE')
-- clamp_factor (bool): Node parameter, default = True
-- clamp_result (bool): Node parameter, default = False
-- data_type (str): Node parameter, default = 'FLOAT' in ('FLOAT', 'VECTOR', 'RGBA')
-- factor_mode (str): Node parameter, default = 'UNIFORM' in ('UNIFORM', 'NON_UNIFORM')
+- **blend_type** (str): default = 'MIX' in ('MIX', 'DARKEN', 'MULTIPLY', 'BURN', 'LIGHTEN', 'SCREEN', 'DODGE', 'ADD', 'OVERLAY', 'SOFT_LIGHT', 'LINEAR_LIGHT', 'DIFFERENCE', 'SUBTRACT', 'DIVIDE', 'HUE', 'SATURATION', 'COLOR', 'VALUE')
+- **clamp_factor** (bool): default = True
+- **clamp_result** (bool): default = False
+- **data_type** (str): default = 'FLOAT' in ('FLOAT', 'VECTOR', 'RGBA')
+- **factor_mode** (str): default = 'UNIFORM' in ('UNIFORM', 'NON_UNIFORM')
 
 #### Output sockets:
 

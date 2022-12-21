@@ -15,14 +15,14 @@ node = nodes.AlignEulerToVector(rotation=None, factor=None, vector=None, axis='X
 
 #### Input socket arguments:
 
-- `rotation`: [Vector](Vector.md)
-- `factor`: [Float](Float.md)
-- `vector`: [Vector](Vector.md)
+- **rotation**: [Vector](Vector.md)
+- **factor**: [Float](Float.md)
+- **vector**: [Vector](Vector.md)
 
 #### Node parameter arguments:
 
-- axis (str): Node parameter, default = 'X' in ('X', 'Y', 'Z')
-- pivot_axis (str): Node parameter, default = 'AUTO' in ('AUTO', 'X', 'Y', 'Z')
+- **axis** (str): default = 'X' in ('X', 'Y', 'Z')
+- **pivot_axis** (str): default = 'AUTO' in ('AUTO', 'X', 'Y', 'Z')
 
 #### Output sockets:
 

@@ -15,20 +15,20 @@ node = nodes.WaveTexture(vector=None, scale=None, distortion=None, detail=None, 
 
 #### Input socket arguments:
 
-- `vector`: [Vector](Vector.md)
-- `scale`: [Float](Float.md)
-- `distortion`: [Float](Float.md)
-- `detail`: [Float](Float.md)
-- `detail_scale`: [Float](Float.md)
-- `detail_roughness`: [Float](Float.md)
-- `phase_offset`: [Float](Float.md)
+- **vector**: [Vector](Vector.md)
+- **scale**: [Float](Float.md)
+- **distortion**: [Float](Float.md)
+- **detail**: [Float](Float.md)
+- **detail_scale**: [Float](Float.md)
+- **detail_roughness**: [Float](Float.md)
+- **phase_offset**: [Float](Float.md)
 
 #### Node parameter arguments:
 
-- bands_direction (str): Node parameter, default = 'X' in ('X', 'Y', 'Z', 'DIAGONAL')
-- rings_direction (str): Node parameter, default = 'X' in ('X', 'Y', 'Z', 'SPHERICAL')
-- wave_profile (str): Node parameter, default = 'SIN' in ('SIN', 'SAW', 'TRI')
-- wave_type (str): Node parameter, default = 'BANDS' in ('BANDS', 'RINGS')
+- **bands_direction** (str): default = 'X' in ('X', 'Y', 'Z', 'DIAGONAL')
+- **rings_direction** (str): default = 'X' in ('X', 'Y', 'Z', 'SPHERICAL')
+- **wave_profile** (str): default = 'SIN' in ('SIN', 'SAW', 'TRI')
+- **wave_type** (str): default = 'BANDS' in ('BANDS', 'RINGS')
 
 #### Output sockets:
 

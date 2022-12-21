@@ -15,6 +15,6 @@ node = nodes.Frame(label_size=20, shrink=True)
 
 #### Node parameter arguments:
 
-- label_size (int): Node parameter, default = 20
-- shrink (bool): Node parameter, default = True
+- **label_size** (int): default = 20
+- **shrink** (bool): default = True
 

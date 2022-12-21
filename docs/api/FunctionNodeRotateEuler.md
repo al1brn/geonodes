@@ -15,15 +15,15 @@ node = nodes.RotateEuler(rotation=None, rotate_by=None, axis=None, angle=None, s
 
 #### Input socket arguments:
 
-- `rotation`: [Vector](Vector.md)
-- `rotate_by`: [Vector](Vector.md)
-- `axis`: [Vector](Vector.md)
-- `angle`: [Float](Float.md)
+- **rotation**: [Vector](Vector.md)
+- **rotate_by**: [Vector](Vector.md)
+- **axis**: [Vector](Vector.md)
+- **angle**: [Float](Float.md)
 
 #### Node parameter arguments:
 
-- space (str): Node parameter, default = 'OBJECT' in ('OBJECT', 'LOCAL')
-- type (str): Node parameter, default = 'EULER' in ('AXIS_ANGLE', 'EULER')
+- **space** (str): default = 'OBJECT' in ('OBJECT', 'LOCAL')
+- **type** (str): default = 'EULER' in ('AXIS_ANGLE', 'EULER')
 
 #### Output sockets:
 

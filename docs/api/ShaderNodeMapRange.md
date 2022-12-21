@@ -15,19 +15,19 @@ node = nodes.MapRange(value=None, from_min=None, from_max=None, to_min=None, to_
 
 #### Input socket arguments:
 
-- `value`: [Float](Float.md)
-- `from_min`: `data_type` dependant
-- `from_max`: `data_type` dependant
-- `to_min`: `data_type` dependant
-- `to_max`: `data_type` dependant
-- `steps`: `data_type` dependant
-- `vector`: [Vector](Vector.md)
+- **value**: [Float](Float.md)
+- **from_min**: **data_type** dependant
+- **from_max**: **data_type** dependant
+- **to_min**: **data_type** dependant
+- **to_max**: **data_type** dependant
+- **steps**: **data_type** dependant
+- **vector**: [Vector](Vector.md)
 
 #### Node parameter arguments:
 
-- clamp (bool): Node parameter, default = True
-- data_type (str): Node parameter, default = 'FLOAT' in ('FLOAT', 'FLOAT_VECTOR')
-- interpolation_type (str): Node parameter, default = 'LINEAR' in ('LINEAR', 'STEPPED', 'SMOOTHSTEP', 'SMOOTHERSTEP')
+- **clamp** (bool): default = True
+- **data_type** (str): default = 'FLOAT' in ('FLOAT', 'FLOAT_VECTOR')
+- **interpolation_type** (str): default = 'LINEAR' in ('LINEAR', 'STEPPED', 'SMOOTHSTEP', 'SMOOTHERSTEP')
 
 #### Output sockets:
 

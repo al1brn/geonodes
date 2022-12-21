@@ -15,16 +15,16 @@ node = nodes.Cone(vertices=None, side_segments=None, fill_segments=None, radius_
 
 #### Input socket arguments:
 
-- `vertices`: [Integer](Integer.md)
-- `side_segments`: [Integer](Integer.md)
-- `fill_segments`: [Integer](Integer.md)
-- `radius_top`: [Float](Float.md)
-- `radius_bottom`: [Float](Float.md)
-- `depth`: [Float](Float.md)
+- **vertices**: [Integer](Integer.md)
+- **side_segments**: [Integer](Integer.md)
+- **fill_segments**: [Integer](Integer.md)
+- **radius_top**: [Float](Float.md)
+- **radius_bottom**: [Float](Float.md)
+- **depth**: [Float](Float.md)
 
 #### Node parameter arguments:
 
-- fill_type (str): Node parameter, default = 'NGON' in ('NONE', 'NGON', 'TRIANGLE_FAN')
+- **fill_type** (str): default = 'NGON' in ('NONE', 'NGON', 'TRIANGLE_FAN')
 
 #### Output sockets:
 

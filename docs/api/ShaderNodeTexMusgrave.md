@@ -15,19 +15,19 @@ node = nodes.MusgraveTexture(vector=None, w=None, scale=None, detail=None, dimen
 
 #### Input socket arguments:
 
-- `vector`: [Vector](Vector.md)
-- `w`: [Float](Float.md)
-- `scale`: [Float](Float.md)
-- `detail`: [Float](Float.md)
-- `dimension`: [Float](Float.md)
-- `lacunarity`: [Float](Float.md)
-- `offset`: [Float](Float.md)
-- `gain`: [Float](Float.md)
+- **vector**: [Vector](Vector.md)
+- **w**: [Float](Float.md)
+- **scale**: [Float](Float.md)
+- **detail**: [Float](Float.md)
+- **dimension**: [Float](Float.md)
+- **lacunarity**: [Float](Float.md)
+- **offset**: [Float](Float.md)
+- **gain**: [Float](Float.md)
 
 #### Node parameter arguments:
 
-- musgrave_dimensions (str): Node parameter, default = '3D' in ('1D', '2D', '3D', '4D')
-- musgrave_type (str): Node parameter, default = 'FBM' in ('MULTIFRACTAL', 'RIDGED_MULTIFRACTAL', 'HYBRID_MULTIFRACTAL', 'FBM', 'HETERO_TERRAIN')
+- **musgrave_dimensions** (str): default = '3D' in ('1D', '2D', '3D', '4D')
+- **musgrave_type** (str): default = 'FBM' in ('MULTIFRACTAL', 'RIDGED_MULTIFRACTAL', 'HYBRID_MULTIFRACTAL', 'FBM', 'HETERO_TERRAIN')
 
 #### Output sockets:
 

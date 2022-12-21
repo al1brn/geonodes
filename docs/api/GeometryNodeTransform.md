@@ -15,10 +15,10 @@ node = nodes.Transform(geometry=None, translation=None, rotation=None, scale=Non
 
 #### Input socket arguments:
 
-- `geometry`: [Geometry](Geometry.md)
-- `translation`: [Vector](Vector.md)
-- `rotation`: [Vector](Vector.md)
-- `scale`: [Vector](Vector.md)
+- **geometry**: [Geometry](Geometry.md)
+- **translation**: [Vector](Vector.md)
+- **rotation**: [Vector](Vector.md)
+- **scale**: [Vector](Vector.md)
 
 #### Output sockets:
 

@@ -15,14 +15,14 @@ node = nodes.AttributeStatistic(geometry=None, selection=None, attribute=None, d
 
 #### Input socket arguments:
 
-- `geometry`: [Geometry](Geometry.md)
-- `selection`: [Boolean](Boolean.md)
-- `attribute`: `data_type` dependant
+- **geometry**: [Geometry](Geometry.md)
+- **selection**: [Boolean](Boolean.md)
+- **attribute**: **data_type** dependant
 
 #### Node parameter arguments:
 
-- data_type (str): Node parameter, default = 'FLOAT' in ('FLOAT', 'FLOAT_VECTOR')
-- domain (str): Node parameter, default = 'POINT' in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
+- **data_type** (str): default = 'FLOAT' in ('FLOAT', 'FLOAT_VECTOR')
+- **domain** (str): default = 'POINT' in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
 
 #### Output sockets:
 

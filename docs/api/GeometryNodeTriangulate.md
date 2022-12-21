@@ -15,14 +15,14 @@ node = nodes.Triangulate(mesh=None, selection=None, minimum_vertices=None, ngon_
 
 #### Input socket arguments:
 
-- `mesh`: [Mesh](Mesh.md)
-- `selection`: [Boolean](Boolean.md)
-- `minimum_vertices`: [Integer](Integer.md)
+- **mesh**: [Mesh](Mesh.md)
+- **selection**: [Boolean](Boolean.md)
+- **minimum_vertices**: [Integer](Integer.md)
 
 #### Node parameter arguments:
 
-- ngon_method (str): Node parameter, default = 'BEAUTY' in ('BEAUTY', 'CLIP')
-- quad_method (str): Node parameter, default = 'SHORTEST_DIAGONAL' in ('BEAUTY', 'FIXED', 'FIXED_ALTERNATE', 'SHORTEST_DIAGONAL', 'LONGEST_DIAGONAL')
+- **ngon_method** (str): default = 'BEAUTY' in ('BEAUTY', 'CLIP')
+- **quad_method** (str): default = 'SHORTEST_DIAGONAL' in ('BEAUTY', 'FIXED', 'FIXED_ALTERNATE', 'SHORTEST_DIAGONAL', 'LONGEST_DIAGONAL')
 
 #### Output sockets:
 

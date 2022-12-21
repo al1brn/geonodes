@@ -15,15 +15,15 @@ node = nodes.PointsToVolume(points=None, density=None, voxel_size=None, voxel_am
 
 #### Input socket arguments:
 
-- `points`: [Points](Points.md)
-- `density`: [Float](Float.md)
-- `voxel_size`: [Float](Float.md)
-- `voxel_amount`: [Float](Float.md)
-- `radius`: [Float](Float.md)
+- **points**: [Points](Points.md)
+- **density**: [Float](Float.md)
+- **voxel_size**: [Float](Float.md)
+- **voxel_amount**: [Float](Float.md)
+- **radius**: [Float](Float.md)
 
 #### Node parameter arguments:
 
-- resolution_mode (str): Node parameter, default = 'VOXEL_AMOUNT' in ('VOXEL_AMOUNT', 'VOXEL_SIZE')
+- **resolution_mode** (str): default = 'VOXEL_AMOUNT' in ('VOXEL_AMOUNT', 'VOXEL_SIZE')
 
 #### Output sockets:
 

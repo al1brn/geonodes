@@ -15,11 +15,11 @@ node = nodes.ScaleInstances(instances=None, selection=None, scale=None, center=N
 
 #### Input socket arguments:
 
-- `instances`: [Instances](Instances.md)
-- `selection`: [Boolean](Boolean.md)
-- `scale`: [Vector](Vector.md)
-- `center`: [Vector](Vector.md)
-- `local_space`: [Boolean](Boolean.md)
+- **instances**: [Instances](Instances.md)
+- **selection**: [Boolean](Boolean.md)
+- **scale**: [Vector](Vector.md)
+- **center**: [Vector](Vector.md)
+- **local_space**: [Boolean](Boolean.md)
 
 #### Output sockets:
 

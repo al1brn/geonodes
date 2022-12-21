@@ -15,7 +15,7 @@ node = nodes.Boolean(boolean=False)
 
 #### Node parameter arguments:
 
-- boolean (bool): Node parameter, default = False
+- **boolean** (bool): default = False
 
 #### Output sockets:
 

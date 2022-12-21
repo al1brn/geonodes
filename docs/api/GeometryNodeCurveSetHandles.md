@@ -15,13 +15,13 @@ node = nodes.SetHandleType(curve=None, selection=None, handle_type='AUTO', mode=
 
 #### Input socket arguments:
 
-- `curve`: [Curve](Curve.md)
-- `selection`: [Boolean](Boolean.md)
+- **curve**: [Curve](Curve.md)
+- **selection**: [Boolean](Boolean.md)
 
 #### Node parameter arguments:
 
-- handle_type (str): Node parameter, default = 'AUTO' in ('FREE', 'AUTO', 'VECTOR', 'ALIGN')
-- mode (set): Node parameter, default = {'RIGHT', 'LEFT'}
+- **handle_type** (str): default = 'AUTO' in ('FREE', 'AUTO', 'VECTOR', 'ALIGN')
+- **mode** (set): default = {'RIGHT', 'LEFT'}
 
 #### Output sockets:
 

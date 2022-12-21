@@ -15,13 +15,13 @@ node = nodes.CaptureAttribute(geometry=None, value=None, data_type='FLOAT', doma
 
 #### Input socket arguments:
 
-- `geometry`: [Geometry](Geometry.md)
-- `value`: `data_type` dependant
+- **geometry**: [Geometry](Geometry.md)
+- **value**: **data_type** dependant
 
 #### Node parameter arguments:
 
-- data_type (str): Node parameter, default = 'FLOAT' in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN')
-- domain (str): Node parameter, default = 'POINT' in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
+- **data_type** (str): default = 'FLOAT' in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN')
+- **domain** (str): default = 'POINT' in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
 
 #### Output sockets:
 

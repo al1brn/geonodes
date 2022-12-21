@@ -15,14 +15,14 @@ node = nodes.SampleUvSurface(mesh=None, value=None, source_uv_map=None, sample_u
 
 #### Input socket arguments:
 
-- `mesh`: [Mesh](Mesh.md)
-- `value`: `data_type` dependant
-- `source_uv_map`: [Vector](Vector.md)
-- `sample_uv`: [Vector](Vector.md)
+- **mesh**: [Mesh](Mesh.md)
+- **value**: **data_type** dependant
+- **source_uv_map**: [Vector](Vector.md)
+- **sample_uv**: [Vector](Vector.md)
 
 #### Node parameter arguments:
 
-- data_type (str): Node parameter, default = 'FLOAT' in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN')
+- **data_type** (str): default = 'FLOAT' in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN')
 
 #### Output sockets:
 

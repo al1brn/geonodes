@@ -15,13 +15,13 @@ node = nodes.AccumulateField(value=None, group_index=None, data_type='FLOAT', do
 
 #### Input socket arguments:
 
-- `value`: `data_type` dependant
-- `group_index`: [Integer](Integer.md)
+- **value**: **data_type** dependant
+- **group_index**: [Integer](Integer.md)
 
 #### Node parameter arguments:
 
-- data_type (str): Node parameter, default = 'FLOAT' in ('FLOAT', 'INT', 'FLOAT_VECTOR')
-- domain (str): Node parameter, default = 'POINT' in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
+- **data_type** (str): default = 'FLOAT' in ('FLOAT', 'INT', 'FLOAT_VECTOR')
+- **domain** (str): default = 'POINT' in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
 
 #### Output sockets:
 

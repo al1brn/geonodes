@@ -15,12 +15,12 @@ node = nodes.SeparateGeometry(geometry=None, selection=None, domain='POINT')
 
 #### Input socket arguments:
 
-- `geometry`: [Geometry](Geometry.md)
-- `selection`: [Boolean](Boolean.md)
+- **geometry**: [Geometry](Geometry.md)
+- **selection**: [Boolean](Boolean.md)
 
 #### Node parameter arguments:
 
-- domain (str): Node parameter, default = 'POINT' in ('POINT', 'EDGE', 'FACE', 'CURVE', 'INSTANCE')
+- **domain** (str): default = 'POINT' in ('POINT', 'EDGE', 'FACE', 'CURVE', 'INSTANCE')
 
 #### Output sockets:
 

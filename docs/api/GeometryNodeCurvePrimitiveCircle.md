@@ -15,15 +15,15 @@ node = nodes.CurveCircle(resolution=None, point_1=None, point_2=None, point_3=No
 
 #### Input socket arguments:
 
-- `resolution`: [Integer](Integer.md)
-- `point_1`: [Vector](Vector.md)
-- `point_2`: [Vector](Vector.md)
-- `point_3`: [Vector](Vector.md)
-- `radius`: [Float](Float.md)
+- **resolution**: [Integer](Integer.md)
+- **point_1**: [Vector](Vector.md)
+- **point_2**: [Vector](Vector.md)
+- **point_3**: [Vector](Vector.md)
+- **radius**: [Float](Float.md)
 
 #### Node parameter arguments:
 
-- mode (str): Node parameter, default = 'RADIUS' in ('POINTS', 'RADIUS')
+- **mode** (str): default = 'RADIUS' in ('POINTS', 'RADIUS')
 
 #### Output sockets:
 

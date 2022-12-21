@@ -15,9 +15,9 @@ node = nodes.EdgePathsToCurves(mesh=None, start_vertices=None, next_vertex_index
 
 #### Input socket arguments:
 
-- `mesh`: [Mesh](Mesh.md)
-- `start_vertices`: [Boolean](Boolean.md)
-- `next_vertex_index`: [Integer](Integer.md)
+- **mesh**: [Mesh](Mesh.md)
+- **start_vertices**: [Boolean](Boolean.md)
+- **next_vertex_index**: [Integer](Integer.md)
 
 #### Output sockets:
 

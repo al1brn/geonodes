@@ -15,11 +15,11 @@ node = nodes.RotateInstances(instances=None, selection=None, rotation=None, pivo
 
 #### Input socket arguments:
 
-- `instances`: [Instances](Instances.md)
-- `selection`: [Boolean](Boolean.md)
-- `rotation`: [Vector](Vector.md)
-- `pivot_point`: [Vector](Vector.md)
-- `local_space`: [Boolean](Boolean.md)
+- **instances**: [Instances](Instances.md)
+- **selection**: [Boolean](Boolean.md)
+- **rotation**: [Vector](Vector.md)
+- **pivot_point**: [Vector](Vector.md)
+- **local_space**: [Boolean](Boolean.md)
 
 #### Output sockets:
 

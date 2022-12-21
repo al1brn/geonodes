@@ -15,8 +15,8 @@ node = nodes.FloatCurve(factor=None, value=None)
 
 #### Input socket arguments:
 
-- `factor`: [Float](Float.md)
-- `value`: [Float](Float.md)
+- **factor**: [Float](Float.md)
+- **value**: [Float](Float.md)
 
 #### Output sockets:
 

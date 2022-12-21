@@ -15,9 +15,9 @@ node = nodes.CornersOfFace(face_index=None, weights=None, sort_index=None)
 
 #### Input socket arguments:
 
-- `face_index`: [Integer](Integer.md)
-- `weights`: [Float](Float.md)
-- `sort_index`: [Integer](Integer.md)
+- **face_index**: [Integer](Integer.md)
+- **weights**: [Float](Float.md)
+- **sort_index**: [Integer](Integer.md)
 
 #### Output sockets:
 

@@ -15,8 +15,8 @@ node = nodes.HandleTypeSelection(handle_type='AUTO', mode={'RIGHT', 'LEFT'})
 
 #### Node parameter arguments:
 
-- handle_type (str): Node parameter, default = 'AUTO' in ('FREE', 'AUTO', 'VECTOR', 'ALIGN')
-- mode (set): Node parameter, default = {'RIGHT', 'LEFT'}
+- **handle_type** (str): default = 'AUTO' in ('FREE', 'AUTO', 'VECTOR', 'ALIGN')
+- **mode** (set): default = {'RIGHT', 'LEFT'}
 
 #### Output sockets:
 

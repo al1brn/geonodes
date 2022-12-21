@@ -15,7 +15,7 @@ node = nodes.Vector(vector=[0.0, 0.0, 0.0])
 
 #### Node parameter arguments:
 
-- vector (Vector): Node parameter, default = [0.0, 0.0, 0.0]
+- **vector** (Vector): default = [0.0, 0.0, 0.0]
 
 #### Output sockets:
 

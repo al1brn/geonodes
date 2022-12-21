@@ -15,12 +15,12 @@ node = nodes.MeshCircle(vertices=None, radius=None, fill_type='NONE')
 
 #### Input socket arguments:
 
-- `vertices`: [Integer](Integer.md)
-- `radius`: [Float](Float.md)
+- **vertices**: [Integer](Integer.md)
+- **radius**: [Float](Float.md)
 
 #### Node parameter arguments:
 
-- fill_type (str): Node parameter, default = 'NONE' in ('NONE', 'NGON', 'TRIANGLE_FAN')
+- **fill_type** (str): default = 'NONE' in ('NONE', 'NGON', 'TRIANGLE_FAN')
 
 #### Output sockets:
 

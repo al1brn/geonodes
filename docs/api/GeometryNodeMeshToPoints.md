@@ -15,14 +15,14 @@ node = nodes.MeshToPoints(mesh=None, selection=None, position=None, radius=None,
 
 #### Input socket arguments:
 
-- `mesh`: [Mesh](Mesh.md)
-- `selection`: [Boolean](Boolean.md)
-- `position`: [Vector](Vector.md)
-- `radius`: [Float](Float.md)
+- **mesh**: [Mesh](Mesh.md)
+- **selection**: [Boolean](Boolean.md)
+- **position**: [Vector](Vector.md)
+- **radius**: [Float](Float.md)
 
 #### Node parameter arguments:
 
-- mode (str): Node parameter, default = 'VERTICES' in ('VERTICES', 'EDGES', 'FACES', 'CORNERS')
+- **mode** (str): default = 'VERTICES' in ('VERTICES', 'EDGES', 'FACES', 'CORNERS')
 
 #### Output sockets:
 

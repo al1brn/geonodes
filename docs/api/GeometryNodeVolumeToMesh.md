@@ -15,15 +15,15 @@ node = nodes.VolumeToMesh(volume=None, voxel_size=None, voxel_amount=None, thres
 
 #### Input socket arguments:
 
-- `volume`: [Volume](Volume.md)
-- `voxel_size`: [Float](Float.md)
-- `voxel_amount`: [Float](Float.md)
-- `threshold`: [Float](Float.md)
-- `adaptivity`: [Float](Float.md)
+- **volume**: [Volume](Volume.md)
+- **voxel_size**: [Float](Float.md)
+- **voxel_amount**: [Float](Float.md)
+- **threshold**: [Float](Float.md)
+- **adaptivity**: [Float](Float.md)
 
 #### Node parameter arguments:
 
-- resolution_mode (str): Node parameter, default = 'GRID' in ('GRID', 'VOXEL_AMOUNT', 'VOXEL_SIZE')
+- **resolution_mode** (str): default = 'GRID' in ('GRID', 'VOXEL_AMOUNT', 'VOXEL_SIZE')
 
 #### Output sockets:
 

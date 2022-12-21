@@ -15,10 +15,10 @@ node = nodes.Star(points=None, inner_radius=None, outer_radius=None, twist=None)
 
 #### Input socket arguments:
 
-- `points`: [Integer](Integer.md)
-- `inner_radius`: [Float](Float.md)
-- `outer_radius`: [Float](Float.md)
-- `twist`: [Float](Float.md)
+- **points**: [Integer](Integer.md)
+- **inner_radius**: [Float](Float.md)
+- **outer_radius**: [Float](Float.md)
+- **twist**: [Float](Float.md)
 
 #### Output sockets:
 

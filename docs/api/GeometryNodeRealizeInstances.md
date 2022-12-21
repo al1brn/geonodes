@@ -15,11 +15,11 @@ node = nodes.RealizeInstances(geometry=None, legacy_behavior=False)
 
 #### Input socket arguments:
 
-- `geometry`: [Geometry](Geometry.md)
+- **geometry**: [Geometry](Geometry.md)
 
 #### Node parameter arguments:
 
-- legacy_behavior (bool): Node parameter, default = False
+- **legacy_behavior** (bool): default = False
 
 #### Output sockets:
 

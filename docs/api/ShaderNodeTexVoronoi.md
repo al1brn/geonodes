@@ -15,18 +15,18 @@ node = nodes.VoronoiTexture(vector=None, w=None, scale=None, smoothness=None, ex
 
 #### Input socket arguments:
 
-- `vector`: [Vector](Vector.md)
-- `w`: [Float](Float.md)
-- `scale`: [Float](Float.md)
-- `smoothness`: [Float](Float.md)
-- `exponent`: [Float](Float.md)
-- `randomness`: [Float](Float.md)
+- **vector**: [Vector](Vector.md)
+- **w**: [Float](Float.md)
+- **scale**: [Float](Float.md)
+- **smoothness**: [Float](Float.md)
+- **exponent**: [Float](Float.md)
+- **randomness**: [Float](Float.md)
 
 #### Node parameter arguments:
 
-- distance (str): Node parameter, default = 'EUCLIDEAN' in ('EUCLIDEAN', 'MANHATTAN', 'CHEBYCHEV', 'MINKOWSKI')
-- feature (str): Node parameter, default = 'F1' in ('F1', 'F2', 'SMOOTH_F1', 'DISTANCE_TO_EDGE', 'N_SPHERE_RADIUS')
-- voronoi_dimensions (str): Node parameter, default = '3D' in ('1D', '2D', '3D', '4D')
+- **distance** (str): default = 'EUCLIDEAN' in ('EUCLIDEAN', 'MANHATTAN', 'CHEBYCHEV', 'MINKOWSKI')
+- **feature** (str): default = 'F1' in ('F1', 'F2', 'SMOOTH_F1', 'DISTANCE_TO_EDGE', 'N_SPHERE_RADIUS')
+- **voronoi_dimensions** (str): default = '3D' in ('1D', '2D', '3D', '4D')
 
 #### Output sockets:
 

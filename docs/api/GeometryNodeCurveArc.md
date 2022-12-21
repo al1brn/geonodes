@@ -15,20 +15,20 @@ node = nodes.Arc(resolution=None, start=None, middle=None, end=None, radius=None
 
 #### Input socket arguments:
 
-- `resolution`: [Integer](Integer.md)
-- `start`: [Vector](Vector.md)
-- `middle`: [Vector](Vector.md)
-- `end`: [Vector](Vector.md)
-- `radius`: [Float](Float.md)
-- `start_angle`: [Float](Float.md)
-- `sweep_angle`: [Float](Float.md)
-- `offset_angle`: [Float](Float.md)
-- `connect_center`: [Boolean](Boolean.md)
-- `invert_arc`: [Boolean](Boolean.md)
+- **resolution**: [Integer](Integer.md)
+- **start**: [Vector](Vector.md)
+- **middle**: [Vector](Vector.md)
+- **end**: [Vector](Vector.md)
+- **radius**: [Float](Float.md)
+- **start_angle**: [Float](Float.md)
+- **sweep_angle**: [Float](Float.md)
+- **offset_angle**: [Float](Float.md)
+- **connect_center**: [Boolean](Boolean.md)
+- **invert_arc**: [Boolean](Boolean.md)
 
 #### Node parameter arguments:
 
-- mode (str): Node parameter, default = 'RADIUS' in ('POINTS', 'RADIUS')
+- **mode** (str): default = 'RADIUS' in ('POINTS', 'RADIUS')
 
 #### Output sockets:
 

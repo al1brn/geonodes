@@ -15,20 +15,20 @@ node = nodes.StringToCurves(string=None, size=None, character_spacing=None, word
 
 #### Input socket arguments:
 
-- `string`: [String](String.md)
-- `size`: [Float](Float.md)
-- `character_spacing`: [Float](Float.md)
-- `word_spacing`: [Float](Float.md)
-- `line_spacing`: [Float](Float.md)
-- `text_box_width`: [Float](Float.md)
-- `text_box_height`: [Float](Float.md)
+- **string**: [String](String.md)
+- **size**: [Float](Float.md)
+- **character_spacing**: [Float](Float.md)
+- **word_spacing**: [Float](Float.md)
+- **line_spacing**: [Float](Float.md)
+- **text_box_width**: [Float](Float.md)
+- **text_box_height**: [Float](Float.md)
 
 #### Node parameter arguments:
 
-- align_x (str): Node parameter, default = 'LEFT' in ('LEFT', 'CENTER', 'RIGHT', 'JUSTIFY', 'FLUSH')
-- align_y (str): Node parameter, default = 'TOP_BASELINE' in ('TOP_BASELINE', 'TOP', 'MIDDLE', 'BOTTOM_BASELINE', 'BOTTOM')
-- overflow (str): Node parameter, default = 'OVERFLOW' in ('OVERFLOW', 'SCALE_TO_FIT', 'TRUNCATE')
-- pivot_mode (str): Node parameter, default = 'BOTTOM_LEFT' in ('MIDPOINT', 'TOP_LEFT', 'TOP_CENTER', 'TOP_RIGHT', 'BOTTOM_LEFT', 'BOTTOM_CENTER', 'BOTTOM_RIGHT')
+- **align_x** (str): default = 'LEFT' in ('LEFT', 'CENTER', 'RIGHT', 'JUSTIFY', 'FLUSH')
+- **align_y** (str): default = 'TOP_BASELINE' in ('TOP_BASELINE', 'TOP', 'MIDDLE', 'BOTTOM_BASELINE', 'BOTTOM')
+- **overflow** (str): default = 'OVERFLOW' in ('OVERFLOW', 'SCALE_TO_FIT', 'TRUNCATE')
+- **pivot_mode** (str): default = 'BOTTOM_LEFT' in ('MIDPOINT', 'TOP_LEFT', 'TOP_CENTER', 'TOP_RIGHT', 'BOTTOM_LEFT', 'BOTTOM_CENTER', 'BOTTOM_RIGHT')
 
 #### Output sockets:
 

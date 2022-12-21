@@ -15,16 +15,16 @@ node = nodes.Raycast(target_geometry=None, attribute=None, source_position=None,
 
 #### Input socket arguments:
 
-- `target_geometry`: [Geometry](Geometry.md)
-- `attribute`: `data_type` dependant
-- `source_position`: [Vector](Vector.md)
-- `ray_direction`: [Vector](Vector.md)
-- `ray_length`: [Float](Float.md)
+- **target_geometry**: [Geometry](Geometry.md)
+- **attribute**: **data_type** dependant
+- **source_position**: [Vector](Vector.md)
+- **ray_direction**: [Vector](Vector.md)
+- **ray_length**: [Float](Float.md)
 
 #### Node parameter arguments:
 
-- data_type (str): Node parameter, default = 'FLOAT' in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN')
-- mapping (str): Node parameter, default = 'INTERPOLATED' in ('INTERPOLATED', 'NEAREST')
+- **data_type** (str): default = 'FLOAT' in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN')
+- **mapping** (str): default = 'INTERPOLATED' in ('INTERPOLATED', 'NEAREST')
 
 #### Output sockets:
 

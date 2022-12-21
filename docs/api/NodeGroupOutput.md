@@ -15,9 +15,9 @@ node = nodes.GroupOutput(geometry=None, is_active_output=True)
 
 #### Input socket arguments:
 
-- `geometry`: [Geometry](Geometry.md)
+- **geometry**: [Geometry](Geometry.md)
 
 #### Node parameter arguments:
 
-- is_active_output (bool): Node parameter, default = True
+- **is_active_output** (bool): default = True
 

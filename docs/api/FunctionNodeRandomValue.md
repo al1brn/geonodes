@@ -15,15 +15,15 @@ node = nodes.RandomValue(min=None, max=None, probability=None, ID=None, seed=Non
 
 #### Input socket arguments:
 
-- `min`: `data_type` dependant
-- `max`: `data_type` dependant
-- `probability`: [Float](Float.md)
-- `ID`: [Integer](Integer.md)
-- `seed`: [Integer](Integer.md)
+- **min**: **data_type** dependant
+- **max**: **data_type** dependant
+- **probability**: [Float](Float.md)
+- **ID**: [Integer](Integer.md)
+- **seed**: [Integer](Integer.md)
 
 #### Node parameter arguments:
 
-- data_type (str): Node parameter, default = 'FLOAT' in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'BOOLEAN')
+- **data_type** (str): default = 'FLOAT' in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'BOOLEAN')
 
 #### Output sockets:
 

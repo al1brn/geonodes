@@ -15,16 +15,16 @@ node = nodes.ScaleElements(geometry=None, selection=None, scale=None, center=Non
 
 #### Input socket arguments:
 
-- `geometry`: [Geometry](Geometry.md)
-- `selection`: [Boolean](Boolean.md)
-- `scale`: [Float](Float.md)
-- `center`: [Vector](Vector.md)
-- `axis`: [Vector](Vector.md)
+- **geometry**: [Geometry](Geometry.md)
+- **selection**: [Boolean](Boolean.md)
+- **scale**: [Float](Float.md)
+- **center**: [Vector](Vector.md)
+- **axis**: [Vector](Vector.md)
 
 #### Node parameter arguments:
 
-- domain (str): Node parameter, default = 'FACE' in ('FACE', 'EDGE')
-- scale_mode (str): Node parameter, default = 'UNIFORM' in ('UNIFORM', 'SINGLE_AXIS')
+- **domain** (str): default = 'FACE' in ('FACE', 'EDGE')
+- **scale_mode** (str): default = 'UNIFORM' in ('UNIFORM', 'SINGLE_AXIS')
 
 #### Output sockets:
 

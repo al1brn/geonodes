@@ -15,7 +15,7 @@ node = nodes.String(string='')
 
 #### Node parameter arguments:
 
-- string (str): Node parameter, default = ''
+- **string** (str): default = ''
 
 #### Output sockets:
 

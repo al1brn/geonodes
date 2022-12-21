@@ -15,11 +15,11 @@ node = nodes.FloatToInteger(float=None, rounding_mode='ROUND')
 
 #### Input socket arguments:
 
-- `float`: [Float](Float.md)
+- **float**: [Float](Float.md)
 
 #### Node parameter arguments:
 
-- rounding_mode (str): Node parameter, default = 'ROUND' in ('ROUND', 'FLOOR', 'CEILING', 'TRUNCATE')
+- **rounding_mode** (str): default = 'ROUND' in ('ROUND', 'FLOOR', 'CEILING', 'TRUNCATE')
 
 #### Output sockets:
 

@@ -15,15 +15,15 @@ node = nodes.SubdivisionSurface(mesh=None, level=None, edge_crease=None, vertex_
 
 #### Input socket arguments:
 
-- `mesh`: [Mesh](Mesh.md)
-- `level`: [Integer](Integer.md)
-- `edge_crease`: [Float](Float.md)
-- `vertex_crease`: [Float](Float.md)
+- **mesh**: [Mesh](Mesh.md)
+- **level**: [Integer](Integer.md)
+- **edge_crease**: [Float](Float.md)
+- **vertex_crease**: [Float](Float.md)
 
 #### Node parameter arguments:
 
-- boundary_smooth (str): Node parameter, default = 'ALL' in ('PRESERVE_CORNERS', 'ALL')
-- uv_smooth (str): Node parameter, default = 'PRESERVE_BOUNDARIES' in ('NONE', 'PRESERVE_CORNERS', 'PRESERVE_CORNERS_AND_JUNCTIONS', 'PRESERVE_CORNERS_JUNCTIONS_AND_CONCAVE', 'PRESERVE_BOUNDARIES', 'SMOOTH_ALL')
+- **boundary_smooth** (str): default = 'ALL' in ('PRESERVE_CORNERS', 'ALL')
+- **uv_smooth** (str): default = 'PRESERVE_BOUNDARIES' in ('NONE', 'PRESERVE_CORNERS', 'PRESERVE_CORNERS_AND_JUNCTIONS', 'PRESERVE_CORNERS_JUNCTIONS_AND_CONCAVE', 'PRESERVE_BOUNDARIES', 'SMOOTH_ALL')
 
 #### Output sockets:
 

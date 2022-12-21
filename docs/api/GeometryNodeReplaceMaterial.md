@@ -15,9 +15,9 @@ node = nodes.ReplaceMaterial(geometry=None, old=None, new=None)
 
 #### Input socket arguments:
 
-- `geometry`: [Geometry](Geometry.md)
-- `old`: [Material](Material.md)
-- `new`: [Material](Material.md)
+- **geometry**: [Geometry](Geometry.md)
+- **old**: [Material](Material.md)
+- **new**: [Material](Material.md)
 
 #### Output sockets:
 

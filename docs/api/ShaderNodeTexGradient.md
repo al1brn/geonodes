@@ -15,11 +15,11 @@ node = nodes.GradientTexture(vector=None, gradient_type='LINEAR')
 
 #### Input socket arguments:
 
-- `vector`: [Vector](Vector.md)
+- **vector**: [Vector](Vector.md)
 
 #### Node parameter arguments:
 
-- gradient_type (str): Node parameter, default = 'LINEAR' in ('LINEAR', 'QUADRATIC', 'EASING', 'DIAGONAL', 'SPHERICAL', 'QUADRATIC_SPHERE', 'RADIAL')
+- **gradient_type** (str): default = 'LINEAR' in ('LINEAR', 'QUADRATIC', 'EASING', 'DIAGONAL', 'SPHERICAL', 'QUADRATIC_SPHERE', 'RADIAL')
 
 #### Output sockets:
 

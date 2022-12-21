@@ -15,11 +15,11 @@ node = nodes.SeparateColor(color=None, mode='RGB')
 
 #### Input socket arguments:
 
-- `color`: [Color](Color.md)
+- **color**: [Color](Color.md)
 
 #### Node parameter arguments:
 
-- mode (str): Node parameter, default = 'RGB' in ('RGB', 'HSV', 'HSL')
+- **mode** (str): default = 'RGB' in ('RGB', 'HSV', 'HSL')
 
 #### Output sockets:
 

@@ -15,7 +15,7 @@ node = nodes.Integer(integer=0)
 
 #### Node parameter arguments:
 
-- integer (int): Node parameter, default = 0
+- **integer** (int): default = 0
 
 #### Output sockets:
 

@@ -15,14 +15,14 @@ node = nodes.CombineColor(red=None, green=None, blue=None, alpha=None, mode='RGB
 
 #### Input socket arguments:
 
-- `red`: [Float](Float.md)
-- `green`: [Float](Float.md)
-- `blue`: [Float](Float.md)
-- `alpha`: [Float](Float.md)
+- **red**: [Float](Float.md)
+- **green**: [Float](Float.md)
+- **blue**: [Float](Float.md)
+- **alpha**: [Float](Float.md)
 
 #### Node parameter arguments:
 
-- mode (str): Node parameter, default = 'RGB' in ('RGB', 'HSV', 'HSL')
+- **mode** (str): default = 'RGB' in ('RGB', 'HSV', 'HSL')
 
 #### Output sockets:
 

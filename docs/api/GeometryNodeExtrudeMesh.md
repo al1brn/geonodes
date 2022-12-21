@@ -15,15 +15,15 @@ node = nodes.ExtrudeMesh(mesh=None, selection=None, offset=None, offset_scale=No
 
 #### Input socket arguments:
 
-- `mesh`: [Mesh](Mesh.md)
-- `selection`: [Boolean](Boolean.md)
-- `offset`: [Vector](Vector.md)
-- `offset_scale`: [Float](Float.md)
-- `individual`: [Boolean](Boolean.md)
+- **mesh**: [Mesh](Mesh.md)
+- **selection**: [Boolean](Boolean.md)
+- **offset**: [Vector](Vector.md)
+- **offset_scale**: [Float](Float.md)
+- **individual**: [Boolean](Boolean.md)
 
 #### Node parameter arguments:
 
-- mode (str): Node parameter, default = 'FACES' in ('VERTICES', 'EDGES', 'FACES')
+- **mode** (str): default = 'FACES' in ('VERTICES', 'EDGES', 'FACES')
 
 #### Output sockets:
 

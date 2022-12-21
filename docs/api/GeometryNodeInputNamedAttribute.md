@@ -15,11 +15,11 @@ node = nodes.NamedAttribute(name=None, data_type='FLOAT')
 
 #### Input socket arguments:
 
-- `name`: [String](String.md)
+- **name**: [String](String.md)
 
 #### Node parameter arguments:
 
-- data_type (str): Node parameter, default = 'FLOAT' in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN')
+- **data_type** (str): default = 'FLOAT' in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN')
 
 #### Output sockets:
 

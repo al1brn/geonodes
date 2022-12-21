@@ -15,15 +15,15 @@ node = nodes.DistributePointsInVolume(volume=None, density=None, seed=None, spac
 
 #### Input socket arguments:
 
-- `volume`: [Volume](Volume.md)
-- `density`: [Float](Float.md)
-- `seed`: [Integer](Integer.md)
-- `spacing`: [Vector](Vector.md)
-- `threshold`: [Float](Float.md)
+- **volume**: [Volume](Volume.md)
+- **density**: [Float](Float.md)
+- **seed**: [Integer](Integer.md)
+- **spacing**: [Vector](Vector.md)
+- **threshold**: [Float](Float.md)
 
 #### Node parameter arguments:
 
-- mode (str): Node parameter, default = 'DENSITY_RANDOM' in ('DENSITY_RANDOM', 'DENSITY_GRID')
+- **mode** (str): default = 'DENSITY_RANDOM' in ('DENSITY_RANDOM', 'DENSITY_GRID')
 
 #### Output sockets:
 

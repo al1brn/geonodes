@@ -15,16 +15,16 @@ node = nodes.NoiseTexture(vector=None, w=None, scale=None, detail=None, roughnes
 
 #### Input socket arguments:
 
-- `vector`: [Vector](Vector.md)
-- `w`: [Float](Float.md)
-- `scale`: [Float](Float.md)
-- `detail`: [Float](Float.md)
-- `roughness`: [Float](Float.md)
-- `distortion`: [Float](Float.md)
+- **vector**: [Vector](Vector.md)
+- **w**: [Float](Float.md)
+- **scale**: [Float](Float.md)
+- **detail**: [Float](Float.md)
+- **roughness**: [Float](Float.md)
+- **distortion**: [Float](Float.md)
 
 #### Node parameter arguments:
 
-- noise_dimensions (str): Node parameter, default = '3D' in ('1D', '2D', '3D', '4D')
+- **noise_dimensions** (str): default = '3D' in ('1D', '2D', '3D', '4D')
 
 #### Output sockets:
 
