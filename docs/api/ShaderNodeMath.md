@@ -13,7 +13,9 @@ from geonodes import nodes
 node = nodes.Math(value0=None, value1=None, value2=None, operation='ADD', use_clamp=False)
 ```
 
-### Args:#### Input socket arguments:
+### Args:
+
+#### Input socket arguments:
 
 - **value0**: [Float](Float.md)
 - **value1**: [Float](Float.md)

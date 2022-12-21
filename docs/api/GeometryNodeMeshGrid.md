@@ -13,7 +13,9 @@ from geonodes import nodes
 node = nodes.Grid(size_x=None, size_y=None, vertices_x=None, vertices_y=None)
 ```
 
-### Args:#### Input socket arguments:
+### Args:
+
+#### Input socket arguments:
 
 - **size_x**: [Float](Float.md)
 - **size_y**: [Float](Float.md)

@@ -13,7 +13,9 @@ from geonodes import nodes
 node = nodes.InterpolateDomain(value=None, data_type='FLOAT', domain='POINT')
 ```
 
-### Args:#### Input socket arguments:
+### Args:
+
+#### Input socket arguments:
 
 - **value**: **data_type** dependant
 

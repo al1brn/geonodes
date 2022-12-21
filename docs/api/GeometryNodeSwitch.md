@@ -13,7 +13,9 @@ from geonodes import nodes
 node = nodes.Switch(switch=None, false=None, true=None, input_type='GEOMETRY')
 ```
 
-### Args:#### Input socket arguments:
+### Args:
+
+#### Input socket arguments:
 
 - **switch**: **input_type** dependant
 - **false**: **input_type** dependant

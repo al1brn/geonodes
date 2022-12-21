@@ -13,7 +13,9 @@ from geonodes import nodes
 node = nodes.MapRange(value=None, from_min=None, from_max=None, to_min=None, to_max=None, steps=None, vector=None, clamp=True, data_type='FLOAT', interpolation_type='LINEAR')
 ```
 
-### Args:#### Input socket arguments:
+### Args:
+
+#### Input socket arguments:
 
 - **value**: [Float](Float.md)
 - **from_min**: **data_type** dependant

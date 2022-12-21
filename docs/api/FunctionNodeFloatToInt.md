@@ -13,7 +13,9 @@ from geonodes import nodes
 node = nodes.FloatToInteger(float=None, rounding_mode='ROUND')
 ```
 
-### Args:#### Input socket arguments:
+### Args:
+
+#### Input socket arguments:
 
 - **float**: [Float](Float.md)
 

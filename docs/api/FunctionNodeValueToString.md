@@ -13,7 +13,9 @@ from geonodes import nodes
 node = nodes.ValueToString(value=None, decimals=None)
 ```
 
-### Args:#### Input socket arguments:
+### Args:
+
+#### Input socket arguments:
 
 - **value**: [Float](Float.md)
 - **decimals**: [Integer](Integer.md)

@@ -13,7 +13,9 @@ from geonodes import nodes
 node = nodes.Transform(geometry=None, translation=None, rotation=None, scale=None)
 ```
 
-### Args:#### Input socket arguments:
+### Args:
+
+#### Input socket arguments:
 
 - **geometry**: [Geometry](Geometry.md)
 - **translation**: [Vector](Vector.md)

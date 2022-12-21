@@ -13,7 +13,9 @@ from geonodes import nodes
 node = nodes.CombineXyz(x=None, y=None, z=None)
 ```
 
-### Args:#### Input socket arguments:
+### Args:
+
+#### Input socket arguments:
 
 - **x**: [Float](Float.md)
 - **y**: [Float](Float.md)

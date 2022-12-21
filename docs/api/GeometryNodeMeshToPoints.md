@@ -13,7 +13,9 @@ from geonodes import nodes
 node = nodes.MeshToPoints(mesh=None, selection=None, position=None, radius=None, mode='VERTICES')
 ```
 
-### Args:#### Input socket arguments:
+### Args:
+
+#### Input socket arguments:
 
 - **mesh**: [Mesh](Mesh.md)
 - **selection**: [Boolean](Boolean.md)

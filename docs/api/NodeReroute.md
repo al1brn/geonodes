@@ -13,7 +13,9 @@ from geonodes import nodes
 node = nodes.Reroute(input=None)
 ```
 
-### Args:#### Input socket arguments:
+### Args:
+
+#### Input socket arguments:
 
 - **input**: [Color](Color.md)
 

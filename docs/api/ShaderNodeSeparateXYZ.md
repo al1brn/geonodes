@@ -13,7 +13,9 @@ from geonodes import nodes
 node = nodes.SeparateXyz(vector=None)
 ```
 
-### Args:#### Input socket arguments:
+### Args:
+
+#### Input socket arguments:
 
 - **vector**: [Vector](Vector.md)
 

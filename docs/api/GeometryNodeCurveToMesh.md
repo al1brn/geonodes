@@ -13,7 +13,9 @@ from geonodes import nodes
 node = nodes.CurveToMesh(curve=None, profile_curve=None, fill_caps=None)
 ```
 
-### Args:#### Input socket arguments:
+### Args:
+
+#### Input socket arguments:
 
 - **curve**: [Curve](Curve.md)
 - **profile_curve**: [Geometry](Geometry.md)

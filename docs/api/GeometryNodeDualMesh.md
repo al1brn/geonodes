@@ -13,7 +13,9 @@ from geonodes import nodes
 node = nodes.DualMesh(mesh=None, keep_boundaries=None)
 ```
 
-### Args:#### Input socket arguments:
+### Args:
+
+#### Input socket arguments:
 
 - **mesh**: [Mesh](Mesh.md)
 - **keep_boundaries**: [Boolean](Boolean.md)

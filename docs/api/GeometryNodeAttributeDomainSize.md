@@ -13,7 +13,9 @@ from geonodes import nodes
 node = nodes.DomainSize(geometry=None, component='MESH')
 ```
 
-### Args:#### Input socket arguments:
+### Args:
+
+#### Input socket arguments:
 
 - **geometry**: [Geometry](Geometry.md)
 

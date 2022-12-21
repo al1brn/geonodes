@@ -13,7 +13,9 @@ from geonodes import nodes
 node = nodes.DistributePointsInVolume(volume=None, density=None, seed=None, spacing=None, threshold=None, mode='DENSITY_RANDOM')
 ```
 
-### Args:#### Input socket arguments:
+### Args:
+
+#### Input socket arguments:
 
 - **volume**: [Volume](Volume.md)
 - **density**: [Float](Float.md)

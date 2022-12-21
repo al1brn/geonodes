@@ -13,7 +13,9 @@ from geonodes import nodes
 node = nodes.MeshToVolume(mesh=None, density=None, voxel_size=None, voxel_amount=None, exterior_band_width=None, interior_band_width=None, fill_volume=None, resolution_mode='VOXEL_AMOUNT')
 ```
 
-### Args:#### Input socket arguments:
+### Args:
+
+#### Input socket arguments:
 
 - **mesh**: [Mesh](Mesh.md)
 - **density**: [Float](Float.md)

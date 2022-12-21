@@ -13,7 +13,9 @@ from geonodes import nodes
 node = nodes.EndpointSelection(start_size=None, end_size=None)
 ```
 
-### Args:#### Input socket arguments:
+### Args:
+
+#### Input socket arguments:
 
 - **start_size**: [Integer](Integer.md)
 - **end_size**: [Integer](Integer.md)

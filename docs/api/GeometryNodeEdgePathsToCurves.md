@@ -13,7 +13,9 @@ from geonodes import nodes
 node = nodes.EdgePathsToCurves(mesh=None, start_vertices=None, next_vertex_index=None)
 ```
 
-### Args:#### Input socket arguments:
+### Args:
+
+#### Input socket arguments:
 
 - **mesh**: [Mesh](Mesh.md)
 - **start_vertices**: [Boolean](Boolean.md)

@@ -13,7 +13,9 @@ from geonodes import nodes
 node = nodes.Cube(size=None, vertices_x=None, vertices_y=None, vertices_z=None)
 ```
 
-### Args:#### Input socket arguments:
+### Args:
+
+#### Input socket arguments:
 
 - **size**: [Vector](Vector.md)
 - **vertices_x**: [Integer](Integer.md)

@@ -13,7 +13,9 @@ from geonodes import nodes
 node = nodes.FilletCurve(curve=None, count=None, radius=None, limit_radius=None, mode='BEZIER')
 ```
 
-### Args:#### Input socket arguments:
+### Args:
+
+#### Input socket arguments:
 
 - **curve**: [Curve](Curve.md)
 - **count**: [Integer](Integer.md)

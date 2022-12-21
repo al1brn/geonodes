@@ -13,7 +13,9 @@ from geonodes import nodes
 node = nodes.SetPointRadius(points=None, selection=None, radius=None)
 ```
 
-### Args:#### Input socket arguments:
+### Args:
+
+#### Input socket arguments:
 
 - **points**: [Points](Points.md)
 - **selection**: [Boolean](Boolean.md)

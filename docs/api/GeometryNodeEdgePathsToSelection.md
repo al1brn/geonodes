@@ -13,7 +13,9 @@ from geonodes import nodes
 node = nodes.EdgePathsToSelection(start_vertices=None, next_vertex_index=None)
 ```
 
-### Args:#### Input socket arguments:
+### Args:
+
+#### Input socket arguments:
 
 - **start_vertices**: [Boolean](Boolean.md)
 - **next_vertex_index**: [Integer](Integer.md)

@@ -13,7 +13,9 @@ from geonodes import nodes
 node = nodes.FaceIsPlanar(threshold=None)
 ```
 
-### Args:#### Input socket arguments:
+### Args:
+
+#### Input socket arguments:
 
 - **threshold**: [Float](Float.md)
 

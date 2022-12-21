@@ -13,7 +13,9 @@ from geonodes import nodes
 node = nodes.MeshCircle(vertices=None, radius=None, fill_type='NONE')
 ```
 
-### Args:#### Input socket arguments:
+### Args:
+
+#### Input socket arguments:
 
 - **vertices**: [Integer](Integer.md)
 - **radius**: [Float](Float.md)

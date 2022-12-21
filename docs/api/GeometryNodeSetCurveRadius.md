@@ -13,7 +13,9 @@ from geonodes import nodes
 node = nodes.SetCurveRadius(curve=None, selection=None, radius=None)
 ```
 
-### Args:#### Input socket arguments:
+### Args:
+
+#### Input socket arguments:
 
 - **curve**: [Curve](Curve.md)
 - **selection**: [Boolean](Boolean.md)

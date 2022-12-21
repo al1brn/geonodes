@@ -13,7 +13,9 @@ from geonodes import nodes
 node = nodes.ConvexHull(geometry=None)
 ```
 
-### Args:#### Input socket arguments:
+### Args:
+
+#### Input socket arguments:
 
 - **geometry**: [Geometry](Geometry.md)
 

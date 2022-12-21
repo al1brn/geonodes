@@ -13,7 +13,9 @@ from geonodes import nodes
 node = nodes.Star(points=None, inner_radius=None, outer_radius=None, twist=None)
 ```
 
-### Args:#### Input socket arguments:
+### Args:
+
+#### Input socket arguments:
 
 - **points**: [Integer](Integer.md)
 - **inner_radius**: [Float](Float.md)

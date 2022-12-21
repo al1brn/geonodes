@@ -13,7 +13,9 @@ from geonodes import nodes
 node = nodes.CollectionInfo(collection=None, separate_children=None, reset_children=None, transform_space='ORIGINAL')
 ```
 
-### Args:#### Input socket arguments:
+### Args:
+
+#### Input socket arguments:
 
 - **collection**: [Collection](Collection.md)
 - **separate_children**: [Boolean](Boolean.md)

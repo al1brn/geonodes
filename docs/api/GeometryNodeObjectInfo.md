@@ -13,7 +13,9 @@ from geonodes import nodes
 node = nodes.ObjectInfo(object=None, as_instance=None, transform_space='ORIGINAL')
 ```
 
-### Args:#### Input socket arguments:
+### Args:
+
+#### Input socket arguments:
 
 - **object**: [Object](Object.md)
 - **as_instance**: [Boolean](Boolean.md)

@@ -13,7 +13,9 @@ from geonodes import nodes
 node = nodes.CheckerTexture(vector=None, color1=None, color2=None, scale=None)
 ```
 
-### Args:#### Input socket arguments:
+### Args:
+
+#### Input socket arguments:
 
 - **vector**: [Vector](Vector.md)
 - **color1**: [Color](Color.md)

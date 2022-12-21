@@ -13,7 +13,9 @@ from geonodes import nodes
 node = nodes.MusgraveTexture(vector=None, w=None, scale=None, detail=None, dimension=None, lacunarity=None, offset=None, gain=None, musgrave_dimensions='3D', musgrave_type='FBM')
 ```
 
-### Args:#### Input socket arguments:
+### Args:
+
+#### Input socket arguments:
 
 - **vector**: [Vector](Vector.md)
 - **w**: [Float](Float.md)

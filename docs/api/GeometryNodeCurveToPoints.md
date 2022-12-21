@@ -13,7 +13,9 @@ from geonodes import nodes
 node = nodes.CurveToPoints(curve=None, count=None, length=None, mode='COUNT')
 ```
 
-### Args:#### Input socket arguments:
+### Args:
+
+#### Input socket arguments:
 
 - **curve**: [Curve](Curve.md)
 - **count**: [Integer](Integer.md)

@@ -13,7 +13,9 @@ from geonodes import nodes
 node = nodes.JoinGeometry(*geometry)
 ```
 
-### Args:#### Input socket arguments:
+### Args:
+
+#### Input socket arguments:
 
 - **geometry**: *[Geometry](Geometry.md)
 

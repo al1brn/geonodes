@@ -13,7 +13,9 @@ from geonodes import nodes
 node = nodes.CornersOfFace(face_index=None, weights=None, sort_index=None)
 ```
 
-### Args:#### Input socket arguments:
+### Args:
+
+#### Input socket arguments:
 
 - **face_index**: [Integer](Integer.md)
 - **weights**: [Float](Float.md)

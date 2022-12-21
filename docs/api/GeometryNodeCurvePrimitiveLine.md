@@ -13,7 +13,9 @@ from geonodes import nodes
 node = nodes.CurveLine(start=None, end=None, direction=None, length=None, mode='POINTS')
 ```
 
-### Args:#### Input socket arguments:
+### Args:
+
+#### Input socket arguments:
 
 - **start**: [Vector](Vector.md)
 - **end**: [Vector](Vector.md)

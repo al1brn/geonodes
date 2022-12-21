@@ -13,7 +13,9 @@ from geonodes import nodes
 node = nodes.SeparateGeometry(geometry=None, selection=None, domain='POINT')
 ```
 
-### Args:#### Input socket arguments:
+### Args:
+
+#### Input socket arguments:
 
 - **geometry**: [Geometry](Geometry.md)
 - **selection**: [Boolean](Boolean.md)

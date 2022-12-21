@@ -13,7 +13,9 @@ from geonodes import nodes
 node = nodes.SetCurveNormal(curve=None, selection=None, mode='MINIMUM_TWIST')
 ```
 
-### Args:#### Input socket arguments:
+### Args:
+
+#### Input socket arguments:
 
 - **curve**: [Curve](Curve.md)
 - **selection**: [Boolean](Boolean.md)

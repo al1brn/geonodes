@@ -13,7 +13,9 @@ from geonodes import nodes
 node = nodes.CurveOfPoint(point_index=None)
 ```
 
-### Args:#### Input socket arguments:
+### Args:
+
+#### Input socket arguments:
 
 - **point_index**: [Integer](Integer.md)
 

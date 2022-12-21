@@ -13,7 +13,9 @@ from geonodes import nodes
 node = nodes.VectorMath(vector0=None, vector1=None, vector2=None, scale=None, operation='ADD')
 ```
 
-### Args:#### Input socket arguments:
+### Args:
+
+#### Input socket arguments:
 
 - **vector0**: [Vector](Vector.md)
 - **vector1**: [Vector](Vector.md)

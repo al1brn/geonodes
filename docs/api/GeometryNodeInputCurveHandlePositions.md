@@ -13,7 +13,9 @@ from geonodes import nodes
 node = nodes.CurveHandlePositions(relative=None)
 ```
 
-### Args:#### Input socket arguments:
+### Args:
+
+#### Input socket arguments:
 
 - **relative**: [Boolean](Boolean.md)
 

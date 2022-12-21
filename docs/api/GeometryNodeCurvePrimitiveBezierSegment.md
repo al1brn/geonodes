@@ -13,7 +13,9 @@ from geonodes import nodes
 node = nodes.BezierSegment(resolution=None, start=None, start_handle=None, end_handle=None, end=None, mode='POSITION')
 ```
 
-### Args:#### Input socket arguments:
+### Args:
+
+#### Input socket arguments:
 
 - **resolution**: [Integer](Integer.md)
 - **start**: [Vector](Vector.md)

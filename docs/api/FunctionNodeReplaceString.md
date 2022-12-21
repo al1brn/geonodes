@@ -13,7 +13,9 @@ from geonodes import nodes
 node = nodes.ReplaceString(string=None, find=None, replace=None)
 ```
 
-### Args:#### Input socket arguments:
+### Args:
+
+#### Input socket arguments:
 
 - **string**: [String](String.md)
 - **find**: [String](String.md)

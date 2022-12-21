@@ -13,7 +13,9 @@ from geonodes import nodes
 node = nodes.SetMaterialIndex(geometry=None, selection=None, material_index=None)
 ```
 
-### Args:#### Input socket arguments:
+### Args:
+
+#### Input socket arguments:
 
 - **geometry**: [Geometry](Geometry.md)
 - **selection**: [Boolean](Boolean.md)

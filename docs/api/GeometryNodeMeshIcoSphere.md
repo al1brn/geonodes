@@ -13,7 +13,9 @@ from geonodes import nodes
 node = nodes.IcoSphere(radius=None, subdivisions=None)
 ```
 
-### Args:#### Input socket arguments:
+### Args:
+
+#### Input socket arguments:
 
 - **radius**: [Float](Float.md)
 - **subdivisions**: [Integer](Integer.md)

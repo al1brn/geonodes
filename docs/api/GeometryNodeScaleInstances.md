@@ -13,7 +13,9 @@ from geonodes import nodes
 node = nodes.ScaleInstances(instances=None, selection=None, scale=None, center=None, local_space=None)
 ```
 
-### Args:#### Input socket arguments:
+### Args:
+
+#### Input socket arguments:
 
 - **instances**: [Instances](Instances.md)
 - **selection**: [Boolean](Boolean.md)

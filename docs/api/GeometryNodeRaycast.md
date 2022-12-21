@@ -13,7 +13,9 @@ from geonodes import nodes
 node = nodes.Raycast(target_geometry=None, attribute=None, source_position=None, ray_direction=None, ray_length=None, data_type='FLOAT', mapping='INTERPOLATED')
 ```
 
-### Args:#### Input socket arguments:
+### Args:
+
+#### Input socket arguments:
 
 - **target_geometry**: [Geometry](Geometry.md)
 - **attribute**: **data_type** dependant

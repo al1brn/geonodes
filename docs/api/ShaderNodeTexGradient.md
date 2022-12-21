@@ -13,7 +13,9 @@ from geonodes import nodes
 node = nodes.GradientTexture(vector=None, gradient_type='LINEAR')
 ```
 
-### Args:#### Input socket arguments:
+### Args:
+
+#### Input socket arguments:
 
 - **vector**: [Vector](Vector.md)
 

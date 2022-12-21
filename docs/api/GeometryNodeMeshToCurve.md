@@ -13,7 +13,9 @@ from geonodes import nodes
 node = nodes.MeshToCurve(mesh=None, selection=None)
 ```
 
-### Args:#### Input socket arguments:
+### Args:
+
+#### Input socket arguments:
 
 - **mesh**: [Mesh](Mesh.md)
 - **selection**: [Boolean](Boolean.md)

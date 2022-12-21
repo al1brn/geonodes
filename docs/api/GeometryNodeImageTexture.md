@@ -13,7 +13,9 @@ from geonodes import nodes
 node = nodes.ImageTexture(image=None, vector=None, frame=None, extension='REPEAT', interpolation='Linear')
 ```
 
-### Args:#### Input socket arguments:
+### Args:
+
+#### Input socket arguments:
 
 - **image**: [Image](Image.md)
 - **vector**: [Vector](Vector.md)

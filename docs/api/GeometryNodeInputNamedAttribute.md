@@ -13,7 +13,9 @@ from geonodes import nodes
 node = nodes.NamedAttribute(name=None, data_type='FLOAT')
 ```
 
-### Args:#### Input socket arguments:
+### Args:
+
+#### Input socket arguments:
 
 - **name**: [String](String.md)
 

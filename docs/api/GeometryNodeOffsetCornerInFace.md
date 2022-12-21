@@ -13,7 +13,9 @@ from geonodes import nodes
 node = nodes.OffsetCornerInFace(corner_index=None, offset=None)
 ```
 
-### Args:#### Input socket arguments:
+### Args:
+
+#### Input socket arguments:
 
 - **corner_index**: [Integer](Integer.md)
 - **offset**: [Integer](Integer.md)

@@ -13,7 +13,9 @@ from geonodes import nodes
 node = nodes.Spiral(resolution=None, rotations=None, start_radius=None, end_radius=None, height=None, reverse=None)
 ```
 
-### Args:#### Input socket arguments:
+### Args:
+
+#### Input socket arguments:
 
 - **resolution**: [Integer](Integer.md)
 - **rotations**: [Float](Float.md)

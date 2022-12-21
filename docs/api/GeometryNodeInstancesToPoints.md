@@ -13,7 +13,9 @@ from geonodes import nodes
 node = nodes.InstancesToPoints(instances=None, selection=None, position=None, radius=None)
 ```
 
-### Args:#### Input socket arguments:
+### Args:
+
+#### Input socket arguments:
 
 - **instances**: [Instances](Instances.md)
 - **selection**: [Boolean](Boolean.md)

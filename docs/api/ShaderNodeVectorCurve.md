@@ -13,7 +13,9 @@ from geonodes import nodes
 node = nodes.VectorCurves(fac=None, vector=None)
 ```
 
-### Args:#### Input socket arguments:
+### Args:
+
+#### Input socket arguments:
 
 - **fac**: [Float](Float.md)
 - **vector**: [Vector](Vector.md)

@@ -13,7 +13,9 @@ from geonodes import nodes
 node = nodes.ReplaceMaterial(geometry=None, old=None, new=None)
 ```
 
-### Args:#### Input socket arguments:
+### Args:
+
+#### Input socket arguments:
 
 - **geometry**: [Geometry](Geometry.md)
 - **old**: [Material](Material.md)

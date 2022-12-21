@@ -13,7 +13,9 @@ from geonodes import nodes
 node = nodes.MaterialSelection(material=None)
 ```
 
-### Args:#### Input socket arguments:
+### Args:
+
+#### Input socket arguments:
 
 - **material**: [Material](Material.md)
 

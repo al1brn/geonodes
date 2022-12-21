@@ -13,7 +13,9 @@ from geonodes import nodes
 node = nodes.FloatCurve(factor=None, value=None)
 ```
 
-### Args:#### Input socket arguments:
+### Args:
+
+#### Input socket arguments:
 
 - **factor**: [Float](Float.md)
 - **value**: [Float](Float.md)

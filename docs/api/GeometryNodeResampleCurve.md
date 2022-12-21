@@ -13,7 +13,9 @@ from geonodes import nodes
 node = nodes.ResampleCurve(curve=None, selection=None, count=None, length=None, mode='COUNT')
 ```
 
-### Args:#### Input socket arguments:
+### Args:
+
+#### Input socket arguments:
 
 - **curve**: [Curve](Curve.md)
 - **selection**: [Boolean](Boolean.md)

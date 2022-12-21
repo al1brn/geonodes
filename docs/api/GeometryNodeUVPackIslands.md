@@ -13,7 +13,9 @@ from geonodes import nodes
 node = nodes.PackUvIslands(uv=None, selection=None, margin=None, rotate=None)
 ```
 
-### Args:#### Input socket arguments:
+### Args:
+
+#### Input socket arguments:
 
 - **uv**: [Vector](Vector.md)
 - **selection**: [Boolean](Boolean.md)

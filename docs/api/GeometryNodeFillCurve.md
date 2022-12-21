@@ -13,7 +13,9 @@ from geonodes import nodes
 node = nodes.FillCurve(curve=None, mode='TRIANGLES')
 ```
 
-### Args:#### Input socket arguments:
+### Args:
+
+#### Input socket arguments:
 
 - **curve**: [Curve](Curve.md)
 

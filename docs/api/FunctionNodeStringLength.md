@@ -13,7 +13,9 @@ from geonodes import nodes
 node = nodes.StringLength(string=None)
 ```
 
-### Args:#### Input socket arguments:
+### Args:
+
+#### Input socket arguments:
 
 - **string**: [String](String.md)
 

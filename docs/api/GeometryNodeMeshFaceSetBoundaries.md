@@ -13,7 +13,9 @@ from geonodes import nodes
 node = nodes.FaceSetBoundaries(face_set=None)
 ```
 
-### Args:#### Input socket arguments:
+### Args:
+
+#### Input socket arguments:
 
 - **face_set**: [Integer](Integer.md)
 

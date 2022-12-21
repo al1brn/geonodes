@@ -13,7 +13,9 @@ from geonodes import nodes
 node = nodes.UvSphere(segments=None, rings=None, radius=None)
 ```
 
-### Args:#### Input socket arguments:
+### Args:
+
+#### Input socket arguments:
 
 - **segments**: [Integer](Integer.md)
 - **rings**: [Integer](Integer.md)

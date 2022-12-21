@@ -13,7 +13,9 @@ from geonodes import nodes
 node = nodes.SampleNearest(geometry=None, sample_position=None, domain='POINT')
 ```
 
-### Args:#### Input socket arguments:
+### Args:
+
+#### Input socket arguments:
 
 - **geometry**: [Geometry](Geometry.md)
 - **sample_position**: [Vector](Vector.md)

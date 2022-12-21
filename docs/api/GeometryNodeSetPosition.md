@@ -13,7 +13,9 @@ from geonodes import nodes
 node = nodes.SetPosition(geometry=None, selection=None, position=None, offset=None)
 ```
 
-### Args:#### Input socket arguments:
+### Args:
+
+#### Input socket arguments:
 
 - **geometry**: [Geometry](Geometry.md)
 - **selection**: [Boolean](Boolean.md)
