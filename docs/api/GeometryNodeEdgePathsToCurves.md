@@ -39,5 +39,5 @@ node = nodes.EdgePathsToCurves(mesh=None, start_vertices=None, next_vertex_index
 |------|------------|
  | [edge_paths_to_curves](Mesh.md#edge_paths_to_curves) | `def edge_paths_to_curves(self, start_vertices=None, next_vertex_index=None):` |
 
-<sub>Go to [top](#node-{wnode.bnode.name}) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Edge-Paths-to-Curves) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

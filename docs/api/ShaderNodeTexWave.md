@@ -53,5 +53,5 @@ node = nodes.WaveTexture(vector=None, scale=None, distortion=None, detail=None, 
  | [wave_rings_saw](Texture.md#wave_rings_saw-staticmethod) | `def wave_rings_saw(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X'):` |
  | [wave_rings_triangle](Texture.md#wave_rings_triangle-staticmethod) | `def wave_rings_triangle(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X'):` |
 
-<sub>Go to [top](#node-{wnode.bnode.name}) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Wave-Texture) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

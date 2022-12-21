@@ -32,5 +32,5 @@ node = nodes.ReverseCurve(curve=None, selection=None)
 |------|------------|
  | [reverse](Curve.md#reverse) | `def reverse(self, selection=None):` |
 
-<sub>Go to [top](#node-{wnode.bnode.name}) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Reverse-Curve) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

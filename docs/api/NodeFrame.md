@@ -20,5 +20,5 @@ node = nodes.Frame(label_size=20, shrink=True)
 - **label_size** (int): default = 20
 - **shrink** (bool): default = True
 
-<sub>Go to [top](#node-{wnode.bnode.name}) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Frame) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

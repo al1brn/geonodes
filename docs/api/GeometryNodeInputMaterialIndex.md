@@ -31,5 +31,5 @@ node = nodes.MaterialIndex()
 |------|------------|
  | [material_index](Geometry.md#material_index-property) | `def material_index(self):` |
 
-<sub>Go to [top](#node-{wnode.bnode.name}) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Material-Index) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

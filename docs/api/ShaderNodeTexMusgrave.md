@@ -43,5 +43,5 @@ node = nodes.MusgraveTexture(vector=None, w=None, scale=None, detail=None, dimen
 |------|------------|
  | [musgrave](Texture.md#musgrave-staticmethod) | `def musgrave(vector=None, w=None, scale=None, detail=None, dimension=None, lacunarity=None, offset=None, gain=None, musgrave_dimensions='3D', musgrave_type='FBM'):` |
 
-<sub>Go to [top](#node-{wnode.bnode.name}) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Musgrave-Texture) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

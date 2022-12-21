@@ -74,5 +74,5 @@ node = nodes.InstanceOnPoints(points=None, selection=None, instance=None, pick_i
 |------|------------|
  | [instance_on_points](Vertex.md#instance_on_points) | `def instance_on_points(self, instance=None, pick_instance=None, instance_index=None, rotation=None, scale=None):` |
 
-<sub>Go to [top](#node-{wnode.bnode.name}) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Instance-on-Points) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

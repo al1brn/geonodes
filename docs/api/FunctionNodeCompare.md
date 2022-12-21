@@ -123,5 +123,5 @@ node = nodes.Compare(a=None, b=None, c=None, angle=None, epsilon=None, data_type
  | [direction_equal](Vector.md#direction_equal) | `def direction_equal(self, b=None, angle=None, epsilon=None):` |
  | [direction_not_equal](Vector.md#direction_not_equal) | `def direction_not_equal(self, b=None, angle=None, epsilon=None):` |
 
-<sub>Go to [top](#node-{wnode.bnode.name}) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Compare) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

@@ -36,5 +36,5 @@ node = nodes.Spiral(resolution=None, rotations=None, start_radius=None, end_radi
 |------|------------|
  | [Spiral](Curve.md#Spiral-classmethod) | `def Spiral(cls, resolution=None, rotations=None, start_radius=None, end_radius=None, height=None, reverse=None):` |
 
-<sub>Go to [top](#node-{wnode.bnode.name}) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Spiral) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

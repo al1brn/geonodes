@@ -39,5 +39,5 @@ node = nodes.OffsetPointInCurve(point_index=None, offset=None)
 |------|------------|
  | [offset_point](Curve.md#offset_point) | `def offset_point(self, point_index=None, offset=None):` |
 
-<sub>Go to [top](#node-{wnode.bnode.name}) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Offset-Point-in-Curve) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

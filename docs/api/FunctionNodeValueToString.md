@@ -44,5 +44,5 @@ node = nodes.ValueToString(value=None, decimals=None)
 |------|------------|
  | [to_string](Integer.md#to_string) | `def to_string(self):` |
 
-<sub>Go to [top](#node-{wnode.bnode.name}) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Value-to-String) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

@@ -49,5 +49,5 @@ node = nodes.SetMaterial(geometry=None, selection=None, material=None)
  | [material](Spline.md#material-property) | `def material(self):` |
  | [material](Spline.md#material) | `def material(self, attr_value):` |
 
-<sub>Go to [top](#node-{wnode.bnode.name}) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Set-Material) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

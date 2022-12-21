@@ -38,5 +38,5 @@ node = nodes.CurveOfPoint(point_index=None)
 |------|------------|
  | [curve_of_point](Curve.md#curve_of_point) | `def curve_of_point(self, point_index=None):` |
 
-<sub>Go to [top](#node-{wnode.bnode.name}) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Curve-of-Point) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

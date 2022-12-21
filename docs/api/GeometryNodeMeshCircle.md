@@ -36,5 +36,5 @@ node = nodes.MeshCircle(vertices=None, radius=None, fill_type='NONE')
 |------|------------|
  | [Circle](Mesh.md#Circle-classmethod) | `def Circle(cls, vertices=None, radius=None, fill_type='NONE'):` |
 
-<sub>Go to [top](#node-{wnode.bnode.name}) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Mesh-Circle) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

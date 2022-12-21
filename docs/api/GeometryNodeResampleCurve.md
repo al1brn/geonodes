@@ -50,5 +50,5 @@ node = nodes.ResampleCurve(curve=None, selection=None, count=None, length=None, 
  | [resample_length](Spline.md#resample_length) | `def resample_length(self, length=None):` |
  | [resample_evaluated](Spline.md#resample_evaluated) | `def resample_evaluated(self):` |
 
-<sub>Go to [top](#node-{wnode.bnode.name}) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Resample-Curve) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

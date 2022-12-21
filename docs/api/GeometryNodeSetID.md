@@ -40,5 +40,5 @@ node = nodes.SetID(geometry=None, selection=None, ID=None)
 |------|------------|
  | [set_ID](Geometry.md#set_ID) | `def set_ID(self, selection=None, ID=None):` |
 
-<sub>Go to [top](#node-{wnode.bnode.name}) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Set-ID) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

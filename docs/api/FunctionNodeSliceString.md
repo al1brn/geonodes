@@ -39,5 +39,5 @@ node = nodes.SliceString(string=None, position=None, length=None)
 |------|------------|
  | [slice](String.md#slice) | `def slice(self, position=None, length=None):` |
 
-<sub>Go to [top](#node-{wnode.bnode.name}) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Slice-String) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

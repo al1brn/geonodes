@@ -31,5 +31,5 @@ node = nodes.IsShadeSmooth()
 |------|------------|
  | [is_shade_smooth](Mesh.md#is_shade_smooth) | `def is_shade_smooth(self):` |
 
-<sub>Go to [top](#node-{wnode.bnode.name}) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Is-Shade-Smooth) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

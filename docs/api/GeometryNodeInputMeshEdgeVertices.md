@@ -30,5 +30,5 @@ node = nodes.EdgeVertices()
  | [vertices_index](Edge.md#vertices_index-property) | `def vertices_index(self):` |
  | [vertices_position](Edge.md#vertices_position-property) | `def vertices_position(self):` |
 
-<sub>Go to [top](#node-{wnode.bnode.name}) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Edge-Vertices) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

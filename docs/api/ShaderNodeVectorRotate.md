@@ -44,5 +44,5 @@ node = nodes.VectorRotate(vector=None, center=None, axis=None, angle=None, rotat
  | [rotate_y](Vector.md#rotate_y) | `def rotate_y(self, center=None, angle=None, invert=False):` |
  | [rotate_z](Vector.md#rotate_z) | `def rotate_z(self, center=None, angle=None, invert=False):` |
 
-<sub>Go to [top](#node-{wnode.bnode.name}) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Vector-Rotate) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

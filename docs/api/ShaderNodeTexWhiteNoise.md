@@ -41,5 +41,5 @@ node = nodes.WhiteNoiseTexture(vector=None, w=None, noise_dimensions='3D')
  | [white_noise_3D](Texture.md#white_noise_3D-staticmethod) | `def white_noise_3D(vector=None):` |
  | [white_noise_4D](Texture.md#white_noise_4D-staticmethod) | `def white_noise_4D(vector=None, w=None):` |
 
-<sub>Go to [top](#node-{wnode.bnode.name}) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-White-Noise-Texture) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

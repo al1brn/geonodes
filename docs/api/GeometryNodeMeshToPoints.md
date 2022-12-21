@@ -44,5 +44,5 @@ node = nodes.MeshToPoints(mesh=None, selection=None, position=None, radius=None,
 |------|------------|
  | [to_points](Vertex.md#to_points) | `def to_points(self, position=None, radius=None, mode='VERTICES'):` |
 
-<sub>Go to [top](#node-{wnode.bnode.name}) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Mesh-to-Points) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

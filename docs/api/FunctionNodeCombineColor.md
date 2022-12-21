@@ -48,5 +48,5 @@ node = nodes.CombineColor(red=None, green=None, blue=None, alpha=None, mode='RGB
  | [HSV](Color.md#HSV-classmethod) | `def HSV(cls, hue=None, saturation=None, value=None, alpha=None):` |
  | [HSL](Color.md#HSL-classmethod) | `def HSL(cls, hue=None, saturation=None, lightness=None, alpha=None):` |
 
-<sub>Go to [top](#node-{wnode.bnode.name}) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Combine-Color) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

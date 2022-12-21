@@ -48,5 +48,5 @@ node = nodes.Arc(resolution=None, start=None, middle=None, end=None, radius=None
  | [Arc](Curve.md#Arc-classmethod) | `def Arc(cls, resolution=None, radius=None, start_angle=None, sweep_angle=None, connect_center=None, invert_arc=None):` |
  | [ArcFromPoints](Curve.md#ArcFromPoints-classmethod) | `def ArcFromPoints(cls, resolution=None, start=None, middle=None, end=None, offset_angle=None, connect_center=None, invert_arc=None):` |
 
-<sub>Go to [top](#node-{wnode.bnode.name}) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Arc) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

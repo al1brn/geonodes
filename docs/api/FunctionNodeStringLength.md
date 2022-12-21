@@ -37,5 +37,5 @@ node = nodes.StringLength(string=None)
 |------|------------|
  | [length](String.md#length-property) | `def length(self):` |
 
-<sub>Go to [top](#node-{wnode.bnode.name}) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-String-Length) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

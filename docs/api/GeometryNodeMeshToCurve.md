@@ -38,5 +38,5 @@ node = nodes.MeshToCurve(mesh=None, selection=None)
 |------|------------|
  | [to_curve](Mesh.md#to_curve) | `def to_curve(self, selection=None):` |
 
-<sub>Go to [top](#node-{wnode.bnode.name}) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Mesh-to-Curve) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

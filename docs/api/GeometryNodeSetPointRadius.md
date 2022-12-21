@@ -39,5 +39,5 @@ node = nodes.SetPointRadius(points=None, selection=None, radius=None)
 |------|------------|
  | [set_point_radius](Points.md#set_point_radius) | `def set_point_radius(self, selection=None, radius=None):` |
 
-<sub>Go to [top](#node-{wnode.bnode.name}) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Set-Point-Radius) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

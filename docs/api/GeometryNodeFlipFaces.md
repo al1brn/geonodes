@@ -38,5 +38,5 @@ node = nodes.FlipFaces(mesh=None, selection=None)
 |------|------------|
  | [flip_faces](Mesh.md#flip_faces) | `def flip_faces(self, selection=None):` |
 
-<sub>Go to [top](#node-{wnode.bnode.name}) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Flip-Faces) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

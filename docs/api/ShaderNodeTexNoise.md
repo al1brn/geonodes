@@ -45,5 +45,5 @@ node = nodes.NoiseTexture(vector=None, w=None, scale=None, detail=None, roughnes
  | [noise_3D](Texture.md#noise_3D-staticmethod) | `def noise_3D(vector=None, scale=None, detail=None, roughness=None, distortion=None):` |
  | [noise_4D](Texture.md#noise_4D-staticmethod) | `def noise_4D(vector=None, w=None, scale=None, detail=None, roughness=None, distortion=None):` |
 
-<sub>Go to [top](#node-{wnode.bnode.name}) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Noise-Texture) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

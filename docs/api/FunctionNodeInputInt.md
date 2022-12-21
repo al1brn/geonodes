@@ -31,5 +31,5 @@ node = nodes.Integer(integer=0)
 |------|------------|
  | [Integer](Integer.md#Integer-classmethod) | `def Integer(cls, integer=0):` |
 
-<sub>Go to [top](#node-{wnode.bnode.name}) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Integer) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

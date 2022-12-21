@@ -33,5 +33,5 @@ node = nodes.SeparateXyz(vector=None)
 |------|------------|
  | [separate](Vector.md#separate-property) | `def separate(self):` |
 
-<sub>Go to [top](#node-{wnode.bnode.name}) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Separate-XYZ) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

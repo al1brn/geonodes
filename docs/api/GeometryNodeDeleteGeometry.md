@@ -75,5 +75,5 @@ node = nodes.DeleteGeometry(geometry=None, selection=None, domain='POINT', mode=
  | [delete_edges](Vertex.md#delete_edges) | `def delete_edges(self):` |
  | [delete_faces](Vertex.md#delete_faces) | `def delete_faces(self):` |
 
-<sub>Go to [top](#node-{wnode.bnode.name}) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Delete-Geometry) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

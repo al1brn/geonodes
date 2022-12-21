@@ -118,5 +118,5 @@ node = nodes.DomainSize(geometry=None, component='MESH')
 |------|------------|
  | [domain_size](Vertex.md#domain_size) | `def __len__(self):` |
 
-<sub>Go to [top](#node-{wnode.bnode.name}) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Domain-Size) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

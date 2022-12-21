@@ -42,5 +42,5 @@ node = nodes.SampleNearest(geometry=None, sample_position=None, domain='POINT')
 |------|------------|
  | [sample_nearest](Geometry.md#sample_nearest) | `def sample_nearest(self, sample_position=None, domain='POINT'):` |
 
-<sub>Go to [top](#node-{wnode.bnode.name}) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Sample-Nearest) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

@@ -37,5 +37,5 @@ node = nodes.GeometryToInstance(*geometry)
 |------|------------|
  | [to_instance](Geometry.md#to_instance) | `def to_instance(*geometry):` |
 
-<sub>Go to [top](#node-{wnode.bnode.name}) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Geometry-to-Instance) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
