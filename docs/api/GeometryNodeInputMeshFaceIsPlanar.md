@@ -3,7 +3,21 @@
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/face_is_planar.html)
- - [api reference]({node.blender_python_ref})
+- [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshFaceIsPlanar.html)
+- geonodes name: `WNode`
+- bl_idname: `GeometryNodeInputMeshFaceIsPlanar`
 
 ```python
-node = FaceIsPlanar(threshold=None)```
+from geonodes import nodes
+
+node = nodes.FaceIsPlanar(threshold=None)
+```
+
+#### Input socket arguments:
+
+- threshold: Float
+
+#### Output sockets:
+
+- **planar** : Boolean
+

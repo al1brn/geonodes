@@ -3,7 +3,17 @@
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/radius.html)
- - [api reference]({node.blender_python_ref})
+- [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputRadius.html)
+- geonodes name: `WNode`
+- bl_idname: `GeometryNodeInputRadius`
 
 ```python
-node = Radius()```
+from geonodes import nodes
+
+node = nodes.Radius()
+```
+
+#### Output sockets:
+
+- **radius** : Float
+

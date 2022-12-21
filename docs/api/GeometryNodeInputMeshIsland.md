@@ -3,7 +3,18 @@
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/mesh_island.html)
- - [api reference]({node.blender_python_ref})
+- [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshIsland.html)
+- geonodes name: `WNode`
+- bl_idname: `GeometryNodeInputMeshIsland`
 
 ```python
-node = MeshIsland()```
+from geonodes import nodes
+
+node = nodes.MeshIsland()
+```
+
+#### Output sockets:
+
+- **island_index** : Integer
+- **island_count** : Integer
+

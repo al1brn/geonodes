@@ -3,7 +3,23 @@
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/set_curve_radius.html)
- - [api reference]({node.blender_python_ref})
+- [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetCurveRadius.html)
+- geonodes name: `WNode`
+- bl_idname: `GeometryNodeSetCurveRadius`
 
 ```python
-node = SetCurveRadius(curve=None, selection=None, radius=None)```
+from geonodes import nodes
+
+node = nodes.SetCurveRadius(curve=None, selection=None, radius=None)
+```
+
+#### Input socket arguments:
+
+- curve: Curve
+- selection: Boolean
+- radius: Float
+
+#### Output sockets:
+
+- **curve** : Curve
+

@@ -3,7 +3,17 @@
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/self_object.html)
- - [api reference]({node.blender_python_ref})
+- [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSelfObject.html)
+- geonodes name: `WNode`
+- bl_idname: `GeometryNodeSelfObject`
 
 ```python
-node = SelfObject()```
+from geonodes import nodes
+
+node = nodes.SelfObject()
+```
+
+#### Output sockets:
+
+- **self_object** : Object
+

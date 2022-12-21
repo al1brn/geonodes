@@ -3,7 +3,22 @@
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/subdivide_mesh.html)
- - [api reference]({node.blender_python_ref})
+- [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSubdivideMesh.html)
+- geonodes name: `WNode`
+- bl_idname: `GeometryNodeSubdivideMesh`
 
 ```python
-node = SubdivideMesh(mesh=None, level=None)```
+from geonodes import nodes
+
+node = nodes.SubdivideMesh(mesh=None, level=None)
+```
+
+#### Input socket arguments:
+
+- mesh: Mesh
+- level: Integer
+
+#### Output sockets:
+
+- **mesh** : Mesh
+

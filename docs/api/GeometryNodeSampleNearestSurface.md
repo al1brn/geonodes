@@ -3,7 +3,30 @@
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/sample_nearest_surface.html)
- - [api reference]({node.blender_python_ref})
+- [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSampleNearestSurface.html)
+- geonodes name: `WNode`
+- bl_idname: `GeometryNodeSampleNearestSurface`
 
 ```python
-node = SampleNearestSurface(mesh=None, value=None, sample_position=None, data_type='FLOAT')```
+from geonodes import nodes
+
+node = nodes.SampleNearestSurface(mesh=None, value=None, sample_position=None, data_type='FLOAT')
+```
+
+#### Input socket arguments:
+
+- mesh: Mesh
+- value: `data_type` dependant
+- sample_position: Vector
+
+#### Node parameter arguments:
+
+- data_type (str): Node parameter, default = 'FLOAT' in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN')
+
+#### Output sockets:
+
+- **value** : ``data_type`` dependant
+
+#### Shared sockets:
+
+- Driving parameter : ``data_type`` in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN')- Input sockets  : ['value']- Output sockets : ['value']

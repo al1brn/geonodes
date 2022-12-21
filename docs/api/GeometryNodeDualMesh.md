@@ -3,7 +3,22 @@
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/dual_mesh.html)
- - [api reference]({node.blender_python_ref})
+- [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeDualMesh.html)
+- geonodes name: `WNode`
+- bl_idname: `GeometryNodeDualMesh`
 
 ```python
-node = DualMesh(mesh=None, keep_boundaries=None)```
+from geonodes import nodes
+
+node = nodes.DualMesh(mesh=None, keep_boundaries=None)
+```
+
+#### Input socket arguments:
+
+- mesh: Mesh
+- keep_boundaries: Boolean
+
+#### Output sockets:
+
+- **dual_mesh** : Geometry
+

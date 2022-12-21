@@ -3,7 +3,18 @@
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/scene_time.html)
- - [api reference]({node.blender_python_ref})
+- [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputSceneTime.html)
+- geonodes name: `WNode`
+- bl_idname: `GeometryNodeInputSceneTime`
 
 ```python
-node = SceneTime()```
+from geonodes import nodes
+
+node = nodes.SceneTime()
+```
+
+#### Output sockets:
+
+- **seconds** : Float
+- **frame** : Float
+

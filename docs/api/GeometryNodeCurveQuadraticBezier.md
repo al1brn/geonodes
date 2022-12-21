@@ -3,7 +3,24 @@
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve_primitives/quadratic_bezier.html)
- - [api reference]({node.blender_python_ref})
+- [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveQuadraticBezier.html)
+- geonodes name: `WNode`
+- bl_idname: `GeometryNodeCurveQuadraticBezier`
 
 ```python
-node = QuadraticBezier(resolution=None, start=None, middle=None, end=None)```
+from geonodes import nodes
+
+node = nodes.QuadraticBezier(resolution=None, start=None, middle=None, end=None)
+```
+
+#### Input socket arguments:
+
+- resolution: Integer
+- start: Vector
+- middle: Vector
+- end: Vector
+
+#### Output sockets:
+
+- **curve** : Curve
+

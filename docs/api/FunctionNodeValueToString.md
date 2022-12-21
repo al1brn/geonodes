@@ -3,7 +3,22 @@
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/value_to_string.html)
- - [api reference]({node.blender_python_ref})
+- [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeValueToString.html)
+- geonodes name: `WNode`
+- bl_idname: `FunctionNodeValueToString`
 
 ```python
-node = ValueToString(value=None, decimals=None)```
+from geonodes import nodes
+
+node = nodes.ValueToString(value=None, decimals=None)
+```
+
+#### Input socket arguments:
+
+- value: Float
+- decimals: Integer
+
+#### Output sockets:
+
+- **string** : String
+

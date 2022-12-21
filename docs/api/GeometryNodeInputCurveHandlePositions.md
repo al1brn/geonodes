@@ -3,7 +3,22 @@
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/curve_handle_position.html)
- - [api reference]({node.blender_python_ref})
+- [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputCurveHandlePositions.html)
+- geonodes name: `WNode`
+- bl_idname: `GeometryNodeInputCurveHandlePositions`
 
 ```python
-node = CurveHandlePositions(relative=None)```
+from geonodes import nodes
+
+node = nodes.CurveHandlePositions(relative=None)
+```
+
+#### Input socket arguments:
+
+- relative: Boolean
+
+#### Output sockets:
+
+- **left** : Vector
+- **right** : Vector
+

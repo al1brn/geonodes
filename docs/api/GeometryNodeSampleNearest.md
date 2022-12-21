@@ -3,7 +3,26 @@
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/sample_nearest.html)
- - [api reference]({node.blender_python_ref})
+- [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSampleNearest.html)
+- geonodes name: `WNode`
+- bl_idname: `GeometryNodeSampleNearest`
 
 ```python
-node = SampleNearest(geometry=None, sample_position=None, domain='POINT')```
+from geonodes import nodes
+
+node = nodes.SampleNearest(geometry=None, sample_position=None, domain='POINT')
+```
+
+#### Input socket arguments:
+
+- geometry: Geometry
+- sample_position: Vector
+
+#### Node parameter arguments:
+
+- domain (str): Node parameter, default = 'POINT' in ('POINT', 'EDGE', 'FACE', 'CORNER')
+
+#### Output sockets:
+
+- **index** : Integer
+

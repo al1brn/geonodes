@@ -3,7 +3,17 @@
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/is_viewport.html)
- - [api reference]({node.blender_python_ref})
+- [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeIsViewport.html)
+- geonodes name: `WNode`
+- bl_idname: `GeometryNodeIsViewport`
 
 ```python
-node = IsViewport()```
+from geonodes import nodes
+
+node = nodes.IsViewport()
+```
+
+#### Output sockets:
+
+- **is_viewport** : Boolean
+

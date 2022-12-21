@@ -3,7 +3,27 @@
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/delete_geometry.html)
- - [api reference]({node.blender_python_ref})
+- [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeDeleteGeometry.html)
+- geonodes name: `WNode`
+- bl_idname: `GeometryNodeDeleteGeometry`
 
 ```python
-node = DeleteGeometry(geometry=None, selection=None, domain='POINT', mode='ALL')```
+from geonodes import nodes
+
+node = nodes.DeleteGeometry(geometry=None, selection=None, domain='POINT', mode='ALL')
+```
+
+#### Input socket arguments:
+
+- geometry: Geometry
+- selection: Boolean
+
+#### Node parameter arguments:
+
+- domain (str): Node parameter, default = 'POINT' in ('POINT', 'EDGE', 'FACE', 'CURVE', 'INSTANCE')
+- mode (str): Node parameter, default = 'ALL' in ('ALL', 'EDGE_FACE', 'ONLY_FACE')
+
+#### Output sockets:
+
+- **geometry** : Geometry
+
