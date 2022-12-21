@@ -33,8 +33,6 @@ def Boolean(cls, boolean=False):
 #### Args:
 - boolean (bool): False
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_FunctionNodeInputBool.webp)
-
 #### Returns:
 - socket `boolean`
 
@@ -72,8 +70,6 @@ def b_and(self, boolean1=None):
 #### Args:
 - boolean1: Boolean
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_FunctionNodeBooleanMath.webp)
-
 #### Returns:
 - socket `boolean`
 
@@ -86,8 +82,6 @@ def b_not(self):
 
 ```
 > Node: [Boolean Math](FunctionNodeBooleanMath.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/boolean_math.html) - [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html)
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_FunctionNodeBooleanMath.webp)
 
 #### Returns:
 - socket `boolean`
@@ -105,8 +99,6 @@ def b_or(self, boolean1=None):
 #### Args:
 - boolean1: Boolean
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_FunctionNodeBooleanMath.webp)
-
 #### Returns:
 - socket `boolean`
 
@@ -122,8 +114,6 @@ def imply(self, boolean1=None):
 
 #### Args:
 - boolean1: Boolean
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_FunctionNodeBooleanMath.webp)
 
 #### Returns:
 - socket `boolean`
@@ -141,8 +131,6 @@ def nand(self, boolean1=None):
 #### Args:
 - boolean1: Boolean
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_FunctionNodeBooleanMath.webp)
-
 #### Returns:
 - socket `boolean`
 
@@ -159,8 +147,6 @@ def nimply(self, boolean1=None):
 #### Args:
 - boolean1: Boolean
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_FunctionNodeBooleanMath.webp)
-
 #### Returns:
 - socket `boolean`
 
@@ -176,8 +162,6 @@ def nor(self, boolean1=None):
 
 #### Args:
 - boolean1: Boolean
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_FunctionNodeBooleanMath.webp)
 
 #### Returns:
 - socket `boolean`
@@ -196,8 +180,6 @@ def switch(self, switch=None, true=None):
 - switch: Boolean
 - true: Boolean
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeSwitch.webp)
-
 #### Returns:
 - socket `output`
 
@@ -214,8 +196,6 @@ def xnor(self, boolean1=None):
 #### Args:
 - boolean1: Boolean
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_FunctionNodeBooleanMath.webp)
-
 #### Returns:
 - socket `boolean`
 
@@ -231,8 +211,6 @@ def xor(self, boolean1=None):
 
 #### Args:
 - boolean1: Boolean
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_FunctionNodeBooleanMath.webp)
 
 #### Returns:
 - socket `boolean`

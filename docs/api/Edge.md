@@ -35,8 +35,6 @@ def angle(self):
 ```
 > Node: [Edge Angle](GeometryNodeInputMeshEdgeAngle.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/edge_angle.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshEdgeAngle.html)
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeInputMeshEdgeAngle.webp)
-
 #### Returns:
 - node with sockets ['unsigned_angle', 'signed_angle']
 
@@ -49,8 +47,6 @@ def delete_all(self):
 
 ```
 > Node: [Delete Geometry](GeometryNodeDeleteGeometry.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/delete_geometry.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeDeleteGeometry.html)
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeDeleteGeometry.webp)
 
 #### Returns:
 - self
@@ -65,8 +61,6 @@ def delete_edges(self):
 ```
 > Node: [Delete Geometry](GeometryNodeDeleteGeometry.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/delete_geometry.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeDeleteGeometry.html)
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeDeleteGeometry.webp)
-
 #### Returns:
 - self
 
@@ -79,8 +73,6 @@ def delete_faces(self):
 
 ```
 > Node: [Delete Geometry](GeometryNodeDeleteGeometry.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/delete_geometry.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeDeleteGeometry.html)
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeDeleteGeometry.webp)
 
 #### Returns:
 - self
@@ -98,8 +90,6 @@ def edge_paths_to_curves(self, start_vertices=None, next_vertex_index=None):
 #### Args:
 - start_vertices: Boolean
 - next_vertex_index: Integer
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeEdgePathsToCurves.webp)
 
 #### Returns:
 - socket `curves` of class Curve
@@ -138,8 +128,6 @@ def __len__(self):
 - geometry: Geometry
 - component (str): 'MESH' in [MESH, POINTCLOUD, CURVE, INSTANCES]
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeAttributeDomainSize.webp)
-
 #### Returns:
 - node with sockets ['point_count', 'edge_count', 'face_count', 'face_corner_count', 'spline_count', 'instance_count']
 
@@ -152,8 +140,6 @@ def neighbors(self):
 
 ```
 > Node: [Edge Neighbors](GeometryNodeInputMeshEdgeNeighbors.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/edge_neighbors.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshEdgeNeighbors.html)
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeInputMeshEdgeNeighbors.webp)
 
 #### Returns:
 - socket `face_count`
@@ -173,8 +159,6 @@ def scale_single_axis(self, scale=None, center=None, axis=None):
 - center: Vector
 - axis: Vector
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeScaleElements.webp)
-
 #### Returns:
 - self
 
@@ -192,8 +176,6 @@ def scale_uniform(self, scale=None, center=None):
 - scale: Float
 - center: Vector
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeScaleElements.webp)
-
 #### Returns:
 - self
 
@@ -206,8 +188,6 @@ def signed_angle(self):
 
 ```
 > Node: [Edge Angle](GeometryNodeInputMeshEdgeAngle.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/edge_angle.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshEdgeAngle.html)
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeInputMeshEdgeAngle.webp)
 
 #### Returns:
 - socket `signed_angle`
@@ -222,8 +202,6 @@ def split(self):
 ```
 > Node: [Split Edges](GeometryNodeSplitEdges.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/split_edges.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSplitEdges.html)
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeSplitEdges.webp)
-
 #### Returns:
 - self
 
@@ -236,8 +214,6 @@ def to_curve(self):
 
 ```
 > Node: [Mesh to Curve](GeometryNodeMeshToCurve.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/mesh_to_curve.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshToCurve.html)
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeMeshToCurve.webp)
 
 #### Returns:
 - socket `curve` of class Curve
@@ -252,8 +228,6 @@ def unsigned_angle(self):
 ```
 > Node: [Edge Angle](GeometryNodeInputMeshEdgeAngle.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/edge_angle.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshEdgeAngle.html)
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeInputMeshEdgeAngle.webp)
-
 #### Returns:
 - socket `unsigned_angle`
 
@@ -266,8 +240,6 @@ def vertices(self):
 
 ```
 > Node: [Edge Vertices](GeometryNodeInputMeshEdgeVertices.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/edge_vertices.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshEdgeVertices.html)
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeInputMeshEdgeVertices.webp)
 
 #### Returns:
 - node with sockets ['vertex_index_1', 'vertex_index_2', 'position_1', 'position_2']

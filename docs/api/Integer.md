@@ -111,8 +111,6 @@ def Integer(cls, integer=0):
 #### Args:
 - integer (int): 0
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_FunctionNodeInputInt.webp)
-
 #### Returns:
 - socket `integer`
 
@@ -128,8 +126,6 @@ def abs(self, clamp=False):
 
 #### Args:
 - clamp (bool): False
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeMath.webp)
 
 #### Returns:
 - socket `value`
@@ -147,8 +143,6 @@ def absolute(self, clamp=False):
 #### Args:
 - clamp (bool): False
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeMath.webp)
-
 #### Returns:
 - socket `value`
 
@@ -164,8 +158,6 @@ def add(self, value):
 
 #### Args:
 - value: Float or Integer or Vector
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeMath.webp)
 
 #### Returns:
 - self + value
@@ -184,8 +176,6 @@ def arccos(self, value=None, clamp=False):
 - value: Float
 - clamp (bool): False
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeMath.webp)
-
 #### Returns:
 - socket `value`
 
@@ -202,8 +192,6 @@ def arccosine(self, value=None, clamp=False):
 #### Args:
 - value: Float
 - clamp (bool): False
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeMath.webp)
 
 #### Returns:
 - socket `value`
@@ -222,8 +210,6 @@ def arcsin(self, value=None, clamp=False):
 - value: Float
 - clamp (bool): False
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeMath.webp)
-
 #### Returns:
 - socket `value`
 
@@ -240,8 +226,6 @@ def arcsine(self, value=None, clamp=False):
 #### Args:
 - value: Float
 - clamp (bool): False
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeMath.webp)
 
 #### Returns:
 - socket `value`
@@ -260,8 +244,6 @@ def arctan(self, value=None, clamp=False):
 - value: Float
 - clamp (bool): False
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeMath.webp)
-
 #### Returns:
 - socket `value`
 
@@ -278,8 +260,6 @@ def arctan2(self, value1=None, clamp=False):
 #### Args:
 - value1: Float
 - clamp (bool): False
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeMath.webp)
 
 #### Returns:
 - socket `value`
@@ -298,8 +278,6 @@ def arctangent(self, value=None, clamp=False):
 - value: Float
 - clamp (bool): False
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeMath.webp)
-
 #### Returns:
 - socket `value`
 
@@ -316,8 +294,6 @@ def compare(self, b=None, operation='GREATER_THAN'):
 #### Args:
 - b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 - operation (str): 'GREATER_THAN' in [LESS_THAN, LESS_EQUAL, GREATER_THAN, GREATER_EQUAL, EQUAL, NOT_EQUAL]
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_FunctionNodeCompare.webp)
 
 #### Returns:
 - socket `result`
@@ -336,8 +312,6 @@ def cos(self, value=None, clamp=False):
 - value: Float
 - clamp (bool): False
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeMath.webp)
-
 #### Returns:
 - socket `value`
 
@@ -354,8 +328,6 @@ def cosh(self, value=None, clamp=False):
 #### Args:
 - value: Float
 - clamp (bool): False
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeMath.webp)
 
 #### Returns:
 - socket `value`
@@ -374,8 +346,6 @@ def cosine(self, value=None, clamp=False):
 - value: Float
 - clamp (bool): False
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeMath.webp)
-
 #### Returns:
 - socket `value`
 
@@ -391,8 +361,6 @@ def multiply(self, value):
 
 #### Args:
 - value: Float
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeMath.webp)
 
 #### Returns:
 - self / value
@@ -410,8 +378,6 @@ def multiply(self, value):
 #### Args:
 - value: Float
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeMath.webp)
-
 #### Returns:
 - self / value
 
@@ -427,8 +393,6 @@ def equal(self, b=None):
 
 #### Args:
 - b: ['Float', 'Integer', 'Vector', 'Color', 'String']
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_FunctionNodeCompare.webp)
 
 #### Returns:
 - socket `result`
@@ -446,8 +410,6 @@ def exp(self, clamp=False):
 #### Args:
 - clamp (bool): False
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeMath.webp)
-
 #### Returns:
 - socket `value`
 
@@ -463,8 +425,6 @@ def exponent(self, clamp=False):
 
 #### Args:
 - clamp (bool): False
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeMath.webp)
 
 #### Returns:
 - socket `value`
@@ -482,8 +442,6 @@ def fact(self, clamp=False):
 #### Args:
 - clamp (bool): False
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeMath.webp)
-
 #### Returns:
 - socket `value`
 
@@ -499,8 +457,6 @@ def fraction(self, clamp=False):
 
 #### Args:
 - clamp (bool): False
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeMath.webp)
 
 #### Returns:
 - socket `value`
@@ -518,8 +474,6 @@ def greater_equal(self, b=None):
 #### Args:
 - b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_FunctionNodeCompare.webp)
-
 #### Returns:
 - socket `result`
 
@@ -535,8 +489,6 @@ def greater_than(self, b=None):
 
 #### Args:
 - b: ['Float', 'Integer', 'Vector', 'Color', 'String']
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_FunctionNodeCompare.webp)
 
 #### Returns:
 - socket `result`
@@ -554,8 +506,6 @@ def inverse_sqrt(self, clamp=False):
 #### Args:
 - clamp (bool): False
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeMath.webp)
-
 #### Returns:
 - socket `value`
 
@@ -572,8 +522,6 @@ def less_equal(self, b=None):
 #### Args:
 - b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_FunctionNodeCompare.webp)
-
 #### Returns:
 - socket `result`
 
@@ -589,8 +537,6 @@ def less_than(self, b=None):
 
 #### Args:
 - b: ['Float', 'Integer', 'Vector', 'Color', 'String']
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_FunctionNodeCompare.webp)
 
 #### Returns:
 - socket `result`
@@ -609,8 +555,6 @@ def log(self, base=None, clamp=False):
 - base: Float
 - clamp (bool): False
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeMath.webp)
-
 #### Returns:
 - socket `value`
 
@@ -628,8 +572,6 @@ def logarithm(self, base=None, clamp=False):
 - base: Float
 - clamp (bool): False
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeMath.webp)
-
 #### Returns:
 - socket `value`
 
@@ -645,8 +587,6 @@ def math_ceil(self, clamp=False):
 
 #### Args:
 - clamp (bool): False
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeMath.webp)
 
 #### Returns:
 - socket `value`
@@ -666,8 +606,6 @@ def math_compare(self, value=None, epsilon=None, clamp=False):
 - epsilon: Float
 - clamp (bool): False
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeMath.webp)
-
 #### Returns:
 - socket `value`
 
@@ -683,8 +621,6 @@ def math_floor(self, clamp=False):
 
 #### Args:
 - clamp (bool): False
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeMath.webp)
 
 #### Returns:
 - socket `value`
@@ -703,8 +639,6 @@ def math_greater_than(self, threshold=None, clamp=False):
 - threshold: Float
 - clamp (bool): False
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeMath.webp)
-
 #### Returns:
 - socket `value`
 
@@ -722,8 +656,6 @@ def math_less_than(self, threshold=None, clamp=False):
 - threshold: Float
 - clamp (bool): False
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeMath.webp)
-
 #### Returns:
 - socket `value`
 
@@ -739,8 +671,6 @@ def math_round(self, clamp=False):
 
 #### Args:
 - clamp (bool): False
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeMath.webp)
 
 #### Returns:
 - socket `value`
@@ -758,8 +688,6 @@ def math_trunc(self, clamp=False):
 #### Args:
 - clamp (bool): False
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeMath.webp)
-
 #### Returns:
 - socket `value`
 
@@ -775,8 +703,6 @@ def math_truncate(self, clamp=False):
 
 #### Args:
 - clamp (bool): False
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeMath.webp)
 
 #### Returns:
 - socket `value`
@@ -795,8 +721,6 @@ def max(self, value=None, clamp=False):
 - value: Float
 - clamp (bool): False
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeMath.webp)
-
 #### Returns:
 - socket `value`
 
@@ -813,8 +737,6 @@ def maximum(self, value=None, clamp=False):
 #### Args:
 - value: Float
 - clamp (bool): False
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeMath.webp)
 
 #### Returns:
 - socket `value`
@@ -833,8 +755,6 @@ def min(self, value=None, clamp=False):
 - value: Float
 - clamp (bool): False
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeMath.webp)
-
 #### Returns:
 - socket `value`
 
@@ -851,8 +771,6 @@ def minimum(self, value=None, clamp=False):
 #### Args:
 - value: Float
 - clamp (bool): False
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeMath.webp)
 
 #### Returns:
 - socket `value`
@@ -871,8 +789,6 @@ def modulo(self, value=None, clamp=False):
 - value: Float
 - clamp (bool): False
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeMath.webp)
-
 #### Returns:
 - socket `value`
 
@@ -888,8 +804,6 @@ def multiply(self, value):
 
 #### Args:
 - value: Float or Integer or Vector
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeMath.webp)
 
 #### Returns:
 - self * value
@@ -909,8 +823,6 @@ def mul_add(self, multiplier=None, addend=None, clamp=False):
 - addend: Float
 - clamp (bool): False
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeMath.webp)
-
 #### Returns:
 - socket `value`
 
@@ -926,8 +838,6 @@ def multiply(self, value):
 
 #### Args:
 - value: Float or Integer or Vector
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeMath.webp)
 
 #### Returns:
 - self * value
@@ -947,8 +857,6 @@ def multiply_add(self, multiplier=None, addend=None, clamp=False):
 - addend: Float
 - clamp (bool): False
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeMath.webp)
-
 #### Returns:
 - socket `value`
 
@@ -964,8 +872,6 @@ def not_equal(self, b=None):
 
 #### Args:
 - b: ['Float', 'Integer', 'Vector', 'Color', 'String']
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_FunctionNodeCompare.webp)
 
 #### Returns:
 - socket `result`
@@ -984,8 +890,6 @@ def ping_pong(self, scale=None, clamp=False):
 - scale: Float
 - clamp (bool): False
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeMath.webp)
-
 #### Returns:
 - socket `value`
 
@@ -1002,8 +906,6 @@ def pow(self, exponent=None, clamp=False):
 #### Args:
 - exponent: Float
 - clamp (bool): False
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeMath.webp)
 
 #### Returns:
 - socket `value`
@@ -1022,8 +924,6 @@ def power(self, exponent=None, clamp=False):
 - exponent: Float
 - clamp (bool): False
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeMath.webp)
-
 #### Returns:
 - socket `value`
 
@@ -1039,8 +939,6 @@ def sign(self, clamp=False):
 
 #### Args:
 - clamp (bool): False
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeMath.webp)
 
 #### Returns:
 - socket `value`
@@ -1059,8 +957,6 @@ def sin(self, value=None, clamp=False):
 - value: Float
 - clamp (bool): False
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeMath.webp)
-
 #### Returns:
 - socket `value`
 
@@ -1078,8 +974,6 @@ def sine(self, value=None, clamp=False):
 - value: Float
 - clamp (bool): False
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeMath.webp)
-
 #### Returns:
 - socket `value`
 
@@ -1096,8 +990,6 @@ def sinh(self, value=None, clamp=False):
 #### Args:
 - value: Float
 - clamp (bool): False
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeMath.webp)
 
 #### Returns:
 - socket `value`
@@ -1117,8 +1009,6 @@ def smooth_maximum(self, value=None, distance=None, clamp=False):
 - distance: Float
 - clamp (bool): False
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeMath.webp)
-
 #### Returns:
 - socket `value`
 
@@ -1137,8 +1027,6 @@ def smooth_minimum(self, value=None, distance=None, clamp=False):
 - distance: Float
 - clamp (bool): False
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeMath.webp)
-
 #### Returns:
 - socket `value`
 
@@ -1156,8 +1044,6 @@ def snap(self, increment=None, clamp=False):
 - increment: Float
 - clamp (bool): False
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeMath.webp)
-
 #### Returns:
 - socket `value`
 
@@ -1173,8 +1059,6 @@ def sqrt(self, clamp=False):
 
 #### Args:
 - clamp (bool): False
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeMath.webp)
 
 #### Returns:
 - socket `value`
@@ -1192,8 +1076,6 @@ def add(self, value):
 #### Args:
 - value: Float or Integer or Vector
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeMath.webp)
-
 #### Returns:
 - self - value
 
@@ -1209,8 +1091,6 @@ def add(self, value):
 
 #### Args:
 - value: Float or Integer or Vector
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeMath.webp)
 
 #### Returns:
 - self - value
@@ -1229,8 +1109,6 @@ def switch(self, switch=None, true=None):
 - switch: Boolean
 - true: Integer
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeSwitch.webp)
-
 #### Returns:
 - socket `output`
 
@@ -1247,8 +1125,6 @@ def tan(self, value=None, clamp=False):
 #### Args:
 - value: Float
 - clamp (bool): False
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeMath.webp)
 
 #### Returns:
 - socket `value`
@@ -1267,8 +1143,6 @@ def tangent(self, value=None, clamp=False):
 - value: Float
 - clamp (bool): False
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeMath.webp)
-
 #### Returns:
 - socket `value`
 
@@ -1286,8 +1160,6 @@ def tanh(self, value=None, clamp=False):
 - value: Float
 - clamp (bool): False
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeMath.webp)
-
 #### Returns:
 - socket `value`
 
@@ -1303,8 +1175,6 @@ def to_degrees(self, clamp=False):
 
 #### Args:
 - clamp (bool): False
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeMath.webp)
 
 #### Returns:
 - socket `value`
@@ -1322,8 +1192,6 @@ def to_radians(self, clamp=False):
 #### Args:
 - clamp (bool): False
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeMath.webp)
-
 #### Returns:
 - socket `value`
 
@@ -1336,8 +1204,6 @@ def to_string(self):
 
 ```
 > Node: [Value to String](FunctionNodeValueToString.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/value_to_string.html) - [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeValueToString.html)
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_FunctionNodeValueToString.webp)
 
 #### Returns:
 - socket `string`
@@ -1356,8 +1222,6 @@ def wrap(self, max=None, min=None, clamp=False):
 - max: Float
 - min: Float
 - clamp (bool): False
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeMath.webp)
 
 #### Returns:
 - socket `value`

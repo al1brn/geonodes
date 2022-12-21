@@ -35,8 +35,6 @@ def cyclic(self):
 ```
 > Node: [Is Spline Cyclic](GeometryNodeInputSplineCyclic.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/is_spline_cyclic.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputSplineCyclic.html)
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeInputSplineCyclic.webp)
-
 #### Returns:
 - socket `cyclic`
 
@@ -55,8 +53,6 @@ Node implemented as property setter.
 #### Args:
 - attr_value: cyclic
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeSetSplineCyclic.webp)
-
 
 <sub>Go to [top](#class-Spline) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
@@ -71,8 +67,6 @@ def __len__(self):
 #### Args:
 - geometry: Geometry
 - component (str): 'MESH' in [MESH, POINTCLOUD, CURVE, INSTANCES]
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeAttributeDomainSize.webp)
 
 #### Returns:
 - node with sockets ['point_count', 'edge_count', 'face_count', 'face_corner_count', 'spline_count', 'instance_count']
@@ -105,8 +99,6 @@ def material(self):
 'material' is a write only property.
 Raise an exception if attempt to read.
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeSetMaterial.webp)
-
 
 <sub>Go to [top](#class-Spline) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
@@ -123,8 +115,6 @@ Node implemented as property setter.
 #### Args:
 - attr_value: material
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeSetMaterial.webp)
-
 
 <sub>Go to [top](#class-Spline) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
@@ -135,8 +125,6 @@ def normal(self):
 
 ```
 > Node: [Normal](GeometryNodeInputNormal.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/normal.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputNormal.html)
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeInputNormal.webp)
 
 #### Returns:
 - socket `normal`
@@ -155,8 +143,6 @@ Node implemented as property setter.
 
 #### Args:
 - attr_value: mode
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeSetCurveNormal.webp)
 
 
 <sub>Go to [top](#class-Spline) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
@@ -193,8 +179,6 @@ def resample(self, count=None, length=None, mode='COUNT'):
 - length: Float
 - mode (str): 'COUNT' in [EVALUATED, COUNT, LENGTH]
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeResampleCurve.webp)
-
 #### Returns:
 - self
 
@@ -211,8 +195,6 @@ def resample_count(self, count=None):
 #### Args:
 - count: Integer
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeResampleCurve.webp)
-
 #### Returns:
 - self
 
@@ -225,8 +207,6 @@ def resample_evaluated(self):
 
 ```
 > Node: [Resample Curve](GeometryNodeResampleCurve.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/resample_curve.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeResampleCurve.html)
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeResampleCurve.webp)
 
 #### Returns:
 - self
@@ -244,8 +224,6 @@ def resample_length(self, length=None):
 #### Args:
 - length: Float
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeResampleCurve.webp)
-
 #### Returns:
 - self
 
@@ -258,8 +236,6 @@ def resolution(self):
 
 ```
 > Node: [Spline Resolution](GeometryNodeInputSplineResolution.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/spline_resolution.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputSplineResolution.html)
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeInputSplineResolution.webp)
 
 #### Returns:
 - socket `resolution`
@@ -279,8 +255,6 @@ Node implemented as property setter.
 #### Args:
 - attr_value: resolution
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeSetSplineResolution.webp)
-
 
 <sub>Go to [top](#class-Spline) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
@@ -294,8 +268,6 @@ def set_cyclic(self, cyclic=None):
 
 #### Args:
 - cyclic: Boolean
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeSetSplineCyclic.webp)
 
 #### Returns:
 - self
@@ -313,8 +285,6 @@ def set_material(self, material=None):
 #### Args:
 - material: Material
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeSetMaterial.webp)
-
 #### Returns:
 - self
 
@@ -330,8 +300,6 @@ def set_normal(self, mode='MINIMUM_TWIST'):
 
 #### Args:
 - mode (str): 'MINIMUM_TWIST' in [MINIMUM_TWIST, Z_UP]
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeSetCurveNormal.webp)
 
 #### Returns:
 - self
@@ -349,8 +317,6 @@ def set_resolution(self, resolution=None):
 #### Args:
 - resolution: Integer
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeSetSplineResolution.webp)
-
 #### Returns:
 - self
 
@@ -366,8 +332,6 @@ def set_type(self, spline_type='POLY'):
 
 #### Args:
 - spline_type (str): 'POLY' in [CATMULL_ROM, POLY, BEZIER, NURBS]
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeCurveSplineType.webp)
 
 #### Returns:
 - self
@@ -385,8 +349,6 @@ def type(self):
 'type' is a write only property.
 Raise an exception if attempt to read.
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeCurveSplineType.webp)
-
 
 <sub>Go to [top](#class-Spline) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
@@ -402,8 +364,6 @@ Node implemented as property setter.
 
 #### Args:
 - attr_value: spline_type
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeCurveSplineType.webp)
 
 
 <sub>Go to [top](#class-Spline) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>

@@ -61,8 +61,6 @@ def Color(cls):
 ```
 > Node: [Color](FunctionNodeInputColor.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/color.html) - [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeInputColor.html)
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_FunctionNodeInputColor.webp)
-
 #### Returns:
 - socket `color`
 
@@ -82,8 +80,6 @@ def HSL(cls, hue=None, saturation=None, lightness=None, alpha=None):
 - lightness: Float
 - alpha: Float
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_FunctionNodeCombineColor.webp)
-
 #### Returns:
 - socket `color`
 
@@ -102,8 +98,6 @@ def HSV(cls, hue=None, saturation=None, value=None, alpha=None):
 - saturation: Float
 - value: Float
 - alpha: Float
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_FunctionNodeCombineColor.webp)
 
 #### Returns:
 - socket `color`
@@ -145,8 +139,6 @@ def RGB(cls, red=None, green=None, blue=None, alpha=None):
 - blue: Float
 - alpha: Float
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_FunctionNodeCombineColor.webp)
-
 #### Returns:
 - socket `color`
 
@@ -160,8 +152,6 @@ def alpha(self):
 ```
 > Node: [Separate Color](FunctionNodeSeparateColor.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html) - [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html)
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_FunctionNodeSeparateColor.webp)
-
 #### Returns:
 - socket `alpha`
 
@@ -174,8 +164,6 @@ def blue(self):
 
 ```
 > Node: [Separate Color](FunctionNodeSeparateColor.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html) - [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html)
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_FunctionNodeSeparateColor.webp)
 
 #### Returns:
 - socket `blue`
@@ -192,8 +180,6 @@ def brighter(self, b=None):
 
 #### Args:
 - b: ['Float', 'Integer', 'Vector', 'Color', 'String']
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_FunctionNodeCompare.webp)
 
 #### Returns:
 - socket `result`
@@ -213,8 +199,6 @@ def compare(self, b=None, epsilon=None, operation='GREATER_THAN'):
 - epsilon: Float
 - operation (str): 'GREATER_THAN' in [LESS_THAN, LESS_EQUAL, GREATER_THAN, GREATER_EQUAL, EQUAL, NOT_EQUAL]
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_FunctionNodeCompare.webp)
-
 #### Returns:
 - socket `result`
 
@@ -231,8 +215,6 @@ def darker(self, b=None):
 #### Args:
 - b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_FunctionNodeCompare.webp)
-
 #### Returns:
 - socket `result`
 
@@ -250,8 +232,6 @@ def equal(self, b=None, epsilon=None):
 - b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 - epsilon: Float
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_FunctionNodeCompare.webp)
-
 #### Returns:
 - socket `result`
 
@@ -268,8 +248,6 @@ def equal(self, b=None, epsilon=None):
 #### Args:
 - b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 - epsilon: Float
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_FunctionNodeCompare.webp)
 
 #### Returns:
 - socket `result`
@@ -283,8 +261,6 @@ def green(self):
 
 ```
 > Node: [Separate Color](FunctionNodeSeparateColor.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html) - [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html)
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_FunctionNodeSeparateColor.webp)
 
 #### Returns:
 - socket `green`
@@ -329,8 +305,6 @@ def hue(self):
 ```
 > Node: [Separate Color](FunctionNodeSeparateColor.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html) - [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html)
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_FunctionNodeSeparateColor.webp)
-
 #### Returns:
 - socket `red`
 
@@ -343,8 +317,6 @@ def lightness(self):
 
 ```
 > Node: [Separate Color](FunctionNodeSeparateColor.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html) - [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html)
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_FunctionNodeSeparateColor.webp)
 
 #### Returns:
 - socket `blue`
@@ -366,8 +338,6 @@ def mix(self, factor=None, color=None, blend_type='MIX', clamp_factor=True, clam
 - clamp_factor (bool): True
 - clamp_result (bool): False
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeMix.webp)
-
 #### Returns:
 - socket `result`
 
@@ -386,8 +356,6 @@ def mix_add(self, factor=None, color=None, clamp_factor=True, clamp_result=False
 - color: ['Float', 'Vector', 'Color']
 - clamp_factor (bool): True
 - clamp_result (bool): False
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeMix.webp)
 
 #### Returns:
 - socket `result`
@@ -408,8 +376,6 @@ def mix_burn(self, factor=None, color=None, clamp_factor=True, clamp_result=Fals
 - clamp_factor (bool): True
 - clamp_result (bool): False
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeMix.webp)
-
 #### Returns:
 - socket `result`
 
@@ -428,8 +394,6 @@ def mix_color(self, factor=None, color=None, clamp_factor=True, clamp_result=Fal
 - color: ['Float', 'Vector', 'Color']
 - clamp_factor (bool): True
 - clamp_result (bool): False
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeMix.webp)
 
 #### Returns:
 - socket `result`
@@ -450,8 +414,6 @@ def mix_darken(self, factor=None, color=None, clamp_factor=True, clamp_result=Fa
 - clamp_factor (bool): True
 - clamp_result (bool): False
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeMix.webp)
-
 #### Returns:
 - socket `result`
 
@@ -470,8 +432,6 @@ def mix_difference(self, factor=None, color=None, clamp_factor=True, clamp_resul
 - color: ['Float', 'Vector', 'Color']
 - clamp_factor (bool): True
 - clamp_result (bool): False
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeMix.webp)
 
 #### Returns:
 - socket `result`
@@ -492,8 +452,6 @@ def mix_divide(self, factor=None, color=None, clamp_factor=True, clamp_result=Fa
 - clamp_factor (bool): True
 - clamp_result (bool): False
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeMix.webp)
-
 #### Returns:
 - socket `result`
 
@@ -512,8 +470,6 @@ def mix_dodge(self, factor=None, color=None, clamp_factor=True, clamp_result=Fal
 - color: ['Float', 'Vector', 'Color']
 - clamp_factor (bool): True
 - clamp_result (bool): False
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeMix.webp)
 
 #### Returns:
 - socket `result`
@@ -534,8 +490,6 @@ def mix_hue(self, factor=None, color=None, clamp_factor=True, clamp_result=False
 - clamp_factor (bool): True
 - clamp_result (bool): False
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeMix.webp)
-
 #### Returns:
 - socket `result`
 
@@ -554,8 +508,6 @@ def mix_lighten(self, factor=None, color=None, clamp_factor=True, clamp_result=F
 - color: ['Float', 'Vector', 'Color']
 - clamp_factor (bool): True
 - clamp_result (bool): False
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeMix.webp)
 
 #### Returns:
 - socket `result`
@@ -576,8 +528,6 @@ def mix_linear_light(self, factor=None, color=None, clamp_factor=True, clamp_res
 - clamp_factor (bool): True
 - clamp_result (bool): False
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeMix.webp)
-
 #### Returns:
 - socket `result`
 
@@ -596,8 +546,6 @@ def mix_multiply(self, factor=None, color=None, clamp_factor=True, clamp_result=
 - color: ['Float', 'Vector', 'Color']
 - clamp_factor (bool): True
 - clamp_result (bool): False
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeMix.webp)
 
 #### Returns:
 - socket `result`
@@ -618,8 +566,6 @@ def mix_overlay(self, factor=None, color=None, clamp_factor=True, clamp_result=F
 - clamp_factor (bool): True
 - clamp_result (bool): False
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeMix.webp)
-
 #### Returns:
 - socket `result`
 
@@ -638,8 +584,6 @@ def mix_saturation(self, factor=None, color=None, clamp_factor=True, clamp_resul
 - color: ['Float', 'Vector', 'Color']
 - clamp_factor (bool): True
 - clamp_result (bool): False
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeMix.webp)
 
 #### Returns:
 - socket `result`
@@ -660,8 +604,6 @@ def mix_screen(self, factor=None, color=None, clamp_factor=True, clamp_result=Fa
 - clamp_factor (bool): True
 - clamp_result (bool): False
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeMix.webp)
-
 #### Returns:
 - socket `result`
 
@@ -680,8 +622,6 @@ def mix_soft_light(self, factor=None, color=None, clamp_factor=True, clamp_resul
 - color: ['Float', 'Vector', 'Color']
 - clamp_factor (bool): True
 - clamp_result (bool): False
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeMix.webp)
 
 #### Returns:
 - socket `result`
@@ -702,8 +642,6 @@ def mix_subtract(self, factor=None, color=None, clamp_factor=True, clamp_result=
 - clamp_factor (bool): True
 - clamp_result (bool): False
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeMix.webp)
-
 #### Returns:
 - socket `result`
 
@@ -723,8 +661,6 @@ def mix_value(self, factor=None, color=None, clamp_factor=True, clamp_result=Fal
 - clamp_factor (bool): True
 - clamp_result (bool): False
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeMix.webp)
-
 #### Returns:
 - socket `result`
 
@@ -737,8 +673,6 @@ def red(self):
 
 ```
 > Node: [Separate Color](FunctionNodeSeparateColor.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html) - [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html)
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_FunctionNodeSeparateColor.webp)
 
 #### Returns:
 - socket `red`
@@ -768,8 +702,6 @@ def rgb_curves(self, fac=None):
 ```
 > Node: [RGB Curves](ShaderNodeRGBCurve.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/rgb_curves.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeRGBCurve.html)
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeRGBCurve.webp)
-
 #### Returns:
 - node with sockets ['color']
 
@@ -782,8 +714,6 @@ def saturation(self):
 
 ```
 > Node: [Separate Color](FunctionNodeSeparateColor.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html) - [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html)
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_FunctionNodeSeparateColor.webp)
 
 #### Returns:
 - socket `green`
@@ -802,8 +732,6 @@ def switch(self, switch=None, true=None):
 - switch: Boolean
 - true: Color
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeSwitch.webp)
-
 #### Returns:
 - socket `output`
 
@@ -816,8 +744,6 @@ def value(self):
 
 ```
 > Node: [Separate Color](FunctionNodeSeparateColor.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html) - [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html)
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_FunctionNodeSeparateColor.webp)
 
 #### Returns:
 - socket `blue`

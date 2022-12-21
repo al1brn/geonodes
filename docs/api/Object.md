@@ -46,8 +46,6 @@ def Self(cls):
 ```
 > Node: [Self Object](GeometryNodeSelfObject.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/self_object.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSelfObject.html)
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeSelfObject.webp)
-
 #### Returns:
 - socket `self_object`
 
@@ -65,8 +63,6 @@ def geometry(self, object=None, as_instance=None, transform_space='ORIGINAL'):
 - object: Object
 - as_instance: Boolean
 - transform_space (str): 'ORIGINAL' in [ORIGINAL, RELATIVE]
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeObjectInfo.webp)
 
 #### Returns:
 - socket `geometry`
@@ -86,8 +82,6 @@ def info(self, object=None, as_instance=None, transform_space='ORIGINAL'):
 - as_instance: Boolean
 - transform_space (str): 'ORIGINAL' in [ORIGINAL, RELATIVE]
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeObjectInfo.webp)
-
 #### Returns:
 - node with sockets ['location', 'rotation', 'scale', 'geometry']
 
@@ -105,8 +99,6 @@ def location(self, object=None, as_instance=None, transform_space='ORIGINAL'):
 - object: Object
 - as_instance: Boolean
 - transform_space (str): 'ORIGINAL' in [ORIGINAL, RELATIVE]
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeObjectInfo.webp)
 
 #### Returns:
 - socket `location`
@@ -126,8 +118,6 @@ def rotation(self, object=None, as_instance=None, transform_space='ORIGINAL'):
 - as_instance: Boolean
 - transform_space (str): 'ORIGINAL' in [ORIGINAL, RELATIVE]
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeObjectInfo.webp)
-
 #### Returns:
 - socket `rotation`
 
@@ -146,8 +136,6 @@ def scale(self, object=None, as_instance=None, transform_space='ORIGINAL'):
 - as_instance: Boolean
 - transform_space (str): 'ORIGINAL' in [ORIGINAL, RELATIVE]
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeObjectInfo.webp)
-
 #### Returns:
 - socket `scale`
 
@@ -164,8 +152,6 @@ def switch(self, switch=None, true=None):
 #### Args:
 - switch: Boolean
 - true: Object
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeSwitch.webp)
 
 #### Returns:
 - socket `output`

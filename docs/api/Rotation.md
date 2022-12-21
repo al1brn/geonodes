@@ -29,8 +29,6 @@ def AxisAngle(cls, rotation=None, axis=None, angle=None, space='OBJECT'):
 - angle: Float
 - space (str): 'OBJECT' in [OBJECT, LOCAL]
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_FunctionNodeRotateEuler.webp)
-
 #### Returns:
 - socket `rotation`
 
@@ -48,8 +46,6 @@ def Euler(cls, rotation=None, rotate_by=None, space='OBJECT'):
 - rotation: Vector
 - rotate_by: Vector
 - space (str): 'OBJECT' in [OBJECT, LOCAL]
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_FunctionNodeRotateEuler.webp)
 
 #### Returns:
 - socket `rotation`
@@ -70,8 +66,6 @@ def align_to_vector(self, factor=None, vector=None, axis='X', pivot_axis='AUTO')
 - axis (str): 'X' in [X, Y, Z]
 - pivot_axis (str): 'AUTO' in [AUTO, X, Y, Z]
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_FunctionNodeAlignEulerToVector.webp)
-
 #### Returns:
 - self
 
@@ -90,8 +84,6 @@ def rotate_axis_angle(self, axis=None, angle=None, space='OBJECT'):
 - angle: Float
 - space (str): 'OBJECT' in [OBJECT, LOCAL]
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_FunctionNodeRotateEuler.webp)
-
 #### Returns:
 - socket `rotation`
 
@@ -108,8 +100,6 @@ def rotate_euler(self, rotate_by=None, space='OBJECT'):
 #### Args:
 - rotate_by: Vector
 - space (str): 'OBJECT' in [OBJECT, LOCAL]
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_FunctionNodeRotateEuler.webp)
 
 #### Returns:
 - socket `rotation`

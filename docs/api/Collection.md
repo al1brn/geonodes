@@ -44,8 +44,6 @@ def switch(self, switch=None, true=None):
 - switch: Boolean
 - true: Collection
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeSwitch.webp)
-
 #### Returns:
 - socket `output`
 

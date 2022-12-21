@@ -69,8 +69,6 @@ def Arc(cls, resolution=None, radius=None, start_angle=None, sweep_angle=None, c
 - connect_center: Boolean
 - invert_arc: Boolean
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeCurveArc.webp)
-
 #### Returns:
 - socket `curve`
 
@@ -93,8 +91,6 @@ def ArcFromPoints(cls, resolution=None, start=None, middle=None, end=None, offse
 - connect_center: Boolean
 - invert_arc: Boolean
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeCurveArc.webp)
-
 #### Returns:
 - node with sockets ['curve', 'center', 'normal', 'radius']
 
@@ -111,8 +107,6 @@ def Circle(cls, resolution=None, radius=None):
 #### Args:
 - resolution: Integer
 - radius: Float
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeCurvePrimitiveCircle.webp)
 
 #### Returns:
 - socket `curve`
@@ -133,8 +127,6 @@ def CircleFromPoints(cls, resolution=None, point_1=None, point_2=None, point_3=N
 - point_2: Vector
 - point_3: Vector
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeCurvePrimitiveCircle.webp)
-
 #### Returns:
 - node with sockets ['curve', 'center']
 
@@ -151,8 +143,6 @@ def Line(cls, start=None, end=None):
 #### Args:
 - start: Vector
 - end: Vector
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeCurvePrimitiveLine.webp)
 
 #### Returns:
 - socket `curve`
@@ -172,8 +162,6 @@ def LineDirection(cls, start=None, direction=None, length=None):
 - direction: Vector
 - length: Float
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeCurvePrimitiveLine.webp)
-
 #### Returns:
 - socket `curve`
 
@@ -192,8 +180,6 @@ def QuadraticBezier(cls, resolution=None, start=None, middle=None, end=None):
 - start: Vector
 - middle: Vector
 - end: Vector
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeCurveQuadraticBezier.webp)
 
 #### Returns:
 - socket `curve`
@@ -222,8 +208,6 @@ def Quadrilateral(cls, width=None, height=None, bottom_width=None, top_width=Non
 - point_4: Vector
 - mode (str): 'RECTANGLE' in [RECTANGLE, PARALLELOGRAM, TRAPEZOID, KITE, POINTS]
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeCurvePrimitiveQuadrilateral.webp)
-
 #### Returns:
 - socket `curve`
 
@@ -245,8 +229,6 @@ def Spiral(cls, resolution=None, rotations=None, start_radius=None, end_radius=N
 - height: Float
 - reverse: Boolean
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeCurveSpiral.webp)
-
 #### Returns:
 - socket `curve`
 
@@ -265,8 +247,6 @@ def Star(cls, points=None, inner_radius=None, outer_radius=None, twist=None):
 - inner_radius: Float
 - outer_radius: Float
 - twist: Float
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeCurveStar.webp)
 
 #### Returns:
 - node with sockets ['curve', 'outer_points']
@@ -288,8 +268,6 @@ def bezier_segment(cls, resolution=None, start=None, start_handle=None, end_hand
 - end_handle: Vector
 - end: Vector
 - mode (str): 'POSITION' in [POSITION, OFFSET]
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeCurvePrimitiveBezierSegment.webp)
 
 #### Returns:
 - socket `curve`
@@ -322,8 +300,6 @@ def deform_on_surface(self):
 ```
 > Node: [Deform Curves on Surface](GeometryNodeDeformCurvesOnSurface.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/deform_curves_on_surface.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeDeformCurvesOnSurface.html)
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeDeformCurvesOnSurface.webp)
-
 #### Returns:
 - self
 
@@ -336,8 +312,6 @@ def domain_size(self):
 
 ```
 > Node: [Domain Size](GeometryNodeAttributeDomainSize.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html)
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeAttributeDomainSize.webp)
 
 #### Returns:
 - node with sockets ['point_count', 'edge_count', 'face_count', 'face_corner_count', 'spline_count', 'instance_count']
@@ -356,8 +330,6 @@ def fill(self, curve=None, mode='TRIANGLES'):
 - curve: Curve
 - mode (str): 'TRIANGLES' in [TRIANGLES, NGONS]
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeFillCurve.webp)
-
 #### Returns:
 - socket `mesh` of class Mesh
 
@@ -374,8 +346,6 @@ def fill_ngons(self, curve=None):
 #### Args:
 - curve: Curve
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeFillCurve.webp)
-
 #### Returns:
 - socket `mesh` of class Mesh
 
@@ -391,8 +361,6 @@ def fill_triangles(self, curve=None):
 
 #### Args:
 - curve: Curve
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeFillCurve.webp)
 
 #### Returns:
 - socket `mesh` of class Mesh
@@ -413,8 +381,6 @@ def fillet(self, count=None, radius=None, limit_radius=None, mode='BEZIER'):
 - limit_radius: Boolean
 - mode (str): 'BEZIER' in [BEZIER, POLY]
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeFilletCurve.webp)
-
 #### Returns:
 - self
 
@@ -431,8 +397,6 @@ def fillet_bezier(self, radius=None, limit_radius=None):
 #### Args:
 - radius: Float
 - limit_radius: Boolean
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeFilletCurve.webp)
 
 #### Returns:
 - self
@@ -451,8 +415,6 @@ def fillet_poly(self, count=None, radius=None, limit_radius=None):
 - count: Integer
 - radius: Float
 - limit_radius: Boolean
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeFilletCurve.webp)
 
 #### Returns:
 - self
@@ -475,8 +437,6 @@ def instance_on_points(self, selection=None, instance=None, pick_instance=None, 
 - rotation: Vector
 - scale: Vector
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeInstanceOnPoints.webp)
-
 #### Returns:
 - socket `instances`
 
@@ -489,8 +449,6 @@ def length(self):
 
 ```
 > Node: [Curve Length](GeometryNodeCurveLength.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/curve_length.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveLength.html)
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeCurveLength.webp)
 
 #### Returns:
 - socket `length`
@@ -523,8 +481,6 @@ def point_count(self):
 
 ```
 > Node: [Domain Size](GeometryNodeAttributeDomainSize.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html)
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeAttributeDomainSize.webp)
 
 #### Returns:
 - socket `point_count`
@@ -565,8 +521,6 @@ def resample(self, selection=None, count=None, length=None, mode='COUNT'):
 - length: Float
 - mode (str): 'COUNT' in [EVALUATED, COUNT, LENGTH]
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeResampleCurve.webp)
-
 #### Returns:
 - self
 
@@ -584,8 +538,6 @@ def resample_count(self, selection=None, count=None):
 - selection: Boolean
 - count: Integer
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeResampleCurve.webp)
-
 #### Returns:
 - self
 
@@ -601,8 +553,6 @@ def resample_evaluated(self, selection=None):
 
 #### Args:
 - selection: Boolean
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeResampleCurve.webp)
 
 #### Returns:
 - self
@@ -621,8 +571,6 @@ def resample_length(self, selection=None, length=None):
 - selection: Boolean
 - length: Float
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeResampleCurve.webp)
-
 #### Returns:
 - self
 
@@ -638,8 +586,6 @@ def reverse(self, selection=None):
 
 #### Args:
 - selection: Boolean
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeReverseCurve.webp)
 
 #### Returns:
 - self
@@ -663,8 +609,6 @@ def sample(self, value=None, factor=None, length=None, curve_index=None, data_ty
 - mode (str): 'FACTOR' in [FACTOR, LENGTH]
 - use_all_curves (bool): False
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeSampleCurve.webp)
-
 #### Returns:
 - self
 
@@ -677,8 +621,6 @@ def spline_count(self):
 
 ```
 > Node: [Domain Size](GeometryNodeAttributeDomainSize.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html)
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeAttributeDomainSize.webp)
 
 #### Returns:
 - socket `spline_count`
@@ -696,8 +638,6 @@ def subdivide(self, cuts=None):
 #### Args:
 - cuts: Integer
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeSubdivideCurve.webp)
-
 #### Returns:
 - self
 
@@ -714,8 +654,6 @@ def to_mesh(self, profile_curve=None, fill_caps=None):
 #### Args:
 - profile_curve: Geometry
 - fill_caps: Boolean
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeCurveToMesh.webp)
 
 #### Returns:
 - socket `mesh` of class Mesh
@@ -804,8 +742,6 @@ def trim(self, start=None, end=None, mode='FACTOR'):
 #### Args:
 - mode (str): 'FACTOR' in [FACTOR, LENGTH]
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeTrimCurve.webp)
-
 #### Returns:
 - self
 
@@ -823,8 +759,6 @@ def trim_factor(self, start=None, end=None):
 - start: Float
 - end: Float
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeTrimCurve.webp)
-
 #### Returns:
 - self
 
@@ -841,8 +775,6 @@ def trim_length(self, start=None, end=None):
 #### Args:
 - start: Float
 - end: Float
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeTrimCurve.webp)
 
 #### Returns:
 - self

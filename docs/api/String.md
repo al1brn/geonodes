@@ -55,8 +55,6 @@ def LineBreak():
 ```
 > Node: [Special Characters](FunctionNodeInputSpecialCharacters.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/special_characters.html) - [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeInputSpecialCharacters.html)
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_FunctionNodeInputSpecialCharacters.webp)
-
 #### Returns:
 - socket `line_break`
 
@@ -73,8 +71,6 @@ def String(cls, string=''):
 #### Args:
 - string (str): ''
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_FunctionNodeInputString.webp)
-
 #### Returns:
 - socket `string`
 
@@ -87,8 +83,6 @@ def Tab():
 
 ```
 > Node: [Special Characters](FunctionNodeInputSpecialCharacters.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/special_characters.html) - [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeInputSpecialCharacters.html)
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_FunctionNodeInputSpecialCharacters.webp)
 
 #### Returns:
 - socket `tab`
@@ -105,8 +99,6 @@ def equal(self, b=None):
 
 #### Args:
 - b: ['Float', 'Integer', 'Vector', 'Color', 'String']
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_FunctionNodeCompare.webp)
 
 #### Returns:
 - socket `result`
@@ -125,8 +117,6 @@ def join(*strings, delimiter=None):
 - strings: <m>String
 - delimiter: String
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeStringJoin.webp)
-
 #### Returns:
 - socket `string`
 
@@ -139,8 +129,6 @@ def length(self):
 
 ```
 > Node: [String Length](FunctionNodeStringLength.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/string_length.html) - [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeStringLength.html)
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_FunctionNodeStringLength.webp)
 
 #### Returns:
 - socket `length`
@@ -157,8 +145,6 @@ def not_equal(self, b=None):
 
 #### Args:
 - b: ['Float', 'Integer', 'Vector', 'Color', 'String']
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_FunctionNodeCompare.webp)
 
 #### Returns:
 - socket `result`
@@ -177,8 +163,6 @@ def replace(self, find=None, replace=None):
 - find: String
 - replace: String
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_FunctionNodeReplaceString.webp)
-
 #### Returns:
 - socket `string`
 
@@ -196,8 +180,6 @@ def slice(self, position=None, length=None):
 - position: Integer
 - length: Integer
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_FunctionNodeSliceString.webp)
-
 #### Returns:
 - socket `string`
 
@@ -214,8 +196,6 @@ def switch(self, switch=None, true=None):
 #### Args:
 - switch: Boolean
 - true: String
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeSwitch.webp)
 
 #### Returns:
 - socket `output`

@@ -331,8 +331,6 @@ def musgrave(vector=None, w=None, scale=None, detail=None, dimension=None, lacun
 - musgrave_dimensions (str): '3D' in [1D, 2D, 3D, 4D]
 - musgrave_type (str): 'FBM' in [MULTIFRACTAL, RIDGED_MULTIFRACTAL, HYBRID_MULTIFRACTAL, FBM, HETERO_TERRAIN]
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexMusgrave.webp)
-
 #### Returns:
 - socket `fac`
 
@@ -462,8 +460,6 @@ def switch(self, switch=None, true=None):
 #### Args:
 - switch: Boolean
 - true: Texture
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeSwitch.webp)
 
 #### Returns:
 - socket `output`

@@ -116,8 +116,6 @@ def Combine(cls, x=None, y=None, z=None):
 - y: Float
 - z: Float
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeCombineXYZ.webp)
-
 #### Returns:
 - socket `vector`
 
@@ -155,8 +153,6 @@ def Vector(cls, vector=[0.0, 0.0, 0.0]):
 #### Args:
 - vector (list): [0.0, 0.0, 0.0]
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_FunctionNodeInputVector.webp)
-
 #### Returns:
 - socket `vector`
 
@@ -170,8 +166,6 @@ def abs(self):
 ```
 > Node: [Vector Math](ShaderNodeVectorMath.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeVectorMath.webp)
-
 #### Returns:
 - socket `vector`
 
@@ -184,8 +178,6 @@ def absolute(self):
 
 ```
 > Node: [Vector Math](ShaderNodeVectorMath.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeVectorMath.webp)
 
 #### Returns:
 - socket `vector`
@@ -202,8 +194,6 @@ def add(self, vector=None):
 
 #### Args:
 - vector: Vector
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeVectorMath.webp)
 
 #### Returns:
 - socket `vector`
@@ -224,8 +214,6 @@ def align_euler_to_vector(self, factor=None, vector=None, axis='X', pivot_axis='
 - axis (str): 'X' in [X, Y, Z]
 - pivot_axis (str): 'AUTO' in [AUTO, X, Y, Z]
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_FunctionNodeAlignEulerToVector.webp)
-
 #### Returns:
 - self
 
@@ -243,8 +231,6 @@ def average_equal(self, b=None, epsilon=None):
 - b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 - epsilon: Float
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_FunctionNodeCompare.webp)
-
 #### Returns:
 - socket `result`
 
@@ -260,8 +246,6 @@ def average_greater_equal(self, b=None):
 
 #### Args:
 - b: ['Float', 'Integer', 'Vector', 'Color', 'String']
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_FunctionNodeCompare.webp)
 
 #### Returns:
 - socket `result`
@@ -279,8 +263,6 @@ def average_greater_than(self, b=None):
 #### Args:
 - b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_FunctionNodeCompare.webp)
-
 #### Returns:
 - socket `result`
 
@@ -297,8 +279,6 @@ def average_less_equal(self, b=None):
 #### Args:
 - b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_FunctionNodeCompare.webp)
-
 #### Returns:
 - socket `result`
 
@@ -314,8 +294,6 @@ def average_less_than(self, b=None):
 
 #### Args:
 - b: ['Float', 'Integer', 'Vector', 'Color', 'String']
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_FunctionNodeCompare.webp)
 
 #### Returns:
 - socket `result`
@@ -334,8 +312,6 @@ def average_not_equal(self, b=None, epsilon=None):
 - b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 - epsilon: Float
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_FunctionNodeCompare.webp)
-
 #### Returns:
 - socket `result`
 
@@ -348,8 +324,6 @@ def ceil(self):
 
 ```
 > Node: [Vector Math](ShaderNodeVectorMath.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeVectorMath.webp)
 
 #### Returns:
 - socket `vector`
@@ -372,8 +346,6 @@ def compare(self, b=None, c=None, angle=None, epsilon=None, mode='ELEMENT', oper
 - mode (str): 'ELEMENT' in [ELEMENT, LENGTH, AVERAGE, DOT_PRODUCT, DIRECTION]
 - operation (str): 'GREATER_THAN' in [LESS_THAN, LESS_EQUAL, GREATER_THAN, GREATER_EQUAL, EQUAL, NOT_EQUAL]
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_FunctionNodeCompare.webp)
-
 #### Returns:
 - socket `result`
 
@@ -387,8 +359,6 @@ def cos(self):
 ```
 > Node: [Vector Math](ShaderNodeVectorMath.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeVectorMath.webp)
-
 #### Returns:
 - socket `vector`
 
@@ -401,8 +371,6 @@ def cosine(self):
 
 ```
 > Node: [Vector Math](ShaderNodeVectorMath.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeVectorMath.webp)
 
 #### Returns:
 - socket `vector`
@@ -420,8 +388,6 @@ def cross(self, vector=None):
 #### Args:
 - vector: Vector
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeVectorMath.webp)
-
 #### Returns:
 - socket `vector`
 
@@ -438,8 +404,6 @@ def cross_product(self, vector=None):
 #### Args:
 - vector: Vector
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeVectorMath.webp)
-
 #### Returns:
 - socket `vector`
 
@@ -455,8 +419,6 @@ def curves(self, fac=None):
 
 #### Args:
 - fac: Float
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeVectorCurve.webp)
 
 #### Returns:
 - socket `vector`
@@ -476,8 +438,6 @@ def direction_equal(self, b=None, angle=None, epsilon=None):
 - angle: Float
 - epsilon: Float
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_FunctionNodeCompare.webp)
-
 #### Returns:
 - socket `result`
 
@@ -494,8 +454,6 @@ def direction_greater_equal(self, b=None, angle=None):
 #### Args:
 - b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 - angle: Float
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_FunctionNodeCompare.webp)
 
 #### Returns:
 - socket `result`
@@ -514,8 +472,6 @@ def direction_greater_than(self, b=None, angle=None):
 - b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 - angle: Float
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_FunctionNodeCompare.webp)
-
 #### Returns:
 - socket `result`
 
@@ -533,8 +489,6 @@ def direction_less_equal(self, b=None, angle=None):
 - b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 - angle: Float
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_FunctionNodeCompare.webp)
-
 #### Returns:
 - socket `result`
 
@@ -551,8 +505,6 @@ def direction_less_than(self, b=None, angle=None):
 #### Args:
 - b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 - angle: Float
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_FunctionNodeCompare.webp)
 
 #### Returns:
 - socket `result`
@@ -572,8 +524,6 @@ def direction_not_equal(self, b=None, angle=None, epsilon=None):
 - angle: Float
 - epsilon: Float
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_FunctionNodeCompare.webp)
-
 #### Returns:
 - socket `result`
 
@@ -589,8 +539,6 @@ def distance(self, vector=None):
 
 #### Args:
 - vector: Vector
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeVectorMath.webp)
 
 #### Returns:
 - socket `value`
@@ -608,8 +556,6 @@ def div(self, vector=None):
 #### Args:
 - vector: Vector
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeVectorMath.webp)
-
 #### Returns:
 - socket `vector`
 
@@ -625,8 +571,6 @@ def divide(self, vector=None):
 
 #### Args:
 - vector: Vector
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeVectorMath.webp)
 
 #### Returns:
 - socket `vector`
@@ -644,8 +588,6 @@ def dot(self, vector=None):
 #### Args:
 - vector: Vector
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeVectorMath.webp)
-
 #### Returns:
 - socket `value`
 
@@ -661,8 +603,6 @@ def dot_product(self, vector=None):
 
 #### Args:
 - vector: Vector
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeVectorMath.webp)
 
 #### Returns:
 - socket `value`
@@ -682,8 +622,6 @@ def dot_product_equal(self, b=None, c=None, epsilon=None):
 - c: Float
 - epsilon: Float
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_FunctionNodeCompare.webp)
-
 #### Returns:
 - socket `result`
 
@@ -700,8 +638,6 @@ def dot_product_greater_equal(self, b=None, c=None):
 #### Args:
 - b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 - c: Float
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_FunctionNodeCompare.webp)
 
 #### Returns:
 - socket `result`
@@ -720,8 +656,6 @@ def dot_product_greater_than(self, b=None, c=None):
 - b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 - c: Float
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_FunctionNodeCompare.webp)
-
 #### Returns:
 - socket `result`
 
@@ -739,8 +673,6 @@ def dot_product_less_equal(self, b=None, c=None):
 - b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 - c: Float
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_FunctionNodeCompare.webp)
-
 #### Returns:
 - socket `result`
 
@@ -757,8 +689,6 @@ def dot_product_less_than(self, b=None, c=None):
 #### Args:
 - b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 - c: Float
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_FunctionNodeCompare.webp)
 
 #### Returns:
 - socket `result`
@@ -778,8 +708,6 @@ def dot_product_not_equal(self, b=None, c=None, epsilon=None):
 - c: Float
 - epsilon: Float
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_FunctionNodeCompare.webp)
-
 #### Returns:
 - socket `result`
 
@@ -797,8 +725,6 @@ def elements_equal(self, b=None, epsilon=None):
 - b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 - epsilon: Float
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_FunctionNodeCompare.webp)
-
 #### Returns:
 - socket `result`
 
@@ -814,8 +740,6 @@ def elements_greater_equal(self, b=None):
 
 #### Args:
 - b: ['Float', 'Integer', 'Vector', 'Color', 'String']
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_FunctionNodeCompare.webp)
 
 #### Returns:
 - socket `result`
@@ -833,8 +757,6 @@ def elements_greater_than(self, b=None):
 #### Args:
 - b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_FunctionNodeCompare.webp)
-
 #### Returns:
 - socket `result`
 
@@ -851,8 +773,6 @@ def elements_less_equal(self, b=None):
 #### Args:
 - b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_FunctionNodeCompare.webp)
-
 #### Returns:
 - socket `result`
 
@@ -868,8 +788,6 @@ def elements_less_than(self, b=None):
 
 #### Args:
 - b: ['Float', 'Integer', 'Vector', 'Color', 'String']
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_FunctionNodeCompare.webp)
 
 #### Returns:
 - socket `result`
@@ -888,8 +806,6 @@ def elements_not_equal(self, b=None, epsilon=None):
 - b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 - epsilon: Float
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_FunctionNodeCompare.webp)
-
 #### Returns:
 - socket `result`
 
@@ -907,8 +823,6 @@ def face_forward(self, incident=None, reference=None):
 - incident: Vector
 - reference: Vector
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeVectorMath.webp)
-
 #### Returns:
 - socket `vector`
 
@@ -921,8 +835,6 @@ def floor(self):
 
 ```
 > Node: [Vector Math](ShaderNodeVectorMath.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeVectorMath.webp)
 
 #### Returns:
 - socket `vector`
@@ -937,8 +849,6 @@ def fract(self):
 ```
 > Node: [Vector Math](ShaderNodeVectorMath.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeVectorMath.webp)
-
 #### Returns:
 - socket `vector`
 
@@ -952,8 +862,6 @@ def fraction(self):
 ```
 > Node: [Vector Math](ShaderNodeVectorMath.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeVectorMath.webp)
-
 #### Returns:
 - socket `vector`
 
@@ -966,8 +874,6 @@ def length(self):
 
 ```
 > Node: [Vector Math](ShaderNodeVectorMath.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeVectorMath.webp)
 
 #### Returns:
 - socket `value`
@@ -986,8 +892,6 @@ def length_equal(self, b=None, epsilon=None):
 - b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 - epsilon: Float
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_FunctionNodeCompare.webp)
-
 #### Returns:
 - socket `result`
 
@@ -1003,8 +907,6 @@ def length_greater_equal(self, b=None):
 
 #### Args:
 - b: ['Float', 'Integer', 'Vector', 'Color', 'String']
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_FunctionNodeCompare.webp)
 
 #### Returns:
 - socket `result`
@@ -1022,8 +924,6 @@ def length_greater_than(self, b=None):
 #### Args:
 - b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_FunctionNodeCompare.webp)
-
 #### Returns:
 - socket `result`
 
@@ -1039,8 +939,6 @@ def length_less_equal(self, b=None):
 
 #### Args:
 - b: ['Float', 'Integer', 'Vector', 'Color', 'String']
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_FunctionNodeCompare.webp)
 
 #### Returns:
 - socket `result`
@@ -1058,8 +956,6 @@ def length_less_than(self, b=None):
 #### Args:
 - b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_FunctionNodeCompare.webp)
-
 #### Returns:
 - socket `result`
 
@@ -1076,8 +972,6 @@ def length_not_equal(self, b=None, epsilon=None):
 #### Args:
 - b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 - epsilon: Float
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_FunctionNodeCompare.webp)
 
 #### Returns:
 - socket `result`
@@ -1101,8 +995,6 @@ def map_range(self, from_min=None, from_max=None, to_min=None, to_max=None, step
 - clamp (bool): True
 - interpolation_type (str): 'LINEAR' in [LINEAR, STEPPED, SMOOTHSTEP, SMOOTHERSTEP]
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeMapRange.webp)
-
 #### Returns:
 - socket `vector`
 
@@ -1122,8 +1014,6 @@ def map_range_linear(self, from_min=None, from_max=None, to_min=None, to_max=Non
 - to_min: ['Float', 'Vector']
 - to_max: ['Float', 'Vector']
 - clamp (bool): True
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeMapRange.webp)
 
 #### Returns:
 - socket `vector`
@@ -1145,8 +1035,6 @@ def map_range_smooth(self, from_min=None, from_max=None, to_min=None, to_max=Non
 - to_max: ['Float', 'Vector']
 - clamp (bool): True
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeMapRange.webp)
-
 #### Returns:
 - socket `vector`
 
@@ -1166,8 +1054,6 @@ def map_range_smoother(self, from_min=None, from_max=None, to_min=None, to_max=N
 - to_min: ['Float', 'Vector']
 - to_max: ['Float', 'Vector']
 - clamp (bool): True
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeMapRange.webp)
 
 #### Returns:
 - socket `vector`
@@ -1190,8 +1076,6 @@ def map_range_stepped(self, from_min=None, from_max=None, to_min=None, to_max=No
 - steps: ['Float', 'Vector']
 - clamp (bool): True
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeMapRange.webp)
-
 #### Returns:
 - socket `vector`
 
@@ -1207,8 +1091,6 @@ def max(self, vector=None):
 
 #### Args:
 - vector: Vector
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeVectorMath.webp)
 
 #### Returns:
 - socket `vector`
@@ -1226,8 +1108,6 @@ def maximum(self, vector=None):
 #### Args:
 - vector: Vector
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeVectorMath.webp)
-
 #### Returns:
 - socket `vector`
 
@@ -1244,8 +1124,6 @@ def min(self, vector=None):
 #### Args:
 - vector: Vector
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeVectorMath.webp)
-
 #### Returns:
 - socket `vector`
 
@@ -1261,8 +1139,6 @@ def minimum(self, vector=None):
 
 #### Args:
 - vector: Vector
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeVectorMath.webp)
 
 #### Returns:
 - socket `vector`
@@ -1283,8 +1159,6 @@ def mix(self, factor=None, vector=None, clamp_factor=True, factor_mode='UNIFORM'
 - clamp_factor (bool): True
 - factor_mode (str): 'UNIFORM' in [UNIFORM, NON_UNIFORM]
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeMix.webp)
-
 #### Returns:
 - socket `result`
 
@@ -1303,8 +1177,6 @@ def mix_non_uniform(self, factor=None, vector=None, clamp_factor=True):
 - vector: ['Float', 'Vector', 'Color']
 - clamp_factor (bool): True
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeMix.webp)
-
 #### Returns:
 - socket `result`
 
@@ -1322,8 +1194,6 @@ def mix_uniform(self, vector=None, clamp_factor=True):
 - vector: ['Float', 'Vector', 'Color']
 - clamp_factor (bool): True
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeMix.webp)
-
 #### Returns:
 - socket `result`
 
@@ -1340,8 +1210,6 @@ def modulo(self, vector=None):
 #### Args:
 - vector: Vector
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeVectorMath.webp)
-
 #### Returns:
 - socket `vector`
 
@@ -1357,8 +1225,6 @@ def mul(self, vector=None):
 
 #### Args:
 - vector: Vector
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeVectorMath.webp)
 
 #### Returns:
 - socket `vector`
@@ -1377,8 +1243,6 @@ def mul_add(self, multiplier=None, addend=None):
 - multiplier: Vector
 - addend: Vector
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeVectorMath.webp)
-
 #### Returns:
 - socket `vector`
 
@@ -1394,8 +1258,6 @@ def multiply(self, vector=None):
 
 #### Args:
 - vector: Vector
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeVectorMath.webp)
 
 #### Returns:
 - socket `vector`
@@ -1414,8 +1276,6 @@ def multiply_add(self, multiplier=None, addend=None):
 - multiplier: Vector
 - addend: Vector
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeVectorMath.webp)
-
 #### Returns:
 - socket `vector`
 
@@ -1428,8 +1288,6 @@ def normalize(self):
 
 ```
 > Node: [Vector Math](ShaderNodeVectorMath.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeVectorMath.webp)
 
 #### Returns:
 - socket `vector`
@@ -1447,8 +1305,6 @@ def project(self, vector=None):
 #### Args:
 - vector: Vector
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeVectorMath.webp)
-
 #### Returns:
 - socket `vector`
 
@@ -1464,8 +1320,6 @@ def reflect(self, vector=None):
 
 #### Args:
 - vector: Vector
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeVectorMath.webp)
 
 #### Returns:
 - socket `vector`
@@ -1483,8 +1337,6 @@ def refract(self, vector=None, ior=None):
 #### Args:
 - vector: Vector
 - ior: Float
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeVectorMath.webp)
 
 #### Returns:
 - socket `vector`
@@ -1505,8 +1357,6 @@ def rotate_axis_angle(self, center=None, axis=None, angle=None, invert=False):
 - angle: Float
 - invert (bool): False
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeVectorRotate.webp)
-
 #### Returns:
 - socket `vector`
 
@@ -1524,8 +1374,6 @@ def rotate_euler(self, center=None, rotation=None, invert=False):
 - center: Vector
 - rotation: Vector
 - invert (bool): False
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeVectorRotate.webp)
 
 #### Returns:
 - socket `vector`
@@ -1545,8 +1393,6 @@ def rotate_x(self, center=None, angle=None, invert=False):
 - angle: Float
 - invert (bool): False
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeVectorRotate.webp)
-
 #### Returns:
 - socket `vector`
 
@@ -1564,8 +1410,6 @@ def rotate_y(self, center=None, angle=None, invert=False):
 - center: Vector
 - angle: Float
 - invert (bool): False
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeVectorRotate.webp)
 
 #### Returns:
 - socket `vector`
@@ -1585,8 +1429,6 @@ def rotate_z(self, center=None, angle=None, invert=False):
 - angle: Float
 - invert (bool): False
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeVectorRotate.webp)
-
 #### Returns:
 - socket `vector`
 
@@ -1603,8 +1445,6 @@ def scale(self, scale=None):
 #### Args:
 - scale: Float
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeVectorMath.webp)
-
 #### Returns:
 - socket `vector`
 
@@ -1617,8 +1457,6 @@ def separate(self):
 
 ```
 > Node: [Separate XYZ](ShaderNodeSeparateXYZ.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/separate_xyz.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeSeparateXYZ.html)
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeSeparateXYZ.webp)
 
 #### Returns:
 - node with sockets ['x', 'y', 'z']
@@ -1633,8 +1471,6 @@ def sin(self):
 ```
 > Node: [Vector Math](ShaderNodeVectorMath.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeVectorMath.webp)
-
 #### Returns:
 - socket `vector`
 
@@ -1647,8 +1483,6 @@ def sine(self):
 
 ```
 > Node: [Vector Math](ShaderNodeVectorMath.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeVectorMath.webp)
 
 #### Returns:
 - socket `vector`
@@ -1666,8 +1500,6 @@ def snap(self, increment=None):
 #### Args:
 - increment: Vector
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeVectorMath.webp)
-
 #### Returns:
 - socket `vector`
 
@@ -1684,8 +1516,6 @@ def sub(self, vector=None):
 #### Args:
 - vector: Vector
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeVectorMath.webp)
-
 #### Returns:
 - socket `vector`
 
@@ -1701,8 +1531,6 @@ def subtract(self, vector=None):
 
 #### Args:
 - vector: Vector
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeVectorMath.webp)
 
 #### Returns:
 - socket `vector`
@@ -1721,8 +1549,6 @@ def switch(self, switch=None, true=None):
 - switch: Boolean
 - true: Vector
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeSwitch.webp)
-
 #### Returns:
 - socket `output`
 
@@ -1736,8 +1562,6 @@ def tan(self):
 ```
 > Node: [Vector Math](ShaderNodeVectorMath.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeVectorMath.webp)
-
 #### Returns:
 - socket `vector`
 
@@ -1750,8 +1574,6 @@ def tangent(self):
 
 ```
 > Node: [Vector Math](ShaderNodeVectorMath.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeVectorMath.webp)
 
 #### Returns:
 - socket `vector`
@@ -1769,8 +1591,6 @@ def wrap(self, max=None, min=None):
 #### Args:
 - max: Vector
 - min: Vector
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeVectorMath.webp)
 
 #### Returns:
 - socket `vector`

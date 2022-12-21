@@ -62,8 +62,6 @@ def ID(self):
 ```
 > Node: [ID](GeometryNodeInputID.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/id.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputID.html)
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeInputID.webp)
-
 #### Returns:
 - socket `ID`
 
@@ -81,8 +79,6 @@ Node implemented as property setter.
 
 #### Args:
 - attr_value: ID
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeSetID.webp)
 
 
 <sub>Go to [top](#class-Domain) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
@@ -117,8 +113,6 @@ def attribute_max(self, attribute=None):
 #### Args:
 - attribute: ['Float', 'Vector']
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeAttributeStatistic.webp)
-
 #### Returns:
 - socket `max`
 
@@ -134,8 +128,6 @@ def attribute_mean(self, attribute=None):
 
 #### Args:
 - attribute: ['Float', 'Vector']
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeAttributeStatistic.webp)
 
 #### Returns:
 - socket `mean`
@@ -153,8 +145,6 @@ def attribute_median(self, attribute=None):
 #### Args:
 - attribute: ['Float', 'Vector']
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeAttributeStatistic.webp)
-
 #### Returns:
 - socket `median`
 
@@ -170,8 +160,6 @@ def attribute_min(self, attribute=None):
 
 #### Args:
 - attribute: ['Float', 'Vector']
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeAttributeStatistic.webp)
 
 #### Returns:
 - socket `min`
@@ -189,8 +177,6 @@ def attribute_range(self, attribute=None):
 #### Args:
 - attribute: ['Float', 'Vector']
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeAttributeStatistic.webp)
-
 #### Returns:
 - socket `range`
 
@@ -206,8 +192,6 @@ def attribute_statistic(self, attribute=None):
 
 #### Args:
 - attribute: ['Float', 'Vector']
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeAttributeStatistic.webp)
 
 #### Returns:
 - node with sockets ['mean', 'median', 'sum', 'min', 'max', 'range', 'standard_deviation', 'variance']
@@ -225,8 +209,6 @@ def attribute_std(self, attribute=None):
 #### Args:
 - attribute: ['Float', 'Vector']
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeAttributeStatistic.webp)
-
 #### Returns:
 - socket `standard_deviation`
 
@@ -242,8 +224,6 @@ def attribute_sum(self, attribute=None):
 
 #### Args:
 - attribute: ['Float', 'Vector']
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeAttributeStatistic.webp)
 
 #### Returns:
 - socket `sum`
@@ -261,8 +241,6 @@ def attribute_var(self, attribute=None):
 #### Args:
 - attribute: ['Float', 'Vector']
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeAttributeStatistic.webp)
-
 #### Returns:
 - socket `variance`
 
@@ -278,8 +256,6 @@ def capture_attribute(self, value=None):
 
 #### Args:
 - value: ['Vector', 'Float', 'Color', 'Boolean', 'Integer']
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeCaptureAttribute.webp)
 
 #### Returns:
 - socket `attribute`
@@ -297,8 +273,6 @@ def delete(self, mode='ALL'):
 #### Args:
 - mode (str): 'ALL' in [ALL, EDGE_FACE, ONLY_FACE]
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeDeleteGeometry.webp)
-
 #### Returns:
 - self
 
@@ -311,8 +285,6 @@ def domain_index(self):
 
 ```
 > Node: [Index](GeometryNodeInputIndex.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/input_index.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputIndex.html)
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeInputIndex.webp)
 
 #### Returns:
 - socket `index`
@@ -329,8 +301,6 @@ def duplicate(self, amount=None):
 
 #### Args:
 - amount: Integer
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeDuplicateElements.webp)
 
 #### Returns:
 - socket `duplicate_index`
@@ -349,8 +319,6 @@ def field_at_index(self, index=None, value=None):
 - index: Integer
 - value: ['Float', 'Integer', 'Vector', 'Color', 'Boolean']
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeFieldAtIndex.webp)
-
 #### Returns:
 - socket `value`
 
@@ -366,8 +334,6 @@ def get_named_boolean(self, name=None):
 
 #### Args:
 - name: String
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeInputNamedAttribute.webp)
 
 #### Returns:
 - socket `attribute`
@@ -385,8 +351,6 @@ def get_named_color(self, name=None):
 #### Args:
 - name: String
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeInputNamedAttribute.webp)
-
 #### Returns:
 - socket `attribute`
 
@@ -402,8 +366,6 @@ def get_named_float(self, name=None):
 
 #### Args:
 - name: String
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeInputNamedAttribute.webp)
 
 #### Returns:
 - socket `attribute`
@@ -421,8 +383,6 @@ def get_named_integer(self, name=None):
 #### Args:
 - name: String
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeInputNamedAttribute.webp)
-
 #### Returns:
 - socket `attribute`
 
@@ -439,8 +399,6 @@ def get_named_vector(self, name=None):
 #### Args:
 - name: String
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeInputNamedAttribute.webp)
-
 #### Returns:
 - socket `attribute`
 
@@ -454,8 +412,6 @@ def index(self):
 ```
 > Node: [Index](GeometryNodeInputIndex.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/input_index.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputIndex.html)
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeInputIndex.webp)
-
 #### Returns:
 - socket `index`
 
@@ -468,8 +424,6 @@ def material_index(self):
 
 ```
 > Node: [Material Index](GeometryNodeInputMaterialIndex.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/material_index.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMaterialIndex.html)
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeInputMaterialIndex.webp)
 
 #### Returns:
 - socket `material_index`
@@ -486,8 +440,6 @@ def material_selection(self, material=None):
 
 #### Args:
 - material: Material
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeMaterialSelection.webp)
 
 #### Returns:
 - socket `selection`
@@ -506,8 +458,6 @@ def named_attribute(self, name=None, data_type='FLOAT'):
 - name: String
 - data_type (str): 'FLOAT' in [FLOAT, INT, FLOAT_VECTOR, FLOAT_COLOR, BOOLEAN]
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeInputNamedAttribute.webp)
-
 #### Returns:
 - socket `attribute`
 
@@ -521,8 +471,6 @@ def normal(self):
 ```
 > Node: [Normal](GeometryNodeInputNormal.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/normal.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputNormal.html)
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeInputNormal.webp)
-
 #### Returns:
 - socket `normal`
 
@@ -535,8 +483,6 @@ def position(self):
 
 ```
 > Node: [Position](GeometryNodeInputPosition.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/position.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputPosition.html)
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeInputPosition.webp)
 
 #### Returns:
 - socket `position`
@@ -556,8 +502,6 @@ Node implemented as property setter.
 #### Args:
 - attr_value: position
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeSetPosition.webp)
-
 
 <sub>Go to [top](#class-Domain) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
@@ -573,8 +517,6 @@ def random_boolean(self, probability=None, ID=None, seed=None):
 - probability: Float
 - ID: Integer
 - seed: Integer
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_FunctionNodeRandomValue.webp)
 
 #### Returns:
 - socket `value`
@@ -595,8 +537,6 @@ def random_float(self, min=None, max=None, ID=None, seed=None):
 - ID: Integer
 - seed: Integer
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_FunctionNodeRandomValue.webp)
-
 #### Returns:
 - socket `value`
 
@@ -615,8 +555,6 @@ def random_integer(self, min=None, max=None, ID=None, seed=None):
 - max: ['Vector', 'Float', 'Integer']
 - ID: Integer
 - seed: Integer
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_FunctionNodeRandomValue.webp)
 
 #### Returns:
 - socket `value`
@@ -637,8 +575,6 @@ def random_vector(self, min=None, max=None, ID=None, seed=None):
 - ID: Integer
 - seed: Integer
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_FunctionNodeRandomValue.webp)
-
 #### Returns:
 - socket `value`
 
@@ -654,8 +590,6 @@ def remove_named_attribute(self, name=None):
 
 #### Args:
 - name: String
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeRemoveAttribute.webp)
 
 #### Returns:
 - self
@@ -675,8 +609,6 @@ def sample_index(self, value=None, index=None, clamp=False):
 - index: Integer
 - clamp (bool): False
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeSampleIndex.webp)
-
 #### Returns:
 - socket `value`
 
@@ -692,8 +624,6 @@ def sample_nearest(self, sample_position=None):
 
 #### Args:
 - sample_position: Vector
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeSampleNearest.webp)
 
 #### Returns:
 - socket `index`
@@ -729,8 +659,6 @@ def set_ID(self, ID=None):
 #### Args:
 - ID: Integer
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeSetID.webp)
-
 #### Returns:
 - self
 
@@ -746,8 +674,6 @@ def set_material_index(self, material_index=None):
 
 #### Args:
 - material_index: Integer
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeSetMaterialIndex.webp)
 
 #### Returns:
 - self
@@ -766,8 +692,6 @@ def set_named_boolean(self, name=None, value=None):
 - name: String
 - value: ['Vector', 'Float', 'Color', 'Boolean', 'Integer']
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeStoreNamedAttribute.webp)
-
 #### Returns:
 - self
 
@@ -784,8 +708,6 @@ def set_named_color(self, name=None, value=None):
 #### Args:
 - name: String
 - value: ['Vector', 'Float', 'Color', 'Boolean', 'Integer']
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeStoreNamedAttribute.webp)
 
 #### Returns:
 - self
@@ -804,8 +726,6 @@ def set_named_float(self, name=None, value=None):
 - name: String
 - value: ['Vector', 'Float', 'Color', 'Boolean', 'Integer']
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeStoreNamedAttribute.webp)
-
 #### Returns:
 - self
 
@@ -822,8 +742,6 @@ def set_named_integer(self, name=None, value=None):
 #### Args:
 - name: String
 - value: ['Vector', 'Float', 'Color', 'Boolean', 'Integer']
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeStoreNamedAttribute.webp)
 
 #### Returns:
 - self
@@ -842,8 +760,6 @@ def set_named_vector(self, name=None, value=None):
 - name: String
 - value: ['Vector', 'Float', 'Color', 'Boolean', 'Integer']
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeStoreNamedAttribute.webp)
-
 #### Returns:
 - self
 
@@ -861,8 +777,6 @@ def set_position(self, position=None, offset=None):
 - position: Vector
 - offset: Vector
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeSetPosition.webp)
-
 #### Returns:
 - self
 
@@ -879,8 +793,6 @@ def store_named_attribute(self, name=None, value=None):
 #### Args:
 - name: String
 - value: ['Vector', 'Float', 'Color', 'Boolean', 'Integer']
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeStoreNamedAttribute.webp)
 
 #### Returns:
 - self

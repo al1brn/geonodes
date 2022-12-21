@@ -79,8 +79,6 @@ def Circle(cls, vertices=None, radius=None, fill_type='NONE'):
 - radius: Float
 - fill_type (str): 'NONE' in [NONE, NGON, TRIANGLE_FAN]
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeMeshCircle.webp)
-
 #### Returns:
 - socket `mesh`
 
@@ -98,8 +96,6 @@ def Circle(cls, segments=None, rings=None, radius=None):
 - segments: Integer
 - rings: Integer
 - radius: Float
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeMeshUVSphere.webp)
 
 #### Returns:
 - socket `mesh`
@@ -144,8 +140,6 @@ def Cube(cls, size=None, vertices_x=None, vertices_y=None, vertices_z=None):
 - vertices_y: Integer
 - vertices_z: Integer
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeMeshCube.webp)
-
 #### Returns:
 - socket `mesh`
 
@@ -188,8 +182,6 @@ def Grid(cls, size_x=None, size_y=None, vertices_x=None, vertices_y=None):
 - vertices_x: Integer
 - vertices_y: Integer
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeMeshGrid.webp)
-
 #### Returns:
 - socket `mesh`
 
@@ -206,8 +198,6 @@ def IcoSphere(cls, radius=None, subdivisions=None):
 #### Args:
 - radius: Float
 - subdivisions: Integer
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeMeshIcoSphere.webp)
 
 #### Returns:
 - socket `mesh`
@@ -230,8 +220,6 @@ def Line(cls, count=None, resolution=None, start_location=None, offset=None, cou
 - count_mode (str): 'TOTAL' in [TOTAL, RESOLUTION]
 - mode (str): 'OFFSET' in [OFFSET, END_POINTS]
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeMeshLine.webp)
-
 #### Returns:
 - socket `mesh`
 
@@ -249,8 +237,6 @@ def LineEndPoints(cls, count=None, start_location=None, end_location=None):
 - count: Integer
 - start_location: Vector
 - end_location: Vector
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeMeshLine.webp)
 
 #### Returns:
 - socket `mesh`
@@ -270,8 +256,6 @@ def LineEndPointsResolution(cls, resolution=None, start_location=None, end_locat
 - start_location: Vector
 - end_location: Vector
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeMeshLine.webp)
-
 #### Returns:
 - socket `mesh`
 
@@ -289,8 +273,6 @@ def LineOffset(cls, count=None, start_location=None, offset=None):
 - count: Integer
 - start_location: Vector
 - offset: Vector
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeMeshLine.webp)
 
 #### Returns:
 - socket `mesh`
@@ -310,8 +292,6 @@ def LineOffsetResolution(cls, resolution=None, start_location=None, offset=None)
 - start_location: Vector
 - offset: Vector
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeMeshLine.webp)
-
 #### Returns:
 - socket `mesh`
 
@@ -329,8 +309,6 @@ def boolean_difference(self, *mesh_2, self_intersection=None, hole_tolerant=None
 - mesh_2: <m>Geometry
 - self_intersection: Boolean
 - hole_tolerant: Boolean
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeMeshBoolean.webp)
 
 #### Returns:
 - socket `intersecting_edges`
@@ -350,8 +328,6 @@ def boolean_intersect(*mesh_2, self_intersection=None, hole_tolerant=None):
 - self_intersection: Boolean
 - hole_tolerant: Boolean
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeMeshBoolean.webp)
-
 #### Returns:
 - socket `intersecting_edges`
 
@@ -370,8 +346,6 @@ def boolean_union(*mesh_2, self_intersection=None, hole_tolerant=None):
 - self_intersection: Boolean
 - hole_tolerant: Boolean
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeMeshBoolean.webp)
-
 #### Returns:
 - socket `intersecting_edges`
 
@@ -384,8 +358,6 @@ def corner_count(self):
 
 ```
 > Node: [Domain Size](GeometryNodeAttributeDomainSize.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html)
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeAttributeDomainSize.webp)
 
 #### Returns:
 - socket `face_corner_count`
@@ -404,8 +376,6 @@ def delete_all(self, selection=None, domain='POINT'):
 - selection: Boolean
 - domain (str): 'POINT' in [POINT, EDGE, FACE, CURVE, INSTANCE]
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeDeleteGeometry.webp)
-
 #### Returns:
 - self
 
@@ -423,8 +393,6 @@ def delete_edges(self, selection=None, domain='POINT'):
 - selection: Boolean
 - domain (str): 'POINT' in [POINT, EDGE, FACE, CURVE, INSTANCE]
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeDeleteGeometry.webp)
-
 #### Returns:
 - self
 
@@ -441,8 +409,6 @@ def delete_faces(self, selection=None, domain='POINT'):
 #### Args:
 - selection: Boolean
 - domain (str): 'POINT' in [POINT, EDGE, FACE, CURVE, INSTANCE]
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeDeleteGeometry.webp)
 
 #### Returns:
 - self
@@ -481,8 +447,6 @@ def domain_size(self):
 ```
 > Node: [Domain Size](GeometryNodeAttributeDomainSize.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html)
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeAttributeDomainSize.webp)
-
 #### Returns:
 - node with sockets ['point_count', 'edge_count', 'face_count', 'face_corner_count', 'spline_count', 'instance_count']
 
@@ -500,8 +464,6 @@ def dual_mesh(self, mesh=None, keep_boundaries=None):
 - mesh: Mesh
 - keep_boundaries: Boolean
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeDualMesh.webp)
-
 #### Returns:
 - socket `dual_mesh` of class Mesh
 
@@ -514,8 +476,6 @@ def edge_count(self):
 
 ```
 > Node: [Domain Size](GeometryNodeAttributeDomainSize.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html)
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeAttributeDomainSize.webp)
 
 #### Returns:
 - socket `edge_count`
@@ -534,8 +494,6 @@ def edge_paths_to_curves(self, start_vertices=None, next_vertex_index=None):
 - start_vertices: Boolean
 - next_vertex_index: Integer
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeEdgePathsToCurves.webp)
-
 #### Returns:
 - socket `curves` of class Curve
 
@@ -552,8 +510,6 @@ def edge_paths_to_selection(self, start_vertices=None, next_vertex_index=None):
 #### Args:
 - start_vertices: Boolean
 - next_vertex_index: Integer
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeEdgePathsToSelection.webp)
 
 #### Returns:
 - socket `selection`
@@ -590,8 +546,6 @@ def face_count(self):
 ```
 > Node: [Domain Size](GeometryNodeAttributeDomainSize.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html)
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeAttributeDomainSize.webp)
-
 #### Returns:
 - socket `face_count`
 
@@ -607,8 +561,6 @@ def face_is_planar(self, threshold=None):
 
 #### Args:
 - threshold: Float
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeInputMeshFaceIsPlanar.webp)
 
 #### Returns:
 - socket `planar`
@@ -626,8 +578,6 @@ def face_set_boundaries(self, face_set=None):
 #### Args:
 - face_set: Integer
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeMeshFaceSetBoundaries.webp)
-
 #### Returns:
 - socket `boundary_edges`
 
@@ -643,8 +593,6 @@ def flip_faces(self, selection=None):
 
 #### Args:
 - selection: Boolean
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeFlipFaces.webp)
 
 #### Returns:
 - self
@@ -667,8 +615,6 @@ def instance_on_points(self, selection=None, instance=None, pick_instance=None, 
 - rotation: Vector
 - scale: Vector
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeInstanceOnPoints.webp)
-
 #### Returns:
 - socket `instances`
 
@@ -681,8 +627,6 @@ def is_shade_smooth(self):
 
 ```
 > Node: [Is Shade Smooth](GeometryNodeInputShadeSmooth.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/is_shade_smooth.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputShadeSmooth.html)
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeInputShadeSmooth.webp)
 
 #### Returns:
 - socket `smooth`
@@ -697,8 +641,6 @@ def island(self):
 ```
 > Node: [Mesh Island](GeometryNodeInputMeshIsland.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/mesh_island.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshIsland.html)
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeInputMeshIsland.webp)
-
 #### Returns:
 - node with sockets ['island_index', 'island_count']
 
@@ -712,8 +654,6 @@ def island_count(self):
 ```
 > Node: [Mesh Island](GeometryNodeInputMeshIsland.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/mesh_island.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshIsland.html)
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeInputMeshIsland.webp)
-
 #### Returns:
 - socket `island_count`
 
@@ -726,8 +666,6 @@ def island_index(self):
 
 ```
 > Node: [Mesh Island](GeometryNodeInputMeshIsland.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/mesh_island.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshIsland.html)
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeInputMeshIsland.webp)
 
 #### Returns:
 - socket `island_index`
@@ -748,8 +686,6 @@ def pack_uv_islands(self, uv=None, selection=None, margin=None, rotate=None):
 - margin: Float
 - rotate: Boolean
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeUVPackIslands.webp)
-
 #### Returns:
 - socket `uv`
 
@@ -762,8 +698,6 @@ def point_count(self):
 
 ```
 > Node: [Domain Size](GeometryNodeAttributeDomainSize.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html)
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeAttributeDomainSize.webp)
 
 #### Returns:
 - socket `point_count`
@@ -781,8 +715,6 @@ def sample_nearest_surface(self, value=None, sample_position=None):
 #### Args:
 - value: ['Float', 'Integer', 'Vector', 'Color', 'Boolean']
 - sample_position: Vector
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeSampleNearestSurface.webp)
 
 #### Returns:
 - socket `value`
@@ -825,8 +757,6 @@ def scale_elements(self, selection=None, scale=None, center=None, axis=None, dom
 - domain (str): 'FACE' in [FACE, EDGE]
 - scale_mode (str): 'UNIFORM' in [UNIFORM, SINGLE_AXIS]
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeScaleElements.webp)
-
 #### Returns:
 - self
 
@@ -847,8 +777,6 @@ def scale_single_axis(self, selection=None, scale=None, center=None, axis=None, 
 - axis: Vector
 - domain (str): 'FACE' in [FACE, EDGE]
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeScaleElements.webp)
-
 #### Returns:
 - self
 
@@ -868,8 +796,6 @@ def scale_uniform(self, selection=None, scale=None, center=None, domain='FACE'):
 - center: Vector
 - domain (str): 'FACE' in [FACE, EDGE]
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeScaleElements.webp)
-
 #### Returns:
 - self
 
@@ -886,8 +812,6 @@ def set_shade_smooth(self, selection=None, shade_smooth=None):
 #### Args:
 - selection: Boolean
 - shade_smooth: Boolean
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeSetShadeSmooth.webp)
 
 #### Returns:
 - self
@@ -924,8 +848,6 @@ def split_edges(self, selection=None):
 #### Args:
 - selection: Boolean
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeSplitEdges.webp)
-
 #### Returns:
 - self
 
@@ -941,8 +863,6 @@ def subdivide(self, level=None):
 
 #### Args:
 - level: Integer
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeSubdivideMesh.webp)
 
 #### Returns:
 - self
@@ -964,8 +884,6 @@ def subdivision_surface(self, level=None, edge_crease=None, vertex_crease=None, 
 - boundary_smooth (str): 'ALL' in [PRESERVE_CORNERS, ALL]
 - uv_smooth (str): 'PRESERVE_BOUNDARIES' in [NONE, PRESERVE_CORNERS, PRESERVE_CORNERS_AND_JUNCTIONS, PRESERVE_CORNERS_JUNCTIONS_AND_CONCAVE, PRESERVE_BOUNDARIES, SMOOTH_ALL]
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeSubdivisionSurface.webp)
-
 #### Returns:
 - self
 
@@ -981,8 +899,6 @@ def to_curve(self, selection=None):
 
 #### Args:
 - selection: Boolean
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeMeshToCurve.webp)
 
 #### Returns:
 - socket `curve` of class Curve
@@ -1002,8 +918,6 @@ def to_points(self, selection=None, position=None, radius=None, mode='VERTICES')
 - position: Vector
 - radius: Float
 - mode (str): 'VERTICES' in [VERTICES, EDGES, FACES, CORNERS]
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeMeshToPoints.webp)
 
 #### Returns:
 - socket `points` of class Points
@@ -1027,8 +941,6 @@ def to_volume(self, density=None, voxel_size=None, voxel_amount=None, exterior_b
 - fill_volume: Boolean
 - resolution_mode (str): 'VOXEL_AMOUNT' in [VOXEL_AMOUNT, VOXEL_SIZE]
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeMeshToVolume.webp)
-
 #### Returns:
 - socket `volume` of class Volume
 
@@ -1047,8 +959,6 @@ def triangulate(self, selection=None, minimum_vertices=None, ngon_method='BEAUTY
 - minimum_vertices: Integer
 - ngon_method (str): 'BEAUTY' in [BEAUTY, CLIP]
 - quad_method (str): 'SHORTEST_DIAGONAL' in [BEAUTY, FIXED, FIXED_ALTERNATE, SHORTEST_DIAGONAL, LONGEST_DIAGONAL]
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeTriangulate.webp)
 
 #### Returns:
 - self
@@ -1069,8 +979,6 @@ def uv_unwrap(self, selection=None, seam=None, margin=None, fill_holes=None, met
 - margin: Float
 - fill_holes: Boolean
 - method (str): 'ANGLE_BASED' in [ANGLE_BASED, CONFORMAL]
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeUVUnwrap.webp)
 
 #### Returns:
 - socket `uv`
