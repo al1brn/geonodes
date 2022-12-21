@@ -26,6 +26,6 @@ node = nodes.EndpointSelection(start_size=None, end_size=None)
 
 ## Implementation
 
-#### class [{class_name}]({class_name}.md)
+#### class [ControlPoint](ControlPoint.md)
 
- - [<bound method Generator.fname of <generator.code_gen.DomAttribute object at 0x164097010>>](ControlPoint.md#endpoint_selection)
+ - [<bound method Generator.fname of <generator.code_gen.DomAttribute object at 0x16d4fa7d0>>](ControlPoint.md#endpoint_selection)

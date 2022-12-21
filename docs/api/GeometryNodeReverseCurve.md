@@ -26,6 +26,6 @@ node = nodes.ReverseCurve(curve=None, selection=None)
 
 ## Implementation
 
-#### class [{class_name}]({class_name}.md)
+#### class [Curve](Curve.md)
 
- - [<bound method Generator.fname of <generator.code_gen.StackMethod object at 0x164097a90>>](Curve.md#reverse)
+ - [<bound method Generator.fname of <generator.code_gen.StackMethod object at 0x16d4fa9e0>>](Curve.md#reverse)

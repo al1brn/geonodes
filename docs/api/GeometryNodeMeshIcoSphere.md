@@ -26,6 +26,6 @@ node = nodes.IcoSphere(radius=None, subdivisions=None)
 
 ## Implementation
 
-#### class [{class_name}]({class_name}.md)
+#### class [Mesh](Mesh.md)
 
- - [<bound method Generator.fname of <generator.code_gen.Constructor object at 0x1683b0790>>](Mesh.md#IcoSphere-classmethod)
+ - [<bound method Generator.fname of <generator.code_gen.Constructor object at 0x16e378400>>](Mesh.md#IcoSphere-classmethod)

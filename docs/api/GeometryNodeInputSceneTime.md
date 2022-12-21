@@ -20,7 +20,7 @@ node = nodes.SceneTime()
 
 ## Implementation
 
-#### class [{class_name}]({class_name}.md)
+#### class [Float](Float.md)
 
- - [<bound method Generator.fname of <generator.code_gen.Constructor object at 0x1683b2e90>>](Float.md#Seconds-classmethod)
- - [<bound method Generator.fname of <generator.code_gen.Constructor object at 0x1683b00d0>>](Float.md#Frame-classmethod)
+ - [<bound method Generator.fname of <generator.code_gen.Constructor object at 0x16d4f8be0>>](Float.md#Seconds-classmethod)
+ - [<bound method Generator.fname of <generator.code_gen.Constructor object at 0x16d4f8bb0>>](Float.md#Frame-classmethod)

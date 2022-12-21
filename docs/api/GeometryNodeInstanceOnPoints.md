@@ -31,25 +31,25 @@ node = nodes.InstanceOnPoints(points=None, selection=None, instance=None, pick_i
 
 ## Implementation
 
-#### class [{class_name}]({class_name}.md)
+#### class [Mesh](Mesh.md)
 
- - [<bound method Generator.fname of <generator.code_gen.Method object at 0x1683b2020>>](Mesh.md#instance_on_points)
-#### class [{class_name}]({class_name}.md)
+ - [<bound method Generator.fname of <generator.code_gen.Method object at 0x16d4f8b20>>](Mesh.md#instance_on_points)
+#### class [Curve](Curve.md)
 
- - [<bound method Generator.fname of <generator.code_gen.Method object at 0x1683b2020>>](Curve.md#instance_on_points)
-#### class [{class_name}]({class_name}.md)
+ - [<bound method Generator.fname of <generator.code_gen.Method object at 0x16d4f8b20>>](Curve.md#instance_on_points)
+#### class [Points](Points.md)
 
- - [<bound method Generator.fname of <generator.code_gen.Method object at 0x1683b2020>>](Points.md#instance_on_points)
-#### class [{class_name}]({class_name}.md)
+ - [<bound method Generator.fname of <generator.code_gen.Method object at 0x16d4f8b20>>](Points.md#instance_on_points)
+#### class [Instances](Instances.md)
 
- - [<bound method Generator.fname of <generator.code_gen.Constructor object at 0x1683b3c70>>](Instances.md#InstanceOnPoints-classmethod)
- - [<bound method Generator.fname of <generator.code_gen.Method object at 0x1683b30a0>>](Instances.md#on_points)
-#### class [{class_name}]({class_name}.md)
+ - [<bound method Generator.fname of <generator.code_gen.Constructor object at 0x16d4f8b80>>](Instances.md#InstanceOnPoints-classmethod)
+ - [<bound method Generator.fname of <generator.code_gen.Method object at 0x16d4f8b50>>](Instances.md#on_points)
+#### class [Vertex](Vertex.md)
 
- - [<bound method Generator.fname of <generator.code_gen.DomMethod object at 0x1683b20b0>>](Vertex.md#instance_on_points)
-#### class [{class_name}]({class_name}.md)
+ - [<bound method Generator.fname of <generator.code_gen.DomMethod object at 0x16d4f8af0>>](Vertex.md#instance_on_points)
+#### class [ControlPoint](ControlPoint.md)
 
- - [<bound method Generator.fname of <generator.code_gen.DomMethod object at 0x1683b1f00>>](ControlPoint.md#instance_on_points)
-#### class [{class_name}]({class_name}.md)
+ - [<bound method Generator.fname of <generator.code_gen.DomMethod object at 0x16d4f8ac0>>](ControlPoint.md#instance_on_points)
+#### class [CloudPoint](CloudPoint.md)
 
- - [<bound method Generator.fname of <generator.code_gen.DomMethod object at 0x1683b3130>>](CloudPoint.md#instance_on_points)
+ - [<bound method Generator.fname of <generator.code_gen.DomMethod object at 0x16d4f8a90>>](CloudPoint.md#instance_on_points)

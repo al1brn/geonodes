@@ -27,7 +27,7 @@ node = nodes.SetCurveRadius(curve=None, selection=None, radius=None)
 
 ## Implementation
 
-#### class [{class_name}]({class_name}.md)
+#### class [ControlPoint](ControlPoint.md)
 
- - [<bound method Generator.fname of <generator.code_gen.DomStackMethod object at 0x1640973d0>>](ControlPoint.md#set_radius)
- - [<bound method Generator.fname of <generator.code_gen.DomSetter object at 0x164097820>>](ControlPoint.md#radius)
+ - [<bound method Generator.fname of <generator.code_gen.DomStackMethod object at 0x16d4fa4a0>>](ControlPoint.md#set_radius)
+ - [<bound method Generator.fname of <generator.code_gen.DomSetter object at 0x16d4fa470>>](ControlPoint.md#radius)

@@ -29,9 +29,9 @@ node = nodes.ScaleInstances(instances=None, selection=None, scale=None, center=N
 
 ## Implementation
 
-#### class [{class_name}]({class_name}.md)
+#### class [Instances](Instances.md)
 
- - [<bound method Generator.fname of <generator.code_gen.StackMethod object at 0x1683b23e0>>](Instances.md#set_scale)
-#### class [{class_name}]({class_name}.md)
+ - [<bound method Generator.fname of <generator.code_gen.StackMethod object at 0x16d4f8970>>](Instances.md#set_scale)
+#### class [Instance](Instance.md)
 
- - [<bound method Generator.fname of <generator.code_gen.DomStackMethod object at 0x1683b0730>>](Instance.md#set_scale)
+ - [<bound method Generator.fname of <generator.code_gen.DomStackMethod object at 0x16d4f8940>>](Instance.md#set_scale)

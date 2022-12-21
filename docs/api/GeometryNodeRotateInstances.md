@@ -29,9 +29,9 @@ node = nodes.RotateInstances(instances=None, selection=None, rotation=None, pivo
 
 ## Implementation
 
-#### class [{class_name}]({class_name}.md)
+#### class [Instances](Instances.md)
 
- - [<bound method Generator.fname of <generator.code_gen.StackMethod object at 0x1683b0670>>](Instances.md#rotate)
-#### class [{class_name}]({class_name}.md)
+ - [<bound method Generator.fname of <generator.code_gen.StackMethod object at 0x16d4f89d0>>](Instances.md#rotate)
+#### class [Instance](Instance.md)
 
- - [<bound method Generator.fname of <generator.code_gen.DomStackMethod object at 0x1683b0a00>>](Instance.md#rotate)
+ - [<bound method Generator.fname of <generator.code_gen.DomStackMethod object at 0x16d4f89a0>>](Instance.md#rotate)

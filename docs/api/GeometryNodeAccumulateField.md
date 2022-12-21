@@ -38,6 +38,6 @@ node = nodes.AccumulateField(value=None, group_index=None, data_type='FLOAT', do
 - Output sockets : ['leading', 'trailing', 'total']
 ## Implementation
 
-#### class [{class_name}]({class_name}.md)
+#### class [Domain](Domain.md)
 
- - [<bound method Generator.fname of <generator.code_gen.DomAttribute object at 0x1683b3df0>>](Domain.md#accumulate_field)
+ - [<bound method Generator.fname of <generator.code_gen.DomAttribute object at 0x16e37a7d0>>](Domain.md#accumulate_field)

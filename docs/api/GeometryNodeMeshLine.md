@@ -33,10 +33,10 @@ node = nodes.MeshLine(count=None, resolution=None, start_location=None, offset=N
 
 ## Implementation
 
-#### class [{class_name}]({class_name}.md)
+#### class [Mesh](Mesh.md)
 
- - [<bound method Generator.fname of <generator.code_gen.Constructor object at 0x1683b18a0>>](Mesh.md#Line-classmethod)
- - [<bound method Generator.fname of <generator.code_gen.Constructor object at 0x1683b2380>>](Mesh.md#LineEndPoints-classmethod)
- - [<bound method Generator.fname of <generator.code_gen.Constructor object at 0x1683b3b80>>](Mesh.md#LineOffset-classmethod)
- - [<bound method Generator.fname of <generator.code_gen.Constructor object at 0x1683b3730>>](Mesh.md#LineEndPointsResolution-classmethod)
- - [<bound method Generator.fname of <generator.code_gen.Constructor object at 0x1683b3700>>](Mesh.md#LineOffsetResolution-classmethod)
+ - [<bound method Generator.fname of <generator.code_gen.Constructor object at 0x16e378340>>](Mesh.md#Line-classmethod)
+ - [<bound method Generator.fname of <generator.code_gen.Constructor object at 0x16e3797e0>>](Mesh.md#LineEndPoints-classmethod)
+ - [<bound method Generator.fname of <generator.code_gen.Constructor object at 0x16e378430>>](Mesh.md#LineOffset-classmethod)
+ - [<bound method Generator.fname of <generator.code_gen.Constructor object at 0x16e3783d0>>](Mesh.md#LineEndPointsResolution-classmethod)
+ - [<bound method Generator.fname of <generator.code_gen.Constructor object at 0x16e3783a0>>](Mesh.md#LineOffsetResolution-classmethod)

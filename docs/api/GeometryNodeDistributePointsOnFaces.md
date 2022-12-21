@@ -37,10 +37,10 @@ node = nodes.DistributePointsOnFaces(mesh=None, selection=None, distance_min=Non
 
 ## Implementation
 
-#### class [{class_name}]({class_name}.md)
+#### class [Mesh](Mesh.md)
 
- - [<bound method Generator.fname of <generator.code_gen.Method object at 0x1683b2c20>>](Mesh.md#distribute_points_on_faces)
-#### class [{class_name}]({class_name}.md)
+ - [<bound method Generator.fname of <generator.code_gen.Method object at 0x16e379b10>>](Mesh.md#distribute_points_on_faces)
+#### class [Face](Face.md)
 
- - [<bound method Generator.fname of <generator.code_gen.DomMethod object at 0x1683b2bc0>>](Face.md#distribute_points_random)
- - [<bound method Generator.fname of <generator.code_gen.DomMethod object at 0x1683b0070>>](Face.md#distribute_points_poisson)
+ - [<bound method Generator.fname of <generator.code_gen.DomMethod object at 0x16e3782b0>>](Face.md#distribute_points_random)
+ - [<bound method Generator.fname of <generator.code_gen.DomMethod object at 0x16e37b550>>](Face.md#distribute_points_poisson)

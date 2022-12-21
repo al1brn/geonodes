@@ -43,8 +43,8 @@ node = nodes.Raycast(target_geometry=None, attribute=None, source_position=None,
 - Output sockets : ['attribute']
 ## Implementation
 
-#### class [{class_name}]({class_name}.md)
+#### class [Geometry](Geometry.md)
 
- - [<bound method Generator.fname of <generator.code_gen.Attribute object at 0x1683b0e20>>](Geometry.md#raycast)
- - [<bound method Generator.fname of <generator.code_gen.Attribute object at 0x1683b2410>>](Geometry.md#raycast_interpolated)
- - [<bound method Generator.fname of <generator.code_gen.Attribute object at 0x1683b2680>>](Geometry.md#raycast_nearest)
+ - [<bound method Generator.fname of <generator.code_gen.Attribute object at 0x16d4f9840>>](Geometry.md#raycast)
+ - [<bound method Generator.fname of <generator.code_gen.Attribute object at 0x16d4f9810>>](Geometry.md#raycast_interpolated)
+ - [<bound method Generator.fname of <generator.code_gen.Attribute object at 0x16d4f97e0>>](Geometry.md#raycast_nearest)

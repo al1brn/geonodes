@@ -27,7 +27,7 @@ node = nodes.SliceString(string=None, position=None, length=None)
 
 ## Implementation
 
-#### class [{class_name}]({class_name}.md)
+#### class [String](String.md)
 
  - [<bound method Generator.fname of <generator.code_gen.Method object at 0x168102a10>>](String.md#slice)
 #### Global functions

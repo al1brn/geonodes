@@ -43,6 +43,6 @@ node = nodes.SampleCurve(curves=None, value=None, factor=None, length=None, curv
 - Output sockets : ['value']
 ## Implementation
 
-#### class [{class_name}]({class_name}.md)
+#### class [Curve](Curve.md)
 
- - [<bound method Generator.fname of <generator.code_gen.StackMethod object at 0x164096d40>>](Curve.md#sample)
+ - [<bound method Generator.fname of <generator.code_gen.StackMethod object at 0x16d4fa9b0>>](Curve.md#sample)

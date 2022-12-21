@@ -41,7 +41,7 @@ node = nodes.StringToCurves(string=None, size=None, character_spacing=None, word
 
 ## Implementation
 
-#### class [{class_name}]({class_name}.md)
+#### class [String](String.md)
 
  - [<bound method Generator.fname of <generator.code_gen.Method object at 0x168102950>>](String.md#to_curves)
 #### Global functions

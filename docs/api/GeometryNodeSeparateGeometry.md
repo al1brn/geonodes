@@ -31,9 +31,9 @@ node = nodes.SeparateGeometry(geometry=None, selection=None, domain='POINT')
 
 ## Implementation
 
-#### class [{class_name}]({class_name}.md)
+#### class [Geometry](Geometry.md)
 
- - [<bound method Generator.fname of <generator.code_gen.Method object at 0x1683b2080>>](Geometry.md#separate)
-#### class [{class_name}]({class_name}.md)
+ - [<bound method Generator.fname of <generator.code_gen.Method object at 0x16d4f95a0>>](Geometry.md#separate)
+#### class [Domain](Domain.md)
 
- - [<bound method Generator.fname of <generator.code_gen.DomMethod object at 0x1683b1120>>](Domain.md#separate)
+ - [<bound method Generator.fname of <generator.code_gen.DomMethod object at 0x16d4f9570>>](Domain.md#separate)

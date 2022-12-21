@@ -20,7 +20,7 @@ node = nodes.SpecialCharacters()
 
 ## Implementation
 
-#### class [{class_name}]({class_name}.md)
+#### class [String](String.md)
 
  - [<bound method Generator.fname of <generator.code_gen.Static object at 0x168102650>>](String.md#LineBreak-staticmethod)
  - [<bound method Generator.fname of <generator.code_gen.Static object at 0x168102620>>](String.md#Tab-staticmethod)

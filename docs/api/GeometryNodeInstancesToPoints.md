@@ -28,9 +28,9 @@ node = nodes.InstancesToPoints(instances=None, selection=None, position=None, ra
 
 ## Implementation
 
-#### class [{class_name}]({class_name}.md)
+#### class [Instances](Instances.md)
 
- - [<bound method Generator.fname of <generator.code_gen.Method object at 0x1683b2b90>>](Instances.md#to_points)
-#### class [{class_name}]({class_name}.md)
+ - [<bound method Generator.fname of <generator.code_gen.Method object at 0x16d4f8a60>>](Instances.md#to_points)
+#### class [Instance](Instance.md)
 
- - [<bound method Generator.fname of <generator.code_gen.DomMethod object at 0x1683b3760>>](Instance.md#to_points)
+ - [<bound method Generator.fname of <generator.code_gen.DomMethod object at 0x16d4f8a30>>](Instance.md#to_points)

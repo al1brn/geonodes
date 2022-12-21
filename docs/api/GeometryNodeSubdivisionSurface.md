@@ -33,6 +33,6 @@ node = nodes.SubdivisionSurface(mesh=None, level=None, edge_crease=None, vertex_
 
 ## Implementation
 
-#### class [{class_name}]({class_name}.md)
+#### class [Mesh](Mesh.md)
 
- - [<bound method Generator.fname of <generator.code_gen.StackMethod object at 0x1683b1b70>>](Mesh.md#subdivision_surface)
+ - [<bound method Generator.fname of <generator.code_gen.StackMethod object at 0x16ee0a1a0>>](Mesh.md#subdivision_surface)

@@ -28,6 +28,6 @@ node = nodes.Grid(size_x=None, size_y=None, vertices_x=None, vertices_y=None)
 
 ## Implementation
 
-#### class [{class_name}]({class_name}.md)
+#### class [Mesh](Mesh.md)
 
- - [<bound method Generator.fname of <generator.code_gen.Constructor object at 0x1683b3fa0>>](Mesh.md#Grid-classmethod)
+ - [<bound method Generator.fname of <generator.code_gen.Constructor object at 0x16e378130>>](Mesh.md#Grid-classmethod)

@@ -19,9 +19,9 @@ node = nodes.InstanceRotation()
 
 ## Implementation
 
-#### class [{class_name}]({class_name}.md)
+#### class [Instances](Instances.md)
 
- - [<bound method Generator.fname of <generator.code_gen.PropAttribute object at 0x1683b09a0>>](Instances.md#rotation-property)
-#### class [{class_name}]({class_name}.md)
+ - [<bound method Generator.fname of <generator.code_gen.PropAttribute object at 0x16d4f8850>>](Instances.md#rotation-property)
+#### class [Instance](Instance.md)
 
- - [<bound method Generator.fname of <generator.code_gen.DomPropAttribute object at 0x1683b1ea0>>](Instance.md#rotation-property)
+ - [<bound method Generator.fname of <generator.code_gen.DomPropAttribute object at 0x16d4f8820>>](Instance.md#rotation-property)

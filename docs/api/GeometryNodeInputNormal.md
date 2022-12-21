@@ -19,12 +19,12 @@ node = nodes.Normal()
 
 ## Implementation
 
-#### class [{class_name}]({class_name}.md)
+#### class [Geometry](Geometry.md)
 
- - [<bound method Generator.fname of <generator.code_gen.PropAttribute object at 0x1683b3ca0>>](Geometry.md#normal-property)
-#### class [{class_name}]({class_name}.md)
+ - [<bound method Generator.fname of <generator.code_gen.PropAttribute object at 0x16d4f8d60>>](Geometry.md#normal-property)
+#### class [Domain](Domain.md)
 
- - [<bound method Generator.fname of <generator.code_gen.DomPropAttribute object at 0x1683b3be0>>](Domain.md#normal-property)
-#### class [{class_name}]({class_name}.md)
+ - [<bound method Generator.fname of <generator.code_gen.DomPropAttribute object at 0x16d4f8d30>>](Domain.md#normal-property)
+#### class [Spline](Spline.md)
 
- - [<bound method Generator.fname of <generator.code_gen.DomPropAttribute object at 0x1683b2e60>>](Spline.md#normal-property)
+ - [<bound method Generator.fname of <generator.code_gen.DomPropAttribute object at 0x16d4f8d00>>](Spline.md#normal-property)

@@ -34,48 +34,48 @@ node = nodes.DomainSize(geometry=None, component='MESH')
 
 ## Implementation
 
-#### class [{class_name}]({class_name}.md)
+#### class [Geometry](Geometry.md)
 
- - [<bound method Generator.fname of <generator.code_gen.Property object at 0x1639de080>>](Geometry.md#domain_size-property)
-#### class [{class_name}]({class_name}.md)
+ - [<bound method Generator.fname of <generator.code_gen.Property object at 0x16e1a3e80>>](Geometry.md#domain_size-property)
+#### class [Mesh](Mesh.md)
 
- - [<bound method Generator.fname of <generator.code_gen.Property object at 0x1639de140>>](Mesh.md#domain_size-property)
- - [<bound method Generator.fname of <generator.code_gen.Property object at 0x1639dc4c0>>](Mesh.md#point_count-property)
- - [<bound method Generator.fname of <generator.code_gen.Property object at 0x1639dd300>>](Mesh.md#face_count-property)
- - [<bound method Generator.fname of <generator.code_gen.Property object at 0x1639dd8d0>>](Mesh.md#edge_count-property)
- - [<bound method Generator.fname of <generator.code_gen.Property object at 0x1639ddbd0>>](Mesh.md#corner_count-property)
-#### class [{class_name}]({class_name}.md)
+ - [<bound method Generator.fname of <generator.code_gen.Property object at 0x16e1a3e50>>](Mesh.md#domain_size-property)
+ - [<bound method Generator.fname of <generator.code_gen.Property object at 0x16e1a3fd0>>](Mesh.md#point_count-property)
+ - [<bound method Generator.fname of <generator.code_gen.Property object at 0x16e1a3cd0>>](Mesh.md#face_count-property)
+ - [<bound method Generator.fname of <generator.code_gen.Property object at 0x16e1a3e20>>](Mesh.md#edge_count-property)
+ - [<bound method Generator.fname of <generator.code_gen.Property object at 0x16e1a3fa0>>](Mesh.md#corner_count-property)
+#### class [Curve](Curve.md)
 
- - [<bound method Generator.fname of <generator.code_gen.Property object at 0x1639ddf60>>](Curve.md#domain_size-property)
- - [<bound method Generator.fname of <generator.code_gen.Property object at 0x1639ddba0>>](Curve.md#point_count-property)
- - [<bound method Generator.fname of <generator.code_gen.Property object at 0x1639dd960>>](Curve.md#spline_count-property)
-#### class [{class_name}]({class_name}.md)
+ - [<bound method Generator.fname of <generator.code_gen.Property object at 0x16e1a3ca0>>](Curve.md#domain_size-property)
+ - [<bound method Generator.fname of <generator.code_gen.Property object at 0x16e1a3d00>>](Curve.md#point_count-property)
+ - [<bound method Generator.fname of <generator.code_gen.Property object at 0x16e1a3d90>>](Curve.md#spline_count-property)
+#### class [Points](Points.md)
 
- - [<bound method Generator.fname of <generator.code_gen.Property object at 0x1639dc100>>](Points.md#domain_size-property)
-#### class [{class_name}]({class_name}.md)
+ - [<bound method Generator.fname of <generator.code_gen.Property object at 0x16e1a3eb0>>](Points.md#domain_size-property)
+#### class [Instances](Instances.md)
 
- - [<bound method Generator.fname of <generator.code_gen.Property object at 0x1639dc0d0>>](Instances.md#domain_size-property)
-#### class [{class_name}]({class_name}.md)
+ - [<bound method Generator.fname of <generator.code_gen.Property object at 0x16e1a3d30>>](Instances.md#domain_size-property)
+#### class [Vertex](Vertex.md)
 
- - [<bound method Generator.fname of <generator.code_gen.Source object at 0x1639dc1c0>>](Vertex.md#domain_size)
-#### class [{class_name}]({class_name}.md)
+ - [<bound method Generator.fname of <generator.code_gen.Source object at 0x16e1a3dc0>>](Vertex.md#domain_size)
+#### class [Face](Face.md)
 
- - [<bound method Generator.fname of <generator.code_gen.Source object at 0x1639de6b0>>](Face.md#domain_size)
-#### class [{class_name}]({class_name}.md)
+ - [<bound method Generator.fname of <generator.code_gen.Source object at 0x16d4fbf40>>](Face.md#domain_size)
+#### class [Edge](Edge.md)
 
- - [<bound method Generator.fname of <generator.code_gen.Source object at 0x1639ddc90>>](Edge.md#domain_size)
-#### class [{class_name}]({class_name}.md)
+ - [<bound method Generator.fname of <generator.code_gen.Source object at 0x16d4fbf70>>](Edge.md#domain_size)
+#### class [Corner](Corner.md)
 
- - [<bound method Generator.fname of <generator.code_gen.Source object at 0x1639dded0>>](Corner.md#domain_size)
-#### class [{class_name}]({class_name}.md)
+ - [<bound method Generator.fname of <generator.code_gen.Source object at 0x16d4fbfa0>>](Corner.md#domain_size)
+#### class [Spline](Spline.md)
 
- - [<bound method Generator.fname of <generator.code_gen.Source object at 0x1639dd870>>](Spline.md#domain_size)
-#### class [{class_name}]({class_name}.md)
+ - [<bound method Generator.fname of <generator.code_gen.Source object at 0x16d4fbfd0>>](Spline.md#domain_size)
+#### class [ControlPoint](ControlPoint.md)
 
- - [<bound method Generator.fname of <generator.code_gen.Source object at 0x1639ddae0>>](ControlPoint.md#domain_size)
-#### class [{class_name}]({class_name}.md)
+ - [<bound method Generator.fname of <generator.code_gen.Source object at 0x16d4fbdc0>>](ControlPoint.md#domain_size)
+#### class [CloudPoint](CloudPoint.md)
 
- - [<bound method Generator.fname of <generator.code_gen.Source object at 0x1639ddea0>>](CloudPoint.md#domain_size)
-#### class [{class_name}]({class_name}.md)
+ - [<bound method Generator.fname of <generator.code_gen.Source object at 0x16d4fbd90>>](CloudPoint.md#domain_size)
+#### class [Instance](Instance.md)
 
- - [<bound method Generator.fname of <generator.code_gen.Source object at 0x1639dc4f0>>](Instance.md#domain_size)
+ - [<bound method Generator.fname of <generator.code_gen.Source object at 0x16d4fbd60>>](Instance.md#domain_size)

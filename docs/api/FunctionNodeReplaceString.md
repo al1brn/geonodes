@@ -27,7 +27,7 @@ node = nodes.ReplaceString(string=None, find=None, replace=None)
 
 ## Implementation
 
-#### class [{class_name}]({class_name}.md)
+#### class [String](String.md)
 
  - [<bound method Generator.fname of <generator.code_gen.Method object at 0x168102a70>>](String.md#replace)
 #### Global functions

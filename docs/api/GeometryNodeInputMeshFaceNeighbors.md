@@ -20,8 +20,8 @@ node = nodes.FaceNeighbors()
 
 ## Implementation
 
-#### class [{class_name}]({class_name}.md)
+#### class [Face](Face.md)
 
- - [<bound method Generator.fname of <generator.code_gen.DomPropAttribute object at 0x1683b04f0>>](Face.md#neighbors-property)
- - [<bound method Generator.fname of <generator.code_gen.DomPropAttribute object at 0x1683b2590>>](Face.md#neighbors_vertex_count-property)
- - [<bound method Generator.fname of <generator.code_gen.DomPropAttribute object at 0x1683b2980>>](Face.md#neighbors_face_count-property)
+ - [<bound method Generator.fname of <generator.code_gen.DomPropAttribute object at 0x16e3795d0>>](Face.md#neighbors-property)
+ - [<bound method Generator.fname of <generator.code_gen.DomPropAttribute object at 0x16e3795a0>>](Face.md#neighbors_vertex_count-property)
+ - [<bound method Generator.fname of <generator.code_gen.DomPropAttribute object at 0x16e37aa40>>](Face.md#neighbors_face_count-property)

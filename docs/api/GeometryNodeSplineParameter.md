@@ -21,9 +21,9 @@ node = nodes.SplineParameter()
 
 ## Implementation
 
-#### class [{class_name}]({class_name}.md)
+#### class [ControlPoint](ControlPoint.md)
 
- - [<bound method Generator.fname of <generator.code_gen.DomPropAttribute object at 0x164097ee0>>](ControlPoint.md#parameter-property)
- - [<bound method Generator.fname of <generator.code_gen.DomPropAttribute object at 0x164097d90>>](ControlPoint.md#parameter_factor-property)
- - [<bound method Generator.fname of <generator.code_gen.DomPropAttribute object at 0x164097d60>>](ControlPoint.md#parameter_length-property)
- - [<bound method Generator.fname of <generator.code_gen.DomPropAttribute object at 0x164097c70>>](ControlPoint.md#parameter_index-property)
+ - [<bound method Generator.fname of <generator.code_gen.DomPropAttribute object at 0x16d4fa5f0>>](ControlPoint.md#parameter-property)
+ - [<bound method Generator.fname of <generator.code_gen.DomPropAttribute object at 0x16d4fa5c0>>](ControlPoint.md#parameter_factor-property)
+ - [<bound method Generator.fname of <generator.code_gen.DomPropAttribute object at 0x16d4fa590>>](ControlPoint.md#parameter_length-property)
+ - [<bound method Generator.fname of <generator.code_gen.DomPropAttribute object at 0x16d4fa560>>](ControlPoint.md#parameter_index-property)

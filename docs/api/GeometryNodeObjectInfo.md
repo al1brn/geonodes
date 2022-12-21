@@ -33,10 +33,10 @@ node = nodes.ObjectInfo(object=None, as_instance=None, transform_space='ORIGINAL
 
 ## Implementation
 
-#### class [{class_name}]({class_name}.md)
+#### class [Object](Object.md)
 
- - [<bound method Generator.fname of <generator.code_gen.Method object at 0x1683b2a40>>](Object.md#info)
- - [<bound method Generator.fname of <generator.code_gen.Method object at 0x1683b0a60>>](Object.md#location)
- - [<bound method Generator.fname of <generator.code_gen.Method object at 0x1683b0310>>](Object.md#rotation)
- - [<bound method Generator.fname of <generator.code_gen.Method object at 0x1683b3d30>>](Object.md#scale)
- - [<bound method Generator.fname of <generator.code_gen.Method object at 0x1683b2830>>](Object.md#geometry)
+ - [<bound method Generator.fname of <generator.code_gen.Method object at 0x16d4f92d0>>](Object.md#info)
+ - [<bound method Generator.fname of <generator.code_gen.Method object at 0x16d4f92a0>>](Object.md#location)
+ - [<bound method Generator.fname of <generator.code_gen.Method object at 0x16d4f9270>>](Object.md#rotation)
+ - [<bound method Generator.fname of <generator.code_gen.Method object at 0x16d4f9240>>](Object.md#scale)
+ - [<bound method Generator.fname of <generator.code_gen.Method object at 0x16d4f9210>>](Object.md#geometry)

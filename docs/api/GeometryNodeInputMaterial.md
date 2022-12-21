@@ -19,6 +19,6 @@ node = nodes.Material()
 
 ## Implementation
 
-#### class [{class_name}]({class_name}.md)
+#### class [Material](Material.md)
 
- - [<bound method Generator.fname of <generator.code_gen.Constructor object at 0x1683b3910>>](Material.md#Material-classmethod)
+ - [<bound method Generator.fname of <generator.code_gen.Constructor object at 0x16d4f9300>>](Material.md#Material-classmethod)

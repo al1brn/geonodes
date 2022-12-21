@@ -32,6 +32,6 @@ node = nodes.MagicTexture(vector=None, scale=None, distortion=None, turbulence_d
 
 ## Implementation
 
-#### class [{class_name}]({class_name}.md)
+#### class [Texture](Texture.md)
 
- - [<bound method Generator.fname of <generator.code_gen.Static object at 0x1683b0d60>>](Texture.md#magic-staticmethod)
+ - [<bound method Generator.fname of <generator.code_gen.Static object at 0x1683b0f10>>](Texture.md#magic-staticmethod)

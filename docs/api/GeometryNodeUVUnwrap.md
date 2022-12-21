@@ -32,9 +32,9 @@ node = nodes.UvUnwrap(selection=None, seam=None, margin=None, fill_holes=None, m
 
 ## Implementation
 
-#### class [{class_name}]({class_name}.md)
+#### class [Mesh](Mesh.md)
 
- - [<bound method Generator.fname of <generator.code_gen.Attribute object at 0x16ee553f0>>](Mesh.md#uv_unwrap)
-#### class [{class_name}]({class_name}.md)
+ - [<bound method Generator.fname of <generator.code_gen.Attribute object at 0x16e3dc2e0>>](Mesh.md#uv_unwrap)
+#### class [Face](Face.md)
 
- - [<bound method Generator.fname of <generator.code_gen.DomAttribute object at 0x16ee553c0>>](Face.md#uv_unwrap)
+ - [<bound method Generator.fname of <generator.code_gen.DomAttribute object at 0x16e3df130>>](Face.md#uv_unwrap)

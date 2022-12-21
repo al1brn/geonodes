@@ -29,11 +29,11 @@ node = nodes.SeparateComponents(geometry=None)
 
 ## Implementation
 
-#### class [{class_name}]({class_name}.md)
+#### class [Geometry](Geometry.md)
 
- - [<bound method Generator.fname of <generator.code_gen.Property object at 0x1683b2200>>](Geometry.md#separate_components-property)
- - [<bound method Generator.fname of <generator.code_gen.Property object at 0x1683b3d00>>](Geometry.md#mesh_component-property)
- - [<bound method Generator.fname of <generator.code_gen.Property object at 0x1683b11b0>>](Geometry.md#curve_component-property)
- - [<bound method Generator.fname of <generator.code_gen.Property object at 0x1683b0af0>>](Geometry.md#points_component-property)
- - [<bound method Generator.fname of <generator.code_gen.Property object at 0x1683b02e0>>](Geometry.md#volume_component-property)
- - [<bound method Generator.fname of <generator.code_gen.Property object at 0x1683b28c0>>](Geometry.md#instances_component-property)
+ - [<bound method Generator.fname of <generator.code_gen.Property object at 0x16d4f96f0>>](Geometry.md#separate_components-property)
+ - [<bound method Generator.fname of <generator.code_gen.Property object at 0x16d4f96c0>>](Geometry.md#mesh_component-property)
+ - [<bound method Generator.fname of <generator.code_gen.Property object at 0x16d4f9690>>](Geometry.md#curve_component-property)
+ - [<bound method Generator.fname of <generator.code_gen.Property object at 0x16d4f9660>>](Geometry.md#points_component-property)
+ - [<bound method Generator.fname of <generator.code_gen.Property object at 0x16d4f9630>>](Geometry.md#volume_component-property)
+ - [<bound method Generator.fname of <generator.code_gen.Property object at 0x16d4f9600>>](Geometry.md#instances_component-property)

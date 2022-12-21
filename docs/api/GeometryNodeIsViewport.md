@@ -19,6 +19,6 @@ node = nodes.IsViewport()
 
 ## Implementation
 
-#### class [{class_name}]({class_name}.md)
+#### class [Geometry](Geometry.md)
 
- - [<bound method Generator.fname of <generator.code_gen.PropAttribute object at 0x1683b32b0>>](Geometry.md#is_viewport-property)
+ - [<bound method Generator.fname of <generator.code_gen.PropAttribute object at 0x16d4f9330>>](Geometry.md#is_viewport-property)

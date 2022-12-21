@@ -25,9 +25,9 @@ node = nodes.FaceSetBoundaries(face_set=None)
 
 ## Implementation
 
-#### class [{class_name}]({class_name}.md)
+#### class [Mesh](Mesh.md)
 
- - [<bound method Generator.fname of <generator.code_gen.Attribute object at 0x1683b21d0>>](Mesh.md#face_set_boundaries)
-#### class [{class_name}]({class_name}.md)
+ - [<bound method Generator.fname of <generator.code_gen.Attribute object at 0x16e378eb0>>](Mesh.md#face_set_boundaries)
+#### class [Face](Face.md)
 
- - [<bound method Generator.fname of <generator.code_gen.DomAttribute object at 0x1683b3370>>](Face.md#face_set_boundaries)
+ - [<bound method Generator.fname of <generator.code_gen.DomAttribute object at 0x16e379660>>](Face.md#face_set_boundaries)

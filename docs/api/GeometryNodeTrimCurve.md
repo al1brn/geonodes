@@ -33,8 +33,8 @@ node = nodes.TrimCurve(curve=None, start0=None, start1=None, end0=None, end1=Non
 
 ## Implementation
 
-#### class [{class_name}]({class_name}.md)
+#### class [Curve](Curve.md)
 
- - [<bound method Generator.fname of <generator.code_gen.StackMethod object at 0x1640978b0>>](Curve.md#trim)
- - [<bound method Generator.fname of <generator.code_gen.StackMethod object at 0x164096ec0>>](Curve.md#trim_factor)
- - [<bound method Generator.fname of <generator.code_gen.StackMethod object at 0x1640976d0>>](Curve.md#trim_length)
+ - [<bound method Generator.fname of <generator.code_gen.StackMethod object at 0x16d4fa950>>](Curve.md#trim)
+ - [<bound method Generator.fname of <generator.code_gen.StackMethod object at 0x16d4fa920>>](Curve.md#trim_factor)
+ - [<bound method Generator.fname of <generator.code_gen.StackMethod object at 0x16d4fa8f0>>](Curve.md#trim_length)

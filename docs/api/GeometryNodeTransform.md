@@ -28,6 +28,6 @@ node = nodes.Transform(geometry=None, translation=None, rotation=None, scale=Non
 
 ## Implementation
 
-#### class [{class_name}]({class_name}.md)
+#### class [Geometry](Geometry.md)
 
- - [<bound method Generator.fname of <generator.code_gen.StackMethod object at 0x1683b0130>>](Geometry.md#transform)
+ - [<bound method Generator.fname of <generator.code_gen.StackMethod object at 0x16d4f9540>>](Geometry.md#transform)

@@ -26,6 +26,6 @@ node = nodes.DualMesh(mesh=None, keep_boundaries=None)
 
 ## Implementation
 
-#### class [{class_name}]({class_name}.md)
+#### class [Mesh](Mesh.md)
 
- - [<bound method Generator.fname of <generator.code_gen.Method object at 0x1683b3100>>](Mesh.md#dual_mesh)
+ - [<bound method Generator.fname of <generator.code_gen.Method object at 0x16d4f85e0>>](Mesh.md#dual_mesh)

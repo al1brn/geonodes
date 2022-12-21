@@ -19,6 +19,6 @@ node = nodes.EdgeNeighbors()
 
 ## Implementation
 
-#### class [{class_name}]({class_name}.md)
+#### class [Edge](Edge.md)
 
- - [<bound method Generator.fname of <generator.code_gen.DomPropAttribute object at 0x1683b1ab0>>](Edge.md#neighbors-property)
+ - [<bound method Generator.fname of <generator.code_gen.DomPropAttribute object at 0x16e37acb0>>](Edge.md#neighbors-property)

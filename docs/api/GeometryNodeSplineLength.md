@@ -20,6 +20,6 @@ node = nodes.SplineLength()
 
 ## Implementation
 
-#### class [{class_name}]({class_name}.md)
+#### class [Spline](Spline.md)
 
- - [<bound method Generator.fname of <generator.code_gen.DomPropAttribute object at 0x164096d10>>](Spline.md#length-property)
+ - [<bound method Generator.fname of <generator.code_gen.DomPropAttribute object at 0x16d4fa620>>](Spline.md#length-property)

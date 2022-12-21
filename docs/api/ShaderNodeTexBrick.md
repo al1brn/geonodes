@@ -42,6 +42,6 @@ node = nodes.BrickTexture(vector=None, color1=None, color2=None, mortar=None, sc
 
 ## Implementation
 
-#### class [{class_name}]({class_name}.md)
+#### class [Texture](Texture.md)
 
- - [<bound method Generator.fname of <generator.code_gen.Static object at 0x1683b0850>>](Texture.md#brick-staticmethod)
+ - [<bound method Generator.fname of <generator.code_gen.Static object at 0x1683b03a0>>](Texture.md#brick-staticmethod)

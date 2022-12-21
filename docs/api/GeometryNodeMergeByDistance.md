@@ -31,9 +31,9 @@ node = nodes.MergeByDistance(geometry=None, selection=None, distance=None, mode=
 
 ## Implementation
 
-#### class [{class_name}]({class_name}.md)
+#### class [Geometry](Geometry.md)
 
- - [<bound method Generator.fname of <generator.code_gen.StackMethod object at 0x1683b3a00>>](Geometry.md#merge_by_distance)
-#### class [{class_name}]({class_name}.md)
+ - [<bound method Generator.fname of <generator.code_gen.StackMethod object at 0x16d4f98a0>>](Geometry.md#merge_by_distance)
+#### class [Vertex](Vertex.md)
 
- - [<bound method Generator.fname of <generator.code_gen.DomStackMethod object at 0x1683b3e50>>](Vertex.md#merge_by_distance)
+ - [<bound method Generator.fname of <generator.code_gen.DomStackMethod object at 0x16d4f9870>>](Vertex.md#merge_by_distance)

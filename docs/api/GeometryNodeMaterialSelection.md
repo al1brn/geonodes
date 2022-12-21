@@ -25,9 +25,9 @@ node = nodes.MaterialSelection(material=None)
 
 ## Implementation
 
-#### class [{class_name}]({class_name}.md)
+#### class [Geometry](Geometry.md)
 
- - [<bound method Generator.fname of <generator.code_gen.Attribute object at 0x1683b3880>>](Geometry.md#material_selection)
-#### class [{class_name}]({class_name}.md)
+ - [<bound method Generator.fname of <generator.code_gen.Attribute object at 0x16d4f8760>>](Geometry.md#material_selection)
+#### class [Domain](Domain.md)
 
- - [<bound method Generator.fname of <generator.code_gen.DomAttribute object at 0x1683b3d60>>](Domain.md#material_selection)
+ - [<bound method Generator.fname of <generator.code_gen.DomAttribute object at 0x16d4f8730>>](Domain.md#material_selection)

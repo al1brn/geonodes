@@ -29,6 +29,6 @@ node = nodes.RealizeInstances(geometry=None, legacy_behavior=False)
 
 ## Implementation
 
-#### class [{class_name}]({class_name}.md)
+#### class [Instances](Instances.md)
 
- - [<bound method Generator.fname of <generator.code_gen.Method object at 0x1683b2c50>>](Instances.md#realize)
+ - [<bound method Generator.fname of <generator.code_gen.Method object at 0x16d4f8a00>>](Instances.md#realize)

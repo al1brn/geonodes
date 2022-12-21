@@ -19,6 +19,6 @@ node = nodes.CurveTangent()
 
 ## Implementation
 
-#### class [{class_name}]({class_name}.md)
+#### class [ControlPoint](ControlPoint.md)
 
- - [<bound method Generator.fname of <generator.code_gen.DomPropAttribute object at 0x164096c20>>](ControlPoint.md#tangent-property)
+ - [<bound method Generator.fname of <generator.code_gen.DomPropAttribute object at 0x16d4fa830>>](ControlPoint.md#tangent-property)

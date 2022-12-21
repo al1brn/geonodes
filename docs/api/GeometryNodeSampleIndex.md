@@ -38,9 +38,9 @@ node = nodes.SampleIndex(geometry=None, value=None, index=None, clamp=False, dat
 - Output sockets : ['value']
 ## Implementation
 
-#### class [{class_name}]({class_name}.md)
+#### class [Geometry](Geometry.md)
 
- - [<bound method Generator.fname of <generator.code_gen.Method object at 0x1683b24d0>>](Geometry.md#sample_index)
-#### class [{class_name}]({class_name}.md)
+ - [<bound method Generator.fname of <generator.code_gen.Method object at 0x16d4f97b0>>](Geometry.md#sample_index)
+#### class [Domain](Domain.md)
 
- - [<bound method Generator.fname of <generator.code_gen.DomMethod object at 0x1683b3a60>>](Domain.md#sample_index)
+ - [<bound method Generator.fname of <generator.code_gen.DomMethod object at 0x16d4f9780>>](Domain.md#sample_index)

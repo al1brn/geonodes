@@ -35,10 +35,10 @@ node = nodes.NoiseTexture(vector=None, w=None, scale=None, detail=None, roughnes
 
 ## Implementation
 
-#### class [{class_name}]({class_name}.md)
+#### class [Texture](Texture.md)
 
- - [<bound method Generator.fname of <generator.code_gen.Static object at 0x1683b2620>>](Texture.md#noise-staticmethod)
- - [<bound method Generator.fname of <generator.code_gen.Static object at 0x1683b24a0>>](Texture.md#noise_1D-staticmethod)
- - [<bound method Generator.fname of <generator.code_gen.Static object at 0x1683b1e70>>](Texture.md#noise_2D-staticmethod)
- - [<bound method Generator.fname of <generator.code_gen.Static object at 0x1683b0b20>>](Texture.md#noise_3D-staticmethod)
- - [<bound method Generator.fname of <generator.code_gen.Static object at 0x1683b1cf0>>](Texture.md#noise_4D-staticmethod)
+ - [<bound method Generator.fname of <generator.code_gen.Static object at 0x1683b15d0>>](Texture.md#noise-staticmethod)
+ - [<bound method Generator.fname of <generator.code_gen.Static object at 0x16e37bbe0>>](Texture.md#noise_1D-staticmethod)
+ - [<bound method Generator.fname of <generator.code_gen.Static object at 0x16e37a980>>](Texture.md#noise_2D-staticmethod)
+ - [<bound method Generator.fname of <generator.code_gen.Static object at 0x16e3785e0>>](Texture.md#noise_3D-staticmethod)
+ - [<bound method Generator.fname of <generator.code_gen.Static object at 0x16e378550>>](Texture.md#noise_4D-staticmethod)

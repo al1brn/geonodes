@@ -36,6 +36,6 @@ node = nodes.SampleNearestSurface(mesh=None, value=None, sample_position=None, d
 - Output sockets : ['value']
 ## Implementation
 
-#### class [{class_name}]({class_name}.md)
+#### class [Mesh](Mesh.md)
 
- - [<bound method Generator.fname of <generator.code_gen.Method object at 0x1683b1780>>](Mesh.md#sample_nearest_surface)
+ - [<bound method Generator.fname of <generator.code_gen.Method object at 0x16d4f8250>>](Mesh.md#sample_nearest_surface)

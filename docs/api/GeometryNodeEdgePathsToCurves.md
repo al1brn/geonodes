@@ -27,9 +27,9 @@ node = nodes.EdgePathsToCurves(mesh=None, start_vertices=None, next_vertex_index
 
 ## Implementation
 
-#### class [{class_name}]({class_name}.md)
+#### class [Mesh](Mesh.md)
 
- - [<bound method Generator.fname of <generator.code_gen.Attribute object at 0x1683b16f0>>](Mesh.md#edge_paths_to_curves)
-#### class [{class_name}]({class_name}.md)
+ - [<bound method Generator.fname of <generator.code_gen.Attribute object at 0x16d4f85b0>>](Mesh.md#edge_paths_to_curves)
+#### class [Edge](Edge.md)
 
- - [<bound method Generator.fname of <generator.code_gen.DomAttribute object at 0x1683b33d0>>](Edge.md#edge_paths_to_curves)
+ - [<bound method Generator.fname of <generator.code_gen.DomAttribute object at 0x16d4f8580>>](Edge.md#edge_paths_to_curves)

@@ -25,6 +25,6 @@ node = nodes.String(string='')
 
 ## Implementation
 
-#### class [{class_name}]({class_name}.md)
+#### class [String](String.md)
 
- - [<bound method Generator.fname of <generator.code_gen.Constructor object at 0x1683b04c0>>](String.md#String-classmethod)
+ - [<bound method Generator.fname of <generator.code_gen.Constructor object at 0x16d4f9180>>](String.md#String-classmethod)

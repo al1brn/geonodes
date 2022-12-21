@@ -31,9 +31,9 @@ node = nodes.GeometryProximity(target=None, source_position=None, target_element
 
 ## Implementation
 
-#### class [{class_name}]({class_name}.md)
+#### class [Geometry](Geometry.md)
 
- - [<bound method Generator.fname of <generator.code_gen.Attribute object at 0x1683b27a0>>](Geometry.md#proximity)
- - [<bound method Generator.fname of <generator.code_gen.Attribute object at 0x1683b3ac0>>](Geometry.md#proximity_points)
- - [<bound method Generator.fname of <generator.code_gen.Attribute object at 0x1683b31f0>>](Geometry.md#proximity_edges)
- - [<bound method Generator.fname of <generator.code_gen.Attribute object at 0x1683b0d30>>](Geometry.md#proximity_facess)
+ - [<bound method Generator.fname of <generator.code_gen.Attribute object at 0x16d4f9a20>>](Geometry.md#proximity)
+ - [<bound method Generator.fname of <generator.code_gen.Attribute object at 0x16d4f99f0>>](Geometry.md#proximity_points)
+ - [<bound method Generator.fname of <generator.code_gen.Attribute object at 0x16d4f99c0>>](Geometry.md#proximity_edges)
+ - [<bound method Generator.fname of <generator.code_gen.Attribute object at 0x16d4f9990>>](Geometry.md#proximity_facess)

@@ -32,15 +32,15 @@ node = nodes.ResampleCurve(curve=None, selection=None, count=None, length=None, 
 
 ## Implementation
 
-#### class [{class_name}]({class_name}.md)
+#### class [Curve](Curve.md)
 
- - [<bound method Generator.fname of <generator.code_gen.StackMethod object at 0x1640972b0>>](Curve.md#resample)
- - [<bound method Generator.fname of <generator.code_gen.StackMethod object at 0x164097220>>](Curve.md#resample_count)
- - [<bound method Generator.fname of <generator.code_gen.StackMethod object at 0x164097100>>](Curve.md#resample_length)
- - [<bound method Generator.fname of <generator.code_gen.StackMethod object at 0x164095b70>>](Curve.md#resample_evaluated)
-#### class [{class_name}]({class_name}.md)
+ - [<bound method Generator.fname of <generator.code_gen.StackMethod object at 0x16d4fab60>>](Curve.md#resample)
+ - [<bound method Generator.fname of <generator.code_gen.StackMethod object at 0x16d4fab30>>](Curve.md#resample_count)
+ - [<bound method Generator.fname of <generator.code_gen.StackMethod object at 0x16d4fab00>>](Curve.md#resample_length)
+ - [<bound method Generator.fname of <generator.code_gen.StackMethod object at 0x16d4faad0>>](Curve.md#resample_evaluated)
+#### class [Spline](Spline.md)
 
- - [<bound method Generator.fname of <generator.code_gen.DomStackMethod object at 0x1640970d0>>](Spline.md#resample)
- - [<bound method Generator.fname of <generator.code_gen.DomStackMethod object at 0x1640978e0>>](Spline.md#resample_count)
- - [<bound method Generator.fname of <generator.code_gen.DomStackMethod object at 0x164096e30>>](Spline.md#resample_length)
- - [<bound method Generator.fname of <generator.code_gen.DomStackMethod object at 0x164096f20>>](Spline.md#resample_evaluated)
+ - [<bound method Generator.fname of <generator.code_gen.DomStackMethod object at 0x16d4faaa0>>](Spline.md#resample)
+ - [<bound method Generator.fname of <generator.code_gen.DomStackMethod object at 0x16d4faa70>>](Spline.md#resample_count)
+ - [<bound method Generator.fname of <generator.code_gen.DomStackMethod object at 0x16d4faa40>>](Spline.md#resample_length)
+ - [<bound method Generator.fname of <generator.code_gen.DomStackMethod object at 0x16d4faa10>>](Spline.md#resample_evaluated)

@@ -33,6 +33,6 @@ node = nodes.BezierSegment(resolution=None, start=None, start_handle=None, end_h
 
 ## Implementation
 
-#### class [{class_name}]({class_name}.md)
+#### class [Curve](Curve.md)
 
- - [<bound method Generator.fname of <generator.code_gen.Constructor object at 0x1683b13c0>>](Curve.md#bezier_segment-classmethod)
+ - [<bound method Generator.fname of <generator.code_gen.Constructor object at 0x16d4fa0b0>>](Curve.md#bezier_segment-classmethod)

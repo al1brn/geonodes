@@ -34,10 +34,10 @@ node = nodes.VectorRotate(vector=None, center=None, axis=None, angle=None, rotat
 
 ## Implementation
 
-#### class [{class_name}]({class_name}.md)
+#### class [Vector](Vector.md)
 
- - [<bound method Generator.fname of <generator.code_gen.Method object at 0x16ee54b80>>](Vector.md#rotate_euler)
- - [<bound method Generator.fname of <generator.code_gen.Method object at 0x16ee54b50>>](Vector.md#rotate_axis_angle)
- - [<bound method Generator.fname of <generator.code_gen.Method object at 0x16ee54b20>>](Vector.md#rotate_x)
- - [<bound method Generator.fname of <generator.code_gen.Method object at 0x16ee54af0>>](Vector.md#rotate_y)
- - [<bound method Generator.fname of <generator.code_gen.Method object at 0x16ee54ac0>>](Vector.md#rotate_z)
+ - [<bound method Generator.fname of <generator.code_gen.Method object at 0x16e3dfd30>>](Vector.md#rotate_euler)
+ - [<bound method Generator.fname of <generator.code_gen.Method object at 0x16e3dc820>>](Vector.md#rotate_axis_angle)
+ - [<bound method Generator.fname of <generator.code_gen.Method object at 0x16e3dc730>>](Vector.md#rotate_x)
+ - [<bound method Generator.fname of <generator.code_gen.Method object at 0x16e3dc7c0>>](Vector.md#rotate_y)
+ - [<bound method Generator.fname of <generator.code_gen.Method object at 0x16e3dde40>>](Vector.md#rotate_z)

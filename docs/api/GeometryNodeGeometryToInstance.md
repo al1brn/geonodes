@@ -25,9 +25,9 @@ node = nodes.GeometryToInstance(*geometry)
 
 ## Implementation
 
-#### class [{class_name}]({class_name}.md)
+#### class [Geometry](Geometry.md)
 
- - [<bound method Generator.fname of <generator.code_gen.Method object at 0x1683b3d90>>](Geometry.md#to_instance)
+ - [<bound method Generator.fname of <generator.code_gen.Method object at 0x16d4f9930>>](Geometry.md#to_instance)
 #### Global functions
 
- - [<bound method Generator.fname of <generator.code_gen.Function object at 0x1683b2710>>](function.md#geometry_to_instance)
+ - [<bound method Generator.fname of <generator.code_gen.Function object at 0x16d4f9960>>](function.md#geometry_to_instance)

@@ -34,16 +34,16 @@ node = nodes.ScaleElements(geometry=None, selection=None, scale=None, center=Non
 
 ## Implementation
 
-#### class [{class_name}]({class_name}.md)
+#### class [Mesh](Mesh.md)
 
- - [<bound method Generator.fname of <generator.code_gen.StackMethod object at 0x1683b1300>>](Mesh.md#scale_elements)
- - [<bound method Generator.fname of <generator.code_gen.StackMethod object at 0x1683b2230>>](Mesh.md#scale_uniform)
- - [<bound method Generator.fname of <generator.code_gen.StackMethod object at 0x1683b1720>>](Mesh.md#scale_single_axis)
-#### class [{class_name}]({class_name}.md)
+ - [<bound method Generator.fname of <generator.code_gen.StackMethod object at 0x16d4f81f0>>](Mesh.md#scale_elements)
+ - [<bound method Generator.fname of <generator.code_gen.StackMethod object at 0x16d4f81c0>>](Mesh.md#scale_uniform)
+ - [<bound method Generator.fname of <generator.code_gen.StackMethod object at 0x16d4f8190>>](Mesh.md#scale_single_axis)
+#### class [Face](Face.md)
 
- - [<bound method Generator.fname of <generator.code_gen.DomStackMethod object at 0x1683b1c30>>](Face.md#scale_uniform)
- - [<bound method Generator.fname of <generator.code_gen.DomStackMethod object at 0x1683b30d0>>](Face.md#scale_single_axis)
-#### class [{class_name}]({class_name}.md)
+ - [<bound method Generator.fname of <generator.code_gen.DomStackMethod object at 0x16d4f8160>>](Face.md#scale_uniform)
+ - [<bound method Generator.fname of <generator.code_gen.DomStackMethod object at 0x16d4f8130>>](Face.md#scale_single_axis)
+#### class [Edge](Edge.md)
 
- - [<bound method Generator.fname of <generator.code_gen.DomStackMethod object at 0x1683b1210>>](Edge.md#scale_uniform)
- - [<bound method Generator.fname of <generator.code_gen.DomStackMethod object at 0x1683b2d40>>](Edge.md#scale_single_axis)
+ - [<bound method Generator.fname of <generator.code_gen.DomStackMethod object at 0x16d4f8100>>](Edge.md#scale_uniform)
+ - [<bound method Generator.fname of <generator.code_gen.DomStackMethod object at 0x16d4f80d0>>](Edge.md#scale_single_axis)

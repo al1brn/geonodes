@@ -26,6 +26,6 @@ node = nodes.EdgePathsToSelection(start_vertices=None, next_vertex_index=None)
 
 ## Implementation
 
-#### class [{class_name}]({class_name}.md)
+#### class [Mesh](Mesh.md)
 
- - [<bound method Generator.fname of <generator.code_gen.Method object at 0x1683b1600>>](Mesh.md#edge_paths_to_selection)
+ - [<bound method Generator.fname of <generator.code_gen.Method object at 0x16d4f8550>>](Mesh.md#edge_paths_to_selection)

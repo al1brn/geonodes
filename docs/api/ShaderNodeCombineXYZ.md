@@ -27,6 +27,6 @@ node = nodes.CombineXyz(x=None, y=None, z=None)
 
 ## Implementation
 
-#### class [{class_name}]({class_name}.md)
+#### class [Vector](Vector.md)
 
- - [<bound method Generator.fname of <generator.code_gen.Constructor object at 0x16ee55390>>](Vector.md#Combine-classmethod)
+ - [<bound method Generator.fname of <generator.code_gen.Constructor object at 0x16e3dce20>>](Vector.md#Combine-classmethod)

@@ -28,6 +28,6 @@ node = nodes.QuadraticBezier(resolution=None, start=None, middle=None, end=None)
 
 ## Implementation
 
-#### class [{class_name}]({class_name}.md)
+#### class [Curve](Curve.md)
 
- - [<bound method Generator.fname of <generator.code_gen.Constructor object at 0x1683b3220>>](Curve.md#QuadraticBezier-classmethod)
+ - [<bound method Generator.fname of <generator.code_gen.Constructor object at 0x16d4f9f90>>](Curve.md#QuadraticBezier-classmethod)

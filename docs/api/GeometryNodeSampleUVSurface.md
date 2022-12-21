@@ -38,6 +38,6 @@ node = nodes.SampleUvSurface(mesh=None, value=None, source_uv_map=None, sample_u
 - Output sockets : ['value']
 ## Implementation
 
-#### class [{class_name}]({class_name}.md)
+#### class [Mesh](Mesh.md)
 
- - [<bound method Generator.fname of <generator.code_gen.Method object at 0x1683b1690>>](Mesh.md#sample_uv_surface)
+ - [<bound method Generator.fname of <generator.code_gen.Method object at 0x16d4f8220>>](Mesh.md#sample_uv_surface)

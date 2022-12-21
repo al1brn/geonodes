@@ -19,6 +19,6 @@ node = nodes.SelfObject()
 
 ## Implementation
 
-#### class [{class_name}]({class_name}.md)
+#### class [Object](Object.md)
 
- - [<bound method Generator.fname of <generator.code_gen.Constructor object at 0x1683b3e80>>](Object.md#Self-classmethod)
+ - [<bound method Generator.fname of <generator.code_gen.Constructor object at 0x16d4f91b0>>](Object.md#Self-classmethod)

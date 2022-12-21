@@ -33,8 +33,8 @@ node = nodes.MeshBoolean(*mesh_2, mesh_1=None, self_intersection=None, hole_tole
 
 ## Implementation
 
-#### class [{class_name}]({class_name}.md)
+#### class [Mesh](Mesh.md)
 
- - [<bound method Generator.fname of <generator.code_gen.StackMethod object at 0x1683b3850>>](Mesh.md#boolean_intersect)
- - [<bound method Generator.fname of <generator.code_gen.StackMethod object at 0x1683b1f60>>](Mesh.md#boolean_union)
- - [<bound method Generator.fname of <generator.code_gen.StackMethod object at 0x1683b10c0>>](Mesh.md#boolean_difference)
+ - [<bound method Generator.fname of <generator.code_gen.StackMethod object at 0x16d4f8400>>](Mesh.md#boolean_intersect)
+ - [<bound method Generator.fname of <generator.code_gen.StackMethod object at 0x16d4f83d0>>](Mesh.md#boolean_union)
+ - [<bound method Generator.fname of <generator.code_gen.StackMethod object at 0x16d4f83a0>>](Mesh.md#boolean_difference)

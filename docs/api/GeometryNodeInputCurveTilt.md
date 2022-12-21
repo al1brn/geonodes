@@ -19,6 +19,6 @@ node = nodes.CurveTilt()
 
 ## Implementation
 
-#### class [{class_name}]({class_name}.md)
+#### class [ControlPoint](ControlPoint.md)
 
- - [<bound method Generator.fname of <generator.code_gen.DomPropAttribute object at 0x164096f80>>](ControlPoint.md#tilt-property)
+ - [<bound method Generator.fname of <generator.code_gen.DomPropAttribute object at 0x16d4fa800>>](ControlPoint.md#tilt-property)

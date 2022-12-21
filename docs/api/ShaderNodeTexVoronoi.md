@@ -40,10 +40,10 @@ node = nodes.VoronoiTexture(vector=None, w=None, scale=None, smoothness=None, ex
 
 ## Implementation
 
-#### class [{class_name}]({class_name}.md)
+#### class [Texture](Texture.md)
 
- - [<bound method Generator.fname of <generator.code_gen.Static object at 0x1683b3c10>>](Texture.md#voronoi-staticmethod)
- - [<bound method Generator.fname of <generator.code_gen.Static object at 0x1683b2dd0>>](Texture.md#voronoi_1D-staticmethod)
- - [<bound method Generator.fname of <generator.code_gen.Static object at 0x1683b0430>>](Texture.md#voronoi_2D-staticmethod)
- - [<bound method Generator.fname of <generator.code_gen.Static object at 0x1683b07c0>>](Texture.md#voronoi_3D-staticmethod)
- - [<bound method Generator.fname of <generator.code_gen.Static object at 0x1683b0ca0>>](Texture.md#voronoi_4D-staticmethod)
+ - [<bound method Generator.fname of <generator.code_gen.Static object at 0x16e37a4a0>>](Texture.md#voronoi-staticmethod)
+ - [<bound method Generator.fname of <generator.code_gen.Static object at 0x16e37a140>>](Texture.md#voronoi_1D-staticmethod)
+ - [<bound method Generator.fname of <generator.code_gen.Static object at 0x16e37bf70>>](Texture.md#voronoi_2D-staticmethod)
+ - [<bound method Generator.fname of <generator.code_gen.Static object at 0x16e37ab60>>](Texture.md#voronoi_3D-staticmethod)
+ - [<bound method Generator.fname of <generator.code_gen.Static object at 0x16e37a290>>](Texture.md#voronoi_4D-staticmethod)

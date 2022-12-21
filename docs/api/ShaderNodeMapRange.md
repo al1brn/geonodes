@@ -43,17 +43,17 @@ node = nodes.MapRange(value=None, from_min=None, from_max=None, to_min=None, to_
 - Output sockets : []
 ## Implementation
 
-#### class [{class_name}]({class_name}.md)
+#### class [Float](Float.md)
 
- - [<bound method Generator.fname of <generator.code_gen.Method object at 0x16ee572e0>>](Float.md#map_range)
- - [<bound method Generator.fname of <generator.code_gen.Method object at 0x16ee572b0>>](Float.md#map_range_linear)
- - [<bound method Generator.fname of <generator.code_gen.Method object at 0x16ee57280>>](Float.md#map_range_stepped)
- - [<bound method Generator.fname of <generator.code_gen.Method object at 0x16ee57250>>](Float.md#map_range_smooth)
- - [<bound method Generator.fname of <generator.code_gen.Method object at 0x16ee57220>>](Float.md#map_range_smoother)
-#### class [{class_name}]({class_name}.md)
+ - [<bound method Generator.fname of <generator.code_gen.Method object at 0x16e3df190>>](Float.md#map_range)
+ - [<bound method Generator.fname of <generator.code_gen.Method object at 0x16e3df100>>](Float.md#map_range_linear)
+ - [<bound method Generator.fname of <generator.code_gen.Method object at 0x16e3dc430>>](Float.md#map_range_stepped)
+ - [<bound method Generator.fname of <generator.code_gen.Method object at 0x16e3dd120>>](Float.md#map_range_smooth)
+ - [<bound method Generator.fname of <generator.code_gen.Method object at 0x16e3dd030>>](Float.md#map_range_smoother)
+#### class [Vector](Vector.md)
 
- - [<bound method Generator.fname of <generator.code_gen.Method object at 0x16ee571c0>>](Vector.md#map_range)
- - [<bound method Generator.fname of <generator.code_gen.Method object at 0x16ee57190>>](Vector.md#map_range_linear)
- - [<bound method Generator.fname of <generator.code_gen.Method object at 0x16ee57160>>](Vector.md#map_range_stepped)
- - [<bound method Generator.fname of <generator.code_gen.Method object at 0x16ee57130>>](Vector.md#map_range_smooth)
- - [<bound method Generator.fname of <generator.code_gen.Method object at 0x16ee57100>>](Vector.md#map_range_smoother)
+ - [<bound method Generator.fname of <generator.code_gen.Method object at 0x16e3ddb10>>](Vector.md#map_range)
+ - [<bound method Generator.fname of <generator.code_gen.Method object at 0x16e3dde70>>](Vector.md#map_range_linear)
+ - [<bound method Generator.fname of <generator.code_gen.Method object at 0x16e3dd3f0>>](Vector.md#map_range_stepped)
+ - [<bound method Generator.fname of <generator.code_gen.Method object at 0x16e3dfbb0>>](Vector.md#map_range_smooth)
+ - [<bound method Generator.fname of <generator.code_gen.Method object at 0x16e3dfa90>>](Vector.md#map_range_smoother)

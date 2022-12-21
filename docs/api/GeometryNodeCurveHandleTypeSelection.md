@@ -26,11 +26,11 @@ node = nodes.HandleTypeSelection(handle_type='AUTO', mode={'RIGHT', 'LEFT'})
 
 ## Implementation
 
-#### class [{class_name}]({class_name}.md)
+#### class [ControlPoint](ControlPoint.md)
 
- - [<bound method Generator.fname of <generator.code_gen.DomAttribute object at 0x164097700>>](ControlPoint.md#handle_type_selection_node)
- - [<bound method Generator.fname of <generator.code_gen.Source object at 0x164097790>>](ControlPoint.md#handle_type_selection)
- - [<bound method Generator.fname of <generator.code_gen.Source object at 0x1640970a0>>](ControlPoint.md#handle_type_selection)
- - [<bound method Generator.fname of <generator.code_gen.Source object at 0x1640971c0>>](ControlPoint.md#handle_type_selection)
- - [<bound method Generator.fname of <generator.code_gen.Source object at 0x164097130>>](ControlPoint.md#handle_type_selection)
- - [<bound method Generator.fname of <generator.code_gen.Source object at 0x164097be0>>](ControlPoint.md#handle_type_selection)
+ - [<bound method Generator.fname of <generator.code_gen.DomAttribute object at 0x16d4fa7a0>>](ControlPoint.md#handle_type_selection_node)
+ - [<bound method Generator.fname of <generator.code_gen.Source object at 0x16d4fa770>>](ControlPoint.md#handle_type_selection)
+ - [<bound method Generator.fname of <generator.code_gen.Source object at 0x16d4fa740>>](ControlPoint.md#handle_type_selection)
+ - [<bound method Generator.fname of <generator.code_gen.Source object at 0x16d4fa710>>](ControlPoint.md#handle_type_selection)
+ - [<bound method Generator.fname of <generator.code_gen.Source object at 0x16d4fa6e0>>](ControlPoint.md#handle_type_selection)
+ - [<bound method Generator.fname of <generator.code_gen.Source object at 0x16d4fa6b0>>](ControlPoint.md#handle_type_selection)

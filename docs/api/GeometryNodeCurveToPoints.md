@@ -34,9 +34,9 @@ node = nodes.CurveToPoints(curve=None, count=None, length=None, mode='COUNT')
 
 ## Implementation
 
-#### class [{class_name}]({class_name}.md)
+#### class [Curve](Curve.md)
 
- - [<bound method Generator.fname of <generator.code_gen.Method object at 0x164097f70>>](Curve.md#to_points)
- - [<bound method Generator.fname of <generator.code_gen.Method object at 0x164097880>>](Curve.md#to_points_count)
- - [<bound method Generator.fname of <generator.code_gen.Method object at 0x1640972e0>>](Curve.md#to_points_length)
- - [<bound method Generator.fname of <generator.code_gen.Method object at 0x164096140>>](Curve.md#to_points_evaluated)
+ - [<bound method Generator.fname of <generator.code_gen.Method object at 0x16d4fad70>>](Curve.md#to_points)
+ - [<bound method Generator.fname of <generator.code_gen.Method object at 0x16d4fad40>>](Curve.md#to_points_count)
+ - [<bound method Generator.fname of <generator.code_gen.Method object at 0x16d4fad10>>](Curve.md#to_points_length)
+ - [<bound method Generator.fname of <generator.code_gen.Method object at 0x16d4face0>>](Curve.md#to_points_evaluated)

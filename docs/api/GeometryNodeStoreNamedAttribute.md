@@ -37,19 +37,19 @@ node = nodes.StoreNamedAttribute(geometry=None, name=None, value=None, data_type
 - Output sockets : []
 ## Implementation
 
-#### class [{class_name}]({class_name}.md)
+#### class [Geometry](Geometry.md)
 
- - [<bound method Generator.fname of <generator.code_gen.StackMethod object at 0x1639dc640>>](Geometry.md#store_named_attribute)
- - [<bound method Generator.fname of <generator.code_gen.StackMethod object at 0x1639dd930>>](Geometry.md#set_named_boolean)
- - [<bound method Generator.fname of <generator.code_gen.StackMethod object at 0x1639dc550>>](Geometry.md#set_named_integer)
- - [<bound method Generator.fname of <generator.code_gen.StackMethod object at 0x1639dc490>>](Geometry.md#set_named_float)
- - [<bound method Generator.fname of <generator.code_gen.StackMethod object at 0x1639ddf90>>](Geometry.md#set_named_vector)
- - [<bound method Generator.fname of <generator.code_gen.StackMethod object at 0x1639ddab0>>](Geometry.md#set_named_color)
-#### class [{class_name}]({class_name}.md)
+ - [<bound method Generator.fname of <generator.code_gen.StackMethod object at 0x16d4fbd30>>](Geometry.md#store_named_attribute)
+ - [<bound method Generator.fname of <generator.code_gen.StackMethod object at 0x16d4fbd00>>](Geometry.md#set_named_boolean)
+ - [<bound method Generator.fname of <generator.code_gen.StackMethod object at 0x16d4fbcd0>>](Geometry.md#set_named_integer)
+ - [<bound method Generator.fname of <generator.code_gen.StackMethod object at 0x16d4fbca0>>](Geometry.md#set_named_float)
+ - [<bound method Generator.fname of <generator.code_gen.StackMethod object at 0x16d4fbc70>>](Geometry.md#set_named_vector)
+ - [<bound method Generator.fname of <generator.code_gen.StackMethod object at 0x16d4fbc40>>](Geometry.md#set_named_color)
+#### class [Domain](Domain.md)
 
- - [<bound method Generator.fname of <generator.code_gen.DomStackMethod object at 0x1639dd9c0>>](Domain.md#store_named_attribute)
- - [<bound method Generator.fname of <generator.code_gen.DomStackMethod object at 0x1639dc880>>](Domain.md#set_named_boolean)
- - [<bound method Generator.fname of <generator.code_gen.DomStackMethod object at 0x1639ddf00>>](Domain.md#set_named_integer)
- - [<bound method Generator.fname of <generator.code_gen.DomStackMethod object at 0x1639ddb40>>](Domain.md#set_named_float)
- - [<bound method Generator.fname of <generator.code_gen.DomStackMethod object at 0x1639ddb10>>](Domain.md#set_named_vector)
- - [<bound method Generator.fname of <generator.code_gen.DomStackMethod object at 0x1639dc580>>](Domain.md#set_named_color)
+ - [<bound method Generator.fname of <generator.code_gen.DomStackMethod object at 0x16d4fbbe0>>](Domain.md#store_named_attribute)
+ - [<bound method Generator.fname of <generator.code_gen.DomStackMethod object at 0x16d4fbbb0>>](Domain.md#set_named_boolean)
+ - [<bound method Generator.fname of <generator.code_gen.DomStackMethod object at 0x16d4fbb80>>](Domain.md#set_named_integer)
+ - [<bound method Generator.fname of <generator.code_gen.DomStackMethod object at 0x16d4fbb50>>](Domain.md#set_named_float)
+ - [<bound method Generator.fname of <generator.code_gen.DomStackMethod object at 0x16d4fbb20>>](Domain.md#set_named_vector)
+ - [<bound method Generator.fname of <generator.code_gen.DomStackMethod object at 0x16d4fbaf0>>](Domain.md#set_named_color)

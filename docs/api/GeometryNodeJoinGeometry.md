@@ -25,9 +25,9 @@ node = nodes.JoinGeometry(*geometry)
 
 ## Implementation
 
-#### class [{class_name}]({class_name}.md)
+#### class [Geometry](Geometry.md)
 
- - [<bound method Generator.fname of <generator.code_gen.StackMethod object at 0x1683b2860>>](Geometry.md#join)
+ - [<bound method Generator.fname of <generator.code_gen.StackMethod object at 0x16d4f98d0>>](Geometry.md#join)
 #### Global functions
 
- - [<bound method Generator.fname of <generator.code_gen.Function object at 0x1683b2800>>](function.md#join_geometry)
+ - [<bound method Generator.fname of <generator.code_gen.Function object at 0x16d4f9900>>](function.md#join_geometry)

@@ -28,9 +28,9 @@ node = nodes.PointsOfCurve(curve_index=None, weights=None, sort_index=None)
 
 ## Implementation
 
-#### class [{class_name}]({class_name}.md)
+#### class [Curve](Curve.md)
 
- - [<bound method Generator.fname of <generator.code_gen.Attribute object at 0x1683b3eb0>>](Curve.md#points_of_curve)
-#### class [{class_name}]({class_name}.md)
+ - [<bound method Generator.fname of <generator.code_gen.Attribute object at 0x16d4f9e40>>](Curve.md#points_of_curve)
+#### class [Spline](Spline.md)
 
- - [<bound method Generator.fname of <generator.code_gen.DomAttribute object at 0x1683b2350>>](Spline.md#points)
+ - [<bound method Generator.fname of <generator.code_gen.DomAttribute object at 0x16d4f9e10>>](Spline.md#points)

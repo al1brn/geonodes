@@ -39,14 +39,14 @@ node = nodes.WaveTexture(vector=None, scale=None, distortion=None, detail=None, 
 
 ## Implementation
 
-#### class [{class_name}]({class_name}.md)
+#### class [Texture](Texture.md)
 
- - [<bound method Generator.fname of <generator.code_gen.Static object at 0x1683b1090>>](Texture.md#wave-staticmethod)
- - [<bound method Generator.fname of <generator.code_gen.Static object at 0x1683b01f0>>](Texture.md#wave_bands-staticmethod)
- - [<bound method Generator.fname of <generator.code_gen.Static object at 0x1683b08b0>>](Texture.md#wave_rings-staticmethod)
- - [<bound method Generator.fname of <generator.code_gen.Static object at 0x1683b0e50>>](Texture.md#wave_bands_sine-staticmethod)
- - [<bound method Generator.fname of <generator.code_gen.Static object at 0x1683b09d0>>](Texture.md#wave_bands_saw-staticmethod)
- - [<bound method Generator.fname of <generator.code_gen.Static object at 0x1683b3010>>](Texture.md#wave_bands_triangle-staticmethod)
- - [<bound method Generator.fname of <generator.code_gen.Static object at 0x1683b0d90>>](Texture.md#wave_rings_sine-staticmethod)
- - [<bound method Generator.fname of <generator.code_gen.Static object at 0x1683b07f0>>](Texture.md#wave_rings_saw-staticmethod)
- - [<bound method Generator.fname of <generator.code_gen.Static object at 0x1683b2500>>](Texture.md#wave_rings_triangle-staticmethod)
+ - [<bound method Generator.fname of <generator.code_gen.Static object at 0x16e37b3a0>>](Texture.md#wave-staticmethod)
+ - [<bound method Generator.fname of <generator.code_gen.Static object at 0x16e378e80>>](Texture.md#wave_bands-staticmethod)
+ - [<bound method Generator.fname of <generator.code_gen.Static object at 0x16e37b6a0>>](Texture.md#wave_rings-staticmethod)
+ - [<bound method Generator.fname of <generator.code_gen.Static object at 0x16e379270>>](Texture.md#wave_bands_sine-staticmethod)
+ - [<bound method Generator.fname of <generator.code_gen.Static object at 0x16e37aad0>>](Texture.md#wave_bands_saw-staticmethod)
+ - [<bound method Generator.fname of <generator.code_gen.Static object at 0x16e378b80>>](Texture.md#wave_bands_triangle-staticmethod)
+ - [<bound method Generator.fname of <generator.code_gen.Static object at 0x16e379180>>](Texture.md#wave_rings_sine-staticmethod)
+ - [<bound method Generator.fname of <generator.code_gen.Static object at 0x16e3790c0>>](Texture.md#wave_rings_saw-staticmethod)
+ - [<bound method Generator.fname of <generator.code_gen.Static object at 0x16e3788e0>>](Texture.md#wave_rings_triangle-staticmethod)

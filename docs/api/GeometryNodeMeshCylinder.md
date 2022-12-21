@@ -36,6 +36,6 @@ node = nodes.Cylinder(vertices=None, side_segments=None, fill_segments=None, rad
 
 ## Implementation
 
-#### class [{class_name}]({class_name}.md)
+#### class [Mesh](Mesh.md)
 
- - [<bound method Generator.fname of <generator.code_gen.Static object at 0x1683b05b0>>](Mesh.md#Cylinder-staticmethod)
+ - [<bound method Generator.fname of <generator.code_gen.Static object at 0x16e378190>>](Mesh.md#Cylinder-staticmethod)

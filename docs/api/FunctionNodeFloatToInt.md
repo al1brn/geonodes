@@ -29,10 +29,10 @@ node = nodes.FloatToInteger(float=None, rounding_mode='ROUND')
 
 ## Implementation
 
-#### class [{class_name}]({class_name}.md)
+#### class [Float](Float.md)
 
- - [<bound method Generator.fname of <generator.code_gen.Method object at 0x16ee57400>>](Float.md#to_integer)
- - [<bound method Generator.fname of <generator.code_gen.Method object at 0x16ee573d0>>](Float.md#round)
- - [<bound method Generator.fname of <generator.code_gen.Method object at 0x16ee573a0>>](Float.md#floor)
- - [<bound method Generator.fname of <generator.code_gen.Method object at 0x16ee57370>>](Float.md#ceiling)
- - [<bound method Generator.fname of <generator.code_gen.Method object at 0x16ee57340>>](Float.md#truncate)
+ - [<bound method Generator.fname of <generator.code_gen.Method object at 0x16e3dc3d0>>](Float.md#to_integer)
+ - [<bound method Generator.fname of <generator.code_gen.Method object at 0x16e3dd990>>](Float.md#round)
+ - [<bound method Generator.fname of <generator.code_gen.Method object at 0x16e3ddc30>>](Float.md#floor)
+ - [<bound method Generator.fname of <generator.code_gen.Method object at 0x16e3dd840>>](Float.md#ceiling)
+ - [<bound method Generator.fname of <generator.code_gen.Method object at 0x16e3dcb20>>](Float.md#truncate)
