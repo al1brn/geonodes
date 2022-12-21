@@ -48,6 +48,7 @@ def curve(self):
 
 #### Returns:
 - tuple ('`curve_index`', '`index_in_curve`')
+  [Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeCurveOfPoint.webp)
 
 <sub>Go to [top](#class-ControlPoint) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
@@ -265,6 +266,7 @@ def offset(self, offset=None):
 
 #### Returns:
 - tuple ('`is_valid_offset`', '`point_index`')
+  [Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeOffsetPointInCurve.webp)
 
 <sub>Go to [top](#class-ControlPoint) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
@@ -278,6 +280,7 @@ def parameter(self):
 
 #### Returns:
 - tuple ('`factor`', '`length`', '`index`')
+  [Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeSplineParameter.webp)
 
 <sub>Go to [top](#class-ControlPoint) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

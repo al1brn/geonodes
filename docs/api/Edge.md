@@ -111,6 +111,7 @@ def extrude(self, offset=None, offset_scale=None, individual=None):
 
 #### Returns:
 - tuple ('`top`', '`side`')
+  [Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeExtrudeMesh.webp)
 
 <sub>Go to [top](#class-Edge) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
@@ -254,6 +255,7 @@ def vertices_index(self):
 
 #### Returns:
 - tuple ('`vertex_index_1`', '`vertex_index_2`')
+  [Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeInputMeshEdgeVertices.webp)
 
 <sub>Go to [top](#class-Edge) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
@@ -267,6 +269,7 @@ def vertices_position(self):
 
 #### Returns:
 - tuple ('`position_1`', '`position_2`')
+  [Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeInputMeshEdgeVertices.webp)
 
 <sub>Go to [top](#class-Edge) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

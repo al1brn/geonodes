@@ -121,6 +121,7 @@ def Cone(vertices=None, side_segments=None, fill_segments=None, radius_top=None,
 
 #### Returns:
 - tuple ('`mesh`', '`top`', '`bottom`', '`side`')
+  [Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeMeshCone.webp)
 
 <sub>Go to [top](#class-Mesh) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
@@ -161,6 +162,7 @@ def Cylinder(vertices=None, side_segments=None, fill_segments=None, radius=None,
 
 #### Returns:
 - tuple ('`mesh`', '`top`', '`bottom`', '`side`')
+  [Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeMeshCylinder.webp)
 
 <sub>Go to [top](#class-Mesh) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
@@ -430,6 +432,7 @@ def distribute_points_on_faces(self, selection=None, distance_min=None, density_
 
 #### Returns:
 - tuple ('`points`', '`normal`', '`rotation`')
+  [Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeDistributePointsOnFaces.webp)
 
 <sub>Go to [top](#class-Mesh) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
@@ -527,6 +530,7 @@ def extrude(self, selection=None, offset=None, offset_scale=None, individual=Non
 
 #### Returns:
 - tuple ('`top`', '`side`')
+  [Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeExtrudeMesh.webp)
 
 <sub>Go to [top](#class-Mesh) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
@@ -728,6 +732,7 @@ def sample_uv_surface(self, value=None, source_uv_map=None, sample_uv=None):
 
 #### Returns:
 - tuple ('`value`', '`is_valid`')
+  [Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeSampleUVSurface.webp)
 
 <sub>Go to [top](#class-Mesh) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
@@ -822,6 +827,7 @@ def shortest_edge_paths(self, end_vertex=None, edge_cost=None):
 
 #### Returns:
 - tuple ('`next_vertex_index`', '`total_cost`')
+  [Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeInputShortestEdgePaths.webp)
 
 <sub>Go to [top](#class-Mesh) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

@@ -97,6 +97,7 @@ def accumulate_field(self, value=None, group_index=None):
 
 #### Returns:
 - tuple ('`leading`', '`trailing`', '`total`')
+  [Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeAccumulateField.webp)
 
 <sub>Go to [top](#class-Domain) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
@@ -641,6 +642,7 @@ def separate(self, geometry=None):
 
 #### Returns:
 - tuple ('`selection`', '`inverted`')
+  [Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeSeparateGeometry.webp)
 
 <sub>Go to [top](#class-Domain) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

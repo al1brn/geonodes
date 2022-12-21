@@ -83,6 +83,7 @@ def length(self):
 
 #### Returns:
 - tuple ('`length`', '`point_count`')
+  [Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeSplineLength.webp)
 
 <sub>Go to [top](#class-Spline) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
@@ -159,6 +160,7 @@ def points(self, weights=None, sort_index=None):
 
 #### Returns:
 - tuple ('`point_index`', '`total`')
+  [Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodePointsOfCurve.webp)
 
 <sub>Go to [top](#class-Spline) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
