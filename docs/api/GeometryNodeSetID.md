@@ -1,0 +1,9 @@
+# Node Set ID
+
+> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+
+- [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/set_id.html)
+ - [api reference]({node.blender_python_ref})
+
+```python
+node = SetID(geometry=None, selection=None, ID=None)```
