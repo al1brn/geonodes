@@ -31,17 +31,15 @@ node = nodes.SeparateGeometry(geometry=None, selection=None, domain='POINT')
 
 ## Implementation
 
-#### [Domain](Domain.md)
+### [Domain](Domain.md)
 
- - [separate](Domain.md#separate)
-  ```python
-  def separate(self, geometry=None)
-  ```
+| Name | Definition |
+|------|------------|
+ | [separate](Domain.md#separate) | `def separate(self, geometry=None): |
 
-#### [Geometry](Geometry.md)
+### [Geometry](Geometry.md)
 
- - [separate](Geometry.md#separate)
-  ```python
-  def separate(self, geometry=None, selection=None, domain='POINT')
-  ```
+| Name | Definition |
+|------|------------|
+ | [separate](Geometry.md#separate) | `def separate(self, geometry=None, selection=None, domain='POINT'): |
 

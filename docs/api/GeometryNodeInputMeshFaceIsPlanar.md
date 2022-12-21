@@ -25,17 +25,15 @@ node = nodes.FaceIsPlanar(threshold=None)
 
 ## Implementation
 
-#### [Face](Face.md)
+### [Face](Face.md)
 
- - [is_planar](Face.md#is_planar)
-  ```python
-  def is_planar(self, threshold=None)
-  ```
+| Name | Definition |
+|------|------------|
+ | [is_planar](Face.md#is_planar) | `def is_planar(self, threshold=None): |
 
-#### [Mesh](Mesh.md)
+### [Mesh](Mesh.md)
 
- - [face_is_planar](Mesh.md#face_is_planar)
-  ```python
-  def face_is_planar(self, threshold=None)
-  ```
+| Name | Definition |
+|------|------------|
+ | [face_is_planar](Mesh.md#face_is_planar) | `def face_is_planar(self, threshold=None): |
 

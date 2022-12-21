@@ -26,10 +26,9 @@ node = nodes.EdgePathsToSelection(start_vertices=None, next_vertex_index=None)
 
 ## Implementation
 
-#### [Mesh](Mesh.md)
+### [Mesh](Mesh.md)
 
- - [edge_paths_to_selection](Mesh.md#edge_paths_to_selection)
-  ```python
-  def edge_paths_to_selection(self, start_vertices=None, next_vertex_index=None)
-  ```
+| Name | Definition |
+|------|------------|
+ | [edge_paths_to_selection](Mesh.md#edge_paths_to_selection) | `def edge_paths_to_selection(self, start_vertices=None, next_vertex_index=None): |
 

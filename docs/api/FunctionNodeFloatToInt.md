@@ -29,30 +29,13 @@ node = nodes.FloatToInteger(float=None, rounding_mode='ROUND')
 
 ## Implementation
 
-#### [Float](Float.md)
+### [Float](Float.md)
 
- - [to_integer](Float.md#to_integer)
-  ```python
-  def to_integer(self, rounding_mode='ROUND')
-  ```
-
- - [round](Float.md#round)
-  ```python
-  def round(self)
-  ```
-
- - [floor](Float.md#floor)
-  ```python
-  def floor(self)
-  ```
-
- - [ceiling](Float.md#ceiling)
-  ```python
-  def ceiling(self)
-  ```
-
- - [truncate](Float.md#truncate)
-  ```python
-  def truncate(self)
-  ```
+| Name | Definition |
+|------|------------|
+ | [to_integer](Float.md#to_integer) | `def to_integer(self, rounding_mode='ROUND'): |
+ | [round](Float.md#round) | `def round(self): |
+ | [floor](Float.md#floor) | `def floor(self): |
+ | [ceiling](Float.md#ceiling) | `def ceiling(self): |
+ | [truncate](Float.md#truncate) | `def truncate(self): |
 

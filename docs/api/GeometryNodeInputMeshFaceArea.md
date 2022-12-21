@@ -19,10 +19,9 @@ node = nodes.FaceArea()
 
 ## Implementation
 
-#### [Face](Face.md)
+### [Face](Face.md)
 
- - [area](Face.md#area-property)
-  ```python
-  def area(self)
-  ```
+| Name | Definition |
+|------|------------|
+ | [area](Face.md#area-property) | `def area(self): |
 

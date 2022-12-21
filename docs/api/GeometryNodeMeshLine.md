@@ -33,30 +33,13 @@ node = nodes.MeshLine(count=None, resolution=None, start_location=None, offset=N
 
 ## Implementation
 
-#### [Mesh](Mesh.md)
+### [Mesh](Mesh.md)
 
- - [Line](Mesh.md#Line-classmethod)
-  ```python
-  def Line(cls, count=None, resolution=None, start_location=None, offset=None, count_mode='TOTAL', mode='OFFSET')
-  ```
-
- - [LineEndPoints](Mesh.md#LineEndPoints-classmethod)
-  ```python
-  def LineEndPoints(cls, count=None, start_location=None, end_location=None)
-  ```
-
- - [LineOffset](Mesh.md#LineOffset-classmethod)
-  ```python
-  def LineOffset(cls, count=None, start_location=None, offset=None)
-  ```
-
- - [LineEndPointsResolution](Mesh.md#LineEndPointsResolution-classmethod)
-  ```python
-  def LineEndPointsResolution(cls, resolution=None, start_location=None, end_location=None)
-  ```
-
- - [LineOffsetResolution](Mesh.md#LineOffsetResolution-classmethod)
-  ```python
-  def LineOffsetResolution(cls, resolution=None, start_location=None, offset=None)
-  ```
+| Name | Definition |
+|------|------------|
+ | [Line](Mesh.md#Line-classmethod) | `def Line(cls, count=None, resolution=None, start_location=None, offset=None, count_mode='TOTAL', mode='OFFSET'): |
+ | [LineEndPoints](Mesh.md#LineEndPoints-classmethod) | `def LineEndPoints(cls, count=None, start_location=None, end_location=None): |
+ | [LineOffset](Mesh.md#LineOffset-classmethod) | `def LineOffset(cls, count=None, start_location=None, offset=None): |
+ | [LineEndPointsResolution](Mesh.md#LineEndPointsResolution-classmethod) | `def LineEndPointsResolution(cls, resolution=None, start_location=None, end_location=None): |
+ | [LineOffsetResolution](Mesh.md#LineOffsetResolution-classmethod) | `def LineOffsetResolution(cls, resolution=None, start_location=None, offset=None): |
 

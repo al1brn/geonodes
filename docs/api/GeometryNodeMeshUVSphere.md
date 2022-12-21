@@ -27,10 +27,9 @@ node = nodes.UvSphere(segments=None, rings=None, radius=None)
 
 ## Implementation
 
-#### [Mesh](Mesh.md)
+### [Mesh](Mesh.md)
 
- - [Circle](Mesh.md#Circle-classmethod)
-  ```python
-  def Circle(cls, segments=None, rings=None, radius=None)
-  ```
+| Name | Definition |
+|------|------------|
+ | [Circle](Mesh.md#Circle-classmethod) | `def Circle(cls, segments=None, rings=None, radius=None): |
 

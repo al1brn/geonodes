@@ -44,57 +44,23 @@ node = nodes.AttributeStatistic(geometry=None, selection=None, attribute=None, d
 - Output sockets : ['mean', 'median', 'sum', 'min', 'max', 'range', 'standard_deviation', 'variance']
 ## Implementation
 
-#### [Domain](Domain.md)
+### [Domain](Domain.md)
 
- - [attribute_statistic](Domain.md#attribute_statistic)
-  ```python
-  def attribute_statistic(self, attribute=None)
-  ```
+| Name | Definition |
+|------|------------|
+ | [attribute_statistic](Domain.md#attribute_statistic) | `def attribute_statistic(self, attribute=None): |
+ | [attribute_mean](Domain.md#attribute_mean) | `def attribute_mean(self, attribute=None): |
+ | [attribute_median](Domain.md#attribute_median) | `def attribute_median(self, attribute=None): |
+ | [attribute_sum](Domain.md#attribute_sum) | `def attribute_sum(self, attribute=None): |
+ | [attribute_min](Domain.md#attribute_min) | `def attribute_min(self, attribute=None): |
+ | [attribute_max](Domain.md#attribute_max) | `def attribute_max(self, attribute=None): |
+ | [attribute_range](Domain.md#attribute_range) | `def attribute_range(self, attribute=None): |
+ | [attribute_std](Domain.md#attribute_std) | `def attribute_std(self, attribute=None): |
+ | [attribute_var](Domain.md#attribute_var) | `def attribute_var(self, attribute=None): |
 
- - [attribute_mean](Domain.md#attribute_mean)
-  ```python
-  def attribute_mean(self, attribute=None)
-  ```
+### [Geometry](Geometry.md)
 
- - [attribute_median](Domain.md#attribute_median)
-  ```python
-  def attribute_median(self, attribute=None)
-  ```
-
- - [attribute_sum](Domain.md#attribute_sum)
-  ```python
-  def attribute_sum(self, attribute=None)
-  ```
-
- - [attribute_min](Domain.md#attribute_min)
-  ```python
-  def attribute_min(self, attribute=None)
-  ```
-
- - [attribute_max](Domain.md#attribute_max)
-  ```python
-  def attribute_max(self, attribute=None)
-  ```
-
- - [attribute_range](Domain.md#attribute_range)
-  ```python
-  def attribute_range(self, attribute=None)
-  ```
-
- - [attribute_std](Domain.md#attribute_std)
-  ```python
-  def attribute_std(self, attribute=None)
-  ```
-
- - [attribute_var](Domain.md#attribute_var)
-  ```python
-  def attribute_var(self, attribute=None)
-  ```
-
-#### [Geometry](Geometry.md)
-
- - [attribute_statistic](Geometry.md#attribute_statistic)
-  ```python
-  def attribute_statistic(self, selection=None, attribute=None, domain='POINT')
-  ```
+| Name | Definition |
+|------|------------|
+ | [attribute_statistic](Geometry.md#attribute_statistic) | `def attribute_statistic(self, selection=None, attribute=None, domain='POINT'): |
 

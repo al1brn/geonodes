@@ -19,17 +19,15 @@ node = nodes.ID()
 
 ## Implementation
 
-#### [Domain](Domain.md)
+### [Domain](Domain.md)
 
- - [ID](Domain.md#ID-property)
-  ```python
-  def ID(self)
-  ```
+| Name | Definition |
+|------|------------|
+ | [ID](Domain.md#ID-property) | `def ID(self): |
 
-#### [Geometry](Geometry.md)
+### [Geometry](Geometry.md)
 
- - [ID](Geometry.md#ID-property)
-  ```python
-  def ID(self)
-  ```
+| Name | Definition |
+|------|------------|
+ | [ID](Geometry.md#ID-property) | `def ID(self): |
 

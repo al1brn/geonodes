@@ -19,10 +19,9 @@ node = nodes.IsViewport()
 
 ## Implementation
 
-#### [Geometry](Geometry.md)
+### [Geometry](Geometry.md)
 
- - [is_viewport](Geometry.md#is_viewport-property)
-  ```python
-  def is_viewport(self)
-  ```
+| Name | Definition |
+|------|------------|
+ | [is_viewport](Geometry.md#is_viewport-property) | `def is_viewport(self): |
 

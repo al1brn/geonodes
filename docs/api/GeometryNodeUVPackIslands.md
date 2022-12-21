@@ -28,17 +28,15 @@ node = nodes.PackUvIslands(uv=None, selection=None, margin=None, rotate=None)
 
 ## Implementation
 
-#### [Face](Face.md)
+### [Face](Face.md)
 
- - [pack_uv_islands](Face.md#pack_uv_islands)
-  ```python
-  def pack_uv_islands(self, uv=None, margin=None, rotate=None)
-  ```
+| Name | Definition |
+|------|------------|
+ | [pack_uv_islands](Face.md#pack_uv_islands) | `def pack_uv_islands(self, uv=None, margin=None, rotate=None): |
 
-#### [Mesh](Mesh.md)
+### [Mesh](Mesh.md)
 
- - [pack_uv_islands](Mesh.md#pack_uv_islands)
-  ```python
-  def pack_uv_islands(self, uv=None, selection=None, margin=None, rotate=None)
-  ```
+| Name | Definition |
+|------|------------|
+ | [pack_uv_islands](Mesh.md#pack_uv_islands) | `def pack_uv_islands(self, uv=None, selection=None, margin=None, rotate=None): |
 

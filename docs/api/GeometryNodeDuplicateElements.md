@@ -32,17 +32,15 @@ node = nodes.DuplicateElements(geometry=None, selection=None, amount=None, domai
 
 ## Implementation
 
-#### [Domain](Domain.md)
+### [Domain](Domain.md)
 
- - [duplicate](Domain.md#duplicate)
-  ```python
-  def duplicate(self, amount=None)
-  ```
+| Name | Definition |
+|------|------------|
+ | [duplicate](Domain.md#duplicate) | `def duplicate(self, amount=None): |
 
-#### [Geometry](Geometry.md)
+### [Geometry](Geometry.md)
 
- - [duplicate](Geometry.md#duplicate)
-  ```python
-  def duplicate(self, selection=None, amount=None, domain='POINT')
-  ```
+| Name | Definition |
+|------|------------|
+ | [duplicate](Geometry.md#duplicate) | `def duplicate(self, selection=None, amount=None, domain='POINT'): |
 

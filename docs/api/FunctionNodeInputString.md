@@ -25,10 +25,9 @@ node = nodes.String(string='')
 
 ## Implementation
 
-#### [String](String.md)
+### [String](String.md)
 
- - [String](String.md#String-classmethod)
-  ```python
-  def String(cls, string='')
-  ```
+| Name | Definition |
+|------|------------|
+ | [String](String.md#String-classmethod) | `def String(cls, string=''): |
 

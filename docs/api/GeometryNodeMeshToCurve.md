@@ -26,17 +26,15 @@ node = nodes.MeshToCurve(mesh=None, selection=None)
 
 ## Implementation
 
-#### [Edge](Edge.md)
+### [Edge](Edge.md)
 
- - [to_curve](Edge.md#to_curve)
-  ```python
-  def to_curve(self)
-  ```
+| Name | Definition |
+|------|------------|
+ | [to_curve](Edge.md#to_curve) | `def to_curve(self): |
 
-#### [Mesh](Mesh.md)
+### [Mesh](Mesh.md)
 
- - [to_curve](Mesh.md#to_curve)
-  ```python
-  def to_curve(self, selection=None)
-  ```
+| Name | Definition |
+|------|------------|
+ | [to_curve](Mesh.md#to_curve) | `def to_curve(self, selection=None): |
 

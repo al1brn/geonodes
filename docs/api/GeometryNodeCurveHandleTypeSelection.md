@@ -26,35 +26,14 @@ node = nodes.HandleTypeSelection(handle_type='AUTO', mode={'RIGHT', 'LEFT'})
 
 ## Implementation
 
-#### [ControlPoint](ControlPoint.md)
+### [ControlPoint](ControlPoint.md)
 
- - [handle_type_selection_node](ControlPoint.md#handle_type_selection_node)
-  ```python
-  def handle_type_selection_node(self, handle_type='AUTO', mode={'RIGHT', 'LEFT'})
-  ```
-
- - [handle_type_selection](ControlPoint.md#handle_type_selection)
-  ```python
-  def handle_type_selection(self, left=True, right=True, handle_type='AUTO')
-  ```
-
- - [handle_type_selection](ControlPoint.md#handle_type_selection)
-  ```python
-  def handle_type_selection_free(self, left=True, right=True)
-  ```
-
- - [handle_type_selection](ControlPoint.md#handle_type_selection)
-  ```python
-  def handle_type_selection_auto(self, left=True, right=True)
-  ```
-
- - [handle_type_selection](ControlPoint.md#handle_type_selection)
-  ```python
-  def handle_type_selection_vector(self, left=True, right=True)
-  ```
-
- - [handle_type_selection](ControlPoint.md#handle_type_selection)
-  ```python
-  def handle_type_selection_align(self, left=True, right=True)
-  ```
+| Name | Definition |
+|------|------------|
+ | [handle_type_selection_node](ControlPoint.md#handle_type_selection_node) | `def handle_type_selection_node(self, handle_type='AUTO', mode={'RIGHT', 'LEFT'}): |
+ | [handle_type_selection](ControlPoint.md#handle_type_selection) | `def handle_type_selection(self, left=True, right=True, handle_type='AUTO'): |
+ | [handle_type_selection](ControlPoint.md#handle_type_selection) | `def handle_type_selection_free(self, left=True, right=True): |
+ | [handle_type_selection](ControlPoint.md#handle_type_selection) | `def handle_type_selection_auto(self, left=True, right=True): |
+ | [handle_type_selection](ControlPoint.md#handle_type_selection) | `def handle_type_selection_vector(self, left=True, right=True): |
+ | [handle_type_selection](ControlPoint.md#handle_type_selection) | `def handle_type_selection_align(self, left=True, right=True): |
 

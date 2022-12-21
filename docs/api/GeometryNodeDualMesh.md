@@ -26,10 +26,9 @@ node = nodes.DualMesh(mesh=None, keep_boundaries=None)
 
 ## Implementation
 
-#### [Mesh](Mesh.md)
+### [Mesh](Mesh.md)
 
- - [dual_mesh](Mesh.md#dual_mesh)
-  ```python
-  def dual_mesh(self, mesh=None, keep_boundaries=None)
-  ```
+| Name | Definition |
+|------|------------|
+ | [dual_mesh](Mesh.md#dual_mesh) | `def dual_mesh(self, mesh=None, keep_boundaries=None): |
 

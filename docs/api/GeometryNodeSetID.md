@@ -27,22 +27,16 @@ node = nodes.SetID(geometry=None, selection=None, ID=None)
 
 ## Implementation
 
-#### [Domain](Domain.md)
+### [Domain](Domain.md)
 
- - [set_ID](Domain.md#set_ID)
-  ```python
-  def set_ID(self, ID=None)
-  ```
+| Name | Definition |
+|------|------------|
+ | [set_ID](Domain.md#set_ID) | `def set_ID(self, ID=None): |
+ | [ID](Domain.md#ID) | `def ID(self, attr_value): |
 
- - [ID](Domain.md#ID)
-  ```python
-  def ID(self, attr_value)
-  ```
+### [Geometry](Geometry.md)
 
-#### [Geometry](Geometry.md)
-
- - [set_ID](Geometry.md#set_ID)
-  ```python
-  def set_ID(self, selection=None, ID=None)
-  ```
+| Name | Definition |
+|------|------------|
+ | [set_ID](Geometry.md#set_ID) | `def set_ID(self, selection=None, ID=None): |
 

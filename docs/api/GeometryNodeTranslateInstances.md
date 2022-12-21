@@ -28,17 +28,15 @@ node = nodes.TranslateInstances(instances=None, selection=None, translation=None
 
 ## Implementation
 
-#### [Instance](Instance.md)
+### [Instance](Instance.md)
 
- - [translate](Instance.md#translate)
-  ```python
-  def translate(self, translation=None, local_space=None)
-  ```
+| Name | Definition |
+|------|------------|
+ | [translate](Instance.md#translate) | `def translate(self, translation=None, local_space=None): |
 
-#### [Instances](Instances.md)
+### [Instances](Instances.md)
 
- - [translate](Instances.md#translate)
-  ```python
-  def translate(self, selection=None, translation=None, local_space=None)
-  ```
+| Name | Definition |
+|------|------------|
+ | [translate](Instances.md#translate) | `def translate(self, selection=None, translation=None, local_space=None): |
 

@@ -25,17 +25,15 @@ node = nodes.JoinGeometry(*geometry)
 
 ## Implementation
 
-#### Global functions
+### Global functions
 
- - [join_geometry](A.md#join_geometry)
-  ```python
-  def join_geometry(*geometry)
-  ```
+| Name | Definition |
+|------|------------|
+ | [join_geometry](A.md#join_geometry) | `def join_geometry(*geometry): |
 
-#### [Geometry](Geometry.md)
+### [Geometry](Geometry.md)
 
- - [join](Geometry.md#join)
-  ```python
-  def join(*geometry)
-  ```
+| Name | Definition |
+|------|------------|
+ | [join](Geometry.md#join) | `def join(*geometry): |
 

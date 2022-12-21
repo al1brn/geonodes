@@ -20,15 +20,10 @@ node = nodes.SpecialCharacters()
 
 ## Implementation
 
-#### [String](String.md)
+### [String](String.md)
 
- - [LineBreak](String.md#LineBreak-staticmethod)
-  ```python
-  def LineBreak()
-  ```
-
- - [Tab](String.md#Tab-staticmethod)
-  ```python
-  def Tab()
-  ```
+| Name | Definition |
+|------|------------|
+ | [LineBreak](String.md#LineBreak-staticmethod) | `def LineBreak(): |
+ | [Tab](String.md#Tab-staticmethod) | `def Tab(): |
 

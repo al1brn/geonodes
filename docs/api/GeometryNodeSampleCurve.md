@@ -43,10 +43,9 @@ node = nodes.SampleCurve(curves=None, value=None, factor=None, length=None, curv
 - Output sockets : ['value']
 ## Implementation
 
-#### [Curve](Curve.md)
+### [Curve](Curve.md)
 
- - [sample](Curve.md#sample)
-  ```python
-  def sample(self, value=None, factor=None, length=None, curve_index=None, data_type='FLOAT', mode='FACTOR', use_all_curves=False)
-  ```
+| Name | Definition |
+|------|------------|
+ | [sample](Curve.md#sample) | `def sample(self, value=None, factor=None, length=None, curve_index=None, data_type='FLOAT', mode='FACTOR', use_all_curves=False): |
 

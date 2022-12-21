@@ -26,17 +26,15 @@ node = nodes.FlipFaces(mesh=None, selection=None)
 
 ## Implementation
 
-#### [Face](Face.md)
+### [Face](Face.md)
 
- - [flip](Face.md#flip)
-  ```python
-  def flip(self)
-  ```
+| Name | Definition |
+|------|------------|
+ | [flip](Face.md#flip) | `def flip(self): |
 
-#### [Mesh](Mesh.md)
+### [Mesh](Mesh.md)
 
- - [flip_faces](Mesh.md#flip_faces)
-  ```python
-  def flip_faces(self, selection=None)
-  ```
+| Name | Definition |
+|------|------------|
+ | [flip_faces](Mesh.md#flip_faces) | `def flip_faces(self, selection=None): |
 

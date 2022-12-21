@@ -27,10 +27,9 @@ node = nodes.CurveToMesh(curve=None, profile_curve=None, fill_caps=None)
 
 ## Implementation
 
-#### [Curve](Curve.md)
+### [Curve](Curve.md)
 
- - [to_mesh](Curve.md#to_mesh)
-  ```python
-  def to_mesh(self, profile_curve=None, fill_caps=None)
-  ```
+| Name | Definition |
+|------|------------|
+ | [to_mesh](Curve.md#to_mesh) | `def to_mesh(self, profile_curve=None, fill_caps=None): |
 

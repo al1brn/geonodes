@@ -26,17 +26,15 @@ node = nodes.PointsToVertices(points=None, selection=None)
 
 ## Implementation
 
-#### [CloudPoint](CloudPoint.md)
+### [CloudPoint](CloudPoint.md)
 
- - [to_vertices](CloudPoint.md#to_vertices)
-  ```python
-  def to_vertices(self, points=None)
-  ```
+| Name | Definition |
+|------|------------|
+ | [to_vertices](CloudPoint.md#to_vertices) | `def to_vertices(self, points=None): |
 
-#### [Points](Points.md)
+### [Points](Points.md)
 
- - [to_vertices](Points.md#to_vertices)
-  ```python
-  def to_vertices(self, points=None, selection=None)
-  ```
+| Name | Definition |
+|------|------------|
+ | [to_vertices](Points.md#to_vertices) | `def to_vertices(self, points=None, selection=None): |
 

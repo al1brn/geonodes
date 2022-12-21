@@ -19,24 +19,21 @@ node = nodes.Radius()
 
 ## Implementation
 
-#### [CloudPoint](CloudPoint.md)
+### [CloudPoint](CloudPoint.md)
 
- - [radius](CloudPoint.md#radius-property)
-  ```python
-  def radius(self)
-  ```
+| Name | Definition |
+|------|------------|
+ | [radius](CloudPoint.md#radius-property) | `def radius(self): |
 
-#### [ControlPoint](ControlPoint.md)
+### [ControlPoint](ControlPoint.md)
 
- - [radius](ControlPoint.md#radius-property)
-  ```python
-  def radius(self)
-  ```
+| Name | Definition |
+|------|------------|
+ | [radius](ControlPoint.md#radius-property) | `def radius(self): |
 
-#### [Geometry](Geometry.md)
+### [Geometry](Geometry.md)
 
- - [radius](Geometry.md#radius-property)
-  ```python
-  def radius(self)
-  ```
+| Name | Definition |
+|------|------------|
+ | [radius](Geometry.md#radius-property) | `def radius(self): |
 

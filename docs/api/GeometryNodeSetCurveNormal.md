@@ -30,15 +30,10 @@ node = nodes.SetCurveNormal(curve=None, selection=None, mode='MINIMUM_TWIST')
 
 ## Implementation
 
-#### [Spline](Spline.md)
+### [Spline](Spline.md)
 
- - [set_normal](Spline.md#set_normal)
-  ```python
-  def set_normal(self, mode='MINIMUM_TWIST')
-  ```
-
- - [normal](Spline.md#normal)
-  ```python
-  def normal(self, attr_value)
-  ```
+| Name | Definition |
+|------|------------|
+ | [set_normal](Spline.md#set_normal) | `def set_normal(self, mode='MINIMUM_TWIST'): |
+ | [normal](Spline.md#normal) | `def normal(self, attr_value): |
 

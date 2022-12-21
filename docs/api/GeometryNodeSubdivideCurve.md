@@ -26,10 +26,9 @@ node = nodes.SubdivideCurve(curve=None, cuts=None)
 
 ## Implementation
 
-#### [Curve](Curve.md)
+### [Curve](Curve.md)
 
- - [subdivide](Curve.md#subdivide)
-  ```python
-  def subdivide(self, cuts=None)
-  ```
+| Name | Definition |
+|------|------------|
+ | [subdivide](Curve.md#subdivide) | `def subdivide(self, cuts=None): |
 

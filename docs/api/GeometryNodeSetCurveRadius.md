@@ -27,15 +27,10 @@ node = nodes.SetCurveRadius(curve=None, selection=None, radius=None)
 
 ## Implementation
 
-#### [ControlPoint](ControlPoint.md)
+### [ControlPoint](ControlPoint.md)
 
- - [set_radius](ControlPoint.md#set_radius)
-  ```python
-  def set_radius(self, radius=None)
-  ```
-
- - [radius](ControlPoint.md#radius)
-  ```python
-  def radius(self, attr_value)
-  ```
+| Name | Definition |
+|------|------------|
+ | [set_radius](ControlPoint.md#set_radius) | `def set_radius(self, radius=None): |
+ | [radius](ControlPoint.md#radius) | `def radius(self, attr_value): |
 

@@ -27,17 +27,15 @@ node = nodes.OffsetPointInCurve(point_index=None, offset=None)
 
 ## Implementation
 
-#### [ControlPoint](ControlPoint.md)
+### [ControlPoint](ControlPoint.md)
 
- - [offset](ControlPoint.md#offset)
-  ```python
-  def offset(self, offset=None)
-  ```
+| Name | Definition |
+|------|------------|
+ | [offset](ControlPoint.md#offset) | `def offset(self, offset=None): |
 
-#### [Curve](Curve.md)
+### [Curve](Curve.md)
 
- - [offset_point](Curve.md#offset_point)
-  ```python
-  def offset_point(self, point_index=None, offset=None)
-  ```
+| Name | Definition |
+|------|------------|
+ | [offset_point](Curve.md#offset_point) | `def offset_point(self, point_index=None, offset=None): |
 

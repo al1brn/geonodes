@@ -19,17 +19,15 @@ node = nodes.InstanceRotation()
 
 ## Implementation
 
-#### [Instance](Instance.md)
+### [Instance](Instance.md)
 
- - [rotation](Instance.md#rotation-property)
-  ```python
-  def rotation(self)
-  ```
+| Name | Definition |
+|------|------------|
+ | [rotation](Instance.md#rotation-property) | `def rotation(self): |
 
-#### [Instances](Instances.md)
+### [Instances](Instances.md)
 
- - [rotation](Instances.md#rotation-property)
-  ```python
-  def rotation(self)
-  ```
+| Name | Definition |
+|------|------------|
+ | [rotation](Instances.md#rotation-property) | `def rotation(self): |
 

@@ -26,24 +26,21 @@ node = nodes.ValueToString(value=None, decimals=None)
 
 ## Implementation
 
-#### Global functions
+### Global functions
 
- - [value_to_string](A.md#value_to_string)
-  ```python
-  def value_to_string(value=None, decimals=None)
-  ```
+| Name | Definition |
+|------|------------|
+ | [value_to_string](A.md#value_to_string) | `def value_to_string(value=None, decimals=None): |
 
-#### [Float](Float.md)
+### [Float](Float.md)
 
- - [to_string](Float.md#to_string)
-  ```python
-  def to_string(self, decimals=None)
-  ```
+| Name | Definition |
+|------|------------|
+ | [to_string](Float.md#to_string) | `def to_string(self, decimals=None): |
 
-#### [Integer](Integer.md)
+### [Integer](Integer.md)
 
- - [to_string](Integer.md#to_string)
-  ```python
-  def to_string(self)
-  ```
+| Name | Definition |
+|------|------------|
+ | [to_string](Integer.md#to_string) | `def to_string(self): |
 

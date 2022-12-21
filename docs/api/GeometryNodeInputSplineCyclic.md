@@ -19,10 +19,9 @@ node = nodes.IsSplineCyclic()
 
 ## Implementation
 
-#### [Spline](Spline.md)
+### [Spline](Spline.md)
 
- - [cyclic](Spline.md#cyclic-property)
-  ```python
-  def cyclic(self)
-  ```
+| Name | Definition |
+|------|------------|
+ | [cyclic](Spline.md#cyclic-property) | `def cyclic(self): |
 

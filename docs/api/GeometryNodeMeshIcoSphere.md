@@ -26,10 +26,9 @@ node = nodes.IcoSphere(radius=None, subdivisions=None)
 
 ## Implementation
 
-#### [Mesh](Mesh.md)
+### [Mesh](Mesh.md)
 
- - [IcoSphere](Mesh.md#IcoSphere-classmethod)
-  ```python
-  def IcoSphere(cls, radius=None, subdivisions=None)
-  ```
+| Name | Definition |
+|------|------------|
+ | [IcoSphere](Mesh.md#IcoSphere-classmethod) | `def IcoSphere(cls, radius=None, subdivisions=None): |
 

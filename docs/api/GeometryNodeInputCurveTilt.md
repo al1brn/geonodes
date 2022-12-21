@@ -19,10 +19,9 @@ node = nodes.CurveTilt()
 
 ## Implementation
 
-#### [ControlPoint](ControlPoint.md)
+### [ControlPoint](ControlPoint.md)
 
- - [tilt](ControlPoint.md#tilt-property)
-  ```python
-  def tilt(self)
-  ```
+| Name | Definition |
+|------|------------|
+ | [tilt](ControlPoint.md#tilt-property) | `def tilt(self): |
 

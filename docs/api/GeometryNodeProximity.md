@@ -31,25 +31,12 @@ node = nodes.GeometryProximity(target=None, source_position=None, target_element
 
 ## Implementation
 
-#### [Geometry](Geometry.md)
+### [Geometry](Geometry.md)
 
- - [proximity](Geometry.md#proximity)
-  ```python
-  def proximity(self, target=None, source_position=None, target_element='FACES')
-  ```
-
- - [proximity_points](Geometry.md#proximity_points)
-  ```python
-  def proximity_points(self, target=None, source_position=None)
-  ```
-
- - [proximity_edges](Geometry.md#proximity_edges)
-  ```python
-  def proximity_edges(self, target=None, source_position=None)
-  ```
-
- - [proximity_facess](Geometry.md#proximity_facess)
-  ```python
-  def proximity_facess(self, target=None, source_position=None)
-  ```
+| Name | Definition |
+|------|------------|
+ | [proximity](Geometry.md#proximity) | `def proximity(self, target=None, source_position=None, target_element='FACES'): |
+ | [proximity_points](Geometry.md#proximity_points) | `def proximity_points(self, target=None, source_position=None): |
+ | [proximity_edges](Geometry.md#proximity_edges) | `def proximity_edges(self, target=None, source_position=None): |
+ | [proximity_facess](Geometry.md#proximity_facess) | `def proximity_facess(self, target=None, source_position=None): |
 

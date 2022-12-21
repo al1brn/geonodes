@@ -27,44 +27,25 @@ node = nodes.SetMaterial(geometry=None, selection=None, material=None)
 
 ## Implementation
 
-#### [Face](Face.md)
+### [Face](Face.md)
 
- - [set_material](Face.md#set_material)
-  ```python
-  def set_material(self, material=None)
-  ```
+| Name | Definition |
+|------|------------|
+ | [set_material](Face.md#set_material) | `def set_material(self, material=None): |
+ | [material](Face.md#material-property) | `def material(self): |
+ | [material](Face.md#material) | `def material(self, attr_value): |
 
- - [material](Face.md#material-property)
-  ```python
-  def material(self)
-  ```
+### [Geometry](Geometry.md)
 
- - [material](Face.md#material)
-  ```python
-  def material(self, attr_value)
-  ```
+| Name | Definition |
+|------|------------|
+ | [set_material](Geometry.md#set_material) | `def set_material(self, selection=None, material=None): |
 
-#### [Geometry](Geometry.md)
+### [Spline](Spline.md)
 
- - [set_material](Geometry.md#set_material)
-  ```python
-  def set_material(self, selection=None, material=None)
-  ```
-
-#### [Spline](Spline.md)
-
- - [set_material](Spline.md#set_material)
-  ```python
-  def set_material(self, material=None)
-  ```
-
- - [material](Spline.md#material-property)
-  ```python
-  def material(self)
-  ```
-
- - [material](Spline.md#material)
-  ```python
-  def material(self, attr_value)
-  ```
+| Name | Definition |
+|------|------------|
+ | [set_material](Spline.md#set_material) | `def set_material(self, material=None): |
+ | [material](Spline.md#material-property) | `def material(self): |
+ | [material](Spline.md#material) | `def material(self, attr_value): |
 

@@ -29,17 +29,15 @@ node = nodes.RotateInstances(instances=None, selection=None, rotation=None, pivo
 
 ## Implementation
 
-#### [Instance](Instance.md)
+### [Instance](Instance.md)
 
- - [rotate](Instance.md#rotate)
-  ```python
-  def rotate(self, rotation=None, pivot_point=None, local_space=None)
-  ```
+| Name | Definition |
+|------|------------|
+ | [rotate](Instance.md#rotate) | `def rotate(self, rotation=None, pivot_point=None, local_space=None): |
 
-#### [Instances](Instances.md)
+### [Instances](Instances.md)
 
- - [rotate](Instances.md#rotate)
-  ```python
-  def rotate(self, selection=None, rotation=None, pivot_point=None, local_space=None)
-  ```
+| Name | Definition |
+|------|------------|
+ | [rotate](Instances.md#rotate) | `def rotate(self, selection=None, rotation=None, pivot_point=None, local_space=None): |
 

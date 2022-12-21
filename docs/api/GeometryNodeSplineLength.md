@@ -20,10 +20,9 @@ node = nodes.SplineLength()
 
 ## Implementation
 
-#### [Spline](Spline.md)
+### [Spline](Spline.md)
 
- - [length](Spline.md#length-property)
-  ```python
-  def length(self)
-  ```
+| Name | Definition |
+|------|------------|
+ | [length](Spline.md#length-property) | `def length(self): |
 

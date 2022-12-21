@@ -25,17 +25,15 @@ node = nodes.MaterialSelection(material=None)
 
 ## Implementation
 
-#### [Domain](Domain.md)
+### [Domain](Domain.md)
 
- - [material_selection](Domain.md#material_selection)
-  ```python
-  def material_selection(self, material=None)
-  ```
+| Name | Definition |
+|------|------------|
+ | [material_selection](Domain.md#material_selection) | `def material_selection(self, material=None): |
 
-#### [Geometry](Geometry.md)
+### [Geometry](Geometry.md)
 
- - [material_selection](Geometry.md#material_selection)
-  ```python
-  def material_selection(self, material=None)
-  ```
+| Name | Definition |
+|------|------------|
+ | [material_selection](Geometry.md#material_selection) | `def material_selection(self, material=None): |
 

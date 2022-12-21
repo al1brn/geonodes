@@ -32,17 +32,15 @@ node = nodes.Triangulate(mesh=None, selection=None, minimum_vertices=None, ngon_
 
 ## Implementation
 
-#### [Face](Face.md)
+### [Face](Face.md)
 
- - [triangulate](Face.md#triangulate)
-  ```python
-  def triangulate(self, minimum_vertices=None, ngon_method='BEAUTY', quad_method='SHORTEST_DIAGONAL')
-  ```
+| Name | Definition |
+|------|------------|
+ | [triangulate](Face.md#triangulate) | `def triangulate(self, minimum_vertices=None, ngon_method='BEAUTY', quad_method='SHORTEST_DIAGONAL'): |
 
-#### [Mesh](Mesh.md)
+### [Mesh](Mesh.md)
 
- - [triangulate](Mesh.md#triangulate)
-  ```python
-  def triangulate(self, selection=None, minimum_vertices=None, ngon_method='BEAUTY', quad_method='SHORTEST_DIAGONAL')
-  ```
+| Name | Definition |
+|------|------------|
+ | [triangulate](Mesh.md#triangulate) | `def triangulate(self, selection=None, minimum_vertices=None, ngon_method='BEAUTY', quad_method='SHORTEST_DIAGONAL'): |
 

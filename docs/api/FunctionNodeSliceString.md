@@ -27,17 +27,15 @@ node = nodes.SliceString(string=None, position=None, length=None)
 
 ## Implementation
 
-#### Global functions
+### Global functions
 
- - [slice_string](A.md#slice_string)
-  ```python
-  def slice_string(string=None, position=None, length=None)
-  ```
+| Name | Definition |
+|------|------------|
+ | [slice_string](A.md#slice_string) | `def slice_string(string=None, position=None, length=None): |
 
-#### [String](String.md)
+### [String](String.md)
 
- - [slice](String.md#slice)
-  ```python
-  def slice(self, position=None, length=None)
-  ```
+| Name | Definition |
+|------|------------|
+ | [slice](String.md#slice) | `def slice(self, position=None, length=None): |
 

@@ -38,10 +38,9 @@ node = nodes.SampleUvSurface(mesh=None, value=None, source_uv_map=None, sample_u
 - Output sockets : ['value']
 ## Implementation
 
-#### [Mesh](Mesh.md)
+### [Mesh](Mesh.md)
 
- - [sample_uv_surface](Mesh.md#sample_uv_surface)
-  ```python
-  def sample_uv_surface(self, value=None, source_uv_map=None, sample_uv=None)
-  ```
+| Name | Definition |
+|------|------------|
+ | [sample_uv_surface](Mesh.md#sample_uv_surface) | `def sample_uv_surface(self, value=None, source_uv_map=None, sample_uv=None): |
 

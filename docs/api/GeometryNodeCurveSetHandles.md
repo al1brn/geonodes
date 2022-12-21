@@ -31,15 +31,10 @@ node = nodes.SetHandleType(curve=None, selection=None, handle_type='AUTO', mode=
 
 ## Implementation
 
-#### [ControlPoint](ControlPoint.md)
+### [ControlPoint](ControlPoint.md)
 
- - [set_handle_type_node](ControlPoint.md#set_handle_type_node)
-  ```python
-  def set_handle_type_node(self, handle_type='AUTO', mode={'RIGHT', 'LEFT'})
-  ```
-
- - [set_handle_type](ControlPoint.md#set_handle_type)
-  ```python
-  def set_handle_type(self, left=True, right=True, handle_type='AUTO')
-  ```
+| Name | Definition |
+|------|------------|
+ | [set_handle_type_node](ControlPoint.md#set_handle_type_node) | `def set_handle_type_node(self, handle_type='AUTO', mode={'RIGHT', 'LEFT'}): |
+ | [set_handle_type](ControlPoint.md#set_handle_type) | `def set_handle_type(self, left=True, right=True, handle_type='AUTO'): |
 

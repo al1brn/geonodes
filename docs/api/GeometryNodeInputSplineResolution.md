@@ -19,10 +19,9 @@ node = nodes.SplineResolution()
 
 ## Implementation
 
-#### [Spline](Spline.md)
+### [Spline](Spline.md)
 
- - [resolution](Spline.md#resolution-property)
-  ```python
-  def resolution(self)
-  ```
+| Name | Definition |
+|------|------------|
+ | [resolution](Spline.md#resolution-property) | `def resolution(self): |
 

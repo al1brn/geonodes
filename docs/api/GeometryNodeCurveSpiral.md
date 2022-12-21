@@ -30,10 +30,9 @@ node = nodes.Spiral(resolution=None, rotations=None, start_radius=None, end_radi
 
 ## Implementation
 
-#### [Curve](Curve.md)
+### [Curve](Curve.md)
 
- - [Spiral](Curve.md#Spiral-classmethod)
-  ```python
-  def Spiral(cls, resolution=None, rotations=None, start_radius=None, end_radius=None, height=None, reverse=None)
-  ```
+| Name | Definition |
+|------|------------|
+ | [Spiral](Curve.md#Spiral-classmethod) | `def Spiral(cls, resolution=None, rotations=None, start_radius=None, end_radius=None, height=None, reverse=None): |
 

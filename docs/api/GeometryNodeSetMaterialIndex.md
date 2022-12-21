@@ -27,17 +27,15 @@ node = nodes.SetMaterialIndex(geometry=None, selection=None, material_index=None
 
 ## Implementation
 
-#### [Domain](Domain.md)
+### [Domain](Domain.md)
 
- - [set_material_index](Domain.md#set_material_index)
-  ```python
-  def set_material_index(self, material_index=None)
-  ```
+| Name | Definition |
+|------|------------|
+ | [set_material_index](Domain.md#set_material_index) | `def set_material_index(self, material_index=None): |
 
-#### [Geometry](Geometry.md)
+### [Geometry](Geometry.md)
 
- - [set_material_index](Geometry.md#set_material_index)
-  ```python
-  def set_material_index(self, selection=None, material_index=None)
-  ```
+| Name | Definition |
+|------|------------|
+ | [set_material_index](Geometry.md#set_material_index) | `def set_material_index(self, selection=None, material_index=None): |
 

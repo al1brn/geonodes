@@ -25,17 +25,15 @@ node = nodes.FaceSetBoundaries(face_set=None)
 
 ## Implementation
 
-#### [Face](Face.md)
+### [Face](Face.md)
 
- - [face_set_boundaries](Face.md#face_set_boundaries)
-  ```python
-  def face_set_boundaries(self)
-  ```
+| Name | Definition |
+|------|------------|
+ | [face_set_boundaries](Face.md#face_set_boundaries) | `def face_set_boundaries(self): |
 
-#### [Mesh](Mesh.md)
+### [Mesh](Mesh.md)
 
- - [face_set_boundaries](Mesh.md#face_set_boundaries)
-  ```python
-  def face_set_boundaries(self, face_set=None)
-  ```
+| Name | Definition |
+|------|------------|
+ | [face_set_boundaries](Mesh.md#face_set_boundaries) | `def face_set_boundaries(self, face_set=None): |
 

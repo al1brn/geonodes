@@ -37,10 +37,9 @@ node = nodes.MusgraveTexture(vector=None, w=None, scale=None, detail=None, dimen
 
 ## Implementation
 
-#### [Texture](Texture.md)
+### [Texture](Texture.md)
 
- - [musgrave](Texture.md#musgrave-staticmethod)
-  ```python
-  def musgrave(vector=None, w=None, scale=None, detail=None, dimension=None, lacunarity=None, offset=None, gain=None, musgrave_dimensions='3D', musgrave_type='FBM')
-  ```
+| Name | Definition |
+|------|------------|
+ | [musgrave](Texture.md#musgrave-staticmethod) | `def musgrave(vector=None, w=None, scale=None, detail=None, dimension=None, lacunarity=None, offset=None, gain=None, musgrave_dimensions='3D', musgrave_type='FBM'): |
 

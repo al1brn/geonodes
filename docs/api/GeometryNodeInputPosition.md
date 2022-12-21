@@ -19,17 +19,15 @@ node = nodes.Position()
 
 ## Implementation
 
-#### [Domain](Domain.md)
+### [Domain](Domain.md)
 
- - [position](Domain.md#position-property)
-  ```python
-  def position(self)
-  ```
+| Name | Definition |
+|------|------------|
+ | [position](Domain.md#position-property) | `def position(self): |
 
-#### [Geometry](Geometry.md)
+### [Geometry](Geometry.md)
 
- - [position](Geometry.md#position-property)
-  ```python
-  def position(self)
-  ```
+| Name | Definition |
+|------|------------|
+ | [position](Geometry.md#position-property) | `def position(self): |
 

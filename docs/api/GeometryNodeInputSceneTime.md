@@ -20,15 +20,10 @@ node = nodes.SceneTime()
 
 ## Implementation
 
-#### [Float](Float.md)
+### [Float](Float.md)
 
- - [Seconds](Float.md#Seconds-classmethod)
-  ```python
-  def Seconds(cls)
-  ```
-
- - [Frame](Float.md#Frame-classmethod)
-  ```python
-  def Frame(cls)
-  ```
+| Name | Definition |
+|------|------------|
+ | [Seconds](Float.md#Seconds-classmethod) | `def Seconds(cls): |
+ | [Frame](Float.md#Frame-classmethod) | `def Frame(cls): |
 

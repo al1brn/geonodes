@@ -39,50 +39,17 @@ node = nodes.WaveTexture(vector=None, scale=None, distortion=None, detail=None, 
 
 ## Implementation
 
-#### [Texture](Texture.md)
+### [Texture](Texture.md)
 
- - [wave](Texture.md#wave-staticmethod)
-  ```python
-  def wave(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, bands_direction='X', rings_direction='X', wave_profile='SIN', wave_type='BANDS')
-  ```
-
- - [wave_bands](Texture.md#wave_bands-staticmethod)
-  ```python
-  def wave_bands(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X', wave_profile='SIN')
-  ```
-
- - [wave_rings](Texture.md#wave_rings-staticmethod)
-  ```python
-  def wave_rings(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X', wave_profile='SIN')
-  ```
-
- - [wave_bands_sine](Texture.md#wave_bands_sine-staticmethod)
-  ```python
-  def wave_bands_sine(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X')
-  ```
-
- - [wave_bands_saw](Texture.md#wave_bands_saw-staticmethod)
-  ```python
-  def wave_bands_saw(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X')
-  ```
-
- - [wave_bands_triangle](Texture.md#wave_bands_triangle-staticmethod)
-  ```python
-  def wave_bands_triangle(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X')
-  ```
-
- - [wave_rings_sine](Texture.md#wave_rings_sine-staticmethod)
-  ```python
-  def wave_rings_sine(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X')
-  ```
-
- - [wave_rings_saw](Texture.md#wave_rings_saw-staticmethod)
-  ```python
-  def wave_rings_saw(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X')
-  ```
-
- - [wave_rings_triangle](Texture.md#wave_rings_triangle-staticmethod)
-  ```python
-  def wave_rings_triangle(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X')
-  ```
+| Name | Definition |
+|------|------------|
+ | [wave](Texture.md#wave-staticmethod) | `def wave(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, bands_direction='X', rings_direction='X', wave_profile='SIN', wave_type='BANDS'): |
+ | [wave_bands](Texture.md#wave_bands-staticmethod) | `def wave_bands(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X', wave_profile='SIN'): |
+ | [wave_rings](Texture.md#wave_rings-staticmethod) | `def wave_rings(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X', wave_profile='SIN'): |
+ | [wave_bands_sine](Texture.md#wave_bands_sine-staticmethod) | `def wave_bands_sine(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X'): |
+ | [wave_bands_saw](Texture.md#wave_bands_saw-staticmethod) | `def wave_bands_saw(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X'): |
+ | [wave_bands_triangle](Texture.md#wave_bands_triangle-staticmethod) | `def wave_bands_triangle(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X'): |
+ | [wave_rings_sine](Texture.md#wave_rings_sine-staticmethod) | `def wave_rings_sine(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X'): |
+ | [wave_rings_saw](Texture.md#wave_rings_saw-staticmethod) | `def wave_rings_saw(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X'): |
+ | [wave_rings_triangle](Texture.md#wave_rings_triangle-staticmethod) | `def wave_rings_triangle(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X'): |
 

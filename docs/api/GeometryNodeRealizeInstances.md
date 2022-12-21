@@ -29,10 +29,9 @@ node = nodes.RealizeInstances(geometry=None, legacy_behavior=False)
 
 ## Implementation
 
-#### [Instances](Instances.md)
+### [Instances](Instances.md)
 
- - [realize](Instances.md#realize)
-  ```python
-  def realize(self, geometry=None, legacy_behavior=False)
-  ```
+| Name | Definition |
+|------|------------|
+ | [realize](Instances.md#realize) | `def realize(self, geometry=None, legacy_behavior=False): |
 

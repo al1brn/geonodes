@@ -27,15 +27,10 @@ node = nodes.SetSplineCyclic(geometry=None, selection=None, cyclic=None)
 
 ## Implementation
 
-#### [Spline](Spline.md)
+### [Spline](Spline.md)
 
- - [set_cyclic](Spline.md#set_cyclic)
-  ```python
-  def set_cyclic(self, cyclic=None)
-  ```
-
- - [cyclic](Spline.md#cyclic)
-  ```python
-  def cyclic(self, attr_value)
-  ```
+| Name | Definition |
+|------|------------|
+ | [set_cyclic](Spline.md#set_cyclic) | `def set_cyclic(self, cyclic=None): |
+ | [cyclic](Spline.md#cyclic) | `def cyclic(self, attr_value): |
 

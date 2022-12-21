@@ -34,44 +34,25 @@ node = nodes.ScaleElements(geometry=None, selection=None, scale=None, center=Non
 
 ## Implementation
 
-#### [Edge](Edge.md)
+### [Edge](Edge.md)
 
- - [scale_uniform](Edge.md#scale_uniform)
-  ```python
-  def scale_uniform(self, scale=None, center=None)
-  ```
+| Name | Definition |
+|------|------------|
+ | [scale_uniform](Edge.md#scale_uniform) | `def scale_uniform(self, scale=None, center=None): |
+ | [scale_single_axis](Edge.md#scale_single_axis) | `def scale_single_axis(self, scale=None, center=None, axis=None): |
 
- - [scale_single_axis](Edge.md#scale_single_axis)
-  ```python
-  def scale_single_axis(self, scale=None, center=None, axis=None)
-  ```
+### [Face](Face.md)
 
-#### [Face](Face.md)
+| Name | Definition |
+|------|------------|
+ | [scale_uniform](Face.md#scale_uniform) | `def scale_uniform(self, scale=None, center=None): |
+ | [scale_single_axis](Face.md#scale_single_axis) | `def scale_single_axis(self, scale=None, center=None, axis=None): |
 
- - [scale_uniform](Face.md#scale_uniform)
-  ```python
-  def scale_uniform(self, scale=None, center=None)
-  ```
+### [Mesh](Mesh.md)
 
- - [scale_single_axis](Face.md#scale_single_axis)
-  ```python
-  def scale_single_axis(self, scale=None, center=None, axis=None)
-  ```
-
-#### [Mesh](Mesh.md)
-
- - [scale_elements](Mesh.md#scale_elements)
-  ```python
-  def scale_elements(self, selection=None, scale=None, center=None, axis=None, domain='FACE', scale_mode='UNIFORM')
-  ```
-
- - [scale_uniform](Mesh.md#scale_uniform)
-  ```python
-  def scale_uniform(self, selection=None, scale=None, center=None, domain='FACE')
-  ```
-
- - [scale_single_axis](Mesh.md#scale_single_axis)
-  ```python
-  def scale_single_axis(self, selection=None, scale=None, center=None, axis=None, domain='FACE')
-  ```
+| Name | Definition |
+|------|------------|
+ | [scale_elements](Mesh.md#scale_elements) | `def scale_elements(self, selection=None, scale=None, center=None, axis=None, domain='FACE', scale_mode='UNIFORM'): |
+ | [scale_uniform](Mesh.md#scale_uniform) | `def scale_uniform(self, selection=None, scale=None, center=None, domain='FACE'): |
+ | [scale_single_axis](Mesh.md#scale_single_axis) | `def scale_single_axis(self, selection=None, scale=None, center=None, axis=None, domain='FACE'): |
 

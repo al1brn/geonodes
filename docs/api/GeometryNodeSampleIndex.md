@@ -38,17 +38,15 @@ node = nodes.SampleIndex(geometry=None, value=None, index=None, clamp=False, dat
 - Output sockets : ['value']
 ## Implementation
 
-#### [Domain](Domain.md)
+### [Domain](Domain.md)
 
- - [sample_index](Domain.md#sample_index)
-  ```python
-  def sample_index(self, value=None, index=None, clamp=False)
-  ```
+| Name | Definition |
+|------|------------|
+ | [sample_index](Domain.md#sample_index) | `def sample_index(self, value=None, index=None, clamp=False): |
 
-#### [Geometry](Geometry.md)
+### [Geometry](Geometry.md)
 
- - [sample_index](Geometry.md#sample_index)
-  ```python
-  def sample_index(self, value=None, index=None, clamp=False, domain='POINT')
-  ```
+| Name | Definition |
+|------|------------|
+ | [sample_index](Geometry.md#sample_index) | `def sample_index(self, value=None, index=None, clamp=False, domain='POINT'): |
 

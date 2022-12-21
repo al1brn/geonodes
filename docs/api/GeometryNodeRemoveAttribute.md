@@ -26,17 +26,15 @@ node = nodes.RemoveNamedAttribute(geometry=None, name=None)
 
 ## Implementation
 
-#### [Domain](Domain.md)
+### [Domain](Domain.md)
 
- - [remove_named_attribute](Domain.md#remove_named_attribute)
-  ```python
-  def remove_named_attribute(self, name=None)
-  ```
+| Name | Definition |
+|------|------------|
+ | [remove_named_attribute](Domain.md#remove_named_attribute) | `def remove_named_attribute(self, name=None): |
 
-#### [Geometry](Geometry.md)
+### [Geometry](Geometry.md)
 
- - [remove_named_attribute](Geometry.md#remove_named_attribute)
-  ```python
-  def remove_named_attribute(self, name=None)
-  ```
+| Name | Definition |
+|------|------------|
+ | [remove_named_attribute](Geometry.md#remove_named_attribute) | `def remove_named_attribute(self, name=None): |
 

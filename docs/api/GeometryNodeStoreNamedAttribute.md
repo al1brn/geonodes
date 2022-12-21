@@ -37,67 +37,25 @@ node = nodes.StoreNamedAttribute(geometry=None, name=None, value=None, data_type
 - Output sockets : []
 ## Implementation
 
-#### [Domain](Domain.md)
+### [Domain](Domain.md)
 
- - [store_named_attribute](Domain.md#store_named_attribute)
-  ```python
-  def store_named_attribute(self, name=None, value=None)
-  ```
+| Name | Definition |
+|------|------------|
+ | [store_named_attribute](Domain.md#store_named_attribute) | `def store_named_attribute(self, name=None, value=None): |
+ | [set_named_boolean](Domain.md#set_named_boolean) | `def set_named_boolean(self, name=None, value=None): |
+ | [set_named_integer](Domain.md#set_named_integer) | `def set_named_integer(self, name=None, value=None): |
+ | [set_named_float](Domain.md#set_named_float) | `def set_named_float(self, name=None, value=None): |
+ | [set_named_vector](Domain.md#set_named_vector) | `def set_named_vector(self, name=None, value=None): |
+ | [set_named_color](Domain.md#set_named_color) | `def set_named_color(self, name=None, value=None): |
 
- - [set_named_boolean](Domain.md#set_named_boolean)
-  ```python
-  def set_named_boolean(self, name=None, value=None)
-  ```
+### [Geometry](Geometry.md)
 
- - [set_named_integer](Domain.md#set_named_integer)
-  ```python
-  def set_named_integer(self, name=None, value=None)
-  ```
-
- - [set_named_float](Domain.md#set_named_float)
-  ```python
-  def set_named_float(self, name=None, value=None)
-  ```
-
- - [set_named_vector](Domain.md#set_named_vector)
-  ```python
-  def set_named_vector(self, name=None, value=None)
-  ```
-
- - [set_named_color](Domain.md#set_named_color)
-  ```python
-  def set_named_color(self, name=None, value=None)
-  ```
-
-#### [Geometry](Geometry.md)
-
- - [store_named_attribute](Geometry.md#store_named_attribute)
-  ```python
-  def store_named_attribute(self, name=None, value=None, domain='POINT')
-  ```
-
- - [set_named_boolean](Geometry.md#set_named_boolean)
-  ```python
-  def set_named_boolean(self, name=None, value=None, domain='POINT')
-  ```
-
- - [set_named_integer](Geometry.md#set_named_integer)
-  ```python
-  def set_named_integer(self, name=None, value=None, domain='POINT')
-  ```
-
- - [set_named_float](Geometry.md#set_named_float)
-  ```python
-  def set_named_float(self, name=None, value=None, domain='POINT')
-  ```
-
- - [set_named_vector](Geometry.md#set_named_vector)
-  ```python
-  def set_named_vector(self, name=None, value=None, domain='POINT')
-  ```
-
- - [set_named_color](Geometry.md#set_named_color)
-  ```python
-  def set_named_color(self, name=None, value=None, domain='POINT')
-  ```
+| Name | Definition |
+|------|------------|
+ | [store_named_attribute](Geometry.md#store_named_attribute) | `def store_named_attribute(self, name=None, value=None, domain='POINT'): |
+ | [set_named_boolean](Geometry.md#set_named_boolean) | `def set_named_boolean(self, name=None, value=None, domain='POINT'): |
+ | [set_named_integer](Geometry.md#set_named_integer) | `def set_named_integer(self, name=None, value=None, domain='POINT'): |
+ | [set_named_float](Geometry.md#set_named_float) | `def set_named_float(self, name=None, value=None, domain='POINT'): |
+ | [set_named_vector](Geometry.md#set_named_vector) | `def set_named_vector(self, name=None, value=None, domain='POINT'): |
+ | [set_named_color](Geometry.md#set_named_color) | `def set_named_color(self, name=None, value=None, domain='POINT'): |
 

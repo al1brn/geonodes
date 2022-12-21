@@ -26,17 +26,15 @@ node = nodes.RgbCurves(fac=None, color=None)
 
 ## Implementation
 
-#### Global functions
+### Global functions
 
- - [rgb_curves](A.md#rgb_curves)
-  ```python
-  def rgb_curves(fac=None, color=None)
-  ```
+| Name | Definition |
+|------|------------|
+ | [rgb_curves](A.md#rgb_curves) | `def rgb_curves(fac=None, color=None): |
 
-#### [Color](Color.md)
+### [Color](Color.md)
 
- - [rgb_curves](Color.md#rgb_curves-property)
-  ```python
-  def rgb_curves(self, fac=None)
-  ```
+| Name | Definition |
+|------|------------|
+ | [rgb_curves](Color.md#rgb_curves-property) | `def rgb_curves(self, fac=None): |
 

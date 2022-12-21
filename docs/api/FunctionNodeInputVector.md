@@ -25,10 +25,9 @@ node = nodes.Vector(vector=[0.0, 0.0, 0.0])
 
 ## Implementation
 
-#### [Vector](Vector.md)
+### [Vector](Vector.md)
 
- - [Vector](Vector.md#Vector-classmethod)
-  ```python
-  def Vector(cls, vector=[0.0, 0.0, 0.0])
-  ```
+| Name | Definition |
+|------|------------|
+ | [Vector](Vector.md#Vector-classmethod) | `def Vector(cls, vector=[0.0, 0.0, 0.0]): |
 

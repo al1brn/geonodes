@@ -32,17 +32,15 @@ node = nodes.MeshToPoints(mesh=None, selection=None, position=None, radius=None,
 
 ## Implementation
 
-#### [Mesh](Mesh.md)
+### [Mesh](Mesh.md)
 
- - [to_points](Mesh.md#to_points)
-  ```python
-  def to_points(self, selection=None, position=None, radius=None, mode='VERTICES')
-  ```
+| Name | Definition |
+|------|------------|
+ | [to_points](Mesh.md#to_points) | `def to_points(self, selection=None, position=None, radius=None, mode='VERTICES'): |
 
-#### [Vertex](Vertex.md)
+### [Vertex](Vertex.md)
 
- - [to_points](Vertex.md#to_points)
-  ```python
-  def to_points(self, position=None, radius=None, mode='VERTICES')
-  ```
+| Name | Definition |
+|------|------------|
+ | [to_points](Vertex.md#to_points) | `def to_points(self, position=None, radius=None, mode='VERTICES'): |
 

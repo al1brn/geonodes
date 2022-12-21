@@ -34,67 +34,25 @@ node = nodes.NamedAttribute(name=None, data_type='FLOAT')
 - Output sockets : ['attribute']
 ## Implementation
 
-#### [Domain](Domain.md)
+### [Domain](Domain.md)
 
- - [named_attribute](Domain.md#named_attribute)
-  ```python
-  def named_attribute(self, name=None, data_type='FLOAT')
-  ```
+| Name | Definition |
+|------|------------|
+ | [named_attribute](Domain.md#named_attribute) | `def named_attribute(self, name=None, data_type='FLOAT'): |
+ | [get_named_float](Domain.md#get_named_float) | `def get_named_float(self, name=None): |
+ | [get_named_integer](Domain.md#get_named_integer) | `def get_named_integer(self, name=None): |
+ | [get_named_vector](Domain.md#get_named_vector) | `def get_named_vector(self, name=None): |
+ | [get_named_color](Domain.md#get_named_color) | `def get_named_color(self, name=None): |
+ | [get_named_boolean](Domain.md#get_named_boolean) | `def get_named_boolean(self, name=None): |
 
- - [get_named_float](Domain.md#get_named_float)
-  ```python
-  def get_named_float(self, name=None)
-  ```
+### [Geometry](Geometry.md)
 
- - [get_named_integer](Domain.md#get_named_integer)
-  ```python
-  def get_named_integer(self, name=None)
-  ```
-
- - [get_named_vector](Domain.md#get_named_vector)
-  ```python
-  def get_named_vector(self, name=None)
-  ```
-
- - [get_named_color](Domain.md#get_named_color)
-  ```python
-  def get_named_color(self, name=None)
-  ```
-
- - [get_named_boolean](Domain.md#get_named_boolean)
-  ```python
-  def get_named_boolean(self, name=None)
-  ```
-
-#### [Geometry](Geometry.md)
-
- - [named_attribute](Geometry.md#named_attribute)
-  ```python
-  def named_attribute(self, name=None, data_type='FLOAT')
-  ```
-
- - [get_named_float](Geometry.md#get_named_float)
-  ```python
-  def get_named_float(self, name=None)
-  ```
-
- - [get_named_integer](Geometry.md#get_named_integer)
-  ```python
-  def get_named_integer(self, name=None)
-  ```
-
- - [get_named_vector](Geometry.md#get_named_vector)
-  ```python
-  def get_named_vector(self, name=None)
-  ```
-
- - [get_named_color](Geometry.md#get_named_color)
-  ```python
-  def get_named_color(self, name=None)
-  ```
-
- - [get_named_boolean](Geometry.md#get_named_boolean)
-  ```python
-  def get_named_boolean(self, name=None)
-  ```
+| Name | Definition |
+|------|------------|
+ | [named_attribute](Geometry.md#named_attribute) | `def named_attribute(self, name=None, data_type='FLOAT'): |
+ | [get_named_float](Geometry.md#get_named_float) | `def get_named_float(self, name=None): |
+ | [get_named_integer](Geometry.md#get_named_integer) | `def get_named_integer(self, name=None): |
+ | [get_named_vector](Geometry.md#get_named_vector) | `def get_named_vector(self, name=None): |
+ | [get_named_color](Geometry.md#get_named_color) | `def get_named_color(self, name=None): |
+ | [get_named_boolean](Geometry.md#get_named_boolean) | `def get_named_boolean(self, name=None): |
 

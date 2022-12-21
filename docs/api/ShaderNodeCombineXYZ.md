@@ -27,10 +27,9 @@ node = nodes.CombineXyz(x=None, y=None, z=None)
 
 ## Implementation
 
-#### [Vector](Vector.md)
+### [Vector](Vector.md)
 
- - [Combine](Vector.md#Combine-classmethod)
-  ```python
-  def Combine(cls, x=None, y=None, z=None)
-  ```
+| Name | Definition |
+|------|------------|
+ | [Combine](Vector.md#Combine-classmethod) | `def Combine(cls, x=None, y=None, z=None): |
 

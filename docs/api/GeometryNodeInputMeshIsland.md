@@ -20,37 +20,19 @@ node = nodes.MeshIsland()
 
 ## Implementation
 
-#### [Face](Face.md)
+### [Face](Face.md)
 
- - [island](Face.md#island-property)
-  ```python
-  def island(self)
-  ```
+| Name | Definition |
+|------|------------|
+ | [island](Face.md#island-property) | `def island(self): |
+ | [island_index](Face.md#island_index-property) | `def island_index(self): |
+ | [island_count](Face.md#island_count-property) | `def island_count(self): |
 
- - [island_index](Face.md#island_index-property)
-  ```python
-  def island_index(self)
-  ```
+### [Mesh](Mesh.md)
 
- - [island_count](Face.md#island_count-property)
-  ```python
-  def island_count(self)
-  ```
-
-#### [Mesh](Mesh.md)
-
- - [island](Mesh.md#island-property)
-  ```python
-  def island(self)
-  ```
-
- - [island_index](Mesh.md#island_index-property)
-  ```python
-  def island_index(self)
-  ```
-
- - [island_count](Mesh.md#island_count-property)
-  ```python
-  def island_count(self)
-  ```
+| Name | Definition |
+|------|------------|
+ | [island](Mesh.md#island-property) | `def island(self): |
+ | [island_index](Mesh.md#island_index-property) | `def island_index(self): |
+ | [island_count](Mesh.md#island_count-property) | `def island_count(self): |
 

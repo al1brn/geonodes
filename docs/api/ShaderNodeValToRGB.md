@@ -26,17 +26,15 @@ node = nodes.ColorRamp(fac=None)
 
 ## Implementation
 
-#### Global functions
+### Global functions
 
- - [color_ramp](A.md#color_ramp)
-  ```python
-  def color_ramp(fac=None)
-  ```
+| Name | Definition |
+|------|------------|
+ | [color_ramp](A.md#color_ramp) | `def color_ramp(fac=None): |
 
-#### [Float](Float.md)
+### [Float](Float.md)
 
- - [color_ramp](Float.md#color_ramp-property)
-  ```python
-  def color_ramp(self)
-  ```
+| Name | Definition |
+|------|------------|
+ | [color_ramp](Float.md#color_ramp-property) | `def color_ramp(self): |
 

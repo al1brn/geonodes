@@ -32,30 +32,13 @@ node = nodes.SetHandlePositions(curve=None, selection=None, position=None, offse
 
 ## Implementation
 
-#### [ControlPoint](ControlPoint.md)
+### [ControlPoint](ControlPoint.md)
 
- - [set_handle_positions](ControlPoint.md#set_handle_positions)
-  ```python
-  def set_handle_positions(self, position=None, offset=None, mode='LEFT')
-  ```
-
- - [set_handle_positions_left](ControlPoint.md#set_handle_positions_left)
-  ```python
-  def set_handle_positions_left(self, curve=None, position=None, offset=None)
-  ```
-
- - [set_handle_positions_right](ControlPoint.md#set_handle_positions_right)
-  ```python
-  def set_handle_positions_right(self, curve=None, position=None, offset=None)
-  ```
-
- - [left_handle_positions](ControlPoint.md#left_handle_positions)
-  ```python
-  def left_handle_positions(self, attr_value)
-  ```
-
- - [right_handle_positions](ControlPoint.md#right_handle_positions)
-  ```python
-  def right_handle_positions(self, attr_value)
-  ```
+| Name | Definition |
+|------|------------|
+ | [set_handle_positions](ControlPoint.md#set_handle_positions) | `def set_handle_positions(self, position=None, offset=None, mode='LEFT'): |
+ | [set_handle_positions_left](ControlPoint.md#set_handle_positions_left) | `def set_handle_positions_left(self, curve=None, position=None, offset=None): |
+ | [set_handle_positions_right](ControlPoint.md#set_handle_positions_right) | `def set_handle_positions_right(self, curve=None, position=None, offset=None): |
+ | [left_handle_positions](ControlPoint.md#left_handle_positions) | `def left_handle_positions(self, attr_value): |
+ | [right_handle_positions](ControlPoint.md#right_handle_positions) | `def right_handle_positions(self, attr_value): |
 

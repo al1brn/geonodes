@@ -20,20 +20,11 @@ node = nodes.EdgeAngle()
 
 ## Implementation
 
-#### [Edge](Edge.md)
+### [Edge](Edge.md)
 
- - [angle](Edge.md#angle-property)
-  ```python
-  def angle(self)
-  ```
-
- - [unsigned_angle](Edge.md#unsigned_angle-property)
-  ```python
-  def unsigned_angle(self)
-  ```
-
- - [signed_angle](Edge.md#signed_angle-property)
-  ```python
-  def signed_angle(self)
-  ```
+| Name | Definition |
+|------|------------|
+ | [angle](Edge.md#angle-property) | `def angle(self): |
+ | [unsigned_angle](Edge.md#unsigned_angle-property) | `def unsigned_angle(self): |
+ | [signed_angle](Edge.md#signed_angle-property) | `def signed_angle(self): |
 

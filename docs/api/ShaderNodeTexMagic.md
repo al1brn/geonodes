@@ -32,10 +32,9 @@ node = nodes.MagicTexture(vector=None, scale=None, distortion=None, turbulence_d
 
 ## Implementation
 
-#### [Texture](Texture.md)
+### [Texture](Texture.md)
 
- - [magic](Texture.md#magic-staticmethod)
-  ```python
-  def magic(vector=None, scale=None, distortion=None, turbulence_depth=2)
-  ```
+| Name | Definition |
+|------|------------|
+ | [magic](Texture.md#magic-staticmethod) | `def magic(vector=None, scale=None, distortion=None, turbulence_depth=2): |
 

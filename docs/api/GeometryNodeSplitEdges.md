@@ -26,17 +26,15 @@ node = nodes.SplitEdges(mesh=None, selection=None)
 
 ## Implementation
 
-#### [Edge](Edge.md)
+### [Edge](Edge.md)
 
- - [split](Edge.md#split)
-  ```python
-  def split(self)
-  ```
+| Name | Definition |
+|------|------------|
+ | [split](Edge.md#split) | `def split(self): |
 
-#### [Mesh](Mesh.md)
+### [Mesh](Mesh.md)
 
- - [split_edges](Mesh.md#split_edges)
-  ```python
-  def split_edges(self, selection=None)
-  ```
+| Name | Definition |
+|------|------------|
+ | [split_edges](Mesh.md#split_edges) | `def split_edges(self, selection=None): |
 

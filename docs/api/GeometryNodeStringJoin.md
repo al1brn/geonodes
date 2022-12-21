@@ -26,17 +26,15 @@ node = nodes.JoinStrings(*strings, delimiter=None)
 
 ## Implementation
 
-#### Global functions
+### Global functions
 
- - [join_strings](A.md#join_strings)
-  ```python
-  def join_strings(*strings, delimiter=None)
-  ```
+| Name | Definition |
+|------|------------|
+ | [join_strings](A.md#join_strings) | `def join_strings(*strings, delimiter=None): |
 
-#### [String](String.md)
+### [String](String.md)
 
- - [join](String.md#join)
-  ```python
-  def join(*strings, delimiter=None)
-  ```
+| Name | Definition |
+|------|------------|
+ | [join](String.md#join) | `def join(*strings, delimiter=None): |
 

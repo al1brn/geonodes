@@ -19,10 +19,9 @@ node = nodes.CurveTangent()
 
 ## Implementation
 
-#### [ControlPoint](ControlPoint.md)
+### [ControlPoint](ControlPoint.md)
 
- - [tangent](ControlPoint.md#tangent-property)
-  ```python
-  def tangent(self)
-  ```
+| Name | Definition |
+|------|------------|
+ | [tangent](ControlPoint.md#tangent-property) | `def tangent(self): |
 

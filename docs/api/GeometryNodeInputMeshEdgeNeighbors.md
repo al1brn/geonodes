@@ -19,10 +19,9 @@ node = nodes.EdgeNeighbors()
 
 ## Implementation
 
-#### [Edge](Edge.md)
+### [Edge](Edge.md)
 
- - [neighbors](Edge.md#neighbors-property)
-  ```python
-  def neighbors(self)
-  ```
+| Name | Definition |
+|------|------------|
+ | [neighbors](Edge.md#neighbors-property) | `def neighbors(self): |
 

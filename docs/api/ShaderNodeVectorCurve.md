@@ -26,10 +26,9 @@ node = nodes.VectorCurves(fac=None, vector=None)
 
 ## Implementation
 
-#### [Vector](Vector.md)
+### [Vector](Vector.md)
 
- - [curves](Vector.md#curves)
-  ```python
-  def curves(self, fac=None)
-  ```
+| Name | Definition |
+|------|------------|
+ | [curves](Vector.md#curves) | `def curves(self, fac=None): |
 

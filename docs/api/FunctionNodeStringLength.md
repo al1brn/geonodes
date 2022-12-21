@@ -25,17 +25,15 @@ node = nodes.StringLength(string=None)
 
 ## Implementation
 
-#### Global functions
+### Global functions
 
- - [string_length](A.md#string_length)
-  ```python
-  def string_length(string=None)
-  ```
+| Name | Definition |
+|------|------------|
+ | [string_length](A.md#string_length) | `def string_length(string=None): |
 
-#### [String](String.md)
+### [String](String.md)
 
- - [length](String.md#length-property)
-  ```python
-  def length(self)
-  ```
+| Name | Definition |
+|------|------------|
+ | [length](String.md#length-property) | `def length(self): |
 

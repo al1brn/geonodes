@@ -25,10 +25,9 @@ node = nodes.CurveLength(curve=None)
 
 ## Implementation
 
-#### [Curve](Curve.md)
+### [Curve](Curve.md)
 
- - [length](Curve.md#length-property)
-  ```python
-  def length(self)
-  ```
+| Name | Definition |
+|------|------------|
+ | [length](Curve.md#length-property) | `def length(self): |
 

@@ -27,20 +27,11 @@ node = nodes.BoundingBox(geometry=None)
 
 ## Implementation
 
-#### [Geometry](Geometry.md)
+### [Geometry](Geometry.md)
 
- - [bounding_box](Geometry.md#bounding_box-property)
-  ```python
-  def bounding_box(self)
-  ```
-
- - [bounding_box_min](Geometry.md#bounding_box_min-property)
-  ```python
-  def bounding_box_min(self)
-  ```
-
- - [bounding_box_min](Geometry.md#bounding_box_min-property)
-  ```python
-  def bounding_box_min(self)
-  ```
+| Name | Definition |
+|------|------------|
+ | [bounding_box](Geometry.md#bounding_box-property) | `def bounding_box(self): |
+ | [bounding_box_min](Geometry.md#bounding_box_min-property) | `def bounding_box_min(self): |
+ | [bounding_box_min](Geometry.md#bounding_box_min-property) | `def bounding_box_min(self): |
 

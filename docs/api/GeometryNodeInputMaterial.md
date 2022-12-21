@@ -19,10 +19,9 @@ node = nodes.Material()
 
 ## Implementation
 
-#### [Material](Material.md)
+### [Material](Material.md)
 
- - [Material](Material.md#Material-classmethod)
-  ```python
-  def Material(cls)
-  ```
+| Name | Definition |
+|------|------------|
+ | [Material](Material.md#Material-classmethod) | `def Material(cls): |
 

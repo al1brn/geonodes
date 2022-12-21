@@ -19,17 +19,15 @@ node = nodes.MaterialIndex()
 
 ## Implementation
 
-#### [Domain](Domain.md)
+### [Domain](Domain.md)
 
- - [material_index](Domain.md#material_index-property)
-  ```python
-  def material_index(self)
-  ```
+| Name | Definition |
+|------|------------|
+ | [material_index](Domain.md#material_index-property) | `def material_index(self): |
 
-#### [Geometry](Geometry.md)
+### [Geometry](Geometry.md)
 
- - [material_index](Geometry.md#material_index-property)
-  ```python
-  def material_index(self)
-  ```
+| Name | Definition |
+|------|------------|
+ | [material_index](Geometry.md#material_index-property) | `def material_index(self): |
 

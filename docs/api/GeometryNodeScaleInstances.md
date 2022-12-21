@@ -29,17 +29,15 @@ node = nodes.ScaleInstances(instances=None, selection=None, scale=None, center=N
 
 ## Implementation
 
-#### [Instance](Instance.md)
+### [Instance](Instance.md)
 
- - [set_scale](Instance.md#set_scale)
-  ```python
-  def set_scale(self, scale=None, center=None, local_space=None)
-  ```
+| Name | Definition |
+|------|------------|
+ | [set_scale](Instance.md#set_scale) | `def set_scale(self, scale=None, center=None, local_space=None): |
 
-#### [Instances](Instances.md)
+### [Instances](Instances.md)
 
- - [set_scale](Instances.md#set_scale)
-  ```python
-  def set_scale(self, selection=None, scale=None, center=None, local_space=None)
-  ```
+| Name | Definition |
+|------|------------|
+ | [set_scale](Instances.md#set_scale) | `def set_scale(self, selection=None, scale=None, center=None, local_space=None): |
 

@@ -32,37 +32,19 @@ node = nodes.CombineColor(red=None, green=None, blue=None, alpha=None, mode='RGB
 
 ## Implementation
 
-#### Global functions
+### Global functions
 
- - [combine_rgb](A.md#combine_rgb)
-  ```python
-  def combine_rgb(red=None, green=None, blue=None, alpha=None)
-  ```
+| Name | Definition |
+|------|------------|
+ | [combine_rgb](A.md#combine_rgb) | `def combine_rgb(red=None, green=None, blue=None, alpha=None): |
+ | [combine_hsv](A.md#combine_hsv) | `def combine_hsv(hue=None, saturation=None, value=None, alpha=None): |
+ | [combine_hsl](A.md#combine_hsl) | `def combine_hsl(hue=None, saturation=None, lightness=None, alpha=None): |
 
- - [combine_hsv](A.md#combine_hsv)
-  ```python
-  def combine_hsv(hue=None, saturation=None, value=None, alpha=None)
-  ```
+### [Color](Color.md)
 
- - [combine_hsl](A.md#combine_hsl)
-  ```python
-  def combine_hsl(hue=None, saturation=None, lightness=None, alpha=None)
-  ```
-
-#### [Color](Color.md)
-
- - [RGB](Color.md#RGB-classmethod)
-  ```python
-  def RGB(cls, red=None, green=None, blue=None, alpha=None)
-  ```
-
- - [HSV](Color.md#HSV-classmethod)
-  ```python
-  def HSV(cls, hue=None, saturation=None, value=None, alpha=None)
-  ```
-
- - [HSL](Color.md#HSL-classmethod)
-  ```python
-  def HSL(cls, hue=None, saturation=None, lightness=None, alpha=None)
-  ```
+| Name | Definition |
+|------|------------|
+ | [RGB](Color.md#RGB-classmethod) | `def RGB(cls, red=None, green=None, blue=None, alpha=None): |
+ | [HSV](Color.md#HSV-classmethod) | `def HSV(cls, hue=None, saturation=None, value=None, alpha=None): |
+ | [HSL](Color.md#HSL-classmethod) | `def HSL(cls, hue=None, saturation=None, lightness=None, alpha=None): |
 

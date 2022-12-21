@@ -35,17 +35,15 @@ node = nodes.MeshToVolume(mesh=None, density=None, voxel_size=None, voxel_amount
 
 ## Implementation
 
-#### [Mesh](Mesh.md)
+### [Mesh](Mesh.md)
 
- - [to_volume](Mesh.md#to_volume)
-  ```python
-  def to_volume(self, density=None, voxel_size=None, voxel_amount=None, exterior_band_width=None, interior_band_width=None, fill_volume=None, resolution_mode='VOXEL_AMOUNT')
-  ```
+| Name | Definition |
+|------|------------|
+ | [to_volume](Mesh.md#to_volume) | `def to_volume(self, density=None, voxel_size=None, voxel_amount=None, exterior_band_width=None, interior_band_width=None, fill_volume=None, resolution_mode='VOXEL_AMOUNT'): |
 
-#### [Vertex](Vertex.md)
+### [Vertex](Vertex.md)
 
- - [to_volume](Vertex.md#to_volume)
-  ```python
-  def to_volume(self, density=None, voxel_size=None, voxel_amount=None, exterior_band_width=None, interior_band_width=None, fill_volume=None, resolution_mode='VOXEL_AMOUNT')
-  ```
+| Name | Definition |
+|------|------------|
+ | [to_volume](Vertex.md#to_volume) | `def to_volume(self, density=None, voxel_size=None, voxel_amount=None, exterior_band_width=None, interior_band_width=None, fill_volume=None, resolution_mode='VOXEL_AMOUNT'): |
 

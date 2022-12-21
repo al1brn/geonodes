@@ -31,10 +31,9 @@ node = nodes.CollectionInfo(collection=None, separate_children=None, reset_child
 
 ## Implementation
 
-#### [Geometry](Geometry.md)
+### [Geometry](Geometry.md)
 
- - [Collection](Geometry.md#Collection-classmethod)
-  ```python
-  def Collection(cls, collection=None, separate_children=None, reset_children=None, transform_space='ORIGINAL')
-  ```
+| Name | Definition |
+|------|------------|
+ | [Collection](Geometry.md#Collection-classmethod) | `def Collection(cls, collection=None, separate_children=None, reset_children=None, transform_space='ORIGINAL'): |
 

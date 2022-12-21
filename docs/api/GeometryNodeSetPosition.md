@@ -28,22 +28,16 @@ node = nodes.SetPosition(geometry=None, selection=None, position=None, offset=No
 
 ## Implementation
 
-#### [Domain](Domain.md)
+### [Domain](Domain.md)
 
- - [set_position](Domain.md#set_position)
-  ```python
-  def set_position(self, position=None, offset=None)
-  ```
+| Name | Definition |
+|------|------------|
+ | [set_position](Domain.md#set_position) | `def set_position(self, position=None, offset=None): |
+ | [position](Domain.md#position) | `def position(self, attr_value): |
 
- - [position](Domain.md#position)
-  ```python
-  def position(self, attr_value)
-  ```
+### [Geometry](Geometry.md)
 
-#### [Geometry](Geometry.md)
-
- - [set_position](Geometry.md#set_position)
-  ```python
-  def set_position(self, selection=None, position=None, offset=None)
-  ```
+| Name | Definition |
+|------|------------|
+ | [set_position](Geometry.md#set_position) | `def set_position(self, selection=None, position=None, offset=None): |
 

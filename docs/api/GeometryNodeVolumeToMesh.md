@@ -33,10 +33,9 @@ node = nodes.VolumeToMesh(volume=None, voxel_size=None, voxel_amount=None, thres
 
 ## Implementation
 
-#### [Volume](Volume.md)
+### [Volume](Volume.md)
 
- - [to_mesh](Volume.md#to_mesh)
-  ```python
-  def to_mesh(self, voxel_size=None, voxel_amount=None, threshold=None, adaptivity=None, resolution_mode='GRID')
-  ```
+| Name | Definition |
+|------|------------|
+ | [to_mesh](Volume.md#to_mesh) | `def to_mesh(self, voxel_size=None, voxel_amount=None, threshold=None, adaptivity=None, resolution_mode='GRID'): |
 

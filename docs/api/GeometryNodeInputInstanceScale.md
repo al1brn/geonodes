@@ -19,17 +19,15 @@ node = nodes.InstanceScale()
 
 ## Implementation
 
-#### [Instance](Instance.md)
+### [Instance](Instance.md)
 
- - [scale](Instance.md#scale-property)
-  ```python
-  def scale(self)
-  ```
+| Name | Definition |
+|------|------------|
+ | [scale](Instance.md#scale-property) | `def scale(self): |
 
-#### [Instances](Instances.md)
+### [Instances](Instances.md)
 
- - [scale](Instances.md#scale-property)
-  ```python
-  def scale(self)
-  ```
+| Name | Definition |
+|------|------------|
+ | [scale](Instances.md#scale-property) | `def scale(self): |
 

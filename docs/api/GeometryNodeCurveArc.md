@@ -41,15 +41,10 @@ node = nodes.Arc(resolution=None, start=None, middle=None, end=None, radius=None
 
 ## Implementation
 
-#### [Curve](Curve.md)
+### [Curve](Curve.md)
 
- - [Arc](Curve.md#Arc-classmethod)
-  ```python
-  def Arc(cls, resolution=None, radius=None, start_angle=None, sweep_angle=None, connect_center=None, invert_arc=None)
-  ```
-
- - [ArcFromPoints](Curve.md#ArcFromPoints-classmethod)
-  ```python
-  def ArcFromPoints(cls, resolution=None, start=None, middle=None, end=None, offset_angle=None, connect_center=None, invert_arc=None)
-  ```
+| Name | Definition |
+|------|------------|
+ | [Arc](Curve.md#Arc-classmethod) | `def Arc(cls, resolution=None, radius=None, start_angle=None, sweep_angle=None, connect_center=None, invert_arc=None): |
+ | [ArcFromPoints](Curve.md#ArcFromPoints-classmethod) | `def ArcFromPoints(cls, resolution=None, start=None, middle=None, end=None, offset_angle=None, connect_center=None, invert_arc=None): |
 

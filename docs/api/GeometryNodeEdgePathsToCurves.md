@@ -27,17 +27,15 @@ node = nodes.EdgePathsToCurves(mesh=None, start_vertices=None, next_vertex_index
 
 ## Implementation
 
-#### [Edge](Edge.md)
+### [Edge](Edge.md)
 
- - [edge_paths_to_curves](Edge.md#edge_paths_to_curves)
-  ```python
-  def edge_paths_to_curves(self, start_vertices=None, next_vertex_index=None)
-  ```
+| Name | Definition |
+|------|------------|
+ | [edge_paths_to_curves](Edge.md#edge_paths_to_curves) | `def edge_paths_to_curves(self, start_vertices=None, next_vertex_index=None): |
 
-#### [Mesh](Mesh.md)
+### [Mesh](Mesh.md)
 
- - [edge_paths_to_curves](Mesh.md#edge_paths_to_curves)
-  ```python
-  def edge_paths_to_curves(self, start_vertices=None, next_vertex_index=None)
-  ```
+| Name | Definition |
+|------|------------|
+ | [edge_paths_to_curves](Mesh.md#edge_paths_to_curves) | `def edge_paths_to_curves(self, start_vertices=None, next_vertex_index=None): |
 

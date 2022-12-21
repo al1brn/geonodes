@@ -19,24 +19,21 @@ node = nodes.Normal()
 
 ## Implementation
 
-#### [Domain](Domain.md)
+### [Domain](Domain.md)
 
- - [normal](Domain.md#normal-property)
-  ```python
-  def normal(self)
-  ```
+| Name | Definition |
+|------|------------|
+ | [normal](Domain.md#normal-property) | `def normal(self): |
 
-#### [Geometry](Geometry.md)
+### [Geometry](Geometry.md)
 
- - [normal](Geometry.md#normal-property)
-  ```python
-  def normal(self)
-  ```
+| Name | Definition |
+|------|------------|
+ | [normal](Geometry.md#normal-property) | `def normal(self): |
 
-#### [Spline](Spline.md)
+### [Spline](Spline.md)
 
- - [normal](Spline.md#normal-property)
-  ```python
-  def normal(self)
-  ```
+| Name | Definition |
+|------|------------|
+ | [normal](Spline.md#normal-property) | `def normal(self): |
 

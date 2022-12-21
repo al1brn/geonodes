@@ -29,35 +29,14 @@ node = nodes.SeparateComponents(geometry=None)
 
 ## Implementation
 
-#### [Geometry](Geometry.md)
+### [Geometry](Geometry.md)
 
- - [separate_components](Geometry.md#separate_components-property)
-  ```python
-  def separate_components(self)
-  ```
-
- - [mesh_component](Geometry.md#mesh_component-property)
-  ```python
-  def mesh_component(self)
-  ```
-
- - [curve_component](Geometry.md#curve_component-property)
-  ```python
-  def curve_component(self)
-  ```
-
- - [points_component](Geometry.md#points_component-property)
-  ```python
-  def points_component(self)
-  ```
-
- - [volume_component](Geometry.md#volume_component-property)
-  ```python
-  def volume_component(self)
-  ```
-
- - [instances_component](Geometry.md#instances_component-property)
-  ```python
-  def instances_component(self)
-  ```
+| Name | Definition |
+|------|------------|
+ | [separate_components](Geometry.md#separate_components-property) | `def separate_components(self): |
+ | [mesh_component](Geometry.md#mesh_component-property) | `def mesh_component(self): |
+ | [curve_component](Geometry.md#curve_component-property) | `def curve_component(self): |
+ | [points_component](Geometry.md#points_component-property) | `def points_component(self): |
+ | [volume_component](Geometry.md#volume_component-property) | `def volume_component(self): |
+ | [instances_component](Geometry.md#instances_component-property) | `def instances_component(self): |
 

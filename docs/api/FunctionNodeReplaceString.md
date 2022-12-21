@@ -27,17 +27,15 @@ node = nodes.ReplaceString(string=None, find=None, replace=None)
 
 ## Implementation
 
-#### Global functions
+### Global functions
 
- - [replace_string](A.md#replace_string)
-  ```python
-  def replace_string(string=None, find=None, replace=None)
-  ```
+| Name | Definition |
+|------|------------|
+ | [replace_string](A.md#replace_string) | `def replace_string(string=None, find=None, replace=None): |
 
-#### [String](String.md)
+### [String](String.md)
 
- - [replace](String.md#replace)
-  ```python
-  def replace(self, find=None, replace=None)
-  ```
+| Name | Definition |
+|------|------------|
+ | [replace](String.md#replace) | `def replace(self, find=None, replace=None): |
 

@@ -38,10 +38,9 @@ node = nodes.AccumulateField(value=None, group_index=None, data_type='FLOAT', do
 - Output sockets : ['leading', 'trailing', 'total']
 ## Implementation
 
-#### [Domain](Domain.md)
+### [Domain](Domain.md)
 
- - [accumulate_field](Domain.md#accumulate_field)
-  ```python
-  def accumulate_field(self, value=None, group_index=None)
-  ```
+| Name | Definition |
+|------|------------|
+ | [accumulate_field](Domain.md#accumulate_field) | `def accumulate_field(self, value=None, group_index=None): |
 

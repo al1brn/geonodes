@@ -31,17 +31,15 @@ node = nodes.MergeByDistance(geometry=None, selection=None, distance=None, mode=
 
 ## Implementation
 
-#### [Geometry](Geometry.md)
+### [Geometry](Geometry.md)
 
- - [merge_by_distance](Geometry.md#merge_by_distance)
-  ```python
-  def merge_by_distance(self, selection=None, distance=None, mode='ALL')
-  ```
+| Name | Definition |
+|------|------------|
+ | [merge_by_distance](Geometry.md#merge_by_distance) | `def merge_by_distance(self, selection=None, distance=None, mode='ALL'): |
 
-#### [Vertex](Vertex.md)
+### [Vertex](Vertex.md)
 
- - [merge_by_distance](Vertex.md#merge_by_distance)
-  ```python
-  def merge_by_distance(self, distance=None, mode='ALL')
-  ```
+| Name | Definition |
+|------|------------|
+ | [merge_by_distance](Vertex.md#merge_by_distance) | `def merge_by_distance(self, distance=None, mode='ALL'): |
 

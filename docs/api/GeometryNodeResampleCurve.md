@@ -32,47 +32,21 @@ node = nodes.ResampleCurve(curve=None, selection=None, count=None, length=None, 
 
 ## Implementation
 
-#### [Curve](Curve.md)
+### [Curve](Curve.md)
 
- - [resample](Curve.md#resample)
-  ```python
-  def resample(self, selection=None, count=None, length=None, mode='COUNT')
-  ```
+| Name | Definition |
+|------|------------|
+ | [resample](Curve.md#resample) | `def resample(self, selection=None, count=None, length=None, mode='COUNT'): |
+ | [resample_count](Curve.md#resample_count) | `def resample_count(self, selection=None, count=None): |
+ | [resample_length](Curve.md#resample_length) | `def resample_length(self, selection=None, length=None): |
+ | [resample_evaluated](Curve.md#resample_evaluated) | `def resample_evaluated(self, selection=None): |
 
- - [resample_count](Curve.md#resample_count)
-  ```python
-  def resample_count(self, selection=None, count=None)
-  ```
+### [Spline](Spline.md)
 
- - [resample_length](Curve.md#resample_length)
-  ```python
-  def resample_length(self, selection=None, length=None)
-  ```
-
- - [resample_evaluated](Curve.md#resample_evaluated)
-  ```python
-  def resample_evaluated(self, selection=None)
-  ```
-
-#### [Spline](Spline.md)
-
- - [resample](Spline.md#resample)
-  ```python
-  def resample(self, count=None, length=None, mode='COUNT')
-  ```
-
- - [resample_count](Spline.md#resample_count)
-  ```python
-  def resample_count(self, count=None)
-  ```
-
- - [resample_length](Spline.md#resample_length)
-  ```python
-  def resample_length(self, length=None)
-  ```
-
- - [resample_evaluated](Spline.md#resample_evaluated)
-  ```python
-  def resample_evaluated(self)
-  ```
+| Name | Definition |
+|------|------------|
+ | [resample](Spline.md#resample) | `def resample(self, count=None, length=None, mode='COUNT'): |
+ | [resample_count](Spline.md#resample_count) | `def resample_count(self, count=None): |
+ | [resample_length](Spline.md#resample_length) | `def resample_length(self, length=None): |
+ | [resample_evaluated](Spline.md#resample_evaluated) | `def resample_evaluated(self): |
 

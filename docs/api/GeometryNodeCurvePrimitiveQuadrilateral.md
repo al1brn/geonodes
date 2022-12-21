@@ -39,10 +39,9 @@ node = nodes.Quadrilateral(width=None, height=None, bottom_width=None, top_width
 
 ## Implementation
 
-#### [Curve](Curve.md)
+### [Curve](Curve.md)
 
- - [Quadrilateral](Curve.md#Quadrilateral-classmethod)
-  ```python
-  def Quadrilateral(cls, width=None, height=None, bottom_width=None, top_width=None, offset=None, bottom_height=None, top_height=None, point_1=None, point_2=None, point_3=None, point_4=None, mode='RECTANGLE')
-  ```
+| Name | Definition |
+|------|------------|
+ | [Quadrilateral](Curve.md#Quadrilateral-classmethod) | `def Quadrilateral(cls, width=None, height=None, bottom_width=None, top_width=None, offset=None, bottom_height=None, top_height=None, point_1=None, point_2=None, point_3=None, point_4=None, mode='RECTANGLE'): |
 

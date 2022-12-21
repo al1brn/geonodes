@@ -37,22 +37,16 @@ node = nodes.CaptureAttribute(geometry=None, value=None, data_type='FLOAT', doma
 - Output sockets : ['attribute']
 ## Implementation
 
-#### [Domain](Domain.md)
+### [Domain](Domain.md)
 
- - [capture_attribute](Domain.md#capture_attribute)
-  ```python
-  def capture_attribute(self, value=None)
-  ```
+| Name | Definition |
+|------|------------|
+ | [capture_attribute](Domain.md#capture_attribute) | `def capture_attribute(self, value=None): |
 
-#### [Geometry](Geometry.md)
+### [Geometry](Geometry.md)
 
- - [capture_attribute](Geometry.md#capture_attribute)
-  ```python
-  def capture_attribute(self, value=None, domain='POINT')
-  ```
-
- - [capture_attribute_node](Geometry.md#capture_attribute_node)
-  ```python
-  def capture_attribute_node(self, geometry=None, value=None, data_type='FLOAT', domain='POINT')
-  ```
+| Name | Definition |
+|------|------------|
+ | [capture_attribute](Geometry.md#capture_attribute) | `def capture_attribute(self, value=None, domain='POINT'): |
+ | [capture_attribute_node](Geometry.md#capture_attribute_node) | `def capture_attribute_node(self, geometry=None, value=None, data_type='FLOAT', domain='POINT'): |
 

@@ -31,10 +31,9 @@ node = nodes.VolumeCube(density=None, background=None, min=None, max=None, resol
 
 ## Implementation
 
-#### [Volume](Volume.md)
+### [Volume](Volume.md)
 
- - [Cube](Volume.md#Cube-classmethod)
-  ```python
-  def Cube(cls, density=None, background=None, min=None, max=None, resolution_x=None, resolution_y=None, resolution_z=None)
-  ```
+| Name | Definition |
+|------|------------|
+ | [Cube](Volume.md#Cube-classmethod) | `def Cube(cls, density=None, background=None, min=None, max=None, resolution_x=None, resolution_y=None, resolution_z=None): |
 

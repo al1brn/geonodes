@@ -20,20 +20,11 @@ node = nodes.VertexNeighbors()
 
 ## Implementation
 
-#### [Vertex](Vertex.md)
+### [Vertex](Vertex.md)
 
- - [neighbors](Vertex.md#neighbors-property)
-  ```python
-  def neighbors(self)
-  ```
-
- - [neighbors_vertex_count](Vertex.md#neighbors_vertex_count-property)
-  ```python
-  def neighbors_vertex_count(self)
-  ```
-
- - [neighbors_face_count](Vertex.md#neighbors_face_count-property)
-  ```python
-  def neighbors_face_count(self)
-  ```
+| Name | Definition |
+|------|------------|
+ | [neighbors](Vertex.md#neighbors-property) | `def neighbors(self): |
+ | [neighbors_vertex_count](Vertex.md#neighbors_vertex_count-property) | `def neighbors_vertex_count(self): |
+ | [neighbors_face_count](Vertex.md#neighbors_face_count-property) | `def neighbors_face_count(self): |
 

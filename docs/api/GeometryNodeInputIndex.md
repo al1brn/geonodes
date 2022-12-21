@@ -19,22 +19,16 @@ node = nodes.Index()
 
 ## Implementation
 
-#### [Domain](Domain.md)
+### [Domain](Domain.md)
 
- - [index](Domain.md#index-property)
-  ```python
-  def index(self)
-  ```
+| Name | Definition |
+|------|------------|
+ | [index](Domain.md#index-property) | `def index(self): |
+ | [domain_index](Domain.md#domain_index-property) | `def domain_index(self): |
 
- - [domain_index](Domain.md#domain_index-property)
-  ```python
-  def domain_index(self)
-  ```
+### [Geometry](Geometry.md)
 
-#### [Geometry](Geometry.md)
-
- - [index](Geometry.md#index-property)
-  ```python
-  def index(self)
-  ```
+| Name | Definition |
+|------|------------|
+ | [index](Geometry.md#index-property) | `def index(self): |
 

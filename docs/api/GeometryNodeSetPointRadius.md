@@ -27,17 +27,15 @@ node = nodes.SetPointRadius(points=None, selection=None, radius=None)
 
 ## Implementation
 
-#### [CloudPoint](CloudPoint.md)
+### [CloudPoint](CloudPoint.md)
 
- - [radius](CloudPoint.md#radius)
-  ```python
-  def radius(self, attr_value)
-  ```
+| Name | Definition |
+|------|------------|
+ | [radius](CloudPoint.md#radius) | `def radius(self, attr_value): |
 
-#### [Points](Points.md)
+### [Points](Points.md)
 
- - [set_point_radius](Points.md#set_point_radius)
-  ```python
-  def set_point_radius(self, selection=None, radius=None)
-  ```
+| Name | Definition |
+|------|------------|
+ | [set_point_radius](Points.md#set_point_radius) | `def set_point_radius(self, selection=None, radius=None): |
 

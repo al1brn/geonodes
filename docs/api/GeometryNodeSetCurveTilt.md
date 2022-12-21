@@ -27,15 +27,10 @@ node = nodes.SetCurveTilt(curve=None, selection=None, tilt=None)
 
 ## Implementation
 
-#### [ControlPoint](ControlPoint.md)
+### [ControlPoint](ControlPoint.md)
 
- - [set_tilt](ControlPoint.md#set_tilt)
-  ```python
-  def set_tilt(self, tilt=None)
-  ```
-
- - [tilt](ControlPoint.md#tilt)
-  ```python
-  def tilt(self, attr_value)
-  ```
+| Name | Definition |
+|------|------------|
+ | [set_tilt](ControlPoint.md#set_tilt) | `def set_tilt(self, tilt=None): |
+ | [tilt](ControlPoint.md#tilt) | `def tilt(self, attr_value): |
 

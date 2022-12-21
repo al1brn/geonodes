@@ -27,15 +27,10 @@ node = nodes.SetSplineResolution(geometry=None, selection=None, resolution=None)
 
 ## Implementation
 
-#### [Spline](Spline.md)
+### [Spline](Spline.md)
 
- - [set_resolution](Spline.md#set_resolution)
-  ```python
-  def set_resolution(self, resolution=None)
-  ```
-
- - [resolution](Spline.md#resolution)
-  ```python
-  def resolution(self, attr_value)
-  ```
+| Name | Definition |
+|------|------------|
+ | [set_resolution](Spline.md#set_resolution) | `def set_resolution(self, resolution=None): |
+ | [resolution](Spline.md#resolution) | `def resolution(self, attr_value): |
 

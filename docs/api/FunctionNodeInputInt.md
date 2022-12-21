@@ -25,10 +25,9 @@ node = nodes.Integer(integer=0)
 
 ## Implementation
 
-#### [Integer](Integer.md)
+### [Integer](Integer.md)
 
- - [Integer](Integer.md#Integer-classmethod)
-  ```python
-  def Integer(cls, integer=0)
-  ```
+| Name | Definition |
+|------|------------|
+ | [Integer](Integer.md#Integer-classmethod) | `def Integer(cls, integer=0): |
 

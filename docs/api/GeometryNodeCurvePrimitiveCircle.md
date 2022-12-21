@@ -34,15 +34,10 @@ node = nodes.CurveCircle(resolution=None, point_1=None, point_2=None, point_3=No
 
 ## Implementation
 
-#### [Curve](Curve.md)
+### [Curve](Curve.md)
 
- - [Circle](Curve.md#Circle-classmethod)
-  ```python
-  def Circle(cls, resolution=None, radius=None)
-  ```
-
- - [CircleFromPoints](Curve.md#CircleFromPoints-classmethod)
-  ```python
-  def CircleFromPoints(cls, resolution=None, point_1=None, point_2=None, point_3=None)
-  ```
+| Name | Definition |
+|------|------------|
+ | [Circle](Curve.md#Circle-classmethod) | `def Circle(cls, resolution=None, radius=None): |
+ | [CircleFromPoints](Curve.md#CircleFromPoints-classmethod) | `def CircleFromPoints(cls, resolution=None, point_1=None, point_2=None, point_3=None): |
 

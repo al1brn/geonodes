@@ -22,20 +22,11 @@ node = nodes.EdgeVertices()
 
 ## Implementation
 
-#### [Edge](Edge.md)
+### [Edge](Edge.md)
 
- - [vertices](Edge.md#vertices-property)
-  ```python
-  def vertices(self)
-  ```
-
- - [vertices_index](Edge.md#vertices_index-property)
-  ```python
-  def vertices_index(self)
-  ```
-
- - [vertices_position](Edge.md#vertices_position-property)
-  ```python
-  def vertices_position(self)
-  ```
+| Name | Definition |
+|------|------------|
+ | [vertices](Edge.md#vertices-property) | `def vertices(self): |
+ | [vertices_index](Edge.md#vertices_index-property) | `def vertices_index(self): |
+ | [vertices_position](Edge.md#vertices_position-property) | `def vertices_position(self): |
 

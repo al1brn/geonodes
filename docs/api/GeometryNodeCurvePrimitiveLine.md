@@ -32,15 +32,10 @@ node = nodes.CurveLine(start=None, end=None, direction=None, length=None, mode='
 
 ## Implementation
 
-#### [Curve](Curve.md)
+### [Curve](Curve.md)
 
- - [Line](Curve.md#Line-classmethod)
-  ```python
-  def Line(cls, start=None, end=None)
-  ```
-
- - [LineDirection](Curve.md#LineDirection-classmethod)
-  ```python
-  def LineDirection(cls, start=None, direction=None, length=None)
-  ```
+| Name | Definition |
+|------|------------|
+ | [Line](Curve.md#Line-classmethod) | `def Line(cls, start=None, end=None): |
+ | [LineDirection](Curve.md#LineDirection-classmethod) | `def LineDirection(cls, start=None, direction=None, length=None): |
 

@@ -33,20 +33,11 @@ node = nodes.MeshBoolean(*mesh_2, mesh_1=None, self_intersection=None, hole_tole
 
 ## Implementation
 
-#### [Mesh](Mesh.md)
+### [Mesh](Mesh.md)
 
- - [boolean_intersect](Mesh.md#boolean_intersect)
-  ```python
-  def boolean_intersect(*mesh_2, self_intersection=None, hole_tolerant=None)
-  ```
-
- - [boolean_union](Mesh.md#boolean_union)
-  ```python
-  def boolean_union(*mesh_2, self_intersection=None, hole_tolerant=None)
-  ```
-
- - [boolean_difference](Mesh.md#boolean_difference)
-  ```python
-  def boolean_difference(self, *mesh_2, self_intersection=None, hole_tolerant=None)
-  ```
+| Name | Definition |
+|------|------------|
+ | [boolean_intersect](Mesh.md#boolean_intersect) | `def boolean_intersect(*mesh_2, self_intersection=None, hole_tolerant=None): |
+ | [boolean_union](Mesh.md#boolean_union) | `def boolean_union(*mesh_2, self_intersection=None, hole_tolerant=None): |
+ | [boolean_difference](Mesh.md#boolean_difference) | `def boolean_difference(self, *mesh_2, self_intersection=None, hole_tolerant=None): |
 

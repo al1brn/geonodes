@@ -25,17 +25,15 @@ node = nodes.GeometryToInstance(*geometry)
 
 ## Implementation
 
-#### Global functions
+### Global functions
 
- - [geometry_to_instance](A.md#geometry_to_instance)
-  ```python
-  def geometry_to_instance(*geometry)
-  ```
+| Name | Definition |
+|------|------------|
+ | [geometry_to_instance](A.md#geometry_to_instance) | `def geometry_to_instance(*geometry): |
 
-#### [Geometry](Geometry.md)
+### [Geometry](Geometry.md)
 
- - [to_instance](Geometry.md#to_instance)
-  ```python
-  def to_instance(*geometry)
-  ```
+| Name | Definition |
+|------|------------|
+ | [to_instance](Geometry.md#to_instance) | `def to_instance(*geometry): |
 
