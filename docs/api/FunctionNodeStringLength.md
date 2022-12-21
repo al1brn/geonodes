@@ -1,4 +1,4 @@
-# Node 'String Length'
+# Node *String Length*
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 

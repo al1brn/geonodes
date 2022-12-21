@@ -1,4 +1,4 @@
-# Node 'Join Geometry'
+# Node *Join Geometry*
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 

@@ -1,4 +1,4 @@
-# Node 'Subdivide Curve'
+# Node *Subdivide Curve*
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 

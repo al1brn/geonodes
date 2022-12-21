@@ -1,4 +1,4 @@
-# Node 'Slice String'
+# Node *Slice String*
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 

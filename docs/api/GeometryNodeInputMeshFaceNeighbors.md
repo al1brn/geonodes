@@ -1,4 +1,4 @@
-# Node 'Face Neighbors'
+# Node *Face Neighbors*
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 

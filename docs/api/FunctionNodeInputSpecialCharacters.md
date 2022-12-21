@@ -1,4 +1,4 @@
-# Node 'Special Characters'
+# Node *Special Characters*
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 

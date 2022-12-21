@@ -1,4 +1,4 @@
-# Node 'Quadrilateral'
+# Node *Quadrilateral*
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 

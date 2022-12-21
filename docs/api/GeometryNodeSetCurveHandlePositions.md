@@ -1,4 +1,4 @@
-# Node 'Set Handle Positions'
+# Node *Set Handle Positions*
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 

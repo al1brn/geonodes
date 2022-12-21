@@ -1,4 +1,4 @@
-# Node 'ColorRamp'
+# Node *ColorRamp*
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 

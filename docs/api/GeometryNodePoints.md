@@ -1,4 +1,4 @@
-# Node 'Points'
+# Node *Points*
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 

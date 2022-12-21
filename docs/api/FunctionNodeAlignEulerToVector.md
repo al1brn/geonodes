@@ -1,4 +1,4 @@
-# Node 'Align Euler to Vector'
+# Node *Align Euler to Vector*
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 

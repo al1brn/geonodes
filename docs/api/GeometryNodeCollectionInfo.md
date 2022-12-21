@@ -1,4 +1,4 @@
-# Node 'Collection Info'
+# Node *Collection Info*
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 

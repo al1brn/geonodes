@@ -1,4 +1,4 @@
-# Node 'Spline Resolution'
+# Node *Spline Resolution*
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 

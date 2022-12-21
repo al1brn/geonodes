@@ -1,4 +1,4 @@
-# Node 'Mesh to Curve'
+# Node *Mesh to Curve*
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 

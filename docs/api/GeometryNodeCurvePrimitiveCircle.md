@@ -1,4 +1,4 @@
-# Node 'Curve Circle'
+# Node *Curve Circle*
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 

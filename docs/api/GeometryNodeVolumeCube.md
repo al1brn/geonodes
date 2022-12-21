@@ -1,4 +1,4 @@
-# Node 'Volume Cube'
+# Node *Volume Cube*
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 

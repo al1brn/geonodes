@@ -1,4 +1,4 @@
-# Node 'Edge Angle'
+# Node *Edge Angle*
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 

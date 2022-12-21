@@ -1,4 +1,4 @@
-# Node 'Corners of Vertex'
+# Node *Corners of Vertex*
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 

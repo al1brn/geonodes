@@ -1,4 +1,4 @@
-# Node 'Set Point Radius'
+# Node *Set Point Radius*
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 

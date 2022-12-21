@@ -1,4 +1,4 @@
-# Node 'Face Set Boundaries'
+# Node *Face Set Boundaries*
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 

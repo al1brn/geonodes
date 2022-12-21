@@ -1,4 +1,4 @@
-# Node 'Set Curve Radius'
+# Node *Set Curve Radius*
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 

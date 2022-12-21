@@ -1,4 +1,4 @@
-# Node 'Instances to Points'
+# Node *Instances to Points*
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 

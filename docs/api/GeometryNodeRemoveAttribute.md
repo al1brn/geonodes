@@ -1,4 +1,4 @@
-# Node 'Remove Named Attribute'
+# Node *Remove Named Attribute*
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 

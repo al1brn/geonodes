@@ -1,4 +1,4 @@
-# Node 'Separate Color'
+# Node *Separate Color*
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 

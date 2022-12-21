@@ -1,4 +1,4 @@
-# Node 'Shortest Edge Paths'
+# Node *Shortest Edge Paths*
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 

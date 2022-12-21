@@ -1,4 +1,4 @@
-# Node 'Curve Tangent'
+# Node *Curve Tangent*
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 

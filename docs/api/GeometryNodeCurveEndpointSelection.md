@@ -1,4 +1,4 @@
-# Node 'Endpoint Selection'
+# Node *Endpoint Selection*
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 

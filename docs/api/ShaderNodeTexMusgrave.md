@@ -1,4 +1,4 @@
-# Node 'Musgrave Texture'
+# Node *Musgrave Texture*
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 

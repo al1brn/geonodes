@@ -1,4 +1,4 @@
-# Node 'Sample Nearest Surface'
+# Node *Sample Nearest Surface*
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 

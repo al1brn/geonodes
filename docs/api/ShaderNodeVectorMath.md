@@ -1,4 +1,4 @@
-# Node 'Vector Math'
+# Node *Vector Math*
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 

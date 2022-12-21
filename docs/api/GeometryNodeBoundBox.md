@@ -1,4 +1,4 @@
-# Node 'Bounding Box'
+# Node *Bounding Box*
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 

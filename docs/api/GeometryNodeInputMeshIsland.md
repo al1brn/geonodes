@@ -1,4 +1,4 @@
-# Node 'Mesh Island'
+# Node *Mesh Island*
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 

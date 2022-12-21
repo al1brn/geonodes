@@ -1,4 +1,4 @@
-# Node 'Handle Type Selection'
+# Node *Handle Type Selection*
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 

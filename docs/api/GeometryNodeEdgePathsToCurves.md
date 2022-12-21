@@ -1,4 +1,4 @@
-# Node 'Edge Paths to Curves'
+# Node *Edge Paths to Curves*
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 

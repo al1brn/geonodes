@@ -1,4 +1,4 @@
-# Node 'Separate Components'
+# Node *Separate Components*
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 

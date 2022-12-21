@@ -1,4 +1,4 @@
-# Node 'Checker Texture'
+# Node *Checker Texture*
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 

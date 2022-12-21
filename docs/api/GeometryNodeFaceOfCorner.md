@@ -1,4 +1,4 @@
-# Node 'Face of Corner'
+# Node *Face of Corner*
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 

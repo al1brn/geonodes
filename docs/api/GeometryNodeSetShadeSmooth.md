@@ -1,4 +1,4 @@
-# Node 'Set Shade Smooth'
+# Node *Set Shade Smooth*
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 

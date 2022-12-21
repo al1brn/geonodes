@@ -1,4 +1,4 @@
-# Node 'Scale Instances'
+# Node *Scale Instances*
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 

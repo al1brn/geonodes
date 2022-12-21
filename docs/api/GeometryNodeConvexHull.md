@@ -1,4 +1,4 @@
-# Node 'Convex Hull'
+# Node *Convex Hull*
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 

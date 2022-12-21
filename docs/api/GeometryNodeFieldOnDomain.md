@@ -1,4 +1,4 @@
-# Node 'Interpolate Domain'
+# Node *Interpolate Domain*
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 

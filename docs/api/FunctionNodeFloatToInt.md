@@ -1,4 +1,4 @@
-# Node 'Float to Integer'
+# Node *Float to Integer*
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 

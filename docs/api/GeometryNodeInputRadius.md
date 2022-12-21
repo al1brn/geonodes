@@ -1,4 +1,4 @@
-# Node 'Radius'
+# Node *Radius*
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 

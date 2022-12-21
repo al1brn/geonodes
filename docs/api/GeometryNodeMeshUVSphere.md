@@ -1,4 +1,4 @@
-# Node 'UV Sphere'
+# Node *UV Sphere*
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 

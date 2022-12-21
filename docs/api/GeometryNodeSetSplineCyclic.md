@@ -1,4 +1,4 @@
-# Node 'Set Spline Cyclic'
+# Node *Set Spline Cyclic*
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 

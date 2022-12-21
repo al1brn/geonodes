@@ -1,4 +1,4 @@
-# Node 'Pack UV Islands'
+# Node *Pack UV Islands*
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 

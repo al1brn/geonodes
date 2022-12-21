@@ -1,4 +1,4 @@
-# Node 'Vector Rotate'
+# Node *Vector Rotate*
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 

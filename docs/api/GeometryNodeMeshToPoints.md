@@ -1,4 +1,4 @@
-# Node 'Mesh to Points'
+# Node *Mesh to Points*
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 

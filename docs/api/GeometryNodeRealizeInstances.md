@@ -1,4 +1,4 @@
-# Node 'Realize Instances'
+# Node *Realize Instances*
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 

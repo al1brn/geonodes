@@ -1,4 +1,4 @@
-# Node 'Set Material'
+# Node *Set Material*
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 

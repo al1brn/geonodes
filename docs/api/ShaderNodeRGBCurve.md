@@ -1,4 +1,4 @@
-# Node 'RGB Curves'
+# Node *RGB Curves*
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 

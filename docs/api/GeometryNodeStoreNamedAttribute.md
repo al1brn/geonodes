@@ -1,4 +1,4 @@
-# Node 'Store Named Attribute'
+# Node *Store Named Attribute*
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 

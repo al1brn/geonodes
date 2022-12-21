@@ -1,4 +1,4 @@
-# Node 'Merge by Distance'
+# Node *Merge by Distance*
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 

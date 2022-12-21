@@ -1,4 +1,4 @@
-# Node 'Points to Vertices'
+# Node *Points to Vertices*
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 

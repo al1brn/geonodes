@@ -1,4 +1,4 @@
-# Node 'Gradient Texture'
+# Node *Gradient Texture*
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 

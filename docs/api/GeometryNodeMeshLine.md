@@ -1,4 +1,4 @@
-# Node 'Mesh Line'
+# Node *Mesh Line*
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 

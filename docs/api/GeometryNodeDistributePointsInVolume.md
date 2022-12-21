@@ -1,4 +1,4 @@
-# Node 'Distribute Points in Volume'
+# Node *Distribute Points in Volume*
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 

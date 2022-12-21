@@ -1,4 +1,4 @@
-# Node 'Clamp'
+# Node *Clamp*
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 

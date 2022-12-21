@@ -1,4 +1,4 @@
-# Node 'Material Index'
+# Node *Material Index*
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 

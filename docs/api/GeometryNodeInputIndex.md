@@ -1,4 +1,4 @@
-# Node 'Index'
+# Node *Index*
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 

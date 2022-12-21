@@ -1,4 +1,4 @@
-# Node 'Distribute Points on Faces'
+# Node *Distribute Points on Faces*
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 

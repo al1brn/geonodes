@@ -1,4 +1,4 @@
-# Node 'Offset Corner in Face'
+# Node *Offset Corner in Face*
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 

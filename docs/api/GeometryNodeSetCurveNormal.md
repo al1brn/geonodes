@@ -1,4 +1,4 @@
-# Node 'Set Curve Normal'
+# Node *Set Curve Normal*
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 

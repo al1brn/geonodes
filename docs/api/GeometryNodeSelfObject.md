@@ -1,4 +1,4 @@
-# Node 'Self Object'
+# Node *Self Object*
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 

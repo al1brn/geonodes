@@ -1,4 +1,4 @@
-# Node 'Combine XYZ'
+# Node *Combine XYZ*
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 

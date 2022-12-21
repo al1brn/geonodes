@@ -1,4 +1,4 @@
-# Node 'Set Handle Type'
+# Node *Set Handle Type*
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 

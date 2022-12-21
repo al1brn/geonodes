@@ -1,4 +1,4 @@
-# Node 'Sample Index'
+# Node *Sample Index*
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 

@@ -1,4 +1,4 @@
-# Node 'Edge Paths to Selection'
+# Node *Edge Paths to Selection*
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 

@@ -1,4 +1,4 @@
-# Node 'Separate Geometry'
+# Node *Separate Geometry*
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 

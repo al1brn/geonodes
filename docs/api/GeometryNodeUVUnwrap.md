@@ -1,4 +1,4 @@
-# Node 'UV Unwrap'
+# Node *UV Unwrap*
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 

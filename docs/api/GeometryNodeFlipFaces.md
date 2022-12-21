@@ -1,4 +1,4 @@
-# Node 'Flip Faces'
+# Node *Flip Faces*
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 

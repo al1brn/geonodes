@@ -1,4 +1,4 @@
-# Node 'Spline Parameter'
+# Node *Spline Parameter*
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 

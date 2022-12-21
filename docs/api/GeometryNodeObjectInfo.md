@@ -1,4 +1,4 @@
-# Node 'Object Info'
+# Node *Object Info*
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 

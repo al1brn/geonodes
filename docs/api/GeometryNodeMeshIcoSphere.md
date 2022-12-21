@@ -1,4 +1,4 @@
-# Node 'Ico Sphere'
+# Node *Ico Sphere*
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 

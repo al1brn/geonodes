@@ -1,4 +1,4 @@
-# Node 'Accumulate Field'
+# Node *Accumulate Field*
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 

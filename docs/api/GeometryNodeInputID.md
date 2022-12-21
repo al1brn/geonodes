@@ -1,4 +1,4 @@
-# Node 'ID'
+# Node *ID*
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 

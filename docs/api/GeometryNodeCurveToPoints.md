@@ -1,4 +1,4 @@
-# Node 'Curve to Points'
+# Node *Curve to Points*
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 

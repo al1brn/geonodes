@@ -1,4 +1,4 @@
-# Node 'Group Input'
+# Node *Group Input*
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 

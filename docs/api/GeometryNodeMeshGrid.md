@@ -1,4 +1,4 @@
-# Node 'Grid'
+# Node *Grid*
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 

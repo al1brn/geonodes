@@ -1,4 +1,4 @@
-# Node 'Magic Texture'
+# Node *Magic Texture*
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 

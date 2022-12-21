@@ -1,4 +1,4 @@
-# Node 'White Noise Texture'
+# Node *White Noise Texture*
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 

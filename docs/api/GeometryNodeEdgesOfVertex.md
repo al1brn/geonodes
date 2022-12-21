@@ -1,4 +1,4 @@
-# Node 'Edges of Vertex'
+# Node *Edges of Vertex*
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 

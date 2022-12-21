@@ -1,4 +1,4 @@
-# Node 'Subdivision Surface'
+# Node *Subdivision Surface*
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 

@@ -1,4 +1,4 @@
-# Node 'Set Material Index'
+# Node *Set Material Index*
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 

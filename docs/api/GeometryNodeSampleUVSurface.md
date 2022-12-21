@@ -1,4 +1,4 @@
-# Node 'Sample UV Surface'
+# Node *Sample UV Surface*
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 

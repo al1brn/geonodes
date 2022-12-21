@@ -1,4 +1,4 @@
-# Node 'Face is Planar'
+# Node *Face is Planar*
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 

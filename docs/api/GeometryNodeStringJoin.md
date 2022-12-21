@@ -1,4 +1,4 @@
-# Node 'Join Strings'
+# Node *Join Strings*
 
 > [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
