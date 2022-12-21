@@ -1,6 +1,6 @@
 # class Color
 
-[main](./structure.md) : [nodes](ndes.md) : [nodes menu](.nodes_menu.md)
+> [main](./structure.md) - [nodes](ndes.md) - [nodes menu](.nodes_menus.md)
 
 ## Properties
 
@@ -64,7 +64,7 @@ Node [Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/i
 ### Returns:
 - socket `color`
 
-<sub>Go to [top](#class-Color) [data structure](../structure.md)</sub>
+<sub>Go to [top](#class-Color) - [main](./structure.md) - [nodes](ndes.md) - [nodes menu](.nodes_menus.md)</sub>
 
 ## HSL <sub>*classmethod*</sub>
 
@@ -83,7 +83,7 @@ Node [Combine Color](https://docs.blender.org/manual/en/latest/modeling/geometry
 ### Returns:
 - socket `color`
 
-<sub>Go to [top](#class-Color) [data structure](../structure.md)</sub>
+<sub>Go to [top](#class-Color) - [main](./structure.md) - [nodes](ndes.md) - [nodes menu](.nodes_menus.md)</sub>
 
 ## HSV <sub>*classmethod*</sub>
 
@@ -102,7 +102,7 @@ Node [Combine Color](https://docs.blender.org/manual/en/latest/modeling/geometry
 ### Returns:
 - socket `color`
 
-<sub>Go to [top](#class-Color) [data structure](../structure.md)</sub>
+<sub>Go to [top](#class-Color) - [main](./structure.md) - [nodes](ndes.md) - [nodes menu](.nodes_menus.md)</sub>
 
 ## Input <sub>*classmethod*</sub>
 
@@ -123,7 +123,7 @@ Even if homonyms are accepted, it is recommended to avoid to create to input soc
 ### Returns:
 - Color
 
-<sub>Go to [top](#class-Color) [data structure](../structure.md)</sub>
+<sub>Go to [top](#class-Color) - [main](./structure.md) - [nodes](ndes.md) - [nodes menu](.nodes_menus.md)</sub>
 
 ## RGB <sub>*classmethod*</sub>
 
@@ -142,7 +142,7 @@ Node [Combine Color](https://docs.blender.org/manual/en/latest/modeling/geometry
 ### Returns:
 - socket `color`
 
-<sub>Go to [top](#class-Color) [data structure](../structure.md)</sub>
+<sub>Go to [top](#class-Color) - [main](./structure.md) - [nodes](ndes.md) - [nodes menu](.nodes_menus.md)</sub>
 
 ## alpha <sub>*property*</sub>
 
@@ -155,7 +155,7 @@ Node [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometr
 ### Returns:
 - socket `alpha`
 
-<sub>Go to [top](#class-Color) [data structure](../structure.md)</sub>
+<sub>Go to [top](#class-Color) - [main](./structure.md) - [nodes](ndes.md) - [nodes menu](.nodes_menus.md)</sub>
 
 ## blue <sub>*property*</sub>
 
@@ -168,7 +168,7 @@ Node [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometr
 ### Returns:
 - socket `blue`
 
-<sub>Go to [top](#class-Color) [data structure](../structure.md)</sub>
+<sub>Go to [top](#class-Color) - [main](./structure.md) - [nodes](ndes.md) - [nodes menu](.nodes_menus.md)</sub>
 
 ## brighter
 
@@ -184,7 +184,7 @@ Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 ### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-Color) [data structure](../structure.md)</sub>
+<sub>Go to [top](#class-Color) - [main](./structure.md) - [nodes](ndes.md) - [nodes menu](.nodes_menus.md)</sub>
 
 ## compare
 
@@ -202,7 +202,7 @@ Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 ### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-Color) [data structure](../structure.md)</sub>
+<sub>Go to [top](#class-Color) - [main](./structure.md) - [nodes](ndes.md) - [nodes menu](.nodes_menus.md)</sub>
 
 ## darker
 
@@ -218,7 +218,7 @@ Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 ### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-Color) [data structure](../structure.md)</sub>
+<sub>Go to [top](#class-Color) - [main](./structure.md) - [nodes](ndes.md) - [nodes menu](.nodes_menus.md)</sub>
 
 ## equal
 
@@ -235,7 +235,7 @@ Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 ### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-Color) [data structure](../structure.md)</sub>
+<sub>Go to [top](#class-Color) - [main](./structure.md) - [nodes](ndes.md) - [nodes menu](.nodes_menus.md)</sub>
 
 ## equal
 
@@ -252,7 +252,7 @@ Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 ### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-Color) [data structure](../structure.md)</sub>
+<sub>Go to [top](#class-Color) - [main](./structure.md) - [nodes](ndes.md) - [nodes menu](.nodes_menus.md)</sub>
 
 ## green <sub>*property*</sub>
 
@@ -265,7 +265,7 @@ Node [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometr
 ### Returns:
 - socket `green`
 
-<sub>Go to [top](#class-Color) [data structure](../structure.md)</sub>
+<sub>Go to [top](#class-Color) - [main](./structure.md) - [nodes](ndes.md) - [nodes menu](.nodes_menus.md)</sub>
 
 ## hsl <sub>*property*</sub>
 
@@ -278,7 +278,7 @@ Node [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometr
 ### Returns:
 - tuple ('`red`', '`green`', '`blue`', '`alpha`')
 
-<sub>Go to [top](#class-Color) [data structure](../structure.md)</sub>
+<sub>Go to [top](#class-Color) - [main](./structure.md) - [nodes](ndes.md) - [nodes menu](.nodes_menus.md)</sub>
 
 ## hsv <sub>*property*</sub>
 
@@ -291,7 +291,7 @@ Node [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometr
 ### Returns:
 - tuple ('`red`', '`green`', '`blue`', '`alpha`')
 
-<sub>Go to [top](#class-Color) [data structure](../structure.md)</sub>
+<sub>Go to [top](#class-Color) - [main](./structure.md) - [nodes](ndes.md) - [nodes menu](.nodes_menus.md)</sub>
 
 ## hue <sub>*property*</sub>
 
@@ -304,7 +304,7 @@ Node [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometr
 ### Returns:
 - socket `red`
 
-<sub>Go to [top](#class-Color) [data structure](../structure.md)</sub>
+<sub>Go to [top](#class-Color) - [main](./structure.md) - [nodes](ndes.md) - [nodes menu](.nodes_menus.md)</sub>
 
 ## lightness <sub>*property*</sub>
 
@@ -317,7 +317,7 @@ Node [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometr
 ### Returns:
 - socket `blue`
 
-<sub>Go to [top](#class-Color) [data structure](../structure.md)</sub>
+<sub>Go to [top](#class-Color) - [main](./structure.md) - [nodes](ndes.md) - [nodes menu](.nodes_menus.md)</sub>
 
 ## mix
 
@@ -337,7 +337,7 @@ Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/col
 ### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-Color) [data structure](../structure.md)</sub>
+<sub>Go to [top](#class-Color) - [main](./structure.md) - [nodes](ndes.md) - [nodes menu](.nodes_menus.md)</sub>
 
 ## mix_add
 
@@ -356,7 +356,7 @@ Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/col
 ### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-Color) [data structure](../structure.md)</sub>
+<sub>Go to [top](#class-Color) - [main](./structure.md) - [nodes](ndes.md) - [nodes menu](.nodes_menus.md)</sub>
 
 ## mix_burn
 
@@ -375,7 +375,7 @@ Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/col
 ### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-Color) [data structure](../structure.md)</sub>
+<sub>Go to [top](#class-Color) - [main](./structure.md) - [nodes](ndes.md) - [nodes menu](.nodes_menus.md)</sub>
 
 ## mix_color
 
@@ -394,7 +394,7 @@ Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/col
 ### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-Color) [data structure](../structure.md)</sub>
+<sub>Go to [top](#class-Color) - [main](./structure.md) - [nodes](ndes.md) - [nodes menu](.nodes_menus.md)</sub>
 
 ## mix_darken
 
@@ -413,7 +413,7 @@ Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/col
 ### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-Color) [data structure](../structure.md)</sub>
+<sub>Go to [top](#class-Color) - [main](./structure.md) - [nodes](ndes.md) - [nodes menu](.nodes_menus.md)</sub>
 
 ## mix_difference
 
@@ -432,7 +432,7 @@ Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/col
 ### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-Color) [data structure](../structure.md)</sub>
+<sub>Go to [top](#class-Color) - [main](./structure.md) - [nodes](ndes.md) - [nodes menu](.nodes_menus.md)</sub>
 
 ## mix_divide
 
@@ -451,7 +451,7 @@ Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/col
 ### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-Color) [data structure](../structure.md)</sub>
+<sub>Go to [top](#class-Color) - [main](./structure.md) - [nodes](ndes.md) - [nodes menu](.nodes_menus.md)</sub>
 
 ## mix_dodge
 
@@ -470,7 +470,7 @@ Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/col
 ### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-Color) [data structure](../structure.md)</sub>
+<sub>Go to [top](#class-Color) - [main](./structure.md) - [nodes](ndes.md) - [nodes menu](.nodes_menus.md)</sub>
 
 ## mix_hue
 
@@ -489,7 +489,7 @@ Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/col
 ### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-Color) [data structure](../structure.md)</sub>
+<sub>Go to [top](#class-Color) - [main](./structure.md) - [nodes](ndes.md) - [nodes menu](.nodes_menus.md)</sub>
 
 ## mix_lighten
 
@@ -508,7 +508,7 @@ Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/col
 ### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-Color) [data structure](../structure.md)</sub>
+<sub>Go to [top](#class-Color) - [main](./structure.md) - [nodes](ndes.md) - [nodes menu](.nodes_menus.md)</sub>
 
 ## mix_linear_light
 
@@ -527,7 +527,7 @@ Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/col
 ### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-Color) [data structure](../structure.md)</sub>
+<sub>Go to [top](#class-Color) - [main](./structure.md) - [nodes](ndes.md) - [nodes menu](.nodes_menus.md)</sub>
 
 ## mix_multiply
 
@@ -546,7 +546,7 @@ Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/col
 ### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-Color) [data structure](../structure.md)</sub>
+<sub>Go to [top](#class-Color) - [main](./structure.md) - [nodes](ndes.md) - [nodes menu](.nodes_menus.md)</sub>
 
 ## mix_overlay
 
@@ -565,7 +565,7 @@ Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/col
 ### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-Color) [data structure](../structure.md)</sub>
+<sub>Go to [top](#class-Color) - [main](./structure.md) - [nodes](ndes.md) - [nodes menu](.nodes_menus.md)</sub>
 
 ## mix_saturation
 
@@ -584,7 +584,7 @@ Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/col
 ### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-Color) [data structure](../structure.md)</sub>
+<sub>Go to [top](#class-Color) - [main](./structure.md) - [nodes](ndes.md) - [nodes menu](.nodes_menus.md)</sub>
 
 ## mix_screen
 
@@ -603,7 +603,7 @@ Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/col
 ### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-Color) [data structure](../structure.md)</sub>
+<sub>Go to [top](#class-Color) - [main](./structure.md) - [nodes](ndes.md) - [nodes menu](.nodes_menus.md)</sub>
 
 ## mix_soft_light
 
@@ -622,7 +622,7 @@ Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/col
 ### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-Color) [data structure](../structure.md)</sub>
+<sub>Go to [top](#class-Color) - [main](./structure.md) - [nodes](ndes.md) - [nodes menu](.nodes_menus.md)</sub>
 
 ## mix_subtract
 
@@ -641,7 +641,7 @@ Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/col
 ### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-Color) [data structure](../structure.md)</sub>
+<sub>Go to [top](#class-Color) - [main](./structure.md) - [nodes](ndes.md) - [nodes menu](.nodes_menus.md)</sub>
 
 ## mix_value
 
@@ -660,7 +660,7 @@ Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/col
 ### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-Color) [data structure](../structure.md)</sub>
+<sub>Go to [top](#class-Color) - [main](./structure.md) - [nodes](ndes.md) - [nodes menu](.nodes_menus.md)</sub>
 
 ## red <sub>*property*</sub>
 
@@ -673,7 +673,7 @@ Node [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometr
 ### Returns:
 - socket `red`
 
-<sub>Go to [top](#class-Color) [data structure](../structure.md)</sub>
+<sub>Go to [top](#class-Color) - [main](./structure.md) - [nodes](ndes.md) - [nodes menu](.nodes_menus.md)</sub>
 
 ## rgb <sub>*property*</sub>
 
@@ -686,7 +686,7 @@ Node [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometr
 ### Returns:
 - tuple ('`red`', '`green`', '`blue`', '`alpha`')
 
-<sub>Go to [top](#class-Color) [data structure](../structure.md)</sub>
+<sub>Go to [top](#class-Color) - [main](./structure.md) - [nodes](ndes.md) - [nodes menu](.nodes_menus.md)</sub>
 
 ## rgb_curves <sub>*property*</sub>
 
@@ -699,7 +699,7 @@ Node [RGB Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_no
 ### Returns:
 - node with sockets ['color']
 
-<sub>Go to [top](#class-Color) [data structure](../structure.md)</sub>
+<sub>Go to [top](#class-Color) - [main](./structure.md) - [nodes](ndes.md) - [nodes menu](.nodes_menus.md)</sub>
 
 ## saturation <sub>*property*</sub>
 
@@ -712,7 +712,7 @@ Node [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometr
 ### Returns:
 - socket `green`
 
-<sub>Go to [top](#class-Color) [data structure](../structure.md)</sub>
+<sub>Go to [top](#class-Color) - [main](./structure.md) - [nodes](ndes.md) - [nodes menu](.nodes_menus.md)</sub>
 
 ## switch
 
@@ -729,7 +729,7 @@ Node [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/
 ### Returns:
 - socket `output`
 
-<sub>Go to [top](#class-Color) [data structure](../structure.md)</sub>
+<sub>Go to [top](#class-Color) - [main](./structure.md) - [nodes](ndes.md) - [nodes menu](.nodes_menus.md)</sub>
 
 ## value <sub>*property*</sub>
 
@@ -742,5 +742,5 @@ Node [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometr
 ### Returns:
 - socket `blue`
 
-<sub>Go to [top](#class-Color) [data structure](../structure.md)</sub>
+<sub>Go to [top](#class-Color) - [main](./structure.md) - [nodes](ndes.md) - [nodes menu](.nodes_menus.md)</sub>
 

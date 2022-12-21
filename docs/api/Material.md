@@ -1,6 +1,6 @@
 # class Material
 
-[main](./structure.md) : [nodes](ndes.md) : [nodes menu](.nodes_menu.md)
+> [main](./structure.md) - [nodes](ndes.md) - [nodes menu](.nodes_menus.md)
 
 
 ## Class methods
@@ -31,7 +31,7 @@ The initial value can be either a valid Blender Material or the name of an exist
 ### Returns:
 - Material
 
-<sub>Go to [top](#class-Material) [data structure](../structure.md)</sub>
+<sub>Go to [top](#class-Material) - [main](./structure.md) - [nodes](ndes.md) - [nodes menu](.nodes_menus.md)</sub>
 
 ## Material <sub>*classmethod*</sub>
 
@@ -44,7 +44,7 @@ Node [Material](https://docs.blender.org/manual/en/latest/modeling/geometry_node
 ### Returns:
 - socket `material`
 
-<sub>Go to [top](#class-Material) [data structure](../structure.md)</sub>
+<sub>Go to [top](#class-Material) - [main](./structure.md) - [nodes](ndes.md) - [nodes menu](.nodes_menus.md)</sub>
 
 ## switch
 
@@ -61,5 +61,5 @@ Node [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/
 ### Returns:
 - socket `output`
 
-<sub>Go to [top](#class-Material) [data structure](../structure.md)</sub>
+<sub>Go to [top](#class-Material) - [main](./structure.md) - [nodes](ndes.md) - [nodes menu](.nodes_menus.md)</sub>
 

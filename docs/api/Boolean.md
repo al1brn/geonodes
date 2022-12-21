@@ -1,6 +1,6 @@
 # class Boolean
 
-[main](./structure.md) : [nodes](ndes.md) : [nodes menu](.nodes_menu.md)
+> [main](./structure.md) - [nodes](ndes.md) - [nodes menu](.nodes_menus.md)
 
 
 ## Class methods
@@ -36,7 +36,7 @@ Node [Boolean](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 ### Returns:
 - socket `boolean`
 
-<sub>Go to [top](#class-Boolean) [data structure](../structure.md)</sub>
+<sub>Go to [top](#class-Boolean) - [main](./structure.md) - [nodes](ndes.md) - [nodes menu](.nodes_menus.md)</sub>
 
 ## Input <sub>*classmethod*</sub>
 
@@ -57,7 +57,7 @@ Even if homonyms are accepted, it is recommended to avoid to create to input soc
 ### Returns:
 - Boolean
 
-<sub>Go to [top](#class-Boolean) [data structure](../structure.md)</sub>
+<sub>Go to [top](#class-Boolean) - [main](./structure.md) - [nodes](ndes.md) - [nodes menu](.nodes_menus.md)</sub>
 
 ## b_and
 
@@ -73,7 +73,7 @@ Node [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_
 ### Returns:
 - socket `boolean`
 
-<sub>Go to [top](#class-Boolean) [data structure](../structure.md)</sub>
+<sub>Go to [top](#class-Boolean) - [main](./structure.md) - [nodes](ndes.md) - [nodes menu](.nodes_menus.md)</sub>
 
 ## b_not
 
@@ -86,7 +86,7 @@ Node [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_
 ### Returns:
 - socket `boolean`
 
-<sub>Go to [top](#class-Boolean) [data structure](../structure.md)</sub>
+<sub>Go to [top](#class-Boolean) - [main](./structure.md) - [nodes](ndes.md) - [nodes menu](.nodes_menus.md)</sub>
 
 ## b_or
 
@@ -102,7 +102,7 @@ Node [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_
 ### Returns:
 - socket `boolean`
 
-<sub>Go to [top](#class-Boolean) [data structure](../structure.md)</sub>
+<sub>Go to [top](#class-Boolean) - [main](./structure.md) - [nodes](ndes.md) - [nodes menu](.nodes_menus.md)</sub>
 
 ## imply
 
@@ -118,7 +118,7 @@ Node [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_
 ### Returns:
 - socket `boolean`
 
-<sub>Go to [top](#class-Boolean) [data structure](../structure.md)</sub>
+<sub>Go to [top](#class-Boolean) - [main](./structure.md) - [nodes](ndes.md) - [nodes menu](.nodes_menus.md)</sub>
 
 ## nand
 
@@ -134,7 +134,7 @@ Node [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_
 ### Returns:
 - socket `boolean`
 
-<sub>Go to [top](#class-Boolean) [data structure](../structure.md)</sub>
+<sub>Go to [top](#class-Boolean) - [main](./structure.md) - [nodes](ndes.md) - [nodes menu](.nodes_menus.md)</sub>
 
 ## nimply
 
@@ -150,7 +150,7 @@ Node [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_
 ### Returns:
 - socket `boolean`
 
-<sub>Go to [top](#class-Boolean) [data structure](../structure.md)</sub>
+<sub>Go to [top](#class-Boolean) - [main](./structure.md) - [nodes](ndes.md) - [nodes menu](.nodes_menus.md)</sub>
 
 ## nor
 
@@ -166,7 +166,7 @@ Node [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_
 ### Returns:
 - socket `boolean`
 
-<sub>Go to [top](#class-Boolean) [data structure](../structure.md)</sub>
+<sub>Go to [top](#class-Boolean) - [main](./structure.md) - [nodes](ndes.md) - [nodes menu](.nodes_menus.md)</sub>
 
 ## switch
 
@@ -183,7 +183,7 @@ Node [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/
 ### Returns:
 - socket `output`
 
-<sub>Go to [top](#class-Boolean) [data structure](../structure.md)</sub>
+<sub>Go to [top](#class-Boolean) - [main](./structure.md) - [nodes](ndes.md) - [nodes menu](.nodes_menus.md)</sub>
 
 ## xnor
 
@@ -199,7 +199,7 @@ Node [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_
 ### Returns:
 - socket `boolean`
 
-<sub>Go to [top](#class-Boolean) [data structure](../structure.md)</sub>
+<sub>Go to [top](#class-Boolean) - [main](./structure.md) - [nodes](ndes.md) - [nodes menu](.nodes_menus.md)</sub>
 
 ## xor
 
@@ -215,5 +215,5 @@ Node [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_
 ### Returns:
 - socket `boolean`
 
-<sub>Go to [top](#class-Boolean) [data structure](../structure.md)</sub>
+<sub>Go to [top](#class-Boolean) - [main](./structure.md) - [nodes](ndes.md) - [nodes menu](.nodes_menus.md)</sub>
 
