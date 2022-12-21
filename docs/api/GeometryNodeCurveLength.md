@@ -15,7 +15,7 @@ node = nodes.CurveLength(curve=None)
 
 #### Input socket arguments:
 
-- curve: [Curve](Curve.md)
+- `curve`: [Curve](Curve.md)
 
 #### Output sockets:
 

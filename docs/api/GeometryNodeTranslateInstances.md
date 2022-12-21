@@ -15,10 +15,10 @@ node = nodes.TranslateInstances(instances=None, selection=None, translation=None
 
 #### Input socket arguments:
 
-- instances: [Instances](Instances.md)
-- selection: [Boolean](Boolean.md)
-- translation: [Vector](Vector.md)
-- local_space: [Boolean](Boolean.md)
+- `instances`: [Instances](Instances.md)
+- `selection`: [Boolean](Boolean.md)
+- `translation`: [Vector](Vector.md)
+- `local_space`: [Boolean](Boolean.md)
 
 #### Output sockets:
 

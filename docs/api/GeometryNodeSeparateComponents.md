@@ -15,7 +15,7 @@ node = nodes.SeparateComponents(geometry=None)
 
 #### Input socket arguments:
 
-- geometry: [Geometry](Geometry.md)
+- `geometry`: [Geometry](Geometry.md)
 
 #### Output sockets:
 

@@ -15,9 +15,9 @@ node = nodes.Switch(switch=None, false=None, true=None, input_type='GEOMETRY')
 
 #### Input socket arguments:
 
-- switch: `input_type` dependant
-- false: `input_type` dependant
-- true: `input_type` dependant
+- `switch`: `input_type` dependant
+- `false`: `input_type` dependant
+- `true`: `input_type` dependant
 
 #### Node parameter arguments:
 

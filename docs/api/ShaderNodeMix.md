@@ -15,9 +15,9 @@ node = nodes.Mix(factor=None, a=None, b=None, blend_type='MIX', clamp_factor=Tru
 
 #### Input socket arguments:
 
-- factor: `data_type` dependant
-- a: `data_type` dependant
-- b: `data_type` dependant
+- `factor`: `data_type` dependant
+- `a`: `data_type` dependant
+- `b`: `data_type` dependant
 
 #### Node parameter arguments:
 

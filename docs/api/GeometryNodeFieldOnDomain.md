@@ -15,7 +15,7 @@ node = nodes.InterpolateDomain(value=None, data_type='FLOAT', domain='POINT')
 
 #### Input socket arguments:
 
-- value: `data_type` dependant
+- `value`: `data_type` dependant
 
 #### Node parameter arguments:
 

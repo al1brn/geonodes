@@ -15,10 +15,10 @@ node = nodes.PackUvIslands(uv=None, selection=None, margin=None, rotate=None)
 
 #### Input socket arguments:
 
-- uv: [Vector](Vector.md)
-- selection: [Boolean](Boolean.md)
-- margin: [Float](Float.md)
-- rotate: [Boolean](Boolean.md)
+- `uv`: [Vector](Vector.md)
+- `selection`: [Boolean](Boolean.md)
+- `margin`: [Float](Float.md)
+- `rotate`: [Boolean](Boolean.md)
 
 #### Output sockets:
 

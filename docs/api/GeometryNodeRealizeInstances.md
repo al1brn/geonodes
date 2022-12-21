@@ -15,7 +15,7 @@ node = nodes.RealizeInstances(geometry=None, legacy_behavior=False)
 
 #### Input socket arguments:
 
-- geometry: [Geometry](Geometry.md)
+- `geometry`: [Geometry](Geometry.md)
 
 #### Node parameter arguments:
 

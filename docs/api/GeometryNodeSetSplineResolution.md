@@ -15,9 +15,9 @@ node = nodes.SetSplineResolution(geometry=None, selection=None, resolution=None)
 
 #### Input socket arguments:
 
-- geometry: [Geometry](Geometry.md)
-- selection: [Boolean](Boolean.md)
-- resolution: [Integer](Integer.md)
+- `geometry`: [Geometry](Geometry.md)
+- `selection`: [Boolean](Boolean.md)
+- `resolution`: [Integer](Integer.md)
 
 #### Output sockets:
 

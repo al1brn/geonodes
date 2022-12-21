@@ -15,8 +15,8 @@ node = nodes.FieldAtIndex(index=None, value=None, data_type='FLOAT', domain='POI
 
 #### Input socket arguments:
 
-- index: [Integer](Integer.md)
-- value: `data_type` dependant
+- `index`: [Integer](Integer.md)
+- `value`: `data_type` dependant
 
 #### Node parameter arguments:
 

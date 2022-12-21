@@ -15,11 +15,11 @@ node = nodes.VectorRotate(vector=None, center=None, axis=None, angle=None, rotat
 
 #### Input socket arguments:
 
-- vector: [Vector](Vector.md)
-- center: [Vector](Vector.md)
-- axis: [Vector](Vector.md)
-- angle: [Float](Float.md)
-- rotation: [Vector](Vector.md)
+- `vector`: [Vector](Vector.md)
+- `center`: [Vector](Vector.md)
+- `axis`: [Vector](Vector.md)
+- `angle`: [Float](Float.md)
+- `rotation`: [Vector](Vector.md)
 
 #### Node parameter arguments:
 

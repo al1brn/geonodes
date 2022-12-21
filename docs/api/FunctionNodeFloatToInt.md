@@ -15,7 +15,7 @@ node = nodes.FloatToInteger(float=None, rounding_mode='ROUND')
 
 #### Input socket arguments:
 
-- float: [Float](Float.md)
+- `float`: [Float](Float.md)
 
 #### Node parameter arguments:
 

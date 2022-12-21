@@ -15,8 +15,8 @@ node = nodes.CaptureAttribute(geometry=None, value=None, data_type='FLOAT', doma
 
 #### Input socket arguments:
 
-- geometry: [Geometry](Geometry.md)
-- value: `data_type` dependant
+- `geometry`: [Geometry](Geometry.md)
+- `value`: `data_type` dependant
 
 #### Node parameter arguments:
 

@@ -15,9 +15,9 @@ node = nodes.Clamp(value=None, min=None, max=None, clamp_type='MINMAX')
 
 #### Input socket arguments:
 
-- value: [Float](Float.md)
-- min: [Float](Float.md)
-- max: [Float](Float.md)
+- `value`: [Float](Float.md)
+- `min`: [Float](Float.md)
+- `max`: [Float](Float.md)
 
 #### Node parameter arguments:
 

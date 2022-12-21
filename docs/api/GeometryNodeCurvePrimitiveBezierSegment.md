@@ -15,11 +15,11 @@ node = nodes.BezierSegment(resolution=None, start=None, start_handle=None, end_h
 
 #### Input socket arguments:
 
-- resolution: [Integer](Integer.md)
-- start: [Vector](Vector.md)
-- start_handle: [Vector](Vector.md)
-- end_handle: [Vector](Vector.md)
-- end: [Vector](Vector.md)
+- `resolution`: [Integer](Integer.md)
+- `start`: [Vector](Vector.md)
+- `start_handle`: [Vector](Vector.md)
+- `end_handle`: [Vector](Vector.md)
+- `end`: [Vector](Vector.md)
 
 #### Node parameter arguments:
 

@@ -15,7 +15,7 @@ node = nodes.CurveHandlePositions(relative=None)
 
 #### Input socket arguments:
 
-- relative: [Boolean](Boolean.md)
+- `relative`: [Boolean](Boolean.md)
 
 #### Output sockets:
 

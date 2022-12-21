@@ -15,13 +15,13 @@ node = nodes.MeshToVolume(mesh=None, density=None, voxel_size=None, voxel_amount
 
 #### Input socket arguments:
 
-- mesh: [Mesh](Mesh.md)
-- density: [Float](Float.md)
-- voxel_size: [Float](Float.md)
-- voxel_amount: [Float](Float.md)
-- exterior_band_width: [Float](Float.md)
-- interior_band_width: [Float](Float.md)
-- fill_volume: [Boolean](Boolean.md)
+- `mesh`: [Mesh](Mesh.md)
+- `density`: [Float](Float.md)
+- `voxel_size`: [Float](Float.md)
+- `voxel_amount`: [Float](Float.md)
+- `exterior_band_width`: [Float](Float.md)
+- `interior_band_width`: [Float](Float.md)
+- `fill_volume`: [Boolean](Boolean.md)
 
 #### Node parameter arguments:
 

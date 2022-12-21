@@ -15,9 +15,9 @@ node = nodes.StoreNamedAttribute(geometry=None, name=None, value=None, data_type
 
 #### Input socket arguments:
 
-- geometry: [Geometry](Geometry.md)
-- name: [String](String.md)
-- value: `data_type` dependant
+- `geometry`: [Geometry](Geometry.md)
+- `name`: [String](String.md)
+- `value`: `data_type` dependant
 
 #### Node parameter arguments:
 

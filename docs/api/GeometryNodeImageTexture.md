@@ -15,9 +15,9 @@ node = nodes.ImageTexture(image=None, vector=None, frame=None, extension='REPEAT
 
 #### Input socket arguments:
 
-- image: [Image](Image.md)
-- vector: [Vector](Vector.md)
-- frame: [Integer](Integer.md)
+- `image`: [Image](Image.md)
+- `vector`: [Vector](Vector.md)
+- `frame`: [Integer](Integer.md)
 
 #### Node parameter arguments:
 

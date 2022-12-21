@@ -15,14 +15,14 @@ node = nodes.MusgraveTexture(vector=None, w=None, scale=None, detail=None, dimen
 
 #### Input socket arguments:
 
-- vector: [Vector](Vector.md)
-- w: [Float](Float.md)
-- scale: [Float](Float.md)
-- detail: [Float](Float.md)
-- dimension: [Float](Float.md)
-- lacunarity: [Float](Float.md)
-- offset: [Float](Float.md)
-- gain: [Float](Float.md)
+- `vector`: [Vector](Vector.md)
+- `w`: [Float](Float.md)
+- `scale`: [Float](Float.md)
+- `detail`: [Float](Float.md)
+- `dimension`: [Float](Float.md)
+- `lacunarity`: [Float](Float.md)
+- `offset`: [Float](Float.md)
+- `gain`: [Float](Float.md)
 
 #### Node parameter arguments:
 

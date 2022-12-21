@@ -15,7 +15,7 @@ node = nodes.FaceIsPlanar(threshold=None)
 
 #### Input socket arguments:
 
-- threshold: [Float](Float.md)
+- `threshold`: [Float](Float.md)
 
 #### Output sockets:
 

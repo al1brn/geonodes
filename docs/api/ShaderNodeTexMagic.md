@@ -15,9 +15,9 @@ node = nodes.MagicTexture(vector=None, scale=None, distortion=None, turbulence_d
 
 #### Input socket arguments:
 
-- vector: [Vector](Vector.md)
-- scale: [Float](Float.md)
-- distortion: [Float](Float.md)
+- `vector`: [Vector](Vector.md)
+- `scale`: [Float](Float.md)
+- `distortion`: [Float](Float.md)
 
 #### Node parameter arguments:
 

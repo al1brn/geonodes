@@ -15,9 +15,9 @@ node = nodes.CurveToMesh(curve=None, profile_curve=None, fill_caps=None)
 
 #### Input socket arguments:
 
-- curve: [Curve](Curve.md)
-- profile_curve: [Geometry](Geometry.md)
-- fill_caps: [Boolean](Boolean.md)
+- `curve`: [Curve](Curve.md)
+- `profile_curve`: [Geometry](Geometry.md)
+- `fill_caps`: [Boolean](Boolean.md)
 
 #### Output sockets:
 

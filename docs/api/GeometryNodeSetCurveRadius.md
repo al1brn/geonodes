@@ -15,9 +15,9 @@ node = nodes.SetCurveRadius(curve=None, selection=None, radius=None)
 
 #### Input socket arguments:
 
-- curve: [Curve](Curve.md)
-- selection: [Boolean](Boolean.md)
-- radius: [Float](Float.md)
+- `curve`: [Curve](Curve.md)
+- `selection`: [Boolean](Boolean.md)
+- `radius`: [Float](Float.md)
 
 #### Output sockets:
 

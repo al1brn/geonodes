@@ -15,10 +15,10 @@ node = nodes.SetPosition(geometry=None, selection=None, position=None, offset=No
 
 #### Input socket arguments:
 
-- geometry: [Geometry](Geometry.md)
-- selection: [Boolean](Boolean.md)
-- position: [Vector](Vector.md)
-- offset: [Vector](Vector.md)
+- `geometry`: [Geometry](Geometry.md)
+- `selection`: [Boolean](Boolean.md)
+- `position`: [Vector](Vector.md)
+- `offset`: [Vector](Vector.md)
 
 #### Output sockets:
 

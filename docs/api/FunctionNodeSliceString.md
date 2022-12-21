@@ -15,9 +15,9 @@ node = nodes.SliceString(string=None, position=None, length=None)
 
 #### Input socket arguments:
 
-- string: [String](String.md)
-- position: [Integer](Integer.md)
-- length: [Integer](Integer.md)
+- `string`: [String](String.md)
+- `position`: [Integer](Integer.md)
+- `length`: [Integer](Integer.md)
 
 #### Output sockets:
 

@@ -15,8 +15,8 @@ node = nodes.OffsetCornerInFace(corner_index=None, offset=None)
 
 #### Input socket arguments:
 
-- corner_index: [Integer](Integer.md)
-- offset: [Integer](Integer.md)
+- `corner_index`: [Integer](Integer.md)
+- `offset`: [Integer](Integer.md)
 
 #### Output sockets:
 

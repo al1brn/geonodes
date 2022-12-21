@@ -15,8 +15,8 @@ node = nodes.WhiteNoiseTexture(vector=None, w=None, noise_dimensions='3D')
 
 #### Input socket arguments:
 
-- vector: [Vector](Vector.md)
-- w: [Float](Float.md)
+- `vector`: [Vector](Vector.md)
+- `w`: [Float](Float.md)
 
 #### Node parameter arguments:
 

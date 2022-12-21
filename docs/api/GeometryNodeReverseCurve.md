@@ -15,8 +15,8 @@ node = nodes.ReverseCurve(curve=None, selection=None)
 
 #### Input socket arguments:
 
-- curve: [Curve](Curve.md)
-- selection: [Boolean](Boolean.md)
+- `curve`: [Curve](Curve.md)
+- `selection`: [Boolean](Boolean.md)
 
 #### Output sockets:
 

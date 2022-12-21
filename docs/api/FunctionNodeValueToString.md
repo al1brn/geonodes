@@ -15,8 +15,8 @@ node = nodes.ValueToString(value=None, decimals=None)
 
 #### Input socket arguments:
 
-- value: [Float](Float.md)
-- decimals: [Integer](Integer.md)
+- `value`: [Float](Float.md)
+- `decimals`: [Integer](Integer.md)
 
 #### Output sockets:
 

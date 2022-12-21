@@ -15,12 +15,12 @@ node = nodes.VoronoiTexture(vector=None, w=None, scale=None, smoothness=None, ex
 
 #### Input socket arguments:
 
-- vector: [Vector](Vector.md)
-- w: [Float](Float.md)
-- scale: [Float](Float.md)
-- smoothness: [Float](Float.md)
-- exponent: [Float](Float.md)
-- randomness: [Float](Float.md)
+- `vector`: [Vector](Vector.md)
+- `w`: [Float](Float.md)
+- `scale`: [Float](Float.md)
+- `smoothness`: [Float](Float.md)
+- `exponent`: [Float](Float.md)
+- `randomness`: [Float](Float.md)
 
 #### Node parameter arguments:
 

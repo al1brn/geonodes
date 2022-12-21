@@ -15,8 +15,8 @@ node = nodes.SetHandleType(curve=None, selection=None, handle_type='AUTO', mode=
 
 #### Input socket arguments:
 
-- curve: [Curve](Curve.md)
-- selection: [Boolean](Boolean.md)
+- `curve`: [Curve](Curve.md)
+- `selection`: [Boolean](Boolean.md)
 
 #### Node parameter arguments:
 
