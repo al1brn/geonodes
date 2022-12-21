@@ -21,5 +21,5 @@ node = nodes.CombineXyz(x=None, y=None, z=None)
 
 #### Output sockets:
 
-- **vector** : [Vector](Vector)
+- **vector** : [Vector](Vector.md)
 

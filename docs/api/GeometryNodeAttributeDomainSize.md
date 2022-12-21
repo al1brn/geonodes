@@ -23,10 +23,10 @@ node = nodes.DomainSize(geometry=None, component='MESH')
 
 #### Output sockets:
 
-- **point_count** : [Integer](Integer)
-- **edge_count** : [Integer](Integer)
-- **face_count** : [Integer](Integer)
-- **face_corner_count** : [Integer](Integer)
-- **spline_count** : [Integer](Integer)
-- **instance_count** : [Integer](Integer)
+- **point_count** : [Integer](Integer.md)
+- **edge_count** : [Integer](Integer.md)
+- **face_count** : [Integer](Integer.md)
+- **face_corner_count** : [Integer](Integer.md)
+- **spline_count** : [Integer](Integer.md)
+- **instance_count** : [Integer](Integer.md)
 

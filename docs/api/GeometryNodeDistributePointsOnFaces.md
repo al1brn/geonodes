@@ -29,7 +29,7 @@ node = nodes.DistributePointsOnFaces(mesh=None, selection=None, distance_min=Non
 
 #### Output sockets:
 
-- **points** : [Points](Points)
-- **normal** : [Vector](Vector)
-- **rotation** : [Vector](Vector)
+- **points** : [Points](Points.md)
+- **normal** : [Vector](Vector.md)
+- **rotation** : [Vector](Vector.md)
 

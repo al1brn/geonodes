@@ -27,5 +27,5 @@ node = nodes.DistributePointsInVolume(volume=None, density=None, seed=None, spac
 
 #### Output sockets:
 
-- **points** : [Points](Points)
+- **points** : [Points](Points.md)
 

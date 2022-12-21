@@ -24,6 +24,6 @@ node = nodes.WhiteNoiseTexture(vector=None, w=None, noise_dimensions='3D')
 
 #### Output sockets:
 
-- **value** : [Float](Float)
-- **color** : [Color](Color)
+- **value** : [Float](Float.md)
+- **color** : [Color](Color.md)
 

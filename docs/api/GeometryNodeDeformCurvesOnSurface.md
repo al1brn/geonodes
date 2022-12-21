@@ -19,5 +19,5 @@ node = nodes.DeformCurvesOnSurface(curves=None)
 
 #### Output sockets:
 
-- **curves** : [Curve](Curve)
+- **curves** : [Curve](Curve.md)
 

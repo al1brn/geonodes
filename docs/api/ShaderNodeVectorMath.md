@@ -26,6 +26,6 @@ node = nodes.VectorMath(vector0=None, vector1=None, vector2=None, scale=None, op
 
 #### Output sockets:
 
-- **vector** : [Vector](Vector)
-- **value** : [Float](Float)
+- **vector** : [Vector](Vector.md)
+- **value** : [Float](Float.md)
 

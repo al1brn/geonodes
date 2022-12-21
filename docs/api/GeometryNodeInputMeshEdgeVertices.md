@@ -15,8 +15,8 @@ node = nodes.EdgeVertices()
 
 #### Output sockets:
 
-- **vertex_index_1** : [Integer](Integer)
-- **vertex_index_2** : [Integer](Integer)
-- **position_1** : [Vector](Vector)
-- **position_2** : [Vector](Vector)
+- **vertex_index_1** : [Integer](Integer.md)
+- **vertex_index_2** : [Integer](Integer.md)
+- **position_1** : [Vector](Vector.md)
+- **position_2** : [Vector](Vector.md)
 

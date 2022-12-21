@@ -15,6 +15,6 @@ node = nodes.MeshIsland()
 
 #### Output sockets:
 
-- **island_index** : [Integer](Integer)
-- **island_count** : [Integer](Integer)
+- **island_index** : [Integer](Integer.md)
+- **island_count** : [Integer](Integer.md)
 

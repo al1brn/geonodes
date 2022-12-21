@@ -24,5 +24,5 @@ node = nodes.BooleanMath(boolean0=None, boolean1=None, operation='AND')
 
 #### Output sockets:
 
-- **boolean** : [Boolean](Boolean)
+- **boolean** : [Boolean](Boolean.md)
 

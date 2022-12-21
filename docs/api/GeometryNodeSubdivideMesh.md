@@ -20,5 +20,5 @@ node = nodes.SubdivideMesh(mesh=None, level=None)
 
 #### Output sockets:
 
-- **mesh** : [Mesh](Mesh)
+- **mesh** : [Mesh](Mesh.md)
 

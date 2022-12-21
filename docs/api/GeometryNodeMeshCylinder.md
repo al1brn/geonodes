@@ -27,8 +27,8 @@ node = nodes.Cylinder(vertices=None, side_segments=None, fill_segments=None, rad
 
 #### Output sockets:
 
-- **mesh** : [Mesh](Mesh)
-- **top** : [Boolean](Boolean)
-- **side** : [Boolean](Boolean)
-- **bottom** : [Boolean](Boolean)
+- **mesh** : [Mesh](Mesh.md)
+- **top** : [Boolean](Boolean.md)
+- **side** : [Boolean](Boolean.md)
+- **bottom** : [Boolean](Boolean.md)
 

@@ -21,5 +21,5 @@ node = nodes.SetMaterial(geometry=None, selection=None, material=None)
 
 #### Output sockets:
 
-- **geometry** : [Geometry](Geometry)
+- **geometry** : [Geometry](Geometry.md)
 

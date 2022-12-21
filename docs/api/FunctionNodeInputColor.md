@@ -15,5 +15,5 @@ node = nodes.Color()
 
 #### Output sockets:
 
-- **color** : [Color](Color)
+- **color** : [Color](Color.md)
 

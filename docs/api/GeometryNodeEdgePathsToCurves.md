@@ -21,5 +21,5 @@ node = nodes.EdgePathsToCurves(mesh=None, start_vertices=None, next_vertex_index
 
 #### Output sockets:
 
-- **curves** : [Curve](Curve)
+- **curves** : [Curve](Curve.md)
 

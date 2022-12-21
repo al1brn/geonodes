@@ -24,5 +24,5 @@ node = nodes.Spiral(resolution=None, rotations=None, start_radius=None, end_radi
 
 #### Output sockets:
 
-- **curve** : [Curve](Curve)
+- **curve** : [Curve](Curve.md)
 

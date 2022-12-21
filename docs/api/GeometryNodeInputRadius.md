@@ -15,5 +15,5 @@ node = nodes.Radius()
 
 #### Output sockets:
 
-- **radius** : [Float](Float)
+- **radius** : [Float](Float.md)
 

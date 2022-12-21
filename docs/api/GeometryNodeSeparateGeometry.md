@@ -24,6 +24,6 @@ node = nodes.SeparateGeometry(geometry=None, selection=None, domain='POINT')
 
 #### Output sockets:
 
-- **selection** : [Geometry](Geometry)
-- **inverted** : [Geometry](Geometry)
+- **selection** : [Geometry](Geometry.md)
+- **inverted** : [Geometry](Geometry.md)
 

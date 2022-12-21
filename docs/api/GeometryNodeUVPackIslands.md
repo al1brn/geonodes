@@ -22,5 +22,5 @@ node = nodes.PackUvIslands(uv=None, selection=None, margin=None, rotate=None)
 
 #### Output sockets:
 
-- **uv** : [Vector](Vector)
+- **uv** : [Vector](Vector.md)
 

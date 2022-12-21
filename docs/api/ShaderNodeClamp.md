@@ -25,5 +25,5 @@ node = nodes.Clamp(value=None, min=None, max=None, clamp_type='MINMAX')
 
 #### Output sockets:
 
-- **result** : [Float](Float)
+- **result** : [Float](Float.md)
 

@@ -15,7 +15,7 @@ node = nodes.SplineParameter()
 
 #### Output sockets:
 
-- **factor** : [Float](Float)
-- **length** : [Float](Float)
-- **index** : [Integer](Integer)
+- **factor** : [Float](Float.md)
+- **length** : [Float](Float.md)
+- **index** : [Integer](Integer.md)
 

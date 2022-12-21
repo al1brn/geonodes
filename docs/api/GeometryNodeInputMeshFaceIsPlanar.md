@@ -19,5 +19,5 @@ node = nodes.FaceIsPlanar(threshold=None)
 
 #### Output sockets:
 
-- **planar** : [Boolean](Boolean)
+- **planar** : [Boolean](Boolean.md)
 

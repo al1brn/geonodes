@@ -25,5 +25,5 @@ node = nodes.VolumeCube(density=None, background=None, min=None, max=None, resol
 
 #### Output sockets:
 
-- **volume** : [Volume](Volume)
+- **volume** : [Volume](Volume.md)
 

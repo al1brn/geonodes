@@ -23,5 +23,5 @@ node = nodes.ScaleInstances(instances=None, selection=None, scale=None, center=N
 
 #### Output sockets:
 
-- **instances** : [Instances](Instances)
+- **instances** : [Instances](Instances.md)
 

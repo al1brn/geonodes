@@ -20,5 +20,5 @@ node = nodes.SplitEdges(mesh=None, selection=None)
 
 #### Output sockets:
 
-- **mesh** : [Mesh](Mesh)
+- **mesh** : [Mesh](Mesh.md)
 

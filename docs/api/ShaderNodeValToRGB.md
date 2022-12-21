@@ -19,6 +19,6 @@ node = nodes.ColorRamp(fac=None)
 
 #### Output sockets:
 
-- **color** : [Color](Color)
-- **alpha** : [Float](Float)
+- **color** : [Color](Color.md)
+- **alpha** : [Float](Float.md)
 

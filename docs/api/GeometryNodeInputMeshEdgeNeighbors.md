@@ -15,5 +15,5 @@ node = nodes.EdgeNeighbors()
 
 #### Output sockets:
 
-- **face_count** : [Integer](Integer)
+- **face_count** : [Integer](Integer.md)
 

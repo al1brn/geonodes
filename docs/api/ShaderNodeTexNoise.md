@@ -28,6 +28,6 @@ node = nodes.NoiseTexture(vector=None, w=None, scale=None, detail=None, roughnes
 
 #### Output sockets:
 
-- **fac** : [Float](Float)
-- **color** : [Color](Color)
+- **fac** : [Float](Float.md)
+- **color** : [Color](Color.md)
 

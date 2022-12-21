@@ -15,5 +15,5 @@ node = nodes.Material()
 
 #### Output sockets:
 
-- **material** : [Material](Material)
+- **material** : [Material](Material.md)
 

@@ -30,9 +30,9 @@ node = nodes.SampleCurve(curves=None, value=None, factor=None, length=None, curv
 #### Output sockets:
 
 - **value** : ``data_type`` dependant
-- **position** : [Vector](Vector)
-- **tangent** : [Vector](Vector)
-- **normal** : [Vector](Vector)
+- **position** : [Vector](Vector.md)
+- **tangent** : [Vector](Vector.md)
+- **normal** : [Vector](Vector.md)
 
 #### Shared sockets:
 

@@ -19,5 +19,5 @@ node = nodes.Reroute(input=None)
 
 #### Output sockets:
 
-- **output** : [Color](Color)
+- **output** : [Color](Color.md)
 

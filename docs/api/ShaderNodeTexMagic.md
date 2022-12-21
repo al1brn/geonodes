@@ -25,6 +25,6 @@ node = nodes.MagicTexture(vector=None, scale=None, distortion=None, turbulence_d
 
 #### Output sockets:
 
-- **color** : [Color](Color)
-- **fac** : [Float](Float)
+- **color** : [Color](Color.md)
+- **fac** : [Float](Float.md)
 

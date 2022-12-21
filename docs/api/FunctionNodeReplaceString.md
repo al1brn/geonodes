@@ -21,5 +21,5 @@ node = nodes.ReplaceString(string=None, find=None, replace=None)
 
 #### Output sockets:
 
-- **string** : [String](String)
+- **string** : [String](String.md)
 

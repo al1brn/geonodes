@@ -21,6 +21,6 @@ node = nodes.CornersOfVertex(vertex_index=None, weights=None, sort_index=None)
 
 #### Output sockets:
 
-- **corner_index** : [Integer](Integer)
-- **total** : [Integer](Integer)
+- **corner_index** : [Integer](Integer.md)
+- **total** : [Integer](Integer.md)
 

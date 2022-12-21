@@ -19,5 +19,5 @@ node = nodes.FaceSetBoundaries(face_set=None)
 
 #### Output sockets:
 
-- **boundary_edges** : [Boolean](Boolean)
+- **boundary_edges** : [Boolean](Boolean.md)
 

@@ -20,6 +20,6 @@ node = nodes.ShortestEdgePaths(end_vertex=None, edge_cost=None)
 
 #### Output sockets:
 
-- **next_vertex_index** : [Integer](Integer)
-- **total_cost** : [Float](Float)
+- **next_vertex_index** : [Integer](Integer.md)
+- **total_cost** : [Float](Float.md)
 

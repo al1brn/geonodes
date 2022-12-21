@@ -29,5 +29,5 @@ node = nodes.MeshToVolume(mesh=None, density=None, voxel_size=None, voxel_amount
 
 #### Output sockets:
 
-- **volume** : [Volume](Volume)
+- **volume** : [Volume](Volume.md)
 

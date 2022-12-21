@@ -15,5 +15,5 @@ node = nodes.Value()
 
 #### Output sockets:
 
-- **value** : [Float](Float)
+- **value** : [Float](Float.md)
 

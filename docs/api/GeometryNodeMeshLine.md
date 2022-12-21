@@ -27,5 +27,5 @@ node = nodes.MeshLine(count=None, resolution=None, start_location=None, offset=N
 
 #### Output sockets:
 
-- **mesh** : [Mesh](Mesh)
+- **mesh** : [Mesh](Mesh.md)
 

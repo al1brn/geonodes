@@ -23,5 +23,5 @@ node = nodes.FloatToInteger(float=None, rounding_mode='ROUND')
 
 #### Output sockets:
 
-- **integer** : [Integer](Integer)
+- **integer** : [Integer](Integer.md)
 

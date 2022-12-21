@@ -25,5 +25,5 @@ node = nodes.SetHandleType(curve=None, selection=None, handle_type='AUTO', mode=
 
 #### Output sockets:
 
-- **curve** : [Curve](Curve)
+- **curve** : [Curve](Curve.md)
 

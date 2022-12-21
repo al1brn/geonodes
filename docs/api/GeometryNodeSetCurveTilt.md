@@ -21,5 +21,5 @@ node = nodes.SetCurveTilt(curve=None, selection=None, tilt=None)
 
 #### Output sockets:
 
-- **curve** : [Curve](Curve)
+- **curve** : [Curve](Curve.md)
 

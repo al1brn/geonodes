@@ -26,5 +26,5 @@ node = nodes.Triangulate(mesh=None, selection=None, minimum_vertices=None, ngon_
 
 #### Output sockets:
 
-- **mesh** : [Mesh](Mesh)
+- **mesh** : [Mesh](Mesh.md)
 

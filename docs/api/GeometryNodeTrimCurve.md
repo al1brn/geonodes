@@ -27,5 +27,5 @@ node = nodes.TrimCurve(curve=None, start0=None, start1=None, end0=None, end1=Non
 
 #### Output sockets:
 
-- **curve** : [Curve](Curve)
+- **curve** : [Curve](Curve.md)
 

@@ -26,6 +26,6 @@ node = nodes.MeshBoolean(*mesh_2, mesh_1=None, self_intersection=None, hole_tole
 
 #### Output sockets:
 
-- **mesh** : [Mesh](Mesh)
-- **intersecting_edges** : [Boolean](Boolean)
+- **mesh** : [Mesh](Mesh.md)
+- **intersecting_edges** : [Boolean](Boolean.md)
 

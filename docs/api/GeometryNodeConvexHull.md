@@ -19,5 +19,5 @@ node = nodes.ConvexHull(geometry=None)
 
 #### Output sockets:
 
-- **convex_hull** : [Geometry](Geometry)
+- **convex_hull** : [Geometry](Geometry.md)
 

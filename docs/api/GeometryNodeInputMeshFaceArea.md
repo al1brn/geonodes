@@ -15,5 +15,5 @@ node = nodes.FaceArea()
 
 #### Output sockets:
 
-- **area** : [Float](Float)
+- **area** : [Float](Float.md)
 

@@ -21,5 +21,5 @@ node = nodes.UvSphere(segments=None, rings=None, radius=None)
 
 #### Output sockets:
 
-- **mesh** : [Mesh](Mesh)
+- **mesh** : [Mesh](Mesh.md)
 

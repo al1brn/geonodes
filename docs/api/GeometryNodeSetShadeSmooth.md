@@ -21,5 +21,5 @@ node = nodes.SetShadeSmooth(geometry=None, selection=None, shade_smooth=None)
 
 #### Output sockets:
 
-- **geometry** : [Geometry](Geometry)
+- **geometry** : [Geometry](Geometry.md)
 

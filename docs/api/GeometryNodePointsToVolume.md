@@ -27,5 +27,5 @@ node = nodes.PointsToVolume(points=None, density=None, voxel_size=None, voxel_am
 
 #### Output sockets:
 
-- **volume** : [Volume](Volume)
+- **volume** : [Volume](Volume.md)
 

@@ -27,6 +27,6 @@ node = nodes.CurveCircle(resolution=None, point_1=None, point_2=None, point_3=No
 
 #### Output sockets:
 
-- **curve** : [Curve](Curve)
-- **center** : [Vector](Vector)
+- **curve** : [Curve](Curve.md)
+- **center** : [Vector](Vector.md)
 

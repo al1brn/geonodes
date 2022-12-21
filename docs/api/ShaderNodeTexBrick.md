@@ -35,6 +35,6 @@ node = nodes.BrickTexture(vector=None, color1=None, color2=None, mortar=None, sc
 
 #### Output sockets:
 
-- **color** : [Color](Color)
-- **fac** : [Float](Float)
+- **color** : [Color](Color.md)
+- **fac** : [Float](Float.md)
 

@@ -15,5 +15,5 @@ node = nodes.Normal()
 
 #### Output sockets:
 
-- **normal** : [Vector](Vector)
+- **normal** : [Vector](Vector.md)
 

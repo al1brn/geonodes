@@ -26,5 +26,5 @@ node = nodes.SetHandlePositions(curve=None, selection=None, position=None, offse
 
 #### Output sockets:
 
-- **curve** : [Curve](Curve)
+- **curve** : [Curve](Curve.md)
 

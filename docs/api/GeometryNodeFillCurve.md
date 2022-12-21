@@ -23,5 +23,5 @@ node = nodes.FillCurve(curve=None, mode='TRIANGLES')
 
 #### Output sockets:
 
-- **mesh** : [Mesh](Mesh)
+- **mesh** : [Mesh](Mesh.md)
 

@@ -22,5 +22,5 @@ node = nodes.InstancesToPoints(instances=None, selection=None, position=None, ra
 
 #### Output sockets:
 
-- **points** : [Points](Points)
+- **points** : [Points](Points.md)
 

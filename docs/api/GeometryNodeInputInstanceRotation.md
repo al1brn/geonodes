@@ -15,5 +15,5 @@ node = nodes.InstanceRotation()
 
 #### Output sockets:
 
-- **rotation** : [Vector](Vector)
+- **rotation** : [Vector](Vector.md)
 

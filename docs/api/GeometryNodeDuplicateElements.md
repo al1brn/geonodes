@@ -25,6 +25,6 @@ node = nodes.DuplicateElements(geometry=None, selection=None, amount=None, domai
 
 #### Output sockets:
 
-- **geometry** : [Geometry](Geometry)
-- **duplicate_index** : [Integer](Integer)
+- **geometry** : [Geometry](Geometry.md)
+- **duplicate_index** : [Integer](Integer.md)
 
