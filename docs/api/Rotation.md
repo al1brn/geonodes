@@ -21,7 +21,7 @@
 def AxisAngle(cls, rotation=None, axis=None, angle=None, space='OBJECT'):
 
 ```
-Node [Rotate Euler](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotate_euler.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeRotateEuler.html) )
+> Node: [Rotate Euler](FunctionNodeRotateEuler.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotate_euler.html) - [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeRotateEuler.html)
 
 #### Args:
 - rotation: Vector
@@ -40,7 +40,7 @@ Node [Rotate Euler](https://docs.blender.org/manual/en/latest/modeling/geometry_
 def Euler(cls, rotation=None, rotate_by=None, space='OBJECT'):
 
 ```
-Node [Rotate Euler](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotate_euler.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeRotateEuler.html) )
+> Node: [Rotate Euler](FunctionNodeRotateEuler.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotate_euler.html) - [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeRotateEuler.html)
 
 #### Args:
 - rotation: Vector
@@ -58,7 +58,7 @@ Node [Rotate Euler](https://docs.blender.org/manual/en/latest/modeling/geometry_
 def align_to_vector(self, factor=None, vector=None, axis='X', pivot_axis='AUTO'):
 
 ```
-Node [Align Euler to Vector](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/align_euler_to_vector.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeAlignEulerToVector.html) )
+> Node: [Align Euler to Vector](FunctionNodeAlignEulerToVector.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/align_euler_to_vector.html) - [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeAlignEulerToVector.html)
 
 #### Args:
 - factor: Float
@@ -77,7 +77,7 @@ Node [Align Euler to Vector](https://docs.blender.org/manual/en/latest/modeling/
 def rotate_axis_angle(self, axis=None, angle=None, space='OBJECT'):
 
 ```
-Node [Rotate Euler](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotate_euler.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeRotateEuler.html) )
+> Node: [Rotate Euler](FunctionNodeRotateEuler.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotate_euler.html) - [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeRotateEuler.html)
 
 #### Args:
 - axis: Vector
@@ -95,7 +95,7 @@ Node [Rotate Euler](https://docs.blender.org/manual/en/latest/modeling/geometry_
 def rotate_euler(self, rotate_by=None, space='OBJECT'):
 
 ```
-Node [Rotate Euler](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotate_euler.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeRotateEuler.html) )
+> Node: [Rotate Euler](FunctionNodeRotateEuler.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotate_euler.html) - [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeRotateEuler.html)
 
 #### Args:
 - rotate_by: Vector

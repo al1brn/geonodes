@@ -23,7 +23,7 @@
 def __len__(self):
 
 ```
-Node [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html) )
+> Node: [Domain Size](GeometryNodeAttributeDomainSize.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html)
 
 #### Args:
 - geometry: Geometry
@@ -40,7 +40,7 @@ Node [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 def rotate(self, rotation=None, pivot_point=None, local_space=None):
 
 ```
-Node [Rotate Instances](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/rotate_instances.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeRotateInstances.html) )
+> Node: [Rotate Instances](GeometryNodeRotateInstances.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/rotate_instances.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeRotateInstances.html)
 
 #### Args:
 - rotation: Vector
@@ -58,7 +58,7 @@ Node [Rotate Instances](https://docs.blender.org/manual/en/latest/modeling/geome
 def rotation(self):
 
 ```
-Node [Instance Rotation](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instance_rotation.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputInstanceRotation.html) )
+> Node: [Instance Rotation](GeometryNodeInputInstanceRotation.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instance_rotation.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputInstanceRotation.html)
 
 #### Returns:
 - socket `rotation`
@@ -71,7 +71,7 @@ Node [Instance Rotation](https://docs.blender.org/manual/en/latest/modeling/geom
 def scale(self):
 
 ```
-Node [Instance Scale](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instance_scale.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputInstanceScale.html) )
+> Node: [Instance Scale](GeometryNodeInputInstanceScale.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instance_scale.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputInstanceScale.html)
 
 #### Returns:
 - socket `scale`
@@ -84,7 +84,7 @@ Node [Instance Scale](https://docs.blender.org/manual/en/latest/modeling/geometr
 def set_scale(self, scale=None, center=None, local_space=None):
 
 ```
-Node [Scale Instances](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/scale_instances.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeScaleInstances.html) )
+> Node: [Scale Instances](GeometryNodeScaleInstances.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/scale_instances.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeScaleInstances.html)
 
 #### Args:
 - scale: Vector
@@ -102,7 +102,7 @@ Node [Scale Instances](https://docs.blender.org/manual/en/latest/modeling/geomet
 def to_points(self, position=None, radius=None):
 
 ```
-Node [Instances to Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instances_to_points.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInstancesToPoints.html) )
+> Node: [Instances to Points](GeometryNodeInstancesToPoints.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instances_to_points.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInstancesToPoints.html)
 
 #### Args:
 - position: Vector
@@ -119,7 +119,7 @@ Node [Instances to Points](https://docs.blender.org/manual/en/latest/modeling/ge
 def translate(self, translation=None, local_space=None):
 
 ```
-Node [Translate Instances](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/translate_instances.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeTranslateInstances.html) )
+> Node: [Translate Instances](GeometryNodeTranslateInstances.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/translate_instances.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeTranslateInstances.html)
 
 #### Args:
 - translation: Vector

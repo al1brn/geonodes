@@ -39,7 +39,7 @@ The initial value can be either a valid Blender Material or the name of an exist
 def Material(cls):
 
 ```
-Node [Material](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/material.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMaterial.html) )
+> Node: [Material](GeometryNodeInputMaterial.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/material.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMaterial.html)
 
 #### Returns:
 - socket `material`
@@ -52,7 +52,7 @@ Node [Material](https://docs.blender.org/manual/en/latest/modeling/geometry_node
 def switch(self, switch=None, true=None):
 
 ```
-Node [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html) )
+> Node: [Switch](GeometryNodeSwitch.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
 
 #### Args:
 - switch: Boolean

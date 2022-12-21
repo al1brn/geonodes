@@ -77,7 +77,7 @@ The initial value can be either a valid Blender Texture or the name of an existi
 def brick(vector=None, color1=None, color2=None, mortar=None, scale=None, mortar_size=None, mortar_smooth=None, bias=None, brick_width=None, row_height=None, offset=0.5, offset_frequency=2, squash=1.0, squash_frequency=2):
 
 ```
-Node [Brick Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/brick.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexBrick.html) )
+> Node: [Brick Texture](ShaderNodeTexBrick.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/brick.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexBrick.html)
 
 #### Args:
 - vector: Vector
@@ -106,7 +106,7 @@ Node [Brick Texture](https://docs.blender.org/manual/en/latest/modeling/geometry
 def checker(vector=None, color1=None, color2=None, scale=None):
 
 ```
-Node [Checker Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/checker.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexChecker.html) )
+> Node: [Checker Texture](ShaderNodeTexChecker.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/checker.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexChecker.html)
 
 #### Args:
 - vector: Vector
@@ -125,7 +125,7 @@ Node [Checker Texture](https://docs.blender.org/manual/en/latest/modeling/geomet
 def gradient(vector=None, gradient_type='LINEAR'):
 
 ```
-Node [Gradient Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/gradient.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexGradient.html) )
+> Node: [Gradient Texture](ShaderNodeTexGradient.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/gradient.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexGradient.html)
 
 #### Args:
 - vector: Vector
@@ -142,7 +142,7 @@ Node [Gradient Texture](https://docs.blender.org/manual/en/latest/modeling/geome
 def gradient_diagonal(vector=None):
 
 ```
-Node [Gradient Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/gradient.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexGradient.html) )
+> Node: [Gradient Texture](ShaderNodeTexGradient.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/gradient.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexGradient.html)
 
 #### Args:
 - vector: Vector
@@ -158,7 +158,7 @@ Node [Gradient Texture](https://docs.blender.org/manual/en/latest/modeling/geome
 def gradient_easing(vector=None):
 
 ```
-Node [Gradient Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/gradient.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexGradient.html) )
+> Node: [Gradient Texture](ShaderNodeTexGradient.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/gradient.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexGradient.html)
 
 #### Args:
 - vector: Vector
@@ -174,7 +174,7 @@ Node [Gradient Texture](https://docs.blender.org/manual/en/latest/modeling/geome
 def gradient_linear(vector=None):
 
 ```
-Node [Gradient Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/gradient.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexGradient.html) )
+> Node: [Gradient Texture](ShaderNodeTexGradient.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/gradient.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexGradient.html)
 
 #### Args:
 - vector: Vector
@@ -190,7 +190,7 @@ Node [Gradient Texture](https://docs.blender.org/manual/en/latest/modeling/geome
 def gradient_quadratic(vector=None):
 
 ```
-Node [Gradient Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/gradient.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexGradient.html) )
+> Node: [Gradient Texture](ShaderNodeTexGradient.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/gradient.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexGradient.html)
 
 #### Args:
 - vector: Vector
@@ -206,7 +206,7 @@ Node [Gradient Texture](https://docs.blender.org/manual/en/latest/modeling/geome
 def gradient_quadratic_sphere(vector=None):
 
 ```
-Node [Gradient Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/gradient.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexGradient.html) )
+> Node: [Gradient Texture](ShaderNodeTexGradient.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/gradient.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexGradient.html)
 
 #### Args:
 - vector: Vector
@@ -222,7 +222,7 @@ Node [Gradient Texture](https://docs.blender.org/manual/en/latest/modeling/geome
 def gradient_radial(vector=None):
 
 ```
-Node [Gradient Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/gradient.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexGradient.html) )
+> Node: [Gradient Texture](ShaderNodeTexGradient.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/gradient.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexGradient.html)
 
 #### Args:
 - vector: Vector
@@ -238,7 +238,7 @@ Node [Gradient Texture](https://docs.blender.org/manual/en/latest/modeling/geome
 def gradient_spherical(vector=None):
 
 ```
-Node [Gradient Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/gradient.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexGradient.html) )
+> Node: [Gradient Texture](ShaderNodeTexGradient.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/gradient.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexGradient.html)
 
 #### Args:
 - vector: Vector
@@ -254,7 +254,7 @@ Node [Gradient Texture](https://docs.blender.org/manual/en/latest/modeling/geome
 def image(image=None, vector=None, frame=None, extension='REPEAT', interpolation='Linear'):
 
 ```
-Node [Image Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/image.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeImageTexture.html) )
+> Node: [Image Texture](GeometryNodeImageTexture.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/image.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeImageTexture.html)
 
 #### Args:
 - image: Image
@@ -274,7 +274,7 @@ Node [Image Texture](https://docs.blender.org/manual/en/latest/modeling/geometry
 def magic(vector=None, scale=None, distortion=None, turbulence_depth=2):
 
 ```
-Node [Magic Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/magic.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexMagic.html) )
+> Node: [Magic Texture](ShaderNodeTexMagic.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/magic.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexMagic.html)
 
 #### Args:
 - vector: Vector
@@ -293,7 +293,7 @@ Node [Magic Texture](https://docs.blender.org/manual/en/latest/modeling/geometry
 def musgrave(vector=None, w=None, scale=None, detail=None, dimension=None, lacunarity=None, offset=None, gain=None, musgrave_dimensions='3D', musgrave_type='FBM'):
 
 ```
-Node [Musgrave Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/musgrave.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexMusgrave.html) )
+> Node: [Musgrave Texture](ShaderNodeTexMusgrave.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/musgrave.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexMusgrave.html)
 
 #### Args:
 - vector: Vector
@@ -318,7 +318,7 @@ Node [Musgrave Texture](https://docs.blender.org/manual/en/latest/modeling/geome
 def noise(vector=None, w=None, scale=None, detail=None, roughness=None, distortion=None, noise_dimensions='3D'):
 
 ```
-Node [Noise Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/noise.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexNoise.html) )
+> Node: [Noise Texture](ShaderNodeTexNoise.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/noise.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexNoise.html)
 
 #### Args:
 - vector: Vector
@@ -340,7 +340,7 @@ Node [Noise Texture](https://docs.blender.org/manual/en/latest/modeling/geometry
 def noise_1D(w=None, scale=None, detail=None, roughness=None, distortion=None):
 
 ```
-Node [Noise Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/noise.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexNoise.html) )
+> Node: [Noise Texture](ShaderNodeTexNoise.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/noise.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexNoise.html)
 
 #### Args:
 - w: Float
@@ -360,7 +360,7 @@ Node [Noise Texture](https://docs.blender.org/manual/en/latest/modeling/geometry
 def noise_2D(vector=None, scale=None, detail=None, roughness=None, distortion=None):
 
 ```
-Node [Noise Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/noise.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexNoise.html) )
+> Node: [Noise Texture](ShaderNodeTexNoise.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/noise.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexNoise.html)
 
 #### Args:
 - vector: Vector
@@ -380,7 +380,7 @@ Node [Noise Texture](https://docs.blender.org/manual/en/latest/modeling/geometry
 def noise_3D(vector=None, scale=None, detail=None, roughness=None, distortion=None):
 
 ```
-Node [Noise Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/noise.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexNoise.html) )
+> Node: [Noise Texture](ShaderNodeTexNoise.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/noise.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexNoise.html)
 
 #### Args:
 - vector: Vector
@@ -400,7 +400,7 @@ Node [Noise Texture](https://docs.blender.org/manual/en/latest/modeling/geometry
 def noise_4D(vector=None, w=None, scale=None, detail=None, roughness=None, distortion=None):
 
 ```
-Node [Noise Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/noise.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexNoise.html) )
+> Node: [Noise Texture](ShaderNodeTexNoise.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/noise.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexNoise.html)
 
 #### Args:
 - vector: Vector
@@ -421,7 +421,7 @@ Node [Noise Texture](https://docs.blender.org/manual/en/latest/modeling/geometry
 def switch(self, switch=None, true=None):
 
 ```
-Node [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html) )
+> Node: [Switch](GeometryNodeSwitch.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
 
 #### Args:
 - switch: Boolean
@@ -438,7 +438,7 @@ Node [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/
 def voronoi(vector=None, w=None, scale=None, smoothness=None, exponent=None, randomness=None, distance='EUCLIDEAN', feature='F1', voronoi_dimensions='3D'):
 
 ```
-Node [Voronoi Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/voronoi.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexVoronoi.html) )
+> Node: [Voronoi Texture](ShaderNodeTexVoronoi.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/voronoi.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexVoronoi.html)
 
 #### Args:
 - vector: Vector
@@ -462,7 +462,7 @@ Node [Voronoi Texture](https://docs.blender.org/manual/en/latest/modeling/geomet
 def voronoi_1D(w=None, scale=None, smoothness=None, exponent=None, randomness=None, distance='EUCLIDEAN', feature='F1', voronoi_dimensions='3D'):
 
 ```
-Node [Voronoi Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/voronoi.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexVoronoi.html) )
+> Node: [Voronoi Texture](ShaderNodeTexVoronoi.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/voronoi.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexVoronoi.html)
 
 #### Args:
 - w: Float
@@ -485,7 +485,7 @@ Node [Voronoi Texture](https://docs.blender.org/manual/en/latest/modeling/geomet
 def voronoi_2D(vector=None, scale=None, smoothness=None, exponent=None, randomness=None, distance='EUCLIDEAN', feature='F1', voronoi_dimensions='3D'):
 
 ```
-Node [Voronoi Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/voronoi.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexVoronoi.html) )
+> Node: [Voronoi Texture](ShaderNodeTexVoronoi.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/voronoi.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexVoronoi.html)
 
 #### Args:
 - vector: Vector
@@ -508,7 +508,7 @@ Node [Voronoi Texture](https://docs.blender.org/manual/en/latest/modeling/geomet
 def voronoi_3D(vector=None, scale=None, smoothness=None, exponent=None, randomness=None, distance='EUCLIDEAN', feature='F1', voronoi_dimensions='3D'):
 
 ```
-Node [Voronoi Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/voronoi.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexVoronoi.html) )
+> Node: [Voronoi Texture](ShaderNodeTexVoronoi.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/voronoi.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexVoronoi.html)
 
 #### Args:
 - vector: Vector
@@ -531,7 +531,7 @@ Node [Voronoi Texture](https://docs.blender.org/manual/en/latest/modeling/geomet
 def voronoi_4D(vector=None, w=None, scale=None, smoothness=None, exponent=None, randomness=None, distance='EUCLIDEAN', feature='F1', voronoi_dimensions='3D'):
 
 ```
-Node [Voronoi Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/voronoi.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexVoronoi.html) )
+> Node: [Voronoi Texture](ShaderNodeTexVoronoi.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/voronoi.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexVoronoi.html)
 
 #### Args:
 - vector: Vector
@@ -555,7 +555,7 @@ Node [Voronoi Texture](https://docs.blender.org/manual/en/latest/modeling/geomet
 def wave(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, bands_direction='X', rings_direction='X', wave_profile='SIN', wave_type='BANDS'):
 
 ```
-Node [Wave Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/wave.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWave.html) )
+> Node: [Wave Texture](ShaderNodeTexWave.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/wave.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWave.html)
 
 #### Args:
 - vector: Vector
@@ -581,7 +581,7 @@ Node [Wave Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_
 def wave_bands(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X', wave_profile='SIN'):
 
 ```
-Node [Wave Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/wave.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWave.html) )
+> Node: [Wave Texture](ShaderNodeTexWave.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/wave.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWave.html)
 
 #### Args:
 - vector: Vector
@@ -605,7 +605,7 @@ Node [Wave Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_
 def wave_bands_saw(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X'):
 
 ```
-Node [Wave Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/wave.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWave.html) )
+> Node: [Wave Texture](ShaderNodeTexWave.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/wave.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWave.html)
 
 #### Args:
 - vector: Vector
@@ -628,7 +628,7 @@ Node [Wave Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_
 def wave_bands_sine(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X'):
 
 ```
-Node [Wave Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/wave.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWave.html) )
+> Node: [Wave Texture](ShaderNodeTexWave.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/wave.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWave.html)
 
 #### Args:
 - vector: Vector
@@ -651,7 +651,7 @@ Node [Wave Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_
 def wave_bands_triangle(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X'):
 
 ```
-Node [Wave Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/wave.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWave.html) )
+> Node: [Wave Texture](ShaderNodeTexWave.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/wave.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWave.html)
 
 #### Args:
 - vector: Vector
@@ -674,7 +674,7 @@ Node [Wave Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_
 def wave_rings(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X', wave_profile='SIN'):
 
 ```
-Node [Wave Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/wave.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWave.html) )
+> Node: [Wave Texture](ShaderNodeTexWave.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/wave.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWave.html)
 
 #### Args:
 - vector: Vector
@@ -698,7 +698,7 @@ Node [Wave Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_
 def wave_rings_saw(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X'):
 
 ```
-Node [Wave Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/wave.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWave.html) )
+> Node: [Wave Texture](ShaderNodeTexWave.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/wave.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWave.html)
 
 #### Args:
 - vector: Vector
@@ -721,7 +721,7 @@ Node [Wave Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_
 def wave_rings_sine(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X'):
 
 ```
-Node [Wave Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/wave.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWave.html) )
+> Node: [Wave Texture](ShaderNodeTexWave.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/wave.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWave.html)
 
 #### Args:
 - vector: Vector
@@ -744,7 +744,7 @@ Node [Wave Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_
 def wave_rings_triangle(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X'):
 
 ```
-Node [Wave Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/wave.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWave.html) )
+> Node: [Wave Texture](ShaderNodeTexWave.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/wave.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWave.html)
 
 #### Args:
 - vector: Vector
@@ -767,7 +767,7 @@ Node [Wave Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_
 def white_noise(vector=None, w=None, noise_dimensions='3D'):
 
 ```
-Node [White Noise Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/white_noise.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWhiteNoise.html) )
+> Node: [White Noise Texture](ShaderNodeTexWhiteNoise.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/white_noise.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWhiteNoise.html)
 
 #### Args:
 - vector: Vector
@@ -785,7 +785,7 @@ Node [White Noise Texture](https://docs.blender.org/manual/en/latest/modeling/ge
 def white_noise_1D(w=None):
 
 ```
-Node [White Noise Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/white_noise.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWhiteNoise.html) )
+> Node: [White Noise Texture](ShaderNodeTexWhiteNoise.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/white_noise.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWhiteNoise.html)
 
 #### Args:
 - w: Float
@@ -801,7 +801,7 @@ Node [White Noise Texture](https://docs.blender.org/manual/en/latest/modeling/ge
 def white_noise_2D(vector=None):
 
 ```
-Node [White Noise Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/white_noise.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWhiteNoise.html) )
+> Node: [White Noise Texture](ShaderNodeTexWhiteNoise.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/white_noise.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWhiteNoise.html)
 
 #### Args:
 - vector: Vector
@@ -817,7 +817,7 @@ Node [White Noise Texture](https://docs.blender.org/manual/en/latest/modeling/ge
 def white_noise_3D(vector=None):
 
 ```
-Node [White Noise Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/white_noise.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWhiteNoise.html) )
+> Node: [White Noise Texture](ShaderNodeTexWhiteNoise.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/white_noise.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWhiteNoise.html)
 
 #### Args:
 - vector: Vector
@@ -833,7 +833,7 @@ Node [White Noise Texture](https://docs.blender.org/manual/en/latest/modeling/ge
 def white_noise_4D(vector=None, w=None):
 
 ```
-Node [White Noise Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/white_noise.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWhiteNoise.html) )
+> Node: [White Noise Texture](ShaderNodeTexWhiteNoise.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/white_noise.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWhiteNoise.html)
 
 #### Args:
 - vector: Vector

@@ -39,7 +39,7 @@ The initial value can be either a valid Blender Image or the name of an existing
 def switch(self, switch=None, true=None):
 
 ```
-Node [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html) )
+> Node: [Switch](GeometryNodeSwitch.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
 
 #### Args:
 - switch: Boolean
@@ -56,7 +56,7 @@ Node [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/
 def texture(self, vector=None, frame=None, extension='REPEAT', interpolation='Linear'):
 
 ```
-Node [Image Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/image.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeImageTexture.html) )
+> Node: [Image Texture](GeometryNodeImageTexture.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/image.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeImageTexture.html)
 
 #### Args:
 - vector: Vector

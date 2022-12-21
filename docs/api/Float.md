@@ -105,7 +105,7 @@
 def Frame(cls):
 
 ```
-Node [Scene Time](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/scene_time.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputSceneTime.html) )
+> Node: [Scene Time](GeometryNodeInputSceneTime.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/scene_time.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputSceneTime.html)
 
 #### Returns:
 - socket `frame`
@@ -139,7 +139,7 @@ Even if homonyms are accepted, it is recommended to avoid to create to input soc
 def Seconds(cls):
 
 ```
-Node [Scene Time](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/scene_time.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputSceneTime.html) )
+> Node: [Scene Time](GeometryNodeInputSceneTime.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/scene_time.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputSceneTime.html)
 
 #### Returns:
 - socket `seconds`
@@ -152,7 +152,7 @@ Node [Scene Time](https://docs.blender.org/manual/en/latest/modeling/geometry_no
 def Value(cls):
 
 ```
-Node [Value](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/value.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeValue.html) )
+> Node: [Value](ShaderNodeValue.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/value.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeValue.html)
 
 #### Returns:
 - socket `value`
@@ -165,7 +165,7 @@ Node [Value](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/i
 def abs(self, clamp=False):
 
 ```
-Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
+> Node: [Math](ShaderNodeMath.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
 #### Args:
 - clamp (bool): False
@@ -181,7 +181,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 def absolute(self, clamp=False):
 
 ```
-Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
+> Node: [Math](ShaderNodeMath.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
 #### Args:
 - clamp (bool): False
@@ -197,7 +197,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 def add(self, value):
 
 ```
-Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
+> Node: [Math](ShaderNodeMath.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
 #### Args:
 - value: Float or Integer or Vector
@@ -213,7 +213,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 def arccos(self, value=None, clamp=False):
 
 ```
-Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
+> Node: [Math](ShaderNodeMath.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
 #### Args:
 - value: Float
@@ -230,7 +230,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 def arccosine(self, value=None, clamp=False):
 
 ```
-Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
+> Node: [Math](ShaderNodeMath.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
 #### Args:
 - value: Float
@@ -247,7 +247,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 def arcsin(self, value=None, clamp=False):
 
 ```
-Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
+> Node: [Math](ShaderNodeMath.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
 #### Args:
 - value: Float
@@ -264,7 +264,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 def arcsine(self, value=None, clamp=False):
 
 ```
-Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
+> Node: [Math](ShaderNodeMath.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
 #### Args:
 - value: Float
@@ -281,7 +281,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 def arctan(self, value=None, clamp=False):
 
 ```
-Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
+> Node: [Math](ShaderNodeMath.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
 #### Args:
 - value: Float
@@ -298,7 +298,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 def arctan2(self, value1=None, clamp=False):
 
 ```
-Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
+> Node: [Math](ShaderNodeMath.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
 #### Args:
 - value1: Float
@@ -315,7 +315,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 def arctangent(self, value=None, clamp=False):
 
 ```
-Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
+> Node: [Math](ShaderNodeMath.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
 #### Args:
 - value: Float
@@ -332,7 +332,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 def ceiling(self):
 
 ```
-Node [Float to Integer](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/float_to_integer.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeFloatToInt.html) )
+> Node: [Float to Integer](FunctionNodeFloatToInt.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/float_to_integer.html) - [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeFloatToInt.html)
 
 #### Returns:
 - socket `integer`
@@ -345,7 +345,7 @@ Node [Float to Integer](https://docs.blender.org/manual/en/latest/modeling/geome
 def clamp(self, min=None, max=None, clamp_type='MINMAX'):
 
 ```
-Node [Clamp](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/clamp.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeClamp.html) )
+> Node: [Clamp](ShaderNodeClamp.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/clamp.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeClamp.html)
 
 #### Args:
 - min: Float
@@ -363,7 +363,7 @@ Node [Clamp](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/u
 def clamp_min_max(self, min=None, max=None):
 
 ```
-Node [Clamp](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/clamp.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeClamp.html) )
+> Node: [Clamp](ShaderNodeClamp.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/clamp.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeClamp.html)
 
 #### Args:
 - min: Float
@@ -380,7 +380,7 @@ Node [Clamp](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/u
 def clamp_range(self, min=None, max=None):
 
 ```
-Node [Clamp](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/clamp.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeClamp.html) )
+> Node: [Clamp](ShaderNodeClamp.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/clamp.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeClamp.html)
 
 #### Args:
 - min: Float
@@ -397,7 +397,7 @@ Node [Clamp](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/u
 def color_ramp(self):
 
 ```
-Node [ColorRamp](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/color_ramp.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeValToRGB.html) )
+> Node: [ColorRamp](ShaderNodeValToRGB.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/color_ramp.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeValToRGB.html)
 
 #### Returns:
 - node with sockets ['color', 'alpha']
@@ -410,7 +410,7 @@ Node [ColorRamp](https://docs.blender.org/manual/en/latest/modeling/geometry_nod
 def compare(self, b=None, epsilon=None, operation='GREATER_THAN'):
 
 ```
-Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html) )
+> Node: [Compare](FunctionNodeCompare.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) - [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 
 #### Args:
 - b: ['Float', 'Integer', 'Vector', 'Color', 'String']
@@ -428,7 +428,7 @@ Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 def cos(self, value=None, clamp=False):
 
 ```
-Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
+> Node: [Math](ShaderNodeMath.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
 #### Args:
 - value: Float
@@ -445,7 +445,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 def cosh(self, value=None, clamp=False):
 
 ```
-Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
+> Node: [Math](ShaderNodeMath.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
 #### Args:
 - value: Float
@@ -462,7 +462,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 def cosine(self, value=None, clamp=False):
 
 ```
-Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
+> Node: [Math](ShaderNodeMath.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
 #### Args:
 - value: Float
@@ -479,7 +479,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 def multiply(self, value):
 
 ```
-Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
+> Node: [Math](ShaderNodeMath.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
 #### Args:
 - value: Float
@@ -495,7 +495,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 def multiply(self, value):
 
 ```
-Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
+> Node: [Math](ShaderNodeMath.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
 #### Args:
 - value: Float
@@ -511,7 +511,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 def equal(self, b=None, epsilon=None):
 
 ```
-Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html) )
+> Node: [Compare](FunctionNodeCompare.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) - [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 
 #### Args:
 - b: ['Float', 'Integer', 'Vector', 'Color', 'String']
@@ -528,7 +528,7 @@ Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 def exp(self, clamp=False):
 
 ```
-Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
+> Node: [Math](ShaderNodeMath.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
 #### Args:
 - clamp (bool): False
@@ -544,7 +544,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 def exponent(self, clamp=False):
 
 ```
-Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
+> Node: [Math](ShaderNodeMath.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
 #### Args:
 - clamp (bool): False
@@ -560,7 +560,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 def fact(self, clamp=False):
 
 ```
-Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
+> Node: [Math](ShaderNodeMath.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
 #### Args:
 - clamp (bool): False
@@ -576,7 +576,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 def float_curve(self, factor=None):
 
 ```
-Node [Float Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/float_curve.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeFloatCurve.html) )
+> Node: [Float Curve](ShaderNodeFloatCurve.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/float_curve.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeFloatCurve.html)
 
 #### Args:
 - factor: Float
@@ -592,7 +592,7 @@ Node [Float Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 def floor(self):
 
 ```
-Node [Float to Integer](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/float_to_integer.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeFloatToInt.html) )
+> Node: [Float to Integer](FunctionNodeFloatToInt.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/float_to_integer.html) - [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeFloatToInt.html)
 
 #### Returns:
 - socket `integer`
@@ -605,7 +605,7 @@ Node [Float to Integer](https://docs.blender.org/manual/en/latest/modeling/geome
 def fraction(self, clamp=False):
 
 ```
-Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
+> Node: [Math](ShaderNodeMath.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
 #### Args:
 - clamp (bool): False
@@ -621,7 +621,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 def greater_equal(self, b=None):
 
 ```
-Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html) )
+> Node: [Compare](FunctionNodeCompare.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) - [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 
 #### Args:
 - b: ['Float', 'Integer', 'Vector', 'Color', 'String']
@@ -637,7 +637,7 @@ Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 def greater_than(self, b=None):
 
 ```
-Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html) )
+> Node: [Compare](FunctionNodeCompare.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) - [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 
 #### Args:
 - b: ['Float', 'Integer', 'Vector', 'Color', 'String']
@@ -653,7 +653,7 @@ Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 def inverse_sqrt(self, clamp=False):
 
 ```
-Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
+> Node: [Math](ShaderNodeMath.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
 #### Args:
 - clamp (bool): False
@@ -669,7 +669,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 def less_equal(self, b=None):
 
 ```
-Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html) )
+> Node: [Compare](FunctionNodeCompare.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) - [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 
 #### Args:
 - b: ['Float', 'Integer', 'Vector', 'Color', 'String']
@@ -685,7 +685,7 @@ Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 def less_than(self, b=None):
 
 ```
-Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html) )
+> Node: [Compare](FunctionNodeCompare.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) - [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 
 #### Args:
 - b: ['Float', 'Integer', 'Vector', 'Color', 'String']
@@ -701,7 +701,7 @@ Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 def log(self, base=None, clamp=False):
 
 ```
-Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
+> Node: [Math](ShaderNodeMath.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
 #### Args:
 - base: Float
@@ -718,7 +718,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 def logarithm(self, base=None, clamp=False):
 
 ```
-Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
+> Node: [Math](ShaderNodeMath.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
 #### Args:
 - base: Float
@@ -735,7 +735,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 def map_range(self, from_min=None, from_max=None, to_min=None, to_max=None, steps=None, clamp=True, interpolation_type='LINEAR'):
 
 ```
-Node [Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/map_range.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMapRange.html) )
+> Node: [Map Range](ShaderNodeMapRange.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/map_range.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMapRange.html)
 
 #### Args:
 - from_min: ['Float', 'Vector']
@@ -757,7 +757,7 @@ Node [Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nod
 def map_range_linear(self, from_min=None, from_max=None, to_min=None, to_max=None, clamp=True):
 
 ```
-Node [Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/map_range.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMapRange.html) )
+> Node: [Map Range](ShaderNodeMapRange.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/map_range.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMapRange.html)
 
 #### Args:
 - from_min: ['Float', 'Vector']
@@ -777,7 +777,7 @@ Node [Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nod
 def map_range_smooth(self, from_min=None, from_max=None, to_min=None, to_max=None, clamp=True):
 
 ```
-Node [Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/map_range.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMapRange.html) )
+> Node: [Map Range](ShaderNodeMapRange.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/map_range.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMapRange.html)
 
 #### Args:
 - from_min: ['Float', 'Vector']
@@ -797,7 +797,7 @@ Node [Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nod
 def map_range_smoother(self, from_min=None, from_max=None, to_min=None, to_max=None, clamp=True):
 
 ```
-Node [Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/map_range.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMapRange.html) )
+> Node: [Map Range](ShaderNodeMapRange.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/map_range.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMapRange.html)
 
 #### Args:
 - from_min: ['Float', 'Vector']
@@ -817,7 +817,7 @@ Node [Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nod
 def map_range_stepped(self, from_min=None, from_max=None, to_min=None, to_max=None, steps=None, clamp=True):
 
 ```
-Node [Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/map_range.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMapRange.html) )
+> Node: [Map Range](ShaderNodeMapRange.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/map_range.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMapRange.html)
 
 #### Args:
 - from_min: ['Float', 'Vector']
@@ -838,7 +838,7 @@ Node [Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nod
 def math_ceil(self, clamp=False):
 
 ```
-Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
+> Node: [Math](ShaderNodeMath.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
 #### Args:
 - clamp (bool): False
@@ -854,7 +854,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 def math_compare(self, value=None, epsilon=None, clamp=False):
 
 ```
-Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
+> Node: [Math](ShaderNodeMath.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
 #### Args:
 - value: Float
@@ -872,7 +872,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 def math_floor(self, clamp=False):
 
 ```
-Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
+> Node: [Math](ShaderNodeMath.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
 #### Args:
 - clamp (bool): False
@@ -888,7 +888,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 def math_greater_than(self, threshold=None, clamp=False):
 
 ```
-Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
+> Node: [Math](ShaderNodeMath.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
 #### Args:
 - threshold: Float
@@ -905,7 +905,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 def math_less_than(self, threshold=None, clamp=False):
 
 ```
-Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
+> Node: [Math](ShaderNodeMath.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
 #### Args:
 - threshold: Float
@@ -922,7 +922,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 def math_round(self, clamp=False):
 
 ```
-Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
+> Node: [Math](ShaderNodeMath.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
 #### Args:
 - clamp (bool): False
@@ -938,7 +938,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 def math_trunc(self, clamp=False):
 
 ```
-Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
+> Node: [Math](ShaderNodeMath.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
 #### Args:
 - clamp (bool): False
@@ -954,7 +954,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 def math_truncate(self, clamp=False):
 
 ```
-Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
+> Node: [Math](ShaderNodeMath.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
 #### Args:
 - clamp (bool): False
@@ -970,7 +970,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 def max(self, value=None, clamp=False):
 
 ```
-Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
+> Node: [Math](ShaderNodeMath.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
 #### Args:
 - value: Float
@@ -987,7 +987,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 def maximum(self, value=None, clamp=False):
 
 ```
-Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
+> Node: [Math](ShaderNodeMath.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
 #### Args:
 - value: Float
@@ -1004,7 +1004,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 def min(self, value=None, clamp=False):
 
 ```
-Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
+> Node: [Math](ShaderNodeMath.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
 #### Args:
 - value: Float
@@ -1021,7 +1021,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 def minimum(self, value=None, clamp=False):
 
 ```
-Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
+> Node: [Math](ShaderNodeMath.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
 #### Args:
 - value: Float
@@ -1038,7 +1038,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 def mix(self, factor=None, value=None, clamp_factor=True):
 
 ```
-Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html) )
+> Node: [Mix](ShaderNodeMix.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
 
 #### Args:
 - factor: ['Float', 'Vector']
@@ -1056,7 +1056,7 @@ Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/col
 def modulo(self, value=None, clamp=False):
 
 ```
-Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
+> Node: [Math](ShaderNodeMath.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
 #### Args:
 - value: Float
@@ -1073,7 +1073,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 def multiply(self, value):
 
 ```
-Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
+> Node: [Math](ShaderNodeMath.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
 #### Args:
 - value: Float or Integer or Vector
@@ -1089,7 +1089,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 def mul_add(self, multiplier=None, addend=None, clamp=False):
 
 ```
-Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
+> Node: [Math](ShaderNodeMath.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
 #### Args:
 - multiplier: Float
@@ -1107,7 +1107,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 def multiply(self, value):
 
 ```
-Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
+> Node: [Math](ShaderNodeMath.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
 #### Args:
 - value: Float or Integer or Vector
@@ -1123,7 +1123,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 def multiply_add(self, multiplier=None, addend=None, clamp=False):
 
 ```
-Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
+> Node: [Math](ShaderNodeMath.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
 #### Args:
 - multiplier: Float
@@ -1141,7 +1141,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 def not_equal(self, b=None, epsilon=None):
 
 ```
-Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html) )
+> Node: [Compare](FunctionNodeCompare.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) - [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 
 #### Args:
 - b: ['Float', 'Integer', 'Vector', 'Color', 'String']
@@ -1158,7 +1158,7 @@ Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes
 def ping_pong(self, scale=None, clamp=False):
 
 ```
-Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
+> Node: [Math](ShaderNodeMath.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
 #### Args:
 - scale: Float
@@ -1175,7 +1175,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 def pow(self, exponent=None, clamp=False):
 
 ```
-Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
+> Node: [Math](ShaderNodeMath.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
 #### Args:
 - exponent: Float
@@ -1192,7 +1192,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 def power(self, exponent=None, clamp=False):
 
 ```
-Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
+> Node: [Math](ShaderNodeMath.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
 #### Args:
 - exponent: Float
@@ -1209,7 +1209,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 def round(self):
 
 ```
-Node [Float to Integer](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/float_to_integer.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeFloatToInt.html) )
+> Node: [Float to Integer](FunctionNodeFloatToInt.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/float_to_integer.html) - [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeFloatToInt.html)
 
 #### Returns:
 - socket `integer`
@@ -1222,7 +1222,7 @@ Node [Float to Integer](https://docs.blender.org/manual/en/latest/modeling/geome
 def sign(self, clamp=False):
 
 ```
-Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
+> Node: [Math](ShaderNodeMath.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
 #### Args:
 - clamp (bool): False
@@ -1238,7 +1238,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 def sin(self, value=None, clamp=False):
 
 ```
-Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
+> Node: [Math](ShaderNodeMath.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
 #### Args:
 - value: Float
@@ -1255,7 +1255,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 def sine(self, value=None, clamp=False):
 
 ```
-Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
+> Node: [Math](ShaderNodeMath.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
 #### Args:
 - value: Float
@@ -1272,7 +1272,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 def sinh(self, value=None, clamp=False):
 
 ```
-Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
+> Node: [Math](ShaderNodeMath.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
 #### Args:
 - value: Float
@@ -1289,7 +1289,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 def smooth_maximum(self, value=None, distance=None, clamp=False):
 
 ```
-Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
+> Node: [Math](ShaderNodeMath.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
 #### Args:
 - value: Float
@@ -1307,7 +1307,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 def smooth_minimum(self, value=None, distance=None, clamp=False):
 
 ```
-Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
+> Node: [Math](ShaderNodeMath.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
 #### Args:
 - value: Float
@@ -1325,7 +1325,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 def snap(self, increment=None, clamp=False):
 
 ```
-Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
+> Node: [Math](ShaderNodeMath.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
 #### Args:
 - increment: Float
@@ -1342,7 +1342,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 def sqrt(self, clamp=False):
 
 ```
-Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
+> Node: [Math](ShaderNodeMath.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
 #### Args:
 - clamp (bool): False
@@ -1358,7 +1358,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 def add(self, value):
 
 ```
-Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
+> Node: [Math](ShaderNodeMath.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
 #### Args:
 - value: Float or Integer or Vector
@@ -1374,7 +1374,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 def add(self, value):
 
 ```
-Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
+> Node: [Math](ShaderNodeMath.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
 #### Args:
 - value: Float or Integer or Vector
@@ -1390,7 +1390,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 def switch(self, switch=None, true=None):
 
 ```
-Node [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html) )
+> Node: [Switch](GeometryNodeSwitch.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
 
 #### Args:
 - switch: Boolean
@@ -1407,7 +1407,7 @@ Node [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/
 def tan(self, value=None, clamp=False):
 
 ```
-Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
+> Node: [Math](ShaderNodeMath.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
 #### Args:
 - value: Float
@@ -1424,7 +1424,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 def tangent(self, value=None, clamp=False):
 
 ```
-Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
+> Node: [Math](ShaderNodeMath.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
 #### Args:
 - value: Float
@@ -1441,7 +1441,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 def tanh(self, value=None, clamp=False):
 
 ```
-Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
+> Node: [Math](ShaderNodeMath.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
 #### Args:
 - value: Float
@@ -1458,7 +1458,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 def to_degrees(self, clamp=False):
 
 ```
-Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
+> Node: [Math](ShaderNodeMath.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
 #### Args:
 - clamp (bool): False
@@ -1474,7 +1474,7 @@ Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ut
 def to_integer(self, rounding_mode='ROUND'):
 
 ```
-Node [Float to Integer](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/float_to_integer.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeFloatToInt.html) )
+> Node: [Float to Integer](FunctionNodeFloatToInt.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/float_to_integer.html) - [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeFloatToInt.html)
 
 #### Args:
 - rounding_mode (str): 'ROUND' in [ROUND, FLOOR, CEILING, TRUNCATE]
@@ -1490,7 +1490,7 @@ Node [Float to Integer](https://docs.blender.org/manual/en/latest/modeling/geome
 def to_radians(self, clamp=False):
 
 ```
-Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
+> Node: [Math](ShaderNodeMath.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
 #### Args:
 - clamp (bool): False
@@ -1522,7 +1522,7 @@ Node [Value to String](https://docs.blender.org/manual/en/latest/modeling/geomet
 def truncate(self):
 
 ```
-Node [Float to Integer](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/float_to_integer.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeFloatToInt.html) )
+> Node: [Float to Integer](FunctionNodeFloatToInt.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/float_to_integer.html) - [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeFloatToInt.html)
 
 #### Returns:
 - socket `integer`
@@ -1535,7 +1535,7 @@ Node [Float to Integer](https://docs.blender.org/manual/en/latest/modeling/geome
 def wrap(self, max=None, min=None, clamp=False):
 
 ```
-Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) ( [api](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html) )
+> Node: [Math](ShaderNodeMath.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
 #### Args:
 - max: Float

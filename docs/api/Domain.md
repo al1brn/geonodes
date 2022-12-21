@@ -60,7 +60,7 @@
 def ID(self):
 
 ```
-Node [ID](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/id.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputID.html) )
+> Node: [ID](GeometryNodeInputID.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/id.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputID.html)
 
 #### Returns:
 - socket `ID`
@@ -73,7 +73,7 @@ Node [ID](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/inpu
 def ID(self, attr_value):
 
 ```
-Node [Set ID](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/set_id.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetID.html) )
+> Node: [Set ID](GeometryNodeSetID.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/set_id.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetID.html)
 
 Node implemented as property setter.
 
@@ -89,7 +89,7 @@ Node implemented as property setter.
 def accumulate_field(self, value=None, group_index=None):
 
 ```
-Node [Accumulate Field](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/accumulate_field.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeAccumulateField.html) )
+> Node: [Accumulate Field](GeometryNodeAccumulateField.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/accumulate_field.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeAccumulateField.html)
 
 #### Args:
 - value: ['Vector', 'Float', 'Integer']
@@ -106,7 +106,7 @@ Node [Accumulate Field](https://docs.blender.org/manual/en/latest/modeling/geome
 def attribute_max(self, attribute=None):
 
 ```
-Node [Attribute Statistic](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/attribute_statistic.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeStatistic.html) )
+> Node: [Attribute Statistic](GeometryNodeAttributeStatistic.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/attribute_statistic.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeStatistic.html)
 
 #### Args:
 - attribute: ['Float', 'Vector']
@@ -122,7 +122,7 @@ Node [Attribute Statistic](https://docs.blender.org/manual/en/latest/modeling/ge
 def attribute_mean(self, attribute=None):
 
 ```
-Node [Attribute Statistic](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/attribute_statistic.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeStatistic.html) )
+> Node: [Attribute Statistic](GeometryNodeAttributeStatistic.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/attribute_statistic.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeStatistic.html)
 
 #### Args:
 - attribute: ['Float', 'Vector']
@@ -138,7 +138,7 @@ Node [Attribute Statistic](https://docs.blender.org/manual/en/latest/modeling/ge
 def attribute_median(self, attribute=None):
 
 ```
-Node [Attribute Statistic](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/attribute_statistic.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeStatistic.html) )
+> Node: [Attribute Statistic](GeometryNodeAttributeStatistic.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/attribute_statistic.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeStatistic.html)
 
 #### Args:
 - attribute: ['Float', 'Vector']
@@ -154,7 +154,7 @@ Node [Attribute Statistic](https://docs.blender.org/manual/en/latest/modeling/ge
 def attribute_min(self, attribute=None):
 
 ```
-Node [Attribute Statistic](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/attribute_statistic.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeStatistic.html) )
+> Node: [Attribute Statistic](GeometryNodeAttributeStatistic.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/attribute_statistic.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeStatistic.html)
 
 #### Args:
 - attribute: ['Float', 'Vector']
@@ -170,7 +170,7 @@ Node [Attribute Statistic](https://docs.blender.org/manual/en/latest/modeling/ge
 def attribute_range(self, attribute=None):
 
 ```
-Node [Attribute Statistic](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/attribute_statistic.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeStatistic.html) )
+> Node: [Attribute Statistic](GeometryNodeAttributeStatistic.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/attribute_statistic.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeStatistic.html)
 
 #### Args:
 - attribute: ['Float', 'Vector']
@@ -186,7 +186,7 @@ Node [Attribute Statistic](https://docs.blender.org/manual/en/latest/modeling/ge
 def attribute_statistic(self, attribute=None):
 
 ```
-Node [Attribute Statistic](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/attribute_statistic.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeStatistic.html) )
+> Node: [Attribute Statistic](GeometryNodeAttributeStatistic.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/attribute_statistic.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeStatistic.html)
 
 #### Args:
 - attribute: ['Float', 'Vector']
@@ -202,7 +202,7 @@ Node [Attribute Statistic](https://docs.blender.org/manual/en/latest/modeling/ge
 def attribute_std(self, attribute=None):
 
 ```
-Node [Attribute Statistic](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/attribute_statistic.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeStatistic.html) )
+> Node: [Attribute Statistic](GeometryNodeAttributeStatistic.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/attribute_statistic.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeStatistic.html)
 
 #### Args:
 - attribute: ['Float', 'Vector']
@@ -218,7 +218,7 @@ Node [Attribute Statistic](https://docs.blender.org/manual/en/latest/modeling/ge
 def attribute_sum(self, attribute=None):
 
 ```
-Node [Attribute Statistic](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/attribute_statistic.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeStatistic.html) )
+> Node: [Attribute Statistic](GeometryNodeAttributeStatistic.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/attribute_statistic.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeStatistic.html)
 
 #### Args:
 - attribute: ['Float', 'Vector']
@@ -234,7 +234,7 @@ Node [Attribute Statistic](https://docs.blender.org/manual/en/latest/modeling/ge
 def attribute_var(self, attribute=None):
 
 ```
-Node [Attribute Statistic](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/attribute_statistic.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeStatistic.html) )
+> Node: [Attribute Statistic](GeometryNodeAttributeStatistic.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/attribute_statistic.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeStatistic.html)
 
 #### Args:
 - attribute: ['Float', 'Vector']
@@ -250,7 +250,7 @@ Node [Attribute Statistic](https://docs.blender.org/manual/en/latest/modeling/ge
 def capture_attribute(self, value=None):
 
 ```
-Node [Capture Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/capture_attribute.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeCaptureAttribute.html) )
+> Node: [Capture Attribute](GeometryNodeCaptureAttribute.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/capture_attribute.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeCaptureAttribute.html)
 
 #### Args:
 - value: ['Vector', 'Float', 'Color', 'Boolean', 'Integer']
@@ -266,7 +266,7 @@ Node [Capture Attribute](https://docs.blender.org/manual/en/latest/modeling/geom
 def delete(self, mode='ALL'):
 
 ```
-Node [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/delete_geometry.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeDeleteGeometry.html) )
+> Node: [Delete Geometry](GeometryNodeDeleteGeometry.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/delete_geometry.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeDeleteGeometry.html)
 
 #### Args:
 - mode (str): 'ALL' in [ALL, EDGE_FACE, ONLY_FACE]
@@ -282,7 +282,7 @@ Node [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geomet
 def domain_index(self):
 
 ```
-Node [Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/input_index.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputIndex.html) )
+> Node: [Index](GeometryNodeInputIndex.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/input_index.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputIndex.html)
 
 #### Returns:
 - socket `index`
@@ -295,7 +295,7 @@ Node [Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/i
 def duplicate(self, amount=None):
 
 ```
-Node [Duplicate Elements](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/duplicate_elements.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeDuplicateElements.html) )
+> Node: [Duplicate Elements](GeometryNodeDuplicateElements.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/duplicate_elements.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeDuplicateElements.html)
 
 #### Args:
 - amount: Integer
@@ -311,7 +311,7 @@ Node [Duplicate Elements](https://docs.blender.org/manual/en/latest/modeling/geo
 def field_at_index(self, index=None, value=None):
 
 ```
-Node [Field at Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/field_at_index.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeFieldAtIndex.html) )
+> Node: [Field at Index](GeometryNodeFieldAtIndex.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/field_at_index.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeFieldAtIndex.html)
 
 #### Args:
 - index: Integer
@@ -328,7 +328,7 @@ Node [Field at Index](https://docs.blender.org/manual/en/latest/modeling/geometr
 def get_named_boolean(self, name=None):
 
 ```
-Node [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/named_attribute.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputNamedAttribute.html) )
+> Node: [Named Attribute](GeometryNodeInputNamedAttribute.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/named_attribute.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputNamedAttribute.html)
 
 #### Args:
 - name: String
@@ -344,7 +344,7 @@ Node [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geomet
 def get_named_color(self, name=None):
 
 ```
-Node [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/named_attribute.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputNamedAttribute.html) )
+> Node: [Named Attribute](GeometryNodeInputNamedAttribute.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/named_attribute.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputNamedAttribute.html)
 
 #### Args:
 - name: String
@@ -360,7 +360,7 @@ Node [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geomet
 def get_named_float(self, name=None):
 
 ```
-Node [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/named_attribute.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputNamedAttribute.html) )
+> Node: [Named Attribute](GeometryNodeInputNamedAttribute.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/named_attribute.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputNamedAttribute.html)
 
 #### Args:
 - name: String
@@ -376,7 +376,7 @@ Node [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geomet
 def get_named_integer(self, name=None):
 
 ```
-Node [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/named_attribute.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputNamedAttribute.html) )
+> Node: [Named Attribute](GeometryNodeInputNamedAttribute.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/named_attribute.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputNamedAttribute.html)
 
 #### Args:
 - name: String
@@ -392,7 +392,7 @@ Node [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geomet
 def get_named_vector(self, name=None):
 
 ```
-Node [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/named_attribute.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputNamedAttribute.html) )
+> Node: [Named Attribute](GeometryNodeInputNamedAttribute.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/named_attribute.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputNamedAttribute.html)
 
 #### Args:
 - name: String
@@ -408,7 +408,7 @@ Node [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geomet
 def index(self):
 
 ```
-Node [Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/input_index.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputIndex.html) )
+> Node: [Index](GeometryNodeInputIndex.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/input_index.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputIndex.html)
 
 #### Returns:
 - socket `index`
@@ -421,7 +421,7 @@ Node [Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/i
 def material_index(self):
 
 ```
-Node [Material Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/material_index.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMaterialIndex.html) )
+> Node: [Material Index](GeometryNodeInputMaterialIndex.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/material_index.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMaterialIndex.html)
 
 #### Returns:
 - socket `material_index`
@@ -434,7 +434,7 @@ Node [Material Index](https://docs.blender.org/manual/en/latest/modeling/geometr
 def material_selection(self, material=None):
 
 ```
-Node [Material Selection](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/material_selection.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeMaterialSelection.html) )
+> Node: [Material Selection](GeometryNodeMaterialSelection.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/material_selection.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeMaterialSelection.html)
 
 #### Args:
 - material: Material
@@ -450,7 +450,7 @@ Node [Material Selection](https://docs.blender.org/manual/en/latest/modeling/geo
 def named_attribute(self, name=None, data_type='FLOAT'):
 
 ```
-Node [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/named_attribute.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputNamedAttribute.html) )
+> Node: [Named Attribute](GeometryNodeInputNamedAttribute.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/named_attribute.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputNamedAttribute.html)
 
 #### Args:
 - name: String
@@ -467,7 +467,7 @@ Node [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geomet
 def normal(self):
 
 ```
-Node [Normal](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/normal.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputNormal.html) )
+> Node: [Normal](GeometryNodeInputNormal.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/normal.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputNormal.html)
 
 #### Returns:
 - socket `normal`
@@ -480,7 +480,7 @@ Node [Normal](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/
 def position(self):
 
 ```
-Node [Position](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/position.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputPosition.html) )
+> Node: [Position](GeometryNodeInputPosition.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/position.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputPosition.html)
 
 #### Returns:
 - socket `position`
@@ -493,7 +493,7 @@ Node [Position](https://docs.blender.org/manual/en/latest/modeling/geometry_node
 def position(self, attr_value):
 
 ```
-Node [Set Position](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/set_position.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetPosition.html) )
+> Node: [Set Position](GeometryNodeSetPosition.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/set_position.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetPosition.html)
 
 Node implemented as property setter.
 
@@ -509,7 +509,7 @@ Node implemented as property setter.
 def random_boolean(self, probability=None, ID=None, seed=None):
 
 ```
-Node [Random Value](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/random_value.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeRandomValue.html) )
+> Node: [Random Value](FunctionNodeRandomValue.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/random_value.html) - [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeRandomValue.html)
 
 #### Args:
 - probability: Float
@@ -527,7 +527,7 @@ Node [Random Value](https://docs.blender.org/manual/en/latest/modeling/geometry_
 def random_float(self, min=None, max=None, ID=None, seed=None):
 
 ```
-Node [Random Value](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/random_value.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeRandomValue.html) )
+> Node: [Random Value](FunctionNodeRandomValue.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/random_value.html) - [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeRandomValue.html)
 
 #### Args:
 - min: ['Vector', 'Float', 'Integer']
@@ -546,7 +546,7 @@ Node [Random Value](https://docs.blender.org/manual/en/latest/modeling/geometry_
 def random_integer(self, min=None, max=None, ID=None, seed=None):
 
 ```
-Node [Random Value](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/random_value.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeRandomValue.html) )
+> Node: [Random Value](FunctionNodeRandomValue.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/random_value.html) - [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeRandomValue.html)
 
 #### Args:
 - min: ['Vector', 'Float', 'Integer']
@@ -565,7 +565,7 @@ Node [Random Value](https://docs.blender.org/manual/en/latest/modeling/geometry_
 def random_vector(self, min=None, max=None, ID=None, seed=None):
 
 ```
-Node [Random Value](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/random_value.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeRandomValue.html) )
+> Node: [Random Value](FunctionNodeRandomValue.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/random_value.html) - [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeRandomValue.html)
 
 #### Args:
 - min: ['Vector', 'Float', 'Integer']
@@ -584,7 +584,7 @@ Node [Random Value](https://docs.blender.org/manual/en/latest/modeling/geometry_
 def remove_named_attribute(self, name=None):
 
 ```
-Node [Remove Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/remove_named_attribute.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeRemoveAttribute.html) )
+> Node: [Remove Named Attribute](GeometryNodeRemoveAttribute.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/remove_named_attribute.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeRemoveAttribute.html)
 
 #### Args:
 - name: String
@@ -600,7 +600,7 @@ Node [Remove Named Attribute](https://docs.blender.org/manual/en/latest/modeling
 def sample_index(self, value=None, index=None, clamp=False):
 
 ```
-Node [Sample Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/sample_index.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSampleIndex.html) )
+> Node: [Sample Index](GeometryNodeSampleIndex.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/sample_index.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSampleIndex.html)
 
 #### Args:
 - value: ['Float', 'Integer', 'Vector', 'Color', 'Boolean']
@@ -618,7 +618,7 @@ Node [Sample Index](https://docs.blender.org/manual/en/latest/modeling/geometry_
 def sample_nearest(self, sample_position=None):
 
 ```
-Node [Sample Nearest](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/sample_nearest.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSampleNearest.html) )
+> Node: [Sample Nearest](GeometryNodeSampleNearest.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/sample_nearest.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSampleNearest.html)
 
 #### Args:
 - sample_position: Vector
@@ -634,7 +634,7 @@ Node [Sample Nearest](https://docs.blender.org/manual/en/latest/modeling/geometr
 def separate(self, geometry=None):
 
 ```
-Node [Separate Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/separate_geometry.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSeparateGeometry.html) )
+> Node: [Separate Geometry](GeometryNodeSeparateGeometry.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/separate_geometry.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSeparateGeometry.html)
 
 #### Args:
 - geometry: Geometry
@@ -650,7 +650,7 @@ Node [Separate Geometry](https://docs.blender.org/manual/en/latest/modeling/geom
 def set_ID(self, ID=None):
 
 ```
-Node [Set ID](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/set_id.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetID.html) )
+> Node: [Set ID](GeometryNodeSetID.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/set_id.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetID.html)
 
 #### Args:
 - ID: Integer
@@ -666,7 +666,7 @@ Node [Set ID](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/
 def set_material_index(self, material_index=None):
 
 ```
-Node [Set Material Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/set_material_index.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetMaterialIndex.html) )
+> Node: [Set Material Index](GeometryNodeSetMaterialIndex.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/set_material_index.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetMaterialIndex.html)
 
 #### Args:
 - material_index: Integer
@@ -682,7 +682,7 @@ Node [Set Material Index](https://docs.blender.org/manual/en/latest/modeling/geo
 def set_named_boolean(self, name=None, value=None):
 
 ```
-Node [Store Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/store_named_attribute.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeStoreNamedAttribute.html) )
+> Node: [Store Named Attribute](GeometryNodeStoreNamedAttribute.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/store_named_attribute.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeStoreNamedAttribute.html)
 
 #### Args:
 - name: String
@@ -699,7 +699,7 @@ Node [Store Named Attribute](https://docs.blender.org/manual/en/latest/modeling/
 def set_named_color(self, name=None, value=None):
 
 ```
-Node [Store Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/store_named_attribute.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeStoreNamedAttribute.html) )
+> Node: [Store Named Attribute](GeometryNodeStoreNamedAttribute.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/store_named_attribute.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeStoreNamedAttribute.html)
 
 #### Args:
 - name: String
@@ -716,7 +716,7 @@ Node [Store Named Attribute](https://docs.blender.org/manual/en/latest/modeling/
 def set_named_float(self, name=None, value=None):
 
 ```
-Node [Store Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/store_named_attribute.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeStoreNamedAttribute.html) )
+> Node: [Store Named Attribute](GeometryNodeStoreNamedAttribute.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/store_named_attribute.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeStoreNamedAttribute.html)
 
 #### Args:
 - name: String
@@ -733,7 +733,7 @@ Node [Store Named Attribute](https://docs.blender.org/manual/en/latest/modeling/
 def set_named_integer(self, name=None, value=None):
 
 ```
-Node [Store Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/store_named_attribute.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeStoreNamedAttribute.html) )
+> Node: [Store Named Attribute](GeometryNodeStoreNamedAttribute.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/store_named_attribute.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeStoreNamedAttribute.html)
 
 #### Args:
 - name: String
@@ -750,7 +750,7 @@ Node [Store Named Attribute](https://docs.blender.org/manual/en/latest/modeling/
 def set_named_vector(self, name=None, value=None):
 
 ```
-Node [Store Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/store_named_attribute.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeStoreNamedAttribute.html) )
+> Node: [Store Named Attribute](GeometryNodeStoreNamedAttribute.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/store_named_attribute.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeStoreNamedAttribute.html)
 
 #### Args:
 - name: String
@@ -767,7 +767,7 @@ Node [Store Named Attribute](https://docs.blender.org/manual/en/latest/modeling/
 def set_position(self, position=None, offset=None):
 
 ```
-Node [Set Position](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/set_position.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetPosition.html) )
+> Node: [Set Position](GeometryNodeSetPosition.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/set_position.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetPosition.html)
 
 #### Args:
 - position: Vector
@@ -784,7 +784,7 @@ Node [Set Position](https://docs.blender.org/manual/en/latest/modeling/geometry_
 def store_named_attribute(self, name=None, value=None):
 
 ```
-Node [Store Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/store_named_attribute.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeStoreNamedAttribute.html) )
+> Node: [Store Named Attribute](GeometryNodeStoreNamedAttribute.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/store_named_attribute.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeStoreNamedAttribute.html)
 
 #### Args:
 - name: String

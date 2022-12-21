@@ -42,7 +42,7 @@
 def area(self):
 
 ```
-Node [Face Area](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/face_area.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshFaceArea.html) )
+> Node: [Face Area](GeometryNodeInputMeshFaceArea.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/face_area.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshFaceArea.html)
 
 #### Returns:
 - node with sockets ['area']
@@ -55,7 +55,7 @@ Node [Face Area](https://docs.blender.org/manual/en/latest/modeling/geometry_nod
 def delete_all(self):
 
 ```
-Node [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/delete_geometry.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeDeleteGeometry.html) )
+> Node: [Delete Geometry](GeometryNodeDeleteGeometry.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/delete_geometry.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeDeleteGeometry.html)
 
 #### Returns:
 - self
@@ -68,7 +68,7 @@ Node [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geomet
 def delete_edges(self):
 
 ```
-Node [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/delete_geometry.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeDeleteGeometry.html) )
+> Node: [Delete Geometry](GeometryNodeDeleteGeometry.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/delete_geometry.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeDeleteGeometry.html)
 
 #### Returns:
 - self
@@ -81,7 +81,7 @@ Node [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geomet
 def delete_faces(self):
 
 ```
-Node [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/delete_geometry.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeDeleteGeometry.html) )
+> Node: [Delete Geometry](GeometryNodeDeleteGeometry.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/delete_geometry.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeDeleteGeometry.html)
 
 #### Returns:
 - self
@@ -94,7 +94,7 @@ Node [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geomet
 def distribute_points_poisson(self, distance_min=None, density_max=None, density_factor=None, seed=None):
 
 ```
-Node [Distribute Points on Faces](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/point/distribute_points_on_faces.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeDistributePointsOnFaces.html) )
+> Node: [Distribute Points on Faces](GeometryNodeDistributePointsOnFaces.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/point/distribute_points_on_faces.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeDistributePointsOnFaces.html)
 
 #### Args:
 - distance_min: Float
@@ -113,7 +113,7 @@ Node [Distribute Points on Faces](https://docs.blender.org/manual/en/latest/mode
 def distribute_points_random(self, density=None, seed=None):
 
 ```
-Node [Distribute Points on Faces](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/point/distribute_points_on_faces.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeDistributePointsOnFaces.html) )
+> Node: [Distribute Points on Faces](GeometryNodeDistributePointsOnFaces.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/point/distribute_points_on_faces.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeDistributePointsOnFaces.html)
 
 #### Args:
 - density: Float
@@ -130,7 +130,7 @@ Node [Distribute Points on Faces](https://docs.blender.org/manual/en/latest/mode
 def __len__(self):
 
 ```
-Node [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html) )
+> Node: [Domain Size](GeometryNodeAttributeDomainSize.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html)
 
 #### Args:
 - geometry: Geometry
@@ -147,7 +147,7 @@ Node [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 def extrude(self, offset=None, offset_scale=None, individual=None):
 
 ```
-Node [Extrude Mesh](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/extrude_mesh.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeExtrudeMesh.html) )
+> Node: [Extrude Mesh](GeometryNodeExtrudeMesh.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/extrude_mesh.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeExtrudeMesh.html)
 
 #### Args:
 - offset: Vector
@@ -165,7 +165,7 @@ Node [Extrude Mesh](https://docs.blender.org/manual/en/latest/modeling/geometry_
 def face_set_boundaries(self):
 
 ```
-Node [Face Set Boundaries](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/face_set_boundaries.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshFaceSetBoundaries.html) )
+> Node: [Face Set Boundaries](GeometryNodeMeshFaceSetBoundaries.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/face_set_boundaries.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshFaceSetBoundaries.html)
 
 #### Returns:
 - socket `boundary_edges`
@@ -178,7 +178,7 @@ Node [Face Set Boundaries](https://docs.blender.org/manual/en/latest/modeling/ge
 def flip(self):
 
 ```
-Node [Flip Faces](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/flip_faces.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeFlipFaces.html) )
+> Node: [Flip Faces](GeometryNodeFlipFaces.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/flip_faces.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeFlipFaces.html)
 
 #### Returns:
 - self
@@ -191,7 +191,7 @@ Node [Flip Faces](https://docs.blender.org/manual/en/latest/modeling/geometry_no
 def is_planar(self, threshold=None):
 
 ```
-Node [Face is Planar](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/face_is_planar.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshFaceIsPlanar.html) )
+> Node: [Face is Planar](GeometryNodeInputMeshFaceIsPlanar.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/face_is_planar.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshFaceIsPlanar.html)
 
 #### Args:
 - threshold: Float
@@ -207,7 +207,7 @@ Node [Face is Planar](https://docs.blender.org/manual/en/latest/modeling/geometr
 def island(self):
 
 ```
-Node [Mesh Island](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/mesh_island.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshIsland.html) )
+> Node: [Mesh Island](GeometryNodeInputMeshIsland.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/mesh_island.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshIsland.html)
 
 #### Returns:
 - node with sockets ['island_index', 'island_count']
@@ -220,7 +220,7 @@ Node [Mesh Island](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 def island_count(self):
 
 ```
-Node [Mesh Island](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/mesh_island.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshIsland.html) )
+> Node: [Mesh Island](GeometryNodeInputMeshIsland.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/mesh_island.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshIsland.html)
 
 #### Returns:
 - socket `island_count`
@@ -233,7 +233,7 @@ Node [Mesh Island](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 def island_index(self):
 
 ```
-Node [Mesh Island](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/mesh_island.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshIsland.html) )
+> Node: [Mesh Island](GeometryNodeInputMeshIsland.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/mesh_island.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshIsland.html)
 
 #### Returns:
 - socket `island_index`
@@ -246,7 +246,7 @@ Node [Mesh Island](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 def material(self):
 
 ```
-Node [Set Material](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/set_material.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetMaterial.html) )
+> Node: [Set Material](GeometryNodeSetMaterial.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/set_material.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetMaterial.html)
 
 'material' is a write only property.
 Raise an exception if attempt to read.
@@ -260,7 +260,7 @@ Raise an exception if attempt to read.
 def material(self, attr_value):
 
 ```
-Node [Set Material](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/set_material.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetMaterial.html) )
+> Node: [Set Material](GeometryNodeSetMaterial.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/set_material.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetMaterial.html)
 
 Node implemented as property setter.
 
@@ -276,7 +276,7 @@ Node implemented as property setter.
 def neighbors(self):
 
 ```
-Node [Face Neighbors](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/face_neighbors.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshFaceNeighbors.html) )
+> Node: [Face Neighbors](GeometryNodeInputMeshFaceNeighbors.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/face_neighbors.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshFaceNeighbors.html)
 
 #### Returns:
 - node with sockets ['vertex_count', 'face_count']
@@ -289,7 +289,7 @@ Node [Face Neighbors](https://docs.blender.org/manual/en/latest/modeling/geometr
 def neighbors_face_count(self):
 
 ```
-Node [Face Neighbors](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/face_neighbors.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshFaceNeighbors.html) )
+> Node: [Face Neighbors](GeometryNodeInputMeshFaceNeighbors.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/face_neighbors.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshFaceNeighbors.html)
 
 #### Returns:
 - socket `face_count`
@@ -302,7 +302,7 @@ Node [Face Neighbors](https://docs.blender.org/manual/en/latest/modeling/geometr
 def neighbors_vertex_count(self):
 
 ```
-Node [Face Neighbors](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/face_neighbors.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshFaceNeighbors.html) )
+> Node: [Face Neighbors](GeometryNodeInputMeshFaceNeighbors.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/face_neighbors.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshFaceNeighbors.html)
 
 #### Returns:
 - socket `vertex_count`
@@ -315,7 +315,7 @@ Node [Face Neighbors](https://docs.blender.org/manual/en/latest/modeling/geometr
 def pack_uv_islands(self, uv=None, margin=None, rotate=None):
 
 ```
-Node [Pack UV Islands](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/uv/pack_uv_islands.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeUVPackIslands.html) )
+> Node: [Pack UV Islands](GeometryNodeUVPackIslands.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/uv/pack_uv_islands.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeUVPackIslands.html)
 
 #### Args:
 - uv: Vector
@@ -333,7 +333,7 @@ Node [Pack UV Islands](https://docs.blender.org/manual/en/latest/modeling/geomet
 def scale_single_axis(self, scale=None, center=None, axis=None):
 
 ```
-Node [Scale Elements](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/scale_elements.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeScaleElements.html) )
+> Node: [Scale Elements](GeometryNodeScaleElements.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/scale_elements.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeScaleElements.html)
 
 #### Args:
 - scale: Float
@@ -351,7 +351,7 @@ Node [Scale Elements](https://docs.blender.org/manual/en/latest/modeling/geometr
 def scale_uniform(self, scale=None, center=None):
 
 ```
-Node [Scale Elements](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/scale_elements.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeScaleElements.html) )
+> Node: [Scale Elements](GeometryNodeScaleElements.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/scale_elements.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeScaleElements.html)
 
 #### Args:
 - scale: Float
@@ -368,7 +368,7 @@ Node [Scale Elements](https://docs.blender.org/manual/en/latest/modeling/geometr
 def set_material(self, material=None):
 
 ```
-Node [Set Material](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/set_material.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetMaterial.html) )
+> Node: [Set Material](GeometryNodeSetMaterial.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/set_material.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetMaterial.html)
 
 #### Args:
 - material: Material
@@ -384,7 +384,7 @@ Node [Set Material](https://docs.blender.org/manual/en/latest/modeling/geometry_
 def set_shade_smooth(self, shade_smooth=None):
 
 ```
-Node [Set Shade Smooth](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/set_shade_smooth.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetShadeSmooth.html) )
+> Node: [Set Shade Smooth](GeometryNodeSetShadeSmooth.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/set_shade_smooth.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetShadeSmooth.html)
 
 #### Args:
 - shade_smooth: Boolean
@@ -400,7 +400,7 @@ Node [Set Shade Smooth](https://docs.blender.org/manual/en/latest/modeling/geome
 def shade_smooth(self):
 
 ```
-Node [Is Shade Smooth](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/is_shade_smooth.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputShadeSmooth.html) )
+> Node: [Is Shade Smooth](GeometryNodeInputShadeSmooth.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/is_shade_smooth.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputShadeSmooth.html)
 
 #### Returns:
 - socket `smooth`
@@ -413,7 +413,7 @@ Node [Is Shade Smooth](https://docs.blender.org/manual/en/latest/modeling/geomet
 def shade_smooth(self, attr_value):
 
 ```
-Node [Set Shade Smooth](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/set_shade_smooth.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetShadeSmooth.html) )
+> Node: [Set Shade Smooth](GeometryNodeSetShadeSmooth.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/set_shade_smooth.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetShadeSmooth.html)
 
 Node implemented as property setter.
 
@@ -429,7 +429,7 @@ Node implemented as property setter.
 def triangulate(self, minimum_vertices=None, ngon_method='BEAUTY', quad_method='SHORTEST_DIAGONAL'):
 
 ```
-Node [Triangulate](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/triangulate.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeTriangulate.html) )
+> Node: [Triangulate](GeometryNodeTriangulate.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/triangulate.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeTriangulate.html)
 
 #### Args:
 - minimum_vertices: Integer
@@ -447,7 +447,7 @@ Node [Triangulate](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 def uv_unwrap(self, seam=None, margin=None, fill_holes=None, method='ANGLE_BASED'):
 
 ```
-Node [UV Unwrap](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/uv/uv_unwrap.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeUVUnwrap.html) )
+> Node: [UV Unwrap](GeometryNodeUVUnwrap.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/uv/uv_unwrap.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeUVUnwrap.html)
 
 #### Args:
 - seam: Boolean

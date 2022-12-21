@@ -28,7 +28,7 @@
 def InstanceOnPoints(cls, points=None, selection=None, instance=None, pick_instance=None, instance_index=None, rotation=None, scale=None):
 
 ```
-Node [Instance on Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instance_on_points.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInstanceOnPoints.html) )
+> Node: [Instance on Points](GeometryNodeInstanceOnPoints.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instance_on_points.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInstanceOnPoints.html)
 
 #### Args:
 - points: Points
@@ -50,7 +50,7 @@ Node [Instance on Points](https://docs.blender.org/manual/en/latest/modeling/geo
 def domain_size(self):
 
 ```
-Node [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html) )
+> Node: [Domain Size](GeometryNodeAttributeDomainSize.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html)
 
 #### Returns:
 - socket `instance_count`
@@ -63,7 +63,7 @@ Node [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 def on_points(self, points=None, selection=None, pick_instance=None, instance_index=None, rotation=None, scale=None):
 
 ```
-Node [Instance on Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instance_on_points.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInstanceOnPoints.html) )
+> Node: [Instance on Points](GeometryNodeInstanceOnPoints.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instance_on_points.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInstanceOnPoints.html)
 
 #### Args:
 - points: Points
@@ -84,7 +84,7 @@ Node [Instance on Points](https://docs.blender.org/manual/en/latest/modeling/geo
 def realize(self, geometry=None, legacy_behavior=False):
 
 ```
-Node [Realize Instances](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/realize_instances.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeRealizeInstances.html) )
+> Node: [Realize Instances](GeometryNodeRealizeInstances.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/realize_instances.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeRealizeInstances.html)
 
 #### Args:
 - geometry: Geometry
@@ -101,7 +101,7 @@ Node [Realize Instances](https://docs.blender.org/manual/en/latest/modeling/geom
 def rotate(self, selection=None, rotation=None, pivot_point=None, local_space=None):
 
 ```
-Node [Rotate Instances](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/rotate_instances.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeRotateInstances.html) )
+> Node: [Rotate Instances](GeometryNodeRotateInstances.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/rotate_instances.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeRotateInstances.html)
 
 #### Args:
 - selection: Boolean
@@ -120,7 +120,7 @@ Node [Rotate Instances](https://docs.blender.org/manual/en/latest/modeling/geome
 def rotation(self):
 
 ```
-Node [Instance Rotation](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instance_rotation.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputInstanceRotation.html) )
+> Node: [Instance Rotation](GeometryNodeInputInstanceRotation.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instance_rotation.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputInstanceRotation.html)
 
 #### Returns:
 - socket `rotation`
@@ -133,7 +133,7 @@ Node [Instance Rotation](https://docs.blender.org/manual/en/latest/modeling/geom
 def scale(self):
 
 ```
-Node [Instance Scale](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instance_scale.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputInstanceScale.html) )
+> Node: [Instance Scale](GeometryNodeInputInstanceScale.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instance_scale.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputInstanceScale.html)
 
 #### Returns:
 - socket `scale`
@@ -146,7 +146,7 @@ Node [Instance Scale](https://docs.blender.org/manual/en/latest/modeling/geometr
 def set_scale(self, selection=None, scale=None, center=None, local_space=None):
 
 ```
-Node [Scale Instances](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/scale_instances.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeScaleInstances.html) )
+> Node: [Scale Instances](GeometryNodeScaleInstances.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/scale_instances.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeScaleInstances.html)
 
 #### Args:
 - selection: Boolean
@@ -165,7 +165,7 @@ Node [Scale Instances](https://docs.blender.org/manual/en/latest/modeling/geomet
 def to_points(self, selection=None, position=None, radius=None):
 
 ```
-Node [Instances to Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instances_to_points.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInstancesToPoints.html) )
+> Node: [Instances to Points](GeometryNodeInstancesToPoints.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instances_to_points.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInstancesToPoints.html)
 
 #### Args:
 - selection: Boolean
@@ -183,7 +183,7 @@ Node [Instances to Points](https://docs.blender.org/manual/en/latest/modeling/ge
 def translate(self, selection=None, translation=None, local_space=None):
 
 ```
-Node [Translate Instances](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/translate_instances.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeTranslateInstances.html) )
+> Node: [Translate Instances](GeometryNodeTranslateInstances.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/translate_instances.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeTranslateInstances.html)
 
 #### Args:
 - selection: Boolean

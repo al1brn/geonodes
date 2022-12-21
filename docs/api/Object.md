@@ -44,7 +44,7 @@ The initial value can be either a valid Blender Object or the name of an existin
 def Self(cls):
 
 ```
-Node [Self Object](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/self_object.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSelfObject.html) )
+> Node: [Self Object](GeometryNodeSelfObject.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/self_object.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSelfObject.html)
 
 #### Returns:
 - socket `self_object`
@@ -57,7 +57,7 @@ Node [Self Object](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 def geometry(self, object=None, as_instance=None, transform_space='ORIGINAL'):
 
 ```
-Node [Object Info](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/object_info.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeObjectInfo.html) )
+> Node: [Object Info](GeometryNodeObjectInfo.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/object_info.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeObjectInfo.html)
 
 #### Args:
 - object: Object
@@ -75,7 +75,7 @@ Node [Object Info](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 def info(self, object=None, as_instance=None, transform_space='ORIGINAL'):
 
 ```
-Node [Object Info](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/object_info.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeObjectInfo.html) )
+> Node: [Object Info](GeometryNodeObjectInfo.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/object_info.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeObjectInfo.html)
 
 #### Args:
 - object: Object
@@ -93,7 +93,7 @@ Node [Object Info](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 def location(self, object=None, as_instance=None, transform_space='ORIGINAL'):
 
 ```
-Node [Object Info](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/object_info.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeObjectInfo.html) )
+> Node: [Object Info](GeometryNodeObjectInfo.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/object_info.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeObjectInfo.html)
 
 #### Args:
 - object: Object
@@ -111,7 +111,7 @@ Node [Object Info](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 def rotation(self, object=None, as_instance=None, transform_space='ORIGINAL'):
 
 ```
-Node [Object Info](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/object_info.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeObjectInfo.html) )
+> Node: [Object Info](GeometryNodeObjectInfo.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/object_info.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeObjectInfo.html)
 
 #### Args:
 - object: Object
@@ -129,7 +129,7 @@ Node [Object Info](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 def scale(self, object=None, as_instance=None, transform_space='ORIGINAL'):
 
 ```
-Node [Object Info](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/object_info.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeObjectInfo.html) )
+> Node: [Object Info](GeometryNodeObjectInfo.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/object_info.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeObjectInfo.html)
 
 #### Args:
 - object: Object
@@ -147,7 +147,7 @@ Node [Object Info](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 def switch(self, switch=None, true=None):
 
 ```
-Node [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html) )
+> Node: [Switch](GeometryNodeSwitch.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
 
 #### Args:
 - switch: Boolean

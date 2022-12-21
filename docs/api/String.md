@@ -66,7 +66,7 @@ Node [Special Characters](https://docs.blender.org/manual/en/latest/modeling/geo
 def String(cls, string=''):
 
 ```
-Node [String](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/string.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeInputString.html) )
+> Node: [String](FunctionNodeInputString.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/string.html) - [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeInputString.html)
 
 #### Args:
 - string (str): ''
@@ -95,7 +95,7 @@ Node [Special Characters](https://docs.blender.org/manual/en/latest/modeling/geo
 def equal(self, b=None):
 
 ```
-Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html) )
+> Node: [Compare](FunctionNodeCompare.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) - [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 
 #### Args:
 - b: ['Float', 'Integer', 'Vector', 'Color', 'String']
@@ -141,7 +141,7 @@ Node [String Length](https://docs.blender.org/manual/en/latest/modeling/geometry
 def not_equal(self, b=None):
 
 ```
-Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) ( [api](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html) )
+> Node: [Compare](FunctionNodeCompare.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) - [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 
 #### Args:
 - b: ['Float', 'Integer', 'Vector', 'Color', 'String']
@@ -191,7 +191,7 @@ Node [Slice String](https://docs.blender.org/manual/en/latest/modeling/geometry_
 def switch(self, switch=None, true=None):
 
 ```
-Node [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html) )
+> Node: [Switch](GeometryNodeSwitch.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
 
 #### Args:
 - switch: Boolean

@@ -28,7 +28,7 @@
 def delete_all(self):
 
 ```
-Node [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/delete_geometry.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeDeleteGeometry.html) )
+> Node: [Delete Geometry](GeometryNodeDeleteGeometry.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/delete_geometry.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeDeleteGeometry.html)
 
 #### Returns:
 - self
@@ -41,7 +41,7 @@ Node [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geomet
 def delete_edges(self):
 
 ```
-Node [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/delete_geometry.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeDeleteGeometry.html) )
+> Node: [Delete Geometry](GeometryNodeDeleteGeometry.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/delete_geometry.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeDeleteGeometry.html)
 
 #### Returns:
 - self
@@ -54,7 +54,7 @@ Node [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geomet
 def delete_faces(self):
 
 ```
-Node [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/delete_geometry.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeDeleteGeometry.html) )
+> Node: [Delete Geometry](GeometryNodeDeleteGeometry.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/delete_geometry.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeDeleteGeometry.html)
 
 #### Returns:
 - self
@@ -67,7 +67,7 @@ Node [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geomet
 def __len__(self):
 
 ```
-Node [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html) )
+> Node: [Domain Size](GeometryNodeAttributeDomainSize.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html)
 
 #### Args:
 - geometry: Geometry
@@ -84,7 +84,7 @@ Node [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 def extrude(self, offset=None, offset_scale=None, individual=None):
 
 ```
-Node [Extrude Mesh](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/extrude_mesh.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeExtrudeMesh.html) )
+> Node: [Extrude Mesh](GeometryNodeExtrudeMesh.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/extrude_mesh.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeExtrudeMesh.html)
 
 #### Args:
 - offset: Vector
@@ -102,7 +102,7 @@ Node [Extrude Mesh](https://docs.blender.org/manual/en/latest/modeling/geometry_
 def instance_on_points(self, instance=None, pick_instance=None, instance_index=None, rotation=None, scale=None):
 
 ```
-Node [Instance on Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instance_on_points.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInstanceOnPoints.html) )
+> Node: [Instance on Points](GeometryNodeInstanceOnPoints.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instance_on_points.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInstanceOnPoints.html)
 
 #### Args:
 - instance: Geometry
@@ -122,7 +122,7 @@ Node [Instance on Points](https://docs.blender.org/manual/en/latest/modeling/geo
 def merge_by_distance(self, distance=None, mode='ALL'):
 
 ```
-Node [Merge by Distance](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/merge_by_distance.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeMergeByDistance.html) )
+> Node: [Merge by Distance](GeometryNodeMergeByDistance.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/merge_by_distance.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeMergeByDistance.html)
 
 #### Args:
 - distance: Float
@@ -139,7 +139,7 @@ Node [Merge by Distance](https://docs.blender.org/manual/en/latest/modeling/geom
 def neighbors(self):
 
 ```
-Node [Vertex Neighbors](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/vertex_neighbors.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshVertexNeighbors.html) )
+> Node: [Vertex Neighbors](GeometryNodeInputMeshVertexNeighbors.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/vertex_neighbors.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshVertexNeighbors.html)
 
 #### Returns:
 - node with sockets ['vertex_count', 'face_count']
@@ -152,7 +152,7 @@ Node [Vertex Neighbors](https://docs.blender.org/manual/en/latest/modeling/geome
 def neighbors_face_count(self):
 
 ```
-Node [Vertex Neighbors](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/vertex_neighbors.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshVertexNeighbors.html) )
+> Node: [Vertex Neighbors](GeometryNodeInputMeshVertexNeighbors.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/vertex_neighbors.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshVertexNeighbors.html)
 
 #### Returns:
 - socket `face_count`
@@ -165,7 +165,7 @@ Node [Vertex Neighbors](https://docs.blender.org/manual/en/latest/modeling/geome
 def neighbors_vertex_count(self):
 
 ```
-Node [Vertex Neighbors](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/vertex_neighbors.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshVertexNeighbors.html) )
+> Node: [Vertex Neighbors](GeometryNodeInputMeshVertexNeighbors.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/vertex_neighbors.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshVertexNeighbors.html)
 
 #### Returns:
 - socket `vertex_count`
@@ -178,7 +178,7 @@ Node [Vertex Neighbors](https://docs.blender.org/manual/en/latest/modeling/geome
 def to_points(self, position=None, radius=None, mode='VERTICES'):
 
 ```
-Node [Mesh to Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/mesh_to_points.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshToPoints.html) )
+> Node: [Mesh to Points](GeometryNodeMeshToPoints.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/mesh_to_points.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshToPoints.html)
 
 #### Args:
 - position: Vector
@@ -196,7 +196,7 @@ Node [Mesh to Points](https://docs.blender.org/manual/en/latest/modeling/geometr
 def to_volume(self, density=None, voxel_size=None, voxel_amount=None, exterior_band_width=None, interior_band_width=None, fill_volume=None, resolution_mode='VOXEL_AMOUNT'):
 
 ```
-Node [Mesh to Volume](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/mesh_to_volume.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshToVolume.html) )
+> Node: [Mesh to Volume](GeometryNodeMeshToVolume.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/mesh_to_volume.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshToVolume.html)
 
 #### Args:
 - density: Float

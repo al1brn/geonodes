@@ -33,7 +33,7 @@
 def cyclic(self):
 
 ```
-Node [Is Spline Cyclic](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/is_spline_cyclic.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputSplineCyclic.html) )
+> Node: [Is Spline Cyclic](GeometryNodeInputSplineCyclic.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/is_spline_cyclic.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputSplineCyclic.html)
 
 #### Returns:
 - socket `cyclic`
@@ -46,7 +46,7 @@ Node [Is Spline Cyclic](https://docs.blender.org/manual/en/latest/modeling/geome
 def cyclic(self, attr_value):
 
 ```
-Node [Set Spline Cyclic](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/set_spline_cyclic.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetSplineCyclic.html) )
+> Node: [Set Spline Cyclic](GeometryNodeSetSplineCyclic.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/set_spline_cyclic.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetSplineCyclic.html)
 
 Node implemented as property setter.
 
@@ -62,7 +62,7 @@ Node implemented as property setter.
 def __len__(self):
 
 ```
-Node [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html) )
+> Node: [Domain Size](GeometryNodeAttributeDomainSize.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html)
 
 #### Args:
 - geometry: Geometry
@@ -79,7 +79,7 @@ Node [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_n
 def length(self):
 
 ```
-Node [Spline Length](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/spline_length.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSplineLength.html) )
+> Node: [Spline Length](GeometryNodeSplineLength.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/spline_length.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSplineLength.html)
 
 #### Returns:
 - tuple ('`length`', '`point_count`')
@@ -92,7 +92,7 @@ Node [Spline Length](https://docs.blender.org/manual/en/latest/modeling/geometry
 def material(self):
 
 ```
-Node [Set Material](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/set_material.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetMaterial.html) )
+> Node: [Set Material](GeometryNodeSetMaterial.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/set_material.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetMaterial.html)
 
 'material' is a write only property.
 Raise an exception if attempt to read.
@@ -106,7 +106,7 @@ Raise an exception if attempt to read.
 def material(self, attr_value):
 
 ```
-Node [Set Material](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/set_material.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetMaterial.html) )
+> Node: [Set Material](GeometryNodeSetMaterial.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/set_material.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetMaterial.html)
 
 Node implemented as property setter.
 
@@ -122,7 +122,7 @@ Node implemented as property setter.
 def normal(self):
 
 ```
-Node [Normal](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/normal.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputNormal.html) )
+> Node: [Normal](GeometryNodeInputNormal.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/normal.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputNormal.html)
 
 #### Returns:
 - socket `normal`
@@ -135,7 +135,7 @@ Node [Normal](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/
 def normal(self, attr_value):
 
 ```
-Node [Set Curve Normal](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/set_curve_normal.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetCurveNormal.html) )
+> Node: [Set Curve Normal](GeometryNodeSetCurveNormal.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/set_curve_normal.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetCurveNormal.html)
 
 Node implemented as property setter.
 
@@ -151,7 +151,7 @@ Node implemented as property setter.
 def points(self, weights=None, sort_index=None):
 
 ```
-Node [Points of Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve_topology/points_of_curve.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodePointsOfCurve.html) )
+> Node: [Points of Curve](GeometryNodePointsOfCurve.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve_topology/points_of_curve.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodePointsOfCurve.html)
 
 #### Args:
 - weights: Float
@@ -168,7 +168,7 @@ Node [Points of Curve](https://docs.blender.org/manual/en/latest/modeling/geomet
 def resample(self, count=None, length=None, mode='COUNT'):
 
 ```
-Node [Resample Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/resample_curve.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeResampleCurve.html) )
+> Node: [Resample Curve](GeometryNodeResampleCurve.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/resample_curve.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeResampleCurve.html)
 
 #### Args:
 - count: Integer
@@ -186,7 +186,7 @@ Node [Resample Curve](https://docs.blender.org/manual/en/latest/modeling/geometr
 def resample_count(self, count=None):
 
 ```
-Node [Resample Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/resample_curve.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeResampleCurve.html) )
+> Node: [Resample Curve](GeometryNodeResampleCurve.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/resample_curve.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeResampleCurve.html)
 
 #### Args:
 - count: Integer
@@ -202,7 +202,7 @@ Node [Resample Curve](https://docs.blender.org/manual/en/latest/modeling/geometr
 def resample_evaluated(self):
 
 ```
-Node [Resample Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/resample_curve.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeResampleCurve.html) )
+> Node: [Resample Curve](GeometryNodeResampleCurve.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/resample_curve.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeResampleCurve.html)
 
 #### Returns:
 - self
@@ -215,7 +215,7 @@ Node [Resample Curve](https://docs.blender.org/manual/en/latest/modeling/geometr
 def resample_length(self, length=None):
 
 ```
-Node [Resample Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/resample_curve.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeResampleCurve.html) )
+> Node: [Resample Curve](GeometryNodeResampleCurve.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/resample_curve.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeResampleCurve.html)
 
 #### Args:
 - length: Float
@@ -231,7 +231,7 @@ Node [Resample Curve](https://docs.blender.org/manual/en/latest/modeling/geometr
 def resolution(self):
 
 ```
-Node [Spline Resolution](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/spline_resolution.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputSplineResolution.html) )
+> Node: [Spline Resolution](GeometryNodeInputSplineResolution.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/spline_resolution.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputSplineResolution.html)
 
 #### Returns:
 - socket `resolution`
@@ -244,7 +244,7 @@ Node [Spline Resolution](https://docs.blender.org/manual/en/latest/modeling/geom
 def resolution(self, attr_value):
 
 ```
-Node [Set Spline Resolution](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/set_spline_resolution.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetSplineResolution.html) )
+> Node: [Set Spline Resolution](GeometryNodeSetSplineResolution.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/set_spline_resolution.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetSplineResolution.html)
 
 Node implemented as property setter.
 
@@ -260,7 +260,7 @@ Node implemented as property setter.
 def set_cyclic(self, cyclic=None):
 
 ```
-Node [Set Spline Cyclic](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/set_spline_cyclic.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetSplineCyclic.html) )
+> Node: [Set Spline Cyclic](GeometryNodeSetSplineCyclic.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/set_spline_cyclic.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetSplineCyclic.html)
 
 #### Args:
 - cyclic: Boolean
@@ -276,7 +276,7 @@ Node [Set Spline Cyclic](https://docs.blender.org/manual/en/latest/modeling/geom
 def set_material(self, material=None):
 
 ```
-Node [Set Material](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/set_material.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetMaterial.html) )
+> Node: [Set Material](GeometryNodeSetMaterial.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/set_material.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetMaterial.html)
 
 #### Args:
 - material: Material
@@ -292,7 +292,7 @@ Node [Set Material](https://docs.blender.org/manual/en/latest/modeling/geometry_
 def set_normal(self, mode='MINIMUM_TWIST'):
 
 ```
-Node [Set Curve Normal](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/set_curve_normal.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetCurveNormal.html) )
+> Node: [Set Curve Normal](GeometryNodeSetCurveNormal.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/set_curve_normal.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetCurveNormal.html)
 
 #### Args:
 - mode (str): 'MINIMUM_TWIST' in [MINIMUM_TWIST, Z_UP]
@@ -308,7 +308,7 @@ Node [Set Curve Normal](https://docs.blender.org/manual/en/latest/modeling/geome
 def set_resolution(self, resolution=None):
 
 ```
-Node [Set Spline Resolution](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/set_spline_resolution.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetSplineResolution.html) )
+> Node: [Set Spline Resolution](GeometryNodeSetSplineResolution.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/set_spline_resolution.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetSplineResolution.html)
 
 #### Args:
 - resolution: Integer
@@ -324,7 +324,7 @@ Node [Set Spline Resolution](https://docs.blender.org/manual/en/latest/modeling/
 def set_type(self, spline_type='POLY'):
 
 ```
-Node [Set Spline Type](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/set_spline_type.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveSplineType.html) )
+> Node: [Set Spline Type](GeometryNodeCurveSplineType.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/set_spline_type.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveSplineType.html)
 
 #### Args:
 - spline_type (str): 'POLY' in [CATMULL_ROM, POLY, BEZIER, NURBS]
@@ -340,7 +340,7 @@ Node [Set Spline Type](https://docs.blender.org/manual/en/latest/modeling/geomet
 def type(self):
 
 ```
-Node [Set Spline Type](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/set_spline_type.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveSplineType.html) )
+> Node: [Set Spline Type](GeometryNodeCurveSplineType.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/set_spline_type.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveSplineType.html)
 
 'type' is a write only property.
 Raise an exception if attempt to read.
@@ -354,7 +354,7 @@ Raise an exception if attempt to read.
 def type(self, attr_value):
 
 ```
-Node [Set Spline Type](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/set_spline_type.html) ( [api](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveSplineType.html) )
+> Node: [Set Spline Type](GeometryNodeCurveSplineType.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/set_spline_type.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveSplineType.html)
 
 Node implemented as property setter.
 
