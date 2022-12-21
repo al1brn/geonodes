@@ -13,7 +13,7 @@ from geonodes import nodes
 node = nodes.GeometryProximity(target=None, source_position=None, target_element='FACES')
 ```
 
-[Blender Image](self.node_image_ref)
+![Blender Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeProximity.webp)
 
 ### Args:
 

@@ -13,7 +13,7 @@ from geonodes import nodes
 node = nodes.FilletCurve(curve=None, count=None, radius=None, limit_radius=None, mode='BEZIER')
 ```
 
-[Blender Image](self.node_image_ref)
+![Blender Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeFilletCurve.webp)
 
 ### Args:
 

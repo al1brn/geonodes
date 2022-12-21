@@ -13,7 +13,7 @@ from geonodes import nodes
 node = nodes.SubdivisionSurface(mesh=None, level=None, edge_crease=None, vertex_crease=None, boundary_smooth='ALL', uv_smooth='PRESERVE_BOUNDARIES')
 ```
 
-[Blender Image](self.node_image_ref)
+![Blender Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeSubdivisionSurface.webp)
 
 ### Args:
 

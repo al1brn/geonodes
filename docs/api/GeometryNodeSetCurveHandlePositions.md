@@ -13,7 +13,7 @@ from geonodes import nodes
 node = nodes.SetHandlePositions(curve=None, selection=None, position=None, offset=None, mode='LEFT')
 ```
 
-[Blender Image](self.node_image_ref)
+![Blender Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeSetCurveHandlePositions.webp)
 
 ### Args:
 

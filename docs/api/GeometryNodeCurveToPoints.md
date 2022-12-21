@@ -13,7 +13,7 @@ from geonodes import nodes
 node = nodes.CurveToPoints(curve=None, count=None, length=None, mode='COUNT')
 ```
 
-[Blender Image](self.node_image_ref)
+![Blender Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeCurveToPoints.webp)
 
 ### Args:
 

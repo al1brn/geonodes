@@ -13,7 +13,7 @@ from geonodes import nodes
 node = nodes.Frame(label_size=20, shrink=True)
 ```
 
-[Blender Image](self.node_image_ref)
+![Blender Image](https://docs.blender.org/manual/en/latest/_images/node-types_NodeFrame.webp)
 
 ### Args:
 

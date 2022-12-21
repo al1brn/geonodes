@@ -13,7 +13,7 @@ from geonodes import nodes
 node = nodes.CornersOfFace(face_index=None, weights=None, sort_index=None)
 ```
 
-[Blender Image](self.node_image_ref)
+![Blender Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeCornersOfFace.webp)
 
 ### Args:
 

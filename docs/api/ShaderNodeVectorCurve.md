@@ -13,7 +13,7 @@ from geonodes import nodes
 node = nodes.VectorCurves(fac=None, vector=None)
 ```
 
-[Blender Image](self.node_image_ref)
+![Blender Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeVectorCurve.webp)
 
 ### Args:
 

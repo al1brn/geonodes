@@ -13,7 +13,7 @@ from geonodes import nodes
 node = nodes.CaptureAttribute(geometry=None, value=None, data_type='FLOAT', domain='POINT')
 ```
 
-[Blender Image](self.node_image_ref)
+![Blender Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeCaptureAttribute.webp)
 
 ### Args:
 

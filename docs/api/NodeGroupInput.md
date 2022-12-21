@@ -13,7 +13,7 @@ from geonodes import nodes
 node = nodes.GroupInput()
 ```
 
-[Blender Image](self.node_image_ref)
+![Blender Image](https://docs.blender.org/manual/en/latest/_images/node-types_NodeGroupInput.webp)
 
 <sub>Go to [top](#node-Group-Input) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

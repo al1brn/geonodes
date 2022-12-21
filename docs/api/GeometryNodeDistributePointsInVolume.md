@@ -13,7 +13,7 @@ from geonodes import nodes
 node = nodes.DistributePointsInVolume(volume=None, density=None, seed=None, spacing=None, threshold=None, mode='DENSITY_RANDOM')
 ```
 
-[Blender Image](self.node_image_ref)
+![Blender Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeDistributePointsInVolume.webp)
 
 ### Args:
 

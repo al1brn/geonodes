@@ -13,7 +13,7 @@ from geonodes import nodes
 node = nodes.EndpointSelection(start_size=None, end_size=None)
 ```
 
-[Blender Image](self.node_image_ref)
+![Blender Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeCurveEndpointSelection.webp)
 
 ### Args:
 

@@ -13,7 +13,7 @@ from geonodes import nodes
 node = nodes.Math(value0=None, value1=None, value2=None, operation='ADD', use_clamp=False)
 ```
 
-[Blender Image](self.node_image_ref)
+![Blender Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeMath.webp)
 
 ### Args:
 

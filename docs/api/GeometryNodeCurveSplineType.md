@@ -13,7 +13,7 @@ from geonodes import nodes
 node = nodes.SetSplineType(curve=None, selection=None, spline_type='POLY')
 ```
 
-[Blender Image](self.node_image_ref)
+![Blender Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeCurveSplineType.webp)
 
 ### Args:
 

@@ -13,7 +13,7 @@ from geonodes import nodes
 node = nodes.Viewer(geometry=None, value=None, data_type='FLOAT', domain='AUTO')
 ```
 
-[Blender Image](self.node_image_ref)
+![Blender Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeViewer.webp)
 
 ### Args:
 

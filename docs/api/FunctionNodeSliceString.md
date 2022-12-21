@@ -13,7 +13,7 @@ from geonodes import nodes
 node = nodes.SliceString(string=None, position=None, length=None)
 ```
 
-[Blender Image](self.node_image_ref)
+![Blender Image](https://docs.blender.org/manual/en/latest/_images/node-types_FunctionNodeSliceString.webp)
 
 ### Args:
 

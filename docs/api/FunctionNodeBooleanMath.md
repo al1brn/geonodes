@@ -13,7 +13,7 @@ from geonodes import nodes
 node = nodes.BooleanMath(boolean0=None, boolean1=None, operation='AND')
 ```
 
-[Blender Image](self.node_image_ref)
+![Blender Image](https://docs.blender.org/manual/en/latest/_images/node-types_FunctionNodeBooleanMath.webp)
 
 ### Args:
 

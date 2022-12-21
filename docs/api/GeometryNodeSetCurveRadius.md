@@ -13,7 +13,7 @@ from geonodes import nodes
 node = nodes.SetCurveRadius(curve=None, selection=None, radius=None)
 ```
 
-[Blender Image](self.node_image_ref)
+![Blender Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeSetCurveRadius.webp)
 
 ### Args:
 

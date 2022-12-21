@@ -13,7 +13,7 @@ from geonodes import nodes
 node = nodes.SetSplineResolution(geometry=None, selection=None, resolution=None)
 ```
 
-[Blender Image](self.node_image_ref)
+![Blender Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeSetSplineResolution.webp)
 
 ### Args:
 

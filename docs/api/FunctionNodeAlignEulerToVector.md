@@ -13,7 +13,7 @@ from geonodes import nodes
 node = nodes.AlignEulerToVector(rotation=None, factor=None, vector=None, axis='X', pivot_axis='AUTO')
 ```
 
-[Blender Image](self.node_image_ref)
+![Blender Image](https://docs.blender.org/manual/en/latest/_images/node-types_FunctionNodeAlignEulerToVector.webp)
 
 ### Args:
 

@@ -13,7 +13,7 @@ from geonodes import nodes
 node = nodes.MeshToPoints(mesh=None, selection=None, position=None, radius=None, mode='VERTICES')
 ```
 
-[Blender Image](self.node_image_ref)
+![Blender Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeMeshToPoints.webp)
 
 ### Args:
 

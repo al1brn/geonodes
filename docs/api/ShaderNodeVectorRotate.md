@@ -13,7 +13,7 @@ from geonodes import nodes
 node = nodes.VectorRotate(vector=None, center=None, axis=None, angle=None, rotation=None, invert=False, rotation_type='AXIS_ANGLE')
 ```
 
-[Blender Image](self.node_image_ref)
+![Blender Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeVectorRotate.webp)
 
 ### Args:
 

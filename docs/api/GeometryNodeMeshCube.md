@@ -13,7 +13,7 @@ from geonodes import nodes
 node = nodes.Cube(size=None, vertices_x=None, vertices_y=None, vertices_z=None)
 ```
 
-[Blender Image](self.node_image_ref)
+![Blender Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeMeshCube.webp)
 
 ### Args:
 

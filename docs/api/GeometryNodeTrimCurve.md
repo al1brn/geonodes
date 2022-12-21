@@ -13,7 +13,7 @@ from geonodes import nodes
 node = nodes.TrimCurve(curve=None, start0=None, start1=None, end0=None, end1=None, mode='FACTOR')
 ```
 
-[Blender Image](self.node_image_ref)
+![Blender Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeTrimCurve.webp)
 
 ### Args:
 

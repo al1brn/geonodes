@@ -13,7 +13,7 @@ from geonodes import nodes
 node = nodes.RealizeInstances(geometry=None, legacy_behavior=False)
 ```
 
-[Blender Image](self.node_image_ref)
+![Blender Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeRealizeInstances.webp)
 
 ### Args:
 

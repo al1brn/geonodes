@@ -13,7 +13,7 @@ from geonodes import nodes
 node = nodes.MagicTexture(vector=None, scale=None, distortion=None, turbulence_depth=2)
 ```
 
-[Blender Image](self.node_image_ref)
+![Blender Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexMagic.webp)
 
 ### Args:
 

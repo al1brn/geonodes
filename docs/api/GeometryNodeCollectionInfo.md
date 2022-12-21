@@ -13,7 +13,7 @@ from geonodes import nodes
 node = nodes.CollectionInfo(collection=None, separate_children=None, reset_children=None, transform_space='ORIGINAL')
 ```
 
-[Blender Image](self.node_image_ref)
+![Blender Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeCollectionInfo.webp)
 
 ### Args:
 

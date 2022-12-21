@@ -13,7 +13,7 @@ from geonodes import nodes
 node = nodes.SampleNearestSurface(mesh=None, value=None, sample_position=None, data_type='FLOAT')
 ```
 
-[Blender Image](self.node_image_ref)
+![Blender Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeSampleNearestSurface.webp)
 
 ### Args:
 
