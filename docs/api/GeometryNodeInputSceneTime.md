@@ -20,7 +20,7 @@ node = nodes.SceneTime()
 
 ## Implementation
 
-#### class [Float](Float.md)
+#### [Float](Float.md)
 
- - [Seconds](Float.md#Seconds-classmethod)
- - [Frame](Float.md#Frame-classmethod)
+ - [Seconds](Float.md#Seconds-classmethod) ```python nodes.SceneTime(````
+ - [Frame](Float.md#Frame-classmethod) ```python nodes.SceneTime(````

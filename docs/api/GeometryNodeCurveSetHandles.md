@@ -31,7 +31,7 @@ node = nodes.SetHandleType(curve=None, selection=None, handle_type='AUTO', mode=
 
 ## Implementation
 
-#### class [ControlPoint](ControlPoint.md)
+#### [ControlPoint](ControlPoint.md)
 
- - [set_handle_type_node](ControlPoint.md#set_handle_type_node)
- - [set_handle_type](ControlPoint.md#set_handle_type)
+ - [set_handle_type_node](ControlPoint.md#set_handle_type_node) ```python nodes.SetHandleType(curve=self.data_socket, selection=self.selection, handle_type=handle_type, mode=mode````
+ - [set_handle_type](ControlPoint.md#set_handle_type) ```python nodes.SetHandleType(curve=curve, selection=selection, handle_type=handle_type, mode=mode````

@@ -35,9 +35,9 @@ node = nodes.MeshToVolume(mesh=None, density=None, voxel_size=None, voxel_amount
 
 ## Implementation
 
-#### class [Mesh](Mesh.md)
+#### [Mesh](Mesh.md)
 
- - [to_volume](Mesh.md#to_volume)
-#### class [Vertex](Vertex.md)
+ - [to_volume](Mesh.md#to_volume) ```python nodes.MeshToVolume(mesh=self, density=density, voxel_size=voxel_size, voxel_amount=voxel_amount, exterior_band_width=exterior_band_width, interior_band_width=interior_band_width, fill_volume=fill_volume, resolution_mode=resolution_mode````
+#### [Vertex](Vertex.md)
 
- - [to_volume](Vertex.md#to_volume)
+ - [to_volume](Vertex.md#to_volume) ```python nodes.MeshToVolume(mesh=self.data_socket, density=density, voxel_size=voxel_size, voxel_amount=voxel_amount, exterior_band_width=exterior_band_width, interior_band_width=interior_band_width, fill_volume=fill_volume, resolution_mode=resolution_mode````

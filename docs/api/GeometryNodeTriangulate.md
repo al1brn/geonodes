@@ -32,9 +32,9 @@ node = nodes.Triangulate(mesh=None, selection=None, minimum_vertices=None, ngon_
 
 ## Implementation
 
-#### class [Face](Face.md)
+#### [Face](Face.md)
 
- - [triangulate](Face.md#triangulate)
-#### class [Mesh](Mesh.md)
+ - [triangulate](Face.md#triangulate) ```python nodes.Triangulate(mesh=self.data_socket, selection=self.selection, minimum_vertices=minimum_vertices, ngon_method=ngon_method, quad_method=quad_method````
+#### [Mesh](Mesh.md)
 
- - [triangulate](Mesh.md#triangulate)
+ - [triangulate](Mesh.md#triangulate) ```python nodes.Triangulate(mesh=self, selection=selection, minimum_vertices=minimum_vertices, ngon_method=ngon_method, quad_method=quad_method````

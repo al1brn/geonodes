@@ -37,6 +37,6 @@ node = nodes.MusgraveTexture(vector=None, w=None, scale=None, detail=None, dimen
 
 ## Implementation
 
-#### class [Texture](Texture.md)
+#### [Texture](Texture.md)
 
- - [musgrave](Texture.md#musgrave-staticmethod)
+ - [musgrave](Texture.md#musgrave-staticmethod) ```python nodes.MusgraveTexture(vector=vector, w=w, scale=scale, detail=detail, dimension=dimension, lacunarity=lacunarity, offset=offset, gain=gain, musgrave_dimensions=musgrave_dimensions, musgrave_type=musgrave_type````

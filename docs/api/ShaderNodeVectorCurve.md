@@ -26,6 +26,6 @@ node = nodes.VectorCurves(fac=None, vector=None)
 
 ## Implementation
 
-#### class [Vector](Vector.md)
+#### [Vector](Vector.md)
 
- - [curves](Vector.md#curves)
+ - [curves](Vector.md#curves) ```python nodes.VectorCurves(fac=fac, vector=self````

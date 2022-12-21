@@ -28,7 +28,7 @@ node = nodes.ColorRamp(fac=None)
 
 #### Global functions
 
- - [color_ramp](A.md#color_ramp)
-#### class [Float](Float.md)
+ - [color_ramp](A.md#color_ramp) ```python nodes.ColorRamp(fac=fac````
+#### [Float](Float.md)
 
- - [color_ramp](Float.md#color_ramp-property)
+ - [color_ramp](Float.md#color_ramp-property) ```python nodes.ColorRamp(fac=self````

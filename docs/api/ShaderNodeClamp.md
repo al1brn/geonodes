@@ -33,11 +33,11 @@ node = nodes.Clamp(value=None, min=None, max=None, clamp_type='MINMAX')
 
 #### Global functions
 
- - [clamp](A.md#clamp)
- - [clamp_min_max](A.md#clamp_min_max)
- - [clamp_range](A.md#clamp_range)
-#### class [Float](Float.md)
+ - [clamp](A.md#clamp) ```python nodes.Clamp(value=value, min=min, max=max, clamp_type=clamp_type````
+ - [clamp_min_max](A.md#clamp_min_max) ```python nodes.Clamp(value=value, min=min, max=max, clamp_type='MINMAX'````
+ - [clamp_range](A.md#clamp_range) ```python nodes.Clamp(value=value, min=min, max=max, clamp_type='RANGE'````
+#### [Float](Float.md)
 
- - [clamp](Float.md#clamp)
- - [clamp_min_max](Float.md#clamp_min_max)
- - [clamp_range](Float.md#clamp_range)
+ - [clamp](Float.md#clamp) ```python nodes.Clamp(value=self, min=min, max=max, clamp_type=clamp_type````
+ - [clamp_min_max](Float.md#clamp_min_max) ```python nodes.Clamp(value=self, min=min, max=max, clamp_type='MINMAX'````
+ - [clamp_range](Float.md#clamp_range) ```python nodes.Clamp(value=self, min=min, max=max, clamp_type='RANGE'````

@@ -27,6 +27,6 @@ node = nodes.CombineXyz(x=None, y=None, z=None)
 
 ## Implementation
 
-#### class [Vector](Vector.md)
+#### [Vector](Vector.md)
 
- - [Combine](Vector.md#Combine-classmethod)
+ - [Combine](Vector.md#Combine-classmethod) ```python nodes.CombineXyz(x=x, y=y, z=z````

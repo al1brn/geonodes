@@ -34,9 +34,9 @@ node = nodes.CurveToPoints(curve=None, count=None, length=None, mode='COUNT')
 
 ## Implementation
 
-#### class [Curve](Curve.md)
+#### [Curve](Curve.md)
 
- - [to_points](Curve.md#to_points)
- - [to_points_count](Curve.md#to_points_count)
- - [to_points_length](Curve.md#to_points_length)
- - [to_points_evaluated](Curve.md#to_points_evaluated)
+ - [to_points](Curve.md#to_points) ```python nodes.CurveToPoints(curve=self, count=count, length=length, mode=mode````
+ - [to_points_count](Curve.md#to_points_count) ```python nodes.CurveToPoints(curve=self, count=count, length=0.1, mode='COUNT'````
+ - [to_points_length](Curve.md#to_points_length) ```python nodes.CurveToPoints(curve=self, count=10, length=length, mode='LENGTH'````
+ - [to_points_evaluated](Curve.md#to_points_evaluated) ```python nodes.CurveToPoints(curve=self, count=10, length=0.1, mode='EVALUATED'````

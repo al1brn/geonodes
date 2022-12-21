@@ -26,8 +26,8 @@ node = nodes.CurveHandlePositions(relative=None)
 
 ## Implementation
 
-#### class [ControlPoint](ControlPoint.md)
+#### [ControlPoint](ControlPoint.md)
 
- - [handle_positions](ControlPoint.md#handle_positions)
- - [left_handle_positions](ControlPoint.md#left_handle_positions-property)
- - [right_handle_positions](ControlPoint.md#right_handle_positions-property)
+ - [handle_positions](ControlPoint.md#handle_positions) ```python nodes.CurveHandlePositions(relative=relative````
+ - [left_handle_positions](ControlPoint.md#left_handle_positions-property) ```python nodes.CurveHandlePositions(relative=None````
+ - [right_handle_positions](ControlPoint.md#right_handle_positions-property) ```python nodes.CurveHandlePositions(relative=None````

@@ -31,6 +31,6 @@ node = nodes.CollectionInfo(collection=None, separate_children=None, reset_child
 
 ## Implementation
 
-#### class [Geometry](Geometry.md)
+#### [Geometry](Geometry.md)
 
- - [Collection](Geometry.md#Collection-classmethod)
+ - [Collection](Geometry.md#Collection-classmethod) ```python nodes.CollectionInfo(collection=collection, separate_children=separate_children, reset_children=reset_children, transform_space=transform_space````

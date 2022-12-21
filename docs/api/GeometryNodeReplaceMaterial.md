@@ -27,6 +27,6 @@ node = nodes.ReplaceMaterial(geometry=None, old=None, new=None)
 
 ## Implementation
 
-#### class [Geometry](Geometry.md)
+#### [Geometry](Geometry.md)
 
- - [replace_material](Geometry.md#replace_material)
+ - [replace_material](Geometry.md#replace_material) ```python nodes.ReplaceMaterial(geometry=self, old=old, new=new````

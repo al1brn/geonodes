@@ -26,6 +26,6 @@ node = nodes.ReverseCurve(curve=None, selection=None)
 
 ## Implementation
 
-#### class [Curve](Curve.md)
+#### [Curve](Curve.md)
 
- - [reverse](Curve.md#reverse)
+ - [reverse](Curve.md#reverse) ```python nodes.ReverseCurve(curve=self, selection=selection````

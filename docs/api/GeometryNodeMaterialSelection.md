@@ -25,9 +25,9 @@ node = nodes.MaterialSelection(material=None)
 
 ## Implementation
 
-#### class [Domain](Domain.md)
+#### [Domain](Domain.md)
 
- - [material_selection](Domain.md#material_selection)
-#### class [Geometry](Geometry.md)
+ - [material_selection](Domain.md#material_selection) ```python nodes.MaterialSelection(material=material````
+#### [Geometry](Geometry.md)
 
- - [material_selection](Geometry.md#material_selection)
+ - [material_selection](Geometry.md#material_selection) ```python nodes.MaterialSelection(material=material````

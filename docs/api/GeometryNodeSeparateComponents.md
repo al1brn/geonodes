@@ -29,11 +29,11 @@ node = nodes.SeparateComponents(geometry=None)
 
 ## Implementation
 
-#### class [Geometry](Geometry.md)
+#### [Geometry](Geometry.md)
 
- - [separate_components](Geometry.md#separate_components-property)
- - [mesh_component](Geometry.md#mesh_component-property)
- - [curve_component](Geometry.md#curve_component-property)
- - [points_component](Geometry.md#points_component-property)
- - [volume_component](Geometry.md#volume_component-property)
- - [instances_component](Geometry.md#instances_component-property)
+ - [separate_components](Geometry.md#separate_components-property) ```python nodes.SeparateComponents(geometry=self````
+ - [mesh_component](Geometry.md#mesh_component-property) ```python nodes.SeparateComponents(geometry=self````
+ - [curve_component](Geometry.md#curve_component-property) ```python nodes.SeparateComponents(geometry=self````
+ - [points_component](Geometry.md#points_component-property) ```python nodes.SeparateComponents(geometry=self````
+ - [volume_component](Geometry.md#volume_component-property) ```python nodes.SeparateComponents(geometry=self````
+ - [instances_component](Geometry.md#instances_component-property) ```python nodes.SeparateComponents(geometry=self````

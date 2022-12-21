@@ -32,23 +32,23 @@ node = nodes.BooleanMath(boolean0=None, boolean1=None, operation='AND')
 
 #### Global functions
 
- - [b_and](A.md#b_and)
- - [b_or](A.md#b_or)
- - [b_not](A.md#b_not)
- - [nand](A.md#nand)
- - [nor](A.md#nor)
- - [xnor](A.md#xnor)
- - [xor](A.md#xor)
- - [imply](A.md#imply)
- - [nimply](A.md#nimply)
-#### class [Boolean](Boolean.md)
+ - [b_and](A.md#b_and) ```python nodes.BooleanMath(boolean0=boolean0, boolean1=boolean1, operation='AND'````
+ - [b_or](A.md#b_or) ```python nodes.BooleanMath(boolean0=boolean0, boolean1=boolean1, operation='OR'````
+ - [b_not](A.md#b_not) ```python nodes.BooleanMath(boolean0=boolean0, boolean1=None, operation='NOT'````
+ - [nand](A.md#nand) ```python nodes.BooleanMath(boolean0=boolean0, boolean1=boolean1, operation='NAND'````
+ - [nor](A.md#nor) ```python nodes.BooleanMath(boolean0=boolean0, boolean1=boolean1, operation='NOR'````
+ - [xnor](A.md#xnor) ```python nodes.BooleanMath(boolean0=boolean0, boolean1=boolean1, operation='XNOR'````
+ - [xor](A.md#xor) ```python nodes.BooleanMath(boolean0=boolean0, boolean1=boolean1, operation='XOR'````
+ - [imply](A.md#imply) ```python nodes.BooleanMath(boolean0=boolean0, boolean1=boolean1, operation='IMPLY'````
+ - [nimply](A.md#nimply) ```python nodes.BooleanMath(boolean0=boolean0, boolean1=boolean1, operation='NIMPLY'````
+#### [Boolean](Boolean.md)
 
- - [b_and](Boolean.md#b_and)
- - [b_or](Boolean.md#b_or)
- - [b_not](Boolean.md#b_not)
- - [nand](Boolean.md#nand)
- - [nor](Boolean.md#nor)
- - [xnor](Boolean.md#xnor)
- - [xor](Boolean.md#xor)
- - [imply](Boolean.md#imply)
- - [nimply](Boolean.md#nimply)
+ - [b_and](Boolean.md#b_and) ```python nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='AND'````
+ - [b_or](Boolean.md#b_or) ```python nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='OR'````
+ - [b_not](Boolean.md#b_not) ```python nodes.BooleanMath(boolean0=self, boolean1=None, operation='NOT'````
+ - [nand](Boolean.md#nand) ```python nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='NAND'````
+ - [nor](Boolean.md#nor) ```python nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='NOR'````
+ - [xnor](Boolean.md#xnor) ```python nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='XNOR'````
+ - [xor](Boolean.md#xor) ```python nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='XOR'````
+ - [imply](Boolean.md#imply) ```python nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='IMPLY'````
+ - [nimply](Boolean.md#nimply) ```python nodes.BooleanMath(boolean0=self, boolean1=boolean1, operation='NIMPLY'````

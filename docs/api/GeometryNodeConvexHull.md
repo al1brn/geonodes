@@ -25,6 +25,6 @@ node = nodes.ConvexHull(geometry=None)
 
 ## Implementation
 
-#### class [Geometry](Geometry.md)
+#### [Geometry](Geometry.md)
 
- - [convex_hull](Geometry.md#convex_hull-property)
+ - [convex_hull](Geometry.md#convex_hull-property) ```python nodes.ConvexHull(geometry=self````

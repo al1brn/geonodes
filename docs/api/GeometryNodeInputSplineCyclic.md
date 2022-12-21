@@ -19,6 +19,6 @@ node = nodes.IsSplineCyclic()
 
 ## Implementation
 
-#### class [Spline](Spline.md)
+#### [Spline](Spline.md)
 
- - [cyclic](Spline.md#cyclic-property)
+ - [cyclic](Spline.md#cyclic-property) ```python nodes.IsSplineCyclic(````

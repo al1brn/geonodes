@@ -35,15 +35,15 @@ node = nodes.ExtrudeMesh(mesh=None, selection=None, offset=None, offset_scale=No
 
 ## Implementation
 
-#### class [Edge](Edge.md)
+#### [Edge](Edge.md)
 
- - [extrude](Edge.md#extrude)
-#### class [Face](Face.md)
+ - [extrude](Edge.md#extrude) ```python nodes.ExtrudeMesh(mesh=self.data_socket, selection=self.selection, offset=offset, offset_scale=offset_scale, individual=individual, mode='EDGES'````
+#### [Face](Face.md)
 
- - [extrude](Face.md#extrude)
-#### class [Mesh](Mesh.md)
+ - [extrude](Face.md#extrude) ```python nodes.ExtrudeMesh(mesh=self.data_socket, selection=self.selection, offset=offset, offset_scale=offset_scale, individual=individual, mode='FACES'````
+#### [Mesh](Mesh.md)
 
- - [extrude](Mesh.md#extrude)
-#### class [Vertex](Vertex.md)
+ - [extrude](Mesh.md#extrude) ```python nodes.ExtrudeMesh(mesh=self, selection=selection, offset=offset, offset_scale=offset_scale, individual=individual, mode=mode````
+#### [Vertex](Vertex.md)
 
- - [extrude](Vertex.md#extrude)
+ - [extrude](Vertex.md#extrude) ```python nodes.ExtrudeMesh(mesh=self.data_socket, selection=self.selection, offset=offset, offset_scale=offset_scale, individual=individual, mode='VERTICES'````

@@ -43,7 +43,7 @@ node = nodes.StringToCurves(string=None, size=None, character_spacing=None, word
 
 #### Global functions
 
- - [string_to_curves](A.md#string_to_curves)
-#### class [String](String.md)
+ - [string_to_curves](A.md#string_to_curves) ```python nodes.StringToCurves(string=string, size=size, character_spacing=character_spacing, word_spacing=word_spacing, line_spacing=line_spacing, text_box_width=text_box_width, text_box_height=text_box_height, align_x=align_x, align_y=align_y, overflow=overflow, pivot_mode=pivot_mode````
+#### [String](String.md)
 
- - [to_curves](String.md#to_curves)
+ - [to_curves](String.md#to_curves) ```python nodes.StringToCurves(string=string, size=size, character_spacing=character_spacing, word_spacing=word_spacing, line_spacing=line_spacing, text_box_width=text_box_width, text_box_height=text_box_height, align_x=align_x, align_y=align_y, overflow=overflow, pivot_mode=pivot_mode````

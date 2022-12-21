@@ -28,6 +28,6 @@ node = nodes.Transform(geometry=None, translation=None, rotation=None, scale=Non
 
 ## Implementation
 
-#### class [Geometry](Geometry.md)
+#### [Geometry](Geometry.md)
 
- - [transform](Geometry.md#transform)
+ - [transform](Geometry.md#transform) ```python nodes.Transform(geometry=self, translation=translation, rotation=rotation, scale=scale````

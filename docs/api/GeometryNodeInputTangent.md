@@ -19,6 +19,6 @@ node = nodes.CurveTangent()
 
 ## Implementation
 
-#### class [ControlPoint](ControlPoint.md)
+#### [ControlPoint](ControlPoint.md)
 
- - [tangent](ControlPoint.md#tangent-property)
+ - [tangent](ControlPoint.md#tangent-property) ```python nodes.CurveTangent(````

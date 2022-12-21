@@ -25,9 +25,9 @@ node = nodes.FaceIsPlanar(threshold=None)
 
 ## Implementation
 
-#### class [Face](Face.md)
+#### [Face](Face.md)
 
- - [is_planar](Face.md#is_planar)
-#### class [Mesh](Mesh.md)
+ - [is_planar](Face.md#is_planar) ```python nodes.FaceIsPlanar(threshold=threshold````
+#### [Mesh](Mesh.md)
 
- - [face_is_planar](Mesh.md#face_is_planar)
+ - [face_is_planar](Mesh.md#face_is_planar) ```python nodes.FaceIsPlanar(threshold=threshold````

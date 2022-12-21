@@ -33,6 +33,6 @@ node = nodes.SubdivisionSurface(mesh=None, level=None, edge_crease=None, vertex_
 
 ## Implementation
 
-#### class [Mesh](Mesh.md)
+#### [Mesh](Mesh.md)
 
- - [subdivision_surface](Mesh.md#subdivision_surface)
+ - [subdivision_surface](Mesh.md#subdivision_surface) ```python nodes.SubdivisionSurface(mesh=self, level=level, edge_crease=edge_crease, vertex_crease=vertex_crease, boundary_smooth=boundary_smooth, uv_smooth=uv_smooth````

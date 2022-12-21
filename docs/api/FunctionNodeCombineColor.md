@@ -34,11 +34,11 @@ node = nodes.CombineColor(red=None, green=None, blue=None, alpha=None, mode='RGB
 
 #### Global functions
 
- - [combine_rgb](A.md#combine_rgb)
- - [combine_hsv](A.md#combine_hsv)
- - [combine_hsl](A.md#combine_hsl)
-#### class [Color](Color.md)
+ - [combine_rgb](A.md#combine_rgb) ```python nodes.CombineColor(red=red, green=green, blue=blue, alpha=alpha, mode='RGB'````
+ - [combine_hsv](A.md#combine_hsv) ```python nodes.CombineColor(red=hue, green=saturation, blue=value, alpha=alpha, mode='HSV'````
+ - [combine_hsl](A.md#combine_hsl) ```python nodes.CombineColor(red=hue, green=saturation, blue=lightness, alpha=alpha, mode='HSL'````
+#### [Color](Color.md)
 
- - [RGB](Color.md#RGB-classmethod)
- - [HSV](Color.md#HSV-classmethod)
- - [HSL](Color.md#HSL-classmethod)
+ - [RGB](Color.md#RGB-classmethod) ```python nodes.CombineColor(red=red, green=green, blue=blue, alpha=alpha, mode='RGB'````
+ - [HSV](Color.md#HSV-classmethod) ```python nodes.CombineColor(red=hue, green=saturation, blue=value, alpha=alpha, mode='HSV'````
+ - [HSL](Color.md#HSL-classmethod) ```python nodes.CombineColor(red=hue, green=saturation, blue=lightness, alpha=alpha, mode='HSV'````

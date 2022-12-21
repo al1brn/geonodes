@@ -29,7 +29,7 @@ node = nodes.SliceString(string=None, position=None, length=None)
 
 #### Global functions
 
- - [slice_string](A.md#slice_string)
-#### class [String](String.md)
+ - [slice_string](A.md#slice_string) ```python nodes.SliceString(string=string, position=position, length=length````
+#### [String](String.md)
 
- - [slice](String.md#slice)
+ - [slice](String.md#slice) ```python nodes.SliceString(string=self, position=position, length=length````

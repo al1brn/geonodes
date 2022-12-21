@@ -28,9 +28,9 @@ node = nodes.InstancesToPoints(instances=None, selection=None, position=None, ra
 
 ## Implementation
 
-#### class [Instance](Instance.md)
+#### [Instance](Instance.md)
 
- - [to_points](Instance.md#to_points)
-#### class [Instances](Instances.md)
+ - [to_points](Instance.md#to_points) ```python nodes.InstancesToPoints(instances=self.data_socket, selection=self.selection, position=position, radius=radius````
+#### [Instances](Instances.md)
 
- - [to_points](Instances.md#to_points)
+ - [to_points](Instances.md#to_points) ```python nodes.InstancesToPoints(instances=self, selection=selection, position=position, radius=radius````

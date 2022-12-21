@@ -25,9 +25,9 @@ node = nodes.FaceSetBoundaries(face_set=None)
 
 ## Implementation
 
-#### class [Face](Face.md)
+#### [Face](Face.md)
 
- - [face_set_boundaries](Face.md#face_set_boundaries)
-#### class [Mesh](Mesh.md)
+ - [face_set_boundaries](Face.md#face_set_boundaries) ```python nodes.FaceSetBoundaries(face_set=self.selection_index````
+#### [Mesh](Mesh.md)
 
- - [face_set_boundaries](Mesh.md#face_set_boundaries)
+ - [face_set_boundaries](Mesh.md#face_set_boundaries) ```python nodes.FaceSetBoundaries(face_set=face_set````

@@ -31,9 +31,9 @@ node = nodes.GeometryProximity(target=None, source_position=None, target_element
 
 ## Implementation
 
-#### class [Geometry](Geometry.md)
+#### [Geometry](Geometry.md)
 
- - [proximity](Geometry.md#proximity)
- - [proximity_points](Geometry.md#proximity_points)
- - [proximity_edges](Geometry.md#proximity_edges)
- - [proximity_facess](Geometry.md#proximity_facess)
+ - [proximity](Geometry.md#proximity) ```python nodes.GeometryProximity(target=target, source_position=source_position, target_element=target_element````
+ - [proximity_points](Geometry.md#proximity_points) ```python nodes.GeometryProximity(target=target, source_position=source_position, target_element='POINTS'````
+ - [proximity_edges](Geometry.md#proximity_edges) ```python nodes.GeometryProximity(target=target, source_position=source_position, target_element='EDGES'````
+ - [proximity_facess](Geometry.md#proximity_facess) ```python nodes.GeometryProximity(target=target, source_position=source_position, target_element='FACES'````

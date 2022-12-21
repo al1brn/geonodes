@@ -36,6 +36,6 @@ node = nodes.Cylinder(vertices=None, side_segments=None, fill_segments=None, rad
 
 ## Implementation
 
-#### class [Mesh](Mesh.md)
+#### [Mesh](Mesh.md)
 
- - [Cylinder](Mesh.md#Cylinder-staticmethod)
+ - [Cylinder](Mesh.md#Cylinder-staticmethod) ```python nodes.Cylinder(vertices=vertices, side_segments=side_segments, fill_segments=fill_segments, radius=radius, depth=depth, fill_type=fill_type````

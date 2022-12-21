@@ -27,6 +27,6 @@ node = nodes.SeparateXyz(vector=None)
 
 ## Implementation
 
-#### class [Vector](Vector.md)
+#### [Vector](Vector.md)
 
- - [separate](Vector.md#separate-property)
+ - [separate](Vector.md#separate-property) ```python nodes.SeparateXyz(vector=self````

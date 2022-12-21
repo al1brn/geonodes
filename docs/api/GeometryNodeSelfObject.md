@@ -19,6 +19,6 @@ node = nodes.SelfObject()
 
 ## Implementation
 
-#### class [Object](Object.md)
+#### [Object](Object.md)
 
- - [Self](Object.md#Self-classmethod)
+ - [Self](Object.md#Self-classmethod) ```python nodes.SelfObject(````

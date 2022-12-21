@@ -33,9 +33,9 @@ node = nodes.ImageTexture(image=None, vector=None, frame=None, extension='REPEAT
 
 ## Implementation
 
-#### class [Image](Image.md)
+#### [Image](Image.md)
 
- - [texture](Image.md#texture)
-#### class [Texture](Texture.md)
+ - [texture](Image.md#texture) ```python nodes.ImageTexture(image=self, vector=vector, frame=frame, extension=extension, interpolation=interpolation````
+#### [Texture](Texture.md)
 
- - [image](Texture.md#image-staticmethod)
+ - [image](Texture.md#image-staticmethod) ```python nodes.ImageTexture(image=image, vector=vector, frame=frame, extension=extension, interpolation=interpolation````

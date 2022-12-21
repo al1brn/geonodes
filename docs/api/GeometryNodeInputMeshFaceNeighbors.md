@@ -20,8 +20,8 @@ node = nodes.FaceNeighbors()
 
 ## Implementation
 
-#### class [Face](Face.md)
+#### [Face](Face.md)
 
- - [neighbors](Face.md#neighbors-property)
- - [neighbors_vertex_count](Face.md#neighbors_vertex_count-property)
- - [neighbors_face_count](Face.md#neighbors_face_count-property)
+ - [neighbors](Face.md#neighbors-property) ```python nodes.FaceNeighbors(````
+ - [neighbors_vertex_count](Face.md#neighbors_vertex_count-property) ```python nodes.FaceNeighbors(````
+ - [neighbors_face_count](Face.md#neighbors_face_count-property) ```python nodes.FaceNeighbors(````

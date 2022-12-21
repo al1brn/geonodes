@@ -28,6 +28,6 @@ node = nodes.Grid(size_x=None, size_y=None, vertices_x=None, vertices_y=None)
 
 ## Implementation
 
-#### class [Mesh](Mesh.md)
+#### [Mesh](Mesh.md)
 
- - [Grid](Mesh.md#Grid-classmethod)
+ - [Grid](Mesh.md#Grid-classmethod) ```python nodes.Grid(size_x=size_x, size_y=size_y, vertices_x=vertices_x, vertices_y=vertices_y````

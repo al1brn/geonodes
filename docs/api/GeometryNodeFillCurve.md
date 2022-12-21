@@ -29,8 +29,8 @@ node = nodes.FillCurve(curve=None, mode='TRIANGLES')
 
 ## Implementation
 
-#### class [Curve](Curve.md)
+#### [Curve](Curve.md)
 
- - [fill](Curve.md#fill)
- - [fill_triangles](Curve.md#fill_triangles)
- - [fill_ngons](Curve.md#fill_ngons)
+ - [fill](Curve.md#fill) ```python nodes.FillCurve(curve=curve, mode=mode````
+ - [fill_triangles](Curve.md#fill_triangles) ```python nodes.FillCurve(curve=curve, mode='TRIANGLES'````
+ - [fill_ngons](Curve.md#fill_ngons) ```python nodes.FillCurve(curve=curve, mode='NGONS'````

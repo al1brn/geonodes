@@ -38,9 +38,9 @@ node = nodes.SampleIndex(geometry=None, value=None, index=None, clamp=False, dat
 - Output sockets : ['value']
 ## Implementation
 
-#### class [Domain](Domain.md)
+#### [Domain](Domain.md)
 
- - [sample_index](Domain.md#sample_index)
-#### class [Geometry](Geometry.md)
+ - [sample_index](Domain.md#sample_index) ```python nodes.SampleIndex(geometry=self.data_socket, value=value, index=index, clamp=clamp, data_type=data_type_, domain=self.domain````
+#### [Geometry](Geometry.md)
 
- - [sample_index](Geometry.md#sample_index)
+ - [sample_index](Geometry.md#sample_index) ```python nodes.SampleIndex(geometry=self, value=value, index=index, clamp=clamp, data_type=data_type_, domain=domain````

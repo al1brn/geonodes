@@ -27,6 +27,6 @@ node = nodes.Points(count=None, position=None, radius=None)
 
 ## Implementation
 
-#### class [Points](Points.md)
+#### [Points](Points.md)
 
- - [Points](Points.md#Points-classmethod)
+ - [Points](Points.md#Points-classmethod) ```python nodes.Points(count=count, position=position, radius=radius````

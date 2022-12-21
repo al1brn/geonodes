@@ -43,6 +43,6 @@ node = nodes.SampleCurve(curves=None, value=None, factor=None, length=None, curv
 - Output sockets : ['value']
 ## Implementation
 
-#### class [Curve](Curve.md)
+#### [Curve](Curve.md)
 
- - [sample](Curve.md#sample)
+ - [sample](Curve.md#sample) ```python nodes.SampleCurve(curves=self, value=value, factor=factor, length=length, curve_index=curve_index, data_type=data_type, mode=mode, use_all_curves=use_all_curves````

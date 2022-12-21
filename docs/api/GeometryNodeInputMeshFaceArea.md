@@ -19,6 +19,6 @@ node = nodes.FaceArea()
 
 ## Implementation
 
-#### class [Face](Face.md)
+#### [Face](Face.md)
 
- - [area](Face.md#area-property)
+ - [area](Face.md#area-property) ```python nodes.FaceArea(````

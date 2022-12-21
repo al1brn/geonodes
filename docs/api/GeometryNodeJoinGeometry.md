@@ -27,7 +27,7 @@ node = nodes.JoinGeometry(*geometry)
 
 #### Global functions
 
- - [join_geometry](A.md#join_geometry)
-#### class [Geometry](Geometry.md)
+ - [join_geometry](A.md#join_geometry) ```python nodes.JoinGeometry(*geometry````
+#### [Geometry](Geometry.md)
 
- - [join](Geometry.md#join)
+ - [join](Geometry.md#join) ```python nodes.JoinGeometry(*geometry````

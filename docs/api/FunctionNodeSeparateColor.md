@@ -34,19 +34,19 @@ node = nodes.SeparateColor(color=None, mode='RGB')
 
 #### Global functions
 
- - [separate_rgb](A.md#separate_rgb)
- - [separate_hsv](A.md#separate_hsv)
- - [separate_hsl](A.md#separate_hsl)
-#### class [Color](Color.md)
+ - [separate_rgb](A.md#separate_rgb) ```python nodes.SeparateColor(color=color, mode='RGB'````
+ - [separate_hsv](A.md#separate_hsv) ```python nodes.SeparateColor(color=color, mode='HSV'````
+ - [separate_hsl](A.md#separate_hsl) ```python nodes.SeparateColor(color=color, mode='HSL'````
+#### [Color](Color.md)
 
- - [rgb](Color.md#rgb-property)
- - [hsv](Color.md#hsv-property)
- - [hsl](Color.md#hsl-property)
- - [alpha](Color.md#alpha-property)
- - [red](Color.md#red-property)
- - [green](Color.md#green-property)
- - [blue](Color.md#blue-property)
- - [hue](Color.md#hue-property)
- - [saturation](Color.md#saturation-property)
- - [value](Color.md#value-property)
- - [lightness](Color.md#lightness-property)
+ - [rgb](Color.md#rgb-property) ```python nodes.SeparateColor(color=self, mode='RGB'````
+ - [hsv](Color.md#hsv-property) ```python nodes.SeparateColor(color=self, mode='HSV'````
+ - [hsl](Color.md#hsl-property) ```python nodes.SeparateColor(color=self, mode='HSL'````
+ - [alpha](Color.md#alpha-property) ```python nodes.SeparateColor(color=self, mode=RGB````
+ - [red](Color.md#red-property) ```python nodes.SeparateColor(color=self, mode=RGB````
+ - [green](Color.md#green-property) ```python nodes.SeparateColor(color=self, mode=RGB````
+ - [blue](Color.md#blue-property) ```python nodes.SeparateColor(color=self, mode=RGB````
+ - [hue](Color.md#hue-property) ```python nodes.SeparateColor(color=self, mode=HSV````
+ - [saturation](Color.md#saturation-property) ```python nodes.SeparateColor(color=self, mode=HSV````
+ - [value](Color.md#value-property) ```python nodes.SeparateColor(color=self, mode=HSV````
+ - [lightness](Color.md#lightness-property) ```python nodes.SeparateColor(color=self, mode=HSL````

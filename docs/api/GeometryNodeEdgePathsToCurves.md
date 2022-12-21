@@ -27,9 +27,9 @@ node = nodes.EdgePathsToCurves(mesh=None, start_vertices=None, next_vertex_index
 
 ## Implementation
 
-#### class [Edge](Edge.md)
+#### [Edge](Edge.md)
 
- - [edge_paths_to_curves](Edge.md#edge_paths_to_curves)
-#### class [Mesh](Mesh.md)
+ - [edge_paths_to_curves](Edge.md#edge_paths_to_curves) ```python nodes.EdgePathsToCurves(mesh=self.data_socket, start_vertices=start_vertices, next_vertex_index=next_vertex_index````
+#### [Mesh](Mesh.md)
 
- - [edge_paths_to_curves](Mesh.md#edge_paths_to_curves)
+ - [edge_paths_to_curves](Mesh.md#edge_paths_to_curves) ```python nodes.EdgePathsToCurves(mesh=self, start_vertices=start_vertices, next_vertex_index=next_vertex_index````

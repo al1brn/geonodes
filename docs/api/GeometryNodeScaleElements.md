@@ -34,16 +34,16 @@ node = nodes.ScaleElements(geometry=None, selection=None, scale=None, center=Non
 
 ## Implementation
 
-#### class [Edge](Edge.md)
+#### [Edge](Edge.md)
 
- - [scale_uniform](Edge.md#scale_uniform)
- - [scale_single_axis](Edge.md#scale_single_axis)
-#### class [Face](Face.md)
+ - [scale_uniform](Edge.md#scale_uniform) ```python nodes.ScaleElements(geometry=self.data_socket, selection=self.selection, scale=scale, center=center, axis=None, domain=self.domain, scale_mode='UNIFORM'````
+ - [scale_single_axis](Edge.md#scale_single_axis) ```python nodes.ScaleElements(geometry=self.data_socket, selection=self.selection, scale=scale, center=center, axis=axis, domain=self.domain, scale_mode='SINGLE_AXIS'````
+#### [Face](Face.md)
 
- - [scale_uniform](Face.md#scale_uniform)
- - [scale_single_axis](Face.md#scale_single_axis)
-#### class [Mesh](Mesh.md)
+ - [scale_uniform](Face.md#scale_uniform) ```python nodes.ScaleElements(geometry=self.data_socket, selection=self.selection, scale=scale, center=center, axis=None, domain=self.domain, scale_mode='UNIFORM'````
+ - [scale_single_axis](Face.md#scale_single_axis) ```python nodes.ScaleElements(geometry=self.data_socket, selection=self.selection, scale=scale, center=center, axis=axis, domain=self.domain, scale_mode='SINGLE_AXIS'````
+#### [Mesh](Mesh.md)
 
- - [scale_elements](Mesh.md#scale_elements)
- - [scale_uniform](Mesh.md#scale_uniform)
- - [scale_single_axis](Mesh.md#scale_single_axis)
+ - [scale_elements](Mesh.md#scale_elements) ```python nodes.ScaleElements(geometry=self, selection=selection, scale=scale, center=center, axis=axis, domain=domain, scale_mode=scale_mode````
+ - [scale_uniform](Mesh.md#scale_uniform) ```python nodes.ScaleElements(geometry=self, selection=selection, scale=scale, center=center, axis=None, domain=domain, scale_mode='UNIFORM'````
+ - [scale_single_axis](Mesh.md#scale_single_axis) ```python nodes.ScaleElements(geometry=self, selection=selection, scale=scale, center=center, axis=axis, domain=domain, scale_mode='SINGLE_AXIS'````

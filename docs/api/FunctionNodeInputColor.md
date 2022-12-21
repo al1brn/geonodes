@@ -19,6 +19,6 @@ node = nodes.Color()
 
 ## Implementation
 
-#### class [Color](Color.md)
+#### [Color](Color.md)
 
- - [Color](Color.md#Color-classmethod)
+ - [Color](Color.md#Color-classmethod) ```python nodes.Color(````

@@ -34,10 +34,10 @@ node = nodes.AlignEulerToVector(rotation=None, factor=None, vector=None, axis='X
 
 #### Global functions
 
- - [align_euler_to_vector](A.md#align_euler_to_vector)
-#### class [Rotation](Rotation.md)
+ - [align_euler_to_vector](A.md#align_euler_to_vector) ```python nodes.AlignEulerToVector(rotation=rotation, factor=factor, vector=vector, axis=axis, pivot_axis=pivot_axis````
+#### [Rotation](Rotation.md)
 
- - [align_to_vector](Rotation.md#align_to_vector)
-#### class [Vector](Vector.md)
+ - [align_to_vector](Rotation.md#align_to_vector) ```python nodes.AlignEulerToVector(rotation=self, factor=factor, vector=vector, axis=axis, pivot_axis=pivot_axis````
+#### [Vector](Vector.md)
 
- - [align_euler_to_vector](Vector.md#align_euler_to_vector)
+ - [align_euler_to_vector](Vector.md#align_euler_to_vector) ```python nodes.AlignEulerToVector(rotation=self, factor=factor, vector=vector, axis=axis, pivot_axis=pivot_axis````

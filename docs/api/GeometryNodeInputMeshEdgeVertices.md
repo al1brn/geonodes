@@ -22,8 +22,8 @@ node = nodes.EdgeVertices()
 
 ## Implementation
 
-#### class [Edge](Edge.md)
+#### [Edge](Edge.md)
 
- - [vertices](Edge.md#vertices-property)
- - [vertices_index](Edge.md#vertices_index-property)
- - [vertices_position](Edge.md#vertices_position-property)
+ - [vertices](Edge.md#vertices-property) ```python nodes.EdgeVertices(````
+ - [vertices_index](Edge.md#vertices_index-property) ```python nodes.EdgeVertices(````
+ - [vertices_position](Edge.md#vertices_position-property) ```python nodes.EdgeVertices(````

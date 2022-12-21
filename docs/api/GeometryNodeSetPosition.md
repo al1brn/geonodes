@@ -28,10 +28,10 @@ node = nodes.SetPosition(geometry=None, selection=None, position=None, offset=No
 
 ## Implementation
 
-#### class [Domain](Domain.md)
+#### [Domain](Domain.md)
 
- - [set_position](Domain.md#set_position)
- - [position](Domain.md#position)
-#### class [Geometry](Geometry.md)
+ - [set_position](Domain.md#set_position) ```python nodes.SetPosition(geometry=self.data_socket, selection=self.selection, position=position, offset=offset````
+ - [position](Domain.md#position) ```python nodes.SetPosition(geometry=self.data_socket, selection=self.selection, position=attr_value, offset=None````
+#### [Geometry](Geometry.md)
 
- - [set_position](Geometry.md#set_position)
+ - [set_position](Geometry.md#set_position) ```python nodes.SetPosition(geometry=self, selection=selection, position=position, offset=offset````

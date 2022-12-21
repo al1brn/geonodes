@@ -26,9 +26,9 @@ node = nodes.CurveOfPoint(point_index=None)
 
 ## Implementation
 
-#### class [ControlPoint](ControlPoint.md)
+#### [ControlPoint](ControlPoint.md)
 
- - [curve](ControlPoint.md#curve)
-#### class [Curve](Curve.md)
+ - [curve](ControlPoint.md#curve) ```python nodes.CurveOfPoint(point_index=self.selection_index````
+#### [Curve](Curve.md)
 
- - [curve_of_point](Curve.md#curve_of_point)
+ - [curve_of_point](Curve.md#curve_of_point) ```python nodes.CurveOfPoint(point_index=point_index````

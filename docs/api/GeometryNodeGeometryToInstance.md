@@ -27,7 +27,7 @@ node = nodes.GeometryToInstance(*geometry)
 
 #### Global functions
 
- - [geometry_to_instance](A.md#geometry_to_instance)
-#### class [Geometry](Geometry.md)
+ - [geometry_to_instance](A.md#geometry_to_instance) ```python nodes.GeometryToInstance(*geometry````
+#### [Geometry](Geometry.md)
 
- - [to_instance](Geometry.md#to_instance)
+ - [to_instance](Geometry.md#to_instance) ```python nodes.GeometryToInstance(*geometry````

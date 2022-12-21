@@ -27,7 +27,7 @@ node = nodes.SetCurveTilt(curve=None, selection=None, tilt=None)
 
 ## Implementation
 
-#### class [ControlPoint](ControlPoint.md)
+#### [ControlPoint](ControlPoint.md)
 
- - [set_tilt](ControlPoint.md#set_tilt)
- - [tilt](ControlPoint.md#tilt)
+ - [set_tilt](ControlPoint.md#set_tilt) ```python nodes.SetCurveTilt(curve=self.data_socket, selection=self.selection, tilt=tilt````
+ - [tilt](ControlPoint.md#tilt) ```python nodes.SetCurveTilt(curve=self.data_socket, selection=self.selection, tilt=attr_value````

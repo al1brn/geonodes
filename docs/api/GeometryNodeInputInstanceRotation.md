@@ -19,9 +19,9 @@ node = nodes.InstanceRotation()
 
 ## Implementation
 
-#### class [Instance](Instance.md)
+#### [Instance](Instance.md)
 
- - [rotation](Instance.md#rotation-property)
-#### class [Instances](Instances.md)
+ - [rotation](Instance.md#rotation-property) ```python nodes.InstanceRotation(````
+#### [Instances](Instances.md)
 
- - [rotation](Instances.md#rotation-property)
+ - [rotation](Instances.md#rotation-property) ```python nodes.InstanceRotation(````

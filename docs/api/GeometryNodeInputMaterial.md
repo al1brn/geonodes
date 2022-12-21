@@ -19,6 +19,6 @@ node = nodes.Material()
 
 ## Implementation
 
-#### class [Material](Material.md)
+#### [Material](Material.md)
 
- - [Material](Material.md#Material-classmethod)
+ - [Material](Material.md#Material-classmethod) ```python nodes.Material(````

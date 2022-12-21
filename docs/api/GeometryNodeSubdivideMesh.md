@@ -26,6 +26,6 @@ node = nodes.SubdivideMesh(mesh=None, level=None)
 
 ## Implementation
 
-#### class [Mesh](Mesh.md)
+#### [Mesh](Mesh.md)
 
- - [subdivide](Mesh.md#subdivide)
+ - [subdivide](Mesh.md#subdivide) ```python nodes.SubdivideMesh(mesh=self, level=level````

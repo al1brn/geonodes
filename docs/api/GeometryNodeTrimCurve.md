@@ -33,8 +33,8 @@ node = nodes.TrimCurve(curve=None, start0=None, start1=None, end0=None, end1=Non
 
 ## Implementation
 
-#### class [Curve](Curve.md)
+#### [Curve](Curve.md)
 
- - [trim](Curve.md#trim)
- - [trim_factor](Curve.md#trim_factor)
- - [trim_length](Curve.md#trim_length)
+ - [trim](Curve.md#trim) ```python nodes.TrimCurve(curve=self, start0=start, start1=start, end0=start, end1=end, mode=mode````
+ - [trim_factor](Curve.md#trim_factor) ```python nodes.TrimCurve(curve=self, start0=start, start1=None, end0=end, end1=None, mode='FACTOR'````
+ - [trim_length](Curve.md#trim_length) ```python nodes.TrimCurve(curve=self, start0=None, start1=start, end0=None, end1=end, mode='LENGTH'````

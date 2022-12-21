@@ -26,6 +26,6 @@ node = nodes.EdgePathsToSelection(start_vertices=None, next_vertex_index=None)
 
 ## Implementation
 
-#### class [Mesh](Mesh.md)
+#### [Mesh](Mesh.md)
 
- - [edge_paths_to_selection](Mesh.md#edge_paths_to_selection)
+ - [edge_paths_to_selection](Mesh.md#edge_paths_to_selection) ```python nodes.EdgePathsToSelection(start_vertices=start_vertices, next_vertex_index=next_vertex_index````

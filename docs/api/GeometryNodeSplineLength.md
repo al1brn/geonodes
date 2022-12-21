@@ -20,6 +20,6 @@ node = nodes.SplineLength()
 
 ## Implementation
 
-#### class [Spline](Spline.md)
+#### [Spline](Spline.md)
 
- - [length](Spline.md#length-property)
+ - [length](Spline.md#length-property) ```python nodes.SplineLength(````

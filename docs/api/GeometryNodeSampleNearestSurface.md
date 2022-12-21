@@ -36,6 +36,6 @@ node = nodes.SampleNearestSurface(mesh=None, value=None, sample_position=None, d
 - Output sockets : ['value']
 ## Implementation
 
-#### class [Mesh](Mesh.md)
+#### [Mesh](Mesh.md)
 
- - [sample_nearest_surface](Mesh.md#sample_nearest_surface)
+ - [sample_nearest_surface](Mesh.md#sample_nearest_surface) ```python nodes.SampleNearestSurface(mesh=self, value=value, sample_position=sample_position, data_type=data_type_````

@@ -19,6 +19,6 @@ node = nodes.EdgeNeighbors()
 
 ## Implementation
 
-#### class [Edge](Edge.md)
+#### [Edge](Edge.md)
 
- - [neighbors](Edge.md#neighbors-property)
+ - [neighbors](Edge.md#neighbors-property) ```python nodes.EdgeNeighbors(````

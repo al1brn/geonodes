@@ -44,17 +44,17 @@ node = nodes.AttributeStatistic(geometry=None, selection=None, attribute=None, d
 - Output sockets : ['mean', 'median', 'sum', 'min', 'max', 'range', 'standard_deviation', 'variance']
 ## Implementation
 
-#### class [Domain](Domain.md)
+#### [Domain](Domain.md)
 
- - [attribute_statistic](Domain.md#attribute_statistic)
- - [attribute_mean](Domain.md#attribute_mean)
- - [attribute_median](Domain.md#attribute_median)
- - [attribute_sum](Domain.md#attribute_sum)
- - [attribute_min](Domain.md#attribute_min)
- - [attribute_max](Domain.md#attribute_max)
- - [attribute_range](Domain.md#attribute_range)
- - [attribute_std](Domain.md#attribute_std)
- - [attribute_var](Domain.md#attribute_var)
-#### class [Geometry](Geometry.md)
+ - [attribute_statistic](Domain.md#attribute_statistic) ```python nodes.AttributeStatistic(geometry=self.data_socket, selection=self.selection, attribute=attribute, data_type=data_type_, domain=self.domain````
+ - [attribute_mean](Domain.md#attribute_mean) ```python nodes.AttributeStatistic(geometry=self.data_socket, selection=self.selection, attribute=attribute, data_type=data_type_, domain=self.domain````
+ - [attribute_median](Domain.md#attribute_median) ```python nodes.AttributeStatistic(geometry=self.data_socket, selection=self.selection, attribute=attribute, data_type=data_type_, domain=self.domain````
+ - [attribute_sum](Domain.md#attribute_sum) ```python nodes.AttributeStatistic(geometry=self.data_socket, selection=self.selection, attribute=attribute, data_type=data_type_, domain=self.domain````
+ - [attribute_min](Domain.md#attribute_min) ```python nodes.AttributeStatistic(geometry=self.data_socket, selection=self.selection, attribute=attribute, data_type=data_type_, domain=self.domain````
+ - [attribute_max](Domain.md#attribute_max) ```python nodes.AttributeStatistic(geometry=self.data_socket, selection=self.selection, attribute=attribute, data_type=data_type_, domain=self.domain````
+ - [attribute_range](Domain.md#attribute_range) ```python nodes.AttributeStatistic(geometry=self.data_socket, selection=self.selection, attribute=attribute, data_type=data_type_, domain=self.domain````
+ - [attribute_std](Domain.md#attribute_std) ```python nodes.AttributeStatistic(geometry=self.data_socket, selection=self.selection, attribute=attribute, data_type=data_type_, domain=self.domain````
+ - [attribute_var](Domain.md#attribute_var) ```python nodes.AttributeStatistic(geometry=self.data_socket, selection=self.selection, attribute=attribute, data_type=data_type_, domain=self.domain````
+#### [Geometry](Geometry.md)
 
- - [attribute_statistic](Geometry.md#attribute_statistic)
+ - [attribute_statistic](Geometry.md#attribute_statistic) ```python nodes.AttributeStatistic(geometry=self, selection=selection, attribute=attribute, data_type=data_type_, domain=domain````

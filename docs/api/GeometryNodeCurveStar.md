@@ -29,6 +29,6 @@ node = nodes.Star(points=None, inner_radius=None, outer_radius=None, twist=None)
 
 ## Implementation
 
-#### class [Curve](Curve.md)
+#### [Curve](Curve.md)
 
- - [Star](Curve.md#Star-classmethod)
+ - [Star](Curve.md#Star-classmethod) ```python nodes.Star(points=points, inner_radius=inner_radius, outer_radius=outer_radius, twist=twist````

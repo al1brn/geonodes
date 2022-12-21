@@ -31,29 +31,29 @@ node = nodes.DeleteGeometry(geometry=None, selection=None, domain='POINT', mode=
 
 ## Implementation
 
-#### class [Domain](Domain.md)
+#### [Domain](Domain.md)
 
- - [delete](Domain.md#delete)
-#### class [Edge](Edge.md)
+ - [delete](Domain.md#delete) ```python nodes.DeleteGeometry(geometry=self.data_socket, selection=self.selection, domain=self.domain, mode=mode````
+#### [Edge](Edge.md)
 
- - [delete_all](Edge.md#delete_all)
- - [delete_edges](Edge.md#delete_edges)
- - [delete_faces](Edge.md#delete_faces)
-#### class [Face](Face.md)
+ - [delete_all](Edge.md#delete_all) ```python nodes.DeleteGeometry(geometry=self.data_socket, selection=self.selection, domain=self.domain, mode='ALL'````
+ - [delete_edges](Edge.md#delete_edges) ```python nodes.DeleteGeometry(geometry=self.data_socket, selection=self.selection, domain=self.domain, mode='EDGE_FACE'````
+ - [delete_faces](Edge.md#delete_faces) ```python nodes.DeleteGeometry(geometry=self.data_socket, selection=self.selection, domain=self.domain, mode='ONLY_FACE'````
+#### [Face](Face.md)
 
- - [delete_all](Face.md#delete_all)
- - [delete_edges](Face.md#delete_edges)
- - [delete_faces](Face.md#delete_faces)
-#### class [Geometry](Geometry.md)
+ - [delete_all](Face.md#delete_all) ```python nodes.DeleteGeometry(geometry=self.data_socket, selection=self.selection, domain=self.domain, mode='ALL'````
+ - [delete_edges](Face.md#delete_edges) ```python nodes.DeleteGeometry(geometry=self.data_socket, selection=self.selection, domain=self.domain, mode='EDGE_FACE'````
+ - [delete_faces](Face.md#delete_faces) ```python nodes.DeleteGeometry(geometry=self.data_socket, selection=self.selection, domain=self.domain, mode='ONLY_FACE'````
+#### [Geometry](Geometry.md)
 
- - [delete](Geometry.md#delete)
-#### class [Mesh](Mesh.md)
+ - [delete](Geometry.md#delete) ```python nodes.DeleteGeometry(geometry=self, selection=selection, domain=domain, mode=mode````
+#### [Mesh](Mesh.md)
 
- - [delete_all](Mesh.md#delete_all)
- - [delete_edges](Mesh.md#delete_edges)
- - [delete_faces](Mesh.md#delete_faces)
-#### class [Vertex](Vertex.md)
+ - [delete_all](Mesh.md#delete_all) ```python nodes.DeleteGeometry(geometry=self, selection=selection, domain=domain, mode='ALL'````
+ - [delete_edges](Mesh.md#delete_edges) ```python nodes.DeleteGeometry(geometry=self, selection=selection, domain=domain, mode='EDGE_FACE'````
+ - [delete_faces](Mesh.md#delete_faces) ```python nodes.DeleteGeometry(geometry=self, selection=selection, domain=domain, mode='ONLY_FACE'````
+#### [Vertex](Vertex.md)
 
- - [delete_all](Vertex.md#delete_all)
- - [delete_edges](Vertex.md#delete_edges)
- - [delete_faces](Vertex.md#delete_faces)
+ - [delete_all](Vertex.md#delete_all) ```python nodes.DeleteGeometry(geometry=self.data_socket, selection=self.selection, domain=self.domain, mode='ALL'````
+ - [delete_edges](Vertex.md#delete_edges) ```python nodes.DeleteGeometry(geometry=self.data_socket, selection=self.selection, domain=self.domain, mode='EDGE_FACE'````
+ - [delete_faces](Vertex.md#delete_faces) ```python nodes.DeleteGeometry(geometry=self.data_socket, selection=self.selection, domain=self.domain, mode='ONLY_FACE'````

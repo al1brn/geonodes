@@ -21,9 +21,9 @@ node = nodes.SplineParameter()
 
 ## Implementation
 
-#### class [ControlPoint](ControlPoint.md)
+#### [ControlPoint](ControlPoint.md)
 
- - [parameter](ControlPoint.md#parameter-property)
- - [parameter_factor](ControlPoint.md#parameter_factor-property)
- - [parameter_length](ControlPoint.md#parameter_length-property)
- - [parameter_index](ControlPoint.md#parameter_index-property)
+ - [parameter](ControlPoint.md#parameter-property) ```python nodes.SplineParameter(````
+ - [parameter_factor](ControlPoint.md#parameter_factor-property) ```python nodes.SplineParameter(````
+ - [parameter_length](ControlPoint.md#parameter_length-property) ```python nodes.SplineParameter(````
+ - [parameter_index](ControlPoint.md#parameter_index-property) ```python nodes.SplineParameter(````

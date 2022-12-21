@@ -31,10 +31,10 @@ node = nodes.WhiteNoiseTexture(vector=None, w=None, noise_dimensions='3D')
 
 ## Implementation
 
-#### class [Texture](Texture.md)
+#### [Texture](Texture.md)
 
- - [white_noise](Texture.md#white_noise-staticmethod)
- - [white_noise_1D](Texture.md#white_noise_1D-staticmethod)
- - [white_noise_2D](Texture.md#white_noise_2D-staticmethod)
- - [white_noise_3D](Texture.md#white_noise_3D-staticmethod)
- - [white_noise_4D](Texture.md#white_noise_4D-staticmethod)
+ - [white_noise](Texture.md#white_noise-staticmethod) ```python nodes.WhiteNoiseTexture(vector=vector, w=w, noise_dimensions=noise_dimensions````
+ - [white_noise_1D](Texture.md#white_noise_1D-staticmethod) ```python nodes.WhiteNoiseTexture(vector=None, w=w, noise_dimensions='1D'````
+ - [white_noise_2D](Texture.md#white_noise_2D-staticmethod) ```python nodes.WhiteNoiseTexture(vector=vector, w=None, noise_dimensions='2D'````
+ - [white_noise_3D](Texture.md#white_noise_3D-staticmethod) ```python nodes.WhiteNoiseTexture(vector=vector, w=None, noise_dimensions='3D'````
+ - [white_noise_4D](Texture.md#white_noise_4D-staticmethod) ```python nodes.WhiteNoiseTexture(vector=vector, w=w, noise_dimensions='3D'````

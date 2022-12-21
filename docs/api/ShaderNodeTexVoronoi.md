@@ -40,10 +40,10 @@ node = nodes.VoronoiTexture(vector=None, w=None, scale=None, smoothness=None, ex
 
 ## Implementation
 
-#### class [Texture](Texture.md)
+#### [Texture](Texture.md)
 
- - [voronoi](Texture.md#voronoi-staticmethod)
- - [voronoi_1D](Texture.md#voronoi_1D-staticmethod)
- - [voronoi_2D](Texture.md#voronoi_2D-staticmethod)
- - [voronoi_3D](Texture.md#voronoi_3D-staticmethod)
- - [voronoi_4D](Texture.md#voronoi_4D-staticmethod)
+ - [voronoi](Texture.md#voronoi-staticmethod) ```python nodes.VoronoiTexture(vector=vector, w=w, scale=scale, smoothness=smoothness, exponent=exponent, randomness=randomness, distance=distance, feature=feature, voronoi_dimensions=voronoi_dimensions````
+ - [voronoi_1D](Texture.md#voronoi_1D-staticmethod) ```python nodes.VoronoiTexture(vector=None, w=w, scale=scale, smoothness=smoothness, exponent=exponent, randomness=randomness, distance=distance, feature=feature, voronoi_dimensions=voronoi_dimensions````
+ - [voronoi_2D](Texture.md#voronoi_2D-staticmethod) ```python nodes.VoronoiTexture(vector=vector, w=None, scale=scale, smoothness=smoothness, exponent=exponent, randomness=randomness, distance=distance, feature=feature, voronoi_dimensions=voronoi_dimensions````
+ - [voronoi_3D](Texture.md#voronoi_3D-staticmethod) ```python nodes.VoronoiTexture(vector=vector, w=None, scale=scale, smoothness=smoothness, exponent=exponent, randomness=randomness, distance=distance, feature=feature, voronoi_dimensions=voronoi_dimensions````
+ - [voronoi_4D](Texture.md#voronoi_4D-staticmethod) ```python nodes.VoronoiTexture(vector=vector, w=w, scale=scale, smoothness=smoothness, exponent=exponent, randomness=randomness, distance=distance, feature=feature, voronoi_dimensions=voronoi_dimensions````

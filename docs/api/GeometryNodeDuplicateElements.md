@@ -32,9 +32,9 @@ node = nodes.DuplicateElements(geometry=None, selection=None, amount=None, domai
 
 ## Implementation
 
-#### class [Domain](Domain.md)
+#### [Domain](Domain.md)
 
- - [duplicate](Domain.md#duplicate)
-#### class [Geometry](Geometry.md)
+ - [duplicate](Domain.md#duplicate) ```python nodes.DuplicateElements(geometry=self.data_socket, selection=self.selection, amount=amount, domain=self.domain````
+#### [Geometry](Geometry.md)
 
- - [duplicate](Geometry.md#duplicate)
+ - [duplicate](Geometry.md#duplicate) ```python nodes.DuplicateElements(geometry=self, selection=selection, amount=amount, domain=domain````

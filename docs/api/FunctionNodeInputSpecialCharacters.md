@@ -20,7 +20,7 @@ node = nodes.SpecialCharacters()
 
 ## Implementation
 
-#### class [String](String.md)
+#### [String](String.md)
 
- - [LineBreak](String.md#LineBreak-staticmethod)
- - [Tab](String.md#Tab-staticmethod)
+ - [LineBreak](String.md#LineBreak-staticmethod) ```python nodes.SpecialCharacters(````
+ - [Tab](String.md#Tab-staticmethod) ```python nodes.SpecialCharacters(````
