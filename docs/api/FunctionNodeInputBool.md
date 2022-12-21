@@ -13,7 +13,9 @@ from geonodes import nodes
 node = nodes.Boolean(boolean=False)
 ```
 
-### Args:#### Node parameter arguments:
+### Args:
+
+#### Node parameter arguments:
 
 - **boolean** (bool): default = False
 

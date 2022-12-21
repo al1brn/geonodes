@@ -13,7 +13,9 @@ from geonodes import nodes
 node = nodes.Frame(label_size=20, shrink=True)
 ```
 
-### Args:#### Node parameter arguments:
+### Args:
+
+#### Node parameter arguments:
 
 - **label_size** (int): default = 20
 - **shrink** (bool): default = True

@@ -13,7 +13,9 @@ from geonodes import nodes
 node = nodes.String(string='')
 ```
 
-### Args:#### Node parameter arguments:
+### Args:
+
+#### Node parameter arguments:
 
 - **string** (str): default = ''
 
