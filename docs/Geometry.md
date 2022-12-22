@@ -51,19 +51,15 @@ with gn.Tree("Test") as tree:
     volume  = gn.Volume.Cube()
     
     # Global function
-    
     geo = gn.join_geometry(in_geo, circle1, circle2)
     
     # Geometry method
-    
     geo.join(cube1, cube2)
     
     # + operator
-    
     geo = geo + volume
     
     # As a result
-    
     tree.og = geo
 ```
 
