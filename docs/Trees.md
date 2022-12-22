@@ -49,7 +49,7 @@ These **Tree** groups can be called using the snake case of their name, ignoring
 - `my_group.add_two_values`
 - `my_group.multiply_two_values`
 
-The arguments are key words argument of their input sockets.
+The arguments are key word, the keys beinng the snake case version their input socket names.
 The function return the group node. To get the actual result, simply use the snake version version of the desired output socket as shown in the full
 example below:
 
