@@ -143,7 +143,7 @@ with gn.Tree("Test") as tree:
     tree.og = mesh
 ```
 
-### Boolean
+### Boolean operations
 
 The three possible boolean operations on meshes can be done using the three methods:
 - `boolean_union`
