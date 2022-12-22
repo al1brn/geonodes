@@ -89,11 +89,11 @@ with gn.Tree("A Tree for modifier") as tree:
     
     pos = cube.verts.position
     
-    # Call the tree Node "SUB Add two values" with values for both sockets
+    # Call the group node  "SUB Add two values" with values for both sockets
     # Get the result form the Sum socket
     a = my_group.add_two_values(a=pos.x, b=pos.y).sum
 
-    # Call the tree Node "SUB Multiply two values" with values for both sockets
+    # Call the group node "SUB Multiply two values" with values for both sockets
     # Get the result form the Sum socket
     b = my_group.multiply_two_values(a=pos.x, b=pos.y).product
     
