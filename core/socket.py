@@ -420,7 +420,7 @@ class Socket:
             return int(value)
         
         elif self.bl_idname in ['NodeSocketFloat', 'NodeSocketFloatFactor', 'NodeSocketFloatAngle', 'NodeSocketFloatDistance']:
-            return int(value)
+            return float(value)
         
         elif self.bl_idname in ['NodeSocketVector', 'NodeSocketVectorEuler', 'NodeSocketVectorXYZ', 'NodeSocketVectorTranslation']:
             if isinstance(value, (mathutils.Vector, mathutils.Euler)):

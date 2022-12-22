@@ -7761,7 +7761,7 @@ class UvSphere(Node):
 
     Node implementation:
         Mesh:
-            Circle 
+            UVSphere 
 
     Args:
         segments (DataSocket): Integer

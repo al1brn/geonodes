@@ -322,7 +322,7 @@
 | [Triangulate](GeometryNodeTriangulate.md) | [Face](Face.md) | [triangulate](Face.md#triangulate) |
 |      | [Mesh](Mesh.md) | [triangulate](Mesh.md#triangulate) |
 | [Trim Curve](GeometryNodeTrimCurve.md) | [Curve](Curve.md) | - [trim](Curve.md#trim)<br>- [trim_factor](Curve.md#trim_factor)<br>- [trim_length](Curve.md#trim_length)|
-| [UV Sphere](GeometryNodeMeshUVSphere.md) | [Mesh](Mesh.md) | [Circle](Mesh.md#Circle-classmethod) |
+| [UV Sphere](GeometryNodeMeshUVSphere.md) | [Mesh](Mesh.md) | [UVSphere](Mesh.md#UVSphere-classmethod) |
 | [UV Unwrap](GeometryNodeUVUnwrap.md) | [Face](Face.md) | [uv_unwrap](Face.md#uv_unwrap) |
 |      | [Mesh](Mesh.md) | [uv_unwrap](Mesh.md#uv_unwrap) |
 | [Value](ShaderNodeValue.md) | [Float](Float.md) | [Value](Float.md#Value-classmethod) |

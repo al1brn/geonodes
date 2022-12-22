@@ -16,7 +16,6 @@
 ## Class methods
 
 - [Circle](#Circle-classmethod)
-- [Circle](#Circle-classmethod)
 - [Cube](#Cube-classmethod)
 - [Grid](#Grid-classmethod)
 - [IcoSphere](#IcoSphere-classmethod)
@@ -25,6 +24,7 @@
 - [LineEndPointsResolution](#LineEndPointsResolution-classmethod)
 - [LineOffset](#LineOffset-classmethod)
 - [LineOffsetResolution](#LineOffsetResolution-classmethod)
+- [UVSphere](#UVSphere-classmethod)
 
 ## Static methods
 
@@ -85,24 +85,6 @@ def Circle(cls, vertices=None, radius=None, fill_type='NONE'):
 - vertices: Integer
 - radius: Float
 - fill_type (str): 'NONE' in [NONE, NGON, TRIANGLE_FAN]
-
-#### Returns:
-- socket `mesh`
-
-<sub>Go to [top](#class-Mesh) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-## Circle <sub>*classmethod*</sub>
-
-```python
-def Circle(cls, segments=None, rings=None, radius=None):
-
-```
-> Node: [UV Sphere](GeometryNodeMeshUVSphere.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh_primitives/uv_sphere.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshUVSphere.html)
-
-#### Args:
-- segments: Integer
-- rings: Integer
-- radius: Float
 
 #### Returns:
 - socket `mesh`
@@ -298,6 +280,24 @@ def LineOffsetResolution(cls, resolution=None, start_location=None, offset=None)
 - resolution: Float
 - start_location: Vector
 - offset: Vector
+
+#### Returns:
+- socket `mesh`
+
+<sub>Go to [top](#class-Mesh) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+## UVSphere <sub>*classmethod*</sub>
+
+```python
+def UVSphere(cls, segments=None, rings=None, radius=None):
+
+```
+> Node: [UV Sphere](GeometryNodeMeshUVSphere.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh_primitives/uv_sphere.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshUVSphere.html)
+
+#### Args:
+- segments: Integer
+- rings: Integer
+- radius: Float
 
 #### Returns:
 - socket `mesh`

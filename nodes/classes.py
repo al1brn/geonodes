@@ -6670,24 +6670,6 @@ class Mesh(Geometry):
         return cls(nodes.MeshCircle(vertices=vertices, radius=radius, fill_type=fill_type).mesh)
 
 
-    @classmethod
-    def Circle(cls, segments=None, rings=None, radius=None):
-        """ Node UvSphere.
-
-        Node reference [UV Sphere](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh_primitives/uv_sphere.html)
-        Developer reference [GeometryNodeMeshUVSphere](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshUVSphere.html)
-
-        Args:
-            segments: Integer
-            rings: Integer
-            radius: Float
-
-        Returns:
-            socket `mesh`
-        """
-        return cls(nodes.UvSphere(segments=segments, rings=rings, radius=radius).mesh)
-
-
     @staticmethod
     def Cone(vertices=None, side_segments=None, fill_segments=None, radius_top=None, radius_bottom=None, depth=None, fill_type='NGON'):
         """ Node Cone.
@@ -6881,6 +6863,24 @@ class Mesh(Geometry):
             socket `mesh`
         """
         return cls(nodes.MeshLine(count=None, resolution=resolution, start_location=start_location, offset=offset, count_mode='RESOLUTION', mode='OFFSET').mesh)
+
+
+    @classmethod
+    def UVSphere(cls, segments=None, rings=None, radius=None):
+        """ Node UvSphere.
+
+        Node reference [UV Sphere](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh_primitives/uv_sphere.html)
+        Developer reference [GeometryNodeMeshUVSphere](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshUVSphere.html)
+
+        Args:
+            segments: Integer
+            rings: Integer
+            radius: Float
+
+        Returns:
+            socket `mesh`
+        """
+        return cls(nodes.UvSphere(segments=segments, rings=rings, radius=radius).mesh)
 
 
     def boolean_difference(self, *mesh_2, self_intersection=None, hole_tolerant=None):

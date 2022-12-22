@@ -843,7 +843,7 @@ with gn.Tree('Geometry Nodes') as tree:
     var = gn.Mesh.LineOffset()
     var = gn.Mesh.LineEndPointsResolution()
     var = gn.Mesh.LineOffsetResolution()
-    var = gn.Mesh.Circle()
+    var = gn.Mesh.UVSphere()
     mesh.corners_of_face()
     mesh.corners_of_vertex()
     mesh.edges_of_corner()

@@ -351,7 +351,7 @@
 | [Ico Sphere](GeometryNodeMeshIcoSphere.md) | [Mesh](Mesh.md) | [IcoSphere](Mesh.md#IcoSphere-classmethod) |
 | [Mesh Circle](GeometryNodeMeshCircle.md) | [Mesh](Mesh.md) | [Circle](Mesh.md#Circle-classmethod) |
 | [Mesh Line](GeometryNodeMeshLine.md) | [Mesh](Mesh.md) | [Line](Mesh.md#Line-classmethod) / [LineEndPoints](Mesh.md#LineEndPoints-classmethod) / [LineOffset](Mesh.md#LineOffset-classmethod) / [LineEndPointsResolution](Mesh.md#LineEndPointsResolution-classmethod) / [LineOffsetResolution](Mesh.md#LineOffsetResolution-classmethod) / |
-| [UV Sphere](GeometryNodeMeshUVSphere.md) | [Mesh](Mesh.md) | [Circle](Mesh.md#Circle-classmethod) |
+| [UV Sphere](GeometryNodeMeshUVSphere.md) | [Mesh](Mesh.md) | [UVSphere](Mesh.md#UVSphere-classmethod) |
 
 <sub>Go to [top](#nodes-menus) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
