@@ -150,6 +150,8 @@ The three possible boolean operations on meshes can be done using the three meth
 - `boolean_intersect`
 - `boolean_difference`
 
+The three methods accept several meshes as arguments.
+
 ```python
 import geonodes as gn
 
@@ -157,25 +159,28 @@ with gn.Tree("Test") as tree:
     
     # We will make the boolean with the same cylinder
     cyl, _, _, _ = gn.Mesh.Cylinder(depth=5)
+    plane = gn.Mesh.Cube().transform(scale=(4.1, 4.1, .25))
     
     # ----- Union
     
     mesh1 = gn.Mesh.UVSphere(radius=2)
-    mesh1.boolean_union(cyl)
+    mesh1.boolean_union(cyl, plane)
     
     mesh1.transform(translation=(5, 0, 0))
     
     # ----- Intersection
     
     mesh2 = gn.Mesh.UVSphere(radius=2)
-    mesh2.boolean_intersect(cyl)
+    mesh2.boolean_intersect(cyl, plane)
     
     # ----- Difference
     
     mesh3 = gn.Mesh.UVSphere(radius=2)
-    mesh3.boolean_difference(cyl)
+    mesh3.boolean_difference(cyl, plane)
     
     mesh3.transform(translation=(-5, 0, 0))
+    
+    # ----- The 3 operations as a result
     
     tree.og = mesh1 + mesh2 + mesh3
 ```
