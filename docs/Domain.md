@@ -33,6 +33,18 @@
 
 > Note that the node domain *`POINT`* is used by 3 **Domains**.
 
+## Selection mechanism
+
+One important feature of **Domain** is the selection mechanism. The selection is expressed using the array syntax:
+- `mesh.verts[1]` : select the `index == 1`
+- `mesh.faces[10:20]` : select the `index` in the range 10 to 20 (exc)
+- `mesh.faces[8, 17]` : select the `index` equal to 8 or 17
+- `mesh.edges[(mesh.edges.index % 2).equal(0)]` : select the even `index`
+
+Nodes having a **Selection** socket use the **Domain** selection initialized with this syntax.
+
+In the following example, two vertices selected by the user are move upwards:
+
 
 
 
