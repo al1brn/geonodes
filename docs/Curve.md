@@ -1,16 +1,16 @@
 # Curve
 
-Curve is a subclass of [Geometry](Geometry.md).
+**Curve** is a subclass of [Geometry](Geometry.md).
 
-Use Curve type to access methods specific to curves.
+Use **Curve** type to access methods specific to curves.
 
-A Mesh has two [domains](domain.md):
+A **Curve** has two [domains](domain.md):
 - `points` of type [ControlPoint](ControlPoint.md)
 - `splines` of type [Spline](Spline.md)
 
 ## Initialization
 
-A Curve can be initialized:
+A **Curve** can be initialized:
 - by typecasting another geometry
 - or by using a constructor such as `Line`, `Circle`, `Spiral`
 
