@@ -1,6 +1,11 @@
 
 # API structure
 
+## Tree
+
+- [Tree](api/Tree.md)
+- [Trees](api/Trees.md)
+
 ## Basic types
 
 - [Boolean](api/Boolean.md)
