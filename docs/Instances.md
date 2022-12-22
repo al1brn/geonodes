@@ -11,7 +11,7 @@ A **Instances** has only one [domain](domain.md):
 
 A **Instances** can be initialized:
 - by typecasting another geometry
-- or by using the constructor such as `Points`
+- or by using the constructor `InstanceOnPoints`
 
 ```python
 import geonodes as gn
