@@ -2,7 +2,7 @@
 It is implemented as property `verts`
 
 The four [Domains](Domain.md) are:
-- `verts' [Vertex](Vertex.md)
-- `edges' [Edge](Edge.md)
-- `faces' [Face](Face.md)
-- `corners' [Corner](Corner.md)
+- `verts` [Vertex](Vertex.md)
+- `edges` [Edge](Edge.md)
+- `faces` [Face](Face.md)
+- `corners` [Corner](Corner.md)
