@@ -73,6 +73,8 @@ with gn.Tree("Test") as tree:
 
 
 
+> see [examples](#examples)
+
 ## Properties
 
 - [ID](#ID-property)
@@ -1193,4 +1195,75 @@ def volume_component(self):
 - socket `volume` of class Volume
 
 <sub>Go to [top](#class-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+# Geometry
+
+**Geometry** is the root class for:
+- [Mesh](Mesh.md)
+- [Curve](Curve.md)
+- [Points](Points.md)
+- [Instances](Instances.md)
+- [Volume](Volume.md)
+
+## Initialization
+
+Geometry is not initialized directly.
+
+## Input / Output
+
+The default input geometry is read from the current Tree with property `input_geometry` (or with its short version `ig`).
+
+The resulting geometry to output set with the current Tree property 'output_geometry` (or with is short version `og`).
+
+The *do nothing* default tree is the following:
+
+```python
+import geonodes as gn
+
+with gn.Tree("Test") as tree:
+    tree.og = tree.ig
+```
+
+## Examples
+
+### Joining geometry
+
+Three syntaxes are possible to join geometries:
+- using the global function `join_geometry`
+- using the Geometry method `join` (the geometry instance is part of the joining)
+- using the operator `+`
+
+```python
+import geonodes as gn
+
+with gn.Tree("Test") as tree:
+    
+    in_geo = tree.ig
+    
+    # ----- Let's create some geometries
+    
+    circle1 = gn.Curve.Circle().set_position(offset=(0, 0, -2))
+    circle2 = gn.Curve.Circle().set_position(offset=(0, 0, -3))
+    cube1   = gn.Mesh.Cube().set_position(offset=(0, 0, 2))
+    cube2   = gn.Mesh.Cube().set_position(offset=(0, 0, 4))
+    volume  = gn.Volume.Cube()
+    
+    # Global function
+    geo = gn.join_geometry(in_geo, circle1, circle2)
+    
+    # Geometry method
+    geo.join(cube1, cube2)
+    
+    # + operator
+    geo = geo + volume
+    
+    # As a result
+    tree.og = geo
+```
+
+
+
+
+
+
 
