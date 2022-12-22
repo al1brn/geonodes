@@ -139,6 +139,7 @@ with gn.Tree("Test") as tree:
     
     # True extrusion
     mesh.faces[top].extrude()
+    
     tree.og = mesh
 ```
 
