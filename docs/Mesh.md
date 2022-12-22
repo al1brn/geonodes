@@ -99,6 +99,7 @@ with gn.Tree("Test") as tree:
     mesh.faces.shade_smooth = shade_smooth
 
     tree.og = mesh
+```
 
 ## Extrusion
 
@@ -138,9 +139,6 @@ with gn.Tree("Test") as tree:
     
     # True extrusion
     mesh.faces[top].extrude()
-    
-    
-
     tree.og = mesh
 ```
 
