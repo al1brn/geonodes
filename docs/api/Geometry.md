@@ -41,13 +41,14 @@
 - [get_named_float](#get_named_float)
 - [get_named_integer](#get_named_integer)
 - [get_named_vector](#get_named_vector)
+- [interpolate_domain](#interpolate_domain)
 - [join](#join)
 - [material_selection](#material_selection)
 - [merge_by_distance](#merge_by_distance)
 - [named_attribute](#named_attribute)
 - [proximity](#proximity)
 - [proximity_edges](#proximity_edges)
-- [proximity_facess](#proximity_facess)
+- [proximity_faces](#proximity_faces)
 - [proximity_points](#proximity_points)
 - [random_boolean](#random_boolean)
 - [random_float](#random_float)
@@ -399,6 +400,23 @@ def instances_component(self):
 
 <sub>Go to [top](#class-Geometry) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
+## interpolate_domain
+
+```python
+def interpolate_domain(self, value=None, domain='POINT'):
+
+```
+> Node: [Interpolate Domain](GeometryNodeFieldOnDomain.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/interpolate_domain.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeFieldOnDomain.html)
+
+#### Args:
+- value: ['Float', 'Integer', 'Vector', 'Color', 'Boolean']
+- domain (str): 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+
+#### Returns:
+- socket `value`
+
+<sub>Go to [top](#class-Geometry) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ## is_viewport <sub>*property*</sub>
 
 ```python
@@ -579,10 +597,10 @@ def proximity_edges(self, target=None, source_position=None):
 
 <sub>Go to [top](#class-Geometry) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
-## proximity_facess
+## proximity_faces
 
 ```python
-def proximity_facess(self, target=None, source_position=None):
+def proximity_faces(self, target=None, source_position=None):
 
 ```
 > Node: [Geometry Proximity](GeometryNodeProximity.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/geometry_proximity.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeProximity.html)

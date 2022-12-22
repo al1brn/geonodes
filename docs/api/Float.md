@@ -194,7 +194,7 @@ def absolute(self, clamp=False):
 ## add
 
 ```python
-def add(self, value):
+def add(self, value=None):
 
 ```
 > Node: [Math](ShaderNodeMath.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
@@ -476,7 +476,7 @@ def cosine(self, value=None, clamp=False):
 ## div
 
 ```python
-def multiply(self, value):
+def div(self, value=None):
 
 ```
 > Node: [Math](ShaderNodeMath.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
@@ -492,7 +492,7 @@ def multiply(self, value):
 ## divide
 
 ```python
-def multiply(self, value):
+def divide(self, value=None):
 
 ```
 > Node: [Math](ShaderNodeMath.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
@@ -1070,7 +1070,7 @@ def modulo(self, value=None, clamp=False):
 ## mul
 
 ```python
-def multiply(self, value):
+def mul(self, value=None):
 
 ```
 > Node: [Math](ShaderNodeMath.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
@@ -1104,7 +1104,7 @@ def mul_add(self, multiplier=None, addend=None, clamp=False):
 ## multiply
 
 ```python
-def multiply(self, value):
+def multiply(self, value=None):
 
 ```
 > Node: [Math](ShaderNodeMath.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
@@ -1355,7 +1355,7 @@ def sqrt(self, clamp=False):
 ## sub
 
 ```python
-def add(self, value):
+def sub(self, value=None):
 
 ```
 > Node: [Math](ShaderNodeMath.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
@@ -1371,7 +1371,7 @@ def add(self, value):
 ## subtract
 
 ```python
-def add(self, value):
+def subtract(self, value=None):
 
 ```
 > Node: [Math](ShaderNodeMath.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)

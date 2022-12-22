@@ -4,6 +4,7 @@
 
 ## Properties
 
+- [count](#count-property)
 - [rotation](#rotation-property)
 - [scale](#scale-property)
 
@@ -11,26 +12,56 @@
 
 ## Methods
 
-- [len](#len)
+- [delete](#delete)
+- [duplicate](#duplicate)
 - [rotate](#rotate)
+- [separate](#separate)
 - [set_scale](#set_scale)
 - [to_points](#to_points)
 - [translate](#translate)
 
-## len
+## count <sub>*property*</sub>
 
 ```python
-def __len__(self):
+def count(self, geometry=None):
 
 ```
 > Node: [Domain Size](GeometryNodeAttributeDomainSize.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html)
 
+#### Returns:
+- socket `instance_count`
+
+<sub>Go to [top](#class-Instance) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+## delete
+
+```python
+def delete(self, mode='ALL'):
+
+```
+> Node: [Delete Geometry](GeometryNodeDeleteGeometry.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/delete_geometry.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeDeleteGeometry.html)
+
 #### Args:
-- geometry: Geometry
-- component (str): 'MESH' in [MESH, POINTCLOUD, CURVE, INSTANCES]
+- mode (str): 'ALL' in [ALL, EDGE_FACE, ONLY_FACE]
 
 #### Returns:
-- node with sockets ['point_count', 'edge_count', 'face_count', 'face_corner_count', 'spline_count', 'instance_count']
+- self
+
+<sub>Go to [top](#class-Instance) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+## duplicate
+
+```python
+def duplicate(self, amount=None):
+
+```
+> Node: [Duplicate Elements](GeometryNodeDuplicateElements.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/duplicate_elements.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeDuplicateElements.html)
+
+#### Args:
+- amount: Integer
+
+#### Returns:
+- socket `duplicate_index`
 
 <sub>Go to [top](#class-Instance) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
@@ -75,6 +106,24 @@ def scale(self):
 
 #### Returns:
 - socket `scale`
+
+<sub>Go to [top](#class-Instance) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+## separate
+
+```python
+def separate(self, geometry=None):
+
+```
+> Node: [Separate Geometry](GeometryNodeSeparateGeometry.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/separate_geometry.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSeparateGeometry.html)
+
+#### Args:
+- geometry: Geometry
+
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeSeparateGeometry.webp)
+
+#### Returns:
+- tuple ('`selection`', '`inverted`')
 
 <sub>Go to [top](#class-Instance) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

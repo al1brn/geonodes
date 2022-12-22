@@ -898,8 +898,6 @@ class Vector(DataSocket):
             
             return gn.Vector((rho, theta, phi))
     
-    
-    
 # -----------------------------------------------------------------------------------------------------------------------------
 # Color
 
@@ -997,7 +995,7 @@ class Color(DataSocket):
                 
     
     @classmethod
-    def Input(cls, value="blank", name: str = "Color", description: str = ""):
+    def Input(cls, value=None, name: str = "Color", description: str = ""):
         """ Create a Color input socket in the Group Input Node
         
         Args:
@@ -1482,6 +1480,11 @@ class Geometry(DataSocket):
             # Points must exist!
             self.points  = domains.CloudPoint(self)
             
+    # ----------------------------------------------------------------------------------------------------
+    # Set a node an attribute of the 
+    
+    def attribute_node(self, node, domain='POINT'):
+        return node.as_attribute(owning_socket=self, domain=domain)
         
         
     @property
@@ -1660,7 +1663,7 @@ class Collection(DataSocket):
     """
     
     def __init__(self, bcoll):
-        if isinstance(bcoll, bpy.types.NodeSocketCollection):
+        if isinstance(bcoll, bpy.types.NodeSocketCollection) or self.is_socket(bcoll):
             super().__init__(bcoll)
         else:
             super().__init__(None)

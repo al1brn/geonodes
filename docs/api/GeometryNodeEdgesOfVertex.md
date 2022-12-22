@@ -28,6 +28,16 @@ node = nodes.EdgesOfVertex(vertex_index=None, weights=None, sort_index=None)
 - **edge_index** : [Integer](Integer.md)
 - **total** : [Integer](Integer.md)
 
+## Implementation
+
+| Class or method name | Definition |
+|----------------------|------------|
+| **[Mesh](Mesh.md)** |
+| [edges_of_vertex](Mesh.md#edges_of_vertex) | `def edges_of_vertex(self, vertex_index=None, weights=None, sort_index=None):` |
+| **[Vertex](Vertex.md)** |
+| [edges](Vertex.md#edges) | `def edges(self, weights=None, sort_index=None):` |
+| [edges_index](Vertex.md#edges_index) | `def edges_index(self, weights=None, sort_index=None):` |
+| [edges_total](Vertex.md#edges_total) | `def edges_total(self, weights=None, sort_index=None):` |
 
 <sub>Go to [top](#node-Edges-of-Vertex) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

@@ -72,20 +72,6 @@ class Float(geosocks.Float):
         return nodes.Math(value0=self, value1=None, value2=None, operation='ABSOLUTE', use_clamp=clamp).value
 
 
-    def add(self, value):
-        """ Node Math.
-
-        Node reference [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html)
-        Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
-
-        Args:
-            value: Float or Integer or Vector
-
-        Returns:
-        self + value
-        """
-        return nodes.Math(value0=value0, value1=value1, value2=value2, operation=operation, use_clamp=clamp)
-
 
     def arccos(self, value=None, clamp=False):
         """ Node Math.
@@ -338,34 +324,6 @@ class Float(geosocks.Float):
         return nodes.Math(value0=self, value1=value, value2=None, operation='COSINE', use_clamp=clamp).value
 
 
-    def multiply(self, value):
-        """ Node Math.
-
-        Node reference [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html)
-        Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
-
-        Args:
-            value: Float
-
-        Returns:
-        self / value
-        """
-        return nodes.Math(value0=value0, value1=value1, value2=value2, operation=operation, use_clamp=clamp)
-
-
-    def multiply(self, value):
-        """ Node Math.
-
-        Node reference [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html)
-        Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
-
-        Args:
-            value: Float
-
-        Returns:
-        self / value
-        """
-        return nodes.Math(value0=value0, value1=value1, value2=value2, operation=operation, use_clamp=clamp)
 
 
     def equal(self, b=None, epsilon=None):
@@ -878,7 +836,7 @@ class Float(geosocks.Float):
         Returns:
             socket `result`
         """
-        return nodes.Mix(factor=factor, a=self, b=value, blend_type=MIX, clamp_factor=clamp_factor, clamp_result=False, data_type='FLOAT', factor_mode='UNIFORM').result
+        return nodes.Mix(factor=factor, a=self, b=value, blend_type='MIX', clamp_factor=clamp_factor, clamp_result=False, data_type='FLOAT', factor_mode='UNIFORM').result
 
 
     def modulo(self, value=None, clamp=False):
@@ -897,20 +855,6 @@ class Float(geosocks.Float):
         return nodes.Math(value0=self, value1=value, value2=None, operation='MODULO', use_clamp=clamp).value
 
 
-    def multiply(self, value):
-        """ Node Math.
-
-        Node reference [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html)
-        Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
-
-        Args:
-            value: Float or Integer or Vector
-
-        Returns:
-        self * value
-        """
-        return nodes.Math(value0=value0, value1=value1, value2=value2, operation=operation, use_clamp=clamp)
-
 
     def mul_add(self, multiplier=None, addend=None, clamp=False):
         """ Node Math.
@@ -928,20 +872,6 @@ class Float(geosocks.Float):
         """
         return nodes.Math(value0=self, value1=multiplier, value2=addend, operation='MULTIPLY_ADD', use_clamp=clamp).value
 
-
-    def multiply(self, value):
-        """ Node Math.
-
-        Node reference [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html)
-        Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
-
-        Args:
-            value: Float or Integer or Vector
-
-        Returns:
-        self * value
-        """
-        return nodes.Math(value0=value0, value1=value1, value2=value2, operation=operation, use_clamp=clamp)
 
 
     def multiply_add(self, multiplier=None, addend=None, clamp=False):
@@ -1165,34 +1095,6 @@ class Float(geosocks.Float):
         return nodes.Math(value0=self, value1=None, value2=None, operation='SQRT', use_clamp=clamp).value
 
 
-    def add(self, value):
-        """ Node Math.
-
-        Node reference [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html)
-        Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
-
-        Args:
-            value: Float or Integer or Vector
-
-        Returns:
-        self - value
-        """
-        return nodes.Math(value0=value0, value1=value1, value2=value2, operation=operation, use_clamp=clamp)
-
-
-    def add(self, value):
-        """ Node Math.
-
-        Node reference [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html)
-        Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
-
-        Args:
-            value: Float or Integer or Vector
-
-        Returns:
-        self - value
-        """
-        return nodes.Math(value0=value0, value1=value1, value2=value2, operation=operation, use_clamp=clamp)
 
 
     def switch(self, switch=None, true=None):
@@ -1397,20 +1299,6 @@ class Integer(geosocks.Integer):
         return nodes.Math(value0=self, value1=None, value2=None, operation='ABSOLUTE', use_clamp=clamp).value
 
 
-    def add(self, value):
-        """ Node Math.
-
-        Node reference [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html)
-        Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
-
-        Args:
-            value: Float or Integer or Vector
-
-        Returns:
-        self + value
-        """
-        return nodes.Math(value0=value0, value1=value1, value2=value2, operation=operation, use_clamp=clamp)
-
 
     def arccos(self, value=None, clamp=False):
         """ Node Math.
@@ -1588,34 +1476,6 @@ class Integer(geosocks.Integer):
         return nodes.Math(value0=self, value1=value, value2=None, operation='COSINE', use_clamp=clamp).value
 
 
-    def multiply(self, value):
-        """ Node Math.
-
-        Node reference [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html)
-        Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
-
-        Args:
-            value: Float
-
-        Returns:
-        self / value
-        """
-        return nodes.Math(value0=value0, value1=value1, value2=value2, operation=operation, use_clamp=clamp)
-
-
-    def multiply(self, value):
-        """ Node Math.
-
-        Node reference [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html)
-        Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
-
-        Args:
-            value: Float
-
-        Returns:
-        self / value
-        """
-        return nodes.Math(value0=value0, value1=value1, value2=value2, operation=operation, use_clamp=clamp)
 
 
     def equal(self, b=None):
@@ -2004,20 +1864,6 @@ class Integer(geosocks.Integer):
         return nodes.Math(value0=self, value1=value, value2=None, operation='MODULO', use_clamp=clamp).value
 
 
-    def multiply(self, value):
-        """ Node Math.
-
-        Node reference [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html)
-        Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
-
-        Args:
-            value: Float or Integer or Vector
-
-        Returns:
-        self * value
-        """
-        return nodes.Math(value0=value0, value1=value1, value2=value2, operation=operation, use_clamp=clamp)
-
 
     def mul_add(self, multiplier=None, addend=None, clamp=False):
         """ Node Math.
@@ -2035,20 +1881,6 @@ class Integer(geosocks.Integer):
         """
         return nodes.Math(value0=self, value1=multiplier, value2=addend, operation='MULTIPLY_ADD', use_clamp=clamp).value
 
-
-    def multiply(self, value):
-        """ Node Math.
-
-        Node reference [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html)
-        Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
-
-        Args:
-            value: Float or Integer or Vector
-
-        Returns:
-        self * value
-        """
-        return nodes.Math(value0=value0, value1=value1, value2=value2, operation=operation, use_clamp=clamp)
 
 
     def multiply_add(self, multiplier=None, addend=None, clamp=False):
@@ -2259,34 +2091,6 @@ class Integer(geosocks.Integer):
         return nodes.Math(value0=self, value1=None, value2=None, operation='SQRT', use_clamp=clamp).value
 
 
-    def add(self, value):
-        """ Node Math.
-
-        Node reference [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html)
-        Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
-
-        Args:
-            value: Float or Integer or Vector
-
-        Returns:
-        self - value
-        """
-        return nodes.Math(value0=value0, value1=value1, value2=value2, operation=operation, use_clamp=clamp)
-
-
-    def add(self, value):
-        """ Node Math.
-
-        Node reference [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html)
-        Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
-
-        Args:
-            value: Float or Integer or Vector
-
-        Returns:
-        self - value
-        """
-        return nodes.Math(value0=value0, value1=value1, value2=value2, operation=operation, use_clamp=clamp)
 
 
     def switch(self, switch=None, true=None):
@@ -2753,8 +2557,9 @@ class String(geosocks.String):
         Returns:
             tuple ('curve_instances', 'line', 'pivot_point')
         """
+        import geonodes as gn
         node = nodes.StringToCurves(string=string, size=size, character_spacing=character_spacing, word_spacing=word_spacing, line_spacing=line_spacing, text_box_width=text_box_width, text_box_height=text_box_height, align_x=align_x, align_y=align_y, overflow=overflow, pivot_mode=pivot_mode)
-        return Instances(node.curve_instances), node.line, node.pivot_point
+        return gn.Instances(node.curve_instances), node.line, node.pivot_point
 
 
 
@@ -3737,7 +3542,7 @@ class Vector(geosocks.Vector):
         Returns:
             socket `result`
         """
-        return nodes.Mix(factor=factor, a=self, b=vector, blend_type=MIX, clamp_factor=clamp_factor, clamp_result=False, data_type='VECTOR', factor_mode=factor_mode).result
+        return nodes.Mix(factor=factor, a=self, b=vector, blend_type='MIX', clamp_factor=clamp_factor, clamp_result=False, data_type='VECTOR', factor_mode=factor_mode).result
 
 
     def mix_non_uniform(self, factor=None, vector=None, clamp_factor=True):
@@ -3754,7 +3559,7 @@ class Vector(geosocks.Vector):
         Returns:
             socket `result`
         """
-        return nodes.Mix(factor=factor, a=self, b=vector, blend_type=MIX, clamp_factor=clamp_factor, clamp_result=False, data_type='VECTOR', factor_mode='NON_UNIFORM').result
+        return nodes.Mix(factor=factor, a=self, b=vector, blend_type='MIX', clamp_factor=clamp_factor, clamp_result=False, data_type='VECTOR', factor_mode='NON_UNIFORM').result
 
 
     def mix_uniform(self, vector=None, clamp_factor=True):
@@ -3770,7 +3575,7 @@ class Vector(geosocks.Vector):
         Returns:
             socket `result`
         """
-        return nodes.Mix(factor=None, a=self, b=vector, blend_type=MIX, clamp_factor=clamp_factor, clamp_result=False, data_type='VECTOR', factor_mode='UNIFORM').result
+        return nodes.Mix(factor=None, a=self, b=vector, blend_type='MIX', clamp_factor=clamp_factor, clamp_result=False, data_type='VECTOR', factor_mode='UNIFORM').result
 
 
     def modulo(self, vector=None):
@@ -4232,7 +4037,7 @@ class Color(geosocks.Color):
         Returns:
             socket `alpha`
         """
-        return nodes.SeparateColor(color=self, mode=RGB).alpha
+        return nodes.SeparateColor(color=self, mode='RGB').alpha
 
 
     @property
@@ -4245,7 +4050,7 @@ class Color(geosocks.Color):
         Returns:
             socket `blue`
         """
-        return nodes.SeparateColor(color=self, mode=RGB).blue
+        return nodes.SeparateColor(color=self, mode='RGB').blue
 
 
     def brighter(self, b=None):
@@ -4260,24 +4065,7 @@ class Color(geosocks.Color):
         Returns:
             socket `result`
         """
-        return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type='COLOR', mode='ELEMENT', operation='BRIGHTER').result
-
-
-    def compare(self, b=None, epsilon=None, operation='GREATER_THAN'):
-        """ Node Compare.
-
-        Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
-        Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
-
-        Args:
-            b: ['Float', 'Integer', 'Vector', 'Color', 'String']
-            epsilon: Float
-            operation (str): 'GREATER_THAN' in [LESS_THAN, LESS_EQUAL, GREATER_THAN, GREATER_EQUAL, EQUAL, NOT_EQUAL]
-
-        Returns:
-            socket `result`
-        """
-        return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=epsilon, data_type='COLOR', mode='ELEMENT', operation=operation).result
+        return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type='RGBA', mode='ELEMENT', operation='BRIGHTER').result
 
 
     def darker(self, b=None):
@@ -4292,7 +4080,7 @@ class Color(geosocks.Color):
         Returns:
             socket `result`
         """
-        return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type='COLOR', mode='ELEMENT', operation='DARKER').result
+        return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type='RGBA', mode='ELEMENT', operation='DARKER').result
 
 
     def equal(self, b=None, epsilon=None):
@@ -4308,7 +4096,7 @@ class Color(geosocks.Color):
         Returns:
             socket `result`
         """
-        return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=epsilon, data_type='COLOR', mode='ELEMENT', operation='EQUAL').result
+        return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=epsilon, data_type='RGBA', mode='ELEMENT', operation='EQUAL').result
 
 
     def equal(self, b=None, epsilon=None):
@@ -4324,7 +4112,7 @@ class Color(geosocks.Color):
         Returns:
             socket `result`
         """
-        return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=epsilon, data_type='COLOR', mode='ELEMENT', operation='EQUAL').result
+        return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=epsilon, data_type='RGBA', mode='ELEMENT', operation='EQUAL').result
 
 
     @property
@@ -4337,7 +4125,7 @@ class Color(geosocks.Color):
         Returns:
             socket `green`
         """
-        return nodes.SeparateColor(color=self, mode=RGB).green
+        return nodes.SeparateColor(color=self, mode='RGB').green
 
 
     @property
@@ -4378,7 +4166,7 @@ class Color(geosocks.Color):
         Returns:
             socket `red`
         """
-        return nodes.SeparateColor(color=self, mode=HSV).red
+        return nodes.SeparateColor(color=self, mode='HSV').red
 
 
     @property
@@ -4391,7 +4179,7 @@ class Color(geosocks.Color):
         Returns:
             socket `blue`
         """
-        return nodes.SeparateColor(color=self, mode=HSL).blue
+        return nodes.SeparateColor(color=self, mode='HSL').blue
 
 
     def mix(self, factor=None, color=None, blend_type='MIX', clamp_factor=True, clamp_result=False):
@@ -4410,7 +4198,7 @@ class Color(geosocks.Color):
         Returns:
             socket `result`
         """
-        return nodes.Mix(factor=factor, a=self, b=color, blend_type=blend_type, clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='COLOR', factor_mode='UNIFORM').result
+        return nodes.Mix(factor=factor, a=self, b=color, blend_type=blend_type, clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM').result
 
 
     def mix_add(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
@@ -4428,7 +4216,7 @@ class Color(geosocks.Color):
         Returns:
             socket `result`
         """
-        return nodes.Mix(factor=factor, a=self, b=color, blend_type='ADD', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='COLOR', factor_mode='UNIFORM').result
+        return nodes.Mix(factor=factor, a=self, b=color, blend_type='ADD', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM').result
 
 
     def mix_burn(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
@@ -4446,7 +4234,7 @@ class Color(geosocks.Color):
         Returns:
             socket `result`
         """
-        return nodes.Mix(factor=factor, a=self, b=color, blend_type='BURN', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='COLOR', factor_mode='UNIFORM').result
+        return nodes.Mix(factor=factor, a=self, b=color, blend_type='BURN', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM').result
 
 
     def mix_color(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
@@ -4464,7 +4252,7 @@ class Color(geosocks.Color):
         Returns:
             socket `result`
         """
-        return nodes.Mix(factor=factor, a=self, b=color, blend_type='COLOR', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='COLOR', factor_mode='UNIFORM').result
+        return nodes.Mix(factor=factor, a=self, b=color, blend_type='COLOR', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM').result
 
 
     def mix_darken(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
@@ -4482,7 +4270,7 @@ class Color(geosocks.Color):
         Returns:
             socket `result`
         """
-        return nodes.Mix(factor=factor, a=self, b=color, blend_type='DARKEN', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='COLOR', factor_mode='UNIFORM').result
+        return nodes.Mix(factor=factor, a=self, b=color, blend_type='DARKEN', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM').result
 
 
     def mix_difference(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
@@ -4500,7 +4288,7 @@ class Color(geosocks.Color):
         Returns:
             socket `result`
         """
-        return nodes.Mix(factor=factor, a=self, b=color, blend_type='DIFFERENCE', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='COLOR', factor_mode='UNIFORM').result
+        return nodes.Mix(factor=factor, a=self, b=color, blend_type='DIFFERENCE', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM').result
 
 
     def mix_divide(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
@@ -4518,7 +4306,7 @@ class Color(geosocks.Color):
         Returns:
             socket `result`
         """
-        return nodes.Mix(factor=factor, a=self, b=color, blend_type='DIVIDE', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='COLOR', factor_mode='UNIFORM').result
+        return nodes.Mix(factor=factor, a=self, b=color, blend_type='DIVIDE', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM').result
 
 
     def mix_dodge(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
@@ -4536,7 +4324,7 @@ class Color(geosocks.Color):
         Returns:
             socket `result`
         """
-        return nodes.Mix(factor=factor, a=self, b=color, blend_type='DODGE', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='COLOR', factor_mode='UNIFORM').result
+        return nodes.Mix(factor=factor, a=self, b=color, blend_type='DODGE', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM').result
 
 
     def mix_hue(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
@@ -4554,7 +4342,7 @@ class Color(geosocks.Color):
         Returns:
             socket `result`
         """
-        return nodes.Mix(factor=factor, a=self, b=color, blend_type='HUE', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='COLOR', factor_mode='UNIFORM').result
+        return nodes.Mix(factor=factor, a=self, b=color, blend_type='HUE', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM').result
 
 
     def mix_lighten(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
@@ -4572,7 +4360,7 @@ class Color(geosocks.Color):
         Returns:
             socket `result`
         """
-        return nodes.Mix(factor=factor, a=self, b=color, blend_type='LIGHTEN', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='COLOR', factor_mode='UNIFORM').result
+        return nodes.Mix(factor=factor, a=self, b=color, blend_type='LIGHTEN', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM').result
 
 
     def mix_linear_light(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
@@ -4590,7 +4378,7 @@ class Color(geosocks.Color):
         Returns:
             socket `result`
         """
-        return nodes.Mix(factor=factor, a=self, b=color, blend_type='LINEAR_LIGHT', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='COLOR', factor_mode='UNIFORM').result
+        return nodes.Mix(factor=factor, a=self, b=color, blend_type='LINEAR_LIGHT', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM').result
 
 
     def mix_multiply(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
@@ -4608,7 +4396,7 @@ class Color(geosocks.Color):
         Returns:
             socket `result`
         """
-        return nodes.Mix(factor=factor, a=self, b=color, blend_type='MULTIPLY', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='COLOR', factor_mode='UNIFORM').result
+        return nodes.Mix(factor=factor, a=self, b=color, blend_type='MULTIPLY', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM').result
 
 
     def mix_overlay(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
@@ -4626,7 +4414,7 @@ class Color(geosocks.Color):
         Returns:
             socket `result`
         """
-        return nodes.Mix(factor=factor, a=self, b=color, blend_type='OVERLAY', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='COLOR', factor_mode='UNIFORM').result
+        return nodes.Mix(factor=factor, a=self, b=color, blend_type='OVERLAY', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM').result
 
 
     def mix_saturation(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
@@ -4644,7 +4432,7 @@ class Color(geosocks.Color):
         Returns:
             socket `result`
         """
-        return nodes.Mix(factor=factor, a=self, b=color, blend_type='SATURATION', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='COLOR', factor_mode='UNIFORM').result
+        return nodes.Mix(factor=factor, a=self, b=color, blend_type='SATURATION', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM').result
 
 
     def mix_screen(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
@@ -4662,7 +4450,7 @@ class Color(geosocks.Color):
         Returns:
             socket `result`
         """
-        return nodes.Mix(factor=factor, a=self, b=color, blend_type='SCREEN', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='COLOR', factor_mode='UNIFORM').result
+        return nodes.Mix(factor=factor, a=self, b=color, blend_type='SCREEN', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM').result
 
 
     def mix_soft_light(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
@@ -4680,7 +4468,7 @@ class Color(geosocks.Color):
         Returns:
             socket `result`
         """
-        return nodes.Mix(factor=factor, a=self, b=color, blend_type='SOFT_LIGHT', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='COLOR', factor_mode='UNIFORM').result
+        return nodes.Mix(factor=factor, a=self, b=color, blend_type='SOFT_LIGHT', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM').result
 
 
     def mix_subtract(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
@@ -4698,7 +4486,7 @@ class Color(geosocks.Color):
         Returns:
             socket `result`
         """
-        return nodes.Mix(factor=factor, a=self, b=color, blend_type='SUBTRACT', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='COLOR', factor_mode='UNIFORM').result
+        return nodes.Mix(factor=factor, a=self, b=color, blend_type='SUBTRACT', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM').result
 
 
     def mix_value(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
@@ -4716,7 +4504,7 @@ class Color(geosocks.Color):
         Returns:
             socket `result`
         """
-        return nodes.Mix(factor=factor, a=self, b=color, blend_type='VALUE', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='COLOR', factor_mode='UNIFORM').result
+        return nodes.Mix(factor=factor, a=self, b=color, blend_type='VALUE', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM').result
 
 
     @property
@@ -4729,7 +4517,7 @@ class Color(geosocks.Color):
         Returns:
             socket `red`
         """
-        return nodes.SeparateColor(color=self, mode=RGB).red
+        return nodes.SeparateColor(color=self, mode='RGB').red
 
 
     @property
@@ -4769,7 +4557,7 @@ class Color(geosocks.Color):
         Returns:
             socket `green`
         """
-        return nodes.SeparateColor(color=self, mode=HSV).green
+        return nodes.SeparateColor(color=self, mode='HSV').green
 
 
     def switch(self, switch=None, true=None):
@@ -4798,7 +4586,7 @@ class Color(geosocks.Color):
         Returns:
             socket `blue`
         """
-        return nodes.SeparateColor(color=self, mode=HSV).blue
+        return nodes.SeparateColor(color=self, mode='HSV').blue
 
 
 
@@ -5525,7 +5313,7 @@ class Texture(geosocks.Texture):
         Returns:
             tuple ('color', 'fac')
         """
-        node = nodes.WaveTexture(vector=vector, scale=scale, distortion=distortion, detail=detail, detail_scale=detail_scale, detail_roughness=detail_roughness, phase_offset=phase_offset, bands_direction=direction, rings_direction=None, wave_profile=wave_profile, wave_type='BANDS')
+        node = nodes.WaveTexture(vector=vector, scale=scale, distortion=distortion, detail=detail, detail_scale=detail_scale, detail_roughness=detail_roughness, phase_offset=phase_offset, bands_direction=direction, rings_direction='X', wave_profile=wave_profile, wave_type='BANDS')
         return node.color, node.fac
 
 
@@ -5549,7 +5337,7 @@ class Texture(geosocks.Texture):
         Returns:
             tuple ('color', 'fac')
         """
-        node = nodes.WaveTexture(vector=vector, scale=scale, distortion=distortion, detail=detail, detail_scale=detail_scale, detail_roughness=detail_roughness, phase_offset=phase_offset, bands_direction=direction, rings_direction=None, wave_profile='SAW', wave_type='BANDS')
+        node = nodes.WaveTexture(vector=vector, scale=scale, distortion=distortion, detail=detail, detail_scale=detail_scale, detail_roughness=detail_roughness, phase_offset=phase_offset, bands_direction=direction, rings_direction='X', wave_profile='SAW', wave_type='BANDS')
         return node.color, node.fac
 
 
@@ -5573,7 +5361,7 @@ class Texture(geosocks.Texture):
         Returns:
             tuple ('color', 'fac')
         """
-        node = nodes.WaveTexture(vector=vector, scale=scale, distortion=distortion, detail=detail, detail_scale=detail_scale, detail_roughness=detail_roughness, phase_offset=phase_offset, bands_direction=direction, rings_direction=None, wave_profile='SIN', wave_type='BANDS')
+        node = nodes.WaveTexture(vector=vector, scale=scale, distortion=distortion, detail=detail, detail_scale=detail_scale, detail_roughness=detail_roughness, phase_offset=phase_offset, bands_direction=direction, rings_direction='X', wave_profile='SIN', wave_type='BANDS')
         return node.color, node.fac
 
 
@@ -5597,7 +5385,7 @@ class Texture(geosocks.Texture):
         Returns:
             tuple ('color', 'fac')
         """
-        node = nodes.WaveTexture(vector=vector, scale=scale, distortion=distortion, detail=detail, detail_scale=detail_scale, detail_roughness=detail_roughness, phase_offset=phase_offset, bands_direction=direction, rings_direction=None, wave_profile='TRIANGLE', wave_type='BANDS')
+        node = nodes.WaveTexture(vector=vector, scale=scale, distortion=distortion, detail=detail, detail_scale=detail_scale, detail_roughness=detail_roughness, phase_offset=phase_offset, bands_direction=direction, rings_direction='X', wave_profile='TRI', wave_type='BANDS')
         return node.color, node.fac
 
 
@@ -5622,7 +5410,7 @@ class Texture(geosocks.Texture):
         Returns:
             tuple ('color', 'fac')
         """
-        node = nodes.WaveTexture(vector=vector, scale=scale, distortion=distortion, detail=detail, detail_scale=detail_scale, detail_roughness=detail_roughness, phase_offset=phase_offset, bands_direction=None, rings_direction=direction, wave_profile=wave_profile, wave_type='RINGS')
+        node = nodes.WaveTexture(vector=vector, scale=scale, distortion=distortion, detail=detail, detail_scale=detail_scale, detail_roughness=detail_roughness, phase_offset=phase_offset, bands_direction='X', rings_direction=direction, wave_profile=wave_profile, wave_type='RINGS')
         return node.color, node.fac
 
 
@@ -5646,7 +5434,7 @@ class Texture(geosocks.Texture):
         Returns:
             tuple ('color', 'fac')
         """
-        node = nodes.WaveTexture(vector=vector, scale=scale, distortion=distortion, detail=detail, detail_scale=detail_scale, detail_roughness=detail_roughness, phase_offset=phase_offset, bands_direction=None, rings_direction=direction, wave_profile='SAW', wave_type='RINGS')
+        node = nodes.WaveTexture(vector=vector, scale=scale, distortion=distortion, detail=detail, detail_scale=detail_scale, detail_roughness=detail_roughness, phase_offset=phase_offset, bands_direction='X', rings_direction=direction, wave_profile='SAW', wave_type='RINGS')
         return node.color, node.fac
 
 
@@ -5670,7 +5458,7 @@ class Texture(geosocks.Texture):
         Returns:
             tuple ('color', 'fac')
         """
-        node = nodes.WaveTexture(vector=vector, scale=scale, distortion=distortion, detail=detail, detail_scale=detail_scale, detail_roughness=detail_roughness, phase_offset=phase_offset, bands_direction=None, rings_direction=direction, wave_profile='SIN', wave_type='RINGS')
+        node = nodes.WaveTexture(vector=vector, scale=scale, distortion=distortion, detail=detail, detail_scale=detail_scale, detail_roughness=detail_roughness, phase_offset=phase_offset, bands_direction='X', rings_direction=direction, wave_profile='SIN', wave_type='RINGS')
         return node.color, node.fac
 
 
@@ -5694,7 +5482,7 @@ class Texture(geosocks.Texture):
         Returns:
             tuple ('color', 'fac')
         """
-        node = nodes.WaveTexture(vector=vector, scale=scale, distortion=distortion, detail=detail, detail_scale=detail_scale, detail_roughness=detail_roughness, phase_offset=phase_offset, bands_direction=None, rings_direction=direction, wave_profile='TRIANGLE', wave_type='RINGS')
+        node = nodes.WaveTexture(vector=vector, scale=scale, distortion=distortion, detail=detail, detail_scale=detail_scale, detail_roughness=detail_roughness, phase_offset=phase_offset, bands_direction='X', rings_direction=direction, wave_profile='TRI', wave_type='RINGS')
         return node.color, node.fac
 
 
@@ -5850,7 +5638,7 @@ class Geometry(geosocks.Geometry):
         Returns:
             socket `ID`
         """
-        return self.as_attribute(nodes.ID()).ID
+        return self.attribute_node(nodes.ID()).ID
 
 
     def attribute_statistic(self, selection=None, attribute=None, domain='POINT'):
@@ -5881,9 +5669,10 @@ class Geometry(geosocks.Geometry):
         Returns:
             socket `bounding_box` [Mesh](Mesh.md)
         """
+        import geonodes as gn
         if not hasattr(self, '_c_geometrynodeboundbox'):
             self._c_geometrynodeboundbox = nodes.BoundingBox(geometry=self)
-        return Mesh(self._c_geometrynodeboundbox.bounding_box)
+        return gn.Mesh(self._c_geometrynodeboundbox.bounding_box)
 
 
     @property
@@ -5961,7 +5750,8 @@ class Geometry(geosocks.Geometry):
         Returns:
             socket `convex_hull` [Mesh](Mesh.md)
         """
-        return Mesh(nodes.ConvexHull(geometry=self).convex_hull)
+        import geonodes as gn
+        return gn.Mesh(nodes.ConvexHull(geometry=self).convex_hull)
 
 
     @property
@@ -5974,9 +5764,10 @@ class Geometry(geosocks.Geometry):
         Returns:
             socket `curve` [Curve](Curve.md)
         """
+        import geonodes as gn
         if not hasattr(self, '_c_geometrynodeseparatecomponents'):
             self._c_geometrynodeseparatecomponents = nodes.SeparateComponents(geometry=self)
-        return Curve(self._c_geometrynodeseparatecomponents.curve)
+        return gn.Curve(self._c_geometrynodeseparatecomponents.curve)
 
 
     def delete(self, selection=None, domain='POINT', mode='ALL'):
@@ -6043,7 +5834,7 @@ class Geometry(geosocks.Geometry):
             socket `value`
         """
         data_type_ = self.value_data_type(value, 'FLOAT')
-        return self.as_attribute(nodes.FieldAtIndex(index=index, value=value, data_type=data_type_, domain=domain)).value
+        return self.attribute_node(nodes.FieldAtIndex(index=index, value=value, data_type=data_type_, domain=domain)).value
 
 
     def get_named_boolean(self, name=None):
@@ -6058,7 +5849,7 @@ class Geometry(geosocks.Geometry):
         Returns:
             socket `attribute`
         """
-        return self.as_attribute(nodes.NamedAttribute(name=name, data_type='BOOLEAN')).attribute
+        return self.attribute_node(nodes.NamedAttribute(name=name, data_type='BOOLEAN')).attribute
 
 
     def get_named_color(self, name=None):
@@ -6073,7 +5864,7 @@ class Geometry(geosocks.Geometry):
         Returns:
             socket `attribute`
         """
-        return self.as_attribute(nodes.NamedAttribute(name=name, data_type='FLOAT_COLOR')).attribute
+        return self.attribute_node(nodes.NamedAttribute(name=name, data_type='FLOAT_COLOR')).attribute
 
 
     def get_named_float(self, name=None):
@@ -6088,7 +5879,7 @@ class Geometry(geosocks.Geometry):
         Returns:
             socket `attribute`
         """
-        return self.as_attribute(nodes.NamedAttribute(name=name, data_type='FLOAT')).attribute
+        return self.attribute_node(nodes.NamedAttribute(name=name, data_type='FLOAT')).attribute
 
 
     def get_named_integer(self, name=None):
@@ -6103,7 +5894,7 @@ class Geometry(geosocks.Geometry):
         Returns:
             socket `attribute`
         """
-        return self.as_attribute(nodes.NamedAttribute(name=name, data_type='INT')).attribute
+        return self.attribute_node(nodes.NamedAttribute(name=name, data_type='INT')).attribute
 
 
     def get_named_vector(self, name=None):
@@ -6118,7 +5909,7 @@ class Geometry(geosocks.Geometry):
         Returns:
             socket `attribute`
         """
-        return self.as_attribute(nodes.NamedAttribute(name=name, data_type='FLOAT_VECTOR')).attribute
+        return self.attribute_node(nodes.NamedAttribute(name=name, data_type='FLOAT_VECTOR')).attribute
 
 
     @property
@@ -6131,7 +5922,7 @@ class Geometry(geosocks.Geometry):
         Returns:
             socket `index`
         """
-        return self.as_attribute(nodes.Index()).index
+        return self.attribute_node(nodes.Index()).index
 
 
     @property
@@ -6144,9 +5935,27 @@ class Geometry(geosocks.Geometry):
         Returns:
             socket `instances` [Instances](Instances.md)
         """
+        import geonodes as gn
         if not hasattr(self, '_c_geometrynodeseparatecomponents'):
             self._c_geometrynodeseparatecomponents = nodes.SeparateComponents(geometry=self)
-        return Instances(self._c_geometrynodeseparatecomponents.instances)
+        return gn.Instances(self._c_geometrynodeseparatecomponents.instances)
+
+
+    def interpolate_domain(self, value=None, domain='POINT'):
+        """ Node InterpolateDomain.
+
+        Node reference [Interpolate Domain](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/interpolate_domain.html)
+        Developer reference [GeometryNodeFieldOnDomain](https://docs.blender.org/api/current/bpy.types.GeometryNodeFieldOnDomain.html)
+
+        Args:
+            value: ['Float', 'Integer', 'Vector', 'Color', 'Boolean']
+            domain (str): 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+
+        Returns:
+            socket `value`
+        """
+        data_type_ = self.value_data_type(value, 'FLOAT')
+        return self.attribute_node(nodes.InterpolateDomain(value=value, data_type=data_type_, domain=domain)).value
 
 
     @property
@@ -6159,7 +5968,7 @@ class Geometry(geosocks.Geometry):
         Returns:
             socket `is_viewport`
         """
-        return self.as_attribute(nodes.IsViewport()).is_viewport
+        return self.attribute_node(nodes.IsViewport()).is_viewport
 
 
     def join(*geometry):
@@ -6189,7 +5998,7 @@ class Geometry(geosocks.Geometry):
         Returns:
             socket `material_index`
         """
-        return self.as_attribute(nodes.MaterialIndex()).material_index
+        return self.attribute_node(nodes.MaterialIndex()).material_index
 
 
     def material_selection(self, material=None):
@@ -6204,7 +6013,7 @@ class Geometry(geosocks.Geometry):
         Returns:
             socket `selection`
         """
-        return self.as_attribute(nodes.MaterialSelection(material=material)).selection
+        return self.attribute_node(nodes.MaterialSelection(material=material)).selection
 
 
     def merge_by_distance(self, selection=None, distance=None, mode='ALL'):
@@ -6234,9 +6043,10 @@ class Geometry(geosocks.Geometry):
         Returns:
             socket `mesh` [Mesh](Mesh.md)
         """
+        import geonodes as gn
         if not hasattr(self, '_c_geometrynodeseparatecomponents'):
             self._c_geometrynodeseparatecomponents = nodes.SeparateComponents(geometry=self)
-        return Mesh(self._c_geometrynodeseparatecomponents.mesh)
+        return gn.Mesh(self._c_geometrynodeseparatecomponents.mesh)
 
 
     def named_attribute(self, name=None, data_type='FLOAT'):
@@ -6252,7 +6062,7 @@ class Geometry(geosocks.Geometry):
         Returns:
             socket `attribute`
         """
-        return self.as_attribute(nodes.NamedAttribute(name=name, data_type=data_type)).attribute
+        return self.attribute_node(nodes.NamedAttribute(name=name, data_type=data_type)).attribute
 
 
     @property
@@ -6265,7 +6075,7 @@ class Geometry(geosocks.Geometry):
         Returns:
             socket `normal`
         """
-        return self.as_attribute(nodes.Normal()).normal
+        return self.attribute_node(nodes.Normal()).normal
 
 
     @property
@@ -6278,9 +6088,10 @@ class Geometry(geosocks.Geometry):
         Returns:
             socket `point_cloud` [Points](Points.md)
         """
+        import geonodes as gn
         if not hasattr(self, '_c_geometrynodeseparatecomponents'):
             self._c_geometrynodeseparatecomponents = nodes.SeparateComponents(geometry=self)
-        return Points(self._c_geometrynodeseparatecomponents.point_cloud)
+        return gn.Points(self._c_geometrynodeseparatecomponents.point_cloud)
 
 
     @property
@@ -6293,7 +6104,7 @@ class Geometry(geosocks.Geometry):
         Returns:
             socket `position`
         """
-        return self.as_attribute(nodes.Position()).position
+        return self.attribute_node(nodes.Position()).position
 
 
     def proximity(self, target=None, source_position=None, target_element='FACES'):
@@ -6310,7 +6121,7 @@ class Geometry(geosocks.Geometry):
         Returns:
             socket `distance`
         """
-        return self.as_attribute(nodes.GeometryProximity(target=target, source_position=source_position, target_element=target_element)).distance
+        return self.attribute_node(nodes.GeometryProximity(target=target, source_position=source_position, target_element=target_element)).distance
 
 
     def proximity_edges(self, target=None, source_position=None):
@@ -6326,10 +6137,10 @@ class Geometry(geosocks.Geometry):
         Returns:
             socket `distance`
         """
-        return self.as_attribute(nodes.GeometryProximity(target=target, source_position=source_position, target_element='EDGES')).distance
+        return self.attribute_node(nodes.GeometryProximity(target=target, source_position=source_position, target_element='EDGES')).distance
 
 
-    def proximity_facess(self, target=None, source_position=None):
+    def proximity_faces(self, target=None, source_position=None):
         """ Node GeometryProximity.
 
         Node reference [Geometry Proximity](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/geometry_proximity.html)
@@ -6342,7 +6153,7 @@ class Geometry(geosocks.Geometry):
         Returns:
             socket `distance`
         """
-        return self.as_attribute(nodes.GeometryProximity(target=target, source_position=source_position, target_element='FACES')).distance
+        return self.attribute_node(nodes.GeometryProximity(target=target, source_position=source_position, target_element='FACES')).distance
 
 
     def proximity_points(self, target=None, source_position=None):
@@ -6358,7 +6169,7 @@ class Geometry(geosocks.Geometry):
         Returns:
             socket `distance`
         """
-        return self.as_attribute(nodes.GeometryProximity(target=target, source_position=source_position, target_element='POINTS')).distance
+        return self.attribute_node(nodes.GeometryProximity(target=target, source_position=source_position, target_element='POINTS')).distance
 
 
     @property
@@ -6371,7 +6182,7 @@ class Geometry(geosocks.Geometry):
         Returns:
             socket `radius`
         """
-        return self.as_attribute(nodes.Radius()).radius
+        return self.attribute_node(nodes.Radius()).radius
 
 
     def random_boolean(self, probability=None, ID=None, seed=None):
@@ -6388,7 +6199,7 @@ class Geometry(geosocks.Geometry):
         Returns:
             socket `value`
         """
-        return self.as_attribute(nodes.RandomValue(min=None, max=None, probability=probability, ID=ID, seed=seed, data_type='BOOLEAN')).value
+        return self.attribute_node(nodes.RandomValue(min=None, max=None, probability=probability, ID=ID, seed=seed, data_type='BOOLEAN')).value
 
 
     def random_float(self, min=None, max=None, ID=None, seed=None):
@@ -6406,7 +6217,7 @@ class Geometry(geosocks.Geometry):
         Returns:
             socket `value`
         """
-        return self.as_attribute(nodes.RandomValue(min=min, max=max, probability=None, ID=ID, seed=seed, data_type='FLOAT')).value
+        return self.attribute_node(nodes.RandomValue(min=min, max=max, probability=None, ID=ID, seed=seed, data_type='FLOAT')).value
 
 
     def random_integer(self, min=None, max=None, ID=None, seed=None):
@@ -6424,7 +6235,7 @@ class Geometry(geosocks.Geometry):
         Returns:
             socket `value`
         """
-        return self.as_attribute(nodes.RandomValue(min=min, max=max, probability=None, ID=ID, seed=seed, data_type='INT')).value
+        return self.attribute_node(nodes.RandomValue(min=min, max=max, probability=None, ID=ID, seed=seed, data_type='INT')).value
 
 
     def random_vector(self, min=None, max=None, ID=None, seed=None):
@@ -6442,7 +6253,7 @@ class Geometry(geosocks.Geometry):
         Returns:
             socket `value`
         """
-        return self.as_attribute(nodes.RandomValue(min=min, max=max, probability=None, ID=ID, seed=seed, data_type='FLOAT_VECTOR')).value
+        return self.attribute_node(nodes.RandomValue(min=min, max=max, probability=None, ID=ID, seed=seed, data_type='FLOAT_VECTOR')).value
 
 
     def raycast(self, target_geometry=None, attribute=None, source_position=None, ray_direction=None, ray_length=None, mapping='INTERPOLATED'):
@@ -6463,7 +6274,7 @@ class Geometry(geosocks.Geometry):
             node with sockets ['is_hit', 'hit_position', 'hit_normal', 'hit_distance', 'attribute']
         """
         data_type_ = self.value_data_type(attribute, 'FLOAT')
-        return self.as_attribute(nodes.Raycast(target_geometry=target_geometry, attribute=attribute, source_position=source_position, ray_direction=ray_direction, ray_length=ray_length, data_type=data_type_, mapping=mapping))
+        return self.attribute_node(nodes.Raycast(target_geometry=target_geometry, attribute=attribute, source_position=source_position, ray_direction=ray_direction, ray_length=ray_length, data_type=data_type_, mapping=mapping))
 
 
     def raycast_interpolated(self, target_geometry=None, attribute=None, source_position=None, ray_direction=None, ray_length=None):
@@ -6483,7 +6294,7 @@ class Geometry(geosocks.Geometry):
             node with sockets ['is_hit', 'hit_position', 'hit_normal', 'hit_distance', 'attribute']
         """
         data_type_ = self.value_data_type(attribute, 'FLOAT')
-        return self.as_attribute(nodes.Raycast(target_geometry=target_geometry, attribute=attribute, source_position=source_position, ray_direction=ray_direction, ray_length=ray_length, data_type=data_type_, mapping='INTERPOLATED'))
+        return self.attribute_node(nodes.Raycast(target_geometry=target_geometry, attribute=attribute, source_position=source_position, ray_direction=ray_direction, ray_length=ray_length, data_type=data_type_, mapping='INTERPOLATED'))
 
 
     def raycast_nearest(self, target_geometry=None, attribute=None, source_position=None, ray_direction=None, ray_length=None):
@@ -6503,7 +6314,7 @@ class Geometry(geosocks.Geometry):
             node with sockets ['is_hit', 'hit_position', 'hit_normal', 'hit_distance', 'attribute']
         """
         data_type_ = self.value_data_type(attribute, 'FLOAT')
-        return self.as_attribute(nodes.Raycast(target_geometry=target_geometry, attribute=attribute, source_position=source_position, ray_direction=ray_direction, ray_length=ray_length, data_type=data_type_, mapping='NEAREST'))
+        return self.attribute_node(nodes.Raycast(target_geometry=target_geometry, attribute=attribute, source_position=source_position, ray_direction=ray_direction, ray_length=ray_length, data_type=data_type_, mapping='NEAREST'))
 
 
     def remove_named_attribute(self, name=None):
@@ -6769,7 +6580,7 @@ class Geometry(geosocks.Geometry):
         Returns:
             node with sockets ['geometry']
         """
-        data_type_ = self.value_data_type(attribute, 'FLOAT')
+        data_type_ = self.value_data_type(value, 'FLOAT')
         return self.stack(nodes.StoreNamedAttribute(geometry=self, name=name, value=value, data_type=data_type_, domain=domain))
 
 
@@ -6801,7 +6612,8 @@ class Geometry(geosocks.Geometry):
         Returns:
             socket `instances` [Instances](Instances.md)
         """
-        return Instances(nodes.GeometryToInstance(*geometry).instances)
+        import geonodes as gn
+        return gn.Instances(nodes.GeometryToInstance(*geometry).instances)
 
 
     def transform(self, translation=None, rotation=None, scale=None):
@@ -6831,9 +6643,10 @@ class Geometry(geosocks.Geometry):
         Returns:
             socket `volume` [Volume](Volume.md)
         """
+        import geonodes as gn
         if not hasattr(self, '_c_geometrynodeseparatecomponents'):
             self._c_geometrynodeseparatecomponents = nodes.SeparateComponents(geometry=self)
-        return Volume(self._c_geometrynodeseparatecomponents.volume)
+        return gn.Volume(self._c_geometrynodeseparatecomponents.volume)
 
 
 
@@ -6894,8 +6707,9 @@ class Mesh(Geometry):
         Returns:
             tuple ('mesh', 'top', 'bottom', 'side')
         """
+        import geonodes as gn
         node = nodes.Cone(vertices=vertices, side_segments=side_segments, fill_segments=fill_segments, radius_top=radius_top, radius_bottom=radius_bottom, depth=depth, fill_type=fill_type)
-        return Mesh(node.mesh), node.top, node.bottom, node.side
+        return gn.Mesh(node.mesh), node.top, node.bottom, node.side
 
 
     @classmethod
@@ -6935,8 +6749,9 @@ class Mesh(Geometry):
         Returns:
             tuple ('mesh', 'top', 'bottom', 'side')
         """
+        import geonodes as gn
         node = nodes.Cylinder(vertices=vertices, side_segments=side_segments, fill_segments=fill_segments, radius=radius, depth=depth, fill_type=fill_type)
-        return Mesh(node.mesh), node.top, node.bottom, node.side
+        return gn.Mesh(node.mesh), node.top, node.bottom, node.side
 
 
     @classmethod
@@ -7011,7 +6826,7 @@ class Mesh(Geometry):
         Returns:
             socket `mesh`
         """
-        return cls(nodes.MeshLine(count=count, resolution=None, start_location=start_location, offset=end_location, count_mode='TOTAL', mode=END_POINTS).mesh)
+        return cls(nodes.MeshLine(count=count, resolution=None, start_location=start_location, offset=end_location, count_mode='TOTAL', mode='END_POINTS').mesh)
 
 
     @classmethod
@@ -7029,7 +6844,7 @@ class Mesh(Geometry):
         Returns:
             socket `mesh`
         """
-        return cls(nodes.MeshLine(count=None, resolution=resolution, start_location=start_location, offset=end_location, count_mode='RESOLUTION', mode=END_POINTS).mesh)
+        return cls(nodes.MeshLine(count=None, resolution=resolution, start_location=start_location, offset=end_location, count_mode='RESOLUTION', mode='END_POINTS').mesh)
 
 
     @classmethod
@@ -7047,7 +6862,7 @@ class Mesh(Geometry):
         Returns:
             socket `mesh`
         """
-        return cls(nodes.MeshLine(count=count, resolution=None, start_location=start_location, offset=offset, count_mode='TOTAL', mode=OFFSET).mesh)
+        return cls(nodes.MeshLine(count=count, resolution=None, start_location=start_location, offset=offset, count_mode='TOTAL', mode='OFFSET').mesh)
 
 
     @classmethod
@@ -7065,7 +6880,7 @@ class Mesh(Geometry):
         Returns:
             socket `mesh`
         """
-        return cls(nodes.MeshLine(count=None, resolution=resolution, start_location=start_location, offset=offset, count_mode='RESOLUTION', mode=OFFSET).mesh)
+        return cls(nodes.MeshLine(count=None, resolution=resolution, start_location=start_location, offset=offset, count_mode='RESOLUTION', mode='OFFSET').mesh)
 
 
     def boolean_difference(self, *mesh_2, self_intersection=None, hole_tolerant=None):
@@ -7099,6 +6914,8 @@ class Mesh(Geometry):
         Returns:
             socket `intersecting_edges`
         """
+        self = mesh_2[0]
+
         return self.stack(nodes.MeshBoolean(*mesh_2, mesh_1=None, self_intersection=self_intersection, hole_tolerant=hole_tolerant, operation='INTERSECT')).node.intersecting_edges
 
 
@@ -7116,6 +6933,8 @@ class Mesh(Geometry):
         Returns:
             socket `intersecting_edges`
         """
+        self = mesh_2[0]
+
         return self.stack(nodes.MeshBoolean(*mesh_2, mesh_1=None, self_intersection=self_intersection, hole_tolerant=hole_tolerant, operation='UNION')).node.intersecting_edges
 
 
@@ -7132,6 +6951,42 @@ class Mesh(Geometry):
         if not hasattr(self, '_c_geometrynodeattributedomainsize'):
             self._c_geometrynodeattributedomainsize = nodes.DomainSize(geometry=self, component='MESH')
         return self._c_geometrynodeattributedomainsize.face_corner_count
+
+
+    def corners_of_face(self, face_index=None, weights=None, sort_index=None):
+        """ Node CornersOfFace.
+
+        Node reference [Corners of Face](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh_topology/corners_of_face.html)
+        Developer reference [GeometryNodeCornersOfFace](https://docs.blender.org/api/current/bpy.types.GeometryNodeCornersOfFace.html)
+
+        Args:
+            face_index: Integer
+            weights: Float
+            sort_index: Integer
+
+        Returns:
+            tuple ('corner_index', 'total')
+        """
+        node = self.attribute_node(nodes.CornersOfFace(face_index=face_index, weights=weights, sort_index=sort_index))
+        return node.corner_index, node.total
+
+
+    def corners_of_vertex(self, vertex_index=None, weights=None, sort_index=None):
+        """ Node CornersOfVertex.
+
+        Node reference [Corners of Vertex](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh_topology/corners_of_vertex.html)
+        Developer reference [GeometryNodeCornersOfVertex](https://docs.blender.org/api/current/bpy.types.GeometryNodeCornersOfVertex.html)
+
+        Args:
+            vertex_index: Integer
+            weights: Float
+            sort_index: Integer
+
+        Returns:
+            tuple ('corner_index', 'total')
+        """
+        node = self.attribute_node(nodes.CornersOfVertex(vertex_index=vertex_index, weights=weights, sort_index=sort_index))
+        return node.corner_index, node.total
 
 
     def delete_all(self, selection=None, domain='POINT'):
@@ -7200,8 +7055,9 @@ class Mesh(Geometry):
         Returns:
             tuple ('points', 'normal', 'rotation')
         """
+        import geonodes as gn
         node = nodes.DistributePointsOnFaces(mesh=self, selection=selection, distance_min=distance_min, density_max=density_max, density=density, density_factor=density_factor, seed=seed, distribute_method=distribute_method)
-        return Points(node.points), node.normal, node.rotation
+        return gn.Points(node.points), node.normal, node.rotation
 
 
     @property
@@ -7232,7 +7088,8 @@ class Mesh(Geometry):
         Returns:
             socket `dual_mesh` [Mesh](Mesh.md)
         """
-        return Mesh(nodes.DualMesh(mesh=mesh, keep_boundaries=keep_boundaries).dual_mesh)
+        import geonodes as gn
+        return gn.Mesh(nodes.DualMesh(mesh=mesh, keep_boundaries=keep_boundaries).dual_mesh)
 
 
     @property
@@ -7263,7 +7120,8 @@ class Mesh(Geometry):
         Returns:
             socket `curves` [Curve](Curve.md)
         """
-        return Curve(self.as_attribute(nodes.EdgePathsToCurves(mesh=self, start_vertices=start_vertices, next_vertex_index=next_vertex_index)).curves)
+        import geonodes as gn
+        return gn.Curve(self.attribute_node(nodes.EdgePathsToCurves(mesh=self, start_vertices=start_vertices, next_vertex_index=next_vertex_index)).curves)
 
 
     def edge_paths_to_selection(self, start_vertices=None, next_vertex_index=None):
@@ -7280,6 +7138,40 @@ class Mesh(Geometry):
             socket `selection`
         """
         return nodes.EdgePathsToSelection(start_vertices=start_vertices, next_vertex_index=next_vertex_index).selection
+
+
+    def edges_of_corner(self, corner_index=None):
+        """ Node EdgesOfCorner.
+
+        Node reference [Edges of Corner](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh_topology/edges_of_corner.html)
+        Developer reference [GeometryNodeEdgesOfCorner](https://docs.blender.org/api/current/bpy.types.GeometryNodeEdgesOfCorner.html)
+
+        Args:
+            corner_index: Integer
+
+        Returns:
+            tuple ('next_edge_index', 'previous_edge_index')
+        """
+        node = self.attribute_node(nodes.EdgesOfCorner(corner_index=corner_index))
+        return node.next_edge_index, node.previous_edge_index
+
+
+    def edges_of_vertex(self, vertex_index=None, weights=None, sort_index=None):
+        """ Node EdgesOfVertex.
+
+        Node reference [Edges of Vertex](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh_topology/edges_of_vertex.html)
+        Developer reference [GeometryNodeEdgesOfVertex](https://docs.blender.org/api/current/bpy.types.GeometryNodeEdgesOfVertex.html)
+
+        Args:
+            vertex_index: Integer
+            weights: Float
+            sort_index: Integer
+
+        Returns:
+            tuple ('edge_index', 'total')
+        """
+        node = self.attribute_node(nodes.EdgesOfVertex(vertex_index=vertex_index, weights=weights, sort_index=sort_index))
+        return node.edge_index, node.total
 
 
     def extrude(self, selection=None, offset=None, offset_scale=None, individual=None, mode='FACES'):
@@ -7329,7 +7221,23 @@ class Mesh(Geometry):
         Returns:
             socket `planar`
         """
-        return self.as_attribute(nodes.FaceIsPlanar(threshold=threshold)).planar
+        return self.attribute_node(nodes.FaceIsPlanar(threshold=threshold)).planar
+
+
+    def face_of_corner(self, corner_index=None):
+        """ Node FaceOfCorner.
+
+        Node reference [Face of Corner](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh_topology/face_of_corner.html)
+        Developer reference [GeometryNodeFaceOfCorner](https://docs.blender.org/api/current/bpy.types.GeometryNodeFaceOfCorner.html)
+
+        Args:
+            corner_index: Integer
+
+        Returns:
+            tuple ('face_index', 'index_in_face')
+        """
+        node = self.attribute_node(nodes.FaceOfCorner(corner_index=corner_index))
+        return node.face_index, node.index_in_face
 
 
     def face_set_boundaries(self, face_set=None):
@@ -7344,7 +7252,7 @@ class Mesh(Geometry):
         Returns:
             socket `boundary_edges`
         """
-        return self.as_attribute(nodes.FaceSetBoundaries(face_set=face_set)).boundary_edges
+        return self.attribute_node(nodes.FaceSetBoundaries(face_set=face_set)).boundary_edges
 
 
     def flip_faces(self, selection=None):
@@ -7391,7 +7299,7 @@ class Mesh(Geometry):
         Returns:
             socket `smooth`
         """
-        return self.as_attribute(nodes.IsShadeSmooth()).smooth
+        return self.attribute_node(nodes.IsShadeSmooth()).smooth
 
 
     @property
@@ -7405,7 +7313,7 @@ class Mesh(Geometry):
             node with sockets ['island_index', 'island_count']
         """
         if not hasattr(self, '_c_geometrynodeinputmeshisland'):
-            self._c_geometrynodeinputmeshisland = self.as_attribute(nodes.MeshIsland())
+            self._c_geometrynodeinputmeshisland = self.attribute_node(nodes.MeshIsland())
         return self._c_geometrynodeinputmeshisland
 
 
@@ -7420,7 +7328,7 @@ class Mesh(Geometry):
             socket `island_count`
         """
         if not hasattr(self, '_c_geometrynodeinputmeshisland'):
-            self._c_geometrynodeinputmeshisland = self.as_attribute(nodes.MeshIsland())
+            self._c_geometrynodeinputmeshisland = self.attribute_node(nodes.MeshIsland())
         return self._c_geometrynodeinputmeshisland.island_count
 
 
@@ -7435,8 +7343,24 @@ class Mesh(Geometry):
             socket `island_index`
         """
         if not hasattr(self, '_c_geometrynodeinputmeshisland'):
-            self._c_geometrynodeinputmeshisland = self.as_attribute(nodes.MeshIsland())
+            self._c_geometrynodeinputmeshisland = self.attribute_node(nodes.MeshIsland())
         return self._c_geometrynodeinputmeshisland.island_index
+
+
+    def offset_corner_in_face(self, corner_index=None, offset=None):
+        """ Node OffsetCornerInFace.
+
+        Node reference [Offset Corner in Face](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh_topology/offset_corner_in_face.html)
+        Developer reference [GeometryNodeOffsetCornerInFace](https://docs.blender.org/api/current/bpy.types.GeometryNodeOffsetCornerInFace.html)
+
+        Args:
+            corner_index: Integer
+            offset: Integer
+
+        Returns:
+            socket `corner_index`
+        """
+        return self.attribute_node(nodes.OffsetCornerInFace(corner_index=corner_index, offset=offset)).corner_index
 
 
     def pack_uv_islands(self, uv=None, selection=None, margin=None, rotate=None):
@@ -7454,7 +7378,7 @@ class Mesh(Geometry):
         Returns:
             socket `uv`
         """
-        return self.as_attribute(nodes.PackUvIslands(uv=uv, selection=selection, margin=margin, rotate=rotate)).uv
+        return self.attribute_node(nodes.PackUvIslands(uv=uv, selection=selection, margin=margin, rotate=rotate)).uv
 
 
     @property
@@ -7594,7 +7518,7 @@ class Mesh(Geometry):
         Returns:
             tuple ('next_vertex_index', 'total_cost')
         """
-        node = self.as_attribute(nodes.ShortestEdgePaths(end_vertex=end_vertex, edge_cost=edge_cost))
+        node = self.attribute_node(nodes.ShortestEdgePaths(end_vertex=end_vertex, edge_cost=edge_cost))
         return node.next_vertex_index, node.total_cost
 
 
@@ -7659,7 +7583,8 @@ class Mesh(Geometry):
         Returns:
             socket `curve` [Curve](Curve.md)
         """
-        return Curve(nodes.MeshToCurve(mesh=self, selection=selection).curve)
+        import geonodes as gn
+        return gn.Curve(nodes.MeshToCurve(mesh=self, selection=selection).curve)
 
 
     def to_points(self, selection=None, position=None, radius=None, mode='VERTICES'):
@@ -7677,7 +7602,8 @@ class Mesh(Geometry):
         Returns:
             socket `points` [Points](Points.md)
         """
-        return Points(nodes.MeshToPoints(mesh=self, selection=selection, position=position, radius=radius, mode=mode).points)
+        import geonodes as gn
+        return gn.Points(nodes.MeshToPoints(mesh=self, selection=selection, position=position, radius=radius, mode=mode).points)
 
 
     def to_volume(self, density=None, voxel_size=None, voxel_amount=None, exterior_band_width=None, interior_band_width=None, fill_volume=None, resolution_mode='VOXEL_AMOUNT'):
@@ -7698,7 +7624,8 @@ class Mesh(Geometry):
         Returns:
             socket `volume` [Volume](Volume.md)
         """
-        return Volume(nodes.MeshToVolume(mesh=self, density=density, voxel_size=voxel_size, voxel_amount=voxel_amount, exterior_band_width=exterior_band_width, interior_band_width=interior_band_width, fill_volume=fill_volume, resolution_mode=resolution_mode).volume)
+        import geonodes as gn
+        return gn.Volume(nodes.MeshToVolume(mesh=self, density=density, voxel_size=voxel_size, voxel_amount=voxel_amount, exterior_band_width=exterior_band_width, interior_band_width=interior_band_width, fill_volume=fill_volume, resolution_mode=resolution_mode).volume)
 
 
     def triangulate(self, selection=None, minimum_vertices=None, ngon_method='BEAUTY', quad_method='SHORTEST_DIAGONAL'):
@@ -7735,7 +7662,22 @@ class Mesh(Geometry):
         Returns:
             socket `uv`
         """
-        return self.as_attribute(nodes.UvUnwrap(selection=selection, seam=seam, margin=margin, fill_holes=fill_holes, method=method)).uv
+        return self.attribute_node(nodes.UvUnwrap(selection=selection, seam=seam, margin=margin, fill_holes=fill_holes, method=method)).uv
+
+
+    def vertex_of_corner(self, corner_index=None):
+        """ Node VertexOfCorner.
+
+        Node reference [Vertex of Corner](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh_topology/vertex_of_corner.html)
+        Developer reference [GeometryNodeVertexOfCorner](https://docs.blender.org/api/current/bpy.types.GeometryNodeVertexOfCorner.html)
+
+        Args:
+            corner_index: Integer
+
+        Returns:
+            socket `vertex_index`
+        """
+        return self.attribute_node(nodes.VertexOfCorner(corner_index=corner_index)).vertex_index
 
 
 
@@ -7781,7 +7723,7 @@ class Curve(Geometry):
         Returns:
             node with sockets ['curve', 'center', 'normal', 'radius']
         """
-        return nodes.Arc(resolution=resolution, start=start, middle=middle, end=end, radius=None, start_angle=None, sweep_angle=None, offset_angle=offset_angle, connect_center=connect_center, invert_arc=invert_arc, mode=POINT)
+        return nodes.Arc(resolution=resolution, start=start, middle=middle, end=end, radius=None, start_angle=None, sweep_angle=None, offset_angle=offset_angle, connect_center=connect_center, invert_arc=invert_arc, mode='POINTS')
 
 
     @classmethod
@@ -7817,7 +7759,7 @@ class Curve(Geometry):
         Returns:
             node with sockets ['curve', 'center']
         """
-        return nodes.CurveCircle(resolution=resolution, point_1=point_1, point_2=point_2, point_3=point_3, radius=None, mode=POINT)
+        return nodes.CurveCircle(resolution=resolution, point_1=point_1, point_2=point_2, point_3=point_3, radius=None, mode='POINTS')
 
 
     @classmethod
@@ -7974,7 +7916,7 @@ class Curve(Geometry):
         Returns:
             tuple ('curve_index', 'index_in_curve')
         """
-        node = self.as_attribute(nodes.CurveOfPoint(point_index=point_index))
+        node = self.attribute_node(nodes.CurveOfPoint(point_index=point_index))
         return node.curve_index, node.index_in_curve
 
 
@@ -8018,7 +7960,8 @@ class Curve(Geometry):
         Returns:
             socket `mesh` [Mesh](Mesh.md)
         """
-        return Mesh(nodes.FillCurve(curve=curve, mode=mode).mesh)
+        import geonodes as gn
+        return gn.Mesh(nodes.FillCurve(curve=curve, mode=mode).mesh)
 
 
     def fill_ngons(self, curve=None):
@@ -8033,7 +7976,8 @@ class Curve(Geometry):
         Returns:
             socket `mesh` [Mesh](Mesh.md)
         """
-        return Mesh(nodes.FillCurve(curve=curve, mode='NGONS').mesh)
+        import geonodes as gn
+        return gn.Mesh(nodes.FillCurve(curve=curve, mode='NGONS').mesh)
 
 
     def fill_triangles(self, curve=None):
@@ -8048,7 +7992,8 @@ class Curve(Geometry):
         Returns:
             socket `mesh` [Mesh](Mesh.md)
         """
-        return Mesh(nodes.FillCurve(curve=curve, mode='TRIANGLES').mesh)
+        import geonodes as gn
+        return gn.Mesh(nodes.FillCurve(curve=curve, mode='TRIANGLES').mesh)
 
 
     def fillet(self, count=None, radius=None, limit_radius=None, mode='BEZIER'):
@@ -8148,7 +8093,7 @@ class Curve(Geometry):
         Returns:
             tuple ('is_valid_offset', 'point_index')
         """
-        node = self.as_attribute(nodes.OffsetPointInCurve(point_index=point_index, offset=offset))
+        node = self.attribute_node(nodes.OffsetPointInCurve(point_index=point_index, offset=offset))
         return node.is_valid_offset, node.point_index
 
 
@@ -8181,7 +8126,7 @@ class Curve(Geometry):
         Returns:
             tuple ('point_index', 'total')
         """
-        node = self.as_attribute(nodes.PointsOfCurve(curve_index=curve_index, weights=weights, sort_index=sort_index))
+        node = self.attribute_node(nodes.PointsOfCurve(curve_index=curve_index, weights=weights, sort_index=sort_index))
         return node.point_index, node.total
 
 
@@ -8329,7 +8274,8 @@ class Curve(Geometry):
         Returns:
             socket `mesh` [Mesh](Mesh.md)
         """
-        return Mesh(nodes.CurveToMesh(curve=self, profile_curve=profile_curve, fill_caps=fill_caps).mesh)
+        import geonodes as gn
+        return gn.Mesh(nodes.CurveToMesh(curve=self, profile_curve=profile_curve, fill_caps=fill_caps).mesh)
 
 
     def to_points(self, count=None, length=None, mode='COUNT'):
@@ -8346,8 +8292,9 @@ class Curve(Geometry):
         Returns:
             tuple ('points', 'tangent', 'normal', 'rotation')
         """
+        import geonodes as gn
         node = nodes.CurveToPoints(curve=self, count=count, length=length, mode=mode)
-        return Points(node.points), node.tangent, node.normal, node.rotation
+        return gn.Points(node.points), node.tangent, node.normal, node.rotation
 
 
     def to_points_count(self, count=None):
@@ -8362,8 +8309,9 @@ class Curve(Geometry):
         Returns:
             tuple ('points', 'tangent', 'normal', 'rotation')
         """
+        import geonodes as gn
         node = nodes.CurveToPoints(curve=self, count=count, length=0.1, mode='COUNT')
-        return Points(node.points), node.tangent, node.normal, node.rotation
+        return gn.Points(node.points), node.tangent, node.normal, node.rotation
 
 
     def to_points_evaluated(self):
@@ -8375,8 +8323,9 @@ class Curve(Geometry):
         Returns:
             tuple ('points', 'tangent', 'normal', 'rotation')
         """
+        import geonodes as gn
         node = nodes.CurveToPoints(curve=self, count=10, length=0.1, mode='EVALUATED')
-        return Points(node.points), node.tangent, node.normal, node.rotation
+        return gn.Points(node.points), node.tangent, node.normal, node.rotation
 
 
     def to_points_length(self, length=None):
@@ -8391,8 +8340,9 @@ class Curve(Geometry):
         Returns:
             tuple ('points', 'tangent', 'normal', 'rotation')
         """
+        import geonodes as gn
         node = nodes.CurveToPoints(curve=self, count=10, length=length, mode='LENGTH')
-        return Points(node.points), node.tangent, node.normal, node.rotation
+        return gn.Points(node.points), node.tangent, node.normal, node.rotation
 
 
     def trim(self, start=None, end=None, mode='FACTOR'):
@@ -8527,7 +8477,8 @@ class Points(Geometry):
         Returns:
             socket `mesh` [Mesh](Mesh.md)
         """
-        return Mesh(nodes.PointsToVertices(points=points, selection=selection).mesh)
+        import geonodes as gn
+        return gn.Mesh(nodes.PointsToVertices(points=points, selection=selection).mesh)
 
 
     def to_volume(self, density=None, voxel_size=None, voxel_amount=None, radius=None, resolution_mode='VOXEL_AMOUNT'):
@@ -8546,7 +8497,8 @@ class Points(Geometry):
         Returns:
             socket `volume` [Volume](Volume.md)
         """
-        return Volume(nodes.PointsToVolume(points=self, density=density, voxel_size=voxel_size, voxel_amount=voxel_amount, radius=radius, resolution_mode=resolution_mode).volume)
+        import geonodes as gn
+        return gn.Volume(nodes.PointsToVolume(points=self, density=density, voxel_size=voxel_size, voxel_amount=voxel_amount, radius=radius, resolution_mode=resolution_mode).volume)
 
 
     def to_volume_amount(self, density=None, voxel_amount=None, radius=None):
@@ -8563,7 +8515,8 @@ class Points(Geometry):
         Returns:
             socket `volume` [Volume](Volume.md)
         """
-        return Volume(nodes.PointsToVolume(points=self, density=density, voxel_size=None, voxel_amount=voxel_amount, radius=radius, resolution_mode='VOXEL_AMOUNT').volume)
+        import geonodes as gn
+        return gn.Volume(nodes.PointsToVolume(points=self, density=density, voxel_size=None, voxel_amount=voxel_amount, radius=radius, resolution_mode='VOXEL_AMOUNT').volume)
 
 
     def to_volume_size(self, density=None, voxel_size=None, radius=None):
@@ -8580,7 +8533,8 @@ class Points(Geometry):
         Returns:
             socket `volume` [Volume](Volume.md)
         """
-        return Volume(nodes.PointsToVolume(points=self, density=density, voxel_size=voxel_size, voxel_amount=None, radius=radius, resolution_mode='VOXEL_SIZE').volume)
+        import geonodes as gn
+        return gn.Volume(nodes.PointsToVolume(points=self, density=density, voxel_size=voxel_size, voxel_amount=None, radius=radius, resolution_mode='VOXEL_SIZE').volume)
 
 
 
@@ -8687,7 +8641,7 @@ class Instances(Geometry):
         Returns:
             socket `rotation`
         """
-        return self.as_attribute(nodes.InstanceRotation()).rotation
+        return self.attribute_node(nodes.InstanceRotation()).rotation
 
 
     @property
@@ -8700,7 +8654,7 @@ class Instances(Geometry):
         Returns:
             socket `scale`
         """
-        return self.as_attribute(nodes.InstanceScale()).scale
+        return self.attribute_node(nodes.InstanceScale()).scale
 
 
     def set_scale(self, selection=None, scale=None, center=None, local_space=None):
@@ -8735,7 +8689,8 @@ class Instances(Geometry):
         Returns:
             socket `points` [Points](Points.md)
         """
-        return Points(nodes.InstancesToPoints(instances=self, selection=selection, position=position, radius=radius).points)
+        import geonodes as gn
+        return gn.Points(nodes.InstancesToPoints(instances=self, selection=selection, position=position, radius=radius).points)
 
 
     def translate(self, selection=None, translation=None, local_space=None):
@@ -8796,7 +8751,8 @@ class Volume(Geometry):
         Returns:
             socket `points` [Points](Points.md)
         """
-        return Points(nodes.DistributePointsInVolume(volume=self, density=density, seed=seed, spacing=spacing, threshold=threshold, mode=mode).points)
+        import geonodes as gn
+        return gn.Points(nodes.DistributePointsInVolume(volume=self, density=density, seed=seed, spacing=spacing, threshold=threshold, mode=mode).points)
 
 
     def distribute_points_grid(self, spacing=None, threshold=None):
@@ -8812,7 +8768,8 @@ class Volume(Geometry):
         Returns:
             socket `points` [Points](Points.md)
         """
-        return Points(nodes.DistributePointsInVolume(volume=self, density=None, seed=None, spacing=spacing, threshold=threshold, mode='DENSITY_GRID').points)
+        import geonodes as gn
+        return gn.Points(nodes.DistributePointsInVolume(volume=self, density=None, seed=None, spacing=spacing, threshold=threshold, mode='DENSITY_GRID').points)
 
 
     def distribute_points_random(self, density=None, seed=None):
@@ -8828,7 +8785,8 @@ class Volume(Geometry):
         Returns:
             socket `points` [Points](Points.md)
         """
-        return Points(nodes.DistributePointsInVolume(volume=self, density=density, seed=seed, spacing=None, threshold=None, mode='DENSITY_RANDOM').points)
+        import geonodes as gn
+        return gn.Points(nodes.DistributePointsInVolume(volume=self, density=density, seed=seed, spacing=None, threshold=None, mode='DENSITY_RANDOM').points)
 
 
     def to_mesh(self, voxel_size=None, voxel_amount=None, threshold=None, adaptivity=None, resolution_mode='GRID'):
@@ -8847,98 +8805,8 @@ class Volume(Geometry):
         Returns:
             socket `mesh` [Mesh](Mesh.md)
         """
-        return Mesh(nodes.VolumeToMesh(volume=self, voxel_size=voxel_size, voxel_amount=voxel_amount, threshold=threshold, adaptivity=adaptivity, resolution_mode=resolution_mode).mesh)
-
-
-
-
-class Rotation(Vector):
-    @classmethod
-    def AxisAngle(cls, rotation=None, axis=None, angle=None, space='OBJECT'):
-        """ Node RotateEuler.
-
-        Node reference [Rotate Euler](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotate_euler.html)
-        Developer reference [FunctionNodeRotateEuler](https://docs.blender.org/api/current/bpy.types.FunctionNodeRotateEuler.html)
-
-        Args:
-            rotation: Vector
-            axis: Vector
-            angle: Float
-            space (str): 'OBJECT' in [OBJECT, LOCAL]
-
-        Returns:
-            socket `rotation`
-        """
-        return cls(nodes.RotateEuler(rotation=rotation, rotate_by=None, axis=axis, angle=angle, space=space, type=AXIS_ANGLE).rotation)
-
-
-    @classmethod
-    def Euler(cls, rotation=None, rotate_by=None, space='OBJECT'):
-        """ Node RotateEuler.
-
-        Node reference [Rotate Euler](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotate_euler.html)
-        Developer reference [FunctionNodeRotateEuler](https://docs.blender.org/api/current/bpy.types.FunctionNodeRotateEuler.html)
-
-        Args:
-            rotation: Vector
-            rotate_by: Vector
-            space (str): 'OBJECT' in [OBJECT, LOCAL]
-
-        Returns:
-            socket `rotation`
-        """
-        return cls(nodes.RotateEuler(rotation=rotation, rotate_by=rotate_by, axis=None, angle=None, space=space, type=EULER).rotation)
-
-
-    def align_to_vector(self, factor=None, vector=None, axis='X', pivot_axis='AUTO'):
-        """ Node AlignEulerToVector.
-
-        Node reference [Align Euler to Vector](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/align_euler_to_vector.html)
-        Developer reference [FunctionNodeAlignEulerToVector](https://docs.blender.org/api/current/bpy.types.FunctionNodeAlignEulerToVector.html)
-
-        Args:
-            factor: Float
-            vector: Vector
-            axis (str): 'X' in [X, Y, Z]
-            pivot_axis (str): 'AUTO' in [AUTO, X, Y, Z]
-
-        Returns:
-            node with sockets ['rotation']
-        """
-        return self.stack(nodes.AlignEulerToVector(rotation=self, factor=factor, vector=vector, axis=axis, pivot_axis=pivot_axis))
-
-
-    def rotate_axis_angle(self, axis=None, angle=None, space='OBJECT'):
-        """ Node RotateEuler.
-
-        Node reference [Rotate Euler](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotate_euler.html)
-        Developer reference [FunctionNodeRotateEuler](https://docs.blender.org/api/current/bpy.types.FunctionNodeRotateEuler.html)
-
-        Args:
-            axis: Vector
-            angle: Float
-            space (str): 'OBJECT' in [OBJECT, LOCAL]
-
-        Returns:
-            socket `rotation`
-        """
-        return nodes.RotateEuler(rotation=self, rotate_by=None, axis=axis, angle=angle, space=space, type=AXIS_ANGLE).rotation
-
-
-    def rotate_euler(self, rotate_by=None, space='OBJECT'):
-        """ Node RotateEuler.
-
-        Node reference [Rotate Euler](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotate_euler.html)
-        Developer reference [FunctionNodeRotateEuler](https://docs.blender.org/api/current/bpy.types.FunctionNodeRotateEuler.html)
-
-        Args:
-            rotate_by: Vector
-            space (str): 'OBJECT' in [OBJECT, LOCAL]
-
-        Returns:
-            socket `rotation`
-        """
-        return nodes.RotateEuler(rotation=self, rotate_by=rotate_by, axis=None, angle=None, space=space, type=EULER).rotation
+        import geonodes as gn
+        return gn.Mesh(nodes.VolumeToMesh(volume=self, voxel_size=voxel_size, voxel_amount=voxel_amount, threshold=threshold, adaptivity=adaptivity, resolution_mode=resolution_mode).mesh)
 
 
 

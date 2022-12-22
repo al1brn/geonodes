@@ -4,6 +4,7 @@
 
 ## Properties
 
+- [count](#count-property)
 - [cyclic](#cyclic-property)
 - [length](#length-property)
 - [material](#material-property)
@@ -15,17 +16,32 @@
 
 ## Methods
 
-- [len](#len)
+- [delete](#delete)
+- [duplicate](#duplicate)
 - [points](#points)
 - [resample](#resample)
 - [resample_count](#resample_count)
 - [resample_evaluated](#resample_evaluated)
 - [resample_length](#resample_length)
+- [separate](#separate)
 - [set_cyclic](#set_cyclic)
 - [set_material](#set_material)
 - [set_normal](#set_normal)
 - [set_resolution](#set_resolution)
 - [set_type](#set_type)
+
+## count <sub>*property*</sub>
+
+```python
+def count(self, geometry=None):
+
+```
+> Node: [Domain Size](GeometryNodeAttributeDomainSize.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html)
+
+#### Returns:
+- socket `spline_count`
+
+<sub>Go to [top](#class-Spline) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## cyclic <sub>*property*</sub>
 
@@ -56,20 +72,35 @@ Node implemented as property setter.
 
 <sub>Go to [top](#class-Spline) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
-## len
+## delete
 
 ```python
-def __len__(self):
+def delete(self, mode='ALL'):
 
 ```
-> Node: [Domain Size](GeometryNodeAttributeDomainSize.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html)
+> Node: [Delete Geometry](GeometryNodeDeleteGeometry.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/delete_geometry.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeDeleteGeometry.html)
 
 #### Args:
-- geometry: Geometry
-- component (str): 'MESH' in [MESH, POINTCLOUD, CURVE, INSTANCES]
+- mode (str): 'ALL' in [ALL, EDGE_FACE, ONLY_FACE]
 
 #### Returns:
-- node with sockets ['point_count', 'edge_count', 'face_count', 'face_corner_count', 'spline_count', 'instance_count']
+- self
+
+<sub>Go to [top](#class-Spline) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+## duplicate
+
+```python
+def duplicate(self, amount=None):
+
+```
+> Node: [Duplicate Elements](GeometryNodeDuplicateElements.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/duplicate_elements.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeDuplicateElements.html)
+
+#### Args:
+- amount: Integer
+
+#### Returns:
+- socket `duplicate_index`
 
 <sub>Go to [top](#class-Spline) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
@@ -255,6 +286,24 @@ Node implemented as property setter.
 #### Args:
 - attr_value: resolution
 
+
+<sub>Go to [top](#class-Spline) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+## separate
+
+```python
+def separate(self, geometry=None):
+
+```
+> Node: [Separate Geometry](GeometryNodeSeparateGeometry.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/separate_geometry.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSeparateGeometry.html)
+
+#### Args:
+- geometry: Geometry
+
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeSeparateGeometry.webp)
+
+#### Returns:
+- tuple ('`selection`', '`inverted`')
 
 <sub>Go to [top](#class-Spline) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

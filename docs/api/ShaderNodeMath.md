@@ -38,13 +38,6 @@ node = nodes.Math(value0=None, value1=None, value2=None, operation='ADD', use_cl
 |----------------------|------------|
 | Global functions |
 | [math](A.md#math) | `def math(value0=None, value1=None, value2=None, operation='ADD', clamp=False):` |
-| [add](A.md#add) | `def add(value0=None, value1=None, clamp=False):` |
-| [subtract](A.md#subtract) | `def subtract(value0=None, value1=None, clamp=False):` |
-| [sub](A.md#sub) | `def sub(value0=None, value1=None, clamp=False):` |
-| [multiply](A.md#multiply) | `def multiply(value0=None, value1=None, clamp=False):` |
-| [mul](A.md#mul) | `def mul(value0=None, value1=None, clamp=False):` |
-| [divide](A.md#divide) | `def divide(value0=None, value1=None, clamp=False):` |
-| [div](A.md#div) | `def div(value0=None, value1=None, clamp=False):` |
 | [multiply_add](A.md#multiply_add) | `def multiply_add(value=None, multiplier=None, addend=None, clamp=False):` |
 | [mul_add](A.md#mul_add) | `def mul_add(value=None, multiplier=None, addend=None, clamp=False):` |
 | [power](A.md#power) | `def power(base=None, exponent=None, clamp=False):` |
@@ -95,13 +88,13 @@ node = nodes.Math(value0=None, value1=None, value2=None, operation='ADD', use_cl
 | [to_radians](A.md#to_radians) | `def to_radians(value=None, clamp=False):` |
 | [to_degrees](A.md#to_degrees) | `def to_degrees(value=None, clamp=False):` |
 | **[Float](Float.md)** |
-| [add](Float.md#add) | `def add(self, value):` |
-| [subtract](Float.md#subtract) | `def add(self, value):` |
-| [sub](Float.md#sub) | `def add(self, value):` |
-| [multiply](Float.md#multiply) | `def multiply(self, value):` |
-| [mul](Float.md#mul) | `def multiply(self, value):` |
-| [divide](Float.md#divide) | `def multiply(self, value):` |
-| [div](Float.md#div) | `def multiply(self, value):` |
+| [add](Float.md#add) | `def add(self, value=None):` |
+| [subtract](Float.md#subtract) | `def subtract(self, value=None):` |
+| [sub](Float.md#sub) | `def sub(self, value=None):` |
+| [multiply](Float.md#multiply) | `def multiply(self, value=None):` |
+| [mul](Float.md#mul) | `def mul(self, value=None):` |
+| [divide](Float.md#divide) | `def divide(self, value=None):` |
+| [div](Float.md#div) | `def div(self, value=None):` |
 | [multiply_add](Float.md#multiply_add) | `def multiply_add(self, multiplier=None, addend=None, clamp=False):` |
 | [mul_add](Float.md#mul_add) | `def mul_add(self, multiplier=None, addend=None, clamp=False):` |
 | [power](Float.md#power) | `def power(self, exponent=None, clamp=False):` |
@@ -154,13 +147,13 @@ node = nodes.Math(value0=None, value1=None, value2=None, operation='ADD', use_cl
 | [to_radians](Float.md#to_radians) | `def to_radians(self, clamp=False):` |
 | [to_degrees](Float.md#to_degrees) | `def to_degrees(self, clamp=False):` |
 | **[Integer](Integer.md)** |
-| [add](Integer.md#add) | `def add(self, value):` |
-| [subtract](Integer.md#subtract) | `def add(self, value):` |
-| [sub](Integer.md#sub) | `def add(self, value):` |
-| [multiply](Integer.md#multiply) | `def multiply(self, value):` |
-| [mul](Integer.md#mul) | `def multiply(self, value):` |
-| [divide](Integer.md#divide) | `def multiply(self, value):` |
-| [div](Integer.md#div) | `def multiply(self, value):` |
+| [add](Integer.md#add) | `def add(self, value=None):` |
+| [subtract](Integer.md#subtract) | `def subtract(self, value=None):` |
+| [sub](Integer.md#sub) | `def sub(self, value=None):` |
+| [multiply](Integer.md#multiply) | `def multiply(self, value=None):` |
+| [mul](Integer.md#mul) | `def mul(self, value=None):` |
+| [divide](Integer.md#divide) | `def divide(self, value=None):` |
+| [div](Integer.md#div) | `def div(self, value=None):` |
 | [multiply_add](Integer.md#multiply_add) | `def multiply_add(self, multiplier=None, addend=None, clamp=False):` |
 | [mul_add](Integer.md#mul_add) | `def mul_add(self, multiplier=None, addend=None, clamp=False):` |
 | [power](Integer.md#power) | `def power(self, exponent=None, clamp=False):` |

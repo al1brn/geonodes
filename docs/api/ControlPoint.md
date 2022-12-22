@@ -4,6 +4,7 @@
 
 ## Properties
 
+- [count](#count-property)
 - [left_handle_positions](#left_handle_positions-property)
 - [parameter](#parameter-property)
 - [parameter_factor](#parameter_factor-property)
@@ -19,6 +20,8 @@
 ## Methods
 
 - [curve](#curve)
+- [delete](#delete)
+- [duplicate](#duplicate)
 - [endpoint_selection](#endpoint_selection)
 - [handle_positions](#handle_positions)
 - [handle_type_selection](#handle_type_selection)
@@ -28,8 +31,9 @@
 - [handle_type_selection](#handle_type_selection)
 - [handle_type_selection_node](#handle_type_selection_node)
 - [instance_on_points](#instance_on_points)
-- [len](#len)
 - [offset](#offset)
+- [proximity](#proximity)
+- [separate](#separate)
 - [set_handle_positions](#set_handle_positions)
 - [set_handle_positions_left](#set_handle_positions_left)
 - [set_handle_positions_right](#set_handle_positions_right)
@@ -37,6 +41,19 @@
 - [set_handle_type_node](#set_handle_type_node)
 - [set_radius](#set_radius)
 - [set_tilt](#set_tilt)
+
+## count <sub>*property*</sub>
+
+```python
+def count(self, geometry=None):
+
+```
+> Node: [Domain Size](GeometryNodeAttributeDomainSize.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html)
+
+#### Returns:
+- socket `point_count`
+
+<sub>Go to [top](#class-ControlPoint) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## curve
 
@@ -50,6 +67,38 @@ def curve(self):
 
 #### Returns:
 - tuple ('`curve_index`', '`index_in_curve`')
+
+<sub>Go to [top](#class-ControlPoint) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+## delete
+
+```python
+def delete(self, mode='ALL'):
+
+```
+> Node: [Delete Geometry](GeometryNodeDeleteGeometry.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/delete_geometry.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeDeleteGeometry.html)
+
+#### Args:
+- mode (str): 'ALL' in [ALL, EDGE_FACE, ONLY_FACE]
+
+#### Returns:
+- self
+
+<sub>Go to [top](#class-ControlPoint) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+## duplicate
+
+```python
+def duplicate(self, amount=None):
+
+```
+> Node: [Duplicate Elements](GeometryNodeDuplicateElements.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/duplicate_elements.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeDuplicateElements.html)
+
+#### Args:
+- amount: Integer
+
+#### Returns:
+- socket `duplicate_index`
 
 <sub>Go to [top](#class-ControlPoint) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
@@ -237,23 +286,6 @@ Node implemented as property setter.
 
 <sub>Go to [top](#class-ControlPoint) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
-## len
-
-```python
-def __len__(self):
-
-```
-> Node: [Domain Size](GeometryNodeAttributeDomainSize.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html)
-
-#### Args:
-- geometry: Geometry
-- component (str): 'MESH' in [MESH, POINTCLOUD, CURVE, INSTANCES]
-
-#### Returns:
-- node with sockets ['point_count', 'edge_count', 'face_count', 'face_corner_count', 'spline_count', 'instance_count']
-
-<sub>Go to [top](#class-ControlPoint) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
 ## offset
 
 ```python
@@ -326,6 +358,23 @@ def parameter_length(self):
 
 <sub>Go to [top](#class-ControlPoint) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
+## proximity
+
+```python
+def proximity(self, target=None, source_position=None):
+
+```
+> Node: [Geometry Proximity](GeometryNodeProximity.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/geometry_proximity.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeProximity.html)
+
+#### Args:
+- target: Geometry
+- source_position: Vector
+
+#### Returns:
+- socket `distance`
+
+<sub>Go to [top](#class-ControlPoint) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ## radius <sub>*property*</sub>
 
 ```python
@@ -384,6 +433,24 @@ Node implemented as property setter.
 
 <sub>Go to [top](#class-ControlPoint) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
+## separate
+
+```python
+def separate(self, geometry=None):
+
+```
+> Node: [Separate Geometry](GeometryNodeSeparateGeometry.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/separate_geometry.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSeparateGeometry.html)
+
+#### Args:
+- geometry: Geometry
+
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeSeparateGeometry.webp)
+
+#### Returns:
+- tuple ('`selection`', '`inverted`')
+
+<sub>Go to [top](#class-ControlPoint) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ## set_handle_positions
 
 ```python
@@ -405,13 +472,12 @@ def set_handle_positions(self, position=None, offset=None, mode='LEFT'):
 ## set_handle_positions_left
 
 ```python
-def set_handle_positions_left(self, curve=None, position=None, offset=None):
+def set_handle_positions_left(self, position=None, offset=None):
 
 ```
 > Node: [Set Handle Positions](GeometryNodeSetCurveHandlePositions.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/set_handle_positions.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetCurveHandlePositions.html)
 
 #### Args:
-- curve: Curve
 - position: Vector
 - offset: Vector
 
@@ -423,13 +489,12 @@ def set_handle_positions_left(self, curve=None, position=None, offset=None):
 ## set_handle_positions_right
 
 ```python
-def set_handle_positions_right(self, curve=None, position=None, offset=None):
+def set_handle_positions_right(self, position=None, offset=None):
 
 ```
 > Node: [Set Handle Positions](GeometryNodeSetCurveHandlePositions.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/set_handle_positions.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetCurveHandlePositions.html)
 
 #### Args:
-- curve: Curve
 - position: Vector
 - offset: Vector
 

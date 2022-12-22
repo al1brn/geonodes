@@ -26,14 +26,13 @@
 - [attribute_sum](#attribute_sum)
 - [attribute_var](#attribute_var)
 - [capture_attribute](#capture_attribute)
-- [delete](#delete)
-- [duplicate](#duplicate)
 - [field_at_index](#field_at_index)
 - [get_named_boolean](#get_named_boolean)
 - [get_named_color](#get_named_color)
 - [get_named_float](#get_named_float)
 - [get_named_integer](#get_named_integer)
 - [get_named_vector](#get_named_vector)
+- [interpolate](#interpolate)
 - [material_selection](#material_selection)
 - [named_attribute](#named_attribute)
 - [random_boolean](#random_boolean)
@@ -42,8 +41,6 @@
 - [random_vector](#random_vector)
 - [remove_named_attribute](#remove_named_attribute)
 - [sample_index](#sample_index)
-- [sample_nearest](#sample_nearest)
-- [separate](#separate)
 - [set_ID](#set_ID)
 - [set_material_index](#set_material_index)
 - [set_named_boolean](#set_named_boolean)
@@ -262,22 +259,6 @@ def capture_attribute(self, value=None):
 
 <sub>Go to [top](#class-Domain) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
-## delete
-
-```python
-def delete(self, mode='ALL'):
-
-```
-> Node: [Delete Geometry](GeometryNodeDeleteGeometry.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/delete_geometry.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeDeleteGeometry.html)
-
-#### Args:
-- mode (str): 'ALL' in [ALL, EDGE_FACE, ONLY_FACE]
-
-#### Returns:
-- self
-
-<sub>Go to [top](#class-Domain) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
 ## domain_index <sub>*property*</sub>
 
 ```python
@@ -288,22 +269,6 @@ def domain_index(self):
 
 #### Returns:
 - socket `index`
-
-<sub>Go to [top](#class-Domain) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-## duplicate
-
-```python
-def duplicate(self, amount=None):
-
-```
-> Node: [Duplicate Elements](GeometryNodeDuplicateElements.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/duplicate_elements.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeDuplicateElements.html)
-
-#### Args:
-- amount: Integer
-
-#### Returns:
-- socket `duplicate_index`
 
 <sub>Go to [top](#class-Domain) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
@@ -414,6 +379,22 @@ def index(self):
 
 #### Returns:
 - socket `index`
+
+<sub>Go to [top](#class-Domain) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+## interpolate
+
+```python
+def interpolate(self, value=None):
+
+```
+> Node: [Interpolate Domain](GeometryNodeFieldOnDomain.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/interpolate_domain.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeFieldOnDomain.html)
+
+#### Args:
+- value: ['Float', 'Integer', 'Vector', 'Color', 'Boolean']
+
+#### Returns:
+- socket `value`
 
 <sub>Go to [top](#class-Domain) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
@@ -611,40 +592,6 @@ def sample_index(self, value=None, index=None, clamp=False):
 
 #### Returns:
 - socket `value`
-
-<sub>Go to [top](#class-Domain) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-## sample_nearest
-
-```python
-def sample_nearest(self, sample_position=None):
-
-```
-> Node: [Sample Nearest](GeometryNodeSampleNearest.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/sample_nearest.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSampleNearest.html)
-
-#### Args:
-- sample_position: Vector
-
-#### Returns:
-- socket `index`
-
-<sub>Go to [top](#class-Domain) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-## separate
-
-```python
-def separate(self, geometry=None):
-
-```
-> Node: [Separate Geometry](GeometryNodeSeparateGeometry.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/separate_geometry.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSeparateGeometry.html)
-
-#### Args:
-- geometry: Geometry
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeSeparateGeometry.webp)
-
-#### Returns:
-- tuple ('`selection`', '`inverted`')
 
 <sub>Go to [top](#class-Domain) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

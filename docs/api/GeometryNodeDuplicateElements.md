@@ -36,10 +36,22 @@ node = nodes.DuplicateElements(geometry=None, selection=None, amount=None, domai
 
 | Class or method name | Definition |
 |----------------------|------------|
-| **[Domain](Domain.md)** |
-| [duplicate](Domain.md#duplicate) | `def duplicate(self, amount=None):` |
+| **[CloudPoint](CloudPoint.md)** |
+| [duplicate](CloudPoint.md#duplicate) | `def duplicate(self, amount=None):` |
+| **[ControlPoint](ControlPoint.md)** |
+| [duplicate](ControlPoint.md#duplicate) | `def duplicate(self, amount=None):` |
+| **[Edge](Edge.md)** |
+| [duplicate](Edge.md#duplicate) | `def duplicate(self, amount=None):` |
+| **[Face](Face.md)** |
+| [duplicate](Face.md#duplicate) | `def duplicate(self, amount=None):` |
 | **[Geometry](Geometry.md)** |
 | [duplicate](Geometry.md#duplicate) | `def duplicate(self, selection=None, amount=None, domain='POINT'):` |
+| **[Instance](Instance.md)** |
+| [duplicate](Instance.md#duplicate) | `def duplicate(self, amount=None):` |
+| **[Spline](Spline.md)** |
+| [duplicate](Spline.md#duplicate) | `def duplicate(self, amount=None):` |
+| **[Vertex](Vertex.md)** |
+| [duplicate](Vertex.md#duplicate) | `def duplicate(self, amount=None):` |
 
 <sub>Go to [top](#node-Duplicate-Elements) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

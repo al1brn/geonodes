@@ -99,69 +99,6 @@ class Selector:
                 
             raise Exception(msg)
             
-# =============================================================================================================================
-# Weighted list
-# 
-# Implement nodes (index, weights, sorted_index) --> (index, total) as list
-#
-# - domain     : the calling domain
-# - node       : the node
-# - out_domain : domain class returned
-# - sorted_index_socket : name of sorted_index socket
-# - index_socket        : index of the output socket Index
-# - total_socket        : index of the output socket Total
-
-class WeightedList:
-    
-    def __init__(self, domain, node_class, weights=None, out_domain=None, sorted_index_socket="sort_index", index_socket=0, total_socket=1):
-
-        self.domain       = domain
-        
-        self.node_class   = node_class
-        self.weights      = weights
-        
-        self.out_domain   = out_domain
-
-        self.sorted_index_socket = sorted_index_socket
-
-        self.index_socket = index_socket
-        self.total_socket = total_socket
-        
-        self.nodes   = [(self.build_node(), None)]
-        self.weights = weights
-        
-    def build_node(self, sort_index=None):
-        return self.domain.attribute(self.node_class(self.domain.index, weights=self.weights, sort_index=sort_index))
-        
-    def __len__(self):
-        return self.nodes[0][0].get_datasocket(self.total_socket)
-    
-    def __getitem__(self, index):
-        
-        node = None
-        for nd, idx in self.nodes:
-            if idx == index:
-                node = nd
-                break
-                
-        if node is None:
-            if self.nodes[0][1] is None:
-                node = self.nodes[0][0]
-                node.set_input_socket(self.sorted_index_socket, index)
-                self.nodes[0] = (node, index)
-
-            else:
-                node = self.build_node(index)
-                self.nodes.append((node, index))
-                
-        #self.node.set_input_socket(self.sorted_index_socket, index)
-
-        domain_index = node.get_datasocket(self.index_socket)
-        
-        if self.out_domain is None:
-            return domain_index
-        else:
-            return self.out_domain(self.domain.data_socket, selection=domain_index)
 
 
 # =============================================================================================================================
@@ -274,8 +211,8 @@ class Domain:
     # Select domain either by a bool or by int(s)
     
     @staticmethod
-    def value_data_type(socket, default=None):
-        return Socket.value_data_type(socket, default=default)
+    def value_data_type(socket, default=None, color_domain='FLOAT_COLOR'):
+        return Socket.value_data_type(socket, default=default, color_domain=color_domain)
 
     # ----------------------------------------------------------------------------------------------------
     # Select domain either by a bool or by int(s)
@@ -354,8 +291,10 @@ class Domain:
             - Set the nde property :attr:`field_of` to self in order to implement the transfer attribute
               mechanism.
         """
+        
+        node = self.data_socket.attribute_node(node, domain=self.domain)
+        #node.as_attribute(owning_socket=self.data_socket, domain=self.domain)
 
-        node.as_attribute(owning_socket=self.data_socket, domain=self.domain)
         node.field_of = self
         return node    
 

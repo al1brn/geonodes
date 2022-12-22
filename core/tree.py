@@ -40,42 +40,83 @@ NODE_STD_ATTRS = [
    'width', 'width_hidden']
 
 # =============================================================================================================================
-# Groups
+# All trees management
+#
+# Tree names can be prefixed
 
 def call_group(name, **kwargs):
     return Group(name, **kwargs)
 
-class Groups:
-    def __init__(self, prefix=""):
-        self.prefix = prefix
-        
-    @property
-    def snake_prefix(self):
-        return "" if self.prefix == "" else self.prefix.lower().replace(" ", "_") + "_"
-    
-    def name(self, name):
-        return f"{self.prefix} {name}"
-        
-    def __getattr__(self, name):
-        lname = (self.snake_prefix + name).lower()
-        reads = []
-        for tree in bpy.data.node_groups:
-            comp = tree.name.lower().replace(' ', '_')
-            reads.append(comp)
-            if comp == lname:
-                return lambda **kwargs: call_group(tree.name, **kwargs)
+class Trees:
+    def __init__(self, prefix=None):
+        self.prefix = Trees.get_prefix(prefix)
+            
+    @staticmethod
+    def get_prefix(prefix):
+        # prefix can be a Trees instance
+        return prefix.prefix if hasattr(prefix, 'prefix') else prefix
 
-        raise Exception(f"Groups: Node group '{self.snake_prefix}{name}' ({lname}) not found in node_groups: {reads}")
+    @staticmethod
+    def prefixed_name(prefix, name):
+        prefix = Trees.get_prefix(prefix)
+        return name if prefix is None else f"{prefix} {name}"
+        
+    @staticmethod
+    def prefixed_snake(prefix, name):
+        prefix = Trees.get_prefix(prefix)
+        return Trees.prefixed_name(prefix, name).lower().replace(' ', '_')
+        
+    @staticmethod
+    def snake_prefix(prefix):
+        prefix = Trees.get_prefix(prefix)
+        return "" if prefix is None else prefix.lower().replace(" ", "_") + "_"
+    
+    @property
+    def trees(self):
+        if self.prefix is None:
+            return {tree.name: tree for tree in bpy.data.node_groups}
+        
+        trees = {}
+        prefix = self.prefix + ' '
+        for tree in bpy.data.node_groups:
+            if tree.name[:len(prefix)] == prefix:
+                trees[tree.name[len(prefix):]] = tree
+                
+        return trees
+    
+    def __len__(self):
+        return len(self.trees)
+    
+    def __getitem__(self, name):
+        if isinstance(name, str):
+            return self.trees.get(self.prefixed_name(self.prefix, name))
+        else:
+            return list(self.trees.values())[name]
         
     def clear(self):
+        trees = self.trees
+        for tree in trees.values():
+            bpy.data.node_groups.remove(tree)
+            
+    # ----------------------------------------------------------------------------------------------------
+    # Call Group as tree attribute
+
+    def __getattr__(self, name):
+        pname = self.prefixed_snake(self.prefix, name)
+        for tree_name in bpy.data.node_groups.keys():
+            ptree_name = tree_name.lower().replace(' ', '_')
+            if pname == ptree_name:
+                return Group(tree_name)
+            
+        trees = self.trees
+        sdump = ""
+        for call_name, tree in trees.items():
+            sdump += f"{tree.name:35s}: {call_name.lower().replace(' ', '_')}\n"
+            
+        raise Exception(f"Tree name error: no tree named '{name}' (prefixed '{pname}'), existing trees are\n{sdump}")
         
-        names = [tree.name for tree in bpy.data.node_groups]
-        
-        n = len(self.prefix)
-        for name in names:
-            if name[:n] == self.prefix:
-                bpy.data.node_groups.remove(bpy.data.node_groups[name])
-        
+    def call(self, name, **kwargs):
+        return getattr(self, name)(**kwargs)
     
 
 # =============================================================================================================================
@@ -163,7 +204,9 @@ class Tree:
     
     TREE = None
     
-    def __init__(self, tree_name, clear=False, group=False):
+    def __init__(self, tree_name, clear=False, group=False, fake_user=False, prefix=None):
+        
+        tree_name = Trees.prefixed_name(prefix, tree_name)
         
         if bpy.data.node_groups.get(tree_name) is None:
             bpy.data.node_groups.new(tree_name, type='GeometryNodeTree')
@@ -171,7 +214,7 @@ class Tree:
         self.btree = bpy.data.node_groups[tree_name]
         """ The geometry tree nodes"""
         
-        self.btree.use_fake_user = True
+        self.btree.use_fake_user = fake_user
         
         # ---------------------------------------------------------------------------
         # Capture the configuration of the nodes
@@ -547,7 +590,7 @@ class Tree:
         viewer.plug_socket(socket)
         
         return viewer
-        
+    
     # ----------------------------------------------------------------------------------------------------
     # Scene
     

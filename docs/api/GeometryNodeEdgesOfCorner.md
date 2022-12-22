@@ -26,6 +26,16 @@ node = nodes.EdgesOfCorner(corner_index=None)
 - **next_edge_index** : [Integer](Integer.md)
 - **previous_edge_index** : [Integer](Integer.md)
 
+## Implementation
+
+| Class or method name | Definition |
+|----------------------|------------|
+| **[Corner](Corner.md)** |
+| [edges](Corner.md#edges) | `def edges(self):` |
+| [previous_vertex](Corner.md#previous_vertex-property) | `@property`<br> `def previous_vertex(self):` |
+| [next_vertex](Corner.md#next_vertex-property) | `@property`<br> `def next_vertex(self):` |
+| **[Mesh](Mesh.md)** |
+| [edges_of_corner](Mesh.md#edges_of_corner) | `def edges_of_corner(self, corner_index=None):` |
 
 <sub>Go to [top](#node-Edges-of-Corner) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

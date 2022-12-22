@@ -138,11 +138,11 @@ class Node:
         
     # ------------------------------------------------------------------------------------------
     # Output socket by name
-    # We are idiot proof and accept capitalized versions :-)
     
     def get_output_socket(self, name):
 
-        sock_ind = self.outsockets.get(name.lower())
+        #sock_ind = self.outsockets.get(name.lower())
+        sock_ind = self.outsockets.get(name)
         if sock_ind is None:
             raise AttributeError(f"Node '{self}' has no output socket named '{name}'")
             
@@ -743,9 +743,6 @@ class CustomGroup(Node):
         
     @staticmethod
     def unique_socket_name(name, dct, prefix=None):
-        
-        print("UNQ", dct, name, name in dct)
-        
         if name not in dct:
             return name
         
@@ -755,27 +752,7 @@ class CustomGroup(Node):
                 return uname
             
         return name
-            
-            
-            
-            
-        
-        if name in dct:
-            if prefix is None:
-                pref_name = name
-            else:
-                pref_name = f"{prefix} {name}"
-        else:
-            return name
-            
-        uname = pref_name
-        for i in range(100): # Should be enough :-)
-            if uname in dct:
-                uname = f"{pref_name} {i}"
-            else:
-                return uname
-            
-        raise RuntimeError(f"You have so many sockets named '{pref_name}' that we have to stop that!")
+
         
     # ------------------------------------------------------------------------------------------
     # Access dynamically to the output sockets
@@ -860,6 +837,15 @@ class Group(CustomGroup):
             if index is None:
                 raise AttributeError(f"The node group '{node_name}' has no input socket named '{k}'.")
             self.plug(index, v)
+            
+            
+    def __call__(self, **kwargs):
+        for k, v in kwargs.items():
+            index = self.insockets.get(k.lower())
+            if index is None:
+                raise AttributeError(f"The node group '{node_name}' has no input socket named '{k}'.")
+            self.plug(index, v)
+        return self
 
     
 # ----------------------------------------------------------------------------------------------------
@@ -965,219 +951,100 @@ class GroupInput(CustomGroup):
             The created socket is an **input** socket for the whole tree, i.e. an **output** socket for this node.
 
         """
+        # ----- Default name if None
         
-        if True:
+        if name is None:
+            name = class_name
             
-            # ----- Default name if None
-            
-            if name is None:
-                name = class_name
-                
-            # ----------------------------------------------------------------------------------------------------
-            # Does the socket already exist ?
-            
-            search_blid  = DataSocket.get_bl_idname(class_name)
-            socket_input = None
-            socket       = None
-            set_value    = True
-            
-            for index, inp in enumerate(self.tree.btree.inputs):
-                if inp.name == name and inp.bl_socket_idname == search_blid:
-                    socket_input = inp
-                    socket       = self.outputs[index]
-                    set_value    = True
-                    break
+        # ----------------------------------------------------------------------------------------------------
+        # Does the socket already exist ?
+        
+        search_blid  = DataSocket.get_bl_idname(class_name)
+        socket_input = None
+        socket       = None
+        set_value    = True
+        
+        for index, inp in enumerate(self.tree.btree.inputs):
+            if inp.name == name and inp.bl_socket_idname == search_blid:
+                socket_input = inp
+                socket       = self.outputs[index]
+                set_value    = True
+                break
 
-            # ----------------------------------------------------------------------------------------------------
-            # Let's create it
-            
-            if socket_input is None:
-                
-                socket_input = self.tree.btree.inputs.new(type=DataSocket.get_bl_idname(class_name), name=name)
-                self.build_outsockets()
-                
-                for sock in self.outputs:
-                    if sock.bsocket.identifier == socket_input.identifier:
-                        socket = sock
-                        break
-                
-            # ----------------------------------------------------------------------------------------------------
-            # Let's apply the constraints
-                
-            if min_value is not None:
-                socket_input.min_value = min_value
-                
-            if max_value is not None:
-                socket_input.max_value = max_value
-                
-            socket_input.description = description
-            
-            # ----------------------------------------------------------------------------------------------------
-            # Let's set the value if the socket is created
-            # Note: if the socket already exists, we don't override its value
-            
-            if value is not None and set_value:
-                
-                if DataSocket.is_socket(value):
-                    value.plug(socket)
-                    
-                else:
-                    v = socket.convert_python_type(value)
-                    
-                    msg1 = None
-                    msg2 = None
-                    try:
-                        socket_input.default_value = v
-                    except Exception as e:
-                        msg1 = str(e)
-    
-                    try:
-                        socket.bsocket.default_value = v
-                    except Exception as e:
-                        msg2 = str(e)
-                        
-                    if msg1 is not None:
-                        print("CAUTION 1", name, socket.bl_idname, socket_input.bl_socket_idname, ">", msg1)
-                        #print(dir(self.tree.btree.inputs[index]))
-                        
-                    if msg2 is not None:
-                        print("CAUTION 2", name, socket.bl_idname, socket_input.bl_socket_idname, ">", msg2)
-                        
-                    #if msg is not None:
-                    #    raise RuntimeError(f"Impossible to set the default value '{value}' to the group input socket '{name}'.\n {msg}")
-                        
-                # ---------------------------------------------------------------------------
-                # Set the default value to all modifiers using it
-                #
-                # The tree inputs store the default value of the sockets
-                # The values themselves are stored in properties in the object modifiers
-                # The modifier property is key by the tree input identifier
-                
-                for obj in bpy.data.objects:
-                    for mod in obj.modifiers:
-                        if isinstance(mod, bpy.types.NodesModifier):
-                            if mod.node_group == self.tree.btree:
-                                mod[socket_input.identifier] = value
-                                    
-            return socket        
+        # ----------------------------------------------------------------------------------------------------
+        # Let's create it
         
-        
-        else:
+        if socket_input is None:
             
-            if name is None:
-                name = class_name
-                
-            # ----------------------------------------------------------------------------------------------------
-            # Look for an existing socket with the proper name
+            socket_input = self.tree.btree.inputs.new(type=DataSocket.get_bl_idname(class_name), name=name)
+            self.build_outsockets()
             
-            socket    = None
-            existing  = False
-            search_blid = DataSocket.get_bl_idname(class_name)
-            for socket_index, bsocket in enumerate(self.bnode.outputs):
-                
-                # No virtual socket
-                if bsocket.bl_idname == 'NodeSocketVirtual':
-                    continue
-                
-                if (search_blid == bsocket.bl_idname) and bsocket.name == name:
-                    
-                    inp = self.tree.btree.inputs[socket_index]
-                    
-                    socket = Node.DataClass(bsocket)
-                    existing = True
-                    
-                    if min_value is not None and inp.min_value != min_value:
-                        inp.min_value = min_value
-    
-                    if max_value is not None and inp.max_value != max_value:
-                        inp.max_value = max_value
-    
-                    if inp.description != description:
-                        inp.description = description
-                        
+            for sock in self.outputs:
+                if sock.bsocket.identifier == socket_input.identifier:
+                    socket = sock
                     break
                 
-            # ----------------------------------------------------------------------------------------------------
-            # Let's create it
-                
-            if socket is None:
-                
-                # ----- The name can be uses by other sockets which don't have the same class !
-                
-                name = CustomGroup.unique_socket_name(name, self.outsockets, prefix=class_name)
-                    
-                # ----- Let's create the input
-                
-                new_input = self.tree.btree.inputs.new(type=DataSocket.get_bl_idname(class_name), name=name)
-                
-                if min_value is not None:
-                    new_input.min_value = min_value
-                    
-                if max_value is not None:
-                    new_input.max_value = max_value
-                    
-                new_input.description = description
-                
-                self.build_outsockets()
-                
-                sc_name = self.snake_case(name)
-                index   = self.outsockets[sc_name]
-                socket  = getattr(self, sc_name)
-                
-                
-            # ----- Let's set the value
-            # Note: if the socket already exists, we don't override its value
+        # ----------------------------------------------------------------------------------------------------
+        # Let's apply the constraints
             
-            if value is not None:
+        if min_value is not None:
+            socket_input.min_value = min_value
+            
+        if max_value is not None:
+            socket_input.max_value = max_value
+            
+        socket_input.description = description
+        
+        # ----------------------------------------------------------------------------------------------------
+        # Let's set the value if the socket is created
+        # Note: if the socket already exists, we don't override its value
+        
+        if value is not None and set_value:
+            
+            if DataSocket.is_socket(value):
+                value.plug(socket)
                 
-                if DataSocket.is_socket(value):
-                    value.plug(socket)
+            else:
+                v = socket.convert_python_type(value)
+                
+                msg1 = None
+                msg2 = None
+                try:
+                    socket_input.default_value = v
+                except Exception as e:
+                    msg1 = str(e)
+
+                try:
+                    socket.bsocket.default_value = v
+                except Exception as e:
+                    msg2 = str(e)
                     
-                elif not existing:
+                if msg1 is not None:
+                    print("CAUTION 1", name, socket.bl_idname, socket_input.bl_socket_idname, ">", msg1)
+                    #print(dir(self.tree.btree.inputs[index]))
                     
-                    if class_name == 'Vector':
-                        if hasattr(value, '__len__'):
-                            if len(value) == 4:
-                                value = mathutils.Vector((value[0], value[1], value[2]))
-                            else:
-                                value = mathutils.Vector(value)
-                        else:
-                            value = mathutils.Vector((value,)*3)
+                if msg2 is not None:
+                    print("CAUTION 2", name, socket.bl_idname, socket_input.bl_socket_idname, ">", msg2)
                     
-                    elif class_name == 'Color':
-                        if hasattr(value, '__len__'):
-                            if len(value) == 3:
-                                value = value + (1,)
-                        else:
-                            value = Vector((value,)*3 + (1,))
+                #if msg is not None:
+                #    raise RuntimeError(f"Impossible to set the default value '{value}' to the group input socket '{name}'.\n {msg}")
+                    
+            # ---------------------------------------------------------------------------
+            # Set the default value to all modifiers using it
+            #
+            # The tree inputs store the default value of the sockets
+            # The values themselves are stored in properties in the object modifiers
+            # The modifier property is key by the tree input identifier
+            
+            for obj in bpy.data.objects:
+                for mod in obj.modifiers:
+                    if isinstance(mod, bpy.types.NodesModifier):
+                        if mod.node_group == self.tree.btree:
+                            mod[socket_input.identifier] = value
                             
-                    # ----- Types must match
-                    
-                    msg = None
-                    try:
-                        self.tree.btree.inputs[index].default_value = value
-                        socket.bsocket.default_value = value
-                        
-                    except Exception as e:
-                        msg = str(e)
-                        
-                    if msg is not None:
-                        raise RuntimeError(f"Impossible to set the default value '{value}' to the group input socket '{name}'.\n {msg}")
-                        
-                    # ---------------------------------------------------------------------------
-                    # Set the default value to all modifiers using it
-                    #
-                    # The tree inputs store the default value of the sockets
-                    # The values themselves are stored in properties in the object modifiers
-                    # The modifier property is key by the tree input identifier
-                    
-                    for obj in bpy.data.objects:
-                        for mod in obj.modifiers:
-                            if isinstance(mod, bpy.types.NodesModifier):
-                                if mod.node_group == self.tree.btree:
-                                    mod[new_input.identifier] = value
-                                    
-            return socket
+        return socket        
+        
+
             
 # ----------------------------------------------------------------------------------------------------
 # NodeGroupOutput
@@ -1262,8 +1129,8 @@ class GroupOutput(CustomGroup):
                 index = self.insockets["geometry"]
                 geo   = self.inputs[index]
                     
-                self.bnode.inputs.move(index, 0)
-                logger.error("GEONODES> Blender error: the method 'inputs.move' doesn't work. You must move yourself the outputs geometry in first position...")
+                #self.bnode.inputs.move(index, 0)
+                #logger.error("GEONODES> Blender error: the method 'inputs.move' doesn't work. You must move yourself the outputs geometry in first position...")
                 
                 return Node.Geometry(geo)
                 #return getattr(self, "geometry")

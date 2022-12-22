@@ -310,7 +310,7 @@ class Socket:
     # Data type from 
     
     @staticmethod
-    def value_data_type(value, default='FLOAT'):
+    def value_data_type(value, default='FLOAT', color_domain='FLOAT_COLOR'):
         """ Returns the domain to which the socket belongs
         
         :param value: The socket
@@ -358,7 +358,7 @@ class Socket:
             'Integer' : 'INT',
             'Float'   : 'FLOAT',
             'Vector'  : 'FLOAT_VECTOR',
-            'Color'   : 'FLOAT_COLOR'
+            'Color'   : color_domain
             }
         
         if value is None:
@@ -368,8 +368,11 @@ class Socket:
             if value in Socket.SOCKET_IDS:
                 return Socket.SOCKET_IDS[socket.bl_idname][2]
             
-            elif value in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BYTE_COLOR', 'BOOLEAN'):
+            elif value in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'BOOLEAN'):
                 return value
+            
+            elif value in ['FLOAT_COLOR', 'BYTE_COLOR']:
+                return color_domain
             
             elif value in class_dt:
                 return class_dt[value]
@@ -395,7 +398,7 @@ class Socket:
                 if len(value) == 3:
                     return 'FLOAT_VECTOR'
                 elif len(value) == 4:
-                    return 'FLOAT_COLOR'
+                    return color_domain
                 
     # ----------------------------------------------------------------------------------------------------
     # Convert a python value to a type matching the one of the socket

@@ -26,6 +26,14 @@ node = nodes.OffsetCornerInFace(corner_index=None, offset=None)
 
 - **corner_index** : [Integer](Integer.md)
 
+## Implementation
+
+| Class or method name | Definition |
+|----------------------|------------|
+| **[Corner](Corner.md)** |
+| [offset_in_face](Corner.md#offset_in_face) | `def offset_in_face(self, offset=None):` |
+| **[Mesh](Mesh.md)** |
+| [offset_corner_in_face](Mesh.md#offset_corner_in_face) | `def offset_corner_in_face(self, corner_index=None, offset=None):` |
 
 <sub>Go to [top](#node-Offset-Corner-in-Face) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

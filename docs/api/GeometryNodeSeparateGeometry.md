@@ -35,10 +35,20 @@ node = nodes.SeparateGeometry(geometry=None, selection=None, domain='POINT')
 
 | Class or method name | Definition |
 |----------------------|------------|
-| **[Domain](Domain.md)** |
-| [separate](Domain.md#separate) | `def separate(self, geometry=None):` |
+| **[ControlPoint](ControlPoint.md)** |
+| [separate](ControlPoint.md#separate) | `def separate(self, geometry=None):` |
+| **[Edge](Edge.md)** |
+| [separate](Edge.md#separate) | `def separate(self, geometry=None):` |
+| **[Face](Face.md)** |
+| [separate](Face.md#separate) | `def separate(self, geometry=None):` |
 | **[Geometry](Geometry.md)** |
 | [separate](Geometry.md#separate) | `def separate(self, geometry=None, selection=None, domain='POINT'):` |
+| **[Instance](Instance.md)** |
+| [separate](Instance.md#separate) | `def separate(self, geometry=None):` |
+| **[Spline](Spline.md)** |
+| [separate](Spline.md#separate) | `def separate(self, geometry=None):` |
+| **[Vertex](Vertex.md)** |
+| [separate](Vertex.md#separate) | `def separate(self, geometry=None):` |
 
 <sub>Go to [top](#node-Separate-Geometry) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

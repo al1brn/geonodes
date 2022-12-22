@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 """
-Created on 2022-12-17
+Created on 2022-12-22
 
 @author: Generated from generator module
 
@@ -300,7 +300,7 @@ class Compare(Node):
             dot_product_less_equal dot_product_greater_than dot_product_greater_equal dot_product_equal dot_product_not_equal direction_less_than direction_less_equal direction_greater_than direction_greater_equal direction_equal 
             direction_not_equal 
         Color:
-            compare darker brighter equal equal 
+            darker brighter equal equal 
 
     Args:
         a (DataSocket): ``data_type`` dependant
@@ -961,8 +961,6 @@ class RotateEuler(Node):
     Node implementation:
         global functions:
             rotate_euler rotate_axis_angle 
-        Rotation:
-            Euler AxisAngle rotate_euler rotate_axis_angle 
 
     Args:
         rotation (DataSocket): Vector
@@ -1064,7 +1062,8 @@ class SeparateColor(Node):
         global functions:
             separate_rgb separate_hsv separate_hsl 
         Color:
-            rgb hsv hsl 
+            rgb hsv hsl alpha red green blue hue saturation value 
+            lightness 
 
     Args:
         color (DataSocket): Color
@@ -1439,21 +1438,21 @@ class DomainSize(Node):
         Instances:
             domain_size 
         Vertex:
-            domain_size 
+            count 
         Face:
-            domain_size 
+            count 
         Edge:
-            domain_size 
+            count 
         Corner:
-            domain_size 
+            count 
         Spline:
-            domain_size 
+            count 
         ControlPoint:
-            domain_size 
+            count 
         CloudPoint:
-            domain_size 
+            count 
         Instance:
-            domain_size 
+            count 
 
     Args:
         geometry (DataSocket): Geometry
@@ -1739,7 +1738,7 @@ class CaptureAttribute(Node):
 
     Node implementation:
         Geometry:
-            capture_attribute 
+            capture_attribute capture_attribute_node 
         Domain:
             capture_attribute 
 
@@ -1964,6 +1963,12 @@ class CornersOfFace(Node):
 
     .. _CornersOfFace:
 
+    Node implementation:
+        Mesh:
+            corners_of_face 
+        Face:
+            corners corners_index corners_total 
+
     Args:
         face_index (DataSocket): Integer
         weights (DataSocket): Float
@@ -2035,6 +2040,12 @@ class CornersOfVertex(Node):
     """Node *Corners of Vertex*
 
     .. _CornersOfVertex:
+
+    Node implementation:
+        Mesh:
+            corners_of_vertex 
+        Vertex:
+            corners corners_index corners_total 
 
     Args:
         vertex_index (DataSocket): Integer
@@ -2274,7 +2285,7 @@ class EndpointSelection(Node):
     .. _EndpointSelection:
 
     Node implementation:
-        Spline:
+        ControlPoint:
             endpoint_selection 
 
     Args:
@@ -2335,7 +2346,7 @@ class HandleTypeSelection(Node):
     .. _HandleTypeSelection:
 
     Node implementation:
-        Spline:
+        ControlPoint:
             handle_type_selection_node handle_type_selection handle_type_selection handle_type_selection handle_type_selection handle_type_selection 
 
     Args:
@@ -3057,7 +3068,7 @@ class SetHandleType(Node):
     .. _SetHandleType:
 
     Node implementation:
-        Spline:
+        ControlPoint:
             set_handle_type_node set_handle_type 
 
     Args:
@@ -3239,7 +3250,7 @@ class SetSplineType(Node):
 
     Node implementation:
         Spline:
-            set_type set_spline_type type 
+            set_type type type 
 
     Args:
         curve (DataSocket): Curve
@@ -3615,7 +3626,7 @@ class DeleteGeometry(Node):
             delete 
         Mesh:
             delete_all delete_edges delete_faces 
-        Domain:
+        ('Vertex', 'Edge', 'Face', 'Spline', 'ControlPoint', 'Instance', 'CloudPoint'):
             delete 
         Vertex:
             delete_all delete_edges delete_faces 
@@ -4004,7 +4015,9 @@ class DuplicateElements(Node):
     Node implementation:
         Geometry:
             duplicate 
-        Domain:
+        ('Vertex', 'ControlPoint', 'CloudPoint', 'Edge', 'Face', 'Instance'):
+            duplicate 
+        Spline:
             duplicate 
 
     Args:
@@ -4222,6 +4235,12 @@ class EdgesOfCorner(Node):
 
     .. _EdgesOfCorner:
 
+    Node implementation:
+        Mesh:
+            edges_of_corner 
+        Corner:
+            edges previous_vertex next_vertex 
+
     Args:
         corner_index (DataSocket): Integer
         node_color (color): Node color
@@ -4273,6 +4292,12 @@ class EdgesOfVertex(Node):
     """Node *Edges of Vertex*
 
     .. _EdgesOfVertex:
+
+    Node implementation:
+        Mesh:
+            edges_of_vertex 
+        Vertex:
+            edges edges_index edges_total 
 
     Args:
         vertex_index (DataSocket): Integer
@@ -4462,6 +4487,12 @@ class FaceOfCorner(Node):
 
     .. _FaceOfCorner:
 
+    Node implementation:
+        Mesh:
+            face_of_corner 
+        Corner:
+            face face_index index_in_face 
+
     Args:
         corner_index (DataSocket): Integer
         node_color (color): Node color
@@ -4600,6 +4631,12 @@ class InterpolateDomain(Node):
     """Node *Interpolate Domain*
 
     .. _InterpolateDomain:
+
+    Node implementation:
+        Geometry:
+            interpolate_domain 
+        Domain:
+            interpolate 
 
     Args:
         value (DataSocket): ``data_type`` dependant
@@ -5067,7 +5104,7 @@ class CurveHandlePositions(Node):
     .. _CurveHandlePositions:
 
     Node implementation:
-        Spline:
+        ControlPoint:
             handle_positions left_handle_positions right_handle_positions 
 
     Args:
@@ -5123,7 +5160,7 @@ class CurveTilt(Node):
     .. _CurveTilt:
 
     Node implementation:
-        Spline:
+        ControlPoint:
             tilt 
 
     Args:
@@ -5204,7 +5241,7 @@ class Index(Node):
         Geometry:
             index 
         Domain:
-            index 
+            index domain_index 
 
     Args:
         node_color (color): Node color
@@ -5400,7 +5437,7 @@ class EdgeAngle(Node):
 
     Node implementation:
         Edge:
-            angle unisgned_angle signed_angle 
+            angle unsigned_angle signed_angle 
 
     Args:
         node_color (color): Node color
@@ -5669,6 +5706,8 @@ class MeshIsland(Node):
     Node implementation:
         Mesh:
             island island_index island_count 
+        Face:
+            island island_index island_count 
 
     Args:
         node_color (color): Node color
@@ -5754,9 +5793,9 @@ class NamedAttribute(Node):
 
     Node implementation:
         Geometry:
-            named_attribute named_attribute_float named_attribute_integer named_attribute_vector named_attribute_color named_attribute_boolean 
+            named_attribute get_named_float get_named_integer get_named_vector get_named_color get_named_boolean 
         Domain:
-            named_attribute named_attribute_float named_attribute_integer named_attribute_vector named_attribute_color named_attribute_boolean 
+            named_attribute get_named_float get_named_integer get_named_vector get_named_color get_named_boolean 
 
     Args:
         name (DataSocket): String
@@ -5908,9 +5947,7 @@ class Radius(Node):
     Node implementation:
         Geometry:
             radius 
-        Domain:
-            radius 
-        Spline:
+        ControlPoint:
             radius 
         CloudPoint:
             radius 
@@ -6175,7 +6212,7 @@ class CurveTangent(Node):
     .. _CurveTangent:
 
     Node implementation:
-        Spline:
+        ControlPoint:
             tangent 
 
     Args:
@@ -6215,6 +6252,8 @@ class InstanceOnPoints(Node):
     Node implementation:
         Instances:
             InstanceOnPoints on_points 
+        ('Points', 'Mesh', 'Curve'):
+            instance_on_points 
         Vertex:
             instance_on_points 
         ControlPoint:
@@ -7793,7 +7832,7 @@ class ObjectInfo(Node):
 
     Node implementation:
         Object:
-            info 
+            info location rotation scale geometry 
 
     Args:
         object (DataSocket): Object
@@ -7879,6 +7918,12 @@ class OffsetCornerInFace(Node):
     """Node *Offset Corner in Face*
 
     .. _OffsetCornerInFace:
+
+    Node implementation:
+        Mesh:
+            offset_corner_in_face 
+        Corner:
+            offset_in_face 
 
     Args:
         corner_index (DataSocket): Integer
@@ -8315,7 +8360,13 @@ class GeometryProximity(Node):
 
     Node implementation:
         Geometry:
-            proximity proximity_points proximity_edges proximity_facess 
+            proximity proximity_points proximity_edges proximity_faces 
+        ('Vertex', 'ControlPoint', 'CloudPoint'):
+            proximity 
+        Edge:
+            proximity 
+        Face:
+            proximity 
 
     Args:
         target (DataSocket): Geometry
@@ -9201,7 +9252,7 @@ class SampleNearest(Node):
     Node implementation:
         Geometry:
             sample_nearest 
-        Domain:
+        ('Vertex', 'Edge', 'Face', 'Corner'):
             sample_nearest 
 
     Args:
@@ -9702,7 +9753,7 @@ class SeparateComponents(Node):
 
     Node implementation:
         Geometry:
-            separate_components separate_mesh separate_curve separate_points separate_volume separate_instances 
+            separate_components mesh_component curve_component points_component volume_component instances_component 
 
     Args:
         geometry (DataSocket): Geometry
@@ -9774,7 +9825,7 @@ class SeparateGeometry(Node):
     Node implementation:
         Geometry:
             separate 
-        Domain:
+        ('Vertex', 'Edge', 'Face', 'ControlPoint', 'Spline', 'Instance'):
             separate 
 
     Args:
@@ -9849,7 +9900,7 @@ class SetHandlePositions(Node):
     .. _SetHandlePositions:
 
     Node implementation:
-        Spline:
+        ControlPoint:
             set_handle_positions set_handle_positions_left set_handle_positions_right left_handle_positions right_handle_positions 
 
     Args:
@@ -10009,7 +10060,7 @@ class SetCurveRadius(Node):
     .. _SetCurveRadius:
 
     Node implementation:
-        Spline:
+        ControlPoint:
             set_radius radius 
 
     Args:
@@ -10076,7 +10127,7 @@ class SetCurveTilt(Node):
     .. _SetCurveTilt:
 
     Node implementation:
-        Spline:
+        ControlPoint:
             set_tilt tilt 
 
     Args:
@@ -10214,8 +10265,8 @@ class SetMaterial(Node):
     Node implementation:
         Geometry:
             set_material 
-        Domain:
-            material 
+        ('Face', 'Spline'):
+            set_material material material 
 
     Args:
         geometry (DataSocket): Geometry
@@ -10744,8 +10795,8 @@ class SplineParameter(Node):
     .. _SplineParameter:
 
     Node implementation:
-        Spline:
-            parameter 
+        ControlPoint:
+            parameter parameter_factor parameter_length parameter_index 
 
     Args:
         node_color (color): Node color
@@ -10852,9 +10903,9 @@ class StoreNamedAttribute(Node):
 
     Node implementation:
         Geometry:
-            store_named_attribute 
+            store_named_attribute set_named_boolean set_named_integer set_named_float set_named_vector set_named_color 
         Domain:
-            store_named_attribute 
+            store_named_attribute set_named_boolean set_named_integer set_named_float set_named_vector set_named_color 
 
     Args:
         geometry (DataSocket): Geometry
@@ -12032,6 +12083,12 @@ class VertexOfCorner(Node):
 
     .. _VertexOfCorner:
 
+    Node implementation:
+        Mesh:
+            vertex_of_corner 
+        Corner:
+            vertex_index 
+
     Args:
         corner_index (DataSocket): Integer
         node_color (color): Node color
@@ -12662,19 +12719,18 @@ class Math(Node):
 
     Node implementation:
         global functions:
-            math add subtract sub multiply mul divide div multiply_add mul_add 
-            power logarithm log sqrt inverse_sqrt absolute abs exponent exp minimum 
-            min maximum max math_less_than math_greater_than sign math_compare smooth_minimum smooth_maximum math_round 
-            math_floor math_ceil math_truncate math_trun fraction modulo wrap snap ping_pong sine 
-            sin cosine cos tangent tan arcsine arcsin arccosine arccos arctangent 
-            arctan arctan2 sinh cosh tanh to_radians to_degrees 
+            math multiply_add mul_add power logarithm log sqrt inverse_sqrt absolute abs 
+            exponent exp minimum min maximum max math_less_than math_greater_than sign math_compare 
+            smooth_minimum smooth_maximum math_round math_floor math_ceil math_truncate math_trun fraction modulo wrap 
+            snap ping_pong sine sin cosine cos tangent tan arcsine arcsin 
+            arccosine arccos arctangent arctan arctan2 sinh cosh tanh to_radians to_degrees 
         ('Integer', 'Float'):
-            add subtract sub multiply mul divide div multiply_add mul_add power 
-            logarithm log sqrt inverse_sqrt absolute abs exponent exp minimum min 
-            maximum max math_less_than math_greater_than sign math_compare smooth_minimum smooth_maximum math_round math_floor 
-            math_ceil math_truncate math_trunc fraction fact modulo wrap snap ping_pong sine 
-            sin cosine cos tangent tan arcsine arcsin arccosine arccos arctangent 
-            arctan arctan2 sinh cosh tanh to_radians to_degrees 
+            multiply_add mul_add power pow logarithm log sqrt inverse_sqrt absolute abs 
+            exponent exp minimum min maximum max math_less_than math_greater_than sign math_compare 
+            smooth_minimum smooth_maximum math_round math_floor math_ceil math_truncate math_trunc fraction fact modulo 
+            wrap snap ping_pong sine sin cosine cos tangent tan arcsine 
+            arcsin arccosine arccos arctangent arctan arctan2 sinh cosh tanh to_radians 
+            to_degrees 
 
     Args:
         value0 (DataSocket): Float
@@ -12964,7 +13020,7 @@ class SeparateXyz(Node):
 
     Node implementation:
         Vector:
-            separate x y z 
+            separate 
 
     Args:
         vector (DataSocket): Vector

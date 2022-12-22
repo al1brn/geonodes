@@ -29,7 +29,6 @@
 ## Methods
 
 - [brighter](#brighter)
-- [compare](#compare)
 - [darker](#darker)
 - [equal](#equal)
 - [equal](#equal)
@@ -180,24 +179,6 @@ def brighter(self, b=None):
 
 #### Args:
 - b: ['Float', 'Integer', 'Vector', 'Color', 'String']
-
-#### Returns:
-- socket `result`
-
-<sub>Go to [top](#class-Color) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-## compare
-
-```python
-def compare(self, b=None, epsilon=None, operation='GREATER_THAN'):
-
-```
-> Node: [Compare](FunctionNodeCompare.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) - [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
-
-#### Args:
-- b: ['Float', 'Integer', 'Vector', 'Color', 'String']
-- epsilon: Float
-- operation (str): 'GREATER_THAN' in [LESS_THAN, LESS_EQUAL, GREATER_THAN, GREATER_EQUAL, EQUAL, NOT_EQUAL]
 
 #### Returns:
 - socket `result`

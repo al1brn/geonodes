@@ -36,6 +36,8 @@
 - [boolean_difference](#boolean_difference)
 - [boolean_intersect](#boolean_intersect)
 - [boolean_union](#boolean_union)
+- [corners_of_face](#corners_of_face)
+- [corners_of_vertex](#corners_of_vertex)
 - [delete_all](#delete_all)
 - [delete_edges](#delete_edges)
 - [delete_faces](#delete_faces)
@@ -43,12 +45,16 @@
 - [dual_mesh](#dual_mesh)
 - [edge_paths_to_curves](#edge_paths_to_curves)
 - [edge_paths_to_selection](#edge_paths_to_selection)
+- [edges_of_corner](#edges_of_corner)
+- [edges_of_vertex](#edges_of_vertex)
 - [extrude](#extrude)
 - [face_is_planar](#face_is_planar)
+- [face_of_corner](#face_of_corner)
 - [face_set_boundaries](#face_set_boundaries)
 - [flip_faces](#flip_faces)
 - [instance_on_points](#instance_on_points)
 - [is_shade_smooth](#is_shade_smooth)
+- [offset_corner_in_face](#offset_corner_in_face)
 - [pack_uv_islands](#pack_uv_islands)
 - [sample_nearest_surface](#sample_nearest_surface)
 - [sample_uv_surface](#sample_uv_surface)
@@ -65,6 +71,7 @@
 - [to_volume](#to_volume)
 - [triangulate](#triangulate)
 - [uv_unwrap](#uv_unwrap)
+- [vertex_of_corner](#vertex_of_corner)
 
 ## Circle <sub>*classmethod*</sub>
 
@@ -364,6 +371,46 @@ def corner_count(self):
 
 <sub>Go to [top](#class-Mesh) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
+## corners_of_face
+
+```python
+def corners_of_face(self, face_index=None, weights=None, sort_index=None):
+
+```
+> Node: [Corners of Face](GeometryNodeCornersOfFace.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh_topology/corners_of_face.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeCornersOfFace.html)
+
+#### Args:
+- face_index: Integer
+- weights: Float
+- sort_index: Integer
+
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeCornersOfFace.webp)
+
+#### Returns:
+- tuple ('`corner_index`', '`total`')
+
+<sub>Go to [top](#class-Mesh) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+## corners_of_vertex
+
+```python
+def corners_of_vertex(self, vertex_index=None, weights=None, sort_index=None):
+
+```
+> Node: [Corners of Vertex](GeometryNodeCornersOfVertex.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh_topology/corners_of_vertex.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeCornersOfVertex.html)
+
+#### Args:
+- vertex_index: Integer
+- weights: Float
+- sort_index: Integer
+
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeCornersOfVertex.webp)
+
+#### Returns:
+- tuple ('`corner_index`', '`total`')
+
+<sub>Go to [top](#class-Mesh) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ## delete_all
 
 ```python
@@ -516,6 +563,44 @@ def edge_paths_to_selection(self, start_vertices=None, next_vertex_index=None):
 
 <sub>Go to [top](#class-Mesh) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
+## edges_of_corner
+
+```python
+def edges_of_corner(self, corner_index=None):
+
+```
+> Node: [Edges of Corner](GeometryNodeEdgesOfCorner.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh_topology/edges_of_corner.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeEdgesOfCorner.html)
+
+#### Args:
+- corner_index: Integer
+
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeEdgesOfCorner.webp)
+
+#### Returns:
+- tuple ('`next_edge_index`', '`previous_edge_index`')
+
+<sub>Go to [top](#class-Mesh) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+## edges_of_vertex
+
+```python
+def edges_of_vertex(self, vertex_index=None, weights=None, sort_index=None):
+
+```
+> Node: [Edges of Vertex](GeometryNodeEdgesOfVertex.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh_topology/edges_of_vertex.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeEdgesOfVertex.html)
+
+#### Args:
+- vertex_index: Integer
+- weights: Float
+- sort_index: Integer
+
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeEdgesOfVertex.webp)
+
+#### Returns:
+- tuple ('`edge_index`', '`total`')
+
+<sub>Go to [top](#class-Mesh) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ## extrude
 
 ```python
@@ -564,6 +649,24 @@ def face_is_planar(self, threshold=None):
 
 #### Returns:
 - socket `planar`
+
+<sub>Go to [top](#class-Mesh) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+## face_of_corner
+
+```python
+def face_of_corner(self, corner_index=None):
+
+```
+> Node: [Face of Corner](GeometryNodeFaceOfCorner.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh_topology/face_of_corner.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeFaceOfCorner.html)
+
+#### Args:
+- corner_index: Integer
+
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeFaceOfCorner.webp)
+
+#### Returns:
+- tuple ('`face_index`', '`index_in_face`')
 
 <sub>Go to [top](#class-Mesh) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
@@ -669,6 +772,23 @@ def island_index(self):
 
 #### Returns:
 - socket `island_index`
+
+<sub>Go to [top](#class-Mesh) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+## offset_corner_in_face
+
+```python
+def offset_corner_in_face(self, corner_index=None, offset=None):
+
+```
+> Node: [Offset Corner in Face](GeometryNodeOffsetCornerInFace.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh_topology/offset_corner_in_face.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeOffsetCornerInFace.html)
+
+#### Args:
+- corner_index: Integer
+- offset: Integer
+
+#### Returns:
+- socket `corner_index`
 
 <sub>Go to [top](#class-Mesh) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
@@ -982,6 +1102,22 @@ def uv_unwrap(self, selection=None, seam=None, margin=None, fill_holes=None, met
 
 #### Returns:
 - socket `uv`
+
+<sub>Go to [top](#class-Mesh) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+## vertex_of_corner
+
+```python
+def vertex_of_corner(self, corner_index=None):
+
+```
+> Node: [Vertex of Corner](GeometryNodeVertexOfCorner.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh_topology/vertex_of_corner.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeVertexOfCorner.html)
+
+#### Args:
+- corner_index: Integer
+
+#### Returns:
+- socket `vertex_index`
 
 <sub>Go to [top](#class-Mesh) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

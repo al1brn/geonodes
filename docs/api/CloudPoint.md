@@ -4,15 +4,63 @@
 
 ## Properties
 
+- [count](#count-property)
 - [radius](#radius-property)
 
 
 
 ## Methods
 
+- [delete](#delete)
+- [duplicate](#duplicate)
 - [instance_on_points](#instance_on_points)
-- [len](#len)
+- [proximity](#proximity)
 - [to_vertices](#to_vertices)
+
+## count <sub>*property*</sub>
+
+```python
+def count(self, geometry=None):
+
+```
+> Node: [Domain Size](GeometryNodeAttributeDomainSize.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html)
+
+#### Returns:
+- socket `point_count`
+
+<sub>Go to [top](#class-CloudPoint) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+## delete
+
+```python
+def delete(self, mode='ALL'):
+
+```
+> Node: [Delete Geometry](GeometryNodeDeleteGeometry.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/delete_geometry.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeDeleteGeometry.html)
+
+#### Args:
+- mode (str): 'ALL' in [ALL, EDGE_FACE, ONLY_FACE]
+
+#### Returns:
+- self
+
+<sub>Go to [top](#class-CloudPoint) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+## duplicate
+
+```python
+def duplicate(self, amount=None):
+
+```
+> Node: [Duplicate Elements](GeometryNodeDuplicateElements.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/duplicate_elements.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeDuplicateElements.html)
+
+#### Args:
+- amount: Integer
+
+#### Returns:
+- socket `duplicate_index`
+
+<sub>Go to [top](#class-CloudPoint) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## instance_on_points
 
@@ -34,20 +82,20 @@ def instance_on_points(self, instance=None, pick_instance=None, instance_index=N
 
 <sub>Go to [top](#class-CloudPoint) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
-## len
+## proximity
 
 ```python
-def __len__(self):
+def proximity(self, target=None, source_position=None):
 
 ```
-> Node: [Domain Size](GeometryNodeAttributeDomainSize.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html)
+> Node: [Geometry Proximity](GeometryNodeProximity.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/geometry_proximity.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeProximity.html)
 
 #### Args:
-- geometry: Geometry
-- component (str): 'MESH' in [MESH, POINTCLOUD, CURVE, INSTANCES]
+- target: Geometry
+- source_position: Vector
 
 #### Returns:
-- node with sockets ['point_count', 'edge_count', 'face_count', 'face_corner_count', 'spline_count', 'instance_count']
+- socket `distance`
 
 <sub>Go to [top](#class-CloudPoint) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

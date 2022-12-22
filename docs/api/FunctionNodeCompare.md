@@ -47,7 +47,6 @@ node = nodes.Compare(a=None, b=None, c=None, angle=None, epsilon=None, data_type
 | Global functions |
 | [compare](A.md#compare) | `def compare(a=None, b=None, c=None, angle=None, epsilon=None, data_type='FLOAT', mode='ELEMENT', operation='GREATER_THAN'):` |
 | **[Color](Color.md)** |
-| [compare](Color.md#compare) | `def compare(self, b=None, epsilon=None, operation='GREATER_THAN'):` |
 | [darker](Color.md#darker) | `def darker(self, b=None):` |
 | [brighter](Color.md#brighter) | `def brighter(self, b=None):` |
 | [equal](Color.md#equal) | `def equal(self, b=None, epsilon=None):` |

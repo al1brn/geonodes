@@ -9,7 +9,6 @@
 
 - [abs](#abs)
 - [absolute](#absolute)
-- [add](#add)
 - [align_euler_to_vector](#align_euler_to_vector)
 - [arccos](#arccos)
 - [arccosine](#arccosine)
@@ -50,8 +49,6 @@
 - [cos](#cos)
 - [cosh](#cosh)
 - [cosine](#cosine)
-- [div](#div)
-- [divide](#divide)
 - [exp](#exp)
 - [exponent](#exponent)
 - [float_mix](#float_mix)
@@ -77,9 +74,7 @@
 - [min](#min)
 - [minimum](#minimum)
 - [modulo](#modulo)
-- [mul](#mul)
 - [mul_add](#mul_add)
-- [multiply](#multiply)
 - [multiply_add](#multiply_add)
 - [nand](#nand)
 - [nimply](#nimply)
@@ -108,8 +103,6 @@
 - [sqrt](#sqrt)
 - [string_length](#string_length)
 - [string_to_curves](#string_to_curves)
-- [sub](#sub)
-- [subtract](#subtract)
 - [switch](#switch)
 - [switch_boolean](#switch_boolean)
 - [switch_collection](#switch_collection)
@@ -161,24 +154,6 @@ def absolute(value=None, clamp=False):
 
 #### Args:
 - value: Float
-- clamp (bool): False
-
-#### Returns:
-- socket `value`
-
-<sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-## add
-
-```python
-def add(value0=None, value1=None, clamp=False):
-
-```
-> Node: [Math](ShaderNodeMath.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
-
-#### Args:
-- value0: Float
-- value1: Float
 - clamp (bool): False
 
 #### Returns:
@@ -939,42 +914,6 @@ def cosine(value=None, clamp=False):
 
 <sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
-## div
-
-```python
-def div(value0=None, value1=None, clamp=False):
-
-```
-> Node: [Math](ShaderNodeMath.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
-
-#### Args:
-- value0: Float
-- value1: Float
-- clamp (bool): False
-
-#### Returns:
-- socket `value`
-
-<sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-## divide
-
-```python
-def divide(value0=None, value1=None, clamp=False):
-
-```
-> Node: [Math](ShaderNodeMath.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
-
-#### Args:
-- value0: Float
-- value1: Float
-- clamp (bool): False
-
-#### Returns:
-- socket `value`
-
-<sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
 ## exp
 
 ```python
@@ -1414,24 +1353,6 @@ def modulo(value0=None, value1=None, clamp=False):
 
 <sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
-## mul
-
-```python
-def mul(value0=None, value1=None, clamp=False):
-
-```
-> Node: [Math](ShaderNodeMath.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
-
-#### Args:
-- value0: Float
-- value1: Float
-- clamp (bool): False
-
-#### Returns:
-- socket `value`
-
-<sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
 ## mul_add
 
 ```python
@@ -1444,24 +1365,6 @@ def mul_add(value=None, multiplier=None, addend=None, clamp=False):
 - value: Float
 - multiplier: Float
 - addend: Float
-- clamp (bool): False
-
-#### Returns:
-- socket `value`
-
-<sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-## multiply
-
-```python
-def multiply(value0=None, value1=None, clamp=False):
-
-```
-> Node: [Math](ShaderNodeMath.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
-
-#### Args:
-- value0: Float
-- value1: Float
 - clamp (bool): False
 
 #### Returns:
@@ -1976,42 +1879,6 @@ def string_to_curves(string=None, size=None, character_spacing=None, word_spacin
 
 #### Returns:
 - tuple ('`curve_instances`', '`line`', '`pivot_point`')
-
-<sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-## sub
-
-```python
-def sub(value0=None, value1=None, clamp=False):
-
-```
-> Node: [Math](ShaderNodeMath.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
-
-#### Args:
-- value0: Float
-- value1: Float
-- clamp (bool): False
-
-#### Returns:
-- socket `value`
-
-<sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-## subtract
-
-```python
-def subtract(value0=None, value1=None, clamp=False):
-
-```
-> Node: [Math](ShaderNodeMath.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
-
-#### Args:
-- value0: Float
-- value1: Float
-- clamp (bool): False
-
-#### Returns:
-- socket `value`
 
 <sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

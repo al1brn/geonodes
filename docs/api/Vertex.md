@@ -4,6 +4,7 @@
 
 ## Properties
 
+- [count](#count-property)
 - [neighbors](#neighbors-property)
 - [neighbors_face_count](#neighbors_face_count-property)
 - [neighbors_vertex_count](#neighbors_vertex_count-property)
@@ -12,15 +13,107 @@
 
 ## Methods
 
+- [corners](#corners)
+- [corners_index](#corners_index)
+- [corners_total](#corners_total)
+- [delete](#delete)
 - [delete_all](#delete_all)
 - [delete_edges](#delete_edges)
 - [delete_faces](#delete_faces)
+- [duplicate](#duplicate)
+- [edges](#edges)
+- [edges_index](#edges_index)
+- [edges_total](#edges_total)
 - [extrude](#extrude)
 - [instance_on_points](#instance_on_points)
-- [len](#len)
 - [merge_by_distance](#merge_by_distance)
+- [proximity](#proximity)
+- [sample_nearest](#sample_nearest)
+- [separate](#separate)
 - [to_points](#to_points)
 - [to_volume](#to_volume)
+
+## corners
+
+```python
+def corners(self, weights=None, sort_index=None):
+
+```
+> Node: [Corners of Vertex](GeometryNodeCornersOfVertex.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh_topology/corners_of_vertex.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeCornersOfVertex.html)
+
+#### Args:
+- weights: Float
+- sort_index: Integer
+
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeCornersOfVertex.webp)
+
+#### Returns:
+- tuple ('`corner_index`', '`total`')
+
+<sub>Go to [top](#class-Vertex) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+## corners_index
+
+```python
+def corners_index(self, weights=None, sort_index=None):
+
+```
+> Node: [Corners of Vertex](GeometryNodeCornersOfVertex.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh_topology/corners_of_vertex.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeCornersOfVertex.html)
+
+#### Args:
+- weights: Float
+- sort_index: Integer
+
+#### Returns:
+- socket `corner_index`
+
+<sub>Go to [top](#class-Vertex) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+## corners_total
+
+```python
+def corners_total(self, weights=None, sort_index=None):
+
+```
+> Node: [Corners of Vertex](GeometryNodeCornersOfVertex.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh_topology/corners_of_vertex.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeCornersOfVertex.html)
+
+#### Args:
+- weights: Float
+- sort_index: Integer
+
+#### Returns:
+- socket `total`
+
+<sub>Go to [top](#class-Vertex) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+## count <sub>*property*</sub>
+
+```python
+def count(self, geometry=None):
+
+```
+> Node: [Domain Size](GeometryNodeAttributeDomainSize.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html)
+
+#### Returns:
+- socket `point_count`
+
+<sub>Go to [top](#class-Vertex) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+## delete
+
+```python
+def delete(self, mode='ALL'):
+
+```
+> Node: [Delete Geometry](GeometryNodeDeleteGeometry.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/delete_geometry.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeDeleteGeometry.html)
+
+#### Args:
+- mode (str): 'ALL' in [ALL, EDGE_FACE, ONLY_FACE]
+
+#### Returns:
+- self
+
+<sub>Go to [top](#class-Vertex) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## delete_all
 
@@ -61,6 +154,75 @@ def delete_faces(self):
 
 <sub>Go to [top](#class-Vertex) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
+## duplicate
+
+```python
+def duplicate(self, amount=None):
+
+```
+> Node: [Duplicate Elements](GeometryNodeDuplicateElements.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/duplicate_elements.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeDuplicateElements.html)
+
+#### Args:
+- amount: Integer
+
+#### Returns:
+- socket `duplicate_index`
+
+<sub>Go to [top](#class-Vertex) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+## edges
+
+```python
+def edges(self, weights=None, sort_index=None):
+
+```
+> Node: [Edges of Vertex](GeometryNodeEdgesOfVertex.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh_topology/edges_of_vertex.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeEdgesOfVertex.html)
+
+#### Args:
+- weights: Float
+- sort_index: Integer
+
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeEdgesOfVertex.webp)
+
+#### Returns:
+- tuple ('`edge_index`', '`total`')
+
+<sub>Go to [top](#class-Vertex) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+## edges_index
+
+```python
+def edges_index(self, weights=None, sort_index=None):
+
+```
+> Node: [Edges of Vertex](GeometryNodeEdgesOfVertex.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh_topology/edges_of_vertex.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeEdgesOfVertex.html)
+
+#### Args:
+- weights: Float
+- sort_index: Integer
+
+#### Returns:
+- socket `edge_index`
+
+<sub>Go to [top](#class-Vertex) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+## edges_total
+
+```python
+def edges_total(self, weights=None, sort_index=None):
+
+```
+> Node: [Edges of Vertex](GeometryNodeEdgesOfVertex.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh_topology/edges_of_vertex.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeEdgesOfVertex.html)
+
+#### Args:
+- weights: Float
+- sort_index: Integer
+
+#### Returns:
+- socket `total`
+
+<sub>Go to [top](#class-Vertex) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ## extrude
 
 ```python
@@ -98,23 +260,6 @@ def instance_on_points(self, instance=None, pick_instance=None, instance_index=N
 
 #### Returns:
 - socket `instances` of class Instances
-
-<sub>Go to [top](#class-Vertex) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-## len
-
-```python
-def __len__(self):
-
-```
-> Node: [Domain Size](GeometryNodeAttributeDomainSize.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html)
-
-#### Args:
-- geometry: Geometry
-- component (str): 'MESH' in [MESH, POINTCLOUD, CURVE, INSTANCES]
-
-#### Returns:
-- node with sockets ['point_count', 'edge_count', 'face_count', 'face_corner_count', 'spline_count', 'instance_count']
 
 <sub>Go to [top](#class-Vertex) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
@@ -171,6 +316,57 @@ def neighbors_vertex_count(self):
 
 #### Returns:
 - socket `vertex_count`
+
+<sub>Go to [top](#class-Vertex) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+## proximity
+
+```python
+def proximity(self, target=None, source_position=None):
+
+```
+> Node: [Geometry Proximity](GeometryNodeProximity.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/geometry_proximity.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeProximity.html)
+
+#### Args:
+- target: Geometry
+- source_position: Vector
+
+#### Returns:
+- socket `distance`
+
+<sub>Go to [top](#class-Vertex) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+## sample_nearest
+
+```python
+def sample_nearest(self, sample_position=None):
+
+```
+> Node: [Sample Nearest](GeometryNodeSampleNearest.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/sample_nearest.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSampleNearest.html)
+
+#### Args:
+- sample_position: Vector
+
+#### Returns:
+- socket `index`
+
+<sub>Go to [top](#class-Vertex) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+## separate
+
+```python
+def separate(self, geometry=None):
+
+```
+> Node: [Separate Geometry](GeometryNodeSeparateGeometry.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/separate_geometry.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSeparateGeometry.html)
+
+#### Args:
+- geometry: Geometry
+
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeSeparateGeometry.webp)
+
+#### Returns:
+- tuple ('`selection`', '`inverted`')
 
 <sub>Go to [top](#class-Vertex) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

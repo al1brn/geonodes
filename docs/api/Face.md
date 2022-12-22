@@ -5,6 +5,7 @@
 ## Properties
 
 - [area](#area-property)
+- [count](#count-property)
 - [island](#island-property)
 - [island_count](#island_count-property)
 - [island_index](#island_index-property)
@@ -18,19 +19,26 @@
 
 ## Methods
 
+- [corners](#corners)
+- [corners_index](#corners_index)
+- [corners_total](#corners_total)
+- [delete](#delete)
 - [delete_all](#delete_all)
 - [delete_edges](#delete_edges)
 - [delete_faces](#delete_faces)
 - [distribute_points_poisson](#distribute_points_poisson)
 - [distribute_points_random](#distribute_points_random)
+- [duplicate](#duplicate)
 - [extrude](#extrude)
 - [face_set_boundaries](#face_set_boundaries)
 - [flip](#flip)
 - [is_planar](#is_planar)
-- [len](#len)
 - [pack_uv_islands](#pack_uv_islands)
+- [proximity](#proximity)
+- [sample_nearest](#sample_nearest)
 - [scale_single_axis](#scale_single_axis)
 - [scale_uniform](#scale_uniform)
+- [separate](#separate)
 - [set_material](#set_material)
 - [set_shade_smooth](#set_shade_smooth)
 - [triangulate](#triangulate)
@@ -46,6 +54,88 @@ def area(self):
 
 #### Returns:
 - node with sockets ['area']
+
+<sub>Go to [top](#class-Face) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+## corners
+
+```python
+def corners(self, weights=None, sort_index=None):
+
+```
+> Node: [Corners of Face](GeometryNodeCornersOfFace.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh_topology/corners_of_face.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeCornersOfFace.html)
+
+#### Args:
+- weights: Float
+- sort_index: Integer
+
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeCornersOfFace.webp)
+
+#### Returns:
+- tuple ('`corner_index`', '`total`')
+
+<sub>Go to [top](#class-Face) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+## corners_index
+
+```python
+def corners_index(self, weights=None, sort_index=None):
+
+```
+> Node: [Corners of Face](GeometryNodeCornersOfFace.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh_topology/corners_of_face.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeCornersOfFace.html)
+
+#### Args:
+- weights: Float
+- sort_index: Integer
+
+#### Returns:
+- socket `corner_index`
+
+<sub>Go to [top](#class-Face) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+## corners_total
+
+```python
+def corners_total(self, weights=None, sort_index=None):
+
+```
+> Node: [Corners of Face](GeometryNodeCornersOfFace.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh_topology/corners_of_face.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeCornersOfFace.html)
+
+#### Args:
+- weights: Float
+- sort_index: Integer
+
+#### Returns:
+- socket `total`
+
+<sub>Go to [top](#class-Face) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+## count <sub>*property*</sub>
+
+```python
+def count(self, geometry=None):
+
+```
+> Node: [Domain Size](GeometryNodeAttributeDomainSize.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html)
+
+#### Returns:
+- socket `face_count`
+
+<sub>Go to [top](#class-Face) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+## delete
+
+```python
+def delete(self, mode='ALL'):
+
+```
+> Node: [Delete Geometry](GeometryNodeDeleteGeometry.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/delete_geometry.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeDeleteGeometry.html)
+
+#### Args:
+- mode (str): 'ALL' in [ALL, EDGE_FACE, ONLY_FACE]
+
+#### Returns:
+- self
 
 <sub>Go to [top](#class-Face) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
@@ -125,6 +215,22 @@ def distribute_points_random(self, density=None, seed=None):
 
 #### Returns:
 - tuple ('`points`', '`normal`', '`rotation`')
+
+<sub>Go to [top](#class-Face) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+## duplicate
+
+```python
+def duplicate(self, amount=None):
+
+```
+> Node: [Duplicate Elements](GeometryNodeDuplicateElements.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/duplicate_elements.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeDuplicateElements.html)
+
+#### Args:
+- amount: Integer
+
+#### Returns:
+- socket `duplicate_index`
 
 <sub>Go to [top](#class-Face) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
@@ -229,23 +335,6 @@ def island_index(self):
 
 <sub>Go to [top](#class-Face) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
-## len
-
-```python
-def __len__(self):
-
-```
-> Node: [Domain Size](GeometryNodeAttributeDomainSize.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html)
-
-#### Args:
-- geometry: Geometry
-- component (str): 'MESH' in [MESH, POINTCLOUD, CURVE, INSTANCES]
-
-#### Returns:
-- node with sockets ['point_count', 'edge_count', 'face_count', 'face_corner_count', 'spline_count', 'instance_count']
-
-<sub>Go to [top](#class-Face) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
 ## material <sub>*property*</sub>
 
 ```python
@@ -333,6 +422,39 @@ def pack_uv_islands(self, uv=None, margin=None, rotate=None):
 
 <sub>Go to [top](#class-Face) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
+## proximity
+
+```python
+def proximity(self, target=None, source_position=None):
+
+```
+> Node: [Geometry Proximity](GeometryNodeProximity.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/geometry_proximity.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeProximity.html)
+
+#### Args:
+- target: Geometry
+- source_position: Vector
+
+#### Returns:
+- socket `distance`
+
+<sub>Go to [top](#class-Face) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+## sample_nearest
+
+```python
+def sample_nearest(self, sample_position=None):
+
+```
+> Node: [Sample Nearest](GeometryNodeSampleNearest.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/sample_nearest.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSampleNearest.html)
+
+#### Args:
+- sample_position: Vector
+
+#### Returns:
+- socket `index`
+
+<sub>Go to [top](#class-Face) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ## scale_single_axis
 
 ```python
@@ -365,6 +487,24 @@ def scale_uniform(self, scale=None, center=None):
 
 #### Returns:
 - self
+
+<sub>Go to [top](#class-Face) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+## separate
+
+```python
+def separate(self, geometry=None):
+
+```
+> Node: [Separate Geometry](GeometryNodeSeparateGeometry.md) - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/separate_geometry.html) - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSeparateGeometry.html)
+
+#### Args:
+- geometry: Geometry
+
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeSeparateGeometry.webp)
+
+#### Returns:
+- tuple ('`selection`', '`inverted`')
 
 <sub>Go to [top](#class-Face) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
