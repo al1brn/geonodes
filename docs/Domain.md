@@ -31,7 +31,7 @@
 - [Points](Points.md) initializes 1 domain: 
   - `points` property of type [CloudPoint](CloudPoint.md)
 
-> Note that the node domain *`POINT`* is used by 3 **Domains**.
+> Note that the node domain *'POINT'* is used by 3 **Domains**.
 
 ## Selection mechanism
 
