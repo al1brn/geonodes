@@ -45,6 +45,18 @@ Nodes having a **Selection** socket use the **Domain** selection initialized wit
 
 In the following example, two vertices selected by the user are move upwards:
 
+```python
+import geonodes as gn
 
-
+with gn.Tree("Test") as tree:
+    
+    index1 = gn.Integer.Input(0, "Index 1")
+    index2 = gn.Integer.Input(1, "Index 2")
+    
+    cube = gn.Mesh.Cube()
+    
+    cube.verts[index1, index2].position += (0, 0, .2)
+    
+    tree.og = cube
+```
 
