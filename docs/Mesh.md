@@ -142,6 +142,45 @@ with gn.Tree("Test") as tree:
     tree.og = mesh
 ```
 
+### Boolean
+
+The three possible boolean operations on meshes can be done using the three methods:
+- `boolean_union`
+- `boolean_intersect`
+- `boolean_difference`
+
+```python
+import geonodes as gn
+
+with gn.Tree("Test") as tree:
+    
+    # We will make the boolean with the same cylinder
+    cyl, _, _, _ = gn.Mesh.Cylinder(depth=5)
+    
+    # ----- Union
+    
+    mesh1 = gn.Mesh.UVSphere(radius=2)
+    mesh1.boolean_union(cyl)
+    
+    mesh1.transform(translation=(5, 0, 0))
+    
+    # ----- Intersection
+    
+    mesh2 = gn.Mesh.UVSphere(radius=2)
+    mesh2.boolean_intersect(cyl)
+    
+    # ----- Difference
+    
+    mesh3 = gn.Mesh.UVSphere(radius=2)
+    mesh3.boolean_difference(cyl)
+    
+    mesh3.transform(translation=(-5, 0, 0))
+    
+    
+    tree.og = mesh1 + mesh2 + mesh3
+```
+
+
 
 
 
