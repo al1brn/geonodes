@@ -157,7 +157,7 @@ import geonodes as gn
 
 with gn.Tree("Test") as tree:
     
-    # We will make the boolean with the same cylinder
+    # We will perform the boolean operation with a cylinder and a thick plane
     cyl, _, _, _ = gn.Mesh.Cylinder(depth=5)
     plane = gn.Mesh.Cube().transform(scale=(4.1, 4.1, .25))
     
