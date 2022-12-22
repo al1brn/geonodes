@@ -22,9 +22,11 @@ The *do nothing* default tree is the following:
 ```python
 import geonodes as gn
 
-with Tree("Test") as tree:
+with gn.Tree("Test") as tree:
     tree.og = tree.ig
 ```
+
+
 
 
 
