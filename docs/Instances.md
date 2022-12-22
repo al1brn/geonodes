@@ -18,10 +18,22 @@ import geonodes as gn
 
 with gn.Tree("Test") as tree:
     
-    points = gn.Points.Points(count=100)
-    points.points.position = gn.random_vector(min=(-1, -1, -1), max=(1, 1, 1))
+    # ---- We'll instanciate the input geometry on points
     
-    tree.og = points
+    mesh = tree.ig
+    mesh.transform(scale=.1)
+    
+    # ----- Let's create the points
+    
+    points = gn.Points.Points(count=100)
+    points.points.position = gn.random_vector(min=-5, max=5)
+    
+    # ----- We can construct our instances
+    
+    instances = gn.Instances.InstanceOnPoints(points=points, instance=mesh)
+    
+    
+    tree.og = instances
 ```
 
 ## Examples
