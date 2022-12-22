@@ -176,7 +176,6 @@ with gn.Tree("Test") as tree:
     
     mesh3.transform(translation=(-5, 0, 0))
     
-    
     tree.og = mesh1 + mesh2 + mesh3
 ```
 
