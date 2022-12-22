@@ -91,7 +91,7 @@ import geonodes as gn
 
 ## Documentation
 
-Uses [index](https://al1brn.github.io/geonodes/) to gain access to the list of availables classes.
+Uses [index](structure.md) to gain access to the list of availables classes.
 
 ## Scripting geometry
 
