@@ -108,6 +108,42 @@ which can be used to select the newly created faces.
 The example below shows how to inset a selection of faces and then extrude the top faces.
 
 
+```python
+import geonodes as gn
+
+with gn.Tree("Test") as tree:
+    
+    # ----- Modifier parameters
+    
+    # Let's ask from the starting and ending indices of the faces
+    # to extrude
+    
+    start = gn.Integer.Input(10, "Extrusion start")
+    end   = gn.Integer.Input(20, "Extrusion end")
+    
+    inset = gn.Float.Input(.5, "Inset factor", min_value=0, max_value=1)
+
+    # ----- Let's
+    
+    # Let's use an icosphere
+    mesh = gn.Mesh.IcoSphere(subdivisions=3)
+    
+    # inset: extrude with offset_scale = 0 followed by a scale
+    
+    # First inset
+    top, side = mesh.faces[start:end].extrude(offset_scale=0)
+    
+    # First inset
+    mesh.faces[top].scale_uniform(inset)
+    
+    # True extrusion
+    mesh.faces[top].extrude()
+    
+    
+
+    tree.og = mesh
+```
+
 
 
 
