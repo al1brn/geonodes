@@ -9,10 +9,10 @@
 - [Instance](Instance.md), node domain *'INSTANCE'*
 
 
-**Domain** provide mechanism to keep the context, by maintaining:
+**Domain** provides mechanism to keep the context, by maintaining:
 - the `selection`
 - the node domain value in *'POINT'*, *'EDGE'*, *'FACE'*, *'CORNER'*, *'SPLINE'*, *'INSTANCE'*
-- the geometry it as a domain of
+- the geometry it is a domain of
 
 > By keeping the context geometry, it is not necessary to explicitly create **Capture Attribute**.
   **Domain** class determines if it is necessary or not to create this node.
