@@ -60,6 +60,46 @@ with gn.Tree("Test") as tree:
     tree.og = sphere
 ```
 
+### Material and shading
+
+The example below shows how the set material on a mesh, either by using the `set_material` method of mesh or
+by using the `material` property of `faces` domain.
+
+```python
+import geonodes as gn
+
+with gn.Tree("Test") as tree:
+    
+    # ----- Modifier parameters
+
+    # We read the materials given by the user
+    mat1 = gn.Material.Input(None, "Base material")
+    mat2 = gn.Material.Input(None, "Selection material")
+    
+    # Let's ask from the starting and ending indices of the face selection
+    
+    start = gn.Integer.Input(10, "Selection start")
+    end   = gn.Integer.Input(20, "Selection end")
+    
+    # Shading smooth or not
+    shade_smooth = gn.Boolean.Input(None,"Shade smooth")
+    
+    # Let's use an icosphere
+    mesh = gn.Mesh.IcoSphere(subdivisions=3)
+    
+    # ----- Let's go
+    
+    # Material 1 as base material
+    mesh.set_material(mat1)
+    
+    # Material 2 on a selection of faces
+    mesh.faces[start:end].material = mat2
+    
+    # We smooth (or not)
+    mesh.faces.shade_smooth = shade_smooth
+
+    tree.og = mesh
+
 
 
     
