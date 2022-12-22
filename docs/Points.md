@@ -46,7 +46,6 @@ with gn.Tree("Test") as tree:
     mesh = gn.Mesh.IcoSphere(subdivisions=1)
     
     # Let's distribute the points
-    
     points, _, _ = mesh.faces.distribute_points_random(density=density)
     
     tree.og = points
