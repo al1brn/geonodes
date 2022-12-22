@@ -1,6 +1,15 @@
 
 # Class Vertex
 
+**Vertex** is a [Domain](Domain.md) belonging to [Mesh](Mesh.md).
+- Node domain value: *'POINT'*
+- [Mesh](Mesh.md) property: `verts`
+
+
+
+Detai
+
+
 vertex: the point domain of meshes
 
 
