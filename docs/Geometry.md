@@ -48,7 +48,7 @@ with gn.Tree("Test") as tree:
     circle2 = gn.Curve.Circle().set_position(offset=(0, 0, -3))
     cube1   = gn.Mesh.Cube().set_position(offset=(0, 0, 2))
     cube2   = gn.Mesh.Cube().set_position(offset=(0, 0, 4))
-    volume = gn.Volume.Cube()
+    volume  = gn.Volume.Cube()
     
     # Global function
     
