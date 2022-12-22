@@ -26,6 +26,44 @@ with gn.Tree("Test") as tree:
     tree.og = tree.ig
 ```
 
+## Examples
+
+### Joining geometry
+
+Three syntaxes are possible to join geometries:
+- using the global function `join_geometry`
+- using the Geometry method `join` (the geometry instance is part of the joining)
+- using the operator `+`
+
+```python
+import geonodes as gn
+
+with gn.Tree("Test") as tree:
+    
+    # ----- Let's create some geometries
+    
+    circle = gn.Curve.Circle().set_position(offset=(0, 0, -2))
+    cube   = gn.Mesh.Cube().set_position(offset=(0, 0, 2))
+    volume = gn.Volume.Cube()
+    
+    # Global function
+    
+    geo = gn.join_geometry(circle, cube)
+    
+    # Geometry method
+    
+    geo.join(cube)
+    
+    # + operator
+    
+    geo = geo + volume
+    
+    # As a result
+    
+    tree.og = geo
+```
+
+
 
 
 
