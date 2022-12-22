@@ -14,7 +14,7 @@ A Mesh has four [domains](domain.md):
 
 A Mesh can be initialized:
 - by typecasting another geometry
-- or by using a constructor
+- or by using a constructor such as `Cube`, `Line`, `IcoSphere`, `UVSphere`
 
 ```python
 import geonodes as gn
