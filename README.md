@@ -91,7 +91,7 @@ import geonodes as gn
 
 ## Documentation
 
-Uses [index](structure.md) to gain access to the list of availables classes.
+Uses [index](docs/structure.md) to gain access to the list of availables classes.
 
 ## Scripting geometry
 
