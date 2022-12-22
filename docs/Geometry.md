@@ -40,19 +40,23 @@ import geonodes as gn
 
 with gn.Tree("Test") as tree:
     
+    in_geo = tree.ig
+    
     # ----- Let's create some geometries
     
-    circle = gn.Curve.Circle().set_position(offset=(0, 0, -2))
-    cube   = gn.Mesh.Cube().set_position(offset=(0, 0, 2))
+    circle1 = gn.Curve.Circle().set_position(offset=(0, 0, -2))
+    circle2 = gn.Curve.Circle().set_position(offset=(0, 0, -3))
+    cube1   = gn.Mesh.Cube().set_position(offset=(0, 0, 2))
+    cube2   = gn.Mesh.Cube().set_position(offset=(0, 0, 4))
     volume = gn.Volume.Cube()
     
     # Global function
     
-    geo = gn.join_geometry(circle, cube)
+    geo = gn.join_geometry(in_geo, circle1, circle2)
     
     # Geometry method
     
-    geo.join(cube)
+    geo.join(cube1, cube2)
     
     # + operator
     
