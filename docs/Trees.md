@@ -60,13 +60,22 @@ my_group = gn.Trees("SUB")
 
 with gn.Tree("Add two values", group=True, prefix = my_group) as tree:
     
+    # Two input sockets
+    # The snake case version of their name with be used as keys of kwargs
+    
     a = gn.Float.Input(0, "A")
     b = gn.Float.Input(0, "B")
+    
+    # One output socket
+    # The snake case version will be used to get the result from the node
     
     (a + b).to_output("Sum")
     
 with gn.Tree("Multiply two values", group=True, prefix = my_group) as tree:
     
+    # Two input sockets
+    # The snake case version of their name with be used as keys of kwargs
+
     a = gn.Float.Input(0, "A")
     b = gn.Float.Input(0, "B")
     
@@ -75,9 +84,19 @@ with gn.Tree("Multiply two values", group=True, prefix = my_group) as tree:
 with gn.Tree("A Tree for modifier") as tree:
     
     cube = gn.Mesh.Cube()
+    
+    # Some stupid computations !
+    
     pos = cube.verts.position
+    
+    # Call the tree Node "SUB Add two values" with values for both sockets
+    # Get the result form the Sum socket
     a = my_group.add_two_values(a=pos.x, b=pos.y).sum
+
+    # Call the tree Node "SUB Multiply two values" with values for both sockets
+    # Get the result form the Sum socket
     b = my_group.multiply_two_values(a=pos.x, b=pos.y).product
+    
     pos.x = a + b
     
     cube.verts[0].position = pos
