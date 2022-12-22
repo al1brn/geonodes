@@ -1,6 +1,6 @@
 # class Volume
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 
 ## Class methods
@@ -35,7 +35,7 @@ def Cube(cls, density=None, background=None, min=None, max=None, resolution_x=No
 #### Returns:
 - socket `volume`
 
-<sub>Go to [top](#class-Volume) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Volume) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## distribute_points
 
@@ -55,7 +55,7 @@ def distribute_points(self, density=None, seed=None, spacing=None, threshold=Non
 #### Returns:
 - socket `points` of class Points
 
-<sub>Go to [top](#class-Volume) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Volume) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## distribute_points_grid
 
@@ -72,7 +72,7 @@ def distribute_points_grid(self, spacing=None, threshold=None):
 #### Returns:
 - socket `points` of class Points
 
-<sub>Go to [top](#class-Volume) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Volume) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## distribute_points_random
 
@@ -89,7 +89,7 @@ def distribute_points_random(self, density=None, seed=None):
 #### Returns:
 - socket `points` of class Points
 
-<sub>Go to [top](#class-Volume) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Volume) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## to_mesh
 
@@ -109,5 +109,5 @@ def to_mesh(self, voxel_size=None, voxel_amount=None, threshold=None, adaptivity
 #### Returns:
 - socket `mesh` of class Mesh
 
-<sub>Go to [top](#class-Volume) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Volume) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

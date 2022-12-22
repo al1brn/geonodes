@@ -1,6 +1,6 @@
 # Node *Offset Corner in Face*
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh_topology/offset_corner_in_face.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeOffsetCornerInFace.html)
@@ -35,5 +35,5 @@ node = nodes.OffsetCornerInFace(corner_index=None, offset=None)
 | **[Mesh](Mesh.md)** |
 | [offset_corner_in_face](Mesh.md#offset_corner_in_face) | `def offset_corner_in_face(self, corner_index=None, offset=None):` |
 
-<sub>Go to [top](#node-Offset-Corner-in-Face) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Offset-Corner-in-Face) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

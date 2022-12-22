@@ -1,6 +1,6 @@
 # Node *Math*
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
@@ -206,5 +206,5 @@ node = nodes.Math(value0=None, value1=None, value2=None, operation='ADD', use_cl
 | [to_radians](Integer.md#to_radians) | `def to_radians(self, clamp=False):` |
 | [to_degrees](Integer.md#to_degrees) | `def to_degrees(self, clamp=False):` |
 
-<sub>Go to [top](#node-Math) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Math) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

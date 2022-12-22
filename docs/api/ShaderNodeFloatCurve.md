@@ -1,6 +1,6 @@
 # Node *Float Curve*
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/float_curve.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeFloatCurve.html)
@@ -33,5 +33,5 @@ node = nodes.FloatCurve(factor=None, value=None)
 | **[Float](Float.md)** |
 | [float_curve](Float.md#float_curve) | `def float_curve(self, factor=None):` |
 
-<sub>Go to [top](#node-Float-Curve) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Float-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

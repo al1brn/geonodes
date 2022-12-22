@@ -1,6 +1,6 @@
 # Node *Points to Vertices*
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/point/points_to_vertices.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodePointsToVertices.html)
@@ -35,5 +35,5 @@ node = nodes.PointsToVertices(points=None, selection=None)
 | **[Points](Points.md)** |
 | [to_vertices](Points.md#to_vertices) | `def to_vertices(self, points=None, selection=None):` |
 
-<sub>Go to [top](#node-Points-to-Vertices) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Points-to-Vertices) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

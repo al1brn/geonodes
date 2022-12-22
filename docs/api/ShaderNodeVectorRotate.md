@@ -1,6 +1,6 @@
 # Node *Vector Rotate*
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_rotate.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorRotate.html)
@@ -45,5 +45,5 @@ node = nodes.VectorRotate(vector=None, center=None, axis=None, angle=None, rotat
 | [rotate_y](Vector.md#rotate_y) | `def rotate_y(self, center=None, angle=None, invert=False):` |
 | [rotate_z](Vector.md#rotate_z) | `def rotate_z(self, center=None, angle=None, invert=False):` |
 
-<sub>Go to [top](#node-Vector-Rotate) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Vector-Rotate) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

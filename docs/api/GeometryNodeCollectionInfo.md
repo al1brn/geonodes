@@ -1,6 +1,6 @@
 # Node *Collection Info*
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/collection_info.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeCollectionInfo.html)
@@ -38,5 +38,5 @@ node = nodes.CollectionInfo(collection=None, separate_children=None, reset_child
 | **[Geometry](Geometry.md)** |
 | [Collection](Geometry.md#Collection-classmethod) | `@classmethod`<br> `def Collection(cls, collection=None, separate_children=None, reset_children=None, transform_space='ORIGINAL'):` |
 
-<sub>Go to [top](#node-Collection-Info) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Collection-Info) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

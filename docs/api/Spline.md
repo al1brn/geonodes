@@ -1,6 +1,6 @@
 # class Spline
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 ## Properties
 
@@ -41,7 +41,7 @@ def count(self, geometry=None):
 #### Returns:
 - socket `spline_count`
 
-<sub>Go to [top](#class-Spline) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Spline) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## cyclic <sub>*property*</sub>
 
@@ -54,7 +54,7 @@ def cyclic(self):
 #### Returns:
 - socket `cyclic`
 
-<sub>Go to [top](#class-Spline) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Spline) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## cyclic <sub>*etter*</sub>
 
@@ -70,7 +70,7 @@ Node implemented as property setter.
 - attr_value: cyclic
 
 
-<sub>Go to [top](#class-Spline) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Spline) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## delete
 
@@ -86,7 +86,7 @@ def delete(self, mode='ALL'):
 #### Returns:
 - self
 
-<sub>Go to [top](#class-Spline) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Spline) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## duplicate
 
@@ -102,7 +102,7 @@ def duplicate(self, amount=None):
 #### Returns:
 - socket `duplicate_index`
 
-<sub>Go to [top](#class-Spline) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Spline) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## length <sub>*property*</sub>
 
@@ -117,7 +117,7 @@ def length(self):
 #### Returns:
 - tuple ('`length`', '`point_count`')
 
-<sub>Go to [top](#class-Spline) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Spline) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## material <sub>*property*</sub>
 
@@ -131,7 +131,7 @@ def material(self):
 Raise an exception if attempt to read.
 
 
-<sub>Go to [top](#class-Spline) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Spline) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## material <sub>*etter*</sub>
 
@@ -147,7 +147,7 @@ Node implemented as property setter.
 - attr_value: material
 
 
-<sub>Go to [top](#class-Spline) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Spline) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## normal <sub>*property*</sub>
 
@@ -160,7 +160,7 @@ def normal(self):
 #### Returns:
 - socket `normal`
 
-<sub>Go to [top](#class-Spline) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Spline) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## normal <sub>*etter*</sub>
 
@@ -176,7 +176,7 @@ Node implemented as property setter.
 - attr_value: mode
 
 
-<sub>Go to [top](#class-Spline) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Spline) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## points
 
@@ -195,7 +195,7 @@ def points(self, weights=None, sort_index=None):
 #### Returns:
 - tuple ('`point_index`', '`total`')
 
-<sub>Go to [top](#class-Spline) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Spline) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## resample
 
@@ -213,7 +213,7 @@ def resample(self, count=None, length=None, mode='COUNT'):
 #### Returns:
 - self
 
-<sub>Go to [top](#class-Spline) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Spline) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## resample_count
 
@@ -229,7 +229,7 @@ def resample_count(self, count=None):
 #### Returns:
 - self
 
-<sub>Go to [top](#class-Spline) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Spline) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## resample_evaluated
 
@@ -242,7 +242,7 @@ def resample_evaluated(self):
 #### Returns:
 - self
 
-<sub>Go to [top](#class-Spline) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Spline) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## resample_length
 
@@ -258,7 +258,7 @@ def resample_length(self, length=None):
 #### Returns:
 - self
 
-<sub>Go to [top](#class-Spline) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Spline) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## resolution <sub>*property*</sub>
 
@@ -271,7 +271,7 @@ def resolution(self):
 #### Returns:
 - socket `resolution`
 
-<sub>Go to [top](#class-Spline) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Spline) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## resolution <sub>*etter*</sub>
 
@@ -287,7 +287,7 @@ Node implemented as property setter.
 - attr_value: resolution
 
 
-<sub>Go to [top](#class-Spline) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Spline) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## separate
 
@@ -305,7 +305,7 @@ def separate(self, geometry=None):
 #### Returns:
 - tuple ('`selection`', '`inverted`')
 
-<sub>Go to [top](#class-Spline) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Spline) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## set_cyclic
 
@@ -321,7 +321,7 @@ def set_cyclic(self, cyclic=None):
 #### Returns:
 - self
 
-<sub>Go to [top](#class-Spline) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Spline) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## set_material
 
@@ -337,7 +337,7 @@ def set_material(self, material=None):
 #### Returns:
 - self
 
-<sub>Go to [top](#class-Spline) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Spline) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## set_normal
 
@@ -353,7 +353,7 @@ def set_normal(self, mode='MINIMUM_TWIST'):
 #### Returns:
 - self
 
-<sub>Go to [top](#class-Spline) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Spline) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## set_resolution
 
@@ -369,7 +369,7 @@ def set_resolution(self, resolution=None):
 #### Returns:
 - self
 
-<sub>Go to [top](#class-Spline) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Spline) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## set_type
 
@@ -385,7 +385,7 @@ def set_type(self, spline_type='POLY'):
 #### Returns:
 - self
 
-<sub>Go to [top](#class-Spline) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Spline) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## type <sub>*property*</sub>
 
@@ -399,7 +399,7 @@ def type(self):
 Raise an exception if attempt to read.
 
 
-<sub>Go to [top](#class-Spline) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Spline) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## type <sub>*etter*</sub>
 
@@ -415,5 +415,5 @@ Node implemented as property setter.
 - attr_value: spline_type
 
 
-<sub>Go to [top](#class-Spline) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Spline) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

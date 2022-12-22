@@ -1,6 +1,6 @@
 # Node *Set Material Index*
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/set_material_index.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetMaterialIndex.html)
@@ -36,5 +36,5 @@ node = nodes.SetMaterialIndex(geometry=None, selection=None, material_index=None
 | **[Geometry](Geometry.md)** |
 | [set_material_index](Geometry.md#set_material_index) | `def set_material_index(self, selection=None, material_index=None):` |
 
-<sub>Go to [top](#node-Set-Material-Index) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Set-Material-Index) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

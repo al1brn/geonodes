@@ -1,6 +1,6 @@
 # Node *Edge Paths to Curves*
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/edge_paths_to_curves.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeEdgePathsToCurves.html)
@@ -36,5 +36,5 @@ node = nodes.EdgePathsToCurves(mesh=None, start_vertices=None, next_vertex_index
 | **[Mesh](Mesh.md)** |
 | [edge_paths_to_curves](Mesh.md#edge_paths_to_curves) | `def edge_paths_to_curves(self, start_vertices=None, next_vertex_index=None):` |
 
-<sub>Go to [top](#node-Edge-Paths-to-Curves) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Edge-Paths-to-Curves) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

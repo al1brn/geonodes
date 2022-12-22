@@ -1,6 +1,6 @@
 # Node *Geometry Proximity*
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/geometry_proximity.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeProximity.html)
@@ -51,5 +51,5 @@ node = nodes.GeometryProximity(target=None, source_position=None, target_element
 | **[Vertex](Vertex.md)** |
 | [proximity](Vertex.md#proximity) | `def proximity(self, target=None, source_position=None):` |
 
-<sub>Go to [top](#node-Geometry-Proximity) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Geometry-Proximity) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

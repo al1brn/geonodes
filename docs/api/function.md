@@ -1,6 +1,6 @@
 # Functions
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 
 
@@ -142,7 +142,7 @@ def abs(value=None, clamp=False):
 #### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-function) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## absolute
 
@@ -159,7 +159,7 @@ def absolute(value=None, clamp=False):
 #### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-function) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## align_euler_to_vector
 
@@ -179,7 +179,7 @@ def align_euler_to_vector(rotation=None, factor=None, vector=None, axis='X', piv
 #### Returns:
 - socket `rotation`
 
-<sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-function) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## arccos
 
@@ -196,7 +196,7 @@ def arccos(value=None, clamp=False):
 #### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-function) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## arccosine
 
@@ -213,7 +213,7 @@ def arccosine(value=None, clamp=False):
 #### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-function) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## arcsin
 
@@ -230,7 +230,7 @@ def arcsin(value=None, clamp=False):
 #### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-function) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## arcsine
 
@@ -247,7 +247,7 @@ def arcsine(value=None, clamp=False):
 #### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-function) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## arctan
 
@@ -264,7 +264,7 @@ def arctan(value=None, clamp=False):
 #### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-function) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## arctan2
 
@@ -282,7 +282,7 @@ def arctan2(value0=None, value1=None, clamp=False):
 #### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-function) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## arctangent
 
@@ -299,7 +299,7 @@ def arctangent(value=None, clamp=False):
 #### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-function) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## b_and
 
@@ -316,7 +316,7 @@ def b_and(boolean0=None, boolean1=None):
 #### Returns:
 - socket `boolean`
 
-<sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-function) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## b_not
 
@@ -332,7 +332,7 @@ def b_not(boolean0=None):
 #### Returns:
 - socket `boolean`
 
-<sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-function) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## b_or
 
@@ -349,7 +349,7 @@ def b_or(boolean0=None, boolean1=None):
 #### Returns:
 - socket `boolean`
 
-<sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-function) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## clamp
 
@@ -368,7 +368,7 @@ def clamp(value=None, min=None, max=None, clamp_type='MINMAX'):
 #### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-function) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## clamp_min_max
 
@@ -386,7 +386,7 @@ def clamp_min_max(value=None, min=None, max=None):
 #### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-function) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## clamp_range
 
@@ -404,7 +404,7 @@ def clamp_range(value=None, min=None, max=None):
 #### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-function) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## color_add
 
@@ -424,7 +424,7 @@ def color_add(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False
 #### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-function) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## color_burn
 
@@ -444,7 +444,7 @@ def color_burn(factor=None, a=None, b=None, clamp_factor=True, clamp_result=Fals
 #### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-function) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## color_color
 
@@ -464,7 +464,7 @@ def color_color(factor=None, a=None, b=None, clamp_factor=True, clamp_result=Fal
 #### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-function) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## color_darken
 
@@ -484,7 +484,7 @@ def color_darken(factor=None, a=None, b=None, clamp_factor=True, clamp_result=Fa
 #### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-function) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## color_difference
 
@@ -504,7 +504,7 @@ def color_difference(factor=None, a=None, b=None, clamp_factor=True, clamp_resul
 #### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-function) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## color_divide
 
@@ -524,7 +524,7 @@ def color_divide(factor=None, a=None, b=None, clamp_factor=True, clamp_result=Fa
 #### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-function) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## color_dodge
 
@@ -544,7 +544,7 @@ def color_dodge(factor=None, a=None, b=None, clamp_factor=True, clamp_result=Fal
 #### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-function) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## color_hue
 
@@ -564,7 +564,7 @@ def color_hue(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False
 #### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-function) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## color_lighten
 
@@ -584,7 +584,7 @@ def color_lighten(factor=None, a=None, b=None, clamp_factor=True, clamp_result=F
 #### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-function) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## color_linear_light
 
@@ -604,7 +604,7 @@ def color_linear_light(factor=None, a=None, b=None, clamp_factor=True, clamp_res
 #### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-function) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## color_mix
 
@@ -625,7 +625,7 @@ def color_mix(factor=None, a=None, b=None, blend_type='MIX', clamp_factor=True, 
 #### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-function) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## color_multiply
 
@@ -645,7 +645,7 @@ def color_multiply(factor=None, a=None, b=None, clamp_factor=True, clamp_result=
 #### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-function) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## color_overlay
 
@@ -665,7 +665,7 @@ def color_overlay(factor=None, a=None, b=None, clamp_factor=True, clamp_result=F
 #### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-function) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## color_ramp
 
@@ -681,7 +681,7 @@ def color_ramp(fac=None):
 #### Returns:
 - node with sockets ['color', 'alpha']
 
-<sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-function) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## color_saturation
 
@@ -701,7 +701,7 @@ def color_saturation(factor=None, a=None, b=None, clamp_factor=True, clamp_resul
 #### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-function) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## color_screen
 
@@ -721,7 +721,7 @@ def color_screen(factor=None, a=None, b=None, clamp_factor=True, clamp_result=Fa
 #### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-function) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## color_soft_light
 
@@ -741,7 +741,7 @@ def color_soft_light(factor=None, a=None, b=None, clamp_factor=True, clamp_resul
 #### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-function) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## color_subtract
 
@@ -761,7 +761,7 @@ def color_subtract(factor=None, a=None, b=None, clamp_factor=True, clamp_result=
 #### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-function) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## color_value
 
@@ -781,7 +781,7 @@ def color_value(factor=None, a=None, b=None, clamp_factor=True, clamp_result=Fal
 #### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-function) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## combine_hsl
 
@@ -800,7 +800,7 @@ def combine_hsl(hue=None, saturation=None, lightness=None, alpha=None):
 #### Returns:
 - socket `color`
 
-<sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-function) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## combine_hsv
 
@@ -819,7 +819,7 @@ def combine_hsv(hue=None, saturation=None, value=None, alpha=None):
 #### Returns:
 - socket `color`
 
-<sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-function) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## combine_rgb
 
@@ -838,7 +838,7 @@ def combine_rgb(red=None, green=None, blue=None, alpha=None):
 #### Returns:
 - socket `color`
 
-<sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-function) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## compare
 
@@ -861,7 +861,7 @@ def compare(a=None, b=None, c=None, angle=None, epsilon=None, data_type='FLOAT',
 #### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-function) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## cos
 
@@ -878,7 +878,7 @@ def cos(value=None, clamp=False):
 #### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-function) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## cosh
 
@@ -895,7 +895,7 @@ def cosh(value=None, clamp=False):
 #### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-function) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## cosine
 
@@ -912,7 +912,7 @@ def cosine(value=None, clamp=False):
 #### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-function) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## exp
 
@@ -929,7 +929,7 @@ def exp(value=None, clamp=False):
 #### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-function) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## exponent
 
@@ -946,7 +946,7 @@ def exponent(value=None, clamp=False):
 #### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-function) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## float_mix
 
@@ -965,7 +965,7 @@ def float_mix(factor=None, a=None, b=None, clamp_factor=True):
 #### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-function) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## fraction
 
@@ -982,7 +982,7 @@ def fraction(value=None, clamp=False):
 #### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-function) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## geometry_to_instance
 
@@ -998,7 +998,7 @@ def geometry_to_instance(*geometry):
 #### Returns:
 - socket `instances` of class Instances
 
-<sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-function) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## imply
 
@@ -1015,7 +1015,7 @@ def imply(boolean0=None, boolean1=None):
 #### Returns:
 - socket `boolean`
 
-<sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-function) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## inverse_sqrt
 
@@ -1032,7 +1032,7 @@ def inverse_sqrt(value=None, clamp=False):
 #### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-function) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## join_geometry
 
@@ -1048,7 +1048,7 @@ def join_geometry(*geometry):
 #### Returns:
 - socket `geometry`
 
-<sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-function) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## join_strings
 
@@ -1065,7 +1065,7 @@ def join_strings(*strings, delimiter=None):
 #### Returns:
 - socket `string`
 
-<sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-function) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## log
 
@@ -1083,7 +1083,7 @@ def log(value=None, base=None, clamp=False):
 #### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-function) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## logarithm
 
@@ -1101,7 +1101,7 @@ def logarithm(value=None, base=None, clamp=False):
 #### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-function) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## math
 
@@ -1121,7 +1121,7 @@ def math(value0=None, value1=None, value2=None, operation='ADD', clamp=False):
 #### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-function) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## math_ceil
 
@@ -1138,7 +1138,7 @@ def math_ceil(value=None, clamp=False):
 #### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-function) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## math_compare
 
@@ -1157,7 +1157,7 @@ def math_compare(value0=None, value1=None, epsilon=None, clamp=False):
 #### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-function) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## math_floor
 
@@ -1174,7 +1174,7 @@ def math_floor(value=None, clamp=False):
 #### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-function) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## math_greater_than
 
@@ -1192,7 +1192,7 @@ def math_greater_than(value=None, threshold=None, clamp=False):
 #### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-function) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## math_less_than
 
@@ -1210,7 +1210,7 @@ def math_less_than(value=None, threshold=None, clamp=False):
 #### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-function) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## math_round
 
@@ -1227,7 +1227,7 @@ def math_round(value=None, clamp=False):
 #### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-function) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## math_trun
 
@@ -1244,7 +1244,7 @@ def math_trun(value=None, clamp=False):
 #### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-function) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## math_truncate
 
@@ -1261,7 +1261,7 @@ def math_truncate(value=None, clamp=False):
 #### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-function) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## max
 
@@ -1279,7 +1279,7 @@ def max(value0=None, value1=None, clamp=False):
 #### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-function) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## maximum
 
@@ -1297,7 +1297,7 @@ def maximum(value0=None, value1=None, clamp=False):
 #### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-function) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## min
 
@@ -1315,7 +1315,7 @@ def min(value0=None, value1=None, clamp=False):
 #### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-function) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## minimum
 
@@ -1333,7 +1333,7 @@ def minimum(value0=None, value1=None, clamp=False):
 #### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-function) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## modulo
 
@@ -1351,7 +1351,7 @@ def modulo(value0=None, value1=None, clamp=False):
 #### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-function) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## mul_add
 
@@ -1370,7 +1370,7 @@ def mul_add(value=None, multiplier=None, addend=None, clamp=False):
 #### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-function) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## multiply_add
 
@@ -1389,7 +1389,7 @@ def multiply_add(value=None, multiplier=None, addend=None, clamp=False):
 #### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-function) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## nand
 
@@ -1406,7 +1406,7 @@ def nand(boolean0=None, boolean1=None):
 #### Returns:
 - socket `boolean`
 
-<sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-function) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## nimply
 
@@ -1423,7 +1423,7 @@ def nimply(boolean0=None, boolean1=None):
 #### Returns:
 - socket `boolean`
 
-<sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-function) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## nor
 
@@ -1440,7 +1440,7 @@ def nor(boolean0=None, boolean1=None):
 #### Returns:
 - socket `boolean`
 
-<sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-function) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## ping_pong
 
@@ -1458,7 +1458,7 @@ def ping_pong(value=None, scale=None, clamp=False):
 #### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-function) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## power
 
@@ -1476,7 +1476,7 @@ def power(base=None, exponent=None, clamp=False):
 #### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-function) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## random_boolean
 
@@ -1494,7 +1494,7 @@ def random_boolean(probability=None, ID=None, seed=None):
 #### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-function) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## random_float
 
@@ -1513,7 +1513,7 @@ def random_float(min=None, max=None, ID=None, seed=None):
 #### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-function) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## random_integer
 
@@ -1532,7 +1532,7 @@ def random_integer(min=None, max=None, ID=None, seed=None):
 #### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-function) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## random_vector
 
@@ -1551,7 +1551,7 @@ def random_vector(min=None, max=None, ID=None, seed=None):
 #### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-function) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## replace_string
 
@@ -1569,7 +1569,7 @@ def replace_string(string=None, find=None, replace=None):
 #### Returns:
 - socket `string`
 
-<sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-function) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## rgb_curves
 
@@ -1586,7 +1586,7 @@ def rgb_curves(fac=None, color=None):
 #### Returns:
 - node with sockets ['color']
 
-<sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-function) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## rotate_axis_angle
 
@@ -1605,7 +1605,7 @@ def rotate_axis_angle(rotation=None, axis=None, angle=None, space='OBJECT'):
 #### Returns:
 - socket `rotation`
 
-<sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-function) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## rotate_euler
 
@@ -1623,7 +1623,7 @@ def rotate_euler(rotation=None, rotate_by=None, space='OBJECT'):
 #### Returns:
 - socket `rotation`
 
-<sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-function) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## separate_hsl
 
@@ -1641,7 +1641,7 @@ def separate_hsl(color=None):
 #### Returns:
 - tuple ('`red`', '`green`', '`blue`', '`alpha`')
 
-<sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-function) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## separate_hsv
 
@@ -1659,7 +1659,7 @@ def separate_hsv(color=None):
 #### Returns:
 - tuple ('`red`', '`green`', '`blue`', '`alpha`')
 
-<sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-function) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## separate_rgb
 
@@ -1677,7 +1677,7 @@ def separate_rgb(color=None):
 #### Returns:
 - tuple ('`red`', '`green`', '`blue`', '`alpha`')
 
-<sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-function) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## sign
 
@@ -1694,7 +1694,7 @@ def sign(value=None, clamp=False):
 #### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-function) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## sin
 
@@ -1711,7 +1711,7 @@ def sin(value=None, clamp=False):
 #### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-function) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## sine
 
@@ -1728,7 +1728,7 @@ def sine(value=None, clamp=False):
 #### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-function) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## sinh
 
@@ -1745,7 +1745,7 @@ def sinh(value=None, clamp=False):
 #### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-function) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## slice_string
 
@@ -1763,7 +1763,7 @@ def slice_string(string=None, position=None, length=None):
 #### Returns:
 - socket `string`
 
-<sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-function) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## smooth_maximum
 
@@ -1782,7 +1782,7 @@ def smooth_maximum(value0=None, value1=None, distance=None, clamp=False):
 #### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-function) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## smooth_minimum
 
@@ -1801,7 +1801,7 @@ def smooth_minimum(value0=None, value1=None, distance=None, clamp=False):
 #### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-function) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## snap
 
@@ -1819,7 +1819,7 @@ def snap(value=None, increment=None, clamp=False):
 #### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-function) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## sqrt
 
@@ -1836,7 +1836,7 @@ def sqrt(value=None, clamp=False):
 #### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-function) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## string_length
 
@@ -1852,7 +1852,7 @@ def string_length(string=None):
 #### Returns:
 - socket `length`
 
-<sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-function) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## string_to_curves
 
@@ -1880,7 +1880,7 @@ def string_to_curves(string=None, size=None, character_spacing=None, word_spacin
 #### Returns:
 - tuple ('`curve_instances`', '`line`', '`pivot_point`')
 
-<sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-function) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## switch
 
@@ -1899,7 +1899,7 @@ def switch(switch=None, false=None, true=None, input_type='GEOMETRY'):
 #### Returns:
 - socket `output`
 
-<sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-function) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## switch_boolean
 
@@ -1917,7 +1917,7 @@ def switch_boolean(switch=None, false=None, true=None):
 #### Returns:
 - socket `output`
 
-<sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-function) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## switch_collection
 
@@ -1935,7 +1935,7 @@ def switch_collection(switch=None, false=None, true=None):
 #### Returns:
 - socket `output`
 
-<sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-function) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## switch_color
 
@@ -1953,7 +1953,7 @@ def switch_color(switch=None, false=None, true=None):
 #### Returns:
 - socket `output`
 
-<sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-function) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## switch_float
 
@@ -1971,7 +1971,7 @@ def switch_float(switch=None, false=None, true=None):
 #### Returns:
 - socket `output`
 
-<sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-function) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## switch_geometry
 
@@ -1989,7 +1989,7 @@ def switch_geometry(switch=None, false=None, true=None):
 #### Returns:
 - socket `output`
 
-<sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-function) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## switch_image
 
@@ -2007,7 +2007,7 @@ def switch_image(switch=None, false=None, true=None):
 #### Returns:
 - socket `output`
 
-<sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-function) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## switch_integer
 
@@ -2025,7 +2025,7 @@ def switch_integer(switch=None, false=None, true=None):
 #### Returns:
 - socket `output`
 
-<sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-function) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## switch_material
 
@@ -2043,7 +2043,7 @@ def switch_material(switch=None, false=None, true=None):
 #### Returns:
 - socket `output`
 
-<sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-function) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## switch_object
 
@@ -2061,7 +2061,7 @@ def switch_object(switch=None, false=None, true=None):
 #### Returns:
 - socket `output`
 
-<sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-function) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## switch_string
 
@@ -2079,7 +2079,7 @@ def switch_string(switch=None, false=None, true=None):
 #### Returns:
 - socket `output`
 
-<sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-function) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## switch_texture
 
@@ -2097,7 +2097,7 @@ def switch_texture(switch=None, false=None, true=None):
 #### Returns:
 - socket `output`
 
-<sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-function) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## switch_vector
 
@@ -2115,7 +2115,7 @@ def switch_vector(switch=None, false=None, true=None):
 #### Returns:
 - socket `output`
 
-<sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-function) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## tan
 
@@ -2132,7 +2132,7 @@ def tan(value=None, clamp=False):
 #### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-function) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## tangent
 
@@ -2149,7 +2149,7 @@ def tangent(value=None, clamp=False):
 #### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-function) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## tanh
 
@@ -2166,7 +2166,7 @@ def tanh(value=None, clamp=False):
 #### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-function) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## to_degrees
 
@@ -2183,7 +2183,7 @@ def to_degrees(value=None, clamp=False):
 #### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-function) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## to_radians
 
@@ -2200,7 +2200,7 @@ def to_radians(value=None, clamp=False):
 #### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-function) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## value_to_string
 
@@ -2217,7 +2217,7 @@ def value_to_string(value=None, decimals=None):
 #### Returns:
 - socket `string`
 
-<sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-function) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## vector_mix
 
@@ -2237,7 +2237,7 @@ def vector_mix(factor=None, a=None, b=None, clamp_factor=True, factor_mode='UNIF
 #### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-function) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## wrap
 
@@ -2256,7 +2256,7 @@ def wrap(value=None, max=None, min=None, clamp=False):
 #### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-function) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## xnor
 
@@ -2273,7 +2273,7 @@ def xnor(boolean0=None, boolean1=None):
 #### Returns:
 - socket `boolean`
 
-<sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-function) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## xor
 
@@ -2290,5 +2290,5 @@ def xor(boolean0=None, boolean1=None):
 #### Returns:
 - socket `boolean`
 
-<sub>Go to [top](#class-function) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-function) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

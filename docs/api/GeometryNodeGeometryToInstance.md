@@ -1,6 +1,6 @@
 # Node *Geometry to Instance*
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/geometry_to_instance.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeGeometryToInstance.html)
@@ -34,5 +34,5 @@ node = nodes.GeometryToInstance(*geometry)
 | **[Geometry](Geometry.md)** |
 | [to_instance](Geometry.md#to_instance) | `def to_instance(*geometry):` |
 
-<sub>Go to [top](#node-Geometry-to-Instance) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Geometry-to-Instance) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

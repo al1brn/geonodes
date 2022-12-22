@@ -1,6 +1,6 @@
 # Node *Set Spline Resolution*
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/set_spline_resolution.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetSplineResolution.html)
@@ -36,5 +36,5 @@ node = nodes.SetSplineResolution(geometry=None, selection=None, resolution=None)
 | [resolution](Spline.md#resolution) | `@resolution.setter
 `<br> `def resolution(self, attr_value):` |
 
-<sub>Go to [top](#node-Set-Spline-Resolution) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Set-Spline-Resolution) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

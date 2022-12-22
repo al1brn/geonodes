@@ -1,6 +1,6 @@
 # class Face
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 ## Properties
 
@@ -55,7 +55,7 @@ def area(self):
 #### Returns:
 - node with sockets ['area']
 
-<sub>Go to [top](#class-Face) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Face) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## corners
 
@@ -74,7 +74,7 @@ def corners(self, weights=None, sort_index=None):
 #### Returns:
 - tuple ('`corner_index`', '`total`')
 
-<sub>Go to [top](#class-Face) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Face) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## corners_index
 
@@ -91,7 +91,7 @@ def corners_index(self, weights=None, sort_index=None):
 #### Returns:
 - socket `corner_index`
 
-<sub>Go to [top](#class-Face) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Face) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## corners_total
 
@@ -108,7 +108,7 @@ def corners_total(self, weights=None, sort_index=None):
 #### Returns:
 - socket `total`
 
-<sub>Go to [top](#class-Face) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Face) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## count <sub>*property*</sub>
 
@@ -121,7 +121,7 @@ def count(self, geometry=None):
 #### Returns:
 - socket `face_count`
 
-<sub>Go to [top](#class-Face) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Face) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## delete
 
@@ -137,7 +137,7 @@ def delete(self, mode='ALL'):
 #### Returns:
 - self
 
-<sub>Go to [top](#class-Face) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Face) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## delete_all
 
@@ -150,7 +150,7 @@ def delete_all(self):
 #### Returns:
 - self
 
-<sub>Go to [top](#class-Face) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Face) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## delete_edges
 
@@ -163,7 +163,7 @@ def delete_edges(self):
 #### Returns:
 - self
 
-<sub>Go to [top](#class-Face) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Face) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## delete_faces
 
@@ -176,7 +176,7 @@ def delete_faces(self):
 #### Returns:
 - self
 
-<sub>Go to [top](#class-Face) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Face) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## distribute_points_poisson
 
@@ -197,7 +197,7 @@ def distribute_points_poisson(self, distance_min=None, density_max=None, density
 #### Returns:
 - tuple ('`points`', '`normal`', '`rotation`')
 
-<sub>Go to [top](#class-Face) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Face) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## distribute_points_random
 
@@ -216,7 +216,7 @@ def distribute_points_random(self, density=None, seed=None):
 #### Returns:
 - tuple ('`points`', '`normal`', '`rotation`')
 
-<sub>Go to [top](#class-Face) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Face) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## duplicate
 
@@ -232,7 +232,7 @@ def duplicate(self, amount=None):
 #### Returns:
 - socket `duplicate_index`
 
-<sub>Go to [top](#class-Face) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Face) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## extrude
 
@@ -252,7 +252,7 @@ def extrude(self, offset=None, offset_scale=None, individual=None):
 #### Returns:
 - tuple ('`top`', '`side`')
 
-<sub>Go to [top](#class-Face) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Face) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## face_set_boundaries
 
@@ -265,7 +265,7 @@ def face_set_boundaries(self):
 #### Returns:
 - socket `boundary_edges`
 
-<sub>Go to [top](#class-Face) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Face) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## flip
 
@@ -278,7 +278,7 @@ def flip(self):
 #### Returns:
 - self
 
-<sub>Go to [top](#class-Face) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Face) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## is_planar
 
@@ -294,7 +294,7 @@ def is_planar(self, threshold=None):
 #### Returns:
 - socket `planar`
 
-<sub>Go to [top](#class-Face) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Face) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## island <sub>*property*</sub>
 
@@ -307,7 +307,7 @@ def island(self):
 #### Returns:
 - node with sockets ['island_index', 'island_count']
 
-<sub>Go to [top](#class-Face) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Face) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## island_count <sub>*property*</sub>
 
@@ -320,7 +320,7 @@ def island_count(self):
 #### Returns:
 - socket `island_count`
 
-<sub>Go to [top](#class-Face) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Face) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## island_index <sub>*property*</sub>
 
@@ -333,7 +333,7 @@ def island_index(self):
 #### Returns:
 - socket `island_index`
 
-<sub>Go to [top](#class-Face) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Face) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## material <sub>*property*</sub>
 
@@ -347,7 +347,7 @@ def material(self):
 Raise an exception if attempt to read.
 
 
-<sub>Go to [top](#class-Face) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Face) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## material <sub>*etter*</sub>
 
@@ -363,7 +363,7 @@ Node implemented as property setter.
 - attr_value: material
 
 
-<sub>Go to [top](#class-Face) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Face) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## neighbors <sub>*property*</sub>
 
@@ -376,7 +376,7 @@ def neighbors(self):
 #### Returns:
 - node with sockets ['vertex_count', 'face_count']
 
-<sub>Go to [top](#class-Face) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Face) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## neighbors_face_count <sub>*property*</sub>
 
@@ -389,7 +389,7 @@ def neighbors_face_count(self):
 #### Returns:
 - socket `face_count`
 
-<sub>Go to [top](#class-Face) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Face) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## neighbors_vertex_count <sub>*property*</sub>
 
@@ -402,7 +402,7 @@ def neighbors_vertex_count(self):
 #### Returns:
 - socket `vertex_count`
 
-<sub>Go to [top](#class-Face) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Face) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## pack_uv_islands
 
@@ -420,7 +420,7 @@ def pack_uv_islands(self, uv=None, margin=None, rotate=None):
 #### Returns:
 - socket `uv`
 
-<sub>Go to [top](#class-Face) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Face) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## proximity
 
@@ -437,7 +437,7 @@ def proximity(self, target=None, source_position=None):
 #### Returns:
 - socket `distance`
 
-<sub>Go to [top](#class-Face) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Face) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## sample_nearest
 
@@ -453,7 +453,7 @@ def sample_nearest(self, sample_position=None):
 #### Returns:
 - socket `index`
 
-<sub>Go to [top](#class-Face) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Face) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## scale_single_axis
 
@@ -471,7 +471,7 @@ def scale_single_axis(self, scale=None, center=None, axis=None):
 #### Returns:
 - self
 
-<sub>Go to [top](#class-Face) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Face) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## scale_uniform
 
@@ -488,7 +488,7 @@ def scale_uniform(self, scale=None, center=None):
 #### Returns:
 - self
 
-<sub>Go to [top](#class-Face) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Face) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## separate
 
@@ -506,7 +506,7 @@ def separate(self, geometry=None):
 #### Returns:
 - tuple ('`selection`', '`inverted`')
 
-<sub>Go to [top](#class-Face) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Face) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## set_material
 
@@ -522,7 +522,7 @@ def set_material(self, material=None):
 #### Returns:
 - self
 
-<sub>Go to [top](#class-Face) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Face) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## set_shade_smooth
 
@@ -538,7 +538,7 @@ def set_shade_smooth(self, shade_smooth=None):
 #### Returns:
 - self
 
-<sub>Go to [top](#class-Face) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Face) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## shade_smooth <sub>*property*</sub>
 
@@ -551,7 +551,7 @@ def shade_smooth(self):
 #### Returns:
 - socket `smooth`
 
-<sub>Go to [top](#class-Face) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Face) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## shade_smooth <sub>*etter*</sub>
 
@@ -567,7 +567,7 @@ Node implemented as property setter.
 - attr_value: shade_smooth
 
 
-<sub>Go to [top](#class-Face) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Face) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## triangulate
 
@@ -585,7 +585,7 @@ def triangulate(self, minimum_vertices=None, ngon_method='BEAUTY', quad_method='
 #### Returns:
 - self
 
-<sub>Go to [top](#class-Face) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Face) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## uv_unwrap
 
@@ -604,5 +604,5 @@ def uv_unwrap(self, seam=None, margin=None, fill_holes=None, method='ANGLE_BASED
 #### Returns:
 - socket `uv`
 
-<sub>Go to [top](#class-Face) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Face) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

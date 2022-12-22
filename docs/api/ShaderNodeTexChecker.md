@@ -1,6 +1,6 @@
 # Node *Checker Texture*
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/checker.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexChecker.html)
@@ -36,5 +36,5 @@ node = nodes.CheckerTexture(vector=None, color1=None, color2=None, scale=None)
 | **[Texture](Texture.md)** |
 | [checker](Texture.md#checker-staticmethod) | `@staticmethod`<br> `def checker(vector=None, color1=None, color2=None, scale=None):` |
 
-<sub>Go to [top](#node-Checker-Texture) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Checker-Texture) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

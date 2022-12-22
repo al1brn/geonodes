@@ -1,6 +1,6 @@
 # Node *Boolean*
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/boolean.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeInputBool.html)
@@ -32,5 +32,5 @@ node = nodes.Boolean(boolean=False)
 | **[Boolean](Boolean.md)** |
 | [Boolean](Boolean.md#Boolean-classmethod) | `@classmethod`<br> `def Boolean(cls, boolean=False):` |
 
-<sub>Go to [top](#node-Boolean) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Boolean) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

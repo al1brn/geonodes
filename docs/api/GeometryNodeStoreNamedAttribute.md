@@ -1,6 +1,6 @@
 # Node *Store Named Attribute*
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/store_named_attribute.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeStoreNamedAttribute.html)
@@ -56,5 +56,5 @@ node = nodes.StoreNamedAttribute(geometry=None, name=None, value=None, data_type
 | [set_named_vector](Geometry.md#set_named_vector) | `def set_named_vector(self, name=None, value=None, domain='POINT'):` |
 | [set_named_color](Geometry.md#set_named_color) | `def set_named_color(self, name=None, value=None, domain='POINT'):` |
 
-<sub>Go to [top](#node-Store-Named-Attribute) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Store-Named-Attribute) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

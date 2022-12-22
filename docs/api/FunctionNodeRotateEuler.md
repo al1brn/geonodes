@@ -1,6 +1,6 @@
 # Node *Rotate Euler*
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotate_euler.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeRotateEuler.html)
@@ -41,5 +41,5 @@ node = nodes.RotateEuler(rotation=None, rotate_by=None, axis=None, angle=None, s
 | [rotate_euler](A.md#rotate_euler) | `def rotate_euler(rotation=None, rotate_by=None, space='OBJECT'):` |
 | [rotate_axis_angle](A.md#rotate_axis_angle) | `def rotate_axis_angle(rotation=None, axis=None, angle=None, space='OBJECT'):` |
 
-<sub>Go to [top](#node-Rotate-Euler) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Rotate-Euler) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

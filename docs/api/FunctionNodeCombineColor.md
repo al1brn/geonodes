@@ -1,6 +1,6 @@
 # Node *Combine Color*
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/combine_color.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeCombineColor.html)
@@ -45,5 +45,5 @@ node = nodes.CombineColor(red=None, green=None, blue=None, alpha=None, mode='RGB
 | [HSV](Color.md#HSV-classmethod) | `@classmethod`<br> `def HSV(cls, hue=None, saturation=None, value=None, alpha=None):` |
 | [HSL](Color.md#HSL-classmethod) | `@classmethod`<br> `def HSL(cls, hue=None, saturation=None, lightness=None, alpha=None):` |
 
-<sub>Go to [top](#node-Combine-Color) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Combine-Color) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

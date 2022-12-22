@@ -1,6 +1,6 @@
 # Node *Integer*
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/integer.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeInputInt.html)
@@ -32,5 +32,5 @@ node = nodes.Integer(integer=0)
 | **[Integer](Integer.md)** |
 | [Integer](Integer.md#Integer-classmethod) | `@classmethod`<br> `def Integer(cls, integer=0):` |
 
-<sub>Go to [top](#node-Integer) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Integer) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

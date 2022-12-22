@@ -1,6 +1,6 @@
 # Node *Accumulate Field*
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/accumulate_field.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeAccumulateField.html)
@@ -45,5 +45,5 @@ node = nodes.AccumulateField(value=None, group_index=None, data_type='FLOAT', do
 | **[Domain](Domain.md)** |
 | [accumulate_field](Domain.md#accumulate_field) | `def accumulate_field(self, value=None, group_index=None):` |
 
-<sub>Go to [top](#node-Accumulate-Field) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Accumulate-Field) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

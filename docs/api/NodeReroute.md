@@ -1,6 +1,6 @@
 # Node *Reroute*
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/e.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.NodeReroute.html)
@@ -26,5 +26,5 @@ node = nodes.Reroute(input=None)
 - **output** : [Color](Color.md)
 
 
-<sub>Go to [top](#node-Reroute) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Reroute) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

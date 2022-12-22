@@ -1,6 +1,6 @@
 # Node *Vertex Neighbors*
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/vertex_neighbors.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshVertexNeighbors.html)
@@ -29,5 +29,5 @@ node = nodes.VertexNeighbors()
 | [neighbors_vertex_count](Vertex.md#neighbors_vertex_count-property) | `@property`<br> `def neighbors_vertex_count(self):` |
 | [neighbors_face_count](Vertex.md#neighbors_face_count-property) | `@property`<br> `def neighbors_face_count(self):` |
 
-<sub>Go to [top](#node-Vertex-Neighbors) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Vertex-Neighbors) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

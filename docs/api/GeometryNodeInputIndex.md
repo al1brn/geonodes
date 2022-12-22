@@ -1,6 +1,6 @@
 # Node *Index*
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/input_index.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputIndex.html)
@@ -29,5 +29,5 @@ node = nodes.Index()
 | **[Geometry](Geometry.md)** |
 | [index](Geometry.md#index-property) | `@property`<br> `def index(self):` |
 
-<sub>Go to [top](#node-Index) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Index) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

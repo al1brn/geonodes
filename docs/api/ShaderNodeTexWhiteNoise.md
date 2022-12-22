@@ -1,6 +1,6 @@
 # Node *White Noise Texture*
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/white_noise.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWhiteNoise.html)
@@ -42,5 +42,5 @@ node = nodes.WhiteNoiseTexture(vector=None, w=None, noise_dimensions='3D')
 | [white_noise_3D](Texture.md#white_noise_3D-staticmethod) | `@staticmethod`<br> `def white_noise_3D(vector=None):` |
 | [white_noise_4D](Texture.md#white_noise_4D-staticmethod) | `@staticmethod`<br> `def white_noise_4D(vector=None, w=None):` |
 
-<sub>Go to [top](#node-White-Noise-Texture) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-White-Noise-Texture) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

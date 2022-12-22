@@ -1,6 +1,6 @@
 # Node *Pack UV Islands*
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/uv/pack_uv_islands.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeUVPackIslands.html)
@@ -37,5 +37,5 @@ node = nodes.PackUvIslands(uv=None, selection=None, margin=None, rotate=None)
 | **[Mesh](Mesh.md)** |
 | [pack_uv_islands](Mesh.md#pack_uv_islands) | `def pack_uv_islands(self, uv=None, selection=None, margin=None, rotate=None):` |
 
-<sub>Go to [top](#node-Pack-UV-Islands) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Pack-UV-Islands) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

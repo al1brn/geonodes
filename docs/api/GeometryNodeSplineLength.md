@@ -1,6 +1,6 @@
 # Node *Spline Length*
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/spline_length.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSplineLength.html)
@@ -27,5 +27,5 @@ node = nodes.SplineLength()
 | **[Spline](Spline.md)** |
 | [length](Spline.md#length-property) | `@property`<br> `def length(self):` |
 
-<sub>Go to [top](#node-Spline-Length) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Spline-Length) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

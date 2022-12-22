@@ -1,6 +1,6 @@
 # class String
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 ## Properties
 
@@ -45,7 +45,7 @@ Even if homonyms are accepted, it is recommended to avoid to create to input soc
 #### Returns:
 - String
 
-<sub>Go to [top](#class-String) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-String) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## LineBreak <sub>*staticmethod*</sub>
 
@@ -58,7 +58,7 @@ def LineBreak():
 #### Returns:
 - socket `line_break`
 
-<sub>Go to [top](#class-String) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-String) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## String <sub>*classmethod*</sub>
 
@@ -74,7 +74,7 @@ def String(cls, string=''):
 #### Returns:
 - socket `string`
 
-<sub>Go to [top](#class-String) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-String) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## Tab <sub>*staticmethod*</sub>
 
@@ -87,7 +87,7 @@ def Tab():
 #### Returns:
 - socket `tab`
 
-<sub>Go to [top](#class-String) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-String) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## equal
 
@@ -103,7 +103,7 @@ def equal(self, b=None):
 #### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-String) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-String) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## join
 
@@ -120,7 +120,7 @@ def join(*strings, delimiter=None):
 #### Returns:
 - socket `string`
 
-<sub>Go to [top](#class-String) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-String) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## length <sub>*property*</sub>
 
@@ -133,7 +133,7 @@ def length(self):
 #### Returns:
 - socket `length`
 
-<sub>Go to [top](#class-String) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-String) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## not_equal
 
@@ -149,7 +149,7 @@ def not_equal(self, b=None):
 #### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-String) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-String) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## replace
 
@@ -166,7 +166,7 @@ def replace(self, find=None, replace=None):
 #### Returns:
 - socket `string`
 
-<sub>Go to [top](#class-String) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-String) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## slice
 
@@ -183,7 +183,7 @@ def slice(self, position=None, length=None):
 #### Returns:
 - socket `string`
 
-<sub>Go to [top](#class-String) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-String) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## switch
 
@@ -200,7 +200,7 @@ def switch(self, switch=None, true=None):
 #### Returns:
 - socket `output`
 
-<sub>Go to [top](#class-String) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-String) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## to_curves
 
@@ -228,5 +228,5 @@ def to_curves(self, string=None, size=None, character_spacing=None, word_spacing
 #### Returns:
 - tuple ('`curve_instances`', '`line`', '`pivot_point`')
 
-<sub>Go to [top](#class-String) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-String) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

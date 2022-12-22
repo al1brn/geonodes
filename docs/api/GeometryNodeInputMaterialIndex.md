@@ -1,6 +1,6 @@
 # Node *Material Index*
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/material_index.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMaterialIndex.html)
@@ -28,5 +28,5 @@ node = nodes.MaterialIndex()
 | **[Geometry](Geometry.md)** |
 | [material_index](Geometry.md#material_index-property) | `@property`<br> `def material_index(self):` |
 
-<sub>Go to [top](#node-Material-Index) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Material-Index) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

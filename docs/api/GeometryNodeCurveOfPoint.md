@@ -1,6 +1,6 @@
 # Node *Curve of Point*
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve_topology/curve_of_point.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveOfPoint.html)
@@ -35,5 +35,5 @@ node = nodes.CurveOfPoint(point_index=None)
 | **[Curve](Curve.md)** |
 | [curve_of_point](Curve.md#curve_of_point) | `def curve_of_point(self, point_index=None):` |
 
-<sub>Go to [top](#node-Curve-of-Point) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Curve-of-Point) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

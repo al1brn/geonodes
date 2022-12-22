@@ -1,6 +1,6 @@
 # Node *Domain Size*
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html)
@@ -71,5 +71,5 @@ node = nodes.DomainSize(geometry=None, component='MESH')
 | **[Vertex](Vertex.md)** |
 | [count](Vertex.md#count-property) | `@property`<br> `def count(self, geometry=None):` |
 
-<sub>Go to [top](#node-Domain-Size) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Domain-Size) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

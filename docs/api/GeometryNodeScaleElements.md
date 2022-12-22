@@ -1,6 +1,6 @@
 # Node *Scale Elements*
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/scale_elements.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeScaleElements.html)
@@ -49,5 +49,5 @@ node = nodes.ScaleElements(geometry=None, selection=None, scale=None, center=Non
 | [scale_uniform](Mesh.md#scale_uniform) | `def scale_uniform(self, selection=None, scale=None, center=None, domain='FACE'):` |
 | [scale_single_axis](Mesh.md#scale_single_axis) | `def scale_single_axis(self, selection=None, scale=None, center=None, axis=None, domain='FACE'):` |
 
-<sub>Go to [top](#node-Scale-Elements) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Scale-Elements) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

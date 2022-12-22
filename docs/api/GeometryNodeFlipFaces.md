@@ -1,6 +1,6 @@
 # Node *Flip Faces*
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/flip_faces.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeFlipFaces.html)
@@ -35,5 +35,5 @@ node = nodes.FlipFaces(mesh=None, selection=None)
 | **[Mesh](Mesh.md)** |
 | [flip_faces](Mesh.md#flip_faces) | `def flip_faces(self, selection=None):` |
 
-<sub>Go to [top](#node-Flip-Faces) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Flip-Faces) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

@@ -1,6 +1,6 @@
 # Node *Sample Nearest*
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/sample_nearest.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSampleNearest.html)
@@ -45,5 +45,5 @@ node = nodes.SampleNearest(geometry=None, sample_position=None, domain='POINT')
 | **[Vertex](Vertex.md)** |
 | [sample_nearest](Vertex.md#sample_nearest) | `def sample_nearest(self, sample_position=None):` |
 
-<sub>Go to [top](#node-Sample-Nearest) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Sample-Nearest) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

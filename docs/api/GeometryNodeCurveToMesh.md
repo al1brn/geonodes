@@ -1,6 +1,6 @@
 # Node *Curve to Mesh*
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/curve_to_mesh.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveToMesh.html)
@@ -34,5 +34,5 @@ node = nodes.CurveToMesh(curve=None, profile_curve=None, fill_caps=None)
 | **[Curve](Curve.md)** |
 | [to_mesh](Curve.md#to_mesh) | `def to_mesh(self, profile_curve=None, fill_caps=None):` |
 
-<sub>Go to [top](#node-Curve-to-Mesh) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Curve-to-Mesh) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

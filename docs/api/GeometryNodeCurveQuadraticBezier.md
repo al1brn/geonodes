@@ -1,6 +1,6 @@
 # Node *Quadratic Bezier*
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve_primitives/quadratic_bezier.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveQuadraticBezier.html)
@@ -35,5 +35,5 @@ node = nodes.QuadraticBezier(resolution=None, start=None, middle=None, end=None)
 | **[Curve](Curve.md)** |
 | [QuadraticBezier](Curve.md#QuadraticBezier-classmethod) | `@classmethod`<br> `def QuadraticBezier(cls, resolution=None, start=None, middle=None, end=None):` |
 
-<sub>Go to [top](#node-Quadratic-Bezier) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Quadratic-Bezier) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

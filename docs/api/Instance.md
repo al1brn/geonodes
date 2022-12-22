@@ -1,6 +1,6 @@
 # class Instance
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 ## Properties
 
@@ -31,7 +31,7 @@ def count(self, geometry=None):
 #### Returns:
 - socket `instance_count`
 
-<sub>Go to [top](#class-Instance) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Instance) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## delete
 
@@ -47,7 +47,7 @@ def delete(self, mode='ALL'):
 #### Returns:
 - self
 
-<sub>Go to [top](#class-Instance) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Instance) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## duplicate
 
@@ -63,7 +63,7 @@ def duplicate(self, amount=None):
 #### Returns:
 - socket `duplicate_index`
 
-<sub>Go to [top](#class-Instance) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Instance) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## rotate
 
@@ -81,7 +81,7 @@ def rotate(self, rotation=None, pivot_point=None, local_space=None):
 #### Returns:
 - self
 
-<sub>Go to [top](#class-Instance) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Instance) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## rotation <sub>*property*</sub>
 
@@ -94,7 +94,7 @@ def rotation(self):
 #### Returns:
 - socket `rotation`
 
-<sub>Go to [top](#class-Instance) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Instance) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## scale <sub>*property*</sub>
 
@@ -107,7 +107,7 @@ def scale(self):
 #### Returns:
 - socket `scale`
 
-<sub>Go to [top](#class-Instance) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Instance) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## separate
 
@@ -125,7 +125,7 @@ def separate(self, geometry=None):
 #### Returns:
 - tuple ('`selection`', '`inverted`')
 
-<sub>Go to [top](#class-Instance) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Instance) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## set_scale
 
@@ -143,7 +143,7 @@ def set_scale(self, scale=None, center=None, local_space=None):
 #### Returns:
 - self
 
-<sub>Go to [top](#class-Instance) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Instance) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## to_points
 
@@ -160,7 +160,7 @@ def to_points(self, position=None, radius=None):
 #### Returns:
 - socket `points` of class Points
 
-<sub>Go to [top](#class-Instance) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Instance) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## translate
 
@@ -177,5 +177,5 @@ def translate(self, translation=None, local_space=None):
 #### Returns:
 - self
 
-<sub>Go to [top](#class-Instance) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Instance) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

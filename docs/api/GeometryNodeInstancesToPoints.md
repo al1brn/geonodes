@@ -1,6 +1,6 @@
 # Node *Instances to Points*
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instances_to_points.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInstancesToPoints.html)
@@ -37,5 +37,5 @@ node = nodes.InstancesToPoints(instances=None, selection=None, position=None, ra
 | **[Instances](Instances.md)** |
 | [to_points](Instances.md#to_points) | `def to_points(self, selection=None, position=None, radius=None):` |
 
-<sub>Go to [top](#node-Instances-to-Points) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Instances-to-Points) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

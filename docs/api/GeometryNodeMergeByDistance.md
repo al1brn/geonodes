@@ -1,6 +1,6 @@
 # Node *Merge by Distance*
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/merge_by_distance.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeMergeByDistance.html)
@@ -40,5 +40,5 @@ node = nodes.MergeByDistance(geometry=None, selection=None, distance=None, mode=
 | **[Vertex](Vertex.md)** |
 | [merge_by_distance](Vertex.md#merge_by_distance) | `def merge_by_distance(self, distance=None, mode='ALL'):` |
 
-<sub>Go to [top](#node-Merge-by-Distance) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Merge-by-Distance) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

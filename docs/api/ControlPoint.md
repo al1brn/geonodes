@@ -1,6 +1,6 @@
 # class ControlPoint
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 ## Properties
 
@@ -53,7 +53,7 @@ def count(self, geometry=None):
 #### Returns:
 - socket `point_count`
 
-<sub>Go to [top](#class-ControlPoint) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-ControlPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## curve
 
@@ -68,7 +68,7 @@ def curve(self):
 #### Returns:
 - tuple ('`curve_index`', '`index_in_curve`')
 
-<sub>Go to [top](#class-ControlPoint) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-ControlPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## delete
 
@@ -84,7 +84,7 @@ def delete(self, mode='ALL'):
 #### Returns:
 - self
 
-<sub>Go to [top](#class-ControlPoint) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-ControlPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## duplicate
 
@@ -100,7 +100,7 @@ def duplicate(self, amount=None):
 #### Returns:
 - socket `duplicate_index`
 
-<sub>Go to [top](#class-ControlPoint) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-ControlPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## endpoint_selection
 
@@ -117,7 +117,7 @@ def endpoint_selection(self, start_size=None, end_size=None):
 #### Returns:
 - socket `selection`
 
-<sub>Go to [top](#class-ControlPoint) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-ControlPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## handle_positions
 
@@ -133,7 +133,7 @@ def handle_positions(self, relative=None):
 #### Returns:
 - node with sockets ['left', 'right']
 
-<sub>Go to [top](#class-ControlPoint) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-ControlPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## handle_type_selection
 
@@ -150,7 +150,7 @@ def handle_type_selection(self, left=True, right=True, handle_type='AUTO'):
 #### Returns:
 - node with sockets ['selection']
 
-<sub>Go to [top](#class-ControlPoint) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-ControlPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## handle_type_selection
 
@@ -167,7 +167,7 @@ def handle_type_selection_free(self, left=True, right=True):
 #### Returns:
 - node with sockets ['selection']
 
-<sub>Go to [top](#class-ControlPoint) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-ControlPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## handle_type_selection
 
@@ -184,7 +184,7 @@ def handle_type_selection_auto(self, left=True, right=True):
 #### Returns:
 - node with sockets ['selection']
 
-<sub>Go to [top](#class-ControlPoint) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-ControlPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## handle_type_selection
 
@@ -201,7 +201,7 @@ def handle_type_selection_vector(self, left=True, right=True):
 #### Returns:
 - node with sockets ['selection']
 
-<sub>Go to [top](#class-ControlPoint) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-ControlPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## handle_type_selection
 
@@ -218,7 +218,7 @@ def handle_type_selection_align(self, left=True, right=True):
 #### Returns:
 - node with sockets ['selection']
 
-<sub>Go to [top](#class-ControlPoint) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-ControlPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## handle_type_selection_node
 
@@ -235,7 +235,7 @@ def handle_type_selection_node(self, handle_type='AUTO', mode={'RIGHT', 'LEFT'})
 #### Returns:
 - socket `selection`
 
-<sub>Go to [top](#class-ControlPoint) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-ControlPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## instance_on_points
 
@@ -255,7 +255,7 @@ def instance_on_points(self, instance=None, pick_instance=None, instance_index=N
 #### Returns:
 - socket `instances` of class Instances
 
-<sub>Go to [top](#class-ControlPoint) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-ControlPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## left_handle_positions <sub>*property*</sub>
 
@@ -268,7 +268,7 @@ def left_handle_positions(self):
 #### Returns:
 - socket `left`
 
-<sub>Go to [top](#class-ControlPoint) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-ControlPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## left_handle_positions <sub>*etter*</sub>
 
@@ -284,7 +284,7 @@ Node implemented as property setter.
 - attr_value: position
 
 
-<sub>Go to [top](#class-ControlPoint) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-ControlPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## offset
 
@@ -302,7 +302,7 @@ def offset(self, offset=None):
 #### Returns:
 - tuple ('`is_valid_offset`', '`point_index`')
 
-<sub>Go to [top](#class-ControlPoint) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-ControlPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## parameter <sub>*property*</sub>
 
@@ -317,7 +317,7 @@ def parameter(self):
 #### Returns:
 - tuple ('`factor`', '`length`', '`index`')
 
-<sub>Go to [top](#class-ControlPoint) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-ControlPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## parameter_factor <sub>*property*</sub>
 
@@ -330,7 +330,7 @@ def parameter_factor(self):
 #### Returns:
 - socket `factor`
 
-<sub>Go to [top](#class-ControlPoint) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-ControlPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## parameter_index <sub>*property*</sub>
 
@@ -343,7 +343,7 @@ def parameter_index(self):
 #### Returns:
 - socket `index`
 
-<sub>Go to [top](#class-ControlPoint) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-ControlPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## parameter_length <sub>*property*</sub>
 
@@ -356,7 +356,7 @@ def parameter_length(self):
 #### Returns:
 - socket `length`
 
-<sub>Go to [top](#class-ControlPoint) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-ControlPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## proximity
 
@@ -373,7 +373,7 @@ def proximity(self, target=None, source_position=None):
 #### Returns:
 - socket `distance`
 
-<sub>Go to [top](#class-ControlPoint) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-ControlPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## radius <sub>*property*</sub>
 
@@ -386,7 +386,7 @@ def radius(self):
 #### Returns:
 - socket `radius`
 
-<sub>Go to [top](#class-ControlPoint) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-ControlPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## radius <sub>*etter*</sub>
 
@@ -402,7 +402,7 @@ Node implemented as property setter.
 - attr_value: radius
 
 
-<sub>Go to [top](#class-ControlPoint) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-ControlPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## right_handle_positions <sub>*property*</sub>
 
@@ -415,7 +415,7 @@ def right_handle_positions(self):
 #### Returns:
 - socket `right`
 
-<sub>Go to [top](#class-ControlPoint) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-ControlPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## right_handle_positions <sub>*etter*</sub>
 
@@ -431,7 +431,7 @@ Node implemented as property setter.
 - attr_value: position
 
 
-<sub>Go to [top](#class-ControlPoint) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-ControlPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## separate
 
@@ -449,7 +449,7 @@ def separate(self, geometry=None):
 #### Returns:
 - tuple ('`selection`', '`inverted`')
 
-<sub>Go to [top](#class-ControlPoint) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-ControlPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## set_handle_positions
 
@@ -467,7 +467,7 @@ def set_handle_positions(self, position=None, offset=None, mode='LEFT'):
 #### Returns:
 - self
 
-<sub>Go to [top](#class-ControlPoint) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-ControlPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## set_handle_positions_left
 
@@ -484,7 +484,7 @@ def set_handle_positions_left(self, position=None, offset=None):
 #### Returns:
 - self
 
-<sub>Go to [top](#class-ControlPoint) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-ControlPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## set_handle_positions_right
 
@@ -501,7 +501,7 @@ def set_handle_positions_right(self, position=None, offset=None):
 #### Returns:
 - self
 
-<sub>Go to [top](#class-ControlPoint) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-ControlPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## set_handle_type
 
@@ -520,7 +520,7 @@ def set_handle_type(self, left=True, right=True, handle_type='AUTO'):
 #### Returns:
 - node with sockets ['curve']
 
-<sub>Go to [top](#class-ControlPoint) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-ControlPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## set_handle_type_node
 
@@ -537,7 +537,7 @@ def set_handle_type_node(self, handle_type='AUTO', mode={'RIGHT', 'LEFT'}):
 #### Returns:
 - self
 
-<sub>Go to [top](#class-ControlPoint) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-ControlPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## set_radius
 
@@ -553,7 +553,7 @@ def set_radius(self, radius=None):
 #### Returns:
 - self
 
-<sub>Go to [top](#class-ControlPoint) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-ControlPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## set_tilt
 
@@ -569,7 +569,7 @@ def set_tilt(self, tilt=None):
 #### Returns:
 - self
 
-<sub>Go to [top](#class-ControlPoint) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-ControlPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## tangent <sub>*property*</sub>
 
@@ -582,7 +582,7 @@ def tangent(self):
 #### Returns:
 - socket `tangent`
 
-<sub>Go to [top](#class-ControlPoint) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-ControlPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## tilt <sub>*property*</sub>
 
@@ -595,7 +595,7 @@ def tilt(self):
 #### Returns:
 - socket `tilt`
 
-<sub>Go to [top](#class-ControlPoint) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-ControlPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## tilt <sub>*etter*</sub>
 
@@ -611,5 +611,5 @@ Node implemented as property setter.
 - attr_value: tilt
 
 
-<sub>Go to [top](#class-ControlPoint) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-ControlPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

@@ -1,6 +1,6 @@
 # class Boolean
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 
 ## Class methods
@@ -36,7 +36,7 @@ def Boolean(cls, boolean=False):
 #### Returns:
 - socket `boolean`
 
-<sub>Go to [top](#class-Boolean) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Boolean) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## Input <sub>*classmethod*</sub>
 
@@ -57,7 +57,7 @@ Even if homonyms are accepted, it is recommended to avoid to create to input soc
 #### Returns:
 - Boolean
 
-<sub>Go to [top](#class-Boolean) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Boolean) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## b_and
 
@@ -73,7 +73,7 @@ def b_and(self, boolean1=None):
 #### Returns:
 - socket `boolean`
 
-<sub>Go to [top](#class-Boolean) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Boolean) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## b_not
 
@@ -86,7 +86,7 @@ def b_not(self):
 #### Returns:
 - socket `boolean`
 
-<sub>Go to [top](#class-Boolean) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Boolean) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## b_or
 
@@ -102,7 +102,7 @@ def b_or(self, boolean1=None):
 #### Returns:
 - socket `boolean`
 
-<sub>Go to [top](#class-Boolean) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Boolean) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## imply
 
@@ -118,7 +118,7 @@ def imply(self, boolean1=None):
 #### Returns:
 - socket `boolean`
 
-<sub>Go to [top](#class-Boolean) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Boolean) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## nand
 
@@ -134,7 +134,7 @@ def nand(self, boolean1=None):
 #### Returns:
 - socket `boolean`
 
-<sub>Go to [top](#class-Boolean) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Boolean) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## nimply
 
@@ -150,7 +150,7 @@ def nimply(self, boolean1=None):
 #### Returns:
 - socket `boolean`
 
-<sub>Go to [top](#class-Boolean) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Boolean) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## nor
 
@@ -166,7 +166,7 @@ def nor(self, boolean1=None):
 #### Returns:
 - socket `boolean`
 
-<sub>Go to [top](#class-Boolean) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Boolean) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## switch
 
@@ -183,7 +183,7 @@ def switch(self, switch=None, true=None):
 #### Returns:
 - socket `output`
 
-<sub>Go to [top](#class-Boolean) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Boolean) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## xnor
 
@@ -199,7 +199,7 @@ def xnor(self, boolean1=None):
 #### Returns:
 - socket `boolean`
 
-<sub>Go to [top](#class-Boolean) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Boolean) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## xor
 
@@ -215,5 +215,5 @@ def xor(self, boolean1=None):
 #### Returns:
 - socket `boolean`
 
-<sub>Go to [top](#class-Boolean) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Boolean) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

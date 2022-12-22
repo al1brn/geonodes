@@ -1,6 +1,6 @@
 # Node *Mesh Boolean*
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/mesh_boolean.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshBoolean.html)
@@ -42,5 +42,5 @@ node = nodes.MeshBoolean(*mesh_2, mesh_1=None, self_intersection=None, hole_tole
 | [boolean_union](Mesh.md#boolean_union) | `def boolean_union(*mesh_2, self_intersection=None, hole_tolerant=None):` |
 | [boolean_difference](Mesh.md#boolean_difference) | `def boolean_difference(self, *mesh_2, self_intersection=None, hole_tolerant=None):` |
 
-<sub>Go to [top](#node-Mesh-Boolean) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Mesh-Boolean) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

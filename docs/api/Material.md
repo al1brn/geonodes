@@ -1,6 +1,6 @@
 # class Material
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 
 ## Class methods
@@ -31,7 +31,7 @@ The initial value can be either a valid Blender Material or the name of an exist
 #### Returns:
 - Material
 
-<sub>Go to [top](#class-Material) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Material) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## Material <sub>*classmethod*</sub>
 
@@ -44,7 +44,7 @@ def Material(cls):
 #### Returns:
 - socket `material`
 
-<sub>Go to [top](#class-Material) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Material) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## switch
 
@@ -61,5 +61,5 @@ def switch(self, switch=None, true=None):
 #### Returns:
 - socket `output`
 
-<sub>Go to [top](#class-Material) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Material) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

@@ -1,6 +1,6 @@
 # class Points
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 ## Properties
 
@@ -36,7 +36,7 @@ def Points(cls, count=None, position=None, radius=None):
 #### Returns:
 - socket `geometry`
 
-<sub>Go to [top](#class-Points) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Points) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## domain_size <sub>*property*</sub>
 
@@ -49,7 +49,7 @@ def domain_size(self):
 #### Returns:
 - socket `point_count`
 
-<sub>Go to [top](#class-Points) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Points) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## instance_on_points
 
@@ -70,7 +70,7 @@ def instance_on_points(self, selection=None, instance=None, pick_instance=None, 
 #### Returns:
 - socket `instances`
 
-<sub>Go to [top](#class-Points) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Points) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## set_point_radius
 
@@ -87,7 +87,7 @@ def set_point_radius(self, selection=None, radius=None):
 #### Returns:
 - self
 
-<sub>Go to [top](#class-Points) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Points) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## to_vertices
 
@@ -104,7 +104,7 @@ def to_vertices(self, points=None, selection=None):
 #### Returns:
 - socket `mesh` of class Mesh
 
-<sub>Go to [top](#class-Points) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Points) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## to_volume
 
@@ -124,7 +124,7 @@ def to_volume(self, density=None, voxel_size=None, voxel_amount=None, radius=Non
 #### Returns:
 - socket `volume` of class Volume
 
-<sub>Go to [top](#class-Points) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Points) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## to_volume_amount
 
@@ -142,7 +142,7 @@ def to_volume_amount(self, density=None, voxel_amount=None, radius=None):
 #### Returns:
 - socket `volume` of class Volume
 
-<sub>Go to [top](#class-Points) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Points) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## to_volume_size
 
@@ -160,5 +160,5 @@ def to_volume_size(self, density=None, voxel_size=None, radius=None):
 #### Returns:
 - socket `volume` of class Volume
 
-<sub>Go to [top](#class-Points) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Points) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

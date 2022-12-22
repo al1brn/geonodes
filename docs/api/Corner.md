@@ -1,6 +1,6 @@
 # class Corner
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 ## Properties
 
@@ -31,7 +31,7 @@ def count(self, geometry=None):
 #### Returns:
 - socket `face_corner_count`
 
-<sub>Go to [top](#class-Corner) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Corner) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## edges
 
@@ -46,7 +46,7 @@ def edges(self):
 #### Returns:
 - tuple ('`next_edge_index`', '`previous_edge_index`')
 
-<sub>Go to [top](#class-Corner) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Corner) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## face
 
@@ -61,7 +61,7 @@ def face(self):
 #### Returns:
 - tuple ('`face_index`', '`index_in_face`')
 
-<sub>Go to [top](#class-Corner) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Corner) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## face_index <sub>*property*</sub>
 
@@ -74,7 +74,7 @@ def face_index(self):
 #### Returns:
 - socket `face_index`
 
-<sub>Go to [top](#class-Corner) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Corner) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## index_in_face <sub>*property*</sub>
 
@@ -87,7 +87,7 @@ def index_in_face(self):
 #### Returns:
 - socket `index_in_face`
 
-<sub>Go to [top](#class-Corner) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Corner) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## next_vertex <sub>*property*</sub>
 
@@ -100,7 +100,7 @@ def next_vertex(self):
 #### Returns:
 - socket `next_edge_index`
 
-<sub>Go to [top](#class-Corner) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Corner) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## offset_in_face
 
@@ -116,7 +116,7 @@ def offset_in_face(self, offset=None):
 #### Returns:
 - socket `corner_index`
 
-<sub>Go to [top](#class-Corner) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Corner) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## previous_vertex <sub>*property*</sub>
 
@@ -129,7 +129,7 @@ def previous_vertex(self):
 #### Returns:
 - socket `previous_edge_index`
 
-<sub>Go to [top](#class-Corner) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Corner) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## sample_nearest
 
@@ -145,7 +145,7 @@ def sample_nearest(self, sample_position=None):
 #### Returns:
 - socket `index`
 
-<sub>Go to [top](#class-Corner) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Corner) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## vertex_index <sub>*property*</sub>
 
@@ -158,5 +158,5 @@ def vertex_index(self):
 #### Returns:
 - socket `vertex_index`
 
-<sub>Go to [top](#class-Corner) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Corner) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

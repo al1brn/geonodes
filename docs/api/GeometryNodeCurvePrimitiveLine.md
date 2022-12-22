@@ -1,6 +1,6 @@
 # Node *Curve Line*
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve_primitives/curve_line.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurvePrimitiveLine.html)
@@ -40,5 +40,5 @@ node = nodes.CurveLine(start=None, end=None, direction=None, length=None, mode='
 | [Line](Curve.md#Line-classmethod) | `@classmethod`<br> `def Line(cls, start=None, end=None):` |
 | [LineDirection](Curve.md#LineDirection-classmethod) | `@classmethod`<br> `def LineDirection(cls, start=None, direction=None, length=None):` |
 
-<sub>Go to [top](#node-Curve-Line) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Curve-Line) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

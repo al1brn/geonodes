@@ -1,6 +1,6 @@
 # Node *Compare*
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
@@ -103,5 +103,5 @@ node = nodes.Compare(a=None, b=None, c=None, angle=None, epsilon=None, data_type
 | [direction_equal](Vector.md#direction_equal) | `def direction_equal(self, b=None, angle=None, epsilon=None):` |
 | [direction_not_equal](Vector.md#direction_not_equal) | `def direction_not_equal(self, b=None, angle=None, epsilon=None):` |
 
-<sub>Go to [top](#node-Compare) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Compare) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

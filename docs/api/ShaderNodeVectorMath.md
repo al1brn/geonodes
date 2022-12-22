@@ -1,6 +1,6 @@
 # Node *Vector Math*
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
@@ -79,5 +79,5 @@ node = nodes.VectorMath(vector0=None, vector1=None, vector2=None, scale=None, op
 | [tangent](Vector.md#tangent) | `def tangent(self):` |
 | [tan](Vector.md#tan) | `def tan(self):` |
 
-<sub>Go to [top](#node-Vector-Math) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Vector-Math) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

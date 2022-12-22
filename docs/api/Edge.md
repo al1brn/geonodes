@@ -1,6 +1,6 @@
 # class Edge
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 ## Properties
 
@@ -43,7 +43,7 @@ def angle(self):
 #### Returns:
 - node with sockets ['unsigned_angle', 'signed_angle']
 
-<sub>Go to [top](#class-Edge) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Edge) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## count <sub>*property*</sub>
 
@@ -56,7 +56,7 @@ def count(self, geometry=None):
 #### Returns:
 - socket `edge_count`
 
-<sub>Go to [top](#class-Edge) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Edge) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## delete
 
@@ -72,7 +72,7 @@ def delete(self, mode='ALL'):
 #### Returns:
 - self
 
-<sub>Go to [top](#class-Edge) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Edge) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## delete_all
 
@@ -85,7 +85,7 @@ def delete_all(self):
 #### Returns:
 - self
 
-<sub>Go to [top](#class-Edge) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Edge) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## delete_edges
 
@@ -98,7 +98,7 @@ def delete_edges(self):
 #### Returns:
 - self
 
-<sub>Go to [top](#class-Edge) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Edge) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## delete_faces
 
@@ -111,7 +111,7 @@ def delete_faces(self):
 #### Returns:
 - self
 
-<sub>Go to [top](#class-Edge) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Edge) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## duplicate
 
@@ -127,7 +127,7 @@ def duplicate(self, amount=None):
 #### Returns:
 - socket `duplicate_index`
 
-<sub>Go to [top](#class-Edge) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Edge) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## edge_paths_to_curves
 
@@ -144,7 +144,7 @@ def edge_paths_to_curves(self, start_vertices=None, next_vertex_index=None):
 #### Returns:
 - socket `curves` of class Curve
 
-<sub>Go to [top](#class-Edge) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Edge) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## extrude
 
@@ -164,7 +164,7 @@ def extrude(self, offset=None, offset_scale=None, individual=None):
 #### Returns:
 - tuple ('`top`', '`side`')
 
-<sub>Go to [top](#class-Edge) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Edge) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## neighbors <sub>*property*</sub>
 
@@ -177,7 +177,7 @@ def neighbors(self):
 #### Returns:
 - socket `face_count`
 
-<sub>Go to [top](#class-Edge) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Edge) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## proximity
 
@@ -194,7 +194,7 @@ def proximity(self, target=None, source_position=None):
 #### Returns:
 - socket `distance`
 
-<sub>Go to [top](#class-Edge) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Edge) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## sample_nearest
 
@@ -210,7 +210,7 @@ def sample_nearest(self, sample_position=None):
 #### Returns:
 - socket `index`
 
-<sub>Go to [top](#class-Edge) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Edge) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## scale_single_axis
 
@@ -228,7 +228,7 @@ def scale_single_axis(self, scale=None, center=None, axis=None):
 #### Returns:
 - self
 
-<sub>Go to [top](#class-Edge) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Edge) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## scale_uniform
 
@@ -245,7 +245,7 @@ def scale_uniform(self, scale=None, center=None):
 #### Returns:
 - self
 
-<sub>Go to [top](#class-Edge) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Edge) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## separate
 
@@ -263,7 +263,7 @@ def separate(self, geometry=None):
 #### Returns:
 - tuple ('`selection`', '`inverted`')
 
-<sub>Go to [top](#class-Edge) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Edge) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## signed_angle <sub>*property*</sub>
 
@@ -276,7 +276,7 @@ def signed_angle(self):
 #### Returns:
 - socket `signed_angle`
 
-<sub>Go to [top](#class-Edge) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Edge) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## split
 
@@ -289,7 +289,7 @@ def split(self):
 #### Returns:
 - self
 
-<sub>Go to [top](#class-Edge) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Edge) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## to_curve
 
@@ -302,7 +302,7 @@ def to_curve(self):
 #### Returns:
 - socket `curve` of class Curve
 
-<sub>Go to [top](#class-Edge) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Edge) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## unsigned_angle <sub>*property*</sub>
 
@@ -315,7 +315,7 @@ def unsigned_angle(self):
 #### Returns:
 - socket `unsigned_angle`
 
-<sub>Go to [top](#class-Edge) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Edge) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## vertices <sub>*property*</sub>
 
@@ -328,7 +328,7 @@ def vertices(self):
 #### Returns:
 - node with sockets ['vertex_index_1', 'vertex_index_2', 'position_1', 'position_2']
 
-<sub>Go to [top](#class-Edge) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Edge) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## vertices_index <sub>*property*</sub>
 
@@ -343,7 +343,7 @@ def vertices_index(self):
 #### Returns:
 - tuple ('`vertex_index_1`', '`vertex_index_2`')
 
-<sub>Go to [top](#class-Edge) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Edge) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## vertices_position <sub>*property*</sub>
 
@@ -358,5 +358,5 @@ def vertices_position(self):
 #### Returns:
 - tuple ('`position_1`', '`position_2`')
 
-<sub>Go to [top](#class-Edge) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Edge) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

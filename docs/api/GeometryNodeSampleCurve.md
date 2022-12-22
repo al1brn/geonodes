@@ -1,6 +1,6 @@
 # Node *Sample Curve*
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/sample_curve.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSampleCurve.html)
@@ -50,5 +50,5 @@ node = nodes.SampleCurve(curves=None, value=None, factor=None, length=None, curv
 | **[Curve](Curve.md)** |
 | [sample](Curve.md#sample) | `def sample(self, value=None, factor=None, length=None, curve_index=None, data_type='FLOAT', mode='FACTOR', use_all_curves=False):` |
 
-<sub>Go to [top](#node-Sample-Curve) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Sample-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

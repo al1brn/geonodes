@@ -1,6 +1,6 @@
 # Node *Points to Volume*
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/point/points_to_volume.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodePointsToVolume.html)
@@ -42,5 +42,5 @@ node = nodes.PointsToVolume(points=None, density=None, voxel_size=None, voxel_am
 | [to_volume_size](Points.md#to_volume_size) | `def to_volume_size(self, density=None, voxel_size=None, radius=None):` |
 | [to_volume_amount](Points.md#to_volume_amount) | `def to_volume_amount(self, density=None, voxel_amount=None, radius=None):` |
 
-<sub>Go to [top](#node-Points-to-Volume) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Points-to-Volume) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

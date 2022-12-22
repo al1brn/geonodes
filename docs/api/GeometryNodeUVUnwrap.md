@@ -1,6 +1,6 @@
 # Node *UV Unwrap*
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/uv/uv_unwrap.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeUVUnwrap.html)
@@ -41,5 +41,5 @@ node = nodes.UvUnwrap(selection=None, seam=None, margin=None, fill_holes=None, m
 | **[Mesh](Mesh.md)** |
 | [uv_unwrap](Mesh.md#uv_unwrap) | `def uv_unwrap(self, selection=None, seam=None, margin=None, fill_holes=None, method='ANGLE_BASED'):` |
 
-<sub>Go to [top](#node-UV-Unwrap) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-UV-Unwrap) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

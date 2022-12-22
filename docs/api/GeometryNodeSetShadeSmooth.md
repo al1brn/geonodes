@@ -1,6 +1,6 @@
 # Node *Set Shade Smooth*
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/set_shade_smooth.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetShadeSmooth.html)
@@ -38,5 +38,5 @@ node = nodes.SetShadeSmooth(geometry=None, selection=None, shade_smooth=None)
 | **[Mesh](Mesh.md)** |
 | [set_shade_smooth](Mesh.md#set_shade_smooth) | `def set_shade_smooth(self, selection=None, shade_smooth=None):` |
 
-<sub>Go to [top](#node-Set-Shade-Smooth) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Set-Shade-Smooth) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

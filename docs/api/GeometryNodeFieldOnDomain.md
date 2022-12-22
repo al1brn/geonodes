@@ -1,6 +1,6 @@
 # Node *Interpolate Domain*
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/interpolate_domain.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeFieldOnDomain.html)
@@ -44,5 +44,5 @@ node = nodes.InterpolateDomain(value=None, data_type='FLOAT', domain='POINT')
 | **[Geometry](Geometry.md)** |
 | [interpolate_domain](Geometry.md#interpolate_domain) | `def interpolate_domain(self, value=None, domain='POINT'):` |
 
-<sub>Go to [top](#node-Interpolate-Domain) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Interpolate-Domain) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

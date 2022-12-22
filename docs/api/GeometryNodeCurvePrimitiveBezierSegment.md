@@ -1,6 +1,6 @@
 # Node *Bezier Segment*
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve_primitives/bezier_segment.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurvePrimitiveBezierSegment.html)
@@ -40,5 +40,5 @@ node = nodes.BezierSegment(resolution=None, start=None, start_handle=None, end_h
 | **[Curve](Curve.md)** |
 | [bezier_segment](Curve.md#bezier_segment-classmethod) | `@classmethod`<br> `def bezier_segment(cls, resolution=None, start=None, start_handle=None, end_handle=None, end=None, mode='POSITION'):` |
 
-<sub>Go to [top](#node-Bezier-Segment) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Bezier-Segment) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

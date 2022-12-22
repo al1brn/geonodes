@@ -1,6 +1,6 @@
 # class Domain
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 ## Properties
 
@@ -62,7 +62,7 @@ def ID(self):
 #### Returns:
 - socket `ID`
 
-<sub>Go to [top](#class-Domain) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Domain) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## ID <sub>*etter*</sub>
 
@@ -78,7 +78,7 @@ Node implemented as property setter.
 - attr_value: ID
 
 
-<sub>Go to [top](#class-Domain) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Domain) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## accumulate_field
 
@@ -97,7 +97,7 @@ def accumulate_field(self, value=None, group_index=None):
 #### Returns:
 - tuple ('`leading`', '`trailing`', '`total`')
 
-<sub>Go to [top](#class-Domain) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Domain) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## attribute_max
 
@@ -113,7 +113,7 @@ def attribute_max(self, attribute=None):
 #### Returns:
 - socket `max`
 
-<sub>Go to [top](#class-Domain) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Domain) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## attribute_mean
 
@@ -129,7 +129,7 @@ def attribute_mean(self, attribute=None):
 #### Returns:
 - socket `mean`
 
-<sub>Go to [top](#class-Domain) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Domain) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## attribute_median
 
@@ -145,7 +145,7 @@ def attribute_median(self, attribute=None):
 #### Returns:
 - socket `median`
 
-<sub>Go to [top](#class-Domain) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Domain) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## attribute_min
 
@@ -161,7 +161,7 @@ def attribute_min(self, attribute=None):
 #### Returns:
 - socket `min`
 
-<sub>Go to [top](#class-Domain) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Domain) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## attribute_range
 
@@ -177,7 +177,7 @@ def attribute_range(self, attribute=None):
 #### Returns:
 - socket `range`
 
-<sub>Go to [top](#class-Domain) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Domain) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## attribute_statistic
 
@@ -193,7 +193,7 @@ def attribute_statistic(self, attribute=None):
 #### Returns:
 - node with sockets ['mean', 'median', 'sum', 'min', 'max', 'range', 'standard_deviation', 'variance']
 
-<sub>Go to [top](#class-Domain) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Domain) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## attribute_std
 
@@ -209,7 +209,7 @@ def attribute_std(self, attribute=None):
 #### Returns:
 - socket `standard_deviation`
 
-<sub>Go to [top](#class-Domain) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Domain) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## attribute_sum
 
@@ -225,7 +225,7 @@ def attribute_sum(self, attribute=None):
 #### Returns:
 - socket `sum`
 
-<sub>Go to [top](#class-Domain) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Domain) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## attribute_var
 
@@ -241,7 +241,7 @@ def attribute_var(self, attribute=None):
 #### Returns:
 - socket `variance`
 
-<sub>Go to [top](#class-Domain) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Domain) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## capture_attribute
 
@@ -257,7 +257,7 @@ def capture_attribute(self, value=None):
 #### Returns:
 - socket `attribute`
 
-<sub>Go to [top](#class-Domain) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Domain) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## domain_index <sub>*property*</sub>
 
@@ -270,7 +270,7 @@ def domain_index(self):
 #### Returns:
 - socket `index`
 
-<sub>Go to [top](#class-Domain) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Domain) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## field_at_index
 
@@ -287,7 +287,7 @@ def field_at_index(self, index=None, value=None):
 #### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-Domain) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Domain) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## get_named_boolean
 
@@ -303,7 +303,7 @@ def get_named_boolean(self, name=None):
 #### Returns:
 - socket `attribute`
 
-<sub>Go to [top](#class-Domain) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Domain) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## get_named_color
 
@@ -319,7 +319,7 @@ def get_named_color(self, name=None):
 #### Returns:
 - socket `attribute`
 
-<sub>Go to [top](#class-Domain) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Domain) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## get_named_float
 
@@ -335,7 +335,7 @@ def get_named_float(self, name=None):
 #### Returns:
 - socket `attribute`
 
-<sub>Go to [top](#class-Domain) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Domain) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## get_named_integer
 
@@ -351,7 +351,7 @@ def get_named_integer(self, name=None):
 #### Returns:
 - socket `attribute`
 
-<sub>Go to [top](#class-Domain) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Domain) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## get_named_vector
 
@@ -367,7 +367,7 @@ def get_named_vector(self, name=None):
 #### Returns:
 - socket `attribute`
 
-<sub>Go to [top](#class-Domain) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Domain) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## index <sub>*property*</sub>
 
@@ -380,7 +380,7 @@ def index(self):
 #### Returns:
 - socket `index`
 
-<sub>Go to [top](#class-Domain) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Domain) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## interpolate
 
@@ -396,7 +396,7 @@ def interpolate(self, value=None):
 #### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-Domain) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Domain) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## material_index <sub>*property*</sub>
 
@@ -409,7 +409,7 @@ def material_index(self):
 #### Returns:
 - socket `material_index`
 
-<sub>Go to [top](#class-Domain) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Domain) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## material_selection
 
@@ -425,7 +425,7 @@ def material_selection(self, material=None):
 #### Returns:
 - socket `selection`
 
-<sub>Go to [top](#class-Domain) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Domain) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## named_attribute
 
@@ -442,7 +442,7 @@ def named_attribute(self, name=None, data_type='FLOAT'):
 #### Returns:
 - socket `attribute`
 
-<sub>Go to [top](#class-Domain) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Domain) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## normal <sub>*property*</sub>
 
@@ -455,7 +455,7 @@ def normal(self):
 #### Returns:
 - socket `normal`
 
-<sub>Go to [top](#class-Domain) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Domain) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## position <sub>*property*</sub>
 
@@ -468,7 +468,7 @@ def position(self):
 #### Returns:
 - socket `position`
 
-<sub>Go to [top](#class-Domain) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Domain) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## position <sub>*etter*</sub>
 
@@ -484,7 +484,7 @@ Node implemented as property setter.
 - attr_value: position
 
 
-<sub>Go to [top](#class-Domain) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Domain) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## random_boolean
 
@@ -502,7 +502,7 @@ def random_boolean(self, probability=None, ID=None, seed=None):
 #### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-Domain) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Domain) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## random_float
 
@@ -521,7 +521,7 @@ def random_float(self, min=None, max=None, ID=None, seed=None):
 #### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-Domain) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Domain) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## random_integer
 
@@ -540,7 +540,7 @@ def random_integer(self, min=None, max=None, ID=None, seed=None):
 #### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-Domain) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Domain) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## random_vector
 
@@ -559,7 +559,7 @@ def random_vector(self, min=None, max=None, ID=None, seed=None):
 #### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-Domain) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Domain) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## remove_named_attribute
 
@@ -575,7 +575,7 @@ def remove_named_attribute(self, name=None):
 #### Returns:
 - self
 
-<sub>Go to [top](#class-Domain) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Domain) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## sample_index
 
@@ -593,7 +593,7 @@ def sample_index(self, value=None, index=None, clamp=False):
 #### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-Domain) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Domain) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## set_ID
 
@@ -609,7 +609,7 @@ def set_ID(self, ID=None):
 #### Returns:
 - self
 
-<sub>Go to [top](#class-Domain) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Domain) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## set_material_index
 
@@ -625,7 +625,7 @@ def set_material_index(self, material_index=None):
 #### Returns:
 - self
 
-<sub>Go to [top](#class-Domain) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Domain) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## set_named_boolean
 
@@ -642,7 +642,7 @@ def set_named_boolean(self, name=None, value=None):
 #### Returns:
 - self
 
-<sub>Go to [top](#class-Domain) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Domain) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## set_named_color
 
@@ -659,7 +659,7 @@ def set_named_color(self, name=None, value=None):
 #### Returns:
 - self
 
-<sub>Go to [top](#class-Domain) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Domain) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## set_named_float
 
@@ -676,7 +676,7 @@ def set_named_float(self, name=None, value=None):
 #### Returns:
 - self
 
-<sub>Go to [top](#class-Domain) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Domain) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## set_named_integer
 
@@ -693,7 +693,7 @@ def set_named_integer(self, name=None, value=None):
 #### Returns:
 - self
 
-<sub>Go to [top](#class-Domain) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Domain) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## set_named_vector
 
@@ -710,7 +710,7 @@ def set_named_vector(self, name=None, value=None):
 #### Returns:
 - self
 
-<sub>Go to [top](#class-Domain) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Domain) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## set_position
 
@@ -727,7 +727,7 @@ def set_position(self, position=None, offset=None):
 #### Returns:
 - self
 
-<sub>Go to [top](#class-Domain) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Domain) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## store_named_attribute
 
@@ -744,5 +744,5 @@ def store_named_attribute(self, name=None, value=None):
 #### Returns:
 - self
 
-<sub>Go to [top](#class-Domain) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Domain) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

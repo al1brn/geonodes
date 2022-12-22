@@ -1,6 +1,6 @@
 # Node *Sample Nearest Surface*
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/sample_nearest_surface.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSampleNearestSurface.html)
@@ -43,5 +43,5 @@ node = nodes.SampleNearestSurface(mesh=None, value=None, sample_position=None, d
 | **[Mesh](Mesh.md)** |
 | [sample_nearest_surface](Mesh.md#sample_nearest_surface) | `def sample_nearest_surface(self, value=None, sample_position=None):` |
 
-<sub>Go to [top](#node-Sample-Nearest-Surface) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Sample-Nearest-Surface) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

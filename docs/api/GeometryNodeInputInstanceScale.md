@@ -1,6 +1,6 @@
 # Node *Instance Scale*
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instance_scale.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputInstanceScale.html)
@@ -28,5 +28,5 @@ node = nodes.InstanceScale()
 | **[Instances](Instances.md)** |
 | [scale](Instances.md#scale-property) | `@property`<br> `def scale(self):` |
 
-<sub>Go to [top](#node-Instance-Scale) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Instance-Scale) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

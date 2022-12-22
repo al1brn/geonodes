@@ -1,6 +1,6 @@
 # Node *Float to Integer*
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/float_to_integer.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeFloatToInt.html)
@@ -40,5 +40,5 @@ node = nodes.FloatToInteger(float=None, rounding_mode='ROUND')
 | [ceiling](Float.md#ceiling) | `def ceiling(self):` |
 | [truncate](Float.md#truncate) | `def truncate(self):` |
 
-<sub>Go to [top](#node-Float-to-Integer) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Float-to-Integer) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

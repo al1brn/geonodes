@@ -1,6 +1,6 @@
 # Node *Sample Index*
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/sample_index.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSampleIndex.html)
@@ -47,5 +47,5 @@ node = nodes.SampleIndex(geometry=None, value=None, index=None, clamp=False, dat
 | **[Geometry](Geometry.md)** |
 | [sample_index](Geometry.md#sample_index) | `def sample_index(self, value=None, index=None, clamp=False, domain='POINT'):` |
 
-<sub>Go to [top](#node-Sample-Index) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Sample-Index) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

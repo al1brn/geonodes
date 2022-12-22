@@ -1,6 +1,6 @@
 # Node *Attribute Statistic*
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/attribute_statistic.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeStatistic.html)
@@ -61,5 +61,5 @@ node = nodes.AttributeStatistic(geometry=None, selection=None, attribute=None, d
 | **[Geometry](Geometry.md)** |
 | [attribute_statistic](Geometry.md#attribute_statistic) | `def attribute_statistic(self, selection=None, attribute=None, domain='POINT'):` |
 
-<sub>Go to [top](#node-Attribute-Statistic) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Attribute-Statistic) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

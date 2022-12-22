@@ -1,6 +1,6 @@
 # Node *Spline Parameter*
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/spline_parameter.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSplineParameter.html)
@@ -31,5 +31,5 @@ node = nodes.SplineParameter()
 | [parameter_length](ControlPoint.md#parameter_length-property) | `@property`<br> `def parameter_length(self):` |
 | [parameter_index](ControlPoint.md#parameter_index-property) | `@property`<br> `def parameter_index(self):` |
 
-<sub>Go to [top](#node-Spline-Parameter) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Spline-Parameter) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

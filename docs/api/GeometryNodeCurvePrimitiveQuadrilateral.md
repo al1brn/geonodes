@@ -1,6 +1,6 @@
 # Node *Quadrilateral*
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve_primitives/quadrilateral.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurvePrimitiveQuadrilateral.html)
@@ -46,5 +46,5 @@ node = nodes.Quadrilateral(width=None, height=None, bottom_width=None, top_width
 | **[Curve](Curve.md)** |
 | [Quadrilateral](Curve.md#Quadrilateral-classmethod) | `@classmethod`<br> `def Quadrilateral(cls, width=None, height=None, bottom_width=None, top_width=None, offset=None, bottom_height=None, top_height=None, point_1=None, point_2=None, point_3=None, point_4=None, mode='RECTANGLE'):` |
 
-<sub>Go to [top](#node-Quadrilateral) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Quadrilateral) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

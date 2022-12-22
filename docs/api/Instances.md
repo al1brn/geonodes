@@ -1,6 +1,6 @@
 # class Instances
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 ## Properties
 
@@ -42,7 +42,7 @@ def InstanceOnPoints(cls, points=None, selection=None, instance=None, pick_insta
 #### Returns:
 - socket `instances`
 
-<sub>Go to [top](#class-Instances) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Instances) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## domain_size <sub>*property*</sub>
 
@@ -55,7 +55,7 @@ def domain_size(self):
 #### Returns:
 - socket `instance_count`
 
-<sub>Go to [top](#class-Instances) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Instances) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## on_points
 
@@ -76,7 +76,7 @@ def on_points(self, points=None, selection=None, pick_instance=None, instance_in
 #### Returns:
 - socket `instances`
 
-<sub>Go to [top](#class-Instances) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Instances) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## realize
 
@@ -93,7 +93,7 @@ def realize(self, geometry=None, legacy_behavior=False):
 #### Returns:
 - socket `geometry`
 
-<sub>Go to [top](#class-Instances) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Instances) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## rotate
 
@@ -112,7 +112,7 @@ def rotate(self, selection=None, rotation=None, pivot_point=None, local_space=No
 #### Returns:
 - self
 
-<sub>Go to [top](#class-Instances) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Instances) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## rotation <sub>*property*</sub>
 
@@ -125,7 +125,7 @@ def rotation(self):
 #### Returns:
 - socket `rotation`
 
-<sub>Go to [top](#class-Instances) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Instances) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## scale <sub>*property*</sub>
 
@@ -138,7 +138,7 @@ def scale(self):
 #### Returns:
 - socket `scale`
 
-<sub>Go to [top](#class-Instances) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Instances) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## set_scale
 
@@ -157,7 +157,7 @@ def set_scale(self, selection=None, scale=None, center=None, local_space=None):
 #### Returns:
 - self
 
-<sub>Go to [top](#class-Instances) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Instances) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## to_points
 
@@ -175,7 +175,7 @@ def to_points(self, selection=None, position=None, radius=None):
 #### Returns:
 - socket `points` of class Points
 
-<sub>Go to [top](#class-Instances) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Instances) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## translate
 
@@ -193,5 +193,5 @@ def translate(self, selection=None, translation=None, local_space=None):
 #### Returns:
 - self
 
-<sub>Go to [top](#class-Instances) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Instances) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

@@ -1,6 +1,6 @@
 # Node *Position*
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/position.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputPosition.html)
@@ -28,5 +28,5 @@ node = nodes.Position()
 | **[Geometry](Geometry.md)** |
 | [position](Geometry.md#position-property) | `@property`<br> `def position(self):` |
 
-<sub>Go to [top](#node-Position) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Position) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

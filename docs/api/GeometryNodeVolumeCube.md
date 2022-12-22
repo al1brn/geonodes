@@ -1,6 +1,6 @@
 # Node *Volume Cube*
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/volume/volume_cube.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeVolumeCube.html)
@@ -38,5 +38,5 @@ node = nodes.VolumeCube(density=None, background=None, min=None, max=None, resol
 | **[Volume](Volume.md)** |
 | [Cube](Volume.md#Cube-classmethod) | `@classmethod`<br> `def Cube(cls, density=None, background=None, min=None, max=None, resolution_x=None, resolution_y=None, resolution_z=None):` |
 
-<sub>Go to [top](#node-Volume-Cube) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Volume-Cube) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

@@ -1,6 +1,6 @@
 # class Object
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 
 ## Class methods
@@ -36,7 +36,7 @@ The initial value can be either a valid Blender Object or the name of an existin
 #### Returns:
 - Object
 
-<sub>Go to [top](#class-Object) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Object) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## Self <sub>*classmethod*</sub>
 
@@ -49,7 +49,7 @@ def Self(cls):
 #### Returns:
 - socket `self_object`
 
-<sub>Go to [top](#class-Object) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Object) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## geometry
 
@@ -67,7 +67,7 @@ def geometry(self, object=None, as_instance=None, transform_space='ORIGINAL'):
 #### Returns:
 - socket `geometry`
 
-<sub>Go to [top](#class-Object) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Object) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## info
 
@@ -85,7 +85,7 @@ def info(self, object=None, as_instance=None, transform_space='ORIGINAL'):
 #### Returns:
 - node with sockets ['location', 'rotation', 'scale', 'geometry']
 
-<sub>Go to [top](#class-Object) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Object) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## location
 
@@ -103,7 +103,7 @@ def location(self, object=None, as_instance=None, transform_space='ORIGINAL'):
 #### Returns:
 - socket `location`
 
-<sub>Go to [top](#class-Object) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Object) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## rotation
 
@@ -121,7 +121,7 @@ def rotation(self, object=None, as_instance=None, transform_space='ORIGINAL'):
 #### Returns:
 - socket `rotation`
 
-<sub>Go to [top](#class-Object) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Object) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## scale
 
@@ -139,7 +139,7 @@ def scale(self, object=None, as_instance=None, transform_space='ORIGINAL'):
 #### Returns:
 - socket `scale`
 
-<sub>Go to [top](#class-Object) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Object) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## switch
 
@@ -156,5 +156,5 @@ def switch(self, switch=None, true=None):
 #### Returns:
 - socket `output`
 
-<sub>Go to [top](#class-Object) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Object) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

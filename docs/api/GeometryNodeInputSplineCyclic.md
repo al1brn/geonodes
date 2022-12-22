@@ -1,6 +1,6 @@
 # Node *Is Spline Cyclic*
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/is_spline_cyclic.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputSplineCyclic.html)
@@ -26,5 +26,5 @@ node = nodes.IsSplineCyclic()
 | **[Spline](Spline.md)** |
 | [cyclic](Spline.md#cyclic-property) | `@property`<br> `def cyclic(self):` |
 
-<sub>Go to [top](#node-Is-Spline-Cyclic) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Is-Spline-Cyclic) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

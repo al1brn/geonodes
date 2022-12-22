@@ -1,6 +1,6 @@
 # Node *Duplicate Elements*
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/duplicate_elements.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeDuplicateElements.html)
@@ -53,5 +53,5 @@ node = nodes.DuplicateElements(geometry=None, selection=None, amount=None, domai
 | **[Vertex](Vertex.md)** |
 | [duplicate](Vertex.md#duplicate) | `def duplicate(self, amount=None):` |
 
-<sub>Go to [top](#node-Duplicate-Elements) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Duplicate-Elements) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

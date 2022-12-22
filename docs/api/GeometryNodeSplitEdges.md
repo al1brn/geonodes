@@ -1,6 +1,6 @@
 # Node *Split Edges*
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/split_edges.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSplitEdges.html)
@@ -35,5 +35,5 @@ node = nodes.SplitEdges(mesh=None, selection=None)
 | **[Mesh](Mesh.md)** |
 | [split_edges](Mesh.md#split_edges) | `def split_edges(self, selection=None):` |
 
-<sub>Go to [top](#node-Split-Edges) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Split-Edges) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

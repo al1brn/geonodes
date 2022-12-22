@@ -1,6 +1,6 @@
 # Node *Set Spline Type*
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/set_spline_type.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveSplineType.html)
@@ -40,5 +40,5 @@ node = nodes.SetSplineType(curve=None, selection=None, spline_type='POLY')
 | [type](Spline.md#type) | `@type.setter
 `<br> `def type(self, attr_value):` |
 
-<sub>Go to [top](#node-Set-Spline-Type) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Set-Spline-Type) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

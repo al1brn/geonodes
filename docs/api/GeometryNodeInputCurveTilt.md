@@ -1,6 +1,6 @@
 # Node *Curve Tilt*
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/curve_tilt.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputCurveTilt.html)
@@ -26,5 +26,5 @@ node = nodes.CurveTilt()
 | **[ControlPoint](ControlPoint.md)** |
 | [tilt](ControlPoint.md#tilt-property) | `@property`<br> `def tilt(self):` |
 
-<sub>Go to [top](#node-Curve-Tilt) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Curve-Tilt) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

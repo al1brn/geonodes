@@ -1,6 +1,6 @@
 # Node *Material*
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/material.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMaterial.html)
@@ -26,5 +26,5 @@ node = nodes.Material()
 | **[Material](Material.md)** |
 | [Material](Material.md#Material-classmethod) | `@classmethod`<br> `def Material(cls):` |
 
-<sub>Go to [top](#node-Material) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Material) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

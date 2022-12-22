@@ -1,6 +1,6 @@
 # Node *Volume to Mesh*
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/volume/volume_to_mesh.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeVolumeToMesh.html)
@@ -40,5 +40,5 @@ node = nodes.VolumeToMesh(volume=None, voxel_size=None, voxel_amount=None, thres
 | **[Volume](Volume.md)** |
 | [to_mesh](Volume.md#to_mesh) | `def to_mesh(self, voxel_size=None, voxel_amount=None, threshold=None, adaptivity=None, resolution_mode='GRID'):` |
 
-<sub>Go to [top](#node-Volume-to-Mesh) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Volume-to-Mesh) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

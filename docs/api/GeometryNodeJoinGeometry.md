@@ -1,6 +1,6 @@
 # Node *Join Geometry*
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/join_geometry.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeJoinGeometry.html)
@@ -34,5 +34,5 @@ node = nodes.JoinGeometry(*geometry)
 | **[Geometry](Geometry.md)** |
 | [join](Geometry.md#join) | `def join(*geometry):` |
 
-<sub>Go to [top](#node-Join-Geometry) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Join-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

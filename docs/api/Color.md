@@ -1,6 +1,6 @@
 # class Color
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 ## Properties
 
@@ -63,7 +63,7 @@ def Color(cls):
 #### Returns:
 - socket `color`
 
-<sub>Go to [top](#class-Color) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Color) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## HSL <sub>*classmethod*</sub>
 
@@ -82,7 +82,7 @@ def HSL(cls, hue=None, saturation=None, lightness=None, alpha=None):
 #### Returns:
 - socket `color`
 
-<sub>Go to [top](#class-Color) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Color) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## HSV <sub>*classmethod*</sub>
 
@@ -101,7 +101,7 @@ def HSV(cls, hue=None, saturation=None, value=None, alpha=None):
 #### Returns:
 - socket `color`
 
-<sub>Go to [top](#class-Color) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Color) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## Input <sub>*classmethod*</sub>
 
@@ -122,7 +122,7 @@ Even if homonyms are accepted, it is recommended to avoid to create to input soc
 #### Returns:
 - Color
 
-<sub>Go to [top](#class-Color) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Color) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## RGB <sub>*classmethod*</sub>
 
@@ -141,7 +141,7 @@ def RGB(cls, red=None, green=None, blue=None, alpha=None):
 #### Returns:
 - socket `color`
 
-<sub>Go to [top](#class-Color) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Color) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## alpha <sub>*property*</sub>
 
@@ -154,7 +154,7 @@ def alpha(self):
 #### Returns:
 - socket `alpha`
 
-<sub>Go to [top](#class-Color) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Color) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## blue <sub>*property*</sub>
 
@@ -167,7 +167,7 @@ def blue(self):
 #### Returns:
 - socket `blue`
 
-<sub>Go to [top](#class-Color) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Color) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## brighter
 
@@ -183,7 +183,7 @@ def brighter(self, b=None):
 #### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-Color) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Color) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## darker
 
@@ -199,7 +199,7 @@ def darker(self, b=None):
 #### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-Color) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Color) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## equal
 
@@ -216,7 +216,7 @@ def equal(self, b=None, epsilon=None):
 #### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-Color) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Color) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## equal
 
@@ -233,7 +233,7 @@ def equal(self, b=None, epsilon=None):
 #### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-Color) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Color) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## green <sub>*property*</sub>
 
@@ -246,7 +246,7 @@ def green(self):
 #### Returns:
 - socket `green`
 
-<sub>Go to [top](#class-Color) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Color) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## hsl <sub>*property*</sub>
 
@@ -261,7 +261,7 @@ def hsl(self):
 #### Returns:
 - tuple ('`red`', '`green`', '`blue`', '`alpha`')
 
-<sub>Go to [top](#class-Color) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Color) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## hsv <sub>*property*</sub>
 
@@ -276,7 +276,7 @@ def hsv(self):
 #### Returns:
 - tuple ('`red`', '`green`', '`blue`', '`alpha`')
 
-<sub>Go to [top](#class-Color) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Color) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## hue <sub>*property*</sub>
 
@@ -289,7 +289,7 @@ def hue(self):
 #### Returns:
 - socket `red`
 
-<sub>Go to [top](#class-Color) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Color) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## lightness <sub>*property*</sub>
 
@@ -302,7 +302,7 @@ def lightness(self):
 #### Returns:
 - socket `blue`
 
-<sub>Go to [top](#class-Color) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Color) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## mix
 
@@ -322,7 +322,7 @@ def mix(self, factor=None, color=None, blend_type='MIX', clamp_factor=True, clam
 #### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-Color) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Color) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## mix_add
 
@@ -341,7 +341,7 @@ def mix_add(self, factor=None, color=None, clamp_factor=True, clamp_result=False
 #### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-Color) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Color) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## mix_burn
 
@@ -360,7 +360,7 @@ def mix_burn(self, factor=None, color=None, clamp_factor=True, clamp_result=Fals
 #### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-Color) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Color) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## mix_color
 
@@ -379,7 +379,7 @@ def mix_color(self, factor=None, color=None, clamp_factor=True, clamp_result=Fal
 #### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-Color) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Color) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## mix_darken
 
@@ -398,7 +398,7 @@ def mix_darken(self, factor=None, color=None, clamp_factor=True, clamp_result=Fa
 #### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-Color) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Color) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## mix_difference
 
@@ -417,7 +417,7 @@ def mix_difference(self, factor=None, color=None, clamp_factor=True, clamp_resul
 #### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-Color) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Color) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## mix_divide
 
@@ -436,7 +436,7 @@ def mix_divide(self, factor=None, color=None, clamp_factor=True, clamp_result=Fa
 #### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-Color) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Color) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## mix_dodge
 
@@ -455,7 +455,7 @@ def mix_dodge(self, factor=None, color=None, clamp_factor=True, clamp_result=Fal
 #### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-Color) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Color) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## mix_hue
 
@@ -474,7 +474,7 @@ def mix_hue(self, factor=None, color=None, clamp_factor=True, clamp_result=False
 #### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-Color) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Color) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## mix_lighten
 
@@ -493,7 +493,7 @@ def mix_lighten(self, factor=None, color=None, clamp_factor=True, clamp_result=F
 #### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-Color) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Color) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## mix_linear_light
 
@@ -512,7 +512,7 @@ def mix_linear_light(self, factor=None, color=None, clamp_factor=True, clamp_res
 #### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-Color) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Color) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## mix_multiply
 
@@ -531,7 +531,7 @@ def mix_multiply(self, factor=None, color=None, clamp_factor=True, clamp_result=
 #### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-Color) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Color) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## mix_overlay
 
@@ -550,7 +550,7 @@ def mix_overlay(self, factor=None, color=None, clamp_factor=True, clamp_result=F
 #### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-Color) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Color) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## mix_saturation
 
@@ -569,7 +569,7 @@ def mix_saturation(self, factor=None, color=None, clamp_factor=True, clamp_resul
 #### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-Color) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Color) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## mix_screen
 
@@ -588,7 +588,7 @@ def mix_screen(self, factor=None, color=None, clamp_factor=True, clamp_result=Fa
 #### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-Color) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Color) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## mix_soft_light
 
@@ -607,7 +607,7 @@ def mix_soft_light(self, factor=None, color=None, clamp_factor=True, clamp_resul
 #### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-Color) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Color) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## mix_subtract
 
@@ -626,7 +626,7 @@ def mix_subtract(self, factor=None, color=None, clamp_factor=True, clamp_result=
 #### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-Color) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Color) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## mix_value
 
@@ -645,7 +645,7 @@ def mix_value(self, factor=None, color=None, clamp_factor=True, clamp_result=Fal
 #### Returns:
 - socket `result`
 
-<sub>Go to [top](#class-Color) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Color) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## red <sub>*property*</sub>
 
@@ -658,7 +658,7 @@ def red(self):
 #### Returns:
 - socket `red`
 
-<sub>Go to [top](#class-Color) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Color) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## rgb <sub>*property*</sub>
 
@@ -673,7 +673,7 @@ def rgb(self):
 #### Returns:
 - tuple ('`red`', '`green`', '`blue`', '`alpha`')
 
-<sub>Go to [top](#class-Color) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Color) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## rgb_curves <sub>*property*</sub>
 
@@ -686,7 +686,7 @@ def rgb_curves(self, fac=None):
 #### Returns:
 - node with sockets ['color']
 
-<sub>Go to [top](#class-Color) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Color) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## saturation <sub>*property*</sub>
 
@@ -699,7 +699,7 @@ def saturation(self):
 #### Returns:
 - socket `green`
 
-<sub>Go to [top](#class-Color) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Color) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## switch
 
@@ -716,7 +716,7 @@ def switch(self, switch=None, true=None):
 #### Returns:
 - socket `output`
 
-<sub>Go to [top](#class-Color) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Color) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## value <sub>*property*</sub>
 
@@ -729,5 +729,5 @@ def value(self):
 #### Returns:
 - socket `blue`
 
-<sub>Go to [top](#class-Color) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Color) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

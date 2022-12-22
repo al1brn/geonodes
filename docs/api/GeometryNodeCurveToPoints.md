@@ -1,6 +1,6 @@
 # Node *Curve to Points*
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/curve_to_points.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveToPoints.html)
@@ -44,5 +44,5 @@ node = nodes.CurveToPoints(curve=None, count=None, length=None, mode='COUNT')
 | [to_points_length](Curve.md#to_points_length) | `def to_points_length(self, length=None):` |
 | [to_points_evaluated](Curve.md#to_points_evaluated) | `def to_points_evaluated(self):` |
 
-<sub>Go to [top](#node-Curve-to-Points) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Curve-to-Points) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

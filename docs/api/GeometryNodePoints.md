@@ -1,6 +1,6 @@
 # Node *Points*
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/point/points.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodePoints.html)
@@ -34,5 +34,5 @@ node = nodes.Points(count=None, position=None, radius=None)
 | **[Points](Points.md)** |
 | [Points](Points.md#Points-classmethod) | `@classmethod`<br> `def Points(cls, count=None, position=None, radius=None):` |
 
-<sub>Go to [top](#node-Points) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Points) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

@@ -1,6 +1,6 @@
 # Node *Is Viewport*
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/is_viewport.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeIsViewport.html)
@@ -26,5 +26,5 @@ node = nodes.IsViewport()
 | **[Geometry](Geometry.md)** |
 | [is_viewport](Geometry.md#is_viewport-property) | `@property`<br> `def is_viewport(self):` |
 
-<sub>Go to [top](#node-Is-Viewport) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Is-Viewport) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

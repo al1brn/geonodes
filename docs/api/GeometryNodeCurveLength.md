@@ -1,6 +1,6 @@
 # Node *Curve Length*
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/curve_length.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveLength.html)
@@ -32,5 +32,5 @@ node = nodes.CurveLength(curve=None)
 | **[Curve](Curve.md)** |
 | [length](Curve.md#length-property) | `@property`<br> `def length(self):` |
 
-<sub>Go to [top](#node-Curve-Length) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Curve-Length) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

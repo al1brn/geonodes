@@ -1,6 +1,6 @@
 # class Texture
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 
 ## Class methods
@@ -69,7 +69,7 @@ The initial value can be either a valid Blender Texture or the name of an existi
 #### Returns:
 - Texture
 
-<sub>Go to [top](#class-Texture) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Texture) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## brick <sub>*staticmethod*</sub>
 
@@ -100,7 +100,7 @@ def brick(vector=None, color1=None, color2=None, mortar=None, scale=None, mortar
 #### Returns:
 - tuple ('`color`', '`fac`')
 
-<sub>Go to [top](#class-Texture) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Texture) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## checker <sub>*staticmethod*</sub>
 
@@ -121,7 +121,7 @@ def checker(vector=None, color1=None, color2=None, scale=None):
 #### Returns:
 - tuple ('`color`', '`fac`')
 
-<sub>Go to [top](#class-Texture) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Texture) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## gradient <sub>*staticmethod*</sub>
 
@@ -140,7 +140,7 @@ def gradient(vector=None, gradient_type='LINEAR'):
 #### Returns:
 - tuple ('`color`', '`fac`')
 
-<sub>Go to [top](#class-Texture) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Texture) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## gradient_diagonal <sub>*staticmethod*</sub>
 
@@ -158,7 +158,7 @@ def gradient_diagonal(vector=None):
 #### Returns:
 - tuple ('`color`', '`fac`')
 
-<sub>Go to [top](#class-Texture) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Texture) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## gradient_easing <sub>*staticmethod*</sub>
 
@@ -176,7 +176,7 @@ def gradient_easing(vector=None):
 #### Returns:
 - tuple ('`color`', '`fac`')
 
-<sub>Go to [top](#class-Texture) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Texture) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## gradient_linear <sub>*staticmethod*</sub>
 
@@ -194,7 +194,7 @@ def gradient_linear(vector=None):
 #### Returns:
 - tuple ('`color`', '`fac`')
 
-<sub>Go to [top](#class-Texture) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Texture) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## gradient_quadratic <sub>*staticmethod*</sub>
 
@@ -212,7 +212,7 @@ def gradient_quadratic(vector=None):
 #### Returns:
 - tuple ('`color`', '`fac`')
 
-<sub>Go to [top](#class-Texture) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Texture) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## gradient_quadratic_sphere <sub>*staticmethod*</sub>
 
@@ -230,7 +230,7 @@ def gradient_quadratic_sphere(vector=None):
 #### Returns:
 - tuple ('`color`', '`fac`')
 
-<sub>Go to [top](#class-Texture) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Texture) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## gradient_radial <sub>*staticmethod*</sub>
 
@@ -248,7 +248,7 @@ def gradient_radial(vector=None):
 #### Returns:
 - tuple ('`color`', '`fac`')
 
-<sub>Go to [top](#class-Texture) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Texture) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## gradient_spherical <sub>*staticmethod*</sub>
 
@@ -266,7 +266,7 @@ def gradient_spherical(vector=None):
 #### Returns:
 - tuple ('`color`', '`fac`')
 
-<sub>Go to [top](#class-Texture) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Texture) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## image <sub>*staticmethod*</sub>
 
@@ -288,7 +288,7 @@ def image(image=None, vector=None, frame=None, extension='REPEAT', interpolation
 #### Returns:
 - tuple ('`color`', '`alpha`')
 
-<sub>Go to [top](#class-Texture) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Texture) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## magic <sub>*staticmethod*</sub>
 
@@ -309,7 +309,7 @@ def magic(vector=None, scale=None, distortion=None, turbulence_depth=2):
 #### Returns:
 - tuple ('`color`', '`fac`')
 
-<sub>Go to [top](#class-Texture) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Texture) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## musgrave <sub>*staticmethod*</sub>
 
@@ -334,7 +334,7 @@ def musgrave(vector=None, w=None, scale=None, detail=None, dimension=None, lacun
 #### Returns:
 - socket `fac`
 
-<sub>Go to [top](#class-Texture) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Texture) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## noise <sub>*staticmethod*</sub>
 
@@ -358,7 +358,7 @@ def noise(vector=None, w=None, scale=None, detail=None, roughness=None, distorti
 #### Returns:
 - tuple ('`color`', '`fac`')
 
-<sub>Go to [top](#class-Texture) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Texture) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## noise_1D <sub>*staticmethod*</sub>
 
@@ -380,7 +380,7 @@ def noise_1D(w=None, scale=None, detail=None, roughness=None, distortion=None):
 #### Returns:
 - tuple ('`color`', '`fac`')
 
-<sub>Go to [top](#class-Texture) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Texture) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## noise_2D <sub>*staticmethod*</sub>
 
@@ -402,7 +402,7 @@ def noise_2D(vector=None, scale=None, detail=None, roughness=None, distortion=No
 #### Returns:
 - tuple ('`color`', '`fac`')
 
-<sub>Go to [top](#class-Texture) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Texture) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## noise_3D <sub>*staticmethod*</sub>
 
@@ -424,7 +424,7 @@ def noise_3D(vector=None, scale=None, detail=None, roughness=None, distortion=No
 #### Returns:
 - tuple ('`color`', '`fac`')
 
-<sub>Go to [top](#class-Texture) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Texture) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## noise_4D <sub>*staticmethod*</sub>
 
@@ -447,7 +447,7 @@ def noise_4D(vector=None, w=None, scale=None, detail=None, roughness=None, disto
 #### Returns:
 - tuple ('`color`', '`fac`')
 
-<sub>Go to [top](#class-Texture) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Texture) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## switch
 
@@ -464,7 +464,7 @@ def switch(self, switch=None, true=None):
 #### Returns:
 - socket `output`
 
-<sub>Go to [top](#class-Texture) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Texture) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## voronoi <sub>*staticmethod*</sub>
 
@@ -490,7 +490,7 @@ def voronoi(vector=None, w=None, scale=None, smoothness=None, exponent=None, ran
 #### Returns:
 - tuple ('`distance`', '`color`', '`position`', '`w`')
 
-<sub>Go to [top](#class-Texture) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Texture) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## voronoi_1D <sub>*staticmethod*</sub>
 
@@ -515,7 +515,7 @@ def voronoi_1D(w=None, scale=None, smoothness=None, exponent=None, randomness=No
 #### Returns:
 - tuple ('`distance`', '`color`', '`w`')
 
-<sub>Go to [top](#class-Texture) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Texture) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## voronoi_2D <sub>*staticmethod*</sub>
 
@@ -540,7 +540,7 @@ def voronoi_2D(vector=None, scale=None, smoothness=None, exponent=None, randomne
 #### Returns:
 - tuple ('`distance`', '`color`', '`position`')
 
-<sub>Go to [top](#class-Texture) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Texture) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## voronoi_3D <sub>*staticmethod*</sub>
 
@@ -565,7 +565,7 @@ def voronoi_3D(vector=None, scale=None, smoothness=None, exponent=None, randomne
 #### Returns:
 - tuple ('`distance`', '`color`', '`position`')
 
-<sub>Go to [top](#class-Texture) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Texture) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## voronoi_4D <sub>*staticmethod*</sub>
 
@@ -591,7 +591,7 @@ def voronoi_4D(vector=None, w=None, scale=None, smoothness=None, exponent=None, 
 #### Returns:
 - tuple ('`distance`', '`color`', '`position`', '`w`')
 
-<sub>Go to [top](#class-Texture) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Texture) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## wave <sub>*staticmethod*</sub>
 
@@ -619,7 +619,7 @@ def wave(vector=None, scale=None, distortion=None, detail=None, detail_scale=Non
 #### Returns:
 - tuple ('`color`', '`fac`')
 
-<sub>Go to [top](#class-Texture) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Texture) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## wave_bands <sub>*staticmethod*</sub>
 
@@ -645,7 +645,7 @@ def wave_bands(vector=None, scale=None, distortion=None, detail=None, detail_sca
 #### Returns:
 - tuple ('`color`', '`fac`')
 
-<sub>Go to [top](#class-Texture) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Texture) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## wave_bands_saw <sub>*staticmethod*</sub>
 
@@ -670,7 +670,7 @@ def wave_bands_saw(vector=None, scale=None, distortion=None, detail=None, detail
 #### Returns:
 - tuple ('`color`', '`fac`')
 
-<sub>Go to [top](#class-Texture) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Texture) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## wave_bands_sine <sub>*staticmethod*</sub>
 
@@ -695,7 +695,7 @@ def wave_bands_sine(vector=None, scale=None, distortion=None, detail=None, detai
 #### Returns:
 - tuple ('`color`', '`fac`')
 
-<sub>Go to [top](#class-Texture) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Texture) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## wave_bands_triangle <sub>*staticmethod*</sub>
 
@@ -720,7 +720,7 @@ def wave_bands_triangle(vector=None, scale=None, distortion=None, detail=None, d
 #### Returns:
 - tuple ('`color`', '`fac`')
 
-<sub>Go to [top](#class-Texture) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Texture) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## wave_rings <sub>*staticmethod*</sub>
 
@@ -746,7 +746,7 @@ def wave_rings(vector=None, scale=None, distortion=None, detail=None, detail_sca
 #### Returns:
 - tuple ('`color`', '`fac`')
 
-<sub>Go to [top](#class-Texture) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Texture) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## wave_rings_saw <sub>*staticmethod*</sub>
 
@@ -771,7 +771,7 @@ def wave_rings_saw(vector=None, scale=None, distortion=None, detail=None, detail
 #### Returns:
 - tuple ('`color`', '`fac`')
 
-<sub>Go to [top](#class-Texture) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Texture) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## wave_rings_sine <sub>*staticmethod*</sub>
 
@@ -796,7 +796,7 @@ def wave_rings_sine(vector=None, scale=None, distortion=None, detail=None, detai
 #### Returns:
 - tuple ('`color`', '`fac`')
 
-<sub>Go to [top](#class-Texture) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Texture) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## wave_rings_triangle <sub>*staticmethod*</sub>
 
@@ -821,7 +821,7 @@ def wave_rings_triangle(vector=None, scale=None, distortion=None, detail=None, d
 #### Returns:
 - tuple ('`color`', '`fac`')
 
-<sub>Go to [top](#class-Texture) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Texture) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## white_noise <sub>*staticmethod*</sub>
 
@@ -841,7 +841,7 @@ def white_noise(vector=None, w=None, noise_dimensions='3D'):
 #### Returns:
 - tuple ('`value`', '`color`')
 
-<sub>Go to [top](#class-Texture) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Texture) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## white_noise_1D <sub>*staticmethod*</sub>
 
@@ -859,7 +859,7 @@ def white_noise_1D(w=None):
 #### Returns:
 - tuple ('`value`', '`color`')
 
-<sub>Go to [top](#class-Texture) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Texture) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## white_noise_2D <sub>*staticmethod*</sub>
 
@@ -877,7 +877,7 @@ def white_noise_2D(vector=None):
 #### Returns:
 - tuple ('`value`', '`color`')
 
-<sub>Go to [top](#class-Texture) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Texture) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## white_noise_3D <sub>*staticmethod*</sub>
 
@@ -895,7 +895,7 @@ def white_noise_3D(vector=None):
 #### Returns:
 - tuple ('`value`', '`color`')
 
-<sub>Go to [top](#class-Texture) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Texture) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## white_noise_4D <sub>*staticmethod*</sub>
 
@@ -914,5 +914,5 @@ def white_noise_4D(vector=None, w=None):
 #### Returns:
 - tuple ('`value`', '`color`')
 
-<sub>Go to [top](#class-Texture) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Texture) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

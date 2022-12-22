@@ -1,6 +1,6 @@
 # Node *Field at Index*
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/field_at_index.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeFieldAtIndex.html)
@@ -45,5 +45,5 @@ node = nodes.FieldAtIndex(index=None, value=None, data_type='FLOAT', domain='POI
 | **[Geometry](Geometry.md)** |
 | [field_at_index](Geometry.md#field_at_index) | `def field_at_index(self, index=None, value=None, domain='POINT'):` |
 
-<sub>Go to [top](#node-Field-at-Index) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Field-at-Index) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

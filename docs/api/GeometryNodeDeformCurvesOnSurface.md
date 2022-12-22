@@ -1,6 +1,6 @@
 # Node *Deform Curves on Surface*
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/deform_curves_on_surface.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeDeformCurvesOnSurface.html)
@@ -32,5 +32,5 @@ node = nodes.DeformCurvesOnSurface(curves=None)
 | **[Curve](Curve.md)** |
 | [deform_on_surface](Curve.md#deform_on_surface) | `def deform_on_surface(self):` |
 
-<sub>Go to [top](#node-Deform-Curves-on-Surface) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Deform-Curves-on-Surface) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

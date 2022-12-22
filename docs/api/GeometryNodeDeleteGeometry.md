@@ -1,6 +1,6 @@
 # Node *Delete Geometry*
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/delete_geometry.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeDeleteGeometry.html)
@@ -65,5 +65,5 @@ node = nodes.DeleteGeometry(geometry=None, selection=None, domain='POINT', mode=
 | [delete_edges](Vertex.md#delete_edges) | `def delete_edges(self):` |
 | [delete_faces](Vertex.md#delete_faces) | `def delete_faces(self):` |
 
-<sub>Go to [top](#node-Delete-Geometry) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Delete-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

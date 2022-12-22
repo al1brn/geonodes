@@ -1,6 +1,6 @@
 # Node *ID*
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/id.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputID.html)
@@ -28,5 +28,5 @@ node = nodes.ID()
 | **[Geometry](Geometry.md)** |
 | [ID](Geometry.md#ID-property) | `@property`<br> `def ID(self):` |
 
-<sub>Go to [top](#node-ID) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-ID) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

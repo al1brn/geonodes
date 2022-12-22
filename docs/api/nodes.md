@@ -1,6 +1,6 @@
 # Nodes in alphabetical order
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 | node | class | method name |
 |------|-------|-------------|

@@ -1,6 +1,6 @@
 # Node *Combine XYZ*
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/combine_xyz.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeCombineXYZ.html)
@@ -34,5 +34,5 @@ node = nodes.CombineXyz(x=None, y=None, z=None)
 | **[Vector](Vector.md)** |
 | [Combine](Vector.md#Combine-classmethod) | `@classmethod`<br> `def Combine(cls, x=None, y=None, z=None):` |
 
-<sub>Go to [top](#node-Combine-XYZ) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Combine-XYZ) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

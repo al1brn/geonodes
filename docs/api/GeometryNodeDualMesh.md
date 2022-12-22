@@ -1,6 +1,6 @@
 # Node *Dual Mesh*
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/dual_mesh.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeDualMesh.html)
@@ -33,5 +33,5 @@ node = nodes.DualMesh(mesh=None, keep_boundaries=None)
 | **[Mesh](Mesh.md)** |
 | [dual_mesh](Mesh.md#dual_mesh) | `def dual_mesh(self, mesh=None, keep_boundaries=None):` |
 
-<sub>Go to [top](#node-Dual-Mesh) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Dual-Mesh) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

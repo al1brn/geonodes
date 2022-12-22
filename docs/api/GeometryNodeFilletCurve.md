@@ -1,6 +1,6 @@
 # Node *Fillet Curve*
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/fillet_curve.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeFilletCurve.html)
@@ -41,5 +41,5 @@ node = nodes.FilletCurve(curve=None, count=None, radius=None, limit_radius=None,
 | [fillet_bezier](Curve.md#fillet_bezier) | `def fillet_bezier(self, radius=None, limit_radius=None):` |
 | [fillet_poly](Curve.md#fillet_poly) | `def fillet_poly(self, count=None, radius=None, limit_radius=None):` |
 
-<sub>Go to [top](#node-Fillet-Curve) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Fillet-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

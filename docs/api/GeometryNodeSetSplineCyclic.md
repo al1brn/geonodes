@@ -1,6 +1,6 @@
 # Node *Set Spline Cyclic*
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/set_spline_cyclic.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetSplineCyclic.html)
@@ -36,5 +36,5 @@ node = nodes.SetSplineCyclic(geometry=None, selection=None, cyclic=None)
 | [cyclic](Spline.md#cyclic) | `@cyclic.setter
 `<br> `def cyclic(self, attr_value):` |
 
-<sub>Go to [top](#node-Set-Spline-Cyclic) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Set-Spline-Cyclic) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

@@ -1,6 +1,6 @@
 # Node *Separate XYZ*
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/separate_xyz.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeSeparateXYZ.html)
@@ -34,5 +34,5 @@ node = nodes.SeparateXyz(vector=None)
 | **[Vector](Vector.md)** |
 | [separate](Vector.md#separate-property) | `@property`<br> `def separate(self):` |
 
-<sub>Go to [top](#node-Separate-XYZ) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Separate-XYZ) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

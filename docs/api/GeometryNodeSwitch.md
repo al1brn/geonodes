@@ -1,6 +1,6 @@
 # Node *Switch*
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
@@ -79,5 +79,5 @@ node = nodes.Switch(switch=None, false=None, true=None, input_type='GEOMETRY')
 | **[Vector](Vector.md)** |
 | [switch](Vector.md#switch) | `def switch(self, switch=None, true=None):` |
 
-<sub>Go to [top](#node-Switch) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Switch) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

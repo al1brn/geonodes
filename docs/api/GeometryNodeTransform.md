@@ -1,6 +1,6 @@
 # Node *Transform*
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/transform.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeTransform.html)
@@ -35,5 +35,5 @@ node = nodes.Transform(geometry=None, translation=None, rotation=None, scale=Non
 | **[Geometry](Geometry.md)** |
 | [transform](Geometry.md#transform) | `def transform(self, translation=None, rotation=None, scale=None):` |
 
-<sub>Go to [top](#node-Transform) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Transform) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

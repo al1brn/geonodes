@@ -1,6 +1,6 @@
 # class Mesh
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 ## Properties
 
@@ -89,7 +89,7 @@ def Circle(cls, vertices=None, radius=None, fill_type='NONE'):
 #### Returns:
 - socket `mesh`
 
-<sub>Go to [top](#class-Mesh) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Mesh) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## Circle <sub>*classmethod*</sub>
 
@@ -107,7 +107,7 @@ def Circle(cls, segments=None, rings=None, radius=None):
 #### Returns:
 - socket `mesh`
 
-<sub>Go to [top](#class-Mesh) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Mesh) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## Cone <sub>*staticmethod*</sub>
 
@@ -131,7 +131,7 @@ def Cone(vertices=None, side_segments=None, fill_segments=None, radius_top=None,
 #### Returns:
 - tuple ('`mesh`', '`top`', '`bottom`', '`side`')
 
-<sub>Go to [top](#class-Mesh) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Mesh) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## Cube <sub>*classmethod*</sub>
 
@@ -150,7 +150,7 @@ def Cube(cls, size=None, vertices_x=None, vertices_y=None, vertices_z=None):
 #### Returns:
 - socket `mesh`
 
-<sub>Go to [top](#class-Mesh) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Mesh) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## Cylinder <sub>*staticmethod*</sub>
 
@@ -173,7 +173,7 @@ def Cylinder(vertices=None, side_segments=None, fill_segments=None, radius=None,
 #### Returns:
 - tuple ('`mesh`', '`top`', '`bottom`', '`side`')
 
-<sub>Go to [top](#class-Mesh) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Mesh) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## Grid <sub>*classmethod*</sub>
 
@@ -192,7 +192,7 @@ def Grid(cls, size_x=None, size_y=None, vertices_x=None, vertices_y=None):
 #### Returns:
 - socket `mesh`
 
-<sub>Go to [top](#class-Mesh) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Mesh) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## IcoSphere <sub>*classmethod*</sub>
 
@@ -209,7 +209,7 @@ def IcoSphere(cls, radius=None, subdivisions=None):
 #### Returns:
 - socket `mesh`
 
-<sub>Go to [top](#class-Mesh) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Mesh) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## Line <sub>*classmethod*</sub>
 
@@ -230,7 +230,7 @@ def Line(cls, count=None, resolution=None, start_location=None, offset=None, cou
 #### Returns:
 - socket `mesh`
 
-<sub>Go to [top](#class-Mesh) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Mesh) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## LineEndPoints <sub>*classmethod*</sub>
 
@@ -248,7 +248,7 @@ def LineEndPoints(cls, count=None, start_location=None, end_location=None):
 #### Returns:
 - socket `mesh`
 
-<sub>Go to [top](#class-Mesh) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Mesh) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## LineEndPointsResolution <sub>*classmethod*</sub>
 
@@ -266,7 +266,7 @@ def LineEndPointsResolution(cls, resolution=None, start_location=None, end_locat
 #### Returns:
 - socket `mesh`
 
-<sub>Go to [top](#class-Mesh) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Mesh) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## LineOffset <sub>*classmethod*</sub>
 
@@ -284,7 +284,7 @@ def LineOffset(cls, count=None, start_location=None, offset=None):
 #### Returns:
 - socket `mesh`
 
-<sub>Go to [top](#class-Mesh) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Mesh) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## LineOffsetResolution <sub>*classmethod*</sub>
 
@@ -302,7 +302,7 @@ def LineOffsetResolution(cls, resolution=None, start_location=None, offset=None)
 #### Returns:
 - socket `mesh`
 
-<sub>Go to [top](#class-Mesh) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Mesh) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## boolean_difference
 
@@ -320,7 +320,7 @@ def boolean_difference(self, *mesh_2, self_intersection=None, hole_tolerant=None
 #### Returns:
 - socket `intersecting_edges`
 
-<sub>Go to [top](#class-Mesh) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Mesh) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## boolean_intersect
 
@@ -338,7 +338,7 @@ def boolean_intersect(*mesh_2, self_intersection=None, hole_tolerant=None):
 #### Returns:
 - socket `intersecting_edges`
 
-<sub>Go to [top](#class-Mesh) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Mesh) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## boolean_union
 
@@ -356,7 +356,7 @@ def boolean_union(*mesh_2, self_intersection=None, hole_tolerant=None):
 #### Returns:
 - socket `intersecting_edges`
 
-<sub>Go to [top](#class-Mesh) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Mesh) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## corner_count <sub>*property*</sub>
 
@@ -369,7 +369,7 @@ def corner_count(self):
 #### Returns:
 - socket `face_corner_count`
 
-<sub>Go to [top](#class-Mesh) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Mesh) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## corners_of_face
 
@@ -389,7 +389,7 @@ def corners_of_face(self, face_index=None, weights=None, sort_index=None):
 #### Returns:
 - tuple ('`corner_index`', '`total`')
 
-<sub>Go to [top](#class-Mesh) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Mesh) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## corners_of_vertex
 
@@ -409,7 +409,7 @@ def corners_of_vertex(self, vertex_index=None, weights=None, sort_index=None):
 #### Returns:
 - tuple ('`corner_index`', '`total`')
 
-<sub>Go to [top](#class-Mesh) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Mesh) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## delete_all
 
@@ -426,7 +426,7 @@ def delete_all(self, selection=None, domain='POINT'):
 #### Returns:
 - self
 
-<sub>Go to [top](#class-Mesh) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Mesh) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## delete_edges
 
@@ -443,7 +443,7 @@ def delete_edges(self, selection=None, domain='POINT'):
 #### Returns:
 - self
 
-<sub>Go to [top](#class-Mesh) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Mesh) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## delete_faces
 
@@ -460,7 +460,7 @@ def delete_faces(self, selection=None, domain='POINT'):
 #### Returns:
 - self
 
-<sub>Go to [top](#class-Mesh) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Mesh) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## distribute_points_on_faces
 
@@ -484,7 +484,7 @@ def distribute_points_on_faces(self, selection=None, distance_min=None, density_
 #### Returns:
 - tuple ('`points`', '`normal`', '`rotation`')
 
-<sub>Go to [top](#class-Mesh) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Mesh) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## domain_size <sub>*property*</sub>
 
@@ -497,7 +497,7 @@ def domain_size(self):
 #### Returns:
 - node with sockets ['point_count', 'edge_count', 'face_count', 'face_corner_count', 'spline_count', 'instance_count']
 
-<sub>Go to [top](#class-Mesh) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Mesh) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## dual_mesh
 
@@ -514,7 +514,7 @@ def dual_mesh(self, mesh=None, keep_boundaries=None):
 #### Returns:
 - socket `dual_mesh` of class Mesh
 
-<sub>Go to [top](#class-Mesh) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Mesh) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## edge_count <sub>*property*</sub>
 
@@ -527,7 +527,7 @@ def edge_count(self):
 #### Returns:
 - socket `edge_count`
 
-<sub>Go to [top](#class-Mesh) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Mesh) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## edge_paths_to_curves
 
@@ -544,7 +544,7 @@ def edge_paths_to_curves(self, start_vertices=None, next_vertex_index=None):
 #### Returns:
 - socket `curves` of class Curve
 
-<sub>Go to [top](#class-Mesh) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Mesh) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## edge_paths_to_selection
 
@@ -561,7 +561,7 @@ def edge_paths_to_selection(self, start_vertices=None, next_vertex_index=None):
 #### Returns:
 - socket `selection`
 
-<sub>Go to [top](#class-Mesh) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Mesh) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## edges_of_corner
 
@@ -579,7 +579,7 @@ def edges_of_corner(self, corner_index=None):
 #### Returns:
 - tuple ('`next_edge_index`', '`previous_edge_index`')
 
-<sub>Go to [top](#class-Mesh) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Mesh) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## edges_of_vertex
 
@@ -599,7 +599,7 @@ def edges_of_vertex(self, vertex_index=None, weights=None, sort_index=None):
 #### Returns:
 - tuple ('`edge_index`', '`total`')
 
-<sub>Go to [top](#class-Mesh) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Mesh) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## extrude
 
@@ -621,7 +621,7 @@ def extrude(self, selection=None, offset=None, offset_scale=None, individual=Non
 #### Returns:
 - tuple ('`top`', '`side`')
 
-<sub>Go to [top](#class-Mesh) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Mesh) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## face_count <sub>*property*</sub>
 
@@ -634,7 +634,7 @@ def face_count(self):
 #### Returns:
 - socket `face_count`
 
-<sub>Go to [top](#class-Mesh) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Mesh) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## face_is_planar
 
@@ -650,7 +650,7 @@ def face_is_planar(self, threshold=None):
 #### Returns:
 - socket `planar`
 
-<sub>Go to [top](#class-Mesh) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Mesh) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## face_of_corner
 
@@ -668,7 +668,7 @@ def face_of_corner(self, corner_index=None):
 #### Returns:
 - tuple ('`face_index`', '`index_in_face`')
 
-<sub>Go to [top](#class-Mesh) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Mesh) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## face_set_boundaries
 
@@ -684,7 +684,7 @@ def face_set_boundaries(self, face_set=None):
 #### Returns:
 - socket `boundary_edges`
 
-<sub>Go to [top](#class-Mesh) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Mesh) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## flip_faces
 
@@ -700,7 +700,7 @@ def flip_faces(self, selection=None):
 #### Returns:
 - self
 
-<sub>Go to [top](#class-Mesh) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Mesh) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## instance_on_points
 
@@ -721,7 +721,7 @@ def instance_on_points(self, selection=None, instance=None, pick_instance=None, 
 #### Returns:
 - socket `instances`
 
-<sub>Go to [top](#class-Mesh) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Mesh) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## is_shade_smooth
 
@@ -734,7 +734,7 @@ def is_shade_smooth(self):
 #### Returns:
 - socket `smooth`
 
-<sub>Go to [top](#class-Mesh) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Mesh) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## island <sub>*property*</sub>
 
@@ -747,7 +747,7 @@ def island(self):
 #### Returns:
 - node with sockets ['island_index', 'island_count']
 
-<sub>Go to [top](#class-Mesh) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Mesh) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## island_count <sub>*property*</sub>
 
@@ -760,7 +760,7 @@ def island_count(self):
 #### Returns:
 - socket `island_count`
 
-<sub>Go to [top](#class-Mesh) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Mesh) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## island_index <sub>*property*</sub>
 
@@ -773,7 +773,7 @@ def island_index(self):
 #### Returns:
 - socket `island_index`
 
-<sub>Go to [top](#class-Mesh) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Mesh) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## offset_corner_in_face
 
@@ -790,7 +790,7 @@ def offset_corner_in_face(self, corner_index=None, offset=None):
 #### Returns:
 - socket `corner_index`
 
-<sub>Go to [top](#class-Mesh) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Mesh) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## pack_uv_islands
 
@@ -809,7 +809,7 @@ def pack_uv_islands(self, uv=None, selection=None, margin=None, rotate=None):
 #### Returns:
 - socket `uv`
 
-<sub>Go to [top](#class-Mesh) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Mesh) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## point_count <sub>*property*</sub>
 
@@ -822,7 +822,7 @@ def point_count(self):
 #### Returns:
 - socket `point_count`
 
-<sub>Go to [top](#class-Mesh) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Mesh) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## sample_nearest_surface
 
@@ -839,7 +839,7 @@ def sample_nearest_surface(self, value=None, sample_position=None):
 #### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-Mesh) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Mesh) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## sample_uv_surface
 
@@ -859,7 +859,7 @@ def sample_uv_surface(self, value=None, source_uv_map=None, sample_uv=None):
 #### Returns:
 - tuple ('`value`', '`is_valid`')
 
-<sub>Go to [top](#class-Mesh) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Mesh) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## scale_elements
 
@@ -880,7 +880,7 @@ def scale_elements(self, selection=None, scale=None, center=None, axis=None, dom
 #### Returns:
 - self
 
-<sub>Go to [top](#class-Mesh) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Mesh) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## scale_single_axis
 
@@ -900,7 +900,7 @@ def scale_single_axis(self, selection=None, scale=None, center=None, axis=None, 
 #### Returns:
 - self
 
-<sub>Go to [top](#class-Mesh) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Mesh) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## scale_uniform
 
@@ -919,7 +919,7 @@ def scale_uniform(self, selection=None, scale=None, center=None, domain='FACE'):
 #### Returns:
 - self
 
-<sub>Go to [top](#class-Mesh) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Mesh) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## set_shade_smooth
 
@@ -936,7 +936,7 @@ def set_shade_smooth(self, selection=None, shade_smooth=None):
 #### Returns:
 - self
 
-<sub>Go to [top](#class-Mesh) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Mesh) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## shortest_edge_paths
 
@@ -955,7 +955,7 @@ def shortest_edge_paths(self, end_vertex=None, edge_cost=None):
 #### Returns:
 - tuple ('`next_vertex_index`', '`total_cost`')
 
-<sub>Go to [top](#class-Mesh) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Mesh) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## split_edges
 
@@ -971,7 +971,7 @@ def split_edges(self, selection=None):
 #### Returns:
 - self
 
-<sub>Go to [top](#class-Mesh) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Mesh) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## subdivide
 
@@ -987,7 +987,7 @@ def subdivide(self, level=None):
 #### Returns:
 - self
 
-<sub>Go to [top](#class-Mesh) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Mesh) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## subdivision_surface
 
@@ -1007,7 +1007,7 @@ def subdivision_surface(self, level=None, edge_crease=None, vertex_crease=None, 
 #### Returns:
 - self
 
-<sub>Go to [top](#class-Mesh) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Mesh) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## to_curve
 
@@ -1023,7 +1023,7 @@ def to_curve(self, selection=None):
 #### Returns:
 - socket `curve` of class Curve
 
-<sub>Go to [top](#class-Mesh) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Mesh) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## to_points
 
@@ -1042,7 +1042,7 @@ def to_points(self, selection=None, position=None, radius=None, mode='VERTICES')
 #### Returns:
 - socket `points` of class Points
 
-<sub>Go to [top](#class-Mesh) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Mesh) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## to_volume
 
@@ -1064,7 +1064,7 @@ def to_volume(self, density=None, voxel_size=None, voxel_amount=None, exterior_b
 #### Returns:
 - socket `volume` of class Volume
 
-<sub>Go to [top](#class-Mesh) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Mesh) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## triangulate
 
@@ -1083,7 +1083,7 @@ def triangulate(self, selection=None, minimum_vertices=None, ngon_method='BEAUTY
 #### Returns:
 - self
 
-<sub>Go to [top](#class-Mesh) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Mesh) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## uv_unwrap
 
@@ -1103,7 +1103,7 @@ def uv_unwrap(self, selection=None, seam=None, margin=None, fill_holes=None, met
 #### Returns:
 - socket `uv`
 
-<sub>Go to [top](#class-Mesh) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Mesh) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## vertex_of_corner
 
@@ -1119,5 +1119,5 @@ def vertex_of_corner(self, corner_index=None):
 #### Returns:
 - socket `vertex_index`
 
-<sub>Go to [top](#class-Mesh) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Mesh) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

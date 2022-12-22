@@ -1,6 +1,6 @@
 # Node *Fill Curve*
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/fill_curve.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeFillCurve.html)
@@ -38,5 +38,5 @@ node = nodes.FillCurve(curve=None, mode='TRIANGLES')
 | [fill_triangles](Curve.md#fill_triangles) | `def fill_triangles(self, curve=None):` |
 | [fill_ngons](Curve.md#fill_ngons) | `def fill_ngons(self, curve=None):` |
 
-<sub>Go to [top](#node-Fill-Curve) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Fill-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

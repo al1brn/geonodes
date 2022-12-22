@@ -1,6 +1,6 @@
 # Node *Magic Texture*
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/magic.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexMagic.html)
@@ -39,5 +39,5 @@ node = nodes.MagicTexture(vector=None, scale=None, distortion=None, turbulence_d
 | **[Texture](Texture.md)** |
 | [magic](Texture.md#magic-staticmethod) | `@staticmethod`<br> `def magic(vector=None, scale=None, distortion=None, turbulence_depth=2):` |
 
-<sub>Go to [top](#node-Magic-Texture) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Magic-Texture) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

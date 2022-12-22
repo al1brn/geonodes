@@ -1,6 +1,6 @@
 # Node *Noise Texture*
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/noise.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexNoise.html)
@@ -46,5 +46,5 @@ node = nodes.NoiseTexture(vector=None, w=None, scale=None, detail=None, roughnes
 | [noise_3D](Texture.md#noise_3D-staticmethod) | `@staticmethod`<br> `def noise_3D(vector=None, scale=None, detail=None, roughness=None, distortion=None):` |
 | [noise_4D](Texture.md#noise_4D-staticmethod) | `@staticmethod`<br> `def noise_4D(vector=None, w=None, scale=None, detail=None, roughness=None, distortion=None):` |
 
-<sub>Go to [top](#node-Noise-Texture) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Noise-Texture) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

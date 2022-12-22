@@ -1,6 +1,6 @@
 # Node *Offset Point in Curve*
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve_topology/offset_point_in_curve.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeOffsetPointInCurve.html)
@@ -36,5 +36,5 @@ node = nodes.OffsetPointInCurve(point_index=None, offset=None)
 | **[Curve](Curve.md)** |
 | [offset_point](Curve.md#offset_point) | `def offset_point(self, point_index=None, offset=None):` |
 
-<sub>Go to [top](#node-Offset-Point-in-Curve) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Offset-Point-in-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

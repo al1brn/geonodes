@@ -1,6 +1,6 @@
 # Node *Cylinder*
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh_primitives/cylinder.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshCylinder.html)
@@ -43,5 +43,5 @@ node = nodes.Cylinder(vertices=None, side_segments=None, fill_segments=None, rad
 | **[Mesh](Mesh.md)** |
 | [Cylinder](Mesh.md#Cylinder-staticmethod) | `@staticmethod`<br> `def Cylinder(vertices=None, side_segments=None, fill_segments=None, radius=None, depth=None, fill_type='NGON'):` |
 
-<sub>Go to [top](#node-Cylinder) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Cylinder) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

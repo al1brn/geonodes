@@ -1,6 +1,6 @@
 # Node *Self Object*
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/self_object.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSelfObject.html)
@@ -26,5 +26,5 @@ node = nodes.SelfObject()
 | **[Object](Object.md)** |
 | [Self](Object.md#Self-classmethod) | `@classmethod`<br> `def Self(cls):` |
 
-<sub>Go to [top](#node-Self-Object) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Self-Object) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

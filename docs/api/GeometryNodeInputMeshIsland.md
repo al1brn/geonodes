@@ -1,6 +1,6 @@
 # Node *Mesh Island*
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/mesh_island.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshIsland.html)
@@ -33,5 +33,5 @@ node = nodes.MeshIsland()
 | [island_index](Mesh.md#island_index-property) | `@property`<br> `def island_index(self):` |
 | [island_count](Mesh.md#island_count-property) | `@property`<br> `def island_count(self):` |
 
-<sub>Go to [top](#node-Mesh-Island) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Mesh-Island) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

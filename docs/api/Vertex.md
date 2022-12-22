@@ -1,6 +1,6 @@
 # class Vertex
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 ## Properties
 
@@ -50,7 +50,7 @@ def corners(self, weights=None, sort_index=None):
 #### Returns:
 - tuple ('`corner_index`', '`total`')
 
-<sub>Go to [top](#class-Vertex) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Vertex) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## corners_index
 
@@ -67,7 +67,7 @@ def corners_index(self, weights=None, sort_index=None):
 #### Returns:
 - socket `corner_index`
 
-<sub>Go to [top](#class-Vertex) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Vertex) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## corners_total
 
@@ -84,7 +84,7 @@ def corners_total(self, weights=None, sort_index=None):
 #### Returns:
 - socket `total`
 
-<sub>Go to [top](#class-Vertex) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Vertex) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## count <sub>*property*</sub>
 
@@ -97,7 +97,7 @@ def count(self, geometry=None):
 #### Returns:
 - socket `point_count`
 
-<sub>Go to [top](#class-Vertex) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Vertex) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## delete
 
@@ -113,7 +113,7 @@ def delete(self, mode='ALL'):
 #### Returns:
 - self
 
-<sub>Go to [top](#class-Vertex) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Vertex) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## delete_all
 
@@ -126,7 +126,7 @@ def delete_all(self):
 #### Returns:
 - self
 
-<sub>Go to [top](#class-Vertex) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Vertex) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## delete_edges
 
@@ -139,7 +139,7 @@ def delete_edges(self):
 #### Returns:
 - self
 
-<sub>Go to [top](#class-Vertex) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Vertex) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## delete_faces
 
@@ -152,7 +152,7 @@ def delete_faces(self):
 #### Returns:
 - self
 
-<sub>Go to [top](#class-Vertex) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Vertex) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## duplicate
 
@@ -168,7 +168,7 @@ def duplicate(self, amount=None):
 #### Returns:
 - socket `duplicate_index`
 
-<sub>Go to [top](#class-Vertex) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Vertex) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## edges
 
@@ -187,7 +187,7 @@ def edges(self, weights=None, sort_index=None):
 #### Returns:
 - tuple ('`edge_index`', '`total`')
 
-<sub>Go to [top](#class-Vertex) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Vertex) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## edges_index
 
@@ -204,7 +204,7 @@ def edges_index(self, weights=None, sort_index=None):
 #### Returns:
 - socket `edge_index`
 
-<sub>Go to [top](#class-Vertex) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Vertex) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## edges_total
 
@@ -221,7 +221,7 @@ def edges_total(self, weights=None, sort_index=None):
 #### Returns:
 - socket `total`
 
-<sub>Go to [top](#class-Vertex) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Vertex) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## extrude
 
@@ -241,7 +241,7 @@ def extrude(self, offset=None, offset_scale=None, individual=None):
 #### Returns:
 - tuple ('`top`', '`side`')
 
-<sub>Go to [top](#class-Vertex) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Vertex) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## instance_on_points
 
@@ -261,7 +261,7 @@ def instance_on_points(self, instance=None, pick_instance=None, instance_index=N
 #### Returns:
 - socket `instances` of class Instances
 
-<sub>Go to [top](#class-Vertex) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Vertex) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## merge_by_distance
 
@@ -278,7 +278,7 @@ def merge_by_distance(self, distance=None, mode='ALL'):
 #### Returns:
 - self
 
-<sub>Go to [top](#class-Vertex) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Vertex) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## neighbors <sub>*property*</sub>
 
@@ -291,7 +291,7 @@ def neighbors(self):
 #### Returns:
 - node with sockets ['vertex_count', 'face_count']
 
-<sub>Go to [top](#class-Vertex) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Vertex) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## neighbors_face_count <sub>*property*</sub>
 
@@ -304,7 +304,7 @@ def neighbors_face_count(self):
 #### Returns:
 - socket `face_count`
 
-<sub>Go to [top](#class-Vertex) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Vertex) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## neighbors_vertex_count <sub>*property*</sub>
 
@@ -317,7 +317,7 @@ def neighbors_vertex_count(self):
 #### Returns:
 - socket `vertex_count`
 
-<sub>Go to [top](#class-Vertex) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Vertex) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## proximity
 
@@ -334,7 +334,7 @@ def proximity(self, target=None, source_position=None):
 #### Returns:
 - socket `distance`
 
-<sub>Go to [top](#class-Vertex) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Vertex) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## sample_nearest
 
@@ -350,7 +350,7 @@ def sample_nearest(self, sample_position=None):
 #### Returns:
 - socket `index`
 
-<sub>Go to [top](#class-Vertex) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Vertex) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## separate
 
@@ -368,7 +368,7 @@ def separate(self, geometry=None):
 #### Returns:
 - tuple ('`selection`', '`inverted`')
 
-<sub>Go to [top](#class-Vertex) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Vertex) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## to_points
 
@@ -386,7 +386,7 @@ def to_points(self, position=None, radius=None, mode='VERTICES'):
 #### Returns:
 - socket `points` of class Points
 
-<sub>Go to [top](#class-Vertex) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Vertex) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## to_volume
 
@@ -408,5 +408,5 @@ def to_volume(self, density=None, voxel_size=None, voxel_amount=None, exterior_b
 #### Returns:
 - socket `volume` of class Volume
 
-<sub>Go to [top](#class-Vertex) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Vertex) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

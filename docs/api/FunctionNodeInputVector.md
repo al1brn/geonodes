@@ -1,6 +1,6 @@
 # Node *Vector*
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/vector.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeInputVector.html)
@@ -32,5 +32,5 @@ node = nodes.Vector(vector=[0.0, 0.0, 0.0])
 | **[Vector](Vector.md)** |
 | [Vector](Vector.md#Vector-classmethod) | `@classmethod`<br> `def Vector(cls, vector=[0.0, 0.0, 0.0]):` |
 
-<sub>Go to [top](#node-Vector) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Vector) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

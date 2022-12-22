@@ -1,6 +1,6 @@
 # Node *Mesh Circle*
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh_primitives/mesh_circle.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshCircle.html)
@@ -37,5 +37,5 @@ node = nodes.MeshCircle(vertices=None, radius=None, fill_type='NONE')
 | **[Mesh](Mesh.md)** |
 | [Circle](Mesh.md#Circle-classmethod) | `@classmethod`<br> `def Circle(cls, vertices=None, radius=None, fill_type='NONE'):` |
 
-<sub>Go to [top](#node-Mesh-Circle) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Mesh-Circle) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

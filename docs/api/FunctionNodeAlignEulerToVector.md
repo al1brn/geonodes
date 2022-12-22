@@ -1,6 +1,6 @@
 # Node *Align Euler to Vector*
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/align_euler_to_vector.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeAlignEulerToVector.html)
@@ -41,5 +41,5 @@ node = nodes.AlignEulerToVector(rotation=None, factor=None, vector=None, axis='X
 | **[Vector](Vector.md)** |
 | [align_euler_to_vector](Vector.md#align_euler_to_vector) | `def align_euler_to_vector(self, factor=None, vector=None, axis='X', pivot_axis='AUTO'):` |
 
-<sub>Go to [top](#node-Align-Euler-to-Vector) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Align-Euler-to-Vector) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

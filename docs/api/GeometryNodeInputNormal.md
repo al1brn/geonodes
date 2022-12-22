@@ -1,6 +1,6 @@
 # Node *Normal*
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/normal.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputNormal.html)
@@ -30,5 +30,5 @@ node = nodes.Normal()
 | **[Spline](Spline.md)** |
 | [normal](Spline.md#normal-property) | `@property`<br> `def normal(self):` |
 
-<sub>Go to [top](#node-Normal) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Normal) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

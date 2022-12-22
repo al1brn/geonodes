@@ -1,6 +1,6 @@
 # Node *Vertex of Corner*
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh_topology/vertex_of_corner.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeVertexOfCorner.html)
@@ -34,5 +34,5 @@ node = nodes.VertexOfCorner(corner_index=None)
 | **[Mesh](Mesh.md)** |
 | [vertex_of_corner](Mesh.md#vertex_of_corner) | `def vertex_of_corner(self, corner_index=None):` |
 
-<sub>Go to [top](#node-Vertex-of-Corner) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Vertex-of-Corner) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

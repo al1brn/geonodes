@@ -1,6 +1,6 @@
 # Node *Face of Corner*
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh_topology/face_of_corner.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeFaceOfCorner.html)
@@ -37,5 +37,5 @@ node = nodes.FaceOfCorner(corner_index=None)
 | **[Mesh](Mesh.md)** |
 | [face_of_corner](Mesh.md#face_of_corner) | `def face_of_corner(self, corner_index=None):` |
 
-<sub>Go to [top](#node-Face-of-Corner) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Face-of-Corner) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

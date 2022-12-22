@@ -1,6 +1,6 @@
 # Node *RGB Curves*
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/rgb_curves.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeRGBCurve.html)
@@ -35,5 +35,5 @@ node = nodes.RgbCurves(fac=None, color=None)
 | **[Color](Color.md)** |
 | [rgb_curves](Color.md#rgb_curves-property) | `@property`<br> `def rgb_curves(self, fac=None):` |
 
-<sub>Go to [top](#node-RGB-Curves) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-RGB-Curves) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

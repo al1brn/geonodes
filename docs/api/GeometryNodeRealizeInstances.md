@@ -1,6 +1,6 @@
 # Node *Realize Instances*
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/realize_instances.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeRealizeInstances.html)
@@ -36,5 +36,5 @@ node = nodes.RealizeInstances(geometry=None, legacy_behavior=False)
 | **[Instances](Instances.md)** |
 | [realize](Instances.md#realize) | `def realize(self, geometry=None, legacy_behavior=False):` |
 
-<sub>Go to [top](#node-Realize-Instances) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Realize-Instances) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

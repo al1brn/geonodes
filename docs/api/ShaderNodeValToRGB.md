@@ -1,6 +1,6 @@
 # Node *ColorRamp*
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/color_ramp.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeValToRGB.html)
@@ -35,5 +35,5 @@ node = nodes.ColorRamp(fac=None)
 | **[Float](Float.md)** |
 | [color_ramp](Float.md#color_ramp-property) | `@property`<br> `def color_ramp(self):` |
 
-<sub>Go to [top](#node-ColorRamp) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-ColorRamp) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

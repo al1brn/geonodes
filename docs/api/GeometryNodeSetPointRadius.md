@@ -1,6 +1,6 @@
 # Node *Set Point Radius*
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/point/set_point_radius.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetPointRadius.html)
@@ -37,5 +37,5 @@ node = nodes.SetPointRadius(points=None, selection=None, radius=None)
 | **[Points](Points.md)** |
 | [set_point_radius](Points.md#set_point_radius) | `def set_point_radius(self, selection=None, radius=None):` |
 
-<sub>Go to [top](#node-Set-Point-Radius) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Set-Point-Radius) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

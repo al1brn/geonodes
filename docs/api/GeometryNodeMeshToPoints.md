@@ -1,6 +1,6 @@
 # Node *Mesh to Points*
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/mesh_to_points.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshToPoints.html)
@@ -41,5 +41,5 @@ node = nodes.MeshToPoints(mesh=None, selection=None, position=None, radius=None,
 | **[Vertex](Vertex.md)** |
 | [to_points](Vertex.md#to_points) | `def to_points(self, position=None, radius=None, mode='VERTICES'):` |
 
-<sub>Go to [top](#node-Mesh-to-Points) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Mesh-to-Points) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

@@ -1,6 +1,6 @@
 # Node *String*
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/string.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeInputString.html)
@@ -32,5 +32,5 @@ node = nodes.String(string='')
 | **[String](String.md)** |
 | [String](String.md#String-classmethod) | `@classmethod`<br> `def String(cls, string=''):` |
 
-<sub>Go to [top](#node-String) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-String) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

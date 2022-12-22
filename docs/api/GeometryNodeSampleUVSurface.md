@@ -1,6 +1,6 @@
 # Node *Sample UV Surface*
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/sample_uv_surface.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSampleUVSurface.html)
@@ -45,5 +45,5 @@ node = nodes.SampleUvSurface(mesh=None, value=None, source_uv_map=None, sample_u
 | **[Mesh](Mesh.md)** |
 | [sample_uv_surface](Mesh.md#sample_uv_surface) | `def sample_uv_surface(self, value=None, source_uv_map=None, sample_uv=None):` |
 
-<sub>Go to [top](#node-Sample-UV-Surface) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Sample-UV-Surface) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

@@ -1,6 +1,6 @@
 # Node *Curve Tangent*
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/curve_tangent.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputTangent.html)
@@ -26,5 +26,5 @@ node = nodes.CurveTangent()
 | **[ControlPoint](ControlPoint.md)** |
 | [tangent](ControlPoint.md#tangent-property) | `@property`<br> `def tangent(self):` |
 
-<sub>Go to [top](#node-Curve-Tangent) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Curve-Tangent) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

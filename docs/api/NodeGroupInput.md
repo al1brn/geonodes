@@ -1,6 +1,6 @@
 # Node *Group Input*
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/r.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.NodeGroupInput.html)
@@ -32,5 +32,5 @@ node = nodes.GroupInput()
 - **color** : [Color](Color.md)
 
 
-<sub>Go to [top](#node-Group-Input) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Group-Input) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

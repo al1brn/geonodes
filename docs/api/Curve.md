@@ -1,6 +1,6 @@
 # class Curve
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 ## Properties
 
@@ -72,7 +72,7 @@ def Arc(cls, resolution=None, radius=None, start_angle=None, sweep_angle=None, c
 #### Returns:
 - socket `curve`
 
-<sub>Go to [top](#class-Curve) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## ArcFromPoints <sub>*classmethod*</sub>
 
@@ -94,7 +94,7 @@ def ArcFromPoints(cls, resolution=None, start=None, middle=None, end=None, offse
 #### Returns:
 - node with sockets ['curve', 'center', 'normal', 'radius']
 
-<sub>Go to [top](#class-Curve) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## Circle <sub>*classmethod*</sub>
 
@@ -111,7 +111,7 @@ def Circle(cls, resolution=None, radius=None):
 #### Returns:
 - socket `curve`
 
-<sub>Go to [top](#class-Curve) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## CircleFromPoints <sub>*classmethod*</sub>
 
@@ -130,7 +130,7 @@ def CircleFromPoints(cls, resolution=None, point_1=None, point_2=None, point_3=N
 #### Returns:
 - node with sockets ['curve', 'center']
 
-<sub>Go to [top](#class-Curve) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## Line <sub>*classmethod*</sub>
 
@@ -147,7 +147,7 @@ def Line(cls, start=None, end=None):
 #### Returns:
 - socket `curve`
 
-<sub>Go to [top](#class-Curve) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## LineDirection <sub>*classmethod*</sub>
 
@@ -165,7 +165,7 @@ def LineDirection(cls, start=None, direction=None, length=None):
 #### Returns:
 - socket `curve`
 
-<sub>Go to [top](#class-Curve) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## QuadraticBezier <sub>*classmethod*</sub>
 
@@ -184,7 +184,7 @@ def QuadraticBezier(cls, resolution=None, start=None, middle=None, end=None):
 #### Returns:
 - socket `curve`
 
-<sub>Go to [top](#class-Curve) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## Quadrilateral <sub>*classmethod*</sub>
 
@@ -211,7 +211,7 @@ def Quadrilateral(cls, width=None, height=None, bottom_width=None, top_width=Non
 #### Returns:
 - socket `curve`
 
-<sub>Go to [top](#class-Curve) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## Spiral <sub>*classmethod*</sub>
 
@@ -232,7 +232,7 @@ def Spiral(cls, resolution=None, rotations=None, start_radius=None, end_radius=N
 #### Returns:
 - socket `curve`
 
-<sub>Go to [top](#class-Curve) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## Star <sub>*classmethod*</sub>
 
@@ -251,7 +251,7 @@ def Star(cls, points=None, inner_radius=None, outer_radius=None, twist=None):
 #### Returns:
 - node with sockets ['curve', 'outer_points']
 
-<sub>Go to [top](#class-Curve) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## bezier_segment <sub>*classmethod*</sub>
 
@@ -272,7 +272,7 @@ def bezier_segment(cls, resolution=None, start=None, start_handle=None, end_hand
 #### Returns:
 - socket `curve`
 
-<sub>Go to [top](#class-Curve) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## curve_of_point
 
@@ -290,7 +290,7 @@ def curve_of_point(self, point_index=None):
 #### Returns:
 - tuple ('`curve_index`', '`index_in_curve`')
 
-<sub>Go to [top](#class-Curve) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## deform_on_surface
 
@@ -303,7 +303,7 @@ def deform_on_surface(self):
 #### Returns:
 - self
 
-<sub>Go to [top](#class-Curve) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## domain_size <sub>*property*</sub>
 
@@ -316,7 +316,7 @@ def domain_size(self):
 #### Returns:
 - node with sockets ['point_count', 'edge_count', 'face_count', 'face_corner_count', 'spline_count', 'instance_count']
 
-<sub>Go to [top](#class-Curve) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## fill
 
@@ -333,7 +333,7 @@ def fill(self, curve=None, mode='TRIANGLES'):
 #### Returns:
 - socket `mesh` of class Mesh
 
-<sub>Go to [top](#class-Curve) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## fill_ngons
 
@@ -349,7 +349,7 @@ def fill_ngons(self, curve=None):
 #### Returns:
 - socket `mesh` of class Mesh
 
-<sub>Go to [top](#class-Curve) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## fill_triangles
 
@@ -365,7 +365,7 @@ def fill_triangles(self, curve=None):
 #### Returns:
 - socket `mesh` of class Mesh
 
-<sub>Go to [top](#class-Curve) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## fillet
 
@@ -384,7 +384,7 @@ def fillet(self, count=None, radius=None, limit_radius=None, mode='BEZIER'):
 #### Returns:
 - self
 
-<sub>Go to [top](#class-Curve) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## fillet_bezier
 
@@ -401,7 +401,7 @@ def fillet_bezier(self, radius=None, limit_radius=None):
 #### Returns:
 - self
 
-<sub>Go to [top](#class-Curve) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## fillet_poly
 
@@ -419,7 +419,7 @@ def fillet_poly(self, count=None, radius=None, limit_radius=None):
 #### Returns:
 - self
 
-<sub>Go to [top](#class-Curve) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## instance_on_points
 
@@ -440,7 +440,7 @@ def instance_on_points(self, selection=None, instance=None, pick_instance=None, 
 #### Returns:
 - socket `instances`
 
-<sub>Go to [top](#class-Curve) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## length <sub>*property*</sub>
 
@@ -453,7 +453,7 @@ def length(self):
 #### Returns:
 - socket `length`
 
-<sub>Go to [top](#class-Curve) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## offset_point
 
@@ -472,7 +472,7 @@ def offset_point(self, point_index=None, offset=None):
 #### Returns:
 - tuple ('`is_valid_offset`', '`point_index`')
 
-<sub>Go to [top](#class-Curve) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## point_count <sub>*property*</sub>
 
@@ -485,7 +485,7 @@ def point_count(self):
 #### Returns:
 - socket `point_count`
 
-<sub>Go to [top](#class-Curve) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## points_of_curve
 
@@ -505,7 +505,7 @@ def points_of_curve(self, curve_index=None, weights=None, sort_index=None):
 #### Returns:
 - tuple ('`point_index`', '`total`')
 
-<sub>Go to [top](#class-Curve) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## resample
 
@@ -524,7 +524,7 @@ def resample(self, selection=None, count=None, length=None, mode='COUNT'):
 #### Returns:
 - self
 
-<sub>Go to [top](#class-Curve) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## resample_count
 
@@ -541,7 +541,7 @@ def resample_count(self, selection=None, count=None):
 #### Returns:
 - self
 
-<sub>Go to [top](#class-Curve) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## resample_evaluated
 
@@ -557,7 +557,7 @@ def resample_evaluated(self, selection=None):
 #### Returns:
 - self
 
-<sub>Go to [top](#class-Curve) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## resample_length
 
@@ -574,7 +574,7 @@ def resample_length(self, selection=None, length=None):
 #### Returns:
 - self
 
-<sub>Go to [top](#class-Curve) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## reverse
 
@@ -590,7 +590,7 @@ def reverse(self, selection=None):
 #### Returns:
 - self
 
-<sub>Go to [top](#class-Curve) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## sample
 
@@ -612,7 +612,7 @@ def sample(self, value=None, factor=None, length=None, curve_index=None, data_ty
 #### Returns:
 - self
 
-<sub>Go to [top](#class-Curve) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## spline_count <sub>*property*</sub>
 
@@ -625,7 +625,7 @@ def spline_count(self):
 #### Returns:
 - socket `spline_count`
 
-<sub>Go to [top](#class-Curve) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## subdivide
 
@@ -641,7 +641,7 @@ def subdivide(self, cuts=None):
 #### Returns:
 - self
 
-<sub>Go to [top](#class-Curve) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## to_mesh
 
@@ -658,7 +658,7 @@ def to_mesh(self, profile_curve=None, fill_caps=None):
 #### Returns:
 - socket `mesh` of class Mesh
 
-<sub>Go to [top](#class-Curve) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## to_points
 
@@ -678,7 +678,7 @@ def to_points(self, count=None, length=None, mode='COUNT'):
 #### Returns:
 - tuple ('`points`', '`tangent`', '`normal`', '`rotation`')
 
-<sub>Go to [top](#class-Curve) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## to_points_count
 
@@ -696,7 +696,7 @@ def to_points_count(self, count=None):
 #### Returns:
 - tuple ('`points`', '`tangent`', '`normal`', '`rotation`')
 
-<sub>Go to [top](#class-Curve) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## to_points_evaluated
 
@@ -711,7 +711,7 @@ def to_points_evaluated(self):
 #### Returns:
 - tuple ('`points`', '`tangent`', '`normal`', '`rotation`')
 
-<sub>Go to [top](#class-Curve) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## to_points_length
 
@@ -729,7 +729,7 @@ def to_points_length(self, length=None):
 #### Returns:
 - tuple ('`points`', '`tangent`', '`normal`', '`rotation`')
 
-<sub>Go to [top](#class-Curve) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## trim
 
@@ -745,7 +745,7 @@ def trim(self, start=None, end=None, mode='FACTOR'):
 #### Returns:
 - self
 
-<sub>Go to [top](#class-Curve) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## trim_factor
 
@@ -762,7 +762,7 @@ def trim_factor(self, start=None, end=None):
 #### Returns:
 - self
 
-<sub>Go to [top](#class-Curve) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## trim_length
 
@@ -779,5 +779,5 @@ def trim_length(self, start=None, end=None):
 #### Returns:
 - self
 
-<sub>Go to [top](#class-Curve) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

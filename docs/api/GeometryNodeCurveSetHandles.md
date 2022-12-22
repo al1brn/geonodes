@@ -1,6 +1,6 @@
 # Node *Set Handle Type*
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/set_handle_type.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveSetHandles.html)
@@ -39,5 +39,5 @@ node = nodes.SetHandleType(curve=None, selection=None, handle_type='AUTO', mode=
 | [set_handle_type_node](ControlPoint.md#set_handle_type_node) | `def set_handle_type_node(self, handle_type='AUTO', mode={'RIGHT', 'LEFT'}):` |
 | [set_handle_type](ControlPoint.md#set_handle_type) | `def set_handle_type(self, left=True, right=True, handle_type='AUTO'):` |
 
-<sub>Go to [top](#node-Set-Handle-Type) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Set-Handle-Type) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

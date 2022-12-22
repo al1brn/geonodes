@@ -1,6 +1,6 @@
 # Node *Mesh Line*
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh_primitives/mesh_line.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshLine.html)
@@ -44,5 +44,5 @@ node = nodes.MeshLine(count=None, resolution=None, start_location=None, offset=N
 | [LineEndPointsResolution](Mesh.md#LineEndPointsResolution-classmethod) | `@classmethod`<br> `def LineEndPointsResolution(cls, resolution=None, start_location=None, end_location=None):` |
 | [LineOffsetResolution](Mesh.md#LineOffsetResolution-classmethod) | `@classmethod`<br> `def LineOffsetResolution(cls, resolution=None, start_location=None, offset=None):` |
 
-<sub>Go to [top](#node-Mesh-Line) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Mesh-Line) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

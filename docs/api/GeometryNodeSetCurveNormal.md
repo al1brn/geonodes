@@ -1,6 +1,6 @@
 # Node *Set Curve Normal*
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/set_curve_normal.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetCurveNormal.html)
@@ -39,5 +39,5 @@ node = nodes.SetCurveNormal(curve=None, selection=None, mode='MINIMUM_TWIST')
 | [normal](Spline.md#normal) | `@normal.setter
 `<br> `def normal(self, attr_value):` |
 
-<sub>Go to [top](#node-Set-Curve-Normal) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Set-Curve-Normal) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

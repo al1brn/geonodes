@@ -1,6 +1,6 @@
 # Node *Is Shade Smooth*
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/is_shade_smooth.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputShadeSmooth.html)
@@ -28,5 +28,5 @@ node = nodes.IsShadeSmooth()
 | **[Mesh](Mesh.md)** |
 | [is_shade_smooth](Mesh.md#is_shade_smooth) | `def is_shade_smooth(self):` |
 
-<sub>Go to [top](#node-Is-Shade-Smooth) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Is-Shade-Smooth) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

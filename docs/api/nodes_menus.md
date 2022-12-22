@@ -21,7 +21,7 @@
 
 ## Menu Attribute
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 | node | class | method name |
 |------|-------|-------------|
@@ -47,11 +47,11 @@
 | [Remove Named Attribute](GeometryNodeRemoveAttribute.md) | [Domain](Domain.md) | [remove_named_attribute](Domain.md#remove_named_attribute) |
 |      | [Geometry](Geometry.md) | [remove_named_attribute](Geometry.md#remove_named_attribute) |
 
-<sub>Go to [top](#nodes-menus) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#nodes-menus) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## Menu Color
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 | node | class | method name |
 |------|-------|-------------|
@@ -68,11 +68,11 @@
 | [Separate Color](FunctionNodeSeparateColor.md) | [Color](Color.md) | [rgb](Color.md#rgb-property) / [hsv](Color.md#hsv-property) / [hsl](Color.md#hsl-property) / [alpha](Color.md#alpha-property) / [red](Color.md#red-property) / [green](Color.md#green-property) / [blue](Color.md#blue-property) / [hue](Color.md#hue-property) / [saturation](Color.md#saturation-property) / [value](Color.md#value-property) / [lightness](Color.md#lightness-property) / |
 |      | [function](function.md) | - [separate_rgb](function.md#separate_rgb)<br>- [separate_hsv](function.md#separate_hsv)<br>- [separate_hsl](function.md#separate_hsl)|
 
-<sub>Go to [top](#nodes-menus) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#nodes-menus) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## Menu Curve
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 | node | class | method name |
 |------|-------|-------------|
@@ -106,11 +106,11 @@
 | [Set Spline Resolution](GeometryNodeSetSplineResolution.md) | [Spline](Spline.md) | - [set_resolution](Spline.md#set_resolution)<br>- [resolution](Spline.md#resolution)|
 | [Set Spline Type](GeometryNodeCurveSplineType.md) | [Spline](Spline.md) | - [set_type](Spline.md#set_type)<br>- [type](Spline.md#type-property)<br>- [type](Spline.md#type)|
 
-<sub>Go to [top](#nodes-menus) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#nodes-menus) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## Menu Curve Primitives
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 | node | class | method name |
 |------|-------|-------------|
@@ -123,11 +123,11 @@
 | [Quadrilateral](GeometryNodeCurvePrimitiveQuadrilateral.md) | [Curve](Curve.md) | [Quadrilateral](Curve.md#Quadrilateral-classmethod) |
 | [Star](GeometryNodeCurveStar.md) | [Curve](Curve.md) | [Star](Curve.md#Star-classmethod) |
 
-<sub>Go to [top](#nodes-menus) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#nodes-menus) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## Menu Curve Topology
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 | node | class | method name |
 |------|-------|-------------|
@@ -138,11 +138,11 @@
 | [Points of Curve](GeometryNodePointsOfCurve.md) | [Curve](Curve.md) | [points_of_curve](Curve.md#points_of_curve) |
 |      | [Spline](Spline.md) | [points](Spline.md#points) |
 
-<sub>Go to [top](#nodes-menus) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#nodes-menus) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## Menu Geometry
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 | node | class | method name |
 |------|-------|-------------|
@@ -199,11 +199,11 @@
 | [Set Position](GeometryNodeSetPosition.md) | [Domain](Domain.md) | - [set_position](Domain.md#set_position)<br>- [position](Domain.md#position)|
 |      | [Geometry](Geometry.md) | [set_position](Geometry.md#set_position) |
 
-<sub>Go to [top](#nodes-menus) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#nodes-menus) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## Menu Input
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 | node | class | method name |
 |------|-------|-------------|
@@ -234,11 +234,11 @@
 |      | [Geometry](Geometry.md) | [radius](Geometry.md#radius-property) |
 | [Scene Time](GeometryNodeInputSceneTime.md) | [Float](Float.md) | - [Seconds](Float.md#Seconds-classmethod)<br>- [Frame](Float.md#Frame-classmethod)|
 
-<sub>Go to [top](#nodes-menus) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#nodes-menus) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## Menu Instances
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 | node | class | method name |
 |------|-------|-------------|
@@ -263,11 +263,11 @@
 | [Instance Rotation](GeometryNodeInputInstanceRotation.md) | [Instance](Instance.md) | [rotation](Instance.md#rotation-property) |
 |      | [Instances](Instances.md) | [rotation](Instances.md#rotation-property) |
 
-<sub>Go to [top](#nodes-menus) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#nodes-menus) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## Menu Material
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 | node | class | method name |
 |------|-------|-------------|
@@ -282,11 +282,11 @@
 | [Set Material Index](GeometryNodeSetMaterialIndex.md) | [Domain](Domain.md) | [set_material_index](Domain.md#set_material_index) |
 |      | [Geometry](Geometry.md) | [set_material_index](Geometry.md#set_material_index) |
 
-<sub>Go to [top](#nodes-menus) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#nodes-menus) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## Menu Mesh
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 | node | class | method name |
 |------|-------|-------------|
@@ -336,11 +336,11 @@
 | [Set Shade Smooth](GeometryNodeSetShadeSmooth.md) | [Face](Face.md) | - [set_shade_smooth](Face.md#set_shade_smooth)<br>- [shade_smooth](Face.md#shade_smooth)|
 |      | [Mesh](Mesh.md) | [set_shade_smooth](Mesh.md#set_shade_smooth) |
 
-<sub>Go to [top](#nodes-menus) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#nodes-menus) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## Menu Mesh Primitives
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 | node | class | method name |
 |------|-------|-------------|
@@ -353,11 +353,11 @@
 | [Mesh Line](GeometryNodeMeshLine.md) | [Mesh](Mesh.md) | [Line](Mesh.md#Line-classmethod) / [LineEndPoints](Mesh.md#LineEndPoints-classmethod) / [LineOffset](Mesh.md#LineOffset-classmethod) / [LineEndPointsResolution](Mesh.md#LineEndPointsResolution-classmethod) / [LineOffsetResolution](Mesh.md#LineOffsetResolution-classmethod) / |
 | [UV Sphere](GeometryNodeMeshUVSphere.md) | [Mesh](Mesh.md) | [Circle](Mesh.md#Circle-classmethod) |
 
-<sub>Go to [top](#nodes-menus) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#nodes-menus) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## Menu Point
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 | node | class | method name |
 |------|-------|-------------|
@@ -371,11 +371,11 @@
 | [Set Point Radius](GeometryNodeSetPointRadius.md) | [CloudPoint](CloudPoint.md) | [radius](CloudPoint.md#radius) |
 |      | [Points](Points.md) | [set_point_radius](Points.md#set_point_radius) |
 
-<sub>Go to [top](#nodes-menus) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#nodes-menus) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## Menu Text
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 | node | class | method name |
 |------|-------|-------------|
@@ -394,11 +394,11 @@
 |      | [function](function.md) | [value_to_string](function.md#value_to_string) |
 | [Special Characters](FunctionNodeInputSpecialCharacters.md) | [String](String.md) | - [LineBreak](String.md#LineBreak-staticmethod)<br>- [Tab](String.md#Tab-staticmethod)|
 
-<sub>Go to [top](#nodes-menus) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#nodes-menus) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## Menu Texture
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 | node | class | method name |
 |------|-------|-------------|
@@ -414,11 +414,11 @@
 | [Wave Texture](ShaderNodeTexWave.md) | [Texture](Texture.md) | [wave](Texture.md#wave-staticmethod) / [wave_bands](Texture.md#wave_bands-staticmethod) / [wave_rings](Texture.md#wave_rings-staticmethod) / [wave_bands_sine](Texture.md#wave_bands_sine-staticmethod) / [wave_bands_saw](Texture.md#wave_bands_saw-staticmethod) / [wave_bands_triangle](Texture.md#wave_bands_triangle-staticmethod) / [wave_rings_sine](Texture.md#wave_rings_sine-staticmethod) / [wave_rings_saw](Texture.md#wave_rings_saw-staticmethod) / [wave_rings_triangle](Texture.md#wave_rings_triangle-staticmethod) / |
 | [White Noise Texture](ShaderNodeTexWhiteNoise.md) | [Texture](Texture.md) | [white_noise](Texture.md#white_noise-staticmethod) / [white_noise_1D](Texture.md#white_noise_1D-staticmethod) / [white_noise_2D](Texture.md#white_noise_2D-staticmethod) / [white_noise_3D](Texture.md#white_noise_3D-staticmethod) / [white_noise_4D](Texture.md#white_noise_4D-staticmethod) / |
 
-<sub>Go to [top](#nodes-menus) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#nodes-menus) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## Menu Utilities
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 | node | class | method name |
 |------|-------|-------------|
@@ -464,11 +464,11 @@
 |      | [Vector](Vector.md) | [switch](Vector.md#switch) |
 |      | [function](function.md) | [switch](function.md#switch) / [switch_float](function.md#switch_float) / [switch_integer](function.md#switch_integer) / [switch_boolean](function.md#switch_boolean) / [switch_vector](function.md#switch_vector) / [switch_string](function.md#switch_string) / [switch_color](function.md#switch_color) / [switch_object](function.md#switch_object) / [switch_image](function.md#switch_image) / [switch_geometry](function.md#switch_geometry) / [switch_collection](function.md#switch_collection) / [switch_texture](function.md#switch_texture) / [switch_material](function.md#switch_material) / |
 
-<sub>Go to [top](#nodes-menus) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#nodes-menus) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## Menu UV
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 | node | class | method name |
 |------|-------|-------------|
@@ -477,11 +477,11 @@
 | [UV Unwrap](GeometryNodeUVUnwrap.md) | [Face](Face.md) | [uv_unwrap](Face.md#uv_unwrap) |
 |      | [Mesh](Mesh.md) | [uv_unwrap](Mesh.md#uv_unwrap) |
 
-<sub>Go to [top](#nodes-menus) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#nodes-menus) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## Menu Vector
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 | node | class | method name |
 |------|-------|-------------|
@@ -491,16 +491,16 @@
 | [Vector Math](ShaderNodeVectorMath.md) | [Vector](Vector.md) | [add](Vector.md#add) / [subtract](Vector.md#subtract) / [sub](Vector.md#sub) / [multiply](Vector.md#multiply) / [mul](Vector.md#mul) / [divide](Vector.md#divide) / [div](Vector.md#div) / [multiply_add](Vector.md#multiply_add) / [mul_add](Vector.md#mul_add) / [cross_product](Vector.md#cross_product) / [cross](Vector.md#cross) / [project](Vector.md#project) / [reflect](Vector.md#reflect) / [refract](Vector.md#refract) / [face_forward](Vector.md#face_forward) / [dot_product](Vector.md#dot_product) / [dot](Vector.md#dot) / [distance](Vector.md#distance) / [length](Vector.md#length-property) / [scale](Vector.md#scale) / [normalize](Vector.md#normalize) / [absolute](Vector.md#absolute) / [abs](Vector.md#abs) / [minimum](Vector.md#minimum) / [min](Vector.md#min) / [maximum](Vector.md#maximum) / [max](Vector.md#max) / [floor](Vector.md#floor) / [ceil](Vector.md#ceil) / [fraction](Vector.md#fraction) / [fract](Vector.md#fract) / [modulo](Vector.md#modulo) / [wrap](Vector.md#wrap) / [snap](Vector.md#snap) / [sine](Vector.md#sine) / [sin](Vector.md#sin) / [cosine](Vector.md#cosine) / [cos](Vector.md#cos) / [tangent](Vector.md#tangent) / [tan](Vector.md#tan) / |
 | [Vector Rotate](ShaderNodeVectorRotate.md) | [Vector](Vector.md) | [rotate_euler](Vector.md#rotate_euler) / [rotate_axis_angle](Vector.md#rotate_axis_angle) / [rotate_x](Vector.md#rotate_x) / [rotate_y](Vector.md#rotate_y) / [rotate_z](Vector.md#rotate_z) / |
 
-<sub>Go to [top](#nodes-menus) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#nodes-menus) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## Menu Volume
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 | node | class | method name |
 |------|-------|-------------|
 | [Volume Cube](GeometryNodeVolumeCube.md) | [Volume](Volume.md) | [Cube](Volume.md#Cube-classmethod) |
 | [Volume to Mesh](GeometryNodeVolumeToMesh.md) | [Volume](Volume.md) | [to_mesh](Volume.md#to_mesh) |
 
-<sub>Go to [top](#nodes-menus) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#nodes-menus) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

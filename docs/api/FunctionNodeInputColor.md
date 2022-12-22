@@ -1,6 +1,6 @@
 # Node *Color*
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/color.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeInputColor.html)
@@ -26,5 +26,5 @@ node = nodes.Color()
 | **[Color](Color.md)** |
 | [Color](Color.md#Color-classmethod) | `@classmethod`<br> `def Color(cls):` |
 
-<sub>Go to [top](#node-Color) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Color) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

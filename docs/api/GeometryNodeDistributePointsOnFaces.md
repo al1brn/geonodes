@@ -1,6 +1,6 @@
 # Node *Distribute Points on Faces*
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/point/distribute_points_on_faces.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeDistributePointsOnFaces.html)
@@ -47,5 +47,5 @@ node = nodes.DistributePointsOnFaces(mesh=None, selection=None, distance_min=Non
 | **[Mesh](Mesh.md)** |
 | [distribute_points_on_faces](Mesh.md#distribute_points_on_faces) | `def distribute_points_on_faces(self, selection=None, distance_min=None, density_max=None, density=None, density_factor=None, seed=None, distribute_method='RANDOM'):` |
 
-<sub>Go to [top](#node-Distribute-Points-on-Faces) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Distribute-Points-on-Faces) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

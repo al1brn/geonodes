@@ -1,6 +1,6 @@
 # Node *Object Info*
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/object_info.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeObjectInfo.html)
@@ -44,5 +44,5 @@ node = nodes.ObjectInfo(object=None, as_instance=None, transform_space='ORIGINAL
 | [scale](Object.md#scale) | `def scale(self, object=None, as_instance=None, transform_space='ORIGINAL'):` |
 | [geometry](Object.md#geometry) | `def geometry(self, object=None, as_instance=None, transform_space='ORIGINAL'):` |
 
-<sub>Go to [top](#node-Object-Info) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Object-Info) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

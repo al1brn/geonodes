@@ -1,6 +1,6 @@
 # Node *Bounding Box*
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/bounding_box.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeBoundBox.html)
@@ -36,5 +36,5 @@ node = nodes.BoundingBox(geometry=None)
 | [bounding_box_min](Geometry.md#bounding_box_min-property) | `@property`<br> `def bounding_box_min(self):` |
 | [bounding_box_min](Geometry.md#bounding_box_min-property) | `@property`<br> `def bounding_box_min(self):` |
 
-<sub>Go to [top](#node-Bounding-Box) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Bounding-Box) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

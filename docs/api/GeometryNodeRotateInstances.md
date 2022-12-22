@@ -1,6 +1,6 @@
 # Node *Rotate Instances*
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/rotate_instances.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeRotateInstances.html)
@@ -38,5 +38,5 @@ node = nodes.RotateInstances(instances=None, selection=None, rotation=None, pivo
 | **[Instances](Instances.md)** |
 | [rotate](Instances.md#rotate) | `def rotate(self, selection=None, rotation=None, pivot_point=None, local_space=None):` |
 
-<sub>Go to [top](#node-Rotate-Instances) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Rotate-Instances) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

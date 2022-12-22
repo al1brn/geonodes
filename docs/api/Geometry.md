@@ -1,6 +1,6 @@
 # class Geometry
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 ## Properties
 
@@ -93,7 +93,7 @@ def Collection(cls, collection=None, separate_children=None, reset_children=None
 #### Returns:
 - socket `geometry`
 
-<sub>Go to [top](#class-Geometry) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## ID <sub>*property*</sub>
 
@@ -106,7 +106,7 @@ def ID(self):
 #### Returns:
 - socket `ID`
 
-<sub>Go to [top](#class-Geometry) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## attribute_statistic
 
@@ -124,7 +124,7 @@ def attribute_statistic(self, selection=None, attribute=None, domain='POINT'):
 #### Returns:
 - node with sockets ['mean', 'median', 'sum', 'min', 'max', 'range', 'standard_deviation', 'variance']
 
-<sub>Go to [top](#class-Geometry) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## bounding_box <sub>*property*</sub>
 
@@ -137,7 +137,7 @@ def bounding_box(self):
 #### Returns:
 - socket `bounding_box` of class Mesh
 
-<sub>Go to [top](#class-Geometry) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## bounding_box_min <sub>*property*</sub>
 
@@ -150,7 +150,7 @@ def bounding_box_min(self):
 #### Returns:
 - socket `min`
 
-<sub>Go to [top](#class-Geometry) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## bounding_box_min <sub>*property*</sub>
 
@@ -163,7 +163,7 @@ def bounding_box_min(self):
 #### Returns:
 - socket `max`
 
-<sub>Go to [top](#class-Geometry) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## capture_attribute
 
@@ -180,7 +180,7 @@ def capture_attribute(self, value=None, domain='POINT'):
 #### Returns:
 - socket `attribute`
 
-<sub>Go to [top](#class-Geometry) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## capture_attribute_node
 
@@ -199,7 +199,7 @@ def capture_attribute_node(self, geometry=None, value=None, data_type='FLOAT', d
 #### Returns:
 - node with sockets ['geometry', 'attribute']
 
-<sub>Go to [top](#class-Geometry) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## convex_hull <sub>*property*</sub>
 
@@ -212,7 +212,7 @@ def convex_hull(self):
 #### Returns:
 - socket `convex_hull` of class Mesh
 
-<sub>Go to [top](#class-Geometry) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## curve_component <sub>*property*</sub>
 
@@ -225,7 +225,7 @@ def curve_component(self):
 #### Returns:
 - socket `curve` of class Curve
 
-<sub>Go to [top](#class-Geometry) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## delete
 
@@ -243,7 +243,7 @@ def delete(self, selection=None, domain='POINT', mode='ALL'):
 #### Returns:
 - self
 
-<sub>Go to [top](#class-Geometry) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## domain_size <sub>*property*</sub>
 
@@ -256,7 +256,7 @@ def domain_size(self, component='MESH'):
 #### Returns:
 - node with sockets ['point_count', 'edge_count', 'face_count', 'face_corner_count', 'spline_count', 'instance_count']
 
-<sub>Go to [top](#class-Geometry) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## duplicate
 
@@ -274,7 +274,7 @@ def duplicate(self, selection=None, amount=None, domain='POINT'):
 #### Returns:
 - socket `duplicate_index`
 
-<sub>Go to [top](#class-Geometry) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## field_at_index
 
@@ -292,7 +292,7 @@ def field_at_index(self, index=None, value=None, domain='POINT'):
 #### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-Geometry) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## get_named_boolean
 
@@ -308,7 +308,7 @@ def get_named_boolean(self, name=None):
 #### Returns:
 - socket `attribute`
 
-<sub>Go to [top](#class-Geometry) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## get_named_color
 
@@ -324,7 +324,7 @@ def get_named_color(self, name=None):
 #### Returns:
 - socket `attribute`
 
-<sub>Go to [top](#class-Geometry) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## get_named_float
 
@@ -340,7 +340,7 @@ def get_named_float(self, name=None):
 #### Returns:
 - socket `attribute`
 
-<sub>Go to [top](#class-Geometry) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## get_named_integer
 
@@ -356,7 +356,7 @@ def get_named_integer(self, name=None):
 #### Returns:
 - socket `attribute`
 
-<sub>Go to [top](#class-Geometry) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## get_named_vector
 
@@ -372,7 +372,7 @@ def get_named_vector(self, name=None):
 #### Returns:
 - socket `attribute`
 
-<sub>Go to [top](#class-Geometry) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## index <sub>*property*</sub>
 
@@ -385,7 +385,7 @@ def index(self):
 #### Returns:
 - socket `index`
 
-<sub>Go to [top](#class-Geometry) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## instances_component <sub>*property*</sub>
 
@@ -398,7 +398,7 @@ def instances_component(self):
 #### Returns:
 - socket `instances` of class Instances
 
-<sub>Go to [top](#class-Geometry) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## interpolate_domain
 
@@ -415,7 +415,7 @@ def interpolate_domain(self, value=None, domain='POINT'):
 #### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-Geometry) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## is_viewport <sub>*property*</sub>
 
@@ -428,7 +428,7 @@ def is_viewport(self):
 #### Returns:
 - socket `is_viewport`
 
-<sub>Go to [top](#class-Geometry) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## join
 
@@ -444,7 +444,7 @@ def join(*geometry):
 #### Returns:
 - self
 
-<sub>Go to [top](#class-Geometry) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## material_index <sub>*property*</sub>
 
@@ -457,7 +457,7 @@ def material_index(self):
 #### Returns:
 - socket `material_index`
 
-<sub>Go to [top](#class-Geometry) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## material_selection
 
@@ -473,7 +473,7 @@ def material_selection(self, material=None):
 #### Returns:
 - socket `selection`
 
-<sub>Go to [top](#class-Geometry) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## merge_by_distance
 
@@ -491,7 +491,7 @@ def merge_by_distance(self, selection=None, distance=None, mode='ALL'):
 #### Returns:
 - self
 
-<sub>Go to [top](#class-Geometry) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## mesh_component <sub>*property*</sub>
 
@@ -504,7 +504,7 @@ def mesh_component(self):
 #### Returns:
 - socket `mesh` of class Mesh
 
-<sub>Go to [top](#class-Geometry) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## named_attribute
 
@@ -521,7 +521,7 @@ def named_attribute(self, name=None, data_type='FLOAT'):
 #### Returns:
 - socket `attribute`
 
-<sub>Go to [top](#class-Geometry) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## normal <sub>*property*</sub>
 
@@ -534,7 +534,7 @@ def normal(self):
 #### Returns:
 - socket `normal`
 
-<sub>Go to [top](#class-Geometry) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## points_component <sub>*property*</sub>
 
@@ -547,7 +547,7 @@ def points_component(self):
 #### Returns:
 - socket `point_cloud` of class Points
 
-<sub>Go to [top](#class-Geometry) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## position <sub>*property*</sub>
 
@@ -560,7 +560,7 @@ def position(self):
 #### Returns:
 - socket `position`
 
-<sub>Go to [top](#class-Geometry) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## proximity
 
@@ -578,7 +578,7 @@ def proximity(self, target=None, source_position=None, target_element='FACES'):
 #### Returns:
 - socket `distance`
 
-<sub>Go to [top](#class-Geometry) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## proximity_edges
 
@@ -595,7 +595,7 @@ def proximity_edges(self, target=None, source_position=None):
 #### Returns:
 - socket `distance`
 
-<sub>Go to [top](#class-Geometry) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## proximity_faces
 
@@ -612,7 +612,7 @@ def proximity_faces(self, target=None, source_position=None):
 #### Returns:
 - socket `distance`
 
-<sub>Go to [top](#class-Geometry) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## proximity_points
 
@@ -629,7 +629,7 @@ def proximity_points(self, target=None, source_position=None):
 #### Returns:
 - socket `distance`
 
-<sub>Go to [top](#class-Geometry) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## radius <sub>*property*</sub>
 
@@ -642,7 +642,7 @@ def radius(self):
 #### Returns:
 - socket `radius`
 
-<sub>Go to [top](#class-Geometry) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## random_boolean
 
@@ -660,7 +660,7 @@ def random_boolean(self, probability=None, ID=None, seed=None):
 #### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-Geometry) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## random_float
 
@@ -679,7 +679,7 @@ def random_float(self, min=None, max=None, ID=None, seed=None):
 #### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-Geometry) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## random_integer
 
@@ -698,7 +698,7 @@ def random_integer(self, min=None, max=None, ID=None, seed=None):
 #### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-Geometry) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## random_vector
 
@@ -717,7 +717,7 @@ def random_vector(self, min=None, max=None, ID=None, seed=None):
 #### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-Geometry) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## raycast
 
@@ -738,7 +738,7 @@ def raycast(self, target_geometry=None, attribute=None, source_position=None, ra
 #### Returns:
 - node with sockets ['is_hit', 'hit_position', 'hit_normal', 'hit_distance', 'attribute']
 
-<sub>Go to [top](#class-Geometry) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## raycast_interpolated
 
@@ -758,7 +758,7 @@ def raycast_interpolated(self, target_geometry=None, attribute=None, source_posi
 #### Returns:
 - node with sockets ['is_hit', 'hit_position', 'hit_normal', 'hit_distance', 'attribute']
 
-<sub>Go to [top](#class-Geometry) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## raycast_nearest
 
@@ -778,7 +778,7 @@ def raycast_nearest(self, target_geometry=None, attribute=None, source_position=
 #### Returns:
 - node with sockets ['is_hit', 'hit_position', 'hit_normal', 'hit_distance', 'attribute']
 
-<sub>Go to [top](#class-Geometry) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## remove_named_attribute
 
@@ -794,7 +794,7 @@ def remove_named_attribute(self, name=None):
 #### Returns:
 - self
 
-<sub>Go to [top](#class-Geometry) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## replace_material
 
@@ -811,7 +811,7 @@ def replace_material(self, old=None, new=None):
 #### Returns:
 - self
 
-<sub>Go to [top](#class-Geometry) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## sample_index
 
@@ -830,7 +830,7 @@ def sample_index(self, value=None, index=None, clamp=False, domain='POINT'):
 #### Returns:
 - socket `value`
 
-<sub>Go to [top](#class-Geometry) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## sample_nearest
 
@@ -847,7 +847,7 @@ def sample_nearest(self, sample_position=None, domain='POINT'):
 #### Returns:
 - socket `index`
 
-<sub>Go to [top](#class-Geometry) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## separate
 
@@ -867,7 +867,7 @@ def separate(self, geometry=None, selection=None, domain='POINT'):
 #### Returns:
 - tuple ('`selection`', '`inverted`')
 
-<sub>Go to [top](#class-Geometry) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## separate_components <sub>*property*</sub>
 
@@ -880,7 +880,7 @@ def separate_components(self):
 #### Returns:
 - node with sockets ['mesh', 'point_cloud', 'curve', 'volume', 'instances']
 
-<sub>Go to [top](#class-Geometry) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## set_ID
 
@@ -897,7 +897,7 @@ def set_ID(self, selection=None, ID=None):
 #### Returns:
 - self
 
-<sub>Go to [top](#class-Geometry) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## set_material
 
@@ -914,7 +914,7 @@ def set_material(self, selection=None, material=None):
 #### Returns:
 - self
 
-<sub>Go to [top](#class-Geometry) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## set_material_index
 
@@ -931,7 +931,7 @@ def set_material_index(self, selection=None, material_index=None):
 #### Returns:
 - self
 
-<sub>Go to [top](#class-Geometry) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## set_named_boolean
 
@@ -949,7 +949,7 @@ def set_named_boolean(self, name=None, value=None, domain='POINT'):
 #### Returns:
 - self
 
-<sub>Go to [top](#class-Geometry) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## set_named_color
 
@@ -967,7 +967,7 @@ def set_named_color(self, name=None, value=None, domain='POINT'):
 #### Returns:
 - self
 
-<sub>Go to [top](#class-Geometry) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## set_named_float
 
@@ -985,7 +985,7 @@ def set_named_float(self, name=None, value=None, domain='POINT'):
 #### Returns:
 - self
 
-<sub>Go to [top](#class-Geometry) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## set_named_integer
 
@@ -1003,7 +1003,7 @@ def set_named_integer(self, name=None, value=None, domain='POINT'):
 #### Returns:
 - self
 
-<sub>Go to [top](#class-Geometry) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## set_named_vector
 
@@ -1021,7 +1021,7 @@ def set_named_vector(self, name=None, value=None, domain='POINT'):
 #### Returns:
 - self
 
-<sub>Go to [top](#class-Geometry) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## set_position
 
@@ -1039,7 +1039,7 @@ def set_position(self, selection=None, position=None, offset=None):
 #### Returns:
 - self
 
-<sub>Go to [top](#class-Geometry) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## store_named_attribute
 
@@ -1057,7 +1057,7 @@ def store_named_attribute(self, name=None, value=None, domain='POINT'):
 #### Returns:
 - self
 
-<sub>Go to [top](#class-Geometry) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## switch
 
@@ -1074,7 +1074,7 @@ def switch(self, switch=None, true=None):
 #### Returns:
 - socket `output`
 
-<sub>Go to [top](#class-Geometry) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## to_instance
 
@@ -1090,7 +1090,7 @@ def to_instance(*geometry):
 #### Returns:
 - socket `instances` of class Instances
 
-<sub>Go to [top](#class-Geometry) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## transform
 
@@ -1108,7 +1108,7 @@ def transform(self, translation=None, rotation=None, scale=None):
 #### Returns:
 - self
 
-<sub>Go to [top](#class-Geometry) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## volume_component <sub>*property*</sub>
 
@@ -1121,5 +1121,5 @@ def volume_component(self):
 #### Returns:
 - socket `volume` of class Volume
 
-<sub>Go to [top](#class-Geometry) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

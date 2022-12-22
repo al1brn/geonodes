@@ -1,6 +1,6 @@
 # Node *Instance on Points*
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instance_on_points.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInstanceOnPoints.html)
@@ -51,5 +51,5 @@ node = nodes.InstanceOnPoints(points=None, selection=None, instance=None, pick_i
 | **[Vertex](Vertex.md)** |
 | [instance_on_points](Vertex.md#instance_on_points) | `def instance_on_points(self, instance=None, pick_instance=None, instance_index=None, rotation=None, scale=None):` |
 
-<sub>Go to [top](#node-Instance-on-Points) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Instance-on-Points) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

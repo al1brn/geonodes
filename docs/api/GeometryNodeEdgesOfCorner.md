@@ -1,6 +1,6 @@
 # Node *Edges of Corner*
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh_topology/edges_of_corner.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeEdgesOfCorner.html)
@@ -37,5 +37,5 @@ node = nodes.EdgesOfCorner(corner_index=None)
 | **[Mesh](Mesh.md)** |
 | [edges_of_corner](Mesh.md#edges_of_corner) | `def edges_of_corner(self, corner_index=None):` |
 
-<sub>Go to [top](#node-Edges-of-Corner) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Edges-of-Corner) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

@@ -1,6 +1,6 @@
 # Node *Ico Sphere*
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh_primitives/icosphere.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshIcoSphere.html)
@@ -33,5 +33,5 @@ node = nodes.IcoSphere(radius=None, subdivisions=None)
 | **[Mesh](Mesh.md)** |
 | [IcoSphere](Mesh.md#IcoSphere-classmethod) | `@classmethod`<br> `def IcoSphere(cls, radius=None, subdivisions=None):` |
 
-<sub>Go to [top](#node-Ico-Sphere) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Ico-Sphere) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

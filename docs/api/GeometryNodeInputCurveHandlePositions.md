@@ -1,6 +1,6 @@
 # Node *Curve Handle Positions*
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/curve_handle_position.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputCurveHandlePositions.html)
@@ -35,5 +35,5 @@ node = nodes.CurveHandlePositions(relative=None)
 | [left_handle_positions](ControlPoint.md#left_handle_positions-property) | `@property`<br> `def left_handle_positions(self):` |
 | [right_handle_positions](ControlPoint.md#right_handle_positions-property) | `@property`<br> `def right_handle_positions(self):` |
 
-<sub>Go to [top](#node-Curve-Handle-Positions) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Curve-Handle-Positions) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

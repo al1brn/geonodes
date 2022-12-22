@@ -1,6 +1,6 @@
 # Node *Edge Vertices*
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/edge_vertices.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshEdgeVertices.html)
@@ -31,5 +31,5 @@ node = nodes.EdgeVertices()
 | [vertices_index](Edge.md#vertices_index-property) | `@property`<br> `def vertices_index(self):` |
 | [vertices_position](Edge.md#vertices_position-property) | `@property`<br> `def vertices_position(self):` |
 
-<sub>Go to [top](#node-Edge-Vertices) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Edge-Vertices) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

@@ -1,6 +1,6 @@
 # Node *Shortest Edge Paths*
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/shortest_edge_paths.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputShortestEdgePaths.html)
@@ -34,5 +34,5 @@ node = nodes.ShortestEdgePaths(end_vertex=None, edge_cost=None)
 | **[Mesh](Mesh.md)** |
 | [shortest_edge_paths](Mesh.md#shortest_edge_paths) | `def shortest_edge_paths(self, end_vertex=None, edge_cost=None):` |
 
-<sub>Go to [top](#node-Shortest-Edge-Paths) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Shortest-Edge-Paths) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

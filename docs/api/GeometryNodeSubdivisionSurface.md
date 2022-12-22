@@ -1,6 +1,6 @@
 # Node *Subdivision Surface*
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/subdivision_surface.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSubdivisionSurface.html)
@@ -40,5 +40,5 @@ node = nodes.SubdivisionSurface(mesh=None, level=None, edge_crease=None, vertex_
 | **[Mesh](Mesh.md)** |
 | [subdivision_surface](Mesh.md#subdivision_surface) | `def subdivision_surface(self, level=None, edge_crease=None, vertex_crease=None, boundary_smooth='ALL', uv_smooth='PRESERVE_BOUNDARIES'):` |
 
-<sub>Go to [top](#node-Subdivision-Surface) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Subdivision-Surface) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

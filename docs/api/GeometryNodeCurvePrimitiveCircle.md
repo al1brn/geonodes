@@ -1,6 +1,6 @@
 # Node *Curve Circle*
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve_primitives/curve_circle.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurvePrimitiveCircle.html)
@@ -42,5 +42,5 @@ node = nodes.CurveCircle(resolution=None, point_1=None, point_2=None, point_3=No
 | [Circle](Curve.md#Circle-classmethod) | `@classmethod`<br> `def Circle(cls, resolution=None, radius=None):` |
 | [CircleFromPoints](Curve.md#CircleFromPoints-classmethod) | `@classmethod`<br> `def CircleFromPoints(cls, resolution=None, point_1=None, point_2=None, point_3=None):` |
 
-<sub>Go to [top](#node-Curve-Circle) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Curve-Circle) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

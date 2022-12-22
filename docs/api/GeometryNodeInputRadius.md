@@ -1,6 +1,6 @@
 # Node *Radius*
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/radius.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputRadius.html)
@@ -30,5 +30,5 @@ node = nodes.Radius()
 | **[Geometry](Geometry.md)** |
 | [radius](Geometry.md#radius-property) | `@property`<br> `def radius(self):` |
 
-<sub>Go to [top](#node-Radius) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Radius) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

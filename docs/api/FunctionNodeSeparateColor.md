@@ -1,6 +1,6 @@
 # Node *Separate Color*
 
-> [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 - [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html)
@@ -53,5 +53,5 @@ node = nodes.SeparateColor(color=None, mode='RGB')
 | [value](Color.md#value-property) | `@property`<br> `def value(self):` |
 | [lightness](Color.md#lightness-property) | `@property`<br> `def lightness(self):` |
 
-<sub>Go to [top](#node-Separate-Color) - [main](../structure.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Separate-Color) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
