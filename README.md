@@ -119,21 +119,21 @@ The geometry classes are:
 
 ### Domains
 
-In geometry nodes, attributes refer to [domains](https://al1brn.github.io/geonodes/domains.html) such as Point, Corner, Face, Spline... 
+In geometry nodes, attributes refer to [domains](docs/api/Domain.md) such as Point, Corner, Face, Spline... 
 
 **geonodes** implement [domains](https://al1brn.github.io/geonodes/domains.html) as properties of geometry classes.
 - Mesh
-  - [verts](https://al1brn.github.io/geonodes/domains/vertex.html)
-  - [faces](https://al1brn.github.io/geonodes/domains/face.html)
-  - [edges](https://al1brn.github.io/geonodes/domains/edge.html)
-  - [corners](https://al1brn.github.io/geonodes/domains/corner.html)
+  - [verts](docs/api/Vertex.md)
+  - [faces](docs/api/Face.md)
+  - [edges](docs/api/Edge.md)
+  - [corners](docs/api/Corner.md)
 - Curve
-  - [points](https://al1brn.github.io/geonodes/domains/controlpoint.html)
-  - [splines](https://al1brn.github.io/geonodes/domains/spline.html)
+  - [points](docs/api/ControlPoint.md)
+  - [splines](docs/api/Spline.md)
 - Points cloud
-  - [points](https://al1brn.github.io/geonodes/domains/cloudpoint.html)
+  - [points](docs/api/CloudPoint.md)
 - Instances
-  - [insts](https://al1brn.github.io/geonodes/domains/instance.html)
+  - [insts](docs/api/Instance.md)
 
 Attributes are properties or domain properties, for instances:
 
@@ -148,20 +148,18 @@ instances.insts[0].position = (1, 2, 3) # The instance # 0 is set at position (1
 
 ```
 
-**Note 1:** Mesh and Curve have several domains, respectively (verts, faces, edges, corners) and (splines, points),
-when Points and Instances have only one domain each, respectively points and insts.
-
-**Note 2:** Points is a property of Geometry.
+**Note 1:** **Mesh** and **Curve** have several domains, respectively (**verts**, **faces**, **edges**, **corners*) and (**splines**, **points**),
+when **Points** and **Instances** have only one domain each, respectively **points** and **insts**.
 
 ### Values
 
 To manipulate geometry, the available classes are:
-- [Boolean](https://al1brn.github.io/geonodes/sockets/boolean.html)
-- [Integer](https://al1brn.github.io/geonodes/sockets/integer.html)
-- [Float](https://al1brn.github.io/geonodes/sockets/float.html)
-- [Vector](https://al1brn.github.io/geonodes/sockets/vector.html)
-- [Color](https://al1brn.github.io/geonodes/sockets/color.html)
-- [String](https://al1brn.github.io/geonodes/sockets/string.html)
+- [Boolean](docs/api/Boolean.md)
+- [Integer](docs/api/Integer.md)
+- [Float](docs/api/Float.md)
+- [Vector](docs/api/Vector.md)
+- [Color](docs/api/Color.md)
+- [String](docs/api/String.md)
 
 These values are used as arguments of geometry and domain classes. With the notable exception of **Booleans**,
 the values can be manipulated with python operators:
@@ -223,11 +221,11 @@ e = -a         # not a
 
 Other data are available through the following classes:
 
-  - [Collection](https://al1brn.github.io/geonodes/sockets/collection.html)
-  - [Object](https://al1brn.github.io/geonodes/sockets/object.html)
-  - [Image](https://al1brn.github.io/geonodes/sockets/image.html)
-  - [Texture](https://al1brn.github.io/geonodes/sockets/texture.html)
-  - [Material](https://al1brn.github.io/geonodes/sockets/material.html)
+  - [Collection](docs/api/Collection.md)
+  - [Object](docs/api/Object.md)
+  - [Image](docs/api/Image.md)
+  - [Texture](docs/api/Texture.md)
+  - [Material](docs/api/Material.md)
 
 ## Naming
 
