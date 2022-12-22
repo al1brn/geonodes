@@ -11,7 +11,7 @@ A **Points** has only one [domain](domain.md):
 
 A **Points** can be initialized:
 - by typecasting another geometry
-- or by using the constructor such as `Points`
+- or by using the constructor `Points`
 
 ```python
 import geonodes as gn
