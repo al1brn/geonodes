@@ -103,7 +103,7 @@ with gn.Tree("Test") as tree:
 
 ## Extrusion
 
-Extrusion uses `extrude` property of extrudable domains: `verts`, 'faces` or `edges`. The method returns two [Boolean](Boolean.md)
+Extrusion uses `extrude` property of extrudable domains: `verts`, `faces` or `edges`. The method returns two [Boolean](Boolean.md)
 which can be used to select the newly created faces.
 
 The example below shows how to inset a selection of faces and then extrude the top faces.
