@@ -4,15 +4,15 @@
 
 ### Properties
 
-[bl_idname](#bl_idname) [bnode](#bnode) [is_multi_input](#is_multi_input) [is_output](#is_output) [links](#links) [name](#name) [node_chain_label](#node_chain_label) [socket_index](#socket_index) 
+[bl_idname](#bl_idname) / [bnode](#bnode) / [is_multi_input](#is_multi_input) / [is_output](#is_output) / [links](#links) / [name](#name) / [node_chain_label](#node_chain_label) / [socket_index](#socket_index) / 
 
 ### Class and static methods
 
-[Boolean](#Boolean) [Input](#Input) [get_bl_idname](#get_bl_idname) [get_class_name](#get_class_name) [gives_bsocket](#gives_bsocket) [is_socket](#is_socket) [is_vector](#is_vector) [value_data_type](#value_data_type) 
+[Boolean](#Boolean) / [Input](#Input) / [get_bl_idname](#get_bl_idname) / [get_class_name](#get_class_name) / [gives_bsocket](#gives_bsocket) / [is_socket](#is_socket) / [is_vector](#is_vector) / [value_data_type](#value_data_type) / 
 
 ### Methods
 
-[b_and](#b_and) [b_not](#b_not) [b_or](#b_or) [connected_sockets](#connected_sockets) [get_blender_socket](#get_blender_socket) [imply](#imply) [init_domains](#init_domains) [init_socket](#init_socket) [nand](#nand) [nimply](#nimply) [nor](#nor) [plug](#plug) [reroute](#reroute) [reset_properties](#reset_properties) [stack](#stack) [switch](#switch) [to_output](#to_output) [view](#view) [xnor](#xnor) [xor](#xor) 
+[b_and](#b_and) / [b_not](#b_not) / [b_or](#b_or) / [connected_sockets](#connected_sockets) / [get_blender_socket](#get_blender_socket) / [imply](#imply) / [init_domains](#init_domains) / [init_socket](#init_socket) / [nand](#nand) / [nimply](#nimply) / [nor](#nor) / [plug](#plug) / [reroute](#reroute) / [reset_properties](#reset_properties) / [stack](#stack) / [switch](#switch) / [to_output](#to_output) / [view](#view) / [xnor](#xnor) / [xor](#xor) / 
 
 ## Properties
 

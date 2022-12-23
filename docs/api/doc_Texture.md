@@ -4,15 +4,15 @@
 
 ### Properties
 
-[bl_idname](#bl_idname) [bnode](#bnode) [is_multi_input](#is_multi_input) [is_output](#is_output) [links](#links) [name](#name) [node_chain_label](#node_chain_label) [socket_index](#socket_index) 
+[bl_idname](#bl_idname) / [bnode](#bnode) / [is_multi_input](#is_multi_input) / [is_output](#is_output) / [links](#links) / [name](#name) / [node_chain_label](#node_chain_label) / [socket_index](#socket_index) / 
 
 ### Class and static methods
 
-[Input](#Input) [brick](#brick) [checker](#checker) [get_bl_idname](#get_bl_idname) [get_class_name](#get_class_name) [gives_bsocket](#gives_bsocket) [gradient](#gradient) [gradient_diagonal](#gradient_diagonal) [gradient_easing](#gradient_easing) [gradient_linear](#gradient_linear) [gradient_quadratic](#gradient_quadratic) [gradient_quadratic_sphere](#gradient_quadratic_sphere) [gradient_radial](#gradient_radial) [gradient_spherical](#gradient_spherical) [image](#image) [is_socket](#is_socket) [is_vector](#is_vector) [magic](#magic) [musgrave](#musgrave) [noise](#noise) [noise_1D](#noise_1D) [noise_2D](#noise_2D) [noise_3D](#noise_3D) [noise_4D](#noise_4D) [value_data_type](#value_data_type) [voronoi](#voronoi) [voronoi_1D](#voronoi_1D) [voronoi_2D](#voronoi_2D) [voronoi_3D](#voronoi_3D) [voronoi_4D](#voronoi_4D) [wave](#wave) [wave_bands](#wave_bands) [wave_bands_saw](#wave_bands_saw) [wave_bands_sine](#wave_bands_sine) [wave_bands_triangle](#wave_bands_triangle) [wave_rings](#wave_rings) [wave_rings_saw](#wave_rings_saw) [wave_rings_sine](#wave_rings_sine) [wave_rings_triangle](#wave_rings_triangle) [white_noise](#white_noise) [white_noise_1D](#white_noise_1D) [white_noise_2D](#white_noise_2D) [white_noise_3D](#white_noise_3D) [white_noise_4D](#white_noise_4D) 
+[Input](#Input) / [brick](#brick) / [checker](#checker) / [get_bl_idname](#get_bl_idname) / [get_class_name](#get_class_name) / [gives_bsocket](#gives_bsocket) / [gradient](#gradient) / [gradient_diagonal](#gradient_diagonal) / [gradient_easing](#gradient_easing) / [gradient_linear](#gradient_linear) / [gradient_quadratic](#gradient_quadratic) / [gradient_quadratic_sphere](#gradient_quadratic_sphere) / [gradient_radial](#gradient_radial) / [gradient_spherical](#gradient_spherical) / [image](#image) / [is_socket](#is_socket) / [is_vector](#is_vector) / [magic](#magic) / [musgrave](#musgrave) / [noise](#noise) / [noise_1D](#noise_1D) / [noise_2D](#noise_2D) / [noise_3D](#noise_3D) / [noise_4D](#noise_4D) / [value_data_type](#value_data_type) / [voronoi](#voronoi) / [voronoi_1D](#voronoi_1D) / [voronoi_2D](#voronoi_2D) / [voronoi_3D](#voronoi_3D) / [voronoi_4D](#voronoi_4D) / [wave](#wave) / [wave_bands](#wave_bands) / [wave_bands_saw](#wave_bands_saw) / [wave_bands_sine](#wave_bands_sine) / [wave_bands_triangle](#wave_bands_triangle) / [wave_rings](#wave_rings) / [wave_rings_saw](#wave_rings_saw) / [wave_rings_sine](#wave_rings_sine) / [wave_rings_triangle](#wave_rings_triangle) / [white_noise](#white_noise) / [white_noise_1D](#white_noise_1D) / [white_noise_2D](#white_noise_2D) / [white_noise_3D](#white_noise_3D) / [white_noise_4D](#white_noise_4D) / 
 
 ### Methods
 
-[connected_sockets](#connected_sockets) [get_blender_socket](#get_blender_socket) [init_domains](#init_domains) [init_socket](#init_socket) [plug](#plug) [reroute](#reroute) [reset_properties](#reset_properties) [stack](#stack) [switch](#switch) [to_output](#to_output) [view](#view) 
+[connected_sockets](#connected_sockets) / [get_blender_socket](#get_blender_socket) / [init_domains](#init_domains) / [init_socket](#init_socket) / [plug](#plug) / [reroute](#reroute) / [reset_properties](#reset_properties) / [stack](#stack) / [switch](#switch) / [to_output](#to_output) / [view](#view) / 
 
 ## Properties
 

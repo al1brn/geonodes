@@ -132,13 +132,13 @@ Tree(self, tree_name, clear=False, group=False, fake_user=False, prefix=None)
 
 ### Properties
 
-[cur_frame](#cur_frame) [frame](#frame) [ig](#ig) [input_geometry](#input_geometry) [og](#og) [output_geometry](#output_geometry) [scene](#scene) [seconds](#seconds) 
+[cur_frame](#cur_frame) / [frame](#frame) / [ig](#ig) / [input_geometry](#input_geometry) / [og](#og) / [output_geometry](#output_geometry) / [scene](#scene) / [seconds](#seconds) / 
 
 
 
 ### Methods
 
-[activate](#activate) [arrange](#arrange) [check_attributes](#check_attributes) [close](#close) [get_bnode](#get_bnode) [get_bnode_wrapper](#get_bnode_wrapper) [get_bsocket_wrapper](#get_bsocket_wrapper) [layout](#layout) [new_group_input](#new_group_input) [new_group_output](#new_group_output) [new_input](#new_input) [prev_node](#prev_node) [register_node](#register_node) [to_output](#to_output) [view](#view) 
+[activate](#activate) / [arrange](#arrange) / [check_attributes](#check_attributes) / [close](#close) / [get_bnode](#get_bnode) / [get_bnode_wrapper](#get_bnode_wrapper) / [get_bsocket_wrapper](#get_bsocket_wrapper) / [layout](#layout) / [new_group_input](#new_group_input) / [new_group_output](#new_group_output) / [new_input](#new_input) / [prev_node](#prev_node) / [register_node](#register_node) / [to_output](#to_output) / [view](#view) / 
 
 ## Properties
 

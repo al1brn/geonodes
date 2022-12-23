@@ -4,15 +4,15 @@
 
 ### Properties
 
-[bl_idname](#bl_idname) [bnode](#bnode) [is_multi_input](#is_multi_input) [is_output](#is_output) [links](#links) [name](#name) [node_chain_label](#node_chain_label) [socket_index](#socket_index) 
+[bl_idname](#bl_idname) / [bnode](#bnode) / [is_multi_input](#is_multi_input) / [is_output](#is_output) / [links](#links) / [name](#name) / [node_chain_label](#node_chain_label) / [socket_index](#socket_index) / 
 
 ### Class and static methods
 
-[Input](#Input) [get_bl_idname](#get_bl_idname) [get_class_name](#get_class_name) [gives_bsocket](#gives_bsocket) [is_socket](#is_socket) [is_vector](#is_vector) [value_data_type](#value_data_type) 
+[Input](#Input) / [get_bl_idname](#get_bl_idname) / [get_class_name](#get_class_name) / [gives_bsocket](#gives_bsocket) / [is_socket](#is_socket) / [is_vector](#is_vector) / [value_data_type](#value_data_type) / 
 
 ### Methods
 
-[connected_sockets](#connected_sockets) [get_blender_socket](#get_blender_socket) [init_domains](#init_domains) [init_socket](#init_socket) [plug](#plug) [reroute](#reroute) [reset_properties](#reset_properties) [stack](#stack) [switch](#switch) [texture](#texture) [to_output](#to_output) [view](#view) 
+[connected_sockets](#connected_sockets) / [get_blender_socket](#get_blender_socket) / [init_domains](#init_domains) / [init_socket](#init_socket) / [plug](#plug) / [reroute](#reroute) / [reset_properties](#reset_properties) / [stack](#stack) / [switch](#switch) / [texture](#texture) / [to_output](#to_output) / [view](#view) / 
 
 ## Properties
 
