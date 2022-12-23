@@ -970,8 +970,6 @@ class GroupInput(CustomGroup):
                 socket       = self.outputs[index]
                 set_value    = False
                 break
-            
-        print("SET VALUE", set_value)
 
         # ----------------------------------------------------------------------------------------------------
         # Let's create it
@@ -1001,21 +999,13 @@ class GroupInput(CustomGroup):
         # Let's set the value if the socket is created
         # Note: if the socket already exists, we don't override its value
         
-        print("SET VALUE", set_value, value)
-        
-        
         if (value is not None) and set_value:
-            
-            print("I'm in")
             
             if DataSocket.is_socket(value):
                 value.plug(socket)
                 
             else:
                 v = socket.convert_python_type(value)
-
-                print("I DON'T PLUG", value, v)
-                
                 msg1 = None
                 msg2 = None
                 try:

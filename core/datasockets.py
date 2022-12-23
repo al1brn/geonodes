@@ -15,8 +15,6 @@ from geonodes.nodes import nodes
 import logging
 logger = logging.getLogger('geonodes')
 
-from typing import Any, Union
-
 
 try:
     import bpy
@@ -92,7 +90,7 @@ class Boolean(DataSocket):
     
     """
     
-    def __init__(self, value: bool = False, label: str = None):
+    def __init__(self, value = False, label = None):
         if DataSocket.gives_bsocket(value):
             super().__init__(value, label=label)
         else:
@@ -100,7 +98,7 @@ class Boolean(DataSocket):
             super().__init__(node.boolean, node)
     
     @classmethod
-    def Input(cls, value: bool = False, name: str = "Boolean", description: str = ""):
+    def Input(cls, value = False, name = "Boolean", description = ""):
         """ Create a Boolean input socket in the Group Input Node
         
         Args:
@@ -331,7 +329,7 @@ class Integer(IntFloat):
             super().__init__(node.integer, node, label=label)
     
     @classmethod
-    def Input(cls, value: int = 0, name: str = "Integer", min_value: int = None, max_value: int = None, description: str = ""):
+    def Input(cls, value = 0, name = "Integer", min_value = None, max_value = None, description = ""):
         """ Create an Integer input socket in the Group Input Node
         
         Args:
@@ -348,7 +346,7 @@ class Integer(IntFloat):
         return cls(Tree.TREE.new_input('Integer', value=value, name=name, min_value=min_value, max_value=max_value, description=description))    
 
     @classmethod
-    def Unsigned(cls, value: int = 0, name: str = "Unsigned", min_value: int = 0, max_value: int = None, description: str = ""):
+    def Unsigned(cls, value = 0, name = "Unsigned", min_value = 0, max_value = None, description = ""):
         """ Create an Unisgned Integer input socket in the Group Input Node
         
         Args:
@@ -383,7 +381,7 @@ class Float(IntFloat):
             super().__init__(node.value, node)
     
     @classmethod
-    def Input(cls, value: float = 0., name: str = "Float", min_value: float = None, max_value: float = None, description: str =""):
+    def Input(cls, value = 0., name = "Float", min_value = None, max_value = None, description =""):
         """ Create a Float input socket in the Group Input Node
         
         Args:
@@ -399,7 +397,7 @@ class Float(IntFloat):
         return cls(Tree.TREE.new_input('Float', value=value, name=name, min_value=min_value, max_value=max_value, description=description))
         
     @classmethod
-    def Angle(cls, value=0., name="Angle", min_value: float = None, max_value: float = None, description: str =""):
+    def Angle(cls, value=0., name="Angle", min_value = None, max_value = None, description =""):
         """ Create an Angle input socket in the Group Input Node
         
         Args:
@@ -416,7 +414,7 @@ class Float(IntFloat):
         return cls(Tree.TREE.new_input('Angle', value=value, name=name, min_value=min_value, max_value=max_value, description=description))    
         
     @classmethod
-    def Factor(cls, value=0., name="Factor", min_value: float = 0., max_value: float = 1., description: str =""):
+    def Factor(cls, value=0., name="Factor", min_value = 0., max_value = 1., description =""):
         """ Create a Factor input socket in the Group Input Node
         
         Args:
@@ -433,7 +431,7 @@ class Float(IntFloat):
         return cls(Tree.TREE.new_input('Factor', value=value, name=name, min_value=min_value, max_value=max_value, description=description))
         
     @classmethod
-    def Distance(cls, value=0., name="Distance", min_value: float = None, max_value: float = None, description: str =""):
+    def Distance(cls, value=0., name="Distance", min_value = None, max_value = None, description =""):
         """ Create a Distance input socket in the Group Input Node
         
         Args:
@@ -476,7 +474,7 @@ class String(DataSocket):
     
     """
     
-    def __init__(self, value: str = "Text", label: str = None):
+    def __init__(self, value = "Text", label = None):
         if DataSocket.gives_bsocket(value):
             super().__init__(value, label=label)
         else:
@@ -484,7 +482,7 @@ class String(DataSocket):
             super().__init__(node.string, node)
     
     @classmethod
-    def Input(cls, value: str = "Text", name: str = "String", description: str = ""):
+    def Input(cls, value = "Text", name = "String", description = ""):
         """ Create a String input socket in the Group Input Node
         
         Args:
@@ -510,7 +508,7 @@ class String(DataSocket):
         return nodes.SpecialCharacters().line_break
     
     @staticmethod
-    def Value(value: Float = None, decimals: Integer = None):
+    def Value(value = None, decimals = None):
         """ String constructor : initialize a String from a numeric value
         
         Args:
@@ -689,7 +687,7 @@ class Vector(DataSocket):
         self.offset_setter = None
             
     @classmethod
-    def Input(cls, value = (0, 0, 0), name: str = "Vector", description: str = ""):
+    def Input(cls, value = (0, 0, 0), name = "Vector", description = ""):
         """ Create a Vector input socket in the Group Input Node
         
         Args:
@@ -704,7 +702,7 @@ class Vector(DataSocket):
         return cls(Tree.TREE.new_input('Vector', value=value, name=name, description=description))
         
     @classmethod
-    def Rotation(cls, value = (0, 0, 0), name: str = "Rotation", description: str = ""):
+    def Rotation(cls, value = (0, 0, 0), name = "Rotation", description = ""):
         """ Create a Rotation input socket in the Group Input Node
         
         Args:
@@ -718,7 +716,7 @@ class Vector(DataSocket):
         return cls(Tree.TREE.new_input('Rotation', value=value, name=name, description=description))
         
     @classmethod
-    def Translation(cls, value =(0, 0, 0), name: str = "Translation", description: str = ""):
+    def Translation(cls, value =(0, 0, 0), name = "Translation", description = ""):
         """ Create a Translation input socket in the Group Input Node
         
         Args:
@@ -732,7 +730,7 @@ class Vector(DataSocket):
         return cls(Tree.TREE.new_input('Translation', value=value, name=name, description=description))
         
     @classmethod
-    def VectorXYZ(cls, value = (0, 0, 0), name: str = "VectorXYZ", description: str = ""):
+    def VectorXYZ(cls, value = (0, 0, 0), name = "VectorXYZ", description = ""):
         """ Create a Vector XYZ input socket in the Group Input Node
         
         Args:
@@ -995,7 +993,7 @@ class Color(DataSocket):
                 
     
     @classmethod
-    def Input(cls, value=None, name: str = "Color", description: str = ""):
+    def Input(cls, value=None, name = "Color", description = ""):
         """ Create a Color input socket in the Group Input Node
         
         Args:
@@ -1486,24 +1484,9 @@ class Geometry(DataSocket):
     def attribute_node(self, node, domain='POINT'):
         return node.as_attribute(owning_socket=self, domain=domain)
         
-        
-    @property
-    def component_OLD(self):
-        """ Component in ('MESH', 'POINTCLOUD', 'CURVE', 'INSTANCES', 'VOLUME')
-        
-        return 'GEOMETRY' if not determined
-        """
-        
-        table = {'Geometry': 'GEOMETRY', 'Mesh': 'MESH', 'Curve': 'CURVE', 'Spline': 'CURVE', 'Instances': 'INSTANCES', 'Points': 'POINTCLOUD', 'Volume': 'VOLUME'}
-
-        tp = tp(self.data_socket)
-        if tp in table:
-            return table[tp]
-        else:
-            raise Exception(f"INTERNAL ERROR: not component name for {type(self)}")
             
     @classmethod
-    def Input(cls, name: str = None, description: str = ""):
+    def Input(cls, name = None, description = ""):
         """ Create a Geometry input socket in the Group Input Node
         
         Args:
@@ -1557,7 +1540,7 @@ class Geometry(DataSocket):
     # ----------------------------------------------------------------------------------------------------
     # Instantiate the geometry
     
-    def instantiate(self, count: int = 1, realize: bool = False):
+    def instantiate(self, count = 1, realize = False):
         """ Instantiate the geometry
         
         Args:
