@@ -1,17 +1,17 @@
 Class Frame
 
-     Node *Frame*
+ Node *Frame*
+
+Args:
+    label: The frame label
+    label_size: The font size for the label
+    color: A valid color spec
+    shrink: Shrink the Frame
     
-    Args:
-        label: The frame label
-        label_size: The font size for the label
-        color: A valid color spec
-        shrink: Shrink the Frame
-        
-    Note that *Frame* is the internal name for *Layouts*
-    
-    .. blid:: NodeFrame
-    
+Note that *Frame* is the internal name for *Layouts*
+
+.. blid:: NodeFrame
+
 
 
 
@@ -23,34 +23,34 @@ Frame(self, label
 
 ### bl_idname
 
-         Shortcut for ``self.bnode.bl_idname``
-        
+ Shortcut for ``self.bnode.bl_idname``
+
 
 
 ### chain_label
 
-         Label to use when building chain labels
+ Label to use when building chain labels
 
 
 ### fed_nodes
 
-         List of the node with input sockets connected with this socket
+ List of the node with input sockets connected with this socket
 
 
 
 ### input_geometry_bsocket
 
-         The input geometry blender socket
+ The input geometry blender socket
 
 
 ### label
 
-         Node label
+ Node label
 
 
 ### node_color
 
-         Noe color
+ Noe color
 
 
 ## Class and static methods
@@ -62,7 +62,7 @@ Frame(self, label
 def Boolean(socket)
 ```
 
-         Initialize a Boolean with a DataSocket
+ Initialize a Boolean with a DataSocket
 
 
 ### Collection
@@ -72,7 +72,7 @@ def Boolean(socket)
 def Collection(socket)
 ```
 
-         Initialize a Collection with a DataSocket
+ Initialize a Collection with a DataSocket
 
 
 ### Color
@@ -82,7 +82,7 @@ def Collection(socket)
 def Color(socket)
 ```
 
-         Initialize a Color with a DataSocket
+ Initialize a Color with a DataSocket
 
 
 ### Curve
@@ -92,7 +92,7 @@ def Color(socket)
 def Curve(socket)
 ```
 
-         Initialize a Curve with a DataSocket
+ Initialize a Curve with a DataSocket
 
 
 ### Curves
@@ -102,7 +102,7 @@ def Curve(socket)
 def Curves(socket)
 ```
 
-         Initialize a Curves with a DataSocket
+ Initialize a Curves with a DataSocket
 
 
 ### DataClass
@@ -112,7 +112,7 @@ def Curves(socket)
 def DataClass(socket)
 ```
 
-         Initialize a DataClass of the property class from from the bl_idname of the socket
+ Initialize a DataClass of the property class from from the bl_idname of the socket
 
 
 ### Float
@@ -122,7 +122,7 @@ def DataClass(socket)
 def Float(socket)
 ```
 
-         Initialize a Float with a DataSocket
+ Initialize a Float with a DataSocket
 
 
 ### Geometry
@@ -132,7 +132,7 @@ def Float(socket)
 def Geometry(socket)
 ```
 
-         Initialize a Geometry with a DataSocket
+ Initialize a Geometry with a DataSocket
 
 
 ### Image
@@ -142,7 +142,7 @@ def Geometry(socket)
 def Image(socket)
 ```
 
-         Initialize a Image with a DataSocket
+ Initialize a Image with a DataSocket
 
 
 ### Instances
@@ -152,7 +152,7 @@ def Image(socket)
 def Instances(socket)
 ```
 
-         Initialize a Instances with a DataSocket
+ Initialize a Instances with a DataSocket
 
 
 ### Integer
@@ -162,7 +162,7 @@ def Instances(socket)
 def Integer(socket)
 ```
 
-         Initialize a Integer with a DataSocket
+ Initialize a Integer with a DataSocket
 
 
 ### Material
@@ -172,7 +172,7 @@ def Integer(socket)
 def Material(socket)
 ```
 
-         Initialize a Material with a DataSocket
+ Initialize a Material with a DataSocket
 
 
 ### Mesh
@@ -182,7 +182,7 @@ def Material(socket)
 def Mesh(socket)
 ```
 
-         Initialize a Mesh with a DataSocket
+ Initialize a Mesh with a DataSocket
 
 
 ### Object
@@ -192,7 +192,7 @@ def Mesh(socket)
 def Object(socket)
 ```
 
-         Initialize a Object with a DataSocket
+ Initialize a Object with a DataSocket
 
 
 ### Points
@@ -202,7 +202,7 @@ def Object(socket)
 def Points(socket)
 ```
 
-         Initialize a Points with a DataSocket
+ Initialize a Points with a DataSocket
 
 
 ### String
@@ -212,7 +212,7 @@ def Points(socket)
 def String(socket)
 ```
 
-         Initialize a String with a DataSocket
+ Initialize a String with a DataSocket
 
 
 ### Texture
@@ -222,7 +222,7 @@ def String(socket)
 def Texture(socket)
 ```
 
-         Initialize a Texture with a DataSocket
+ Initialize a Texture with a DataSocket
 
 
 ### Vector
@@ -232,7 +232,7 @@ def Texture(socket)
 def Vector(socket)
 ```
 
-         Initialize a Vector with a DataSocket
+ Initialize a Vector with a DataSocket
 
 
 ### Volume
@@ -242,7 +242,7 @@ def Vector(socket)
 def Volume(socket)
 ```
 
-         Initialize a Volume with a DataSocket
+ Initialize a Volume with a DataSocket
 
 
 ### unitize
@@ -252,13 +252,13 @@ def Volume(socket)
 def unitize(names)
 ```
 
-         Utility to build unique names from a list with homonyms
-        
-        :param names: The list of names to unitize
-        :type names: list of strs
-        :return: list with the same number of names where homonyms are suffixed by their rank
-        :rtype: list of strs
-        
+ Utility to build unique names from a list with homonyms
+
+:param names: The list of names to unitize
+:type names: list of strs
+:return: list with the same number of names where homonyms are suffixed by their rank
+:rtype: list of strs
+
 
 
 
@@ -270,19 +270,19 @@ def unitize(names)
 def as_attribute(self, owning_socket, domain='POINT')
 ```
 
-         Indicates that the node is an attribute.
-        
-        :param owning_socket: The owning socket it is an atribute of
-        :param domain: The domain if 'Capture Attribute' is necessary
-        :type owning_socket: DataSocket
-        :type domain: str
-        
-        Set the property :attr:`is_atribute` to `True` to indicate that the socket
-        is the attribute of a Geometry.
-        The domain is stored in the property `domain`
-        
-        see :func:`Tree.check_attributes` 
-        
+ Indicates that the node is an attribute.
+
+:param owning_socket: The owning socket it is an atribute of
+:param domain: The domain if 'Capture Attribute' is necessary
+:type owning_socket: DataSocket
+:type domain: str
+
+Set the property :attr:`is_atribute` to `True` to indicate that the socket
+is the attribute of a Geometry.
+The domain is stored in the property `domain`
+
+see :func:`Tree.check_attributes` 
+
 
 
 
@@ -292,13 +292,13 @@ def as_attribute(self, owning_socket, domain='POINT')
 def attribute_is_solved(self)
 ```
 
-         Check if the attribute is already solved.
-        
-        No need to insert a  *Capture Attribute* Node when the socket is already
-        connected to nodes  *Capture Attribute* or  *Transfer Attribute*.
-        
-        see :func:`Tree.check_attributes` 
-        
+ Check if the attribute is already solved.
+
+No need to insert a  *Capture Attribute* Node when the socket is already
+connected to nodes  *Capture Attribute* or  *Transfer Attribute*.
+
+see :func:`Tree.check_attributes` 
+
 
 
 
@@ -308,11 +308,11 @@ def attribute_is_solved(self)
 def connected_geometries(self)
 ```
 
-         List of the connected geometries
-        
-        Explore the fowards links until finding a node with an input geometry.
-        The resulting list will allow to determine if a 'Capture Attribute' is necessary.
-        
+ List of the connected geometries
+
+Explore the fowards links until finding a node with an input geometry.
+The resulting list will allow to determine if a 'Capture Attribute' is necessary.
+
 
 
 
@@ -322,60 +322,60 @@ def connected_geometries(self)
 def get_datasocket(self, index)
 ```
 
-         Get the data socket by its index.
+ Get the data socket by its index.
+
+:param index: Index of the output socket to get
+:type index: int
+:return: The data socket at the given socket
+:rtype: DataSocket
+
+.. Note:: The index is the **user index**. It can differ from the **geometry node index** of the socket when
+    several sockets share the same name. For instance the node *Random value* has several output sockets
+    named *Value*. Only one is enabled at the same time. All these sockets share the same index, which is 0.
+    The socket returned by ``get_datasocket`` is the one which is enabled.
+    
+.. code-block:: python
+
+    import geonodes as gn
+    
+    with gn.Tree("Geometry Nodes") as tree:
         
-        :param index: Index of the output socket to get
-        :type index: int
-        :return: The data socket at the given socket
-        :rtype: DataSocket
+        # Node 'Random Value' initialized for FLOAT
         
-        .. Note:: The index is the **user index**. It can differ from the **geometry node index** of the socket when
-            several sockets share the same name. For instance the node *Random value* has several output sockets
-            named *Value*. Only one is enabled at the same time. All these sockets share the same index, which is 0.
-            The socket returned by ``get_datasocket`` is the one which is enabled.
+        v = gn.Float.Random()
+        
+        # Let's explore the node
+         
+        random_node = v.node
+        
+        # The actual output sockets of the geometry node
+        # Note that we loop on bnode which is the wrapped node
+        
+        print("Actual sockets:")
+        for i, bsocket in enumerate(random_node.bnode.outputs):
+            print(i, bsocket.name, bsocket.enabled)
+        print()
+    
+        # All the socket share the same name and user index
+        # The one whih is return is the enabled one
             
-        .. code-block:: python
-        
-            import geonodes as gn
+        print("User sockets:")
+        for key in random_node.outsockets:
+            socket = getattr(v.node, key)
+            print(key, socket.socket_index, socket.bl_idname)
             
-            with gn.Tree("Geometry Nodes") as tree:
-                
-                # Node 'Random Value' initialized for FLOAT
-                
-                v = gn.Float.Random()
-                
-                # Let's explore the node
-                 
-                random_node = v.node
-                
-                # The actual output sockets of the geometry node
-                # Note that we loop on bnode which is the wrapped node
-                
-                print("Actual sockets:")
-                for i, bsocket in enumerate(random_node.bnode.outputs):
-                    print(i, bsocket.name, bsocket.enabled)
-                print()
+.. code-block:: console
             
-                # All the socket share the same name and user index
-                # The one whih is return is the enabled one
-                    
-                print("User sockets:")
-                for key in random_node.outsockets:
-                    socket = getattr(v.node, key)
-                    print(key, socket.socket_index, socket.bl_idname)
-                    
-        .. code-block:: console
-                    
-            Actual sockets:
-            0 Value False
-            1 Value True
-            2 Value False
-            3 Value False
-            
-            User sockets:
-            value 1 NodeSocketFloat                    
-        
-        
+    Actual sockets:
+    0 Value False
+    1 Value True
+    2 Value False
+    3 Value False
+    
+    User sockets:
+    value 1 NodeSocketFloat                    
+
+
 
 
 ### get_label
@@ -384,11 +384,11 @@ def get_datasocket(self, index)
 def get_label(self)
 ```
 
-         Build the node label
-        
-        If the label provided at initialization time is None, the node is labeled by concatening
-        its unique id with its standard name.
-        
+ Build the node label
+
+If the label provided at initialization time is None, the node is labeled by concatening
+its unique id with its standard name.
+
 
 
 ### get_output_socket
@@ -405,26 +405,26 @@ ock_ind = self.outsockets.get(name.lower())
 def plug(self, index, *values)
 ```
 
-         Plug the values to the input socket whose index is provided.
-        
-        :param index: The index of the input sockets (a valid index for Node.inputs)
-        :param values: Each value can be an acceptable default value for the socket
-                 or an output socket 
-        :type index: int
-        :type values: list of values
-        
-        Since an input socket can be multi input, the values argument is a list.
-        
-        If the socket is multi input, the plug method is called once per provide value.
-        If a value is None, nothing happens.
-        
-        A not None value can be:
-            
-        - either a valid valud for the socket (eg: 123 for Integer socket)
-        - or an output socket of another Node
-            
-        When it is a socket, it can be a Blender socket or a DataSocket
-        
+ Plug the values to the input socket whose index is provided.
+
+:param index: The index of the input sockets (a valid index for Node.inputs)
+:param values: Each value can be an acceptable default value for the socket
+         or an output socket 
+:type index: int
+:type values: list of values
+
+Since an input socket can be multi input, the values argument is a list.
+
+If the socket is multi input, the plug method is called once per provide value.
+If a value is None, nothing happens.
+
+A not None value can be:
+    
+- either a valid valud for the socket (eg: 123 for Integer socket)
+- or an output socket of another Node
+    
+When it is a socket, it can be a Blender socket or a DataSocket
+
 
 
 ----- Index can be a string
@@ -435,14 +435,14 @@ def plug(self, index, *values)
 def plug_node(self, node)
 ```
 
-         Plug all the sockets of a node.
-        
-        :param node: The node whose output sockets will be plugged
-        :type node: Node
-        
-        Plug the output sockets of node whose name match an input socket of self.
-        
-        
+ Plug all the sockets of a node.
+
+:param node: The node whose output sockets will be plugged
+:type node: Node
+
+Plug the output sockets of node whose name match an input socket of self.
+
+
 
 
 
@@ -452,13 +452,13 @@ def plug_node(self, node)
 def plugged(self, index)
 ```
 
-         The liste of plugged sockets
-        
-        :param index: the index of the socket to consider
-        :type index: int
-        :return: The list of connected sockets
-        :rtype: list of DataSockets
-        
+ The liste of plugged sockets
+
+:param index: the index of the socket to consider
+:type index: int
+:return: The list of connected sockets
+:rtype: list of DataSockets
+
 
 
 
@@ -468,15 +468,15 @@ def plugged(self, index)
 def switch_input_sockets(self, index0, index1)
 ```
 
-         Utility method which switchs the links of two sockets.
-        
-        :param index0: The first index
-        :param index1: The second index
-        :type index0: int
-        :typ index1: int
-        
-        Used when implementing operators __rxxx___
-        
+ Utility method which switchs the links of two sockets.
+
+:param index0: The first index
+:param index1: The second index
+:type index0: int
+:typ index1: int
+
+Used when implementing operators __rxxx___
+
 
 
 

@@ -4,77 +4,77 @@ Class Vector
 
 ### bl_idname
 
-         Shortcut for `self.bsocket.bl_idname`
-        
+ Shortcut for `self.bsocket.bl_idname`
+
 
 
 ### bnode
 
-         Shortcut for `self.bsocket.node`
-        
+ Shortcut for `self.bsocket.node`
+
 
 
 ### is_multi_input
 
-         Shortcut for `self.bsocket.is_multi_output`
-        
+ Shortcut for `self.bsocket.is_multi_output`
+
 
 
 ### is_output
 
-         Shortcut for `self.bsocket.is_output`
-        
+ Shortcut for `self.bsocket.is_output`
+
 
 
 ### length
 
-         Node VectorMath.
+ Node VectorMath.
 
-        Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
-        Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
+Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
+Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 
-        Returns:
-            socket `value`
-        
+Returns:
+    socket `value`
+
 
 
 ### links
 
-         Shortcut for `self.bsocket.links`
-        
+ Shortcut for `self.bsocket.links`
+
 
 
 ### name
 
-         Shortcut for `self.bsocket.name`
-        
+ Shortcut for `self.bsocket.name`
+
 
 
 ### node_chain_label
 
-         Shortcut for *self.node.chain_label*
-        
+ Shortcut for *self.node.chain_label*
+
 
 
 ### separate
 
-         Node SeparateXyz.
+ Node SeparateXyz.
 
-        Node reference [Separate XYZ](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/separate_xyz.html)
-        Developer reference [ShaderNodeSeparateXYZ](https://docs.blender.org/api/current/bpy.types.ShaderNodeSeparateXYZ.html)
+Node reference [Separate XYZ](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/separate_xyz.html)
+Developer reference [ShaderNodeSeparateXYZ](https://docs.blender.org/api/current/bpy.types.ShaderNodeSeparateXYZ.html)
 
-        Returns:
-            node with sockets ['x', 'y', 'z']
-        
+Returns:
+    node with sockets ['x', 'y', 'z']
+
 
 
 ### socket_index
 
-         Return the index of the socket within the list of node sockets.
-        
-        Depending on the _is_output_ property, the socket belongs either to *node.inputs* or
-        *node.outputs*.
-        
+ Return the index of the socket within the list of node sockets.
+
+Depending on the _is_output_ property, the socket belongs either to *node.inputs* or
+*node.outputs*.
+
 
 
 
@@ -87,19 +87,19 @@ Class Vector
 def Combine(cls, x=None, y=None, z=None)
 ```
 
-         Node CombineXyz.
+ Node CombineXyz.
 
-        Node reference [Combine XYZ](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/combine_xyz.html)
-        Developer reference [ShaderNodeCombineXYZ](https://docs.blender.org/api/current/bpy.types.ShaderNodeCombineXYZ.html)
+Node reference [Combine XYZ](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/combine_xyz.html)
+Developer reference [ShaderNodeCombineXYZ](https://docs.blender.org/api/current/bpy.types.ShaderNodeCombineXYZ.html)
 
-        Args:
-            x: Float
-            y: Float
-            z: Float
+Args:
+    x: Float
+    y: Float
+    z: Float
 
-        Returns:
-            socket `vector`
-        
+Returns:
+    socket `vector`
+
 
 
 ### Input
@@ -109,16 +109,16 @@ def Combine(cls, x=None, y=None, z=None)
 def Input(cls, value = (0, 0, 0), name = "Vector", description = "")
 ```
 
-         Create a Vector input socket in the Group Input Node
-        
-        Args:
-            value: The default value
-            name: The socket name
-            description: User tip
-            
-        Returns:
-            Vector: The Vector data socket
-        
+ Create a Vector input socket in the Group Input Node
+
+Args:
+    value: The default value
+    name: The socket name
+    description: User tip
+    
+Returns:
+    Vector: The Vector data socket
+
 
 
 
@@ -129,16 +129,16 @@ def Input(cls, value = (0, 0, 0), name = "Vector", description = "")
 def Rotation(cls, value = (0, 0, 0), name = "Rotation", description = "")
 ```
 
-         Create a Rotation input socket in the Group Input Node
-        
-        Args:
-            value: The default value
-            name: The socket name
-            description: User tip
-            
-        Returns:
-            Vector: The Vector data socket
-        
+ Create a Rotation input socket in the Group Input Node
+
+Args:
+    value: The default value
+    name: The socket name
+    description: User tip
+    
+Returns:
+    Vector: The Vector data socket
+
 
 
 ### Translation
@@ -148,16 +148,16 @@ def Rotation(cls, value = (0, 0, 0), name = "Rotation", description = "")
 def Translation(cls, value =(0, 0, 0), name = "Translation", description = "")
 ```
 
-         Create a Translation input socket in the Group Input Node
-        
-        Args:
-            value: The default value
-            name: The socket name
-            description: User tip
-            
-        Returns:
-            Vector: The Vector data socket
-        
+ Create a Translation input socket in the Group Input Node
+
+Args:
+    value: The default value
+    name: The socket name
+    description: User tip
+    
+Returns:
+    Vector: The Vector data socket
+
 
 
 ### Vector
@@ -167,17 +167,17 @@ def Translation(cls, value =(0, 0, 0), name = "Translation", description = "")
 def Vector(cls, vector=[0.0, 0.0, 0.0])
 ```
 
-         Node Vector.
+ Node Vector.
 
-        Node reference [Vector](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/vector.html)
-        Developer reference [FunctionNodeInputVector](https://docs.blender.org/api/current/bpy.types.FunctionNodeInputVector.html)
+Node reference [Vector](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/vector.html)
+Developer reference [FunctionNodeInputVector](https://docs.blender.org/api/current/bpy.types.FunctionNodeInputVector.html)
 
-        Args:
-            vector (list): [0.0, 0.0, 0.0]
+Args:
+    vector (list): [0.0, 0.0, 0.0]
 
-        Returns:
-            socket `vector`
-        
+Returns:
+    socket `vector`
+
 
 
 ### VectorXYZ
@@ -187,16 +187,16 @@ def Vector(cls, vector=[0.0, 0.0, 0.0])
 def VectorXYZ(cls, value = (0, 0, 0), name = "VectorXYZ", description = "")
 ```
 
-         Create a Vector XYZ input socket in the Group Input Node
-        
-        Args:
-            value: The default value
-            name: The socket name
-            description: User tip
-            
-        Returns:
-            Vector: The Vector data socket
-        
+ Create a Vector XYZ input socket in the Group Input Node
+
+Args:
+    value: The default value
+    name: The socket name
+    description: User tip
+    
+Returns:
+    Vector: The Vector data socket
+
 
 
 ### get_bl_idname
@@ -206,39 +206,39 @@ def VectorXYZ(cls, value = (0, 0, 0), name = "VectorXYZ", description = "")
 def get_bl_idname(class_name)
 ```
 
-         Get the node socket bl_idname name from the Socket class
-        
-        :param class_name: The class name
-        :type class_name: str
-        :return: The bl_idname associated to this class name
-        :rtype: str
-        
-        Used to create a new group input socket. Called in `DataClass.Input` method to determine
-        which socket type must be created.
-        
-        Note that here the class_name argument accepts additional values which correspond to *sub classes*:
-            
-        .. list-table:: 
-           :widths: 20 40
-           :header-rows: 0
-        
-           * - Unsigned
-             - Integer sub class (NodeSocketIntUnsigned)
-           * - Factor
-             - Float sub class (NodeSocketFloatFactor)
-           * - Angle
-             - Float sub class  (NodeSocketFloatAngle)
-           * - Distance
-             - Float sub class (NodeSocketFloatDistance)
-           * - Rotation
-             - Vector sub class (NodeSocketVectorEuler)
-           * - xyz
-             - Vector sub class (NodeSocketVectorXYZ)
-           * - Translation
-             - Vector sub class (NodeSocketVectorTranslation)
-          
-        These additional values allow to enter angle, distance, factor... as group input values.
-        
+ Get the node socket bl_idname name from the Socket class
+
+:param class_name: The class name
+:type class_name: str
+:return: The bl_idname associated to this class name
+:rtype: str
+
+Used to create a new group input socket. Called in `DataClass.Input` method to determine
+which socket type must be created.
+
+Note that here the class_name argument accepts additional values which correspond to *sub classes*:
+    
+.. list-table:: 
+   :widths: 20 40
+   :header-rows: 0
+
+   * - Unsigned
+     - Integer sub class (NodeSocketIntUnsigned)
+   * - Factor
+     - Float sub class (NodeSocketFloatFactor)
+   * - Angle
+     - Float sub class  (NodeSocketFloatAngle)
+   * - Distance
+     - Float sub class (NodeSocketFloatDistance)
+   * - Rotation
+     - Vector sub class (NodeSocketVectorEuler)
+   * - xyz
+     - Vector sub class (NodeSocketVectorXYZ)
+   * - Translation
+     - Vector sub class (NodeSocketVectorTranslation)
+  
+These additional values allow to enter angle, distance, factor... as group input values.
+
 
 
 
@@ -249,84 +249,84 @@ def get_bl_idname(class_name)
 def get_class_name(socket, with_sub_class = False)
 ```
 
-         Get the DataSocket class name corresponding to the socket type and name.
-        
-        :param socket: The socket to determine the class of
-        :param with_sub_class: Return the sub class if True
-        :typ socket: bpy.types.NodeSocket, Socket
-        :type with_sub_class: bool
-        :return: The name of the class associated to the bl_idname of the socket
-        :rtype: str
-        
-        .. list-table:: Correspondance table
-           :widths: 30 20 20
-           :header-rows: 1
-           
-           * - NodeSocket
-             - class name
-             - sub class name
-           * - NodeSocketBool 
-             - 'Boolean'
-             - 
-           * - NodeSocketInt 
-             - 'Integer'
-             - 
-           * - NodeSocketIntUnsigned 
-             - 'Integer'
-             - 'Unsigned'
-           * - NodeSocketFloat 
-             - 'Float' 
-             - 
-           * - NodeSocketFloatFactor 
-             - 'Float'
-             - 'Factor'
-           * - NodeSocketFloatAngle  
-             - 'Float'
-             - 'Angle'
-           * - NodeSocketFloatDistance 
-             - 'Float'
-             - 'Distance'
-           * - NodeSocketVector 
-             - 'Vector'
-             - 
-           * - NodeSocketVectorEuler 
-             - 'Vector'
-             - 'Rotation'
-           * - NodeSocketVectorXYZ 
-             - 'Vector'
-             - 'xyz'
-           * - NodeSocketVectorTranslation 
-             - 'Vector'
-             - 'Translation'
-           * - NodeSocketColor 
-             - 'Color'
-             - 
-           * - NodeSocketString' 
-             - 'String'
-             - 
-           * - NodeSocketCollection 
-             - 'Collection'
-             - 
-           * - NodeSocketImage 
-             - 'Image'
-             - 
-           * - NodeSocketMaterial 
-             - 'Material'
-             - 
-           * - NodeSocketObject 
-             - 'Object'
-             - 
-           * - NodeSocketTexture 
-             - 'Texture'
-             - 
-           * - NodeSocketGeometry
-             - 'Geometry'
-             - 
-          
-          
-        If the name of the socket is in ['Mesh', 'Points', 'Instances', 'Volume', 'Spline', 'Curve', 'Curves'],
-        the name is chosen as the class name.
-        
+ Get the DataSocket class name corresponding to the socket type and name.
+
+:param socket: The socket to determine the class of
+:param with_sub_class: Return the sub class if True
+:typ socket: bpy.types.NodeSocket, Socket
+:type with_sub_class: bool
+:return: The name of the class associated to the bl_idname of the socket
+:rtype: str
+
+.. list-table:: Correspondance table
+   :widths: 30 20 20
+   :header-rows: 1
+   
+   * - NodeSocket
+     - class name
+     - sub class name
+   * - NodeSocketBool 
+     - 'Boolean'
+     - 
+   * - NodeSocketInt 
+     - 'Integer'
+     - 
+   * - NodeSocketIntUnsigned 
+     - 'Integer'
+     - 'Unsigned'
+   * - NodeSocketFloat 
+     - 'Float' 
+     - 
+   * - NodeSocketFloatFactor 
+     - 'Float'
+     - 'Factor'
+   * - NodeSocketFloatAngle  
+     - 'Float'
+     - 'Angle'
+   * - NodeSocketFloatDistance 
+     - 'Float'
+     - 'Distance'
+   * - NodeSocketVector 
+     - 'Vector'
+     - 
+   * - NodeSocketVectorEuler 
+     - 'Vector'
+     - 'Rotation'
+   * - NodeSocketVectorXYZ 
+     - 'Vector'
+     - 'xyz'
+   * - NodeSocketVectorTranslation 
+     - 'Vector'
+     - 'Translation'
+   * - NodeSocketColor 
+     - 'Color'
+     - 
+   * - NodeSocketString' 
+     - 'String'
+     - 
+   * - NodeSocketCollection 
+     - 'Collection'
+     - 
+   * - NodeSocketImage 
+     - 'Image'
+     - 
+   * - NodeSocketMaterial 
+     - 'Material'
+     - 
+   * - NodeSocketObject 
+     - 'Object'
+     - 
+   * - NodeSocketTexture 
+     - 'Texture'
+     - 
+   * - NodeSocketGeometry
+     - 'Geometry'
+     - 
+  
+  
+If the name of the socket is in ['Mesh', 'Points', 'Instances', 'Volume', 'Spline', 'Curve', 'Curves'],
+the name is chosen as the class name.
+
 
 
 ### gives_bsocket
@@ -336,18 +336,18 @@ def get_class_name(socket, with_sub_class = False)
 def gives_bsocket(value)
 ```
 
-         Test if the argument provides a valid output socket.
-        
-        :param value: The value to test
-        :type value: any
-        :return: True if *value* is or wraps a socket
-        :rtype: bool
-        
-        Returns True if value is:
-            
-        - A Blender Geometry Node Socket
-        - An instance of Socket        
-        
+ Test if the argument provides a valid output socket.
+
+:param value: The value to test
+:type value: any
+:return: True if *value* is or wraps a socket
+:rtype: bool
+
+Returns True if value is:
+    
+- A Blender Geometry Node Socket
+- An instance of Socket        
+
 
 
 
@@ -358,13 +358,13 @@ def gives_bsocket(value)
 def is_socket(value)
 ```
 
-         An alternative to isinstance(value, Socket)
+ An alternative to isinstance(value, Socket)
 
-        :param value: The value to test
-        :type value: any
-        :return: True if *value* is an instance of Socket
-        :rtype: bool
-        
+:param value: The value to test
+:type value: any
+:return: True if *value* is an instance of Socket
+:rtype: bool
+
 
 
 ### is_vector
@@ -374,13 +374,13 @@ def is_socket(value)
 def is_vector(value)
 ```
 
-         Determine is the parameter is a vector.
+ Determine is the parameter is a vector.
 
-        :param value: The value to test
-        :type value: any
-        :return: True if *value* is an instance of Socket
-        :rtype: bool
-        
+:param value: The value to test
+:type value: any
+:return: True if *value* is an instance of Socket
+:rtype: bool
+
 
 
 
@@ -391,47 +391,47 @@ def is_vector(value)
 def value_data_type(value, default='FLOAT', color_domain='FLOAT_COLOR')
 ```
 
-         Returns the domain to which the socket belongs
-        
-        :param value: The socket
-        :type value: any
-        :return: data type in ['BOOLEAN', 'INT', 'FLOAT', 'FLOAT_VECTOR', 'FLOAT_COLOR']
-        :rtype: str
-        
-        .. list-table:: Correspondance table
-           :widths: 30 20
-           :header-rows: 1
-        
-           * - Socket bl_idname
-             - Domain code
-           * - NodeSocketBool
-             - 'BOOLEAN'
-           * - NodeSocketInt               
-             - 'INT'
-           * - NodeSocketIntUnsigned       
-             - 'INT'
-           * - NodeSocketFloat            
-             - 'FLOAT'
-           * - NodeSocketFloatFactor       
-             - 'FLOAT'
-           * - NodeSocketFloatAngle        
-             - 'FLOAT'
-           * - NodeSocketFloatDistance     
-             - 'FLOAT'         
-           * - NodeSocketVector            
-             - 'FLOAT_VECTOR'
-           * - NodeSocketVectorEuler       
-             - 'FLOAT_VECTOR'
-           * - NodeSocketVectorXYZ         
-             - 'FLOAT_VECTOR'
-           * - NodeSocketVectorTranslation
-             - 'FLOAT_VECTOR'
-           * - NodeSocketColor      
-             - 'FLOAT_COLOR'
-           * - NodeSocketString           
-             - 'FLOAT_COLOR'
-        
-        
+ Returns the domain to which the socket belongs
+
+:param value: The socket
+:type value: any
+:return: data type in ['BOOLEAN', 'INT', 'FLOAT', 'FLOAT_VECTOR', 'FLOAT_COLOR']
+:rtype: str
+
+.. list-table:: Correspondance table
+   :widths: 30 20
+   :header-rows: 1
+
+   * - Socket bl_idname
+     - Domain code
+   * - NodeSocketBool
+     - 'BOOLEAN'
+   * - NodeSocketInt               
+     - 'INT'
+   * - NodeSocketIntUnsigned       
+     - 'INT'
+   * - NodeSocketFloat            
+     - 'FLOAT'
+   * - NodeSocketFloatFactor       
+     - 'FLOAT'
+   * - NodeSocketFloatAngle        
+     - 'FLOAT'
+   * - NodeSocketFloatDistance     
+     - 'FLOAT'         
+   * - NodeSocketVector            
+     - 'FLOAT_VECTOR'
+   * - NodeSocketVectorEuler       
+     - 'FLOAT_VECTOR'
+   * - NodeSocketVectorXYZ         
+     - 'FLOAT_VECTOR'
+   * - NodeSocketVectorTranslation
+     - 'FLOAT_VECTOR'
+   * - NodeSocketColor      
+     - 'FLOAT_COLOR'
+   * - NodeSocketString           
+     - 'FLOAT_COLOR'
+
+
 
 
 
@@ -443,14 +443,14 @@ def value_data_type(value, default='FLOAT', color_domain='FLOAT_COLOR')
 def abs(self)
 ```
 
-         Node VectorMath.
+ Node VectorMath.
 
-        Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
-        Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
+Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
+Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 
-        Returns:
-            socket `vector`
-        
+Returns:
+    socket `vector`
+
 
 
 ### absolute
@@ -459,14 +459,14 @@ def abs(self)
 def absolute(self)
 ```
 
-         Node VectorMath.
+ Node VectorMath.
 
-        Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
-        Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
+Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
+Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 
-        Returns:
-            socket `vector`
-        
+Returns:
+    socket `vector`
+
 
 
 ### add
@@ -475,17 +475,17 @@ def absolute(self)
 def add(self, vector=None)
 ```
 
-         Node VectorMath.
+ Node VectorMath.
 
-        Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
-        Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
+Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
+Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 
-        Args:
-            vector: Vector
+Args:
+    vector: Vector
 
-        Returns:
-            socket `vector`
-        
+Returns:
+    socket `vector`
+
 
 
 ### align_euler_to_vector
@@ -494,20 +494,20 @@ def add(self, vector=None)
 def align_euler_to_vector(self, factor=None, vector=None, axis='X', pivot_axis='AUTO')
 ```
 
-         Node AlignEulerToVector.
+ Node AlignEulerToVector.
 
-        Node reference [Align Euler to Vector](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/align_euler_to_vector.html)
-        Developer reference [FunctionNodeAlignEulerToVector](https://docs.blender.org/api/current/bpy.types.FunctionNodeAlignEulerToVector.html)
+Node reference [Align Euler to Vector](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/align_euler_to_vector.html)
+Developer reference [FunctionNodeAlignEulerToVector](https://docs.blender.org/api/current/bpy.types.FunctionNodeAlignEulerToVector.html)
 
-        Args:
-            factor: Float
-            vector: Vector
-            axis (str): 'X' in [X, Y, Z]
-            pivot_axis (str): 'AUTO' in [AUTO, X, Y, Z]
+Args:
+    factor: Float
+    vector: Vector
+    axis (str): 'X' in [X, Y, Z]
+    pivot_axis (str): 'AUTO' in [AUTO, X, Y, Z]
 
-        Returns:
-            node with sockets ['rotation']
-        
+Returns:
+    node with sockets ['rotation']
+
 
 
 ### average_equal
@@ -516,18 +516,18 @@ def align_euler_to_vector(self, factor=None, vector=None, axis='X', pivot_axis='
 def average_equal(self, b=None, epsilon=None)
 ```
 
-         Node Compare.
+ Node Compare.
 
-        Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
-        Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
+Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
+Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 
-        Args:
-            b: ['Float', 'Integer', 'Vector', 'Color', 'String']
-            epsilon: Float
+Args:
+    b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+    epsilon: Float
 
-        Returns:
-            socket `result`
-        
+Returns:
+    socket `result`
+
 
 
 ### average_greater_equal
@@ -536,17 +536,17 @@ def average_equal(self, b=None, epsilon=None)
 def average_greater_equal(self, b=None)
 ```
 
-         Node Compare.
+ Node Compare.
 
-        Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
-        Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
+Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
+Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 
-        Args:
-            b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+Args:
+    b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 
-        Returns:
-            socket `result`
-        
+Returns:
+    socket `result`
+
 
 
 ### average_greater_than
@@ -555,17 +555,17 @@ def average_greater_equal(self, b=None)
 def average_greater_than(self, b=None)
 ```
 
-         Node Compare.
+ Node Compare.
 
-        Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
-        Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
+Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
+Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 
-        Args:
-            b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+Args:
+    b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 
-        Returns:
-            socket `result`
-        
+Returns:
+    socket `result`
+
 
 
 ### average_less_equal
@@ -574,17 +574,17 @@ def average_greater_than(self, b=None)
 def average_less_equal(self, b=None)
 ```
 
-         Node Compare.
+ Node Compare.
 
-        Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
-        Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
+Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
+Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 
-        Args:
-            b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+Args:
+    b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 
-        Returns:
-            socket `result`
-        
+Returns:
+    socket `result`
+
 
 
 ### average_less_than
@@ -593,17 +593,17 @@ def average_less_equal(self, b=None)
 def average_less_than(self, b=None)
 ```
 
-         Node Compare.
+ Node Compare.
 
-        Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
-        Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
+Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
+Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 
-        Args:
-            b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+Args:
+    b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 
-        Returns:
-            socket `result`
-        
+Returns:
+    socket `result`
+
 
 
 ### average_not_equal
@@ -612,18 +612,18 @@ def average_less_than(self, b=None)
 def average_not_equal(self, b=None, epsilon=None)
 ```
 
-         Node Compare.
+ Node Compare.
 
-        Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
-        Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
+Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
+Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 
-        Args:
-            b: ['Float', 'Integer', 'Vector', 'Color', 'String']
-            epsilon: Float
+Args:
+    b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+    epsilon: Float
 
-        Returns:
-            socket `result`
-        
+Returns:
+    socket `result`
+
 
 
 ### ceil
@@ -632,14 +632,14 @@ def average_not_equal(self, b=None, epsilon=None)
 def ceil(self)
 ```
 
-         Node VectorMath.
+ Node VectorMath.
 
-        Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
-        Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
+Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
+Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 
-        Returns:
-            socket `vector`
-        
+Returns:
+    socket `vector`
+
 
 
 ### compare
@@ -648,22 +648,22 @@ def ceil(self)
 def compare(self, b=None, c=None, angle=None, epsilon=None, mode='ELEMENT', operation='GREATER_THAN')
 ```
 
-         Node Compare.
+ Node Compare.
 
-        Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
-        Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
+Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
+Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 
-        Args:
-            b: ['Float', 'Integer', 'Vector', 'Color', 'String']
-            c: Float
-            angle: Float
-            epsilon: Float
-            mode (str): 'ELEMENT' in [ELEMENT, LENGTH, AVERAGE, DOT_PRODUCT, DIRECTION]
-            operation (str): 'GREATER_THAN' in [LESS_THAN, LESS_EQUAL, GREATER_THAN, GREATER_EQUAL, EQUAL, NOT_EQUAL]
+Args:
+    b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+    c: Float
+    angle: Float
+    epsilon: Float
+    mode (str): 'ELEMENT' in [ELEMENT, LENGTH, AVERAGE, DOT_PRODUCT, DIRECTION]
+    operation (str): 'GREATER_THAN' in [LESS_THAN, LESS_EQUAL, GREATER_THAN, GREATER_EQUAL, EQUAL, NOT_EQUAL]
 
-        Returns:
-            socket `result`
-        
+Returns:
+    socket `result`
+
 
 
 ### connected_sockets
@@ -672,8 +672,8 @@ def compare(self, b=None, c=None, angle=None, epsilon=None, mode='ELEMENT', oper
 def connected_sockets(self)
 ```
 
-         Returns the list of Socket instances linked to this socket.
-        
+ Returns the list of Socket instances linked to this socket.
+
 
 
 
@@ -683,14 +683,14 @@ def connected_sockets(self)
 def cos(self)
 ```
 
-         Node VectorMath.
+ Node VectorMath.
 
-        Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
-        Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
+Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
+Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 
-        Returns:
-            socket `vector`
-        
+Returns:
+    socket `vector`
+
 
 
 ### cosine
@@ -699,14 +699,14 @@ def cos(self)
 def cosine(self)
 ```
 
-         Node VectorMath.
+ Node VectorMath.
 
-        Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
-        Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
+Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
+Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 
-        Returns:
-            socket `vector`
-        
+Returns:
+    socket `vector`
+
 
 
 ### cross
@@ -715,17 +715,17 @@ def cosine(self)
 def cross(self, vector=None)
 ```
 
-         Node VectorMath.
+ Node VectorMath.
 
-        Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
-        Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
+Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
+Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 
-        Args:
-            vector: Vector
+Args:
+    vector: Vector
 
-        Returns:
-            socket `vector`
-        
+Returns:
+    socket `vector`
+
 
 
 ### cross_product
@@ -734,17 +734,17 @@ def cross(self, vector=None)
 def cross_product(self, vector=None)
 ```
 
-         Node VectorMath.
+ Node VectorMath.
 
-        Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
-        Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
+Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
+Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 
-        Args:
-            vector: Vector
+Args:
+    vector: Vector
 
-        Returns:
-            socket `vector`
-        
+Returns:
+    socket `vector`
+
 
 
 ### curves
@@ -753,17 +753,17 @@ def cross_product(self, vector=None)
 def curves(self, fac=None)
 ```
 
-         Node VectorCurves.
+ Node VectorCurves.
 
-        Node reference [Vector Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_curves.html)
-        Developer reference [ShaderNodeVectorCurve](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorCurve.html)
+Node reference [Vector Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_curves.html)
+Developer reference [ShaderNodeVectorCurve](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorCurve.html)
 
-        Args:
-            fac: Float
+Args:
+    fac: Float
 
-        Returns:
-            socket `vector`
-        
+Returns:
+    socket `vector`
+
 
 
 ### direction_equal
@@ -772,19 +772,19 @@ def curves(self, fac=None)
 def direction_equal(self, b=None, angle=None, epsilon=None)
 ```
 
-         Node Compare.
+ Node Compare.
 
-        Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
-        Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
+Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
+Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 
-        Args:
-            b: ['Float', 'Integer', 'Vector', 'Color', 'String']
-            angle: Float
-            epsilon: Float
+Args:
+    b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+    angle: Float
+    epsilon: Float
 
-        Returns:
-            socket `result`
-        
+Returns:
+    socket `result`
+
 
 
 ### direction_greater_equal
@@ -793,18 +793,18 @@ def direction_equal(self, b=None, angle=None, epsilon=None)
 def direction_greater_equal(self, b=None, angle=None)
 ```
 
-         Node Compare.
+ Node Compare.
 
-        Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
-        Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
+Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
+Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 
-        Args:
-            b: ['Float', 'Integer', 'Vector', 'Color', 'String']
-            angle: Float
+Args:
+    b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+    angle: Float
 
-        Returns:
-            socket `result`
-        
+Returns:
+    socket `result`
+
 
 
 ### direction_greater_than
@@ -813,18 +813,18 @@ def direction_greater_equal(self, b=None, angle=None)
 def direction_greater_than(self, b=None, angle=None)
 ```
 
-         Node Compare.
+ Node Compare.
 
-        Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
-        Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
+Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
+Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 
-        Args:
-            b: ['Float', 'Integer', 'Vector', 'Color', 'String']
-            angle: Float
+Args:
+    b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+    angle: Float
 
-        Returns:
-            socket `result`
-        
+Returns:
+    socket `result`
+
 
 
 ### direction_less_equal
@@ -833,18 +833,18 @@ def direction_greater_than(self, b=None, angle=None)
 def direction_less_equal(self, b=None, angle=None)
 ```
 
-         Node Compare.
+ Node Compare.
 
-        Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
-        Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
+Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
+Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 
-        Args:
-            b: ['Float', 'Integer', 'Vector', 'Color', 'String']
-            angle: Float
+Args:
+    b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+    angle: Float
 
-        Returns:
-            socket `result`
-        
+Returns:
+    socket `result`
+
 
 
 ### direction_less_than
@@ -853,18 +853,18 @@ def direction_less_equal(self, b=None, angle=None)
 def direction_less_than(self, b=None, angle=None)
 ```
 
-         Node Compare.
+ Node Compare.
 
-        Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
-        Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
+Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
+Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 
-        Args:
-            b: ['Float', 'Integer', 'Vector', 'Color', 'String']
-            angle: Float
+Args:
+    b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+    angle: Float
 
-        Returns:
-            socket `result`
-        
+Returns:
+    socket `result`
+
 
 
 ### direction_not_equal
@@ -873,19 +873,19 @@ def direction_less_than(self, b=None, angle=None)
 def direction_not_equal(self, b=None, angle=None, epsilon=None)
 ```
 
-         Node Compare.
+ Node Compare.
 
-        Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
-        Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
+Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
+Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 
-        Args:
-            b: ['Float', 'Integer', 'Vector', 'Color', 'String']
-            angle: Float
-            epsilon: Float
+Args:
+    b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+    angle: Float
+    epsilon: Float
 
-        Returns:
-            socket `result`
-        
+Returns:
+    socket `result`
+
 
 
 ### distance
@@ -894,17 +894,17 @@ def direction_not_equal(self, b=None, angle=None, epsilon=None)
 def distance(self, vector=None)
 ```
 
-         Node VectorMath.
+ Node VectorMath.
 
-        Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
-        Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
+Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
+Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 
-        Args:
-            vector: Vector
+Args:
+    vector: Vector
 
-        Returns:
-            socket `value`
-        
+Returns:
+    socket `value`
+
 
 
 ### div
@@ -913,17 +913,17 @@ def distance(self, vector=None)
 def div(self, vector=None)
 ```
 
-         Node VectorMath.
+ Node VectorMath.
 
-        Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
-        Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
+Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
+Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 
-        Args:
-            vector: Vector
+Args:
+    vector: Vector
 
-        Returns:
-            socket `vector`
-        
+Returns:
+    socket `vector`
+
 
 
 ### divide
@@ -932,17 +932,17 @@ def div(self, vector=None)
 def divide(self, vector=None)
 ```
 
-         Node VectorMath.
+ Node VectorMath.
 
-        Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
-        Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
+Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
+Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 
-        Args:
-            vector: Vector
+Args:
+    vector: Vector
 
-        Returns:
-            socket `vector`
-        
+Returns:
+    socket `vector`
+
 
 
 ### dot
@@ -951,17 +951,17 @@ def divide(self, vector=None)
 def dot(self, vector=None)
 ```
 
-         Node VectorMath.
+ Node VectorMath.
 
-        Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
-        Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
+Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
+Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 
-        Args:
-            vector: Vector
+Args:
+    vector: Vector
 
-        Returns:
-            socket `value`
-        
+Returns:
+    socket `value`
+
 
 
 ### dot_product
@@ -970,17 +970,17 @@ def dot(self, vector=None)
 def dot_product(self, vector=None)
 ```
 
-         Node VectorMath.
+ Node VectorMath.
 
-        Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
-        Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
+Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
+Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 
-        Args:
-            vector: Vector
+Args:
+    vector: Vector
 
-        Returns:
-            socket `value`
-        
+Returns:
+    socket `value`
+
 
 
 ### dot_product_equal
@@ -989,19 +989,19 @@ def dot_product(self, vector=None)
 def dot_product_equal(self, b=None, c=None, epsilon=None)
 ```
 
-         Node Compare.
+ Node Compare.
 
-        Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
-        Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
+Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
+Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 
-        Args:
-            b: ['Float', 'Integer', 'Vector', 'Color', 'String']
-            c: Float
-            epsilon: Float
+Args:
+    b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+    c: Float
+    epsilon: Float
 
-        Returns:
-            socket `result`
-        
+Returns:
+    socket `result`
+
 
 
 ### dot_product_greater_equal
@@ -1010,18 +1010,18 @@ def dot_product_equal(self, b=None, c=None, epsilon=None)
 def dot_product_greater_equal(self, b=None, c=None)
 ```
 
-         Node Compare.
+ Node Compare.
 
-        Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
-        Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
+Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
+Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 
-        Args:
-            b: ['Float', 'Integer', 'Vector', 'Color', 'String']
-            c: Float
+Args:
+    b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+    c: Float
 
-        Returns:
-            socket `result`
-        
+Returns:
+    socket `result`
+
 
 
 ### dot_product_greater_than
@@ -1030,18 +1030,18 @@ def dot_product_greater_equal(self, b=None, c=None)
 def dot_product_greater_than(self, b=None, c=None)
 ```
 
-         Node Compare.
+ Node Compare.
 
-        Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
-        Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
+Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
+Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 
-        Args:
-            b: ['Float', 'Integer', 'Vector', 'Color', 'String']
-            c: Float
+Args:
+    b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+    c: Float
 
-        Returns:
-            socket `result`
-        
+Returns:
+    socket `result`
+
 
 
 ### dot_product_less_equal
@@ -1050,18 +1050,18 @@ def dot_product_greater_than(self, b=None, c=None)
 def dot_product_less_equal(self, b=None, c=None)
 ```
 
-         Node Compare.
+ Node Compare.
 
-        Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
-        Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
+Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
+Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 
-        Args:
-            b: ['Float', 'Integer', 'Vector', 'Color', 'String']
-            c: Float
+Args:
+    b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+    c: Float
 
-        Returns:
-            socket `result`
-        
+Returns:
+    socket `result`
+
 
 
 ### dot_product_less_than
@@ -1070,18 +1070,18 @@ def dot_product_less_equal(self, b=None, c=None)
 def dot_product_less_than(self, b=None, c=None)
 ```
 
-         Node Compare.
+ Node Compare.
 
-        Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
-        Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
+Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
+Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 
-        Args:
-            b: ['Float', 'Integer', 'Vector', 'Color', 'String']
-            c: Float
+Args:
+    b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+    c: Float
 
-        Returns:
-            socket `result`
-        
+Returns:
+    socket `result`
+
 
 
 ### dot_product_not_equal
@@ -1090,19 +1090,19 @@ def dot_product_less_than(self, b=None, c=None)
 def dot_product_not_equal(self, b=None, c=None, epsilon=None)
 ```
 
-         Node Compare.
+ Node Compare.
 
-        Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
-        Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
+Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
+Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 
-        Args:
-            b: ['Float', 'Integer', 'Vector', 'Color', 'String']
-            c: Float
-            epsilon: Float
+Args:
+    b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+    c: Float
+    epsilon: Float
 
-        Returns:
-            socket `result`
-        
+Returns:
+    socket `result`
+
 
 
 ### elements_equal
@@ -1111,18 +1111,18 @@ def dot_product_not_equal(self, b=None, c=None, epsilon=None)
 def elements_equal(self, b=None, epsilon=None)
 ```
 
-         Node Compare.
+ Node Compare.
 
-        Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
-        Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
+Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
+Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 
-        Args:
-            b: ['Float', 'Integer', 'Vector', 'Color', 'String']
-            epsilon: Float
+Args:
+    b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+    epsilon: Float
 
-        Returns:
-            socket `result`
-        
+Returns:
+    socket `result`
+
 
 
 ### elements_greater_equal
@@ -1131,17 +1131,17 @@ def elements_equal(self, b=None, epsilon=None)
 def elements_greater_equal(self, b=None)
 ```
 
-         Node Compare.
+ Node Compare.
 
-        Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
-        Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
+Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
+Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 
-        Args:
-            b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+Args:
+    b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 
-        Returns:
-            socket `result`
-        
+Returns:
+    socket `result`
+
 
 
 ### elements_greater_than
@@ -1150,17 +1150,17 @@ def elements_greater_equal(self, b=None)
 def elements_greater_than(self, b=None)
 ```
 
-         Node Compare.
+ Node Compare.
 
-        Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
-        Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
+Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
+Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 
-        Args:
-            b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+Args:
+    b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 
-        Returns:
-            socket `result`
-        
+Returns:
+    socket `result`
+
 
 
 ### elements_less_equal
@@ -1169,17 +1169,17 @@ def elements_greater_than(self, b=None)
 def elements_less_equal(self, b=None)
 ```
 
-         Node Compare.
+ Node Compare.
 
-        Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
-        Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
+Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
+Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 
-        Args:
-            b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+Args:
+    b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 
-        Returns:
-            socket `result`
-        
+Returns:
+    socket `result`
+
 
 
 ### elements_less_than
@@ -1188,17 +1188,17 @@ def elements_less_equal(self, b=None)
 def elements_less_than(self, b=None)
 ```
 
-         Node Compare.
+ Node Compare.
 
-        Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
-        Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
+Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
+Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 
-        Args:
-            b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+Args:
+    b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 
-        Returns:
-            socket `result`
-        
+Returns:
+    socket `result`
+
 
 
 ### elements_not_equal
@@ -1207,18 +1207,18 @@ def elements_less_than(self, b=None)
 def elements_not_equal(self, b=None, epsilon=None)
 ```
 
-         Node Compare.
+ Node Compare.
 
-        Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
-        Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
+Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
+Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 
-        Args:
-            b: ['Float', 'Integer', 'Vector', 'Color', 'String']
-            epsilon: Float
+Args:
+    b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+    epsilon: Float
 
-        Returns:
-            socket `result`
-        
+Returns:
+    socket `result`
+
 
 
 ### face_forward
@@ -1227,18 +1227,18 @@ def elements_not_equal(self, b=None, epsilon=None)
 def face_forward(self, incident=None, reference=None)
 ```
 
-         Node VectorMath.
+ Node VectorMath.
 
-        Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
-        Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
+Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
+Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 
-        Args:
-            incident: Vector
-            reference: Vector
+Args:
+    incident: Vector
+    reference: Vector
 
-        Returns:
-            socket `vector`
-        
+Returns:
+    socket `vector`
+
 
 
 ### floor
@@ -1247,14 +1247,14 @@ def face_forward(self, incident=None, reference=None)
 def floor(self)
 ```
 
-         Node VectorMath.
+ Node VectorMath.
 
-        Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
-        Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
+Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
+Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 
-        Returns:
-            socket `vector`
-        
+Returns:
+    socket `vector`
+
 
 
 ### fract
@@ -1263,14 +1263,14 @@ def floor(self)
 def fract(self)
 ```
 
-         Node VectorMath.
+ Node VectorMath.
 
-        Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
-        Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
+Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
+Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 
-        Returns:
-            socket `vector`
-        
+Returns:
+    socket `vector`
+
 
 
 ### fraction
@@ -1279,14 +1279,14 @@ def fract(self)
 def fraction(self)
 ```
 
-         Node VectorMath.
+ Node VectorMath.
 
-        Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
-        Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
+Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
+Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 
-        Returns:
-            socket `vector`
-        
+Returns:
+    socket `vector`
+
 
 
 ### get_blender_socket
@@ -1295,13 +1295,13 @@ def fraction(self)
 def get_blender_socket(self)
 ```
 
-         Overrides the standard behavior of :class:DataSocket super class
-        
-        If the `x`, `y`, `z` properties have been read or modified, a *Combine XYZ* node is necessary
-        to recompose the Vector.
-        
-        .. blid:: ShaderNodeCombineXYZ
-        
+ Overrides the standard behavior of :class:DataSocket super class
+
+If the `x`, `y`, `z` properties have been read or modified, a *Combine XYZ* node is necessary
+to recompose the Vector.
+
+.. blid:: ShaderNodeCombineXYZ
+
 
 
 
@@ -1311,10 +1311,10 @@ def get_blender_socket(self)
 def init_domains(self)
 ```
 
-         Initialize the geometry domains
-        
-        To be overloaded by sub classes.        
-        
+ Initialize the geometry domains
+
+To be overloaded by sub classes.        
+
 
 
 ### init_socket
@@ -1323,10 +1323,10 @@ def init_domains(self)
 def init_socket(self)
 ```
 
-         Complementary init
-        
-        Called at the end of initialization for further operations.
-        
+ Complementary init
+
+Called at the end of initialization for further operations.
+
 
 
 ### length_equal
@@ -1335,18 +1335,18 @@ def init_socket(self)
 def length_equal(self, b=None, epsilon=None)
 ```
 
-         Node Compare.
+ Node Compare.
 
-        Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
-        Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
+Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
+Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 
-        Args:
-            b: ['Float', 'Integer', 'Vector', 'Color', 'String']
-            epsilon: Float
+Args:
+    b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+    epsilon: Float
 
-        Returns:
-            socket `result`
-        
+Returns:
+    socket `result`
+
 
 
 ### length_greater_equal
@@ -1355,17 +1355,17 @@ def length_equal(self, b=None, epsilon=None)
 def length_greater_equal(self, b=None)
 ```
 
-         Node Compare.
+ Node Compare.
 
-        Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
-        Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
+Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
+Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 
-        Args:
-            b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+Args:
+    b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 
-        Returns:
-            socket `result`
-        
+Returns:
+    socket `result`
+
 
 
 ### length_greater_than
@@ -1374,17 +1374,17 @@ def length_greater_equal(self, b=None)
 def length_greater_than(self, b=None)
 ```
 
-         Node Compare.
+ Node Compare.
 
-        Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
-        Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
+Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
+Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 
-        Args:
-            b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+Args:
+    b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 
-        Returns:
-            socket `result`
-        
+Returns:
+    socket `result`
+
 
 
 ### length_less_equal
@@ -1393,17 +1393,17 @@ def length_greater_than(self, b=None)
 def length_less_equal(self, b=None)
 ```
 
-         Node Compare.
+ Node Compare.
 
-        Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
-        Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
+Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
+Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 
-        Args:
-            b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+Args:
+    b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 
-        Returns:
-            socket `result`
-        
+Returns:
+    socket `result`
+
 
 
 ### length_less_than
@@ -1412,17 +1412,17 @@ def length_less_equal(self, b=None)
 def length_less_than(self, b=None)
 ```
 
-         Node Compare.
+ Node Compare.
 
-        Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
-        Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
+Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
+Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 
-        Args:
-            b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+Args:
+    b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 
-        Returns:
-            socket `result`
-        
+Returns:
+    socket `result`
+
 
 
 ### length_not_equal
@@ -1431,18 +1431,18 @@ def length_less_than(self, b=None)
 def length_not_equal(self, b=None, epsilon=None)
 ```
 
-         Node Compare.
+ Node Compare.
 
-        Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
-        Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
+Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
+Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 
-        Args:
-            b: ['Float', 'Integer', 'Vector', 'Color', 'String']
-            epsilon: Float
+Args:
+    b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+    epsilon: Float
 
-        Returns:
-            socket `result`
-        
+Returns:
+    socket `result`
+
 
 
 ### map_range
@@ -1451,23 +1451,23 @@ def length_not_equal(self, b=None, epsilon=None)
 def map_range(self, from_min=None, from_max=None, to_min=None, to_max=None, steps=None, clamp=True, interpolation_type='LINEAR')
 ```
 
-         Node MapRange.
+ Node MapRange.
 
-        Node reference [Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/map_range.html)
-        Developer reference [ShaderNodeMapRange](https://docs.blender.org/api/current/bpy.types.ShaderNodeMapRange.html)
+Node reference [Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/map_range.html)
+Developer reference [ShaderNodeMapRange](https://docs.blender.org/api/current/bpy.types.ShaderNodeMapRange.html)
 
-        Args:
-            from_min: ['Float', 'Vector']
-            from_max: ['Float', 'Vector']
-            to_min: ['Float', 'Vector']
-            to_max: ['Float', 'Vector']
-            steps: ['Float', 'Vector']
-            clamp (bool): True
-            interpolation_type (str): 'LINEAR' in [LINEAR, STEPPED, SMOOTHSTEP, SMOOTHERSTEP]
+Args:
+    from_min: ['Float', 'Vector']
+    from_max: ['Float', 'Vector']
+    to_min: ['Float', 'Vector']
+    to_max: ['Float', 'Vector']
+    steps: ['Float', 'Vector']
+    clamp (bool): True
+    interpolation_type (str): 'LINEAR' in [LINEAR, STEPPED, SMOOTHSTEP, SMOOTHERSTEP]
 
-        Returns:
-            socket `vector`
-        
+Returns:
+    socket `vector`
+
 
 
 ### map_range_linear
@@ -1476,21 +1476,21 @@ def map_range(self, from_min=None, from_max=None, to_min=None, to_max=None, step
 def map_range_linear(self, from_min=None, from_max=None, to_min=None, to_max=None, clamp=True)
 ```
 
-         Node MapRange.
+ Node MapRange.
 
-        Node reference [Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/map_range.html)
-        Developer reference [ShaderNodeMapRange](https://docs.blender.org/api/current/bpy.types.ShaderNodeMapRange.html)
+Node reference [Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/map_range.html)
+Developer reference [ShaderNodeMapRange](https://docs.blender.org/api/current/bpy.types.ShaderNodeMapRange.html)
 
-        Args:
-            from_min: ['Float', 'Vector']
-            from_max: ['Float', 'Vector']
-            to_min: ['Float', 'Vector']
-            to_max: ['Float', 'Vector']
-            clamp (bool): True
+Args:
+    from_min: ['Float', 'Vector']
+    from_max: ['Float', 'Vector']
+    to_min: ['Float', 'Vector']
+    to_max: ['Float', 'Vector']
+    clamp (bool): True
 
-        Returns:
-            socket `vector`
-        
+Returns:
+    socket `vector`
+
 
 
 ### map_range_smooth
@@ -1499,21 +1499,21 @@ def map_range_linear(self, from_min=None, from_max=None, to_min=None, to_max=Non
 def map_range_smooth(self, from_min=None, from_max=None, to_min=None, to_max=None, clamp=True)
 ```
 
-         Node MapRange.
+ Node MapRange.
 
-        Node reference [Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/map_range.html)
-        Developer reference [ShaderNodeMapRange](https://docs.blender.org/api/current/bpy.types.ShaderNodeMapRange.html)
+Node reference [Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/map_range.html)
+Developer reference [ShaderNodeMapRange](https://docs.blender.org/api/current/bpy.types.ShaderNodeMapRange.html)
 
-        Args:
-            from_min: ['Float', 'Vector']
-            from_max: ['Float', 'Vector']
-            to_min: ['Float', 'Vector']
-            to_max: ['Float', 'Vector']
-            clamp (bool): True
+Args:
+    from_min: ['Float', 'Vector']
+    from_max: ['Float', 'Vector']
+    to_min: ['Float', 'Vector']
+    to_max: ['Float', 'Vector']
+    clamp (bool): True
 
-        Returns:
-            socket `vector`
-        
+Returns:
+    socket `vector`
+
 
 
 ### map_range_smoother
@@ -1522,21 +1522,21 @@ def map_range_smooth(self, from_min=None, from_max=None, to_min=None, to_max=Non
 def map_range_smoother(self, from_min=None, from_max=None, to_min=None, to_max=None, clamp=True)
 ```
 
-         Node MapRange.
+ Node MapRange.
 
-        Node reference [Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/map_range.html)
-        Developer reference [ShaderNodeMapRange](https://docs.blender.org/api/current/bpy.types.ShaderNodeMapRange.html)
+Node reference [Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/map_range.html)
+Developer reference [ShaderNodeMapRange](https://docs.blender.org/api/current/bpy.types.ShaderNodeMapRange.html)
 
-        Args:
-            from_min: ['Float', 'Vector']
-            from_max: ['Float', 'Vector']
-            to_min: ['Float', 'Vector']
-            to_max: ['Float', 'Vector']
-            clamp (bool): True
+Args:
+    from_min: ['Float', 'Vector']
+    from_max: ['Float', 'Vector']
+    to_min: ['Float', 'Vector']
+    to_max: ['Float', 'Vector']
+    clamp (bool): True
 
-        Returns:
-            socket `vector`
-        
+Returns:
+    socket `vector`
+
 
 
 ### map_range_stepped
@@ -1545,22 +1545,22 @@ def map_range_smoother(self, from_min=None, from_max=None, to_min=None, to_max=N
 def map_range_stepped(self, from_min=None, from_max=None, to_min=None, to_max=None, steps=None, clamp=True)
 ```
 
-         Node MapRange.
+ Node MapRange.
 
-        Node reference [Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/map_range.html)
-        Developer reference [ShaderNodeMapRange](https://docs.blender.org/api/current/bpy.types.ShaderNodeMapRange.html)
+Node reference [Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/map_range.html)
+Developer reference [ShaderNodeMapRange](https://docs.blender.org/api/current/bpy.types.ShaderNodeMapRange.html)
 
-        Args:
-            from_min: ['Float', 'Vector']
-            from_max: ['Float', 'Vector']
-            to_min: ['Float', 'Vector']
-            to_max: ['Float', 'Vector']
-            steps: ['Float', 'Vector']
-            clamp (bool): True
+Args:
+    from_min: ['Float', 'Vector']
+    from_max: ['Float', 'Vector']
+    to_min: ['Float', 'Vector']
+    to_max: ['Float', 'Vector']
+    steps: ['Float', 'Vector']
+    clamp (bool): True
 
-        Returns:
-            socket `vector`
-        
+Returns:
+    socket `vector`
+
 
 
 ### max
@@ -1569,17 +1569,17 @@ def map_range_stepped(self, from_min=None, from_max=None, to_min=None, to_max=No
 def max(self, vector=None)
 ```
 
-         Node VectorMath.
+ Node VectorMath.
 
-        Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
-        Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
+Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
+Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 
-        Args:
-            vector: Vector
+Args:
+    vector: Vector
 
-        Returns:
-            socket `vector`
-        
+Returns:
+    socket `vector`
+
 
 
 ### maximum
@@ -1588,17 +1588,17 @@ def max(self, vector=None)
 def maximum(self, vector=None)
 ```
 
-         Node VectorMath.
+ Node VectorMath.
 
-        Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
-        Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
+Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
+Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 
-        Args:
-            vector: Vector
+Args:
+    vector: Vector
 
-        Returns:
-            socket `vector`
-        
+Returns:
+    socket `vector`
+
 
 
 ### min
@@ -1607,17 +1607,17 @@ def maximum(self, vector=None)
 def min(self, vector=None)
 ```
 
-         Node VectorMath.
+ Node VectorMath.
 
-        Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
-        Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
+Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
+Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 
-        Args:
-            vector: Vector
+Args:
+    vector: Vector
 
-        Returns:
-            socket `vector`
-        
+Returns:
+    socket `vector`
+
 
 
 ### minimum
@@ -1626,17 +1626,17 @@ def min(self, vector=None)
 def minimum(self, vector=None)
 ```
 
-         Node VectorMath.
+ Node VectorMath.
 
-        Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
-        Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
+Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
+Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 
-        Args:
-            vector: Vector
+Args:
+    vector: Vector
 
-        Returns:
-            socket `vector`
-        
+Returns:
+    socket `vector`
+
 
 
 ### mix
@@ -1645,20 +1645,20 @@ def minimum(self, vector=None)
 def mix(self, factor=None, vector=None, clamp_factor=True, factor_mode='UNIFORM')
 ```
 
-         Node Mix.
+ Node Mix.
 
-        Node reference [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html)
-        Developer reference [ShaderNodeMix](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
+Node reference [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html)
+Developer reference [ShaderNodeMix](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
 
-        Args:
-            factor: ['Float', 'Vector']
-            vector: ['Float', 'Vector', 'Color']
-            clamp_factor (bool): True
-            factor_mode (str): 'UNIFORM' in [UNIFORM, NON_UNIFORM]
+Args:
+    factor: ['Float', 'Vector']
+    vector: ['Float', 'Vector', 'Color']
+    clamp_factor (bool): True
+    factor_mode (str): 'UNIFORM' in [UNIFORM, NON_UNIFORM]
 
-        Returns:
-            socket `result`
-        
+Returns:
+    socket `result`
+
 
 
 ### mix_non_uniform
@@ -1667,19 +1667,19 @@ def mix(self, factor=None, vector=None, clamp_factor=True, factor_mode='UNIFORM'
 def mix_non_uniform(self, factor=None, vector=None, clamp_factor=True)
 ```
 
-         Node Mix.
+ Node Mix.
 
-        Node reference [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html)
-        Developer reference [ShaderNodeMix](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
+Node reference [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html)
+Developer reference [ShaderNodeMix](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
 
-        Args:
-            factor: ['Float', 'Vector']
-            vector: ['Float', 'Vector', 'Color']
-            clamp_factor (bool): True
+Args:
+    factor: ['Float', 'Vector']
+    vector: ['Float', 'Vector', 'Color']
+    clamp_factor (bool): True
 
-        Returns:
-            socket `result`
-        
+Returns:
+    socket `result`
+
 
 
 ### mix_uniform
@@ -1688,18 +1688,18 @@ def mix_non_uniform(self, factor=None, vector=None, clamp_factor=True)
 def mix_uniform(self, vector=None, clamp_factor=True)
 ```
 
-         Node Mix.
+ Node Mix.
 
-        Node reference [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html)
-        Developer reference [ShaderNodeMix](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
+Node reference [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html)
+Developer reference [ShaderNodeMix](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
 
-        Args:
-            vector: ['Float', 'Vector', 'Color']
-            clamp_factor (bool): True
+Args:
+    vector: ['Float', 'Vector', 'Color']
+    clamp_factor (bool): True
 
-        Returns:
-            socket `result`
-        
+Returns:
+    socket `result`
+
 
 
 ### modulo
@@ -1708,17 +1708,17 @@ def mix_uniform(self, vector=None, clamp_factor=True)
 def modulo(self, vector=None)
 ```
 
-         Node VectorMath.
+ Node VectorMath.
 
-        Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
-        Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
+Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
+Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 
-        Args:
-            vector: Vector
+Args:
+    vector: Vector
 
-        Returns:
-            socket `vector`
-        
+Returns:
+    socket `vector`
+
 
 
 ### mul
@@ -1727,17 +1727,17 @@ def modulo(self, vector=None)
 def mul(self, vector=None)
 ```
 
-         Node VectorMath.
+ Node VectorMath.
 
-        Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
-        Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
+Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
+Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 
-        Args:
-            vector: Vector
+Args:
+    vector: Vector
 
-        Returns:
-            socket `vector`
-        
+Returns:
+    socket `vector`
+
 
 
 ### mul_add
@@ -1746,18 +1746,18 @@ def mul(self, vector=None)
 def mul_add(self, multiplier=None, addend=None)
 ```
 
-         Node VectorMath.
+ Node VectorMath.
 
-        Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
-        Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
+Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
+Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 
-        Args:
-            multiplier: Vector
-            addend: Vector
+Args:
+    multiplier: Vector
+    addend: Vector
 
-        Returns:
-            socket `vector`
-        
+Returns:
+    socket `vector`
+
 
 
 ### multiply
@@ -1766,17 +1766,17 @@ def mul_add(self, multiplier=None, addend=None)
 def multiply(self, vector=None)
 ```
 
-         Node VectorMath.
+ Node VectorMath.
 
-        Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
-        Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
+Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
+Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 
-        Args:
-            vector: Vector
+Args:
+    vector: Vector
 
-        Returns:
-            socket `vector`
-        
+Returns:
+    socket `vector`
+
 
 
 ### multiply_add
@@ -1785,18 +1785,18 @@ def multiply(self, vector=None)
 def multiply_add(self, multiplier=None, addend=None)
 ```
 
-         Node VectorMath.
+ Node VectorMath.
 
-        Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
-        Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
+Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
+Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 
-        Args:
-            multiplier: Vector
-            addend: Vector
+Args:
+    multiplier: Vector
+    addend: Vector
 
-        Returns:
-            socket `vector`
-        
+Returns:
+    socket `vector`
+
 
 
 ### normalize
@@ -1805,14 +1805,14 @@ def multiply_add(self, multiplier=None, addend=None)
 def normalize(self)
 ```
 
-         Node VectorMath.
+ Node VectorMath.
 
-        Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
-        Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
+Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
+Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 
-        Returns:
-            socket `vector`
-        
+Returns:
+    socket `vector`
+
 
 
 ### plug
@@ -1821,14 +1821,14 @@ def normalize(self)
 def plug(self, *values)
 ```
 
-         Plug values in the socket (input sockets only)
-        
-        :param values: The output sockets. More than one values can be passed
-            if the input socket is multi input.
-        :type values: array of bpy.types.NodeSocket, Socket, values
-        
-        see :func:`plug_bsocket`
-        
+ Plug values in the socket (input sockets only)
+
+:param values: The output sockets. More than one values can be passed
+    if the input socket is multi input.
+:type values: array of bpy.types.NodeSocket, Socket, values
+
+see :func:`plug_bsocket`
+
 
 
 ### project
@@ -1837,17 +1837,17 @@ def plug(self, *values)
 def project(self, vector=None)
 ```
 
-         Node VectorMath.
+ Node VectorMath.
 
-        Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
-        Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
+Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
+Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 
-        Args:
-            vector: Vector
+Args:
+    vector: Vector
 
-        Returns:
-            socket `vector`
-        
+Returns:
+    socket `vector`
+
 
 
 ### reflect
@@ -1856,17 +1856,17 @@ def project(self, vector=None)
 def reflect(self, vector=None)
 ```
 
-         Node VectorMath.
+ Node VectorMath.
 
-        Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
-        Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
+Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
+Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 
-        Args:
-            vector: Vector
+Args:
+    vector: Vector
 
-        Returns:
-            socket `vector`
-        
+Returns:
+    socket `vector`
+
 
 
 ### refract
@@ -1875,18 +1875,18 @@ def reflect(self, vector=None)
 def refract(self, vector=None, ior=None)
 ```
 
-         Node VectorMath.
+ Node VectorMath.
 
-        Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
-        Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
+Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
+Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 
-        Args:
-            vector: Vector
-            ior: Float
+Args:
+    vector: Vector
+    ior: Float
 
-        Returns:
-            socket `vector`
-        
+Returns:
+    socket `vector`
+
 
 
 ### reroute
@@ -1895,8 +1895,8 @@ def refract(self, vector=None, ior=None)
 def reroute(self)
 ```
 
-         Reroute all output links
-        
+ Reroute all output links
+
 
 
 ### reset_properties
@@ -1905,29 +1905,29 @@ def reroute(self)
 def reset_properties(self)
 ```
 
-         Reset the properties
-        
-        Properties such as components are cached.
-        
-        After a node is called, the wrapped socket changes and this makes the cache obsolete.
-        After a change, the cache is erased.
-        
-        :example:
-        
-        .. code-block:: python
-    
-            class Vector(...):
-                def __init__(self, ...):
-                     ...
-                     self.reset_properties()
-                     ...
-            
-                 def reset_properties(self):
-                     super().reset_properties()
-                     self.separate_ = None      # Created by property self.seperate() with node SeparateXyz
+ Reset the properties
 
-        
-        
+Properties such as components are cached.
+
+After a node is called, the wrapped socket changes and this makes the cache obsolete.
+After a change, the cache is erased.
+
+:example:
+
+.. code-block:: python
+
+    class Vector(...):
+        def __init__(self, ...):
+             ...
+             self.reset_properties()
+             ...
+    
+         def reset_properties(self):
+             super().reset_properties()
+             self.separate_ = None      # Created by property self.seperate() with node SeparateXyz
+
+
+
 
 
 
@@ -1937,20 +1937,20 @@ def reset_properties(self)
 def rotate_axis_angle(self, center=None, axis=None, angle=None, invert=False)
 ```
 
-         Node VectorRotate.
+ Node VectorRotate.
 
-        Node reference [Vector Rotate](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_rotate.html)
-        Developer reference [ShaderNodeVectorRotate](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorRotate.html)
+Node reference [Vector Rotate](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_rotate.html)
+Developer reference [ShaderNodeVectorRotate](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorRotate.html)
 
-        Args:
-            center: Vector
-            axis: Vector
-            angle: Float
-            invert (bool): False
+Args:
+    center: Vector
+    axis: Vector
+    angle: Float
+    invert (bool): False
 
-        Returns:
-            socket `vector`
-        
+Returns:
+    socket `vector`
+
 
 
 ### rotate_euler
@@ -1959,19 +1959,19 @@ def rotate_axis_angle(self, center=None, axis=None, angle=None, invert=False)
 def rotate_euler(self, center=None, rotation=None, invert=False)
 ```
 
-         Node VectorRotate.
+ Node VectorRotate.
 
-        Node reference [Vector Rotate](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_rotate.html)
-        Developer reference [ShaderNodeVectorRotate](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorRotate.html)
+Node reference [Vector Rotate](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_rotate.html)
+Developer reference [ShaderNodeVectorRotate](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorRotate.html)
 
-        Args:
-            center: Vector
-            rotation: Vector
-            invert (bool): False
+Args:
+    center: Vector
+    rotation: Vector
+    invert (bool): False
 
-        Returns:
-            socket `vector`
-        
+Returns:
+    socket `vector`
+
 
 
 ### rotate_x
@@ -1980,19 +1980,19 @@ def rotate_euler(self, center=None, rotation=None, invert=False)
 def rotate_x(self, center=None, angle=None, invert=False)
 ```
 
-         Node VectorRotate.
+ Node VectorRotate.
 
-        Node reference [Vector Rotate](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_rotate.html)
-        Developer reference [ShaderNodeVectorRotate](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorRotate.html)
+Node reference [Vector Rotate](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_rotate.html)
+Developer reference [ShaderNodeVectorRotate](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorRotate.html)
 
-        Args:
-            center: Vector
-            angle: Float
-            invert (bool): False
+Args:
+    center: Vector
+    angle: Float
+    invert (bool): False
 
-        Returns:
-            socket `vector`
-        
+Returns:
+    socket `vector`
+
 
 
 ### rotate_y
@@ -2001,19 +2001,19 @@ def rotate_x(self, center=None, angle=None, invert=False)
 def rotate_y(self, center=None, angle=None, invert=False)
 ```
 
-         Node VectorRotate.
+ Node VectorRotate.
 
-        Node reference [Vector Rotate](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_rotate.html)
-        Developer reference [ShaderNodeVectorRotate](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorRotate.html)
+Node reference [Vector Rotate](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_rotate.html)
+Developer reference [ShaderNodeVectorRotate](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorRotate.html)
 
-        Args:
-            center: Vector
-            angle: Float
-            invert (bool): False
+Args:
+    center: Vector
+    angle: Float
+    invert (bool): False
 
-        Returns:
-            socket `vector`
-        
+Returns:
+    socket `vector`
+
 
 
 ### rotate_z
@@ -2022,19 +2022,19 @@ def rotate_y(self, center=None, angle=None, invert=False)
 def rotate_z(self, center=None, angle=None, invert=False)
 ```
 
-         Node VectorRotate.
+ Node VectorRotate.
 
-        Node reference [Vector Rotate](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_rotate.html)
-        Developer reference [ShaderNodeVectorRotate](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorRotate.html)
+Node reference [Vector Rotate](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_rotate.html)
+Developer reference [ShaderNodeVectorRotate](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorRotate.html)
 
-        Args:
-            center: Vector
-            angle: Float
-            invert (bool): False
+Args:
+    center: Vector
+    angle: Float
+    invert (bool): False
 
-        Returns:
-            socket `vector`
-        
+Returns:
+    socket `vector`
+
 
 
 ### scale
@@ -2043,17 +2043,17 @@ def rotate_z(self, center=None, angle=None, invert=False)
 def scale(self, scale=None)
 ```
 
-         Node VectorMath.
+ Node VectorMath.
 
-        Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
-        Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
+Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
+Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 
-        Args:
-            scale: Float
+Args:
+    scale: Float
 
-        Returns:
-            socket `vector`
-        
+Returns:
+    socket `vector`
+
 
 
 ### sin
@@ -2062,14 +2062,14 @@ def scale(self, scale=None)
 def sin(self)
 ```
 
-         Node VectorMath.
+ Node VectorMath.
 
-        Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
-        Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
+Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
+Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 
-        Returns:
-            socket `vector`
-        
+Returns:
+    socket `vector`
+
 
 
 ### sine
@@ -2078,14 +2078,14 @@ def sin(self)
 def sine(self)
 ```
 
-         Node VectorMath.
+ Node VectorMath.
 
-        Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
-        Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
+Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
+Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 
-        Returns:
-            socket `vector`
-        
+Returns:
+    socket `vector`
+
 
 
 ### snap
@@ -2094,17 +2094,17 @@ def sine(self)
 def snap(self, increment=None)
 ```
 
-         Node VectorMath.
+ Node VectorMath.
 
-        Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
-        Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
+Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
+Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 
-        Args:
-            increment: Vector
+Args:
+    increment: Vector
 
-        Returns:
-            socket `vector`
-        
+Returns:
+    socket `vector`
+
 
 
 ### stack
@@ -2113,48 +2113,48 @@ def snap(self, increment=None)
 def stack(self, node, socket_name=None)
 ```
 
-         Change the wrapped socket
-        
-        :param node: The new node owning the output socket to wrap
-        :type node: Node
-        :return: self
-        
-        Methods are implemented in two modes:
-        
-        - Creation
-        - Transformation
-        
-        In **creation mode**, the node is considered as creating new data. The result is a new instance of DataSocket.
-        
-        In **transformation mode**, the node is considered as transforming data which is kept in the result of the method.
-        After the method returns, the calling DataSocket instance refers to a new Blender output socket.
-        The stack method changes the socket the instance refers to and reinitialize properties
-        
-        .. code-block:: python
+ Change the wrapped socket
 
-            # 1. Creation mode
-            # 
-            # to_mesh method creates a new mesh from a curve.
-            # The curve instance refers to the same output node socket
-            # We need to get the result of the method in a new variable
-            
-            new_mesh = curve.to_mesh(profile_curve=circle)
-            
-            # 2. Transformation mode
-            #
-            # set_shade_smooth method transforms the mesh.
-            # After the call, the mesh instance refers to the output socket of the
-            # newly created node "Set Shade Smooth". There is no need to get the result
-            # of the method.
-            
-            mesh.set_shade_smooth()
-            
-            # Note that a transformation method returns self and so, the following line
-            # is equivallent:
-            
-            mesh = mesh.set_shade_smooth()
-        
-        
+:param node: The new node owning the output socket to wrap
+:type node: Node
+:return: self
+
+Methods are implemented in two modes:
+
+- Creation
+- Transformation
+
+In **creation mode**, the node is considered as creating new data. The result is a new instance of DataSocket.
+
+In **transformation mode**, the node is considered as transforming data which is kept in the result of the method.
+After the method returns, the calling DataSocket instance refers to a new Blender output socket.
+The stack method changes the socket the instance refers to and reinitialize properties
+
+.. code-block:: python
+
+    # 1. Creation mode
+    # 
+    # to_mesh method creates a new mesh from a curve.
+    # The curve instance refers to the same output node socket
+    # We need to get the result of the method in a new variable
+    
+    new_mesh = curve.to_mesh(profile_curve=circle)
+    
+    # 2. Transformation mode
+    #
+    # set_shade_smooth method transforms the mesh.
+    # After the call, the mesh instance refers to the output socket of the
+    # newly created node "Set Shade Smooth". There is no need to get the result
+    # of the method.
+    
+    mesh.set_shade_smooth()
+    
+    # Note that a transformation method returns self and so, the following line
+    # is equivallent:
+    
+    mesh = mesh.set_shade_smooth()
+
+
 
 
 
@@ -2164,17 +2164,17 @@ def stack(self, node, socket_name=None)
 def sub(self, vector=None)
 ```
 
-         Node VectorMath.
+ Node VectorMath.
 
-        Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
-        Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
+Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
+Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 
-        Args:
-            vector: Vector
+Args:
+    vector: Vector
 
-        Returns:
-            socket `vector`
-        
+Returns:
+    socket `vector`
+
 
 
 ### subtract
@@ -2183,17 +2183,17 @@ def sub(self, vector=None)
 def subtract(self, vector=None)
 ```
 
-         Node VectorMath.
+ Node VectorMath.
 
-        Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
-        Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
+Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
+Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 
-        Args:
-            vector: Vector
+Args:
+    vector: Vector
 
-        Returns:
-            socket `vector`
-        
+Returns:
+    socket `vector`
+
 
 
 ### switch
@@ -2202,18 +2202,18 @@ def subtract(self, vector=None)
 def switch(self, switch=None, true=None)
 ```
 
-         Node Switch.
+ Node Switch.
 
-        Node reference [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html)
-        Developer reference [GeometryNodeSwitch](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
+Node reference [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html)
+Developer reference [GeometryNodeSwitch](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
 
-        Args:
-            switch: Boolean
-            true: Vector
+Args:
+    switch: Boolean
+    true: Vector
 
-        Returns:
-            socket `output`
-        
+Returns:
+    socket `output`
+
 
 
 ### tan
@@ -2222,14 +2222,14 @@ def switch(self, switch=None, true=None)
 def tan(self)
 ```
 
-         Node VectorMath.
+ Node VectorMath.
 
-        Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
-        Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
+Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
+Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 
-        Returns:
-            socket `vector`
-        
+Returns:
+    socket `vector`
+
 
 
 ### tangent
@@ -2238,14 +2238,14 @@ def tan(self)
 def tangent(self)
 ```
 
-         Node VectorMath.
+ Node VectorMath.
 
-        Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
-        Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
+Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
+Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 
-        Returns:
-            socket `vector`
-        
+Returns:
+    socket `vector`
+
 
 
 ### to_output
@@ -2254,16 +2254,16 @@ def tangent(self)
 def to_output(self, name=None)
 ```
 
-         Plug the data socket to the group output
-        
-        :param name: The name to give to the modifier output
-        :type name: str
-        
-        The socket is added to the outputs of the geometry nodes tree.
-        
-        .. Note:: To define a data socket as the result geometry of the tree, use ``tree.output_geometry = my_geometry``.
-        
-        
+ Plug the data socket to the group output
+
+:param name: The name to give to the modifier output
+:type name: str
+
+The socket is added to the outputs of the geometry nodes tree.
+
+.. Note:: To define a data socket as the result geometry of the tree, use ``tree.output_geometry = my_geometry``.
+
+
 
 
 ### view
@@ -2272,13 +2272,13 @@ def to_output(self, name=None)
 def view(self, domain='AUTO', label=None, node_color=None)
 ```
 
-         Link the data socket to the viewer
-        
-        If the data socket is a geometry (Curve, Mesh...) it is linked to the geometry input of the viewer.
-        
-        If it ias a value (Integer, Float,...) it is linked to the value socket and the viewer is configured
-        accordingly.
-        
+ Link the data socket to the viewer
+
+If the data socket is a geometry (Curve, Mesh...) it is linked to the geometry input of the viewer.
+
+If it ias a value (Integer, Float,...) it is linked to the value socket and the viewer is configured
+accordingly.
+
 
 
 ### wrap
@@ -2287,17 +2287,17 @@ def view(self, domain='AUTO', label=None, node_color=None)
 def wrap(self, max=None, min=None)
 ```
 
-         Node VectorMath.
+ Node VectorMath.
 
-        Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
-        Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
+Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
+Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 
-        Args:
-            max: Vector
-            min: Vector
+Args:
+    max: Vector
+    min: Vector
 
-        Returns:
-            socket `vector`
-        
+Returns:
+    socket `vector`
+
 
 
