@@ -6,15 +6,15 @@
 
 **Properties**
 
-[bl_idname](#bl_idname) | [bnode](#bnode) | [is_multi_input](#is_multi_input) | [is_output](#is_output) | [length](#length) | [links](#links) | [name](#name) | [node_chain_label](#node_chain_label) | [socket_index](#socket_index)
+[bl_idname](#bl_idname) | [bnode](#bnode) | [is_multi_input](#is_multi_input) | [is_output](#is_output) | [links](#links) | [name](#name) | [node_chain_label](#node_chain_label) | [socket_index](#socket_index)
 
 **Class and static methods**
 
-[Input](#Input) | [LineBreak](#LineBreak) | [String](#String) | [Tab](#Tab) | [Value](#Value) | [get_bl_idname](#get_bl_idname) | [get_class_name](#get_class_name) | [gives_bsocket](#gives_bsocket) | [is_socket](#is_socket) | [is_vector](#is_vector) | [value_data_type](#value_data_type)
+[Input](#Input) | [LineBreak](#LineBreak) | [Tab](#Tab) | [Value](#Value) | [get_bl_idname](#get_bl_idname) | [get_class_name](#get_class_name) | [gives_bsocket](#gives_bsocket) | [is_socket](#is_socket) | [is_vector](#is_vector) | [value_data_type](#value_data_type)
 
 **Methods**
 
-[connected_sockets](#connected_sockets) | [equal](#equal) | [get_blender_socket](#get_blender_socket) | [init_domains](#init_domains) | [init_socket](#init_socket) | [join](#join) | [join_strings](#join_strings) | [not_equal](#not_equal) | [plug](#plug) | [replace](#replace) | [reroute](#reroute) | [reset_properties](#reset_properties) | [slice](#slice) | [stack](#stack) | [switch](#switch) | [to_curves](#to_curves) | [to_output](#to_output) | [view](#view)
+[connected_sockets](#connected_sockets) | [get_blender_socket](#get_blender_socket) | [init_domains](#init_domains) | [init_socket](#init_socket) | [join](#join) | [join_strings](#join_strings) | [plug](#plug) | [reroute](#reroute) | [reset_properties](#reset_properties) | [stack](#stack) | [to_output](#to_output) | [view](#view)
 
 ## Properties
 
@@ -39,18 +39,6 @@
 ### is_output
 
  Shortcut for `self.bsocket.is_output`
-
-
-
-### length
-
- Node StringLength.
-
-Node reference [String Length](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/string_length.html)
-Developer reference [FunctionNodeStringLength](https://docs.blender.org/api/current/bpy.types.FunctionNodeStringLength.html)
-
-Returns:
-    socket `length`
 
 
 
@@ -109,38 +97,10 @@ Returns:
 
 ```python
 @staticmethod
-def LineBreak()
+def LineBreak(cls)
 ```
 
- Node SpecialCharacters.
-
-Node reference [Special Characters](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/special_characters.html)
-Developer reference [FunctionNodeInputSpecialCharacters](https://docs.blender.org/api/current/bpy.types.FunctionNodeInputSpecialCharacters.html)
-
-Returns:
-    socket `line_break`
-
-
-
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-### String
-
-```python
-@classmethod
-def String(cls, string='')
-```
-
- Node String.
-
-Node reference [String](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/string.html)
-Developer reference [FunctionNodeInputString](https://docs.blender.org/api/current/bpy.types.FunctionNodeInputString.html)
-
-#### Args:
-- string (str): ''
-
-Returns:
-    socket `string`
+ The ``line break`` special character
 
 
 
@@ -150,16 +110,10 @@ Returns:
 
 ```python
 @staticmethod
-def Tab()
+def Tab(cls)
 ```
 
- Node SpecialCharacters.
-
-Node reference [Special Characters](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/special_characters.html)
-Developer reference [FunctionNodeInputSpecialCharacters](https://docs.blender.org/api/current/bpy.types.FunctionNodeInputSpecialCharacters.html)
-
-Returns:
-    socket `tab`
+ The ``tab`` special character
 
 
 
@@ -452,27 +406,6 @@ def connected_sockets(self)
 
 <sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
-### equal
-
-```python
-def equal(self, b=None)
-```
-
- Node Compare.
-
-Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
-Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
-
-#### Args:
-- b: ['Float', 'Integer', 'Vector', 'Color', 'String']
-
-Returns:
-    socket `result`
-
-
-
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
 ### get_blender_socket
 
 ```python
@@ -520,20 +453,40 @@ Called at the end of initialization for further operations.
 ### join
 
 ```python
-def join(*strings, delimiter=None)
+def join(self, *strings)
 ```
 
- Node JoinStrings.
-
-Node reference [Join Strings](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/join_strings.html)
-Developer reference [GeometryNodeStringJoin](https://docs.blender.org/api/current/bpy.types.GeometryNodeStringJoin.html)
+ Join strings using self as a delimiter
 
 #### Args:
-- strings: <m>String
-- delimiter: String
-
+- strings (str, String): Strings to join
+    
 Returns:
-    socket `string`
+    String: The strings joined with ``self`` as as delimiter.
+    
+Note
+----
+    This method works the same as the python ``str.join()`` method. See :func:`join_strings` for
+    another implementation.
+
+    
+Example
+-------
+    .. code-block:: python
+    
+        s0 = String("Demo")
+        s1 = String("ABC")
+        s2 = String("BCD")
+        delimiter = String(", ")
+        
+        s = s0.join_strings(s1, s2, "EFG", delimiter=delimiter)
+        
+        # Is equivalent to the more *pythonic*:
+            
+        s = delimiter.join(s0, s1, s2, "EFG")
+
+.. blid:: GeometryNodeStringJoin        
+
 
 
 
@@ -582,27 +535,6 @@ Example
 
 <sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
-### not_equal
-
-```python
-def not_equal(self, b=None)
-```
-
- Node Compare.
-
-Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
-Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
-
-#### Args:
-- b: ['Float', 'Integer', 'Vector', 'Color', 'String']
-
-Returns:
-    socket `result`
-
-
-
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
 ### plug
 
 ```python
@@ -616,28 +548,6 @@ def plug(self, *values)
 :type values: array of bpy.types.NodeSocket, Socket, values
 
 see :func:`plug_bsocket`
-
-
-
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-### replace
-
-```python
-def replace(self, find=None, replace=None)
-```
-
- Node ReplaceString.
-
-Node reference [Replace String](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/replace_string.html)
-Developer reference [FunctionNodeReplaceString](https://docs.blender.org/api/current/bpy.types.FunctionNodeReplaceString.html)
-
-#### Args:
-- find: String
-- replace: String
-
-Returns:
-    socket `string`
 
 
 
@@ -684,28 +594,6 @@ After a change, the cache is erased.
 
 
 
-
-
-
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-### slice
-
-```python
-def slice(self, position=None, length=None)
-```
-
- Node SliceString.
-
-Node reference [Slice String](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/slice_string.html)
-Developer reference [FunctionNodeSliceString](https://docs.blender.org/api/current/bpy.types.FunctionNodeSliceString.html)
-
-#### Args:
-- position: Integer
-- length: Integer
-
-Returns:
-    socket `string`
 
 
 
@@ -759,59 +647,6 @@ The stack method changes the socket the instance refers to and reinitialize prop
     mesh = mesh.set_shade_smooth()
 
 
-
-
-
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-### switch
-
-```python
-def switch(self, switch=None, true=None)
-```
-
- Node Switch.
-
-Node reference [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html)
-Developer reference [GeometryNodeSwitch](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
-
-#### Args:
-- switch: Boolean
-- true: String
-
-Returns:
-    socket `output`
-
-
-
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-### to_curves
-
-```python
-def to_curves(self, string=None, size=None, character_spacing=None, word_spacing=None, line_spacing=None, text_box_width=None, text_box_height=None, align_x='LEFT', align_y='TOP_BASELINE', overflow='OVERFLOW', pivot_mode='BOTTOM_LEFT')
-```
-
- Node StringToCurves.
-
-Node reference [String to Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/string_to_curves.html)
-Developer reference [GeometryNodeStringToCurves](https://docs.blender.org/api/current/bpy.types.GeometryNodeStringToCurves.html)
-
-#### Args:
-- string: String
-- size: Float
-- character_spacing: Float
-- word_spacing: Float
-- line_spacing: Float
-- text_box_width: Float
-- text_box_height: Float
-- align_x (str): 'LEFT' in [LEFT, CENTER, RIGHT, JUSTIFY, FLUSH]
-- align_y (str): 'TOP_BASELINE' in [TOP_BASELINE, TOP, MIDDLE, BOTTOM_BASELINE, BOTTOM]
-- overflow (str): 'OVERFLOW' in [OVERFLOW, SCALE_TO_FIT, TRUNCATE]
-- pivot_mode (str): 'BOTTOM_LEFT' in [MIDPOINT, TOP_LEFT, TOP_CENTER,... , BOTTOM_LEFT, BOTTOM_CENTER, BOTTOM_RIGHT]
-
-Returns:
-    tuple ('curve_instances', 'line', 'pivot_point')
 
 
 

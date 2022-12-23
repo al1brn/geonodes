@@ -293,7 +293,7 @@ class Domain:
     def select(self, selection):
         """ Select the domain
         
-        If the method is called on a **Domain** which has alread a selection, the two selection are combined:
+        If the method is called on a **Domain** which already has a selection, the two selections are combined:
             
         ```python
         verts = mesh.verts[10:20] # Selection of vertices from 10 to 20

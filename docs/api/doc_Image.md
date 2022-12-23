@@ -14,7 +14,7 @@
 
 **Methods**
 
-[connected_sockets](#connected_sockets) | [get_blender_socket](#get_blender_socket) | [init_domains](#init_domains) | [init_socket](#init_socket) | [plug](#plug) | [reroute](#reroute) | [reset_properties](#reset_properties) | [stack](#stack) | [switch](#switch) | [texture](#texture) | [to_output](#to_output) | [view](#view)
+[connected_sockets](#connected_sockets) | [get_blender_socket](#get_blender_socket) | [init_domains](#init_domains) | [init_socket](#init_socket) | [plug](#plug) | [reroute](#reroute) | [reset_properties](#reset_properties) | [stack](#stack) | [to_output](#to_output) | [view](#view)
 
 ## Properties
 
@@ -512,52 +512,6 @@ The stack method changes the socket the instance refers to and reinitialize prop
     mesh = mesh.set_shade_smooth()
 
 
-
-
-
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-### switch
-
-```python
-def switch(self, switch=None, true=None)
-```
-
- Node Switch.
-
-Node reference [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html)
-Developer reference [GeometryNodeSwitch](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
-
-#### Args:
-- switch: Boolean
-- true: Image
-
-Returns:
-    socket `output`
-
-
-
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-### texture
-
-```python
-def texture(self, vector=None, frame=None, extension='REPEAT', interpolation='Linear')
-```
-
- Node ImageTexture.
-
-Node reference [Image Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/image.html)
-Developer reference [GeometryNodeImageTexture](https://docs.blender.org/api/current/bpy.types.GeometryNodeImageTexture.html)
-
-#### Args:
-- vector: Vector
-- frame: Integer
-- extension (str): 'REPEAT' in [REPEAT, EXTEND, CLIP]
-- interpolation (str): 'Linear' in [Linear, Closest, Cubic]
-
-Returns:
-    tuple ('color', 'alpha')
 
 
 

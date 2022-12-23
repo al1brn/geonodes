@@ -10,11 +10,11 @@
 
 **Class and static methods**
 
-[Input](#Input) | [Self](#Self) | [get_bl_idname](#get_bl_idname) | [get_class_name](#get_class_name) | [gives_bsocket](#gives_bsocket) | [is_socket](#is_socket) | [is_vector](#is_vector) | [value_data_type](#value_data_type)
+[Input](#Input) | [get_bl_idname](#get_bl_idname) | [get_class_name](#get_class_name) | [gives_bsocket](#gives_bsocket) | [is_socket](#is_socket) | [is_vector](#is_vector) | [value_data_type](#value_data_type)
 
 **Methods**
 
-[connected_sockets](#connected_sockets) | [geometry](#geometry) | [get_blender_socket](#get_blender_socket) | [info](#info) | [init_domains](#init_domains) | [init_socket](#init_socket) | [location](#location) | [plug](#plug) | [reroute](#reroute) | [reset_properties](#reset_properties) | [rotation](#rotation) | [scale](#scale) | [stack](#stack) | [switch](#switch) | [to_output](#to_output) | [view](#view)
+[connected_sockets](#connected_sockets) | [get_blender_socket](#get_blender_socket) | [init_domains](#init_domains) | [init_socket](#init_socket) | [plug](#plug) | [reroute](#reroute) | [reset_properties](#reset_properties) | [stack](#stack) | [to_output](#to_output) | [view](#view)
 
 ## Properties
 
@@ -88,25 +88,6 @@ def Input(cls, value=None, name="Object", description="")
 Returns:
     Object: The Object data socket
 
-
-
-
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-### Self
-
-```python
-@classmethod
-def Self(cls)
-```
-
- Node SelfObject.
-
-Node reference [Self Object](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/self_object.html)
-Developer reference [GeometryNodeSelfObject](https://docs.blender.org/api/current/bpy.types.GeometryNodeSelfObject.html)
-
-Returns:
-    socket `self_object`
 
 
 
@@ -375,29 +356,6 @@ def connected_sockets(self)
 
 <sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
-### geometry
-
-```python
-def geometry(self, object=None, as_instance=None, transform_space='ORIGINAL')
-```
-
- Node ObjectInfo.
-
-Node reference [Object Info](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/object_info.html)
-Developer reference [GeometryNodeObjectInfo](https://docs.blender.org/api/current/bpy.types.GeometryNodeObjectInfo.html)
-
-#### Args:
-- object: Object
-- as_instance: Boolean
-- transform_space (str): 'ORIGINAL' in [ORIGINAL, RELATIVE]
-
-Returns:
-    socket `geometry`
-
-
-
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
 ### get_blender_socket
 
 ```python
@@ -409,29 +367,6 @@ def get_blender_socket(self)
 :return: self.bsocket
 :rtype: bpy.types.NodeSocket
 
-
-
-
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-### info
-
-```python
-def info(self, object=None, as_instance=None, transform_space='ORIGINAL')
-```
-
- Node ObjectInfo.
-
-Node reference [Object Info](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/object_info.html)
-Developer reference [GeometryNodeObjectInfo](https://docs.blender.org/api/current/bpy.types.GeometryNodeObjectInfo.html)
-
-#### Args:
-- object: Object
-- as_instance: Boolean
-- transform_space (str): 'ORIGINAL' in [ORIGINAL, RELATIVE]
-
-Returns:
-    node with sockets ['location', 'rotation', 'scale', 'geometry']
 
 
 
@@ -460,29 +395,6 @@ def init_socket(self)
  Complementary init
 
 Called at the end of initialization for further operations.
-
-
-
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-### location
-
-```python
-def location(self, object=None, as_instance=None, transform_space='ORIGINAL')
-```
-
- Node ObjectInfo.
-
-Node reference [Object Info](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/object_info.html)
-Developer reference [GeometryNodeObjectInfo](https://docs.blender.org/api/current/bpy.types.GeometryNodeObjectInfo.html)
-
-#### Args:
-- object: Object
-- as_instance: Boolean
-- transform_space (str): 'ORIGINAL' in [ORIGINAL, RELATIVE]
-
-Returns:
-    socket `location`
 
 
 
@@ -552,52 +464,6 @@ After a change, the cache is erased.
 
 <sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
-### rotation
-
-```python
-def rotation(self, object=None, as_instance=None, transform_space='ORIGINAL')
-```
-
- Node ObjectInfo.
-
-Node reference [Object Info](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/object_info.html)
-Developer reference [GeometryNodeObjectInfo](https://docs.blender.org/api/current/bpy.types.GeometryNodeObjectInfo.html)
-
-#### Args:
-- object: Object
-- as_instance: Boolean
-- transform_space (str): 'ORIGINAL' in [ORIGINAL, RELATIVE]
-
-Returns:
-    socket `rotation`
-
-
-
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-### scale
-
-```python
-def scale(self, object=None, as_instance=None, transform_space='ORIGINAL')
-```
-
- Node ObjectInfo.
-
-Node reference [Object Info](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/object_info.html)
-Developer reference [GeometryNodeObjectInfo](https://docs.blender.org/api/current/bpy.types.GeometryNodeObjectInfo.html)
-
-#### Args:
-- object: Object
-- as_instance: Boolean
-- transform_space (str): 'ORIGINAL' in [ORIGINAL, RELATIVE]
-
-Returns:
-    socket `scale`
-
-
-
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
 ### stack
 
 ```python
@@ -646,28 +512,6 @@ The stack method changes the socket the instance refers to and reinitialize prop
     mesh = mesh.set_shade_smooth()
 
 
-
-
-
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-### switch
-
-```python
-def switch(self, switch=None, true=None)
-```
-
- Node Switch.
-
-Node reference [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html)
-Developer reference [GeometryNodeSwitch](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
-
-#### Args:
-- switch: Boolean
-- true: Object
-
-Returns:
-    socket `output`
 
 
 

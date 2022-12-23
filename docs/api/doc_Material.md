@@ -14,7 +14,7 @@
 
 **Methods**
 
-[connected_sockets](#connected_sockets) | [get_blender_socket](#get_blender_socket) | [init_domains](#init_domains) | [init_socket](#init_socket) | [plug](#plug) | [reroute](#reroute) | [reset_properties](#reset_properties) | [stack](#stack) | [switch](#switch) | [to_output](#to_output) | [view](#view)
+[connected_sockets](#connected_sockets) | [get_blender_socket](#get_blender_socket) | [init_domains](#init_domains) | [init_socket](#init_socket) | [plug](#plug) | [reroute](#reroute) | [reset_properties](#reset_properties) | [stack](#stack) | [to_output](#to_output) | [view](#view)
 
 ## Properties
 
@@ -97,16 +97,13 @@ Returns:
 
 ```python
 @classmethod
-def Material(cls)
+def Material(cls, name
 ```
 
- Node Material.
+ Create a Material
 
-Node reference [Material](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/material.html)
-Developer reference [GeometryNodeInputMaterial](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMaterial.html)
-
-Returns:
-    socket `material`
+#### Args:
+- name: Material name
 
 
 
@@ -531,28 +528,6 @@ The stack method changes the socket the instance refers to and reinitialize prop
     mesh = mesh.set_shade_smooth()
 
 
-
-
-
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-### switch
-
-```python
-def switch(self, switch=None, true=None)
-```
-
- Node Switch.
-
-Node reference [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html)
-Developer reference [GeometryNodeSwitch](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
-
-#### Args:
-- switch: Boolean
-- true: Material
-
-Returns:
-    socket `output`
 
 
 

@@ -10,11 +10,11 @@
 
 **Class and static methods**
 
-[Boolean](#Boolean) | [Input](#Input) | [get_bl_idname](#get_bl_idname) | [get_class_name](#get_class_name) | [gives_bsocket](#gives_bsocket) | [is_socket](#is_socket) | [is_vector](#is_vector) | [value_data_type](#value_data_type)
+[Input](#Input) | [get_bl_idname](#get_bl_idname) | [get_class_name](#get_class_name) | [gives_bsocket](#gives_bsocket) | [is_socket](#is_socket) | [is_vector](#is_vector) | [value_data_type](#value_data_type)
 
 **Methods**
 
-[b_and](#b_and) | [b_not](#b_not) | [b_or](#b_or) | [connected_sockets](#connected_sockets) | [get_blender_socket](#get_blender_socket) | [imply](#imply) | [init_domains](#init_domains) | [init_socket](#init_socket) | [nand](#nand) | [nimply](#nimply) | [nor](#nor) | [plug](#plug) | [reroute](#reroute) | [reset_properties](#reset_properties) | [stack](#stack) | [switch](#switch) | [to_output](#to_output) | [view](#view) | [xnor](#xnor) | [xor](#xor)
+[connected_sockets](#connected_sockets) | [get_blender_socket](#get_blender_socket) | [init_domains](#init_domains) | [init_socket](#init_socket) | [plug](#plug) | [reroute](#reroute) | [reset_properties](#reset_properties) | [stack](#stack) | [to_output](#to_output) | [view](#view)
 
 ## Properties
 
@@ -71,28 +71,6 @@ Depending on the _is_output_ property, the socket belongs either to *node.inputs
 
 
 ## Class and static methods
-
-### Boolean
-
-```python
-@classmethod
-def Boolean(cls, boolean=False)
-```
-
- Node Boolean.
-
-Node reference [Boolean](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/boolean.html)
-Developer reference [FunctionNodeInputBool](https://docs.blender.org/api/current/bpy.types.FunctionNodeInputBool.html)
-
-#### Args:
-- boolean (bool): False
-
-Returns:
-    socket `boolean`
-
-
-
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### Input
 
@@ -366,66 +344,6 @@ def value_data_type(value, default='FLOAT', color_domain='FLOAT_COLOR')
 
 ## Methods
 
-### b_and
-
-```python
-def b_and(self, boolean1=None)
-```
-
- Node BooleanMath.
-
-Node reference [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/boolean_math.html)
-Developer reference [FunctionNodeBooleanMath](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html)
-
-#### Args:
-- boolean1: Boolean
-
-Returns:
-    socket `boolean`
-
-
-
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-### b_not
-
-```python
-def b_not(self)
-```
-
- Node BooleanMath.
-
-Node reference [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/boolean_math.html)
-Developer reference [FunctionNodeBooleanMath](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html)
-
-Returns:
-    socket `boolean`
-
-
-
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-### b_or
-
-```python
-def b_or(self, boolean1=None)
-```
-
- Node BooleanMath.
-
-Node reference [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/boolean_math.html)
-Developer reference [FunctionNodeBooleanMath](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html)
-
-#### Args:
-- boolean1: Boolean
-
-Returns:
-    socket `boolean`
-
-
-
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
 ### connected_sockets
 
 ```python
@@ -455,27 +373,6 @@ def get_blender_socket(self)
 
 <sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
-### imply
-
-```python
-def imply(self, boolean1=None)
-```
-
- Node BooleanMath.
-
-Node reference [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/boolean_math.html)
-Developer reference [FunctionNodeBooleanMath](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html)
-
-#### Args:
-- boolean1: Boolean
-
-Returns:
-    socket `boolean`
-
-
-
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
 ### init_domains
 
 ```python
@@ -499,69 +396,6 @@ def init_socket(self)
  Complementary init
 
 Called at the end of initialization for further operations.
-
-
-
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-### nand
-
-```python
-def nand(self, boolean1=None)
-```
-
- Node BooleanMath.
-
-Node reference [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/boolean_math.html)
-Developer reference [FunctionNodeBooleanMath](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html)
-
-#### Args:
-- boolean1: Boolean
-
-Returns:
-    socket `boolean`
-
-
-
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-### nimply
-
-```python
-def nimply(self, boolean1=None)
-```
-
- Node BooleanMath.
-
-Node reference [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/boolean_math.html)
-Developer reference [FunctionNodeBooleanMath](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html)
-
-#### Args:
-- boolean1: Boolean
-
-Returns:
-    socket `boolean`
-
-
-
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-### nor
-
-```python
-def nor(self, boolean1=None)
-```
-
- Node BooleanMath.
-
-Node reference [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/boolean_math.html)
-Developer reference [FunctionNodeBooleanMath](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html)
-
-#### Args:
-- boolean1: Boolean
-
-Returns:
-    socket `boolean`
 
 
 
@@ -684,28 +518,6 @@ The stack method changes the socket the instance refers to and reinitialize prop
 
 <sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
-### switch
-
-```python
-def switch(self, switch=None, true=None)
-```
-
- Node Switch.
-
-Node reference [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html)
-Developer reference [GeometryNodeSwitch](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
-
-#### Args:
-- switch: Boolean
-- true: Boolean
-
-Returns:
-    socket `output`
-
-
-
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
 ### to_output
 
 ```python
@@ -738,48 +550,6 @@ If the data socket is a geometry (Curve, Mesh...) it is linked to the geometry i
 
 If it ias a value (Integer, Float,...) it is linked to the value socket and the viewer is configured
 accordingly.
-
-
-
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-### xnor
-
-```python
-def xnor(self, boolean1=None)
-```
-
- Node BooleanMath.
-
-Node reference [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/boolean_math.html)
-Developer reference [FunctionNodeBooleanMath](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html)
-
-#### Args:
-- boolean1: Boolean
-
-Returns:
-    socket `boolean`
-
-
-
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-### xor
-
-```python
-def xor(self, boolean1=None)
-```
-
- Node BooleanMath.
-
-Node reference [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/boolean_math.html)
-Developer reference [FunctionNodeBooleanMath](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html)
-
-#### Args:
-- boolean1: Boolean
-
-Returns:
-    socket `boolean`
 
 
 
