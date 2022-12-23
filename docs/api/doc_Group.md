@@ -19,17 +19,19 @@ They can later on be initialized by the snake_case names
 Group(self, node_name, **kwargs)
 ```
 
-### Properties
+## Content
 
-[bl_idname](#bl_idname) / [chain_label](#chain_label) / [fed_nodes](#fed_nodes) / [input_geometry_bsocket](#input_geometry_bsocket) / [label](#label) / [node_color](#node_color) / 
+**Properties**
 
-### Class and static methods
+[bl_idname](#bl_idname) - [chain_label](#chain_label) - [fed_nodes](#fed_nodes) - [input_geometry_bsocket](#input_geometry_bsocket) - [label](#label) - [node_color](#node_color)
 
-[Boolean](#Boolean) / [Collection](#Collection) / [Color](#Color) / [Curve](#Curve) / [Curves](#Curves) / [DataClass](#DataClass) / [Float](#Float) / [Geometry](#Geometry) / [Image](#Image) / [Instances](#Instances) / [Integer](#Integer) / [Material](#Material) / [Mesh](#Mesh) / [Object](#Object) / [Points](#Points) / [String](#String) / [Texture](#Texture) / [Vector](#Vector) / [Volume](#Volume) / [build_unames_dict](#build_unames_dict) / [unitize](#unitize) / 
+**Class and static methods**
 
-### Methods
+[Boolean](#Boolean) - [Collection](#Collection) - [Color](#Color) - [Curve](#Curve) - [Curves](#Curves) - [DataClass](#DataClass) - [Float](#Float) - [Geometry](#Geometry) - [Image](#Image) - [Instances](#Instances) - [Integer](#Integer) - [Material](#Material) - [Mesh](#Mesh) - [Object](#Object) - [Points](#Points) - [String](#String) - [Texture](#Texture) - [Vector](#Vector) - [Volume](#Volume) - [build_unames_dict](#build_unames_dict) - [unitize](#unitize)
 
-[as_attribute](#as_attribute) / [attribute_is_solved](#attribute_is_solved) / [connected_geometries](#connected_geometries) / [get_datasocket](#get_datasocket) / [get_label](#get_label) / [get_output_socket](#get_output_socket) / [plug](#plug) / [plug_node](#plug_node) / [plugged](#plugged) / [switch_input_sockets](#switch_input_sockets) / 
+**Methods**
+
+[as_attribute](#as_attribute) - [attribute_is_solved](#attribute_is_solved) - [connected_geometries](#connected_geometries) - [get_datasocket](#get_datasocket) - [get_label](#get_label) - [get_output_socket](#get_output_socket) - [plug](#plug) - [plug_node](#plug_node) - [plugged](#plugged) - [switch_input_sockets](#switch_input_sockets)
 
 ## Properties
 

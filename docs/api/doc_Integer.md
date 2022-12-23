@@ -2,17 +2,19 @@
 
 > [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
-### Properties
+## Content
 
-[bl_idname](#bl_idname) / [bnode](#bnode) / [is_multi_input](#is_multi_input) / [is_output](#is_output) / [links](#links) / [name](#name) / [node_chain_label](#node_chain_label) / [socket_index](#socket_index) / 
+**Properties**
 
-### Class and static methods
+[bl_idname](#bl_idname) - [bnode](#bnode) - [is_multi_input](#is_multi_input) - [is_output](#is_output) - [links](#links) - [name](#name) - [node_chain_label](#node_chain_label) - [socket_index](#socket_index)
 
-[Input](#Input) / [Integer](#Integer) / [Unsigned](#Unsigned) / [get_bl_idname](#get_bl_idname) / [get_class_name](#get_class_name) / [gives_bsocket](#gives_bsocket) / [is_socket](#is_socket) / [is_vector](#is_vector) / [value_data_type](#value_data_type) / 
+**Class and static methods**
 
-### Methods
+[Input](#Input) - [Integer](#Integer) - [Unsigned](#Unsigned) - [get_bl_idname](#get_bl_idname) - [get_class_name](#get_class_name) - [gives_bsocket](#gives_bsocket) - [is_socket](#is_socket) - [is_vector](#is_vector) - [value_data_type](#value_data_type)
 
-[abs](#abs) / [absolute](#absolute) / [add](#add) / [arccos](#arccos) / [arccosine](#arccosine) / [arcsin](#arcsin) / [arcsine](#arcsine) / [arctan](#arctan) / [arctan2](#arctan2) / [arctangent](#arctangent) / [compare](#compare) / [connected_sockets](#connected_sockets) / [cos](#cos) / [cosh](#cosh) / [cosine](#cosine) / [divide](#divide) / [equal](#equal) / [exp](#exp) / [exponent](#exponent) / [fact](#fact) / [fraction](#fraction) / [get_blender_socket](#get_blender_socket) / [greater_equal](#greater_equal) / [greater_than](#greater_than) / [init_domains](#init_domains) / [init_socket](#init_socket) / [inverse_sqrt](#inverse_sqrt) / [less_equal](#less_equal) / [less_than](#less_than) / [log](#log) / [logarithm](#logarithm) / [math_ceil](#math_ceil) / [math_compare](#math_compare) / [math_floor](#math_floor) / [math_greater_than](#math_greater_than) / [math_less_than](#math_less_than) / [math_round](#math_round) / [math_trunc](#math_trunc) / [math_truncate](#math_truncate) / [max](#max) / [maximum](#maximum) / [min](#min) / [minimum](#minimum) / [modulo](#modulo) / [mul_add](#mul_add) / [multiply](#multiply) / [multiply_add](#multiply_add) / [not_equal](#not_equal) / [ping_pong](#ping_pong) / [plug](#plug) / [pow](#pow) / [power](#power) / [reroute](#reroute) / [reset_properties](#reset_properties) / [sign](#sign) / [sin](#sin) / [sine](#sine) / [sinh](#sinh) / [smooth_maximum](#smooth_maximum) / [smooth_minimum](#smooth_minimum) / [snap](#snap) / [sqrt](#sqrt) / [stack](#stack) / [subtract](#subtract) / [switch](#switch) / [tan](#tan) / [tangent](#tangent) / [tanh](#tanh) / [to_degrees](#to_degrees) / [to_output](#to_output) / [to_radians](#to_radians) / [to_string](#to_string) / [view](#view) / [wrap](#wrap) / 
+**Methods**
+
+[abs](#abs) - [absolute](#absolute) - [add](#add) - [arccos](#arccos) - [arccosine](#arccosine) - [arcsin](#arcsin) - [arcsine](#arcsine) - [arctan](#arctan) - [arctan2](#arctan2) - [arctangent](#arctangent) - [compare](#compare) - [connected_sockets](#connected_sockets) - [cos](#cos) - [cosh](#cosh) - [cosine](#cosine) - [divide](#divide) - [equal](#equal) - [exp](#exp) - [exponent](#exponent) - [fact](#fact) - [fraction](#fraction) - [get_blender_socket](#get_blender_socket) - [greater_equal](#greater_equal) - [greater_than](#greater_than) - [init_domains](#init_domains) - [init_socket](#init_socket) - [inverse_sqrt](#inverse_sqrt) - [less_equal](#less_equal) - [less_than](#less_than) - [log](#log) - [logarithm](#logarithm) - [math_ceil](#math_ceil) - [math_compare](#math_compare) - [math_floor](#math_floor) - [math_greater_than](#math_greater_than) - [math_less_than](#math_less_than) - [math_round](#math_round) - [math_trunc](#math_trunc) - [math_truncate](#math_truncate) - [max](#max) - [maximum](#maximum) - [min](#min) - [minimum](#minimum) - [modulo](#modulo) - [mul_add](#mul_add) - [multiply](#multiply) - [multiply_add](#multiply_add) - [not_equal](#not_equal) - [ping_pong](#ping_pong) - [plug](#plug) - [pow](#pow) - [power](#power) - [reroute](#reroute) - [reset_properties](#reset_properties) - [sign](#sign) - [sin](#sin) - [sine](#sine) - [sinh](#sinh) - [smooth_maximum](#smooth_maximum) - [smooth_minimum](#smooth_minimum) - [snap](#snap) - [sqrt](#sqrt) - [stack](#stack) - [subtract](#subtract) - [switch](#switch) - [tan](#tan) - [tangent](#tangent) - [tanh](#tanh) - [to_degrees](#to_degrees) - [to_output](#to_output) - [to_radians](#to_radians) - [to_string](#to_string) - [view](#view) - [wrap](#wrap)
 
 ## Properties
 

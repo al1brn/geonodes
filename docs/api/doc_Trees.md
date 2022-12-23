@@ -8,6 +8,14 @@
 Trees(self, prefix=None)
 ```
 
+## Content
+
+**Class and static methods**
+
+[get_prefix](#get_prefix)
+
+
+
 ## Class and static methods
 
 ### get_prefix
