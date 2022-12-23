@@ -382,6 +382,8 @@ Developer reference [GeometryNodeMeshCircle](https://docs.blender.org/api/curren
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### Collection
 
 ```python
@@ -404,6 +406,8 @@ Developer reference [GeometryNodeCollectionInfo](https://docs.blender.org/api/cu
 - socket `geometry`
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### Cone
 
@@ -431,6 +435,8 @@ Developer reference [GeometryNodeMeshCone](https://docs.blender.org/api/current/
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### Cube
 
 ```python
@@ -453,6 +459,8 @@ Developer reference [GeometryNodeMeshCube](https://docs.blender.org/api/current/
 - socket `mesh`
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### Cylinder
 
@@ -479,6 +487,8 @@ Developer reference [GeometryNodeMeshCylinder](https://docs.blender.org/api/curr
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### FromCollection
 
 ```python
@@ -491,6 +501,8 @@ def FromCollection(cls, collection=None, separate_children
 .. blid:: GeometryNodeCollectionInfo
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### Grid
 
@@ -515,6 +527,8 @@ Developer reference [GeometryNodeMeshGrid](https://docs.blender.org/api/current/
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### IcoSphere
 
 ```python
@@ -535,6 +549,8 @@ Developer reference [GeometryNodeMeshIcoSphere](https://docs.blender.org/api/cur
 - socket `mesh`
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### Input
 
@@ -559,6 +575,8 @@ Note
     
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### Line
 
@@ -585,6 +603,8 @@ Developer reference [GeometryNodeMeshLine](https://docs.blender.org/api/current/
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### LineEndPoints
 
 ```python
@@ -606,6 +626,8 @@ Developer reference [GeometryNodeMeshLine](https://docs.blender.org/api/current/
 - socket `mesh`
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### LineEndPointsResolution
 
@@ -629,6 +651,8 @@ Developer reference [GeometryNodeMeshLine](https://docs.blender.org/api/current/
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### LineOffset
 
 ```python
@@ -650,6 +674,8 @@ Developer reference [GeometryNodeMeshLine](https://docs.blender.org/api/current/
 - socket `mesh`
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### LineOffsetResolution
 
@@ -673,6 +699,8 @@ Developer reference [GeometryNodeMeshLine](https://docs.blender.org/api/current/
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### UVSphere
 
 ```python
@@ -694,6 +722,8 @@ Developer reference [GeometryNodeMeshUVSphere](https://docs.blender.org/api/curr
 - socket `mesh`
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### get_bl_idname
 
@@ -737,6 +767,8 @@ These additional values allow to enter angle, distance, factor... as group input
 
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### get_class_name
 
@@ -825,6 +857,8 @@ the name is chosen as the class name.
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### gives_bsocket
 
 ```python
@@ -847,6 +881,8 @@ def gives_bsocket(value)
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### is_socket
 
 ```python
@@ -862,6 +898,8 @@ def is_socket(value)
 :rtype: bool
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### is_vector
 
@@ -879,6 +917,8 @@ def is_vector(value)
 
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### value_data_type
 
@@ -931,6 +971,8 @@ def value_data_type(value, default='FLOAT', color_domain='FLOAT_COLOR')
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ## Methods
 
 ### attribute_statistic
@@ -954,6 +996,8 @@ Developer reference [GeometryNodeAttributeStatistic](https://docs.blender.org/ap
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### boolean_difference
 
 ```python
@@ -974,6 +1018,8 @@ Developer reference [GeometryNodeMeshBoolean](https://docs.blender.org/api/curre
 - socket `intersecting_edges`
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### boolean_intersect
 
@@ -996,6 +1042,8 @@ Developer reference [GeometryNodeMeshBoolean](https://docs.blender.org/api/curre
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### boolean_union
 
 ```python
@@ -1017,6 +1065,8 @@ Developer reference [GeometryNodeMeshBoolean](https://docs.blender.org/api/curre
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### capture_attribute
 
 ```python
@@ -1036,6 +1086,8 @@ Developer reference [GeometryNodeCaptureAttribute](https://docs.blender.org/api/
 - socket `attribute`
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### capture_attribute_node
 
@@ -1059,6 +1111,8 @@ Developer reference [GeometryNodeCaptureAttribute](https://docs.blender.org/api/
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### connected_sockets
 
 ```python
@@ -1069,6 +1123,8 @@ def connected_sockets(self)
 
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### corners_of_face
 
@@ -1091,6 +1147,8 @@ Developer reference [GeometryNodeCornersOfFace](https://docs.blender.org/api/cur
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### corners_of_vertex
 
 ```python
@@ -1111,6 +1169,8 @@ Developer reference [GeometryNodeCornersOfVertex](https://docs.blender.org/api/c
 - tuple ('corner_index', 'total')
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### delete
 
@@ -1133,6 +1193,8 @@ Developer reference [GeometryNodeDeleteGeometry](https://docs.blender.org/api/cu
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### delete_all
 
 ```python
@@ -1152,6 +1214,8 @@ Developer reference [GeometryNodeDeleteGeometry](https://docs.blender.org/api/cu
 - node with sockets ['geometry']
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### delete_edges
 
@@ -1173,6 +1237,8 @@ Developer reference [GeometryNodeDeleteGeometry](https://docs.blender.org/api/cu
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### delete_faces
 
 ```python
@@ -1192,6 +1258,8 @@ Developer reference [GeometryNodeDeleteGeometry](https://docs.blender.org/api/cu
 - node with sockets ['geometry']
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### distribute_points_on_faces
 
@@ -1218,6 +1286,8 @@ Developer reference [GeometryNodeDistributePointsOnFaces](https://docs.blender.o
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### dual_mesh
 
 ```python
@@ -1237,6 +1307,8 @@ Developer reference [GeometryNodeDualMesh](https://docs.blender.org/api/current/
 - socket `dual_mesh` [Mesh](Mesh.md)
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### duplicate
 
@@ -1259,6 +1331,8 @@ Developer reference [GeometryNodeDuplicateElements](https://docs.blender.org/api
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### edge_paths_to_curves
 
 ```python
@@ -1278,6 +1352,8 @@ Developer reference [GeometryNodeEdgePathsToCurves](https://docs.blender.org/api
 - socket `curves` [Curve](Curve.md)
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### edge_paths_to_selection
 
@@ -1299,6 +1375,8 @@ Developer reference [GeometryNodeEdgePathsToSelection](https://docs.blender.org/
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### edges_of_corner
 
 ```python
@@ -1317,6 +1395,8 @@ Developer reference [GeometryNodeEdgesOfCorner](https://docs.blender.org/api/cur
 - tuple ('next_edge_index', 'previous_edge_index')
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### edges_of_vertex
 
@@ -1338,6 +1418,8 @@ Developer reference [GeometryNodeEdgesOfVertex](https://docs.blender.org/api/cur
 - tuple ('edge_index', 'total')
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### extrude
 
@@ -1362,6 +1444,8 @@ Developer reference [GeometryNodeExtrudeMesh](https://docs.blender.org/api/curre
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### face_is_planar
 
 ```python
@@ -1380,6 +1464,8 @@ Developer reference [GeometryNodeInputMeshFaceIsPlanar](https://docs.blender.org
 - socket `planar`
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### face_of_corner
 
@@ -1400,6 +1486,8 @@ Developer reference [GeometryNodeFaceOfCorner](https://docs.blender.org/api/curr
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### face_set_boundaries
 
 ```python
@@ -1418,6 +1506,8 @@ Developer reference [GeometryNodeMeshFaceSetBoundaries](https://docs.blender.org
 - socket `boundary_edges`
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### field_at_index
 
@@ -1440,6 +1530,8 @@ Developer reference [GeometryNodeFieldAtIndex](https://docs.blender.org/api/curr
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### flip_faces
 
 ```python
@@ -1459,6 +1551,8 @@ Developer reference [GeometryNodeFlipFaces](https://docs.blender.org/api/current
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### get_blender_socket
 
 ```python
@@ -1472,6 +1566,8 @@ def get_blender_socket(self)
 
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### get_named_boolean
 
@@ -1492,6 +1588,8 @@ Developer reference [GeometryNodeInputNamedAttribute](https://docs.blender.org/a
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### get_named_color
 
 ```python
@@ -1510,6 +1608,8 @@ Developer reference [GeometryNodeInputNamedAttribute](https://docs.blender.org/a
 - socket `attribute`
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### get_named_float
 
@@ -1530,6 +1630,8 @@ Developer reference [GeometryNodeInputNamedAttribute](https://docs.blender.org/a
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### get_named_integer
 
 ```python
@@ -1548,6 +1650,8 @@ Developer reference [GeometryNodeInputNamedAttribute](https://docs.blender.org/a
 - socket `attribute`
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### get_named_vector
 
@@ -1568,6 +1672,8 @@ Developer reference [GeometryNodeInputNamedAttribute](https://docs.blender.org/a
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### init_domains
 
 ```python
@@ -1580,6 +1686,8 @@ To be overloaded by sub classes.
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### init_socket
 
 ```python
@@ -1591,6 +1699,8 @@ def init_socket(self)
 Called at the end of initialization for further operations.
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### instance_on_points
 
@@ -1615,6 +1725,8 @@ Developer reference [GeometryNodeInstanceOnPoints](https://docs.blender.org/api/
 - socket `instances`
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### instantiate
 
@@ -1648,6 +1760,8 @@ The operator ``*`` can be used to operate this method with `realize = False`:
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### interpolate_domain
 
 ```python
@@ -1668,6 +1782,8 @@ Developer reference [GeometryNodeFieldOnDomain](https://docs.blender.org/api/cur
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### is_shade_smooth
 
 ```python
@@ -1683,6 +1799,8 @@ Developer reference [GeometryNodeInputShadeSmooth](https://docs.blender.org/api/
 - socket `smooth`
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### join
 
@@ -1703,6 +1821,8 @@ Developer reference [GeometryNodeJoinGeometry](https://docs.blender.org/api/curr
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### material_selection
 
 ```python
@@ -1721,6 +1841,8 @@ Developer reference [GeometryNodeMaterialSelection](https://docs.blender.org/api
 - socket `selection`
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### merge_by_distance
 
@@ -1743,6 +1865,8 @@ Developer reference [GeometryNodeMergeByDistance](https://docs.blender.org/api/c
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### named_attribute
 
 ```python
@@ -1763,6 +1887,8 @@ Developer reference [GeometryNodeInputNamedAttribute](https://docs.blender.org/a
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### offset_corner_in_face
 
 ```python
@@ -1782,6 +1908,8 @@ Developer reference [GeometryNodeOffsetCornerInFace](https://docs.blender.org/ap
 - socket `corner_index`
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### pack_uv_islands
 
@@ -1805,6 +1933,8 @@ Developer reference [GeometryNodeUVPackIslands](https://docs.blender.org/api/cur
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### plug
 
 ```python
@@ -1820,6 +1950,8 @@ def plug(self, *values)
 see :func:`plug_bsocket`
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### proximity
 
@@ -1842,6 +1974,8 @@ Developer reference [GeometryNodeProximity](https://docs.blender.org/api/current
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### proximity_edges
 
 ```python
@@ -1861,6 +1995,8 @@ Developer reference [GeometryNodeProximity](https://docs.blender.org/api/current
 - socket `distance`
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### proximity_faces
 
@@ -1882,6 +2018,8 @@ Developer reference [GeometryNodeProximity](https://docs.blender.org/api/current
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### proximity_points
 
 ```python
@@ -1901,6 +2039,8 @@ Developer reference [GeometryNodeProximity](https://docs.blender.org/api/current
 - socket `distance`
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### random_boolean
 
@@ -1922,6 +2062,8 @@ Developer reference [FunctionNodeRandomValue](https://docs.blender.org/api/curre
 - socket `value`
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### random_float
 
@@ -1945,6 +2087,8 @@ Developer reference [FunctionNodeRandomValue](https://docs.blender.org/api/curre
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### random_integer
 
 ```python
@@ -1967,6 +2111,8 @@ Developer reference [FunctionNodeRandomValue](https://docs.blender.org/api/curre
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### random_vector
 
 ```python
@@ -1988,6 +2134,8 @@ Developer reference [FunctionNodeRandomValue](https://docs.blender.org/api/curre
 - socket `value`
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### raycast
 
@@ -2013,6 +2161,8 @@ Developer reference [GeometryNodeRaycast](https://docs.blender.org/api/current/b
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### raycast_interpolated
 
 ```python
@@ -2035,6 +2185,8 @@ Developer reference [GeometryNodeRaycast](https://docs.blender.org/api/current/b
 - node with sockets ['is_hit', 'hit_position', 'hit_normal', 'hit_distance', 'attribute']
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### raycast_nearest
 
@@ -2059,6 +2211,8 @@ Developer reference [GeometryNodeRaycast](https://docs.blender.org/api/current/b
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### remove_named_attribute
 
 ```python
@@ -2077,6 +2231,8 @@ Developer reference [GeometryNodeRemoveAttribute](https://docs.blender.org/api/c
 - node with sockets ['geometry']
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### replace_material
 
@@ -2098,6 +2254,8 @@ Developer reference [GeometryNodeReplaceMaterial](https://docs.blender.org/api/c
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### reroute
 
 ```python
@@ -2107,6 +2265,8 @@ def reroute(self)
  Reroute all output links
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### reset_properties
 
@@ -2140,6 +2300,8 @@ After a change, the cache is erased.
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### sample_index
 
 ```python
@@ -2162,6 +2324,8 @@ Developer reference [GeometryNodeSampleIndex](https://docs.blender.org/api/curre
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### sample_nearest
 
 ```python
@@ -2181,6 +2345,8 @@ Developer reference [GeometryNodeSampleNearest](https://docs.blender.org/api/cur
 - socket `index`
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### sample_nearest_surface
 
@@ -2202,6 +2368,8 @@ Developer reference [GeometryNodeSampleNearestSurface](https://docs.blender.org/
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### sample_uv_surface
 
 ```python
@@ -2222,6 +2390,8 @@ Developer reference [GeometryNodeSampleUVSurface](https://docs.blender.org/api/c
 - tuple ('value', 'is_valid')
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### scale_elements
 
@@ -2247,6 +2417,8 @@ Developer reference [GeometryNodeScaleElements](https://docs.blender.org/api/cur
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### scale_single_axis
 
 ```python
@@ -2270,6 +2442,8 @@ Developer reference [GeometryNodeScaleElements](https://docs.blender.org/api/cur
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### scale_uniform
 
 ```python
@@ -2292,6 +2466,8 @@ Developer reference [GeometryNodeScaleElements](https://docs.blender.org/api/cur
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### separate
 
 ```python
@@ -2313,6 +2489,8 @@ Developer reference [GeometryNodeSeparateGeometry](https://docs.blender.org/api/
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### set_ID
 
 ```python
@@ -2332,6 +2510,8 @@ Developer reference [GeometryNodeSetID](https://docs.blender.org/api/current/bpy
 - node with sockets ['geometry']
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### set_material
 
@@ -2353,6 +2533,8 @@ Developer reference [GeometryNodeSetMaterial](https://docs.blender.org/api/curre
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### set_material_index
 
 ```python
@@ -2372,6 +2554,8 @@ Developer reference [GeometryNodeSetMaterialIndex](https://docs.blender.org/api/
 - node with sockets ['geometry']
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### set_named_boolean
 
@@ -2394,6 +2578,8 @@ Developer reference [GeometryNodeStoreNamedAttribute](https://docs.blender.org/a
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### set_named_color
 
 ```python
@@ -2414,6 +2600,8 @@ Developer reference [GeometryNodeStoreNamedAttribute](https://docs.blender.org/a
 - node with sockets ['geometry']
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### set_named_float
 
@@ -2436,6 +2624,8 @@ Developer reference [GeometryNodeStoreNamedAttribute](https://docs.blender.org/a
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### set_named_integer
 
 ```python
@@ -2456,6 +2646,8 @@ Developer reference [GeometryNodeStoreNamedAttribute](https://docs.blender.org/a
 - node with sockets ['geometry']
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### set_named_vector
 
@@ -2478,6 +2670,8 @@ Developer reference [GeometryNodeStoreNamedAttribute](https://docs.blender.org/a
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### set_position
 
 ```python
@@ -2499,6 +2693,8 @@ Developer reference [GeometryNodeSetPosition](https://docs.blender.org/api/curre
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### set_shade_smooth
 
 ```python
@@ -2519,6 +2715,8 @@ Developer reference [GeometryNodeSetShadeSmooth](https://docs.blender.org/api/cu
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### shortest_edge_paths
 
 ```python
@@ -2538,6 +2736,8 @@ Developer reference [GeometryNodeInputShortestEdgePaths](https://docs.blender.or
 - tuple ('next_vertex_index', 'total_cost')
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### show_handles
 
@@ -2564,6 +2764,8 @@ Example:
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### split_edges
 
 ```python
@@ -2582,6 +2784,8 @@ Developer reference [GeometryNodeSplitEdges](https://docs.blender.org/api/curren
 - node with sockets ['mesh']
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### stack
 
@@ -2634,6 +2838,8 @@ The stack method changes the socket the instance refers to and reinitialize prop
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### store_named_attribute
 
 ```python
@@ -2655,6 +2861,8 @@ Developer reference [GeometryNodeStoreNamedAttribute](https://docs.blender.org/a
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### subdivide
 
 ```python
@@ -2673,6 +2881,8 @@ Developer reference [GeometryNodeSubdivideMesh](https://docs.blender.org/api/cur
 - node with sockets ['mesh']
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### subdivision_surface
 
@@ -2697,6 +2907,8 @@ Developer reference [GeometryNodeSubdivisionSurface](https://docs.blender.org/ap
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### switch
 
 ```python
@@ -2717,6 +2929,8 @@ Developer reference [GeometryNodeSwitch](https://docs.blender.org/api/current/bp
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### to_curve
 
 ```python
@@ -2735,6 +2949,8 @@ Developer reference [GeometryNodeMeshToCurve](https://docs.blender.org/api/curre
 - socket `curve` [Curve](Curve.md)
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### to_instance
 
@@ -2755,6 +2971,8 @@ Developer reference [GeometryNodeGeometryToInstance](https://docs.blender.org/ap
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### to_output
 
 ```python
@@ -2772,6 +2990,8 @@ The socket is added to the outputs of the geometry nodes tree.
 
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### to_points
 
@@ -2794,6 +3014,8 @@ Developer reference [GeometryNodeMeshToPoints](https://docs.blender.org/api/curr
 - socket `points` [Points](Points.md)
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### to_volume
 
@@ -2820,6 +3042,8 @@ Developer reference [GeometryNodeMeshToVolume](https://docs.blender.org/api/curr
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### transform
 
 ```python
@@ -2840,6 +3064,8 @@ Developer reference [GeometryNodeTransform](https://docs.blender.org/api/current
 - node with sockets ['geometry']
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### triangulate
 
@@ -2862,6 +3088,8 @@ Developer reference [GeometryNodeTriangulate](https://docs.blender.org/api/curre
 - node with sockets ['mesh']
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### uv_unwrap
 
@@ -2886,6 +3114,8 @@ Developer reference [GeometryNodeUVUnwrap](https://docs.blender.org/api/current/
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### vertex_of_corner
 
 ```python
@@ -2904,6 +3134,8 @@ Developer reference [GeometryNodeVertexOfCorner](https://docs.blender.org/api/cu
 - socket `vertex_index`
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### view
 

@@ -233,6 +233,8 @@ Developer reference [FunctionNodeInputColor](https://docs.blender.org/api/curren
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### HSL
 
 ```python
@@ -255,6 +257,8 @@ Developer reference [FunctionNodeCombineColor](https://docs.blender.org/api/curr
 - socket `color`
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### HSV
 
@@ -279,6 +283,8 @@ Developer reference [FunctionNodeCombineColor](https://docs.blender.org/api/curr
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### Input
 
 ```python
@@ -298,6 +304,8 @@ def Input(cls, value=None, name = "Color", description = "")
 
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### RGB
 
@@ -321,6 +329,8 @@ Developer reference [FunctionNodeCombineColor](https://docs.blender.org/api/curr
 - socket `color`
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### get_bl_idname
 
@@ -364,6 +374,8 @@ These additional values allow to enter angle, distance, factor... as group input
 
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### get_class_name
 
@@ -452,6 +464,8 @@ the name is chosen as the class name.
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### gives_bsocket
 
 ```python
@@ -474,6 +488,8 @@ def gives_bsocket(value)
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### is_socket
 
 ```python
@@ -489,6 +505,8 @@ def is_socket(value)
 :rtype: bool
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### is_vector
 
@@ -506,6 +524,8 @@ def is_vector(value)
 
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### value_data_type
 
@@ -558,6 +578,8 @@ def value_data_type(value, default='FLOAT', color_domain='FLOAT_COLOR')
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ## Methods
 
 ### brighter
@@ -579,6 +601,8 @@ Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/b
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### connected_sockets
 
 ```python
@@ -589,6 +613,8 @@ def connected_sockets(self)
 
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### darker
 
@@ -608,6 +634,8 @@ Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/b
 - socket `result`
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### equal
 
@@ -629,6 +657,8 @@ Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/b
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### get_blender_socket
 
 ```python
@@ -645,6 +675,8 @@ to recompose the Color.
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### init_domains
 
 ```python
@@ -657,6 +689,8 @@ To be overloaded by sub classes.
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### init_socket
 
 ```python
@@ -668,6 +702,8 @@ def init_socket(self)
 Called at the end of initialization for further operations.
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### mix
 
@@ -692,6 +728,8 @@ Developer reference [ShaderNodeMix](https://docs.blender.org/api/current/bpy.typ
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### mix_add
 
 ```python
@@ -713,6 +751,8 @@ Developer reference [ShaderNodeMix](https://docs.blender.org/api/current/bpy.typ
 - socket `result`
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### mix_burn
 
@@ -736,6 +776,8 @@ Developer reference [ShaderNodeMix](https://docs.blender.org/api/current/bpy.typ
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### mix_color
 
 ```python
@@ -757,6 +799,8 @@ Developer reference [ShaderNodeMix](https://docs.blender.org/api/current/bpy.typ
 - socket `result`
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### mix_darken
 
@@ -780,6 +824,8 @@ Developer reference [ShaderNodeMix](https://docs.blender.org/api/current/bpy.typ
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### mix_difference
 
 ```python
@@ -801,6 +847,8 @@ Developer reference [ShaderNodeMix](https://docs.blender.org/api/current/bpy.typ
 - socket `result`
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### mix_divide
 
@@ -824,6 +872,8 @@ Developer reference [ShaderNodeMix](https://docs.blender.org/api/current/bpy.typ
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### mix_dodge
 
 ```python
@@ -845,6 +895,8 @@ Developer reference [ShaderNodeMix](https://docs.blender.org/api/current/bpy.typ
 - socket `result`
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### mix_hue
 
@@ -868,6 +920,8 @@ Developer reference [ShaderNodeMix](https://docs.blender.org/api/current/bpy.typ
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### mix_lighten
 
 ```python
@@ -889,6 +943,8 @@ Developer reference [ShaderNodeMix](https://docs.blender.org/api/current/bpy.typ
 - socket `result`
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### mix_linear_light
 
@@ -912,6 +968,8 @@ Developer reference [ShaderNodeMix](https://docs.blender.org/api/current/bpy.typ
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### mix_multiply
 
 ```python
@@ -933,6 +991,8 @@ Developer reference [ShaderNodeMix](https://docs.blender.org/api/current/bpy.typ
 - socket `result`
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### mix_overlay
 
@@ -956,6 +1016,8 @@ Developer reference [ShaderNodeMix](https://docs.blender.org/api/current/bpy.typ
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### mix_saturation
 
 ```python
@@ -977,6 +1039,8 @@ Developer reference [ShaderNodeMix](https://docs.blender.org/api/current/bpy.typ
 - socket `result`
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### mix_screen
 
@@ -1000,6 +1064,8 @@ Developer reference [ShaderNodeMix](https://docs.blender.org/api/current/bpy.typ
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### mix_soft_light
 
 ```python
@@ -1021,6 +1087,8 @@ Developer reference [ShaderNodeMix](https://docs.blender.org/api/current/bpy.typ
 - socket `result`
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### mix_subtract
 
@@ -1044,6 +1112,8 @@ Developer reference [ShaderNodeMix](https://docs.blender.org/api/current/bpy.typ
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### mix_value
 
 ```python
@@ -1066,6 +1136,8 @@ Developer reference [ShaderNodeMix](https://docs.blender.org/api/current/bpy.typ
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### plug
 
 ```python
@@ -1082,6 +1154,8 @@ see :func:`plug_bsocket`
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### reroute
 
 ```python
@@ -1091,6 +1165,8 @@ def reroute(self)
  Reroute all output links
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### reset_properties
 
@@ -1123,6 +1199,8 @@ After a change, the cache is erased.
 
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### stack
 
@@ -1175,6 +1253,8 @@ The stack method changes the socket the instance refers to and reinitialize prop
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### switch
 
 ```python
@@ -1195,6 +1275,8 @@ Developer reference [GeometryNodeSwitch](https://docs.blender.org/api/current/bp
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### to_output
 
 ```python
@@ -1212,6 +1294,8 @@ The socket is added to the outputs of the geometry nodes tree.
 
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### view
 

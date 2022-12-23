@@ -106,6 +106,8 @@ def Angle(cls, value=0., name="Angle", min_value = None, max_value = None, descr
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### Distance
 
 ```python
@@ -127,6 +129,8 @@ def Distance(cls, value=0., name="Distance", min_value = None, max_value = None,
 
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### Factor
 
@@ -150,6 +154,8 @@ def Factor(cls, value=0., name="Factor", min_value = 0., max_value = 1., descrip
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### Frame
 
 ```python
@@ -166,6 +172,8 @@ Developer reference [GeometryNodeInputSceneTime](https://docs.blender.org/api/cu
 - socket `frame`
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### Input
 
@@ -188,6 +196,8 @@ def Input(cls, value = 0., name = "Float", min_value = None, max_value = None, d
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### Seconds
 
 ```python
@@ -205,6 +215,8 @@ Developer reference [GeometryNodeInputSceneTime](https://docs.blender.org/api/cu
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### Value
 
 ```python
@@ -221,6 +233,8 @@ Developer reference [ShaderNodeValue](https://docs.blender.org/api/current/bpy.t
 - socket `value`
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### get_bl_idname
 
@@ -264,6 +278,8 @@ These additional values allow to enter angle, distance, factor... as group input
 
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### get_class_name
 
@@ -352,6 +368,8 @@ the name is chosen as the class name.
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### gives_bsocket
 
 ```python
@@ -374,6 +392,8 @@ def gives_bsocket(value)
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### is_socket
 
 ```python
@@ -389,6 +409,8 @@ def is_socket(value)
 :rtype: bool
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### is_vector
 
@@ -406,6 +428,8 @@ def is_vector(value)
 
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### value_data_type
 
@@ -458,6 +482,8 @@ def value_data_type(value, default='FLOAT', color_domain='FLOAT_COLOR')
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ## Methods
 
 ### abs
@@ -479,6 +505,8 @@ Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.ty
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### absolute
 
 ```python
@@ -497,6 +525,8 @@ Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.ty
 - socket `value`
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### add
 
@@ -519,6 +549,8 @@ def add(self, value=None, node_label = None, node_color = None)
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### arccos
 
 ```python
@@ -538,6 +570,8 @@ Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.ty
 - socket `value`
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### arccosine
 
@@ -559,6 +593,8 @@ Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.ty
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### arcsin
 
 ```python
@@ -578,6 +614,8 @@ Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.ty
 - socket `value`
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### arcsine
 
@@ -599,6 +637,8 @@ Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.ty
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### arctan
 
 ```python
@@ -618,6 +658,8 @@ Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.ty
 - socket `value`
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### arctan2
 
@@ -639,6 +681,8 @@ Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.ty
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### arctangent
 
 ```python
@@ -659,6 +703,8 @@ Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.ty
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### ceiling
 
 ```python
@@ -674,6 +720,8 @@ Developer reference [FunctionNodeFloatToInt](https://docs.blender.org/api/curren
 - socket `integer`
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### clamp
 
@@ -696,6 +744,8 @@ Developer reference [ShaderNodeClamp](https://docs.blender.org/api/current/bpy.t
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### clamp_min_max
 
 ```python
@@ -716,6 +766,8 @@ Developer reference [ShaderNodeClamp](https://docs.blender.org/api/current/bpy.t
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### clamp_range
 
 ```python
@@ -735,6 +787,8 @@ Developer reference [ShaderNodeClamp](https://docs.blender.org/api/current/bpy.t
 - socket `result`
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### compare
 
@@ -757,6 +811,8 @@ Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/b
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### connected_sockets
 
 ```python
@@ -767,6 +823,8 @@ def connected_sockets(self)
 
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### cos
 
@@ -788,6 +846,8 @@ Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.ty
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### cosh
 
 ```python
@@ -808,6 +868,8 @@ Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.ty
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### cosine
 
 ```python
@@ -827,6 +889,8 @@ Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.ty
 - socket `value`
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### divide
 
@@ -849,6 +913,8 @@ def divide(self, value=None, node_label = None, node_color = None)
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### equal
 
 ```python
@@ -869,6 +935,8 @@ Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/b
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### exp
 
 ```python
@@ -887,6 +955,8 @@ Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.ty
 - socket `value`
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### exponent
 
@@ -907,6 +977,8 @@ Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.ty
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### fact
 
 ```python
@@ -925,6 +997,8 @@ Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.ty
 - socket `value`
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### float_curve
 
@@ -945,6 +1019,8 @@ Developer reference [ShaderNodeFloatCurve](https://docs.blender.org/api/current/
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### floor
 
 ```python
@@ -960,6 +1036,8 @@ Developer reference [FunctionNodeFloatToInt](https://docs.blender.org/api/curren
 - socket `integer`
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### fraction
 
@@ -980,6 +1058,8 @@ Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.ty
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### get_blender_socket
 
 ```python
@@ -993,6 +1073,8 @@ def get_blender_socket(self)
 
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### greater_equal
 
@@ -1013,6 +1095,8 @@ Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/b
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### greater_than
 
 ```python
@@ -1032,6 +1116,8 @@ Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/b
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### init_domains
 
 ```python
@@ -1044,6 +1130,8 @@ To be overloaded by sub classes.
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### init_socket
 
 ```python
@@ -1055,6 +1143,8 @@ def init_socket(self)
 Called at the end of initialization for further operations.
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### inverse_sqrt
 
@@ -1075,6 +1165,8 @@ Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.ty
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### less_equal
 
 ```python
@@ -1094,6 +1186,8 @@ Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/b
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### less_than
 
 ```python
@@ -1112,6 +1206,8 @@ Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/b
 - socket `result`
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### log
 
@@ -1133,6 +1229,8 @@ Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.ty
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### logarithm
 
 ```python
@@ -1152,6 +1250,8 @@ Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.ty
 - socket `value`
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### map_range
 
@@ -1178,6 +1278,8 @@ Developer reference [ShaderNodeMapRange](https://docs.blender.org/api/current/bp
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### map_range_linear
 
 ```python
@@ -1200,6 +1302,8 @@ Developer reference [ShaderNodeMapRange](https://docs.blender.org/api/current/bp
 - socket `result`
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### map_range_smooth
 
@@ -1224,6 +1328,8 @@ Developer reference [ShaderNodeMapRange](https://docs.blender.org/api/current/bp
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### map_range_smoother
 
 ```python
@@ -1246,6 +1352,8 @@ Developer reference [ShaderNodeMapRange](https://docs.blender.org/api/current/bp
 - socket `result`
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### map_range_stepped
 
@@ -1271,6 +1379,8 @@ Developer reference [ShaderNodeMapRange](https://docs.blender.org/api/current/bp
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### math_ceil
 
 ```python
@@ -1289,6 +1399,8 @@ Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.ty
 - socket `value`
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### math_compare
 
@@ -1311,6 +1423,8 @@ Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.ty
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### math_floor
 
 ```python
@@ -1329,6 +1443,8 @@ Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.ty
 - socket `value`
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### math_greater_than
 
@@ -1350,6 +1466,8 @@ Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.ty
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### math_less_than
 
 ```python
@@ -1370,6 +1488,8 @@ Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.ty
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### math_round
 
 ```python
@@ -1388,6 +1508,8 @@ Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.ty
 - socket `value`
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### math_trunc
 
@@ -1408,6 +1530,8 @@ Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.ty
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### math_truncate
 
 ```python
@@ -1426,6 +1550,8 @@ Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.ty
 - socket `value`
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### max
 
@@ -1447,6 +1573,8 @@ Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.ty
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### maximum
 
 ```python
@@ -1466,6 +1594,8 @@ Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.ty
 - socket `value`
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### min
 
@@ -1487,6 +1617,8 @@ Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.ty
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### minimum
 
 ```python
@@ -1506,6 +1638,8 @@ Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.ty
 - socket `value`
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### mix
 
@@ -1528,6 +1662,8 @@ Developer reference [ShaderNodeMix](https://docs.blender.org/api/current/bpy.typ
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### modulo
 
 ```python
@@ -1547,6 +1683,8 @@ Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.ty
 - socket `value`
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### mul_add
 
@@ -1569,6 +1707,8 @@ Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.ty
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### multiply
 
 ```python
@@ -1589,6 +1729,8 @@ def multiply(self, value=None, node_label = None, node_color = None)
 
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### multiply_add
 
@@ -1611,6 +1753,8 @@ Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.ty
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### not_equal
 
 ```python
@@ -1630,6 +1774,8 @@ Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/b
 - socket `result`
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### ping_pong
 
@@ -1651,6 +1797,8 @@ Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.ty
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### plug
 
 ```python
@@ -1666,6 +1814,8 @@ def plug(self, *values)
 see :func:`plug_bsocket`
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### pow
 
@@ -1687,6 +1837,8 @@ Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.ty
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### power
 
 ```python
@@ -1707,6 +1859,8 @@ Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.ty
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### reroute
 
 ```python
@@ -1716,6 +1870,8 @@ def reroute(self)
  Reroute all output links
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### reset_properties
 
@@ -1749,6 +1905,8 @@ After a change, the cache is erased.
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### round
 
 ```python
@@ -1764,6 +1922,8 @@ Developer reference [FunctionNodeFloatToInt](https://docs.blender.org/api/curren
 - socket `integer`
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### sign
 
@@ -1783,6 +1943,8 @@ Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.ty
 - socket `value`
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### sin
 
@@ -1804,6 +1966,8 @@ Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.ty
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### sine
 
 ```python
@@ -1824,6 +1988,8 @@ Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.ty
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### sinh
 
 ```python
@@ -1843,6 +2009,8 @@ Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.ty
 - socket `value`
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### smooth_maximum
 
@@ -1865,6 +2033,8 @@ Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.ty
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### smooth_minimum
 
 ```python
@@ -1886,6 +2056,8 @@ Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.ty
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### snap
 
 ```python
@@ -1906,6 +2078,8 @@ Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.ty
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### sqrt
 
 ```python
@@ -1924,6 +2098,8 @@ Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.ty
 - socket `value`
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### stack
 
@@ -1976,6 +2152,8 @@ The stack method changes the socket the instance refers to and reinitialize prop
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### subtract
 
 ```python
@@ -1997,6 +2175,8 @@ def subtract(self, value=None, node_label = None, node_color = None)
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### switch
 
 ```python
@@ -2016,6 +2196,8 @@ Developer reference [GeometryNodeSwitch](https://docs.blender.org/api/current/bp
 - socket `output`
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### tan
 
@@ -2037,6 +2219,8 @@ Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.ty
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### tangent
 
 ```python
@@ -2056,6 +2240,8 @@ Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.ty
 - socket `value`
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### tanh
 
@@ -2077,6 +2263,8 @@ Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.ty
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### to_degrees
 
 ```python
@@ -2095,6 +2283,8 @@ Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.ty
 - socket `value`
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### to_integer
 
@@ -2115,6 +2305,8 @@ Developer reference [FunctionNodeFloatToInt](https://docs.blender.org/api/curren
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### to_output
 
 ```python
@@ -2132,6 +2324,8 @@ The socket is added to the outputs of the geometry nodes tree.
 
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### to_radians
 
@@ -2152,6 +2346,8 @@ Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.ty
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### to_string
 
 ```python
@@ -2171,6 +2367,8 @@ Developer reference [FunctionNodeValueToString](https://docs.blender.org/api/cur
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### truncate
 
 ```python
@@ -2187,6 +2385,8 @@ Developer reference [FunctionNodeFloatToInt](https://docs.blender.org/api/curren
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### view
 
 ```python
@@ -2201,6 +2401,8 @@ If it ias a value (Integer, Float,...) it is linked to the value socket and the 
 accordingly.
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### wrap
 

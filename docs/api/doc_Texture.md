@@ -91,6 +91,8 @@ def Input(cls, value=None, name="Texture", description="")
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### brick
 
 ```python
@@ -124,6 +126,8 @@ Developer reference [ShaderNodeTexBrick](https://docs.blender.org/api/current/bp
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### checker
 
 ```python
@@ -146,6 +150,8 @@ Developer reference [ShaderNodeTexChecker](https://docs.blender.org/api/current/
 - tuple ('color', 'fac')
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### get_bl_idname
 
@@ -189,6 +195,8 @@ These additional values allow to enter angle, distance, factor... as group input
 
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### get_class_name
 
@@ -277,6 +285,8 @@ the name is chosen as the class name.
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### gives_bsocket
 
 ```python
@@ -299,6 +309,8 @@ def gives_bsocket(value)
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### gradient
 
 ```python
@@ -320,6 +332,8 @@ Developer reference [ShaderNodeTexGradient](https://docs.blender.org/api/current
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### gradient_diagonal
 
 ```python
@@ -339,6 +353,8 @@ Developer reference [ShaderNodeTexGradient](https://docs.blender.org/api/current
 - tuple ('color', 'fac')
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### gradient_easing
 
@@ -360,6 +376,8 @@ Developer reference [ShaderNodeTexGradient](https://docs.blender.org/api/current
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### gradient_linear
 
 ```python
@@ -379,6 +397,8 @@ Developer reference [ShaderNodeTexGradient](https://docs.blender.org/api/current
 - tuple ('color', 'fac')
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### gradient_quadratic
 
@@ -400,6 +420,8 @@ Developer reference [ShaderNodeTexGradient](https://docs.blender.org/api/current
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### gradient_quadratic_sphere
 
 ```python
@@ -419,6 +441,8 @@ Developer reference [ShaderNodeTexGradient](https://docs.blender.org/api/current
 - tuple ('color', 'fac')
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### gradient_radial
 
@@ -440,6 +464,8 @@ Developer reference [ShaderNodeTexGradient](https://docs.blender.org/api/current
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### gradient_spherical
 
 ```python
@@ -459,6 +485,8 @@ Developer reference [ShaderNodeTexGradient](https://docs.blender.org/api/current
 - tuple ('color', 'fac')
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### image
 
@@ -484,6 +512,8 @@ Developer reference [GeometryNodeImageTexture](https://docs.blender.org/api/curr
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### is_socket
 
 ```python
@@ -499,6 +529,8 @@ def is_socket(value)
 :rtype: bool
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### is_vector
 
@@ -516,6 +548,8 @@ def is_vector(value)
 
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### magic
 
@@ -539,6 +573,8 @@ Developer reference [ShaderNodeTexMagic](https://docs.blender.org/api/current/bp
 - tuple ('color', 'fac')
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### musgrave
 
@@ -569,6 +605,8 @@ Developer reference [ShaderNodeTexMusgrave](https://docs.blender.org/api/current
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### noise
 
 ```python
@@ -595,6 +633,8 @@ Developer reference [ShaderNodeTexNoise](https://docs.blender.org/api/current/bp
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### noise_1D
 
 ```python
@@ -618,6 +658,8 @@ Developer reference [ShaderNodeTexNoise](https://docs.blender.org/api/current/bp
 - tuple ('color', 'fac')
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### noise_2D
 
@@ -643,6 +685,8 @@ Developer reference [ShaderNodeTexNoise](https://docs.blender.org/api/current/bp
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### noise_3D
 
 ```python
@@ -666,6 +710,8 @@ Developer reference [ShaderNodeTexNoise](https://docs.blender.org/api/current/bp
 - tuple ('color', 'fac')
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### noise_4D
 
@@ -691,6 +737,8 @@ Developer reference [ShaderNodeTexNoise](https://docs.blender.org/api/current/bp
 - tuple ('color', 'fac')
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### value_data_type
 
@@ -743,6 +791,8 @@ def value_data_type(value, default='FLOAT', color_domain='FLOAT_COLOR')
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### voronoi
 
 ```python
@@ -771,6 +821,8 @@ Developer reference [ShaderNodeTexVoronoi](https://docs.blender.org/api/current/
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### voronoi_1D
 
 ```python
@@ -797,6 +849,8 @@ Developer reference [ShaderNodeTexVoronoi](https://docs.blender.org/api/current/
 - tuple ('distance', 'color', 'w')
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### voronoi_2D
 
@@ -825,6 +879,8 @@ Developer reference [ShaderNodeTexVoronoi](https://docs.blender.org/api/current/
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### voronoi_3D
 
 ```python
@@ -851,6 +907,8 @@ Developer reference [ShaderNodeTexVoronoi](https://docs.blender.org/api/current/
 - tuple ('distance', 'color', 'position')
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### voronoi_4D
 
@@ -879,6 +937,8 @@ Developer reference [ShaderNodeTexVoronoi](https://docs.blender.org/api/current/
 - tuple ('distance', 'color', 'position', 'w')
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### wave
 
@@ -910,6 +970,8 @@ Developer reference [ShaderNodeTexWave](https://docs.blender.org/api/current/bpy
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### wave_bands
 
 ```python
@@ -938,6 +1000,8 @@ Developer reference [ShaderNodeTexWave](https://docs.blender.org/api/current/bpy
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### wave_bands_saw
 
 ```python
@@ -964,6 +1028,8 @@ Developer reference [ShaderNodeTexWave](https://docs.blender.org/api/current/bpy
 - tuple ('color', 'fac')
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### wave_bands_sine
 
@@ -992,6 +1058,8 @@ Developer reference [ShaderNodeTexWave](https://docs.blender.org/api/current/bpy
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### wave_bands_triangle
 
 ```python
@@ -1018,6 +1086,8 @@ Developer reference [ShaderNodeTexWave](https://docs.blender.org/api/current/bpy
 - tuple ('color', 'fac')
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### wave_rings
 
@@ -1047,6 +1117,8 @@ Developer reference [ShaderNodeTexWave](https://docs.blender.org/api/current/bpy
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### wave_rings_saw
 
 ```python
@@ -1073,6 +1145,8 @@ Developer reference [ShaderNodeTexWave](https://docs.blender.org/api/current/bpy
 - tuple ('color', 'fac')
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### wave_rings_sine
 
@@ -1101,6 +1175,8 @@ Developer reference [ShaderNodeTexWave](https://docs.blender.org/api/current/bpy
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### wave_rings_triangle
 
 ```python
@@ -1128,6 +1204,8 @@ Developer reference [ShaderNodeTexWave](https://docs.blender.org/api/current/bpy
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### white_noise
 
 ```python
@@ -1150,6 +1228,8 @@ Developer reference [ShaderNodeTexWhiteNoise](https://docs.blender.org/api/curre
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### white_noise_1D
 
 ```python
@@ -1169,6 +1249,8 @@ Developer reference [ShaderNodeTexWhiteNoise](https://docs.blender.org/api/curre
 - tuple ('value', 'color')
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### white_noise_2D
 
@@ -1190,6 +1272,8 @@ Developer reference [ShaderNodeTexWhiteNoise](https://docs.blender.org/api/curre
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### white_noise_3D
 
 ```python
@@ -1209,6 +1293,8 @@ Developer reference [ShaderNodeTexWhiteNoise](https://docs.blender.org/api/curre
 - tuple ('value', 'color')
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### white_noise_4D
 
@@ -1231,6 +1317,8 @@ Developer reference [ShaderNodeTexWhiteNoise](https://docs.blender.org/api/curre
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ## Methods
 
 ### connected_sockets
@@ -1243,6 +1331,8 @@ def connected_sockets(self)
 
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### get_blender_socket
 
@@ -1258,6 +1348,8 @@ def get_blender_socket(self)
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### init_domains
 
 ```python
@@ -1270,6 +1362,8 @@ To be overloaded by sub classes.
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### init_socket
 
 ```python
@@ -1281,6 +1375,8 @@ def init_socket(self)
 Called at the end of initialization for further operations.
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### plug
 
@@ -1298,6 +1394,8 @@ see :func:`plug_bsocket`
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### reroute
 
 ```python
@@ -1307,6 +1405,8 @@ def reroute(self)
  Reroute all output links
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### reset_properties
 
@@ -1339,6 +1439,8 @@ After a change, the cache is erased.
 
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### stack
 
@@ -1391,6 +1493,8 @@ The stack method changes the socket the instance refers to and reinitialize prop
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### switch
 
 ```python
@@ -1411,6 +1515,8 @@ Developer reference [GeometryNodeSwitch](https://docs.blender.org/api/current/bp
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### to_output
 
 ```python
@@ -1428,6 +1534,8 @@ The socket is added to the outputs of the geometry nodes tree.
 
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### view
 

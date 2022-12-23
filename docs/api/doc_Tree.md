@@ -215,6 +215,8 @@ The Tree class property ``TREE`` is set to ``self``
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### arrange
 
 ```python
@@ -224,6 +226,8 @@ def arrange(self)
  Arrange the created nodes in the tree background for more lisibility
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### check_attributes
 
@@ -300,6 +304,8 @@ capture_node = nodes.CaptureNode(
 
 Flag to colorize the dependancies
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### close
 
 ```python
@@ -320,6 +326,8 @@ Three actions are performed:
 
 ----- Capture attributes
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### get_bnode
 
@@ -343,6 +351,8 @@ of the proper type and the proper label.
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### get_bnode_wrapper
 
 ```python
@@ -360,6 +370,8 @@ def get_bnode_wrapper(self, bnode)
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### get_bsocket_wrapper
 
 ```python
@@ -376,6 +388,8 @@ def get_bsocket_wrapper(self, bsocket)
 
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### layout
 
@@ -402,6 +416,8 @@ mesh.set_shade_smooth() # "Set Shade Smooth" node is created in the tree backgro
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### new_group_input
 
 ```python
@@ -411,6 +427,8 @@ def new_group_input(self)
  Create a new instance in group input.
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### new_group_output
 
 ```python
@@ -419,6 +437,8 @@ def new_group_output(self)
 
  Create a new instance in group output.
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### new_input
 
@@ -452,6 +472,8 @@ res = Integer.Input(10, "Resolution", min_value=2, max_value=100, description="G
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### prev_node
 
 ```python
@@ -473,6 +495,8 @@ in the console and can be copied/pasted.
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### register_node
 
 ```python
@@ -492,6 +516,8 @@ This allows the users to more clearly distinguish the nodes.
 
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### to_output
 
@@ -517,6 +543,8 @@ value.to_output()
 ```
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### view
 
