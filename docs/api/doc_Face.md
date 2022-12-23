@@ -6,13 +6,13 @@
 
 **Properties**
 
-[ID](#ID) | [area](#area) | [count](#count) | [domain_index](#domain_index) | [index](#index) | [island](#island) | [island_count](#island_count) | [island_index](#island_index) | [material](#material) | [material_index](#material_index) | [neighbors](#neighbors) | [neighbors_face_count](#neighbors_face_count) | [neighbors_vertex_count](#neighbors_vertex_count) | [normal](#normal) | [position](#position) | [shade_smooth](#shade_smooth)
+[ID](#ID) | [area](#area) | [as_cloud_points](#as_cloud_points) | [as_control_points](#as_control_points) | [as_corners](#as_corners) | [as_edges](#as_edges) | [as_faces](#as_faces) | [as_insts](#as_insts) | [as_splines](#as_splines) | [as_verts](#as_verts) | [count](#count) | [data_socket](#data_socket) | [domain](#domain) | [domain_index](#domain_index) | [index](#index) | [island](#island) | [island_count](#island_count) | [island_index](#island_index) | [material](#material) | [material_index](#material_index) | [neighbors](#neighbors) | [neighbors_face_count](#neighbors_face_count) | [neighbors_vertex_count](#neighbors_vertex_count) | [normal](#normal) | [position](#position) | [selection](#selection) | [selection_index](#selection_index) | [shade_smooth](#shade_smooth)
 
 
 
 **Methods**
 
-[accumulate_field](#accumulate_field) | [attribute_max](#attribute_max) | [attribute_mean](#attribute_mean) | [attribute_median](#attribute_median) | [attribute_min](#attribute_min) | [attribute_range](#attribute_range) | [attribute_statistic](#attribute_statistic) | [attribute_std](#attribute_std) | [attribute_sum](#attribute_sum) | [attribute_var](#attribute_var) | [capture_attribute](#capture_attribute) | [corners](#corners) | [corners_index](#corners_index) | [corners_total](#corners_total) | [delete](#delete) | [delete_all](#delete_all) | [delete_edges](#delete_edges) | [delete_faces](#delete_faces) | [distribute_points_poisson](#distribute_points_poisson) | [distribute_points_random](#distribute_points_random) | [duplicate](#duplicate) | [extrude](#extrude) | [face_set_boundaries](#face_set_boundaries) | [field_at_index](#field_at_index) | [flip](#flip) | [get_named_boolean](#get_named_boolean) | [get_named_color](#get_named_color) | [get_named_float](#get_named_float) | [get_named_integer](#get_named_integer) | [get_named_vector](#get_named_vector) | [interpolate](#interpolate) | [is_planar](#is_planar) | [material_selection](#material_selection) | [named_attribute](#named_attribute) | [pack_uv_islands](#pack_uv_islands) | [proximity](#proximity) | [random_boolean](#random_boolean) | [random_float](#random_float) | [random_integer](#random_integer) | [random_vector](#random_vector) | [remove_named_attribute](#remove_named_attribute) | [sample_index](#sample_index) | [sample_nearest](#sample_nearest) | [scale_single_axis](#scale_single_axis) | [scale_uniform](#scale_uniform) | [separate](#separate) | [set_ID](#set_ID) | [set_material](#set_material) | [set_material_index](#set_material_index) | [set_named_boolean](#set_named_boolean) | [set_named_color](#set_named_color) | [set_named_float](#set_named_float) | [set_named_integer](#set_named_integer) | [set_named_vector](#set_named_vector) | [set_position](#set_position) | [set_shade_smooth](#set_shade_smooth) | [store_named_attribute](#store_named_attribute) | [triangulate](#triangulate) | [uv_unwrap](#uv_unwrap)
+[accumulate_field](#accumulate_field) | [attribute_max](#attribute_max) | [attribute_mean](#attribute_mean) | [attribute_median](#attribute_median) | [attribute_min](#attribute_min) | [attribute_node](#attribute_node) | [attribute_range](#attribute_range) | [attribute_statistic](#attribute_statistic) | [attribute_std](#attribute_std) | [attribute_sum](#attribute_sum) | [attribute_var](#attribute_var) | [capture_attribute](#capture_attribute) | [corners](#corners) | [corners_index](#corners_index) | [corners_total](#corners_total) | [delete](#delete) | [delete_all](#delete_all) | [delete_edges](#delete_edges) | [delete_faces](#delete_faces) | [distribute_points_poisson](#distribute_points_poisson) | [distribute_points_random](#distribute_points_random) | [duplicate](#duplicate) | [extrude](#extrude) | [face_set_boundaries](#face_set_boundaries) | [field_at_index](#field_at_index) | [flip](#flip) | [get_named_boolean](#get_named_boolean) | [get_named_color](#get_named_color) | [get_named_float](#get_named_float) | [get_named_integer](#get_named_integer) | [get_named_vector](#get_named_vector) | [interpolate](#interpolate) | [is_planar](#is_planar) | [material_selection](#material_selection) | [named_attribute](#named_attribute) | [pack_uv_islands](#pack_uv_islands) | [proximity](#proximity) | [random_boolean](#random_boolean) | [random_float](#random_float) | [random_integer](#random_integer) | [random_vector](#random_vector) | [remove_named_attribute](#remove_named_attribute) | [sample_index](#sample_index) | [sample_nearest](#sample_nearest) | [scale_single_axis](#scale_single_axis) | [scale_uniform](#scale_uniform) | [select](#select) | [separate](#separate) | [set_ID](#set_ID) | [set_material](#set_material) | [set_material_index](#set_material_index) | [set_named_boolean](#set_named_boolean) | [set_named_color](#set_named_color) | [set_named_float](#set_named_float) | [set_named_integer](#set_named_integer) | [set_named_vector](#set_named_vector) | [set_position](#set_position) | [set_shade_smooth](#set_shade_smooth) | [socket_stack](#socket_stack) | [store_named_attribute](#store_named_attribute) | [triangulate](#triangulate) | [uv_unwrap](#uv_unwrap) | [view](#view)
 
 ## Properties
 
@@ -55,6 +55,46 @@ Returns:
 
 
 
+### as_cloud_points
+
+ Type cast to CloudPoint.
+
+
+### as_control_points
+
+ Type cast to ControlPoint.
+
+
+### as_corners
+
+ Type cast to Corner.
+
+
+### as_edges
+
+ Type cast to Edge.
+
+
+### as_faces
+
+ Type cast to Face.
+
+
+### as_insts
+
+ Type cast to Instance.
+
+
+### as_splines
+
+ Type cast to Spline.
+
+
+### as_verts
+
+ Type cast to Vertex.
+
+
 ### count
 
  Node DomainSize.
@@ -64,6 +104,33 @@ Developer reference [GeometryNodeAttributeDomainSize](https://docs.blender.org/a
 
 Returns:
     socket `face_count`
+
+
+
+### data_socket
+
+ Returns the data socket it belongs to.       
+
+Returns:
+    DataSocket
+
+
+
+### domain
+
+ Gives the **Geometry Nodes** domain string to use in the generated nodes.
+
+- Vertex        : 'POINT',
+- Edge          : 'EDGE',
+- Face          : 'FACE',
+- Corner        : 'CORNER',
+- ControlPoint  : 'POINT',
+- Spline        : 'CURVE',
+- CloudPoint    : 'POINT',
+- Instance      : 'INSTANCE',
+
+Returns:
+    domain string (str)
 
 
 
@@ -242,6 +309,26 @@ Node implemented as property setter.
 
 
 
+### selection
+
+ Returns the selection value to use in nodes with a **Selection** socket.  
+
+Returns:
+    Boolean
+
+
+
+### selection_index
+
+ Returns the selection index.
+
+> CAUTION: raise an error if the selection is not a integer.
+
+Returns:
+    Integer
+
+
+
 ### shade_smooth
 
  Node IsShadeSmooth.
@@ -372,6 +459,33 @@ Developer reference [GeometryNodeAttributeStatistic](https://docs.blender.org/ap
 
 Returns:
     socket `min`
+
+
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### attribute_node
+
+```python
+def attribute_node(self, node)
+```
+
+ Define an input node as attribute
+
+Called when creating an input node in a property getter. Performs two actions:
+    
+    - Call the method :func:`Node.as_attribute` to tag the node as being an attribute.
+      This will allow the :func:`Tree.check_attributes` to see if it is necessary to create
+      a *Capture Attribute* for this field.
+    - Set the nde property :attr:`field_of` to self in order to implement the transfer attribute
+      mechanism.
+
+#### Args:
+- node (Node): The node created by the domain
+    
+Returns:
+    The node argument        
+
 
 
 
@@ -1232,6 +1346,34 @@ Returns:
 
 <sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
+### select
+
+```python
+def select(self, selection)
+```
+
+ Select the domain
+
+If the method is called on a **Domain** which has alread a selection, the two selection are combined:
+    
+```python
+verts = mesh.verts[10:20] # Selection of vertices from 10 to 20
+v = verts.select((verts.index % 2).equal(0)) # Even indices in the previous selection
+```
+
+#### Args:
+- selection (Boolean or Integer): The selection condition
+    
+Returns:
+    Domain with the given selection (Domain)
+
+If a selection is existing, the resulting selection is a logical and betwenn the two
+
+
+
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### separate
 
 ```python
@@ -1469,6 +1611,22 @@ Returns:
 
 <sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
+### socket_stack
+
+```python
+def socket_stack(self, node, socket_name=None)
+```
+
+ Make the owning socket jump to the output socket of the node passed in argumment.
+
+#### Args:
+- node (Node): The node to jump to
+- socket_name: The name of the output socket (first one if None)
+
+
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### store_named_attribute
 
 ```python
@@ -1533,6 +1691,23 @@ Developer reference [GeometryNodeUVUnwrap](https://docs.blender.org/api/current/
 
 Returns:
     socket `uv`
+
+
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### view
+
+```python
+def view(self, socket=None, label=None, node_color=None)
+```
+
+ To viewer.
+
+Create a **Viewer** node with the domain geometry as input and the provided socket.
+
+#### Args:
+- socket (DataSocket): The value to view
 
 
 
