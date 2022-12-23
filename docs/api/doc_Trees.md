@@ -258,7 +258,7 @@ The keywords arguments must be the snake_case version of the input socket names 
 def clear(self)
 ```
 
- Delete all the [Tree](Tree.md) sharing the same prefix.
+ Delete all the **Geometry Nodes** whose name has a given prefix.
 
 For instance, to delete all the **Geometry Nodes** whose name starts with 'Utils':
 
@@ -266,7 +266,8 @@ For instance, to delete all the **Geometry Nodes** whose name starts with 'Utils
 Trees("Utils").clear()
 ```
 
-> CAUTION: `Trees().clear()` delete all the geometry nodes of your file.
+> CAUTION: `Trees().clear()` delete all the **Geometry Nodes** of your file, including those which are not
+generated with **geonodes**.
 
 
 
