@@ -48,7 +48,7 @@
 
 ### socket_index
 
- Return the index of the socket within the list of node sockets.
+#### Returns:
 
 Depending on the _is_output_ property, the socket belongs either to *node.inputs* or
 *node.outputs*.
@@ -71,8 +71,8 @@ def Input(cls, value=None, name="Object", description="")
 - name: The socket name
 - description: User tip
     
-Returns:
-    Object: The Object data socket
+#### Returns:
+- Object: The Object data socket
 
 
 
@@ -89,8 +89,8 @@ def Self(cls)
 Node reference [Self Object](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/self_object.html)
 Developer reference [GeometryNodeSelfObject](https://docs.blender.org/api/current/bpy.types.GeometryNodeSelfObject.html)
 
-Returns:
-    socket `self_object`
+#### Returns:
+- socket `self_object`
 
 
 
@@ -238,7 +238,7 @@ def gives_bsocket(value)
 :return: True if *value* is or wraps a socket
 :rtype: bool
 
-Returns True if value is:
+#### Returns:
     
 - A Blender Geometry Node Socket
 - An instance of Socket        
@@ -286,7 +286,7 @@ def is_vector(value)
 def value_data_type(value, default='FLOAT', color_domain='FLOAT_COLOR')
 ```
 
- Returns the domain to which the socket belongs
+#### Returns:
 
 :param value: The socket
 :type value: any
@@ -338,7 +338,7 @@ def value_data_type(value, default='FLOAT', color_domain='FLOAT_COLOR')
 def connected_sockets(self)
 ```
 
- Returns the list of Socket instances linked to this socket.
+#### Returns:
 
 
 
@@ -359,8 +359,8 @@ Developer reference [GeometryNodeObjectInfo](https://docs.blender.org/api/curren
 - as_instance: Boolean
 - transform_space (str): 'ORIGINAL' in [ORIGINAL, RELATIVE]
 
-Returns:
-    socket `geometry`
+#### Returns:
+- socket `geometry`
 
 
 
@@ -370,7 +370,7 @@ Returns:
 def get_blender_socket(self)
 ```
 
- Returns the property bsocket.
+#### Returns:
 
 :return: self.bsocket
 :rtype: bpy.types.NodeSocket
@@ -394,8 +394,8 @@ Developer reference [GeometryNodeObjectInfo](https://docs.blender.org/api/curren
 - as_instance: Boolean
 - transform_space (str): 'ORIGINAL' in [ORIGINAL, RELATIVE]
 
-Returns:
-    node with sockets ['location', 'rotation', 'scale', 'geometry']
+#### Returns:
+- node with sockets ['location', 'rotation', 'scale', 'geometry']
 
 
 
@@ -439,8 +439,8 @@ Developer reference [GeometryNodeObjectInfo](https://docs.blender.org/api/curren
 - as_instance: Boolean
 - transform_space (str): 'ORIGINAL' in [ORIGINAL, RELATIVE]
 
-Returns:
-    socket `location`
+#### Returns:
+- socket `location`
 
 
 
@@ -518,8 +518,8 @@ Developer reference [GeometryNodeObjectInfo](https://docs.blender.org/api/curren
 - as_instance: Boolean
 - transform_space (str): 'ORIGINAL' in [ORIGINAL, RELATIVE]
 
-Returns:
-    socket `rotation`
+#### Returns:
+- socket `rotation`
 
 
 
@@ -539,8 +539,8 @@ Developer reference [GeometryNodeObjectInfo](https://docs.blender.org/api/curren
 - as_instance: Boolean
 - transform_space (str): 'ORIGINAL' in [ORIGINAL, RELATIVE]
 
-Returns:
-    socket `scale`
+#### Returns:
+- socket `scale`
 
 
 
@@ -610,8 +610,8 @@ Developer reference [GeometryNodeSwitch](https://docs.blender.org/api/current/bp
 - switch: Boolean
 - true: Object
 
-Returns:
-    socket `output`
+#### Returns:
+- socket `output`
 
 
 

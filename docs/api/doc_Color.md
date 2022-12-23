@@ -11,8 +11,8 @@
 Node reference [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html)
 Developer reference [FunctionNodeSeparateColor](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html)
 
-Returns:
-    socket `alpha`
+#### Returns:
+- socket `alpha`
 
 
 
@@ -29,8 +29,8 @@ Returns:
 Node reference [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html)
 Developer reference [FunctionNodeSeparateColor](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html)
 
-Returns:
-    socket `blue`
+#### Returns:
+- socket `blue`
 
 
 
@@ -47,8 +47,8 @@ Returns:
 Node reference [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html)
 Developer reference [FunctionNodeSeparateColor](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html)
 
-Returns:
-    socket `green`
+#### Returns:
+- socket `green`
 
 
 
@@ -59,8 +59,8 @@ Returns:
 Node reference [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html)
 Developer reference [FunctionNodeSeparateColor](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html)
 
-Returns:
-    tuple ('red', 'green', 'blue', 'alpha')
+#### Returns:
+- tuple ('red', 'green', 'blue', 'alpha')
 
 
 
@@ -71,8 +71,8 @@ Returns:
 Node reference [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html)
 Developer reference [FunctionNodeSeparateColor](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html)
 
-Returns:
-    tuple ('red', 'green', 'blue', 'alpha')
+#### Returns:
+- tuple ('red', 'green', 'blue', 'alpha')
 
 
 
@@ -83,8 +83,8 @@ Returns:
 Node reference [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html)
 Developer reference [FunctionNodeSeparateColor](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html)
 
-Returns:
-    socket `red`
+#### Returns:
+- socket `red`
 
 
 
@@ -107,8 +107,8 @@ Returns:
 Node reference [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html)
 Developer reference [FunctionNodeSeparateColor](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html)
 
-Returns:
-    socket `blue`
+#### Returns:
+- socket `blue`
 
 
 
@@ -137,8 +137,8 @@ Returns:
 Node reference [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html)
 Developer reference [FunctionNodeSeparateColor](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html)
 
-Returns:
-    socket `red`
+#### Returns:
+- socket `red`
 
 
 
@@ -149,8 +149,8 @@ Returns:
 Node reference [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html)
 Developer reference [FunctionNodeSeparateColor](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html)
 
-Returns:
-    tuple ('red', 'green', 'blue', 'alpha')
+#### Returns:
+- tuple ('red', 'green', 'blue', 'alpha')
 
 
 
@@ -161,8 +161,8 @@ Returns:
 Node reference [RGB Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/rgb_curves.html)
 Developer reference [ShaderNodeRGBCurve](https://docs.blender.org/api/current/bpy.types.ShaderNodeRGBCurve.html)
 
-Returns:
-    node with sockets ['color']
+#### Returns:
+- node with sockets ['color']
 
 
 
@@ -173,14 +173,14 @@ Returns:
 Node reference [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html)
 Developer reference [FunctionNodeSeparateColor](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html)
 
-Returns:
-    socket `green`
+#### Returns:
+- socket `green`
 
 
 
 ### socket_index
 
- Return the index of the socket within the list of node sockets.
+#### Returns:
 
 Depending on the _is_output_ property, the socket belongs either to *node.inputs* or
 *node.outputs*.
@@ -195,8 +195,8 @@ Depending on the _is_output_ property, the socket belongs either to *node.inputs
 Node reference [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html)
 Developer reference [FunctionNodeSeparateColor](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html)
 
-Returns:
-    socket `blue`
+#### Returns:
+- socket `blue`
 
 
 
@@ -214,8 +214,8 @@ def Color(cls)
 Node reference [Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/color.html)
 Developer reference [FunctionNodeInputColor](https://docs.blender.org/api/current/bpy.types.FunctionNodeInputColor.html)
 
-Returns:
-    socket `color`
+#### Returns:
+- socket `color`
 
 
 
@@ -237,8 +237,8 @@ Developer reference [FunctionNodeCombineColor](https://docs.blender.org/api/curr
 - lightness: Float
 - alpha: Float
 
-Returns:
-    socket `color`
+#### Returns:
+- socket `color`
 
 
 
@@ -260,8 +260,8 @@ Developer reference [FunctionNodeCombineColor](https://docs.blender.org/api/curr
 - value: Float
 - alpha: Float
 
-Returns:
-    socket `color`
+#### Returns:
+- socket `color`
 
 
 
@@ -279,8 +279,8 @@ def Input(cls, value=None, name = "Color", description = "")
 - name: The socket name
 - description: User tip
     
-Returns:
-    Color: The Color data socket
+#### Returns:
+- Color: The Color data socket
 
 
 
@@ -303,8 +303,8 @@ Developer reference [FunctionNodeCombineColor](https://docs.blender.org/api/curr
 - blue: Float
 - alpha: Float
 
-Returns:
-    socket `color`
+#### Returns:
+- socket `color`
 
 
 
@@ -452,7 +452,7 @@ def gives_bsocket(value)
 :return: True if *value* is or wraps a socket
 :rtype: bool
 
-Returns True if value is:
+#### Returns:
     
 - A Blender Geometry Node Socket
 - An instance of Socket        
@@ -500,7 +500,7 @@ def is_vector(value)
 def value_data_type(value, default='FLOAT', color_domain='FLOAT_COLOR')
 ```
 
- Returns the domain to which the socket belongs
+#### Returns:
 
 :param value: The socket
 :type value: any
@@ -560,8 +560,8 @@ Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/b
 #### Args:
 - b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 
-Returns:
-    socket `result`
+#### Returns:
+- socket `result`
 
 
 
@@ -571,7 +571,7 @@ Returns:
 def connected_sockets(self)
 ```
 
- Returns the list of Socket instances linked to this socket.
+#### Returns:
 
 
 
@@ -590,8 +590,8 @@ Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/b
 #### Args:
 - b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 
-Returns:
-    socket `result`
+#### Returns:
+- socket `result`
 
 
 
@@ -610,8 +610,8 @@ Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/b
 - b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 - epsilon: Float
 
-Returns:
-    socket `result`
+#### Returns:
+- socket `result`
 
 
 
@@ -673,8 +673,8 @@ Developer reference [ShaderNodeMix](https://docs.blender.org/api/current/bpy.typ
 - clamp_factor (bool): True
 - clamp_result (bool): False
 
-Returns:
-    socket `result`
+#### Returns:
+- socket `result`
 
 
 
@@ -695,8 +695,8 @@ Developer reference [ShaderNodeMix](https://docs.blender.org/api/current/bpy.typ
 - clamp_factor (bool): True
 - clamp_result (bool): False
 
-Returns:
-    socket `result`
+#### Returns:
+- socket `result`
 
 
 
@@ -717,8 +717,8 @@ Developer reference [ShaderNodeMix](https://docs.blender.org/api/current/bpy.typ
 - clamp_factor (bool): True
 - clamp_result (bool): False
 
-Returns:
-    socket `result`
+#### Returns:
+- socket `result`
 
 
 
@@ -739,8 +739,8 @@ Developer reference [ShaderNodeMix](https://docs.blender.org/api/current/bpy.typ
 - clamp_factor (bool): True
 - clamp_result (bool): False
 
-Returns:
-    socket `result`
+#### Returns:
+- socket `result`
 
 
 
@@ -761,8 +761,8 @@ Developer reference [ShaderNodeMix](https://docs.blender.org/api/current/bpy.typ
 - clamp_factor (bool): True
 - clamp_result (bool): False
 
-Returns:
-    socket `result`
+#### Returns:
+- socket `result`
 
 
 
@@ -783,8 +783,8 @@ Developer reference [ShaderNodeMix](https://docs.blender.org/api/current/bpy.typ
 - clamp_factor (bool): True
 - clamp_result (bool): False
 
-Returns:
-    socket `result`
+#### Returns:
+- socket `result`
 
 
 
@@ -805,8 +805,8 @@ Developer reference [ShaderNodeMix](https://docs.blender.org/api/current/bpy.typ
 - clamp_factor (bool): True
 - clamp_result (bool): False
 
-Returns:
-    socket `result`
+#### Returns:
+- socket `result`
 
 
 
@@ -827,8 +827,8 @@ Developer reference [ShaderNodeMix](https://docs.blender.org/api/current/bpy.typ
 - clamp_factor (bool): True
 - clamp_result (bool): False
 
-Returns:
-    socket `result`
+#### Returns:
+- socket `result`
 
 
 
@@ -849,8 +849,8 @@ Developer reference [ShaderNodeMix](https://docs.blender.org/api/current/bpy.typ
 - clamp_factor (bool): True
 - clamp_result (bool): False
 
-Returns:
-    socket `result`
+#### Returns:
+- socket `result`
 
 
 
@@ -871,8 +871,8 @@ Developer reference [ShaderNodeMix](https://docs.blender.org/api/current/bpy.typ
 - clamp_factor (bool): True
 - clamp_result (bool): False
 
-Returns:
-    socket `result`
+#### Returns:
+- socket `result`
 
 
 
@@ -893,8 +893,8 @@ Developer reference [ShaderNodeMix](https://docs.blender.org/api/current/bpy.typ
 - clamp_factor (bool): True
 - clamp_result (bool): False
 
-Returns:
-    socket `result`
+#### Returns:
+- socket `result`
 
 
 
@@ -915,8 +915,8 @@ Developer reference [ShaderNodeMix](https://docs.blender.org/api/current/bpy.typ
 - clamp_factor (bool): True
 - clamp_result (bool): False
 
-Returns:
-    socket `result`
+#### Returns:
+- socket `result`
 
 
 
@@ -937,8 +937,8 @@ Developer reference [ShaderNodeMix](https://docs.blender.org/api/current/bpy.typ
 - clamp_factor (bool): True
 - clamp_result (bool): False
 
-Returns:
-    socket `result`
+#### Returns:
+- socket `result`
 
 
 
@@ -959,8 +959,8 @@ Developer reference [ShaderNodeMix](https://docs.blender.org/api/current/bpy.typ
 - clamp_factor (bool): True
 - clamp_result (bool): False
 
-Returns:
-    socket `result`
+#### Returns:
+- socket `result`
 
 
 
@@ -981,8 +981,8 @@ Developer reference [ShaderNodeMix](https://docs.blender.org/api/current/bpy.typ
 - clamp_factor (bool): True
 - clamp_result (bool): False
 
-Returns:
-    socket `result`
+#### Returns:
+- socket `result`
 
 
 
@@ -1003,8 +1003,8 @@ Developer reference [ShaderNodeMix](https://docs.blender.org/api/current/bpy.typ
 - clamp_factor (bool): True
 - clamp_result (bool): False
 
-Returns:
-    socket `result`
+#### Returns:
+- socket `result`
 
 
 
@@ -1025,8 +1025,8 @@ Developer reference [ShaderNodeMix](https://docs.blender.org/api/current/bpy.typ
 - clamp_factor (bool): True
 - clamp_result (bool): False
 
-Returns:
-    socket `result`
+#### Returns:
+- socket `result`
 
 
 
@@ -1047,8 +1047,8 @@ Developer reference [ShaderNodeMix](https://docs.blender.org/api/current/bpy.typ
 - clamp_factor (bool): True
 - clamp_result (bool): False
 
-Returns:
-    socket `result`
+#### Returns:
+- socket `result`
 
 
 
@@ -1176,8 +1176,8 @@ Developer reference [GeometryNodeSwitch](https://docs.blender.org/api/current/bp
 - switch: Boolean
 - true: Color
 
-Returns:
-    socket `output`
+#### Returns:
+- socket `output`
 
 
 

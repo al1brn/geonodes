@@ -23,8 +23,8 @@
 Node reference [ColorRamp](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/color_ramp.html)
 Developer reference [ShaderNodeValToRGB](https://docs.blender.org/api/current/bpy.types.ShaderNodeValToRGB.html)
 
-Returns:
-    node with sockets ['color', 'alpha']
+#### Returns:
+- node with sockets ['color', 'alpha']
 
 
 
@@ -60,7 +60,7 @@ Returns:
 
 ### socket_index
 
- Return the index of the socket within the list of node sockets.
+#### Returns:
 
 Depending on the _is_output_ property, the socket belongs either to *node.inputs* or
 *node.outputs*.
@@ -86,8 +86,8 @@ def Angle(cls, value=0., name="Angle", min_value = None, max_value = None, descr
 - max_value: Maximum value
 - description: User tip
     
-Returns:
-    Float: The Float data socket
+#### Returns:
+- Float: The Float data socket
 
 
 
@@ -108,8 +108,8 @@ def Distance(cls, value=0., name="Distance", min_value = None, max_value = None,
 - max_value: Maximum value
 - description: User tip
     
-Returns:
-    Float: The Float data socket
+#### Returns:
+- Float: The Float data socket
 
 
 
@@ -130,8 +130,8 @@ def Factor(cls, value=0., name="Factor", min_value = 0., max_value = 1., descrip
 - max_value: Maximum value
 - description: User tip
     
-Returns:
-    Float: The Float data socket
+#### Returns:
+- Float: The Float data socket
 
 
 
@@ -148,8 +148,8 @@ def Frame(cls)
 Node reference [Scene Time](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/scene_time.html)
 Developer reference [GeometryNodeInputSceneTime](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputSceneTime.html)
 
-Returns:
-    socket `frame`
+#### Returns:
+- socket `frame`
 
 
 
@@ -169,8 +169,8 @@ def Input(cls, value = 0., name = "Float", min_value = None, max_value = None, d
 - max_value: Maximum value
 - description: User tip
     
-Returns:
-    Float: The Float data socket
+#### Returns:
+- Float: The Float data socket
 
 
 
@@ -186,8 +186,8 @@ def Seconds(cls)
 Node reference [Scene Time](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/scene_time.html)
 Developer reference [GeometryNodeInputSceneTime](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputSceneTime.html)
 
-Returns:
-    socket `seconds`
+#### Returns:
+- socket `seconds`
 
 
 
@@ -203,8 +203,8 @@ def Value(cls)
 Node reference [Value](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/value.html)
 Developer reference [ShaderNodeValue](https://docs.blender.org/api/current/bpy.types.ShaderNodeValue.html)
 
-Returns:
-    socket `value`
+#### Returns:
+- socket `value`
 
 
 
@@ -352,7 +352,7 @@ def gives_bsocket(value)
 :return: True if *value* is or wraps a socket
 :rtype: bool
 
-Returns True if value is:
+#### Returns:
     
 - A Blender Geometry Node Socket
 - An instance of Socket        
@@ -400,7 +400,7 @@ def is_vector(value)
 def value_data_type(value, default='FLOAT', color_domain='FLOAT_COLOR')
 ```
 
- Returns the domain to which the socket belongs
+#### Returns:
 
 :param value: The socket
 :type value: any
@@ -460,8 +460,8 @@ Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.ty
 #### Args:
 - clamp (bool): False
 
-Returns:
-    socket `value`
+#### Returns:
+- socket `value`
 
 
 
@@ -479,8 +479,8 @@ Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.ty
 #### Args:
 - clamp (bool): False
 
-Returns:
-    socket `value`
+#### Returns:
+- socket `value`
 
 
 
@@ -497,8 +497,8 @@ def add(self, value=None, node_label = None, node_color = None)
 - node_label (str): Node label
 - node_color (color): Node background color
         
-    Returns:
-        Float
+#### Returns:
+- Float
         
     If value is a Vector or a Color, VectorMath node is used rather than Math.
 
@@ -520,8 +520,8 @@ Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.ty
 - value: Float
 - clamp (bool): False
 
-Returns:
-    socket `value`
+#### Returns:
+- socket `value`
 
 
 
@@ -540,8 +540,8 @@ Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.ty
 - value: Float
 - clamp (bool): False
 
-Returns:
-    socket `value`
+#### Returns:
+- socket `value`
 
 
 
@@ -560,8 +560,8 @@ Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.ty
 - value: Float
 - clamp (bool): False
 
-Returns:
-    socket `value`
+#### Returns:
+- socket `value`
 
 
 
@@ -580,8 +580,8 @@ Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.ty
 - value: Float
 - clamp (bool): False
 
-Returns:
-    socket `value`
+#### Returns:
+- socket `value`
 
 
 
@@ -600,8 +600,8 @@ Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.ty
 - value: Float
 - clamp (bool): False
 
-Returns:
-    socket `value`
+#### Returns:
+- socket `value`
 
 
 
@@ -620,8 +620,8 @@ Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.ty
 - value1: Float
 - clamp (bool): False
 
-Returns:
-    socket `value`
+#### Returns:
+- socket `value`
 
 
 
@@ -640,8 +640,8 @@ Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.ty
 - value: Float
 - clamp (bool): False
 
-Returns:
-    socket `value`
+#### Returns:
+- socket `value`
 
 
 
@@ -656,8 +656,8 @@ def ceiling(self)
 Node reference [Float to Integer](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/float_to_integer.html)
 Developer reference [FunctionNodeFloatToInt](https://docs.blender.org/api/current/bpy.types.FunctionNodeFloatToInt.html)
 
-Returns:
-    socket `integer`
+#### Returns:
+- socket `integer`
 
 
 
@@ -677,8 +677,8 @@ Developer reference [ShaderNodeClamp](https://docs.blender.org/api/current/bpy.t
 - max: Float
 - clamp_type (str): 'MINMAX' in [MINMAX, RANGE]
 
-Returns:
-    socket `result`
+#### Returns:
+- socket `result`
 
 
 
@@ -697,8 +697,8 @@ Developer reference [ShaderNodeClamp](https://docs.blender.org/api/current/bpy.t
 - min: Float
 - max: Float
 
-Returns:
-    socket `result`
+#### Returns:
+- socket `result`
 
 
 
@@ -717,8 +717,8 @@ Developer reference [ShaderNodeClamp](https://docs.blender.org/api/current/bpy.t
 - min: Float
 - max: Float
 
-Returns:
-    socket `result`
+#### Returns:
+- socket `result`
 
 
 
@@ -738,8 +738,8 @@ Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/b
 - epsilon: Float
 - operation (str): 'GREATER_THAN' in [LESS_THAN, LESS_EQUAL, GREATER_THAN, GREATER_EQUAL, EQUAL, NOT_EQUAL]
 
-Returns:
-    socket `result`
+#### Returns:
+- socket `result`
 
 
 
@@ -749,7 +749,7 @@ Returns:
 def connected_sockets(self)
 ```
 
- Returns the list of Socket instances linked to this socket.
+#### Returns:
 
 
 
@@ -769,8 +769,8 @@ Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.ty
 - value: Float
 - clamp (bool): False
 
-Returns:
-    socket `value`
+#### Returns:
+- socket `value`
 
 
 
@@ -789,8 +789,8 @@ Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.ty
 - value: Float
 - clamp (bool): False
 
-Returns:
-    socket `value`
+#### Returns:
+- socket `value`
 
 
 
@@ -809,8 +809,8 @@ Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.ty
 - value: Float
 - clamp (bool): False
 
-Returns:
-    socket `value`
+#### Returns:
+- socket `value`
 
 
 
@@ -827,8 +827,8 @@ def divide(self, value=None, node_label = None, node_color = None)
 - node_label (str): Node label
 - node_color (color): Node background color
         
-    Returns:
-        Float
+#### Returns:
+- Float
         
     If value is a Vector or a Color, VectorMath node is used rather than Math.
 
@@ -850,8 +850,8 @@ Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/b
 - b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 - epsilon: Float
 
-Returns:
-    socket `result`
+#### Returns:
+- socket `result`
 
 
 
@@ -869,8 +869,8 @@ Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.ty
 #### Args:
 - clamp (bool): False
 
-Returns:
-    socket `value`
+#### Returns:
+- socket `value`
 
 
 
@@ -888,8 +888,8 @@ Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.ty
 #### Args:
 - clamp (bool): False
 
-Returns:
-    socket `value`
+#### Returns:
+- socket `value`
 
 
 
@@ -907,8 +907,8 @@ Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.ty
 #### Args:
 - clamp (bool): False
 
-Returns:
-    socket `value`
+#### Returns:
+- socket `value`
 
 
 
@@ -926,8 +926,8 @@ Developer reference [ShaderNodeFloatCurve](https://docs.blender.org/api/current/
 #### Args:
 - factor: Float
 
-Returns:
-    socket `value`
+#### Returns:
+- socket `value`
 
 
 
@@ -942,8 +942,8 @@ def floor(self)
 Node reference [Float to Integer](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/float_to_integer.html)
 Developer reference [FunctionNodeFloatToInt](https://docs.blender.org/api/current/bpy.types.FunctionNodeFloatToInt.html)
 
-Returns:
-    socket `integer`
+#### Returns:
+- socket `integer`
 
 
 
@@ -961,8 +961,8 @@ Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.ty
 #### Args:
 - clamp (bool): False
 
-Returns:
-    socket `value`
+#### Returns:
+- socket `value`
 
 
 
@@ -972,7 +972,7 @@ Returns:
 def get_blender_socket(self)
 ```
 
- Returns the property bsocket.
+#### Returns:
 
 :return: self.bsocket
 :rtype: bpy.types.NodeSocket
@@ -994,8 +994,8 @@ Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/b
 #### Args:
 - b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 
-Returns:
-    socket `result`
+#### Returns:
+- socket `result`
 
 
 
@@ -1013,8 +1013,8 @@ Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/b
 #### Args:
 - b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 
-Returns:
-    socket `result`
+#### Returns:
+- socket `result`
 
 
 
@@ -1056,8 +1056,8 @@ Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.ty
 #### Args:
 - clamp (bool): False
 
-Returns:
-    socket `value`
+#### Returns:
+- socket `value`
 
 
 
@@ -1075,8 +1075,8 @@ Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/b
 #### Args:
 - b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 
-Returns:
-    socket `result`
+#### Returns:
+- socket `result`
 
 
 
@@ -1094,8 +1094,8 @@ Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/b
 #### Args:
 - b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 
-Returns:
-    socket `result`
+#### Returns:
+- socket `result`
 
 
 
@@ -1114,8 +1114,8 @@ Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.ty
 - base: Float
 - clamp (bool): False
 
-Returns:
-    socket `value`
+#### Returns:
+- socket `value`
 
 
 
@@ -1134,8 +1134,8 @@ Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.ty
 - base: Float
 - clamp (bool): False
 
-Returns:
-    socket `value`
+#### Returns:
+- socket `value`
 
 
 
@@ -1159,8 +1159,8 @@ Developer reference [ShaderNodeMapRange](https://docs.blender.org/api/current/bp
 - clamp (bool): True
 - interpolation_type (str): 'LINEAR' in [LINEAR, STEPPED, SMOOTHSTEP, SMOOTHERSTEP]
 
-Returns:
-    socket `result`
+#### Returns:
+- socket `result`
 
 
 
@@ -1182,8 +1182,8 @@ Developer reference [ShaderNodeMapRange](https://docs.blender.org/api/current/bp
 - to_max: ['Float', 'Vector']
 - clamp (bool): True
 
-Returns:
-    socket `result`
+#### Returns:
+- socket `result`
 
 
 
@@ -1205,8 +1205,8 @@ Developer reference [ShaderNodeMapRange](https://docs.blender.org/api/current/bp
 - to_max: ['Float', 'Vector']
 - clamp (bool): True
 
-Returns:
-    socket `result`
+#### Returns:
+- socket `result`
 
 
 
@@ -1228,8 +1228,8 @@ Developer reference [ShaderNodeMapRange](https://docs.blender.org/api/current/bp
 - to_max: ['Float', 'Vector']
 - clamp (bool): True
 
-Returns:
-    socket `result`
+#### Returns:
+- socket `result`
 
 
 
@@ -1252,8 +1252,8 @@ Developer reference [ShaderNodeMapRange](https://docs.blender.org/api/current/bp
 - steps: ['Float', 'Vector']
 - clamp (bool): True
 
-Returns:
-    socket `result`
+#### Returns:
+- socket `result`
 
 
 
@@ -1271,8 +1271,8 @@ Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.ty
 #### Args:
 - clamp (bool): False
 
-Returns:
-    socket `value`
+#### Returns:
+- socket `value`
 
 
 
@@ -1292,8 +1292,8 @@ Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.ty
 - epsilon: Float
 - clamp (bool): False
 
-Returns:
-    socket `value`
+#### Returns:
+- socket `value`
 
 
 
@@ -1311,8 +1311,8 @@ Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.ty
 #### Args:
 - clamp (bool): False
 
-Returns:
-    socket `value`
+#### Returns:
+- socket `value`
 
 
 
@@ -1331,8 +1331,8 @@ Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.ty
 - threshold: Float
 - clamp (bool): False
 
-Returns:
-    socket `value`
+#### Returns:
+- socket `value`
 
 
 
@@ -1351,8 +1351,8 @@ Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.ty
 - threshold: Float
 - clamp (bool): False
 
-Returns:
-    socket `value`
+#### Returns:
+- socket `value`
 
 
 
@@ -1370,8 +1370,8 @@ Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.ty
 #### Args:
 - clamp (bool): False
 
-Returns:
-    socket `value`
+#### Returns:
+- socket `value`
 
 
 
@@ -1389,8 +1389,8 @@ Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.ty
 #### Args:
 - clamp (bool): False
 
-Returns:
-    socket `value`
+#### Returns:
+- socket `value`
 
 
 
@@ -1408,8 +1408,8 @@ Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.ty
 #### Args:
 - clamp (bool): False
 
-Returns:
-    socket `value`
+#### Returns:
+- socket `value`
 
 
 
@@ -1428,8 +1428,8 @@ Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.ty
 - value: Float
 - clamp (bool): False
 
-Returns:
-    socket `value`
+#### Returns:
+- socket `value`
 
 
 
@@ -1448,8 +1448,8 @@ Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.ty
 - value: Float
 - clamp (bool): False
 
-Returns:
-    socket `value`
+#### Returns:
+- socket `value`
 
 
 
@@ -1468,8 +1468,8 @@ Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.ty
 - value: Float
 - clamp (bool): False
 
-Returns:
-    socket `value`
+#### Returns:
+- socket `value`
 
 
 
@@ -1488,8 +1488,8 @@ Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.ty
 - value: Float
 - clamp (bool): False
 
-Returns:
-    socket `value`
+#### Returns:
+- socket `value`
 
 
 
@@ -1509,8 +1509,8 @@ Developer reference [ShaderNodeMix](https://docs.blender.org/api/current/bpy.typ
 - value: ['Float', 'Vector', 'Color']
 - clamp_factor (bool): True
 
-Returns:
-    socket `result`
+#### Returns:
+- socket `result`
 
 
 
@@ -1529,8 +1529,8 @@ Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.ty
 - value: Float
 - clamp (bool): False
 
-Returns:
-    socket `value`
+#### Returns:
+- socket `value`
 
 
 
@@ -1550,8 +1550,8 @@ Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.ty
 - addend: Float
 - clamp (bool): False
 
-Returns:
-    socket `value`
+#### Returns:
+- socket `value`
 
 
 
@@ -1568,8 +1568,8 @@ def multiply(self, value=None, node_label = None, node_color = None)
 - node_label (str): Node label
 - node_color (color): Node background color
         
-    Returns:
-        Float
+#### Returns:
+- Float
         
     If value is a Vector or a Color, VectorMath node is used rather than Math.
 
@@ -1592,8 +1592,8 @@ Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.ty
 - addend: Float
 - clamp (bool): False
 
-Returns:
-    socket `value`
+#### Returns:
+- socket `value`
 
 
 
@@ -1612,8 +1612,8 @@ Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/b
 - b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 - epsilon: Float
 
-Returns:
-    socket `result`
+#### Returns:
+- socket `result`
 
 
 
@@ -1632,8 +1632,8 @@ Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.ty
 - scale: Float
 - clamp (bool): False
 
-Returns:
-    socket `value`
+#### Returns:
+- socket `value`
 
 
 
@@ -1668,8 +1668,8 @@ Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.ty
 - exponent: Float
 - clamp (bool): False
 
-Returns:
-    socket `value`
+#### Returns:
+- socket `value`
 
 
 
@@ -1688,8 +1688,8 @@ Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.ty
 - exponent: Float
 - clamp (bool): False
 
-Returns:
-    socket `value`
+#### Returns:
+- socket `value`
 
 
 
@@ -1746,8 +1746,8 @@ def round(self)
 Node reference [Float to Integer](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/float_to_integer.html)
 Developer reference [FunctionNodeFloatToInt](https://docs.blender.org/api/current/bpy.types.FunctionNodeFloatToInt.html)
 
-Returns:
-    socket `integer`
+#### Returns:
+- socket `integer`
 
 
 
@@ -1765,8 +1765,8 @@ Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.ty
 #### Args:
 - clamp (bool): False
 
-Returns:
-    socket `value`
+#### Returns:
+- socket `value`
 
 
 
@@ -1785,8 +1785,8 @@ Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.ty
 - value: Float
 - clamp (bool): False
 
-Returns:
-    socket `value`
+#### Returns:
+- socket `value`
 
 
 
@@ -1805,8 +1805,8 @@ Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.ty
 - value: Float
 - clamp (bool): False
 
-Returns:
-    socket `value`
+#### Returns:
+- socket `value`
 
 
 
@@ -1825,8 +1825,8 @@ Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.ty
 - value: Float
 - clamp (bool): False
 
-Returns:
-    socket `value`
+#### Returns:
+- socket `value`
 
 
 
@@ -1846,8 +1846,8 @@ Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.ty
 - distance: Float
 - clamp (bool): False
 
-Returns:
-    socket `value`
+#### Returns:
+- socket `value`
 
 
 
@@ -1867,8 +1867,8 @@ Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.ty
 - distance: Float
 - clamp (bool): False
 
-Returns:
-    socket `value`
+#### Returns:
+- socket `value`
 
 
 
@@ -1887,8 +1887,8 @@ Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.ty
 - increment: Float
 - clamp (bool): False
 
-Returns:
-    socket `value`
+#### Returns:
+- socket `value`
 
 
 
@@ -1906,8 +1906,8 @@ Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.ty
 #### Args:
 - clamp (bool): False
 
-Returns:
-    socket `value`
+#### Returns:
+- socket `value`
 
 
 
@@ -1975,8 +1975,8 @@ def subtract(self, value=None, node_label = None, node_color = None)
 - node_label (str): Node label
 - node_color (color): Node background color
         
-    Returns:
-        Float
+#### Returns:
+- Float
         
     If value is a Vector or a Color, VectorMath node is used rather than Math.
 
@@ -1998,8 +1998,8 @@ Developer reference [GeometryNodeSwitch](https://docs.blender.org/api/current/bp
 - switch: Boolean
 - true: Float
 
-Returns:
-    socket `output`
+#### Returns:
+- socket `output`
 
 
 
@@ -2018,8 +2018,8 @@ Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.ty
 - value: Float
 - clamp (bool): False
 
-Returns:
-    socket `value`
+#### Returns:
+- socket `value`
 
 
 
@@ -2038,8 +2038,8 @@ Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.ty
 - value: Float
 - clamp (bool): False
 
-Returns:
-    socket `value`
+#### Returns:
+- socket `value`
 
 
 
@@ -2058,8 +2058,8 @@ Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.ty
 - value: Float
 - clamp (bool): False
 
-Returns:
-    socket `value`
+#### Returns:
+- socket `value`
 
 
 
@@ -2077,8 +2077,8 @@ Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.ty
 #### Args:
 - clamp (bool): False
 
-Returns:
-    socket `value`
+#### Returns:
+- socket `value`
 
 
 
@@ -2096,8 +2096,8 @@ Developer reference [FunctionNodeFloatToInt](https://docs.blender.org/api/curren
 #### Args:
 - rounding_mode (str): 'ROUND' in [ROUND, FLOOR, CEILING, TRUNCATE]
 
-Returns:
-    socket `integer`
+#### Returns:
+- socket `integer`
 
 
 
@@ -2133,8 +2133,8 @@ Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.ty
 #### Args:
 - clamp (bool): False
 
-Returns:
-    socket `value`
+#### Returns:
+- socket `value`
 
 
 
@@ -2152,8 +2152,8 @@ Developer reference [FunctionNodeValueToString](https://docs.blender.org/api/cur
 #### Args:
 - decimals: Integer
 
-Returns:
-    socket `string`
+#### Returns:
+- socket `string`
 
 
 
@@ -2168,8 +2168,8 @@ def truncate(self)
 Node reference [Float to Integer](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/float_to_integer.html)
 Developer reference [FunctionNodeFloatToInt](https://docs.blender.org/api/current/bpy.types.FunctionNodeFloatToInt.html)
 
-Returns:
-    socket `integer`
+#### Returns:
+- socket `integer`
 
 
 
@@ -2204,8 +2204,8 @@ Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.ty
 - min: Float
 - clamp (bool): False
 
-Returns:
-    socket `value`
+#### Returns:
+- socket `value`
 
 
 

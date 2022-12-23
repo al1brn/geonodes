@@ -35,8 +35,8 @@
 Node reference [String Length](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/string_length.html)
 Developer reference [FunctionNodeStringLength](https://docs.blender.org/api/current/bpy.types.FunctionNodeStringLength.html)
 
-Returns:
-    socket `length`
+#### Returns:
+- socket `length`
 
 
 
@@ -60,7 +60,7 @@ Returns:
 
 ### socket_index
 
- Return the index of the socket within the list of node sockets.
+#### Returns:
 
 Depending on the _is_output_ property, the socket belongs either to *node.inputs* or
 *node.outputs*.
@@ -84,8 +84,8 @@ def Input(cls, value = "Text", name = "String", description = "")
 - name: The socket name
 - description: User tip
     
-Returns:
-    Float: The Float data socket
+#### Returns:
+- Float: The Float data socket
 
 
 
@@ -101,8 +101,8 @@ def LineBreak()
 Node reference [Special Characters](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/special_characters.html)
 Developer reference [FunctionNodeInputSpecialCharacters](https://docs.blender.org/api/current/bpy.types.FunctionNodeInputSpecialCharacters.html)
 
-Returns:
-    socket `line_break`
+#### Returns:
+- socket `line_break`
 
 
 
@@ -121,8 +121,8 @@ Developer reference [FunctionNodeInputString](https://docs.blender.org/api/curre
 #### Args:
 - string (str): ''
 
-Returns:
-    socket `string`
+#### Returns:
+- socket `string`
 
 
 
@@ -138,8 +138,8 @@ def Tab()
 Node reference [Special Characters](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/special_characters.html)
 Developer reference [FunctionNodeInputSpecialCharacters](https://docs.blender.org/api/current/bpy.types.FunctionNodeInputSpecialCharacters.html)
 
-Returns:
-    socket `tab`
+#### Returns:
+- socket `tab`
 
 
 
@@ -309,7 +309,7 @@ def gives_bsocket(value)
 :return: True if *value* is or wraps a socket
 :rtype: bool
 
-Returns True if value is:
+#### Returns:
     
 - A Blender Geometry Node Socket
 - An instance of Socket        
@@ -357,7 +357,7 @@ def is_vector(value)
 def value_data_type(value, default='FLOAT', color_domain='FLOAT_COLOR')
 ```
 
- Returns the domain to which the socket belongs
+#### Returns:
 
 :param value: The socket
 :type value: any
@@ -409,7 +409,7 @@ def value_data_type(value, default='FLOAT', color_domain='FLOAT_COLOR')
 def connected_sockets(self)
 ```
 
- Returns the list of Socket instances linked to this socket.
+#### Returns:
 
 
 
@@ -428,8 +428,8 @@ Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/b
 #### Args:
 - b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 
-Returns:
-    socket `result`
+#### Returns:
+- socket `result`
 
 
 
@@ -439,7 +439,7 @@ Returns:
 def get_blender_socket(self)
 ```
 
- Returns the property bsocket.
+#### Returns:
 
 :return: self.bsocket
 :rtype: bpy.types.NodeSocket
@@ -486,8 +486,8 @@ Developer reference [GeometryNodeStringJoin](https://docs.blender.org/api/curren
 - strings: <m>String
 - delimiter: String
 
-Returns:
-    socket `string`
+#### Returns:
+- socket `string`
 
 
 
@@ -503,8 +503,8 @@ def join_strings(self, *strings, delimiter = None)
 - strings (str, String): List of strings to join
 - delimiter (str, String): Delimiter between the strings
     
-Returns:
-    String: strings joined with the delimiter
+#### Returns:
+- String: strings joined with the delimiter
     
 Note
 ----
@@ -546,8 +546,8 @@ Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/b
 #### Args:
 - b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 
-Returns:
-    socket `result`
+#### Returns:
+- socket `result`
 
 
 
@@ -582,8 +582,8 @@ Developer reference [FunctionNodeReplaceString](https://docs.blender.org/api/cur
 - find: String
 - replace: String
 
-Returns:
-    socket `string`
+#### Returns:
+- socket `string`
 
 
 
@@ -644,8 +644,8 @@ Developer reference [FunctionNodeSliceString](https://docs.blender.org/api/curre
 - position: Integer
 - length: Integer
 
-Returns:
-    socket `string`
+#### Returns:
+- socket `string`
 
 
 
@@ -715,8 +715,8 @@ Developer reference [GeometryNodeSwitch](https://docs.blender.org/api/current/bp
 - switch: Boolean
 - true: String
 
-Returns:
-    socket `output`
+#### Returns:
+- socket `output`
 
 
 
@@ -744,8 +744,8 @@ Developer reference [GeometryNodeStringToCurves](https://docs.blender.org/api/cu
 - overflow (str): 'OVERFLOW' in [OVERFLOW, SCALE_TO_FIT, TRUNCATE]
 - pivot_mode (str): 'BOTTOM_LEFT' in [MIDPOINT, TOP_LEFT, TOP_CENTER,... , BOTTOM_LEFT, BOTTOM_CENTER, BOTTOM_RIGHT]
 
-Returns:
-    tuple ('curve_instances', 'line', 'pivot_point')
+#### Returns:
+- tuple ('curve_instances', 'line', 'pivot_point')
 
 
 

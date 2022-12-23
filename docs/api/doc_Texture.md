@@ -48,7 +48,7 @@
 
 ### socket_index
 
- Return the index of the socket within the list of node sockets.
+#### Returns:
 
 Depending on the _is_output_ property, the socket belongs either to *node.inputs* or
 *node.outputs*.
@@ -71,8 +71,8 @@ def Input(cls, value=None, name="Texture", description="")
 - name: The socket name
 - description: User tip
     
-Returns:
-    Texture: The Texture data socket
+#### Returns:
+- Texture: The Texture data socket
 
 
 
@@ -105,8 +105,8 @@ Developer reference [ShaderNodeTexBrick](https://docs.blender.org/api/current/bp
 - squash (float): 1.0
 - squash_frequency (int): 2
 
-Returns:
-    tuple ('color', 'fac')
+#### Returns:
+- tuple ('color', 'fac')
 
 
 
@@ -128,8 +128,8 @@ Developer reference [ShaderNodeTexChecker](https://docs.blender.org/api/current/
 - color2: Color
 - scale: Float
 
-Returns:
-    tuple ('color', 'fac')
+#### Returns:
+- tuple ('color', 'fac')
 
 
 
@@ -277,7 +277,7 @@ def gives_bsocket(value)
 :return: True if *value* is or wraps a socket
 :rtype: bool
 
-Returns True if value is:
+#### Returns:
     
 - A Blender Geometry Node Socket
 - An instance of Socket        
@@ -301,8 +301,8 @@ Developer reference [ShaderNodeTexGradient](https://docs.blender.org/api/current
 - vector: Vector
 - gradient_type (str): 'LINEAR' in [LINEAR, QUADRATIC, EASING, DIAGONAL, SPHERICAL, QUADRATIC_SPHERE, RADIAL]
 
-Returns:
-    tuple ('color', 'fac')
+#### Returns:
+- tuple ('color', 'fac')
 
 
 
@@ -321,8 +321,8 @@ Developer reference [ShaderNodeTexGradient](https://docs.blender.org/api/current
 #### Args:
 - vector: Vector
 
-Returns:
-    tuple ('color', 'fac')
+#### Returns:
+- tuple ('color', 'fac')
 
 
 
@@ -341,8 +341,8 @@ Developer reference [ShaderNodeTexGradient](https://docs.blender.org/api/current
 #### Args:
 - vector: Vector
 
-Returns:
-    tuple ('color', 'fac')
+#### Returns:
+- tuple ('color', 'fac')
 
 
 
@@ -361,8 +361,8 @@ Developer reference [ShaderNodeTexGradient](https://docs.blender.org/api/current
 #### Args:
 - vector: Vector
 
-Returns:
-    tuple ('color', 'fac')
+#### Returns:
+- tuple ('color', 'fac')
 
 
 
@@ -381,8 +381,8 @@ Developer reference [ShaderNodeTexGradient](https://docs.blender.org/api/current
 #### Args:
 - vector: Vector
 
-Returns:
-    tuple ('color', 'fac')
+#### Returns:
+- tuple ('color', 'fac')
 
 
 
@@ -401,8 +401,8 @@ Developer reference [ShaderNodeTexGradient](https://docs.blender.org/api/current
 #### Args:
 - vector: Vector
 
-Returns:
-    tuple ('color', 'fac')
+#### Returns:
+- tuple ('color', 'fac')
 
 
 
@@ -421,8 +421,8 @@ Developer reference [ShaderNodeTexGradient](https://docs.blender.org/api/current
 #### Args:
 - vector: Vector
 
-Returns:
-    tuple ('color', 'fac')
+#### Returns:
+- tuple ('color', 'fac')
 
 
 
@@ -441,8 +441,8 @@ Developer reference [ShaderNodeTexGradient](https://docs.blender.org/api/current
 #### Args:
 - vector: Vector
 
-Returns:
-    tuple ('color', 'fac')
+#### Returns:
+- tuple ('color', 'fac')
 
 
 
@@ -465,8 +465,8 @@ Developer reference [GeometryNodeImageTexture](https://docs.blender.org/api/curr
 - extension (str): 'REPEAT' in [REPEAT, EXTEND, CLIP]
 - interpolation (str): 'Linear' in [Linear, Closest, Cubic]
 
-Returns:
-    tuple ('color', 'alpha')
+#### Returns:
+- tuple ('color', 'alpha')
 
 
 
@@ -521,8 +521,8 @@ Developer reference [ShaderNodeTexMagic](https://docs.blender.org/api/current/bp
 - distortion: Float
 - turbulence_depth (int): 2
 
-Returns:
-    tuple ('color', 'fac')
+#### Returns:
+- tuple ('color', 'fac')
 
 
 
@@ -550,8 +550,8 @@ Developer reference [ShaderNodeTexMusgrave](https://docs.blender.org/api/current
 - musgrave_dimensions (str): '3D' in [1D, 2D, 3D, 4D]
 - musgrave_type (str): 'FBM' in [MULTIFRACTAL, RIDGED_MULTIFRACTAL, HYBRID_MULTIFRACTAL, FBM, HETERO_TERRAIN]
 
-Returns:
-    socket `fac`
+#### Returns:
+- socket `fac`
 
 
 
@@ -576,8 +576,8 @@ Developer reference [ShaderNodeTexNoise](https://docs.blender.org/api/current/bp
 - distortion: Float
 - noise_dimensions (str): '3D' in [1D, 2D, 3D, 4D]
 
-Returns:
-    tuple ('color', 'fac')
+#### Returns:
+- tuple ('color', 'fac')
 
 
 
@@ -600,8 +600,8 @@ Developer reference [ShaderNodeTexNoise](https://docs.blender.org/api/current/bp
 - roughness: Float
 - distortion: Float
 
-Returns:
-    tuple ('color', 'fac')
+#### Returns:
+- tuple ('color', 'fac')
 
 
 
@@ -624,8 +624,8 @@ Developer reference [ShaderNodeTexNoise](https://docs.blender.org/api/current/bp
 - roughness: Float
 - distortion: Float
 
-Returns:
-    tuple ('color', 'fac')
+#### Returns:
+- tuple ('color', 'fac')
 
 
 
@@ -648,8 +648,8 @@ Developer reference [ShaderNodeTexNoise](https://docs.blender.org/api/current/bp
 - roughness: Float
 - distortion: Float
 
-Returns:
-    tuple ('color', 'fac')
+#### Returns:
+- tuple ('color', 'fac')
 
 
 
@@ -673,8 +673,8 @@ Developer reference [ShaderNodeTexNoise](https://docs.blender.org/api/current/bp
 - roughness: Float
 - distortion: Float
 
-Returns:
-    tuple ('color', 'fac')
+#### Returns:
+- tuple ('color', 'fac')
 
 
 
@@ -685,7 +685,7 @@ Returns:
 def value_data_type(value, default='FLOAT', color_domain='FLOAT_COLOR')
 ```
 
- Returns the domain to which the socket belongs
+#### Returns:
 
 :param value: The socket
 :type value: any
@@ -752,8 +752,8 @@ Developer reference [ShaderNodeTexVoronoi](https://docs.blender.org/api/current/
 - feature (str): 'F1' in [F1, F2, SMOOTH_F1, DISTANCE_TO_EDGE, N_SPHERE_RADIUS]
 - voronoi_dimensions (str): '3D' in [1D, 2D, 3D, 4D]
 
-Returns:
-    tuple ('distance', 'color', 'position', 'w')
+#### Returns:
+- tuple ('distance', 'color', 'position', 'w')
 
 
 
@@ -779,8 +779,8 @@ Developer reference [ShaderNodeTexVoronoi](https://docs.blender.org/api/current/
 - feature (str): 'F1' in [F1, F2, SMOOTH_F1, DISTANCE_TO_EDGE, N_SPHERE_RADIUS]
 - voronoi_dimensions (str): '3D' in [1D, 2D, 3D, 4D]
 
-Returns:
-    tuple ('distance', 'color', 'w')
+#### Returns:
+- tuple ('distance', 'color', 'w')
 
 
 
@@ -806,8 +806,8 @@ Developer reference [ShaderNodeTexVoronoi](https://docs.blender.org/api/current/
 - feature (str): 'F1' in [F1, F2, SMOOTH_F1, DISTANCE_TO_EDGE, N_SPHERE_RADIUS]
 - voronoi_dimensions (str): '3D' in [1D, 2D, 3D, 4D]
 
-Returns:
-    tuple ('distance', 'color', 'position')
+#### Returns:
+- tuple ('distance', 'color', 'position')
 
 
 
@@ -833,8 +833,8 @@ Developer reference [ShaderNodeTexVoronoi](https://docs.blender.org/api/current/
 - feature (str): 'F1' in [F1, F2, SMOOTH_F1, DISTANCE_TO_EDGE, N_SPHERE_RADIUS]
 - voronoi_dimensions (str): '3D' in [1D, 2D, 3D, 4D]
 
-Returns:
-    tuple ('distance', 'color', 'position')
+#### Returns:
+- tuple ('distance', 'color', 'position')
 
 
 
@@ -861,8 +861,8 @@ Developer reference [ShaderNodeTexVoronoi](https://docs.blender.org/api/current/
 - feature (str): 'F1' in [F1, F2, SMOOTH_F1, DISTANCE_TO_EDGE, N_SPHERE_RADIUS]
 - voronoi_dimensions (str): '3D' in [1D, 2D, 3D, 4D]
 
-Returns:
-    tuple ('distance', 'color', 'position', 'w')
+#### Returns:
+- tuple ('distance', 'color', 'position', 'w')
 
 
 
@@ -891,8 +891,8 @@ Developer reference [ShaderNodeTexWave](https://docs.blender.org/api/current/bpy
 - wave_profile (str): 'SIN' in [SIN, SAW, TRI]
 - wave_type (str): 'BANDS' in [BANDS, RINGS]
 
-Returns:
-    tuple ('color', 'fac')
+#### Returns:
+- tuple ('color', 'fac')
 
 
 
@@ -919,8 +919,8 @@ Developer reference [ShaderNodeTexWave](https://docs.blender.org/api/current/bpy
 - direction (str): 'X' in [X, Y, Z, DIAGONAL]
 - wave_profile (str): 'SIN' in [SIN, SAW, TRI]
 
-Returns:
-    tuple ('color', 'fac')
+#### Returns:
+- tuple ('color', 'fac')
 
 
 
@@ -946,8 +946,8 @@ Developer reference [ShaderNodeTexWave](https://docs.blender.org/api/current/bpy
 - phase_offset: Float
 - direction (str): 'X' in [X, Y, Z, DIAGONAL]
 
-Returns:
-    tuple ('color', 'fac')
+#### Returns:
+- tuple ('color', 'fac')
 
 
 
@@ -973,8 +973,8 @@ Developer reference [ShaderNodeTexWave](https://docs.blender.org/api/current/bpy
 - phase_offset: Float
 - direction (str): 'X' in [X, Y, Z, DIAGONAL]
 
-Returns:
-    tuple ('color', 'fac')
+#### Returns:
+- tuple ('color', 'fac')
 
 
 
@@ -1000,8 +1000,8 @@ Developer reference [ShaderNodeTexWave](https://docs.blender.org/api/current/bpy
 - phase_offset: Float
 - direction (str): 'X' in [X, Y, Z, DIAGONAL]
 
-Returns:
-    tuple ('color', 'fac')
+#### Returns:
+- tuple ('color', 'fac')
 
 
 
@@ -1028,8 +1028,8 @@ Developer reference [ShaderNodeTexWave](https://docs.blender.org/api/current/bpy
 - direction (str): 'X' in [X, Y, Z, SPHERICAL]
 - wave_profile (str): 'SIN' in [SIN, SAW, TRI]
 
-Returns:
-    tuple ('color', 'fac')
+#### Returns:
+- tuple ('color', 'fac')
 
 
 
@@ -1055,8 +1055,8 @@ Developer reference [ShaderNodeTexWave](https://docs.blender.org/api/current/bpy
 - phase_offset: Float
 - direction (str): 'X' in [X, Y, Z, SPHERICAL]
 
-Returns:
-    tuple ('color', 'fac')
+#### Returns:
+- tuple ('color', 'fac')
 
 
 
@@ -1082,8 +1082,8 @@ Developer reference [ShaderNodeTexWave](https://docs.blender.org/api/current/bpy
 - phase_offset: Float
 - direction (str): 'X' in [X, Y, Z, SPHERICAL]
 
-Returns:
-    tuple ('color', 'fac')
+#### Returns:
+- tuple ('color', 'fac')
 
 
 
@@ -1109,8 +1109,8 @@ Developer reference [ShaderNodeTexWave](https://docs.blender.org/api/current/bpy
 - phase_offset: Float
 - direction (str): 'X' in [X, Y, Z, SPHERICAL]
 
-Returns:
-    tuple ('color', 'fac')
+#### Returns:
+- tuple ('color', 'fac')
 
 
 
@@ -1131,8 +1131,8 @@ Developer reference [ShaderNodeTexWhiteNoise](https://docs.blender.org/api/curre
 - w: Float
 - noise_dimensions (str): '3D' in [1D, 2D, 3D, 4D]
 
-Returns:
-    tuple ('value', 'color')
+#### Returns:
+- tuple ('value', 'color')
 
 
 
@@ -1151,8 +1151,8 @@ Developer reference [ShaderNodeTexWhiteNoise](https://docs.blender.org/api/curre
 #### Args:
 - w: Float
 
-Returns:
-    tuple ('value', 'color')
+#### Returns:
+- tuple ('value', 'color')
 
 
 
@@ -1171,8 +1171,8 @@ Developer reference [ShaderNodeTexWhiteNoise](https://docs.blender.org/api/curre
 #### Args:
 - vector: Vector
 
-Returns:
-    tuple ('value', 'color')
+#### Returns:
+- tuple ('value', 'color')
 
 
 
@@ -1191,8 +1191,8 @@ Developer reference [ShaderNodeTexWhiteNoise](https://docs.blender.org/api/curre
 #### Args:
 - vector: Vector
 
-Returns:
-    tuple ('value', 'color')
+#### Returns:
+- tuple ('value', 'color')
 
 
 
@@ -1212,8 +1212,8 @@ Developer reference [ShaderNodeTexWhiteNoise](https://docs.blender.org/api/curre
 - vector: Vector
 - w: Float
 
-Returns:
-    tuple ('value', 'color')
+#### Returns:
+- tuple ('value', 'color')
 
 
 
@@ -1225,7 +1225,7 @@ Returns:
 def connected_sockets(self)
 ```
 
- Returns the list of Socket instances linked to this socket.
+#### Returns:
 
 
 
@@ -1236,7 +1236,7 @@ def connected_sockets(self)
 def get_blender_socket(self)
 ```
 
- Returns the property bsocket.
+#### Returns:
 
 :return: self.bsocket
 :rtype: bpy.types.NodeSocket
@@ -1392,8 +1392,8 @@ Developer reference [GeometryNodeSwitch](https://docs.blender.org/api/current/bp
 - switch: Boolean
 - true: Texture
 
-Returns:
-    socket `output`
+#### Returns:
+- socket `output`
 
 
 

@@ -48,7 +48,7 @@
 
 ### socket_index
 
- Return the index of the socket within the list of node sockets.
+#### Returns:
 
 Depending on the _is_output_ property, the socket belongs either to *node.inputs* or
 *node.outputs*.
@@ -71,8 +71,8 @@ def Input(cls, value=None, name="Material", description="")
 - name: The socket name
 - description: User tip
     
-Returns:
-    Material: The Material data socket
+#### Returns:
+- Material: The Material data socket
 
 
 
@@ -89,8 +89,8 @@ def Material(cls)
 Node reference [Material](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/material.html)
 Developer reference [GeometryNodeInputMaterial](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMaterial.html)
 
-Returns:
-    socket `material`
+#### Returns:
+- socket `material`
 
 
 
@@ -238,7 +238,7 @@ def gives_bsocket(value)
 :return: True if *value* is or wraps a socket
 :rtype: bool
 
-Returns True if value is:
+#### Returns:
     
 - A Blender Geometry Node Socket
 - An instance of Socket        
@@ -286,7 +286,7 @@ def is_vector(value)
 def value_data_type(value, default='FLOAT', color_domain='FLOAT_COLOR')
 ```
 
- Returns the domain to which the socket belongs
+#### Returns:
 
 :param value: The socket
 :type value: any
@@ -338,7 +338,7 @@ def value_data_type(value, default='FLOAT', color_domain='FLOAT_COLOR')
 def connected_sockets(self)
 ```
 
- Returns the list of Socket instances linked to this socket.
+#### Returns:
 
 
 
@@ -349,7 +349,7 @@ def connected_sockets(self)
 def get_blender_socket(self)
 ```
 
- Returns the property bsocket.
+#### Returns:
 
 :return: self.bsocket
 :rtype: bpy.types.NodeSocket
@@ -505,8 +505,8 @@ Developer reference [GeometryNodeSwitch](https://docs.blender.org/api/current/bp
 - switch: Boolean
 - true: Material
 
-Returns:
-    socket `output`
+#### Returns:
+- socket `output`
 
 
 
