@@ -244,7 +244,15 @@ class Trees:
             return list(self.trees.values())[name]
         
     def clear(self):
-        """ Delete of the [Tree](Tree.md) sharing the same prefix.
+        """ Delete all the [Tree](Tree.md) sharing the same prefix.
+        
+        For instance, to delete all the **Geometry Nodes** whose name starts with 'Utils':
+        
+        ```python
+        Trees("Utils").clear()
+        ```
+        
+        > CAUTION: `Trees().clear()` delete all the geometry nodes of your file.
         """
         trees = self.trees
         for tree in trees.values():
