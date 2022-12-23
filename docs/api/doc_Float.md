@@ -2,6 +2,18 @@
 
 > [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
+### Properties
+
+[bl_idname](#bl_idname) [bnode](#bnode) [color_ramp](#color_ramp) [is_multi_input](#is_multi_input) [is_output](#is_output) [links](#links) [name](#name) [node_chain_label](#node_chain_label) [socket_index](#socket_index) 
+
+### Class and static methods
+
+[Angle](#Angle) [Distance](#Distance) [Factor](#Factor) [Frame](#Frame) [Input](#Input) [Seconds](#Seconds) [Value](#Value) [get_bl_idname](#get_bl_idname) [get_class_name](#get_class_name) [gives_bsocket](#gives_bsocket) [is_socket](#is_socket) [is_vector](#is_vector) [value_data_type](#value_data_type) 
+
+### Methods
+
+[abs](#abs) [absolute](#absolute) [add](#add) [arccos](#arccos) [arccosine](#arccosine) [arcsin](#arcsin) [arcsine](#arcsine) [arctan](#arctan) [arctan2](#arctan2) [arctangent](#arctangent) [ceiling](#ceiling) [clamp](#clamp) [clamp_min_max](#clamp_min_max) [clamp_range](#clamp_range) [compare](#compare) [connected_sockets](#connected_sockets) [cos](#cos) [cosh](#cosh) [cosine](#cosine) [divide](#divide) [equal](#equal) [exp](#exp) [exponent](#exponent) [fact](#fact) [float_curve](#float_curve) [floor](#floor) [fraction](#fraction) [get_blender_socket](#get_blender_socket) [greater_equal](#greater_equal) [greater_than](#greater_than) [init_domains](#init_domains) [init_socket](#init_socket) [inverse_sqrt](#inverse_sqrt) [less_equal](#less_equal) [less_than](#less_than) [log](#log) [logarithm](#logarithm) [map_range](#map_range) [map_range_linear](#map_range_linear) [map_range_smooth](#map_range_smooth) [map_range_smoother](#map_range_smoother) [map_range_stepped](#map_range_stepped) [math_ceil](#math_ceil) [math_compare](#math_compare) [math_floor](#math_floor) [math_greater_than](#math_greater_than) [math_less_than](#math_less_than) [math_round](#math_round) [math_trunc](#math_trunc) [math_truncate](#math_truncate) [max](#max) [maximum](#maximum) [min](#min) [minimum](#minimum) [mix](#mix) [modulo](#modulo) [mul_add](#mul_add) [multiply](#multiply) [multiply_add](#multiply_add) [not_equal](#not_equal) [ping_pong](#ping_pong) [plug](#plug) [pow](#pow) [power](#power) [reroute](#reroute) [reset_properties](#reset_properties) [round](#round) [sign](#sign) [sin](#sin) [sine](#sine) [sinh](#sinh) [smooth_maximum](#smooth_maximum) [smooth_minimum](#smooth_minimum) [snap](#snap) [sqrt](#sqrt) [stack](#stack) [subtract](#subtract) [switch](#switch) [tan](#tan) [tangent](#tangent) [tanh](#tanh) [to_degrees](#to_degrees) [to_integer](#to_integer) [to_output](#to_output) [to_radians](#to_radians) [to_string](#to_string) [truncate](#truncate) [view](#view) [wrap](#wrap) 
+
 ## Properties
 
 ### bl_idname

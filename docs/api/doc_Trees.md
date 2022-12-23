@@ -2,6 +2,8 @@
 
 > [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
+### Constructor
+
 ```python
 Trees(self, prefix=None)
 ```

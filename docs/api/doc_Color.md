@@ -2,6 +2,18 @@
 
 > [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
+### Properties
+
+[alpha](#alpha) [bl_idname](#bl_idname) [blue](#blue) [bnode](#bnode) [green](#green) [hsl](#hsl) [hsv](#hsv) [hue](#hue) [is_multi_input](#is_multi_input) [is_output](#is_output) [lightness](#lightness) [links](#links) [name](#name) [node_chain_label](#node_chain_label) [red](#red) [rgb](#rgb) [rgb_curves](#rgb_curves) [saturation](#saturation) [socket_index](#socket_index) [value](#value) 
+
+### Class and static methods
+
+[Color](#Color) [HSL](#HSL) [HSV](#HSV) [Input](#Input) [RGB](#RGB) [get_bl_idname](#get_bl_idname) [get_class_name](#get_class_name) [gives_bsocket](#gives_bsocket) [is_socket](#is_socket) [is_vector](#is_vector) [value_data_type](#value_data_type) 
+
+### Methods
+
+[brighter](#brighter) [connected_sockets](#connected_sockets) [darker](#darker) [equal](#equal) [get_blender_socket](#get_blender_socket) [init_domains](#init_domains) [init_socket](#init_socket) [mix](#mix) [mix_add](#mix_add) [mix_burn](#mix_burn) [mix_color](#mix_color) [mix_darken](#mix_darken) [mix_difference](#mix_difference) [mix_divide](#mix_divide) [mix_dodge](#mix_dodge) [mix_hue](#mix_hue) [mix_lighten](#mix_lighten) [mix_linear_light](#mix_linear_light) [mix_multiply](#mix_multiply) [mix_overlay](#mix_overlay) [mix_saturation](#mix_saturation) [mix_screen](#mix_screen) [mix_soft_light](#mix_soft_light) [mix_subtract](#mix_subtract) [mix_value](#mix_value) [plug](#plug) [reroute](#reroute) [reset_properties](#reset_properties) [stack](#stack) [switch](#switch) [to_output](#to_output) [view](#view) 
+
 ## Properties
 
 ### alpha
