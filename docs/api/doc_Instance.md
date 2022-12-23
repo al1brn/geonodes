@@ -1,4 +1,6 @@
-Class Instance
+# Class Instance
+
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 ## Properties
 
@@ -968,4 +970,6 @@ Returns:
     node with sockets ['instances']
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

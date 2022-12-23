@@ -1,4 +1,6 @@
-Class Tree
+# Class Tree
+
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
  A geometry nodes tree.
 
@@ -519,4 +521,6 @@ You can also call **DataSocket.view()**
 
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

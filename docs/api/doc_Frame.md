@@ -1,4 +1,6 @@
-Class Frame
+# Class Frame
+
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
  Node *Frame*
 
@@ -479,4 +481,6 @@ Used when implementing operators __rxxx___
 
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

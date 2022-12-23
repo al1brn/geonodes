@@ -1,4 +1,6 @@
-Class ControlPoint
+# Class ControlPoint
+
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 ## Properties
 
@@ -1408,4 +1410,6 @@ Returns:
     node with sockets ['geometry']
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

@@ -1,4 +1,6 @@
-Class Group
+# Class Group
+
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
  > Node group
 
@@ -484,4 +486,6 @@ Used when implementing operators __rxxx___
 
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

@@ -1,4 +1,6 @@
-Class Vector
+# Class Vector
+
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 ## Properties
 
@@ -2300,4 +2302,6 @@ Returns:
     socket `vector`
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

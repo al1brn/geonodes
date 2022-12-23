@@ -1,4 +1,6 @@
-Class CloudPoint
+# Class CloudPoint
+
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 ## Properties
 
@@ -932,4 +934,6 @@ Returns:
     socket `mesh` [Mesh](Mesh.md)
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

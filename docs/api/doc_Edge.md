@@ -1,4 +1,6 @@
-Class Edge
+# Class Edge
+
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 ## Properties
 
@@ -1147,4 +1149,6 @@ Returns:
     socket `curve` [Curve](Curve.md)
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

@@ -1,4 +1,6 @@
-Class Trees
+# Class Trees
+
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 ```python
 Trees(self, prefix=None)
@@ -14,4 +16,6 @@ def get_prefix(prefix)
 ```
 
 prefix can be a Trees instance
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

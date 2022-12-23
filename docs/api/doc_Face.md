@@ -1,4 +1,6 @@
-Class Face
+# Class Face
+
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 ## Properties
 
@@ -1405,4 +1407,6 @@ Returns:
     socket `uv`
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

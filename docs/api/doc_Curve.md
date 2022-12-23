@@ -1,4 +1,6 @@
-Class Curve
+# Class Curve
+
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
 ## Properties
 
@@ -2552,4 +2554,6 @@ If it ias a value (Integer, Float,...) it is linked to the value socket and the 
 accordingly.
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
