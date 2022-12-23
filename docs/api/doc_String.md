@@ -79,10 +79,10 @@ def Input(cls, value = "Text", name = "String", description = "")
 
  Create a String input socket in the Group Input Node
 
-Args:
-    value: The default value
-    name: The socket name
-    description: User tip
+#### Args:
+- value: The default value
+- name: The socket name
+- description: User tip
     
 Returns:
     Float: The Float data socket
@@ -118,8 +118,8 @@ def String(cls, string='')
 Node reference [String](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/string.html)
 Developer reference [FunctionNodeInputString](https://docs.blender.org/api/current/bpy.types.FunctionNodeInputString.html)
 
-Args:
-    string (str): ''
+#### Args:
+- string (str): ''
 
 Returns:
     socket `string`
@@ -152,9 +152,9 @@ def Value(value = None, decimals = None)
 
  String constructor : initialize a String from a numeric value
 
-Args:
-    value: Value to convert
-    decimals: Number of decimals
+#### Args:
+- value: Value to convert
+- decimals: Number of decimals
     
 .. code-block:: python
 
@@ -425,8 +425,8 @@ def equal(self, b=None)
 Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
 Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 
-Args:
-    b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+#### Args:
+- b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 
 Returns:
     socket `result`
@@ -482,9 +482,9 @@ def join(*strings, delimiter=None)
 Node reference [Join Strings](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/join_strings.html)
 Developer reference [GeometryNodeStringJoin](https://docs.blender.org/api/current/bpy.types.GeometryNodeStringJoin.html)
 
-Args:
-    strings: <m>String
-    delimiter: String
+#### Args:
+- strings: <m>String
+- delimiter: String
 
 Returns:
     socket `string`
@@ -499,9 +499,9 @@ def join_strings(self, *strings, delimiter = None)
 
  Join strings with a delimiter
 
-Args:
-    strings (str, String): List of strings to join
-    delimiter (str, String): Delimiter between the strings
+#### Args:
+- strings (str, String): List of strings to join
+- delimiter (str, String): Delimiter between the strings
     
 Returns:
     String: strings joined with the delimiter
@@ -543,8 +543,8 @@ def not_equal(self, b=None)
 Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
 Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 
-Args:
-    b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+#### Args:
+- b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 
 Returns:
     socket `result`
@@ -578,9 +578,9 @@ def replace(self, find=None, replace=None)
 Node reference [Replace String](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/replace_string.html)
 Developer reference [FunctionNodeReplaceString](https://docs.blender.org/api/current/bpy.types.FunctionNodeReplaceString.html)
 
-Args:
-    find: String
-    replace: String
+#### Args:
+- find: String
+- replace: String
 
 Returns:
     socket `string`
@@ -640,9 +640,9 @@ def slice(self, position=None, length=None)
 Node reference [Slice String](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/slice_string.html)
 Developer reference [FunctionNodeSliceString](https://docs.blender.org/api/current/bpy.types.FunctionNodeSliceString.html)
 
-Args:
-    position: Integer
-    length: Integer
+#### Args:
+- position: Integer
+- length: Integer
 
 Returns:
     socket `string`
@@ -711,9 +711,9 @@ def switch(self, switch=None, true=None)
 Node reference [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html)
 Developer reference [GeometryNodeSwitch](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
 
-Args:
-    switch: Boolean
-    true: String
+#### Args:
+- switch: Boolean
+- true: String
 
 Returns:
     socket `output`
@@ -731,18 +731,18 @@ def to_curves(self, string=None, size=None, character_spacing=None, word_spacing
 Node reference [String to Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/string_to_curves.html)
 Developer reference [GeometryNodeStringToCurves](https://docs.blender.org/api/current/bpy.types.GeometryNodeStringToCurves.html)
 
-Args:
-    string: String
-    size: Float
-    character_spacing: Float
-    word_spacing: Float
-    line_spacing: Float
-    text_box_width: Float
-    text_box_height: Float
-    align_x (str): 'LEFT' in [LEFT, CENTER, RIGHT, JUSTIFY, FLUSH]
-    align_y (str): 'TOP_BASELINE' in [TOP_BASELINE, TOP, MIDDLE, BOTTOM_BASELINE, BOTTOM]
-    overflow (str): 'OVERFLOW' in [OVERFLOW, SCALE_TO_FIT, TRUNCATE]
-    pivot_mode (str): 'BOTTOM_LEFT' in [MIDPOINT, TOP_LEFT, TOP_CENTER,... , BOTTOM_LEFT, BOTTOM_CENTER, BOTTOM_RIGHT]
+#### Args:
+- string: String
+- size: Float
+- character_spacing: Float
+- word_spacing: Float
+- line_spacing: Float
+- text_box_width: Float
+- text_box_height: Float
+- align_x (str): 'LEFT' in [LEFT, CENTER, RIGHT, JUSTIFY, FLUSH]
+- align_y (str): 'TOP_BASELINE' in [TOP_BASELINE, TOP, MIDDLE, BOTTOM_BASELINE, BOTTOM]
+- overflow (str): 'OVERFLOW' in [OVERFLOW, SCALE_TO_FIT, TRUNCATE]
+- pivot_mode (str): 'BOTTOM_LEFT' in [MIDPOINT, TOP_LEFT, TOP_CENTER,... , BOTTOM_LEFT, BOTTOM_CENTER, BOTTOM_RIGHT]
 
 Returns:
     tuple ('curve_instances', 'line', 'pivot_point')

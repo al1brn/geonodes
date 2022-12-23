@@ -67,9 +67,9 @@ def Input(cls, value=None, name="Collection", description="")
 
  Create a Collection input socket in the Group Input Node
 
-Args:
-    name: The socket name
-    description: User tip
+#### Args:
+- name: The socket name
+- description: User tip
     
 Returns:
     Collection: The Collection data socket
@@ -484,9 +484,9 @@ def switch(self, switch=None, true=None)
 Node reference [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html)
 Developer reference [GeometryNodeSwitch](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
 
-Args:
-    switch: Boolean
-    true: Collection
+#### Args:
+- switch: Boolean
+- true: Collection
 
 Returns:
     socket `output`

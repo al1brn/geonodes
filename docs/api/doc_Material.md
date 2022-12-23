@@ -67,9 +67,9 @@ def Input(cls, value=None, name="Material", description="")
 
  Create a Material input socket in the Group Input Node
 
-Args:
-    name: The socket name
-    description: User tip
+#### Args:
+- name: The socket name
+- description: User tip
     
 Returns:
     Material: The Material data socket
@@ -501,9 +501,9 @@ def switch(self, switch=None, true=None)
 Node reference [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html)
 Developer reference [GeometryNodeSwitch](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
 
-Args:
-    switch: Boolean
-    true: Material
+#### Args:
+- switch: Boolean
+- true: Material
 
 Returns:
     socket `output`

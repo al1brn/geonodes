@@ -67,12 +67,12 @@ def Input(cls, value = 0, name = "Integer", min_value = None, max_value = None, 
 
  Create an Integer input socket in the Group Input Node
 
-Args:
-    value: The default value
-    name: The socket name
-    min_value: Minimum value
-    max_value: Maximum value
-    description: User tip
+#### Args:
+- value: The default value
+- name: The socket name
+- min_value: Minimum value
+- max_value: Maximum value
+- description: User tip
     
 Returns:
     Integer: The Integer data socket
@@ -92,8 +92,8 @@ def Integer(cls, integer=0)
 Node reference [Integer](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/integer.html)
 Developer reference [FunctionNodeInputInt](https://docs.blender.org/api/current/bpy.types.FunctionNodeInputInt.html)
 
-Args:
-    integer (int): 0
+#### Args:
+- integer (int): 0
 
 Returns:
     socket `integer`
@@ -109,12 +109,12 @@ def Unsigned(cls, value = 0, name = "Unsigned", min_value = 0, max_value = None,
 
  Create an Unisgned Integer input socket in the Group Input Node
 
-Args:
-    value: The default value
-    name: The socket name
-    min_value: Minimum value
-    max_value: Maximum value
-    description: User tip
+#### Args:
+- value: The default value
+- name: The socket name
+- min_value: Minimum value
+- max_value: Maximum value
+- description: User tip
     
 Returns:
     Integer: The Integer data socket
@@ -370,8 +370,8 @@ def abs(self, clamp=False)
 Node reference [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html)
 Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
-Args:
-    clamp (bool): False
+#### Args:
+- clamp (bool): False
 
 Returns:
     socket `value`
@@ -389,8 +389,8 @@ def absolute(self, clamp=False)
 Node reference [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html)
 Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
-Args:
-    clamp (bool): False
+#### Args:
+- clamp (bool): False
 
 Returns:
     socket `value`
@@ -405,10 +405,10 @@ def add(self, value=None, node_label = None, node_color = None)
 
  Add two values.
 
-    Args:
-        value: Float
-        node_label (str): Node label
-        node_color (color): Node background color
+#### Args:
+- value: Float
+- node_label (str): Node label
+- node_color (color): Node background color
         
     Returns:
         Float
@@ -429,9 +429,9 @@ def arccos(self, value=None, clamp=False)
 Node reference [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html)
 Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
-Args:
-    value: Float
-    clamp (bool): False
+#### Args:
+- value: Float
+- clamp (bool): False
 
 Returns:
     socket `value`
@@ -449,9 +449,9 @@ def arccosine(self, value=None, clamp=False)
 Node reference [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html)
 Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
-Args:
-    value: Float
-    clamp (bool): False
+#### Args:
+- value: Float
+- clamp (bool): False
 
 Returns:
     socket `value`
@@ -469,9 +469,9 @@ def arcsin(self, value=None, clamp=False)
 Node reference [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html)
 Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
-Args:
-    value: Float
-    clamp (bool): False
+#### Args:
+- value: Float
+- clamp (bool): False
 
 Returns:
     socket `value`
@@ -489,9 +489,9 @@ def arcsine(self, value=None, clamp=False)
 Node reference [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html)
 Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
-Args:
-    value: Float
-    clamp (bool): False
+#### Args:
+- value: Float
+- clamp (bool): False
 
 Returns:
     socket `value`
@@ -509,9 +509,9 @@ def arctan(self, value=None, clamp=False)
 Node reference [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html)
 Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
-Args:
-    value: Float
-    clamp (bool): False
+#### Args:
+- value: Float
+- clamp (bool): False
 
 Returns:
     socket `value`
@@ -529,9 +529,9 @@ def arctan2(self, value1=None, clamp=False)
 Node reference [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html)
 Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
-Args:
-    value1: Float
-    clamp (bool): False
+#### Args:
+- value1: Float
+- clamp (bool): False
 
 Returns:
     socket `value`
@@ -549,9 +549,9 @@ def arctangent(self, value=None, clamp=False)
 Node reference [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html)
 Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
-Args:
-    value: Float
-    clamp (bool): False
+#### Args:
+- value: Float
+- clamp (bool): False
 
 Returns:
     socket `value`
@@ -569,9 +569,9 @@ def compare(self, b=None, operation='GREATER_THAN')
 Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
 Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 
-Args:
-    b: ['Float', 'Integer', 'Vector', 'Color', 'String']
-    operation (str): 'GREATER_THAN' in [LESS_THAN, LESS_EQUAL, GREATER_THAN, GREATER_EQUAL, EQUAL, NOT_EQUAL]
+#### Args:
+- b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+- operation (str): 'GREATER_THAN' in [LESS_THAN, LESS_EQUAL, GREATER_THAN, GREATER_EQUAL, EQUAL, NOT_EQUAL]
 
 Returns:
     socket `result`
@@ -600,9 +600,9 @@ def cos(self, value=None, clamp=False)
 Node reference [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html)
 Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
-Args:
-    value: Float
-    clamp (bool): False
+#### Args:
+- value: Float
+- clamp (bool): False
 
 Returns:
     socket `value`
@@ -620,9 +620,9 @@ def cosh(self, value=None, clamp=False)
 Node reference [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html)
 Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
-Args:
-    value: Float
-    clamp (bool): False
+#### Args:
+- value: Float
+- clamp (bool): False
 
 Returns:
     socket `value`
@@ -640,9 +640,9 @@ def cosine(self, value=None, clamp=False)
 Node reference [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html)
 Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
-Args:
-    value: Float
-    clamp (bool): False
+#### Args:
+- value: Float
+- clamp (bool): False
 
 Returns:
     socket `value`
@@ -657,10 +657,10 @@ def divide(self, value=None, node_label = None, node_color = None)
 
  Divide two values.
 
-    Args:
-        value: Float
-        node_label (str): Node label
-        node_color (color): Node background color
+#### Args:
+- value: Float
+- node_label (str): Node label
+- node_color (color): Node background color
         
     Returns:
         Float
@@ -681,8 +681,8 @@ def equal(self, b=None)
 Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
 Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 
-Args:
-    b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+#### Args:
+- b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 
 Returns:
     socket `result`
@@ -700,8 +700,8 @@ def exp(self, clamp=False)
 Node reference [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html)
 Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
-Args:
-    clamp (bool): False
+#### Args:
+- clamp (bool): False
 
 Returns:
     socket `value`
@@ -719,8 +719,8 @@ def exponent(self, clamp=False)
 Node reference [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html)
 Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
-Args:
-    clamp (bool): False
+#### Args:
+- clamp (bool): False
 
 Returns:
     socket `value`
@@ -738,8 +738,8 @@ def fact(self, clamp=False)
 Node reference [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html)
 Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
-Args:
-    clamp (bool): False
+#### Args:
+- clamp (bool): False
 
 Returns:
     socket `value`
@@ -757,8 +757,8 @@ def fraction(self, clamp=False)
 Node reference [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html)
 Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
-Args:
-    clamp (bool): False
+#### Args:
+- clamp (bool): False
 
 Returns:
     socket `value`
@@ -790,8 +790,8 @@ def greater_equal(self, b=None)
 Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
 Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 
-Args:
-    b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+#### Args:
+- b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 
 Returns:
     socket `result`
@@ -809,8 +809,8 @@ def greater_than(self, b=None)
 Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
 Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 
-Args:
-    b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+#### Args:
+- b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 
 Returns:
     socket `result`
@@ -852,8 +852,8 @@ def inverse_sqrt(self, clamp=False)
 Node reference [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html)
 Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
-Args:
-    clamp (bool): False
+#### Args:
+- clamp (bool): False
 
 Returns:
     socket `value`
@@ -871,8 +871,8 @@ def less_equal(self, b=None)
 Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
 Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 
-Args:
-    b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+#### Args:
+- b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 
 Returns:
     socket `result`
@@ -890,8 +890,8 @@ def less_than(self, b=None)
 Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
 Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 
-Args:
-    b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+#### Args:
+- b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 
 Returns:
     socket `result`
@@ -909,9 +909,9 @@ def log(self, base=None, clamp=False)
 Node reference [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html)
 Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
-Args:
-    base: Float
-    clamp (bool): False
+#### Args:
+- base: Float
+- clamp (bool): False
 
 Returns:
     socket `value`
@@ -929,9 +929,9 @@ def logarithm(self, base=None, clamp=False)
 Node reference [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html)
 Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
-Args:
-    base: Float
-    clamp (bool): False
+#### Args:
+- base: Float
+- clamp (bool): False
 
 Returns:
     socket `value`
@@ -949,8 +949,8 @@ def math_ceil(self, clamp=False)
 Node reference [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html)
 Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
-Args:
-    clamp (bool): False
+#### Args:
+- clamp (bool): False
 
 Returns:
     socket `value`
@@ -968,10 +968,10 @@ def math_compare(self, value=None, epsilon=None, clamp=False)
 Node reference [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html)
 Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
-Args:
-    value: Float
-    epsilon: Float
-    clamp (bool): False
+#### Args:
+- value: Float
+- epsilon: Float
+- clamp (bool): False
 
 Returns:
     socket `value`
@@ -989,8 +989,8 @@ def math_floor(self, clamp=False)
 Node reference [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html)
 Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
-Args:
-    clamp (bool): False
+#### Args:
+- clamp (bool): False
 
 Returns:
     socket `value`
@@ -1008,9 +1008,9 @@ def math_greater_than(self, threshold=None, clamp=False)
 Node reference [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html)
 Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
-Args:
-    threshold: Float
-    clamp (bool): False
+#### Args:
+- threshold: Float
+- clamp (bool): False
 
 Returns:
     socket `value`
@@ -1028,9 +1028,9 @@ def math_less_than(self, threshold=None, clamp=False)
 Node reference [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html)
 Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
-Args:
-    threshold: Float
-    clamp (bool): False
+#### Args:
+- threshold: Float
+- clamp (bool): False
 
 Returns:
     socket `value`
@@ -1048,8 +1048,8 @@ def math_round(self, clamp=False)
 Node reference [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html)
 Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
-Args:
-    clamp (bool): False
+#### Args:
+- clamp (bool): False
 
 Returns:
     socket `value`
@@ -1067,8 +1067,8 @@ def math_trunc(self, clamp=False)
 Node reference [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html)
 Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
-Args:
-    clamp (bool): False
+#### Args:
+- clamp (bool): False
 
 Returns:
     socket `value`
@@ -1086,8 +1086,8 @@ def math_truncate(self, clamp=False)
 Node reference [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html)
 Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
-Args:
-    clamp (bool): False
+#### Args:
+- clamp (bool): False
 
 Returns:
     socket `value`
@@ -1105,9 +1105,9 @@ def max(self, value=None, clamp=False)
 Node reference [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html)
 Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
-Args:
-    value: Float
-    clamp (bool): False
+#### Args:
+- value: Float
+- clamp (bool): False
 
 Returns:
     socket `value`
@@ -1125,9 +1125,9 @@ def maximum(self, value=None, clamp=False)
 Node reference [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html)
 Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
-Args:
-    value: Float
-    clamp (bool): False
+#### Args:
+- value: Float
+- clamp (bool): False
 
 Returns:
     socket `value`
@@ -1145,9 +1145,9 @@ def min(self, value=None, clamp=False)
 Node reference [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html)
 Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
-Args:
-    value: Float
-    clamp (bool): False
+#### Args:
+- value: Float
+- clamp (bool): False
 
 Returns:
     socket `value`
@@ -1165,9 +1165,9 @@ def minimum(self, value=None, clamp=False)
 Node reference [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html)
 Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
-Args:
-    value: Float
-    clamp (bool): False
+#### Args:
+- value: Float
+- clamp (bool): False
 
 Returns:
     socket `value`
@@ -1185,9 +1185,9 @@ def modulo(self, value=None, clamp=False)
 Node reference [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html)
 Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
-Args:
-    value: Float
-    clamp (bool): False
+#### Args:
+- value: Float
+- clamp (bool): False
 
 Returns:
     socket `value`
@@ -1205,10 +1205,10 @@ def mul_add(self, multiplier=None, addend=None, clamp=False)
 Node reference [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html)
 Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
-Args:
-    multiplier: Float
-    addend: Float
-    clamp (bool): False
+#### Args:
+- multiplier: Float
+- addend: Float
+- clamp (bool): False
 
 Returns:
     socket `value`
@@ -1223,10 +1223,10 @@ def multiply(self, value=None, node_label = None, node_color = None)
 
  Multiply two values.
 
-    Args:
-        value: Float
-        node_label (str): Node label
-        node_color (color): Node background color
+#### Args:
+- value: Float
+- node_label (str): Node label
+- node_color (color): Node background color
         
     Returns:
         Float
@@ -1247,10 +1247,10 @@ def multiply_add(self, multiplier=None, addend=None, clamp=False)
 Node reference [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html)
 Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
-Args:
-    multiplier: Float
-    addend: Float
-    clamp (bool): False
+#### Args:
+- multiplier: Float
+- addend: Float
+- clamp (bool): False
 
 Returns:
     socket `value`
@@ -1268,8 +1268,8 @@ def not_equal(self, b=None)
 Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
 Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 
-Args:
-    b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+#### Args:
+- b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 
 Returns:
     socket `result`
@@ -1287,9 +1287,9 @@ def ping_pong(self, scale=None, clamp=False)
 Node reference [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html)
 Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
-Args:
-    scale: Float
-    clamp (bool): False
+#### Args:
+- scale: Float
+- clamp (bool): False
 
 Returns:
     socket `value`
@@ -1323,9 +1323,9 @@ def pow(self, exponent=None, clamp=False)
 Node reference [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html)
 Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
-Args:
-    exponent: Float
-    clamp (bool): False
+#### Args:
+- exponent: Float
+- clamp (bool): False
 
 Returns:
     socket `value`
@@ -1343,9 +1343,9 @@ def power(self, exponent=None, clamp=False)
 Node reference [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html)
 Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
-Args:
-    exponent: Float
-    clamp (bool): False
+#### Args:
+- exponent: Float
+- clamp (bool): False
 
 Returns:
     socket `value`
@@ -1405,8 +1405,8 @@ def sign(self, clamp=False)
 Node reference [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html)
 Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
-Args:
-    clamp (bool): False
+#### Args:
+- clamp (bool): False
 
 Returns:
     socket `value`
@@ -1424,9 +1424,9 @@ def sin(self, value=None, clamp=False)
 Node reference [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html)
 Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
-Args:
-    value: Float
-    clamp (bool): False
+#### Args:
+- value: Float
+- clamp (bool): False
 
 Returns:
     socket `value`
@@ -1444,9 +1444,9 @@ def sine(self, value=None, clamp=False)
 Node reference [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html)
 Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
-Args:
-    value: Float
-    clamp (bool): False
+#### Args:
+- value: Float
+- clamp (bool): False
 
 Returns:
     socket `value`
@@ -1464,9 +1464,9 @@ def sinh(self, value=None, clamp=False)
 Node reference [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html)
 Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
-Args:
-    value: Float
-    clamp (bool): False
+#### Args:
+- value: Float
+- clamp (bool): False
 
 Returns:
     socket `value`
@@ -1484,10 +1484,10 @@ def smooth_maximum(self, value=None, distance=None, clamp=False)
 Node reference [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html)
 Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
-Args:
-    value: Float
-    distance: Float
-    clamp (bool): False
+#### Args:
+- value: Float
+- distance: Float
+- clamp (bool): False
 
 Returns:
     socket `value`
@@ -1505,10 +1505,10 @@ def smooth_minimum(self, value=None, distance=None, clamp=False)
 Node reference [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html)
 Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
-Args:
-    value: Float
-    distance: Float
-    clamp (bool): False
+#### Args:
+- value: Float
+- distance: Float
+- clamp (bool): False
 
 Returns:
     socket `value`
@@ -1526,9 +1526,9 @@ def snap(self, increment=None, clamp=False)
 Node reference [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html)
 Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
-Args:
-    increment: Float
-    clamp (bool): False
+#### Args:
+- increment: Float
+- clamp (bool): False
 
 Returns:
     socket `value`
@@ -1546,8 +1546,8 @@ def sqrt(self, clamp=False)
 Node reference [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html)
 Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
-Args:
-    clamp (bool): False
+#### Args:
+- clamp (bool): False
 
 Returns:
     socket `value`
@@ -1613,10 +1613,10 @@ def subtract(self, value=None, node_label = None, node_color = None)
 
  Subtract two values.
 
-    Args:
-        value: Float
-        node_label (str): Node label
-        node_color (color): Node background color
+#### Args:
+- value: Float
+- node_label (str): Node label
+- node_color (color): Node background color
         
     Returns:
         Float
@@ -1637,9 +1637,9 @@ def switch(self, switch=None, true=None)
 Node reference [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html)
 Developer reference [GeometryNodeSwitch](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
 
-Args:
-    switch: Boolean
-    true: Integer
+#### Args:
+- switch: Boolean
+- true: Integer
 
 Returns:
     socket `output`
@@ -1657,9 +1657,9 @@ def tan(self, value=None, clamp=False)
 Node reference [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html)
 Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
-Args:
-    value: Float
-    clamp (bool): False
+#### Args:
+- value: Float
+- clamp (bool): False
 
 Returns:
     socket `value`
@@ -1677,9 +1677,9 @@ def tangent(self, value=None, clamp=False)
 Node reference [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html)
 Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
-Args:
-    value: Float
-    clamp (bool): False
+#### Args:
+- value: Float
+- clamp (bool): False
 
 Returns:
     socket `value`
@@ -1697,9 +1697,9 @@ def tanh(self, value=None, clamp=False)
 Node reference [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html)
 Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
-Args:
-    value: Float
-    clamp (bool): False
+#### Args:
+- value: Float
+- clamp (bool): False
 
 Returns:
     socket `value`
@@ -1717,8 +1717,8 @@ def to_degrees(self, clamp=False)
 Node reference [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html)
 Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
-Args:
-    clamp (bool): False
+#### Args:
+- clamp (bool): False
 
 Returns:
     socket `value`
@@ -1754,8 +1754,8 @@ def to_radians(self, clamp=False)
 Node reference [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html)
 Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
-Args:
-    clamp (bool): False
+#### Args:
+- clamp (bool): False
 
 Returns:
     socket `value`
@@ -1804,10 +1804,10 @@ def wrap(self, max=None, min=None, clamp=False)
 Node reference [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html)
 Developer reference [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
-Args:
-    max: Float
-    min: Float
-    clamp (bool): False
+#### Args:
+- max: Float
+- min: Float
+- clamp (bool): False
 
 Returns:
     socket `value`

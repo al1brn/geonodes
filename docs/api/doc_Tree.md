@@ -118,12 +118,12 @@ Tree(self, tree_name, clear=False, group=False, fake_user=False, prefix=None)
 ```
 
 
-Args:
-    - tree_name (str): name of the tree
-    - clear (bool): delete existing nodes if True
-    - group (bool): the tree is a custom [Group](Group.md) (no default input and output geometries)
-    - fake_user (bool): the fake user flag
-    - prefix (str or [Trees](Trees.md)): Prefix to add at the begining of the tree name        
+#### Args:
+- tree_name (str): name of the tree
+- clear (bool): delete existing nodes if True
+- group (bool): the tree is a custom [Group](Group.md) (no default input and output geometries)
+- fake_user (bool): the fake user flag
+- prefix (str or [Trees](Trees.md)): Prefix to add at the begining of the tree name
 
 
 
@@ -315,9 +315,9 @@ def get_bnode(self, bl_idname, label=None)
 
  Get an existing, or create a new, Blender node in the tree.
 
-Args:
-    - bl_idname (str): the node bl_idname
-    - label (str): Node label
+#### Args:
+- bl_idname (str): the node bl_idname
+- label (str): Node label
     
 Returns:
     the blender node (bpy.types.GeometryNode)
@@ -337,8 +337,8 @@ def get_bnode_wrapper(self, bnode)
 
  Get the Node instance wrapping the Blender node passed in argument.
 
-Args:
-    bnode (bpy.types.NodeSocket): a blender node
+#### Args:
+- bnode (bpy.types.NodeSocket): a blender node
     
 Returns:
     The wrapping node (Node)
@@ -354,8 +354,8 @@ def get_bsocket_wrapper(self, bsocket)
 
  Get the DataSocket instance wrapping the Blender socket passed in argument.
 
-Args:
-    - bsocket (bpy.types.NodeSocket): a blender socket
+#### Args:
+- bsocket (bpy.types.NodeSocket): a blender socket
     
 Returns:
     The node wrapping the socket (Node)
@@ -371,10 +371,10 @@ def layout(self, label="Layout", color=None, capture_inputs=None)
 
  Create a new layout where the newly created nodes will be placed.
 
-Args:
-    - label (str): the layout label
-    - color (str or color): the layout background color
-    - capture_inputs (bool): if True, create a new instance fo group inputs in the frame
+#### Args:
+- label (str): the layout label
+- color (str or color): the layout background color
+- capture_inputs (bool): if True, create a new instance fo group inputs in the frame
 
 To be used in a `with` block:
     
@@ -414,13 +414,13 @@ def new_input(self, class_name, value=None, name=None, min_value=None, max_value
 
  Create a new input socket.
 
-Args:
-    - class_name (str): class name of the value to get
-    - value (any): initial value
-    - name (str): name of the socket to create
-    - min_value (any): minimum value
-    - max_value (any): maximum value
-    - description (str): user tip
+#### Args:
+- class_name (str): class name of the value to get
+- value (any): initial value
+- name (str): name of the socket to create
+- min_value (any): minimum value
+- max_value (any): maximum value
+- description (str): user tip
 
 Returns:
     DataSocket
@@ -446,8 +446,8 @@ def prev_node(self, index)
 
  Utility which prints the configuration of a node in the console.
 
-Args:
-    - index (int) : the unique id of the node to print
+#### Args:
+- index (int) : the unique id of the node to print
     
 Returns:
     None
@@ -467,8 +467,8 @@ def register_node(self, node)
 
  Register the node passed in parameter in the current tree.
 
-Args:
-    - node (Node): The node to register
+#### Args:
+- node (Node): The node to register
     
 Return
     node
@@ -487,10 +487,10 @@ def to_output(self, socket)
 
  Create a new output socket linked to the data class.
 
-Args:
-    - socket (DataSocket): the socket to connect to an output of the tree
+#### Args:
+- socket (DataSocket): the socket to connect to an output of the tree
 Returns:
-    None
+- None
     
 ```
 tree.to_output(value)
@@ -512,10 +512,10 @@ def view(self, geometry=None, socket=None, domain='AUTO', label=None, node_color
 
  Connect a data socket to the viewer.
 
-Args:
-    - geometry (Geometry): the geometry to use in the viewer
-    - socket (DataSocket): the value to connect
-    - domain (str): the domain
+#### Args:
+- geometry (Geometry): the geometry to use in the viewer
+- socket (DataSocket): the value to connect
+- domain (str): the domain
 
 You can also call **DataSocket.view()**
 

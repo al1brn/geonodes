@@ -67,9 +67,9 @@ def Input(cls, value=None, name="Texture", description="")
 
  Create a Texture input socket in the Group Input Node
 
-Args:
-    name: The socket name
-    description: User tip
+#### Args:
+- name: The socket name
+- description: User tip
     
 Returns:
     Texture: The Texture data socket
@@ -89,21 +89,21 @@ def brick(vector=None, color1=None, color2=None, mortar=None, scale=None, mortar
 Node reference [Brick Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/brick.html)
 Developer reference [ShaderNodeTexBrick](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexBrick.html)
 
-Args:
-    vector: Vector
-    color1: Color
-    color2: Color
-    mortar: Color
-    scale: Float
-    mortar_size: Float
-    mortar_smooth: Float
-    bias: Float
-    brick_width: Float
-    row_height: Float
-    offset (float): 0.5
-    offset_frequency (int): 2
-    squash (float): 1.0
-    squash_frequency (int): 2
+#### Args:
+- vector: Vector
+- color1: Color
+- color2: Color
+- mortar: Color
+- scale: Float
+- mortar_size: Float
+- mortar_smooth: Float
+- bias: Float
+- brick_width: Float
+- row_height: Float
+- offset (float): 0.5
+- offset_frequency (int): 2
+- squash (float): 1.0
+- squash_frequency (int): 2
 
 Returns:
     tuple ('color', 'fac')
@@ -122,11 +122,11 @@ def checker(vector=None, color1=None, color2=None, scale=None)
 Node reference [Checker Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/checker.html)
 Developer reference [ShaderNodeTexChecker](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexChecker.html)
 
-Args:
-    vector: Vector
-    color1: Color
-    color2: Color
-    scale: Float
+#### Args:
+- vector: Vector
+- color1: Color
+- color2: Color
+- scale: Float
 
 Returns:
     tuple ('color', 'fac')
@@ -297,9 +297,9 @@ def gradient(vector=None, gradient_type='LINEAR')
 Node reference [Gradient Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/gradient.html)
 Developer reference [ShaderNodeTexGradient](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexGradient.html)
 
-Args:
-    vector: Vector
-    gradient_type (str): 'LINEAR' in [LINEAR, QUADRATIC, EASING, DIAGONAL, SPHERICAL, QUADRATIC_SPHERE, RADIAL]
+#### Args:
+- vector: Vector
+- gradient_type (str): 'LINEAR' in [LINEAR, QUADRATIC, EASING, DIAGONAL, SPHERICAL, QUADRATIC_SPHERE, RADIAL]
 
 Returns:
     tuple ('color', 'fac')
@@ -318,8 +318,8 @@ def gradient_diagonal(vector=None)
 Node reference [Gradient Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/gradient.html)
 Developer reference [ShaderNodeTexGradient](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexGradient.html)
 
-Args:
-    vector: Vector
+#### Args:
+- vector: Vector
 
 Returns:
     tuple ('color', 'fac')
@@ -338,8 +338,8 @@ def gradient_easing(vector=None)
 Node reference [Gradient Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/gradient.html)
 Developer reference [ShaderNodeTexGradient](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexGradient.html)
 
-Args:
-    vector: Vector
+#### Args:
+- vector: Vector
 
 Returns:
     tuple ('color', 'fac')
@@ -358,8 +358,8 @@ def gradient_linear(vector=None)
 Node reference [Gradient Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/gradient.html)
 Developer reference [ShaderNodeTexGradient](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexGradient.html)
 
-Args:
-    vector: Vector
+#### Args:
+- vector: Vector
 
 Returns:
     tuple ('color', 'fac')
@@ -378,8 +378,8 @@ def gradient_quadratic(vector=None)
 Node reference [Gradient Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/gradient.html)
 Developer reference [ShaderNodeTexGradient](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexGradient.html)
 
-Args:
-    vector: Vector
+#### Args:
+- vector: Vector
 
 Returns:
     tuple ('color', 'fac')
@@ -398,8 +398,8 @@ def gradient_quadratic_sphere(vector=None)
 Node reference [Gradient Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/gradient.html)
 Developer reference [ShaderNodeTexGradient](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexGradient.html)
 
-Args:
-    vector: Vector
+#### Args:
+- vector: Vector
 
 Returns:
     tuple ('color', 'fac')
@@ -418,8 +418,8 @@ def gradient_radial(vector=None)
 Node reference [Gradient Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/gradient.html)
 Developer reference [ShaderNodeTexGradient](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexGradient.html)
 
-Args:
-    vector: Vector
+#### Args:
+- vector: Vector
 
 Returns:
     tuple ('color', 'fac')
@@ -438,8 +438,8 @@ def gradient_spherical(vector=None)
 Node reference [Gradient Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/gradient.html)
 Developer reference [ShaderNodeTexGradient](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexGradient.html)
 
-Args:
-    vector: Vector
+#### Args:
+- vector: Vector
 
 Returns:
     tuple ('color', 'fac')
@@ -458,12 +458,12 @@ def image(image=None, vector=None, frame=None, extension='REPEAT', interpolation
 Node reference [Image Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/image.html)
 Developer reference [GeometryNodeImageTexture](https://docs.blender.org/api/current/bpy.types.GeometryNodeImageTexture.html)
 
-Args:
-    image: Image
-    vector: Vector
-    frame: Integer
-    extension (str): 'REPEAT' in [REPEAT, EXTEND, CLIP]
-    interpolation (str): 'Linear' in [Linear, Closest, Cubic]
+#### Args:
+- image: Image
+- vector: Vector
+- frame: Integer
+- extension (str): 'REPEAT' in [REPEAT, EXTEND, CLIP]
+- interpolation (str): 'Linear' in [Linear, Closest, Cubic]
 
 Returns:
     tuple ('color', 'alpha')
@@ -515,11 +515,11 @@ def magic(vector=None, scale=None, distortion=None, turbulence_depth=2)
 Node reference [Magic Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/magic.html)
 Developer reference [ShaderNodeTexMagic](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexMagic.html)
 
-Args:
-    vector: Vector
-    scale: Float
-    distortion: Float
-    turbulence_depth (int): 2
+#### Args:
+- vector: Vector
+- scale: Float
+- distortion: Float
+- turbulence_depth (int): 2
 
 Returns:
     tuple ('color', 'fac')
@@ -538,17 +538,17 @@ def musgrave(vector=None, w=None, scale=None, detail=None, dimension=None, lacun
 Node reference [Musgrave Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/musgrave.html)
 Developer reference [ShaderNodeTexMusgrave](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexMusgrave.html)
 
-Args:
-    vector: Vector
-    w: Float
-    scale: Float
-    detail: Float
-    dimension: Float
-    lacunarity: Float
-    offset: Float
-    gain: Float
-    musgrave_dimensions (str): '3D' in [1D, 2D, 3D, 4D]
-    musgrave_type (str): 'FBM' in [MULTIFRACTAL, RIDGED_MULTIFRACTAL, HYBRID_MULTIFRACTAL, FBM, HETERO_TERRAIN]
+#### Args:
+- vector: Vector
+- w: Float
+- scale: Float
+- detail: Float
+- dimension: Float
+- lacunarity: Float
+- offset: Float
+- gain: Float
+- musgrave_dimensions (str): '3D' in [1D, 2D, 3D, 4D]
+- musgrave_type (str): 'FBM' in [MULTIFRACTAL, RIDGED_MULTIFRACTAL, HYBRID_MULTIFRACTAL, FBM, HETERO_TERRAIN]
 
 Returns:
     socket `fac`
@@ -567,14 +567,14 @@ def noise(vector=None, w=None, scale=None, detail=None, roughness=None, distorti
 Node reference [Noise Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/noise.html)
 Developer reference [ShaderNodeTexNoise](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexNoise.html)
 
-Args:
-    vector: Vector
-    w: Float
-    scale: Float
-    detail: Float
-    roughness: Float
-    distortion: Float
-    noise_dimensions (str): '3D' in [1D, 2D, 3D, 4D]
+#### Args:
+- vector: Vector
+- w: Float
+- scale: Float
+- detail: Float
+- roughness: Float
+- distortion: Float
+- noise_dimensions (str): '3D' in [1D, 2D, 3D, 4D]
 
 Returns:
     tuple ('color', 'fac')
@@ -593,12 +593,12 @@ def noise_1D(w=None, scale=None, detail=None, roughness=None, distortion=None)
 Node reference [Noise Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/noise.html)
 Developer reference [ShaderNodeTexNoise](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexNoise.html)
 
-Args:
-    w: Float
-    scale: Float
-    detail: Float
-    roughness: Float
-    distortion: Float
+#### Args:
+- w: Float
+- scale: Float
+- detail: Float
+- roughness: Float
+- distortion: Float
 
 Returns:
     tuple ('color', 'fac')
@@ -617,12 +617,12 @@ def noise_2D(vector=None, scale=None, detail=None, roughness=None, distortion=No
 Node reference [Noise Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/noise.html)
 Developer reference [ShaderNodeTexNoise](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexNoise.html)
 
-Args:
-    vector: Vector
-    scale: Float
-    detail: Float
-    roughness: Float
-    distortion: Float
+#### Args:
+- vector: Vector
+- scale: Float
+- detail: Float
+- roughness: Float
+- distortion: Float
 
 Returns:
     tuple ('color', 'fac')
@@ -641,12 +641,12 @@ def noise_3D(vector=None, scale=None, detail=None, roughness=None, distortion=No
 Node reference [Noise Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/noise.html)
 Developer reference [ShaderNodeTexNoise](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexNoise.html)
 
-Args:
-    vector: Vector
-    scale: Float
-    detail: Float
-    roughness: Float
-    distortion: Float
+#### Args:
+- vector: Vector
+- scale: Float
+- detail: Float
+- roughness: Float
+- distortion: Float
 
 Returns:
     tuple ('color', 'fac')
@@ -665,13 +665,13 @@ def noise_4D(vector=None, w=None, scale=None, detail=None, roughness=None, disto
 Node reference [Noise Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/noise.html)
 Developer reference [ShaderNodeTexNoise](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexNoise.html)
 
-Args:
-    vector: Vector
-    w: Float
-    scale: Float
-    detail: Float
-    roughness: Float
-    distortion: Float
+#### Args:
+- vector: Vector
+- w: Float
+- scale: Float
+- detail: Float
+- roughness: Float
+- distortion: Float
 
 Returns:
     tuple ('color', 'fac')
@@ -741,16 +741,16 @@ def voronoi(vector=None, w=None, scale=None, smoothness=None, exponent=None, ran
 Node reference [Voronoi Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/voronoi.html)
 Developer reference [ShaderNodeTexVoronoi](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexVoronoi.html)
 
-Args:
-    vector: Vector
-    w: Float
-    scale: Float
-    smoothness: Float
-    exponent: Float
-    randomness: Float
-    distance (str): 'EUCLIDEAN' in [EUCLIDEAN, MANHATTAN, CHEBYCHEV, MINKOWSKI]
-    feature (str): 'F1' in [F1, F2, SMOOTH_F1, DISTANCE_TO_EDGE, N_SPHERE_RADIUS]
-    voronoi_dimensions (str): '3D' in [1D, 2D, 3D, 4D]
+#### Args:
+- vector: Vector
+- w: Float
+- scale: Float
+- smoothness: Float
+- exponent: Float
+- randomness: Float
+- distance (str): 'EUCLIDEAN' in [EUCLIDEAN, MANHATTAN, CHEBYCHEV, MINKOWSKI]
+- feature (str): 'F1' in [F1, F2, SMOOTH_F1, DISTANCE_TO_EDGE, N_SPHERE_RADIUS]
+- voronoi_dimensions (str): '3D' in [1D, 2D, 3D, 4D]
 
 Returns:
     tuple ('distance', 'color', 'position', 'w')
@@ -769,15 +769,15 @@ def voronoi_1D(w=None, scale=None, smoothness=None, exponent=None, randomness=No
 Node reference [Voronoi Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/voronoi.html)
 Developer reference [ShaderNodeTexVoronoi](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexVoronoi.html)
 
-Args:
-    w: Float
-    scale: Float
-    smoothness: Float
-    exponent: Float
-    randomness: Float
-    distance (str): 'EUCLIDEAN' in [EUCLIDEAN, MANHATTAN, CHEBYCHEV, MINKOWSKI]
-    feature (str): 'F1' in [F1, F2, SMOOTH_F1, DISTANCE_TO_EDGE, N_SPHERE_RADIUS]
-    voronoi_dimensions (str): '3D' in [1D, 2D, 3D, 4D]
+#### Args:
+- w: Float
+- scale: Float
+- smoothness: Float
+- exponent: Float
+- randomness: Float
+- distance (str): 'EUCLIDEAN' in [EUCLIDEAN, MANHATTAN, CHEBYCHEV, MINKOWSKI]
+- feature (str): 'F1' in [F1, F2, SMOOTH_F1, DISTANCE_TO_EDGE, N_SPHERE_RADIUS]
+- voronoi_dimensions (str): '3D' in [1D, 2D, 3D, 4D]
 
 Returns:
     tuple ('distance', 'color', 'w')
@@ -796,15 +796,15 @@ def voronoi_2D(vector=None, scale=None, smoothness=None, exponent=None, randomne
 Node reference [Voronoi Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/voronoi.html)
 Developer reference [ShaderNodeTexVoronoi](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexVoronoi.html)
 
-Args:
-    vector: Vector
-    scale: Float
-    smoothness: Float
-    exponent: Float
-    randomness: Float
-    distance (str): 'EUCLIDEAN' in [EUCLIDEAN, MANHATTAN, CHEBYCHEV, MINKOWSKI]
-    feature (str): 'F1' in [F1, F2, SMOOTH_F1, DISTANCE_TO_EDGE, N_SPHERE_RADIUS]
-    voronoi_dimensions (str): '3D' in [1D, 2D, 3D, 4D]
+#### Args:
+- vector: Vector
+- scale: Float
+- smoothness: Float
+- exponent: Float
+- randomness: Float
+- distance (str): 'EUCLIDEAN' in [EUCLIDEAN, MANHATTAN, CHEBYCHEV, MINKOWSKI]
+- feature (str): 'F1' in [F1, F2, SMOOTH_F1, DISTANCE_TO_EDGE, N_SPHERE_RADIUS]
+- voronoi_dimensions (str): '3D' in [1D, 2D, 3D, 4D]
 
 Returns:
     tuple ('distance', 'color', 'position')
@@ -823,15 +823,15 @@ def voronoi_3D(vector=None, scale=None, smoothness=None, exponent=None, randomne
 Node reference [Voronoi Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/voronoi.html)
 Developer reference [ShaderNodeTexVoronoi](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexVoronoi.html)
 
-Args:
-    vector: Vector
-    scale: Float
-    smoothness: Float
-    exponent: Float
-    randomness: Float
-    distance (str): 'EUCLIDEAN' in [EUCLIDEAN, MANHATTAN, CHEBYCHEV, MINKOWSKI]
-    feature (str): 'F1' in [F1, F2, SMOOTH_F1, DISTANCE_TO_EDGE, N_SPHERE_RADIUS]
-    voronoi_dimensions (str): '3D' in [1D, 2D, 3D, 4D]
+#### Args:
+- vector: Vector
+- scale: Float
+- smoothness: Float
+- exponent: Float
+- randomness: Float
+- distance (str): 'EUCLIDEAN' in [EUCLIDEAN, MANHATTAN, CHEBYCHEV, MINKOWSKI]
+- feature (str): 'F1' in [F1, F2, SMOOTH_F1, DISTANCE_TO_EDGE, N_SPHERE_RADIUS]
+- voronoi_dimensions (str): '3D' in [1D, 2D, 3D, 4D]
 
 Returns:
     tuple ('distance', 'color', 'position')
@@ -850,16 +850,16 @@ def voronoi_4D(vector=None, w=None, scale=None, smoothness=None, exponent=None, 
 Node reference [Voronoi Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/voronoi.html)
 Developer reference [ShaderNodeTexVoronoi](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexVoronoi.html)
 
-Args:
-    vector: Vector
-    w: Float
-    scale: Float
-    smoothness: Float
-    exponent: Float
-    randomness: Float
-    distance (str): 'EUCLIDEAN' in [EUCLIDEAN, MANHATTAN, CHEBYCHEV, MINKOWSKI]
-    feature (str): 'F1' in [F1, F2, SMOOTH_F1, DISTANCE_TO_EDGE, N_SPHERE_RADIUS]
-    voronoi_dimensions (str): '3D' in [1D, 2D, 3D, 4D]
+#### Args:
+- vector: Vector
+- w: Float
+- scale: Float
+- smoothness: Float
+- exponent: Float
+- randomness: Float
+- distance (str): 'EUCLIDEAN' in [EUCLIDEAN, MANHATTAN, CHEBYCHEV, MINKOWSKI]
+- feature (str): 'F1' in [F1, F2, SMOOTH_F1, DISTANCE_TO_EDGE, N_SPHERE_RADIUS]
+- voronoi_dimensions (str): '3D' in [1D, 2D, 3D, 4D]
 
 Returns:
     tuple ('distance', 'color', 'position', 'w')
@@ -878,18 +878,18 @@ def wave(vector=None, scale=None, distortion=None, detail=None, detail_scale=Non
 Node reference [Wave Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/wave.html)
 Developer reference [ShaderNodeTexWave](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWave.html)
 
-Args:
-    vector: Vector
-    scale: Float
-    distortion: Float
-    detail: Float
-    detail_scale: Float
-    detail_roughness: Float
-    phase_offset: Float
-    bands_direction (str): 'X' in [X, Y, Z, DIAGONAL]
-    rings_direction (str): 'X' in [X, Y, Z, SPHERICAL]
-    wave_profile (str): 'SIN' in [SIN, SAW, TRI]
-    wave_type (str): 'BANDS' in [BANDS, RINGS]
+#### Args:
+- vector: Vector
+- scale: Float
+- distortion: Float
+- detail: Float
+- detail_scale: Float
+- detail_roughness: Float
+- phase_offset: Float
+- bands_direction (str): 'X' in [X, Y, Z, DIAGONAL]
+- rings_direction (str): 'X' in [X, Y, Z, SPHERICAL]
+- wave_profile (str): 'SIN' in [SIN, SAW, TRI]
+- wave_type (str): 'BANDS' in [BANDS, RINGS]
 
 Returns:
     tuple ('color', 'fac')
@@ -908,16 +908,16 @@ def wave_bands(vector=None, scale=None, distortion=None, detail=None, detail_sca
 Node reference [Wave Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/wave.html)
 Developer reference [ShaderNodeTexWave](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWave.html)
 
-Args:
-    vector: Vector
-    scale: Float
-    distortion: Float
-    detail: Float
-    detail_scale: Float
-    detail_roughness: Float
-    phase_offset: Float
-    direction (str): 'X' in [X, Y, Z, DIAGONAL]
-    wave_profile (str): 'SIN' in [SIN, SAW, TRI]
+#### Args:
+- vector: Vector
+- scale: Float
+- distortion: Float
+- detail: Float
+- detail_scale: Float
+- detail_roughness: Float
+- phase_offset: Float
+- direction (str): 'X' in [X, Y, Z, DIAGONAL]
+- wave_profile (str): 'SIN' in [SIN, SAW, TRI]
 
 Returns:
     tuple ('color', 'fac')
@@ -936,15 +936,15 @@ def wave_bands_saw(vector=None, scale=None, distortion=None, detail=None, detail
 Node reference [Wave Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/wave.html)
 Developer reference [ShaderNodeTexWave](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWave.html)
 
-Args:
-    vector: Vector
-    scale: Float
-    distortion: Float
-    detail: Float
-    detail_scale: Float
-    detail_roughness: Float
-    phase_offset: Float
-    direction (str): 'X' in [X, Y, Z, DIAGONAL]
+#### Args:
+- vector: Vector
+- scale: Float
+- distortion: Float
+- detail: Float
+- detail_scale: Float
+- detail_roughness: Float
+- phase_offset: Float
+- direction (str): 'X' in [X, Y, Z, DIAGONAL]
 
 Returns:
     tuple ('color', 'fac')
@@ -963,15 +963,15 @@ def wave_bands_sine(vector=None, scale=None, distortion=None, detail=None, detai
 Node reference [Wave Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/wave.html)
 Developer reference [ShaderNodeTexWave](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWave.html)
 
-Args:
-    vector: Vector
-    scale: Float
-    distortion: Float
-    detail: Float
-    detail_scale: Float
-    detail_roughness: Float
-    phase_offset: Float
-    direction (str): 'X' in [X, Y, Z, DIAGONAL]
+#### Args:
+- vector: Vector
+- scale: Float
+- distortion: Float
+- detail: Float
+- detail_scale: Float
+- detail_roughness: Float
+- phase_offset: Float
+- direction (str): 'X' in [X, Y, Z, DIAGONAL]
 
 Returns:
     tuple ('color', 'fac')
@@ -990,15 +990,15 @@ def wave_bands_triangle(vector=None, scale=None, distortion=None, detail=None, d
 Node reference [Wave Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/wave.html)
 Developer reference [ShaderNodeTexWave](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWave.html)
 
-Args:
-    vector: Vector
-    scale: Float
-    distortion: Float
-    detail: Float
-    detail_scale: Float
-    detail_roughness: Float
-    phase_offset: Float
-    direction (str): 'X' in [X, Y, Z, DIAGONAL]
+#### Args:
+- vector: Vector
+- scale: Float
+- distortion: Float
+- detail: Float
+- detail_scale: Float
+- detail_roughness: Float
+- phase_offset: Float
+- direction (str): 'X' in [X, Y, Z, DIAGONAL]
 
 Returns:
     tuple ('color', 'fac')
@@ -1017,16 +1017,16 @@ def wave_rings(vector=None, scale=None, distortion=None, detail=None, detail_sca
 Node reference [Wave Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/wave.html)
 Developer reference [ShaderNodeTexWave](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWave.html)
 
-Args:
-    vector: Vector
-    scale: Float
-    distortion: Float
-    detail: Float
-    detail_scale: Float
-    detail_roughness: Float
-    phase_offset: Float
-    direction (str): 'X' in [X, Y, Z, SPHERICAL]
-    wave_profile (str): 'SIN' in [SIN, SAW, TRI]
+#### Args:
+- vector: Vector
+- scale: Float
+- distortion: Float
+- detail: Float
+- detail_scale: Float
+- detail_roughness: Float
+- phase_offset: Float
+- direction (str): 'X' in [X, Y, Z, SPHERICAL]
+- wave_profile (str): 'SIN' in [SIN, SAW, TRI]
 
 Returns:
     tuple ('color', 'fac')
@@ -1045,15 +1045,15 @@ def wave_rings_saw(vector=None, scale=None, distortion=None, detail=None, detail
 Node reference [Wave Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/wave.html)
 Developer reference [ShaderNodeTexWave](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWave.html)
 
-Args:
-    vector: Vector
-    scale: Float
-    distortion: Float
-    detail: Float
-    detail_scale: Float
-    detail_roughness: Float
-    phase_offset: Float
-    direction (str): 'X' in [X, Y, Z, SPHERICAL]
+#### Args:
+- vector: Vector
+- scale: Float
+- distortion: Float
+- detail: Float
+- detail_scale: Float
+- detail_roughness: Float
+- phase_offset: Float
+- direction (str): 'X' in [X, Y, Z, SPHERICAL]
 
 Returns:
     tuple ('color', 'fac')
@@ -1072,15 +1072,15 @@ def wave_rings_sine(vector=None, scale=None, distortion=None, detail=None, detai
 Node reference [Wave Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/wave.html)
 Developer reference [ShaderNodeTexWave](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWave.html)
 
-Args:
-    vector: Vector
-    scale: Float
-    distortion: Float
-    detail: Float
-    detail_scale: Float
-    detail_roughness: Float
-    phase_offset: Float
-    direction (str): 'X' in [X, Y, Z, SPHERICAL]
+#### Args:
+- vector: Vector
+- scale: Float
+- distortion: Float
+- detail: Float
+- detail_scale: Float
+- detail_roughness: Float
+- phase_offset: Float
+- direction (str): 'X' in [X, Y, Z, SPHERICAL]
 
 Returns:
     tuple ('color', 'fac')
@@ -1099,15 +1099,15 @@ def wave_rings_triangle(vector=None, scale=None, distortion=None, detail=None, d
 Node reference [Wave Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/wave.html)
 Developer reference [ShaderNodeTexWave](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWave.html)
 
-Args:
-    vector: Vector
-    scale: Float
-    distortion: Float
-    detail: Float
-    detail_scale: Float
-    detail_roughness: Float
-    phase_offset: Float
-    direction (str): 'X' in [X, Y, Z, SPHERICAL]
+#### Args:
+- vector: Vector
+- scale: Float
+- distortion: Float
+- detail: Float
+- detail_scale: Float
+- detail_roughness: Float
+- phase_offset: Float
+- direction (str): 'X' in [X, Y, Z, SPHERICAL]
 
 Returns:
     tuple ('color', 'fac')
@@ -1126,10 +1126,10 @@ def white_noise(vector=None, w=None, noise_dimensions='3D')
 Node reference [White Noise Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/white_noise.html)
 Developer reference [ShaderNodeTexWhiteNoise](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWhiteNoise.html)
 
-Args:
-    vector: Vector
-    w: Float
-    noise_dimensions (str): '3D' in [1D, 2D, 3D, 4D]
+#### Args:
+- vector: Vector
+- w: Float
+- noise_dimensions (str): '3D' in [1D, 2D, 3D, 4D]
 
 Returns:
     tuple ('value', 'color')
@@ -1148,8 +1148,8 @@ def white_noise_1D(w=None)
 Node reference [White Noise Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/white_noise.html)
 Developer reference [ShaderNodeTexWhiteNoise](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWhiteNoise.html)
 
-Args:
-    w: Float
+#### Args:
+- w: Float
 
 Returns:
     tuple ('value', 'color')
@@ -1168,8 +1168,8 @@ def white_noise_2D(vector=None)
 Node reference [White Noise Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/white_noise.html)
 Developer reference [ShaderNodeTexWhiteNoise](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWhiteNoise.html)
 
-Args:
-    vector: Vector
+#### Args:
+- vector: Vector
 
 Returns:
     tuple ('value', 'color')
@@ -1188,8 +1188,8 @@ def white_noise_3D(vector=None)
 Node reference [White Noise Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/white_noise.html)
 Developer reference [ShaderNodeTexWhiteNoise](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWhiteNoise.html)
 
-Args:
-    vector: Vector
+#### Args:
+- vector: Vector
 
 Returns:
     tuple ('value', 'color')
@@ -1208,9 +1208,9 @@ def white_noise_4D(vector=None, w=None)
 Node reference [White Noise Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/white_noise.html)
 Developer reference [ShaderNodeTexWhiteNoise](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWhiteNoise.html)
 
-Args:
-    vector: Vector
-    w: Float
+#### Args:
+- vector: Vector
+- w: Float
 
 Returns:
     tuple ('value', 'color')
@@ -1388,9 +1388,9 @@ def switch(self, switch=None, true=None)
 Node reference [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html)
 Developer reference [GeometryNodeSwitch](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
 
-Args:
-    switch: Boolean
-    true: Texture
+#### Args:
+- switch: Boolean
+- true: Texture
 
 Returns:
     socket `output`

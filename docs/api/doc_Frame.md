@@ -4,11 +4,11 @@
 
  Node *Frame*
 
-Args:
-    label: The frame label
-    label_size: The font size for the label
-    color: A valid color spec
-    shrink: Shrink the Frame
+#### Args:
+- label: The frame label
+- label_size: The font size for the label
+- color: A valid color spec
+- shrink: Shrink the Frame
     
 Note that *Frame* is the internal name for *Layouts*
 

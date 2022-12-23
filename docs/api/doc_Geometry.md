@@ -274,11 +274,11 @@ def Collection(cls, collection=None, separate_children=None, reset_children=None
 Node reference [Collection Info](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/collection_info.html)
 Developer reference [GeometryNodeCollectionInfo](https://docs.blender.org/api/current/bpy.types.GeometryNodeCollectionInfo.html)
 
-Args:
-    collection: Collection
-    separate_children: Boolean
-    reset_children: Boolean
-    transform_space (str): 'ORIGINAL' in [ORIGINAL, RELATIVE]
+#### Args:
+- collection: Collection
+- separate_children: Boolean
+- reset_children: Boolean
+- transform_space (str): 'ORIGINAL' in [ORIGINAL, RELATIVE]
 
 Returns:
     socket `geometry`
@@ -307,9 +307,9 @@ def Input(cls, name = None, description = "")
 
  Create a Geometry input socket in the Group Input Node
 
-Args:
-    name: The socket name
-    description: User tip
+#### Args:
+- name: The socket name
+- description: User tip
     
 Returns:
     Geometry: The Geometry data socket
@@ -571,10 +571,10 @@ def attribute_statistic(self, selection=None, attribute=None, domain='POINT')
 Node reference [Attribute Statistic](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/attribute_statistic.html)
 Developer reference [GeometryNodeAttributeStatistic](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeStatistic.html)
 
-Args:
-    selection: Boolean
-    attribute: ['Float', 'Vector']
-    domain (str): 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+#### Args:
+- selection: Boolean
+- attribute: ['Float', 'Vector']
+- domain (str): 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
 
 Returns:
     node with sockets ['mean', 'median', 'sum', 'min', 'max', 'range', 'standard_deviation', 'variance']
@@ -592,9 +592,9 @@ def capture_attribute(self, value=None, domain='POINT')
 Node reference [Capture Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/capture_attribute.html)
 Developer reference [GeometryNodeCaptureAttribute](https://docs.blender.org/api/current/bpy.types.GeometryNodeCaptureAttribute.html)
 
-Args:
-    value: ['Vector', 'Float', 'Color', 'Boolean', 'Integer']
-    domain (str): 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+#### Args:
+- value: ['Vector', 'Float', 'Color', 'Boolean', 'Integer']
+- domain (str): 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
 
 Returns:
     socket `attribute`
@@ -612,11 +612,11 @@ def capture_attribute_node(self, geometry=None, value=None, data_type='FLOAT', d
 Node reference [Capture Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/capture_attribute.html)
 Developer reference [GeometryNodeCaptureAttribute](https://docs.blender.org/api/current/bpy.types.GeometryNodeCaptureAttribute.html)
 
-Args:
-    geometry: Geometry
-    value: ['Vector', 'Float', 'Color', 'Boolean', 'Integer']
-    data_type (str): 'FLOAT' in [FLOAT, INT, FLOAT_VECTOR, FLOAT_COLOR, BOOLEAN]
-    domain (str): 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+#### Args:
+- geometry: Geometry
+- value: ['Vector', 'Float', 'Color', 'Boolean', 'Integer']
+- data_type (str): 'FLOAT' in [FLOAT, INT, FLOAT_VECTOR, FLOAT_COLOR, BOOLEAN]
+- domain (str): 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
 
 Returns:
     node with sockets ['geometry', 'attribute']
@@ -645,10 +645,10 @@ def delete(self, selection=None, domain='POINT', mode='ALL')
 Node reference [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/delete_geometry.html)
 Developer reference [GeometryNodeDeleteGeometry](https://docs.blender.org/api/current/bpy.types.GeometryNodeDeleteGeometry.html)
 
-Args:
-    selection: Boolean
-    domain (str): 'POINT' in [POINT, EDGE, FACE, CURVE, INSTANCE]
-    mode (str): 'ALL' in [ALL, EDGE_FACE, ONLY_FACE]
+#### Args:
+- selection: Boolean
+- domain (str): 'POINT' in [POINT, EDGE, FACE, CURVE, INSTANCE]
+- mode (str): 'ALL' in [ALL, EDGE_FACE, ONLY_FACE]
 
 Returns:
     node with sockets ['geometry']
@@ -666,10 +666,10 @@ def duplicate(self, selection=None, amount=None, domain='POINT')
 Node reference [Duplicate Elements](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/duplicate_elements.html)
 Developer reference [GeometryNodeDuplicateElements](https://docs.blender.org/api/current/bpy.types.GeometryNodeDuplicateElements.html)
 
-Args:
-    selection: Boolean
-    amount: Integer
-    domain (str): 'POINT' in [POINT, EDGE, FACE, SPLINE, INSTANCE]
+#### Args:
+- selection: Boolean
+- amount: Integer
+- domain (str): 'POINT' in [POINT, EDGE, FACE, SPLINE, INSTANCE]
 
 Returns:
     socket `duplicate_index`
@@ -687,10 +687,10 @@ def field_at_index(self, index=None, value=None, domain='POINT')
 Node reference [Field at Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/field_at_index.html)
 Developer reference [GeometryNodeFieldAtIndex](https://docs.blender.org/api/current/bpy.types.GeometryNodeFieldAtIndex.html)
 
-Args:
-    index: Integer
-    value: ['Float', 'Integer', 'Vector', 'Color', 'Boolean']
-    domain (str): 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+#### Args:
+- index: Integer
+- value: ['Float', 'Integer', 'Vector', 'Color', 'Boolean']
+- domain (str): 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
 
 Returns:
     socket `value`
@@ -722,8 +722,8 @@ def get_named_boolean(self, name=None)
 Node reference [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/named_attribute.html)
 Developer reference [GeometryNodeInputNamedAttribute](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputNamedAttribute.html)
 
-Args:
-    name: String
+#### Args:
+- name: String
 
 Returns:
     socket `attribute`
@@ -741,8 +741,8 @@ def get_named_color(self, name=None)
 Node reference [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/named_attribute.html)
 Developer reference [GeometryNodeInputNamedAttribute](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputNamedAttribute.html)
 
-Args:
-    name: String
+#### Args:
+- name: String
 
 Returns:
     socket `attribute`
@@ -760,8 +760,8 @@ def get_named_float(self, name=None)
 Node reference [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/named_attribute.html)
 Developer reference [GeometryNodeInputNamedAttribute](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputNamedAttribute.html)
 
-Args:
-    name: String
+#### Args:
+- name: String
 
 Returns:
     socket `attribute`
@@ -779,8 +779,8 @@ def get_named_integer(self, name=None)
 Node reference [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/named_attribute.html)
 Developer reference [GeometryNodeInputNamedAttribute](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputNamedAttribute.html)
 
-Args:
-    name: String
+#### Args:
+- name: String
 
 Returns:
     socket `attribute`
@@ -798,8 +798,8 @@ def get_named_vector(self, name=None)
 Node reference [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/named_attribute.html)
 Developer reference [GeometryNodeInputNamedAttribute](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputNamedAttribute.html)
 
-Args:
-    name: String
+#### Args:
+- name: String
 
 Returns:
     socket `attribute`
@@ -838,9 +838,9 @@ def instantiate(self, count = 1, realize = False)
 
  Instantiate the geometry
 
-Args:
-    count: Number of instances to create
-    realize: True to realize the instances
+#### Args:
+- count: Number of instances to create
+- realize: True to realize the instances
     
 Returns:
     Instances or Geometry
@@ -873,9 +873,9 @@ def interpolate_domain(self, value=None, domain='POINT')
 Node reference [Interpolate Domain](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/interpolate_domain.html)
 Developer reference [GeometryNodeFieldOnDomain](https://docs.blender.org/api/current/bpy.types.GeometryNodeFieldOnDomain.html)
 
-Args:
-    value: ['Float', 'Integer', 'Vector', 'Color', 'Boolean']
-    domain (str): 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+#### Args:
+- value: ['Float', 'Integer', 'Vector', 'Color', 'Boolean']
+- domain (str): 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
 
 Returns:
     socket `value`
@@ -893,8 +893,8 @@ def join(*geometry)
 Node reference [Join Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/join_geometry.html)
 Developer reference [GeometryNodeJoinGeometry](https://docs.blender.org/api/current/bpy.types.GeometryNodeJoinGeometry.html)
 
-Args:
-    geometry: <m>Geometry
+#### Args:
+- geometry: <m>Geometry
 
 Returns:
     node with sockets ['geometry']
@@ -912,8 +912,8 @@ def material_selection(self, material=None)
 Node reference [Material Selection](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/material_selection.html)
 Developer reference [GeometryNodeMaterialSelection](https://docs.blender.org/api/current/bpy.types.GeometryNodeMaterialSelection.html)
 
-Args:
-    material: Material
+#### Args:
+- material: Material
 
 Returns:
     socket `selection`
@@ -931,10 +931,10 @@ def merge_by_distance(self, selection=None, distance=None, mode='ALL')
 Node reference [Merge by Distance](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/merge_by_distance.html)
 Developer reference [GeometryNodeMergeByDistance](https://docs.blender.org/api/current/bpy.types.GeometryNodeMergeByDistance.html)
 
-Args:
-    selection: Boolean
-    distance: Float
-    mode (str): 'ALL' in [ALL, CONNECTED]
+#### Args:
+- selection: Boolean
+- distance: Float
+- mode (str): 'ALL' in [ALL, CONNECTED]
 
 Returns:
     node with sockets ['geometry']
@@ -952,9 +952,9 @@ def named_attribute(self, name=None, data_type='FLOAT')
 Node reference [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/named_attribute.html)
 Developer reference [GeometryNodeInputNamedAttribute](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputNamedAttribute.html)
 
-Args:
-    name: String
-    data_type (str): 'FLOAT' in [FLOAT, INT, FLOAT_VECTOR, FLOAT_COLOR, BOOLEAN]
+#### Args:
+- name: String
+- data_type (str): 'FLOAT' in [FLOAT, INT, FLOAT_VECTOR, FLOAT_COLOR, BOOLEAN]
 
 Returns:
     socket `attribute`
@@ -988,10 +988,10 @@ def proximity(self, target=None, source_position=None, target_element='FACES')
 Node reference [Geometry Proximity](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/geometry_proximity.html)
 Developer reference [GeometryNodeProximity](https://docs.blender.org/api/current/bpy.types.GeometryNodeProximity.html)
 
-Args:
-    target: Geometry
-    source_position: Vector
-    target_element (str): 'FACES' in [POINTS, EDGES, FACES]
+#### Args:
+- target: Geometry
+- source_position: Vector
+- target_element (str): 'FACES' in [POINTS, EDGES, FACES]
 
 Returns:
     socket `distance`
@@ -1009,9 +1009,9 @@ def proximity_edges(self, target=None, source_position=None)
 Node reference [Geometry Proximity](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/geometry_proximity.html)
 Developer reference [GeometryNodeProximity](https://docs.blender.org/api/current/bpy.types.GeometryNodeProximity.html)
 
-Args:
-    target: Geometry
-    source_position: Vector
+#### Args:
+- target: Geometry
+- source_position: Vector
 
 Returns:
     socket `distance`
@@ -1029,9 +1029,9 @@ def proximity_faces(self, target=None, source_position=None)
 Node reference [Geometry Proximity](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/geometry_proximity.html)
 Developer reference [GeometryNodeProximity](https://docs.blender.org/api/current/bpy.types.GeometryNodeProximity.html)
 
-Args:
-    target: Geometry
-    source_position: Vector
+#### Args:
+- target: Geometry
+- source_position: Vector
 
 Returns:
     socket `distance`
@@ -1049,9 +1049,9 @@ def proximity_points(self, target=None, source_position=None)
 Node reference [Geometry Proximity](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/geometry_proximity.html)
 Developer reference [GeometryNodeProximity](https://docs.blender.org/api/current/bpy.types.GeometryNodeProximity.html)
 
-Args:
-    target: Geometry
-    source_position: Vector
+#### Args:
+- target: Geometry
+- source_position: Vector
 
 Returns:
     socket `distance`
@@ -1069,10 +1069,10 @@ def random_boolean(self, probability=None, ID=None, seed=None)
 Node reference [Random Value](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/random_value.html)
 Developer reference [FunctionNodeRandomValue](https://docs.blender.org/api/current/bpy.types.FunctionNodeRandomValue.html)
 
-Args:
-    probability: Float
-    ID: Integer
-    seed: Integer
+#### Args:
+- probability: Float
+- ID: Integer
+- seed: Integer
 
 Returns:
     socket `value`
@@ -1090,11 +1090,11 @@ def random_float(self, min=None, max=None, ID=None, seed=None)
 Node reference [Random Value](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/random_value.html)
 Developer reference [FunctionNodeRandomValue](https://docs.blender.org/api/current/bpy.types.FunctionNodeRandomValue.html)
 
-Args:
-    min: ['Vector', 'Float', 'Integer']
-    max: ['Vector', 'Float', 'Integer']
-    ID: Integer
-    seed: Integer
+#### Args:
+- min: ['Vector', 'Float', 'Integer']
+- max: ['Vector', 'Float', 'Integer']
+- ID: Integer
+- seed: Integer
 
 Returns:
     socket `value`
@@ -1112,11 +1112,11 @@ def random_integer(self, min=None, max=None, ID=None, seed=None)
 Node reference [Random Value](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/random_value.html)
 Developer reference [FunctionNodeRandomValue](https://docs.blender.org/api/current/bpy.types.FunctionNodeRandomValue.html)
 
-Args:
-    min: ['Vector', 'Float', 'Integer']
-    max: ['Vector', 'Float', 'Integer']
-    ID: Integer
-    seed: Integer
+#### Args:
+- min: ['Vector', 'Float', 'Integer']
+- max: ['Vector', 'Float', 'Integer']
+- ID: Integer
+- seed: Integer
 
 Returns:
     socket `value`
@@ -1134,11 +1134,11 @@ def random_vector(self, min=None, max=None, ID=None, seed=None)
 Node reference [Random Value](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/random_value.html)
 Developer reference [FunctionNodeRandomValue](https://docs.blender.org/api/current/bpy.types.FunctionNodeRandomValue.html)
 
-Args:
-    min: ['Vector', 'Float', 'Integer']
-    max: ['Vector', 'Float', 'Integer']
-    ID: Integer
-    seed: Integer
+#### Args:
+- min: ['Vector', 'Float', 'Integer']
+- max: ['Vector', 'Float', 'Integer']
+- ID: Integer
+- seed: Integer
 
 Returns:
     socket `value`
@@ -1156,13 +1156,13 @@ def raycast(self, target_geometry=None, attribute=None, source_position=None, ra
 Node reference [Raycast](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/raycast.html)
 Developer reference [GeometryNodeRaycast](https://docs.blender.org/api/current/bpy.types.GeometryNodeRaycast.html)
 
-Args:
-    target_geometry: Geometry
-    attribute: ['Vector', 'Float', 'Color', 'Boolean', 'Integer']
-    source_position: Vector
-    ray_direction: Vector
-    ray_length: Float
-    mapping (str): 'INTERPOLATED' in [INTERPOLATED, NEAREST]
+#### Args:
+- target_geometry: Geometry
+- attribute: ['Vector', 'Float', 'Color', 'Boolean', 'Integer']
+- source_position: Vector
+- ray_direction: Vector
+- ray_length: Float
+- mapping (str): 'INTERPOLATED' in [INTERPOLATED, NEAREST]
 
 Returns:
     node with sockets ['is_hit', 'hit_position', 'hit_normal', 'hit_distance', 'attribute']
@@ -1180,12 +1180,12 @@ def raycast_interpolated(self, target_geometry=None, attribute=None, source_posi
 Node reference [Raycast](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/raycast.html)
 Developer reference [GeometryNodeRaycast](https://docs.blender.org/api/current/bpy.types.GeometryNodeRaycast.html)
 
-Args:
-    target_geometry: Geometry
-    attribute: ['Vector', 'Float', 'Color', 'Boolean', 'Integer']
-    source_position: Vector
-    ray_direction: Vector
-    ray_length: Float
+#### Args:
+- target_geometry: Geometry
+- attribute: ['Vector', 'Float', 'Color', 'Boolean', 'Integer']
+- source_position: Vector
+- ray_direction: Vector
+- ray_length: Float
 
 Returns:
     node with sockets ['is_hit', 'hit_position', 'hit_normal', 'hit_distance', 'attribute']
@@ -1203,12 +1203,12 @@ def raycast_nearest(self, target_geometry=None, attribute=None, source_position=
 Node reference [Raycast](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/raycast.html)
 Developer reference [GeometryNodeRaycast](https://docs.blender.org/api/current/bpy.types.GeometryNodeRaycast.html)
 
-Args:
-    target_geometry: Geometry
-    attribute: ['Vector', 'Float', 'Color', 'Boolean', 'Integer']
-    source_position: Vector
-    ray_direction: Vector
-    ray_length: Float
+#### Args:
+- target_geometry: Geometry
+- attribute: ['Vector', 'Float', 'Color', 'Boolean', 'Integer']
+- source_position: Vector
+- ray_direction: Vector
+- ray_length: Float
 
 Returns:
     node with sockets ['is_hit', 'hit_position', 'hit_normal', 'hit_distance', 'attribute']
@@ -1226,8 +1226,8 @@ def remove_named_attribute(self, name=None)
 Node reference [Remove Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/remove_named_attribute.html)
 Developer reference [GeometryNodeRemoveAttribute](https://docs.blender.org/api/current/bpy.types.GeometryNodeRemoveAttribute.html)
 
-Args:
-    name: String
+#### Args:
+- name: String
 
 Returns:
     node with sockets ['geometry']
@@ -1245,9 +1245,9 @@ def replace_material(self, old=None, new=None)
 Node reference [Replace Material](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/replace_material.html)
 Developer reference [GeometryNodeReplaceMaterial](https://docs.blender.org/api/current/bpy.types.GeometryNodeReplaceMaterial.html)
 
-Args:
-    old: Material
-    new: Material
+#### Args:
+- old: Material
+- new: Material
 
 Returns:
     node with sockets ['geometry']
@@ -1307,11 +1307,11 @@ def sample_index(self, value=None, index=None, clamp=False, domain='POINT')
 Node reference [Sample Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/sample_index.html)
 Developer reference [GeometryNodeSampleIndex](https://docs.blender.org/api/current/bpy.types.GeometryNodeSampleIndex.html)
 
-Args:
-    value: ['Float', 'Integer', 'Vector', 'Color', 'Boolean']
-    index: Integer
-    clamp (bool): False
-    domain (str): 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+#### Args:
+- value: ['Float', 'Integer', 'Vector', 'Color', 'Boolean']
+- index: Integer
+- clamp (bool): False
+- domain (str): 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
 
 Returns:
     socket `value`
@@ -1329,9 +1329,9 @@ def sample_nearest(self, sample_position=None, domain='POINT')
 Node reference [Sample Nearest](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/sample_nearest.html)
 Developer reference [GeometryNodeSampleNearest](https://docs.blender.org/api/current/bpy.types.GeometryNodeSampleNearest.html)
 
-Args:
-    sample_position: Vector
-    domain (str): 'POINT' in [POINT, EDGE, FACE, CORNER]
+#### Args:
+- sample_position: Vector
+- domain (str): 'POINT' in [POINT, EDGE, FACE, CORNER]
 
 Returns:
     socket `index`
@@ -1349,10 +1349,10 @@ def separate(self, geometry=None, selection=None, domain='POINT')
 Node reference [Separate Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/separate_geometry.html)
 Developer reference [GeometryNodeSeparateGeometry](https://docs.blender.org/api/current/bpy.types.GeometryNodeSeparateGeometry.html)
 
-Args:
-    geometry: Geometry
-    selection: Boolean
-    domain (str): 'POINT' in [POINT, EDGE, FACE, CURVE, INSTANCE]
+#### Args:
+- geometry: Geometry
+- selection: Boolean
+- domain (str): 'POINT' in [POINT, EDGE, FACE, CURVE, INSTANCE]
 
 Returns:
     tuple ('selection', 'inverted')
@@ -1370,9 +1370,9 @@ def set_ID(self, selection=None, ID=None)
 Node reference [Set ID](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/set_id.html)
 Developer reference [GeometryNodeSetID](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetID.html)
 
-Args:
-    selection: Boolean
-    ID: Integer
+#### Args:
+- selection: Boolean
+- ID: Integer
 
 Returns:
     node with sockets ['geometry']
@@ -1390,9 +1390,9 @@ def set_material(self, selection=None, material=None)
 Node reference [Set Material](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/set_material.html)
 Developer reference [GeometryNodeSetMaterial](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetMaterial.html)
 
-Args:
-    selection: Boolean
-    material: Material
+#### Args:
+- selection: Boolean
+- material: Material
 
 Returns:
     node with sockets ['geometry']
@@ -1410,9 +1410,9 @@ def set_material_index(self, selection=None, material_index=None)
 Node reference [Set Material Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/set_material_index.html)
 Developer reference [GeometryNodeSetMaterialIndex](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetMaterialIndex.html)
 
-Args:
-    selection: Boolean
-    material_index: Integer
+#### Args:
+- selection: Boolean
+- material_index: Integer
 
 Returns:
     node with sockets ['geometry']
@@ -1430,10 +1430,10 @@ def set_named_boolean(self, name=None, value=None, domain='POINT')
 Node reference [Store Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/store_named_attribute.html)
 Developer reference [GeometryNodeStoreNamedAttribute](https://docs.blender.org/api/current/bpy.types.GeometryNodeStoreNamedAttribute.html)
 
-Args:
-    name: String
-    value: ['Vector', 'Float', 'Color', 'Boolean', 'Integer']
-    domain (str): 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+#### Args:
+- name: String
+- value: ['Vector', 'Float', 'Color', 'Boolean', 'Integer']
+- domain (str): 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
 
 Returns:
     node with sockets ['geometry']
@@ -1451,10 +1451,10 @@ def set_named_color(self, name=None, value=None, domain='POINT')
 Node reference [Store Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/store_named_attribute.html)
 Developer reference [GeometryNodeStoreNamedAttribute](https://docs.blender.org/api/current/bpy.types.GeometryNodeStoreNamedAttribute.html)
 
-Args:
-    name: String
-    value: ['Vector', 'Float', 'Color', 'Boolean', 'Integer']
-    domain (str): 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+#### Args:
+- name: String
+- value: ['Vector', 'Float', 'Color', 'Boolean', 'Integer']
+- domain (str): 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
 
 Returns:
     node with sockets ['geometry']
@@ -1472,10 +1472,10 @@ def set_named_float(self, name=None, value=None, domain='POINT')
 Node reference [Store Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/store_named_attribute.html)
 Developer reference [GeometryNodeStoreNamedAttribute](https://docs.blender.org/api/current/bpy.types.GeometryNodeStoreNamedAttribute.html)
 
-Args:
-    name: String
-    value: ['Vector', 'Float', 'Color', 'Boolean', 'Integer']
-    domain (str): 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+#### Args:
+- name: String
+- value: ['Vector', 'Float', 'Color', 'Boolean', 'Integer']
+- domain (str): 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
 
 Returns:
     node with sockets ['geometry']
@@ -1493,10 +1493,10 @@ def set_named_integer(self, name=None, value=None, domain='POINT')
 Node reference [Store Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/store_named_attribute.html)
 Developer reference [GeometryNodeStoreNamedAttribute](https://docs.blender.org/api/current/bpy.types.GeometryNodeStoreNamedAttribute.html)
 
-Args:
-    name: String
-    value: ['Vector', 'Float', 'Color', 'Boolean', 'Integer']
-    domain (str): 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+#### Args:
+- name: String
+- value: ['Vector', 'Float', 'Color', 'Boolean', 'Integer']
+- domain (str): 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
 
 Returns:
     node with sockets ['geometry']
@@ -1514,10 +1514,10 @@ def set_named_vector(self, name=None, value=None, domain='POINT')
 Node reference [Store Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/store_named_attribute.html)
 Developer reference [GeometryNodeStoreNamedAttribute](https://docs.blender.org/api/current/bpy.types.GeometryNodeStoreNamedAttribute.html)
 
-Args:
-    name: String
-    value: ['Vector', 'Float', 'Color', 'Boolean', 'Integer']
-    domain (str): 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+#### Args:
+- name: String
+- value: ['Vector', 'Float', 'Color', 'Boolean', 'Integer']
+- domain (str): 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
 
 Returns:
     node with sockets ['geometry']
@@ -1535,10 +1535,10 @@ def set_position(self, selection=None, position=None, offset=None)
 Node reference [Set Position](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/set_position.html)
 Developer reference [GeometryNodeSetPosition](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetPosition.html)
 
-Args:
-    selection: Boolean
-    position: Vector
-    offset: Vector
+#### Args:
+- selection: Boolean
+- position: Vector
+- offset: Vector
 
 Returns:
     node with sockets ['geometry']
@@ -1632,10 +1632,10 @@ def store_named_attribute(self, name=None, value=None, domain='POINT')
 Node reference [Store Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/store_named_attribute.html)
 Developer reference [GeometryNodeStoreNamedAttribute](https://docs.blender.org/api/current/bpy.types.GeometryNodeStoreNamedAttribute.html)
 
-Args:
-    name: String
-    value: ['Vector', 'Float', 'Color', 'Boolean', 'Integer']
-    domain (str): 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+#### Args:
+- name: String
+- value: ['Vector', 'Float', 'Color', 'Boolean', 'Integer']
+- domain (str): 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
 
 Returns:
     node with sockets ['geometry']
@@ -1653,9 +1653,9 @@ def switch(self, switch=None, true=None)
 Node reference [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html)
 Developer reference [GeometryNodeSwitch](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
 
-Args:
-    switch: Boolean
-    true: Geometry
+#### Args:
+- switch: Boolean
+- true: Geometry
 
 Returns:
     socket `output`
@@ -1673,8 +1673,8 @@ def to_instance(*geometry)
 Node reference [Geometry to Instance](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/geometry_to_instance.html)
 Developer reference [GeometryNodeGeometryToInstance](https://docs.blender.org/api/current/bpy.types.GeometryNodeGeometryToInstance.html)
 
-Args:
-    geometry: <m>Geometry
+#### Args:
+- geometry: <m>Geometry
 
 Returns:
     socket `instances` [Instances](Instances.md)
@@ -1710,10 +1710,10 @@ def transform(self, translation=None, rotation=None, scale=None)
 Node reference [Transform](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/transform.html)
 Developer reference [GeometryNodeTransform](https://docs.blender.org/api/current/bpy.types.GeometryNodeTransform.html)
 
-Args:
-    translation: Vector
-    rotation: Vector
-    scale: Vector
+#### Args:
+- translation: Vector
+- rotation: Vector
+- scale: Vector
 
 Returns:
     node with sockets ['geometry']

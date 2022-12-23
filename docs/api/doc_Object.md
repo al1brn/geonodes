@@ -67,9 +67,9 @@ def Input(cls, value=None, name="Object", description="")
 
  Create an Object input socket in the Group Input Node
 
-Args:
-    name: The socket name
-    description: User tip
+#### Args:
+- name: The socket name
+- description: User tip
     
 Returns:
     Object: The Object data socket
@@ -354,10 +354,10 @@ def geometry(self, object=None, as_instance=None, transform_space='ORIGINAL')
 Node reference [Object Info](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/object_info.html)
 Developer reference [GeometryNodeObjectInfo](https://docs.blender.org/api/current/bpy.types.GeometryNodeObjectInfo.html)
 
-Args:
-    object: Object
-    as_instance: Boolean
-    transform_space (str): 'ORIGINAL' in [ORIGINAL, RELATIVE]
+#### Args:
+- object: Object
+- as_instance: Boolean
+- transform_space (str): 'ORIGINAL' in [ORIGINAL, RELATIVE]
 
 Returns:
     socket `geometry`
@@ -389,10 +389,10 @@ def info(self, object=None, as_instance=None, transform_space='ORIGINAL')
 Node reference [Object Info](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/object_info.html)
 Developer reference [GeometryNodeObjectInfo](https://docs.blender.org/api/current/bpy.types.GeometryNodeObjectInfo.html)
 
-Args:
-    object: Object
-    as_instance: Boolean
-    transform_space (str): 'ORIGINAL' in [ORIGINAL, RELATIVE]
+#### Args:
+- object: Object
+- as_instance: Boolean
+- transform_space (str): 'ORIGINAL' in [ORIGINAL, RELATIVE]
 
 Returns:
     node with sockets ['location', 'rotation', 'scale', 'geometry']
@@ -434,10 +434,10 @@ def location(self, object=None, as_instance=None, transform_space='ORIGINAL')
 Node reference [Object Info](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/object_info.html)
 Developer reference [GeometryNodeObjectInfo](https://docs.blender.org/api/current/bpy.types.GeometryNodeObjectInfo.html)
 
-Args:
-    object: Object
-    as_instance: Boolean
-    transform_space (str): 'ORIGINAL' in [ORIGINAL, RELATIVE]
+#### Args:
+- object: Object
+- as_instance: Boolean
+- transform_space (str): 'ORIGINAL' in [ORIGINAL, RELATIVE]
 
 Returns:
     socket `location`
@@ -513,10 +513,10 @@ def rotation(self, object=None, as_instance=None, transform_space='ORIGINAL')
 Node reference [Object Info](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/object_info.html)
 Developer reference [GeometryNodeObjectInfo](https://docs.blender.org/api/current/bpy.types.GeometryNodeObjectInfo.html)
 
-Args:
-    object: Object
-    as_instance: Boolean
-    transform_space (str): 'ORIGINAL' in [ORIGINAL, RELATIVE]
+#### Args:
+- object: Object
+- as_instance: Boolean
+- transform_space (str): 'ORIGINAL' in [ORIGINAL, RELATIVE]
 
 Returns:
     socket `rotation`
@@ -534,10 +534,10 @@ def scale(self, object=None, as_instance=None, transform_space='ORIGINAL')
 Node reference [Object Info](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/object_info.html)
 Developer reference [GeometryNodeObjectInfo](https://docs.blender.org/api/current/bpy.types.GeometryNodeObjectInfo.html)
 
-Args:
-    object: Object
-    as_instance: Boolean
-    transform_space (str): 'ORIGINAL' in [ORIGINAL, RELATIVE]
+#### Args:
+- object: Object
+- as_instance: Boolean
+- transform_space (str): 'ORIGINAL' in [ORIGINAL, RELATIVE]
 
 Returns:
     socket `scale`
@@ -606,9 +606,9 @@ def switch(self, switch=None, true=None)
 Node reference [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html)
 Developer reference [GeometryNodeSwitch](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
 
-Args:
-    switch: Boolean
-    true: Object
+#### Args:
+- switch: Boolean
+- true: Object
 
 Returns:
     socket `output`

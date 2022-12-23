@@ -70,8 +70,8 @@ def Boolean(cls, boolean=False)
 Node reference [Boolean](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/boolean.html)
 Developer reference [FunctionNodeInputBool](https://docs.blender.org/api/current/bpy.types.FunctionNodeInputBool.html)
 
-Args:
-    boolean (bool): False
+#### Args:
+- boolean (bool): False
 
 Returns:
     socket `boolean`
@@ -87,10 +87,10 @@ def Input(cls, value = False, name = "Boolean", description = "")
 
  Create a Boolean input socket in the Group Input Node
 
-Args:
-    value: The default value
-    name: The socket name
-    description: User tip
+#### Args:
+- value: The default value
+- name: The socket name
+- description: User tip
     
 Returns:
     Boolean: The Boolean data socket
@@ -347,8 +347,8 @@ def b_and(self, boolean1=None)
 Node reference [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/boolean_math.html)
 Developer reference [FunctionNodeBooleanMath](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html)
 
-Args:
-    boolean1: Boolean
+#### Args:
+- boolean1: Boolean
 
 Returns:
     socket `boolean`
@@ -382,8 +382,8 @@ def b_or(self, boolean1=None)
 Node reference [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/boolean_math.html)
 Developer reference [FunctionNodeBooleanMath](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html)
 
-Args:
-    boolean1: Boolean
+#### Args:
+- boolean1: Boolean
 
 Returns:
     socket `boolean`
@@ -426,8 +426,8 @@ def imply(self, boolean1=None)
 Node reference [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/boolean_math.html)
 Developer reference [FunctionNodeBooleanMath](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html)
 
-Args:
-    boolean1: Boolean
+#### Args:
+- boolean1: Boolean
 
 Returns:
     socket `boolean`
@@ -469,8 +469,8 @@ def nand(self, boolean1=None)
 Node reference [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/boolean_math.html)
 Developer reference [FunctionNodeBooleanMath](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html)
 
-Args:
-    boolean1: Boolean
+#### Args:
+- boolean1: Boolean
 
 Returns:
     socket `boolean`
@@ -488,8 +488,8 @@ def nimply(self, boolean1=None)
 Node reference [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/boolean_math.html)
 Developer reference [FunctionNodeBooleanMath](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html)
 
-Args:
-    boolean1: Boolean
+#### Args:
+- boolean1: Boolean
 
 Returns:
     socket `boolean`
@@ -507,8 +507,8 @@ def nor(self, boolean1=None)
 Node reference [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/boolean_math.html)
 Developer reference [FunctionNodeBooleanMath](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html)
 
-Args:
-    boolean1: Boolean
+#### Args:
+- boolean1: Boolean
 
 Returns:
     socket `boolean`
@@ -635,9 +635,9 @@ def switch(self, switch=None, true=None)
 Node reference [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html)
 Developer reference [GeometryNodeSwitch](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
 
-Args:
-    switch: Boolean
-    true: Boolean
+#### Args:
+- switch: Boolean
+- true: Boolean
 
 Returns:
     socket `output`
@@ -688,8 +688,8 @@ def xnor(self, boolean1=None)
 Node reference [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/boolean_math.html)
 Developer reference [FunctionNodeBooleanMath](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html)
 
-Args:
-    boolean1: Boolean
+#### Args:
+- boolean1: Boolean
 
 Returns:
     socket `boolean`
@@ -707,8 +707,8 @@ def xor(self, boolean1=None)
 Node reference [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/boolean_math.html)
 Developer reference [FunctionNodeBooleanMath](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html)
 
-Args:
-    boolean1: Boolean
+#### Args:
+- boolean1: Boolean
 
 Returns:
     socket `boolean`

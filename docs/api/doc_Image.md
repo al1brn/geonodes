@@ -67,9 +67,9 @@ def Input(cls, value = None, name="Image", description="")
 
  Create an Image input socket in the Group Input Node
 
-Args:
-    name: The socket name
-    description: User tip
+#### Args:
+- name: The socket name
+- description: User tip
     
 Returns:
     Image: The Image data socket
@@ -484,9 +484,9 @@ def switch(self, switch=None, true=None)
 Node reference [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html)
 Developer reference [GeometryNodeSwitch](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
 
-Args:
-    switch: Boolean
-    true: Image
+#### Args:
+- switch: Boolean
+- true: Image
 
 Returns:
     socket `output`
@@ -504,11 +504,11 @@ def texture(self, vector=None, frame=None, extension='REPEAT', interpolation='Li
 Node reference [Image Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/image.html)
 Developer reference [GeometryNodeImageTexture](https://docs.blender.org/api/current/bpy.types.GeometryNodeImageTexture.html)
 
-Args:
-    vector: Vector
-    frame: Integer
-    extension (str): 'REPEAT' in [REPEAT, EXTEND, CLIP]
-    interpolation (str): 'Linear' in [Linear, Closest, Cubic]
+#### Args:
+- vector: Vector
+- frame: Integer
+- extension (str): 'REPEAT' in [REPEAT, EXTEND, CLIP]
+- interpolation (str): 'Linear' in [Linear, Closest, Cubic]
 
 Returns:
     tuple ('color', 'alpha')

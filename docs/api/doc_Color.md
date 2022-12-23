@@ -231,11 +231,11 @@ def HSL(cls, hue=None, saturation=None, lightness=None, alpha=None)
 Node reference [Combine Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/combine_color.html)
 Developer reference [FunctionNodeCombineColor](https://docs.blender.org/api/current/bpy.types.FunctionNodeCombineColor.html)
 
-Args:
-    hue: Float
-    saturation: Float
-    lightness: Float
-    alpha: Float
+#### Args:
+- hue: Float
+- saturation: Float
+- lightness: Float
+- alpha: Float
 
 Returns:
     socket `color`
@@ -254,11 +254,11 @@ def HSV(cls, hue=None, saturation=None, value=None, alpha=None)
 Node reference [Combine Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/combine_color.html)
 Developer reference [FunctionNodeCombineColor](https://docs.blender.org/api/current/bpy.types.FunctionNodeCombineColor.html)
 
-Args:
-    hue: Float
-    saturation: Float
-    value: Float
-    alpha: Float
+#### Args:
+- hue: Float
+- saturation: Float
+- value: Float
+- alpha: Float
 
 Returns:
     socket `color`
@@ -274,10 +274,10 @@ def Input(cls, value=None, name = "Color", description = "")
 
  Create a Color input socket in the Group Input Node
 
-Args:
-    value: The default value
-    name: The socket name
-    description: User tip
+#### Args:
+- value: The default value
+- name: The socket name
+- description: User tip
     
 Returns:
     Color: The Color data socket
@@ -297,11 +297,11 @@ def RGB(cls, red=None, green=None, blue=None, alpha=None)
 Node reference [Combine Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/combine_color.html)
 Developer reference [FunctionNodeCombineColor](https://docs.blender.org/api/current/bpy.types.FunctionNodeCombineColor.html)
 
-Args:
-    red: Float
-    green: Float
-    blue: Float
-    alpha: Float
+#### Args:
+- red: Float
+- green: Float
+- blue: Float
+- alpha: Float
 
 Returns:
     socket `color`
@@ -557,8 +557,8 @@ def brighter(self, b=None)
 Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
 Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 
-Args:
-    b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+#### Args:
+- b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 
 Returns:
     socket `result`
@@ -587,8 +587,8 @@ def darker(self, b=None)
 Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
 Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 
-Args:
-    b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+#### Args:
+- b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 
 Returns:
     socket `result`
@@ -606,9 +606,9 @@ def equal(self, b=None, epsilon=None)
 Node reference [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html)
 Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 
-Args:
-    b: ['Float', 'Integer', 'Vector', 'Color', 'String']
-    epsilon: Float
+#### Args:
+- b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+- epsilon: Float
 
 Returns:
     socket `result`
@@ -666,12 +666,12 @@ def mix(self, factor=None, color=None, blend_type='MIX', clamp_factor=True, clam
 Node reference [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html)
 Developer reference [ShaderNodeMix](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
 
-Args:
-    factor: ['Float', 'Vector']
-    color: ['Float', 'Vector', 'Color']
-    blend_type (str): 'MIX' in [MIX, DARKEN, MULTIPLY, BURN, LIGHTEN,... , SATURATION, COLOR, VALUE]
-    clamp_factor (bool): True
-    clamp_result (bool): False
+#### Args:
+- factor: ['Float', 'Vector']
+- color: ['Float', 'Vector', 'Color']
+- blend_type (str): 'MIX' in [MIX, DARKEN, MULTIPLY, BURN, LIGHTEN,... , SATURATION, COLOR, VALUE]
+- clamp_factor (bool): True
+- clamp_result (bool): False
 
 Returns:
     socket `result`
@@ -689,11 +689,11 @@ def mix_add(self, factor=None, color=None, clamp_factor=True, clamp_result=False
 Node reference [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html)
 Developer reference [ShaderNodeMix](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
 
-Args:
-    factor: ['Float', 'Vector']
-    color: ['Float', 'Vector', 'Color']
-    clamp_factor (bool): True
-    clamp_result (bool): False
+#### Args:
+- factor: ['Float', 'Vector']
+- color: ['Float', 'Vector', 'Color']
+- clamp_factor (bool): True
+- clamp_result (bool): False
 
 Returns:
     socket `result`
@@ -711,11 +711,11 @@ def mix_burn(self, factor=None, color=None, clamp_factor=True, clamp_result=Fals
 Node reference [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html)
 Developer reference [ShaderNodeMix](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
 
-Args:
-    factor: ['Float', 'Vector']
-    color: ['Float', 'Vector', 'Color']
-    clamp_factor (bool): True
-    clamp_result (bool): False
+#### Args:
+- factor: ['Float', 'Vector']
+- color: ['Float', 'Vector', 'Color']
+- clamp_factor (bool): True
+- clamp_result (bool): False
 
 Returns:
     socket `result`
@@ -733,11 +733,11 @@ def mix_color(self, factor=None, color=None, clamp_factor=True, clamp_result=Fal
 Node reference [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html)
 Developer reference [ShaderNodeMix](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
 
-Args:
-    factor: ['Float', 'Vector']
-    color: ['Float', 'Vector', 'Color']
-    clamp_factor (bool): True
-    clamp_result (bool): False
+#### Args:
+- factor: ['Float', 'Vector']
+- color: ['Float', 'Vector', 'Color']
+- clamp_factor (bool): True
+- clamp_result (bool): False
 
 Returns:
     socket `result`
@@ -755,11 +755,11 @@ def mix_darken(self, factor=None, color=None, clamp_factor=True, clamp_result=Fa
 Node reference [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html)
 Developer reference [ShaderNodeMix](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
 
-Args:
-    factor: ['Float', 'Vector']
-    color: ['Float', 'Vector', 'Color']
-    clamp_factor (bool): True
-    clamp_result (bool): False
+#### Args:
+- factor: ['Float', 'Vector']
+- color: ['Float', 'Vector', 'Color']
+- clamp_factor (bool): True
+- clamp_result (bool): False
 
 Returns:
     socket `result`
@@ -777,11 +777,11 @@ def mix_difference(self, factor=None, color=None, clamp_factor=True, clamp_resul
 Node reference [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html)
 Developer reference [ShaderNodeMix](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
 
-Args:
-    factor: ['Float', 'Vector']
-    color: ['Float', 'Vector', 'Color']
-    clamp_factor (bool): True
-    clamp_result (bool): False
+#### Args:
+- factor: ['Float', 'Vector']
+- color: ['Float', 'Vector', 'Color']
+- clamp_factor (bool): True
+- clamp_result (bool): False
 
 Returns:
     socket `result`
@@ -799,11 +799,11 @@ def mix_divide(self, factor=None, color=None, clamp_factor=True, clamp_result=Fa
 Node reference [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html)
 Developer reference [ShaderNodeMix](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
 
-Args:
-    factor: ['Float', 'Vector']
-    color: ['Float', 'Vector', 'Color']
-    clamp_factor (bool): True
-    clamp_result (bool): False
+#### Args:
+- factor: ['Float', 'Vector']
+- color: ['Float', 'Vector', 'Color']
+- clamp_factor (bool): True
+- clamp_result (bool): False
 
 Returns:
     socket `result`
@@ -821,11 +821,11 @@ def mix_dodge(self, factor=None, color=None, clamp_factor=True, clamp_result=Fal
 Node reference [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html)
 Developer reference [ShaderNodeMix](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
 
-Args:
-    factor: ['Float', 'Vector']
-    color: ['Float', 'Vector', 'Color']
-    clamp_factor (bool): True
-    clamp_result (bool): False
+#### Args:
+- factor: ['Float', 'Vector']
+- color: ['Float', 'Vector', 'Color']
+- clamp_factor (bool): True
+- clamp_result (bool): False
 
 Returns:
     socket `result`
@@ -843,11 +843,11 @@ def mix_hue(self, factor=None, color=None, clamp_factor=True, clamp_result=False
 Node reference [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html)
 Developer reference [ShaderNodeMix](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
 
-Args:
-    factor: ['Float', 'Vector']
-    color: ['Float', 'Vector', 'Color']
-    clamp_factor (bool): True
-    clamp_result (bool): False
+#### Args:
+- factor: ['Float', 'Vector']
+- color: ['Float', 'Vector', 'Color']
+- clamp_factor (bool): True
+- clamp_result (bool): False
 
 Returns:
     socket `result`
@@ -865,11 +865,11 @@ def mix_lighten(self, factor=None, color=None, clamp_factor=True, clamp_result=F
 Node reference [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html)
 Developer reference [ShaderNodeMix](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
 
-Args:
-    factor: ['Float', 'Vector']
-    color: ['Float', 'Vector', 'Color']
-    clamp_factor (bool): True
-    clamp_result (bool): False
+#### Args:
+- factor: ['Float', 'Vector']
+- color: ['Float', 'Vector', 'Color']
+- clamp_factor (bool): True
+- clamp_result (bool): False
 
 Returns:
     socket `result`
@@ -887,11 +887,11 @@ def mix_linear_light(self, factor=None, color=None, clamp_factor=True, clamp_res
 Node reference [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html)
 Developer reference [ShaderNodeMix](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
 
-Args:
-    factor: ['Float', 'Vector']
-    color: ['Float', 'Vector', 'Color']
-    clamp_factor (bool): True
-    clamp_result (bool): False
+#### Args:
+- factor: ['Float', 'Vector']
+- color: ['Float', 'Vector', 'Color']
+- clamp_factor (bool): True
+- clamp_result (bool): False
 
 Returns:
     socket `result`
@@ -909,11 +909,11 @@ def mix_multiply(self, factor=None, color=None, clamp_factor=True, clamp_result=
 Node reference [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html)
 Developer reference [ShaderNodeMix](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
 
-Args:
-    factor: ['Float', 'Vector']
-    color: ['Float', 'Vector', 'Color']
-    clamp_factor (bool): True
-    clamp_result (bool): False
+#### Args:
+- factor: ['Float', 'Vector']
+- color: ['Float', 'Vector', 'Color']
+- clamp_factor (bool): True
+- clamp_result (bool): False
 
 Returns:
     socket `result`
@@ -931,11 +931,11 @@ def mix_overlay(self, factor=None, color=None, clamp_factor=True, clamp_result=F
 Node reference [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html)
 Developer reference [ShaderNodeMix](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
 
-Args:
-    factor: ['Float', 'Vector']
-    color: ['Float', 'Vector', 'Color']
-    clamp_factor (bool): True
-    clamp_result (bool): False
+#### Args:
+- factor: ['Float', 'Vector']
+- color: ['Float', 'Vector', 'Color']
+- clamp_factor (bool): True
+- clamp_result (bool): False
 
 Returns:
     socket `result`
@@ -953,11 +953,11 @@ def mix_saturation(self, factor=None, color=None, clamp_factor=True, clamp_resul
 Node reference [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html)
 Developer reference [ShaderNodeMix](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
 
-Args:
-    factor: ['Float', 'Vector']
-    color: ['Float', 'Vector', 'Color']
-    clamp_factor (bool): True
-    clamp_result (bool): False
+#### Args:
+- factor: ['Float', 'Vector']
+- color: ['Float', 'Vector', 'Color']
+- clamp_factor (bool): True
+- clamp_result (bool): False
 
 Returns:
     socket `result`
@@ -975,11 +975,11 @@ def mix_screen(self, factor=None, color=None, clamp_factor=True, clamp_result=Fa
 Node reference [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html)
 Developer reference [ShaderNodeMix](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
 
-Args:
-    factor: ['Float', 'Vector']
-    color: ['Float', 'Vector', 'Color']
-    clamp_factor (bool): True
-    clamp_result (bool): False
+#### Args:
+- factor: ['Float', 'Vector']
+- color: ['Float', 'Vector', 'Color']
+- clamp_factor (bool): True
+- clamp_result (bool): False
 
 Returns:
     socket `result`
@@ -997,11 +997,11 @@ def mix_soft_light(self, factor=None, color=None, clamp_factor=True, clamp_resul
 Node reference [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html)
 Developer reference [ShaderNodeMix](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
 
-Args:
-    factor: ['Float', 'Vector']
-    color: ['Float', 'Vector', 'Color']
-    clamp_factor (bool): True
-    clamp_result (bool): False
+#### Args:
+- factor: ['Float', 'Vector']
+- color: ['Float', 'Vector', 'Color']
+- clamp_factor (bool): True
+- clamp_result (bool): False
 
 Returns:
     socket `result`
@@ -1019,11 +1019,11 @@ def mix_subtract(self, factor=None, color=None, clamp_factor=True, clamp_result=
 Node reference [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html)
 Developer reference [ShaderNodeMix](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
 
-Args:
-    factor: ['Float', 'Vector']
-    color: ['Float', 'Vector', 'Color']
-    clamp_factor (bool): True
-    clamp_result (bool): False
+#### Args:
+- factor: ['Float', 'Vector']
+- color: ['Float', 'Vector', 'Color']
+- clamp_factor (bool): True
+- clamp_result (bool): False
 
 Returns:
     socket `result`
@@ -1041,11 +1041,11 @@ def mix_value(self, factor=None, color=None, clamp_factor=True, clamp_result=Fal
 Node reference [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html)
 Developer reference [ShaderNodeMix](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
 
-Args:
-    factor: ['Float', 'Vector']
-    color: ['Float', 'Vector', 'Color']
-    clamp_factor (bool): True
-    clamp_result (bool): False
+#### Args:
+- factor: ['Float', 'Vector']
+- color: ['Float', 'Vector', 'Color']
+- clamp_factor (bool): True
+- clamp_result (bool): False
 
 Returns:
     socket `result`
@@ -1172,9 +1172,9 @@ def switch(self, switch=None, true=None)
 Node reference [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html)
 Developer reference [GeometryNodeSwitch](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
 
-Args:
-    switch: Boolean
-    true: Color
+#### Args:
+- switch: Boolean
+- true: Color
 
 Returns:
     socket `output`
