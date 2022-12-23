@@ -218,7 +218,7 @@ class Trees:
     
     @property
     def trees(self):
-        """ Returns the list of the [Tree](Tree.md) sharing the same prefix.
+        """ Gives the list of the [Tree](Tree.md) sharing the same prefix.
         
         Returns:
             Trees sharing the same prefix (list)

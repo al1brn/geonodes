@@ -49,8 +49,8 @@
 Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
 Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 
-#### Returns:
-- socket `value`
+Returns:
+    socket `value`
 
 
 
@@ -79,14 +79,14 @@ Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/
 Node reference [Separate XYZ](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/separate_xyz.html)
 Developer reference [ShaderNodeSeparateXYZ](https://docs.blender.org/api/current/bpy.types.ShaderNodeSeparateXYZ.html)
 
-#### Returns:
-- node with sockets ['x', 'y', 'z']
+Returns:
+    node with sockets ['x', 'y', 'z']
 
 
 
 ### socket_index
 
-#### Returns:
+ Return the index of the socket within the list of node sockets.
 
 Depending on the _is_output_ property, the socket belongs either to *node.inputs* or
 *node.outputs*.
@@ -113,8 +113,8 @@ Developer reference [ShaderNodeCombineXYZ](https://docs.blender.org/api/current/
 - y: Float
 - z: Float
 
-#### Returns:
-- socket `vector`
+Returns:
+    socket `vector`
 
 
 
@@ -134,8 +134,8 @@ def Input(cls, value = (0, 0, 0), name = "Vector", description = "")
 - name: The socket name
 - description: User tip
     
-#### Returns:
-- Vector: The Vector data socket
+Returns:
+    Vector: The Vector data socket
 
 
 
@@ -156,8 +156,8 @@ def Rotation(cls, value = (0, 0, 0), name = "Rotation", description = "")
 - name: The socket name
 - description: User tip
     
-#### Returns:
-- Vector: The Vector data socket
+Returns:
+    Vector: The Vector data socket
 
 
 
@@ -177,8 +177,8 @@ def Translation(cls, value =(0, 0, 0), name = "Translation", description = "")
 - name: The socket name
 - description: User tip
     
-#### Returns:
-- Vector: The Vector data socket
+Returns:
+    Vector: The Vector data socket
 
 
 
@@ -199,8 +199,8 @@ Developer reference [FunctionNodeInputVector](https://docs.blender.org/api/curre
 #### Args:
 - vector (list): [0.0, 0.0, 0.0]
 
-#### Returns:
-- socket `vector`
+Returns:
+    socket `vector`
 
 
 
@@ -220,8 +220,8 @@ def VectorXYZ(cls, value = (0, 0, 0), name = "VectorXYZ", description = "")
 - name: The socket name
 - description: User tip
     
-#### Returns:
-- Vector: The Vector data socket
+Returns:
+    Vector: The Vector data socket
 
 
 
@@ -375,7 +375,7 @@ def gives_bsocket(value)
 :return: True if *value* is or wraps a socket
 :rtype: bool
 
-#### Returns:
+Returns True if value is:
     
 - A Blender Geometry Node Socket
 - An instance of Socket        
@@ -429,7 +429,7 @@ def is_vector(value)
 def value_data_type(value, default='FLOAT', color_domain='FLOAT_COLOR')
 ```
 
-#### Returns:
+ Returns the domain to which the socket belongs
 
 :param value: The socket
 :type value: any
@@ -488,8 +488,8 @@ def abs(self)
 Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
 Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 
-#### Returns:
-- socket `vector`
+Returns:
+    socket `vector`
 
 
 
@@ -506,8 +506,8 @@ def absolute(self)
 Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
 Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 
-#### Returns:
-- socket `vector`
+Returns:
+    socket `vector`
 
 
 
@@ -527,8 +527,8 @@ Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/
 #### Args:
 - vector: Vector
 
-#### Returns:
-- socket `vector`
+Returns:
+    socket `vector`
 
 
 
@@ -551,8 +551,8 @@ Developer reference [FunctionNodeAlignEulerToVector](https://docs.blender.org/ap
 - axis (str): 'X' in [X, Y, Z]
 - pivot_axis (str): 'AUTO' in [AUTO, X, Y, Z]
 
-#### Returns:
-- node with sockets ['rotation']
+Returns:
+    node with sockets ['rotation']
 
 
 
@@ -573,8 +573,8 @@ Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/b
 - b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 - epsilon: Float
 
-#### Returns:
-- socket `result`
+Returns:
+    socket `result`
 
 
 
@@ -594,8 +594,8 @@ Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/b
 #### Args:
 - b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 
-#### Returns:
-- socket `result`
+Returns:
+    socket `result`
 
 
 
@@ -615,8 +615,8 @@ Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/b
 #### Args:
 - b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 
-#### Returns:
-- socket `result`
+Returns:
+    socket `result`
 
 
 
@@ -636,8 +636,8 @@ Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/b
 #### Args:
 - b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 
-#### Returns:
-- socket `result`
+Returns:
+    socket `result`
 
 
 
@@ -657,8 +657,8 @@ Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/b
 #### Args:
 - b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 
-#### Returns:
-- socket `result`
+Returns:
+    socket `result`
 
 
 
@@ -679,8 +679,8 @@ Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/b
 - b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 - epsilon: Float
 
-#### Returns:
-- socket `result`
+Returns:
+    socket `result`
 
 
 
@@ -697,8 +697,8 @@ def ceil(self)
 Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
 Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 
-#### Returns:
-- socket `vector`
+Returns:
+    socket `vector`
 
 
 
@@ -723,8 +723,8 @@ Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/b
 - mode (str): 'ELEMENT' in [ELEMENT, LENGTH, AVERAGE, DOT_PRODUCT, DIRECTION]
 - operation (str): 'GREATER_THAN' in [LESS_THAN, LESS_EQUAL, GREATER_THAN, GREATER_EQUAL, EQUAL, NOT_EQUAL]
 
-#### Returns:
-- socket `result`
+Returns:
+    socket `result`
 
 
 
@@ -736,7 +736,7 @@ Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/b
 def connected_sockets(self)
 ```
 
-#### Returns:
+ Returns the list of Socket instances linked to this socket.
 
 
 
@@ -754,8 +754,8 @@ def cos(self)
 Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
 Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 
-#### Returns:
-- socket `vector`
+Returns:
+    socket `vector`
 
 
 
@@ -772,8 +772,8 @@ def cosine(self)
 Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
 Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 
-#### Returns:
-- socket `vector`
+Returns:
+    socket `vector`
 
 
 
@@ -793,8 +793,8 @@ Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/
 #### Args:
 - vector: Vector
 
-#### Returns:
-- socket `vector`
+Returns:
+    socket `vector`
 
 
 
@@ -814,8 +814,8 @@ Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/
 #### Args:
 - vector: Vector
 
-#### Returns:
-- socket `vector`
+Returns:
+    socket `vector`
 
 
 
@@ -835,8 +835,8 @@ Developer reference [ShaderNodeVectorCurve](https://docs.blender.org/api/current
 #### Args:
 - fac: Float
 
-#### Returns:
-- socket `vector`
+Returns:
+    socket `vector`
 
 
 
@@ -858,8 +858,8 @@ Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/b
 - angle: Float
 - epsilon: Float
 
-#### Returns:
-- socket `result`
+Returns:
+    socket `result`
 
 
 
@@ -880,8 +880,8 @@ Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/b
 - b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 - angle: Float
 
-#### Returns:
-- socket `result`
+Returns:
+    socket `result`
 
 
 
@@ -902,8 +902,8 @@ Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/b
 - b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 - angle: Float
 
-#### Returns:
-- socket `result`
+Returns:
+    socket `result`
 
 
 
@@ -924,8 +924,8 @@ Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/b
 - b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 - angle: Float
 
-#### Returns:
-- socket `result`
+Returns:
+    socket `result`
 
 
 
@@ -946,8 +946,8 @@ Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/b
 - b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 - angle: Float
 
-#### Returns:
-- socket `result`
+Returns:
+    socket `result`
 
 
 
@@ -969,8 +969,8 @@ Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/b
 - angle: Float
 - epsilon: Float
 
-#### Returns:
-- socket `result`
+Returns:
+    socket `result`
 
 
 
@@ -990,8 +990,8 @@ Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/
 #### Args:
 - vector: Vector
 
-#### Returns:
-- socket `value`
+Returns:
+    socket `value`
 
 
 
@@ -1011,8 +1011,8 @@ Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/
 #### Args:
 - vector: Vector
 
-#### Returns:
-- socket `vector`
+Returns:
+    socket `vector`
 
 
 
@@ -1032,8 +1032,8 @@ Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/
 #### Args:
 - vector: Vector
 
-#### Returns:
-- socket `vector`
+Returns:
+    socket `vector`
 
 
 
@@ -1053,8 +1053,8 @@ Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/
 #### Args:
 - vector: Vector
 
-#### Returns:
-- socket `value`
+Returns:
+    socket `value`
 
 
 
@@ -1074,8 +1074,8 @@ Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/
 #### Args:
 - vector: Vector
 
-#### Returns:
-- socket `value`
+Returns:
+    socket `value`
 
 
 
@@ -1097,8 +1097,8 @@ Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/b
 - c: Float
 - epsilon: Float
 
-#### Returns:
-- socket `result`
+Returns:
+    socket `result`
 
 
 
@@ -1119,8 +1119,8 @@ Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/b
 - b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 - c: Float
 
-#### Returns:
-- socket `result`
+Returns:
+    socket `result`
 
 
 
@@ -1141,8 +1141,8 @@ Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/b
 - b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 - c: Float
 
-#### Returns:
-- socket `result`
+Returns:
+    socket `result`
 
 
 
@@ -1163,8 +1163,8 @@ Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/b
 - b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 - c: Float
 
-#### Returns:
-- socket `result`
+Returns:
+    socket `result`
 
 
 
@@ -1185,8 +1185,8 @@ Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/b
 - b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 - c: Float
 
-#### Returns:
-- socket `result`
+Returns:
+    socket `result`
 
 
 
@@ -1208,8 +1208,8 @@ Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/b
 - c: Float
 - epsilon: Float
 
-#### Returns:
-- socket `result`
+Returns:
+    socket `result`
 
 
 
@@ -1230,8 +1230,8 @@ Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/b
 - b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 - epsilon: Float
 
-#### Returns:
-- socket `result`
+Returns:
+    socket `result`
 
 
 
@@ -1251,8 +1251,8 @@ Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/b
 #### Args:
 - b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 
-#### Returns:
-- socket `result`
+Returns:
+    socket `result`
 
 
 
@@ -1272,8 +1272,8 @@ Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/b
 #### Args:
 - b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 
-#### Returns:
-- socket `result`
+Returns:
+    socket `result`
 
 
 
@@ -1293,8 +1293,8 @@ Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/b
 #### Args:
 - b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 
-#### Returns:
-- socket `result`
+Returns:
+    socket `result`
 
 
 
@@ -1314,8 +1314,8 @@ Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/b
 #### Args:
 - b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 
-#### Returns:
-- socket `result`
+Returns:
+    socket `result`
 
 
 
@@ -1336,8 +1336,8 @@ Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/b
 - b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 - epsilon: Float
 
-#### Returns:
-- socket `result`
+Returns:
+    socket `result`
 
 
 
@@ -1358,8 +1358,8 @@ Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/
 - incident: Vector
 - reference: Vector
 
-#### Returns:
-- socket `vector`
+Returns:
+    socket `vector`
 
 
 
@@ -1376,8 +1376,8 @@ def floor(self)
 Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
 Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 
-#### Returns:
-- socket `vector`
+Returns:
+    socket `vector`
 
 
 
@@ -1394,8 +1394,8 @@ def fract(self)
 Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
 Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 
-#### Returns:
-- socket `vector`
+Returns:
+    socket `vector`
 
 
 
@@ -1412,8 +1412,8 @@ def fraction(self)
 Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
 Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 
-#### Returns:
-- socket `vector`
+Returns:
+    socket `vector`
 
 
 
@@ -1480,8 +1480,8 @@ Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/b
 - b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 - epsilon: Float
 
-#### Returns:
-- socket `result`
+Returns:
+    socket `result`
 
 
 
@@ -1501,8 +1501,8 @@ Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/b
 #### Args:
 - b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 
-#### Returns:
-- socket `result`
+Returns:
+    socket `result`
 
 
 
@@ -1522,8 +1522,8 @@ Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/b
 #### Args:
 - b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 
-#### Returns:
-- socket `result`
+Returns:
+    socket `result`
 
 
 
@@ -1543,8 +1543,8 @@ Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/b
 #### Args:
 - b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 
-#### Returns:
-- socket `result`
+Returns:
+    socket `result`
 
 
 
@@ -1564,8 +1564,8 @@ Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/b
 #### Args:
 - b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 
-#### Returns:
-- socket `result`
+Returns:
+    socket `result`
 
 
 
@@ -1586,8 +1586,8 @@ Developer reference [FunctionNodeCompare](https://docs.blender.org/api/current/b
 - b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 - epsilon: Float
 
-#### Returns:
-- socket `result`
+Returns:
+    socket `result`
 
 
 
@@ -1613,8 +1613,8 @@ Developer reference [ShaderNodeMapRange](https://docs.blender.org/api/current/bp
 - clamp (bool): True
 - interpolation_type (str): 'LINEAR' in [LINEAR, STEPPED, SMOOTHSTEP, SMOOTHERSTEP]
 
-#### Returns:
-- socket `vector`
+Returns:
+    socket `vector`
 
 
 
@@ -1638,8 +1638,8 @@ Developer reference [ShaderNodeMapRange](https://docs.blender.org/api/current/bp
 - to_max: ['Float', 'Vector']
 - clamp (bool): True
 
-#### Returns:
-- socket `vector`
+Returns:
+    socket `vector`
 
 
 
@@ -1663,8 +1663,8 @@ Developer reference [ShaderNodeMapRange](https://docs.blender.org/api/current/bp
 - to_max: ['Float', 'Vector']
 - clamp (bool): True
 
-#### Returns:
-- socket `vector`
+Returns:
+    socket `vector`
 
 
 
@@ -1688,8 +1688,8 @@ Developer reference [ShaderNodeMapRange](https://docs.blender.org/api/current/bp
 - to_max: ['Float', 'Vector']
 - clamp (bool): True
 
-#### Returns:
-- socket `vector`
+Returns:
+    socket `vector`
 
 
 
@@ -1714,8 +1714,8 @@ Developer reference [ShaderNodeMapRange](https://docs.blender.org/api/current/bp
 - steps: ['Float', 'Vector']
 - clamp (bool): True
 
-#### Returns:
-- socket `vector`
+Returns:
+    socket `vector`
 
 
 
@@ -1735,8 +1735,8 @@ Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/
 #### Args:
 - vector: Vector
 
-#### Returns:
-- socket `vector`
+Returns:
+    socket `vector`
 
 
 
@@ -1756,8 +1756,8 @@ Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/
 #### Args:
 - vector: Vector
 
-#### Returns:
-- socket `vector`
+Returns:
+    socket `vector`
 
 
 
@@ -1777,8 +1777,8 @@ Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/
 #### Args:
 - vector: Vector
 
-#### Returns:
-- socket `vector`
+Returns:
+    socket `vector`
 
 
 
@@ -1798,8 +1798,8 @@ Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/
 #### Args:
 - vector: Vector
 
-#### Returns:
-- socket `vector`
+Returns:
+    socket `vector`
 
 
 
@@ -1822,8 +1822,8 @@ Developer reference [ShaderNodeMix](https://docs.blender.org/api/current/bpy.typ
 - clamp_factor (bool): True
 - factor_mode (str): 'UNIFORM' in [UNIFORM, NON_UNIFORM]
 
-#### Returns:
-- socket `result`
+Returns:
+    socket `result`
 
 
 
@@ -1845,8 +1845,8 @@ Developer reference [ShaderNodeMix](https://docs.blender.org/api/current/bpy.typ
 - vector: ['Float', 'Vector', 'Color']
 - clamp_factor (bool): True
 
-#### Returns:
-- socket `result`
+Returns:
+    socket `result`
 
 
 
@@ -1867,8 +1867,8 @@ Developer reference [ShaderNodeMix](https://docs.blender.org/api/current/bpy.typ
 - vector: ['Float', 'Vector', 'Color']
 - clamp_factor (bool): True
 
-#### Returns:
-- socket `result`
+Returns:
+    socket `result`
 
 
 
@@ -1888,8 +1888,8 @@ Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/
 #### Args:
 - vector: Vector
 
-#### Returns:
-- socket `vector`
+Returns:
+    socket `vector`
 
 
 
@@ -1909,8 +1909,8 @@ Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/
 #### Args:
 - vector: Vector
 
-#### Returns:
-- socket `vector`
+Returns:
+    socket `vector`
 
 
 
@@ -1931,8 +1931,8 @@ Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/
 - multiplier: Vector
 - addend: Vector
 
-#### Returns:
-- socket `vector`
+Returns:
+    socket `vector`
 
 
 
@@ -1952,8 +1952,8 @@ Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/
 #### Args:
 - vector: Vector
 
-#### Returns:
-- socket `vector`
+Returns:
+    socket `vector`
 
 
 
@@ -1974,8 +1974,8 @@ Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/
 - multiplier: Vector
 - addend: Vector
 
-#### Returns:
-- socket `vector`
+Returns:
+    socket `vector`
 
 
 
@@ -1992,8 +1992,8 @@ def normalize(self)
 Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
 Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 
-#### Returns:
-- socket `vector`
+Returns:
+    socket `vector`
 
 
 
@@ -2031,8 +2031,8 @@ Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/
 #### Args:
 - vector: Vector
 
-#### Returns:
-- socket `vector`
+Returns:
+    socket `vector`
 
 
 
@@ -2052,8 +2052,8 @@ Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/
 #### Args:
 - vector: Vector
 
-#### Returns:
-- socket `vector`
+Returns:
+    socket `vector`
 
 
 
@@ -2074,8 +2074,8 @@ Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/
 - vector: Vector
 - ior: Float
 
-#### Returns:
-- socket `vector`
+Returns:
+    socket `vector`
 
 
 
@@ -2144,8 +2144,8 @@ Developer reference [ShaderNodeVectorRotate](https://docs.blender.org/api/curren
 - angle: Float
 - invert (bool): False
 
-#### Returns:
-- socket `vector`
+Returns:
+    socket `vector`
 
 
 
@@ -2167,8 +2167,8 @@ Developer reference [ShaderNodeVectorRotate](https://docs.blender.org/api/curren
 - rotation: Vector
 - invert (bool): False
 
-#### Returns:
-- socket `vector`
+Returns:
+    socket `vector`
 
 
 
@@ -2190,8 +2190,8 @@ Developer reference [ShaderNodeVectorRotate](https://docs.blender.org/api/curren
 - angle: Float
 - invert (bool): False
 
-#### Returns:
-- socket `vector`
+Returns:
+    socket `vector`
 
 
 
@@ -2213,8 +2213,8 @@ Developer reference [ShaderNodeVectorRotate](https://docs.blender.org/api/curren
 - angle: Float
 - invert (bool): False
 
-#### Returns:
-- socket `vector`
+Returns:
+    socket `vector`
 
 
 
@@ -2236,8 +2236,8 @@ Developer reference [ShaderNodeVectorRotate](https://docs.blender.org/api/curren
 - angle: Float
 - invert (bool): False
 
-#### Returns:
-- socket `vector`
+Returns:
+    socket `vector`
 
 
 
@@ -2257,8 +2257,8 @@ Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/
 #### Args:
 - scale: Float
 
-#### Returns:
-- socket `vector`
+Returns:
+    socket `vector`
 
 
 
@@ -2275,8 +2275,8 @@ def sin(self)
 Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
 Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 
-#### Returns:
-- socket `vector`
+Returns:
+    socket `vector`
 
 
 
@@ -2293,8 +2293,8 @@ def sine(self)
 Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
 Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 
-#### Returns:
-- socket `vector`
+Returns:
+    socket `vector`
 
 
 
@@ -2314,8 +2314,8 @@ Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/
 #### Args:
 - increment: Vector
 
-#### Returns:
-- socket `vector`
+Returns:
+    socket `vector`
 
 
 
@@ -2388,8 +2388,8 @@ Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/
 #### Args:
 - vector: Vector
 
-#### Returns:
-- socket `vector`
+Returns:
+    socket `vector`
 
 
 
@@ -2409,8 +2409,8 @@ Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/
 #### Args:
 - vector: Vector
 
-#### Returns:
-- socket `vector`
+Returns:
+    socket `vector`
 
 
 
@@ -2431,8 +2431,8 @@ Developer reference [GeometryNodeSwitch](https://docs.blender.org/api/current/bp
 - switch: Boolean
 - true: Vector
 
-#### Returns:
-- socket `output`
+Returns:
+    socket `output`
 
 
 
@@ -2449,8 +2449,8 @@ def tan(self)
 Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
 Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 
-#### Returns:
-- socket `vector`
+Returns:
+    socket `vector`
 
 
 
@@ -2467,8 +2467,8 @@ def tangent(self)
 Node reference [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html)
 Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 
-#### Returns:
-- socket `vector`
+Returns:
+    socket `vector`
 
 
 
@@ -2526,8 +2526,8 @@ Developer reference [ShaderNodeVectorMath](https://docs.blender.org/api/current/
 - max: Vector
 - min: Vector
 
-#### Returns:
-- socket `vector`
+Returns:
+    socket `vector`
 
 
 

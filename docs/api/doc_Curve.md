@@ -25,8 +25,8 @@
 Node reference [ID](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/id.html)
 Developer reference [GeometryNodeInputID](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputID.html)
 
-#### Returns:
-- socket `ID`
+Returns:
+    socket `ID`
 
 
 
@@ -49,8 +49,8 @@ Developer reference [GeometryNodeInputID](https://docs.blender.org/api/current/b
 Node reference [Bounding Box](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/bounding_box.html)
 Developer reference [GeometryNodeBoundBox](https://docs.blender.org/api/current/bpy.types.GeometryNodeBoundBox.html)
 
-#### Returns:
-- socket `bounding_box` [Mesh](Mesh.md)
+Returns:
+    socket `bounding_box` [Mesh](Mesh.md)
 
 
 
@@ -61,8 +61,8 @@ Developer reference [GeometryNodeBoundBox](https://docs.blender.org/api/current/
 Node reference [Bounding Box](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/bounding_box.html)
 Developer reference [GeometryNodeBoundBox](https://docs.blender.org/api/current/bpy.types.GeometryNodeBoundBox.html)
 
-#### Returns:
-- socket `max`
+Returns:
+    socket `max`
 
 
 
@@ -73,8 +73,8 @@ Developer reference [GeometryNodeBoundBox](https://docs.blender.org/api/current/
 Node reference [Convex Hull](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/convex_hull.html)
 Developer reference [GeometryNodeConvexHull](https://docs.blender.org/api/current/bpy.types.GeometryNodeConvexHull.html)
 
-#### Returns:
-- socket `convex_hull` [Mesh](Mesh.md)
+Returns:
+    socket `convex_hull` [Mesh](Mesh.md)
 
 
 
@@ -85,8 +85,8 @@ Developer reference [GeometryNodeConvexHull](https://docs.blender.org/api/curren
 Node reference [Separate Components](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/separate_components.html)
 Developer reference [GeometryNodeSeparateComponents](https://docs.blender.org/api/current/bpy.types.GeometryNodeSeparateComponents.html)
 
-#### Returns:
-- socket `curve` [Curve](Curve.md)
+Returns:
+    socket `curve` [Curve](Curve.md)
 
 
 
@@ -97,8 +97,8 @@ Developer reference [GeometryNodeSeparateComponents](https://docs.blender.org/ap
 Node reference [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html)
 Developer reference [GeometryNodeAttributeDomainSize](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html)
 
-#### Returns:
-- node with sockets ['point_count', 'edge_count', 'face_count', 'face_corner_count', 'spline_count', 'instance_count']
+Returns:
+    node with sockets ['point_count', 'edge_count', 'face_count', 'face_corner_count', 'spline_count', 'instance_count']
 
 
 
@@ -109,8 +109,8 @@ Developer reference [GeometryNodeAttributeDomainSize](https://docs.blender.org/a
 Node reference [Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/input_index.html)
 Developer reference [GeometryNodeInputIndex](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputIndex.html)
 
-#### Returns:
-- socket `index`
+Returns:
+    socket `index`
 
 
 
@@ -121,8 +121,8 @@ Developer reference [GeometryNodeInputIndex](https://docs.blender.org/api/curren
 Node reference [Separate Components](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/separate_components.html)
 Developer reference [GeometryNodeSeparateComponents](https://docs.blender.org/api/current/bpy.types.GeometryNodeSeparateComponents.html)
 
-#### Returns:
-- socket `instances` [Instances](Instances.md)
+Returns:
+    socket `instances` [Instances](Instances.md)
 
 
 
@@ -145,8 +145,8 @@ Developer reference [GeometryNodeSeparateComponents](https://docs.blender.org/ap
 Node reference [Is Viewport](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/is_viewport.html)
 Developer reference [GeometryNodeIsViewport](https://docs.blender.org/api/current/bpy.types.GeometryNodeIsViewport.html)
 
-#### Returns:
-- socket `is_viewport`
+Returns:
+    socket `is_viewport`
 
 
 
@@ -157,8 +157,8 @@ Developer reference [GeometryNodeIsViewport](https://docs.blender.org/api/curren
 Node reference [Curve Length](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/curve_length.html)
 Developer reference [GeometryNodeCurveLength](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveLength.html)
 
-#### Returns:
-- socket `length`
+Returns:
+    socket `length`
 
 
 
@@ -175,8 +175,8 @@ Developer reference [GeometryNodeCurveLength](https://docs.blender.org/api/curre
 Node reference [Material Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/material_index.html)
 Developer reference [GeometryNodeInputMaterialIndex](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMaterialIndex.html)
 
-#### Returns:
-- socket `material_index`
+Returns:
+    socket `material_index`
 
 
 
@@ -187,8 +187,8 @@ Developer reference [GeometryNodeInputMaterialIndex](https://docs.blender.org/ap
 Node reference [Separate Components](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/separate_components.html)
 Developer reference [GeometryNodeSeparateComponents](https://docs.blender.org/api/current/bpy.types.GeometryNodeSeparateComponents.html)
 
-#### Returns:
-- socket `mesh` [Mesh](Mesh.md)
+Returns:
+    socket `mesh` [Mesh](Mesh.md)
 
 
 
@@ -211,8 +211,8 @@ Developer reference [GeometryNodeSeparateComponents](https://docs.blender.org/ap
 Node reference [Normal](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/normal.html)
 Developer reference [GeometryNodeInputNormal](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputNormal.html)
 
-#### Returns:
-- socket `normal`
+Returns:
+    socket `normal`
 
 
 
@@ -223,8 +223,8 @@ Developer reference [GeometryNodeInputNormal](https://docs.blender.org/api/curre
 Node reference [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html)
 Developer reference [GeometryNodeAttributeDomainSize](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html)
 
-#### Returns:
-- socket `point_count`
+Returns:
+    socket `point_count`
 
 
 
@@ -235,8 +235,8 @@ Developer reference [GeometryNodeAttributeDomainSize](https://docs.blender.org/a
 Node reference [Separate Components](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/separate_components.html)
 Developer reference [GeometryNodeSeparateComponents](https://docs.blender.org/api/current/bpy.types.GeometryNodeSeparateComponents.html)
 
-#### Returns:
-- socket `point_cloud` [Points](Points.md)
+Returns:
+    socket `point_cloud` [Points](Points.md)
 
 
 
@@ -247,8 +247,8 @@ Developer reference [GeometryNodeSeparateComponents](https://docs.blender.org/ap
 Node reference [Position](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/position.html)
 Developer reference [GeometryNodeInputPosition](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputPosition.html)
 
-#### Returns:
-- socket `position`
+Returns:
+    socket `position`
 
 
 
@@ -259,8 +259,8 @@ Developer reference [GeometryNodeInputPosition](https://docs.blender.org/api/cur
 Node reference [Radius](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/radius.html)
 Developer reference [GeometryNodeInputRadius](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputRadius.html)
 
-#### Returns:
-- socket `radius`
+Returns:
+    socket `radius`
 
 
 
@@ -271,14 +271,14 @@ Developer reference [GeometryNodeInputRadius](https://docs.blender.org/api/curre
 Node reference [Separate Components](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/separate_components.html)
 Developer reference [GeometryNodeSeparateComponents](https://docs.blender.org/api/current/bpy.types.GeometryNodeSeparateComponents.html)
 
-#### Returns:
-- node with sockets ['mesh', 'point_cloud', 'curve', 'volume', 'instances']
+Returns:
+    node with sockets ['mesh', 'point_cloud', 'curve', 'volume', 'instances']
 
 
 
 ### socket_index
 
-#### Returns:
+ Return the index of the socket within the list of node sockets.
 
 Depending on the _is_output_ property, the socket belongs either to *node.inputs* or
 *node.outputs*.
@@ -293,8 +293,8 @@ Depending on the _is_output_ property, the socket belongs either to *node.inputs
 Node reference [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html)
 Developer reference [GeometryNodeAttributeDomainSize](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html)
 
-#### Returns:
-- socket `spline_count`
+Returns:
+    socket `spline_count`
 
 
 
@@ -305,8 +305,8 @@ Developer reference [GeometryNodeAttributeDomainSize](https://docs.blender.org/a
 Node reference [Separate Components](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/separate_components.html)
 Developer reference [GeometryNodeSeparateComponents](https://docs.blender.org/api/current/bpy.types.GeometryNodeSeparateComponents.html)
 
-#### Returns:
-- socket `volume` [Volume](Volume.md)
+Returns:
+    socket `volume` [Volume](Volume.md)
 
 
 
@@ -332,8 +332,8 @@ Developer reference [GeometryNodeCurveArc](https://docs.blender.org/api/current/
 - connect_center: Boolean
 - invert_arc: Boolean
 
-#### Returns:
-- socket `curve`
+Returns:
+    socket `curve`
 
 
 
@@ -360,8 +360,8 @@ Developer reference [GeometryNodeCurveArc](https://docs.blender.org/api/current/
 - connect_center: Boolean
 - invert_arc: Boolean
 
-#### Returns:
-- node with sockets ['curve', 'center', 'normal', 'radius']
+Returns:
+    node with sockets ['curve', 'center', 'normal', 'radius']
 
 
 
@@ -383,8 +383,8 @@ Developer reference [GeometryNodeCurvePrimitiveCircle](https://docs.blender.org/
 - resolution: Integer
 - radius: Float
 
-#### Returns:
-- socket `curve`
+Returns:
+    socket `curve`
 
 
 
@@ -408,8 +408,8 @@ Developer reference [GeometryNodeCurvePrimitiveCircle](https://docs.blender.org/
 - point_2: Vector
 - point_3: Vector
 
-#### Returns:
-- node with sockets ['curve', 'center']
+Returns:
+    node with sockets ['curve', 'center']
 
 
 
@@ -433,8 +433,8 @@ Developer reference [GeometryNodeCollectionInfo](https://docs.blender.org/api/cu
 - reset_children: Boolean
 - transform_space (str): 'ORIGINAL' in [ORIGINAL, RELATIVE]
 
-#### Returns:
-- socket `geometry`
+Returns:
+    socket `geometry`
 
 
 
@@ -468,8 +468,8 @@ def Input(cls, name = None, description = "")
 - name: The socket name
 - description: User tip
     
-#### Returns:
-- Geometry: The Geometry data socket
+Returns:
+    Geometry: The Geometry data socket
     
 Note
 ----
@@ -497,8 +497,8 @@ Developer reference [GeometryNodeCurvePrimitiveLine](https://docs.blender.org/ap
 - start: Vector
 - end: Vector
 
-#### Returns:
-- socket `curve`
+Returns:
+    socket `curve`
 
 
 
@@ -521,8 +521,8 @@ Developer reference [GeometryNodeCurvePrimitiveLine](https://docs.blender.org/ap
 - direction: Vector
 - length: Float
 
-#### Returns:
-- socket `curve`
+Returns:
+    socket `curve`
 
 
 
@@ -546,8 +546,8 @@ Developer reference [GeometryNodeCurveQuadraticBezier](https://docs.blender.org/
 - middle: Vector
 - end: Vector
 
-#### Returns:
-- socket `curve`
+Returns:
+    socket `curve`
 
 
 
@@ -579,8 +579,8 @@ Developer reference [GeometryNodeCurvePrimitiveQuadrilateral](https://docs.blend
 - point_4: Vector
 - mode (str): 'RECTANGLE' in [RECTANGLE, PARALLELOGRAM, TRAPEZOID, KITE, POINTS]
 
-#### Returns:
-- socket `curve`
+Returns:
+    socket `curve`
 
 
 
@@ -606,8 +606,8 @@ Developer reference [GeometryNodeCurveSpiral](https://docs.blender.org/api/curre
 - height: Float
 - reverse: Boolean
 
-#### Returns:
-- socket `curve`
+Returns:
+    socket `curve`
 
 
 
@@ -631,8 +631,8 @@ Developer reference [GeometryNodeCurveStar](https://docs.blender.org/api/current
 - outer_radius: Float
 - twist: Float
 
-#### Returns:
-- node with sockets ['curve', 'outer_points']
+Returns:
+    node with sockets ['curve', 'outer_points']
 
 
 
@@ -658,8 +658,8 @@ Developer reference [GeometryNodeCurvePrimitiveBezierSegment](https://docs.blend
 - end: Vector
 - mode (str): 'POSITION' in [POSITION, OFFSET]
 
-#### Returns:
-- socket `curve`
+Returns:
+    socket `curve`
 
 
 
@@ -813,7 +813,7 @@ def gives_bsocket(value)
 :return: True if *value* is or wraps a socket
 :rtype: bool
 
-#### Returns:
+Returns True if value is:
     
 - A Blender Geometry Node Socket
 - An instance of Socket        
@@ -867,7 +867,7 @@ def is_vector(value)
 def value_data_type(value, default='FLOAT', color_domain='FLOAT_COLOR')
 ```
 
-#### Returns:
+ Returns the domain to which the socket belongs
 
 :param value: The socket
 :type value: any
@@ -931,8 +931,8 @@ Developer reference [GeometryNodeAttributeStatistic](https://docs.blender.org/ap
 - attribute: ['Float', 'Vector']
 - domain (str): 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
 
-#### Returns:
-- node with sockets ['mean', 'median', 'sum', 'min', 'max', 'range', 'standard_deviation', 'variance']
+Returns:
+    node with sockets ['mean', 'median', 'sum', 'min', 'max', 'range', 'standard_deviation', 'variance']
 
 
 
@@ -953,8 +953,8 @@ Developer reference [GeometryNodeCaptureAttribute](https://docs.blender.org/api/
 - value: ['Vector', 'Float', 'Color', 'Boolean', 'Integer']
 - domain (str): 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
 
-#### Returns:
-- socket `attribute`
+Returns:
+    socket `attribute`
 
 
 
@@ -977,8 +977,8 @@ Developer reference [GeometryNodeCaptureAttribute](https://docs.blender.org/api/
 - data_type (str): 'FLOAT' in [FLOAT, INT, FLOAT_VECTOR, FLOAT_COLOR, BOOLEAN]
 - domain (str): 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
 
-#### Returns:
-- node with sockets ['geometry', 'attribute']
+Returns:
+    node with sockets ['geometry', 'attribute']
 
 
 
@@ -990,7 +990,7 @@ Developer reference [GeometryNodeCaptureAttribute](https://docs.blender.org/api/
 def connected_sockets(self)
 ```
 
-#### Returns:
+ Returns the list of Socket instances linked to this socket.
 
 
 
@@ -1011,8 +1011,8 @@ Developer reference [GeometryNodeCurveOfPoint](https://docs.blender.org/api/curr
 #### Args:
 - point_index: Integer
 
-#### Returns:
-- tuple ('curve_index', 'index_in_curve')
+Returns:
+    tuple ('curve_index', 'index_in_curve')
 
 
 
@@ -1029,8 +1029,8 @@ def deform_on_surface(self)
 Node reference [Deform Curves on Surface](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/deform_curves_on_surface.html)
 Developer reference [GeometryNodeDeformCurvesOnSurface](https://docs.blender.org/api/current/bpy.types.GeometryNodeDeformCurvesOnSurface.html)
 
-#### Returns:
-- node with sockets ['curves']
+Returns:
+    node with sockets ['curves']
 
 
 
@@ -1052,8 +1052,8 @@ Developer reference [GeometryNodeDeleteGeometry](https://docs.blender.org/api/cu
 - domain (str): 'POINT' in [POINT, EDGE, FACE, CURVE, INSTANCE]
 - mode (str): 'ALL' in [ALL, EDGE_FACE, ONLY_FACE]
 
-#### Returns:
-- node with sockets ['geometry']
+Returns:
+    node with sockets ['geometry']
 
 
 
@@ -1075,8 +1075,8 @@ Developer reference [GeometryNodeDuplicateElements](https://docs.blender.org/api
 - amount: Integer
 - domain (str): 'POINT' in [POINT, EDGE, FACE, SPLINE, INSTANCE]
 
-#### Returns:
-- socket `duplicate_index`
+Returns:
+    socket `duplicate_index`
 
 
 
@@ -1098,8 +1098,8 @@ Developer reference [GeometryNodeFieldAtIndex](https://docs.blender.org/api/curr
 - value: ['Float', 'Integer', 'Vector', 'Color', 'Boolean']
 - domain (str): 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
 
-#### Returns:
-- socket `value`
+Returns:
+    socket `value`
 
 
 
@@ -1120,8 +1120,8 @@ Developer reference [GeometryNodeFillCurve](https://docs.blender.org/api/current
 - curve: Curve
 - mode (str): 'TRIANGLES' in [TRIANGLES, NGONS]
 
-#### Returns:
-- socket `mesh` [Mesh](Mesh.md)
+Returns:
+    socket `mesh` [Mesh](Mesh.md)
 
 
 
@@ -1141,8 +1141,8 @@ Developer reference [GeometryNodeFillCurve](https://docs.blender.org/api/current
 #### Args:
 - curve: Curve
 
-#### Returns:
-- socket `mesh` [Mesh](Mesh.md)
+Returns:
+    socket `mesh` [Mesh](Mesh.md)
 
 
 
@@ -1162,8 +1162,8 @@ Developer reference [GeometryNodeFillCurve](https://docs.blender.org/api/current
 #### Args:
 - curve: Curve
 
-#### Returns:
-- socket `mesh` [Mesh](Mesh.md)
+Returns:
+    socket `mesh` [Mesh](Mesh.md)
 
 
 
@@ -1186,8 +1186,8 @@ Developer reference [GeometryNodeFilletCurve](https://docs.blender.org/api/curre
 - limit_radius: Boolean
 - mode (str): 'BEZIER' in [BEZIER, POLY]
 
-#### Returns:
-- node with sockets ['curve']
+Returns:
+    node with sockets ['curve']
 
 
 
@@ -1208,8 +1208,8 @@ Developer reference [GeometryNodeFilletCurve](https://docs.blender.org/api/curre
 - radius: Float
 - limit_radius: Boolean
 
-#### Returns:
-- node with sockets ['curve']
+Returns:
+    node with sockets ['curve']
 
 
 
@@ -1231,8 +1231,8 @@ Developer reference [GeometryNodeFilletCurve](https://docs.blender.org/api/curre
 - radius: Float
 - limit_radius: Boolean
 
-#### Returns:
-- node with sockets ['curve']
+Returns:
+    node with sockets ['curve']
 
 
 
@@ -1244,7 +1244,7 @@ Developer reference [GeometryNodeFilletCurve](https://docs.blender.org/api/curre
 def get_blender_socket(self)
 ```
 
-#### Returns:
+ Returns the property bsocket.
 
 :return: self.bsocket
 :rtype: bpy.types.NodeSocket
@@ -1268,8 +1268,8 @@ Developer reference [GeometryNodeInputNamedAttribute](https://docs.blender.org/a
 #### Args:
 - name: String
 
-#### Returns:
-- socket `attribute`
+Returns:
+    socket `attribute`
 
 
 
@@ -1289,8 +1289,8 @@ Developer reference [GeometryNodeInputNamedAttribute](https://docs.blender.org/a
 #### Args:
 - name: String
 
-#### Returns:
-- socket `attribute`
+Returns:
+    socket `attribute`
 
 
 
@@ -1310,8 +1310,8 @@ Developer reference [GeometryNodeInputNamedAttribute](https://docs.blender.org/a
 #### Args:
 - name: String
 
-#### Returns:
-- socket `attribute`
+Returns:
+    socket `attribute`
 
 
 
@@ -1331,8 +1331,8 @@ Developer reference [GeometryNodeInputNamedAttribute](https://docs.blender.org/a
 #### Args:
 - name: String
 
-#### Returns:
-- socket `attribute`
+Returns:
+    socket `attribute`
 
 
 
@@ -1352,8 +1352,8 @@ Developer reference [GeometryNodeInputNamedAttribute](https://docs.blender.org/a
 #### Args:
 - name: String
 
-#### Returns:
-- socket `attribute`
+Returns:
+    socket `attribute`
 
 
 
@@ -1406,8 +1406,8 @@ Developer reference [GeometryNodeInstanceOnPoints](https://docs.blender.org/api/
 - rotation: Vector
 - scale: Vector
 
-#### Returns:
-- socket `instances`
+Returns:
+    socket `instances`
 
 
 
@@ -1425,8 +1425,8 @@ def instantiate(self, count = 1, realize = False)
 - count: Number of instances to create
 - realize: True to realize the instances
     
-#### Returns:
-- Instances or Geometry
+Returns:
+    Instances or Geometry
     
 The duplication is performed by instantiating the geometry along the vertices
 of a Mesh Line initialized with `count` points.
@@ -1462,8 +1462,8 @@ Developer reference [GeometryNodeFieldOnDomain](https://docs.blender.org/api/cur
 - value: ['Float', 'Integer', 'Vector', 'Color', 'Boolean']
 - domain (str): 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
 
-#### Returns:
-- socket `value`
+Returns:
+    socket `value`
 
 
 
@@ -1483,8 +1483,8 @@ Developer reference [GeometryNodeJoinGeometry](https://docs.blender.org/api/curr
 #### Args:
 - geometry: <m>Geometry
 
-#### Returns:
-- node with sockets ['geometry']
+Returns:
+    node with sockets ['geometry']
 
 
 
@@ -1504,8 +1504,8 @@ Developer reference [GeometryNodeMaterialSelection](https://docs.blender.org/api
 #### Args:
 - material: Material
 
-#### Returns:
-- socket `selection`
+Returns:
+    socket `selection`
 
 
 
@@ -1527,8 +1527,8 @@ Developer reference [GeometryNodeMergeByDistance](https://docs.blender.org/api/c
 - distance: Float
 - mode (str): 'ALL' in [ALL, CONNECTED]
 
-#### Returns:
-- node with sockets ['geometry']
+Returns:
+    node with sockets ['geometry']
 
 
 
@@ -1549,8 +1549,8 @@ Developer reference [GeometryNodeInputNamedAttribute](https://docs.blender.org/a
 - name: String
 - data_type (str): 'FLOAT' in [FLOAT, INT, FLOAT_VECTOR, FLOAT_COLOR, BOOLEAN]
 
-#### Returns:
-- socket `attribute`
+Returns:
+    socket `attribute`
 
 
 
@@ -1571,8 +1571,8 @@ Developer reference [GeometryNodeOffsetPointInCurve](https://docs.blender.org/ap
 - point_index: Integer
 - offset: Integer
 
-#### Returns:
-- tuple ('is_valid_offset', 'point_index')
+Returns:
+    tuple ('is_valid_offset', 'point_index')
 
 
 
@@ -1612,8 +1612,8 @@ Developer reference [GeometryNodePointsOfCurve](https://docs.blender.org/api/cur
 - weights: Float
 - sort_index: Integer
 
-#### Returns:
-- tuple ('point_index', 'total')
+Returns:
+    tuple ('point_index', 'total')
 
 
 
@@ -1635,8 +1635,8 @@ Developer reference [GeometryNodeProximity](https://docs.blender.org/api/current
 - source_position: Vector
 - target_element (str): 'FACES' in [POINTS, EDGES, FACES]
 
-#### Returns:
-- socket `distance`
+Returns:
+    socket `distance`
 
 
 
@@ -1657,8 +1657,8 @@ Developer reference [GeometryNodeProximity](https://docs.blender.org/api/current
 - target: Geometry
 - source_position: Vector
 
-#### Returns:
-- socket `distance`
+Returns:
+    socket `distance`
 
 
 
@@ -1679,8 +1679,8 @@ Developer reference [GeometryNodeProximity](https://docs.blender.org/api/current
 - target: Geometry
 - source_position: Vector
 
-#### Returns:
-- socket `distance`
+Returns:
+    socket `distance`
 
 
 
@@ -1701,8 +1701,8 @@ Developer reference [GeometryNodeProximity](https://docs.blender.org/api/current
 - target: Geometry
 - source_position: Vector
 
-#### Returns:
-- socket `distance`
+Returns:
+    socket `distance`
 
 
 
@@ -1724,8 +1724,8 @@ Developer reference [FunctionNodeRandomValue](https://docs.blender.org/api/curre
 - ID: Integer
 - seed: Integer
 
-#### Returns:
-- socket `value`
+Returns:
+    socket `value`
 
 
 
@@ -1748,8 +1748,8 @@ Developer reference [FunctionNodeRandomValue](https://docs.blender.org/api/curre
 - ID: Integer
 - seed: Integer
 
-#### Returns:
-- socket `value`
+Returns:
+    socket `value`
 
 
 
@@ -1772,8 +1772,8 @@ Developer reference [FunctionNodeRandomValue](https://docs.blender.org/api/curre
 - ID: Integer
 - seed: Integer
 
-#### Returns:
-- socket `value`
+Returns:
+    socket `value`
 
 
 
@@ -1796,8 +1796,8 @@ Developer reference [FunctionNodeRandomValue](https://docs.blender.org/api/curre
 - ID: Integer
 - seed: Integer
 
-#### Returns:
-- socket `value`
+Returns:
+    socket `value`
 
 
 
@@ -1822,8 +1822,8 @@ Developer reference [GeometryNodeRaycast](https://docs.blender.org/api/current/b
 - ray_length: Float
 - mapping (str): 'INTERPOLATED' in [INTERPOLATED, NEAREST]
 
-#### Returns:
-- node with sockets ['is_hit', 'hit_position', 'hit_normal', 'hit_distance', 'attribute']
+Returns:
+    node with sockets ['is_hit', 'hit_position', 'hit_normal', 'hit_distance', 'attribute']
 
 
 
@@ -1847,8 +1847,8 @@ Developer reference [GeometryNodeRaycast](https://docs.blender.org/api/current/b
 - ray_direction: Vector
 - ray_length: Float
 
-#### Returns:
-- node with sockets ['is_hit', 'hit_position', 'hit_normal', 'hit_distance', 'attribute']
+Returns:
+    node with sockets ['is_hit', 'hit_position', 'hit_normal', 'hit_distance', 'attribute']
 
 
 
@@ -1872,8 +1872,8 @@ Developer reference [GeometryNodeRaycast](https://docs.blender.org/api/current/b
 - ray_direction: Vector
 - ray_length: Float
 
-#### Returns:
-- node with sockets ['is_hit', 'hit_position', 'hit_normal', 'hit_distance', 'attribute']
+Returns:
+    node with sockets ['is_hit', 'hit_position', 'hit_normal', 'hit_distance', 'attribute']
 
 
 
@@ -1893,8 +1893,8 @@ Developer reference [GeometryNodeRemoveAttribute](https://docs.blender.org/api/c
 #### Args:
 - name: String
 
-#### Returns:
-- node with sockets ['geometry']
+Returns:
+    node with sockets ['geometry']
 
 
 
@@ -1915,8 +1915,8 @@ Developer reference [GeometryNodeReplaceMaterial](https://docs.blender.org/api/c
 - old: Material
 - new: Material
 
-#### Returns:
-- node with sockets ['geometry']
+Returns:
+    node with sockets ['geometry']
 
 
 
@@ -1951,8 +1951,8 @@ Developer reference [GeometryNodeResampleCurve](https://docs.blender.org/api/cur
 - length: Float
 - mode (str): 'COUNT' in [EVALUATED, COUNT, LENGTH]
 
-#### Returns:
-- node with sockets ['curve']
+Returns:
+    node with sockets ['curve']
 
 
 
@@ -1973,8 +1973,8 @@ Developer reference [GeometryNodeResampleCurve](https://docs.blender.org/api/cur
 - selection: Boolean
 - count: Integer
 
-#### Returns:
-- node with sockets ['curve']
+Returns:
+    node with sockets ['curve']
 
 
 
@@ -1994,8 +1994,8 @@ Developer reference [GeometryNodeResampleCurve](https://docs.blender.org/api/cur
 #### Args:
 - selection: Boolean
 
-#### Returns:
-- node with sockets ['curve']
+Returns:
+    node with sockets ['curve']
 
 
 
@@ -2016,8 +2016,8 @@ Developer reference [GeometryNodeResampleCurve](https://docs.blender.org/api/cur
 - selection: Boolean
 - length: Float
 
-#### Returns:
-- node with sockets ['curve']
+Returns:
+    node with sockets ['curve']
 
 
 
@@ -2071,8 +2071,8 @@ Developer reference [GeometryNodeReverseCurve](https://docs.blender.org/api/curr
 #### Args:
 - selection: Boolean
 
-#### Returns:
-- node with sockets ['curve']
+Returns:
+    node with sockets ['curve']
 
 
 
@@ -2098,8 +2098,8 @@ Developer reference [GeometryNodeSampleCurve](https://docs.blender.org/api/curre
 - mode (str): 'FACTOR' in [FACTOR, LENGTH]
 - use_all_curves (bool): False
 
-#### Returns:
-- node with sockets ['value', 'position', 'tangent', 'normal']
+Returns:
+    node with sockets ['value', 'position', 'tangent', 'normal']
 
 
 
@@ -2122,8 +2122,8 @@ Developer reference [GeometryNodeSampleIndex](https://docs.blender.org/api/curre
 - clamp (bool): False
 - domain (str): 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
 
-#### Returns:
-- socket `value`
+Returns:
+    socket `value`
 
 
 
@@ -2144,8 +2144,8 @@ Developer reference [GeometryNodeSampleNearest](https://docs.blender.org/api/cur
 - sample_position: Vector
 - domain (str): 'POINT' in [POINT, EDGE, FACE, CORNER]
 
-#### Returns:
-- socket `index`
+Returns:
+    socket `index`
 
 
 
@@ -2167,8 +2167,8 @@ Developer reference [GeometryNodeSeparateGeometry](https://docs.blender.org/api/
 - selection: Boolean
 - domain (str): 'POINT' in [POINT, EDGE, FACE, CURVE, INSTANCE]
 
-#### Returns:
-- tuple ('selection', 'inverted')
+Returns:
+    tuple ('selection', 'inverted')
 
 
 
@@ -2189,8 +2189,8 @@ Developer reference [GeometryNodeSetID](https://docs.blender.org/api/current/bpy
 - selection: Boolean
 - ID: Integer
 
-#### Returns:
-- node with sockets ['geometry']
+Returns:
+    node with sockets ['geometry']
 
 
 
@@ -2211,8 +2211,8 @@ Developer reference [GeometryNodeSetMaterial](https://docs.blender.org/api/curre
 - selection: Boolean
 - material: Material
 
-#### Returns:
-- node with sockets ['geometry']
+Returns:
+    node with sockets ['geometry']
 
 
 
@@ -2233,8 +2233,8 @@ Developer reference [GeometryNodeSetMaterialIndex](https://docs.blender.org/api/
 - selection: Boolean
 - material_index: Integer
 
-#### Returns:
-- node with sockets ['geometry']
+Returns:
+    node with sockets ['geometry']
 
 
 
@@ -2256,8 +2256,8 @@ Developer reference [GeometryNodeStoreNamedAttribute](https://docs.blender.org/a
 - value: ['Vector', 'Float', 'Color', 'Boolean', 'Integer']
 - domain (str): 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
 
-#### Returns:
-- node with sockets ['geometry']
+Returns:
+    node with sockets ['geometry']
 
 
 
@@ -2279,8 +2279,8 @@ Developer reference [GeometryNodeStoreNamedAttribute](https://docs.blender.org/a
 - value: ['Vector', 'Float', 'Color', 'Boolean', 'Integer']
 - domain (str): 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
 
-#### Returns:
-- node with sockets ['geometry']
+Returns:
+    node with sockets ['geometry']
 
 
 
@@ -2302,8 +2302,8 @@ Developer reference [GeometryNodeStoreNamedAttribute](https://docs.blender.org/a
 - value: ['Vector', 'Float', 'Color', 'Boolean', 'Integer']
 - domain (str): 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
 
-#### Returns:
-- node with sockets ['geometry']
+Returns:
+    node with sockets ['geometry']
 
 
 
@@ -2325,8 +2325,8 @@ Developer reference [GeometryNodeStoreNamedAttribute](https://docs.blender.org/a
 - value: ['Vector', 'Float', 'Color', 'Boolean', 'Integer']
 - domain (str): 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
 
-#### Returns:
-- node with sockets ['geometry']
+Returns:
+    node with sockets ['geometry']
 
 
 
@@ -2348,8 +2348,8 @@ Developer reference [GeometryNodeStoreNamedAttribute](https://docs.blender.org/a
 - value: ['Vector', 'Float', 'Color', 'Boolean', 'Integer']
 - domain (str): 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
 
-#### Returns:
-- node with sockets ['geometry']
+Returns:
+    node with sockets ['geometry']
 
 
 
@@ -2371,8 +2371,8 @@ Developer reference [GeometryNodeSetPosition](https://docs.blender.org/api/curre
 - position: Vector
 - offset: Vector
 
-#### Returns:
-- node with sockets ['geometry']
+Returns:
+    node with sockets ['geometry']
 
 
 
@@ -2386,8 +2386,8 @@ def show_handles(self)
 
  Generate a mesh and cloud points to visualize the control points and handles
 
-#### Returns:
-- Geometry: The geometry can be joined to the output
+Returns:
+    Geometry: The geometry can be joined to the output
     
 Example:
     
@@ -2474,8 +2474,8 @@ Developer reference [GeometryNodeStoreNamedAttribute](https://docs.blender.org/a
 - value: ['Vector', 'Float', 'Color', 'Boolean', 'Integer']
 - domain (str): 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
 
-#### Returns:
-- node with sockets ['geometry']
+Returns:
+    node with sockets ['geometry']
 
 
 
@@ -2495,8 +2495,8 @@ Developer reference [GeometryNodeSubdivideCurve](https://docs.blender.org/api/cu
 #### Args:
 - cuts: Integer
 
-#### Returns:
-- node with sockets ['curve']
+Returns:
+    node with sockets ['curve']
 
 
 
@@ -2517,8 +2517,8 @@ Developer reference [GeometryNodeSwitch](https://docs.blender.org/api/current/bp
 - switch: Boolean
 - true: Geometry
 
-#### Returns:
-- socket `output`
+Returns:
+    socket `output`
 
 
 
@@ -2538,8 +2538,8 @@ Developer reference [GeometryNodeGeometryToInstance](https://docs.blender.org/ap
 #### Args:
 - geometry: <m>Geometry
 
-#### Returns:
-- socket `instances` [Instances](Instances.md)
+Returns:
+    socket `instances` [Instances](Instances.md)
 
 
 
@@ -2560,8 +2560,8 @@ Developer reference [GeometryNodeCurveToMesh](https://docs.blender.org/api/curre
 - profile_curve: Geometry
 - fill_caps: Boolean
 
-#### Returns:
-- socket `mesh` [Mesh](Mesh.md)
+Returns:
+    socket `mesh` [Mesh](Mesh.md)
 
 
 
@@ -2603,8 +2603,8 @@ Developer reference [GeometryNodeCurveToPoints](https://docs.blender.org/api/cur
 - length: Float
 - mode (str): 'COUNT' in [EVALUATED, COUNT, LENGTH]
 
-#### Returns:
-- tuple ('points', 'tangent', 'normal', 'rotation')
+Returns:
+    tuple ('points', 'tangent', 'normal', 'rotation')
 
 
 
@@ -2624,8 +2624,8 @@ Developer reference [GeometryNodeCurveToPoints](https://docs.blender.org/api/cur
 #### Args:
 - count: Integer
 
-#### Returns:
-- tuple ('points', 'tangent', 'normal', 'rotation')
+Returns:
+    tuple ('points', 'tangent', 'normal', 'rotation')
 
 
 
@@ -2642,8 +2642,8 @@ def to_points_evaluated(self)
 Node reference [Curve to Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/curve_to_points.html)
 Developer reference [GeometryNodeCurveToPoints](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveToPoints.html)
 
-#### Returns:
-- tuple ('points', 'tangent', 'normal', 'rotation')
+Returns:
+    tuple ('points', 'tangent', 'normal', 'rotation')
 
 
 
@@ -2663,8 +2663,8 @@ Developer reference [GeometryNodeCurveToPoints](https://docs.blender.org/api/cur
 #### Args:
 - length: Float
 
-#### Returns:
-- tuple ('points', 'tangent', 'normal', 'rotation')
+Returns:
+    tuple ('points', 'tangent', 'normal', 'rotation')
 
 
 
@@ -2686,8 +2686,8 @@ Developer reference [GeometryNodeTransform](https://docs.blender.org/api/current
 - rotation: Vector
 - scale: Vector
 
-#### Returns:
-- node with sockets ['geometry']
+Returns:
+    node with sockets ['geometry']
 
 
 
@@ -2707,8 +2707,8 @@ Developer reference [GeometryNodeTrimCurve](https://docs.blender.org/api/current
 #### Args:
 - mode (str): 'FACTOR' in [FACTOR, LENGTH]
 
-#### Returns:
-- node with sockets ['curve']
+Returns:
+    node with sockets ['curve']
 
 
 
@@ -2729,8 +2729,8 @@ Developer reference [GeometryNodeTrimCurve](https://docs.blender.org/api/current
 - start: Float
 - end: Float
 
-#### Returns:
-- node with sockets ['curve']
+Returns:
+    node with sockets ['curve']
 
 
 
@@ -2751,8 +2751,8 @@ Developer reference [GeometryNodeTrimCurve](https://docs.blender.org/api/current
 - start: Float
 - end: Float
 
-#### Returns:
-- node with sockets ['curve']
+Returns:
+    node with sockets ['curve']
 
 
 

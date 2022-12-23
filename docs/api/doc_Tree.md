@@ -341,8 +341,8 @@ def get_bnode(self, bl_idname, label=None)
 - bl_idname (str): the node bl_idname
 - label (str): Node label
     
-#### Returns:
-- the blender node (bpy.types.GeometryNode)
+Returns:
+    the blender node (bpy.types.GeometryNode)
 
 At initialization time, some nodes (the ones which can be changed by UX) are kept
 in `old_bnodes` list. Before creating a new node, this list is scaned to find a node
@@ -364,8 +364,8 @@ def get_bnode_wrapper(self, bnode)
 #### Args:
 - bnode (bpy.types.NodeSocket): a blender node
     
-#### Returns:
-- The wrapping node (Node)
+Returns:
+    The wrapping node (Node)
 
 
 
@@ -383,8 +383,8 @@ def get_bsocket_wrapper(self, bsocket)
 #### Args:
 - bsocket (bpy.types.NodeSocket): a blender socket
     
-#### Returns:
-- The node wrapping the socket (Node)
+Returns:
+    The node wrapping the socket (Node)
 
 
 
@@ -456,8 +456,8 @@ def new_input(self, class_name, value=None, name=None, min_value=None, max_value
 - max_value (any): maximum value
 - description (str): user tip
 
-#### Returns:
-- DataSocket
+Returns:
+    DataSocket
 
 ```python
 res = tree.new_input('Integer', 10, "Resolution", min_value=2, max_value=100, description="Grid resolution")
@@ -485,8 +485,8 @@ def prev_node(self, index)
 #### Args:
 - index (int) : the unique id of the node to print
     
-#### Returns:
-- None
+Returns:
+    None
 
 When a node is tweaked to obtain the expected result, the changes will be lost
 next time the script will be run. By calling `prev_node` the parameters are printed

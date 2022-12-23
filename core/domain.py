@@ -144,40 +144,96 @@ class Selector:
 
 
 class Domain:
-    """ Root class for domains
+    """ 
+    **Domain** is the root class for:
+    - [Vertex](Vertex.md), node domain *'POINT'*
+    - [Edge](Edge.md), node domain *'EDGE'*
+    - [Face](Face.md), node domain *'FACE'*
+    - [Corner](Corner.md), node domain *'CORNER'*
+    - [ControlPoint](ControlPoint.md), node domain *'POINT'*
+    - [Spline](Spline.md), node domain *'SPLINE' (or *'CURVE'*)
+    - [CloudPoint](CloudPoint.md), node domain *'POINT'*
+    - [Instance](Instance.md), node domain *'INSTANCE'*
     
-    Args:
-        data_socket (DataSocket): The geometry the domain belongs to
-        domain (str): Domain in ['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE']
-        selection (Boolean): selection input socket
     
+    **Domain** provides mechanism to keep the context, by maintaining:
+    - the `selection`
+    - the node domain value in *'POINT'*, *'EDGE'*, *'FACE'*, *'CORNER'*, *'SPLINE'*, *'INSTANCE'*
+    - the geometry it is a domain of
+    
+    > By keeping the context geometry, it is not necessary to explicitly create **Capture Attribute**.
+      **Domain** class determines if it is necessary or not to create this node.
+    
+    **Domains** are not initialized directly but by geometries:
+    - [Mesh](Mesh.md) initializes 4 domains:
+      - `verts` property of type [Vertex](Vertex.md)
+      - `edges` property of type [Edge](Edge.md)
+      - `faces` property of type [Face](Face.md)
+      - `corners` property of type [Corner](Corner.md)
+    - [Curve](Curve.md) initializes 2 domains:
+      - `points` property of type [ControlPoint](ControlPoint.md)
+      - `splines` property of type [Spline](Spline.md)
+    - [Instances](Instances.md) initializes 1 domain: 
+      - `insts` property of type [Instance](Instance.md)
+    - [Points](Points.md) initializes 1 domain: 
+      - `points` property of type [CloudPoint](CloudPoint.md)
+    
+    > Note that the node domain *'POINT'* is used by 3 **Domains**.
+    
+    ## Selection mechanism
+    
+    One important feature of **Domain** is the selection mechanism. The selection is expressed using the array syntax:
+    - `mesh.verts[1]` : select the `index == 1`
+    - `mesh.faces[10:20]` : select the `index` in the range 10 to 20 (exc)
+    - `mesh.faces[8, 17]` : select the `index` equal to 8 or 17
+    - `mesh.edges[(mesh.edges.index % 2).equal(0)]` : select the even `index`
+    
+    Nodes having a **Selection** socket use the **Domain** selection initialized with this syntax.
+    
+    In the following example, two vertices selected by the user are move upwards:
+    
+    ```python
+    import geonodes as gn
+    
+    with gn.Tree("Test") as tree:
         
-    Components and domains:
-        - Mesh component
-            - verts   : Vertex
-            - edges   : Edge
-            - faces   : Face
-            - corners : Corner
-            
-        - Curve component
-            - points  : ControlPoint
-            - splines : Spline
-            
-        - Points
-            - points   : CloudPoint
-            
-        - Instances components
-           - insts : Instance
-           
+        index1 = gn.Integer.Input(0, "Index 1")
+        index2 = gn.Integer.Input(1, "Index 2")
+        
+        cube = gn.Mesh.Cube()
+        
+        cube.verts[index1, index2].position += (0, 0, .2)
+        
+        tree.og = cube
+    ```
     """
     
     def __init__(self, data_socket, selection=None):
+        """
+        Args:
+            - data_socket (DataSocket): the data class the domain belongs to
+            - selection (any): the selection to use
+        """
         self._data_socket = data_socket
         self.selector     = None if selection is None else Selector(self, selection)
         
     @classmethod
     @property
     def domain(cls):
+        """ Gives the **Geometry Nodes** domain string to use in the generated nodes.
+        
+        - Vertex        : 'POINT',
+        - Edge          : 'EDGE',
+        - Face          : 'FACE',
+        - Corner        : 'CORNER',
+        - ControlPoint  : 'POINT',
+        - Spline        : 'CURVE',
+        - CloudPoint    : 'POINT',
+        - Instance      : 'INSTANCE',
+        
+        Returns:
+            domain string (str)
+        """
         return {
             'Vertex'        : 'POINT',
             'Edge'          : 'EDGE',
@@ -194,6 +250,11 @@ class Domain:
     
     @property
     def data_socket(self):
+        """ Returns the data socket it belongs to.       
+        
+        Returns:
+            DataSocket
+        """
         return self if self._data_socket is None else self._data_socket
         
     # ----------------------------------------------------------------------------------------------------
@@ -201,10 +262,22 @@ class Domain:
         
     @property
     def selection(self):
+        """ Returns the selection value to use in nodes with a **Selection** socket.  
+        
+        Returns:
+            Boolean
+        """
         return None if self.selector is None else self.selector.selection
     
     @property
     def selection_index(self):
+        """ Returns the selection index.
+        
+        > CAUTION: raise an error if the selection is not a integer.
+        
+        Returns:
+            Integer
+        """
         return None if self.selector is None else self.selector.index
     
     # ----------------------------------------------------------------------------------------------------
@@ -220,8 +293,18 @@ class Domain:
     def select(self, selection):
         """ Select the domain
         
+        If the method is called on a **Domain** which has alread a selection, the two selection are combined:
+            
+        ```python
+        verts = mesh.verts[10:20] # Selection of vertices from 10 to 20
+        v = verts.select((verts.index % 2).equal(0)) # Even indices in the previous selection
+        ```
+        
         Args:
-            selection (Boolean or Integer): The selection condition
+            - selection (Boolean or Integer): The selection condition
+            
+        Returns:
+            Domain with the given selection (Domain)
         
         If a selection is existing, the resulting selection is a logical and betwenn the two
         """
@@ -248,8 +331,7 @@ class Domain:
     # ----------------------------------------------------------------------------------------------------
     # Reset the cache
     
-    def reset_cache(self):
-        
+    def reset_cache(self):        
         cache = set()
         for name in dir(self):
             if name[:3] == '_c_':
@@ -265,8 +347,8 @@ class Domain:
         """ Make the owning socket jump to the output socket of the node passed in argumment.
         
         Args:
-            node (Node): The node to jump to
-            socket_name: The name of the output socket (first one if None)
+            - node (Node): The node to jump to
+            - socket_name: The name of the output socket (first one if None)
         """
         self.reset_cache()
         return self.data_socket.stack(node, socket_name=socket_name)
@@ -276,13 +358,7 @@ class Domain:
     
     def attribute_node(self, node):
         """ Define an input node as attribute
-        
-        Args:
-            node (Node): The node created by the domain
-            
-        Returns:
-            The node argument
-        
+
         Called when creating an input node in a property getter. Performs two actions:
             
             - Call the method :func:`Node.as_attribute` to tag the node as being an attribute.
@@ -290,6 +366,12 @@ class Domain:
               a *Capture Attribute* for this field.
             - Set the nde property :attr:`field_of` to self in order to implement the transfer attribute
               mechanism.
+        
+        Args:
+            - node (Node): The node created by the domain
+            
+        Returns:
+            The node argument        
         """
         
         node = self.data_socket.attribute_node(node, domain=self.domain)
@@ -355,8 +437,10 @@ class Domain:
     def view(self, socket=None, label=None, node_color=None):
         """ To viewer.
         
+        Create a **Viewer** node with the domain geometry as input and the provided socket.
+        
         Args:
-            socket (DataSocket): The value to view        
+            socket (DataSocket): The value to view  
         """
         return self.data_socket.node.tree.view(geometry=self.data_socket, socket=socket, domain=self.domain, label=label, node_color=node_color)
     

@@ -62,7 +62,7 @@
 
 ### socket_index
 
-#### Returns:
+ Return the index of the socket within the list of node sockets.
 
 Depending on the _is_output_ property, the socket belongs either to *node.inputs* or
 *node.outputs*.
@@ -85,8 +85,8 @@ def Input(cls, value = None, name="Image", description="")
 - name: The socket name
 - description: User tip
     
-#### Returns:
-- Image: The Image data socket
+Returns:
+    Image: The Image data socket
 
 
 
@@ -241,7 +241,7 @@ def gives_bsocket(value)
 :return: True if *value* is or wraps a socket
 :rtype: bool
 
-#### Returns:
+Returns True if value is:
     
 - A Blender Geometry Node Socket
 - An instance of Socket        
@@ -295,7 +295,7 @@ def is_vector(value)
 def value_data_type(value, default='FLOAT', color_domain='FLOAT_COLOR')
 ```
 
-#### Returns:
+ Returns the domain to which the socket belongs
 
 :param value: The socket
 :type value: any
@@ -349,7 +349,7 @@ def value_data_type(value, default='FLOAT', color_domain='FLOAT_COLOR')
 def connected_sockets(self)
 ```
 
-#### Returns:
+ Returns the list of Socket instances linked to this socket.
 
 
 
@@ -362,7 +362,7 @@ def connected_sockets(self)
 def get_blender_socket(self)
 ```
 
-#### Returns:
+ Returns the property bsocket.
 
 :return: self.bsocket
 :rtype: bpy.types.NodeSocket
@@ -532,8 +532,8 @@ Developer reference [GeometryNodeSwitch](https://docs.blender.org/api/current/bp
 - switch: Boolean
 - true: Image
 
-#### Returns:
-- socket `output`
+Returns:
+    socket `output`
 
 
 
@@ -556,8 +556,8 @@ Developer reference [GeometryNodeImageTexture](https://docs.blender.org/api/curr
 - extension (str): 'REPEAT' in [REPEAT, EXTEND, CLIP]
 - interpolation (str): 'Linear' in [Linear, Closest, Cubic]
 
-#### Returns:
-- tuple ('color', 'alpha')
+Returns:
+    tuple ('color', 'alpha')
 
 
 
