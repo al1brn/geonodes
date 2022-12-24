@@ -6,27 +6,27 @@
 
 **Properties**
 
-[length](#length)***Inherited***
+[length](#length)
+
+***Inherited***
 
 length
 
-
-
 **Class and static methods**
 
-[Input](#Input) | [LineBreak](#LineBreak) | [String](#String) | [Tab](#Tab) | [Value](#Value)***Inherited***
+[Input](#Input) | [LineBreak](#LineBreak) | [String](#String) | [Tab](#Tab) | [Value](#Value)
+
+***Inherited***
 
 Input | LineBreak | String | Tab | Value
 
-
-
 **Methods**
 
-[equal](#equal) | [join](#join) | [join_strings](#join_strings) | [not_equal](#not_equal) | [replace](#replace) | [slice](#slice) | [switch](#switch) | [to_curves](#to_curves)***Inherited***
+[equal](#equal) | [join](#join) | [join_strings](#join_strings) | [not_equal](#not_equal) | [replace](#replace) | [slice](#slice) | [switch](#switch) | [to_curves](#to_curves)
+
+***Inherited***
 
 equal | join | join_strings | not_equal | replace | slice | switch | to_curves
-
-
 
 ## Properties
 

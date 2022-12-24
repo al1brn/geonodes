@@ -10,23 +10,21 @@
 
 
 
-
-
 **Class and static methods**
 
-[Input](#Input)***Inherited***
+[Input](#Input)
+
+***Inherited***
 
 Input
 
-
-
 **Methods**
 
-[switch](#switch) | [texture](#texture)***Inherited***
+[switch](#switch) | [texture](#texture)
+
+***Inherited***
 
 switch | texture
-
-
 
 ## Class and static methods
 

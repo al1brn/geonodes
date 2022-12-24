@@ -6,27 +6,27 @@
 
 **Properties**
 
-[alpha](#alpha) | [blue](#blue) | [green](#green) | [hsl](#hsl) | [hsv](#hsv) | [hue](#hue) | [lightness](#lightness) | [red](#red) | [rgb](#rgb) | [rgb_curves](#rgb_curves) | [saturation](#saturation) | [value](#value)***Inherited***
+[alpha](#alpha) | [blue](#blue) | [green](#green) | [hsl](#hsl) | [hsv](#hsv) | [hue](#hue) | [lightness](#lightness) | [red](#red) | [rgb](#rgb) | [rgb_curves](#rgb_curves) | [saturation](#saturation) | [value](#value)
+
+***Inherited***
 
 alpha | blue | green | hsl | hsv | hue | lightness | red | rgb | rgb_curves | saturation | value
 
-
-
 **Class and static methods**
 
-[Color](#Color) | [HSL](#HSL) | [HSV](#HSV) | [Input](#Input) | [RGB](#RGB)***Inherited***
+[Color](#Color) | [HSL](#HSL) | [HSV](#HSV) | [Input](#Input) | [RGB](#RGB)
+
+***Inherited***
 
 Color | HSL | HSV | Input | RGB
 
-
-
 **Methods**
 
-[brighter](#brighter) | [darker](#darker) | [equal](#equal) | [get_blender_socket](#get_blender_socket) | [mix](#mix) | [mix_add](#mix_add) | [mix_burn](#mix_burn) | [mix_color](#mix_color) | [mix_darken](#mix_darken) | [mix_difference](#mix_difference) | [mix_divide](#mix_divide) | [mix_dodge](#mix_dodge) | [mix_hue](#mix_hue) | [mix_lighten](#mix_lighten) | [mix_linear_light](#mix_linear_light) | [mix_multiply](#mix_multiply) | [mix_overlay](#mix_overlay) | [mix_saturation](#mix_saturation) | [mix_screen](#mix_screen) | [mix_soft_light](#mix_soft_light) | [mix_subtract](#mix_subtract) | [mix_value](#mix_value) | [switch](#switch)***Inherited***
+[brighter](#brighter) | [darker](#darker) | [equal](#equal) | [get_blender_socket](#get_blender_socket) | [mix](#mix) | [mix_add](#mix_add) | [mix_burn](#mix_burn) | [mix_color](#mix_color) | [mix_darken](#mix_darken) | [mix_difference](#mix_difference) | [mix_divide](#mix_divide) | [mix_dodge](#mix_dodge) | [mix_hue](#mix_hue) | [mix_lighten](#mix_lighten) | [mix_linear_light](#mix_linear_light) | [mix_multiply](#mix_multiply) | [mix_overlay](#mix_overlay) | [mix_saturation](#mix_saturation) | [mix_screen](#mix_screen) | [mix_soft_light](#mix_soft_light) | [mix_subtract](#mix_subtract) | [mix_value](#mix_value) | [switch](#switch)
+
+***Inherited***
 
 brighter | darker | equal | get_blender_socket | mix | mix_add | mix_burn | mix_color | mix_darken | mix_difference | mix_divide | mix_dodge | mix_hue | mix_lighten | mix_linear_light | mix_multiply | mix_overlay | mix_saturation | mix_screen | mix_soft_light | mix_subtract | mix_value | switch
-
-
 
 ## Properties
 

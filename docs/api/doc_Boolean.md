@@ -10,23 +10,21 @@
 
 
 
-
-
 **Class and static methods**
 
-[Boolean](#Boolean) | [Input](#Input)***Inherited***
+[Boolean](#Boolean) | [Input](#Input)
+
+***Inherited***
 
 Boolean | Input
 
-
-
 **Methods**
 
-[b_and](#b_and) | [b_not](#b_not) | [b_or](#b_or) | [imply](#imply) | [nand](#nand) | [nimply](#nimply) | [nor](#nor) | [switch](#switch) | [xnor](#xnor) | [xor](#xor)***Inherited***
+[b_and](#b_and) | [b_not](#b_not) | [b_or](#b_or) | [imply](#imply) | [nand](#nand) | [nimply](#nimply) | [nor](#nor) | [switch](#switch) | [xnor](#xnor) | [xor](#xor)
+
+***Inherited***
 
 b_and | b_not | b_or | imply | nand | nimply | nor | switch | xnor | xor
-
-
 
 ## Class and static methods
 

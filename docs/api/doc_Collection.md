@@ -10,23 +10,21 @@
 
 
 
-
-
 **Class and static methods**
 
-[Input](#Input)***Inherited***
+[Input](#Input)
+
+***Inherited***
 
 Input
 
-
-
 **Methods**
 
-[switch](#switch)***Inherited***
+[switch](#switch)
+
+***Inherited***
 
 switch
-
-
 
 ## Class and static methods
 

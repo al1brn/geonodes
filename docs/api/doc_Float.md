@@ -6,27 +6,27 @@
 
 **Properties**
 
-[color_ramp](#color_ramp)***Inherited***
+[color_ramp](#color_ramp)
+
+***Inherited***
 
 color_ramp
 
-
-
 **Class and static methods**
 
-[Angle](#Angle) | [Distance](#Distance) | [Factor](#Factor) | [Frame](#Frame) | [Input](#Input) | [Seconds](#Seconds) | [Value](#Value)***Inherited***
+[Angle](#Angle) | [Distance](#Distance) | [Factor](#Factor) | [Frame](#Frame) | [Input](#Input) | [Seconds](#Seconds) | [Value](#Value)
+
+***Inherited***
 
 Angle | Distance | Factor | Frame | Input | Seconds | Value
 
-
-
 **Methods**
 
-[abs](#abs) | [absolute](#absolute) | [add](#add) | [arccos](#arccos) | [arccosine](#arccosine) | [arcsin](#arcsin) | [arcsine](#arcsine) | [arctan](#arctan) | [arctan2](#arctan2) | [arctangent](#arctangent) | [ceiling](#ceiling) | [clamp](#clamp) | [clamp_min_max](#clamp_min_max) | [clamp_range](#clamp_range) | [compare](#compare) | [cos](#cos) | [cosh](#cosh) | [cosine](#cosine) | [divide](#divide) | [equal](#equal) | [exp](#exp) | [exponent](#exponent) | [fact](#fact) | [float_curve](#float_curve) | [floor](#floor) | [fraction](#fraction) | [greater_equal](#greater_equal) | [greater_than](#greater_than) | [inverse_sqrt](#inverse_sqrt) | [less_equal](#less_equal) | [less_than](#less_than) | [log](#log) | [logarithm](#logarithm) | [map_range](#map_range) | [map_range_linear](#map_range_linear) | [map_range_smooth](#map_range_smooth) | [map_range_smoother](#map_range_smoother) | [map_range_stepped](#map_range_stepped) | [math_ceil](#math_ceil) | [math_compare](#math_compare) | [math_floor](#math_floor) | [math_greater_than](#math_greater_than) | [math_less_than](#math_less_than) | [math_round](#math_round) | [math_trunc](#math_trunc) | [math_truncate](#math_truncate) | [max](#max) | [maximum](#maximum) | [min](#min) | [minimum](#minimum) | [mix](#mix) | [modulo](#modulo) | [mul_add](#mul_add) | [multiply](#multiply) | [multiply_add](#multiply_add) | [not_equal](#not_equal) | [ping_pong](#ping_pong) | [pow](#pow) | [power](#power) | [round](#round) | [sign](#sign) | [sin](#sin) | [sine](#sine) | [sinh](#sinh) | [smooth_maximum](#smooth_maximum) | [smooth_minimum](#smooth_minimum) | [snap](#snap) | [sqrt](#sqrt) | [subtract](#subtract) | [switch](#switch) | [tan](#tan) | [tangent](#tangent) | [tanh](#tanh) | [to_degrees](#to_degrees) | [to_integer](#to_integer) | [to_radians](#to_radians) | [to_string](#to_string) | [truncate](#truncate) | [wrap](#wrap)***Inherited***
+[abs](#abs) | [absolute](#absolute) | [add](#add) | [arccos](#arccos) | [arccosine](#arccosine) | [arcsin](#arcsin) | [arcsine](#arcsine) | [arctan](#arctan) | [arctan2](#arctan2) | [arctangent](#arctangent) | [ceiling](#ceiling) | [clamp](#clamp) | [clamp_min_max](#clamp_min_max) | [clamp_range](#clamp_range) | [compare](#compare) | [cos](#cos) | [cosh](#cosh) | [cosine](#cosine) | [divide](#divide) | [equal](#equal) | [exp](#exp) | [exponent](#exponent) | [fact](#fact) | [float_curve](#float_curve) | [floor](#floor) | [fraction](#fraction) | [greater_equal](#greater_equal) | [greater_than](#greater_than) | [inverse_sqrt](#inverse_sqrt) | [less_equal](#less_equal) | [less_than](#less_than) | [log](#log) | [logarithm](#logarithm) | [map_range](#map_range) | [map_range_linear](#map_range_linear) | [map_range_smooth](#map_range_smooth) | [map_range_smoother](#map_range_smoother) | [map_range_stepped](#map_range_stepped) | [math_ceil](#math_ceil) | [math_compare](#math_compare) | [math_floor](#math_floor) | [math_greater_than](#math_greater_than) | [math_less_than](#math_less_than) | [math_round](#math_round) | [math_trunc](#math_trunc) | [math_truncate](#math_truncate) | [max](#max) | [maximum](#maximum) | [min](#min) | [minimum](#minimum) | [mix](#mix) | [modulo](#modulo) | [mul_add](#mul_add) | [multiply](#multiply) | [multiply_add](#multiply_add) | [not_equal](#not_equal) | [ping_pong](#ping_pong) | [pow](#pow) | [power](#power) | [round](#round) | [sign](#sign) | [sin](#sin) | [sine](#sine) | [sinh](#sinh) | [smooth_maximum](#smooth_maximum) | [smooth_minimum](#smooth_minimum) | [snap](#snap) | [sqrt](#sqrt) | [subtract](#subtract) | [switch](#switch) | [tan](#tan) | [tangent](#tangent) | [tanh](#tanh) | [to_degrees](#to_degrees) | [to_integer](#to_integer) | [to_radians](#to_radians) | [to_string](#to_string) | [truncate](#truncate) | [wrap](#wrap)
+
+***Inherited***
 
 abs | absolute | add | arccos | arccosine | arcsin | arcsine | arctan | arctan2 | arctangent | ceiling | clamp | clamp_min_max | clamp_range | compare | cos | cosh | cosine | divide | equal | exp | exponent | fact | float_curve | floor | fraction | greater_equal | greater_than | inverse_sqrt | less_equal | less_than | log | logarithm | map_range | map_range_linear | map_range_smooth | map_range_smoother | map_range_stepped | math_ceil | math_compare | math_floor | math_greater_than | math_less_than | math_round | math_trunc | math_truncate | max | maximum | min | minimum | mix | modulo | mul_add | multiply | multiply_add | not_equal | ping_pong | pow | power | round | sign | sin | sine | sinh | smooth_maximum | smooth_minimum | snap | sqrt | subtract | switch | tan | tangent | tanh | to_degrees | to_integer | to_radians | to_string | truncate | wrap
-
-
 
 ## Properties
 

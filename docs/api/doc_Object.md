@@ -10,23 +10,21 @@
 
 
 
-
-
 **Class and static methods**
 
-[Input](#Input) | [Self](#Self)***Inherited***
+[Input](#Input) | [Self](#Self)
+
+***Inherited***
 
 Input | Self
 
-
-
 **Methods**
 
-[geometry](#geometry) | [info](#info) | [location](#location) | [rotation](#rotation) | [scale](#scale) | [switch](#switch)***Inherited***
+[geometry](#geometry) | [info](#info) | [location](#location) | [rotation](#rotation) | [scale](#scale) | [switch](#switch)
+
+***Inherited***
 
 geometry | info | location | rotation | scale | switch
-
-
 
 ## Class and static methods
 

@@ -6,27 +6,27 @@
 
 **Properties**
 
-[length](#length) | [separate](#separate)***Inherited***
+[length](#length) | [separate](#separate)
+
+***Inherited***
 
 length | separate
 
-
-
 **Class and static methods**
 
-[Combine](#Combine) | [Input](#Input) | [Rotation](#Rotation) | [Translation](#Translation) | [Vector](#Vector) | [VectorXYZ](#VectorXYZ)***Inherited***
+[Combine](#Combine) | [Input](#Input) | [Rotation](#Rotation) | [Translation](#Translation) | [Vector](#Vector) | [VectorXYZ](#VectorXYZ)
+
+***Inherited***
 
 Combine | Input | Rotation | Translation | Vector | VectorXYZ
 
-
-
 **Methods**
 
-[abs](#abs) | [absolute](#absolute) | [add](#add) | [align_euler_to_vector](#align_euler_to_vector) | [average_equal](#average_equal) | [average_greater_equal](#average_greater_equal) | [average_greater_than](#average_greater_than) | [average_less_equal](#average_less_equal) | [average_less_than](#average_less_than) | [average_not_equal](#average_not_equal) | [ceil](#ceil) | [compare](#compare) | [cos](#cos) | [cosine](#cosine) | [cross](#cross) | [cross_product](#cross_product) | [curves](#curves) | [direction_equal](#direction_equal) | [direction_greater_equal](#direction_greater_equal) | [direction_greater_than](#direction_greater_than) | [direction_less_equal](#direction_less_equal) | [direction_less_than](#direction_less_than) | [direction_not_equal](#direction_not_equal) | [distance](#distance) | [div](#div) | [divide](#divide) | [dot](#dot) | [dot_product](#dot_product) | [dot_product_equal](#dot_product_equal) | [dot_product_greater_equal](#dot_product_greater_equal) | [dot_product_greater_than](#dot_product_greater_than) | [dot_product_less_equal](#dot_product_less_equal) | [dot_product_less_than](#dot_product_less_than) | [dot_product_not_equal](#dot_product_not_equal) | [elements_equal](#elements_equal) | [elements_greater_equal](#elements_greater_equal) | [elements_greater_than](#elements_greater_than) | [elements_less_equal](#elements_less_equal) | [elements_less_than](#elements_less_than) | [elements_not_equal](#elements_not_equal) | [face_forward](#face_forward) | [floor](#floor) | [fract](#fract) | [fraction](#fraction) | [get_blender_socket](#get_blender_socket) | [length_equal](#length_equal) | [length_greater_equal](#length_greater_equal) | [length_greater_than](#length_greater_than) | [length_less_equal](#length_less_equal) | [length_less_than](#length_less_than) | [length_not_equal](#length_not_equal) | [map_range](#map_range) | [map_range_linear](#map_range_linear) | [map_range_smooth](#map_range_smooth) | [map_range_smoother](#map_range_smoother) | [map_range_stepped](#map_range_stepped) | [max](#max) | [maximum](#maximum) | [min](#min) | [minimum](#minimum) | [mix](#mix) | [mix_non_uniform](#mix_non_uniform) | [mix_uniform](#mix_uniform) | [modulo](#modulo) | [mul](#mul) | [mul_add](#mul_add) | [multiply](#multiply) | [multiply_add](#multiply_add) | [normalize](#normalize) | [project](#project) | [reflect](#reflect) | [refract](#refract) | [rotate_axis_angle](#rotate_axis_angle) | [rotate_euler](#rotate_euler) | [rotate_x](#rotate_x) | [rotate_y](#rotate_y) | [rotate_z](#rotate_z) | [scale](#scale) | [sin](#sin) | [sine](#sine) | [snap](#snap) | [sub](#sub) | [subtract](#subtract) | [switch](#switch) | [tan](#tan) | [tangent](#tangent) | [wrap](#wrap)***Inherited***
+[abs](#abs) | [absolute](#absolute) | [add](#add) | [align_euler_to_vector](#align_euler_to_vector) | [average_equal](#average_equal) | [average_greater_equal](#average_greater_equal) | [average_greater_than](#average_greater_than) | [average_less_equal](#average_less_equal) | [average_less_than](#average_less_than) | [average_not_equal](#average_not_equal) | [ceil](#ceil) | [compare](#compare) | [cos](#cos) | [cosine](#cosine) | [cross](#cross) | [cross_product](#cross_product) | [curves](#curves) | [direction_equal](#direction_equal) | [direction_greater_equal](#direction_greater_equal) | [direction_greater_than](#direction_greater_than) | [direction_less_equal](#direction_less_equal) | [direction_less_than](#direction_less_than) | [direction_not_equal](#direction_not_equal) | [distance](#distance) | [div](#div) | [divide](#divide) | [dot](#dot) | [dot_product](#dot_product) | [dot_product_equal](#dot_product_equal) | [dot_product_greater_equal](#dot_product_greater_equal) | [dot_product_greater_than](#dot_product_greater_than) | [dot_product_less_equal](#dot_product_less_equal) | [dot_product_less_than](#dot_product_less_than) | [dot_product_not_equal](#dot_product_not_equal) | [elements_equal](#elements_equal) | [elements_greater_equal](#elements_greater_equal) | [elements_greater_than](#elements_greater_than) | [elements_less_equal](#elements_less_equal) | [elements_less_than](#elements_less_than) | [elements_not_equal](#elements_not_equal) | [face_forward](#face_forward) | [floor](#floor) | [fract](#fract) | [fraction](#fraction) | [get_blender_socket](#get_blender_socket) | [length_equal](#length_equal) | [length_greater_equal](#length_greater_equal) | [length_greater_than](#length_greater_than) | [length_less_equal](#length_less_equal) | [length_less_than](#length_less_than) | [length_not_equal](#length_not_equal) | [map_range](#map_range) | [map_range_linear](#map_range_linear) | [map_range_smooth](#map_range_smooth) | [map_range_smoother](#map_range_smoother) | [map_range_stepped](#map_range_stepped) | [max](#max) | [maximum](#maximum) | [min](#min) | [minimum](#minimum) | [mix](#mix) | [mix_non_uniform](#mix_non_uniform) | [mix_uniform](#mix_uniform) | [modulo](#modulo) | [mul](#mul) | [mul_add](#mul_add) | [multiply](#multiply) | [multiply_add](#multiply_add) | [normalize](#normalize) | [project](#project) | [reflect](#reflect) | [refract](#refract) | [rotate_axis_angle](#rotate_axis_angle) | [rotate_euler](#rotate_euler) | [rotate_x](#rotate_x) | [rotate_y](#rotate_y) | [rotate_z](#rotate_z) | [scale](#scale) | [sin](#sin) | [sine](#sine) | [snap](#snap) | [sub](#sub) | [subtract](#subtract) | [switch](#switch) | [tan](#tan) | [tangent](#tangent) | [wrap](#wrap)
+
+***Inherited***
 
 abs | absolute | add | align_euler_to_vector | average_equal | average_greater_equal | average_greater_than | average_less_equal | average_less_than | average_not_equal | ceil | compare | cos | cosine | cross | cross_product | curves | direction_equal | direction_greater_equal | direction_greater_than | direction_less_equal | direction_less_than | direction_not_equal | distance | div | divide | dot | dot_product | dot_product_equal | dot_product_greater_equal | dot_product_greater_than | dot_product_less_equal | dot_product_less_than | dot_product_not_equal | elements_equal | elements_greater_equal | elements_greater_than | elements_less_equal | elements_less_than | elements_not_equal | face_forward | floor | fract | fraction | get_blender_socket | length_equal | length_greater_equal | length_greater_than | length_less_equal | length_less_than | length_not_equal | map_range | map_range_linear | map_range_smooth | map_range_smoother | map_range_stepped | max | maximum | min | minimum | mix | mix_non_uniform | mix_uniform | modulo | mul | mul_add | multiply | multiply_add | normalize | project | reflect | refract | rotate_axis_angle | rotate_euler | rotate_x | rotate_y | rotate_z | scale | sin | sine | snap | sub | subtract | switch | tan | tangent | wrap
-
-
 
 ## Properties
 
