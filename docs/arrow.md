@@ -287,9 +287,9 @@ def arrow():
         k         = gn.Float.Input(0.5, "Recess", min_value=0., max_value=0.99)
         vertices  = gn.Integer.Input(12, "Vertices", min_value=3)
         smooth    = gn.Boolean.Input(True, "Shade smooth")
-        shaft_mat = gn.Material.Input("Shaft")
-        head_mat  = gn.Material.Input("Arrowhead")
-        obj       = gn.Object.Input("Orientation")
+        shaft_mat = gn.Material.Input(None, "Shaft")
+        head_mat  = gn.Material.Input(None, "Arrowhead")
+        obj       = gn.Object.Input(None, "Orientation")
         track_obj = gn.Boolean.Input(True, "Track", description="Track object if True, copy rotation otherwise")
         
         with tree.layout("Maths stuff..."):
@@ -329,13 +329,15 @@ def arrow():
             
         with tree.layout("Extrusion"):
             
-            top, sides = arrow.edges.extrude(offset=(0, 0, 1), offset_scale=z1)
-            sides.material = shaft_mat
+            edges = arrow.edges
             
-            top, sides = top.extrude(offset=top.position*fac - (0, 0, z2), offset_scale=s - 1)
-            sides.material = head_mat
+            top, sides = edges.extrude(offset=(0, 0, 1), offset_scale=z1)
+            edges[sides].material = shaft_mat
+            
+            top, sides = edges[top].extrude(offset=edges[top].position*fac - (0, 0, z2), offset_scale=s - 1)
+            edges[sides].material = head_mat
 
-            top, sides = top.extrude(offset=(0, 0, length) - top.position*fac)
+            top, sides = edges[top].extrude(offset=(0, 0, length) - edges[top].position*fac)
             
         # ----- Set creae to 1 for horizontal edges
         
@@ -345,7 +347,7 @@ def arrow():
         
             crease = "waiting"
                           
-            p1, p2 = arrow.edges.vertex_position
+            p1, p2 = arrow.edges.vertices_position
             hrz = (p1.z - p2.z).abs().less_than(0.001)
             arrow.edges.set_named_float(crease, gn.Float(0).switch(hrz, 1))
             
@@ -366,7 +368,6 @@ def arrow():
         # ----- Done
         
         tree.og = arrow
-        
         
 arrow()
 ```
