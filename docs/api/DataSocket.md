@@ -84,11 +84,11 @@ DataSocket(self, socket, node=None, label=None)
 
 **Class and static methods**
 
-[get_bl_idname](#get_bl_idname) | [get_class_name](#get_class_name) | [gives_bsocket](#gives_bsocket) | [is_socket](#is_socket) | [is_vector](#is_vector) | [value_data_type](#value_data_type)
+[get_bl_idname](#get_bl_idname) | [get_class_name](#get_class_name) | [gives_bsocket](#gives_bsocket) | [is_socket](#is_socket) | [is_vector](#is_vector) | [python_type_to_socket](#python_type_to_socket) | [value_data_type](#value_data_type)
 
 **Methods**
 
-[connected_sockets](#connected_sockets) | [convert_python_type](#convert_python_type) | [get_blender_socket](#get_blender_socket) | [init_domains](#init_domains) | [init_socket](#init_socket) | [plug](#plug) | [reroute](#reroute) | [reset_properties](#reset_properties) | [stack](#stack) | [to_output](#to_output)
+[connected_sockets](#connected_sockets) | [get_blender_socket](#get_blender_socket) | [init_domains](#init_domains) | [init_socket](#init_socket) | [plug](#plug) | [reroute](#reroute) | [reset_properties](#reset_properties) | [stack](#stack) | [to_output](#to_output)
 
 ## Properties
 
@@ -335,6 +335,51 @@ def is_vector(value)
 
 <sub>Go to [top](#class-DataSocket) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
+### python_type_to_socket
+
+```python
+@staticmethod
+def python_type_to_socket(value, bl_idname, raise_exception=True)
+```
+
+ Convert a python value to a value which can be plug in the socket.
+
+The following table gives the conversion rules:
+    
+| Socket type       | Conversion                                                    |
+|-------------------|---------------------------------------------------------------|
+| Boolean           | bool(value)                                                   |
+| Integer           | int(value)                                                    |
+| Float             | float(value)                                                  |
+| Vector            | A triplet or the value if compatible (mathutils.Vector,...)   |
+| Color             | A quadruplet or the value if compatible (mathutils.Color,...) |
+| String            | str(value)                                                    |
+| Collection        | value is value is a collection, bpy.data.collections[value] otherwise |
+| Object            | value is value is an object, bpy.data.objects[value] otherwise        |
+| Image             | value is value is an image, bpy.data.images[value] otherwise          |
+| Texture           | value is value is a texture, bpy.data.textures[value] otherwise       |
+| Material          | value is value is a material, bpy.data.materials[value] otherwise     |
+
+This method allows in particular to refer to Blender resources by their name:
+    
+```python
+# Set a material to a mesh
+mesh.faces.material = "Material"
+
+# Is equivalent to
+mesh.faces.material = bpy.data.materials["Material"]
+```
+
+#### Args:
+- value (any): the value to convert
+- bl_idname (str): the socket bl_idname
+- raise_exception (bool): False to avod raising an exception in case of error.
+
+
+
+
+<sub>Go to [top](#class-DataSocket) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### value_data_type
 
 ```python
@@ -387,49 +432,6 @@ def connected_sockets(self)
 
 #### Returns:
 - list of connected sockets (list of Sockets)
-
-
-
-
-<sub>Go to [top](#class-DataSocket) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-### convert_python_type
-
-```python
-def convert_python_type(self, value, raise_exception=True)
-```
-
- Convert a python value to a value which can be plug in the socket.
-
-The following table gives the conversion rules:
-    
-| Socket type       | Conversion                                                    |
-|-------------------|---------------------------------------------------------------|
-| Boolean           | bool(value)                                                   |
-| Integer           | int(value)                                                    |
-| Float             | float(value)                                                  |
-| Vector            | A triplet or the value if compatible (mathutils.Vector,...)   |
-| Color             | A quadruplet or the value if compatible (mathutils.Color,...) |
-| String            | str(value)                                                    |
-| Collection        | value is value is a collection, bpy.data.collections[value] otherwise |
-| Object            | value is value is an object, bpy.data.objects[value] otherwise        |
-| Image             | value is value is an image, bpy.data.images[value] otherwise          |
-| Texture           | value is value is a texture, bpy.data.textures[value] otherwise       |
-| Material          | value is value is a material, bpy.data.materials[value] otherwise     |
-
-This method allows in particular to refer to Blender resources by their name:
-    
-```python
-# Set a material to a mesh
-mesh.faces.material = "Material"
-
-# Is equivalent to
-mesh.faces.material = bpy.data.materials["Material"]
-```
-
-#### Args:
-- value (any): the value to convert
-- raise_exeption (bool): False to avod raising an exception in case of error.
 
 
 

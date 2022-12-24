@@ -418,10 +418,9 @@ class Socket:
                 
     # ----------------------------------------------------------------------------------------------------
     # Convert a python value to a type matching the one of the socket
-    # Doesn't take DataSocket as input
-    # Used in socket input when exact matching is required
     
-    def convert_python_type(self, value, raise_exception=True):
+    @staticmethod
+    def python_type_to_socket(value, bl_idname, raise_exception=True):
         """ Convert a python value to a value which can be plug in the socket.
         
         The following table gives the conversion rules:
@@ -452,7 +451,8 @@ class Socket:
         
         Args:
             value (any): the value to convert
-            raise_exeption (bool): False to avod raising an exception in case of error.
+            bl_idname (str): the socket bl_idname
+            raise_exception (bool): False to avod raising an exception in case of error.
         """
         
         import bpy.types
@@ -461,16 +461,16 @@ class Socket:
         if value is None:
             return None
         
-        if self.bl_idname == 'NodeSocketBool':
+        if bl_idname == 'NodeSocketBool':
             return bool(value)
         
-        elif self.bl_idname in ['NodeSocketInt', 'NodeSocketIntUnsigned']:
+        elif bl_idname in ['NodeSocketInt', 'NodeSocketIntUnsigned']:
             return int(value)
         
-        elif self.bl_idname in ['NodeSocketFloat', 'NodeSocketFloatFactor', 'NodeSocketFloatAngle', 'NodeSocketFloatDistance']:
+        elif bl_idname in ['NodeSocketFloat', 'NodeSocketFloatFactor', 'NodeSocketFloatAngle', 'NodeSocketFloatDistance']:
             return float(value)
         
-        elif self.bl_idname in ['NodeSocketVector', 'NodeSocketVectorEuler', 'NodeSocketVectorXYZ', 'NodeSocketVectorTranslation']:
+        elif bl_idname in ['NodeSocketVector', 'NodeSocketVectorEuler', 'NodeSocketVectorXYZ', 'NodeSocketVectorTranslation']:
             if isinstance(value, (mathutils.Vector, mathutils.Euler)):
                 return value
             
@@ -484,7 +484,7 @@ class Socket:
             else:
                 return (value,)*3
         
-        elif self.bl_idname == 'NodeSocketColor':
+        elif bl_idname == 'NodeSocketColor':
 
             if isinstance(value, mathutils.Color):
                 return value
@@ -499,10 +499,10 @@ class Socket:
             else:
                 return (value,)*4
         
-        elif self.bl_idname == 'NodeSocketString':
+        elif bl_idname == 'NodeSocketString':
             return str(value)
         
-        elif self.bl_idname == 'NodeSocketCollection':
+        elif bl_idname == 'NodeSocketCollection':
             if isinstance(value, bpy.types.Collection):
                 return value
             
@@ -511,7 +511,7 @@ class Socket:
                 raise Exception(f"Collection named '{value}' not found.")
             return obj
         
-        elif self.bl_idname == 'NodeSocketImage':
+        elif bl_idname == 'NodeSocketImage':
             if isinstance(value, bpy.types.Image):
                 return value
             
@@ -520,7 +520,7 @@ class Socket:
                 raise Exception(f"Image named '{value}' not found.")
             return obj
         
-        elif self.bl_idname == 'NodeSocketMaterial':
+        elif bl_idname == 'NodeSocketMaterial':
             if isinstance(value, bpy.types.Material):
                 return value
             
@@ -529,7 +529,7 @@ class Socket:
                 raise Exception(f"Material named '{value}' not found.")
             return obj
         
-        elif self.bl_idname == 'NodeSocketObject':
+        elif bl_idname == 'NodeSocketObject':
             if isinstance(value, bpy.types.Object):
                 return value
             
@@ -538,7 +538,7 @@ class Socket:
                 raise Exception(f"Object named '{value}' not found.")
             return obj
         
-        elif self.bl_idname == 'NodeSocketTexture':
+        elif bl_idname == 'NodeSocketTexture':
             if isinstance(value, bpy.types.Texture):
                 return value
             
@@ -547,13 +547,22 @@ class Socket:
                 raise Exception(f"Texture named '{value}' not found.")
             return obj
         
-        elif self.bl_idname == 'NodeSocketGeometry':
+        elif bl_idname == 'NodeSocketGeometry':
             if raise_exception:
                 raise Exception(f"Impossible to convert {value} to a geometry socket value")
             return None
         
         else:
             raise Exception(f"Impossible to initialize socket '{self.name}' of type {self.bl_idname} with value {value}.")
+                
+                
+    # ----------------------------------------------------------------------------------------------------
+    # Convert a python value to a type matching the one of the socket
+    # Doesn't take DataSocket as input
+    # Used in socket input when exact matching is required
+    
+    def convert_python_type(self, value, raise_exception=True):
+        return self.python_type_to_socket(value, self.bl_idname, raise_exception=raise_exception)
 
     # ----------------------------------------------------------------------------------------------------
     # Class name from socket bl_idname

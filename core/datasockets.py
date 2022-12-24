@@ -1714,6 +1714,15 @@ class Object(DataSocket):
 class Material(DataSocket):
     """ Material DataSocket
     """
+    
+    def __init__(self, value=None, label=None):
+        if DataSocket.gives_bsocket(value):
+            super().__init__(value, label=label)
+            
+        else:
+            mat = self.python_type_to_socket(value, 'NodeSocketMaterial')
+            node = nodes.Material(mat, label=label)
+            super().__init__(node.boolean, node)
 
     @classmethod
     def Material(cls, name: str = None):
