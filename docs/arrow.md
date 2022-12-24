@@ -332,10 +332,10 @@ def arrow():
             edges = arrow.edges
             
             top, sides = edges.extrude(offset=(0, 0, 1), offset_scale=z1)
-            edges[sides].material = shaft_mat
+            arrow.faces[sides].material = shaft_mat
             
             top, sides = edges[top].extrude(offset=edges[top].position*fac - (0, 0, z2), offset_scale=s - 1)
-            edges[sides].material = head_mat
+            arrow.faces[sides].material = head_mat
 
             top, sides = edges[top].extrude(offset=(0, 0, length) - edges[top].position*fac)
             
