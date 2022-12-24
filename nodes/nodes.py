@@ -1061,9 +1061,6 @@ class SeparateColor(Node):
     Node implementation:
         global functions:
             separate_rgb separate_hsv separate_hsl 
-        Color:
-            rgb hsv hsl alpha red green blue hue saturation value 
-            lightness 
 
     Args:
         color (DataSocket): Color
@@ -13019,8 +13016,6 @@ class SeparateXyz(Node):
     .. _SeparateXyz:
 
     Node implementation:
-        Vector:
-            separate 
 
     Args:
         vector (DataSocket): Vector

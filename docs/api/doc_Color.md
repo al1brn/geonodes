@@ -8,13 +8,13 @@
 - value (float, triplet, DataSocket): Initial value
 - label (str): Node label
     
-Color exposes properties: `r`, `g` and `b`:
+Color exposes properties: `red`, `green` and `blue`, `hue`, `value`, 'lightness`, 'saturation` and `alpha`:
     
-.. code-block: python
-
-    c = Color()
-    c.r = .5
-    c.g = .2
+```python
+c = Color()
+c.red = .5
+c.saturation = .2
+```
     
     
 Color supports some operators:
@@ -46,7 +46,7 @@ Color(self, value=None, label=None)
 
 **Properties**
 
-[alpha](#alpha) | [blue](#blue) | [green](#green) | [hsl](#hsl) | [hsv](#hsv) | [hue](#hue) | [lightness](#lightness) | [red](#red) | [rgb](#rgb) | [rgb_curves](#rgb_curves) | [saturation](#saturation) | [value](#value)
+[alpha](#alpha) | [blue](#blue) | [green](#green) | [hue](#hue) | [lightness](#lightness) | [red](#red) | [rgb_curves](#rgb_curves) | [saturation](#saturation) | [separate_HSL](#separate_HSL) | [separate_HSV](#separate_HSV) | [separate_RGB](#separate_RGB) | [value](#value)
 
 ***Inherited***
 
@@ -72,19 +72,7 @@ Color(self, value=None, label=None)
 
 ### alpha
 
-
-
-```python
-def alpha(self):
-
-```
-> Node: [Separate Color](FunctionNodeSeparateColor.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html)
-
-#### Returns:
-- socket `alpha`
-
-
-
+ Alpha compenent
 
 
 
@@ -92,19 +80,7 @@ def alpha(self):
 
 ### blue
 
-
-
-```python
-def blue(self):
-
-```
-> Node: [Separate Color](FunctionNodeSeparateColor.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html)
-
-#### Returns:
-- socket `blue`
-
-
-
+ Blue compenent
 
 
 
@@ -112,63 +88,7 @@ def blue(self):
 
 ### green
 
-
-
-```python
-def green(self):
-
-```
-> Node: [Separate Color](FunctionNodeSeparateColor.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html)
-
-#### Returns:
-- socket `green`
-
-
-
-
-
-
-<sub>Go to [top](#class-Color) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-### hsl
-
-
-
-```python
-def hsl(self):
-
-```
-> Node: [Separate Color](FunctionNodeSeparateColor.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html)
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_FunctionNodeSeparateColor.webp)
-
-#### Returns:
-- tuple ('`red`', '`green`', '`blue`', '`alpha`')
-
-
-
-
-
-
-<sub>Go to [top](#class-Color) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-### hsv
-
-
-
-```python
-def hsv(self):
-
-```
-> Node: [Separate Color](FunctionNodeSeparateColor.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html)
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_FunctionNodeSeparateColor.webp)
-
-#### Returns:
-- tuple ('`red`', '`green`', '`blue`', '`alpha`')
-
-
-
+ Green compenent
 
 
 
@@ -176,18 +96,7 @@ def hsv(self):
 
 ### hue
 
-
-
-```python
-def hue(self):
-
-```
-> Node: [Separate Color](FunctionNodeSeparateColor.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html)
-
-#### Returns:
-- socket `red`
-
-
+ Hue compenent
 
 
 
@@ -196,19 +105,7 @@ def hue(self):
 
 ### lightness
 
-
-
-```python
-def lightness(self):
-
-```
-> Node: [Separate Color](FunctionNodeSeparateColor.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html)
-
-#### Returns:
-- socket `blue`
-
-
-
+ Lightness compenent
 
 
 
@@ -216,41 +113,7 @@ def lightness(self):
 
 ### red
 
-
-
-```python
-def red(self):
-
-```
-> Node: [Separate Color](FunctionNodeSeparateColor.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html)
-
-#### Returns:
-- socket `red`
-
-
-
-
-
-
-<sub>Go to [top](#class-Color) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-### rgb
-
-
-
-```python
-def rgb(self):
-
-```
-> Node: [Separate Color](FunctionNodeSeparateColor.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html)
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_FunctionNodeSeparateColor.webp)
-
-#### Returns:
-- tuple ('`red`', '`green`', '`blue`', '`alpha`')
-
-
-
+ Red compenent
 
 
 
@@ -278,19 +141,40 @@ def rgb_curves(self, fac=None):
 
 ### saturation
 
+ Saturation compenent
 
 
-```python
-def saturation(self):
 
-```
-> Node: [Separate Color](FunctionNodeSeparateColor.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html)
+<sub>Go to [top](#class-Color) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### separate_HSL
+
+ Separate HSL
 
 #### Returns:
-- socket `green`
+- node with sockets hue, saturation, lightness, alpha
 
 
 
+<sub>Go to [top](#class-Color) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### separate_HSV
+
+ Separate HSV
+
+#### Returns:
+- node with sockets hue, saturation, value, alpha
+
+
+
+<sub>Go to [top](#class-Color) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### separate_RGB
+
+ Separate RGB
+
+#### Returns:
+- node with sockets red, green, blue, alpha
 
 
 
@@ -298,19 +182,7 @@ def saturation(self):
 
 ### value
 
-
-
-```python
-def value(self):
-
-```
-> Node: [Separate Color](FunctionNodeSeparateColor.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html)
-
-#### Returns:
-- socket `blue`
-
-
-
+ Value compenent
 
 
 

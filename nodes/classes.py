@@ -5268,27 +5268,6 @@ class Vector(geosocks.Vector):
         return nodes.VectorMath(vector0=self, vector1=None, vector2=None, scale=scale, operation='SCALE').vector
 
 
-    @property
-    def separate(self):
-        """
-
-        ```python
-        def separate(self):
-
-        ```
-        > Node: [Separate XYZ](ShaderNodeSeparateXYZ.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/separate_xyz.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeSeparateXYZ.html)
-
-        #### Returns:
-        - node with sockets ['x', 'y', 'z']
-
-
-        """
-
-        if not hasattr(self, '_c_shadernodeseparatexyz'):
-            self._c_shadernodeseparatexyz = nodes.SeparateXyz(vector=self)
-        return self._c_shadernodeseparatexyz
-
-
     def sin(self):
         """
 
@@ -5565,44 +5544,6 @@ class Color(geosocks.Color):
         return cls(nodes.CombineColor(red=red, green=green, blue=blue, alpha=alpha, mode='RGB').color)
 
 
-    @property
-    def alpha(self):
-        """
-
-        ```python
-        def alpha(self):
-
-        ```
-        > Node: [Separate Color](FunctionNodeSeparateColor.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html)
-
-        #### Returns:
-        - socket `alpha`
-
-
-        """
-
-        return nodes.SeparateColor(color=self, mode='RGB').alpha
-
-
-    @property
-    def blue(self):
-        """
-
-        ```python
-        def blue(self):
-
-        ```
-        > Node: [Separate Color](FunctionNodeSeparateColor.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html)
-
-        #### Returns:
-        - socket `blue`
-
-
-        """
-
-        return nodes.SeparateColor(color=self, mode='RGB').blue
-
-
     def brighter(self, b=None):
         """
 
@@ -5687,107 +5628,6 @@ class Color(geosocks.Color):
         """
 
         return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=epsilon, data_type='RGBA', mode='ELEMENT', operation='EQUAL').result
-
-
-    @property
-    def green(self):
-        """
-
-        ```python
-        def green(self):
-
-        ```
-        > Node: [Separate Color](FunctionNodeSeparateColor.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html)
-
-        #### Returns:
-        - socket `green`
-
-
-        """
-
-        return nodes.SeparateColor(color=self, mode='RGB').green
-
-
-    @property
-    def hsl(self):
-        """
-
-        ```python
-        def hsl(self):
-
-        ```
-        > Node: [Separate Color](FunctionNodeSeparateColor.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html)
-
-        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_FunctionNodeSeparateColor.webp)
-
-        #### Returns:
-        - tuple ('`red`', '`green`', '`blue`', '`alpha`')
-
-
-        """
-
-        node = nodes.SeparateColor(color=self, mode='HSL')
-        return node.red, node.green, node.blue, node.alpha
-
-
-    @property
-    def hsv(self):
-        """
-
-        ```python
-        def hsv(self):
-
-        ```
-        > Node: [Separate Color](FunctionNodeSeparateColor.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html)
-
-        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_FunctionNodeSeparateColor.webp)
-
-        #### Returns:
-        - tuple ('`red`', '`green`', '`blue`', '`alpha`')
-
-
-        """
-
-        node = nodes.SeparateColor(color=self, mode='HSV')
-        return node.red, node.green, node.blue, node.alpha
-
-
-    @property
-    def hue(self):
-        """
-
-        ```python
-        def hue(self):
-
-        ```
-        > Node: [Separate Color](FunctionNodeSeparateColor.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html)
-
-        #### Returns:
-        - socket `red`
-
-
-        """
-
-        return nodes.SeparateColor(color=self, mode='HSV').red
-
-
-    @property
-    def lightness(self):
-        """
-
-        ```python
-        def lightness(self):
-
-        ```
-        > Node: [Separate Color](FunctionNodeSeparateColor.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html)
-
-        #### Returns:
-        - socket `blue`
-
-
-        """
-
-        return nodes.SeparateColor(color=self, mode='HSL').blue
 
 
     def mix(self, factor=None, color=None, blend_type='MIX', clamp_factor=True, clamp_result=False):
@@ -6224,47 +6064,6 @@ class Color(geosocks.Color):
 
 
     @property
-    def red(self):
-        """
-
-        ```python
-        def red(self):
-
-        ```
-        > Node: [Separate Color](FunctionNodeSeparateColor.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html)
-
-        #### Returns:
-        - socket `red`
-
-
-        """
-
-        return nodes.SeparateColor(color=self, mode='RGB').red
-
-
-    @property
-    def rgb(self):
-        """
-
-        ```python
-        def rgb(self):
-
-        ```
-        > Node: [Separate Color](FunctionNodeSeparateColor.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html)
-
-        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_FunctionNodeSeparateColor.webp)
-
-        #### Returns:
-        - tuple ('`red`', '`green`', '`blue`', '`alpha`')
-
-
-        """
-
-        node = nodes.SeparateColor(color=self, mode='RGB')
-        return node.red, node.green, node.blue, node.alpha
-
-
-    @property
     def rgb_curves(self, fac=None):
         """
 
@@ -6281,25 +6080,6 @@ class Color(geosocks.Color):
         """
 
         return nodes.RgbCurves(fac=fac, color=self)
-
-
-    @property
-    def saturation(self):
-        """
-
-        ```python
-        def saturation(self):
-
-        ```
-        > Node: [Separate Color](FunctionNodeSeparateColor.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html)
-
-        #### Returns:
-        - socket `green`
-
-
-        """
-
-        return nodes.SeparateColor(color=self, mode='HSV').green
 
 
     def switch(self, switch=None, true=None):
@@ -6322,25 +6102,6 @@ class Color(geosocks.Color):
         """
 
         return nodes.Switch(switch=switch, false=self, true=true, input_type='RGBA').output
-
-
-    @property
-    def value(self):
-        """
-
-        ```python
-        def value(self):
-
-        ```
-        > Node: [Separate Color](FunctionNodeSeparateColor.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html)
-
-        #### Returns:
-        - socket `blue`
-
-
-        """
-
-        return nodes.SeparateColor(color=self, mode='HSV').blue
 
 
 

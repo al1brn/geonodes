@@ -250,7 +250,6 @@ with gn.Tree('Geometry Nodes') as tree:
     vector.map_range_smoother()
     vector.switch()
     var = gn.Vector.Combine()
-    var = vector.separate
     vector.curves()
     vector.add()
     vector.subtract()
@@ -321,17 +320,6 @@ with gn.Tree('Geometry Nodes') as tree:
     color.mix_color()
     color.mix_value()
     var = color.rgb_curves
-    var = color.rgb
-    var = color.hsv
-    var = color.hsl
-    var = color.alpha
-    var = color.red
-    var = color.green
-    var = color.blue
-    var = color.hue
-    var = color.saturation
-    var = color.value
-    var = color.lightness
     var = gn.Color.Color()
     color.darker()
     color.brighter()

@@ -4,11 +4,6 @@
 
  Integer DataSocket
 
-#### Args:
-- value: Initial value
-- label: Node label
-    
-
 
 
 

@@ -4,9 +4,6 @@
 
  Float DataSocket
 
-#### Args:
-- value: Initial value
-- label: Node label
 
 
 

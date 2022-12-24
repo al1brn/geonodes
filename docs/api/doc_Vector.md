@@ -4,23 +4,15 @@
 
  Vector DataSocket
 
-#### Args:
-- value (float, triplet, DataSocket): Initial value
-- label (str): Node label
-    
 Vector exposes properties: `x`, `y` and `z`:
     
-.. code-block: python
+```python
+v = Vector()
+v.x = 1
+v.y = 2
 
-    v = Vector()
-    v.x = 1
-    v.y = 2
-    
-    geometry.verts.offset = v
-    
-    # The vertices have been translated of (1, 2, 0)
-
-
+# Translate the vertices have been translated of (1, 2, 0)
+geometry.verts.offset = v    
 
 
 
@@ -35,7 +27,7 @@ Vector(self, value=(0., 0., 0.), label=None)
 
 **Properties**
 
-[length](#length) | [separate](#separate)
+[length](#length)
 
 ***Inherited***
 
@@ -71,26 +63,6 @@ def length(self):
 
 #### Returns:
 - socket `value`
-
-
-
-
-
-
-<sub>Go to [top](#class-Vector) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-### separate
-
-
-
-```python
-def separate(self):
-
-```
-> Node: [Separate XYZ](ShaderNodeSeparateXYZ.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/separate_xyz.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeSeparateXYZ.html)
-
-#### Returns:
-- node with sockets ['x', 'y', 'z']
 
 
 
@@ -1449,8 +1421,6 @@ def get_blender_socket(self)
 
 If the `x`, `y`, `z` properties have been read or modified, a *Combine XYZ* node is necessary
 to recompose the Vector.
-
-.. blid:: ShaderNodeCombineXYZ
 
 
 

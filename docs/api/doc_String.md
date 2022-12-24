@@ -3,26 +3,20 @@
 > [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
  String DataSocket
-
-#### Args:
-- value: Initial value
-- label: Node label
-    
 String supports python slicing:
     
-.. code-block:: python
+```python
+s = String("ABCDEFGHIJK")
 
-    s = String("ABCDEFGHIJK")
-    
-    a = s[3]   # Returns String("A")
-    a = s[:3]  # Returns String("ABC")
-    a = s[3:6] # Returns String("DEF")
-    
-    i = Integer(6)
-    j = Integer(9)
+a = s[3]   # Returns String("A")
+a = s[:3]  # Returns String("ABC")
+a = s[3:6] # Returns String("DEF")
 
-    a = s[i:j] # Returns String("GHI")
+i = Integer(6)
+j = Integer(9)
 
+a = s[i:j] # Returns String("GHI")
+```
 
 
 
@@ -195,11 +189,8 @@ def Value(value = None, decimals = None)
 - value: Value to convert
 - decimals: Number of decimals
     
-.. code-block:: python
-
-    s = String.Value(Float(12.34), decimal=2)
-
-.. blid:: FunctionNodeValueToString
+```python
+s = String.Value(Float(12.34), decimal=2)
 
 
 
@@ -278,28 +269,23 @@ def join_strings(self, *strings, delimiter = None)
 #### Returns:
 - String: strings joined with the delimiter
     
-Note
-----
-    Here, the ``self`` String is used as the first String to join.
-    In the methode :func:`join`, ``self`` acts as the delimiter.
-    
-    
-Example
--------
-    .. code-block:: python
-    
-        s0 = String("Demo")
-        s1 = String("ABC")
-        s2 = String("BCD")
-        delimiter = String(", ")
-        
-        s = s0.join_strings(s1, s2, "EFG", delimiter=delimiter)
-        
-        # Is equivalent to the more *pythonic*:
-            
-        s = delimiter.join(s0, s1, s2, "EFG")
+> Note: Here, the `self` String is used as the first String to join.
+  In the method `join`, `self` acts as the delimiter.
+  
+**Example**
 
-.. blid:: GeometryNodeStringJoin
+```python
+s0 = String("Demo")
+s1 = String("ABC")
+s2 = String("BCD")
+delimiter = String(", ")
+
+s = s0.join_strings(s1, s2, "EFG", delimiter=delimiter)
+
+# Is equivalent to the more *pythonic*:
+    
+s = delimiter.join(s0, s1, s2, "EFG")    
+```
 
 
 

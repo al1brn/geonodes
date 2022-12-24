@@ -38,52 +38,49 @@ class Boolean(DataSocket):
     
     To get a Boolean value from the group input (see [Input constructor](#input)):
         
-    .. code-block:: python
-
-        a = Boolean.Input(True, "Option")
-        
+    ```python
+    a = Boolean.Input(True, "Option")
+    ```
     
     Python _bool_ operators such as ``and``, ``or`` or ``if ... else:  ...`` don't work on Boolean
     sockets. Rather use use either a global function or a method of Boolean:
         
-    .. code-block:: python
+    ```python
+    a = Boolean(False) # Two Boolean sockets
+    b = Boolean(True)
     
-        a = Boolean(False) # Two Boolean sockets
-        b = Boolean(True)
-        
-        # Wrong:
-        
-        c = a and b # a and b transtyped to bool with bool(). c is not a Boolean but a bool
-        print(type(c))  # returns <class 'bool'>
-        
-        # Correct
-        
-        c = a.b_and(b)
-        print(type(c)) # returns <class 'Boolean'W
+    # Wrong:
+    
+    c = a and b # a and b transtyped to bool with bool(). c is not a Boolean but a bool
+    print(type(c))  # returns <class 'bool'>
+    
+    # Correct
+    
+    c = a.b_and(b)
+    print(type(c)) # returns <class 'Boolean'W
+    ```
     
     Operator ``*``, ``+`` and ``-`` can be used for respectively ``and``, ``or`` and ``not``:
         
-
-    .. code-block:: python
+    ```python
+    a = Boolean(False)
+    b = Boolean(True)
     
-        a = Boolean(False)
-        b = Boolean(True)
-        
-        _ = a + b  # a or b
-        _ = -a     # not a
-        _ = a * b  # a and b
-        
-        # These operators also work with bool types
-        
-        _ = a * True  # a and True. True can be replaced by a bool variables computed elsewhere
-        
-        # Self change is also possible
-        
-        a *= b
-        
-        # a is now the output socket of the Boolean node math performing a and operation
-        # between a and b
+    _ = a + b  # a or b
+    _ = -a     # not a
+    _ = a * b  # a and b
     
+    # These operators also work with bool types
+    
+    _ = a * True  # a and True. True can be replaced by a bool variables computed elsewhere
+    
+    # Self change is also possible
+    
+    a *= b
+    
+    # a is now the output socket of the Boolean node math performing a and operation
+    # between a and b
+    ```
     """
     
     def __init__(self, value = False, label = None):
@@ -310,11 +307,6 @@ class IntFloat(DataSocket):
     
 class Integer(IntFloat):
     """ Integer DataSocket
-    
-    Args:
-        value: Initial value
-        label: Node label
-        
     """
     
     def __init__(self, value=0, label=None):
@@ -363,9 +355,6 @@ class Integer(IntFloat):
 class Float(IntFloat):
     """ Float DataSocket
     
-    Args:
-        value: Initial value
-        label: Node label        
     """
     
     def __init__(self, value=0., label=None):
@@ -448,26 +437,20 @@ class Float(IntFloat):
 
 class String(DataSocket):
     """ String DataSocket
-    
-    Args:
-        value: Initial value
-        label: Node label        
-        
     String supports python slicing:
         
-    .. code-block:: python
+    ```python
+    s = String("ABCDEFGHIJK")
     
-        s = String("ABCDEFGHIJK")
-        
-        a = s[3]   # Returns String("A")
-        a = s[:3]  # Returns String("ABC")
-        a = s[3:6] # Returns String("DEF")
-        
-        i = Integer(6)
-        j = Integer(9)
+    a = s[3]   # Returns String("A")
+    a = s[:3]  # Returns String("ABC")
+    a = s[3:6] # Returns String("DEF")
+    
+    i = Integer(6)
+    j = Integer(9)
 
-        a = s[i:j] # Returns String("GHI")
-    
+    a = s[i:j] # Returns String("GHI")
+    ```
     """
     
     def __init__(self, value = "Text", label = None):
@@ -511,11 +494,8 @@ class String(DataSocket):
             value: Value to convert
             decimals: Number of decimals
             
-        .. code-block:: python
-        
-            s = String.Value(Float(12.34), decimal=2)
-        
-        .. blid:: FunctionNodeValueToString
+        ```python
+        s = String.Value(Float(12.34), decimal=2)
         
         """
         return nodes.ValueToString(value=value, decimals=decimals).string
@@ -530,28 +510,23 @@ class String(DataSocket):
         Returns:
             String: strings joined with the delimiter
             
-        Note
-        ----
-            Here, the ``self`` String is used as the first String to join.
-            In the methode :func:`join`, ``self`` acts as the delimiter.
-            
-            
-        Example
-        -------
-            .. code-block:: python
-            
-                s0 = String("Demo")
-                s1 = String("ABC")
-                s2 = String("BCD")
-                delimiter = String(", ")
-                
-                s = s0.join_strings(s1, s2, "EFG", delimiter=delimiter)
-                
-                # Is equivalent to the more *pythonic*:
-                    
-                s = delimiter.join(s0, s1, s2, "EFG")
+        > Note: Here, the `self` String is used as the first String to join.
+          In the method `join`, `self` acts as the delimiter.
+          
+        **Example**
         
-        .. blid:: GeometryNodeStringJoin
+        ```python
+        s0 = String("Demo")
+        s1 = String("ABC")
+        s2 = String("BCD")
+        delimiter = String(", ")
+        
+        s = s0.join_strings(s1, s2, "EFG", delimiter=delimiter)
+        
+        # Is equivalent to the more *pythonic*:
+            
+        s = delimiter.join(s0, s1, s2, "EFG")    
+        ```
         """
         
         import geonodes as gn
@@ -572,28 +547,24 @@ class String(DataSocket):
         Returns:
             String: The strings joined with ``self`` as as delimiter.
             
-        Note
-        ----
-            This method works the same as the python ``str.join()`` method. See :func:`join_strings` for
-            another implementation.
+        > Note: This method works the same as the python ``str.join()`` method. See :func:`join_strings` for
+          another implementation.
         
             
-        Example
-        -------
-            .. code-block:: python
-            
-                s0 = String("Demo")
-                s1 = String("ABC")
-                s2 = String("BCD")
-                delimiter = String(", ")
-                
-                s = s0.join_strings(s1, s2, "EFG", delimiter=delimiter)
-                
-                # Is equivalent to the more *pythonic*:
-                    
-                s = delimiter.join(s0, s1, s2, "EFG")
+        **Example**
+
+        ```python
+        s0 = String("Demo")
+        s1 = String("ABC")
+        s2 = String("BCD")
+        delimiter = String(", ")
         
-        .. blid:: GeometryNodeStringJoin        
+        s = s0.join_strings(s1, s2, "EFG", delimiter=delimiter)
+        
+        # Is equivalent to the more *pythonic*:
+            
+        s = delimiter.join(s0, s1, s2, "EFG")    
+        ```
         """
         
         strs = list(strings)
@@ -635,24 +606,16 @@ class String(DataSocket):
 class Vector(DataSocket):
     """ Vector DataSocket
     
-    Args:
-        value (float, triplet, DataSocket): Initial value
-        label (str): Node label
-        
     Vector exposes properties: `x`, `y` and `z`:
         
-    .. code-block: python
+    ```python
+    v = Vector()
+    v.x = 1
+    v.y = 2
     
-        v = Vector()
-        v.x = 1
-        v.y = 2
-        
-        geometry.verts.offset = v
-        
-        # The vertices have been translated of (1, 2, 0)
-    
+    # Translate the vertices have been translated of (1, 2, 0)
+    geometry.verts.offset = v    
     """
-    
     
     def __init__(self, value=(0., 0., 0.), label=None):
         
@@ -784,8 +747,6 @@ class Vector(DataSocket):
         
         If the `x`, `y`, `z` properties have been read or modified, a *Combine XYZ* node is necessary
         to recompose the Vector.
-        
-        .. blid:: ShaderNodeCombineXYZ
         """
         
         if hasattr(self, 'bypass_gbs') or ((not hasattr(self, '_c_separate')) and self.x_ is None and self.y_ is None and self.z_ is None):
@@ -902,13 +863,13 @@ class Color(DataSocket):
         value (float, triplet, DataSocket): Initial value
         label (str): Node label
         
-    Color exposes properties: `r`, `g` and `b`:
+    Color exposes properties: `red`, `green` and `blue`, `hue`, `value`, 'lightness`, 'saturation` and `alpha`:
         
-    .. code-block: python
-    
-        c = Color()
-        c.r = .5
-        c.g = .2
+    ```python
+    c = Color()
+    c.red = .5
+    c.saturation = .2
+    ```
         
         
     Color supports some operators:
@@ -1007,43 +968,7 @@ class Color(DataSocket):
     # r, g and b components
     # DEPRECATED : separate_RGB is replaced by separate_color
     
-    """
-    
-    @property
-    def r(self):
-        if self.r_ is None:
-            return self.separate.r
-        else:
-            return self.r_
-        
-    @r.setter
-    def r(self, value):
-        self.r_ = value
-        
-    @property
-    def g(self):
-        if self.g_ is None:
-            return self.separate.g
-        else:
-            return self.g_
-        
-    @g.setter
-    def g(self, value):
-        self.g_ = value
-        
-    @property
-    def b(self):
-        if self.b_ is None:
-            return self.separate.b
-        else:
-            return self.b_
-        
-    @b.setter
-    def b(self, value):
-        self.b_ = value    
-        
-    """
-        
+
     # ---------------------------------------------------------------------------
     # Is modified
     
@@ -1178,14 +1103,29 @@ class Color(DataSocket):
     
     @property
     def separate_RGB(self):
+        """ Separate RGB
+        
+        Returns:
+            node with sockets red, green, blue, alpha
+        """
         return self.separate('RGB')
         
     @property
     def separate_HSV(self):
+        """ Separate HSV
+        
+        Returns:
+            node with sockets hue, saturation, value, alpha
+        """
         return self.separate('HSV')
         
     @property
     def separate_HSL(self):
+        """ Separate HSL
+        
+        Returns:
+            node with sockets hue, saturation, lightness, alpha
+        """
         return self.separate('HSL')
     
         
@@ -1197,6 +1137,8 @@ class Color(DataSocket):
     
     @property
     def red(self):
+        """ Red compenent
+        """
         self.recompose('RGB')
         
         if self._red is None:
@@ -1210,6 +1152,8 @@ class Color(DataSocket):
         
     @property
     def green(self):
+        """ Green compenent
+        """
         self.recompose('RGB')
         
         if self._green is None:
@@ -1223,6 +1167,8 @@ class Color(DataSocket):
         
     @property
     def blue(self):
+        """ Blue compenent
+        """
         self.recompose('RGB')
         
         if self._blue is None:
@@ -1238,6 +1184,8 @@ class Color(DataSocket):
     
     @property
     def hue(self):
+        """ Hue compenent
+        """
         
         self.recompose(('HSV', 'HSL'))
         
@@ -1255,6 +1203,8 @@ class Color(DataSocket):
         
     @property
     def saturation(self):
+        """ Saturation compenent
+        """
         self.recompose(('HSV', 'HSL'))
         
         if self._saturation is None:
@@ -1272,6 +1222,8 @@ class Color(DataSocket):
         
     @property
     def value(self):
+        """ Value compenent
+        """
         self.recompose('HSV')
         
         if self._value is None:
@@ -1287,6 +1239,8 @@ class Color(DataSocket):
     
     @property
     def lightness(self):
+        """ Lightness compenent
+        """
         self.recompose('HSL')
         
         if self._lightness is None:
@@ -1303,6 +1257,8 @@ class Color(DataSocket):
     
     @property
     def alpha(self):
+        """ Alpha compenent
+        """
         if self._alpha is None:
             
             if self._separate_HSV is not None:
