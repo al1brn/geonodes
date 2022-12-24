@@ -4,15 +4,11 @@
 
  DataSocket Boolean
 
-#### Args:
-- value: Initial value
-- label: Node label
-
 The Boolean initializer can take a python value as argument:      
     
-.. code-block:: python
-
-    a = Boolean(True) # a is the output socket of the input node Boolean initialized at True
+```python
+a = Boolean(True) # a is the output socket of the input node Boolean initialized at True
+```
 
 To get a Boolean value from the group input (see [Input constructor](#input)):
     
