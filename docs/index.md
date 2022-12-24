@@ -6,6 +6,10 @@
 - [Tree](api/Tree.md)
 - [Trees](api/Trees.md)
 
+## Root for types
+
+- [DataSocket](DataSocket.md)
+
 ## Basic types
 
 - [Boolean](api/Boolean.md)
