@@ -59,10 +59,6 @@ String(self, value = "Text", label = None)
 
 
 
-```python
-def length(self):
-
-```
 > Node: [String Length](FunctionNodeStringLength.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/string_length.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeStringLength.html)
 
 #### Returns:
@@ -107,10 +103,6 @@ def LineBreak()
 
 
 
-```python
-def LineBreak():
-
-```
 > Node: [Special Characters](FunctionNodeInputSpecialCharacters.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/special_characters.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeInputSpecialCharacters.html)
 
 #### Returns:
@@ -132,10 +124,6 @@ def String(cls, string='')
 
 
 
-```python
-def String(cls, string=''):
-
-```
 > Node: [String](FunctionNodeInputString.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/string.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeInputString.html)
 
 #### Args:
@@ -160,10 +148,6 @@ def Tab()
 
 
 
-```python
-def Tab():
-
-```
 > Node: [Special Characters](FunctionNodeInputSpecialCharacters.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/special_characters.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeInputSpecialCharacters.html)
 
 #### Returns:
@@ -207,10 +191,6 @@ def equal(self, b=None)
 
 
 
-```python
-def equal(self, b=None):
-
-```
 > Node: [Compare](FunctionNodeCompare.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 
 #### Args:
@@ -234,10 +214,6 @@ def join(*strings, delimiter=None)
 
 
 
-```python
-def join(*strings, delimiter=None):
-
-```
 > Node: [Join Strings](GeometryNodeStringJoin.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/join_strings.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeStringJoin.html)
 
 #### Args:
@@ -300,10 +276,6 @@ def not_equal(self, b=None)
 
 
 
-```python
-def not_equal(self, b=None):
-
-```
 > Node: [Compare](FunctionNodeCompare.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 
 #### Args:
@@ -327,10 +299,6 @@ def replace(self, find=None, replace=None)
 
 
 
-```python
-def replace(self, find=None, replace=None):
-
-```
 > Node: [Replace String](FunctionNodeReplaceString.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/replace_string.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeReplaceString.html)
 
 #### Args:
@@ -355,10 +323,6 @@ def slice(self, position=None, length=None)
 
 
 
-```python
-def slice(self, position=None, length=None):
-
-```
 > Node: [Slice String](FunctionNodeSliceString.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/slice_string.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeSliceString.html)
 
 #### Args:
@@ -383,10 +347,6 @@ def switch(self, switch=None, true=None)
 
 
 
-```python
-def switch(self, switch=None, true=None):
-
-```
 > Node: [Switch](GeometryNodeSwitch.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
 
 #### Args:
@@ -411,10 +371,6 @@ def to_curves(self, string=None, size=None, character_spacing=None, word_spacing
 
 
 
-```python
-def to_curves(self, string=None, size=None, character_spacing=None, word_spacing=None, line_spacing=None, text_box_width=None, text_box_height=None, align_x='LEFT', align_y='TOP_BASELINE', overflow='OVERFLOW', pivot_mode='BOTTOM_LEFT'):
-
-```
 > Node: [String to Curves](GeometryNodeStringToCurves.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/string_to_curves.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeStringToCurves.html)
 
 #### Args:

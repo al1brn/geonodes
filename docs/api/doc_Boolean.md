@@ -100,10 +100,6 @@ def Boolean(cls, boolean=False)
 
 
 
-```python
-def Boolean(cls, boolean=False):
-
-```
 > Node: [Boolean](FunctionNodeInputBool.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/boolean.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeInputBool.html)
 
 #### Args:
@@ -151,10 +147,6 @@ def b_and(self, boolean1=None)
 
 
 
-```python
-def b_and(self, boolean1=None):
-
-```
 > Node: [Boolean Math](FunctionNodeBooleanMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/boolean_math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html)
 
 #### Args:
@@ -178,10 +170,6 @@ def b_not(self)
 
 
 
-```python
-def b_not(self):
-
-```
 > Node: [Boolean Math](FunctionNodeBooleanMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/boolean_math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html)
 
 #### Returns:
@@ -202,10 +190,6 @@ def b_or(self, boolean1=None)
 
 
 
-```python
-def b_or(self, boolean1=None):
-
-```
 > Node: [Boolean Math](FunctionNodeBooleanMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/boolean_math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html)
 
 #### Args:
@@ -229,10 +213,6 @@ def imply(self, boolean1=None)
 
 
 
-```python
-def imply(self, boolean1=None):
-
-```
 > Node: [Boolean Math](FunctionNodeBooleanMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/boolean_math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html)
 
 #### Args:
@@ -256,10 +236,6 @@ def nand(self, boolean1=None)
 
 
 
-```python
-def nand(self, boolean1=None):
-
-```
 > Node: [Boolean Math](FunctionNodeBooleanMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/boolean_math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html)
 
 #### Args:
@@ -283,10 +259,6 @@ def nimply(self, boolean1=None)
 
 
 
-```python
-def nimply(self, boolean1=None):
-
-```
 > Node: [Boolean Math](FunctionNodeBooleanMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/boolean_math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html)
 
 #### Args:
@@ -310,10 +282,6 @@ def nor(self, boolean1=None)
 
 
 
-```python
-def nor(self, boolean1=None):
-
-```
 > Node: [Boolean Math](FunctionNodeBooleanMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/boolean_math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html)
 
 #### Args:
@@ -337,10 +305,6 @@ def switch(self, switch=None, true=None)
 
 
 
-```python
-def switch(self, switch=None, true=None):
-
-```
 > Node: [Switch](GeometryNodeSwitch.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
 
 #### Args:
@@ -365,10 +329,6 @@ def xnor(self, boolean1=None)
 
 
 
-```python
-def xnor(self, boolean1=None):
-
-```
 > Node: [Boolean Math](FunctionNodeBooleanMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/boolean_math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html)
 
 #### Args:
@@ -392,10 +352,6 @@ def xor(self, boolean1=None)
 
 
 
-```python
-def xor(self, boolean1=None):
-
-```
 > Node: [Boolean Math](FunctionNodeBooleanMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/boolean_math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html)
 
 #### Args:

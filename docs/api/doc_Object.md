@@ -72,10 +72,6 @@ def Self(cls)
 
 
 
-```python
-def Self(cls):
-
-```
 > Node: [Self Object](GeometryNodeSelfObject.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/self_object.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSelfObject.html)
 
 #### Returns:
@@ -98,10 +94,6 @@ def geometry(self, object=None, as_instance=None, transform_space='ORIGINAL')
 
 
 
-```python
-def geometry(self, object=None, as_instance=None, transform_space='ORIGINAL'):
-
-```
 > Node: [Object Info](GeometryNodeObjectInfo.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/object_info.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeObjectInfo.html)
 
 #### Args:
@@ -127,10 +119,6 @@ def info(self, object=None, as_instance=None, transform_space='ORIGINAL')
 
 
 
-```python
-def info(self, object=None, as_instance=None, transform_space='ORIGINAL'):
-
-```
 > Node: [Object Info](GeometryNodeObjectInfo.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/object_info.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeObjectInfo.html)
 
 #### Args:
@@ -156,10 +144,6 @@ def location(self, object=None, as_instance=None, transform_space='ORIGINAL')
 
 
 
-```python
-def location(self, object=None, as_instance=None, transform_space='ORIGINAL'):
-
-```
 > Node: [Object Info](GeometryNodeObjectInfo.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/object_info.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeObjectInfo.html)
 
 #### Args:
@@ -185,10 +169,6 @@ def rotation(self, object=None, as_instance=None, transform_space='ORIGINAL')
 
 
 
-```python
-def rotation(self, object=None, as_instance=None, transform_space='ORIGINAL'):
-
-```
 > Node: [Object Info](GeometryNodeObjectInfo.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/object_info.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeObjectInfo.html)
 
 #### Args:
@@ -214,10 +194,6 @@ def scale(self, object=None, as_instance=None, transform_space='ORIGINAL')
 
 
 
-```python
-def scale(self, object=None, as_instance=None, transform_space='ORIGINAL'):
-
-```
 > Node: [Object Info](GeometryNodeObjectInfo.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/object_info.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeObjectInfo.html)
 
 #### Args:
@@ -243,10 +219,6 @@ def switch(self, switch=None, true=None)
 
 
 
-```python
-def switch(self, switch=None, true=None):
-
-```
 > Node: [Switch](GeometryNodeSwitch.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
 
 #### Args:

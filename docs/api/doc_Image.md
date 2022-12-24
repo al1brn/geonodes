@@ -59,10 +59,6 @@ def switch(self, switch=None, true=None)
 
 
 
-```python
-def switch(self, switch=None, true=None):
-
-```
 > Node: [Switch](GeometryNodeSwitch.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
 
 #### Args:
@@ -87,10 +83,6 @@ def texture(self, vector=None, frame=None, extension='REPEAT', interpolation='Li
 
 
 
-```python
-def texture(self, vector=None, frame=None, extension='REPEAT', interpolation='Linear'):
-
-```
 > Node: [Image Texture](GeometryNodeImageTexture.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/image.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeImageTexture.html)
 
 #### Args:

@@ -3,10 +3,6 @@ from geonodes.nodes import nodes
 def abs(value=None, clamp=False):
     """
 
-    ```python
-    def abs(value=None, clamp=False):
-
-    ```
     > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
     #### Args:
@@ -25,10 +21,6 @@ def abs(value=None, clamp=False):
 def absolute(value=None, clamp=False):
     """
 
-    ```python
-    def absolute(value=None, clamp=False):
-
-    ```
     > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
     #### Args:
@@ -47,10 +39,6 @@ def absolute(value=None, clamp=False):
 def align_euler_to_vector(rotation=None, factor=None, vector=None, axis='X', pivot_axis='AUTO'):
     """
 
-    ```python
-    def align_euler_to_vector(rotation=None, factor=None, vector=None, axis='X', pivot_axis='AUTO'):
-
-    ```
     > Node: [Align Euler to Vector](FunctionNodeAlignEulerToVector.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/align_euler_to_vector.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeAlignEulerToVector.html)
 
     #### Args:
@@ -72,10 +60,6 @@ def align_euler_to_vector(rotation=None, factor=None, vector=None, axis='X', piv
 def arccos(value=None, clamp=False):
     """
 
-    ```python
-    def arccos(value=None, clamp=False):
-
-    ```
     > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
     #### Args:
@@ -94,10 +78,6 @@ def arccos(value=None, clamp=False):
 def arccosine(value=None, clamp=False):
     """
 
-    ```python
-    def arccosine(value=None, clamp=False):
-
-    ```
     > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
     #### Args:
@@ -116,10 +96,6 @@ def arccosine(value=None, clamp=False):
 def arcsin(value=None, clamp=False):
     """
 
-    ```python
-    def arcsin(value=None, clamp=False):
-
-    ```
     > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
     #### Args:
@@ -138,10 +114,6 @@ def arcsin(value=None, clamp=False):
 def arcsine(value=None, clamp=False):
     """
 
-    ```python
-    def arcsine(value=None, clamp=False):
-
-    ```
     > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
     #### Args:
@@ -160,10 +132,6 @@ def arcsine(value=None, clamp=False):
 def arctan(value=None, clamp=False):
     """
 
-    ```python
-    def arctan(value=None, clamp=False):
-
-    ```
     > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
     #### Args:
@@ -182,10 +150,6 @@ def arctan(value=None, clamp=False):
 def arctan2(value0=None, value1=None, clamp=False):
     """
 
-    ```python
-    def arctan2(value0=None, value1=None, clamp=False):
-
-    ```
     > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
     #### Args:
@@ -205,10 +169,6 @@ def arctan2(value0=None, value1=None, clamp=False):
 def arctangent(value=None, clamp=False):
     """
 
-    ```python
-    def arctangent(value=None, clamp=False):
-
-    ```
     > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
     #### Args:
@@ -227,10 +187,6 @@ def arctangent(value=None, clamp=False):
 def b_and(boolean0=None, boolean1=None):
     """
 
-    ```python
-    def b_and(boolean0=None, boolean1=None):
-
-    ```
     > Node: [Boolean Math](FunctionNodeBooleanMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/boolean_math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html)
 
     #### Args:
@@ -249,10 +205,6 @@ def b_and(boolean0=None, boolean1=None):
 def b_not(boolean0=None):
     """
 
-    ```python
-    def b_not(boolean0=None):
-
-    ```
     > Node: [Boolean Math](FunctionNodeBooleanMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/boolean_math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html)
 
     #### Args:
@@ -270,10 +222,6 @@ def b_not(boolean0=None):
 def b_or(boolean0=None, boolean1=None):
     """
 
-    ```python
-    def b_or(boolean0=None, boolean1=None):
-
-    ```
     > Node: [Boolean Math](FunctionNodeBooleanMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/boolean_math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html)
 
     #### Args:
@@ -292,10 +240,6 @@ def b_or(boolean0=None, boolean1=None):
 def clamp(value=None, min=None, max=None, clamp_type='MINMAX'):
     """
 
-    ```python
-    def clamp(value=None, min=None, max=None, clamp_type='MINMAX'):
-
-    ```
     > Node: [Clamp](ShaderNodeClamp.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/clamp.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeClamp.html)
 
     #### Args:
@@ -316,10 +260,6 @@ def clamp(value=None, min=None, max=None, clamp_type='MINMAX'):
 def clamp_min_max(value=None, min=None, max=None):
     """
 
-    ```python
-    def clamp_min_max(value=None, min=None, max=None):
-
-    ```
     > Node: [Clamp](ShaderNodeClamp.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/clamp.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeClamp.html)
 
     #### Args:
@@ -339,10 +279,6 @@ def clamp_min_max(value=None, min=None, max=None):
 def clamp_range(value=None, min=None, max=None):
     """
 
-    ```python
-    def clamp_range(value=None, min=None, max=None):
-
-    ```
     > Node: [Clamp](ShaderNodeClamp.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/clamp.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeClamp.html)
 
     #### Args:
@@ -362,10 +298,6 @@ def clamp_range(value=None, min=None, max=None):
 def color_add(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False):
     """
 
-    ```python
-    def color_add(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False):
-
-    ```
     > Node: [Mix](ShaderNodeMix.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
 
     #### Args:
@@ -387,10 +319,6 @@ def color_add(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False
 def color_burn(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False):
     """
 
-    ```python
-    def color_burn(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False):
-
-    ```
     > Node: [Mix](ShaderNodeMix.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
 
     #### Args:
@@ -412,10 +340,6 @@ def color_burn(factor=None, a=None, b=None, clamp_factor=True, clamp_result=Fals
 def color_color(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False):
     """
 
-    ```python
-    def color_color(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False):
-
-    ```
     > Node: [Mix](ShaderNodeMix.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
 
     #### Args:
@@ -437,10 +361,6 @@ def color_color(factor=None, a=None, b=None, clamp_factor=True, clamp_result=Fal
 def color_darken(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False):
     """
 
-    ```python
-    def color_darken(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False):
-
-    ```
     > Node: [Mix](ShaderNodeMix.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
 
     #### Args:
@@ -462,10 +382,6 @@ def color_darken(factor=None, a=None, b=None, clamp_factor=True, clamp_result=Fa
 def color_difference(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False):
     """
 
-    ```python
-    def color_difference(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False):
-
-    ```
     > Node: [Mix](ShaderNodeMix.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
 
     #### Args:
@@ -487,10 +403,6 @@ def color_difference(factor=None, a=None, b=None, clamp_factor=True, clamp_resul
 def color_divide(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False):
     """
 
-    ```python
-    def color_divide(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False):
-
-    ```
     > Node: [Mix](ShaderNodeMix.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
 
     #### Args:
@@ -512,10 +424,6 @@ def color_divide(factor=None, a=None, b=None, clamp_factor=True, clamp_result=Fa
 def color_dodge(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False):
     """
 
-    ```python
-    def color_dodge(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False):
-
-    ```
     > Node: [Mix](ShaderNodeMix.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
 
     #### Args:
@@ -537,10 +445,6 @@ def color_dodge(factor=None, a=None, b=None, clamp_factor=True, clamp_result=Fal
 def color_hue(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False):
     """
 
-    ```python
-    def color_hue(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False):
-
-    ```
     > Node: [Mix](ShaderNodeMix.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
 
     #### Args:
@@ -562,10 +466,6 @@ def color_hue(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False
 def color_lighten(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False):
     """
 
-    ```python
-    def color_lighten(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False):
-
-    ```
     > Node: [Mix](ShaderNodeMix.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
 
     #### Args:
@@ -587,10 +487,6 @@ def color_lighten(factor=None, a=None, b=None, clamp_factor=True, clamp_result=F
 def color_linear_light(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False):
     """
 
-    ```python
-    def color_linear_light(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False):
-
-    ```
     > Node: [Mix](ShaderNodeMix.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
 
     #### Args:
@@ -612,10 +508,6 @@ def color_linear_light(factor=None, a=None, b=None, clamp_factor=True, clamp_res
 def color_mix(factor=None, a=None, b=None, blend_type='MIX', clamp_factor=True, clamp_result=False):
     """
 
-    ```python
-    def color_mix(factor=None, a=None, b=None, blend_type='MIX', clamp_factor=True, clamp_result=False):
-
-    ```
     > Node: [Mix](ShaderNodeMix.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
 
     #### Args:
@@ -638,10 +530,6 @@ def color_mix(factor=None, a=None, b=None, blend_type='MIX', clamp_factor=True, 
 def color_multiply(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False):
     """
 
-    ```python
-    def color_multiply(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False):
-
-    ```
     > Node: [Mix](ShaderNodeMix.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
 
     #### Args:
@@ -663,10 +551,6 @@ def color_multiply(factor=None, a=None, b=None, clamp_factor=True, clamp_result=
 def color_overlay(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False):
     """
 
-    ```python
-    def color_overlay(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False):
-
-    ```
     > Node: [Mix](ShaderNodeMix.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
 
     #### Args:
@@ -688,10 +572,6 @@ def color_overlay(factor=None, a=None, b=None, clamp_factor=True, clamp_result=F
 def color_ramp(fac=None):
     """
 
-    ```python
-    def color_ramp(fac=None):
-
-    ```
     > Node: [ColorRamp](ShaderNodeValToRGB.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/color_ramp.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeValToRGB.html)
 
     #### Args:
@@ -709,10 +589,6 @@ def color_ramp(fac=None):
 def color_saturation(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False):
     """
 
-    ```python
-    def color_saturation(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False):
-
-    ```
     > Node: [Mix](ShaderNodeMix.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
 
     #### Args:
@@ -734,10 +610,6 @@ def color_saturation(factor=None, a=None, b=None, clamp_factor=True, clamp_resul
 def color_screen(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False):
     """
 
-    ```python
-    def color_screen(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False):
-
-    ```
     > Node: [Mix](ShaderNodeMix.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
 
     #### Args:
@@ -759,10 +631,6 @@ def color_screen(factor=None, a=None, b=None, clamp_factor=True, clamp_result=Fa
 def color_soft_light(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False):
     """
 
-    ```python
-    def color_soft_light(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False):
-
-    ```
     > Node: [Mix](ShaderNodeMix.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
 
     #### Args:
@@ -784,10 +652,6 @@ def color_soft_light(factor=None, a=None, b=None, clamp_factor=True, clamp_resul
 def color_subtract(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False):
     """
 
-    ```python
-    def color_subtract(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False):
-
-    ```
     > Node: [Mix](ShaderNodeMix.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
 
     #### Args:
@@ -809,10 +673,6 @@ def color_subtract(factor=None, a=None, b=None, clamp_factor=True, clamp_result=
 def color_value(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False):
     """
 
-    ```python
-    def color_value(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False):
-
-    ```
     > Node: [Mix](ShaderNodeMix.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
 
     #### Args:
@@ -834,10 +694,6 @@ def color_value(factor=None, a=None, b=None, clamp_factor=True, clamp_result=Fal
 def combine_hsl(hue=None, saturation=None, lightness=None, alpha=None):
     """
 
-    ```python
-    def combine_hsl(hue=None, saturation=None, lightness=None, alpha=None):
-
-    ```
     > Node: [Combine Color](FunctionNodeCombineColor.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/combine_color.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeCombineColor.html)
 
     #### Args:
@@ -858,10 +714,6 @@ def combine_hsl(hue=None, saturation=None, lightness=None, alpha=None):
 def combine_hsv(hue=None, saturation=None, value=None, alpha=None):
     """
 
-    ```python
-    def combine_hsv(hue=None, saturation=None, value=None, alpha=None):
-
-    ```
     > Node: [Combine Color](FunctionNodeCombineColor.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/combine_color.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeCombineColor.html)
 
     #### Args:
@@ -882,10 +734,6 @@ def combine_hsv(hue=None, saturation=None, value=None, alpha=None):
 def combine_rgb(red=None, green=None, blue=None, alpha=None):
     """
 
-    ```python
-    def combine_rgb(red=None, green=None, blue=None, alpha=None):
-
-    ```
     > Node: [Combine Color](FunctionNodeCombineColor.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/combine_color.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeCombineColor.html)
 
     #### Args:
@@ -906,10 +754,6 @@ def combine_rgb(red=None, green=None, blue=None, alpha=None):
 def compare(a=None, b=None, c=None, angle=None, epsilon=None, data_type='FLOAT', mode='ELEMENT', operation='GREATER_THAN'):
     """
 
-    ```python
-    def compare(a=None, b=None, c=None, angle=None, epsilon=None, data_type='FLOAT', mode='ELEMENT', operation='GREATER_THAN'):
-
-    ```
     > Node: [Compare](FunctionNodeCompare.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 
     #### Args:
@@ -934,10 +778,6 @@ def compare(a=None, b=None, c=None, angle=None, epsilon=None, data_type='FLOAT',
 def cos(value=None, clamp=False):
     """
 
-    ```python
-    def cos(value=None, clamp=False):
-
-    ```
     > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
     #### Args:
@@ -956,10 +796,6 @@ def cos(value=None, clamp=False):
 def cosh(value=None, clamp=False):
     """
 
-    ```python
-    def cosh(value=None, clamp=False):
-
-    ```
     > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
     #### Args:
@@ -978,10 +814,6 @@ def cosh(value=None, clamp=False):
 def cosine(value=None, clamp=False):
     """
 
-    ```python
-    def cosine(value=None, clamp=False):
-
-    ```
     > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
     #### Args:
@@ -1000,10 +832,6 @@ def cosine(value=None, clamp=False):
 def exp(value=None, clamp=False):
     """
 
-    ```python
-    def exp(value=None, clamp=False):
-
-    ```
     > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
     #### Args:
@@ -1022,10 +850,6 @@ def exp(value=None, clamp=False):
 def exponent(value=None, clamp=False):
     """
 
-    ```python
-    def exponent(value=None, clamp=False):
-
-    ```
     > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
     #### Args:
@@ -1044,10 +868,6 @@ def exponent(value=None, clamp=False):
 def float_mix(factor=None, a=None, b=None, clamp_factor=True):
     """
 
-    ```python
-    def float_mix(factor=None, a=None, b=None, clamp_factor=True):
-
-    ```
     > Node: [Mix](ShaderNodeMix.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
 
     #### Args:
@@ -1068,10 +888,6 @@ def float_mix(factor=None, a=None, b=None, clamp_factor=True):
 def fraction(value=None, clamp=False):
     """
 
-    ```python
-    def fraction(value=None, clamp=False):
-
-    ```
     > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
     #### Args:
@@ -1090,10 +906,6 @@ def fraction(value=None, clamp=False):
 def geometry_to_instance(*geometry):
     """
 
-    ```python
-    def geometry_to_instance(*geometry):
-
-    ```
     > Node: [Geometry to Instance](GeometryNodeGeometryToInstance.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/geometry_to_instance.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeGeometryToInstance.html)
 
     #### Args:
@@ -1112,10 +924,6 @@ def geometry_to_instance(*geometry):
 def imply(boolean0=None, boolean1=None):
     """
 
-    ```python
-    def imply(boolean0=None, boolean1=None):
-
-    ```
     > Node: [Boolean Math](FunctionNodeBooleanMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/boolean_math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html)
 
     #### Args:
@@ -1134,10 +942,6 @@ def imply(boolean0=None, boolean1=None):
 def inverse_sqrt(value=None, clamp=False):
     """
 
-    ```python
-    def inverse_sqrt(value=None, clamp=False):
-
-    ```
     > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
     #### Args:
@@ -1156,10 +960,6 @@ def inverse_sqrt(value=None, clamp=False):
 def join_geometry(*geometry):
     """
 
-    ```python
-    def join_geometry(*geometry):
-
-    ```
     > Node: [Join Geometry](GeometryNodeJoinGeometry.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/join_geometry.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeJoinGeometry.html)
 
     #### Args:
@@ -1177,10 +977,6 @@ def join_geometry(*geometry):
 def join_strings(*strings, delimiter=None):
     """
 
-    ```python
-    def join_strings(*strings, delimiter=None):
-
-    ```
     > Node: [Join Strings](GeometryNodeStringJoin.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/join_strings.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeStringJoin.html)
 
     #### Args:
@@ -1199,10 +995,6 @@ def join_strings(*strings, delimiter=None):
 def log(value=None, base=None, clamp=False):
     """
 
-    ```python
-    def log(value=None, base=None, clamp=False):
-
-    ```
     > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
     #### Args:
@@ -1222,10 +1014,6 @@ def log(value=None, base=None, clamp=False):
 def logarithm(value=None, base=None, clamp=False):
     """
 
-    ```python
-    def logarithm(value=None, base=None, clamp=False):
-
-    ```
     > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
     #### Args:
@@ -1245,10 +1033,6 @@ def logarithm(value=None, base=None, clamp=False):
 def math(value0=None, value1=None, value2=None, operation='ADD', clamp=False):
     """
 
-    ```python
-    def math(value0=None, value1=None, value2=None, operation='ADD', clamp=False):
-
-    ```
     > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
     #### Args:
@@ -1270,10 +1054,6 @@ def math(value0=None, value1=None, value2=None, operation='ADD', clamp=False):
 def math_ceil(value=None, clamp=False):
     """
 
-    ```python
-    def math_ceil(value=None, clamp=False):
-
-    ```
     > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
     #### Args:
@@ -1292,10 +1072,6 @@ def math_ceil(value=None, clamp=False):
 def math_compare(value0=None, value1=None, epsilon=None, clamp=False):
     """
 
-    ```python
-    def math_compare(value0=None, value1=None, epsilon=None, clamp=False):
-
-    ```
     > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
     #### Args:
@@ -1316,10 +1092,6 @@ def math_compare(value0=None, value1=None, epsilon=None, clamp=False):
 def math_floor(value=None, clamp=False):
     """
 
-    ```python
-    def math_floor(value=None, clamp=False):
-
-    ```
     > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
     #### Args:
@@ -1338,10 +1110,6 @@ def math_floor(value=None, clamp=False):
 def math_greater_than(value=None, threshold=None, clamp=False):
     """
 
-    ```python
-    def math_greater_than(value=None, threshold=None, clamp=False):
-
-    ```
     > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
     #### Args:
@@ -1361,10 +1129,6 @@ def math_greater_than(value=None, threshold=None, clamp=False):
 def math_less_than(value=None, threshold=None, clamp=False):
     """
 
-    ```python
-    def math_less_than(value=None, threshold=None, clamp=False):
-
-    ```
     > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
     #### Args:
@@ -1384,10 +1148,6 @@ def math_less_than(value=None, threshold=None, clamp=False):
 def math_round(value=None, clamp=False):
     """
 
-    ```python
-    def math_round(value=None, clamp=False):
-
-    ```
     > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
     #### Args:
@@ -1406,10 +1166,6 @@ def math_round(value=None, clamp=False):
 def math_trun(value=None, clamp=False):
     """
 
-    ```python
-    def math_trun(value=None, clamp=False):
-
-    ```
     > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
     #### Args:
@@ -1428,10 +1184,6 @@ def math_trun(value=None, clamp=False):
 def math_truncate(value=None, clamp=False):
     """
 
-    ```python
-    def math_truncate(value=None, clamp=False):
-
-    ```
     > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
     #### Args:
@@ -1450,10 +1202,6 @@ def math_truncate(value=None, clamp=False):
 def max(value0=None, value1=None, clamp=False):
     """
 
-    ```python
-    def max(value0=None, value1=None, clamp=False):
-
-    ```
     > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
     #### Args:
@@ -1473,10 +1221,6 @@ def max(value0=None, value1=None, clamp=False):
 def maximum(value0=None, value1=None, clamp=False):
     """
 
-    ```python
-    def maximum(value0=None, value1=None, clamp=False):
-
-    ```
     > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
     #### Args:
@@ -1496,10 +1240,6 @@ def maximum(value0=None, value1=None, clamp=False):
 def min(value0=None, value1=None, clamp=False):
     """
 
-    ```python
-    def min(value0=None, value1=None, clamp=False):
-
-    ```
     > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
     #### Args:
@@ -1519,10 +1259,6 @@ def min(value0=None, value1=None, clamp=False):
 def minimum(value0=None, value1=None, clamp=False):
     """
 
-    ```python
-    def minimum(value0=None, value1=None, clamp=False):
-
-    ```
     > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
     #### Args:
@@ -1542,10 +1278,6 @@ def minimum(value0=None, value1=None, clamp=False):
 def modulo(value0=None, value1=None, clamp=False):
     """
 
-    ```python
-    def modulo(value0=None, value1=None, clamp=False):
-
-    ```
     > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
     #### Args:
@@ -1565,10 +1297,6 @@ def modulo(value0=None, value1=None, clamp=False):
 def mul_add(value=None, multiplier=None, addend=None, clamp=False):
     """
 
-    ```python
-    def mul_add(value=None, multiplier=None, addend=None, clamp=False):
-
-    ```
     > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
     #### Args:
@@ -1589,10 +1317,6 @@ def mul_add(value=None, multiplier=None, addend=None, clamp=False):
 def multiply_add(value=None, multiplier=None, addend=None, clamp=False):
     """
 
-    ```python
-    def multiply_add(value=None, multiplier=None, addend=None, clamp=False):
-
-    ```
     > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
     #### Args:
@@ -1613,10 +1337,6 @@ def multiply_add(value=None, multiplier=None, addend=None, clamp=False):
 def nand(boolean0=None, boolean1=None):
     """
 
-    ```python
-    def nand(boolean0=None, boolean1=None):
-
-    ```
     > Node: [Boolean Math](FunctionNodeBooleanMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/boolean_math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html)
 
     #### Args:
@@ -1635,10 +1355,6 @@ def nand(boolean0=None, boolean1=None):
 def nimply(boolean0=None, boolean1=None):
     """
 
-    ```python
-    def nimply(boolean0=None, boolean1=None):
-
-    ```
     > Node: [Boolean Math](FunctionNodeBooleanMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/boolean_math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html)
 
     #### Args:
@@ -1657,10 +1373,6 @@ def nimply(boolean0=None, boolean1=None):
 def nor(boolean0=None, boolean1=None):
     """
 
-    ```python
-    def nor(boolean0=None, boolean1=None):
-
-    ```
     > Node: [Boolean Math](FunctionNodeBooleanMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/boolean_math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html)
 
     #### Args:
@@ -1679,10 +1391,6 @@ def nor(boolean0=None, boolean1=None):
 def ping_pong(value=None, scale=None, clamp=False):
     """
 
-    ```python
-    def ping_pong(value=None, scale=None, clamp=False):
-
-    ```
     > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
     #### Args:
@@ -1702,10 +1410,6 @@ def ping_pong(value=None, scale=None, clamp=False):
 def power(base=None, exponent=None, clamp=False):
     """
 
-    ```python
-    def power(base=None, exponent=None, clamp=False):
-
-    ```
     > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
     #### Args:
@@ -1725,10 +1429,6 @@ def power(base=None, exponent=None, clamp=False):
 def random_boolean(probability=None, ID=None, seed=None):
     """
 
-    ```python
-    def random_boolean(probability=None, ID=None, seed=None):
-
-    ```
     > Node: [Random Value](FunctionNodeRandomValue.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/random_value.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeRandomValue.html)
 
     #### Args:
@@ -1748,10 +1448,6 @@ def random_boolean(probability=None, ID=None, seed=None):
 def random_float(min=None, max=None, ID=None, seed=None):
     """
 
-    ```python
-    def random_float(min=None, max=None, ID=None, seed=None):
-
-    ```
     > Node: [Random Value](FunctionNodeRandomValue.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/random_value.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeRandomValue.html)
 
     #### Args:
@@ -1772,10 +1468,6 @@ def random_float(min=None, max=None, ID=None, seed=None):
 def random_integer(min=None, max=None, ID=None, seed=None):
     """
 
-    ```python
-    def random_integer(min=None, max=None, ID=None, seed=None):
-
-    ```
     > Node: [Random Value](FunctionNodeRandomValue.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/random_value.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeRandomValue.html)
 
     #### Args:
@@ -1796,10 +1488,6 @@ def random_integer(min=None, max=None, ID=None, seed=None):
 def random_vector(min=None, max=None, ID=None, seed=None):
     """
 
-    ```python
-    def random_vector(min=None, max=None, ID=None, seed=None):
-
-    ```
     > Node: [Random Value](FunctionNodeRandomValue.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/random_value.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeRandomValue.html)
 
     #### Args:
@@ -1820,10 +1508,6 @@ def random_vector(min=None, max=None, ID=None, seed=None):
 def replace_string(string=None, find=None, replace=None):
     """
 
-    ```python
-    def replace_string(string=None, find=None, replace=None):
-
-    ```
     > Node: [Replace String](FunctionNodeReplaceString.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/replace_string.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeReplaceString.html)
 
     #### Args:
@@ -1843,10 +1527,6 @@ def replace_string(string=None, find=None, replace=None):
 def rgb_curves(fac=None, color=None):
     """
 
-    ```python
-    def rgb_curves(fac=None, color=None):
-
-    ```
     > Node: [RGB Curves](ShaderNodeRGBCurve.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/rgb_curves.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeRGBCurve.html)
 
     #### Args:
@@ -1865,10 +1545,6 @@ def rgb_curves(fac=None, color=None):
 def rotate_axis_angle(rotation=None, axis=None, angle=None, space='OBJECT'):
     """
 
-    ```python
-    def rotate_axis_angle(rotation=None, axis=None, angle=None, space='OBJECT'):
-
-    ```
     > Node: [Rotate Euler](FunctionNodeRotateEuler.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotate_euler.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeRotateEuler.html)
 
     #### Args:
@@ -1889,10 +1565,6 @@ def rotate_axis_angle(rotation=None, axis=None, angle=None, space='OBJECT'):
 def rotate_euler(rotation=None, rotate_by=None, space='OBJECT'):
     """
 
-    ```python
-    def rotate_euler(rotation=None, rotate_by=None, space='OBJECT'):
-
-    ```
     > Node: [Rotate Euler](FunctionNodeRotateEuler.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotate_euler.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeRotateEuler.html)
 
     #### Args:
@@ -1912,10 +1584,6 @@ def rotate_euler(rotation=None, rotate_by=None, space='OBJECT'):
 def separate_hsl(color=None):
     """
 
-    ```python
-    def separate_hsl(color=None):
-
-    ```
     > Node: [Separate Color](FunctionNodeSeparateColor.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html)
 
     #### Args:
@@ -1936,10 +1604,6 @@ def separate_hsl(color=None):
 def separate_hsv(color=None):
     """
 
-    ```python
-    def separate_hsv(color=None):
-
-    ```
     > Node: [Separate Color](FunctionNodeSeparateColor.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html)
 
     #### Args:
@@ -1960,10 +1624,6 @@ def separate_hsv(color=None):
 def separate_rgb(color=None):
     """
 
-    ```python
-    def separate_rgb(color=None):
-
-    ```
     > Node: [Separate Color](FunctionNodeSeparateColor.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html)
 
     #### Args:
@@ -1984,10 +1644,6 @@ def separate_rgb(color=None):
 def sign(value=None, clamp=False):
     """
 
-    ```python
-    def sign(value=None, clamp=False):
-
-    ```
     > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
     #### Args:
@@ -2006,10 +1662,6 @@ def sign(value=None, clamp=False):
 def sin(value=None, clamp=False):
     """
 
-    ```python
-    def sin(value=None, clamp=False):
-
-    ```
     > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
     #### Args:
@@ -2028,10 +1680,6 @@ def sin(value=None, clamp=False):
 def sine(value=None, clamp=False):
     """
 
-    ```python
-    def sine(value=None, clamp=False):
-
-    ```
     > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
     #### Args:
@@ -2050,10 +1698,6 @@ def sine(value=None, clamp=False):
 def sinh(value=None, clamp=False):
     """
 
-    ```python
-    def sinh(value=None, clamp=False):
-
-    ```
     > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
     #### Args:
@@ -2072,10 +1716,6 @@ def sinh(value=None, clamp=False):
 def slice_string(string=None, position=None, length=None):
     """
 
-    ```python
-    def slice_string(string=None, position=None, length=None):
-
-    ```
     > Node: [Slice String](FunctionNodeSliceString.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/slice_string.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeSliceString.html)
 
     #### Args:
@@ -2095,10 +1735,6 @@ def slice_string(string=None, position=None, length=None):
 def smooth_maximum(value0=None, value1=None, distance=None, clamp=False):
     """
 
-    ```python
-    def smooth_maximum(value0=None, value1=None, distance=None, clamp=False):
-
-    ```
     > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
     #### Args:
@@ -2119,10 +1755,6 @@ def smooth_maximum(value0=None, value1=None, distance=None, clamp=False):
 def smooth_minimum(value0=None, value1=None, distance=None, clamp=False):
     """
 
-    ```python
-    def smooth_minimum(value0=None, value1=None, distance=None, clamp=False):
-
-    ```
     > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
     #### Args:
@@ -2143,10 +1775,6 @@ def smooth_minimum(value0=None, value1=None, distance=None, clamp=False):
 def snap(value=None, increment=None, clamp=False):
     """
 
-    ```python
-    def snap(value=None, increment=None, clamp=False):
-
-    ```
     > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
     #### Args:
@@ -2166,10 +1794,6 @@ def snap(value=None, increment=None, clamp=False):
 def sqrt(value=None, clamp=False):
     """
 
-    ```python
-    def sqrt(value=None, clamp=False):
-
-    ```
     > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
     #### Args:
@@ -2188,10 +1812,6 @@ def sqrt(value=None, clamp=False):
 def string_length(string=None):
     """
 
-    ```python
-    def string_length(string=None):
-
-    ```
     > Node: [String Length](FunctionNodeStringLength.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/string_length.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeStringLength.html)
 
     #### Args:
@@ -2209,10 +1829,6 @@ def string_length(string=None):
 def string_to_curves(string=None, size=None, character_spacing=None, word_spacing=None, line_spacing=None, text_box_width=None, text_box_height=None, align_x='LEFT', align_y='TOP_BASELINE', overflow='OVERFLOW', pivot_mode='BOTTOM_LEFT'):
     """
 
-    ```python
-    def string_to_curves(string=None, size=None, character_spacing=None, word_spacing=None, line_spacing=None, text_box_width=None, text_box_height=None, align_x='LEFT', align_y='TOP_BASELINE', overflow='OVERFLOW', pivot_mode='BOTTOM_LEFT'):
-
-    ```
     > Node: [String to Curves](GeometryNodeStringToCurves.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/string_to_curves.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeStringToCurves.html)
 
     #### Args:
@@ -2244,10 +1860,6 @@ def string_to_curves(string=None, size=None, character_spacing=None, word_spacin
 def switch(switch=None, false=None, true=None, input_type='GEOMETRY'):
     """
 
-    ```python
-    def switch(switch=None, false=None, true=None, input_type='GEOMETRY'):
-
-    ```
     > Node: [Switch](GeometryNodeSwitch.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
 
     #### Args:
@@ -2268,10 +1880,6 @@ def switch(switch=None, false=None, true=None, input_type='GEOMETRY'):
 def switch_boolean(switch=None, false=None, true=None):
     """
 
-    ```python
-    def switch_boolean(switch=None, false=None, true=None):
-
-    ```
     > Node: [Switch](GeometryNodeSwitch.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
 
     #### Args:
@@ -2291,10 +1899,6 @@ def switch_boolean(switch=None, false=None, true=None):
 def switch_collection(switch=None, false=None, true=None):
     """
 
-    ```python
-    def switch_collection(switch=None, false=None, true=None):
-
-    ```
     > Node: [Switch](GeometryNodeSwitch.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
 
     #### Args:
@@ -2314,10 +1918,6 @@ def switch_collection(switch=None, false=None, true=None):
 def switch_color(switch=None, false=None, true=None):
     """
 
-    ```python
-    def switch_color(switch=None, false=None, true=None):
-
-    ```
     > Node: [Switch](GeometryNodeSwitch.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
 
     #### Args:
@@ -2337,10 +1937,6 @@ def switch_color(switch=None, false=None, true=None):
 def switch_float(switch=None, false=None, true=None):
     """
 
-    ```python
-    def switch_float(switch=None, false=None, true=None):
-
-    ```
     > Node: [Switch](GeometryNodeSwitch.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
 
     #### Args:
@@ -2360,10 +1956,6 @@ def switch_float(switch=None, false=None, true=None):
 def switch_geometry(switch=None, false=None, true=None):
     """
 
-    ```python
-    def switch_geometry(switch=None, false=None, true=None):
-
-    ```
     > Node: [Switch](GeometryNodeSwitch.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
 
     #### Args:
@@ -2383,10 +1975,6 @@ def switch_geometry(switch=None, false=None, true=None):
 def switch_image(switch=None, false=None, true=None):
     """
 
-    ```python
-    def switch_image(switch=None, false=None, true=None):
-
-    ```
     > Node: [Switch](GeometryNodeSwitch.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
 
     #### Args:
@@ -2406,10 +1994,6 @@ def switch_image(switch=None, false=None, true=None):
 def switch_integer(switch=None, false=None, true=None):
     """
 
-    ```python
-    def switch_integer(switch=None, false=None, true=None):
-
-    ```
     > Node: [Switch](GeometryNodeSwitch.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
 
     #### Args:
@@ -2429,10 +2013,6 @@ def switch_integer(switch=None, false=None, true=None):
 def switch_material(switch=None, false=None, true=None):
     """
 
-    ```python
-    def switch_material(switch=None, false=None, true=None):
-
-    ```
     > Node: [Switch](GeometryNodeSwitch.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
 
     #### Args:
@@ -2452,10 +2032,6 @@ def switch_material(switch=None, false=None, true=None):
 def switch_object(switch=None, false=None, true=None):
     """
 
-    ```python
-    def switch_object(switch=None, false=None, true=None):
-
-    ```
     > Node: [Switch](GeometryNodeSwitch.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
 
     #### Args:
@@ -2475,10 +2051,6 @@ def switch_object(switch=None, false=None, true=None):
 def switch_string(switch=None, false=None, true=None):
     """
 
-    ```python
-    def switch_string(switch=None, false=None, true=None):
-
-    ```
     > Node: [Switch](GeometryNodeSwitch.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
 
     #### Args:
@@ -2498,10 +2070,6 @@ def switch_string(switch=None, false=None, true=None):
 def switch_texture(switch=None, false=None, true=None):
     """
 
-    ```python
-    def switch_texture(switch=None, false=None, true=None):
-
-    ```
     > Node: [Switch](GeometryNodeSwitch.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
 
     #### Args:
@@ -2521,10 +2089,6 @@ def switch_texture(switch=None, false=None, true=None):
 def switch_vector(switch=None, false=None, true=None):
     """
 
-    ```python
-    def switch_vector(switch=None, false=None, true=None):
-
-    ```
     > Node: [Switch](GeometryNodeSwitch.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
 
     #### Args:
@@ -2544,10 +2108,6 @@ def switch_vector(switch=None, false=None, true=None):
 def tan(value=None, clamp=False):
     """
 
-    ```python
-    def tan(value=None, clamp=False):
-
-    ```
     > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
     #### Args:
@@ -2566,10 +2126,6 @@ def tan(value=None, clamp=False):
 def tangent(value=None, clamp=False):
     """
 
-    ```python
-    def tangent(value=None, clamp=False):
-
-    ```
     > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
     #### Args:
@@ -2588,10 +2144,6 @@ def tangent(value=None, clamp=False):
 def tanh(value=None, clamp=False):
     """
 
-    ```python
-    def tanh(value=None, clamp=False):
-
-    ```
     > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
     #### Args:
@@ -2610,10 +2162,6 @@ def tanh(value=None, clamp=False):
 def to_degrees(value=None, clamp=False):
     """
 
-    ```python
-    def to_degrees(value=None, clamp=False):
-
-    ```
     > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
     #### Args:
@@ -2632,10 +2180,6 @@ def to_degrees(value=None, clamp=False):
 def to_radians(value=None, clamp=False):
     """
 
-    ```python
-    def to_radians(value=None, clamp=False):
-
-    ```
     > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
     #### Args:
@@ -2654,10 +2198,6 @@ def to_radians(value=None, clamp=False):
 def value_to_string(value=None, decimals=None):
     """
 
-    ```python
-    def value_to_string(value=None, decimals=None):
-
-    ```
     > Node: [Value to String](FunctionNodeValueToString.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/value_to_string.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeValueToString.html)
 
     #### Args:
@@ -2676,10 +2216,6 @@ def value_to_string(value=None, decimals=None):
 def vector_mix(factor=None, a=None, b=None, clamp_factor=True, factor_mode='UNIFORM'):
     """
 
-    ```python
-    def vector_mix(factor=None, a=None, b=None, clamp_factor=True, factor_mode='UNIFORM'):
-
-    ```
     > Node: [Mix](ShaderNodeMix.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
 
     #### Args:
@@ -2701,10 +2237,6 @@ def vector_mix(factor=None, a=None, b=None, clamp_factor=True, factor_mode='UNIF
 def wrap(value=None, max=None, min=None, clamp=False):
     """
 
-    ```python
-    def wrap(value=None, max=None, min=None, clamp=False):
-
-    ```
     > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
     #### Args:
@@ -2725,10 +2257,6 @@ def wrap(value=None, max=None, min=None, clamp=False):
 def xnor(boolean0=None, boolean1=None):
     """
 
-    ```python
-    def xnor(boolean0=None, boolean1=None):
-
-    ```
     > Node: [Boolean Math](FunctionNodeBooleanMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/boolean_math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html)
 
     #### Args:
@@ -2747,10 +2275,6 @@ def xnor(boolean0=None, boolean1=None):
 def xor(boolean0=None, boolean1=None):
     """
 
-    ```python
-    def xor(boolean0=None, boolean1=None):
-
-    ```
     > Node: [Boolean Math](FunctionNodeBooleanMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/boolean_math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html)
 
     #### Args:

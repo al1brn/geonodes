@@ -112,10 +112,6 @@ elf.points = Vertex(self) # Initialized before super().__init__ which can overri
 
 
 
-```python
-def ID(self):
-
-```
 > Node: [ID](GeometryNodeInputID.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/id.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputID.html)
 
 #### Returns:
@@ -132,10 +128,6 @@ def ID(self):
 
 
 
-```python
-def bounding_box(self):
-
-```
 > Node: [Bounding Box](GeometryNodeBoundBox.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/bounding_box.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeBoundBox.html)
 
 #### Returns:
@@ -152,10 +144,6 @@ def bounding_box(self):
 
 
 
-```python
-def bounding_box_min(self):
-
-```
 > Node: [Bounding Box](GeometryNodeBoundBox.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/bounding_box.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeBoundBox.html)
 
 #### Returns:
@@ -172,10 +160,6 @@ def bounding_box_min(self):
 
 
 
-```python
-def convex_hull(self):
-
-```
 > Node: [Convex Hull](GeometryNodeConvexHull.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/convex_hull.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeConvexHull.html)
 
 #### Returns:
@@ -192,10 +176,6 @@ def convex_hull(self):
 
 
 
-```python
-def curve_component(self):
-
-```
 > Node: [Separate Components](GeometryNodeSeparateComponents.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/separate_components.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSeparateComponents.html)
 
 #### Returns:
@@ -212,10 +192,6 @@ def curve_component(self):
 
 
 
-```python
-def domain_size(self, component='MESH'):
-
-```
 > Node: [Domain Size](GeometryNodeAttributeDomainSize.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html)
 
 #### Returns:
@@ -232,10 +208,6 @@ def domain_size(self, component='MESH'):
 
 
 
-```python
-def index(self):
-
-```
 > Node: [Index](GeometryNodeInputIndex.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/input_index.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputIndex.html)
 
 #### Returns:
@@ -252,10 +224,6 @@ def index(self):
 
 
 
-```python
-def instances_component(self):
-
-```
 > Node: [Separate Components](GeometryNodeSeparateComponents.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/separate_components.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSeparateComponents.html)
 
 #### Returns:
@@ -272,10 +240,6 @@ def instances_component(self):
 
 
 
-```python
-def is_viewport(self):
-
-```
 > Node: [Is Viewport](GeometryNodeIsViewport.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/is_viewport.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeIsViewport.html)
 
 #### Returns:
@@ -292,10 +256,6 @@ def is_viewport(self):
 
 
 
-```python
-def material_index(self):
-
-```
 > Node: [Material Index](GeometryNodeInputMaterialIndex.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/material_index.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMaterialIndex.html)
 
 #### Returns:
@@ -312,10 +272,6 @@ def material_index(self):
 
 
 
-```python
-def mesh_component(self):
-
-```
 > Node: [Separate Components](GeometryNodeSeparateComponents.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/separate_components.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSeparateComponents.html)
 
 #### Returns:
@@ -332,10 +288,6 @@ def mesh_component(self):
 
 
 
-```python
-def normal(self):
-
-```
 > Node: [Normal](GeometryNodeInputNormal.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/normal.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputNormal.html)
 
 #### Returns:
@@ -352,10 +304,6 @@ def normal(self):
 
 
 
-```python
-def points_component(self):
-
-```
 > Node: [Separate Components](GeometryNodeSeparateComponents.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/separate_components.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSeparateComponents.html)
 
 #### Returns:
@@ -372,10 +320,6 @@ def points_component(self):
 
 
 
-```python
-def position(self):
-
-```
 > Node: [Position](GeometryNodeInputPosition.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/position.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputPosition.html)
 
 #### Returns:
@@ -392,10 +336,6 @@ def position(self):
 
 
 
-```python
-def radius(self):
-
-```
 > Node: [Radius](GeometryNodeInputRadius.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/radius.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputRadius.html)
 
 #### Returns:
@@ -412,10 +352,6 @@ def radius(self):
 
 
 
-```python
-def separate_components(self):
-
-```
 > Node: [Separate Components](GeometryNodeSeparateComponents.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/separate_components.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSeparateComponents.html)
 
 #### Returns:
@@ -432,10 +368,6 @@ def separate_components(self):
 
 
 
-```python
-def volume_component(self):
-
-```
 > Node: [Separate Components](GeometryNodeSeparateComponents.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/separate_components.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSeparateComponents.html)
 
 #### Returns:
@@ -459,10 +391,6 @@ def Collection(cls, collection=None, separate_children=None, reset_children=None
 
 
 
-```python
-def Collection(cls, collection=None, separate_children=None, reset_children=None, transform_space='ORIGINAL'):
-
-```
 > Node: [Collection Info](GeometryNodeCollectionInfo.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/collection_info.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeCollectionInfo.html)
 
 #### Args:
@@ -490,10 +418,6 @@ def Cube(cls, density=None, background=None, min=None, max=None, resolution_x=No
 
 
 
-```python
-def Cube(cls, density=None, background=None, min=None, max=None, resolution_x=None, resolution_y=None, resolution_z=None):
-
-```
 > Node: [Volume Cube](GeometryNodeVolumeCube.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/volume/volume_cube.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeVolumeCube.html)
 
 #### Args:
@@ -566,10 +490,6 @@ def attribute_statistic(self, selection=None, attribute=None, domain='POINT')
 
 
 
-```python
-def attribute_statistic(self, selection=None, attribute=None, domain='POINT'):
-
-```
 > Node: [Attribute Statistic](GeometryNodeAttributeStatistic.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/attribute_statistic.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeStatistic.html)
 
 #### Args:
@@ -595,10 +515,6 @@ def capture_attribute(self, value=None, domain='POINT')
 
 
 
-```python
-def capture_attribute(self, value=None, domain='POINT'):
-
-```
 > Node: [Capture Attribute](GeometryNodeCaptureAttribute.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/capture_attribute.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeCaptureAttribute.html)
 
 #### Args:
@@ -623,10 +539,6 @@ def capture_attribute_node(self, geometry=None, value=None, data_type='FLOAT', d
 
 
 
-```python
-def capture_attribute_node(self, geometry=None, value=None, data_type='FLOAT', domain='POINT'):
-
-```
 > Node: [Capture Attribute](GeometryNodeCaptureAttribute.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/capture_attribute.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeCaptureAttribute.html)
 
 #### Args:
@@ -653,10 +565,6 @@ def delete(self, selection=None, domain='POINT', mode='ALL')
 
 
 
-```python
-def delete(self, selection=None, domain='POINT', mode='ALL'):
-
-```
 > Node: [Delete Geometry](GeometryNodeDeleteGeometry.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/delete_geometry.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeDeleteGeometry.html)
 
 #### Args:
@@ -682,10 +590,6 @@ def distribute_points(self, density=None, seed=None, spacing=None, threshold=Non
 
 
 
-```python
-def distribute_points(self, density=None, seed=None, spacing=None, threshold=None, mode='DENSITY_RANDOM'):
-
-```
 > Node: [Distribute Points in Volume](GeometryNodeDistributePointsInVolume.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/point/distribute_points_in_volume.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeDistributePointsInVolume.html)
 
 #### Args:
@@ -713,10 +617,6 @@ def distribute_points_grid(self, spacing=None, threshold=None)
 
 
 
-```python
-def distribute_points_grid(self, spacing=None, threshold=None):
-
-```
 > Node: [Distribute Points in Volume](GeometryNodeDistributePointsInVolume.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/point/distribute_points_in_volume.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeDistributePointsInVolume.html)
 
 #### Args:
@@ -741,10 +641,6 @@ def distribute_points_random(self, density=None, seed=None)
 
 
 
-```python
-def distribute_points_random(self, density=None, seed=None):
-
-```
 > Node: [Distribute Points in Volume](GeometryNodeDistributePointsInVolume.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/point/distribute_points_in_volume.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeDistributePointsInVolume.html)
 
 #### Args:
@@ -769,10 +665,6 @@ def duplicate(self, selection=None, amount=None, domain='POINT')
 
 
 
-```python
-def duplicate(self, selection=None, amount=None, domain='POINT'):
-
-```
 > Node: [Duplicate Elements](GeometryNodeDuplicateElements.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/duplicate_elements.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeDuplicateElements.html)
 
 #### Args:
@@ -798,10 +690,6 @@ def field_at_index(self, index=None, value=None, domain='POINT')
 
 
 
-```python
-def field_at_index(self, index=None, value=None, domain='POINT'):
-
-```
 > Node: [Field at Index](GeometryNodeFieldAtIndex.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/field_at_index.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeFieldAtIndex.html)
 
 #### Args:
@@ -827,10 +715,6 @@ def get_named_boolean(self, name=None)
 
 
 
-```python
-def get_named_boolean(self, name=None):
-
-```
 > Node: [Named Attribute](GeometryNodeInputNamedAttribute.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/named_attribute.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputNamedAttribute.html)
 
 #### Args:
@@ -854,10 +738,6 @@ def get_named_color(self, name=None)
 
 
 
-```python
-def get_named_color(self, name=None):
-
-```
 > Node: [Named Attribute](GeometryNodeInputNamedAttribute.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/named_attribute.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputNamedAttribute.html)
 
 #### Args:
@@ -881,10 +761,6 @@ def get_named_float(self, name=None)
 
 
 
-```python
-def get_named_float(self, name=None):
-
-```
 > Node: [Named Attribute](GeometryNodeInputNamedAttribute.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/named_attribute.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputNamedAttribute.html)
 
 #### Args:
@@ -908,10 +784,6 @@ def get_named_integer(self, name=None)
 
 
 
-```python
-def get_named_integer(self, name=None):
-
-```
 > Node: [Named Attribute](GeometryNodeInputNamedAttribute.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/named_attribute.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputNamedAttribute.html)
 
 #### Args:
@@ -935,10 +807,6 @@ def get_named_vector(self, name=None)
 
 
 
-```python
-def get_named_vector(self, name=None):
-
-```
 > Node: [Named Attribute](GeometryNodeInputNamedAttribute.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/named_attribute.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputNamedAttribute.html)
 
 #### Args:
@@ -996,10 +864,6 @@ def interpolate_domain(self, value=None, domain='POINT')
 
 
 
-```python
-def interpolate_domain(self, value=None, domain='POINT'):
-
-```
 > Node: [Interpolate Domain](GeometryNodeFieldOnDomain.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/interpolate_domain.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeFieldOnDomain.html)
 
 #### Args:
@@ -1024,10 +888,6 @@ def join(*geometry)
 
 
 
-```python
-def join(*geometry):
-
-```
 > Node: [Join Geometry](GeometryNodeJoinGeometry.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/join_geometry.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeJoinGeometry.html)
 
 #### Args:
@@ -1051,10 +911,6 @@ def material_selection(self, material=None)
 
 
 
-```python
-def material_selection(self, material=None):
-
-```
 > Node: [Material Selection](GeometryNodeMaterialSelection.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/material_selection.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeMaterialSelection.html)
 
 #### Args:
@@ -1078,10 +934,6 @@ def merge_by_distance(self, selection=None, distance=None, mode='ALL')
 
 
 
-```python
-def merge_by_distance(self, selection=None, distance=None, mode='ALL'):
-
-```
 > Node: [Merge by Distance](GeometryNodeMergeByDistance.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/merge_by_distance.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeMergeByDistance.html)
 
 #### Args:
@@ -1107,10 +959,6 @@ def named_attribute(self, name=None, data_type='FLOAT')
 
 
 
-```python
-def named_attribute(self, name=None, data_type='FLOAT'):
-
-```
 > Node: [Named Attribute](GeometryNodeInputNamedAttribute.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/named_attribute.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputNamedAttribute.html)
 
 #### Args:
@@ -1135,10 +983,6 @@ def proximity(self, target=None, source_position=None, target_element='FACES')
 
 
 
-```python
-def proximity(self, target=None, source_position=None, target_element='FACES'):
-
-```
 > Node: [Geometry Proximity](GeometryNodeProximity.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/geometry_proximity.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeProximity.html)
 
 #### Args:
@@ -1164,10 +1008,6 @@ def proximity_edges(self, target=None, source_position=None)
 
 
 
-```python
-def proximity_edges(self, target=None, source_position=None):
-
-```
 > Node: [Geometry Proximity](GeometryNodeProximity.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/geometry_proximity.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeProximity.html)
 
 #### Args:
@@ -1192,10 +1032,6 @@ def proximity_faces(self, target=None, source_position=None)
 
 
 
-```python
-def proximity_faces(self, target=None, source_position=None):
-
-```
 > Node: [Geometry Proximity](GeometryNodeProximity.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/geometry_proximity.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeProximity.html)
 
 #### Args:
@@ -1220,10 +1056,6 @@ def proximity_points(self, target=None, source_position=None)
 
 
 
-```python
-def proximity_points(self, target=None, source_position=None):
-
-```
 > Node: [Geometry Proximity](GeometryNodeProximity.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/geometry_proximity.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeProximity.html)
 
 #### Args:
@@ -1248,10 +1080,6 @@ def random_boolean(self, probability=None, ID=None, seed=None)
 
 
 
-```python
-def random_boolean(self, probability=None, ID=None, seed=None):
-
-```
 > Node: [Random Value](FunctionNodeRandomValue.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/random_value.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeRandomValue.html)
 
 #### Args:
@@ -1277,10 +1105,6 @@ def random_float(self, min=None, max=None, ID=None, seed=None)
 
 
 
-```python
-def random_float(self, min=None, max=None, ID=None, seed=None):
-
-```
 > Node: [Random Value](FunctionNodeRandomValue.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/random_value.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeRandomValue.html)
 
 #### Args:
@@ -1307,10 +1131,6 @@ def random_integer(self, min=None, max=None, ID=None, seed=None)
 
 
 
-```python
-def random_integer(self, min=None, max=None, ID=None, seed=None):
-
-```
 > Node: [Random Value](FunctionNodeRandomValue.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/random_value.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeRandomValue.html)
 
 #### Args:
@@ -1337,10 +1157,6 @@ def random_vector(self, min=None, max=None, ID=None, seed=None)
 
 
 
-```python
-def random_vector(self, min=None, max=None, ID=None, seed=None):
-
-```
 > Node: [Random Value](FunctionNodeRandomValue.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/random_value.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeRandomValue.html)
 
 #### Args:
@@ -1367,10 +1183,6 @@ def raycast(self, target_geometry=None, attribute=None, source_position=None, ra
 
 
 
-```python
-def raycast(self, target_geometry=None, attribute=None, source_position=None, ray_direction=None, ray_length=None, mapping='INTERPOLATED'):
-
-```
 > Node: [Raycast](GeometryNodeRaycast.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/raycast.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeRaycast.html)
 
 #### Args:
@@ -1399,10 +1211,6 @@ def raycast_interpolated(self, target_geometry=None, attribute=None, source_posi
 
 
 
-```python
-def raycast_interpolated(self, target_geometry=None, attribute=None, source_position=None, ray_direction=None, ray_length=None):
-
-```
 > Node: [Raycast](GeometryNodeRaycast.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/raycast.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeRaycast.html)
 
 #### Args:
@@ -1430,10 +1238,6 @@ def raycast_nearest(self, target_geometry=None, attribute=None, source_position=
 
 
 
-```python
-def raycast_nearest(self, target_geometry=None, attribute=None, source_position=None, ray_direction=None, ray_length=None):
-
-```
 > Node: [Raycast](GeometryNodeRaycast.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/raycast.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeRaycast.html)
 
 #### Args:
@@ -1461,10 +1265,6 @@ def remove_named_attribute(self, name=None)
 
 
 
-```python
-def remove_named_attribute(self, name=None):
-
-```
 > Node: [Remove Named Attribute](GeometryNodeRemoveAttribute.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/remove_named_attribute.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeRemoveAttribute.html)
 
 #### Args:
@@ -1488,10 +1288,6 @@ def replace_material(self, old=None, new=None)
 
 
 
-```python
-def replace_material(self, old=None, new=None):
-
-```
 > Node: [Replace Material](GeometryNodeReplaceMaterial.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/replace_material.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeReplaceMaterial.html)
 
 #### Args:
@@ -1516,10 +1312,6 @@ def sample_index(self, value=None, index=None, clamp=False, domain='POINT')
 
 
 
-```python
-def sample_index(self, value=None, index=None, clamp=False, domain='POINT'):
-
-```
 > Node: [Sample Index](GeometryNodeSampleIndex.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/sample_index.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSampleIndex.html)
 
 #### Args:
@@ -1546,10 +1338,6 @@ def sample_nearest(self, sample_position=None, domain='POINT')
 
 
 
-```python
-def sample_nearest(self, sample_position=None, domain='POINT'):
-
-```
 > Node: [Sample Nearest](GeometryNodeSampleNearest.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/sample_nearest.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSampleNearest.html)
 
 #### Args:
@@ -1574,10 +1362,6 @@ def separate(self, geometry=None, selection=None, domain='POINT')
 
 
 
-```python
-def separate(self, geometry=None, selection=None, domain='POINT'):
-
-```
 > Node: [Separate Geometry](GeometryNodeSeparateGeometry.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/separate_geometry.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSeparateGeometry.html)
 
 #### Args:
@@ -1605,10 +1389,6 @@ def set_ID(self, selection=None, ID=None)
 
 
 
-```python
-def set_ID(self, selection=None, ID=None):
-
-```
 > Node: [Set ID](GeometryNodeSetID.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/set_id.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetID.html)
 
 #### Args:
@@ -1633,10 +1413,6 @@ def set_material(self, selection=None, material=None)
 
 
 
-```python
-def set_material(self, selection=None, material=None):
-
-```
 > Node: [Set Material](GeometryNodeSetMaterial.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/set_material.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetMaterial.html)
 
 #### Args:
@@ -1661,10 +1437,6 @@ def set_material_index(self, selection=None, material_index=None)
 
 
 
-```python
-def set_material_index(self, selection=None, material_index=None):
-
-```
 > Node: [Set Material Index](GeometryNodeSetMaterialIndex.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/set_material_index.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetMaterialIndex.html)
 
 #### Args:
@@ -1689,10 +1461,6 @@ def set_named_boolean(self, name=None, value=None, domain='POINT')
 
 
 
-```python
-def set_named_boolean(self, name=None, value=None, domain='POINT'):
-
-```
 > Node: [Store Named Attribute](GeometryNodeStoreNamedAttribute.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/store_named_attribute.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeStoreNamedAttribute.html)
 
 #### Args:
@@ -1718,10 +1486,6 @@ def set_named_color(self, name=None, value=None, domain='POINT')
 
 
 
-```python
-def set_named_color(self, name=None, value=None, domain='POINT'):
-
-```
 > Node: [Store Named Attribute](GeometryNodeStoreNamedAttribute.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/store_named_attribute.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeStoreNamedAttribute.html)
 
 #### Args:
@@ -1747,10 +1511,6 @@ def set_named_float(self, name=None, value=None, domain='POINT')
 
 
 
-```python
-def set_named_float(self, name=None, value=None, domain='POINT'):
-
-```
 > Node: [Store Named Attribute](GeometryNodeStoreNamedAttribute.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/store_named_attribute.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeStoreNamedAttribute.html)
 
 #### Args:
@@ -1776,10 +1536,6 @@ def set_named_integer(self, name=None, value=None, domain='POINT')
 
 
 
-```python
-def set_named_integer(self, name=None, value=None, domain='POINT'):
-
-```
 > Node: [Store Named Attribute](GeometryNodeStoreNamedAttribute.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/store_named_attribute.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeStoreNamedAttribute.html)
 
 #### Args:
@@ -1805,10 +1561,6 @@ def set_named_vector(self, name=None, value=None, domain='POINT')
 
 
 
-```python
-def set_named_vector(self, name=None, value=None, domain='POINT'):
-
-```
 > Node: [Store Named Attribute](GeometryNodeStoreNamedAttribute.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/store_named_attribute.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeStoreNamedAttribute.html)
 
 #### Args:
@@ -1834,10 +1586,6 @@ def set_position(self, selection=None, position=None, offset=None)
 
 
 
-```python
-def set_position(self, selection=None, position=None, offset=None):
-
-```
 > Node: [Set Position](GeometryNodeSetPosition.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/set_position.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetPosition.html)
 
 #### Args:
@@ -1890,10 +1638,6 @@ def store_named_attribute(self, name=None, value=None, domain='POINT')
 
 
 
-```python
-def store_named_attribute(self, name=None, value=None, domain='POINT'):
-
-```
 > Node: [Store Named Attribute](GeometryNodeStoreNamedAttribute.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/store_named_attribute.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeStoreNamedAttribute.html)
 
 #### Args:
@@ -1919,10 +1663,6 @@ def switch(self, switch=None, true=None)
 
 
 
-```python
-def switch(self, switch=None, true=None):
-
-```
 > Node: [Switch](GeometryNodeSwitch.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
 
 #### Args:
@@ -1947,10 +1687,6 @@ def to_instance(*geometry)
 
 
 
-```python
-def to_instance(*geometry):
-
-```
 > Node: [Geometry to Instance](GeometryNodeGeometryToInstance.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/geometry_to_instance.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeGeometryToInstance.html)
 
 #### Args:
@@ -1974,10 +1710,6 @@ def to_mesh(self, voxel_size=None, voxel_amount=None, threshold=None, adaptivity
 
 
 
-```python
-def to_mesh(self, voxel_size=None, voxel_amount=None, threshold=None, adaptivity=None, resolution_mode='GRID'):
-
-```
 > Node: [Volume to Mesh](GeometryNodeVolumeToMesh.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/volume/volume_to_mesh.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeVolumeToMesh.html)
 
 #### Args:
@@ -2005,10 +1737,6 @@ def transform(self, translation=None, rotation=None, scale=None)
 
 
 
-```python
-def transform(self, translation=None, rotation=None, scale=None):
-
-```
 > Node: [Transform](GeometryNodeTransform.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/transform.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeTransform.html)
 
 #### Args:

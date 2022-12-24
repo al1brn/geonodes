@@ -118,10 +118,6 @@ Color(self, value=None, label=None)
 
 
 
-```python
-def rgb_curves(self, fac=None):
-
-```
 > Node: [RGB Curves](ShaderNodeRGBCurve.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/rgb_curves.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeRGBCurve.html)
 
 #### Returns:
@@ -194,10 +190,6 @@ def Color(cls)
 
 
 
-```python
-def Color(cls):
-
-```
 > Node: [Color](FunctionNodeInputColor.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/color.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeInputColor.html)
 
 #### Returns:
@@ -219,10 +211,6 @@ def HSL(cls, hue=None, saturation=None, lightness=None, alpha=None)
 
 
 
-```python
-def HSL(cls, hue=None, saturation=None, lightness=None, alpha=None):
-
-```
 > Node: [Combine Color](FunctionNodeCombineColor.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/combine_color.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeCombineColor.html)
 
 #### Args:
@@ -250,10 +238,6 @@ def HSV(cls, hue=None, saturation=None, value=None, alpha=None)
 
 
 
-```python
-def HSV(cls, hue=None, saturation=None, value=None, alpha=None):
-
-```
 > Node: [Combine Color](FunctionNodeCombineColor.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/combine_color.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeCombineColor.html)
 
 #### Args:
@@ -303,10 +287,6 @@ def RGB(cls, red=None, green=None, blue=None, alpha=None)
 
 
 
-```python
-def RGB(cls, red=None, green=None, blue=None, alpha=None):
-
-```
 > Node: [Combine Color](FunctionNodeCombineColor.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/combine_color.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeCombineColor.html)
 
 #### Args:
@@ -335,10 +315,6 @@ def brighter(self, b=None)
 
 
 
-```python
-def brighter(self, b=None):
-
-```
 > Node: [Compare](FunctionNodeCompare.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 
 #### Args:
@@ -362,10 +338,6 @@ def darker(self, b=None)
 
 
 
-```python
-def darker(self, b=None):
-
-```
 > Node: [Compare](FunctionNodeCompare.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 
 #### Args:
@@ -389,10 +361,6 @@ def equal(self, b=None, epsilon=None)
 
 
 
-```python
-def equal(self, b=None, epsilon=None):
-
-```
 > Node: [Compare](FunctionNodeCompare.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 
 #### Args:
@@ -435,10 +403,6 @@ def mix(self, factor=None, color=None, blend_type='MIX', clamp_factor=True, clam
 
 
 
-```python
-def mix(self, factor=None, color=None, blend_type='MIX', clamp_factor=True, clamp_result=False):
-
-```
 > Node: [Mix](ShaderNodeMix.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
 
 #### Args:
@@ -466,10 +430,6 @@ def mix_add(self, factor=None, color=None, clamp_factor=True, clamp_result=False
 
 
 
-```python
-def mix_add(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
-
-```
 > Node: [Mix](ShaderNodeMix.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
 
 #### Args:
@@ -496,10 +456,6 @@ def mix_burn(self, factor=None, color=None, clamp_factor=True, clamp_result=Fals
 
 
 
-```python
-def mix_burn(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
-
-```
 > Node: [Mix](ShaderNodeMix.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
 
 #### Args:
@@ -526,10 +482,6 @@ def mix_color(self, factor=None, color=None, clamp_factor=True, clamp_result=Fal
 
 
 
-```python
-def mix_color(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
-
-```
 > Node: [Mix](ShaderNodeMix.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
 
 #### Args:
@@ -556,10 +508,6 @@ def mix_darken(self, factor=None, color=None, clamp_factor=True, clamp_result=Fa
 
 
 
-```python
-def mix_darken(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
-
-```
 > Node: [Mix](ShaderNodeMix.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
 
 #### Args:
@@ -586,10 +534,6 @@ def mix_difference(self, factor=None, color=None, clamp_factor=True, clamp_resul
 
 
 
-```python
-def mix_difference(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
-
-```
 > Node: [Mix](ShaderNodeMix.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
 
 #### Args:
@@ -616,10 +560,6 @@ def mix_divide(self, factor=None, color=None, clamp_factor=True, clamp_result=Fa
 
 
 
-```python
-def mix_divide(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
-
-```
 > Node: [Mix](ShaderNodeMix.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
 
 #### Args:
@@ -646,10 +586,6 @@ def mix_dodge(self, factor=None, color=None, clamp_factor=True, clamp_result=Fal
 
 
 
-```python
-def mix_dodge(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
-
-```
 > Node: [Mix](ShaderNodeMix.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
 
 #### Args:
@@ -676,10 +612,6 @@ def mix_hue(self, factor=None, color=None, clamp_factor=True, clamp_result=False
 
 
 
-```python
-def mix_hue(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
-
-```
 > Node: [Mix](ShaderNodeMix.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
 
 #### Args:
@@ -706,10 +638,6 @@ def mix_lighten(self, factor=None, color=None, clamp_factor=True, clamp_result=F
 
 
 
-```python
-def mix_lighten(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
-
-```
 > Node: [Mix](ShaderNodeMix.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
 
 #### Args:
@@ -736,10 +664,6 @@ def mix_linear_light(self, factor=None, color=None, clamp_factor=True, clamp_res
 
 
 
-```python
-def mix_linear_light(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
-
-```
 > Node: [Mix](ShaderNodeMix.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
 
 #### Args:
@@ -766,10 +690,6 @@ def mix_multiply(self, factor=None, color=None, clamp_factor=True, clamp_result=
 
 
 
-```python
-def mix_multiply(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
-
-```
 > Node: [Mix](ShaderNodeMix.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
 
 #### Args:
@@ -796,10 +716,6 @@ def mix_overlay(self, factor=None, color=None, clamp_factor=True, clamp_result=F
 
 
 
-```python
-def mix_overlay(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
-
-```
 > Node: [Mix](ShaderNodeMix.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
 
 #### Args:
@@ -826,10 +742,6 @@ def mix_saturation(self, factor=None, color=None, clamp_factor=True, clamp_resul
 
 
 
-```python
-def mix_saturation(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
-
-```
 > Node: [Mix](ShaderNodeMix.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
 
 #### Args:
@@ -856,10 +768,6 @@ def mix_screen(self, factor=None, color=None, clamp_factor=True, clamp_result=Fa
 
 
 
-```python
-def mix_screen(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
-
-```
 > Node: [Mix](ShaderNodeMix.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
 
 #### Args:
@@ -886,10 +794,6 @@ def mix_soft_light(self, factor=None, color=None, clamp_factor=True, clamp_resul
 
 
 
-```python
-def mix_soft_light(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
-
-```
 > Node: [Mix](ShaderNodeMix.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
 
 #### Args:
@@ -916,10 +820,6 @@ def mix_subtract(self, factor=None, color=None, clamp_factor=True, clamp_result=
 
 
 
-```python
-def mix_subtract(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
-
-```
 > Node: [Mix](ShaderNodeMix.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
 
 #### Args:
@@ -946,10 +846,6 @@ def mix_value(self, factor=None, color=None, clamp_factor=True, clamp_result=Fal
 
 
 
-```python
-def mix_value(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
-
-```
 > Node: [Mix](ShaderNodeMix.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
 
 #### Args:
@@ -976,10 +872,6 @@ def switch(self, switch=None, true=None)
 
 
 
-```python
-def switch(self, switch=None, true=None):
-
-```
 > Node: [Switch](GeometryNodeSwitch.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
 
 #### Args:

@@ -7,10 +7,6 @@ class Float(geosocks.Float):
     def Frame(cls):
         """
 
-        ```python
-        def Frame(cls):
-
-        ```
         > Node: [Scene Time](GeometryNodeInputSceneTime.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/scene_time.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputSceneTime.html)
 
         #### Returns:
@@ -26,10 +22,6 @@ class Float(geosocks.Float):
     def Seconds(cls):
         """
 
-        ```python
-        def Seconds(cls):
-
-        ```
         > Node: [Scene Time](GeometryNodeInputSceneTime.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/scene_time.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputSceneTime.html)
 
         #### Returns:
@@ -45,10 +37,6 @@ class Float(geosocks.Float):
     def Value(cls):
         """
 
-        ```python
-        def Value(cls):
-
-        ```
         > Node: [Value](ShaderNodeValue.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/value.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeValue.html)
 
         #### Returns:
@@ -63,10 +51,6 @@ class Float(geosocks.Float):
     def abs(self, clamp=False):
         """
 
-        ```python
-        def abs(self, clamp=False):
-
-        ```
         > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
         #### Args:
@@ -84,10 +68,6 @@ class Float(geosocks.Float):
     def absolute(self, clamp=False):
         """
 
-        ```python
-        def absolute(self, clamp=False):
-
-        ```
         > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
         #### Args:
@@ -106,10 +86,6 @@ class Float(geosocks.Float):
     def arccos(self, value=None, clamp=False):
         """
 
-        ```python
-        def arccos(self, value=None, clamp=False):
-
-        ```
         > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
         #### Args:
@@ -128,10 +104,6 @@ class Float(geosocks.Float):
     def arccosine(self, value=None, clamp=False):
         """
 
-        ```python
-        def arccosine(self, value=None, clamp=False):
-
-        ```
         > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
         #### Args:
@@ -150,10 +122,6 @@ class Float(geosocks.Float):
     def arcsin(self, value=None, clamp=False):
         """
 
-        ```python
-        def arcsin(self, value=None, clamp=False):
-
-        ```
         > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
         #### Args:
@@ -172,10 +140,6 @@ class Float(geosocks.Float):
     def arcsine(self, value=None, clamp=False):
         """
 
-        ```python
-        def arcsine(self, value=None, clamp=False):
-
-        ```
         > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
         #### Args:
@@ -194,10 +158,6 @@ class Float(geosocks.Float):
     def arctan(self, value=None, clamp=False):
         """
 
-        ```python
-        def arctan(self, value=None, clamp=False):
-
-        ```
         > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
         #### Args:
@@ -216,10 +176,6 @@ class Float(geosocks.Float):
     def arctan2(self, value1=None, clamp=False):
         """
 
-        ```python
-        def arctan2(self, value1=None, clamp=False):
-
-        ```
         > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
         #### Args:
@@ -238,10 +194,6 @@ class Float(geosocks.Float):
     def arctangent(self, value=None, clamp=False):
         """
 
-        ```python
-        def arctangent(self, value=None, clamp=False):
-
-        ```
         > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
         #### Args:
@@ -260,10 +212,6 @@ class Float(geosocks.Float):
     def ceiling(self):
         """
 
-        ```python
-        def ceiling(self):
-
-        ```
         > Node: [Float to Integer](FunctionNodeFloatToInt.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/float_to_integer.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeFloatToInt.html)
 
         #### Returns:
@@ -278,10 +226,6 @@ class Float(geosocks.Float):
     def clamp(self, min=None, max=None, clamp_type='MINMAX'):
         """
 
-        ```python
-        def clamp(self, min=None, max=None, clamp_type='MINMAX'):
-
-        ```
         > Node: [Clamp](ShaderNodeClamp.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/clamp.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeClamp.html)
 
         #### Args:
@@ -301,10 +245,6 @@ class Float(geosocks.Float):
     def clamp_min_max(self, min=None, max=None):
         """
 
-        ```python
-        def clamp_min_max(self, min=None, max=None):
-
-        ```
         > Node: [Clamp](ShaderNodeClamp.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/clamp.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeClamp.html)
 
         #### Args:
@@ -323,10 +263,6 @@ class Float(geosocks.Float):
     def clamp_range(self, min=None, max=None):
         """
 
-        ```python
-        def clamp_range(self, min=None, max=None):
-
-        ```
         > Node: [Clamp](ShaderNodeClamp.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/clamp.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeClamp.html)
 
         #### Args:
@@ -346,10 +282,6 @@ class Float(geosocks.Float):
     def color_ramp(self):
         """
 
-        ```python
-        def color_ramp(self):
-
-        ```
         > Node: [ColorRamp](ShaderNodeValToRGB.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/color_ramp.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeValToRGB.html)
 
         #### Returns:
@@ -364,10 +296,6 @@ class Float(geosocks.Float):
     def compare(self, b=None, epsilon=None, operation='GREATER_THAN'):
         """
 
-        ```python
-        def compare(self, b=None, epsilon=None, operation='GREATER_THAN'):
-
-        ```
         > Node: [Compare](FunctionNodeCompare.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 
         #### Args:
@@ -387,10 +315,6 @@ class Float(geosocks.Float):
     def cos(self, value=None, clamp=False):
         """
 
-        ```python
-        def cos(self, value=None, clamp=False):
-
-        ```
         > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
         #### Args:
@@ -409,10 +333,6 @@ class Float(geosocks.Float):
     def cosh(self, value=None, clamp=False):
         """
 
-        ```python
-        def cosh(self, value=None, clamp=False):
-
-        ```
         > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
         #### Args:
@@ -431,10 +351,6 @@ class Float(geosocks.Float):
     def cosine(self, value=None, clamp=False):
         """
 
-        ```python
-        def cosine(self, value=None, clamp=False):
-
-        ```
         > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
         #### Args:
@@ -455,10 +371,6 @@ class Float(geosocks.Float):
     def equal(self, b=None, epsilon=None):
         """
 
-        ```python
-        def equal(self, b=None, epsilon=None):
-
-        ```
         > Node: [Compare](FunctionNodeCompare.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 
         #### Args:
@@ -477,10 +389,6 @@ class Float(geosocks.Float):
     def exp(self, clamp=False):
         """
 
-        ```python
-        def exp(self, clamp=False):
-
-        ```
         > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
         #### Args:
@@ -498,10 +406,6 @@ class Float(geosocks.Float):
     def exponent(self, clamp=False):
         """
 
-        ```python
-        def exponent(self, clamp=False):
-
-        ```
         > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
         #### Args:
@@ -519,10 +423,6 @@ class Float(geosocks.Float):
     def fact(self, clamp=False):
         """
 
-        ```python
-        def fact(self, clamp=False):
-
-        ```
         > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
         #### Args:
@@ -540,10 +440,6 @@ class Float(geosocks.Float):
     def float_curve(self, factor=None):
         """
 
-        ```python
-        def float_curve(self, factor=None):
-
-        ```
         > Node: [Float Curve](ShaderNodeFloatCurve.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/float_curve.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeFloatCurve.html)
 
         #### Args:
@@ -561,10 +457,6 @@ class Float(geosocks.Float):
     def floor(self):
         """
 
-        ```python
-        def floor(self):
-
-        ```
         > Node: [Float to Integer](FunctionNodeFloatToInt.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/float_to_integer.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeFloatToInt.html)
 
         #### Returns:
@@ -579,10 +471,6 @@ class Float(geosocks.Float):
     def fraction(self, clamp=False):
         """
 
-        ```python
-        def fraction(self, clamp=False):
-
-        ```
         > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
         #### Args:
@@ -600,10 +488,6 @@ class Float(geosocks.Float):
     def greater_equal(self, b=None):
         """
 
-        ```python
-        def greater_equal(self, b=None):
-
-        ```
         > Node: [Compare](FunctionNodeCompare.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 
         #### Args:
@@ -621,10 +505,6 @@ class Float(geosocks.Float):
     def greater_than(self, b=None):
         """
 
-        ```python
-        def greater_than(self, b=None):
-
-        ```
         > Node: [Compare](FunctionNodeCompare.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 
         #### Args:
@@ -642,10 +522,6 @@ class Float(geosocks.Float):
     def inverse_sqrt(self, clamp=False):
         """
 
-        ```python
-        def inverse_sqrt(self, clamp=False):
-
-        ```
         > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
         #### Args:
@@ -663,10 +539,6 @@ class Float(geosocks.Float):
     def less_equal(self, b=None):
         """
 
-        ```python
-        def less_equal(self, b=None):
-
-        ```
         > Node: [Compare](FunctionNodeCompare.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 
         #### Args:
@@ -684,10 +556,6 @@ class Float(geosocks.Float):
     def less_than(self, b=None):
         """
 
-        ```python
-        def less_than(self, b=None):
-
-        ```
         > Node: [Compare](FunctionNodeCompare.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 
         #### Args:
@@ -705,10 +573,6 @@ class Float(geosocks.Float):
     def log(self, base=None, clamp=False):
         """
 
-        ```python
-        def log(self, base=None, clamp=False):
-
-        ```
         > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
         #### Args:
@@ -727,10 +591,6 @@ class Float(geosocks.Float):
     def logarithm(self, base=None, clamp=False):
         """
 
-        ```python
-        def logarithm(self, base=None, clamp=False):
-
-        ```
         > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
         #### Args:
@@ -749,10 +609,6 @@ class Float(geosocks.Float):
     def map_range(self, from_min=None, from_max=None, to_min=None, to_max=None, steps=None, clamp=True, interpolation_type='LINEAR'):
         """
 
-        ```python
-        def map_range(self, from_min=None, from_max=None, to_min=None, to_max=None, steps=None, clamp=True, interpolation_type='LINEAR'):
-
-        ```
         > Node: [Map Range](ShaderNodeMapRange.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/map_range.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMapRange.html)
 
         #### Args:
@@ -776,10 +632,6 @@ class Float(geosocks.Float):
     def map_range_linear(self, from_min=None, from_max=None, to_min=None, to_max=None, clamp=True):
         """
 
-        ```python
-        def map_range_linear(self, from_min=None, from_max=None, to_min=None, to_max=None, clamp=True):
-
-        ```
         > Node: [Map Range](ShaderNodeMapRange.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/map_range.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMapRange.html)
 
         #### Args:
@@ -801,10 +653,6 @@ class Float(geosocks.Float):
     def map_range_smooth(self, from_min=None, from_max=None, to_min=None, to_max=None, clamp=True):
         """
 
-        ```python
-        def map_range_smooth(self, from_min=None, from_max=None, to_min=None, to_max=None, clamp=True):
-
-        ```
         > Node: [Map Range](ShaderNodeMapRange.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/map_range.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMapRange.html)
 
         #### Args:
@@ -826,10 +674,6 @@ class Float(geosocks.Float):
     def map_range_smoother(self, from_min=None, from_max=None, to_min=None, to_max=None, clamp=True):
         """
 
-        ```python
-        def map_range_smoother(self, from_min=None, from_max=None, to_min=None, to_max=None, clamp=True):
-
-        ```
         > Node: [Map Range](ShaderNodeMapRange.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/map_range.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMapRange.html)
 
         #### Args:
@@ -851,10 +695,6 @@ class Float(geosocks.Float):
     def map_range_stepped(self, from_min=None, from_max=None, to_min=None, to_max=None, steps=None, clamp=True):
         """
 
-        ```python
-        def map_range_stepped(self, from_min=None, from_max=None, to_min=None, to_max=None, steps=None, clamp=True):
-
-        ```
         > Node: [Map Range](ShaderNodeMapRange.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/map_range.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMapRange.html)
 
         #### Args:
@@ -877,10 +717,6 @@ class Float(geosocks.Float):
     def math_ceil(self, clamp=False):
         """
 
-        ```python
-        def math_ceil(self, clamp=False):
-
-        ```
         > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
         #### Args:
@@ -898,10 +734,6 @@ class Float(geosocks.Float):
     def math_compare(self, value=None, epsilon=None, clamp=False):
         """
 
-        ```python
-        def math_compare(self, value=None, epsilon=None, clamp=False):
-
-        ```
         > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
         #### Args:
@@ -921,10 +753,6 @@ class Float(geosocks.Float):
     def math_floor(self, clamp=False):
         """
 
-        ```python
-        def math_floor(self, clamp=False):
-
-        ```
         > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
         #### Args:
@@ -942,10 +770,6 @@ class Float(geosocks.Float):
     def math_greater_than(self, threshold=None, clamp=False):
         """
 
-        ```python
-        def math_greater_than(self, threshold=None, clamp=False):
-
-        ```
         > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
         #### Args:
@@ -964,10 +788,6 @@ class Float(geosocks.Float):
     def math_less_than(self, threshold=None, clamp=False):
         """
 
-        ```python
-        def math_less_than(self, threshold=None, clamp=False):
-
-        ```
         > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
         #### Args:
@@ -986,10 +806,6 @@ class Float(geosocks.Float):
     def math_round(self, clamp=False):
         """
 
-        ```python
-        def math_round(self, clamp=False):
-
-        ```
         > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
         #### Args:
@@ -1007,10 +823,6 @@ class Float(geosocks.Float):
     def math_trunc(self, clamp=False):
         """
 
-        ```python
-        def math_trunc(self, clamp=False):
-
-        ```
         > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
         #### Args:
@@ -1028,10 +840,6 @@ class Float(geosocks.Float):
     def math_truncate(self, clamp=False):
         """
 
-        ```python
-        def math_truncate(self, clamp=False):
-
-        ```
         > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
         #### Args:
@@ -1049,10 +857,6 @@ class Float(geosocks.Float):
     def max(self, value=None, clamp=False):
         """
 
-        ```python
-        def max(self, value=None, clamp=False):
-
-        ```
         > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
         #### Args:
@@ -1071,10 +875,6 @@ class Float(geosocks.Float):
     def maximum(self, value=None, clamp=False):
         """
 
-        ```python
-        def maximum(self, value=None, clamp=False):
-
-        ```
         > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
         #### Args:
@@ -1093,10 +893,6 @@ class Float(geosocks.Float):
     def min(self, value=None, clamp=False):
         """
 
-        ```python
-        def min(self, value=None, clamp=False):
-
-        ```
         > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
         #### Args:
@@ -1115,10 +911,6 @@ class Float(geosocks.Float):
     def minimum(self, value=None, clamp=False):
         """
 
-        ```python
-        def minimum(self, value=None, clamp=False):
-
-        ```
         > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
         #### Args:
@@ -1137,10 +929,6 @@ class Float(geosocks.Float):
     def mix(self, factor=None, value=None, clamp_factor=True):
         """
 
-        ```python
-        def mix(self, factor=None, value=None, clamp_factor=True):
-
-        ```
         > Node: [Mix](ShaderNodeMix.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
 
         #### Args:
@@ -1160,10 +948,6 @@ class Float(geosocks.Float):
     def modulo(self, value=None, clamp=False):
         """
 
-        ```python
-        def modulo(self, value=None, clamp=False):
-
-        ```
         > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
         #### Args:
@@ -1183,10 +967,6 @@ class Float(geosocks.Float):
     def mul_add(self, multiplier=None, addend=None, clamp=False):
         """
 
-        ```python
-        def mul_add(self, multiplier=None, addend=None, clamp=False):
-
-        ```
         > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
         #### Args:
@@ -1207,10 +987,6 @@ class Float(geosocks.Float):
     def multiply_add(self, multiplier=None, addend=None, clamp=False):
         """
 
-        ```python
-        def multiply_add(self, multiplier=None, addend=None, clamp=False):
-
-        ```
         > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
         #### Args:
@@ -1230,10 +1006,6 @@ class Float(geosocks.Float):
     def not_equal(self, b=None, epsilon=None):
         """
 
-        ```python
-        def not_equal(self, b=None, epsilon=None):
-
-        ```
         > Node: [Compare](FunctionNodeCompare.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 
         #### Args:
@@ -1252,10 +1024,6 @@ class Float(geosocks.Float):
     def ping_pong(self, scale=None, clamp=False):
         """
 
-        ```python
-        def ping_pong(self, scale=None, clamp=False):
-
-        ```
         > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
         #### Args:
@@ -1274,10 +1042,6 @@ class Float(geosocks.Float):
     def pow(self, exponent=None, clamp=False):
         """
 
-        ```python
-        def pow(self, exponent=None, clamp=False):
-
-        ```
         > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
         #### Args:
@@ -1296,10 +1060,6 @@ class Float(geosocks.Float):
     def power(self, exponent=None, clamp=False):
         """
 
-        ```python
-        def power(self, exponent=None, clamp=False):
-
-        ```
         > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
         #### Args:
@@ -1318,10 +1078,6 @@ class Float(geosocks.Float):
     def round(self):
         """
 
-        ```python
-        def round(self):
-
-        ```
         > Node: [Float to Integer](FunctionNodeFloatToInt.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/float_to_integer.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeFloatToInt.html)
 
         #### Returns:
@@ -1336,10 +1092,6 @@ class Float(geosocks.Float):
     def sign(self, clamp=False):
         """
 
-        ```python
-        def sign(self, clamp=False):
-
-        ```
         > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
         #### Args:
@@ -1357,10 +1109,6 @@ class Float(geosocks.Float):
     def sin(self, value=None, clamp=False):
         """
 
-        ```python
-        def sin(self, value=None, clamp=False):
-
-        ```
         > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
         #### Args:
@@ -1379,10 +1127,6 @@ class Float(geosocks.Float):
     def sine(self, value=None, clamp=False):
         """
 
-        ```python
-        def sine(self, value=None, clamp=False):
-
-        ```
         > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
         #### Args:
@@ -1401,10 +1145,6 @@ class Float(geosocks.Float):
     def sinh(self, value=None, clamp=False):
         """
 
-        ```python
-        def sinh(self, value=None, clamp=False):
-
-        ```
         > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
         #### Args:
@@ -1423,10 +1163,6 @@ class Float(geosocks.Float):
     def smooth_maximum(self, value=None, distance=None, clamp=False):
         """
 
-        ```python
-        def smooth_maximum(self, value=None, distance=None, clamp=False):
-
-        ```
         > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
         #### Args:
@@ -1446,10 +1182,6 @@ class Float(geosocks.Float):
     def smooth_minimum(self, value=None, distance=None, clamp=False):
         """
 
-        ```python
-        def smooth_minimum(self, value=None, distance=None, clamp=False):
-
-        ```
         > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
         #### Args:
@@ -1469,10 +1201,6 @@ class Float(geosocks.Float):
     def snap(self, increment=None, clamp=False):
         """
 
-        ```python
-        def snap(self, increment=None, clamp=False):
-
-        ```
         > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
         #### Args:
@@ -1491,10 +1219,6 @@ class Float(geosocks.Float):
     def sqrt(self, clamp=False):
         """
 
-        ```python
-        def sqrt(self, clamp=False):
-
-        ```
         > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
         #### Args:
@@ -1514,10 +1238,6 @@ class Float(geosocks.Float):
     def switch(self, switch=None, true=None):
         """
 
-        ```python
-        def switch(self, switch=None, true=None):
-
-        ```
         > Node: [Switch](GeometryNodeSwitch.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
 
         #### Args:
@@ -1536,10 +1256,6 @@ class Float(geosocks.Float):
     def tan(self, value=None, clamp=False):
         """
 
-        ```python
-        def tan(self, value=None, clamp=False):
-
-        ```
         > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
         #### Args:
@@ -1558,10 +1274,6 @@ class Float(geosocks.Float):
     def tangent(self, value=None, clamp=False):
         """
 
-        ```python
-        def tangent(self, value=None, clamp=False):
-
-        ```
         > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
         #### Args:
@@ -1580,10 +1292,6 @@ class Float(geosocks.Float):
     def tanh(self, value=None, clamp=False):
         """
 
-        ```python
-        def tanh(self, value=None, clamp=False):
-
-        ```
         > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
         #### Args:
@@ -1602,10 +1310,6 @@ class Float(geosocks.Float):
     def to_degrees(self, clamp=False):
         """
 
-        ```python
-        def to_degrees(self, clamp=False):
-
-        ```
         > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
         #### Args:
@@ -1623,10 +1327,6 @@ class Float(geosocks.Float):
     def to_integer(self, rounding_mode='ROUND'):
         """
 
-        ```python
-        def to_integer(self, rounding_mode='ROUND'):
-
-        ```
         > Node: [Float to Integer](FunctionNodeFloatToInt.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/float_to_integer.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeFloatToInt.html)
 
         #### Args:
@@ -1644,10 +1344,6 @@ class Float(geosocks.Float):
     def to_radians(self, clamp=False):
         """
 
-        ```python
-        def to_radians(self, clamp=False):
-
-        ```
         > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
         #### Args:
@@ -1665,10 +1361,6 @@ class Float(geosocks.Float):
     def to_string(self, decimals=None):
         """
 
-        ```python
-        def to_string(self, decimals=None):
-
-        ```
         > Node: [Value to String](FunctionNodeValueToString.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/value_to_string.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeValueToString.html)
 
         #### Args:
@@ -1686,10 +1378,6 @@ class Float(geosocks.Float):
     def truncate(self):
         """
 
-        ```python
-        def truncate(self):
-
-        ```
         > Node: [Float to Integer](FunctionNodeFloatToInt.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/float_to_integer.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeFloatToInt.html)
 
         #### Returns:
@@ -1704,10 +1392,6 @@ class Float(geosocks.Float):
     def wrap(self, max=None, min=None, clamp=False):
         """
 
-        ```python
-        def wrap(self, max=None, min=None, clamp=False):
-
-        ```
         > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
         #### Args:
@@ -1731,10 +1415,6 @@ class Integer(geosocks.Integer):
     def Integer(cls, integer=0):
         """
 
-        ```python
-        def Integer(cls, integer=0):
-
-        ```
         > Node: [Integer](FunctionNodeInputInt.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/integer.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeInputInt.html)
 
         #### Args:
@@ -1752,10 +1432,6 @@ class Integer(geosocks.Integer):
     def abs(self, clamp=False):
         """
 
-        ```python
-        def abs(self, clamp=False):
-
-        ```
         > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
         #### Args:
@@ -1773,10 +1449,6 @@ class Integer(geosocks.Integer):
     def absolute(self, clamp=False):
         """
 
-        ```python
-        def absolute(self, clamp=False):
-
-        ```
         > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
         #### Args:
@@ -1795,10 +1467,6 @@ class Integer(geosocks.Integer):
     def arccos(self, value=None, clamp=False):
         """
 
-        ```python
-        def arccos(self, value=None, clamp=False):
-
-        ```
         > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
         #### Args:
@@ -1817,10 +1485,6 @@ class Integer(geosocks.Integer):
     def arccosine(self, value=None, clamp=False):
         """
 
-        ```python
-        def arccosine(self, value=None, clamp=False):
-
-        ```
         > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
         #### Args:
@@ -1839,10 +1503,6 @@ class Integer(geosocks.Integer):
     def arcsin(self, value=None, clamp=False):
         """
 
-        ```python
-        def arcsin(self, value=None, clamp=False):
-
-        ```
         > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
         #### Args:
@@ -1861,10 +1521,6 @@ class Integer(geosocks.Integer):
     def arcsine(self, value=None, clamp=False):
         """
 
-        ```python
-        def arcsine(self, value=None, clamp=False):
-
-        ```
         > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
         #### Args:
@@ -1883,10 +1539,6 @@ class Integer(geosocks.Integer):
     def arctan(self, value=None, clamp=False):
         """
 
-        ```python
-        def arctan(self, value=None, clamp=False):
-
-        ```
         > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
         #### Args:
@@ -1905,10 +1557,6 @@ class Integer(geosocks.Integer):
     def arctan2(self, value1=None, clamp=False):
         """
 
-        ```python
-        def arctan2(self, value1=None, clamp=False):
-
-        ```
         > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
         #### Args:
@@ -1927,10 +1575,6 @@ class Integer(geosocks.Integer):
     def arctangent(self, value=None, clamp=False):
         """
 
-        ```python
-        def arctangent(self, value=None, clamp=False):
-
-        ```
         > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
         #### Args:
@@ -1949,10 +1593,6 @@ class Integer(geosocks.Integer):
     def compare(self, b=None, operation='GREATER_THAN'):
         """
 
-        ```python
-        def compare(self, b=None, operation='GREATER_THAN'):
-
-        ```
         > Node: [Compare](FunctionNodeCompare.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 
         #### Args:
@@ -1971,10 +1611,6 @@ class Integer(geosocks.Integer):
     def cos(self, value=None, clamp=False):
         """
 
-        ```python
-        def cos(self, value=None, clamp=False):
-
-        ```
         > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
         #### Args:
@@ -1993,10 +1629,6 @@ class Integer(geosocks.Integer):
     def cosh(self, value=None, clamp=False):
         """
 
-        ```python
-        def cosh(self, value=None, clamp=False):
-
-        ```
         > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
         #### Args:
@@ -2015,10 +1647,6 @@ class Integer(geosocks.Integer):
     def cosine(self, value=None, clamp=False):
         """
 
-        ```python
-        def cosine(self, value=None, clamp=False):
-
-        ```
         > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
         #### Args:
@@ -2039,10 +1667,6 @@ class Integer(geosocks.Integer):
     def equal(self, b=None):
         """
 
-        ```python
-        def equal(self, b=None):
-
-        ```
         > Node: [Compare](FunctionNodeCompare.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 
         #### Args:
@@ -2060,10 +1684,6 @@ class Integer(geosocks.Integer):
     def exp(self, clamp=False):
         """
 
-        ```python
-        def exp(self, clamp=False):
-
-        ```
         > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
         #### Args:
@@ -2081,10 +1701,6 @@ class Integer(geosocks.Integer):
     def exponent(self, clamp=False):
         """
 
-        ```python
-        def exponent(self, clamp=False):
-
-        ```
         > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
         #### Args:
@@ -2102,10 +1718,6 @@ class Integer(geosocks.Integer):
     def fact(self, clamp=False):
         """
 
-        ```python
-        def fact(self, clamp=False):
-
-        ```
         > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
         #### Args:
@@ -2123,10 +1735,6 @@ class Integer(geosocks.Integer):
     def fraction(self, clamp=False):
         """
 
-        ```python
-        def fraction(self, clamp=False):
-
-        ```
         > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
         #### Args:
@@ -2144,10 +1752,6 @@ class Integer(geosocks.Integer):
     def greater_equal(self, b=None):
         """
 
-        ```python
-        def greater_equal(self, b=None):
-
-        ```
         > Node: [Compare](FunctionNodeCompare.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 
         #### Args:
@@ -2165,10 +1769,6 @@ class Integer(geosocks.Integer):
     def greater_than(self, b=None):
         """
 
-        ```python
-        def greater_than(self, b=None):
-
-        ```
         > Node: [Compare](FunctionNodeCompare.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 
         #### Args:
@@ -2186,10 +1786,6 @@ class Integer(geosocks.Integer):
     def inverse_sqrt(self, clamp=False):
         """
 
-        ```python
-        def inverse_sqrt(self, clamp=False):
-
-        ```
         > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
         #### Args:
@@ -2207,10 +1803,6 @@ class Integer(geosocks.Integer):
     def less_equal(self, b=None):
         """
 
-        ```python
-        def less_equal(self, b=None):
-
-        ```
         > Node: [Compare](FunctionNodeCompare.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 
         #### Args:
@@ -2228,10 +1820,6 @@ class Integer(geosocks.Integer):
     def less_than(self, b=None):
         """
 
-        ```python
-        def less_than(self, b=None):
-
-        ```
         > Node: [Compare](FunctionNodeCompare.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 
         #### Args:
@@ -2249,10 +1837,6 @@ class Integer(geosocks.Integer):
     def log(self, base=None, clamp=False):
         """
 
-        ```python
-        def log(self, base=None, clamp=False):
-
-        ```
         > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
         #### Args:
@@ -2271,10 +1855,6 @@ class Integer(geosocks.Integer):
     def logarithm(self, base=None, clamp=False):
         """
 
-        ```python
-        def logarithm(self, base=None, clamp=False):
-
-        ```
         > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
         #### Args:
@@ -2293,10 +1873,6 @@ class Integer(geosocks.Integer):
     def math_ceil(self, clamp=False):
         """
 
-        ```python
-        def math_ceil(self, clamp=False):
-
-        ```
         > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
         #### Args:
@@ -2314,10 +1890,6 @@ class Integer(geosocks.Integer):
     def math_compare(self, value=None, epsilon=None, clamp=False):
         """
 
-        ```python
-        def math_compare(self, value=None, epsilon=None, clamp=False):
-
-        ```
         > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
         #### Args:
@@ -2337,10 +1909,6 @@ class Integer(geosocks.Integer):
     def math_floor(self, clamp=False):
         """
 
-        ```python
-        def math_floor(self, clamp=False):
-
-        ```
         > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
         #### Args:
@@ -2358,10 +1926,6 @@ class Integer(geosocks.Integer):
     def math_greater_than(self, threshold=None, clamp=False):
         """
 
-        ```python
-        def math_greater_than(self, threshold=None, clamp=False):
-
-        ```
         > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
         #### Args:
@@ -2380,10 +1944,6 @@ class Integer(geosocks.Integer):
     def math_less_than(self, threshold=None, clamp=False):
         """
 
-        ```python
-        def math_less_than(self, threshold=None, clamp=False):
-
-        ```
         > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
         #### Args:
@@ -2402,10 +1962,6 @@ class Integer(geosocks.Integer):
     def math_round(self, clamp=False):
         """
 
-        ```python
-        def math_round(self, clamp=False):
-
-        ```
         > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
         #### Args:
@@ -2423,10 +1979,6 @@ class Integer(geosocks.Integer):
     def math_trunc(self, clamp=False):
         """
 
-        ```python
-        def math_trunc(self, clamp=False):
-
-        ```
         > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
         #### Args:
@@ -2444,10 +1996,6 @@ class Integer(geosocks.Integer):
     def math_truncate(self, clamp=False):
         """
 
-        ```python
-        def math_truncate(self, clamp=False):
-
-        ```
         > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
         #### Args:
@@ -2465,10 +2013,6 @@ class Integer(geosocks.Integer):
     def max(self, value=None, clamp=False):
         """
 
-        ```python
-        def max(self, value=None, clamp=False):
-
-        ```
         > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
         #### Args:
@@ -2487,10 +2031,6 @@ class Integer(geosocks.Integer):
     def maximum(self, value=None, clamp=False):
         """
 
-        ```python
-        def maximum(self, value=None, clamp=False):
-
-        ```
         > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
         #### Args:
@@ -2509,10 +2049,6 @@ class Integer(geosocks.Integer):
     def min(self, value=None, clamp=False):
         """
 
-        ```python
-        def min(self, value=None, clamp=False):
-
-        ```
         > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
         #### Args:
@@ -2531,10 +2067,6 @@ class Integer(geosocks.Integer):
     def minimum(self, value=None, clamp=False):
         """
 
-        ```python
-        def minimum(self, value=None, clamp=False):
-
-        ```
         > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
         #### Args:
@@ -2553,10 +2085,6 @@ class Integer(geosocks.Integer):
     def modulo(self, value=None, clamp=False):
         """
 
-        ```python
-        def modulo(self, value=None, clamp=False):
-
-        ```
         > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
         #### Args:
@@ -2576,10 +2104,6 @@ class Integer(geosocks.Integer):
     def mul_add(self, multiplier=None, addend=None, clamp=False):
         """
 
-        ```python
-        def mul_add(self, multiplier=None, addend=None, clamp=False):
-
-        ```
         > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
         #### Args:
@@ -2600,10 +2124,6 @@ class Integer(geosocks.Integer):
     def multiply_add(self, multiplier=None, addend=None, clamp=False):
         """
 
-        ```python
-        def multiply_add(self, multiplier=None, addend=None, clamp=False):
-
-        ```
         > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
         #### Args:
@@ -2623,10 +2143,6 @@ class Integer(geosocks.Integer):
     def not_equal(self, b=None):
         """
 
-        ```python
-        def not_equal(self, b=None):
-
-        ```
         > Node: [Compare](FunctionNodeCompare.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 
         #### Args:
@@ -2644,10 +2160,6 @@ class Integer(geosocks.Integer):
     def ping_pong(self, scale=None, clamp=False):
         """
 
-        ```python
-        def ping_pong(self, scale=None, clamp=False):
-
-        ```
         > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
         #### Args:
@@ -2666,10 +2178,6 @@ class Integer(geosocks.Integer):
     def pow(self, exponent=None, clamp=False):
         """
 
-        ```python
-        def pow(self, exponent=None, clamp=False):
-
-        ```
         > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
         #### Args:
@@ -2688,10 +2196,6 @@ class Integer(geosocks.Integer):
     def power(self, exponent=None, clamp=False):
         """
 
-        ```python
-        def power(self, exponent=None, clamp=False):
-
-        ```
         > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
         #### Args:
@@ -2710,10 +2214,6 @@ class Integer(geosocks.Integer):
     def sign(self, clamp=False):
         """
 
-        ```python
-        def sign(self, clamp=False):
-
-        ```
         > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
         #### Args:
@@ -2731,10 +2231,6 @@ class Integer(geosocks.Integer):
     def sin(self, value=None, clamp=False):
         """
 
-        ```python
-        def sin(self, value=None, clamp=False):
-
-        ```
         > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
         #### Args:
@@ -2753,10 +2249,6 @@ class Integer(geosocks.Integer):
     def sine(self, value=None, clamp=False):
         """
 
-        ```python
-        def sine(self, value=None, clamp=False):
-
-        ```
         > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
         #### Args:
@@ -2775,10 +2267,6 @@ class Integer(geosocks.Integer):
     def sinh(self, value=None, clamp=False):
         """
 
-        ```python
-        def sinh(self, value=None, clamp=False):
-
-        ```
         > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
         #### Args:
@@ -2797,10 +2285,6 @@ class Integer(geosocks.Integer):
     def smooth_maximum(self, value=None, distance=None, clamp=False):
         """
 
-        ```python
-        def smooth_maximum(self, value=None, distance=None, clamp=False):
-
-        ```
         > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
         #### Args:
@@ -2820,10 +2304,6 @@ class Integer(geosocks.Integer):
     def smooth_minimum(self, value=None, distance=None, clamp=False):
         """
 
-        ```python
-        def smooth_minimum(self, value=None, distance=None, clamp=False):
-
-        ```
         > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
         #### Args:
@@ -2843,10 +2323,6 @@ class Integer(geosocks.Integer):
     def snap(self, increment=None, clamp=False):
         """
 
-        ```python
-        def snap(self, increment=None, clamp=False):
-
-        ```
         > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
         #### Args:
@@ -2865,10 +2341,6 @@ class Integer(geosocks.Integer):
     def sqrt(self, clamp=False):
         """
 
-        ```python
-        def sqrt(self, clamp=False):
-
-        ```
         > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
         #### Args:
@@ -2888,10 +2360,6 @@ class Integer(geosocks.Integer):
     def switch(self, switch=None, true=None):
         """
 
-        ```python
-        def switch(self, switch=None, true=None):
-
-        ```
         > Node: [Switch](GeometryNodeSwitch.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
 
         #### Args:
@@ -2910,10 +2378,6 @@ class Integer(geosocks.Integer):
     def tan(self, value=None, clamp=False):
         """
 
-        ```python
-        def tan(self, value=None, clamp=False):
-
-        ```
         > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
         #### Args:
@@ -2932,10 +2396,6 @@ class Integer(geosocks.Integer):
     def tangent(self, value=None, clamp=False):
         """
 
-        ```python
-        def tangent(self, value=None, clamp=False):
-
-        ```
         > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
         #### Args:
@@ -2954,10 +2414,6 @@ class Integer(geosocks.Integer):
     def tanh(self, value=None, clamp=False):
         """
 
-        ```python
-        def tanh(self, value=None, clamp=False):
-
-        ```
         > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
         #### Args:
@@ -2976,10 +2432,6 @@ class Integer(geosocks.Integer):
     def to_degrees(self, clamp=False):
         """
 
-        ```python
-        def to_degrees(self, clamp=False):
-
-        ```
         > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
         #### Args:
@@ -2997,10 +2449,6 @@ class Integer(geosocks.Integer):
     def to_radians(self, clamp=False):
         """
 
-        ```python
-        def to_radians(self, clamp=False):
-
-        ```
         > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
         #### Args:
@@ -3018,10 +2466,6 @@ class Integer(geosocks.Integer):
     def to_string(self):
         """
 
-        ```python
-        def to_string(self):
-
-        ```
         > Node: [Value to String](FunctionNodeValueToString.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/value_to_string.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeValueToString.html)
 
         #### Returns:
@@ -3036,10 +2480,6 @@ class Integer(geosocks.Integer):
     def wrap(self, max=None, min=None, clamp=False):
         """
 
-        ```python
-        def wrap(self, max=None, min=None, clamp=False):
-
-        ```
         > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
         #### Args:
@@ -3063,10 +2503,6 @@ class Boolean(geosocks.Boolean):
     def Boolean(cls, boolean=False):
         """
 
-        ```python
-        def Boolean(cls, boolean=False):
-
-        ```
         > Node: [Boolean](FunctionNodeInputBool.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/boolean.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeInputBool.html)
 
         #### Args:
@@ -3084,10 +2520,6 @@ class Boolean(geosocks.Boolean):
     def b_and(self, boolean1=None):
         """
 
-        ```python
-        def b_and(self, boolean1=None):
-
-        ```
         > Node: [Boolean Math](FunctionNodeBooleanMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/boolean_math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html)
 
         #### Args:
@@ -3105,10 +2537,6 @@ class Boolean(geosocks.Boolean):
     def b_not(self):
         """
 
-        ```python
-        def b_not(self):
-
-        ```
         > Node: [Boolean Math](FunctionNodeBooleanMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/boolean_math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html)
 
         #### Returns:
@@ -3123,10 +2551,6 @@ class Boolean(geosocks.Boolean):
     def b_or(self, boolean1=None):
         """
 
-        ```python
-        def b_or(self, boolean1=None):
-
-        ```
         > Node: [Boolean Math](FunctionNodeBooleanMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/boolean_math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html)
 
         #### Args:
@@ -3144,10 +2568,6 @@ class Boolean(geosocks.Boolean):
     def imply(self, boolean1=None):
         """
 
-        ```python
-        def imply(self, boolean1=None):
-
-        ```
         > Node: [Boolean Math](FunctionNodeBooleanMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/boolean_math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html)
 
         #### Args:
@@ -3165,10 +2585,6 @@ class Boolean(geosocks.Boolean):
     def nand(self, boolean1=None):
         """
 
-        ```python
-        def nand(self, boolean1=None):
-
-        ```
         > Node: [Boolean Math](FunctionNodeBooleanMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/boolean_math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html)
 
         #### Args:
@@ -3186,10 +2602,6 @@ class Boolean(geosocks.Boolean):
     def nimply(self, boolean1=None):
         """
 
-        ```python
-        def nimply(self, boolean1=None):
-
-        ```
         > Node: [Boolean Math](FunctionNodeBooleanMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/boolean_math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html)
 
         #### Args:
@@ -3207,10 +2619,6 @@ class Boolean(geosocks.Boolean):
     def nor(self, boolean1=None):
         """
 
-        ```python
-        def nor(self, boolean1=None):
-
-        ```
         > Node: [Boolean Math](FunctionNodeBooleanMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/boolean_math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html)
 
         #### Args:
@@ -3228,10 +2636,6 @@ class Boolean(geosocks.Boolean):
     def switch(self, switch=None, true=None):
         """
 
-        ```python
-        def switch(self, switch=None, true=None):
-
-        ```
         > Node: [Switch](GeometryNodeSwitch.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
 
         #### Args:
@@ -3250,10 +2654,6 @@ class Boolean(geosocks.Boolean):
     def xnor(self, boolean1=None):
         """
 
-        ```python
-        def xnor(self, boolean1=None):
-
-        ```
         > Node: [Boolean Math](FunctionNodeBooleanMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/boolean_math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html)
 
         #### Args:
@@ -3271,10 +2671,6 @@ class Boolean(geosocks.Boolean):
     def xor(self, boolean1=None):
         """
 
-        ```python
-        def xor(self, boolean1=None):
-
-        ```
         > Node: [Boolean Math](FunctionNodeBooleanMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/boolean_math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html)
 
         #### Args:
@@ -3296,10 +2692,6 @@ class String(geosocks.String):
     def LineBreak():
         """
 
-        ```python
-        def LineBreak():
-
-        ```
         > Node: [Special Characters](FunctionNodeInputSpecialCharacters.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/special_characters.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeInputSpecialCharacters.html)
 
         #### Returns:
@@ -3315,10 +2707,6 @@ class String(geosocks.String):
     def String(cls, string=''):
         """
 
-        ```python
-        def String(cls, string=''):
-
-        ```
         > Node: [String](FunctionNodeInputString.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/string.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeInputString.html)
 
         #### Args:
@@ -3337,10 +2725,6 @@ class String(geosocks.String):
     def Tab():
         """
 
-        ```python
-        def Tab():
-
-        ```
         > Node: [Special Characters](FunctionNodeInputSpecialCharacters.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/special_characters.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeInputSpecialCharacters.html)
 
         #### Returns:
@@ -3355,10 +2739,6 @@ class String(geosocks.String):
     def equal(self, b=None):
         """
 
-        ```python
-        def equal(self, b=None):
-
-        ```
         > Node: [Compare](FunctionNodeCompare.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 
         #### Args:
@@ -3376,10 +2756,6 @@ class String(geosocks.String):
     def join(*strings, delimiter=None):
         """
 
-        ```python
-        def join(*strings, delimiter=None):
-
-        ```
         > Node: [Join Strings](GeometryNodeStringJoin.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/join_strings.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeStringJoin.html)
 
         #### Args:
@@ -3399,10 +2775,6 @@ class String(geosocks.String):
     def length(self):
         """
 
-        ```python
-        def length(self):
-
-        ```
         > Node: [String Length](FunctionNodeStringLength.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/string_length.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeStringLength.html)
 
         #### Returns:
@@ -3417,10 +2789,6 @@ class String(geosocks.String):
     def not_equal(self, b=None):
         """
 
-        ```python
-        def not_equal(self, b=None):
-
-        ```
         > Node: [Compare](FunctionNodeCompare.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 
         #### Args:
@@ -3438,10 +2806,6 @@ class String(geosocks.String):
     def replace(self, find=None, replace=None):
         """
 
-        ```python
-        def replace(self, find=None, replace=None):
-
-        ```
         > Node: [Replace String](FunctionNodeReplaceString.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/replace_string.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeReplaceString.html)
 
         #### Args:
@@ -3460,10 +2824,6 @@ class String(geosocks.String):
     def slice(self, position=None, length=None):
         """
 
-        ```python
-        def slice(self, position=None, length=None):
-
-        ```
         > Node: [Slice String](FunctionNodeSliceString.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/slice_string.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeSliceString.html)
 
         #### Args:
@@ -3482,10 +2842,6 @@ class String(geosocks.String):
     def switch(self, switch=None, true=None):
         """
 
-        ```python
-        def switch(self, switch=None, true=None):
-
-        ```
         > Node: [Switch](GeometryNodeSwitch.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
 
         #### Args:
@@ -3504,10 +2860,6 @@ class String(geosocks.String):
     def to_curves(self, string=None, size=None, character_spacing=None, word_spacing=None, line_spacing=None, text_box_width=None, text_box_height=None, align_x='LEFT', align_y='TOP_BASELINE', overflow='OVERFLOW', pivot_mode='BOTTOM_LEFT'):
         """
 
-        ```python
-        def to_curves(self, string=None, size=None, character_spacing=None, word_spacing=None, line_spacing=None, text_box_width=None, text_box_height=None, align_x='LEFT', align_y='TOP_BASELINE', overflow='OVERFLOW', pivot_mode='BOTTOM_LEFT'):
-
-        ```
         > Node: [String to Curves](GeometryNodeStringToCurves.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/string_to_curves.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeStringToCurves.html)
 
         #### Args:
@@ -3543,10 +2895,6 @@ class Vector(geosocks.Vector):
     def Combine(cls, x=None, y=None, z=None):
         """
 
-        ```python
-        def Combine(cls, x=None, y=None, z=None):
-
-        ```
         > Node: [Combine XYZ](ShaderNodeCombineXYZ.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/combine_xyz.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeCombineXYZ.html)
 
         #### Args:
@@ -3567,10 +2915,6 @@ class Vector(geosocks.Vector):
     def Vector(cls, vector=[0.0, 0.0, 0.0]):
         """
 
-        ```python
-        def Vector(cls, vector=[0.0, 0.0, 0.0]):
-
-        ```
         > Node: [Vector](FunctionNodeInputVector.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/vector.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeInputVector.html)
 
         #### Args:
@@ -3588,10 +2932,6 @@ class Vector(geosocks.Vector):
     def abs(self):
         """
 
-        ```python
-        def abs(self):
-
-        ```
         > Node: [Vector Math](ShaderNodeVectorMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 
         #### Returns:
@@ -3606,10 +2946,6 @@ class Vector(geosocks.Vector):
     def absolute(self):
         """
 
-        ```python
-        def absolute(self):
-
-        ```
         > Node: [Vector Math](ShaderNodeVectorMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 
         #### Returns:
@@ -3624,10 +2960,6 @@ class Vector(geosocks.Vector):
     def add(self, vector=None):
         """
 
-        ```python
-        def add(self, vector=None):
-
-        ```
         > Node: [Vector Math](ShaderNodeVectorMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 
         #### Args:
@@ -3645,10 +2977,6 @@ class Vector(geosocks.Vector):
     def align_euler_to_vector(self, factor=None, vector=None, axis='X', pivot_axis='AUTO'):
         """
 
-        ```python
-        def align_euler_to_vector(self, factor=None, vector=None, axis='X', pivot_axis='AUTO'):
-
-        ```
         > Node: [Align Euler to Vector](FunctionNodeAlignEulerToVector.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/align_euler_to_vector.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeAlignEulerToVector.html)
 
         #### Args:
@@ -3669,10 +2997,6 @@ class Vector(geosocks.Vector):
     def average_equal(self, b=None, epsilon=None):
         """
 
-        ```python
-        def average_equal(self, b=None, epsilon=None):
-
-        ```
         > Node: [Compare](FunctionNodeCompare.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 
         #### Args:
@@ -3691,10 +3015,6 @@ class Vector(geosocks.Vector):
     def average_greater_equal(self, b=None):
         """
 
-        ```python
-        def average_greater_equal(self, b=None):
-
-        ```
         > Node: [Compare](FunctionNodeCompare.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 
         #### Args:
@@ -3712,10 +3032,6 @@ class Vector(geosocks.Vector):
     def average_greater_than(self, b=None):
         """
 
-        ```python
-        def average_greater_than(self, b=None):
-
-        ```
         > Node: [Compare](FunctionNodeCompare.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 
         #### Args:
@@ -3733,10 +3049,6 @@ class Vector(geosocks.Vector):
     def average_less_equal(self, b=None):
         """
 
-        ```python
-        def average_less_equal(self, b=None):
-
-        ```
         > Node: [Compare](FunctionNodeCompare.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 
         #### Args:
@@ -3754,10 +3066,6 @@ class Vector(geosocks.Vector):
     def average_less_than(self, b=None):
         """
 
-        ```python
-        def average_less_than(self, b=None):
-
-        ```
         > Node: [Compare](FunctionNodeCompare.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 
         #### Args:
@@ -3775,10 +3083,6 @@ class Vector(geosocks.Vector):
     def average_not_equal(self, b=None, epsilon=None):
         """
 
-        ```python
-        def average_not_equal(self, b=None, epsilon=None):
-
-        ```
         > Node: [Compare](FunctionNodeCompare.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 
         #### Args:
@@ -3797,10 +3101,6 @@ class Vector(geosocks.Vector):
     def ceil(self):
         """
 
-        ```python
-        def ceil(self):
-
-        ```
         > Node: [Vector Math](ShaderNodeVectorMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 
         #### Returns:
@@ -3815,10 +3115,6 @@ class Vector(geosocks.Vector):
     def compare(self, b=None, c=None, angle=None, epsilon=None, mode='ELEMENT', operation='GREATER_THAN'):
         """
 
-        ```python
-        def compare(self, b=None, c=None, angle=None, epsilon=None, mode='ELEMENT', operation='GREATER_THAN'):
-
-        ```
         > Node: [Compare](FunctionNodeCompare.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 
         #### Args:
@@ -3841,10 +3137,6 @@ class Vector(geosocks.Vector):
     def cos(self):
         """
 
-        ```python
-        def cos(self):
-
-        ```
         > Node: [Vector Math](ShaderNodeVectorMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 
         #### Returns:
@@ -3859,10 +3151,6 @@ class Vector(geosocks.Vector):
     def cosine(self):
         """
 
-        ```python
-        def cosine(self):
-
-        ```
         > Node: [Vector Math](ShaderNodeVectorMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 
         #### Returns:
@@ -3877,10 +3165,6 @@ class Vector(geosocks.Vector):
     def cross(self, vector=None):
         """
 
-        ```python
-        def cross(self, vector=None):
-
-        ```
         > Node: [Vector Math](ShaderNodeVectorMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 
         #### Args:
@@ -3898,10 +3182,6 @@ class Vector(geosocks.Vector):
     def cross_product(self, vector=None):
         """
 
-        ```python
-        def cross_product(self, vector=None):
-
-        ```
         > Node: [Vector Math](ShaderNodeVectorMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 
         #### Args:
@@ -3919,10 +3199,6 @@ class Vector(geosocks.Vector):
     def curves(self, fac=None):
         """
 
-        ```python
-        def curves(self, fac=None):
-
-        ```
         > Node: [Vector Curves](ShaderNodeVectorCurve.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_curves.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorCurve.html)
 
         #### Args:
@@ -3940,10 +3216,6 @@ class Vector(geosocks.Vector):
     def direction_equal(self, b=None, angle=None, epsilon=None):
         """
 
-        ```python
-        def direction_equal(self, b=None, angle=None, epsilon=None):
-
-        ```
         > Node: [Compare](FunctionNodeCompare.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 
         #### Args:
@@ -3963,10 +3235,6 @@ class Vector(geosocks.Vector):
     def direction_greater_equal(self, b=None, angle=None):
         """
 
-        ```python
-        def direction_greater_equal(self, b=None, angle=None):
-
-        ```
         > Node: [Compare](FunctionNodeCompare.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 
         #### Args:
@@ -3985,10 +3253,6 @@ class Vector(geosocks.Vector):
     def direction_greater_than(self, b=None, angle=None):
         """
 
-        ```python
-        def direction_greater_than(self, b=None, angle=None):
-
-        ```
         > Node: [Compare](FunctionNodeCompare.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 
         #### Args:
@@ -4007,10 +3271,6 @@ class Vector(geosocks.Vector):
     def direction_less_equal(self, b=None, angle=None):
         """
 
-        ```python
-        def direction_less_equal(self, b=None, angle=None):
-
-        ```
         > Node: [Compare](FunctionNodeCompare.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 
         #### Args:
@@ -4029,10 +3289,6 @@ class Vector(geosocks.Vector):
     def direction_less_than(self, b=None, angle=None):
         """
 
-        ```python
-        def direction_less_than(self, b=None, angle=None):
-
-        ```
         > Node: [Compare](FunctionNodeCompare.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 
         #### Args:
@@ -4051,10 +3307,6 @@ class Vector(geosocks.Vector):
     def direction_not_equal(self, b=None, angle=None, epsilon=None):
         """
 
-        ```python
-        def direction_not_equal(self, b=None, angle=None, epsilon=None):
-
-        ```
         > Node: [Compare](FunctionNodeCompare.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 
         #### Args:
@@ -4074,10 +3326,6 @@ class Vector(geosocks.Vector):
     def distance(self, vector=None):
         """
 
-        ```python
-        def distance(self, vector=None):
-
-        ```
         > Node: [Vector Math](ShaderNodeVectorMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 
         #### Args:
@@ -4095,10 +3343,6 @@ class Vector(geosocks.Vector):
     def div(self, vector=None):
         """
 
-        ```python
-        def div(self, vector=None):
-
-        ```
         > Node: [Vector Math](ShaderNodeVectorMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 
         #### Args:
@@ -4116,10 +3360,6 @@ class Vector(geosocks.Vector):
     def divide(self, vector=None):
         """
 
-        ```python
-        def divide(self, vector=None):
-
-        ```
         > Node: [Vector Math](ShaderNodeVectorMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 
         #### Args:
@@ -4137,10 +3377,6 @@ class Vector(geosocks.Vector):
     def dot(self, vector=None):
         """
 
-        ```python
-        def dot(self, vector=None):
-
-        ```
         > Node: [Vector Math](ShaderNodeVectorMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 
         #### Args:
@@ -4158,10 +3394,6 @@ class Vector(geosocks.Vector):
     def dot_product(self, vector=None):
         """
 
-        ```python
-        def dot_product(self, vector=None):
-
-        ```
         > Node: [Vector Math](ShaderNodeVectorMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 
         #### Args:
@@ -4179,10 +3411,6 @@ class Vector(geosocks.Vector):
     def dot_product_equal(self, b=None, c=None, epsilon=None):
         """
 
-        ```python
-        def dot_product_equal(self, b=None, c=None, epsilon=None):
-
-        ```
         > Node: [Compare](FunctionNodeCompare.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 
         #### Args:
@@ -4202,10 +3430,6 @@ class Vector(geosocks.Vector):
     def dot_product_greater_equal(self, b=None, c=None):
         """
 
-        ```python
-        def dot_product_greater_equal(self, b=None, c=None):
-
-        ```
         > Node: [Compare](FunctionNodeCompare.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 
         #### Args:
@@ -4224,10 +3448,6 @@ class Vector(geosocks.Vector):
     def dot_product_greater_than(self, b=None, c=None):
         """
 
-        ```python
-        def dot_product_greater_than(self, b=None, c=None):
-
-        ```
         > Node: [Compare](FunctionNodeCompare.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 
         #### Args:
@@ -4246,10 +3466,6 @@ class Vector(geosocks.Vector):
     def dot_product_less_equal(self, b=None, c=None):
         """
 
-        ```python
-        def dot_product_less_equal(self, b=None, c=None):
-
-        ```
         > Node: [Compare](FunctionNodeCompare.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 
         #### Args:
@@ -4268,10 +3484,6 @@ class Vector(geosocks.Vector):
     def dot_product_less_than(self, b=None, c=None):
         """
 
-        ```python
-        def dot_product_less_than(self, b=None, c=None):
-
-        ```
         > Node: [Compare](FunctionNodeCompare.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 
         #### Args:
@@ -4290,10 +3502,6 @@ class Vector(geosocks.Vector):
     def dot_product_not_equal(self, b=None, c=None, epsilon=None):
         """
 
-        ```python
-        def dot_product_not_equal(self, b=None, c=None, epsilon=None):
-
-        ```
         > Node: [Compare](FunctionNodeCompare.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 
         #### Args:
@@ -4313,10 +3521,6 @@ class Vector(geosocks.Vector):
     def elements_equal(self, b=None, epsilon=None):
         """
 
-        ```python
-        def elements_equal(self, b=None, epsilon=None):
-
-        ```
         > Node: [Compare](FunctionNodeCompare.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 
         #### Args:
@@ -4335,10 +3539,6 @@ class Vector(geosocks.Vector):
     def elements_greater_equal(self, b=None):
         """
 
-        ```python
-        def elements_greater_equal(self, b=None):
-
-        ```
         > Node: [Compare](FunctionNodeCompare.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 
         #### Args:
@@ -4356,10 +3556,6 @@ class Vector(geosocks.Vector):
     def elements_greater_than(self, b=None):
         """
 
-        ```python
-        def elements_greater_than(self, b=None):
-
-        ```
         > Node: [Compare](FunctionNodeCompare.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 
         #### Args:
@@ -4377,10 +3573,6 @@ class Vector(geosocks.Vector):
     def elements_less_equal(self, b=None):
         """
 
-        ```python
-        def elements_less_equal(self, b=None):
-
-        ```
         > Node: [Compare](FunctionNodeCompare.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 
         #### Args:
@@ -4398,10 +3590,6 @@ class Vector(geosocks.Vector):
     def elements_less_than(self, b=None):
         """
 
-        ```python
-        def elements_less_than(self, b=None):
-
-        ```
         > Node: [Compare](FunctionNodeCompare.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 
         #### Args:
@@ -4419,10 +3607,6 @@ class Vector(geosocks.Vector):
     def elements_not_equal(self, b=None, epsilon=None):
         """
 
-        ```python
-        def elements_not_equal(self, b=None, epsilon=None):
-
-        ```
         > Node: [Compare](FunctionNodeCompare.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 
         #### Args:
@@ -4441,10 +3625,6 @@ class Vector(geosocks.Vector):
     def face_forward(self, incident=None, reference=None):
         """
 
-        ```python
-        def face_forward(self, incident=None, reference=None):
-
-        ```
         > Node: [Vector Math](ShaderNodeVectorMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 
         #### Args:
@@ -4463,10 +3643,6 @@ class Vector(geosocks.Vector):
     def floor(self):
         """
 
-        ```python
-        def floor(self):
-
-        ```
         > Node: [Vector Math](ShaderNodeVectorMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 
         #### Returns:
@@ -4481,10 +3657,6 @@ class Vector(geosocks.Vector):
     def fract(self):
         """
 
-        ```python
-        def fract(self):
-
-        ```
         > Node: [Vector Math](ShaderNodeVectorMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 
         #### Returns:
@@ -4499,10 +3671,6 @@ class Vector(geosocks.Vector):
     def fraction(self):
         """
 
-        ```python
-        def fraction(self):
-
-        ```
         > Node: [Vector Math](ShaderNodeVectorMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 
         #### Returns:
@@ -4518,10 +3686,6 @@ class Vector(geosocks.Vector):
     def length(self):
         """
 
-        ```python
-        def length(self):
-
-        ```
         > Node: [Vector Math](ShaderNodeVectorMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 
         #### Returns:
@@ -4536,10 +3700,6 @@ class Vector(geosocks.Vector):
     def length_equal(self, b=None, epsilon=None):
         """
 
-        ```python
-        def length_equal(self, b=None, epsilon=None):
-
-        ```
         > Node: [Compare](FunctionNodeCompare.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 
         #### Args:
@@ -4558,10 +3718,6 @@ class Vector(geosocks.Vector):
     def length_greater_equal(self, b=None):
         """
 
-        ```python
-        def length_greater_equal(self, b=None):
-
-        ```
         > Node: [Compare](FunctionNodeCompare.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 
         #### Args:
@@ -4579,10 +3735,6 @@ class Vector(geosocks.Vector):
     def length_greater_than(self, b=None):
         """
 
-        ```python
-        def length_greater_than(self, b=None):
-
-        ```
         > Node: [Compare](FunctionNodeCompare.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 
         #### Args:
@@ -4600,10 +3752,6 @@ class Vector(geosocks.Vector):
     def length_less_equal(self, b=None):
         """
 
-        ```python
-        def length_less_equal(self, b=None):
-
-        ```
         > Node: [Compare](FunctionNodeCompare.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 
         #### Args:
@@ -4621,10 +3769,6 @@ class Vector(geosocks.Vector):
     def length_less_than(self, b=None):
         """
 
-        ```python
-        def length_less_than(self, b=None):
-
-        ```
         > Node: [Compare](FunctionNodeCompare.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 
         #### Args:
@@ -4642,10 +3786,6 @@ class Vector(geosocks.Vector):
     def length_not_equal(self, b=None, epsilon=None):
         """
 
-        ```python
-        def length_not_equal(self, b=None, epsilon=None):
-
-        ```
         > Node: [Compare](FunctionNodeCompare.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 
         #### Args:
@@ -4664,10 +3804,6 @@ class Vector(geosocks.Vector):
     def map_range(self, from_min=None, from_max=None, to_min=None, to_max=None, steps=None, clamp=True, interpolation_type='LINEAR'):
         """
 
-        ```python
-        def map_range(self, from_min=None, from_max=None, to_min=None, to_max=None, steps=None, clamp=True, interpolation_type='LINEAR'):
-
-        ```
         > Node: [Map Range](ShaderNodeMapRange.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/map_range.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMapRange.html)
 
         #### Args:
@@ -4691,10 +3827,6 @@ class Vector(geosocks.Vector):
     def map_range_linear(self, from_min=None, from_max=None, to_min=None, to_max=None, clamp=True):
         """
 
-        ```python
-        def map_range_linear(self, from_min=None, from_max=None, to_min=None, to_max=None, clamp=True):
-
-        ```
         > Node: [Map Range](ShaderNodeMapRange.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/map_range.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMapRange.html)
 
         #### Args:
@@ -4716,10 +3848,6 @@ class Vector(geosocks.Vector):
     def map_range_smooth(self, from_min=None, from_max=None, to_min=None, to_max=None, clamp=True):
         """
 
-        ```python
-        def map_range_smooth(self, from_min=None, from_max=None, to_min=None, to_max=None, clamp=True):
-
-        ```
         > Node: [Map Range](ShaderNodeMapRange.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/map_range.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMapRange.html)
 
         #### Args:
@@ -4741,10 +3869,6 @@ class Vector(geosocks.Vector):
     def map_range_smoother(self, from_min=None, from_max=None, to_min=None, to_max=None, clamp=True):
         """
 
-        ```python
-        def map_range_smoother(self, from_min=None, from_max=None, to_min=None, to_max=None, clamp=True):
-
-        ```
         > Node: [Map Range](ShaderNodeMapRange.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/map_range.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMapRange.html)
 
         #### Args:
@@ -4766,10 +3890,6 @@ class Vector(geosocks.Vector):
     def map_range_stepped(self, from_min=None, from_max=None, to_min=None, to_max=None, steps=None, clamp=True):
         """
 
-        ```python
-        def map_range_stepped(self, from_min=None, from_max=None, to_min=None, to_max=None, steps=None, clamp=True):
-
-        ```
         > Node: [Map Range](ShaderNodeMapRange.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/map_range.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMapRange.html)
 
         #### Args:
@@ -4792,10 +3912,6 @@ class Vector(geosocks.Vector):
     def max(self, vector=None):
         """
 
-        ```python
-        def max(self, vector=None):
-
-        ```
         > Node: [Vector Math](ShaderNodeVectorMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 
         #### Args:
@@ -4813,10 +3929,6 @@ class Vector(geosocks.Vector):
     def maximum(self, vector=None):
         """
 
-        ```python
-        def maximum(self, vector=None):
-
-        ```
         > Node: [Vector Math](ShaderNodeVectorMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 
         #### Args:
@@ -4834,10 +3946,6 @@ class Vector(geosocks.Vector):
     def min(self, vector=None):
         """
 
-        ```python
-        def min(self, vector=None):
-
-        ```
         > Node: [Vector Math](ShaderNodeVectorMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 
         #### Args:
@@ -4855,10 +3963,6 @@ class Vector(geosocks.Vector):
     def minimum(self, vector=None):
         """
 
-        ```python
-        def minimum(self, vector=None):
-
-        ```
         > Node: [Vector Math](ShaderNodeVectorMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 
         #### Args:
@@ -4876,10 +3980,6 @@ class Vector(geosocks.Vector):
     def mix(self, factor=None, vector=None, clamp_factor=True, factor_mode='UNIFORM'):
         """
 
-        ```python
-        def mix(self, factor=None, vector=None, clamp_factor=True, factor_mode='UNIFORM'):
-
-        ```
         > Node: [Mix](ShaderNodeMix.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
 
         #### Args:
@@ -4900,10 +4000,6 @@ class Vector(geosocks.Vector):
     def mix_non_uniform(self, factor=None, vector=None, clamp_factor=True):
         """
 
-        ```python
-        def mix_non_uniform(self, factor=None, vector=None, clamp_factor=True):
-
-        ```
         > Node: [Mix](ShaderNodeMix.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
 
         #### Args:
@@ -4923,10 +4019,6 @@ class Vector(geosocks.Vector):
     def mix_uniform(self, vector=None, clamp_factor=True):
         """
 
-        ```python
-        def mix_uniform(self, vector=None, clamp_factor=True):
-
-        ```
         > Node: [Mix](ShaderNodeMix.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
 
         #### Args:
@@ -4945,10 +4037,6 @@ class Vector(geosocks.Vector):
     def modulo(self, vector=None):
         """
 
-        ```python
-        def modulo(self, vector=None):
-
-        ```
         > Node: [Vector Math](ShaderNodeVectorMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 
         #### Args:
@@ -4966,10 +4054,6 @@ class Vector(geosocks.Vector):
     def mul(self, vector=None):
         """
 
-        ```python
-        def mul(self, vector=None):
-
-        ```
         > Node: [Vector Math](ShaderNodeVectorMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 
         #### Args:
@@ -4987,10 +4071,6 @@ class Vector(geosocks.Vector):
     def mul_add(self, multiplier=None, addend=None):
         """
 
-        ```python
-        def mul_add(self, multiplier=None, addend=None):
-
-        ```
         > Node: [Vector Math](ShaderNodeVectorMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 
         #### Args:
@@ -5009,10 +4089,6 @@ class Vector(geosocks.Vector):
     def multiply(self, vector=None):
         """
 
-        ```python
-        def multiply(self, vector=None):
-
-        ```
         > Node: [Vector Math](ShaderNodeVectorMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 
         #### Args:
@@ -5030,10 +4106,6 @@ class Vector(geosocks.Vector):
     def multiply_add(self, multiplier=None, addend=None):
         """
 
-        ```python
-        def multiply_add(self, multiplier=None, addend=None):
-
-        ```
         > Node: [Vector Math](ShaderNodeVectorMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 
         #### Args:
@@ -5052,10 +4124,6 @@ class Vector(geosocks.Vector):
     def normalize(self):
         """
 
-        ```python
-        def normalize(self):
-
-        ```
         > Node: [Vector Math](ShaderNodeVectorMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 
         #### Returns:
@@ -5070,10 +4138,6 @@ class Vector(geosocks.Vector):
     def project(self, vector=None):
         """
 
-        ```python
-        def project(self, vector=None):
-
-        ```
         > Node: [Vector Math](ShaderNodeVectorMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 
         #### Args:
@@ -5091,10 +4155,6 @@ class Vector(geosocks.Vector):
     def reflect(self, vector=None):
         """
 
-        ```python
-        def reflect(self, vector=None):
-
-        ```
         > Node: [Vector Math](ShaderNodeVectorMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 
         #### Args:
@@ -5112,10 +4172,6 @@ class Vector(geosocks.Vector):
     def refract(self, vector=None, ior=None):
         """
 
-        ```python
-        def refract(self, vector=None, ior=None):
-
-        ```
         > Node: [Vector Math](ShaderNodeVectorMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 
         #### Args:
@@ -5134,10 +4190,6 @@ class Vector(geosocks.Vector):
     def rotate_axis_angle(self, center=None, axis=None, angle=None, invert=False):
         """
 
-        ```python
-        def rotate_axis_angle(self, center=None, axis=None, angle=None, invert=False):
-
-        ```
         > Node: [Vector Rotate](ShaderNodeVectorRotate.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_rotate.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorRotate.html)
 
         #### Args:
@@ -5158,10 +4210,6 @@ class Vector(geosocks.Vector):
     def rotate_euler(self, center=None, rotation=None, invert=False):
         """
 
-        ```python
-        def rotate_euler(self, center=None, rotation=None, invert=False):
-
-        ```
         > Node: [Vector Rotate](ShaderNodeVectorRotate.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_rotate.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorRotate.html)
 
         #### Args:
@@ -5181,10 +4229,6 @@ class Vector(geosocks.Vector):
     def rotate_x(self, center=None, angle=None, invert=False):
         """
 
-        ```python
-        def rotate_x(self, center=None, angle=None, invert=False):
-
-        ```
         > Node: [Vector Rotate](ShaderNodeVectorRotate.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_rotate.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorRotate.html)
 
         #### Args:
@@ -5204,10 +4248,6 @@ class Vector(geosocks.Vector):
     def rotate_y(self, center=None, angle=None, invert=False):
         """
 
-        ```python
-        def rotate_y(self, center=None, angle=None, invert=False):
-
-        ```
         > Node: [Vector Rotate](ShaderNodeVectorRotate.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_rotate.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorRotate.html)
 
         #### Args:
@@ -5227,10 +4267,6 @@ class Vector(geosocks.Vector):
     def rotate_z(self, center=None, angle=None, invert=False):
         """
 
-        ```python
-        def rotate_z(self, center=None, angle=None, invert=False):
-
-        ```
         > Node: [Vector Rotate](ShaderNodeVectorRotate.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_rotate.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorRotate.html)
 
         #### Args:
@@ -5250,10 +4286,6 @@ class Vector(geosocks.Vector):
     def scale(self, scale=None):
         """
 
-        ```python
-        def scale(self, scale=None):
-
-        ```
         > Node: [Vector Math](ShaderNodeVectorMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 
         #### Args:
@@ -5271,10 +4303,6 @@ class Vector(geosocks.Vector):
     def sin(self):
         """
 
-        ```python
-        def sin(self):
-
-        ```
         > Node: [Vector Math](ShaderNodeVectorMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 
         #### Returns:
@@ -5289,10 +4317,6 @@ class Vector(geosocks.Vector):
     def sine(self):
         """
 
-        ```python
-        def sine(self):
-
-        ```
         > Node: [Vector Math](ShaderNodeVectorMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 
         #### Returns:
@@ -5307,10 +4331,6 @@ class Vector(geosocks.Vector):
     def snap(self, increment=None):
         """
 
-        ```python
-        def snap(self, increment=None):
-
-        ```
         > Node: [Vector Math](ShaderNodeVectorMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 
         #### Args:
@@ -5328,10 +4348,6 @@ class Vector(geosocks.Vector):
     def sub(self, vector=None):
         """
 
-        ```python
-        def sub(self, vector=None):
-
-        ```
         > Node: [Vector Math](ShaderNodeVectorMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 
         #### Args:
@@ -5349,10 +4365,6 @@ class Vector(geosocks.Vector):
     def subtract(self, vector=None):
         """
 
-        ```python
-        def subtract(self, vector=None):
-
-        ```
         > Node: [Vector Math](ShaderNodeVectorMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 
         #### Args:
@@ -5370,10 +4382,6 @@ class Vector(geosocks.Vector):
     def switch(self, switch=None, true=None):
         """
 
-        ```python
-        def switch(self, switch=None, true=None):
-
-        ```
         > Node: [Switch](GeometryNodeSwitch.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
 
         #### Args:
@@ -5392,10 +4400,6 @@ class Vector(geosocks.Vector):
     def tan(self):
         """
 
-        ```python
-        def tan(self):
-
-        ```
         > Node: [Vector Math](ShaderNodeVectorMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 
         #### Returns:
@@ -5410,10 +4414,6 @@ class Vector(geosocks.Vector):
     def tangent(self):
         """
 
-        ```python
-        def tangent(self):
-
-        ```
         > Node: [Vector Math](ShaderNodeVectorMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 
         #### Returns:
@@ -5428,10 +4428,6 @@ class Vector(geosocks.Vector):
     def wrap(self, max=None, min=None):
         """
 
-        ```python
-        def wrap(self, max=None, min=None):
-
-        ```
         > Node: [Vector Math](ShaderNodeVectorMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/vector_math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 
         #### Args:
@@ -5454,10 +4450,6 @@ class Color(geosocks.Color):
     def Color(cls):
         """
 
-        ```python
-        def Color(cls):
-
-        ```
         > Node: [Color](FunctionNodeInputColor.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/color.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeInputColor.html)
 
         #### Returns:
@@ -5473,10 +4465,6 @@ class Color(geosocks.Color):
     def HSL(cls, hue=None, saturation=None, lightness=None, alpha=None):
         """
 
-        ```python
-        def HSL(cls, hue=None, saturation=None, lightness=None, alpha=None):
-
-        ```
         > Node: [Combine Color](FunctionNodeCombineColor.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/combine_color.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeCombineColor.html)
 
         #### Args:
@@ -5498,10 +4486,6 @@ class Color(geosocks.Color):
     def HSV(cls, hue=None, saturation=None, value=None, alpha=None):
         """
 
-        ```python
-        def HSV(cls, hue=None, saturation=None, value=None, alpha=None):
-
-        ```
         > Node: [Combine Color](FunctionNodeCombineColor.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/combine_color.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeCombineColor.html)
 
         #### Args:
@@ -5523,10 +4507,6 @@ class Color(geosocks.Color):
     def RGB(cls, red=None, green=None, blue=None, alpha=None):
         """
 
-        ```python
-        def RGB(cls, red=None, green=None, blue=None, alpha=None):
-
-        ```
         > Node: [Combine Color](FunctionNodeCombineColor.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/combine_color.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeCombineColor.html)
 
         #### Args:
@@ -5547,10 +4527,6 @@ class Color(geosocks.Color):
     def brighter(self, b=None):
         """
 
-        ```python
-        def brighter(self, b=None):
-
-        ```
         > Node: [Compare](FunctionNodeCompare.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 
         #### Args:
@@ -5568,10 +4544,6 @@ class Color(geosocks.Color):
     def darker(self, b=None):
         """
 
-        ```python
-        def darker(self, b=None):
-
-        ```
         > Node: [Compare](FunctionNodeCompare.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 
         #### Args:
@@ -5589,10 +4561,6 @@ class Color(geosocks.Color):
     def equal(self, b=None, epsilon=None):
         """
 
-        ```python
-        def equal(self, b=None, epsilon=None):
-
-        ```
         > Node: [Compare](FunctionNodeCompare.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 
         #### Args:
@@ -5611,10 +4579,6 @@ class Color(geosocks.Color):
     def equal(self, b=None, epsilon=None):
         """
 
-        ```python
-        def equal(self, b=None, epsilon=None):
-
-        ```
         > Node: [Compare](FunctionNodeCompare.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 
         #### Args:
@@ -5633,10 +4597,6 @@ class Color(geosocks.Color):
     def mix(self, factor=None, color=None, blend_type='MIX', clamp_factor=True, clamp_result=False):
         """
 
-        ```python
-        def mix(self, factor=None, color=None, blend_type='MIX', clamp_factor=True, clamp_result=False):
-
-        ```
         > Node: [Mix](ShaderNodeMix.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
 
         #### Args:
@@ -5658,10 +4618,6 @@ class Color(geosocks.Color):
     def mix_add(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
         """
 
-        ```python
-        def mix_add(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
-
-        ```
         > Node: [Mix](ShaderNodeMix.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
 
         #### Args:
@@ -5682,10 +4638,6 @@ class Color(geosocks.Color):
     def mix_burn(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
         """
 
-        ```python
-        def mix_burn(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
-
-        ```
         > Node: [Mix](ShaderNodeMix.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
 
         #### Args:
@@ -5706,10 +4658,6 @@ class Color(geosocks.Color):
     def mix_color(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
         """
 
-        ```python
-        def mix_color(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
-
-        ```
         > Node: [Mix](ShaderNodeMix.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
 
         #### Args:
@@ -5730,10 +4678,6 @@ class Color(geosocks.Color):
     def mix_darken(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
         """
 
-        ```python
-        def mix_darken(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
-
-        ```
         > Node: [Mix](ShaderNodeMix.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
 
         #### Args:
@@ -5754,10 +4698,6 @@ class Color(geosocks.Color):
     def mix_difference(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
         """
 
-        ```python
-        def mix_difference(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
-
-        ```
         > Node: [Mix](ShaderNodeMix.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
 
         #### Args:
@@ -5778,10 +4718,6 @@ class Color(geosocks.Color):
     def mix_divide(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
         """
 
-        ```python
-        def mix_divide(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
-
-        ```
         > Node: [Mix](ShaderNodeMix.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
 
         #### Args:
@@ -5802,10 +4738,6 @@ class Color(geosocks.Color):
     def mix_dodge(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
         """
 
-        ```python
-        def mix_dodge(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
-
-        ```
         > Node: [Mix](ShaderNodeMix.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
 
         #### Args:
@@ -5826,10 +4758,6 @@ class Color(geosocks.Color):
     def mix_hue(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
         """
 
-        ```python
-        def mix_hue(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
-
-        ```
         > Node: [Mix](ShaderNodeMix.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
 
         #### Args:
@@ -5850,10 +4778,6 @@ class Color(geosocks.Color):
     def mix_lighten(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
         """
 
-        ```python
-        def mix_lighten(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
-
-        ```
         > Node: [Mix](ShaderNodeMix.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
 
         #### Args:
@@ -5874,10 +4798,6 @@ class Color(geosocks.Color):
     def mix_linear_light(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
         """
 
-        ```python
-        def mix_linear_light(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
-
-        ```
         > Node: [Mix](ShaderNodeMix.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
 
         #### Args:
@@ -5898,10 +4818,6 @@ class Color(geosocks.Color):
     def mix_multiply(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
         """
 
-        ```python
-        def mix_multiply(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
-
-        ```
         > Node: [Mix](ShaderNodeMix.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
 
         #### Args:
@@ -5922,10 +4838,6 @@ class Color(geosocks.Color):
     def mix_overlay(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
         """
 
-        ```python
-        def mix_overlay(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
-
-        ```
         > Node: [Mix](ShaderNodeMix.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
 
         #### Args:
@@ -5946,10 +4858,6 @@ class Color(geosocks.Color):
     def mix_saturation(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
         """
 
-        ```python
-        def mix_saturation(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
-
-        ```
         > Node: [Mix](ShaderNodeMix.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
 
         #### Args:
@@ -5970,10 +4878,6 @@ class Color(geosocks.Color):
     def mix_screen(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
         """
 
-        ```python
-        def mix_screen(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
-
-        ```
         > Node: [Mix](ShaderNodeMix.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
 
         #### Args:
@@ -5994,10 +4898,6 @@ class Color(geosocks.Color):
     def mix_soft_light(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
         """
 
-        ```python
-        def mix_soft_light(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
-
-        ```
         > Node: [Mix](ShaderNodeMix.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
 
         #### Args:
@@ -6018,10 +4918,6 @@ class Color(geosocks.Color):
     def mix_subtract(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
         """
 
-        ```python
-        def mix_subtract(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
-
-        ```
         > Node: [Mix](ShaderNodeMix.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
 
         #### Args:
@@ -6042,10 +4938,6 @@ class Color(geosocks.Color):
     def mix_value(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
         """
 
-        ```python
-        def mix_value(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
-
-        ```
         > Node: [Mix](ShaderNodeMix.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
 
         #### Args:
@@ -6067,10 +4959,6 @@ class Color(geosocks.Color):
     def rgb_curves(self, fac=None):
         """
 
-        ```python
-        def rgb_curves(self, fac=None):
-
-        ```
         > Node: [RGB Curves](ShaderNodeRGBCurve.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/rgb_curves.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeRGBCurve.html)
 
         #### Returns:
@@ -6085,10 +4973,6 @@ class Color(geosocks.Color):
     def switch(self, switch=None, true=None):
         """
 
-        ```python
-        def switch(self, switch=None, true=None):
-
-        ```
         > Node: [Switch](GeometryNodeSwitch.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
 
         #### Args:
@@ -6110,10 +4994,6 @@ class Collection(geosocks.Collection):
     def switch(self, switch=None, true=None):
         """
 
-        ```python
-        def switch(self, switch=None, true=None):
-
-        ```
         > Node: [Switch](GeometryNodeSwitch.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
 
         #### Args:
@@ -6136,10 +5016,6 @@ class Object(geosocks.Object):
     def Self(cls):
         """
 
-        ```python
-        def Self(cls):
-
-        ```
         > Node: [Self Object](GeometryNodeSelfObject.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/self_object.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSelfObject.html)
 
         #### Returns:
@@ -6154,10 +5030,6 @@ class Object(geosocks.Object):
     def geometry(self, object=None, as_instance=None, transform_space='ORIGINAL'):
         """
 
-        ```python
-        def geometry(self, object=None, as_instance=None, transform_space='ORIGINAL'):
-
-        ```
         > Node: [Object Info](GeometryNodeObjectInfo.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/object_info.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeObjectInfo.html)
 
         #### Args:
@@ -6177,10 +5049,6 @@ class Object(geosocks.Object):
     def info(self, object=None, as_instance=None, transform_space='ORIGINAL'):
         """
 
-        ```python
-        def info(self, object=None, as_instance=None, transform_space='ORIGINAL'):
-
-        ```
         > Node: [Object Info](GeometryNodeObjectInfo.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/object_info.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeObjectInfo.html)
 
         #### Args:
@@ -6200,10 +5068,6 @@ class Object(geosocks.Object):
     def location(self, object=None, as_instance=None, transform_space='ORIGINAL'):
         """
 
-        ```python
-        def location(self, object=None, as_instance=None, transform_space='ORIGINAL'):
-
-        ```
         > Node: [Object Info](GeometryNodeObjectInfo.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/object_info.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeObjectInfo.html)
 
         #### Args:
@@ -6223,10 +5087,6 @@ class Object(geosocks.Object):
     def rotation(self, object=None, as_instance=None, transform_space='ORIGINAL'):
         """
 
-        ```python
-        def rotation(self, object=None, as_instance=None, transform_space='ORIGINAL'):
-
-        ```
         > Node: [Object Info](GeometryNodeObjectInfo.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/object_info.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeObjectInfo.html)
 
         #### Args:
@@ -6246,10 +5106,6 @@ class Object(geosocks.Object):
     def scale(self, object=None, as_instance=None, transform_space='ORIGINAL'):
         """
 
-        ```python
-        def scale(self, object=None, as_instance=None, transform_space='ORIGINAL'):
-
-        ```
         > Node: [Object Info](GeometryNodeObjectInfo.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/object_info.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeObjectInfo.html)
 
         #### Args:
@@ -6269,10 +5125,6 @@ class Object(geosocks.Object):
     def switch(self, switch=None, true=None):
         """
 
-        ```python
-        def switch(self, switch=None, true=None):
-
-        ```
         > Node: [Switch](GeometryNodeSwitch.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
 
         #### Args:
@@ -6294,10 +5146,6 @@ class Image(geosocks.Image):
     def switch(self, switch=None, true=None):
         """
 
-        ```python
-        def switch(self, switch=None, true=None):
-
-        ```
         > Node: [Switch](GeometryNodeSwitch.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
 
         #### Args:
@@ -6316,10 +5164,6 @@ class Image(geosocks.Image):
     def texture(self, vector=None, frame=None, extension='REPEAT', interpolation='Linear'):
         """
 
-        ```python
-        def texture(self, vector=None, frame=None, extension='REPEAT', interpolation='Linear'):
-
-        ```
         > Node: [Image Texture](GeometryNodeImageTexture.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/image.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeImageTexture.html)
 
         #### Args:
@@ -6347,10 +5191,6 @@ class Texture(geosocks.Texture):
     def brick(vector=None, color1=None, color2=None, mortar=None, scale=None, mortar_size=None, mortar_smooth=None, bias=None, brick_width=None, row_height=None, offset=0.5, offset_frequency=2, squash=1.0, squash_frequency=2):
         """
 
-        ```python
-        def brick(vector=None, color1=None, color2=None, mortar=None, scale=None, mortar_size=None, mortar_smooth=None, bias=None, brick_width=None, row_height=None, offset=0.5, offset_frequency=2, squash=1.0, squash_frequency=2):
-
-        ```
         > Node: [Brick Texture](ShaderNodeTexBrick.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/brick.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexBrick.html)
 
         #### Args:
@@ -6385,10 +5225,6 @@ class Texture(geosocks.Texture):
     def checker(vector=None, color1=None, color2=None, scale=None):
         """
 
-        ```python
-        def checker(vector=None, color1=None, color2=None, scale=None):
-
-        ```
         > Node: [Checker Texture](ShaderNodeTexChecker.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/checker.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexChecker.html)
 
         #### Args:
@@ -6413,10 +5249,6 @@ class Texture(geosocks.Texture):
     def gradient(vector=None, gradient_type='LINEAR'):
         """
 
-        ```python
-        def gradient(vector=None, gradient_type='LINEAR'):
-
-        ```
         > Node: [Gradient Texture](ShaderNodeTexGradient.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/gradient.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexGradient.html)
 
         #### Args:
@@ -6439,10 +5271,6 @@ class Texture(geosocks.Texture):
     def gradient_diagonal(vector=None):
         """
 
-        ```python
-        def gradient_diagonal(vector=None):
-
-        ```
         > Node: [Gradient Texture](ShaderNodeTexGradient.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/gradient.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexGradient.html)
 
         #### Args:
@@ -6464,10 +5292,6 @@ class Texture(geosocks.Texture):
     def gradient_easing(vector=None):
         """
 
-        ```python
-        def gradient_easing(vector=None):
-
-        ```
         > Node: [Gradient Texture](ShaderNodeTexGradient.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/gradient.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexGradient.html)
 
         #### Args:
@@ -6489,10 +5313,6 @@ class Texture(geosocks.Texture):
     def gradient_linear(vector=None):
         """
 
-        ```python
-        def gradient_linear(vector=None):
-
-        ```
         > Node: [Gradient Texture](ShaderNodeTexGradient.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/gradient.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexGradient.html)
 
         #### Args:
@@ -6514,10 +5334,6 @@ class Texture(geosocks.Texture):
     def gradient_quadratic(vector=None):
         """
 
-        ```python
-        def gradient_quadratic(vector=None):
-
-        ```
         > Node: [Gradient Texture](ShaderNodeTexGradient.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/gradient.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexGradient.html)
 
         #### Args:
@@ -6539,10 +5355,6 @@ class Texture(geosocks.Texture):
     def gradient_quadratic_sphere(vector=None):
         """
 
-        ```python
-        def gradient_quadratic_sphere(vector=None):
-
-        ```
         > Node: [Gradient Texture](ShaderNodeTexGradient.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/gradient.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexGradient.html)
 
         #### Args:
@@ -6564,10 +5376,6 @@ class Texture(geosocks.Texture):
     def gradient_radial(vector=None):
         """
 
-        ```python
-        def gradient_radial(vector=None):
-
-        ```
         > Node: [Gradient Texture](ShaderNodeTexGradient.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/gradient.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexGradient.html)
 
         #### Args:
@@ -6589,10 +5397,6 @@ class Texture(geosocks.Texture):
     def gradient_spherical(vector=None):
         """
 
-        ```python
-        def gradient_spherical(vector=None):
-
-        ```
         > Node: [Gradient Texture](ShaderNodeTexGradient.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/gradient.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexGradient.html)
 
         #### Args:
@@ -6614,10 +5418,6 @@ class Texture(geosocks.Texture):
     def image(image=None, vector=None, frame=None, extension='REPEAT', interpolation='Linear'):
         """
 
-        ```python
-        def image(image=None, vector=None, frame=None, extension='REPEAT', interpolation='Linear'):
-
-        ```
         > Node: [Image Texture](GeometryNodeImageTexture.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/image.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeImageTexture.html)
 
         #### Args:
@@ -6643,10 +5443,6 @@ class Texture(geosocks.Texture):
     def magic(vector=None, scale=None, distortion=None, turbulence_depth=2):
         """
 
-        ```python
-        def magic(vector=None, scale=None, distortion=None, turbulence_depth=2):
-
-        ```
         > Node: [Magic Texture](ShaderNodeTexMagic.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/magic.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexMagic.html)
 
         #### Args:
@@ -6671,10 +5467,6 @@ class Texture(geosocks.Texture):
     def musgrave(vector=None, w=None, scale=None, detail=None, dimension=None, lacunarity=None, offset=None, gain=None, musgrave_dimensions='3D', musgrave_type='FBM'):
         """
 
-        ```python
-        def musgrave(vector=None, w=None, scale=None, detail=None, dimension=None, lacunarity=None, offset=None, gain=None, musgrave_dimensions='3D', musgrave_type='FBM'):
-
-        ```
         > Node: [Musgrave Texture](ShaderNodeTexMusgrave.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/musgrave.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexMusgrave.html)
 
         #### Args:
@@ -6702,10 +5494,6 @@ class Texture(geosocks.Texture):
     def noise(vector=None, w=None, scale=None, detail=None, roughness=None, distortion=None, noise_dimensions='3D'):
         """
 
-        ```python
-        def noise(vector=None, w=None, scale=None, detail=None, roughness=None, distortion=None, noise_dimensions='3D'):
-
-        ```
         > Node: [Noise Texture](ShaderNodeTexNoise.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/noise.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexNoise.html)
 
         #### Args:
@@ -6733,10 +5521,6 @@ class Texture(geosocks.Texture):
     def noise_1D(w=None, scale=None, detail=None, roughness=None, distortion=None):
         """
 
-        ```python
-        def noise_1D(w=None, scale=None, detail=None, roughness=None, distortion=None):
-
-        ```
         > Node: [Noise Texture](ShaderNodeTexNoise.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/noise.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexNoise.html)
 
         #### Args:
@@ -6762,10 +5546,6 @@ class Texture(geosocks.Texture):
     def noise_2D(vector=None, scale=None, detail=None, roughness=None, distortion=None):
         """
 
-        ```python
-        def noise_2D(vector=None, scale=None, detail=None, roughness=None, distortion=None):
-
-        ```
         > Node: [Noise Texture](ShaderNodeTexNoise.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/noise.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexNoise.html)
 
         #### Args:
@@ -6791,10 +5571,6 @@ class Texture(geosocks.Texture):
     def noise_3D(vector=None, scale=None, detail=None, roughness=None, distortion=None):
         """
 
-        ```python
-        def noise_3D(vector=None, scale=None, detail=None, roughness=None, distortion=None):
-
-        ```
         > Node: [Noise Texture](ShaderNodeTexNoise.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/noise.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexNoise.html)
 
         #### Args:
@@ -6820,10 +5596,6 @@ class Texture(geosocks.Texture):
     def noise_4D(vector=None, w=None, scale=None, detail=None, roughness=None, distortion=None):
         """
 
-        ```python
-        def noise_4D(vector=None, w=None, scale=None, detail=None, roughness=None, distortion=None):
-
-        ```
         > Node: [Noise Texture](ShaderNodeTexNoise.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/noise.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexNoise.html)
 
         #### Args:
@@ -6849,10 +5621,6 @@ class Texture(geosocks.Texture):
     def switch(self, switch=None, true=None):
         """
 
-        ```python
-        def switch(self, switch=None, true=None):
-
-        ```
         > Node: [Switch](GeometryNodeSwitch.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
 
         #### Args:
@@ -6872,10 +5640,6 @@ class Texture(geosocks.Texture):
     def voronoi(vector=None, w=None, scale=None, smoothness=None, exponent=None, randomness=None, distance='EUCLIDEAN', feature='F1', voronoi_dimensions='3D'):
         """
 
-        ```python
-        def voronoi(vector=None, w=None, scale=None, smoothness=None, exponent=None, randomness=None, distance='EUCLIDEAN', feature='F1', voronoi_dimensions='3D'):
-
-        ```
         > Node: [Voronoi Texture](ShaderNodeTexVoronoi.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/voronoi.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexVoronoi.html)
 
         #### Args:
@@ -6905,10 +5669,6 @@ class Texture(geosocks.Texture):
     def voronoi_1D(w=None, scale=None, smoothness=None, exponent=None, randomness=None, distance='EUCLIDEAN', feature='F1', voronoi_dimensions='3D'):
         """
 
-        ```python
-        def voronoi_1D(w=None, scale=None, smoothness=None, exponent=None, randomness=None, distance='EUCLIDEAN', feature='F1', voronoi_dimensions='3D'):
-
-        ```
         > Node: [Voronoi Texture](ShaderNodeTexVoronoi.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/voronoi.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexVoronoi.html)
 
         #### Args:
@@ -6937,10 +5697,6 @@ class Texture(geosocks.Texture):
     def voronoi_2D(vector=None, scale=None, smoothness=None, exponent=None, randomness=None, distance='EUCLIDEAN', feature='F1', voronoi_dimensions='3D'):
         """
 
-        ```python
-        def voronoi_2D(vector=None, scale=None, smoothness=None, exponent=None, randomness=None, distance='EUCLIDEAN', feature='F1', voronoi_dimensions='3D'):
-
-        ```
         > Node: [Voronoi Texture](ShaderNodeTexVoronoi.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/voronoi.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexVoronoi.html)
 
         #### Args:
@@ -6969,10 +5725,6 @@ class Texture(geosocks.Texture):
     def voronoi_3D(vector=None, scale=None, smoothness=None, exponent=None, randomness=None, distance='EUCLIDEAN', feature='F1', voronoi_dimensions='3D'):
         """
 
-        ```python
-        def voronoi_3D(vector=None, scale=None, smoothness=None, exponent=None, randomness=None, distance='EUCLIDEAN', feature='F1', voronoi_dimensions='3D'):
-
-        ```
         > Node: [Voronoi Texture](ShaderNodeTexVoronoi.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/voronoi.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexVoronoi.html)
 
         #### Args:
@@ -7001,10 +5753,6 @@ class Texture(geosocks.Texture):
     def voronoi_4D(vector=None, w=None, scale=None, smoothness=None, exponent=None, randomness=None, distance='EUCLIDEAN', feature='F1', voronoi_dimensions='3D'):
         """
 
-        ```python
-        def voronoi_4D(vector=None, w=None, scale=None, smoothness=None, exponent=None, randomness=None, distance='EUCLIDEAN', feature='F1', voronoi_dimensions='3D'):
-
-        ```
         > Node: [Voronoi Texture](ShaderNodeTexVoronoi.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/voronoi.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexVoronoi.html)
 
         #### Args:
@@ -7034,10 +5782,6 @@ class Texture(geosocks.Texture):
     def wave(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, bands_direction='X', rings_direction='X', wave_profile='SIN', wave_type='BANDS'):
         """
 
-        ```python
-        def wave(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, bands_direction='X', rings_direction='X', wave_profile='SIN', wave_type='BANDS'):
-
-        ```
         > Node: [Wave Texture](ShaderNodeTexWave.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/wave.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWave.html)
 
         #### Args:
@@ -7069,10 +5813,6 @@ class Texture(geosocks.Texture):
     def wave_bands(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X', wave_profile='SIN'):
         """
 
-        ```python
-        def wave_bands(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X', wave_profile='SIN'):
-
-        ```
         > Node: [Wave Texture](ShaderNodeTexWave.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/wave.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWave.html)
 
         #### Args:
@@ -7102,10 +5842,6 @@ class Texture(geosocks.Texture):
     def wave_bands_saw(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X'):
         """
 
-        ```python
-        def wave_bands_saw(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X'):
-
-        ```
         > Node: [Wave Texture](ShaderNodeTexWave.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/wave.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWave.html)
 
         #### Args:
@@ -7134,10 +5870,6 @@ class Texture(geosocks.Texture):
     def wave_bands_sine(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X'):
         """
 
-        ```python
-        def wave_bands_sine(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X'):
-
-        ```
         > Node: [Wave Texture](ShaderNodeTexWave.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/wave.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWave.html)
 
         #### Args:
@@ -7166,10 +5898,6 @@ class Texture(geosocks.Texture):
     def wave_bands_triangle(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X'):
         """
 
-        ```python
-        def wave_bands_triangle(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X'):
-
-        ```
         > Node: [Wave Texture](ShaderNodeTexWave.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/wave.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWave.html)
 
         #### Args:
@@ -7198,10 +5926,6 @@ class Texture(geosocks.Texture):
     def wave_rings(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X', wave_profile='SIN'):
         """
 
-        ```python
-        def wave_rings(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X', wave_profile='SIN'):
-
-        ```
         > Node: [Wave Texture](ShaderNodeTexWave.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/wave.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWave.html)
 
         #### Args:
@@ -7231,10 +5955,6 @@ class Texture(geosocks.Texture):
     def wave_rings_saw(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X'):
         """
 
-        ```python
-        def wave_rings_saw(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X'):
-
-        ```
         > Node: [Wave Texture](ShaderNodeTexWave.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/wave.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWave.html)
 
         #### Args:
@@ -7263,10 +5983,6 @@ class Texture(geosocks.Texture):
     def wave_rings_sine(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X'):
         """
 
-        ```python
-        def wave_rings_sine(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X'):
-
-        ```
         > Node: [Wave Texture](ShaderNodeTexWave.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/wave.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWave.html)
 
         #### Args:
@@ -7295,10 +6011,6 @@ class Texture(geosocks.Texture):
     def wave_rings_triangle(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X'):
         """
 
-        ```python
-        def wave_rings_triangle(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X'):
-
-        ```
         > Node: [Wave Texture](ShaderNodeTexWave.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/wave.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWave.html)
 
         #### Args:
@@ -7327,10 +6039,6 @@ class Texture(geosocks.Texture):
     def white_noise(vector=None, w=None, noise_dimensions='3D'):
         """
 
-        ```python
-        def white_noise(vector=None, w=None, noise_dimensions='3D'):
-
-        ```
         > Node: [White Noise Texture](ShaderNodeTexWhiteNoise.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/white_noise.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWhiteNoise.html)
 
         #### Args:
@@ -7354,10 +6062,6 @@ class Texture(geosocks.Texture):
     def white_noise_1D(w=None):
         """
 
-        ```python
-        def white_noise_1D(w=None):
-
-        ```
         > Node: [White Noise Texture](ShaderNodeTexWhiteNoise.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/white_noise.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWhiteNoise.html)
 
         #### Args:
@@ -7379,10 +6083,6 @@ class Texture(geosocks.Texture):
     def white_noise_2D(vector=None):
         """
 
-        ```python
-        def white_noise_2D(vector=None):
-
-        ```
         > Node: [White Noise Texture](ShaderNodeTexWhiteNoise.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/white_noise.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWhiteNoise.html)
 
         #### Args:
@@ -7404,10 +6104,6 @@ class Texture(geosocks.Texture):
     def white_noise_3D(vector=None):
         """
 
-        ```python
-        def white_noise_3D(vector=None):
-
-        ```
         > Node: [White Noise Texture](ShaderNodeTexWhiteNoise.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/white_noise.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWhiteNoise.html)
 
         #### Args:
@@ -7429,10 +6125,6 @@ class Texture(geosocks.Texture):
     def white_noise_4D(vector=None, w=None):
         """
 
-        ```python
-        def white_noise_4D(vector=None, w=None):
-
-        ```
         > Node: [White Noise Texture](ShaderNodeTexWhiteNoise.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/white_noise.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWhiteNoise.html)
 
         #### Args:
@@ -7458,10 +6150,6 @@ class Material(geosocks.Material):
     def Material(cls):
         """
 
-        ```python
-        def Material(cls):
-
-        ```
         > Node: [Material](GeometryNodeInputMaterial.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/material.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMaterial.html)
 
         #### Returns:
@@ -7476,10 +6164,6 @@ class Material(geosocks.Material):
     def switch(self, switch=None, true=None):
         """
 
-        ```python
-        def switch(self, switch=None, true=None):
-
-        ```
         > Node: [Switch](GeometryNodeSwitch.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
 
         #### Args:
@@ -7502,10 +6186,6 @@ class Geometry(geosocks.Geometry):
     def Collection(cls, collection=None, separate_children=None, reset_children=None, transform_space='ORIGINAL'):
         """
 
-        ```python
-        def Collection(cls, collection=None, separate_children=None, reset_children=None, transform_space='ORIGINAL'):
-
-        ```
         > Node: [Collection Info](GeometryNodeCollectionInfo.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/collection_info.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeCollectionInfo.html)
 
         #### Args:
@@ -7527,10 +6207,6 @@ class Geometry(geosocks.Geometry):
     def ID(self):
         """
 
-        ```python
-        def ID(self):
-
-        ```
         > Node: [ID](GeometryNodeInputID.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/id.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputID.html)
 
         #### Returns:
@@ -7545,10 +6221,6 @@ class Geometry(geosocks.Geometry):
     def attribute_statistic(self, selection=None, attribute=None, domain='POINT'):
         """
 
-        ```python
-        def attribute_statistic(self, selection=None, attribute=None, domain='POINT'):
-
-        ```
         > Node: [Attribute Statistic](GeometryNodeAttributeStatistic.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/attribute_statistic.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeStatistic.html)
 
         #### Args:
@@ -7570,10 +6242,6 @@ class Geometry(geosocks.Geometry):
     def bounding_box(self):
         """
 
-        ```python
-        def bounding_box(self):
-
-        ```
         > Node: [Bounding Box](GeometryNodeBoundBox.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/bounding_box.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeBoundBox.html)
 
         #### Returns:
@@ -7592,10 +6260,6 @@ class Geometry(geosocks.Geometry):
     def bounding_box_min(self):
         """
 
-        ```python
-        def bounding_box_min(self):
-
-        ```
         > Node: [Bounding Box](GeometryNodeBoundBox.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/bounding_box.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeBoundBox.html)
 
         #### Returns:
@@ -7613,10 +6277,6 @@ class Geometry(geosocks.Geometry):
     def bounding_box_min(self):
         """
 
-        ```python
-        def bounding_box_min(self):
-
-        ```
         > Node: [Bounding Box](GeometryNodeBoundBox.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/bounding_box.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeBoundBox.html)
 
         #### Returns:
@@ -7633,10 +6293,6 @@ class Geometry(geosocks.Geometry):
     def capture_attribute(self, value=None, domain='POINT'):
         """
 
-        ```python
-        def capture_attribute(self, value=None, domain='POINT'):
-
-        ```
         > Node: [Capture Attribute](GeometryNodeCaptureAttribute.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/capture_attribute.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeCaptureAttribute.html)
 
         #### Args:
@@ -7656,10 +6312,6 @@ class Geometry(geosocks.Geometry):
     def capture_attribute_node(self, geometry=None, value=None, data_type='FLOAT', domain='POINT'):
         """
 
-        ```python
-        def capture_attribute_node(self, geometry=None, value=None, data_type='FLOAT', domain='POINT'):
-
-        ```
         > Node: [Capture Attribute](GeometryNodeCaptureAttribute.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/capture_attribute.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeCaptureAttribute.html)
 
         #### Args:
@@ -7681,10 +6333,6 @@ class Geometry(geosocks.Geometry):
     def convex_hull(self):
         """
 
-        ```python
-        def convex_hull(self):
-
-        ```
         > Node: [Convex Hull](GeometryNodeConvexHull.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/convex_hull.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeConvexHull.html)
 
         #### Returns:
@@ -7701,10 +6349,6 @@ class Geometry(geosocks.Geometry):
     def curve_component(self):
         """
 
-        ```python
-        def curve_component(self):
-
-        ```
         > Node: [Separate Components](GeometryNodeSeparateComponents.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/separate_components.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSeparateComponents.html)
 
         #### Returns:
@@ -7722,10 +6366,6 @@ class Geometry(geosocks.Geometry):
     def delete(self, selection=None, domain='POINT', mode='ALL'):
         """
 
-        ```python
-        def delete(self, selection=None, domain='POINT', mode='ALL'):
-
-        ```
         > Node: [Delete Geometry](GeometryNodeDeleteGeometry.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/delete_geometry.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeDeleteGeometry.html)
 
         #### Args:
@@ -7746,10 +6386,6 @@ class Geometry(geosocks.Geometry):
     def domain_size(self, component='MESH'):
         """
 
-        ```python
-        def domain_size(self, component='MESH'):
-
-        ```
         > Node: [Domain Size](GeometryNodeAttributeDomainSize.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html)
 
         #### Returns:
@@ -7766,10 +6402,6 @@ class Geometry(geosocks.Geometry):
     def duplicate(self, selection=None, amount=None, domain='POINT'):
         """
 
-        ```python
-        def duplicate(self, selection=None, amount=None, domain='POINT'):
-
-        ```
         > Node: [Duplicate Elements](GeometryNodeDuplicateElements.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/duplicate_elements.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeDuplicateElements.html)
 
         #### Args:
@@ -7789,10 +6421,6 @@ class Geometry(geosocks.Geometry):
     def field_at_index(self, index=None, value=None, domain='POINT'):
         """
 
-        ```python
-        def field_at_index(self, index=None, value=None, domain='POINT'):
-
-        ```
         > Node: [Field at Index](GeometryNodeFieldAtIndex.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/field_at_index.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeFieldAtIndex.html)
 
         #### Args:
@@ -7813,10 +6441,6 @@ class Geometry(geosocks.Geometry):
     def get_named_boolean(self, name=None):
         """
 
-        ```python
-        def get_named_boolean(self, name=None):
-
-        ```
         > Node: [Named Attribute](GeometryNodeInputNamedAttribute.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/named_attribute.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputNamedAttribute.html)
 
         #### Args:
@@ -7834,10 +6458,6 @@ class Geometry(geosocks.Geometry):
     def get_named_color(self, name=None):
         """
 
-        ```python
-        def get_named_color(self, name=None):
-
-        ```
         > Node: [Named Attribute](GeometryNodeInputNamedAttribute.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/named_attribute.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputNamedAttribute.html)
 
         #### Args:
@@ -7855,10 +6475,6 @@ class Geometry(geosocks.Geometry):
     def get_named_float(self, name=None):
         """
 
-        ```python
-        def get_named_float(self, name=None):
-
-        ```
         > Node: [Named Attribute](GeometryNodeInputNamedAttribute.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/named_attribute.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputNamedAttribute.html)
 
         #### Args:
@@ -7876,10 +6492,6 @@ class Geometry(geosocks.Geometry):
     def get_named_integer(self, name=None):
         """
 
-        ```python
-        def get_named_integer(self, name=None):
-
-        ```
         > Node: [Named Attribute](GeometryNodeInputNamedAttribute.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/named_attribute.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputNamedAttribute.html)
 
         #### Args:
@@ -7897,10 +6509,6 @@ class Geometry(geosocks.Geometry):
     def get_named_vector(self, name=None):
         """
 
-        ```python
-        def get_named_vector(self, name=None):
-
-        ```
         > Node: [Named Attribute](GeometryNodeInputNamedAttribute.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/named_attribute.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputNamedAttribute.html)
 
         #### Args:
@@ -7919,10 +6527,6 @@ class Geometry(geosocks.Geometry):
     def index(self):
         """
 
-        ```python
-        def index(self):
-
-        ```
         > Node: [Index](GeometryNodeInputIndex.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/input_index.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputIndex.html)
 
         #### Returns:
@@ -7938,10 +6542,6 @@ class Geometry(geosocks.Geometry):
     def instances_component(self):
         """
 
-        ```python
-        def instances_component(self):
-
-        ```
         > Node: [Separate Components](GeometryNodeSeparateComponents.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/separate_components.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSeparateComponents.html)
 
         #### Returns:
@@ -7959,10 +6559,6 @@ class Geometry(geosocks.Geometry):
     def interpolate_domain(self, value=None, domain='POINT'):
         """
 
-        ```python
-        def interpolate_domain(self, value=None, domain='POINT'):
-
-        ```
         > Node: [Interpolate Domain](GeometryNodeFieldOnDomain.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/interpolate_domain.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeFieldOnDomain.html)
 
         #### Args:
@@ -7983,10 +6579,6 @@ class Geometry(geosocks.Geometry):
     def is_viewport(self):
         """
 
-        ```python
-        def is_viewport(self):
-
-        ```
         > Node: [Is Viewport](GeometryNodeIsViewport.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/is_viewport.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeIsViewport.html)
 
         #### Returns:
@@ -8001,10 +6593,6 @@ class Geometry(geosocks.Geometry):
     def join(*geometry):
         """
 
-        ```python
-        def join(*geometry):
-
-        ```
         > Node: [Join Geometry](GeometryNodeJoinGeometry.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/join_geometry.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeJoinGeometry.html)
 
         #### Args:
@@ -8025,10 +6613,6 @@ class Geometry(geosocks.Geometry):
     def material_index(self):
         """
 
-        ```python
-        def material_index(self):
-
-        ```
         > Node: [Material Index](GeometryNodeInputMaterialIndex.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/material_index.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMaterialIndex.html)
 
         #### Returns:
@@ -8043,10 +6627,6 @@ class Geometry(geosocks.Geometry):
     def material_selection(self, material=None):
         """
 
-        ```python
-        def material_selection(self, material=None):
-
-        ```
         > Node: [Material Selection](GeometryNodeMaterialSelection.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/material_selection.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeMaterialSelection.html)
 
         #### Args:
@@ -8064,10 +6644,6 @@ class Geometry(geosocks.Geometry):
     def merge_by_distance(self, selection=None, distance=None, mode='ALL'):
         """
 
-        ```python
-        def merge_by_distance(self, selection=None, distance=None, mode='ALL'):
-
-        ```
         > Node: [Merge by Distance](GeometryNodeMergeByDistance.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/merge_by_distance.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeMergeByDistance.html)
 
         #### Args:
@@ -8088,10 +6664,6 @@ class Geometry(geosocks.Geometry):
     def mesh_component(self):
         """
 
-        ```python
-        def mesh_component(self):
-
-        ```
         > Node: [Separate Components](GeometryNodeSeparateComponents.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/separate_components.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSeparateComponents.html)
 
         #### Returns:
@@ -8109,10 +6681,6 @@ class Geometry(geosocks.Geometry):
     def named_attribute(self, name=None, data_type='FLOAT'):
         """
 
-        ```python
-        def named_attribute(self, name=None, data_type='FLOAT'):
-
-        ```
         > Node: [Named Attribute](GeometryNodeInputNamedAttribute.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/named_attribute.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputNamedAttribute.html)
 
         #### Args:
@@ -8132,10 +6700,6 @@ class Geometry(geosocks.Geometry):
     def normal(self):
         """
 
-        ```python
-        def normal(self):
-
-        ```
         > Node: [Normal](GeometryNodeInputNormal.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/normal.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputNormal.html)
 
         #### Returns:
@@ -8151,10 +6715,6 @@ class Geometry(geosocks.Geometry):
     def points_component(self):
         """
 
-        ```python
-        def points_component(self):
-
-        ```
         > Node: [Separate Components](GeometryNodeSeparateComponents.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/separate_components.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSeparateComponents.html)
 
         #### Returns:
@@ -8173,10 +6733,6 @@ class Geometry(geosocks.Geometry):
     def position(self):
         """
 
-        ```python
-        def position(self):
-
-        ```
         > Node: [Position](GeometryNodeInputPosition.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/position.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputPosition.html)
 
         #### Returns:
@@ -8191,10 +6747,6 @@ class Geometry(geosocks.Geometry):
     def proximity(self, target=None, source_position=None, target_element='FACES'):
         """
 
-        ```python
-        def proximity(self, target=None, source_position=None, target_element='FACES'):
-
-        ```
         > Node: [Geometry Proximity](GeometryNodeProximity.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/geometry_proximity.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeProximity.html)
 
         #### Args:
@@ -8214,10 +6766,6 @@ class Geometry(geosocks.Geometry):
     def proximity_edges(self, target=None, source_position=None):
         """
 
-        ```python
-        def proximity_edges(self, target=None, source_position=None):
-
-        ```
         > Node: [Geometry Proximity](GeometryNodeProximity.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/geometry_proximity.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeProximity.html)
 
         #### Args:
@@ -8236,10 +6784,6 @@ class Geometry(geosocks.Geometry):
     def proximity_faces(self, target=None, source_position=None):
         """
 
-        ```python
-        def proximity_faces(self, target=None, source_position=None):
-
-        ```
         > Node: [Geometry Proximity](GeometryNodeProximity.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/geometry_proximity.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeProximity.html)
 
         #### Args:
@@ -8258,10 +6802,6 @@ class Geometry(geosocks.Geometry):
     def proximity_points(self, target=None, source_position=None):
         """
 
-        ```python
-        def proximity_points(self, target=None, source_position=None):
-
-        ```
         > Node: [Geometry Proximity](GeometryNodeProximity.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/geometry_proximity.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeProximity.html)
 
         #### Args:
@@ -8281,10 +6821,6 @@ class Geometry(geosocks.Geometry):
     def radius(self):
         """
 
-        ```python
-        def radius(self):
-
-        ```
         > Node: [Radius](GeometryNodeInputRadius.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/radius.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputRadius.html)
 
         #### Returns:
@@ -8299,10 +6835,6 @@ class Geometry(geosocks.Geometry):
     def random_boolean(self, probability=None, ID=None, seed=None):
         """
 
-        ```python
-        def random_boolean(self, probability=None, ID=None, seed=None):
-
-        ```
         > Node: [Random Value](FunctionNodeRandomValue.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/random_value.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeRandomValue.html)
 
         #### Args:
@@ -8322,10 +6854,6 @@ class Geometry(geosocks.Geometry):
     def random_float(self, min=None, max=None, ID=None, seed=None):
         """
 
-        ```python
-        def random_float(self, min=None, max=None, ID=None, seed=None):
-
-        ```
         > Node: [Random Value](FunctionNodeRandomValue.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/random_value.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeRandomValue.html)
 
         #### Args:
@@ -8346,10 +6874,6 @@ class Geometry(geosocks.Geometry):
     def random_integer(self, min=None, max=None, ID=None, seed=None):
         """
 
-        ```python
-        def random_integer(self, min=None, max=None, ID=None, seed=None):
-
-        ```
         > Node: [Random Value](FunctionNodeRandomValue.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/random_value.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeRandomValue.html)
 
         #### Args:
@@ -8370,10 +6894,6 @@ class Geometry(geosocks.Geometry):
     def random_vector(self, min=None, max=None, ID=None, seed=None):
         """
 
-        ```python
-        def random_vector(self, min=None, max=None, ID=None, seed=None):
-
-        ```
         > Node: [Random Value](FunctionNodeRandomValue.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/random_value.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeRandomValue.html)
 
         #### Args:
@@ -8394,10 +6914,6 @@ class Geometry(geosocks.Geometry):
     def raycast(self, target_geometry=None, attribute=None, source_position=None, ray_direction=None, ray_length=None, mapping='INTERPOLATED'):
         """
 
-        ```python
-        def raycast(self, target_geometry=None, attribute=None, source_position=None, ray_direction=None, ray_length=None, mapping='INTERPOLATED'):
-
-        ```
         > Node: [Raycast](GeometryNodeRaycast.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/raycast.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeRaycast.html)
 
         #### Args:
@@ -8421,10 +6937,6 @@ class Geometry(geosocks.Geometry):
     def raycast_interpolated(self, target_geometry=None, attribute=None, source_position=None, ray_direction=None, ray_length=None):
         """
 
-        ```python
-        def raycast_interpolated(self, target_geometry=None, attribute=None, source_position=None, ray_direction=None, ray_length=None):
-
-        ```
         > Node: [Raycast](GeometryNodeRaycast.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/raycast.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeRaycast.html)
 
         #### Args:
@@ -8447,10 +6959,6 @@ class Geometry(geosocks.Geometry):
     def raycast_nearest(self, target_geometry=None, attribute=None, source_position=None, ray_direction=None, ray_length=None):
         """
 
-        ```python
-        def raycast_nearest(self, target_geometry=None, attribute=None, source_position=None, ray_direction=None, ray_length=None):
-
-        ```
         > Node: [Raycast](GeometryNodeRaycast.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/raycast.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeRaycast.html)
 
         #### Args:
@@ -8473,10 +6981,6 @@ class Geometry(geosocks.Geometry):
     def remove_named_attribute(self, name=None):
         """
 
-        ```python
-        def remove_named_attribute(self, name=None):
-
-        ```
         > Node: [Remove Named Attribute](GeometryNodeRemoveAttribute.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/remove_named_attribute.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeRemoveAttribute.html)
 
         #### Args:
@@ -8494,10 +6998,6 @@ class Geometry(geosocks.Geometry):
     def replace_material(self, old=None, new=None):
         """
 
-        ```python
-        def replace_material(self, old=None, new=None):
-
-        ```
         > Node: [Replace Material](GeometryNodeReplaceMaterial.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/replace_material.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeReplaceMaterial.html)
 
         #### Args:
@@ -8516,10 +7016,6 @@ class Geometry(geosocks.Geometry):
     def sample_index(self, value=None, index=None, clamp=False, domain='POINT'):
         """
 
-        ```python
-        def sample_index(self, value=None, index=None, clamp=False, domain='POINT'):
-
-        ```
         > Node: [Sample Index](GeometryNodeSampleIndex.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/sample_index.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSampleIndex.html)
 
         #### Args:
@@ -8541,10 +7037,6 @@ class Geometry(geosocks.Geometry):
     def sample_nearest(self, sample_position=None, domain='POINT'):
         """
 
-        ```python
-        def sample_nearest(self, sample_position=None, domain='POINT'):
-
-        ```
         > Node: [Sample Nearest](GeometryNodeSampleNearest.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/sample_nearest.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSampleNearest.html)
 
         #### Args:
@@ -8563,10 +7055,6 @@ class Geometry(geosocks.Geometry):
     def separate(self, geometry=None, selection=None, domain='POINT'):
         """
 
-        ```python
-        def separate(self, geometry=None, selection=None, domain='POINT'):
-
-        ```
         > Node: [Separate Geometry](GeometryNodeSeparateGeometry.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/separate_geometry.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSeparateGeometry.html)
 
         #### Args:
@@ -8590,10 +7078,6 @@ class Geometry(geosocks.Geometry):
     def separate_components(self):
         """
 
-        ```python
-        def separate_components(self):
-
-        ```
         > Node: [Separate Components](GeometryNodeSeparateComponents.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/separate_components.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSeparateComponents.html)
 
         #### Returns:
@@ -8610,10 +7094,6 @@ class Geometry(geosocks.Geometry):
     def set_ID(self, selection=None, ID=None):
         """
 
-        ```python
-        def set_ID(self, selection=None, ID=None):
-
-        ```
         > Node: [Set ID](GeometryNodeSetID.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/set_id.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetID.html)
 
         #### Args:
@@ -8632,10 +7112,6 @@ class Geometry(geosocks.Geometry):
     def set_material(self, selection=None, material=None):
         """
 
-        ```python
-        def set_material(self, selection=None, material=None):
-
-        ```
         > Node: [Set Material](GeometryNodeSetMaterial.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/set_material.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetMaterial.html)
 
         #### Args:
@@ -8654,10 +7130,6 @@ class Geometry(geosocks.Geometry):
     def set_material_index(self, selection=None, material_index=None):
         """
 
-        ```python
-        def set_material_index(self, selection=None, material_index=None):
-
-        ```
         > Node: [Set Material Index](GeometryNodeSetMaterialIndex.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/set_material_index.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetMaterialIndex.html)
 
         #### Args:
@@ -8676,10 +7148,6 @@ class Geometry(geosocks.Geometry):
     def set_named_boolean(self, name=None, value=None, domain='POINT'):
         """
 
-        ```python
-        def set_named_boolean(self, name=None, value=None, domain='POINT'):
-
-        ```
         > Node: [Store Named Attribute](GeometryNodeStoreNamedAttribute.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/store_named_attribute.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeStoreNamedAttribute.html)
 
         #### Args:
@@ -8699,10 +7167,6 @@ class Geometry(geosocks.Geometry):
     def set_named_color(self, name=None, value=None, domain='POINT'):
         """
 
-        ```python
-        def set_named_color(self, name=None, value=None, domain='POINT'):
-
-        ```
         > Node: [Store Named Attribute](GeometryNodeStoreNamedAttribute.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/store_named_attribute.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeStoreNamedAttribute.html)
 
         #### Args:
@@ -8722,10 +7186,6 @@ class Geometry(geosocks.Geometry):
     def set_named_float(self, name=None, value=None, domain='POINT'):
         """
 
-        ```python
-        def set_named_float(self, name=None, value=None, domain='POINT'):
-
-        ```
         > Node: [Store Named Attribute](GeometryNodeStoreNamedAttribute.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/store_named_attribute.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeStoreNamedAttribute.html)
 
         #### Args:
@@ -8745,10 +7205,6 @@ class Geometry(geosocks.Geometry):
     def set_named_integer(self, name=None, value=None, domain='POINT'):
         """
 
-        ```python
-        def set_named_integer(self, name=None, value=None, domain='POINT'):
-
-        ```
         > Node: [Store Named Attribute](GeometryNodeStoreNamedAttribute.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/store_named_attribute.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeStoreNamedAttribute.html)
 
         #### Args:
@@ -8768,10 +7224,6 @@ class Geometry(geosocks.Geometry):
     def set_named_vector(self, name=None, value=None, domain='POINT'):
         """
 
-        ```python
-        def set_named_vector(self, name=None, value=None, domain='POINT'):
-
-        ```
         > Node: [Store Named Attribute](GeometryNodeStoreNamedAttribute.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/store_named_attribute.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeStoreNamedAttribute.html)
 
         #### Args:
@@ -8791,10 +7243,6 @@ class Geometry(geosocks.Geometry):
     def set_position(self, selection=None, position=None, offset=None):
         """
 
-        ```python
-        def set_position(self, selection=None, position=None, offset=None):
-
-        ```
         > Node: [Set Position](GeometryNodeSetPosition.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/set_position.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetPosition.html)
 
         #### Args:
@@ -8814,10 +7262,6 @@ class Geometry(geosocks.Geometry):
     def store_named_attribute(self, name=None, value=None, domain='POINT'):
         """
 
-        ```python
-        def store_named_attribute(self, name=None, value=None, domain='POINT'):
-
-        ```
         > Node: [Store Named Attribute](GeometryNodeStoreNamedAttribute.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/store_named_attribute.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeStoreNamedAttribute.html)
 
         #### Args:
@@ -8838,10 +7282,6 @@ class Geometry(geosocks.Geometry):
     def switch(self, switch=None, true=None):
         """
 
-        ```python
-        def switch(self, switch=None, true=None):
-
-        ```
         > Node: [Switch](GeometryNodeSwitch.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
 
         #### Args:
@@ -8860,10 +7300,6 @@ class Geometry(geosocks.Geometry):
     def to_instance(*geometry):
         """
 
-        ```python
-        def to_instance(*geometry):
-
-        ```
         > Node: [Geometry to Instance](GeometryNodeGeometryToInstance.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/geometry_to_instance.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeGeometryToInstance.html)
 
         #### Args:
@@ -8882,10 +7318,6 @@ class Geometry(geosocks.Geometry):
     def transform(self, translation=None, rotation=None, scale=None):
         """
 
-        ```python
-        def transform(self, translation=None, rotation=None, scale=None):
-
-        ```
         > Node: [Transform](GeometryNodeTransform.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/transform.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeTransform.html)
 
         #### Args:
@@ -8906,10 +7338,6 @@ class Geometry(geosocks.Geometry):
     def volume_component(self):
         """
 
-        ```python
-        def volume_component(self):
-
-        ```
         > Node: [Separate Components](GeometryNodeSeparateComponents.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/separate_components.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSeparateComponents.html)
 
         #### Returns:
@@ -8931,10 +7359,6 @@ class Mesh(Geometry):
     def Circle(cls, vertices=None, radius=None, fill_type='NONE'):
         """
 
-        ```python
-        def Circle(cls, vertices=None, radius=None, fill_type='NONE'):
-
-        ```
         > Node: [Mesh Circle](GeometryNodeMeshCircle.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh_primitives/mesh_circle.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshCircle.html)
 
         #### Args:
@@ -8955,10 +7379,6 @@ class Mesh(Geometry):
     def Cone(vertices=None, side_segments=None, fill_segments=None, radius_top=None, radius_bottom=None, depth=None, fill_type='NGON'):
         """
 
-        ```python
-        def Cone(vertices=None, side_segments=None, fill_segments=None, radius_top=None, radius_bottom=None, depth=None, fill_type='NGON'):
-
-        ```
         > Node: [Cone](GeometryNodeMeshCone.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh_primitives/cone.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshCone.html)
 
         #### Args:
@@ -8987,10 +7407,6 @@ class Mesh(Geometry):
     def Cube(cls, size=None, vertices_x=None, vertices_y=None, vertices_z=None):
         """
 
-        ```python
-        def Cube(cls, size=None, vertices_x=None, vertices_y=None, vertices_z=None):
-
-        ```
         > Node: [Cube](GeometryNodeMeshCube.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh_primitives/cube.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshCube.html)
 
         #### Args:
@@ -9012,10 +7428,6 @@ class Mesh(Geometry):
     def Cylinder(vertices=None, side_segments=None, fill_segments=None, radius=None, depth=None, fill_type='NGON'):
         """
 
-        ```python
-        def Cylinder(vertices=None, side_segments=None, fill_segments=None, radius=None, depth=None, fill_type='NGON'):
-
-        ```
         > Node: [Cylinder](GeometryNodeMeshCylinder.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh_primitives/cylinder.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshCylinder.html)
 
         #### Args:
@@ -9043,10 +7455,6 @@ class Mesh(Geometry):
     def Grid(cls, size_x=None, size_y=None, vertices_x=None, vertices_y=None):
         """
 
-        ```python
-        def Grid(cls, size_x=None, size_y=None, vertices_x=None, vertices_y=None):
-
-        ```
         > Node: [Grid](GeometryNodeMeshGrid.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh_primitives/grid.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshGrid.html)
 
         #### Args:
@@ -9068,10 +7476,6 @@ class Mesh(Geometry):
     def IcoSphere(cls, radius=None, subdivisions=None):
         """
 
-        ```python
-        def IcoSphere(cls, radius=None, subdivisions=None):
-
-        ```
         > Node: [Ico Sphere](GeometryNodeMeshIcoSphere.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh_primitives/icosphere.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshIcoSphere.html)
 
         #### Args:
@@ -9091,10 +7495,6 @@ class Mesh(Geometry):
     def Line(cls, count=None, resolution=None, start_location=None, offset=None, count_mode='TOTAL', mode='OFFSET'):
         """
 
-        ```python
-        def Line(cls, count=None, resolution=None, start_location=None, offset=None, count_mode='TOTAL', mode='OFFSET'):
-
-        ```
         > Node: [Mesh Line](GeometryNodeMeshLine.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh_primitives/mesh_line.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshLine.html)
 
         #### Args:
@@ -9118,10 +7518,6 @@ class Mesh(Geometry):
     def LineEndPoints(cls, count=None, start_location=None, end_location=None):
         """
 
-        ```python
-        def LineEndPoints(cls, count=None, start_location=None, end_location=None):
-
-        ```
         > Node: [Mesh Line](GeometryNodeMeshLine.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh_primitives/mesh_line.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshLine.html)
 
         #### Args:
@@ -9142,10 +7538,6 @@ class Mesh(Geometry):
     def LineEndPointsResolution(cls, resolution=None, start_location=None, end_location=None):
         """
 
-        ```python
-        def LineEndPointsResolution(cls, resolution=None, start_location=None, end_location=None):
-
-        ```
         > Node: [Mesh Line](GeometryNodeMeshLine.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh_primitives/mesh_line.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshLine.html)
 
         #### Args:
@@ -9166,10 +7558,6 @@ class Mesh(Geometry):
     def LineOffset(cls, count=None, start_location=None, offset=None):
         """
 
-        ```python
-        def LineOffset(cls, count=None, start_location=None, offset=None):
-
-        ```
         > Node: [Mesh Line](GeometryNodeMeshLine.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh_primitives/mesh_line.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshLine.html)
 
         #### Args:
@@ -9190,10 +7578,6 @@ class Mesh(Geometry):
     def LineOffsetResolution(cls, resolution=None, start_location=None, offset=None):
         """
 
-        ```python
-        def LineOffsetResolution(cls, resolution=None, start_location=None, offset=None):
-
-        ```
         > Node: [Mesh Line](GeometryNodeMeshLine.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh_primitives/mesh_line.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshLine.html)
 
         #### Args:
@@ -9214,10 +7598,6 @@ class Mesh(Geometry):
     def UVSphere(cls, segments=None, rings=None, radius=None):
         """
 
-        ```python
-        def UVSphere(cls, segments=None, rings=None, radius=None):
-
-        ```
         > Node: [UV Sphere](GeometryNodeMeshUVSphere.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh_primitives/uv_sphere.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshUVSphere.html)
 
         #### Args:
@@ -9237,10 +7617,6 @@ class Mesh(Geometry):
     def boolean_difference(self, *mesh_2, self_intersection=None, hole_tolerant=None):
         """
 
-        ```python
-        def boolean_difference(self, *mesh_2, self_intersection=None, hole_tolerant=None):
-
-        ```
         > Node: [Mesh Boolean](GeometryNodeMeshBoolean.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/mesh_boolean.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshBoolean.html)
 
         #### Args:
@@ -9260,10 +7636,6 @@ class Mesh(Geometry):
     def boolean_intersect(*mesh_2, self_intersection=None, hole_tolerant=None):
         """
 
-        ```python
-        def boolean_intersect(*mesh_2, self_intersection=None, hole_tolerant=None):
-
-        ```
         > Node: [Mesh Boolean](GeometryNodeMeshBoolean.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/mesh_boolean.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshBoolean.html)
 
         #### Args:
@@ -9285,10 +7657,6 @@ class Mesh(Geometry):
     def boolean_union(*mesh_2, self_intersection=None, hole_tolerant=None):
         """
 
-        ```python
-        def boolean_union(*mesh_2, self_intersection=None, hole_tolerant=None):
-
-        ```
         > Node: [Mesh Boolean](GeometryNodeMeshBoolean.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/mesh_boolean.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshBoolean.html)
 
         #### Args:
@@ -9311,10 +7679,6 @@ class Mesh(Geometry):
     def corner_count(self):
         """
 
-        ```python
-        def corner_count(self):
-
-        ```
         > Node: [Domain Size](GeometryNodeAttributeDomainSize.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html)
 
         #### Returns:
@@ -9331,10 +7695,6 @@ class Mesh(Geometry):
     def corners_of_face(self, face_index=None, weights=None, sort_index=None):
         """
 
-        ```python
-        def corners_of_face(self, face_index=None, weights=None, sort_index=None):
-
-        ```
         > Node: [Corners of Face](GeometryNodeCornersOfFace.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh_topology/corners_of_face.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeCornersOfFace.html)
 
         #### Args:
@@ -9357,10 +7717,6 @@ class Mesh(Geometry):
     def corners_of_vertex(self, vertex_index=None, weights=None, sort_index=None):
         """
 
-        ```python
-        def corners_of_vertex(self, vertex_index=None, weights=None, sort_index=None):
-
-        ```
         > Node: [Corners of Vertex](GeometryNodeCornersOfVertex.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh_topology/corners_of_vertex.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeCornersOfVertex.html)
 
         #### Args:
@@ -9383,10 +7739,6 @@ class Mesh(Geometry):
     def delete_all(self, selection=None, domain='POINT'):
         """
 
-        ```python
-        def delete_all(self, selection=None, domain='POINT'):
-
-        ```
         > Node: [Delete Geometry](GeometryNodeDeleteGeometry.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/delete_geometry.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeDeleteGeometry.html)
 
         #### Args:
@@ -9405,10 +7757,6 @@ class Mesh(Geometry):
     def delete_edges(self, selection=None, domain='POINT'):
         """
 
-        ```python
-        def delete_edges(self, selection=None, domain='POINT'):
-
-        ```
         > Node: [Delete Geometry](GeometryNodeDeleteGeometry.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/delete_geometry.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeDeleteGeometry.html)
 
         #### Args:
@@ -9427,10 +7775,6 @@ class Mesh(Geometry):
     def delete_faces(self, selection=None, domain='POINT'):
         """
 
-        ```python
-        def delete_faces(self, selection=None, domain='POINT'):
-
-        ```
         > Node: [Delete Geometry](GeometryNodeDeleteGeometry.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/delete_geometry.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeDeleteGeometry.html)
 
         #### Args:
@@ -9449,10 +7793,6 @@ class Mesh(Geometry):
     def distribute_points_on_faces(self, selection=None, distance_min=None, density_max=None, density=None, density_factor=None, seed=None, distribute_method='RANDOM'):
         """
 
-        ```python
-        def distribute_points_on_faces(self, selection=None, distance_min=None, density_max=None, density=None, density_factor=None, seed=None, distribute_method='RANDOM'):
-
-        ```
         > Node: [Distribute Points on Faces](GeometryNodeDistributePointsOnFaces.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/point/distribute_points_on_faces.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeDistributePointsOnFaces.html)
 
         #### Args:
@@ -9481,10 +7821,6 @@ class Mesh(Geometry):
     def domain_size(self):
         """
 
-        ```python
-        def domain_size(self):
-
-        ```
         > Node: [Domain Size](GeometryNodeAttributeDomainSize.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html)
 
         #### Returns:
@@ -9501,10 +7837,6 @@ class Mesh(Geometry):
     def dual_mesh(self, mesh=None, keep_boundaries=None):
         """
 
-        ```python
-        def dual_mesh(self, mesh=None, keep_boundaries=None):
-
-        ```
         > Node: [Dual Mesh](GeometryNodeDualMesh.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/dual_mesh.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeDualMesh.html)
 
         #### Args:
@@ -9525,10 +7857,6 @@ class Mesh(Geometry):
     def edge_count(self):
         """
 
-        ```python
-        def edge_count(self):
-
-        ```
         > Node: [Domain Size](GeometryNodeAttributeDomainSize.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html)
 
         #### Returns:
@@ -9545,10 +7873,6 @@ class Mesh(Geometry):
     def edge_paths_to_curves(self, start_vertices=None, next_vertex_index=None):
         """
 
-        ```python
-        def edge_paths_to_curves(self, start_vertices=None, next_vertex_index=None):
-
-        ```
         > Node: [Edge Paths to Curves](GeometryNodeEdgePathsToCurves.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/edge_paths_to_curves.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeEdgePathsToCurves.html)
 
         #### Args:
@@ -9568,10 +7892,6 @@ class Mesh(Geometry):
     def edge_paths_to_selection(self, start_vertices=None, next_vertex_index=None):
         """
 
-        ```python
-        def edge_paths_to_selection(self, start_vertices=None, next_vertex_index=None):
-
-        ```
         > Node: [Edge Paths to Selection](GeometryNodeEdgePathsToSelection.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/edge_paths_to_selection.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeEdgePathsToSelection.html)
 
         #### Args:
@@ -9590,10 +7910,6 @@ class Mesh(Geometry):
     def edges_of_corner(self, corner_index=None):
         """
 
-        ```python
-        def edges_of_corner(self, corner_index=None):
-
-        ```
         > Node: [Edges of Corner](GeometryNodeEdgesOfCorner.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh_topology/edges_of_corner.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeEdgesOfCorner.html)
 
         #### Args:
@@ -9614,10 +7930,6 @@ class Mesh(Geometry):
     def edges_of_vertex(self, vertex_index=None, weights=None, sort_index=None):
         """
 
-        ```python
-        def edges_of_vertex(self, vertex_index=None, weights=None, sort_index=None):
-
-        ```
         > Node: [Edges of Vertex](GeometryNodeEdgesOfVertex.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh_topology/edges_of_vertex.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeEdgesOfVertex.html)
 
         #### Args:
@@ -9640,10 +7952,6 @@ class Mesh(Geometry):
     def extrude(self, selection=None, offset=None, offset_scale=None, individual=None, mode='FACES'):
         """
 
-        ```python
-        def extrude(self, selection=None, offset=None, offset_scale=None, individual=None, mode='FACES'):
-
-        ```
         > Node: [Extrude Mesh](GeometryNodeExtrudeMesh.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/extrude_mesh.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeExtrudeMesh.html)
 
         #### Args:
@@ -9669,10 +7977,6 @@ class Mesh(Geometry):
     def face_count(self):
         """
 
-        ```python
-        def face_count(self):
-
-        ```
         > Node: [Domain Size](GeometryNodeAttributeDomainSize.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html)
 
         #### Returns:
@@ -9689,10 +7993,6 @@ class Mesh(Geometry):
     def face_is_planar(self, threshold=None):
         """
 
-        ```python
-        def face_is_planar(self, threshold=None):
-
-        ```
         > Node: [Face is Planar](GeometryNodeInputMeshFaceIsPlanar.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/face_is_planar.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshFaceIsPlanar.html)
 
         #### Args:
@@ -9710,10 +8010,6 @@ class Mesh(Geometry):
     def face_of_corner(self, corner_index=None):
         """
 
-        ```python
-        def face_of_corner(self, corner_index=None):
-
-        ```
         > Node: [Face of Corner](GeometryNodeFaceOfCorner.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh_topology/face_of_corner.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeFaceOfCorner.html)
 
         #### Args:
@@ -9734,10 +8030,6 @@ class Mesh(Geometry):
     def face_set_boundaries(self, face_set=None):
         """
 
-        ```python
-        def face_set_boundaries(self, face_set=None):
-
-        ```
         > Node: [Face Set Boundaries](GeometryNodeMeshFaceSetBoundaries.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/face_set_boundaries.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshFaceSetBoundaries.html)
 
         #### Args:
@@ -9755,10 +8047,6 @@ class Mesh(Geometry):
     def flip_faces(self, selection=None):
         """
 
-        ```python
-        def flip_faces(self, selection=None):
-
-        ```
         > Node: [Flip Faces](GeometryNodeFlipFaces.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/flip_faces.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeFlipFaces.html)
 
         #### Args:
@@ -9776,10 +8064,6 @@ class Mesh(Geometry):
     def instance_on_points(self, selection=None, instance=None, pick_instance=None, instance_index=None, rotation=None, scale=None):
         """
 
-        ```python
-        def instance_on_points(self, selection=None, instance=None, pick_instance=None, instance_index=None, rotation=None, scale=None):
-
-        ```
         > Node: [Instance on Points](GeometryNodeInstanceOnPoints.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instance_on_points.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInstanceOnPoints.html)
 
         #### Args:
@@ -9802,10 +8086,6 @@ class Mesh(Geometry):
     def is_shade_smooth(self):
         """
 
-        ```python
-        def is_shade_smooth(self):
-
-        ```
         > Node: [Is Shade Smooth](GeometryNodeInputShadeSmooth.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/is_shade_smooth.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputShadeSmooth.html)
 
         #### Returns:
@@ -9821,10 +8101,6 @@ class Mesh(Geometry):
     def island(self):
         """
 
-        ```python
-        def island(self):
-
-        ```
         > Node: [Mesh Island](GeometryNodeInputMeshIsland.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/mesh_island.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshIsland.html)
 
         #### Returns:
@@ -9842,10 +8118,6 @@ class Mesh(Geometry):
     def island_count(self):
         """
 
-        ```python
-        def island_count(self):
-
-        ```
         > Node: [Mesh Island](GeometryNodeInputMeshIsland.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/mesh_island.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshIsland.html)
 
         #### Returns:
@@ -9863,10 +8135,6 @@ class Mesh(Geometry):
     def island_index(self):
         """
 
-        ```python
-        def island_index(self):
-
-        ```
         > Node: [Mesh Island](GeometryNodeInputMeshIsland.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/mesh_island.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshIsland.html)
 
         #### Returns:
@@ -9883,10 +8151,6 @@ class Mesh(Geometry):
     def offset_corner_in_face(self, corner_index=None, offset=None):
         """
 
-        ```python
-        def offset_corner_in_face(self, corner_index=None, offset=None):
-
-        ```
         > Node: [Offset Corner in Face](GeometryNodeOffsetCornerInFace.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh_topology/offset_corner_in_face.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeOffsetCornerInFace.html)
 
         #### Args:
@@ -9905,10 +8169,6 @@ class Mesh(Geometry):
     def pack_uv_islands(self, uv=None, selection=None, margin=None, rotate=None):
         """
 
-        ```python
-        def pack_uv_islands(self, uv=None, selection=None, margin=None, rotate=None):
-
-        ```
         > Node: [Pack UV Islands](GeometryNodeUVPackIslands.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/uv/pack_uv_islands.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeUVPackIslands.html)
 
         #### Args:
@@ -9930,10 +8190,6 @@ class Mesh(Geometry):
     def point_count(self):
         """
 
-        ```python
-        def point_count(self):
-
-        ```
         > Node: [Domain Size](GeometryNodeAttributeDomainSize.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html)
 
         #### Returns:
@@ -9950,10 +8206,6 @@ class Mesh(Geometry):
     def sample_nearest_surface(self, value=None, sample_position=None):
         """
 
-        ```python
-        def sample_nearest_surface(self, value=None, sample_position=None):
-
-        ```
         > Node: [Sample Nearest Surface](GeometryNodeSampleNearestSurface.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/sample_nearest_surface.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSampleNearestSurface.html)
 
         #### Args:
@@ -9973,10 +8225,6 @@ class Mesh(Geometry):
     def sample_uv_surface(self, value=None, source_uv_map=None, sample_uv=None):
         """
 
-        ```python
-        def sample_uv_surface(self, value=None, source_uv_map=None, sample_uv=None):
-
-        ```
         > Node: [Sample UV Surface](GeometryNodeSampleUVSurface.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/sample_uv_surface.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSampleUVSurface.html)
 
         #### Args:
@@ -10000,10 +8248,6 @@ class Mesh(Geometry):
     def scale_elements(self, selection=None, scale=None, center=None, axis=None, domain='FACE', scale_mode='UNIFORM'):
         """
 
-        ```python
-        def scale_elements(self, selection=None, scale=None, center=None, axis=None, domain='FACE', scale_mode='UNIFORM'):
-
-        ```
         > Node: [Scale Elements](GeometryNodeScaleElements.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/scale_elements.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeScaleElements.html)
 
         #### Args:
@@ -10026,10 +8270,6 @@ class Mesh(Geometry):
     def scale_single_axis(self, selection=None, scale=None, center=None, axis=None, domain='FACE'):
         """
 
-        ```python
-        def scale_single_axis(self, selection=None, scale=None, center=None, axis=None, domain='FACE'):
-
-        ```
         > Node: [Scale Elements](GeometryNodeScaleElements.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/scale_elements.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeScaleElements.html)
 
         #### Args:
@@ -10051,10 +8291,6 @@ class Mesh(Geometry):
     def scale_uniform(self, selection=None, scale=None, center=None, domain='FACE'):
         """
 
-        ```python
-        def scale_uniform(self, selection=None, scale=None, center=None, domain='FACE'):
-
-        ```
         > Node: [Scale Elements](GeometryNodeScaleElements.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/scale_elements.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeScaleElements.html)
 
         #### Args:
@@ -10075,10 +8311,6 @@ class Mesh(Geometry):
     def set_shade_smooth(self, selection=None, shade_smooth=None):
         """
 
-        ```python
-        def set_shade_smooth(self, selection=None, shade_smooth=None):
-
-        ```
         > Node: [Set Shade Smooth](GeometryNodeSetShadeSmooth.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/set_shade_smooth.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetShadeSmooth.html)
 
         #### Args:
@@ -10097,10 +8329,6 @@ class Mesh(Geometry):
     def shortest_edge_paths(self, end_vertex=None, edge_cost=None):
         """
 
-        ```python
-        def shortest_edge_paths(self, end_vertex=None, edge_cost=None):
-
-        ```
         > Node: [Shortest Edge Paths](GeometryNodeInputShortestEdgePaths.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/shortest_edge_paths.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputShortestEdgePaths.html)
 
         #### Args:
@@ -10122,10 +8350,6 @@ class Mesh(Geometry):
     def split_edges(self, selection=None):
         """
 
-        ```python
-        def split_edges(self, selection=None):
-
-        ```
         > Node: [Split Edges](GeometryNodeSplitEdges.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/split_edges.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSplitEdges.html)
 
         #### Args:
@@ -10143,10 +8367,6 @@ class Mesh(Geometry):
     def subdivide(self, level=None):
         """
 
-        ```python
-        def subdivide(self, level=None):
-
-        ```
         > Node: [Subdivide Mesh](GeometryNodeSubdivideMesh.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/subdivide_mesh.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSubdivideMesh.html)
 
         #### Args:
@@ -10164,10 +8384,6 @@ class Mesh(Geometry):
     def subdivision_surface(self, level=None, edge_crease=None, vertex_crease=None, boundary_smooth='ALL', uv_smooth='PRESERVE_BOUNDARIES'):
         """
 
-        ```python
-        def subdivision_surface(self, level=None, edge_crease=None, vertex_crease=None, boundary_smooth='ALL', uv_smooth='PRESERVE_BOUNDARIES'):
-
-        ```
         > Node: [Subdivision Surface](GeometryNodeSubdivisionSurface.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/subdivision_surface.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSubdivisionSurface.html)
 
         #### Args:
@@ -10189,10 +8405,6 @@ class Mesh(Geometry):
     def to_curve(self, selection=None):
         """
 
-        ```python
-        def to_curve(self, selection=None):
-
-        ```
         > Node: [Mesh to Curve](GeometryNodeMeshToCurve.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/mesh_to_curve.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshToCurve.html)
 
         #### Args:
@@ -10211,10 +8423,6 @@ class Mesh(Geometry):
     def to_points(self, selection=None, position=None, radius=None, mode='VERTICES'):
         """
 
-        ```python
-        def to_points(self, selection=None, position=None, radius=None, mode='VERTICES'):
-
-        ```
         > Node: [Mesh to Points](GeometryNodeMeshToPoints.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/mesh_to_points.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshToPoints.html)
 
         #### Args:
@@ -10236,10 +8444,6 @@ class Mesh(Geometry):
     def to_volume(self, density=None, voxel_size=None, voxel_amount=None, exterior_band_width=None, interior_band_width=None, fill_volume=None, resolution_mode='VOXEL_AMOUNT'):
         """
 
-        ```python
-        def to_volume(self, density=None, voxel_size=None, voxel_amount=None, exterior_band_width=None, interior_band_width=None, fill_volume=None, resolution_mode='VOXEL_AMOUNT'):
-
-        ```
         > Node: [Mesh to Volume](GeometryNodeMeshToVolume.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/mesh_to_volume.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshToVolume.html)
 
         #### Args:
@@ -10264,10 +8468,6 @@ class Mesh(Geometry):
     def triangulate(self, selection=None, minimum_vertices=None, ngon_method='BEAUTY', quad_method='SHORTEST_DIAGONAL'):
         """
 
-        ```python
-        def triangulate(self, selection=None, minimum_vertices=None, ngon_method='BEAUTY', quad_method='SHORTEST_DIAGONAL'):
-
-        ```
         > Node: [Triangulate](GeometryNodeTriangulate.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/triangulate.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeTriangulate.html)
 
         #### Args:
@@ -10288,10 +8488,6 @@ class Mesh(Geometry):
     def uv_unwrap(self, selection=None, seam=None, margin=None, fill_holes=None, method='ANGLE_BASED'):
         """
 
-        ```python
-        def uv_unwrap(self, selection=None, seam=None, margin=None, fill_holes=None, method='ANGLE_BASED'):
-
-        ```
         > Node: [UV Unwrap](GeometryNodeUVUnwrap.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/uv/uv_unwrap.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeUVUnwrap.html)
 
         #### Args:
@@ -10313,10 +8509,6 @@ class Mesh(Geometry):
     def vertex_of_corner(self, corner_index=None):
         """
 
-        ```python
-        def vertex_of_corner(self, corner_index=None):
-
-        ```
         > Node: [Vertex of Corner](GeometryNodeVertexOfCorner.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh_topology/vertex_of_corner.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeVertexOfCorner.html)
 
         #### Args:
@@ -10338,10 +8530,6 @@ class Curve(Geometry):
     def Arc(cls, resolution=None, radius=None, start_angle=None, sweep_angle=None, connect_center=None, invert_arc=None):
         """
 
-        ```python
-        def Arc(cls, resolution=None, radius=None, start_angle=None, sweep_angle=None, connect_center=None, invert_arc=None):
-
-        ```
         > Node: [Arc](GeometryNodeCurveArc.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve_primitives/arc.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveArc.html)
 
         #### Args:
@@ -10365,10 +8553,6 @@ class Curve(Geometry):
     def ArcFromPoints(cls, resolution=None, start=None, middle=None, end=None, offset_angle=None, connect_center=None, invert_arc=None):
         """
 
-        ```python
-        def ArcFromPoints(cls, resolution=None, start=None, middle=None, end=None, offset_angle=None, connect_center=None, invert_arc=None):
-
-        ```
         > Node: [Arc](GeometryNodeCurveArc.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve_primitives/arc.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveArc.html)
 
         #### Args:
@@ -10393,10 +8577,6 @@ class Curve(Geometry):
     def Circle(cls, resolution=None, radius=None):
         """
 
-        ```python
-        def Circle(cls, resolution=None, radius=None):
-
-        ```
         > Node: [Curve Circle](GeometryNodeCurvePrimitiveCircle.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve_primitives/curve_circle.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurvePrimitiveCircle.html)
 
         #### Args:
@@ -10416,10 +8596,6 @@ class Curve(Geometry):
     def CircleFromPoints(cls, resolution=None, point_1=None, point_2=None, point_3=None):
         """
 
-        ```python
-        def CircleFromPoints(cls, resolution=None, point_1=None, point_2=None, point_3=None):
-
-        ```
         > Node: [Curve Circle](GeometryNodeCurvePrimitiveCircle.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve_primitives/curve_circle.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurvePrimitiveCircle.html)
 
         #### Args:
@@ -10441,10 +8617,6 @@ class Curve(Geometry):
     def Line(cls, start=None, end=None):
         """
 
-        ```python
-        def Line(cls, start=None, end=None):
-
-        ```
         > Node: [Curve Line](GeometryNodeCurvePrimitiveLine.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve_primitives/curve_line.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurvePrimitiveLine.html)
 
         #### Args:
@@ -10464,10 +8636,6 @@ class Curve(Geometry):
     def LineDirection(cls, start=None, direction=None, length=None):
         """
 
-        ```python
-        def LineDirection(cls, start=None, direction=None, length=None):
-
-        ```
         > Node: [Curve Line](GeometryNodeCurvePrimitiveLine.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve_primitives/curve_line.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurvePrimitiveLine.html)
 
         #### Args:
@@ -10488,10 +8656,6 @@ class Curve(Geometry):
     def QuadraticBezier(cls, resolution=None, start=None, middle=None, end=None):
         """
 
-        ```python
-        def QuadraticBezier(cls, resolution=None, start=None, middle=None, end=None):
-
-        ```
         > Node: [Quadratic Bezier](GeometryNodeCurveQuadraticBezier.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve_primitives/quadratic_bezier.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveQuadraticBezier.html)
 
         #### Args:
@@ -10513,10 +8677,6 @@ class Curve(Geometry):
     def Quadrilateral(cls, width=None, height=None, bottom_width=None, top_width=None, offset=None, bottom_height=None, top_height=None, point_1=None, point_2=None, point_3=None, point_4=None, mode='RECTANGLE'):
         """
 
-        ```python
-        def Quadrilateral(cls, width=None, height=None, bottom_width=None, top_width=None, offset=None, bottom_height=None, top_height=None, point_1=None, point_2=None, point_3=None, point_4=None, mode='RECTANGLE'):
-
-        ```
         > Node: [Quadrilateral](GeometryNodeCurvePrimitiveQuadrilateral.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve_primitives/quadrilateral.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurvePrimitiveQuadrilateral.html)
 
         #### Args:
@@ -10546,10 +8706,6 @@ class Curve(Geometry):
     def Spiral(cls, resolution=None, rotations=None, start_radius=None, end_radius=None, height=None, reverse=None):
         """
 
-        ```python
-        def Spiral(cls, resolution=None, rotations=None, start_radius=None, end_radius=None, height=None, reverse=None):
-
-        ```
         > Node: [Spiral](GeometryNodeCurveSpiral.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve_primitives/curve_spiral.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveSpiral.html)
 
         #### Args:
@@ -10573,10 +8729,6 @@ class Curve(Geometry):
     def Star(cls, points=None, inner_radius=None, outer_radius=None, twist=None):
         """
 
-        ```python
-        def Star(cls, points=None, inner_radius=None, outer_radius=None, twist=None):
-
-        ```
         > Node: [Star](GeometryNodeCurveStar.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve_primitives/star.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveStar.html)
 
         #### Args:
@@ -10598,10 +8750,6 @@ class Curve(Geometry):
     def bezier_segment(cls, resolution=None, start=None, start_handle=None, end_handle=None, end=None, mode='POSITION'):
         """
 
-        ```python
-        def bezier_segment(cls, resolution=None, start=None, start_handle=None, end_handle=None, end=None, mode='POSITION'):
-
-        ```
         > Node: [Bezier Segment](GeometryNodeCurvePrimitiveBezierSegment.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve_primitives/bezier_segment.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurvePrimitiveBezierSegment.html)
 
         #### Args:
@@ -10624,10 +8772,6 @@ class Curve(Geometry):
     def curve_of_point(self, point_index=None):
         """
 
-        ```python
-        def curve_of_point(self, point_index=None):
-
-        ```
         > Node: [Curve of Point](GeometryNodeCurveOfPoint.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve_topology/curve_of_point.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveOfPoint.html)
 
         #### Args:
@@ -10648,10 +8792,6 @@ class Curve(Geometry):
     def deform_on_surface(self):
         """
 
-        ```python
-        def deform_on_surface(self):
-
-        ```
         > Node: [Deform Curves on Surface](GeometryNodeDeformCurvesOnSurface.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/deform_curves_on_surface.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeDeformCurvesOnSurface.html)
 
         #### Returns:
@@ -10667,10 +8807,6 @@ class Curve(Geometry):
     def domain_size(self):
         """
 
-        ```python
-        def domain_size(self):
-
-        ```
         > Node: [Domain Size](GeometryNodeAttributeDomainSize.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html)
 
         #### Returns:
@@ -10687,10 +8823,6 @@ class Curve(Geometry):
     def fill(self, curve=None, mode='TRIANGLES'):
         """
 
-        ```python
-        def fill(self, curve=None, mode='TRIANGLES'):
-
-        ```
         > Node: [Fill Curve](GeometryNodeFillCurve.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/fill_curve.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeFillCurve.html)
 
         #### Args:
@@ -10710,10 +8842,6 @@ class Curve(Geometry):
     def fill_ngons(self, curve=None):
         """
 
-        ```python
-        def fill_ngons(self, curve=None):
-
-        ```
         > Node: [Fill Curve](GeometryNodeFillCurve.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/fill_curve.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeFillCurve.html)
 
         #### Args:
@@ -10732,10 +8860,6 @@ class Curve(Geometry):
     def fill_triangles(self, curve=None):
         """
 
-        ```python
-        def fill_triangles(self, curve=None):
-
-        ```
         > Node: [Fill Curve](GeometryNodeFillCurve.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/fill_curve.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeFillCurve.html)
 
         #### Args:
@@ -10754,10 +8878,6 @@ class Curve(Geometry):
     def fillet(self, count=None, radius=None, limit_radius=None, mode='BEZIER'):
         """
 
-        ```python
-        def fillet(self, count=None, radius=None, limit_radius=None, mode='BEZIER'):
-
-        ```
         > Node: [Fillet Curve](GeometryNodeFilletCurve.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/fillet_curve.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeFilletCurve.html)
 
         #### Args:
@@ -10778,10 +8898,6 @@ class Curve(Geometry):
     def fillet_bezier(self, radius=None, limit_radius=None):
         """
 
-        ```python
-        def fillet_bezier(self, radius=None, limit_radius=None):
-
-        ```
         > Node: [Fillet Curve](GeometryNodeFilletCurve.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/fillet_curve.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeFilletCurve.html)
 
         #### Args:
@@ -10800,10 +8916,6 @@ class Curve(Geometry):
     def fillet_poly(self, count=None, radius=None, limit_radius=None):
         """
 
-        ```python
-        def fillet_poly(self, count=None, radius=None, limit_radius=None):
-
-        ```
         > Node: [Fillet Curve](GeometryNodeFilletCurve.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/fillet_curve.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeFilletCurve.html)
 
         #### Args:
@@ -10823,10 +8935,6 @@ class Curve(Geometry):
     def instance_on_points(self, selection=None, instance=None, pick_instance=None, instance_index=None, rotation=None, scale=None):
         """
 
-        ```python
-        def instance_on_points(self, selection=None, instance=None, pick_instance=None, instance_index=None, rotation=None, scale=None):
-
-        ```
         > Node: [Instance on Points](GeometryNodeInstanceOnPoints.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instance_on_points.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInstanceOnPoints.html)
 
         #### Args:
@@ -10850,10 +8958,6 @@ class Curve(Geometry):
     def length(self):
         """
 
-        ```python
-        def length(self):
-
-        ```
         > Node: [Curve Length](GeometryNodeCurveLength.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/curve_length.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveLength.html)
 
         #### Returns:
@@ -10868,10 +8972,6 @@ class Curve(Geometry):
     def offset_point(self, point_index=None, offset=None):
         """
 
-        ```python
-        def offset_point(self, point_index=None, offset=None):
-
-        ```
         > Node: [Offset Point in Curve](GeometryNodeOffsetPointInCurve.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve_topology/offset_point_in_curve.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeOffsetPointInCurve.html)
 
         #### Args:
@@ -10894,10 +8994,6 @@ class Curve(Geometry):
     def point_count(self):
         """
 
-        ```python
-        def point_count(self):
-
-        ```
         > Node: [Domain Size](GeometryNodeAttributeDomainSize.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html)
 
         #### Returns:
@@ -10914,10 +9010,6 @@ class Curve(Geometry):
     def points_of_curve(self, curve_index=None, weights=None, sort_index=None):
         """
 
-        ```python
-        def points_of_curve(self, curve_index=None, weights=None, sort_index=None):
-
-        ```
         > Node: [Points of Curve](GeometryNodePointsOfCurve.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve_topology/points_of_curve.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodePointsOfCurve.html)
 
         #### Args:
@@ -10940,10 +9032,6 @@ class Curve(Geometry):
     def resample(self, selection=None, count=None, length=None, mode='COUNT'):
         """
 
-        ```python
-        def resample(self, selection=None, count=None, length=None, mode='COUNT'):
-
-        ```
         > Node: [Resample Curve](GeometryNodeResampleCurve.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/resample_curve.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeResampleCurve.html)
 
         #### Args:
@@ -10964,10 +9052,6 @@ class Curve(Geometry):
     def resample_count(self, selection=None, count=None):
         """
 
-        ```python
-        def resample_count(self, selection=None, count=None):
-
-        ```
         > Node: [Resample Curve](GeometryNodeResampleCurve.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/resample_curve.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeResampleCurve.html)
 
         #### Args:
@@ -10986,10 +9070,6 @@ class Curve(Geometry):
     def resample_evaluated(self, selection=None):
         """
 
-        ```python
-        def resample_evaluated(self, selection=None):
-
-        ```
         > Node: [Resample Curve](GeometryNodeResampleCurve.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/resample_curve.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeResampleCurve.html)
 
         #### Args:
@@ -11007,10 +9087,6 @@ class Curve(Geometry):
     def resample_length(self, selection=None, length=None):
         """
 
-        ```python
-        def resample_length(self, selection=None, length=None):
-
-        ```
         > Node: [Resample Curve](GeometryNodeResampleCurve.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/resample_curve.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeResampleCurve.html)
 
         #### Args:
@@ -11029,10 +9105,6 @@ class Curve(Geometry):
     def reverse(self, selection=None):
         """
 
-        ```python
-        def reverse(self, selection=None):
-
-        ```
         > Node: [Reverse Curve](GeometryNodeReverseCurve.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/reverse_curve.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeReverseCurve.html)
 
         #### Args:
@@ -11050,10 +9122,6 @@ class Curve(Geometry):
     def sample(self, value=None, factor=None, length=None, curve_index=None, data_type='FLOAT', mode='FACTOR', use_all_curves=False):
         """
 
-        ```python
-        def sample(self, value=None, factor=None, length=None, curve_index=None, data_type='FLOAT', mode='FACTOR', use_all_curves=False):
-
-        ```
         > Node: [Sample Curve](GeometryNodeSampleCurve.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/sample_curve.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSampleCurve.html)
 
         #### Args:
@@ -11078,10 +9146,6 @@ class Curve(Geometry):
     def spline_count(self):
         """
 
-        ```python
-        def spline_count(self):
-
-        ```
         > Node: [Domain Size](GeometryNodeAttributeDomainSize.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html)
 
         #### Returns:
@@ -11098,10 +9162,6 @@ class Curve(Geometry):
     def subdivide(self, cuts=None):
         """
 
-        ```python
-        def subdivide(self, cuts=None):
-
-        ```
         > Node: [Subdivide Curve](GeometryNodeSubdivideCurve.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/subdivide_curve.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSubdivideCurve.html)
 
         #### Args:
@@ -11119,10 +9179,6 @@ class Curve(Geometry):
     def to_mesh(self, profile_curve=None, fill_caps=None):
         """
 
-        ```python
-        def to_mesh(self, profile_curve=None, fill_caps=None):
-
-        ```
         > Node: [Curve to Mesh](GeometryNodeCurveToMesh.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/curve_to_mesh.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveToMesh.html)
 
         #### Args:
@@ -11142,10 +9198,6 @@ class Curve(Geometry):
     def to_points(self, count=None, length=None, mode='COUNT'):
         """
 
-        ```python
-        def to_points(self, count=None, length=None, mode='COUNT'):
-
-        ```
         > Node: [Curve to Points](GeometryNodeCurveToPoints.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/curve_to_points.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveToPoints.html)
 
         #### Args:
@@ -11169,10 +9221,6 @@ class Curve(Geometry):
     def to_points_count(self, count=None):
         """
 
-        ```python
-        def to_points_count(self, count=None):
-
-        ```
         > Node: [Curve to Points](GeometryNodeCurveToPoints.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/curve_to_points.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveToPoints.html)
 
         #### Args:
@@ -11194,10 +9242,6 @@ class Curve(Geometry):
     def to_points_evaluated(self):
         """
 
-        ```python
-        def to_points_evaluated(self):
-
-        ```
         > Node: [Curve to Points](GeometryNodeCurveToPoints.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/curve_to_points.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveToPoints.html)
 
         ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeCurveToPoints.webp)
@@ -11216,10 +9260,6 @@ class Curve(Geometry):
     def to_points_length(self, length=None):
         """
 
-        ```python
-        def to_points_length(self, length=None):
-
-        ```
         > Node: [Curve to Points](GeometryNodeCurveToPoints.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/curve_to_points.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveToPoints.html)
 
         #### Args:
@@ -11241,10 +9281,6 @@ class Curve(Geometry):
     def trim(self, start=None, end=None, mode='FACTOR'):
         """
 
-        ```python
-        def trim(self, start=None, end=None, mode='FACTOR'):
-
-        ```
         > Node: [Trim Curve](GeometryNodeTrimCurve.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/trim_curve.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeTrimCurve.html)
 
         #### Args:
@@ -11262,10 +9298,6 @@ class Curve(Geometry):
     def trim_factor(self, start=None, end=None):
         """
 
-        ```python
-        def trim_factor(self, start=None, end=None):
-
-        ```
         > Node: [Trim Curve](GeometryNodeTrimCurve.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/trim_curve.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeTrimCurve.html)
 
         #### Args:
@@ -11284,10 +9316,6 @@ class Curve(Geometry):
     def trim_length(self, start=None, end=None):
         """
 
-        ```python
-        def trim_length(self, start=None, end=None):
-
-        ```
         > Node: [Trim Curve](GeometryNodeTrimCurve.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/trim_curve.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeTrimCurve.html)
 
         #### Args:
@@ -11310,10 +9338,6 @@ class Points(Geometry):
     def Points(cls, count=None, position=None, radius=None):
         """
 
-        ```python
-        def Points(cls, count=None, position=None, radius=None):
-
-        ```
         > Node: [Points](GeometryNodePoints.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/point/points.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodePoints.html)
 
         #### Args:
@@ -11334,10 +9358,6 @@ class Points(Geometry):
     def domain_size(self):
         """
 
-        ```python
-        def domain_size(self):
-
-        ```
         > Node: [Domain Size](GeometryNodeAttributeDomainSize.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html)
 
         #### Returns:
@@ -11354,10 +9374,6 @@ class Points(Geometry):
     def instance_on_points(self, selection=None, instance=None, pick_instance=None, instance_index=None, rotation=None, scale=None):
         """
 
-        ```python
-        def instance_on_points(self, selection=None, instance=None, pick_instance=None, instance_index=None, rotation=None, scale=None):
-
-        ```
         > Node: [Instance on Points](GeometryNodeInstanceOnPoints.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instance_on_points.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInstanceOnPoints.html)
 
         #### Args:
@@ -11380,10 +9396,6 @@ class Points(Geometry):
     def set_point_radius(self, selection=None, radius=None):
         """
 
-        ```python
-        def set_point_radius(self, selection=None, radius=None):
-
-        ```
         > Node: [Set Point Radius](GeometryNodeSetPointRadius.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/point/set_point_radius.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetPointRadius.html)
 
         #### Args:
@@ -11402,10 +9414,6 @@ class Points(Geometry):
     def to_vertices(self, points=None, selection=None):
         """
 
-        ```python
-        def to_vertices(self, points=None, selection=None):
-
-        ```
         > Node: [Points to Vertices](GeometryNodePointsToVertices.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/point/points_to_vertices.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodePointsToVertices.html)
 
         #### Args:
@@ -11425,10 +9433,6 @@ class Points(Geometry):
     def to_volume(self, density=None, voxel_size=None, voxel_amount=None, radius=None, resolution_mode='VOXEL_AMOUNT'):
         """
 
-        ```python
-        def to_volume(self, density=None, voxel_size=None, voxel_amount=None, radius=None, resolution_mode='VOXEL_AMOUNT'):
-
-        ```
         > Node: [Points to Volume](GeometryNodePointsToVolume.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/point/points_to_volume.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodePointsToVolume.html)
 
         #### Args:
@@ -11451,10 +9455,6 @@ class Points(Geometry):
     def to_volume_amount(self, density=None, voxel_amount=None, radius=None):
         """
 
-        ```python
-        def to_volume_amount(self, density=None, voxel_amount=None, radius=None):
-
-        ```
         > Node: [Points to Volume](GeometryNodePointsToVolume.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/point/points_to_volume.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodePointsToVolume.html)
 
         #### Args:
@@ -11475,10 +9475,6 @@ class Points(Geometry):
     def to_volume_size(self, density=None, voxel_size=None, radius=None):
         """
 
-        ```python
-        def to_volume_size(self, density=None, voxel_size=None, radius=None):
-
-        ```
         > Node: [Points to Volume](GeometryNodePointsToVolume.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/point/points_to_volume.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodePointsToVolume.html)
 
         #### Args:
@@ -11503,10 +9499,6 @@ class Instances(Geometry):
     def InstanceOnPoints(cls, points=None, selection=None, instance=None, pick_instance=None, instance_index=None, rotation=None, scale=None):
         """
 
-        ```python
-        def InstanceOnPoints(cls, points=None, selection=None, instance=None, pick_instance=None, instance_index=None, rotation=None, scale=None):
-
-        ```
         > Node: [Instance on Points](GeometryNodeInstanceOnPoints.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instance_on_points.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInstanceOnPoints.html)
 
         #### Args:
@@ -11531,10 +9523,6 @@ class Instances(Geometry):
     def domain_size(self):
         """
 
-        ```python
-        def domain_size(self):
-
-        ```
         > Node: [Domain Size](GeometryNodeAttributeDomainSize.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html)
 
         #### Returns:
@@ -11551,10 +9539,6 @@ class Instances(Geometry):
     def on_points(self, points=None, selection=None, pick_instance=None, instance_index=None, rotation=None, scale=None):
         """
 
-        ```python
-        def on_points(self, points=None, selection=None, pick_instance=None, instance_index=None, rotation=None, scale=None):
-
-        ```
         > Node: [Instance on Points](GeometryNodeInstanceOnPoints.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instance_on_points.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInstanceOnPoints.html)
 
         #### Args:
@@ -11577,10 +9561,6 @@ class Instances(Geometry):
     def realize(self, geometry=None, legacy_behavior=False):
         """
 
-        ```python
-        def realize(self, geometry=None, legacy_behavior=False):
-
-        ```
         > Node: [Realize Instances](GeometryNodeRealizeInstances.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/realize_instances.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeRealizeInstances.html)
 
         #### Args:
@@ -11599,10 +9579,6 @@ class Instances(Geometry):
     def rotate(self, selection=None, rotation=None, pivot_point=None, local_space=None):
         """
 
-        ```python
-        def rotate(self, selection=None, rotation=None, pivot_point=None, local_space=None):
-
-        ```
         > Node: [Rotate Instances](GeometryNodeRotateInstances.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/rotate_instances.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeRotateInstances.html)
 
         #### Args:
@@ -11624,10 +9600,6 @@ class Instances(Geometry):
     def rotation(self):
         """
 
-        ```python
-        def rotation(self):
-
-        ```
         > Node: [Instance Rotation](GeometryNodeInputInstanceRotation.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instance_rotation.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputInstanceRotation.html)
 
         #### Returns:
@@ -11643,10 +9615,6 @@ class Instances(Geometry):
     def scale(self):
         """
 
-        ```python
-        def scale(self):
-
-        ```
         > Node: [Instance Scale](GeometryNodeInputInstanceScale.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instance_scale.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputInstanceScale.html)
 
         #### Returns:
@@ -11661,10 +9629,6 @@ class Instances(Geometry):
     def set_scale(self, selection=None, scale=None, center=None, local_space=None):
         """
 
-        ```python
-        def set_scale(self, selection=None, scale=None, center=None, local_space=None):
-
-        ```
         > Node: [Scale Instances](GeometryNodeScaleInstances.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/scale_instances.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeScaleInstances.html)
 
         #### Args:
@@ -11685,10 +9649,6 @@ class Instances(Geometry):
     def to_points(self, selection=None, position=None, radius=None):
         """
 
-        ```python
-        def to_points(self, selection=None, position=None, radius=None):
-
-        ```
         > Node: [Instances to Points](GeometryNodeInstancesToPoints.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instances_to_points.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInstancesToPoints.html)
 
         #### Args:
@@ -11709,10 +9669,6 @@ class Instances(Geometry):
     def translate(self, selection=None, translation=None, local_space=None):
         """
 
-        ```python
-        def translate(self, selection=None, translation=None, local_space=None):
-
-        ```
         > Node: [Translate Instances](GeometryNodeTranslateInstances.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/translate_instances.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeTranslateInstances.html)
 
         #### Args:
@@ -11736,10 +9692,6 @@ class Volume(Geometry):
     def Cube(cls, density=None, background=None, min=None, max=None, resolution_x=None, resolution_y=None, resolution_z=None):
         """
 
-        ```python
-        def Cube(cls, density=None, background=None, min=None, max=None, resolution_x=None, resolution_y=None, resolution_z=None):
-
-        ```
         > Node: [Volume Cube](GeometryNodeVolumeCube.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/volume/volume_cube.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeVolumeCube.html)
 
         #### Args:
@@ -11763,10 +9715,6 @@ class Volume(Geometry):
     def distribute_points(self, density=None, seed=None, spacing=None, threshold=None, mode='DENSITY_RANDOM'):
         """
 
-        ```python
-        def distribute_points(self, density=None, seed=None, spacing=None, threshold=None, mode='DENSITY_RANDOM'):
-
-        ```
         > Node: [Distribute Points in Volume](GeometryNodeDistributePointsInVolume.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/point/distribute_points_in_volume.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeDistributePointsInVolume.html)
 
         #### Args:
@@ -11789,10 +9737,6 @@ class Volume(Geometry):
     def distribute_points_grid(self, spacing=None, threshold=None):
         """
 
-        ```python
-        def distribute_points_grid(self, spacing=None, threshold=None):
-
-        ```
         > Node: [Distribute Points in Volume](GeometryNodeDistributePointsInVolume.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/point/distribute_points_in_volume.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeDistributePointsInVolume.html)
 
         #### Args:
@@ -11812,10 +9756,6 @@ class Volume(Geometry):
     def distribute_points_random(self, density=None, seed=None):
         """
 
-        ```python
-        def distribute_points_random(self, density=None, seed=None):
-
-        ```
         > Node: [Distribute Points in Volume](GeometryNodeDistributePointsInVolume.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/point/distribute_points_in_volume.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeDistributePointsInVolume.html)
 
         #### Args:
@@ -11835,10 +9775,6 @@ class Volume(Geometry):
     def to_mesh(self, voxel_size=None, voxel_amount=None, threshold=None, adaptivity=None, resolution_mode='GRID'):
         """
 
-        ```python
-        def to_mesh(self, voxel_size=None, voxel_amount=None, threshold=None, adaptivity=None, resolution_mode='GRID'):
-
-        ```
         > Node: [Volume to Mesh](GeometryNodeVolumeToMesh.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/volume/volume_to_mesh.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeVolumeToMesh.html)
 
         #### Args:
