@@ -10,7 +10,7 @@
 
 ***Inherited***
 
-length | separate
+[bl_idname](DataSocket.md#bl_idname) | [bnode](DataSocket.md#bnode) | [is_multi_input](DataSocket.md#is_multi_input) | [is_output](DataSocket.md#is_output) | [is_plugged](DataSocket.md#is_plugged) | [links](DataSocket.md#links) | [name](DataSocket.md#name) | [node_chain_label](DataSocket.md#node_chain_label) | [socket_index](DataSocket.md#socket_index)
 
 **Class and static methods**
 
@@ -18,7 +18,7 @@ length | separate
 
 ***Inherited***
 
-Combine | Input | Rotation | Translation | Vector | VectorXYZ
+[get_bl_idname](DataSocket.md#get_bl_idname) | [get_class_name](DataSocket.md#get_class_name) | [gives_bsocket](DataSocket.md#gives_bsocket) | [is_socket](DataSocket.md#is_socket) | [is_vector](DataSocket.md#is_vector) | [value_data_type](DataSocket.md#value_data_type)
 
 **Methods**
 
@@ -26,7 +26,7 @@ Combine | Input | Rotation | Translation | Vector | VectorXYZ
 
 ***Inherited***
 
-abs | absolute | add | align_euler_to_vector | average_equal | average_greater_equal | average_greater_than | average_less_equal | average_less_than | average_not_equal | ceil | compare | cos | cosine | cross | cross_product | curves | direction_equal | direction_greater_equal | direction_greater_than | direction_less_equal | direction_less_than | direction_not_equal | distance | div | divide | dot | dot_product | dot_product_equal | dot_product_greater_equal | dot_product_greater_than | dot_product_less_equal | dot_product_less_than | dot_product_not_equal | elements_equal | elements_greater_equal | elements_greater_than | elements_less_equal | elements_less_than | elements_not_equal | face_forward | floor | fract | fraction | get_blender_socket | length_equal | length_greater_equal | length_greater_than | length_less_equal | length_less_than | length_not_equal | map_range | map_range_linear | map_range_smooth | map_range_smoother | map_range_stepped | max | maximum | min | minimum | mix | mix_non_uniform | mix_uniform | modulo | mul | mul_add | multiply | multiply_add | normalize | project | reflect | refract | rotate_axis_angle | rotate_euler | rotate_x | rotate_y | rotate_z | scale | sin | sine | snap | sub | subtract | switch | tan | tangent | wrap
+[connected_sockets](DataSocket.md#connected_sockets) | [convert_python_type](DataSocket.md#convert_python_type) | [get_blender_socket](DataSocket.md#get_blender_socket) | [init_domains](DataSocket.md#init_domains) | [init_socket](DataSocket.md#init_socket) | [plug](DataSocket.md#plug) | [reroute](DataSocket.md#reroute) | [reset_properties](DataSocket.md#reset_properties) | [stack](DataSocket.md#stack) | [to_output](DataSocket.md#to_output)
 
 ## Properties
 

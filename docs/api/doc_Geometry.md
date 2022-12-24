@@ -10,7 +10,7 @@
 
 ***Inherited***
 
-ID | bounding_box | bounding_box_min | convex_hull | curve_component | domain_size | index | instances_component | is_viewport | material_index | mesh_component | normal | points_component | position | radius | separate_components | volume_component
+[bl_idname](DataSocket.md#bl_idname) | [bnode](DataSocket.md#bnode) | [is_multi_input](DataSocket.md#is_multi_input) | [is_output](DataSocket.md#is_output) | [is_plugged](DataSocket.md#is_plugged) | [links](DataSocket.md#links) | [name](DataSocket.md#name) | [node_chain_label](DataSocket.md#node_chain_label) | [socket_index](DataSocket.md#socket_index)
 
 **Class and static methods**
 
@@ -18,7 +18,7 @@ ID | bounding_box | bounding_box_min | convex_hull | curve_component | domain_si
 
 ***Inherited***
 
-Collection | FromCollection | Input
+[get_bl_idname](DataSocket.md#get_bl_idname) | [get_class_name](DataSocket.md#get_class_name) | [gives_bsocket](DataSocket.md#gives_bsocket) | [is_socket](DataSocket.md#is_socket) | [is_vector](DataSocket.md#is_vector) | [value_data_type](DataSocket.md#value_data_type)
 
 **Methods**
 
@@ -26,7 +26,7 @@ Collection | FromCollection | Input
 
 ***Inherited***
 
-attribute_statistic | capture_attribute | capture_attribute_node | delete | duplicate | field_at_index | get_named_boolean | get_named_color | get_named_float | get_named_integer | get_named_vector | instantiate | interpolate_domain | join | material_selection | merge_by_distance | named_attribute | proximity | proximity_edges | proximity_faces | proximity_points | random_boolean | random_float | random_integer | random_vector | raycast | raycast_interpolated | raycast_nearest | remove_named_attribute | replace_material | sample_index | sample_nearest | separate | set_ID | set_material | set_material_index | set_named_boolean | set_named_color | set_named_float | set_named_integer | set_named_vector | set_position | show_handles | store_named_attribute | switch | to_instance | transform
+[connected_sockets](DataSocket.md#connected_sockets) | [convert_python_type](DataSocket.md#convert_python_type) | [get_blender_socket](DataSocket.md#get_blender_socket) | [init_domains](DataSocket.md#init_domains) | [init_socket](DataSocket.md#init_socket) | [plug](DataSocket.md#plug) | [reroute](DataSocket.md#reroute) | [reset_properties](DataSocket.md#reset_properties) | [stack](DataSocket.md#stack) | [to_output](DataSocket.md#to_output)
 
 ## Properties
 

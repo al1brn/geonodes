@@ -10,7 +10,7 @@
 
 ***Inherited***
 
-ID | bounding_box | bounding_box_min | convex_hull | corner_count | curve_component | domain_size | edge_count | face_count | index | instances_component | is_viewport | island | island_count | island_index | material_index | mesh_component | normal | point_count | points_component | position | radius | separate_components | volume_component
+[bl_idname](DataSocket.md#bl_idname) | [bnode](DataSocket.md#bnode) | [is_multi_input](DataSocket.md#is_multi_input) | [is_output](DataSocket.md#is_output) | [is_plugged](DataSocket.md#is_plugged) | [links](DataSocket.md#links) | [name](DataSocket.md#name) | [node_chain_label](DataSocket.md#node_chain_label) | [socket_index](DataSocket.md#socket_index)
 
 **Class and static methods**
 
@@ -18,7 +18,7 @@ ID | bounding_box | bounding_box_min | convex_hull | corner_count | curve_compon
 
 ***Inherited***
 
-Circle | Collection | Cone | Cube | Cylinder | FromCollection | Grid | IcoSphere | Input | Line | LineEndPoints | LineEndPointsResolution | LineOffset | LineOffsetResolution | UVSphere
+[get_bl_idname](DataSocket.md#get_bl_idname) | [get_class_name](DataSocket.md#get_class_name) | [gives_bsocket](DataSocket.md#gives_bsocket) | [is_socket](DataSocket.md#is_socket) | [is_vector](DataSocket.md#is_vector) | [value_data_type](DataSocket.md#value_data_type)
 
 **Methods**
 
@@ -26,7 +26,7 @@ Circle | Collection | Cone | Cube | Cylinder | FromCollection | Grid | IcoSphere
 
 ***Inherited***
 
-attribute_statistic | boolean_difference | boolean_intersect | boolean_union | capture_attribute | capture_attribute_node | corners_of_face | corners_of_vertex | delete | delete_all | delete_edges | delete_faces | distribute_points_on_faces | dual_mesh | duplicate | edge_paths_to_curves | edge_paths_to_selection | edges_of_corner | edges_of_vertex | extrude | face_is_planar | face_of_corner | face_set_boundaries | field_at_index | flip_faces | get_named_boolean | get_named_color | get_named_float | get_named_integer | get_named_vector | instance_on_points | instantiate | interpolate_domain | is_shade_smooth | join | material_selection | merge_by_distance | named_attribute | offset_corner_in_face | pack_uv_islands | proximity | proximity_edges | proximity_faces | proximity_points | random_boolean | random_float | random_integer | random_vector | raycast | raycast_interpolated | raycast_nearest | remove_named_attribute | replace_material | sample_index | sample_nearest | sample_nearest_surface | sample_uv_surface | scale_elements | scale_single_axis | scale_uniform | separate | set_ID | set_material | set_material_index | set_named_boolean | set_named_color | set_named_float | set_named_integer | set_named_vector | set_position | set_shade_smooth | shortest_edge_paths | show_handles | split_edges | store_named_attribute | subdivide | subdivision_surface | switch | to_curve | to_instance | to_points | to_volume | transform | triangulate | uv_unwrap | vertex_of_corner
+[connected_sockets](DataSocket.md#connected_sockets) | [convert_python_type](DataSocket.md#convert_python_type) | [get_blender_socket](DataSocket.md#get_blender_socket) | [init_domains](DataSocket.md#init_domains) | [init_socket](DataSocket.md#init_socket) | [plug](DataSocket.md#plug) | [reroute](DataSocket.md#reroute) | [reset_properties](DataSocket.md#reset_properties) | [stack](DataSocket.md#stack) | [to_output](DataSocket.md#to_output)
 
 ## Properties
 

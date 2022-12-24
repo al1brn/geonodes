@@ -10,7 +10,7 @@
 
 ***Inherited***
 
-alpha | blue | green | hsl | hsv | hue | lightness | red | rgb | rgb_curves | saturation | value
+[bl_idname](DataSocket.md#bl_idname) | [bnode](DataSocket.md#bnode) | [is_multi_input](DataSocket.md#is_multi_input) | [is_output](DataSocket.md#is_output) | [is_plugged](DataSocket.md#is_plugged) | [links](DataSocket.md#links) | [name](DataSocket.md#name) | [node_chain_label](DataSocket.md#node_chain_label) | [socket_index](DataSocket.md#socket_index)
 
 **Class and static methods**
 
@@ -18,7 +18,7 @@ alpha | blue | green | hsl | hsv | hue | lightness | red | rgb | rgb_curves | sa
 
 ***Inherited***
 
-Color | HSL | HSV | Input | RGB
+[get_bl_idname](DataSocket.md#get_bl_idname) | [get_class_name](DataSocket.md#get_class_name) | [gives_bsocket](DataSocket.md#gives_bsocket) | [is_socket](DataSocket.md#is_socket) | [is_vector](DataSocket.md#is_vector) | [value_data_type](DataSocket.md#value_data_type)
 
 **Methods**
 
@@ -26,7 +26,7 @@ Color | HSL | HSV | Input | RGB
 
 ***Inherited***
 
-brighter | darker | equal | get_blender_socket | mix | mix_add | mix_burn | mix_color | mix_darken | mix_difference | mix_divide | mix_dodge | mix_hue | mix_lighten | mix_linear_light | mix_multiply | mix_overlay | mix_saturation | mix_screen | mix_soft_light | mix_subtract | mix_value | switch
+[connected_sockets](DataSocket.md#connected_sockets) | [convert_python_type](DataSocket.md#convert_python_type) | [get_blender_socket](DataSocket.md#get_blender_socket) | [init_domains](DataSocket.md#init_domains) | [init_socket](DataSocket.md#init_socket) | [plug](DataSocket.md#plug) | [reroute](DataSocket.md#reroute) | [reset_properties](DataSocket.md#reset_properties) | [stack](DataSocket.md#stack) | [to_output](DataSocket.md#to_output)
 
 ## Properties
 
