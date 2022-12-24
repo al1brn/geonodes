@@ -248,7 +248,7 @@ or the tracking of a target object.
 We need to add an object plus a Boolean option to indicate how to use this object:
 
 ``` python
-    obj       = gn.Object.Input("Orientation")
+    obj       = gn.Object.Input(None, "Orientation")
     track_obj = gn.Boolean.Input(True, "Track", description="Track object if True, copy rotation otherwise")
 ```
 
