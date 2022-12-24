@@ -226,6 +226,8 @@ The extrusion itself can be controlled with the extrusion parameters:
 
 
 ``` python
+import geonodes as gn
+
 with gn.Tree("Icosphere tuto") as tree:
 
    # Good practice: let's start with the tree inputs
