@@ -169,7 +169,7 @@ icosphere.faces.material = "Blue"
 
 ```python
 mat_base = gn.Material.Input(None, "Base").    # Supposed to be Blue
-mat_sel  = gn.Material.Input(None, "Selected") # Supposet to be Red
+mat_sel  = gn.Material.Input(None, "Selected") # Supposed to be Red
 
 icosphere.faces.material = mat_base
 icosphere.faces.material = mat_sel
