@@ -1432,13 +1432,32 @@ class Color(DataSocket):
 class Geometry(DataSocket):
     """ Geometry DataSocket
     
-    Geometry supports the ``+`` operator acting as method :func:`Geometry.join`.
+    In Blender, there is only one type of *geometry* socket. Sub classes [Mesh](mesh.md), [Curve](Curve.md),
+    [Points](Points.md), [Instances](Instances.md) and [Volume](Volume.md) are introduced by **geonodes**.
+    Each sub class implement the nodes creation which are specific to them.
     
-    .. code-block:: python
+    For instance, the node *'Extrude Mesh'* is specific to meshes. This node is implemented by the method
+    `extrude` of class [Mesh](Mesh.md#extrude):
+                              
+    ```python
+    top, side = mesh.extrude()
+    ```
     
-        geo1 = Geometry.Input("geometry to join")
-        tree.output_geometry = tree.input_geometry + geo1
+    Some **Geometry** sub classes can have methods with the same name but are base on different nodes:
+        
+    ```python
+    points_1 = mesh.to_points()  # Create a 'Mesh to Points' node
+    points_2 = curve.to_points() # Create a 'Curve to Points' node
+    ```
     
+    Geometry supports the ``+`` operator acting as method :func:`Geometry.join`. In the following example,
+    the tree returns the joining of a cube and a sphere:
+    
+    ```python
+    cube = Mesh.Cube()
+    sphere = Mesh.IcoSphere()
+    tree.output_geometry = cube + sphere
+    ```
     """
     
     def __init__(self, socket, node=None, label=None):
