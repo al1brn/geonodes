@@ -22,7 +22,42 @@ points_1 = mesh.to_points()  # Create a 'Mesh to Points' node
 points_2 = curve.to_points() # Create a 'Curve to Points' node
 ```
 
-**Geometry** supports the ``+`` operator acting as method :func:`Geometry.join`. In the following example,
+### Initialization
+
+There is no constructor returnig of geometry of type **Geometry**. Constructors are class methods of
+sub classes implementing their specific primitive nodes:
+
+```python
+cube     = Mesh.Cube()      # node 'Cube'
+circle_1 = Mesh.Circle()    # node 'Mesh Circle'
+circle_2 = Curve.Circle()   # node 'Curve Circle'
+volume   = Volume.Cube()    # node 'Volume Cube'
+```
+
+**Geometry** is the type of the input geometry which can be read from the property `input_geometry` of
+the [Tree](Tree.md#input_geometry). If a modifier is dedicated to meshes, one must type cast the
+input geometry to the desired type:
+           
+```python
+with Tree("Geometry Nodes") as tree:
+    geometry = tree.input_geometry # class Geometry
+    mesh = Mesh(tree.ig)           # type cast to Mesh (ig is the short version of input_geometry)
+```
+
+### Components
+
+The components of **Geometry** can be accessed via dedicated properties. This is an alternative
+to typecasting the input geometry.
+    
+```python
+geo = tree.ig
+mesh = geo.mesh_component    # Socket 'Mesh' of node 'Separate Components'
+vol  = geo.volume_component  # Socket 'Volume' of node 'Separated Components'
+```
+
+### Joining
+
+**Geometry** supports the ``+`` operator acting as method [join](#join). In the following example,
 the tree returns the joining of a cube and a sphere:
 
 ```python
