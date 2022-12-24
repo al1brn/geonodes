@@ -89,11 +89,11 @@ These inputs can be created with the class constructor `Input` available in all 
 ``` python
 import geonodes as gn
 
-with Tree("Geometry Nodes") as tree:
-   object = gn.Object.Input("Other geometry")
+with gn.Tree("Geometry Nodes") as tree:
+   object = gn.Object.Input(None, "Other geometry")
    count  = gn.Integer.Input(10, "Count", min_value=2)
    factor = gn.Float.Input(0.5, "Factor", min_value=0, max_value=1, description="Use this value to control the modifier effect")
-   mat.   = gn.Material.Input(None, "A material")
+   mat    = gn.Material.Input(None, "A material")
 ```
 
 The `input` constructor get a  socket name as parameter. For values such as Integer or Float, it takes the default value as first
