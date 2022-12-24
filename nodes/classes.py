@@ -5148,13 +5148,12 @@ class Object(geosocks.Object):
         return cls(nodes.SelfObject().self_object)
 
 
-    def geometry(self, object=None, as_instance=None, transform_space='ORIGINAL'):
+    def geometry(self, as_instance=None, transform_space='ORIGINAL'):
         """
 
         > Node: [Object Info](GeometryNodeObjectInfo.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/object_info.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeObjectInfo.html)
 
         #### Args:
-        - object: Object
         - as_instance: Boolean
         - transform_space (str): 'ORIGINAL' in [ORIGINAL, RELATIVE]
 
@@ -5164,16 +5163,15 @@ class Object(geosocks.Object):
 
         """
 
-        return nodes.ObjectInfo(object=object, as_instance=as_instance, transform_space=transform_space).geometry
+        return nodes.ObjectInfo(object=self, as_instance=as_instance, transform_space=transform_space).geometry
 
 
-    def info(self, object=None, as_instance=None, transform_space='ORIGINAL'):
+    def info(self, as_instance=None, transform_space='ORIGINAL'):
         """
 
         > Node: [Object Info](GeometryNodeObjectInfo.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/object_info.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeObjectInfo.html)
 
         #### Args:
-        - object: Object
         - as_instance: Boolean
         - transform_space (str): 'ORIGINAL' in [ORIGINAL, RELATIVE]
 
@@ -5183,16 +5181,15 @@ class Object(geosocks.Object):
 
         """
 
-        return nodes.ObjectInfo(object=object, as_instance=as_instance, transform_space=transform_space)
+        return nodes.ObjectInfo(object=self, as_instance=as_instance, transform_space=transform_space)
 
 
-    def location(self, object=None, as_instance=None, transform_space='ORIGINAL'):
+    def location(self, as_instance=None, transform_space='ORIGINAL'):
         """
 
         > Node: [Object Info](GeometryNodeObjectInfo.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/object_info.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeObjectInfo.html)
 
         #### Args:
-        - object: Object
         - as_instance: Boolean
         - transform_space (str): 'ORIGINAL' in [ORIGINAL, RELATIVE]
 
@@ -5202,16 +5199,15 @@ class Object(geosocks.Object):
 
         """
 
-        return nodes.ObjectInfo(object=object, as_instance=as_instance, transform_space=transform_space).location
+        return nodes.ObjectInfo(object=self, as_instance=as_instance, transform_space=transform_space).location
 
 
-    def rotation(self, object=None, as_instance=None, transform_space='ORIGINAL'):
+    def rotation(self, as_instance=None, transform_space='ORIGINAL'):
         """
 
         > Node: [Object Info](GeometryNodeObjectInfo.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/object_info.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeObjectInfo.html)
 
         #### Args:
-        - object: Object
         - as_instance: Boolean
         - transform_space (str): 'ORIGINAL' in [ORIGINAL, RELATIVE]
 
@@ -5221,16 +5217,15 @@ class Object(geosocks.Object):
 
         """
 
-        return nodes.ObjectInfo(object=object, as_instance=as_instance, transform_space=transform_space).rotation
+        return nodes.ObjectInfo(object=self, as_instance=as_instance, transform_space=transform_space).rotation
 
 
-    def scale(self, object=None, as_instance=None, transform_space='ORIGINAL'):
+    def scale(self, as_instance=None, transform_space='ORIGINAL'):
         """
 
         > Node: [Object Info](GeometryNodeObjectInfo.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/object_info.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeObjectInfo.html)
 
         #### Args:
-        - object: Object
         - as_instance: Boolean
         - transform_space (str): 'ORIGINAL' in [ORIGINAL, RELATIVE]
 
@@ -5240,7 +5235,7 @@ class Object(geosocks.Object):
 
         """
 
-        return nodes.ObjectInfo(object=object, as_instance=as_instance, transform_space=transform_space).scale
+        return nodes.ObjectInfo(object=self, as_instance=as_instance, transform_space=transform_space).scale
 
 
     def switch(self, switch=None, true=None):

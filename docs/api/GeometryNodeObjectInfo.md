@@ -38,11 +38,11 @@ node = nodes.ObjectInfo(object=None, as_instance=None, transform_space='ORIGINAL
 | Class or method name | Definition |
 |----------------------|------------|
 | **[Object](Object.md)** |
-| [info](Object.md#info) | `def info(self, object=None, as_instance=None, transform_space='ORIGINAL'):` |
-| [location](Object.md#location) | `def location(self, object=None, as_instance=None, transform_space='ORIGINAL'):` |
-| [rotation](Object.md#rotation) | `def rotation(self, object=None, as_instance=None, transform_space='ORIGINAL'):` |
-| [scale](Object.md#scale) | `def scale(self, object=None, as_instance=None, transform_space='ORIGINAL'):` |
-| [geometry](Object.md#geometry) | `def geometry(self, object=None, as_instance=None, transform_space='ORIGINAL'):` |
+| [info](Object.md#info) | `def info(self, as_instance=None, transform_space='ORIGINAL'):` |
+| [location](Object.md#location) | `def location(self, as_instance=None, transform_space='ORIGINAL'):` |
+| [rotation](Object.md#rotation) | `def rotation(self, as_instance=None, transform_space='ORIGINAL'):` |
+| [scale](Object.md#scale) | `def scale(self, as_instance=None, transform_space='ORIGINAL'):` |
+| [geometry](Object.md#geometry) | `def geometry(self, as_instance=None, transform_space='ORIGINAL'):` |
 
 <sub>Go to [top](#node-Object-Info) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
