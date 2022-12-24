@@ -13,7 +13,7 @@ Install the version of **geonodes** compatible with the Blender version you use.
 
 > You can ask yourself what is the name of the method implementing a particular node and what are the name of the node sockets.
 > Simply use the `snake_case` version of the names. See [Naming conventions](naming.md) for more details.
-> You can also refer to the [API reference](https://al1brn.github.io/geonodes/).
+> You can also refer to the [API reference](index.md).
 
 ## Importing the module
 
@@ -25,9 +25,11 @@ import geonodes as gn
 
 ## My first tree
 
-Execute the following piece of code (node forgetting the module import :-):
+Execute the following piece of code:
 
 ``` python
+import geonodes as gn
+
 with gn.Tree("Do nothing tree") as tree:
 
    # og and ig are shortcuts for output_geometry and input_geometry
@@ -46,14 +48,16 @@ And nothing happens as expected !
 Let's build something more interesting with our input geometry. We will subdivide it and shade it smooth:
 
 ``` python
+import geonodes as gn
+
 with gn.Tree("Shading smooth") as tree:
 
-  geo = tree.ig           # Let's get the input geometry (allegedly a mesh)
+  geo = tree.ig               # Let's get the input geometry (allegedly a mesh)
   
-  geo.subdivide()         # Node named 'Subdivide Mesh' (Mesh is implicit and is not used to build the method name)
-  geo.set_shade_smooth()  # Node named 'Set Shade Smooth'
+  geo.subdivide()             # Node named 'Subdivide Mesh' (Mesh is implicit and is not used to build the method name)
+  geo.set_shade_smooth(True)  # Node named 'Set Shade Smooth'
   
-  tree.og = geo           # or tree.output_geometry = geo
+  tree.og = geo               # or tree.output_geometry = geo
 ``` 
 
 ## Using domains
@@ -64,7 +68,7 @@ on which domain you operate. For instance, shading a mesh is in reality setting 
 A better code will be:
 
 ``` python
-  geo.faces.shade_smooth = True
+geo.faces.shade_smooth = True
 ``` 
 
 This time, the smooth shading is treated as a property of faces. As any property, `shade_smooth` can be set and it can also be get.
@@ -73,38 +77,40 @@ In the code below, the variable `smoothed_faces` contains the values `True` or `
 depending if they are smoothed or not.
 
 ``` python
-  smoothed_faces = geo.faces.shade_smooth
+smoothed_faces = geo.faces.shade_smooth
 ```
 
 ## User inputs
 
-In Geometry Nodes, user parameters are group input sockets.
+In Geometry Nodes, user parameters are implemented as [Tree](Tree.md) input sockets.
 These inputs can be created with the class constructor `Input` available in all the **geonodes** classes, for instance:
 
 ``` python
+import geonodes as gn
+
+with Tree("Geometry Nodes") as tree:
    object = gn.Object.Input("Other geometry")
    count  = gn.Integer.Input(10, "Count", min_value=2)
    factor = gn.Float.Input(0.5, "Factor", min_value=0, max_value=1, description="Use this value to control the modifier effect")
+   mat.   = gn.Material.Input(None, "A material")
 ```
 
 The `input` constructor get a  socket name as parameter. For values such as Integer or Float, it takes the default value as first
 parameter. It can also take `min_value`, `max_value` and `description` parameters for better control.
-
-See [API reference](https://al1brn.github.io/geonodes/).
 
 ## Tree outputs
 
 As seen above, the resulting geometry can be output with:
 
 ``` python
-   tree.output_geometry = geo # og alias can be also used
+tree.output_geometry = geo # og alias can be also used
 ```
 
 To output other values, use the method `to_output` available in all classes:
 
 ``` python
-   v = mesh.verts.position   # Position of vertices
-   v.to_output("Location")   # Location output sockets is created. Its type is Vector 
+v = mesh.verts.position   # Position of vertices
+v.to_output("Location")   # Location output sockets is created. Its type is Vector 
 ```
 
 ## A more advanced example
@@ -125,23 +131,23 @@ and **Curve Primitives** of the `Add node` menu in Blender.
 The names of the constructors are build as CamelCase version of their node names.
 
 ``` python
-   icosphere = gn.Mesh.IcoSphere()
+icosphere = gn.Mesh.IcoSphere()
 ```
 
-This create the default icosphere. We may want some customization. Looking at the node reference [Ico Sphere Node](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh_primitives/icosphere.html),
+This create the default icosphere. We may want some customization. Looking at the node reference [Mesh.IcoSphere](Mesh.md#IcoSphere),
 we see that there are two parameters: **Radius** and **Subdivisions**. They are implemented as parameters of the constructors.
 As explained in the [naming conventions](naming.md), **geonodes** uses snake_case version of the nodes sockets and nodes parameters names:
 
 ``` python
-   icosphere = gn.Mesh.IcoSphere(radius=1, subdivisions=3)
+icosphere = gn.Mesh.IcoSphere(radius=1, subdivisions=3)
 ```
 
 You may want to give more control on these parameters:
 
 ``` python
-   radius = gn.Float.Input(1, "Radius", min_value=0.01, max_value=10, description="A reasonable radius for the sphere")
-   subs   = gn.Integer.Input(3, description="No limits: I trust you")
-   icosphere = gn.Mesh.IcoSphere(radius=radius, subdivisions=subs)
+radius    = gn.Float.Input(1, "Radius", min_value=0.01, max_value=10, description="A reasonable radius for the sphere")
+subs      = gn.Integer.Input(3, description="No limits: I trust you")
+icosphere = gn.Mesh.IcoSphere(radius=radius, subdivisions=subs)
 ```
 
 We have now an icosphere which can be created with parameters exposed to the user.
@@ -154,39 +160,49 @@ A material is instantiated with its name. Let's suppose that we have two existin
 To assign the materials to our icosphere, we write:
 
 ``` python
-   icosphere.faces.material = gn.Material("Red")
-   icosphere.faces.material = gn.Material("Blue")
+icosphere.faces.material = "Red"
+icosphere.faces.material = "Blue"
+```
+
+> If the materials don't exist, the script will crash. Better ask the user to provide his own materials:
+
+```python
+mat_base = gn.Material.Input(None, "Base").    # Supposed to be Blue
+mat_sel  = gn.Material.Input(None, "Selected") # Supposet to be R
+
+icosphere.faces.material = mat_base
+icosphere.faces.material = mat_sel
 ```
 
 ### Selecting faces
 
-The resulting icosphere is blue because the second material was assigned to all faces, overwriting the previous assignment.
+The resulting icosphere is red because the second material was assigned to all faces, overwriting the previous assignment.
 But what we want is to have a random selection of faces with a different color.
 The faces can be selected by "calling" them with a selection parameter.
 
 ``` python
-   icosphere.faces( random_selection ).material = gn.Material("Blue")
+icosphere.faces[ random_selection ].material = mat_sel
 ```
 
-A random selection can be generated using the `Random` constructor of class [Boolean](https://al1brn.github.io/geonodes/sockets/boolean.html):
+A random selection can be generated using the `Random` constructor of class [Boolean](Boolean.md#Random):
 
 ``` python
-   icosphere.faces( gn.Boolean.Random(probability=0.5) ).material = gn.Material("Blue")
+icosphere.faces[ gn.Boolean.Random(probability=0.5) ].material = mat_sel
 ```
 
-This time, the blue material will overwrite only 50% of the red faces.
+This time, the red material will overwrite only 50% of the blue faces.
 
 Another way to reach this result is to use the material index:
 
 ``` python
-   icosphere.faces.material = gn.Material("Red")
-   icosphere.faces.material = gn.Material("Blue")
+icosphere.faces.material = mat_base # --> Material index 1
+icosphere.faces.material = mat_sel  # --> Material index 2
    
-   # Two materials have be added
-   # All faces have material index set to 1
-   # Let's change half of them back to 0
-   
-   icosphere.faces( gn.Boolean.Random(probability=.5) ).material_index = 0
+# Two materials have be added
+# All faces have their material index set to 2
+# Let's change half of them back to 1
+
+icosphere.faces[ gn.Boolean.Random(probability=.5) ].material_index = 1
 ```
 
 ### Extrusion
@@ -195,31 +211,31 @@ The `Extrude Mesh` node accepts a domain parameter to define what must be extrud
 are written:
 
 ``` python
-   mesh.faces.extrude()
-   mesh.edges.extrude()
-   mesh.verts.extrude()
+mesh.faces.extrude()
+mesh.edges.extrude()
+mesh.verts.extrude()
 ```
 
-We want to extrude faces, but only the blue faces:
+We want to extrude faces, but only the red faces:
 
 ``` python
-   faces = icosphere.faces
-   faces(faces.material_index.equal(1)).extrude()
+faces = icosphere.faces
+faces[faces.material_index.equal(2)].extrude()
 ```
 
 **Note:** `material_index.equal(1)` is used rather than `material_index == 1`. This late expression would give a python `bool`
-result rather than the expected **geonodes** `Boolean`.
+result rather than the expected **geonodes** `Boolean`. See [Boolean](Boolean.md)
 
 Alternatively, if you are not confident with the material indices, you can use the `material_selection` method:
 
 ``` python
-   faces(faces.material_selection(gn.Material("Blue"))).extrude()
+faces[faces.material_selection(mat_sel)].extrude()
 ```
 
 The extrusion itself can be controlled with the extrusion parameters:
 
 ``` python
-   faces(faces.material_index.equal(1)).extrude(offset_scale=0.3)
+faces[faces.material_index.equal(1)].extrude(offset_scale=0.3)
 ```
 
 ### The full code
@@ -235,6 +251,10 @@ with gn.Tree("Icosphere tuto") as tree:
    radius = gn.Float.Input(1, "Radius", min_value=0.01, max_value=10, description="A reasonable radius for the sphere")
    subs   = gn.Integer.Input(3, description="No limits: I trust you")
    
+   mat_base = gn.Material.Input(None, "Base")
+   mat_sel  = gn.Material.Input(None, "Selected")
+   
+   
    # The icosphere
    
    icosphere = gn.Mesh.IcoSphere(radius=radius, subdivisions=subs)
@@ -242,15 +262,18 @@ with gn.Tree("Icosphere tuto") as tree:
    # The materials
    
    faces = icosphere.faces
-
-   faces.material = gn.Material("Red")
-   faces( gn.Boolean.Random(probability=.5) ).material_index = 0
-
-   # Extrude the blue faces
    
-   faces(faces.material_index.equal(1)).extrude(offset_scale=0.3)
+   faces.material = mat_base
+   faces[ gn.Boolean.Random(probability=.5) ].material = mat_sel
+   
+   # Extrude the select faces
+   
+   faces[faces.material_index.equal(2)].extrude(offset_scale=0.3)
+   
+   tree.og = icosphere
    
    
+      
 ```
 
 
