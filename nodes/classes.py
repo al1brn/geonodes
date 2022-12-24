@@ -4383,6 +4383,23 @@ class Vector(geosocks.Vector):
         return nodes.VectorMath(vector0=self, vector1=None, vector2=None, scale=scale, operation='SCALE').vector
 
 
+    @property
+    def separate(self):
+        """
+
+        > Node: [Separate XYZ](ShaderNodeSeparateXYZ.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/separate_xyz.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeSeparateXYZ.html)
+
+        #### Returns:
+        - node with sockets ['x', 'y', 'z']
+
+
+        """
+
+        if not hasattr(self, '_c_shadernodeseparatexyz'):
+            self._c_shadernodeseparatexyz = nodes.SeparateXyz(vector=self)
+        return self._c_shadernodeseparatexyz
+
+
     def sin(self):
         """
 

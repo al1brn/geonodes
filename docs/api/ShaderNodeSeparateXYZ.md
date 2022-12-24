@@ -27,6 +27,12 @@ node = nodes.SeparateXyz(vector=None)
 - **y** : [Float](Float.md)
 - **z** : [Float](Float.md)
 
+## Implementation
+
+| Class or method name | Definition |
+|----------------------|------------|
+| **[Vector](Vector.md)** |
+| [separate](Vector.md#separate) | `@property`<br> `def separate(self):` |
 
 <sub>Go to [top](#node-Separate-XYZ) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

@@ -254,6 +254,7 @@ with gn.Tree('Geometry Nodes') as tree:
     var = gn.Vector.Random()
     vector.switch()
     var = gn.Vector.Combine()
+    var = vector.separate
     vector.curves()
     vector.add()
     vector.subtract()

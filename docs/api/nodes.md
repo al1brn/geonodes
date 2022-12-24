@@ -264,6 +264,7 @@
 |      | [Instance](Instance.md) | [separate](Instance.md#separate) |
 |      | [Spline](Spline.md) | [separate](Spline.md#separate) |
 |      | [Vertex](Vertex.md) | [separate](Vertex.md#separate) |
+| [Separate XYZ](ShaderNodeSeparateXYZ.md) | [Vector](Vector.md) | [separate](Vector.md#separate) |
 | [Set Curve Normal](GeometryNodeSetCurveNormal.md) | [Spline](Spline.md) | - [set_normal](Spline.md#set_normal)<br>- [normal](Spline.md#normal)|
 | [Set Curve Radius](GeometryNodeSetCurveRadius.md) | [ControlPoint](ControlPoint.md) | - [set_radius](ControlPoint.md#set_radius)<br>- [radius](ControlPoint.md#radius)|
 | [Set Curve Tilt](GeometryNodeSetCurveTilt.md) | [ControlPoint](ControlPoint.md) | - [set_tilt](ControlPoint.md#set_tilt)<br>- [tilt](ControlPoint.md#tilt)|

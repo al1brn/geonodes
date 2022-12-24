@@ -27,7 +27,7 @@ Vector(self, value=(0., 0., 0.), label=None)
 
 **Properties**
 
-[length](#length)
+[length](#length) | [separate](#separate)
 
 ***Inherited***
 
@@ -59,6 +59,22 @@ Vector(self, value=(0., 0., 0.), label=None)
 
 #### Returns:
 - socket `value`
+
+
+
+
+
+
+<sub>Go to [top](#class-Vector) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### separate
+
+
+
+> Node: [Separate XYZ](ShaderNodeSeparateXYZ.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/separate_xyz.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeSeparateXYZ.html)
+
+#### Returns:
+- node with sockets ['x', 'y', 'z']
 
 
 
