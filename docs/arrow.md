@@ -175,7 +175,7 @@ The edges positions are supposed to be on a circle, when in reality, the edges p
 The vertices are on the circle, when the edges position is within the circle.
 Extrusion is instructed on edges but operated on vertices.
 The position of the vertices is deducted from the positions of the two edges they are part of.
-This computed position is even mode inside the disk.
+This computed position is even more inside the disk.
 
 To correct that, we have to correct the edges positions with a factor computed from the number of vertices.
 Without detailling the maths, the correction is the following:
