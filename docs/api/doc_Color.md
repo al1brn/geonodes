@@ -16,6 +16,16 @@
 
 [brighter](#brighter) | [darker](#darker) | [equal](#equal) | [get_blender_socket](#get_blender_socket) | [mix](#mix) | [mix_add](#mix_add) | [mix_burn](#mix_burn) | [mix_color](#mix_color) | [mix_darken](#mix_darken) | [mix_difference](#mix_difference) | [mix_divide](#mix_divide) | [mix_dodge](#mix_dodge) | [mix_hue](#mix_hue) | [mix_lighten](#mix_lighten) | [mix_linear_light](#mix_linear_light) | [mix_multiply](#mix_multiply) | [mix_overlay](#mix_overlay) | [mix_saturation](#mix_saturation) | [mix_screen](#mix_screen) | [mix_soft_light](#mix_soft_light) | [mix_subtract](#mix_subtract) | [mix_value](#mix_value) | [switch](#switch)
 
+## Inheritance
+
+**Properties**
+
+[[DataSocket](DataSocket.md#bl_idname](#[DataSocket](DataSocket.md#bl_idname) | [[DataSocket](DataSocket.md#bnode](#[DataSocket](DataSocket.md#bnode) | [[DataSocket](DataSocket.md#is_multi_input](#[DataSocket](DataSocket.md#is_multi_input) | [[DataSocket](DataSocket.md#is_output](#[DataSocket](DataSocket.md#is_output) | [[DataSocket](DataSocket.md#is_plugged](#[DataSocket](DataSocket.md#is_plugged) | [[DataSocket](DataSocket.md#links](#[DataSocket](DataSocket.md#links) | [[DataSocket](DataSocket.md#name](#[DataSocket](DataSocket.md#name) | [[DataSocket](DataSocket.md#node_chain_label](#[DataSocket](DataSocket.md#node_chain_label) | [[DataSocket](DataSocket.md#socket_index](#[DataSocket](DataSocket.md#socket_index)**Class and static methods**
+
+[[DataSocket](DataSocket.md#get_bl_idname](#[DataSocket](DataSocket.md#get_bl_idname) | [[DataSocket](DataSocket.md#get_class_name](#[DataSocket](DataSocket.md#get_class_name) | [[DataSocket](DataSocket.md#gives_bsocket](#[DataSocket](DataSocket.md#gives_bsocket) | [[DataSocket](DataSocket.md#is_socket](#[DataSocket](DataSocket.md#is_socket) | [[DataSocket](DataSocket.md#is_vector](#[DataSocket](DataSocket.md#is_vector) | [[DataSocket](DataSocket.md#value_data_type](#[DataSocket](DataSocket.md#value_data_type)**Methods**
+
+[[DataSocket](DataSocket.md#connected_sockets](#[DataSocket](DataSocket.md#connected_sockets) | [[DataSocket](DataSocket.md#convert_python_type](#[DataSocket](DataSocket.md#convert_python_type) | [[DataSocket](DataSocket.md#get_blender_socket](#[DataSocket](DataSocket.md#get_blender_socket) | [[DataSocket](DataSocket.md#init_domains](#[DataSocket](DataSocket.md#init_domains) | [[DataSocket](DataSocket.md#init_socket](#[DataSocket](DataSocket.md#init_socket) | [[DataSocket](DataSocket.md#plug](#[DataSocket](DataSocket.md#plug) | [[DataSocket](DataSocket.md#reroute](#[DataSocket](DataSocket.md#reroute) | [[DataSocket](DataSocket.md#reset_properties](#[DataSocket](DataSocket.md#reset_properties) | [[DataSocket](DataSocket.md#stack](#[DataSocket](DataSocket.md#stack) | [[DataSocket](DataSocket.md#to_output](#[DataSocket](DataSocket.md#to_output)
+
 ## Properties
 
 ### alpha
