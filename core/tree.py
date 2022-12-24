@@ -306,8 +306,8 @@ class Tree:
     ### Modifier and custom group
     
     A Tree can be used for two purposes:
-        - to be used in a **Geometry Nodes** modifier (default)
-        - to be used as a custom [Group](Group.md) called in another Tree (`group = True`)
+    - to be used in a **Geometry Nodes** modifier (default)
+    - to be used as a custom [Group](Group.md) called in another Tree (`group = True`)
         
     To include a custom group into a Tree, simply initialize a [Group](Group.md) class with its name as first parameter.
     

@@ -1,4 +1,7 @@
-# Trees
+# Class Trees
+
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+
 
 **Trees** is a utility class to organize **Tree nodes** in consistent groups with a common prefix.
 It offers an interface to call a **Tree nodes** group as a python function.
@@ -103,4 +106,172 @@ with gn.Tree("A Tree for modifier") as tree:
     
     tree.og = cube
 ```
+
+
+
+
+### Constructor
+
+```python
+Trees(self, prefix=None)
+```
+
+
+#### Args:
+- prefix (str): The prefix to use
+
+
+
+## Content
+
+**Properties**
+
+[trees](#trees)
+
+**Class and static methods**
+
+[get_prefix](#get_prefix) | [prefixed_name](#prefixed_name) | [prefixed_snake](#prefixed_snake) | [snake_prefix](#snake_prefix)
+
+**Methods**
+
+[call](#call) | [clear](#clear)
+
+## Properties
+
+### trees
+
+ Gives the list of the [Tree](Tree.md) sharing the same prefix.
+
+#### Returns:
+- Trees sharing the same prefix (list)
+
+
+
+<sub>Go to [top](#class-Trees) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+## Class and static methods
+
+### get_prefix
+
+```python
+@staticmethod
+def get_prefix(prefix)
+```
+
+ Utility to get the actual string prefix from a Trees or str.
+
+#### Args:
+- prefix (str or Trees): Spec
+
+#### Returns:
+- prefix (str)
+
+
+
+<sub>Go to [top](#class-Trees) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### prefixed_name
+
+```python
+@staticmethod
+def prefixed_name(prefix, name)
+```
+
+ Compute the prefixed name.
+
+#### Args:
+- prefix (str or Trees): the prefix
+- name (str): the tree name
+    
+#### Returns:
+- prefixed name (str)
+
+
+
+<sub>Go to [top](#class-Trees) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### prefixed_snake
+
+```python
+@staticmethod
+def prefixed_snake(prefix, name)
+```
+
+ The snake version of the prefixed name.
+
+The prefixed version is used as a function name to instantiate the custom group.
+
+#### Args:
+- prefix (str or Trees): the prefix
+- name (str): the tree name
+    
+#### Returns:
+- snake_case version of the prefixed name (str)
+
+
+
+<sub>Go to [top](#class-Trees) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### snake_prefix
+
+```python
+@staticmethod
+def snake_prefix(prefix)
+```
+
+ The snake version of the prefix.
+
+#### Args:
+- prefix (str or Trees): the prefix
+    
+#### Returns:
+- snake_case version of the prefix
+
+
+
+<sub>Go to [top](#class-Trees) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+## Methods
+
+### call
+
+```python
+def call(self, name, **kwargs)
+```
+
+ Create an instance for a **Custom Group**.
+
+The keywords arguments must be the snake_case version of the input socket names of the group.
+
+#### Args:
+- name (str): The name of the Group (without the prefix)
+- **kwargs: value of the input sockets
+    
+#### Returns:
+- An instance of the custom group (Group)
+
+
+
+<sub>Go to [top](#class-Trees) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### clear
+
+```python
+def clear(self)
+```
+
+ Delete all the **Geometry Nodes** whose name has a given prefix.
+
+For instance, to delete all the **Geometry Nodes** whose name starts with 'Utils':
+
+```python
+Trees("Utils").clear()
+```
+
+> CAUTION: `Trees().clear()` delete all the **Geometry Nodes** of your file, including those which are not
+generated with **geonodes**.
+
+
+
+<sub>Go to [top](#class-Trees) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
