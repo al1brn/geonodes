@@ -7,18 +7,18 @@
 **DataSocket** represents the data (Geometry, Value, String, Material...) associated to a node socket.
 
 **DataSocket** is the base class for actual data sockets:
-    - [Geometry](Geometry.md)
-    - [Boolean](Boolean.md)
-    - [Integer](Integer.md)
-    - [Float](Float.md)
-    - [Vector](Vector.md)
-    - [Color](Color.md)
-    - [String](String.md)
-    - [Collection](Collection.md)
-    - [Object](Object.md)
-    - [Material](Material.md)
-    - [Texture](Texture.md)
-    - [Image](IMage.md)
+- [Geometry](Geometry.md)
+- [Boolean](Boolean.md)
+- [Integer](Integer.md)
+- [Float](Float.md)
+- [Vector](Vector.md)
+- [Color](Color.md)
+- [String](String.md)
+- [Collection](Collection.md)
+- [Object](Object.md)
+- [Material](Material.md)
+- [Texture](Texture.md)
+- [Image](IMage.md)
     
 **DataSockets** are created by input nodes, for instance, in the following example, `cube` is a **Mesh** **DataSocket**
 wrapping the output socket of the Blender Node *'Cube'*:    
