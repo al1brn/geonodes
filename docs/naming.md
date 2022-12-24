@@ -23,7 +23,7 @@ Since, the most often, the socket names are single words, their python name is t
 
 ## Data sockets
 
-_Data socket_ classes are named as basic names: **Boolean**, **Integer**, **Geometry**... (see [Data socket classes](doc/api/DataSocket.md))
+_Data socket_ classes are named as basic names: **Boolean**, **Integer**, **Geometry**... (see [DataSocket class](api/DataSocket.md))
 
 ## Methods and properties
 
