@@ -68,8 +68,8 @@ def Input(cls, value = "Text", name = "String", description = "")
 - name: The socket name
 - description: User tip
     
-Returns:
-    Float: The Float data socket
+#### Returns:
+- Float: The Float data socket
 
 
 
@@ -256,8 +256,8 @@ def join_strings(self, *strings, delimiter = None)
 - strings (str, String): List of strings to join
 - delimiter (str, String): Delimiter between the strings
     
-Returns:
-    String: strings joined with the delimiter
+#### Returns:
+- String: strings joined with the delimiter
     
 Note
 ----

@@ -41,8 +41,8 @@ def Input(cls, value=None, name="Object", description="")
 - name: The socket name
 - description: User tip
     
-Returns:
-    Object: The Object data socket
+#### Returns:
+- Object: The Object data socket
 
 
 

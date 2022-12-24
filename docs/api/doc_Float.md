@@ -70,8 +70,8 @@ def Angle(cls, value=0., name="Angle", min_value = None, max_value = None, descr
 - max_value: Maximum value
 - description: User tip
     
-Returns:
-    Float: The Float data socket
+#### Returns:
+- Float: The Float data socket
 
 
 
@@ -94,8 +94,8 @@ def Distance(cls, value=0., name="Distance", min_value = None, max_value = None,
 - max_value: Maximum value
 - description: User tip
     
-Returns:
-    Float: The Float data socket
+#### Returns:
+- Float: The Float data socket
 
 
 
@@ -118,8 +118,8 @@ def Factor(cls, value=0., name="Factor", min_value = 0., max_value = 1., descrip
 - max_value: Maximum value
 - description: User tip
     
-Returns:
-    Float: The Float data socket
+#### Returns:
+- Float: The Float data socket
 
 
 
@@ -169,8 +169,8 @@ def Input(cls, value = 0., name = "Float", min_value = None, max_value = None, d
 - max_value: Maximum value
 - description: User tip
     
-Returns:
-    Float: The Float data socket
+#### Returns:
+- Float: The Float data socket
 
 
 
@@ -303,8 +303,8 @@ def add(self, value=None, node_label = None, node_color = None)
 - node_label (str): Node label
 - node_color (color): Node background color
         
-    Returns:
-        Float
+#### Returns:
+- Float
         
     If value is a Vector or a Color, VectorMath node is used rather than Math.
 
@@ -774,8 +774,8 @@ def divide(self, value=None, node_label = None, node_color = None)
 - node_label (str): Node label
 - node_color (color): Node background color
         
-    Returns:
-        Float
+#### Returns:
+- Float
         
     If value is a Vector or a Color, VectorMath node is used rather than Math.
 
@@ -1819,8 +1819,8 @@ def multiply(self, value=None, node_label = None, node_color = None)
 - node_label (str): Node label
 - node_color (color): Node background color
         
-    Returns:
-        Float
+#### Returns:
+- Float
         
     If value is a Vector or a Color, VectorMath node is used rather than Math.
 
@@ -2259,8 +2259,8 @@ def subtract(self, value=None, node_label = None, node_color = None)
 - node_label (str): Node label
 - node_color (color): Node background color
         
-    Returns:
-        Float
+#### Returns:
+- Float
         
     If value is a Vector or a Color, VectorMath node is used rather than Math.
 

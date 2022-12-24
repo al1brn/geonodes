@@ -44,8 +44,8 @@ def Input(cls, value = 0, name = "Integer", min_value = None, max_value = None, 
 - max_value: Maximum value
 - description: User tip
     
-Returns:
-    Integer: The Integer data socket
+#### Returns:
+- Integer: The Integer data socket
 
 
 
@@ -98,8 +98,8 @@ def Unsigned(cls, value = 0, name = "Unsigned", min_value = 0, max_value = None,
 - max_value: Maximum value
 - description: User tip
     
-Returns:
-    Integer: The Integer data socket
+#### Returns:
+- Integer: The Integer data socket
 
 
 
@@ -178,8 +178,8 @@ def add(self, value=None, node_label = None, node_color = None)
 - node_label (str): Node label
 - node_color (color): Node background color
         
-    Returns:
-        Float
+#### Returns:
+- Float
         
     If value is a Vector or a Color, VectorMath node is used rather than Math.
 
@@ -531,8 +531,8 @@ def divide(self, value=None, node_label = None, node_color = None)
 - node_label (str): Node label
 - node_color (color): Node background color
         
-    Returns:
-        Float
+#### Returns:
+- Float
         
     If value is a Vector or a Color, VectorMath node is used rather than Math.
 
@@ -1321,8 +1321,8 @@ def multiply(self, value=None, node_label = None, node_color = None)
 - node_label (str): Node label
 - node_color (color): Node background color
         
-    Returns:
-        Float
+#### Returns:
+- Float
         
     If value is a Vector or a Color, VectorMath node is used rather than Math.
 
@@ -1734,8 +1734,8 @@ def subtract(self, value=None, node_label = None, node_color = None)
 - node_label (str): Node label
 - node_color (color): Node background color
         
-    Returns:
-        Float
+#### Returns:
+- Float
         
     If value is a Vector or a Color, VectorMath node is used rather than Math.
 

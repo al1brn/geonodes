@@ -142,8 +142,8 @@ Trees(self, prefix=None)
 
  Gives the list of the [Tree](Tree.md) sharing the same prefix.
 
-Returns:
-    Trees sharing the same prefix (list)
+#### Returns:
+- Trees sharing the same prefix (list)
 
 
 
@@ -163,8 +163,8 @@ def get_prefix(prefix)
 #### Args:
 - prefix (str or Trees): Spec
 
-Returns:
-    prefix (str)
+#### Returns:
+- prefix (str)
 
 
 
@@ -183,8 +183,8 @@ def prefixed_name(prefix, name)
 - prefix (str or Trees): the prefix
 - name (str): the tree name
     
-Returns:
-    - prefixed name (str)
+#### Returns:
+- prefixed name (str)
 
 
 
@@ -205,8 +205,8 @@ The prefixed version is used as a function name to instantiate the custom group.
 - prefix (str or Trees): the prefix
 - name (str): the tree name
     
-Returns:
-    - snake_case version of the prefixed name (str)
+#### Returns:
+- snake_case version of the prefixed name (str)
 
 
 
@@ -224,8 +224,8 @@ def snake_prefix(prefix)
 #### Args:
 - prefix (str or Trees): the prefix
     
-Returns:
-    snake_case version of the prefix
+#### Returns:
+- snake_case version of the prefix
 
 
 
@@ -247,8 +247,8 @@ The keywords arguments must be the snake_case version of the input socket names 
 - name (str): The name of the Group (without the prefix)
 - **kwargs: value of the input sockets
     
-Returns:
-    An instance of the custom group (Group)
+#### Returns:
+- An instance of the custom group (Group)
 
 
 

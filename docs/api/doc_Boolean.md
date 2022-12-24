@@ -72,8 +72,8 @@ def Input(cls, value = False, name = "Boolean", description = "")
 - name: The socket name
 - description: User tip
     
-Returns:
-    Boolean: The Boolean data socket
+#### Returns:
+- Boolean: The Boolean data socket
 
 
 

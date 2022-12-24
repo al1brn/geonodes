@@ -122,8 +122,8 @@ def Input(cls, value = (0, 0, 0), name = "Vector", description = "")
 - name: The socket name
 - description: User tip
     
-Returns:
-    Vector: The Vector data socket
+#### Returns:
+- Vector: The Vector data socket
 
 
 
@@ -144,8 +144,8 @@ def Rotation(cls, value = (0, 0, 0), name = "Rotation", description = "")
 - name: The socket name
 - description: User tip
     
-Returns:
-    Vector: The Vector data socket
+#### Returns:
+- Vector: The Vector data socket
 
 
 
@@ -165,8 +165,8 @@ def Translation(cls, value =(0, 0, 0), name = "Translation", description = "")
 - name: The socket name
 - description: User tip
     
-Returns:
-    Vector: The Vector data socket
+#### Returns:
+- Vector: The Vector data socket
 
 
 
@@ -216,8 +216,8 @@ def VectorXYZ(cls, value = (0, 0, 0), name = "VectorXYZ", description = "")
 - name: The socket name
 - description: User tip
     
-Returns:
-    Vector: The Vector data socket
+#### Returns:
+- Vector: The Vector data socket
 
 
 

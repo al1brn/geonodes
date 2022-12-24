@@ -41,8 +41,8 @@ def Input(cls, value = None, name="Image", description="")
 - name: The socket name
 - description: User tip
     
-Returns:
-    Image: The Image data socket
+#### Returns:
+- Image: The Image data socket
 
 
 

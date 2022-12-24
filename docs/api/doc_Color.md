@@ -409,8 +409,8 @@ def Input(cls, value=None, name = "Color", description = "")
 - name: The socket name
 - description: User tip
     
-Returns:
-    Color: The Color data socket
+#### Returns:
+- Color: The Color data socket
 
 
 

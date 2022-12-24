@@ -186,8 +186,8 @@ Node implemented as property setter.
 
  Returns the data socket it belongs to.       
 
-Returns:
-    DataSocket
+#### Returns:
+- DataSocket
 
 
 
@@ -206,8 +206,8 @@ Returns:
 - CloudPoint    : 'POINT',
 - Instance      : 'INSTANCE',
 
-Returns:
-    domain string (str)
+#### Returns:
+- domain string (str)
 
 
 
@@ -488,8 +488,8 @@ Node implemented as property setter.
 
  Returns the selection value to use in nodes with a **Selection** socket.  
 
-Returns:
-    Boolean
+#### Returns:
+- Boolean
 
 
 
@@ -501,8 +501,8 @@ Returns:
 
 > CAUTION: raise an error if the selection is not a integer.
 
-Returns:
-    Integer
+#### Returns:
+- Integer
 
 
 
@@ -723,8 +723,8 @@ Called when creating an input node in a property getter. Performs two actions:
 #### Args:
 - node (Node): The node created by the domain
     
-Returns:
-    The node argument        
+#### Returns:
+- The node argument
 
 
 
@@ -1578,8 +1578,8 @@ v = verts.select((verts.index % 2).equal(0)) # Even indices in the previous sele
 #### Args:
 - selection (Boolean or Integer): The selection condition
     
-Returns:
-    Domain with the given selection (Domain)
+#### Returns:
+- Domain with the given selection (Domain)
 
 If a selection is existing, the resulting selection is a logical and betwenn the two
 

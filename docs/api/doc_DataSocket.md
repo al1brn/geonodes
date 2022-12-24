@@ -33,8 +33,8 @@ DataSocket(self, socket, node=None, label=None)
 
  Shortcut for `self.bsocket.bl_idname`
 
-Returns:
-    socket bl_idname (str)
+#### Returns:
+- socket bl_idname (str)
 
 
 
@@ -44,8 +44,8 @@ Returns:
 
  Shortcut for `self.bsocket.node`
 
-Returns:
-    Blender node (bpy.types.Node)
+#### Returns:
+- Blender node (bpy.types.Node)
 
 
 
@@ -55,8 +55,8 @@ Returns:
 
  Shortcut for `self.bsocket.is_multi_output`
 
-Returns:
-    is multi input socket (bool)
+#### Returns:
+- is multi input socket (bool)
 
 
 
@@ -66,8 +66,8 @@ Returns:
 
  Shortcut for `self.bsocket.is_output`
 
-Returns:
-    is an aoutput socket (bool)
+#### Returns:
+- is an aoutput socket (bool)
 
 
 
@@ -79,8 +79,8 @@ Returns:
 
 Raise an exception if called on an output socket.
 
-Returns:
-    is plugged (bool)
+#### Returns:
+- is plugged (bool)
 
 
 
@@ -90,8 +90,8 @@ Returns:
 
  Shortcut for `self.bsocket.links`      
 
-Returns:
-    list of links (list)
+#### Returns:
+- list of links (list)
 
 
 
@@ -101,8 +101,8 @@ Returns:
 
  Shortcut for `self.bsocket.name`
 
-Returns:
-    socket name (str)
+#### Returns:
+- socket name (str)
 
 
 
@@ -123,8 +123,8 @@ Returns:
 Depending on the _is_output_ property, the socket belongs either to *node.inputs* or
 *node.outputs*.
 
-Returns:
-    socket index (int)
+#### Returns:
+- socket index (int)
 
 
 
@@ -162,8 +162,8 @@ These additional values allow to enter angle, distance, factor... as group input
 #### Args:
 - class_name (str): the name of the class
     
-Returns:
-    bl_idname (str)
+#### Returns:
+- bl_idname (str)
 
 
 
@@ -225,8 +225,8 @@ def gives_bsocket(value)
 #### Args:
 - value (any): The value to test
     
-Returns:
-    value is bpy.types.NodeSocket or Socket (bool)
+#### Returns:
+- value is bpy.types.NodeSocket or Socket (bool)
 
 
 
@@ -245,8 +245,8 @@ def is_socket(value)
 #### Args:
 - value (any): The value to test
     
-Returns:
-    is a socket (bool)
+#### Returns:
+- is a socket (bool)
 
 
 
@@ -264,8 +264,8 @@ def is_vector(value)
 #### Args:
 - value (any): The value to test
     
-Returns:
-    is a socket (bool)
+#### Returns:
+- is a socket (bool)
 
 
 
@@ -303,8 +303,8 @@ This methods is used to compute the **data_type** value in nodes accepting multi
 - default (str): default data_type
 - color (str): code for color data_type
     
-Returns:
-    the data type of the value
+#### Returns:
+- the data type of the value
 
 
 
@@ -322,8 +322,8 @@ def connected_sockets(self)
 
  Returns the list of Socket instances linked to this socket.
 
-Returns:
-    list of connected sockets (list of Sockets)
+#### Returns:
+- list of connected sockets (list of Sockets)
 
 
 
@@ -381,8 +381,8 @@ def get_blender_socket(self)
 
  Returns the property bsocket.
 
-Returns:
-    bsocket (bpy.types.NodeSocket)
+#### Returns:
+- bsocket (bpy.types.NodeSocket)
 
 
 
@@ -428,8 +428,8 @@ def plug(self, *values)
 #### Args:
 - values (any): The output sockets. More than one values can be passed if the input socket is multi input.
     
-Returns:
-    None
+#### Returns:
+- None
 
 
 
@@ -492,8 +492,8 @@ mesh.set_shade_smooth(True)
 - node (Node): the new node
 - socket_name (str): name of the outpout socket in the node. If None, takes the first output socket of the node.
     
-Returns:
-    self        
+#### Returns:
+- self
 
 
 
@@ -520,8 +520,8 @@ The created socket can be read from within another [Tree](Tree.md) by:
 #### Args:
 - name (str): User name of the socket
     
-Returns:
-    None
+#### Returns:
+- None
 
 
 

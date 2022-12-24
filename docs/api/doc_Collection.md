@@ -41,8 +41,8 @@ def Input(cls, value=None, name="Collection", description="")
 - name: The socket name
 - description: User tip
     
-Returns:
-    Collection: The Collection data socket
+#### Returns:
+- Collection: The Collection data socket
 
 
 

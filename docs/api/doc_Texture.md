@@ -41,8 +41,8 @@ def Input(cls, value=None, name="Texture", description="")
 - name: The socket name
 - description: User tip
     
-Returns:
-    Texture: The Texture data socket
+#### Returns:
+- Texture: The Texture data socket
 
 
 

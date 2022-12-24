@@ -503,8 +503,8 @@ def Input(cls, name = None, description = "")
 - name: The socket name
 - description: User tip
     
-Returns:
-    Geometry: The Geometry data socket
+#### Returns:
+- Geometry: The Geometry data socket
     
 Note
 ----
@@ -954,8 +954,8 @@ def instantiate(self, count = 1, realize = False)
 - count: Number of instances to create
 - realize: True to realize the instances
     
-Returns:
-    Instances or Geometry
+#### Returns:
+- Instances or Geometry
     
 The duplication is performed by instantiating the geometry along the vertices
 of a Mesh Line initialized with `count` points.
@@ -1911,8 +1911,8 @@ def show_handles(self)
 
  Generate a mesh and cloud points to visualize the control points and handles
 
-Returns:
-    Geometry: The geometry can be joined to the output
+#### Returns:
+- Geometry: The geometry can be joined to the output
     
 Example:
     
