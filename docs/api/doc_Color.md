@@ -15,8 +15,7 @@ c = Color()
 c.red = .5
 c.saturation = .2
 ```
-    
-    
+
 Color supports some operators:
     
 |    Operator            | Mix mode    | Method                             |

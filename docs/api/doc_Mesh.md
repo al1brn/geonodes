@@ -646,8 +646,6 @@ def FromCollection(cls, collection=None, separate_children
 
  Get the geometry from a collection
 
-.. blid:: GeometryNodeCollectionInfo
-
 
 
 <sub>Go to [top](#class-Mesh) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
@@ -720,10 +718,8 @@ def Input(cls, name = None, description = "")
 #### Returns:
 - Geometry: The Geometry data socket
     
-Note
-----
-    This method create a new input socket in the Group Input node. To get the **default** input geometry,
-    use :attr:`Tree.input_geometry`.
+> Note: This method create a new input socket in the Group Input node. To get the **default** input geometry,
+  use [Tree.input_geometry](#Tree.md#input_geometry) property.
     
 
 
@@ -1683,14 +1679,14 @@ of a Mesh Line initialized with `count` points.
 
 The operator ``*`` can be used to operate this method with `realize = False`:
     
-.. code-block::
+```python
     
-    curves = curve * 10
-    
-    # is equivalent to
-    
-    curves = curve.duplicate(10, realize=False)
-    
+curves = curve * 10
+
+# is equivalent to
+
+curves = curve.duplicate(10, realize=False)
+```
 
 
 
@@ -2709,13 +2705,13 @@ def show_handles(self)
     
 Example:
     
-    .. code-block:: python
-    
-        curve = ... # Curve initialization
-        
-        visu = curve.show_handles()
-        
-        tree.output_geometry = curve + visu
+```python
+curve = ... # Curve initialization
+
+visu = curve.show_handles()
+
+tree.output_geometry = curve + visu
+```
     
 
 

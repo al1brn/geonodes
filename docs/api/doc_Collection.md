@@ -4,9 +4,6 @@
 
  Collection DataSocket
 
-#### Args:
-- bcoll (bpt.types.Collection, str): NodeSocketCollection, Collection or collection name
-
 
 
 

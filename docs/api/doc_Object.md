@@ -4,9 +4,6 @@
 
  Collection DataSocket
 
-#### Args:
-- obj (bpt.types.Object, str): NodeSocketObject or Object or object name
-
 
 
 

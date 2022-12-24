@@ -870,8 +870,7 @@ class Color(DataSocket):
     c.red = .5
     c.saturation = .2
     ```
-        
-        
+
     Color supports some operators:
         
     |    Operator            | Mix mode    | Method                             |
@@ -883,28 +882,6 @@ class Color(DataSocket):
     |         `%`            | MIX         | [mix](#mix)                        |
     
     """
-    
-            Method(ret_socket='result', a='self', data_type="'RGBA'", factor_mode="'UNIFORM'", arg_rename={'b':'color'}, fname='mix',              ),
-            Method(ret_socket='result', a='self', data_type="'RGBA'", factor_mode="'UNIFORM'", arg_rename={'b':'color'}, fname='mix_darken',       blend_type="'DARKEN'"),
-            Method(ret_socket='result', a='self', data_type="'RGBA'", factor_mode="'UNIFORM'", arg_rename={'b':'color'}, fname='mix_multiply',     blend_type="'MULTIPLY'"),
-            Method(ret_socket='result', a='self', data_type="'RGBA'", factor_mode="'UNIFORM'", arg_rename={'b':'color'}, fname='mix_burn',         blend_type="'BURN'"),
-            Method(ret_socket='result', a='self', data_type="'RGBA'", factor_mode="'UNIFORM'", arg_rename={'b':'color'}, fname='mix_lighten',      blend_type="'LIGHTEN'"),
-            Method(ret_socket='result', a='self', data_type="'RGBA'", factor_mode="'UNIFORM'", arg_rename={'b':'color'}, fname='mix_screen',       blend_type="'SCREEN'"),
-            Method(ret_socket='result', a='self', data_type="'RGBA'", factor_mode="'UNIFORM'", arg_rename={'b':'color'}, fname='mix_dodge',        blend_type="'DODGE'"),
-            Method(ret_socket='result', a='self', data_type="'RGBA'", factor_mode="'UNIFORM'", arg_rename={'b':'color'}, fname='mix_add',          blend_type="'ADD'"),
-            Method(ret_socket='result', a='self', data_type="'RGBA'", factor_mode="'UNIFORM'", arg_rename={'b':'color'}, fname='mix_overlay',      blend_type="'OVERLAY'"),
-            Method(ret_socket='result', a='self', data_type="'RGBA'", factor_mode="'UNIFORM'", arg_rename={'b':'color'}, fname='mix_soft_light',   blend_type="'SOFT_LIGHT'"),
-            Method(ret_socket='result', a='self', data_type="'RGBA'", factor_mode="'UNIFORM'", arg_rename={'b':'color'}, fname='mix_linear_light', blend_type="'LINEAR_LIGHT'"),
-            Method(ret_socket='result', a='self', data_type="'RGBA'", factor_mode="'UNIFORM'", arg_rename={'b':'color'}, fname='mix_difference',   blend_type="'DIFFERENCE'"),
-            Method(ret_socket='result', a='self', data_type="'RGBA'", factor_mode="'UNIFORM'", arg_rename={'b':'color'}, fname='mix_subtract',     blend_type="'SUBTRACT'"),
-            Method(ret_socket='result', a='self', data_type="'RGBA'", factor_mode="'UNIFORM'", arg_rename={'b':'color'}, fname='mix_divide',       blend_type="'DIVIDE'"),
-            Method(ret_socket='result', a='self', data_type="'RGBA'", factor_mode="'UNIFORM'", arg_rename={'b':'color'}, fname='mix_hue',          blend_type="'HUE'"),
-            Method(ret_socket='result', a='self', data_type="'RGBA'", factor_mode="'UNIFORM'", arg_rename={'b':'color'}, fname='mix_saturation',   blend_type="'SATURATION'"),
-            Method(ret_socket='result', a='self', data_type="'RGBA'", factor_mode="'UNIFORM'", arg_rename={'b':'color'}, fname='mix_color',        blend_type="'COLOR'"),
-            Method(ret_socket='result', a='self', data_type="'RGBA'", factor_mode="'UNIFORM'", arg_rename={'b':'color'}, fname='mix_value',        blend_type="'VALUE'"),
-    
-    
-    
     
     def __init__(self, value=None, label=None):
 
@@ -1331,56 +1308,61 @@ class Color(DataSocket):
     # ---------------------------------------------------------------------------
     # Color operators
     # just for fun
+    # `+`            | ADD         | [mix_add](#mix_add)                |
+    # `*`            | MULTIPLY    | [mix_multiply](#mix_multiply)      |
+    # `-`            | DIFFERENCE  | [mix_difference](#mix_difference)  |
+    # `/`            | DIVIDE      | [mix_divide](#mix_divide)          |
+    # `%`            | MIX         | [mix](#mix)                        |
     
     def __neg__(self):
         return 1. - self
 
     def __add__(self, other):
-        return self.add(other)
+        return self.mix_add(other)
     
     def __radd__(self, other):
-        ret = self.add(other)
+        ret = self.mix_add(other)
         ret.node.switch_input_sockets(0, 1)
         return ret
     
     def __iadd__(self, other):
-        return self.stack(self.add(other).node)
+        return self.stack(self.mix_add(other).node)
     
 
     def __sub__(self, other):
-        return self.subtract(other)
+        return self.mix_difference(other)
     
     def __rsub__(self, other):
-        ret = self.subtract(other)
+        ret = self.mix_difference(other)
         ret.node.switch_input_sockets(0, 1)
         return ret
     
     def __isub__(self, other):
-        return self.stack(self.subtract(other).node)
+        return self.stack(self.mix_difference(other).node)
     
     
     def __mul__(self, other):
-        return self.multiply(other)
+        return self.mix_multiply(other)
     
     def __rmul__(self, other):
-        ret = self.multiply(other)
+        ret = self.mix_multiply(other)
         ret.node.switch_input_sockets(0, 1)
         return ret
     
     def __imul__(self, other):
-        return self.stack(self.multiply(other).node)
+        return self.stack(self.mix_multiply(other).node)
 
     
     def __truediv__(self, other):
-        return self.divide(other)
+        return self.mix_divide(other)
     
     def __rtruediv__(self, other):
-        ret = self.divide(other)
+        ret = self.mix_divide(other)
         ret.node.switch_input_sockets(0, 1)
         return ret
     
     def __itruediv__(self, other):
-        return self.stack(self.divide(other).node)
+        return self.stack(self.mix_divide(other).node)
     
 
     def __mod__(self, other):
@@ -1519,10 +1501,8 @@ class Geometry(DataSocket):
         Returns:
             Geometry: The Geometry data socket
             
-        Note
-        ----
-            This method create a new input socket in the Group Input node. To get the **default** input geometry,
-            use :attr:`Tree.input_geometry`.
+        > Note: This method create a new input socket in the Group Input node. To get the **default** input geometry,
+          use [Tree.input_geometry](#Tree.md#input_geometry) property.
             
         """
         if name is None:
@@ -1532,8 +1512,6 @@ class Geometry(DataSocket):
     @classmethod
     def FromCollection(cls, collection=None, separate_children: bool = None, reset_children: bool = None, transform_space: str = 'ORIGINAL'):
         """ Get the geometry from a collection
-        
-        .. blid:: GeometryNodeCollectionInfo
         """
         if isinstance(collection, str):
             coll = bpy.data.collection[collection]
@@ -1578,14 +1556,14 @@ class Geometry(DataSocket):
         
         The operator ``*`` can be used to operate this method with `realize = False`:
             
-        .. code-block::
+        ```python
             
-            curves = curve * 10
-            
-            # is equivalent to
-            
-            curves = curve.duplicate(10, realize=False)
-            
+        curves = curve * 10
+        
+        # is equivalent to
+        
+        curves = curve.duplicate(10, realize=False)
+        ```
         """
         
         import geonodes as gn
@@ -1615,13 +1593,13 @@ class Geometry(DataSocket):
             
         Example:
             
-            .. code-block:: python
-            
-                curve = ... # Curve initialization
-                
-                visu = curve.show_handles()
-                
-                tree.output_geometry = curve + visu
+        ```python
+        curve = ... # Curve initialization
+        
+        visu = curve.show_handles()
+        
+        tree.output_geometry = curve + visu
+        ```
             
         """
         
@@ -1653,9 +1631,6 @@ class Geometry(DataSocket):
             pts = gn.Mesh(ctl).to_points(radius=0.005)
                 
             return self.join(ctl, pts)
-        
-        
-        
     
 
 # -----------------------------------------------------------------------------------------------------------------------------
@@ -1663,9 +1638,6 @@ class Geometry(DataSocket):
 
 class Collection(DataSocket):
     """ Collection DataSocket
-    
-    Args
-        bcoll (bpt.types.Collection, str): NodeSocketCollection, Collection or collection name    
     """
     
     def __init__(self, bcoll):
@@ -1704,9 +1676,6 @@ class Collection(DataSocket):
 
 class Object(DataSocket):
     """ Collection DataSocket
-    
-    Args
-        obj (bpt.types.Object, str): NodeSocketObject or Object or object name    
     """
     
     def __init__(self, obj=None):
