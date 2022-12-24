@@ -58,7 +58,8 @@ with gn.Tree("Shading smooth") as tree:
   geo.subdivide()             # Node named 'Subdivide Mesh'
   geo.set_shade_smooth(True)  # Node named 'Set Shade Smooth'
   
-  tree.og = geo               # or tree.output_geometry = geo``` 
+  tree.og = geo               # or tree.output_geometry = geo
+``` 
 
 ## Using domains
 
