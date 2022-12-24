@@ -8,7 +8,7 @@
 
 ## Root for types
 
-- [DataSocket](DataSocket.md)
+- [DataSocket](api/DataSocket.md)
 
 ## Basic types
 
