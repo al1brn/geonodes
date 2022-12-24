@@ -5,7 +5,7 @@
 | node | class | method name |
 |------|-------|-------------|
 | [Accumulate Field](GeometryNodeAccumulateField.md) | [Domain](Domain.md) | [accumulate_field](Domain.md#accumulate_field) |
-| [Align Euler to Vector](FunctionNodeAlignEulerToVector.md) | [Vector](Vector.md) | [align_euler_to_vector](Vector.md#align_euler_to_vector) |
+| [Align Euler to Vector](FunctionNodeAlignEulerToVector.md) | [Vector](Vector.md) | - [align_euler_to_vector](Vector.md#align_euler_to_vector)<br>- [AlignToVector](Vector.md#AlignToVector)|
 |      | [function](function.md) | [align_euler_to_vector](function.md#align_euler_to_vector) |
 | [Arc](GeometryNodeCurveArc.md) | [Curve](Curve.md) | - [Arc](Curve.md#Arc)<br>- [ArcFromPoints](Curve.md#ArcFromPoints)|
 | [Attribute Statistic](GeometryNodeAttributeStatistic.md) | [Domain](Domain.md) | [attribute_statistic](Domain.md#attribute_statistic) / [attribute_mean](Domain.md#attribute_mean) / [attribute_median](Domain.md#attribute_median) / [attribute_sum](Domain.md#attribute_sum) / [attribute_min](Domain.md#attribute_min) / [attribute_max](Domain.md#attribute_max) / [attribute_range](Domain.md#attribute_range) / [attribute_std](Domain.md#attribute_std) / [attribute_var](Domain.md#attribute_var) / |

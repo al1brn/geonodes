@@ -35,7 +35,7 @@ Vector(self, value=(0., 0., 0.), label=None)
 
 **Class and static methods**
 
-[Combine](#Combine) | [Input](#Input) | [Random](#Random) | [Rotation](#Rotation) | [Translation](#Translation) | [Vector](#Vector) | [VectorXYZ](#VectorXYZ)
+[AlignToVector](#AlignToVector) | [Combine](#Combine) | [Input](#Input) | [Random](#Random) | [Rotation](#Rotation) | [Translation](#Translation) | [Vector](#Vector) | [VectorXYZ](#VectorXYZ)
 
 ***Inherited***
 
@@ -84,6 +84,33 @@ Vector(self, value=(0., 0., 0.), label=None)
 <sub>Go to [top](#class-Vector) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## Class and static methods
+
+### AlignToVector
+
+```python
+@classmethod
+def AlignToVector(cls, factor=None, vector=None, axis='X', pivot_axis='AUTO')
+```
+
+
+
+> Node: [Align Euler to Vector](FunctionNodeAlignEulerToVector.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/align_euler_to_vector.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeAlignEulerToVector.html)
+
+#### Args:
+- factor: Float
+- vector: Vector
+- axis (str): 'X' in [X, Y, Z]
+- pivot_axis (str): 'AUTO' in [AUTO, X, Y, Z]
+
+#### Returns:
+- socket `rotation`
+
+
+
+
+
+
+<sub>Go to [top](#class-Vector) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### Combine
 

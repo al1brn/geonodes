@@ -25,7 +25,7 @@ class AlignEulerToVector(Node):
         global functions:
             align_euler_to_vector 
         Vector:
-            align_euler_to_vector 
+            align_euler_to_vector AlignToVector 
 
     Args:
         rotation (DataSocket): Vector
@@ -2356,7 +2356,7 @@ class HandleTypeSelection(Node):
 
     Args:
         handle_type (str): Node parameter, default = 'AUTO' in ('FREE', 'AUTO', 'VECTOR', 'ALIGN')
-        mode (set): Node parameter, default = {'LEFT', 'RIGHT'}
+        mode (set): Node parameter, default = {'RIGHT', 'LEFT'}
         node_color (color): Node color
         node_label (str): Node label
 
@@ -2368,7 +2368,7 @@ class HandleTypeSelection(Node):
 
     """
 
-    def __init__(self, handle_type='AUTO', mode={'LEFT', 'RIGHT'}, label=None, node_color=None):
+    def __init__(self, handle_type='AUTO', mode={'RIGHT', 'LEFT'}, label=None, node_color=None):
 
         super().__init__('GeometryNodeCurveHandleTypeSelection', node_name='Handle Type Selection', label=label, node_color=node_color)
 
@@ -3080,7 +3080,7 @@ class SetHandleType(Node):
         curve (DataSocket): Curve
         selection (DataSocket): Boolean
         handle_type (str): Node parameter, default = 'AUTO' in ('FREE', 'AUTO', 'VECTOR', 'ALIGN')
-        mode (set): Node parameter, default = {'LEFT', 'RIGHT'}
+        mode (set): Node parameter, default = {'RIGHT', 'LEFT'}
         node_color (color): Node color
         node_label (str): Node label
 
@@ -3092,7 +3092,7 @@ class SetHandleType(Node):
 
     """
 
-    def __init__(self, curve=None, selection=None, handle_type='AUTO', mode={'LEFT', 'RIGHT'}, label=None, node_color=None):
+    def __init__(self, curve=None, selection=None, handle_type='AUTO', mode={'RIGHT', 'LEFT'}, label=None, node_color=None):
 
         super().__init__('GeometryNodeCurveSetHandles', node_name='Set Handle Type', label=label, node_color=node_color)
 

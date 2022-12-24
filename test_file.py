@@ -215,6 +215,7 @@ with gn.Tree('Geometry Nodes') as tree:
     vector.mix_non_uniform()
     var = gn.Vector.Vector()
     vector.align_euler_to_vector()
+    var = gn.Vector.AlignToVector()
     vector.compare()
     vector.elements_less_than()
     vector.elements_less_equal()

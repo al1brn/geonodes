@@ -424,7 +424,7 @@
 | node | class | method name |
 |------|-------|-------------|
 | [Accumulate Field](GeometryNodeAccumulateField.md) | [Domain](Domain.md) | [accumulate_field](Domain.md#accumulate_field) |
-| [Align Euler to Vector](FunctionNodeAlignEulerToVector.md) | [Vector](Vector.md) | [align_euler_to_vector](Vector.md#align_euler_to_vector) |
+| [Align Euler to Vector](FunctionNodeAlignEulerToVector.md) | [Vector](Vector.md) | - [align_euler_to_vector](Vector.md#align_euler_to_vector)<br>- [AlignToVector](Vector.md#AlignToVector)|
 |      | [function](function.md) | [align_euler_to_vector](function.md#align_euler_to_vector) |
 | [Boolean Math](FunctionNodeBooleanMath.md) | [Boolean](Boolean.md) | [b_and](Boolean.md#b_and) / [b_or](Boolean.md#b_or) / [b_not](Boolean.md#b_not) / [nand](Boolean.md#nand) / [nor](Boolean.md#nor) / [xnor](Boolean.md#xnor) / [xor](Boolean.md#xor) / [imply](Boolean.md#imply) / [nimply](Boolean.md#nimply) / |
 |      | [function](function.md) | [b_and](function.md#b_and) / [b_or](function.md#b_or) / [b_not](function.md#b_not) / [nand](function.md#nand) / [nor](function.md#nor) / [xnor](function.md#xnor) / [xor](function.md#xor) / [imply](function.md#imply) / [nimply](function.md#nimply) / |
