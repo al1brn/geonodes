@@ -147,6 +147,8 @@ Returns:
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ## Class and static methods
 
 ### get_prefix

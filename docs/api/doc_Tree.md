@@ -150,17 +150,23 @@ Tree(self, tree_name, clear=False, group=False, fake_user=False, prefix=None)
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### frame
 
  The "Scene Time" output socket "frame".
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### ig
 
  Shortcut for [input_geometry](#input_geometry).
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### input_geometry
 
@@ -172,11 +178,15 @@ Tree(self, tree_name, clear=False, group=False, fake_user=False, prefix=None)
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### og
 
  Shortcut for [output_geometry](#output_geometry).
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### output_geometry
 
@@ -188,17 +198,23 @@ tree.output_geometry = my_geometry
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### scene
 
  Maintain a single instance of the node :class:`SceneTime`.
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### seconds
 
  The "Scene Time" output socket "seconds".
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## Methods
 

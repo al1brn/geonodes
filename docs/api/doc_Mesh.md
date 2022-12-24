@@ -6,15 +6,15 @@
 
 **Properties**
 
-[ID](#ID) | [bl_idname](#bl_idname) | [bnode](#bnode) | [bounding_box](#bounding_box) | [bounding_box_min](#bounding_box_min) | [convex_hull](#convex_hull) | [corner_count](#corner_count) | [curve_component](#curve_component) | [domain_size](#domain_size) | [edge_count](#edge_count) | [face_count](#face_count) | [index](#index) | [instances_component](#instances_component) | [is_multi_input](#is_multi_input) | [is_output](#is_output) | [is_plugged](#is_plugged) | [is_viewport](#is_viewport) | [island](#island) | [island_count](#island_count) | [island_index](#island_index) | [links](#links) | [material_index](#material_index) | [mesh_component](#mesh_component) | [name](#name) | [node_chain_label](#node_chain_label) | [normal](#normal) | [point_count](#point_count) | [points_component](#points_component) | [position](#position) | [radius](#radius) | [separate_components](#separate_components) | [socket_index](#socket_index) | [volume_component](#volume_component)
+[ID](#ID) | [bounding_box](#bounding_box) | [bounding_box_min](#bounding_box_min) | [convex_hull](#convex_hull) | [corner_count](#corner_count) | [curve_component](#curve_component) | [domain_size](#domain_size) | [edge_count](#edge_count) | [face_count](#face_count) | [index](#index) | [instances_component](#instances_component) | [is_viewport](#is_viewport) | [island](#island) | [island_count](#island_count) | [island_index](#island_index) | [material_index](#material_index) | [mesh_component](#mesh_component) | [normal](#normal) | [point_count](#point_count) | [points_component](#points_component) | [position](#position) | [radius](#radius) | [separate_components](#separate_components) | [volume_component](#volume_component)
 
 **Class and static methods**
 
-[Circle](#Circle) | [Collection](#Collection) | [Cone](#Cone) | [Cube](#Cube) | [Cylinder](#Cylinder) | [FromCollection](#FromCollection) | [Grid](#Grid) | [IcoSphere](#IcoSphere) | [Input](#Input) | [Line](#Line) | [LineEndPoints](#LineEndPoints) | [LineEndPointsResolution](#LineEndPointsResolution) | [LineOffset](#LineOffset) | [LineOffsetResolution](#LineOffsetResolution) | [UVSphere](#UVSphere) | [get_bl_idname](#get_bl_idname) | [get_class_name](#get_class_name) | [gives_bsocket](#gives_bsocket) | [is_socket](#is_socket) | [is_vector](#is_vector) | [value_data_type](#value_data_type)
+[Circle](#Circle) | [Collection](#Collection) | [Cone](#Cone) | [Cube](#Cube) | [Cylinder](#Cylinder) | [FromCollection](#FromCollection) | [Grid](#Grid) | [IcoSphere](#IcoSphere) | [Input](#Input) | [Line](#Line) | [LineEndPoints](#LineEndPoints) | [LineEndPointsResolution](#LineEndPointsResolution) | [LineOffset](#LineOffset) | [LineOffsetResolution](#LineOffsetResolution) | [UVSphere](#UVSphere)
 
 **Methods**
 
-[attribute_statistic](#attribute_statistic) | [boolean_difference](#boolean_difference) | [boolean_intersect](#boolean_intersect) | [boolean_union](#boolean_union) | [capture_attribute](#capture_attribute) | [capture_attribute_node](#capture_attribute_node) | [connected_sockets](#connected_sockets) | [convert_python_type](#convert_python_type) | [corners_of_face](#corners_of_face) | [corners_of_vertex](#corners_of_vertex) | [delete](#delete) | [delete_all](#delete_all) | [delete_edges](#delete_edges) | [delete_faces](#delete_faces) | [distribute_points_on_faces](#distribute_points_on_faces) | [dual_mesh](#dual_mesh) | [duplicate](#duplicate) | [edge_paths_to_curves](#edge_paths_to_curves) | [edge_paths_to_selection](#edge_paths_to_selection) | [edges_of_corner](#edges_of_corner) | [edges_of_vertex](#edges_of_vertex) | [extrude](#extrude) | [face_is_planar](#face_is_planar) | [face_of_corner](#face_of_corner) | [face_set_boundaries](#face_set_boundaries) | [field_at_index](#field_at_index) | [flip_faces](#flip_faces) | [get_blender_socket](#get_blender_socket) | [get_named_boolean](#get_named_boolean) | [get_named_color](#get_named_color) | [get_named_float](#get_named_float) | [get_named_integer](#get_named_integer) | [get_named_vector](#get_named_vector) | [init_domains](#init_domains) | [init_socket](#init_socket) | [instance_on_points](#instance_on_points) | [instantiate](#instantiate) | [interpolate_domain](#interpolate_domain) | [is_shade_smooth](#is_shade_smooth) | [join](#join) | [material_selection](#material_selection) | [merge_by_distance](#merge_by_distance) | [named_attribute](#named_attribute) | [offset_corner_in_face](#offset_corner_in_face) | [pack_uv_islands](#pack_uv_islands) | [plug](#plug) | [proximity](#proximity) | [proximity_edges](#proximity_edges) | [proximity_faces](#proximity_faces) | [proximity_points](#proximity_points) | [random_boolean](#random_boolean) | [random_float](#random_float) | [random_integer](#random_integer) | [random_vector](#random_vector) | [raycast](#raycast) | [raycast_interpolated](#raycast_interpolated) | [raycast_nearest](#raycast_nearest) | [remove_named_attribute](#remove_named_attribute) | [replace_material](#replace_material) | [reroute](#reroute) | [reset_properties](#reset_properties) | [sample_index](#sample_index) | [sample_nearest](#sample_nearest) | [sample_nearest_surface](#sample_nearest_surface) | [sample_uv_surface](#sample_uv_surface) | [scale_elements](#scale_elements) | [scale_single_axis](#scale_single_axis) | [scale_uniform](#scale_uniform) | [separate](#separate) | [set_ID](#set_ID) | [set_material](#set_material) | [set_material_index](#set_material_index) | [set_named_boolean](#set_named_boolean) | [set_named_color](#set_named_color) | [set_named_float](#set_named_float) | [set_named_integer](#set_named_integer) | [set_named_vector](#set_named_vector) | [set_position](#set_position) | [set_shade_smooth](#set_shade_smooth) | [shortest_edge_paths](#shortest_edge_paths) | [show_handles](#show_handles) | [split_edges](#split_edges) | [stack](#stack) | [store_named_attribute](#store_named_attribute) | [subdivide](#subdivide) | [subdivision_surface](#subdivision_surface) | [switch](#switch) | [to_curve](#to_curve) | [to_instance](#to_instance) | [to_output](#to_output) | [to_points](#to_points) | [to_volume](#to_volume) | [transform](#transform) | [triangulate](#triangulate) | [uv_unwrap](#uv_unwrap) | [vertex_of_corner](#vertex_of_corner)
+[attribute_statistic](#attribute_statistic) | [boolean_difference](#boolean_difference) | [boolean_intersect](#boolean_intersect) | [boolean_union](#boolean_union) | [capture_attribute](#capture_attribute) | [capture_attribute_node](#capture_attribute_node) | [corners_of_face](#corners_of_face) | [corners_of_vertex](#corners_of_vertex) | [delete](#delete) | [delete_all](#delete_all) | [delete_edges](#delete_edges) | [delete_faces](#delete_faces) | [distribute_points_on_faces](#distribute_points_on_faces) | [dual_mesh](#dual_mesh) | [duplicate](#duplicate) | [edge_paths_to_curves](#edge_paths_to_curves) | [edge_paths_to_selection](#edge_paths_to_selection) | [edges_of_corner](#edges_of_corner) | [edges_of_vertex](#edges_of_vertex) | [extrude](#extrude) | [face_is_planar](#face_is_planar) | [face_of_corner](#face_of_corner) | [face_set_boundaries](#face_set_boundaries) | [field_at_index](#field_at_index) | [flip_faces](#flip_faces) | [get_named_boolean](#get_named_boolean) | [get_named_color](#get_named_color) | [get_named_float](#get_named_float) | [get_named_integer](#get_named_integer) | [get_named_vector](#get_named_vector) | [instance_on_points](#instance_on_points) | [instantiate](#instantiate) | [interpolate_domain](#interpolate_domain) | [is_shade_smooth](#is_shade_smooth) | [join](#join) | [material_selection](#material_selection) | [merge_by_distance](#merge_by_distance) | [named_attribute](#named_attribute) | [offset_corner_in_face](#offset_corner_in_face) | [pack_uv_islands](#pack_uv_islands) | [proximity](#proximity) | [proximity_edges](#proximity_edges) | [proximity_faces](#proximity_faces) | [proximity_points](#proximity_points) | [random_boolean](#random_boolean) | [random_float](#random_float) | [random_integer](#random_integer) | [random_vector](#random_vector) | [raycast](#raycast) | [raycast_interpolated](#raycast_interpolated) | [raycast_nearest](#raycast_nearest) | [remove_named_attribute](#remove_named_attribute) | [replace_material](#replace_material) | [sample_index](#sample_index) | [sample_nearest](#sample_nearest) | [sample_nearest_surface](#sample_nearest_surface) | [sample_uv_surface](#sample_uv_surface) | [scale_elements](#scale_elements) | [scale_single_axis](#scale_single_axis) | [scale_uniform](#scale_uniform) | [separate](#separate) | [set_ID](#set_ID) | [set_material](#set_material) | [set_material_index](#set_material_index) | [set_named_boolean](#set_named_boolean) | [set_named_color](#set_named_color) | [set_named_float](#set_named_float) | [set_named_integer](#set_named_integer) | [set_named_vector](#set_named_vector) | [set_position](#set_position) | [set_shade_smooth](#set_shade_smooth) | [shortest_edge_paths](#shortest_edge_paths) | [show_handles](#show_handles) | [split_edges](#split_edges) | [store_named_attribute](#store_named_attribute) | [subdivide](#subdivide) | [subdivision_surface](#subdivision_surface) | [switch](#switch) | [to_curve](#to_curve) | [to_instance](#to_instance) | [to_points](#to_points) | [to_volume](#to_volume) | [transform](#transform) | [triangulate](#triangulate) | [uv_unwrap](#uv_unwrap) | [vertex_of_corner](#vertex_of_corner)
 
 ## Properties
 
@@ -38,23 +38,7 @@ def ID(self):
 
 
 
-### bl_idname
-
- Shortcut for `self.bsocket.bl_idname`
-
-Returns:
-    socket bl_idname (str)
-
-
-
-### bnode
-
- Shortcut for `self.bsocket.node`
-
-Returns:
-    Blender node (bpy.types.Node)
-
-
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### bounding_box
 
@@ -76,6 +60,8 @@ def bounding_box(self):
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### bounding_box_min
 
 
@@ -95,6 +81,8 @@ def bounding_box_min(self):
 
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### convex_hull
 
@@ -116,6 +104,8 @@ def convex_hull(self):
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### corner_count
 
 
@@ -135,6 +125,8 @@ def corner_count(self):
 
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### curve_component
 
@@ -156,6 +148,8 @@ def curve_component(self):
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### domain_size
 
 
@@ -175,6 +169,8 @@ def domain_size(self):
 
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### edge_count
 
@@ -196,6 +192,8 @@ def edge_count(self):
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### face_count
 
 
@@ -215,6 +213,8 @@ def face_count(self):
 
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### index
 
@@ -236,6 +236,8 @@ def index(self):
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### instances_component
 
 
@@ -256,34 +258,7 @@ def instances_component(self):
 
 
 
-### is_multi_input
-
- Shortcut for `self.bsocket.is_multi_output`
-
-Returns:
-    is multi input socket (bool)
-
-
-
-### is_output
-
- Shortcut for `self.bsocket.is_output`
-
-Returns:
-    is an aoutput socket (bool)
-
-
-
-### is_plugged
-
- Indicates if the socket is connected or not.
-
-Raise an exception if called on an output socket.
-
-Returns:
-    is plugged (bool)
-
-
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### is_viewport
 
@@ -305,6 +280,8 @@ def is_viewport(self):
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### island
 
 
@@ -324,6 +301,8 @@ def island(self):
 
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### island_count
 
@@ -345,6 +324,8 @@ def island_count(self):
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### island_index
 
 
@@ -365,14 +346,7 @@ def island_index(self):
 
 
 
-### links
-
- Shortcut for `self.bsocket.links`      
-
-Returns:
-    list of links (list)
-
-
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### material_index
 
@@ -394,6 +368,8 @@ def material_index(self):
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### mesh_component
 
 
@@ -414,20 +390,7 @@ def mesh_component(self):
 
 
 
-### name
-
- Shortcut for `self.bsocket.name`
-
-Returns:
-    socket name (str)
-
-
-
-### node_chain_label
-
- Shortcut for *self.node.chain_label*
-
-
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### normal
 
@@ -449,6 +412,8 @@ def normal(self):
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### point_count
 
 
@@ -468,6 +433,8 @@ def point_count(self):
 
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### points_component
 
@@ -489,6 +456,8 @@ def points_component(self):
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### position
 
 
@@ -508,6 +477,8 @@ def position(self):
 
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### radius
 
@@ -529,6 +500,8 @@ def radius(self):
 
 
 
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### separate_components
 
 
@@ -549,18 +522,7 @@ def separate_components(self):
 
 
 
-### socket_index
-
- Return the index of the socket within the list of node sockets.
-
-Depending on the _is_output_ property, the socket belongs either to *node.inputs* or
-*node.outputs*.
-
-Returns:
-    socket index (int)
-
-
-
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### volume_component
 
@@ -581,6 +543,8 @@ def volume_component(self):
 
 
 
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## Class and static methods
 
@@ -1057,185 +1021,6 @@ def UVSphere(cls, segments=None, rings=None, radius=None):
 
 <sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
-### get_bl_idname
-
-```python
-@staticmethod
-def get_bl_idname(class_name)
-```
-
- Get the node socket bl_idname name from the Socket class
-
-Used to create a new group input socket. Called in `DataClass.Input` method to determine
-which socket type must be created.
-
-Note that here the class_name argument accepts additional values which correspond to **sub classes**:
-    
-| Sub class                 | bl_idname                     |
-|---------------------------|-------------------------------|
-| Unsigned                  | NodeSocketIntUnsigned         |
-| Factor                    | NodeSocketFloatFactor         |
-| Angle                     | NodeSocketFloatAngle          |
-| Distance                  | NodeSocketFloatDistance       |
-| Rotation                  | NodeSocketVectorEuler         |
-| xyz                       | NodeSocketVectorXYZ           |
-| Translation               | NodeSocketVectorTranslation   |
-  
-These additional values allow to enter angle, distance, factor... as group input values.
-
-#### Args:
-- class_name (str): the name of the class
-    
-Returns:
-    bl_idname (str)
-
-
-
-
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-### get_class_name
-
-```python
-@staticmethod
-def get_class_name(socket, with_sub_class = False)
-```
-
- Get the DataSocket class name corresponding to the socket type and name.
-
-| Socket bl_idname              | Geondes class name    | Sub class             |
-|-------------------------------|-----------------------|-----------------------|
-| NodeSocketBool                | Boolean               | None                  |
-| NodeSocketInt                 | Integer               | None                  |
-| NodeSocketIntUnsigned         | Integer               | NoUnsigned            |
-| NodeSocketFloat               | Float                 | None                  |
-| NodeSocketFloatFactor         | Float                 | Factor                |
-| NodeSocketFloatAngle          | Float                 | Angle                 |
-| NodeSocketFloatDistance       | Float                 | Distance              |
-| NodeSocketVector              | Vector                | None                  |
-| NodeSocketVectorEuler         | Vector                | Rotation              |
-| NodeSocketVectorXYZ           | Vector                | xyz                   |
-| NodeSocketVectorTranslation   | Vector                | Translation           |
-| NodeSocketColor               | Color                 | None                  |
-| NodeSocketString              | String                | None                  |
-| NodeSocketCollection          | Collection            | None                  |
-| NodeSocketImage               | Image                 | None                  |
-| NodeSocketMaterial            | Material              | None                  |
-| NodeSocketObject              | Object                | None                  |
-| NodeSocketTexture             | Texture               | None                  |
-| NodeSocketGeometry            | Geometry              | None                  |
-
-If the name of the socket is in ['Mesh', 'Points', 'Instances', 'Volume', 'Spline', 'Curve', 'Curves'],
-the name is chosen as the class name.
-
-#### Args:
-- socket (bpy.type.NodeSocket): the socket to use
-- with_sub_class (bool): return as as second value the sub type of the socket
-        
-
-
-
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-### gives_bsocket
-
-```python
-@staticmethod
-def gives_bsocket(value)
-```
-
- Test if the argument provides a valid output socket.
-
-#### Args:
-- value (any): The value to test
-    
-Returns:
-    value is bpy.types.NodeSocket or Socket (bool)
-
-
-
-
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-### is_socket
-
-```python
-@staticmethod
-def is_socket(value)
-```
-
- An alternative to isinstance(value, Socket)
-
-#### Args:
-- value (any): The value to test
-    
-Returns:
-    is a socket (bool)
-
-
-
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-### is_vector
-
-```python
-@staticmethod
-def is_vector(value)
-```
-
- Determine is the parameter is a vector.
-
-#### Args:
-- value (any): The value to test
-    
-Returns:
-    is a socket (bool)
-
-
-
-
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-### value_data_type
-
-```python
-@staticmethod
-def value_data_type(value, default='FLOAT', color='FLOAT_COLOR')
-```
-
- Returns the data type to which the socket belongs.
-
-This methods is used to compute the **data_type** value in nodes accepting multitype values.
-
-|    Socket                     |    data_type    |
-|-------------------------------|-----------------|
-| NodeSocketBool                | 'BOOLEAN'       |
-| NodeSocketInt                 | 'INT'           |
-| NodeSocketIntUnsigned         | 'INT'           |
-| NodeSocketFloat               | 'FLOAT'         |
-| NodeSocketFloatFactor         | 'FLOAT'         |
-| NodeSocketFloatAngle          | 'FLOAT'         |
-| NodeSocketFloatDistance       | 'FLOAT'         |
-| NodeSocketVector              | 'FLOAT_VECTOR'  |
-| NodeSocketVectorEuler         | 'FLOAT_VECTOR'  |
-| NodeSocketVectorXYZ           | 'FLOAT_VECTOR'  |
-| NodeSocketVectorTranslation   | 'FLOAT_VECTOR'  |
-| NodeSocketColor               | color           |                
-
-#### Args:
-- value (any): the value to analyze
-- default (str): default data_type
-- color (str): code for color data_type
-    
-Returns:
-    the data type of the value
-
-
-
-
-
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
 ## Methods
 
 ### attribute_statistic
@@ -1418,65 +1203,6 @@ def capture_attribute_node(self, geometry=None, value=None, data_type='FLOAT', d
 - node with sockets ['geometry', 'attribute']
 
 
-
-
-
-
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-### connected_sockets
-
-```python
-def connected_sockets(self)
-```
-
- Returns the list of Socket instances linked to this socket.
-
-Returns:
-    list of connected sockets (list of Sockets)
-
-
-
-
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-### convert_python_type
-
-```python
-def convert_python_type(self, value, raise_exception=True)
-```
-
- Convert a python value to a value which can be plug in the socket.
-
-The following table gives the conversion rules:
-    
-| Socket type       | Conversion                                                    |
-l-------------------|---------------------------------------------------------------|
-| Boolean           | bool(value)                                                   |
-| Integer           | int(value)                                                    |
-| Float             | float(value)                                                  |
-| Vector            | A triplet or the value if compatible (mathutils.Vector,...)   |
-| Color             | A quadruplet or the value if compatible (mathutils.Color,...) |
-| String            | str(value)                                                    |
-| Collection        | value is value is a collection, bpy.data.collections[value] otherwise |
-| Object            | value is value is an object, bpy.data.objects[value] otherwise        |
-| Image             | value is value is an image, bpy.data.images[value] otherwise          |
-| Texture           | value is value is a texture, bpy.data.textures[value] otherwise       |
-| Material          | value is value is a material, bpy.data.materials[value] otherwise     |
-
-This method allows in particular to refer to Blender resources by their name:
-    
-```python
-# Set a material to a mesh
-mesh.faces.material = "Material"
-
-# Is equivalent to
-mesh.faces.material = bpy.data.materials["Material"]
-```
-
-#### Args:
-- value (any): the value to convert
-- raise_exeption (bool): False to avod raising an exception in case of error.
 
 
 
@@ -2076,22 +1802,6 @@ def flip_faces(self, selection=None):
 
 <sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
-### get_blender_socket
-
-```python
-def get_blender_socket(self)
-```
-
- Returns the property bsocket.
-
-Returns:
-    bsocket (bpy.types.NodeSocket)
-
-
-
-
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
 ### get_named_boolean
 
 ```python
@@ -2232,34 +1942,6 @@ def get_named_vector(self, name=None):
 
 
 
-
-
-
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-### init_domains
-
-```python
-def init_domains(self)
-```
-
- Initialize the geometry domains
-
-To be overloaded by sub classes.        
-
-
-
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-### init_socket
-
-```python
-def init_socket(self)
-```
-
- Complementary init
-
-Called at the end of initialization for further operations.
 
 
 
@@ -2565,24 +2247,6 @@ def pack_uv_islands(self, uv=None, selection=None, margin=None, rotate=None):
 
 
 
-
-
-
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-### plug
-
-```python
-def plug(self, *values)
-```
-
- Plug values in the socket (input sockets only)
-
-#### Args:
-- values (any): The output sockets. More than one values can be passed if the input socket is multi input.
-    
-Returns:
-    None
 
 
 
@@ -2989,36 +2653,6 @@ def replace_material(self, old=None, new=None):
 - self
 
 
-
-
-
-
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-### reroute
-
-```python
-def reroute(self)
-```
-
- Reroute all output links
-
-
-
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-### reset_properties
-
-```python
-def reset_properties(self)
-```
-
- Reset the properties
-
-Properties such as components are cached.
-
-After a node is called, the wrapped socket changes and this makes the cache obsolete.
-After a change, the cache is erased.
 
 
 
@@ -3676,41 +3310,6 @@ def split_edges(self, selection=None):
 
 <sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
-### stack
-
-```python
-def stack(self, node, socket_name=None)
-```
-
- Change the wrapped socket
-
-After the call, **the DataSocket** instance wraps a different socket, typically in a newly created node.
-This is an internally used by the **geonodes** engine.
-
-In the following example, the `mesh`
-
-```python
-
-# After the following instruction, mesh wraps the output socket of the Cube node
-mesh = Mesh.Cube()
-
-# After the following instruction, mesh wraps the output socket of the Set Shade Smooth node
-mesh.set_shade_smooth(True)
-```
-
-    
-#### Args:
-- node (Node): the new node
-- socket_name (str): name of the outpout socket in the node. If None, takes the first output socket of the node.
-    
-Returns:
-    self        
-
-
-
-
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
 ### store_named_attribute
 
 ```python
@@ -3887,33 +3486,6 @@ def to_instance(*geometry):
 
 
 
-
-
-
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-### to_output
-
-```python
-def to_output(self, name=None)
-```
-
- Create a new output socket in the Tree and plug the **DataSocket** to it.
-
-The socket is added to the outputs of the geometry nodes tree.
-
-> Note: To define a data socket as the result geometry of the tree, use the property `output_geometry` of 
-  the current [Tree](Tree.md#output_geometry).
-
-The created socket can be read from within another [Tree](Tree.md) by:
-    - creating a [Group](Group.md): `node = Group(tree_name, **kwargs)`
-    - using the snake_case version of the socket: `ver = node.socket_name`
-
-#### Args:
-- name (str): User name of the socket
-    
-Returns:
-    None
 
 
 
