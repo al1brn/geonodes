@@ -272,10 +272,11 @@ with gn.Tree("Icosphere tuto") as tree:
    faces[faces.material_index.equal(2)].extrude(offset_scale=0.3)
    
    tree.og = icosphere
-   
-   
-      
 ```
+
+![Result](images/ico_tuto.png)
+
+
 
 
 
