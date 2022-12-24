@@ -2,7 +2,61 @@
 
 > [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
- Geometry wrapper: root class for data sockets: Boolean, Integer, Geometry, Curve, Object,...
+ Wrapper of a node socket.
+
+**DataSocket** represents the data (Geometry, Value, String, Material...) associated to a node socket.
+
+**DataSocket** is the base class for actual data sockets:
+    - [Geometry](Geometry.md)
+    - [Boolean](Boolean.md)
+    - [Integer](Integer.md)
+    - [Float](Float.md)
+    - [Vector](Vector.md)
+    - [Color](Color.md)
+    - [String](String.md)
+    - [Collection](Collection.md)
+    - [Object](Object.md)
+    - [Material](Material.md)
+    - [Texture](Texture.md)
+    - [Image](IMage.md)
+    
+**DataSockets** are created by input nodes, for instance, in the following example, `cube` is a **Mesh** **DataSocket**
+wrapping the output socket of the Blender Node *'Cube'*:    
+    
+```python
+cube = Mesh.Cube()
+```
+
+Some methods change the node socket wrapped by the **DataSocket instance. For instance, in the following example
+the `cube` **DataSocket**:
+    - before the call, wraps the output socket of the Blender Node *'Cube'*
+    - after the call, wraps the output socket of the Blender Node *'Set Shade Smooth'*
+    
+```python
+cube.set_shade_smooth(True)
+```
+
+Some methods return a new **DataSocket** instance:
+    
+```python
+volume = cube.to_volume()
+```
+
+### Attributes
+
+Attribute **DataSockets** keep a reference to the geometry they are an attribute of. By analyzing, the use
+of attribute sockets, it is possible to automatically generate a *'Capture Attribute'* when necessary.
+
+In the example below, the `index` varirable of type [Integer](Integer.md) (a sub class of **DataSocket**) keeps
+a reference of the `cube` geometry as being the geometry it is the index of (also see [Domain](Domain.md) for
+the `verts` property):
+    
+```python
+index = cube.verts.index
+```
+
+Depending on how `index` will be used, a 'Capture Attribute' node will be generated on the `cube` wrapped
+socket if necessary.
 
 
 
