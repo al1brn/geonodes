@@ -197,9 +197,9 @@ And then:
 
 ``` python
 
-    top, _ = top.extrude(offset=top.position*fac - (0, 0, z2), offset_scale=s - 1)
+    top, _ = edges[top].extrude(offset=edges[top].position*fac - (0, 0, z2), offset_scale=s - 1)
 
-    top, _ = top.extrude(offset=(0, 0, length) - top.position*fac)
+    top, _ = edges[top].extrude(offset=(0, 0, length) - edges[top].position*fac)
 
 ```
 
@@ -217,8 +217,8 @@ Material is a property of faces, then we modify the code to:
 
     # Materials to apply
 
-    shaft_mat = gn.Material.Input("Shaft")
-    head_mat  = gn.Material.Input("Arrowhead")
+    shaft_mat = gn.Material.Input(None, "Shaft")
+    head_mat  = gn.Material.Input(None, "Arrowhead")
     
     # ...
     
@@ -231,12 +231,12 @@ Material is a property of faces, then we modify the code to:
     # Applying material to extruded faces
     
     top, sides = arrow.edges.extrude(offset=(0, 0, 1), offset_scale=z1)
-    sides.material = shaft_mat
+    arrow.faces[sides].material = shaft_mat
 
-    top, sides = top.extrude(offset=top.position*fac - (0, 0, z2), offset_scale=s - 1)
-    sides.material = head_mat
+    top, sides = edges[top].extrude(offset=edges[top].position*fac - (0, 0, z2), offset_scale=s - 1)
+    arrow.faces[sides].material = head_mat
 
-    top, sides = top.extrude(offset=(0, 0, length) - top.position*fac)
+    top, sides = edges[top].extrude(offset=(0, 0, length) - edges[top].position*fac)
 
 ```
 
