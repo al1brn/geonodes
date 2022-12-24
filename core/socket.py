@@ -563,7 +563,7 @@ class Socket:
         """ Get the DataSocket class name corresponding to the socket type and name.
         
         | Socket bl_idname              | Geondes class name    | Sub class             |
-        l-------------------------------|-----------------------|-----------------------|
+        |-------------------------------|-----------------------|-----------------------|
         | NodeSocketBool                | Boolean               | None                  |
         | NodeSocketInt                 | Integer               | None                  |
         | NodeSocketIntUnsigned         | Integer               | NoUnsigned            |
