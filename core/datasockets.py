@@ -1443,14 +1443,14 @@ class Geometry(DataSocket):
     top, side = mesh.extrude()
     ```
     
-    Some **Geometry** sub classes can have methods with the same name but are base on different nodes:
+    Some **Geometry** sub classes can have methods with the same name but are based on different nodes:
         
     ```python
     points_1 = mesh.to_points()  # Create a 'Mesh to Points' node
     points_2 = curve.to_points() # Create a 'Curve to Points' node
     ```
     
-    Geometry supports the ``+`` operator acting as method :func:`Geometry.join`. In the following example,
+    **Geometry** supports the ``+`` operator acting as method :func:`Geometry.join`. In the following example,
     the tree returns the joining of a cube and a sphere:
     
     ```python
