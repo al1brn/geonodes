@@ -6,15 +6,58 @@
 
 **Properties**
 
-[as_cloud_points](#as_cloud_points) | [as_control_points](#as_control_points) | [as_corners](#as_corners) | [as_edges](#as_edges) | [as_faces](#as_faces) | [as_insts](#as_insts) | [as_splines](#as_splines) | [as_verts](#as_verts) | [data_socket](#data_socket) | [domain](#domain) | [selection](#selection) | [selection_index](#selection_index)
+[ID](#ID) | [as_cloud_points](#as_cloud_points) | [as_control_points](#as_control_points) | [as_corners](#as_corners) | [as_edges](#as_edges) | [as_faces](#as_faces) | [as_insts](#as_insts) | [as_splines](#as_splines) | [as_verts](#as_verts) | [count](#count) | [data_socket](#data_socket) | [domain](#domain) | [domain_index](#domain_index) | [index](#index) | [left_handle_positions](#left_handle_positions) | [material_index](#material_index) | [normal](#normal) | [parameter](#parameter) | [parameter_factor](#parameter_factor) | [parameter_index](#parameter_index) | [parameter_length](#parameter_length) | [position](#position) | [radius](#radius) | [right_handle_positions](#right_handle_positions) | [selection](#selection) | [selection_index](#selection_index) | [tangent](#tangent) | [tilt](#tilt)
 
 
 
 **Methods**
 
-[attribute_node](#attribute_node) | [select](#select) | [socket_stack](#socket_stack) | [view](#view)
+[accumulate_field](#accumulate_field) | [attribute_max](#attribute_max) | [attribute_mean](#attribute_mean) | [attribute_median](#attribute_median) | [attribute_min](#attribute_min) | [attribute_node](#attribute_node) | [attribute_range](#attribute_range) | [attribute_statistic](#attribute_statistic) | [attribute_std](#attribute_std) | [attribute_sum](#attribute_sum) | [attribute_var](#attribute_var) | [capture_attribute](#capture_attribute) | [curve](#curve) | [delete](#delete) | [duplicate](#duplicate) | [endpoint_selection](#endpoint_selection) | [field_at_index](#field_at_index) | [get_named_boolean](#get_named_boolean) | [get_named_color](#get_named_color) | [get_named_float](#get_named_float) | [get_named_integer](#get_named_integer) | [get_named_vector](#get_named_vector) | [handle_positions](#handle_positions) | [handle_type_selection](#handle_type_selection) | [handle_type_selection_align](#handle_type_selection_align) | [handle_type_selection_auto](#handle_type_selection_auto) | [handle_type_selection_free](#handle_type_selection_free) | [handle_type_selection_node](#handle_type_selection_node) | [handle_type_selection_vector](#handle_type_selection_vector) | [instance_on_points](#instance_on_points) | [interpolate](#interpolate) | [material_selection](#material_selection) | [named_attribute](#named_attribute) | [offset](#offset) | [proximity](#proximity) | [random_boolean](#random_boolean) | [random_float](#random_float) | [random_integer](#random_integer) | [random_vector](#random_vector) | [remove_named_attribute](#remove_named_attribute) | [sample_index](#sample_index) | [select](#select) | [separate](#separate) | [set_ID](#set_ID) | [set_handle_positions](#set_handle_positions) | [set_handle_positions_left](#set_handle_positions_left) | [set_handle_positions_right](#set_handle_positions_right) | [set_handle_type](#set_handle_type) | [set_handle_type_node](#set_handle_type_node) | [set_material_index](#set_material_index) | [set_named_boolean](#set_named_boolean) | [set_named_color](#set_named_color) | [set_named_float](#set_named_float) | [set_named_integer](#set_named_integer) | [set_named_vector](#set_named_vector) | [set_position](#set_position) | [set_radius](#set_radius) | [set_tilt](#set_tilt) | [socket_stack](#socket_stack) | [store_named_attribute](#store_named_attribute) | [view](#view)
 
 ## Properties
+
+### ID
+
+
+
+## ID <sub>*property*</sub>
+
+```python
+def ID(self):
+
+```
+> Node: [ID](GeometryNodeInputID.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/id.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputID.html)
+
+#### Returns:
+- socket `ID`
+
+
+
+
+
+
+Setter
+
+
+
+## ID <sub>*etter*</sub>
+
+```python
+def ID(self, attr_value):
+
+```
+> Node: [Set ID](GeometryNodeSetID.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/set_id.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetID.html)
+
+Node implemented as property setter.
+
+#### Args:
+- attr_value: ID
+
+
+
+
+
+
 
 ### as_cloud_points
 
@@ -56,6 +99,26 @@
  Type cast to Vertex.
 
 
+### count
+
+
+
+## count <sub>*property*</sub>
+
+```python
+def count(self, geometry=None):
+
+```
+> Node: [Domain Size](GeometryNodeAttributeDomainSize.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html)
+
+#### Returns:
+- socket `point_count`
+
+
+
+
+
+
 ### data_socket
 
  Returns the data socket it belongs to.       
@@ -83,6 +146,340 @@ Returns:
 
 
 
+### domain_index
+
+
+
+## domain_index <sub>*property*</sub>
+
+```python
+def domain_index(self):
+
+```
+> Node: [Index](GeometryNodeInputIndex.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/input_index.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputIndex.html)
+
+#### Returns:
+- socket `index`
+
+
+
+
+
+
+### index
+
+
+
+## index <sub>*property*</sub>
+
+```python
+def index(self):
+
+```
+> Node: [Index](GeometryNodeInputIndex.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/input_index.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputIndex.html)
+
+#### Returns:
+- socket `index`
+
+
+
+
+
+
+### left_handle_positions
+
+
+
+## left_handle_positions <sub>*property*</sub>
+
+```python
+def left_handle_positions(self):
+
+```
+> Node: [Curve Handle Positions](GeometryNodeInputCurveHandlePositions.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/curve_handle_position.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputCurveHandlePositions.html)
+
+#### Returns:
+- socket `left`
+
+
+
+
+
+
+Setter
+
+
+
+## left_handle_positions <sub>*etter*</sub>
+
+```python
+def left_handle_positions(self, attr_value):
+
+```
+> Node: [Set Handle Positions](GeometryNodeSetCurveHandlePositions.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/set_handle_positions.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetCurveHandlePositions.html)
+
+Node implemented as property setter.
+
+#### Args:
+- attr_value: position
+
+
+
+
+
+
+
+### material_index
+
+
+
+## material_index <sub>*property*</sub>
+
+```python
+def material_index(self):
+
+```
+> Node: [Material Index](GeometryNodeInputMaterialIndex.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/material_index.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMaterialIndex.html)
+
+#### Returns:
+- socket `material_index`
+
+
+
+
+
+
+### normal
+
+
+
+## normal <sub>*property*</sub>
+
+```python
+def normal(self):
+
+```
+> Node: [Normal](GeometryNodeInputNormal.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/normal.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputNormal.html)
+
+#### Returns:
+- socket `normal`
+
+
+
+
+
+
+### parameter
+
+
+
+## parameter <sub>*property*</sub>
+
+```python
+def parameter(self):
+
+```
+> Node: [Spline Parameter](GeometryNodeSplineParameter.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/spline_parameter.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSplineParameter.html)
+
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeSplineParameter.webp)
+
+#### Returns:
+- tuple ('`factor`', '`length`', '`index`')
+
+
+
+
+
+
+### parameter_factor
+
+
+
+## parameter_factor <sub>*property*</sub>
+
+```python
+def parameter_factor(self):
+
+```
+> Node: [Spline Parameter](GeometryNodeSplineParameter.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/spline_parameter.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSplineParameter.html)
+
+#### Returns:
+- socket `factor`
+
+
+
+
+
+
+### parameter_index
+
+
+
+## parameter_index <sub>*property*</sub>
+
+```python
+def parameter_index(self):
+
+```
+> Node: [Spline Parameter](GeometryNodeSplineParameter.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/spline_parameter.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSplineParameter.html)
+
+#### Returns:
+- socket `index`
+
+
+
+
+
+
+### parameter_length
+
+
+
+## parameter_length <sub>*property*</sub>
+
+```python
+def parameter_length(self):
+
+```
+> Node: [Spline Parameter](GeometryNodeSplineParameter.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/spline_parameter.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSplineParameter.html)
+
+#### Returns:
+- socket `length`
+
+
+
+
+
+
+### position
+
+
+
+## position <sub>*property*</sub>
+
+```python
+def position(self):
+
+```
+> Node: [Position](GeometryNodeInputPosition.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/position.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputPosition.html)
+
+#### Returns:
+- socket `position`
+
+
+
+
+
+
+Setter
+
+
+
+## position <sub>*etter*</sub>
+
+```python
+def position(self, attr_value):
+
+```
+> Node: [Set Position](GeometryNodeSetPosition.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/set_position.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetPosition.html)
+
+Node implemented as property setter.
+
+#### Args:
+- attr_value: position
+
+
+
+
+
+
+
+### radius
+
+
+
+## radius <sub>*property*</sub>
+
+```python
+def radius(self):
+
+```
+> Node: [Radius](GeometryNodeInputRadius.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/radius.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputRadius.html)
+
+#### Returns:
+- socket `radius`
+
+
+
+
+
+
+Setter
+
+
+
+## radius <sub>*etter*</sub>
+
+```python
+def radius(self, attr_value):
+
+```
+> Node: [Set Curve Radius](GeometryNodeSetCurveRadius.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/set_curve_radius.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetCurveRadius.html)
+
+Node implemented as property setter.
+
+#### Args:
+- attr_value: radius
+
+
+
+
+
+
+
+### right_handle_positions
+
+
+
+## right_handle_positions <sub>*property*</sub>
+
+```python
+def right_handle_positions(self):
+
+```
+> Node: [Curve Handle Positions](GeometryNodeInputCurveHandlePositions.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/curve_handle_position.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputCurveHandlePositions.html)
+
+#### Returns:
+- socket `right`
+
+
+
+
+
+
+Setter
+
+
+
+## right_handle_positions <sub>*etter*</sub>
+
+```python
+def right_handle_positions(self, attr_value):
+
+```
+> Node: [Set Handle Positions](GeometryNodeSetCurveHandlePositions.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/set_handle_positions.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetCurveHandlePositions.html)
+
+Node implemented as property setter.
+
+#### Args:
+- attr_value: position
+
+
+
+
+
+
+
 ### selection
 
  Returns the selection value to use in nodes with a **Selection** socket.  
@@ -103,7 +500,218 @@ Returns:
 
 
 
+### tangent
+
+
+
+## tangent <sub>*property*</sub>
+
+```python
+def tangent(self):
+
+```
+> Node: [Curve Tangent](GeometryNodeInputTangent.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/curve_tangent.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputTangent.html)
+
+#### Returns:
+- socket `tangent`
+
+
+
+
+
+
+### tilt
+
+
+
+## tilt <sub>*property*</sub>
+
+```python
+def tilt(self):
+
+```
+> Node: [Curve Tilt](GeometryNodeInputCurveTilt.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/curve_tilt.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputCurveTilt.html)
+
+#### Returns:
+- socket `tilt`
+
+
+
+
+
+
+Setter
+
+
+
+## tilt <sub>*etter*</sub>
+
+```python
+def tilt(self, attr_value):
+
+```
+> Node: [Set Curve Tilt](GeometryNodeSetCurveTilt.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/set_curve_tilt.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetCurveTilt.html)
+
+Node implemented as property setter.
+
+#### Args:
+- attr_value: tilt
+
+
+
+
+
+
+
 ## Methods
+
+### accumulate_field
+
+```python
+def accumulate_field(self, value=None, group_index=None)
+```
+
+
+
+## accumulate_field
+
+```python
+def accumulate_field(self, value=None, group_index=None):
+
+```
+> Node: [Accumulate Field](GeometryNodeAccumulateField.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/accumulate_field.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeAccumulateField.html)
+
+#### Args:
+- value: ['Vector', 'Float', 'Integer']
+- group_index: Integer
+
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeAccumulateField.webp)
+
+#### Returns:
+- tuple ('`leading`', '`trailing`', '`total`')
+
+
+
+
+
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### attribute_max
+
+```python
+def attribute_max(self, attribute=None)
+```
+
+
+
+## attribute_max
+
+```python
+def attribute_max(self, attribute=None):
+
+```
+> Node: [Attribute Statistic](GeometryNodeAttributeStatistic.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/attribute_statistic.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeStatistic.html)
+
+#### Args:
+- attribute: ['Float', 'Vector']
+
+#### Returns:
+- socket `max`
+
+
+
+
+
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### attribute_mean
+
+```python
+def attribute_mean(self, attribute=None)
+```
+
+
+
+## attribute_mean
+
+```python
+def attribute_mean(self, attribute=None):
+
+```
+> Node: [Attribute Statistic](GeometryNodeAttributeStatistic.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/attribute_statistic.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeStatistic.html)
+
+#### Args:
+- attribute: ['Float', 'Vector']
+
+#### Returns:
+- socket `mean`
+
+
+
+
+
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### attribute_median
+
+```python
+def attribute_median(self, attribute=None)
+```
+
+
+
+## attribute_median
+
+```python
+def attribute_median(self, attribute=None):
+
+```
+> Node: [Attribute Statistic](GeometryNodeAttributeStatistic.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/attribute_statistic.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeStatistic.html)
+
+#### Args:
+- attribute: ['Float', 'Vector']
+
+#### Returns:
+- socket `median`
+
+
+
+
+
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### attribute_min
+
+```python
+def attribute_min(self, attribute=None)
+```
+
+
+
+## attribute_min
+
+```python
+def attribute_min(self, attribute=None):
+
+```
+> Node: [Attribute Statistic](GeometryNodeAttributeStatistic.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/attribute_statistic.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeStatistic.html)
+
+#### Args:
+- attribute: ['Float', 'Vector']
+
+#### Returns:
+- socket `min`
+
+
+
+
+
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### attribute_node
 
@@ -126,6 +734,1049 @@ Called when creating an input node in a property getter. Performs two actions:
     
 Returns:
     The node argument        
+
+
+
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### attribute_range
+
+```python
+def attribute_range(self, attribute=None)
+```
+
+
+
+## attribute_range
+
+```python
+def attribute_range(self, attribute=None):
+
+```
+> Node: [Attribute Statistic](GeometryNodeAttributeStatistic.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/attribute_statistic.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeStatistic.html)
+
+#### Args:
+- attribute: ['Float', 'Vector']
+
+#### Returns:
+- socket `range`
+
+
+
+
+
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### attribute_statistic
+
+```python
+def attribute_statistic(self, attribute=None)
+```
+
+
+
+## attribute_statistic
+
+```python
+def attribute_statistic(self, attribute=None):
+
+```
+> Node: [Attribute Statistic](GeometryNodeAttributeStatistic.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/attribute_statistic.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeStatistic.html)
+
+#### Args:
+- attribute: ['Float', 'Vector']
+
+#### Returns:
+- node with sockets ['mean', 'median', 'sum', 'min', 'max', 'range', 'standard_deviation', 'variance']
+
+
+
+
+
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### attribute_std
+
+```python
+def attribute_std(self, attribute=None)
+```
+
+
+
+## attribute_std
+
+```python
+def attribute_std(self, attribute=None):
+
+```
+> Node: [Attribute Statistic](GeometryNodeAttributeStatistic.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/attribute_statistic.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeStatistic.html)
+
+#### Args:
+- attribute: ['Float', 'Vector']
+
+#### Returns:
+- socket `standard_deviation`
+
+
+
+
+
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### attribute_sum
+
+```python
+def attribute_sum(self, attribute=None)
+```
+
+
+
+## attribute_sum
+
+```python
+def attribute_sum(self, attribute=None):
+
+```
+> Node: [Attribute Statistic](GeometryNodeAttributeStatistic.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/attribute_statistic.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeStatistic.html)
+
+#### Args:
+- attribute: ['Float', 'Vector']
+
+#### Returns:
+- socket `sum`
+
+
+
+
+
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### attribute_var
+
+```python
+def attribute_var(self, attribute=None)
+```
+
+
+
+## attribute_var
+
+```python
+def attribute_var(self, attribute=None):
+
+```
+> Node: [Attribute Statistic](GeometryNodeAttributeStatistic.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/attribute_statistic.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeStatistic.html)
+
+#### Args:
+- attribute: ['Float', 'Vector']
+
+#### Returns:
+- socket `variance`
+
+
+
+
+
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### capture_attribute
+
+```python
+def capture_attribute(self, value=None)
+```
+
+
+
+## capture_attribute
+
+```python
+def capture_attribute(self, value=None):
+
+```
+> Node: [Capture Attribute](GeometryNodeCaptureAttribute.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/capture_attribute.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeCaptureAttribute.html)
+
+#### Args:
+- value: ['Vector', 'Float', 'Color', 'Boolean', 'Integer']
+
+#### Returns:
+- socket `attribute`
+
+
+
+
+
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### curve
+
+```python
+def curve(self)
+```
+
+
+
+## curve
+
+```python
+def curve(self):
+
+```
+> Node: [Curve of Point](GeometryNodeCurveOfPoint.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve_topology/curve_of_point.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveOfPoint.html)
+
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeCurveOfPoint.webp)
+
+#### Returns:
+- tuple ('`curve_index`', '`index_in_curve`')
+
+
+
+
+
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### delete
+
+```python
+def delete(self, mode='ALL')
+```
+
+
+
+## delete
+
+```python
+def delete(self, mode='ALL'):
+
+```
+> Node: [Delete Geometry](GeometryNodeDeleteGeometry.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/delete_geometry.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeDeleteGeometry.html)
+
+#### Args:
+- mode (str): 'ALL' in [ALL, EDGE_FACE, ONLY_FACE]
+
+#### Returns:
+- self
+
+
+
+
+
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### duplicate
+
+```python
+def duplicate(self, amount=None)
+```
+
+
+
+## duplicate
+
+```python
+def duplicate(self, amount=None):
+
+```
+> Node: [Duplicate Elements](GeometryNodeDuplicateElements.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/duplicate_elements.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeDuplicateElements.html)
+
+#### Args:
+- amount: Integer
+
+#### Returns:
+- socket `duplicate_index`
+
+
+
+
+
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### endpoint_selection
+
+```python
+def endpoint_selection(self, start_size=None, end_size=None)
+```
+
+
+
+## endpoint_selection
+
+```python
+def endpoint_selection(self, start_size=None, end_size=None):
+
+```
+> Node: [Endpoint Selection](GeometryNodeCurveEndpointSelection.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/endpoint_selection.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveEndpointSelection.html)
+
+#### Args:
+- start_size: Integer
+- end_size: Integer
+
+#### Returns:
+- socket `selection`
+
+
+
+
+
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### field_at_index
+
+```python
+def field_at_index(self, index=None, value=None)
+```
+
+
+
+## field_at_index
+
+```python
+def field_at_index(self, index=None, value=None):
+
+```
+> Node: [Field at Index](GeometryNodeFieldAtIndex.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/field_at_index.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeFieldAtIndex.html)
+
+#### Args:
+- index: Integer
+- value: ['Float', 'Integer', 'Vector', 'Color', 'Boolean']
+
+#### Returns:
+- socket `value`
+
+
+
+
+
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### get_named_boolean
+
+```python
+def get_named_boolean(self, name=None)
+```
+
+
+
+## get_named_boolean
+
+```python
+def get_named_boolean(self, name=None):
+
+```
+> Node: [Named Attribute](GeometryNodeInputNamedAttribute.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/named_attribute.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputNamedAttribute.html)
+
+#### Args:
+- name: String
+
+#### Returns:
+- socket `attribute`
+
+
+
+
+
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### get_named_color
+
+```python
+def get_named_color(self, name=None)
+```
+
+
+
+## get_named_color
+
+```python
+def get_named_color(self, name=None):
+
+```
+> Node: [Named Attribute](GeometryNodeInputNamedAttribute.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/named_attribute.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputNamedAttribute.html)
+
+#### Args:
+- name: String
+
+#### Returns:
+- socket `attribute`
+
+
+
+
+
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### get_named_float
+
+```python
+def get_named_float(self, name=None)
+```
+
+
+
+## get_named_float
+
+```python
+def get_named_float(self, name=None):
+
+```
+> Node: [Named Attribute](GeometryNodeInputNamedAttribute.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/named_attribute.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputNamedAttribute.html)
+
+#### Args:
+- name: String
+
+#### Returns:
+- socket `attribute`
+
+
+
+
+
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### get_named_integer
+
+```python
+def get_named_integer(self, name=None)
+```
+
+
+
+## get_named_integer
+
+```python
+def get_named_integer(self, name=None):
+
+```
+> Node: [Named Attribute](GeometryNodeInputNamedAttribute.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/named_attribute.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputNamedAttribute.html)
+
+#### Args:
+- name: String
+
+#### Returns:
+- socket `attribute`
+
+
+
+
+
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### get_named_vector
+
+```python
+def get_named_vector(self, name=None)
+```
+
+
+
+## get_named_vector
+
+```python
+def get_named_vector(self, name=None):
+
+```
+> Node: [Named Attribute](GeometryNodeInputNamedAttribute.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/named_attribute.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputNamedAttribute.html)
+
+#### Args:
+- name: String
+
+#### Returns:
+- socket `attribute`
+
+
+
+
+
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### handle_positions
+
+```python
+def handle_positions(self, relative=None)
+```
+
+
+
+## handle_positions
+
+```python
+def handle_positions(self, relative=None):
+
+```
+> Node: [Curve Handle Positions](GeometryNodeInputCurveHandlePositions.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/curve_handle_position.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputCurveHandlePositions.html)
+
+#### Args:
+- relative: Boolean
+
+#### Returns:
+- node with sockets ['left', 'right']
+
+
+
+
+
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### handle_type_selection
+
+```python
+def handle_type_selection(self, left=True, right=True, handle_type='AUTO')
+```
+
+
+
+## handle_type_selection
+
+```python
+def handle_type_selection(self, left=True, right=True, handle_type='AUTO'):
+
+```
+> Node: [Handle Type Selection](GeometryNodeCurveHandleTypeSelection.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/handle_type_selection.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveHandleTypeSelection.html)
+
+#### Args:
+- handle_type (str): 'AUTO' in [FREE, AUTO, VECTOR, ALIGN]
+- mode (set): {'LEFT', 'RIGHT'}
+
+#### Returns:
+- node with sockets ['selection']
+
+
+
+
+
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### handle_type_selection_align
+
+```python
+def handle_type_selection_align(self, left=True, right=True)
+```
+
+
+
+## handle_type_selection
+
+```python
+def handle_type_selection_align(self, left=True, right=True):
+
+```
+> Node: [Handle Type Selection](GeometryNodeCurveHandleTypeSelection.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/handle_type_selection.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveHandleTypeSelection.html)
+
+#### Args:
+- handle_type (str): 'AUTO' in [FREE, AUTO, VECTOR, ALIGN]
+- mode (set): {'LEFT', 'RIGHT'}
+
+#### Returns:
+- node with sockets ['selection']
+
+
+
+
+
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### handle_type_selection_auto
+
+```python
+def handle_type_selection_auto(self, left=True, right=True)
+```
+
+
+
+## handle_type_selection
+
+```python
+def handle_type_selection_auto(self, left=True, right=True):
+
+```
+> Node: [Handle Type Selection](GeometryNodeCurveHandleTypeSelection.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/handle_type_selection.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveHandleTypeSelection.html)
+
+#### Args:
+- handle_type (str): 'AUTO' in [FREE, AUTO, VECTOR, ALIGN]
+- mode (set): {'LEFT', 'RIGHT'}
+
+#### Returns:
+- node with sockets ['selection']
+
+
+
+
+
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### handle_type_selection_free
+
+```python
+def handle_type_selection_free(self, left=True, right=True)
+```
+
+
+
+## handle_type_selection
+
+```python
+def handle_type_selection_free(self, left=True, right=True):
+
+```
+> Node: [Handle Type Selection](GeometryNodeCurveHandleTypeSelection.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/handle_type_selection.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveHandleTypeSelection.html)
+
+#### Args:
+- handle_type (str): 'AUTO' in [FREE, AUTO, VECTOR, ALIGN]
+- mode (set): {'LEFT', 'RIGHT'}
+
+#### Returns:
+- node with sockets ['selection']
+
+
+
+
+
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### handle_type_selection_node
+
+```python
+def handle_type_selection_node(self, handle_type='AUTO', mode={'LEFT', 'RIGHT'})
+```
+
+
+
+## handle_type_selection_node
+
+```python
+def handle_type_selection_node(self, handle_type='AUTO', mode={'LEFT', 'RIGHT'}):
+
+```
+> Node: [Handle Type Selection](GeometryNodeCurveHandleTypeSelection.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/handle_type_selection.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveHandleTypeSelection.html)
+
+#### Args:
+- handle_type (str): 'AUTO' in [FREE, AUTO, VECTOR, ALIGN]
+- mode (set): {'LEFT', 'RIGHT'}
+
+#### Returns:
+- socket `selection`
+
+
+
+
+
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### handle_type_selection_vector
+
+```python
+def handle_type_selection_vector(self, left=True, right=True)
+```
+
+
+
+## handle_type_selection
+
+```python
+def handle_type_selection_vector(self, left=True, right=True):
+
+```
+> Node: [Handle Type Selection](GeometryNodeCurveHandleTypeSelection.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/handle_type_selection.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveHandleTypeSelection.html)
+
+#### Args:
+- handle_type (str): 'AUTO' in [FREE, AUTO, VECTOR, ALIGN]
+- mode (set): {'LEFT', 'RIGHT'}
+
+#### Returns:
+- node with sockets ['selection']
+
+
+
+
+
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### instance_on_points
+
+```python
+def instance_on_points(self, instance=None, pick_instance=None, instance_index=None, rotation=None, scale=None)
+```
+
+
+
+## instance_on_points
+
+```python
+def instance_on_points(self, instance=None, pick_instance=None, instance_index=None, rotation=None, scale=None):
+
+```
+> Node: [Instance on Points](GeometryNodeInstanceOnPoints.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instance_on_points.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInstanceOnPoints.html)
+
+#### Args:
+- instance: Geometry
+- pick_instance: Boolean
+- instance_index: Integer
+- rotation: Vector
+- scale: Vector
+
+#### Returns:
+- socket `instances` of class Instances
+
+
+
+
+
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### interpolate
+
+```python
+def interpolate(self, value=None)
+```
+
+
+
+## interpolate
+
+```python
+def interpolate(self, value=None):
+
+```
+> Node: [Interpolate Domain](GeometryNodeFieldOnDomain.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/interpolate_domain.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeFieldOnDomain.html)
+
+#### Args:
+- value: ['Float', 'Integer', 'Vector', 'Color', 'Boolean']
+
+#### Returns:
+- socket `value`
+
+
+
+
+
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### material_selection
+
+```python
+def material_selection(self, material=None)
+```
+
+
+
+## material_selection
+
+```python
+def material_selection(self, material=None):
+
+```
+> Node: [Material Selection](GeometryNodeMaterialSelection.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/material_selection.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeMaterialSelection.html)
+
+#### Args:
+- material: Material
+
+#### Returns:
+- socket `selection`
+
+
+
+
+
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### named_attribute
+
+```python
+def named_attribute(self, name=None, data_type='FLOAT')
+```
+
+
+
+## named_attribute
+
+```python
+def named_attribute(self, name=None, data_type='FLOAT'):
+
+```
+> Node: [Named Attribute](GeometryNodeInputNamedAttribute.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/named_attribute.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputNamedAttribute.html)
+
+#### Args:
+- name: String
+- data_type (str): 'FLOAT' in [FLOAT, INT, FLOAT_VECTOR, FLOAT_COLOR, BOOLEAN]
+
+#### Returns:
+- socket `attribute`
+
+
+
+
+
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### offset
+
+```python
+def offset(self, offset=None)
+```
+
+
+
+## offset
+
+```python
+def offset(self, offset=None):
+
+```
+> Node: [Offset Point in Curve](GeometryNodeOffsetPointInCurve.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve_topology/offset_point_in_curve.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeOffsetPointInCurve.html)
+
+#### Args:
+- offset: Integer
+
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeOffsetPointInCurve.webp)
+
+#### Returns:
+- tuple ('`is_valid_offset`', '`point_index`')
+
+
+
+
+
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### proximity
+
+```python
+def proximity(self, target=None, source_position=None)
+```
+
+
+
+## proximity
+
+```python
+def proximity(self, target=None, source_position=None):
+
+```
+> Node: [Geometry Proximity](GeometryNodeProximity.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/geometry_proximity.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeProximity.html)
+
+#### Args:
+- target: Geometry
+- source_position: Vector
+
+#### Returns:
+- socket `distance`
+
+
+
+
+
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### random_boolean
+
+```python
+def random_boolean(self, probability=None, ID=None, seed=None)
+```
+
+
+
+## random_boolean
+
+```python
+def random_boolean(self, probability=None, ID=None, seed=None):
+
+```
+> Node: [Random Value](FunctionNodeRandomValue.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/random_value.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeRandomValue.html)
+
+#### Args:
+- probability: Float
+- ID: Integer
+- seed: Integer
+
+#### Returns:
+- socket `value`
+
+
+
+
+
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### random_float
+
+```python
+def random_float(self, min=None, max=None, ID=None, seed=None)
+```
+
+
+
+## random_float
+
+```python
+def random_float(self, min=None, max=None, ID=None, seed=None):
+
+```
+> Node: [Random Value](FunctionNodeRandomValue.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/random_value.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeRandomValue.html)
+
+#### Args:
+- min: ['Vector', 'Float', 'Integer']
+- max: ['Vector', 'Float', 'Integer']
+- ID: Integer
+- seed: Integer
+
+#### Returns:
+- socket `value`
+
+
+
+
+
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### random_integer
+
+```python
+def random_integer(self, min=None, max=None, ID=None, seed=None)
+```
+
+
+
+## random_integer
+
+```python
+def random_integer(self, min=None, max=None, ID=None, seed=None):
+
+```
+> Node: [Random Value](FunctionNodeRandomValue.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/random_value.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeRandomValue.html)
+
+#### Args:
+- min: ['Vector', 'Float', 'Integer']
+- max: ['Vector', 'Float', 'Integer']
+- ID: Integer
+- seed: Integer
+
+#### Returns:
+- socket `value`
+
+
+
+
+
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### random_vector
+
+```python
+def random_vector(self, min=None, max=None, ID=None, seed=None)
+```
+
+
+
+## random_vector
+
+```python
+def random_vector(self, min=None, max=None, ID=None, seed=None):
+
+```
+> Node: [Random Value](FunctionNodeRandomValue.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/random_value.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeRandomValue.html)
+
+#### Args:
+- min: ['Vector', 'Float', 'Integer']
+- max: ['Vector', 'Float', 'Integer']
+- ID: Integer
+- seed: Integer
+
+#### Returns:
+- socket `value`
+
+
+
+
+
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### remove_named_attribute
+
+```python
+def remove_named_attribute(self, name=None)
+```
+
+
+
+## remove_named_attribute
+
+```python
+def remove_named_attribute(self, name=None):
+
+```
+> Node: [Remove Named Attribute](GeometryNodeRemoveAttribute.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/remove_named_attribute.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeRemoveAttribute.html)
+
+#### Args:
+- name: String
+
+#### Returns:
+- self
+
+
+
+
+
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### sample_index
+
+```python
+def sample_index(self, value=None, index=None, clamp=False)
+```
+
+
+
+## sample_index
+
+```python
+def sample_index(self, value=None, index=None, clamp=False):
+
+```
+> Node: [Sample Index](GeometryNodeSampleIndex.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/sample_index.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSampleIndex.html)
+
+#### Args:
+- value: ['Float', 'Integer', 'Vector', 'Color', 'Boolean']
+- index: Integer
+- clamp (bool): False
+
+#### Returns:
+- socket `value`
+
+
 
 
 
@@ -160,6 +1811,486 @@ If a selection is existing, the resulting selection is a logical and betwenn the
 
 <sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
+### separate
+
+```python
+def separate(self, geometry=None)
+```
+
+
+
+## separate
+
+```python
+def separate(self, geometry=None):
+
+```
+> Node: [Separate Geometry](GeometryNodeSeparateGeometry.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/separate_geometry.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSeparateGeometry.html)
+
+#### Args:
+- geometry: Geometry
+
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeSeparateGeometry.webp)
+
+#### Returns:
+- tuple ('`selection`', '`inverted`')
+
+
+
+
+
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### set_ID
+
+```python
+def set_ID(self, ID=None)
+```
+
+
+
+## set_ID
+
+```python
+def set_ID(self, ID=None):
+
+```
+> Node: [Set ID](GeometryNodeSetID.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/set_id.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetID.html)
+
+#### Args:
+- ID: Integer
+
+#### Returns:
+- self
+
+
+
+
+
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### set_handle_positions
+
+```python
+def set_handle_positions(self, position=None, offset=None, mode='LEFT')
+```
+
+
+
+## set_handle_positions
+
+```python
+def set_handle_positions(self, position=None, offset=None, mode='LEFT'):
+
+```
+> Node: [Set Handle Positions](GeometryNodeSetCurveHandlePositions.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/set_handle_positions.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetCurveHandlePositions.html)
+
+#### Args:
+- position: Vector
+- offset: Vector
+- mode (str): 'LEFT' in [LEFT, RIGHT]
+
+#### Returns:
+- self
+
+
+
+
+
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### set_handle_positions_left
+
+```python
+def set_handle_positions_left(self, position=None, offset=None)
+```
+
+
+
+## set_handle_positions_left
+
+```python
+def set_handle_positions_left(self, position=None, offset=None):
+
+```
+> Node: [Set Handle Positions](GeometryNodeSetCurveHandlePositions.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/set_handle_positions.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetCurveHandlePositions.html)
+
+#### Args:
+- position: Vector
+- offset: Vector
+
+#### Returns:
+- self
+
+
+
+
+
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### set_handle_positions_right
+
+```python
+def set_handle_positions_right(self, position=None, offset=None)
+```
+
+
+
+## set_handle_positions_right
+
+```python
+def set_handle_positions_right(self, position=None, offset=None):
+
+```
+> Node: [Set Handle Positions](GeometryNodeSetCurveHandlePositions.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/set_handle_positions.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetCurveHandlePositions.html)
+
+#### Args:
+- position: Vector
+- offset: Vector
+
+#### Returns:
+- self
+
+
+
+
+
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### set_handle_type
+
+```python
+def set_handle_type(self, left=True, right=True, handle_type='AUTO')
+```
+
+
+
+## set_handle_type
+
+```python
+def set_handle_type(self, left=True, right=True, handle_type='AUTO'):
+
+```
+> Node: [Set Handle Type](GeometryNodeCurveSetHandles.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/set_handle_type.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveSetHandles.html)
+
+#### Args:
+- curve: Curve
+- selection: Boolean
+- handle_type (str): 'AUTO' in [FREE, AUTO, VECTOR, ALIGN]
+- mode (set): {'LEFT', 'RIGHT'}
+
+#### Returns:
+- node with sockets ['curve']
+
+
+
+
+
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### set_handle_type_node
+
+```python
+def set_handle_type_node(self, handle_type='AUTO', mode={'LEFT', 'RIGHT'})
+```
+
+
+
+## set_handle_type_node
+
+```python
+def set_handle_type_node(self, handle_type='AUTO', mode={'LEFT', 'RIGHT'}):
+
+```
+> Node: [Set Handle Type](GeometryNodeCurveSetHandles.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/set_handle_type.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveSetHandles.html)
+
+#### Args:
+- handle_type (str): 'AUTO' in [FREE, AUTO, VECTOR, ALIGN]
+- mode (set): {'LEFT', 'RIGHT'}
+
+#### Returns:
+- self
+
+
+
+
+
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### set_material_index
+
+```python
+def set_material_index(self, material_index=None)
+```
+
+
+
+## set_material_index
+
+```python
+def set_material_index(self, material_index=None):
+
+```
+> Node: [Set Material Index](GeometryNodeSetMaterialIndex.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/set_material_index.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetMaterialIndex.html)
+
+#### Args:
+- material_index: Integer
+
+#### Returns:
+- self
+
+
+
+
+
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### set_named_boolean
+
+```python
+def set_named_boolean(self, name=None, value=None)
+```
+
+
+
+## set_named_boolean
+
+```python
+def set_named_boolean(self, name=None, value=None):
+
+```
+> Node: [Store Named Attribute](GeometryNodeStoreNamedAttribute.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/store_named_attribute.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeStoreNamedAttribute.html)
+
+#### Args:
+- name: String
+- value: ['Vector', 'Float', 'Color', 'Boolean', 'Integer']
+
+#### Returns:
+- self
+
+
+
+
+
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### set_named_color
+
+```python
+def set_named_color(self, name=None, value=None)
+```
+
+
+
+## set_named_color
+
+```python
+def set_named_color(self, name=None, value=None):
+
+```
+> Node: [Store Named Attribute](GeometryNodeStoreNamedAttribute.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/store_named_attribute.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeStoreNamedAttribute.html)
+
+#### Args:
+- name: String
+- value: ['Vector', 'Float', 'Color', 'Boolean', 'Integer']
+
+#### Returns:
+- self
+
+
+
+
+
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### set_named_float
+
+```python
+def set_named_float(self, name=None, value=None)
+```
+
+
+
+## set_named_float
+
+```python
+def set_named_float(self, name=None, value=None):
+
+```
+> Node: [Store Named Attribute](GeometryNodeStoreNamedAttribute.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/store_named_attribute.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeStoreNamedAttribute.html)
+
+#### Args:
+- name: String
+- value: ['Vector', 'Float', 'Color', 'Boolean', 'Integer']
+
+#### Returns:
+- self
+
+
+
+
+
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### set_named_integer
+
+```python
+def set_named_integer(self, name=None, value=None)
+```
+
+
+
+## set_named_integer
+
+```python
+def set_named_integer(self, name=None, value=None):
+
+```
+> Node: [Store Named Attribute](GeometryNodeStoreNamedAttribute.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/store_named_attribute.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeStoreNamedAttribute.html)
+
+#### Args:
+- name: String
+- value: ['Vector', 'Float', 'Color', 'Boolean', 'Integer']
+
+#### Returns:
+- self
+
+
+
+
+
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### set_named_vector
+
+```python
+def set_named_vector(self, name=None, value=None)
+```
+
+
+
+## set_named_vector
+
+```python
+def set_named_vector(self, name=None, value=None):
+
+```
+> Node: [Store Named Attribute](GeometryNodeStoreNamedAttribute.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/store_named_attribute.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeStoreNamedAttribute.html)
+
+#### Args:
+- name: String
+- value: ['Vector', 'Float', 'Color', 'Boolean', 'Integer']
+
+#### Returns:
+- self
+
+
+
+
+
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### set_position
+
+```python
+def set_position(self, position=None, offset=None)
+```
+
+
+
+## set_position
+
+```python
+def set_position(self, position=None, offset=None):
+
+```
+> Node: [Set Position](GeometryNodeSetPosition.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/set_position.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetPosition.html)
+
+#### Args:
+- position: Vector
+- offset: Vector
+
+#### Returns:
+- self
+
+
+
+
+
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### set_radius
+
+```python
+def set_radius(self, radius=None)
+```
+
+
+
+## set_radius
+
+```python
+def set_radius(self, radius=None):
+
+```
+> Node: [Set Curve Radius](GeometryNodeSetCurveRadius.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/set_curve_radius.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetCurveRadius.html)
+
+#### Args:
+- radius: Float
+
+#### Returns:
+- self
+
+
+
+
+
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### set_tilt
+
+```python
+def set_tilt(self, tilt=None)
+```
+
+
+
+## set_tilt
+
+```python
+def set_tilt(self, tilt=None):
+
+```
+> Node: [Set Curve Tilt](GeometryNodeSetCurveTilt.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/set_curve_tilt.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetCurveTilt.html)
+
+#### Args:
+- tilt: Float
+
+#### Returns:
+- self
+
+
+
+
+
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### socket_stack
 
 ```python
@@ -171,6 +2302,36 @@ def socket_stack(self, node, socket_name=None)
 #### Args:
 - node (Node): The node to jump to
 - socket_name: The name of the output socket (first one if None)
+
+
+
+<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### store_named_attribute
+
+```python
+def store_named_attribute(self, name=None, value=None)
+```
+
+
+
+## store_named_attribute
+
+```python
+def store_named_attribute(self, name=None, value=None):
+
+```
+> Node: [Store Named Attribute](GeometryNodeStoreNamedAttribute.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/store_named_attribute.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeStoreNamedAttribute.html)
+
+#### Args:
+- name: String
+- value: ['Vector', 'Float', 'Color', 'Boolean', 'Integer']
+
+#### Returns:
+- self
+
+
+
 
 
 

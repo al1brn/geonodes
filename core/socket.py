@@ -27,11 +27,6 @@ import bpy
 class Socket:
     """ DataSocket root class
     
-    :param socket: a node socket, or a instance of Socket
-    :param node: The Node owning the socket. If None the owner is searched.
-    :type socket: bpy.types.nodesocket, Socket
-    :type node: Node
-    
     This class is the base class wrapper of node sockets.
     
     To avoid confusion between wrapped Node and Socket with wrapper Node and Socket,
@@ -92,6 +87,11 @@ class Socket:
     #
 
     def __init__(self, socket, node=None):
+        """
+        Args:
+            - socket (bpy.types.SocketNode): the socket to wrap
+            - node (Node): the belonging node
+        """
         
         # ----- A class Object doesn't have a constructor Node
         
@@ -150,11 +150,12 @@ class Socket:
     @staticmethod
     def is_socket(value):
         """ An alternative to isinstance(value, Socket)
-
-        :param value: The value to test
-        :type value: any
-        :return: True if *value* is an instance of Socket
-        :rtype: bool
+        
+        Args:
+            - value (any): The value to test
+            
+        Returns:
+            is a socket (bool)
         """
         return hasattr(value, 'get_blender_socket')
 
@@ -162,11 +163,12 @@ class Socket:
     @staticmethod
     def is_vector(value):
         """ Determine is the parameter is a vector.
-
-        :param value: The value to test
-        :type value: any
-        :return: True if *value* is an instance of Socket
-        :rtype: bool
+        
+        Args:
+            - value (any): The value to test
+            
+        Returns:
+            is a socket (bool)
         """
         
         if Socket.is_socket(value):
@@ -182,15 +184,11 @@ class Socket:
     def gives_bsocket(value):
         """ Test if the argument provides a valid output socket.
         
-        :param value: The value to test
-        :type value: any
-        :return: True if *value* is or wraps a socket
-        :rtype: bool
-        
-        Returns True if value is:
+        Args:
+            - value (any): The value to test
             
-        - A Blender Geometry Node Socket
-        - An instance of Socket        
+        Returns:
+            value is bpy.types.NodeSocket or Socket (bool)
         """
         
         return Socket.is_socket(value) or isinstance(value, bpy.types.NodeSocket)
@@ -225,8 +223,8 @@ class Socket:
     def get_blender_socket(self):
         """ Returns the property bsocket.
         
-        :return: self.bsocket
-        :rtype: bpy.types.NodeSocket
+        Returns:
+            bsocket (bpy.types.NodeSocket)
         """
         
         return self.bsocket
@@ -234,36 +232,54 @@ class Socket:
     @property
     def bl_idname(self):
         """ Shortcut for `self.bsocket.bl_idname`
+        
+        Returns:
+            socket bl_idname (str)
         """
         return self.bsocket.bl_socket_idname if isinstance(self.bsocket, bpy.types.NodeSocketInterfaceGeometry) else self.bsocket.bl_idname
     
     @property
     def name(self):
         """ Shortcut for `self.bsocket.name`
+        
+        Returns:
+            socket name (str)
         """
         return self.bsocket.name
         
     @property
     def is_output(self):
         """ Shortcut for `self.bsocket.is_output`
+        
+        Returns:
+            is an aoutput socket (bool)
         """
         return self.bsocket.is_output
     
     @property
     def is_multi_input(self):
         """ Shortcut for `self.bsocket.is_multi_output`
+        
+        Returns:
+            is multi input socket (bool)
         """
         return self.bsocket.is_multi_output
     
     @property
     def links(self):
-        """ Shortcut for `self.bsocket.links`
+        """ Shortcut for `self.bsocket.links`      
+        
+        Returns:
+            list of links (list)
         """
         return self.bsocket.links
 
     @property
     def bnode(self):
         """ Shortcut for `self.bsocket.node`
+        
+        Returns:
+            Blender node (bpy.types.Node)
         """
         return self.bsocket.node
     
@@ -273,6 +289,9 @@ class Socket:
         
         Depending on the _is_output_ property, the socket belongs either to *node.inputs* or
         *node.outputs*.
+        
+        Returns:
+            socket index (int)
         """
         
         if self.is_output:
@@ -288,6 +307,9 @@ class Socket:
         
     def connected_sockets(self):
         """ Returns the list of Socket instances linked to this socket.
+        
+        Returns:
+            list of connected sockets (list of Sockets)
         """ 
         
         sockets = []
@@ -301,6 +323,13 @@ class Socket:
     
     @property
     def is_plugged(self):
+        """ Indicates if the socket is connected or not.
+        
+        Raise an exception if called on an output socket.
+        
+        Returns:
+            is plugged (bool)
+        """
         if self.is_input:
             return bool(self.connected_sockets)
         else:
@@ -310,47 +339,34 @@ class Socket:
     # Data type from 
     
     @staticmethod
-    def value_data_type(value, default='FLOAT', color_domain='FLOAT_COLOR'):
-        """ Returns the domain to which the socket belongs
+    def value_data_type(value, default='FLOAT', color='FLOAT_COLOR'):
+        """ Returns the data type to which the socket belongs.
         
-        :param value: The socket
-        :type value: any
-        :return: data type in ['BOOLEAN', 'INT', 'FLOAT', 'FLOAT_VECTOR', 'FLOAT_COLOR']
-        :rtype: str
+        This methods is used to compute the **data_type** value in nodes accepting multitype values.
         
-        .. list-table:: Correspondance table
-           :widths: 30 20
-           :header-rows: 1
+        |    Socket                     |    data_type    |
+        |-------------------------------|-----------------|
+        | NodeSocketBool                | 'BOOLEAN'       |
+        | NodeSocketInt                 | 'INT'           |
+        | NodeSocketIntUnsigned         | 'INT'           |
+        | NodeSocketFloat               | 'FLOAT'         |
+        | NodeSocketFloatFactor         | 'FLOAT'         |
+        | NodeSocketFloatAngle          | 'FLOAT'         |
+        | NodeSocketFloatDistance       | 'FLOAT'         |
+        | NodeSocketVector              | 'FLOAT_VECTOR'  |
+        | NodeSocketVectorEuler         | 'FLOAT_VECTOR'  |
+        | NodeSocketVectorXYZ           | 'FLOAT_VECTOR'  |
+        | NodeSocketVectorTranslation   | 'FLOAT_VECTOR'  |
+        | NodeSocketColor               | color           |                
         
-           * - Socket bl_idname
-             - Domain code
-           * - NodeSocketBool
-             - 'BOOLEAN'
-           * - NodeSocketInt               
-             - 'INT'
-           * - NodeSocketIntUnsigned       
-             - 'INT'
-           * - NodeSocketFloat            
-             - 'FLOAT'
-           * - NodeSocketFloatFactor       
-             - 'FLOAT'
-           * - NodeSocketFloatAngle        
-             - 'FLOAT'
-           * - NodeSocketFloatDistance     
-             - 'FLOAT'         
-           * - NodeSocketVector            
-             - 'FLOAT_VECTOR'
-           * - NodeSocketVectorEuler       
-             - 'FLOAT_VECTOR'
-           * - NodeSocketVectorXYZ         
-             - 'FLOAT_VECTOR'
-           * - NodeSocketVectorTranslation
-             - 'FLOAT_VECTOR'
-           * - NodeSocketColor      
-             - 'FLOAT_COLOR'
-           * - NodeSocketString           
-             - 'FLOAT_COLOR'
-        
+        Args:
+            - value (any): the value to analyze
+            - default (str): default data_type
+            - color (str): code for color data_type
+            
+        Returns:
+            the data type of the value
+
         """
         
         class_dt = {
@@ -358,7 +374,7 @@ class Socket:
             'Integer' : 'INT',
             'Float'   : 'FLOAT',
             'Vector'  : 'FLOAT_VECTOR',
-            'Color'   : color_domain
+            'Color'   : color
             }
         
         if value is None:
@@ -372,7 +388,7 @@ class Socket:
                 return value
             
             elif value in ['FLOAT_COLOR', 'BYTE_COLOR']:
-                return color_domain
+                return color
             
             elif value in class_dt:
                 return class_dt[value]
@@ -398,7 +414,7 @@ class Socket:
                 if len(value) == 3:
                     return 'FLOAT_VECTOR'
                 elif len(value) == 4:
-                    return color_domain
+                    return color
                 
     # ----------------------------------------------------------------------------------------------------
     # Convert a python value to a type matching the one of the socket
@@ -406,6 +422,38 @@ class Socket:
     # Used in socket input when exact matching is required
     
     def convert_python_type(self, value, raise_exception=True):
+        """ Convert a python value to a value which can be plug in the socket.
+        
+        The following table gives the conversion rules:
+            
+        | Socket type       | Conversion                                                    |
+        l-------------------|---------------------------------------------------------------|
+        | Boolean           | bool(value)                                                   |
+        | Integer           | int(value)                                                    |
+        | Float             | float(value)                                                  |
+        | Vector            | A triplet or the value if compatible (mathutils.Vector,...)   |
+        | Color             | A quadruplet or the value if compatible (mathutils.Color,...) |
+        | String            | str(value)                                                    |
+        | Collection        | value is value is a collection, bpy.data.collections[value] otherwise |
+        | Object            | value is value is an object, bpy.data.objects[value] otherwise        |
+        | Image             | value is value is an image, bpy.data.images[value] otherwise          |
+        | Texture           | value is value is a texture, bpy.data.textures[value] otherwise       |
+        | Material          | value is value is a material, bpy.data.materials[value] otherwise     |
+        
+        This method allows in particular to refer to Blender resources by their name:
+            
+        ```python
+        # Set a material to a mesh
+        mesh.faces.material = "Material"
+        
+        # Is equivalent to
+        mesh.faces.material = bpy.data.materials["Material"]
+        ```
+        
+        Args:
+            value (any): the value to convert
+            raise_exeption (bool): False to avod raising an exception in case of error.
+        """
         
         import bpy.types
         import mathutils
@@ -514,81 +562,35 @@ class Socket:
     def get_class_name(socket, with_sub_class = False):
         """ Get the DataSocket class name corresponding to the socket type and name.
         
-        :param socket: The socket to determine the class of
-        :param with_sub_class: Return the sub class if True
-        :typ socket: bpy.types.NodeSocket, Socket
-        :type with_sub_class: bool
-        :return: The name of the class associated to the bl_idname of the socket
-        :rtype: str
+        | Socket bl_idname              | Geondes class name    | Sub class             |
+        l-------------------------------|-----------------------|-----------------------|
+        | NodeSocketBool                | Boolean               | None                  |
+        | NodeSocketInt                 | Integer               | None                  |
+        | NodeSocketIntUnsigned         | Integer               | NoUnsigned            |
+        | NodeSocketFloat               | Float                 | None                  |
+        | NodeSocketFloatFactor         | Float                 | Factor                |
+        | NodeSocketFloatAngle          | Float                 | Angle                 |
+        | NodeSocketFloatDistance       | Float                 | Distance              |
+        | NodeSocketVector              | Vector                | None                  |
+        | NodeSocketVectorEuler         | Vector                | Rotation              |
+        | NodeSocketVectorXYZ           | Vector                | xyz                   |
+        | NodeSocketVectorTranslation   | Vector                | Translation           |
+        | NodeSocketColor               | Color                 | None                  |
+        | NodeSocketString              | String                | None                  |
+        | NodeSocketCollection          | Collection            | None                  |
+        | NodeSocketImage               | Image                 | None                  |
+        | NodeSocketMaterial            | Material              | None                  |
+        | NodeSocketObject              | Object                | None                  |
+        | NodeSocketTexture             | Texture               | None                  |
+        | NodeSocketGeometry            | Geometry              | None                  |
         
-        .. list-table:: Correspondance table
-           :widths: 30 20 20
-           :header-rows: 1
-           
-           * - NodeSocket
-             - class name
-             - sub class name
-           * - NodeSocketBool 
-             - 'Boolean'
-             - 
-           * - NodeSocketInt 
-             - 'Integer'
-             - 
-           * - NodeSocketIntUnsigned 
-             - 'Integer'
-             - 'Unsigned'
-           * - NodeSocketFloat 
-             - 'Float' 
-             - 
-           * - NodeSocketFloatFactor 
-             - 'Float'
-             - 'Factor'
-           * - NodeSocketFloatAngle  
-             - 'Float'
-             - 'Angle'
-           * - NodeSocketFloatDistance 
-             - 'Float'
-             - 'Distance'
-           * - NodeSocketVector 
-             - 'Vector'
-             - 
-           * - NodeSocketVectorEuler 
-             - 'Vector'
-             - 'Rotation'
-           * - NodeSocketVectorXYZ 
-             - 'Vector'
-             - 'xyz'
-           * - NodeSocketVectorTranslation 
-             - 'Vector'
-             - 'Translation'
-           * - NodeSocketColor 
-             - 'Color'
-             - 
-           * - NodeSocketString' 
-             - 'String'
-             - 
-           * - NodeSocketCollection 
-             - 'Collection'
-             - 
-           * - NodeSocketImage 
-             - 'Image'
-             - 
-           * - NodeSocketMaterial 
-             - 'Material'
-             - 
-           * - NodeSocketObject 
-             - 'Object'
-             - 
-           * - NodeSocketTexture 
-             - 'Texture'
-             - 
-           * - NodeSocketGeometry
-             - 'Geometry'
-             - 
-          
-          
         If the name of the socket is in ['Mesh', 'Points', 'Instances', 'Volume', 'Spline', 'Curve', 'Curves'],
         the name is chosen as the class name.
+        
+        Args:
+            - socket (bpy.type.NodeSocket): the socket to use
+            - with_sub_class (bool): return as as second value the sub type of the socket
+                
         """
         bl_idname = socket.bl_idname
         class_name = Socket.SOCKET_IDS[bl_idname][0]
@@ -611,37 +613,29 @@ class Socket:
     @staticmethod
     def get_bl_idname(class_name):
         """ Get the node socket bl_idname name from the Socket class
-        
-        :param class_name: The class name
-        :type class_name: str
-        :return: The bl_idname associated to this class name
-        :rtype: str
-        
+
         Used to create a new group input socket. Called in `DataClass.Input` method to determine
         which socket type must be created.
         
-        Note that here the class_name argument accepts additional values which correspond to *sub classes*:
+        Note that here the class_name argument accepts additional values which correspond to **sub classes**:
             
-        .. list-table:: 
-           :widths: 20 40
-           :header-rows: 0
-        
-           * - Unsigned
-             - Integer sub class (NodeSocketIntUnsigned)
-           * - Factor
-             - Float sub class (NodeSocketFloatFactor)
-           * - Angle
-             - Float sub class  (NodeSocketFloatAngle)
-           * - Distance
-             - Float sub class (NodeSocketFloatDistance)
-           * - Rotation
-             - Vector sub class (NodeSocketVectorEuler)
-           * - xyz
-             - Vector sub class (NodeSocketVectorXYZ)
-           * - Translation
-             - Vector sub class (NodeSocketVectorTranslation)
+        | Sub class                 | bl_idname                     |
+        |---------------------------|-------------------------------|
+        | Unsigned                  | NodeSocketIntUnsigned         |
+        | Factor                    | NodeSocketFloatFactor         |
+        | Angle                     | NodeSocketFloatAngle          |
+        | Distance                  | NodeSocketFloatDistance       |
+        | Rotation                  | NodeSocketVectorEuler         |
+        | xyz                       | NodeSocketVectorXYZ           |
+        | Translation               | NodeSocketVectorTranslation   |
           
         These additional values allow to enter angle, distance, factor... as group input values.
+        
+        Args:
+            - class_name (str): the name of the class
+            
+        Returns:
+            bl_idname (str)
         """
         
         if Socket.is_socket(class_name):
@@ -744,25 +738,6 @@ class Socket:
 
 class DataSocket(Socket):
     """ Geometry wrapper: root class for data sockets: Boolean, Integer, Geometry, Curve, Object,...
-    
-    :param socket: a node socket, or a instance of Socket
-    :param node: The Node owning the socket. If None the owner is searched.
-    :param label: The label to use for the geometry node
-    :type socket: bpy.types.nodesocket, Socket
-    :type node: Node
-    :type label: str
-    
-    **Type casting**
-    
-    Passing a DataSocket instance as argument allows type casting
-    
-    :example:
-        
-    .. code-block:: python
-
-        value = Float(10.) # Float data class pointing on the output socket of node "Value"
-        v = Vector(value)  # Cast the previous socket to Vector
-    
     """
 
     def __init__(self, socket, node=None, label=None):
@@ -821,22 +796,6 @@ class DataSocket(Socket):
         
         After a node is called, the wrapped socket changes and this makes the cache obsolete.
         After a change, the cache is erased.
-        
-        :example:
-        
-        .. code-block:: python
-    
-            class Vector(...):
-                def __init__(self, ...):
-                     ...
-                     self.reset_properties()
-                     ...
-            
-                 def reset_properties(self):
-                     super().reset_properties()
-                     self.separate_ = None      # Created by property self.seperate() with node SeparateXyz
-
-        
         """
         
         self.init_domains()
@@ -847,45 +806,27 @@ class DataSocket(Socket):
     def stack(self, node, socket_name=None):
         """ Change the wrapped socket
         
-        :param node: The new node owning the output socket to wrap
-        :type node: Node
-        :return: self
+        After the call, **the DataSocket** instance wraps a different socket, typically in a newly created node.
+        This is an internally used by the **geonodes** engine.
         
-        Methods are implemented in two modes:
+        In the following example, the `mesh`
         
-        - Creation
-        - Transformation
+        ```python
         
-        In **creation mode**, the node is considered as creating new data. The result is a new instance of DataSocket.
+        # After the following instruction, mesh wraps the output socket of the Cube node
+        mesh = Mesh.Cube()
         
-        In **transformation mode**, the node is considered as transforming data which is kept in the result of the method.
-        After the method returns, the calling DataSocket instance refers to a new Blender output socket.
-        The stack method changes the socket the instance refers to and reinitialize properties
+        # After the following instruction, mesh wraps the output socket of the Set Shade Smooth node
+        mesh.set_shade_smooth(True)
+        ```
         
-        .. code-block:: python
-
-            # 1. Creation mode
-            # 
-            # to_mesh method creates a new mesh from a curve.
-            # The curve instance refers to the same output node socket
-            # We need to get the result of the method in a new variable
             
-            new_mesh = curve.to_mesh(profile_curve=circle)
+        Args:
+            node (Node): the new node
+            socket_name (str): name of the outpout socket in the node. If None, takes the first output socket of the node.
             
-            # 2. Transformation mode
-            #
-            # set_shade_smooth method transforms the mesh.
-            # After the call, the mesh instance refers to the output socket of the
-            # newly created node "Set Shade Smooth". There is no need to get the result
-            # of the method.
-            
-            mesh.set_shade_smooth()
-            
-            # Note that a transformation method returns self and so, the following line
-            # is equivallent:
-            
-            mesh = mesh.set_shade_smooth()
-        
+        Returns:
+            self        
         """
         
         self.node = node
@@ -903,11 +844,11 @@ class DataSocket(Socket):
     def plug(self, *values):
         """ Plug values in the socket (input sockets only)
         
-        :param values: The output sockets. More than one values can be passed
-            if the input socket is multi input.
-        :type values: array of bpy.types.NodeSocket, Socket, values
-        
-        see :func:`plug_bsocket`
+        Args:
+            - values (any): The output sockets. More than one values can be passed if the input socket is multi input.
+            
+        Returns:
+            None
         """
         context.plug_to_socket(self.bsocket, *values)
         
@@ -915,15 +856,22 @@ class DataSocket(Socket):
     # To group output (for output sockets only)
     
     def to_output(self, name=None):
-        """ Plug the data socket to the group output
-        
-        :param name: The name to give to the modifier output
-        :type name: str
-        
+        """ Create a new output socket in the Tree and plug the **DataSocket** to it.
+
         The socket is added to the outputs of the geometry nodes tree.
         
-        .. Note:: To define a data socket as the result geometry of the tree, use ``tree.output_geometry = my_geometry``.
+        > Note: To define a data socket as the result geometry of the tree, use the property `output_geometry` of 
+          the current [Tree](Tree.md#output_geometry).
         
+        The created socket can be read from within another [Tree](Tree.md) by:
+            - creating a [Group](Group.md): `node = Group(tree_name, **kwargs)`
+            - using the snake_case version of the socket: `ver = node.socket_name`
+        
+        Args:
+            - name (str): User name of the socket
+            
+        Returns:
+            None
         """
         if not self.is_output:
             raise RuntimeError(f"The socket '{str(self)}' is not an input socket. It can't be sent to group output.")
@@ -933,13 +881,6 @@ class DataSocket(Socket):
     # To viewer (for output sockets only)
         
     def view(self, domain='AUTO', label=None, node_color=None):
-        """ Link the data socket to the viewer
-        
-        If the data socket is a geometry (Curve, Mesh...) it is linked to the geometry input of the viewer.
-        
-        If it ias a value (Integer, Float,...) it is linked to the value socket and the viewer is configured
-        accordingly.
-        """
         if not self.is_output:
             raise RuntimeError(f"The socket '{str(self)}' is not an output socket. It can't be connected to the viewer.")
         return self.node.tree.view(self, domain=domain, label=label, node_color=node_color)
