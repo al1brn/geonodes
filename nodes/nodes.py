@@ -2514,7 +2514,7 @@ class BezierSegment(Node):
 
     Node implementation:
         Curve:
-            bezier_segment 
+            BezierSegment 
 
     Args:
         resolution (DataSocket): Integer
@@ -7369,7 +7369,7 @@ class MeshLine(Node):
 
     Node implementation:
         Mesh:
-            Line LineEndPoints LineOffset LineEndPointsResolution LineOffsetResolution 
+            Line LineEndPoints LineEndPointsResolution LineOffset 
 
     Args:
         count (DataSocket): Integer

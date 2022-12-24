@@ -92,7 +92,7 @@ elf.points = Vertex(self) # Initialized before super().__init__ which can overri
 
 **Class and static methods**
 
-[Circle](#Circle) | [Collection](#Collection) | [Cone](#Cone) | [Cube](#Cube) | [Cylinder](#Cylinder) | [FromCollection](#FromCollection) | [Grid](#Grid) | [IcoSphere](#IcoSphere) | [Input](#Input) | [Line](#Line) | [LineEndPoints](#LineEndPoints) | [LineEndPointsResolution](#LineEndPointsResolution) | [LineOffset](#LineOffset) | [LineOffsetResolution](#LineOffsetResolution) | [UVSphere](#UVSphere)
+[Circle](#Circle) | [Collection](#Collection) | [Cone](#Cone) | [Cube](#Cube) | [Cylinder](#Cylinder) | [FromCollection](#FromCollection) | [Grid](#Grid) | [IcoSphere](#IcoSphere) | [Input](#Input) | [Line](#Line) | [LineEndPoints](#LineEndPoints) | [LineEndPointsResolution](#LineEndPointsResolution) | [LineOffset](#LineOffset) | [UVSphere](#UVSphere)
 
 ***Inherited***
 
@@ -820,32 +820,6 @@ def LineOffset(cls, count=None, start_location=None, offset=None)
 
 #### Args:
 - count: Integer
-- start_location: Vector
-- offset: Vector
-
-#### Returns:
-- socket `mesh`
-
-
-
-
-
-
-<sub>Go to [top](#class-Mesh) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-### LineOffsetResolution
-
-```python
-@classmethod
-def LineOffsetResolution(cls, resolution=None, start_location=None, offset=None)
-```
-
-
-
-> Node: [Mesh Line](GeometryNodeMeshLine.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh_primitives/mesh_line.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshLine.html)
-
-#### Args:
-- resolution: Float
 - start_location: Vector
 - offset: Vector
 

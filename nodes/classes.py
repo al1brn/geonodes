@@ -7575,26 +7575,6 @@ class Mesh(Geometry):
 
 
     @classmethod
-    def LineOffsetResolution(cls, resolution=None, start_location=None, offset=None):
-        """
-
-        > Node: [Mesh Line](GeometryNodeMeshLine.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh_primitives/mesh_line.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshLine.html)
-
-        #### Args:
-        - resolution: Float
-        - start_location: Vector
-        - offset: Vector
-
-        #### Returns:
-        - socket `mesh`
-
-
-        """
-
-        return cls(nodes.MeshLine(count=None, resolution=resolution, start_location=start_location, offset=offset, count_mode='RESOLUTION', mode='OFFSET').mesh)
-
-
-    @classmethod
     def UVSphere(cls, segments=None, rings=None, radius=None):
         """
 
@@ -8574,6 +8554,29 @@ class Curve(Geometry):
 
 
     @classmethod
+    def BezierSegment(cls, resolution=None, start=None, start_handle=None, end_handle=None, end=None, mode='POSITION'):
+        """
+
+        > Node: [Bezier Segment](GeometryNodeCurvePrimitiveBezierSegment.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve_primitives/bezier_segment.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurvePrimitiveBezierSegment.html)
+
+        #### Args:
+        - resolution: Integer
+        - start: Vector
+        - start_handle: Vector
+        - end_handle: Vector
+        - end: Vector
+        - mode (str): 'POSITION' in [POSITION, OFFSET]
+
+        #### Returns:
+        - socket `curve`
+
+
+        """
+
+        return cls(nodes.BezierSegment(resolution=resolution, start=start, start_handle=start_handle, end_handle=end_handle, end=end, mode=mode).curve)
+
+
+    @classmethod
     def Circle(cls, resolution=None, radius=None):
         """
 
@@ -8592,8 +8595,8 @@ class Curve(Geometry):
         return cls(nodes.CurveCircle(resolution=resolution, point_1=None, point_2=None, point_3=None, radius=radius, mode='RADIUS').curve)
 
 
-    @classmethod
-    def CircleFromPoints(cls, resolution=None, point_1=None, point_2=None, point_3=None):
+    @staticmethod
+    def CircleFromPoints(resolution=None, point_1=None, point_2=None, point_3=None):
         """
 
         > Node: [Curve Circle](GeometryNodeCurvePrimitiveCircle.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve_primitives/curve_circle.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurvePrimitiveCircle.html)
@@ -8604,13 +8607,17 @@ class Curve(Geometry):
         - point_2: Vector
         - point_3: Vector
 
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeCurvePrimitiveCircle.webp)
+
         #### Returns:
-        - node with sockets ['curve', 'center']
+        - tuple ('`curve`', '`center`')
 
 
         """
 
-        return nodes.CurveCircle(resolution=resolution, point_1=point_1, point_2=point_2, point_3=point_3, radius=None, mode='POINTS')
+        import geonodes as gn
+        node = nodes.CurveCircle(resolution=resolution, point_1=point_1, point_2=point_2, point_3=point_3, radius=None, mode='POINTS')
+        return gn.Curve(node.curve), node.center
 
 
     @classmethod
@@ -8744,29 +8751,6 @@ class Curve(Geometry):
         """
 
         return nodes.Star(points=points, inner_radius=inner_radius, outer_radius=outer_radius, twist=twist)
-
-
-    @classmethod
-    def bezier_segment(cls, resolution=None, start=None, start_handle=None, end_handle=None, end=None, mode='POSITION'):
-        """
-
-        > Node: [Bezier Segment](GeometryNodeCurvePrimitiveBezierSegment.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve_primitives/bezier_segment.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurvePrimitiveBezierSegment.html)
-
-        #### Args:
-        - resolution: Integer
-        - start: Vector
-        - start_handle: Vector
-        - end_handle: Vector
-        - end: Vector
-        - mode (str): 'POSITION' in [POSITION, OFFSET]
-
-        #### Returns:
-        - socket `curve`
-
-
-        """
-
-        return cls(nodes.BezierSegment(resolution=resolution, start=start, start_handle=start_handle, end_handle=end_handle, end=end, mode=mode).curve)
 
 
     def curve_of_point(self, point_index=None):

@@ -40,9 +40,8 @@ node = nodes.MeshLine(count=None, resolution=None, start_location=None, offset=N
 | **[Mesh](Mesh.md)** |
 | [Line](Mesh.md#Line) | `@classmethod`<br> `def Line(cls, count=None, resolution=None, start_location=None, offset=None, count_mode='TOTAL', mode='OFFSET'):` |
 | [LineEndPoints](Mesh.md#LineEndPoints) | `@classmethod`<br> `def LineEndPoints(cls, count=None, start_location=None, end_location=None):` |
-| [LineOffset](Mesh.md#LineOffset) | `@classmethod`<br> `def LineOffset(cls, count=None, start_location=None, offset=None):` |
 | [LineEndPointsResolution](Mesh.md#LineEndPointsResolution) | `@classmethod`<br> `def LineEndPointsResolution(cls, resolution=None, start_location=None, end_location=None):` |
-| [LineOffsetResolution](Mesh.md#LineOffsetResolution) | `@classmethod`<br> `def LineOffsetResolution(cls, resolution=None, start_location=None, offset=None):` |
+| [LineOffset](Mesh.md#LineOffset) | `@classmethod`<br> `def LineOffset(cls, count=None, start_location=None, offset=None):` |
 
 <sub>Go to [top](#node-Mesh-Line) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

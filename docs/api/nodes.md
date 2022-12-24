@@ -10,7 +10,7 @@
 | [Arc](GeometryNodeCurveArc.md) | [Curve](Curve.md) | - [Arc](Curve.md#Arc)<br>- [ArcFromPoints](Curve.md#ArcFromPoints)|
 | [Attribute Statistic](GeometryNodeAttributeStatistic.md) | [Domain](Domain.md) | [attribute_statistic](Domain.md#attribute_statistic) / [attribute_mean](Domain.md#attribute_mean) / [attribute_median](Domain.md#attribute_median) / [attribute_sum](Domain.md#attribute_sum) / [attribute_min](Domain.md#attribute_min) / [attribute_max](Domain.md#attribute_max) / [attribute_range](Domain.md#attribute_range) / [attribute_std](Domain.md#attribute_std) / [attribute_var](Domain.md#attribute_var) / |
 |      | [Geometry](Geometry.md) | [attribute_statistic](Geometry.md#attribute_statistic) |
-| [Bezier Segment](GeometryNodeCurvePrimitiveBezierSegment.md) | [Curve](Curve.md) | [bezier_segment](Curve.md#bezier_segment) |
+| [Bezier Segment](GeometryNodeCurvePrimitiveBezierSegment.md) | [Curve](Curve.md) | [BezierSegment](Curve.md#BezierSegment) |
 | [Boolean](FunctionNodeInputBool.md) | [Boolean](Boolean.md) | [Boolean](Boolean.md#Boolean) |
 | [Boolean Math](FunctionNodeBooleanMath.md) | [Boolean](Boolean.md) | [b_and](Boolean.md#b_and) / [b_or](Boolean.md#b_or) / [b_not](Boolean.md#b_not) / [nand](Boolean.md#nand) / [nor](Boolean.md#nor) / [xnor](Boolean.md#xnor) / [xor](Boolean.md#xor) / [imply](Boolean.md#imply) / [nimply](Boolean.md#nimply) / |
 |      | [function](function.md) | [b_and](function.md#b_and) / [b_or](function.md#b_or) / [b_not](function.md#b_not) / [nand](function.md#nand) / [nor](function.md#nor) / [xnor](function.md#xnor) / [xor](function.md#xor) / [imply](function.md#imply) / [nimply](function.md#nimply) / |
@@ -177,7 +177,7 @@
 | [Mesh Circle](GeometryNodeMeshCircle.md) | [Mesh](Mesh.md) | [Circle](Mesh.md#Circle) |
 | [Mesh Island](GeometryNodeInputMeshIsland.md) | [Face](Face.md) | - [island](Face.md#island)<br>- [island_index](Face.md#island_index)<br>- [island_count](Face.md#island_count)|
 |      | [Mesh](Mesh.md) | - [island](Mesh.md#island)<br>- [island_index](Mesh.md#island_index)<br>- [island_count](Mesh.md#island_count)|
-| [Mesh Line](GeometryNodeMeshLine.md) | [Mesh](Mesh.md) | [Line](Mesh.md#Line) / [LineEndPoints](Mesh.md#LineEndPoints) / [LineOffset](Mesh.md#LineOffset) / [LineEndPointsResolution](Mesh.md#LineEndPointsResolution) / [LineOffsetResolution](Mesh.md#LineOffsetResolution) / |
+| [Mesh Line](GeometryNodeMeshLine.md) | [Mesh](Mesh.md) | - [Line](Mesh.md#Line)<br>- [LineEndPoints](Mesh.md#LineEndPoints)<br>- [LineEndPointsResolution](Mesh.md#LineEndPointsResolution)<br>- [LineOffset](Mesh.md#LineOffset)|
 | [Mesh to Curve](GeometryNodeMeshToCurve.md) | [Edge](Edge.md) | [to_curve](Edge.md#to_curve) |
 |      | [Mesh](Mesh.md) | [to_curve](Mesh.md#to_curve) |
 | [Mesh to Points](GeometryNodeMeshToPoints.md) | [Mesh](Mesh.md) | [to_points](Mesh.md#to_points) |

@@ -114,7 +114,7 @@
 | node | class | method name |
 |------|-------|-------------|
 | [Arc](GeometryNodeCurveArc.md) | [Curve](Curve.md) | - [Arc](Curve.md#Arc)<br>- [ArcFromPoints](Curve.md#ArcFromPoints)|
-| [Bezier Segment](GeometryNodeCurvePrimitiveBezierSegment.md) | [Curve](Curve.md) | [bezier_segment](Curve.md#bezier_segment) |
+| [Bezier Segment](GeometryNodeCurvePrimitiveBezierSegment.md) | [Curve](Curve.md) | [BezierSegment](Curve.md#BezierSegment) |
 | [Curve Circle](GeometryNodeCurvePrimitiveCircle.md) | [Curve](Curve.md) | - [Circle](Curve.md#Circle)<br>- [CircleFromPoints](Curve.md#CircleFromPoints)|
 | [Curve Line](GeometryNodeCurvePrimitiveLine.md) | [Curve](Curve.md) | - [Line](Curve.md#Line)<br>- [LineDirection](Curve.md#LineDirection)|
 | [Spiral](GeometryNodeCurveSpiral.md) | [Curve](Curve.md) | [Spiral](Curve.md#Spiral) |
@@ -349,7 +349,7 @@
 | [Grid](GeometryNodeMeshGrid.md) | [Mesh](Mesh.md) | [Grid](Mesh.md#Grid) |
 | [Ico Sphere](GeometryNodeMeshIcoSphere.md) | [Mesh](Mesh.md) | [IcoSphere](Mesh.md#IcoSphere) |
 | [Mesh Circle](GeometryNodeMeshCircle.md) | [Mesh](Mesh.md) | [Circle](Mesh.md#Circle) |
-| [Mesh Line](GeometryNodeMeshLine.md) | [Mesh](Mesh.md) | [Line](Mesh.md#Line) / [LineEndPoints](Mesh.md#LineEndPoints) / [LineOffset](Mesh.md#LineOffset) / [LineEndPointsResolution](Mesh.md#LineEndPointsResolution) / [LineOffsetResolution](Mesh.md#LineOffsetResolution) / |
+| [Mesh Line](GeometryNodeMeshLine.md) | [Mesh](Mesh.md) | - [Line](Mesh.md#Line)<br>- [LineEndPoints](Mesh.md#LineEndPoints)<br>- [LineEndPointsResolution](Mesh.md#LineEndPointsResolution)<br>- [LineOffset](Mesh.md#LineOffset)|
 | [UV Sphere](GeometryNodeMeshUVSphere.md) | [Mesh](Mesh.md) | [UVSphere](Mesh.md#UVSphere) |
 
 <sub>Go to [top](#nodes-menus) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>

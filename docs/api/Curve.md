@@ -92,7 +92,7 @@ elf.points = Vertex(self) # Initialized before super().__init__ which can overri
 
 **Class and static methods**
 
-[Arc](#Arc) | [ArcFromPoints](#ArcFromPoints) | [Circle](#Circle) | [CircleFromPoints](#CircleFromPoints) | [Collection](#Collection) | [FromCollection](#FromCollection) | [Input](#Input) | [Line](#Line) | [LineDirection](#LineDirection) | [QuadraticBezier](#QuadraticBezier) | [Quadrilateral](#Quadrilateral) | [Spiral](#Spiral) | [Star](#Star) | [bezier_segment](#bezier_segment)
+[Arc](#Arc) | [ArcFromPoints](#ArcFromPoints) | [BezierSegment](#BezierSegment) | [Circle](#Circle) | [CircleFromPoints](#CircleFromPoints) | [Collection](#Collection) | [FromCollection](#FromCollection) | [Input](#Input) | [Line](#Line) | [LineDirection](#LineDirection) | [QuadraticBezier](#QuadraticBezier) | [Quadrilateral](#Quadrilateral) | [Spiral](#Spiral) | [Star](#Star)
 
 ***Inherited***
 
@@ -489,6 +489,35 @@ def ArcFromPoints(cls, resolution=None, start=None, middle=None, end=None, offse
 
 <sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
+### BezierSegment
+
+```python
+@classmethod
+def BezierSegment(cls, resolution=None, start=None, start_handle=None, end_handle=None, end=None, mode='POSITION')
+```
+
+
+
+> Node: [Bezier Segment](GeometryNodeCurvePrimitiveBezierSegment.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve_primitives/bezier_segment.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurvePrimitiveBezierSegment.html)
+
+#### Args:
+- resolution: Integer
+- start: Vector
+- start_handle: Vector
+- end_handle: Vector
+- end: Vector
+- mode (str): 'POSITION' in [POSITION, OFFSET]
+
+#### Returns:
+- socket `curve`
+
+
+
+
+
+
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### Circle
 
 ```python
@@ -517,8 +546,8 @@ def Circle(cls, resolution=None, radius=None)
 ### CircleFromPoints
 
 ```python
-@classmethod
-def CircleFromPoints(cls, resolution=None, point_1=None, point_2=None, point_3=None)
+@staticmethod
+def CircleFromPoints(resolution=None, point_1=None, point_2=None, point_3=None)
 ```
 
 
@@ -531,8 +560,10 @@ def CircleFromPoints(cls, resolution=None, point_1=None, point_2=None, point_3=N
 - point_2: Vector
 - point_3: Vector
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeCurvePrimitiveCircle.webp)
+
 #### Returns:
-- node with sockets ['curve', 'center']
+- tuple ('`curve`', '`center`')
 
 
 
@@ -766,35 +797,6 @@ def Star(cls, points=None, inner_radius=None, outer_radius=None, twist=None)
 
 #### Returns:
 - node with sockets ['curve', 'outer_points']
-
-
-
-
-
-
-<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-### bezier_segment
-
-```python
-@classmethod
-def bezier_segment(cls, resolution=None, start=None, start_handle=None, end_handle=None, end=None, mode='POSITION')
-```
-
-
-
-> Node: [Bezier Segment](GeometryNodeCurvePrimitiveBezierSegment.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve_primitives/bezier_segment.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurvePrimitiveBezierSegment.html)
-
-#### Args:
-- resolution: Integer
-- start: Vector
-- start_handle: Vector
-- end_handle: Vector
-- end: Vector
-- mode (str): 'POSITION' in [POSITION, OFFSET]
-
-#### Returns:
-- socket `curve`
 
 
 

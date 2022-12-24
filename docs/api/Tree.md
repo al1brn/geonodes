@@ -19,8 +19,8 @@ A Tree can be used for two purposes:
 To include a custom group into a Tree, simply initialize a [Group](Group.md) class with its name as first parameter.
 
 ```python
-# Call of the custom group name "Reusable Computation"
-# After the name, use keywoard arguments to feed the input sockets of the custom group
+# Call of the custom group named "Reusable Computation"
+# After the name, use keyword arguments to feed the input sockets of the custom group
 
 node = Group("Resusable Computation", ...)
 
