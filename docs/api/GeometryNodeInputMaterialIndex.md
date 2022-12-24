@@ -23,10 +23,12 @@ node = nodes.MaterialIndex()
 
 | Class or method name | Definition |
 |----------------------|------------|
-| **[Domain](Domain.md)** |
-| [material_index](Domain.md#material_index) | `@property`<br> `def material_index(self):` |
+| **[Face](Face.md)** |
+| [material_index](Face.md#material_index) | `@property`<br> `def material_index(self):` |
 | **[Geometry](Geometry.md)** |
 | [material_index](Geometry.md#material_index) | `@property`<br> `def material_index(self):` |
+| **[Spline](Spline.md)** |
+| [material_index](Spline.md#material_index) | `@property`<br> `def material_index(self):` |
 
 <sub>Go to [top](#node-Material-Index) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

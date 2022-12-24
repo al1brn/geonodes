@@ -23,7 +23,7 @@ Integer(self, value=0, label=None)
 
 **Class and static methods**
 
-[Input](#Input) | [Integer](#Integer) | [Unsigned](#Unsigned)
+[Input](#Input) | [Integer](#Integer) | [Random](#Random) | [Unsigned](#Unsigned)
 
 ***Inherited***
 
@@ -79,6 +79,33 @@ def Integer(cls, integer=0)
 
 #### Returns:
 - socket `integer`
+
+
+
+
+
+
+<sub>Go to [top](#class-Integer) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### Random
+
+```python
+@classmethod
+def Random(cls, min=None, max=None, ID=None, seed=None)
+```
+
+
+
+> Node: [Random Value](FunctionNodeRandomValue.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/random_value.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeRandomValue.html)
+
+#### Args:
+- min: ['Vector', 'Float', 'Integer']
+- max: ['Vector', 'Float', 'Integer']
+- ID: Integer
+- seed: Integer
+
+#### Returns:
+- socket `value`
 
 
 

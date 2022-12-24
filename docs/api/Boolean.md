@@ -75,7 +75,7 @@ Boolean(self, value = False, label = None)
 
 **Class and static methods**
 
-[Boolean](#Boolean) | [Input](#Input)
+[Boolean](#Boolean) | [Input](#Input) | [Random](#Random)
 
 ***Inherited***
 
@@ -131,6 +131,32 @@ def Input(cls, value = False, name = "Boolean", description = "")
     
 #### Returns:
 - Boolean: The Boolean data socket
+
+
+
+
+<sub>Go to [top](#class-Boolean) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### Random
+
+```python
+@classmethod
+def Random(cls, probability=None, ID=None, seed=None)
+```
+
+
+
+> Node: [Random Value](FunctionNodeRandomValue.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/random_value.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeRandomValue.html)
+
+#### Args:
+- probability: Float
+- ID: Integer
+- seed: Integer
+
+#### Returns:
+- socket `value`
+
+
 
 
 

@@ -26,7 +26,7 @@ Float(self, value=0., label=None)
 
 **Class and static methods**
 
-[Angle](#Angle) | [Distance](#Distance) | [Factor](#Factor) | [Frame](#Frame) | [Input](#Input) | [Seconds](#Seconds) | [Value](#Value)
+[Angle](#Angle) | [Distance](#Distance) | [Factor](#Factor) | [Frame](#Frame) | [Input](#Input) | [Random](#Random) | [Seconds](#Seconds) | [Value](#Value)
 
 ***Inherited***
 
@@ -171,6 +171,33 @@ def Input(cls, value = 0., name = "Float", min_value = None, max_value = None, d
     
 #### Returns:
 - Float: The Float data socket
+
+
+
+<sub>Go to [top](#class-Float) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### Random
+
+```python
+@classmethod
+def Random(cls, min=None, max=None, ID=None, seed=None)
+```
+
+
+
+> Node: [Random Value](FunctionNodeRandomValue.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/random_value.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeRandomValue.html)
+
+#### Args:
+- min: ['Vector', 'Float', 'Integer']
+- max: ['Vector', 'Float', 'Integer']
+- ID: Integer
+- seed: Integer
+
+#### Returns:
+- socket `value`
+
+
+
 
 
 

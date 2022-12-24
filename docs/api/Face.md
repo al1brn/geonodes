@@ -314,6 +314,23 @@ Node implemented as property setter.
 
 
 
+Setter
+
+
+
+> Node: [Set Material Index](GeometryNodeSetMaterialIndex.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/set_material_index.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetMaterialIndex.html)
+
+Node implemented as property setter.
+
+#### Args:
+- attr_value: material_index
+
+
+
+
+
+
+
 <sub>Go to [top](#class-Face) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### neighbors

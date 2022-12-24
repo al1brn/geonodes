@@ -1721,8 +1721,9 @@ class Material(DataSocket):
             
         else:
             mat = self.python_type_to_socket(value, 'NodeSocketMaterial')
-            node = nodes.Material(mat, label=label)
-            super().__init__(node.boolean, node)
+            node = nodes.Material(label=label)
+            node.bnode.outputs[0].default_value = mat
+            super().__init__(node.material, node)
 
     @classmethod
     def Material(cls, name: str = None):

@@ -389,21 +389,6 @@ class Domain(geodom.Domain):
         return self.attribute_node(nodes.InterpolateDomain(value=value, data_type=data_type_, domain=self.domain)).value
 
 
-    @property
-    def material_index(self):
-        """
-
-        > Node: [Material Index](GeometryNodeInputMaterialIndex.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/material_index.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMaterialIndex.html)
-
-        #### Returns:
-        - socket `material_index`
-
-
-        """
-
-        return self.attribute_node(nodes.MaterialIndex()).material_index
-
-
     def material_selection(self, material=None):
         """
 
@@ -618,23 +603,6 @@ class Domain(geodom.Domain):
         """
 
         return self.socket_stack(nodes.SetID(geometry=self.data_socket, selection=self.selection, ID=ID))
-
-
-    def set_material_index(self, material_index=None):
-        """
-
-        > Node: [Set Material Index](GeometryNodeSetMaterialIndex.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/set_material_index.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetMaterialIndex.html)
-
-        #### Args:
-        - material_index: Integer
-
-        #### Returns:
-        - self
-
-
-        """
-
-        return self.socket_stack(nodes.SetMaterialIndex(geometry=self.data_socket, selection=self.selection, material_index=material_index))
 
 
     def set_named_boolean(self, name=None, value=None):
@@ -1549,6 +1517,39 @@ class Face(Domain):
 
 
     @property
+    def material_index(self):
+        """
+
+        > Node: [Material Index](GeometryNodeInputMaterialIndex.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/material_index.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMaterialIndex.html)
+
+        #### Returns:
+        - socket `material_index`
+
+
+        """
+
+        return self.attribute_node(nodes.MaterialIndex()).material_index
+
+
+    @material_index.setter
+    def material_index(self, attr_value):
+        """
+
+        > Node: [Set Material Index](GeometryNodeSetMaterialIndex.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/set_material_index.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetMaterialIndex.html)
+
+        Node implemented as property setter.
+
+        #### Args:
+        - attr_value: material_index
+
+
+
+        """
+
+        self.socket_stack(nodes.SetMaterialIndex(geometry=self.data_socket, selection=self.selection, material_index=attr_value))
+
+
+    @property
     def neighbors(self):
         """
 
@@ -1725,6 +1726,23 @@ class Face(Domain):
         """
 
         return self.socket_stack(nodes.SetMaterial(geometry=self.data_socket, selection=self.selection, material=material))
+
+
+    def set_material_index(self, material_index=None):
+        """
+
+        > Node: [Set Material Index](GeometryNodeSetMaterialIndex.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/set_material_index.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetMaterialIndex.html)
+
+        #### Args:
+        - material_index: Integer
+
+        #### Returns:
+        - self
+
+
+        """
+
+        return self.socket_stack(nodes.SetMaterialIndex(geometry=self.data_socket, selection=self.selection, material_index=material_index))
 
 
     def set_shade_smooth(self, shade_smooth=None):
@@ -2494,6 +2512,39 @@ class Spline(Domain):
 
 
     @property
+    def material_index(self):
+        """
+
+        > Node: [Material Index](GeometryNodeInputMaterialIndex.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/material_index.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMaterialIndex.html)
+
+        #### Returns:
+        - socket `material_index`
+
+
+        """
+
+        return self.attribute_node(nodes.MaterialIndex()).material_index
+
+
+    @material_index.setter
+    def material_index(self, attr_value):
+        """
+
+        > Node: [Set Material Index](GeometryNodeSetMaterialIndex.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/set_material_index.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetMaterialIndex.html)
+
+        Node implemented as property setter.
+
+        #### Args:
+        - attr_value: material_index
+
+
+
+        """
+
+        self.socket_stack(nodes.SetMaterialIndex(geometry=self.data_socket, selection=self.selection, material_index=attr_value))
+
+
+    @property
     def normal(self):
         """
 
@@ -2699,6 +2750,23 @@ class Spline(Domain):
         """
 
         return self.socket_stack(nodes.SetMaterial(geometry=self.data_socket, selection=self.selection, material=material))
+
+
+    def set_material_index(self, material_index=None):
+        """
+
+        > Node: [Set Material Index](GeometryNodeSetMaterialIndex.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/set_material_index.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetMaterialIndex.html)
+
+        #### Args:
+        - material_index: Integer
+
+        #### Returns:
+        - self
+
+
+        """
+
+        return self.socket_stack(nodes.SetMaterialIndex(geometry=self.data_socket, selection=self.selection, material_index=material_index))
 
 
     def set_normal(self, mode='MINIMUM_TWIST'):

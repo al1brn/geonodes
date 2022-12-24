@@ -783,6 +783,14 @@ class RandomValue(Node):
             random_float random_integer random_vector random_boolean 
         Domain:
             random_float random_integer random_vector random_boolean 
+        Boolean:
+            Random 
+        Integer:
+            Random 
+        Float:
+            Random 
+        Vector:
+            Random 
 
     Args:
         min (DataSocket): ``data_type`` dependant
@@ -5395,7 +5403,7 @@ class MaterialIndex(Node):
     Node implementation:
         Geometry:
             material_index 
-        Domain:
+        ('Face', 'Spline'):
             material_index 
 
     Args:
@@ -10331,8 +10339,8 @@ class SetMaterialIndex(Node):
     Node implementation:
         Geometry:
             set_material_index 
-        Domain:
-            set_material_index 
+        ('Face', 'Spline'):
+            set_material_index material_index 
 
     Args:
         geometry (DataSocket): Geometry

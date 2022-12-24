@@ -19,6 +19,27 @@ class Float(geosocks.Float):
 
 
     @classmethod
+    def Random(cls, min=None, max=None, ID=None, seed=None):
+        """
+
+        > Node: [Random Value](FunctionNodeRandomValue.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/random_value.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeRandomValue.html)
+
+        #### Args:
+        - min: ['Vector', 'Float', 'Integer']
+        - max: ['Vector', 'Float', 'Integer']
+        - ID: Integer
+        - seed: Integer
+
+        #### Returns:
+        - socket `value`
+
+
+        """
+
+        return cls(nodes.RandomValue(min=min, max=max, probability=None, ID=ID, seed=seed, data_type='FLOAT').value)
+
+
+    @classmethod
     def Seconds(cls):
         """
 
@@ -1429,6 +1450,27 @@ class Integer(geosocks.Integer):
         return cls(nodes.Integer(integer=integer).integer)
 
 
+    @classmethod
+    def Random(cls, min=None, max=None, ID=None, seed=None):
+        """
+
+        > Node: [Random Value](FunctionNodeRandomValue.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/random_value.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeRandomValue.html)
+
+        #### Args:
+        - min: ['Vector', 'Float', 'Integer']
+        - max: ['Vector', 'Float', 'Integer']
+        - ID: Integer
+        - seed: Integer
+
+        #### Returns:
+        - socket `value`
+
+
+        """
+
+        return cls(nodes.RandomValue(min=min, max=max, probability=None, ID=ID, seed=seed, data_type='IN').value)
+
+
     def abs(self, clamp=False):
         """
 
@@ -2517,6 +2559,26 @@ class Boolean(geosocks.Boolean):
         return cls(nodes.Boolean(boolean=boolean).boolean)
 
 
+    @classmethod
+    def Random(cls, probability=None, ID=None, seed=None):
+        """
+
+        > Node: [Random Value](FunctionNodeRandomValue.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/random_value.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeRandomValue.html)
+
+        #### Args:
+        - probability: Float
+        - ID: Integer
+        - seed: Integer
+
+        #### Returns:
+        - socket `value`
+
+
+        """
+
+        return cls(nodes.RandomValue(min=None, max=None, probability=probability, ID=ID, seed=seed, data_type='BOOLEAN').value)
+
+
     def b_and(self, boolean1=None):
         """
 
@@ -2909,6 +2971,27 @@ class Vector(geosocks.Vector):
         """
 
         return cls(nodes.CombineXyz(x=x, y=y, z=z).vector)
+
+
+    @classmethod
+    def Random(cls, min=None, max=None, ID=None, seed=None):
+        """
+
+        > Node: [Random Value](FunctionNodeRandomValue.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/random_value.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeRandomValue.html)
+
+        #### Args:
+        - min: ['Vector', 'Float', 'Integer']
+        - max: ['Vector', 'Float', 'Integer']
+        - ID: Integer
+        - seed: Integer
+
+        #### Returns:
+        - socket `value`
+
+
+        """
+
+        return cls(nodes.RandomValue(min=min, max=max, probability=None, ID=ID, seed=seed, data_type='FLOAT_VECTOR').value)
 
 
     @classmethod

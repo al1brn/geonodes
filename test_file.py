@@ -108,6 +108,7 @@ with gn.Tree('Geometry Nodes') as tree:
     float.map_range_stepped()
     float.map_range_smooth()
     float.map_range_smoother()
+    var = gn.Float.Random()
     float.switch()
     integer.add()
     integer.subtract()
@@ -178,6 +179,7 @@ with gn.Tree('Geometry Nodes') as tree:
     integer.greater_equal()
     integer.equal()
     integer.not_equal()
+    var = gn.Integer.Random()
     integer.switch()
     var = gn.Boolean.Input()
     boolean.to_output()
@@ -191,6 +193,7 @@ with gn.Tree('Geometry Nodes') as tree:
     boolean.xor()
     boolean.imply()
     boolean.nimply()
+    var = gn.Boolean.Random()
     boolean.switch()
     var = gn.String.Input()
     string.to_output()
@@ -248,6 +251,7 @@ with gn.Tree('Geometry Nodes') as tree:
     vector.map_range_stepped()
     vector.map_range_smooth()
     vector.map_range_smoother()
+    var = gn.Vector.Random()
     vector.switch()
     var = gn.Vector.Combine()
     vector.curves()
@@ -714,14 +718,6 @@ with gn.Tree('Geometry Nodes') as tree:
     var = curve.splines.position
     var = instances.insts.position
     var = points.points.position
-    var = mesh.verts.material_index
-    var = mesh.edges.material_index
-    var = mesh.faces.material_index
-    var = mesh.corners.material_index
-    var = curve.points.material_index
-    var = curve.splines.material_index
-    var = instances.insts.material_index
-    var = points.points.material_index
     mesh.verts.material_selection()
     mesh.edges.material_selection()
     mesh.faces.material_selection()
@@ -730,14 +726,6 @@ with gn.Tree('Geometry Nodes') as tree:
     curve.splines.material_selection()
     instances.insts.material_selection()
     points.points.material_selection()
-    mesh.verts.set_material_index()
-    mesh.edges.set_material_index()
-    mesh.faces.set_material_index()
-    mesh.corners.set_material_index()
-    curve.points.set_material_index()
-    curve.splines.set_material_index()
-    instances.insts.set_material_index()
-    points.points.set_material_index()
     mesh.verts.accumulate_field()
     mesh.edges.accumulate_field()
     mesh.faces.accumulate_field()
@@ -943,9 +931,12 @@ with gn.Tree('Geometry Nodes') as tree:
     mesh.faces.proximity()
     mesh.faces.sample_nearest()
     mesh.faces.separate()
+    var = mesh.faces.material_index
     mesh.faces.set_material()
     
     mesh.faces.material = None
+    mesh.faces.set_material_index()
+    mesh.faces.material_index = None
     mesh.faces.extrude()
     mesh.faces.flip()
     mesh.faces.scale_uniform()
@@ -1024,9 +1015,12 @@ with gn.Tree('Geometry Nodes') as tree:
     curve.splines.duplicate()
     curve.splines.separate()
     var = curve.splines.normal
+    var = curve.splines.material_index
     curve.splines.set_material()
     
     curve.splines.material = None
+    curve.splines.set_material_index()
+    curve.splines.material_index = None
     var = curve.points.count
     curve.points.handle_positions()
     var = curve.points.left_handle_positions
