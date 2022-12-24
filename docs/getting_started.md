@@ -224,7 +224,7 @@ faces = icosphere.faces
 faces[faces.material_index.equal(2)].extrude()
 ```
 
-**Note:** `material_index.equal(1)` is used rather than `material_index == 1`. This late expression would give a python `bool`
+**Note:** `material_index.equal(2)` is used rather than `material_index == 2`. This late expression would give a python `bool`
 result rather than the expected **geonodes** `Boolean`. See [Boolean](api/Boolean.md)
 
 Alternatively, if you are not confident with the material indices, you can use the `material_selection` method:
