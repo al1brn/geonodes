@@ -54,8 +54,6 @@ The corresponding python code is given here after:
 
 ``` python
 
-with tree.layout("Maths stuff..."):
-
     # ----- Arrowhead radius from the shaft radius
 
     rh = r*s
