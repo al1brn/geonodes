@@ -857,7 +857,7 @@ class Vector(DataSocket):
 # Color
 
 class Color(DataSocket):
-    """ Vector DataSocket
+    """ Color DataSocket
     
     Args:
         value (float, triplet, DataSocket): Initial value
@@ -874,19 +874,36 @@ class Color(DataSocket):
         
     Color supports some operators:
         
-    +------------------------+----------------------------------+
-    |         `+`            | add colors                       |
-    +------------------------+----------------------------------+
-    |         `*`            | mulitply colors                  |
-    +------------------------+----------------------------------+
-    |         `-`            | subtract colors                  |
-    +------------------------+----------------------------------+
-    |         `/`            | divide colors                    |
-    +------------------------+----------------------------------+
-    |         `%`            | mix colors                       |
-    +------------------------+----------------------------------+
+    |    Operator            | Mix mode    | Method                             |
+    |------------------------|-------------|------------------------------------|
+    |         `+`            | ADD         | [mix_add](#mix_add)                |
+    |         `*`            | MULTIPLY    | [mix_multiply](#mix_multiply)      |
+    |         `-`            | DIFFERENCE  | [mix_difference](#mix_difference)  |
+    |         `/`            | DIVIDE      | [mix_divide](#mix_divide)          |
+    |         `%`            | MIX         | [mix](#mix)                        |
     
     """
+    
+            Method(ret_socket='result', a='self', data_type="'RGBA'", factor_mode="'UNIFORM'", arg_rename={'b':'color'}, fname='mix',              ),
+            Method(ret_socket='result', a='self', data_type="'RGBA'", factor_mode="'UNIFORM'", arg_rename={'b':'color'}, fname='mix_darken',       blend_type="'DARKEN'"),
+            Method(ret_socket='result', a='self', data_type="'RGBA'", factor_mode="'UNIFORM'", arg_rename={'b':'color'}, fname='mix_multiply',     blend_type="'MULTIPLY'"),
+            Method(ret_socket='result', a='self', data_type="'RGBA'", factor_mode="'UNIFORM'", arg_rename={'b':'color'}, fname='mix_burn',         blend_type="'BURN'"),
+            Method(ret_socket='result', a='self', data_type="'RGBA'", factor_mode="'UNIFORM'", arg_rename={'b':'color'}, fname='mix_lighten',      blend_type="'LIGHTEN'"),
+            Method(ret_socket='result', a='self', data_type="'RGBA'", factor_mode="'UNIFORM'", arg_rename={'b':'color'}, fname='mix_screen',       blend_type="'SCREEN'"),
+            Method(ret_socket='result', a='self', data_type="'RGBA'", factor_mode="'UNIFORM'", arg_rename={'b':'color'}, fname='mix_dodge',        blend_type="'DODGE'"),
+            Method(ret_socket='result', a='self', data_type="'RGBA'", factor_mode="'UNIFORM'", arg_rename={'b':'color'}, fname='mix_add',          blend_type="'ADD'"),
+            Method(ret_socket='result', a='self', data_type="'RGBA'", factor_mode="'UNIFORM'", arg_rename={'b':'color'}, fname='mix_overlay',      blend_type="'OVERLAY'"),
+            Method(ret_socket='result', a='self', data_type="'RGBA'", factor_mode="'UNIFORM'", arg_rename={'b':'color'}, fname='mix_soft_light',   blend_type="'SOFT_LIGHT'"),
+            Method(ret_socket='result', a='self', data_type="'RGBA'", factor_mode="'UNIFORM'", arg_rename={'b':'color'}, fname='mix_linear_light', blend_type="'LINEAR_LIGHT'"),
+            Method(ret_socket='result', a='self', data_type="'RGBA'", factor_mode="'UNIFORM'", arg_rename={'b':'color'}, fname='mix_difference',   blend_type="'DIFFERENCE'"),
+            Method(ret_socket='result', a='self', data_type="'RGBA'", factor_mode="'UNIFORM'", arg_rename={'b':'color'}, fname='mix_subtract',     blend_type="'SUBTRACT'"),
+            Method(ret_socket='result', a='self', data_type="'RGBA'", factor_mode="'UNIFORM'", arg_rename={'b':'color'}, fname='mix_divide',       blend_type="'DIVIDE'"),
+            Method(ret_socket='result', a='self', data_type="'RGBA'", factor_mode="'UNIFORM'", arg_rename={'b':'color'}, fname='mix_hue',          blend_type="'HUE'"),
+            Method(ret_socket='result', a='self', data_type="'RGBA'", factor_mode="'UNIFORM'", arg_rename={'b':'color'}, fname='mix_saturation',   blend_type="'SATURATION'"),
+            Method(ret_socket='result', a='self', data_type="'RGBA'", factor_mode="'UNIFORM'", arg_rename={'b':'color'}, fname='mix_color',        blend_type="'COLOR'"),
+            Method(ret_socket='result', a='self', data_type="'RGBA'", factor_mode="'UNIFORM'", arg_rename={'b':'color'}, fname='mix_value',        blend_type="'VALUE'"),
+    
+    
     
     
     def __init__(self, value=None, label=None):

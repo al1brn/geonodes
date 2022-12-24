@@ -2,7 +2,7 @@
 
 > [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
- Vector DataSocket
+ Color DataSocket
 
 #### Args:
 - value (float, triplet, DataSocket): Initial value
@@ -19,18 +19,13 @@ c.saturation = .2
     
 Color supports some operators:
     
-+------------------------+----------------------------------+
-|         `+`            | add colors                       |
-+------------------------+----------------------------------+
-|         `*`            | mulitply colors                  |
-+------------------------+----------------------------------+
-|         `-`            | subtract colors                  |
-+------------------------+----------------------------------+
-|         `/`            | divide colors                    |
-+------------------------+----------------------------------+
-|         `%`            | mix colors                       |
-+------------------------+----------------------------------+
-
+|    Operator            | Mix mode    | Method                             |
+|------------------------|-------------|------------------------------------|
+|         `+`            | ADD         | [mix_add](#mix_add)                |
+|         `*`            | MULTIPLY    | [mix_multiply](#mix_multiply)      |
+|         `-`            | DIFFERENCE  | [mix_difference](#mix_difference)  |
+|         `/`            | DIVIDE      | [mix_divide](#mix_divide)          |
+|         `%`            | MIX         | [mix](#mix)                        |
 
 
 
