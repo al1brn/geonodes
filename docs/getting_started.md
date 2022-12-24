@@ -124,6 +124,8 @@ To do that, we need to learn:
 - [Manipulating materials](#adding-materials)
 - [How to selectively change properties on domains](#selecting-faces)
 
+![Result](images/ico_tuto.png)
+
 ### Creating geometries
 
 Geometries are created by calling constructors of geometry classes. These constructors correspond to the menus **Mesh Primitives**
