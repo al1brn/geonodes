@@ -52,13 +52,13 @@ import geonodes as gn
 
 with gn.Tree("Shading smooth") as tree:
 
-  geo = tree.ig               # Let's get the input geometry (allegedly a mesh)
+  geo = gn.Mesh(tree.ig)      # Let's get the input geometry (allegedly a mesh)
+                              # We type case to Mesh to be able to acces Mesh specific methods below
   
-  geo.subdivide()             # Node named 'Subdivide Mesh' (Mesh is implicit and is not used to build the method name)
+  geo.subdivide()             # Node named 'Subdivide Mesh'
   geo.set_shade_smooth(True)  # Node named 'Set Shade Smooth'
   
-  tree.og = geo               # or tree.output_geometry = geo
-``` 
+  tree.og = geo               # or tree.output_geometry = geo``` 
 
 ## Using domains
 
