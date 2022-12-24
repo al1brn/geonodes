@@ -2,6 +2,11 @@
 
 > [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
+ Material DataSocket
+
+
+
+
 ## Content
 
 **Properties**

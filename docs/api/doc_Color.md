@@ -2,6 +2,46 @@
 
 > [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
+ Vector DataSocket
+
+#### Args:
+- value (float, triplet, DataSocket): Initial value
+- label (str): Node label
+    
+Color exposes properties: `r`, `g` and `b`:
+    
+.. code-block: python
+
+    c = Color()
+    c.r = .5
+    c.g = .2
+    
+    
+Color supports some operators:
+    
++------------------------+----------------------------------+
+|         `+`            | add colors                       |
++------------------------+----------------------------------+
+|         `*`            | mulitply colors                  |
++------------------------+----------------------------------+
+|         `-`            | subtract colors                  |
++------------------------+----------------------------------+
+|         `/`            | divide colors                    |
++------------------------+----------------------------------+
+|         `%`            | mix colors                       |
++------------------------+----------------------------------+
+
+
+
+
+
+
+### Constructor
+
+```python
+Color(self, value=None, label=None)
+```
+
 ## Content
 
 **Properties**

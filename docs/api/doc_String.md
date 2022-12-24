@@ -2,6 +2,37 @@
 
 > [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
+ String DataSocket
+
+#### Args:
+- value: Initial value
+- label: Node label
+    
+String supports python slicing:
+    
+.. code-block:: python
+
+    s = String("ABCDEFGHIJK")
+    
+    a = s[3]   # Returns String("A")
+    a = s[:3]  # Returns String("ABC")
+    a = s[3:6] # Returns String("DEF")
+    
+    i = Integer(6)
+    j = Integer(9)
+
+    a = s[i:j] # Returns String("GHI")
+
+
+
+
+
+### Constructor
+
+```python
+String(self, value = "Text", label = None)
+```
+
 ## Content
 
 **Properties**

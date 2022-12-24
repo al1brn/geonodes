@@ -2,6 +2,35 @@
 
 > [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
+ Vector DataSocket
+
+#### Args:
+- value (float, triplet, DataSocket): Initial value
+- label (str): Node label
+    
+Vector exposes properties: `x`, `y` and `z`:
+    
+.. code-block: python
+
+    v = Vector()
+    v.x = 1
+    v.y = 2
+    
+    geometry.verts.offset = v
+    
+    # The vertices have been translated of (1, 2, 0)
+
+
+
+
+
+
+### Constructor
+
+```python
+Vector(self, value=(0., 0., 0.), label=None)
+```
+
 ## Content
 
 **Properties**

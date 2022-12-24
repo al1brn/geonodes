@@ -2,6 +2,22 @@
 
 > [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
+ Integer DataSocket
+
+#### Args:
+- value: Initial value
+- label: Node label
+    
+
+
+
+
+### Constructor
+
+```python
+Integer(self, value=0, label=None)
+```
+
 ## Content
 
 **Properties**

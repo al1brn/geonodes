@@ -2,6 +2,76 @@
 
 > [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
+ DataSocket Boolean
+
+#### Args:
+- value: Initial value
+- label: Node label
+
+The Boolean initializer can take a python value as argument:      
+    
+.. code-block:: python
+
+    a = Boolean(True) # a is the output socket of the input node Boolean initialized at True
+
+To get a Boolean value from the group input (see [Input constructor](#input)):
+    
+.. code-block:: python
+
+    a = Boolean.Input(True, "Option")
+    
+
+Python _bool_ operators such as ``and``, ``or`` or ``if ... else:  ...`` don't work on Boolean
+sockets. Rather use use either a global function or a method of Boolean:
+    
+.. code-block:: python
+
+    a = Boolean(False) # Two Boolean sockets
+    b = Boolean(True)
+    
+    # Wrong:
+    
+    c = a and b # a and b transtyped to bool with bool(). c is not a Boolean but a bool
+    print(type(c))  # returns <class 'bool'>
+    
+    # Correct
+    
+    c = a.b_and(b)
+    print(type(c)) # returns <class 'Boolean'W
+
+Operator ``*``, ``+`` and ``-`` can be used for respectively ``and``, ``or`` and ``not``:
+    
+
+.. code-block:: python
+
+    a = Boolean(False)
+    b = Boolean(True)
+    
+    _ = a + b  # a or b
+    _ = -a     # not a
+    _ = a * b  # a and b
+    
+    # These operators also work with bool types
+    
+    _ = a * True  # a and True. True can be replaced by a bool variables computed elsewhere
+    
+    # Self change is also possible
+    
+    a *= b
+    
+    # a is now the output socket of the Boolean node math performing a and operation
+    # between a and b
+
+
+
+
+
+### Constructor
+
+```python
+Boolean(self, value = False, label = None)
+```
+
 ## Content
 
 **Properties**

@@ -2,6 +2,21 @@
 
 > [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
+ Float DataSocket
+
+#### Args:
+- value: Initial value
+- label: Node label
+
+
+
+
+### Constructor
+
+```python
+Float(self, value=0., label=None)
+```
+
 ## Content
 
 **Properties**

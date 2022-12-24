@@ -2,6 +2,49 @@
 
 > [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
+ Geometry DataSocket
+
+In Blender, there is only one type of *geometry* socket. Sub classes [Mesh](mesh.md), [Curve](Curve.md),
+[Points](Points.md), [Instances](Instances.md) and [Volume](Volume.md) are introduced by **geonodes**.
+Each sub class implement the nodes creation which are specific to them.
+
+For instance, the node *'Extrude Mesh'* is specific to meshes. This node is implemented by the method
+`extrude` of class [Mesh](Mesh.md#extrude):
+                          
+```python
+top, side = mesh.extrude()
+```
+
+Some **Geometry** sub classes can have methods with the same name but are base on different nodes:
+    
+```python
+points_1 = mesh.to_points()  # Create a 'Mesh to Points' node
+points_2 = curve.to_points() # Create a 'Curve to Points' node
+```
+
+Geometry supports the ``+`` operator acting as method :func:`Geometry.join`. In the following example,
+the tree returns the joining of a cube and a sphere:
+
+```python
+cube = Mesh.Cube()
+sphere = Mesh.IcoSphere()
+tree.output_geometry = cube + sphere
+```
+
+
+
+
+### Constructor
+
+```python
+Points(self, socket, node=None, label=None)
+```
+
+rom geonodes.nodes import domains
+
+elf.points = Vertex(self) # Initialized before super().__init__ which can override points
+
+
 ## Content
 
 **Properties**

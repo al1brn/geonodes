@@ -2,6 +2,20 @@
 
 > [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
+ Collection DataSocket
+
+#### Args:
+- bcoll (bpt.types.Collection, str): NodeSocketCollection, Collection or collection name
+
+
+
+
+### Constructor
+
+```python
+Collection(self, bcoll)
+```
+
 ## Content
 
 **Properties**
