@@ -27,10 +27,10 @@ wrapping the output socket of the Blender Node *'Cube'*:
 cube = Mesh.Cube()
 ```
 
-Some methods change the node socket wrapped by the **DataSocket instance. For instance, in the following example
+Some methods change the node socket wrapped by the **DataSocket** instance. For instance, in the following example
 the `cube` **DataSocket**:
-    - before the call, wraps the output socket of the Blender Node *'Cube'*
-    - after the call, wraps the output socket of the Blender Node *'Set Shade Smooth'*
+- before the call, wraps the output socket of the Blender Node *'Cube'*
+- after the call, wraps the output socket of the Blender Node *'Set Shade Smooth'*
     
 ```python
 cube.set_shade_smooth(True)
@@ -45,9 +45,9 @@ volume = cube.to_volume()
 ### Attributes
 
 Attribute **DataSockets** keep a reference to the geometry they are an attribute of. By analyzing, the use
-of attribute sockets, it is possible to automatically generate a *'Capture Attribute'* when necessary.
+of attribute sockets, it is possible to automatically generate a *'Capture Attribute'* node when necessary.
 
-In the example below, the `index` varirable of type [Integer](Integer.md) (a sub class of **DataSocket**) keeps
+In the example below, the `index` variable of type [Integer](Integer.md) (a sub class of **DataSocket**) keeps
 a reference of the `cube` geometry as being the geometry it is the index of (also see [Domain](Domain.md) for
 the `verts` property):
     
@@ -66,6 +66,15 @@ socket if necessary.
 ```python
 DataSocket(self, socket, node=None, label=None)
 ```
+
+
+#### Args:
+- socket (bpy.types.NodeSocket or DataSocket): the socket to wrap
+- node (Node): the node owning the socket
+- label (str): the label to use for the node
+
+
+
 
 ## Content
 
