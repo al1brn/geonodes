@@ -84,7 +84,8 @@ The starting point is a disk:
 The shaft length was computed above, it is equal to `z1`. Hence, the shaft is built by extruding the disk edges up to z1:
 
 ``` python
-    top, _ = arrow.edges.extrude(offset=(0, 0, 1), offset_scale=z1)
+    edges = arrow.edges
+    top, _ = edges.extrude(offset=(0, 0, 1), offset_scale=z1)
 ```
 
 The extrude method returns two Boolean selections. The first one is the selection the extruded edges and the seconde one a selection
@@ -98,13 +99,13 @@ The amount of extrusion is given by the maths.
 **Note:** Points `Q'` and  `Q''` are multiple (points forming the top circle of the shaft) when the point `Q` is unique.
 
 ``` python
-    top, _ = arrow.edges[top].extrude(offset=top.position - (0, 0, z2), offset_scale=s - 1)
+    top, _ = edges[top].extrude(offset=edges[top].position - (0, 0, z2), offset_scale=s - 1)
 ```
 
 To finish the arrow, we simply extrude from the current position to the top of the arrow:
 
 ``` python
-    top, _ = arrow.edges[top].extrude(offset=(0, 0, length) - top.position)
+    top, _ = edges[top].extrude(offset=(0, 0, length) - edges[top].position)
 ```
 
 ## First version
@@ -148,12 +149,13 @@ with gn.Tree("Arrow") as tree:
     # -----Extrusion
 
     arrow = gn.Mesh.Circle(vertices=vertices, radius=r, fill_type='NGON')
+    edges = arrow.edges
     
-    top, _ = arrow.edges.extrude(offset=(0, 0, 1), offset_scale=z1)
+    top, _ = edges.extrude(offset=(0, 0, 1), offset_scale=z1)
     
-    top, _ = arrow.edges[top].extrude(offset=top.position - (0, 0, z2), offset_scale=s - 1)
+    top, _ = edges[top].extrude(offset=edges[top].position - (0, 0, z2), offset_scale=s - 1)
 
-    top, _ = arrow.edges[top].extrude(offset=(0, 0, length) - top.position)
+    top, _ = edges[top].extrude(offset=(0, 0, length) - edges[top].position)
 
     # ----- Output the arrow
     
