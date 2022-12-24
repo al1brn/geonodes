@@ -2,69 +2,22 @@
 
 > [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
- Geometry DataSocket
+ > **Curve** sub class of [Geometry](Geometry.md)
 
-In Blender, there is only one type of *geometry* socket. Sub classes [Mesh](mesh.md), [Curve](Curve.md),
-[Points](Points.md), [Instances](Instances.md) and [Volume](Volume.md) are introduced by **geonodes**.
-Each sub class implement the nodes creation which are specific to them.
+### Constructors
 
-For instance, the node *'Extrude Mesh'* is specific to meshes. This node is implemented by the method
-`extrude` of class [Mesh](Mesh.md#extrude):
-                          
-```python
-top, side = mesh.extrude()
-```
-
-Some **Geometry** sub classes can have methods with the same name but are based on different nodes:
-    
-```python
-points_1 = mesh.to_points()  # Create a 'Mesh to Points' node
-points_2 = curve.to_points() # Create a 'Curve to Points' node
-```
-
-### Initialization
-
-There is no constructor returnig of geometry of type **Geometry**. Constructors are class methods of
-sub classes implementing their specific primitive nodes:
-
-```python
-cube     = Mesh.Cube()      # node 'Cube'
-circle_1 = Mesh.Circle()    # node 'Mesh Circle'
-circle_2 = Curve.Circle()   # node 'Curve Circle'
-volume   = Volume.Cube()    # node 'Volume Cube'
-```
-
-**Geometry** is the type of the input geometry which can be read from the property `input_geometry` of
-the [Tree](Tree.md#input_geometry). If a modifier is dedicated to meshes, one must type cast the
-input geometry to the desired type:
-           
-```python
-with Tree("Geometry Nodes") as tree:
-    geometry = tree.input_geometry # class Geometry
-    mesh = Mesh(tree.ig)           # type cast to Mesh (ig is the short version of input_geometry)
-```
-
-### Components
-
-The components of **Geometry** can be accessed via dedicated properties. This is an alternative
-to typecasting the input geometry.
-    
-```python
-geo = tree.ig
-mesh = geo.mesh_component    # Socket 'Mesh' of node 'Separate Components'
-vol  = geo.volume_component  # Socket 'Volume' of node 'Separated Components'
-```
-
-### Joining
-
-**Geometry** supports the ``+`` operator acting as method [join](#join). In the following example,
-the tree returns the joining of a cube and a sphere:
-
-```python
-cube = Mesh.Cube()
-sphere = Mesh.IcoSphere()
-tree.output_geometry = cube + sphere
-```
+Constructors come from the Blender menu *Curve primitives*:        
+- [Arc](#Arc), arc from center and radius
+- [ArcFromPoints](#ArcFromPoints), arc from 3 points, return a node with sockets curve, center, normal and radius
+- [BezierSegment](#BezierSegment)
+- [Circle](#Circle), circle from center and radius
+- [CircleFromPoints](#CircleFromPoints), corcme from 3 points, return a couple of sockets (circle, center)
+- [Line](#Line), line from points
+- [LineDirection](#LineDirection), line from a starting point, a direction and a length
+- [Spiral](#Spiral)
+- [QuadraticBezier](#QuadraticBezier)
+- [Quadrilateral](#Quadrilateral)
+- [Star](#Star)
 
 
 
