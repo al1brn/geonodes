@@ -13,16 +13,16 @@ The four [Domains](Domain.md) are:
 - `corners` [Corner](Corner.md)
 ## Properties
 
-- [area](#area-property)
-- [count](#count-property)
-- [island](#island-property)
-- [island_count](#island_count-property)
-- [island_index](#island_index-property)
-- [material](#material-property)
-- [neighbors](#neighbors-property)
-- [neighbors_face_count](#neighbors_face_count-property)
-- [neighbors_vertex_count](#neighbors_vertex_count-property)
-- [shade_smooth](#shade_smooth-property)
+- [area](#area)
+- [count](#count)
+- [island](#island)
+- [island_count](#island_count)
+- [island_index](#island_index)
+- [material](#material)
+- [neighbors](#neighbors)
+- [neighbors_face_count](#neighbors_face_count)
+- [neighbors_vertex_count](#neighbors_vertex_count)
+- [shade_smooth](#shade_smooth)
 
 
 

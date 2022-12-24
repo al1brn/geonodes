@@ -16,32 +16,32 @@ A **Mesh** has four [domains](domain.md):
 
 ## Properties
 
-- [corner_count](#corner_count-property)
-- [domain_size](#domain_size-property)
-- [edge_count](#edge_count-property)
-- [face_count](#face_count-property)
-- [island](#island-property)
-- [island_count](#island_count-property)
-- [island_index](#island_index-property)
-- [point_count](#point_count-property)
+- [corner_count](#corner_count)
+- [domain_size](#domain_size)
+- [edge_count](#edge_count)
+- [face_count](#face_count)
+- [island](#island)
+- [island_count](#island_count)
+- [island_index](#island_index)
+- [point_count](#point_count)
 
 ## Class methods
 
-- [Circle](#Circle-classmethod)
-- [Cube](#Cube-classmethod)
-- [Grid](#Grid-classmethod)
-- [IcoSphere](#IcoSphere-classmethod)
-- [Line](#Line-classmethod)
-- [LineEndPoints](#LineEndPoints-classmethod)
-- [LineEndPointsResolution](#LineEndPointsResolution-classmethod)
-- [LineOffset](#LineOffset-classmethod)
-- [LineOffsetResolution](#LineOffsetResolution-classmethod)
-- [UVSphere](#UVSphere-classmethod)
+- [Circle](#Circle)
+- [Cube](#Cube)
+- [Grid](#Grid)
+- [IcoSphere](#IcoSphere)
+- [Line](#Line)
+- [LineEndPoints](#LineEndPoints)
+- [LineEndPointsResolution](#LineEndPointsResolution)
+- [LineOffset](#LineOffset)
+- [LineOffsetResolution](#LineOffsetResolution)
+- [UVSphere](#UVSphere)
 
 ## Static methods
 
-- [Cone](#Cone-staticmethod)
-- [Cylinder](#Cylinder-staticmethod)
+- [Cone](#Cone)
+- [Cylinder](#Cylinder)
 
 ## Methods
 

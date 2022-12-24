@@ -36,7 +36,7 @@ node = nodes.VolumeCube(density=None, background=None, min=None, max=None, resol
 | Class or method name | Definition |
 |----------------------|------------|
 | **[Volume](Volume.md)** |
-| [Cube](Volume.md#Cube-classmethod) | `@classmethod`<br> `def Cube(cls, density=None, background=None, min=None, max=None, resolution_x=None, resolution_y=None, resolution_z=None):` |
+| [Cube](Volume.md#Cube) | `@classmethod`<br> `def Cube(cls, density=None, background=None, min=None, max=None, resolution_x=None, resolution_y=None, resolution_z=None):` |
 
 <sub>Go to [top](#node-Volume-Cube) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

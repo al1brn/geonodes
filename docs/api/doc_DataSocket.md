@@ -404,7 +404,7 @@ def convert_python_type(self, value, raise_exception=True)
 The following table gives the conversion rules:
     
 | Socket type       | Conversion                                                    |
-l-------------------|---------------------------------------------------------------|
+|-------------------|---------------------------------------------------------------|
 | Boolean           | bool(value)                                                   |
 | Integer           | int(value)                                                    |
 | Float             | float(value)                                                  |

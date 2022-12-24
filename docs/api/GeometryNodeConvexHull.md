@@ -30,7 +30,7 @@ node = nodes.ConvexHull(geometry=None)
 | Class or method name | Definition |
 |----------------------|------------|
 | **[Geometry](Geometry.md)** |
-| [convex_hull](Geometry.md#convex_hull-property) | `@property`<br> `def convex_hull(self):` |
+| [convex_hull](Geometry.md#convex_hull) | `@property`<br> `def convex_hull(self):` |
 
 <sub>Go to [top](#node-Convex-Hull) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

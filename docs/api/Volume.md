@@ -12,7 +12,7 @@ A **Volume** has no [domain](domain.md):
 
 ## Class methods
 
-- [Cube](#Cube-classmethod)
+- [Cube](#Cube)
 
 
 ## Methods

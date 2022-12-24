@@ -5,8 +5,8 @@
 
 ## Class methods
 
-- [Input](#Input-classmethod)
-- [Integer](#Integer-classmethod)
+- [Input](#Input)
+- [Integer](#Integer)
 
 
 ## Methods

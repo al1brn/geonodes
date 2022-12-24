@@ -4,14 +4,14 @@
 
 ## Properties
 
-- [color_ramp](#color_ramp-property)
+- [color_ramp](#color_ramp)
 
 ## Class methods
 
-- [Frame](#Frame-classmethod)
-- [Input](#Input-classmethod)
-- [Seconds](#Seconds-classmethod)
-- [Value](#Value-classmethod)
+- [Frame](#Frame)
+- [Input](#Input)
+- [Seconds](#Seconds)
+- [Value](#Value)
 
 
 ## Methods

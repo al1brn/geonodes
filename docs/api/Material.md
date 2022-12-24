@@ -5,8 +5,8 @@
 
 ## Class methods
 
-- [Input](#Input-classmethod)
-- [Material](#Material-classmethod)
+- [Input](#Input)
+- [Material](#Material)
 
 
 ## Methods

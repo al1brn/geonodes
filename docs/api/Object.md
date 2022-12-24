@@ -5,8 +5,8 @@
 
 ## Class methods
 
-- [Input](#Input-classmethod)
-- [Self](#Self-classmethod)
+- [Input](#Input)
+- [Self](#Self)
 
 
 ## Methods

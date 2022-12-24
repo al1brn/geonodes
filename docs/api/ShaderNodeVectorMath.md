@@ -56,7 +56,7 @@ node = nodes.VectorMath(vector0=None, vector1=None, vector2=None, scale=None, op
 | [dot_product](Vector.md#dot_product) | `def dot_product(self, vector=None):` |
 | [dot](Vector.md#dot) | `def dot(self, vector=None):` |
 | [distance](Vector.md#distance) | `def distance(self, vector=None):` |
-| [length](Vector.md#length-property) | `@property`<br> `def length(self):` |
+| [length](Vector.md#length) | `@property`<br> `def length(self):` |
 | [scale](Vector.md#scale) | `def scale(self, scale=None):` |
 | [normalize](Vector.md#normalize) | `def normalize(self):` |
 | [absolute](Vector.md#absolute) | `def absolute(self):` |

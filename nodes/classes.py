@@ -7,8 +7,6 @@ class Float(geosocks.Float):
     def Frame(cls):
         """
 
-        ## Frame <sub>*classmethod*</sub>
-
         ```python
         def Frame(cls):
 
@@ -27,8 +25,6 @@ class Float(geosocks.Float):
     @classmethod
     def Seconds(cls):
         """
-
-        ## Seconds <sub>*classmethod*</sub>
 
         ```python
         def Seconds(cls):
@@ -49,8 +45,6 @@ class Float(geosocks.Float):
     def Value(cls):
         """
 
-        ## Value <sub>*classmethod*</sub>
-
         ```python
         def Value(cls):
 
@@ -68,8 +62,6 @@ class Float(geosocks.Float):
 
     def abs(self, clamp=False):
         """
-
-        ## abs
 
         ```python
         def abs(self, clamp=False):
@@ -91,8 +83,6 @@ class Float(geosocks.Float):
 
     def absolute(self, clamp=False):
         """
-
-        ## absolute
 
         ```python
         def absolute(self, clamp=False):
@@ -116,8 +106,6 @@ class Float(geosocks.Float):
     def arccos(self, value=None, clamp=False):
         """
 
-        ## arccos
-
         ```python
         def arccos(self, value=None, clamp=False):
 
@@ -139,8 +127,6 @@ class Float(geosocks.Float):
 
     def arccosine(self, value=None, clamp=False):
         """
-
-        ## arccosine
 
         ```python
         def arccosine(self, value=None, clamp=False):
@@ -164,8 +150,6 @@ class Float(geosocks.Float):
     def arcsin(self, value=None, clamp=False):
         """
 
-        ## arcsin
-
         ```python
         def arcsin(self, value=None, clamp=False):
 
@@ -187,8 +171,6 @@ class Float(geosocks.Float):
 
     def arcsine(self, value=None, clamp=False):
         """
-
-        ## arcsine
 
         ```python
         def arcsine(self, value=None, clamp=False):
@@ -212,8 +194,6 @@ class Float(geosocks.Float):
     def arctan(self, value=None, clamp=False):
         """
 
-        ## arctan
-
         ```python
         def arctan(self, value=None, clamp=False):
 
@@ -235,8 +215,6 @@ class Float(geosocks.Float):
 
     def arctan2(self, value1=None, clamp=False):
         """
-
-        ## arctan2
 
         ```python
         def arctan2(self, value1=None, clamp=False):
@@ -260,8 +238,6 @@ class Float(geosocks.Float):
     def arctangent(self, value=None, clamp=False):
         """
 
-        ## arctangent
-
         ```python
         def arctangent(self, value=None, clamp=False):
 
@@ -284,8 +260,6 @@ class Float(geosocks.Float):
     def ceiling(self):
         """
 
-        ## ceiling
-
         ```python
         def ceiling(self):
 
@@ -303,8 +277,6 @@ class Float(geosocks.Float):
 
     def clamp(self, min=None, max=None, clamp_type='MINMAX'):
         """
-
-        ## clamp
 
         ```python
         def clamp(self, min=None, max=None, clamp_type='MINMAX'):
@@ -329,8 +301,6 @@ class Float(geosocks.Float):
     def clamp_min_max(self, min=None, max=None):
         """
 
-        ## clamp_min_max
-
         ```python
         def clamp_min_max(self, min=None, max=None):
 
@@ -352,8 +322,6 @@ class Float(geosocks.Float):
 
     def clamp_range(self, min=None, max=None):
         """
-
-        ## clamp_range
 
         ```python
         def clamp_range(self, min=None, max=None):
@@ -378,8 +346,6 @@ class Float(geosocks.Float):
     def color_ramp(self):
         """
 
-        ## color_ramp <sub>*property*</sub>
-
         ```python
         def color_ramp(self):
 
@@ -397,8 +363,6 @@ class Float(geosocks.Float):
 
     def compare(self, b=None, epsilon=None, operation='GREATER_THAN'):
         """
-
-        ## compare
 
         ```python
         def compare(self, b=None, epsilon=None, operation='GREATER_THAN'):
@@ -423,8 +387,6 @@ class Float(geosocks.Float):
     def cos(self, value=None, clamp=False):
         """
 
-        ## cos
-
         ```python
         def cos(self, value=None, clamp=False):
 
@@ -447,8 +409,6 @@ class Float(geosocks.Float):
     def cosh(self, value=None, clamp=False):
         """
 
-        ## cosh
-
         ```python
         def cosh(self, value=None, clamp=False):
 
@@ -470,8 +430,6 @@ class Float(geosocks.Float):
 
     def cosine(self, value=None, clamp=False):
         """
-
-        ## cosine
 
         ```python
         def cosine(self, value=None, clamp=False):
@@ -497,8 +455,6 @@ class Float(geosocks.Float):
     def equal(self, b=None, epsilon=None):
         """
 
-        ## equal
-
         ```python
         def equal(self, b=None, epsilon=None):
 
@@ -521,8 +477,6 @@ class Float(geosocks.Float):
     def exp(self, clamp=False):
         """
 
-        ## exp
-
         ```python
         def exp(self, clamp=False):
 
@@ -543,8 +497,6 @@ class Float(geosocks.Float):
 
     def exponent(self, clamp=False):
         """
-
-        ## exponent
 
         ```python
         def exponent(self, clamp=False):
@@ -567,8 +519,6 @@ class Float(geosocks.Float):
     def fact(self, clamp=False):
         """
 
-        ## fact
-
         ```python
         def fact(self, clamp=False):
 
@@ -589,8 +539,6 @@ class Float(geosocks.Float):
 
     def float_curve(self, factor=None):
         """
-
-        ## float_curve
 
         ```python
         def float_curve(self, factor=None):
@@ -613,8 +561,6 @@ class Float(geosocks.Float):
     def floor(self):
         """
 
-        ## floor
-
         ```python
         def floor(self):
 
@@ -632,8 +578,6 @@ class Float(geosocks.Float):
 
     def fraction(self, clamp=False):
         """
-
-        ## fraction
 
         ```python
         def fraction(self, clamp=False):
@@ -656,8 +600,6 @@ class Float(geosocks.Float):
     def greater_equal(self, b=None):
         """
 
-        ## greater_equal
-
         ```python
         def greater_equal(self, b=None):
 
@@ -678,8 +620,6 @@ class Float(geosocks.Float):
 
     def greater_than(self, b=None):
         """
-
-        ## greater_than
 
         ```python
         def greater_than(self, b=None):
@@ -702,8 +642,6 @@ class Float(geosocks.Float):
     def inverse_sqrt(self, clamp=False):
         """
 
-        ## inverse_sqrt
-
         ```python
         def inverse_sqrt(self, clamp=False):
 
@@ -724,8 +662,6 @@ class Float(geosocks.Float):
 
     def less_equal(self, b=None):
         """
-
-        ## less_equal
 
         ```python
         def less_equal(self, b=None):
@@ -748,8 +684,6 @@ class Float(geosocks.Float):
     def less_than(self, b=None):
         """
 
-        ## less_than
-
         ```python
         def less_than(self, b=None):
 
@@ -770,8 +704,6 @@ class Float(geosocks.Float):
 
     def log(self, base=None, clamp=False):
         """
-
-        ## log
 
         ```python
         def log(self, base=None, clamp=False):
@@ -795,8 +727,6 @@ class Float(geosocks.Float):
     def logarithm(self, base=None, clamp=False):
         """
 
-        ## logarithm
-
         ```python
         def logarithm(self, base=None, clamp=False):
 
@@ -818,8 +748,6 @@ class Float(geosocks.Float):
 
     def map_range(self, from_min=None, from_max=None, to_min=None, to_max=None, steps=None, clamp=True, interpolation_type='LINEAR'):
         """
-
-        ## map_range
 
         ```python
         def map_range(self, from_min=None, from_max=None, to_min=None, to_max=None, steps=None, clamp=True, interpolation_type='LINEAR'):
@@ -848,8 +776,6 @@ class Float(geosocks.Float):
     def map_range_linear(self, from_min=None, from_max=None, to_min=None, to_max=None, clamp=True):
         """
 
-        ## map_range_linear
-
         ```python
         def map_range_linear(self, from_min=None, from_max=None, to_min=None, to_max=None, clamp=True):
 
@@ -874,8 +800,6 @@ class Float(geosocks.Float):
 
     def map_range_smooth(self, from_min=None, from_max=None, to_min=None, to_max=None, clamp=True):
         """
-
-        ## map_range_smooth
 
         ```python
         def map_range_smooth(self, from_min=None, from_max=None, to_min=None, to_max=None, clamp=True):
@@ -902,8 +826,6 @@ class Float(geosocks.Float):
     def map_range_smoother(self, from_min=None, from_max=None, to_min=None, to_max=None, clamp=True):
         """
 
-        ## map_range_smoother
-
         ```python
         def map_range_smoother(self, from_min=None, from_max=None, to_min=None, to_max=None, clamp=True):
 
@@ -928,8 +850,6 @@ class Float(geosocks.Float):
 
     def map_range_stepped(self, from_min=None, from_max=None, to_min=None, to_max=None, steps=None, clamp=True):
         """
-
-        ## map_range_stepped
 
         ```python
         def map_range_stepped(self, from_min=None, from_max=None, to_min=None, to_max=None, steps=None, clamp=True):
@@ -957,8 +877,6 @@ class Float(geosocks.Float):
     def math_ceil(self, clamp=False):
         """
 
-        ## math_ceil
-
         ```python
         def math_ceil(self, clamp=False):
 
@@ -979,8 +897,6 @@ class Float(geosocks.Float):
 
     def math_compare(self, value=None, epsilon=None, clamp=False):
         """
-
-        ## math_compare
 
         ```python
         def math_compare(self, value=None, epsilon=None, clamp=False):
@@ -1005,8 +921,6 @@ class Float(geosocks.Float):
     def math_floor(self, clamp=False):
         """
 
-        ## math_floor
-
         ```python
         def math_floor(self, clamp=False):
 
@@ -1027,8 +941,6 @@ class Float(geosocks.Float):
 
     def math_greater_than(self, threshold=None, clamp=False):
         """
-
-        ## math_greater_than
 
         ```python
         def math_greater_than(self, threshold=None, clamp=False):
@@ -1052,8 +964,6 @@ class Float(geosocks.Float):
     def math_less_than(self, threshold=None, clamp=False):
         """
 
-        ## math_less_than
-
         ```python
         def math_less_than(self, threshold=None, clamp=False):
 
@@ -1076,8 +986,6 @@ class Float(geosocks.Float):
     def math_round(self, clamp=False):
         """
 
-        ## math_round
-
         ```python
         def math_round(self, clamp=False):
 
@@ -1098,8 +1006,6 @@ class Float(geosocks.Float):
 
     def math_trunc(self, clamp=False):
         """
-
-        ## math_trunc
 
         ```python
         def math_trunc(self, clamp=False):
@@ -1122,8 +1028,6 @@ class Float(geosocks.Float):
     def math_truncate(self, clamp=False):
         """
 
-        ## math_truncate
-
         ```python
         def math_truncate(self, clamp=False):
 
@@ -1144,8 +1048,6 @@ class Float(geosocks.Float):
 
     def max(self, value=None, clamp=False):
         """
-
-        ## max
 
         ```python
         def max(self, value=None, clamp=False):
@@ -1169,8 +1071,6 @@ class Float(geosocks.Float):
     def maximum(self, value=None, clamp=False):
         """
 
-        ## maximum
-
         ```python
         def maximum(self, value=None, clamp=False):
 
@@ -1192,8 +1092,6 @@ class Float(geosocks.Float):
 
     def min(self, value=None, clamp=False):
         """
-
-        ## min
 
         ```python
         def min(self, value=None, clamp=False):
@@ -1217,8 +1115,6 @@ class Float(geosocks.Float):
     def minimum(self, value=None, clamp=False):
         """
 
-        ## minimum
-
         ```python
         def minimum(self, value=None, clamp=False):
 
@@ -1240,8 +1136,6 @@ class Float(geosocks.Float):
 
     def mix(self, factor=None, value=None, clamp_factor=True):
         """
-
-        ## mix
 
         ```python
         def mix(self, factor=None, value=None, clamp_factor=True):
@@ -1266,8 +1160,6 @@ class Float(geosocks.Float):
     def modulo(self, value=None, clamp=False):
         """
 
-        ## modulo
-
         ```python
         def modulo(self, value=None, clamp=False):
 
@@ -1290,8 +1182,6 @@ class Float(geosocks.Float):
 
     def mul_add(self, multiplier=None, addend=None, clamp=False):
         """
-
-        ## mul_add
 
         ```python
         def mul_add(self, multiplier=None, addend=None, clamp=False):
@@ -1317,8 +1207,6 @@ class Float(geosocks.Float):
     def multiply_add(self, multiplier=None, addend=None, clamp=False):
         """
 
-        ## multiply_add
-
         ```python
         def multiply_add(self, multiplier=None, addend=None, clamp=False):
 
@@ -1342,8 +1230,6 @@ class Float(geosocks.Float):
     def not_equal(self, b=None, epsilon=None):
         """
 
-        ## not_equal
-
         ```python
         def not_equal(self, b=None, epsilon=None):
 
@@ -1365,8 +1251,6 @@ class Float(geosocks.Float):
 
     def ping_pong(self, scale=None, clamp=False):
         """
-
-        ## ping_pong
 
         ```python
         def ping_pong(self, scale=None, clamp=False):
@@ -1390,8 +1274,6 @@ class Float(geosocks.Float):
     def pow(self, exponent=None, clamp=False):
         """
 
-        ## pow
-
         ```python
         def pow(self, exponent=None, clamp=False):
 
@@ -1413,8 +1295,6 @@ class Float(geosocks.Float):
 
     def power(self, exponent=None, clamp=False):
         """
-
-        ## power
 
         ```python
         def power(self, exponent=None, clamp=False):
@@ -1438,8 +1318,6 @@ class Float(geosocks.Float):
     def round(self):
         """
 
-        ## round
-
         ```python
         def round(self):
 
@@ -1457,8 +1335,6 @@ class Float(geosocks.Float):
 
     def sign(self, clamp=False):
         """
-
-        ## sign
 
         ```python
         def sign(self, clamp=False):
@@ -1480,8 +1356,6 @@ class Float(geosocks.Float):
 
     def sin(self, value=None, clamp=False):
         """
-
-        ## sin
 
         ```python
         def sin(self, value=None, clamp=False):
@@ -1505,8 +1379,6 @@ class Float(geosocks.Float):
     def sine(self, value=None, clamp=False):
         """
 
-        ## sine
-
         ```python
         def sine(self, value=None, clamp=False):
 
@@ -1529,8 +1401,6 @@ class Float(geosocks.Float):
     def sinh(self, value=None, clamp=False):
         """
 
-        ## sinh
-
         ```python
         def sinh(self, value=None, clamp=False):
 
@@ -1552,8 +1422,6 @@ class Float(geosocks.Float):
 
     def smooth_maximum(self, value=None, distance=None, clamp=False):
         """
-
-        ## smooth_maximum
 
         ```python
         def smooth_maximum(self, value=None, distance=None, clamp=False):
@@ -1578,8 +1446,6 @@ class Float(geosocks.Float):
     def smooth_minimum(self, value=None, distance=None, clamp=False):
         """
 
-        ## smooth_minimum
-
         ```python
         def smooth_minimum(self, value=None, distance=None, clamp=False):
 
@@ -1603,8 +1469,6 @@ class Float(geosocks.Float):
     def snap(self, increment=None, clamp=False):
         """
 
-        ## snap
-
         ```python
         def snap(self, increment=None, clamp=False):
 
@@ -1626,8 +1490,6 @@ class Float(geosocks.Float):
 
     def sqrt(self, clamp=False):
         """
-
-        ## sqrt
 
         ```python
         def sqrt(self, clamp=False):
@@ -1652,8 +1514,6 @@ class Float(geosocks.Float):
     def switch(self, switch=None, true=None):
         """
 
-        ## switch
-
         ```python
         def switch(self, switch=None, true=None):
 
@@ -1675,8 +1535,6 @@ class Float(geosocks.Float):
 
     def tan(self, value=None, clamp=False):
         """
-
-        ## tan
 
         ```python
         def tan(self, value=None, clamp=False):
@@ -1700,8 +1558,6 @@ class Float(geosocks.Float):
     def tangent(self, value=None, clamp=False):
         """
 
-        ## tangent
-
         ```python
         def tangent(self, value=None, clamp=False):
 
@@ -1723,8 +1579,6 @@ class Float(geosocks.Float):
 
     def tanh(self, value=None, clamp=False):
         """
-
-        ## tanh
 
         ```python
         def tanh(self, value=None, clamp=False):
@@ -1748,8 +1602,6 @@ class Float(geosocks.Float):
     def to_degrees(self, clamp=False):
         """
 
-        ## to_degrees
-
         ```python
         def to_degrees(self, clamp=False):
 
@@ -1770,8 +1622,6 @@ class Float(geosocks.Float):
 
     def to_integer(self, rounding_mode='ROUND'):
         """
-
-        ## to_integer
 
         ```python
         def to_integer(self, rounding_mode='ROUND'):
@@ -1794,8 +1644,6 @@ class Float(geosocks.Float):
     def to_radians(self, clamp=False):
         """
 
-        ## to_radians
-
         ```python
         def to_radians(self, clamp=False):
 
@@ -1816,8 +1664,6 @@ class Float(geosocks.Float):
 
     def to_string(self, decimals=None):
         """
-
-        ## to_string
 
         ```python
         def to_string(self, decimals=None):
@@ -1840,8 +1686,6 @@ class Float(geosocks.Float):
     def truncate(self):
         """
 
-        ## truncate
-
         ```python
         def truncate(self):
 
@@ -1859,8 +1703,6 @@ class Float(geosocks.Float):
 
     def wrap(self, max=None, min=None, clamp=False):
         """
-
-        ## wrap
 
         ```python
         def wrap(self, max=None, min=None, clamp=False):
@@ -1889,8 +1731,6 @@ class Integer(geosocks.Integer):
     def Integer(cls, integer=0):
         """
 
-        ## Integer <sub>*classmethod*</sub>
-
         ```python
         def Integer(cls, integer=0):
 
@@ -1912,8 +1752,6 @@ class Integer(geosocks.Integer):
     def abs(self, clamp=False):
         """
 
-        ## abs
-
         ```python
         def abs(self, clamp=False):
 
@@ -1934,8 +1772,6 @@ class Integer(geosocks.Integer):
 
     def absolute(self, clamp=False):
         """
-
-        ## absolute
 
         ```python
         def absolute(self, clamp=False):
@@ -1959,8 +1795,6 @@ class Integer(geosocks.Integer):
     def arccos(self, value=None, clamp=False):
         """
 
-        ## arccos
-
         ```python
         def arccos(self, value=None, clamp=False):
 
@@ -1982,8 +1816,6 @@ class Integer(geosocks.Integer):
 
     def arccosine(self, value=None, clamp=False):
         """
-
-        ## arccosine
 
         ```python
         def arccosine(self, value=None, clamp=False):
@@ -2007,8 +1839,6 @@ class Integer(geosocks.Integer):
     def arcsin(self, value=None, clamp=False):
         """
 
-        ## arcsin
-
         ```python
         def arcsin(self, value=None, clamp=False):
 
@@ -2030,8 +1860,6 @@ class Integer(geosocks.Integer):
 
     def arcsine(self, value=None, clamp=False):
         """
-
-        ## arcsine
 
         ```python
         def arcsine(self, value=None, clamp=False):
@@ -2055,8 +1883,6 @@ class Integer(geosocks.Integer):
     def arctan(self, value=None, clamp=False):
         """
 
-        ## arctan
-
         ```python
         def arctan(self, value=None, clamp=False):
 
@@ -2078,8 +1904,6 @@ class Integer(geosocks.Integer):
 
     def arctan2(self, value1=None, clamp=False):
         """
-
-        ## arctan2
 
         ```python
         def arctan2(self, value1=None, clamp=False):
@@ -2103,8 +1927,6 @@ class Integer(geosocks.Integer):
     def arctangent(self, value=None, clamp=False):
         """
 
-        ## arctangent
-
         ```python
         def arctangent(self, value=None, clamp=False):
 
@@ -2126,8 +1948,6 @@ class Integer(geosocks.Integer):
 
     def compare(self, b=None, operation='GREATER_THAN'):
         """
-
-        ## compare
 
         ```python
         def compare(self, b=None, operation='GREATER_THAN'):
@@ -2151,8 +1971,6 @@ class Integer(geosocks.Integer):
     def cos(self, value=None, clamp=False):
         """
 
-        ## cos
-
         ```python
         def cos(self, value=None, clamp=False):
 
@@ -2175,8 +1993,6 @@ class Integer(geosocks.Integer):
     def cosh(self, value=None, clamp=False):
         """
 
-        ## cosh
-
         ```python
         def cosh(self, value=None, clamp=False):
 
@@ -2198,8 +2014,6 @@ class Integer(geosocks.Integer):
 
     def cosine(self, value=None, clamp=False):
         """
-
-        ## cosine
 
         ```python
         def cosine(self, value=None, clamp=False):
@@ -2225,8 +2039,6 @@ class Integer(geosocks.Integer):
     def equal(self, b=None):
         """
 
-        ## equal
-
         ```python
         def equal(self, b=None):
 
@@ -2247,8 +2059,6 @@ class Integer(geosocks.Integer):
 
     def exp(self, clamp=False):
         """
-
-        ## exp
 
         ```python
         def exp(self, clamp=False):
@@ -2271,8 +2081,6 @@ class Integer(geosocks.Integer):
     def exponent(self, clamp=False):
         """
 
-        ## exponent
-
         ```python
         def exponent(self, clamp=False):
 
@@ -2293,8 +2101,6 @@ class Integer(geosocks.Integer):
 
     def fact(self, clamp=False):
         """
-
-        ## fact
 
         ```python
         def fact(self, clamp=False):
@@ -2317,8 +2123,6 @@ class Integer(geosocks.Integer):
     def fraction(self, clamp=False):
         """
 
-        ## fraction
-
         ```python
         def fraction(self, clamp=False):
 
@@ -2339,8 +2143,6 @@ class Integer(geosocks.Integer):
 
     def greater_equal(self, b=None):
         """
-
-        ## greater_equal
 
         ```python
         def greater_equal(self, b=None):
@@ -2363,8 +2165,6 @@ class Integer(geosocks.Integer):
     def greater_than(self, b=None):
         """
 
-        ## greater_than
-
         ```python
         def greater_than(self, b=None):
 
@@ -2385,8 +2185,6 @@ class Integer(geosocks.Integer):
 
     def inverse_sqrt(self, clamp=False):
         """
-
-        ## inverse_sqrt
 
         ```python
         def inverse_sqrt(self, clamp=False):
@@ -2409,8 +2207,6 @@ class Integer(geosocks.Integer):
     def less_equal(self, b=None):
         """
 
-        ## less_equal
-
         ```python
         def less_equal(self, b=None):
 
@@ -2432,8 +2228,6 @@ class Integer(geosocks.Integer):
     def less_than(self, b=None):
         """
 
-        ## less_than
-
         ```python
         def less_than(self, b=None):
 
@@ -2454,8 +2248,6 @@ class Integer(geosocks.Integer):
 
     def log(self, base=None, clamp=False):
         """
-
-        ## log
 
         ```python
         def log(self, base=None, clamp=False):
@@ -2479,8 +2271,6 @@ class Integer(geosocks.Integer):
     def logarithm(self, base=None, clamp=False):
         """
 
-        ## logarithm
-
         ```python
         def logarithm(self, base=None, clamp=False):
 
@@ -2503,8 +2293,6 @@ class Integer(geosocks.Integer):
     def math_ceil(self, clamp=False):
         """
 
-        ## math_ceil
-
         ```python
         def math_ceil(self, clamp=False):
 
@@ -2525,8 +2313,6 @@ class Integer(geosocks.Integer):
 
     def math_compare(self, value=None, epsilon=None, clamp=False):
         """
-
-        ## math_compare
 
         ```python
         def math_compare(self, value=None, epsilon=None, clamp=False):
@@ -2551,8 +2337,6 @@ class Integer(geosocks.Integer):
     def math_floor(self, clamp=False):
         """
 
-        ## math_floor
-
         ```python
         def math_floor(self, clamp=False):
 
@@ -2573,8 +2357,6 @@ class Integer(geosocks.Integer):
 
     def math_greater_than(self, threshold=None, clamp=False):
         """
-
-        ## math_greater_than
 
         ```python
         def math_greater_than(self, threshold=None, clamp=False):
@@ -2598,8 +2380,6 @@ class Integer(geosocks.Integer):
     def math_less_than(self, threshold=None, clamp=False):
         """
 
-        ## math_less_than
-
         ```python
         def math_less_than(self, threshold=None, clamp=False):
 
@@ -2622,8 +2402,6 @@ class Integer(geosocks.Integer):
     def math_round(self, clamp=False):
         """
 
-        ## math_round
-
         ```python
         def math_round(self, clamp=False):
 
@@ -2644,8 +2422,6 @@ class Integer(geosocks.Integer):
 
     def math_trunc(self, clamp=False):
         """
-
-        ## math_trunc
 
         ```python
         def math_trunc(self, clamp=False):
@@ -2668,8 +2444,6 @@ class Integer(geosocks.Integer):
     def math_truncate(self, clamp=False):
         """
 
-        ## math_truncate
-
         ```python
         def math_truncate(self, clamp=False):
 
@@ -2690,8 +2464,6 @@ class Integer(geosocks.Integer):
 
     def max(self, value=None, clamp=False):
         """
-
-        ## max
 
         ```python
         def max(self, value=None, clamp=False):
@@ -2715,8 +2487,6 @@ class Integer(geosocks.Integer):
     def maximum(self, value=None, clamp=False):
         """
 
-        ## maximum
-
         ```python
         def maximum(self, value=None, clamp=False):
 
@@ -2738,8 +2508,6 @@ class Integer(geosocks.Integer):
 
     def min(self, value=None, clamp=False):
         """
-
-        ## min
 
         ```python
         def min(self, value=None, clamp=False):
@@ -2763,8 +2531,6 @@ class Integer(geosocks.Integer):
     def minimum(self, value=None, clamp=False):
         """
 
-        ## minimum
-
         ```python
         def minimum(self, value=None, clamp=False):
 
@@ -2786,8 +2552,6 @@ class Integer(geosocks.Integer):
 
     def modulo(self, value=None, clamp=False):
         """
-
-        ## modulo
 
         ```python
         def modulo(self, value=None, clamp=False):
@@ -2811,8 +2575,6 @@ class Integer(geosocks.Integer):
 
     def mul_add(self, multiplier=None, addend=None, clamp=False):
         """
-
-        ## mul_add
 
         ```python
         def mul_add(self, multiplier=None, addend=None, clamp=False):
@@ -2838,8 +2600,6 @@ class Integer(geosocks.Integer):
     def multiply_add(self, multiplier=None, addend=None, clamp=False):
         """
 
-        ## multiply_add
-
         ```python
         def multiply_add(self, multiplier=None, addend=None, clamp=False):
 
@@ -2863,8 +2623,6 @@ class Integer(geosocks.Integer):
     def not_equal(self, b=None):
         """
 
-        ## not_equal
-
         ```python
         def not_equal(self, b=None):
 
@@ -2885,8 +2643,6 @@ class Integer(geosocks.Integer):
 
     def ping_pong(self, scale=None, clamp=False):
         """
-
-        ## ping_pong
 
         ```python
         def ping_pong(self, scale=None, clamp=False):
@@ -2910,8 +2666,6 @@ class Integer(geosocks.Integer):
     def pow(self, exponent=None, clamp=False):
         """
 
-        ## pow
-
         ```python
         def pow(self, exponent=None, clamp=False):
 
@@ -2933,8 +2687,6 @@ class Integer(geosocks.Integer):
 
     def power(self, exponent=None, clamp=False):
         """
-
-        ## power
 
         ```python
         def power(self, exponent=None, clamp=False):
@@ -2958,8 +2710,6 @@ class Integer(geosocks.Integer):
     def sign(self, clamp=False):
         """
 
-        ## sign
-
         ```python
         def sign(self, clamp=False):
 
@@ -2980,8 +2730,6 @@ class Integer(geosocks.Integer):
 
     def sin(self, value=None, clamp=False):
         """
-
-        ## sin
 
         ```python
         def sin(self, value=None, clamp=False):
@@ -3005,8 +2753,6 @@ class Integer(geosocks.Integer):
     def sine(self, value=None, clamp=False):
         """
 
-        ## sine
-
         ```python
         def sine(self, value=None, clamp=False):
 
@@ -3029,8 +2775,6 @@ class Integer(geosocks.Integer):
     def sinh(self, value=None, clamp=False):
         """
 
-        ## sinh
-
         ```python
         def sinh(self, value=None, clamp=False):
 
@@ -3052,8 +2796,6 @@ class Integer(geosocks.Integer):
 
     def smooth_maximum(self, value=None, distance=None, clamp=False):
         """
-
-        ## smooth_maximum
 
         ```python
         def smooth_maximum(self, value=None, distance=None, clamp=False):
@@ -3078,8 +2820,6 @@ class Integer(geosocks.Integer):
     def smooth_minimum(self, value=None, distance=None, clamp=False):
         """
 
-        ## smooth_minimum
-
         ```python
         def smooth_minimum(self, value=None, distance=None, clamp=False):
 
@@ -3103,8 +2843,6 @@ class Integer(geosocks.Integer):
     def snap(self, increment=None, clamp=False):
         """
 
-        ## snap
-
         ```python
         def snap(self, increment=None, clamp=False):
 
@@ -3126,8 +2864,6 @@ class Integer(geosocks.Integer):
 
     def sqrt(self, clamp=False):
         """
-
-        ## sqrt
 
         ```python
         def sqrt(self, clamp=False):
@@ -3152,8 +2888,6 @@ class Integer(geosocks.Integer):
     def switch(self, switch=None, true=None):
         """
 
-        ## switch
-
         ```python
         def switch(self, switch=None, true=None):
 
@@ -3175,8 +2909,6 @@ class Integer(geosocks.Integer):
 
     def tan(self, value=None, clamp=False):
         """
-
-        ## tan
 
         ```python
         def tan(self, value=None, clamp=False):
@@ -3200,8 +2932,6 @@ class Integer(geosocks.Integer):
     def tangent(self, value=None, clamp=False):
         """
 
-        ## tangent
-
         ```python
         def tangent(self, value=None, clamp=False):
 
@@ -3223,8 +2953,6 @@ class Integer(geosocks.Integer):
 
     def tanh(self, value=None, clamp=False):
         """
-
-        ## tanh
 
         ```python
         def tanh(self, value=None, clamp=False):
@@ -3248,8 +2976,6 @@ class Integer(geosocks.Integer):
     def to_degrees(self, clamp=False):
         """
 
-        ## to_degrees
-
         ```python
         def to_degrees(self, clamp=False):
 
@@ -3270,8 +2996,6 @@ class Integer(geosocks.Integer):
 
     def to_radians(self, clamp=False):
         """
-
-        ## to_radians
 
         ```python
         def to_radians(self, clamp=False):
@@ -3294,8 +3018,6 @@ class Integer(geosocks.Integer):
     def to_string(self):
         """
 
-        ## to_string
-
         ```python
         def to_string(self):
 
@@ -3313,8 +3035,6 @@ class Integer(geosocks.Integer):
 
     def wrap(self, max=None, min=None, clamp=False):
         """
-
-        ## wrap
 
         ```python
         def wrap(self, max=None, min=None, clamp=False):
@@ -3343,8 +3063,6 @@ class Boolean(geosocks.Boolean):
     def Boolean(cls, boolean=False):
         """
 
-        ## Boolean <sub>*classmethod*</sub>
-
         ```python
         def Boolean(cls, boolean=False):
 
@@ -3365,8 +3083,6 @@ class Boolean(geosocks.Boolean):
 
     def b_and(self, boolean1=None):
         """
-
-        ## b_and
 
         ```python
         def b_and(self, boolean1=None):
@@ -3389,8 +3105,6 @@ class Boolean(geosocks.Boolean):
     def b_not(self):
         """
 
-        ## b_not
-
         ```python
         def b_not(self):
 
@@ -3408,8 +3122,6 @@ class Boolean(geosocks.Boolean):
 
     def b_or(self, boolean1=None):
         """
-
-        ## b_or
 
         ```python
         def b_or(self, boolean1=None):
@@ -3432,8 +3144,6 @@ class Boolean(geosocks.Boolean):
     def imply(self, boolean1=None):
         """
 
-        ## imply
-
         ```python
         def imply(self, boolean1=None):
 
@@ -3454,8 +3164,6 @@ class Boolean(geosocks.Boolean):
 
     def nand(self, boolean1=None):
         """
-
-        ## nand
 
         ```python
         def nand(self, boolean1=None):
@@ -3478,8 +3186,6 @@ class Boolean(geosocks.Boolean):
     def nimply(self, boolean1=None):
         """
 
-        ## nimply
-
         ```python
         def nimply(self, boolean1=None):
 
@@ -3501,8 +3207,6 @@ class Boolean(geosocks.Boolean):
     def nor(self, boolean1=None):
         """
 
-        ## nor
-
         ```python
         def nor(self, boolean1=None):
 
@@ -3523,8 +3227,6 @@ class Boolean(geosocks.Boolean):
 
     def switch(self, switch=None, true=None):
         """
-
-        ## switch
 
         ```python
         def switch(self, switch=None, true=None):
@@ -3548,8 +3250,6 @@ class Boolean(geosocks.Boolean):
     def xnor(self, boolean1=None):
         """
 
-        ## xnor
-
         ```python
         def xnor(self, boolean1=None):
 
@@ -3570,8 +3270,6 @@ class Boolean(geosocks.Boolean):
 
     def xor(self, boolean1=None):
         """
-
-        ## xor
 
         ```python
         def xor(self, boolean1=None):
@@ -3598,8 +3296,6 @@ class String(geosocks.String):
     def LineBreak():
         """
 
-        ## LineBreak <sub>*staticmethod*</sub>
-
         ```python
         def LineBreak():
 
@@ -3618,8 +3314,6 @@ class String(geosocks.String):
     @classmethod
     def String(cls, string=''):
         """
-
-        ## String <sub>*classmethod*</sub>
 
         ```python
         def String(cls, string=''):
@@ -3643,8 +3337,6 @@ class String(geosocks.String):
     def Tab():
         """
 
-        ## Tab <sub>*staticmethod*</sub>
-
         ```python
         def Tab():
 
@@ -3662,8 +3354,6 @@ class String(geosocks.String):
 
     def equal(self, b=None):
         """
-
-        ## equal
 
         ```python
         def equal(self, b=None):
@@ -3685,8 +3375,6 @@ class String(geosocks.String):
 
     def join(*strings, delimiter=None):
         """
-
-        ## join
 
         ```python
         def join(*strings, delimiter=None):
@@ -3711,8 +3399,6 @@ class String(geosocks.String):
     def length(self):
         """
 
-        ## length <sub>*property*</sub>
-
         ```python
         def length(self):
 
@@ -3730,8 +3416,6 @@ class String(geosocks.String):
 
     def not_equal(self, b=None):
         """
-
-        ## not_equal
 
         ```python
         def not_equal(self, b=None):
@@ -3753,8 +3437,6 @@ class String(geosocks.String):
 
     def replace(self, find=None, replace=None):
         """
-
-        ## replace
 
         ```python
         def replace(self, find=None, replace=None):
@@ -3778,8 +3460,6 @@ class String(geosocks.String):
     def slice(self, position=None, length=None):
         """
 
-        ## slice
-
         ```python
         def slice(self, position=None, length=None):
 
@@ -3802,8 +3482,6 @@ class String(geosocks.String):
     def switch(self, switch=None, true=None):
         """
 
-        ## switch
-
         ```python
         def switch(self, switch=None, true=None):
 
@@ -3825,8 +3503,6 @@ class String(geosocks.String):
 
     def to_curves(self, string=None, size=None, character_spacing=None, word_spacing=None, line_spacing=None, text_box_width=None, text_box_height=None, align_x='LEFT', align_y='TOP_BASELINE', overflow='OVERFLOW', pivot_mode='BOTTOM_LEFT'):
         """
-
-        ## to_curves
 
         ```python
         def to_curves(self, string=None, size=None, character_spacing=None, word_spacing=None, line_spacing=None, text_box_width=None, text_box_height=None, align_x='LEFT', align_y='TOP_BASELINE', overflow='OVERFLOW', pivot_mode='BOTTOM_LEFT'):
@@ -3867,8 +3543,6 @@ class Vector(geosocks.Vector):
     def Combine(cls, x=None, y=None, z=None):
         """
 
-        ## Combine <sub>*classmethod*</sub>
-
         ```python
         def Combine(cls, x=None, y=None, z=None):
 
@@ -3893,8 +3567,6 @@ class Vector(geosocks.Vector):
     def Vector(cls, vector=[0.0, 0.0, 0.0]):
         """
 
-        ## Vector <sub>*classmethod*</sub>
-
         ```python
         def Vector(cls, vector=[0.0, 0.0, 0.0]):
 
@@ -3916,8 +3588,6 @@ class Vector(geosocks.Vector):
     def abs(self):
         """
 
-        ## abs
-
         ```python
         def abs(self):
 
@@ -3936,8 +3606,6 @@ class Vector(geosocks.Vector):
     def absolute(self):
         """
 
-        ## absolute
-
         ```python
         def absolute(self):
 
@@ -3955,8 +3623,6 @@ class Vector(geosocks.Vector):
 
     def add(self, vector=None):
         """
-
-        ## add
 
         ```python
         def add(self, vector=None):
@@ -3978,8 +3644,6 @@ class Vector(geosocks.Vector):
 
     def align_euler_to_vector(self, factor=None, vector=None, axis='X', pivot_axis='AUTO'):
         """
-
-        ## align_euler_to_vector
 
         ```python
         def align_euler_to_vector(self, factor=None, vector=None, axis='X', pivot_axis='AUTO'):
@@ -4005,8 +3669,6 @@ class Vector(geosocks.Vector):
     def average_equal(self, b=None, epsilon=None):
         """
 
-        ## average_equal
-
         ```python
         def average_equal(self, b=None, epsilon=None):
 
@@ -4029,8 +3691,6 @@ class Vector(geosocks.Vector):
     def average_greater_equal(self, b=None):
         """
 
-        ## average_greater_equal
-
         ```python
         def average_greater_equal(self, b=None):
 
@@ -4051,8 +3711,6 @@ class Vector(geosocks.Vector):
 
     def average_greater_than(self, b=None):
         """
-
-        ## average_greater_than
 
         ```python
         def average_greater_than(self, b=None):
@@ -4075,8 +3733,6 @@ class Vector(geosocks.Vector):
     def average_less_equal(self, b=None):
         """
 
-        ## average_less_equal
-
         ```python
         def average_less_equal(self, b=None):
 
@@ -4098,8 +3754,6 @@ class Vector(geosocks.Vector):
     def average_less_than(self, b=None):
         """
 
-        ## average_less_than
-
         ```python
         def average_less_than(self, b=None):
 
@@ -4120,8 +3774,6 @@ class Vector(geosocks.Vector):
 
     def average_not_equal(self, b=None, epsilon=None):
         """
-
-        ## average_not_equal
 
         ```python
         def average_not_equal(self, b=None, epsilon=None):
@@ -4145,8 +3797,6 @@ class Vector(geosocks.Vector):
     def ceil(self):
         """
 
-        ## ceil
-
         ```python
         def ceil(self):
 
@@ -4164,8 +3814,6 @@ class Vector(geosocks.Vector):
 
     def compare(self, b=None, c=None, angle=None, epsilon=None, mode='ELEMENT', operation='GREATER_THAN'):
         """
-
-        ## compare
 
         ```python
         def compare(self, b=None, c=None, angle=None, epsilon=None, mode='ELEMENT', operation='GREATER_THAN'):
@@ -4193,8 +3841,6 @@ class Vector(geosocks.Vector):
     def cos(self):
         """
 
-        ## cos
-
         ```python
         def cos(self):
 
@@ -4213,8 +3859,6 @@ class Vector(geosocks.Vector):
     def cosine(self):
         """
 
-        ## cosine
-
         ```python
         def cosine(self):
 
@@ -4232,8 +3876,6 @@ class Vector(geosocks.Vector):
 
     def cross(self, vector=None):
         """
-
-        ## cross
 
         ```python
         def cross(self, vector=None):
@@ -4256,8 +3898,6 @@ class Vector(geosocks.Vector):
     def cross_product(self, vector=None):
         """
 
-        ## cross_product
-
         ```python
         def cross_product(self, vector=None):
 
@@ -4279,8 +3919,6 @@ class Vector(geosocks.Vector):
     def curves(self, fac=None):
         """
 
-        ## curves
-
         ```python
         def curves(self, fac=None):
 
@@ -4301,8 +3939,6 @@ class Vector(geosocks.Vector):
 
     def direction_equal(self, b=None, angle=None, epsilon=None):
         """
-
-        ## direction_equal
 
         ```python
         def direction_equal(self, b=None, angle=None, epsilon=None):
@@ -4327,8 +3963,6 @@ class Vector(geosocks.Vector):
     def direction_greater_equal(self, b=None, angle=None):
         """
 
-        ## direction_greater_equal
-
         ```python
         def direction_greater_equal(self, b=None, angle=None):
 
@@ -4350,8 +3984,6 @@ class Vector(geosocks.Vector):
 
     def direction_greater_than(self, b=None, angle=None):
         """
-
-        ## direction_greater_than
 
         ```python
         def direction_greater_than(self, b=None, angle=None):
@@ -4375,8 +4007,6 @@ class Vector(geosocks.Vector):
     def direction_less_equal(self, b=None, angle=None):
         """
 
-        ## direction_less_equal
-
         ```python
         def direction_less_equal(self, b=None, angle=None):
 
@@ -4399,8 +4029,6 @@ class Vector(geosocks.Vector):
     def direction_less_than(self, b=None, angle=None):
         """
 
-        ## direction_less_than
-
         ```python
         def direction_less_than(self, b=None, angle=None):
 
@@ -4422,8 +4050,6 @@ class Vector(geosocks.Vector):
 
     def direction_not_equal(self, b=None, angle=None, epsilon=None):
         """
-
-        ## direction_not_equal
 
         ```python
         def direction_not_equal(self, b=None, angle=None, epsilon=None):
@@ -4448,8 +4074,6 @@ class Vector(geosocks.Vector):
     def distance(self, vector=None):
         """
 
-        ## distance
-
         ```python
         def distance(self, vector=None):
 
@@ -4470,8 +4094,6 @@ class Vector(geosocks.Vector):
 
     def div(self, vector=None):
         """
-
-        ## div
 
         ```python
         def div(self, vector=None):
@@ -4494,8 +4116,6 @@ class Vector(geosocks.Vector):
     def divide(self, vector=None):
         """
 
-        ## divide
-
         ```python
         def divide(self, vector=None):
 
@@ -4516,8 +4136,6 @@ class Vector(geosocks.Vector):
 
     def dot(self, vector=None):
         """
-
-        ## dot
 
         ```python
         def dot(self, vector=None):
@@ -4540,8 +4158,6 @@ class Vector(geosocks.Vector):
     def dot_product(self, vector=None):
         """
 
-        ## dot_product
-
         ```python
         def dot_product(self, vector=None):
 
@@ -4562,8 +4178,6 @@ class Vector(geosocks.Vector):
 
     def dot_product_equal(self, b=None, c=None, epsilon=None):
         """
-
-        ## dot_product_equal
 
         ```python
         def dot_product_equal(self, b=None, c=None, epsilon=None):
@@ -4588,8 +4202,6 @@ class Vector(geosocks.Vector):
     def dot_product_greater_equal(self, b=None, c=None):
         """
 
-        ## dot_product_greater_equal
-
         ```python
         def dot_product_greater_equal(self, b=None, c=None):
 
@@ -4611,8 +4223,6 @@ class Vector(geosocks.Vector):
 
     def dot_product_greater_than(self, b=None, c=None):
         """
-
-        ## dot_product_greater_than
 
         ```python
         def dot_product_greater_than(self, b=None, c=None):
@@ -4636,8 +4246,6 @@ class Vector(geosocks.Vector):
     def dot_product_less_equal(self, b=None, c=None):
         """
 
-        ## dot_product_less_equal
-
         ```python
         def dot_product_less_equal(self, b=None, c=None):
 
@@ -4660,8 +4268,6 @@ class Vector(geosocks.Vector):
     def dot_product_less_than(self, b=None, c=None):
         """
 
-        ## dot_product_less_than
-
         ```python
         def dot_product_less_than(self, b=None, c=None):
 
@@ -4683,8 +4289,6 @@ class Vector(geosocks.Vector):
 
     def dot_product_not_equal(self, b=None, c=None, epsilon=None):
         """
-
-        ## dot_product_not_equal
 
         ```python
         def dot_product_not_equal(self, b=None, c=None, epsilon=None):
@@ -4709,8 +4313,6 @@ class Vector(geosocks.Vector):
     def elements_equal(self, b=None, epsilon=None):
         """
 
-        ## elements_equal
-
         ```python
         def elements_equal(self, b=None, epsilon=None):
 
@@ -4733,8 +4335,6 @@ class Vector(geosocks.Vector):
     def elements_greater_equal(self, b=None):
         """
 
-        ## elements_greater_equal
-
         ```python
         def elements_greater_equal(self, b=None):
 
@@ -4755,8 +4355,6 @@ class Vector(geosocks.Vector):
 
     def elements_greater_than(self, b=None):
         """
-
-        ## elements_greater_than
 
         ```python
         def elements_greater_than(self, b=None):
@@ -4779,8 +4377,6 @@ class Vector(geosocks.Vector):
     def elements_less_equal(self, b=None):
         """
 
-        ## elements_less_equal
-
         ```python
         def elements_less_equal(self, b=None):
 
@@ -4802,8 +4398,6 @@ class Vector(geosocks.Vector):
     def elements_less_than(self, b=None):
         """
 
-        ## elements_less_than
-
         ```python
         def elements_less_than(self, b=None):
 
@@ -4824,8 +4418,6 @@ class Vector(geosocks.Vector):
 
     def elements_not_equal(self, b=None, epsilon=None):
         """
-
-        ## elements_not_equal
 
         ```python
         def elements_not_equal(self, b=None, epsilon=None):
@@ -4849,8 +4441,6 @@ class Vector(geosocks.Vector):
     def face_forward(self, incident=None, reference=None):
         """
 
-        ## face_forward
-
         ```python
         def face_forward(self, incident=None, reference=None):
 
@@ -4873,8 +4463,6 @@ class Vector(geosocks.Vector):
     def floor(self):
         """
 
-        ## floor
-
         ```python
         def floor(self):
 
@@ -4893,8 +4481,6 @@ class Vector(geosocks.Vector):
     def fract(self):
         """
 
-        ## fract
-
         ```python
         def fract(self):
 
@@ -4912,8 +4498,6 @@ class Vector(geosocks.Vector):
 
     def fraction(self):
         """
-
-        ## fraction
 
         ```python
         def fraction(self):
@@ -4934,8 +4518,6 @@ class Vector(geosocks.Vector):
     def length(self):
         """
 
-        ## length <sub>*property*</sub>
-
         ```python
         def length(self):
 
@@ -4953,8 +4535,6 @@ class Vector(geosocks.Vector):
 
     def length_equal(self, b=None, epsilon=None):
         """
-
-        ## length_equal
 
         ```python
         def length_equal(self, b=None, epsilon=None):
@@ -4978,8 +4558,6 @@ class Vector(geosocks.Vector):
     def length_greater_equal(self, b=None):
         """
 
-        ## length_greater_equal
-
         ```python
         def length_greater_equal(self, b=None):
 
@@ -5000,8 +4578,6 @@ class Vector(geosocks.Vector):
 
     def length_greater_than(self, b=None):
         """
-
-        ## length_greater_than
 
         ```python
         def length_greater_than(self, b=None):
@@ -5024,8 +4600,6 @@ class Vector(geosocks.Vector):
     def length_less_equal(self, b=None):
         """
 
-        ## length_less_equal
-
         ```python
         def length_less_equal(self, b=None):
 
@@ -5046,8 +4620,6 @@ class Vector(geosocks.Vector):
 
     def length_less_than(self, b=None):
         """
-
-        ## length_less_than
 
         ```python
         def length_less_than(self, b=None):
@@ -5070,8 +4642,6 @@ class Vector(geosocks.Vector):
     def length_not_equal(self, b=None, epsilon=None):
         """
 
-        ## length_not_equal
-
         ```python
         def length_not_equal(self, b=None, epsilon=None):
 
@@ -5093,8 +4663,6 @@ class Vector(geosocks.Vector):
 
     def map_range(self, from_min=None, from_max=None, to_min=None, to_max=None, steps=None, clamp=True, interpolation_type='LINEAR'):
         """
-
-        ## map_range
 
         ```python
         def map_range(self, from_min=None, from_max=None, to_min=None, to_max=None, steps=None, clamp=True, interpolation_type='LINEAR'):
@@ -5123,8 +4691,6 @@ class Vector(geosocks.Vector):
     def map_range_linear(self, from_min=None, from_max=None, to_min=None, to_max=None, clamp=True):
         """
 
-        ## map_range_linear
-
         ```python
         def map_range_linear(self, from_min=None, from_max=None, to_min=None, to_max=None, clamp=True):
 
@@ -5149,8 +4715,6 @@ class Vector(geosocks.Vector):
 
     def map_range_smooth(self, from_min=None, from_max=None, to_min=None, to_max=None, clamp=True):
         """
-
-        ## map_range_smooth
 
         ```python
         def map_range_smooth(self, from_min=None, from_max=None, to_min=None, to_max=None, clamp=True):
@@ -5177,8 +4741,6 @@ class Vector(geosocks.Vector):
     def map_range_smoother(self, from_min=None, from_max=None, to_min=None, to_max=None, clamp=True):
         """
 
-        ## map_range_smoother
-
         ```python
         def map_range_smoother(self, from_min=None, from_max=None, to_min=None, to_max=None, clamp=True):
 
@@ -5203,8 +4765,6 @@ class Vector(geosocks.Vector):
 
     def map_range_stepped(self, from_min=None, from_max=None, to_min=None, to_max=None, steps=None, clamp=True):
         """
-
-        ## map_range_stepped
 
         ```python
         def map_range_stepped(self, from_min=None, from_max=None, to_min=None, to_max=None, steps=None, clamp=True):
@@ -5232,8 +4792,6 @@ class Vector(geosocks.Vector):
     def max(self, vector=None):
         """
 
-        ## max
-
         ```python
         def max(self, vector=None):
 
@@ -5254,8 +4812,6 @@ class Vector(geosocks.Vector):
 
     def maximum(self, vector=None):
         """
-
-        ## maximum
 
         ```python
         def maximum(self, vector=None):
@@ -5278,8 +4834,6 @@ class Vector(geosocks.Vector):
     def min(self, vector=None):
         """
 
-        ## min
-
         ```python
         def min(self, vector=None):
 
@@ -5301,8 +4855,6 @@ class Vector(geosocks.Vector):
     def minimum(self, vector=None):
         """
 
-        ## minimum
-
         ```python
         def minimum(self, vector=None):
 
@@ -5323,8 +4875,6 @@ class Vector(geosocks.Vector):
 
     def mix(self, factor=None, vector=None, clamp_factor=True, factor_mode='UNIFORM'):
         """
-
-        ## mix
 
         ```python
         def mix(self, factor=None, vector=None, clamp_factor=True, factor_mode='UNIFORM'):
@@ -5350,8 +4900,6 @@ class Vector(geosocks.Vector):
     def mix_non_uniform(self, factor=None, vector=None, clamp_factor=True):
         """
 
-        ## mix_non_uniform
-
         ```python
         def mix_non_uniform(self, factor=None, vector=None, clamp_factor=True):
 
@@ -5375,8 +4923,6 @@ class Vector(geosocks.Vector):
     def mix_uniform(self, vector=None, clamp_factor=True):
         """
 
-        ## mix_uniform
-
         ```python
         def mix_uniform(self, vector=None, clamp_factor=True):
 
@@ -5399,8 +4945,6 @@ class Vector(geosocks.Vector):
     def modulo(self, vector=None):
         """
 
-        ## modulo
-
         ```python
         def modulo(self, vector=None):
 
@@ -5422,8 +4966,6 @@ class Vector(geosocks.Vector):
     def mul(self, vector=None):
         """
 
-        ## mul
-
         ```python
         def mul(self, vector=None):
 
@@ -5444,8 +4986,6 @@ class Vector(geosocks.Vector):
 
     def mul_add(self, multiplier=None, addend=None):
         """
-
-        ## mul_add
 
         ```python
         def mul_add(self, multiplier=None, addend=None):
@@ -5469,8 +5009,6 @@ class Vector(geosocks.Vector):
     def multiply(self, vector=None):
         """
 
-        ## multiply
-
         ```python
         def multiply(self, vector=None):
 
@@ -5491,8 +5029,6 @@ class Vector(geosocks.Vector):
 
     def multiply_add(self, multiplier=None, addend=None):
         """
-
-        ## multiply_add
 
         ```python
         def multiply_add(self, multiplier=None, addend=None):
@@ -5516,8 +5052,6 @@ class Vector(geosocks.Vector):
     def normalize(self):
         """
 
-        ## normalize
-
         ```python
         def normalize(self):
 
@@ -5535,8 +5069,6 @@ class Vector(geosocks.Vector):
 
     def project(self, vector=None):
         """
-
-        ## project
 
         ```python
         def project(self, vector=None):
@@ -5559,8 +5091,6 @@ class Vector(geosocks.Vector):
     def reflect(self, vector=None):
         """
 
-        ## reflect
-
         ```python
         def reflect(self, vector=None):
 
@@ -5581,8 +5111,6 @@ class Vector(geosocks.Vector):
 
     def refract(self, vector=None, ior=None):
         """
-
-        ## refract
 
         ```python
         def refract(self, vector=None, ior=None):
@@ -5605,8 +5133,6 @@ class Vector(geosocks.Vector):
 
     def rotate_axis_angle(self, center=None, axis=None, angle=None, invert=False):
         """
-
-        ## rotate_axis_angle
 
         ```python
         def rotate_axis_angle(self, center=None, axis=None, angle=None, invert=False):
@@ -5632,8 +5158,6 @@ class Vector(geosocks.Vector):
     def rotate_euler(self, center=None, rotation=None, invert=False):
         """
 
-        ## rotate_euler
-
         ```python
         def rotate_euler(self, center=None, rotation=None, invert=False):
 
@@ -5656,8 +5180,6 @@ class Vector(geosocks.Vector):
 
     def rotate_x(self, center=None, angle=None, invert=False):
         """
-
-        ## rotate_x
 
         ```python
         def rotate_x(self, center=None, angle=None, invert=False):
@@ -5682,8 +5204,6 @@ class Vector(geosocks.Vector):
     def rotate_y(self, center=None, angle=None, invert=False):
         """
 
-        ## rotate_y
-
         ```python
         def rotate_y(self, center=None, angle=None, invert=False):
 
@@ -5706,8 +5226,6 @@ class Vector(geosocks.Vector):
 
     def rotate_z(self, center=None, angle=None, invert=False):
         """
-
-        ## rotate_z
 
         ```python
         def rotate_z(self, center=None, angle=None, invert=False):
@@ -5732,8 +5250,6 @@ class Vector(geosocks.Vector):
     def scale(self, scale=None):
         """
 
-        ## scale
-
         ```python
         def scale(self, scale=None):
 
@@ -5756,8 +5272,6 @@ class Vector(geosocks.Vector):
     def separate(self):
         """
 
-        ## separate <sub>*property*</sub>
-
         ```python
         def separate(self):
 
@@ -5778,8 +5292,6 @@ class Vector(geosocks.Vector):
     def sin(self):
         """
 
-        ## sin
-
         ```python
         def sin(self):
 
@@ -5798,8 +5310,6 @@ class Vector(geosocks.Vector):
     def sine(self):
         """
 
-        ## sine
-
         ```python
         def sine(self):
 
@@ -5817,8 +5327,6 @@ class Vector(geosocks.Vector):
 
     def snap(self, increment=None):
         """
-
-        ## snap
 
         ```python
         def snap(self, increment=None):
@@ -5841,8 +5349,6 @@ class Vector(geosocks.Vector):
     def sub(self, vector=None):
         """
 
-        ## sub
-
         ```python
         def sub(self, vector=None):
 
@@ -5864,8 +5370,6 @@ class Vector(geosocks.Vector):
     def subtract(self, vector=None):
         """
 
-        ## subtract
-
         ```python
         def subtract(self, vector=None):
 
@@ -5886,8 +5390,6 @@ class Vector(geosocks.Vector):
 
     def switch(self, switch=None, true=None):
         """
-
-        ## switch
 
         ```python
         def switch(self, switch=None, true=None):
@@ -5911,8 +5413,6 @@ class Vector(geosocks.Vector):
     def tan(self):
         """
 
-        ## tan
-
         ```python
         def tan(self):
 
@@ -5931,8 +5431,6 @@ class Vector(geosocks.Vector):
     def tangent(self):
         """
 
-        ## tangent
-
         ```python
         def tangent(self):
 
@@ -5950,8 +5448,6 @@ class Vector(geosocks.Vector):
 
     def wrap(self, max=None, min=None):
         """
-
-        ## wrap
 
         ```python
         def wrap(self, max=None, min=None):
@@ -5979,8 +5475,6 @@ class Color(geosocks.Color):
     def Color(cls):
         """
 
-        ## Color <sub>*classmethod*</sub>
-
         ```python
         def Color(cls):
 
@@ -5999,8 +5493,6 @@ class Color(geosocks.Color):
     @classmethod
     def HSL(cls, hue=None, saturation=None, lightness=None, alpha=None):
         """
-
-        ## HSL <sub>*classmethod*</sub>
 
         ```python
         def HSL(cls, hue=None, saturation=None, lightness=None, alpha=None):
@@ -6027,8 +5519,6 @@ class Color(geosocks.Color):
     def HSV(cls, hue=None, saturation=None, value=None, alpha=None):
         """
 
-        ## HSV <sub>*classmethod*</sub>
-
         ```python
         def HSV(cls, hue=None, saturation=None, value=None, alpha=None):
 
@@ -6053,8 +5543,6 @@ class Color(geosocks.Color):
     @classmethod
     def RGB(cls, red=None, green=None, blue=None, alpha=None):
         """
-
-        ## RGB <sub>*classmethod*</sub>
 
         ```python
         def RGB(cls, red=None, green=None, blue=None, alpha=None):
@@ -6081,8 +5569,6 @@ class Color(geosocks.Color):
     def alpha(self):
         """
 
-        ## alpha <sub>*property*</sub>
-
         ```python
         def alpha(self):
 
@@ -6102,8 +5588,6 @@ class Color(geosocks.Color):
     def blue(self):
         """
 
-        ## blue <sub>*property*</sub>
-
         ```python
         def blue(self):
 
@@ -6121,8 +5605,6 @@ class Color(geosocks.Color):
 
     def brighter(self, b=None):
         """
-
-        ## brighter
 
         ```python
         def brighter(self, b=None):
@@ -6145,8 +5627,6 @@ class Color(geosocks.Color):
     def darker(self, b=None):
         """
 
-        ## darker
-
         ```python
         def darker(self, b=None):
 
@@ -6167,8 +5647,6 @@ class Color(geosocks.Color):
 
     def equal(self, b=None, epsilon=None):
         """
-
-        ## equal
 
         ```python
         def equal(self, b=None, epsilon=None):
@@ -6191,8 +5669,6 @@ class Color(geosocks.Color):
 
     def equal(self, b=None, epsilon=None):
         """
-
-        ## equal
 
         ```python
         def equal(self, b=None, epsilon=None):
@@ -6217,8 +5693,6 @@ class Color(geosocks.Color):
     def green(self):
         """
 
-        ## green <sub>*property*</sub>
-
         ```python
         def green(self):
 
@@ -6237,8 +5711,6 @@ class Color(geosocks.Color):
     @property
     def hsl(self):
         """
-
-        ## hsl <sub>*property*</sub>
 
         ```python
         def hsl(self):
@@ -6262,8 +5734,6 @@ class Color(geosocks.Color):
     def hsv(self):
         """
 
-        ## hsv <sub>*property*</sub>
-
         ```python
         def hsv(self):
 
@@ -6286,8 +5756,6 @@ class Color(geosocks.Color):
     def hue(self):
         """
 
-        ## hue <sub>*property*</sub>
-
         ```python
         def hue(self):
 
@@ -6307,8 +5775,6 @@ class Color(geosocks.Color):
     def lightness(self):
         """
 
-        ## lightness <sub>*property*</sub>
-
         ```python
         def lightness(self):
 
@@ -6326,8 +5792,6 @@ class Color(geosocks.Color):
 
     def mix(self, factor=None, color=None, blend_type='MIX', clamp_factor=True, clamp_result=False):
         """
-
-        ## mix
 
         ```python
         def mix(self, factor=None, color=None, blend_type='MIX', clamp_factor=True, clamp_result=False):
@@ -6354,8 +5818,6 @@ class Color(geosocks.Color):
     def mix_add(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
         """
 
-        ## mix_add
-
         ```python
         def mix_add(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
 
@@ -6379,8 +5841,6 @@ class Color(geosocks.Color):
 
     def mix_burn(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
         """
-
-        ## mix_burn
 
         ```python
         def mix_burn(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
@@ -6406,8 +5866,6 @@ class Color(geosocks.Color):
     def mix_color(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
         """
 
-        ## mix_color
-
         ```python
         def mix_color(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
 
@@ -6431,8 +5889,6 @@ class Color(geosocks.Color):
 
     def mix_darken(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
         """
-
-        ## mix_darken
 
         ```python
         def mix_darken(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
@@ -6458,8 +5914,6 @@ class Color(geosocks.Color):
     def mix_difference(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
         """
 
-        ## mix_difference
-
         ```python
         def mix_difference(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
 
@@ -6483,8 +5937,6 @@ class Color(geosocks.Color):
 
     def mix_divide(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
         """
-
-        ## mix_divide
 
         ```python
         def mix_divide(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
@@ -6510,8 +5962,6 @@ class Color(geosocks.Color):
     def mix_dodge(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
         """
 
-        ## mix_dodge
-
         ```python
         def mix_dodge(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
 
@@ -6535,8 +5985,6 @@ class Color(geosocks.Color):
 
     def mix_hue(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
         """
-
-        ## mix_hue
 
         ```python
         def mix_hue(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
@@ -6562,8 +6010,6 @@ class Color(geosocks.Color):
     def mix_lighten(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
         """
 
-        ## mix_lighten
-
         ```python
         def mix_lighten(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
 
@@ -6587,8 +6033,6 @@ class Color(geosocks.Color):
 
     def mix_linear_light(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
         """
-
-        ## mix_linear_light
 
         ```python
         def mix_linear_light(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
@@ -6614,8 +6058,6 @@ class Color(geosocks.Color):
     def mix_multiply(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
         """
 
-        ## mix_multiply
-
         ```python
         def mix_multiply(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
 
@@ -6639,8 +6081,6 @@ class Color(geosocks.Color):
 
     def mix_overlay(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
         """
-
-        ## mix_overlay
 
         ```python
         def mix_overlay(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
@@ -6666,8 +6106,6 @@ class Color(geosocks.Color):
     def mix_saturation(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
         """
 
-        ## mix_saturation
-
         ```python
         def mix_saturation(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
 
@@ -6691,8 +6129,6 @@ class Color(geosocks.Color):
 
     def mix_screen(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
         """
-
-        ## mix_screen
 
         ```python
         def mix_screen(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
@@ -6718,8 +6154,6 @@ class Color(geosocks.Color):
     def mix_soft_light(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
         """
 
-        ## mix_soft_light
-
         ```python
         def mix_soft_light(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
 
@@ -6744,8 +6178,6 @@ class Color(geosocks.Color):
     def mix_subtract(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
         """
 
-        ## mix_subtract
-
         ```python
         def mix_subtract(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
 
@@ -6769,8 +6201,6 @@ class Color(geosocks.Color):
 
     def mix_value(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
         """
-
-        ## mix_value
 
         ```python
         def mix_value(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
@@ -6797,8 +6227,6 @@ class Color(geosocks.Color):
     def red(self):
         """
 
-        ## red <sub>*property*</sub>
-
         ```python
         def red(self):
 
@@ -6817,8 +6245,6 @@ class Color(geosocks.Color):
     @property
     def rgb(self):
         """
-
-        ## rgb <sub>*property*</sub>
 
         ```python
         def rgb(self):
@@ -6842,8 +6268,6 @@ class Color(geosocks.Color):
     def rgb_curves(self, fac=None):
         """
 
-        ## rgb_curves <sub>*property*</sub>
-
         ```python
         def rgb_curves(self, fac=None):
 
@@ -6863,8 +6287,6 @@ class Color(geosocks.Color):
     def saturation(self):
         """
 
-        ## saturation <sub>*property*</sub>
-
         ```python
         def saturation(self):
 
@@ -6882,8 +6304,6 @@ class Color(geosocks.Color):
 
     def switch(self, switch=None, true=None):
         """
-
-        ## switch
 
         ```python
         def switch(self, switch=None, true=None):
@@ -6908,8 +6328,6 @@ class Color(geosocks.Color):
     def value(self):
         """
 
-        ## value <sub>*property*</sub>
-
         ```python
         def value(self):
 
@@ -6930,8 +6348,6 @@ class Color(geosocks.Color):
 class Collection(geosocks.Collection):
     def switch(self, switch=None, true=None):
         """
-
-        ## switch
 
         ```python
         def switch(self, switch=None, true=None):
@@ -6959,8 +6375,6 @@ class Object(geosocks.Object):
     def Self(cls):
         """
 
-        ## Self <sub>*classmethod*</sub>
-
         ```python
         def Self(cls):
 
@@ -6978,8 +6392,6 @@ class Object(geosocks.Object):
 
     def geometry(self, object=None, as_instance=None, transform_space='ORIGINAL'):
         """
-
-        ## geometry
 
         ```python
         def geometry(self, object=None, as_instance=None, transform_space='ORIGINAL'):
@@ -7004,8 +6416,6 @@ class Object(geosocks.Object):
     def info(self, object=None, as_instance=None, transform_space='ORIGINAL'):
         """
 
-        ## info
-
         ```python
         def info(self, object=None, as_instance=None, transform_space='ORIGINAL'):
 
@@ -7028,8 +6438,6 @@ class Object(geosocks.Object):
 
     def location(self, object=None, as_instance=None, transform_space='ORIGINAL'):
         """
-
-        ## location
 
         ```python
         def location(self, object=None, as_instance=None, transform_space='ORIGINAL'):
@@ -7054,8 +6462,6 @@ class Object(geosocks.Object):
     def rotation(self, object=None, as_instance=None, transform_space='ORIGINAL'):
         """
 
-        ## rotation
-
         ```python
         def rotation(self, object=None, as_instance=None, transform_space='ORIGINAL'):
 
@@ -7079,8 +6485,6 @@ class Object(geosocks.Object):
     def scale(self, object=None, as_instance=None, transform_space='ORIGINAL'):
         """
 
-        ## scale
-
         ```python
         def scale(self, object=None, as_instance=None, transform_space='ORIGINAL'):
 
@@ -7103,8 +6507,6 @@ class Object(geosocks.Object):
 
     def switch(self, switch=None, true=None):
         """
-
-        ## switch
 
         ```python
         def switch(self, switch=None, true=None):
@@ -7131,8 +6533,6 @@ class Image(geosocks.Image):
     def switch(self, switch=None, true=None):
         """
 
-        ## switch
-
         ```python
         def switch(self, switch=None, true=None):
 
@@ -7154,8 +6554,6 @@ class Image(geosocks.Image):
 
     def texture(self, vector=None, frame=None, extension='REPEAT', interpolation='Linear'):
         """
-
-        ## texture
 
         ```python
         def texture(self, vector=None, frame=None, extension='REPEAT', interpolation='Linear'):
@@ -7187,8 +6585,6 @@ class Texture(geosocks.Texture):
     @staticmethod
     def brick(vector=None, color1=None, color2=None, mortar=None, scale=None, mortar_size=None, mortar_smooth=None, bias=None, brick_width=None, row_height=None, offset=0.5, offset_frequency=2, squash=1.0, squash_frequency=2):
         """
-
-        ## brick <sub>*staticmethod*</sub>
 
         ```python
         def brick(vector=None, color1=None, color2=None, mortar=None, scale=None, mortar_size=None, mortar_smooth=None, bias=None, brick_width=None, row_height=None, offset=0.5, offset_frequency=2, squash=1.0, squash_frequency=2):
@@ -7228,8 +6624,6 @@ class Texture(geosocks.Texture):
     def checker(vector=None, color1=None, color2=None, scale=None):
         """
 
-        ## checker <sub>*staticmethod*</sub>
-
         ```python
         def checker(vector=None, color1=None, color2=None, scale=None):
 
@@ -7258,8 +6652,6 @@ class Texture(geosocks.Texture):
     def gradient(vector=None, gradient_type='LINEAR'):
         """
 
-        ## gradient <sub>*staticmethod*</sub>
-
         ```python
         def gradient(vector=None, gradient_type='LINEAR'):
 
@@ -7286,8 +6678,6 @@ class Texture(geosocks.Texture):
     def gradient_diagonal(vector=None):
         """
 
-        ## gradient_diagonal <sub>*staticmethod*</sub>
-
         ```python
         def gradient_diagonal(vector=None):
 
@@ -7312,8 +6702,6 @@ class Texture(geosocks.Texture):
     @staticmethod
     def gradient_easing(vector=None):
         """
-
-        ## gradient_easing <sub>*staticmethod*</sub>
 
         ```python
         def gradient_easing(vector=None):
@@ -7340,8 +6728,6 @@ class Texture(geosocks.Texture):
     def gradient_linear(vector=None):
         """
 
-        ## gradient_linear <sub>*staticmethod*</sub>
-
         ```python
         def gradient_linear(vector=None):
 
@@ -7366,8 +6752,6 @@ class Texture(geosocks.Texture):
     @staticmethod
     def gradient_quadratic(vector=None):
         """
-
-        ## gradient_quadratic <sub>*staticmethod*</sub>
 
         ```python
         def gradient_quadratic(vector=None):
@@ -7394,8 +6778,6 @@ class Texture(geosocks.Texture):
     def gradient_quadratic_sphere(vector=None):
         """
 
-        ## gradient_quadratic_sphere <sub>*staticmethod*</sub>
-
         ```python
         def gradient_quadratic_sphere(vector=None):
 
@@ -7420,8 +6802,6 @@ class Texture(geosocks.Texture):
     @staticmethod
     def gradient_radial(vector=None):
         """
-
-        ## gradient_radial <sub>*staticmethod*</sub>
 
         ```python
         def gradient_radial(vector=None):
@@ -7448,8 +6828,6 @@ class Texture(geosocks.Texture):
     def gradient_spherical(vector=None):
         """
 
-        ## gradient_spherical <sub>*staticmethod*</sub>
-
         ```python
         def gradient_spherical(vector=None):
 
@@ -7474,8 +6852,6 @@ class Texture(geosocks.Texture):
     @staticmethod
     def image(image=None, vector=None, frame=None, extension='REPEAT', interpolation='Linear'):
         """
-
-        ## image <sub>*staticmethod*</sub>
 
         ```python
         def image(image=None, vector=None, frame=None, extension='REPEAT', interpolation='Linear'):
@@ -7506,8 +6882,6 @@ class Texture(geosocks.Texture):
     def magic(vector=None, scale=None, distortion=None, turbulence_depth=2):
         """
 
-        ## magic <sub>*staticmethod*</sub>
-
         ```python
         def magic(vector=None, scale=None, distortion=None, turbulence_depth=2):
 
@@ -7535,8 +6909,6 @@ class Texture(geosocks.Texture):
     @staticmethod
     def musgrave(vector=None, w=None, scale=None, detail=None, dimension=None, lacunarity=None, offset=None, gain=None, musgrave_dimensions='3D', musgrave_type='FBM'):
         """
-
-        ## musgrave <sub>*staticmethod*</sub>
 
         ```python
         def musgrave(vector=None, w=None, scale=None, detail=None, dimension=None, lacunarity=None, offset=None, gain=None, musgrave_dimensions='3D', musgrave_type='FBM'):
@@ -7569,8 +6941,6 @@ class Texture(geosocks.Texture):
     def noise(vector=None, w=None, scale=None, detail=None, roughness=None, distortion=None, noise_dimensions='3D'):
         """
 
-        ## noise <sub>*staticmethod*</sub>
-
         ```python
         def noise(vector=None, w=None, scale=None, detail=None, roughness=None, distortion=None, noise_dimensions='3D'):
 
@@ -7602,8 +6972,6 @@ class Texture(geosocks.Texture):
     def noise_1D(w=None, scale=None, detail=None, roughness=None, distortion=None):
         """
 
-        ## noise_1D <sub>*staticmethod*</sub>
-
         ```python
         def noise_1D(w=None, scale=None, detail=None, roughness=None, distortion=None):
 
@@ -7632,8 +7000,6 @@ class Texture(geosocks.Texture):
     @staticmethod
     def noise_2D(vector=None, scale=None, detail=None, roughness=None, distortion=None):
         """
-
-        ## noise_2D <sub>*staticmethod*</sub>
 
         ```python
         def noise_2D(vector=None, scale=None, detail=None, roughness=None, distortion=None):
@@ -7664,8 +7030,6 @@ class Texture(geosocks.Texture):
     def noise_3D(vector=None, scale=None, detail=None, roughness=None, distortion=None):
         """
 
-        ## noise_3D <sub>*staticmethod*</sub>
-
         ```python
         def noise_3D(vector=None, scale=None, detail=None, roughness=None, distortion=None):
 
@@ -7694,8 +7058,6 @@ class Texture(geosocks.Texture):
     @staticmethod
     def noise_4D(vector=None, w=None, scale=None, detail=None, roughness=None, distortion=None):
         """
-
-        ## noise_4D <sub>*staticmethod*</sub>
 
         ```python
         def noise_4D(vector=None, w=None, scale=None, detail=None, roughness=None, distortion=None):
@@ -7726,8 +7088,6 @@ class Texture(geosocks.Texture):
     def switch(self, switch=None, true=None):
         """
 
-        ## switch
-
         ```python
         def switch(self, switch=None, true=None):
 
@@ -7750,8 +7110,6 @@ class Texture(geosocks.Texture):
     @staticmethod
     def voronoi(vector=None, w=None, scale=None, smoothness=None, exponent=None, randomness=None, distance='EUCLIDEAN', feature='F1', voronoi_dimensions='3D'):
         """
-
-        ## voronoi <sub>*staticmethod*</sub>
 
         ```python
         def voronoi(vector=None, w=None, scale=None, smoothness=None, exponent=None, randomness=None, distance='EUCLIDEAN', feature='F1', voronoi_dimensions='3D'):
@@ -7786,8 +7144,6 @@ class Texture(geosocks.Texture):
     def voronoi_1D(w=None, scale=None, smoothness=None, exponent=None, randomness=None, distance='EUCLIDEAN', feature='F1', voronoi_dimensions='3D'):
         """
 
-        ## voronoi_1D <sub>*staticmethod*</sub>
-
         ```python
         def voronoi_1D(w=None, scale=None, smoothness=None, exponent=None, randomness=None, distance='EUCLIDEAN', feature='F1', voronoi_dimensions='3D'):
 
@@ -7819,8 +7175,6 @@ class Texture(geosocks.Texture):
     @staticmethod
     def voronoi_2D(vector=None, scale=None, smoothness=None, exponent=None, randomness=None, distance='EUCLIDEAN', feature='F1', voronoi_dimensions='3D'):
         """
-
-        ## voronoi_2D <sub>*staticmethod*</sub>
 
         ```python
         def voronoi_2D(vector=None, scale=None, smoothness=None, exponent=None, randomness=None, distance='EUCLIDEAN', feature='F1', voronoi_dimensions='3D'):
@@ -7854,8 +7208,6 @@ class Texture(geosocks.Texture):
     def voronoi_3D(vector=None, scale=None, smoothness=None, exponent=None, randomness=None, distance='EUCLIDEAN', feature='F1', voronoi_dimensions='3D'):
         """
 
-        ## voronoi_3D <sub>*staticmethod*</sub>
-
         ```python
         def voronoi_3D(vector=None, scale=None, smoothness=None, exponent=None, randomness=None, distance='EUCLIDEAN', feature='F1', voronoi_dimensions='3D'):
 
@@ -7887,8 +7239,6 @@ class Texture(geosocks.Texture):
     @staticmethod
     def voronoi_4D(vector=None, w=None, scale=None, smoothness=None, exponent=None, randomness=None, distance='EUCLIDEAN', feature='F1', voronoi_dimensions='3D'):
         """
-
-        ## voronoi_4D <sub>*staticmethod*</sub>
 
         ```python
         def voronoi_4D(vector=None, w=None, scale=None, smoothness=None, exponent=None, randomness=None, distance='EUCLIDEAN', feature='F1', voronoi_dimensions='3D'):
@@ -7922,8 +7272,6 @@ class Texture(geosocks.Texture):
     @staticmethod
     def wave(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, bands_direction='X', rings_direction='X', wave_profile='SIN', wave_type='BANDS'):
         """
-
-        ## wave <sub>*staticmethod*</sub>
 
         ```python
         def wave(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, bands_direction='X', rings_direction='X', wave_profile='SIN', wave_type='BANDS'):
@@ -7960,8 +7308,6 @@ class Texture(geosocks.Texture):
     def wave_bands(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X', wave_profile='SIN'):
         """
 
-        ## wave_bands <sub>*staticmethod*</sub>
-
         ```python
         def wave_bands(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X', wave_profile='SIN'):
 
@@ -7995,8 +7341,6 @@ class Texture(geosocks.Texture):
     def wave_bands_saw(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X'):
         """
 
-        ## wave_bands_saw <sub>*staticmethod*</sub>
-
         ```python
         def wave_bands_saw(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X'):
 
@@ -8028,8 +7372,6 @@ class Texture(geosocks.Texture):
     @staticmethod
     def wave_bands_sine(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X'):
         """
-
-        ## wave_bands_sine <sub>*staticmethod*</sub>
 
         ```python
         def wave_bands_sine(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X'):
@@ -8063,8 +7405,6 @@ class Texture(geosocks.Texture):
     def wave_bands_triangle(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X'):
         """
 
-        ## wave_bands_triangle <sub>*staticmethod*</sub>
-
         ```python
         def wave_bands_triangle(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X'):
 
@@ -8096,8 +7436,6 @@ class Texture(geosocks.Texture):
     @staticmethod
     def wave_rings(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X', wave_profile='SIN'):
         """
-
-        ## wave_rings <sub>*staticmethod*</sub>
 
         ```python
         def wave_rings(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X', wave_profile='SIN'):
@@ -8132,8 +7470,6 @@ class Texture(geosocks.Texture):
     def wave_rings_saw(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X'):
         """
 
-        ## wave_rings_saw <sub>*staticmethod*</sub>
-
         ```python
         def wave_rings_saw(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X'):
 
@@ -8165,8 +7501,6 @@ class Texture(geosocks.Texture):
     @staticmethod
     def wave_rings_sine(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X'):
         """
-
-        ## wave_rings_sine <sub>*staticmethod*</sub>
 
         ```python
         def wave_rings_sine(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X'):
@@ -8200,8 +7534,6 @@ class Texture(geosocks.Texture):
     def wave_rings_triangle(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X'):
         """
 
-        ## wave_rings_triangle <sub>*staticmethod*</sub>
-
         ```python
         def wave_rings_triangle(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X'):
 
@@ -8234,8 +7566,6 @@ class Texture(geosocks.Texture):
     def white_noise(vector=None, w=None, noise_dimensions='3D'):
         """
 
-        ## white_noise <sub>*staticmethod*</sub>
-
         ```python
         def white_noise(vector=None, w=None, noise_dimensions='3D'):
 
@@ -8263,8 +7593,6 @@ class Texture(geosocks.Texture):
     def white_noise_1D(w=None):
         """
 
-        ## white_noise_1D <sub>*staticmethod*</sub>
-
         ```python
         def white_noise_1D(w=None):
 
@@ -8289,8 +7617,6 @@ class Texture(geosocks.Texture):
     @staticmethod
     def white_noise_2D(vector=None):
         """
-
-        ## white_noise_2D <sub>*staticmethod*</sub>
 
         ```python
         def white_noise_2D(vector=None):
@@ -8317,8 +7643,6 @@ class Texture(geosocks.Texture):
     def white_noise_3D(vector=None):
         """
 
-        ## white_noise_3D <sub>*staticmethod*</sub>
-
         ```python
         def white_noise_3D(vector=None):
 
@@ -8343,8 +7667,6 @@ class Texture(geosocks.Texture):
     @staticmethod
     def white_noise_4D(vector=None, w=None):
         """
-
-        ## white_noise_4D <sub>*staticmethod*</sub>
 
         ```python
         def white_noise_4D(vector=None, w=None):
@@ -8375,8 +7697,6 @@ class Material(geosocks.Material):
     def Material(cls):
         """
 
-        ## Material <sub>*classmethod*</sub>
-
         ```python
         def Material(cls):
 
@@ -8394,8 +7714,6 @@ class Material(geosocks.Material):
 
     def switch(self, switch=None, true=None):
         """
-
-        ## switch
 
         ```python
         def switch(self, switch=None, true=None):
@@ -8423,8 +7741,6 @@ class Geometry(geosocks.Geometry):
     def Collection(cls, collection=None, separate_children=None, reset_children=None, transform_space='ORIGINAL'):
         """
 
-        ## Collection <sub>*classmethod*</sub>
-
         ```python
         def Collection(cls, collection=None, separate_children=None, reset_children=None, transform_space='ORIGINAL'):
 
@@ -8450,8 +7766,6 @@ class Geometry(geosocks.Geometry):
     def ID(self):
         """
 
-        ## ID <sub>*property*</sub>
-
         ```python
         def ID(self):
 
@@ -8469,8 +7783,6 @@ class Geometry(geosocks.Geometry):
 
     def attribute_statistic(self, selection=None, attribute=None, domain='POINT'):
         """
-
-        ## attribute_statistic
 
         ```python
         def attribute_statistic(self, selection=None, attribute=None, domain='POINT'):
@@ -8497,8 +7809,6 @@ class Geometry(geosocks.Geometry):
     def bounding_box(self):
         """
 
-        ## bounding_box <sub>*property*</sub>
-
         ```python
         def bounding_box(self):
 
@@ -8521,8 +7831,6 @@ class Geometry(geosocks.Geometry):
     def bounding_box_min(self):
         """
 
-        ## bounding_box_min <sub>*property*</sub>
-
         ```python
         def bounding_box_min(self):
 
@@ -8544,8 +7852,6 @@ class Geometry(geosocks.Geometry):
     def bounding_box_min(self):
         """
 
-        ## bounding_box_min <sub>*property*</sub>
-
         ```python
         def bounding_box_min(self):
 
@@ -8565,8 +7871,6 @@ class Geometry(geosocks.Geometry):
 
     def capture_attribute(self, value=None, domain='POINT'):
         """
-
-        ## capture_attribute
 
         ```python
         def capture_attribute(self, value=None, domain='POINT'):
@@ -8590,8 +7894,6 @@ class Geometry(geosocks.Geometry):
 
     def capture_attribute_node(self, geometry=None, value=None, data_type='FLOAT', domain='POINT'):
         """
-
-        ## capture_attribute_node
 
         ```python
         def capture_attribute_node(self, geometry=None, value=None, data_type='FLOAT', domain='POINT'):
@@ -8618,8 +7920,6 @@ class Geometry(geosocks.Geometry):
     def convex_hull(self):
         """
 
-        ## convex_hull <sub>*property*</sub>
-
         ```python
         def convex_hull(self):
 
@@ -8639,8 +7939,6 @@ class Geometry(geosocks.Geometry):
     @property
     def curve_component(self):
         """
-
-        ## curve_component <sub>*property*</sub>
 
         ```python
         def curve_component(self):
@@ -8662,8 +7960,6 @@ class Geometry(geosocks.Geometry):
 
     def delete(self, selection=None, domain='POINT', mode='ALL'):
         """
-
-        ## delete
 
         ```python
         def delete(self, selection=None, domain='POINT', mode='ALL'):
@@ -8689,8 +7985,6 @@ class Geometry(geosocks.Geometry):
     def domain_size(self, component='MESH'):
         """
 
-        ## domain_size <sub>*property*</sub>
-
         ```python
         def domain_size(self, component='MESH'):
 
@@ -8710,8 +8004,6 @@ class Geometry(geosocks.Geometry):
 
     def duplicate(self, selection=None, amount=None, domain='POINT'):
         """
-
-        ## duplicate
 
         ```python
         def duplicate(self, selection=None, amount=None, domain='POINT'):
@@ -8735,8 +8027,6 @@ class Geometry(geosocks.Geometry):
 
     def field_at_index(self, index=None, value=None, domain='POINT'):
         """
-
-        ## field_at_index
 
         ```python
         def field_at_index(self, index=None, value=None, domain='POINT'):
@@ -8762,8 +8052,6 @@ class Geometry(geosocks.Geometry):
     def get_named_boolean(self, name=None):
         """
 
-        ## get_named_boolean
-
         ```python
         def get_named_boolean(self, name=None):
 
@@ -8784,8 +8072,6 @@ class Geometry(geosocks.Geometry):
 
     def get_named_color(self, name=None):
         """
-
-        ## get_named_color
 
         ```python
         def get_named_color(self, name=None):
@@ -8808,8 +8094,6 @@ class Geometry(geosocks.Geometry):
     def get_named_float(self, name=None):
         """
 
-        ## get_named_float
-
         ```python
         def get_named_float(self, name=None):
 
@@ -8831,8 +8115,6 @@ class Geometry(geosocks.Geometry):
     def get_named_integer(self, name=None):
         """
 
-        ## get_named_integer
-
         ```python
         def get_named_integer(self, name=None):
 
@@ -8853,8 +8135,6 @@ class Geometry(geosocks.Geometry):
 
     def get_named_vector(self, name=None):
         """
-
-        ## get_named_vector
 
         ```python
         def get_named_vector(self, name=None):
@@ -8878,8 +8158,6 @@ class Geometry(geosocks.Geometry):
     def index(self):
         """
 
-        ## index <sub>*property*</sub>
-
         ```python
         def index(self):
 
@@ -8898,8 +8176,6 @@ class Geometry(geosocks.Geometry):
     @property
     def instances_component(self):
         """
-
-        ## instances_component <sub>*property*</sub>
 
         ```python
         def instances_component(self):
@@ -8921,8 +8197,6 @@ class Geometry(geosocks.Geometry):
 
     def interpolate_domain(self, value=None, domain='POINT'):
         """
-
-        ## interpolate_domain
 
         ```python
         def interpolate_domain(self, value=None, domain='POINT'):
@@ -8948,8 +8222,6 @@ class Geometry(geosocks.Geometry):
     def is_viewport(self):
         """
 
-        ## is_viewport <sub>*property*</sub>
-
         ```python
         def is_viewport(self):
 
@@ -8967,8 +8239,6 @@ class Geometry(geosocks.Geometry):
 
     def join(*geometry):
         """
-
-        ## join
 
         ```python
         def join(*geometry):
@@ -8994,8 +8264,6 @@ class Geometry(geosocks.Geometry):
     def material_index(self):
         """
 
-        ## material_index <sub>*property*</sub>
-
         ```python
         def material_index(self):
 
@@ -9013,8 +8281,6 @@ class Geometry(geosocks.Geometry):
 
     def material_selection(self, material=None):
         """
-
-        ## material_selection
 
         ```python
         def material_selection(self, material=None):
@@ -9036,8 +8302,6 @@ class Geometry(geosocks.Geometry):
 
     def merge_by_distance(self, selection=None, distance=None, mode='ALL'):
         """
-
-        ## merge_by_distance
 
         ```python
         def merge_by_distance(self, selection=None, distance=None, mode='ALL'):
@@ -9063,8 +8327,6 @@ class Geometry(geosocks.Geometry):
     def mesh_component(self):
         """
 
-        ## mesh_component <sub>*property*</sub>
-
         ```python
         def mesh_component(self):
 
@@ -9085,8 +8347,6 @@ class Geometry(geosocks.Geometry):
 
     def named_attribute(self, name=None, data_type='FLOAT'):
         """
-
-        ## named_attribute
 
         ```python
         def named_attribute(self, name=None, data_type='FLOAT'):
@@ -9111,8 +8371,6 @@ class Geometry(geosocks.Geometry):
     def normal(self):
         """
 
-        ## normal <sub>*property*</sub>
-
         ```python
         def normal(self):
 
@@ -9131,8 +8389,6 @@ class Geometry(geosocks.Geometry):
     @property
     def points_component(self):
         """
-
-        ## points_component <sub>*property*</sub>
 
         ```python
         def points_component(self):
@@ -9156,8 +8412,6 @@ class Geometry(geosocks.Geometry):
     def position(self):
         """
 
-        ## position <sub>*property*</sub>
-
         ```python
         def position(self):
 
@@ -9175,8 +8429,6 @@ class Geometry(geosocks.Geometry):
 
     def proximity(self, target=None, source_position=None, target_element='FACES'):
         """
-
-        ## proximity
 
         ```python
         def proximity(self, target=None, source_position=None, target_element='FACES'):
@@ -9201,8 +8453,6 @@ class Geometry(geosocks.Geometry):
     def proximity_edges(self, target=None, source_position=None):
         """
 
-        ## proximity_edges
-
         ```python
         def proximity_edges(self, target=None, source_position=None):
 
@@ -9225,8 +8475,6 @@ class Geometry(geosocks.Geometry):
     def proximity_faces(self, target=None, source_position=None):
         """
 
-        ## proximity_faces
-
         ```python
         def proximity_faces(self, target=None, source_position=None):
 
@@ -9248,8 +8496,6 @@ class Geometry(geosocks.Geometry):
 
     def proximity_points(self, target=None, source_position=None):
         """
-
-        ## proximity_points
 
         ```python
         def proximity_points(self, target=None, source_position=None):
@@ -9274,8 +8520,6 @@ class Geometry(geosocks.Geometry):
     def radius(self):
         """
 
-        ## radius <sub>*property*</sub>
-
         ```python
         def radius(self):
 
@@ -9293,8 +8537,6 @@ class Geometry(geosocks.Geometry):
 
     def random_boolean(self, probability=None, ID=None, seed=None):
         """
-
-        ## random_boolean
 
         ```python
         def random_boolean(self, probability=None, ID=None, seed=None):
@@ -9318,8 +8560,6 @@ class Geometry(geosocks.Geometry):
 
     def random_float(self, min=None, max=None, ID=None, seed=None):
         """
-
-        ## random_float
 
         ```python
         def random_float(self, min=None, max=None, ID=None, seed=None):
@@ -9345,8 +8585,6 @@ class Geometry(geosocks.Geometry):
     def random_integer(self, min=None, max=None, ID=None, seed=None):
         """
 
-        ## random_integer
-
         ```python
         def random_integer(self, min=None, max=None, ID=None, seed=None):
 
@@ -9371,8 +8609,6 @@ class Geometry(geosocks.Geometry):
     def random_vector(self, min=None, max=None, ID=None, seed=None):
         """
 
-        ## random_vector
-
         ```python
         def random_vector(self, min=None, max=None, ID=None, seed=None):
 
@@ -9396,8 +8632,6 @@ class Geometry(geosocks.Geometry):
 
     def raycast(self, target_geometry=None, attribute=None, source_position=None, ray_direction=None, ray_length=None, mapping='INTERPOLATED'):
         """
-
-        ## raycast
 
         ```python
         def raycast(self, target_geometry=None, attribute=None, source_position=None, ray_direction=None, ray_length=None, mapping='INTERPOLATED'):
@@ -9426,8 +8660,6 @@ class Geometry(geosocks.Geometry):
     def raycast_interpolated(self, target_geometry=None, attribute=None, source_position=None, ray_direction=None, ray_length=None):
         """
 
-        ## raycast_interpolated
-
         ```python
         def raycast_interpolated(self, target_geometry=None, attribute=None, source_position=None, ray_direction=None, ray_length=None):
 
@@ -9453,8 +8685,6 @@ class Geometry(geosocks.Geometry):
 
     def raycast_nearest(self, target_geometry=None, attribute=None, source_position=None, ray_direction=None, ray_length=None):
         """
-
-        ## raycast_nearest
 
         ```python
         def raycast_nearest(self, target_geometry=None, attribute=None, source_position=None, ray_direction=None, ray_length=None):
@@ -9482,8 +8712,6 @@ class Geometry(geosocks.Geometry):
     def remove_named_attribute(self, name=None):
         """
 
-        ## remove_named_attribute
-
         ```python
         def remove_named_attribute(self, name=None):
 
@@ -9504,8 +8732,6 @@ class Geometry(geosocks.Geometry):
 
     def replace_material(self, old=None, new=None):
         """
-
-        ## replace_material
 
         ```python
         def replace_material(self, old=None, new=None):
@@ -9528,8 +8754,6 @@ class Geometry(geosocks.Geometry):
 
     def sample_index(self, value=None, index=None, clamp=False, domain='POINT'):
         """
-
-        ## sample_index
 
         ```python
         def sample_index(self, value=None, index=None, clamp=False, domain='POINT'):
@@ -9556,8 +8780,6 @@ class Geometry(geosocks.Geometry):
     def sample_nearest(self, sample_position=None, domain='POINT'):
         """
 
-        ## sample_nearest
-
         ```python
         def sample_nearest(self, sample_position=None, domain='POINT'):
 
@@ -9579,8 +8801,6 @@ class Geometry(geosocks.Geometry):
 
     def separate(self, geometry=None, selection=None, domain='POINT'):
         """
-
-        ## separate
 
         ```python
         def separate(self, geometry=None, selection=None, domain='POINT'):
@@ -9609,8 +8829,6 @@ class Geometry(geosocks.Geometry):
     def separate_components(self):
         """
 
-        ## separate_components <sub>*property*</sub>
-
         ```python
         def separate_components(self):
 
@@ -9630,8 +8848,6 @@ class Geometry(geosocks.Geometry):
 
     def set_ID(self, selection=None, ID=None):
         """
-
-        ## set_ID
 
         ```python
         def set_ID(self, selection=None, ID=None):
@@ -9655,8 +8871,6 @@ class Geometry(geosocks.Geometry):
     def set_material(self, selection=None, material=None):
         """
 
-        ## set_material
-
         ```python
         def set_material(self, selection=None, material=None):
 
@@ -9679,8 +8893,6 @@ class Geometry(geosocks.Geometry):
     def set_material_index(self, selection=None, material_index=None):
         """
 
-        ## set_material_index
-
         ```python
         def set_material_index(self, selection=None, material_index=None):
 
@@ -9702,8 +8914,6 @@ class Geometry(geosocks.Geometry):
 
     def set_named_boolean(self, name=None, value=None, domain='POINT'):
         """
-
-        ## set_named_boolean
 
         ```python
         def set_named_boolean(self, name=None, value=None, domain='POINT'):
@@ -9728,8 +8938,6 @@ class Geometry(geosocks.Geometry):
     def set_named_color(self, name=None, value=None, domain='POINT'):
         """
 
-        ## set_named_color
-
         ```python
         def set_named_color(self, name=None, value=None, domain='POINT'):
 
@@ -9752,8 +8960,6 @@ class Geometry(geosocks.Geometry):
 
     def set_named_float(self, name=None, value=None, domain='POINT'):
         """
-
-        ## set_named_float
 
         ```python
         def set_named_float(self, name=None, value=None, domain='POINT'):
@@ -9778,8 +8984,6 @@ class Geometry(geosocks.Geometry):
     def set_named_integer(self, name=None, value=None, domain='POINT'):
         """
 
-        ## set_named_integer
-
         ```python
         def set_named_integer(self, name=None, value=None, domain='POINT'):
 
@@ -9802,8 +9006,6 @@ class Geometry(geosocks.Geometry):
 
     def set_named_vector(self, name=None, value=None, domain='POINT'):
         """
-
-        ## set_named_vector
 
         ```python
         def set_named_vector(self, name=None, value=None, domain='POINT'):
@@ -9828,8 +9030,6 @@ class Geometry(geosocks.Geometry):
     def set_position(self, selection=None, position=None, offset=None):
         """
 
-        ## set_position
-
         ```python
         def set_position(self, selection=None, position=None, offset=None):
 
@@ -9852,8 +9052,6 @@ class Geometry(geosocks.Geometry):
 
     def store_named_attribute(self, name=None, value=None, domain='POINT'):
         """
-
-        ## store_named_attribute
 
         ```python
         def store_named_attribute(self, name=None, value=None, domain='POINT'):
@@ -9879,8 +9077,6 @@ class Geometry(geosocks.Geometry):
     def switch(self, switch=None, true=None):
         """
 
-        ## switch
-
         ```python
         def switch(self, switch=None, true=None):
 
@@ -9903,8 +9099,6 @@ class Geometry(geosocks.Geometry):
     def to_instance(*geometry):
         """
 
-        ## to_instance
-
         ```python
         def to_instance(*geometry):
 
@@ -9926,8 +9120,6 @@ class Geometry(geosocks.Geometry):
 
     def transform(self, translation=None, rotation=None, scale=None):
         """
-
-        ## transform
 
         ```python
         def transform(self, translation=None, rotation=None, scale=None):
@@ -9952,8 +9144,6 @@ class Geometry(geosocks.Geometry):
     @property
     def volume_component(self):
         """
-
-        ## volume_component <sub>*property*</sub>
 
         ```python
         def volume_component(self):
@@ -9980,8 +9170,6 @@ class Mesh(Geometry):
     def Circle(cls, vertices=None, radius=None, fill_type='NONE'):
         """
 
-        ## Circle <sub>*classmethod*</sub>
-
         ```python
         def Circle(cls, vertices=None, radius=None, fill_type='NONE'):
 
@@ -10005,8 +9193,6 @@ class Mesh(Geometry):
     @staticmethod
     def Cone(vertices=None, side_segments=None, fill_segments=None, radius_top=None, radius_bottom=None, depth=None, fill_type='NGON'):
         """
-
-        ## Cone <sub>*staticmethod*</sub>
 
         ```python
         def Cone(vertices=None, side_segments=None, fill_segments=None, radius_top=None, radius_bottom=None, depth=None, fill_type='NGON'):
@@ -10040,8 +9226,6 @@ class Mesh(Geometry):
     def Cube(cls, size=None, vertices_x=None, vertices_y=None, vertices_z=None):
         """
 
-        ## Cube <sub>*classmethod*</sub>
-
         ```python
         def Cube(cls, size=None, vertices_x=None, vertices_y=None, vertices_z=None):
 
@@ -10066,8 +9250,6 @@ class Mesh(Geometry):
     @staticmethod
     def Cylinder(vertices=None, side_segments=None, fill_segments=None, radius=None, depth=None, fill_type='NGON'):
         """
-
-        ## Cylinder <sub>*staticmethod*</sub>
 
         ```python
         def Cylinder(vertices=None, side_segments=None, fill_segments=None, radius=None, depth=None, fill_type='NGON'):
@@ -10100,8 +9282,6 @@ class Mesh(Geometry):
     def Grid(cls, size_x=None, size_y=None, vertices_x=None, vertices_y=None):
         """
 
-        ## Grid <sub>*classmethod*</sub>
-
         ```python
         def Grid(cls, size_x=None, size_y=None, vertices_x=None, vertices_y=None):
 
@@ -10127,8 +9307,6 @@ class Mesh(Geometry):
     def IcoSphere(cls, radius=None, subdivisions=None):
         """
 
-        ## IcoSphere <sub>*classmethod*</sub>
-
         ```python
         def IcoSphere(cls, radius=None, subdivisions=None):
 
@@ -10151,8 +9329,6 @@ class Mesh(Geometry):
     @classmethod
     def Line(cls, count=None, resolution=None, start_location=None, offset=None, count_mode='TOTAL', mode='OFFSET'):
         """
-
-        ## Line <sub>*classmethod*</sub>
 
         ```python
         def Line(cls, count=None, resolution=None, start_location=None, offset=None, count_mode='TOTAL', mode='OFFSET'):
@@ -10181,8 +9357,6 @@ class Mesh(Geometry):
     def LineEndPoints(cls, count=None, start_location=None, end_location=None):
         """
 
-        ## LineEndPoints <sub>*classmethod*</sub>
-
         ```python
         def LineEndPoints(cls, count=None, start_location=None, end_location=None):
 
@@ -10206,8 +9380,6 @@ class Mesh(Geometry):
     @classmethod
     def LineEndPointsResolution(cls, resolution=None, start_location=None, end_location=None):
         """
-
-        ## LineEndPointsResolution <sub>*classmethod*</sub>
 
         ```python
         def LineEndPointsResolution(cls, resolution=None, start_location=None, end_location=None):
@@ -10233,8 +9405,6 @@ class Mesh(Geometry):
     def LineOffset(cls, count=None, start_location=None, offset=None):
         """
 
-        ## LineOffset <sub>*classmethod*</sub>
-
         ```python
         def LineOffset(cls, count=None, start_location=None, offset=None):
 
@@ -10258,8 +9428,6 @@ class Mesh(Geometry):
     @classmethod
     def LineOffsetResolution(cls, resolution=None, start_location=None, offset=None):
         """
-
-        ## LineOffsetResolution <sub>*classmethod*</sub>
 
         ```python
         def LineOffsetResolution(cls, resolution=None, start_location=None, offset=None):
@@ -10285,8 +9453,6 @@ class Mesh(Geometry):
     def UVSphere(cls, segments=None, rings=None, radius=None):
         """
 
-        ## UVSphere <sub>*classmethod*</sub>
-
         ```python
         def UVSphere(cls, segments=None, rings=None, radius=None):
 
@@ -10310,8 +9476,6 @@ class Mesh(Geometry):
     def boolean_difference(self, *mesh_2, self_intersection=None, hole_tolerant=None):
         """
 
-        ## boolean_difference
-
         ```python
         def boolean_difference(self, *mesh_2, self_intersection=None, hole_tolerant=None):
 
@@ -10334,8 +9498,6 @@ class Mesh(Geometry):
 
     def boolean_intersect(*mesh_2, self_intersection=None, hole_tolerant=None):
         """
-
-        ## boolean_intersect
 
         ```python
         def boolean_intersect(*mesh_2, self_intersection=None, hole_tolerant=None):
@@ -10361,8 +9523,6 @@ class Mesh(Geometry):
 
     def boolean_union(*mesh_2, self_intersection=None, hole_tolerant=None):
         """
-
-        ## boolean_union
 
         ```python
         def boolean_union(*mesh_2, self_intersection=None, hole_tolerant=None):
@@ -10390,8 +9550,6 @@ class Mesh(Geometry):
     def corner_count(self):
         """
 
-        ## corner_count <sub>*property*</sub>
-
         ```python
         def corner_count(self):
 
@@ -10411,8 +9569,6 @@ class Mesh(Geometry):
 
     def corners_of_face(self, face_index=None, weights=None, sort_index=None):
         """
-
-        ## corners_of_face
 
         ```python
         def corners_of_face(self, face_index=None, weights=None, sort_index=None):
@@ -10440,8 +9596,6 @@ class Mesh(Geometry):
     def corners_of_vertex(self, vertex_index=None, weights=None, sort_index=None):
         """
 
-        ## corners_of_vertex
-
         ```python
         def corners_of_vertex(self, vertex_index=None, weights=None, sort_index=None):
 
@@ -10468,8 +9622,6 @@ class Mesh(Geometry):
     def delete_all(self, selection=None, domain='POINT'):
         """
 
-        ## delete_all
-
         ```python
         def delete_all(self, selection=None, domain='POINT'):
 
@@ -10491,8 +9643,6 @@ class Mesh(Geometry):
 
     def delete_edges(self, selection=None, domain='POINT'):
         """
-
-        ## delete_edges
 
         ```python
         def delete_edges(self, selection=None, domain='POINT'):
@@ -10516,8 +9666,6 @@ class Mesh(Geometry):
     def delete_faces(self, selection=None, domain='POINT'):
         """
 
-        ## delete_faces
-
         ```python
         def delete_faces(self, selection=None, domain='POINT'):
 
@@ -10539,8 +9687,6 @@ class Mesh(Geometry):
 
     def distribute_points_on_faces(self, selection=None, distance_min=None, density_max=None, density=None, density_factor=None, seed=None, distribute_method='RANDOM'):
         """
-
-        ## distribute_points_on_faces
 
         ```python
         def distribute_points_on_faces(self, selection=None, distance_min=None, density_max=None, density=None, density_factor=None, seed=None, distribute_method='RANDOM'):
@@ -10574,8 +9720,6 @@ class Mesh(Geometry):
     def domain_size(self):
         """
 
-        ## domain_size <sub>*property*</sub>
-
         ```python
         def domain_size(self):
 
@@ -10595,8 +9739,6 @@ class Mesh(Geometry):
 
     def dual_mesh(self, mesh=None, keep_boundaries=None):
         """
-
-        ## dual_mesh
 
         ```python
         def dual_mesh(self, mesh=None, keep_boundaries=None):
@@ -10622,8 +9764,6 @@ class Mesh(Geometry):
     def edge_count(self):
         """
 
-        ## edge_count <sub>*property*</sub>
-
         ```python
         def edge_count(self):
 
@@ -10643,8 +9783,6 @@ class Mesh(Geometry):
 
     def edge_paths_to_curves(self, start_vertices=None, next_vertex_index=None):
         """
-
-        ## edge_paths_to_curves
 
         ```python
         def edge_paths_to_curves(self, start_vertices=None, next_vertex_index=None):
@@ -10669,8 +9807,6 @@ class Mesh(Geometry):
     def edge_paths_to_selection(self, start_vertices=None, next_vertex_index=None):
         """
 
-        ## edge_paths_to_selection
-
         ```python
         def edge_paths_to_selection(self, start_vertices=None, next_vertex_index=None):
 
@@ -10692,8 +9828,6 @@ class Mesh(Geometry):
 
     def edges_of_corner(self, corner_index=None):
         """
-
-        ## edges_of_corner
 
         ```python
         def edges_of_corner(self, corner_index=None):
@@ -10718,8 +9852,6 @@ class Mesh(Geometry):
 
     def edges_of_vertex(self, vertex_index=None, weights=None, sort_index=None):
         """
-
-        ## edges_of_vertex
 
         ```python
         def edges_of_vertex(self, vertex_index=None, weights=None, sort_index=None):
@@ -10746,8 +9878,6 @@ class Mesh(Geometry):
 
     def extrude(self, selection=None, offset=None, offset_scale=None, individual=None, mode='FACES'):
         """
-
-        ## extrude
 
         ```python
         def extrude(self, selection=None, offset=None, offset_scale=None, individual=None, mode='FACES'):
@@ -10778,8 +9908,6 @@ class Mesh(Geometry):
     def face_count(self):
         """
 
-        ## face_count <sub>*property*</sub>
-
         ```python
         def face_count(self):
 
@@ -10799,8 +9927,6 @@ class Mesh(Geometry):
 
     def face_is_planar(self, threshold=None):
         """
-
-        ## face_is_planar
 
         ```python
         def face_is_planar(self, threshold=None):
@@ -10822,8 +9948,6 @@ class Mesh(Geometry):
 
     def face_of_corner(self, corner_index=None):
         """
-
-        ## face_of_corner
 
         ```python
         def face_of_corner(self, corner_index=None):
@@ -10849,8 +9973,6 @@ class Mesh(Geometry):
     def face_set_boundaries(self, face_set=None):
         """
 
-        ## face_set_boundaries
-
         ```python
         def face_set_boundaries(self, face_set=None):
 
@@ -10872,8 +9994,6 @@ class Mesh(Geometry):
     def flip_faces(self, selection=None):
         """
 
-        ## flip_faces
-
         ```python
         def flip_faces(self, selection=None):
 
@@ -10894,8 +10014,6 @@ class Mesh(Geometry):
 
     def instance_on_points(self, selection=None, instance=None, pick_instance=None, instance_index=None, rotation=None, scale=None):
         """
-
-        ## instance_on_points
 
         ```python
         def instance_on_points(self, selection=None, instance=None, pick_instance=None, instance_index=None, rotation=None, scale=None):
@@ -10923,8 +10041,6 @@ class Mesh(Geometry):
     def is_shade_smooth(self):
         """
 
-        ## is_shade_smooth
-
         ```python
         def is_shade_smooth(self):
 
@@ -10943,8 +10059,6 @@ class Mesh(Geometry):
     @property
     def island(self):
         """
-
-        ## island <sub>*property*</sub>
 
         ```python
         def island(self):
@@ -10967,8 +10081,6 @@ class Mesh(Geometry):
     def island_count(self):
         """
 
-        ## island_count <sub>*property*</sub>
-
         ```python
         def island_count(self):
 
@@ -10990,8 +10102,6 @@ class Mesh(Geometry):
     def island_index(self):
         """
 
-        ## island_index <sub>*property*</sub>
-
         ```python
         def island_index(self):
 
@@ -11011,8 +10121,6 @@ class Mesh(Geometry):
 
     def offset_corner_in_face(self, corner_index=None, offset=None):
         """
-
-        ## offset_corner_in_face
 
         ```python
         def offset_corner_in_face(self, corner_index=None, offset=None):
@@ -11035,8 +10143,6 @@ class Mesh(Geometry):
 
     def pack_uv_islands(self, uv=None, selection=None, margin=None, rotate=None):
         """
-
-        ## pack_uv_islands
 
         ```python
         def pack_uv_islands(self, uv=None, selection=None, margin=None, rotate=None):
@@ -11063,8 +10169,6 @@ class Mesh(Geometry):
     def point_count(self):
         """
 
-        ## point_count <sub>*property*</sub>
-
         ```python
         def point_count(self):
 
@@ -11084,8 +10188,6 @@ class Mesh(Geometry):
 
     def sample_nearest_surface(self, value=None, sample_position=None):
         """
-
-        ## sample_nearest_surface
 
         ```python
         def sample_nearest_surface(self, value=None, sample_position=None):
@@ -11109,8 +10211,6 @@ class Mesh(Geometry):
 
     def sample_uv_surface(self, value=None, source_uv_map=None, sample_uv=None):
         """
-
-        ## sample_uv_surface
 
         ```python
         def sample_uv_surface(self, value=None, source_uv_map=None, sample_uv=None):
@@ -11139,8 +10239,6 @@ class Mesh(Geometry):
     def scale_elements(self, selection=None, scale=None, center=None, axis=None, domain='FACE', scale_mode='UNIFORM'):
         """
 
-        ## scale_elements
-
         ```python
         def scale_elements(self, selection=None, scale=None, center=None, axis=None, domain='FACE', scale_mode='UNIFORM'):
 
@@ -11167,8 +10265,6 @@ class Mesh(Geometry):
     def scale_single_axis(self, selection=None, scale=None, center=None, axis=None, domain='FACE'):
         """
 
-        ## scale_single_axis
-
         ```python
         def scale_single_axis(self, selection=None, scale=None, center=None, axis=None, domain='FACE'):
 
@@ -11194,8 +10290,6 @@ class Mesh(Geometry):
     def scale_uniform(self, selection=None, scale=None, center=None, domain='FACE'):
         """
 
-        ## scale_uniform
-
         ```python
         def scale_uniform(self, selection=None, scale=None, center=None, domain='FACE'):
 
@@ -11220,8 +10314,6 @@ class Mesh(Geometry):
     def set_shade_smooth(self, selection=None, shade_smooth=None):
         """
 
-        ## set_shade_smooth
-
         ```python
         def set_shade_smooth(self, selection=None, shade_smooth=None):
 
@@ -11243,8 +10335,6 @@ class Mesh(Geometry):
 
     def shortest_edge_paths(self, end_vertex=None, edge_cost=None):
         """
-
-        ## shortest_edge_paths
 
         ```python
         def shortest_edge_paths(self, end_vertex=None, edge_cost=None):
@@ -11271,8 +10361,6 @@ class Mesh(Geometry):
     def split_edges(self, selection=None):
         """
 
-        ## split_edges
-
         ```python
         def split_edges(self, selection=None):
 
@@ -11294,8 +10382,6 @@ class Mesh(Geometry):
     def subdivide(self, level=None):
         """
 
-        ## subdivide
-
         ```python
         def subdivide(self, level=None):
 
@@ -11316,8 +10402,6 @@ class Mesh(Geometry):
 
     def subdivision_surface(self, level=None, edge_crease=None, vertex_crease=None, boundary_smooth='ALL', uv_smooth='PRESERVE_BOUNDARIES'):
         """
-
-        ## subdivision_surface
 
         ```python
         def subdivision_surface(self, level=None, edge_crease=None, vertex_crease=None, boundary_smooth='ALL', uv_smooth='PRESERVE_BOUNDARIES'):
@@ -11344,8 +10428,6 @@ class Mesh(Geometry):
     def to_curve(self, selection=None):
         """
 
-        ## to_curve
-
         ```python
         def to_curve(self, selection=None):
 
@@ -11367,8 +10449,6 @@ class Mesh(Geometry):
 
     def to_points(self, selection=None, position=None, radius=None, mode='VERTICES'):
         """
-
-        ## to_points
 
         ```python
         def to_points(self, selection=None, position=None, radius=None, mode='VERTICES'):
@@ -11394,8 +10474,6 @@ class Mesh(Geometry):
 
     def to_volume(self, density=None, voxel_size=None, voxel_amount=None, exterior_band_width=None, interior_band_width=None, fill_volume=None, resolution_mode='VOXEL_AMOUNT'):
         """
-
-        ## to_volume
 
         ```python
         def to_volume(self, density=None, voxel_size=None, voxel_amount=None, exterior_band_width=None, interior_band_width=None, fill_volume=None, resolution_mode='VOXEL_AMOUNT'):
@@ -11425,8 +10503,6 @@ class Mesh(Geometry):
     def triangulate(self, selection=None, minimum_vertices=None, ngon_method='BEAUTY', quad_method='SHORTEST_DIAGONAL'):
         """
 
-        ## triangulate
-
         ```python
         def triangulate(self, selection=None, minimum_vertices=None, ngon_method='BEAUTY', quad_method='SHORTEST_DIAGONAL'):
 
@@ -11450,8 +10526,6 @@ class Mesh(Geometry):
 
     def uv_unwrap(self, selection=None, seam=None, margin=None, fill_holes=None, method='ANGLE_BASED'):
         """
-
-        ## uv_unwrap
 
         ```python
         def uv_unwrap(self, selection=None, seam=None, margin=None, fill_holes=None, method='ANGLE_BASED'):
@@ -11478,8 +10552,6 @@ class Mesh(Geometry):
     def vertex_of_corner(self, corner_index=None):
         """
 
-        ## vertex_of_corner
-
         ```python
         def vertex_of_corner(self, corner_index=None):
 
@@ -11504,8 +10576,6 @@ class Curve(Geometry):
     @classmethod
     def Arc(cls, resolution=None, radius=None, start_angle=None, sweep_angle=None, connect_center=None, invert_arc=None):
         """
-
-        ## Arc <sub>*classmethod*</sub>
 
         ```python
         def Arc(cls, resolution=None, radius=None, start_angle=None, sweep_angle=None, connect_center=None, invert_arc=None):
@@ -11533,8 +10603,6 @@ class Curve(Geometry):
     @classmethod
     def ArcFromPoints(cls, resolution=None, start=None, middle=None, end=None, offset_angle=None, connect_center=None, invert_arc=None):
         """
-
-        ## ArcFromPoints <sub>*classmethod*</sub>
 
         ```python
         def ArcFromPoints(cls, resolution=None, start=None, middle=None, end=None, offset_angle=None, connect_center=None, invert_arc=None):
@@ -11564,8 +10632,6 @@ class Curve(Geometry):
     def Circle(cls, resolution=None, radius=None):
         """
 
-        ## Circle <sub>*classmethod*</sub>
-
         ```python
         def Circle(cls, resolution=None, radius=None):
 
@@ -11588,8 +10654,6 @@ class Curve(Geometry):
     @classmethod
     def CircleFromPoints(cls, resolution=None, point_1=None, point_2=None, point_3=None):
         """
-
-        ## CircleFromPoints <sub>*classmethod*</sub>
 
         ```python
         def CircleFromPoints(cls, resolution=None, point_1=None, point_2=None, point_3=None):
@@ -11616,8 +10680,6 @@ class Curve(Geometry):
     def Line(cls, start=None, end=None):
         """
 
-        ## Line <sub>*classmethod*</sub>
-
         ```python
         def Line(cls, start=None, end=None):
 
@@ -11640,8 +10702,6 @@ class Curve(Geometry):
     @classmethod
     def LineDirection(cls, start=None, direction=None, length=None):
         """
-
-        ## LineDirection <sub>*classmethod*</sub>
 
         ```python
         def LineDirection(cls, start=None, direction=None, length=None):
@@ -11667,8 +10727,6 @@ class Curve(Geometry):
     def QuadraticBezier(cls, resolution=None, start=None, middle=None, end=None):
         """
 
-        ## QuadraticBezier <sub>*classmethod*</sub>
-
         ```python
         def QuadraticBezier(cls, resolution=None, start=None, middle=None, end=None):
 
@@ -11693,8 +10751,6 @@ class Curve(Geometry):
     @classmethod
     def Quadrilateral(cls, width=None, height=None, bottom_width=None, top_width=None, offset=None, bottom_height=None, top_height=None, point_1=None, point_2=None, point_3=None, point_4=None, mode='RECTANGLE'):
         """
-
-        ## Quadrilateral <sub>*classmethod*</sub>
 
         ```python
         def Quadrilateral(cls, width=None, height=None, bottom_width=None, top_width=None, offset=None, bottom_height=None, top_height=None, point_1=None, point_2=None, point_3=None, point_4=None, mode='RECTANGLE'):
@@ -11729,8 +10785,6 @@ class Curve(Geometry):
     def Spiral(cls, resolution=None, rotations=None, start_radius=None, end_radius=None, height=None, reverse=None):
         """
 
-        ## Spiral <sub>*classmethod*</sub>
-
         ```python
         def Spiral(cls, resolution=None, rotations=None, start_radius=None, end_radius=None, height=None, reverse=None):
 
@@ -11758,8 +10812,6 @@ class Curve(Geometry):
     def Star(cls, points=None, inner_radius=None, outer_radius=None, twist=None):
         """
 
-        ## Star <sub>*classmethod*</sub>
-
         ```python
         def Star(cls, points=None, inner_radius=None, outer_radius=None, twist=None):
 
@@ -11784,8 +10836,6 @@ class Curve(Geometry):
     @classmethod
     def bezier_segment(cls, resolution=None, start=None, start_handle=None, end_handle=None, end=None, mode='POSITION'):
         """
-
-        ## bezier_segment <sub>*classmethod*</sub>
 
         ```python
         def bezier_segment(cls, resolution=None, start=None, start_handle=None, end_handle=None, end=None, mode='POSITION'):
@@ -11813,8 +10863,6 @@ class Curve(Geometry):
     def curve_of_point(self, point_index=None):
         """
 
-        ## curve_of_point
-
         ```python
         def curve_of_point(self, point_index=None):
 
@@ -11839,8 +10887,6 @@ class Curve(Geometry):
     def deform_on_surface(self):
         """
 
-        ## deform_on_surface
-
         ```python
         def deform_on_surface(self):
 
@@ -11859,8 +10905,6 @@ class Curve(Geometry):
     @property
     def domain_size(self):
         """
-
-        ## domain_size <sub>*property*</sub>
 
         ```python
         def domain_size(self):
@@ -11881,8 +10925,6 @@ class Curve(Geometry):
 
     def fill(self, curve=None, mode='TRIANGLES'):
         """
-
-        ## fill
 
         ```python
         def fill(self, curve=None, mode='TRIANGLES'):
@@ -11907,8 +10949,6 @@ class Curve(Geometry):
     def fill_ngons(self, curve=None):
         """
 
-        ## fill_ngons
-
         ```python
         def fill_ngons(self, curve=None):
 
@@ -11931,8 +10971,6 @@ class Curve(Geometry):
     def fill_triangles(self, curve=None):
         """
 
-        ## fill_triangles
-
         ```python
         def fill_triangles(self, curve=None):
 
@@ -11954,8 +10992,6 @@ class Curve(Geometry):
 
     def fillet(self, count=None, radius=None, limit_radius=None, mode='BEZIER'):
         """
-
-        ## fillet
 
         ```python
         def fillet(self, count=None, radius=None, limit_radius=None, mode='BEZIER'):
@@ -11981,8 +11017,6 @@ class Curve(Geometry):
     def fillet_bezier(self, radius=None, limit_radius=None):
         """
 
-        ## fillet_bezier
-
         ```python
         def fillet_bezier(self, radius=None, limit_radius=None):
 
@@ -12004,8 +11038,6 @@ class Curve(Geometry):
 
     def fillet_poly(self, count=None, radius=None, limit_radius=None):
         """
-
-        ## fillet_poly
 
         ```python
         def fillet_poly(self, count=None, radius=None, limit_radius=None):
@@ -12029,8 +11061,6 @@ class Curve(Geometry):
 
     def instance_on_points(self, selection=None, instance=None, pick_instance=None, instance_index=None, rotation=None, scale=None):
         """
-
-        ## instance_on_points
 
         ```python
         def instance_on_points(self, selection=None, instance=None, pick_instance=None, instance_index=None, rotation=None, scale=None):
@@ -12059,8 +11089,6 @@ class Curve(Geometry):
     def length(self):
         """
 
-        ## length <sub>*property*</sub>
-
         ```python
         def length(self):
 
@@ -12078,8 +11106,6 @@ class Curve(Geometry):
 
     def offset_point(self, point_index=None, offset=None):
         """
-
-        ## offset_point
 
         ```python
         def offset_point(self, point_index=None, offset=None):
@@ -12107,8 +11133,6 @@ class Curve(Geometry):
     def point_count(self):
         """
 
-        ## point_count <sub>*property*</sub>
-
         ```python
         def point_count(self):
 
@@ -12128,8 +11152,6 @@ class Curve(Geometry):
 
     def points_of_curve(self, curve_index=None, weights=None, sort_index=None):
         """
-
-        ## points_of_curve
 
         ```python
         def points_of_curve(self, curve_index=None, weights=None, sort_index=None):
@@ -12157,8 +11179,6 @@ class Curve(Geometry):
     def resample(self, selection=None, count=None, length=None, mode='COUNT'):
         """
 
-        ## resample
-
         ```python
         def resample(self, selection=None, count=None, length=None, mode='COUNT'):
 
@@ -12183,8 +11203,6 @@ class Curve(Geometry):
     def resample_count(self, selection=None, count=None):
         """
 
-        ## resample_count
-
         ```python
         def resample_count(self, selection=None, count=None):
 
@@ -12207,8 +11225,6 @@ class Curve(Geometry):
     def resample_evaluated(self, selection=None):
         """
 
-        ## resample_evaluated
-
         ```python
         def resample_evaluated(self, selection=None):
 
@@ -12229,8 +11245,6 @@ class Curve(Geometry):
 
     def resample_length(self, selection=None, length=None):
         """
-
-        ## resample_length
 
         ```python
         def resample_length(self, selection=None, length=None):
@@ -12254,8 +11268,6 @@ class Curve(Geometry):
     def reverse(self, selection=None):
         """
 
-        ## reverse
-
         ```python
         def reverse(self, selection=None):
 
@@ -12276,8 +11288,6 @@ class Curve(Geometry):
 
     def sample(self, value=None, factor=None, length=None, curve_index=None, data_type='FLOAT', mode='FACTOR', use_all_curves=False):
         """
-
-        ## sample
 
         ```python
         def sample(self, value=None, factor=None, length=None, curve_index=None, data_type='FLOAT', mode='FACTOR', use_all_curves=False):
@@ -12307,8 +11317,6 @@ class Curve(Geometry):
     def spline_count(self):
         """
 
-        ## spline_count <sub>*property*</sub>
-
         ```python
         def spline_count(self):
 
@@ -12328,8 +11336,6 @@ class Curve(Geometry):
 
     def subdivide(self, cuts=None):
         """
-
-        ## subdivide
 
         ```python
         def subdivide(self, cuts=None):
@@ -12351,8 +11357,6 @@ class Curve(Geometry):
 
     def to_mesh(self, profile_curve=None, fill_caps=None):
         """
-
-        ## to_mesh
 
         ```python
         def to_mesh(self, profile_curve=None, fill_caps=None):
@@ -12376,8 +11380,6 @@ class Curve(Geometry):
 
     def to_points(self, count=None, length=None, mode='COUNT'):
         """
-
-        ## to_points
 
         ```python
         def to_points(self, count=None, length=None, mode='COUNT'):
@@ -12406,8 +11408,6 @@ class Curve(Geometry):
     def to_points_count(self, count=None):
         """
 
-        ## to_points_count
-
         ```python
         def to_points_count(self, count=None):
 
@@ -12433,8 +11433,6 @@ class Curve(Geometry):
     def to_points_evaluated(self):
         """
 
-        ## to_points_evaluated
-
         ```python
         def to_points_evaluated(self):
 
@@ -12456,8 +11454,6 @@ class Curve(Geometry):
 
     def to_points_length(self, length=None):
         """
-
-        ## to_points_length
 
         ```python
         def to_points_length(self, length=None):
@@ -12484,8 +11480,6 @@ class Curve(Geometry):
     def trim(self, start=None, end=None, mode='FACTOR'):
         """
 
-        ## trim
-
         ```python
         def trim(self, start=None, end=None, mode='FACTOR'):
 
@@ -12506,8 +11500,6 @@ class Curve(Geometry):
 
     def trim_factor(self, start=None, end=None):
         """
-
-        ## trim_factor
 
         ```python
         def trim_factor(self, start=None, end=None):
@@ -12530,8 +11522,6 @@ class Curve(Geometry):
 
     def trim_length(self, start=None, end=None):
         """
-
-        ## trim_length
 
         ```python
         def trim_length(self, start=None, end=None):
@@ -12559,8 +11549,6 @@ class Points(Geometry):
     def Points(cls, count=None, position=None, radius=None):
         """
 
-        ## Points <sub>*classmethod*</sub>
-
         ```python
         def Points(cls, count=None, position=None, radius=None):
 
@@ -12585,8 +11573,6 @@ class Points(Geometry):
     def domain_size(self):
         """
 
-        ## domain_size <sub>*property*</sub>
-
         ```python
         def domain_size(self):
 
@@ -12606,8 +11592,6 @@ class Points(Geometry):
 
     def instance_on_points(self, selection=None, instance=None, pick_instance=None, instance_index=None, rotation=None, scale=None):
         """
-
-        ## instance_on_points
 
         ```python
         def instance_on_points(self, selection=None, instance=None, pick_instance=None, instance_index=None, rotation=None, scale=None):
@@ -12635,8 +11619,6 @@ class Points(Geometry):
     def set_point_radius(self, selection=None, radius=None):
         """
 
-        ## set_point_radius
-
         ```python
         def set_point_radius(self, selection=None, radius=None):
 
@@ -12658,8 +11640,6 @@ class Points(Geometry):
 
     def to_vertices(self, points=None, selection=None):
         """
-
-        ## to_vertices
 
         ```python
         def to_vertices(self, points=None, selection=None):
@@ -12683,8 +11663,6 @@ class Points(Geometry):
 
     def to_volume(self, density=None, voxel_size=None, voxel_amount=None, radius=None, resolution_mode='VOXEL_AMOUNT'):
         """
-
-        ## to_volume
 
         ```python
         def to_volume(self, density=None, voxel_size=None, voxel_amount=None, radius=None, resolution_mode='VOXEL_AMOUNT'):
@@ -12712,8 +11690,6 @@ class Points(Geometry):
     def to_volume_amount(self, density=None, voxel_amount=None, radius=None):
         """
 
-        ## to_volume_amount
-
         ```python
         def to_volume_amount(self, density=None, voxel_amount=None, radius=None):
 
@@ -12737,8 +11713,6 @@ class Points(Geometry):
 
     def to_volume_size(self, density=None, voxel_size=None, radius=None):
         """
-
-        ## to_volume_size
 
         ```python
         def to_volume_size(self, density=None, voxel_size=None, radius=None):
@@ -12768,8 +11742,6 @@ class Instances(Geometry):
     def InstanceOnPoints(cls, points=None, selection=None, instance=None, pick_instance=None, instance_index=None, rotation=None, scale=None):
         """
 
-        ## InstanceOnPoints <sub>*classmethod*</sub>
-
         ```python
         def InstanceOnPoints(cls, points=None, selection=None, instance=None, pick_instance=None, instance_index=None, rotation=None, scale=None):
 
@@ -12798,8 +11770,6 @@ class Instances(Geometry):
     def domain_size(self):
         """
 
-        ## domain_size <sub>*property*</sub>
-
         ```python
         def domain_size(self):
 
@@ -12819,8 +11789,6 @@ class Instances(Geometry):
 
     def on_points(self, points=None, selection=None, pick_instance=None, instance_index=None, rotation=None, scale=None):
         """
-
-        ## on_points
 
         ```python
         def on_points(self, points=None, selection=None, pick_instance=None, instance_index=None, rotation=None, scale=None):
@@ -12848,8 +11816,6 @@ class Instances(Geometry):
     def realize(self, geometry=None, legacy_behavior=False):
         """
 
-        ## realize
-
         ```python
         def realize(self, geometry=None, legacy_behavior=False):
 
@@ -12871,8 +11837,6 @@ class Instances(Geometry):
 
     def rotate(self, selection=None, rotation=None, pivot_point=None, local_space=None):
         """
-
-        ## rotate
 
         ```python
         def rotate(self, selection=None, rotation=None, pivot_point=None, local_space=None):
@@ -12899,8 +11863,6 @@ class Instances(Geometry):
     def rotation(self):
         """
 
-        ## rotation <sub>*property*</sub>
-
         ```python
         def rotation(self):
 
@@ -12920,8 +11882,6 @@ class Instances(Geometry):
     def scale(self):
         """
 
-        ## scale <sub>*property*</sub>
-
         ```python
         def scale(self):
 
@@ -12939,8 +11899,6 @@ class Instances(Geometry):
 
     def set_scale(self, selection=None, scale=None, center=None, local_space=None):
         """
-
-        ## set_scale
 
         ```python
         def set_scale(self, selection=None, scale=None, center=None, local_space=None):
@@ -12966,8 +11924,6 @@ class Instances(Geometry):
     def to_points(self, selection=None, position=None, radius=None):
         """
 
-        ## to_points
-
         ```python
         def to_points(self, selection=None, position=None, radius=None):
 
@@ -12991,8 +11947,6 @@ class Instances(Geometry):
 
     def translate(self, selection=None, translation=None, local_space=None):
         """
-
-        ## translate
 
         ```python
         def translate(self, selection=None, translation=None, local_space=None):
@@ -13021,8 +11975,6 @@ class Volume(Geometry):
     def Cube(cls, density=None, background=None, min=None, max=None, resolution_x=None, resolution_y=None, resolution_z=None):
         """
 
-        ## Cube <sub>*classmethod*</sub>
-
         ```python
         def Cube(cls, density=None, background=None, min=None, max=None, resolution_x=None, resolution_y=None, resolution_z=None):
 
@@ -13050,8 +12002,6 @@ class Volume(Geometry):
     def distribute_points(self, density=None, seed=None, spacing=None, threshold=None, mode='DENSITY_RANDOM'):
         """
 
-        ## distribute_points
-
         ```python
         def distribute_points(self, density=None, seed=None, spacing=None, threshold=None, mode='DENSITY_RANDOM'):
 
@@ -13078,8 +12028,6 @@ class Volume(Geometry):
     def distribute_points_grid(self, spacing=None, threshold=None):
         """
 
-        ## distribute_points_grid
-
         ```python
         def distribute_points_grid(self, spacing=None, threshold=None):
 
@@ -13103,8 +12051,6 @@ class Volume(Geometry):
     def distribute_points_random(self, density=None, seed=None):
         """
 
-        ## distribute_points_random
-
         ```python
         def distribute_points_random(self, density=None, seed=None):
 
@@ -13127,8 +12073,6 @@ class Volume(Geometry):
 
     def to_mesh(self, voxel_size=None, voxel_amount=None, threshold=None, adaptivity=None, resolution_mode='GRID'):
         """
-
-        ## to_mesh
 
         ```python
         def to_mesh(self, voxel_size=None, voxel_amount=None, threshold=None, adaptivity=None, resolution_mode='GRID'):

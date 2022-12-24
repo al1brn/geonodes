@@ -39,8 +39,8 @@ node = nodes.CurveCircle(resolution=None, point_1=None, point_2=None, point_3=No
 | Class or method name | Definition |
 |----------------------|------------|
 | **[Curve](Curve.md)** |
-| [Circle](Curve.md#Circle-classmethod) | `@classmethod`<br> `def Circle(cls, resolution=None, radius=None):` |
-| [CircleFromPoints](Curve.md#CircleFromPoints-classmethod) | `@classmethod`<br> `def CircleFromPoints(cls, resolution=None, point_1=None, point_2=None, point_3=None):` |
+| [Circle](Curve.md#Circle) | `@classmethod`<br> `def Circle(cls, resolution=None, radius=None):` |
+| [CircleFromPoints](Curve.md#CircleFromPoints) | `@classmethod`<br> `def CircleFromPoints(cls, resolution=None, point_1=None, point_2=None, point_3=None):` |
 
 <sub>Go to [top](#node-Curve-Circle) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

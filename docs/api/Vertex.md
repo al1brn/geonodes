@@ -12,10 +12,10 @@ The four [Domains](Domain.md) are:
 - `corners` [Corner](Corner.md)
 ## Properties
 
-- [count](#count-property)
-- [neighbors](#neighbors-property)
-- [neighbors_face_count](#neighbors_face_count-property)
-- [neighbors_vertex_count](#neighbors_vertex_count-property)
+- [count](#count)
+- [neighbors](#neighbors)
+- [neighbors_face_count](#neighbors_face_count)
+- [neighbors_vertex_count](#neighbors_vertex_count)
 
 
 

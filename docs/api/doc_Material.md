@@ -58,8 +58,6 @@ def Material(cls)
 
 
 
-## Material <sub>*classmethod*</sub>
-
 ```python
 def Material(cls):
 
@@ -85,8 +83,6 @@ def switch(self, switch=None, true=None)
 ```
 
 
-
-## switch
 
 ```python
 def switch(self, switch=None, true=None):

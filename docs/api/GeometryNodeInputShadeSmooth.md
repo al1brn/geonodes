@@ -24,7 +24,7 @@ node = nodes.IsShadeSmooth()
 | Class or method name | Definition |
 |----------------------|------------|
 | **[Face](Face.md)** |
-| [shade_smooth](Face.md#shade_smooth-property) | `@property`<br> `def shade_smooth(self):` |
+| [shade_smooth](Face.md#shade_smooth) | `@property`<br> `def shade_smooth(self):` |
 | **[Mesh](Mesh.md)** |
 | [is_shade_smooth](Mesh.md#is_shade_smooth) | `def is_shade_smooth(self):` |
 

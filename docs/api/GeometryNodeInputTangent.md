@@ -24,7 +24,7 @@ node = nodes.CurveTangent()
 | Class or method name | Definition |
 |----------------------|------------|
 | **[ControlPoint](ControlPoint.md)** |
-| [tangent](ControlPoint.md#tangent-property) | `@property`<br> `def tangent(self):` |
+| [tangent](ControlPoint.md#tangent) | `@property`<br> `def tangent(self):` |
 
 <sub>Go to [top](#node-Curve-Tangent) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

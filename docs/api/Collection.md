@@ -5,7 +5,7 @@
 
 ## Class methods
 
-- [Input](#Input-classmethod)
+- [Input](#Input)
 
 
 ## Methods

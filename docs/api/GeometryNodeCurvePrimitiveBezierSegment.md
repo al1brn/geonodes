@@ -38,7 +38,7 @@ node = nodes.BezierSegment(resolution=None, start=None, start_handle=None, end_h
 | Class or method name | Definition |
 |----------------------|------------|
 | **[Curve](Curve.md)** |
-| [bezier_segment](Curve.md#bezier_segment-classmethod) | `@classmethod`<br> `def bezier_segment(cls, resolution=None, start=None, start_handle=None, end_handle=None, end=None, mode='POSITION'):` |
+| [bezier_segment](Curve.md#bezier_segment) | `@classmethod`<br> `def bezier_segment(cls, resolution=None, start=None, start_handle=None, end_handle=None, end=None, mode='POSITION'):` |
 
 <sub>Go to [top](#node-Bezier-Segment) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

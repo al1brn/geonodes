@@ -24,9 +24,9 @@ node = nodes.Position()
 | Class or method name | Definition |
 |----------------------|------------|
 | **[Domain](Domain.md)** |
-| [position](Domain.md#position-property) | `@property`<br> `def position(self):` |
+| [position](Domain.md#position) | `@property`<br> `def position(self):` |
 | **[Geometry](Geometry.md)** |
-| [position](Geometry.md#position-property) | `@property`<br> `def position(self):` |
+| [position](Geometry.md#position) | `@property`<br> `def position(self):` |
 
 <sub>Go to [top](#node-Position) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

@@ -24,7 +24,7 @@ node = nodes.SelfObject()
 | Class or method name | Definition |
 |----------------------|------------|
 | **[Object](Object.md)** |
-| [Self](Object.md#Self-classmethod) | `@classmethod`<br> `def Self(cls):` |
+| [Self](Object.md#Self) | `@classmethod`<br> `def Self(cls):` |
 
 <sub>Go to [top](#node-Self-Object) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

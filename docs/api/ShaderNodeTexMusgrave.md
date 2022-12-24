@@ -42,7 +42,7 @@ node = nodes.MusgraveTexture(vector=None, w=None, scale=None, detail=None, dimen
 | Class or method name | Definition |
 |----------------------|------------|
 | **[Texture](Texture.md)** |
-| [musgrave](Texture.md#musgrave-staticmethod) | `@staticmethod`<br> `def musgrave(vector=None, w=None, scale=None, detail=None, dimension=None, lacunarity=None, offset=None, gain=None, musgrave_dimensions='3D', musgrave_type='FBM'):` |
+| [musgrave](Texture.md#musgrave) | `@staticmethod`<br> `def musgrave(vector=None, w=None, scale=None, detail=None, dimension=None, lacunarity=None, offset=None, gain=None, musgrave_dimensions='3D', musgrave_type='FBM'):` |
 
 <sub>Go to [top](#node-Musgrave-Texture) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

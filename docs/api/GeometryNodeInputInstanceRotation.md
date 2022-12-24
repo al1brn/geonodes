@@ -24,9 +24,9 @@ node = nodes.InstanceRotation()
 | Class or method name | Definition |
 |----------------------|------------|
 | **[Instance](Instance.md)** |
-| [rotation](Instance.md#rotation-property) | `@property`<br> `def rotation(self):` |
+| [rotation](Instance.md#rotation) | `@property`<br> `def rotation(self):` |
 | **[Instances](Instances.md)** |
-| [rotation](Instances.md#rotation-property) | `@property`<br> `def rotation(self):` |
+| [rotation](Instances.md#rotation) | `@property`<br> `def rotation(self):` |
 
 <sub>Go to [top](#node-Instance-Rotation) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

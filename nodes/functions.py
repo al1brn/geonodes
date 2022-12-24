@@ -3,8 +3,6 @@ from geonodes.nodes import nodes
 def abs(value=None, clamp=False):
     """
 
-    ## abs
-
     ```python
     def abs(value=None, clamp=False):
 
@@ -27,8 +25,6 @@ def abs(value=None, clamp=False):
 def absolute(value=None, clamp=False):
     """
 
-    ## absolute
-
     ```python
     def absolute(value=None, clamp=False):
 
@@ -50,8 +46,6 @@ def absolute(value=None, clamp=False):
 
 def align_euler_to_vector(rotation=None, factor=None, vector=None, axis='X', pivot_axis='AUTO'):
     """
-
-    ## align_euler_to_vector
 
     ```python
     def align_euler_to_vector(rotation=None, factor=None, vector=None, axis='X', pivot_axis='AUTO'):
@@ -78,8 +72,6 @@ def align_euler_to_vector(rotation=None, factor=None, vector=None, axis='X', piv
 def arccos(value=None, clamp=False):
     """
 
-    ## arccos
-
     ```python
     def arccos(value=None, clamp=False):
 
@@ -101,8 +93,6 @@ def arccos(value=None, clamp=False):
 
 def arccosine(value=None, clamp=False):
     """
-
-    ## arccosine
 
     ```python
     def arccosine(value=None, clamp=False):
@@ -126,8 +116,6 @@ def arccosine(value=None, clamp=False):
 def arcsin(value=None, clamp=False):
     """
 
-    ## arcsin
-
     ```python
     def arcsin(value=None, clamp=False):
 
@@ -149,8 +137,6 @@ def arcsin(value=None, clamp=False):
 
 def arcsine(value=None, clamp=False):
     """
-
-    ## arcsine
 
     ```python
     def arcsine(value=None, clamp=False):
@@ -174,8 +160,6 @@ def arcsine(value=None, clamp=False):
 def arctan(value=None, clamp=False):
     """
 
-    ## arctan
-
     ```python
     def arctan(value=None, clamp=False):
 
@@ -197,8 +181,6 @@ def arctan(value=None, clamp=False):
 
 def arctan2(value0=None, value1=None, clamp=False):
     """
-
-    ## arctan2
 
     ```python
     def arctan2(value0=None, value1=None, clamp=False):
@@ -223,8 +205,6 @@ def arctan2(value0=None, value1=None, clamp=False):
 def arctangent(value=None, clamp=False):
     """
 
-    ## arctangent
-
     ```python
     def arctangent(value=None, clamp=False):
 
@@ -246,8 +226,6 @@ def arctangent(value=None, clamp=False):
 
 def b_and(boolean0=None, boolean1=None):
     """
-
-    ## b_and
 
     ```python
     def b_and(boolean0=None, boolean1=None):
@@ -271,8 +249,6 @@ def b_and(boolean0=None, boolean1=None):
 def b_not(boolean0=None):
     """
 
-    ## b_not
-
     ```python
     def b_not(boolean0=None):
 
@@ -293,8 +269,6 @@ def b_not(boolean0=None):
 
 def b_or(boolean0=None, boolean1=None):
     """
-
-    ## b_or
 
     ```python
     def b_or(boolean0=None, boolean1=None):
@@ -317,8 +291,6 @@ def b_or(boolean0=None, boolean1=None):
 
 def clamp(value=None, min=None, max=None, clamp_type='MINMAX'):
     """
-
-    ## clamp
 
     ```python
     def clamp(value=None, min=None, max=None, clamp_type='MINMAX'):
@@ -344,8 +316,6 @@ def clamp(value=None, min=None, max=None, clamp_type='MINMAX'):
 def clamp_min_max(value=None, min=None, max=None):
     """
 
-    ## clamp_min_max
-
     ```python
     def clamp_min_max(value=None, min=None, max=None):
 
@@ -369,8 +339,6 @@ def clamp_min_max(value=None, min=None, max=None):
 def clamp_range(value=None, min=None, max=None):
     """
 
-    ## clamp_range
-
     ```python
     def clamp_range(value=None, min=None, max=None):
 
@@ -393,8 +361,6 @@ def clamp_range(value=None, min=None, max=None):
 
 def color_add(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False):
     """
-
-    ## color_add
 
     ```python
     def color_add(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False):
@@ -421,8 +387,6 @@ def color_add(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False
 def color_burn(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False):
     """
 
-    ## color_burn
-
     ```python
     def color_burn(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False):
 
@@ -447,8 +411,6 @@ def color_burn(factor=None, a=None, b=None, clamp_factor=True, clamp_result=Fals
 
 def color_color(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False):
     """
-
-    ## color_color
 
     ```python
     def color_color(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False):
@@ -475,8 +437,6 @@ def color_color(factor=None, a=None, b=None, clamp_factor=True, clamp_result=Fal
 def color_darken(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False):
     """
 
-    ## color_darken
-
     ```python
     def color_darken(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False):
 
@@ -501,8 +461,6 @@ def color_darken(factor=None, a=None, b=None, clamp_factor=True, clamp_result=Fa
 
 def color_difference(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False):
     """
-
-    ## color_difference
 
     ```python
     def color_difference(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False):
@@ -529,8 +487,6 @@ def color_difference(factor=None, a=None, b=None, clamp_factor=True, clamp_resul
 def color_divide(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False):
     """
 
-    ## color_divide
-
     ```python
     def color_divide(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False):
 
@@ -555,8 +511,6 @@ def color_divide(factor=None, a=None, b=None, clamp_factor=True, clamp_result=Fa
 
 def color_dodge(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False):
     """
-
-    ## color_dodge
 
     ```python
     def color_dodge(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False):
@@ -583,8 +537,6 @@ def color_dodge(factor=None, a=None, b=None, clamp_factor=True, clamp_result=Fal
 def color_hue(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False):
     """
 
-    ## color_hue
-
     ```python
     def color_hue(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False):
 
@@ -609,8 +561,6 @@ def color_hue(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False
 
 def color_lighten(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False):
     """
-
-    ## color_lighten
 
     ```python
     def color_lighten(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False):
@@ -637,8 +587,6 @@ def color_lighten(factor=None, a=None, b=None, clamp_factor=True, clamp_result=F
 def color_linear_light(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False):
     """
 
-    ## color_linear_light
-
     ```python
     def color_linear_light(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False):
 
@@ -663,8 +611,6 @@ def color_linear_light(factor=None, a=None, b=None, clamp_factor=True, clamp_res
 
 def color_mix(factor=None, a=None, b=None, blend_type='MIX', clamp_factor=True, clamp_result=False):
     """
-
-    ## color_mix
 
     ```python
     def color_mix(factor=None, a=None, b=None, blend_type='MIX', clamp_factor=True, clamp_result=False):
@@ -692,8 +638,6 @@ def color_mix(factor=None, a=None, b=None, blend_type='MIX', clamp_factor=True, 
 def color_multiply(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False):
     """
 
-    ## color_multiply
-
     ```python
     def color_multiply(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False):
 
@@ -718,8 +662,6 @@ def color_multiply(factor=None, a=None, b=None, clamp_factor=True, clamp_result=
 
 def color_overlay(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False):
     """
-
-    ## color_overlay
 
     ```python
     def color_overlay(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False):
@@ -746,8 +688,6 @@ def color_overlay(factor=None, a=None, b=None, clamp_factor=True, clamp_result=F
 def color_ramp(fac=None):
     """
 
-    ## color_ramp
-
     ```python
     def color_ramp(fac=None):
 
@@ -768,8 +708,6 @@ def color_ramp(fac=None):
 
 def color_saturation(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False):
     """
-
-    ## color_saturation
 
     ```python
     def color_saturation(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False):
@@ -796,8 +734,6 @@ def color_saturation(factor=None, a=None, b=None, clamp_factor=True, clamp_resul
 def color_screen(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False):
     """
 
-    ## color_screen
-
     ```python
     def color_screen(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False):
 
@@ -822,8 +758,6 @@ def color_screen(factor=None, a=None, b=None, clamp_factor=True, clamp_result=Fa
 
 def color_soft_light(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False):
     """
-
-    ## color_soft_light
 
     ```python
     def color_soft_light(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False):
@@ -850,8 +784,6 @@ def color_soft_light(factor=None, a=None, b=None, clamp_factor=True, clamp_resul
 def color_subtract(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False):
     """
 
-    ## color_subtract
-
     ```python
     def color_subtract(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False):
 
@@ -876,8 +808,6 @@ def color_subtract(factor=None, a=None, b=None, clamp_factor=True, clamp_result=
 
 def color_value(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False):
     """
-
-    ## color_value
 
     ```python
     def color_value(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False):
@@ -904,8 +834,6 @@ def color_value(factor=None, a=None, b=None, clamp_factor=True, clamp_result=Fal
 def combine_hsl(hue=None, saturation=None, lightness=None, alpha=None):
     """
 
-    ## combine_hsl
-
     ```python
     def combine_hsl(hue=None, saturation=None, lightness=None, alpha=None):
 
@@ -929,8 +857,6 @@ def combine_hsl(hue=None, saturation=None, lightness=None, alpha=None):
 
 def combine_hsv(hue=None, saturation=None, value=None, alpha=None):
     """
-
-    ## combine_hsv
 
     ```python
     def combine_hsv(hue=None, saturation=None, value=None, alpha=None):
@@ -956,8 +882,6 @@ def combine_hsv(hue=None, saturation=None, value=None, alpha=None):
 def combine_rgb(red=None, green=None, blue=None, alpha=None):
     """
 
-    ## combine_rgb
-
     ```python
     def combine_rgb(red=None, green=None, blue=None, alpha=None):
 
@@ -981,8 +905,6 @@ def combine_rgb(red=None, green=None, blue=None, alpha=None):
 
 def compare(a=None, b=None, c=None, angle=None, epsilon=None, data_type='FLOAT', mode='ELEMENT', operation='GREATER_THAN'):
     """
-
-    ## compare
 
     ```python
     def compare(a=None, b=None, c=None, angle=None, epsilon=None, data_type='FLOAT', mode='ELEMENT', operation='GREATER_THAN'):
@@ -1012,8 +934,6 @@ def compare(a=None, b=None, c=None, angle=None, epsilon=None, data_type='FLOAT',
 def cos(value=None, clamp=False):
     """
 
-    ## cos
-
     ```python
     def cos(value=None, clamp=False):
 
@@ -1035,8 +955,6 @@ def cos(value=None, clamp=False):
 
 def cosh(value=None, clamp=False):
     """
-
-    ## cosh
 
     ```python
     def cosh(value=None, clamp=False):
@@ -1060,8 +978,6 @@ def cosh(value=None, clamp=False):
 def cosine(value=None, clamp=False):
     """
 
-    ## cosine
-
     ```python
     def cosine(value=None, clamp=False):
 
@@ -1083,8 +999,6 @@ def cosine(value=None, clamp=False):
 
 def exp(value=None, clamp=False):
     """
-
-    ## exp
 
     ```python
     def exp(value=None, clamp=False):
@@ -1108,8 +1022,6 @@ def exp(value=None, clamp=False):
 def exponent(value=None, clamp=False):
     """
 
-    ## exponent
-
     ```python
     def exponent(value=None, clamp=False):
 
@@ -1131,8 +1043,6 @@ def exponent(value=None, clamp=False):
 
 def float_mix(factor=None, a=None, b=None, clamp_factor=True):
     """
-
-    ## float_mix
 
     ```python
     def float_mix(factor=None, a=None, b=None, clamp_factor=True):
@@ -1158,8 +1068,6 @@ def float_mix(factor=None, a=None, b=None, clamp_factor=True):
 def fraction(value=None, clamp=False):
     """
 
-    ## fraction
-
     ```python
     def fraction(value=None, clamp=False):
 
@@ -1181,8 +1089,6 @@ def fraction(value=None, clamp=False):
 
 def geometry_to_instance(*geometry):
     """
-
-    ## geometry_to_instance
 
     ```python
     def geometry_to_instance(*geometry):
@@ -1206,8 +1112,6 @@ def geometry_to_instance(*geometry):
 def imply(boolean0=None, boolean1=None):
     """
 
-    ## imply
-
     ```python
     def imply(boolean0=None, boolean1=None):
 
@@ -1229,8 +1133,6 @@ def imply(boolean0=None, boolean1=None):
 
 def inverse_sqrt(value=None, clamp=False):
     """
-
-    ## inverse_sqrt
 
     ```python
     def inverse_sqrt(value=None, clamp=False):
@@ -1254,8 +1156,6 @@ def inverse_sqrt(value=None, clamp=False):
 def join_geometry(*geometry):
     """
 
-    ## join_geometry
-
     ```python
     def join_geometry(*geometry):
 
@@ -1276,8 +1176,6 @@ def join_geometry(*geometry):
 
 def join_strings(*strings, delimiter=None):
     """
-
-    ## join_strings
 
     ```python
     def join_strings(*strings, delimiter=None):
@@ -1300,8 +1198,6 @@ def join_strings(*strings, delimiter=None):
 
 def log(value=None, base=None, clamp=False):
     """
-
-    ## log
 
     ```python
     def log(value=None, base=None, clamp=False):
@@ -1326,8 +1222,6 @@ def log(value=None, base=None, clamp=False):
 def logarithm(value=None, base=None, clamp=False):
     """
 
-    ## logarithm
-
     ```python
     def logarithm(value=None, base=None, clamp=False):
 
@@ -1350,8 +1244,6 @@ def logarithm(value=None, base=None, clamp=False):
 
 def math(value0=None, value1=None, value2=None, operation='ADD', clamp=False):
     """
-
-    ## math
 
     ```python
     def math(value0=None, value1=None, value2=None, operation='ADD', clamp=False):
@@ -1378,8 +1270,6 @@ def math(value0=None, value1=None, value2=None, operation='ADD', clamp=False):
 def math_ceil(value=None, clamp=False):
     """
 
-    ## math_ceil
-
     ```python
     def math_ceil(value=None, clamp=False):
 
@@ -1401,8 +1291,6 @@ def math_ceil(value=None, clamp=False):
 
 def math_compare(value0=None, value1=None, epsilon=None, clamp=False):
     """
-
-    ## math_compare
 
     ```python
     def math_compare(value0=None, value1=None, epsilon=None, clamp=False):
@@ -1428,8 +1316,6 @@ def math_compare(value0=None, value1=None, epsilon=None, clamp=False):
 def math_floor(value=None, clamp=False):
     """
 
-    ## math_floor
-
     ```python
     def math_floor(value=None, clamp=False):
 
@@ -1451,8 +1337,6 @@ def math_floor(value=None, clamp=False):
 
 def math_greater_than(value=None, threshold=None, clamp=False):
     """
-
-    ## math_greater_than
 
     ```python
     def math_greater_than(value=None, threshold=None, clamp=False):
@@ -1477,8 +1361,6 @@ def math_greater_than(value=None, threshold=None, clamp=False):
 def math_less_than(value=None, threshold=None, clamp=False):
     """
 
-    ## math_less_than
-
     ```python
     def math_less_than(value=None, threshold=None, clamp=False):
 
@@ -1502,8 +1384,6 @@ def math_less_than(value=None, threshold=None, clamp=False):
 def math_round(value=None, clamp=False):
     """
 
-    ## math_round
-
     ```python
     def math_round(value=None, clamp=False):
 
@@ -1525,8 +1405,6 @@ def math_round(value=None, clamp=False):
 
 def math_trun(value=None, clamp=False):
     """
-
-    ## math_trun
 
     ```python
     def math_trun(value=None, clamp=False):
@@ -1550,8 +1428,6 @@ def math_trun(value=None, clamp=False):
 def math_truncate(value=None, clamp=False):
     """
 
-    ## math_truncate
-
     ```python
     def math_truncate(value=None, clamp=False):
 
@@ -1573,8 +1449,6 @@ def math_truncate(value=None, clamp=False):
 
 def max(value0=None, value1=None, clamp=False):
     """
-
-    ## max
 
     ```python
     def max(value0=None, value1=None, clamp=False):
@@ -1599,8 +1473,6 @@ def max(value0=None, value1=None, clamp=False):
 def maximum(value0=None, value1=None, clamp=False):
     """
 
-    ## maximum
-
     ```python
     def maximum(value0=None, value1=None, clamp=False):
 
@@ -1623,8 +1495,6 @@ def maximum(value0=None, value1=None, clamp=False):
 
 def min(value0=None, value1=None, clamp=False):
     """
-
-    ## min
 
     ```python
     def min(value0=None, value1=None, clamp=False):
@@ -1649,8 +1519,6 @@ def min(value0=None, value1=None, clamp=False):
 def minimum(value0=None, value1=None, clamp=False):
     """
 
-    ## minimum
-
     ```python
     def minimum(value0=None, value1=None, clamp=False):
 
@@ -1674,8 +1542,6 @@ def minimum(value0=None, value1=None, clamp=False):
 def modulo(value0=None, value1=None, clamp=False):
     """
 
-    ## modulo
-
     ```python
     def modulo(value0=None, value1=None, clamp=False):
 
@@ -1698,8 +1564,6 @@ def modulo(value0=None, value1=None, clamp=False):
 
 def mul_add(value=None, multiplier=None, addend=None, clamp=False):
     """
-
-    ## mul_add
 
     ```python
     def mul_add(value=None, multiplier=None, addend=None, clamp=False):
@@ -1725,8 +1589,6 @@ def mul_add(value=None, multiplier=None, addend=None, clamp=False):
 def multiply_add(value=None, multiplier=None, addend=None, clamp=False):
     """
 
-    ## multiply_add
-
     ```python
     def multiply_add(value=None, multiplier=None, addend=None, clamp=False):
 
@@ -1751,8 +1613,6 @@ def multiply_add(value=None, multiplier=None, addend=None, clamp=False):
 def nand(boolean0=None, boolean1=None):
     """
 
-    ## nand
-
     ```python
     def nand(boolean0=None, boolean1=None):
 
@@ -1774,8 +1634,6 @@ def nand(boolean0=None, boolean1=None):
 
 def nimply(boolean0=None, boolean1=None):
     """
-
-    ## nimply
 
     ```python
     def nimply(boolean0=None, boolean1=None):
@@ -1799,8 +1657,6 @@ def nimply(boolean0=None, boolean1=None):
 def nor(boolean0=None, boolean1=None):
     """
 
-    ## nor
-
     ```python
     def nor(boolean0=None, boolean1=None):
 
@@ -1822,8 +1678,6 @@ def nor(boolean0=None, boolean1=None):
 
 def ping_pong(value=None, scale=None, clamp=False):
     """
-
-    ## ping_pong
 
     ```python
     def ping_pong(value=None, scale=None, clamp=False):
@@ -1848,8 +1702,6 @@ def ping_pong(value=None, scale=None, clamp=False):
 def power(base=None, exponent=None, clamp=False):
     """
 
-    ## power
-
     ```python
     def power(base=None, exponent=None, clamp=False):
 
@@ -1873,8 +1725,6 @@ def power(base=None, exponent=None, clamp=False):
 def random_boolean(probability=None, ID=None, seed=None):
     """
 
-    ## random_boolean
-
     ```python
     def random_boolean(probability=None, ID=None, seed=None):
 
@@ -1897,8 +1747,6 @@ def random_boolean(probability=None, ID=None, seed=None):
 
 def random_float(min=None, max=None, ID=None, seed=None):
     """
-
-    ## random_float
 
     ```python
     def random_float(min=None, max=None, ID=None, seed=None):
@@ -1924,8 +1772,6 @@ def random_float(min=None, max=None, ID=None, seed=None):
 def random_integer(min=None, max=None, ID=None, seed=None):
     """
 
-    ## random_integer
-
     ```python
     def random_integer(min=None, max=None, ID=None, seed=None):
 
@@ -1949,8 +1795,6 @@ def random_integer(min=None, max=None, ID=None, seed=None):
 
 def random_vector(min=None, max=None, ID=None, seed=None):
     """
-
-    ## random_vector
 
     ```python
     def random_vector(min=None, max=None, ID=None, seed=None):
@@ -1976,8 +1820,6 @@ def random_vector(min=None, max=None, ID=None, seed=None):
 def replace_string(string=None, find=None, replace=None):
     """
 
-    ## replace_string
-
     ```python
     def replace_string(string=None, find=None, replace=None):
 
@@ -2001,8 +1843,6 @@ def replace_string(string=None, find=None, replace=None):
 def rgb_curves(fac=None, color=None):
     """
 
-    ## rgb_curves
-
     ```python
     def rgb_curves(fac=None, color=None):
 
@@ -2024,8 +1864,6 @@ def rgb_curves(fac=None, color=None):
 
 def rotate_axis_angle(rotation=None, axis=None, angle=None, space='OBJECT'):
     """
-
-    ## rotate_axis_angle
 
     ```python
     def rotate_axis_angle(rotation=None, axis=None, angle=None, space='OBJECT'):
@@ -2051,8 +1889,6 @@ def rotate_axis_angle(rotation=None, axis=None, angle=None, space='OBJECT'):
 def rotate_euler(rotation=None, rotate_by=None, space='OBJECT'):
     """
 
-    ## rotate_euler
-
     ```python
     def rotate_euler(rotation=None, rotate_by=None, space='OBJECT'):
 
@@ -2075,8 +1911,6 @@ def rotate_euler(rotation=None, rotate_by=None, space='OBJECT'):
 
 def separate_hsl(color=None):
     """
-
-    ## separate_hsl
 
     ```python
     def separate_hsl(color=None):
@@ -2102,8 +1936,6 @@ def separate_hsl(color=None):
 def separate_hsv(color=None):
     """
 
-    ## separate_hsv
-
     ```python
     def separate_hsv(color=None):
 
@@ -2127,8 +1959,6 @@ def separate_hsv(color=None):
 
 def separate_rgb(color=None):
     """
-
-    ## separate_rgb
 
     ```python
     def separate_rgb(color=None):
@@ -2154,8 +1984,6 @@ def separate_rgb(color=None):
 def sign(value=None, clamp=False):
     """
 
-    ## sign
-
     ```python
     def sign(value=None, clamp=False):
 
@@ -2177,8 +2005,6 @@ def sign(value=None, clamp=False):
 
 def sin(value=None, clamp=False):
     """
-
-    ## sin
 
     ```python
     def sin(value=None, clamp=False):
@@ -2202,8 +2028,6 @@ def sin(value=None, clamp=False):
 def sine(value=None, clamp=False):
     """
 
-    ## sine
-
     ```python
     def sine(value=None, clamp=False):
 
@@ -2225,8 +2049,6 @@ def sine(value=None, clamp=False):
 
 def sinh(value=None, clamp=False):
     """
-
-    ## sinh
 
     ```python
     def sinh(value=None, clamp=False):
@@ -2250,8 +2072,6 @@ def sinh(value=None, clamp=False):
 def slice_string(string=None, position=None, length=None):
     """
 
-    ## slice_string
-
     ```python
     def slice_string(string=None, position=None, length=None):
 
@@ -2274,8 +2094,6 @@ def slice_string(string=None, position=None, length=None):
 
 def smooth_maximum(value0=None, value1=None, distance=None, clamp=False):
     """
-
-    ## smooth_maximum
 
     ```python
     def smooth_maximum(value0=None, value1=None, distance=None, clamp=False):
@@ -2301,8 +2119,6 @@ def smooth_maximum(value0=None, value1=None, distance=None, clamp=False):
 def smooth_minimum(value0=None, value1=None, distance=None, clamp=False):
     """
 
-    ## smooth_minimum
-
     ```python
     def smooth_minimum(value0=None, value1=None, distance=None, clamp=False):
 
@@ -2327,8 +2143,6 @@ def smooth_minimum(value0=None, value1=None, distance=None, clamp=False):
 def snap(value=None, increment=None, clamp=False):
     """
 
-    ## snap
-
     ```python
     def snap(value=None, increment=None, clamp=False):
 
@@ -2352,8 +2166,6 @@ def snap(value=None, increment=None, clamp=False):
 def sqrt(value=None, clamp=False):
     """
 
-    ## sqrt
-
     ```python
     def sqrt(value=None, clamp=False):
 
@@ -2376,8 +2188,6 @@ def sqrt(value=None, clamp=False):
 def string_length(string=None):
     """
 
-    ## string_length
-
     ```python
     def string_length(string=None):
 
@@ -2398,8 +2208,6 @@ def string_length(string=None):
 
 def string_to_curves(string=None, size=None, character_spacing=None, word_spacing=None, line_spacing=None, text_box_width=None, text_box_height=None, align_x='LEFT', align_y='TOP_BASELINE', overflow='OVERFLOW', pivot_mode='BOTTOM_LEFT'):
     """
-
-    ## string_to_curves
 
     ```python
     def string_to_curves(string=None, size=None, character_spacing=None, word_spacing=None, line_spacing=None, text_box_width=None, text_box_height=None, align_x='LEFT', align_y='TOP_BASELINE', overflow='OVERFLOW', pivot_mode='BOTTOM_LEFT'):
@@ -2436,8 +2244,6 @@ def string_to_curves(string=None, size=None, character_spacing=None, word_spacin
 def switch(switch=None, false=None, true=None, input_type='GEOMETRY'):
     """
 
-    ## switch
-
     ```python
     def switch(switch=None, false=None, true=None, input_type='GEOMETRY'):
 
@@ -2462,8 +2268,6 @@ def switch(switch=None, false=None, true=None, input_type='GEOMETRY'):
 def switch_boolean(switch=None, false=None, true=None):
     """
 
-    ## switch_boolean
-
     ```python
     def switch_boolean(switch=None, false=None, true=None):
 
@@ -2486,8 +2290,6 @@ def switch_boolean(switch=None, false=None, true=None):
 
 def switch_collection(switch=None, false=None, true=None):
     """
-
-    ## switch_collection
 
     ```python
     def switch_collection(switch=None, false=None, true=None):
@@ -2512,8 +2314,6 @@ def switch_collection(switch=None, false=None, true=None):
 def switch_color(switch=None, false=None, true=None):
     """
 
-    ## switch_color
-
     ```python
     def switch_color(switch=None, false=None, true=None):
 
@@ -2536,8 +2336,6 @@ def switch_color(switch=None, false=None, true=None):
 
 def switch_float(switch=None, false=None, true=None):
     """
-
-    ## switch_float
 
     ```python
     def switch_float(switch=None, false=None, true=None):
@@ -2562,8 +2360,6 @@ def switch_float(switch=None, false=None, true=None):
 def switch_geometry(switch=None, false=None, true=None):
     """
 
-    ## switch_geometry
-
     ```python
     def switch_geometry(switch=None, false=None, true=None):
 
@@ -2586,8 +2382,6 @@ def switch_geometry(switch=None, false=None, true=None):
 
 def switch_image(switch=None, false=None, true=None):
     """
-
-    ## switch_image
 
     ```python
     def switch_image(switch=None, false=None, true=None):
@@ -2612,8 +2406,6 @@ def switch_image(switch=None, false=None, true=None):
 def switch_integer(switch=None, false=None, true=None):
     """
 
-    ## switch_integer
-
     ```python
     def switch_integer(switch=None, false=None, true=None):
 
@@ -2636,8 +2428,6 @@ def switch_integer(switch=None, false=None, true=None):
 
 def switch_material(switch=None, false=None, true=None):
     """
-
-    ## switch_material
 
     ```python
     def switch_material(switch=None, false=None, true=None):
@@ -2662,8 +2452,6 @@ def switch_material(switch=None, false=None, true=None):
 def switch_object(switch=None, false=None, true=None):
     """
 
-    ## switch_object
-
     ```python
     def switch_object(switch=None, false=None, true=None):
 
@@ -2686,8 +2474,6 @@ def switch_object(switch=None, false=None, true=None):
 
 def switch_string(switch=None, false=None, true=None):
     """
-
-    ## switch_string
 
     ```python
     def switch_string(switch=None, false=None, true=None):
@@ -2712,8 +2498,6 @@ def switch_string(switch=None, false=None, true=None):
 def switch_texture(switch=None, false=None, true=None):
     """
 
-    ## switch_texture
-
     ```python
     def switch_texture(switch=None, false=None, true=None):
 
@@ -2736,8 +2520,6 @@ def switch_texture(switch=None, false=None, true=None):
 
 def switch_vector(switch=None, false=None, true=None):
     """
-
-    ## switch_vector
 
     ```python
     def switch_vector(switch=None, false=None, true=None):
@@ -2762,8 +2544,6 @@ def switch_vector(switch=None, false=None, true=None):
 def tan(value=None, clamp=False):
     """
 
-    ## tan
-
     ```python
     def tan(value=None, clamp=False):
 
@@ -2785,8 +2565,6 @@ def tan(value=None, clamp=False):
 
 def tangent(value=None, clamp=False):
     """
-
-    ## tangent
 
     ```python
     def tangent(value=None, clamp=False):
@@ -2810,8 +2588,6 @@ def tangent(value=None, clamp=False):
 def tanh(value=None, clamp=False):
     """
 
-    ## tanh
-
     ```python
     def tanh(value=None, clamp=False):
 
@@ -2833,8 +2609,6 @@ def tanh(value=None, clamp=False):
 
 def to_degrees(value=None, clamp=False):
     """
-
-    ## to_degrees
 
     ```python
     def to_degrees(value=None, clamp=False):
@@ -2858,8 +2632,6 @@ def to_degrees(value=None, clamp=False):
 def to_radians(value=None, clamp=False):
     """
 
-    ## to_radians
-
     ```python
     def to_radians(value=None, clamp=False):
 
@@ -2882,8 +2654,6 @@ def to_radians(value=None, clamp=False):
 def value_to_string(value=None, decimals=None):
     """
 
-    ## value_to_string
-
     ```python
     def value_to_string(value=None, decimals=None):
 
@@ -2905,8 +2675,6 @@ def value_to_string(value=None, decimals=None):
 
 def vector_mix(factor=None, a=None, b=None, clamp_factor=True, factor_mode='UNIFORM'):
     """
-
-    ## vector_mix
 
     ```python
     def vector_mix(factor=None, a=None, b=None, clamp_factor=True, factor_mode='UNIFORM'):
@@ -2933,8 +2701,6 @@ def vector_mix(factor=None, a=None, b=None, clamp_factor=True, factor_mode='UNIF
 def wrap(value=None, max=None, min=None, clamp=False):
     """
 
-    ## wrap
-
     ```python
     def wrap(value=None, max=None, min=None, clamp=False):
 
@@ -2959,8 +2725,6 @@ def wrap(value=None, max=None, min=None, clamp=False):
 def xnor(boolean0=None, boolean1=None):
     """
 
-    ## xnor
-
     ```python
     def xnor(boolean0=None, boolean1=None):
 
@@ -2982,8 +2746,6 @@ def xnor(boolean0=None, boolean1=None):
 
 def xor(boolean0=None, boolean1=None):
     """
-
-    ## xor
 
     ```python
     def xor(boolean0=None, boolean1=None):

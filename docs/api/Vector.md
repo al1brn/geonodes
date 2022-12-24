@@ -4,14 +4,14 @@
 
 ## Properties
 
-- [length](#length-property)
-- [separate](#separate-property)
+- [length](#length)
+- [separate](#separate)
 
 ## Class methods
 
-- [Combine](#Combine-classmethod)
-- [Input](#Input-classmethod)
-- [Vector](#Vector-classmethod)
+- [Combine](#Combine)
+- [Input](#Input)
+- [Vector](#Vector)
 
 
 ## Methods

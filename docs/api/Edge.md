@@ -13,14 +13,14 @@ The four [Domains](Domain.md) are:
 - `corners` [Corner](Corner.md)
 ## Properties
 
-- [angle](#angle-property)
-- [count](#count-property)
-- [neighbors](#neighbors-property)
-- [signed_angle](#signed_angle-property)
-- [unsigned_angle](#unsigned_angle-property)
-- [vertices](#vertices-property)
-- [vertices_index](#vertices_index-property)
-- [vertices_position](#vertices_position-property)
+- [angle](#angle)
+- [count](#count)
+- [neighbors](#neighbors)
+- [signed_angle](#signed_angle)
+- [unsigned_angle](#unsigned_angle)
+- [vertices](#vertices)
+- [vertices_index](#vertices_index)
+- [vertices_position](#vertices_position)
 
 
 

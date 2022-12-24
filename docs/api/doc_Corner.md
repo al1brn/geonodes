@@ -18,8 +18,6 @@
 
 
 
-## ID <sub>*property*</sub>
-
 ```python
 def ID(self):
 
@@ -37,8 +35,6 @@ def ID(self):
 Setter
 
 
-
-## ID <sub>*etter*</sub>
 
 ```python
 def ID(self, attr_value):
@@ -119,8 +115,6 @@ Node implemented as property setter.
 
 
 
-## count <sub>*property*</sub>
-
 ```python
 def count(self, geometry=None):
 
@@ -172,8 +166,6 @@ def count(self, geometry=None):
 
 
 
-## domain_index <sub>*property*</sub>
-
 ```python
 def domain_index(self):
 
@@ -193,8 +185,6 @@ def domain_index(self):
 ### face_index
 
 
-
-## face_index <sub>*property*</sub>
 
 ```python
 def face_index(self):
@@ -216,8 +206,6 @@ def face_index(self):
 
 
 
-## index <sub>*property*</sub>
-
 ```python
 def index(self):
 
@@ -237,8 +225,6 @@ def index(self):
 ### index_in_face
 
 
-
-## index_in_face <sub>*property*</sub>
 
 ```python
 def index_in_face(self):
@@ -260,8 +246,6 @@ def index_in_face(self):
 
 
 
-## material_index <sub>*property*</sub>
-
 ```python
 def material_index(self):
 
@@ -281,8 +265,6 @@ def material_index(self):
 ### next_vertex
 
 
-
-## next_vertex <sub>*property*</sub>
 
 ```python
 def next_vertex(self):
@@ -304,8 +286,6 @@ def next_vertex(self):
 
 
 
-## normal <sub>*property*</sub>
-
 ```python
 def normal(self):
 
@@ -326,8 +306,6 @@ def normal(self):
 
 
 
-## position <sub>*property*</sub>
-
 ```python
 def position(self):
 
@@ -345,8 +323,6 @@ def position(self):
 Setter
 
 
-
-## position <sub>*etter*</sub>
 
 ```python
 def position(self, attr_value):
@@ -370,8 +346,6 @@ Node implemented as property setter.
 ### previous_vertex
 
 
-
-## previous_vertex <sub>*property*</sub>
 
 ```python
 def previous_vertex(self):
@@ -417,8 +391,6 @@ def previous_vertex(self):
 
 
 
-## vertex_index <sub>*property*</sub>
-
 ```python
 def vertex_index(self):
 
@@ -444,8 +416,6 @@ def accumulate_field(self, value=None, group_index=None)
 ```
 
 
-
-## accumulate_field
 
 ```python
 def accumulate_field(self, value=None, group_index=None):
@@ -477,8 +447,6 @@ def attribute_max(self, attribute=None)
 
 
 
-## attribute_max
-
 ```python
 def attribute_max(self, attribute=None):
 
@@ -505,8 +473,6 @@ def attribute_mean(self, attribute=None)
 ```
 
 
-
-## attribute_mean
 
 ```python
 def attribute_mean(self, attribute=None):
@@ -535,8 +501,6 @@ def attribute_median(self, attribute=None)
 
 
 
-## attribute_median
-
 ```python
 def attribute_median(self, attribute=None):
 
@@ -563,8 +527,6 @@ def attribute_min(self, attribute=None)
 ```
 
 
-
-## attribute_min
 
 ```python
 def attribute_min(self, attribute=None):
@@ -620,8 +582,6 @@ def attribute_range(self, attribute=None)
 
 
 
-## attribute_range
-
 ```python
 def attribute_range(self, attribute=None):
 
@@ -648,8 +608,6 @@ def attribute_statistic(self, attribute=None)
 ```
 
 
-
-## attribute_statistic
 
 ```python
 def attribute_statistic(self, attribute=None):
@@ -678,8 +636,6 @@ def attribute_std(self, attribute=None)
 
 
 
-## attribute_std
-
 ```python
 def attribute_std(self, attribute=None):
 
@@ -706,8 +662,6 @@ def attribute_sum(self, attribute=None)
 ```
 
 
-
-## attribute_sum
 
 ```python
 def attribute_sum(self, attribute=None):
@@ -736,8 +690,6 @@ def attribute_var(self, attribute=None)
 
 
 
-## attribute_var
-
 ```python
 def attribute_var(self, attribute=None):
 
@@ -764,8 +716,6 @@ def capture_attribute(self, value=None)
 ```
 
 
-
-## capture_attribute
 
 ```python
 def capture_attribute(self, value=None):
@@ -794,8 +744,6 @@ def edges(self)
 
 
 
-## edges
-
 ```python
 def edges(self):
 
@@ -822,8 +770,6 @@ def face(self)
 
 
 
-## face
-
 ```python
 def face(self):
 
@@ -849,8 +795,6 @@ def field_at_index(self, index=None, value=None)
 ```
 
 
-
-## field_at_index
 
 ```python
 def field_at_index(self, index=None, value=None):
@@ -880,8 +824,6 @@ def get_named_boolean(self, name=None)
 
 
 
-## get_named_boolean
-
 ```python
 def get_named_boolean(self, name=None):
 
@@ -908,8 +850,6 @@ def get_named_color(self, name=None)
 ```
 
 
-
-## get_named_color
 
 ```python
 def get_named_color(self, name=None):
@@ -938,8 +878,6 @@ def get_named_float(self, name=None)
 
 
 
-## get_named_float
-
 ```python
 def get_named_float(self, name=None):
 
@@ -966,8 +904,6 @@ def get_named_integer(self, name=None)
 ```
 
 
-
-## get_named_integer
 
 ```python
 def get_named_integer(self, name=None):
@@ -996,8 +932,6 @@ def get_named_vector(self, name=None)
 
 
 
-## get_named_vector
-
 ```python
 def get_named_vector(self, name=None):
 
@@ -1024,8 +958,6 @@ def interpolate(self, value=None)
 ```
 
 
-
-## interpolate
 
 ```python
 def interpolate(self, value=None):
@@ -1054,8 +986,6 @@ def material_selection(self, material=None)
 
 
 
-## material_selection
-
 ```python
 def material_selection(self, material=None):
 
@@ -1082,8 +1012,6 @@ def named_attribute(self, name=None, data_type='FLOAT')
 ```
 
 
-
-## named_attribute
 
 ```python
 def named_attribute(self, name=None, data_type='FLOAT'):
@@ -1113,8 +1041,6 @@ def offset_in_face(self, offset=None)
 
 
 
-## offset_in_face
-
 ```python
 def offset_in_face(self, offset=None):
 
@@ -1141,8 +1067,6 @@ def random_boolean(self, probability=None, ID=None, seed=None)
 ```
 
 
-
-## random_boolean
 
 ```python
 def random_boolean(self, probability=None, ID=None, seed=None):
@@ -1172,8 +1096,6 @@ def random_float(self, min=None, max=None, ID=None, seed=None)
 ```
 
 
-
-## random_float
 
 ```python
 def random_float(self, min=None, max=None, ID=None, seed=None):
@@ -1205,8 +1127,6 @@ def random_integer(self, min=None, max=None, ID=None, seed=None)
 
 
 
-## random_integer
-
 ```python
 def random_integer(self, min=None, max=None, ID=None, seed=None):
 
@@ -1236,8 +1156,6 @@ def random_vector(self, min=None, max=None, ID=None, seed=None)
 ```
 
 
-
-## random_vector
 
 ```python
 def random_vector(self, min=None, max=None, ID=None, seed=None):
@@ -1269,8 +1187,6 @@ def remove_named_attribute(self, name=None)
 
 
 
-## remove_named_attribute
-
 ```python
 def remove_named_attribute(self, name=None):
 
@@ -1297,8 +1213,6 @@ def sample_index(self, value=None, index=None, clamp=False)
 ```
 
 
-
-## sample_index
 
 ```python
 def sample_index(self, value=None, index=None, clamp=False):
@@ -1328,8 +1242,6 @@ def sample_nearest(self, sample_position=None)
 ```
 
 
-
-## sample_nearest
 
 ```python
 def sample_nearest(self, sample_position=None):
@@ -1386,8 +1298,6 @@ def set_ID(self, ID=None)
 
 
 
-## set_ID
-
 ```python
 def set_ID(self, ID=None):
 
@@ -1415,8 +1325,6 @@ def set_material_index(self, material_index=None)
 
 
 
-## set_material_index
-
 ```python
 def set_material_index(self, material_index=None):
 
@@ -1443,8 +1351,6 @@ def set_named_boolean(self, name=None, value=None)
 ```
 
 
-
-## set_named_boolean
 
 ```python
 def set_named_boolean(self, name=None, value=None):
@@ -1474,8 +1380,6 @@ def set_named_color(self, name=None, value=None)
 
 
 
-## set_named_color
-
 ```python
 def set_named_color(self, name=None, value=None):
 
@@ -1503,8 +1407,6 @@ def set_named_float(self, name=None, value=None)
 ```
 
 
-
-## set_named_float
 
 ```python
 def set_named_float(self, name=None, value=None):
@@ -1534,8 +1436,6 @@ def set_named_integer(self, name=None, value=None)
 
 
 
-## set_named_integer
-
 ```python
 def set_named_integer(self, name=None, value=None):
 
@@ -1564,8 +1464,6 @@ def set_named_vector(self, name=None, value=None)
 
 
 
-## set_named_vector
-
 ```python
 def set_named_vector(self, name=None, value=None):
 
@@ -1593,8 +1491,6 @@ def set_position(self, position=None, offset=None)
 ```
 
 
-
-## set_position
 
 ```python
 def set_position(self, position=None, offset=None):
@@ -1639,8 +1535,6 @@ def store_named_attribute(self, name=None, value=None)
 ```
 
 
-
-## store_named_attribute
 
 ```python
 def store_named_attribute(self, name=None, value=None):

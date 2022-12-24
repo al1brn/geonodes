@@ -58,8 +58,6 @@ def brick(vector=None, color1=None, color2=None, mortar=None, scale=None, mortar
 
 
 
-## brick <sub>*staticmethod*</sub>
-
 ```python
 def brick(vector=None, color1=None, color2=None, mortar=None, scale=None, mortar_size=None, mortar_smooth=None, bias=None, brick_width=None, row_height=None, offset=0.5, offset_frequency=2, squash=1.0, squash_frequency=2):
 
@@ -103,8 +101,6 @@ def checker(vector=None, color1=None, color2=None, scale=None)
 
 
 
-## checker <sub>*staticmethod*</sub>
-
 ```python
 def checker(vector=None, color1=None, color2=None, scale=None):
 
@@ -138,8 +134,6 @@ def gradient(vector=None, gradient_type='LINEAR')
 
 
 
-## gradient <sub>*staticmethod*</sub>
-
 ```python
 def gradient(vector=None, gradient_type='LINEAR'):
 
@@ -171,8 +165,6 @@ def gradient_diagonal(vector=None)
 
 
 
-## gradient_diagonal <sub>*staticmethod*</sub>
-
 ```python
 def gradient_diagonal(vector=None):
 
@@ -202,8 +194,6 @@ def gradient_easing(vector=None)
 ```
 
 
-
-## gradient_easing <sub>*staticmethod*</sub>
 
 ```python
 def gradient_easing(vector=None):
@@ -235,8 +225,6 @@ def gradient_linear(vector=None)
 
 
 
-## gradient_linear <sub>*staticmethod*</sub>
-
 ```python
 def gradient_linear(vector=None):
 
@@ -266,8 +254,6 @@ def gradient_quadratic(vector=None)
 ```
 
 
-
-## gradient_quadratic <sub>*staticmethod*</sub>
 
 ```python
 def gradient_quadratic(vector=None):
@@ -299,8 +285,6 @@ def gradient_quadratic_sphere(vector=None)
 
 
 
-## gradient_quadratic_sphere <sub>*staticmethod*</sub>
-
 ```python
 def gradient_quadratic_sphere(vector=None):
 
@@ -330,8 +314,6 @@ def gradient_radial(vector=None)
 ```
 
 
-
-## gradient_radial <sub>*staticmethod*</sub>
 
 ```python
 def gradient_radial(vector=None):
@@ -363,8 +345,6 @@ def gradient_spherical(vector=None)
 
 
 
-## gradient_spherical <sub>*staticmethod*</sub>
-
 ```python
 def gradient_spherical(vector=None):
 
@@ -394,8 +374,6 @@ def image(image=None, vector=None, frame=None, extension='REPEAT', interpolation
 ```
 
 
-
-## image <sub>*staticmethod*</sub>
 
 ```python
 def image(image=None, vector=None, frame=None, extension='REPEAT', interpolation='Linear'):
@@ -431,8 +409,6 @@ def magic(vector=None, scale=None, distortion=None, turbulence_depth=2)
 
 
 
-## magic <sub>*staticmethod*</sub>
-
 ```python
 def magic(vector=None, scale=None, distortion=None, turbulence_depth=2):
 
@@ -465,8 +441,6 @@ def musgrave(vector=None, w=None, scale=None, detail=None, dimension=None, lacun
 ```
 
 
-
-## musgrave <sub>*staticmethod*</sub>
 
 ```python
 def musgrave(vector=None, w=None, scale=None, detail=None, dimension=None, lacunarity=None, offset=None, gain=None, musgrave_dimensions='3D', musgrave_type='FBM'):
@@ -505,8 +479,6 @@ def noise(vector=None, w=None, scale=None, detail=None, roughness=None, distorti
 
 
 
-## noise <sub>*staticmethod*</sub>
-
 ```python
 def noise(vector=None, w=None, scale=None, detail=None, roughness=None, distortion=None, noise_dimensions='3D'):
 
@@ -543,8 +515,6 @@ def noise_1D(w=None, scale=None, detail=None, roughness=None, distortion=None)
 
 
 
-## noise_1D <sub>*staticmethod*</sub>
-
 ```python
 def noise_1D(w=None, scale=None, detail=None, roughness=None, distortion=None):
 
@@ -578,8 +548,6 @@ def noise_2D(vector=None, scale=None, detail=None, roughness=None, distortion=No
 ```
 
 
-
-## noise_2D <sub>*staticmethod*</sub>
 
 ```python
 def noise_2D(vector=None, scale=None, detail=None, roughness=None, distortion=None):
@@ -615,8 +583,6 @@ def noise_3D(vector=None, scale=None, detail=None, roughness=None, distortion=No
 
 
 
-## noise_3D <sub>*staticmethod*</sub>
-
 ```python
 def noise_3D(vector=None, scale=None, detail=None, roughness=None, distortion=None):
 
@@ -650,8 +616,6 @@ def noise_4D(vector=None, w=None, scale=None, detail=None, roughness=None, disto
 ```
 
 
-
-## noise_4D <sub>*staticmethod*</sub>
 
 ```python
 def noise_4D(vector=None, w=None, scale=None, detail=None, roughness=None, distortion=None):
@@ -687,8 +651,6 @@ def voronoi(vector=None, w=None, scale=None, smoothness=None, exponent=None, ran
 ```
 
 
-
-## voronoi <sub>*staticmethod*</sub>
 
 ```python
 def voronoi(vector=None, w=None, scale=None, smoothness=None, exponent=None, randomness=None, distance='EUCLIDEAN', feature='F1', voronoi_dimensions='3D'):
@@ -728,8 +690,6 @@ def voronoi_1D(w=None, scale=None, smoothness=None, exponent=None, randomness=No
 
 
 
-## voronoi_1D <sub>*staticmethod*</sub>
-
 ```python
 def voronoi_1D(w=None, scale=None, smoothness=None, exponent=None, randomness=None, distance='EUCLIDEAN', feature='F1', voronoi_dimensions='3D'):
 
@@ -766,8 +726,6 @@ def voronoi_2D(vector=None, scale=None, smoothness=None, exponent=None, randomne
 ```
 
 
-
-## voronoi_2D <sub>*staticmethod*</sub>
 
 ```python
 def voronoi_2D(vector=None, scale=None, smoothness=None, exponent=None, randomness=None, distance='EUCLIDEAN', feature='F1', voronoi_dimensions='3D'):
@@ -806,8 +764,6 @@ def voronoi_3D(vector=None, scale=None, smoothness=None, exponent=None, randomne
 
 
 
-## voronoi_3D <sub>*staticmethod*</sub>
-
 ```python
 def voronoi_3D(vector=None, scale=None, smoothness=None, exponent=None, randomness=None, distance='EUCLIDEAN', feature='F1', voronoi_dimensions='3D'):
 
@@ -844,8 +800,6 @@ def voronoi_4D(vector=None, w=None, scale=None, smoothness=None, exponent=None, 
 ```
 
 
-
-## voronoi_4D <sub>*staticmethod*</sub>
 
 ```python
 def voronoi_4D(vector=None, w=None, scale=None, smoothness=None, exponent=None, randomness=None, distance='EUCLIDEAN', feature='F1', voronoi_dimensions='3D'):
@@ -884,8 +838,6 @@ def wave(vector=None, scale=None, distortion=None, detail=None, detail_scale=Non
 ```
 
 
-
-## wave <sub>*staticmethod*</sub>
 
 ```python
 def wave(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, bands_direction='X', rings_direction='X', wave_profile='SIN', wave_type='BANDS'):
@@ -927,8 +879,6 @@ def wave_bands(vector=None, scale=None, distortion=None, detail=None, detail_sca
 
 
 
-## wave_bands <sub>*staticmethod*</sub>
-
 ```python
 def wave_bands(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X', wave_profile='SIN'):
 
@@ -967,8 +917,6 @@ def wave_bands_saw(vector=None, scale=None, distortion=None, detail=None, detail
 
 
 
-## wave_bands_saw <sub>*staticmethod*</sub>
-
 ```python
 def wave_bands_saw(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X'):
 
@@ -1005,8 +953,6 @@ def wave_bands_sine(vector=None, scale=None, distortion=None, detail=None, detai
 ```
 
 
-
-## wave_bands_sine <sub>*staticmethod*</sub>
 
 ```python
 def wave_bands_sine(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X'):
@@ -1045,8 +991,6 @@ def wave_bands_triangle(vector=None, scale=None, distortion=None, detail=None, d
 
 
 
-## wave_bands_triangle <sub>*staticmethod*</sub>
-
 ```python
 def wave_bands_triangle(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X'):
 
@@ -1083,8 +1027,6 @@ def wave_rings(vector=None, scale=None, distortion=None, detail=None, detail_sca
 ```
 
 
-
-## wave_rings <sub>*staticmethod*</sub>
 
 ```python
 def wave_rings(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X', wave_profile='SIN'):
@@ -1124,8 +1066,6 @@ def wave_rings_saw(vector=None, scale=None, distortion=None, detail=None, detail
 
 
 
-## wave_rings_saw <sub>*staticmethod*</sub>
-
 ```python
 def wave_rings_saw(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X'):
 
@@ -1162,8 +1102,6 @@ def wave_rings_sine(vector=None, scale=None, distortion=None, detail=None, detai
 ```
 
 
-
-## wave_rings_sine <sub>*staticmethod*</sub>
 
 ```python
 def wave_rings_sine(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X'):
@@ -1202,8 +1140,6 @@ def wave_rings_triangle(vector=None, scale=None, distortion=None, detail=None, d
 
 
 
-## wave_rings_triangle <sub>*staticmethod*</sub>
-
 ```python
 def wave_rings_triangle(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X'):
 
@@ -1241,8 +1177,6 @@ def white_noise(vector=None, w=None, noise_dimensions='3D')
 
 
 
-## white_noise <sub>*staticmethod*</sub>
-
 ```python
 def white_noise(vector=None, w=None, noise_dimensions='3D'):
 
@@ -1275,8 +1209,6 @@ def white_noise_1D(w=None)
 
 
 
-## white_noise_1D <sub>*staticmethod*</sub>
-
 ```python
 def white_noise_1D(w=None):
 
@@ -1306,8 +1238,6 @@ def white_noise_2D(vector=None)
 ```
 
 
-
-## white_noise_2D <sub>*staticmethod*</sub>
 
 ```python
 def white_noise_2D(vector=None):
@@ -1339,8 +1269,6 @@ def white_noise_3D(vector=None)
 
 
 
-## white_noise_3D <sub>*staticmethod*</sub>
-
 ```python
 def white_noise_3D(vector=None):
 
@@ -1370,8 +1298,6 @@ def white_noise_4D(vector=None, w=None)
 ```
 
 
-
-## white_noise_4D <sub>*staticmethod*</sub>
 
 ```python
 def white_noise_4D(vector=None, w=None):
@@ -1404,8 +1330,6 @@ def switch(self, switch=None, true=None)
 ```
 
 
-
-## switch
 
 ```python
 def switch(self, switch=None, true=None):

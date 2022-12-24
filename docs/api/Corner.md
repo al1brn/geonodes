@@ -14,12 +14,12 @@ The four [Domains](Domain.md) are:
   
 ## Properties
 
-- [count](#count-property)
-- [face_index](#face_index-property)
-- [index_in_face](#index_in_face-property)
-- [next_vertex](#next_vertex-property)
-- [previous_vertex](#previous_vertex-property)
-- [vertex_index](#vertex_index-property)
+- [count](#count)
+- [face_index](#face_index)
+- [index_in_face](#index_in_face)
+- [next_vertex](#next_vertex)
+- [previous_vertex](#previous_vertex)
+- [vertex_index](#vertex_index)
 
 
 

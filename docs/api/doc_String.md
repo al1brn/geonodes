@@ -34,8 +34,6 @@
 
 
 
-## length <sub>*property*</sub>
-
 ```python
 def length(self):
 
@@ -84,8 +82,6 @@ def LineBreak()
 
 
 
-## LineBreak <sub>*staticmethod*</sub>
-
 ```python
 def LineBreak():
 
@@ -110,8 +106,6 @@ def String(cls, string='')
 ```
 
 
-
-## String <sub>*classmethod*</sub>
 
 ```python
 def String(cls, string=''):
@@ -140,8 +134,6 @@ def Tab()
 ```
 
 
-
-## Tab <sub>*staticmethod*</sub>
 
 ```python
 def Tab():
@@ -193,8 +185,6 @@ def equal(self, b=None)
 
 
 
-## equal
-
 ```python
 def equal(self, b=None):
 
@@ -221,8 +211,6 @@ def join(*strings, delimiter=None)
 ```
 
 
-
-## join
 
 ```python
 def join(*strings, delimiter=None):
@@ -295,8 +283,6 @@ def not_equal(self, b=None)
 
 
 
-## not_equal
-
 ```python
 def not_equal(self, b=None):
 
@@ -323,8 +309,6 @@ def replace(self, find=None, replace=None)
 ```
 
 
-
-## replace
 
 ```python
 def replace(self, find=None, replace=None):
@@ -354,8 +338,6 @@ def slice(self, position=None, length=None)
 
 
 
-## slice
-
 ```python
 def slice(self, position=None, length=None):
 
@@ -384,8 +366,6 @@ def switch(self, switch=None, true=None)
 
 
 
-## switch
-
 ```python
 def switch(self, switch=None, true=None):
 
@@ -413,8 +393,6 @@ def to_curves(self, string=None, size=None, character_spacing=None, word_spacing
 ```
 
 
-
-## to_curves
 
 ```python
 def to_curves(self, string=None, size=None, character_spacing=None, word_spacing=None, line_spacing=None, text_box_width=None, text_box_height=None, align_x='LEFT', align_y='TOP_BASELINE', overflow='OVERFLOW', pivot_mode='BOTTOM_LEFT'):

@@ -8,13 +8,13 @@ It is implemented as property `splines`
 The other [Domain](Domain.md) is [ControlPoint](ControlPoint.md).
 ## Properties
 
-- [count](#count-property)
-- [cyclic](#cyclic-property)
-- [length](#length-property)
-- [material](#material-property)
-- [normal](#normal-property)
-- [resolution](#resolution-property)
-- [type](#type-property)
+- [count](#count)
+- [cyclic](#cyclic)
+- [length](#length)
+- [material](#material)
+- [normal](#normal)
+- [resolution](#resolution)
+- [type](#type)
 
 
 

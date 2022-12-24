@@ -108,9 +108,9 @@ Returns:
   
   ## Properties
 
-- [count](#count-property)
-- [rotation](#rotation-property)
-- [scale](#scale-property)
+- [count](#count)
+- [rotation](#rotation)
+- [scale](#scale)
 
 
 

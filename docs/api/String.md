@@ -4,17 +4,17 @@
 
 ## Properties
 
-- [length](#length-property)
+- [length](#length)
 
 ## Class methods
 
-- [Input](#Input-classmethod)
-- [String](#String-classmethod)
+- [Input](#Input)
+- [String](#String)
 
 ## Static methods
 
-- [LineBreak](#LineBreak-staticmethod)
-- [Tab](#Tab-staticmethod)
+- [LineBreak](#LineBreak)
+- [Tab](#Tab)
 
 ## Methods
 

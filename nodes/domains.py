@@ -6,8 +6,6 @@ class Domain(geodom.Domain):
     def ID(self):
         """
 
-        ## ID <sub>*property*</sub>
-
         ```python
         def ID(self):
 
@@ -26,8 +24,6 @@ class Domain(geodom.Domain):
     @ID.setter
     def ID(self, attr_value):
         """
-
-        ## ID <sub>*etter*</sub>
 
         ```python
         def ID(self, attr_value):
@@ -49,8 +45,6 @@ class Domain(geodom.Domain):
 
     def accumulate_field(self, value=None, group_index=None):
         """
-
-        ## accumulate_field
 
         ```python
         def accumulate_field(self, value=None, group_index=None):
@@ -78,8 +72,6 @@ class Domain(geodom.Domain):
     def attribute_max(self, attribute=None):
         """
 
-        ## attribute_max
-
         ```python
         def attribute_max(self, attribute=None):
 
@@ -101,8 +93,6 @@ class Domain(geodom.Domain):
 
     def attribute_mean(self, attribute=None):
         """
-
-        ## attribute_mean
 
         ```python
         def attribute_mean(self, attribute=None):
@@ -126,8 +116,6 @@ class Domain(geodom.Domain):
     def attribute_median(self, attribute=None):
         """
 
-        ## attribute_median
-
         ```python
         def attribute_median(self, attribute=None):
 
@@ -149,8 +137,6 @@ class Domain(geodom.Domain):
 
     def attribute_min(self, attribute=None):
         """
-
-        ## attribute_min
 
         ```python
         def attribute_min(self, attribute=None):
@@ -174,8 +160,6 @@ class Domain(geodom.Domain):
     def attribute_range(self, attribute=None):
         """
 
-        ## attribute_range
-
         ```python
         def attribute_range(self, attribute=None):
 
@@ -197,8 +181,6 @@ class Domain(geodom.Domain):
 
     def attribute_statistic(self, attribute=None):
         """
-
-        ## attribute_statistic
 
         ```python
         def attribute_statistic(self, attribute=None):
@@ -222,8 +204,6 @@ class Domain(geodom.Domain):
     def attribute_std(self, attribute=None):
         """
 
-        ## attribute_std
-
         ```python
         def attribute_std(self, attribute=None):
 
@@ -245,8 +225,6 @@ class Domain(geodom.Domain):
 
     def attribute_sum(self, attribute=None):
         """
-
-        ## attribute_sum
 
         ```python
         def attribute_sum(self, attribute=None):
@@ -270,8 +248,6 @@ class Domain(geodom.Domain):
     def attribute_var(self, attribute=None):
         """
 
-        ## attribute_var
-
         ```python
         def attribute_var(self, attribute=None):
 
@@ -293,8 +269,6 @@ class Domain(geodom.Domain):
 
     def capture_attribute(self, value=None):
         """
-
-        ## capture_attribute
 
         ```python
         def capture_attribute(self, value=None):
@@ -319,8 +293,6 @@ class Domain(geodom.Domain):
     def domain_index(self):
         """
 
-        ## domain_index <sub>*property*</sub>
-
         ```python
         def domain_index(self):
 
@@ -338,8 +310,6 @@ class Domain(geodom.Domain):
 
     def field_at_index(self, index=None, value=None):
         """
-
-        ## field_at_index
 
         ```python
         def field_at_index(self, index=None, value=None):
@@ -364,8 +334,6 @@ class Domain(geodom.Domain):
     def get_named_boolean(self, name=None):
         """
 
-        ## get_named_boolean
-
         ```python
         def get_named_boolean(self, name=None):
 
@@ -386,8 +354,6 @@ class Domain(geodom.Domain):
 
     def get_named_color(self, name=None):
         """
-
-        ## get_named_color
 
         ```python
         def get_named_color(self, name=None):
@@ -410,8 +376,6 @@ class Domain(geodom.Domain):
     def get_named_float(self, name=None):
         """
 
-        ## get_named_float
-
         ```python
         def get_named_float(self, name=None):
 
@@ -433,8 +397,6 @@ class Domain(geodom.Domain):
     def get_named_integer(self, name=None):
         """
 
-        ## get_named_integer
-
         ```python
         def get_named_integer(self, name=None):
 
@@ -455,8 +417,6 @@ class Domain(geodom.Domain):
 
     def get_named_vector(self, name=None):
         """
-
-        ## get_named_vector
 
         ```python
         def get_named_vector(self, name=None):
@@ -480,8 +440,6 @@ class Domain(geodom.Domain):
     def index(self):
         """
 
-        ## index <sub>*property*</sub>
-
         ```python
         def index(self):
 
@@ -499,8 +457,6 @@ class Domain(geodom.Domain):
 
     def interpolate(self, value=None):
         """
-
-        ## interpolate
 
         ```python
         def interpolate(self, value=None):
@@ -525,8 +481,6 @@ class Domain(geodom.Domain):
     def material_index(self):
         """
 
-        ## material_index <sub>*property*</sub>
-
         ```python
         def material_index(self):
 
@@ -544,8 +498,6 @@ class Domain(geodom.Domain):
 
     def material_selection(self, material=None):
         """
-
-        ## material_selection
 
         ```python
         def material_selection(self, material=None):
@@ -567,8 +519,6 @@ class Domain(geodom.Domain):
 
     def named_attribute(self, name=None, data_type='FLOAT'):
         """
-
-        ## named_attribute
 
         ```python
         def named_attribute(self, name=None, data_type='FLOAT'):
@@ -593,8 +543,6 @@ class Domain(geodom.Domain):
     def normal(self):
         """
 
-        ## normal <sub>*property*</sub>
-
         ```python
         def normal(self):
 
@@ -614,8 +562,6 @@ class Domain(geodom.Domain):
     def position(self):
         """
 
-        ## position <sub>*property*</sub>
-
         ```python
         def position(self):
 
@@ -634,8 +580,6 @@ class Domain(geodom.Domain):
     @position.setter
     def position(self, attr_value):
         """
-
-        ## position <sub>*etter*</sub>
 
         ```python
         def position(self, attr_value):
@@ -657,8 +601,6 @@ class Domain(geodom.Domain):
 
     def random_boolean(self, probability=None, ID=None, seed=None):
         """
-
-        ## random_boolean
 
         ```python
         def random_boolean(self, probability=None, ID=None, seed=None):
@@ -682,8 +624,6 @@ class Domain(geodom.Domain):
 
     def random_float(self, min=None, max=None, ID=None, seed=None):
         """
-
-        ## random_float
 
         ```python
         def random_float(self, min=None, max=None, ID=None, seed=None):
@@ -709,8 +649,6 @@ class Domain(geodom.Domain):
     def random_integer(self, min=None, max=None, ID=None, seed=None):
         """
 
-        ## random_integer
-
         ```python
         def random_integer(self, min=None, max=None, ID=None, seed=None):
 
@@ -734,8 +672,6 @@ class Domain(geodom.Domain):
 
     def random_vector(self, min=None, max=None, ID=None, seed=None):
         """
-
-        ## random_vector
 
         ```python
         def random_vector(self, min=None, max=None, ID=None, seed=None):
@@ -761,8 +697,6 @@ class Domain(geodom.Domain):
     def remove_named_attribute(self, name=None):
         """
 
-        ## remove_named_attribute
-
         ```python
         def remove_named_attribute(self, name=None):
 
@@ -783,8 +717,6 @@ class Domain(geodom.Domain):
 
     def sample_index(self, value=None, index=None, clamp=False):
         """
-
-        ## sample_index
 
         ```python
         def sample_index(self, value=None, index=None, clamp=False):
@@ -810,8 +742,6 @@ class Domain(geodom.Domain):
     def set_ID(self, ID=None):
         """
 
-        ## set_ID
-
         ```python
         def set_ID(self, ID=None):
 
@@ -833,8 +763,6 @@ class Domain(geodom.Domain):
     def set_material_index(self, material_index=None):
         """
 
-        ## set_material_index
-
         ```python
         def set_material_index(self, material_index=None):
 
@@ -855,8 +783,6 @@ class Domain(geodom.Domain):
 
     def set_named_boolean(self, name=None, value=None):
         """
-
-        ## set_named_boolean
 
         ```python
         def set_named_boolean(self, name=None, value=None):
@@ -880,8 +806,6 @@ class Domain(geodom.Domain):
     def set_named_color(self, name=None, value=None):
         """
 
-        ## set_named_color
-
         ```python
         def set_named_color(self, name=None, value=None):
 
@@ -903,8 +827,6 @@ class Domain(geodom.Domain):
 
     def set_named_float(self, name=None, value=None):
         """
-
-        ## set_named_float
 
         ```python
         def set_named_float(self, name=None, value=None):
@@ -928,8 +850,6 @@ class Domain(geodom.Domain):
     def set_named_integer(self, name=None, value=None):
         """
 
-        ## set_named_integer
-
         ```python
         def set_named_integer(self, name=None, value=None):
 
@@ -951,8 +871,6 @@ class Domain(geodom.Domain):
 
     def set_named_vector(self, name=None, value=None):
         """
-
-        ## set_named_vector
 
         ```python
         def set_named_vector(self, name=None, value=None):
@@ -976,8 +894,6 @@ class Domain(geodom.Domain):
     def set_position(self, position=None, offset=None):
         """
 
-        ## set_position
-
         ```python
         def set_position(self, position=None, offset=None):
 
@@ -999,8 +915,6 @@ class Domain(geodom.Domain):
 
     def store_named_attribute(self, name=None, value=None):
         """
-
-        ## store_named_attribute
 
         ```python
         def store_named_attribute(self, name=None, value=None):
@@ -1028,8 +942,6 @@ class Vertex(Domain):
     def corners(self, weights=None, sort_index=None):
         """
 
-        ## corners
-
         ```python
         def corners(self, weights=None, sort_index=None):
 
@@ -1055,8 +967,6 @@ class Vertex(Domain):
     def corners_index(self, weights=None, sort_index=None):
         """
 
-        ## corners_index
-
         ```python
         def corners_index(self, weights=None, sort_index=None):
 
@@ -1078,8 +988,6 @@ class Vertex(Domain):
 
     def corners_total(self, weights=None, sort_index=None):
         """
-
-        ## corners_total
 
         ```python
         def corners_total(self, weights=None, sort_index=None):
@@ -1104,8 +1012,6 @@ class Vertex(Domain):
     def count(self, geometry=None):
         """
 
-        ## count <sub>*property*</sub>
-
         ```python
         def count(self, geometry=None):
 
@@ -1123,8 +1029,6 @@ class Vertex(Domain):
 
     def delete(self, mode='ALL'):
         """
-
-        ## delete
 
         ```python
         def delete(self, mode='ALL'):
@@ -1147,8 +1051,6 @@ class Vertex(Domain):
     def delete_all(self):
         """
 
-        ## delete_all
-
         ```python
         def delete_all(self):
 
@@ -1166,8 +1068,6 @@ class Vertex(Domain):
 
     def delete_edges(self):
         """
-
-        ## delete_edges
 
         ```python
         def delete_edges(self):
@@ -1187,8 +1087,6 @@ class Vertex(Domain):
     def delete_faces(self):
         """
 
-        ## delete_faces
-
         ```python
         def delete_faces(self):
 
@@ -1206,8 +1104,6 @@ class Vertex(Domain):
 
     def duplicate(self, amount=None):
         """
-
-        ## duplicate
 
         ```python
         def duplicate(self, amount=None):
@@ -1229,8 +1125,6 @@ class Vertex(Domain):
 
     def edges(self, weights=None, sort_index=None):
         """
-
-        ## edges
 
         ```python
         def edges(self, weights=None, sort_index=None):
@@ -1257,8 +1151,6 @@ class Vertex(Domain):
     def edges_index(self, weights=None, sort_index=None):
         """
 
-        ## edges_index
-
         ```python
         def edges_index(self, weights=None, sort_index=None):
 
@@ -1281,8 +1173,6 @@ class Vertex(Domain):
     def edges_total(self, weights=None, sort_index=None):
         """
 
-        ## edges_total
-
         ```python
         def edges_total(self, weights=None, sort_index=None):
 
@@ -1304,8 +1194,6 @@ class Vertex(Domain):
 
     def extrude(self, offset=None, offset_scale=None, individual=None):
         """
-
-        ## extrude
 
         ```python
         def extrude(self, offset=None, offset_scale=None, individual=None):
@@ -1333,8 +1221,6 @@ class Vertex(Domain):
     def instance_on_points(self, instance=None, pick_instance=None, instance_index=None, rotation=None, scale=None):
         """
 
-        ## instance_on_points
-
         ```python
         def instance_on_points(self, instance=None, pick_instance=None, instance_index=None, rotation=None, scale=None):
 
@@ -1361,8 +1247,6 @@ class Vertex(Domain):
     def merge_by_distance(self, distance=None, mode='ALL'):
         """
 
-        ## merge_by_distance
-
         ```python
         def merge_by_distance(self, distance=None, mode='ALL'):
 
@@ -1386,8 +1270,6 @@ class Vertex(Domain):
     def neighbors(self):
         """
 
-        ## neighbors <sub>*property*</sub>
-
         ```python
         def neighbors(self):
 
@@ -1408,8 +1290,6 @@ class Vertex(Domain):
     @property
     def neighbors_face_count(self):
         """
-
-        ## neighbors_face_count <sub>*property*</sub>
 
         ```python
         def neighbors_face_count(self):
@@ -1432,8 +1312,6 @@ class Vertex(Domain):
     def neighbors_vertex_count(self):
         """
 
-        ## neighbors_vertex_count <sub>*property*</sub>
-
         ```python
         def neighbors_vertex_count(self):
 
@@ -1453,8 +1331,6 @@ class Vertex(Domain):
 
     def proximity(self, target=None, source_position=None):
         """
-
-        ## proximity
 
         ```python
         def proximity(self, target=None, source_position=None):
@@ -1478,8 +1354,6 @@ class Vertex(Domain):
     def sample_nearest(self, sample_position=None):
         """
 
-        ## sample_nearest
-
         ```python
         def sample_nearest(self, sample_position=None):
 
@@ -1500,8 +1374,6 @@ class Vertex(Domain):
 
     def separate(self, geometry=None):
         """
-
-        ## separate
 
         ```python
         def separate(self, geometry=None):
@@ -1527,8 +1399,6 @@ class Vertex(Domain):
     def to_points(self, position=None, radius=None, mode='VERTICES'):
         """
 
-        ## to_points
-
         ```python
         def to_points(self, position=None, radius=None, mode='VERTICES'):
 
@@ -1552,8 +1422,6 @@ class Vertex(Domain):
 
     def to_volume(self, density=None, voxel_size=None, voxel_amount=None, exterior_band_width=None, interior_band_width=None, fill_volume=None, resolution_mode='VOXEL_AMOUNT'):
         """
-
-        ## to_volume
 
         ```python
         def to_volume(self, density=None, voxel_size=None, voxel_amount=None, exterior_band_width=None, interior_band_width=None, fill_volume=None, resolution_mode='VOXEL_AMOUNT'):
@@ -1587,8 +1455,6 @@ class Face(Domain):
     def area(self):
         """
 
-        ## area <sub>*property*</sub>
-
         ```python
         def area(self):
 
@@ -1606,8 +1472,6 @@ class Face(Domain):
 
     def corners(self, weights=None, sort_index=None):
         """
-
-        ## corners
 
         ```python
         def corners(self, weights=None, sort_index=None):
@@ -1634,8 +1498,6 @@ class Face(Domain):
     def corners_index(self, weights=None, sort_index=None):
         """
 
-        ## corners_index
-
         ```python
         def corners_index(self, weights=None, sort_index=None):
 
@@ -1657,8 +1519,6 @@ class Face(Domain):
 
     def corners_total(self, weights=None, sort_index=None):
         """
-
-        ## corners_total
 
         ```python
         def corners_total(self, weights=None, sort_index=None):
@@ -1683,8 +1543,6 @@ class Face(Domain):
     def count(self, geometry=None):
         """
 
-        ## count <sub>*property*</sub>
-
         ```python
         def count(self, geometry=None):
 
@@ -1702,8 +1560,6 @@ class Face(Domain):
 
     def delete(self, mode='ALL'):
         """
-
-        ## delete
 
         ```python
         def delete(self, mode='ALL'):
@@ -1726,8 +1582,6 @@ class Face(Domain):
     def delete_all(self):
         """
 
-        ## delete_all
-
         ```python
         def delete_all(self):
 
@@ -1745,8 +1599,6 @@ class Face(Domain):
 
     def delete_edges(self):
         """
-
-        ## delete_edges
 
         ```python
         def delete_edges(self):
@@ -1766,8 +1618,6 @@ class Face(Domain):
     def delete_faces(self):
         """
 
-        ## delete_faces
-
         ```python
         def delete_faces(self):
 
@@ -1785,8 +1635,6 @@ class Face(Domain):
 
     def distribute_points_poisson(self, distance_min=None, density_max=None, density_factor=None, seed=None):
         """
-
-        ## distribute_points_poisson
 
         ```python
         def distribute_points_poisson(self, distance_min=None, density_max=None, density_factor=None, seed=None):
@@ -1816,8 +1664,6 @@ class Face(Domain):
     def distribute_points_random(self, density=None, seed=None):
         """
 
-        ## distribute_points_random
-
         ```python
         def distribute_points_random(self, density=None, seed=None):
 
@@ -1844,8 +1690,6 @@ class Face(Domain):
     def duplicate(self, amount=None):
         """
 
-        ## duplicate
-
         ```python
         def duplicate(self, amount=None):
 
@@ -1866,8 +1710,6 @@ class Face(Domain):
 
     def extrude(self, offset=None, offset_scale=None, individual=None):
         """
-
-        ## extrude
 
         ```python
         def extrude(self, offset=None, offset_scale=None, individual=None):
@@ -1895,8 +1737,6 @@ class Face(Domain):
     def face_set_boundaries(self):
         """
 
-        ## face_set_boundaries
-
         ```python
         def face_set_boundaries(self):
 
@@ -1915,8 +1755,6 @@ class Face(Domain):
     def flip(self):
         """
 
-        ## flip
-
         ```python
         def flip(self):
 
@@ -1934,8 +1772,6 @@ class Face(Domain):
 
     def is_planar(self, threshold=None):
         """
-
-        ## is_planar
 
         ```python
         def is_planar(self, threshold=None):
@@ -1959,8 +1795,6 @@ class Face(Domain):
     def island(self):
         """
 
-        ## island <sub>*property*</sub>
-
         ```python
         def island(self):
 
@@ -1981,8 +1815,6 @@ class Face(Domain):
     @property
     def island_count(self):
         """
-
-        ## island_count <sub>*property*</sub>
 
         ```python
         def island_count(self):
@@ -2005,8 +1837,6 @@ class Face(Domain):
     def island_index(self):
         """
 
-        ## island_index <sub>*property*</sub>
-
         ```python
         def island_index(self):
 
@@ -2028,8 +1858,6 @@ class Face(Domain):
     def material(self):
         """
 
-        ## material <sub>*property*</sub>
-
         ```python
         def material(self):
 
@@ -2049,8 +1877,6 @@ class Face(Domain):
     @material.setter
     def material(self, attr_value):
         """
-
-        ## material <sub>*etter*</sub>
 
         ```python
         def material(self, attr_value):
@@ -2074,8 +1900,6 @@ class Face(Domain):
     def neighbors(self):
         """
 
-        ## neighbors <sub>*property*</sub>
-
         ```python
         def neighbors(self):
 
@@ -2096,8 +1920,6 @@ class Face(Domain):
     @property
     def neighbors_face_count(self):
         """
-
-        ## neighbors_face_count <sub>*property*</sub>
 
         ```python
         def neighbors_face_count(self):
@@ -2120,8 +1942,6 @@ class Face(Domain):
     def neighbors_vertex_count(self):
         """
 
-        ## neighbors_vertex_count <sub>*property*</sub>
-
         ```python
         def neighbors_vertex_count(self):
 
@@ -2141,8 +1961,6 @@ class Face(Domain):
 
     def pack_uv_islands(self, uv=None, margin=None, rotate=None):
         """
-
-        ## pack_uv_islands
 
         ```python
         def pack_uv_islands(self, uv=None, margin=None, rotate=None):
@@ -2167,8 +1985,6 @@ class Face(Domain):
     def proximity(self, target=None, source_position=None):
         """
 
-        ## proximity
-
         ```python
         def proximity(self, target=None, source_position=None):
 
@@ -2191,8 +2007,6 @@ class Face(Domain):
     def sample_nearest(self, sample_position=None):
         """
 
-        ## sample_nearest
-
         ```python
         def sample_nearest(self, sample_position=None):
 
@@ -2213,8 +2027,6 @@ class Face(Domain):
 
     def scale_single_axis(self, scale=None, center=None, axis=None):
         """
-
-        ## scale_single_axis
 
         ```python
         def scale_single_axis(self, scale=None, center=None, axis=None):
@@ -2239,8 +2051,6 @@ class Face(Domain):
     def scale_uniform(self, scale=None, center=None):
         """
 
-        ## scale_uniform
-
         ```python
         def scale_uniform(self, scale=None, center=None):
 
@@ -2262,8 +2072,6 @@ class Face(Domain):
 
     def separate(self, geometry=None):
         """
-
-        ## separate
 
         ```python
         def separate(self, geometry=None):
@@ -2289,8 +2097,6 @@ class Face(Domain):
     def set_material(self, material=None):
         """
 
-        ## set_material
-
         ```python
         def set_material(self, material=None):
 
@@ -2311,8 +2117,6 @@ class Face(Domain):
 
     def set_shade_smooth(self, shade_smooth=None):
         """
-
-        ## set_shade_smooth
 
         ```python
         def set_shade_smooth(self, shade_smooth=None):
@@ -2336,8 +2140,6 @@ class Face(Domain):
     def shade_smooth(self):
         """
 
-        ## shade_smooth <sub>*property*</sub>
-
         ```python
         def shade_smooth(self):
 
@@ -2356,8 +2158,6 @@ class Face(Domain):
     @shade_smooth.setter
     def shade_smooth(self, attr_value):
         """
-
-        ## shade_smooth <sub>*etter*</sub>
 
         ```python
         def shade_smooth(self, attr_value):
@@ -2379,8 +2179,6 @@ class Face(Domain):
 
     def triangulate(self, minimum_vertices=None, ngon_method='BEAUTY', quad_method='SHORTEST_DIAGONAL'):
         """
-
-        ## triangulate
 
         ```python
         def triangulate(self, minimum_vertices=None, ngon_method='BEAUTY', quad_method='SHORTEST_DIAGONAL'):
@@ -2404,8 +2202,6 @@ class Face(Domain):
 
     def uv_unwrap(self, seam=None, margin=None, fill_holes=None, method='ANGLE_BASED'):
         """
-
-        ## uv_unwrap
 
         ```python
         def uv_unwrap(self, seam=None, margin=None, fill_holes=None, method='ANGLE_BASED'):
@@ -2435,8 +2231,6 @@ class Edge(Domain):
     def angle(self):
         """
 
-        ## angle <sub>*property*</sub>
-
         ```python
         def angle(self):
 
@@ -2458,8 +2252,6 @@ class Edge(Domain):
     def count(self, geometry=None):
         """
 
-        ## count <sub>*property*</sub>
-
         ```python
         def count(self, geometry=None):
 
@@ -2477,8 +2269,6 @@ class Edge(Domain):
 
     def delete(self, mode='ALL'):
         """
-
-        ## delete
 
         ```python
         def delete(self, mode='ALL'):
@@ -2501,8 +2291,6 @@ class Edge(Domain):
     def delete_all(self):
         """
 
-        ## delete_all
-
         ```python
         def delete_all(self):
 
@@ -2520,8 +2308,6 @@ class Edge(Domain):
 
     def delete_edges(self):
         """
-
-        ## delete_edges
 
         ```python
         def delete_edges(self):
@@ -2541,8 +2327,6 @@ class Edge(Domain):
     def delete_faces(self):
         """
 
-        ## delete_faces
-
         ```python
         def delete_faces(self):
 
@@ -2560,8 +2344,6 @@ class Edge(Domain):
 
     def duplicate(self, amount=None):
         """
-
-        ## duplicate
 
         ```python
         def duplicate(self, amount=None):
@@ -2583,8 +2365,6 @@ class Edge(Domain):
 
     def edge_paths_to_curves(self, start_vertices=None, next_vertex_index=None):
         """
-
-        ## edge_paths_to_curves
 
         ```python
         def edge_paths_to_curves(self, start_vertices=None, next_vertex_index=None):
@@ -2608,8 +2388,6 @@ class Edge(Domain):
 
     def extrude(self, offset=None, offset_scale=None, individual=None):
         """
-
-        ## extrude
 
         ```python
         def extrude(self, offset=None, offset_scale=None, individual=None):
@@ -2638,8 +2416,6 @@ class Edge(Domain):
     def neighbors(self):
         """
 
-        ## neighbors <sub>*property*</sub>
-
         ```python
         def neighbors(self):
 
@@ -2657,8 +2433,6 @@ class Edge(Domain):
 
     def proximity(self, target=None, source_position=None):
         """
-
-        ## proximity
 
         ```python
         def proximity(self, target=None, source_position=None):
@@ -2682,8 +2456,6 @@ class Edge(Domain):
     def sample_nearest(self, sample_position=None):
         """
 
-        ## sample_nearest
-
         ```python
         def sample_nearest(self, sample_position=None):
 
@@ -2704,8 +2476,6 @@ class Edge(Domain):
 
     def scale_single_axis(self, scale=None, center=None, axis=None):
         """
-
-        ## scale_single_axis
 
         ```python
         def scale_single_axis(self, scale=None, center=None, axis=None):
@@ -2730,8 +2500,6 @@ class Edge(Domain):
     def scale_uniform(self, scale=None, center=None):
         """
 
-        ## scale_uniform
-
         ```python
         def scale_uniform(self, scale=None, center=None):
 
@@ -2753,8 +2521,6 @@ class Edge(Domain):
 
     def separate(self, geometry=None):
         """
-
-        ## separate
 
         ```python
         def separate(self, geometry=None):
@@ -2781,8 +2547,6 @@ class Edge(Domain):
     def signed_angle(self):
         """
 
-        ## signed_angle <sub>*property*</sub>
-
         ```python
         def signed_angle(self):
 
@@ -2803,8 +2567,6 @@ class Edge(Domain):
     def split(self):
         """
 
-        ## split
-
         ```python
         def split(self):
 
@@ -2822,8 +2584,6 @@ class Edge(Domain):
 
     def to_curve(self):
         """
-
-        ## to_curve
 
         ```python
         def to_curve(self):
@@ -2844,8 +2604,6 @@ class Edge(Domain):
     @property
     def unsigned_angle(self):
         """
-
-        ## unsigned_angle <sub>*property*</sub>
 
         ```python
         def unsigned_angle(self):
@@ -2868,8 +2626,6 @@ class Edge(Domain):
     def vertices(self):
         """
 
-        ## vertices <sub>*property*</sub>
-
         ```python
         def vertices(self):
 
@@ -2890,8 +2646,6 @@ class Edge(Domain):
     @property
     def vertices_index(self):
         """
-
-        ## vertices_index <sub>*property*</sub>
 
         ```python
         def vertices_index(self):
@@ -2916,8 +2670,6 @@ class Edge(Domain):
     @property
     def vertices_position(self):
         """
-
-        ## vertices_position <sub>*property*</sub>
 
         ```python
         def vertices_position(self):
@@ -2946,8 +2698,6 @@ class Corner(Domain):
     def count(self, geometry=None):
         """
 
-        ## count <sub>*property*</sub>
-
         ```python
         def count(self, geometry=None):
 
@@ -2965,8 +2715,6 @@ class Corner(Domain):
 
     def edges(self):
         """
-
-        ## edges
 
         ```python
         def edges(self):
@@ -2988,8 +2736,6 @@ class Corner(Domain):
 
     def face(self):
         """
-
-        ## face
 
         ```python
         def face(self):
@@ -3013,8 +2759,6 @@ class Corner(Domain):
     def face_index(self):
         """
 
-        ## face_index <sub>*property*</sub>
-
         ```python
         def face_index(self):
 
@@ -3033,8 +2777,6 @@ class Corner(Domain):
     @property
     def index_in_face(self):
         """
-
-        ## index_in_face <sub>*property*</sub>
 
         ```python
         def index_in_face(self):
@@ -3055,8 +2797,6 @@ class Corner(Domain):
     def next_vertex(self):
         """
 
-        ## next_vertex <sub>*property*</sub>
-
         ```python
         def next_vertex(self):
 
@@ -3074,8 +2814,6 @@ class Corner(Domain):
 
     def offset_in_face(self, offset=None):
         """
-
-        ## offset_in_face
 
         ```python
         def offset_in_face(self, offset=None):
@@ -3099,8 +2837,6 @@ class Corner(Domain):
     def previous_vertex(self):
         """
 
-        ## previous_vertex <sub>*property*</sub>
-
         ```python
         def previous_vertex(self):
 
@@ -3118,8 +2854,6 @@ class Corner(Domain):
 
     def sample_nearest(self, sample_position=None):
         """
-
-        ## sample_nearest
 
         ```python
         def sample_nearest(self, sample_position=None):
@@ -3143,8 +2877,6 @@ class Corner(Domain):
     def vertex_index(self):
         """
 
-        ## vertex_index <sub>*property*</sub>
-
         ```python
         def vertex_index(self):
 
@@ -3167,8 +2899,6 @@ class Spline(Domain):
     def count(self, geometry=None):
         """
 
-        ## count <sub>*property*</sub>
-
         ```python
         def count(self, geometry=None):
 
@@ -3188,8 +2918,6 @@ class Spline(Domain):
     def cyclic(self):
         """
 
-        ## cyclic <sub>*property*</sub>
-
         ```python
         def cyclic(self):
 
@@ -3208,8 +2936,6 @@ class Spline(Domain):
     @cyclic.setter
     def cyclic(self, attr_value):
         """
-
-        ## cyclic <sub>*etter*</sub>
 
         ```python
         def cyclic(self, attr_value):
@@ -3232,8 +2958,6 @@ class Spline(Domain):
     def delete(self, mode='ALL'):
         """
 
-        ## delete
-
         ```python
         def delete(self, mode='ALL'):
 
@@ -3254,8 +2978,6 @@ class Spline(Domain):
 
     def duplicate(self, amount=None):
         """
-
-        ## duplicate
 
         ```python
         def duplicate(self, amount=None):
@@ -3279,8 +3001,6 @@ class Spline(Domain):
     def length(self):
         """
 
-        ## length <sub>*property*</sub>
-
         ```python
         def length(self):
 
@@ -3303,8 +3023,6 @@ class Spline(Domain):
     def material(self):
         """
 
-        ## material <sub>*property*</sub>
-
         ```python
         def material(self):
 
@@ -3324,8 +3042,6 @@ class Spline(Domain):
     @material.setter
     def material(self, attr_value):
         """
-
-        ## material <sub>*etter*</sub>
 
         ```python
         def material(self, attr_value):
@@ -3349,8 +3065,6 @@ class Spline(Domain):
     def normal(self):
         """
 
-        ## normal <sub>*property*</sub>
-
         ```python
         def normal(self):
 
@@ -3369,8 +3083,6 @@ class Spline(Domain):
     @normal.setter
     def normal(self, attr_value):
         """
-
-        ## normal <sub>*etter*</sub>
 
         ```python
         def normal(self, attr_value):
@@ -3392,8 +3104,6 @@ class Spline(Domain):
 
     def points(self, weights=None, sort_index=None):
         """
-
-        ## points
 
         ```python
         def points(self, weights=None, sort_index=None):
@@ -3420,8 +3130,6 @@ class Spline(Domain):
     def resample(self, count=None, length=None, mode='COUNT'):
         """
 
-        ## resample
-
         ```python
         def resample(self, count=None, length=None, mode='COUNT'):
 
@@ -3445,8 +3153,6 @@ class Spline(Domain):
     def resample_count(self, count=None):
         """
 
-        ## resample_count
-
         ```python
         def resample_count(self, count=None):
 
@@ -3468,8 +3174,6 @@ class Spline(Domain):
     def resample_evaluated(self):
         """
 
-        ## resample_evaluated
-
         ```python
         def resample_evaluated(self):
 
@@ -3487,8 +3191,6 @@ class Spline(Domain):
 
     def resample_length(self, length=None):
         """
-
-        ## resample_length
 
         ```python
         def resample_length(self, length=None):
@@ -3512,8 +3214,6 @@ class Spline(Domain):
     def resolution(self):
         """
 
-        ## resolution <sub>*property*</sub>
-
         ```python
         def resolution(self):
 
@@ -3532,8 +3232,6 @@ class Spline(Domain):
     @resolution.setter
     def resolution(self, attr_value):
         """
-
-        ## resolution <sub>*etter*</sub>
 
         ```python
         def resolution(self, attr_value):
@@ -3555,8 +3253,6 @@ class Spline(Domain):
 
     def separate(self, geometry=None):
         """
-
-        ## separate
 
         ```python
         def separate(self, geometry=None):
@@ -3582,8 +3278,6 @@ class Spline(Domain):
     def set_cyclic(self, cyclic=None):
         """
 
-        ## set_cyclic
-
         ```python
         def set_cyclic(self, cyclic=None):
 
@@ -3604,8 +3298,6 @@ class Spline(Domain):
 
     def set_material(self, material=None):
         """
-
-        ## set_material
 
         ```python
         def set_material(self, material=None):
@@ -3628,8 +3320,6 @@ class Spline(Domain):
     def set_normal(self, mode='MINIMUM_TWIST'):
         """
 
-        ## set_normal
-
         ```python
         def set_normal(self, mode='MINIMUM_TWIST'):
 
@@ -3651,8 +3341,6 @@ class Spline(Domain):
     def set_resolution(self, resolution=None):
         """
 
-        ## set_resolution
-
         ```python
         def set_resolution(self, resolution=None):
 
@@ -3673,8 +3361,6 @@ class Spline(Domain):
 
     def set_type(self, spline_type='POLY'):
         """
-
-        ## set_type
 
         ```python
         def set_type(self, spline_type='POLY'):
@@ -3698,8 +3384,6 @@ class Spline(Domain):
     def type(self):
         """
 
-        ## type <sub>*property*</sub>
-
         ```python
         def type(self):
 
@@ -3719,8 +3403,6 @@ class Spline(Domain):
     @type.setter
     def type(self, attr_value):
         """
-
-        ## type <sub>*etter*</sub>
 
         ```python
         def type(self, attr_value):
@@ -3747,8 +3429,6 @@ class ControlPoint(Domain):
     def count(self, geometry=None):
         """
 
-        ## count <sub>*property*</sub>
-
         ```python
         def count(self, geometry=None):
 
@@ -3766,8 +3446,6 @@ class ControlPoint(Domain):
 
     def curve(self):
         """
-
-        ## curve
 
         ```python
         def curve(self):
@@ -3790,8 +3468,6 @@ class ControlPoint(Domain):
     def delete(self, mode='ALL'):
         """
 
-        ## delete
-
         ```python
         def delete(self, mode='ALL'):
 
@@ -3813,8 +3489,6 @@ class ControlPoint(Domain):
     def duplicate(self, amount=None):
         """
 
-        ## duplicate
-
         ```python
         def duplicate(self, amount=None):
 
@@ -3835,8 +3509,6 @@ class ControlPoint(Domain):
 
     def endpoint_selection(self, start_size=None, end_size=None):
         """
-
-        ## endpoint_selection
 
         ```python
         def endpoint_selection(self, start_size=None, end_size=None):
@@ -3860,8 +3532,6 @@ class ControlPoint(Domain):
     def handle_positions(self, relative=None):
         """
 
-        ## handle_positions
-
         ```python
         def handle_positions(self, relative=None):
 
@@ -3882,8 +3552,6 @@ class ControlPoint(Domain):
 
     def handle_type_selection(self, left=True, right=True, handle_type='AUTO'):
         """
-
-        ## handle_type_selection
 
         ```python
         def handle_type_selection(self, left=True, right=True, handle_type='AUTO'):
@@ -3909,8 +3577,6 @@ class ControlPoint(Domain):
     def handle_type_selection_free(self, left=True, right=True):
         """
 
-        ## handle_type_selection
-
         ```python
         def handle_type_selection_free(self, left=True, right=True):
 
@@ -3932,8 +3598,6 @@ class ControlPoint(Domain):
 
     def handle_type_selection_auto(self, left=True, right=True):
         """
-
-        ## handle_type_selection
 
         ```python
         def handle_type_selection_auto(self, left=True, right=True):
@@ -3957,8 +3621,6 @@ class ControlPoint(Domain):
     def handle_type_selection_vector(self, left=True, right=True):
         """
 
-        ## handle_type_selection
-
         ```python
         def handle_type_selection_vector(self, left=True, right=True):
 
@@ -3980,8 +3642,6 @@ class ControlPoint(Domain):
 
     def handle_type_selection_align(self, left=True, right=True):
         """
-
-        ## handle_type_selection
 
         ```python
         def handle_type_selection_align(self, left=True, right=True):
@@ -4005,8 +3665,6 @@ class ControlPoint(Domain):
     def handle_type_selection_node(self, handle_type='AUTO', mode={'LEFT', 'RIGHT'}):
         """
 
-        ## handle_type_selection_node
-
         ```python
         def handle_type_selection_node(self, handle_type='AUTO', mode={'LEFT', 'RIGHT'}):
 
@@ -4028,8 +3686,6 @@ class ControlPoint(Domain):
 
     def instance_on_points(self, instance=None, pick_instance=None, instance_index=None, rotation=None, scale=None):
         """
-
-        ## instance_on_points
 
         ```python
         def instance_on_points(self, instance=None, pick_instance=None, instance_index=None, rotation=None, scale=None):
@@ -4058,8 +3714,6 @@ class ControlPoint(Domain):
     def left_handle_positions(self):
         """
 
-        ## left_handle_positions <sub>*property*</sub>
-
         ```python
         def left_handle_positions(self):
 
@@ -4078,8 +3732,6 @@ class ControlPoint(Domain):
     @left_handle_positions.setter
     def left_handle_positions(self, attr_value):
         """
-
-        ## left_handle_positions <sub>*etter*</sub>
 
         ```python
         def left_handle_positions(self, attr_value):
@@ -4101,8 +3753,6 @@ class ControlPoint(Domain):
 
     def offset(self, offset=None):
         """
-
-        ## offset
 
         ```python
         def offset(self, offset=None):
@@ -4129,8 +3779,6 @@ class ControlPoint(Domain):
     def parameter(self):
         """
 
-        ## parameter <sub>*property*</sub>
-
         ```python
         def parameter(self):
 
@@ -4155,8 +3803,6 @@ class ControlPoint(Domain):
     def parameter_factor(self):
         """
 
-        ## parameter_factor <sub>*property*</sub>
-
         ```python
         def parameter_factor(self):
 
@@ -4177,8 +3823,6 @@ class ControlPoint(Domain):
     @property
     def parameter_index(self):
         """
-
-        ## parameter_index <sub>*property*</sub>
 
         ```python
         def parameter_index(self):
@@ -4201,8 +3845,6 @@ class ControlPoint(Domain):
     def parameter_length(self):
         """
 
-        ## parameter_length <sub>*property*</sub>
-
         ```python
         def parameter_length(self):
 
@@ -4222,8 +3864,6 @@ class ControlPoint(Domain):
 
     def proximity(self, target=None, source_position=None):
         """
-
-        ## proximity
 
         ```python
         def proximity(self, target=None, source_position=None):
@@ -4248,8 +3888,6 @@ class ControlPoint(Domain):
     def radius(self):
         """
 
-        ## radius <sub>*property*</sub>
-
         ```python
         def radius(self):
 
@@ -4268,8 +3906,6 @@ class ControlPoint(Domain):
     @radius.setter
     def radius(self, attr_value):
         """
-
-        ## radius <sub>*etter*</sub>
 
         ```python
         def radius(self, attr_value):
@@ -4293,8 +3929,6 @@ class ControlPoint(Domain):
     def right_handle_positions(self):
         """
 
-        ## right_handle_positions <sub>*property*</sub>
-
         ```python
         def right_handle_positions(self):
 
@@ -4313,8 +3947,6 @@ class ControlPoint(Domain):
     @right_handle_positions.setter
     def right_handle_positions(self, attr_value):
         """
-
-        ## right_handle_positions <sub>*etter*</sub>
 
         ```python
         def right_handle_positions(self, attr_value):
@@ -4336,8 +3968,6 @@ class ControlPoint(Domain):
 
     def separate(self, geometry=None):
         """
-
-        ## separate
 
         ```python
         def separate(self, geometry=None):
@@ -4363,8 +3993,6 @@ class ControlPoint(Domain):
     def set_handle_positions(self, position=None, offset=None, mode='LEFT'):
         """
 
-        ## set_handle_positions
-
         ```python
         def set_handle_positions(self, position=None, offset=None, mode='LEFT'):
 
@@ -4388,8 +4016,6 @@ class ControlPoint(Domain):
     def set_handle_positions_left(self, position=None, offset=None):
         """
 
-        ## set_handle_positions_left
-
         ```python
         def set_handle_positions_left(self, position=None, offset=None):
 
@@ -4412,8 +4038,6 @@ class ControlPoint(Domain):
     def set_handle_positions_right(self, position=None, offset=None):
         """
 
-        ## set_handle_positions_right
-
         ```python
         def set_handle_positions_right(self, position=None, offset=None):
 
@@ -4435,8 +4059,6 @@ class ControlPoint(Domain):
 
     def set_handle_type(self, left=True, right=True, handle_type='AUTO'):
         """
-
-        ## set_handle_type
 
         ```python
         def set_handle_type(self, left=True, right=True, handle_type='AUTO'):
@@ -4464,8 +4086,6 @@ class ControlPoint(Domain):
     def set_handle_type_node(self, handle_type='AUTO', mode={'LEFT', 'RIGHT'}):
         """
 
-        ## set_handle_type_node
-
         ```python
         def set_handle_type_node(self, handle_type='AUTO', mode={'LEFT', 'RIGHT'}):
 
@@ -4488,8 +4108,6 @@ class ControlPoint(Domain):
     def set_radius(self, radius=None):
         """
 
-        ## set_radius
-
         ```python
         def set_radius(self, radius=None):
 
@@ -4510,8 +4128,6 @@ class ControlPoint(Domain):
 
     def set_tilt(self, tilt=None):
         """
-
-        ## set_tilt
 
         ```python
         def set_tilt(self, tilt=None):
@@ -4535,8 +4151,6 @@ class ControlPoint(Domain):
     def tangent(self):
         """
 
-        ## tangent <sub>*property*</sub>
-
         ```python
         def tangent(self):
 
@@ -4556,8 +4170,6 @@ class ControlPoint(Domain):
     def tilt(self):
         """
 
-        ## tilt <sub>*property*</sub>
-
         ```python
         def tilt(self):
 
@@ -4576,8 +4188,6 @@ class ControlPoint(Domain):
     @tilt.setter
     def tilt(self, attr_value):
         """
-
-        ## tilt <sub>*etter*</sub>
 
         ```python
         def tilt(self, attr_value):
@@ -4604,8 +4214,6 @@ class CloudPoint(Domain):
     def count(self, geometry=None):
         """
 
-        ## count <sub>*property*</sub>
-
         ```python
         def count(self, geometry=None):
 
@@ -4623,8 +4231,6 @@ class CloudPoint(Domain):
 
     def delete(self, mode='ALL'):
         """
-
-        ## delete
 
         ```python
         def delete(self, mode='ALL'):
@@ -4647,8 +4253,6 @@ class CloudPoint(Domain):
     def duplicate(self, amount=None):
         """
 
-        ## duplicate
-
         ```python
         def duplicate(self, amount=None):
 
@@ -4669,8 +4273,6 @@ class CloudPoint(Domain):
 
     def instance_on_points(self, instance=None, pick_instance=None, instance_index=None, rotation=None, scale=None):
         """
-
-        ## instance_on_points
 
         ```python
         def instance_on_points(self, instance=None, pick_instance=None, instance_index=None, rotation=None, scale=None):
@@ -4698,8 +4300,6 @@ class CloudPoint(Domain):
     def proximity(self, target=None, source_position=None):
         """
 
-        ## proximity
-
         ```python
         def proximity(self, target=None, source_position=None):
 
@@ -4723,8 +4323,6 @@ class CloudPoint(Domain):
     def radius(self):
         """
 
-        ## radius <sub>*property*</sub>
-
         ```python
         def radius(self):
 
@@ -4743,8 +4341,6 @@ class CloudPoint(Domain):
     @radius.setter
     def radius(self, attr_value):
         """
-
-        ## radius <sub>*etter*</sub>
 
         ```python
         def radius(self, attr_value):
@@ -4766,8 +4362,6 @@ class CloudPoint(Domain):
 
     def to_vertices(self, points=None):
         """
-
-        ## to_vertices
 
         ```python
         def to_vertices(self, points=None):
@@ -4795,8 +4389,6 @@ class Instance(Domain):
     def count(self, geometry=None):
         """
 
-        ## count <sub>*property*</sub>
-
         ```python
         def count(self, geometry=None):
 
@@ -4814,8 +4406,6 @@ class Instance(Domain):
 
     def delete(self, mode='ALL'):
         """
-
-        ## delete
 
         ```python
         def delete(self, mode='ALL'):
@@ -4838,8 +4428,6 @@ class Instance(Domain):
     def duplicate(self, amount=None):
         """
 
-        ## duplicate
-
         ```python
         def duplicate(self, amount=None):
 
@@ -4860,8 +4448,6 @@ class Instance(Domain):
 
     def rotate(self, rotation=None, pivot_point=None, local_space=None):
         """
-
-        ## rotate
 
         ```python
         def rotate(self, rotation=None, pivot_point=None, local_space=None):
@@ -4887,8 +4473,6 @@ class Instance(Domain):
     def rotation(self):
         """
 
-        ## rotation <sub>*property*</sub>
-
         ```python
         def rotation(self):
 
@@ -4908,8 +4492,6 @@ class Instance(Domain):
     def scale(self):
         """
 
-        ## scale <sub>*property*</sub>
-
         ```python
         def scale(self):
 
@@ -4927,8 +4509,6 @@ class Instance(Domain):
 
     def separate(self, geometry=None):
         """
-
-        ## separate
 
         ```python
         def separate(self, geometry=None):
@@ -4954,8 +4534,6 @@ class Instance(Domain):
     def set_scale(self, scale=None, center=None, local_space=None):
         """
 
-        ## set_scale
-
         ```python
         def set_scale(self, scale=None, center=None, local_space=None):
 
@@ -4979,8 +4557,6 @@ class Instance(Domain):
     def to_points(self, position=None, radius=None):
         """
 
-        ## to_points
-
         ```python
         def to_points(self, position=None, radius=None):
 
@@ -5003,8 +4579,6 @@ class Instance(Domain):
 
     def translate(self, translation=None, local_space=None):
         """
-
-        ## translate
 
         ```python
         def translate(self, translation=None, local_space=None):

@@ -34,8 +34,6 @@
 
 
 
-## color_ramp <sub>*property*</sub>
-
 ```python
 def color_ramp(self):
 
@@ -135,8 +133,6 @@ def Frame(cls)
 
 
 
-## Frame <sub>*classmethod*</sub>
-
 ```python
 def Frame(cls):
 
@@ -185,8 +181,6 @@ def Seconds(cls)
 
 
 
-## Seconds <sub>*classmethod*</sub>
-
 ```python
 def Seconds(cls):
 
@@ -211,8 +205,6 @@ def Value(cls)
 ```
 
 
-
-## Value <sub>*classmethod*</sub>
 
 ```python
 def Value(cls):
@@ -240,8 +232,6 @@ def abs(self, clamp=False)
 
 
 
-## abs
-
 ```python
 def abs(self, clamp=False):
 
@@ -268,8 +258,6 @@ def absolute(self, clamp=False)
 ```
 
 
-
-## absolute
 
 ```python
 def absolute(self, clamp=False):
@@ -321,8 +309,6 @@ def arccos(self, value=None, clamp=False)
 
 
 
-## arccos
-
 ```python
 def arccos(self, value=None, clamp=False):
 
@@ -350,8 +336,6 @@ def arccosine(self, value=None, clamp=False)
 ```
 
 
-
-## arccosine
 
 ```python
 def arccosine(self, value=None, clamp=False):
@@ -381,8 +365,6 @@ def arcsin(self, value=None, clamp=False)
 
 
 
-## arcsin
-
 ```python
 def arcsin(self, value=None, clamp=False):
 
@@ -410,8 +392,6 @@ def arcsine(self, value=None, clamp=False)
 ```
 
 
-
-## arcsine
 
 ```python
 def arcsine(self, value=None, clamp=False):
@@ -441,8 +421,6 @@ def arctan(self, value=None, clamp=False)
 
 
 
-## arctan
-
 ```python
 def arctan(self, value=None, clamp=False):
 
@@ -470,8 +448,6 @@ def arctan2(self, value1=None, clamp=False)
 ```
 
 
-
-## arctan2
 
 ```python
 def arctan2(self, value1=None, clamp=False):
@@ -501,8 +477,6 @@ def arctangent(self, value=None, clamp=False)
 
 
 
-## arctangent
-
 ```python
 def arctangent(self, value=None, clamp=False):
 
@@ -531,8 +505,6 @@ def ceiling(self)
 
 
 
-## ceiling
-
 ```python
 def ceiling(self):
 
@@ -556,8 +528,6 @@ def clamp(self, min=None, max=None, clamp_type='MINMAX')
 ```
 
 
-
-## clamp
 
 ```python
 def clamp(self, min=None, max=None, clamp_type='MINMAX'):
@@ -588,8 +558,6 @@ def clamp_min_max(self, min=None, max=None)
 
 
 
-## clamp_min_max
-
 ```python
 def clamp_min_max(self, min=None, max=None):
 
@@ -618,8 +586,6 @@ def clamp_range(self, min=None, max=None)
 
 
 
-## clamp_range
-
 ```python
 def clamp_range(self, min=None, max=None):
 
@@ -647,8 +613,6 @@ def compare(self, b=None, epsilon=None, operation='GREATER_THAN')
 ```
 
 
-
-## compare
 
 ```python
 def compare(self, b=None, epsilon=None, operation='GREATER_THAN'):
@@ -679,8 +643,6 @@ def cos(self, value=None, clamp=False)
 
 
 
-## cos
-
 ```python
 def cos(self, value=None, clamp=False):
 
@@ -709,8 +671,6 @@ def cosh(self, value=None, clamp=False)
 
 
 
-## cosh
-
 ```python
 def cosh(self, value=None, clamp=False):
 
@@ -738,8 +698,6 @@ def cosine(self, value=None, clamp=False)
 ```
 
 
-
-## cosine
 
 ```python
 def cosine(self, value=None, clamp=False):
@@ -792,8 +750,6 @@ def equal(self, b=None, epsilon=None)
 
 
 
-## equal
-
 ```python
 def equal(self, b=None, epsilon=None):
 
@@ -822,8 +778,6 @@ def exp(self, clamp=False)
 
 
 
-## exp
-
 ```python
 def exp(self, clamp=False):
 
@@ -850,8 +804,6 @@ def exponent(self, clamp=False)
 ```
 
 
-
-## exponent
 
 ```python
 def exponent(self, clamp=False):
@@ -880,8 +832,6 @@ def fact(self, clamp=False)
 
 
 
-## fact
-
 ```python
 def fact(self, clamp=False):
 
@@ -908,8 +858,6 @@ def float_curve(self, factor=None)
 ```
 
 
-
-## float_curve
 
 ```python
 def float_curve(self, factor=None):
@@ -938,8 +886,6 @@ def floor(self)
 
 
 
-## floor
-
 ```python
 def floor(self):
 
@@ -963,8 +909,6 @@ def fraction(self, clamp=False)
 ```
 
 
-
-## fraction
 
 ```python
 def fraction(self, clamp=False):
@@ -993,8 +937,6 @@ def greater_equal(self, b=None)
 
 
 
-## greater_equal
-
 ```python
 def greater_equal(self, b=None):
 
@@ -1021,8 +963,6 @@ def greater_than(self, b=None)
 ```
 
 
-
-## greater_than
 
 ```python
 def greater_than(self, b=None):
@@ -1051,8 +991,6 @@ def inverse_sqrt(self, clamp=False)
 
 
 
-## inverse_sqrt
-
 ```python
 def inverse_sqrt(self, clamp=False):
 
@@ -1079,8 +1017,6 @@ def less_equal(self, b=None)
 ```
 
 
-
-## less_equal
 
 ```python
 def less_equal(self, b=None):
@@ -1109,8 +1045,6 @@ def less_than(self, b=None)
 
 
 
-## less_than
-
 ```python
 def less_than(self, b=None):
 
@@ -1137,8 +1071,6 @@ def log(self, base=None, clamp=False)
 ```
 
 
-
-## log
 
 ```python
 def log(self, base=None, clamp=False):
@@ -1168,8 +1100,6 @@ def logarithm(self, base=None, clamp=False)
 
 
 
-## logarithm
-
 ```python
 def logarithm(self, base=None, clamp=False):
 
@@ -1197,8 +1127,6 @@ def map_range(self, from_min=None, from_max=None, to_min=None, to_max=None, step
 ```
 
 
-
-## map_range
 
 ```python
 def map_range(self, from_min=None, from_max=None, to_min=None, to_max=None, steps=None, clamp=True, interpolation_type='LINEAR'):
@@ -1233,8 +1161,6 @@ def map_range_linear(self, from_min=None, from_max=None, to_min=None, to_max=Non
 
 
 
-## map_range_linear
-
 ```python
 def map_range_linear(self, from_min=None, from_max=None, to_min=None, to_max=None, clamp=True):
 
@@ -1265,8 +1191,6 @@ def map_range_smooth(self, from_min=None, from_max=None, to_min=None, to_max=Non
 ```
 
 
-
-## map_range_smooth
 
 ```python
 def map_range_smooth(self, from_min=None, from_max=None, to_min=None, to_max=None, clamp=True):
@@ -1299,8 +1223,6 @@ def map_range_smoother(self, from_min=None, from_max=None, to_min=None, to_max=N
 
 
 
-## map_range_smoother
-
 ```python
 def map_range_smoother(self, from_min=None, from_max=None, to_min=None, to_max=None, clamp=True):
 
@@ -1331,8 +1253,6 @@ def map_range_stepped(self, from_min=None, from_max=None, to_min=None, to_max=No
 ```
 
 
-
-## map_range_stepped
 
 ```python
 def map_range_stepped(self, from_min=None, from_max=None, to_min=None, to_max=None, steps=None, clamp=True):
@@ -1366,8 +1286,6 @@ def math_ceil(self, clamp=False)
 
 
 
-## math_ceil
-
 ```python
 def math_ceil(self, clamp=False):
 
@@ -1394,8 +1312,6 @@ def math_compare(self, value=None, epsilon=None, clamp=False)
 ```
 
 
-
-## math_compare
 
 ```python
 def math_compare(self, value=None, epsilon=None, clamp=False):
@@ -1426,8 +1342,6 @@ def math_floor(self, clamp=False)
 
 
 
-## math_floor
-
 ```python
 def math_floor(self, clamp=False):
 
@@ -1454,8 +1368,6 @@ def math_greater_than(self, threshold=None, clamp=False)
 ```
 
 
-
-## math_greater_than
 
 ```python
 def math_greater_than(self, threshold=None, clamp=False):
@@ -1485,8 +1397,6 @@ def math_less_than(self, threshold=None, clamp=False)
 
 
 
-## math_less_than
-
 ```python
 def math_less_than(self, threshold=None, clamp=False):
 
@@ -1515,8 +1425,6 @@ def math_round(self, clamp=False)
 
 
 
-## math_round
-
 ```python
 def math_round(self, clamp=False):
 
@@ -1543,8 +1451,6 @@ def math_trunc(self, clamp=False)
 ```
 
 
-
-## math_trunc
 
 ```python
 def math_trunc(self, clamp=False):
@@ -1573,8 +1479,6 @@ def math_truncate(self, clamp=False)
 
 
 
-## math_truncate
-
 ```python
 def math_truncate(self, clamp=False):
 
@@ -1601,8 +1505,6 @@ def max(self, value=None, clamp=False)
 ```
 
 
-
-## max
 
 ```python
 def max(self, value=None, clamp=False):
@@ -1632,8 +1534,6 @@ def maximum(self, value=None, clamp=False)
 
 
 
-## maximum
-
 ```python
 def maximum(self, value=None, clamp=False):
 
@@ -1661,8 +1561,6 @@ def min(self, value=None, clamp=False)
 ```
 
 
-
-## min
 
 ```python
 def min(self, value=None, clamp=False):
@@ -1692,8 +1590,6 @@ def minimum(self, value=None, clamp=False)
 
 
 
-## minimum
-
 ```python
 def minimum(self, value=None, clamp=False):
 
@@ -1721,8 +1617,6 @@ def mix(self, factor=None, value=None, clamp_factor=True)
 ```
 
 
-
-## mix
 
 ```python
 def mix(self, factor=None, value=None, clamp_factor=True):
@@ -1753,8 +1647,6 @@ def modulo(self, value=None, clamp=False)
 
 
 
-## modulo
-
 ```python
 def modulo(self, value=None, clamp=False):
 
@@ -1782,8 +1674,6 @@ def mul_add(self, multiplier=None, addend=None, clamp=False)
 ```
 
 
-
-## mul_add
 
 ```python
 def mul_add(self, multiplier=None, addend=None, clamp=False):
@@ -1837,8 +1727,6 @@ def multiply_add(self, multiplier=None, addend=None, clamp=False)
 
 
 
-## multiply_add
-
 ```python
 def multiply_add(self, multiplier=None, addend=None, clamp=False):
 
@@ -1868,8 +1756,6 @@ def not_equal(self, b=None, epsilon=None)
 
 
 
-## not_equal
-
 ```python
 def not_equal(self, b=None, epsilon=None):
 
@@ -1897,8 +1783,6 @@ def ping_pong(self, scale=None, clamp=False)
 ```
 
 
-
-## ping_pong
 
 ```python
 def ping_pong(self, scale=None, clamp=False):
@@ -1928,8 +1812,6 @@ def pow(self, exponent=None, clamp=False)
 
 
 
-## pow
-
 ```python
 def pow(self, exponent=None, clamp=False):
 
@@ -1957,8 +1839,6 @@ def power(self, exponent=None, clamp=False)
 ```
 
 
-
-## power
 
 ```python
 def power(self, exponent=None, clamp=False):
@@ -1988,8 +1868,6 @@ def round(self)
 
 
 
-## round
-
 ```python
 def round(self):
 
@@ -2013,8 +1891,6 @@ def sign(self, clamp=False)
 ```
 
 
-
-## sign
 
 ```python
 def sign(self, clamp=False):
@@ -2042,8 +1918,6 @@ def sin(self, value=None, clamp=False)
 ```
 
 
-
-## sin
 
 ```python
 def sin(self, value=None, clamp=False):
@@ -2073,8 +1947,6 @@ def sine(self, value=None, clamp=False)
 
 
 
-## sine
-
 ```python
 def sine(self, value=None, clamp=False):
 
@@ -2103,8 +1975,6 @@ def sinh(self, value=None, clamp=False)
 
 
 
-## sinh
-
 ```python
 def sinh(self, value=None, clamp=False):
 
@@ -2132,8 +2002,6 @@ def smooth_maximum(self, value=None, distance=None, clamp=False)
 ```
 
 
-
-## smooth_maximum
 
 ```python
 def smooth_maximum(self, value=None, distance=None, clamp=False):
@@ -2164,8 +2032,6 @@ def smooth_minimum(self, value=None, distance=None, clamp=False)
 
 
 
-## smooth_minimum
-
 ```python
 def smooth_minimum(self, value=None, distance=None, clamp=False):
 
@@ -2195,8 +2061,6 @@ def snap(self, increment=None, clamp=False)
 
 
 
-## snap
-
 ```python
 def snap(self, increment=None, clamp=False):
 
@@ -2224,8 +2088,6 @@ def sqrt(self, clamp=False)
 ```
 
 
-
-## sqrt
 
 ```python
 def sqrt(self, clamp=False):
@@ -2277,8 +2139,6 @@ def switch(self, switch=None, true=None)
 
 
 
-## switch
-
 ```python
 def switch(self, switch=None, true=None):
 
@@ -2306,8 +2166,6 @@ def tan(self, value=None, clamp=False)
 ```
 
 
-
-## tan
 
 ```python
 def tan(self, value=None, clamp=False):
@@ -2337,8 +2195,6 @@ def tangent(self, value=None, clamp=False)
 
 
 
-## tangent
-
 ```python
 def tangent(self, value=None, clamp=False):
 
@@ -2366,8 +2222,6 @@ def tanh(self, value=None, clamp=False)
 ```
 
 
-
-## tanh
 
 ```python
 def tanh(self, value=None, clamp=False):
@@ -2397,8 +2251,6 @@ def to_degrees(self, clamp=False)
 
 
 
-## to_degrees
-
 ```python
 def to_degrees(self, clamp=False):
 
@@ -2425,8 +2277,6 @@ def to_integer(self, rounding_mode='ROUND')
 ```
 
 
-
-## to_integer
 
 ```python
 def to_integer(self, rounding_mode='ROUND'):
@@ -2455,8 +2305,6 @@ def to_radians(self, clamp=False)
 
 
 
-## to_radians
-
 ```python
 def to_radians(self, clamp=False):
 
@@ -2483,8 +2331,6 @@ def to_string(self, decimals=None)
 ```
 
 
-
-## to_string
 
 ```python
 def to_string(self, decimals=None):
@@ -2513,8 +2359,6 @@ def truncate(self)
 
 
 
-## truncate
-
 ```python
 def truncate(self):
 
@@ -2538,8 +2382,6 @@ def wrap(self, max=None, min=None, clamp=False)
 ```
 
 
-
-## wrap
 
 ```python
 def wrap(self, max=None, min=None, clamp=False):

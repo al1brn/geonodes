@@ -13,24 +13,24 @@ A **Curve** has two [domains](domain.md):
 
 ## Properties
 
-- [domain_size](#domain_size-property)
-- [length](#length-property)
-- [point_count](#point_count-property)
-- [spline_count](#spline_count-property)
+- [domain_size](#domain_size)
+- [length](#length)
+- [point_count](#point_count)
+- [spline_count](#spline_count)
 
 ## Class methods
 
-- [Arc](#Arc-classmethod)
-- [ArcFromPoints](#ArcFromPoints-classmethod)
-- [Circle](#Circle-classmethod)
-- [CircleFromPoints](#CircleFromPoints-classmethod)
-- [Line](#Line-classmethod)
-- [LineDirection](#LineDirection-classmethod)
-- [QuadraticBezier](#QuadraticBezier-classmethod)
-- [Quadrilateral](#Quadrilateral-classmethod)
-- [Spiral](#Spiral-classmethod)
-- [Star](#Star-classmethod)
-- [bezier_segment](#bezier_segment-classmethod)
+- [Arc](#Arc)
+- [ArcFromPoints](#ArcFromPoints)
+- [Circle](#Circle)
+- [CircleFromPoints](#CircleFromPoints)
+- [Line](#Line)
+- [LineDirection](#LineDirection)
+- [QuadraticBezier](#QuadraticBezier)
+- [Quadrilateral](#Quadrilateral)
+- [Spiral](#Spiral)
+- [Star](#Star)
+- [bezier_segment](#bezier_segment)
 
 
 ## Methods

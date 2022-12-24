@@ -24,11 +24,11 @@ node = nodes.Normal()
 | Class or method name | Definition |
 |----------------------|------------|
 | **[Domain](Domain.md)** |
-| [normal](Domain.md#normal-property) | `@property`<br> `def normal(self):` |
+| [normal](Domain.md#normal) | `@property`<br> `def normal(self):` |
 | **[Geometry](Geometry.md)** |
-| [normal](Geometry.md#normal-property) | `@property`<br> `def normal(self):` |
+| [normal](Geometry.md#normal) | `@property`<br> `def normal(self):` |
 | **[Spline](Spline.md)** |
-| [normal](Spline.md#normal-property) | `@property`<br> `def normal(self):` |
+| [normal](Spline.md#normal) | `@property`<br> `def normal(self):` |
 
 <sub>Go to [top](#node-Normal) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

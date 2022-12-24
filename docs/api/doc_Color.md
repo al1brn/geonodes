@@ -34,8 +34,6 @@
 
 
 
-## alpha <sub>*property*</sub>
-
 ```python
 def alpha(self):
 
@@ -55,8 +53,6 @@ def alpha(self):
 ### blue
 
 
-
-## blue <sub>*property*</sub>
 
 ```python
 def blue(self):
@@ -78,8 +74,6 @@ def blue(self):
 
 
 
-## green <sub>*property*</sub>
-
 ```python
 def green(self):
 
@@ -99,8 +93,6 @@ def green(self):
 ### hsl
 
 
-
-## hsl <sub>*property*</sub>
 
 ```python
 def hsl(self):
@@ -124,8 +116,6 @@ def hsl(self):
 
 
 
-## hsv <sub>*property*</sub>
-
 ```python
 def hsv(self):
 
@@ -148,8 +138,6 @@ def hsv(self):
 
 
 
-## hue <sub>*property*</sub>
-
 ```python
 def hue(self):
 
@@ -169,8 +157,6 @@ def hue(self):
 ### lightness
 
 
-
-## lightness <sub>*property*</sub>
 
 ```python
 def lightness(self):
@@ -192,8 +178,6 @@ def lightness(self):
 
 
 
-## red <sub>*property*</sub>
-
 ```python
 def red(self):
 
@@ -213,8 +197,6 @@ def red(self):
 ### rgb
 
 
-
-## rgb <sub>*property*</sub>
 
 ```python
 def rgb(self):
@@ -238,8 +220,6 @@ def rgb(self):
 
 
 
-## rgb_curves <sub>*property*</sub>
-
 ```python
 def rgb_curves(self, fac=None):
 
@@ -260,8 +240,6 @@ def rgb_curves(self, fac=None):
 
 
 
-## saturation <sub>*property*</sub>
-
 ```python
 def saturation(self):
 
@@ -281,8 +259,6 @@ def saturation(self):
 ### value
 
 
-
-## value <sub>*property*</sub>
 
 ```python
 def value(self):
@@ -311,8 +287,6 @@ def Color(cls)
 
 
 
-## Color <sub>*classmethod*</sub>
-
 ```python
 def Color(cls):
 
@@ -337,8 +311,6 @@ def HSL(cls, hue=None, saturation=None, lightness=None, alpha=None)
 ```
 
 
-
-## HSL <sub>*classmethod*</sub>
 
 ```python
 def HSL(cls, hue=None, saturation=None, lightness=None, alpha=None):
@@ -370,8 +342,6 @@ def HSV(cls, hue=None, saturation=None, value=None, alpha=None)
 ```
 
 
-
-## HSV <sub>*classmethod*</sub>
 
 ```python
 def HSV(cls, hue=None, saturation=None, value=None, alpha=None):
@@ -426,8 +396,6 @@ def RGB(cls, red=None, green=None, blue=None, alpha=None)
 
 
 
-## RGB <sub>*classmethod*</sub>
-
 ```python
 def RGB(cls, red=None, green=None, blue=None, alpha=None):
 
@@ -460,8 +428,6 @@ def brighter(self, b=None)
 
 
 
-## brighter
-
 ```python
 def brighter(self, b=None):
 
@@ -489,8 +455,6 @@ def darker(self, b=None)
 
 
 
-## darker
-
 ```python
 def darker(self, b=None):
 
@@ -517,8 +481,6 @@ def equal(self, b=None, epsilon=None)
 ```
 
 
-
-## equal
 
 ```python
 def equal(self, b=None, epsilon=None):
@@ -566,8 +528,6 @@ def mix(self, factor=None, color=None, blend_type='MIX', clamp_factor=True, clam
 
 
 
-## mix
-
 ```python
 def mix(self, factor=None, color=None, blend_type='MIX', clamp_factor=True, clamp_result=False):
 
@@ -599,8 +559,6 @@ def mix_add(self, factor=None, color=None, clamp_factor=True, clamp_result=False
 
 
 
-## mix_add
-
 ```python
 def mix_add(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
 
@@ -630,8 +588,6 @@ def mix_burn(self, factor=None, color=None, clamp_factor=True, clamp_result=Fals
 ```
 
 
-
-## mix_burn
 
 ```python
 def mix_burn(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
@@ -663,8 +619,6 @@ def mix_color(self, factor=None, color=None, clamp_factor=True, clamp_result=Fal
 
 
 
-## mix_color
-
 ```python
 def mix_color(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
 
@@ -694,8 +648,6 @@ def mix_darken(self, factor=None, color=None, clamp_factor=True, clamp_result=Fa
 ```
 
 
-
-## mix_darken
 
 ```python
 def mix_darken(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
@@ -727,8 +679,6 @@ def mix_difference(self, factor=None, color=None, clamp_factor=True, clamp_resul
 
 
 
-## mix_difference
-
 ```python
 def mix_difference(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
 
@@ -758,8 +708,6 @@ def mix_divide(self, factor=None, color=None, clamp_factor=True, clamp_result=Fa
 ```
 
 
-
-## mix_divide
 
 ```python
 def mix_divide(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
@@ -791,8 +739,6 @@ def mix_dodge(self, factor=None, color=None, clamp_factor=True, clamp_result=Fal
 
 
 
-## mix_dodge
-
 ```python
 def mix_dodge(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
 
@@ -822,8 +768,6 @@ def mix_hue(self, factor=None, color=None, clamp_factor=True, clamp_result=False
 ```
 
 
-
-## mix_hue
 
 ```python
 def mix_hue(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
@@ -855,8 +799,6 @@ def mix_lighten(self, factor=None, color=None, clamp_factor=True, clamp_result=F
 
 
 
-## mix_lighten
-
 ```python
 def mix_lighten(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
 
@@ -886,8 +828,6 @@ def mix_linear_light(self, factor=None, color=None, clamp_factor=True, clamp_res
 ```
 
 
-
-## mix_linear_light
 
 ```python
 def mix_linear_light(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
@@ -919,8 +859,6 @@ def mix_multiply(self, factor=None, color=None, clamp_factor=True, clamp_result=
 
 
 
-## mix_multiply
-
 ```python
 def mix_multiply(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
 
@@ -950,8 +888,6 @@ def mix_overlay(self, factor=None, color=None, clamp_factor=True, clamp_result=F
 ```
 
 
-
-## mix_overlay
 
 ```python
 def mix_overlay(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
@@ -983,8 +919,6 @@ def mix_saturation(self, factor=None, color=None, clamp_factor=True, clamp_resul
 
 
 
-## mix_saturation
-
 ```python
 def mix_saturation(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
 
@@ -1014,8 +948,6 @@ def mix_screen(self, factor=None, color=None, clamp_factor=True, clamp_result=Fa
 ```
 
 
-
-## mix_screen
 
 ```python
 def mix_screen(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
@@ -1047,8 +979,6 @@ def mix_soft_light(self, factor=None, color=None, clamp_factor=True, clamp_resul
 
 
 
-## mix_soft_light
-
 ```python
 def mix_soft_light(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
 
@@ -1078,8 +1008,6 @@ def mix_subtract(self, factor=None, color=None, clamp_factor=True, clamp_result=
 ```
 
 
-
-## mix_subtract
 
 ```python
 def mix_subtract(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
@@ -1111,8 +1039,6 @@ def mix_value(self, factor=None, color=None, clamp_factor=True, clamp_result=Fal
 
 
 
-## mix_value
-
 ```python
 def mix_value(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
 
@@ -1142,8 +1068,6 @@ def switch(self, switch=None, true=None)
 ```
 
 
-
-## switch
 
 ```python
 def switch(self, switch=None, true=None):

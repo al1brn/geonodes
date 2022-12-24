@@ -32,8 +32,8 @@ node = nodes.EdgesOfCorner(corner_index=None)
 |----------------------|------------|
 | **[Corner](Corner.md)** |
 | [edges](Corner.md#edges) | `def edges(self):` |
-| [previous_vertex](Corner.md#previous_vertex-property) | `@property`<br> `def previous_vertex(self):` |
-| [next_vertex](Corner.md#next_vertex-property) | `@property`<br> `def next_vertex(self):` |
+| [previous_vertex](Corner.md#previous_vertex) | `@property`<br> `def previous_vertex(self):` |
+| [next_vertex](Corner.md#next_vertex) | `@property`<br> `def next_vertex(self):` |
 | **[Mesh](Mesh.md)** |
 | [edges_of_corner](Mesh.md#edges_of_corner) | `def edges_of_corner(self, corner_index=None):` |
 

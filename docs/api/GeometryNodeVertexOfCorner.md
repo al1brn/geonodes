@@ -30,7 +30,7 @@ node = nodes.VertexOfCorner(corner_index=None)
 | Class or method name | Definition |
 |----------------------|------------|
 | **[Corner](Corner.md)** |
-| [vertex_index](Corner.md#vertex_index-property) | `@property`<br> `def vertex_index(self):` |
+| [vertex_index](Corner.md#vertex_index) | `@property`<br> `def vertex_index(self):` |
 | **[Mesh](Mesh.md)** |
 | [vertex_of_corner](Mesh.md#vertex_of_corner) | `def vertex_of_corner(self, corner_index=None):` |
 

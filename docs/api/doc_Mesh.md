@@ -34,8 +34,6 @@
 
 
 
-## ID <sub>*property*</sub>
-
 ```python
 def ID(self):
 
@@ -55,8 +53,6 @@ def ID(self):
 ### bounding_box
 
 
-
-## bounding_box <sub>*property*</sub>
 
 ```python
 def bounding_box(self):
@@ -78,8 +74,6 @@ def bounding_box(self):
 
 
 
-## bounding_box_min <sub>*property*</sub>
-
 ```python
 def bounding_box_min(self):
 
@@ -99,8 +93,6 @@ def bounding_box_min(self):
 ### convex_hull
 
 
-
-## convex_hull <sub>*property*</sub>
 
 ```python
 def convex_hull(self):
@@ -122,8 +114,6 @@ def convex_hull(self):
 
 
 
-## corner_count <sub>*property*</sub>
-
 ```python
 def corner_count(self):
 
@@ -143,8 +133,6 @@ def corner_count(self):
 ### curve_component
 
 
-
-## curve_component <sub>*property*</sub>
 
 ```python
 def curve_component(self):
@@ -166,8 +154,6 @@ def curve_component(self):
 
 
 
-## domain_size <sub>*property*</sub>
-
 ```python
 def domain_size(self):
 
@@ -187,8 +173,6 @@ def domain_size(self):
 ### edge_count
 
 
-
-## edge_count <sub>*property*</sub>
 
 ```python
 def edge_count(self):
@@ -210,8 +194,6 @@ def edge_count(self):
 
 
 
-## face_count <sub>*property*</sub>
-
 ```python
 def face_count(self):
 
@@ -231,8 +213,6 @@ def face_count(self):
 ### index
 
 
-
-## index <sub>*property*</sub>
 
 ```python
 def index(self):
@@ -254,8 +234,6 @@ def index(self):
 
 
 
-## instances_component <sub>*property*</sub>
-
 ```python
 def instances_component(self):
 
@@ -275,8 +253,6 @@ def instances_component(self):
 ### is_viewport
 
 
-
-## is_viewport <sub>*property*</sub>
 
 ```python
 def is_viewport(self):
@@ -298,8 +274,6 @@ def is_viewport(self):
 
 
 
-## island <sub>*property*</sub>
-
 ```python
 def island(self):
 
@@ -319,8 +293,6 @@ def island(self):
 ### island_count
 
 
-
-## island_count <sub>*property*</sub>
 
 ```python
 def island_count(self):
@@ -342,8 +314,6 @@ def island_count(self):
 
 
 
-## island_index <sub>*property*</sub>
-
 ```python
 def island_index(self):
 
@@ -363,8 +333,6 @@ def island_index(self):
 ### material_index
 
 
-
-## material_index <sub>*property*</sub>
 
 ```python
 def material_index(self):
@@ -386,8 +354,6 @@ def material_index(self):
 
 
 
-## mesh_component <sub>*property*</sub>
-
 ```python
 def mesh_component(self):
 
@@ -407,8 +373,6 @@ def mesh_component(self):
 ### normal
 
 
-
-## normal <sub>*property*</sub>
 
 ```python
 def normal(self):
@@ -430,8 +394,6 @@ def normal(self):
 
 
 
-## point_count <sub>*property*</sub>
-
 ```python
 def point_count(self):
 
@@ -451,8 +413,6 @@ def point_count(self):
 ### points_component
 
 
-
-## points_component <sub>*property*</sub>
 
 ```python
 def points_component(self):
@@ -474,8 +434,6 @@ def points_component(self):
 
 
 
-## position <sub>*property*</sub>
-
 ```python
 def position(self):
 
@@ -495,8 +453,6 @@ def position(self):
 ### radius
 
 
-
-## radius <sub>*property*</sub>
 
 ```python
 def radius(self):
@@ -518,8 +474,6 @@ def radius(self):
 
 
 
-## separate_components <sub>*property*</sub>
-
 ```python
 def separate_components(self):
 
@@ -539,8 +493,6 @@ def separate_components(self):
 ### volume_component
 
 
-
-## volume_component <sub>*property*</sub>
 
 ```python
 def volume_component(self):
@@ -568,8 +520,6 @@ def Circle(cls, vertices=None, radius=None, fill_type='NONE')
 ```
 
 
-
-## Circle <sub>*classmethod*</sub>
 
 ```python
 def Circle(cls, vertices=None, radius=None, fill_type='NONE'):
@@ -601,8 +551,6 @@ def Collection(cls, collection=None, separate_children=None, reset_children=None
 
 
 
-## Collection <sub>*classmethod*</sub>
-
 ```python
 def Collection(cls, collection=None, separate_children=None, reset_children=None, transform_space='ORIGINAL'):
 
@@ -633,8 +581,6 @@ def Cone(vertices=None, side_segments=None, fill_segments=None, radius_top=None,
 ```
 
 
-
-## Cone <sub>*staticmethod*</sub>
 
 ```python
 def Cone(vertices=None, side_segments=None, fill_segments=None, radius_top=None, radius_bottom=None, depth=None, fill_type='NGON'):
@@ -672,8 +618,6 @@ def Cube(cls, size=None, vertices_x=None, vertices_y=None, vertices_z=None)
 
 
 
-## Cube <sub>*classmethod*</sub>
-
 ```python
 def Cube(cls, size=None, vertices_x=None, vertices_y=None, vertices_z=None):
 
@@ -704,8 +648,6 @@ def Cylinder(vertices=None, side_segments=None, fill_segments=None, radius=None,
 ```
 
 
-
-## Cylinder <sub>*staticmethod*</sub>
 
 ```python
 def Cylinder(vertices=None, side_segments=None, fill_segments=None, radius=None, depth=None, fill_type='NGON'):
@@ -757,8 +699,6 @@ def Grid(cls, size_x=None, size_y=None, vertices_x=None, vertices_y=None)
 
 
 
-## Grid <sub>*classmethod*</sub>
-
 ```python
 def Grid(cls, size_x=None, size_y=None, vertices_x=None, vertices_y=None):
 
@@ -789,8 +729,6 @@ def IcoSphere(cls, radius=None, subdivisions=None)
 ```
 
 
-
-## IcoSphere <sub>*classmethod*</sub>
 
 ```python
 def IcoSphere(cls, radius=None, subdivisions=None):
@@ -847,8 +785,6 @@ def Line(cls, count=None, resolution=None, start_location=None, offset=None, cou
 
 
 
-## Line <sub>*classmethod*</sub>
-
 ```python
 def Line(cls, count=None, resolution=None, start_location=None, offset=None, count_mode='TOTAL', mode='OFFSET'):
 
@@ -882,8 +818,6 @@ def LineEndPoints(cls, count=None, start_location=None, end_location=None)
 
 
 
-## LineEndPoints <sub>*classmethod*</sub>
-
 ```python
 def LineEndPoints(cls, count=None, start_location=None, end_location=None):
 
@@ -913,8 +847,6 @@ def LineEndPointsResolution(cls, resolution=None, start_location=None, end_locat
 ```
 
 
-
-## LineEndPointsResolution <sub>*classmethod*</sub>
 
 ```python
 def LineEndPointsResolution(cls, resolution=None, start_location=None, end_location=None):
@@ -946,8 +878,6 @@ def LineOffset(cls, count=None, start_location=None, offset=None)
 
 
 
-## LineOffset <sub>*classmethod*</sub>
-
 ```python
 def LineOffset(cls, count=None, start_location=None, offset=None):
 
@@ -978,8 +908,6 @@ def LineOffsetResolution(cls, resolution=None, start_location=None, offset=None)
 
 
 
-## LineOffsetResolution <sub>*classmethod*</sub>
-
 ```python
 def LineOffsetResolution(cls, resolution=None, start_location=None, offset=None):
 
@@ -1009,8 +937,6 @@ def UVSphere(cls, segments=None, rings=None, radius=None)
 ```
 
 
-
-## UVSphere <sub>*classmethod*</sub>
 
 ```python
 def UVSphere(cls, segments=None, rings=None, radius=None):
@@ -1043,8 +969,6 @@ def attribute_statistic(self, selection=None, attribute=None, domain='POINT')
 
 
 
-## attribute_statistic
-
 ```python
 def attribute_statistic(self, selection=None, attribute=None, domain='POINT'):
 
@@ -1073,8 +997,6 @@ def boolean_difference(self, *mesh_2, self_intersection=None, hole_tolerant=None
 ```
 
 
-
-## boolean_difference
 
 ```python
 def boolean_difference(self, *mesh_2, self_intersection=None, hole_tolerant=None):
@@ -1105,8 +1027,6 @@ def boolean_intersect(*mesh_2, self_intersection=None, hole_tolerant=None)
 
 
 
-## boolean_intersect
-
 ```python
 def boolean_intersect(*mesh_2, self_intersection=None, hole_tolerant=None):
 
@@ -1135,8 +1055,6 @@ def boolean_union(*mesh_2, self_intersection=None, hole_tolerant=None)
 ```
 
 
-
-## boolean_union
 
 ```python
 def boolean_union(*mesh_2, self_intersection=None, hole_tolerant=None):
@@ -1167,8 +1085,6 @@ def capture_attribute(self, value=None, domain='POINT')
 
 
 
-## capture_attribute
-
 ```python
 def capture_attribute(self, value=None, domain='POINT'):
 
@@ -1196,8 +1112,6 @@ def capture_attribute_node(self, geometry=None, value=None, data_type='FLOAT', d
 ```
 
 
-
-## capture_attribute_node
 
 ```python
 def capture_attribute_node(self, geometry=None, value=None, data_type='FLOAT', domain='POINT'):
@@ -1228,8 +1142,6 @@ def corners_of_face(self, face_index=None, weights=None, sort_index=None)
 ```
 
 
-
-## corners_of_face
 
 ```python
 def corners_of_face(self, face_index=None, weights=None, sort_index=None):
@@ -1262,8 +1174,6 @@ def corners_of_vertex(self, vertex_index=None, weights=None, sort_index=None)
 
 
 
-## corners_of_vertex
-
 ```python
 def corners_of_vertex(self, vertex_index=None, weights=None, sort_index=None):
 
@@ -1295,8 +1205,6 @@ def delete(self, selection=None, domain='POINT', mode='ALL')
 
 
 
-## delete
-
 ```python
 def delete(self, selection=None, domain='POINT', mode='ALL'):
 
@@ -1326,8 +1234,6 @@ def delete_all(self, selection=None, domain='POINT')
 
 
 
-## delete_all
-
 ```python
 def delete_all(self, selection=None, domain='POINT'):
 
@@ -1355,8 +1261,6 @@ def delete_edges(self, selection=None, domain='POINT')
 ```
 
 
-
-## delete_edges
 
 ```python
 def delete_edges(self, selection=None, domain='POINT'):
@@ -1386,8 +1290,6 @@ def delete_faces(self, selection=None, domain='POINT')
 
 
 
-## delete_faces
-
 ```python
 def delete_faces(self, selection=None, domain='POINT'):
 
@@ -1415,8 +1317,6 @@ def distribute_points_on_faces(self, selection=None, distance_min=None, density_
 ```
 
 
-
-## distribute_points_on_faces
 
 ```python
 def distribute_points_on_faces(self, selection=None, distance_min=None, density_max=None, density=None, density_factor=None, seed=None, distribute_method='RANDOM'):
@@ -1453,8 +1353,6 @@ def dual_mesh(self, mesh=None, keep_boundaries=None)
 
 
 
-## dual_mesh
-
 ```python
 def dual_mesh(self, mesh=None, keep_boundaries=None):
 
@@ -1482,8 +1380,6 @@ def duplicate(self, selection=None, amount=None, domain='POINT')
 ```
 
 
-
-## duplicate
 
 ```python
 def duplicate(self, selection=None, amount=None, domain='POINT'):
@@ -1514,8 +1410,6 @@ def edge_paths_to_curves(self, start_vertices=None, next_vertex_index=None)
 
 
 
-## edge_paths_to_curves
-
 ```python
 def edge_paths_to_curves(self, start_vertices=None, next_vertex_index=None):
 
@@ -1543,8 +1437,6 @@ def edge_paths_to_selection(self, start_vertices=None, next_vertex_index=None)
 ```
 
 
-
-## edge_paths_to_selection
 
 ```python
 def edge_paths_to_selection(self, start_vertices=None, next_vertex_index=None):
@@ -1574,8 +1466,6 @@ def edges_of_corner(self, corner_index=None)
 
 
 
-## edges_of_corner
-
 ```python
 def edges_of_corner(self, corner_index=None):
 
@@ -1604,8 +1494,6 @@ def edges_of_vertex(self, vertex_index=None, weights=None, sort_index=None)
 ```
 
 
-
-## edges_of_vertex
 
 ```python
 def edges_of_vertex(self, vertex_index=None, weights=None, sort_index=None):
@@ -1637,8 +1525,6 @@ def extrude(self, selection=None, offset=None, offset_scale=None, individual=Non
 ```
 
 
-
-## extrude
 
 ```python
 def extrude(self, selection=None, offset=None, offset_scale=None, individual=None, mode='FACES'):
@@ -1673,8 +1559,6 @@ def face_is_planar(self, threshold=None)
 
 
 
-## face_is_planar
-
 ```python
 def face_is_planar(self, threshold=None):
 
@@ -1701,8 +1585,6 @@ def face_of_corner(self, corner_index=None)
 ```
 
 
-
-## face_of_corner
 
 ```python
 def face_of_corner(self, corner_index=None):
@@ -1733,8 +1615,6 @@ def face_set_boundaries(self, face_set=None)
 
 
 
-## face_set_boundaries
-
 ```python
 def face_set_boundaries(self, face_set=None):
 
@@ -1761,8 +1641,6 @@ def field_at_index(self, index=None, value=None, domain='POINT')
 ```
 
 
-
-## field_at_index
 
 ```python
 def field_at_index(self, index=None, value=None, domain='POINT'):
@@ -1793,8 +1671,6 @@ def flip_faces(self, selection=None)
 
 
 
-## flip_faces
-
 ```python
 def flip_faces(self, selection=None):
 
@@ -1821,8 +1697,6 @@ def get_named_boolean(self, name=None)
 ```
 
 
-
-## get_named_boolean
 
 ```python
 def get_named_boolean(self, name=None):
@@ -1851,8 +1725,6 @@ def get_named_color(self, name=None)
 
 
 
-## get_named_color
-
 ```python
 def get_named_color(self, name=None):
 
@@ -1879,8 +1751,6 @@ def get_named_float(self, name=None)
 ```
 
 
-
-## get_named_float
 
 ```python
 def get_named_float(self, name=None):
@@ -1909,8 +1779,6 @@ def get_named_integer(self, name=None)
 
 
 
-## get_named_integer
-
 ```python
 def get_named_integer(self, name=None):
 
@@ -1938,8 +1806,6 @@ def get_named_vector(self, name=None)
 
 
 
-## get_named_vector
-
 ```python
 def get_named_vector(self, name=None):
 
@@ -1966,8 +1832,6 @@ def instance_on_points(self, selection=None, instance=None, pick_instance=None, 
 ```
 
 
-
-## instance_on_points
 
 ```python
 def instance_on_points(self, selection=None, instance=None, pick_instance=None, instance_index=None, rotation=None, scale=None):
@@ -2035,8 +1899,6 @@ def interpolate_domain(self, value=None, domain='POINT')
 
 
 
-## interpolate_domain
-
 ```python
 def interpolate_domain(self, value=None, domain='POINT'):
 
@@ -2065,8 +1927,6 @@ def is_shade_smooth(self)
 
 
 
-## is_shade_smooth
-
 ```python
 def is_shade_smooth(self):
 
@@ -2090,8 +1950,6 @@ def join(*geometry)
 ```
 
 
-
-## join
 
 ```python
 def join(*geometry):
@@ -2120,8 +1978,6 @@ def material_selection(self, material=None)
 
 
 
-## material_selection
-
 ```python
 def material_selection(self, material=None):
 
@@ -2148,8 +2004,6 @@ def merge_by_distance(self, selection=None, distance=None, mode='ALL')
 ```
 
 
-
-## merge_by_distance
 
 ```python
 def merge_by_distance(self, selection=None, distance=None, mode='ALL'):
@@ -2180,8 +2034,6 @@ def named_attribute(self, name=None, data_type='FLOAT')
 
 
 
-## named_attribute
-
 ```python
 def named_attribute(self, name=None, data_type='FLOAT'):
 
@@ -2210,8 +2062,6 @@ def offset_corner_in_face(self, corner_index=None, offset=None)
 
 
 
-## offset_corner_in_face
-
 ```python
 def offset_corner_in_face(self, corner_index=None, offset=None):
 
@@ -2239,8 +2089,6 @@ def pack_uv_islands(self, uv=None, selection=None, margin=None, rotate=None)
 ```
 
 
-
-## pack_uv_islands
 
 ```python
 def pack_uv_islands(self, uv=None, selection=None, margin=None, rotate=None):
@@ -2272,8 +2120,6 @@ def proximity(self, target=None, source_position=None, target_element='FACES')
 
 
 
-## proximity
-
 ```python
 def proximity(self, target=None, source_position=None, target_element='FACES'):
 
@@ -2303,8 +2149,6 @@ def proximity_edges(self, target=None, source_position=None)
 
 
 
-## proximity_edges
-
 ```python
 def proximity_edges(self, target=None, source_position=None):
 
@@ -2332,8 +2176,6 @@ def proximity_faces(self, target=None, source_position=None)
 ```
 
 
-
-## proximity_faces
 
 ```python
 def proximity_faces(self, target=None, source_position=None):
@@ -2363,8 +2205,6 @@ def proximity_points(self, target=None, source_position=None)
 
 
 
-## proximity_points
-
 ```python
 def proximity_points(self, target=None, source_position=None):
 
@@ -2392,8 +2232,6 @@ def random_boolean(self, probability=None, ID=None, seed=None)
 ```
 
 
-
-## random_boolean
 
 ```python
 def random_boolean(self, probability=None, ID=None, seed=None):
@@ -2423,8 +2261,6 @@ def random_float(self, min=None, max=None, ID=None, seed=None)
 ```
 
 
-
-## random_float
 
 ```python
 def random_float(self, min=None, max=None, ID=None, seed=None):
@@ -2456,8 +2292,6 @@ def random_integer(self, min=None, max=None, ID=None, seed=None)
 
 
 
-## random_integer
-
 ```python
 def random_integer(self, min=None, max=None, ID=None, seed=None):
 
@@ -2488,8 +2322,6 @@ def random_vector(self, min=None, max=None, ID=None, seed=None)
 
 
 
-## random_vector
-
 ```python
 def random_vector(self, min=None, max=None, ID=None, seed=None):
 
@@ -2519,8 +2351,6 @@ def raycast(self, target_geometry=None, attribute=None, source_position=None, ra
 ```
 
 
-
-## raycast
 
 ```python
 def raycast(self, target_geometry=None, attribute=None, source_position=None, ray_direction=None, ray_length=None, mapping='INTERPOLATED'):
@@ -2554,8 +2384,6 @@ def raycast_interpolated(self, target_geometry=None, attribute=None, source_posi
 
 
 
-## raycast_interpolated
-
 ```python
 def raycast_interpolated(self, target_geometry=None, attribute=None, source_position=None, ray_direction=None, ray_length=None):
 
@@ -2586,8 +2414,6 @@ def raycast_nearest(self, target_geometry=None, attribute=None, source_position=
 ```
 
 
-
-## raycast_nearest
 
 ```python
 def raycast_nearest(self, target_geometry=None, attribute=None, source_position=None, ray_direction=None, ray_length=None):
@@ -2620,8 +2446,6 @@ def remove_named_attribute(self, name=None)
 
 
 
-## remove_named_attribute
-
 ```python
 def remove_named_attribute(self, name=None):
 
@@ -2648,8 +2472,6 @@ def replace_material(self, old=None, new=None)
 ```
 
 
-
-## replace_material
 
 ```python
 def replace_material(self, old=None, new=None):
@@ -2678,8 +2500,6 @@ def sample_index(self, value=None, index=None, clamp=False, domain='POINT')
 ```
 
 
-
-## sample_index
 
 ```python
 def sample_index(self, value=None, index=None, clamp=False, domain='POINT'):
@@ -2711,8 +2531,6 @@ def sample_nearest(self, sample_position=None, domain='POINT')
 
 
 
-## sample_nearest
-
 ```python
 def sample_nearest(self, sample_position=None, domain='POINT'):
 
@@ -2741,8 +2559,6 @@ def sample_nearest_surface(self, value=None, sample_position=None)
 
 
 
-## sample_nearest_surface
-
 ```python
 def sample_nearest_surface(self, value=None, sample_position=None):
 
@@ -2770,8 +2586,6 @@ def sample_uv_surface(self, value=None, source_uv_map=None, sample_uv=None)
 ```
 
 
-
-## sample_uv_surface
 
 ```python
 def sample_uv_surface(self, value=None, source_uv_map=None, sample_uv=None):
@@ -2803,8 +2617,6 @@ def scale_elements(self, selection=None, scale=None, center=None, axis=None, dom
 ```
 
 
-
-## scale_elements
 
 ```python
 def scale_elements(self, selection=None, scale=None, center=None, axis=None, domain='FACE', scale_mode='UNIFORM'):
@@ -2838,8 +2650,6 @@ def scale_single_axis(self, selection=None, scale=None, center=None, axis=None, 
 
 
 
-## scale_single_axis
-
 ```python
 def scale_single_axis(self, selection=None, scale=None, center=None, axis=None, domain='FACE'):
 
@@ -2871,8 +2681,6 @@ def scale_uniform(self, selection=None, scale=None, center=None, domain='FACE')
 
 
 
-## scale_uniform
-
 ```python
 def scale_uniform(self, selection=None, scale=None, center=None, domain='FACE'):
 
@@ -2902,8 +2710,6 @@ def separate(self, geometry=None, selection=None, domain='POINT')
 ```
 
 
-
-## separate
 
 ```python
 def separate(self, geometry=None, selection=None, domain='POINT'):
@@ -2936,8 +2742,6 @@ def set_ID(self, selection=None, ID=None)
 
 
 
-## set_ID
-
 ```python
 def set_ID(self, selection=None, ID=None):
 
@@ -2965,8 +2769,6 @@ def set_material(self, selection=None, material=None)
 ```
 
 
-
-## set_material
 
 ```python
 def set_material(self, selection=None, material=None):
@@ -2996,8 +2798,6 @@ def set_material_index(self, selection=None, material_index=None)
 
 
 
-## set_material_index
-
 ```python
 def set_material_index(self, selection=None, material_index=None):
 
@@ -3025,8 +2825,6 @@ def set_named_boolean(self, name=None, value=None, domain='POINT')
 ```
 
 
-
-## set_named_boolean
 
 ```python
 def set_named_boolean(self, name=None, value=None, domain='POINT'):
@@ -3057,8 +2855,6 @@ def set_named_color(self, name=None, value=None, domain='POINT')
 
 
 
-## set_named_color
-
 ```python
 def set_named_color(self, name=None, value=None, domain='POINT'):
 
@@ -3087,8 +2883,6 @@ def set_named_float(self, name=None, value=None, domain='POINT')
 ```
 
 
-
-## set_named_float
 
 ```python
 def set_named_float(self, name=None, value=None, domain='POINT'):
@@ -3119,8 +2913,6 @@ def set_named_integer(self, name=None, value=None, domain='POINT')
 
 
 
-## set_named_integer
-
 ```python
 def set_named_integer(self, name=None, value=None, domain='POINT'):
 
@@ -3149,8 +2941,6 @@ def set_named_vector(self, name=None, value=None, domain='POINT')
 ```
 
 
-
-## set_named_vector
 
 ```python
 def set_named_vector(self, name=None, value=None, domain='POINT'):
@@ -3181,8 +2971,6 @@ def set_position(self, selection=None, position=None, offset=None)
 
 
 
-## set_position
-
 ```python
 def set_position(self, selection=None, position=None, offset=None):
 
@@ -3212,8 +3000,6 @@ def set_shade_smooth(self, selection=None, shade_smooth=None)
 
 
 
-## set_shade_smooth
-
 ```python
 def set_shade_smooth(self, selection=None, shade_smooth=None):
 
@@ -3241,8 +3027,6 @@ def shortest_edge_paths(self, end_vertex=None, edge_cost=None)
 ```
 
 
-
-## shortest_edge_paths
 
 ```python
 def shortest_edge_paths(self, end_vertex=None, edge_cost=None):
@@ -3301,8 +3085,6 @@ def split_edges(self, selection=None)
 
 
 
-## split_edges
-
 ```python
 def split_edges(self, selection=None):
 
@@ -3329,8 +3111,6 @@ def store_named_attribute(self, name=None, value=None, domain='POINT')
 ```
 
 
-
-## store_named_attribute
 
 ```python
 def store_named_attribute(self, name=None, value=None, domain='POINT'):
@@ -3361,8 +3141,6 @@ def subdivide(self, level=None)
 
 
 
-## subdivide
-
 ```python
 def subdivide(self, level=None):
 
@@ -3389,8 +3167,6 @@ def subdivision_surface(self, level=None, edge_crease=None, vertex_crease=None, 
 ```
 
 
-
-## subdivision_surface
 
 ```python
 def subdivision_surface(self, level=None, edge_crease=None, vertex_crease=None, boundary_smooth='ALL', uv_smooth='PRESERVE_BOUNDARIES'):
@@ -3423,8 +3199,6 @@ def switch(self, switch=None, true=None)
 
 
 
-## switch
-
 ```python
 def switch(self, switch=None, true=None):
 
@@ -3453,8 +3227,6 @@ def to_curve(self, selection=None)
 
 
 
-## to_curve
-
 ```python
 def to_curve(self, selection=None):
 
@@ -3482,8 +3254,6 @@ def to_instance(*geometry)
 
 
 
-## to_instance
-
 ```python
 def to_instance(*geometry):
 
@@ -3510,8 +3280,6 @@ def to_points(self, selection=None, position=None, radius=None, mode='VERTICES')
 ```
 
 
-
-## to_points
 
 ```python
 def to_points(self, selection=None, position=None, radius=None, mode='VERTICES'):
@@ -3542,8 +3310,6 @@ def to_volume(self, density=None, voxel_size=None, voxel_amount=None, exterior_b
 ```
 
 
-
-## to_volume
 
 ```python
 def to_volume(self, density=None, voxel_size=None, voxel_amount=None, exterior_band_width=None, interior_band_width=None, fill_volume=None, resolution_mode='VOXEL_AMOUNT'):
@@ -3578,8 +3344,6 @@ def transform(self, translation=None, rotation=None, scale=None)
 
 
 
-## transform
-
 ```python
 def transform(self, translation=None, rotation=None, scale=None):
 
@@ -3608,8 +3372,6 @@ def triangulate(self, selection=None, minimum_vertices=None, ngon_method='BEAUTY
 ```
 
 
-
-## triangulate
 
 ```python
 def triangulate(self, selection=None, minimum_vertices=None, ngon_method='BEAUTY', quad_method='SHORTEST_DIAGONAL'):
@@ -3641,8 +3403,6 @@ def uv_unwrap(self, selection=None, seam=None, margin=None, fill_holes=None, met
 
 
 
-## uv_unwrap
-
 ```python
 def uv_unwrap(self, selection=None, seam=None, margin=None, fill_holes=None, method='ANGLE_BASED'):
 
@@ -3673,8 +3433,6 @@ def vertex_of_corner(self, corner_index=None)
 ```
 
 
-
-## vertex_of_corner
 
 ```python
 def vertex_of_corner(self, corner_index=None):

@@ -66,12 +66,12 @@ with gn.Tree("Test") as tree:
 
 ## Properties
 
-- [ID](#ID-property)
-- [domain_index](#domain_index-property)
-- [index](#index-property)
-- [material_index](#material_index-property)
-- [normal](#normal-property)
-- [position](#position-property)
+- [ID](#ID)
+- [domain_index](#domain_index)
+- [index](#index)
+- [material_index](#material_index)
+- [normal](#normal)
+- [position](#position)
 
 
 

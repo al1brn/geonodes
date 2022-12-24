@@ -12,13 +12,13 @@ A **Instances** has only one [domain](domain.md):
 
 ## Properties
 
-- [domain_size](#domain_size-property)
-- [rotation](#rotation-property)
-- [scale](#scale-property)
+- [domain_size](#domain_size)
+- [rotation](#rotation)
+- [scale](#scale)
 
 ## Class methods
 
-- [InstanceOnPoints](#InstanceOnPoints-classmethod)
+- [InstanceOnPoints](#InstanceOnPoints)
 
 
 ## Methods

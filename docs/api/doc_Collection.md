@@ -59,8 +59,6 @@ def switch(self, switch=None, true=None)
 
 
 
-## switch
-
 ```python
 def switch(self, switch=None, true=None):
 

@@ -34,8 +34,6 @@
 
 
 
-## ID <sub>*property*</sub>
-
 ```python
 def ID(self):
 
@@ -55,8 +53,6 @@ def ID(self):
 ### bounding_box
 
 
-
-## bounding_box <sub>*property*</sub>
 
 ```python
 def bounding_box(self):
@@ -78,8 +74,6 @@ def bounding_box(self):
 
 
 
-## bounding_box_min <sub>*property*</sub>
-
 ```python
 def bounding_box_min(self):
 
@@ -99,8 +93,6 @@ def bounding_box_min(self):
 ### convex_hull
 
 
-
-## convex_hull <sub>*property*</sub>
 
 ```python
 def convex_hull(self):
@@ -122,8 +114,6 @@ def convex_hull(self):
 
 
 
-## curve_component <sub>*property*</sub>
-
 ```python
 def curve_component(self):
 
@@ -143,8 +133,6 @@ def curve_component(self):
 ### domain_size
 
 
-
-## domain_size <sub>*property*</sub>
 
 ```python
 def domain_size(self):
@@ -166,8 +154,6 @@ def domain_size(self):
 
 
 
-## index <sub>*property*</sub>
-
 ```python
 def index(self):
 
@@ -187,8 +173,6 @@ def index(self):
 ### instances_component
 
 
-
-## instances_component <sub>*property*</sub>
 
 ```python
 def instances_component(self):
@@ -210,8 +194,6 @@ def instances_component(self):
 
 
 
-## is_viewport <sub>*property*</sub>
-
 ```python
 def is_viewport(self):
 
@@ -231,8 +213,6 @@ def is_viewport(self):
 ### length
 
 
-
-## length <sub>*property*</sub>
 
 ```python
 def length(self):
@@ -254,8 +234,6 @@ def length(self):
 
 
 
-## material_index <sub>*property*</sub>
-
 ```python
 def material_index(self):
 
@@ -275,8 +253,6 @@ def material_index(self):
 ### mesh_component
 
 
-
-## mesh_component <sub>*property*</sub>
 
 ```python
 def mesh_component(self):
@@ -298,8 +274,6 @@ def mesh_component(self):
 
 
 
-## normal <sub>*property*</sub>
-
 ```python
 def normal(self):
 
@@ -319,8 +293,6 @@ def normal(self):
 ### point_count
 
 
-
-## point_count <sub>*property*</sub>
 
 ```python
 def point_count(self):
@@ -342,8 +314,6 @@ def point_count(self):
 
 
 
-## points_component <sub>*property*</sub>
-
 ```python
 def points_component(self):
 
@@ -363,8 +333,6 @@ def points_component(self):
 ### position
 
 
-
-## position <sub>*property*</sub>
 
 ```python
 def position(self):
@@ -386,8 +354,6 @@ def position(self):
 
 
 
-## radius <sub>*property*</sub>
-
 ```python
 def radius(self):
 
@@ -407,8 +373,6 @@ def radius(self):
 ### separate_components
 
 
-
-## separate_components <sub>*property*</sub>
 
 ```python
 def separate_components(self):
@@ -430,8 +394,6 @@ def separate_components(self):
 
 
 
-## spline_count <sub>*property*</sub>
-
 ```python
 def spline_count(self):
 
@@ -451,8 +413,6 @@ def spline_count(self):
 ### volume_component
 
 
-
-## volume_component <sub>*property*</sub>
 
 ```python
 def volume_component(self):
@@ -480,8 +440,6 @@ def Arc(cls, resolution=None, radius=None, start_angle=None, sweep_angle=None, c
 ```
 
 
-
-## Arc <sub>*classmethod*</sub>
 
 ```python
 def Arc(cls, resolution=None, radius=None, start_angle=None, sweep_angle=None, connect_center=None, invert_arc=None):
@@ -515,8 +473,6 @@ def ArcFromPoints(cls, resolution=None, start=None, middle=None, end=None, offse
 ```
 
 
-
-## ArcFromPoints <sub>*classmethod*</sub>
 
 ```python
 def ArcFromPoints(cls, resolution=None, start=None, middle=None, end=None, offset_angle=None, connect_center=None, invert_arc=None):
@@ -552,8 +508,6 @@ def Circle(cls, resolution=None, radius=None)
 
 
 
-## Circle <sub>*classmethod*</sub>
-
 ```python
 def Circle(cls, resolution=None, radius=None):
 
@@ -582,8 +536,6 @@ def CircleFromPoints(cls, resolution=None, point_1=None, point_2=None, point_3=N
 ```
 
 
-
-## CircleFromPoints <sub>*classmethod*</sub>
 
 ```python
 def CircleFromPoints(cls, resolution=None, point_1=None, point_2=None, point_3=None):
@@ -615,8 +567,6 @@ def Collection(cls, collection=None, separate_children=None, reset_children=None
 ```
 
 
-
-## Collection <sub>*classmethod*</sub>
 
 ```python
 def Collection(cls, collection=None, separate_children=None, reset_children=None, transform_space='ORIGINAL'):
@@ -690,8 +640,6 @@ def Line(cls, start=None, end=None)
 
 
 
-## Line <sub>*classmethod*</sub>
-
 ```python
 def Line(cls, start=None, end=None):
 
@@ -720,8 +668,6 @@ def LineDirection(cls, start=None, direction=None, length=None)
 ```
 
 
-
-## LineDirection <sub>*classmethod*</sub>
 
 ```python
 def LineDirection(cls, start=None, direction=None, length=None):
@@ -753,8 +699,6 @@ def QuadraticBezier(cls, resolution=None, start=None, middle=None, end=None)
 
 
 
-## QuadraticBezier <sub>*classmethod*</sub>
-
 ```python
 def QuadraticBezier(cls, resolution=None, start=None, middle=None, end=None):
 
@@ -785,8 +729,6 @@ def Quadrilateral(cls, width=None, height=None, bottom_width=None, top_width=Non
 ```
 
 
-
-## Quadrilateral <sub>*classmethod*</sub>
 
 ```python
 def Quadrilateral(cls, width=None, height=None, bottom_width=None, top_width=None, offset=None, bottom_height=None, top_height=None, point_1=None, point_2=None, point_3=None, point_4=None, mode='RECTANGLE'):
@@ -827,8 +769,6 @@ def Spiral(cls, resolution=None, rotations=None, start_radius=None, end_radius=N
 
 
 
-## Spiral <sub>*classmethod*</sub>
-
 ```python
 def Spiral(cls, resolution=None, rotations=None, start_radius=None, end_radius=None, height=None, reverse=None):
 
@@ -862,8 +802,6 @@ def Star(cls, points=None, inner_radius=None, outer_radius=None, twist=None)
 
 
 
-## Star <sub>*classmethod*</sub>
-
 ```python
 def Star(cls, points=None, inner_radius=None, outer_radius=None, twist=None):
 
@@ -894,8 +832,6 @@ def bezier_segment(cls, resolution=None, start=None, start_handle=None, end_hand
 ```
 
 
-
-## bezier_segment <sub>*classmethod*</sub>
 
 ```python
 def bezier_segment(cls, resolution=None, start=None, start_handle=None, end_handle=None, end=None, mode='POSITION'):
@@ -931,8 +867,6 @@ def attribute_statistic(self, selection=None, attribute=None, domain='POINT')
 
 
 
-## attribute_statistic
-
 ```python
 def attribute_statistic(self, selection=None, attribute=None, domain='POINT'):
 
@@ -962,8 +896,6 @@ def capture_attribute(self, value=None, domain='POINT')
 
 
 
-## capture_attribute
-
 ```python
 def capture_attribute(self, value=None, domain='POINT'):
 
@@ -991,8 +923,6 @@ def capture_attribute_node(self, geometry=None, value=None, data_type='FLOAT', d
 ```
 
 
-
-## capture_attribute_node
 
 ```python
 def capture_attribute_node(self, geometry=None, value=None, data_type='FLOAT', domain='POINT'):
@@ -1024,8 +954,6 @@ def curve_of_point(self, point_index=None)
 
 
 
-## curve_of_point
-
 ```python
 def curve_of_point(self, point_index=None):
 
@@ -1055,8 +983,6 @@ def deform_on_surface(self)
 
 
 
-## deform_on_surface
-
 ```python
 def deform_on_surface(self):
 
@@ -1080,8 +1006,6 @@ def delete(self, selection=None, domain='POINT', mode='ALL')
 ```
 
 
-
-## delete
 
 ```python
 def delete(self, selection=None, domain='POINT', mode='ALL'):
@@ -1112,8 +1036,6 @@ def duplicate(self, selection=None, amount=None, domain='POINT')
 
 
 
-## duplicate
-
 ```python
 def duplicate(self, selection=None, amount=None, domain='POINT'):
 
@@ -1142,8 +1064,6 @@ def field_at_index(self, index=None, value=None, domain='POINT')
 ```
 
 
-
-## field_at_index
 
 ```python
 def field_at_index(self, index=None, value=None, domain='POINT'):
@@ -1174,8 +1094,6 @@ def fill(self, curve=None, mode='TRIANGLES')
 
 
 
-## fill
-
 ```python
 def fill(self, curve=None, mode='TRIANGLES'):
 
@@ -1204,8 +1122,6 @@ def fill_ngons(self, curve=None)
 
 
 
-## fill_ngons
-
 ```python
 def fill_ngons(self, curve=None):
 
@@ -1233,8 +1149,6 @@ def fill_triangles(self, curve=None)
 
 
 
-## fill_triangles
-
 ```python
 def fill_triangles(self, curve=None):
 
@@ -1261,8 +1175,6 @@ def fillet(self, count=None, radius=None, limit_radius=None, mode='BEZIER')
 ```
 
 
-
-## fillet
 
 ```python
 def fillet(self, count=None, radius=None, limit_radius=None, mode='BEZIER'):
@@ -1294,8 +1206,6 @@ def fillet_bezier(self, radius=None, limit_radius=None)
 
 
 
-## fillet_bezier
-
 ```python
 def fillet_bezier(self, radius=None, limit_radius=None):
 
@@ -1323,8 +1233,6 @@ def fillet_poly(self, count=None, radius=None, limit_radius=None)
 ```
 
 
-
-## fillet_poly
 
 ```python
 def fillet_poly(self, count=None, radius=None, limit_radius=None):
@@ -1355,8 +1263,6 @@ def get_named_boolean(self, name=None)
 
 
 
-## get_named_boolean
-
 ```python
 def get_named_boolean(self, name=None):
 
@@ -1383,8 +1289,6 @@ def get_named_color(self, name=None)
 ```
 
 
-
-## get_named_color
 
 ```python
 def get_named_color(self, name=None):
@@ -1413,8 +1317,6 @@ def get_named_float(self, name=None)
 
 
 
-## get_named_float
-
 ```python
 def get_named_float(self, name=None):
 
@@ -1441,8 +1343,6 @@ def get_named_integer(self, name=None)
 ```
 
 
-
-## get_named_integer
 
 ```python
 def get_named_integer(self, name=None):
@@ -1471,8 +1371,6 @@ def get_named_vector(self, name=None)
 
 
 
-## get_named_vector
-
 ```python
 def get_named_vector(self, name=None):
 
@@ -1499,8 +1397,6 @@ def instance_on_points(self, selection=None, instance=None, pick_instance=None, 
 ```
 
 
-
-## instance_on_points
 
 ```python
 def instance_on_points(self, selection=None, instance=None, pick_instance=None, instance_index=None, rotation=None, scale=None):
@@ -1568,8 +1464,6 @@ def interpolate_domain(self, value=None, domain='POINT')
 
 
 
-## interpolate_domain
-
 ```python
 def interpolate_domain(self, value=None, domain='POINT'):
 
@@ -1598,8 +1492,6 @@ def join(*geometry)
 
 
 
-## join
-
 ```python
 def join(*geometry):
 
@@ -1627,8 +1519,6 @@ def material_selection(self, material=None)
 
 
 
-## material_selection
-
 ```python
 def material_selection(self, material=None):
 
@@ -1655,8 +1545,6 @@ def merge_by_distance(self, selection=None, distance=None, mode='ALL')
 ```
 
 
-
-## merge_by_distance
 
 ```python
 def merge_by_distance(self, selection=None, distance=None, mode='ALL'):
@@ -1687,8 +1575,6 @@ def named_attribute(self, name=None, data_type='FLOAT')
 
 
 
-## named_attribute
-
 ```python
 def named_attribute(self, name=None, data_type='FLOAT'):
 
@@ -1716,8 +1602,6 @@ def offset_point(self, point_index=None, offset=None)
 ```
 
 
-
-## offset_point
 
 ```python
 def offset_point(self, point_index=None, offset=None):
@@ -1748,8 +1632,6 @@ def points_of_curve(self, curve_index=None, weights=None, sort_index=None)
 ```
 
 
-
-## points_of_curve
 
 ```python
 def points_of_curve(self, curve_index=None, weights=None, sort_index=None):
@@ -1782,8 +1664,6 @@ def proximity(self, target=None, source_position=None, target_element='FACES')
 
 
 
-## proximity
-
 ```python
 def proximity(self, target=None, source_position=None, target_element='FACES'):
 
@@ -1813,8 +1693,6 @@ def proximity_edges(self, target=None, source_position=None)
 
 
 
-## proximity_edges
-
 ```python
 def proximity_edges(self, target=None, source_position=None):
 
@@ -1842,8 +1720,6 @@ def proximity_faces(self, target=None, source_position=None)
 ```
 
 
-
-## proximity_faces
 
 ```python
 def proximity_faces(self, target=None, source_position=None):
@@ -1873,8 +1749,6 @@ def proximity_points(self, target=None, source_position=None)
 
 
 
-## proximity_points
-
 ```python
 def proximity_points(self, target=None, source_position=None):
 
@@ -1902,8 +1776,6 @@ def random_boolean(self, probability=None, ID=None, seed=None)
 ```
 
 
-
-## random_boolean
 
 ```python
 def random_boolean(self, probability=None, ID=None, seed=None):
@@ -1933,8 +1805,6 @@ def random_float(self, min=None, max=None, ID=None, seed=None)
 ```
 
 
-
-## random_float
 
 ```python
 def random_float(self, min=None, max=None, ID=None, seed=None):
@@ -1966,8 +1836,6 @@ def random_integer(self, min=None, max=None, ID=None, seed=None)
 
 
 
-## random_integer
-
 ```python
 def random_integer(self, min=None, max=None, ID=None, seed=None):
 
@@ -1998,8 +1866,6 @@ def random_vector(self, min=None, max=None, ID=None, seed=None)
 
 
 
-## random_vector
-
 ```python
 def random_vector(self, min=None, max=None, ID=None, seed=None):
 
@@ -2029,8 +1895,6 @@ def raycast(self, target_geometry=None, attribute=None, source_position=None, ra
 ```
 
 
-
-## raycast
 
 ```python
 def raycast(self, target_geometry=None, attribute=None, source_position=None, ray_direction=None, ray_length=None, mapping='INTERPOLATED'):
@@ -2064,8 +1928,6 @@ def raycast_interpolated(self, target_geometry=None, attribute=None, source_posi
 
 
 
-## raycast_interpolated
-
 ```python
 def raycast_interpolated(self, target_geometry=None, attribute=None, source_position=None, ray_direction=None, ray_length=None):
 
@@ -2096,8 +1958,6 @@ def raycast_nearest(self, target_geometry=None, attribute=None, source_position=
 ```
 
 
-
-## raycast_nearest
 
 ```python
 def raycast_nearest(self, target_geometry=None, attribute=None, source_position=None, ray_direction=None, ray_length=None):
@@ -2130,8 +1990,6 @@ def remove_named_attribute(self, name=None)
 
 
 
-## remove_named_attribute
-
 ```python
 def remove_named_attribute(self, name=None):
 
@@ -2158,8 +2016,6 @@ def replace_material(self, old=None, new=None)
 ```
 
 
-
-## replace_material
 
 ```python
 def replace_material(self, old=None, new=None):
@@ -2188,8 +2044,6 @@ def resample(self, selection=None, count=None, length=None, mode='COUNT')
 ```
 
 
-
-## resample
 
 ```python
 def resample(self, selection=None, count=None, length=None, mode='COUNT'):
@@ -2221,8 +2075,6 @@ def resample_count(self, selection=None, count=None)
 
 
 
-## resample_count
-
 ```python
 def resample_count(self, selection=None, count=None):
 
@@ -2251,8 +2103,6 @@ def resample_evaluated(self, selection=None)
 
 
 
-## resample_evaluated
-
 ```python
 def resample_evaluated(self, selection=None):
 
@@ -2279,8 +2129,6 @@ def resample_length(self, selection=None, length=None)
 ```
 
 
-
-## resample_length
 
 ```python
 def resample_length(self, selection=None, length=None):
@@ -2310,8 +2158,6 @@ def reverse(self, selection=None)
 
 
 
-## reverse
-
 ```python
 def reverse(self, selection=None):
 
@@ -2338,8 +2184,6 @@ def sample(self, value=None, factor=None, length=None, curve_index=None, data_ty
 ```
 
 
-
-## sample
 
 ```python
 def sample(self, value=None, factor=None, length=None, curve_index=None, data_type='FLOAT', mode='FACTOR', use_all_curves=False):
@@ -2374,8 +2218,6 @@ def sample_index(self, value=None, index=None, clamp=False, domain='POINT')
 
 
 
-## sample_index
-
 ```python
 def sample_index(self, value=None, index=None, clamp=False, domain='POINT'):
 
@@ -2406,8 +2248,6 @@ def sample_nearest(self, sample_position=None, domain='POINT')
 
 
 
-## sample_nearest
-
 ```python
 def sample_nearest(self, sample_position=None, domain='POINT'):
 
@@ -2435,8 +2275,6 @@ def separate(self, geometry=None, selection=None, domain='POINT')
 ```
 
 
-
-## separate
 
 ```python
 def separate(self, geometry=None, selection=None, domain='POINT'):
@@ -2469,8 +2307,6 @@ def set_ID(self, selection=None, ID=None)
 
 
 
-## set_ID
-
 ```python
 def set_ID(self, selection=None, ID=None):
 
@@ -2498,8 +2334,6 @@ def set_material(self, selection=None, material=None)
 ```
 
 
-
-## set_material
 
 ```python
 def set_material(self, selection=None, material=None):
@@ -2529,8 +2363,6 @@ def set_material_index(self, selection=None, material_index=None)
 
 
 
-## set_material_index
-
 ```python
 def set_material_index(self, selection=None, material_index=None):
 
@@ -2558,8 +2390,6 @@ def set_named_boolean(self, name=None, value=None, domain='POINT')
 ```
 
 
-
-## set_named_boolean
 
 ```python
 def set_named_boolean(self, name=None, value=None, domain='POINT'):
@@ -2590,8 +2420,6 @@ def set_named_color(self, name=None, value=None, domain='POINT')
 
 
 
-## set_named_color
-
 ```python
 def set_named_color(self, name=None, value=None, domain='POINT'):
 
@@ -2620,8 +2448,6 @@ def set_named_float(self, name=None, value=None, domain='POINT')
 ```
 
 
-
-## set_named_float
 
 ```python
 def set_named_float(self, name=None, value=None, domain='POINT'):
@@ -2652,8 +2478,6 @@ def set_named_integer(self, name=None, value=None, domain='POINT')
 
 
 
-## set_named_integer
-
 ```python
 def set_named_integer(self, name=None, value=None, domain='POINT'):
 
@@ -2683,8 +2507,6 @@ def set_named_vector(self, name=None, value=None, domain='POINT')
 
 
 
-## set_named_vector
-
 ```python
 def set_named_vector(self, name=None, value=None, domain='POINT'):
 
@@ -2713,8 +2535,6 @@ def set_position(self, selection=None, position=None, offset=None)
 ```
 
 
-
-## set_position
 
 ```python
 def set_position(self, selection=None, position=None, offset=None):
@@ -2772,8 +2592,6 @@ def store_named_attribute(self, name=None, value=None, domain='POINT')
 
 
 
-## store_named_attribute
-
 ```python
 def store_named_attribute(self, name=None, value=None, domain='POINT'):
 
@@ -2803,8 +2621,6 @@ def subdivide(self, cuts=None)
 
 
 
-## subdivide
-
 ```python
 def subdivide(self, cuts=None):
 
@@ -2831,8 +2647,6 @@ def switch(self, switch=None, true=None)
 ```
 
 
-
-## switch
 
 ```python
 def switch(self, switch=None, true=None):
@@ -2862,8 +2676,6 @@ def to_instance(*geometry)
 
 
 
-## to_instance
-
 ```python
 def to_instance(*geometry):
 
@@ -2890,8 +2702,6 @@ def to_mesh(self, profile_curve=None, fill_caps=None)
 ```
 
 
-
-## to_mesh
 
 ```python
 def to_mesh(self, profile_curve=None, fill_caps=None):
@@ -2920,8 +2730,6 @@ def to_points(self, count=None, length=None, mode='COUNT')
 ```
 
 
-
-## to_points
 
 ```python
 def to_points(self, count=None, length=None, mode='COUNT'):
@@ -2954,8 +2762,6 @@ def to_points_count(self, count=None)
 
 
 
-## to_points_count
-
 ```python
 def to_points_count(self, count=None):
 
@@ -2985,8 +2791,6 @@ def to_points_evaluated(self)
 
 
 
-## to_points_evaluated
-
 ```python
 def to_points_evaluated(self):
 
@@ -3012,8 +2816,6 @@ def to_points_length(self, length=None)
 ```
 
 
-
-## to_points_length
 
 ```python
 def to_points_length(self, length=None):
@@ -3044,8 +2846,6 @@ def transform(self, translation=None, rotation=None, scale=None)
 
 
 
-## transform
-
 ```python
 def transform(self, translation=None, rotation=None, scale=None):
 
@@ -3075,8 +2875,6 @@ def trim(self, start=None, end=None, mode='FACTOR')
 
 
 
-## trim
-
 ```python
 def trim(self, start=None, end=None, mode='FACTOR'):
 
@@ -3103,8 +2901,6 @@ def trim_factor(self, start=None, end=None)
 ```
 
 
-
-## trim_factor
 
 ```python
 def trim_factor(self, start=None, end=None):
@@ -3133,8 +2929,6 @@ def trim_length(self, start=None, end=None)
 ```
 
 
-
-## trim_length
 
 ```python
 def trim_length(self, start=None, end=None):

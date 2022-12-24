@@ -5,8 +5,8 @@
 
 ## Class methods
 
-- [Boolean](#Boolean-classmethod)
-- [Input](#Input-classmethod)
+- [Boolean](#Boolean)
+- [Input](#Input)
 
 
 ## Methods

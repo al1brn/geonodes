@@ -8,16 +8,16 @@ It is implemented as property `points`
 The other [Domain](Domain.md) is [Spline](Spline.md).
 ## Properties
 
-- [count](#count-property)
-- [left_handle_positions](#left_handle_positions-property)
-- [parameter](#parameter-property)
-- [parameter_factor](#parameter_factor-property)
-- [parameter_index](#parameter_index-property)
-- [parameter_length](#parameter_length-property)
-- [radius](#radius-property)
-- [right_handle_positions](#right_handle_positions-property)
-- [tangent](#tangent-property)
-- [tilt](#tilt-property)
+- [count](#count)
+- [left_handle_positions](#left_handle_positions)
+- [parameter](#parameter)
+- [parameter_factor](#parameter_factor)
+- [parameter_index](#parameter_index)
+- [parameter_length](#parameter_length)
+- [radius](#radius)
+- [right_handle_positions](#right_handle_positions)
+- [tangent](#tangent)
+- [tilt](#tilt)
 
 
 

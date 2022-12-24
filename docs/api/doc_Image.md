@@ -59,8 +59,6 @@ def switch(self, switch=None, true=None)
 
 
 
-## switch
-
 ```python
 def switch(self, switch=None, true=None):
 
@@ -88,8 +86,6 @@ def texture(self, vector=None, frame=None, extension='REPEAT', interpolation='Li
 ```
 
 
-
-## texture
 
 ```python
 def texture(self, vector=None, frame=None, extension='REPEAT', interpolation='Linear'):

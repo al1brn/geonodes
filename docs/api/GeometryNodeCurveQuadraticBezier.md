@@ -33,7 +33,7 @@ node = nodes.QuadraticBezier(resolution=None, start=None, middle=None, end=None)
 | Class or method name | Definition |
 |----------------------|------------|
 | **[Curve](Curve.md)** |
-| [QuadraticBezier](Curve.md#QuadraticBezier-classmethod) | `@classmethod`<br> `def QuadraticBezier(cls, resolution=None, start=None, middle=None, end=None):` |
+| [QuadraticBezier](Curve.md#QuadraticBezier) | `@classmethod`<br> `def QuadraticBezier(cls, resolution=None, start=None, middle=None, end=None):` |
 
 <sub>Go to [top](#node-Quadratic-Bezier) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

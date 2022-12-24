@@ -24,10 +24,10 @@ node = nodes.Index()
 | Class or method name | Definition |
 |----------------------|------------|
 | **[Domain](Domain.md)** |
-| [index](Domain.md#index-property) | `@property`<br> `def index(self):` |
-| [domain_index](Domain.md#domain_index-property) | `@property`<br> `def domain_index(self):` |
+| [index](Domain.md#index) | `@property`<br> `def index(self):` |
+| [domain_index](Domain.md#domain_index) | `@property`<br> `def domain_index(self):` |
 | **[Geometry](Geometry.md)** |
-| [index](Geometry.md#index-property) | `@property`<br> `def index(self):` |
+| [index](Geometry.md#index) | `@property`<br> `def index(self):` |
 
 <sub>Go to [top](#node-Index) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

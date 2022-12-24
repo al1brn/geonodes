@@ -4,26 +4,26 @@
 
 ## Properties
 
-- [alpha](#alpha-property)
-- [blue](#blue-property)
-- [green](#green-property)
-- [hsl](#hsl-property)
-- [hsv](#hsv-property)
-- [hue](#hue-property)
-- [lightness](#lightness-property)
-- [red](#red-property)
-- [rgb](#rgb-property)
-- [rgb_curves](#rgb_curves-property)
-- [saturation](#saturation-property)
-- [value](#value-property)
+- [alpha](#alpha)
+- [blue](#blue)
+- [green](#green)
+- [hsl](#hsl)
+- [hsv](#hsv)
+- [hue](#hue)
+- [lightness](#lightness)
+- [red](#red)
+- [rgb](#rgb)
+- [rgb_curves](#rgb_curves)
+- [saturation](#saturation)
+- [value](#value)
 
 ## Class methods
 
-- [Color](#Color-classmethod)
-- [HSL](#HSL-classmethod)
-- [HSV](#HSV-classmethod)
-- [Input](#Input-classmethod)
-- [RGB](#RGB-classmethod)
+- [Color](#Color)
+- [HSL](#HSL)
+- [HSV](#HSV)
+- [Input](#Input)
+- [RGB](#RGB)
 
 
 ## Methods

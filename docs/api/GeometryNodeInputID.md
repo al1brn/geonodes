@@ -24,9 +24,9 @@ node = nodes.ID()
 | Class or method name | Definition |
 |----------------------|------------|
 | **[Domain](Domain.md)** |
-| [ID](Domain.md#ID-property) | `@property`<br> `def ID(self):` |
+| [ID](Domain.md#ID) | `@property`<br> `def ID(self):` |
 | **[Geometry](Geometry.md)** |
-| [ID](Geometry.md#ID-property) | `@property`<br> `def ID(self):` |
+| [ID](Geometry.md#ID) | `@property`<br> `def ID(self):` |
 
 <sub>Go to [top](#node-ID) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

@@ -24,9 +24,9 @@ node = nodes.MaterialIndex()
 | Class or method name | Definition |
 |----------------------|------------|
 | **[Domain](Domain.md)** |
-| [material_index](Domain.md#material_index-property) | `@property`<br> `def material_index(self):` |
+| [material_index](Domain.md#material_index) | `@property`<br> `def material_index(self):` |
 | **[Geometry](Geometry.md)** |
-| [material_index](Geometry.md#material_index-property) | `@property`<br> `def material_index(self):` |
+| [material_index](Geometry.md#material_index) | `@property`<br> `def material_index(self):` |
 
 <sub>Go to [top](#node-Material-Index) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

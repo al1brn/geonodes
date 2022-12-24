@@ -37,8 +37,6 @@ def Boolean(cls, boolean=False)
 
 
 
-## Boolean <sub>*classmethod*</sub>
-
 ```python
 def Boolean(cls, boolean=False):
 
@@ -90,8 +88,6 @@ def b_and(self, boolean1=None)
 
 
 
-## b_and
-
 ```python
 def b_and(self, boolean1=None):
 
@@ -119,8 +115,6 @@ def b_not(self)
 
 
 
-## b_not
-
 ```python
 def b_not(self):
 
@@ -144,8 +138,6 @@ def b_or(self, boolean1=None)
 ```
 
 
-
-## b_or
 
 ```python
 def b_or(self, boolean1=None):
@@ -174,8 +166,6 @@ def imply(self, boolean1=None)
 
 
 
-## imply
-
 ```python
 def imply(self, boolean1=None):
 
@@ -202,8 +192,6 @@ def nand(self, boolean1=None)
 ```
 
 
-
-## nand
 
 ```python
 def nand(self, boolean1=None):
@@ -232,8 +220,6 @@ def nimply(self, boolean1=None)
 
 
 
-## nimply
-
 ```python
 def nimply(self, boolean1=None):
 
@@ -261,8 +247,6 @@ def nor(self, boolean1=None)
 
 
 
-## nor
-
 ```python
 def nor(self, boolean1=None):
 
@@ -289,8 +273,6 @@ def switch(self, switch=None, true=None)
 ```
 
 
-
-## switch
 
 ```python
 def switch(self, switch=None, true=None):
@@ -320,8 +302,6 @@ def xnor(self, boolean1=None)
 
 
 
-## xnor
-
 ```python
 def xnor(self, boolean1=None):
 
@@ -348,8 +328,6 @@ def xor(self, boolean1=None)
 ```
 
 
-
-## xor
 
 ```python
 def xor(self, boolean1=None):

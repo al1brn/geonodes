@@ -12,11 +12,11 @@ A **Points** has only one [domain](domain.md):
 
 ## Properties
 
-- [domain_size](#domain_size-property)
+- [domain_size](#domain_size)
 
 ## Class methods
 
-- [Points](#Points-classmethod)
+- [Points](#Points)
 
 
 ## Methods

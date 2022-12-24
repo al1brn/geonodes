@@ -34,8 +34,6 @@
 
 
 
-## length <sub>*property*</sub>
-
 ```python
 def length(self):
 
@@ -55,8 +53,6 @@ def length(self):
 ### separate
 
 
-
-## separate <sub>*property*</sub>
 
 ```python
 def separate(self):
@@ -84,8 +80,6 @@ def Combine(cls, x=None, y=None, z=None)
 ```
 
 
-
-## Combine <sub>*classmethod*</sub>
 
 ```python
 def Combine(cls, x=None, y=None, z=None):
@@ -181,8 +175,6 @@ def Vector(cls, vector=[0.0, 0.0, 0.0])
 
 
 
-## Vector <sub>*classmethod*</sub>
-
 ```python
 def Vector(cls, vector=[0.0, 0.0, 0.0]):
 
@@ -233,8 +225,6 @@ def abs(self)
 
 
 
-## abs
-
 ```python
 def abs(self):
 
@@ -259,8 +249,6 @@ def absolute(self)
 
 
 
-## absolute
-
 ```python
 def absolute(self):
 
@@ -284,8 +272,6 @@ def add(self, vector=None)
 ```
 
 
-
-## add
 
 ```python
 def add(self, vector=None):
@@ -313,8 +299,6 @@ def align_euler_to_vector(self, factor=None, vector=None, axis='X', pivot_axis='
 ```
 
 
-
-## align_euler_to_vector
 
 ```python
 def align_euler_to_vector(self, factor=None, vector=None, axis='X', pivot_axis='AUTO'):
@@ -346,8 +330,6 @@ def average_equal(self, b=None, epsilon=None)
 
 
 
-## average_equal
-
 ```python
 def average_equal(self, b=None, epsilon=None):
 
@@ -376,8 +358,6 @@ def average_greater_equal(self, b=None)
 
 
 
-## average_greater_equal
-
 ```python
 def average_greater_equal(self, b=None):
 
@@ -404,8 +384,6 @@ def average_greater_than(self, b=None)
 ```
 
 
-
-## average_greater_than
 
 ```python
 def average_greater_than(self, b=None):
@@ -434,8 +412,6 @@ def average_less_equal(self, b=None)
 
 
 
-## average_less_equal
-
 ```python
 def average_less_equal(self, b=None):
 
@@ -463,8 +439,6 @@ def average_less_than(self, b=None)
 
 
 
-## average_less_than
-
 ```python
 def average_less_than(self, b=None):
 
@@ -491,8 +465,6 @@ def average_not_equal(self, b=None, epsilon=None)
 ```
 
 
-
-## average_not_equal
 
 ```python
 def average_not_equal(self, b=None, epsilon=None):
@@ -522,8 +494,6 @@ def ceil(self)
 
 
 
-## ceil
-
 ```python
 def ceil(self):
 
@@ -547,8 +517,6 @@ def compare(self, b=None, c=None, angle=None, epsilon=None, mode='ELEMENT', oper
 ```
 
 
-
-## compare
 
 ```python
 def compare(self, b=None, c=None, angle=None, epsilon=None, mode='ELEMENT', operation='GREATER_THAN'):
@@ -582,8 +550,6 @@ def cos(self)
 
 
 
-## cos
-
 ```python
 def cos(self):
 
@@ -608,8 +574,6 @@ def cosine(self)
 
 
 
-## cosine
-
 ```python
 def cosine(self):
 
@@ -633,8 +597,6 @@ def cross(self, vector=None)
 ```
 
 
-
-## cross
 
 ```python
 def cross(self, vector=None):
@@ -663,8 +625,6 @@ def cross_product(self, vector=None)
 
 
 
-## cross_product
-
 ```python
 def cross_product(self, vector=None):
 
@@ -692,8 +652,6 @@ def curves(self, fac=None)
 
 
 
-## curves
-
 ```python
 def curves(self, fac=None):
 
@@ -720,8 +678,6 @@ def direction_equal(self, b=None, angle=None, epsilon=None)
 ```
 
 
-
-## direction_equal
 
 ```python
 def direction_equal(self, b=None, angle=None, epsilon=None):
@@ -752,8 +708,6 @@ def direction_greater_equal(self, b=None, angle=None)
 
 
 
-## direction_greater_equal
-
 ```python
 def direction_greater_equal(self, b=None, angle=None):
 
@@ -781,8 +735,6 @@ def direction_greater_than(self, b=None, angle=None)
 ```
 
 
-
-## direction_greater_than
 
 ```python
 def direction_greater_than(self, b=None, angle=None):
@@ -812,8 +764,6 @@ def direction_less_equal(self, b=None, angle=None)
 
 
 
-## direction_less_equal
-
 ```python
 def direction_less_equal(self, b=None, angle=None):
 
@@ -842,8 +792,6 @@ def direction_less_than(self, b=None, angle=None)
 
 
 
-## direction_less_than
-
 ```python
 def direction_less_than(self, b=None, angle=None):
 
@@ -871,8 +819,6 @@ def direction_not_equal(self, b=None, angle=None, epsilon=None)
 ```
 
 
-
-## direction_not_equal
 
 ```python
 def direction_not_equal(self, b=None, angle=None, epsilon=None):
@@ -903,8 +849,6 @@ def distance(self, vector=None)
 
 
 
-## distance
-
 ```python
 def distance(self, vector=None):
 
@@ -931,8 +875,6 @@ def div(self, vector=None)
 ```
 
 
-
-## div
 
 ```python
 def div(self, vector=None):
@@ -961,8 +903,6 @@ def divide(self, vector=None)
 
 
 
-## divide
-
 ```python
 def divide(self, vector=None):
 
@@ -989,8 +929,6 @@ def dot(self, vector=None)
 ```
 
 
-
-## dot
 
 ```python
 def dot(self, vector=None):
@@ -1019,8 +957,6 @@ def dot_product(self, vector=None)
 
 
 
-## dot_product
-
 ```python
 def dot_product(self, vector=None):
 
@@ -1047,8 +983,6 @@ def dot_product_equal(self, b=None, c=None, epsilon=None)
 ```
 
 
-
-## dot_product_equal
 
 ```python
 def dot_product_equal(self, b=None, c=None, epsilon=None):
@@ -1079,8 +1013,6 @@ def dot_product_greater_equal(self, b=None, c=None)
 
 
 
-## dot_product_greater_equal
-
 ```python
 def dot_product_greater_equal(self, b=None, c=None):
 
@@ -1108,8 +1040,6 @@ def dot_product_greater_than(self, b=None, c=None)
 ```
 
 
-
-## dot_product_greater_than
 
 ```python
 def dot_product_greater_than(self, b=None, c=None):
@@ -1139,8 +1069,6 @@ def dot_product_less_equal(self, b=None, c=None)
 
 
 
-## dot_product_less_equal
-
 ```python
 def dot_product_less_equal(self, b=None, c=None):
 
@@ -1169,8 +1097,6 @@ def dot_product_less_than(self, b=None, c=None)
 
 
 
-## dot_product_less_than
-
 ```python
 def dot_product_less_than(self, b=None, c=None):
 
@@ -1198,8 +1124,6 @@ def dot_product_not_equal(self, b=None, c=None, epsilon=None)
 ```
 
 
-
-## dot_product_not_equal
 
 ```python
 def dot_product_not_equal(self, b=None, c=None, epsilon=None):
@@ -1230,8 +1154,6 @@ def elements_equal(self, b=None, epsilon=None)
 
 
 
-## elements_equal
-
 ```python
 def elements_equal(self, b=None, epsilon=None):
 
@@ -1260,8 +1182,6 @@ def elements_greater_equal(self, b=None)
 
 
 
-## elements_greater_equal
-
 ```python
 def elements_greater_equal(self, b=None):
 
@@ -1288,8 +1208,6 @@ def elements_greater_than(self, b=None)
 ```
 
 
-
-## elements_greater_than
 
 ```python
 def elements_greater_than(self, b=None):
@@ -1318,8 +1236,6 @@ def elements_less_equal(self, b=None)
 
 
 
-## elements_less_equal
-
 ```python
 def elements_less_equal(self, b=None):
 
@@ -1347,8 +1263,6 @@ def elements_less_than(self, b=None)
 
 
 
-## elements_less_than
-
 ```python
 def elements_less_than(self, b=None):
 
@@ -1375,8 +1289,6 @@ def elements_not_equal(self, b=None, epsilon=None)
 ```
 
 
-
-## elements_not_equal
 
 ```python
 def elements_not_equal(self, b=None, epsilon=None):
@@ -1406,8 +1318,6 @@ def face_forward(self, incident=None, reference=None)
 
 
 
-## face_forward
-
 ```python
 def face_forward(self, incident=None, reference=None):
 
@@ -1436,8 +1346,6 @@ def floor(self)
 
 
 
-## floor
-
 ```python
 def floor(self):
 
@@ -1462,8 +1370,6 @@ def fract(self)
 
 
 
-## fract
-
 ```python
 def fract(self):
 
@@ -1487,8 +1393,6 @@ def fraction(self)
 ```
 
 
-
-## fraction
 
 ```python
 def fraction(self):
@@ -1532,8 +1436,6 @@ def length_equal(self, b=None, epsilon=None)
 
 
 
-## length_equal
-
 ```python
 def length_equal(self, b=None, epsilon=None):
 
@@ -1562,8 +1464,6 @@ def length_greater_equal(self, b=None)
 
 
 
-## length_greater_equal
-
 ```python
 def length_greater_equal(self, b=None):
 
@@ -1590,8 +1490,6 @@ def length_greater_than(self, b=None)
 ```
 
 
-
-## length_greater_than
 
 ```python
 def length_greater_than(self, b=None):
@@ -1620,8 +1518,6 @@ def length_less_equal(self, b=None)
 
 
 
-## length_less_equal
-
 ```python
 def length_less_equal(self, b=None):
 
@@ -1648,8 +1544,6 @@ def length_less_than(self, b=None)
 ```
 
 
-
-## length_less_than
 
 ```python
 def length_less_than(self, b=None):
@@ -1678,8 +1572,6 @@ def length_not_equal(self, b=None, epsilon=None)
 
 
 
-## length_not_equal
-
 ```python
 def length_not_equal(self, b=None, epsilon=None):
 
@@ -1707,8 +1599,6 @@ def map_range(self, from_min=None, from_max=None, to_min=None, to_max=None, step
 ```
 
 
-
-## map_range
 
 ```python
 def map_range(self, from_min=None, from_max=None, to_min=None, to_max=None, steps=None, clamp=True, interpolation_type='LINEAR'):
@@ -1743,8 +1633,6 @@ def map_range_linear(self, from_min=None, from_max=None, to_min=None, to_max=Non
 
 
 
-## map_range_linear
-
 ```python
 def map_range_linear(self, from_min=None, from_max=None, to_min=None, to_max=None, clamp=True):
 
@@ -1775,8 +1663,6 @@ def map_range_smooth(self, from_min=None, from_max=None, to_min=None, to_max=Non
 ```
 
 
-
-## map_range_smooth
 
 ```python
 def map_range_smooth(self, from_min=None, from_max=None, to_min=None, to_max=None, clamp=True):
@@ -1809,8 +1695,6 @@ def map_range_smoother(self, from_min=None, from_max=None, to_min=None, to_max=N
 
 
 
-## map_range_smoother
-
 ```python
 def map_range_smoother(self, from_min=None, from_max=None, to_min=None, to_max=None, clamp=True):
 
@@ -1841,8 +1725,6 @@ def map_range_stepped(self, from_min=None, from_max=None, to_min=None, to_max=No
 ```
 
 
-
-## map_range_stepped
 
 ```python
 def map_range_stepped(self, from_min=None, from_max=None, to_min=None, to_max=None, steps=None, clamp=True):
@@ -1876,8 +1758,6 @@ def max(self, vector=None)
 
 
 
-## max
-
 ```python
 def max(self, vector=None):
 
@@ -1904,8 +1784,6 @@ def maximum(self, vector=None)
 ```
 
 
-
-## maximum
 
 ```python
 def maximum(self, vector=None):
@@ -1934,8 +1812,6 @@ def min(self, vector=None)
 
 
 
-## min
-
 ```python
 def min(self, vector=None):
 
@@ -1963,8 +1839,6 @@ def minimum(self, vector=None)
 
 
 
-## minimum
-
 ```python
 def minimum(self, vector=None):
 
@@ -1991,8 +1865,6 @@ def mix(self, factor=None, vector=None, clamp_factor=True, factor_mode='UNIFORM'
 ```
 
 
-
-## mix
 
 ```python
 def mix(self, factor=None, vector=None, clamp_factor=True, factor_mode='UNIFORM'):
@@ -2024,8 +1896,6 @@ def mix_non_uniform(self, factor=None, vector=None, clamp_factor=True)
 
 
 
-## mix_non_uniform
-
 ```python
 def mix_non_uniform(self, factor=None, vector=None, clamp_factor=True):
 
@@ -2055,8 +1925,6 @@ def mix_uniform(self, vector=None, clamp_factor=True)
 
 
 
-## mix_uniform
-
 ```python
 def mix_uniform(self, vector=None, clamp_factor=True):
 
@@ -2085,8 +1953,6 @@ def modulo(self, vector=None)
 
 
 
-## modulo
-
 ```python
 def modulo(self, vector=None):
 
@@ -2114,8 +1980,6 @@ def mul(self, vector=None)
 
 
 
-## mul
-
 ```python
 def mul(self, vector=None):
 
@@ -2142,8 +2006,6 @@ def mul_add(self, multiplier=None, addend=None)
 ```
 
 
-
-## mul_add
 
 ```python
 def mul_add(self, multiplier=None, addend=None):
@@ -2173,8 +2035,6 @@ def multiply(self, vector=None)
 
 
 
-## multiply
-
 ```python
 def multiply(self, vector=None):
 
@@ -2201,8 +2061,6 @@ def multiply_add(self, multiplier=None, addend=None)
 ```
 
 
-
-## multiply_add
 
 ```python
 def multiply_add(self, multiplier=None, addend=None):
@@ -2232,8 +2090,6 @@ def normalize(self)
 
 
 
-## normalize
-
 ```python
 def normalize(self):
 
@@ -2257,8 +2113,6 @@ def project(self, vector=None)
 ```
 
 
-
-## project
 
 ```python
 def project(self, vector=None):
@@ -2287,8 +2141,6 @@ def reflect(self, vector=None)
 
 
 
-## reflect
-
 ```python
 def reflect(self, vector=None):
 
@@ -2315,8 +2167,6 @@ def refract(self, vector=None, ior=None)
 ```
 
 
-
-## refract
 
 ```python
 def refract(self, vector=None, ior=None):
@@ -2345,8 +2195,6 @@ def rotate_axis_angle(self, center=None, axis=None, angle=None, invert=False)
 ```
 
 
-
-## rotate_axis_angle
 
 ```python
 def rotate_axis_angle(self, center=None, axis=None, angle=None, invert=False):
@@ -2378,8 +2226,6 @@ def rotate_euler(self, center=None, rotation=None, invert=False)
 
 
 
-## rotate_euler
-
 ```python
 def rotate_euler(self, center=None, rotation=None, invert=False):
 
@@ -2408,8 +2254,6 @@ def rotate_x(self, center=None, angle=None, invert=False)
 ```
 
 
-
-## rotate_x
 
 ```python
 def rotate_x(self, center=None, angle=None, invert=False):
@@ -2440,8 +2284,6 @@ def rotate_y(self, center=None, angle=None, invert=False)
 
 
 
-## rotate_y
-
 ```python
 def rotate_y(self, center=None, angle=None, invert=False):
 
@@ -2470,8 +2312,6 @@ def rotate_z(self, center=None, angle=None, invert=False)
 ```
 
 
-
-## rotate_z
 
 ```python
 def rotate_z(self, center=None, angle=None, invert=False):
@@ -2502,8 +2342,6 @@ def scale(self, scale=None)
 
 
 
-## scale
-
 ```python
 def scale(self, scale=None):
 
@@ -2531,8 +2369,6 @@ def sin(self)
 
 
 
-## sin
-
 ```python
 def sin(self):
 
@@ -2557,8 +2393,6 @@ def sine(self)
 
 
 
-## sine
-
 ```python
 def sine(self):
 
@@ -2582,8 +2416,6 @@ def snap(self, increment=None)
 ```
 
 
-
-## snap
 
 ```python
 def snap(self, increment=None):
@@ -2612,8 +2444,6 @@ def sub(self, vector=None)
 
 
 
-## sub
-
 ```python
 def sub(self, vector=None):
 
@@ -2641,8 +2471,6 @@ def subtract(self, vector=None)
 
 
 
-## subtract
-
 ```python
 def subtract(self, vector=None):
 
@@ -2669,8 +2497,6 @@ def switch(self, switch=None, true=None)
 ```
 
 
-
-## switch
 
 ```python
 def switch(self, switch=None, true=None):
@@ -2700,8 +2526,6 @@ def tan(self)
 
 
 
-## tan
-
 ```python
 def tan(self):
 
@@ -2726,8 +2550,6 @@ def tangent(self)
 
 
 
-## tangent
-
 ```python
 def tangent(self):
 
@@ -2751,8 +2573,6 @@ def wrap(self, max=None, min=None)
 ```
 
 
-
-## wrap
 
 ```python
 def wrap(self, max=None, min=None):

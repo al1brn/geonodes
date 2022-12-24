@@ -75,28 +75,28 @@ with gn.Tree("Test") as tree:
 
 ## Properties
 
-- [ID](#ID-property)
-- [bounding_box](#bounding_box-property)
-- [bounding_box_min](#bounding_box_min-property)
-- [bounding_box_min](#bounding_box_min-property)
-- [convex_hull](#convex_hull-property)
-- [curve_component](#curve_component-property)
-- [domain_size](#domain_size-property)
-- [index](#index-property)
-- [instances_component](#instances_component-property)
-- [is_viewport](#is_viewport-property)
-- [material_index](#material_index-property)
-- [mesh_component](#mesh_component-property)
-- [normal](#normal-property)
-- [points_component](#points_component-property)
-- [position](#position-property)
-- [radius](#radius-property)
-- [separate_components](#separate_components-property)
-- [volume_component](#volume_component-property)
+- [ID](#ID)
+- [bounding_box](#bounding_box)
+- [bounding_box_min](#bounding_box_min)
+- [bounding_box_min](#bounding_box_min)
+- [convex_hull](#convex_hull)
+- [curve_component](#curve_component)
+- [domain_size](#domain_size)
+- [index](#index)
+- [instances_component](#instances_component)
+- [is_viewport](#is_viewport)
+- [material_index](#material_index)
+- [mesh_component](#mesh_component)
+- [normal](#normal)
+- [points_component](#points_component)
+- [position](#position)
+- [radius](#radius)
+- [separate_components](#separate_components)
+- [volume_component](#volume_component)
 
 ## Class methods
 
-- [Collection](#Collection-classmethod)
+- [Collection](#Collection)
 
 
 ## Methods

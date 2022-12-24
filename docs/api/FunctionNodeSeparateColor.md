@@ -41,17 +41,17 @@ node = nodes.SeparateColor(color=None, mode='RGB')
 | [separate_hsv](A.md#separate_hsv) | `def separate_hsv(color=None):` |
 | [separate_hsl](A.md#separate_hsl) | `def separate_hsl(color=None):` |
 | **[Color](Color.md)** |
-| [rgb](Color.md#rgb-property) | `@property`<br> `def rgb(self):` |
-| [hsv](Color.md#hsv-property) | `@property`<br> `def hsv(self):` |
-| [hsl](Color.md#hsl-property) | `@property`<br> `def hsl(self):` |
-| [alpha](Color.md#alpha-property) | `@property`<br> `def alpha(self):` |
-| [red](Color.md#red-property) | `@property`<br> `def red(self):` |
-| [green](Color.md#green-property) | `@property`<br> `def green(self):` |
-| [blue](Color.md#blue-property) | `@property`<br> `def blue(self):` |
-| [hue](Color.md#hue-property) | `@property`<br> `def hue(self):` |
-| [saturation](Color.md#saturation-property) | `@property`<br> `def saturation(self):` |
-| [value](Color.md#value-property) | `@property`<br> `def value(self):` |
-| [lightness](Color.md#lightness-property) | `@property`<br> `def lightness(self):` |
+| [rgb](Color.md#rgb) | `@property`<br> `def rgb(self):` |
+| [hsv](Color.md#hsv) | `@property`<br> `def hsv(self):` |
+| [hsl](Color.md#hsl) | `@property`<br> `def hsl(self):` |
+| [alpha](Color.md#alpha) | `@property`<br> `def alpha(self):` |
+| [red](Color.md#red) | `@property`<br> `def red(self):` |
+| [green](Color.md#green) | `@property`<br> `def green(self):` |
+| [blue](Color.md#blue) | `@property`<br> `def blue(self):` |
+| [hue](Color.md#hue) | `@property`<br> `def hue(self):` |
+| [saturation](Color.md#saturation) | `@property`<br> `def saturation(self):` |
+| [value](Color.md#value) | `@property`<br> `def value(self):` |
+| [lightness](Color.md#lightness) | `@property`<br> `def lightness(self):` |
 
 <sub>Go to [top](#node-Separate-Color) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

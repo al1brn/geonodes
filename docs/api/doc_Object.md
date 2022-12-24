@@ -58,8 +58,6 @@ def Self(cls)
 
 
 
-## Self <sub>*classmethod*</sub>
-
 ```python
 def Self(cls):
 
@@ -85,8 +83,6 @@ def geometry(self, object=None, as_instance=None, transform_space='ORIGINAL')
 ```
 
 
-
-## geometry
 
 ```python
 def geometry(self, object=None, as_instance=None, transform_space='ORIGINAL'):
@@ -117,8 +113,6 @@ def info(self, object=None, as_instance=None, transform_space='ORIGINAL')
 
 
 
-## info
-
 ```python
 def info(self, object=None, as_instance=None, transform_space='ORIGINAL'):
 
@@ -147,8 +141,6 @@ def location(self, object=None, as_instance=None, transform_space='ORIGINAL')
 ```
 
 
-
-## location
 
 ```python
 def location(self, object=None, as_instance=None, transform_space='ORIGINAL'):
@@ -179,8 +171,6 @@ def rotation(self, object=None, as_instance=None, transform_space='ORIGINAL')
 
 
 
-## rotation
-
 ```python
 def rotation(self, object=None, as_instance=None, transform_space='ORIGINAL'):
 
@@ -210,8 +200,6 @@ def scale(self, object=None, as_instance=None, transform_space='ORIGINAL')
 
 
 
-## scale
-
 ```python
 def scale(self, object=None, as_instance=None, transform_space='ORIGINAL'):
 
@@ -240,8 +228,6 @@ def switch(self, switch=None, true=None)
 ```
 
 
-
-## switch
 
 ```python
 def switch(self, switch=None, true=None):
