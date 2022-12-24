@@ -4,6 +4,10 @@
 
  > **Curve** sub class of [Geometry](Geometry.md)
 
+A **Curve** has two domains:
+- `points` of type [ControlPoint](ControlPoint.md)
+- `splines` of type [Spline](Spline.md)
+
 ### Constructors
 
 Constructors come from the Blender menu *Curve primitives*:        

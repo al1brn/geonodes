@@ -9,8 +9,17 @@ Created on Sat Dec 24 11:31:25 2022
 # A Fake python module used to provide class documentation
 # It is read by build_geonodes_auto_doc in nodes_gen
 
+# ----------------------------------------------------------------------------------------------------
+# Data sockets
+
 class Mesh:
     """ > **Mesh** sub class of [Geometry](Geometry.md)
+    
+    A **Mesh** has four domains:
+    - `verts` of type [Vertex](Vertex.md)
+    - `edges` of type [Edge](Edge.md)
+    - `faces` of type [Face](Face.md)
+    - `corners` of type [Corner](Corner.md)
     
     ### Constructors
     
@@ -33,6 +42,10 @@ class Mesh:
 class Curve:
     """ > **Curve** sub class of [Geometry](Geometry.md)
     
+    A **Curve** has two domains:
+    - `points` of type [ControlPoint](ControlPoint.md)
+    - `splines` of type [Spline](Spline.md)
+    
     ### Constructors
     
     Constructors come from the Blender menu *Curve primitives*:        
@@ -48,4 +61,79 @@ class Curve:
     - [Quadrilateral](#Quadrilateral)
     - [Star](#Star)
     """
+    
+class Instances:
+    """ > **Instances** sub class of [Geometry](Geometry.md)
+    
+    A **Instances** has one domain:
+    - `insts` of type [Instance](Instance.md)
+    
+    """
+
+class Points:
+    """ > **Points** sub class of [Geometry](Geometry.md)
+    
+    **Points** is the class for Blender **Cloud Points**. It has one domain:
+    - `points` of type [CloudPoint](CloudPoint.md)        
+    """
+    
+class Volume:
+    """ > **Volume** sub class of [Geometry](Geometry.md)
+    
+    **Volume** has no [Domain](Domain.md)
+    """
+    
+# ----------------------------------------------------------------------------------------------------
+# Domains
+
+class Vertex:
+    """ > **Vertex** is one of the four [domains](Domain.md) of [Mesh](Mesh.md).
+    
+    It uses the *'POINT'* string domain.
+    """
+    
+class Edge:
+    """ > **Edge** is one of the four [domains](Domain.md) of [Mesh](Mesh.md).
+    
+    It uses the *'EDGE'* string domain.
+    """
+    
+class Face:
+    """ > **Face** is one of the four [domains](Domain.md) of [Mesh](Mesh.md).
+    
+    It uses the *'FACE'* string domain.
+    """
+    
+class Corner:
+    """ > **Corner** is one of the four [domains](Domain.md) of [Mesh](Mesh.md).
+    
+    It uses the *'CORNER'* string domain.
+    """
+    
+class ControlPoint:
+    """ > **Vertex** is one of the two [domains](Domain.md) of [Curve](Curve.md).
+    
+    It uses the *'POINT'* string domain.
+    """
+    
+class Spline:
+    """ > **Spline** is one of the two [domains](Domain.md) of [Curve](Curve.md).
+    
+    It uses the *'SPLINE'* string domain. (*'CURVE'* for some nodes)
+    """
+    
+class CloudPoint:
+    """ > **CloudPoint** is the unique [domain](Domain.md) of [Points](Points.md).
+    
+    It uses the *'POINT'* string domain.
+    """
+
+class Instance:
+    """ > **Instance** is the unique [domain](Domain.md) of [Instances](Instances.md).
+    
+    It uses the *'INSTANCE'* string domain.
+    """
+
+    
+    
     
