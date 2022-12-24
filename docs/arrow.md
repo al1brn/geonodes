@@ -87,8 +87,8 @@ The shaft length was computed above, it is equal to `z1`. Hence, the shaft is bu
     top, _ = arrow.edges.extrude(offset=(0, 0, 1), offset_scale=z1)
 ```
 
-The extrude method returns the extrudes edges and the side faces. The faces are useless for now.
-In the final version we will set material to the faces and we will collect the faces.
+The extrude method returns two Boolean selections. The first one is the selection the extruded edges and the seconde one a selection
+on the side faces. The faces are useless for now. In the final version we will set material to the faces and we will collect the faces.
 
 The next extrusion step is to extrude the edges downwards and outwards.
 It the scheme above, we are at points `Q'` and want to extrude to point `Q''`.
@@ -98,13 +98,13 @@ The amount of extrusion is given by the maths.
 **Note:** Points `Q'` and  `Q''` are multiple (points forming the top circle of the shaft) when the point `Q` is unique.
 
 ``` python
-    top, _ = top.extrude(offset=top.position - (0, 0, z2), offset_scale=s - 1)
+    top, _ = arrow.edges[top].extrude(offset=top.position - (0, 0, z2), offset_scale=s - 1)
 ```
 
 To finish the arrow, we simply extrude from the current position to the top of the arrow:
 
 ``` python
-    top, _ = top.extrude(offset=(0, 0, length) - top.position)
+    top, _ = arrow.edges[top].extrude(offset=(0, 0, length) - top.position)
 ```
 
 ## First version
@@ -151,9 +151,9 @@ with gn.Tree("Arrow") as tree:
     
     top, _ = arrow.edges.extrude(offset=(0, 0, 1), offset_scale=z1)
     
-    top, _ = top.extrude(offset=top.position - (0, 0, z2), offset_scale=s - 1)
+    top, _ = arrow.edges[top].extrude(offset=top.position - (0, 0, z2), offset_scale=s - 1)
 
-    top, _ = top.extrude(offset=(0, 0, length) - top.position)
+    top, _ = arrow.edges[top].extrude(offset=(0, 0, length) - top.position)
 
     # ----- Output the arrow
     
