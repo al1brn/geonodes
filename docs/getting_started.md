@@ -135,7 +135,7 @@ The names of the constructors are built as CamelCase version of their node names
 icosphere = gn.Mesh.IcoSphere()
 ```
 
-This create the default icosphere. We may want some customization. Looking at the node reference [Mesh.IcoSphere](Mesh.md#IcoSphere),
+This create the default icosphere. We may want some customization. Looking at the node reference [Mesh.IcoSphere](api/Mesh.md#IcoSphere),
 we see that there are two parameters: **Radius** and **Subdivisions**. They are implemented as parameters of the constructors.
 As explained in the [naming conventions](naming.md), **geonodes** uses snake_case version of the nodes sockets and nodes parameters names:
 
@@ -185,7 +185,7 @@ The faces can be selected by "calling" them with a selection parameter.
 icosphere.faces[ random_selection ].material = mat_sel
 ```
 
-A random selection can be generated using the `Random` constructor of class [Boolean](Boolean.md#Random):
+A random selection can be generated using the `Random` constructor of class [Boolean](api/Boolean.md#Random):
 
 ``` python
 icosphere.faces[ gn.Boolean.Random(probability=0.5) ].material = mat_sel
@@ -225,7 +225,7 @@ faces[faces.material_index.equal(2)].extrude()
 ```
 
 **Note:** `material_index.equal(1)` is used rather than `material_index == 1`. This late expression would give a python `bool`
-result rather than the expected **geonodes** `Boolean`. See [Boolean](Boolean.md)
+result rather than the expected **geonodes** `Boolean`. See [Boolean](api/Boolean.md)
 
 Alternatively, if you are not confident with the material indices, you can use the `material_selection` method:
 
