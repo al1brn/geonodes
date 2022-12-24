@@ -48,7 +48,7 @@ def ID(self):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### bounding_box
 
@@ -68,7 +68,7 @@ def bounding_box(self):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### bounding_box_min
 
@@ -88,7 +88,7 @@ def bounding_box_min(self):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### convex_hull
 
@@ -108,7 +108,7 @@ def convex_hull(self):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### curve_component
 
@@ -128,7 +128,7 @@ def curve_component(self):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### domain_size
 
@@ -148,7 +148,7 @@ def domain_size(self, component='MESH'):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### index
 
@@ -168,7 +168,7 @@ def index(self):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### instances_component
 
@@ -188,7 +188,7 @@ def instances_component(self):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### is_viewport
 
@@ -208,7 +208,7 @@ def is_viewport(self):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### material_index
 
@@ -228,7 +228,7 @@ def material_index(self):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### mesh_component
 
@@ -248,7 +248,7 @@ def mesh_component(self):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### normal
 
@@ -268,7 +268,7 @@ def normal(self):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### points_component
 
@@ -288,7 +288,7 @@ def points_component(self):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### position
 
@@ -308,7 +308,7 @@ def position(self):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### radius
 
@@ -328,7 +328,7 @@ def radius(self):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### separate_components
 
@@ -348,7 +348,7 @@ def separate_components(self):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### volume_component
 
@@ -368,7 +368,7 @@ def volume_component(self):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## Class and static methods
 
@@ -401,7 +401,7 @@ def Collection(cls, collection=None, separate_children=None, reset_children=None
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### FromCollection
 
@@ -416,7 +416,7 @@ def FromCollection(cls, collection=None, separate_children
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### Input
 
@@ -442,7 +442,7 @@ Note
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## Methods
 
@@ -473,7 +473,7 @@ def attribute_statistic(self, selection=None, attribute=None, domain='POINT'):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### capture_attribute
 
@@ -501,7 +501,7 @@ def capture_attribute(self, value=None, domain='POINT'):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### capture_attribute_node
 
@@ -531,7 +531,7 @@ def capture_attribute_node(self, geometry=None, value=None, data_type='FLOAT', d
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### delete
 
@@ -560,7 +560,7 @@ def delete(self, selection=None, domain='POINT', mode='ALL'):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### duplicate
 
@@ -589,7 +589,7 @@ def duplicate(self, selection=None, amount=None, domain='POINT'):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### field_at_index
 
@@ -618,7 +618,7 @@ def field_at_index(self, index=None, value=None, domain='POINT'):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### get_named_boolean
 
@@ -645,7 +645,7 @@ def get_named_boolean(self, name=None):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### get_named_color
 
@@ -672,7 +672,7 @@ def get_named_color(self, name=None):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### get_named_float
 
@@ -699,7 +699,7 @@ def get_named_float(self, name=None):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### get_named_integer
 
@@ -726,7 +726,7 @@ def get_named_integer(self, name=None):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### get_named_vector
 
@@ -753,7 +753,7 @@ def get_named_vector(self, name=None):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### instantiate
 
@@ -787,7 +787,7 @@ The operator ``*`` can be used to operate this method with `realize = False`:
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### interpolate_domain
 
@@ -815,7 +815,7 @@ def interpolate_domain(self, value=None, domain='POINT'):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### join
 
@@ -842,7 +842,7 @@ def join(*geometry):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### material_selection
 
@@ -869,7 +869,7 @@ def material_selection(self, material=None):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### merge_by_distance
 
@@ -898,7 +898,7 @@ def merge_by_distance(self, selection=None, distance=None, mode='ALL'):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### named_attribute
 
@@ -926,7 +926,7 @@ def named_attribute(self, name=None, data_type='FLOAT'):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### proximity
 
@@ -955,7 +955,7 @@ def proximity(self, target=None, source_position=None, target_element='FACES'):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### proximity_edges
 
@@ -983,7 +983,7 @@ def proximity_edges(self, target=None, source_position=None):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### proximity_faces
 
@@ -1011,7 +1011,7 @@ def proximity_faces(self, target=None, source_position=None):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### proximity_points
 
@@ -1039,7 +1039,7 @@ def proximity_points(self, target=None, source_position=None):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### random_boolean
 
@@ -1068,7 +1068,7 @@ def random_boolean(self, probability=None, ID=None, seed=None):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### random_float
 
@@ -1098,7 +1098,7 @@ def random_float(self, min=None, max=None, ID=None, seed=None):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### random_integer
 
@@ -1128,7 +1128,7 @@ def random_integer(self, min=None, max=None, ID=None, seed=None):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### random_vector
 
@@ -1158,7 +1158,7 @@ def random_vector(self, min=None, max=None, ID=None, seed=None):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### raycast
 
@@ -1190,7 +1190,7 @@ def raycast(self, target_geometry=None, attribute=None, source_position=None, ra
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### raycast_interpolated
 
@@ -1221,7 +1221,7 @@ def raycast_interpolated(self, target_geometry=None, attribute=None, source_posi
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### raycast_nearest
 
@@ -1252,7 +1252,7 @@ def raycast_nearest(self, target_geometry=None, attribute=None, source_position=
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### remove_named_attribute
 
@@ -1279,7 +1279,7 @@ def remove_named_attribute(self, name=None):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### replace_material
 
@@ -1307,7 +1307,7 @@ def replace_material(self, old=None, new=None):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### sample_index
 
@@ -1337,7 +1337,7 @@ def sample_index(self, value=None, index=None, clamp=False, domain='POINT'):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### sample_nearest
 
@@ -1365,7 +1365,7 @@ def sample_nearest(self, sample_position=None, domain='POINT'):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### separate
 
@@ -1396,7 +1396,7 @@ def separate(self, geometry=None, selection=None, domain='POINT'):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### set_ID
 
@@ -1424,7 +1424,7 @@ def set_ID(self, selection=None, ID=None):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### set_material
 
@@ -1452,7 +1452,7 @@ def set_material(self, selection=None, material=None):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### set_material_index
 
@@ -1480,7 +1480,7 @@ def set_material_index(self, selection=None, material_index=None):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### set_named_boolean
 
@@ -1509,7 +1509,7 @@ def set_named_boolean(self, name=None, value=None, domain='POINT'):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### set_named_color
 
@@ -1538,7 +1538,7 @@ def set_named_color(self, name=None, value=None, domain='POINT'):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### set_named_float
 
@@ -1567,7 +1567,7 @@ def set_named_float(self, name=None, value=None, domain='POINT'):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### set_named_integer
 
@@ -1596,7 +1596,7 @@ def set_named_integer(self, name=None, value=None, domain='POINT'):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### set_named_vector
 
@@ -1625,7 +1625,7 @@ def set_named_vector(self, name=None, value=None, domain='POINT'):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### set_position
 
@@ -1654,7 +1654,7 @@ def set_position(self, selection=None, position=None, offset=None):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### show_handles
 
@@ -1681,7 +1681,7 @@ Example:
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### store_named_attribute
 
@@ -1710,7 +1710,7 @@ def store_named_attribute(self, name=None, value=None, domain='POINT'):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### switch
 
@@ -1738,7 +1738,7 @@ def switch(self, switch=None, true=None):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### to_instance
 
@@ -1765,7 +1765,7 @@ def to_instance(*geometry):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### transform
 
@@ -1794,5 +1794,5 @@ def transform(self, translation=None, rotation=None, scale=None):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

@@ -48,7 +48,7 @@ def ID(self):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### bounding_box
 
@@ -68,7 +68,7 @@ def bounding_box(self):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### bounding_box_min
 
@@ -88,7 +88,7 @@ def bounding_box_min(self):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### convex_hull
 
@@ -108,7 +108,7 @@ def convex_hull(self):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### curve_component
 
@@ -128,7 +128,7 @@ def curve_component(self):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### domain_size
 
@@ -148,7 +148,7 @@ def domain_size(self):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### index
 
@@ -168,7 +168,7 @@ def index(self):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### instances_component
 
@@ -188,7 +188,7 @@ def instances_component(self):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### is_viewport
 
@@ -208,7 +208,7 @@ def is_viewport(self):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### length
 
@@ -228,7 +228,7 @@ def length(self):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### material_index
 
@@ -248,7 +248,7 @@ def material_index(self):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### mesh_component
 
@@ -268,7 +268,7 @@ def mesh_component(self):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### normal
 
@@ -288,7 +288,7 @@ def normal(self):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### point_count
 
@@ -308,7 +308,7 @@ def point_count(self):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### points_component
 
@@ -328,7 +328,7 @@ def points_component(self):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### position
 
@@ -348,7 +348,7 @@ def position(self):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### radius
 
@@ -368,7 +368,7 @@ def radius(self):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### separate_components
 
@@ -388,7 +388,7 @@ def separate_components(self):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### spline_count
 
@@ -408,7 +408,7 @@ def spline_count(self):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### volume_component
 
@@ -428,7 +428,7 @@ def volume_component(self):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## Class and static methods
 
@@ -463,7 +463,7 @@ def Arc(cls, resolution=None, radius=None, start_angle=None, sweep_angle=None, c
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### ArcFromPoints
 
@@ -497,7 +497,7 @@ def ArcFromPoints(cls, resolution=None, start=None, middle=None, end=None, offse
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### Circle
 
@@ -526,7 +526,7 @@ def Circle(cls, resolution=None, radius=None):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### CircleFromPoints
 
@@ -557,7 +557,7 @@ def CircleFromPoints(cls, resolution=None, point_1=None, point_2=None, point_3=N
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### Collection
 
@@ -588,7 +588,7 @@ def Collection(cls, collection=None, separate_children=None, reset_children=None
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### FromCollection
 
@@ -603,7 +603,7 @@ def FromCollection(cls, collection=None, separate_children
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### Input
 
@@ -629,7 +629,7 @@ Note
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### Line
 
@@ -658,7 +658,7 @@ def Line(cls, start=None, end=None):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### LineDirection
 
@@ -688,7 +688,7 @@ def LineDirection(cls, start=None, direction=None, length=None):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### QuadraticBezier
 
@@ -719,7 +719,7 @@ def QuadraticBezier(cls, resolution=None, start=None, middle=None, end=None):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### Quadrilateral
 
@@ -758,7 +758,7 @@ def Quadrilateral(cls, width=None, height=None, bottom_width=None, top_width=Non
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### Spiral
 
@@ -791,7 +791,7 @@ def Spiral(cls, resolution=None, rotations=None, start_radius=None, end_radius=N
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### Star
 
@@ -822,7 +822,7 @@ def Star(cls, points=None, inner_radius=None, outer_radius=None, twist=None):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### bezier_segment
 
@@ -855,7 +855,7 @@ def bezier_segment(cls, resolution=None, start=None, start_handle=None, end_hand
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## Methods
 
@@ -886,7 +886,7 @@ def attribute_statistic(self, selection=None, attribute=None, domain='POINT'):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### capture_attribute
 
@@ -914,7 +914,7 @@ def capture_attribute(self, value=None, domain='POINT'):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### capture_attribute_node
 
@@ -944,7 +944,7 @@ def capture_attribute_node(self, geometry=None, value=None, data_type='FLOAT', d
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### curve_of_point
 
@@ -973,7 +973,7 @@ def curve_of_point(self, point_index=None):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### deform_on_surface
 
@@ -997,7 +997,7 @@ def deform_on_surface(self):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### delete
 
@@ -1026,7 +1026,7 @@ def delete(self, selection=None, domain='POINT', mode='ALL'):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### duplicate
 
@@ -1055,7 +1055,7 @@ def duplicate(self, selection=None, amount=None, domain='POINT'):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### field_at_index
 
@@ -1084,7 +1084,7 @@ def field_at_index(self, index=None, value=None, domain='POINT'):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### fill
 
@@ -1112,7 +1112,7 @@ def fill(self, curve=None, mode='TRIANGLES'):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### fill_ngons
 
@@ -1139,7 +1139,7 @@ def fill_ngons(self, curve=None):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### fill_triangles
 
@@ -1166,7 +1166,7 @@ def fill_triangles(self, curve=None):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### fillet
 
@@ -1196,7 +1196,7 @@ def fillet(self, count=None, radius=None, limit_radius=None, mode='BEZIER'):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### fillet_bezier
 
@@ -1224,7 +1224,7 @@ def fillet_bezier(self, radius=None, limit_radius=None):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### fillet_poly
 
@@ -1253,7 +1253,7 @@ def fillet_poly(self, count=None, radius=None, limit_radius=None):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### get_named_boolean
 
@@ -1280,7 +1280,7 @@ def get_named_boolean(self, name=None):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### get_named_color
 
@@ -1307,7 +1307,7 @@ def get_named_color(self, name=None):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### get_named_float
 
@@ -1334,7 +1334,7 @@ def get_named_float(self, name=None):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### get_named_integer
 
@@ -1361,7 +1361,7 @@ def get_named_integer(self, name=None):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### get_named_vector
 
@@ -1388,7 +1388,7 @@ def get_named_vector(self, name=None):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### instance_on_points
 
@@ -1420,7 +1420,7 @@ def instance_on_points(self, selection=None, instance=None, pick_instance=None, 
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### instantiate
 
@@ -1454,7 +1454,7 @@ The operator ``*`` can be used to operate this method with `realize = False`:
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### interpolate_domain
 
@@ -1482,7 +1482,7 @@ def interpolate_domain(self, value=None, domain='POINT'):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### join
 
@@ -1509,7 +1509,7 @@ def join(*geometry):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### material_selection
 
@@ -1536,7 +1536,7 @@ def material_selection(self, material=None):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### merge_by_distance
 
@@ -1565,7 +1565,7 @@ def merge_by_distance(self, selection=None, distance=None, mode='ALL'):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### named_attribute
 
@@ -1593,7 +1593,7 @@ def named_attribute(self, name=None, data_type='FLOAT'):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### offset_point
 
@@ -1623,7 +1623,7 @@ def offset_point(self, point_index=None, offset=None):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### points_of_curve
 
@@ -1654,7 +1654,7 @@ def points_of_curve(self, curve_index=None, weights=None, sort_index=None):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### proximity
 
@@ -1683,7 +1683,7 @@ def proximity(self, target=None, source_position=None, target_element='FACES'):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### proximity_edges
 
@@ -1711,7 +1711,7 @@ def proximity_edges(self, target=None, source_position=None):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### proximity_faces
 
@@ -1739,7 +1739,7 @@ def proximity_faces(self, target=None, source_position=None):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### proximity_points
 
@@ -1767,7 +1767,7 @@ def proximity_points(self, target=None, source_position=None):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### random_boolean
 
@@ -1796,7 +1796,7 @@ def random_boolean(self, probability=None, ID=None, seed=None):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### random_float
 
@@ -1826,7 +1826,7 @@ def random_float(self, min=None, max=None, ID=None, seed=None):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### random_integer
 
@@ -1856,7 +1856,7 @@ def random_integer(self, min=None, max=None, ID=None, seed=None):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### random_vector
 
@@ -1886,7 +1886,7 @@ def random_vector(self, min=None, max=None, ID=None, seed=None):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### raycast
 
@@ -1918,7 +1918,7 @@ def raycast(self, target_geometry=None, attribute=None, source_position=None, ra
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### raycast_interpolated
 
@@ -1949,7 +1949,7 @@ def raycast_interpolated(self, target_geometry=None, attribute=None, source_posi
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### raycast_nearest
 
@@ -1980,7 +1980,7 @@ def raycast_nearest(self, target_geometry=None, attribute=None, source_position=
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### remove_named_attribute
 
@@ -2007,7 +2007,7 @@ def remove_named_attribute(self, name=None):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### replace_material
 
@@ -2035,7 +2035,7 @@ def replace_material(self, old=None, new=None):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### resample
 
@@ -2065,7 +2065,7 @@ def resample(self, selection=None, count=None, length=None, mode='COUNT'):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### resample_count
 
@@ -2093,7 +2093,7 @@ def resample_count(self, selection=None, count=None):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### resample_evaluated
 
@@ -2120,7 +2120,7 @@ def resample_evaluated(self, selection=None):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### resample_length
 
@@ -2148,7 +2148,7 @@ def resample_length(self, selection=None, length=None):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### reverse
 
@@ -2175,7 +2175,7 @@ def reverse(self, selection=None):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### sample
 
@@ -2208,7 +2208,7 @@ def sample(self, value=None, factor=None, length=None, curve_index=None, data_ty
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### sample_index
 
@@ -2238,7 +2238,7 @@ def sample_index(self, value=None, index=None, clamp=False, domain='POINT'):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### sample_nearest
 
@@ -2266,7 +2266,7 @@ def sample_nearest(self, sample_position=None, domain='POINT'):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### separate
 
@@ -2297,7 +2297,7 @@ def separate(self, geometry=None, selection=None, domain='POINT'):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### set_ID
 
@@ -2325,7 +2325,7 @@ def set_ID(self, selection=None, ID=None):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### set_material
 
@@ -2353,7 +2353,7 @@ def set_material(self, selection=None, material=None):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### set_material_index
 
@@ -2381,7 +2381,7 @@ def set_material_index(self, selection=None, material_index=None):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### set_named_boolean
 
@@ -2410,7 +2410,7 @@ def set_named_boolean(self, name=None, value=None, domain='POINT'):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### set_named_color
 
@@ -2439,7 +2439,7 @@ def set_named_color(self, name=None, value=None, domain='POINT'):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### set_named_float
 
@@ -2468,7 +2468,7 @@ def set_named_float(self, name=None, value=None, domain='POINT'):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### set_named_integer
 
@@ -2497,7 +2497,7 @@ def set_named_integer(self, name=None, value=None, domain='POINT'):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### set_named_vector
 
@@ -2526,7 +2526,7 @@ def set_named_vector(self, name=None, value=None, domain='POINT'):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### set_position
 
@@ -2555,7 +2555,7 @@ def set_position(self, selection=None, position=None, offset=None):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### show_handles
 
@@ -2582,7 +2582,7 @@ Example:
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### store_named_attribute
 
@@ -2611,7 +2611,7 @@ def store_named_attribute(self, name=None, value=None, domain='POINT'):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### subdivide
 
@@ -2638,7 +2638,7 @@ def subdivide(self, cuts=None):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### switch
 
@@ -2666,7 +2666,7 @@ def switch(self, switch=None, true=None):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### to_instance
 
@@ -2693,7 +2693,7 @@ def to_instance(*geometry):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### to_mesh
 
@@ -2721,7 +2721,7 @@ def to_mesh(self, profile_curve=None, fill_caps=None):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### to_points
 
@@ -2752,7 +2752,7 @@ def to_points(self, count=None, length=None, mode='COUNT'):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### to_points_count
 
@@ -2781,7 +2781,7 @@ def to_points_count(self, count=None):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### to_points_evaluated
 
@@ -2807,7 +2807,7 @@ def to_points_evaluated(self):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### to_points_length
 
@@ -2836,7 +2836,7 @@ def to_points_length(self, length=None):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### transform
 
@@ -2865,7 +2865,7 @@ def transform(self, translation=None, rotation=None, scale=None):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### trim
 
@@ -2892,7 +2892,7 @@ def trim(self, start=None, end=None, mode='FACTOR'):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### trim_factor
 
@@ -2920,7 +2920,7 @@ def trim_factor(self, start=None, end=None):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### trim_length
 
@@ -2948,5 +2948,5 @@ def trim_length(self, start=None, end=None):
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

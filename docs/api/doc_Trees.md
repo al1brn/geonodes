@@ -147,7 +147,7 @@ Trees(self, prefix=None)
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Trees) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## Class and static methods
 
@@ -168,7 +168,7 @@ def get_prefix(prefix)
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Trees) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### prefixed_name
 
@@ -188,7 +188,7 @@ def prefixed_name(prefix, name)
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Trees) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### prefixed_snake
 
@@ -210,7 +210,7 @@ The prefixed version is used as a function name to instantiate the custom group.
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Trees) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### snake_prefix
 
@@ -229,7 +229,7 @@ def snake_prefix(prefix)
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Trees) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## Methods
 
@@ -252,7 +252,7 @@ The keywords arguments must be the snake_case version of the input socket names 
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Trees) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### clear
 
@@ -273,5 +273,5 @@ generated with **geonodes**.
 
 
 
-<sub>Go to [top](#class-Collection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#class-Trees) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
