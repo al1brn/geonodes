@@ -6,29 +6,27 @@
 
 **Properties**
 
-[ID](#ID) | [bounding_box](#bounding_box) | [bounding_box_min](#bounding_box_min) | [convex_hull](#convex_hull) | [curve_component](#curve_component) | [domain_size](#domain_size) | [index](#index) | [instances_component](#instances_component) | [is_viewport](#is_viewport) | [material_index](#material_index) | [mesh_component](#mesh_component) | [normal](#normal) | [points_component](#points_component) | [position](#position) | [radius](#radius) | [rotation](#rotation) | [scale](#scale) | [separate_components](#separate_components) | [volume_component](#volume_component)
+[ID](#ID) | [bounding_box](#bounding_box) | [bounding_box_min](#bounding_box_min) | [convex_hull](#convex_hull) | [curve_component](#curve_component) | [domain_size](#domain_size) | [index](#index) | [instances_component](#instances_component) | [is_viewport](#is_viewport) | [material_index](#material_index) | [mesh_component](#mesh_component) | [normal](#normal) | [points_component](#points_component) | [position](#position) | [radius](#radius) | [rotation](#rotation) | [scale](#scale) | [separate_components](#separate_components) | [volume_component](#volume_component)***Inherited***
+
+ID | bounding_box | bounding_box_min | convex_hull | curve_component | domain_size | index | instances_component | is_viewport | material_index | mesh_component | normal | points_component | position | radius | rotation | scale | separate_components | volume_component
+
+
 
 **Class and static methods**
 
-[Collection](#Collection) | [FromCollection](#FromCollection) | [Input](#Input) | [InstanceOnPoints](#InstanceOnPoints)
+[Collection](#Collection) | [FromCollection](#FromCollection) | [Input](#Input) | [InstanceOnPoints](#InstanceOnPoints)***Inherited***
+
+Collection | FromCollection | Input | InstanceOnPoints
+
+
 
 **Methods**
 
-[attribute_statistic](#attribute_statistic) | [capture_attribute](#capture_attribute) | [capture_attribute_node](#capture_attribute_node) | [delete](#delete) | [duplicate](#duplicate) | [field_at_index](#field_at_index) | [get_named_boolean](#get_named_boolean) | [get_named_color](#get_named_color) | [get_named_float](#get_named_float) | [get_named_integer](#get_named_integer) | [get_named_vector](#get_named_vector) | [instantiate](#instantiate) | [interpolate_domain](#interpolate_domain) | [join](#join) | [material_selection](#material_selection) | [merge_by_distance](#merge_by_distance) | [named_attribute](#named_attribute) | [on_points](#on_points) | [proximity](#proximity) | [proximity_edges](#proximity_edges) | [proximity_faces](#proximity_faces) | [proximity_points](#proximity_points) | [random_boolean](#random_boolean) | [random_float](#random_float) | [random_integer](#random_integer) | [random_vector](#random_vector) | [raycast](#raycast) | [raycast_interpolated](#raycast_interpolated) | [raycast_nearest](#raycast_nearest) | [realize](#realize) | [remove_named_attribute](#remove_named_attribute) | [replace_material](#replace_material) | [rotate](#rotate) | [sample_index](#sample_index) | [sample_nearest](#sample_nearest) | [separate](#separate) | [set_ID](#set_ID) | [set_material](#set_material) | [set_material_index](#set_material_index) | [set_named_boolean](#set_named_boolean) | [set_named_color](#set_named_color) | [set_named_float](#set_named_float) | [set_named_integer](#set_named_integer) | [set_named_vector](#set_named_vector) | [set_position](#set_position) | [set_scale](#set_scale) | [show_handles](#show_handles) | [store_named_attribute](#store_named_attribute) | [switch](#switch) | [to_instance](#to_instance) | [to_points](#to_points) | [transform](#transform) | [translate](#translate)
+[attribute_statistic](#attribute_statistic) | [capture_attribute](#capture_attribute) | [capture_attribute_node](#capture_attribute_node) | [delete](#delete) | [duplicate](#duplicate) | [field_at_index](#field_at_index) | [get_named_boolean](#get_named_boolean) | [get_named_color](#get_named_color) | [get_named_float](#get_named_float) | [get_named_integer](#get_named_integer) | [get_named_vector](#get_named_vector) | [instantiate](#instantiate) | [interpolate_domain](#interpolate_domain) | [join](#join) | [material_selection](#material_selection) | [merge_by_distance](#merge_by_distance) | [named_attribute](#named_attribute) | [on_points](#on_points) | [proximity](#proximity) | [proximity_edges](#proximity_edges) | [proximity_faces](#proximity_faces) | [proximity_points](#proximity_points) | [random_boolean](#random_boolean) | [random_float](#random_float) | [random_integer](#random_integer) | [random_vector](#random_vector) | [raycast](#raycast) | [raycast_interpolated](#raycast_interpolated) | [raycast_nearest](#raycast_nearest) | [realize](#realize) | [remove_named_attribute](#remove_named_attribute) | [replace_material](#replace_material) | [rotate](#rotate) | [sample_index](#sample_index) | [sample_nearest](#sample_nearest) | [separate](#separate) | [set_ID](#set_ID) | [set_material](#set_material) | [set_material_index](#set_material_index) | [set_named_boolean](#set_named_boolean) | [set_named_color](#set_named_color) | [set_named_float](#set_named_float) | [set_named_integer](#set_named_integer) | [set_named_vector](#set_named_vector) | [set_position](#set_position) | [set_scale](#set_scale) | [show_handles](#show_handles) | [store_named_attribute](#store_named_attribute) | [switch](#switch) | [to_instance](#to_instance) | [to_points](#to_points) | [transform](#transform) | [translate](#translate)***Inherited***
 
-## Inheritance
+attribute_statistic | capture_attribute | capture_attribute_node | delete | duplicate | field_at_index | get_named_boolean | get_named_color | get_named_float | get_named_integer | get_named_vector | instantiate | interpolate_domain | join | material_selection | merge_by_distance | named_attribute | on_points | proximity | proximity_edges | proximity_faces | proximity_points | random_boolean | random_float | random_integer | random_vector | raycast | raycast_interpolated | raycast_nearest | realize | remove_named_attribute | replace_material | rotate | sample_index | sample_nearest | separate | set_ID | set_material | set_material_index | set_named_boolean | set_named_color | set_named_float | set_named_integer | set_named_vector | set_position | set_scale | show_handles | store_named_attribute | switch | to_instance | to_points | transform | translate
 
-**Properties**
 
-[bl_idname](DataSocket.md#bl_idname) | [bnode](DataSocket.md#bnode) | [is_multi_input](DataSocket.md#is_multi_input) | [is_output](DataSocket.md#is_output) | [is_plugged](DataSocket.md#is_plugged) | [links](DataSocket.md#links) | [name](DataSocket.md#name) | [node_chain_label](DataSocket.md#node_chain_label) | [socket_index](DataSocket.md#socket_index)
-
-**Class and static methods**
-
-[get_bl_idname](DataSocket.md#get_bl_idname) | [get_class_name](DataSocket.md#get_class_name) | [gives_bsocket](DataSocket.md#gives_bsocket) | [is_socket](DataSocket.md#is_socket) | [is_vector](DataSocket.md#is_vector) | [value_data_type](DataSocket.md#value_data_type)
-
-**Methods**
-
-[connected_sockets](DataSocket.md#connected_sockets) | [convert_python_type](DataSocket.md#convert_python_type) | [get_blender_socket](DataSocket.md#get_blender_socket) | [init_domains](DataSocket.md#init_domains) | [init_socket](DataSocket.md#init_socket) | [plug](DataSocket.md#plug) | [reroute](DataSocket.md#reroute) | [reset_properties](DataSocket.md#reset_properties) | [stack](DataSocket.md#stack) | [to_output](DataSocket.md#to_output)
 
 ## Properties
 

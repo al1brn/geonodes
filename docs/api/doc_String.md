@@ -6,29 +6,27 @@
 
 **Properties**
 
-[length](#length)
+[length](#length)***Inherited***
+
+length
+
+
 
 **Class and static methods**
 
-[Input](#Input) | [LineBreak](#LineBreak) | [String](#String) | [Tab](#Tab) | [Value](#Value)
+[Input](#Input) | [LineBreak](#LineBreak) | [String](#String) | [Tab](#Tab) | [Value](#Value)***Inherited***
+
+Input | LineBreak | String | Tab | Value
+
+
 
 **Methods**
 
-[equal](#equal) | [join](#join) | [join_strings](#join_strings) | [not_equal](#not_equal) | [replace](#replace) | [slice](#slice) | [switch](#switch) | [to_curves](#to_curves)
+[equal](#equal) | [join](#join) | [join_strings](#join_strings) | [not_equal](#not_equal) | [replace](#replace) | [slice](#slice) | [switch](#switch) | [to_curves](#to_curves)***Inherited***
 
-## Inheritance
+equal | join | join_strings | not_equal | replace | slice | switch | to_curves
 
-**Properties**
 
-[bl_idname](DataSocket.md#bl_idname) | [bnode](DataSocket.md#bnode) | [is_multi_input](DataSocket.md#is_multi_input) | [is_output](DataSocket.md#is_output) | [is_plugged](DataSocket.md#is_plugged) | [links](DataSocket.md#links) | [name](DataSocket.md#name) | [node_chain_label](DataSocket.md#node_chain_label) | [socket_index](DataSocket.md#socket_index)
-
-**Class and static methods**
-
-[get_bl_idname](DataSocket.md#get_bl_idname) | [get_class_name](DataSocket.md#get_class_name) | [gives_bsocket](DataSocket.md#gives_bsocket) | [is_socket](DataSocket.md#is_socket) | [is_vector](DataSocket.md#is_vector) | [value_data_type](DataSocket.md#value_data_type)
-
-**Methods**
-
-[connected_sockets](DataSocket.md#connected_sockets) | [convert_python_type](DataSocket.md#convert_python_type) | [get_blender_socket](DataSocket.md#get_blender_socket) | [init_domains](DataSocket.md#init_domains) | [init_socket](DataSocket.md#init_socket) | [plug](DataSocket.md#plug) | [reroute](DataSocket.md#reroute) | [reset_properties](DataSocket.md#reset_properties) | [stack](DataSocket.md#stack) | [to_output](DataSocket.md#to_output)
 
 ## Properties
 

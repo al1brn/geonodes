@@ -4,29 +4,29 @@
 
 ## Content
 
-
-
-**Class and static methods**
-
-[Input](#Input) | [brick](#brick) | [checker](#checker) | [gradient](#gradient) | [gradient_diagonal](#gradient_diagonal) | [gradient_easing](#gradient_easing) | [gradient_linear](#gradient_linear) | [gradient_quadratic](#gradient_quadratic) | [gradient_quadratic_sphere](#gradient_quadratic_sphere) | [gradient_radial](#gradient_radial) | [gradient_spherical](#gradient_spherical) | [image](#image) | [magic](#magic) | [musgrave](#musgrave) | [noise](#noise) | [noise_1D](#noise_1D) | [noise_2D](#noise_2D) | [noise_3D](#noise_3D) | [noise_4D](#noise_4D) | [voronoi](#voronoi) | [voronoi_1D](#voronoi_1D) | [voronoi_2D](#voronoi_2D) | [voronoi_3D](#voronoi_3D) | [voronoi_4D](#voronoi_4D) | [wave](#wave) | [wave_bands](#wave_bands) | [wave_bands_saw](#wave_bands_saw) | [wave_bands_sine](#wave_bands_sine) | [wave_bands_triangle](#wave_bands_triangle) | [wave_rings](#wave_rings) | [wave_rings_saw](#wave_rings_saw) | [wave_rings_sine](#wave_rings_sine) | [wave_rings_triangle](#wave_rings_triangle) | [white_noise](#white_noise) | [white_noise_1D](#white_noise_1D) | [white_noise_2D](#white_noise_2D) | [white_noise_3D](#white_noise_3D) | [white_noise_4D](#white_noise_4D)
-
-**Methods**
-
-[switch](#switch)
-
-## Inheritance
-
 **Properties**
 
-[bl_idname](DataSocket.md#bl_idname) | [bnode](DataSocket.md#bnode) | [is_multi_input](DataSocket.md#is_multi_input) | [is_output](DataSocket.md#is_output) | [is_plugged](DataSocket.md#is_plugged) | [links](DataSocket.md#links) | [name](DataSocket.md#name) | [node_chain_label](DataSocket.md#node_chain_label) | [socket_index](DataSocket.md#socket_index)
+***Inherited***
+
+
+
+
 
 **Class and static methods**
 
-[get_bl_idname](DataSocket.md#get_bl_idname) | [get_class_name](DataSocket.md#get_class_name) | [gives_bsocket](DataSocket.md#gives_bsocket) | [is_socket](DataSocket.md#is_socket) | [is_vector](DataSocket.md#is_vector) | [value_data_type](DataSocket.md#value_data_type)
+[Input](#Input) | [brick](#brick) | [checker](#checker) | [gradient](#gradient) | [gradient_diagonal](#gradient_diagonal) | [gradient_easing](#gradient_easing) | [gradient_linear](#gradient_linear) | [gradient_quadratic](#gradient_quadratic) | [gradient_quadratic_sphere](#gradient_quadratic_sphere) | [gradient_radial](#gradient_radial) | [gradient_spherical](#gradient_spherical) | [image](#image) | [magic](#magic) | [musgrave](#musgrave) | [noise](#noise) | [noise_1D](#noise_1D) | [noise_2D](#noise_2D) | [noise_3D](#noise_3D) | [noise_4D](#noise_4D) | [voronoi](#voronoi) | [voronoi_1D](#voronoi_1D) | [voronoi_2D](#voronoi_2D) | [voronoi_3D](#voronoi_3D) | [voronoi_4D](#voronoi_4D) | [wave](#wave) | [wave_bands](#wave_bands) | [wave_bands_saw](#wave_bands_saw) | [wave_bands_sine](#wave_bands_sine) | [wave_bands_triangle](#wave_bands_triangle) | [wave_rings](#wave_rings) | [wave_rings_saw](#wave_rings_saw) | [wave_rings_sine](#wave_rings_sine) | [wave_rings_triangle](#wave_rings_triangle) | [white_noise](#white_noise) | [white_noise_1D](#white_noise_1D) | [white_noise_2D](#white_noise_2D) | [white_noise_3D](#white_noise_3D) | [white_noise_4D](#white_noise_4D)***Inherited***
+
+Input | brick | checker | gradient | gradient_diagonal | gradient_easing | gradient_linear | gradient_quadratic | gradient_quadratic_sphere | gradient_radial | gradient_spherical | image | magic | musgrave | noise | noise_1D | noise_2D | noise_3D | noise_4D | voronoi | voronoi_1D | voronoi_2D | voronoi_3D | voronoi_4D | wave | wave_bands | wave_bands_saw | wave_bands_sine | wave_bands_triangle | wave_rings | wave_rings_saw | wave_rings_sine | wave_rings_triangle | white_noise | white_noise_1D | white_noise_2D | white_noise_3D | white_noise_4D
+
+
 
 **Methods**
 
-[connected_sockets](DataSocket.md#connected_sockets) | [convert_python_type](DataSocket.md#convert_python_type) | [get_blender_socket](DataSocket.md#get_blender_socket) | [init_domains](DataSocket.md#init_domains) | [init_socket](DataSocket.md#init_socket) | [plug](DataSocket.md#plug) | [reroute](DataSocket.md#reroute) | [reset_properties](DataSocket.md#reset_properties) | [stack](DataSocket.md#stack) | [to_output](DataSocket.md#to_output)
+[switch](#switch)***Inherited***
+
+switch
+
+
 
 ## Class and static methods
 
