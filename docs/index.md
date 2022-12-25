@@ -58,7 +58,7 @@ In geometry nodes, attributes refer to [domains](https://al1brn.github.io/geonod
 ## Nodes layer
 
 - [Nodes](api/nodes.md)
-- [Nodes by menu](api/nodes_menu.md)
+- [Nodes by menus](api/nodes_menus.md)
 
 
 
