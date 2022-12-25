@@ -1183,7 +1183,7 @@ def raycast_nearest(self, target_geometry=None, attribute=None, source_position=
 ### realize
 
 ```python
-def realize(self, geometry=None, legacy_behavior=False)
+def realize(self, legacy_behavior=False)
 ```
 
 
@@ -1191,7 +1191,6 @@ def realize(self, geometry=None, legacy_behavior=False)
 > Node: [Realize Instances](GeometryNodeRealizeInstances.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/realize_instances.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeRealizeInstances.html)
 
 #### Args:
-- geometry: Geometry
 - legacy_behavior (bool): False
 
 #### Returns:

@@ -383,12 +383,12 @@ def plug_to_socket(socket, *values):
         ok = False
         
     if not ok:
-        logging.critical(f"Impossible to plug the value '{value}' to the socket '{bsocket.name}' of node '{bsocket.node.name}'")
-        logging.critical(f"    The value type is: {type(value)}")
-        logging.critical(f"    The expected type for socket default value is: {type(bsocket.default_value)}")
-        logging.critical(f"    Default value len: {len(bsocket.default_value) if hasattr(bsocket.default_value, '__len__') else 'no length'}")
-        logging.critical(f"    Error message: {msg}")
-        logging.critical("")
+        print(f"Impossible to plug the value '{value}' to the socket '{bsocket.name}' of node '{bsocket.node.name}'")
+        print(f"    The value type is: {type(value)}")
+        print(f"    The expected type for socket default value is: {type(bsocket.default_value)}")
+        print(f"    Default value len: {len(bsocket.default_value) if hasattr(bsocket.default_value, '__len__') else 'no length'}")
+        print(f"    Error message: {msg}")
+        print("")
         
         raise RuntimeError(f"Impossible to set the default value {value} to socket {bsocket}.\n Error: {msg}")
         

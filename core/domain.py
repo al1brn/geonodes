@@ -284,8 +284,8 @@ class Domain:
     # Select domain either by a bool or by int(s)
     
     @staticmethod
-    def value_data_type(socket, default=None, color_domain='FLOAT_COLOR'):
-        return Socket.value_data_type(socket, default=default, color_domain=color_domain)
+    def value_data_type(socket, default=None, color='FLOAT_COLOR'):
+        return Socket.value_data_type(socket, default=default, color=color)
 
     # ----------------------------------------------------------------------------------------------------
     # Select domain either by a bool or by int(s)

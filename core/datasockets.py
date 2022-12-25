@@ -1675,15 +1675,17 @@ class Collection(DataSocket):
 # Object
 
 class Object(DataSocket):
-    """ Collection DataSocket
+    """ Object DataSocket
     """
     
     def __init__(self, obj=None):
+        self._bobject = None
+        
         if isinstance(obj, bpy.types.NodeSocketObject) or self.is_socket(obj):
             super().__init__(obj)
         else:
             super().__init__(None)
-            self.bobject = Object.blender_object(obj)
+            self._bobject = Object.blender_object(obj)
     
     @staticmethod
     def blender_object(obj):
@@ -1693,6 +1695,23 @@ class Object(DataSocket):
             if obj is None:
                 raise RuntimeError(f"Object '{name}' doesn't exist.")
         return obj
+    
+    @property
+    def bobject(self):
+        """ Returns the blender of object.
+        
+        A [DataSocket](DataSocket.md) **Object** has the particularity to be initialized without any socket.
+        This allow to call the node *'Object Info'* alone.
+        
+        bobject returns the blender object for this node.
+        
+        Returns:
+            Blender Object or self if bsocket if not None
+        """
+        if self.bsocket is not None:
+            return self
+        else:
+            return self._bobject
     
     @classmethod
     def Input(cls, value=None, name="Object", description=""):
@@ -1707,6 +1726,9 @@ class Object(DataSocket):
         """
         
         return cls(Tree.TREE.new_input('Object', name=name, value=value, description=description))
+    
+    
+    
             
 # -----------------------------------------------------------------------------------------------------------------------------
 # Material

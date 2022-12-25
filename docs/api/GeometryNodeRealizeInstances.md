@@ -34,7 +34,7 @@ node = nodes.RealizeInstances(geometry=None, legacy_behavior=False)
 | Class or method name | Definition |
 |----------------------|------------|
 | **[Instances](Instances.md)** |
-| [realize](Instances.md#realize) | `def realize(self, geometry=None, legacy_behavior=False):` |
+| [realize](Instances.md#realize) | `def realize(self, legacy_behavior=False):` |
 
 <sub>Go to [top](#node-Realize-Instances) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

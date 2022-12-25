@@ -5163,7 +5163,7 @@ class Object(geosocks.Object):
 
         """
 
-        return nodes.ObjectInfo(object=self, as_instance=as_instance, transform_space=transform_space).geometry
+        return nodes.ObjectInfo(object=self.bobject, as_instance=as_instance, transform_space=transform_space).geometry
 
 
     def info(self, as_instance=None, transform_space='ORIGINAL'):
@@ -5181,7 +5181,7 @@ class Object(geosocks.Object):
 
         """
 
-        return nodes.ObjectInfo(object=self, as_instance=as_instance, transform_space=transform_space)
+        return nodes.ObjectInfo(object=self.bobject, as_instance=as_instance, transform_space=transform_space)
 
 
     def location(self, as_instance=None, transform_space='ORIGINAL'):
@@ -5199,7 +5199,7 @@ class Object(geosocks.Object):
 
         """
 
-        return nodes.ObjectInfo(object=self, as_instance=as_instance, transform_space=transform_space).location
+        return nodes.ObjectInfo(object=self.bobject, as_instance=as_instance, transform_space=transform_space).location
 
 
     def rotation(self, as_instance=None, transform_space='ORIGINAL'):
@@ -5217,7 +5217,7 @@ class Object(geosocks.Object):
 
         """
 
-        return nodes.ObjectInfo(object=self, as_instance=as_instance, transform_space=transform_space).rotation
+        return nodes.ObjectInfo(object=self.bobject, as_instance=as_instance, transform_space=transform_space).rotation
 
 
     def scale(self, as_instance=None, transform_space='ORIGINAL'):
@@ -5235,7 +5235,7 @@ class Object(geosocks.Object):
 
         """
 
-        return nodes.ObjectInfo(object=self, as_instance=as_instance, transform_space=transform_space).scale
+        return nodes.ObjectInfo(object=self.bobject, as_instance=as_instance, transform_space=transform_space).scale
 
 
     def switch(self, switch=None, true=None):
@@ -9658,13 +9658,12 @@ class Instances(Geometry):
         return nodes.InstanceOnPoints(points=points, selection=selection, instance=self, pick_instance=pick_instance, instance_index=instance_index, rotation=rotation, scale=scale).instances
 
 
-    def realize(self, geometry=None, legacy_behavior=False):
+    def realize(self, legacy_behavior=False):
         """
 
         > Node: [Realize Instances](GeometryNodeRealizeInstances.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/realize_instances.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeRealizeInstances.html)
 
         #### Args:
-        - geometry: Geometry
         - legacy_behavior (bool): False
 
         #### Returns:
@@ -9673,7 +9672,7 @@ class Instances(Geometry):
 
         """
 
-        return nodes.RealizeInstances(geometry=geometry, legacy_behavior=legacy_behavior).geometry
+        return nodes.RealizeInstances(geometry=self, legacy_behavior=legacy_behavior).geometry
 
 
     def rotate(self, selection=None, rotation=None, pivot_point=None, local_space=None):

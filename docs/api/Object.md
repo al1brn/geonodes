@@ -2,7 +2,7 @@
 
 > [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
- Collection DataSocket
+ Object DataSocket
 
 
 
@@ -16,6 +16,8 @@ Object(self, obj=None)
 ## Content
 
 **Properties**
+
+[bobject](#bobject)
 
 ***Inherited***
 
@@ -36,6 +38,24 @@ Object(self, obj=None)
 ***Inherited***
 
 [connected_sockets](DataSocket.md#connected_sockets) | [get_blender_socket](DataSocket.md#get_blender_socket) | [init_domains](DataSocket.md#init_domains) | [init_socket](DataSocket.md#init_socket) | [plug](DataSocket.md#plug) | [reroute](DataSocket.md#reroute) | [reset_properties](DataSocket.md#reset_properties) | [stack](DataSocket.md#stack) | [to_output](DataSocket.md#to_output)
+
+## Properties
+
+### bobject
+
+ Returns the blender of object.
+
+A [DataSocket](DataSocket.md) **Object** has the particularity to be initialized without any socket.
+This allow to call the node *'Object Info'* alone.
+
+bobject returns the blender object for this node.
+
+#### Returns:
+- Blender Object or self if bsocket if not None
+
+
+
+<sub>Go to [top](#class-Object) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## Class and static methods
 
