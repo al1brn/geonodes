@@ -585,7 +585,7 @@ class Domain(geodom.Domain):
         """
 
         data_type_ = self.value_data_type(value, 'FLOAT')
-        return nodes.SampleIndex(geometry=self.data_socket, value=value, index=index, clamp=clamp, data_type=data_type_, domain=self.domain).value
+        return nodes.SampleIndex(geometry=self.data_socket, value=value, index=self.index_for_sample(index), clamp=clamp, data_type=data_type_, domain=self.domain).value
 
 
     def set_ID(self, ID=None):
@@ -730,6 +730,42 @@ class Domain(geodom.Domain):
 
         data_type_ = self.value_data_type(value, 'FLOAT')
         return self.socket_stack(nodes.StoreNamedAttribute(geometry=self.data_socket, name=name, value=value, data_type=data_type_, domain=self.domain))
+
+
+    def view(self, value=None):
+        """
+
+        > Node: [Viewer](GeometryNodeViewer.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/output/viewer.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeViewer.html)
+
+        #### Args:
+        - value: ['Float', 'Vector', 'Color', 'Integer', 'Boolean']
+
+        #### Returns:
+        - node with sockets []
+
+
+        """
+
+        data_type_ = self.value_data_type(value, 'FLOAT')
+        return nodes.Viewer(geometry=self.data_socket, value=value, data_type=data_type_, domain=self.domain)
+
+
+    def viewer(self, value=None):
+        """
+
+        > Node: [Viewer](GeometryNodeViewer.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/output/viewer.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeViewer.html)
+
+        #### Args:
+        - value: ['Float', 'Vector', 'Color', 'Integer', 'Boolean']
+
+        #### Returns:
+        - node with sockets []
+
+
+        """
+
+        data_type_ = self.value_data_type(value, 'FLOAT')
+        return nodes.Viewer(geometry=self.data_socket, value=value, data_type=data_type_, domain=self.domain)
 
 
 

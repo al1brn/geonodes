@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 """
-Created on 2022-12-24
+Created on 2022-12-25
 
 @author: Generated from generator module
 
@@ -12133,6 +12133,90 @@ class VertexOfCorner(Node):
         self.set_input_socket('corner_index', value)
 
 # ----------------------------------------------------------------------------------------------------
+# Node Viewer for GeometryNodeViewer
+
+class Viewer(Node):
+
+    """Node *Viewer*
+
+    .. _Viewer:
+
+    Node implementation:
+        Geometry:
+            viewer view 
+        Domain:
+            viewer view 
+
+    Args:
+        geometry (DataSocket): Geometry
+        value (DataSocket): ``data_type`` dependant
+        data_type (str): Node parameter, default = 'FLOAT' in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN')
+        domain (str): Node parameter, default = 'AUTO' in ('AUTO', 'POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
+        node_color (color): Node color
+        node_label (str): Node label
+
+
+    Shared sockets:
+        - Driving parameter : ``data_type`` in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN')
+        - Input sockets  : ['value']
+        - Output sockets : []
+
+    .. blid:: GeometryNodeViewer
+
+    """
+
+    def __init__(self, geometry=None, value=None, data_type='FLOAT', domain='AUTO', label=None, node_color=None):
+
+        super().__init__('GeometryNodeViewer', node_name='Viewer', label=label, node_color=node_color)
+
+        # Node parameters to configure the sockets enablement
+
+        self.bnode.data_type       = self.value_data_type(value) if data_type is None else data_type
+        self.bnode.domain          = domain
+
+        # Input and output sockets names (for use in __getattr__ and __setattr__)
+
+        self.insockets = {'geometry' : 0, 'value' : [1, 2, 3, 4, 5], }
+        self.outsockets = {}
+
+        # Input sockets plugging
+
+        if geometry        is not None: self.geometry        = geometry
+        if value           is not None: self.value           = value
+
+    @property
+    def data_type(self):
+        return self.bnode.data_type
+
+    @data_type.setter
+    def data_type(self, value):
+        self.bnode.data_type = value
+
+    @property
+    def domain(self):
+        return self.bnode.domain
+
+    @domain.setter
+    def domain(self, value):
+        self.bnode.domain = value
+
+    @property
+    def geometry(self):
+        raise AttributeError("Attribute error on node 'Viewer': the input socket 'geometry' is write only.")
+
+    @geometry.setter
+    def geometry(self, value):
+        self.set_input_socket('geometry', value)
+
+    @property
+    def value(self):
+        raise AttributeError("Attribute error on node 'Viewer': the input socket 'value' is write only.")
+
+    @value.setter
+    def value(self, value):
+        self.set_input_socket('value', value)
+
+# ----------------------------------------------------------------------------------------------------
 # Node VolumeCube for GeometryNodeVolumeCube
 
 class VolumeCube(Node):
@@ -14689,6 +14773,7 @@ def create_node(bl_idname, *args, **kwargs):
     'GeometryNodeUVPackIslands': PackUvIslands,
     'GeometryNodeUVUnwrap': UvUnwrap,
     'GeometryNodeVertexOfCorner': VertexOfCorner,
+    'GeometryNodeViewer': Viewer,
     'GeometryNodeVolumeCube': VolumeCube,
     'GeometryNodeVolumeToMesh': VolumeToMesh,
     'ShaderNodeClamp': Clamp,

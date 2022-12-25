@@ -30,7 +30,7 @@ Edge(self, data_socket, selection=None)
 
 **Methods**
 
-[accumulate_field](#accumulate_field) | [attribute_max](#attribute_max) | [attribute_mean](#attribute_mean) | [attribute_median](#attribute_median) | [attribute_min](#attribute_min) | [attribute_node](#attribute_node) | [attribute_range](#attribute_range) | [attribute_statistic](#attribute_statistic) | [attribute_std](#attribute_std) | [attribute_sum](#attribute_sum) | [attribute_var](#attribute_var) | [capture_attribute](#capture_attribute) | [delete](#delete) | [delete_all](#delete_all) | [delete_edges](#delete_edges) | [delete_faces](#delete_faces) | [duplicate](#duplicate) | [edge_paths_to_curves](#edge_paths_to_curves) | [extrude](#extrude) | [field_at_index](#field_at_index) | [get_named_boolean](#get_named_boolean) | [get_named_color](#get_named_color) | [get_named_float](#get_named_float) | [get_named_integer](#get_named_integer) | [get_named_vector](#get_named_vector) | [interpolate](#interpolate) | [material_selection](#material_selection) | [named_attribute](#named_attribute) | [proximity](#proximity) | [random_boolean](#random_boolean) | [random_float](#random_float) | [random_integer](#random_integer) | [random_vector](#random_vector) | [remove_named_attribute](#remove_named_attribute) | [sample_index](#sample_index) | [sample_nearest](#sample_nearest) | [scale_single_axis](#scale_single_axis) | [scale_uniform](#scale_uniform) | [select](#select) | [separate](#separate) | [set_ID](#set_ID) | [set_named_boolean](#set_named_boolean) | [set_named_color](#set_named_color) | [set_named_float](#set_named_float) | [set_named_integer](#set_named_integer) | [set_named_vector](#set_named_vector) | [set_position](#set_position) | [socket_stack](#socket_stack) | [split](#split) | [store_named_attribute](#store_named_attribute) | [to_curve](#to_curve) | [view](#view)
+[accumulate_field](#accumulate_field) | [attribute_max](#attribute_max) | [attribute_mean](#attribute_mean) | [attribute_median](#attribute_median) | [attribute_min](#attribute_min) | [attribute_node](#attribute_node) | [attribute_range](#attribute_range) | [attribute_statistic](#attribute_statistic) | [attribute_std](#attribute_std) | [attribute_sum](#attribute_sum) | [attribute_var](#attribute_var) | [capture_attribute](#capture_attribute) | [delete](#delete) | [delete_all](#delete_all) | [delete_edges](#delete_edges) | [delete_faces](#delete_faces) | [duplicate](#duplicate) | [edge_paths_to_curves](#edge_paths_to_curves) | [extrude](#extrude) | [field_at_index](#field_at_index) | [get_named_boolean](#get_named_boolean) | [get_named_color](#get_named_color) | [get_named_float](#get_named_float) | [get_named_integer](#get_named_integer) | [get_named_vector](#get_named_vector) | [index_for_sample](#index_for_sample) | [interpolate](#interpolate) | [material_selection](#material_selection) | [named_attribute](#named_attribute) | [proximity](#proximity) | [random_boolean](#random_boolean) | [random_float](#random_float) | [random_integer](#random_integer) | [random_vector](#random_vector) | [remove_named_attribute](#remove_named_attribute) | [sample_index](#sample_index) | [sample_nearest](#sample_nearest) | [scale_single_axis](#scale_single_axis) | [scale_uniform](#scale_uniform) | [select](#select) | [separate](#separate) | [set_ID](#set_ID) | [set_named_boolean](#set_named_boolean) | [set_named_color](#set_named_color) | [set_named_float](#set_named_float) | [set_named_integer](#set_named_integer) | [set_named_vector](#set_named_vector) | [set_position](#set_position) | [socket_stack](#socket_stack) | [split](#split) | [store_named_attribute](#store_named_attribute) | [to_curve](#to_curve) | [view](#view) | [viewer](#viewer)
 
 ## Properties
 
@@ -972,6 +972,31 @@ def get_named_vector(self, name=None)
 
 <sub>Go to [top](#class-Edge) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
+### index_for_sample
+
+```python
+def index_for_sample(self, default=None)
+```
+
+ Return default if not None or Input index socket.
+
+The node 'Sample Index' has an input with default value to 0.
+If mehod argument is None, create a node 'Input Index' as input.
+
+**sample_index** method is implemented:
+    
+```python
+def sample_index(self, value=None, index=None, clamp=False):
+    return nodes.SampleIndex(..., index=self.index_for_sample(index), ...)
+```
+
+#### Returns:
+- default or Input index
+
+
+
+<sub>Go to [top](#class-Edge) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### interpolate
 
 ```python
@@ -1592,15 +1617,44 @@ def to_curve(self)
 ### view
 
 ```python
-def view(self, socket=None, label=None, node_color=None)
+def view(self, value=None)
 ```
 
- To viewer.
 
-Create a **Viewer** node with the domain geometry as input and the provided socket.
+
+> Node: [Viewer](GeometryNodeViewer.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/output/viewer.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeViewer.html)
 
 #### Args:
-- socket (DataSocket): The value to view
+- value: ['Float', 'Vector', 'Color', 'Integer', 'Boolean']
+
+#### Returns:
+- node with sockets []
+
+
+
+
+
+
+<sub>Go to [top](#class-Edge) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### viewer
+
+```python
+def viewer(self, value=None)
+```
+
+
+
+> Node: [Viewer](GeometryNodeViewer.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/output/viewer.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeViewer.html)
+
+#### Args:
+- value: ['Float', 'Vector', 'Color', 'Integer', 'Boolean']
+
+#### Returns:
+- node with sockets []
+
+
+
 
 
 

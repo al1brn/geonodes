@@ -18,7 +18,7 @@ logger = logging.getLogger('geonodes')
 from geonodes.core import colors
 from geonodes.core import context
 from geonodes.core.socket import DataSocket
-from geonodes.core.node import Node, GroupInput, GroupOutput, Frame, Viewer, SceneTime, Group
+from geonodes.core.node import Node, GroupInput, GroupOutput, Frame, SceneTime, Group
 #from geonodes.nodes.classes import Geometry
 
 from .arrange import arrange
@@ -773,28 +773,6 @@ class Tree:
     def new_group_output(self):
         """ Create a new instance in group output."""
         return GroupOutput(check_output_geometry=False)
-        
-        
-    # ----------------------------------------------------------------------------------------------------
-    # Viewer
-    
-    def view(self, geometry=None, socket=None, domain='AUTO', label=None, node_color=None):
-        """ Connect a data socket to the viewer.
-        
-        Args:
-            - geometry (Geometry): the geometry to use in the viewer
-            - socket (DataSocket): the value to connect
-            - domain (str): the domain
-        
-        You can also call **DataSocket.view()**
-        """
-        
-        viewer = Viewer(domain=domain, label=label, node_color=node_color)
-        
-        viewer.plug_socket(geometry)
-        viewer.plug_socket(socket)
-        
-        return viewer
     
     # ----------------------------------------------------------------------------------------------------
     # Scene

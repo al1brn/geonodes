@@ -280,6 +280,28 @@ class Domain:
         """
         return None if self.selector is None else self.selector.index
     
+    def index_for_sample(self, default=None):
+        """ Return default if not None or Input index socket.
+        
+        The node 'Sample Index' has an input with default value to 0.
+        If mehod argument is None, create a node 'Input Index' as input.
+        
+        **sample_index** method is implemented:
+            
+        ```python
+        def sample_index(self, value=None, index=None, clamp=False):
+            return nodes.SampleIndex(..., index=self.index_for_sample(index), ...)
+        ```
+        
+        Returns:
+            default or Input index
+        """
+        if default is not None:
+            return default
+        else:
+            return self.data_socket.index
+        
+    
     # ----------------------------------------------------------------------------------------------------
     # Select domain either by a bool or by int(s)
     

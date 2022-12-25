@@ -7450,6 +7450,44 @@ class Geometry(geosocks.Geometry):
         return self.stack(nodes.Transform(geometry=self, translation=translation, rotation=rotation, scale=scale))
 
 
+    def view(self, value=None, domain='AUTO'):
+        """
+
+        > Node: [Viewer](GeometryNodeViewer.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/output/viewer.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeViewer.html)
+
+        #### Args:
+        - value: ['Float', 'Vector', 'Color', 'Integer', 'Boolean']
+        - domain (str): 'AUTO' in [AUTO, POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+
+        #### Returns:
+        - node with sockets []
+
+
+        """
+
+        data_type_ = self.value_data_type(value, 'FLOAT')
+        return nodes.Viewer(geometry=self, value=value, data_type=data_type_, domain=domain)
+
+
+    def viewer(self, value=None, domain='AUTO'):
+        """
+
+        > Node: [Viewer](GeometryNodeViewer.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/output/viewer.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeViewer.html)
+
+        #### Args:
+        - value: ['Float', 'Vector', 'Color', 'Integer', 'Boolean']
+        - domain (str): 'AUTO' in [AUTO, POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+
+        #### Returns:
+        - node with sockets []
+
+
+        """
+
+        data_type_ = self.value_data_type(value, 'FLOAT')
+        return nodes.Viewer(geometry=self, value=value, data_type=data_type_, domain=domain)
+
+
     @property
     def volume_component(self):
         """

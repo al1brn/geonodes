@@ -5,7 +5,7 @@ blender_version=(3, 4, 0)
 
 pi = 3.141592653589793
 
-from geonodes.core.node import Node, GroupInput, GroupOutput, Frame, Viewer, SceneTime, Group
+from geonodes.core.node import Node, GroupInput, GroupOutput, Frame, SceneTime, Group
 from geonodes.core.tree import Tree, Trees
 
 from geonodes.nodes import nodes

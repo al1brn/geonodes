@@ -138,7 +138,7 @@ Tree(self, tree_name, clear=False, group=False, fake_user=False, prefix=None)
 
 **Methods**
 
-[activate](#activate) | [arrange](#arrange) | [check_attributes](#check_attributes) | [close](#close) | [get_bnode](#get_bnode) | [get_bnode_wrapper](#get_bnode_wrapper) | [get_bsocket_wrapper](#get_bsocket_wrapper) | [layout](#layout) | [new_group_input](#new_group_input) | [new_group_output](#new_group_output) | [new_input](#new_input) | [prev_node](#prev_node) | [register_node](#register_node) | [to_output](#to_output) | [view](#view)
+[activate](#activate) | [arrange](#arrange) | [check_attributes](#check_attributes) | [close](#close) | [get_bnode](#get_bnode) | [get_bnode_wrapper](#get_bnode_wrapper) | [get_bsocket_wrapper](#get_bsocket_wrapper) | [layout](#layout) | [new_group_input](#new_group_input) | [new_group_output](#new_group_output) | [new_input](#new_input) | [prev_node](#prev_node) | [register_node](#register_node) | [to_output](#to_output)
 
 ## Properties
 
@@ -555,26 +555,6 @@ Don't use it directly, better call method `to_output` of data classes.
 ```python
 value.to_output()
 ```
-
-
-
-<sub>Go to [top](#class-Tree) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-### view
-
-```python
-def view(self, geometry=None, socket=None, domain='AUTO', label=None, node_color=None)
-```
-
- Connect a data socket to the viewer.
-
-#### Args:
-- geometry (Geometry): the geometry to use in the viewer
-- socket (DataSocket): the value to connect
-- domain (str): the domain
-
-You can also call **DataSocket.view()**
-
 
 
 

@@ -341,6 +341,8 @@
 | [Vertex Neighbors](GeometryNodeInputMeshVertexNeighbors.md) | [Vertex](Vertex.md) | - [neighbors](Vertex.md#neighbors)<br>- [neighbors_vertex_count](Vertex.md#neighbors_vertex_count)<br>- [neighbors_face_count](Vertex.md#neighbors_face_count)|
 | [Vertex of Corner](GeometryNodeVertexOfCorner.md) | [Corner](Corner.md) | [vertex_index](Corner.md#vertex_index) |
 |      | [Mesh](Mesh.md) | [vertex_of_corner](Mesh.md#vertex_of_corner) |
+| [Viewer](GeometryNodeViewer.md) | [Domain](Domain.md) | - [viewer](Domain.md#viewer)<br>- [view](Domain.md#view)|
+|      | [Geometry](Geometry.md) | - [viewer](Geometry.md#viewer)<br>- [view](Geometry.md#view)|
 | [Volume Cube](GeometryNodeVolumeCube.md) | [Volume](Volume.md) | [Cube](Volume.md#Cube) |
 | [Volume to Mesh](GeometryNodeVolumeToMesh.md) | [Volume](Volume.md) | [to_mesh](Volume.md#to_mesh) |
 | [Voronoi Texture](ShaderNodeTexVoronoi.md) | [Texture](Texture.md) | [voronoi](Texture.md#voronoi) / [voronoi_1D](Texture.md#voronoi_1D) / [voronoi_2D](Texture.md#voronoi_2D) / [voronoi_3D](Texture.md#voronoi_3D) / [voronoi_4D](Texture.md#voronoi_4D) / |

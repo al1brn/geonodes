@@ -1182,77 +1182,8 @@ class GroupOutput(CustomGroup):
         self.plug(index, socket)
         
 # =============================================================================================================================
-# Unique nodes        
+# Nodes required by Tree
 
-# ----------------------------------------------------------------------------------------------------
-# Node NodeViewer for GeometryNodeViewer
-
-class Viewer(Node):
-    """ Node *Viewer*
-    
-    Args:
-        geometry: The geometry to view
-        value: The value to view
-        domain: Str in ('AUTO', 'POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
-        data_type: The value data_type in [ 'FLOAT' 'INT' 'FLOAT_VECTOR' 'FLOAT_COLOR' 'BOOLEAN']
-
-        
-    .. blid:: GeometryNodeViewer
-
-    """
-
-    def __init__(self, geometry: DataSocket = None, value: Any = None, domain='AUTO', data_type: str = 'FLOAT', label: str = None, node_color = None):
-
-        super().__init__('GeometryNodeViewer', 'Viewer', label=label, node_color=COLORS['Viewer'] if node_color is None else node_color)
-
-        # Parameters
-
-        self.bnode.domain = domain        
-        self.bnode.data_type = data_type
-        
-        self.insockets  = {'geometry': 0, 'value': [1, 2, 3, 4, 5]}
-        
-        self.geometry = geometry
-        self.value    = value
-
-        
-    def plug_socket(self, socket: DataSocket):
-        """ Plug a socket into the viewer.
-        
-        Args:
-            socket: The data socket to plug
-            
-        """
-        
-        if socket is None:
-            return
-        
-        class_name = DataSocket.get_class_name(socket, False)
-
-        if class_name in ['Geometry', 'Mesh', 'Curve', 'Spline', 'Points', 'Volume', 'Instances']:
-            self.plug("geometry", socket)
-            
-        else:
-            if class_name == 'Boolean':
-                self.bnode.data_type = 'BOOLEAN'
-                
-            elif class_name == 'Integer':
-                self.bnode.data_type = 'INT'
-                
-            elif class_name == 'Float':
-                self.bnode.data_type = 'FLOAT'
-                
-            elif class_name == 'Vector':
-                self.bnode.data_type = 'FLOAT_VECTOR'
-                
-            elif class_name == 'Color':
-                self.bnode.data_type = 'FLOAT_COLOR'
-                
-            else:
-                raise RuntimeError(f"Impossible to connect the socket {socket} to the viewer. Class {class_name} is not viewable.")
-                
-            self.plug("value", socket)
-        
 # ----------------------------------------------------------------------------------------------------
 # Node NodeFrame for NodeFrame
 
