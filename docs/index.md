@@ -22,6 +22,7 @@
 ## Geometry types
 
 The geometry classes are:
+- [Geometry](api/Geometry.Md)
 - [Mesh](api/Mesh.md)
 - [Curve](api/Curve.md)
 - [Points](api/Points.md)
@@ -53,6 +54,11 @@ In geometry nodes, attributes refer to [domains](https://al1brn.github.io/geonod
 - [Texture](api/Texture.md)
 - [Image](api/Image.md)
 - [Material](api/Material.md)
+
+## Nodes layer
+
+- [Nodes](api/nodes.md)
+- [Nodes by menus](api/nodes_menus.md)
 
 
 
