@@ -53,7 +53,7 @@ elf.points = Vertex(self) # Initialized before super().__init__ which can overri
 
 **Class and static methods**
 
-[Circle](#Circle) | [Collection](#Collection) | [Cone](#Cone) | [Cube](#Cube) | [Cylinder](#Cylinder) | [FromCollection](#FromCollection) | [Grid](#Grid) | [IcoSphere](#IcoSphere) | [Input](#Input) | [Line](#Line) | [LineEndPoints](#LineEndPoints) | [LineEndPointsResolution](#LineEndPointsResolution) | [LineOffset](#LineOffset) | [UVSphere](#UVSphere)
+[Circle](#Circle) | [Collection](#Collection) | [Cone](#Cone) | [Cube](#Cube) | [Cylinder](#Cylinder) | [FromCollection](#FromCollection) | [Grid](#Grid) | [IcoSphere](#IcoSphere) | [Input](#Input) | [Line](#Line) | [LineEndPoints](#LineEndPoints) | [LineEndPointsResolution](#LineEndPointsResolution) | [LineOffset](#LineOffset) | [UVSphere](#UVSphere) | [capture_attribute_node](#capture_attribute_node) | [random_boolean](#random_boolean) | [random_float](#random_float) | [random_integer](#random_integer) | [random_vector](#random_vector)
 
 ***Inherited***
 
@@ -61,7 +61,7 @@ elf.points = Vertex(self) # Initialized before super().__init__ which can overri
 
 **Methods**
 
-[attribute_statistic](#attribute_statistic) | [boolean_difference](#boolean_difference) | [boolean_intersect](#boolean_intersect) | [boolean_union](#boolean_union) | [capture_attribute](#capture_attribute) | [capture_attribute_node](#capture_attribute_node) | [corners_of_face](#corners_of_face) | [corners_of_vertex](#corners_of_vertex) | [delete](#delete) | [delete_all](#delete_all) | [delete_edges](#delete_edges) | [delete_faces](#delete_faces) | [distribute_points_on_faces](#distribute_points_on_faces) | [dual_mesh](#dual_mesh) | [duplicate](#duplicate) | [edge_paths_to_curves](#edge_paths_to_curves) | [edge_paths_to_selection](#edge_paths_to_selection) | [edges_of_corner](#edges_of_corner) | [edges_of_vertex](#edges_of_vertex) | [extrude](#extrude) | [face_is_planar](#face_is_planar) | [face_of_corner](#face_of_corner) | [face_set_boundaries](#face_set_boundaries) | [field_at_index](#field_at_index) | [flip_faces](#flip_faces) | [get_named_boolean](#get_named_boolean) | [get_named_color](#get_named_color) | [get_named_float](#get_named_float) | [get_named_integer](#get_named_integer) | [get_named_vector](#get_named_vector) | [instance_on_points](#instance_on_points) | [instantiate](#instantiate) | [interpolate_domain](#interpolate_domain) | [is_shade_smooth](#is_shade_smooth) | [join](#join) | [material_selection](#material_selection) | [merge_by_distance](#merge_by_distance) | [named_attribute](#named_attribute) | [offset_corner_in_face](#offset_corner_in_face) | [pack_uv_islands](#pack_uv_islands) | [proximity](#proximity) | [proximity_edges](#proximity_edges) | [proximity_faces](#proximity_faces) | [proximity_points](#proximity_points) | [random_boolean](#random_boolean) | [random_float](#random_float) | [random_integer](#random_integer) | [random_vector](#random_vector) | [raycast](#raycast) | [raycast_interpolated](#raycast_interpolated) | [raycast_nearest](#raycast_nearest) | [remove_named_attribute](#remove_named_attribute) | [replace_material](#replace_material) | [sample_index](#sample_index) | [sample_nearest](#sample_nearest) | [sample_nearest_surface](#sample_nearest_surface) | [sample_uv_surface](#sample_uv_surface) | [scale_elements](#scale_elements) | [scale_single_axis](#scale_single_axis) | [scale_uniform](#scale_uniform) | [separate](#separate) | [set_ID](#set_ID) | [set_material](#set_material) | [set_material_index](#set_material_index) | [set_named_boolean](#set_named_boolean) | [set_named_color](#set_named_color) | [set_named_float](#set_named_float) | [set_named_integer](#set_named_integer) | [set_named_vector](#set_named_vector) | [set_position](#set_position) | [set_shade_smooth](#set_shade_smooth) | [shortest_edge_paths](#shortest_edge_paths) | [show_handles](#show_handles) | [split_edges](#split_edges) | [store_named_attribute](#store_named_attribute) | [subdivide](#subdivide) | [subdivision_surface](#subdivision_surface) | [switch](#switch) | [to_curve](#to_curve) | [to_instance](#to_instance) | [to_points](#to_points) | [to_volume](#to_volume) | [transform](#transform) | [triangulate](#triangulate) | [uv_unwrap](#uv_unwrap) | [vertex_of_corner](#vertex_of_corner) | [view](#view) | [viewer](#viewer)
+[attribute_statistic](#attribute_statistic) | [boolean_difference](#boolean_difference) | [boolean_intersect](#boolean_intersect) | [boolean_union](#boolean_union) | [capture_attribute](#capture_attribute) | [corners_of_face](#corners_of_face) | [corners_of_vertex](#corners_of_vertex) | [delete](#delete) | [delete_all](#delete_all) | [delete_edges](#delete_edges) | [delete_faces](#delete_faces) | [distribute_points_on_faces](#distribute_points_on_faces) | [dual_mesh](#dual_mesh) | [duplicate](#duplicate) | [edge_paths_to_curves](#edge_paths_to_curves) | [edge_paths_to_selection](#edge_paths_to_selection) | [edges_of_corner](#edges_of_corner) | [edges_of_vertex](#edges_of_vertex) | [extrude](#extrude) | [face_is_planar](#face_is_planar) | [face_of_corner](#face_of_corner) | [face_set_boundaries](#face_set_boundaries) | [field_at_index](#field_at_index) | [flip_faces](#flip_faces) | [instance_on_points](#instance_on_points) | [instantiate](#instantiate) | [interpolate_domain](#interpolate_domain) | [is_shade_smooth](#is_shade_smooth) | [join](#join) | [material_selection](#material_selection) | [merge_by_distance](#merge_by_distance) | [named_attribute](#named_attribute) | [named_boolean](#named_boolean) | [named_color](#named_color) | [named_float](#named_float) | [named_integer](#named_integer) | [named_vector](#named_vector) | [offset_corner_in_face](#offset_corner_in_face) | [pack_uv_islands](#pack_uv_islands) | [proximity](#proximity) | [proximity_edges](#proximity_edges) | [proximity_faces](#proximity_faces) | [proximity_points](#proximity_points) | [raycast](#raycast) | [raycast_interpolated](#raycast_interpolated) | [raycast_nearest](#raycast_nearest) | [remove_named_attribute](#remove_named_attribute) | [replace_material](#replace_material) | [sample_index](#sample_index) | [sample_nearest](#sample_nearest) | [sample_nearest_surface](#sample_nearest_surface) | [sample_uv_surface](#sample_uv_surface) | [scale_elements](#scale_elements) | [scale_single_axis](#scale_single_axis) | [scale_uniform](#scale_uniform) | [separate](#separate) | [set_ID](#set_ID) | [set_material](#set_material) | [set_material_index](#set_material_index) | [set_position](#set_position) | [set_shade_smooth](#set_shade_smooth) | [shortest_edge_paths](#shortest_edge_paths) | [show_handles](#show_handles) | [split_edges](#split_edges) | [store_named_attribute](#store_named_attribute) | [store_named_boolean](#store_named_boolean) | [store_named_color](#store_named_color) | [store_named_float](#store_named_float) | [store_named_integer](#store_named_integer) | [store_named_vector](#store_named_vector) | [subdivide](#subdivide) | [subdivision_surface](#subdivision_surface) | [switch](#switch) | [to_curve](#to_curve) | [to_instance](#to_instance) | [to_points](#to_points) | [to_volume](#to_volume) | [transform](#transform) | [triangulate](#triangulate) | [uv_unwrap](#uv_unwrap) | [vertex_of_corner](#vertex_of_corner) | [view](#view) | [viewer](#viewer)
 
 ***Inherited***
 
@@ -820,6 +820,140 @@ def UVSphere(cls, segments=None, rings=None, radius=None)
 
 <sub>Go to [top](#class-Mesh) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
+### capture_attribute_node
+
+```python
+@staticmethod
+def capture_attribute_node(geometry=None, value=None, data_type='FLOAT', domain='POINT')
+```
+
+
+
+> Node: [Capture Attribute](GeometryNodeCaptureAttribute.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/capture_attribute.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeCaptureAttribute.html)
+
+#### Args:
+- geometry: Geometry
+- value: ['Vector', 'Float', 'Color', 'Boolean', 'Integer']
+- data_type (str): 'FLOAT' in [FLOAT, INT, FLOAT_VECTOR, FLOAT_COLOR, BOOLEAN]
+- domain (str): 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+
+#### Returns:
+- node with sockets ['geometry', 'attribute']
+
+
+
+
+
+
+<sub>Go to [top](#class-Mesh) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### random_boolean
+
+```python
+@staticmethod
+def random_boolean(probability=None, ID=None, seed=None)
+```
+
+
+
+> Node: [Random Value](FunctionNodeRandomValue.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/random_value.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeRandomValue.html)
+
+#### Args:
+- probability: Float
+- ID: Integer
+- seed: Integer
+
+#### Returns:
+- socket `value`
+
+
+
+
+
+
+<sub>Go to [top](#class-Mesh) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### random_float
+
+```python
+@staticmethod
+def random_float(min=None, max=None, ID=None, seed=None)
+```
+
+
+
+> Node: [Random Value](FunctionNodeRandomValue.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/random_value.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeRandomValue.html)
+
+#### Args:
+- min: ['Vector', 'Float', 'Integer']
+- max: ['Vector', 'Float', 'Integer']
+- ID: Integer
+- seed: Integer
+
+#### Returns:
+- socket `value`
+
+
+
+
+
+
+<sub>Go to [top](#class-Mesh) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### random_integer
+
+```python
+@staticmethod
+def random_integer(min=None, max=None, ID=None, seed=None)
+```
+
+
+
+> Node: [Random Value](FunctionNodeRandomValue.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/random_value.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeRandomValue.html)
+
+#### Args:
+- min: ['Vector', 'Float', 'Integer']
+- max: ['Vector', 'Float', 'Integer']
+- ID: Integer
+- seed: Integer
+
+#### Returns:
+- socket `value`
+
+
+
+
+
+
+<sub>Go to [top](#class-Mesh) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### random_vector
+
+```python
+@staticmethod
+def random_vector(min=None, max=None, ID=None, seed=None)
+```
+
+
+
+> Node: [Random Value](FunctionNodeRandomValue.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/random_value.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeRandomValue.html)
+
+#### Args:
+- min: ['Vector', 'Float', 'Integer']
+- max: ['Vector', 'Float', 'Integer']
+- ID: Integer
+- seed: Integer
+
+#### Returns:
+- socket `value`
+
+
+
+
+
+
+<sub>Go to [top](#class-Mesh) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ## Methods
 
 ### attribute_statistic
@@ -938,32 +1072,6 @@ def capture_attribute(self, value=None, domain='POINT')
 
 #### Returns:
 - socket `attribute`
-
-
-
-
-
-
-<sub>Go to [top](#class-Mesh) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-### capture_attribute_node
-
-```python
-def capture_attribute_node(self, geometry=None, value=None, data_type='FLOAT', domain='POINT')
-```
-
-
-
-> Node: [Capture Attribute](GeometryNodeCaptureAttribute.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/capture_attribute.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeCaptureAttribute.html)
-
-#### Args:
-- geometry: Geometry
-- value: ['Vector', 'Float', 'Color', 'Boolean', 'Integer']
-- data_type (str): 'FLOAT' in [FLOAT, INT, FLOAT_VECTOR, FLOAT_COLOR, BOOLEAN]
-- domain (str): 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
-
-#### Returns:
-- node with sockets ['geometry', 'attribute']
 
 
 
@@ -1157,7 +1265,7 @@ def distribute_points_on_faces(self, selection=None, distance_min=None, density_
 ### dual_mesh
 
 ```python
-def dual_mesh(self, mesh=None, keep_boundaries=None)
+def dual_mesh(self, keep_boundaries=None)
 ```
 
 
@@ -1165,7 +1273,6 @@ def dual_mesh(self, mesh=None, keep_boundaries=None)
 > Node: [Dual Mesh](GeometryNodeDualMesh.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/dual_mesh.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeDualMesh.html)
 
 #### Args:
-- mesh: Mesh
 - keep_boundaries: Boolean
 
 #### Returns:
@@ -1451,121 +1558,6 @@ def flip_faces(self, selection=None)
 
 <sub>Go to [top](#class-Mesh) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
-### get_named_boolean
-
-```python
-def get_named_boolean(self, name=None)
-```
-
-
-
-> Node: [Named Attribute](GeometryNodeInputNamedAttribute.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/named_attribute.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputNamedAttribute.html)
-
-#### Args:
-- name: String
-
-#### Returns:
-- socket `attribute`
-
-
-
-
-
-
-<sub>Go to [top](#class-Mesh) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-### get_named_color
-
-```python
-def get_named_color(self, name=None)
-```
-
-
-
-> Node: [Named Attribute](GeometryNodeInputNamedAttribute.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/named_attribute.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputNamedAttribute.html)
-
-#### Args:
-- name: String
-
-#### Returns:
-- socket `attribute`
-
-
-
-
-
-
-<sub>Go to [top](#class-Mesh) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-### get_named_float
-
-```python
-def get_named_float(self, name=None)
-```
-
-
-
-> Node: [Named Attribute](GeometryNodeInputNamedAttribute.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/named_attribute.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputNamedAttribute.html)
-
-#### Args:
-- name: String
-
-#### Returns:
-- socket `attribute`
-
-
-
-
-
-
-<sub>Go to [top](#class-Mesh) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-### get_named_integer
-
-```python
-def get_named_integer(self, name=None)
-```
-
-
-
-> Node: [Named Attribute](GeometryNodeInputNamedAttribute.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/named_attribute.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputNamedAttribute.html)
-
-#### Args:
-- name: String
-
-#### Returns:
-- socket `attribute`
-
-
-
-
-
-
-<sub>Go to [top](#class-Mesh) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-### get_named_vector
-
-```python
-def get_named_vector(self, name=None)
-```
-
-
-
-> Node: [Named Attribute](GeometryNodeInputNamedAttribute.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/named_attribute.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputNamedAttribute.html)
-
-#### Args:
-- name: String
-
-#### Returns:
-- socket `attribute`
-
-
-
-
-
-
-<sub>Go to [top](#class-Mesh) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
 ### instance_on_points
 
 ```python
@@ -1686,7 +1678,7 @@ def join(*geometry)
 - geometry: <m>Geometry
 
 #### Returns:
-- self
+- socket `geometry`
 
 
 
@@ -1756,6 +1748,121 @@ def named_attribute(self, name=None, data_type='FLOAT')
 #### Args:
 - name: String
 - data_type (str): 'FLOAT' in [FLOAT, INT, FLOAT_VECTOR, FLOAT_COLOR, BOOLEAN]
+
+#### Returns:
+- socket `attribute`
+
+
+
+
+
+
+<sub>Go to [top](#class-Mesh) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### named_boolean
+
+```python
+def named_boolean(self, name=None)
+```
+
+
+
+> Node: [Named Attribute](GeometryNodeInputNamedAttribute.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/named_attribute.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputNamedAttribute.html)
+
+#### Args:
+- name: String
+
+#### Returns:
+- socket `attribute`
+
+
+
+
+
+
+<sub>Go to [top](#class-Mesh) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### named_color
+
+```python
+def named_color(self, name=None)
+```
+
+
+
+> Node: [Named Attribute](GeometryNodeInputNamedAttribute.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/named_attribute.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputNamedAttribute.html)
+
+#### Args:
+- name: String
+
+#### Returns:
+- socket `attribute`
+
+
+
+
+
+
+<sub>Go to [top](#class-Mesh) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### named_float
+
+```python
+def named_float(self, name=None)
+```
+
+
+
+> Node: [Named Attribute](GeometryNodeInputNamedAttribute.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/named_attribute.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputNamedAttribute.html)
+
+#### Args:
+- name: String
+
+#### Returns:
+- socket `attribute`
+
+
+
+
+
+
+<sub>Go to [top](#class-Mesh) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### named_integer
+
+```python
+def named_integer(self, name=None)
+```
+
+
+
+> Node: [Named Attribute](GeometryNodeInputNamedAttribute.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/named_attribute.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputNamedAttribute.html)
+
+#### Args:
+- name: String
+
+#### Returns:
+- socket `attribute`
+
+
+
+
+
+
+<sub>Go to [top](#class-Mesh) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### named_vector
+
+```python
+def named_vector(self, name=None)
+```
+
+
+
+> Node: [Named Attribute](GeometryNodeInputNamedAttribute.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/named_attribute.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputNamedAttribute.html)
+
+#### Args:
+- name: String
 
 #### Returns:
 - socket `attribute`
@@ -1906,109 +2013,6 @@ def proximity_points(self, target=None, source_position=None)
 
 #### Returns:
 - socket `distance`
-
-
-
-
-
-
-<sub>Go to [top](#class-Mesh) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-### random_boolean
-
-```python
-def random_boolean(self, probability=None, ID=None, seed=None)
-```
-
-
-
-> Node: [Random Value](FunctionNodeRandomValue.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/random_value.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeRandomValue.html)
-
-#### Args:
-- probability: Float
-- ID: Integer
-- seed: Integer
-
-#### Returns:
-- socket `value`
-
-
-
-
-
-
-<sub>Go to [top](#class-Mesh) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-### random_float
-
-```python
-def random_float(self, min=None, max=None, ID=None, seed=None)
-```
-
-
-
-> Node: [Random Value](FunctionNodeRandomValue.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/random_value.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeRandomValue.html)
-
-#### Args:
-- min: ['Vector', 'Float', 'Integer']
-- max: ['Vector', 'Float', 'Integer']
-- ID: Integer
-- seed: Integer
-
-#### Returns:
-- socket `value`
-
-
-
-
-
-
-<sub>Go to [top](#class-Mesh) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-### random_integer
-
-```python
-def random_integer(self, min=None, max=None, ID=None, seed=None)
-```
-
-
-
-> Node: [Random Value](FunctionNodeRandomValue.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/random_value.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeRandomValue.html)
-
-#### Args:
-- min: ['Vector', 'Float', 'Integer']
-- max: ['Vector', 'Float', 'Integer']
-- ID: Integer
-- seed: Integer
-
-#### Returns:
-- socket `value`
-
-
-
-
-
-
-<sub>Go to [top](#class-Mesh) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-### random_vector
-
-```python
-def random_vector(self, min=None, max=None, ID=None, seed=None)
-```
-
-
-
-> Node: [Random Value](FunctionNodeRandomValue.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/random_value.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeRandomValue.html)
-
-#### Args:
-- min: ['Vector', 'Float', 'Integer']
-- max: ['Vector', 'Float', 'Integer']
-- ID: Integer
-- seed: Integer
-
-#### Returns:
-- socket `value`
 
 
 
@@ -2331,7 +2335,7 @@ def scale_uniform(self, selection=None, scale=None, center=None, domain='FACE')
 ### separate
 
 ```python
-def separate(self, geometry=None, selection=None, domain='POINT')
+def separate(self, selection=None, domain='POINT')
 ```
 
 
@@ -2339,7 +2343,6 @@ def separate(self, geometry=None, selection=None, domain='POINT')
 > Node: [Separate Geometry](GeometryNodeSeparateGeometry.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/separate_geometry.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSeparateGeometry.html)
 
 #### Args:
-- geometry: Geometry
 - selection: Boolean
 - domain (str): 'POINT' in [POINT, EDGE, FACE, CURVE, INSTANCE]
 
@@ -2416,131 +2419,6 @@ def set_material_index(self, selection=None, material_index=None)
 #### Args:
 - selection: Boolean
 - material_index: Integer
-
-#### Returns:
-- self
-
-
-
-
-
-
-<sub>Go to [top](#class-Mesh) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-### set_named_boolean
-
-```python
-def set_named_boolean(self, name=None, value=None, domain='POINT')
-```
-
-
-
-> Node: [Store Named Attribute](GeometryNodeStoreNamedAttribute.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/store_named_attribute.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeStoreNamedAttribute.html)
-
-#### Args:
-- name: String
-- value: ['Vector', 'Float', 'Color', 'Boolean', 'Integer']
-- domain (str): 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
-
-#### Returns:
-- self
-
-
-
-
-
-
-<sub>Go to [top](#class-Mesh) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-### set_named_color
-
-```python
-def set_named_color(self, name=None, value=None, domain='POINT')
-```
-
-
-
-> Node: [Store Named Attribute](GeometryNodeStoreNamedAttribute.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/store_named_attribute.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeStoreNamedAttribute.html)
-
-#### Args:
-- name: String
-- value: ['Vector', 'Float', 'Color', 'Boolean', 'Integer']
-- domain (str): 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
-
-#### Returns:
-- self
-
-
-
-
-
-
-<sub>Go to [top](#class-Mesh) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-### set_named_float
-
-```python
-def set_named_float(self, name=None, value=None, domain='POINT')
-```
-
-
-
-> Node: [Store Named Attribute](GeometryNodeStoreNamedAttribute.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/store_named_attribute.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeStoreNamedAttribute.html)
-
-#### Args:
-- name: String
-- value: ['Vector', 'Float', 'Color', 'Boolean', 'Integer']
-- domain (str): 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
-
-#### Returns:
-- self
-
-
-
-
-
-
-<sub>Go to [top](#class-Mesh) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-### set_named_integer
-
-```python
-def set_named_integer(self, name=None, value=None, domain='POINT')
-```
-
-
-
-> Node: [Store Named Attribute](GeometryNodeStoreNamedAttribute.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/store_named_attribute.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeStoreNamedAttribute.html)
-
-#### Args:
-- name: String
-- value: ['Vector', 'Float', 'Color', 'Boolean', 'Integer']
-- domain (str): 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
-
-#### Returns:
-- self
-
-
-
-
-
-
-<sub>Go to [top](#class-Mesh) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-### set_named_vector
-
-```python
-def set_named_vector(self, name=None, value=None, domain='POINT')
-```
-
-
-
-> Node: [Store Named Attribute](GeometryNodeStoreNamedAttribute.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/store_named_attribute.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeStoreNamedAttribute.html)
-
-#### Args:
-- name: String
-- value: ['Vector', 'Float', 'Color', 'Boolean', 'Integer']
-- domain (str): 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
 
 #### Returns:
 - self
@@ -2681,6 +2559,131 @@ def split_edges(self, selection=None)
 
 ```python
 def store_named_attribute(self, name=None, value=None, domain='POINT')
+```
+
+
+
+> Node: [Store Named Attribute](GeometryNodeStoreNamedAttribute.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/store_named_attribute.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeStoreNamedAttribute.html)
+
+#### Args:
+- name: String
+- value: ['Vector', 'Float', 'Color', 'Boolean', 'Integer']
+- domain (str): 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+
+#### Returns:
+- self
+
+
+
+
+
+
+<sub>Go to [top](#class-Mesh) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### store_named_boolean
+
+```python
+def store_named_boolean(self, name=None, value=None, domain='POINT')
+```
+
+
+
+> Node: [Store Named Attribute](GeometryNodeStoreNamedAttribute.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/store_named_attribute.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeStoreNamedAttribute.html)
+
+#### Args:
+- name: String
+- value: ['Vector', 'Float', 'Color', 'Boolean', 'Integer']
+- domain (str): 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+
+#### Returns:
+- self
+
+
+
+
+
+
+<sub>Go to [top](#class-Mesh) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### store_named_color
+
+```python
+def store_named_color(self, name=None, value=None, domain='POINT')
+```
+
+
+
+> Node: [Store Named Attribute](GeometryNodeStoreNamedAttribute.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/store_named_attribute.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeStoreNamedAttribute.html)
+
+#### Args:
+- name: String
+- value: ['Vector', 'Float', 'Color', 'Boolean', 'Integer']
+- domain (str): 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+
+#### Returns:
+- self
+
+
+
+
+
+
+<sub>Go to [top](#class-Mesh) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### store_named_float
+
+```python
+def store_named_float(self, name=None, value=None, domain='POINT')
+```
+
+
+
+> Node: [Store Named Attribute](GeometryNodeStoreNamedAttribute.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/store_named_attribute.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeStoreNamedAttribute.html)
+
+#### Args:
+- name: String
+- value: ['Vector', 'Float', 'Color', 'Boolean', 'Integer']
+- domain (str): 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+
+#### Returns:
+- self
+
+
+
+
+
+
+<sub>Go to [top](#class-Mesh) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### store_named_integer
+
+```python
+def store_named_integer(self, name=None, value=None, domain='POINT')
+```
+
+
+
+> Node: [Store Named Attribute](GeometryNodeStoreNamedAttribute.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/store_named_attribute.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeStoreNamedAttribute.html)
+
+#### Args:
+- name: String
+- value: ['Vector', 'Float', 'Color', 'Boolean', 'Integer']
+- domain (str): 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+
+#### Returns:
+- self
+
+
+
+
+
+
+<sub>Go to [top](#class-Mesh) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### store_named_vector
+
+```python
+def store_named_vector(self, name=None, value=None, domain='POINT')
 ```
 
 

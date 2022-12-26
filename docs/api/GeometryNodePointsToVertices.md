@@ -31,9 +31,9 @@ node = nodes.PointsToVertices(points=None, selection=None)
 | Class or method name | Definition |
 |----------------------|------------|
 | **[CloudPoint](CloudPoint.md)** |
-| [to_vertices](CloudPoint.md#to_vertices) | `def to_vertices(self, points=None):` |
+| [to_vertices](CloudPoint.md#to_vertices) | `def to_vertices(self):` |
 | **[Points](Points.md)** |
-| [to_vertices](Points.md#to_vertices) | `def to_vertices(self, points=None, selection=None):` |
+| [to_vertices](Points.md#to_vertices) | `def to_vertices(self, selection=None):` |
 
 <sub>Go to [top](#node-Points-to-Vertices) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

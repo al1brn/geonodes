@@ -47,7 +47,7 @@ String(self, value = "Text", label = None)
 
 **Methods**
 
-[equal](#equal) | [join](#join) | [join_strings](#join_strings) | [not_equal](#not_equal) | [replace](#replace) | [slice](#slice) | [switch](#switch) | [to_curves](#to_curves)
+[equal](#equal) | [join](#join) | [join_strings](#join_strings) | [not_equal](#not_equal) | [replace](#replace) | [slice](#slice) | [string_join](#string_join) | [switch](#switch) | [to_curves](#to_curves)
 
 ***Inherited***
 
@@ -209,7 +209,7 @@ def equal(self, b=None)
 ### join
 
 ```python
-def join(*strings, delimiter=None)
+def join(self, *strings)
 ```
 
 
@@ -218,7 +218,6 @@ def join(*strings, delimiter=None)
 
 #### Args:
 - strings: <m>String
-- delimiter: String
 
 #### Returns:
 - socket `string`
@@ -339,6 +338,30 @@ def slice(self, position=None, length=None)
 
 <sub>Go to [top](#class-String) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
+### string_join
+
+```python
+def string_join(*strings, delimiter=None)
+```
+
+
+
+> Node: [Join Strings](GeometryNodeStringJoin.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/join_strings.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeStringJoin.html)
+
+#### Args:
+- strings: <m>String
+- delimiter: String
+
+#### Returns:
+- socket `string`
+
+
+
+
+
+
+<sub>Go to [top](#class-String) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### switch
 
 ```python
@@ -366,7 +389,7 @@ def switch(self, switch=None, true=None)
 ### to_curves
 
 ```python
-def to_curves(self, string=None, size=None, character_spacing=None, word_spacing=None, line_spacing=None, text_box_width=None, text_box_height=None, align_x='LEFT', align_y='TOP_BASELINE', overflow='OVERFLOW', pivot_mode='BOTTOM_LEFT')
+def to_curves(self, size=None, character_spacing=None, word_spacing=None, line_spacing=None, text_box_width=None, text_box_height=None, align_x='LEFT', align_y='TOP_BASELINE', overflow='OVERFLOW', pivot_mode='BOTTOM_LEFT')
 ```
 
 
@@ -374,7 +397,6 @@ def to_curves(self, string=None, size=None, character_spacing=None, word_spacing
 > Node: [String to Curves](GeometryNodeStringToCurves.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/string_to_curves.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeStringToCurves.html)
 
 #### Args:
-- string: String
 - size: Float
 - character_spacing: Float
 - word_spacing: Float

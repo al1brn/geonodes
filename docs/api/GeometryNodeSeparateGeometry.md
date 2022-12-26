@@ -36,19 +36,19 @@ node = nodes.SeparateGeometry(geometry=None, selection=None, domain='POINT')
 | Class or method name | Definition |
 |----------------------|------------|
 | **[ControlPoint](ControlPoint.md)** |
-| [separate](ControlPoint.md#separate) | `def separate(self, geometry=None):` |
+| [separate](ControlPoint.md#separate) | `def separate(self):` |
 | **[Edge](Edge.md)** |
-| [separate](Edge.md#separate) | `def separate(self, geometry=None):` |
+| [separate](Edge.md#separate) | `def separate(self):` |
 | **[Face](Face.md)** |
-| [separate](Face.md#separate) | `def separate(self, geometry=None):` |
+| [separate](Face.md#separate) | `def separate(self):` |
 | **[Geometry](Geometry.md)** |
-| [separate](Geometry.md#separate) | `def separate(self, geometry=None, selection=None, domain='POINT'):` |
+| [separate](Geometry.md#separate) | `def separate(self, selection=None, domain='POINT'):` |
 | **[Instance](Instance.md)** |
-| [separate](Instance.md#separate) | `def separate(self, geometry=None):` |
+| [separate](Instance.md#separate) | `def separate(self):` |
 | **[Spline](Spline.md)** |
-| [separate](Spline.md#separate) | `def separate(self, geometry=None):` |
+| [separate](Spline.md#separate) | `def separate(self):` |
 | **[Vertex](Vertex.md)** |
-| [separate](Vertex.md#separate) | `def separate(self, geometry=None):` |
+| [separate](Vertex.md#separate) | `def separate(self):` |
 
 <sub>Go to [top](#node-Separate-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

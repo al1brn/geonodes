@@ -39,23 +39,23 @@ node = nodes.DomainSize(geometry=None, component='MESH')
 | Class or method name | Definition |
 |----------------------|------------|
 | **[CloudPoint](CloudPoint.md)** |
-| [count](CloudPoint.md#count) | `@property`<br> `def count(self, geometry=None):` |
+| [count](CloudPoint.md#count) | `@property`<br> `def count(self):` |
 | **[ControlPoint](ControlPoint.md)** |
-| [count](ControlPoint.md#count) | `@property`<br> `def count(self, geometry=None):` |
+| [count](ControlPoint.md#count) | `@property`<br> `def count(self):` |
 | **[Corner](Corner.md)** |
-| [count](Corner.md#count) | `@property`<br> `def count(self, geometry=None):` |
+| [count](Corner.md#count) | `@property`<br> `def count(self):` |
 | **[Curve](Curve.md)** |
 | [domain_size](Curve.md#domain_size) | `@property`<br> `def domain_size(self):` |
 | [point_count](Curve.md#point_count) | `@property`<br> `def point_count(self):` |
 | [spline_count](Curve.md#spline_count) | `@property`<br> `def spline_count(self):` |
 | **[Edge](Edge.md)** |
-| [count](Edge.md#count) | `@property`<br> `def count(self, geometry=None):` |
+| [count](Edge.md#count) | `@property`<br> `def count(self):` |
 | **[Face](Face.md)** |
-| [count](Face.md#count) | `@property`<br> `def count(self, geometry=None):` |
+| [count](Face.md#count) | `@property`<br> `def count(self):` |
 | **[Geometry](Geometry.md)** |
 | [domain_size](Geometry.md#domain_size) | `@property`<br> `def domain_size(self, component='MESH'):` |
 | **[Instance](Instance.md)** |
-| [count](Instance.md#count) | `@property`<br> `def count(self, geometry=None):` |
+| [count](Instance.md#count) | `@property`<br> `def count(self):` |
 | **[Instances](Instances.md)** |
 | [domain_size](Instances.md#domain_size) | `@property`<br> `def domain_size(self):` |
 | **[Mesh](Mesh.md)** |
@@ -67,9 +67,9 @@ node = nodes.DomainSize(geometry=None, component='MESH')
 | **[Points](Points.md)** |
 | [domain_size](Points.md#domain_size) | `@property`<br> `def domain_size(self):` |
 | **[Spline](Spline.md)** |
-| [count](Spline.md#count) | `@property`<br> `def count(self, geometry=None):` |
+| [count](Spline.md#count) | `@property`<br> `def count(self):` |
 | **[Vertex](Vertex.md)** |
-| [count](Vertex.md#count) | `@property`<br> `def count(self, geometry=None):` |
+| [count](Vertex.md#count) | `@property`<br> `def count(self):` |
 
 <sub>Go to [top](#node-Domain-Size) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

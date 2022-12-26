@@ -957,11 +957,6 @@ class Color(DataSocket):
         """
         
         return cls(Tree.TREE.new_input('Color', value=value, name=name, description=description))
-    
-    # ---------------------------------------------------------------------------
-    # r, g and b components
-    # DEPRECATED : separate_RGB is replaced by separate_color
-    
 
     # ---------------------------------------------------------------------------
     # Is modified
@@ -1524,6 +1519,10 @@ class Geometry(DataSocket):
     # Join operators
     
     def __add__(self, other):
+        return self.join(other)
+    
+    
+        
         if self.node.bl_idname == 'GeometryNodeJoinGeometry':
             self.node.plug(0, other)
             return self
@@ -1532,11 +1531,16 @@ class Geometry(DataSocket):
     def __radd__(self, other):
         return other.join(self.socket)
     
-    #def __iadd__(self, other):
-    #    if self.node.bl_idname == 'GeometryNodeJoinGeometry':
-    #        self.node.plug(0, other)
-    #        return self
-    #    return self.stack(self.add(other).node)
+    def __iadd__(self, other):
+        return self.stack(self.join(other))
+    
+    
+
+        if self.node.bl_idname == 'GeometryNodeJoinGeometry':
+            self.node.plug(0, other)
+            return self
+        
+        return self.join(other)
     
     # ----------------------------------------------------------------------------------------------------
     # Instantiate the geometry

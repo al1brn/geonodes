@@ -28,9 +28,13 @@ ControlPoint(self, data_socket, selection=None)
 
 [ID](#ID) | [as_cloud_points](#as_cloud_points) | [as_control_points](#as_control_points) | [as_corners](#as_corners) | [as_edges](#as_edges) | [as_faces](#as_faces) | [as_insts](#as_insts) | [as_splines](#as_splines) | [as_verts](#as_verts) | [count](#count) | [data_socket](#data_socket) | [domain](#domain) | [domain_index](#domain_index) | [index](#index) | [left_handle_positions](#left_handle_positions) | [normal](#normal) | [parameter](#parameter) | [parameter_factor](#parameter_factor) | [parameter_index](#parameter_index) | [parameter_length](#parameter_length) | [position](#position) | [radius](#radius) | [right_handle_positions](#right_handle_positions) | [selection](#selection) | [selection_index](#selection_index) | [tangent](#tangent) | [tilt](#tilt)
 
+**Class and static methods**
+
+[random_boolean](#random_boolean) | [random_float](#random_float) | [random_integer](#random_integer) | [random_vector](#random_vector)
+
 **Methods**
 
-[accumulate_field](#accumulate_field) | [attribute_max](#attribute_max) | [attribute_mean](#attribute_mean) | [attribute_median](#attribute_median) | [attribute_min](#attribute_min) | [attribute_node](#attribute_node) | [attribute_range](#attribute_range) | [attribute_statistic](#attribute_statistic) | [attribute_std](#attribute_std) | [attribute_sum](#attribute_sum) | [attribute_var](#attribute_var) | [capture_attribute](#capture_attribute) | [curve](#curve) | [delete](#delete) | [duplicate](#duplicate) | [endpoint_selection](#endpoint_selection) | [field_at_index](#field_at_index) | [get_named_boolean](#get_named_boolean) | [get_named_color](#get_named_color) | [get_named_float](#get_named_float) | [get_named_integer](#get_named_integer) | [get_named_vector](#get_named_vector) | [handle_positions](#handle_positions) | [handle_type_selection](#handle_type_selection) | [handle_type_selection_align](#handle_type_selection_align) | [handle_type_selection_auto](#handle_type_selection_auto) | [handle_type_selection_free](#handle_type_selection_free) | [handle_type_selection_node](#handle_type_selection_node) | [handle_type_selection_vector](#handle_type_selection_vector) | [index_for_sample](#index_for_sample) | [instance_on_points](#instance_on_points) | [interpolate](#interpolate) | [material_selection](#material_selection) | [named_attribute](#named_attribute) | [offset](#offset) | [proximity](#proximity) | [random_boolean](#random_boolean) | [random_float](#random_float) | [random_integer](#random_integer) | [random_vector](#random_vector) | [remove_named_attribute](#remove_named_attribute) | [sample_index](#sample_index) | [select](#select) | [separate](#separate) | [set_ID](#set_ID) | [set_handle_positions](#set_handle_positions) | [set_handle_positions_left](#set_handle_positions_left) | [set_handle_positions_right](#set_handle_positions_right) | [set_handle_type](#set_handle_type) | [set_handle_type_node](#set_handle_type_node) | [set_named_boolean](#set_named_boolean) | [set_named_color](#set_named_color) | [set_named_float](#set_named_float) | [set_named_integer](#set_named_integer) | [set_named_vector](#set_named_vector) | [set_position](#set_position) | [set_radius](#set_radius) | [set_tilt](#set_tilt) | [socket_stack](#socket_stack) | [store_named_attribute](#store_named_attribute) | [view](#view) | [viewer](#viewer)
+[accumulate_field](#accumulate_field) | [attribute_max](#attribute_max) | [attribute_mean](#attribute_mean) | [attribute_median](#attribute_median) | [attribute_min](#attribute_min) | [attribute_node](#attribute_node) | [attribute_range](#attribute_range) | [attribute_statistic](#attribute_statistic) | [attribute_std](#attribute_std) | [attribute_sum](#attribute_sum) | [attribute_var](#attribute_var) | [capture_attribute](#capture_attribute) | [curve](#curve) | [delete](#delete) | [duplicate](#duplicate) | [endpoint_selection](#endpoint_selection) | [field_at_index](#field_at_index) | [handle_positions](#handle_positions) | [handle_type_selection](#handle_type_selection) | [handle_type_selection_align](#handle_type_selection_align) | [handle_type_selection_auto](#handle_type_selection_auto) | [handle_type_selection_free](#handle_type_selection_free) | [handle_type_selection_node](#handle_type_selection_node) | [handle_type_selection_vector](#handle_type_selection_vector) | [index_for_sample](#index_for_sample) | [instance_on_points](#instance_on_points) | [interpolate](#interpolate) | [material_selection](#material_selection) | [named_attribute](#named_attribute) | [named_boolean](#named_boolean) | [named_color](#named_color) | [named_float](#named_float) | [named_integer](#named_integer) | [named_vector](#named_vector) | [offset](#offset) | [proximity](#proximity) | [remove_named_attribute](#remove_named_attribute) | [sample_index](#sample_index) | [select](#select) | [separate](#separate) | [set_ID](#set_ID) | [set_handle_positions](#set_handle_positions) | [set_handle_positions_left](#set_handle_positions_left) | [set_handle_positions_right](#set_handle_positions_right) | [set_handle_type](#set_handle_type) | [set_handle_type_node](#set_handle_type_node) | [set_position](#set_position) | [set_radius](#set_radius) | [set_tilt](#set_tilt) | [socket_stack](#socket_stack) | [store_named_attribute](#store_named_attribute) | [store_named_attribute_no_selection](#store_named_attribute_no_selection) | [store_named_boolean](#store_named_boolean) | [store_named_color](#store_named_color) | [store_named_float](#store_named_float) | [store_named_integer](#store_named_integer) | [store_named_vector](#store_named_vector) | [view](#view) | [viewer](#viewer)
 
 ## Properties
 
@@ -489,6 +493,115 @@ Node implemented as property setter.
 
 <sub>Go to [top](#class-ControlPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
+## Class and static methods
+
+### random_boolean
+
+```python
+@staticmethod
+def random_boolean(probability=None, ID=None, seed=None)
+```
+
+
+
+> Node: [Random Value](FunctionNodeRandomValue.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/random_value.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeRandomValue.html)
+
+#### Args:
+- probability: Float
+- ID: Integer
+- seed: Integer
+
+#### Returns:
+- socket `value`
+
+
+
+
+
+
+<sub>Go to [top](#class-ControlPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### random_float
+
+```python
+@staticmethod
+def random_float(min=None, max=None, ID=None, seed=None)
+```
+
+
+
+> Node: [Random Value](FunctionNodeRandomValue.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/random_value.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeRandomValue.html)
+
+#### Args:
+- min: ['Vector', 'Float', 'Integer']
+- max: ['Vector', 'Float', 'Integer']
+- ID: Integer
+- seed: Integer
+
+#### Returns:
+- socket `value`
+
+
+
+
+
+
+<sub>Go to [top](#class-ControlPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### random_integer
+
+```python
+@staticmethod
+def random_integer(min=None, max=None, ID=None, seed=None)
+```
+
+
+
+> Node: [Random Value](FunctionNodeRandomValue.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/random_value.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeRandomValue.html)
+
+#### Args:
+- min: ['Vector', 'Float', 'Integer']
+- max: ['Vector', 'Float', 'Integer']
+- ID: Integer
+- seed: Integer
+
+#### Returns:
+- socket `value`
+
+
+
+
+
+
+<sub>Go to [top](#class-ControlPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### random_vector
+
+```python
+@staticmethod
+def random_vector(min=None, max=None, ID=None, seed=None)
+```
+
+
+
+> Node: [Random Value](FunctionNodeRandomValue.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/random_value.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeRandomValue.html)
+
+#### Args:
+- min: ['Vector', 'Float', 'Integer']
+- max: ['Vector', 'Float', 'Integer']
+- ID: Integer
+- seed: Integer
+
+#### Returns:
+- socket `value`
+
+
+
+
+
+
+<sub>Go to [top](#class-ControlPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ## Methods
 
 ### accumulate_field
@@ -890,121 +1003,6 @@ def field_at_index(self, index=None, value=None)
 
 <sub>Go to [top](#class-ControlPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
-### get_named_boolean
-
-```python
-def get_named_boolean(self, name=None)
-```
-
-
-
-> Node: [Named Attribute](GeometryNodeInputNamedAttribute.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/named_attribute.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputNamedAttribute.html)
-
-#### Args:
-- name: String
-
-#### Returns:
-- socket `attribute`
-
-
-
-
-
-
-<sub>Go to [top](#class-ControlPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-### get_named_color
-
-```python
-def get_named_color(self, name=None)
-```
-
-
-
-> Node: [Named Attribute](GeometryNodeInputNamedAttribute.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/named_attribute.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputNamedAttribute.html)
-
-#### Args:
-- name: String
-
-#### Returns:
-- socket `attribute`
-
-
-
-
-
-
-<sub>Go to [top](#class-ControlPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-### get_named_float
-
-```python
-def get_named_float(self, name=None)
-```
-
-
-
-> Node: [Named Attribute](GeometryNodeInputNamedAttribute.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/named_attribute.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputNamedAttribute.html)
-
-#### Args:
-- name: String
-
-#### Returns:
-- socket `attribute`
-
-
-
-
-
-
-<sub>Go to [top](#class-ControlPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-### get_named_integer
-
-```python
-def get_named_integer(self, name=None)
-```
-
-
-
-> Node: [Named Attribute](GeometryNodeInputNamedAttribute.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/named_attribute.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputNamedAttribute.html)
-
-#### Args:
-- name: String
-
-#### Returns:
-- socket `attribute`
-
-
-
-
-
-
-<sub>Go to [top](#class-ControlPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-### get_named_vector
-
-```python
-def get_named_vector(self, name=None)
-```
-
-
-
-> Node: [Named Attribute](GeometryNodeInputNamedAttribute.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/named_attribute.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputNamedAttribute.html)
-
-#### Args:
-- name: String
-
-#### Returns:
-- socket `attribute`
-
-
-
-
-
-
-<sub>Go to [top](#class-ControlPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
 ### handle_positions
 
 ```python
@@ -1040,7 +1038,7 @@ def handle_type_selection(self, left=True, right=True, handle_type='AUTO')
 
 #### Args:
 - handle_type (str): 'AUTO' in [FREE, AUTO, VECTOR, ALIGN]
-- mode (set): {'LEFT', 'RIGHT'}
+- mode (set): {'RIGHT', 'LEFT'}
 
 #### Returns:
 - node with sockets ['selection']
@@ -1064,7 +1062,7 @@ def handle_type_selection_align(self, left=True, right=True)
 
 #### Args:
 - handle_type (str): 'AUTO' in [FREE, AUTO, VECTOR, ALIGN]
-- mode (set): {'LEFT', 'RIGHT'}
+- mode (set): {'RIGHT', 'LEFT'}
 
 #### Returns:
 - node with sockets ['selection']
@@ -1088,7 +1086,7 @@ def handle_type_selection_auto(self, left=True, right=True)
 
 #### Args:
 - handle_type (str): 'AUTO' in [FREE, AUTO, VECTOR, ALIGN]
-- mode (set): {'LEFT', 'RIGHT'}
+- mode (set): {'RIGHT', 'LEFT'}
 
 #### Returns:
 - node with sockets ['selection']
@@ -1112,7 +1110,7 @@ def handle_type_selection_free(self, left=True, right=True)
 
 #### Args:
 - handle_type (str): 'AUTO' in [FREE, AUTO, VECTOR, ALIGN]
-- mode (set): {'LEFT', 'RIGHT'}
+- mode (set): {'RIGHT', 'LEFT'}
 
 #### Returns:
 - node with sockets ['selection']
@@ -1127,7 +1125,7 @@ def handle_type_selection_free(self, left=True, right=True)
 ### handle_type_selection_node
 
 ```python
-def handle_type_selection_node(self, handle_type='AUTO', mode={'LEFT', 'RIGHT'})
+def handle_type_selection_node(self, handle_type='AUTO', mode={'RIGHT', 'LEFT'})
 ```
 
 
@@ -1136,7 +1134,7 @@ def handle_type_selection_node(self, handle_type='AUTO', mode={'LEFT', 'RIGHT'})
 
 #### Args:
 - handle_type (str): 'AUTO' in [FREE, AUTO, VECTOR, ALIGN]
-- mode (set): {'LEFT', 'RIGHT'}
+- mode (set): {'RIGHT', 'LEFT'}
 
 #### Returns:
 - socket `selection`
@@ -1160,7 +1158,7 @@ def handle_type_selection_vector(self, left=True, right=True)
 
 #### Args:
 - handle_type (str): 'AUTO' in [FREE, AUTO, VECTOR, ALIGN]
-- mode (set): {'LEFT', 'RIGHT'}
+- mode (set): {'RIGHT', 'LEFT'}
 
 #### Returns:
 - node with sockets ['selection']
@@ -1294,6 +1292,121 @@ def named_attribute(self, name=None, data_type='FLOAT')
 
 <sub>Go to [top](#class-ControlPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
+### named_boolean
+
+```python
+def named_boolean(self, name=None)
+```
+
+
+
+> Node: [Named Attribute](GeometryNodeInputNamedAttribute.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/named_attribute.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputNamedAttribute.html)
+
+#### Args:
+- name: String
+
+#### Returns:
+- socket `attribute`
+
+
+
+
+
+
+<sub>Go to [top](#class-ControlPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### named_color
+
+```python
+def named_color(self, name=None)
+```
+
+
+
+> Node: [Named Attribute](GeometryNodeInputNamedAttribute.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/named_attribute.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputNamedAttribute.html)
+
+#### Args:
+- name: String
+
+#### Returns:
+- socket `attribute`
+
+
+
+
+
+
+<sub>Go to [top](#class-ControlPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### named_float
+
+```python
+def named_float(self, name=None)
+```
+
+
+
+> Node: [Named Attribute](GeometryNodeInputNamedAttribute.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/named_attribute.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputNamedAttribute.html)
+
+#### Args:
+- name: String
+
+#### Returns:
+- socket `attribute`
+
+
+
+
+
+
+<sub>Go to [top](#class-ControlPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### named_integer
+
+```python
+def named_integer(self, name=None)
+```
+
+
+
+> Node: [Named Attribute](GeometryNodeInputNamedAttribute.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/named_attribute.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputNamedAttribute.html)
+
+#### Args:
+- name: String
+
+#### Returns:
+- socket `attribute`
+
+
+
+
+
+
+<sub>Go to [top](#class-ControlPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### named_vector
+
+```python
+def named_vector(self, name=None)
+```
+
+
+
+> Node: [Named Attribute](GeometryNodeInputNamedAttribute.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/named_attribute.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputNamedAttribute.html)
+
+#### Args:
+- name: String
+
+#### Returns:
+- socket `attribute`
+
+
+
+
+
+
+<sub>Go to [top](#class-ControlPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### offset
 
 ```python
@@ -1335,109 +1448,6 @@ def proximity(self, target=None, source_position=None)
 
 #### Returns:
 - socket `distance`
-
-
-
-
-
-
-<sub>Go to [top](#class-ControlPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-### random_boolean
-
-```python
-def random_boolean(self, probability=None, ID=None, seed=None)
-```
-
-
-
-> Node: [Random Value](FunctionNodeRandomValue.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/random_value.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeRandomValue.html)
-
-#### Args:
-- probability: Float
-- ID: Integer
-- seed: Integer
-
-#### Returns:
-- socket `value`
-
-
-
-
-
-
-<sub>Go to [top](#class-ControlPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-### random_float
-
-```python
-def random_float(self, min=None, max=None, ID=None, seed=None)
-```
-
-
-
-> Node: [Random Value](FunctionNodeRandomValue.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/random_value.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeRandomValue.html)
-
-#### Args:
-- min: ['Vector', 'Float', 'Integer']
-- max: ['Vector', 'Float', 'Integer']
-- ID: Integer
-- seed: Integer
-
-#### Returns:
-- socket `value`
-
-
-
-
-
-
-<sub>Go to [top](#class-ControlPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-### random_integer
-
-```python
-def random_integer(self, min=None, max=None, ID=None, seed=None)
-```
-
-
-
-> Node: [Random Value](FunctionNodeRandomValue.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/random_value.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeRandomValue.html)
-
-#### Args:
-- min: ['Vector', 'Float', 'Integer']
-- max: ['Vector', 'Float', 'Integer']
-- ID: Integer
-- seed: Integer
-
-#### Returns:
-- socket `value`
-
-
-
-
-
-
-<sub>Go to [top](#class-ControlPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-### random_vector
-
-```python
-def random_vector(self, min=None, max=None, ID=None, seed=None)
-```
-
-
-
-> Node: [Random Value](FunctionNodeRandomValue.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/random_value.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeRandomValue.html)
-
-#### Args:
-- min: ['Vector', 'Float', 'Integer']
-- max: ['Vector', 'Float', 'Integer']
-- ID: Integer
-- seed: Integer
-
-#### Returns:
-- socket `value`
 
 
 
@@ -1525,15 +1535,12 @@ If a selection is existing, the resulting selection is a logical and betwenn the
 ### separate
 
 ```python
-def separate(self, geometry=None)
+def separate(self)
 ```
 
 
 
 > Node: [Separate Geometry](GeometryNodeSeparateGeometry.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/separate_geometry.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSeparateGeometry.html)
-
-#### Args:
-- geometry: Geometry
 
 ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeSeparateGeometry.webp)
 
@@ -1657,7 +1664,7 @@ def set_handle_type(self, left=True, right=True, handle_type='AUTO')
 - curve: Curve
 - selection: Boolean
 - handle_type (str): 'AUTO' in [FREE, AUTO, VECTOR, ALIGN]
-- mode (set): {'LEFT', 'RIGHT'}
+- mode (set): {'RIGHT', 'LEFT'}
 
 #### Returns:
 - node with sockets ['curve']
@@ -1672,7 +1679,7 @@ def set_handle_type(self, left=True, right=True, handle_type='AUTO')
 ### set_handle_type_node
 
 ```python
-def set_handle_type_node(self, handle_type='AUTO', mode={'LEFT', 'RIGHT'})
+def set_handle_type_node(self, handle_type='AUTO', mode={'RIGHT', 'LEFT'})
 ```
 
 
@@ -1681,127 +1688,7 @@ def set_handle_type_node(self, handle_type='AUTO', mode={'LEFT', 'RIGHT'})
 
 #### Args:
 - handle_type (str): 'AUTO' in [FREE, AUTO, VECTOR, ALIGN]
-- mode (set): {'LEFT', 'RIGHT'}
-
-#### Returns:
-- self
-
-
-
-
-
-
-<sub>Go to [top](#class-ControlPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-### set_named_boolean
-
-```python
-def set_named_boolean(self, name=None, value=None)
-```
-
-
-
-> Node: [Store Named Attribute](GeometryNodeStoreNamedAttribute.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/store_named_attribute.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeStoreNamedAttribute.html)
-
-#### Args:
-- name: String
-- value: ['Vector', 'Float', 'Color', 'Boolean', 'Integer']
-
-#### Returns:
-- self
-
-
-
-
-
-
-<sub>Go to [top](#class-ControlPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-### set_named_color
-
-```python
-def set_named_color(self, name=None, value=None)
-```
-
-
-
-> Node: [Store Named Attribute](GeometryNodeStoreNamedAttribute.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/store_named_attribute.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeStoreNamedAttribute.html)
-
-#### Args:
-- name: String
-- value: ['Vector', 'Float', 'Color', 'Boolean', 'Integer']
-
-#### Returns:
-- self
-
-
-
-
-
-
-<sub>Go to [top](#class-ControlPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-### set_named_float
-
-```python
-def set_named_float(self, name=None, value=None)
-```
-
-
-
-> Node: [Store Named Attribute](GeometryNodeStoreNamedAttribute.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/store_named_attribute.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeStoreNamedAttribute.html)
-
-#### Args:
-- name: String
-- value: ['Vector', 'Float', 'Color', 'Boolean', 'Integer']
-
-#### Returns:
-- self
-
-
-
-
-
-
-<sub>Go to [top](#class-ControlPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-### set_named_integer
-
-```python
-def set_named_integer(self, name=None, value=None)
-```
-
-
-
-> Node: [Store Named Attribute](GeometryNodeStoreNamedAttribute.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/store_named_attribute.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeStoreNamedAttribute.html)
-
-#### Args:
-- name: String
-- value: ['Vector', 'Float', 'Color', 'Boolean', 'Integer']
-
-#### Returns:
-- self
-
-
-
-
-
-
-<sub>Go to [top](#class-ControlPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-### set_named_vector
-
-```python
-def set_named_vector(self, name=None, value=None)
-```
-
-
-
-> Node: [Store Named Attribute](GeometryNodeStoreNamedAttribute.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/store_named_attribute.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeStoreNamedAttribute.html)
-
-#### Args:
-- name: String
-- value: ['Vector', 'Float', 'Color', 'Boolean', 'Integer']
+- mode (set): {'RIGHT', 'LEFT'}
 
 #### Returns:
 - self
@@ -1902,7 +1789,30 @@ def socket_stack(self, node, socket_name=None)
 ### store_named_attribute
 
 ```python
-def store_named_attribute(self, name=None, value=None)
+def store_named_attribute(self, name=None, value=None, data_type=None)
+```
+
+ Store a named attribute
+
+If selection exists, create an intermediary cloud of points to update selectively the items.
+
+#### Args:
+- name (str): name of the attribute
+- value (any): value of the attribute
+- data_type (str): valeu data type
+    
+#### Returns:
+- data socket (DataSocket)
+
+
+
+
+<sub>Go to [top](#class-ControlPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### store_named_attribute_no_selection
+
+```python
+def store_named_attribute_no_selection(self, name=None, value=None)
 ```
 
 
@@ -1918,6 +1828,111 @@ def store_named_attribute(self, name=None, value=None)
 
 
 
+
+
+
+<sub>Go to [top](#class-ControlPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### store_named_boolean
+
+```python
+def store_named_boolean(self, name, value)
+```
+
+ Store a named attribute of type Boolean
+
+see [store_named_attribute](#store_named_attribute)
+
+#### Args:
+- name (str): the attribute name
+- value (float): the value to store
+    
+#### Returns:
+- Data socket (DataSocket)
+
+
+
+<sub>Go to [top](#class-ControlPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### store_named_color
+
+```python
+def store_named_color(self, name, value)
+```
+
+ Store a named attribute of type Color
+
+#### Args:
+- name (str): the attribute name
+- value (float): the value to store
+    
+see [store_named_attribute](#store_named_attribute)
+
+#### Returns:
+- Data socket (DataSocket)
+
+
+
+<sub>Go to [top](#class-ControlPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### store_named_float
+
+```python
+def store_named_float(self, name, value)
+```
+
+ Store a named attribute of type Float
+
+see [store_named_attribute](#store_named_attribute)
+
+#### Args:
+- name (str): the attribute name
+- value (float): the value to store
+    
+#### Returns:
+- Data socket (DataSocket)
+
+
+
+<sub>Go to [top](#class-ControlPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### store_named_integer
+
+```python
+def store_named_integer(self, name, value)
+```
+
+ Store a named attribute of type Integer
+
+see [store_named_attribute](#store_named_attribute)
+
+#### Args:
+- name (str): the attribute name
+- value (float): the value to store
+    
+#### Returns:
+- Data socket (DataSocket)
+
+
+
+<sub>Go to [top](#class-ControlPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### store_named_vector
+
+```python
+def store_named_vector(self, name, value)
+```
+
+ Store a named attribute of type Vector
+
+#### Args:
+- name (str): the attribute name
+- value (float): the value to store
+    
+see [store_named_attribute](#store_named_attribute)
+
+#### Returns:
+- Data socket (DataSocket)
 
 
 

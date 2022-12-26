@@ -168,7 +168,7 @@ class Node:
         
     def set_input_socket(self, name, value):
         
-        sock_ind = self.insockets.get(name.lower())
+        sock_ind = self.insockets.get(name)
         if sock_ind is None:
             raise AttributeError(f"Node '{self}' has no input socket named '{name}'")
             

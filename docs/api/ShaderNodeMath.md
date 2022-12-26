@@ -88,13 +88,6 @@ node = nodes.Math(value0=None, value1=None, value2=None, operation='ADD', use_cl
 | [to_radians](A.md#to_radians) | `def to_radians(value=None, clamp=False):` |
 | [to_degrees](A.md#to_degrees) | `def to_degrees(value=None, clamp=False):` |
 | **[Float](Float.md)** |
-| [add](Float.md#add) | `def add(self, value=None):` |
-| [subtract](Float.md#subtract) | `def subtract(self, value=None):` |
-| [sub](Float.md#sub) | `def sub(self, value=None):` |
-| [multiply](Float.md#multiply) | `def multiply(self, value=None):` |
-| [mul](Float.md#mul) | `def mul(self, value=None):` |
-| [divide](Float.md#divide) | `def divide(self, value=None):` |
-| [div](Float.md#div) | `def div(self, value=None):` |
 | [multiply_add](Float.md#multiply_add) | `def multiply_add(self, multiplier=None, addend=None, clamp=False):` |
 | [mul_add](Float.md#mul_add) | `def mul_add(self, multiplier=None, addend=None, clamp=False):` |
 | [power](Float.md#power) | `def power(self, exponent=None, clamp=False):` |
@@ -147,13 +140,6 @@ node = nodes.Math(value0=None, value1=None, value2=None, operation='ADD', use_cl
 | [to_radians](Float.md#to_radians) | `def to_radians(self, clamp=False):` |
 | [to_degrees](Float.md#to_degrees) | `def to_degrees(self, clamp=False):` |
 | **[Integer](Integer.md)** |
-| [add](Integer.md#add) | `def add(self, value=None):` |
-| [subtract](Integer.md#subtract) | `def subtract(self, value=None):` |
-| [sub](Integer.md#sub) | `def sub(self, value=None):` |
-| [multiply](Integer.md#multiply) | `def multiply(self, value=None):` |
-| [mul](Integer.md#mul) | `def mul(self, value=None):` |
-| [divide](Integer.md#divide) | `def divide(self, value=None):` |
-| [div](Integer.md#div) | `def div(self, value=None):` |
 | [multiply_add](Integer.md#multiply_add) | `def multiply_add(self, multiplier=None, addend=None, clamp=False):` |
 | [mul_add](Integer.md#mul_add) | `def mul_add(self, multiplier=None, addend=None, clamp=False):` |
 | [power](Integer.md#power) | `def power(self, exponent=None, clamp=False):` |

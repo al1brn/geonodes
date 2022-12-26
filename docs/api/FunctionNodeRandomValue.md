@@ -50,17 +50,17 @@ node = nodes.RandomValue(min=None, max=None, probability=None, ID=None, seed=Non
 | **[Boolean](Boolean.md)** |
 | [Random](Boolean.md#Random) | `@classmethod`<br> `def Random(cls, probability=None, ID=None, seed=None):` |
 | **[Domain](Domain.md)** |
-| [random_float](Domain.md#random_float) | `def random_float(self, min=None, max=None, ID=None, seed=None):` |
-| [random_integer](Domain.md#random_integer) | `def random_integer(self, min=None, max=None, ID=None, seed=None):` |
-| [random_vector](Domain.md#random_vector) | `def random_vector(self, min=None, max=None, ID=None, seed=None):` |
-| [random_boolean](Domain.md#random_boolean) | `def random_boolean(self, probability=None, ID=None, seed=None):` |
+| [random_float](Domain.md#random_float) | `@staticmethod`<br> `def random_float(min=None, max=None, ID=None, seed=None):` |
+| [random_integer](Domain.md#random_integer) | `@staticmethod`<br> `def random_integer(min=None, max=None, ID=None, seed=None):` |
+| [random_vector](Domain.md#random_vector) | `@staticmethod`<br> `def random_vector(min=None, max=None, ID=None, seed=None):` |
+| [random_boolean](Domain.md#random_boolean) | `@staticmethod`<br> `def random_boolean(probability=None, ID=None, seed=None):` |
 | **[Float](Float.md)** |
 | [Random](Float.md#Random) | `@classmethod`<br> `def Random(cls, min=None, max=None, ID=None, seed=None):` |
 | **[Geometry](Geometry.md)** |
-| [random_float](Geometry.md#random_float) | `def random_float(self, min=None, max=None, ID=None, seed=None):` |
-| [random_integer](Geometry.md#random_integer) | `def random_integer(self, min=None, max=None, ID=None, seed=None):` |
-| [random_vector](Geometry.md#random_vector) | `def random_vector(self, min=None, max=None, ID=None, seed=None):` |
-| [random_boolean](Geometry.md#random_boolean) | `def random_boolean(self, probability=None, ID=None, seed=None):` |
+| [random_float](Geometry.md#random_float) | `@staticmethod`<br> `def random_float(min=None, max=None, ID=None, seed=None):` |
+| [random_integer](Geometry.md#random_integer) | `@staticmethod`<br> `def random_integer(min=None, max=None, ID=None, seed=None):` |
+| [random_vector](Geometry.md#random_vector) | `@staticmethod`<br> `def random_vector(min=None, max=None, ID=None, seed=None):` |
+| [random_boolean](Geometry.md#random_boolean) | `@staticmethod`<br> `def random_boolean(probability=None, ID=None, seed=None):` |
 | **[Integer](Integer.md)** |
 | [Random](Integer.md#Random) | `@classmethod`<br> `def Random(cls, min=None, max=None, ID=None, seed=None):` |
 | **[Vector](Vector.md)** |

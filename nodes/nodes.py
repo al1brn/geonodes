@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 """
-Created on 2022-12-25
+Created on 2022-12-26
 
 @author: Generated from generator module
 
@@ -1069,6 +1069,8 @@ class SeparateColor(Node):
     Node implementation:
         global functions:
             separate_rgb separate_hsv separate_hsl 
+        Color:
+            separate_color 
 
     Args:
         color (DataSocket): Color
@@ -2356,7 +2358,7 @@ class HandleTypeSelection(Node):
 
     Args:
         handle_type (str): Node parameter, default = 'AUTO' in ('FREE', 'AUTO', 'VECTOR', 'ALIGN')
-        mode (set): Node parameter, default = {'LEFT', 'RIGHT'}
+        mode (set): Node parameter, default = {'RIGHT', 'LEFT'}
         node_color (color): Node color
         node_label (str): Node label
 
@@ -2368,7 +2370,7 @@ class HandleTypeSelection(Node):
 
     """
 
-    def __init__(self, handle_type='AUTO', mode={'LEFT', 'RIGHT'}, label=None, node_color=None):
+    def __init__(self, handle_type='AUTO', mode={'RIGHT', 'LEFT'}, label=None, node_color=None):
 
         super().__init__('GeometryNodeCurveHandleTypeSelection', node_name='Handle Type Selection', label=label, node_color=node_color)
 
@@ -3080,7 +3082,7 @@ class SetHandleType(Node):
         curve (DataSocket): Curve
         selection (DataSocket): Boolean
         handle_type (str): Node parameter, default = 'AUTO' in ('FREE', 'AUTO', 'VECTOR', 'ALIGN')
-        mode (set): Node parameter, default = {'LEFT', 'RIGHT'}
+        mode (set): Node parameter, default = {'RIGHT', 'LEFT'}
         node_color (color): Node color
         node_label (str): Node label
 
@@ -3092,7 +3094,7 @@ class SetHandleType(Node):
 
     """
 
-    def __init__(self, curve=None, selection=None, handle_type='AUTO', mode={'LEFT', 'RIGHT'}, label=None, node_color=None):
+    def __init__(self, curve=None, selection=None, handle_type='AUTO', mode={'RIGHT', 'LEFT'}, label=None, node_color=None):
 
         super().__init__('GeometryNodeCurveSetHandles', node_name='Set Handle Type', label=label, node_color=node_color)
 
@@ -5798,9 +5800,9 @@ class NamedAttribute(Node):
 
     Node implementation:
         Geometry:
-            named_attribute get_named_float get_named_integer get_named_vector get_named_color get_named_boolean 
+            named_attribute named_float named_integer named_vector named_color named_boolean 
         Domain:
-            named_attribute get_named_float get_named_integer get_named_vector get_named_color get_named_boolean 
+            named_attribute named_float named_integer named_vector named_color named_boolean 
 
     Args:
         name (DataSocket): String
@@ -6600,7 +6602,7 @@ class MergeByDistance(Node):
         Geometry:
             merge_by_distance 
         Vertex:
-            merge_by_distance 
+            merge_by_distance merge_by_distance_connected 
 
     Args:
         geometry (DataSocket): Geometry
@@ -10908,9 +10910,9 @@ class StoreNamedAttribute(Node):
 
     Node implementation:
         Geometry:
-            store_named_attribute set_named_boolean set_named_integer set_named_float set_named_vector set_named_color 
+            store_named_attribute store_named_boolean store_named_integer store_named_float store_named_vector store_named_color 
         Domain:
-            store_named_attribute set_named_boolean set_named_integer set_named_float set_named_vector set_named_color 
+            store_named_attribute_no_selection 
 
     Args:
         geometry (DataSocket): Geometry
@@ -11007,7 +11009,7 @@ class JoinStrings(Node):
         global functions:
             join_strings 
         String:
-            join 
+            join string_join 
 
     Args:
         delimiter (DataSocket): String

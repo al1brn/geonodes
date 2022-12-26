@@ -42,19 +42,14 @@ node = nodes.StoreNamedAttribute(geometry=None, name=None, value=None, data_type
 | Class or method name | Definition |
 |----------------------|------------|
 | **[Domain](Domain.md)** |
-| [store_named_attribute](Domain.md#store_named_attribute) | `def store_named_attribute(self, name=None, value=None):` |
-| [set_named_boolean](Domain.md#set_named_boolean) | `def set_named_boolean(self, name=None, value=None):` |
-| [set_named_integer](Domain.md#set_named_integer) | `def set_named_integer(self, name=None, value=None):` |
-| [set_named_float](Domain.md#set_named_float) | `def set_named_float(self, name=None, value=None):` |
-| [set_named_vector](Domain.md#set_named_vector) | `def set_named_vector(self, name=None, value=None):` |
-| [set_named_color](Domain.md#set_named_color) | `def set_named_color(self, name=None, value=None):` |
+| [store_named_attribute_no_selection](Domain.md#store_named_attribute_no_selection) | `def store_named_attribute_no_selection(self, name=None, value=None):` |
 | **[Geometry](Geometry.md)** |
 | [store_named_attribute](Geometry.md#store_named_attribute) | `def store_named_attribute(self, name=None, value=None, domain='POINT'):` |
-| [set_named_boolean](Geometry.md#set_named_boolean) | `def set_named_boolean(self, name=None, value=None, domain='POINT'):` |
-| [set_named_integer](Geometry.md#set_named_integer) | `def set_named_integer(self, name=None, value=None, domain='POINT'):` |
-| [set_named_float](Geometry.md#set_named_float) | `def set_named_float(self, name=None, value=None, domain='POINT'):` |
-| [set_named_vector](Geometry.md#set_named_vector) | `def set_named_vector(self, name=None, value=None, domain='POINT'):` |
-| [set_named_color](Geometry.md#set_named_color) | `def set_named_color(self, name=None, value=None, domain='POINT'):` |
+| [store_named_boolean](Geometry.md#store_named_boolean) | `def store_named_boolean(self, name=None, value=None, domain='POINT'):` |
+| [store_named_integer](Geometry.md#store_named_integer) | `def store_named_integer(self, name=None, value=None, domain='POINT'):` |
+| [store_named_float](Geometry.md#store_named_float) | `def store_named_float(self, name=None, value=None, domain='POINT'):` |
+| [store_named_vector](Geometry.md#store_named_vector) | `def store_named_vector(self, name=None, value=None, domain='POINT'):` |
+| [store_named_color](Geometry.md#store_named_color) | `def store_named_color(self, name=None, value=None, domain='POINT'):` |
 
 <sub>Go to [top](#node-Store-Named-Attribute) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
