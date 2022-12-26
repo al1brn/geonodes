@@ -60,6 +60,10 @@ In geometry nodes, attributes refer to [domains](https://al1brn.github.io/geonod
 - [Nodes](api/nodes.md)
 - [Nodes by menus](api/nodes_menus.md)
 
+## Global functions
+
+- [Global functions](#api/functions.md)
+- 
 
 
 
