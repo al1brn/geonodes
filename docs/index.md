@@ -1,16 +1,16 @@
 
 # API structure
 
-## Tree
+### Tree
 
 - [Tree](api/Tree.md)
 - [Trees](api/Trees.md)
 
-## Root for types
+### Root for types
 
 - [DataSocket](api/DataSocket.md)
 
-## Basic types
+### Basic types
 
 - [Boolean](api/Boolean.md)
 - [Integer](api/Integer.md)
@@ -19,7 +19,7 @@
 - [Color](api/Color.md)
 - [String](api/String.md)
 
-## Geometry types
+### Geometry types
 
 The geometry classes are:
 - [Geometry](api/Geometry.Md)
@@ -29,7 +29,7 @@ The geometry classes are:
 - [Instances](api/Instances.md)
 - [Volume](api/Volume.md)
 
-## Domain types
+### Domain types
 
 In geometry nodes, attributes refer to [domains](https://al1brn.github.io/geonodes/domains.html) such as Point, Corner, Face, Spline... 
 
@@ -47,7 +47,7 @@ In geometry nodes, attributes refer to [domains](https://al1brn.github.io/geonod
 - Instances
   - inst [Instance](api/Instance.md)
 
-## Blender types
+### Blender types
 
 - [Collection](api/Collection.md)
 - [Object](api/Object.md)
@@ -55,12 +55,12 @@ In geometry nodes, attributes refer to [domains](https://al1brn.github.io/geonod
 - [Image](api/Image.md)
 - [Material](api/Material.md)
 
-## Nodes layer
+### Nodes layer
 
 - [Nodes](api/nodes.md)
 - [Nodes by menus](api/nodes_menus.md)
 
-## Global functions
+### Global functions
 
 - [Global functions](api/functions.md)
 
