@@ -14,14 +14,14 @@ def abs(value=None, clamp=False)
 
 
 
-    > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
+> Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
-    #### Args:
-    - value: Float
-    - clamp (bool): False
+#### Args:
+- value: Float
+- clamp (bool): False
 
-    #### Returns:
-    - socket `value`
+#### Returns:
+- socket `value`
 
 
 
@@ -38,14 +38,14 @@ def absolute(value=None, clamp=False)
 
 
 
-    > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
+> Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
-    #### Args:
-    - value: Float
-    - clamp (bool): False
+#### Args:
+- value: Float
+- clamp (bool): False
 
-    #### Returns:
-    - socket `value`
+#### Returns:
+- socket `value`
 
 
 
@@ -62,17 +62,17 @@ def align_euler_to_vector(rotation=None, factor=None, vector=None, axis='X', piv
 
 
 
-    > Node: [Align Euler to Vector](FunctionNodeAlignEulerToVector.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/align_euler_to_vector.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeAlignEulerToVector.html)
+> Node: [Align Euler to Vector](FunctionNodeAlignEulerToVector.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/align_euler_to_vector.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeAlignEulerToVector.html)
 
-    #### Args:
-    - rotation: Vector
-    - factor: Float
-    - vector: Vector
-    - axis (str): 'X' in [X, Y, Z]
-    - pivot_axis (str): 'AUTO' in [AUTO, X, Y, Z]
+#### Args:
+- rotation: Vector
+- factor: Float
+- vector: Vector
+- axis (str): 'X' in [X, Y, Z]
+- pivot_axis (str): 'AUTO' in [AUTO, X, Y, Z]
 
-    #### Returns:
-    - socket `rotation`
+#### Returns:
+- socket `rotation`
 
 
 
@@ -89,14 +89,14 @@ def arccos(value=None, clamp=False)
 
 
 
-    > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
+> Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
-    #### Args:
-    - value: Float
-    - clamp (bool): False
+#### Args:
+- value: Float
+- clamp (bool): False
 
-    #### Returns:
-    - socket `value`
+#### Returns:
+- socket `value`
 
 
 
@@ -113,14 +113,14 @@ def arccosine(value=None, clamp=False)
 
 
 
-    > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
+> Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
-    #### Args:
-    - value: Float
-    - clamp (bool): False
+#### Args:
+- value: Float
+- clamp (bool): False
 
-    #### Returns:
-    - socket `value`
+#### Returns:
+- socket `value`
 
 
 
@@ -137,14 +137,14 @@ def arcsin(value=None, clamp=False)
 
 
 
-    > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
+> Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
-    #### Args:
-    - value: Float
-    - clamp (bool): False
+#### Args:
+- value: Float
+- clamp (bool): False
 
-    #### Returns:
-    - socket `value`
+#### Returns:
+- socket `value`
 
 
 
@@ -161,14 +161,14 @@ def arcsine(value=None, clamp=False)
 
 
 
-    > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
+> Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
-    #### Args:
-    - value: Float
-    - clamp (bool): False
+#### Args:
+- value: Float
+- clamp (bool): False
 
-    #### Returns:
-    - socket `value`
+#### Returns:
+- socket `value`
 
 
 
@@ -185,14 +185,14 @@ def arctan(value=None, clamp=False)
 
 
 
-    > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
+> Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
-    #### Args:
-    - value: Float
-    - clamp (bool): False
+#### Args:
+- value: Float
+- clamp (bool): False
 
-    #### Returns:
-    - socket `value`
+#### Returns:
+- socket `value`
 
 
 
@@ -209,15 +209,15 @@ def arctan2(value0=None, value1=None, clamp=False)
 
 
 
-    > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
+> Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
-    #### Args:
-    - value0: Float
-    - value1: Float
-    - clamp (bool): False
+#### Args:
+- value0: Float
+- value1: Float
+- clamp (bool): False
 
-    #### Returns:
-    - socket `value`
+#### Returns:
+- socket `value`
 
 
 
@@ -234,14 +234,14 @@ def arctangent(value=None, clamp=False)
 
 
 
-    > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
+> Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
-    #### Args:
-    - value: Float
-    - clamp (bool): False
+#### Args:
+- value: Float
+- clamp (bool): False
 
-    #### Returns:
-    - socket `value`
+#### Returns:
+- socket `value`
 
 
 
@@ -258,14 +258,14 @@ def b_and(boolean0=None, boolean1=None)
 
 
 
-    > Node: [Boolean Math](FunctionNodeBooleanMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/boolean_math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html)
+> Node: [Boolean Math](FunctionNodeBooleanMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/boolean_math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html)
 
-    #### Args:
-    - boolean0: Boolean
-    - boolean1: Boolean
+#### Args:
+- boolean0: Boolean
+- boolean1: Boolean
 
-    #### Returns:
-    - socket `boolean`
+#### Returns:
+- socket `boolean`
 
 
 
@@ -282,13 +282,13 @@ def b_not(boolean0=None)
 
 
 
-    > Node: [Boolean Math](FunctionNodeBooleanMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/boolean_math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html)
+> Node: [Boolean Math](FunctionNodeBooleanMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/boolean_math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html)
 
-    #### Args:
-    - boolean0: Boolean
+#### Args:
+- boolean0: Boolean
 
-    #### Returns:
-    - socket `boolean`
+#### Returns:
+- socket `boolean`
 
 
 
@@ -305,14 +305,14 @@ def b_or(boolean0=None, boolean1=None)
 
 
 
-    > Node: [Boolean Math](FunctionNodeBooleanMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/boolean_math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html)
+> Node: [Boolean Math](FunctionNodeBooleanMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/boolean_math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html)
 
-    #### Args:
-    - boolean0: Boolean
-    - boolean1: Boolean
+#### Args:
+- boolean0: Boolean
+- boolean1: Boolean
 
-    #### Returns:
-    - socket `boolean`
+#### Returns:
+- socket `boolean`
 
 
 
@@ -329,16 +329,16 @@ def clamp(value=None, min=None, max=None, clamp_type='MINMAX')
 
 
 
-    > Node: [Clamp](ShaderNodeClamp.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/clamp.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeClamp.html)
+> Node: [Clamp](ShaderNodeClamp.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/clamp.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeClamp.html)
 
-    #### Args:
-    - value: Float
-    - min: Float
-    - max: Float
-    - clamp_type (str): 'MINMAX' in [MINMAX, RANGE]
+#### Args:
+- value: Float
+- min: Float
+- max: Float
+- clamp_type (str): 'MINMAX' in [MINMAX, RANGE]
 
-    #### Returns:
-    - socket `result`
+#### Returns:
+- socket `result`
 
 
 
@@ -355,15 +355,15 @@ def clamp_min_max(value=None, min=None, max=None)
 
 
 
-    > Node: [Clamp](ShaderNodeClamp.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/clamp.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeClamp.html)
+> Node: [Clamp](ShaderNodeClamp.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/clamp.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeClamp.html)
 
-    #### Args:
-    - value: Float
-    - min: Float
-    - max: Float
+#### Args:
+- value: Float
+- min: Float
+- max: Float
 
-    #### Returns:
-    - socket `result`
+#### Returns:
+- socket `result`
 
 
 
@@ -380,15 +380,15 @@ def clamp_range(value=None, min=None, max=None)
 
 
 
-    > Node: [Clamp](ShaderNodeClamp.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/clamp.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeClamp.html)
+> Node: [Clamp](ShaderNodeClamp.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/clamp.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeClamp.html)
 
-    #### Args:
-    - value: Float
-    - min: Float
-    - max: Float
+#### Args:
+- value: Float
+- min: Float
+- max: Float
 
-    #### Returns:
-    - socket `result`
+#### Returns:
+- socket `result`
 
 
 
@@ -405,17 +405,17 @@ def color_add(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False
 
 
 
-    > Node: [Mix](ShaderNodeMix.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
+> Node: [Mix](ShaderNodeMix.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
 
-    #### Args:
-    - factor: ['Float', 'Vector']
-    - a: ['Float', 'Vector', 'Color']
-    - b: ['Float', 'Vector', 'Color']
-    - clamp_factor (bool): True
-    - clamp_result (bool): False
+#### Args:
+- factor: ['Float', 'Vector']
+- a: ['Float', 'Vector', 'Color']
+- b: ['Float', 'Vector', 'Color']
+- clamp_factor (bool): True
+- clamp_result (bool): False
 
-    #### Returns:
-    - socket `result`
+#### Returns:
+- socket `result`
 
 
 
@@ -432,17 +432,17 @@ def color_burn(factor=None, a=None, b=None, clamp_factor=True, clamp_result=Fals
 
 
 
-    > Node: [Mix](ShaderNodeMix.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
+> Node: [Mix](ShaderNodeMix.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
 
-    #### Args:
-    - factor: ['Float', 'Vector']
-    - a: ['Float', 'Vector', 'Color']
-    - b: ['Float', 'Vector', 'Color']
-    - clamp_factor (bool): True
-    - clamp_result (bool): False
+#### Args:
+- factor: ['Float', 'Vector']
+- a: ['Float', 'Vector', 'Color']
+- b: ['Float', 'Vector', 'Color']
+- clamp_factor (bool): True
+- clamp_result (bool): False
 
-    #### Returns:
-    - socket `result`
+#### Returns:
+- socket `result`
 
 
 
@@ -459,17 +459,17 @@ def color_color(factor=None, a=None, b=None, clamp_factor=True, clamp_result=Fal
 
 
 
-    > Node: [Mix](ShaderNodeMix.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
+> Node: [Mix](ShaderNodeMix.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
 
-    #### Args:
-    - factor: ['Float', 'Vector']
-    - a: ['Float', 'Vector', 'Color']
-    - b: ['Float', 'Vector', 'Color']
-    - clamp_factor (bool): True
-    - clamp_result (bool): False
+#### Args:
+- factor: ['Float', 'Vector']
+- a: ['Float', 'Vector', 'Color']
+- b: ['Float', 'Vector', 'Color']
+- clamp_factor (bool): True
+- clamp_result (bool): False
 
-    #### Returns:
-    - socket `result`
+#### Returns:
+- socket `result`
 
 
 
@@ -486,17 +486,17 @@ def color_darken(factor=None, a=None, b=None, clamp_factor=True, clamp_result=Fa
 
 
 
-    > Node: [Mix](ShaderNodeMix.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
+> Node: [Mix](ShaderNodeMix.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
 
-    #### Args:
-    - factor: ['Float', 'Vector']
-    - a: ['Float', 'Vector', 'Color']
-    - b: ['Float', 'Vector', 'Color']
-    - clamp_factor (bool): True
-    - clamp_result (bool): False
+#### Args:
+- factor: ['Float', 'Vector']
+- a: ['Float', 'Vector', 'Color']
+- b: ['Float', 'Vector', 'Color']
+- clamp_factor (bool): True
+- clamp_result (bool): False
 
-    #### Returns:
-    - socket `result`
+#### Returns:
+- socket `result`
 
 
 
@@ -513,17 +513,17 @@ def color_difference(factor=None, a=None, b=None, clamp_factor=True, clamp_resul
 
 
 
-    > Node: [Mix](ShaderNodeMix.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
+> Node: [Mix](ShaderNodeMix.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
 
-    #### Args:
-    - factor: ['Float', 'Vector']
-    - a: ['Float', 'Vector', 'Color']
-    - b: ['Float', 'Vector', 'Color']
-    - clamp_factor (bool): True
-    - clamp_result (bool): False
+#### Args:
+- factor: ['Float', 'Vector']
+- a: ['Float', 'Vector', 'Color']
+- b: ['Float', 'Vector', 'Color']
+- clamp_factor (bool): True
+- clamp_result (bool): False
 
-    #### Returns:
-    - socket `result`
+#### Returns:
+- socket `result`
 
 
 
@@ -540,17 +540,17 @@ def color_divide(factor=None, a=None, b=None, clamp_factor=True, clamp_result=Fa
 
 
 
-    > Node: [Mix](ShaderNodeMix.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
+> Node: [Mix](ShaderNodeMix.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
 
-    #### Args:
-    - factor: ['Float', 'Vector']
-    - a: ['Float', 'Vector', 'Color']
-    - b: ['Float', 'Vector', 'Color']
-    - clamp_factor (bool): True
-    - clamp_result (bool): False
+#### Args:
+- factor: ['Float', 'Vector']
+- a: ['Float', 'Vector', 'Color']
+- b: ['Float', 'Vector', 'Color']
+- clamp_factor (bool): True
+- clamp_result (bool): False
 
-    #### Returns:
-    - socket `result`
+#### Returns:
+- socket `result`
 
 
 
@@ -567,17 +567,17 @@ def color_dodge(factor=None, a=None, b=None, clamp_factor=True, clamp_result=Fal
 
 
 
-    > Node: [Mix](ShaderNodeMix.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
+> Node: [Mix](ShaderNodeMix.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
 
-    #### Args:
-    - factor: ['Float', 'Vector']
-    - a: ['Float', 'Vector', 'Color']
-    - b: ['Float', 'Vector', 'Color']
-    - clamp_factor (bool): True
-    - clamp_result (bool): False
+#### Args:
+- factor: ['Float', 'Vector']
+- a: ['Float', 'Vector', 'Color']
+- b: ['Float', 'Vector', 'Color']
+- clamp_factor (bool): True
+- clamp_result (bool): False
 
-    #### Returns:
-    - socket `result`
+#### Returns:
+- socket `result`
 
 
 
@@ -594,17 +594,17 @@ def color_hue(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False
 
 
 
-    > Node: [Mix](ShaderNodeMix.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
+> Node: [Mix](ShaderNodeMix.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
 
-    #### Args:
-    - factor: ['Float', 'Vector']
-    - a: ['Float', 'Vector', 'Color']
-    - b: ['Float', 'Vector', 'Color']
-    - clamp_factor (bool): True
-    - clamp_result (bool): False
+#### Args:
+- factor: ['Float', 'Vector']
+- a: ['Float', 'Vector', 'Color']
+- b: ['Float', 'Vector', 'Color']
+- clamp_factor (bool): True
+- clamp_result (bool): False
 
-    #### Returns:
-    - socket `result`
+#### Returns:
+- socket `result`
 
 
 
@@ -621,17 +621,17 @@ def color_lighten(factor=None, a=None, b=None, clamp_factor=True, clamp_result=F
 
 
 
-    > Node: [Mix](ShaderNodeMix.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
+> Node: [Mix](ShaderNodeMix.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
 
-    #### Args:
-    - factor: ['Float', 'Vector']
-    - a: ['Float', 'Vector', 'Color']
-    - b: ['Float', 'Vector', 'Color']
-    - clamp_factor (bool): True
-    - clamp_result (bool): False
+#### Args:
+- factor: ['Float', 'Vector']
+- a: ['Float', 'Vector', 'Color']
+- b: ['Float', 'Vector', 'Color']
+- clamp_factor (bool): True
+- clamp_result (bool): False
 
-    #### Returns:
-    - socket `result`
+#### Returns:
+- socket `result`
 
 
 
@@ -648,17 +648,17 @@ def color_linear_light(factor=None, a=None, b=None, clamp_factor=True, clamp_res
 
 
 
-    > Node: [Mix](ShaderNodeMix.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
+> Node: [Mix](ShaderNodeMix.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
 
-    #### Args:
-    - factor: ['Float', 'Vector']
-    - a: ['Float', 'Vector', 'Color']
-    - b: ['Float', 'Vector', 'Color']
-    - clamp_factor (bool): True
-    - clamp_result (bool): False
+#### Args:
+- factor: ['Float', 'Vector']
+- a: ['Float', 'Vector', 'Color']
+- b: ['Float', 'Vector', 'Color']
+- clamp_factor (bool): True
+- clamp_result (bool): False
 
-    #### Returns:
-    - socket `result`
+#### Returns:
+- socket `result`
 
 
 
@@ -675,18 +675,18 @@ def color_mix(factor=None, a=None, b=None, blend_type='MIX', clamp_factor=True, 
 
 
 
-    > Node: [Mix](ShaderNodeMix.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
+> Node: [Mix](ShaderNodeMix.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
 
-    #### Args:
-    - factor: ['Float', 'Vector']
-    - a: ['Float', 'Vector', 'Color']
-    - b: ['Float', 'Vector', 'Color']
-    - blend_type (str): 'MIX' in [MIX, DARKEN, MULTIPLY, BURN, LIGHTEN,... , SATURATION, COLOR, VALUE]
-    - clamp_factor (bool): True
-    - clamp_result (bool): False
+#### Args:
+- factor: ['Float', 'Vector']
+- a: ['Float', 'Vector', 'Color']
+- b: ['Float', 'Vector', 'Color']
+- blend_type (str): 'MIX' in [MIX, DARKEN, MULTIPLY, BURN, LIGHTEN,... , SATURATION, COLOR, VALUE]
+- clamp_factor (bool): True
+- clamp_result (bool): False
 
-    #### Returns:
-    - socket `result`
+#### Returns:
+- socket `result`
 
 
 
@@ -703,17 +703,17 @@ def color_multiply(factor=None, a=None, b=None, clamp_factor=True, clamp_result=
 
 
 
-    > Node: [Mix](ShaderNodeMix.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
+> Node: [Mix](ShaderNodeMix.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
 
-    #### Args:
-    - factor: ['Float', 'Vector']
-    - a: ['Float', 'Vector', 'Color']
-    - b: ['Float', 'Vector', 'Color']
-    - clamp_factor (bool): True
-    - clamp_result (bool): False
+#### Args:
+- factor: ['Float', 'Vector']
+- a: ['Float', 'Vector', 'Color']
+- b: ['Float', 'Vector', 'Color']
+- clamp_factor (bool): True
+- clamp_result (bool): False
 
-    #### Returns:
-    - socket `result`
+#### Returns:
+- socket `result`
 
 
 
@@ -730,17 +730,17 @@ def color_overlay(factor=None, a=None, b=None, clamp_factor=True, clamp_result=F
 
 
 
-    > Node: [Mix](ShaderNodeMix.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
+> Node: [Mix](ShaderNodeMix.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
 
-    #### Args:
-    - factor: ['Float', 'Vector']
-    - a: ['Float', 'Vector', 'Color']
-    - b: ['Float', 'Vector', 'Color']
-    - clamp_factor (bool): True
-    - clamp_result (bool): False
+#### Args:
+- factor: ['Float', 'Vector']
+- a: ['Float', 'Vector', 'Color']
+- b: ['Float', 'Vector', 'Color']
+- clamp_factor (bool): True
+- clamp_result (bool): False
 
-    #### Returns:
-    - socket `result`
+#### Returns:
+- socket `result`
 
 
 
@@ -757,13 +757,13 @@ def color_ramp(fac=None)
 
 
 
-    > Node: [ColorRamp](ShaderNodeValToRGB.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/color_ramp.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeValToRGB.html)
+> Node: [ColorRamp](ShaderNodeValToRGB.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/color_ramp.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeValToRGB.html)
 
-    #### Args:
-    - fac: Float
+#### Args:
+- fac: Float
 
-    #### Returns:
-    - node with sockets ['color', 'alpha']
+#### Returns:
+- node with sockets ['color', 'alpha']
 
 
 
@@ -780,17 +780,17 @@ def color_saturation(factor=None, a=None, b=None, clamp_factor=True, clamp_resul
 
 
 
-    > Node: [Mix](ShaderNodeMix.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
+> Node: [Mix](ShaderNodeMix.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
 
-    #### Args:
-    - factor: ['Float', 'Vector']
-    - a: ['Float', 'Vector', 'Color']
-    - b: ['Float', 'Vector', 'Color']
-    - clamp_factor (bool): True
-    - clamp_result (bool): False
+#### Args:
+- factor: ['Float', 'Vector']
+- a: ['Float', 'Vector', 'Color']
+- b: ['Float', 'Vector', 'Color']
+- clamp_factor (bool): True
+- clamp_result (bool): False
 
-    #### Returns:
-    - socket `result`
+#### Returns:
+- socket `result`
 
 
 
@@ -807,17 +807,17 @@ def color_screen(factor=None, a=None, b=None, clamp_factor=True, clamp_result=Fa
 
 
 
-    > Node: [Mix](ShaderNodeMix.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
+> Node: [Mix](ShaderNodeMix.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
 
-    #### Args:
-    - factor: ['Float', 'Vector']
-    - a: ['Float', 'Vector', 'Color']
-    - b: ['Float', 'Vector', 'Color']
-    - clamp_factor (bool): True
-    - clamp_result (bool): False
+#### Args:
+- factor: ['Float', 'Vector']
+- a: ['Float', 'Vector', 'Color']
+- b: ['Float', 'Vector', 'Color']
+- clamp_factor (bool): True
+- clamp_result (bool): False
 
-    #### Returns:
-    - socket `result`
+#### Returns:
+- socket `result`
 
 
 
@@ -834,17 +834,17 @@ def color_soft_light(factor=None, a=None, b=None, clamp_factor=True, clamp_resul
 
 
 
-    > Node: [Mix](ShaderNodeMix.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
+> Node: [Mix](ShaderNodeMix.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
 
-    #### Args:
-    - factor: ['Float', 'Vector']
-    - a: ['Float', 'Vector', 'Color']
-    - b: ['Float', 'Vector', 'Color']
-    - clamp_factor (bool): True
-    - clamp_result (bool): False
+#### Args:
+- factor: ['Float', 'Vector']
+- a: ['Float', 'Vector', 'Color']
+- b: ['Float', 'Vector', 'Color']
+- clamp_factor (bool): True
+- clamp_result (bool): False
 
-    #### Returns:
-    - socket `result`
+#### Returns:
+- socket `result`
 
 
 
@@ -861,17 +861,17 @@ def color_subtract(factor=None, a=None, b=None, clamp_factor=True, clamp_result=
 
 
 
-    > Node: [Mix](ShaderNodeMix.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
+> Node: [Mix](ShaderNodeMix.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
 
-    #### Args:
-    - factor: ['Float', 'Vector']
-    - a: ['Float', 'Vector', 'Color']
-    - b: ['Float', 'Vector', 'Color']
-    - clamp_factor (bool): True
-    - clamp_result (bool): False
+#### Args:
+- factor: ['Float', 'Vector']
+- a: ['Float', 'Vector', 'Color']
+- b: ['Float', 'Vector', 'Color']
+- clamp_factor (bool): True
+- clamp_result (bool): False
 
-    #### Returns:
-    - socket `result`
+#### Returns:
+- socket `result`
 
 
 
@@ -888,17 +888,17 @@ def color_value(factor=None, a=None, b=None, clamp_factor=True, clamp_result=Fal
 
 
 
-    > Node: [Mix](ShaderNodeMix.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
+> Node: [Mix](ShaderNodeMix.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
 
-    #### Args:
-    - factor: ['Float', 'Vector']
-    - a: ['Float', 'Vector', 'Color']
-    - b: ['Float', 'Vector', 'Color']
-    - clamp_factor (bool): True
-    - clamp_result (bool): False
+#### Args:
+- factor: ['Float', 'Vector']
+- a: ['Float', 'Vector', 'Color']
+- b: ['Float', 'Vector', 'Color']
+- clamp_factor (bool): True
+- clamp_result (bool): False
 
-    #### Returns:
-    - socket `result`
+#### Returns:
+- socket `result`
 
 
 
@@ -915,16 +915,16 @@ def combine_hsl(hue=None, saturation=None, lightness=None, alpha=None)
 
 
 
-    > Node: [Combine Color](FunctionNodeCombineColor.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/combine_color.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeCombineColor.html)
+> Node: [Combine Color](FunctionNodeCombineColor.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/combine_color.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeCombineColor.html)
 
-    #### Args:
-    - hue: Float
-    - saturation: Float
-    - lightness: Float
-    - alpha: Float
+#### Args:
+- hue: Float
+- saturation: Float
+- lightness: Float
+- alpha: Float
 
-    #### Returns:
-    - socket `color`
+#### Returns:
+- socket `color`
 
 
 
@@ -941,16 +941,16 @@ def combine_hsv(hue=None, saturation=None, value=None, alpha=None)
 
 
 
-    > Node: [Combine Color](FunctionNodeCombineColor.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/combine_color.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeCombineColor.html)
+> Node: [Combine Color](FunctionNodeCombineColor.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/combine_color.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeCombineColor.html)
 
-    #### Args:
-    - hue: Float
-    - saturation: Float
-    - value: Float
-    - alpha: Float
+#### Args:
+- hue: Float
+- saturation: Float
+- value: Float
+- alpha: Float
 
-    #### Returns:
-    - socket `color`
+#### Returns:
+- socket `color`
 
 
 
@@ -967,16 +967,16 @@ def combine_rgb(red=None, green=None, blue=None, alpha=None)
 
 
 
-    > Node: [Combine Color](FunctionNodeCombineColor.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/combine_color.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeCombineColor.html)
+> Node: [Combine Color](FunctionNodeCombineColor.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/combine_color.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeCombineColor.html)
 
-    #### Args:
-    - red: Float
-    - green: Float
-    - blue: Float
-    - alpha: Float
+#### Args:
+- red: Float
+- green: Float
+- blue: Float
+- alpha: Float
 
-    #### Returns:
-    - socket `color`
+#### Returns:
+- socket `color`
 
 
 
@@ -993,20 +993,20 @@ def compare(a=None, b=None, c=None, angle=None, epsilon=None, data_type='FLOAT',
 
 
 
-    > Node: [Compare](FunctionNodeCompare.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
+> Node: [Compare](FunctionNodeCompare.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/compare.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html)
 
-    #### Args:
-    - a: ['Float', 'Integer', 'Vector', 'Color', 'String']
-    - b: ['Float', 'Integer', 'Vector', 'Color', 'String']
-    - c: Float
-    - angle: Float
-    - epsilon: Float
-    - data_type (str): 'FLOAT' in [FLOAT, INT, VECTOR, STRING, RGBA]
-    - mode (str): 'ELEMENT' in [ELEMENT, LENGTH, AVERAGE, DOT_PRODUCT, DIRECTION]
-    - operation (str): 'GREATER_THAN' in [LESS_THAN, LESS_EQUAL, GREATER_THAN, GREATER_EQUAL, EQUAL, NOT_EQUAL]
+#### Args:
+- a: ['Float', 'Integer', 'Vector', 'Color', 'String']
+- b: ['Float', 'Integer', 'Vector', 'Color', 'String']
+- c: Float
+- angle: Float
+- epsilon: Float
+- data_type (str): 'FLOAT' in [FLOAT, INT, VECTOR, STRING, RGBA]
+- mode (str): 'ELEMENT' in [ELEMENT, LENGTH, AVERAGE, DOT_PRODUCT, DIRECTION]
+- operation (str): 'GREATER_THAN' in [LESS_THAN, LESS_EQUAL, GREATER_THAN, GREATER_EQUAL, EQUAL, NOT_EQUAL]
 
-    #### Returns:
-    - socket `result`
+#### Returns:
+- socket `result`
 
 
 
@@ -1023,14 +1023,14 @@ def cos(value=None, clamp=False)
 
 
 
-    > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
+> Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
-    #### Args:
-    - value: Float
-    - clamp (bool): False
+#### Args:
+- value: Float
+- clamp (bool): False
 
-    #### Returns:
-    - socket `value`
+#### Returns:
+- socket `value`
 
 
 
@@ -1047,14 +1047,14 @@ def cosh(value=None, clamp=False)
 
 
 
-    > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
+> Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
-    #### Args:
-    - value: Float
-    - clamp (bool): False
+#### Args:
+- value: Float
+- clamp (bool): False
 
-    #### Returns:
-    - socket `value`
+#### Returns:
+- socket `value`
 
 
 
@@ -1071,14 +1071,14 @@ def cosine(value=None, clamp=False)
 
 
 
-    > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
+> Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
-    #### Args:
-    - value: Float
-    - clamp (bool): False
+#### Args:
+- value: Float
+- clamp (bool): False
 
-    #### Returns:
-    - socket `value`
+#### Returns:
+- socket `value`
 
 
 
@@ -1095,14 +1095,14 @@ def exp(value=None, clamp=False)
 
 
 
-    > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
+> Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
-    #### Args:
-    - value: Float
-    - clamp (bool): False
+#### Args:
+- value: Float
+- clamp (bool): False
 
-    #### Returns:
-    - socket `value`
+#### Returns:
+- socket `value`
 
 
 
@@ -1119,14 +1119,14 @@ def exponent(value=None, clamp=False)
 
 
 
-    > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
+> Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
-    #### Args:
-    - value: Float
-    - clamp (bool): False
+#### Args:
+- value: Float
+- clamp (bool): False
 
-    #### Returns:
-    - socket `value`
+#### Returns:
+- socket `value`
 
 
 
@@ -1143,16 +1143,16 @@ def float_mix(factor=None, a=None, b=None, clamp_factor=True)
 
 
 
-    > Node: [Mix](ShaderNodeMix.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
+> Node: [Mix](ShaderNodeMix.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
 
-    #### Args:
-    - factor: ['Float', 'Vector']
-    - a: ['Float', 'Vector', 'Color']
-    - b: ['Float', 'Vector', 'Color']
-    - clamp_factor (bool): True
+#### Args:
+- factor: ['Float', 'Vector']
+- a: ['Float', 'Vector', 'Color']
+- b: ['Float', 'Vector', 'Color']
+- clamp_factor (bool): True
 
-    #### Returns:
-    - socket `result`
+#### Returns:
+- socket `result`
 
 
 
@@ -1169,14 +1169,14 @@ def fraction(value=None, clamp=False)
 
 
 
-    > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
+> Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
-    #### Args:
-    - value: Float
-    - clamp (bool): False
+#### Args:
+- value: Float
+- clamp (bool): False
 
-    #### Returns:
-    - socket `value`
+#### Returns:
+- socket `value`
 
 
 
@@ -1193,13 +1193,13 @@ def geometry_to_instance(*geometry)
 
 
 
-    > Node: [Geometry to Instance](GeometryNodeGeometryToInstance.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/geometry_to_instance.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeGeometryToInstance.html)
+> Node: [Geometry to Instance](GeometryNodeGeometryToInstance.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/geometry_to_instance.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeGeometryToInstance.html)
 
-    #### Args:
-    - geometry: <m>Geometry
+#### Args:
+- geometry: <m>Geometry
 
-    #### Returns:
-    - socket `instances` of class Instances
+#### Returns:
+- socket `instances` of class Instances
 
 
 
@@ -1216,14 +1216,14 @@ def imply(boolean0=None, boolean1=None)
 
 
 
-    > Node: [Boolean Math](FunctionNodeBooleanMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/boolean_math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html)
+> Node: [Boolean Math](FunctionNodeBooleanMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/boolean_math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html)
 
-    #### Args:
-    - boolean0: Boolean
-    - boolean1: Boolean
+#### Args:
+- boolean0: Boolean
+- boolean1: Boolean
 
-    #### Returns:
-    - socket `boolean`
+#### Returns:
+- socket `boolean`
 
 
 
@@ -1240,14 +1240,14 @@ def inverse_sqrt(value=None, clamp=False)
 
 
 
-    > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
+> Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
-    #### Args:
-    - value: Float
-    - clamp (bool): False
+#### Args:
+- value: Float
+- clamp (bool): False
 
-    #### Returns:
-    - socket `value`
+#### Returns:
+- socket `value`
 
 
 
@@ -1264,13 +1264,13 @@ def join_geometry(*geometry)
 
 
 
-    > Node: [Join Geometry](GeometryNodeJoinGeometry.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/join_geometry.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeJoinGeometry.html)
+> Node: [Join Geometry](GeometryNodeJoinGeometry.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/join_geometry.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeJoinGeometry.html)
 
-    #### Args:
-    - geometry: <m>Geometry
+#### Args:
+- geometry: <m>Geometry
 
-    #### Returns:
-    - socket `geometry`
+#### Returns:
+- socket `geometry`
 
 
 
@@ -1287,14 +1287,14 @@ def join_strings(*strings, delimiter=None)
 
 
 
-    > Node: [Join Strings](GeometryNodeStringJoin.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/join_strings.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeStringJoin.html)
+> Node: [Join Strings](GeometryNodeStringJoin.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/join_strings.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeStringJoin.html)
 
-    #### Args:
-    - strings: <m>String
-    - delimiter: String
+#### Args:
+- strings: <m>String
+- delimiter: String
 
-    #### Returns:
-    - socket `string`
+#### Returns:
+- socket `string`
 
 
 
@@ -1311,15 +1311,15 @@ def log(value=None, base=None, clamp=False)
 
 
 
-    > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
+> Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
-    #### Args:
-    - value: Float
-    - base: Float
-    - clamp (bool): False
+#### Args:
+- value: Float
+- base: Float
+- clamp (bool): False
 
-    #### Returns:
-    - socket `value`
+#### Returns:
+- socket `value`
 
 
 
@@ -1336,15 +1336,15 @@ def logarithm(value=None, base=None, clamp=False)
 
 
 
-    > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
+> Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
-    #### Args:
-    - value: Float
-    - base: Float
-    - clamp (bool): False
+#### Args:
+- value: Float
+- base: Float
+- clamp (bool): False
 
-    #### Returns:
-    - socket `value`
+#### Returns:
+- socket `value`
 
 
 
@@ -1361,17 +1361,17 @@ def math(value0=None, value1=None, value2=None, operation='ADD', clamp=False)
 
 
 
-    > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
+> Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
-    #### Args:
-    - value0: Float
-    - value1: Float
-    - value2: Float
-    - operation (str): 'ADD' in [ADD, SUBTRACT, MULTIPLY, DIVIDE,... , TANH, RADIANS, DEGREES]
-    - clamp (bool): False
+#### Args:
+- value0: Float
+- value1: Float
+- value2: Float
+- operation (str): 'ADD' in [ADD, SUBTRACT, MULTIPLY, DIVIDE,... , TANH, RADIANS, DEGREES]
+- clamp (bool): False
 
-    #### Returns:
-    - socket `value`
+#### Returns:
+- socket `value`
 
 
 
@@ -1388,14 +1388,14 @@ def math_ceil(value=None, clamp=False)
 
 
 
-    > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
+> Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
-    #### Args:
-    - value: Float
-    - clamp (bool): False
+#### Args:
+- value: Float
+- clamp (bool): False
 
-    #### Returns:
-    - socket `value`
+#### Returns:
+- socket `value`
 
 
 
@@ -1412,16 +1412,16 @@ def math_compare(value0=None, value1=None, epsilon=None, clamp=False)
 
 
 
-    > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
+> Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
-    #### Args:
-    - value0: Float
-    - value1: Float
-    - epsilon: Float
-    - clamp (bool): False
+#### Args:
+- value0: Float
+- value1: Float
+- epsilon: Float
+- clamp (bool): False
 
-    #### Returns:
-    - socket `value`
+#### Returns:
+- socket `value`
 
 
 
@@ -1438,14 +1438,14 @@ def math_floor(value=None, clamp=False)
 
 
 
-    > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
+> Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
-    #### Args:
-    - value: Float
-    - clamp (bool): False
+#### Args:
+- value: Float
+- clamp (bool): False
 
-    #### Returns:
-    - socket `value`
+#### Returns:
+- socket `value`
 
 
 
@@ -1462,15 +1462,15 @@ def math_greater_than(value=None, threshold=None, clamp=False)
 
 
 
-    > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
+> Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
-    #### Args:
-    - value: Float
-    - threshold: Float
-    - clamp (bool): False
+#### Args:
+- value: Float
+- threshold: Float
+- clamp (bool): False
 
-    #### Returns:
-    - socket `value`
+#### Returns:
+- socket `value`
 
 
 
@@ -1487,15 +1487,15 @@ def math_less_than(value=None, threshold=None, clamp=False)
 
 
 
-    > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
+> Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
-    #### Args:
-    - value: Float
-    - threshold: Float
-    - clamp (bool): False
+#### Args:
+- value: Float
+- threshold: Float
+- clamp (bool): False
 
-    #### Returns:
-    - socket `value`
+#### Returns:
+- socket `value`
 
 
 
@@ -1512,14 +1512,14 @@ def math_round(value=None, clamp=False)
 
 
 
-    > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
+> Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
-    #### Args:
-    - value: Float
-    - clamp (bool): False
+#### Args:
+- value: Float
+- clamp (bool): False
 
-    #### Returns:
-    - socket `value`
+#### Returns:
+- socket `value`
 
 
 
@@ -1536,14 +1536,14 @@ def math_trun(value=None, clamp=False)
 
 
 
-    > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
+> Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
-    #### Args:
-    - value: Float
-    - clamp (bool): False
+#### Args:
+- value: Float
+- clamp (bool): False
 
-    #### Returns:
-    - socket `value`
+#### Returns:
+- socket `value`
 
 
 
@@ -1560,14 +1560,14 @@ def math_truncate(value=None, clamp=False)
 
 
 
-    > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
+> Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
-    #### Args:
-    - value: Float
-    - clamp (bool): False
+#### Args:
+- value: Float
+- clamp (bool): False
 
-    #### Returns:
-    - socket `value`
+#### Returns:
+- socket `value`
 
 
 
@@ -1584,15 +1584,15 @@ def max(value0=None, value1=None, clamp=False)
 
 
 
-    > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
+> Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
-    #### Args:
-    - value0: Float
-    - value1: Float
-    - clamp (bool): False
+#### Args:
+- value0: Float
+- value1: Float
+- clamp (bool): False
 
-    #### Returns:
-    - socket `value`
+#### Returns:
+- socket `value`
 
 
 
@@ -1609,15 +1609,15 @@ def maximum(value0=None, value1=None, clamp=False)
 
 
 
-    > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
+> Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
-    #### Args:
-    - value0: Float
-    - value1: Float
-    - clamp (bool): False
+#### Args:
+- value0: Float
+- value1: Float
+- clamp (bool): False
 
-    #### Returns:
-    - socket `value`
+#### Returns:
+- socket `value`
 
 
 
@@ -1634,15 +1634,15 @@ def min(value0=None, value1=None, clamp=False)
 
 
 
-    > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
+> Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
-    #### Args:
-    - value0: Float
-    - value1: Float
-    - clamp (bool): False
+#### Args:
+- value0: Float
+- value1: Float
+- clamp (bool): False
 
-    #### Returns:
-    - socket `value`
+#### Returns:
+- socket `value`
 
 
 
@@ -1659,15 +1659,15 @@ def minimum(value0=None, value1=None, clamp=False)
 
 
 
-    > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
+> Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
-    #### Args:
-    - value0: Float
-    - value1: Float
-    - clamp (bool): False
+#### Args:
+- value0: Float
+- value1: Float
+- clamp (bool): False
 
-    #### Returns:
-    - socket `value`
+#### Returns:
+- socket `value`
 
 
 
@@ -1684,15 +1684,15 @@ def modulo(value0=None, value1=None, clamp=False)
 
 
 
-    > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
+> Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
-    #### Args:
-    - value0: Float
-    - value1: Float
-    - clamp (bool): False
+#### Args:
+- value0: Float
+- value1: Float
+- clamp (bool): False
 
-    #### Returns:
-    - socket `value`
+#### Returns:
+- socket `value`
 
 
 
@@ -1709,16 +1709,16 @@ def mul_add(value=None, multiplier=None, addend=None, clamp=False)
 
 
 
-    > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
+> Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
-    #### Args:
-    - value: Float
-    - multiplier: Float
-    - addend: Float
-    - clamp (bool): False
+#### Args:
+- value: Float
+- multiplier: Float
+- addend: Float
+- clamp (bool): False
 
-    #### Returns:
-    - socket `value`
+#### Returns:
+- socket `value`
 
 
 
@@ -1735,16 +1735,16 @@ def multiply_add(value=None, multiplier=None, addend=None, clamp=False)
 
 
 
-    > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
+> Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
-    #### Args:
-    - value: Float
-    - multiplier: Float
-    - addend: Float
-    - clamp (bool): False
+#### Args:
+- value: Float
+- multiplier: Float
+- addend: Float
+- clamp (bool): False
 
-    #### Returns:
-    - socket `value`
+#### Returns:
+- socket `value`
 
 
 
@@ -1761,14 +1761,14 @@ def nand(boolean0=None, boolean1=None)
 
 
 
-    > Node: [Boolean Math](FunctionNodeBooleanMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/boolean_math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html)
+> Node: [Boolean Math](FunctionNodeBooleanMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/boolean_math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html)
 
-    #### Args:
-    - boolean0: Boolean
-    - boolean1: Boolean
+#### Args:
+- boolean0: Boolean
+- boolean1: Boolean
 
-    #### Returns:
-    - socket `boolean`
+#### Returns:
+- socket `boolean`
 
 
 
@@ -1785,14 +1785,14 @@ def nimply(boolean0=None, boolean1=None)
 
 
 
-    > Node: [Boolean Math](FunctionNodeBooleanMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/boolean_math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html)
+> Node: [Boolean Math](FunctionNodeBooleanMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/boolean_math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html)
 
-    #### Args:
-    - boolean0: Boolean
-    - boolean1: Boolean
+#### Args:
+- boolean0: Boolean
+- boolean1: Boolean
 
-    #### Returns:
-    - socket `boolean`
+#### Returns:
+- socket `boolean`
 
 
 
@@ -1809,14 +1809,14 @@ def nor(boolean0=None, boolean1=None)
 
 
 
-    > Node: [Boolean Math](FunctionNodeBooleanMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/boolean_math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html)
+> Node: [Boolean Math](FunctionNodeBooleanMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/boolean_math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html)
 
-    #### Args:
-    - boolean0: Boolean
-    - boolean1: Boolean
+#### Args:
+- boolean0: Boolean
+- boolean1: Boolean
 
-    #### Returns:
-    - socket `boolean`
+#### Returns:
+- socket `boolean`
 
 
 
@@ -1833,15 +1833,15 @@ def ping_pong(value=None, scale=None, clamp=False)
 
 
 
-    > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
+> Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
-    #### Args:
-    - value: Float
-    - scale: Float
-    - clamp (bool): False
+#### Args:
+- value: Float
+- scale: Float
+- clamp (bool): False
 
-    #### Returns:
-    - socket `value`
+#### Returns:
+- socket `value`
 
 
 
@@ -1858,15 +1858,15 @@ def power(base=None, exponent=None, clamp=False)
 
 
 
-    > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
+> Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
-    #### Args:
-    - base: Float
-    - exponent: Float
-    - clamp (bool): False
+#### Args:
+- base: Float
+- exponent: Float
+- clamp (bool): False
 
-    #### Returns:
-    - socket `value`
+#### Returns:
+- socket `value`
 
 
 
@@ -1883,15 +1883,15 @@ def random_boolean(probability=None, ID=None, seed=None)
 
 
 
-    > Node: [Random Value](FunctionNodeRandomValue.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/random_value.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeRandomValue.html)
+> Node: [Random Value](FunctionNodeRandomValue.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/random_value.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeRandomValue.html)
 
-    #### Args:
-    - probability: Float
-    - ID: Integer
-    - seed: Integer
+#### Args:
+- probability: Float
+- ID: Integer
+- seed: Integer
 
-    #### Returns:
-    - socket `value`
+#### Returns:
+- socket `value`
 
 
 
@@ -1908,16 +1908,16 @@ def random_float(min=None, max=None, ID=None, seed=None)
 
 
 
-    > Node: [Random Value](FunctionNodeRandomValue.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/random_value.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeRandomValue.html)
+> Node: [Random Value](FunctionNodeRandomValue.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/random_value.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeRandomValue.html)
 
-    #### Args:
-    - min: ['Vector', 'Float', 'Integer']
-    - max: ['Vector', 'Float', 'Integer']
-    - ID: Integer
-    - seed: Integer
+#### Args:
+- min: ['Vector', 'Float', 'Integer']
+- max: ['Vector', 'Float', 'Integer']
+- ID: Integer
+- seed: Integer
 
-    #### Returns:
-    - socket `value`
+#### Returns:
+- socket `value`
 
 
 
@@ -1934,16 +1934,16 @@ def random_integer(min=None, max=None, ID=None, seed=None)
 
 
 
-    > Node: [Random Value](FunctionNodeRandomValue.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/random_value.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeRandomValue.html)
+> Node: [Random Value](FunctionNodeRandomValue.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/random_value.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeRandomValue.html)
 
-    #### Args:
-    - min: ['Vector', 'Float', 'Integer']
-    - max: ['Vector', 'Float', 'Integer']
-    - ID: Integer
-    - seed: Integer
+#### Args:
+- min: ['Vector', 'Float', 'Integer']
+- max: ['Vector', 'Float', 'Integer']
+- ID: Integer
+- seed: Integer
 
-    #### Returns:
-    - socket `value`
+#### Returns:
+- socket `value`
 
 
 
@@ -1960,16 +1960,16 @@ def random_vector(min=None, max=None, ID=None, seed=None)
 
 
 
-    > Node: [Random Value](FunctionNodeRandomValue.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/random_value.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeRandomValue.html)
+> Node: [Random Value](FunctionNodeRandomValue.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/random_value.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeRandomValue.html)
 
-    #### Args:
-    - min: ['Vector', 'Float', 'Integer']
-    - max: ['Vector', 'Float', 'Integer']
-    - ID: Integer
-    - seed: Integer
+#### Args:
+- min: ['Vector', 'Float', 'Integer']
+- max: ['Vector', 'Float', 'Integer']
+- ID: Integer
+- seed: Integer
 
-    #### Returns:
-    - socket `value`
+#### Returns:
+- socket `value`
 
 
 
@@ -1986,15 +1986,15 @@ def replace_string(string=None, find=None, replace=None)
 
 
 
-    > Node: [Replace String](FunctionNodeReplaceString.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/replace_string.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeReplaceString.html)
+> Node: [Replace String](FunctionNodeReplaceString.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/replace_string.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeReplaceString.html)
 
-    #### Args:
-    - string: String
-    - find: String
-    - replace: String
+#### Args:
+- string: String
+- find: String
+- replace: String
 
-    #### Returns:
-    - socket `string`
+#### Returns:
+- socket `string`
 
 
 
@@ -2011,14 +2011,14 @@ def rgb_curves(fac=None, color=None)
 
 
 
-    > Node: [RGB Curves](ShaderNodeRGBCurve.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/rgb_curves.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeRGBCurve.html)
+> Node: [RGB Curves](ShaderNodeRGBCurve.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/rgb_curves.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeRGBCurve.html)
 
-    #### Args:
-    - fac: Float
-    - color: Color
+#### Args:
+- fac: Float
+- color: Color
 
-    #### Returns:
-    - node with sockets ['color']
+#### Returns:
+- node with sockets ['color']
 
 
 
@@ -2035,16 +2035,16 @@ def rotate_axis_angle(rotation=None, axis=None, angle=None, space='OBJECT')
 
 
 
-    > Node: [Rotate Euler](FunctionNodeRotateEuler.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotate_euler.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeRotateEuler.html)
+> Node: [Rotate Euler](FunctionNodeRotateEuler.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotate_euler.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeRotateEuler.html)
 
-    #### Args:
-    - rotation: Vector
-    - axis: Vector
-    - angle: Float
-    - space (str): 'OBJECT' in [OBJECT, LOCAL]
+#### Args:
+- rotation: Vector
+- axis: Vector
+- angle: Float
+- space (str): 'OBJECT' in [OBJECT, LOCAL]
 
-    #### Returns:
-    - socket `rotation`
+#### Returns:
+- socket `rotation`
 
 
 
@@ -2061,15 +2061,15 @@ def rotate_euler(rotation=None, rotate_by=None, space='OBJECT')
 
 
 
-    > Node: [Rotate Euler](FunctionNodeRotateEuler.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotate_euler.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeRotateEuler.html)
+> Node: [Rotate Euler](FunctionNodeRotateEuler.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotate_euler.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeRotateEuler.html)
 
-    #### Args:
-    - rotation: Vector
-    - rotate_by: Vector
-    - space (str): 'OBJECT' in [OBJECT, LOCAL]
+#### Args:
+- rotation: Vector
+- rotate_by: Vector
+- space (str): 'OBJECT' in [OBJECT, LOCAL]
 
-    #### Returns:
-    - socket `rotation`
+#### Returns:
+- socket `rotation`
 
 
 
@@ -2086,15 +2086,15 @@ def separate_hsl(color=None)
 
 
 
-    > Node: [Separate Color](FunctionNodeSeparateColor.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html)
+> Node: [Separate Color](FunctionNodeSeparateColor.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html)
 
-    #### Args:
-    - color: Color
+#### Args:
+- color: Color
 
-    ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_FunctionNodeSeparateColor.webp)
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_FunctionNodeSeparateColor.webp)
 
-    #### Returns:
-    - tuple ('`red`', '`green`', '`blue`', '`alpha`')
+#### Returns:
+- tuple ('`red`', '`green`', '`blue`', '`alpha`')
 
 
 
@@ -2111,15 +2111,15 @@ def separate_hsv(color=None)
 
 
 
-    > Node: [Separate Color](FunctionNodeSeparateColor.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html)
+> Node: [Separate Color](FunctionNodeSeparateColor.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html)
 
-    #### Args:
-    - color: Color
+#### Args:
+- color: Color
 
-    ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_FunctionNodeSeparateColor.webp)
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_FunctionNodeSeparateColor.webp)
 
-    #### Returns:
-    - tuple ('`red`', '`green`', '`blue`', '`alpha`')
+#### Returns:
+- tuple ('`red`', '`green`', '`blue`', '`alpha`')
 
 
 
@@ -2136,15 +2136,15 @@ def separate_rgb(color=None)
 
 
 
-    > Node: [Separate Color](FunctionNodeSeparateColor.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html)
+> Node: [Separate Color](FunctionNodeSeparateColor.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html)
 
-    #### Args:
-    - color: Color
+#### Args:
+- color: Color
 
-    ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_FunctionNodeSeparateColor.webp)
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_FunctionNodeSeparateColor.webp)
 
-    #### Returns:
-    - tuple ('`red`', '`green`', '`blue`', '`alpha`')
+#### Returns:
+- tuple ('`red`', '`green`', '`blue`', '`alpha`')
 
 
 
@@ -2161,14 +2161,14 @@ def sign(value=None, clamp=False)
 
 
 
-    > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
+> Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
-    #### Args:
-    - value: Float
-    - clamp (bool): False
+#### Args:
+- value: Float
+- clamp (bool): False
 
-    #### Returns:
-    - socket `value`
+#### Returns:
+- socket `value`
 
 
 
@@ -2185,14 +2185,14 @@ def sin(value=None, clamp=False)
 
 
 
-    > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
+> Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
-    #### Args:
-    - value: Float
-    - clamp (bool): False
+#### Args:
+- value: Float
+- clamp (bool): False
 
-    #### Returns:
-    - socket `value`
+#### Returns:
+- socket `value`
 
 
 
@@ -2209,14 +2209,14 @@ def sine(value=None, clamp=False)
 
 
 
-    > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
+> Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
-    #### Args:
-    - value: Float
-    - clamp (bool): False
+#### Args:
+- value: Float
+- clamp (bool): False
 
-    #### Returns:
-    - socket `value`
+#### Returns:
+- socket `value`
 
 
 
@@ -2233,14 +2233,14 @@ def sinh(value=None, clamp=False)
 
 
 
-    > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
+> Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
-    #### Args:
-    - value: Float
-    - clamp (bool): False
+#### Args:
+- value: Float
+- clamp (bool): False
 
-    #### Returns:
-    - socket `value`
+#### Returns:
+- socket `value`
 
 
 
@@ -2257,15 +2257,15 @@ def slice_string(string=None, position=None, length=None)
 
 
 
-    > Node: [Slice String](FunctionNodeSliceString.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/slice_string.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeSliceString.html)
+> Node: [Slice String](FunctionNodeSliceString.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/slice_string.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeSliceString.html)
 
-    #### Args:
-    - string: String
-    - position: Integer
-    - length: Integer
+#### Args:
+- string: String
+- position: Integer
+- length: Integer
 
-    #### Returns:
-    - socket `string`
+#### Returns:
+- socket `string`
 
 
 
@@ -2282,16 +2282,16 @@ def smooth_maximum(value0=None, value1=None, distance=None, clamp=False)
 
 
 
-    > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
+> Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
-    #### Args:
-    - value0: Float
-    - value1: Float
-    - distance: Float
-    - clamp (bool): False
+#### Args:
+- value0: Float
+- value1: Float
+- distance: Float
+- clamp (bool): False
 
-    #### Returns:
-    - socket `value`
+#### Returns:
+- socket `value`
 
 
 
@@ -2308,16 +2308,16 @@ def smooth_minimum(value0=None, value1=None, distance=None, clamp=False)
 
 
 
-    > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
+> Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
-    #### Args:
-    - value0: Float
-    - value1: Float
-    - distance: Float
-    - clamp (bool): False
+#### Args:
+- value0: Float
+- value1: Float
+- distance: Float
+- clamp (bool): False
 
-    #### Returns:
-    - socket `value`
+#### Returns:
+- socket `value`
 
 
 
@@ -2334,15 +2334,15 @@ def snap(value=None, increment=None, clamp=False)
 
 
 
-    > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
+> Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
-    #### Args:
-    - value: Float
-    - increment: Float
-    - clamp (bool): False
+#### Args:
+- value: Float
+- increment: Float
+- clamp (bool): False
 
-    #### Returns:
-    - socket `value`
+#### Returns:
+- socket `value`
 
 
 
@@ -2359,14 +2359,14 @@ def sqrt(value=None, clamp=False)
 
 
 
-    > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
+> Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
-    #### Args:
-    - value: Float
-    - clamp (bool): False
+#### Args:
+- value: Float
+- clamp (bool): False
 
-    #### Returns:
-    - socket `value`
+#### Returns:
+- socket `value`
 
 
 
@@ -2383,13 +2383,13 @@ def string_length(string=None)
 
 
 
-    > Node: [String Length](FunctionNodeStringLength.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/string_length.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeStringLength.html)
+> Node: [String Length](FunctionNodeStringLength.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/string_length.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeStringLength.html)
 
-    #### Args:
-    - string: String
+#### Args:
+- string: String
 
-    #### Returns:
-    - socket `length`
+#### Returns:
+- socket `length`
 
 
 
@@ -2406,25 +2406,25 @@ def string_to_curves(string=None, size=None, character_spacing=None, word_spacin
 
 
 
-    > Node: [String to Curves](GeometryNodeStringToCurves.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/string_to_curves.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeStringToCurves.html)
+> Node: [String to Curves](GeometryNodeStringToCurves.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/string_to_curves.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeStringToCurves.html)
 
-    #### Args:
-    - string: String
-    - size: Float
-    - character_spacing: Float
-    - word_spacing: Float
-    - line_spacing: Float
-    - text_box_width: Float
-    - text_box_height: Float
-    - align_x (str): 'LEFT' in [LEFT, CENTER, RIGHT, JUSTIFY, FLUSH]
-    - align_y (str): 'TOP_BASELINE' in [TOP_BASELINE, TOP, MIDDLE, BOTTOM_BASELINE, BOTTOM]
-    - overflow (str): 'OVERFLOW' in [OVERFLOW, SCALE_TO_FIT, TRUNCATE]
-    - pivot_mode (str): 'BOTTOM_LEFT' in [MIDPOINT, TOP_LEFT, TOP_CENTER,... , BOTTOM_LEFT, BOTTOM_CENTER, BOTTOM_RIGHT]
+#### Args:
+- string: String
+- size: Float
+- character_spacing: Float
+- word_spacing: Float
+- line_spacing: Float
+- text_box_width: Float
+- text_box_height: Float
+- align_x (str): 'LEFT' in [LEFT, CENTER, RIGHT, JUSTIFY, FLUSH]
+- align_y (str): 'TOP_BASELINE' in [TOP_BASELINE, TOP, MIDDLE, BOTTOM_BASELINE, BOTTOM]
+- overflow (str): 'OVERFLOW' in [OVERFLOW, SCALE_TO_FIT, TRUNCATE]
+- pivot_mode (str): 'BOTTOM_LEFT' in [MIDPOINT, TOP_LEFT, TOP_CENTER,... , BOTTOM_LEFT, BOTTOM_CENTER, BOTTOM_RIGHT]
 
-    ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeStringToCurves.webp)
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeStringToCurves.webp)
 
-    #### Returns:
-    - tuple ('`curve_instances`', '`line`', '`pivot_point`')
+#### Returns:
+- tuple ('`curve_instances`', '`line`', '`pivot_point`')
 
 
 
@@ -2441,16 +2441,16 @@ def switch(switch=None, false=None, true=None, input_type='GEOMETRY')
 
 
 
-    > Node: [Switch](GeometryNodeSwitch.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
+> Node: [Switch](GeometryNodeSwitch.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
 
-    #### Args:
-    - switch: ['Boolean', 'Boolean']
-    - false: ['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'String', 'Geometry', 'Object', 'Collection', 'Texture', 'Material', 'Image']
-    - true: ['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'String', 'Geometry', 'Object', 'Collection', 'Texture', 'Material', 'Image']
-    - input_type (str): 'GEOMETRY' in [FLOAT, INT, BOOLEAN, VECTOR, STRING,... , COLLECTION, TEXTURE, MATERIAL]
+#### Args:
+- switch: ['Boolean', 'Boolean']
+- false: ['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'String', 'Geometry', 'Object', 'Collection', 'Texture', 'Material', 'Image']
+- true: ['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'String', 'Geometry', 'Object', 'Collection', 'Texture', 'Material', 'Image']
+- input_type (str): 'GEOMETRY' in [FLOAT, INT, BOOLEAN, VECTOR, STRING,... , COLLECTION, TEXTURE, MATERIAL]
 
-    #### Returns:
-    - socket `output`
+#### Returns:
+- socket `output`
 
 
 
@@ -2467,15 +2467,15 @@ def switch_boolean(switch=None, false=None, true=None)
 
 
 
-    > Node: [Switch](GeometryNodeSwitch.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
+> Node: [Switch](GeometryNodeSwitch.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
 
-    #### Args:
-    - switch: ['Boolean', 'Boolean']
-    - false: ['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'String', 'Geometry', 'Object', 'Collection', 'Texture', 'Material', 'Image']
-    - true: ['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'String', 'Geometry', 'Object', 'Collection', 'Texture', 'Material', 'Image']
+#### Args:
+- switch: ['Boolean', 'Boolean']
+- false: ['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'String', 'Geometry', 'Object', 'Collection', 'Texture', 'Material', 'Image']
+- true: ['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'String', 'Geometry', 'Object', 'Collection', 'Texture', 'Material', 'Image']
 
-    #### Returns:
-    - socket `output`
+#### Returns:
+- socket `output`
 
 
 
@@ -2492,15 +2492,15 @@ def switch_collection(switch=None, false=None, true=None)
 
 
 
-    > Node: [Switch](GeometryNodeSwitch.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
+> Node: [Switch](GeometryNodeSwitch.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
 
-    #### Args:
-    - switch: ['Boolean', 'Boolean']
-    - false: ['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'String', 'Geometry', 'Object', 'Collection', 'Texture', 'Material', 'Image']
-    - true: ['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'String', 'Geometry', 'Object', 'Collection', 'Texture', 'Material', 'Image']
+#### Args:
+- switch: ['Boolean', 'Boolean']
+- false: ['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'String', 'Geometry', 'Object', 'Collection', 'Texture', 'Material', 'Image']
+- true: ['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'String', 'Geometry', 'Object', 'Collection', 'Texture', 'Material', 'Image']
 
-    #### Returns:
-    - socket `output`
+#### Returns:
+- socket `output`
 
 
 
@@ -2517,15 +2517,15 @@ def switch_color(switch=None, false=None, true=None)
 
 
 
-    > Node: [Switch](GeometryNodeSwitch.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
+> Node: [Switch](GeometryNodeSwitch.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
 
-    #### Args:
-    - switch: ['Boolean', 'Boolean']
-    - false: ['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'String', 'Geometry', 'Object', 'Collection', 'Texture', 'Material', 'Image']
-    - true: ['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'String', 'Geometry', 'Object', 'Collection', 'Texture', 'Material', 'Image']
+#### Args:
+- switch: ['Boolean', 'Boolean']
+- false: ['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'String', 'Geometry', 'Object', 'Collection', 'Texture', 'Material', 'Image']
+- true: ['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'String', 'Geometry', 'Object', 'Collection', 'Texture', 'Material', 'Image']
 
-    #### Returns:
-    - socket `output`
+#### Returns:
+- socket `output`
 
 
 
@@ -2542,15 +2542,15 @@ def switch_float(switch=None, false=None, true=None)
 
 
 
-    > Node: [Switch](GeometryNodeSwitch.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
+> Node: [Switch](GeometryNodeSwitch.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
 
-    #### Args:
-    - switch: ['Boolean', 'Boolean']
-    - false: ['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'String', 'Geometry', 'Object', 'Collection', 'Texture', 'Material', 'Image']
-    - true: ['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'String', 'Geometry', 'Object', 'Collection', 'Texture', 'Material', 'Image']
+#### Args:
+- switch: ['Boolean', 'Boolean']
+- false: ['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'String', 'Geometry', 'Object', 'Collection', 'Texture', 'Material', 'Image']
+- true: ['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'String', 'Geometry', 'Object', 'Collection', 'Texture', 'Material', 'Image']
 
-    #### Returns:
-    - socket `output`
+#### Returns:
+- socket `output`
 
 
 
@@ -2567,15 +2567,15 @@ def switch_geometry(switch=None, false=None, true=None)
 
 
 
-    > Node: [Switch](GeometryNodeSwitch.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
+> Node: [Switch](GeometryNodeSwitch.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
 
-    #### Args:
-    - switch: ['Boolean', 'Boolean']
-    - false: ['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'String', 'Geometry', 'Object', 'Collection', 'Texture', 'Material', 'Image']
-    - true: ['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'String', 'Geometry', 'Object', 'Collection', 'Texture', 'Material', 'Image']
+#### Args:
+- switch: ['Boolean', 'Boolean']
+- false: ['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'String', 'Geometry', 'Object', 'Collection', 'Texture', 'Material', 'Image']
+- true: ['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'String', 'Geometry', 'Object', 'Collection', 'Texture', 'Material', 'Image']
 
-    #### Returns:
-    - socket `output`
+#### Returns:
+- socket `output`
 
 
 
@@ -2592,15 +2592,15 @@ def switch_image(switch=None, false=None, true=None)
 
 
 
-    > Node: [Switch](GeometryNodeSwitch.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
+> Node: [Switch](GeometryNodeSwitch.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
 
-    #### Args:
-    - switch: ['Boolean', 'Boolean']
-    - false: ['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'String', 'Geometry', 'Object', 'Collection', 'Texture', 'Material', 'Image']
-    - true: ['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'String', 'Geometry', 'Object', 'Collection', 'Texture', 'Material', 'Image']
+#### Args:
+- switch: ['Boolean', 'Boolean']
+- false: ['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'String', 'Geometry', 'Object', 'Collection', 'Texture', 'Material', 'Image']
+- true: ['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'String', 'Geometry', 'Object', 'Collection', 'Texture', 'Material', 'Image']
 
-    #### Returns:
-    - socket `output`
+#### Returns:
+- socket `output`
 
 
 
@@ -2617,15 +2617,15 @@ def switch_integer(switch=None, false=None, true=None)
 
 
 
-    > Node: [Switch](GeometryNodeSwitch.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
+> Node: [Switch](GeometryNodeSwitch.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
 
-    #### Args:
-    - switch: ['Boolean', 'Boolean']
-    - false: ['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'String', 'Geometry', 'Object', 'Collection', 'Texture', 'Material', 'Image']
-    - true: ['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'String', 'Geometry', 'Object', 'Collection', 'Texture', 'Material', 'Image']
+#### Args:
+- switch: ['Boolean', 'Boolean']
+- false: ['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'String', 'Geometry', 'Object', 'Collection', 'Texture', 'Material', 'Image']
+- true: ['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'String', 'Geometry', 'Object', 'Collection', 'Texture', 'Material', 'Image']
 
-    #### Returns:
-    - socket `output`
+#### Returns:
+- socket `output`
 
 
 
@@ -2642,15 +2642,15 @@ def switch_material(switch=None, false=None, true=None)
 
 
 
-    > Node: [Switch](GeometryNodeSwitch.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
+> Node: [Switch](GeometryNodeSwitch.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
 
-    #### Args:
-    - switch: ['Boolean', 'Boolean']
-    - false: ['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'String', 'Geometry', 'Object', 'Collection', 'Texture', 'Material', 'Image']
-    - true: ['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'String', 'Geometry', 'Object', 'Collection', 'Texture', 'Material', 'Image']
+#### Args:
+- switch: ['Boolean', 'Boolean']
+- false: ['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'String', 'Geometry', 'Object', 'Collection', 'Texture', 'Material', 'Image']
+- true: ['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'String', 'Geometry', 'Object', 'Collection', 'Texture', 'Material', 'Image']
 
-    #### Returns:
-    - socket `output`
+#### Returns:
+- socket `output`
 
 
 
@@ -2667,15 +2667,15 @@ def switch_object(switch=None, false=None, true=None)
 
 
 
-    > Node: [Switch](GeometryNodeSwitch.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
+> Node: [Switch](GeometryNodeSwitch.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
 
-    #### Args:
-    - switch: ['Boolean', 'Boolean']
-    - false: ['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'String', 'Geometry', 'Object', 'Collection', 'Texture', 'Material', 'Image']
-    - true: ['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'String', 'Geometry', 'Object', 'Collection', 'Texture', 'Material', 'Image']
+#### Args:
+- switch: ['Boolean', 'Boolean']
+- false: ['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'String', 'Geometry', 'Object', 'Collection', 'Texture', 'Material', 'Image']
+- true: ['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'String', 'Geometry', 'Object', 'Collection', 'Texture', 'Material', 'Image']
 
-    #### Returns:
-    - socket `output`
+#### Returns:
+- socket `output`
 
 
 
@@ -2692,15 +2692,15 @@ def switch_string(switch=None, false=None, true=None)
 
 
 
-    > Node: [Switch](GeometryNodeSwitch.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
+> Node: [Switch](GeometryNodeSwitch.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
 
-    #### Args:
-    - switch: ['Boolean', 'Boolean']
-    - false: ['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'String', 'Geometry', 'Object', 'Collection', 'Texture', 'Material', 'Image']
-    - true: ['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'String', 'Geometry', 'Object', 'Collection', 'Texture', 'Material', 'Image']
+#### Args:
+- switch: ['Boolean', 'Boolean']
+- false: ['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'String', 'Geometry', 'Object', 'Collection', 'Texture', 'Material', 'Image']
+- true: ['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'String', 'Geometry', 'Object', 'Collection', 'Texture', 'Material', 'Image']
 
-    #### Returns:
-    - socket `output`
+#### Returns:
+- socket `output`
 
 
 
@@ -2717,15 +2717,15 @@ def switch_texture(switch=None, false=None, true=None)
 
 
 
-    > Node: [Switch](GeometryNodeSwitch.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
+> Node: [Switch](GeometryNodeSwitch.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
 
-    #### Args:
-    - switch: ['Boolean', 'Boolean']
-    - false: ['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'String', 'Geometry', 'Object', 'Collection', 'Texture', 'Material', 'Image']
-    - true: ['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'String', 'Geometry', 'Object', 'Collection', 'Texture', 'Material', 'Image']
+#### Args:
+- switch: ['Boolean', 'Boolean']
+- false: ['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'String', 'Geometry', 'Object', 'Collection', 'Texture', 'Material', 'Image']
+- true: ['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'String', 'Geometry', 'Object', 'Collection', 'Texture', 'Material', 'Image']
 
-    #### Returns:
-    - socket `output`
+#### Returns:
+- socket `output`
 
 
 
@@ -2742,15 +2742,15 @@ def switch_vector(switch=None, false=None, true=None)
 
 
 
-    > Node: [Switch](GeometryNodeSwitch.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
+> Node: [Switch](GeometryNodeSwitch.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
 
-    #### Args:
-    - switch: ['Boolean', 'Boolean']
-    - false: ['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'String', 'Geometry', 'Object', 'Collection', 'Texture', 'Material', 'Image']
-    - true: ['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'String', 'Geometry', 'Object', 'Collection', 'Texture', 'Material', 'Image']
+#### Args:
+- switch: ['Boolean', 'Boolean']
+- false: ['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'String', 'Geometry', 'Object', 'Collection', 'Texture', 'Material', 'Image']
+- true: ['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'String', 'Geometry', 'Object', 'Collection', 'Texture', 'Material', 'Image']
 
-    #### Returns:
-    - socket `output`
+#### Returns:
+- socket `output`
 
 
 
@@ -2767,14 +2767,14 @@ def tan(value=None, clamp=False)
 
 
 
-    > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
+> Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
-    #### Args:
-    - value: Float
-    - clamp (bool): False
+#### Args:
+- value: Float
+- clamp (bool): False
 
-    #### Returns:
-    - socket `value`
+#### Returns:
+- socket `value`
 
 
 
@@ -2791,14 +2791,14 @@ def tangent(value=None, clamp=False)
 
 
 
-    > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
+> Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
-    #### Args:
-    - value: Float
-    - clamp (bool): False
+#### Args:
+- value: Float
+- clamp (bool): False
 
-    #### Returns:
-    - socket `value`
+#### Returns:
+- socket `value`
 
 
 
@@ -2815,14 +2815,14 @@ def tanh(value=None, clamp=False)
 
 
 
-    > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
+> Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
-    #### Args:
-    - value: Float
-    - clamp (bool): False
+#### Args:
+- value: Float
+- clamp (bool): False
 
-    #### Returns:
-    - socket `value`
+#### Returns:
+- socket `value`
 
 
 
@@ -2839,14 +2839,14 @@ def to_degrees(value=None, clamp=False)
 
 
 
-    > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
+> Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
-    #### Args:
-    - value: Float
-    - clamp (bool): False
+#### Args:
+- value: Float
+- clamp (bool): False
 
-    #### Returns:
-    - socket `value`
+#### Returns:
+- socket `value`
 
 
 
@@ -2863,14 +2863,14 @@ def to_radians(value=None, clamp=False)
 
 
 
-    > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
+> Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
-    #### Args:
-    - value: Float
-    - clamp (bool): False
+#### Args:
+- value: Float
+- clamp (bool): False
 
-    #### Returns:
-    - socket `value`
+#### Returns:
+- socket `value`
 
 
 
@@ -2887,14 +2887,14 @@ def value_to_string(value=None, decimals=None)
 
 
 
-    > Node: [Value to String](FunctionNodeValueToString.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/value_to_string.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeValueToString.html)
+> Node: [Value to String](FunctionNodeValueToString.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/text/value_to_string.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeValueToString.html)
 
-    #### Args:
-    - value: Float
-    - decimals: Integer
+#### Args:
+- value: Float
+- decimals: Integer
 
-    #### Returns:
-    - socket `string`
+#### Returns:
+- socket `string`
 
 
 
@@ -2911,17 +2911,17 @@ def vector_mix(factor=None, a=None, b=None, clamp_factor=True, factor_mode='UNIF
 
 
 
-    > Node: [Mix](ShaderNodeMix.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
+> Node: [Mix](ShaderNodeMix.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/mix.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html)
 
-    #### Args:
-    - factor: ['Float', 'Vector']
-    - a: ['Float', 'Vector', 'Color']
-    - b: ['Float', 'Vector', 'Color']
-    - clamp_factor (bool): True
-    - factor_mode (str): 'UNIFORM' in [UNIFORM, NON_UNIFORM]
+#### Args:
+- factor: ['Float', 'Vector']
+- a: ['Float', 'Vector', 'Color']
+- b: ['Float', 'Vector', 'Color']
+- clamp_factor (bool): True
+- factor_mode (str): 'UNIFORM' in [UNIFORM, NON_UNIFORM]
 
-    #### Returns:
-    - socket `result`
+#### Returns:
+- socket `result`
 
 
 
@@ -2938,16 +2938,16 @@ def wrap(value=None, max=None, min=None, clamp=False)
 
 
 
-    > Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
+> Node: [Math](ShaderNodeMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html)
 
-    #### Args:
-    - value: Float
-    - max: Float
-    - min: Float
-    - clamp (bool): False
+#### Args:
+- value: Float
+- max: Float
+- min: Float
+- clamp (bool): False
 
-    #### Returns:
-    - socket `value`
+#### Returns:
+- socket `value`
 
 
 
@@ -2964,14 +2964,14 @@ def xnor(boolean0=None, boolean1=None)
 
 
 
-    > Node: [Boolean Math](FunctionNodeBooleanMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/boolean_math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html)
+> Node: [Boolean Math](FunctionNodeBooleanMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/boolean_math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html)
 
-    #### Args:
-    - boolean0: Boolean
-    - boolean1: Boolean
+#### Args:
+- boolean0: Boolean
+- boolean1: Boolean
 
-    #### Returns:
-    - socket `boolean`
+#### Returns:
+- socket `boolean`
 
 
 
@@ -2988,14 +2988,14 @@ def xor(boolean0=None, boolean1=None)
 
 
 
-    > Node: [Boolean Math](FunctionNodeBooleanMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/boolean_math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html)
+> Node: [Boolean Math](FunctionNodeBooleanMath.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/boolean_math.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html)
 
-    #### Args:
-    - boolean0: Boolean
-    - boolean1: Boolean
+#### Args:
+- boolean0: Boolean
+- boolean1: Boolean
 
-    #### Returns:
-    - socket `boolean`
+#### Returns:
+- socket `boolean`
 
 
 
