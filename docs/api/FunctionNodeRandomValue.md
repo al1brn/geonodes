@@ -42,11 +42,6 @@ node = nodes.RandomValue(min=None, max=None, probability=None, ID=None, seed=Non
 
 | Class or method name | Definition |
 |----------------------|------------|
-| Global functions |
-| [random_float](A.md#random_float) | `def random_float(min=None, max=None, ID=None, seed=None):` |
-| [random_integer](A.md#random_integer) | `def random_integer(min=None, max=None, ID=None, seed=None):` |
-| [random_vector](A.md#random_vector) | `def random_vector(min=None, max=None, ID=None, seed=None):` |
-| [random_boolean](A.md#random_boolean) | `def random_boolean(probability=None, ID=None, seed=None):` |
 | **[Boolean](Boolean.md)** |
 | [Random](Boolean.md#Random) | `@classmethod`<br> `def Random(cls, probability=None, ID=None, seed=None):` |
 | **[Domain](Domain.md)** |
@@ -65,6 +60,11 @@ node = nodes.RandomValue(min=None, max=None, probability=None, ID=None, seed=Non
 | [Random](Integer.md#Random) | `@classmethod`<br> `def Random(cls, min=None, max=None, ID=None, seed=None):` |
 | **[Vector](Vector.md)** |
 | [Random](Vector.md#Random) | `@classmethod`<br> `def Random(cls, min=None, max=None, ID=None, seed=None):` |
+| **[functions](functions.md)** |
+| [random_float](functions.md#random_float) | `def random_float(min=None, max=None, ID=None, seed=None):` |
+| [random_integer](functions.md#random_integer) | `def random_integer(min=None, max=None, ID=None, seed=None):` |
+| [random_vector](functions.md#random_vector) | `def random_vector(min=None, max=None, ID=None, seed=None):` |
+| [random_boolean](functions.md#random_boolean) | `def random_boolean(probability=None, ID=None, seed=None):` |
 
 <sub>Go to [top](#node-Random-Value) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

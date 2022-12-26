@@ -30,10 +30,10 @@ node = nodes.ColorRamp(fac=None)
 
 | Class or method name | Definition |
 |----------------------|------------|
-| Global functions |
-| [color_ramp](A.md#color_ramp) | `def color_ramp(fac=None):` |
 | **[Float](Float.md)** |
 | [color_ramp](Float.md#color_ramp) | `@property`<br> `def color_ramp(self):` |
+| **[functions](functions.md)** |
+| [color_ramp](functions.md#color_ramp) | `def color_ramp(fac=None):` |
 
 <sub>Go to [top](#node-ColorRamp) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

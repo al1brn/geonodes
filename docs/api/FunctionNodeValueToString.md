@@ -30,12 +30,12 @@ node = nodes.ValueToString(value=None, decimals=None)
 
 | Class or method name | Definition |
 |----------------------|------------|
-| Global functions |
-| [value_to_string](A.md#value_to_string) | `def value_to_string(value=None, decimals=None):` |
 | **[Float](Float.md)** |
 | [to_string](Float.md#to_string) | `def to_string(self, decimals=None):` |
 | **[Integer](Integer.md)** |
 | [to_string](Integer.md#to_string) | `def to_string(self):` |
+| **[functions](functions.md)** |
+| [value_to_string](functions.md#value_to_string) | `def value_to_string(value=None, decimals=None):` |
 
 <sub>Go to [top](#node-Value-to-String) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

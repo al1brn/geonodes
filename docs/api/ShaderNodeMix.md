@@ -44,27 +44,6 @@ node = nodes.Mix(factor=None, a=None, b=None, blend_type='MIX', clamp_factor=Tru
 
 | Class or method name | Definition |
 |----------------------|------------|
-| Global functions |
-| [float_mix](A.md#float_mix) | `def float_mix(factor=None, a=None, b=None, clamp_factor=True):` |
-| [vector_mix](A.md#vector_mix) | `def vector_mix(factor=None, a=None, b=None, clamp_factor=True, factor_mode='UNIFORM'):` |
-| [color_mix](A.md#color_mix) | `def color_mix(factor=None, a=None, b=None, blend_type='MIX', clamp_factor=True, clamp_result=False):` |
-| [color_darken](A.md#color_darken) | `def color_darken(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False):` |
-| [color_multiply](A.md#color_multiply) | `def color_multiply(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False):` |
-| [color_burn](A.md#color_burn) | `def color_burn(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False):` |
-| [color_lighten](A.md#color_lighten) | `def color_lighten(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False):` |
-| [color_screen](A.md#color_screen) | `def color_screen(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False):` |
-| [color_dodge](A.md#color_dodge) | `def color_dodge(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False):` |
-| [color_add](A.md#color_add) | `def color_add(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False):` |
-| [color_overlay](A.md#color_overlay) | `def color_overlay(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False):` |
-| [color_soft_light](A.md#color_soft_light) | `def color_soft_light(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False):` |
-| [color_linear_light](A.md#color_linear_light) | `def color_linear_light(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False):` |
-| [color_difference](A.md#color_difference) | `def color_difference(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False):` |
-| [color_subtract](A.md#color_subtract) | `def color_subtract(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False):` |
-| [color_divide](A.md#color_divide) | `def color_divide(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False):` |
-| [color_hue](A.md#color_hue) | `def color_hue(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False):` |
-| [color_saturation](A.md#color_saturation) | `def color_saturation(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False):` |
-| [color_color](A.md#color_color) | `def color_color(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False):` |
-| [color_value](A.md#color_value) | `def color_value(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False):` |
 | **[Color](Color.md)** |
 | [mix](Color.md#mix) | `def mix(self, factor=None, color=None, blend_type='MIX', clamp_factor=True, clamp_result=False):` |
 | [mix_darken](Color.md#mix_darken) | `def mix_darken(self, factor=None, color=None, clamp_factor=True, clamp_result=False):` |
@@ -90,6 +69,27 @@ node = nodes.Mix(factor=None, a=None, b=None, blend_type='MIX', clamp_factor=Tru
 | [mix](Vector.md#mix) | `def mix(self, factor=None, vector=None, clamp_factor=True, factor_mode='UNIFORM'):` |
 | [mix_uniform](Vector.md#mix_uniform) | `def mix_uniform(self, vector=None, clamp_factor=True):` |
 | [mix_non_uniform](Vector.md#mix_non_uniform) | `def mix_non_uniform(self, factor=None, vector=None, clamp_factor=True):` |
+| **[functions](functions.md)** |
+| [float_mix](functions.md#float_mix) | `def float_mix(factor=None, a=None, b=None, clamp_factor=True):` |
+| [vector_mix](functions.md#vector_mix) | `def vector_mix(factor=None, a=None, b=None, clamp_factor=True, factor_mode='UNIFORM'):` |
+| [color_mix](functions.md#color_mix) | `def color_mix(factor=None, a=None, b=None, blend_type='MIX', clamp_factor=True, clamp_result=False):` |
+| [color_darken](functions.md#color_darken) | `def color_darken(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False):` |
+| [color_multiply](functions.md#color_multiply) | `def color_multiply(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False):` |
+| [color_burn](functions.md#color_burn) | `def color_burn(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False):` |
+| [color_lighten](functions.md#color_lighten) | `def color_lighten(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False):` |
+| [color_screen](functions.md#color_screen) | `def color_screen(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False):` |
+| [color_dodge](functions.md#color_dodge) | `def color_dodge(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False):` |
+| [color_add](functions.md#color_add) | `def color_add(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False):` |
+| [color_overlay](functions.md#color_overlay) | `def color_overlay(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False):` |
+| [color_soft_light](functions.md#color_soft_light) | `def color_soft_light(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False):` |
+| [color_linear_light](functions.md#color_linear_light) | `def color_linear_light(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False):` |
+| [color_difference](functions.md#color_difference) | `def color_difference(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False):` |
+| [color_subtract](functions.md#color_subtract) | `def color_subtract(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False):` |
+| [color_divide](functions.md#color_divide) | `def color_divide(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False):` |
+| [color_hue](functions.md#color_hue) | `def color_hue(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False):` |
+| [color_saturation](functions.md#color_saturation) | `def color_saturation(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False):` |
+| [color_color](functions.md#color_color) | `def color_color(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False):` |
+| [color_value](functions.md#color_value) | `def color_value(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False):` |
 
 <sub>Go to [top](#node-Mix) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

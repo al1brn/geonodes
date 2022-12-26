@@ -30,10 +30,10 @@ node = nodes.RgbCurves(fac=None, color=None)
 
 | Class or method name | Definition |
 |----------------------|------------|
-| Global functions |
-| [rgb_curves](A.md#rgb_curves) | `def rgb_curves(fac=None, color=None):` |
 | **[Color](Color.md)** |
 | [rgb_curves](Color.md#rgb_curves) | `@property`<br> `def rgb_curves(self, fac=None):` |
+| **[functions](functions.md)** |
+| [rgb_curves](functions.md#rgb_curves) | `def rgb_curves(fac=None, color=None):` |
 
 <sub>Go to [top](#node-RGB-Curves) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

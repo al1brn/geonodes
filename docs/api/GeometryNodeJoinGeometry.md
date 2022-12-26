@@ -29,10 +29,10 @@ node = nodes.JoinGeometry(*geometry)
 
 | Class or method name | Definition |
 |----------------------|------------|
-| Global functions |
-| [join_geometry](A.md#join_geometry) | `def join_geometry(*geometry):` |
 | **[Geometry](Geometry.md)** |
 | [join](Geometry.md#join) | `def join(*geometry):` |
+| **[functions](functions.md)** |
+| [join_geometry](functions.md#join_geometry) | `def join_geometry(*geometry):` |
 
 <sub>Go to [top](#node-Join-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

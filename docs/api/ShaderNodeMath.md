@@ -36,57 +36,6 @@ node = nodes.Math(value0=None, value1=None, value2=None, operation='ADD', use_cl
 
 | Class or method name | Definition |
 |----------------------|------------|
-| Global functions |
-| [math](A.md#math) | `def math(value0=None, value1=None, value2=None, operation='ADD', clamp=False):` |
-| [multiply_add](A.md#multiply_add) | `def multiply_add(value=None, multiplier=None, addend=None, clamp=False):` |
-| [mul_add](A.md#mul_add) | `def mul_add(value=None, multiplier=None, addend=None, clamp=False):` |
-| [power](A.md#power) | `def power(base=None, exponent=None, clamp=False):` |
-| [logarithm](A.md#logarithm) | `def logarithm(value=None, base=None, clamp=False):` |
-| [log](A.md#log) | `def log(value=None, base=None, clamp=False):` |
-| [sqrt](A.md#sqrt) | `def sqrt(value=None, clamp=False):` |
-| [inverse_sqrt](A.md#inverse_sqrt) | `def inverse_sqrt(value=None, clamp=False):` |
-| [absolute](A.md#absolute) | `def absolute(value=None, clamp=False):` |
-| [abs](A.md#abs) | `def abs(value=None, clamp=False):` |
-| [exponent](A.md#exponent) | `def exponent(value=None, clamp=False):` |
-| [exp](A.md#exp) | `def exp(value=None, clamp=False):` |
-| [minimum](A.md#minimum) | `def minimum(value0=None, value1=None, clamp=False):` |
-| [min](A.md#min) | `def min(value0=None, value1=None, clamp=False):` |
-| [maximum](A.md#maximum) | `def maximum(value0=None, value1=None, clamp=False):` |
-| [max](A.md#max) | `def max(value0=None, value1=None, clamp=False):` |
-| [math_less_than](A.md#math_less_than) | `def math_less_than(value=None, threshold=None, clamp=False):` |
-| [math_greater_than](A.md#math_greater_than) | `def math_greater_than(value=None, threshold=None, clamp=False):` |
-| [sign](A.md#sign) | `def sign(value=None, clamp=False):` |
-| [math_compare](A.md#math_compare) | `def math_compare(value0=None, value1=None, epsilon=None, clamp=False):` |
-| [smooth_minimum](A.md#smooth_minimum) | `def smooth_minimum(value0=None, value1=None, distance=None, clamp=False):` |
-| [smooth_maximum](A.md#smooth_maximum) | `def smooth_maximum(value0=None, value1=None, distance=None, clamp=False):` |
-| [math_round](A.md#math_round) | `def math_round(value=None, clamp=False):` |
-| [math_floor](A.md#math_floor) | `def math_floor(value=None, clamp=False):` |
-| [math_ceil](A.md#math_ceil) | `def math_ceil(value=None, clamp=False):` |
-| [math_truncate](A.md#math_truncate) | `def math_truncate(value=None, clamp=False):` |
-| [math_trun](A.md#math_trun) | `def math_trun(value=None, clamp=False):` |
-| [fraction](A.md#fraction) | `def fraction(value=None, clamp=False):` |
-| [modulo](A.md#modulo) | `def modulo(value0=None, value1=None, clamp=False):` |
-| [wrap](A.md#wrap) | `def wrap(value=None, max=None, min=None, clamp=False):` |
-| [snap](A.md#snap) | `def snap(value=None, increment=None, clamp=False):` |
-| [ping_pong](A.md#ping_pong) | `def ping_pong(value=None, scale=None, clamp=False):` |
-| [sine](A.md#sine) | `def sine(value=None, clamp=False):` |
-| [sin](A.md#sin) | `def sin(value=None, clamp=False):` |
-| [cosine](A.md#cosine) | `def cosine(value=None, clamp=False):` |
-| [cos](A.md#cos) | `def cos(value=None, clamp=False):` |
-| [tangent](A.md#tangent) | `def tangent(value=None, clamp=False):` |
-| [tan](A.md#tan) | `def tan(value=None, clamp=False):` |
-| [arcsine](A.md#arcsine) | `def arcsine(value=None, clamp=False):` |
-| [arcsin](A.md#arcsin) | `def arcsin(value=None, clamp=False):` |
-| [arccosine](A.md#arccosine) | `def arccosine(value=None, clamp=False):` |
-| [arccos](A.md#arccos) | `def arccos(value=None, clamp=False):` |
-| [arctangent](A.md#arctangent) | `def arctangent(value=None, clamp=False):` |
-| [arctan](A.md#arctan) | `def arctan(value=None, clamp=False):` |
-| [arctan2](A.md#arctan2) | `def arctan2(value0=None, value1=None, clamp=False):` |
-| [sinh](A.md#sinh) | `def sinh(value=None, clamp=False):` |
-| [cosh](A.md#cosh) | `def cosh(value=None, clamp=False):` |
-| [tanh](A.md#tanh) | `def tanh(value=None, clamp=False):` |
-| [to_radians](A.md#to_radians) | `def to_radians(value=None, clamp=False):` |
-| [to_degrees](A.md#to_degrees) | `def to_degrees(value=None, clamp=False):` |
 | **[Float](Float.md)** |
 | [multiply_add](Float.md#multiply_add) | `def multiply_add(self, multiplier=None, addend=None, clamp=False):` |
 | [mul_add](Float.md#mul_add) | `def mul_add(self, multiplier=None, addend=None, clamp=False):` |
@@ -191,6 +140,57 @@ node = nodes.Math(value0=None, value1=None, value2=None, operation='ADD', use_cl
 | [tanh](Integer.md#tanh) | `def tanh(self, value=None, clamp=False):` |
 | [to_radians](Integer.md#to_radians) | `def to_radians(self, clamp=False):` |
 | [to_degrees](Integer.md#to_degrees) | `def to_degrees(self, clamp=False):` |
+| **[functions](functions.md)** |
+| [math](functions.md#math) | `def math(value0=None, value1=None, value2=None, operation='ADD', clamp=False):` |
+| [multiply_add](functions.md#multiply_add) | `def multiply_add(value=None, multiplier=None, addend=None, clamp=False):` |
+| [mul_add](functions.md#mul_add) | `def mul_add(value=None, multiplier=None, addend=None, clamp=False):` |
+| [power](functions.md#power) | `def power(base=None, exponent=None, clamp=False):` |
+| [logarithm](functions.md#logarithm) | `def logarithm(value=None, base=None, clamp=False):` |
+| [log](functions.md#log) | `def log(value=None, base=None, clamp=False):` |
+| [sqrt](functions.md#sqrt) | `def sqrt(value=None, clamp=False):` |
+| [inverse_sqrt](functions.md#inverse_sqrt) | `def inverse_sqrt(value=None, clamp=False):` |
+| [absolute](functions.md#absolute) | `def absolute(value=None, clamp=False):` |
+| [abs](functions.md#abs) | `def abs(value=None, clamp=False):` |
+| [exponent](functions.md#exponent) | `def exponent(value=None, clamp=False):` |
+| [exp](functions.md#exp) | `def exp(value=None, clamp=False):` |
+| [minimum](functions.md#minimum) | `def minimum(value0=None, value1=None, clamp=False):` |
+| [min](functions.md#min) | `def min(value0=None, value1=None, clamp=False):` |
+| [maximum](functions.md#maximum) | `def maximum(value0=None, value1=None, clamp=False):` |
+| [max](functions.md#max) | `def max(value0=None, value1=None, clamp=False):` |
+| [math_less_than](functions.md#math_less_than) | `def math_less_than(value=None, threshold=None, clamp=False):` |
+| [math_greater_than](functions.md#math_greater_than) | `def math_greater_than(value=None, threshold=None, clamp=False):` |
+| [sign](functions.md#sign) | `def sign(value=None, clamp=False):` |
+| [math_compare](functions.md#math_compare) | `def math_compare(value0=None, value1=None, epsilon=None, clamp=False):` |
+| [smooth_minimum](functions.md#smooth_minimum) | `def smooth_minimum(value0=None, value1=None, distance=None, clamp=False):` |
+| [smooth_maximum](functions.md#smooth_maximum) | `def smooth_maximum(value0=None, value1=None, distance=None, clamp=False):` |
+| [math_round](functions.md#math_round) | `def math_round(value=None, clamp=False):` |
+| [math_floor](functions.md#math_floor) | `def math_floor(value=None, clamp=False):` |
+| [math_ceil](functions.md#math_ceil) | `def math_ceil(value=None, clamp=False):` |
+| [math_truncate](functions.md#math_truncate) | `def math_truncate(value=None, clamp=False):` |
+| [math_trun](functions.md#math_trun) | `def math_trun(value=None, clamp=False):` |
+| [fraction](functions.md#fraction) | `def fraction(value=None, clamp=False):` |
+| [modulo](functions.md#modulo) | `def modulo(value0=None, value1=None, clamp=False):` |
+| [wrap](functions.md#wrap) | `def wrap(value=None, max=None, min=None, clamp=False):` |
+| [snap](functions.md#snap) | `def snap(value=None, increment=None, clamp=False):` |
+| [ping_pong](functions.md#ping_pong) | `def ping_pong(value=None, scale=None, clamp=False):` |
+| [sine](functions.md#sine) | `def sine(value=None, clamp=False):` |
+| [sin](functions.md#sin) | `def sin(value=None, clamp=False):` |
+| [cosine](functions.md#cosine) | `def cosine(value=None, clamp=False):` |
+| [cos](functions.md#cos) | `def cos(value=None, clamp=False):` |
+| [tangent](functions.md#tangent) | `def tangent(value=None, clamp=False):` |
+| [tan](functions.md#tan) | `def tan(value=None, clamp=False):` |
+| [arcsine](functions.md#arcsine) | `def arcsine(value=None, clamp=False):` |
+| [arcsin](functions.md#arcsin) | `def arcsin(value=None, clamp=False):` |
+| [arccosine](functions.md#arccosine) | `def arccosine(value=None, clamp=False):` |
+| [arccos](functions.md#arccos) | `def arccos(value=None, clamp=False):` |
+| [arctangent](functions.md#arctangent) | `def arctangent(value=None, clamp=False):` |
+| [arctan](functions.md#arctan) | `def arctan(value=None, clamp=False):` |
+| [arctan2](functions.md#arctan2) | `def arctan2(value0=None, value1=None, clamp=False):` |
+| [sinh](functions.md#sinh) | `def sinh(value=None, clamp=False):` |
+| [cosh](functions.md#cosh) | `def cosh(value=None, clamp=False):` |
+| [tanh](functions.md#tanh) | `def tanh(value=None, clamp=False):` |
+| [to_radians](functions.md#to_radians) | `def to_radians(value=None, clamp=False):` |
+| [to_degrees](functions.md#to_degrees) | `def to_degrees(value=None, clamp=False):` |
 
 <sub>Go to [top](#node-Math) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

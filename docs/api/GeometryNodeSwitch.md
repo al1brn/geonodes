@@ -40,20 +40,6 @@ node = nodes.Switch(switch=None, false=None, true=None, input_type='GEOMETRY')
 
 | Class or method name | Definition |
 |----------------------|------------|
-| Global functions |
-| [switch](A.md#switch) | `def switch(switch=None, false=None, true=None, input_type='GEOMETRY'):` |
-| [switch_float](A.md#switch_float) | `def switch_float(switch=None, false=None, true=None):` |
-| [switch_integer](A.md#switch_integer) | `def switch_integer(switch=None, false=None, true=None):` |
-| [switch_boolean](A.md#switch_boolean) | `def switch_boolean(switch=None, false=None, true=None):` |
-| [switch_vector](A.md#switch_vector) | `def switch_vector(switch=None, false=None, true=None):` |
-| [switch_string](A.md#switch_string) | `def switch_string(switch=None, false=None, true=None):` |
-| [switch_color](A.md#switch_color) | `def switch_color(switch=None, false=None, true=None):` |
-| [switch_object](A.md#switch_object) | `def switch_object(switch=None, false=None, true=None):` |
-| [switch_image](A.md#switch_image) | `def switch_image(switch=None, false=None, true=None):` |
-| [switch_geometry](A.md#switch_geometry) | `def switch_geometry(switch=None, false=None, true=None):` |
-| [switch_collection](A.md#switch_collection) | `def switch_collection(switch=None, false=None, true=None):` |
-| [switch_texture](A.md#switch_texture) | `def switch_texture(switch=None, false=None, true=None):` |
-| [switch_material](A.md#switch_material) | `def switch_material(switch=None, false=None, true=None):` |
 | **[Boolean](Boolean.md)** |
 | [switch](Boolean.md#switch) | `def switch(self, switch=None, true=None):` |
 | **[Collection](Collection.md)** |
@@ -78,6 +64,20 @@ node = nodes.Switch(switch=None, false=None, true=None, input_type='GEOMETRY')
 | [switch](Texture.md#switch) | `def switch(self, switch=None, true=None):` |
 | **[Vector](Vector.md)** |
 | [switch](Vector.md#switch) | `def switch(self, switch=None, true=None):` |
+| **[functions](functions.md)** |
+| [switch](functions.md#switch) | `def switch(switch=None, false=None, true=None, input_type='GEOMETRY'):` |
+| [switch_float](functions.md#switch_float) | `def switch_float(switch=None, false=None, true=None):` |
+| [switch_integer](functions.md#switch_integer) | `def switch_integer(switch=None, false=None, true=None):` |
+| [switch_boolean](functions.md#switch_boolean) | `def switch_boolean(switch=None, false=None, true=None):` |
+| [switch_vector](functions.md#switch_vector) | `def switch_vector(switch=None, false=None, true=None):` |
+| [switch_string](functions.md#switch_string) | `def switch_string(switch=None, false=None, true=None):` |
+| [switch_color](functions.md#switch_color) | `def switch_color(switch=None, false=None, true=None):` |
+| [switch_object](functions.md#switch_object) | `def switch_object(switch=None, false=None, true=None):` |
+| [switch_image](functions.md#switch_image) | `def switch_image(switch=None, false=None, true=None):` |
+| [switch_geometry](functions.md#switch_geometry) | `def switch_geometry(switch=None, false=None, true=None):` |
+| [switch_collection](functions.md#switch_collection) | `def switch_collection(switch=None, false=None, true=None):` |
+| [switch_texture](functions.md#switch_texture) | `def switch_texture(switch=None, false=None, true=None):` |
+| [switch_material](functions.md#switch_material) | `def switch_material(switch=None, false=None, true=None):` |
 
 <sub>Go to [top](#node-Switch) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

@@ -45,10 +45,10 @@ node = nodes.StringToCurves(string=None, size=None, character_spacing=None, word
 
 | Class or method name | Definition |
 |----------------------|------------|
-| Global functions |
-| [string_to_curves](A.md#string_to_curves) | `def string_to_curves(string=None, size=None, character_spacing=None, word_spacing=None, line_spacing=None, text_box_width=None, text_box_height=None, align_x='LEFT', align_y='TOP_BASELINE', overflow='OVERFLOW', pivot_mode='BOTTOM_LEFT'):` |
 | **[String](String.md)** |
 | [to_curves](String.md#to_curves) | `def to_curves(self, size=None, character_spacing=None, word_spacing=None, line_spacing=None, text_box_width=None, text_box_height=None, align_x='LEFT', align_y='TOP_BASELINE', overflow='OVERFLOW', pivot_mode='BOTTOM_LEFT'):` |
+| **[functions](functions.md)** |
+| [string_to_curves](functions.md#string_to_curves) | `def string_to_curves(string=None, size=None, character_spacing=None, word_spacing=None, line_spacing=None, text_box_width=None, text_box_height=None, align_x='LEFT', align_y='TOP_BASELINE', overflow='OVERFLOW', pivot_mode='BOTTOM_LEFT'):` |
 
 <sub>Go to [top](#node-String-to-Curves) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

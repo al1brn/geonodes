@@ -11,6 +11,7 @@
 - [Material](#menu-Material)
 - [Mesh](#menu-Mesh)
 - [Mesh Primitives](#menu-Mesh-Primitives)
+- [Output](#menu-Output)
 - [Point](#menu-Point)
 - [Text](#menu-Text)
 - [Texture](#menu-Texture)
@@ -354,6 +355,17 @@
 | [Mesh Circle](GeometryNodeMeshCircle.md) | [Mesh](Mesh.md) | [Circle](Mesh.md#Circle) |
 | [Mesh Line](GeometryNodeMeshLine.md) | [Mesh](Mesh.md) | - [Line](Mesh.md#Line)<br>- [LineEndPoints](Mesh.md#LineEndPoints)<br>- [LineEndPointsResolution](Mesh.md#LineEndPointsResolution)<br>- [LineOffset](Mesh.md#LineOffset)|
 | [UV Sphere](GeometryNodeMeshUVSphere.md) | [Mesh](Mesh.md) | [UVSphere](Mesh.md#UVSphere) |
+
+<sub>Go to [top](#nodes-menus) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+## Menu Output
+
+> [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
+
+| node | class | method name |
+|------|-------|-------------|
+| [Viewer](GeometryNodeViewer.md) | [Domain](Domain.md) | - [viewer](Domain.md#viewer)<br>- [view](Domain.md#view)|
+|      | [Geometry](Geometry.md) | - [viewer](Geometry.md#viewer)<br>- [view](Geometry.md#view)|
 
 <sub>Go to [top](#nodes-menus) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

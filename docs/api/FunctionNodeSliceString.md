@@ -31,10 +31,10 @@ node = nodes.SliceString(string=None, position=None, length=None)
 
 | Class or method name | Definition |
 |----------------------|------------|
-| Global functions |
-| [slice_string](A.md#slice_string) | `def slice_string(string=None, position=None, length=None):` |
 | **[String](String.md)** |
 | [slice](String.md#slice) | `def slice(self, position=None, length=None):` |
+| **[functions](functions.md)** |
+| [slice_string](functions.md#slice_string) | `def slice_string(string=None, position=None, length=None):` |
 
 <sub>Go to [top](#node-Slice-String) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
