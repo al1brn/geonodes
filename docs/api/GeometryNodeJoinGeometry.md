@@ -31,7 +31,7 @@ node = nodes.JoinGeometry(*geometry)
 |----------------------|------------|
 | **[Geometry](Geometry.md)** |
 | [join](Geometry.md#join) | `def join(*geometry):` |
-| **[functions](functions.md)** |
+| Global functions |
 | [join_geometry](functions.md#join_geometry) | `def join_geometry(*geometry):` |
 
 <sub>Go to [top](#node-Join-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>

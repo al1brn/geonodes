@@ -37,7 +37,7 @@ node = nodes.RotateEuler(rotation=None, rotate_by=None, axis=None, angle=None, s
 
 | Class or method name | Definition |
 |----------------------|------------|
-| **[functions](functions.md)** |
+| Global functions |
 | [rotate_euler](functions.md#rotate_euler) | `def rotate_euler(rotation=None, rotate_by=None, space='OBJECT'):` |
 | [rotate_axis_angle](functions.md#rotate_axis_angle) | `def rotate_axis_angle(rotation=None, axis=None, angle=None, space='OBJECT'):` |
 

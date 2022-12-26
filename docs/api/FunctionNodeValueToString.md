@@ -34,7 +34,7 @@ node = nodes.ValueToString(value=None, decimals=None)
 | [to_string](Float.md#to_string) | `def to_string(self, decimals=None):` |
 | **[Integer](Integer.md)** |
 | [to_string](Integer.md#to_string) | `def to_string(self):` |
-| **[functions](functions.md)** |
+| Global functions |
 | [value_to_string](functions.md#value_to_string) | `def value_to_string(value=None, decimals=None):` |
 
 <sub>Go to [top](#node-Value-to-String) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>

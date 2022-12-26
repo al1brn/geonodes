@@ -100,7 +100,7 @@ node = nodes.Compare(a=None, b=None, c=None, angle=None, epsilon=None, data_type
 | [direction_greater_equal](Vector.md#direction_greater_equal) | `def direction_greater_equal(self, b=None, angle=None):` |
 | [direction_equal](Vector.md#direction_equal) | `def direction_equal(self, b=None, angle=None, epsilon=None):` |
 | [direction_not_equal](Vector.md#direction_not_equal) | `def direction_not_equal(self, b=None, angle=None, epsilon=None):` |
-| **[functions](functions.md)** |
+| Global functions |
 | [compare](functions.md#compare) | `def compare(a=None, b=None, c=None, angle=None, epsilon=None, data_type='FLOAT', mode='ELEMENT', operation='GREATER_THAN'):` |
 
 <sub>Go to [top](#node-Compare) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>

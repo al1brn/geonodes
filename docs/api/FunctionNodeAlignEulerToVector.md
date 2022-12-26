@@ -39,7 +39,7 @@ node = nodes.AlignEulerToVector(rotation=None, factor=None, vector=None, axis='X
 | **[Vector](Vector.md)** |
 | [align_euler_to_vector](Vector.md#align_euler_to_vector) | `def align_euler_to_vector(self, factor=None, vector=None, axis='X', pivot_axis='AUTO'):` |
 | [AlignToVector](Vector.md#AlignToVector) | `@classmethod`<br> `def AlignToVector(cls, factor=None, vector=None, axis='X', pivot_axis='AUTO'):` |
-| **[functions](functions.md)** |
+| Global functions |
 | [align_euler_to_vector](functions.md#align_euler_to_vector) | `def align_euler_to_vector(rotation=None, factor=None, vector=None, axis='X', pivot_axis='AUTO'):` |
 
 <sub>Go to [top](#node-Align-Euler-to-Vector) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>

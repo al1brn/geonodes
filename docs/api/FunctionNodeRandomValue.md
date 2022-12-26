@@ -60,7 +60,7 @@ node = nodes.RandomValue(min=None, max=None, probability=None, ID=None, seed=Non
 | [Random](Integer.md#Random) | `@classmethod`<br> `def Random(cls, min=None, max=None, ID=None, seed=None):` |
 | **[Vector](Vector.md)** |
 | [Random](Vector.md#Random) | `@classmethod`<br> `def Random(cls, min=None, max=None, ID=None, seed=None):` |
-| **[functions](functions.md)** |
+| Global functions |
 | [random_float](functions.md#random_float) | `def random_float(min=None, max=None, ID=None, seed=None):` |
 | [random_integer](functions.md#random_integer) | `def random_integer(min=None, max=None, ID=None, seed=None):` |
 | [random_vector](functions.md#random_vector) | `def random_vector(min=None, max=None, ID=None, seed=None):` |

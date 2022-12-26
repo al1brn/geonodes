@@ -64,7 +64,7 @@ node = nodes.Switch(switch=None, false=None, true=None, input_type='GEOMETRY')
 | [switch](Texture.md#switch) | `def switch(self, switch=None, true=None):` |
 | **[Vector](Vector.md)** |
 | [switch](Vector.md#switch) | `def switch(self, switch=None, true=None):` |
-| **[functions](functions.md)** |
+| Global functions |
 | [switch](functions.md#switch) | `def switch(switch=None, false=None, true=None, input_type='GEOMETRY'):` |
 | [switch_float](functions.md#switch_float) | `def switch_float(switch=None, false=None, true=None):` |
 | [switch_integer](functions.md#switch_integer) | `def switch_integer(switch=None, false=None, true=None):` |

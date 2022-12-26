@@ -140,7 +140,7 @@ node = nodes.Math(value0=None, value1=None, value2=None, operation='ADD', use_cl
 | [tanh](Integer.md#tanh) | `def tanh(self, value=None, clamp=False):` |
 | [to_radians](Integer.md#to_radians) | `def to_radians(self, clamp=False):` |
 | [to_degrees](Integer.md#to_degrees) | `def to_degrees(self, clamp=False):` |
-| **[functions](functions.md)** |
+| Global functions |
 | [math](functions.md#math) | `def math(value0=None, value1=None, value2=None, operation='ADD', clamp=False):` |
 | [multiply_add](functions.md#multiply_add) | `def multiply_add(value=None, multiplier=None, addend=None, clamp=False):` |
 | [mul_add](functions.md#mul_add) | `def mul_add(value=None, multiplier=None, addend=None, clamp=False):` |

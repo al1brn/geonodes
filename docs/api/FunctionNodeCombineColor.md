@@ -40,7 +40,7 @@ node = nodes.CombineColor(red=None, green=None, blue=None, alpha=None, mode='RGB
 | [RGB](Color.md#RGB) | `@classmethod`<br> `def RGB(cls, red=None, green=None, blue=None, alpha=None):` |
 | [HSV](Color.md#HSV) | `@classmethod`<br> `def HSV(cls, hue=None, saturation=None, value=None, alpha=None):` |
 | [HSL](Color.md#HSL) | `@classmethod`<br> `def HSL(cls, hue=None, saturation=None, lightness=None, alpha=None):` |
-| **[functions](functions.md)** |
+| Global functions |
 | [combine_rgb](functions.md#combine_rgb) | `def combine_rgb(red=None, green=None, blue=None, alpha=None):` |
 | [combine_hsv](functions.md#combine_hsv) | `def combine_hsv(hue=None, saturation=None, value=None, alpha=None):` |
 | [combine_hsl](functions.md#combine_hsl) | `def combine_hsl(hue=None, saturation=None, lightness=None, alpha=None):` |

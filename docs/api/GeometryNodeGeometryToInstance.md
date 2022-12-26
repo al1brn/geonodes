@@ -31,7 +31,7 @@ node = nodes.GeometryToInstance(*geometry)
 |----------------------|------------|
 | **[Geometry](Geometry.md)** |
 | [to_instance](Geometry.md#to_instance) | `def to_instance(*geometry):` |
-| **[functions](functions.md)** |
+| Global functions |
 | [geometry_to_instance](functions.md#geometry_to_instance) | `def geometry_to_instance(*geometry):` |
 
 <sub>Go to [top](#node-Geometry-to-Instance) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>

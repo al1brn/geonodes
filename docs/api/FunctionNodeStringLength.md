@@ -31,7 +31,7 @@ node = nodes.StringLength(string=None)
 |----------------------|------------|
 | **[String](String.md)** |
 | [length](String.md#length) | `@property`<br> `def length(self):` |
-| **[functions](functions.md)** |
+| Global functions |
 | [string_length](functions.md#string_length) | `def string_length(string=None):` |
 
 <sub>Go to [top](#node-String-Length) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>

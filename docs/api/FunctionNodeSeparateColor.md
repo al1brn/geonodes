@@ -38,7 +38,7 @@ node = nodes.SeparateColor(color=None, mode='RGB')
 |----------------------|------------|
 | **[Color](Color.md)** |
 | [separate_color](Color.md#separate_color) | `def separate_color(self, mode='RGB'):` |
-| **[functions](functions.md)** |
+| Global functions |
 | [separate_rgb](functions.md#separate_rgb) | `def separate_rgb(color=None):` |
 | [separate_hsv](functions.md#separate_hsv) | `def separate_hsv(color=None):` |
 | [separate_hsl](functions.md#separate_hsl) | `def separate_hsl(color=None):` |

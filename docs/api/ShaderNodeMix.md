@@ -69,7 +69,7 @@ node = nodes.Mix(factor=None, a=None, b=None, blend_type='MIX', clamp_factor=Tru
 | [mix](Vector.md#mix) | `def mix(self, factor=None, vector=None, clamp_factor=True, factor_mode='UNIFORM'):` |
 | [mix_uniform](Vector.md#mix_uniform) | `def mix_uniform(self, vector=None, clamp_factor=True):` |
 | [mix_non_uniform](Vector.md#mix_non_uniform) | `def mix_non_uniform(self, factor=None, vector=None, clamp_factor=True):` |
-| **[functions](functions.md)** |
+| Global functions |
 | [float_mix](functions.md#float_mix) | `def float_mix(factor=None, a=None, b=None, clamp_factor=True):` |
 | [vector_mix](functions.md#vector_mix) | `def vector_mix(factor=None, a=None, b=None, clamp_factor=True, factor_mode='UNIFORM'):` |
 | [color_mix](functions.md#color_mix) | `def color_mix(factor=None, a=None, b=None, blend_type='MIX', clamp_factor=True, clamp_result=False):` |

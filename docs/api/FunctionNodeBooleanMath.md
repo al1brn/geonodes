@@ -44,7 +44,7 @@ node = nodes.BooleanMath(boolean0=None, boolean1=None, operation='AND')
 | [xor](Boolean.md#xor) | `def xor(self, boolean1=None):` |
 | [imply](Boolean.md#imply) | `def imply(self, boolean1=None):` |
 | [nimply](Boolean.md#nimply) | `def nimply(self, boolean1=None):` |
-| **[functions](functions.md)** |
+| Global functions |
 | [b_and](functions.md#b_and) | `def b_and(boolean0=None, boolean1=None):` |
 | [b_or](functions.md#b_or) | `def b_or(boolean0=None, boolean1=None):` |
 | [b_not](functions.md#b_not) | `def b_not(boolean0=None):` |

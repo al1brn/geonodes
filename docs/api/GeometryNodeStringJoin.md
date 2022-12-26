@@ -33,7 +33,7 @@ node = nodes.JoinStrings(*strings, delimiter=None)
 | **[String](String.md)** |
 | [join](String.md#join) | `def join(self, *strings):` |
 | [string_join](String.md#string_join) | `def string_join(*strings, delimiter=None):` |
-| **[functions](functions.md)** |
+| Global functions |
 | [join_strings](functions.md#join_strings) | `def join_strings(*strings, delimiter=None):` |
 
 <sub>Go to [top](#node-Join-Strings) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>

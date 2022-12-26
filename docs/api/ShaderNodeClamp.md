@@ -39,7 +39,7 @@ node = nodes.Clamp(value=None, min=None, max=None, clamp_type='MINMAX')
 | [clamp](Float.md#clamp) | `def clamp(self, min=None, max=None, clamp_type='MINMAX'):` |
 | [clamp_min_max](Float.md#clamp_min_max) | `def clamp_min_max(self, min=None, max=None):` |
 | [clamp_range](Float.md#clamp_range) | `def clamp_range(self, min=None, max=None):` |
-| **[functions](functions.md)** |
+| Global functions |
 | [clamp](functions.md#clamp) | `def clamp(value=None, min=None, max=None, clamp_type='MINMAX'):` |
 | [clamp_min_max](functions.md#clamp_min_max) | `def clamp_min_max(value=None, min=None, max=None):` |
 | [clamp_range](functions.md#clamp_range) | `def clamp_range(value=None, min=None, max=None):` |
