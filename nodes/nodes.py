@@ -22,7 +22,7 @@ class AlignEulerToVector(Node):
     .. _AlignEulerToVector:
 
     Node implementation:
-        functions:
+        global functions:
             align_euler_to_vector 
         Vector:
             align_euler_to_vector AlignToVector 
@@ -114,7 +114,7 @@ class BooleanMath(Node):
     .. _BooleanMath:
 
     Node implementation:
-        functions:
+        global functions:
             b_and b_or b_not nand nor xnor xor imply nimply 
         Boolean:
             b_and b_or b_not nand nor xnor xor imply nimply 
@@ -190,7 +190,7 @@ class CombineColor(Node):
     .. _CombineColor:
 
     Node implementation:
-        functions:
+        global functions:
             combine_rgb combine_hsv combine_hsl 
         Color:
             RGB HSV HSL 
@@ -286,7 +286,7 @@ class Compare(Node):
     .. _Compare:
 
     Node implementation:
-        functions:
+        global functions:
             compare 
         Float:
             compare less_than less_equal greater_than greater_equal equal not_equal 
@@ -777,7 +777,7 @@ class RandomValue(Node):
     .. _RandomValue:
 
     Node implementation:
-        functions:
+        global functions:
             random_float random_integer random_vector random_boolean 
         Geometry:
             random_float random_integer random_vector random_boolean 
@@ -898,7 +898,7 @@ class ReplaceString(Node):
     .. _ReplaceString:
 
     Node implementation:
-        functions:
+        global functions:
             replace_string 
         String:
             replace 
@@ -967,7 +967,7 @@ class RotateEuler(Node):
     .. _RotateEuler:
 
     Node implementation:
-        functions:
+        global functions:
             rotate_euler rotate_axis_angle 
 
     Args:
@@ -1067,7 +1067,7 @@ class SeparateColor(Node):
     .. _SeparateColor:
 
     Node implementation:
-        functions:
+        global functions:
             separate_rgb separate_hsv separate_hsl 
         Color:
             separate_color 
@@ -1148,7 +1148,7 @@ class SliceString(Node):
     .. _SliceString:
 
     Node implementation:
-        functions:
+        global functions:
             slice_string 
         String:
             slice 
@@ -1217,7 +1217,7 @@ class StringLength(Node):
     .. _StringLength:
 
     Node implementation:
-        functions:
+        global functions:
             string_length 
         String:
             length 
@@ -1270,7 +1270,7 @@ class ValueToString(Node):
     .. _ValueToString:
 
     Node implementation:
-        functions:
+        global functions:
             value_to_string 
         Float:
             to_string 
@@ -4930,7 +4930,7 @@ class GeometryToInstance(Node):
     .. _GeometryToInstance:
 
     Node implementation:
-        functions:
+        global functions:
             geometry_to_instance 
         Geometry:
             to_instance 
@@ -6497,7 +6497,7 @@ class JoinGeometry(Node):
     .. _JoinGeometry:
 
     Node implementation:
-        functions:
+        global functions:
             join_geometry 
         Geometry:
             join 
@@ -11006,7 +11006,7 @@ class JoinStrings(Node):
     .. _JoinStrings:
 
     Node implementation:
-        functions:
+        global functions:
             join_strings 
         String:
             join string_join 
@@ -11069,7 +11069,7 @@ class StringToCurves(Node):
     .. _StringToCurves:
 
     Node implementation:
-        functions:
+        global functions:
             string_to_curves 
         String:
             to_curves 
@@ -11454,7 +11454,7 @@ class Switch(Node):
     .. _Switch:
 
     Node implementation:
-        functions:
+        global functions:
             switch switch_float switch_integer switch_boolean switch_vector switch_string switch_color switch_object switch_image switch_geometry 
             switch_collection switch_texture switch_material 
         Float:
@@ -12443,7 +12443,7 @@ class Clamp(Node):
     .. _Clamp:
 
     Node implementation:
-        functions:
+        global functions:
             clamp clamp_min_max clamp_range 
         Float:
             clamp clamp_min_max clamp_range 
@@ -12809,7 +12809,7 @@ class Math(Node):
     .. _Math:
 
     Node implementation:
-        functions:
+        global functions:
             math multiply_add mul_add power logarithm log sqrt inverse_sqrt absolute abs 
             exponent exp minimum min maximum max math_less_than math_greater_than sign math_compare 
             smooth_minimum smooth_maximum math_round math_floor math_ceil math_truncate math_trun fraction modulo wrap 
@@ -12914,7 +12914,7 @@ class Mix(Node):
     .. _Mix:
 
     Node implementation:
-        functions:
+        global functions:
             float_mix vector_mix color_mix color_darken color_multiply color_burn color_lighten color_screen color_dodge color_add 
             color_overlay color_soft_light color_linear_light color_difference color_subtract color_divide color_hue color_saturation color_color color_value 
         Color:
@@ -13051,7 +13051,7 @@ class RgbCurves(Node):
     .. _RgbCurves:
 
     Node implementation:
-        functions:
+        global functions:
             rgb_curves 
         Color:
             rgb_curves 
@@ -14255,7 +14255,7 @@ class ColorRamp(Node):
     .. _ColorRamp:
 
     Node implementation:
-        functions:
+        global functions:
             color_ramp 
         Float:
             color_ramp 
