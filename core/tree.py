@@ -1021,6 +1021,13 @@ class Tree:
                     # Get the input geometry socket of the fed node
                     
                     in_geo_socket = nd.input_geometry_bsocket
+                    
+                    # If the name starts by "target", it is not actually a geometry socket
+                    # (nodes raycast and proximity for instance)
+                    
+                    if in_geo_socket is not None and sin_geo_socket.name[:6].lower() == 'target':
+                        in_geo_socket = None
+                        
 
                     logging.debug("CHECKING", attr_node, nd, '-->', in_geo_socket)
                     

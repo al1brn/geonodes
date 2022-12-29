@@ -394,12 +394,12 @@ class Socket:
                 return class_dt[value]
             
         else:
-            if hasattr(value, 'bl_idname'):
-                return Socket.SOCKET_IDS[value.bl_idname][2]
-            
             cname = type(value).__name__
             if cname in class_dt:
                 return class_dt[cname]
+            
+            if hasattr(value, 'bl_idname'):
+                return Socket.SOCKET_IDS[value.bl_idname][2]
             
             if isinstance(value, bool):
                 return 'BOOLEAN'

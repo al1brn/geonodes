@@ -378,6 +378,22 @@ class Node:
         else:
             self.bnode.use_custom_color = True
             self.bnode.color = colors.color(value)
+            
+    # ---------------------------------------------------------------------------
+    # Check that an attribute is in the authorized list
+    
+    def check_enum_value(self, value, attr_name, attr_list, attr_default=None):
+        if value in attr_list:
+            return value
+        
+        msg = f"The attribute '{attr_name}' of node '{self.bnode.name}' accepts values in {attr_list}."
+        
+        if attr_default is None:
+            raise AttributeError(f"Bad value '{value}'.\n{msg}")
+        
+        print(f"WARNING: {msg}. Value '{value}' changed to default '{attr_default}'.")
+        return attr_default
+            
 
     # ---------------------------------------------------------------------------
     # Switch input sockets

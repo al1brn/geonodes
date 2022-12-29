@@ -2920,7 +2920,7 @@ class ControlPoint(Domain):
 
         #### Args:
         - handle_type (str): 'AUTO' in [FREE, AUTO, VECTOR, ALIGN]
-        - mode (set): {'LEFT', 'RIGHT'}
+        - mode (set): {'RIGHT', 'LEFT'}
 
         #### Returns:
         - node with sockets ['selection']
@@ -2940,7 +2940,7 @@ class ControlPoint(Domain):
 
         #### Args:
         - handle_type (str): 'AUTO' in [FREE, AUTO, VECTOR, ALIGN]
-        - mode (set): {'LEFT', 'RIGHT'}
+        - mode (set): {'RIGHT', 'LEFT'}
 
         #### Returns:
         - node with sockets ['selection']
@@ -2958,7 +2958,7 @@ class ControlPoint(Domain):
 
         #### Args:
         - handle_type (str): 'AUTO' in [FREE, AUTO, VECTOR, ALIGN]
-        - mode (set): {'LEFT', 'RIGHT'}
+        - mode (set): {'RIGHT', 'LEFT'}
 
         #### Returns:
         - node with sockets ['selection']
@@ -2976,7 +2976,7 @@ class ControlPoint(Domain):
 
         #### Args:
         - handle_type (str): 'AUTO' in [FREE, AUTO, VECTOR, ALIGN]
-        - mode (set): {'LEFT', 'RIGHT'}
+        - mode (set): {'RIGHT', 'LEFT'}
 
         #### Returns:
         - node with sockets ['selection']
@@ -2994,7 +2994,7 @@ class ControlPoint(Domain):
 
         #### Args:
         - handle_type (str): 'AUTO' in [FREE, AUTO, VECTOR, ALIGN]
-        - mode (set): {'LEFT', 'RIGHT'}
+        - mode (set): {'RIGHT', 'LEFT'}
 
         #### Returns:
         - node with sockets ['selection']
@@ -3005,14 +3005,14 @@ class ControlPoint(Domain):
         return self.handle_type_selection(left=left, right=right, handle_type='ALIGN')
 
 
-    def handle_type_selection_node(self, handle_type='AUTO', mode={'LEFT', 'RIGHT'}):
+    def handle_type_selection_node(self, handle_type='AUTO', mode={'RIGHT', 'LEFT'}):
         """
 
         > Node: [Handle Type Selection](GeometryNodeCurveHandleTypeSelection.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/handle_type_selection.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveHandleTypeSelection.html)
 
         #### Args:
         - handle_type (str): 'AUTO' in [FREE, AUTO, VECTOR, ALIGN]
-        - mode (set): {'LEFT', 'RIGHT'}
+        - mode (set): {'RIGHT', 'LEFT'}
 
         #### Returns:
         - socket `selection`
@@ -3334,7 +3334,7 @@ class ControlPoint(Domain):
         - curve: Curve
         - selection: Boolean
         - handle_type (str): 'AUTO' in [FREE, AUTO, VECTOR, ALIGN]
-        - mode (set): {'LEFT', 'RIGHT'}
+        - mode (set): {'RIGHT', 'LEFT'}
 
         #### Returns:
         - node with sockets ['curve']
@@ -3347,14 +3347,14 @@ class ControlPoint(Domain):
         return self.set_handle_type_node(handle_type=handle_type, mode=mode)
 
 
-    def set_handle_type_node(self, handle_type='AUTO', mode={'LEFT', 'RIGHT'}):
+    def set_handle_type_node(self, handle_type='AUTO', mode={'RIGHT', 'LEFT'}):
         """
 
         > Node: [Set Handle Type](GeometryNodeCurveSetHandles.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/set_handle_type.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveSetHandles.html)
 
         #### Args:
         - handle_type (str): 'AUTO' in [FREE, AUTO, VECTOR, ALIGN]
-        - mode (set): {'LEFT', 'RIGHT'}
+        - mode (set): {'RIGHT', 'LEFT'}
 
         #### Returns:
         - self

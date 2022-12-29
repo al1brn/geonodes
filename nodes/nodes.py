@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 """
-Created on 2022-12-26
+Created on 2022-12-29
 
 @author: Generated from generator module
 
@@ -50,8 +50,8 @@ class AlignEulerToVector(Node):
 
         # Node parameters
 
-        self.bnode.axis            = axis
-        self.bnode.pivot_axis      = pivot_axis
+        self.bnode.axis            = self.check_enum_value(axis, 'axis', ('X', 'Y', 'Z'), 'X')
+        self.bnode.pivot_axis      = self.check_enum_value(pivot_axis, 'pivot_axis', ('AUTO', 'X', 'Y', 'Z'), 'AUTO')
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -140,7 +140,7 @@ class BooleanMath(Node):
 
         # Node parameters
 
-        self.bnode.operation       = operation
+        self.bnode.operation       = self.check_enum_value(operation, 'operation', ('AND', 'OR', 'NOT', 'NAND', 'NOR', 'XNOR', 'XOR', 'IMPLY', 'NIMPLY'), 'AND')
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -218,7 +218,7 @@ class CombineColor(Node):
 
         # Node parameters
 
-        self.bnode.mode            = mode
+        self.bnode.mode            = self.check_enum_value(mode, 'mode', ('RGB', 'HSV', 'HSL'), 'RGB')
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -333,9 +333,9 @@ class Compare(Node):
 
         # Node parameters to configure the sockets enablement
 
-        self.bnode.data_type       = self.value_data_type(b) if data_type is None else data_type
-        self.bnode.mode            = mode
-        self.bnode.operation       = operation
+        self.bnode.data_type       = self.check_enum_value(data_type, 'data_type', ('FLOAT', 'INT', 'VECTOR', 'STRING', 'RGBA'), 'FLOAT')
+        self.bnode.mode            = self.check_enum_value(mode, 'mode', ('ELEMENT', 'LENGTH', 'AVERAGE', 'DOT_PRODUCT', 'DIRECTION'), 'ELEMENT')
+        self.bnode.operation       = self.check_enum_value(operation, 'operation', ('LESS_THAN', 'LESS_EQUAL', 'GREATER_THAN', 'GREATER_EQUAL', 'EQUAL', 'NOT_EQUAL'), 'GREATER_THAN')
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -451,7 +451,7 @@ class FloatToInteger(Node):
 
         # Node parameters
 
-        self.bnode.rounding_mode   = rounding_mode
+        self.bnode.rounding_mode   = self.check_enum_value(rounding_mode, 'rounding_mode', ('ROUND', 'FLOOR', 'CEILING', 'TRUNCATE'), 'ROUND')
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -821,7 +821,7 @@ class RandomValue(Node):
 
         # Node parameters to configure the sockets enablement
 
-        self.bnode.data_type       = self.value_data_type(max) if data_type is None else data_type
+        self.bnode.data_type       = self.check_enum_value(data_type, 'data_type', ('FLOAT', 'INT', 'FLOAT_VECTOR', 'BOOLEAN'), 'FLOAT')
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -994,8 +994,8 @@ class RotateEuler(Node):
 
         # Node parameters
 
-        self.bnode.space           = space
-        self.bnode.type            = type
+        self.bnode.space           = self.check_enum_value(space, 'space', ('OBJECT', 'LOCAL'), 'OBJECT')
+        self.bnode.type            = self.check_enum_value(type, 'type', ('AXIS_ANGLE', 'EULER'), 'EULER')
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -1095,7 +1095,7 @@ class SeparateColor(Node):
 
         # Node parameters
 
-        self.bnode.mode            = mode
+        self.bnode.mode            = self.check_enum_value(mode, 'mode', ('RGB', 'HSV', 'HSL'), 'RGB')
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -1367,8 +1367,8 @@ class AccumulateField(Node):
 
         # Node parameters to configure the sockets enablement
 
-        self.bnode.data_type       = self.value_data_type(value) if data_type is None else data_type
-        self.bnode.domain          = domain
+        self.bnode.data_type       = self.check_enum_value(data_type, 'data_type', ('FLOAT', 'INT', 'FLOAT_VECTOR'), 'FLOAT')
+        self.bnode.domain          = self.check_enum_value(domain, 'domain', ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE'), 'POINT')
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -1486,7 +1486,7 @@ class DomainSize(Node):
 
         # Node parameters
 
-        self.bnode.component       = component
+        self.bnode.component       = self.check_enum_value(component, 'component', ('MESH', 'POINTCLOUD', 'CURVE', 'INSTANCES'), 'MESH')
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -1587,8 +1587,8 @@ class AttributeStatistic(Node):
 
         # Node parameters to configure the sockets enablement
 
-        self.bnode.data_type       = self.value_data_type(attribute) if data_type is None else data_type
-        self.bnode.domain          = domain
+        self.bnode.data_type       = self.check_enum_value(data_type, 'data_type', ('FLOAT', 'FLOAT_VECTOR'), 'FLOAT')
+        self.bnode.domain          = self.check_enum_value(domain, 'domain', ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE'), 'POINT')
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -1777,8 +1777,8 @@ class CaptureAttribute(Node):
 
         # Node parameters to configure the sockets enablement
 
-        self.bnode.data_type       = self.value_data_type(value) if data_type is None else data_type
-        self.bnode.domain          = domain
+        self.bnode.data_type       = self.check_enum_value(data_type, 'data_type', ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN'), 'FLOAT')
+        self.bnode.domain          = self.check_enum_value(domain, 'domain', ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE'), 'POINT')
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -1861,7 +1861,7 @@ class CollectionInfo(Node):
 
         # Node parameters
 
-        self.bnode.transform_space = transform_space
+        self.bnode.transform_space = self.check_enum_value(transform_space, 'transform_space', ('ORIGINAL', 'RELATIVE'), 'ORIGINAL')
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -2162,7 +2162,7 @@ class Arc(Node):
 
         # Node parameters
 
-        self.bnode.mode            = mode
+        self.bnode.mode            = self.check_enum_value(mode, 'mode', ('POINTS', 'RADIUS'), 'RADIUS')
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -2358,7 +2358,7 @@ class HandleTypeSelection(Node):
 
     Args:
         handle_type (str): Node parameter, default = 'AUTO' in ('FREE', 'AUTO', 'VECTOR', 'ALIGN')
-        mode (set): Node parameter, default = {'LEFT', 'RIGHT'}
+        mode (set): Node parameter, default = {'RIGHT', 'LEFT'}
         node_color (color): Node color
         node_label (str): Node label
 
@@ -2370,13 +2370,13 @@ class HandleTypeSelection(Node):
 
     """
 
-    def __init__(self, handle_type='AUTO', mode={'LEFT', 'RIGHT'}, label=None, node_color=None):
+    def __init__(self, handle_type='AUTO', mode={'RIGHT', 'LEFT'}, label=None, node_color=None):
 
         super().__init__('GeometryNodeCurveHandleTypeSelection', node_name='Handle Type Selection', label=label, node_color=node_color)
 
         # Node parameters
 
-        self.bnode.handle_type     = handle_type
+        self.bnode.handle_type     = self.check_enum_value(handle_type, 'handle_type', ('FREE', 'AUTO', 'VECTOR', 'ALIGN'), 'AUTO')
         self.bnode.mode            = mode
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
@@ -2550,7 +2550,7 @@ class BezierSegment(Node):
 
         # Node parameters
 
-        self.bnode.mode            = mode
+        self.bnode.mode            = self.check_enum_value(mode, 'mode', ('POSITION', 'OFFSET'), 'POSITION')
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -2655,7 +2655,7 @@ class CurveCircle(Node):
 
         # Node parameters
 
-        self.bnode.mode            = mode
+        self.bnode.mode            = self.check_enum_value(mode, 'mode', ('POINTS', 'RADIUS'), 'RADIUS')
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -2762,7 +2762,7 @@ class CurveLine(Node):
 
         # Node parameters
 
-        self.bnode.mode            = mode
+        self.bnode.mode            = self.check_enum_value(mode, 'mode', ('POINTS', 'DIRECTION'), 'POINTS')
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -2863,7 +2863,7 @@ class Quadrilateral(Node):
 
         # Node parameters
 
-        self.bnode.mode            = mode
+        self.bnode.mode            = self.check_enum_value(mode, 'mode', ('RECTANGLE', 'PARALLELOGRAM', 'TRAPEZOID', 'KITE', 'POINTS'), 'RECTANGLE')
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -3082,7 +3082,7 @@ class SetHandleType(Node):
         curve (DataSocket): Curve
         selection (DataSocket): Boolean
         handle_type (str): Node parameter, default = 'AUTO' in ('FREE', 'AUTO', 'VECTOR', 'ALIGN')
-        mode (set): Node parameter, default = {'LEFT', 'RIGHT'}
+        mode (set): Node parameter, default = {'RIGHT', 'LEFT'}
         node_color (color): Node color
         node_label (str): Node label
 
@@ -3094,13 +3094,13 @@ class SetHandleType(Node):
 
     """
 
-    def __init__(self, curve=None, selection=None, handle_type='AUTO', mode={'LEFT', 'RIGHT'}, label=None, node_color=None):
+    def __init__(self, curve=None, selection=None, handle_type='AUTO', mode={'RIGHT', 'LEFT'}, label=None, node_color=None):
 
         super().__init__('GeometryNodeCurveSetHandles', node_name='Set Handle Type', label=label, node_color=node_color)
 
         # Node parameters
 
-        self.bnode.handle_type     = handle_type
+        self.bnode.handle_type     = self.check_enum_value(handle_type, 'handle_type', ('FREE', 'AUTO', 'VECTOR', 'ALIGN'), 'AUTO')
         self.bnode.mode            = mode
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
@@ -3280,7 +3280,7 @@ class SetSplineType(Node):
 
         # Node parameters
 
-        self.bnode.spline_type     = spline_type
+        self.bnode.spline_type     = self.check_enum_value(spline_type, 'spline_type', ('CATMULL_ROM', 'POLY', 'BEZIER', 'NURBS'), 'POLY')
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -3511,7 +3511,7 @@ class CurveToPoints(Node):
 
         # Node parameters
 
-        self.bnode.mode            = mode
+        self.bnode.mode            = self.check_enum_value(mode, 'mode', ('EVALUATED', 'COUNT', 'LENGTH'), 'COUNT')
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -3664,8 +3664,8 @@ class DeleteGeometry(Node):
 
         # Node parameters
 
-        self.bnode.domain          = domain
-        self.bnode.mode            = mode
+        self.bnode.domain          = self.check_enum_value(domain, 'domain', ('POINT', 'EDGE', 'FACE', 'CURVE', 'INSTANCE'), 'POINT')
+        self.bnode.mode            = self.check_enum_value(mode, 'mode', ('ALL', 'EDGE_FACE', 'ONLY_FACE'), 'ALL')
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -3746,7 +3746,7 @@ class DistributePointsInVolume(Node):
 
         # Node parameters
 
-        self.bnode.mode            = mode
+        self.bnode.mode            = self.check_enum_value(mode, 'mode', ('DENSITY_RANDOM', 'DENSITY_GRID'), 'DENSITY_RANDOM')
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -3856,7 +3856,7 @@ class DistributePointsOnFaces(Node):
 
         # Node parameters
 
-        self.bnode.distribute_method = distribute_method
+        self.bnode.distribute_method = self.check_enum_value(distribute_method, 'distribute_method', ('RANDOM', 'POISSON'), 'RANDOM')
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -4050,7 +4050,7 @@ class DuplicateElements(Node):
 
         # Node parameters
 
-        self.bnode.domain          = domain
+        self.bnode.domain          = self.check_enum_value(domain, 'domain', ('POINT', 'EDGE', 'FACE', 'SPLINE', 'INSTANCE'), 'POINT')
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -4414,7 +4414,7 @@ class ExtrudeMesh(Node):
 
         # Node parameters
 
-        self.bnode.mode            = mode
+        self.bnode.mode            = self.check_enum_value(mode, 'mode', ('VERTICES', 'EDGES', 'FACES'), 'FACES')
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -4585,8 +4585,8 @@ class FieldAtIndex(Node):
 
         # Node parameters to configure the sockets enablement
 
-        self.bnode.data_type       = self.value_data_type(value) if data_type is None else data_type
-        self.bnode.domain          = domain
+        self.bnode.data_type       = self.check_enum_value(data_type, 'data_type', ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN'), 'FLOAT')
+        self.bnode.domain          = self.check_enum_value(domain, 'domain', ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE'), 'POINT')
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -4671,8 +4671,8 @@ class InterpolateDomain(Node):
 
         # Node parameters to configure the sockets enablement
 
-        self.bnode.data_type       = self.value_data_type(value) if data_type is None else data_type
-        self.bnode.domain          = domain
+        self.bnode.data_type       = self.check_enum_value(data_type, 'data_type', ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN'), 'FLOAT')
+        self.bnode.domain          = self.check_enum_value(domain, 'domain', ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE'), 'POINT')
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -4740,7 +4740,7 @@ class FillCurve(Node):
 
         # Node parameters
 
-        self.bnode.mode            = mode
+        self.bnode.mode            = self.check_enum_value(mode, 'mode', ('TRIANGLES', 'NGONS'), 'TRIANGLES')
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -4807,7 +4807,7 @@ class FilletCurve(Node):
 
         # Node parameters
 
-        self.bnode.mode            = mode
+        self.bnode.mode            = self.check_enum_value(mode, 'mode', ('BEZIER', 'POLY'), 'BEZIER')
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -5039,8 +5039,8 @@ class ImageTexture(Node):
 
         # Node parameters
 
-        self.bnode.extension       = extension
-        self.bnode.interpolation   = interpolation
+        self.bnode.extension       = self.check_enum_value(extension, 'extension', ('REPEAT', 'EXTEND', 'CLIP'), 'REPEAT')
+        self.bnode.interpolation   = self.check_enum_value(interpolation, 'interpolation', ('Linear', 'Closest', 'Cubic'), 'Linear')
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -5829,7 +5829,7 @@ class NamedAttribute(Node):
 
         # Node parameters to configure the sockets enablement
 
-        self.bnode.data_type       = data_type
+        self.bnode.data_type       = self.check_enum_value(data_type, 'data_type', ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN'), 'FLOAT')
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -6626,7 +6626,7 @@ class MergeByDistance(Node):
 
         # Node parameters
 
-        self.bnode.mode            = mode
+        self.bnode.mode            = self.check_enum_value(mode, 'mode', ('ALL', 'CONNECTED'), 'ALL')
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -6708,7 +6708,7 @@ class MeshBoolean(Node):
 
         # Node parameters
 
-        self.bnode.operation       = operation
+        self.bnode.operation       = self.check_enum_value(operation, 'operation', ('INTERSECT', 'UNION', 'DIFFERENCE'), 'DIFFERENCE')
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -6804,7 +6804,7 @@ class MeshCircle(Node):
 
         # Node parameters
 
-        self.bnode.fill_type       = fill_type
+        self.bnode.fill_type       = self.check_enum_value(fill_type, 'fill_type', ('NONE', 'NGON', 'TRIANGLE_FAN'), 'NONE')
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -6885,7 +6885,7 @@ class Cone(Node):
 
         # Node parameters
 
-        self.bnode.fill_type       = fill_type
+        self.bnode.fill_type       = self.check_enum_value(fill_type, 'fill_type', ('NONE', 'NGON', 'TRIANGLE_FAN'), 'NGON')
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -7094,7 +7094,7 @@ class Cylinder(Node):
 
         # Node parameters
 
-        self.bnode.fill_type       = fill_type
+        self.bnode.fill_type       = self.check_enum_value(fill_type, 'fill_type', ('NONE', 'NGON', 'TRIANGLE_FAN'), 'NGON')
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -7405,8 +7405,8 @@ class MeshLine(Node):
 
         # Node parameters
 
-        self.bnode.count_mode      = count_mode
-        self.bnode.mode            = mode
+        self.bnode.count_mode      = self.check_enum_value(count_mode, 'count_mode', ('TOTAL', 'RESOLUTION'), 'TOTAL')
+        self.bnode.mode            = self.check_enum_value(mode, 'mode', ('OFFSET', 'END_POINTS'), 'OFFSET')
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -7573,7 +7573,7 @@ class MeshToPoints(Node):
 
         # Node parameters
 
-        self.bnode.mode            = mode
+        self.bnode.mode            = self.check_enum_value(mode, 'mode', ('VERTICES', 'EDGES', 'FACES', 'CORNERS'), 'VERTICES')
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -7672,7 +7672,7 @@ class MeshToVolume(Node):
 
         # Node parameters
 
-        self.bnode.resolution_mode = resolution_mode
+        self.bnode.resolution_mode = self.check_enum_value(resolution_mode, 'resolution_mode', ('VOXEL_AMOUNT', 'VOXEL_SIZE'), 'VOXEL_AMOUNT')
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -7865,7 +7865,7 @@ class ObjectInfo(Node):
 
         # Node parameters
 
-        self.bnode.transform_space = transform_space
+        self.bnode.transform_space = self.check_enum_value(transform_space, 'transform_space', ('ORIGINAL', 'RELATIVE'), 'ORIGINAL')
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -8289,7 +8289,7 @@ class PointsToVolume(Node):
 
         # Node parameters
 
-        self.bnode.resolution_mode = resolution_mode
+        self.bnode.resolution_mode = self.check_enum_value(resolution_mode, 'resolution_mode', ('VOXEL_AMOUNT', 'VOXEL_SIZE'), 'VOXEL_AMOUNT')
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -8397,7 +8397,7 @@ class GeometryProximity(Node):
 
         # Node parameters
 
-        self.bnode.target_element  = target_element
+        self.bnode.target_element  = self.check_enum_value(target_element, 'target_element', ('POINTS', 'EDGES', 'FACES'), 'FACES')
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -8488,8 +8488,8 @@ class Raycast(Node):
 
         # Node parameters to configure the sockets enablement
 
-        self.bnode.data_type       = self.value_data_type(attribute) if data_type is None else data_type
-        self.bnode.mapping         = mapping
+        self.bnode.data_type       = self.check_enum_value(data_type, 'data_type', ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN'), 'FLOAT')
+        self.bnode.mapping         = self.check_enum_value(mapping, 'mapping', ('INTERPOLATED', 'NEAREST'), 'INTERPOLATED')
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -8800,7 +8800,7 @@ class ResampleCurve(Node):
 
         # Node parameters
 
-        self.bnode.mode            = mode
+        self.bnode.mode            = self.check_enum_value(mode, 'mode', ('EVALUATED', 'COUNT', 'LENGTH'), 'COUNT')
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -9047,8 +9047,8 @@ class SampleCurve(Node):
 
         # Node parameters to configure the sockets enablement
 
-        self.bnode.data_type       = self.value_data_type(value) if data_type is None else data_type
-        self.bnode.mode            = mode
+        self.bnode.data_type       = self.check_enum_value(data_type, 'data_type', ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN'), 'FLOAT')
+        self.bnode.mode            = self.check_enum_value(mode, 'mode', ('FACTOR', 'LENGTH'), 'FACTOR')
         self.bnode.use_all_curves  = use_all_curves
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
@@ -9185,8 +9185,8 @@ class SampleIndex(Node):
         # Node parameters to configure the sockets enablement
 
         self.bnode.clamp           = clamp
-        self.bnode.data_type       = self.value_data_type(value) if data_type is None else data_type
-        self.bnode.domain          = domain
+        self.bnode.data_type       = self.check_enum_value(data_type, 'data_type', ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN'), 'FLOAT')
+        self.bnode.domain          = self.check_enum_value(domain, 'domain', ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE'), 'POINT')
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -9283,7 +9283,7 @@ class SampleNearest(Node):
 
         # Node parameters
 
-        self.bnode.domain          = domain
+        self.bnode.domain          = self.check_enum_value(domain, 'domain', ('POINT', 'EDGE', 'FACE', 'CORNER'), 'POINT')
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -9363,7 +9363,7 @@ class SampleNearestSurface(Node):
 
         # Node parameters to configure the sockets enablement
 
-        self.bnode.data_type       = self.value_data_type(value) if data_type is None else data_type
+        self.bnode.data_type       = self.check_enum_value(data_type, 'data_type', ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN'), 'FLOAT')
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -9450,7 +9450,7 @@ class SampleUvSurface(Node):
 
         # Node parameters to configure the sockets enablement
 
-        self.bnode.data_type       = self.value_data_type(value) if data_type is None else data_type
+        self.bnode.data_type       = self.check_enum_value(data_type, 'data_type', ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN'), 'FLOAT')
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -9550,8 +9550,8 @@ class ScaleElements(Node):
 
         # Node parameters
 
-        self.bnode.domain          = domain
-        self.bnode.scale_mode      = scale_mode
+        self.bnode.domain          = self.check_enum_value(domain, 'domain', ('FACE', 'EDGE'), 'FACE')
+        self.bnode.scale_mode      = self.check_enum_value(scale_mode, 'scale_mode', ('UNIFORM', 'SINGLE_AXIS'), 'UNIFORM')
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -9857,7 +9857,7 @@ class SeparateGeometry(Node):
 
         # Node parameters
 
-        self.bnode.domain          = domain
+        self.bnode.domain          = self.check_enum_value(domain, 'domain', ('POINT', 'EDGE', 'FACE', 'CURVE', 'INSTANCE'), 'POINT')
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -9933,7 +9933,7 @@ class SetHandlePositions(Node):
 
         # Node parameters
 
-        self.bnode.mode            = mode
+        self.bnode.mode            = self.check_enum_value(mode, 'mode', ('LEFT', 'RIGHT'), 'LEFT')
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -10021,7 +10021,7 @@ class SetCurveNormal(Node):
 
         # Node parameters
 
-        self.bnode.mode            = mode
+        self.bnode.mode            = self.check_enum_value(mode, 'mode', ('MINIMUM_TWIST', 'Z_UP'), 'MINIMUM_TWIST')
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -10942,8 +10942,8 @@ class StoreNamedAttribute(Node):
 
         # Node parameters to configure the sockets enablement
 
-        self.bnode.data_type       = self.value_data_type(value) if data_type is None else data_type
-        self.bnode.domain          = domain
+        self.bnode.data_type       = self.check_enum_value(data_type, 'data_type', ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BYTE_COLOR', 'BOOLEAN'), 'FLOAT')
+        self.bnode.domain          = self.check_enum_value(domain, 'domain', ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE'), 'POINT')
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -11106,10 +11106,10 @@ class StringToCurves(Node):
 
         # Node parameters
 
-        self.bnode.align_x         = align_x
-        self.bnode.align_y         = align_y
-        self.bnode.overflow        = overflow
-        self.bnode.pivot_mode      = pivot_mode
+        self.bnode.align_x         = self.check_enum_value(align_x, 'align_x', ('LEFT', 'CENTER', 'RIGHT', 'JUSTIFY', 'FLUSH'), 'LEFT')
+        self.bnode.align_y         = self.check_enum_value(align_y, 'align_y', ('TOP_BASELINE', 'TOP', 'MIDDLE', 'BOTTOM_BASELINE', 'BOTTOM'), 'TOP_BASELINE')
+        self.bnode.overflow        = self.check_enum_value(overflow, 'overflow', ('OVERFLOW', 'SCALE_TO_FIT', 'TRUNCATE'), 'OVERFLOW')
+        self.bnode.pivot_mode      = self.check_enum_value(pivot_mode, 'pivot_mode', ('MIDPOINT', 'TOP_LEFT', 'TOP_CENTER', 'TOP_RIGHT', 'BOTTOM_LEFT', 'BOTTOM_CENTER', 'BOTTOM_RIGHT'), 'BOTTOM_LEFT')
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -11381,8 +11381,8 @@ class SubdivisionSurface(Node):
 
         # Node parameters
 
-        self.bnode.boundary_smooth = boundary_smooth
-        self.bnode.uv_smooth       = uv_smooth
+        self.bnode.boundary_smooth = self.check_enum_value(boundary_smooth, 'boundary_smooth', ('PRESERVE_CORNERS', 'ALL'), 'ALL')
+        self.bnode.uv_smooth       = self.check_enum_value(uv_smooth, 'uv_smooth', ('NONE', 'PRESERVE_CORNERS', 'PRESERVE_CORNERS_AND_JUNCTIONS', 'PRESERVE_CORNERS_JUNCTIONS_AND_CONCAVE', 'PRESERVE_BOUNDARIES', 'SMOOTH_ALL'), 'PRESERVE_BOUNDARIES')
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -11509,7 +11509,7 @@ class Switch(Node):
 
         # Node parameters to configure the sockets enablement
 
-        self.bnode.input_type      = self.value_data_type(true) if input_type is None else input_type
+        self.bnode.input_type      = self.check_enum_value(input_type, 'input_type', ('FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'STRING', 'RGBA', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'TEXTURE', 'MATERIAL'), 'GEOMETRY')
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -11752,8 +11752,8 @@ class Triangulate(Node):
 
         # Node parameters
 
-        self.bnode.ngon_method     = ngon_method
-        self.bnode.quad_method     = quad_method
+        self.bnode.ngon_method     = self.check_enum_value(ngon_method, 'ngon_method', ('BEAUTY', 'CLIP'), 'BEAUTY')
+        self.bnode.quad_method     = self.check_enum_value(quad_method, 'quad_method', ('BEAUTY', 'FIXED', 'FIXED_ALTERNATE', 'SHORTEST_DIAGONAL', 'LONGEST_DIAGONAL'), 'SHORTEST_DIAGONAL')
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -11843,7 +11843,7 @@ class TrimCurve(Node):
 
         # Node parameters
 
-        self.bnode.mode            = mode
+        self.bnode.mode            = self.check_enum_value(mode, 'mode', ('FACTOR', 'LENGTH'), 'FACTOR')
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -12023,7 +12023,7 @@ class UvUnwrap(Node):
 
         # Node parameters
 
-        self.bnode.method          = method
+        self.bnode.method          = self.check_enum_value(method, 'method', ('ANGLE_BASED', 'CONFORMAL'), 'ANGLE_BASED')
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -12173,8 +12173,8 @@ class Viewer(Node):
 
         # Node parameters to configure the sockets enablement
 
-        self.bnode.data_type       = self.value_data_type(value) if data_type is None else data_type
-        self.bnode.domain          = domain
+        self.bnode.data_type       = self.check_enum_value(data_type, 'data_type', ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN'), 'FLOAT')
+        self.bnode.domain          = self.check_enum_value(domain, 'domain', ('AUTO', 'POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE'), 'AUTO')
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -12366,7 +12366,7 @@ class VolumeToMesh(Node):
 
         # Node parameters
 
-        self.bnode.resolution_mode = resolution_mode
+        self.bnode.resolution_mode = self.check_enum_value(resolution_mode, 'resolution_mode', ('GRID', 'VOXEL_AMOUNT', 'VOXEL_SIZE'), 'GRID')
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -12470,7 +12470,7 @@ class Clamp(Node):
 
         # Node parameters
 
-        self.bnode.clamp_type      = clamp_type
+        self.bnode.clamp_type      = self.check_enum_value(clamp_type, 'clamp_type', ('MINMAX', 'RANGE'), 'MINMAX')
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -12697,8 +12697,8 @@ class MapRange(Node):
         # Node parameters to configure the sockets enablement
 
         self.bnode.clamp           = clamp
-        self.bnode.data_type       = self.value_data_type(steps) if data_type is None else data_type
-        self.bnode.interpolation_type = interpolation_type
+        self.bnode.data_type       = self.check_enum_value(data_type, 'data_type', ('FLOAT', 'FLOAT_VECTOR'), 'FLOAT')
+        self.bnode.interpolation_type = self.check_enum_value(interpolation_type, 'interpolation_type', ('LINEAR', 'STEPPED', 'SMOOTHSTEP', 'SMOOTHERSTEP'), 'LINEAR')
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -12846,7 +12846,7 @@ class Math(Node):
 
         # Node parameters
 
-        self.bnode.operation       = operation
+        self.bnode.operation       = self.check_enum_value(operation, 'operation', ('ADD', 'SUBTRACT', 'MULTIPLY', 'DIVIDE', 'MULTIPLY_ADD', 'POWER', 'LOGARITHM', 'SQRT', 'INVERSE_SQRT', 'ABSOLUTE', 'EXPONENT', 'MINIMUM', 'MAXIMUM', 'LESS_THAN', 'GREATER_THAN', 'SIGN', 'COMPARE', 'SMOOTH_MIN', 'SMOOTH_MAX', 'ROUND', 'FLOOR', 'CEIL', 'TRUNC', 'FRACT', 'MODULO', 'WRAP', 'SNAP', 'PINGPONG', 'SINE', 'COSINE', 'TANGENT', 'ARCSINE', 'ARCCOSINE', 'ARCTANGENT', 'ARCTAN2', 'SINH', 'COSH', 'TANH', 'RADIANS', 'DEGREES'), 'ADD')
         self.bnode.use_clamp       = use_clamp
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
@@ -12956,11 +12956,11 @@ class Mix(Node):
 
         # Node parameters to configure the sockets enablement
 
-        self.bnode.blend_type      = blend_type
+        self.bnode.blend_type      = self.check_enum_value(blend_type, 'blend_type', ('MIX', 'DARKEN', 'MULTIPLY', 'BURN', 'LIGHTEN', 'SCREEN', 'DODGE', 'ADD', 'OVERLAY', 'SOFT_LIGHT', 'LINEAR_LIGHT', 'DIFFERENCE', 'SUBTRACT', 'DIVIDE', 'HUE', 'SATURATION', 'COLOR', 'VALUE'), 'MIX')
         self.bnode.clamp_factor    = clamp_factor
         self.bnode.clamp_result    = clamp_result
-        self.bnode.data_type       = self.value_data_type(b) if data_type is None else data_type
-        self.bnode.factor_mode     = factor_mode
+        self.bnode.data_type       = self.check_enum_value(data_type, 'data_type', ('FLOAT', 'VECTOR', 'RGBA'), 'FLOAT')
+        self.bnode.factor_mode     = self.check_enum_value(factor_mode, 'factor_mode', ('UNIFORM', 'NON_UNIFORM'), 'UNIFORM')
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -13470,7 +13470,7 @@ class GradientTexture(Node):
 
         # Node parameters
 
-        self.bnode.gradient_type   = gradient_type
+        self.bnode.gradient_type   = self.check_enum_value(gradient_type, 'gradient_type', ('LINEAR', 'QUADRATIC', 'EASING', 'DIAGONAL', 'SPHERICAL', 'QUADRATIC_SPHERE', 'RADIAL'), 'LINEAR')
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -13635,8 +13635,8 @@ class MusgraveTexture(Node):
 
         # Node parameters
 
-        self.bnode.musgrave_dimensions = musgrave_dimensions
-        self.bnode.musgrave_type   = musgrave_type
+        self.bnode.musgrave_dimensions = self.check_enum_value(musgrave_dimensions, 'musgrave_dimensions', ('1D', '2D', '3D', '4D'), '3D')
+        self.bnode.musgrave_type   = self.check_enum_value(musgrave_type, 'musgrave_type', ('MULTIFRACTAL', 'RIDGED_MULTIFRACTAL', 'HYBRID_MULTIFRACTAL', 'FBM', 'HETERO_TERRAIN'), 'FBM')
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -13777,7 +13777,7 @@ class NoiseTexture(Node):
 
         # Node parameters
 
-        self.bnode.noise_dimensions = noise_dimensions
+        self.bnode.noise_dimensions = self.check_enum_value(noise_dimensions, 'noise_dimensions', ('1D', '2D', '3D', '4D'), '3D')
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -13901,9 +13901,9 @@ class VoronoiTexture(Node):
 
         # Node parameters
 
-        self.bnode.distance        = distance
-        self.bnode.feature         = feature
-        self.bnode.voronoi_dimensions = voronoi_dimensions
+        self.bnode.distance        = self.check_enum_value(distance, 'distance', ('EUCLIDEAN', 'MANHATTAN', 'CHEBYCHEV', 'MINKOWSKI'), 'EUCLIDEAN')
+        self.bnode.feature         = self.check_enum_value(feature, 'feature', ('F1', 'F2', 'SMOOTH_F1', 'DISTANCE_TO_EDGE', 'N_SPHERE_RADIUS'), 'F1')
+        self.bnode.voronoi_dimensions = self.check_enum_value(voronoi_dimensions, 'voronoi_dimensions', ('1D', '2D', '3D', '4D'), '3D')
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -14050,10 +14050,10 @@ class WaveTexture(Node):
 
         # Node parameters
 
-        self.bnode.bands_direction = bands_direction
-        self.bnode.rings_direction = rings_direction
-        self.bnode.wave_profile    = wave_profile
-        self.bnode.wave_type       = wave_type
+        self.bnode.bands_direction = self.check_enum_value(bands_direction, 'bands_direction', ('X', 'Y', 'Z', 'DIAGONAL'), 'X')
+        self.bnode.rings_direction = self.check_enum_value(rings_direction, 'rings_direction', ('X', 'Y', 'Z', 'SPHERICAL'), 'X')
+        self.bnode.wave_profile    = self.check_enum_value(wave_profile, 'wave_profile', ('SIN', 'SAW', 'TRI'), 'SIN')
+        self.bnode.wave_type       = self.check_enum_value(wave_type, 'wave_type', ('BANDS', 'RINGS'), 'BANDS')
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -14201,7 +14201,7 @@ class WhiteNoiseTexture(Node):
 
         # Node parameters
 
-        self.bnode.noise_dimensions = noise_dimensions
+        self.bnode.noise_dimensions = self.check_enum_value(noise_dimensions, 'noise_dimensions', ('1D', '2D', '3D', '4D'), '3D')
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -14438,7 +14438,7 @@ class VectorMath(Node):
 
         # Node parameters
 
-        self.bnode.operation       = operation
+        self.bnode.operation       = self.check_enum_value(operation, 'operation', ('ADD', 'SUBTRACT', 'MULTIPLY', 'DIVIDE', 'MULTIPLY_ADD', 'CROSS_PRODUCT', 'PROJECT', 'REFLECT', 'REFRACT', 'FACEFORWARD', 'DOT_PRODUCT', 'DISTANCE', 'LENGTH', 'SCALE', 'NORMALIZE', 'ABSOLUTE', 'MINIMUM', 'MAXIMUM', 'FLOOR', 'CEIL', 'FRACTION', 'MODULO', 'WRAP', 'SNAP', 'SINE', 'COSINE', 'TANGENT'), 'ADD')
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -14539,7 +14539,7 @@ class VectorRotate(Node):
         # Node parameters
 
         self.bnode.invert          = invert
-        self.bnode.rotation_type   = rotation_type
+        self.bnode.rotation_type   = self.check_enum_value(rotation_type, 'rotation_type', ('AXIS_ANGLE', 'X_AXIS', 'Y_AXIS', 'Z_AXIS', 'EULER_XYZ'), 'AXIS_ANGLE')
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
