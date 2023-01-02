@@ -391,7 +391,7 @@ class Node:
         if attr_default is None:
             raise AttributeError(f"Bad value '{value}'.\n{msg}")
         
-        print(f"WARNING: {msg}. Value '{value}' changed to default '{attr_default}'.")
+        print(f"WARNING: {msg} Value '{value}' changed to default '{attr_default}'.")
         return attr_default
             
 
