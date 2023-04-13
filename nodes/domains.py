@@ -641,7 +641,7 @@ class Domain(geodom.Domain):
 
 
         """
-
+        
         data_type_ = self.value_data_type(value, 'FLOAT')
         return self.socket_stack(nodes.StoreNamedAttribute(geometry=self.data_socket, name=name, value=value, data_type=data_type_, domain=self.domain))
 

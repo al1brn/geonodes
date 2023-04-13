@@ -1025,7 +1025,7 @@ class Tree:
                     # If the name starts by "target", it is not actually a geometry socket
                     # (nodes raycast and proximity for instance)
                     
-                    if in_geo_socket is not None and sin_geo_socket.name[:6].lower() == 'target':
+                    if in_geo_socket is not None and in_geo_socket.name[:6].lower() == 'target':
                         in_geo_socket = None
                         
 
@@ -1143,6 +1143,7 @@ class Tree:
                     
                     data_type = DataSocket.value_data_type(bsocket, 'FLOAT')
                     capt_node = Geometry(attr_node.owning_bsocket).capture_attribute_node(data_type=data_type, domain=attr_node.domain)
+                    capt_node.bnode.parent = attr_node.bnode.parent
                     
                     # ----- The index of the output socket depends upon the data type
                     

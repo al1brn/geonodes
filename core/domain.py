@@ -538,6 +538,8 @@ class Domain:
         
         import geonodes as gn
         
+        print("store_named_attribute", name, value, data_type)
+        
         if self.selector is None or value is None or name is None:
             return self.store_named_attribute_no_selection(name, value)
         
