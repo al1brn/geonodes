@@ -265,12 +265,7 @@ But here, we need to compute both orientations and use a `switch` node:
 
 ## The final arrow
 
-The final code includes a smoothing option.
-
-**Note:** One may want to add a _Subdivision surface_ modifier to the arrow.
-To get a good result, we must add a crease property equal to 1 to "horizontal" edges.
-But at the time this tuto is written, their is a known bug ([T99310](https://developer.blender.org/T99310)) in Blender which crashes when you try to set the attribute named "crease".
-The code is given by using "waiting" name rather than "crease".
+The final code includes a smoothing option and the crease property is set to 1 for "horizontal" edges.
 
 ``` python
 import numpy as np
@@ -339,19 +334,15 @@ def arrow():
 
             top, sides = edges[top].extrude(offset=(0, 0, length) - edges[top].position*fac)
             
-        # ----- Set creae to 1 for horizontal edges
-        
-        # In current Blender version, crash when trying to set crease named attribute
+        # ----- Set crease to 1 for horizontal edges
         
         with tree.layout("crease and smoothing"):
         
-            crease = "waiting"
-                          
             p1, p2 = arrow.edges.vertices_position
             hrz = (p1.z - p2.z).abs().less_than(0.001)
-            arrow.edges.set_named_float(crease, gn.Float(0).switch(hrz, 1))
+            arrow.edges.store_named_float("crease", gn.Float(0).switch(hrz, 1))
             
-            # ----- One point at the top
+            # ----- Shade smooth
             
             arrow.faces.shade_smooth = smooth
             
