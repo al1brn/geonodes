@@ -185,6 +185,9 @@ From Blender V3.5, mesh primitives such as Grid or UVSphere nodes have two outpu
     
     # Circle node has only one output socket
     circle = gn.Mesh.Circle() # Mesh
+    
+    # Join the two meshes
+    gn.output_geometry = grid + circle 
 ```
 
 ### Layouts
