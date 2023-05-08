@@ -297,7 +297,7 @@ Operations on domains use a **Selection** input socket. This feature is implemen
 
   ```python
   # Only one vertex on two will be changed
-  grid.verts((grid.verts.index % 2).equal(0)).position += (0, 0, z)
+  grid.verts[(grid.verts.index % 2).equal(0)].position += (1, 2, 3)
   ```
 
 - Indexing with **Integer**:
