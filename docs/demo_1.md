@@ -87,7 +87,7 @@ In the following example, the `grid` mesh is created in `tree` without making an
 ```python
 with gn.Tree("Geometry Nodes') as tree:
 
-    grid = gn.Mesh.Grid(vertices_x=count, vertices_y=count, size_x=size, size_y=size)
+    grid = gn.Mesh.Grid(vertices_x=count, vertices_y=count, size_x=size, size_y=size).mesh
 ```
 
 Fore more details, see [class Tree reference](Tree.md)
@@ -115,7 +115,7 @@ The variables can also be used as default values of node sockets:
 ```python
 # Let's create an UV sphere of radius 0.5
 r = 0.5
-sphere = gn.Mesh.UVSphere(radius=r)
+sphere = gn.Mesh.UVSphere(radius=r).mesh
 ```
 
 In the created node, the input socket `radius` is initialized with `0.5`:
@@ -134,7 +134,7 @@ In the following script, we slightly modify our code by initializing `size` as a
     count  = 100
     size   = gn.Float(20.)
     
-    grid = gn.Mesh.Grid(vertices_x=count, vertices_y=count, size_x=size, size_y=size)
+    grid = gn.Mesh.Grid(vertices_x=count, vertices_y=count, size_x=size, size_y=size).mesh
 ````
 
 The resulting tree is the following. The two `Vertices` input sockets are initialized with the same value. The two `Size` sockets are linked to the output socket of a 'Value' node. One can change the value of the node to see the result on the output geometry.
@@ -157,7 +157,7 @@ Let's modify our script. This time, we initialize `count` as being a Group input
     count  = gn.Integer.Input(100, "Grid resolution")
     size   = gn.Float(20.)
     
-    grid = gn.Mesh.Grid(vertices_x=count, vertices_y=count, size_x=size, size_y=size)
+    grid = gn.Mesh.Grid(vertices_x=count, vertices_y=count, size_x=size, size_y=size).mesh
 ````
 In the resulting tree, the node 'Grid' is now fed by one node and a user parameter named 'Grid resolution':
 
@@ -168,7 +168,7 @@ In the resulting tree, the node 'Grid' is now fed by one node and a user paramet
 In our demo, the initial grid is created with the following line:
 
 ```python
-    grid = gn.Mesh.Grid(vertices_x=count, vertices_y=count, size_x=size, size_y=size)
+    grid = gn.Mesh.Grid(vertices_x=count, vertices_y=count, size_x=size, size_y=size).mesh
 ```
 
 Geometry creation is done through the nodes located in the Blender add menus **Mesh Primitives** and **Curve Primitives**.
