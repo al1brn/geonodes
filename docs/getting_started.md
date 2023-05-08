@@ -184,7 +184,7 @@ icosphere.faces.material = mat_sel
 
 The resulting icosphere is red because the second material was assigned to all faces, overwriting the previous assignment.
 But what we want is to have a random selection of faces with a different color.
-The faces can be selected by "calling" them with a selection parameter.
+The faces can be selected using the array indexing syntax.
 
 ``` python
 icosphere.faces[ random_selection ].material = mat_sel
@@ -214,7 +214,7 @@ icosphere.faces[ gn.Boolean.Random(probability=.5) ].material_index = 1
 ### Extrusion
 
 The `Extrude Mesh` node accepts a domain parameter to define what must be extruded. With **geonodes**, the 3 possibilities
-are written:
+are implemented in the 3 domains:
 
 ``` python
 mesh.faces.extrude()
@@ -263,7 +263,7 @@ with gn.Tree("Icosphere tuto") as tree:
    
    # The icosphere
    
-   icosphere = gn.Mesh.IcoSphere(radius=radius, subdivisions=subs)
+   icosphere = gn.Mesh.IcoSphere(radius=radius, subdivisions=subs).mesh
    
    # The materials
    
