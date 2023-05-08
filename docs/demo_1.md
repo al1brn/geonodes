@@ -17,7 +17,7 @@ with gn.Tree("Geometry Nodes") as tree:
     height = 2.   # Height of the surface
     
     # The base (x, y) grid
-    grid = gn.Mesh.Grid(vertices_x=count, vertices_y=count, size_x=size, size_y=size)
+    grid = gn.Mesh.Grid(vertices_x=count, vertices_y=count, size_x=size, size_y=size).mesh
     
     # We compute z
     with tree.layout("Computing the wave", color="dark_rose"):
