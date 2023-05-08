@@ -247,14 +247,15 @@ See [Nodes parameters and method names](/docs/nodes_and_sockets.md#nodes-paramet
 The call of a data socket method creates a Geometry node which performs the expected operation.
 
 ```python
-    grid.set_position(offset=(0, 0, z))
+    z = gn.Float(1)
+    grid.set_position(offset=(0, 0, z))    
 ```
 
 The node 'Set Position' has 4 input sockets (Geometry, Selection, Position, Offset). In this example, the node is created with the following links:
-- Geometry : linked with the output socket grid
+- Geometry : linked with the output socket **Mesh** of the 'Grid' node
 - Selection : no link
 - Position : no link
-- Offset : linked ot the output socket of a node 'Combine XYZ'
+- Offset : linked ot the output socket **Vector** of a 'Combine XYZ' node
 
 This is illustrated here below:
 
