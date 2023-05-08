@@ -34,6 +34,7 @@ node = nodes.TransformGeometry(geometry=None, translation=None, rotation=None, s
 |----------------------|------------|
 | **[Geometry](Geometry.md)** |
 | [transform_geometry](Geometry.md#transform_geometry) | `def transform_geometry(self, translation=None, rotation=None, scale=None):` |
+| [transform](Geometry.md#transform) | `def transform(self, translation=None, rotation=None, scale=None):` |
 
 <sub>Go to [top](#node-Transform-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

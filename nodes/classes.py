@@ -1164,6 +1164,25 @@ class Geometry(geosocks.Geometry):
         return gn.Instances(nodes.GeometryToInstance(*geometry).instances)
 
 
+    def transform(self, translation=None, rotation=None, scale=None):
+        """
+
+        > Node: [Transform Geometry](GeometryNodeTransform.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/r.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeTransform.html)
+
+        #### Args:
+        - translation: Vector
+        - rotation: Vector
+        - scale: Vector
+
+        #### Returns:
+        - self
+
+
+        """
+
+        return self.stack(nodes.TransformGeometry(geometry=self, translation=translation, rotation=rotation, scale=scale))
+
+
     def transform_geometry(self, translation=None, rotation=None, scale=None):
         """
 

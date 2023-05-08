@@ -58,6 +58,7 @@ with gn.Tree('Geometry Nodes') as tree:
     var = geometry.instances_component
     geometry.separate()
     geometry.transform_geometry()
+    geometry.transform()
     geometry.set_ID()
     geometry.set_position()
     var = gn.Geometry.Collection()

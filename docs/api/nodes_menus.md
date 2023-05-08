@@ -201,7 +201,7 @@
 |      | [Instance](Instance.md) | [separate](Instance.md#separate) |
 |      | [Spline](Spline.md) | [separate](Spline.md#separate) |
 |      | [Vertex](Vertex.md) | [separate](Vertex.md#separate) |
-| [Transform Geometry](GeometryNodeTransform.md) | [Geometry](Geometry.md) | [transform_geometry](Geometry.md#transform_geometry) |
+| [Transform Geometry](GeometryNodeTransform.md) | [Geometry](Geometry.md) | - [transform_geometry](Geometry.md#transform_geometry)<br>- [transform](Geometry.md#transform)|
 | [Set ID](GeometryNodeSetID.md) | [Domain](Domain.md) | - [set_ID](Domain.md#set_ID)<br>- [ID](Domain.md#ID)|
 |      | [Geometry](Geometry.md) | [set_ID](Geometry.md#set_ID) |
 | [Set Position](GeometryNodeSetPosition.md) | [Domain](Domain.md) | - [set_position](Domain.md#set_position)<br>- [position](Domain.md#position)|

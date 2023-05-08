@@ -1163,7 +1163,7 @@ def handle_type_selection(self, left=True, right=True, handle_type='AUTO')
 
 #### Args:
 - handle_type (str): 'AUTO' in [FREE, AUTO, VECTOR, ALIGN]
-- mode (set): {'RIGHT', 'LEFT'}
+- mode (set): {'LEFT', 'RIGHT'}
 
 #### Returns:
 - node with sockets ['selection']
@@ -1187,7 +1187,7 @@ def handle_type_selection_align(self, left=True, right=True)
 
 #### Args:
 - handle_type (str): 'AUTO' in [FREE, AUTO, VECTOR, ALIGN]
-- mode (set): {'RIGHT', 'LEFT'}
+- mode (set): {'LEFT', 'RIGHT'}
 
 #### Returns:
 - node with sockets ['selection']
@@ -1211,7 +1211,7 @@ def handle_type_selection_auto(self, left=True, right=True)
 
 #### Args:
 - handle_type (str): 'AUTO' in [FREE, AUTO, VECTOR, ALIGN]
-- mode (set): {'RIGHT', 'LEFT'}
+- mode (set): {'LEFT', 'RIGHT'}
 
 #### Returns:
 - node with sockets ['selection']
@@ -1235,7 +1235,7 @@ def handle_type_selection_free(self, left=True, right=True)
 
 #### Args:
 - handle_type (str): 'AUTO' in [FREE, AUTO, VECTOR, ALIGN]
-- mode (set): {'RIGHT', 'LEFT'}
+- mode (set): {'LEFT', 'RIGHT'}
 
 #### Returns:
 - node with sockets ['selection']
@@ -1250,7 +1250,7 @@ def handle_type_selection_free(self, left=True, right=True)
 ### handle_type_selection_node
 
 ```python
-def handle_type_selection_node(self, handle_type='AUTO', mode={'RIGHT', 'LEFT'})
+def handle_type_selection_node(self, handle_type='AUTO', mode={'LEFT', 'RIGHT'})
 ```
 
 
@@ -1259,7 +1259,7 @@ def handle_type_selection_node(self, handle_type='AUTO', mode={'RIGHT', 'LEFT'})
 
 #### Args:
 - handle_type (str): 'AUTO' in [FREE, AUTO, VECTOR, ALIGN]
-- mode (set): {'RIGHT', 'LEFT'}
+- mode (set): {'LEFT', 'RIGHT'}
 
 #### Returns:
 - socket `selection`
@@ -1283,7 +1283,7 @@ def handle_type_selection_vector(self, left=True, right=True)
 
 #### Args:
 - handle_type (str): 'AUTO' in [FREE, AUTO, VECTOR, ALIGN]
-- mode (set): {'RIGHT', 'LEFT'}
+- mode (set): {'LEFT', 'RIGHT'}
 
 #### Returns:
 - node with sockets ['selection']
@@ -1818,7 +1818,7 @@ def set_handle_type(self, left=True, right=True, handle_type='AUTO')
 - curve: Curve
 - selection: Boolean
 - handle_type (str): 'AUTO' in [FREE, AUTO, VECTOR, ALIGN]
-- mode (set): {'RIGHT', 'LEFT'}
+- mode (set): {'LEFT', 'RIGHT'}
 
 #### Returns:
 - node with sockets ['curve']
@@ -1833,7 +1833,7 @@ def set_handle_type(self, left=True, right=True, handle_type='AUTO')
 ### set_handle_type_node
 
 ```python
-def set_handle_type_node(self, handle_type='AUTO', mode={'RIGHT', 'LEFT'})
+def set_handle_type_node(self, handle_type='AUTO', mode={'LEFT', 'RIGHT'})
 ```
 
 
@@ -1842,7 +1842,7 @@ def set_handle_type_node(self, handle_type='AUTO', mode={'RIGHT', 'LEFT'})
 
 #### Args:
 - handle_type (str): 'AUTO' in [FREE, AUTO, VECTOR, ALIGN]
-- mode (set): {'RIGHT', 'LEFT'}
+- mode (set): {'LEFT', 'RIGHT'}
 
 #### Returns:
 - self

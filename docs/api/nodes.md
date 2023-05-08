@@ -331,7 +331,7 @@
 |      | [Texture](Texture.md) | [switch](Texture.md#switch) |
 |      | [Vector](Vector.md) | [switch](Vector.md#switch) |
 |      | [functions](functions.md) | [switch](functions.md#switch) / [switch_float](functions.md#switch_float) / [switch_integer](functions.md#switch_integer) / [switch_boolean](functions.md#switch_boolean) / [switch_vector](functions.md#switch_vector) / [switch_string](functions.md#switch_string) / [switch_color](functions.md#switch_color) / [switch_object](functions.md#switch_object) / [switch_image](functions.md#switch_image) / [switch_geometry](functions.md#switch_geometry) / [switch_collection](functions.md#switch_collection) / [switch_texture](functions.md#switch_texture) / [switch_material](functions.md#switch_material) / |
-| [Transform Geometry](GeometryNodeTransform.md) | [Geometry](Geometry.md) | [transform_geometry](Geometry.md#transform_geometry) |
+| [Transform Geometry](GeometryNodeTransform.md) | [Geometry](Geometry.md) | - [transform_geometry](Geometry.md#transform_geometry)<br>- [transform](Geometry.md#transform)|
 | [Translate Instances](GeometryNodeTranslateInstances.md) | [Instance](Instance.md) | [translate](Instance.md#translate) |
 |      | [Instances](Instances.md) | [translate](Instances.md#translate) |
 | [Triangulate](GeometryNodeTriangulate.md) | [Face](Face.md) | [triangulate](Face.md#triangulate) |
