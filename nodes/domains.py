@@ -255,7 +255,7 @@ class Domain(geodom.Domain):
 
         """
 
-        return self.attribute_node(nodes.BlurAttribute(value=value, iterations=iterations, weight=weight, data_type='FLOAT_COLOR')).value
+        return self.attribute_node(nodes.BlurAttribute(value=value, iterations=iterations, weight=weight, data_type=FLOAT_COLOR)).value
 
 
     def blur_float(self, value=None, iterations=None, weight=None):
@@ -274,7 +274,7 @@ class Domain(geodom.Domain):
 
         """
 
-        return self.attribute_node(nodes.BlurAttribute(value=value, iterations=iterations, weight=weight, data_type='FLOAT')).value
+        return self.attribute_node(nodes.BlurAttribute(value=value, iterations=iterations, weight=weight, data_type=FLOAT)).value
 
 
     def blur_integer(self, value=None, iterations=None, weight=None):
@@ -293,7 +293,7 @@ class Domain(geodom.Domain):
 
         """
 
-        return self.attribute_node(nodes.BlurAttribute(value=value, iterations=iterations, weight=weight, data_type='INT')).value
+        return self.attribute_node(nodes.BlurAttribute(value=value, iterations=iterations, weight=weight, data_type=INT)).value
 
 
     def blur_vector(self, value=None, iterations=None, weight=None):
@@ -312,7 +312,7 @@ class Domain(geodom.Domain):
 
         """
 
-        return self.attribute_node(nodes.BlurAttribute(value=value, iterations=iterations, weight=weight, data_type='FLOAT_VECTOR')).value
+        return self.attribute_node(nodes.BlurAttribute(value=value, iterations=iterations, weight=weight, data_type=FLOAT_VECTOR)).value
 
 
     def capture_attribute(self, value=None):
@@ -467,7 +467,7 @@ class Domain(geodom.Domain):
 
         """
 
-        return self.attribute_node(nodes.NamedAttribute(name=name, data_type='BOOLEAN')).attribute
+        return self.attribute_node(nodes.NamedAttribute(name=name, data_type=BOOLEAN)).attribute
 
 
     def named_color(self, name=None):
@@ -484,7 +484,7 @@ class Domain(geodom.Domain):
 
         """
 
-        return self.attribute_node(nodes.NamedAttribute(name=name, data_type='FLOAT_COLOR')).attribute
+        return self.attribute_node(nodes.NamedAttribute(name=name, data_type=FLOAT_COLOR)).attribute
 
 
     def named_float(self, name=None):
@@ -501,7 +501,7 @@ class Domain(geodom.Domain):
 
         """
 
-        return self.attribute_node(nodes.NamedAttribute(name=name, data_type='FLOAT')).attribute
+        return self.attribute_node(nodes.NamedAttribute(name=name, data_type=FLOAT)).attribute
 
 
     def named_integer(self, name=None):
@@ -518,7 +518,7 @@ class Domain(geodom.Domain):
 
         """
 
-        return self.attribute_node(nodes.NamedAttribute(name=name, data_type='INT')).attribute
+        return self.attribute_node(nodes.NamedAttribute(name=name, data_type=INT)).attribute
 
 
     def named_vector(self, name=None):
@@ -535,7 +535,7 @@ class Domain(geodom.Domain):
 
         """
 
-        return self.attribute_node(nodes.NamedAttribute(name=name, data_type='FLOAT_VECTOR')).attribute
+        return self.attribute_node(nodes.NamedAttribute(name=name, data_type=FLOAT_VECTOR)).attribute
 
 
     @property
@@ -603,7 +603,7 @@ class Domain(geodom.Domain):
 
         """
 
-        return nodes.RandomValue(min=None, max=None, probability=probability, ID=ID, seed=seed, data_type='BOOLEAN').value
+        return nodes.RandomValue(min=None, max=None, probability=probability, ID=ID, seed=seed, data_type=BOOLEAN).value
 
 
     @staticmethod
@@ -624,7 +624,7 @@ class Domain(geodom.Domain):
 
         """
 
-        return nodes.RandomValue(min=min, max=max, probability=None, ID=ID, seed=seed, data_type='FLOAT').value
+        return nodes.RandomValue(min=min, max=max, probability=None, ID=ID, seed=seed, data_type=FLOAT).value
 
 
     @staticmethod
@@ -645,7 +645,7 @@ class Domain(geodom.Domain):
 
         """
 
-        return nodes.RandomValue(min=min, max=max, probability=None, ID=ID, seed=seed, data_type='INT').value
+        return nodes.RandomValue(min=min, max=max, probability=None, ID=ID, seed=seed, data_type=INT).value
 
 
     @staticmethod
@@ -666,7 +666,7 @@ class Domain(geodom.Domain):
 
         """
 
-        return nodes.RandomValue(min=min, max=max, probability=None, ID=ID, seed=seed, data_type='FLOAT_VECTOR').value
+        return nodes.RandomValue(min=min, max=max, probability=None, ID=ID, seed=seed, data_type=FLOAT_VECTOR).value
 
 
     def remove_named_attribute(self, name=None):
@@ -756,7 +756,7 @@ class Domain(geodom.Domain):
 
         """
 
-        return self.socket_stack(nodes.StoreNamedAttribute(geometry=self.data_socket, selection=self.selection, name=name, value=value, data_type='FLOAT2', domain=self.domain))
+        return self.socket_stack(nodes.StoreNamedAttribute(geometry=self.data_socket, selection=self.selection, name=name, value=value, data_type=FLOAT2, domain=self.domain))
 
 
     def store_named_attribute(self, name=None, value=None):
@@ -793,7 +793,7 @@ class Domain(geodom.Domain):
 
         """
 
-        return self.socket_stack(nodes.StoreNamedAttribute(geometry=self.data_socket, selection=self.selection, name=name, value=value, data_type='BOOLEAN', domain=self.domain))
+        return self.socket_stack(nodes.StoreNamedAttribute(geometry=self.data_socket, selection=self.selection, name=name, value=value, data_type=BOOLEAN, domain=self.domain))
 
 
     def store_named_byte_color(self, name=None, value=None):
@@ -811,7 +811,7 @@ class Domain(geodom.Domain):
 
         """
 
-        return self.socket_stack(nodes.StoreNamedAttribute(geometry=self.data_socket, selection=self.selection, name=name, value=value, data_type='BYTE_COLOR', domain=self.domain))
+        return self.socket_stack(nodes.StoreNamedAttribute(geometry=self.data_socket, selection=self.selection, name=name, value=value, data_type=BYTE_COLOR, domain=self.domain))
 
 
     def store_named_color(self, name=None, value=None):
@@ -829,7 +829,7 @@ class Domain(geodom.Domain):
 
         """
 
-        return self.socket_stack(nodes.StoreNamedAttribute(geometry=self.data_socket, selection=self.selection, name=name, value=value, data_type='FLOAT_COLOR', domain=self.domain))
+        return self.socket_stack(nodes.StoreNamedAttribute(geometry=self.data_socket, selection=self.selection, name=name, value=value, data_type=FLOAT_COLOR, domain=self.domain))
 
 
     def store_named_float(self, name=None, value=None):
@@ -847,7 +847,7 @@ class Domain(geodom.Domain):
 
         """
 
-        return self.socket_stack(nodes.StoreNamedAttribute(geometry=self.data_socket, selection=self.selection, name=name, value=value, data_type='FLOAT', domain=self.domain))
+        return self.socket_stack(nodes.StoreNamedAttribute(geometry=self.data_socket, selection=self.selection, name=name, value=value, data_type=FLOAT, domain=self.domain))
 
 
     def store_named_integer(self, name=None, value=None):
@@ -865,7 +865,7 @@ class Domain(geodom.Domain):
 
         """
 
-        return self.socket_stack(nodes.StoreNamedAttribute(geometry=self.data_socket, selection=self.selection, name=name, value=value, data_type='INT', domain=self.domain))
+        return self.socket_stack(nodes.StoreNamedAttribute(geometry=self.data_socket, selection=self.selection, name=name, value=value, data_type=INT, domain=self.domain))
 
 
     def store_named_vector(self, name=None, value=None):
@@ -883,7 +883,7 @@ class Domain(geodom.Domain):
 
         """
 
-        return self.socket_stack(nodes.StoreNamedAttribute(geometry=self.data_socket, selection=self.selection, name=name, value=value, data_type='FLOAT_VECTOR', domain=self.domain))
+        return self.socket_stack(nodes.StoreNamedAttribute(geometry=self.data_socket, selection=self.selection, name=name, value=value, data_type=FLOAT_VECTOR, domain=self.domain))
 
 
     def view(self, value=None):

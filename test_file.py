@@ -15,7 +15,7 @@ with gn.Tree('Geometry Nodes') as tree:
     collection = gn.Collection.Input()
     object     = gn.Object.Input()
     geometry   = tree.ig
-    mesh       = gn.Mesh.Cube().mesh
+    mesh       = gn.Mesh.Cube()
     curve      = gn.Curve.Circle()
     points     = gn.Points.Points()
     instances  = gn.Instances.InstanceOnPoints(points=points)
