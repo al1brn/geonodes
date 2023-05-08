@@ -317,10 +317,11 @@ Operations on domains use a **Selection** input socket. This feature is implemen
   ```
 
   
-Both methods can be combined:
+Indexing can be chained, in that case the conditions are combined with a 'And' node:
 
   ```python
-  grid.verts((grid.verts.index % 2).equal(0))[5000:8000].position += (0, 0, z)
+  # Vertices with even index between 5000 and 8000
+  grid.verts[(grid.verts.index % 2).equal(0)][5000:8000].position += (0, 0, z)
   ```
 
 
