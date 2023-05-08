@@ -19,7 +19,7 @@ The following image shows a stack of 4 modifiers to build an hypersphere:
 - **4D Hypersphere:** Create 7 slices into the 4D space along the W axis
 - **4D Rotate in hyperplane:** Rotate the shape in 4D space
 - **4D Light:** Enlight the result with a 4D light
-- **4D Projection:**: Project the result into the 3D space
+- **4D Projection:** Project the result into the 3D space
 
 <img src="images/hypersphere modifiers stack.png"
      alt="Markdown Monster icon"
