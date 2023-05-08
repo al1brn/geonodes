@@ -175,6 +175,18 @@ Geometry creation is done through the nodes located in the Blender add menus **M
 
 In **geonodes**, these nodes are implemented as **constructors** (_class_ or _static_ methods) of [Mesh](/docs/sockets/Mesh.md) of [Curve](/docs/sockets/Curve.md) classes.
 
+From Blender V3.5, mesh primitives such as Grid or UVSphere nodes have two output sockets : **Mesh** and **UV Map**. When a node has more than one socket, the function returns the node itself rather than a socket:
+
+```python
+    # Grid node chas two output sockets
+    grid_node = gn.Mesh.Grid() # Node
+    grid = grid_node.mesh
+    uv_map = grid_node.uv_map
+    
+    # Circle node has only one output socket
+    circle = gn.Mesh.Circle() # Mesh
+```
+
 ### Layouts
 
 Layouts are ways to make the trees clearer. Creating a layout is done in the context of `with` syntax: any new node created in the scope of a `with` is included in the layout:
