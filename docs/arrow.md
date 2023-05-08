@@ -339,19 +339,15 @@ def arrow():
 
             top, sides = edges[top].extrude(offset=(0, 0, length) - edges[top].position*fac)
             
-        # ----- Set creae to 1 for horizontal edges
-        
-        # In current Blender version, crash when trying to set crease named attribute
+        # ----- Set crease to 1 for horizontal edges
         
         with tree.layout("crease and smoothing"):
         
-            crease = "waiting"
-                          
             p1, p2 = arrow.edges.vertices_position
             hrz = (p1.z - p2.z).abs().less_than(0.001)
-            arrow.edges.set_named_float(crease, gn.Float(0).switch(hrz, 1))
+            arrow.edges.store_named_float("crease", gn.Float(0).switch(hrz, 1))
             
-            # ----- One point at the top
+            # ----- Shade smooth
             
             arrow.faces.shade_smooth = smooth
             
