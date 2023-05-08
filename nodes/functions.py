@@ -313,7 +313,7 @@ def color_add(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False
 
     """
 
-    return nodes.Mix(factor=factor, a=a, b=b, blend_type='ADD', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type=RGBA, factor_mode='UNIFORM').result
+    return nodes.Mix(factor=factor, a=a, b=b, blend_type='ADD', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM').result
 
 
 def color_burn(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False):
@@ -334,7 +334,7 @@ def color_burn(factor=None, a=None, b=None, clamp_factor=True, clamp_result=Fals
 
     """
 
-    return nodes.Mix(factor=factor, a=a, b=b, blend_type='BURN', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type=RGBA, factor_mode='UNIFORM').result
+    return nodes.Mix(factor=factor, a=a, b=b, blend_type='BURN', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM').result
 
 
 def color_color(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False):
@@ -355,7 +355,7 @@ def color_color(factor=None, a=None, b=None, clamp_factor=True, clamp_result=Fal
 
     """
 
-    return nodes.Mix(factor=factor, a=a, b=b, blend_type='COLOR', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type=RGBA, factor_mode='UNIFORM').result
+    return nodes.Mix(factor=factor, a=a, b=b, blend_type='COLOR', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM').result
 
 
 def color_darken(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False):
@@ -376,7 +376,7 @@ def color_darken(factor=None, a=None, b=None, clamp_factor=True, clamp_result=Fa
 
     """
 
-    return nodes.Mix(factor=factor, a=a, b=b, blend_type='DARKEN', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type=RGBA, factor_mode='UNIFORM').result
+    return nodes.Mix(factor=factor, a=a, b=b, blend_type='DARKEN', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM').result
 
 
 def color_difference(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False):
@@ -397,7 +397,7 @@ def color_difference(factor=None, a=None, b=None, clamp_factor=True, clamp_resul
 
     """
 
-    return nodes.Mix(factor=factor, a=a, b=b, blend_type='DIFFERENCE', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type=RGBA, factor_mode='UNIFORM').result
+    return nodes.Mix(factor=factor, a=a, b=b, blend_type='DIFFERENCE', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM').result
 
 
 def color_divide(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False):
@@ -418,7 +418,7 @@ def color_divide(factor=None, a=None, b=None, clamp_factor=True, clamp_result=Fa
 
     """
 
-    return nodes.Mix(factor=factor, a=a, b=b, blend_type='DIVIDE', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type=RGBA, factor_mode='UNIFORM').result
+    return nodes.Mix(factor=factor, a=a, b=b, blend_type='DIVIDE', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM').result
 
 
 def color_dodge(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False):
@@ -439,7 +439,7 @@ def color_dodge(factor=None, a=None, b=None, clamp_factor=True, clamp_result=Fal
 
     """
 
-    return nodes.Mix(factor=factor, a=a, b=b, blend_type='DODGE', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type=RGBA, factor_mode='UNIFORM').result
+    return nodes.Mix(factor=factor, a=a, b=b, blend_type='DODGE', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM').result
 
 
 def color_hue(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False):
@@ -460,7 +460,7 @@ def color_hue(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False
 
     """
 
-    return nodes.Mix(factor=factor, a=a, b=b, blend_type='HUE', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type=RGBA, factor_mode='UNIFORM').result
+    return nodes.Mix(factor=factor, a=a, b=b, blend_type='HUE', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM').result
 
 
 def color_lighten(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False):
@@ -481,7 +481,7 @@ def color_lighten(factor=None, a=None, b=None, clamp_factor=True, clamp_result=F
 
     """
 
-    return nodes.Mix(factor=factor, a=a, b=b, blend_type='LIGHTEN', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type=RGBA, factor_mode='UNIFORM').result
+    return nodes.Mix(factor=factor, a=a, b=b, blend_type='LIGHTEN', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM').result
 
 
 def color_linear_light(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False):
@@ -502,7 +502,7 @@ def color_linear_light(factor=None, a=None, b=None, clamp_factor=True, clamp_res
 
     """
 
-    return nodes.Mix(factor=factor, a=a, b=b, blend_type='LINEAR_LIGHT', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type=RGBA, factor_mode='UNIFORM').result
+    return nodes.Mix(factor=factor, a=a, b=b, blend_type='LINEAR_LIGHT', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM').result
 
 
 def color_mix(factor=None, a=None, b=None, blend_type='MIX', clamp_factor=True, clamp_result=False):
@@ -524,7 +524,7 @@ def color_mix(factor=None, a=None, b=None, blend_type='MIX', clamp_factor=True, 
 
     """
 
-    return nodes.Mix(factor=factor, a=a, b=b, blend_type=blend_type, clamp_factor=clamp_factor, clamp_result=clamp_result, data_type=RGBA, factor_mode='UNIFORM').result
+    return nodes.Mix(factor=factor, a=a, b=b, blend_type=blend_type, clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM').result
 
 
 def color_multiply(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False):
@@ -545,7 +545,7 @@ def color_multiply(factor=None, a=None, b=None, clamp_factor=True, clamp_result=
 
     """
 
-    return nodes.Mix(factor=factor, a=a, b=b, blend_type='MULTIPLY', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type=RGBA, factor_mode='UNIFORM').result
+    return nodes.Mix(factor=factor, a=a, b=b, blend_type='MULTIPLY', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM').result
 
 
 def color_overlay(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False):
@@ -566,7 +566,7 @@ def color_overlay(factor=None, a=None, b=None, clamp_factor=True, clamp_result=F
 
     """
 
-    return nodes.Mix(factor=factor, a=a, b=b, blend_type='OVERLAY', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type=RGBA, factor_mode='UNIFORM').result
+    return nodes.Mix(factor=factor, a=a, b=b, blend_type='OVERLAY', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM').result
 
 
 def color_ramp(fac=None):
@@ -604,7 +604,7 @@ def color_saturation(factor=None, a=None, b=None, clamp_factor=True, clamp_resul
 
     """
 
-    return nodes.Mix(factor=factor, a=a, b=b, blend_type='SATURATION', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type=RGBA, factor_mode='UNIFORM').result
+    return nodes.Mix(factor=factor, a=a, b=b, blend_type='SATURATION', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM').result
 
 
 def color_screen(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False):
@@ -625,7 +625,7 @@ def color_screen(factor=None, a=None, b=None, clamp_factor=True, clamp_result=Fa
 
     """
 
-    return nodes.Mix(factor=factor, a=a, b=b, blend_type='SCREEN', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type=RGBA, factor_mode='UNIFORM').result
+    return nodes.Mix(factor=factor, a=a, b=b, blend_type='SCREEN', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM').result
 
 
 def color_soft_light(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False):
@@ -646,7 +646,7 @@ def color_soft_light(factor=None, a=None, b=None, clamp_factor=True, clamp_resul
 
     """
 
-    return nodes.Mix(factor=factor, a=a, b=b, blend_type='SOFT_LIGHT', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type=RGBA, factor_mode='UNIFORM').result
+    return nodes.Mix(factor=factor, a=a, b=b, blend_type='SOFT_LIGHT', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM').result
 
 
 def color_subtract(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False):
@@ -667,7 +667,7 @@ def color_subtract(factor=None, a=None, b=None, clamp_factor=True, clamp_result=
 
     """
 
-    return nodes.Mix(factor=factor, a=a, b=b, blend_type='SUBTRACT', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type=RGBA, factor_mode='UNIFORM').result
+    return nodes.Mix(factor=factor, a=a, b=b, blend_type='SUBTRACT', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM').result
 
 
 def color_value(factor=None, a=None, b=None, clamp_factor=True, clamp_result=False):
@@ -688,7 +688,7 @@ def color_value(factor=None, a=None, b=None, clamp_factor=True, clamp_result=Fal
 
     """
 
-    return nodes.Mix(factor=factor, a=a, b=b, blend_type='VALUE', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type=RGBA, factor_mode='UNIFORM').result
+    return nodes.Mix(factor=factor, a=a, b=b, blend_type='VALUE', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM').result
 
 
 def combine_hsl(hue=None, saturation=None, lightness=None, alpha=None):
@@ -882,7 +882,7 @@ def float_mix(factor=None, a=None, b=None, clamp_factor=True):
 
     """
 
-    return nodes.Mix(factor=factor, a=a, b=b, blend_type='MIX', clamp_factor=clamp_factor, clamp_result=False, data_type=FLOAT, factor_mode='UNIFORM').result
+    return nodes.Mix(factor=factor, a=a, b=b, blend_type='MIX', clamp_factor=clamp_factor, clamp_result=False, data_type='FLOAT', factor_mode='UNIFORM').result
 
 
 def fraction(value=None, clamp=False):
@@ -1442,7 +1442,7 @@ def random_boolean(probability=None, ID=None, seed=None):
 
     """
 
-    return nodes.RandomValue(min=None, max=None, probability=probability, ID=ID, seed=seed, data_type=BOOLEAN).value
+    return nodes.RandomValue(min=None, max=None, probability=probability, ID=ID, seed=seed, data_type='BOOLEAN').value
 
 
 def random_float(min=None, max=None, ID=None, seed=None):
@@ -1462,7 +1462,7 @@ def random_float(min=None, max=None, ID=None, seed=None):
 
     """
 
-    return nodes.RandomValue(min=min, max=max, probability=None, ID=ID, seed=seed, data_type=FLOAT).value
+    return nodes.RandomValue(min=min, max=max, probability=None, ID=ID, seed=seed, data_type='FLOAT').value
 
 
 def random_integer(min=None, max=None, ID=None, seed=None):
@@ -1482,7 +1482,7 @@ def random_integer(min=None, max=None, ID=None, seed=None):
 
     """
 
-    return nodes.RandomValue(min=min, max=max, probability=None, ID=ID, seed=seed, data_type=INT).value
+    return nodes.RandomValue(min=min, max=max, probability=None, ID=ID, seed=seed, data_type='INT').value
 
 
 def random_vector(min=None, max=None, ID=None, seed=None):
@@ -1502,7 +1502,7 @@ def random_vector(min=None, max=None, ID=None, seed=None):
 
     """
 
-    return nodes.RandomValue(min=min, max=max, probability=None, ID=ID, seed=seed, data_type=FLOAT_VECTOR).value
+    return nodes.RandomValue(min=min, max=max, probability=None, ID=ID, seed=seed, data_type='FLOAT_VECTOR').value
 
 
 def replace_string(string=None, find=None, replace=None):
@@ -1893,7 +1893,7 @@ def switch_boolean(switch=None, false=None, true=None):
 
     """
 
-    return nodes.Switch(switch=switch, false=false, true=true, input_type=BOOLEAN).output
+    return nodes.Switch(switch=switch, false=false, true=true, input_type='BOOLEAN').output
 
 
 def switch_collection(switch=None, false=None, true=None):
@@ -1931,7 +1931,7 @@ def switch_color(switch=None, false=None, true=None):
 
     """
 
-    return nodes.Switch(switch=switch, false=false, true=true, input_type=RGBA).output
+    return nodes.Switch(switch=switch, false=false, true=true, input_type='RGBA').output
 
 
 def switch_float(switch=None, false=None, true=None):
@@ -1950,7 +1950,7 @@ def switch_float(switch=None, false=None, true=None):
 
     """
 
-    return nodes.Switch(switch=switch, false=false, true=true, input_type=FLOAT).output
+    return nodes.Switch(switch=switch, false=false, true=true, input_type='FLOAT').output
 
 
 def switch_geometry(switch=None, false=None, true=None):
@@ -2007,7 +2007,7 @@ def switch_integer(switch=None, false=None, true=None):
 
     """
 
-    return nodes.Switch(switch=switch, false=false, true=true, input_type=INT).output
+    return nodes.Switch(switch=switch, false=false, true=true, input_type='INT').output
 
 
 def switch_material(switch=None, false=None, true=None):
@@ -2064,7 +2064,7 @@ def switch_string(switch=None, false=None, true=None):
 
     """
 
-    return nodes.Switch(switch=switch, false=false, true=true, input_type=STRING).output
+    return nodes.Switch(switch=switch, false=false, true=true, input_type='STRING').output
 
 
 def switch_texture(switch=None, false=None, true=None):
@@ -2102,7 +2102,7 @@ def switch_vector(switch=None, false=None, true=None):
 
     """
 
-    return nodes.Switch(switch=switch, false=false, true=true, input_type=VECTOR).output
+    return nodes.Switch(switch=switch, false=false, true=true, input_type='VECTOR').output
 
 
 def tan(value=None, clamp=False):
@@ -2231,7 +2231,7 @@ def vector_mix(factor=None, a=None, b=None, clamp_factor=True, factor_mode='UNIF
 
     """
 
-    return nodes.Mix(factor=factor, a=a, b=b, blend_type='MIX', clamp_factor=clamp_factor, clamp_result=False, data_type=VECTOR, factor_mode=factor_mode).result
+    return nodes.Mix(factor=factor, a=a, b=b, blend_type='MIX', clamp_factor=clamp_factor, clamp_result=False, data_type='VECTOR', factor_mode=factor_mode).result
 
 
 def wrap(value=None, max=None, min=None, clamp=False):

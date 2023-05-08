@@ -465,7 +465,7 @@ class Geometry(geosocks.Geometry):
 
         """
 
-        return self.attribute_node(nodes.NamedAttribute(name=name, data_type=BOOLEAN)).attribute
+        return self.attribute_node(nodes.NamedAttribute(name=name, data_type='BOOLEAN')).attribute
 
 
     def named_color(self, name=None):
@@ -482,7 +482,7 @@ class Geometry(geosocks.Geometry):
 
         """
 
-        return self.attribute_node(nodes.NamedAttribute(name=name, data_type=FLOAT_COLOR)).attribute
+        return self.attribute_node(nodes.NamedAttribute(name=name, data_type='FLOAT_COLOR')).attribute
 
 
     def named_float(self, name=None):
@@ -499,7 +499,7 @@ class Geometry(geosocks.Geometry):
 
         """
 
-        return self.attribute_node(nodes.NamedAttribute(name=name, data_type=FLOAT)).attribute
+        return self.attribute_node(nodes.NamedAttribute(name=name, data_type='FLOAT')).attribute
 
 
     def named_integer(self, name=None):
@@ -516,7 +516,7 @@ class Geometry(geosocks.Geometry):
 
         """
 
-        return self.attribute_node(nodes.NamedAttribute(name=name, data_type=INT)).attribute
+        return self.attribute_node(nodes.NamedAttribute(name=name, data_type='INT')).attribute
 
 
     def named_vector(self, name=None):
@@ -533,7 +533,7 @@ class Geometry(geosocks.Geometry):
 
         """
 
-        return self.attribute_node(nodes.NamedAttribute(name=name, data_type=FLOAT_VECTOR)).attribute
+        return self.attribute_node(nodes.NamedAttribute(name=name, data_type='FLOAT_VECTOR')).attribute
 
 
     @property
@@ -689,7 +689,7 @@ class Geometry(geosocks.Geometry):
 
         """
 
-        return nodes.RandomValue(min=None, max=None, probability=probability, ID=ID, seed=seed, data_type=BOOLEAN).value
+        return nodes.RandomValue(min=None, max=None, probability=probability, ID=ID, seed=seed, data_type='BOOLEAN').value
 
 
     @staticmethod
@@ -710,7 +710,7 @@ class Geometry(geosocks.Geometry):
 
         """
 
-        return nodes.RandomValue(min=min, max=max, probability=None, ID=ID, seed=seed, data_type=FLOAT).value
+        return nodes.RandomValue(min=min, max=max, probability=None, ID=ID, seed=seed, data_type='FLOAT').value
 
 
     @staticmethod
@@ -731,7 +731,7 @@ class Geometry(geosocks.Geometry):
 
         """
 
-        return nodes.RandomValue(min=min, max=max, probability=None, ID=ID, seed=seed, data_type=INT).value
+        return nodes.RandomValue(min=min, max=max, probability=None, ID=ID, seed=seed, data_type='INT').value
 
 
     @staticmethod
@@ -752,7 +752,7 @@ class Geometry(geosocks.Geometry):
 
         """
 
-        return nodes.RandomValue(min=min, max=max, probability=None, ID=ID, seed=seed, data_type=FLOAT_VECTOR).value
+        return nodes.RandomValue(min=min, max=max, probability=None, ID=ID, seed=seed, data_type='FLOAT_VECTOR').value
 
 
     def raycast(self, target_geometry=None, attribute=None, source_position=None, ray_direction=None, ray_length=None, mapping='INTERPOLATED'):
@@ -1045,7 +1045,7 @@ class Geometry(geosocks.Geometry):
 
         """
 
-        return self.stack(nodes.StoreNamedAttribute(geometry=self, selection=selection, name=name, value=value, data_type=BOOLEAN, domain=domain))
+        return self.stack(nodes.StoreNamedAttribute(geometry=self, selection=selection, name=name, value=value, data_type='BOOLEAN', domain=domain))
 
 
     def store_named_color(self, selection=None, name=None, value=None, domain='POINT'):
@@ -1065,7 +1065,7 @@ class Geometry(geosocks.Geometry):
 
         """
 
-        return self.stack(nodes.StoreNamedAttribute(geometry=self, selection=selection, name=name, value=value, data_type=FLOAT_COLOR, domain=domain))
+        return self.stack(nodes.StoreNamedAttribute(geometry=self, selection=selection, name=name, value=value, data_type='FLOAT_COLOR', domain=domain))
 
 
     def store_named_float(self, selection=None, name=None, value=None, domain='POINT'):
@@ -1085,7 +1085,7 @@ class Geometry(geosocks.Geometry):
 
         """
 
-        return self.stack(nodes.StoreNamedAttribute(geometry=self, selection=selection, name=name, value=value, data_type=FLOAT, domain=domain))
+        return self.stack(nodes.StoreNamedAttribute(geometry=self, selection=selection, name=name, value=value, data_type='FLOAT', domain=domain))
 
 
     def store_named_integer(self, selection=None, name=None, value=None, domain='POINT'):
@@ -1105,7 +1105,7 @@ class Geometry(geosocks.Geometry):
 
         """
 
-        return self.stack(nodes.StoreNamedAttribute(geometry=self, selection=selection, name=name, value=value, data_type=INT, domain=domain))
+        return self.stack(nodes.StoreNamedAttribute(geometry=self, selection=selection, name=name, value=value, data_type='INT', domain=domain))
 
 
     def store_named_vector(self, selection=None, name=None, value=None, domain='POINT'):
@@ -1125,7 +1125,7 @@ class Geometry(geosocks.Geometry):
 
         """
 
-        return self.stack(nodes.StoreNamedAttribute(geometry=self, selection=selection, name=name, value=value, data_type=FLOAT_VECTOR, domain=domain))
+        return self.stack(nodes.StoreNamedAttribute(geometry=self, selection=selection, name=name, value=value, data_type='FLOAT_VECTOR', domain=domain))
 
 
     def switch(self, switch=None, true=None):
@@ -3639,7 +3639,7 @@ class Float(geosocks.Float):
 
         """
 
-        return cls(nodes.RandomValue(min=min, max=max, probability=None, ID=ID, seed=seed, data_type=FLOAT).value)
+        return cls(nodes.RandomValue(min=min, max=max, probability=None, ID=ID, seed=seed, data_type='FLOAT').value)
 
 
     @classmethod
@@ -3932,7 +3932,7 @@ class Float(geosocks.Float):
 
         """
 
-        return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=epsilon, data_type=FLOAT, mode='ELEMENT', operation=operation).result
+        return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=epsilon, data_type='FLOAT', mode='ELEMENT', operation=operation).result
 
 
     def cos(self, value=None, clamp=False):
@@ -4004,7 +4004,7 @@ class Float(geosocks.Float):
 
         """
 
-        return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=epsilon, data_type=FLOAT, mode='ELEMENT', operation='EQUAL').result
+        return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=epsilon, data_type='FLOAT', mode='ELEMENT', operation='EQUAL').result
 
 
     def exp(self, clamp=False):
@@ -4120,7 +4120,7 @@ class Float(geosocks.Float):
 
         """
 
-        return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type=FLOAT, mode='ELEMENT', operation='GREATER_EQUAL').result
+        return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type='FLOAT', mode='ELEMENT', operation='GREATER_EQUAL').result
 
 
     def greater_than(self, b=None):
@@ -4137,7 +4137,7 @@ class Float(geosocks.Float):
 
         """
 
-        return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type=FLOAT, mode='ELEMENT', operation='GREATER_THAN').result
+        return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type='FLOAT', mode='ELEMENT', operation='GREATER_THAN').result
 
 
     def inverse_sqrt(self, clamp=False):
@@ -4171,7 +4171,7 @@ class Float(geosocks.Float):
 
         """
 
-        return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type=FLOAT, mode='ELEMENT', operation='LESS_EQUAL').result
+        return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type='FLOAT', mode='ELEMENT', operation='LESS_EQUAL').result
 
 
     def less_than(self, b=None):
@@ -4188,7 +4188,7 @@ class Float(geosocks.Float):
 
         """
 
-        return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type=FLOAT, mode='ELEMENT', operation='LESS_THAN').result
+        return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type='FLOAT', mode='ELEMENT', operation='LESS_THAN').result
 
 
     def log(self, base=None, clamp=False):
@@ -4247,7 +4247,7 @@ class Float(geosocks.Float):
 
         """
 
-        return nodes.MapRange(value=self, from_min=from_min, from_max=from_max, to_min=to_min, to_max=to_max, steps=steps, vector=None, clamp=clamp, data_type=FLOAT, interpolation_type=interpolation_type).result
+        return nodes.MapRange(value=self, from_min=from_min, from_max=from_max, to_min=to_min, to_max=to_max, steps=steps, vector=None, clamp=clamp, data_type='FLOAT', interpolation_type=interpolation_type).result
 
 
     def map_range_linear(self, from_min=None, from_max=None, to_min=None, to_max=None, clamp=True):
@@ -4268,7 +4268,7 @@ class Float(geosocks.Float):
 
         """
 
-        return nodes.MapRange(value=self, from_min=from_min, from_max=from_max, to_min=to_min, to_max=to_max, steps=None, vector=None, clamp=clamp, data_type=FLOAT, interpolation_type='LINEAR').result
+        return nodes.MapRange(value=self, from_min=from_min, from_max=from_max, to_min=to_min, to_max=to_max, steps=None, vector=None, clamp=clamp, data_type='FLOAT', interpolation_type='LINEAR').result
 
 
     def map_range_smooth(self, from_min=None, from_max=None, to_min=None, to_max=None, clamp=True):
@@ -4289,7 +4289,7 @@ class Float(geosocks.Float):
 
         """
 
-        return nodes.MapRange(value=self, from_min=from_min, from_max=from_max, to_min=to_min, to_max=to_max, steps=None, vector=None, clamp=clamp, data_type=FLOAT, interpolation_type='SMOOTHSTEP').result
+        return nodes.MapRange(value=self, from_min=from_min, from_max=from_max, to_min=to_min, to_max=to_max, steps=None, vector=None, clamp=clamp, data_type='FLOAT', interpolation_type='SMOOTHSTEP').result
 
 
     def map_range_smoother(self, from_min=None, from_max=None, to_min=None, to_max=None, clamp=True):
@@ -4310,7 +4310,7 @@ class Float(geosocks.Float):
 
         """
 
-        return nodes.MapRange(value=self, from_min=from_min, from_max=from_max, to_min=to_min, to_max=to_max, steps=None, vector=None, clamp=clamp, data_type=FLOAT, interpolation_type='SMOOTHERSTEP').result
+        return nodes.MapRange(value=self, from_min=from_min, from_max=from_max, to_min=to_min, to_max=to_max, steps=None, vector=None, clamp=clamp, data_type='FLOAT', interpolation_type='SMOOTHERSTEP').result
 
 
     def map_range_stepped(self, from_min=None, from_max=None, to_min=None, to_max=None, steps=None, clamp=True):
@@ -4332,7 +4332,7 @@ class Float(geosocks.Float):
 
         """
 
-        return nodes.MapRange(value=self, from_min=from_min, from_max=from_max, to_min=to_min, to_max=to_max, steps=steps, vector=None, clamp=clamp, data_type=FLOAT, interpolation_type='STEPPED').result
+        return nodes.MapRange(value=self, from_min=from_min, from_max=from_max, to_min=to_min, to_max=to_max, steps=steps, vector=None, clamp=clamp, data_type='FLOAT', interpolation_type='STEPPED').result
 
 
     def math_ceil(self, clamp=False):
@@ -4563,7 +4563,7 @@ class Float(geosocks.Float):
 
         """
 
-        return nodes.Mix(factor=factor, a=self, b=value, blend_type='MIX', clamp_factor=clamp_factor, clamp_result=False, data_type=FLOAT, factor_mode='UNIFORM').result
+        return nodes.Mix(factor=factor, a=self, b=value, blend_type='MIX', clamp_factor=clamp_factor, clamp_result=False, data_type='FLOAT', factor_mode='UNIFORM').result
 
 
     def modulo(self, value=None, clamp=False):
@@ -4637,7 +4637,7 @@ class Float(geosocks.Float):
 
         """
 
-        return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=epsilon, data_type=FLOAT, mode='ELEMENT', operation='NOT_EQUAL').result
+        return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=epsilon, data_type='FLOAT', mode='ELEMENT', operation='NOT_EQUAL').result
 
 
     def ping_pong(self, scale=None, clamp=False):
@@ -4867,7 +4867,7 @@ class Float(geosocks.Float):
 
         """
 
-        return nodes.Switch(switch=switch, false=self, true=true, input_type=FLOAT).output
+        return nodes.Switch(switch=switch, false=self, true=true, input_type='FLOAT').output
 
 
     def tan(self, value=None, clamp=False):
@@ -5120,7 +5120,7 @@ class Color(geosocks.Color):
 
         """
 
-        return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type=RGBA, mode='ELEMENT', operation='BRIGHTER').result
+        return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type='RGBA', mode='ELEMENT', operation='BRIGHTER').result
 
 
     def darker(self, b=None):
@@ -5137,7 +5137,7 @@ class Color(geosocks.Color):
 
         """
 
-        return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type=RGBA, mode='ELEMENT', operation='DARKER').result
+        return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type='RGBA', mode='ELEMENT', operation='DARKER').result
 
 
     def equal(self, b=None, epsilon=None):
@@ -5155,7 +5155,7 @@ class Color(geosocks.Color):
 
         """
 
-        return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=epsilon, data_type=RGBA, mode='ELEMENT', operation='EQUAL').result
+        return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=epsilon, data_type='RGBA', mode='ELEMENT', operation='EQUAL').result
 
 
     def equal(self, b=None, epsilon=None):
@@ -5173,7 +5173,7 @@ class Color(geosocks.Color):
 
         """
 
-        return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=epsilon, data_type=RGBA, mode='ELEMENT', operation='EQUAL').result
+        return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=epsilon, data_type='RGBA', mode='ELEMENT', operation='EQUAL').result
 
 
     def mix(self, factor=None, color=None, blend_type='MIX', clamp_factor=True, clamp_result=False):
@@ -5194,7 +5194,7 @@ class Color(geosocks.Color):
 
         """
 
-        return nodes.Mix(factor=factor, a=self, b=color, blend_type=blend_type, clamp_factor=clamp_factor, clamp_result=clamp_result, data_type=RGBA, factor_mode='UNIFORM').result
+        return nodes.Mix(factor=factor, a=self, b=color, blend_type=blend_type, clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM').result
 
 
     def mix_add(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
@@ -5214,7 +5214,7 @@ class Color(geosocks.Color):
 
         """
 
-        return nodes.Mix(factor=factor, a=self, b=color, blend_type='ADD', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type=RGBA, factor_mode='UNIFORM').result
+        return nodes.Mix(factor=factor, a=self, b=color, blend_type='ADD', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM').result
 
 
     def mix_burn(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
@@ -5234,7 +5234,7 @@ class Color(geosocks.Color):
 
         """
 
-        return nodes.Mix(factor=factor, a=self, b=color, blend_type='BURN', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type=RGBA, factor_mode='UNIFORM').result
+        return nodes.Mix(factor=factor, a=self, b=color, blend_type='BURN', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM').result
 
 
     def mix_color(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
@@ -5254,7 +5254,7 @@ class Color(geosocks.Color):
 
         """
 
-        return nodes.Mix(factor=factor, a=self, b=color, blend_type='COLOR', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type=RGBA, factor_mode='UNIFORM').result
+        return nodes.Mix(factor=factor, a=self, b=color, blend_type='COLOR', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM').result
 
 
     def mix_darken(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
@@ -5274,7 +5274,7 @@ class Color(geosocks.Color):
 
         """
 
-        return nodes.Mix(factor=factor, a=self, b=color, blend_type='DARKEN', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type=RGBA, factor_mode='UNIFORM').result
+        return nodes.Mix(factor=factor, a=self, b=color, blend_type='DARKEN', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM').result
 
 
     def mix_difference(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
@@ -5294,7 +5294,7 @@ class Color(geosocks.Color):
 
         """
 
-        return nodes.Mix(factor=factor, a=self, b=color, blend_type='DIFFERENCE', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type=RGBA, factor_mode='UNIFORM').result
+        return nodes.Mix(factor=factor, a=self, b=color, blend_type='DIFFERENCE', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM').result
 
 
     def mix_divide(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
@@ -5314,7 +5314,7 @@ class Color(geosocks.Color):
 
         """
 
-        return nodes.Mix(factor=factor, a=self, b=color, blend_type='DIVIDE', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type=RGBA, factor_mode='UNIFORM').result
+        return nodes.Mix(factor=factor, a=self, b=color, blend_type='DIVIDE', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM').result
 
 
     def mix_dodge(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
@@ -5334,7 +5334,7 @@ class Color(geosocks.Color):
 
         """
 
-        return nodes.Mix(factor=factor, a=self, b=color, blend_type='DODGE', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type=RGBA, factor_mode='UNIFORM').result
+        return nodes.Mix(factor=factor, a=self, b=color, blend_type='DODGE', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM').result
 
 
     def mix_hue(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
@@ -5354,7 +5354,7 @@ class Color(geosocks.Color):
 
         """
 
-        return nodes.Mix(factor=factor, a=self, b=color, blend_type='HUE', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type=RGBA, factor_mode='UNIFORM').result
+        return nodes.Mix(factor=factor, a=self, b=color, blend_type='HUE', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM').result
 
 
     def mix_lighten(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
@@ -5374,7 +5374,7 @@ class Color(geosocks.Color):
 
         """
 
-        return nodes.Mix(factor=factor, a=self, b=color, blend_type='LIGHTEN', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type=RGBA, factor_mode='UNIFORM').result
+        return nodes.Mix(factor=factor, a=self, b=color, blend_type='LIGHTEN', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM').result
 
 
     def mix_linear_light(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
@@ -5394,7 +5394,7 @@ class Color(geosocks.Color):
 
         """
 
-        return nodes.Mix(factor=factor, a=self, b=color, blend_type='LINEAR_LIGHT', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type=RGBA, factor_mode='UNIFORM').result
+        return nodes.Mix(factor=factor, a=self, b=color, blend_type='LINEAR_LIGHT', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM').result
 
 
     def mix_multiply(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
@@ -5414,7 +5414,7 @@ class Color(geosocks.Color):
 
         """
 
-        return nodes.Mix(factor=factor, a=self, b=color, blend_type='MULTIPLY', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type=RGBA, factor_mode='UNIFORM').result
+        return nodes.Mix(factor=factor, a=self, b=color, blend_type='MULTIPLY', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM').result
 
 
     def mix_overlay(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
@@ -5434,7 +5434,7 @@ class Color(geosocks.Color):
 
         """
 
-        return nodes.Mix(factor=factor, a=self, b=color, blend_type='OVERLAY', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type=RGBA, factor_mode='UNIFORM').result
+        return nodes.Mix(factor=factor, a=self, b=color, blend_type='OVERLAY', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM').result
 
 
     def mix_saturation(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
@@ -5454,7 +5454,7 @@ class Color(geosocks.Color):
 
         """
 
-        return nodes.Mix(factor=factor, a=self, b=color, blend_type='SATURATION', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type=RGBA, factor_mode='UNIFORM').result
+        return nodes.Mix(factor=factor, a=self, b=color, blend_type='SATURATION', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM').result
 
 
     def mix_screen(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
@@ -5474,7 +5474,7 @@ class Color(geosocks.Color):
 
         """
 
-        return nodes.Mix(factor=factor, a=self, b=color, blend_type='SCREEN', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type=RGBA, factor_mode='UNIFORM').result
+        return nodes.Mix(factor=factor, a=self, b=color, blend_type='SCREEN', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM').result
 
 
     def mix_soft_light(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
@@ -5494,7 +5494,7 @@ class Color(geosocks.Color):
 
         """
 
-        return nodes.Mix(factor=factor, a=self, b=color, blend_type='SOFT_LIGHT', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type=RGBA, factor_mode='UNIFORM').result
+        return nodes.Mix(factor=factor, a=self, b=color, blend_type='SOFT_LIGHT', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM').result
 
 
     def mix_subtract(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
@@ -5514,7 +5514,7 @@ class Color(geosocks.Color):
 
         """
 
-        return nodes.Mix(factor=factor, a=self, b=color, blend_type='SUBTRACT', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type=RGBA, factor_mode='UNIFORM').result
+        return nodes.Mix(factor=factor, a=self, b=color, blend_type='SUBTRACT', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM').result
 
 
     def mix_value(self, factor=None, color=None, clamp_factor=True, clamp_result=False):
@@ -5534,7 +5534,7 @@ class Color(geosocks.Color):
 
         """
 
-        return nodes.Mix(factor=factor, a=self, b=color, blend_type='VALUE', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type=RGBA, factor_mode='UNIFORM').result
+        return nodes.Mix(factor=factor, a=self, b=color, blend_type='VALUE', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM').result
 
 
     @property
@@ -5584,7 +5584,7 @@ class Color(geosocks.Color):
 
         """
 
-        return nodes.Switch(switch=switch, false=self, true=true, input_type=RGBA).output
+        return nodes.Switch(switch=switch, false=self, true=true, input_type='RGBA').output
 
 
 
@@ -5649,7 +5649,7 @@ class Vector(geosocks.Vector):
 
         """
 
-        return cls(nodes.RandomValue(min=min, max=max, probability=None, ID=ID, seed=seed, data_type=FLOAT_VECTOR).value)
+        return cls(nodes.RandomValue(min=min, max=max, probability=None, ID=ID, seed=seed, data_type='FLOAT_VECTOR').value)
 
 
     @classmethod
@@ -5750,7 +5750,7 @@ class Vector(geosocks.Vector):
 
         """
 
-        return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=epsilon, data_type=VECTOR, mode='AVERAGE', operation='EQUAL').result
+        return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=epsilon, data_type='VECTOR', mode='AVERAGE', operation='EQUAL').result
 
 
     def average_greater_equal(self, b=None):
@@ -5767,7 +5767,7 @@ class Vector(geosocks.Vector):
 
         """
 
-        return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type=VECTOR, mode='AVERAGE', operation='GREATER_EQUAL').result
+        return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type='VECTOR', mode='AVERAGE', operation='GREATER_EQUAL').result
 
 
     def average_greater_than(self, b=None):
@@ -5784,7 +5784,7 @@ class Vector(geosocks.Vector):
 
         """
 
-        return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type=VECTOR, mode='AVERAGE', operation='GREATER_THAN').result
+        return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type='VECTOR', mode='AVERAGE', operation='GREATER_THAN').result
 
 
     def average_less_equal(self, b=None):
@@ -5801,7 +5801,7 @@ class Vector(geosocks.Vector):
 
         """
 
-        return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type=VECTOR, mode='AVERAGE', operation='LESS_EQUAL').result
+        return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type='VECTOR', mode='AVERAGE', operation='LESS_EQUAL').result
 
 
     def average_less_than(self, b=None):
@@ -5818,7 +5818,7 @@ class Vector(geosocks.Vector):
 
         """
 
-        return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type=VECTOR, mode='AVERAGE', operation='LESS_THAN').result
+        return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type='VECTOR', mode='AVERAGE', operation='LESS_THAN').result
 
 
     def average_not_equal(self, b=None, epsilon=None):
@@ -5836,7 +5836,7 @@ class Vector(geosocks.Vector):
 
         """
 
-        return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=epsilon, data_type=VECTOR, mode='AVERAGE', operation='NOT_EQUAL').result
+        return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=epsilon, data_type='VECTOR', mode='AVERAGE', operation='NOT_EQUAL').result
 
 
     def ceil(self):
@@ -5872,7 +5872,7 @@ class Vector(geosocks.Vector):
 
         """
 
-        return nodes.Compare(a=self, b=b, c=c, angle=angle, epsilon=epsilon, data_type=VECTOR, mode=mode, operation=operation).result
+        return nodes.Compare(a=self, b=b, c=c, angle=angle, epsilon=epsilon, data_type='VECTOR', mode=mode, operation=operation).result
 
 
     def cos(self):
@@ -5970,7 +5970,7 @@ class Vector(geosocks.Vector):
 
         """
 
-        return nodes.Compare(a=self, b=b, c=None, angle=angle, epsilon=epsilon, data_type=VECTOR, mode='DIRECTION', operation='EQUAL').result
+        return nodes.Compare(a=self, b=b, c=None, angle=angle, epsilon=epsilon, data_type='VECTOR', mode='DIRECTION', operation='EQUAL').result
 
 
     def direction_greater_equal(self, b=None, angle=None):
@@ -5988,7 +5988,7 @@ class Vector(geosocks.Vector):
 
         """
 
-        return nodes.Compare(a=self, b=b, c=None, angle=angle, epsilon=None, data_type=VECTOR, mode='DIRECTION', operation='GREATER_EQUAL').result
+        return nodes.Compare(a=self, b=b, c=None, angle=angle, epsilon=None, data_type='VECTOR', mode='DIRECTION', operation='GREATER_EQUAL').result
 
 
     def direction_greater_than(self, b=None, angle=None):
@@ -6006,7 +6006,7 @@ class Vector(geosocks.Vector):
 
         """
 
-        return nodes.Compare(a=self, b=b, c=None, angle=angle, epsilon=None, data_type=VECTOR, mode='DIRECTION', operation='GREATER_THAN').result
+        return nodes.Compare(a=self, b=b, c=None, angle=angle, epsilon=None, data_type='VECTOR', mode='DIRECTION', operation='GREATER_THAN').result
 
 
     def direction_less_equal(self, b=None, angle=None):
@@ -6024,7 +6024,7 @@ class Vector(geosocks.Vector):
 
         """
 
-        return nodes.Compare(a=self, b=b, c=None, angle=angle, epsilon=None, data_type=VECTOR, mode='DIRECTION', operation='LESS_EQUAL').result
+        return nodes.Compare(a=self, b=b, c=None, angle=angle, epsilon=None, data_type='VECTOR', mode='DIRECTION', operation='LESS_EQUAL').result
 
 
     def direction_less_than(self, b=None, angle=None):
@@ -6042,7 +6042,7 @@ class Vector(geosocks.Vector):
 
         """
 
-        return nodes.Compare(a=self, b=b, c=None, angle=angle, epsilon=None, data_type=VECTOR, mode='DIRECTION', operation='LESS_THAN').result
+        return nodes.Compare(a=self, b=b, c=None, angle=angle, epsilon=None, data_type='VECTOR', mode='DIRECTION', operation='LESS_THAN').result
 
 
     def direction_not_equal(self, b=None, angle=None, epsilon=None):
@@ -6061,7 +6061,7 @@ class Vector(geosocks.Vector):
 
         """
 
-        return nodes.Compare(a=self, b=b, c=None, angle=angle, epsilon=epsilon, data_type=VECTOR, mode='DIRECTION', operation='NOT_EQUAL').result
+        return nodes.Compare(a=self, b=b, c=None, angle=angle, epsilon=epsilon, data_type='VECTOR', mode='DIRECTION', operation='NOT_EQUAL').result
 
 
     def distance(self, vector=None):
@@ -6165,7 +6165,7 @@ class Vector(geosocks.Vector):
 
         """
 
-        return nodes.Compare(a=self, b=b, c=c, angle=None, epsilon=epsilon, data_type=VECTOR, mode='DOT_PRODUCT', operation='EQUAL').result
+        return nodes.Compare(a=self, b=b, c=c, angle=None, epsilon=epsilon, data_type='VECTOR', mode='DOT_PRODUCT', operation='EQUAL').result
 
 
     def dot_product_greater_equal(self, b=None, c=None):
@@ -6183,7 +6183,7 @@ class Vector(geosocks.Vector):
 
         """
 
-        return nodes.Compare(a=self, b=b, c=c, angle=None, epsilon=None, data_type=VECTOR, mode='DOT_PRODUCT', operation='GREATER_EQUAL').result
+        return nodes.Compare(a=self, b=b, c=c, angle=None, epsilon=None, data_type='VECTOR', mode='DOT_PRODUCT', operation='GREATER_EQUAL').result
 
 
     def dot_product_greater_than(self, b=None, c=None):
@@ -6201,7 +6201,7 @@ class Vector(geosocks.Vector):
 
         """
 
-        return nodes.Compare(a=self, b=b, c=c, angle=None, epsilon=None, data_type=VECTOR, mode='DOT_PRODUCT', operation='GREATER_THAN').result
+        return nodes.Compare(a=self, b=b, c=c, angle=None, epsilon=None, data_type='VECTOR', mode='DOT_PRODUCT', operation='GREATER_THAN').result
 
 
     def dot_product_less_equal(self, b=None, c=None):
@@ -6219,7 +6219,7 @@ class Vector(geosocks.Vector):
 
         """
 
-        return nodes.Compare(a=self, b=b, c=c, angle=None, epsilon=None, data_type=VECTOR, mode='DOT_PRODUCT', operation='LESS_EQUAL').result
+        return nodes.Compare(a=self, b=b, c=c, angle=None, epsilon=None, data_type='VECTOR', mode='DOT_PRODUCT', operation='LESS_EQUAL').result
 
 
     def dot_product_less_than(self, b=None, c=None):
@@ -6237,7 +6237,7 @@ class Vector(geosocks.Vector):
 
         """
 
-        return nodes.Compare(a=self, b=b, c=c, angle=None, epsilon=None, data_type=VECTOR, mode='DOT_PRODUCT', operation='LESS_THAN').result
+        return nodes.Compare(a=self, b=b, c=c, angle=None, epsilon=None, data_type='VECTOR', mode='DOT_PRODUCT', operation='LESS_THAN').result
 
 
     def dot_product_not_equal(self, b=None, c=None, epsilon=None):
@@ -6256,7 +6256,7 @@ class Vector(geosocks.Vector):
 
         """
 
-        return nodes.Compare(a=self, b=b, c=c, angle=None, epsilon=epsilon, data_type=VECTOR, mode='DOT_PRODUCT', operation='NOT_EQUAL').result
+        return nodes.Compare(a=self, b=b, c=c, angle=None, epsilon=epsilon, data_type='VECTOR', mode='DOT_PRODUCT', operation='NOT_EQUAL').result
 
 
     def elements_equal(self, b=None, epsilon=None):
@@ -6274,7 +6274,7 @@ class Vector(geosocks.Vector):
 
         """
 
-        return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=epsilon, data_type=VECTOR, mode='ELEMENT', operation='EQUAL').result
+        return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=epsilon, data_type='VECTOR', mode='ELEMENT', operation='EQUAL').result
 
 
     def elements_greater_equal(self, b=None):
@@ -6291,7 +6291,7 @@ class Vector(geosocks.Vector):
 
         """
 
-        return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type=VECTOR, mode='ELEMENT', operation='GREATER_EQUAL').result
+        return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type='VECTOR', mode='ELEMENT', operation='GREATER_EQUAL').result
 
 
     def elements_greater_than(self, b=None):
@@ -6308,7 +6308,7 @@ class Vector(geosocks.Vector):
 
         """
 
-        return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type=VECTOR, mode='ELEMENT', operation='GREATER_THAN').result
+        return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type='VECTOR', mode='ELEMENT', operation='GREATER_THAN').result
 
 
     def elements_less_equal(self, b=None):
@@ -6325,7 +6325,7 @@ class Vector(geosocks.Vector):
 
         """
 
-        return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type=VECTOR, mode='ELEMENT', operation='LESS_EQUAL').result
+        return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type='VECTOR', mode='ELEMENT', operation='LESS_EQUAL').result
 
 
     def elements_less_than(self, b=None):
@@ -6342,7 +6342,7 @@ class Vector(geosocks.Vector):
 
         """
 
-        return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type=VECTOR, mode='ELEMENT', operation='LESS_THAN').result
+        return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type='VECTOR', mode='ELEMENT', operation='LESS_THAN').result
 
 
     def elements_not_equal(self, b=None, epsilon=None):
@@ -6360,7 +6360,7 @@ class Vector(geosocks.Vector):
 
         """
 
-        return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=epsilon, data_type=VECTOR, mode='ELEMENT', operation='NOT_EQUAL').result
+        return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=epsilon, data_type='VECTOR', mode='ELEMENT', operation='NOT_EQUAL').result
 
 
     def face_forward(self, incident=None, reference=None):
@@ -6453,7 +6453,7 @@ class Vector(geosocks.Vector):
 
         """
 
-        return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=epsilon, data_type=VECTOR, mode='LENGTH', operation='EQUAL').result
+        return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=epsilon, data_type='VECTOR', mode='LENGTH', operation='EQUAL').result
 
 
     def length_greater_equal(self, b=None):
@@ -6470,7 +6470,7 @@ class Vector(geosocks.Vector):
 
         """
 
-        return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type=VECTOR, mode='LENGTH', operation='GREATER_EQUAL').result
+        return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type='VECTOR', mode='LENGTH', operation='GREATER_EQUAL').result
 
 
     def length_greater_than(self, b=None):
@@ -6487,7 +6487,7 @@ class Vector(geosocks.Vector):
 
         """
 
-        return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type=VECTOR, mode='LENGTH', operation='GREATER_THAN').result
+        return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type='VECTOR', mode='LENGTH', operation='GREATER_THAN').result
 
 
     def length_less_equal(self, b=None):
@@ -6504,7 +6504,7 @@ class Vector(geosocks.Vector):
 
         """
 
-        return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type=VECTOR, mode='LENGTH', operation='LESS_EQUAL').result
+        return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type='VECTOR', mode='LENGTH', operation='LESS_EQUAL').result
 
 
     def length_less_than(self, b=None):
@@ -6521,7 +6521,7 @@ class Vector(geosocks.Vector):
 
         """
 
-        return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type=VECTOR, mode='LENGTH', operation='LESS_THAN').result
+        return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type='VECTOR', mode='LENGTH', operation='LESS_THAN').result
 
 
     def length_not_equal(self, b=None, epsilon=None):
@@ -6539,7 +6539,7 @@ class Vector(geosocks.Vector):
 
         """
 
-        return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=epsilon, data_type=VECTOR, mode='LENGTH', operation='NOT_EQUAL').result
+        return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=epsilon, data_type='VECTOR', mode='LENGTH', operation='NOT_EQUAL').result
 
 
     def map_range(self, from_min=None, from_max=None, to_min=None, to_max=None, steps=None, clamp=True, interpolation_type='LINEAR'):
@@ -6562,7 +6562,7 @@ class Vector(geosocks.Vector):
 
         """
 
-        return nodes.MapRange(value=None, from_min=from_min, from_max=from_max, to_min=to_min, to_max=to_max, steps=steps, vector=self, clamp=clamp, data_type=FLOAT_VECTOR, interpolation_type=interpolation_type).vector
+        return nodes.MapRange(value=None, from_min=from_min, from_max=from_max, to_min=to_min, to_max=to_max, steps=steps, vector=self, clamp=clamp, data_type='FLOAT_VECTOR', interpolation_type=interpolation_type).vector
 
 
     def map_range_linear(self, from_min=None, from_max=None, to_min=None, to_max=None, clamp=True):
@@ -6583,7 +6583,7 @@ class Vector(geosocks.Vector):
 
         """
 
-        return nodes.MapRange(value=None, from_min=from_min, from_max=from_max, to_min=to_min, to_max=to_max, steps=None, vector=self, clamp=clamp, data_type=FLOAT_VECTOR, interpolation_type='LINEAR').vector
+        return nodes.MapRange(value=None, from_min=from_min, from_max=from_max, to_min=to_min, to_max=to_max, steps=None, vector=self, clamp=clamp, data_type='FLOAT_VECTOR', interpolation_type='LINEAR').vector
 
 
     def map_range_smooth(self, from_min=None, from_max=None, to_min=None, to_max=None, clamp=True):
@@ -6604,7 +6604,7 @@ class Vector(geosocks.Vector):
 
         """
 
-        return nodes.MapRange(value=None, from_min=from_min, from_max=from_max, to_min=to_min, to_max=to_max, steps=None, vector=self, clamp=clamp, data_type=FLOAT_VECTOR, interpolation_type='SMOOTHSTEP').vector
+        return nodes.MapRange(value=None, from_min=from_min, from_max=from_max, to_min=to_min, to_max=to_max, steps=None, vector=self, clamp=clamp, data_type='FLOAT_VECTOR', interpolation_type='SMOOTHSTEP').vector
 
 
     def map_range_smoother(self, from_min=None, from_max=None, to_min=None, to_max=None, clamp=True):
@@ -6625,7 +6625,7 @@ class Vector(geosocks.Vector):
 
         """
 
-        return nodes.MapRange(value=None, from_min=from_min, from_max=from_max, to_min=to_min, to_max=to_max, steps=None, vector=self, clamp=clamp, data_type=FLOAT_VECTOR, interpolation_type='SMOOTHERSTEP').vector
+        return nodes.MapRange(value=None, from_min=from_min, from_max=from_max, to_min=to_min, to_max=to_max, steps=None, vector=self, clamp=clamp, data_type='FLOAT_VECTOR', interpolation_type='SMOOTHERSTEP').vector
 
 
     def map_range_stepped(self, from_min=None, from_max=None, to_min=None, to_max=None, steps=None, clamp=True):
@@ -6647,7 +6647,7 @@ class Vector(geosocks.Vector):
 
         """
 
-        return nodes.MapRange(value=None, from_min=from_min, from_max=from_max, to_min=to_min, to_max=to_max, steps=steps, vector=self, clamp=clamp, data_type=FLOAT_VECTOR, interpolation_type='STEPPED').vector
+        return nodes.MapRange(value=None, from_min=from_min, from_max=from_max, to_min=to_min, to_max=to_max, steps=steps, vector=self, clamp=clamp, data_type='FLOAT_VECTOR', interpolation_type='STEPPED').vector
 
 
     def max(self, vector=None):
@@ -6735,7 +6735,7 @@ class Vector(geosocks.Vector):
 
         """
 
-        return nodes.Mix(factor=factor, a=self, b=vector, blend_type='MIX', clamp_factor=clamp_factor, clamp_result=False, data_type=VECTOR, factor_mode=factor_mode).result
+        return nodes.Mix(factor=factor, a=self, b=vector, blend_type='MIX', clamp_factor=clamp_factor, clamp_result=False, data_type='VECTOR', factor_mode=factor_mode).result
 
 
     def mix_non_uniform(self, factor=None, vector=None, clamp_factor=True):
@@ -6754,7 +6754,7 @@ class Vector(geosocks.Vector):
 
         """
 
-        return nodes.Mix(factor=factor, a=self, b=vector, blend_type='MIX', clamp_factor=clamp_factor, clamp_result=False, data_type=VECTOR, factor_mode='NON_UNIFORM').result
+        return nodes.Mix(factor=factor, a=self, b=vector, blend_type='MIX', clamp_factor=clamp_factor, clamp_result=False, data_type='VECTOR', factor_mode='NON_UNIFORM').result
 
 
     def mix_uniform(self, vector=None, clamp_factor=True):
@@ -6772,7 +6772,7 @@ class Vector(geosocks.Vector):
 
         """
 
-        return nodes.Mix(factor=None, a=self, b=vector, blend_type='MIX', clamp_factor=clamp_factor, clamp_result=False, data_type=VECTOR, factor_mode='UNIFORM').result
+        return nodes.Mix(factor=None, a=self, b=vector, blend_type='MIX', clamp_factor=clamp_factor, clamp_result=False, data_type='VECTOR', factor_mode='UNIFORM').result
 
 
     def modulo(self, vector=None):
@@ -7152,7 +7152,7 @@ class Vector(geosocks.Vector):
 
         """
 
-        return nodes.Switch(switch=switch, false=self, true=true, input_type=VECTOR).output
+        return nodes.Switch(switch=switch, false=self, true=true, input_type='VECTOR').output
 
 
     def tan(self):
@@ -7239,7 +7239,7 @@ class Boolean(geosocks.Boolean):
 
         """
 
-        return cls(nodes.RandomValue(min=None, max=None, probability=probability, ID=ID, seed=seed, data_type=BOOLEAN).value)
+        return cls(nodes.RandomValue(min=None, max=None, probability=probability, ID=ID, seed=seed, data_type='BOOLEAN').value)
 
 
     def b_and(self, boolean1=None):
@@ -7373,7 +7373,7 @@ class Boolean(geosocks.Boolean):
 
         """
 
-        return nodes.Switch(switch=switch, false=self, true=true, input_type=BOOLEAN).output
+        return nodes.Switch(switch=switch, false=self, true=true, input_type='BOOLEAN').output
 
 
     def xnor(self, boolean1=None):
@@ -7449,7 +7449,7 @@ class Integer(geosocks.Integer):
 
         """
 
-        return cls(nodes.RandomValue(min=min, max=max, probability=None, ID=ID, seed=seed, data_type=INT).value)
+        return cls(nodes.RandomValue(min=min, max=max, probability=None, ID=ID, seed=seed, data_type='INT').value)
 
 
     def abs(self, clamp=False):
@@ -7627,7 +7627,7 @@ class Integer(geosocks.Integer):
 
         """
 
-        return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type=INT, mode='ELEMENT', operation=operation).result
+        return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type='INT', mode='ELEMENT', operation=operation).result
 
 
     def cos(self, value=None, clamp=False):
@@ -7698,7 +7698,7 @@ class Integer(geosocks.Integer):
 
         """
 
-        return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type=INT, mode='ELEMENT', operation='EQUAL').result
+        return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type='INT', mode='ELEMENT', operation='EQUAL').result
 
 
     def exp(self, clamp=False):
@@ -7783,7 +7783,7 @@ class Integer(geosocks.Integer):
 
         """
 
-        return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type=INT, mode='ELEMENT', operation='GREATER_EQUAL').result
+        return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type='INT', mode='ELEMENT', operation='GREATER_EQUAL').result
 
 
     def greater_than(self, b=None):
@@ -7800,7 +7800,7 @@ class Integer(geosocks.Integer):
 
         """
 
-        return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type=INT, mode='ELEMENT', operation='GREATER_THAN').result
+        return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type='INT', mode='ELEMENT', operation='GREATER_THAN').result
 
 
     def inverse_sqrt(self, clamp=False):
@@ -7834,7 +7834,7 @@ class Integer(geosocks.Integer):
 
         """
 
-        return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type=INT, mode='ELEMENT', operation='LESS_EQUAL').result
+        return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type='INT', mode='ELEMENT', operation='LESS_EQUAL').result
 
 
     def less_than(self, b=None):
@@ -7851,7 +7851,7 @@ class Integer(geosocks.Integer):
 
         """
 
-        return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type=INT, mode='ELEMENT', operation='LESS_THAN').result
+        return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type='INT', mode='ELEMENT', operation='LESS_THAN').result
 
 
     def log(self, base=None, clamp=False):
@@ -8172,7 +8172,7 @@ class Integer(geosocks.Integer):
 
         """
 
-        return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type=INT, mode='ELEMENT', operation='NOT_EQUAL').result
+        return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type='INT', mode='ELEMENT', operation='NOT_EQUAL').result
 
 
     def ping_pong(self, scale=None, clamp=False):
@@ -8388,7 +8388,7 @@ class Integer(geosocks.Integer):
 
         """
 
-        return nodes.Switch(switch=switch, false=self, true=true, input_type=INT).output
+        return nodes.Switch(switch=switch, false=self, true=true, input_type='INT').output
 
 
     def tan(self, value=None, clamp=False):
@@ -8739,7 +8739,7 @@ class String(geosocks.String):
 
         """
 
-        return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type=STRING, mode='ELEMENT', operation='EQUAL').result
+        return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type='STRING', mode='ELEMENT', operation='EQUAL').result
 
 
     def join(self, *strings):
@@ -8788,7 +8788,7 @@ class String(geosocks.String):
 
         """
 
-        return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type=STRING, mode='ELEMENT', operation='NOT_EQUAL').result
+        return nodes.Compare(a=self, b=b, c=None, angle=None, epsilon=None, data_type='STRING', mode='ELEMENT', operation='NOT_EQUAL').result
 
 
     def replace(self, find=None, replace=None):
@@ -8860,7 +8860,7 @@ class String(geosocks.String):
 
         """
 
-        return nodes.Switch(switch=switch, false=self, true=true, input_type=STRING).output
+        return nodes.Switch(switch=switch, false=self, true=true, input_type='STRING').output
 
 
     def to_curves(self, size=None, character_spacing=None, word_spacing=None, line_spacing=None, text_box_width=None, text_box_height=None, align_x='LEFT', align_y='TOP_BASELINE', overflow='OVERFLOW', pivot_mode='BOTTOM_LEFT'):
