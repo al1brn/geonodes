@@ -289,22 +289,33 @@ grid.verts.position += (0, 0, z)
 
 #### Domains selection
 
-Operations on domains use a **Selection** input socket. This feature is implemented in two different ways:
+Operations on domains use a **Selection** input socket. This feature is implemented as indexing the domain. The index can be either a **Boolean** or an **Integer**:
 
-- As argument of the domain property:
+- Indexing with a **Boolean**:
+
+  Since the **Selection** input socket, the boolean value is plugged into the socket.
 
   ```python
   # Only one vertex on two will be changed
-
   grid.verts((grid.verts.index % 2).equal(0)).position += (0, 0, z)
   ```
 
-- Using array index:
+- Indexing with **Integer**:
+
+  The integer is compare to the value in order to produce a **Boolean** value:
 
   ```python
-  # Only the vertices between 5000 and 8000 will be changed
-  grid.verts[5000:8000].position += (0, 0, z)
+  # Change position of vertex 10
+  grid.verts[10].position += (1, 2, 3)
   ```
+
+  The slice syntax is valid and is implemented with a 'Compare' Node:
+
+  ```python
+  # The vertices between 5000 and 8000 will be changed
+  grid.verts[5000:8000].position += (1, 2, 3)
+  ```
+
   
 Both methods can be combined:
 
