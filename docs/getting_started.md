@@ -132,9 +132,12 @@ Geometries are created by calling constructors of geometry classes. These constr
 and **Curve Primitives** of the `Add node` menu in Blender.
 
 The names of the constructors are built as CamelCase version of their node names.
+When a node has only one output socket, the function returns this socket. When the node has more than one output socket, the function returns the node itself. You must speciffy which socket your are interested in.
+
+The 'IcoSphere' node has two output sockets: 'Mesh' and 'UV Map', we need to specify which one we want.
 
 ``` python
-icosphere = gn.Mesh.IcoSphere()
+icosphere = gn.Mesh.IcoSphere().mesh
 ```
 
 This create the default icosphere. We may want some customization. Looking at the node reference [Mesh.IcoSphere](api/Mesh.md#IcoSphere),
@@ -142,7 +145,7 @@ we see that there are two parameters: **Radius** and **Subdivisions**. They are 
 As explained in the [naming conventions](naming.md), **geonodes** uses snake_case version of the nodes sockets and nodes parameters names:
 
 ``` python
-icosphere = gn.Mesh.IcoSphere(radius=1, subdivisions=3)
+icosphere = gn.Mesh.IcoSphere(radius=1, subdivisions=3).mesh
 ```
 
 You may want to give more control on these parameters:
@@ -150,7 +153,7 @@ You may want to give more control on these parameters:
 ``` python
 radius    = gn.Float.Input(1, "Radius", min_value=0.01, max_value=10, description="A reasonable radius for the sphere")
 subs      = gn.Integer.Input(3, description="No limits: I trust you")
-icosphere = gn.Mesh.IcoSphere(radius=radius, subdivisions=subs)
+icosphere = gn.Mesh.IcoSphere(radius=radius, subdivisions=subs).mesh
 ```
 
 We have now an icosphere which can be created with parameters exposed to the user.
