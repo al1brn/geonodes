@@ -28,6 +28,7 @@ node = nodes.NamedAttribute(name=None, data_type='FLOAT')
 ### Output sockets:
 
 - **attribute** : ``data_type`` dependant
+- **exists** : [Boolean](Boolean.md)
 
 #### Shared sockets:
 
@@ -45,6 +46,7 @@ node = nodes.NamedAttribute(name=None, data_type='FLOAT')
 | [named_vector](Domain.md#named_vector) | `def named_vector(self, name=None):` |
 | [named_color](Domain.md#named_color) | `def named_color(self, name=None):` |
 | [named_boolean](Domain.md#named_boolean) | `def named_boolean(self, name=None):` |
+| [named_attribute_exists](Domain.md#named_attribute_exists) | `def named_attribute_exists(self, name=None, data_type='FLOAT'):` |
 | **[Geometry](Geometry.md)** |
 | [named_attribute](Geometry.md#named_attribute) | `def named_attribute(self, name=None, data_type='FLOAT'):` |
 | [named_float](Geometry.md#named_float) | `def named_float(self, name=None):` |
@@ -52,6 +54,7 @@ node = nodes.NamedAttribute(name=None, data_type='FLOAT')
 | [named_vector](Geometry.md#named_vector) | `def named_vector(self, name=None):` |
 | [named_color](Geometry.md#named_color) | `def named_color(self, name=None):` |
 | [named_boolean](Geometry.md#named_boolean) | `def named_boolean(self, name=None):` |
+| [named_attribute_exists](Geometry.md#named_attribute_exists) | `def named_attribute_exists(self, name=None, data_type='FLOAT'):` |
 
 <sub>Go to [top](#node-Named-Attribute) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

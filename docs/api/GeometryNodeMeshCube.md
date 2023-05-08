@@ -27,6 +27,7 @@ node = nodes.Cube(size=None, vertices_x=None, vertices_y=None, vertices_z=None)
 ### Output sockets:
 
 - **mesh** : [Mesh](Mesh.md)
+- **uv_map** : [Vector](Vector.md)
 
 ## Implementation
 

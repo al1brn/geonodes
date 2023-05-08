@@ -29,7 +29,7 @@ node = nodes.CollectionInfo(collection=None, separate_children=None, reset_child
 
 ### Output sockets:
 
-- **geometry** : [Geometry](Geometry.md)
+- **instances** : [Instances](Instances.md)
 
 ## Implementation
 

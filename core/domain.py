@@ -521,8 +521,10 @@ class Domain:
     
     # ----------------------------------------------------------------------------------------------------
     # Store named attribute
+    # Before V3.5, selection was implemented through a cloud of points
+    # After V3.5, selection is managed through standard selection socket
     
-    def store_named_attribute(self, name=None, value=None, data_type=None):
+    def store_named_attribute_OLD(self, name=None, value=None, data_type=None):
         """ Store a named attribute
         
         If selection exists, create an intermediary cloud of points to update selectively the items.
@@ -537,8 +539,6 @@ class Domain:
         """
         
         import geonodes as gn
-        
-        print("store_named_attribute", name, value, data_type)
         
         if self.selector is None or value is None or name is None:
             return self.store_named_attribute_no_selection(name, value)
@@ -596,7 +596,7 @@ class Domain:
     # ----------------------------------------------------------------------------------------------------
     # Create some nodes to store named attribute on domain selection
     
-    def store_named_boolean(self, name, value):
+    def store_named_boolean_OLD(self, name, value):
         """ Store a named attribute of type Boolean
         
         see [store_named_attribute](#store_named_attribute)
@@ -611,7 +611,7 @@ class Domain:
         return self.store_named_attribute(name, value, 'BOOLEAN')
     
     
-    def store_named_integer(self, name, value):
+    def store_named_integer_OLD(self, name, value):
         """ Store a named attribute of type Integer
         
         see [store_named_attribute](#store_named_attribute)
@@ -626,7 +626,7 @@ class Domain:
         return self.store_named_attribute(name, value, 'INT')
     
     
-    def store_named_float(self, name, value):
+    def store_named_float_OLD(self, name, value):
         """ Store a named attribute of type Float
         
         see [store_named_attribute](#store_named_attribute)
@@ -641,7 +641,7 @@ class Domain:
         return self.store_named_attribute(name, value, 'FLOAT')
     
     
-    def store_named_vector(self, name, value):
+    def store_named_vector_OLD(self, name, value):
         """ Store a named attribute of type Vector
         
         Args:
@@ -656,7 +656,7 @@ class Domain:
         return self.store_named_attribute(name, value, 'FLOAT_VECTOR')
     
     
-    def store_named_color(self, name, value):
+    def store_named_color_OLD(self, name, value):
         """ Store a named attribute of type Color
         
         Args:

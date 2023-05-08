@@ -1,16 +1,16 @@
-# Node *Transform*
+# Node *Transform Geometry*
 
 > [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
-- [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/transform.html)
+- [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/r.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeTransform.html)
-- geonodes name: `Transform`
+- geonodes name: `TransformGeometry`
 - bl_idname: `GeometryNodeTransform`
 
 ```python
 from geonodes import nodes
 
-node = nodes.Transform(geometry=None, translation=None, rotation=None, scale=None)
+node = nodes.TransformGeometry(geometry=None, translation=None, rotation=None, scale=None)
 ```
 
 ![Blender Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeTransform.webp)
@@ -33,7 +33,7 @@ node = nodes.Transform(geometry=None, translation=None, rotation=None, scale=Non
 | Class or method name | Definition |
 |----------------------|------------|
 | **[Geometry](Geometry.md)** |
-| [transform](Geometry.md#transform) | `def transform(self, translation=None, rotation=None, scale=None):` |
+| [transform_geometry](Geometry.md#transform_geometry) | `def transform_geometry(self, translation=None, rotation=None, scale=None):` |
 
-<sub>Go to [top](#node-Transform) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Transform-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

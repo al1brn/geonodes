@@ -2,11 +2,11 @@
 # -*- coding: utf-8 -*-
 
 """
-Created on 2022-12-29
+Created on 2023-05-05
 
 @author: Generated from generator module
 
-Blender version: 3.4.0
+Blender version: 3.5.0
 """
 
 from geonodes.core.node import Node
@@ -310,7 +310,7 @@ class Compare(Node):
         epsilon (DataSocket): Float
         data_type (str): Node parameter, default = 'FLOAT' in ('FLOAT', 'INT', 'VECTOR', 'STRING', 'RGBA')
         mode (str): Node parameter, default = 'ELEMENT' in ('ELEMENT', 'LENGTH', 'AVERAGE', 'DOT_PRODUCT', 'DIRECTION')
-        operation (str): Node parameter, default = 'GREATER_THAN' in ('LESS_THAN', 'LESS_EQUAL', 'GREATER_THAN', 'GREATER_EQUAL', 'EQUAL', 'NOT_EQUAL')
+        operation (str): Node parameter, default = 'GREATER_THAN' in ('LESS_THAN', 'LESS_EQUAL', 'GREATER_THAN', 'GREATER_EQUAL', 'EQUAL', 'NOT_EQUAL', 'DARKER', 'BRIGHTER')
         node_color (color): Node color
         node_label (str): Node label
 
@@ -335,7 +335,7 @@ class Compare(Node):
 
         self.bnode.data_type       = self.check_enum_value(data_type, 'data_type', ('FLOAT', 'INT', 'VECTOR', 'STRING', 'RGBA'), 'FLOAT')
         self.bnode.mode            = self.check_enum_value(mode, 'mode', ('ELEMENT', 'LENGTH', 'AVERAGE', 'DOT_PRODUCT', 'DIRECTION'), 'ELEMENT')
-        self.bnode.operation       = self.check_enum_value(operation, 'operation', ('LESS_THAN', 'LESS_EQUAL', 'GREATER_THAN', 'GREATER_EQUAL', 'EQUAL', 'NOT_EQUAL'), 'GREATER_THAN')
+        self.bnode.operation       = self.check_enum_value(operation, 'operation', ('LESS_THAN', 'LESS_EQUAL', 'GREATER_THAN', 'GREATER_EQUAL', 'EQUAL', 'NOT_EQUAL', 'DARKER', 'BRIGHTER'), 'GREATER_THAN')
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -1340,7 +1340,7 @@ class AccumulateField(Node):
 
     Args:
         value (DataSocket): ``data_type`` dependant
-        group_index (DataSocket): Integer
+        group_id (DataSocket): Integer
         data_type (str): Node parameter, default = 'FLOAT' in ('FLOAT', 'INT', 'FLOAT_VECTOR')
         domain (str): Node parameter, default = 'POINT' in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
         node_color (color): Node color
@@ -1361,7 +1361,7 @@ class AccumulateField(Node):
 
     """
 
-    def __init__(self, value=None, group_index=None, data_type='FLOAT', domain='POINT', label=None, node_color=None):
+    def __init__(self, value=None, group_id=None, data_type='FLOAT', domain='POINT', label=None, node_color=None):
 
         super().__init__('GeometryNodeAccumulateField', node_name='Accumulate Field', label=label, node_color=node_color)
 
@@ -1372,13 +1372,13 @@ class AccumulateField(Node):
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
-        self.insockets = {'value' : [0, 1, 2], 'group_index' : 3, }
+        self.insockets = {'value' : [0, 1, 2], 'group_id' : 3, }
         self.outsockets = {'leading' : [0, 1, 2], 'trailing' : [3, 4, 5], 'total' : [6, 7, 8], }
 
         # Input sockets plugging
 
         if value           is not None: self.value           = value
-        if group_index     is not None: self.group_index     = group_index
+        if group_id        is not None: self.group_id        = group_id
 
     @property
     def data_type(self):
@@ -1417,12 +1417,12 @@ class AccumulateField(Node):
         self.set_input_socket('value', value)
 
     @property
-    def group_index(self):
-        raise AttributeError("Attribute error on node 'AccumulateField': the input socket 'group_index' is write only.")
+    def group_id(self):
+        raise AttributeError("Attribute error on node 'AccumulateField': the input socket 'group_id' is write only.")
 
-    @group_index.setter
-    def group_index(self, value):
-        self.set_input_socket('group_index', value)
+    @group_id.setter
+    def group_id(self, value):
+        self.set_input_socket('group_id', value)
 
 # ----------------------------------------------------------------------------------------------------
 # Node DomainSize for GeometryNodeAttributeDomainSize
@@ -1674,6 +1674,91 @@ class AttributeStatistic(Node):
         self.set_input_socket('attribute', value)
 
 # ----------------------------------------------------------------------------------------------------
+# Node BlurAttribute for GeometryNodeBlurAttribute
+
+class BlurAttribute(Node):
+
+    """Node *Blur Attribute*
+
+    .. _BlurAttribute:
+
+    Node implementation:
+        Domain:
+            blur_attribute blur_float blur_integer blur_vector blur_color 
+
+    Args:
+        value (DataSocket): ``data_type`` dependant
+        iterations (DataSocket): Integer
+        weight (DataSocket): Float
+        data_type (str): Node parameter, default = 'FLOAT' in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR')
+        node_color (color): Node color
+        node_label (str): Node label
+
+
+    Output sockets:
+        - **value** : ``data_type`` dependant
+
+    Shared sockets:
+        - Driving parameter : ``data_type`` in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR')
+        - Input sockets  : ['value']
+        - Output sockets : ['value']
+
+    .. blid:: GeometryNodeBlurAttribute
+
+    """
+
+    def __init__(self, value=None, iterations=None, weight=None, data_type='FLOAT', label=None, node_color=None):
+
+        super().__init__('GeometryNodeBlurAttribute', node_name='Blur Attribute', label=label, node_color=node_color)
+
+        # Node parameters to configure the sockets enablement
+
+        self.bnode.data_type       = self.check_enum_value(data_type, 'data_type', ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR'), 'FLOAT')
+
+        # Input and output sockets names (for use in __getattr__ and __setattr__)
+
+        self.insockets = {'value' : [0, 1, 2, 3], 'iterations' : 4, 'weight' : 5, }
+        self.outsockets = {'value' : [0, 1, 2, 3], }
+
+        # Input sockets plugging
+
+        if value           is not None: self.value           = value
+        if iterations      is not None: self.iterations      = iterations
+        if weight          is not None: self.weight          = weight
+
+    @property
+    def data_type(self):
+        return self.bnode.data_type
+
+    @data_type.setter
+    def data_type(self, value):
+        self.bnode.data_type = value
+
+    @property
+    def value(self):
+        return self.get_output_socket('value')
+
+    @value.setter
+    def value(self, value):
+        self.set_input_socket('value', value)
+
+    @property
+    def iterations(self):
+        raise AttributeError("Attribute error on node 'BlurAttribute': the input socket 'iterations' is write only.")
+
+    @iterations.setter
+    def iterations(self, value):
+        self.set_input_socket('iterations', value)
+
+    @property
+    def weight(self):
+        raise AttributeError("Attribute error on node 'BlurAttribute': the input socket 'weight' is write only.")
+
+    @weight.setter
+    def weight(self, value):
+        self.set_input_socket('weight', value)
+
+# ----------------------------------------------------------------------------------------------------
 # Node BoundingBox for GeometryNodeBoundBox
 
 class BoundingBox(Node):
@@ -1849,7 +1934,7 @@ class CollectionInfo(Node):
 
 
     Output sockets:
-        - **geometry** : Geometry
+        - **instances** : Instances
 
     .. blid:: GeometryNodeCollectionInfo
 
@@ -1866,7 +1951,7 @@ class CollectionInfo(Node):
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
         self.insockets = {'collection' : 0, 'separate_children' : 1, 'reset_children' : 2, }
-        self.outsockets = {'geometry' : 0, }
+        self.outsockets = {'instances' : 0, }
 
         # Input sockets plugging
 
@@ -1883,8 +1968,8 @@ class CollectionInfo(Node):
         self.bnode.transform_space = value
 
     @property
-    def geometry(self):
-        return self.get_output_socket('geometry')
+    def instances(self):
+        return self.get_output_socket('instances')
 
     @property
     def collection(self):
@@ -3837,6 +3922,7 @@ class DistributePointsOnFaces(Node):
         density_factor (DataSocket): Float
         seed (DataSocket): Integer
         distribute_method (str): Node parameter, default = 'RANDOM' in ('RANDOM', 'POISSON')
+        use_legacy_normal (bool): Node parameter, default = False
         node_color (color): Node color
         node_label (str): Node label
 
@@ -3850,13 +3936,14 @@ class DistributePointsOnFaces(Node):
 
     """
 
-    def __init__(self, mesh=None, selection=None, distance_min=None, density_max=None, density=None, density_factor=None, seed=None, distribute_method='RANDOM', label=None, node_color=None):
+    def __init__(self, mesh=None, selection=None, distance_min=None, density_max=None, density=None, density_factor=None, seed=None, distribute_method='RANDOM', use_legacy_normal=False, label=None, node_color=None):
 
         super().__init__('GeometryNodeDistributePointsOnFaces', node_name='Distribute Points on Faces', label=label, node_color=node_color)
 
         # Node parameters
 
         self.bnode.distribute_method = self.check_enum_value(distribute_method, 'distribute_method', ('RANDOM', 'POISSON'), 'RANDOM')
+        self.bnode.use_legacy_normal = use_legacy_normal
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -3880,6 +3967,14 @@ class DistributePointsOnFaces(Node):
     @distribute_method.setter
     def distribute_method(self, value):
         self.bnode.distribute_method = value
+
+    @property
+    def use_legacy_normal(self):
+        return self.bnode.use_legacy_normal
+
+    @use_legacy_normal.setter
+    def use_legacy_normal(self, value):
+        self.bnode.use_legacy_normal = value
 
     @property
     def points(self):
@@ -4370,6 +4465,59 @@ class EdgesOfVertex(Node):
         self.set_input_socket('sort_index', value)
 
 # ----------------------------------------------------------------------------------------------------
+# Node EdgesToFaceGroups for GeometryNodeEdgesToFaceGroups
+
+class EdgesToFaceGroups(Node):
+
+    """Node *Edges to Face Groups*
+
+    .. _EdgesToFaceGroups:
+
+    Node implementation:
+        Mesh:
+            edges_to_face_groups 
+        Edge:
+            to_face_groups 
+
+    Args:
+        boundary_edges (DataSocket): Boolean
+        node_color (color): Node color
+        node_label (str): Node label
+
+
+    Output sockets:
+        - **face_group_id** : Integer
+
+    .. blid:: GeometryNodeEdgesToFaceGroups
+
+    """
+
+    def __init__(self, boundary_edges=None, label=None, node_color=None):
+
+        super().__init__('GeometryNodeEdgesToFaceGroups', node_name='Edges to Face Groups', label=label, node_color=node_color)
+
+        # Input and output sockets names (for use in __getattr__ and __setattr__)
+
+        self.insockets = {'boundary_edges' : 0, }
+        self.outsockets = {'face_group_id' : 0, }
+
+        # Input sockets plugging
+
+        if boundary_edges  is not None: self.boundary_edges  = boundary_edges
+
+    @property
+    def face_group_id(self):
+        return self.get_output_socket('face_group_id')
+
+    @property
+    def boundary_edges(self):
+        raise AttributeError("Attribute error on node 'EdgesToFaceGroups': the input socket 'boundary_edges' is write only.")
+
+    @boundary_edges.setter
+    def boundary_edges(self, value):
+        self.set_input_socket('boundary_edges', value)
+
+# ----------------------------------------------------------------------------------------------------
 # Node ExtrudeMesh for GeometryNodeExtrudeMesh
 
 class ExtrudeMesh(Node):
@@ -4544,19 +4692,19 @@ class FaceOfCorner(Node):
         self.set_input_socket('corner_index', value)
 
 # ----------------------------------------------------------------------------------------------------
-# Node FieldAtIndex for GeometryNodeFieldAtIndex
+# Node EvaluateAtIndex for GeometryNodeFieldAtIndex
 
-class FieldAtIndex(Node):
+class EvaluateAtIndex(Node):
 
-    """Node *Field at Index*
+    """Node *Evaluate at Index*
 
-    .. _FieldAtIndex:
+    .. _EvaluateAtIndex:
 
     Node implementation:
         Geometry:
-            field_at_index 
+            evaluate_at_index 
         Domain:
-            field_at_index 
+            evaluate_at_index 
 
     Args:
         index (DataSocket): Integer
@@ -4581,7 +4729,7 @@ class FieldAtIndex(Node):
 
     def __init__(self, index=None, value=None, data_type='FLOAT', domain='POINT', label=None, node_color=None):
 
-        super().__init__('GeometryNodeFieldAtIndex', node_name='Field at Index', label=label, node_color=node_color)
+        super().__init__('GeometryNodeFieldAtIndex', node_name='Evaluate at Index', label=label, node_color=node_color)
 
         # Node parameters to configure the sockets enablement
 
@@ -4620,7 +4768,7 @@ class FieldAtIndex(Node):
 
     @property
     def index(self):
-        raise AttributeError("Attribute error on node 'FieldAtIndex': the input socket 'index' is write only.")
+        raise AttributeError("Attribute error on node 'EvaluateAtIndex': the input socket 'index' is write only.")
 
     @index.setter
     def index(self, value):
@@ -4631,13 +4779,13 @@ class FieldAtIndex(Node):
         self.set_input_socket('value', value)
 
 # ----------------------------------------------------------------------------------------------------
-# Node InterpolateDomain for GeometryNodeFieldOnDomain
+# Node EvaluateOnDomain for GeometryNodeFieldOnDomain
 
-class InterpolateDomain(Node):
+class EvaluateOnDomain(Node):
 
-    """Node *Interpolate Domain*
+    """Node *Evaluate on Domain*
 
-    .. _InterpolateDomain:
+    .. _EvaluateOnDomain:
 
     Node implementation:
         Geometry:
@@ -4667,7 +4815,7 @@ class InterpolateDomain(Node):
 
     def __init__(self, value=None, data_type='FLOAT', domain='POINT', label=None, node_color=None):
 
-        super().__init__('GeometryNodeFieldOnDomain', node_name='Interpolate Domain', label=label, node_color=node_color)
+        super().__init__('GeometryNodeFieldOnDomain', node_name='Evaluate on Domain', label=label, node_color=node_color)
 
         # Node parameters to configure the sockets enablement
 
@@ -5001,6 +5149,87 @@ class Group(Node):
         self.outsockets = {}
 
 # ----------------------------------------------------------------------------------------------------
+# Node ImageInfo for GeometryNodeImageInfo
+
+class ImageInfo(Node):
+
+    """Node *Image Info*
+
+    .. _ImageInfo:
+
+    Node implementation:
+        Image:
+            info width height has_alpha frame_count fps 
+
+    Args:
+        image (DataSocket): Image
+        frame (DataSocket): Integer
+        node_color (color): Node color
+        node_label (str): Node label
+
+
+    Output sockets:
+        - **width** : Integer
+        - **height** : Integer
+        - **has_alpha** : Boolean
+        - **frame_count** : Integer
+        - **fps** : Float
+
+    .. blid:: GeometryNodeImageInfo
+
+    """
+
+    def __init__(self, image=None, frame=None, label=None, node_color=None):
+
+        super().__init__('GeometryNodeImageInfo', node_name='Image Info', label=label, node_color=node_color)
+
+        # Input and output sockets names (for use in __getattr__ and __setattr__)
+
+        self.insockets = {'image' : 0, 'frame' : 1, }
+        self.outsockets = {'width' : 0, 'height' : 1, 'has_alpha' : 2, 'frame_count' : 3, 'fps' : 4, }
+
+        # Input sockets plugging
+
+        if image           is not None: self.image           = image
+        if frame           is not None: self.frame           = frame
+
+    @property
+    def width(self):
+        return self.get_output_socket('width')
+
+    @property
+    def height(self):
+        return self.get_output_socket('height')
+
+    @property
+    def has_alpha(self):
+        return self.get_output_socket('has_alpha')
+
+    @property
+    def frame_count(self):
+        return self.get_output_socket('frame_count')
+
+    @property
+    def fps(self):
+        return self.get_output_socket('fps')
+
+    @property
+    def image(self):
+        raise AttributeError("Attribute error on node 'ImageInfo': the input socket 'image' is write only.")
+
+    @image.setter
+    def image(self, value):
+        self.set_input_socket('image', value)
+
+    @property
+    def frame(self):
+        raise AttributeError("Attribute error on node 'ImageInfo': the input socket 'frame' is write only.")
+
+    @frame.setter
+    def frame(self, value):
+        self.set_input_socket('frame', value)
+
+# ----------------------------------------------------------------------------------------------------
 # Node ImageTexture for GeometryNodeImageTexture
 
 class ImageTexture(Node):
@@ -5019,7 +5248,7 @@ class ImageTexture(Node):
         image (DataSocket): Image
         vector (DataSocket): Vector
         frame (DataSocket): Integer
-        extension (str): Node parameter, default = 'REPEAT' in ('REPEAT', 'EXTEND', 'CLIP')
+        extension (str): Node parameter, default = 'REPEAT' in ('REPEAT', 'EXTEND', 'CLIP', 'MIRROR')
         interpolation (str): Node parameter, default = 'Linear' in ('Linear', 'Closest', 'Cubic')
         node_color (color): Node color
         node_label (str): Node label
@@ -5039,7 +5268,7 @@ class ImageTexture(Node):
 
         # Node parameters
 
-        self.bnode.extension       = self.check_enum_value(extension, 'extension', ('REPEAT', 'EXTEND', 'CLIP'), 'REPEAT')
+        self.bnode.extension       = self.check_enum_value(extension, 'extension', ('REPEAT', 'EXTEND', 'CLIP', 'MIRROR'), 'REPEAT')
         self.bnode.interpolation   = self.check_enum_value(interpolation, 'interpolation', ('Linear', 'Closest', 'Cubic'), 'Linear')
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
@@ -5234,6 +5463,40 @@ class ID(Node):
     @property
     def ID(self):
         return self.get_output_socket('ID')
+
+# ----------------------------------------------------------------------------------------------------
+# Node Image for GeometryNodeInputImage
+
+class Image(Node):
+
+    """Node *Image*
+
+    .. _Image:
+
+    Args:
+        node_color (color): Node color
+        node_label (str): Node label
+
+
+    Output sockets:
+        - **image** : Image
+
+    .. blid:: GeometryNodeInputImage
+
+    """
+
+    def __init__(self, label=None, node_color=None):
+
+        super().__init__('GeometryNodeInputImage', node_name='Image', label=label, node_color=node_color)
+
+        # Input and output sockets names (for use in __getattr__ and __setattr__)
+
+        self.insockets = {}
+        self.outsockets = {'image' : 0, }
+
+    @property
+    def image(self):
+        return self.get_output_socket('image')
 
 # ----------------------------------------------------------------------------------------------------
 # Node Index for GeometryNodeInputIndex
@@ -5800,9 +6063,9 @@ class NamedAttribute(Node):
 
     Node implementation:
         Geometry:
-            named_attribute named_float named_integer named_vector named_color named_boolean 
+            named_attribute named_float named_integer named_vector named_color named_boolean named_attribute_exists 
         Domain:
-            named_attribute named_float named_integer named_vector named_color named_boolean 
+            named_attribute named_float named_integer named_vector named_color named_boolean named_attribute_exists 
 
     Args:
         name (DataSocket): String
@@ -5813,6 +6076,7 @@ class NamedAttribute(Node):
 
     Output sockets:
         - **attribute** : ``data_type`` dependant
+        - **exists** : Boolean
 
     Shared sockets:
         - Driving parameter : ``data_type`` in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN')
@@ -5834,7 +6098,7 @@ class NamedAttribute(Node):
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
         self.insockets = {'name' : 0, }
-        self.outsockets = {'attribute' : [0, 1, 2, 3, 4], }
+        self.outsockets = {'attribute' : [0, 1, 2, 3, 4], 'exists' : 5, }
 
         # Input sockets plugging
 
@@ -5851,6 +6115,10 @@ class NamedAttribute(Node):
     @property
     def attribute(self):
         return self.get_output_socket('attribute')
+
+    @property
+    def exists(self):
+        return self.get_output_socket('exists')
 
     @property
     def name(self):
@@ -6450,6 +6718,131 @@ class InstancesToPoints(Node):
         self.set_input_socket('radius', value)
 
 # ----------------------------------------------------------------------------------------------------
+# Node InterpolateCurves for GeometryNodeInterpolateCurves
+
+class InterpolateCurves(Node):
+
+    """Node *Interpolate Curves*
+
+    .. _InterpolateCurves:
+
+    Node implementation:
+        Curve:
+            interpolate 
+        Points:
+            interpolate 
+        ('Vertex', 'ControlPoint', 'CloudPoint'):
+            interpolate 
+
+    Args:
+        guide_curves (DataSocket): Geometry
+        guide_up (DataSocket): Vector
+        guide_group_id (DataSocket): Integer
+        points (DataSocket): Points
+        point_up (DataSocket): Vector
+        point_group_id (DataSocket): Integer
+        max_neighbors (DataSocket): Integer
+        node_color (color): Node color
+        node_label (str): Node label
+
+
+    Output sockets:
+        - **curves** : Curve
+        - **closest_index** : Integer
+        - **closest_weight** : Float
+
+    .. blid:: GeometryNodeInterpolateCurves
+
+    """
+
+    def __init__(self, guide_curves=None, guide_up=None, guide_group_id=None, points=None, point_up=None, point_group_id=None, max_neighbors=None, label=None, node_color=None):
+
+        super().__init__('GeometryNodeInterpolateCurves', node_name='Interpolate Curves', label=label, node_color=node_color)
+
+        # Input and output sockets names (for use in __getattr__ and __setattr__)
+
+        self.insockets = {'guide_curves' : 0, 'guide_up' : 1, 'guide_group_id' : 2, 'points' : 3, 'point_up' : 4, 'point_group_id' : 5, 'max_neighbors' : 6, }
+        self.outsockets = {'curves' : 0, 'closest_index' : 1, 'closest_weight' : 2, }
+
+        # Input sockets plugging
+
+        if guide_curves    is not None: self.guide_curves    = guide_curves
+        if guide_up        is not None: self.guide_up        = guide_up
+        if guide_group_id  is not None: self.guide_group_id  = guide_group_id
+        if points          is not None: self.points          = points
+        if point_up        is not None: self.point_up        = point_up
+        if point_group_id  is not None: self.point_group_id  = point_group_id
+        if max_neighbors   is not None: self.max_neighbors   = max_neighbors
+
+    @property
+    def curves(self):
+        return self.get_output_socket('curves')
+
+    @property
+    def closest_index(self):
+        return self.get_output_socket('closest_index')
+
+    @property
+    def closest_weight(self):
+        return self.get_output_socket('closest_weight')
+
+    @property
+    def guide_curves(self):
+        raise AttributeError("Attribute error on node 'InterpolateCurves': the input socket 'guide_curves' is write only.")
+
+    @guide_curves.setter
+    def guide_curves(self, value):
+        self.set_input_socket('guide_curves', value)
+
+    @property
+    def guide_up(self):
+        raise AttributeError("Attribute error on node 'InterpolateCurves': the input socket 'guide_up' is write only.")
+
+    @guide_up.setter
+    def guide_up(self, value):
+        self.set_input_socket('guide_up', value)
+
+    @property
+    def guide_group_id(self):
+        raise AttributeError("Attribute error on node 'InterpolateCurves': the input socket 'guide_group_id' is write only.")
+
+    @guide_group_id.setter
+    def guide_group_id(self, value):
+        self.set_input_socket('guide_group_id', value)
+
+    @property
+    def points(self):
+        raise AttributeError("Attribute error on node 'InterpolateCurves': the input socket 'points' is write only.")
+
+    @points.setter
+    def points(self, value):
+        self.set_input_socket('points', value)
+
+    @property
+    def point_up(self):
+        raise AttributeError("Attribute error on node 'InterpolateCurves': the input socket 'point_up' is write only.")
+
+    @point_up.setter
+    def point_up(self, value):
+        self.set_input_socket('point_up', value)
+
+    @property
+    def point_group_id(self):
+        raise AttributeError("Attribute error on node 'InterpolateCurves': the input socket 'point_group_id' is write only.")
+
+    @point_group_id.setter
+    def point_group_id(self, value):
+        self.set_input_socket('point_group_id', value)
+
+    @property
+    def max_neighbors(self):
+        raise AttributeError("Attribute error on node 'InterpolateCurves': the input socket 'max_neighbors' is write only.")
+
+    @max_neighbors.setter
+    def max_neighbors(self, value):
+        self.set_input_socket('max_neighbors', value)
+
+# ----------------------------------------------------------------------------------------------------
 # Node IsViewport for GeometryNodeIsViewport
 
 class IsViewport(Node):
@@ -6874,6 +7267,7 @@ class Cone(Node):
         - **top** : Boolean
         - **bottom** : Boolean
         - **side** : Boolean
+        - **uv_map** : Vector
 
     .. blid:: GeometryNodeMeshCone
 
@@ -6890,7 +7284,7 @@ class Cone(Node):
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
         self.insockets = {'vertices' : 0, 'side_segments' : 1, 'fill_segments' : 2, 'radius_top' : 3, 'radius_bottom' : 4, 'depth' : 5, }
-        self.outsockets = {'mesh' : 0, 'top' : 1, 'bottom' : 2, 'side' : 3, }
+        self.outsockets = {'mesh' : 0, 'top' : 1, 'bottom' : 2, 'side' : 3, 'uv_map' : 4, }
 
         # Input sockets plugging
 
@@ -6924,6 +7318,10 @@ class Cone(Node):
     @property
     def side(self):
         return self.get_output_socket('side')
+
+    @property
+    def uv_map(self):
+        return self.get_output_socket('uv_map')
 
     @property
     def vertices(self):
@@ -6997,6 +7395,7 @@ class Cube(Node):
 
     Output sockets:
         - **mesh** : Mesh
+        - **uv_map** : Vector
 
     .. blid:: GeometryNodeMeshCube
 
@@ -7009,7 +7408,7 @@ class Cube(Node):
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
         self.insockets = {'size' : 0, 'vertices_x' : 1, 'vertices_y' : 2, 'vertices_z' : 3, }
-        self.outsockets = {'mesh' : 0, }
+        self.outsockets = {'mesh' : 0, 'uv_map' : 1, }
 
         # Input sockets plugging
 
@@ -7021,6 +7420,10 @@ class Cube(Node):
     @property
     def mesh(self):
         return self.get_output_socket('mesh')
+
+    @property
+    def uv_map(self):
+        return self.get_output_socket('uv_map')
 
     @property
     def size(self):
@@ -7083,6 +7486,7 @@ class Cylinder(Node):
         - **top** : Boolean
         - **side** : Boolean
         - **bottom** : Boolean
+        - **uv_map** : Vector
 
     .. blid:: GeometryNodeMeshCylinder
 
@@ -7099,7 +7503,7 @@ class Cylinder(Node):
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
         self.insockets = {'vertices' : 0, 'side_segments' : 1, 'fill_segments' : 2, 'radius' : 3, 'depth' : 4, }
-        self.outsockets = {'mesh' : 0, 'top' : 1, 'side' : 2, 'bottom' : 3, }
+        self.outsockets = {'mesh' : 0, 'top' : 1, 'side' : 2, 'bottom' : 3, 'uv_map' : 4, }
 
         # Input sockets plugging
 
@@ -7132,6 +7536,10 @@ class Cylinder(Node):
     @property
     def bottom(self):
         return self.get_output_socket('bottom')
+
+    @property
+    def uv_map(self):
+        return self.get_output_socket('uv_map')
 
     @property
     def vertices(self):
@@ -7174,22 +7582,22 @@ class Cylinder(Node):
         self.set_input_socket('depth', value)
 
 # ----------------------------------------------------------------------------------------------------
-# Node FaceSetBoundaries for GeometryNodeMeshFaceSetBoundaries
+# Node FaceGroupBoundaries for GeometryNodeMeshFaceSetBoundaries
 
-class FaceSetBoundaries(Node):
+class FaceGroupBoundaries(Node):
 
-    """Node *Face Set Boundaries*
+    """Node *Face Group Boundaries*
 
-    .. _FaceSetBoundaries:
+    .. _FaceGroupBoundaries:
 
     Node implementation:
         Mesh:
-            face_set_boundaries 
+            face_group_boundaries 
         Face:
-            face_set_boundaries 
+            face_group_boundaries 
 
     Args:
-        face_set (DataSocket): Integer
+        face_group_id (DataSocket): Integer
         node_color (color): Node color
         node_label (str): Node label
 
@@ -7201,30 +7609,30 @@ class FaceSetBoundaries(Node):
 
     """
 
-    def __init__(self, face_set=None, label=None, node_color=None):
+    def __init__(self, face_group_id=None, label=None, node_color=None):
 
-        super().__init__('GeometryNodeMeshFaceSetBoundaries', node_name='Face Set Boundaries', label=label, node_color=node_color)
+        super().__init__('GeometryNodeMeshFaceSetBoundaries', node_name='Face Group Boundaries', label=label, node_color=node_color)
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
-        self.insockets = {'face_set' : 0, }
+        self.insockets = {'face_group_id' : 0, }
         self.outsockets = {'boundary_edges' : 0, }
 
         # Input sockets plugging
 
-        if face_set        is not None: self.face_set        = face_set
+        if face_group_id   is not None: self.face_group_id   = face_group_id
 
     @property
     def boundary_edges(self):
         return self.get_output_socket('boundary_edges')
 
     @property
-    def face_set(self):
-        raise AttributeError("Attribute error on node 'FaceSetBoundaries': the input socket 'face_set' is write only.")
+    def face_group_id(self):
+        raise AttributeError("Attribute error on node 'FaceGroupBoundaries': the input socket 'face_group_id' is write only.")
 
-    @face_set.setter
-    def face_set(self, value):
-        self.set_input_socket('face_set', value)
+    @face_group_id.setter
+    def face_group_id(self, value):
+        self.set_input_socket('face_group_id', value)
 
 # ----------------------------------------------------------------------------------------------------
 # Node Grid for GeometryNodeMeshGrid
@@ -7250,6 +7658,7 @@ class Grid(Node):
 
     Output sockets:
         - **mesh** : Mesh
+        - **uv_map** : Vector
 
     .. blid:: GeometryNodeMeshGrid
 
@@ -7262,7 +7671,7 @@ class Grid(Node):
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
         self.insockets = {'size_x' : 0, 'size_y' : 1, 'vertices_x' : 2, 'vertices_y' : 3, }
-        self.outsockets = {'mesh' : 0, }
+        self.outsockets = {'mesh' : 0, 'uv_map' : 1, }
 
         # Input sockets plugging
 
@@ -7274,6 +7683,10 @@ class Grid(Node):
     @property
     def mesh(self):
         return self.get_output_socket('mesh')
+
+    @property
+    def uv_map(self):
+        return self.get_output_socket('uv_map')
 
     @property
     def size_x(self):
@@ -7329,6 +7742,7 @@ class IcoSphere(Node):
 
     Output sockets:
         - **mesh** : Mesh
+        - **uv_map** : Vector
 
     .. blid:: GeometryNodeMeshIcoSphere
 
@@ -7341,7 +7755,7 @@ class IcoSphere(Node):
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
         self.insockets = {'radius' : 0, 'subdivisions' : 1, }
-        self.outsockets = {'mesh' : 0, }
+        self.outsockets = {'mesh' : 0, 'uv_map' : 1, }
 
         # Input sockets plugging
 
@@ -7351,6 +7765,10 @@ class IcoSphere(Node):
     @property
     def mesh(self):
         return self.get_output_socket('mesh')
+
+    @property
+    def uv_map(self):
+        return self.get_output_socket('uv_map')
 
     @property
     def radius(self):
@@ -7780,6 +8198,7 @@ class UvSphere(Node):
 
     Output sockets:
         - **mesh** : Mesh
+        - **uv_map** : Vector
 
     .. blid:: GeometryNodeMeshUVSphere
 
@@ -7792,7 +8211,7 @@ class UvSphere(Node):
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
         self.insockets = {'segments' : 0, 'rings' : 1, 'radius' : 2, }
-        self.outsockets = {'mesh' : 0, }
+        self.outsockets = {'mesh' : 0, 'uv_map' : 1, }
 
         # Input sockets plugging
 
@@ -7803,6 +8222,10 @@ class UvSphere(Node):
     @property
     def mesh(self):
         return self.get_output_socket('mesh')
+
+    @property
+    def uv_map(self):
+        return self.get_output_socket('uv_map')
 
     @property
     def segments(self):
@@ -10912,13 +11335,14 @@ class StoreNamedAttribute(Node):
         Geometry:
             store_named_attribute store_named_boolean store_named_integer store_named_float store_named_vector store_named_color 
         Domain:
-            store_named_attribute_no_selection 
+            store_named_attribute store_named_float store_named_integer store_named_vector store_named_color store_named_byte_color store_named_boolean store_named_2D_vector 
 
     Args:
         geometry (DataSocket): Geometry
+        selection (DataSocket): Boolean
         name (DataSocket): String
         value (DataSocket): ``data_type`` dependant
-        data_type (str): Node parameter, default = 'FLOAT' in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BYTE_COLOR', 'BOOLEAN')
+        data_type (str): Node parameter, default = 'FLOAT' in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BYTE_COLOR', 'BOOLEAN', 'FLOAT2')
         domain (str): Node parameter, default = 'POINT' in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
         node_color (color): Node color
         node_label (str): Node label
@@ -10928,7 +11352,7 @@ class StoreNamedAttribute(Node):
         - **geometry** : Geometry
 
     Shared sockets:
-        - Driving parameter : ``data_type`` in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BYTE_COLOR', 'BOOLEAN')
+        - Driving parameter : ``data_type`` in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BYTE_COLOR', 'BOOLEAN', 'FLOAT2')
         - Input sockets  : ['value']
         - Output sockets : []
 
@@ -10936,23 +11360,24 @@ class StoreNamedAttribute(Node):
 
     """
 
-    def __init__(self, geometry=None, name=None, value=None, data_type='FLOAT', domain='POINT', label=None, node_color=None):
+    def __init__(self, geometry=None, selection=None, name=None, value=None, data_type='FLOAT', domain='POINT', label=None, node_color=None):
 
         super().__init__('GeometryNodeStoreNamedAttribute', node_name='Store Named Attribute', label=label, node_color=node_color)
 
         # Node parameters to configure the sockets enablement
 
-        self.bnode.data_type       = self.check_enum_value(data_type, 'data_type', ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BYTE_COLOR', 'BOOLEAN'), 'FLOAT')
+        self.bnode.data_type       = self.check_enum_value(data_type, 'data_type', ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BYTE_COLOR', 'BOOLEAN', 'FLOAT2'), 'FLOAT')
         self.bnode.domain          = self.check_enum_value(domain, 'domain', ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE'), 'POINT')
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
-        self.insockets = {'geometry' : 0, 'name' : 1, 'value' : [2, 3, 4, 5, 6], }
+        self.insockets = {'geometry' : 0, 'selection' : 1, 'name' : 2, 'value' : [3, 4, 5, 6, 7], }
         self.outsockets = {'geometry' : 0, }
 
         # Input sockets plugging
 
         if geometry        is not None: self.geometry        = geometry
+        if selection       is not None: self.selection       = selection
         if name            is not None: self.name            = name
         if value           is not None: self.value           = value
 
@@ -10979,6 +11404,14 @@ class StoreNamedAttribute(Node):
     @geometry.setter
     def geometry(self, value):
         self.set_input_socket('geometry', value)
+
+    @property
+    def selection(self):
+        raise AttributeError("Attribute error on node 'StoreNamedAttribute': the input socket 'selection' is write only.")
+
+    @selection.setter
+    def selection(self, value):
+        self.set_input_socket('selection', value)
 
     @property
     def name(self):
@@ -11083,7 +11516,7 @@ class StringToCurves(Node):
         text_box_width (DataSocket): Float
         text_box_height (DataSocket): Float
         align_x (str): Node parameter, default = 'LEFT' in ('LEFT', 'CENTER', 'RIGHT', 'JUSTIFY', 'FLUSH')
-        align_y (str): Node parameter, default = 'TOP_BASELINE' in ('TOP_BASELINE', 'TOP', 'MIDDLE', 'BOTTOM_BASELINE', 'BOTTOM')
+        align_y (str): Node parameter, default = 'TOP_BASELINE' in ('TOP', 'TOP_BASELINE', 'MIDDLE', 'BOTTOM_BASELINE', 'BOTTOM')
         overflow (str): Node parameter, default = 'OVERFLOW' in ('OVERFLOW', 'SCALE_TO_FIT', 'TRUNCATE')
         pivot_mode (str): Node parameter, default = 'BOTTOM_LEFT' in ('MIDPOINT', 'TOP_LEFT', 'TOP_CENTER', 'TOP_RIGHT', 'BOTTOM_LEFT', 'BOTTOM_CENTER', 'BOTTOM_RIGHT')
         node_color (color): Node color
@@ -11107,7 +11540,7 @@ class StringToCurves(Node):
         # Node parameters
 
         self.bnode.align_x         = self.check_enum_value(align_x, 'align_x', ('LEFT', 'CENTER', 'RIGHT', 'JUSTIFY', 'FLUSH'), 'LEFT')
-        self.bnode.align_y         = self.check_enum_value(align_y, 'align_y', ('TOP_BASELINE', 'TOP', 'MIDDLE', 'BOTTOM_BASELINE', 'BOTTOM'), 'TOP_BASELINE')
+        self.bnode.align_y         = self.check_enum_value(align_y, 'align_y', ('TOP', 'TOP_BASELINE', 'MIDDLE', 'BOTTOM_BASELINE', 'BOTTOM'), 'TOP_BASELINE')
         self.bnode.overflow        = self.check_enum_value(overflow, 'overflow', ('OVERFLOW', 'SCALE_TO_FIT', 'TRUNCATE'), 'OVERFLOW')
         self.bnode.pivot_mode      = self.check_enum_value(pivot_mode, 'pivot_mode', ('MIDPOINT', 'TOP_LEFT', 'TOP_CENTER', 'TOP_RIGHT', 'BOTTOM_LEFT', 'BOTTOM_CENTER', 'BOTTOM_RIGHT'), 'BOTTOM_LEFT')
 
@@ -11559,17 +11992,17 @@ class Switch(Node):
         self.set_input_socket('true', value)
 
 # ----------------------------------------------------------------------------------------------------
-# Node Transform for GeometryNodeTransform
+# Node TransformGeometry for GeometryNodeTransform
 
-class Transform(Node):
+class TransformGeometry(Node):
 
-    """Node *Transform*
+    """Node *Transform Geometry*
 
-    .. _Transform:
+    .. _TransformGeometry:
 
     Node implementation:
         Geometry:
-            transform 
+            transform_geometry 
 
     Args:
         geometry (DataSocket): Geometry
@@ -11589,7 +12022,7 @@ class Transform(Node):
 
     def __init__(self, geometry=None, translation=None, rotation=None, scale=None, label=None, node_color=None):
 
-        super().__init__('GeometryNodeTransform', node_name='Transform', label=label, node_color=node_color)
+        super().__init__('GeometryNodeTransform', node_name='Transform Geometry', label=label, node_color=node_color)
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -11613,7 +12046,7 @@ class Transform(Node):
 
     @property
     def translation(self):
-        raise AttributeError("Attribute error on node 'Transform': the input socket 'translation' is write only.")
+        raise AttributeError("Attribute error on node 'TransformGeometry': the input socket 'translation' is write only.")
 
     @translation.setter
     def translation(self, value):
@@ -11621,7 +12054,7 @@ class Transform(Node):
 
     @property
     def rotation(self):
-        raise AttributeError("Attribute error on node 'Transform': the input socket 'rotation' is write only.")
+        raise AttributeError("Attribute error on node 'TransformGeometry': the input socket 'rotation' is write only.")
 
     @rotation.setter
     def rotation(self, value):
@@ -11629,7 +12062,7 @@ class Transform(Node):
 
     @property
     def scale(self):
-        raise AttributeError("Attribute error on node 'Transform': the input socket 'scale' is write only.")
+        raise AttributeError("Attribute error on node 'TransformGeometry': the input socket 'scale' is write only.")
 
     @scale.setter
     def scale(self, value):
@@ -11818,9 +12251,12 @@ class TrimCurve(Node):
     Node implementation:
         Curve:
             trim trim_factor trim_length 
+        Spline:
+            trim trim_factor trim_length 
 
     Args:
         curve (DataSocket): Curve
+        selection (DataSocket): Boolean
         start0 (DataSocket): Float
         start1 (DataSocket): Float
         end0 (DataSocket): Float
@@ -11837,7 +12273,7 @@ class TrimCurve(Node):
 
     """
 
-    def __init__(self, curve=None, start0=None, start1=None, end0=None, end1=None, mode='FACTOR', label=None, node_color=None):
+    def __init__(self, curve=None, selection=None, start0=None, start1=None, end0=None, end1=None, mode='FACTOR', label=None, node_color=None):
 
         super().__init__('GeometryNodeTrimCurve', node_name='Trim Curve', label=label, node_color=node_color)
 
@@ -11847,12 +12283,13 @@ class TrimCurve(Node):
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
-        self.insockets = {'curve' : 0, 'start0' : 1, 'start1' : 3, 'end0' : 2, 'end1' : 4, }
+        self.insockets = {'curve' : 0, 'selection' : 1, 'start0' : 2, 'start1' : 4, 'end0' : 3, 'end1' : 5, }
         self.outsockets = {'curve' : 0, }
 
         # Input sockets plugging
 
         if curve           is not None: self.curve           = curve
+        if selection       is not None: self.selection       = selection
         if start0          is not None: self.start0          = start0
         if start1          is not None: self.start1          = start1
         if end0            is not None: self.end0            = end0
@@ -11873,6 +12310,14 @@ class TrimCurve(Node):
     @curve.setter
     def curve(self, value):
         self.set_input_socket('curve', value)
+
+    @property
+    def selection(self):
+        raise AttributeError("Attribute error on node 'TrimCurve': the input socket 'selection' is write only.")
+
+    @selection.setter
+    def selection(self, value):
+        self.set_input_socket('selection', value)
 
     @property
     def start0(self):
@@ -12929,7 +13374,7 @@ class Mix(Node):
         factor (DataSocket): ``data_type`` dependant
         a (DataSocket): ``data_type`` dependant
         b (DataSocket): ``data_type`` dependant
-        blend_type (str): Node parameter, default = 'MIX' in ('MIX', 'DARKEN', 'MULTIPLY', 'BURN', 'LIGHTEN', 'SCREEN', 'DODGE', 'ADD', 'OVERLAY', 'SOFT_LIGHT', 'LINEAR_LIGHT', 'DIFFERENCE', 'SUBTRACT', 'DIVIDE', 'HUE', 'SATURATION', 'COLOR', 'VALUE')
+        blend_type (str): Node parameter, default = 'MIX' in ('MIX', 'DARKEN', 'MULTIPLY', 'BURN', 'LIGHTEN', 'SCREEN', 'DODGE', 'ADD', 'OVERLAY', 'SOFT_LIGHT', 'LINEAR_LIGHT', 'DIFFERENCE', 'EXCLUSION', 'SUBTRACT', 'DIVIDE', 'HUE', 'SATURATION', 'COLOR', 'VALUE')
         clamp_factor (bool): Node parameter, default = True
         clamp_result (bool): Node parameter, default = False
         data_type (str): Node parameter, default = 'FLOAT' in ('FLOAT', 'VECTOR', 'RGBA')
@@ -12956,7 +13401,7 @@ class Mix(Node):
 
         # Node parameters to configure the sockets enablement
 
-        self.bnode.blend_type      = self.check_enum_value(blend_type, 'blend_type', ('MIX', 'DARKEN', 'MULTIPLY', 'BURN', 'LIGHTEN', 'SCREEN', 'DODGE', 'ADD', 'OVERLAY', 'SOFT_LIGHT', 'LINEAR_LIGHT', 'DIFFERENCE', 'SUBTRACT', 'DIVIDE', 'HUE', 'SATURATION', 'COLOR', 'VALUE'), 'MIX')
+        self.bnode.blend_type      = self.check_enum_value(blend_type, 'blend_type', ('MIX', 'DARKEN', 'MULTIPLY', 'BURN', 'LIGHTEN', 'SCREEN', 'DODGE', 'ADD', 'OVERLAY', 'SOFT_LIGHT', 'LINEAR_LIGHT', 'DIFFERENCE', 'EXCLUSION', 'SUBTRACT', 'DIVIDE', 'HUE', 'SATURATION', 'COLOR', 'VALUE'), 'MIX')
         self.bnode.clamp_factor    = clamp_factor
         self.bnode.clamp_result    = clamp_result
         self.bnode.data_type       = self.check_enum_value(data_type, 'data_type', ('FLOAT', 'VECTOR', 'RGBA'), 'FLOAT')
@@ -14634,6 +15079,7 @@ def create_node(bl_idname, *args, **kwargs):
     'GeometryNodeAccumulateField': AccumulateField,
     'GeometryNodeAttributeDomainSize': DomainSize,
     'GeometryNodeAttributeStatistic': AttributeStatistic,
+    'GeometryNodeBlurAttribute': BlurAttribute,
     'GeometryNodeBoundBox': BoundingBox,
     'GeometryNodeCaptureAttribute': CaptureAttribute,
     'GeometryNodeCollectionInfo': CollectionInfo,
@@ -14666,19 +15112,22 @@ def create_node(bl_idname, *args, **kwargs):
     'GeometryNodeEdgePathsToSelection': EdgePathsToSelection,
     'GeometryNodeEdgesOfCorner': EdgesOfCorner,
     'GeometryNodeEdgesOfVertex': EdgesOfVertex,
+    'GeometryNodeEdgesToFaceGroups': EdgesToFaceGroups,
     'GeometryNodeExtrudeMesh': ExtrudeMesh,
     'GeometryNodeFaceOfCorner': FaceOfCorner,
-    'GeometryNodeFieldAtIndex': FieldAtIndex,
-    'GeometryNodeFieldOnDomain': InterpolateDomain,
+    'GeometryNodeFieldAtIndex': EvaluateAtIndex,
+    'GeometryNodeFieldOnDomain': EvaluateOnDomain,
     'GeometryNodeFillCurve': FillCurve,
     'GeometryNodeFilletCurve': FilletCurve,
     'GeometryNodeFlipFaces': FlipFaces,
     'GeometryNodeGeometryToInstance': GeometryToInstance,
     'GeometryNodeGroup': Group,
+    'GeometryNodeImageInfo': ImageInfo,
     'GeometryNodeImageTexture': ImageTexture,
     'GeometryNodeInputCurveHandlePositions': CurveHandlePositions,
     'GeometryNodeInputCurveTilt': CurveTilt,
     'GeometryNodeInputID': ID,
+    'GeometryNodeInputImage': Image,
     'GeometryNodeInputIndex': Index,
     'GeometryNodeInputInstanceRotation': InstanceRotation,
     'GeometryNodeInputInstanceScale': InstanceScale,
@@ -14704,6 +15153,7 @@ def create_node(bl_idname, *args, **kwargs):
     'GeometryNodeInputTangent': CurveTangent,
     'GeometryNodeInstanceOnPoints': InstanceOnPoints,
     'GeometryNodeInstancesToPoints': InstancesToPoints,
+    'GeometryNodeInterpolateCurves': InterpolateCurves,
     'GeometryNodeIsViewport': IsViewport,
     'GeometryNodeJoinGeometry': JoinGeometry,
     'GeometryNodeMaterialSelection': MaterialSelection,
@@ -14713,7 +15163,7 @@ def create_node(bl_idname, *args, **kwargs):
     'GeometryNodeMeshCone': Cone,
     'GeometryNodeMeshCube': Cube,
     'GeometryNodeMeshCylinder': Cylinder,
-    'GeometryNodeMeshFaceSetBoundaries': FaceSetBoundaries,
+    'GeometryNodeMeshFaceSetBoundaries': FaceGroupBoundaries,
     'GeometryNodeMeshGrid': Grid,
     'GeometryNodeMeshIcoSphere': IcoSphere,
     'GeometryNodeMeshLine': MeshLine,
@@ -14768,7 +15218,7 @@ def create_node(bl_idname, *args, **kwargs):
     'GeometryNodeSubdivideMesh': SubdivideMesh,
     'GeometryNodeSubdivisionSurface': SubdivisionSurface,
     'GeometryNodeSwitch': Switch,
-    'GeometryNodeTransform': Transform,
+    'GeometryNodeTransform': TransformGeometry,
     'GeometryNodeTranslateInstances': TranslateInstances,
     'GeometryNodeTriangulate': Triangulate,
     'GeometryNodeTrimCurve': TrimCurve,

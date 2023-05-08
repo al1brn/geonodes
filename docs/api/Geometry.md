@@ -100,7 +100,7 @@ elf.points = Vertex(self) # Initialized before super().__init__ which can overri
 
 **Methods**
 
-[attribute_statistic](#attribute_statistic) | [capture_attribute](#capture_attribute) | [delete](#delete) | [duplicate](#duplicate) | [field_at_index](#field_at_index) | [instantiate](#instantiate) | [interpolate_domain](#interpolate_domain) | [join](#join) | [material_selection](#material_selection) | [merge_by_distance](#merge_by_distance) | [named_attribute](#named_attribute) | [named_boolean](#named_boolean) | [named_color](#named_color) | [named_float](#named_float) | [named_integer](#named_integer) | [named_vector](#named_vector) | [proximity](#proximity) | [proximity_edges](#proximity_edges) | [proximity_faces](#proximity_faces) | [proximity_points](#proximity_points) | [raycast](#raycast) | [raycast_interpolated](#raycast_interpolated) | [raycast_nearest](#raycast_nearest) | [remove_named_attribute](#remove_named_attribute) | [replace_material](#replace_material) | [sample_index](#sample_index) | [sample_nearest](#sample_nearest) | [separate](#separate) | [set_ID](#set_ID) | [set_material](#set_material) | [set_material_index](#set_material_index) | [set_position](#set_position) | [show_handles](#show_handles) | [store_named_attribute](#store_named_attribute) | [store_named_boolean](#store_named_boolean) | [store_named_color](#store_named_color) | [store_named_float](#store_named_float) | [store_named_integer](#store_named_integer) | [store_named_vector](#store_named_vector) | [switch](#switch) | [to_instance](#to_instance) | [transform](#transform) | [view](#view) | [viewer](#viewer)
+[attribute_statistic](#attribute_statistic) | [capture_attribute](#capture_attribute) | [delete](#delete) | [duplicate](#duplicate) | [evaluate_at_index](#evaluate_at_index) | [instantiate](#instantiate) | [interpolate_domain](#interpolate_domain) | [join](#join) | [material_selection](#material_selection) | [merge_by_distance](#merge_by_distance) | [named_attribute](#named_attribute) | [named_attribute_exists](#named_attribute_exists) | [named_boolean](#named_boolean) | [named_color](#named_color) | [named_float](#named_float) | [named_integer](#named_integer) | [named_vector](#named_vector) | [proximity](#proximity) | [proximity_edges](#proximity_edges) | [proximity_faces](#proximity_faces) | [proximity_points](#proximity_points) | [raycast](#raycast) | [raycast_interpolated](#raycast_interpolated) | [raycast_nearest](#raycast_nearest) | [remove_named_attribute](#remove_named_attribute) | [replace_material](#replace_material) | [sample_index](#sample_index) | [sample_nearest](#sample_nearest) | [separate](#separate) | [set_ID](#set_ID) | [set_material](#set_material) | [set_material_index](#set_material_index) | [set_position](#set_position) | [show_handles](#show_handles) | [store_named_attribute](#store_named_attribute) | [store_named_boolean](#store_named_boolean) | [store_named_color](#store_named_color) | [store_named_float](#store_named_float) | [store_named_integer](#store_named_integer) | [store_named_vector](#store_named_vector) | [switch](#switch) | [to_instance](#to_instance) | [transform_geometry](#transform_geometry) | [view](#view) | [viewer](#viewer)
 
 ***Inherited***
 
@@ -400,7 +400,7 @@ def Collection(cls, collection=None, separate_children=None, reset_children=None
 - transform_space (str): 'ORIGINAL' in [ORIGINAL, RELATIVE]
 
 #### Returns:
-- socket `geometry`
+- socket `instances`
 
 
 
@@ -681,15 +681,15 @@ def duplicate(self, selection=None, amount=None, domain='POINT')
 
 <sub>Go to [top](#class-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
-### field_at_index
+### evaluate_at_index
 
 ```python
-def field_at_index(self, index=None, value=None, domain='POINT')
+def evaluate_at_index(self, index=None, value=None, domain='POINT')
 ```
 
 
 
-> Node: [Field at Index](GeometryNodeFieldAtIndex.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/field_at_index.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeFieldAtIndex.html)
+> Node: [Evaluate at Index](GeometryNodeFieldAtIndex.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/v.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeFieldAtIndex.html)
 
 #### Args:
 - index: Integer
@@ -748,7 +748,7 @@ def interpolate_domain(self, value=None, domain='POINT')
 
 
 
-> Node: [Interpolate Domain](GeometryNodeFieldOnDomain.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/interpolate_domain.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeFieldOnDomain.html)
+> Node: [Evaluate on Domain](GeometryNodeFieldOnDomain.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/v.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeFieldOnDomain.html)
 
 #### Args:
 - value: ['Float', 'Integer', 'Vector', 'Color', 'Boolean']
@@ -851,6 +851,30 @@ def named_attribute(self, name=None, data_type='FLOAT')
 
 #### Returns:
 - socket `attribute`
+
+
+
+
+
+
+<sub>Go to [top](#class-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### named_attribute_exists
+
+```python
+def named_attribute_exists(self, name=None, data_type='FLOAT')
+```
+
+
+
+> Node: [Named Attribute](GeometryNodeInputNamedAttribute.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/named_attribute.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputNamedAttribute.html)
+
+#### Args:
+- name: String
+- data_type (str): 'FLOAT' in [FLOAT, INT, FLOAT_VECTOR, FLOAT_COLOR, BOOLEAN]
+
+#### Returns:
+- socket `exists`
 
 
 
@@ -1403,7 +1427,7 @@ tree.output_geometry = curve + visu
 ### store_named_attribute
 
 ```python
-def store_named_attribute(self, name=None, value=None, domain='POINT')
+def store_named_attribute(self, selection=None, name=None, value=None, domain='POINT')
 ```
 
 
@@ -1411,6 +1435,7 @@ def store_named_attribute(self, name=None, value=None, domain='POINT')
 > Node: [Store Named Attribute](GeometryNodeStoreNamedAttribute.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/store_named_attribute.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeStoreNamedAttribute.html)
 
 #### Args:
+- selection: Boolean
 - name: String
 - value: ['Vector', 'Float', 'Color', 'Boolean', 'Integer']
 - domain (str): 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
@@ -1428,7 +1453,7 @@ def store_named_attribute(self, name=None, value=None, domain='POINT')
 ### store_named_boolean
 
 ```python
-def store_named_boolean(self, name=None, value=None, domain='POINT')
+def store_named_boolean(self, selection=None, name=None, value=None, domain='POINT')
 ```
 
 
@@ -1436,6 +1461,7 @@ def store_named_boolean(self, name=None, value=None, domain='POINT')
 > Node: [Store Named Attribute](GeometryNodeStoreNamedAttribute.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/store_named_attribute.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeStoreNamedAttribute.html)
 
 #### Args:
+- selection: Boolean
 - name: String
 - value: ['Vector', 'Float', 'Color', 'Boolean', 'Integer']
 - domain (str): 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
@@ -1453,7 +1479,7 @@ def store_named_boolean(self, name=None, value=None, domain='POINT')
 ### store_named_color
 
 ```python
-def store_named_color(self, name=None, value=None, domain='POINT')
+def store_named_color(self, selection=None, name=None, value=None, domain='POINT')
 ```
 
 
@@ -1461,6 +1487,7 @@ def store_named_color(self, name=None, value=None, domain='POINT')
 > Node: [Store Named Attribute](GeometryNodeStoreNamedAttribute.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/store_named_attribute.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeStoreNamedAttribute.html)
 
 #### Args:
+- selection: Boolean
 - name: String
 - value: ['Vector', 'Float', 'Color', 'Boolean', 'Integer']
 - domain (str): 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
@@ -1478,7 +1505,7 @@ def store_named_color(self, name=None, value=None, domain='POINT')
 ### store_named_float
 
 ```python
-def store_named_float(self, name=None, value=None, domain='POINT')
+def store_named_float(self, selection=None, name=None, value=None, domain='POINT')
 ```
 
 
@@ -1486,6 +1513,7 @@ def store_named_float(self, name=None, value=None, domain='POINT')
 > Node: [Store Named Attribute](GeometryNodeStoreNamedAttribute.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/store_named_attribute.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeStoreNamedAttribute.html)
 
 #### Args:
+- selection: Boolean
 - name: String
 - value: ['Vector', 'Float', 'Color', 'Boolean', 'Integer']
 - domain (str): 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
@@ -1503,7 +1531,7 @@ def store_named_float(self, name=None, value=None, domain='POINT')
 ### store_named_integer
 
 ```python
-def store_named_integer(self, name=None, value=None, domain='POINT')
+def store_named_integer(self, selection=None, name=None, value=None, domain='POINT')
 ```
 
 
@@ -1511,6 +1539,7 @@ def store_named_integer(self, name=None, value=None, domain='POINT')
 > Node: [Store Named Attribute](GeometryNodeStoreNamedAttribute.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/store_named_attribute.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeStoreNamedAttribute.html)
 
 #### Args:
+- selection: Boolean
 - name: String
 - value: ['Vector', 'Float', 'Color', 'Boolean', 'Integer']
 - domain (str): 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
@@ -1528,7 +1557,7 @@ def store_named_integer(self, name=None, value=None, domain='POINT')
 ### store_named_vector
 
 ```python
-def store_named_vector(self, name=None, value=None, domain='POINT')
+def store_named_vector(self, selection=None, name=None, value=None, domain='POINT')
 ```
 
 
@@ -1536,6 +1565,7 @@ def store_named_vector(self, name=None, value=None, domain='POINT')
 > Node: [Store Named Attribute](GeometryNodeStoreNamedAttribute.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/store_named_attribute.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeStoreNamedAttribute.html)
 
 #### Args:
+- selection: Boolean
 - name: String
 - value: ['Vector', 'Float', 'Color', 'Boolean', 'Integer']
 - domain (str): 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
@@ -1597,15 +1627,15 @@ def to_instance(*geometry)
 
 <sub>Go to [top](#class-Geometry) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
-### transform
+### transform_geometry
 
 ```python
-def transform(self, translation=None, rotation=None, scale=None)
+def transform_geometry(self, translation=None, rotation=None, scale=None)
 ```
 
 
 
-> Node: [Transform](GeometryNodeTransform.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/transform.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeTransform.html)
+> Node: [Transform Geometry](GeometryNodeTransform.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/r.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeTransform.html)
 
 #### Args:
 - translation: Vector

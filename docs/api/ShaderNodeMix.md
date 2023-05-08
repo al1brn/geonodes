@@ -25,7 +25,7 @@ node = nodes.Mix(factor=None, a=None, b=None, blend_type='MIX', clamp_factor=Tru
 
 #### Node parameter arguments:
 
-- **blend_type** (str): default = 'MIX' in ('MIX', 'DARKEN', 'MULTIPLY', 'BURN', 'LIGHTEN', 'SCREEN', 'DODGE', 'ADD', 'OVERLAY', 'SOFT_LIGHT', 'LINEAR_LIGHT', 'DIFFERENCE', 'SUBTRACT', 'DIVIDE', 'HUE', 'SATURATION', 'COLOR', 'VALUE')
+- **blend_type** (str): default = 'MIX' in ('MIX', 'DARKEN', 'MULTIPLY', 'BURN', 'LIGHTEN', 'SCREEN', 'DODGE', 'ADD', 'OVERLAY', 'SOFT_LIGHT', 'LINEAR_LIGHT', 'DIFFERENCE', 'EXCLUSION', 'SUBTRACT', 'DIVIDE', 'HUE', 'SATURATION', 'COLOR', 'VALUE')
 - **clamp_factor** (bool): default = True
 - **clamp_result** (bool): default = False
 - **data_type** (str): default = 'FLOAT' in ('FLOAT', 'VECTOR', 'RGBA')

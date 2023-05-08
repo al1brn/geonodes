@@ -34,7 +34,7 @@ CloudPoint(self, data_socket, selection=None)
 
 **Methods**
 
-[accumulate_field](#accumulate_field) | [attribute_max](#attribute_max) | [attribute_mean](#attribute_mean) | [attribute_median](#attribute_median) | [attribute_min](#attribute_min) | [attribute_node](#attribute_node) | [attribute_range](#attribute_range) | [attribute_statistic](#attribute_statistic) | [attribute_std](#attribute_std) | [attribute_sum](#attribute_sum) | [attribute_var](#attribute_var) | [capture_attribute](#capture_attribute) | [delete](#delete) | [duplicate](#duplicate) | [field_at_index](#field_at_index) | [index_for_sample](#index_for_sample) | [instance_on_points](#instance_on_points) | [interpolate](#interpolate) | [material_selection](#material_selection) | [named_attribute](#named_attribute) | [named_boolean](#named_boolean) | [named_color](#named_color) | [named_float](#named_float) | [named_integer](#named_integer) | [named_vector](#named_vector) | [proximity](#proximity) | [remove_named_attribute](#remove_named_attribute) | [sample_index](#sample_index) | [select](#select) | [set_ID](#set_ID) | [set_position](#set_position) | [socket_stack](#socket_stack) | [store_named_attribute](#store_named_attribute) | [store_named_attribute_no_selection](#store_named_attribute_no_selection) | [store_named_boolean](#store_named_boolean) | [store_named_color](#store_named_color) | [store_named_float](#store_named_float) | [store_named_integer](#store_named_integer) | [store_named_vector](#store_named_vector) | [to_vertices](#to_vertices) | [view](#view) | [viewer](#viewer)
+[accumulate_field](#accumulate_field) | [attribute_max](#attribute_max) | [attribute_mean](#attribute_mean) | [attribute_median](#attribute_median) | [attribute_min](#attribute_min) | [attribute_node](#attribute_node) | [attribute_range](#attribute_range) | [attribute_statistic](#attribute_statistic) | [attribute_std](#attribute_std) | [attribute_sum](#attribute_sum) | [attribute_var](#attribute_var) | [blur_attribute](#blur_attribute) | [blur_color](#blur_color) | [blur_float](#blur_float) | [blur_integer](#blur_integer) | [blur_vector](#blur_vector) | [capture_attribute](#capture_attribute) | [delete](#delete) | [duplicate](#duplicate) | [evaluate_at_index](#evaluate_at_index) | [index_for_sample](#index_for_sample) | [instance_on_points](#instance_on_points) | [interpolate](#interpolate) | [material_selection](#material_selection) | [named_attribute](#named_attribute) | [named_attribute_exists](#named_attribute_exists) | [named_boolean](#named_boolean) | [named_color](#named_color) | [named_float](#named_float) | [named_integer](#named_integer) | [named_vector](#named_vector) | [proximity](#proximity) | [remove_named_attribute](#remove_named_attribute) | [sample_index](#sample_index) | [select](#select) | [set_ID](#set_ID) | [set_position](#set_position) | [socket_stack](#socket_stack) | [store_named_2D_vector](#store_named_2D_vector) | [store_named_attribute](#store_named_attribute) | [store_named_attribute_OLD](#store_named_attribute_OLD) | [store_named_boolean](#store_named_boolean) | [store_named_boolean_OLD](#store_named_boolean_OLD) | [store_named_byte_color](#store_named_byte_color) | [store_named_color](#store_named_color) | [store_named_color_OLD](#store_named_color_OLD) | [store_named_float](#store_named_float) | [store_named_float_OLD](#store_named_float_OLD) | [store_named_integer](#store_named_integer) | [store_named_integer_OLD](#store_named_integer_OLD) | [store_named_vector](#store_named_vector) | [store_named_vector_OLD](#store_named_vector_OLD) | [to_vertices](#to_vertices) | [view](#view) | [viewer](#viewer)
 
 ## Properties
 
@@ -426,7 +426,7 @@ def random_vector(min=None, max=None, ID=None, seed=None)
 ### accumulate_field
 
 ```python
-def accumulate_field(self, value=None, group_index=None)
+def accumulate_field(self, value=None, group_id=None)
 ```
 
 
@@ -435,7 +435,7 @@ def accumulate_field(self, value=None, group_index=None)
 
 #### Args:
 - value: ['Vector', 'Float', 'Integer']
-- group_index: Integer
+- group_id: Integer
 
 ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeAccumulateField.webp)
 
@@ -683,6 +683,131 @@ def attribute_var(self, attribute=None)
 
 <sub>Go to [top](#class-CloudPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
+### blur_attribute
+
+```python
+def blur_attribute(self, value=None, iterations=None, weight=None)
+```
+
+
+
+> Node: [Blur Attribute](GeometryNodeBlurAttribute.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/l.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeBlurAttribute.html)
+
+#### Args:
+- value: ['Float', 'Integer', 'Vector', 'Color']
+- iterations: Integer
+- weight: Float
+
+#### Returns:
+- socket `value`
+
+
+
+
+
+
+<sub>Go to [top](#class-CloudPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### blur_color
+
+```python
+def blur_color(self, value=None, iterations=None, weight=None)
+```
+
+
+
+> Node: [Blur Attribute](GeometryNodeBlurAttribute.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/l.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeBlurAttribute.html)
+
+#### Args:
+- value: ['Float', 'Integer', 'Vector', 'Color']
+- iterations: Integer
+- weight: Float
+
+#### Returns:
+- socket `value`
+
+
+
+
+
+
+<sub>Go to [top](#class-CloudPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### blur_float
+
+```python
+def blur_float(self, value=None, iterations=None, weight=None)
+```
+
+
+
+> Node: [Blur Attribute](GeometryNodeBlurAttribute.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/l.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeBlurAttribute.html)
+
+#### Args:
+- value: ['Float', 'Integer', 'Vector', 'Color']
+- iterations: Integer
+- weight: Float
+
+#### Returns:
+- socket `value`
+
+
+
+
+
+
+<sub>Go to [top](#class-CloudPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### blur_integer
+
+```python
+def blur_integer(self, value=None, iterations=None, weight=None)
+```
+
+
+
+> Node: [Blur Attribute](GeometryNodeBlurAttribute.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/l.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeBlurAttribute.html)
+
+#### Args:
+- value: ['Float', 'Integer', 'Vector', 'Color']
+- iterations: Integer
+- weight: Float
+
+#### Returns:
+- socket `value`
+
+
+
+
+
+
+<sub>Go to [top](#class-CloudPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### blur_vector
+
+```python
+def blur_vector(self, value=None, iterations=None, weight=None)
+```
+
+
+
+> Node: [Blur Attribute](GeometryNodeBlurAttribute.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/l.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeBlurAttribute.html)
+
+#### Args:
+- value: ['Float', 'Integer', 'Vector', 'Color']
+- iterations: Integer
+- weight: Float
+
+#### Returns:
+- socket `value`
+
+
+
+
+
+
+<sub>Go to [top](#class-CloudPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### capture_attribute
 
 ```python
@@ -752,15 +877,15 @@ def duplicate(self, amount=None)
 
 <sub>Go to [top](#class-CloudPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
-### field_at_index
+### evaluate_at_index
 
 ```python
-def field_at_index(self, index=None, value=None)
+def evaluate_at_index(self, index=None, value=None)
 ```
 
 
 
-> Node: [Field at Index](GeometryNodeFieldAtIndex.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/field_at_index.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeFieldAtIndex.html)
+> Node: [Evaluate at Index](GeometryNodeFieldAtIndex.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/v.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeFieldAtIndex.html)
 
 #### Args:
 - index: Integer
@@ -831,18 +956,23 @@ def instance_on_points(self, instance=None, pick_instance=None, instance_index=N
 ### interpolate
 
 ```python
-def interpolate(self, value=None)
+def interpolate(self, guide_curves=None, guide_up=None, guide_group_id=None, point_up=None, point_group_id=None, max_neighbors=None)
 ```
 
 
 
-> Node: [Interpolate Domain](GeometryNodeFieldOnDomain.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/interpolate_domain.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeFieldOnDomain.html)
+> Node: [Interpolate Curves](GeometryNodeInterpolateCurves.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/n.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInterpolateCurves.html)
 
 #### Args:
-- value: ['Float', 'Integer', 'Vector', 'Color', 'Boolean']
+- guide_curves: Geometry
+- guide_up: Vector
+- guide_group_id: Integer
+- point_up: Vector
+- point_group_id: Integer
+- max_neighbors: Integer
 
 #### Returns:
-- socket `value`
+- node with sockets ['curves', 'closest_index', 'closest_weight']
 
 
 
@@ -890,6 +1020,30 @@ def named_attribute(self, name=None, data_type='FLOAT')
 
 #### Returns:
 - socket `attribute`
+
+
+
+
+
+
+<sub>Go to [top](#class-CloudPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### named_attribute_exists
+
+```python
+def named_attribute_exists(self, name=None, data_type='FLOAT')
+```
+
+
+
+> Node: [Named Attribute](GeometryNodeInputNamedAttribute.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/named_attribute.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputNamedAttribute.html)
+
+#### Args:
+- name: String
+- data_type (str): 'FLOAT' in [FLOAT, INT, FLOAT_VECTOR, FLOAT_COLOR, BOOLEAN]
+
+#### Returns:
+- socket `exists`
 
 
 
@@ -1176,33 +1330,10 @@ def socket_stack(self, node, socket_name=None)
 
 <sub>Go to [top](#class-CloudPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
-### store_named_attribute
+### store_named_2D_vector
 
 ```python
-def store_named_attribute(self, name=None, value=None, data_type=None)
-```
-
- Store a named attribute
-
-If selection exists, create an intermediary cloud of points to update selectively the items.
-
-#### Args:
-- name (str): name of the attribute
-- value (any): value of the attribute
-- data_type (str): valeu data type
-    
-#### Returns:
-- data socket (DataSocket)
-
-
-
-
-<sub>Go to [top](#class-CloudPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-### store_named_attribute_no_selection
-
-```python
-def store_named_attribute_no_selection(self, name=None, value=None)
+def store_named_2D_vector(self, name=None, value=None)
 ```
 
 
@@ -1223,10 +1354,81 @@ def store_named_attribute_no_selection(self, name=None, value=None)
 
 <sub>Go to [top](#class-CloudPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
+### store_named_attribute
+
+```python
+def store_named_attribute(self, name=None, value=None)
+```
+
+
+
+> Node: [Store Named Attribute](GeometryNodeStoreNamedAttribute.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/store_named_attribute.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeStoreNamedAttribute.html)
+
+#### Args:
+- name: String
+- value: ['Vector', 'Float', 'Color', 'Boolean', 'Integer']
+
+#### Returns:
+- self
+
+
+
+
+
+
+<sub>Go to [top](#class-CloudPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### store_named_attribute_OLD
+
+```python
+def store_named_attribute_OLD(self, name=None, value=None, data_type=None)
+```
+
+ Store a named attribute
+
+If selection exists, create an intermediary cloud of points to update selectively the items.
+
+#### Args:
+- name (str): name of the attribute
+- value (any): value of the attribute
+- data_type (str): valeu data type
+    
+#### Returns:
+- data socket (DataSocket)
+
+
+
+
+<sub>Go to [top](#class-CloudPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### store_named_boolean
 
 ```python
-def store_named_boolean(self, name, value)
+def store_named_boolean(self, name=None, value=None)
+```
+
+
+
+> Node: [Store Named Attribute](GeometryNodeStoreNamedAttribute.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/store_named_attribute.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeStoreNamedAttribute.html)
+
+#### Args:
+- name: String
+- value: ['Vector', 'Float', 'Color', 'Boolean', 'Integer']
+
+#### Returns:
+- self
+
+
+
+
+
+
+<sub>Go to [top](#class-CloudPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### store_named_boolean_OLD
+
+```python
+def store_named_boolean_OLD(self, name, value)
 ```
 
  Store a named attribute of type Boolean
@@ -1244,10 +1446,58 @@ see [store_named_attribute](#store_named_attribute)
 
 <sub>Go to [top](#class-CloudPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
+### store_named_byte_color
+
+```python
+def store_named_byte_color(self, name=None, value=None)
+```
+
+
+
+> Node: [Store Named Attribute](GeometryNodeStoreNamedAttribute.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/store_named_attribute.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeStoreNamedAttribute.html)
+
+#### Args:
+- name: String
+- value: ['Vector', 'Float', 'Color', 'Boolean', 'Integer']
+
+#### Returns:
+- self
+
+
+
+
+
+
+<sub>Go to [top](#class-CloudPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### store_named_color
 
 ```python
-def store_named_color(self, name, value)
+def store_named_color(self, name=None, value=None)
+```
+
+
+
+> Node: [Store Named Attribute](GeometryNodeStoreNamedAttribute.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/store_named_attribute.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeStoreNamedAttribute.html)
+
+#### Args:
+- name: String
+- value: ['Vector', 'Float', 'Color', 'Boolean', 'Integer']
+
+#### Returns:
+- self
+
+
+
+
+
+
+<sub>Go to [top](#class-CloudPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### store_named_color_OLD
+
+```python
+def store_named_color_OLD(self, name, value)
 ```
 
  Store a named attribute of type Color
@@ -1268,7 +1518,31 @@ see [store_named_attribute](#store_named_attribute)
 ### store_named_float
 
 ```python
-def store_named_float(self, name, value)
+def store_named_float(self, name=None, value=None)
+```
+
+
+
+> Node: [Store Named Attribute](GeometryNodeStoreNamedAttribute.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/store_named_attribute.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeStoreNamedAttribute.html)
+
+#### Args:
+- name: String
+- value: ['Vector', 'Float', 'Color', 'Boolean', 'Integer']
+
+#### Returns:
+- self
+
+
+
+
+
+
+<sub>Go to [top](#class-CloudPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### store_named_float_OLD
+
+```python
+def store_named_float_OLD(self, name, value)
 ```
 
  Store a named attribute of type Float
@@ -1289,7 +1563,31 @@ see [store_named_attribute](#store_named_attribute)
 ### store_named_integer
 
 ```python
-def store_named_integer(self, name, value)
+def store_named_integer(self, name=None, value=None)
+```
+
+
+
+> Node: [Store Named Attribute](GeometryNodeStoreNamedAttribute.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/store_named_attribute.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeStoreNamedAttribute.html)
+
+#### Args:
+- name: String
+- value: ['Vector', 'Float', 'Color', 'Boolean', 'Integer']
+
+#### Returns:
+- self
+
+
+
+
+
+
+<sub>Go to [top](#class-CloudPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### store_named_integer_OLD
+
+```python
+def store_named_integer_OLD(self, name, value)
 ```
 
  Store a named attribute of type Integer
@@ -1310,7 +1608,31 @@ see [store_named_attribute](#store_named_attribute)
 ### store_named_vector
 
 ```python
-def store_named_vector(self, name, value)
+def store_named_vector(self, name=None, value=None)
+```
+
+
+
+> Node: [Store Named Attribute](GeometryNodeStoreNamedAttribute.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/store_named_attribute.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeStoreNamedAttribute.html)
+
+#### Args:
+- name: String
+- value: ['Vector', 'Float', 'Color', 'Boolean', 'Integer']
+
+#### Returns:
+- self
+
+
+
+
+
+
+<sub>Go to [top](#class-CloudPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### store_named_vector_OLD
+
+```python
+def store_named_vector_OLD(self, name, value)
 ```
 
  Store a named attribute of type Vector

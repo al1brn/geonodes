@@ -1,16 +1,16 @@
-# Node *Face Set Boundaries*
+# Node *Face Group Boundaries*
 
 > [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
-- [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/face_set_boundaries.html)
+- [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/a.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshFaceSetBoundaries.html)
-- geonodes name: `FaceSetBoundaries`
+- geonodes name: `FaceGroupBoundaries`
 - bl_idname: `GeometryNodeMeshFaceSetBoundaries`
 
 ```python
 from geonodes import nodes
 
-node = nodes.FaceSetBoundaries(face_set=None)
+node = nodes.FaceGroupBoundaries(face_group_id=None)
 ```
 
 ![Blender Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeMeshFaceSetBoundaries.webp)
@@ -19,7 +19,7 @@ node = nodes.FaceSetBoundaries(face_set=None)
 
 #### Input socket arguments:
 
-- **face_set**: [Integer](Integer.md)
+- **face_group_id**: [Integer](Integer.md)
 
 ### Output sockets:
 
@@ -30,9 +30,9 @@ node = nodes.FaceSetBoundaries(face_set=None)
 | Class or method name | Definition |
 |----------------------|------------|
 | **[Face](Face.md)** |
-| [face_set_boundaries](Face.md#face_set_boundaries) | `def face_set_boundaries(self):` |
+| [face_group_boundaries](Face.md#face_group_boundaries) | `def face_group_boundaries(self):` |
 | **[Mesh](Mesh.md)** |
-| [face_set_boundaries](Mesh.md#face_set_boundaries) | `def face_set_boundaries(self, face_set=None):` |
+| [face_group_boundaries](Mesh.md#face_group_boundaries) | `def face_group_boundaries(self, face_group_id=None):` |
 
-<sub>Go to [top](#node-Face-Set-Boundaries) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Face-Group-Boundaries) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

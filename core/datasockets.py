@@ -1690,6 +1690,12 @@ class Object(DataSocket):
         else:
             super().__init__(None)
             self._bobject = Object.blender_object(obj)
+            
+    def __str__(self):
+        if self.bsocket is None:
+            return f"<Object {self._bobject}>"
+        else:
+            super().__str__()
     
     @staticmethod
     def blender_object(obj):
@@ -1702,7 +1708,7 @@ class Object(DataSocket):
     
     @property
     def bobject(self):
-        """ Returns the blender of object.
+        """ Returns the blender object.
         
         A [DataSocket](DataSocket.md) **Object** has the particularity to be initialized without any socket.
         This allow to call the node *'Object Info'* alone.
@@ -1799,6 +1805,25 @@ class Texture(DataSocket):
         return cls(Tree.TREE.new_input('Texture', name=name, value=value, description=description))
     
 class Image(DataSocket):
+    
+    def __init__(self, value=None, label=None):
+        if DataSocket.gives_bsocket(value):
+            super().__init__(value, label=label)
+            
+        else:
+            img = Image.blender_image(value)
+            node = nodes.Image(label=label)
+            node.bnode.image = img
+            super().__init__(node.image, node)
+    
+    @staticmethod
+    def blender_image(image):
+        if type(image) is str:
+            name = image
+            image = bpy.data.images.get(name)
+            if image is None:
+                raise RuntimeError(f"Image '{name}' doesn't exist.")
+        return image
     
     @classmethod
     def Input(cls, value = None, name="Image", description=""):

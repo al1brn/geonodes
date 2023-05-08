@@ -16,12 +16,12 @@ class Geometry(geosocks.Geometry):
         - transform_space (str): 'ORIGINAL' in [ORIGINAL, RELATIVE]
 
         #### Returns:
-        - socket `geometry`
+        - socket `instances`
 
 
         """
 
-        return cls(nodes.CollectionInfo(collection=collection, separate_children=separate_children, reset_children=reset_children, transform_space=transform_space).geometry)
+        return cls(nodes.CollectionInfo(collection=collection, separate_children=separate_children, reset_children=reset_children, transform_space=transform_space).instances)
 
 
     @property
@@ -240,10 +240,10 @@ class Geometry(geosocks.Geometry):
         return self.stack(nodes.DuplicateElements(geometry=self, selection=selection, amount=amount, domain=domain)).node.duplicate_index
 
 
-    def field_at_index(self, index=None, value=None, domain='POINT'):
+    def evaluate_at_index(self, index=None, value=None, domain='POINT'):
         """
 
-        > Node: [Field at Index](GeometryNodeFieldAtIndex.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/field_at_index.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeFieldAtIndex.html)
+        > Node: [Evaluate at Index](GeometryNodeFieldAtIndex.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/v.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeFieldAtIndex.html)
 
         #### Args:
         - index: Integer
@@ -257,7 +257,7 @@ class Geometry(geosocks.Geometry):
         """
 
         data_type_ = self.value_data_type(value, 'FLOAT')
-        return self.attribute_node(nodes.FieldAtIndex(index=index, value=value, data_type=data_type_, domain=domain)).value
+        return self.attribute_node(nodes.EvaluateAtIndex(index=index, value=value, data_type=data_type_, domain=domain)).value
 
 
     @property
@@ -296,7 +296,7 @@ class Geometry(geosocks.Geometry):
     def interpolate_domain(self, value=None, domain='POINT'):
         """
 
-        > Node: [Interpolate Domain](GeometryNodeFieldOnDomain.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/interpolate_domain.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeFieldOnDomain.html)
+        > Node: [Evaluate on Domain](GeometryNodeFieldOnDomain.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/v.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeFieldOnDomain.html)
 
         #### Args:
         - value: ['Float', 'Integer', 'Vector', 'Color', 'Boolean']
@@ -309,7 +309,7 @@ class Geometry(geosocks.Geometry):
         """
 
         data_type_ = self.value_data_type(value, 'FLOAT')
-        return self.attribute_node(nodes.InterpolateDomain(value=value, data_type=data_type_, domain=domain)).value
+        return self.attribute_node(nodes.EvaluateOnDomain(value=value, data_type=data_type_, domain=domain)).value
 
 
     @property
@@ -431,6 +431,24 @@ class Geometry(geosocks.Geometry):
         """
 
         return self.attribute_node(nodes.NamedAttribute(name=name, data_type=data_type)).attribute
+
+
+    def named_attribute_exists(self, name=None, data_type='FLOAT'):
+        """
+
+        > Node: [Named Attribute](GeometryNodeInputNamedAttribute.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/named_attribute.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputNamedAttribute.html)
+
+        #### Args:
+        - name: String
+        - data_type (str): 'FLOAT' in [FLOAT, INT, FLOAT_VECTOR, FLOAT_COLOR, BOOLEAN]
+
+        #### Returns:
+        - socket `exists`
+
+
+        """
+
+        return self.attribute_node(nodes.NamedAttribute(name=name, data_type=data_type)).exists
 
 
     def named_boolean(self, name=None):
@@ -989,12 +1007,13 @@ class Geometry(geosocks.Geometry):
         return self.stack(nodes.SetPosition(geometry=self, selection=selection, position=position, offset=offset))
 
 
-    def store_named_attribute(self, name=None, value=None, domain='POINT'):
+    def store_named_attribute(self, selection=None, name=None, value=None, domain='POINT'):
         """
 
         > Node: [Store Named Attribute](GeometryNodeStoreNamedAttribute.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/store_named_attribute.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeStoreNamedAttribute.html)
 
         #### Args:
+        - selection: Boolean
         - name: String
         - value: ['Vector', 'Float', 'Color', 'Boolean', 'Integer']
         - domain (str): 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
@@ -1006,15 +1025,16 @@ class Geometry(geosocks.Geometry):
         """
 
         data_type_ = self.value_data_type(value, 'FLOAT')
-        return self.stack(nodes.StoreNamedAttribute(geometry=self, name=name, value=value, data_type=data_type_, domain=domain))
+        return self.stack(nodes.StoreNamedAttribute(geometry=self, selection=selection, name=name, value=value, data_type=data_type_, domain=domain))
 
 
-    def store_named_boolean(self, name=None, value=None, domain='POINT'):
+    def store_named_boolean(self, selection=None, name=None, value=None, domain='POINT'):
         """
 
         > Node: [Store Named Attribute](GeometryNodeStoreNamedAttribute.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/store_named_attribute.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeStoreNamedAttribute.html)
 
         #### Args:
+        - selection: Boolean
         - name: String
         - value: ['Vector', 'Float', 'Color', 'Boolean', 'Integer']
         - domain (str): 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
@@ -1025,15 +1045,16 @@ class Geometry(geosocks.Geometry):
 
         """
 
-        return self.stack(nodes.StoreNamedAttribute(geometry=self, name=name, value=value, data_type='BOOLEAN', domain=domain))
+        return self.stack(nodes.StoreNamedAttribute(geometry=self, selection=selection, name=name, value=value, data_type='BOOLEAN', domain=domain))
 
 
-    def store_named_color(self, name=None, value=None, domain='POINT'):
+    def store_named_color(self, selection=None, name=None, value=None, domain='POINT'):
         """
 
         > Node: [Store Named Attribute](GeometryNodeStoreNamedAttribute.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/store_named_attribute.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeStoreNamedAttribute.html)
 
         #### Args:
+        - selection: Boolean
         - name: String
         - value: ['Vector', 'Float', 'Color', 'Boolean', 'Integer']
         - domain (str): 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
@@ -1044,15 +1065,16 @@ class Geometry(geosocks.Geometry):
 
         """
 
-        return self.stack(nodes.StoreNamedAttribute(geometry=self, name=name, value=value, data_type='FLOAT_COLOR', domain=domain))
+        return self.stack(nodes.StoreNamedAttribute(geometry=self, selection=selection, name=name, value=value, data_type='FLOAT_COLOR', domain=domain))
 
 
-    def store_named_float(self, name=None, value=None, domain='POINT'):
+    def store_named_float(self, selection=None, name=None, value=None, domain='POINT'):
         """
 
         > Node: [Store Named Attribute](GeometryNodeStoreNamedAttribute.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/store_named_attribute.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeStoreNamedAttribute.html)
 
         #### Args:
+        - selection: Boolean
         - name: String
         - value: ['Vector', 'Float', 'Color', 'Boolean', 'Integer']
         - domain (str): 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
@@ -1063,15 +1085,16 @@ class Geometry(geosocks.Geometry):
 
         """
 
-        return self.stack(nodes.StoreNamedAttribute(geometry=self, name=name, value=value, data_type='FLOAT', domain=domain))
+        return self.stack(nodes.StoreNamedAttribute(geometry=self, selection=selection, name=name, value=value, data_type='FLOAT', domain=domain))
 
 
-    def store_named_integer(self, name=None, value=None, domain='POINT'):
+    def store_named_integer(self, selection=None, name=None, value=None, domain='POINT'):
         """
 
         > Node: [Store Named Attribute](GeometryNodeStoreNamedAttribute.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/store_named_attribute.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeStoreNamedAttribute.html)
 
         #### Args:
+        - selection: Boolean
         - name: String
         - value: ['Vector', 'Float', 'Color', 'Boolean', 'Integer']
         - domain (str): 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
@@ -1082,15 +1105,16 @@ class Geometry(geosocks.Geometry):
 
         """
 
-        return self.stack(nodes.StoreNamedAttribute(geometry=self, name=name, value=value, data_type='INT', domain=domain))
+        return self.stack(nodes.StoreNamedAttribute(geometry=self, selection=selection, name=name, value=value, data_type='INT', domain=domain))
 
 
-    def store_named_vector(self, name=None, value=None, domain='POINT'):
+    def store_named_vector(self, selection=None, name=None, value=None, domain='POINT'):
         """
 
         > Node: [Store Named Attribute](GeometryNodeStoreNamedAttribute.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/store_named_attribute.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeStoreNamedAttribute.html)
 
         #### Args:
+        - selection: Boolean
         - name: String
         - value: ['Vector', 'Float', 'Color', 'Boolean', 'Integer']
         - domain (str): 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
@@ -1101,7 +1125,7 @@ class Geometry(geosocks.Geometry):
 
         """
 
-        return self.stack(nodes.StoreNamedAttribute(geometry=self, name=name, value=value, data_type='FLOAT_VECTOR', domain=domain))
+        return self.stack(nodes.StoreNamedAttribute(geometry=self, selection=selection, name=name, value=value, data_type='FLOAT_VECTOR', domain=domain))
 
 
     def switch(self, switch=None, true=None):
@@ -1140,10 +1164,10 @@ class Geometry(geosocks.Geometry):
         return gn.Instances(nodes.GeometryToInstance(*geometry).instances)
 
 
-    def transform(self, translation=None, rotation=None, scale=None):
+    def transform_geometry(self, translation=None, rotation=None, scale=None):
         """
 
-        > Node: [Transform](GeometryNodeTransform.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/transform.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeTransform.html)
+        > Node: [Transform Geometry](GeometryNodeTransform.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/r.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeTransform.html)
 
         #### Args:
         - translation: Vector
@@ -1156,7 +1180,7 @@ class Geometry(geosocks.Geometry):
 
         """
 
-        return self.stack(nodes.Transform(geometry=self, translation=translation, rotation=rotation, scale=scale))
+        return self.stack(nodes.TransformGeometry(geometry=self, translation=translation, rotation=rotation, scale=scale))
 
 
     def view(self, value=None, domain='AUTO'):
@@ -1253,17 +1277,13 @@ class Mesh(Geometry):
         - depth: Float
         - fill_type (str): 'NGON' in [NONE, NGON, TRIANGLE_FAN]
 
-        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeMeshCone.webp)
-
         #### Returns:
-        - tuple ('`mesh`', '`top`', '`bottom`', '`side`')
+        - node with sockets ['mesh', 'top', 'bottom', 'side', 'uv_map']
 
 
         """
 
-        import geonodes as gn
-        node = nodes.Cone(vertices=vertices, side_segments=side_segments, fill_segments=fill_segments, radius_top=radius_top, radius_bottom=radius_bottom, depth=depth, fill_type=fill_type)
-        return gn.Mesh(node.mesh), node.top, node.bottom, node.side
+        return nodes.Cone(vertices=vertices, side_segments=side_segments, fill_segments=fill_segments, radius_top=radius_top, radius_bottom=radius_bottom, depth=depth, fill_type=fill_type)
 
 
     @classmethod
@@ -1279,12 +1299,12 @@ class Mesh(Geometry):
         - vertices_z: Integer
 
         #### Returns:
-        - socket `mesh`
+        - node with sockets ['mesh', 'uv_map']
 
 
         """
 
-        return cls(nodes.Cube(size=size, vertices_x=vertices_x, vertices_y=vertices_y, vertices_z=vertices_z).mesh)
+        return nodes.Cube(size=size, vertices_x=vertices_x, vertices_y=vertices_y, vertices_z=vertices_z)
 
 
     @staticmethod
@@ -1301,17 +1321,13 @@ class Mesh(Geometry):
         - depth: Float
         - fill_type (str): 'NGON' in [NONE, NGON, TRIANGLE_FAN]
 
-        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeMeshCylinder.webp)
-
         #### Returns:
-        - tuple ('`mesh`', '`top`', '`bottom`', '`side`')
+        - node with sockets ['mesh', 'top', 'side', 'bottom', 'uv_map']
 
 
         """
 
-        import geonodes as gn
-        node = nodes.Cylinder(vertices=vertices, side_segments=side_segments, fill_segments=fill_segments, radius=radius, depth=depth, fill_type=fill_type)
-        return gn.Mesh(node.mesh), node.top, node.bottom, node.side
+        return nodes.Cylinder(vertices=vertices, side_segments=side_segments, fill_segments=fill_segments, radius=radius, depth=depth, fill_type=fill_type)
 
 
     @classmethod
@@ -1327,12 +1343,12 @@ class Mesh(Geometry):
         - vertices_y: Integer
 
         #### Returns:
-        - socket `mesh`
+        - node with sockets ['mesh', 'uv_map']
 
 
         """
 
-        return cls(nodes.Grid(size_x=size_x, size_y=size_y, vertices_x=vertices_x, vertices_y=vertices_y).mesh)
+        return nodes.Grid(size_x=size_x, size_y=size_y, vertices_x=vertices_x, vertices_y=vertices_y)
 
 
     @classmethod
@@ -1346,12 +1362,12 @@ class Mesh(Geometry):
         - subdivisions: Integer
 
         #### Returns:
-        - socket `mesh`
+        - node with sockets ['mesh', 'uv_map']
 
 
         """
 
-        return cls(nodes.IcoSphere(radius=radius, subdivisions=subdivisions).mesh)
+        return nodes.IcoSphere(radius=radius, subdivisions=subdivisions)
 
 
     @classmethod
@@ -1449,12 +1465,12 @@ class Mesh(Geometry):
         - radius: Float
 
         #### Returns:
-        - socket `mesh`
+        - node with sockets ['mesh', 'uv_map']
 
 
         """
 
-        return cls(nodes.UvSphere(segments=segments, rings=rings, radius=radius).mesh)
+        return nodes.UvSphere(segments=segments, rings=rings, radius=radius)
 
 
     def boolean_difference(self, *mesh_2, self_intersection=None, hole_tolerant=None):
@@ -1633,7 +1649,7 @@ class Mesh(Geometry):
         return self.stack(nodes.DeleteGeometry(geometry=self, selection=selection, domain=domain, mode='ONLY_FACE'))
 
 
-    def distribute_points_on_faces(self, selection=None, distance_min=None, density_max=None, density=None, density_factor=None, seed=None, distribute_method='RANDOM'):
+    def distribute_points_on_faces(self, selection=None, distance_min=None, density_max=None, density=None, density_factor=None, seed=None, distribute_method='RANDOM', use_legacy_normal=False):
         """
 
         > Node: [Distribute Points on Faces](GeometryNodeDistributePointsOnFaces.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/point/distribute_points_on_faces.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeDistributePointsOnFaces.html)
@@ -1646,6 +1662,7 @@ class Mesh(Geometry):
         - density_factor: Float
         - seed: Integer
         - distribute_method (str): 'RANDOM' in [RANDOM, POISSON]
+        - use_legacy_normal (bool): False
 
         ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeDistributePointsOnFaces.webp)
 
@@ -1656,7 +1673,7 @@ class Mesh(Geometry):
         """
 
         import geonodes as gn
-        node = nodes.DistributePointsOnFaces(mesh=self, selection=selection, distance_min=distance_min, density_max=density_max, density=density, density_factor=density_factor, seed=seed, distribute_method=distribute_method)
+        node = nodes.DistributePointsOnFaces(mesh=self, selection=selection, distance_min=distance_min, density_max=density_max, density=density, density_factor=density_factor, seed=seed, distribute_method=distribute_method, use_legacy_normal=use_legacy_normal)
         return gn.Points(node.points), node.normal, node.rotation
 
 
@@ -1791,6 +1808,23 @@ class Mesh(Geometry):
         return node.edge_index, node.total
 
 
+    def edges_to_face_groups(self, boundary_edges=None):
+        """
+
+        > Node: [Edges to Face Groups](GeometryNodeEdgesToFaceGroups.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/d.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeEdgesToFaceGroups.html)
+
+        #### Args:
+        - boundary_edges: Boolean
+
+        #### Returns:
+        - socket `face_group_id`
+
+
+        """
+
+        return self.attribute_node(nodes.EdgesToFaceGroups(boundary_edges=boundary_edges)).face_group_id
+
+
     def extrude(self, selection=None, offset=None, offset_scale=None, individual=None, mode='FACES'):
         """
 
@@ -1832,6 +1866,23 @@ class Mesh(Geometry):
         return self._c_geometrynodeattributedomainsize.face_count
 
 
+    def face_group_boundaries(self, face_group_id=None):
+        """
+
+        > Node: [Face Group Boundaries](GeometryNodeMeshFaceSetBoundaries.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/a.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshFaceSetBoundaries.html)
+
+        #### Args:
+        - face_group_id: Integer
+
+        #### Returns:
+        - socket `boundary_edges`
+
+
+        """
+
+        return self.attribute_node(nodes.FaceGroupBoundaries(face_group_id=face_group_id)).boundary_edges
+
+
     def face_is_planar(self, threshold=None):
         """
 
@@ -1867,23 +1918,6 @@ class Mesh(Geometry):
 
         node = self.attribute_node(nodes.FaceOfCorner(corner_index=corner_index))
         return node.face_index, node.index_in_face
-
-
-    def face_set_boundaries(self, face_set=None):
-        """
-
-        > Node: [Face Set Boundaries](GeometryNodeMeshFaceSetBoundaries.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/face_set_boundaries.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshFaceSetBoundaries.html)
-
-        #### Args:
-        - face_set: Integer
-
-        #### Returns:
-        - socket `boundary_edges`
-
-
-        """
-
-        return self.attribute_node(nodes.FaceSetBoundaries(face_set=face_set)).boundary_edges
 
 
     def flip_faces(self, selection=None):
@@ -2793,6 +2827,28 @@ class Curve(Geometry):
         return nodes.InstanceOnPoints(points=self, selection=selection, instance=instance, pick_instance=pick_instance, instance_index=instance_index, rotation=rotation, scale=scale).instances
 
 
+    def interpolate(self, guide_up=None, guide_group_id=None, points=None, point_up=None, point_group_id=None, max_neighbors=None):
+        """
+
+        > Node: [Interpolate Curves](GeometryNodeInterpolateCurves.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/n.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInterpolateCurves.html)
+
+        #### Args:
+        - guide_up: Vector
+        - guide_group_id: Integer
+        - points: Points
+        - point_up: Vector
+        - point_group_id: Integer
+        - max_neighbors: Integer
+
+        #### Returns:
+        - node with sockets ['curves', 'closest_index', 'closest_weight']
+
+
+        """
+
+        return nodes.InterpolateCurves(guide_curves=self, guide_up=guide_up, guide_group_id=guide_group_id, points=points, point_up=point_up, point_group_id=point_group_id, max_neighbors=max_neighbors)
+
+
     @property
     def length(self):
         """
@@ -3117,12 +3173,13 @@ class Curve(Geometry):
         return gn.Points(node.points), node.tangent, node.normal, node.rotation
 
 
-    def trim(self, start=None, end=None, mode='FACTOR'):
+    def trim(self, selection=None, start=None, end=None, mode='FACTOR'):
         """
 
         > Node: [Trim Curve](GeometryNodeTrimCurve.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/trim_curve.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeTrimCurve.html)
 
         #### Args:
+        - selection: Boolean
         - mode (str): 'FACTOR' in [FACTOR, LENGTH]
 
         #### Returns:
@@ -3131,15 +3188,16 @@ class Curve(Geometry):
 
         """
 
-        return self.stack(nodes.TrimCurve(curve=self, start0=start, start1=start, end0=start, end1=end, mode=mode))
+        return self.stack(nodes.TrimCurve(curve=self, selection=selection, start0=start, start1=start, end0=end, end1=end, mode=mode))
 
 
-    def trim_factor(self, start=None, end=None):
+    def trim_factor(self, selection=None, start=None, end=None):
         """
 
         > Node: [Trim Curve](GeometryNodeTrimCurve.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/trim_curve.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeTrimCurve.html)
 
         #### Args:
+        - selection: Boolean
         - start: Float
         - end: Float
 
@@ -3149,15 +3207,16 @@ class Curve(Geometry):
 
         """
 
-        return self.stack(nodes.TrimCurve(curve=self, start0=start, start1=None, end0=end, end1=None, mode='FACTOR'))
+        return self.stack(nodes.TrimCurve(curve=self, selection=selection, start0=start, start1=None, end0=end, end1=None, mode='FACTOR'))
 
 
-    def trim_length(self, start=None, end=None):
+    def trim_length(self, selection=None, start=None, end=None):
         """
 
         > Node: [Trim Curve](GeometryNodeTrimCurve.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/trim_curve.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeTrimCurve.html)
 
         #### Args:
+        - selection: Boolean
         - start: Float
         - end: Float
 
@@ -3167,7 +3226,7 @@ class Curve(Geometry):
 
         """
 
-        return self.stack(nodes.TrimCurve(curve=self, start0=None, start1=start, end0=None, end1=end, mode='LENGTH'))
+        return self.stack(nodes.TrimCurve(curve=self, selection=selection, start0=None, start1=start, end0=None, end1=end, mode='LENGTH'))
 
 
 
@@ -3230,6 +3289,28 @@ class Points(Geometry):
         """
 
         return nodes.InstanceOnPoints(points=self, selection=selection, instance=instance, pick_instance=pick_instance, instance_index=instance_index, rotation=rotation, scale=scale).instances
+
+
+    def interpolate(self, guide_curves=None, guide_up=None, guide_group_id=None, point_up=None, point_group_id=None, max_neighbors=None):
+        """
+
+        > Node: [Interpolate Curves](GeometryNodeInterpolateCurves.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/n.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInterpolateCurves.html)
+
+        #### Args:
+        - guide_curves: Geometry
+        - guide_up: Vector
+        - guide_group_id: Integer
+        - point_up: Vector
+        - point_group_id: Integer
+        - max_neighbors: Integer
+
+        #### Returns:
+        - node with sockets ['curves', 'closest_index', 'closest_weight']
+
+
+        """
+
+        return nodes.InterpolateCurves(guide_curves=guide_curves, guide_up=guide_up, guide_group_id=guide_group_id, points=self, point_up=point_up, point_group_id=point_group_id, max_neighbors=max_neighbors)
 
 
     def set_point_radius(self, selection=None, radius=None):
@@ -3843,7 +3924,7 @@ class Float(geosocks.Float):
         #### Args:
         - b: ['Float', 'Integer', 'Vector', 'Color', 'String']
         - epsilon: Float
-        - operation (str): 'GREATER_THAN' in [LESS_THAN, LESS_EQUAL, GREATER_THAN, GREATER_EQUAL, EQUAL, NOT_EQUAL]
+        - operation (str): 'GREATER_THAN' in [LESS_THAN, LESS_EQUAL, GREATER_THAN,... , NOT_EQUAL, DARKER, BRIGHTER]
 
         #### Returns:
         - socket `result`
@@ -5783,7 +5864,7 @@ class Vector(geosocks.Vector):
         - angle: Float
         - epsilon: Float
         - mode (str): 'ELEMENT' in [ELEMENT, LENGTH, AVERAGE, DOT_PRODUCT, DIRECTION]
-        - operation (str): 'GREATER_THAN' in [LESS_THAN, LESS_EQUAL, GREATER_THAN, GREATER_EQUAL, EQUAL, NOT_EQUAL]
+        - operation (str): 'GREATER_THAN' in [LESS_THAN, LESS_EQUAL, GREATER_THAN,... , NOT_EQUAL, DARKER, BRIGHTER]
 
         #### Returns:
         - socket `result`
@@ -7368,7 +7449,7 @@ class Integer(geosocks.Integer):
 
         """
 
-        return cls(nodes.RandomValue(min=min, max=max, probability=None, ID=ID, seed=seed, data_type='IN').value)
+        return cls(nodes.RandomValue(min=min, max=max, probability=None, ID=ID, seed=seed, data_type='INT').value)
 
 
     def abs(self, clamp=False):
@@ -7538,7 +7619,7 @@ class Integer(geosocks.Integer):
 
         #### Args:
         - b: ['Float', 'Integer', 'Vector', 'Color', 'String']
-        - operation (str): 'GREATER_THAN' in [LESS_THAN, LESS_EQUAL, GREATER_THAN, GREATER_EQUAL, EQUAL, NOT_EQUAL]
+        - operation (str): 'GREATER_THAN' in [LESS_THAN, LESS_EQUAL, GREATER_THAN,... , NOT_EQUAL, DARKER, BRIGHTER]
 
         #### Returns:
         - socket `result`
@@ -8795,7 +8876,7 @@ class String(geosocks.String):
         - text_box_width: Float
         - text_box_height: Float
         - align_x (str): 'LEFT' in [LEFT, CENTER, RIGHT, JUSTIFY, FLUSH]
-        - align_y (str): 'TOP_BASELINE' in [TOP_BASELINE, TOP, MIDDLE, BOTTOM_BASELINE, BOTTOM]
+        - align_y (str): 'TOP_BASELINE' in [TOP, TOP_BASELINE, MIDDLE, BOTTOM_BASELINE, BOTTOM]
         - overflow (str): 'OVERFLOW' in [OVERFLOW, SCALE_TO_FIT, TRUNCATE]
         - pivot_mode (str): 'BOTTOM_LEFT' in [MIDPOINT, TOP_LEFT, TOP_CENTER,... , BOTTOM_LEFT, BOTTOM_CENTER, BOTTOM_RIGHT]
 
@@ -8810,6 +8891,152 @@ class String(geosocks.String):
         import geonodes as gn
         node = nodes.StringToCurves(string=self, size=size, character_spacing=character_spacing, word_spacing=word_spacing, line_spacing=line_spacing, text_box_width=text_box_width, text_box_height=text_box_height, align_x=align_x, align_y=align_y, overflow=overflow, pivot_mode=pivot_mode)
         return gn.Instances(node.curve_instances), node.line, node.pivot_point
+
+
+
+
+class Image(geosocks.Image):
+    def fps(self, frame=None):
+        """
+
+        > Node: [Image Info](GeometryNodeImageInfo.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/m.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeImageInfo.html)
+
+        #### Args:
+        - frame: Integer
+
+        #### Returns:
+        - socket `fps`
+
+
+        """
+
+        return nodes.ImageInfo(image=self, frame=frame).fps
+
+
+    def frame_count(self, frame=None):
+        """
+
+        > Node: [Image Info](GeometryNodeImageInfo.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/m.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeImageInfo.html)
+
+        #### Args:
+        - frame: Integer
+
+        #### Returns:
+        - socket `frame_count`
+
+
+        """
+
+        return nodes.ImageInfo(image=self, frame=frame).frame_count
+
+
+    def has_alpha(self, frame=None):
+        """
+
+        > Node: [Image Info](GeometryNodeImageInfo.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/m.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeImageInfo.html)
+
+        #### Args:
+        - frame: Integer
+
+        #### Returns:
+        - socket `has_alpha`
+
+
+        """
+
+        return nodes.ImageInfo(image=self, frame=frame).has_alpha
+
+
+    def height(self, frame=None):
+        """
+
+        > Node: [Image Info](GeometryNodeImageInfo.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/m.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeImageInfo.html)
+
+        #### Args:
+        - frame: Integer
+
+        #### Returns:
+        - socket `height`
+
+
+        """
+
+        return nodes.ImageInfo(image=self, frame=frame).height
+
+
+    def info(self, frame=None):
+        """
+
+        > Node: [Image Info](GeometryNodeImageInfo.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/m.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeImageInfo.html)
+
+        #### Args:
+        - frame: Integer
+
+        #### Returns:
+        - node with sockets ['width', 'height', 'has_alpha', 'frame_count', 'fps']
+
+
+        """
+
+        return nodes.ImageInfo(image=self, frame=frame)
+
+
+    def switch(self, switch=None, true=None):
+        """
+
+        > Node: [Switch](GeometryNodeSwitch.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
+
+        #### Args:
+        - switch: Boolean
+        - true: Image
+
+        #### Returns:
+        - socket `output`
+
+
+        """
+
+        return nodes.Switch(switch=switch, false=self, true=true, input_type='IMAGE').output
+
+
+    def texture(self, vector=None, frame=None, extension='REPEAT', interpolation='Linear'):
+        """
+
+        > Node: [Image Texture](GeometryNodeImageTexture.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/image.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeImageTexture.html)
+
+        #### Args:
+        - vector: Vector
+        - frame: Integer
+        - extension (str): 'REPEAT' in [REPEAT, EXTEND, CLIP, MIRROR]
+        - interpolation (str): 'Linear' in [Linear, Closest, Cubic]
+
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeImageTexture.webp)
+
+        #### Returns:
+        - tuple ('`color`', '`alpha`')
+
+
+        """
+
+        node = nodes.ImageTexture(image=self, vector=vector, frame=frame, extension=extension, interpolation=interpolation)
+        return node.color, node.alpha
+
+
+    def width(self, frame=None):
+        """
+
+        > Node: [Image Info](GeometryNodeImageInfo.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/m.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeImageInfo.html)
+
+        #### Args:
+        - frame: Integer
+
+        #### Returns:
+        - socket `width`
+
+
+        """
+
+        return nodes.ImageInfo(image=self, frame=frame).width
 
 
 
@@ -9161,7 +9388,7 @@ class Texture(geosocks.Texture):
         - image: Image
         - vector: Vector
         - frame: Integer
-        - extension (str): 'REPEAT' in [REPEAT, EXTEND, CLIP]
+        - extension (str): 'REPEAT' in [REPEAT, EXTEND, CLIP, MIRROR]
         - interpolation (str): 'Linear' in [Linear, Closest, Cubic]
 
         ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeImageTexture.webp)
@@ -9878,50 +10105,6 @@ class Texture(geosocks.Texture):
 
         node = nodes.WhiteNoiseTexture(vector=vector, w=w, noise_dimensions='3D')
         return node.value, node.color
-
-
-
-
-class Image(geosocks.Image):
-    def switch(self, switch=None, true=None):
-        """
-
-        > Node: [Switch](GeometryNodeSwitch.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html)
-
-        #### Args:
-        - switch: Boolean
-        - true: Image
-
-        #### Returns:
-        - socket `output`
-
-
-        """
-
-        return nodes.Switch(switch=switch, false=self, true=true, input_type='IMAGE').output
-
-
-    def texture(self, vector=None, frame=None, extension='REPEAT', interpolation='Linear'):
-        """
-
-        > Node: [Image Texture](GeometryNodeImageTexture.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/image.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeImageTexture.html)
-
-        #### Args:
-        - vector: Vector
-        - frame: Integer
-        - extension (str): 'REPEAT' in [REPEAT, EXTEND, CLIP]
-        - interpolation (str): 'Linear' in [Linear, Closest, Cubic]
-
-        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeImageTexture.webp)
-
-        #### Returns:
-        - tuple ('`color`', '`alpha`')
-
-
-        """
-
-        node = nodes.ImageTexture(image=self, vector=vector, frame=frame, extension=extension, interpolation=interpolation)
-        return node.color, node.alpha
 
 
 

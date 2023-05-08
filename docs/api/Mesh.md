@@ -61,7 +61,7 @@ elf.points = Vertex(self) # Initialized before super().__init__ which can overri
 
 **Methods**
 
-[attribute_statistic](#attribute_statistic) | [boolean_difference](#boolean_difference) | [boolean_intersect](#boolean_intersect) | [boolean_union](#boolean_union) | [capture_attribute](#capture_attribute) | [corners_of_face](#corners_of_face) | [corners_of_vertex](#corners_of_vertex) | [delete](#delete) | [delete_all](#delete_all) | [delete_edges](#delete_edges) | [delete_faces](#delete_faces) | [distribute_points_on_faces](#distribute_points_on_faces) | [dual_mesh](#dual_mesh) | [duplicate](#duplicate) | [edge_paths_to_curves](#edge_paths_to_curves) | [edge_paths_to_selection](#edge_paths_to_selection) | [edges_of_corner](#edges_of_corner) | [edges_of_vertex](#edges_of_vertex) | [extrude](#extrude) | [face_is_planar](#face_is_planar) | [face_of_corner](#face_of_corner) | [face_set_boundaries](#face_set_boundaries) | [field_at_index](#field_at_index) | [flip_faces](#flip_faces) | [instance_on_points](#instance_on_points) | [instantiate](#instantiate) | [interpolate_domain](#interpolate_domain) | [is_shade_smooth](#is_shade_smooth) | [join](#join) | [material_selection](#material_selection) | [merge_by_distance](#merge_by_distance) | [named_attribute](#named_attribute) | [named_boolean](#named_boolean) | [named_color](#named_color) | [named_float](#named_float) | [named_integer](#named_integer) | [named_vector](#named_vector) | [offset_corner_in_face](#offset_corner_in_face) | [pack_uv_islands](#pack_uv_islands) | [proximity](#proximity) | [proximity_edges](#proximity_edges) | [proximity_faces](#proximity_faces) | [proximity_points](#proximity_points) | [raycast](#raycast) | [raycast_interpolated](#raycast_interpolated) | [raycast_nearest](#raycast_nearest) | [remove_named_attribute](#remove_named_attribute) | [replace_material](#replace_material) | [sample_index](#sample_index) | [sample_nearest](#sample_nearest) | [sample_nearest_surface](#sample_nearest_surface) | [sample_uv_surface](#sample_uv_surface) | [scale_elements](#scale_elements) | [scale_single_axis](#scale_single_axis) | [scale_uniform](#scale_uniform) | [separate](#separate) | [set_ID](#set_ID) | [set_material](#set_material) | [set_material_index](#set_material_index) | [set_position](#set_position) | [set_shade_smooth](#set_shade_smooth) | [shortest_edge_paths](#shortest_edge_paths) | [show_handles](#show_handles) | [split_edges](#split_edges) | [store_named_attribute](#store_named_attribute) | [store_named_boolean](#store_named_boolean) | [store_named_color](#store_named_color) | [store_named_float](#store_named_float) | [store_named_integer](#store_named_integer) | [store_named_vector](#store_named_vector) | [subdivide](#subdivide) | [subdivision_surface](#subdivision_surface) | [switch](#switch) | [to_curve](#to_curve) | [to_instance](#to_instance) | [to_points](#to_points) | [to_volume](#to_volume) | [transform](#transform) | [triangulate](#triangulate) | [uv_unwrap](#uv_unwrap) | [vertex_of_corner](#vertex_of_corner) | [view](#view) | [viewer](#viewer)
+[attribute_statistic](#attribute_statistic) | [boolean_difference](#boolean_difference) | [boolean_intersect](#boolean_intersect) | [boolean_union](#boolean_union) | [capture_attribute](#capture_attribute) | [corners_of_face](#corners_of_face) | [corners_of_vertex](#corners_of_vertex) | [delete](#delete) | [delete_all](#delete_all) | [delete_edges](#delete_edges) | [delete_faces](#delete_faces) | [distribute_points_on_faces](#distribute_points_on_faces) | [dual_mesh](#dual_mesh) | [duplicate](#duplicate) | [edge_paths_to_curves](#edge_paths_to_curves) | [edge_paths_to_selection](#edge_paths_to_selection) | [edges_of_corner](#edges_of_corner) | [edges_of_vertex](#edges_of_vertex) | [edges_to_face_groups](#edges_to_face_groups) | [evaluate_at_index](#evaluate_at_index) | [extrude](#extrude) | [face_group_boundaries](#face_group_boundaries) | [face_is_planar](#face_is_planar) | [face_of_corner](#face_of_corner) | [flip_faces](#flip_faces) | [instance_on_points](#instance_on_points) | [instantiate](#instantiate) | [interpolate_domain](#interpolate_domain) | [is_shade_smooth](#is_shade_smooth) | [join](#join) | [material_selection](#material_selection) | [merge_by_distance](#merge_by_distance) | [named_attribute](#named_attribute) | [named_attribute_exists](#named_attribute_exists) | [named_boolean](#named_boolean) | [named_color](#named_color) | [named_float](#named_float) | [named_integer](#named_integer) | [named_vector](#named_vector) | [offset_corner_in_face](#offset_corner_in_face) | [pack_uv_islands](#pack_uv_islands) | [proximity](#proximity) | [proximity_edges](#proximity_edges) | [proximity_faces](#proximity_faces) | [proximity_points](#proximity_points) | [raycast](#raycast) | [raycast_interpolated](#raycast_interpolated) | [raycast_nearest](#raycast_nearest) | [remove_named_attribute](#remove_named_attribute) | [replace_material](#replace_material) | [sample_index](#sample_index) | [sample_nearest](#sample_nearest) | [sample_nearest_surface](#sample_nearest_surface) | [sample_uv_surface](#sample_uv_surface) | [scale_elements](#scale_elements) | [scale_single_axis](#scale_single_axis) | [scale_uniform](#scale_uniform) | [separate](#separate) | [set_ID](#set_ID) | [set_material](#set_material) | [set_material_index](#set_material_index) | [set_position](#set_position) | [set_shade_smooth](#set_shade_smooth) | [shortest_edge_paths](#shortest_edge_paths) | [show_handles](#show_handles) | [split_edges](#split_edges) | [store_named_attribute](#store_named_attribute) | [store_named_boolean](#store_named_boolean) | [store_named_color](#store_named_color) | [store_named_float](#store_named_float) | [store_named_integer](#store_named_integer) | [store_named_vector](#store_named_vector) | [subdivide](#subdivide) | [subdivision_surface](#subdivision_surface) | [switch](#switch) | [to_curve](#to_curve) | [to_instance](#to_instance) | [to_points](#to_points) | [to_volume](#to_volume) | [transform_geometry](#transform_geometry) | [triangulate](#triangulate) | [uv_unwrap](#uv_unwrap) | [vertex_of_corner](#vertex_of_corner) | [view](#view) | [viewer](#viewer)
 
 ***Inherited***
 
@@ -499,7 +499,7 @@ def Collection(cls, collection=None, separate_children=None, reset_children=None
 - transform_space (str): 'ORIGINAL' in [ORIGINAL, RELATIVE]
 
 #### Returns:
-- socket `geometry`
+- socket `instances`
 
 
 
@@ -528,10 +528,8 @@ def Cone(vertices=None, side_segments=None, fill_segments=None, radius_top=None,
 - depth: Float
 - fill_type (str): 'NGON' in [NONE, NGON, TRIANGLE_FAN]
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeMeshCone.webp)
-
 #### Returns:
-- tuple ('`mesh`', '`top`', '`bottom`', '`side`')
+- node with sockets ['mesh', 'top', 'bottom', 'side', 'uv_map']
 
 
 
@@ -558,7 +556,7 @@ def Cube(cls, size=None, vertices_x=None, vertices_y=None, vertices_z=None)
 - vertices_z: Integer
 
 #### Returns:
-- socket `mesh`
+- node with sockets ['mesh', 'uv_map']
 
 
 
@@ -586,10 +584,8 @@ def Cylinder(vertices=None, side_segments=None, fill_segments=None, radius=None,
 - depth: Float
 - fill_type (str): 'NGON' in [NONE, NGON, TRIANGLE_FAN]
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeMeshCylinder.webp)
-
 #### Returns:
-- tuple ('`mesh`', '`top`', '`bottom`', '`side`')
+- node with sockets ['mesh', 'top', 'side', 'bottom', 'uv_map']
 
 
 
@@ -629,7 +625,7 @@ def Grid(cls, size_x=None, size_y=None, vertices_x=None, vertices_y=None)
 - vertices_y: Integer
 
 #### Returns:
-- socket `mesh`
+- node with sockets ['mesh', 'uv_map']
 
 
 
@@ -654,7 +650,7 @@ def IcoSphere(cls, radius=None, subdivisions=None)
 - subdivisions: Integer
 
 #### Returns:
-- socket `mesh`
+- node with sockets ['mesh', 'uv_map']
 
 
 
@@ -811,7 +807,7 @@ def UVSphere(cls, segments=None, rings=None, radius=None)
 - radius: Float
 
 #### Returns:
-- socket `mesh`
+- node with sockets ['mesh', 'uv_map']
 
 
 
@@ -1234,7 +1230,7 @@ def delete_faces(self, selection=None, domain='POINT')
 ### distribute_points_on_faces
 
 ```python
-def distribute_points_on_faces(self, selection=None, distance_min=None, density_max=None, density=None, density_factor=None, seed=None, distribute_method='RANDOM')
+def distribute_points_on_faces(self, selection=None, distance_min=None, density_max=None, density=None, density_factor=None, seed=None, distribute_method='RANDOM', use_legacy_normal=False)
 ```
 
 
@@ -1249,6 +1245,7 @@ def distribute_points_on_faces(self, selection=None, distance_min=None, density_
 - density_factor: Float
 - seed: Integer
 - distribute_method (str): 'RANDOM' in [RANDOM, POISSON]
+- use_legacy_normal (bool): False
 
 ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeDistributePointsOnFaces.webp)
 
@@ -1410,6 +1407,54 @@ def edges_of_vertex(self, vertex_index=None, weights=None, sort_index=None)
 
 <sub>Go to [top](#class-Mesh) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
+### edges_to_face_groups
+
+```python
+def edges_to_face_groups(self, boundary_edges=None)
+```
+
+
+
+> Node: [Edges to Face Groups](GeometryNodeEdgesToFaceGroups.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/d.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeEdgesToFaceGroups.html)
+
+#### Args:
+- boundary_edges: Boolean
+
+#### Returns:
+- socket `face_group_id`
+
+
+
+
+
+
+<sub>Go to [top](#class-Mesh) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### evaluate_at_index
+
+```python
+def evaluate_at_index(self, index=None, value=None, domain='POINT')
+```
+
+
+
+> Node: [Evaluate at Index](GeometryNodeFieldAtIndex.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/v.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeFieldAtIndex.html)
+
+#### Args:
+- index: Integer
+- value: ['Float', 'Integer', 'Vector', 'Color', 'Boolean']
+- domain (str): 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+
+#### Returns:
+- socket `value`
+
+
+
+
+
+
+<sub>Go to [top](#class-Mesh) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### extrude
 
 ```python
@@ -1431,6 +1476,29 @@ def extrude(self, selection=None, offset=None, offset_scale=None, individual=Non
 
 #### Returns:
 - tuple ('`top`', '`side`')
+
+
+
+
+
+
+<sub>Go to [top](#class-Mesh) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### face_group_boundaries
+
+```python
+def face_group_boundaries(self, face_group_id=None)
+```
+
+
+
+> Node: [Face Group Boundaries](GeometryNodeMeshFaceSetBoundaries.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/a.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshFaceSetBoundaries.html)
+
+#### Args:
+- face_group_id: Integer
+
+#### Returns:
+- socket `boundary_edges`
 
 
 
@@ -1479,54 +1547,6 @@ def face_of_corner(self, corner_index=None)
 
 #### Returns:
 - tuple ('`face_index`', '`index_in_face`')
-
-
-
-
-
-
-<sub>Go to [top](#class-Mesh) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-### face_set_boundaries
-
-```python
-def face_set_boundaries(self, face_set=None)
-```
-
-
-
-> Node: [Face Set Boundaries](GeometryNodeMeshFaceSetBoundaries.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/face_set_boundaries.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshFaceSetBoundaries.html)
-
-#### Args:
-- face_set: Integer
-
-#### Returns:
-- socket `boundary_edges`
-
-
-
-
-
-
-<sub>Go to [top](#class-Mesh) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-### field_at_index
-
-```python
-def field_at_index(self, index=None, value=None, domain='POINT')
-```
-
-
-
-> Node: [Field at Index](GeometryNodeFieldAtIndex.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/field_at_index.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeFieldAtIndex.html)
-
-#### Args:
-- index: Integer
-- value: ['Float', 'Integer', 'Vector', 'Color', 'Boolean']
-- domain (str): 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
-
-#### Returns:
-- socket `value`
 
 
 
@@ -1628,7 +1648,7 @@ def interpolate_domain(self, value=None, domain='POINT')
 
 
 
-> Node: [Interpolate Domain](GeometryNodeFieldOnDomain.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/interpolate_domain.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeFieldOnDomain.html)
+> Node: [Evaluate on Domain](GeometryNodeFieldOnDomain.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/v.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeFieldOnDomain.html)
 
 #### Args:
 - value: ['Float', 'Integer', 'Vector', 'Color', 'Boolean']
@@ -1751,6 +1771,30 @@ def named_attribute(self, name=None, data_type='FLOAT')
 
 #### Returns:
 - socket `attribute`
+
+
+
+
+
+
+<sub>Go to [top](#class-Mesh) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### named_attribute_exists
+
+```python
+def named_attribute_exists(self, name=None, data_type='FLOAT')
+```
+
+
+
+> Node: [Named Attribute](GeometryNodeInputNamedAttribute.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/named_attribute.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputNamedAttribute.html)
+
+#### Args:
+- name: String
+- data_type (str): 'FLOAT' in [FLOAT, INT, FLOAT_VECTOR, FLOAT_COLOR, BOOLEAN]
+
+#### Returns:
+- socket `exists`
 
 
 
@@ -2558,7 +2602,7 @@ def split_edges(self, selection=None)
 ### store_named_attribute
 
 ```python
-def store_named_attribute(self, name=None, value=None, domain='POINT')
+def store_named_attribute(self, selection=None, name=None, value=None, domain='POINT')
 ```
 
 
@@ -2566,6 +2610,7 @@ def store_named_attribute(self, name=None, value=None, domain='POINT')
 > Node: [Store Named Attribute](GeometryNodeStoreNamedAttribute.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/store_named_attribute.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeStoreNamedAttribute.html)
 
 #### Args:
+- selection: Boolean
 - name: String
 - value: ['Vector', 'Float', 'Color', 'Boolean', 'Integer']
 - domain (str): 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
@@ -2583,7 +2628,7 @@ def store_named_attribute(self, name=None, value=None, domain='POINT')
 ### store_named_boolean
 
 ```python
-def store_named_boolean(self, name=None, value=None, domain='POINT')
+def store_named_boolean(self, selection=None, name=None, value=None, domain='POINT')
 ```
 
 
@@ -2591,6 +2636,7 @@ def store_named_boolean(self, name=None, value=None, domain='POINT')
 > Node: [Store Named Attribute](GeometryNodeStoreNamedAttribute.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/store_named_attribute.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeStoreNamedAttribute.html)
 
 #### Args:
+- selection: Boolean
 - name: String
 - value: ['Vector', 'Float', 'Color', 'Boolean', 'Integer']
 - domain (str): 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
@@ -2608,7 +2654,7 @@ def store_named_boolean(self, name=None, value=None, domain='POINT')
 ### store_named_color
 
 ```python
-def store_named_color(self, name=None, value=None, domain='POINT')
+def store_named_color(self, selection=None, name=None, value=None, domain='POINT')
 ```
 
 
@@ -2616,6 +2662,7 @@ def store_named_color(self, name=None, value=None, domain='POINT')
 > Node: [Store Named Attribute](GeometryNodeStoreNamedAttribute.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/store_named_attribute.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeStoreNamedAttribute.html)
 
 #### Args:
+- selection: Boolean
 - name: String
 - value: ['Vector', 'Float', 'Color', 'Boolean', 'Integer']
 - domain (str): 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
@@ -2633,7 +2680,7 @@ def store_named_color(self, name=None, value=None, domain='POINT')
 ### store_named_float
 
 ```python
-def store_named_float(self, name=None, value=None, domain='POINT')
+def store_named_float(self, selection=None, name=None, value=None, domain='POINT')
 ```
 
 
@@ -2641,6 +2688,7 @@ def store_named_float(self, name=None, value=None, domain='POINT')
 > Node: [Store Named Attribute](GeometryNodeStoreNamedAttribute.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/store_named_attribute.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeStoreNamedAttribute.html)
 
 #### Args:
+- selection: Boolean
 - name: String
 - value: ['Vector', 'Float', 'Color', 'Boolean', 'Integer']
 - domain (str): 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
@@ -2658,7 +2706,7 @@ def store_named_float(self, name=None, value=None, domain='POINT')
 ### store_named_integer
 
 ```python
-def store_named_integer(self, name=None, value=None, domain='POINT')
+def store_named_integer(self, selection=None, name=None, value=None, domain='POINT')
 ```
 
 
@@ -2666,6 +2714,7 @@ def store_named_integer(self, name=None, value=None, domain='POINT')
 > Node: [Store Named Attribute](GeometryNodeStoreNamedAttribute.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/store_named_attribute.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeStoreNamedAttribute.html)
 
 #### Args:
+- selection: Boolean
 - name: String
 - value: ['Vector', 'Float', 'Color', 'Boolean', 'Integer']
 - domain (str): 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
@@ -2683,7 +2732,7 @@ def store_named_integer(self, name=None, value=None, domain='POINT')
 ### store_named_vector
 
 ```python
-def store_named_vector(self, name=None, value=None, domain='POINT')
+def store_named_vector(self, selection=None, name=None, value=None, domain='POINT')
 ```
 
 
@@ -2691,6 +2740,7 @@ def store_named_vector(self, name=None, value=None, domain='POINT')
 > Node: [Store Named Attribute](GeometryNodeStoreNamedAttribute.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/store_named_attribute.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeStoreNamedAttribute.html)
 
 #### Args:
+- selection: Boolean
 - name: String
 - value: ['Vector', 'Float', 'Color', 'Boolean', 'Integer']
 - domain (str): 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
@@ -2880,15 +2930,15 @@ def to_volume(self, density=None, voxel_size=None, voxel_amount=None, exterior_b
 
 <sub>Go to [top](#class-Mesh) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
-### transform
+### transform_geometry
 
 ```python
-def transform(self, translation=None, rotation=None, scale=None)
+def transform_geometry(self, translation=None, rotation=None, scale=None)
 ```
 
 
 
-> Node: [Transform](GeometryNodeTransform.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/transform.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeTransform.html)
+> Node: [Transform Geometry](GeometryNodeTransform.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/r.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeTransform.html)
 
 #### Args:
 - translation: Vector

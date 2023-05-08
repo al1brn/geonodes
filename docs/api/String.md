@@ -404,7 +404,7 @@ def to_curves(self, size=None, character_spacing=None, word_spacing=None, line_s
 - text_box_width: Float
 - text_box_height: Float
 - align_x (str): 'LEFT' in [LEFT, CENTER, RIGHT, JUSTIFY, FLUSH]
-- align_y (str): 'TOP_BASELINE' in [TOP_BASELINE, TOP, MIDDLE, BOTTOM_BASELINE, BOTTOM]
+- align_y (str): 'TOP_BASELINE' in [TOP, TOP_BASELINE, MIDDLE, BOTTOM_BASELINE, BOTTOM]
 - overflow (str): 'OVERFLOW' in [OVERFLOW, SCALE_TO_FIT, TRUNCATE]
 - pivot_mode (str): 'BOTTOM_LEFT' in [MIDPOINT, TOP_LEFT, TOP_CENTER,... , BOTTOM_LEFT, BOTTOM_CENTER, BOTTOM_RIGHT]
 

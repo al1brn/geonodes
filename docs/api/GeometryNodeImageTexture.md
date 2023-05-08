@@ -25,7 +25,7 @@ node = nodes.ImageTexture(image=None, vector=None, frame=None, extension='REPEAT
 
 #### Node parameter arguments:
 
-- **extension** (str): default = 'REPEAT' in ('REPEAT', 'EXTEND', 'CLIP')
+- **extension** (str): default = 'REPEAT' in ('REPEAT', 'EXTEND', 'CLIP', 'MIRROR')
 - **interpolation** (str): default = 'Linear' in ('Linear', 'Closest', 'Cubic')
 
 ### Output sockets:

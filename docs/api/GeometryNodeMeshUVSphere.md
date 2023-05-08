@@ -26,6 +26,7 @@ node = nodes.UvSphere(segments=None, rings=None, radius=None)
 ### Output sockets:
 
 - **mesh** : [Mesh](Mesh.md)
+- **uv_map** : [Vector](Vector.md)
 
 ## Implementation
 

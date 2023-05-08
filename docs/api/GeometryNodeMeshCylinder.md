@@ -35,6 +35,7 @@ node = nodes.Cylinder(vertices=None, side_segments=None, fill_segments=None, rad
 - **top** : [Boolean](Boolean.md)
 - **side** : [Boolean](Boolean.md)
 - **bottom** : [Boolean](Boolean.md)
+- **uv_map** : [Vector](Vector.md)
 
 ## Implementation
 

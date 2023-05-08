@@ -1003,7 +1003,7 @@ def compare(a=None, b=None, c=None, angle=None, epsilon=None, data_type='FLOAT',
 - epsilon: Float
 - data_type (str): 'FLOAT' in [FLOAT, INT, VECTOR, STRING, RGBA]
 - mode (str): 'ELEMENT' in [ELEMENT, LENGTH, AVERAGE, DOT_PRODUCT, DIRECTION]
-- operation (str): 'GREATER_THAN' in [LESS_THAN, LESS_EQUAL, GREATER_THAN, GREATER_EQUAL, EQUAL, NOT_EQUAL]
+- operation (str): 'GREATER_THAN' in [LESS_THAN, LESS_EQUAL, GREATER_THAN,... , NOT_EQUAL, DARKER, BRIGHTER]
 
 #### Returns:
 - socket `result`
@@ -2417,7 +2417,7 @@ def string_to_curves(string=None, size=None, character_spacing=None, word_spacin
 - text_box_width: Float
 - text_box_height: Float
 - align_x (str): 'LEFT' in [LEFT, CENTER, RIGHT, JUSTIFY, FLUSH]
-- align_y (str): 'TOP_BASELINE' in [TOP_BASELINE, TOP, MIDDLE, BOTTOM_BASELINE, BOTTOM]
+- align_y (str): 'TOP_BASELINE' in [TOP, TOP_BASELINE, MIDDLE, BOTTOM_BASELINE, BOTTOM]
 - overflow (str): 'OVERFLOW' in [OVERFLOW, SCALE_TO_FIT, TRUNCATE]
 - pivot_mode (str): 'BOTTOM_LEFT' in [MIDPOINT, TOP_LEFT, TOP_CENTER,... , BOTTOM_LEFT, BOTTOM_CENTER, BOTTOM_RIGHT]
 

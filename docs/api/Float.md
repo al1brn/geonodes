@@ -590,7 +590,7 @@ def compare(self, b=None, epsilon=None, operation='GREATER_THAN')
 #### Args:
 - b: ['Float', 'Integer', 'Vector', 'Color', 'String']
 - epsilon: Float
-- operation (str): 'GREATER_THAN' in [LESS_THAN, LESS_EQUAL, GREATER_THAN, GREATER_EQUAL, EQUAL, NOT_EQUAL]
+- operation (str): 'GREATER_THAN' in [LESS_THAN, LESS_EQUAL, GREATER_THAN,... , NOT_EQUAL, DARKER, BRIGHTER]
 
 #### Returns:
 - socket `result`

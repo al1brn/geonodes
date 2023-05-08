@@ -25,6 +25,7 @@ node = nodes.IcoSphere(radius=None, subdivisions=None)
 ### Output sockets:
 
 - **mesh** : [Mesh](Mesh.md)
+- **uv_map** : [Vector](Vector.md)
 
 ## Implementation
 

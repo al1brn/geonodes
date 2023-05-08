@@ -87,6 +87,10 @@ NODE_DIMS = {
            'name'    : 'data_type',
            'changes' : {
                 'FLOAT_VECTOR'       : (280, 656),},},
+   'GeometryNodeBlurAttribute'               : {'dimensions': (280, 302), 'param_count': 1,
+           'name'    : 'data_type',
+           'changes' : {
+                'FLOAT_COLOR'        : (280, 298),},},
    'GeometryNodeBoundBox'                    : {'dimensions': (280, 238), 'param_count': 0,},
    'GeometryNodeCaptureAttribute'            : {'dimensions': (280, 356), 'param_count': 1,
            'name'    : 'data_type',
@@ -152,6 +156,7 @@ NODE_DIMS = {
    'GeometryNodeEdgePathsToSelection'        : {'dimensions': (300, 194), 'param_count': 0,},
    'GeometryNodeEdgesOfCorner'               : {'dimensions': (280, 194), 'param_count': 0,},
    'GeometryNodeEdgesOfVertex'               : {'dimensions': (280, 282), 'param_count': 0,},
+   'GeometryNodeEdgesToFaceGroups'           : {'dimensions': (280, 150), 'param_count': 0,},
    'GeometryNodeExtrudeMesh'                 : {'dimensions': (280, 474), 'param_count': 1,
            'name'    : 'mode',
            'changes' : {
@@ -175,10 +180,12 @@ NODE_DIMS = {
    'GeometryNodeFlipFaces'                   : {'dimensions': (280, 194), 'param_count': 0,},
    'GeometryNodeGeometryToInstance'          : {'dimensions': (320, 150), 'param_count': 0,},
    'GeometryNodeGroup'                       : {'dimensions': (280, 100), 'param_count': 0,},
+   'GeometryNodeImageInfo'                   : {'dimensions': (480, 370), 'param_count': 0,},
    'GeometryNodeImageTexture'                : {'dimensions': (480, 392), 'param_count': 0,},
    'GeometryNodeInputCurveHandlePositions'   : {'dimensions': (300, 194), 'param_count': 0,},
    'GeometryNodeInputCurveTilt'              : {'dimensions': (280, 100), 'param_count': 0,},
    'GeometryNodeInputID'                     : {'dimensions': (280, 100), 'param_count': 0,},
+   'GeometryNodeInputImage'                  : {'dimensions': (480, 160), 'param_count': 0,},
    'GeometryNodeInputIndex'                  : {'dimensions': (280, 100), 'param_count': 0,},
    'GeometryNodeInputInstanceRotation'       : {'dimensions': (280, 100), 'param_count': 0,},
    'GeometryNodeInputInstanceScale'          : {'dimensions': (280, 100), 'param_count': 0,},
@@ -192,10 +199,7 @@ NODE_DIMS = {
    'GeometryNodeInputMeshFaceNeighbors'      : {'dimensions': (300, 144), 'param_count': 0,},
    'GeometryNodeInputMeshIsland'             : {'dimensions': (280, 144), 'param_count': 0,},
    'GeometryNodeInputMeshVertexNeighbors'    : {'dimensions': (280, 144), 'param_count': 0,},
-   'GeometryNodeInputNamedAttribute'         : {'dimensions': (280, 214), 'param_count': 1,
-           'name'    : 'data_type',
-           'changes' : {
-                'INT'                : (280, 210),},},
+   'GeometryNodeInputNamedAttribute'         : {'dimensions': (280, 254), 'param_count': 0,},
    'GeometryNodeInputNormal'                 : {'dimensions': (280, 100), 'param_count': 0,},
    'GeometryNodeInputPosition'               : {'dimensions': (280, 100), 'param_count': 0,},
    'GeometryNodeInputRadius'                 : {'dimensions': (280, 100), 'param_count': 0,},
@@ -207,6 +211,7 @@ NODE_DIMS = {
    'GeometryNodeInputTangent'                : {'dimensions': (280, 100), 'param_count': 0,},
    'GeometryNodeInstanceOnPoints'            : {'dimensions': (280, 654), 'param_count': 0,},
    'GeometryNodeInstancesToPoints'           : {'dimensions': (280, 282), 'param_count': 0,},
+   'GeometryNodeInterpolateCurves'           : {'dimensions': (280, 502), 'param_count': 0,},
    'GeometryNodeIsViewport'                  : {'dimensions': (280, 100), 'param_count': 0,},
    'GeometryNodeJoinGeometry'                : {'dimensions': (280, 150), 'param_count': 0,},
    'GeometryNodeMaterialSelection'           : {'dimensions': (280, 150), 'param_count': 0,},
@@ -217,18 +222,18 @@ NODE_DIMS = {
                 'INTERSECT'          : (280, 342),
                 'UNION'              : (280, 342),},},
    'GeometryNodeMeshCircle'                  : {'dimensions': (280, 254), 'param_count': 0,},
-   'GeometryNodeMeshCone'                    : {'dimensions': (280, 562), 'param_count': 1,
+   'GeometryNodeMeshCone'                    : {'dimensions': (280, 606), 'param_count': 1,
+           'name'    : 'fill_type',
+           'changes' : {
+                'NONE'               : (280, 562),},},
+   'GeometryNodeMeshCube'                    : {'dimensions': (280, 446), 'param_count': 0,},
+   'GeometryNodeMeshCylinder'                : {'dimensions': (280, 562), 'param_count': 1,
            'name'    : 'fill_type',
            'changes' : {
                 'NONE'               : (280, 518),},},
-   'GeometryNodeMeshCube'                    : {'dimensions': (280, 402), 'param_count': 0,},
-   'GeometryNodeMeshCylinder'                : {'dimensions': (280, 518), 'param_count': 1,
-           'name'    : 'fill_type',
-           'changes' : {
-                'NONE'               : (280, 474),},},
-   'GeometryNodeMeshFaceSetBoundaries'       : {'dimensions': (280, 150), 'param_count': 0,},
-   'GeometryNodeMeshGrid'                    : {'dimensions': (280, 282), 'param_count': 0,},
-   'GeometryNodeMeshIcoSphere'               : {'dimensions': (280, 194), 'param_count': 0,},
+   'GeometryNodeMeshFaceSetBoundaries'       : {'dimensions': (300, 150), 'param_count': 0,},
+   'GeometryNodeMeshGrid'                    : {'dimensions': (280, 326), 'param_count': 0,},
+   'GeometryNodeMeshIcoSphere'               : {'dimensions': (280, 238), 'param_count': 0,},
    'GeometryNodeMeshLine'                    : {'dimensions': (280, 538), 'param_count': 1,
            'name'    : 'mode',
            'changes' : {
@@ -236,7 +241,7 @@ NODE_DIMS = {
    'GeometryNodeMeshToCurve'                 : {'dimensions': (280, 194), 'param_count': 0,},
    'GeometryNodeMeshToPoints'                : {'dimensions': (280, 342), 'param_count': 0,},
    'GeometryNodeMeshToVolume'                : {'dimensions': (400, 430), 'param_count': 0,},
-   'GeometryNodeMeshUVSphere'                : {'dimensions': (280, 238), 'param_count': 0,},
+   'GeometryNodeMeshUVSphere'                : {'dimensions': (280, 282), 'param_count': 0,},
    'GeometryNodeObjectInfo'                  : {'dimensions': (280, 386), 'param_count': 0,},
    'GeometryNodeOffsetCornerInFace'          : {'dimensions': (280, 194), 'param_count': 0,},
    'GeometryNodeOffsetPointInCurve'          : {'dimensions': (280, 238), 'param_count': 0,},
@@ -293,11 +298,12 @@ NODE_DIMS = {
    'GeometryNodeSplineLength'                : {'dimensions': (280, 144), 'param_count': 0,},
    'GeometryNodeSplineParameter'             : {'dimensions': (280, 188), 'param_count': 0,},
    'GeometryNodeSplitEdges'                  : {'dimensions': (280, 194), 'param_count': 0,},
-   'GeometryNodeStoreNamedAttribute'         : {'dimensions': (280, 352), 'param_count': 1,
+   'GeometryNodeStoreNamedAttribute'         : {'dimensions': (280, 396), 'param_count': 1,
            'name'    : 'data_type',
            'changes' : {
-                'INT'                : (280, 348),
-                'FLOAT_VECTOR'       : (280, 472),},},
+                'INT'                : (280, 392),
+                'FLOAT_VECTOR'       : (280, 516),
+                'FLOAT2'             : (280, 516),},},
    'GeometryNodeStringJoin'                  : {'dimensions': (280, 194), 'param_count': 0,},
    'GeometryNodeStringToCurves'              : {'dimensions': (380, 722), 'param_count': 1,
            'name'    : 'overflow',
@@ -315,10 +321,10 @@ NODE_DIMS = {
    'GeometryNodeTransform'                   : {'dimensions': (280, 642), 'param_count': 0,},
    'GeometryNodeTranslateInstances'          : {'dimensions': (280, 402), 'param_count': 0,},
    'GeometryNodeTriangulate'                 : {'dimensions': (280, 348), 'param_count': 0,},
-   'GeometryNodeTrimCurve'                   : {'dimensions': (280, 302), 'param_count': 1,
+   'GeometryNodeTrimCurve'                   : {'dimensions': (280, 346), 'param_count': 1,
            'name'    : 'mode',
            'changes' : {
-                'LENGTH'             : (280, 298),},},
+                'LENGTH'             : (280, 342),},},
    'GeometryNodeUVPackIslands'               : {'dimensions': (280, 282), 'param_count': 0,},
    'GeometryNodeUVUnwrap'                    : {'dimensions': (280, 342), 'param_count': 0,},
    'GeometryNodeVertexOfCorner'              : {'dimensions': (280, 150), 'param_count': 0,},
@@ -333,7 +339,7 @@ NODE_DIMS = {
                 'VOXEL_AMOUNT'       : (340, 342),
                 'VOXEL_SIZE'         : (340, 342),},},
    'NodeFrame'                               : {'dimensions': (300, 200), 'param_count': 0,},
-   'NodeGroupInput'                          : {'dimensions': (280, 144), 'param_count': 0,},
+   'NodeGroupInput'                          : {'dimensions': (280, 672), 'param_count': 0,},
    'NodeGroupOutput'                         : {'dimensions': (280, 144), 'param_count': 0,},
    'NodeReroute'                             : {'dimensions': ( 16,  16), 'param_count': 0,},
    'ShaderNodeClamp'                         : {'dimensions': (280, 298), 'param_count': 0,},
@@ -539,6 +545,31 @@ NODE_DIMS = {
                 'Z_AXIS'             : (280, 472),
                 'EULER_XYZ'          : (280, 588),},},
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # ====================================================================================================
 # Build the node dimensions by trying all the parameter configurations

@@ -36,6 +36,7 @@ node = nodes.Cone(vertices=None, side_segments=None, fill_segments=None, radius_
 - **top** : [Boolean](Boolean.md)
 - **bottom** : [Boolean](Boolean.md)
 - **side** : [Boolean](Boolean.md)
+- **uv_map** : [Vector](Vector.md)
 
 ## Implementation
 

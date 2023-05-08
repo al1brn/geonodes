@@ -27,6 +27,7 @@ node = nodes.Grid(size_x=None, size_y=None, vertices_x=None, vertices_y=None)
 ### Output sockets:
 
 - **mesh** : [Mesh](Mesh.md)
+- **uv_map** : [Vector](Vector.md)
 
 ## Implementation
 

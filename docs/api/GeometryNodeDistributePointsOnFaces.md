@@ -10,7 +10,7 @@
 ```python
 from geonodes import nodes
 
-node = nodes.DistributePointsOnFaces(mesh=None, selection=None, distance_min=None, density_max=None, density=None, density_factor=None, seed=None, distribute_method='RANDOM')
+node = nodes.DistributePointsOnFaces(mesh=None, selection=None, distance_min=None, density_max=None, density=None, density_factor=None, seed=None, distribute_method='RANDOM', use_legacy_normal=False)
 ```
 
 ![Blender Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeDistributePointsOnFaces.webp)
@@ -30,6 +30,7 @@ node = nodes.DistributePointsOnFaces(mesh=None, selection=None, distance_min=Non
 #### Node parameter arguments:
 
 - **distribute_method** (str): default = 'RANDOM' in ('RANDOM', 'POISSON')
+- **use_legacy_normal** (bool): default = False
 
 ### Output sockets:
 
@@ -42,10 +43,10 @@ node = nodes.DistributePointsOnFaces(mesh=None, selection=None, distance_min=Non
 | Class or method name | Definition |
 |----------------------|------------|
 | **[Face](Face.md)** |
-| [distribute_points_random](Face.md#distribute_points_random) | `def distribute_points_random(self, density=None, seed=None):` |
-| [distribute_points_poisson](Face.md#distribute_points_poisson) | `def distribute_points_poisson(self, distance_min=None, density_max=None, density_factor=None, seed=None):` |
+| [distribute_points_random](Face.md#distribute_points_random) | `def distribute_points_random(self, density=None, seed=None, use_legacy_normal=False):` |
+| [distribute_points_poisson](Face.md#distribute_points_poisson) | `def distribute_points_poisson(self, distance_min=None, density_max=None, density_factor=None, seed=None, use_legacy_normal=False):` |
 | **[Mesh](Mesh.md)** |
-| [distribute_points_on_faces](Mesh.md#distribute_points_on_faces) | `def distribute_points_on_faces(self, selection=None, distance_min=None, density_max=None, density=None, density_factor=None, seed=None, distribute_method='RANDOM'):` |
+| [distribute_points_on_faces](Mesh.md#distribute_points_on_faces) | `def distribute_points_on_faces(self, selection=None, distance_min=None, density_max=None, density=None, density_factor=None, seed=None, distribute_method='RANDOM', use_legacy_normal=False):` |
 
 <sub>Go to [top](#node-Distribute-Points-on-Faces) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

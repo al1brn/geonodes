@@ -43,7 +43,7 @@ Object(self, obj=None)
 
 ### bobject
 
- Returns the blender of object.
+ Returns the blender object.
 
 A [DataSocket](DataSocket.md) **Object** has the particularity to be initialized without any socket.
 This allow to call the node *'Object Info'* alone.

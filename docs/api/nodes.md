@@ -11,6 +11,7 @@
 | [Attribute Statistic](GeometryNodeAttributeStatistic.md) | [Domain](Domain.md) | [attribute_statistic](Domain.md#attribute_statistic) / [attribute_mean](Domain.md#attribute_mean) / [attribute_median](Domain.md#attribute_median) / [attribute_sum](Domain.md#attribute_sum) / [attribute_min](Domain.md#attribute_min) / [attribute_max](Domain.md#attribute_max) / [attribute_range](Domain.md#attribute_range) / [attribute_std](Domain.md#attribute_std) / [attribute_var](Domain.md#attribute_var) / |
 |      | [Geometry](Geometry.md) | [attribute_statistic](Geometry.md#attribute_statistic) |
 | [Bezier Segment](GeometryNodeCurvePrimitiveBezierSegment.md) | [Curve](Curve.md) | [BezierSegment](Curve.md#BezierSegment) |
+| [Blur Attribute](GeometryNodeBlurAttribute.md) | [Domain](Domain.md) | [blur_attribute](Domain.md#blur_attribute) / [blur_float](Domain.md#blur_float) / [blur_integer](Domain.md#blur_integer) / [blur_vector](Domain.md#blur_vector) / [blur_color](Domain.md#blur_color) / |
 | [Boolean](FunctionNodeInputBool.md) | [Boolean](Boolean.md) | [Boolean](Boolean.md#Boolean) |
 | [Boolean Math](FunctionNodeBooleanMath.md) | [Boolean](Boolean.md) | [b_and](Boolean.md#b_and) / [b_or](Boolean.md#b_or) / [b_not](Boolean.md#b_not) / [nand](Boolean.md#nand) / [nor](Boolean.md#nor) / [xnor](Boolean.md#xnor) / [xor](Boolean.md#xor) / [imply](Boolean.md#imply) / [nimply](Boolean.md#nimply) / |
 |      | [functions](functions.md) | [b_and](functions.md#b_and) / [b_or](functions.md#b_or) / [b_not](functions.md#b_not) / [nand](functions.md#nand) / [nor](functions.md#nor) / [xnor](functions.md#xnor) / [xor](functions.md#xor) / [imply](functions.md#imply) / [nimply](functions.md#nimply) / |
@@ -97,21 +98,25 @@
 |      | [Mesh](Mesh.md) | [edges_of_corner](Mesh.md#edges_of_corner) |
 | [Edges of Vertex](GeometryNodeEdgesOfVertex.md) | [Mesh](Mesh.md) | [edges_of_vertex](Mesh.md#edges_of_vertex) |
 |      | [Vertex](Vertex.md) | - [edges](Vertex.md#edges)<br>- [edges_index](Vertex.md#edges_index)<br>- [edges_total](Vertex.md#edges_total)|
+| [Edges to Face Groups](GeometryNodeEdgesToFaceGroups.md) | [Edge](Edge.md) | [to_face_groups](Edge.md#to_face_groups) |
+|      | [Mesh](Mesh.md) | [edges_to_face_groups](Mesh.md#edges_to_face_groups) |
 | [Endpoint Selection](GeometryNodeCurveEndpointSelection.md) | [ControlPoint](ControlPoint.md) | [endpoint_selection](ControlPoint.md#endpoint_selection) |
+| [Evaluate at Index](GeometryNodeFieldAtIndex.md) | [Domain](Domain.md) | [evaluate_at_index](Domain.md#evaluate_at_index) |
+|      | [Geometry](Geometry.md) | [evaluate_at_index](Geometry.md#evaluate_at_index) |
+| [Evaluate on Domain](GeometryNodeFieldOnDomain.md) | [Domain](Domain.md) | [interpolate](Domain.md#interpolate) |
+|      | [Geometry](Geometry.md) | [interpolate_domain](Geometry.md#interpolate_domain) |
 | [Extrude Mesh](GeometryNodeExtrudeMesh.md) | [Edge](Edge.md) | [extrude](Edge.md#extrude) |
 |      | [Face](Face.md) | [extrude](Face.md#extrude) |
 |      | [Mesh](Mesh.md) | [extrude](Mesh.md#extrude) |
 |      | [Vertex](Vertex.md) | [extrude](Vertex.md#extrude) |
 | [Face Area](GeometryNodeInputMeshFaceArea.md) | [Face](Face.md) | [area](Face.md#area) |
+| [Face Group Boundaries](GeometryNodeMeshFaceSetBoundaries.md) | [Face](Face.md) | [face_group_boundaries](Face.md#face_group_boundaries) |
+|      | [Mesh](Mesh.md) | [face_group_boundaries](Mesh.md#face_group_boundaries) |
 | [Face is Planar](GeometryNodeInputMeshFaceIsPlanar.md) | [Face](Face.md) | [is_planar](Face.md#is_planar) |
 |      | [Mesh](Mesh.md) | [face_is_planar](Mesh.md#face_is_planar) |
 | [Face Neighbors](GeometryNodeInputMeshFaceNeighbors.md) | [Face](Face.md) | - [neighbors](Face.md#neighbors)<br>- [neighbors_vertex_count](Face.md#neighbors_vertex_count)<br>- [neighbors_face_count](Face.md#neighbors_face_count)|
 | [Face of Corner](GeometryNodeFaceOfCorner.md) | [Corner](Corner.md) | - [face](Corner.md#face)<br>- [face_index](Corner.md#face_index)<br>- [index_in_face](Corner.md#index_in_face)|
 |      | [Mesh](Mesh.md) | [face_of_corner](Mesh.md#face_of_corner) |
-| [Face Set Boundaries](GeometryNodeMeshFaceSetBoundaries.md) | [Face](Face.md) | [face_set_boundaries](Face.md#face_set_boundaries) |
-|      | [Mesh](Mesh.md) | [face_set_boundaries](Mesh.md#face_set_boundaries) |
-| [Field at Index](GeometryNodeFieldAtIndex.md) | [Domain](Domain.md) | [field_at_index](Domain.md#field_at_index) |
-|      | [Geometry](Geometry.md) | [field_at_index](Geometry.md#field_at_index) |
 | [Fill Curve](GeometryNodeFillCurve.md) | [Curve](Curve.md) | - [fill](Curve.md#fill)<br>- [fill_triangles](Curve.md#fill_triangles)<br>- [fill_ngons](Curve.md#fill_ngons)|
 | [Fillet Curve](GeometryNodeFilletCurve.md) | [Curve](Curve.md) | - [fillet](Curve.md#fillet)<br>- [fillet_bezier](Curve.md#fillet_bezier)<br>- [fillet_poly](Curve.md#fillet_poly)|
 | [Flip Faces](GeometryNodeFlipFaces.md) | [Face](Face.md) | [flip](Face.md#flip) |
@@ -132,6 +137,7 @@
 | [ID](GeometryNodeInputID.md) | [Domain](Domain.md) | [ID](Domain.md#ID) |
 |      | [Geometry](Geometry.md) | [ID](Geometry.md#ID) |
 | [Ico Sphere](GeometryNodeMeshIcoSphere.md) | [Mesh](Mesh.md) | [IcoSphere](Mesh.md#IcoSphere) |
+| [Image Info](GeometryNodeImageInfo.md) | [Image](Image.md) | [info](Image.md#info) / [width](Image.md#width) / [height](Image.md#height) / [has_alpha](Image.md#has_alpha) / [frame_count](Image.md#frame_count) / [fps](Image.md#fps) / |
 | [Image Texture](GeometryNodeImageTexture.md) | [Image](Image.md) | [texture](Image.md#texture) |
 |      | [Texture](Texture.md) | [image](Texture.md#image) |
 | [Index](GeometryNodeInputIndex.md) | [Domain](Domain.md) | - [index](Domain.md#index)<br>- [domain_index](Domain.md#domain_index)|
@@ -150,8 +156,11 @@
 | [Instances to Points](GeometryNodeInstancesToPoints.md) | [Instance](Instance.md) | [to_points](Instance.md#to_points) |
 |      | [Instances](Instances.md) | [to_points](Instances.md#to_points) |
 | [Integer](FunctionNodeInputInt.md) | [Integer](Integer.md) | [Integer](Integer.md#Integer) |
-| [Interpolate Domain](GeometryNodeFieldOnDomain.md) | [Domain](Domain.md) | [interpolate](Domain.md#interpolate) |
-|      | [Geometry](Geometry.md) | [interpolate_domain](Geometry.md#interpolate_domain) |
+| [Interpolate Curves](GeometryNodeInterpolateCurves.md) | [CloudPoint](CloudPoint.md) | [interpolate](CloudPoint.md#interpolate) |
+|      | [ControlPoint](ControlPoint.md) | [interpolate](ControlPoint.md#interpolate) |
+|      | [Curve](Curve.md) | [interpolate](Curve.md#interpolate) |
+|      | [Points](Points.md) | [interpolate](Points.md#interpolate) |
+|      | [Vertex](Vertex.md) | [interpolate](Vertex.md#interpolate) |
 | [Is Shade Smooth](GeometryNodeInputShadeSmooth.md) | [Face](Face.md) | [shade_smooth](Face.md#shade_smooth) |
 |      | [Mesh](Mesh.md) | [is_shade_smooth](Mesh.md#is_shade_smooth) |
 | [Is Spline Cyclic](GeometryNodeInputSplineCyclic.md) | [Spline](Spline.md) | [cyclic](Spline.md#cyclic) |
@@ -190,8 +199,8 @@
 |      | [Vector](Vector.md) | - [mix](Vector.md#mix)<br>- [mix_uniform](Vector.md#mix_uniform)<br>- [mix_non_uniform](Vector.md#mix_non_uniform)|
 |      | [functions](functions.md) | [float_mix](functions.md#float_mix) / [vector_mix](functions.md#vector_mix) / [color_mix](functions.md#color_mix) / [color_darken](functions.md#color_darken) / [color_multiply](functions.md#color_multiply) / [color_burn](functions.md#color_burn) / [color_lighten](functions.md#color_lighten) / [color_screen](functions.md#color_screen) / [color_dodge](functions.md#color_dodge) / [color_add](functions.md#color_add) / [color_overlay](functions.md#color_overlay) / [color_soft_light](functions.md#color_soft_light) / [color_linear_light](functions.md#color_linear_light) / [color_difference](functions.md#color_difference) / [color_subtract](functions.md#color_subtract) / [color_divide](functions.md#color_divide) / [color_hue](functions.md#color_hue) / [color_saturation](functions.md#color_saturation) / [color_color](functions.md#color_color) / [color_value](functions.md#color_value) / |
 | [Musgrave Texture](ShaderNodeTexMusgrave.md) | [Texture](Texture.md) | [musgrave](Texture.md#musgrave) |
-| [Named Attribute](GeometryNodeInputNamedAttribute.md) | [Domain](Domain.md) | [named_attribute](Domain.md#named_attribute) / [named_float](Domain.md#named_float) / [named_integer](Domain.md#named_integer) / [named_vector](Domain.md#named_vector) / [named_color](Domain.md#named_color) / [named_boolean](Domain.md#named_boolean) / |
-|      | [Geometry](Geometry.md) | [named_attribute](Geometry.md#named_attribute) / [named_float](Geometry.md#named_float) / [named_integer](Geometry.md#named_integer) / [named_vector](Geometry.md#named_vector) / [named_color](Geometry.md#named_color) / [named_boolean](Geometry.md#named_boolean) / |
+| [Named Attribute](GeometryNodeInputNamedAttribute.md) | [Domain](Domain.md) | [named_attribute](Domain.md#named_attribute) / [named_float](Domain.md#named_float) / [named_integer](Domain.md#named_integer) / [named_vector](Domain.md#named_vector) / [named_color](Domain.md#named_color) / [named_boolean](Domain.md#named_boolean) / [named_attribute_exists](Domain.md#named_attribute_exists) / |
+|      | [Geometry](Geometry.md) | [named_attribute](Geometry.md#named_attribute) / [named_float](Geometry.md#named_float) / [named_integer](Geometry.md#named_integer) / [named_vector](Geometry.md#named_vector) / [named_color](Geometry.md#named_color) / [named_boolean](Geometry.md#named_boolean) / [named_attribute_exists](Geometry.md#named_attribute_exists) / |
 | [Noise Texture](ShaderNodeTexNoise.md) | [Texture](Texture.md) | [noise](Texture.md#noise) / [noise_1D](Texture.md#noise_1D) / [noise_2D](Texture.md#noise_2D) / [noise_3D](Texture.md#noise_3D) / [noise_4D](Texture.md#noise_4D) / |
 | [Normal](GeometryNodeInputNormal.md) | [Domain](Domain.md) | [normal](Domain.md#normal) |
 |      | [Geometry](Geometry.md) | [normal](Geometry.md#normal) |
@@ -299,7 +308,7 @@
 | [Split Edges](GeometryNodeSplitEdges.md) | [Edge](Edge.md) | [split](Edge.md#split) |
 |      | [Mesh](Mesh.md) | [split_edges](Mesh.md#split_edges) |
 | [Star](GeometryNodeCurveStar.md) | [Curve](Curve.md) | [Star](Curve.md#Star) |
-| [Store Named Attribute](GeometryNodeStoreNamedAttribute.md) | [Domain](Domain.md) | [store_named_attribute_no_selection](Domain.md#store_named_attribute_no_selection) |
+| [Store Named Attribute](GeometryNodeStoreNamedAttribute.md) | [Domain](Domain.md) | [store_named_attribute](Domain.md#store_named_attribute) / [store_named_float](Domain.md#store_named_float) / [store_named_integer](Domain.md#store_named_integer) / [store_named_vector](Domain.md#store_named_vector) / [store_named_color](Domain.md#store_named_color) / [store_named_byte_color](Domain.md#store_named_byte_color) / [store_named_boolean](Domain.md#store_named_boolean) / [store_named_2D_vector](Domain.md#store_named_2D_vector) / |
 |      | [Geometry](Geometry.md) | [store_named_attribute](Geometry.md#store_named_attribute) / [store_named_boolean](Geometry.md#store_named_boolean) / [store_named_integer](Geometry.md#store_named_integer) / [store_named_float](Geometry.md#store_named_float) / [store_named_vector](Geometry.md#store_named_vector) / [store_named_color](Geometry.md#store_named_color) / |
 | [String](FunctionNodeInputString.md) | [String](String.md) | [String](String.md#String) |
 | [String Length](FunctionNodeStringLength.md) | [String](String.md) | [length](String.md#length) |
@@ -322,12 +331,13 @@
 |      | [Texture](Texture.md) | [switch](Texture.md#switch) |
 |      | [Vector](Vector.md) | [switch](Vector.md#switch) |
 |      | [functions](functions.md) | [switch](functions.md#switch) / [switch_float](functions.md#switch_float) / [switch_integer](functions.md#switch_integer) / [switch_boolean](functions.md#switch_boolean) / [switch_vector](functions.md#switch_vector) / [switch_string](functions.md#switch_string) / [switch_color](functions.md#switch_color) / [switch_object](functions.md#switch_object) / [switch_image](functions.md#switch_image) / [switch_geometry](functions.md#switch_geometry) / [switch_collection](functions.md#switch_collection) / [switch_texture](functions.md#switch_texture) / [switch_material](functions.md#switch_material) / |
-| [Transform](GeometryNodeTransform.md) | [Geometry](Geometry.md) | [transform](Geometry.md#transform) |
+| [Transform Geometry](GeometryNodeTransform.md) | [Geometry](Geometry.md) | [transform_geometry](Geometry.md#transform_geometry) |
 | [Translate Instances](GeometryNodeTranslateInstances.md) | [Instance](Instance.md) | [translate](Instance.md#translate) |
 |      | [Instances](Instances.md) | [translate](Instances.md#translate) |
 | [Triangulate](GeometryNodeTriangulate.md) | [Face](Face.md) | [triangulate](Face.md#triangulate) |
 |      | [Mesh](Mesh.md) | [triangulate](Mesh.md#triangulate) |
 | [Trim Curve](GeometryNodeTrimCurve.md) | [Curve](Curve.md) | - [trim](Curve.md#trim)<br>- [trim_factor](Curve.md#trim_factor)<br>- [trim_length](Curve.md#trim_length)|
+|      | [Spline](Spline.md) | - [trim](Spline.md#trim)<br>- [trim_factor](Spline.md#trim_factor)<br>- [trim_length](Spline.md#trim_length)|
 | [UV Sphere](GeometryNodeMeshUVSphere.md) | [Mesh](Mesh.md) | [UVSphere](Mesh.md#UVSphere) |
 | [UV Unwrap](GeometryNodeUVUnwrap.md) | [Face](Face.md) | [uv_unwrap](Face.md#uv_unwrap) |
 |      | [Mesh](Mesh.md) | [uv_unwrap](Mesh.md#uv_unwrap) |

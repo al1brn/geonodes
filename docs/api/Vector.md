@@ -541,7 +541,7 @@ def compare(self, b=None, c=None, angle=None, epsilon=None, mode='ELEMENT', oper
 - angle: Float
 - epsilon: Float
 - mode (str): 'ELEMENT' in [ELEMENT, LENGTH, AVERAGE, DOT_PRODUCT, DIRECTION]
-- operation (str): 'GREATER_THAN' in [LESS_THAN, LESS_EQUAL, GREATER_THAN, GREATER_EQUAL, EQUAL, NOT_EQUAL]
+- operation (str): 'GREATER_THAN' in [LESS_THAN, LESS_EQUAL, GREATER_THAN,... , NOT_EQUAL, DARKER, BRIGHTER]
 
 #### Returns:
 - socket `result`

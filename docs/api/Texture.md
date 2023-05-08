@@ -341,7 +341,7 @@ def image(image=None, vector=None, frame=None, extension='REPEAT', interpolation
 - image: Image
 - vector: Vector
 - frame: Integer
-- extension (str): 'REPEAT' in [REPEAT, EXTEND, CLIP]
+- extension (str): 'REPEAT' in [REPEAT, EXTEND, CLIP, MIRROR]
 - interpolation (str): 'Linear' in [Linear, Closest, Cubic]
 
 ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeImageTexture.webp)

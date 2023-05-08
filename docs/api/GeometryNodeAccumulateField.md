@@ -10,7 +10,7 @@
 ```python
 from geonodes import nodes
 
-node = nodes.AccumulateField(value=None, group_index=None, data_type='FLOAT', domain='POINT')
+node = nodes.AccumulateField(value=None, group_id=None, data_type='FLOAT', domain='POINT')
 ```
 
 ![Blender Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeAccumulateField.webp)
@@ -20,7 +20,7 @@ node = nodes.AccumulateField(value=None, group_index=None, data_type='FLOAT', do
 #### Input socket arguments:
 
 - **value**: **data_type** dependant
-- **group_index**: [Integer](Integer.md)
+- **group_id**: [Integer](Integer.md)
 
 #### Node parameter arguments:
 
@@ -43,7 +43,7 @@ node = nodes.AccumulateField(value=None, group_index=None, data_type='FLOAT', do
 | Class or method name | Definition |
 |----------------------|------------|
 | **[Domain](Domain.md)** |
-| [accumulate_field](Domain.md#accumulate_field) | `def accumulate_field(self, value=None, group_index=None):` |
+| [accumulate_field](Domain.md#accumulate_field) | `def accumulate_field(self, value=None, group_id=None):` |
 
 <sub>Go to [top](#node-Accumulate-Field) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

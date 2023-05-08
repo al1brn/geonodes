@@ -2,6 +2,12 @@
 
 > [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
+### Constructor
+
+```python
+Image(self, value=None, label=None)
+```
+
 ## Content
 
 **Properties**
@@ -20,7 +26,7 @@
 
 **Methods**
 
-[switch](#switch) | [texture](#texture)
+[fps](#fps) | [frame_count](#frame_count) | [has_alpha](#has_alpha) | [height](#height) | [info](#info) | [switch](#switch) | [texture](#texture) | [width](#width)
 
 ***Inherited***
 
@@ -50,6 +56,121 @@ def Input(cls, value = None, name="Image", description="")
 <sub>Go to [top](#class-Image) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## Methods
+
+### fps
+
+```python
+def fps(self, frame=None)
+```
+
+
+
+> Node: [Image Info](GeometryNodeImageInfo.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/m.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeImageInfo.html)
+
+#### Args:
+- frame: Integer
+
+#### Returns:
+- socket `fps`
+
+
+
+
+
+
+<sub>Go to [top](#class-Image) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### frame_count
+
+```python
+def frame_count(self, frame=None)
+```
+
+
+
+> Node: [Image Info](GeometryNodeImageInfo.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/m.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeImageInfo.html)
+
+#### Args:
+- frame: Integer
+
+#### Returns:
+- socket `frame_count`
+
+
+
+
+
+
+<sub>Go to [top](#class-Image) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### has_alpha
+
+```python
+def has_alpha(self, frame=None)
+```
+
+
+
+> Node: [Image Info](GeometryNodeImageInfo.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/m.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeImageInfo.html)
+
+#### Args:
+- frame: Integer
+
+#### Returns:
+- socket `has_alpha`
+
+
+
+
+
+
+<sub>Go to [top](#class-Image) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### height
+
+```python
+def height(self, frame=None)
+```
+
+
+
+> Node: [Image Info](GeometryNodeImageInfo.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/m.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeImageInfo.html)
+
+#### Args:
+- frame: Integer
+
+#### Returns:
+- socket `height`
+
+
+
+
+
+
+<sub>Go to [top](#class-Image) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### info
+
+```python
+def info(self, frame=None)
+```
+
+
+
+> Node: [Image Info](GeometryNodeImageInfo.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/m.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeImageInfo.html)
+
+#### Args:
+- frame: Integer
+
+#### Returns:
+- node with sockets ['width', 'height', 'has_alpha', 'frame_count', 'fps']
+
+
+
+
+
+
+<sub>Go to [top](#class-Image) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### switch
 
@@ -88,13 +209,36 @@ def texture(self, vector=None, frame=None, extension='REPEAT', interpolation='Li
 #### Args:
 - vector: Vector
 - frame: Integer
-- extension (str): 'REPEAT' in [REPEAT, EXTEND, CLIP]
+- extension (str): 'REPEAT' in [REPEAT, EXTEND, CLIP, MIRROR]
 - interpolation (str): 'Linear' in [Linear, Closest, Cubic]
 
 ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeImageTexture.webp)
 
 #### Returns:
 - tuple ('`color`', '`alpha`')
+
+
+
+
+
+
+<sub>Go to [top](#class-Image) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### width
+
+```python
+def width(self, frame=None)
+```
+
+
+
+> Node: [Image Info](GeometryNodeImageInfo.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/m.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeImageInfo.html)
+
+#### Args:
+- frame: Integer
+
+#### Returns:
+- socket `width`
 
 
 
