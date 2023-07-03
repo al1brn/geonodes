@@ -83,7 +83,7 @@ with gn.Tree("Simul") as tree:
 
 ## Geometry class
 
-The type of the geometry of the simulation zone is the one of the input geometry. For instance if you instantiate a **Simulation** width a mesh, the simulation geometry will be a mesh:
+The type of the simulation geometry is the one of the input geometry. For instance if you instantiate a **Simulation** with a mesh, the simulation geometry will be a mesh:
 
 ``` python
 mesh = gn.Mesh.Cube().mesh
