@@ -18,6 +18,16 @@ These two nodes have the same input and output sockets with one exception: the *
 
 The nodes are created by instanciating a **Simulation** class:
 
+''' python
+
+with gn.Tree("Simul") as tree:
+
+  simul = gn.Simulation()
+
+'''
+
+
+
 
 
 
