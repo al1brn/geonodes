@@ -242,6 +242,10 @@ with gn.Tree("Simul 2") as tree:
     tree.og = curve    
 ```
 
+The image below shows the use of **top** simulation state rather than the stored attribute:
+
+<img src="images/simulation_top.png" width="600" class="center">
+
 
 
 
