@@ -21,6 +21,7 @@ The nodes are created by instanciating a **Simulation** class. The class constru
 <img src="images/simulation_creation.png" width="600" class="center">
 
 ``` python
+import geonodes as gn
 
 with gn.Tree("Simul") as tree:
 
@@ -33,6 +34,7 @@ with gn.Tree("Simul") as tree:
 The input and output nodes can be accessed with the **input** and **output** attributes:
 
 ``` python
+import geonodes as gn
 
 with gn.Tree("Simul") as tree:
   simul = gn.Simulation(tree.ig, position=(0, 0, 0))
@@ -85,6 +87,8 @@ with gn.Tree("Simul") as tree:
 The *do nothing* simulation can be created with:
 
 ``` python
+import geonodes as gn
+
 with gn.Tree("Do nothing simulation") as tree:
   # Create the simulation zone with tree input geometry as 
   simul = gn.Simulation(tree.ig)
