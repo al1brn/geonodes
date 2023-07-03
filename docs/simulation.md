@@ -68,19 +68,6 @@ with gn.Tree("Simul") as tree:
   my_vector = simul.output.position
 ```
 
-## Geometry class
-
-The type of the geometry of the simulation zone is the one of the input geometry. For instance if you instantiate a **Simulation** width a mesh, the simulation geometry will be a mesh:
-
-``` python
-mesh = gn.Mesh.Cube().mesh
-simul = gn.Simulation(mesh)
-
-geo = simul.geometry # Mesh
-
-geo = simul.of # Mesh
-```
-
 ### Note
 
 **Simulation** class exposes shortcuts for the simulation output geometry:
@@ -92,6 +79,18 @@ geo = simul.of # Mesh
   # Or through Simulation shortcuts
   geo = simul.output_geometry
   geo = simul.og
+```
+
+## Geometry class
+
+The type of the geometry of the simulation zone is the one of the input geometry. For instance if you instantiate a **Simulation** width a mesh, the simulation geometry will be a mesh:
+
+``` python
+mesh = gn.Mesh.Cube().mesh
+simul = gn.Simulation(mesh)
+
+geo = simul.geometry # Mesh
+geo = simul.og # Mesh
 ```
 
 :stop_sign: **Important**: the created sockets must be set within the simulation zone. In particular, the geometry must be updated with an instruction ``` simul.geometry = ...```. A typical simulation is written as in the following example:
