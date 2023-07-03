@@ -215,8 +215,7 @@
 |      | [Mesh](Mesh.md) | [offset_corner_in_face](Mesh.md#offset_corner_in_face) |
 | [Offset Point in Curve](GeometryNodeOffsetPointInCurve.md) | [ControlPoint](ControlPoint.md) | [offset](ControlPoint.md#offset) |
 |      | [Curve](Curve.md) | [offset_point](Curve.md#offset_point) |
-| [Offset SDF Volume](GeometryNodeOffsetSDFVolume.md) | [Points](Points.md) | [offset_sdf_volume](Points.md#offset_sdf_volume) |
-|      | [Volume](Volume.md) | [offset_sdf_volume](Volume.md#offset_sdf_volume) |
+| [Offset SDF Volume](GeometryNodeOffsetSDFVolume.md) | [Volume](Volume.md) | [offset_sdf_volume](Volume.md#offset_sdf_volume) |
 | [Pack UV Islands](GeometryNodeUVPackIslands.md) | [Face](Face.md) | [pack_uv_islands](Face.md#pack_uv_islands) |
 |      | [Mesh](Mesh.md) | [pack_uv_islands](Mesh.md#pack_uv_islands) |
 | [Points](GeometryNodePoints.md) | [Points](Points.md) | [Points](Points.md#Points) |
@@ -293,9 +292,10 @@
 | [Set Handle Type](GeometryNodeCurveSetHandles.md) | [ControlPoint](ControlPoint.md) | - [set_handle_type_node](ControlPoint.md#set_handle_type_node)<br>- [set_handle_type](ControlPoint.md#set_handle_type)|
 | [Set ID](GeometryNodeSetID.md) | [Domain](Domain.md) | - [set_ID](Domain.md#set_ID)<br>- [ID](Domain.md#ID)|
 |      | [Geometry](Geometry.md) | [set_ID](Geometry.md#set_ID) |
-| [Set Material](GeometryNodeSetMaterial.md) | [Face](Face.md) | - [set_material](Face.md#set_material)<br>- [material](Face.md#material)<br>- [material](Face.md#material)|
+| [Set Material](GeometryNodeSetMaterial.md) | [CloudPoint](CloudPoint.md) | - [set_material](CloudPoint.md#set_material)<br>- [material](CloudPoint.md#material)<br>- [material](CloudPoint.md#material)|
+|      | [Face](Face.md) | - [set_material](Face.md#set_material)<br>- [material](Face.md#material)<br>- [material](Face.md#material)|
 |      | [Mesh](Mesh.md) | [set_material](Mesh.md#set_material) |
-|      | [Points](Points.md) | - [set_material](Points.md#set_material)<br>- [set_material](Points.md#set_material)<br>- [material](Points.md#material)<br>- [material](Points.md#material)|
+|      | [Points](Points.md) | [set_material](Points.md#set_material) |
 |      | [Volume](Volume.md) | [set_material](Volume.md#set_material) |
 | [Set Material Index](GeometryNodeSetMaterialIndex.md) | [Face](Face.md) | - [set_material_index](Face.md#set_material_index)<br>- [material_index](Face.md#material_index)|
 |      | [Geometry](Geometry.md) | [set_material_index](Geometry.md#set_material_index) |

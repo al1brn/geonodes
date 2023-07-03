@@ -286,9 +286,10 @@
 |      | [Spline](Spline.md) | [material_index](Spline.md#material_index) |
 | [Material Selection](GeometryNodeMaterialSelection.md) | [Domain](Domain.md) | [material_selection](Domain.md#material_selection) |
 |      | [Geometry](Geometry.md) | [material_selection](Geometry.md#material_selection) |
-| [Set Material](GeometryNodeSetMaterial.md) | [Face](Face.md) | - [set_material](Face.md#set_material)<br>- [material](Face.md#material)<br>- [material](Face.md#material)|
+| [Set Material](GeometryNodeSetMaterial.md) | [CloudPoint](CloudPoint.md) | - [set_material](CloudPoint.md#set_material)<br>- [material](CloudPoint.md#material)<br>- [material](CloudPoint.md#material)|
+|      | [Face](Face.md) | - [set_material](Face.md#set_material)<br>- [material](Face.md#material)<br>- [material](Face.md#material)|
 |      | [Mesh](Mesh.md) | [set_material](Mesh.md#set_material) |
-|      | [Points](Points.md) | - [set_material](Points.md#set_material)<br>- [set_material](Points.md#set_material)<br>- [material](Points.md#material)<br>- [material](Points.md#material)|
+|      | [Points](Points.md) | [set_material](Points.md#set_material) |
 |      | [Volume](Volume.md) | [set_material](Volume.md#set_material) |
 | [Set Material Index](GeometryNodeSetMaterialIndex.md) | [Face](Face.md) | - [set_material_index](Face.md#set_material_index)<br>- [material_index](Face.md#material_index)|
 |      | [Geometry](Geometry.md) | [set_material_index](Geometry.md#set_material_index) |

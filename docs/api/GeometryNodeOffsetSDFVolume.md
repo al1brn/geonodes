@@ -30,8 +30,6 @@ node = nodes.OffsetSdfVolume(volume=None, distance=None)
 
 | Class or method name | Definition |
 |----------------------|------------|
-| **[Points](Points.md)** |
-| [offset_sdf_volume](Points.md#offset_sdf_volume) | `def offset_sdf_volume(self, distance=None):` |
 | **[Volume](Volume.md)** |
 | [offset_sdf_volume](Volume.md#offset_sdf_volume) | `def offset_sdf_volume(self, distance=None):` |
 

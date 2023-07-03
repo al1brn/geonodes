@@ -15,7 +15,7 @@ with gn.Tree('Geometry Nodes') as tree:
     collection = gn.Collection.Input()
     object     = gn.Object.Input()
     geometry   = tree.ig
-    mesh       = gn.Mesh.Cube()
+    mesh       = gn.Mesh.Cube().mesh
     curve      = gn.Curve.Circle()
     points     = gn.Points.Points()
     instances  = gn.Instances.InstanceOnPoints(points=points)
@@ -613,16 +613,12 @@ with gn.Tree('Geometry Nodes') as tree:
     points.interpolate()
     points.instance_on_points()
     points.set_material()
-    points.set_material()
-    
-    points.material = None
     var = gn.Points.Points()
     points.to_vertices()
     points.to_volume()
     points.to_volume_size()
     points.to_volume_amount()
     points.set_point_radius()
-    points.offset_sdf_volume()
     points.to_sdf_volume()
     var = instances.domain_size
     var = gn.Instances.InstanceOnPoints()
@@ -804,6 +800,9 @@ with gn.Tree('Geometry Nodes') as tree:
     points.points.proximity()
     var = points.points.radius
     points.points.instance_on_points()
+    points.points.set_material()
+    
+    points.points.material = None
     points.points.to_vertices()
     points.points.radius = None
     points.points.to_sdf_volume()

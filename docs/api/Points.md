@@ -25,7 +25,7 @@ elf.points = Vertex(self) # Initialized before super().__init__ which can overri
 
 **Properties**
 
-[ID](#ID) | [bounding_box](#bounding_box) | [bounding_box_min](#bounding_box_min) | [convex_hull](#convex_hull) | [curve_component](#curve_component) | [domain_size](#domain_size) | [index](#index) | [index_of_nearest](#index_of_nearest) | [instances_component](#instances_component) | [is_viewport](#is_viewport) | [material](#material) | [material_index](#material_index) | [mesh_component](#mesh_component) | [normal](#normal) | [points_component](#points_component) | [position](#position) | [radius](#radius) | [separate_components](#separate_components) | [signed_distance](#signed_distance) | [volume_component](#volume_component)
+[ID](#ID) | [bounding_box](#bounding_box) | [bounding_box_min](#bounding_box_min) | [convex_hull](#convex_hull) | [curve_component](#curve_component) | [domain_size](#domain_size) | [index](#index) | [index_of_nearest](#index_of_nearest) | [instances_component](#instances_component) | [is_viewport](#is_viewport) | [material_index](#material_index) | [mesh_component](#mesh_component) | [normal](#normal) | [points_component](#points_component) | [position](#position) | [radius](#radius) | [separate_components](#separate_components) | [signed_distance](#signed_distance) | [volume_component](#volume_component)
 
 ***Inherited***
 
@@ -41,7 +41,7 @@ elf.points = Vertex(self) # Initialized before super().__init__ which can overri
 
 **Methods**
 
-[attribute_statistic](#attribute_statistic) | [capture_attribute](#capture_attribute) | [delete](#delete) | [duplicate](#duplicate) | [evaluate_at_index](#evaluate_at_index) | [instance_on_points](#instance_on_points) | [instantiate](#instantiate) | [interpolate](#interpolate) | [interpolate_domain](#interpolate_domain) | [join](#join) | [material_selection](#material_selection) | [merge_by_distance](#merge_by_distance) | [named_attribute](#named_attribute) | [named_attribute_exists](#named_attribute_exists) | [named_boolean](#named_boolean) | [named_color](#named_color) | [named_float](#named_float) | [named_integer](#named_integer) | [named_vector](#named_vector) | [offset_sdf_volume](#offset_sdf_volume) | [proximity](#proximity) | [proximity_edges](#proximity_edges) | [proximity_faces](#proximity_faces) | [proximity_points](#proximity_points) | [raycast](#raycast) | [raycast_interpolated](#raycast_interpolated) | [raycast_nearest](#raycast_nearest) | [remove_named_attribute](#remove_named_attribute) | [replace_material](#replace_material) | [sample_index](#sample_index) | [sample_nearest](#sample_nearest) | [separate](#separate) | [set_ID](#set_ID) | [set_material](#set_material) | [set_material_index](#set_material_index) | [set_point_radius](#set_point_radius) | [set_position](#set_position) | [show_handles](#show_handles) | [store_named_attribute](#store_named_attribute) | [store_named_boolean](#store_named_boolean) | [store_named_color](#store_named_color) | [store_named_float](#store_named_float) | [store_named_integer](#store_named_integer) | [store_named_vector](#store_named_vector) | [switch](#switch) | [to_instance](#to_instance) | [to_sdf_volume](#to_sdf_volume) | [to_vertices](#to_vertices) | [to_volume](#to_volume) | [to_volume_amount](#to_volume_amount) | [to_volume_size](#to_volume_size) | [transform](#transform) | [transform_geometry](#transform_geometry) | [view](#view) | [viewer](#viewer)
+[attribute_statistic](#attribute_statistic) | [capture_attribute](#capture_attribute) | [delete](#delete) | [duplicate](#duplicate) | [evaluate_at_index](#evaluate_at_index) | [instance_on_points](#instance_on_points) | [instantiate](#instantiate) | [interpolate](#interpolate) | [interpolate_domain](#interpolate_domain) | [join](#join) | [material_selection](#material_selection) | [merge_by_distance](#merge_by_distance) | [named_attribute](#named_attribute) | [named_attribute_exists](#named_attribute_exists) | [named_boolean](#named_boolean) | [named_color](#named_color) | [named_float](#named_float) | [named_integer](#named_integer) | [named_vector](#named_vector) | [proximity](#proximity) | [proximity_edges](#proximity_edges) | [proximity_faces](#proximity_faces) | [proximity_points](#proximity_points) | [raycast](#raycast) | [raycast_interpolated](#raycast_interpolated) | [raycast_nearest](#raycast_nearest) | [remove_named_attribute](#remove_named_attribute) | [replace_material](#replace_material) | [sample_index](#sample_index) | [sample_nearest](#sample_nearest) | [separate](#separate) | [set_ID](#set_ID) | [set_material](#set_material) | [set_material_index](#set_material_index) | [set_point_radius](#set_point_radius) | [set_position](#set_position) | [show_handles](#show_handles) | [store_named_attribute](#store_named_attribute) | [store_named_boolean](#store_named_boolean) | [store_named_color](#store_named_color) | [store_named_float](#store_named_float) | [store_named_integer](#store_named_integer) | [store_named_vector](#store_named_vector) | [switch](#switch) | [to_instance](#to_instance) | [to_sdf_volume](#to_sdf_volume) | [to_vertices](#to_vertices) | [to_volume](#to_volume) | [to_volume_amount](#to_volume_amount) | [to_volume_size](#to_volume_size) | [transform](#transform) | [transform_geometry](#transform_geometry) | [view](#view) | [viewer](#viewer)
 
 ***Inherited***
 
@@ -205,40 +205,6 @@ elf.points = Vertex(self) # Initialized before super().__init__ which can overri
 
 #### Returns:
 - socket `is_viewport`
-
-
-
-
-
-
-<sub>Go to [top](#class-Points) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-### material
-
-
-
-> Node: [Set Material](GeometryNodeSetMaterial.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/set_material.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetMaterial.html)
-
-'material' is a write only property.
-Raise an exception if attempt to read.
-
-
-
-
-
-
-
-Setter
-
-
-
-> Node: [Set Material](GeometryNodeSetMaterial.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/set_material.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetMaterial.html)
-
-Node implemented as property setter.
-
-#### Args:
-- attr_value: material
-
 
 
 
@@ -1091,29 +1057,6 @@ def named_vector(self, name=None)
 
 <sub>Go to [top](#class-Points) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
-### offset_sdf_volume
-
-```python
-def offset_sdf_volume(self, distance=None)
-```
-
-
-
-> Node: [Offset SDF Volume](GeometryNodeOffsetSDFVolume.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/f.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeOffsetSDFVolume.html)
-
-#### Args:
-- distance: Float
-
-#### Returns:
-- socket `volume`
-
-
-
-
-
-
-<sub>Go to [top](#class-Points) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
 ### proximity
 
 ```python
@@ -1441,7 +1384,7 @@ def set_ID(self, selection=None, ID=None)
 ### set_material
 
 ```python
-def set_material(self, material=None)
+def set_material(self, selection=None, material=None)
 ```
 
 
@@ -1449,6 +1392,7 @@ def set_material(self, material=None)
 > Node: [Set Material](GeometryNodeSetMaterial.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/set_material.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetMaterial.html)
 
 #### Args:
+- selection: Boolean
 - material: Material
 
 #### Returns:

@@ -3327,57 +3327,6 @@ class Points(Geometry):
         return nodes.InterpolateCurves(guide_curves=guide_curves, guide_up=guide_up, guide_group_id=guide_group_id, points=self, point_up=point_up, point_group_id=point_group_id, max_neighbors=max_neighbors)
 
 
-    @property
-    def material(self):
-        """
-
-        > Node: [Set Material](GeometryNodeSetMaterial.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/set_material.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetMaterial.html)
-
-        'material' is a write only property.
-        Raise an exception if attempt to read.
-
-
-
-        """
-
-        raise Exception("Error: 'material' is a write only property of class Domain!")
-
-
-    @material.setter
-    def material(self, attr_value):
-        """
-
-        > Node: [Set Material](GeometryNodeSetMaterial.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/set_material.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetMaterial.html)
-
-        Node implemented as property setter.
-
-        #### Args:
-        - attr_value: material
-
-
-
-        """
-
-        self.socket_stack(nodes.SetMaterial(geometry=self.data_socket, selection=self.selection, material=attr_value))
-
-
-    def offset_sdf_volume(self, distance=None):
-        """
-
-        > Node: [Offset SDF Volume](GeometryNodeOffsetSDFVolume.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/f.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeOffsetSDFVolume.html)
-
-        #### Args:
-        - distance: Float
-
-        #### Returns:
-        - socket `volume`
-
-
-        """
-
-        return self.socket_stack(nodes.OffsetSdfVolume(volume=self.data_socket, distance=distance)).node.volume
-
-
     def set_material(self, selection=None, material=None):
         """
 
@@ -3394,23 +3343,6 @@ class Points(Geometry):
         """
 
         return self.stack(nodes.SetMaterial(geometry=self, selection=selection, material=material))
-
-
-    def set_material(self, material=None):
-        """
-
-        > Node: [Set Material](GeometryNodeSetMaterial.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/set_material.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetMaterial.html)
-
-        #### Args:
-        - material: Material
-
-        #### Returns:
-        - self
-
-
-        """
-
-        return self.socket_stack(nodes.SetMaterial(geometry=self.data_socket, selection=self.selection, material=material))
 
 
     def set_point_radius(self, selection=None, radius=None):

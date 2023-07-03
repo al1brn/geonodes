@@ -3178,7 +3178,7 @@ class ControlPoint(Domain):
 
         #### Args:
         - handle_type (str): 'AUTO' in [FREE, AUTO, VECTOR, ALIGN]
-        - mode (set): {'LEFT', 'RIGHT'}
+        - mode (set): {'RIGHT', 'LEFT'}
 
         #### Returns:
         - node with sockets ['selection']
@@ -3198,7 +3198,7 @@ class ControlPoint(Domain):
 
         #### Args:
         - handle_type (str): 'AUTO' in [FREE, AUTO, VECTOR, ALIGN]
-        - mode (set): {'LEFT', 'RIGHT'}
+        - mode (set): {'RIGHT', 'LEFT'}
 
         #### Returns:
         - node with sockets ['selection']
@@ -3216,7 +3216,7 @@ class ControlPoint(Domain):
 
         #### Args:
         - handle_type (str): 'AUTO' in [FREE, AUTO, VECTOR, ALIGN]
-        - mode (set): {'LEFT', 'RIGHT'}
+        - mode (set): {'RIGHT', 'LEFT'}
 
         #### Returns:
         - node with sockets ['selection']
@@ -3234,7 +3234,7 @@ class ControlPoint(Domain):
 
         #### Args:
         - handle_type (str): 'AUTO' in [FREE, AUTO, VECTOR, ALIGN]
-        - mode (set): {'LEFT', 'RIGHT'}
+        - mode (set): {'RIGHT', 'LEFT'}
 
         #### Returns:
         - node with sockets ['selection']
@@ -3252,7 +3252,7 @@ class ControlPoint(Domain):
 
         #### Args:
         - handle_type (str): 'AUTO' in [FREE, AUTO, VECTOR, ALIGN]
-        - mode (set): {'LEFT', 'RIGHT'}
+        - mode (set): {'RIGHT', 'LEFT'}
 
         #### Returns:
         - node with sockets ['selection']
@@ -3263,14 +3263,14 @@ class ControlPoint(Domain):
         return self.handle_type_selection(left=left, right=right, handle_type='ALIGN')
 
 
-    def handle_type_selection_node(self, handle_type='AUTO', mode={'LEFT', 'RIGHT'}):
+    def handle_type_selection_node(self, handle_type='AUTO', mode={'RIGHT', 'LEFT'}):
         """
 
         > Node: [Handle Type Selection](GeometryNodeCurveHandleTypeSelection.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/handle_type_selection.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveHandleTypeSelection.html)
 
         #### Args:
         - handle_type (str): 'AUTO' in [FREE, AUTO, VECTOR, ALIGN]
-        - mode (set): {'LEFT', 'RIGHT'}
+        - mode (set): {'RIGHT', 'LEFT'}
 
         #### Returns:
         - socket `selection`
@@ -3605,7 +3605,7 @@ class ControlPoint(Domain):
         - curve: Curve
         - selection: Boolean
         - handle_type (str): 'AUTO' in [FREE, AUTO, VECTOR, ALIGN]
-        - mode (set): {'LEFT', 'RIGHT'}
+        - mode (set): {'RIGHT', 'LEFT'}
 
         #### Returns:
         - node with sockets ['curve']
@@ -3618,14 +3618,14 @@ class ControlPoint(Domain):
         return self.set_handle_type_node(handle_type=handle_type, mode=mode)
 
 
-    def set_handle_type_node(self, handle_type='AUTO', mode={'LEFT', 'RIGHT'}):
+    def set_handle_type_node(self, handle_type='AUTO', mode={'RIGHT', 'LEFT'}):
         """
 
         > Node: [Set Handle Type](GeometryNodeCurveSetHandles.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/set_handle_type.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveSetHandles.html)
 
         #### Args:
         - handle_type (str): 'AUTO' in [FREE, AUTO, VECTOR, ALIGN]
-        - mode (set): {'LEFT', 'RIGHT'}
+        - mode (set): {'RIGHT', 'LEFT'}
 
         #### Returns:
         - self
@@ -3814,6 +3814,40 @@ class CloudPoint(Domain):
         return nodes.InterpolateCurves(guide_curves=guide_curves, guide_up=guide_up, guide_group_id=guide_group_id, points=self.data_socket, point_up=point_up, point_group_id=point_group_id, max_neighbors=max_neighbors)
 
 
+    @property
+    def material(self):
+        """
+
+        > Node: [Set Material](GeometryNodeSetMaterial.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/set_material.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetMaterial.html)
+
+        'material' is a write only property.
+        Raise an exception if attempt to read.
+
+
+
+        """
+
+        raise Exception("Error: 'material' is a write only property of class Domain!")
+
+
+    @material.setter
+    def material(self, attr_value):
+        """
+
+        > Node: [Set Material](GeometryNodeSetMaterial.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/set_material.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetMaterial.html)
+
+        Node implemented as property setter.
+
+        #### Args:
+        - attr_value: material
+
+
+
+        """
+
+        self.socket_stack(nodes.SetMaterial(geometry=self.data_socket, selection=self.selection, material=attr_value))
+
+
     def proximity(self, target=None, source_position=None):
         """
 
@@ -3863,6 +3897,23 @@ class CloudPoint(Domain):
         """
 
         self.socket_stack(nodes.SetPointRadius(points=self.data_socket, selection=self.selection, radius=attr_value))
+
+
+    def set_material(self, material=None):
+        """
+
+        > Node: [Set Material](GeometryNodeSetMaterial.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/set_material.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetMaterial.html)
+
+        #### Args:
+        - material: Material
+
+        #### Returns:
+        - self
+
+
+        """
+
+        return self.socket_stack(nodes.SetMaterial(geometry=self.data_socket, selection=self.selection, material=material))
 
 
     def to_sdf_volume(self, voxel_size=None, voxel_amount=None, radius=None, resolution_mode='VOXEL_AMOUNT'):

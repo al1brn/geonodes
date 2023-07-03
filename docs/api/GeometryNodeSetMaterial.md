@@ -31,6 +31,11 @@ node = nodes.SetMaterial(geometry=None, selection=None, material=None)
 
 | Class or method name | Definition |
 |----------------------|------------|
+| **[CloudPoint](CloudPoint.md)** |
+| [set_material](CloudPoint.md#set_material) | `def set_material(self, material=None):` |
+| [material](CloudPoint.md#material) | `@property`<br> `def material(self):` |
+| [material](CloudPoint.md#material) | `@material.setter
+`<br> `def material(self, attr_value):` |
 | **[Face](Face.md)** |
 | [set_material](Face.md#set_material) | `def set_material(self, material=None):` |
 | [material](Face.md#material) | `@property`<br> `def material(self):` |
@@ -40,10 +45,6 @@ node = nodes.SetMaterial(geometry=None, selection=None, material=None)
 | [set_material](Mesh.md#set_material) | `def set_material(self, selection=None, material=None):` |
 | **[Points](Points.md)** |
 | [set_material](Points.md#set_material) | `def set_material(self, selection=None, material=None):` |
-| [set_material](Points.md#set_material) | `def set_material(self, material=None):` |
-| [material](Points.md#material) | `@property`<br> `def material(self):` |
-| [material](Points.md#material) | `@material.setter
-`<br> `def material(self, attr_value):` |
 | **[Volume](Volume.md)** |
 | [set_material](Volume.md#set_material) | `def set_material(self, selection=None, material=None):` |
 
