@@ -151,7 +151,7 @@ with gn.Tree("Simul") as tree:
 
     mesh = simul.geometry
     
-    # Let's generated the extrusion direction by a random vector perpendicular to the normal
+    # Let's generate the extrusion direction by a random vector perpendicular to the normal
     
     normal = mesh.verts.normal
     v = gn.Vector(gn.Texture.Noise4D(w=tree.seconds).color) - (.5, .5, .5)
@@ -210,7 +210,7 @@ with gn.Tree("Simul 2") as tree:
     
     top = simul.top
     
-    # Let's generated the extrusion direction by a random vector perpendicular to the normal
+    # Let's generate the extrusion direction by a random vector perpendicular to the normal
     
     normal = mesh.verts.normal
     v = gn.Vector(gn.Texture.Noise4D(w=tree.seconds).color) - (.5, .5, .5)
