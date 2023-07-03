@@ -216,6 +216,8 @@ Node implemented as property setter.
 - position: Vector
 - group_id: Integer
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeIndexOfNearest.webp)
+
 #### Returns:
 - node with sockets ['index', 'has_neighbor']
 
@@ -280,6 +282,8 @@ Node implemented as property setter.
 
 
 > Node: [Spline Parameter](GeometryNodeSplineParameter.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/spline_parameter.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSplineParameter.html)
+
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeSplineParameter.webp)
 
 #### Returns:
 - node with sockets ['factor', 'length', 'index']
@@ -636,6 +640,8 @@ def accumulate_field(self, value=None, group_id=None)
 - value: ['Vector', 'Float', 'Integer']
 - group_id: Integer
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeAccumulateField.webp)
+
 #### Returns:
 - node with sockets ['leading', 'trailing', 'total']
 
@@ -800,6 +806,8 @@ def attribute_statistic(self, attribute=None)
 
 #### Args:
 - attribute: ['Float', 'Vector']
+
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeAttributeStatistic.webp)
 
 #### Returns:
 - node with sockets ['mean', 'median', 'sum', 'min', 'max', 'range', 'standard_deviation', 'variance']
@@ -1038,6 +1046,8 @@ def curve(self)
 
 > Node: [Curve of Point](GeometryNodeCurveOfPoint.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve_topology/curve_of_point.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveOfPoint.html)
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeCurveOfPoint.webp)
+
 #### Returns:
 - node with sockets ['curve_index', 'index_in_curve']
 
@@ -1155,6 +1165,8 @@ def handle_positions(self, relative=None)
 #### Args:
 - relative: Boolean
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeInputCurveHandlePositions.webp)
+
 #### Returns:
 - node with sockets ['left', 'right']
 
@@ -1177,7 +1189,7 @@ def handle_type_selection(self, left=True, right=True, handle_type='AUTO')
 
 #### Args:
 - handle_type (str): 'AUTO' in [FREE, AUTO, VECTOR, ALIGN]
-- mode (set): {'RIGHT', 'LEFT'}
+- mode (set): {'LEFT', 'RIGHT'}
 
 #### Returns:
 - node with sockets ['selection']
@@ -1201,7 +1213,7 @@ def handle_type_selection_align(self, left=True, right=True)
 
 #### Args:
 - handle_type (str): 'AUTO' in [FREE, AUTO, VECTOR, ALIGN]
-- mode (set): {'RIGHT', 'LEFT'}
+- mode (set): {'LEFT', 'RIGHT'}
 
 #### Returns:
 - node with sockets ['selection']
@@ -1225,7 +1237,7 @@ def handle_type_selection_auto(self, left=True, right=True)
 
 #### Args:
 - handle_type (str): 'AUTO' in [FREE, AUTO, VECTOR, ALIGN]
-- mode (set): {'RIGHT', 'LEFT'}
+- mode (set): {'LEFT', 'RIGHT'}
 
 #### Returns:
 - node with sockets ['selection']
@@ -1249,7 +1261,7 @@ def handle_type_selection_free(self, left=True, right=True)
 
 #### Args:
 - handle_type (str): 'AUTO' in [FREE, AUTO, VECTOR, ALIGN]
-- mode (set): {'RIGHT', 'LEFT'}
+- mode (set): {'LEFT', 'RIGHT'}
 
 #### Returns:
 - node with sockets ['selection']
@@ -1264,7 +1276,7 @@ def handle_type_selection_free(self, left=True, right=True)
 ### handle_type_selection_node
 
 ```python
-def handle_type_selection_node(self, handle_type='AUTO', mode={'RIGHT', 'LEFT'})
+def handle_type_selection_node(self, handle_type='AUTO', mode={'LEFT', 'RIGHT'})
 ```
 
 
@@ -1273,7 +1285,7 @@ def handle_type_selection_node(self, handle_type='AUTO', mode={'RIGHT', 'LEFT'})
 
 #### Args:
 - handle_type (str): 'AUTO' in [FREE, AUTO, VECTOR, ALIGN]
-- mode (set): {'RIGHT', 'LEFT'}
+- mode (set): {'LEFT', 'RIGHT'}
 
 #### Returns:
 - socket `selection`
@@ -1297,7 +1309,7 @@ def handle_type_selection_vector(self, left=True, right=True)
 
 #### Args:
 - handle_type (str): 'AUTO' in [FREE, AUTO, VECTOR, ALIGN]
-- mode (set): {'RIGHT', 'LEFT'}
+- mode (set): {'LEFT', 'RIGHT'}
 
 #### Returns:
 - node with sockets ['selection']
@@ -1378,6 +1390,8 @@ def interpolate(self, guide_curves=None, guide_up=None, guide_group_id=None, poi
 - point_up: Vector
 - point_group_id: Integer
 - max_neighbors: Integer
+
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeInterpolateCurves.webp)
 
 #### Returns:
 - node with sockets ['curves', 'closest_index', 'closest_weight']
@@ -1588,6 +1602,8 @@ def offset(self, offset=None)
 #### Args:
 - offset: Integer
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeOffsetPointInCurve.webp)
+
 #### Returns:
 - node with sockets ['is_valid_offset', 'point_index']
 
@@ -1707,6 +1723,8 @@ def separate(self)
 
 
 > Node: [Separate Geometry](GeometryNodeSeparateGeometry.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/separate_geometry.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSeparateGeometry.html)
+
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeSeparateGeometry.webp)
 
 #### Returns:
 - node with sockets ['selection', 'inverted']
@@ -1828,7 +1846,7 @@ def set_handle_type(self, left=True, right=True, handle_type='AUTO')
 - curve: Curve
 - selection: Boolean
 - handle_type (str): 'AUTO' in [FREE, AUTO, VECTOR, ALIGN]
-- mode (set): {'RIGHT', 'LEFT'}
+- mode (set): {'LEFT', 'RIGHT'}
 
 #### Returns:
 - node with sockets ['curve']
@@ -1843,7 +1861,7 @@ def set_handle_type(self, left=True, right=True, handle_type='AUTO')
 ### set_handle_type_node
 
 ```python
-def set_handle_type_node(self, handle_type='AUTO', mode={'RIGHT', 'LEFT'})
+def set_handle_type_node(self, handle_type='AUTO', mode={'LEFT', 'RIGHT'})
 ```
 
 
@@ -1852,7 +1870,7 @@ def set_handle_type_node(self, handle_type='AUTO', mode={'RIGHT', 'LEFT'})
 
 #### Args:
 - handle_type (str): 'AUTO' in [FREE, AUTO, VECTOR, ALIGN]
-- mode (set): {'RIGHT', 'LEFT'}
+- mode (set): {'LEFT', 'RIGHT'}
 
 #### Returns:
 - self

@@ -44,6 +44,8 @@ class Domain(geodom.Domain):
         - value: ['Vector', 'Float', 'Integer']
         - group_id: Integer
 
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeAccumulateField.webp)
+
         #### Returns:
         - node with sockets ['leading', 'trailing', 'total']
 
@@ -151,6 +153,8 @@ class Domain(geodom.Domain):
 
         #### Args:
         - attribute: ['Float', 'Vector']
+
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeAttributeStatistic.webp)
 
         #### Returns:
         - node with sockets ['mean', 'median', 'sum', 'min', 'max', 'range', 'standard_deviation', 'variance']
@@ -388,6 +392,8 @@ class Domain(geodom.Domain):
         #### Args:
         - position: Vector
         - group_id: Integer
+
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeIndexOfNearest.webp)
 
         #### Returns:
         - node with sockets ['index', 'has_neighbor']
@@ -950,6 +956,8 @@ class Vertex(Domain):
         - weights: Float
         - sort_index: Integer
 
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeCornersOfVertex.webp)
+
         #### Returns:
         - node with sockets ['corner_index', 'total']
 
@@ -1095,6 +1103,8 @@ class Vertex(Domain):
         - weights: Float
         - sort_index: Integer
 
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeEdgesOfVertex.webp)
+
         #### Returns:
         - node with sockets ['edge_index', 'total']
 
@@ -1150,13 +1160,15 @@ class Vertex(Domain):
         - offset_scale: Float
         - individual: Boolean
 
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeExtrudeMesh.webp)
+
         #### Returns:
-        - self
+        - node with sockets ['mesh', 'top', 'side']
 
 
         """
 
-        return self.socket_stack(nodes.ExtrudeMesh(mesh=self.data_socket, selection=self.selection, offset=offset, offset_scale=offset_scale, individual=individual, mode='VERTICES'))
+        return self.socket_stack(nodes.ExtrudeMesh(mesh=self.data_socket, selection=self.selection, offset=offset, offset_scale=offset_scale, individual=individual, mode='VERTICES')).node
 
 
     def instance_on_points(self, instance=None, pick_instance=None, instance_index=None, rotation=None, scale=None):
@@ -1193,6 +1205,8 @@ class Vertex(Domain):
         - point_up: Vector
         - point_group_id: Integer
         - max_neighbors: Integer
+
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeInterpolateCurves.webp)
 
         #### Returns:
         - node with sockets ['curves', 'closest_index', 'closest_weight']
@@ -1243,6 +1257,8 @@ class Vertex(Domain):
         """
 
         > Node: [Vertex Neighbors](GeometryNodeInputMeshVertexNeighbors.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/vertex_neighbors.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshVertexNeighbors.html)
+
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeInputMeshVertexNeighbors.webp)
 
         #### Returns:
         - node with sockets ['vertex_count', 'face_count']
@@ -1328,6 +1344,8 @@ class Vertex(Domain):
         """
 
         > Node: [Separate Geometry](GeometryNodeSeparateGeometry.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/separate_geometry.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSeparateGeometry.html)
+
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeSeparateGeometry.webp)
 
         #### Returns:
         - node with sockets ['selection', 'inverted']
@@ -1429,6 +1447,8 @@ class Face(Domain):
         #### Args:
         - weights: Float
         - sort_index: Integer
+
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeCornersOfFace.webp)
 
         #### Returns:
         - node with sockets ['corner_index', 'total']
@@ -1561,6 +1581,8 @@ class Face(Domain):
         - seed: Integer
         - use_legacy_normal (bool): False
 
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeDistributePointsOnFaces.webp)
+
         #### Returns:
         - node with sockets ['points', 'normal', 'rotation']
 
@@ -1579,6 +1601,8 @@ class Face(Domain):
         - density: Float
         - seed: Integer
         - use_legacy_normal (bool): False
+
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeDistributePointsOnFaces.webp)
 
         #### Returns:
         - node with sockets ['points', 'normal', 'rotation']
@@ -1616,13 +1640,15 @@ class Face(Domain):
         - offset_scale: Float
         - individual: Boolean
 
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeExtrudeMesh.webp)
+
         #### Returns:
-        - self
+        - node with sockets ['mesh', 'top', 'side']
 
 
         """
 
-        return self.socket_stack(nodes.ExtrudeMesh(mesh=self.data_socket, selection=self.selection, offset=offset, offset_scale=offset_scale, individual=individual, mode='FACES'))
+        return self.socket_stack(nodes.ExtrudeMesh(mesh=self.data_socket, selection=self.selection, offset=offset, offset_scale=offset_scale, individual=individual, mode='FACES')).node
 
 
     def face_group_boundaries(self):
@@ -1675,6 +1701,8 @@ class Face(Domain):
         """
 
         > Node: [Mesh Island](GeometryNodeInputMeshIsland.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/mesh_island.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshIsland.html)
+
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeInputMeshIsland.webp)
 
         #### Returns:
         - node with sockets ['island_index', 'island_count']
@@ -1793,6 +1821,8 @@ class Face(Domain):
         """
 
         > Node: [Face Neighbors](GeometryNodeInputMeshFaceNeighbors.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/face_neighbors.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshFaceNeighbors.html)
+
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeInputMeshFaceNeighbors.webp)
 
         #### Returns:
         - node with sockets ['vertex_count', 'face_count']
@@ -1935,6 +1965,8 @@ class Face(Domain):
 
         > Node: [Separate Geometry](GeometryNodeSeparateGeometry.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/separate_geometry.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSeparateGeometry.html)
 
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeSeparateGeometry.webp)
+
         #### Returns:
         - node with sockets ['selection', 'inverted']
 
@@ -2076,6 +2108,8 @@ class Edge(Domain):
 
         > Node: [Edge Angle](GeometryNodeInputMeshEdgeAngle.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/edge_angle.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshEdgeAngle.html)
 
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeInputMeshEdgeAngle.webp)
+
         #### Returns:
         - node with sockets ['unsigned_angle', 'signed_angle']
 
@@ -2207,13 +2241,15 @@ class Edge(Domain):
         - offset_scale: Float
         - individual: Boolean
 
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeExtrudeMesh.webp)
+
         #### Returns:
-        - self
+        - node with sockets ['mesh', 'top', 'side']
 
 
         """
 
-        return self.socket_stack(nodes.ExtrudeMesh(mesh=self.data_socket, selection=self.selection, offset=offset, offset_scale=offset_scale, individual=individual, mode='EDGES'))
+        return self.socket_stack(nodes.ExtrudeMesh(mesh=self.data_socket, selection=self.selection, offset=offset, offset_scale=offset_scale, individual=individual, mode='EDGES')).node
 
 
     @property
@@ -2308,6 +2344,8 @@ class Edge(Domain):
 
         > Node: [Separate Geometry](GeometryNodeSeparateGeometry.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/separate_geometry.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSeparateGeometry.html)
 
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeSeparateGeometry.webp)
+
         #### Returns:
         - node with sockets ['selection', 'inverted']
 
@@ -2400,6 +2438,8 @@ class Edge(Domain):
 
         > Node: [Edge Vertices](GeometryNodeInputMeshEdgeVertices.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/edge_vertices.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshEdgeVertices.html)
 
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeInputMeshEdgeVertices.webp)
+
         #### Returns:
         - node with sockets ['vertex_index_1', 'vertex_index_2', 'position_1', 'position_2']
 
@@ -2417,6 +2457,8 @@ class Edge(Domain):
 
         > Node: [Edge Vertices](GeometryNodeInputMeshEdgeVertices.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/edge_vertices.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshEdgeVertices.html)
 
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeInputMeshEdgeVertices.webp)
+
         #### Returns:
         - node with sockets ['vertex_index_1', 'vertex_index_2', 'position_1', 'position_2']
 
@@ -2433,6 +2475,8 @@ class Edge(Domain):
         """
 
         > Node: [Edge Vertices](GeometryNodeInputMeshEdgeVertices.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/edge_vertices.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshEdgeVertices.html)
+
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeInputMeshEdgeVertices.webp)
 
         #### Returns:
         - node with sockets ['vertex_index_1', 'vertex_index_2', 'position_1', 'position_2']
@@ -2468,6 +2512,8 @@ class Corner(Domain):
 
         > Node: [Edges of Corner](GeometryNodeEdgesOfCorner.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh_topology/edges_of_corner.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeEdgesOfCorner.html)
 
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeEdgesOfCorner.webp)
+
         #### Returns:
         - node with sockets ['next_edge_index', 'previous_edge_index']
 
@@ -2481,6 +2527,8 @@ class Corner(Domain):
         """
 
         > Node: [Face of Corner](GeometryNodeFaceOfCorner.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh_topology/face_of_corner.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeFaceOfCorner.html)
+
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeFaceOfCorner.webp)
 
         #### Returns:
         - node with sockets ['face_index', 'index_in_face']
@@ -2691,6 +2739,8 @@ class Spline(Domain):
 
         > Node: [Spline Length](GeometryNodeSplineLength.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/spline_length.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSplineLength.html)
 
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeSplineLength.webp)
+
         #### Returns:
         - node with sockets ['length', 'point_count']
 
@@ -2774,6 +2824,8 @@ class Spline(Domain):
         #### Args:
         - weights: Float
         - sort_index: Integer
+
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodePointsOfCurve.webp)
 
         #### Returns:
         - node with sockets ['point_index', 'total']
@@ -2888,6 +2940,8 @@ class Spline(Domain):
         """
 
         > Node: [Separate Geometry](GeometryNodeSeparateGeometry.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/separate_geometry.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSeparateGeometry.html)
+
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeSeparateGeometry.webp)
 
         #### Returns:
         - node with sockets ['selection', 'inverted']
@@ -3093,6 +3147,8 @@ class ControlPoint(Domain):
 
         > Node: [Curve of Point](GeometryNodeCurveOfPoint.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve_topology/curve_of_point.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveOfPoint.html)
 
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeCurveOfPoint.webp)
+
         #### Returns:
         - node with sockets ['curve_index', 'index_in_curve']
 
@@ -3162,6 +3218,8 @@ class ControlPoint(Domain):
         #### Args:
         - relative: Boolean
 
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeInputCurveHandlePositions.webp)
+
         #### Returns:
         - node with sockets ['left', 'right']
 
@@ -3178,7 +3236,7 @@ class ControlPoint(Domain):
 
         #### Args:
         - handle_type (str): 'AUTO' in [FREE, AUTO, VECTOR, ALIGN]
-        - mode (set): {'RIGHT', 'LEFT'}
+        - mode (set): {'LEFT', 'RIGHT'}
 
         #### Returns:
         - node with sockets ['selection']
@@ -3198,7 +3256,7 @@ class ControlPoint(Domain):
 
         #### Args:
         - handle_type (str): 'AUTO' in [FREE, AUTO, VECTOR, ALIGN]
-        - mode (set): {'RIGHT', 'LEFT'}
+        - mode (set): {'LEFT', 'RIGHT'}
 
         #### Returns:
         - node with sockets ['selection']
@@ -3216,7 +3274,7 @@ class ControlPoint(Domain):
 
         #### Args:
         - handle_type (str): 'AUTO' in [FREE, AUTO, VECTOR, ALIGN]
-        - mode (set): {'RIGHT', 'LEFT'}
+        - mode (set): {'LEFT', 'RIGHT'}
 
         #### Returns:
         - node with sockets ['selection']
@@ -3234,7 +3292,7 @@ class ControlPoint(Domain):
 
         #### Args:
         - handle_type (str): 'AUTO' in [FREE, AUTO, VECTOR, ALIGN]
-        - mode (set): {'RIGHT', 'LEFT'}
+        - mode (set): {'LEFT', 'RIGHT'}
 
         #### Returns:
         - node with sockets ['selection']
@@ -3252,7 +3310,7 @@ class ControlPoint(Domain):
 
         #### Args:
         - handle_type (str): 'AUTO' in [FREE, AUTO, VECTOR, ALIGN]
-        - mode (set): {'RIGHT', 'LEFT'}
+        - mode (set): {'LEFT', 'RIGHT'}
 
         #### Returns:
         - node with sockets ['selection']
@@ -3263,14 +3321,14 @@ class ControlPoint(Domain):
         return self.handle_type_selection(left=left, right=right, handle_type='ALIGN')
 
 
-    def handle_type_selection_node(self, handle_type='AUTO', mode={'RIGHT', 'LEFT'}):
+    def handle_type_selection_node(self, handle_type='AUTO', mode={'LEFT', 'RIGHT'}):
         """
 
         > Node: [Handle Type Selection](GeometryNodeCurveHandleTypeSelection.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/handle_type_selection.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveHandleTypeSelection.html)
 
         #### Args:
         - handle_type (str): 'AUTO' in [FREE, AUTO, VECTOR, ALIGN]
-        - mode (set): {'RIGHT', 'LEFT'}
+        - mode (set): {'LEFT', 'RIGHT'}
 
         #### Returns:
         - socket `selection`
@@ -3315,6 +3373,8 @@ class ControlPoint(Domain):
         - point_up: Vector
         - point_group_id: Integer
         - max_neighbors: Integer
+
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeInterpolateCurves.webp)
 
         #### Returns:
         - node with sockets ['curves', 'closest_index', 'closest_weight']
@@ -3366,6 +3426,8 @@ class ControlPoint(Domain):
         #### Args:
         - offset: Integer
 
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeOffsetPointInCurve.webp)
+
         #### Returns:
         - node with sockets ['is_valid_offset', 'point_index']
 
@@ -3380,6 +3442,8 @@ class ControlPoint(Domain):
         """
 
         > Node: [Spline Parameter](GeometryNodeSplineParameter.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/spline_parameter.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSplineParameter.html)
+
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeSplineParameter.webp)
 
         #### Returns:
         - node with sockets ['factor', 'length', 'index']
@@ -3532,6 +3596,8 @@ class ControlPoint(Domain):
 
         > Node: [Separate Geometry](GeometryNodeSeparateGeometry.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/separate_geometry.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSeparateGeometry.html)
 
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeSeparateGeometry.webp)
+
         #### Returns:
         - node with sockets ['selection', 'inverted']
 
@@ -3605,7 +3671,7 @@ class ControlPoint(Domain):
         - curve: Curve
         - selection: Boolean
         - handle_type (str): 'AUTO' in [FREE, AUTO, VECTOR, ALIGN]
-        - mode (set): {'RIGHT', 'LEFT'}
+        - mode (set): {'LEFT', 'RIGHT'}
 
         #### Returns:
         - node with sockets ['curve']
@@ -3618,14 +3684,14 @@ class ControlPoint(Domain):
         return self.set_handle_type_node(handle_type=handle_type, mode=mode)
 
 
-    def set_handle_type_node(self, handle_type='AUTO', mode={'RIGHT', 'LEFT'}):
+    def set_handle_type_node(self, handle_type='AUTO', mode={'LEFT', 'RIGHT'}):
         """
 
         > Node: [Set Handle Type](GeometryNodeCurveSetHandles.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/set_handle_type.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveSetHandles.html)
 
         #### Args:
         - handle_type (str): 'AUTO' in [FREE, AUTO, VECTOR, ALIGN]
-        - mode (set): {'RIGHT', 'LEFT'}
+        - mode (set): {'LEFT', 'RIGHT'}
 
         #### Returns:
         - self
@@ -3804,6 +3870,8 @@ class CloudPoint(Domain):
         - point_up: Vector
         - point_group_id: Integer
         - max_neighbors: Integer
+
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeInterpolateCurves.webp)
 
         #### Returns:
         - node with sockets ['curves', 'closest_index', 'closest_weight']
@@ -4057,6 +4125,8 @@ class Instance(Domain):
         """
 
         > Node: [Separate Geometry](GeometryNodeSeparateGeometry.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/separate_geometry.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSeparateGeometry.html)
+
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeSeparateGeometry.webp)
 
         #### Returns:
         - node with sockets ['selection', 'inverted']

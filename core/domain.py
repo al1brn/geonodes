@@ -256,6 +256,13 @@ class Domain:
             DataSocket
         """
         return self if self._data_socket is None else self._data_socket
+    
+    # ----------------------------------------------------------------------------------------------------
+    # Node
+    
+    @property
+    def node(self):
+        return self.data_socket.node
         
     # ----------------------------------------------------------------------------------------------------
     # Return bool selection

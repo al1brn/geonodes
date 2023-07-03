@@ -34,7 +34,7 @@ class Simulation:
         tree.og = simul.out_node.geometry   
     """
     
-    def __init__(self, geometry=None, **kwargs):
+    def __init__(self, geometry, **kwargs):
         
         import geonodes as gn
         
@@ -47,21 +47,20 @@ class Simulation:
         # ----- Create the simulation state items
         
         for name, value in kwargs.items():
-            if name.lower() != 'geometry':
-                if isinstance(value, bool):
-                    socket = gn.Boolean(value)
-                elif isinstance(value, int):
-                    socket = gn.Integer(value)
-                elif isinstance(value, float):
-                    socket = gn.Float(value)
-                elif isinstance(value, str):
-                    socket = gn.String(value)
-                elif isinstance(value, tuple):
-                    socket = gn.Vector(value)
-                else:
-                    socket = value
+            if isinstance(value, bool):
+                socket = gn.Boolean(value)
+            elif isinstance(value, int):
+                socket = gn.Integer(value)
+            elif isinstance(value, float):
+                socket = gn.Float(value)
+            elif isinstance(value, str):
+                socket = gn.String(value)
+            elif isinstance(value, tuple):
+                socket = gn.Vector(value)
+            else:
+                socket = value
                 
-                self.output.bnode.state_items.new(socket_type=socket.base_data_type, name=name.capitalize())
+            self.output.bnode.state_items.new(socket_type=socket.base_data_type, name=name.capitalize())
             
         # ----- Update in and out sockets dynamically created
         

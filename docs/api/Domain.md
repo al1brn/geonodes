@@ -259,6 +259,8 @@ Node implemented as property setter.
 - position: Vector
 - group_id: Integer
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeIndexOfNearest.webp)
+
 #### Returns:
 - node with sockets ['index', 'has_neighbor']
 
@@ -467,6 +469,8 @@ def accumulate_field(self, value=None, group_id=None)
 - value: ['Vector', 'Float', 'Integer']
 - group_id: Integer
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeAccumulateField.webp)
+
 #### Returns:
 - node with sockets ['leading', 'trailing', 'total']
 
@@ -631,6 +635,8 @@ def attribute_statistic(self, attribute=None)
 
 #### Args:
 - attribute: ['Float', 'Vector']
+
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeAttributeStatistic.webp)
 
 #### Returns:
 - node with sockets ['mean', 'median', 'sum', 'min', 'max', 'range', 'standard_deviation', 'variance']

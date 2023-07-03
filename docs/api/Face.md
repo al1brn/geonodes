@@ -232,6 +232,8 @@ Node implemented as property setter.
 - position: Vector
 - group_id: Integer
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeIndexOfNearest.webp)
+
 #### Returns:
 - node with sockets ['index', 'has_neighbor']
 
@@ -247,6 +249,8 @@ Node implemented as property setter.
 
 
 > Node: [Mesh Island](GeometryNodeInputMeshIsland.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/mesh_island.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshIsland.html)
+
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeInputMeshIsland.webp)
 
 #### Returns:
 - node with sockets ['island_index', 'island_count']
@@ -362,6 +366,8 @@ Node implemented as property setter.
 
 
 > Node: [Face Neighbors](GeometryNodeInputMeshFaceNeighbors.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/face_neighbors.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshFaceNeighbors.html)
+
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeInputMeshFaceNeighbors.webp)
 
 #### Returns:
 - node with sockets ['vertex_count', 'face_count']
@@ -636,6 +642,8 @@ def accumulate_field(self, value=None, group_id=None)
 - value: ['Vector', 'Float', 'Integer']
 - group_id: Integer
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeAccumulateField.webp)
+
 #### Returns:
 - node with sockets ['leading', 'trailing', 'total']
 
@@ -800,6 +808,8 @@ def attribute_statistic(self, attribute=None)
 
 #### Args:
 - attribute: ['Float', 'Vector']
+
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeAttributeStatistic.webp)
 
 #### Returns:
 - node with sockets ['mean', 'median', 'sum', 'min', 'max', 'range', 'standard_deviation', 'variance']
@@ -1042,6 +1052,8 @@ def corners(self, weights=None, sort_index=None)
 - weights: Float
 - sort_index: Integer
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeCornersOfFace.webp)
+
 #### Returns:
 - node with sockets ['corner_index', 'total']
 
@@ -1200,6 +1212,8 @@ def distribute_points_poisson(self, distance_min=None, density_max=None, density
 - seed: Integer
 - use_legacy_normal (bool): False
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeDistributePointsOnFaces.webp)
+
 #### Returns:
 - node with sockets ['points', 'normal', 'rotation']
 
@@ -1224,6 +1238,8 @@ def distribute_points_random(self, density=None, seed=None, use_legacy_normal=Fa
 - density: Float
 - seed: Integer
 - use_legacy_normal (bool): False
+
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeDistributePointsOnFaces.webp)
 
 #### Returns:
 - node with sockets ['points', 'normal', 'rotation']
@@ -1297,8 +1313,10 @@ def extrude(self, offset=None, offset_scale=None, individual=None)
 - offset_scale: Float
 - individual: Boolean
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeExtrudeMesh.webp)
+
 #### Returns:
-- self
+- node with sockets ['mesh', 'top', 'side']
 
 
 
@@ -1810,6 +1828,8 @@ def separate(self)
 
 
 > Node: [Separate Geometry](GeometryNodeSeparateGeometry.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/separate_geometry.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSeparateGeometry.html)
+
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeSeparateGeometry.webp)
 
 #### Returns:
 - node with sockets ['selection', 'inverted']

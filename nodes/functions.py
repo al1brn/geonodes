@@ -577,6 +577,8 @@ def color_ramp(fac=None):
     #### Args:
     - fac: Float
 
+    ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeValToRGB.webp)
+
     #### Returns:
     - node with sockets ['color', 'alpha']
 
@@ -1589,6 +1591,8 @@ def separate_hsl(color=None):
     #### Args:
     - color: Color
 
+    ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_FunctionNodeSeparateColor.webp)
+
     #### Returns:
     - node with sockets ['red', 'green', 'blue', 'alpha']
 
@@ -1606,6 +1610,8 @@ def separate_hsv(color=None):
     #### Args:
     - color: Color
 
+    ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_FunctionNodeSeparateColor.webp)
+
     #### Returns:
     - node with sockets ['red', 'green', 'blue', 'alpha']
 
@@ -1622,6 +1628,8 @@ def separate_rgb(color=None):
 
     #### Args:
     - color: Color
+
+    ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_FunctionNodeSeparateColor.webp)
 
     #### Returns:
     - node with sockets ['red', 'green', 'blue', 'alpha']
@@ -1834,6 +1842,8 @@ def string_to_curves(string=None, size=None, character_spacing=None, word_spacin
     - align_y (str): 'TOP_BASELINE' in [TOP, TOP_BASELINE, MIDDLE, BOTTOM_BASELINE, BOTTOM]
     - overflow (str): 'OVERFLOW' in [OVERFLOW, SCALE_TO_FIT, TRUNCATE]
     - pivot_mode (str): 'BOTTOM_LEFT' in [MIDPOINT, TOP_LEFT, TOP_CENTER,... , BOTTOM_LEFT, BOTTOM_CENTER, BOTTOM_RIGHT]
+
+    ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeStringToCurves.webp)
 
     #### Returns:
     - node with sockets ['curve_instances', 'remainder', 'line', 'pivot_point']

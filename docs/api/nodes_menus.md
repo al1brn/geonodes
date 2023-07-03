@@ -428,17 +428,17 @@
 
 | node | class | method name |
 |------|-------|-------------|
-| [Brick Texture](ShaderNodeTexBrick.md) | [Texture](Texture.md) | [brick](Texture.md#brick) |
-| [Checker Texture](ShaderNodeTexChecker.md) | [Texture](Texture.md) | [checker](Texture.md#checker) |
-| [Gradient Texture](ShaderNodeTexGradient.md) | [Texture](Texture.md) | [gradient](Texture.md#gradient) / [gradient_linear](Texture.md#gradient_linear) / [gradient_quadratic](Texture.md#gradient_quadratic) / [gradient_easing](Texture.md#gradient_easing) / [gradient_diagonal](Texture.md#gradient_diagonal) / [gradient_spherical](Texture.md#gradient_spherical) / [gradient_quadratic_sphere](Texture.md#gradient_quadratic_sphere) / [gradient_radial](Texture.md#gradient_radial) / |
+| [Brick Texture](ShaderNodeTexBrick.md) | [Texture](Texture.md) | [Brick](Texture.md#Brick) |
+| [Checker Texture](ShaderNodeTexChecker.md) | [Texture](Texture.md) | [Checker](Texture.md#Checker) |
+| [Gradient Texture](ShaderNodeTexGradient.md) | [Texture](Texture.md) | [Gradient](Texture.md#Gradient) / [GradientLinear](Texture.md#GradientLinear) / [GradientQuadratic](Texture.md#GradientQuadratic) / [GradientEeasing](Texture.md#GradientEeasing) / [GradientDiagonal](Texture.md#GradientDiagonal) / [GradientSpherical](Texture.md#GradientSpherical) / [GradientQuadratic_sphere](Texture.md#GradientQuadratic_sphere) / [GradientRadial](Texture.md#GradientRadial) / |
 | [Image Texture](GeometryNodeImageTexture.md) | [Image](Image.md) | [texture](Image.md#texture) |
-|      | [Texture](Texture.md) | [image](Texture.md#image) |
-| [Magic Texture](ShaderNodeTexMagic.md) | [Texture](Texture.md) | [magic](Texture.md#magic) |
-| [Musgrave Texture](ShaderNodeTexMusgrave.md) | [Texture](Texture.md) | [musgrave](Texture.md#musgrave) |
-| [Noise Texture](ShaderNodeTexNoise.md) | [Texture](Texture.md) | [noise](Texture.md#noise) / [noise_1D](Texture.md#noise_1D) / [noise_2D](Texture.md#noise_2D) / [noise_3D](Texture.md#noise_3D) / [noise_4D](Texture.md#noise_4D) / |
-| [Voronoi Texture](ShaderNodeTexVoronoi.md) | [Texture](Texture.md) | [voronoi](Texture.md#voronoi) / [voronoi_1D](Texture.md#voronoi_1D) / [voronoi_2D](Texture.md#voronoi_2D) / [voronoi_3D](Texture.md#voronoi_3D) / [voronoi_4D](Texture.md#voronoi_4D) / |
-| [Wave Texture](ShaderNodeTexWave.md) | [Texture](Texture.md) | [wave](Texture.md#wave) / [wave_bands](Texture.md#wave_bands) / [wave_rings](Texture.md#wave_rings) / [wave_bands_sine](Texture.md#wave_bands_sine) / [wave_bands_saw](Texture.md#wave_bands_saw) / [wave_bands_triangle](Texture.md#wave_bands_triangle) / [wave_rings_sine](Texture.md#wave_rings_sine) / [wave_rings_saw](Texture.md#wave_rings_saw) / [wave_rings_triangle](Texture.md#wave_rings_triangle) / |
-| [White Noise Texture](ShaderNodeTexWhiteNoise.md) | [Texture](Texture.md) | [white_noise](Texture.md#white_noise) / [white_noise_1D](Texture.md#white_noise_1D) / [white_noise_2D](Texture.md#white_noise_2D) / [white_noise_3D](Texture.md#white_noise_3D) / [white_noise_4D](Texture.md#white_noise_4D) / |
+|      | [Texture](Texture.md) | [Image](Texture.md#Image) |
+| [Magic Texture](ShaderNodeTexMagic.md) | [Texture](Texture.md) | [Magic](Texture.md#Magic) |
+| [Musgrave Texture](ShaderNodeTexMusgrave.md) | [Texture](Texture.md) | [Musgrave](Texture.md#Musgrave) |
+| [Noise Texture](ShaderNodeTexNoise.md) | [Texture](Texture.md) | [Noise](Texture.md#Noise) / [Noise1D](Texture.md#Noise1D) / [Noise2D](Texture.md#Noise2D) / [Noise3D](Texture.md#Noise3D) / [Noise4D](Texture.md#Noise4D) / |
+| [Voronoi Texture](ShaderNodeTexVoronoi.md) | [Texture](Texture.md) | [Voronoi](Texture.md#Voronoi) / [Voronoi1D](Texture.md#Voronoi1D) / [Voronoi2D](Texture.md#Voronoi2D) / [Voronoi3D](Texture.md#Voronoi3D) / [Voronoi4D](Texture.md#Voronoi4D) / |
+| [Wave Texture](ShaderNodeTexWave.md) | [Texture](Texture.md) | [Wave](Texture.md#Wave) / [WaveBands](Texture.md#WaveBands) / [WaveRings](Texture.md#WaveRings) / [WaveBands_sine](Texture.md#WaveBands_sine) / [WaveBands_saw](Texture.md#WaveBands_saw) / [WaveBands_triangle](Texture.md#WaveBands_triangle) / [WaveRings_sine](Texture.md#WaveRings_sine) / [WaveRings_saw](Texture.md#WaveRings_saw) / [WaveRings_triangle](Texture.md#WaveRings_triangle) / |
+| [White Noise Texture](ShaderNodeTexWhiteNoise.md) | [Texture](Texture.md) | [WhiteNoise](Texture.md#WhiteNoise) / [WhiteNoise1D](Texture.md#WhiteNoise1D) / [WhiteNoise2D](Texture.md#WhiteNoise2D) / [WhiteNoise3D](Texture.md#WhiteNoise3D) / [WhiteNoise4D](Texture.md#WhiteNoise4D) / |
 
 <sub>Go to [top](#nodes-menus) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

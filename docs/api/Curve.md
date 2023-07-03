@@ -151,6 +151,8 @@ elf.points = Vertex(self) # Initialized before super().__init__ which can overri
 
 > Node: [Domain Size](GeometryNodeAttributeDomainSize.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html)
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeAttributeDomainSize.webp)
+
 #### Returns:
 - node with sockets ['point_count', 'edge_count', 'face_count', 'face_corner_count', 'spline_count', 'instance_count']
 
@@ -186,6 +188,8 @@ elf.points = Vertex(self) # Initialized before super().__init__ which can overri
 #### Args:
 - position: Vector
 - group_id: Integer
+
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeIndexOfNearest.webp)
 
 #### Returns:
 - node with sockets ['index', 'has_neighbor']
@@ -363,6 +367,8 @@ elf.points = Vertex(self) # Initialized before super().__init__ which can overri
 
 > Node: [Separate Components](GeometryNodeSeparateComponents.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/separate_components.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSeparateComponents.html)
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeSeparateComponents.webp)
+
 #### Returns:
 - node with sockets ['mesh', 'curve', 'point_cloud', 'volume', 'instances']
 
@@ -472,6 +478,8 @@ def ArcFromPoints(cls, resolution=None, start=None, middle=None, end=None, offse
 - connect_center: Boolean
 - invert_arc: Boolean
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeCurveArc.webp)
+
 #### Returns:
 - node with sockets ['curve', 'center', 'normal', 'radius']
 
@@ -552,6 +560,8 @@ def CircleFromPoints(resolution=None, point_1=None, point_2=None, point_3=None)
 - point_1: Vector
 - point_2: Vector
 - point_3: Vector
+
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeCurvePrimitiveCircle.webp)
 
 #### Returns:
 - node with sockets ['curve', 'center']
@@ -786,6 +796,8 @@ def Star(cls, points=None, inner_radius=None, outer_radius=None, twist=None)
 - outer_radius: Float
 - twist: Float
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeCurveStar.webp)
+
 #### Returns:
 - node with sockets ['curve', 'outer_points']
 
@@ -812,6 +824,8 @@ def capture_attribute_node(geometry=None, value=None, data_type='FLOAT', domain=
 - value: ['Vector', 'Float', 'Color', 'Boolean', 'Integer']
 - data_type (str): 'FLOAT' in [FLOAT, INT, FLOAT_VECTOR, FLOAT_COLOR, BOOLEAN]
 - domain (str): 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeCaptureAttribute.webp)
 
 #### Returns:
 - node with sockets ['geometry', 'attribute']
@@ -947,6 +961,8 @@ def attribute_statistic(self, selection=None, attribute=None, domain='POINT')
 - attribute: ['Float', 'Vector']
 - domain (str): 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeAttributeStatistic.webp)
+
 #### Returns:
 - node with sockets ['mean', 'median', 'sum', 'min', 'max', 'range', 'standard_deviation', 'variance']
 
@@ -993,6 +1009,8 @@ def curve_of_point(self, point_index=None)
 
 #### Args:
 - point_index: Integer
+
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeCurveOfPoint.webp)
 
 #### Returns:
 - node with sockets ['curve_index', 'index_in_curve']
@@ -1317,6 +1335,8 @@ def interpolate(self, guide_up=None, guide_group_id=None, points=None, point_up=
 - point_group_id: Integer
 - max_neighbors: Integer
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeInterpolateCurves.webp)
+
 #### Returns:
 - node with sockets ['curves', 'closest_index', 'closest_weight']
 
@@ -1599,6 +1619,8 @@ def offset_point(self, point_index=None, offset=None)
 - point_index: Integer
 - offset: Integer
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeOffsetPointInCurve.webp)
+
 #### Returns:
 - node with sockets ['is_valid_offset', 'point_index']
 
@@ -1623,6 +1645,8 @@ def points_of_curve(self, curve_index=None, weights=None, sort_index=None)
 - curve_index: Integer
 - weights: Float
 - sort_index: Integer
+
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodePointsOfCurve.webp)
 
 #### Returns:
 - node with sockets ['point_index', 'total']
@@ -1749,6 +1773,8 @@ def raycast(self, target_geometry=None, attribute=None, source_position=None, ra
 - ray_length: Float
 - mapping (str): 'INTERPOLATED' in [INTERPOLATED, NEAREST]
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeRaycast.webp)
+
 #### Returns:
 - node with sockets ['is_hit', 'hit_position', 'hit_normal', 'hit_distance', 'attribute']
 
@@ -1776,6 +1802,8 @@ def raycast_interpolated(self, target_geometry=None, attribute=None, source_posi
 - ray_direction: Vector
 - ray_length: Float
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeRaycast.webp)
+
 #### Returns:
 - node with sockets ['is_hit', 'hit_position', 'hit_normal', 'hit_distance', 'attribute']
 
@@ -1802,6 +1830,8 @@ def raycast_nearest(self, target_geometry=None, attribute=None, source_position=
 - source_position: Vector
 - ray_direction: Vector
 - ray_length: Float
+
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeRaycast.webp)
 
 #### Returns:
 - node with sockets ['is_hit', 'hit_position', 'hit_normal', 'hit_distance', 'attribute']
@@ -1999,8 +2029,10 @@ def sample(self, value=None, factor=None, length=None, curve_index=None, data_ty
 - mode (str): 'FACTOR' in [FACTOR, LENGTH]
 - use_all_curves (bool): False
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeSampleCurve.webp)
+
 #### Returns:
-- self
+- node with sockets ['value', 'position', 'tangent', 'normal']
 
 
 
@@ -2072,6 +2104,8 @@ def separate(self, selection=None, domain='POINT')
 #### Args:
 - selection: Boolean
 - domain (str): 'POINT' in [POINT, EDGE, FACE, CURVE, INSTANCE]
+
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeSeparateGeometry.webp)
 
 #### Returns:
 - node with sockets ['selection', 'inverted']
@@ -2448,6 +2482,8 @@ def to_points(self, count=None, length=None, mode='COUNT')
 - length: Float
 - mode (str): 'COUNT' in [EVALUATED, COUNT, LENGTH]
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeCurveToPoints.webp)
+
 #### Returns:
 - node with sockets ['points', 'tangent', 'normal', 'rotation']
 
@@ -2471,6 +2507,8 @@ def to_points_count(self, count=None)
 #### Args:
 - count: Integer
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeCurveToPoints.webp)
+
 #### Returns:
 - node with sockets ['points', 'tangent', 'normal', 'rotation']
 
@@ -2490,6 +2528,8 @@ def to_points_evaluated(self)
 
 
 > Node: [Curve to Points](GeometryNodeCurveToPoints.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/curve_to_points.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveToPoints.html)
+
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeCurveToPoints.webp)
 
 #### Returns:
 - node with sockets ['points', 'tangent', 'normal', 'rotation']
@@ -2513,6 +2553,8 @@ def to_points_length(self, length=None)
 
 #### Args:
 - length: Float
+
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeCurveToPoints.webp)
 
 #### Returns:
 - node with sockets ['points', 'tangent', 'normal', 'rotation']

@@ -171,6 +171,8 @@ elf.points = Vertex(self) # Initialized before super().__init__ which can overri
 
 > Node: [Domain Size](GeometryNodeAttributeDomainSize.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html)
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeAttributeDomainSize.webp)
+
 #### Returns:
 - node with sockets ['point_count', 'edge_count', 'face_count', 'face_corner_count', 'spline_count', 'instance_count']
 
@@ -239,6 +241,8 @@ elf.points = Vertex(self) # Initialized before super().__init__ which can overri
 - position: Vector
 - group_id: Integer
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeIndexOfNearest.webp)
+
 #### Returns:
 - node with sockets ['index', 'has_neighbor']
 
@@ -286,6 +290,8 @@ elf.points = Vertex(self) # Initialized before super().__init__ which can overri
 
 
 > Node: [Mesh Island](GeometryNodeInputMeshIsland.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/mesh_island.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshIsland.html)
+
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeInputMeshIsland.webp)
 
 #### Returns:
 - node with sockets ['island_index', 'island_count']
@@ -447,6 +453,8 @@ elf.points = Vertex(self) # Initialized before super().__init__ which can overri
 
 > Node: [Separate Components](GeometryNodeSeparateComponents.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/separate_components.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSeparateComponents.html)
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeSeparateComponents.webp)
+
 #### Returns:
 - node with sockets ['mesh', 'curve', 'point_cloud', 'volume', 'instances']
 
@@ -564,6 +572,8 @@ def Cone(vertices=None, side_segments=None, fill_segments=None, radius_top=None,
 - depth: Float
 - fill_type (str): 'NGON' in [NONE, NGON, TRIANGLE_FAN]
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeMeshCone.webp)
+
 #### Returns:
 - node with sockets ['mesh', 'top', 'bottom', 'side', 'uv_map']
 
@@ -590,6 +600,8 @@ def Cube(cls, size=None, vertices_x=None, vertices_y=None, vertices_z=None)
 - vertices_x: Integer
 - vertices_y: Integer
 - vertices_z: Integer
+
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeMeshCube.webp)
 
 #### Returns:
 - node with sockets ['mesh', 'uv_map']
@@ -619,6 +631,8 @@ def Cylinder(vertices=None, side_segments=None, fill_segments=None, radius=None,
 - radius: Float
 - depth: Float
 - fill_type (str): 'NGON' in [NONE, NGON, TRIANGLE_FAN]
+
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeMeshCylinder.webp)
 
 #### Returns:
 - node with sockets ['mesh', 'top', 'side', 'bottom', 'uv_map']
@@ -660,6 +674,8 @@ def Grid(cls, size_x=None, size_y=None, vertices_x=None, vertices_y=None)
 - vertices_x: Integer
 - vertices_y: Integer
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeMeshGrid.webp)
+
 #### Returns:
 - node with sockets ['mesh', 'uv_map']
 
@@ -684,6 +700,8 @@ def IcoSphere(cls, radius=None, subdivisions=None)
 #### Args:
 - radius: Float
 - subdivisions: Integer
+
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeMeshIcoSphere.webp)
 
 #### Returns:
 - node with sockets ['mesh', 'uv_map']
@@ -842,6 +860,8 @@ def UVSphere(cls, segments=None, rings=None, radius=None)
 - rings: Integer
 - radius: Float
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeMeshUVSphere.webp)
+
 #### Returns:
 - node with sockets ['mesh', 'uv_map']
 
@@ -868,6 +888,8 @@ def capture_attribute_node(geometry=None, value=None, data_type='FLOAT', domain=
 - value: ['Vector', 'Float', 'Color', 'Boolean', 'Integer']
 - data_type (str): 'FLOAT' in [FLOAT, INT, FLOAT_VECTOR, FLOAT_COLOR, BOOLEAN]
 - domain (str): 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeCaptureAttribute.webp)
 
 #### Returns:
 - node with sockets ['geometry', 'attribute']
@@ -1003,6 +1025,8 @@ def attribute_statistic(self, selection=None, attribute=None, domain='POINT')
 - attribute: ['Float', 'Vector']
 - domain (str): 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeAttributeStatistic.webp)
+
 #### Returns:
 - node with sockets ['mean', 'median', 'sum', 'min', 'max', 'range', 'standard_deviation', 'variance']
 
@@ -1127,6 +1151,8 @@ def corners_of_face(self, face_index=None, weights=None, sort_index=None)
 - weights: Float
 - sort_index: Integer
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeCornersOfFace.webp)
+
 #### Returns:
 - node with sockets ['corner_index', 'total']
 
@@ -1151,6 +1177,8 @@ def corners_of_vertex(self, vertex_index=None, weights=None, sort_index=None)
 - vertex_index: Integer
 - weights: Float
 - sort_index: Integer
+
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeCornersOfVertex.webp)
 
 #### Returns:
 - node with sockets ['corner_index', 'total']
@@ -1279,6 +1307,8 @@ def distribute_points_on_faces(self, selection=None, distance_min=None, density_
 - distribute_method (str): 'RANDOM' in [RANDOM, POISSON]
 - use_legacy_normal (bool): False
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeDistributePointsOnFaces.webp)
+
 #### Returns:
 - node with sockets ['points', 'normal', 'rotation']
 
@@ -1398,6 +1428,8 @@ def edges_of_corner(self, corner_index=None)
 #### Args:
 - corner_index: Integer
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeEdgesOfCorner.webp)
+
 #### Returns:
 - node with sockets ['next_edge_index', 'previous_edge_index']
 
@@ -1422,6 +1454,8 @@ def edges_of_vertex(self, vertex_index=None, weights=None, sort_index=None)
 - vertex_index: Integer
 - weights: Float
 - sort_index: Integer
+
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeEdgesOfVertex.webp)
 
 #### Returns:
 - node with sockets ['edge_index', 'total']
@@ -1498,8 +1532,10 @@ def extrude(self, selection=None, offset=None, offset_scale=None, individual=Non
 - individual: Boolean
 - mode (str): 'FACES' in [VERTICES, EDGES, FACES]
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeExtrudeMesh.webp)
+
 #### Returns:
-- self
+- node with sockets ['mesh', 'top', 'side']
 
 
 
@@ -1543,6 +1579,8 @@ def face_of_corner(self, corner_index=None)
 
 #### Args:
 - corner_index: Integer
+
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeFaceOfCorner.webp)
 
 #### Returns:
 - node with sockets ['face_index', 'index_in_face']
@@ -2105,6 +2143,8 @@ def raycast(self, target_geometry=None, attribute=None, source_position=None, ra
 - ray_length: Float
 - mapping (str): 'INTERPOLATED' in [INTERPOLATED, NEAREST]
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeRaycast.webp)
+
 #### Returns:
 - node with sockets ['is_hit', 'hit_position', 'hit_normal', 'hit_distance', 'attribute']
 
@@ -2132,6 +2172,8 @@ def raycast_interpolated(self, target_geometry=None, attribute=None, source_posi
 - ray_direction: Vector
 - ray_length: Float
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeRaycast.webp)
+
 #### Returns:
 - node with sockets ['is_hit', 'hit_position', 'hit_normal', 'hit_distance', 'attribute']
 
@@ -2158,6 +2200,8 @@ def raycast_nearest(self, target_geometry=None, attribute=None, source_position=
 - source_position: Vector
 - ray_direction: Vector
 - ray_length: Float
+
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeRaycast.webp)
 
 #### Returns:
 - node with sockets ['is_hit', 'hit_position', 'hit_normal', 'hit_distance', 'attribute']
@@ -2305,6 +2349,8 @@ def sample_uv_surface(self, value=None, source_uv_map=None, sample_uv=None)
 - source_uv_map: Vector
 - sample_uv: Vector
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeSampleUVSurface.webp)
+
 #### Returns:
 - node with sockets ['value', 'is_valid']
 
@@ -2409,6 +2455,8 @@ def separate(self, selection=None, domain='POINT')
 #### Args:
 - selection: Boolean
 - domain (str): 'POINT' in [POINT, EDGE, FACE, CURVE, INSTANCE]
+
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeSeparateGeometry.webp)
 
 #### Returns:
 - node with sockets ['selection', 'inverted']
@@ -2554,6 +2602,8 @@ def shortest_edge_paths(self, end_vertex=None, edge_cost=None)
 #### Args:
 - end_vertex: Boolean
 - edge_cost: Float
+
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeInputShortestEdgePaths.webp)
 
 #### Returns:
 - node with sockets ['next_vertex_index', 'total_cost']

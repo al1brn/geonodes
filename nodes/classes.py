@@ -49,6 +49,8 @@ class Geometry(geosocks.Geometry):
         - attribute: ['Float', 'Vector']
         - domain (str): 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
 
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeAttributeStatistic.webp)
+
         #### Returns:
         - node with sockets ['mean', 'median', 'sum', 'min', 'max', 'range', 'standard_deviation', 'variance']
 
@@ -142,6 +144,8 @@ class Geometry(geosocks.Geometry):
         - data_type (str): 'FLOAT' in [FLOAT, INT, FLOAT_VECTOR, FLOAT_COLOR, BOOLEAN]
         - domain (str): 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
 
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeCaptureAttribute.webp)
+
         #### Returns:
         - node with sockets ['geometry', 'attribute']
 
@@ -209,6 +213,8 @@ class Geometry(geosocks.Geometry):
         """
 
         > Node: [Domain Size](GeometryNodeAttributeDomainSize.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html)
+
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeAttributeDomainSize.webp)
 
         #### Returns:
         - node with sockets ['point_count', 'edge_count', 'face_count', 'face_corner_count', 'spline_count', 'instance_count']
@@ -284,6 +290,8 @@ class Geometry(geosocks.Geometry):
         #### Args:
         - position: Vector
         - group_id: Integer
+
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeIndexOfNearest.webp)
 
         #### Returns:
         - node with sockets ['index', 'has_neighbor']
@@ -787,6 +795,8 @@ class Geometry(geosocks.Geometry):
         - ray_length: Float
         - mapping (str): 'INTERPOLATED' in [INTERPOLATED, NEAREST]
 
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeRaycast.webp)
+
         #### Returns:
         - node with sockets ['is_hit', 'hit_position', 'hit_normal', 'hit_distance', 'attribute']
 
@@ -809,6 +819,8 @@ class Geometry(geosocks.Geometry):
         - ray_direction: Vector
         - ray_length: Float
 
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeRaycast.webp)
+
         #### Returns:
         - node with sockets ['is_hit', 'hit_position', 'hit_normal', 'hit_distance', 'attribute']
 
@@ -830,6 +842,8 @@ class Geometry(geosocks.Geometry):
         - source_position: Vector
         - ray_direction: Vector
         - ray_length: Float
+
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeRaycast.webp)
 
         #### Returns:
         - node with sockets ['is_hit', 'hit_position', 'hit_normal', 'hit_distance', 'attribute']
@@ -924,6 +938,8 @@ class Geometry(geosocks.Geometry):
         - selection: Boolean
         - domain (str): 'POINT' in [POINT, EDGE, FACE, CURVE, INSTANCE]
 
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeSeparateGeometry.webp)
+
         #### Returns:
         - node with sockets ['selection', 'inverted']
 
@@ -938,6 +954,8 @@ class Geometry(geosocks.Geometry):
         """
 
         > Node: [Separate Components](GeometryNodeSeparateComponents.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/separate_components.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSeparateComponents.html)
+
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeSeparateComponents.webp)
 
         #### Returns:
         - node with sockets ['mesh', 'curve', 'point_cloud', 'volume', 'instances']
@@ -1309,6 +1327,8 @@ class Mesh(Geometry):
         - depth: Float
         - fill_type (str): 'NGON' in [NONE, NGON, TRIANGLE_FAN]
 
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeMeshCone.webp)
+
         #### Returns:
         - node with sockets ['mesh', 'top', 'bottom', 'side', 'uv_map']
 
@@ -1329,6 +1349,8 @@ class Mesh(Geometry):
         - vertices_x: Integer
         - vertices_y: Integer
         - vertices_z: Integer
+
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeMeshCube.webp)
 
         #### Returns:
         - node with sockets ['mesh', 'uv_map']
@@ -1353,6 +1375,8 @@ class Mesh(Geometry):
         - depth: Float
         - fill_type (str): 'NGON' in [NONE, NGON, TRIANGLE_FAN]
 
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeMeshCylinder.webp)
+
         #### Returns:
         - node with sockets ['mesh', 'top', 'side', 'bottom', 'uv_map']
 
@@ -1374,6 +1398,8 @@ class Mesh(Geometry):
         - vertices_x: Integer
         - vertices_y: Integer
 
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeMeshGrid.webp)
+
         #### Returns:
         - node with sockets ['mesh', 'uv_map']
 
@@ -1392,6 +1418,8 @@ class Mesh(Geometry):
         #### Args:
         - radius: Float
         - subdivisions: Integer
+
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeMeshIcoSphere.webp)
 
         #### Returns:
         - node with sockets ['mesh', 'uv_map']
@@ -1496,6 +1524,8 @@ class Mesh(Geometry):
         - rings: Integer
         - radius: Float
 
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeMeshUVSphere.webp)
+
         #### Returns:
         - node with sockets ['mesh', 'uv_map']
 
@@ -1593,6 +1623,8 @@ class Mesh(Geometry):
         - weights: Float
         - sort_index: Integer
 
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeCornersOfFace.webp)
+
         #### Returns:
         - node with sockets ['corner_index', 'total']
 
@@ -1611,6 +1643,8 @@ class Mesh(Geometry):
         - vertex_index: Integer
         - weights: Float
         - sort_index: Integer
+
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeCornersOfVertex.webp)
 
         #### Returns:
         - node with sockets ['corner_index', 'total']
@@ -1690,6 +1724,8 @@ class Mesh(Geometry):
         - distribute_method (str): 'RANDOM' in [RANDOM, POISSON]
         - use_legacy_normal (bool): False
 
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeDistributePointsOnFaces.webp)
+
         #### Returns:
         - node with sockets ['points', 'normal', 'rotation']
 
@@ -1704,6 +1740,8 @@ class Mesh(Geometry):
         """
 
         > Node: [Domain Size](GeometryNodeAttributeDomainSize.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html)
+
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeAttributeDomainSize.webp)
 
         #### Returns:
         - node with sockets ['point_count', 'edge_count', 'face_count', 'face_corner_count', 'spline_count', 'instance_count']
@@ -1796,6 +1834,8 @@ class Mesh(Geometry):
         #### Args:
         - corner_index: Integer
 
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeEdgesOfCorner.webp)
+
         #### Returns:
         - node with sockets ['next_edge_index', 'previous_edge_index']
 
@@ -1814,6 +1854,8 @@ class Mesh(Geometry):
         - vertex_index: Integer
         - weights: Float
         - sort_index: Integer
+
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeEdgesOfVertex.webp)
 
         #### Returns:
         - node with sockets ['edge_index', 'total']
@@ -1853,13 +1895,15 @@ class Mesh(Geometry):
         - individual: Boolean
         - mode (str): 'FACES' in [VERTICES, EDGES, FACES]
 
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeExtrudeMesh.webp)
+
         #### Returns:
-        - self
+        - node with sockets ['mesh', 'top', 'side']
 
 
         """
 
-        return self.stack(nodes.ExtrudeMesh(mesh=self, selection=selection, offset=offset, offset_scale=offset_scale, individual=individual, mode=mode))
+        return self.stack(nodes.ExtrudeMesh(mesh=self, selection=selection, offset=offset, offset_scale=offset_scale, individual=individual, mode=mode)).node
 
 
     @property
@@ -1903,6 +1947,8 @@ class Mesh(Geometry):
 
         #### Args:
         - corner_index: Integer
+
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeFaceOfCorner.webp)
 
         #### Returns:
         - node with sockets ['face_index', 'index_in_face']
@@ -1988,6 +2034,8 @@ class Mesh(Geometry):
         """
 
         > Node: [Mesh Island](GeometryNodeInputMeshIsland.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/mesh_island.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshIsland.html)
+
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeInputMeshIsland.webp)
 
         #### Returns:
         - node with sockets ['island_index', 'island_count']
@@ -2118,6 +2166,8 @@ class Mesh(Geometry):
         - source_uv_map: Vector
         - sample_uv: Vector
 
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeSampleUVSurface.webp)
+
         #### Returns:
         - node with sockets ['value', 'is_valid']
 
@@ -2235,6 +2285,8 @@ class Mesh(Geometry):
         #### Args:
         - end_vertex: Boolean
         - edge_cost: Float
+
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeInputShortestEdgePaths.webp)
 
         #### Returns:
         - node with sockets ['next_vertex_index', 'total_cost']
@@ -2483,6 +2535,8 @@ class Curve(Geometry):
         - connect_center: Boolean
         - invert_arc: Boolean
 
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeCurveArc.webp)
+
         #### Returns:
         - node with sockets ['curve', 'center', 'normal', 'radius']
 
@@ -2545,6 +2599,8 @@ class Curve(Geometry):
         - point_1: Vector
         - point_2: Vector
         - point_3: Vector
+
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeCurvePrimitiveCircle.webp)
 
         #### Returns:
         - node with sockets ['curve', 'center']
@@ -2679,6 +2735,8 @@ class Curve(Geometry):
         - outer_radius: Float
         - twist: Float
 
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeCurveStar.webp)
+
         #### Returns:
         - node with sockets ['curve', 'outer_points']
 
@@ -2695,6 +2753,8 @@ class Curve(Geometry):
 
         #### Args:
         - point_index: Integer
+
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeCurveOfPoint.webp)
 
         #### Returns:
         - node with sockets ['curve_index', 'index_in_curve']
@@ -2724,6 +2784,8 @@ class Curve(Geometry):
         """
 
         > Node: [Domain Size](GeometryNodeAttributeDomainSize.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html)
+
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeAttributeDomainSize.webp)
 
         #### Returns:
         - node with sockets ['point_count', 'edge_count', 'face_count', 'face_corner_count', 'spline_count', 'instance_count']
@@ -2876,6 +2938,8 @@ class Curve(Geometry):
         - point_group_id: Integer
         - max_neighbors: Integer
 
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeInterpolateCurves.webp)
+
         #### Returns:
         - node with sockets ['curves', 'closest_index', 'closest_weight']
 
@@ -2908,6 +2972,8 @@ class Curve(Geometry):
         #### Args:
         - point_index: Integer
         - offset: Integer
+
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeOffsetPointInCurve.webp)
 
         #### Returns:
         - node with sockets ['is_valid_offset', 'point_index']
@@ -2944,6 +3010,8 @@ class Curve(Geometry):
         - curve_index: Integer
         - weights: Float
         - sort_index: Integer
+
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodePointsOfCurve.webp)
 
         #### Returns:
         - node with sockets ['point_index', 'total']
@@ -3058,13 +3126,15 @@ class Curve(Geometry):
         - mode (str): 'FACTOR' in [FACTOR, LENGTH]
         - use_all_curves (bool): False
 
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeSampleCurve.webp)
+
         #### Returns:
-        - self
+        - node with sockets ['value', 'position', 'tangent', 'normal']
 
 
         """
 
-        return self.stack(nodes.SampleCurve(curves=self, value=value, factor=factor, length=length, curve_index=curve_index, data_type=data_type, mode=mode, use_all_curves=use_all_curves))
+        return self.stack(nodes.SampleCurve(curves=self, value=value, factor=factor, length=length, curve_index=curve_index, data_type=data_type, mode=mode, use_all_curves=use_all_curves)).node
 
 
     @property
@@ -3130,6 +3200,8 @@ class Curve(Geometry):
         - length: Float
         - mode (str): 'COUNT' in [EVALUATED, COUNT, LENGTH]
 
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeCurveToPoints.webp)
+
         #### Returns:
         - node with sockets ['points', 'tangent', 'normal', 'rotation']
 
@@ -3147,6 +3219,8 @@ class Curve(Geometry):
         #### Args:
         - count: Integer
 
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeCurveToPoints.webp)
+
         #### Returns:
         - node with sockets ['points', 'tangent', 'normal', 'rotation']
 
@@ -3160,6 +3234,8 @@ class Curve(Geometry):
         """
 
         > Node: [Curve to Points](GeometryNodeCurveToPoints.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/curve_to_points.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveToPoints.html)
+
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeCurveToPoints.webp)
 
         #### Returns:
         - node with sockets ['points', 'tangent', 'normal', 'rotation']
@@ -3177,6 +3253,8 @@ class Curve(Geometry):
 
         #### Args:
         - length: Float
+
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeCurveToPoints.webp)
 
         #### Returns:
         - node with sockets ['points', 'tangent', 'normal', 'rotation']
@@ -3317,6 +3395,8 @@ class Points(Geometry):
         - point_up: Vector
         - point_group_id: Integer
         - max_neighbors: Integer
+
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeInterpolateCurves.webp)
 
         #### Returns:
         - node with sockets ['curves', 'closest_index', 'closest_weight']
@@ -3959,6 +4039,8 @@ class Float(geosocks.Float):
         """
 
         > Node: [Color Ramp](ShaderNodeValToRGB.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/color_ramp.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeValToRGB.html)
+
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeValToRGB.webp)
 
         #### Returns:
         - node with sockets ['color', 'alpha']
@@ -5613,6 +5695,8 @@ class Color(geosocks.Color):
         #### Args:
         - mode (str): 'RGB' in [RGB, HSV, HSL]
 
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_FunctionNodeSeparateColor.webp)
+
         #### Returns:
         - node with sockets ['red', 'green', 'blue', 'alpha']
 
@@ -7099,6 +7183,8 @@ class Vector(geosocks.Vector):
         """
 
         > Node: [Separate XYZ](ShaderNodeSeparateXYZ.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/separate_xyz.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeSeparateXYZ.html)
+
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeSeparateXYZ.webp)
 
         #### Returns:
         - node with sockets ['x', 'y', 'z']
@@ -8646,6 +8732,8 @@ class Object(geosocks.Object):
         - as_instance: Boolean
         - transform_space (str): 'ORIGINAL' in [ORIGINAL, RELATIVE]
 
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeObjectInfo.webp)
+
         #### Returns:
         - node with sockets ['location', 'rotation', 'scale', 'geometry']
 
@@ -8933,6 +9021,8 @@ class String(geosocks.String):
         - overflow (str): 'OVERFLOW' in [OVERFLOW, SCALE_TO_FIT, TRUNCATE]
         - pivot_mode (str): 'BOTTOM_LEFT' in [MIDPOINT, TOP_LEFT, TOP_CENTER,... , BOTTOM_LEFT, BOTTOM_CENTER, BOTTOM_RIGHT]
 
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeStringToCurves.webp)
+
         #### Returns:
         - node with sockets ['curve_instances', 'remainder', 'line', 'pivot_point']
 
@@ -9021,6 +9111,8 @@ class Image(geosocks.Image):
         #### Args:
         - frame: Integer
 
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeImageInfo.webp)
+
         #### Returns:
         - node with sockets ['width', 'height', 'has_alpha', 'frame_count', 'fps']
 
@@ -9058,6 +9150,8 @@ class Image(geosocks.Image):
         - frame: Integer
         - extension (str): 'REPEAT' in [REPEAT, EXTEND, CLIP, MIRROR]
         - interpolation (str): 'Linear' in [Linear, Closest, Cubic]
+
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeImageTexture.webp)
 
         #### Returns:
         - node with sockets ['color', 'alpha']
@@ -9367,8 +9461,8 @@ class Volume(Geometry):
 
 
 class Texture(geosocks.Texture):
-    @staticmethod
-    def brick(vector=None, color1=None, color2=None, mortar=None, scale=None, mortar_size=None, mortar_smooth=None, bias=None, brick_width=None, row_height=None, offset=0.5, offset_frequency=2, squash=1.0, squash_frequency=2):
+    @classmethod
+    def Brick(cls, vector=None, color1=None, color2=None, mortar=None, scale=None, mortar_size=None, mortar_smooth=None, bias=None, brick_width=None, row_height=None, offset=0.5, offset_frequency=2, squash=1.0, squash_frequency=2):
         """
 
         > Node: [Brick Texture](ShaderNodeTexBrick.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/brick.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexBrick.html)
@@ -9389,6 +9483,8 @@ class Texture(geosocks.Texture):
         - squash (float): 1.0
         - squash_frequency (int): 2
 
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexBrick.webp)
+
         #### Returns:
         - node with sockets ['color', 'fac']
 
@@ -9398,8 +9494,8 @@ class Texture(geosocks.Texture):
         return nodes.BrickTexture(vector=vector, color1=color1, color2=color2, mortar=mortar, scale=scale, mortar_size=mortar_size, mortar_smooth=mortar_smooth, bias=bias, brick_width=brick_width, row_height=row_height, offset=offset, offset_frequency=offset_frequency, squash=squash, squash_frequency=squash_frequency)
 
 
-    @staticmethod
-    def checker(vector=None, color1=None, color2=None, scale=None):
+    @classmethod
+    def Checker(cls, vector=None, color1=None, color2=None, scale=None):
         """
 
         > Node: [Checker Texture](ShaderNodeTexChecker.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/checker.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexChecker.html)
@@ -9410,6 +9506,8 @@ class Texture(geosocks.Texture):
         - color2: Color
         - scale: Float
 
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexChecker.webp)
+
         #### Returns:
         - node with sockets ['color', 'fac']
 
@@ -9419,8 +9517,8 @@ class Texture(geosocks.Texture):
         return nodes.CheckerTexture(vector=vector, color1=color1, color2=color2, scale=scale)
 
 
-    @staticmethod
-    def gradient(vector=None, gradient_type='LINEAR'):
+    @classmethod
+    def Gradient(cls, vector=None, gradient_type='LINEAR'):
         """
 
         > Node: [Gradient Texture](ShaderNodeTexGradient.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/gradient.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexGradient.html)
@@ -9428,6 +9526,8 @@ class Texture(geosocks.Texture):
         #### Args:
         - vector: Vector
         - gradient_type (str): 'LINEAR' in [LINEAR, QUADRATIC, EASING, DIAGONAL, SPHERICAL, QUADRATIC_SPHERE, RADIAL]
+
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexGradient.webp)
 
         #### Returns:
         - node with sockets ['color', 'fac']
@@ -9438,14 +9538,16 @@ class Texture(geosocks.Texture):
         return nodes.GradientTexture(vector=vector, gradient_type=gradient_type)
 
 
-    @staticmethod
-    def gradient_diagonal(vector=None):
+    @classmethod
+    def GradientDiagonal(cls, vector=None):
         """
 
         > Node: [Gradient Texture](ShaderNodeTexGradient.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/gradient.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexGradient.html)
 
         #### Args:
         - vector: Vector
+
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexGradient.webp)
 
         #### Returns:
         - node with sockets ['color', 'fac']
@@ -9456,14 +9558,16 @@ class Texture(geosocks.Texture):
         return nodes.GradientTexture(vector=vector, gradient_type='DIAGONAL')
 
 
-    @staticmethod
-    def gradient_easing(vector=None):
+    @classmethod
+    def GradientEeasing(cls, vector=None):
         """
 
         > Node: [Gradient Texture](ShaderNodeTexGradient.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/gradient.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexGradient.html)
 
         #### Args:
         - vector: Vector
+
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexGradient.webp)
 
         #### Returns:
         - node with sockets ['color', 'fac']
@@ -9474,14 +9578,16 @@ class Texture(geosocks.Texture):
         return nodes.GradientTexture(vector=vector, gradient_type='EASING')
 
 
-    @staticmethod
-    def gradient_linear(vector=None):
+    @classmethod
+    def GradientLinear(cls, vector=None):
         """
 
         > Node: [Gradient Texture](ShaderNodeTexGradient.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/gradient.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexGradient.html)
 
         #### Args:
         - vector: Vector
+
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexGradient.webp)
 
         #### Returns:
         - node with sockets ['color', 'fac']
@@ -9492,14 +9598,16 @@ class Texture(geosocks.Texture):
         return nodes.GradientTexture(vector=vector, gradient_type='LINEAR')
 
 
-    @staticmethod
-    def gradient_quadratic(vector=None):
+    @classmethod
+    def GradientQuadratic(cls, vector=None):
         """
 
         > Node: [Gradient Texture](ShaderNodeTexGradient.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/gradient.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexGradient.html)
 
         #### Args:
         - vector: Vector
+
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexGradient.webp)
 
         #### Returns:
         - node with sockets ['color', 'fac']
@@ -9510,14 +9618,16 @@ class Texture(geosocks.Texture):
         return nodes.GradientTexture(vector=vector, gradient_type='QUADRATIC')
 
 
-    @staticmethod
-    def gradient_quadratic_sphere(vector=None):
+    @classmethod
+    def GradientQuadratic_sphere(cls, vector=None):
         """
 
         > Node: [Gradient Texture](ShaderNodeTexGradient.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/gradient.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexGradient.html)
 
         #### Args:
         - vector: Vector
+
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexGradient.webp)
 
         #### Returns:
         - node with sockets ['color', 'fac']
@@ -9528,14 +9638,16 @@ class Texture(geosocks.Texture):
         return nodes.GradientTexture(vector=vector, gradient_type='QUADRATIC_SPHERE')
 
 
-    @staticmethod
-    def gradient_radial(vector=None):
+    @classmethod
+    def GradientRadial(cls, vector=None):
         """
 
         > Node: [Gradient Texture](ShaderNodeTexGradient.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/gradient.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexGradient.html)
 
         #### Args:
         - vector: Vector
+
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexGradient.webp)
 
         #### Returns:
         - node with sockets ['color', 'fac']
@@ -9546,14 +9658,16 @@ class Texture(geosocks.Texture):
         return nodes.GradientTexture(vector=vector, gradient_type='RADIAL')
 
 
-    @staticmethod
-    def gradient_spherical(vector=None):
+    @classmethod
+    def GradientSpherical(cls, vector=None):
         """
 
         > Node: [Gradient Texture](ShaderNodeTexGradient.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/gradient.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexGradient.html)
 
         #### Args:
         - vector: Vector
+
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexGradient.webp)
 
         #### Returns:
         - node with sockets ['color', 'fac']
@@ -9564,8 +9678,8 @@ class Texture(geosocks.Texture):
         return nodes.GradientTexture(vector=vector, gradient_type='SPHERICAL')
 
 
-    @staticmethod
-    def image(image=None, vector=None, frame=None, extension='REPEAT', interpolation='Linear'):
+    @classmethod
+    def Image(cls, image=None, vector=None, frame=None, extension='REPEAT', interpolation='Linear'):
         """
 
         > Node: [Image Texture](GeometryNodeImageTexture.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/image.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeImageTexture.html)
@@ -9577,6 +9691,8 @@ class Texture(geosocks.Texture):
         - extension (str): 'REPEAT' in [REPEAT, EXTEND, CLIP, MIRROR]
         - interpolation (str): 'Linear' in [Linear, Closest, Cubic]
 
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeImageTexture.webp)
+
         #### Returns:
         - node with sockets ['color', 'alpha']
 
@@ -9586,8 +9702,8 @@ class Texture(geosocks.Texture):
         return nodes.ImageTexture(image=image, vector=vector, frame=frame, extension=extension, interpolation=interpolation)
 
 
-    @staticmethod
-    def magic(vector=None, scale=None, distortion=None, turbulence_depth=2):
+    @classmethod
+    def Magic(cls, vector=None, scale=None, distortion=None, turbulence_depth=2):
         """
 
         > Node: [Magic Texture](ShaderNodeTexMagic.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/magic.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexMagic.html)
@@ -9598,6 +9714,8 @@ class Texture(geosocks.Texture):
         - distortion: Float
         - turbulence_depth (int): 2
 
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexMagic.webp)
+
         #### Returns:
         - node with sockets ['color', 'fac']
 
@@ -9607,8 +9725,8 @@ class Texture(geosocks.Texture):
         return nodes.MagicTexture(vector=vector, scale=scale, distortion=distortion, turbulence_depth=turbulence_depth)
 
 
-    @staticmethod
-    def musgrave(vector=None, w=None, scale=None, detail=None, dimension=None, lacunarity=None, offset=None, gain=None, musgrave_dimensions='3D', musgrave_type='FBM'):
+    @classmethod
+    def Musgrave(cls, vector=None, w=None, scale=None, detail=None, dimension=None, lacunarity=None, offset=None, gain=None, musgrave_dimensions='3D', musgrave_type='FBM'):
         """
 
         > Node: [Musgrave Texture](ShaderNodeTexMusgrave.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/musgrave.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexMusgrave.html)
@@ -9631,11 +9749,11 @@ class Texture(geosocks.Texture):
 
         """
 
-        return nodes.MusgraveTexture(vector=vector, w=w, scale=scale, detail=detail, dimension=dimension, lacunarity=lacunarity, offset=offset, gain=gain, musgrave_dimensions=musgrave_dimensions, musgrave_type=musgrave_type).fac
+        return cls(nodes.MusgraveTexture(vector=vector, w=w, scale=scale, detail=detail, dimension=dimension, lacunarity=lacunarity, offset=offset, gain=gain, musgrave_dimensions=musgrave_dimensions, musgrave_type=musgrave_type).fac)
 
 
-    @staticmethod
-    def noise(vector=None, w=None, scale=None, detail=None, roughness=None, distortion=None, noise_dimensions='3D'):
+    @classmethod
+    def Noise(cls, vector=None, w=None, scale=None, detail=None, roughness=None, distortion=None, noise_dimensions='3D'):
         """
 
         > Node: [Noise Texture](ShaderNodeTexNoise.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/noise.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexNoise.html)
@@ -9649,6 +9767,8 @@ class Texture(geosocks.Texture):
         - distortion: Float
         - noise_dimensions (str): '3D' in [1D, 2D, 3D, 4D]
 
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexNoise.webp)
+
         #### Returns:
         - node with sockets ['fac', 'color']
 
@@ -9658,8 +9778,8 @@ class Texture(geosocks.Texture):
         return nodes.NoiseTexture(vector=vector, w=w, scale=scale, detail=detail, roughness=roughness, distortion=distortion, noise_dimensions=noise_dimensions)
 
 
-    @staticmethod
-    def noise_1D(w=None, scale=None, detail=None, roughness=None, distortion=None):
+    @classmethod
+    def Noise1D(cls, w=None, scale=None, detail=None, roughness=None, distortion=None):
         """
 
         > Node: [Noise Texture](ShaderNodeTexNoise.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/noise.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexNoise.html)
@@ -9670,6 +9790,8 @@ class Texture(geosocks.Texture):
         - detail: Float
         - roughness: Float
         - distortion: Float
+
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexNoise.webp)
 
         #### Returns:
         - node with sockets ['fac', 'color']
@@ -9680,8 +9802,8 @@ class Texture(geosocks.Texture):
         return nodes.NoiseTexture(vector=None, w=w, scale=scale, detail=detail, roughness=roughness, distortion=distortion, noise_dimensions='1D')
 
 
-    @staticmethod
-    def noise_2D(vector=None, scale=None, detail=None, roughness=None, distortion=None):
+    @classmethod
+    def Noise2D(cls, vector=None, scale=None, detail=None, roughness=None, distortion=None):
         """
 
         > Node: [Noise Texture](ShaderNodeTexNoise.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/noise.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexNoise.html)
@@ -9692,6 +9814,8 @@ class Texture(geosocks.Texture):
         - detail: Float
         - roughness: Float
         - distortion: Float
+
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexNoise.webp)
 
         #### Returns:
         - node with sockets ['fac', 'color']
@@ -9702,8 +9826,8 @@ class Texture(geosocks.Texture):
         return nodes.NoiseTexture(vector=vector, w=None, scale=scale, detail=detail, roughness=roughness, distortion=distortion, noise_dimensions='2D')
 
 
-    @staticmethod
-    def noise_3D(vector=None, scale=None, detail=None, roughness=None, distortion=None):
+    @classmethod
+    def Noise3D(cls, vector=None, scale=None, detail=None, roughness=None, distortion=None):
         """
 
         > Node: [Noise Texture](ShaderNodeTexNoise.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/noise.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexNoise.html)
@@ -9715,6 +9839,8 @@ class Texture(geosocks.Texture):
         - roughness: Float
         - distortion: Float
 
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexNoise.webp)
+
         #### Returns:
         - node with sockets ['fac', 'color']
 
@@ -9724,8 +9850,8 @@ class Texture(geosocks.Texture):
         return nodes.NoiseTexture(vector=vector, w=None, scale=scale, detail=detail, roughness=roughness, distortion=distortion, noise_dimensions='3D')
 
 
-    @staticmethod
-    def noise_4D(vector=None, w=None, scale=None, detail=None, roughness=None, distortion=None):
+    @classmethod
+    def Noise4D(cls, vector=None, w=None, scale=None, detail=None, roughness=None, distortion=None):
         """
 
         > Node: [Noise Texture](ShaderNodeTexNoise.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/noise.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexNoise.html)
@@ -9738,6 +9864,8 @@ class Texture(geosocks.Texture):
         - roughness: Float
         - distortion: Float
 
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexNoise.webp)
+
         #### Returns:
         - node with sockets ['fac', 'color']
 
@@ -9745,6 +9873,494 @@ class Texture(geosocks.Texture):
         """
 
         return nodes.NoiseTexture(vector=vector, w=w, scale=scale, detail=detail, roughness=roughness, distortion=distortion, noise_dimensions='4D')
+
+
+    @classmethod
+    def Voronoi(cls, vector=None, w=None, scale=None, smoothness=None, exponent=None, randomness=None, distance='EUCLIDEAN', feature='F1', voronoi_dimensions='3D'):
+        """
+
+        > Node: [Voronoi Texture](ShaderNodeTexVoronoi.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/voronoi.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexVoronoi.html)
+
+        #### Args:
+        - vector: Vector
+        - w: Float
+        - scale: Float
+        - smoothness: Float
+        - exponent: Float
+        - randomness: Float
+        - distance (str): 'EUCLIDEAN' in [EUCLIDEAN, MANHATTAN, CHEBYCHEV, MINKOWSKI]
+        - feature (str): 'F1' in [F1, F2, SMOOTH_F1, DISTANCE_TO_EDGE, N_SPHERE_RADIUS]
+        - voronoi_dimensions (str): '3D' in [1D, 2D, 3D, 4D]
+
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexVoronoi.webp)
+
+        #### Returns:
+        - node with sockets ['distance', 'color', 'position', 'w', 'radius']
+
+
+        """
+
+        return nodes.VoronoiTexture(vector=vector, w=w, scale=scale, smoothness=smoothness, exponent=exponent, randomness=randomness, distance=distance, feature=feature, voronoi_dimensions=voronoi_dimensions)
+
+
+    @classmethod
+    def Voronoi1D(cls, w=None, scale=None, smoothness=None, exponent=None, randomness=None, distance='EUCLIDEAN', feature='F1', voronoi_dimensions='3D'):
+        """
+
+        > Node: [Voronoi Texture](ShaderNodeTexVoronoi.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/voronoi.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexVoronoi.html)
+
+        #### Args:
+        - w: Float
+        - scale: Float
+        - smoothness: Float
+        - exponent: Float
+        - randomness: Float
+        - distance (str): 'EUCLIDEAN' in [EUCLIDEAN, MANHATTAN, CHEBYCHEV, MINKOWSKI]
+        - feature (str): 'F1' in [F1, F2, SMOOTH_F1, DISTANCE_TO_EDGE, N_SPHERE_RADIUS]
+        - voronoi_dimensions (str): '3D' in [1D, 2D, 3D, 4D]
+
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexVoronoi.webp)
+
+        #### Returns:
+        - node with sockets ['distance', 'color', 'position', 'w', 'radius']
+
+
+        """
+
+        return nodes.VoronoiTexture(vector=None, w=w, scale=scale, smoothness=smoothness, exponent=exponent, randomness=randomness, distance=distance, feature=feature, voronoi_dimensions=voronoi_dimensions)
+
+
+    @classmethod
+    def Voronoi2D(cls, vector=None, scale=None, smoothness=None, exponent=None, randomness=None, distance='EUCLIDEAN', feature='F1', voronoi_dimensions='3D'):
+        """
+
+        > Node: [Voronoi Texture](ShaderNodeTexVoronoi.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/voronoi.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexVoronoi.html)
+
+        #### Args:
+        - vector: Vector
+        - scale: Float
+        - smoothness: Float
+        - exponent: Float
+        - randomness: Float
+        - distance (str): 'EUCLIDEAN' in [EUCLIDEAN, MANHATTAN, CHEBYCHEV, MINKOWSKI]
+        - feature (str): 'F1' in [F1, F2, SMOOTH_F1, DISTANCE_TO_EDGE, N_SPHERE_RADIUS]
+        - voronoi_dimensions (str): '3D' in [1D, 2D, 3D, 4D]
+
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexVoronoi.webp)
+
+        #### Returns:
+        - node with sockets ['distance', 'color', 'position', 'w', 'radius']
+
+
+        """
+
+        return nodes.VoronoiTexture(vector=vector, w=None, scale=scale, smoothness=smoothness, exponent=exponent, randomness=randomness, distance=distance, feature=feature, voronoi_dimensions=voronoi_dimensions)
+
+
+    @classmethod
+    def Voronoi3D(cls, vector=None, scale=None, smoothness=None, exponent=None, randomness=None, distance='EUCLIDEAN', feature='F1', voronoi_dimensions='3D'):
+        """
+
+        > Node: [Voronoi Texture](ShaderNodeTexVoronoi.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/voronoi.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexVoronoi.html)
+
+        #### Args:
+        - vector: Vector
+        - scale: Float
+        - smoothness: Float
+        - exponent: Float
+        - randomness: Float
+        - distance (str): 'EUCLIDEAN' in [EUCLIDEAN, MANHATTAN, CHEBYCHEV, MINKOWSKI]
+        - feature (str): 'F1' in [F1, F2, SMOOTH_F1, DISTANCE_TO_EDGE, N_SPHERE_RADIUS]
+        - voronoi_dimensions (str): '3D' in [1D, 2D, 3D, 4D]
+
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexVoronoi.webp)
+
+        #### Returns:
+        - node with sockets ['distance', 'color', 'position', 'w', 'radius']
+
+
+        """
+
+        return nodes.VoronoiTexture(vector=vector, w=None, scale=scale, smoothness=smoothness, exponent=exponent, randomness=randomness, distance=distance, feature=feature, voronoi_dimensions=voronoi_dimensions)
+
+
+    @classmethod
+    def Voronoi4D(cls, vector=None, w=None, scale=None, smoothness=None, exponent=None, randomness=None, distance='EUCLIDEAN', feature='F1', voronoi_dimensions='3D'):
+        """
+
+        > Node: [Voronoi Texture](ShaderNodeTexVoronoi.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/voronoi.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexVoronoi.html)
+
+        #### Args:
+        - vector: Vector
+        - w: Float
+        - scale: Float
+        - smoothness: Float
+        - exponent: Float
+        - randomness: Float
+        - distance (str): 'EUCLIDEAN' in [EUCLIDEAN, MANHATTAN, CHEBYCHEV, MINKOWSKI]
+        - feature (str): 'F1' in [F1, F2, SMOOTH_F1, DISTANCE_TO_EDGE, N_SPHERE_RADIUS]
+        - voronoi_dimensions (str): '3D' in [1D, 2D, 3D, 4D]
+
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexVoronoi.webp)
+
+        #### Returns:
+        - node with sockets ['distance', 'color', 'position', 'w', 'radius']
+
+
+        """
+
+        return nodes.VoronoiTexture(vector=vector, w=w, scale=scale, smoothness=smoothness, exponent=exponent, randomness=randomness, distance=distance, feature=feature, voronoi_dimensions=voronoi_dimensions)
+
+
+    @classmethod
+    def Wave(cls, vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, bands_direction='X', rings_direction='X', wave_profile='SIN', wave_type='BANDS'):
+        """
+
+        > Node: [Wave Texture](ShaderNodeTexWave.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/wave.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWave.html)
+
+        #### Args:
+        - vector: Vector
+        - scale: Float
+        - distortion: Float
+        - detail: Float
+        - detail_scale: Float
+        - detail_roughness: Float
+        - phase_offset: Float
+        - bands_direction (str): 'X' in [X, Y, Z, DIAGONAL]
+        - rings_direction (str): 'X' in [X, Y, Z, SPHERICAL]
+        - wave_profile (str): 'SIN' in [SIN, SAW, TRI]
+        - wave_type (str): 'BANDS' in [BANDS, RINGS]
+
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexWave.webp)
+
+        #### Returns:
+        - node with sockets ['color', 'fac']
+
+
+        """
+
+        return nodes.WaveTexture(vector=vector, scale=scale, distortion=distortion, detail=detail, detail_scale=detail_scale, detail_roughness=detail_roughness, phase_offset=phase_offset, bands_direction=bands_direction, rings_direction=rings_direction, wave_profile=wave_profile, wave_type=wave_type)
+
+
+    @classmethod
+    def WaveBands(cls, vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X', wave_profile='SIN'):
+        """
+
+        > Node: [Wave Texture](ShaderNodeTexWave.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/wave.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWave.html)
+
+        #### Args:
+        - vector: Vector
+        - scale: Float
+        - distortion: Float
+        - detail: Float
+        - detail_scale: Float
+        - detail_roughness: Float
+        - phase_offset: Float
+        - direction (str): 'X' in [X, Y, Z, DIAGONAL]
+        - wave_profile (str): 'SIN' in [SIN, SAW, TRI]
+
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexWave.webp)
+
+        #### Returns:
+        - node with sockets ['color', 'fac']
+
+
+        """
+
+        return nodes.WaveTexture(vector=vector, scale=scale, distortion=distortion, detail=detail, detail_scale=detail_scale, detail_roughness=detail_roughness, phase_offset=phase_offset, bands_direction=direction, rings_direction='X', wave_profile=wave_profile, wave_type='BANDS')
+
+
+    @classmethod
+    def WaveBands_saw(cls, vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X'):
+        """
+
+        > Node: [Wave Texture](ShaderNodeTexWave.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/wave.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWave.html)
+
+        #### Args:
+        - vector: Vector
+        - scale: Float
+        - distortion: Float
+        - detail: Float
+        - detail_scale: Float
+        - detail_roughness: Float
+        - phase_offset: Float
+        - direction (str): 'X' in [X, Y, Z, DIAGONAL]
+
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexWave.webp)
+
+        #### Returns:
+        - node with sockets ['color', 'fac']
+
+
+        """
+
+        return nodes.WaveTexture(vector=vector, scale=scale, distortion=distortion, detail=detail, detail_scale=detail_scale, detail_roughness=detail_roughness, phase_offset=phase_offset, bands_direction=direction, rings_direction='X', wave_profile='SAW', wave_type='BANDS')
+
+
+    @classmethod
+    def WaveBands_sine(cls, vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X'):
+        """
+
+        > Node: [Wave Texture](ShaderNodeTexWave.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/wave.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWave.html)
+
+        #### Args:
+        - vector: Vector
+        - scale: Float
+        - distortion: Float
+        - detail: Float
+        - detail_scale: Float
+        - detail_roughness: Float
+        - phase_offset: Float
+        - direction (str): 'X' in [X, Y, Z, DIAGONAL]
+
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexWave.webp)
+
+        #### Returns:
+        - node with sockets ['color', 'fac']
+
+
+        """
+
+        return nodes.WaveTexture(vector=vector, scale=scale, distortion=distortion, detail=detail, detail_scale=detail_scale, detail_roughness=detail_roughness, phase_offset=phase_offset, bands_direction=direction, rings_direction='X', wave_profile='SIN', wave_type='BANDS')
+
+
+    @classmethod
+    def WaveBands_triangle(cls, vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X'):
+        """
+
+        > Node: [Wave Texture](ShaderNodeTexWave.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/wave.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWave.html)
+
+        #### Args:
+        - vector: Vector
+        - scale: Float
+        - distortion: Float
+        - detail: Float
+        - detail_scale: Float
+        - detail_roughness: Float
+        - phase_offset: Float
+        - direction (str): 'X' in [X, Y, Z, DIAGONAL]
+
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexWave.webp)
+
+        #### Returns:
+        - node with sockets ['color', 'fac']
+
+
+        """
+
+        return nodes.WaveTexture(vector=vector, scale=scale, distortion=distortion, detail=detail, detail_scale=detail_scale, detail_roughness=detail_roughness, phase_offset=phase_offset, bands_direction=direction, rings_direction='X', wave_profile='TRI', wave_type='BANDS')
+
+
+    @classmethod
+    def WaveRings(cls, vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X', wave_profile='SIN'):
+        """
+
+        > Node: [Wave Texture](ShaderNodeTexWave.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/wave.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWave.html)
+
+        #### Args:
+        - vector: Vector
+        - scale: Float
+        - distortion: Float
+        - detail: Float
+        - detail_scale: Float
+        - detail_roughness: Float
+        - phase_offset: Float
+        - direction (str): 'X' in [X, Y, Z, SPHERICAL]
+        - wave_profile (str): 'SIN' in [SIN, SAW, TRI]
+
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexWave.webp)
+
+        #### Returns:
+        - node with sockets ['color', 'fac']
+
+
+        """
+
+        return nodes.WaveTexture(vector=vector, scale=scale, distortion=distortion, detail=detail, detail_scale=detail_scale, detail_roughness=detail_roughness, phase_offset=phase_offset, bands_direction='X', rings_direction=direction, wave_profile=wave_profile, wave_type='RINGS')
+
+
+    @classmethod
+    def WaveRings_saw(cls, vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X'):
+        """
+
+        > Node: [Wave Texture](ShaderNodeTexWave.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/wave.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWave.html)
+
+        #### Args:
+        - vector: Vector
+        - scale: Float
+        - distortion: Float
+        - detail: Float
+        - detail_scale: Float
+        - detail_roughness: Float
+        - phase_offset: Float
+        - direction (str): 'X' in [X, Y, Z, SPHERICAL]
+
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexWave.webp)
+
+        #### Returns:
+        - node with sockets ['color', 'fac']
+
+
+        """
+
+        return nodes.WaveTexture(vector=vector, scale=scale, distortion=distortion, detail=detail, detail_scale=detail_scale, detail_roughness=detail_roughness, phase_offset=phase_offset, bands_direction='X', rings_direction=direction, wave_profile='SAW', wave_type='RINGS')
+
+
+    @classmethod
+    def WaveRings_sine(cls, vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X'):
+        """
+
+        > Node: [Wave Texture](ShaderNodeTexWave.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/wave.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWave.html)
+
+        #### Args:
+        - vector: Vector
+        - scale: Float
+        - distortion: Float
+        - detail: Float
+        - detail_scale: Float
+        - detail_roughness: Float
+        - phase_offset: Float
+        - direction (str): 'X' in [X, Y, Z, SPHERICAL]
+
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexWave.webp)
+
+        #### Returns:
+        - node with sockets ['color', 'fac']
+
+
+        """
+
+        return nodes.WaveTexture(vector=vector, scale=scale, distortion=distortion, detail=detail, detail_scale=detail_scale, detail_roughness=detail_roughness, phase_offset=phase_offset, bands_direction='X', rings_direction=direction, wave_profile='SIN', wave_type='RINGS')
+
+
+    @classmethod
+    def WaveRings_triangle(cls, vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X'):
+        """
+
+        > Node: [Wave Texture](ShaderNodeTexWave.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/wave.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWave.html)
+
+        #### Args:
+        - vector: Vector
+        - scale: Float
+        - distortion: Float
+        - detail: Float
+        - detail_scale: Float
+        - detail_roughness: Float
+        - phase_offset: Float
+        - direction (str): 'X' in [X, Y, Z, SPHERICAL]
+
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexWave.webp)
+
+        #### Returns:
+        - node with sockets ['color', 'fac']
+
+
+        """
+
+        return nodes.WaveTexture(vector=vector, scale=scale, distortion=distortion, detail=detail, detail_scale=detail_scale, detail_roughness=detail_roughness, phase_offset=phase_offset, bands_direction='X', rings_direction=direction, wave_profile='TRI', wave_type='RINGS')
+
+
+    @classmethod
+    def WhiteNoise(cls, vector=None, w=None, noise_dimensions='3D'):
+        """
+
+        > Node: [White Noise Texture](ShaderNodeTexWhiteNoise.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/white_noise.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWhiteNoise.html)
+
+        #### Args:
+        - vector: Vector
+        - w: Float
+        - noise_dimensions (str): '3D' in [1D, 2D, 3D, 4D]
+
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexWhiteNoise.webp)
+
+        #### Returns:
+        - node with sockets ['value', 'color']
+
+
+        """
+
+        return nodes.WhiteNoiseTexture(vector=vector, w=w, noise_dimensions=noise_dimensions)
+
+
+    @classmethod
+    def WhiteNoise1D(cls, w=None):
+        """
+
+        > Node: [White Noise Texture](ShaderNodeTexWhiteNoise.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/white_noise.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWhiteNoise.html)
+
+        #### Args:
+        - w: Float
+
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexWhiteNoise.webp)
+
+        #### Returns:
+        - node with sockets ['value', 'color']
+
+
+        """
+
+        return nodes.WhiteNoiseTexture(vector=None, w=w, noise_dimensions='1D')
+
+
+    @classmethod
+    def WhiteNoise2D(cls, vector=None):
+        """
+
+        > Node: [White Noise Texture](ShaderNodeTexWhiteNoise.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/white_noise.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWhiteNoise.html)
+
+        #### Args:
+        - vector: Vector
+
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexWhiteNoise.webp)
+
+        #### Returns:
+        - node with sockets ['value', 'color']
+
+
+        """
+
+        return nodes.WhiteNoiseTexture(vector=vector, w=None, noise_dimensions='2D')
+
+
+    @classmethod
+    def WhiteNoise3D(cls, vector=None):
+        """
+
+        > Node: [White Noise Texture](ShaderNodeTexWhiteNoise.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/white_noise.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWhiteNoise.html)
+
+        #### Args:
+        - vector: Vector
+
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexWhiteNoise.webp)
+
+        #### Returns:
+        - node with sockets ['value', 'color']
+
+
+        """
+
+        return nodes.WhiteNoiseTexture(vector=vector, w=None, noise_dimensions='3D')
+
+
+    @classmethod
+    def WhiteNoise4D(cls, vector=None, w=None):
+        """
+
+        > Node: [White Noise Texture](ShaderNodeTexWhiteNoise.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/white_noise.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWhiteNoise.html)
+
+        #### Args:
+        - vector: Vector
+        - w: Float
+
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexWhiteNoise.webp)
+
+        #### Returns:
+        - node with sockets ['value', 'color']
+
+
+        """
+
+        return nodes.WhiteNoiseTexture(vector=vector, w=w, noise_dimensions='3D')
 
 
     def switch(self, switch=None, true=None):
@@ -9763,456 +10379,6 @@ class Texture(geosocks.Texture):
         """
 
         return nodes.Switch(switch=switch, false=self, true=true, input_type='TEXTURE').output
-
-
-    @staticmethod
-    def voronoi(vector=None, w=None, scale=None, smoothness=None, exponent=None, randomness=None, distance='EUCLIDEAN', feature='F1', voronoi_dimensions='3D'):
-        """
-
-        > Node: [Voronoi Texture](ShaderNodeTexVoronoi.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/voronoi.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexVoronoi.html)
-
-        #### Args:
-        - vector: Vector
-        - w: Float
-        - scale: Float
-        - smoothness: Float
-        - exponent: Float
-        - randomness: Float
-        - distance (str): 'EUCLIDEAN' in [EUCLIDEAN, MANHATTAN, CHEBYCHEV, MINKOWSKI]
-        - feature (str): 'F1' in [F1, F2, SMOOTH_F1, DISTANCE_TO_EDGE, N_SPHERE_RADIUS]
-        - voronoi_dimensions (str): '3D' in [1D, 2D, 3D, 4D]
-
-        #### Returns:
-        - node with sockets ['distance', 'color', 'position', 'w', 'radius']
-
-
-        """
-
-        return nodes.VoronoiTexture(vector=vector, w=w, scale=scale, smoothness=smoothness, exponent=exponent, randomness=randomness, distance=distance, feature=feature, voronoi_dimensions=voronoi_dimensions)
-
-
-    @staticmethod
-    def voronoi_1D(w=None, scale=None, smoothness=None, exponent=None, randomness=None, distance='EUCLIDEAN', feature='F1', voronoi_dimensions='3D'):
-        """
-
-        > Node: [Voronoi Texture](ShaderNodeTexVoronoi.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/voronoi.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexVoronoi.html)
-
-        #### Args:
-        - w: Float
-        - scale: Float
-        - smoothness: Float
-        - exponent: Float
-        - randomness: Float
-        - distance (str): 'EUCLIDEAN' in [EUCLIDEAN, MANHATTAN, CHEBYCHEV, MINKOWSKI]
-        - feature (str): 'F1' in [F1, F2, SMOOTH_F1, DISTANCE_TO_EDGE, N_SPHERE_RADIUS]
-        - voronoi_dimensions (str): '3D' in [1D, 2D, 3D, 4D]
-
-        #### Returns:
-        - node with sockets ['distance', 'color', 'position', 'w', 'radius']
-
-
-        """
-
-        return nodes.VoronoiTexture(vector=None, w=w, scale=scale, smoothness=smoothness, exponent=exponent, randomness=randomness, distance=distance, feature=feature, voronoi_dimensions=voronoi_dimensions)
-
-
-    @staticmethod
-    def voronoi_2D(vector=None, scale=None, smoothness=None, exponent=None, randomness=None, distance='EUCLIDEAN', feature='F1', voronoi_dimensions='3D'):
-        """
-
-        > Node: [Voronoi Texture](ShaderNodeTexVoronoi.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/voronoi.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexVoronoi.html)
-
-        #### Args:
-        - vector: Vector
-        - scale: Float
-        - smoothness: Float
-        - exponent: Float
-        - randomness: Float
-        - distance (str): 'EUCLIDEAN' in [EUCLIDEAN, MANHATTAN, CHEBYCHEV, MINKOWSKI]
-        - feature (str): 'F1' in [F1, F2, SMOOTH_F1, DISTANCE_TO_EDGE, N_SPHERE_RADIUS]
-        - voronoi_dimensions (str): '3D' in [1D, 2D, 3D, 4D]
-
-        #### Returns:
-        - node with sockets ['distance', 'color', 'position', 'w', 'radius']
-
-
-        """
-
-        return nodes.VoronoiTexture(vector=vector, w=None, scale=scale, smoothness=smoothness, exponent=exponent, randomness=randomness, distance=distance, feature=feature, voronoi_dimensions=voronoi_dimensions)
-
-
-    @staticmethod
-    def voronoi_3D(vector=None, scale=None, smoothness=None, exponent=None, randomness=None, distance='EUCLIDEAN', feature='F1', voronoi_dimensions='3D'):
-        """
-
-        > Node: [Voronoi Texture](ShaderNodeTexVoronoi.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/voronoi.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexVoronoi.html)
-
-        #### Args:
-        - vector: Vector
-        - scale: Float
-        - smoothness: Float
-        - exponent: Float
-        - randomness: Float
-        - distance (str): 'EUCLIDEAN' in [EUCLIDEAN, MANHATTAN, CHEBYCHEV, MINKOWSKI]
-        - feature (str): 'F1' in [F1, F2, SMOOTH_F1, DISTANCE_TO_EDGE, N_SPHERE_RADIUS]
-        - voronoi_dimensions (str): '3D' in [1D, 2D, 3D, 4D]
-
-        #### Returns:
-        - node with sockets ['distance', 'color', 'position', 'w', 'radius']
-
-
-        """
-
-        return nodes.VoronoiTexture(vector=vector, w=None, scale=scale, smoothness=smoothness, exponent=exponent, randomness=randomness, distance=distance, feature=feature, voronoi_dimensions=voronoi_dimensions)
-
-
-    @staticmethod
-    def voronoi_4D(vector=None, w=None, scale=None, smoothness=None, exponent=None, randomness=None, distance='EUCLIDEAN', feature='F1', voronoi_dimensions='3D'):
-        """
-
-        > Node: [Voronoi Texture](ShaderNodeTexVoronoi.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/voronoi.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexVoronoi.html)
-
-        #### Args:
-        - vector: Vector
-        - w: Float
-        - scale: Float
-        - smoothness: Float
-        - exponent: Float
-        - randomness: Float
-        - distance (str): 'EUCLIDEAN' in [EUCLIDEAN, MANHATTAN, CHEBYCHEV, MINKOWSKI]
-        - feature (str): 'F1' in [F1, F2, SMOOTH_F1, DISTANCE_TO_EDGE, N_SPHERE_RADIUS]
-        - voronoi_dimensions (str): '3D' in [1D, 2D, 3D, 4D]
-
-        #### Returns:
-        - node with sockets ['distance', 'color', 'position', 'w', 'radius']
-
-
-        """
-
-        return nodes.VoronoiTexture(vector=vector, w=w, scale=scale, smoothness=smoothness, exponent=exponent, randomness=randomness, distance=distance, feature=feature, voronoi_dimensions=voronoi_dimensions)
-
-
-    @staticmethod
-    def wave(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, bands_direction='X', rings_direction='X', wave_profile='SIN', wave_type='BANDS'):
-        """
-
-        > Node: [Wave Texture](ShaderNodeTexWave.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/wave.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWave.html)
-
-        #### Args:
-        - vector: Vector
-        - scale: Float
-        - distortion: Float
-        - detail: Float
-        - detail_scale: Float
-        - detail_roughness: Float
-        - phase_offset: Float
-        - bands_direction (str): 'X' in [X, Y, Z, DIAGONAL]
-        - rings_direction (str): 'X' in [X, Y, Z, SPHERICAL]
-        - wave_profile (str): 'SIN' in [SIN, SAW, TRI]
-        - wave_type (str): 'BANDS' in [BANDS, RINGS]
-
-        #### Returns:
-        - node with sockets ['color', 'fac']
-
-
-        """
-
-        return nodes.WaveTexture(vector=vector, scale=scale, distortion=distortion, detail=detail, detail_scale=detail_scale, detail_roughness=detail_roughness, phase_offset=phase_offset, bands_direction=bands_direction, rings_direction=rings_direction, wave_profile=wave_profile, wave_type=wave_type)
-
-
-    @staticmethod
-    def wave_bands(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X', wave_profile='SIN'):
-        """
-
-        > Node: [Wave Texture](ShaderNodeTexWave.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/wave.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWave.html)
-
-        #### Args:
-        - vector: Vector
-        - scale: Float
-        - distortion: Float
-        - detail: Float
-        - detail_scale: Float
-        - detail_roughness: Float
-        - phase_offset: Float
-        - direction (str): 'X' in [X, Y, Z, DIAGONAL]
-        - wave_profile (str): 'SIN' in [SIN, SAW, TRI]
-
-        #### Returns:
-        - node with sockets ['color', 'fac']
-
-
-        """
-
-        return nodes.WaveTexture(vector=vector, scale=scale, distortion=distortion, detail=detail, detail_scale=detail_scale, detail_roughness=detail_roughness, phase_offset=phase_offset, bands_direction=direction, rings_direction='X', wave_profile=wave_profile, wave_type='BANDS')
-
-
-    @staticmethod
-    def wave_bands_saw(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X'):
-        """
-
-        > Node: [Wave Texture](ShaderNodeTexWave.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/wave.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWave.html)
-
-        #### Args:
-        - vector: Vector
-        - scale: Float
-        - distortion: Float
-        - detail: Float
-        - detail_scale: Float
-        - detail_roughness: Float
-        - phase_offset: Float
-        - direction (str): 'X' in [X, Y, Z, DIAGONAL]
-
-        #### Returns:
-        - node with sockets ['color', 'fac']
-
-
-        """
-
-        return nodes.WaveTexture(vector=vector, scale=scale, distortion=distortion, detail=detail, detail_scale=detail_scale, detail_roughness=detail_roughness, phase_offset=phase_offset, bands_direction=direction, rings_direction='X', wave_profile='SAW', wave_type='BANDS')
-
-
-    @staticmethod
-    def wave_bands_sine(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X'):
-        """
-
-        > Node: [Wave Texture](ShaderNodeTexWave.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/wave.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWave.html)
-
-        #### Args:
-        - vector: Vector
-        - scale: Float
-        - distortion: Float
-        - detail: Float
-        - detail_scale: Float
-        - detail_roughness: Float
-        - phase_offset: Float
-        - direction (str): 'X' in [X, Y, Z, DIAGONAL]
-
-        #### Returns:
-        - node with sockets ['color', 'fac']
-
-
-        """
-
-        return nodes.WaveTexture(vector=vector, scale=scale, distortion=distortion, detail=detail, detail_scale=detail_scale, detail_roughness=detail_roughness, phase_offset=phase_offset, bands_direction=direction, rings_direction='X', wave_profile='SIN', wave_type='BANDS')
-
-
-    @staticmethod
-    def wave_bands_triangle(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X'):
-        """
-
-        > Node: [Wave Texture](ShaderNodeTexWave.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/wave.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWave.html)
-
-        #### Args:
-        - vector: Vector
-        - scale: Float
-        - distortion: Float
-        - detail: Float
-        - detail_scale: Float
-        - detail_roughness: Float
-        - phase_offset: Float
-        - direction (str): 'X' in [X, Y, Z, DIAGONAL]
-
-        #### Returns:
-        - node with sockets ['color', 'fac']
-
-
-        """
-
-        return nodes.WaveTexture(vector=vector, scale=scale, distortion=distortion, detail=detail, detail_scale=detail_scale, detail_roughness=detail_roughness, phase_offset=phase_offset, bands_direction=direction, rings_direction='X', wave_profile='TRI', wave_type='BANDS')
-
-
-    @staticmethod
-    def wave_rings(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X', wave_profile='SIN'):
-        """
-
-        > Node: [Wave Texture](ShaderNodeTexWave.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/wave.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWave.html)
-
-        #### Args:
-        - vector: Vector
-        - scale: Float
-        - distortion: Float
-        - detail: Float
-        - detail_scale: Float
-        - detail_roughness: Float
-        - phase_offset: Float
-        - direction (str): 'X' in [X, Y, Z, SPHERICAL]
-        - wave_profile (str): 'SIN' in [SIN, SAW, TRI]
-
-        #### Returns:
-        - node with sockets ['color', 'fac']
-
-
-        """
-
-        return nodes.WaveTexture(vector=vector, scale=scale, distortion=distortion, detail=detail, detail_scale=detail_scale, detail_roughness=detail_roughness, phase_offset=phase_offset, bands_direction='X', rings_direction=direction, wave_profile=wave_profile, wave_type='RINGS')
-
-
-    @staticmethod
-    def wave_rings_saw(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X'):
-        """
-
-        > Node: [Wave Texture](ShaderNodeTexWave.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/wave.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWave.html)
-
-        #### Args:
-        - vector: Vector
-        - scale: Float
-        - distortion: Float
-        - detail: Float
-        - detail_scale: Float
-        - detail_roughness: Float
-        - phase_offset: Float
-        - direction (str): 'X' in [X, Y, Z, SPHERICAL]
-
-        #### Returns:
-        - node with sockets ['color', 'fac']
-
-
-        """
-
-        return nodes.WaveTexture(vector=vector, scale=scale, distortion=distortion, detail=detail, detail_scale=detail_scale, detail_roughness=detail_roughness, phase_offset=phase_offset, bands_direction='X', rings_direction=direction, wave_profile='SAW', wave_type='RINGS')
-
-
-    @staticmethod
-    def wave_rings_sine(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X'):
-        """
-
-        > Node: [Wave Texture](ShaderNodeTexWave.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/wave.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWave.html)
-
-        #### Args:
-        - vector: Vector
-        - scale: Float
-        - distortion: Float
-        - detail: Float
-        - detail_scale: Float
-        - detail_roughness: Float
-        - phase_offset: Float
-        - direction (str): 'X' in [X, Y, Z, SPHERICAL]
-
-        #### Returns:
-        - node with sockets ['color', 'fac']
-
-
-        """
-
-        return nodes.WaveTexture(vector=vector, scale=scale, distortion=distortion, detail=detail, detail_scale=detail_scale, detail_roughness=detail_roughness, phase_offset=phase_offset, bands_direction='X', rings_direction=direction, wave_profile='SIN', wave_type='RINGS')
-
-
-    @staticmethod
-    def wave_rings_triangle(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X'):
-        """
-
-        > Node: [Wave Texture](ShaderNodeTexWave.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/wave.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWave.html)
-
-        #### Args:
-        - vector: Vector
-        - scale: Float
-        - distortion: Float
-        - detail: Float
-        - detail_scale: Float
-        - detail_roughness: Float
-        - phase_offset: Float
-        - direction (str): 'X' in [X, Y, Z, SPHERICAL]
-
-        #### Returns:
-        - node with sockets ['color', 'fac']
-
-
-        """
-
-        return nodes.WaveTexture(vector=vector, scale=scale, distortion=distortion, detail=detail, detail_scale=detail_scale, detail_roughness=detail_roughness, phase_offset=phase_offset, bands_direction='X', rings_direction=direction, wave_profile='TRI', wave_type='RINGS')
-
-
-    @staticmethod
-    def white_noise(vector=None, w=None, noise_dimensions='3D'):
-        """
-
-        > Node: [White Noise Texture](ShaderNodeTexWhiteNoise.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/white_noise.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWhiteNoise.html)
-
-        #### Args:
-        - vector: Vector
-        - w: Float
-        - noise_dimensions (str): '3D' in [1D, 2D, 3D, 4D]
-
-        #### Returns:
-        - node with sockets ['value', 'color']
-
-
-        """
-
-        return nodes.WhiteNoiseTexture(vector=vector, w=w, noise_dimensions=noise_dimensions)
-
-
-    @staticmethod
-    def white_noise_1D(w=None):
-        """
-
-        > Node: [White Noise Texture](ShaderNodeTexWhiteNoise.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/white_noise.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWhiteNoise.html)
-
-        #### Args:
-        - w: Float
-
-        #### Returns:
-        - node with sockets ['value', 'color']
-
-
-        """
-
-        return nodes.WhiteNoiseTexture(vector=None, w=w, noise_dimensions='1D')
-
-
-    @staticmethod
-    def white_noise_2D(vector=None):
-        """
-
-        > Node: [White Noise Texture](ShaderNodeTexWhiteNoise.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/white_noise.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWhiteNoise.html)
-
-        #### Args:
-        - vector: Vector
-
-        #### Returns:
-        - node with sockets ['value', 'color']
-
-
-        """
-
-        return nodes.WhiteNoiseTexture(vector=vector, w=None, noise_dimensions='2D')
-
-
-    @staticmethod
-    def white_noise_3D(vector=None):
-        """
-
-        > Node: [White Noise Texture](ShaderNodeTexWhiteNoise.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/white_noise.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWhiteNoise.html)
-
-        #### Args:
-        - vector: Vector
-
-        #### Returns:
-        - node with sockets ['value', 'color']
-
-
-        """
-
-        return nodes.WhiteNoiseTexture(vector=vector, w=None, noise_dimensions='3D')
-
-
-    @staticmethod
-    def white_noise_4D(vector=None, w=None):
-        """
-
-        > Node: [White Noise Texture](ShaderNodeTexWhiteNoise.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/white_noise.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWhiteNoise.html)
-
-        #### Args:
-        - vector: Vector
-        - w: Float
-
-        #### Returns:
-        - node with sockets ['value', 'color']
-
-
-        """
-
-        return nodes.WhiteNoiseTexture(vector=vector, w=w, noise_dimensions='3D')
 
 
 

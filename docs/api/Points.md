@@ -171,6 +171,8 @@ elf.points = Vertex(self) # Initialized before super().__init__ which can overri
 - position: Vector
 - group_id: Integer
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeIndexOfNearest.webp)
+
 #### Returns:
 - node with sockets ['index', 'has_neighbor']
 
@@ -314,6 +316,8 @@ elf.points = Vertex(self) # Initialized before super().__init__ which can overri
 
 
 > Node: [Separate Components](GeometryNodeSeparateComponents.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/separate_components.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSeparateComponents.html)
+
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeSeparateComponents.webp)
 
 #### Returns:
 - node with sockets ['mesh', 'curve', 'point_cloud', 'volume', 'instances']
@@ -466,6 +470,8 @@ def capture_attribute_node(geometry=None, value=None, data_type='FLOAT', domain=
 - data_type (str): 'FLOAT' in [FLOAT, INT, FLOAT_VECTOR, FLOAT_COLOR, BOOLEAN]
 - domain (str): 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeCaptureAttribute.webp)
+
 #### Returns:
 - node with sockets ['geometry', 'attribute']
 
@@ -599,6 +605,8 @@ def attribute_statistic(self, selection=None, attribute=None, domain='POINT')
 - selection: Boolean
 - attribute: ['Float', 'Vector']
 - domain (str): 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
+
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeAttributeStatistic.webp)
 
 #### Returns:
 - node with sockets ['mean', 'median', 'sum', 'min', 'max', 'range', 'standard_deviation', 'variance']
@@ -788,6 +796,8 @@ def interpolate(self, guide_curves=None, guide_up=None, guide_group_id=None, poi
 - point_up: Vector
 - point_group_id: Integer
 - max_neighbors: Integer
+
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeInterpolateCurves.webp)
 
 #### Returns:
 - node with sockets ['curves', 'closest_index', 'closest_weight']
@@ -1172,6 +1182,8 @@ def raycast(self, target_geometry=None, attribute=None, source_position=None, ra
 - ray_length: Float
 - mapping (str): 'INTERPOLATED' in [INTERPOLATED, NEAREST]
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeRaycast.webp)
+
 #### Returns:
 - node with sockets ['is_hit', 'hit_position', 'hit_normal', 'hit_distance', 'attribute']
 
@@ -1199,6 +1211,8 @@ def raycast_interpolated(self, target_geometry=None, attribute=None, source_posi
 - ray_direction: Vector
 - ray_length: Float
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeRaycast.webp)
+
 #### Returns:
 - node with sockets ['is_hit', 'hit_position', 'hit_normal', 'hit_distance', 'attribute']
 
@@ -1225,6 +1239,8 @@ def raycast_nearest(self, target_geometry=None, attribute=None, source_position=
 - source_position: Vector
 - ray_direction: Vector
 - ray_length: Float
+
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeRaycast.webp)
 
 #### Returns:
 - node with sockets ['is_hit', 'hit_position', 'hit_normal', 'hit_distance', 'attribute']
@@ -1346,6 +1362,8 @@ def separate(self, selection=None, domain='POINT')
 #### Args:
 - selection: Boolean
 - domain (str): 'POINT' in [POINT, EDGE, FACE, CURVE, INSTANCE]
+
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeSeparateGeometry.webp)
 
 #### Returns:
 - node with sockets ['selection', 'inverted']

@@ -162,6 +162,8 @@ def info(self, frame=None)
 #### Args:
 - frame: Integer
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeImageInfo.webp)
+
 #### Returns:
 - node with sockets ['width', 'height', 'has_alpha', 'frame_count', 'fps']
 
@@ -211,6 +213,8 @@ def texture(self, vector=None, frame=None, extension='REPEAT', interpolation='Li
 - frame: Integer
 - extension (str): 'REPEAT' in [REPEAT, EXTEND, CLIP, MIRROR]
 - interpolation (str): 'Linear' in [Linear, Closest, Cubic]
+
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeImageTexture.webp)
 
 #### Returns:
 - node with sockets ['color', 'alpha']

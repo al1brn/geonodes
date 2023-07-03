@@ -40,7 +40,7 @@ node = nodes.ImageTexture(image=None, vector=None, frame=None, extension='REPEAT
 | **[Image](Image.md)** |
 | [texture](Image.md#texture) | `def texture(self, vector=None, frame=None, extension='REPEAT', interpolation='Linear'):` |
 | **[Texture](Texture.md)** |
-| [image](Texture.md#image) | `@staticmethod`<br> `def image(image=None, vector=None, frame=None, extension='REPEAT', interpolation='Linear'):` |
+| [Image](Texture.md#Image) | `@classmethod`<br> `def Image(cls, image=None, vector=None, frame=None, extension='REPEAT', interpolation='Linear'):` |
 
 <sub>Go to [top](#node-Image-Texture) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

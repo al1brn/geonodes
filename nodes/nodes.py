@@ -2451,7 +2451,7 @@ class HandleTypeSelection(Node):
 
     Args:
         handle_type (str): Node parameter, default = 'AUTO' in ('FREE', 'AUTO', 'VECTOR', 'ALIGN')
-        mode (set): Node parameter, default = {'RIGHT', 'LEFT'}
+        mode (set): Node parameter, default = {'LEFT', 'RIGHT'}
         node_color (color): Node color
         node_label (str): Node label
 
@@ -2463,7 +2463,7 @@ class HandleTypeSelection(Node):
 
     """
 
-    def __init__(self, handle_type='AUTO', mode={'RIGHT', 'LEFT'}, label=None, node_color=None):
+    def __init__(self, handle_type='AUTO', mode={'LEFT', 'RIGHT'}, label=None, node_color=None):
 
         super().__init__('GeometryNodeCurveHandleTypeSelection', node_name='Handle Type Selection', label=label, node_color=node_color)
 
@@ -3175,7 +3175,7 @@ class SetHandleType(Node):
         curve (DataSocket): Curve
         selection (DataSocket): Boolean
         handle_type (str): Node parameter, default = 'AUTO' in ('FREE', 'AUTO', 'VECTOR', 'ALIGN')
-        mode (set): Node parameter, default = {'RIGHT', 'LEFT'}
+        mode (set): Node parameter, default = {'LEFT', 'RIGHT'}
         node_color (color): Node color
         node_label (str): Node label
 
@@ -3187,7 +3187,7 @@ class SetHandleType(Node):
 
     """
 
-    def __init__(self, curve=None, selection=None, handle_type='AUTO', mode={'RIGHT', 'LEFT'}, label=None, node_color=None):
+    def __init__(self, curve=None, selection=None, handle_type='AUTO', mode={'LEFT', 'RIGHT'}, label=None, node_color=None):
 
         super().__init__('GeometryNodeCurveSetHandles', node_name='Set Handle Type', label=label, node_color=node_color)
 
@@ -5260,7 +5260,7 @@ class ImageTexture(Node):
 
     Node implementation:
         Texture:
-            image 
+            Image 
         Image:
             texture 
 
@@ -14348,7 +14348,7 @@ class BrickTexture(Node):
 
     Node implementation:
         Texture:
-            brick 
+            Brick 
 
     Args:
         vector (DataSocket): Vector
@@ -14537,7 +14537,7 @@ class CheckerTexture(Node):
 
     Node implementation:
         Texture:
-            checker 
+            Checker 
 
     Args:
         vector (DataSocket): Vector
@@ -14623,7 +14623,7 @@ class GradientTexture(Node):
 
     Node implementation:
         Texture:
-            gradient gradient_linear gradient_quadratic gradient_easing gradient_diagonal gradient_spherical gradient_quadratic_sphere gradient_radial 
+            Gradient GradientLinear GradientQuadratic GradientEeasing GradientDiagonal GradientSpherical GradientQuadratic_sphere GradientRadial 
 
     Args:
         vector (DataSocket): Vector
@@ -14692,7 +14692,7 @@ class MagicTexture(Node):
 
     Node implementation:
         Texture:
-            magic 
+            Magic 
 
     Args:
         vector (DataSocket): Vector
@@ -14781,7 +14781,7 @@ class MusgraveTexture(Node):
 
     Node implementation:
         Texture:
-            musgrave 
+            Musgrave 
 
     Args:
         vector (DataSocket): Vector
@@ -14925,7 +14925,7 @@ class NoiseTexture(Node):
 
     Node implementation:
         Texture:
-            noise noise_1D noise_2D noise_3D noise_4D 
+            Noise Noise1D Noise2D Noise3D Noise4D 
 
     Args:
         vector (DataSocket): Vector
@@ -15044,7 +15044,7 @@ class VoronoiTexture(Node):
 
     Node implementation:
         Texture:
-            voronoi voronoi_1D voronoi_2D voronoi_3D voronoi_4D 
+            Voronoi Voronoi1D Voronoi2D Voronoi3D Voronoi4D 
 
     Args:
         vector (DataSocket): Vector
@@ -15194,7 +15194,7 @@ class WaveTexture(Node):
 
     Node implementation:
         Texture:
-            wave wave_bands wave_rings wave_bands_sine wave_bands_saw wave_bands_triangle wave_rings_sine wave_rings_saw wave_rings_triangle 
+            Wave WaveBands WaveRings WaveBands_sine WaveBands_saw WaveBands_triangle WaveRings_sine WaveRings_saw WaveRings_triangle 
 
     Args:
         vector (DataSocket): Vector
@@ -15353,7 +15353,7 @@ class WhiteNoiseTexture(Node):
 
     Node implementation:
         Texture:
-            white_noise white_noise_1D white_noise_2D white_noise_3D white_noise_4D 
+            WhiteNoise WhiteNoise1D WhiteNoise2D WhiteNoise3D WhiteNoise4D 
 
     Args:
         vector (DataSocket): Vector

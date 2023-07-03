@@ -36,11 +36,11 @@ node = nodes.WhiteNoiseTexture(vector=None, w=None, noise_dimensions='3D')
 | Class or method name | Definition |
 |----------------------|------------|
 | **[Texture](Texture.md)** |
-| [white_noise](Texture.md#white_noise) | `@staticmethod`<br> `def white_noise(vector=None, w=None, noise_dimensions='3D'):` |
-| [white_noise_1D](Texture.md#white_noise_1D) | `@staticmethod`<br> `def white_noise_1D(w=None):` |
-| [white_noise_2D](Texture.md#white_noise_2D) | `@staticmethod`<br> `def white_noise_2D(vector=None):` |
-| [white_noise_3D](Texture.md#white_noise_3D) | `@staticmethod`<br> `def white_noise_3D(vector=None):` |
-| [white_noise_4D](Texture.md#white_noise_4D) | `@staticmethod`<br> `def white_noise_4D(vector=None, w=None):` |
+| [WhiteNoise](Texture.md#WhiteNoise) | `@classmethod`<br> `def WhiteNoise(cls, vector=None, w=None, noise_dimensions='3D'):` |
+| [WhiteNoise1D](Texture.md#WhiteNoise1D) | `@classmethod`<br> `def WhiteNoise1D(cls, w=None):` |
+| [WhiteNoise2D](Texture.md#WhiteNoise2D) | `@classmethod`<br> `def WhiteNoise2D(cls, vector=None):` |
+| [WhiteNoise3D](Texture.md#WhiteNoise3D) | `@classmethod`<br> `def WhiteNoise3D(cls, vector=None):` |
+| [WhiteNoise4D](Texture.md#WhiteNoise4D) | `@classmethod`<br> `def WhiteNoise4D(cls, vector=None, w=None):` |
 
 <sub>Go to [top](#node-White-Noise-Texture) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

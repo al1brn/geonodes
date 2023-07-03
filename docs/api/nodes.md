@@ -16,10 +16,10 @@
 | [Boolean Math](FunctionNodeBooleanMath.md) | [Boolean](Boolean.md) | [b_and](Boolean.md#b_and) / [b_or](Boolean.md#b_or) / [b_not](Boolean.md#b_not) / [nand](Boolean.md#nand) / [nor](Boolean.md#nor) / [xnor](Boolean.md#xnor) / [xor](Boolean.md#xor) / [imply](Boolean.md#imply) / [nimply](Boolean.md#nimply) / |
 |      | [functions](functions.md) | [b_and](functions.md#b_and) / [b_or](functions.md#b_or) / [b_not](functions.md#b_not) / [nand](functions.md#nand) / [nor](functions.md#nor) / [xnor](functions.md#xnor) / [xor](functions.md#xor) / [imply](functions.md#imply) / [nimply](functions.md#nimply) / |
 | [Bounding Box](GeometryNodeBoundBox.md) | [Geometry](Geometry.md) | - [bounding_box](Geometry.md#bounding_box)<br>- [bounding_box_min](Geometry.md#bounding_box_min)<br>- [bounding_box_min](Geometry.md#bounding_box_min)|
-| [Brick Texture](ShaderNodeTexBrick.md) | [Texture](Texture.md) | [brick](Texture.md#brick) |
+| [Brick Texture](ShaderNodeTexBrick.md) | [Texture](Texture.md) | [Brick](Texture.md#Brick) |
 | [Capture Attribute](GeometryNodeCaptureAttribute.md) | [Domain](Domain.md) | [capture_attribute](Domain.md#capture_attribute) |
 |      | [Geometry](Geometry.md) | - [capture_attribute](Geometry.md#capture_attribute)<br>- [capture_attribute_node](Geometry.md#capture_attribute_node)|
-| [Checker Texture](ShaderNodeTexChecker.md) | [Texture](Texture.md) | [checker](Texture.md#checker) |
+| [Checker Texture](ShaderNodeTexChecker.md) | [Texture](Texture.md) | [Checker](Texture.md#Checker) |
 | [Clamp](ShaderNodeClamp.md) | [Float](Float.md) | - [clamp](Float.md#clamp)<br>- [clamp_min_max](Float.md#clamp_min_max)<br>- [clamp_range](Float.md#clamp_range)|
 |      | [functions](functions.md) | - [clamp](functions.md#clamp)<br>- [clamp_min_max](functions.md#clamp_min_max)<br>- [clamp_range](functions.md#clamp_range)|
 | [Collection Info](GeometryNodeCollectionInfo.md) | [Geometry](Geometry.md) | [Collection](Geometry.md#Collection) |
@@ -129,7 +129,7 @@
 |      | [Vertex](Vertex.md) | [proximity](Vertex.md#proximity) |
 | [Geometry to Instance](GeometryNodeGeometryToInstance.md) | [Geometry](Geometry.md) | [to_instance](Geometry.md#to_instance) |
 |      | [functions](functions.md) | [geometry_to_instance](functions.md#geometry_to_instance) |
-| [Gradient Texture](ShaderNodeTexGradient.md) | [Texture](Texture.md) | [gradient](Texture.md#gradient) / [gradient_linear](Texture.md#gradient_linear) / [gradient_quadratic](Texture.md#gradient_quadratic) / [gradient_easing](Texture.md#gradient_easing) / [gradient_diagonal](Texture.md#gradient_diagonal) / [gradient_spherical](Texture.md#gradient_spherical) / [gradient_quadratic_sphere](Texture.md#gradient_quadratic_sphere) / [gradient_radial](Texture.md#gradient_radial) / |
+| [Gradient Texture](ShaderNodeTexGradient.md) | [Texture](Texture.md) | [Gradient](Texture.md#Gradient) / [GradientLinear](Texture.md#GradientLinear) / [GradientQuadratic](Texture.md#GradientQuadratic) / [GradientEeasing](Texture.md#GradientEeasing) / [GradientDiagonal](Texture.md#GradientDiagonal) / [GradientSpherical](Texture.md#GradientSpherical) / [GradientQuadratic_sphere](Texture.md#GradientQuadratic_sphere) / [GradientRadial](Texture.md#GradientRadial) / |
 | [Grid](GeometryNodeMeshGrid.md) | [Mesh](Mesh.md) | [Grid](Mesh.md#Grid) |
 | [Handle Type Selection](GeometryNodeCurveHandleTypeSelection.md) | [ControlPoint](ControlPoint.md) | [handle_type_selection_node](ControlPoint.md#handle_type_selection_node) / [handle_type_selection](ControlPoint.md#handle_type_selection) / [handle_type_selection](ControlPoint.md#handle_type_selection) / [handle_type_selection](ControlPoint.md#handle_type_selection) / [handle_type_selection](ControlPoint.md#handle_type_selection) / [handle_type_selection](ControlPoint.md#handle_type_selection) / |
 | [ID](GeometryNodeInputID.md) | [Domain](Domain.md) | [ID](Domain.md#ID) |
@@ -137,7 +137,7 @@
 | [Ico Sphere](GeometryNodeMeshIcoSphere.md) | [Mesh](Mesh.md) | [IcoSphere](Mesh.md#IcoSphere) |
 | [Image Info](GeometryNodeImageInfo.md) | [Image](Image.md) | [info](Image.md#info) / [width](Image.md#width) / [height](Image.md#height) / [has_alpha](Image.md#has_alpha) / [frame_count](Image.md#frame_count) / [fps](Image.md#fps) / |
 | [Image Texture](GeometryNodeImageTexture.md) | [Image](Image.md) | [texture](Image.md#texture) |
-|      | [Texture](Texture.md) | [image](Texture.md#image) |
+|      | [Texture](Texture.md) | [Image](Texture.md#Image) |
 | [Index](GeometryNodeInputIndex.md) | [Domain](Domain.md) | - [index](Domain.md#index)<br>- [domain_index](Domain.md#domain_index)|
 |      | [Geometry](Geometry.md) | [index](Geometry.md#index) |
 | [Index of Nearest](GeometryNodeIndexOfNearest.md) | [Domain](Domain.md) | [index_of_nearest](Domain.md#index_of_nearest) |
@@ -171,7 +171,7 @@
 |      | [functions](functions.md) | [join_geometry](functions.md#join_geometry) |
 | [Join Strings](GeometryNodeStringJoin.md) | [String](String.md) | - [join](String.md#join)<br>- [string_join](String.md#string_join)|
 |      | [functions](functions.md) | [join_strings](functions.md#join_strings) |
-| [Magic Texture](ShaderNodeTexMagic.md) | [Texture](Texture.md) | [magic](Texture.md#magic) |
+| [Magic Texture](ShaderNodeTexMagic.md) | [Texture](Texture.md) | [Magic](Texture.md#Magic) |
 | [Map Range](ShaderNodeMapRange.md) | [Float](Float.md) | [map_range](Float.md#map_range) / [map_range_linear](Float.md#map_range_linear) / [map_range_stepped](Float.md#map_range_stepped) / [map_range_smooth](Float.md#map_range_smooth) / [map_range_smoother](Float.md#map_range_smoother) / |
 |      | [Vector](Vector.md) | [map_range](Vector.md#map_range) / [map_range_linear](Vector.md#map_range_linear) / [map_range_stepped](Vector.md#map_range_stepped) / [map_range_smooth](Vector.md#map_range_smooth) / [map_range_smoother](Vector.md#map_range_smoother) / |
 | [Material](GeometryNodeInputMaterial.md) | [Material](Material.md) | [Material](Material.md#Material) |
@@ -203,10 +203,10 @@
 |      | [Float](Float.md) | [mix](Float.md#mix) |
 |      | [Vector](Vector.md) | - [mix](Vector.md#mix)<br>- [mix_uniform](Vector.md#mix_uniform)<br>- [mix_non_uniform](Vector.md#mix_non_uniform)|
 |      | [functions](functions.md) | [float_mix](functions.md#float_mix) / [vector_mix](functions.md#vector_mix) / [color_mix](functions.md#color_mix) / [color_darken](functions.md#color_darken) / [color_multiply](functions.md#color_multiply) / [color_burn](functions.md#color_burn) / [color_lighten](functions.md#color_lighten) / [color_screen](functions.md#color_screen) / [color_dodge](functions.md#color_dodge) / [color_add](functions.md#color_add) / [color_overlay](functions.md#color_overlay) / [color_soft_light](functions.md#color_soft_light) / [color_linear_light](functions.md#color_linear_light) / [color_difference](functions.md#color_difference) / [color_subtract](functions.md#color_subtract) / [color_divide](functions.md#color_divide) / [color_hue](functions.md#color_hue) / [color_saturation](functions.md#color_saturation) / [color_color](functions.md#color_color) / [color_value](functions.md#color_value) / |
-| [Musgrave Texture](ShaderNodeTexMusgrave.md) | [Texture](Texture.md) | [musgrave](Texture.md#musgrave) |
+| [Musgrave Texture](ShaderNodeTexMusgrave.md) | [Texture](Texture.md) | [Musgrave](Texture.md#Musgrave) |
 | [Named Attribute](GeometryNodeInputNamedAttribute.md) | [Domain](Domain.md) | [named_attribute](Domain.md#named_attribute) / [named_float](Domain.md#named_float) / [named_integer](Domain.md#named_integer) / [named_vector](Domain.md#named_vector) / [named_color](Domain.md#named_color) / [named_boolean](Domain.md#named_boolean) / [named_attribute_exists](Domain.md#named_attribute_exists) / |
 |      | [Geometry](Geometry.md) | [named_attribute](Geometry.md#named_attribute) / [named_float](Geometry.md#named_float) / [named_integer](Geometry.md#named_integer) / [named_vector](Geometry.md#named_vector) / [named_color](Geometry.md#named_color) / [named_boolean](Geometry.md#named_boolean) / [named_attribute_exists](Geometry.md#named_attribute_exists) / |
-| [Noise Texture](ShaderNodeTexNoise.md) | [Texture](Texture.md) | [noise](Texture.md#noise) / [noise_1D](Texture.md#noise_1D) / [noise_2D](Texture.md#noise_2D) / [noise_3D](Texture.md#noise_3D) / [noise_4D](Texture.md#noise_4D) / |
+| [Noise Texture](ShaderNodeTexNoise.md) | [Texture](Texture.md) | [Noise](Texture.md#Noise) / [Noise1D](Texture.md#Noise1D) / [Noise2D](Texture.md#Noise2D) / [Noise3D](Texture.md#Noise3D) / [Noise4D](Texture.md#Noise4D) / |
 | [Normal](GeometryNodeInputNormal.md) | [Domain](Domain.md) | [normal](Domain.md#normal) |
 |      | [Geometry](Geometry.md) | [normal](Geometry.md#normal) |
 |      | [Spline](Spline.md) | [normal](Spline.md#normal) |
@@ -369,7 +369,7 @@
 |      | [Geometry](Geometry.md) | - [viewer](Geometry.md#viewer)<br>- [view](Geometry.md#view)|
 | [Volume Cube](GeometryNodeVolumeCube.md) | [Volume](Volume.md) | [Cube](Volume.md#Cube) |
 | [Volume to Mesh](GeometryNodeVolumeToMesh.md) | [Volume](Volume.md) | [to_mesh](Volume.md#to_mesh) |
-| [Voronoi Texture](ShaderNodeTexVoronoi.md) | [Texture](Texture.md) | [voronoi](Texture.md#voronoi) / [voronoi_1D](Texture.md#voronoi_1D) / [voronoi_2D](Texture.md#voronoi_2D) / [voronoi_3D](Texture.md#voronoi_3D) / [voronoi_4D](Texture.md#voronoi_4D) / |
-| [Wave Texture](ShaderNodeTexWave.md) | [Texture](Texture.md) | [wave](Texture.md#wave) / [wave_bands](Texture.md#wave_bands) / [wave_rings](Texture.md#wave_rings) / [wave_bands_sine](Texture.md#wave_bands_sine) / [wave_bands_saw](Texture.md#wave_bands_saw) / [wave_bands_triangle](Texture.md#wave_bands_triangle) / [wave_rings_sine](Texture.md#wave_rings_sine) / [wave_rings_saw](Texture.md#wave_rings_saw) / [wave_rings_triangle](Texture.md#wave_rings_triangle) / |
-| [White Noise Texture](ShaderNodeTexWhiteNoise.md) | [Texture](Texture.md) | [white_noise](Texture.md#white_noise) / [white_noise_1D](Texture.md#white_noise_1D) / [white_noise_2D](Texture.md#white_noise_2D) / [white_noise_3D](Texture.md#white_noise_3D) / [white_noise_4D](Texture.md#white_noise_4D) / |
+| [Voronoi Texture](ShaderNodeTexVoronoi.md) | [Texture](Texture.md) | [Voronoi](Texture.md#Voronoi) / [Voronoi1D](Texture.md#Voronoi1D) / [Voronoi2D](Texture.md#Voronoi2D) / [Voronoi3D](Texture.md#Voronoi3D) / [Voronoi4D](Texture.md#Voronoi4D) / |
+| [Wave Texture](ShaderNodeTexWave.md) | [Texture](Texture.md) | [Wave](Texture.md#Wave) / [WaveBands](Texture.md#WaveBands) / [WaveRings](Texture.md#WaveRings) / [WaveBands_sine](Texture.md#WaveBands_sine) / [WaveBands_saw](Texture.md#WaveBands_saw) / [WaveBands_triangle](Texture.md#WaveBands_triangle) / [WaveRings_sine](Texture.md#WaveRings_sine) / [WaveRings_saw](Texture.md#WaveRings_saw) / [WaveRings_triangle](Texture.md#WaveRings_triangle) / |
+| [White Noise Texture](ShaderNodeTexWhiteNoise.md) | [Texture](Texture.md) | [WhiteNoise](Texture.md#WhiteNoise) / [WhiteNoise1D](Texture.md#WhiteNoise1D) / [WhiteNoise2D](Texture.md#WhiteNoise2D) / [WhiteNoise3D](Texture.md#WhiteNoise3D) / [WhiteNoise4D](Texture.md#WhiteNoise4D) / |
 

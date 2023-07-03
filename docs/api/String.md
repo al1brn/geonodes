@@ -408,6 +408,8 @@ def to_curves(self, size=None, character_spacing=None, word_spacing=None, line_s
 - overflow (str): 'OVERFLOW' in [OVERFLOW, SCALE_TO_FIT, TRUNCATE]
 - pivot_mode (str): 'BOTTOM_LEFT' in [MIDPOINT, TOP_LEFT, TOP_CENTER,... , BOTTOM_LEFT, BOTTOM_CENTER, BOTTOM_RIGHT]
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeStringToCurves.webp)
+
 #### Returns:
 - node with sockets ['curve_instances', 'remainder', 'line', 'pivot_point']
 

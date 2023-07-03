@@ -77,6 +77,8 @@ Node implemented as property setter.
 
 > Node: [Edge Angle](GeometryNodeInputMeshEdgeAngle.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/edge_angle.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshEdgeAngle.html)
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeInputMeshEdgeAngle.webp)
+
 #### Returns:
 - node with sockets ['unsigned_angle', 'signed_angle']
 
@@ -232,6 +234,8 @@ Node implemented as property setter.
 - position: Vector
 - group_id: Integer
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeIndexOfNearest.webp)
+
 #### Returns:
 - node with sockets ['index', 'has_neighbor']
 
@@ -369,6 +373,8 @@ Node implemented as property setter.
 
 > Node: [Edge Vertices](GeometryNodeInputMeshEdgeVertices.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/edge_vertices.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshEdgeVertices.html)
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeInputMeshEdgeVertices.webp)
+
 #### Returns:
 - node with sockets ['vertex_index_1', 'vertex_index_2', 'position_1', 'position_2']
 
@@ -385,6 +391,8 @@ Node implemented as property setter.
 
 > Node: [Edge Vertices](GeometryNodeInputMeshEdgeVertices.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/edge_vertices.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshEdgeVertices.html)
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeInputMeshEdgeVertices.webp)
+
 #### Returns:
 - node with sockets ['vertex_index_1', 'vertex_index_2', 'position_1', 'position_2']
 
@@ -400,6 +408,8 @@ Node implemented as property setter.
 
 
 > Node: [Edge Vertices](GeometryNodeInputMeshEdgeVertices.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/edge_vertices.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshEdgeVertices.html)
+
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeInputMeshEdgeVertices.webp)
 
 #### Returns:
 - node with sockets ['vertex_index_1', 'vertex_index_2', 'position_1', 'position_2']
@@ -535,6 +545,8 @@ def accumulate_field(self, value=None, group_id=None)
 #### Args:
 - value: ['Vector', 'Float', 'Integer']
 - group_id: Integer
+
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeAccumulateField.webp)
 
 #### Returns:
 - node with sockets ['leading', 'trailing', 'total']
@@ -700,6 +712,8 @@ def attribute_statistic(self, attribute=None)
 
 #### Args:
 - attribute: ['Float', 'Vector']
+
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeAttributeStatistic.webp)
 
 #### Returns:
 - node with sockets ['mean', 'median', 'sum', 'min', 'max', 'range', 'standard_deviation', 'variance']
@@ -1097,8 +1111,10 @@ def extrude(self, offset=None, offset_scale=None, individual=None)
 - offset_scale: Float
 - individual: Boolean
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeExtrudeMesh.webp)
+
 #### Returns:
-- self
+- node with sockets ['mesh', 'top', 'side']
 
 
 
@@ -1522,6 +1538,8 @@ def separate(self)
 
 
 > Node: [Separate Geometry](GeometryNodeSeparateGeometry.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/separate_geometry.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSeparateGeometry.html)
+
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeSeparateGeometry.webp)
 
 #### Returns:
 - node with sockets ['selection', 'inverted']

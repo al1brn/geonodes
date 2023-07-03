@@ -249,6 +249,8 @@ Node implemented as property setter.
 - position: Vector
 - group_id: Integer
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeIndexOfNearest.webp)
+
 #### Returns:
 - node with sockets ['index', 'has_neighbor']
 
@@ -264,6 +266,8 @@ Node implemented as property setter.
 
 
 > Node: [Spline Length](GeometryNodeSplineLength.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/spline_length.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSplineLength.html)
+
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeSplineLength.webp)
 
 #### Returns:
 - node with sockets ['length', 'point_count']
@@ -590,6 +594,8 @@ def accumulate_field(self, value=None, group_id=None)
 - value: ['Vector', 'Float', 'Integer']
 - group_id: Integer
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeAccumulateField.webp)
+
 #### Returns:
 - node with sockets ['leading', 'trailing', 'total']
 
@@ -754,6 +760,8 @@ def attribute_statistic(self, attribute=None)
 
 #### Args:
 - attribute: ['Float', 'Vector']
+
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeAttributeStatistic.webp)
 
 #### Returns:
 - node with sockets ['mean', 'median', 'sum', 'min', 'max', 'range', 'standard_deviation', 'variance']
@@ -1300,6 +1308,8 @@ def points(self, weights=None, sort_index=None)
 - weights: Float
 - sort_index: Integer
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodePointsOfCurve.webp)
+
 #### Returns:
 - node with sockets ['point_index', 'total']
 
@@ -1486,6 +1496,8 @@ def separate(self)
 
 
 > Node: [Separate Geometry](GeometryNodeSeparateGeometry.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/separate_geometry.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSeparateGeometry.html)
+
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeSeparateGeometry.webp)
 
 #### Returns:
 - node with sockets ['selection', 'inverted']

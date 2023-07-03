@@ -216,6 +216,8 @@ Node implemented as property setter.
 - position: Vector
 - group_id: Integer
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeIndexOfNearest.webp)
+
 #### Returns:
 - node with sockets ['index', 'has_neighbor']
 
@@ -231,6 +233,8 @@ Node implemented as property setter.
 
 
 > Node: [Vertex Neighbors](GeometryNodeInputMeshVertexNeighbors.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/vertex_neighbors.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshVertexNeighbors.html)
+
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeInputMeshVertexNeighbors.webp)
 
 #### Returns:
 - node with sockets ['vertex_count', 'face_count']
@@ -472,6 +476,8 @@ def accumulate_field(self, value=None, group_id=None)
 - value: ['Vector', 'Float', 'Integer']
 - group_id: Integer
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeAccumulateField.webp)
+
 #### Returns:
 - node with sockets ['leading', 'trailing', 'total']
 
@@ -636,6 +642,8 @@ def attribute_statistic(self, attribute=None)
 
 #### Args:
 - attribute: ['Float', 'Vector']
+
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeAttributeStatistic.webp)
 
 #### Returns:
 - node with sockets ['mean', 'median', 'sum', 'min', 'max', 'range', 'standard_deviation', 'variance']
@@ -878,6 +886,8 @@ def corners(self, weights=None, sort_index=None)
 - weights: Float
 - sort_index: Integer
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeCornersOfVertex.webp)
+
 #### Returns:
 - node with sockets ['corner_index', 'total']
 
@@ -1056,6 +1066,8 @@ def edges(self, weights=None, sort_index=None)
 - weights: Float
 - sort_index: Integer
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeEdgesOfVertex.webp)
+
 #### Returns:
 - node with sockets ['edge_index', 'total']
 
@@ -1153,8 +1165,10 @@ def extrude(self, offset=None, offset_scale=None, individual=None)
 - offset_scale: Float
 - individual: Boolean
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeExtrudeMesh.webp)
+
 #### Returns:
-- self
+- node with sockets ['mesh', 'top', 'side']
 
 
 
@@ -1232,6 +1246,8 @@ def interpolate(self, guide_curves=None, guide_up=None, guide_group_id=None, poi
 - point_up: Vector
 - point_group_id: Integer
 - max_neighbors: Integer
+
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeInterpolateCurves.webp)
 
 #### Returns:
 - node with sockets ['curves', 'closest_index', 'closest_weight']
@@ -1608,6 +1624,8 @@ def separate(self)
 
 
 > Node: [Separate Geometry](GeometryNodeSeparateGeometry.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/separate_geometry.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSeparateGeometry.html)
+
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeSeparateGeometry.webp)
 
 #### Returns:
 - node with sockets ['selection', 'inverted']

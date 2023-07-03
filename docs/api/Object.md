@@ -141,6 +141,8 @@ def info(self, as_instance=None, transform_space='ORIGINAL')
 - as_instance: Boolean
 - transform_space (str): 'ORIGINAL' in [ORIGINAL, RELATIVE]
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeObjectInfo.webp)
+
 #### Returns:
 - node with sockets ['location', 'rotation', 'scale', 'geometry']
 

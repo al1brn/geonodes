@@ -876,6 +876,8 @@ def separate_color(self, mode='RGB')
 #### Args:
 - mode (str): 'RGB' in [RGB, HSV, HSL]
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_FunctionNodeSeparateColor.webp)
+
 #### Returns:
 - node with sockets ['red', 'green', 'blue', 'alpha']
 

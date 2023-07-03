@@ -73,6 +73,8 @@ Vector(self, value=(0., 0., 0.), label=None)
 
 > Node: [Separate XYZ](ShaderNodeSeparateXYZ.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/vector/separate_xyz.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeSeparateXYZ.html)
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeSeparateXYZ.webp)
+
 #### Returns:
 - node with sockets ['x', 'y', 'z']
 

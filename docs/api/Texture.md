@@ -12,7 +12,7 @@
 
 **Class and static methods**
 
-[Input](#Input) | [brick](#brick) | [checker](#checker) | [gradient](#gradient) | [gradient_diagonal](#gradient_diagonal) | [gradient_easing](#gradient_easing) | [gradient_linear](#gradient_linear) | [gradient_quadratic](#gradient_quadratic) | [gradient_quadratic_sphere](#gradient_quadratic_sphere) | [gradient_radial](#gradient_radial) | [gradient_spherical](#gradient_spherical) | [image](#image) | [magic](#magic) | [musgrave](#musgrave) | [noise](#noise) | [noise_1D](#noise_1D) | [noise_2D](#noise_2D) | [noise_3D](#noise_3D) | [noise_4D](#noise_4D) | [voronoi](#voronoi) | [voronoi_1D](#voronoi_1D) | [voronoi_2D](#voronoi_2D) | [voronoi_3D](#voronoi_3D) | [voronoi_4D](#voronoi_4D) | [wave](#wave) | [wave_bands](#wave_bands) | [wave_bands_saw](#wave_bands_saw) | [wave_bands_sine](#wave_bands_sine) | [wave_bands_triangle](#wave_bands_triangle) | [wave_rings](#wave_rings) | [wave_rings_saw](#wave_rings_saw) | [wave_rings_sine](#wave_rings_sine) | [wave_rings_triangle](#wave_rings_triangle) | [white_noise](#white_noise) | [white_noise_1D](#white_noise_1D) | [white_noise_2D](#white_noise_2D) | [white_noise_3D](#white_noise_3D) | [white_noise_4D](#white_noise_4D)
+[Brick](#Brick) | [Checker](#Checker) | [Gradient](#Gradient) | [GradientDiagonal](#GradientDiagonal) | [GradientEeasing](#GradientEeasing) | [GradientLinear](#GradientLinear) | [GradientQuadratic](#GradientQuadratic) | [GradientQuadratic_sphere](#GradientQuadratic_sphere) | [GradientRadial](#GradientRadial) | [GradientSpherical](#GradientSpherical) | [Image](#Image) | [Input](#Input) | [Magic](#Magic) | [Musgrave](#Musgrave) | [Noise](#Noise) | [Noise1D](#Noise1D) | [Noise2D](#Noise2D) | [Noise3D](#Noise3D) | [Noise4D](#Noise4D) | [Voronoi](#Voronoi) | [Voronoi1D](#Voronoi1D) | [Voronoi2D](#Voronoi2D) | [Voronoi3D](#Voronoi3D) | [Voronoi4D](#Voronoi4D) | [Wave](#Wave) | [WaveBands](#WaveBands) | [WaveBands_saw](#WaveBands_saw) | [WaveBands_sine](#WaveBands_sine) | [WaveBands_triangle](#WaveBands_triangle) | [WaveRings](#WaveRings) | [WaveRings_saw](#WaveRings_saw) | [WaveRings_sine](#WaveRings_sine) | [WaveRings_triangle](#WaveRings_triangle) | [WhiteNoise](#WhiteNoise) | [WhiteNoise1D](#WhiteNoise1D) | [WhiteNoise2D](#WhiteNoise2D) | [WhiteNoise3D](#WhiteNoise3D) | [WhiteNoise4D](#WhiteNoise4D)
 
 ***Inherited***
 
@@ -28,32 +28,11 @@
 
 ## Class and static methods
 
-### Input
+### Brick
 
 ```python
 @classmethod
-def Input(cls, value=None, name="Texture", description="")
-```
-
- Create a Texture input socket in the Group Input Node
-
-#### Args:
-- name: The socket name
-- description: User tip
-    
-#### Returns:
-- Texture: The Texture data socket
-
-
-
-
-<sub>Go to [top](#class-Texture) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-### brick
-
-```python
-@staticmethod
-def brick(vector=None, color1=None, color2=None, mortar=None, scale=None, mortar_size=None, mortar_smooth=None, bias=None, brick_width=None, row_height=None, offset=0.5, offset_frequency=2, squash=1.0, squash_frequency=2)
+def Brick(cls, vector=None, color1=None, color2=None, mortar=None, scale=None, mortar_size=None, mortar_smooth=None, bias=None, brick_width=None, row_height=None, offset=0.5, offset_frequency=2, squash=1.0, squash_frequency=2)
 ```
 
 
@@ -76,6 +55,8 @@ def brick(vector=None, color1=None, color2=None, mortar=None, scale=None, mortar
 - squash (float): 1.0
 - squash_frequency (int): 2
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexBrick.webp)
+
 #### Returns:
 - node with sockets ['color', 'fac']
 
@@ -86,11 +67,11 @@ def brick(vector=None, color1=None, color2=None, mortar=None, scale=None, mortar
 
 <sub>Go to [top](#class-Texture) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
-### checker
+### Checker
 
 ```python
-@staticmethod
-def checker(vector=None, color1=None, color2=None, scale=None)
+@classmethod
+def Checker(cls, vector=None, color1=None, color2=None, scale=None)
 ```
 
 
@@ -103,6 +84,8 @@ def checker(vector=None, color1=None, color2=None, scale=None)
 - color2: Color
 - scale: Float
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexChecker.webp)
+
 #### Returns:
 - node with sockets ['color', 'fac']
 
@@ -113,11 +96,11 @@ def checker(vector=None, color1=None, color2=None, scale=None)
 
 <sub>Go to [top](#class-Texture) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
-### gradient
+### Gradient
 
 ```python
-@staticmethod
-def gradient(vector=None, gradient_type='LINEAR')
+@classmethod
+def Gradient(cls, vector=None, gradient_type='LINEAR')
 ```
 
 
@@ -128,6 +111,8 @@ def gradient(vector=None, gradient_type='LINEAR')
 - vector: Vector
 - gradient_type (str): 'LINEAR' in [LINEAR, QUADRATIC, EASING, DIAGONAL, SPHERICAL, QUADRATIC_SPHERE, RADIAL]
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexGradient.webp)
+
 #### Returns:
 - node with sockets ['color', 'fac']
 
@@ -138,11 +123,11 @@ def gradient(vector=None, gradient_type='LINEAR')
 
 <sub>Go to [top](#class-Texture) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
-### gradient_diagonal
+### GradientDiagonal
 
 ```python
-@staticmethod
-def gradient_diagonal(vector=None)
+@classmethod
+def GradientDiagonal(cls, vector=None)
 ```
 
 
@@ -152,6 +137,8 @@ def gradient_diagonal(vector=None)
 #### Args:
 - vector: Vector
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexGradient.webp)
+
 #### Returns:
 - node with sockets ['color', 'fac']
 
@@ -162,11 +149,11 @@ def gradient_diagonal(vector=None)
 
 <sub>Go to [top](#class-Texture) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
-### gradient_easing
+### GradientEeasing
 
 ```python
-@staticmethod
-def gradient_easing(vector=None)
+@classmethod
+def GradientEeasing(cls, vector=None)
 ```
 
 
@@ -176,6 +163,8 @@ def gradient_easing(vector=None)
 #### Args:
 - vector: Vector
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexGradient.webp)
+
 #### Returns:
 - node with sockets ['color', 'fac']
 
@@ -186,11 +175,11 @@ def gradient_easing(vector=None)
 
 <sub>Go to [top](#class-Texture) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
-### gradient_linear
+### GradientLinear
 
 ```python
-@staticmethod
-def gradient_linear(vector=None)
+@classmethod
+def GradientLinear(cls, vector=None)
 ```
 
 
@@ -200,6 +189,8 @@ def gradient_linear(vector=None)
 #### Args:
 - vector: Vector
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexGradient.webp)
+
 #### Returns:
 - node with sockets ['color', 'fac']
 
@@ -210,11 +201,11 @@ def gradient_linear(vector=None)
 
 <sub>Go to [top](#class-Texture) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
-### gradient_quadratic
+### GradientQuadratic
 
 ```python
-@staticmethod
-def gradient_quadratic(vector=None)
+@classmethod
+def GradientQuadratic(cls, vector=None)
 ```
 
 
@@ -224,6 +215,8 @@ def gradient_quadratic(vector=None)
 #### Args:
 - vector: Vector
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexGradient.webp)
+
 #### Returns:
 - node with sockets ['color', 'fac']
 
@@ -234,11 +227,11 @@ def gradient_quadratic(vector=None)
 
 <sub>Go to [top](#class-Texture) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
-### gradient_quadratic_sphere
+### GradientQuadratic_sphere
 
 ```python
-@staticmethod
-def gradient_quadratic_sphere(vector=None)
+@classmethod
+def GradientQuadratic_sphere(cls, vector=None)
 ```
 
 
@@ -248,6 +241,8 @@ def gradient_quadratic_sphere(vector=None)
 #### Args:
 - vector: Vector
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexGradient.webp)
+
 #### Returns:
 - node with sockets ['color', 'fac']
 
@@ -258,11 +253,11 @@ def gradient_quadratic_sphere(vector=None)
 
 <sub>Go to [top](#class-Texture) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
-### gradient_radial
+### GradientRadial
 
 ```python
-@staticmethod
-def gradient_radial(vector=None)
+@classmethod
+def GradientRadial(cls, vector=None)
 ```
 
 
@@ -272,6 +267,8 @@ def gradient_radial(vector=None)
 #### Args:
 - vector: Vector
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexGradient.webp)
+
 #### Returns:
 - node with sockets ['color', 'fac']
 
@@ -282,11 +279,11 @@ def gradient_radial(vector=None)
 
 <sub>Go to [top](#class-Texture) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
-### gradient_spherical
+### GradientSpherical
 
 ```python
-@staticmethod
-def gradient_spherical(vector=None)
+@classmethod
+def GradientSpherical(cls, vector=None)
 ```
 
 
@@ -296,6 +293,8 @@ def gradient_spherical(vector=None)
 #### Args:
 - vector: Vector
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexGradient.webp)
+
 #### Returns:
 - node with sockets ['color', 'fac']
 
@@ -306,11 +305,11 @@ def gradient_spherical(vector=None)
 
 <sub>Go to [top](#class-Texture) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
-### image
+### Image
 
 ```python
-@staticmethod
-def image(image=None, vector=None, frame=None, extension='REPEAT', interpolation='Linear')
+@classmethod
+def Image(cls, image=None, vector=None, frame=None, extension='REPEAT', interpolation='Linear')
 ```
 
 
@@ -324,6 +323,8 @@ def image(image=None, vector=None, frame=None, extension='REPEAT', interpolation
 - extension (str): 'REPEAT' in [REPEAT, EXTEND, CLIP, MIRROR]
 - interpolation (str): 'Linear' in [Linear, Closest, Cubic]
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeImageTexture.webp)
+
 #### Returns:
 - node with sockets ['color', 'alpha']
 
@@ -334,11 +335,32 @@ def image(image=None, vector=None, frame=None, extension='REPEAT', interpolation
 
 <sub>Go to [top](#class-Texture) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
-### magic
+### Input
 
 ```python
-@staticmethod
-def magic(vector=None, scale=None, distortion=None, turbulence_depth=2)
+@classmethod
+def Input(cls, value=None, name="Texture", description="")
+```
+
+ Create a Texture input socket in the Group Input Node
+
+#### Args:
+- name: The socket name
+- description: User tip
+    
+#### Returns:
+- Texture: The Texture data socket
+
+
+
+
+<sub>Go to [top](#class-Texture) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### Magic
+
+```python
+@classmethod
+def Magic(cls, vector=None, scale=None, distortion=None, turbulence_depth=2)
 ```
 
 
@@ -351,6 +373,8 @@ def magic(vector=None, scale=None, distortion=None, turbulence_depth=2)
 - distortion: Float
 - turbulence_depth (int): 2
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexMagic.webp)
+
 #### Returns:
 - node with sockets ['color', 'fac']
 
@@ -361,11 +385,11 @@ def magic(vector=None, scale=None, distortion=None, turbulence_depth=2)
 
 <sub>Go to [top](#class-Texture) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
-### musgrave
+### Musgrave
 
 ```python
-@staticmethod
-def musgrave(vector=None, w=None, scale=None, detail=None, dimension=None, lacunarity=None, offset=None, gain=None, musgrave_dimensions='3D', musgrave_type='FBM')
+@classmethod
+def Musgrave(cls, vector=None, w=None, scale=None, detail=None, dimension=None, lacunarity=None, offset=None, gain=None, musgrave_dimensions='3D', musgrave_type='FBM')
 ```
 
 
@@ -394,11 +418,11 @@ def musgrave(vector=None, w=None, scale=None, detail=None, dimension=None, lacun
 
 <sub>Go to [top](#class-Texture) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
-### noise
+### Noise
 
 ```python
-@staticmethod
-def noise(vector=None, w=None, scale=None, detail=None, roughness=None, distortion=None, noise_dimensions='3D')
+@classmethod
+def Noise(cls, vector=None, w=None, scale=None, detail=None, roughness=None, distortion=None, noise_dimensions='3D')
 ```
 
 
@@ -414,6 +438,8 @@ def noise(vector=None, w=None, scale=None, detail=None, roughness=None, distorti
 - distortion: Float
 - noise_dimensions (str): '3D' in [1D, 2D, 3D, 4D]
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexNoise.webp)
+
 #### Returns:
 - node with sockets ['fac', 'color']
 
@@ -424,11 +450,11 @@ def noise(vector=None, w=None, scale=None, detail=None, roughness=None, distorti
 
 <sub>Go to [top](#class-Texture) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
-### noise_1D
+### Noise1D
 
 ```python
-@staticmethod
-def noise_1D(w=None, scale=None, detail=None, roughness=None, distortion=None)
+@classmethod
+def Noise1D(cls, w=None, scale=None, detail=None, roughness=None, distortion=None)
 ```
 
 
@@ -442,6 +468,8 @@ def noise_1D(w=None, scale=None, detail=None, roughness=None, distortion=None)
 - roughness: Float
 - distortion: Float
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexNoise.webp)
+
 #### Returns:
 - node with sockets ['fac', 'color']
 
@@ -452,11 +480,11 @@ def noise_1D(w=None, scale=None, detail=None, roughness=None, distortion=None)
 
 <sub>Go to [top](#class-Texture) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
-### noise_2D
+### Noise2D
 
 ```python
-@staticmethod
-def noise_2D(vector=None, scale=None, detail=None, roughness=None, distortion=None)
+@classmethod
+def Noise2D(cls, vector=None, scale=None, detail=None, roughness=None, distortion=None)
 ```
 
 
@@ -470,6 +498,8 @@ def noise_2D(vector=None, scale=None, detail=None, roughness=None, distortion=No
 - roughness: Float
 - distortion: Float
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexNoise.webp)
+
 #### Returns:
 - node with sockets ['fac', 'color']
 
@@ -480,11 +510,11 @@ def noise_2D(vector=None, scale=None, detail=None, roughness=None, distortion=No
 
 <sub>Go to [top](#class-Texture) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
-### noise_3D
+### Noise3D
 
 ```python
-@staticmethod
-def noise_3D(vector=None, scale=None, detail=None, roughness=None, distortion=None)
+@classmethod
+def Noise3D(cls, vector=None, scale=None, detail=None, roughness=None, distortion=None)
 ```
 
 
@@ -498,6 +528,8 @@ def noise_3D(vector=None, scale=None, detail=None, roughness=None, distortion=No
 - roughness: Float
 - distortion: Float
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexNoise.webp)
+
 #### Returns:
 - node with sockets ['fac', 'color']
 
@@ -508,11 +540,11 @@ def noise_3D(vector=None, scale=None, detail=None, roughness=None, distortion=No
 
 <sub>Go to [top](#class-Texture) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
-### noise_4D
+### Noise4D
 
 ```python
-@staticmethod
-def noise_4D(vector=None, w=None, scale=None, detail=None, roughness=None, distortion=None)
+@classmethod
+def Noise4D(cls, vector=None, w=None, scale=None, detail=None, roughness=None, distortion=None)
 ```
 
 
@@ -527,6 +559,8 @@ def noise_4D(vector=None, w=None, scale=None, detail=None, roughness=None, disto
 - roughness: Float
 - distortion: Float
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexNoise.webp)
+
 #### Returns:
 - node with sockets ['fac', 'color']
 
@@ -537,11 +571,11 @@ def noise_4D(vector=None, w=None, scale=None, detail=None, roughness=None, disto
 
 <sub>Go to [top](#class-Texture) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
-### voronoi
+### Voronoi
 
 ```python
-@staticmethod
-def voronoi(vector=None, w=None, scale=None, smoothness=None, exponent=None, randomness=None, distance='EUCLIDEAN', feature='F1', voronoi_dimensions='3D')
+@classmethod
+def Voronoi(cls, vector=None, w=None, scale=None, smoothness=None, exponent=None, randomness=None, distance='EUCLIDEAN', feature='F1', voronoi_dimensions='3D')
 ```
 
 
@@ -559,6 +593,8 @@ def voronoi(vector=None, w=None, scale=None, smoothness=None, exponent=None, ran
 - feature (str): 'F1' in [F1, F2, SMOOTH_F1, DISTANCE_TO_EDGE, N_SPHERE_RADIUS]
 - voronoi_dimensions (str): '3D' in [1D, 2D, 3D, 4D]
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexVoronoi.webp)
+
 #### Returns:
 - node with sockets ['distance', 'color', 'position', 'w', 'radius']
 
@@ -569,11 +605,11 @@ def voronoi(vector=None, w=None, scale=None, smoothness=None, exponent=None, ran
 
 <sub>Go to [top](#class-Texture) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
-### voronoi_1D
+### Voronoi1D
 
 ```python
-@staticmethod
-def voronoi_1D(w=None, scale=None, smoothness=None, exponent=None, randomness=None, distance='EUCLIDEAN', feature='F1', voronoi_dimensions='3D')
+@classmethod
+def Voronoi1D(cls, w=None, scale=None, smoothness=None, exponent=None, randomness=None, distance='EUCLIDEAN', feature='F1', voronoi_dimensions='3D')
 ```
 
 
@@ -590,6 +626,8 @@ def voronoi_1D(w=None, scale=None, smoothness=None, exponent=None, randomness=No
 - feature (str): 'F1' in [F1, F2, SMOOTH_F1, DISTANCE_TO_EDGE, N_SPHERE_RADIUS]
 - voronoi_dimensions (str): '3D' in [1D, 2D, 3D, 4D]
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexVoronoi.webp)
+
 #### Returns:
 - node with sockets ['distance', 'color', 'position', 'w', 'radius']
 
@@ -600,11 +638,11 @@ def voronoi_1D(w=None, scale=None, smoothness=None, exponent=None, randomness=No
 
 <sub>Go to [top](#class-Texture) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
-### voronoi_2D
+### Voronoi2D
 
 ```python
-@staticmethod
-def voronoi_2D(vector=None, scale=None, smoothness=None, exponent=None, randomness=None, distance='EUCLIDEAN', feature='F1', voronoi_dimensions='3D')
+@classmethod
+def Voronoi2D(cls, vector=None, scale=None, smoothness=None, exponent=None, randomness=None, distance='EUCLIDEAN', feature='F1', voronoi_dimensions='3D')
 ```
 
 
@@ -621,6 +659,8 @@ def voronoi_2D(vector=None, scale=None, smoothness=None, exponent=None, randomne
 - feature (str): 'F1' in [F1, F2, SMOOTH_F1, DISTANCE_TO_EDGE, N_SPHERE_RADIUS]
 - voronoi_dimensions (str): '3D' in [1D, 2D, 3D, 4D]
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexVoronoi.webp)
+
 #### Returns:
 - node with sockets ['distance', 'color', 'position', 'w', 'radius']
 
@@ -631,11 +671,11 @@ def voronoi_2D(vector=None, scale=None, smoothness=None, exponent=None, randomne
 
 <sub>Go to [top](#class-Texture) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
-### voronoi_3D
+### Voronoi3D
 
 ```python
-@staticmethod
-def voronoi_3D(vector=None, scale=None, smoothness=None, exponent=None, randomness=None, distance='EUCLIDEAN', feature='F1', voronoi_dimensions='3D')
+@classmethod
+def Voronoi3D(cls, vector=None, scale=None, smoothness=None, exponent=None, randomness=None, distance='EUCLIDEAN', feature='F1', voronoi_dimensions='3D')
 ```
 
 
@@ -652,6 +692,8 @@ def voronoi_3D(vector=None, scale=None, smoothness=None, exponent=None, randomne
 - feature (str): 'F1' in [F1, F2, SMOOTH_F1, DISTANCE_TO_EDGE, N_SPHERE_RADIUS]
 - voronoi_dimensions (str): '3D' in [1D, 2D, 3D, 4D]
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexVoronoi.webp)
+
 #### Returns:
 - node with sockets ['distance', 'color', 'position', 'w', 'radius']
 
@@ -662,11 +704,11 @@ def voronoi_3D(vector=None, scale=None, smoothness=None, exponent=None, randomne
 
 <sub>Go to [top](#class-Texture) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
-### voronoi_4D
+### Voronoi4D
 
 ```python
-@staticmethod
-def voronoi_4D(vector=None, w=None, scale=None, smoothness=None, exponent=None, randomness=None, distance='EUCLIDEAN', feature='F1', voronoi_dimensions='3D')
+@classmethod
+def Voronoi4D(cls, vector=None, w=None, scale=None, smoothness=None, exponent=None, randomness=None, distance='EUCLIDEAN', feature='F1', voronoi_dimensions='3D')
 ```
 
 
@@ -684,6 +726,8 @@ def voronoi_4D(vector=None, w=None, scale=None, smoothness=None, exponent=None, 
 - feature (str): 'F1' in [F1, F2, SMOOTH_F1, DISTANCE_TO_EDGE, N_SPHERE_RADIUS]
 - voronoi_dimensions (str): '3D' in [1D, 2D, 3D, 4D]
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexVoronoi.webp)
+
 #### Returns:
 - node with sockets ['distance', 'color', 'position', 'w', 'radius']
 
@@ -694,11 +738,11 @@ def voronoi_4D(vector=None, w=None, scale=None, smoothness=None, exponent=None, 
 
 <sub>Go to [top](#class-Texture) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
-### wave
+### Wave
 
 ```python
-@staticmethod
-def wave(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, bands_direction='X', rings_direction='X', wave_profile='SIN', wave_type='BANDS')
+@classmethod
+def Wave(cls, vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, bands_direction='X', rings_direction='X', wave_profile='SIN', wave_type='BANDS')
 ```
 
 
@@ -718,6 +762,8 @@ def wave(vector=None, scale=None, distortion=None, detail=None, detail_scale=Non
 - wave_profile (str): 'SIN' in [SIN, SAW, TRI]
 - wave_type (str): 'BANDS' in [BANDS, RINGS]
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexWave.webp)
+
 #### Returns:
 - node with sockets ['color', 'fac']
 
@@ -728,11 +774,11 @@ def wave(vector=None, scale=None, distortion=None, detail=None, detail_scale=Non
 
 <sub>Go to [top](#class-Texture) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
-### wave_bands
+### WaveBands
 
 ```python
-@staticmethod
-def wave_bands(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X', wave_profile='SIN')
+@classmethod
+def WaveBands(cls, vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X', wave_profile='SIN')
 ```
 
 
@@ -750,6 +796,8 @@ def wave_bands(vector=None, scale=None, distortion=None, detail=None, detail_sca
 - direction (str): 'X' in [X, Y, Z, DIAGONAL]
 - wave_profile (str): 'SIN' in [SIN, SAW, TRI]
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexWave.webp)
+
 #### Returns:
 - node with sockets ['color', 'fac']
 
@@ -760,11 +808,11 @@ def wave_bands(vector=None, scale=None, distortion=None, detail=None, detail_sca
 
 <sub>Go to [top](#class-Texture) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
-### wave_bands_saw
+### WaveBands_saw
 
 ```python
-@staticmethod
-def wave_bands_saw(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X')
+@classmethod
+def WaveBands_saw(cls, vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X')
 ```
 
 
@@ -781,6 +829,8 @@ def wave_bands_saw(vector=None, scale=None, distortion=None, detail=None, detail
 - phase_offset: Float
 - direction (str): 'X' in [X, Y, Z, DIAGONAL]
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexWave.webp)
+
 #### Returns:
 - node with sockets ['color', 'fac']
 
@@ -791,11 +841,11 @@ def wave_bands_saw(vector=None, scale=None, distortion=None, detail=None, detail
 
 <sub>Go to [top](#class-Texture) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
-### wave_bands_sine
+### WaveBands_sine
 
 ```python
-@staticmethod
-def wave_bands_sine(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X')
+@classmethod
+def WaveBands_sine(cls, vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X')
 ```
 
 
@@ -812,6 +862,8 @@ def wave_bands_sine(vector=None, scale=None, distortion=None, detail=None, detai
 - phase_offset: Float
 - direction (str): 'X' in [X, Y, Z, DIAGONAL]
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexWave.webp)
+
 #### Returns:
 - node with sockets ['color', 'fac']
 
@@ -822,11 +874,11 @@ def wave_bands_sine(vector=None, scale=None, distortion=None, detail=None, detai
 
 <sub>Go to [top](#class-Texture) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
-### wave_bands_triangle
+### WaveBands_triangle
 
 ```python
-@staticmethod
-def wave_bands_triangle(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X')
+@classmethod
+def WaveBands_triangle(cls, vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X')
 ```
 
 
@@ -843,6 +895,8 @@ def wave_bands_triangle(vector=None, scale=None, distortion=None, detail=None, d
 - phase_offset: Float
 - direction (str): 'X' in [X, Y, Z, DIAGONAL]
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexWave.webp)
+
 #### Returns:
 - node with sockets ['color', 'fac']
 
@@ -853,11 +907,11 @@ def wave_bands_triangle(vector=None, scale=None, distortion=None, detail=None, d
 
 <sub>Go to [top](#class-Texture) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
-### wave_rings
+### WaveRings
 
 ```python
-@staticmethod
-def wave_rings(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X', wave_profile='SIN')
+@classmethod
+def WaveRings(cls, vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X', wave_profile='SIN')
 ```
 
 
@@ -875,6 +929,8 @@ def wave_rings(vector=None, scale=None, distortion=None, detail=None, detail_sca
 - direction (str): 'X' in [X, Y, Z, SPHERICAL]
 - wave_profile (str): 'SIN' in [SIN, SAW, TRI]
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexWave.webp)
+
 #### Returns:
 - node with sockets ['color', 'fac']
 
@@ -885,11 +941,11 @@ def wave_rings(vector=None, scale=None, distortion=None, detail=None, detail_sca
 
 <sub>Go to [top](#class-Texture) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
-### wave_rings_saw
+### WaveRings_saw
 
 ```python
-@staticmethod
-def wave_rings_saw(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X')
+@classmethod
+def WaveRings_saw(cls, vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X')
 ```
 
 
@@ -906,6 +962,8 @@ def wave_rings_saw(vector=None, scale=None, distortion=None, detail=None, detail
 - phase_offset: Float
 - direction (str): 'X' in [X, Y, Z, SPHERICAL]
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexWave.webp)
+
 #### Returns:
 - node with sockets ['color', 'fac']
 
@@ -916,11 +974,11 @@ def wave_rings_saw(vector=None, scale=None, distortion=None, detail=None, detail
 
 <sub>Go to [top](#class-Texture) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
-### wave_rings_sine
+### WaveRings_sine
 
 ```python
-@staticmethod
-def wave_rings_sine(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X')
+@classmethod
+def WaveRings_sine(cls, vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X')
 ```
 
 
@@ -937,6 +995,8 @@ def wave_rings_sine(vector=None, scale=None, distortion=None, detail=None, detai
 - phase_offset: Float
 - direction (str): 'X' in [X, Y, Z, SPHERICAL]
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexWave.webp)
+
 #### Returns:
 - node with sockets ['color', 'fac']
 
@@ -947,11 +1007,11 @@ def wave_rings_sine(vector=None, scale=None, distortion=None, detail=None, detai
 
 <sub>Go to [top](#class-Texture) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
-### wave_rings_triangle
+### WaveRings_triangle
 
 ```python
-@staticmethod
-def wave_rings_triangle(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X')
+@classmethod
+def WaveRings_triangle(cls, vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X')
 ```
 
 
@@ -968,6 +1028,8 @@ def wave_rings_triangle(vector=None, scale=None, distortion=None, detail=None, d
 - phase_offset: Float
 - direction (str): 'X' in [X, Y, Z, SPHERICAL]
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexWave.webp)
+
 #### Returns:
 - node with sockets ['color', 'fac']
 
@@ -978,11 +1040,11 @@ def wave_rings_triangle(vector=None, scale=None, distortion=None, detail=None, d
 
 <sub>Go to [top](#class-Texture) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
-### white_noise
+### WhiteNoise
 
 ```python
-@staticmethod
-def white_noise(vector=None, w=None, noise_dimensions='3D')
+@classmethod
+def WhiteNoise(cls, vector=None, w=None, noise_dimensions='3D')
 ```
 
 
@@ -994,6 +1056,8 @@ def white_noise(vector=None, w=None, noise_dimensions='3D')
 - w: Float
 - noise_dimensions (str): '3D' in [1D, 2D, 3D, 4D]
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexWhiteNoise.webp)
+
 #### Returns:
 - node with sockets ['value', 'color']
 
@@ -1004,11 +1068,11 @@ def white_noise(vector=None, w=None, noise_dimensions='3D')
 
 <sub>Go to [top](#class-Texture) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
-### white_noise_1D
+### WhiteNoise1D
 
 ```python
-@staticmethod
-def white_noise_1D(w=None)
+@classmethod
+def WhiteNoise1D(cls, w=None)
 ```
 
 
@@ -1018,6 +1082,8 @@ def white_noise_1D(w=None)
 #### Args:
 - w: Float
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexWhiteNoise.webp)
+
 #### Returns:
 - node with sockets ['value', 'color']
 
@@ -1028,11 +1094,11 @@ def white_noise_1D(w=None)
 
 <sub>Go to [top](#class-Texture) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
-### white_noise_2D
+### WhiteNoise2D
 
 ```python
-@staticmethod
-def white_noise_2D(vector=None)
+@classmethod
+def WhiteNoise2D(cls, vector=None)
 ```
 
 
@@ -1042,6 +1108,8 @@ def white_noise_2D(vector=None)
 #### Args:
 - vector: Vector
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexWhiteNoise.webp)
+
 #### Returns:
 - node with sockets ['value', 'color']
 
@@ -1052,11 +1120,11 @@ def white_noise_2D(vector=None)
 
 <sub>Go to [top](#class-Texture) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
-### white_noise_3D
+### WhiteNoise3D
 
 ```python
-@staticmethod
-def white_noise_3D(vector=None)
+@classmethod
+def WhiteNoise3D(cls, vector=None)
 ```
 
 
@@ -1066,6 +1134,8 @@ def white_noise_3D(vector=None)
 #### Args:
 - vector: Vector
 
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexWhiteNoise.webp)
+
 #### Returns:
 - node with sockets ['value', 'color']
 
@@ -1076,11 +1146,11 @@ def white_noise_3D(vector=None)
 
 <sub>Go to [top](#class-Texture) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
-### white_noise_4D
+### WhiteNoise4D
 
 ```python
-@staticmethod
-def white_noise_4D(vector=None, w=None)
+@classmethod
+def WhiteNoise4D(cls, vector=None, w=None)
 ```
 
 
@@ -1090,6 +1160,8 @@ def white_noise_4D(vector=None, w=None)
 #### Args:
 - vector: Vector
 - w: Float
+
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexWhiteNoise.webp)
 
 #### Returns:
 - node with sockets ['value', 'color']
