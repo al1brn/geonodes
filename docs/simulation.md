@@ -28,7 +28,6 @@ with gn.Tree("Simul") as tree:
   # Create a simulation zone for the input geometry with one socket initialized to (0, 0, 0)
 
   simul = gn.Simulation(tree.ig, position=(0, 0, 0))
-
 ```
 
 The input and output nodes can be accessed with the **input** and **output** attributes:
@@ -40,7 +39,6 @@ with gn.Tree("Simul") as tree:
   simul = gn.Simulation(tree.ig, position=(0, 0, 0))
   node = simul.input  # Simulation input node
   node = simul.output # Simulation output node
-
 ```
 
 ## Accessing the sockets
@@ -52,7 +50,8 @@ With the exception of **delta_time** output socket of the input simulation node,
 - output socket of the output node : ``` var = simul.input.geometry ```
 
 To ease code writing, the Simulation instance exposes attributes for sockets used within the simulation:
-
+- when the attribute is read, this is the output socket of the input node
+- when the attribute is written, this is the input socket of the output node
 
 ``` python
 with gn.Tree("Simul") as tree:
@@ -82,6 +81,32 @@ with gn.Tree("Simul") as tree:
   geo = simul.og
 ```
 
+:stop_sign: **Important**: the created sockets must be set within the simulation zone. In particular, the geometry must be updated with an instruction ``` simul.geometry = ...```. A typical simulation is written as in the following example:
+
+``` python
+with gn.Tree("Simul") as tree:
+  simul = gn.Simulation(tree.ig, a_vector=(0, 0, 0), a_bool=False)
+
+  # Getting the simulation variables
+
+  geo = simul.geometry
+  v   = simul.a_vector
+  b   = simul.a_bool
+
+  # Doing some stuff with these guys
+  # ...
+
+  # Done: time to update the simulation zone
+
+  simul.geometry = modified_geometry
+  simul.a_vector = modified_vector
+  simul.a_bool   = modified_bool
+
+  # Outputing the tree
+
+  tree.of = simul.og
+```
+
 ## Do nothing simulation
 
 The *do nothing* simulation can be created with:
@@ -102,7 +127,67 @@ with gn.Tree("Do nothing simulation") as tree:
 
 ## Something more interesting
 
-pass
+The following tree, generates random points on the faces of the input geometry. Each time, the simulation zone is executed, the last vertices are randomly extruded. The last vertex flag is stored in the named attribute "Top".
+
+``` python
+import geonodes as gn
+
+with gn.Tree("Simul") as tree:
+    
+    # Points on the input geometry (allegedly a mesh)
+    
+    mesh = gn.Mesh(tree.ig).distribute_points_on_faces(density=gn.Float(10, "Density")).points.to_vertices()
+
+    # We need to extrude only the last vertices
+    # At the begining all the vertices are the last
+    
+    mesh.store_named_attribute(name="Top", value=True)
+    
+    # ----- The simulation zone
+    
+    simul = gn.Simulation(mesh)
+    
+    # Read the geometry within the zone
+
+    mesh = simul.geometry
+    
+    # Let's generated the extrusion direction by a random vector perpendicular to the normal
+    
+    normal = mesh.verts.normal
+    v = gn.Vector(gn.Texture.Noise4D(w=tree.seconds).color) - (.5, .5, .5)
+
+    # Extrusion along this vector
+    
+    top  = mesh.verts[mesh.verts.named_boolean("Top")].extrude(offset=normal.cross(v).scale(.1)).top
+    
+    # Let's update the last vertex flag
+    
+    mesh.verts.store_named_attribute("Top", top)
+
+    # Connecting the modified mesh to the simulation output node
+    
+    simul.geometry = mesh
+    
+    # ----- Outside the simulation
+    # Transformation to NURBS curve
+    
+    curve = simul.og.to_curve()
+    curve.splines.type = 'NURBS'
+
+    # Removing the begining with time
+
+    curve.splines.trim(start=gn.max(0, (tree.frame - 100)/250))
+    
+    # Done
+    
+    tree.og = curve
+```
+
+
+
+
+
+ 
 
 
 
