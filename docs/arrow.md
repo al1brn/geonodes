@@ -110,16 +110,19 @@ It the scheme above, we are at points `Q'` and want to extrude to point `Q''`.
 The direction of extrusion is given by the vector `QQ'`.
 The amount of extrusion is given by the maths.
 
+**Extrusion** The ***Extrude*** Node returns 3 sockets: 'Geometry', 'Top', 'Side'. The **extrude** method return the nodes and not a particular socket.
+Use 'top' or 'side' attribute of the returned node.
+
 **Note:** Points `Q'` and  `Q''` are multiple (points forming the top circle of the shaft) when the point `Q` is unique.
 
 ``` python
-    top, _ = edges[top].extrude(offset=edges[top].position - (0, 0, z2), offset_scale=s - 1)
+    top = edges[top].extrude(offset=edges[top].position - (0, 0, z2), offset_scale=s - 1).top
 ```
 
 To finish the arrow, we simply extrude from the current position to the top of the arrow:
 
 ``` python
-    top, _ = edges[top].extrude(offset=(0, 0, length) - edges[top].position)
+    top = edges[top].extrude(offset=(0, 0, length) - edges[top].position).top
 ```
 
 ## First version
