@@ -45,11 +45,65 @@ with gn.Tree("Simul") as tree:
 
 With the exception of **delta_time** output socket of the input simulation node, the socket names have four meanings:
 - input socket of the input node: ``` simul.input.geometry = var```
-- outpout socket of the input node : ``` var = simul.input.geometry ```
+- output socket of the input node : ``` var = simul.input.geometry ```
 - input socket of the output node : ``` simul.input.geometry = var```
 - output socket of the output node : ``` var = simul.input.geometry ```
 
-To ease code writing, the Simulation instance exposes attributes for 
+To ease code writing, the Simulation instance exposes attributes for sockets used within the simulation:
+
+
+``` python
+with gn.Tree("Simul") as tree:
+  simul = gn.Simulation(tree.ig, position=(0, 0, 0))
+
+  v = simul.input.position # Output socket of simulation input node
+  v = simul.position       # Same
+
+  simul.output.position = v # Input socket of the simulation output node
+  simul.position = v        # Same
+
+  # Outside the simulation zone, the result can read through output node
+
+  my_vector = simul.output.position
+```
+
+### Note
+
+**Simulation** class exposes shortcuts for the simulation output geometry:
+
+``` python
+  # Resulting geometry through output node
+  geo = simul.output.geometry
+
+  # Or throughy Simulation shortcuts
+  geo = simul.output_geometry
+  geo = simul.og
+```
+
+## Do nothing simulation
+
+The *do nothing* simulation can be created with:
+
+``` python
+with gn.Tree("Do nothing simulation") as tree:
+  # Create the simulation zone with tree input geometry as 
+  simul = gn.Simulation(tree.ig)
+
+  # Link the two simulation nodes
+  simul.geometry = simul.geometry
+
+  # The simulated geometry is use as tree output
+  tree.og = simul.og
+```
+
+## Something more interesting
+
+pass
+
+
+
+
+
 
 
 
