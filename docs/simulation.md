@@ -183,6 +183,68 @@ with gn.Tree("Simul") as tree:
     tree.og = curve
 ```
 
+<img src="images/simulation_res1.png" width="600" class="center">
+
+## Alternative to the stored attribute
+
+Rather than using the named attribute, we can use a simulation state named **top**:
+
+``` python
+import geonodes as gn
+
+with gn.Tree("Simul") as tree:
+    
+with gn.Tree("Simul 2") as tree:
+    
+    # Points on the input geometry (allegedly a mesh)
+    
+    mesh = gn.Mesh(tree.ig).distribute_points_on_faces(density=gn.Float(10, "Density")).points.to_vertices()
+
+    # ----- The simulation zone starts with all vertices as "Top vertices"
+    
+    simul = gn.Simulation(mesh, top=True)
+    
+    # Read the geometry within the zone
+
+    mesh = simul.geometry
+    
+    # Let's get the top vertices selector
+    
+    top = simul.top
+    
+    # Let's generated the extrusion direction by a random vector perpendicular to the normal
+    
+    normal = mesh.verts.normal
+    v = gn.Vector(gn.Texture.Noise4D(w=tree.seconds).color) - (.5, .5, .5)
+
+    # Extrusion along this vector
+    
+    top  = mesh.verts[top].extrude(offset=normal.cross(v).scale(.1)).top
+    
+    # Connecting the modified mesh to the simulation output node
+    
+    simul.geometry = mesh
+    
+    # Updating the top vertices
+    
+    simul.top = top
+    
+    # ----- Outside the simulation
+    # Transformation to NURBS curve
+    
+    curve = simul.og.to_curve()
+    curve.splines.type = 'NURBS'
+
+    # Removing the begining with time
+
+    curve.splines.trim(start=gn.max(0, (tree.frame - 100)/250))
+    
+    # Done
+    
+    tree.og = curve    
+```
+
+
 
 
 
