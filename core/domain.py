@@ -190,7 +190,7 @@ class Domain:
     
     Nodes having a **Selection** socket use the **Domain** selection initialized with this syntax.
     
-    In the following example, two vertices selected by the user are move upwards:
+    In the following example, two vertices selected by the user are moved upwards:
     
     ```python
     import geonodes as gn
@@ -526,160 +526,9 @@ class Domain:
         from geonodes.nodes.classes import Instance
         return Instance(self.data_socket)
     
-    # ----------------------------------------------------------------------------------------------------
-    # Store named attribute
-    # Before V3.5, selection was implemented through a cloud of points
-    # After V3.5, selection is managed through standard selection socket
-    
-    def store_named_attribute_OLD(self, name=None, value=None, data_type=None):
-        """ Store a named attribute
-        
-        If selection exists, create an intermediary cloud of points to update selectively the items.
-        
-        Args:
-            - name (str): name of the attribute
-            - value (any): value of the attribute
-            - data_type (str): valeu data type
-            
-        returns:
-            data socket (DataSocket)
-        """
-        
-        import geonodes as gn
-        
-        if self.selector is None or value is None or name is None:
-            return self.store_named_attribute_no_selection(name, value)
-        
-        parent = self.data_socket.node.bnode.parent
-        
-        tree = self.data_socket.node.tree
-        with tree.layout(f"Intermediary nodes to update a selection of named attribute '{name}'"):
-            
-            data_type_ = self.value_data_type(value, data_type)
-    
-            count = self.count
-            pts = gn.Points.Points(count=count)
-            
-            selection = self.selection
-            selector_ = self.selector
-            self.selector = None
-            
-            if data_type_ in ['BOOLEAN', 'INT']:
-                pts.points.ID            = self.sample_index(self.named_attribute(name))
-                pts.points[selection].ID = value
-                val = pts.points.sample_index(pts.points.ID)
-                
-            elif data_type_ == 'FLOAT':
-                pts.points.radius            = self.sample_index(self.named_attribute(name))
-                pts.points[selection].radius = value
-                val = pts.points.sample_index(pts.points.radius)
-                
-            elif data_type_ == 'FLOAT_VECTOR':
-                pts.points.position            = self.sample_index(self.named_attribute(name))
-                pts.points[selection].position = value
-                val = pts.points.sample_index(pts.points.position)
-            
-            else:
-                color       = gn.Color(self.sample_index(self.named_attribute(name)))
-                color_value = gn.Color(value)
-                
-                pts.points.radius              = color.alpha
-                pts.points[selection].radius   = color_value.alpha
-                
-                pts.points.position            = (color.red, color.green, color.blue)
-                pts.points[selection].position = (color_value.red, color_value.green, color_value.blue)
 
-                val_rgb   = pts.points.sample_index(pts.points.position)
-                val_alpha = pts.points.sample_index(pts.points.radius)
-                
-                val = gn.Color((val_rgb.x, val_rgb.y, val_rgb.z, val_alpha))
-                
-            
-        ret = self.store_named_attribute(name=name, value=val, data_type=data_type_)
-        self.selector = selector_
-            
-        return ret
-    
-    # ----------------------------------------------------------------------------------------------------
-    # Create some nodes to store named attribute on domain selection
-    
-    def store_named_boolean_OLD(self, name, value):
-        """ Store a named attribute of type Boolean
-        
-        see [store_named_attribute](#store_named_attribute)
-        
-        Args:
-            - name (str): the attribute name
-            - value (float): the value to store
-            
-        Returns:
-            Data socket (DataSocket)
-        """
-        return self.store_named_attribute(name, value, 'BOOLEAN')
     
     
-    def store_named_integer_OLD(self, name, value):
-        """ Store a named attribute of type Integer
-        
-        see [store_named_attribute](#store_named_attribute)
-        
-        Args:
-            - name (str): the attribute name
-            - value (float): the value to store
-            
-        Returns:
-            Data socket (DataSocket)
-        """
-        return self.store_named_attribute(name, value, 'INT')
-    
-    
-    def store_named_float_OLD(self, name, value):
-        """ Store a named attribute of type Float
-        
-        see [store_named_attribute](#store_named_attribute)
-        
-        Args:
-            - name (str): the attribute name
-            - value (float): the value to store
-            
-        Returns:
-            Data socket (DataSocket)
-        """
-        return self.store_named_attribute(name, value, 'FLOAT')
-    
-    
-    def store_named_vector_OLD(self, name, value):
-        """ Store a named attribute of type Vector
-        
-        Args:
-            - name (str): the attribute name
-            - value (float): the value to store
-            
-        see [store_named_attribute](#store_named_attribute)
-        
-        Returns:
-            Data socket (DataSocket)
-        """
-        return self.store_named_attribute(name, value, 'FLOAT_VECTOR')
-    
-    
-    def store_named_color_OLD(self, name, value):
-        """ Store a named attribute of type Color
-        
-        Args:
-            - name (str): the attribute name
-            - value (float): the value to store
-            
-        see [store_named_attribute](#store_named_attribute)
-        
-        Returns:
-            Data socket (DataSocket)
-        """
-        return self.store_named_attribute(name, value, 'FLOAT_COLOR')
-    
-    
-    
-
 
     
     

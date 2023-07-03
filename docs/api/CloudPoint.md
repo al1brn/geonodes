@@ -34,7 +34,7 @@ CloudPoint(self, data_socket, selection=None)
 
 **Methods**
 
-[accumulate_field](#accumulate_field) | [attribute_max](#attribute_max) | [attribute_mean](#attribute_mean) | [attribute_median](#attribute_median) | [attribute_min](#attribute_min) | [attribute_node](#attribute_node) | [attribute_range](#attribute_range) | [attribute_statistic](#attribute_statistic) | [attribute_std](#attribute_std) | [attribute_sum](#attribute_sum) | [attribute_var](#attribute_var) | [blur_attribute](#blur_attribute) | [blur_color](#blur_color) | [blur_float](#blur_float) | [blur_integer](#blur_integer) | [blur_vector](#blur_vector) | [capture_attribute](#capture_attribute) | [delete](#delete) | [duplicate](#duplicate) | [evaluate_at_index](#evaluate_at_index) | [index_for_sample](#index_for_sample) | [instance_on_points](#instance_on_points) | [interpolate](#interpolate) | [material_selection](#material_selection) | [named_attribute](#named_attribute) | [named_attribute_exists](#named_attribute_exists) | [named_boolean](#named_boolean) | [named_color](#named_color) | [named_float](#named_float) | [named_integer](#named_integer) | [named_vector](#named_vector) | [proximity](#proximity) | [remove_named_attribute](#remove_named_attribute) | [sample_index](#sample_index) | [select](#select) | [set_ID](#set_ID) | [set_material](#set_material) | [set_position](#set_position) | [socket_stack](#socket_stack) | [store_named_2D_vector](#store_named_2D_vector) | [store_named_attribute](#store_named_attribute) | [store_named_attribute_OLD](#store_named_attribute_OLD) | [store_named_boolean](#store_named_boolean) | [store_named_boolean_OLD](#store_named_boolean_OLD) | [store_named_byte_color](#store_named_byte_color) | [store_named_color](#store_named_color) | [store_named_color_OLD](#store_named_color_OLD) | [store_named_float](#store_named_float) | [store_named_float_OLD](#store_named_float_OLD) | [store_named_integer](#store_named_integer) | [store_named_integer_OLD](#store_named_integer_OLD) | [store_named_vector](#store_named_vector) | [store_named_vector_OLD](#store_named_vector_OLD) | [to_sdf_volume](#to_sdf_volume) | [to_vertices](#to_vertices) | [view](#view) | [viewer](#viewer)
+[accumulate_field](#accumulate_field) | [attribute_max](#attribute_max) | [attribute_mean](#attribute_mean) | [attribute_median](#attribute_median) | [attribute_min](#attribute_min) | [attribute_node](#attribute_node) | [attribute_range](#attribute_range) | [attribute_statistic](#attribute_statistic) | [attribute_std](#attribute_std) | [attribute_sum](#attribute_sum) | [attribute_var](#attribute_var) | [blur_attribute](#blur_attribute) | [blur_color](#blur_color) | [blur_float](#blur_float) | [blur_integer](#blur_integer) | [blur_vector](#blur_vector) | [capture_attribute](#capture_attribute) | [delete](#delete) | [duplicate](#duplicate) | [evaluate_at_index](#evaluate_at_index) | [index_for_sample](#index_for_sample) | [instance_on_points](#instance_on_points) | [interpolate](#interpolate) | [material_selection](#material_selection) | [named_attribute](#named_attribute) | [named_attribute_exists](#named_attribute_exists) | [named_boolean](#named_boolean) | [named_color](#named_color) | [named_float](#named_float) | [named_integer](#named_integer) | [named_vector](#named_vector) | [proximity](#proximity) | [remove_named_attribute](#remove_named_attribute) | [sample_index](#sample_index) | [select](#select) | [set_ID](#set_ID) | [set_material](#set_material) | [set_position](#set_position) | [socket_stack](#socket_stack) | [store_named_2D_vector](#store_named_2D_vector) | [store_named_attribute](#store_named_attribute) | [store_named_boolean](#store_named_boolean) | [store_named_byte_color](#store_named_byte_color) | [store_named_color](#store_named_color) | [store_named_float](#store_named_float) | [store_named_integer](#store_named_integer) | [store_named_vector](#store_named_vector) | [to_sdf_volume](#to_sdf_volume) | [to_vertices](#to_vertices) | [view](#view) | [viewer](#viewer)
 
 ## Properties
 
@@ -1461,29 +1461,6 @@ def store_named_attribute(self, name=None, value=None)
 
 <sub>Go to [top](#class-CloudPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
-### store_named_attribute_OLD
-
-```python
-def store_named_attribute_OLD(self, name=None, value=None, data_type=None)
-```
-
- Store a named attribute
-
-If selection exists, create an intermediary cloud of points to update selectively the items.
-
-#### Args:
-- name (str): name of the attribute
-- value (any): value of the attribute
-- data_type (str): valeu data type
-    
-#### Returns:
-- data socket (DataSocket)
-
-
-
-
-<sub>Go to [top](#class-CloudPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
 ### store_named_boolean
 
 ```python
@@ -1503,27 +1480,6 @@ def store_named_boolean(self, name=None, value=None)
 
 
 
-
-
-
-<sub>Go to [top](#class-CloudPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-### store_named_boolean_OLD
-
-```python
-def store_named_boolean_OLD(self, name, value)
-```
-
- Store a named attribute of type Boolean
-
-see [store_named_attribute](#store_named_attribute)
-
-#### Args:
-- name (str): the attribute name
-- value (float): the value to store
-    
-#### Returns:
-- Data socket (DataSocket)
 
 
 
@@ -1577,27 +1533,6 @@ def store_named_color(self, name=None, value=None)
 
 <sub>Go to [top](#class-CloudPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
-### store_named_color_OLD
-
-```python
-def store_named_color_OLD(self, name, value)
-```
-
- Store a named attribute of type Color
-
-#### Args:
-- name (str): the attribute name
-- value (float): the value to store
-    
-see [store_named_attribute](#store_named_attribute)
-
-#### Returns:
-- Data socket (DataSocket)
-
-
-
-<sub>Go to [top](#class-CloudPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
 ### store_named_float
 
 ```python
@@ -1617,27 +1552,6 @@ def store_named_float(self, name=None, value=None)
 
 
 
-
-
-
-<sub>Go to [top](#class-CloudPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-### store_named_float_OLD
-
-```python
-def store_named_float_OLD(self, name, value)
-```
-
- Store a named attribute of type Float
-
-see [store_named_attribute](#store_named_attribute)
-
-#### Args:
-- name (str): the attribute name
-- value (float): the value to store
-    
-#### Returns:
-- Data socket (DataSocket)
 
 
 
@@ -1667,27 +1581,6 @@ def store_named_integer(self, name=None, value=None)
 
 <sub>Go to [top](#class-CloudPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
-### store_named_integer_OLD
-
-```python
-def store_named_integer_OLD(self, name, value)
-```
-
- Store a named attribute of type Integer
-
-see [store_named_attribute](#store_named_attribute)
-
-#### Args:
-- name (str): the attribute name
-- value (float): the value to store
-    
-#### Returns:
-- Data socket (DataSocket)
-
-
-
-<sub>Go to [top](#class-CloudPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
 ### store_named_vector
 
 ```python
@@ -1707,27 +1600,6 @@ def store_named_vector(self, name=None, value=None)
 
 
 
-
-
-
-<sub>Go to [top](#class-CloudPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-### store_named_vector_OLD
-
-```python
-def store_named_vector_OLD(self, name, value)
-```
-
- Store a named attribute of type Vector
-
-#### Args:
-- name (str): the attribute name
-- value (float): the value to store
-    
-see [store_named_attribute](#store_named_attribute)
-
-#### Returns:
-- Data socket (DataSocket)
 
 
 

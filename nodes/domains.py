@@ -605,6 +605,8 @@ class Domain(geodom.Domain):
 
         """
 
+        if attr_value is None: return self
+
         self.socket_stack(nodes.SetPosition(geometry=self.data_socket, selection=self.selection, position=attr_value, offset=None))
 
 

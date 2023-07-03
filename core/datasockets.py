@@ -640,11 +640,6 @@ class Vector(DataSocket):
         self.y_ = None
         self.z_ = None
             
-        # ----- Hack for implementing vector += value in set_position(offset=value)
-        # See domains and fields
-        
-        self.offset_setter = None
-            
     @classmethod
     def Input(cls, value = (0, 0, 0), name = "Vector", description = ""):
         """ Create a Vector input socket in the Group Input Node
@@ -764,7 +759,7 @@ class Vector(DataSocket):
     # Vector operators
     
     def __neg__(self):
-        return self.multiply(-1)
+        return self.scale(-1)
 
     def __add__(self, other):
         return self.add(other)
@@ -775,13 +770,16 @@ class Vector(DataSocket):
         return ret
     
     def __iadd__(self, other):
-        if self.offset_setter is None:
+        if (self.field_of is None) or (self.node.bl_idname != 'GeometryNodeInputPosition'):
             return self.stack(self.add(other).node)
         
-        # ----- Hack to implement set_position(offeset = other)
+        # ----- Hack to implement set_position(offset = other)
         # see domain Point and fields Position and Handle
         
-        self.offset_setter(other)
+        domain = self.field_of
+        node = nodes.SetPosition(geometry=domain.data_socket, selection=domain.selection, position=self, offset=other)
+        domain.socket_stack(node, socket_name='geometry')
+        
         return None
     
 
@@ -795,7 +793,6 @@ class Vector(DataSocket):
     
     def __isub__(self, other):
         return self.stack(self.subtract(other).node)
-    
     
     def __mul__(self, other):
         return self.multiply(other)
