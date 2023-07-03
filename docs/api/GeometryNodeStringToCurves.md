@@ -36,7 +36,7 @@ node = nodes.StringToCurves(string=None, size=None, character_spacing=None, word
 
 ### Output sockets:
 
-- **curve_instances** : [Geometry](Geometry.md)
+- **curve_instances** : [Instances](Instances.md)
 - **remainder** : [String](String.md)
 - **line** : [Integer](Integer.md)
 - **pivot_point** : [Vector](Vector.md)

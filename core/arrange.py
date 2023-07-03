@@ -182,6 +182,7 @@ NODE_DIMS = {
    'GeometryNodeGroup'                       : {'dimensions': (280, 100), 'param_count': 0,},
    'GeometryNodeImageInfo'                   : {'dimensions': (480, 370), 'param_count': 0,},
    'GeometryNodeImageTexture'                : {'dimensions': (480, 392), 'param_count': 0,},
+   'GeometryNodeIndexOfNearest'              : {'dimensions': (280, 238), 'param_count': 0,},
    'GeometryNodeInputCurveHandlePositions'   : {'dimensions': (300, 194), 'param_count': 0,},
    'GeometryNodeInputCurveTilt'              : {'dimensions': (280, 100), 'param_count': 0,},
    'GeometryNodeInputID'                     : {'dimensions': (280, 100), 'param_count': 0,},
@@ -206,6 +207,7 @@ NODE_DIMS = {
    'GeometryNodeInputSceneTime'              : {'dimensions': (280, 144), 'param_count': 0,},
    'GeometryNodeInputShadeSmooth'            : {'dimensions': (280, 100), 'param_count': 0,},
    'GeometryNodeInputShortestEdgePaths'      : {'dimensions': (280, 238), 'param_count': 0,},
+   'GeometryNodeInputSignedDistance'         : {'dimensions': (280, 100), 'param_count': 0,},
    'GeometryNodeInputSplineCyclic'           : {'dimensions': (280, 100), 'param_count': 0,},
    'GeometryNodeInputSplineResolution'       : {'dimensions': (280, 100), 'param_count': 0,},
    'GeometryNodeInputTangent'                : {'dimensions': (280, 100), 'param_count': 0,},
@@ -215,6 +217,7 @@ NODE_DIMS = {
    'GeometryNodeIsViewport'                  : {'dimensions': (280, 100), 'param_count': 0,},
    'GeometryNodeJoinGeometry'                : {'dimensions': (280, 150), 'param_count': 0,},
    'GeometryNodeMaterialSelection'           : {'dimensions': (280, 150), 'param_count': 0,},
+   'GeometryNodeMeanFilterSDFVolume'         : {'dimensions': (320, 238), 'param_count': 0,},
    'GeometryNodeMergeByDistance'             : {'dimensions': (280, 298), 'param_count': 0,},
    'GeometryNodeMeshBoolean'                 : {'dimensions': (280, 386), 'param_count': 1,
            'name'    : 'operation',
@@ -240,13 +243,16 @@ NODE_DIMS = {
                 'END_POINTS'         : (280, 588),},},
    'GeometryNodeMeshToCurve'                 : {'dimensions': (280, 194), 'param_count': 0,},
    'GeometryNodeMeshToPoints'                : {'dimensions': (280, 342), 'param_count': 0,},
+   'GeometryNodeMeshToSDFVolume'             : {'dimensions': (360, 298), 'param_count': 0,},
    'GeometryNodeMeshToVolume'                : {'dimensions': (400, 430), 'param_count': 0,},
    'GeometryNodeMeshUVSphere'                : {'dimensions': (280, 282), 'param_count': 0,},
    'GeometryNodeObjectInfo'                  : {'dimensions': (280, 386), 'param_count': 0,},
    'GeometryNodeOffsetCornerInFace'          : {'dimensions': (280, 194), 'param_count': 0,},
    'GeometryNodeOffsetPointInCurve'          : {'dimensions': (280, 238), 'param_count': 0,},
+   'GeometryNodeOffsetSDFVolume'             : {'dimensions': (280, 194), 'param_count': 0,},
    'GeometryNodePoints'                      : {'dimensions': (280, 358), 'param_count': 0,},
    'GeometryNodePointsOfCurve'               : {'dimensions': (280, 282), 'param_count': 0,},
+   'GeometryNodePointsToSDFVolume'           : {'dimensions': (340, 298), 'param_count': 0,},
    'GeometryNodePointsToVertices'            : {'dimensions': (280, 194), 'param_count': 0,},
    'GeometryNodePointsToVolume'              : {'dimensions': (340, 342), 'param_count': 0,},
    'GeometryNodeProximity'                   : {'dimensions': (280, 298), 'param_count': 0,},
@@ -264,6 +270,7 @@ NODE_DIMS = {
                 'LENGTH'             : (280, 298),},},
    'GeometryNodeReverseCurve'                : {'dimensions': (280, 194), 'param_count': 0,},
    'GeometryNodeRotateInstances'             : {'dimensions': (280, 566), 'param_count': 0,},
+   'GeometryNodeSDFVolumeSphere'             : {'dimensions': (360, 238), 'param_count': 0,},
    'GeometryNodeSampleCurve'                 : {'dimensions': (280, 574), 'param_count': 0,},
    'GeometryNodeSampleIndex'                 : {'dimensions': (280, 402), 'param_count': 1,
            'name'    : 'data_type',
@@ -275,6 +282,10 @@ NODE_DIMS = {
            'changes' : {
                 'BOOLEAN'            : (300, 298),},},
    'GeometryNodeSampleUVSurface'             : {'dimensions': (280, 506), 'param_count': 0,},
+   'GeometryNodeSampleVolume'                : {'dimensions': (280, 352), 'param_count': 1,
+           'name'    : 'grid_type',
+           'changes' : {
+                'INT'                : (280, 348),},},
    'GeometryNodeScaleElements'               : {'dimensions': (280, 396), 'param_count': 1,
            'name'    : 'scale_mode',
            'changes' : {
@@ -295,6 +306,8 @@ NODE_DIMS = {
    'GeometryNodeSetShadeSmooth'              : {'dimensions': (280, 238), 'param_count': 0,},
    'GeometryNodeSetSplineCyclic'             : {'dimensions': (280, 238), 'param_count': 0,},
    'GeometryNodeSetSplineResolution'         : {'dimensions': (280, 238), 'param_count': 0,},
+   'GeometryNodeSimulationInput'             : {'dimensions': (280,  80), 'param_count': 0,},
+   'GeometryNodeSimulationOutput'            : {'dimensions': (280, 238), 'param_count': 0,},
    'GeometryNodeSplineLength'                : {'dimensions': (280, 144), 'param_count': 0,},
    'GeometryNodeSplineParameter'             : {'dimensions': (280, 188), 'param_count': 0,},
    'GeometryNodeSplitEdges'                  : {'dimensions': (280, 194), 'param_count': 0,},
@@ -543,30 +556,8 @@ NODE_DIMS = {
                 'X_AXIS'             : (280, 472),
                 'Y_AXIS'             : (280, 472),
                 'Z_AXIS'             : (280, 472),
-                'EULER_XYZ'          : (280, 588),},},
+                'EULER_XYZ'          : (280, 588),},},   
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

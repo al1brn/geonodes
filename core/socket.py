@@ -37,35 +37,50 @@ class Socket:
     
     """ 
     
-    # Socket class, sub class and domain data type from socket bl_idname    
+    # Socket class, sub class and domain data type from socket bl_idname   
+    # Entry 3 is read in property base_data_type
+    # Used to create new states in simulation nodes
         
     SOCKET_IDS = {
-        'NodeSocketBool'        : ('Boolean',    '',             'BOOLEAN'), 
+        'NodeSocketBool'                : ('Boolean',    '',             'BOOLEAN',        'BOOLEAN'), 
 
-        'NodeSocketInt'         : ('Integer',    '',             'INT'), 
-        'NodeSocketIntUnsigned' : ('Integer',    'Unsigned',     'INT'), 
+        'NodeSocketInt'                 : ('Integer',    '',             'INT',            'INT'), 
+        'NodeSocketIntUnsigned'         : ('Integer',    'Unsigned',     'INT',            'INT'),
+        'NodeSocketIntFactor'           : ('Integer',    'Factor',       'INT',            'INT'), 
+        'NodeSocketIntPercentage'       : ('Integer',    'Percentage',   'INT',            'INT'), 
 
-        'NodeSocketFloat'       : ('Float',      '',             'FLOAT'), 
-        'NodeSocketFloatFactor' : ('Float',      'Factor',       'FLOAT'),
-        'NodeSocketFloatAngle'  : ('Float',      'Angle',        'FLOAT'), 
-        'NodeSocketFloatDistance': ('Float',     'Distance',     'FLOAT'), 
+        'NodeSocketFloat'               : ('Float',      '',             'FLOAT',          'FLOAT'), 
+        'NodeSocketFloatFactor'         : ('Float',      'Factor',       'FLOAT',          'FLOAT'),
+        'NodeSocketFloatAngle'          : ('Float',      'Angle',        'FLOAT',          'FLOAT'), 
+        'NodeSocketFloatDistance'       : ('Float',      'Distance',     'FLOAT',          'FLOAT'), 
+        'NodeSocketFloatPercentage'     : ('Float',      'Percentage',   'FLOAT',          'FLOAT'), 
+        'NodeSocketFloatTime'           : ('Float',      'Time',         'FLOAT',          'FLOAT'), 
+        'NodeSocketFloatTimeAbsolute'   : ('Float',      'TimeAbsolute', 'FLOAT',          'FLOAT'), 
+        'NodeSocketFloatUnsigned'       : ('Float',      'Unisgned',     'FLOAT',          'FLOAT'), 
 
-        'NodeSocketVector'      : ('Vector',     '',             'FLOAT_VECTOR'), 
-        'NodeSocketVectorEuler' : ('Vector',     'Rotation',     'FLOAT_VECTOR'),
-        'NodeSocketVectorXYZ'   : ('Vector',     'xyz',          'FLOAT_VECTOR'), 
-        'NodeSocketVectorTranslation' : ('Vector', 'Translation','FLOAT_VECTOR'), 
+        'NodeSocketVector'              : ('Vector',     '',             'FLOAT_VECTOR',   'VECTOR'), 
+        'NodeSocketVectorEuler'         : ('Vector',     'Rotation',     'FLOAT_VECTOR',   'VECTOR'),
+        'NodeSocketVectorXYZ'           : ('Vector',     'xyz',          'FLOAT_VECTOR',   'VECTOR'), 
+        'NodeSocketVectorTranslation'   : ('Vector',     'Translation',  'FLOAT_VECTOR',   'VECTOR'), 
+        'NodeSocketVectorAcceleration'  : ('Vector',     'Acceleration', 'FLOAT_VECTOR',   'VECTOR'), 
+        'NodeSocketVectorDirection'     : ('Vector',     'Direction',    'FLOAT_VECTOR',   'VECTOR'), 
+        'NodeSocketVectorVelocity'      : ('Vector',     'Velocity',     'FLOAT_VECTOR',   'VECTOR'), 
 
-        'NodeSocketColor'       : ('Color',      '',             'FLOAT_COLOR'), 
-        'NodeSocketString'      : ('String',     '',             'FLOAT_COLOR'), 
+        'NodeSocketColor'               : ('Color',      '',             'FLOAT_COLOR',    'RGBA'), 
+        'NodeSocketString'              : ('String',     '',             'STRING',         'STRING'), 
 
-        'NodeSocketGeometry'    : ('Geometry',   '',              None), 
+        'NodeSocketGeometry'            : ('Geometry',   '',              None,            'GEOMETRY'), 
 
-        'NodeSocketCollection'  : ('Collection', '',              None), 
-        'NodeSocketImage'       : ('Image',      '',              None), 
-        'NodeSocketMaterial'    : ('Material',   '',              None), 
-        'NodeSocketObject'      : ('Object',     '',              None), 
-        'NodeSocketTexture'     : ('Texture',    '',              None), 
+        'NodeSocketCollection'          : ('Collection', '',              None,            'COLLECTION'), 
+        'NodeSocketImage'               : ('Image',      '',              None,            'IMAGE'), 
+        'NodeSocketMaterial'            : ('Material',   '',              None,            'MATERIAL'), 
+        'NodeSocketObject'              : ('Object',     '',              None,            'OBJECT'), 
+        'NodeSocketTexture'             : ('Texture',    '',              None,            'TEXTURE'), 
     }
+    
+
+
+    
     
     # ----------------------------------------------------------------------------------------------------
     # > Socket initialization
@@ -571,7 +586,7 @@ class Socket:
     def get_class_name(socket, with_sub_class = False):
         """ Get the DataSocket class name corresponding to the socket type and name.
         
-        | Socket bl_idname              | Geondes class name    | Sub class             |
+        | Socket bl_idname              | Geonodes class name   | Sub class             |
         |-------------------------------|-----------------------|-----------------------|
         | NodeSocketBool                | Boolean               | None                  |
         | NodeSocketInt                 | Integer               | None                  |
@@ -710,6 +725,11 @@ class Socket:
         
         elif class_name in ['Object']:
             return 'NodeSocketObject'
+        
+    @property
+    def base_data_type(self):
+        return Socket.SOCKET_IDS[self.bl_idname][3]
+        
         
 
 # =============================================================================================================================

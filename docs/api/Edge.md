@@ -26,7 +26,7 @@ Edge(self, data_socket, selection=None)
 
 **Properties**
 
-[ID](#ID) | [angle](#angle) | [as_cloud_points](#as_cloud_points) | [as_control_points](#as_control_points) | [as_corners](#as_corners) | [as_edges](#as_edges) | [as_faces](#as_faces) | [as_insts](#as_insts) | [as_splines](#as_splines) | [as_verts](#as_verts) | [count](#count) | [data_socket](#data_socket) | [domain](#domain) | [domain_index](#domain_index) | [index](#index) | [neighbors](#neighbors) | [normal](#normal) | [position](#position) | [selection](#selection) | [selection_index](#selection_index) | [signed_angle](#signed_angle) | [unsigned_angle](#unsigned_angle) | [vertices](#vertices) | [vertices_index](#vertices_index) | [vertices_position](#vertices_position)
+[ID](#ID) | [angle](#angle) | [as_cloud_points](#as_cloud_points) | [as_control_points](#as_control_points) | [as_corners](#as_corners) | [as_edges](#as_edges) | [as_faces](#as_faces) | [as_insts](#as_insts) | [as_splines](#as_splines) | [as_verts](#as_verts) | [count](#count) | [data_socket](#data_socket) | [domain](#domain) | [domain_index](#domain_index) | [index](#index) | [index_of_nearest](#index_of_nearest) | [neighbors](#neighbors) | [normal](#normal) | [position](#position) | [selection](#selection) | [selection_index](#selection_index) | [signed_angle](#signed_angle) | [unsigned_angle](#unsigned_angle) | [vertices](#vertices) | [vertices_index](#vertices_index) | [vertices_position](#vertices_position)
 
 **Class and static methods**
 
@@ -222,6 +222,26 @@ Node implemented as property setter.
 
 <sub>Go to [top](#class-Edge) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
+### index_of_nearest
+
+
+
+> Node: [Index of Nearest](GeometryNodeIndexOfNearest.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/n.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeIndexOfNearest.html)
+
+#### Args:
+- position: Vector
+- group_id: Integer
+
+#### Returns:
+- node with sockets ['index', 'has_neighbor']
+
+
+
+
+
+
+<sub>Go to [top](#class-Edge) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### neighbors
 
 
@@ -365,10 +385,8 @@ Node implemented as property setter.
 
 > Node: [Edge Vertices](GeometryNodeInputMeshEdgeVertices.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/edge_vertices.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshEdgeVertices.html)
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeInputMeshEdgeVertices.webp)
-
 #### Returns:
-- tuple ('`vertex_index_1`', '`vertex_index_2`')
+- node with sockets ['vertex_index_1', 'vertex_index_2', 'position_1', 'position_2']
 
 
 
@@ -383,10 +401,8 @@ Node implemented as property setter.
 
 > Node: [Edge Vertices](GeometryNodeInputMeshEdgeVertices.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/edge_vertices.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshEdgeVertices.html)
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeInputMeshEdgeVertices.webp)
-
 #### Returns:
-- tuple ('`position_1`', '`position_2`')
+- node with sockets ['vertex_index_1', 'vertex_index_2', 'position_1', 'position_2']
 
 
 
@@ -520,10 +536,8 @@ def accumulate_field(self, value=None, group_id=None)
 - value: ['Vector', 'Float', 'Integer']
 - group_id: Integer
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeAccumulateField.webp)
-
 #### Returns:
-- tuple ('`leading`', '`trailing`', '`total`')
+- node with sockets ['leading', 'trailing', 'total']
 
 
 
@@ -1083,10 +1097,8 @@ def extrude(self, offset=None, offset_scale=None, individual=None)
 - offset_scale: Float
 - individual: Boolean
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeExtrudeMesh.webp)
-
 #### Returns:
-- tuple ('`top`', '`side`')
+- self
 
 
 
@@ -1511,10 +1523,8 @@ def separate(self)
 
 > Node: [Separate Geometry](GeometryNodeSeparateGeometry.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/separate_geometry.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSeparateGeometry.html)
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeSeparateGeometry.webp)
-
 #### Returns:
-- tuple ('`selection`', '`inverted`')
+- node with sockets ['selection', 'inverted']
 
 
 

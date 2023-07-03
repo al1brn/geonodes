@@ -25,7 +25,7 @@ node = nodes.Points(count=None, position=None, radius=None)
 
 ### Output sockets:
 
-- **geometry** : [Geometry](Geometry.md)
+- **geometry** : [Points](Points.md)
 
 ## Implementation
 

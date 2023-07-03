@@ -779,10 +779,13 @@ class Tree:
     
     @property
     def scene(self):
+        
+        from geonodes import nodes
+        
         """ Maintain a single instance of the node :class:`SceneTime`.
         """
         if self.scene_ is None:
-            self.scene_ = SceneTime()
+            self.scene_ = nodes.SceneTime()
         return self.scene_
         
     @property

@@ -26,7 +26,7 @@ Corner(self, data_socket, selection=None)
 
 **Properties**
 
-[ID](#ID) | [as_cloud_points](#as_cloud_points) | [as_control_points](#as_control_points) | [as_corners](#as_corners) | [as_edges](#as_edges) | [as_faces](#as_faces) | [as_insts](#as_insts) | [as_splines](#as_splines) | [as_verts](#as_verts) | [count](#count) | [data_socket](#data_socket) | [domain](#domain) | [domain_index](#domain_index) | [face_index](#face_index) | [index](#index) | [index_in_face](#index_in_face) | [next_vertex](#next_vertex) | [normal](#normal) | [position](#position) | [previous_vertex](#previous_vertex) | [selection](#selection) | [selection_index](#selection_index) | [vertex_index](#vertex_index)
+[ID](#ID) | [as_cloud_points](#as_cloud_points) | [as_control_points](#as_control_points) | [as_corners](#as_corners) | [as_edges](#as_edges) | [as_faces](#as_faces) | [as_insts](#as_insts) | [as_splines](#as_splines) | [as_verts](#as_verts) | [count](#count) | [data_socket](#data_socket) | [domain](#domain) | [domain_index](#domain_index) | [face_index](#face_index) | [index](#index) | [index_in_face](#index_in_face) | [index_of_nearest](#index_of_nearest) | [next_vertex](#next_vertex) | [normal](#normal) | [position](#position) | [previous_vertex](#previous_vertex) | [selection](#selection) | [selection_index](#selection_index) | [vertex_index](#vertex_index)
 
 **Class and static methods**
 
@@ -230,6 +230,26 @@ Node implemented as property setter.
 
 #### Returns:
 - socket `index_in_face`
+
+
+
+
+
+
+<sub>Go to [top](#class-Corner) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### index_of_nearest
+
+
+
+> Node: [Index of Nearest](GeometryNodeIndexOfNearest.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/n.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeIndexOfNearest.html)
+
+#### Args:
+- position: Vector
+- group_id: Integer
+
+#### Returns:
+- node with sockets ['index', 'has_neighbor']
 
 
 
@@ -484,10 +504,8 @@ def accumulate_field(self, value=None, group_id=None)
 - value: ['Vector', 'Float', 'Integer']
 - group_id: Integer
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeAccumulateField.webp)
-
 #### Returns:
-- tuple ('`leading`', '`trailing`', '`total`')
+- node with sockets ['leading', 'trailing', 'total']
 
 
 
@@ -888,10 +906,8 @@ def edges(self)
 
 > Node: [Edges of Corner](GeometryNodeEdgesOfCorner.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh_topology/edges_of_corner.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeEdgesOfCorner.html)
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeEdgesOfCorner.webp)
-
 #### Returns:
-- tuple ('`next_edge_index`', '`previous_edge_index`')
+- node with sockets ['next_edge_index', 'previous_edge_index']
 
 
 
@@ -934,10 +950,8 @@ def face(self)
 
 > Node: [Face of Corner](GeometryNodeFaceOfCorner.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh_topology/face_of_corner.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeFaceOfCorner.html)
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeFaceOfCorner.webp)
-
 #### Returns:
-- tuple ('`face_index`', '`index_in_face`')
+- node with sockets ['face_index', 'index_in_face']
 
 
 

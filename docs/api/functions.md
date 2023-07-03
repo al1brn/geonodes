@@ -757,7 +757,7 @@ def color_ramp(fac=None)
 
 
 
-> Node: [ColorRamp](ShaderNodeValToRGB.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/color_ramp.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeValToRGB.html)
+> Node: [Color Ramp](ShaderNodeValToRGB.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/color_ramp.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeValToRGB.html)
 
 #### Args:
 - fac: Float
@@ -2091,10 +2091,8 @@ def separate_hsl(color=None)
 #### Args:
 - color: Color
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_FunctionNodeSeparateColor.webp)
-
 #### Returns:
-- tuple ('`red`', '`green`', '`blue`', '`alpha`')
+- node with sockets ['red', 'green', 'blue', 'alpha']
 
 
 
@@ -2116,10 +2114,8 @@ def separate_hsv(color=None)
 #### Args:
 - color: Color
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_FunctionNodeSeparateColor.webp)
-
 #### Returns:
-- tuple ('`red`', '`green`', '`blue`', '`alpha`')
+- node with sockets ['red', 'green', 'blue', 'alpha']
 
 
 
@@ -2141,10 +2137,8 @@ def separate_rgb(color=None)
 #### Args:
 - color: Color
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_FunctionNodeSeparateColor.webp)
-
 #### Returns:
-- tuple ('`red`', '`green`', '`blue`', '`alpha`')
+- node with sockets ['red', 'green', 'blue', 'alpha']
 
 
 
@@ -2421,10 +2415,8 @@ def string_to_curves(string=None, size=None, character_spacing=None, word_spacin
 - overflow (str): 'OVERFLOW' in [OVERFLOW, SCALE_TO_FIT, TRUNCATE]
 - pivot_mode (str): 'BOTTOM_LEFT' in [MIDPOINT, TOP_LEFT, TOP_CENTER,... , BOTTOM_LEFT, BOTTOM_CENTER, BOTTOM_RIGHT]
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeStringToCurves.webp)
-
 #### Returns:
-- tuple ('`curve_instances`', '`line`', '`pivot_point`')
+- node with sockets ['curve_instances', 'remainder', 'line', 'pivot_point']
 
 
 

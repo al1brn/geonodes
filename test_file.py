@@ -78,7 +78,6 @@ with gn.Tree('Geometry Nodes') as tree:
     geometry.replace_material()
     var = geometry.material_index
     geometry.material_selection()
-    geometry.set_material()
     geometry.set_material_index()
     geometry.viewer()
     geometry.view()
@@ -89,6 +88,8 @@ with gn.Tree('Geometry Nodes') as tree:
     var = gn.Geometry.random_vector()
     var = gn.Geometry.random_boolean()
     geometry.switch()
+    var = geometry.index_of_nearest
+    var = geometry.signed_distance
     mesh.verts.attribute_statistic()
     mesh.edges.attribute_statistic()
     mesh.faces.attribute_statistic()
@@ -497,6 +498,14 @@ with gn.Tree('Geometry Nodes') as tree:
     var = gn.Domain.random_boolean()
     var = gn.Domain.random_boolean()
     var = gn.Domain.random_boolean()
+    var = mesh.verts.index_of_nearest
+    var = mesh.edges.index_of_nearest
+    var = mesh.faces.index_of_nearest
+    var = mesh.corners.index_of_nearest
+    var = curve.points.index_of_nearest
+    var = curve.splines.index_of_nearest
+    var = instances.insts.index_of_nearest
+    var = points.points.index_of_nearest
     var = mesh.domain_size
     var = mesh.point_count
     var = mesh.face_count
@@ -506,6 +515,7 @@ with gn.Tree('Geometry Nodes') as tree:
     mesh.delete_edges()
     mesh.delete_faces()
     mesh.instance_on_points()
+    mesh.set_material()
     mesh.dual_mesh()
     mesh.edge_paths_to_curves()
     mesh.edge_paths_to_selection()
@@ -527,7 +537,7 @@ with gn.Tree('Geometry Nodes') as tree:
     mesh.subdivision_surface()
     mesh.triangulate()
     mesh.face_group_boundaries()
-    mesh.face_is_planar()
+    mesh.is_face_planar()
     mesh.is_shade_smooth()
     var = mesh.island
     var = mesh.island_index
@@ -556,6 +566,7 @@ with gn.Tree('Geometry Nodes') as tree:
     mesh.distribute_points_on_faces()
     mesh.pack_uv_islands()
     mesh.uv_unwrap()
+    mesh.to_sdf_volume()
     var = curve.domain_size
     var = curve.point_count
     var = curve.spline_count
@@ -601,12 +612,18 @@ with gn.Tree('Geometry Nodes') as tree:
     var = points.domain_size
     points.interpolate()
     points.instance_on_points()
+    points.set_material()
+    points.set_material()
+    
+    points.material = None
     var = gn.Points.Points()
     points.to_vertices()
     points.to_volume()
     points.to_volume_size()
     points.to_volume_amount()
     points.set_point_radius()
+    points.offset_sdf_volume()
+    points.to_sdf_volume()
     var = instances.domain_size
     var = gn.Instances.InstanceOnPoints()
     instances.on_points()
@@ -642,6 +659,7 @@ with gn.Tree('Geometry Nodes') as tree:
     mesh.verts.edges()
     mesh.verts.edges_index()
     mesh.verts.edges_total()
+    mesh.verts.to_sdf_volume()
     var = mesh.faces.count
     mesh.faces.delete()
     mesh.faces.delete_all()
@@ -740,9 +758,6 @@ with gn.Tree('Geometry Nodes') as tree:
     curve.splines.separate()
     var = curve.splines.normal
     var = curve.splines.material_index
-    curve.splines.set_material()
-    
-    curve.splines.material = None
     curve.splines.set_material_index()
     curve.splines.material_index = None
     var = curve.points.count
@@ -791,6 +806,7 @@ with gn.Tree('Geometry Nodes') as tree:
     points.points.instance_on_points()
     points.points.to_vertices()
     points.points.radius = None
+    points.points.to_sdf_volume()
     var = instances.insts.count
     instances.insts.delete()
     instances.insts.duplicate()
@@ -1224,11 +1240,20 @@ with gn.Tree('Geometry Nodes') as tree:
     image.fps()
     image.texture()
     image.switch()
+    volume.set_material()
     volume.distribute_points()
     volume.distribute_points_random()
     volume.distribute_points_grid()
     var = gn.Volume.Cube()
     volume.to_mesh()
+    volume.mean_filter_sdf_volume()
+    volume.offset_sdf_volume()
+    var = gn.Volume.SdfSphere()
+    volume.sample()
+    volume.sample_float()
+    volume.sample_vector()
+    volume.sample_integer()
+    volume.sample_boolean()
     var = gn.Texture.brick()
     var = gn.Texture.checker()
     var = gn.Texture.gradient()

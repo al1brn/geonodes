@@ -572,7 +572,7 @@ def color_overlay(factor=None, a=None, b=None, clamp_factor=True, clamp_result=F
 def color_ramp(fac=None):
     """
 
-    > Node: [ColorRamp](ShaderNodeValToRGB.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/color_ramp.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeValToRGB.html)
+    > Node: [Color Ramp](ShaderNodeValToRGB.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/color_ramp.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeValToRGB.html)
 
     #### Args:
     - fac: Float
@@ -1589,16 +1589,13 @@ def separate_hsl(color=None):
     #### Args:
     - color: Color
 
-    ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_FunctionNodeSeparateColor.webp)
-
     #### Returns:
-    - tuple ('`red`', '`green`', '`blue`', '`alpha`')
+    - node with sockets ['red', 'green', 'blue', 'alpha']
 
 
     """
 
-    node = nodes.SeparateColor(color=color, mode='HSL')
-    return node.red, node.green, node.blue, node.alpha
+    return nodes.SeparateColor(color=color, mode='HSL')
 
 
 def separate_hsv(color=None):
@@ -1609,16 +1606,13 @@ def separate_hsv(color=None):
     #### Args:
     - color: Color
 
-    ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_FunctionNodeSeparateColor.webp)
-
     #### Returns:
-    - tuple ('`red`', '`green`', '`blue`', '`alpha`')
+    - node with sockets ['red', 'green', 'blue', 'alpha']
 
 
     """
 
-    node = nodes.SeparateColor(color=color, mode='HSV')
-    return node.red, node.green, node.blue, node.alpha
+    return nodes.SeparateColor(color=color, mode='HSV')
 
 
 def separate_rgb(color=None):
@@ -1629,16 +1623,13 @@ def separate_rgb(color=None):
     #### Args:
     - color: Color
 
-    ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_FunctionNodeSeparateColor.webp)
-
     #### Returns:
-    - tuple ('`red`', '`green`', '`blue`', '`alpha`')
+    - node with sockets ['red', 'green', 'blue', 'alpha']
 
 
     """
 
-    node = nodes.SeparateColor(color=color, mode='RGB')
-    return node.red, node.green, node.blue, node.alpha
+    return nodes.SeparateColor(color=color, mode='RGB')
 
 
 def sign(value=None, clamp=False):
@@ -1844,17 +1835,13 @@ def string_to_curves(string=None, size=None, character_spacing=None, word_spacin
     - overflow (str): 'OVERFLOW' in [OVERFLOW, SCALE_TO_FIT, TRUNCATE]
     - pivot_mode (str): 'BOTTOM_LEFT' in [MIDPOINT, TOP_LEFT, TOP_CENTER,... , BOTTOM_LEFT, BOTTOM_CENTER, BOTTOM_RIGHT]
 
-    ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeStringToCurves.webp)
-
     #### Returns:
-    - tuple ('`curve_instances`', '`line`', '`pivot_point`')
+    - node with sockets ['curve_instances', 'remainder', 'line', 'pivot_point']
 
 
     """
 
-    import geonodes as gn
-    node = nodes.StringToCurves(string=string, size=size, character_spacing=character_spacing, word_spacing=word_spacing, line_spacing=line_spacing, text_box_width=text_box_width, text_box_height=text_box_height, align_x=align_x, align_y=align_y, overflow=overflow, pivot_mode=pivot_mode)
-    return gn.Instances(node.curve_instances), node.line, node.pivot_point
+    return nodes.StringToCurves(string=string, size=size, character_spacing=character_spacing, word_spacing=word_spacing, line_spacing=line_spacing, text_box_width=text_box_width, text_box_height=text_box_height, align_x=align_x, align_y=align_y, overflow=overflow, pivot_mode=pivot_mode)
 
 
 def switch(switch=None, false=None, true=None, input_type='GEOMETRY'):

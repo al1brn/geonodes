@@ -242,7 +242,7 @@ def get_class_name(socket, with_sub_class = False)
 
  Get the DataSocket class name corresponding to the socket type and name.
 
-| Socket bl_idname              | Geondes class name    | Sub class             |
+| Socket bl_idname              | Geonodes class name   | Sub class             |
 |-------------------------------|-----------------------|-----------------------|
 | NodeSocketBool                | Boolean               | None                  |
 | NodeSocketInt                 | Integer               | None                  |

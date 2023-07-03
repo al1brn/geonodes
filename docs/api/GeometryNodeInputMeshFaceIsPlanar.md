@@ -1,16 +1,16 @@
-# Node *Face is Planar*
+# Node *Is Face Planar*
 
 > [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
-- [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/face_is_planar.html)
+- [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/s.html)
 - [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshFaceIsPlanar.html)
-- geonodes name: `FaceIsPlanar`
+- geonodes name: `IsFacePlanar`
 - bl_idname: `GeometryNodeInputMeshFaceIsPlanar`
 
 ```python
 from geonodes import nodes
 
-node = nodes.FaceIsPlanar(threshold=None)
+node = nodes.IsFacePlanar(threshold=None)
 ```
 
 ![Blender Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeInputMeshFaceIsPlanar.webp)
@@ -32,7 +32,7 @@ node = nodes.FaceIsPlanar(threshold=None)
 | **[Face](Face.md)** |
 | [is_planar](Face.md#is_planar) | `def is_planar(self, threshold=None):` |
 | **[Mesh](Mesh.md)** |
-| [face_is_planar](Mesh.md#face_is_planar) | `def face_is_planar(self, threshold=None):` |
+| [is_face_planar](Mesh.md#is_face_planar) | `def is_face_planar(self, threshold=None):` |
 
-<sub>Go to [top](#node-Face-is-Planar) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Is-Face-Planar) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

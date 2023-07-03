@@ -1,12 +1,13 @@
 # geonodes init file
 
-version = (3, 5, 0, 0)
-blender_version=(3, 5, 0)
+version = (3, 6, 0, 0)
+blender_version=(3, 6, 0)
 
 pi = 3.141592653589793
 
 from geonodes.core.node import Node, GroupInput, GroupOutput, Frame, SceneTime, Group
 from geonodes.core.tree import Tree, Trees
+from geonodes.core.simulation import Simulation
 
 from geonodes.nodes import nodes
 

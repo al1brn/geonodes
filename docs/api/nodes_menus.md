@@ -57,7 +57,7 @@
 
 | node | class | method name |
 |------|-------|-------------|
-| [ColorRamp](ShaderNodeValToRGB.md) | [Float](Float.md) | [color_ramp](Float.md#color_ramp) |
+| [Color Ramp](ShaderNodeValToRGB.md) | [Float](Float.md) | [color_ramp](Float.md#color_ramp) |
 |      | [functions](functions.md) | [color_ramp](functions.md#color_ramp) |
 | [Combine Color](FunctionNodeCombineColor.md) | [Color](Color.md) | - [RGB](Color.md#RGB)<br>- [HSV](Color.md#HSV)<br>- [HSL](Color.md#HSL)|
 |      | [functions](functions.md) | - [combine_rgb](functions.md#combine_rgb)<br>- [combine_hsv](functions.md#combine_hsv)<br>- [combine_hsl](functions.md#combine_hsl)|
@@ -287,8 +287,9 @@
 | [Material Selection](GeometryNodeMaterialSelection.md) | [Domain](Domain.md) | [material_selection](Domain.md#material_selection) |
 |      | [Geometry](Geometry.md) | [material_selection](Geometry.md#material_selection) |
 | [Set Material](GeometryNodeSetMaterial.md) | [Face](Face.md) | - [set_material](Face.md#set_material)<br>- [material](Face.md#material)<br>- [material](Face.md#material)|
-|      | [Geometry](Geometry.md) | [set_material](Geometry.md#set_material) |
-|      | [Spline](Spline.md) | - [set_material](Spline.md#set_material)<br>- [material](Spline.md#material)<br>- [material](Spline.md#material)|
+|      | [Mesh](Mesh.md) | [set_material](Mesh.md#set_material) |
+|      | [Points](Points.md) | - [set_material](Points.md#set_material)<br>- [set_material](Points.md#set_material)<br>- [material](Points.md#material)<br>- [material](Points.md#material)|
+|      | [Volume](Volume.md) | [set_material](Volume.md#set_material) |
 | [Set Material Index](GeometryNodeSetMaterialIndex.md) | [Face](Face.md) | - [set_material_index](Face.md#set_material_index)<br>- [material_index](Face.md#material_index)|
 |      | [Geometry](Geometry.md) | [set_material_index](Geometry.md#set_material_index) |
 |      | [Spline](Spline.md) | - [set_material_index](Spline.md#set_material_index)<br>- [material_index](Spline.md#material_index)|
@@ -336,8 +337,8 @@
 | [Face Neighbors](GeometryNodeInputMeshFaceNeighbors.md) | [Face](Face.md) | - [neighbors](Face.md#neighbors)<br>- [neighbors_vertex_count](Face.md#neighbors_vertex_count)<br>- [neighbors_face_count](Face.md#neighbors_face_count)|
 | [Face Group Boundaries](GeometryNodeMeshFaceSetBoundaries.md) | [Face](Face.md) | [face_group_boundaries](Face.md#face_group_boundaries) |
 |      | [Mesh](Mesh.md) | [face_group_boundaries](Mesh.md#face_group_boundaries) |
-| [Face is Planar](GeometryNodeInputMeshFaceIsPlanar.md) | [Face](Face.md) | [is_planar](Face.md#is_planar) |
-|      | [Mesh](Mesh.md) | [face_is_planar](Mesh.md#face_is_planar) |
+| [Is Face Planar](GeometryNodeInputMeshFaceIsPlanar.md) | [Face](Face.md) | [is_planar](Face.md#is_planar) |
+|      | [Mesh](Mesh.md) | [is_face_planar](Mesh.md#is_face_planar) |
 | [Is Shade Smooth](GeometryNodeInputShadeSmooth.md) | [Face](Face.md) | [shade_smooth](Face.md#shade_smooth) |
 |      | [Mesh](Mesh.md) | [is_shade_smooth](Mesh.md#is_shade_smooth) |
 | [Mesh Island](GeometryNodeInputMeshIsland.md) | [Face](Face.md) | - [island](Face.md#island)<br>- [island_index](Face.md#island_index)<br>- [island_count](Face.md#island_count)|

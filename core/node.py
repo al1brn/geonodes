@@ -129,17 +129,43 @@ class Node:
         self.outsockets = {}
         """ set: keys = unique names of output sockets, values: actual socket indices"""
         
+        # ----- We can force the class of output sockets (used for geometry)
+        
+        self.outsockets_classes = {}
+        
+        
     # ------------------------------------------------------------------------------------------
     # Node class signature
     
     @staticmethod
     def is_node():
         pass
+    
+    # ------------------------------------------------------------------------------------------
+    # insockets and outsockets are initialized by generated code
+    # Some nodes sucha as simulation input and output nodes can have sockets dynamically created
+    # This method updates insockets and outsockets from sockets
+    
+    def update_inout_sockets(self):
+        
+        def snake(s):
+            return s.lower().replace(' ', '_').replace('-', '_')
+
+        self.inputs     = [DataSocket(bsocket, node=self) for bsocket in self.bnode.inputs if bsocket.bl_idname != 'NodeSocketVirtual']
+        self.outputs    = [DataSocket(bsocket, node=self) for bsocket in self.bnode.outputs if bsocket.bl_idname != 'NodeSocketVirtual']
+
+        self.insockets  = {snake(socket.name): index for index, socket in enumerate(self.inputs)}
+        self.outsockets = {snake(socket.name): index for index, socket in enumerate(self.outputs)}
+
+        
+        #self.insockets  = {snake(bsocket.name): index for index, bsocket in enumerate(self.bnode.inputs) if bsocket.bl_idname != 'NodeSocketVirtual'}
+        #self.outsockets = {snake(bsocket.name): index for index, bsocket in enumerate(self.bnode.outputs) if bsocket.bl_idname != 'NodeSocketVirtual'}
+    
         
     # ------------------------------------------------------------------------------------------
     # Output socket by name
     
-    def get_output_socket(self, name):
+    def get_output_socket(self, name, class_name=None):
 
         #sock_ind = self.outsockets.get(name.lower())
         sock_ind = self.outsockets.get(name)
@@ -154,9 +180,18 @@ class Node:
                 if self.bnode.outputs[index].enabled:
                     ds = self.DataClass(self.bnode.outputs[index])
                     break
-                
-            if ds is None:
-                raise AttributeError(f"Output socket error on node {self}: all socket named '{name}' are disabled")
+                    
+        if ds is None:
+            raise AttributeError(f"Output socket error on node {self}: all socket named '{name}' are disabled")
+            
+        if class_name is None:
+            class_name = self.outsockets_classes.get(name, None)
+            
+        if class_name is not None:
+            if isinstance(class_name, str):
+                ds = getattr(Node, class_name)(ds.bsocket)
+            else:
+                ds = class_name(ds.bsocket)
                         
         ds.field_of = self.field_of
         return ds

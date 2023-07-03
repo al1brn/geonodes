@@ -23,7 +23,7 @@ node = nodes.ConvexHull(geometry=None)
 
 ### Output sockets:
 
-- **convex_hull** : [Geometry](Geometry.md)
+- **convex_hull** : [Mesh](Mesh.md)
 
 ## Implementation
 

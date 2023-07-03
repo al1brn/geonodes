@@ -276,6 +276,25 @@ class Geometry(geosocks.Geometry):
 
 
     @property
+    def index_of_nearest(self, position=None, group_id=None):
+        """
+
+        > Node: [Index of Nearest](GeometryNodeIndexOfNearest.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/n.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeIndexOfNearest.html)
+
+        #### Args:
+        - position: Vector
+        - group_id: Integer
+
+        #### Returns:
+        - node with sockets ['index', 'has_neighbor']
+
+
+        """
+
+        return self.attribute_node(nodes.IndexOfNearest(position=position, group_id=group_id))
+
+
+    @property
     def instances_component(self):
         """
 
@@ -905,16 +924,13 @@ class Geometry(geosocks.Geometry):
         - selection: Boolean
         - domain (str): 'POINT' in [POINT, EDGE, FACE, CURVE, INSTANCE]
 
-        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeSeparateGeometry.webp)
-
         #### Returns:
-        - tuple ('`selection`', '`inverted`')
+        - node with sockets ['selection', 'inverted']
 
 
         """
 
-        node = nodes.SeparateGeometry(geometry=self, selection=selection, domain=domain)
-        return node.selection, node.inverted
+        return nodes.SeparateGeometry(geometry=self, selection=selection, domain=domain)
 
 
     @property
@@ -924,7 +940,7 @@ class Geometry(geosocks.Geometry):
         > Node: [Separate Components](GeometryNodeSeparateComponents.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/separate_components.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSeparateComponents.html)
 
         #### Returns:
-        - node with sockets ['mesh', 'point_cloud', 'curve', 'volume', 'instances']
+        - node with sockets ['mesh', 'curve', 'point_cloud', 'volume', 'instances']
 
 
         """
@@ -950,24 +966,6 @@ class Geometry(geosocks.Geometry):
         """
 
         return self.stack(nodes.SetID(geometry=self, selection=selection, ID=ID))
-
-
-    def set_material(self, selection=None, material=None):
-        """
-
-        > Node: [Set Material](GeometryNodeSetMaterial.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/set_material.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetMaterial.html)
-
-        #### Args:
-        - selection: Boolean
-        - material: Material
-
-        #### Returns:
-        - self
-
-
-        """
-
-        return self.stack(nodes.SetMaterial(geometry=self, selection=selection, material=material))
 
 
     def set_material_index(self, selection=None, material_index=None):
@@ -1005,6 +1003,21 @@ class Geometry(geosocks.Geometry):
         """
 
         return self.stack(nodes.SetPosition(geometry=self, selection=selection, position=position, offset=offset))
+
+
+    @property
+    def signed_distance(self):
+        """
+
+        > Node: [Signed Distance](GeometryNodeInputSignedDistance.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/i.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputSignedDistance.html)
+
+        #### Returns:
+        - socket `signed_distance`
+
+
+        """
+
+        return self.attribute_node(nodes.SignedDistance()).signed_distance
 
 
     def store_named_attribute(self, selection=None, name=None, value=None, domain='POINT'):
@@ -1580,16 +1593,13 @@ class Mesh(Geometry):
         - weights: Float
         - sort_index: Integer
 
-        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeCornersOfFace.webp)
-
         #### Returns:
-        - tuple ('`corner_index`', '`total`')
+        - node with sockets ['corner_index', 'total']
 
 
         """
 
-        node = self.attribute_node(nodes.CornersOfFace(face_index=face_index, weights=weights, sort_index=sort_index))
-        return node.corner_index, node.total
+        return self.attribute_node(nodes.CornersOfFace(face_index=face_index, weights=weights, sort_index=sort_index))
 
 
     def corners_of_vertex(self, vertex_index=None, weights=None, sort_index=None):
@@ -1602,16 +1612,13 @@ class Mesh(Geometry):
         - weights: Float
         - sort_index: Integer
 
-        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeCornersOfVertex.webp)
-
         #### Returns:
-        - tuple ('`corner_index`', '`total`')
+        - node with sockets ['corner_index', 'total']
 
 
         """
 
-        node = self.attribute_node(nodes.CornersOfVertex(vertex_index=vertex_index, weights=weights, sort_index=sort_index))
-        return node.corner_index, node.total
+        return self.attribute_node(nodes.CornersOfVertex(vertex_index=vertex_index, weights=weights, sort_index=sort_index))
 
 
     def delete_all(self, selection=None, domain='POINT'):
@@ -1683,17 +1690,13 @@ class Mesh(Geometry):
         - distribute_method (str): 'RANDOM' in [RANDOM, POISSON]
         - use_legacy_normal (bool): False
 
-        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeDistributePointsOnFaces.webp)
-
         #### Returns:
-        - tuple ('`points`', '`normal`', '`rotation`')
+        - node with sockets ['points', 'normal', 'rotation']
 
 
         """
 
-        import geonodes as gn
-        node = nodes.DistributePointsOnFaces(mesh=self, selection=selection, distance_min=distance_min, density_max=density_max, density=density, density_factor=density_factor, seed=seed, distribute_method=distribute_method, use_legacy_normal=use_legacy_normal)
-        return gn.Points(node.points), node.normal, node.rotation
+        return nodes.DistributePointsOnFaces(mesh=self, selection=selection, distance_min=distance_min, density_max=density_max, density=density, density_factor=density_factor, seed=seed, distribute_method=distribute_method, use_legacy_normal=use_legacy_normal)
 
 
     @property
@@ -1793,16 +1796,13 @@ class Mesh(Geometry):
         #### Args:
         - corner_index: Integer
 
-        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeEdgesOfCorner.webp)
-
         #### Returns:
-        - tuple ('`next_edge_index`', '`previous_edge_index`')
+        - node with sockets ['next_edge_index', 'previous_edge_index']
 
 
         """
 
-        node = self.attribute_node(nodes.EdgesOfCorner(corner_index=corner_index))
-        return node.next_edge_index, node.previous_edge_index
+        return self.attribute_node(nodes.EdgesOfCorner(corner_index=corner_index))
 
 
     def edges_of_vertex(self, vertex_index=None, weights=None, sort_index=None):
@@ -1815,16 +1815,13 @@ class Mesh(Geometry):
         - weights: Float
         - sort_index: Integer
 
-        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeEdgesOfVertex.webp)
-
         #### Returns:
-        - tuple ('`edge_index`', '`total`')
+        - node with sockets ['edge_index', 'total']
 
 
         """
 
-        node = self.attribute_node(nodes.EdgesOfVertex(vertex_index=vertex_index, weights=weights, sort_index=sort_index))
-        return node.edge_index, node.total
+        return self.attribute_node(nodes.EdgesOfVertex(vertex_index=vertex_index, weights=weights, sort_index=sort_index))
 
 
     def edges_to_face_groups(self, boundary_edges=None):
@@ -1856,16 +1853,13 @@ class Mesh(Geometry):
         - individual: Boolean
         - mode (str): 'FACES' in [VERTICES, EDGES, FACES]
 
-        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeExtrudeMesh.webp)
-
         #### Returns:
-        - tuple ('`top`', '`side`')
+        - self
 
 
         """
 
-        node = self.stack(nodes.ExtrudeMesh(mesh=self, selection=selection, offset=offset, offset_scale=offset_scale, individual=individual, mode=mode)).node
-        return node.top, node.side
+        return self.stack(nodes.ExtrudeMesh(mesh=self, selection=selection, offset=offset, offset_scale=offset_scale, individual=individual, mode=mode))
 
 
     @property
@@ -1902,23 +1896,6 @@ class Mesh(Geometry):
         return self.attribute_node(nodes.FaceGroupBoundaries(face_group_id=face_group_id)).boundary_edges
 
 
-    def face_is_planar(self, threshold=None):
-        """
-
-        > Node: [Face is Planar](GeometryNodeInputMeshFaceIsPlanar.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/face_is_planar.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshFaceIsPlanar.html)
-
-        #### Args:
-        - threshold: Float
-
-        #### Returns:
-        - socket `planar`
-
-
-        """
-
-        return self.attribute_node(nodes.FaceIsPlanar(threshold=threshold)).planar
-
-
     def face_of_corner(self, corner_index=None):
         """
 
@@ -1927,16 +1904,13 @@ class Mesh(Geometry):
         #### Args:
         - corner_index: Integer
 
-        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeFaceOfCorner.webp)
-
         #### Returns:
-        - tuple ('`face_index`', '`index_in_face`')
+        - node with sockets ['face_index', 'index_in_face']
 
 
         """
 
-        node = self.attribute_node(nodes.FaceOfCorner(corner_index=corner_index))
-        return node.face_index, node.index_in_face
+        return self.attribute_node(nodes.FaceOfCorner(corner_index=corner_index))
 
 
     def flip_faces(self, selection=None):
@@ -1976,6 +1950,23 @@ class Mesh(Geometry):
         """
 
         return nodes.InstanceOnPoints(points=self, selection=selection, instance=instance, pick_instance=pick_instance, instance_index=instance_index, rotation=rotation, scale=scale).instances
+
+
+    def is_face_planar(self, threshold=None):
+        """
+
+        > Node: [Is Face Planar](GeometryNodeInputMeshFaceIsPlanar.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/s.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshFaceIsPlanar.html)
+
+        #### Args:
+        - threshold: Float
+
+        #### Returns:
+        - socket `planar`
+
+
+        """
+
+        return self.attribute_node(nodes.IsFacePlanar(threshold=threshold)).planar
 
 
     def is_shade_smooth(self):
@@ -2127,17 +2118,14 @@ class Mesh(Geometry):
         - source_uv_map: Vector
         - sample_uv: Vector
 
-        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeSampleUVSurface.webp)
-
         #### Returns:
-        - tuple ('`value`', '`is_valid`')
+        - node with sockets ['value', 'is_valid']
 
 
         """
 
         data_type_ = self.value_data_type(value, 'FLOAT')
-        node = nodes.SampleUvSurface(mesh=self, value=value, source_uv_map=source_uv_map, sample_uv=sample_uv, data_type=data_type_)
-        return node.value, node.is_valid
+        return nodes.SampleUvSurface(mesh=self, value=value, source_uv_map=source_uv_map, sample_uv=sample_uv, data_type=data_type_)
 
 
     def scale_elements(self, selection=None, scale=None, center=None, axis=None, domain='FACE', scale_mode='UNIFORM'):
@@ -2203,6 +2191,24 @@ class Mesh(Geometry):
         return self.stack(nodes.ScaleElements(geometry=self, selection=selection, scale=scale, center=center, axis=None, domain=domain, scale_mode='UNIFORM'))
 
 
+    def set_material(self, selection=None, material=None):
+        """
+
+        > Node: [Set Material](GeometryNodeSetMaterial.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/set_material.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetMaterial.html)
+
+        #### Args:
+        - selection: Boolean
+        - material: Material
+
+        #### Returns:
+        - self
+
+
+        """
+
+        return self.stack(nodes.SetMaterial(geometry=self, selection=selection, material=material))
+
+
     def set_shade_smooth(self, selection=None, shade_smooth=None):
         """
 
@@ -2230,16 +2236,13 @@ class Mesh(Geometry):
         - end_vertex: Boolean
         - edge_cost: Float
 
-        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeInputShortestEdgePaths.webp)
-
         #### Returns:
-        - tuple ('`next_vertex_index`', '`total_cost`')
+        - node with sockets ['next_vertex_index', 'total_cost']
 
 
         """
 
-        node = self.attribute_node(nodes.ShortestEdgePaths(end_vertex=end_vertex, edge_cost=edge_cost))
-        return node.next_vertex_index, node.total_cost
+        return self.attribute_node(nodes.ShortestEdgePaths(end_vertex=end_vertex, edge_cost=edge_cost))
 
 
     def split_edges(self, selection=None):
@@ -2334,6 +2337,27 @@ class Mesh(Geometry):
 
         import geonodes as gn
         return gn.Points(nodes.MeshToPoints(mesh=self, selection=selection, position=position, radius=radius, mode=mode).points)
+
+
+    def to_sdf_volume(self, voxel_size=None, voxel_amount=None, half_band_width=None, resolution_mode='VOXEL_AMOUNT'):
+        """
+
+        > Node: [Mesh to SDF Volume](GeometryNodeMeshToSDFVolume.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/e.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshToSDFVolume.html)
+
+        #### Args:
+        - voxel_size: Float
+        - voxel_amount: Float
+        - half_band_width: Float
+        - resolution_mode (str): 'VOXEL_AMOUNT' in [VOXEL_AMOUNT, VOXEL_SIZE]
+
+        #### Returns:
+        - socket `volume` of class Volume
+
+
+        """
+
+        import geonodes as gn
+        return gn.Volume(nodes.MeshToSdfVolume(mesh=self, voxel_size=voxel_size, voxel_amount=voxel_amount, half_band_width=half_band_width, resolution_mode=resolution_mode).volume)
 
 
     def to_volume(self, density=None, voxel_size=None, voxel_amount=None, exterior_band_width=None, interior_band_width=None, fill_volume=None, resolution_mode='VOXEL_AMOUNT'):
@@ -2522,17 +2546,13 @@ class Curve(Geometry):
         - point_2: Vector
         - point_3: Vector
 
-        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeCurvePrimitiveCircle.webp)
-
         #### Returns:
-        - tuple ('`curve`', '`center`')
+        - node with sockets ['curve', 'center']
 
 
         """
 
-        import geonodes as gn
-        node = nodes.CurveCircle(resolution=resolution, point_1=point_1, point_2=point_2, point_3=point_3, radius=None, mode='POINTS')
-        return gn.Curve(node.curve), node.center
+        return nodes.CurveCircle(resolution=resolution, point_1=point_1, point_2=point_2, point_3=point_3, radius=None, mode='POINTS')
 
 
     @classmethod
@@ -2676,16 +2696,13 @@ class Curve(Geometry):
         #### Args:
         - point_index: Integer
 
-        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeCurveOfPoint.webp)
-
         #### Returns:
-        - tuple ('`curve_index`', '`index_in_curve`')
+        - node with sockets ['curve_index', 'index_in_curve']
 
 
         """
 
-        node = self.attribute_node(nodes.CurveOfPoint(point_index=point_index))
-        return node.curve_index, node.index_in_curve
+        return self.attribute_node(nodes.CurveOfPoint(point_index=point_index))
 
 
     def deform_on_surface(self):
@@ -2892,16 +2909,13 @@ class Curve(Geometry):
         - point_index: Integer
         - offset: Integer
 
-        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeOffsetPointInCurve.webp)
-
         #### Returns:
-        - tuple ('`is_valid_offset`', '`point_index`')
+        - node with sockets ['is_valid_offset', 'point_index']
 
 
         """
 
-        node = self.attribute_node(nodes.OffsetPointInCurve(point_index=point_index, offset=offset))
-        return node.is_valid_offset, node.point_index
+        return self.attribute_node(nodes.OffsetPointInCurve(point_index=point_index, offset=offset))
 
 
     @property
@@ -2931,16 +2945,13 @@ class Curve(Geometry):
         - weights: Float
         - sort_index: Integer
 
-        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodePointsOfCurve.webp)
-
         #### Returns:
-        - tuple ('`point_index`', '`total`')
+        - node with sockets ['point_index', 'total']
 
 
         """
 
-        node = self.attribute_node(nodes.PointsOfCurve(curve_index=curve_index, weights=weights, sort_index=sort_index))
-        return node.point_index, node.total
+        return self.attribute_node(nodes.PointsOfCurve(curve_index=curve_index, weights=weights, sort_index=sort_index))
 
 
     def resample(self, selection=None, count=None, length=None, mode='COUNT'):
@@ -3119,17 +3130,13 @@ class Curve(Geometry):
         - length: Float
         - mode (str): 'COUNT' in [EVALUATED, COUNT, LENGTH]
 
-        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeCurveToPoints.webp)
-
         #### Returns:
-        - tuple ('`points`', '`tangent`', '`normal`', '`rotation`')
+        - node with sockets ['points', 'tangent', 'normal', 'rotation']
 
 
         """
 
-        import geonodes as gn
-        node = nodes.CurveToPoints(curve=self, count=count, length=length, mode=mode)
-        return gn.Points(node.points), node.tangent, node.normal, node.rotation
+        return nodes.CurveToPoints(curve=self, count=count, length=length, mode=mode)
 
 
     def to_points_count(self, count=None):
@@ -3140,17 +3147,13 @@ class Curve(Geometry):
         #### Args:
         - count: Integer
 
-        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeCurveToPoints.webp)
-
         #### Returns:
-        - tuple ('`points`', '`tangent`', '`normal`', '`rotation`')
+        - node with sockets ['points', 'tangent', 'normal', 'rotation']
 
 
         """
 
-        import geonodes as gn
-        node = nodes.CurveToPoints(curve=self, count=count, length=0.1, mode='COUNT')
-        return gn.Points(node.points), node.tangent, node.normal, node.rotation
+        return nodes.CurveToPoints(curve=self, count=count, length=0.1, mode='COUNT')
 
 
     def to_points_evaluated(self):
@@ -3158,17 +3161,13 @@ class Curve(Geometry):
 
         > Node: [Curve to Points](GeometryNodeCurveToPoints.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/curve_to_points.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveToPoints.html)
 
-        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeCurveToPoints.webp)
-
         #### Returns:
-        - tuple ('`points`', '`tangent`', '`normal`', '`rotation`')
+        - node with sockets ['points', 'tangent', 'normal', 'rotation']
 
 
         """
 
-        import geonodes as gn
-        node = nodes.CurveToPoints(curve=self, count=10, length=0.1, mode='EVALUATED')
-        return gn.Points(node.points), node.tangent, node.normal, node.rotation
+        return nodes.CurveToPoints(curve=self, count=10, length=0.1, mode='EVALUATED')
 
 
     def to_points_length(self, length=None):
@@ -3179,17 +3178,13 @@ class Curve(Geometry):
         #### Args:
         - length: Float
 
-        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeCurveToPoints.webp)
-
         #### Returns:
-        - tuple ('`points`', '`tangent`', '`normal`', '`rotation`')
+        - node with sockets ['points', 'tangent', 'normal', 'rotation']
 
 
         """
 
-        import geonodes as gn
-        node = nodes.CurveToPoints(curve=self, count=10, length=length, mode='LENGTH')
-        return gn.Points(node.points), node.tangent, node.normal, node.rotation
+        return nodes.CurveToPoints(curve=self, count=10, length=length, mode='LENGTH')
 
 
     def trim(self, selection=None, start=None, end=None, mode='FACTOR'):
@@ -3332,6 +3327,92 @@ class Points(Geometry):
         return nodes.InterpolateCurves(guide_curves=guide_curves, guide_up=guide_up, guide_group_id=guide_group_id, points=self, point_up=point_up, point_group_id=point_group_id, max_neighbors=max_neighbors)
 
 
+    @property
+    def material(self):
+        """
+
+        > Node: [Set Material](GeometryNodeSetMaterial.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/set_material.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetMaterial.html)
+
+        'material' is a write only property.
+        Raise an exception if attempt to read.
+
+
+
+        """
+
+        raise Exception("Error: 'material' is a write only property of class Domain!")
+
+
+    @material.setter
+    def material(self, attr_value):
+        """
+
+        > Node: [Set Material](GeometryNodeSetMaterial.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/set_material.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetMaterial.html)
+
+        Node implemented as property setter.
+
+        #### Args:
+        - attr_value: material
+
+
+
+        """
+
+        self.socket_stack(nodes.SetMaterial(geometry=self.data_socket, selection=self.selection, material=attr_value))
+
+
+    def offset_sdf_volume(self, distance=None):
+        """
+
+        > Node: [Offset SDF Volume](GeometryNodeOffsetSDFVolume.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/f.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeOffsetSDFVolume.html)
+
+        #### Args:
+        - distance: Float
+
+        #### Returns:
+        - socket `volume`
+
+
+        """
+
+        return self.socket_stack(nodes.OffsetSdfVolume(volume=self.data_socket, distance=distance)).node.volume
+
+
+    def set_material(self, selection=None, material=None):
+        """
+
+        > Node: [Set Material](GeometryNodeSetMaterial.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/set_material.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetMaterial.html)
+
+        #### Args:
+        - selection: Boolean
+        - material: Material
+
+        #### Returns:
+        - self
+
+
+        """
+
+        return self.stack(nodes.SetMaterial(geometry=self, selection=selection, material=material))
+
+
+    def set_material(self, material=None):
+        """
+
+        > Node: [Set Material](GeometryNodeSetMaterial.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/set_material.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetMaterial.html)
+
+        #### Args:
+        - material: Material
+
+        #### Returns:
+        - self
+
+
+        """
+
+        return self.socket_stack(nodes.SetMaterial(geometry=self.data_socket, selection=self.selection, material=material))
+
+
     def set_point_radius(self, selection=None, radius=None):
         """
 
@@ -3348,6 +3429,27 @@ class Points(Geometry):
         """
 
         return self.stack(nodes.SetPointRadius(points=self, selection=selection, radius=radius))
+
+
+    def to_sdf_volume(self, voxel_size=None, voxel_amount=None, radius=None, resolution_mode='VOXEL_AMOUNT'):
+        """
+
+        > Node: [Points to SDF Volume](GeometryNodePointsToSDFVolume.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/o.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodePointsToSDFVolume.html)
+
+        #### Args:
+        - voxel_size: Float
+        - voxel_amount: Float
+        - radius: Float
+        - resolution_mode (str): 'VOXEL_AMOUNT' in [VOXEL_AMOUNT, VOXEL_SIZE]
+
+        #### Returns:
+        - socket `volume` of class Volume
+
+
+        """
+
+        import geonodes as gn
+        return gn.Volume(nodes.PointsToSdfVolume(points=self, voxel_size=voxel_size, voxel_amount=voxel_amount, radius=radius, resolution_mode=resolution_mode).volume)
 
 
     def to_vertices(self, selection=None):
@@ -3924,7 +4026,7 @@ class Float(geosocks.Float):
     def color_ramp(self):
         """
 
-        > Node: [ColorRamp](ShaderNodeValToRGB.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/color_ramp.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeValToRGB.html)
+        > Node: [Color Ramp](ShaderNodeValToRGB.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/color_ramp.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeValToRGB.html)
 
         #### Returns:
         - node with sockets ['color', 'alpha']
@@ -8899,17 +9001,13 @@ class String(geosocks.String):
         - overflow (str): 'OVERFLOW' in [OVERFLOW, SCALE_TO_FIT, TRUNCATE]
         - pivot_mode (str): 'BOTTOM_LEFT' in [MIDPOINT, TOP_LEFT, TOP_CENTER,... , BOTTOM_LEFT, BOTTOM_CENTER, BOTTOM_RIGHT]
 
-        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeStringToCurves.webp)
-
         #### Returns:
-        - tuple ('`curve_instances`', '`line`', '`pivot_point`')
+        - node with sockets ['curve_instances', 'remainder', 'line', 'pivot_point']
 
 
         """
 
-        import geonodes as gn
-        node = nodes.StringToCurves(string=self, size=size, character_spacing=character_spacing, word_spacing=word_spacing, line_spacing=line_spacing, text_box_width=text_box_width, text_box_height=text_box_height, align_x=align_x, align_y=align_y, overflow=overflow, pivot_mode=pivot_mode)
-        return gn.Instances(node.curve_instances), node.line, node.pivot_point
+        return nodes.StringToCurves(string=self, size=size, character_spacing=character_spacing, word_spacing=word_spacing, line_spacing=line_spacing, text_box_width=text_box_width, text_box_height=text_box_height, align_x=align_x, align_y=align_y, overflow=overflow, pivot_mode=pivot_mode)
 
 
 
@@ -9029,16 +9127,13 @@ class Image(geosocks.Image):
         - extension (str): 'REPEAT' in [REPEAT, EXTEND, CLIP, MIRROR]
         - interpolation (str): 'Linear' in [Linear, Closest, Cubic]
 
-        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeImageTexture.webp)
-
         #### Returns:
-        - tuple ('`color`', '`alpha`')
+        - node with sockets ['color', 'alpha']
 
 
         """
 
-        node = nodes.ImageTexture(image=self, vector=vector, frame=frame, extension=extension, interpolation=interpolation)
-        return node.color, node.alpha
+        return nodes.ImageTexture(image=self, vector=vector, frame=frame, extension=extension, interpolation=interpolation)
 
 
     def width(self, frame=None):
@@ -9083,6 +9178,26 @@ class Volume(Geometry):
         """
 
         return cls(nodes.VolumeCube(density=density, background=background, min=min, max=max, resolution_x=resolution_x, resolution_y=resolution_y, resolution_z=resolution_z).volume)
+
+
+    @classmethod
+    def SdfSphere(cls, radius=None, voxel_size=None, half_band_width=None):
+        """
+
+        > Node: [SDF Volume Sphere](GeometryNodeSDFVolumeSphere.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/d.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSDFVolumeSphere.html)
+
+        #### Args:
+        - radius: Float
+        - voxel_size: Float
+        - half_band_width: Float
+
+        #### Returns:
+        - socket `volume`
+
+
+        """
+
+        return cls(nodes.SdfVolumeSphere(radius=radius, voxel_size=voxel_size, half_band_width=half_band_width).volume)
 
 
     def distribute_points(self, density=None, seed=None, spacing=None, threshold=None, mode='DENSITY_RANDOM'):
@@ -9145,6 +9260,156 @@ class Volume(Geometry):
         return gn.Points(nodes.DistributePointsInVolume(volume=self, density=density, seed=seed, spacing=None, threshold=None, mode='DENSITY_RANDOM').points)
 
 
+    def mean_filter_sdf_volume(self, iterations=None, width=None):
+        """
+
+        > Node: [Mean Filter SDF Volume](GeometryNodeMeanFilterSDFVolume.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/e.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeanFilterSDFVolume.html)
+
+        #### Args:
+        - iterations: Integer
+        - width: Integer
+
+        #### Returns:
+        - socket `volume` of class Volume
+
+
+        """
+
+        import geonodes as gn
+        return gn.Volume(nodes.MeanFilterSdfVolume(volume=self, iterations=iterations, width=width).volume)
+
+
+    def offset_sdf_volume(self, distance=None):
+        """
+
+        > Node: [Offset SDF Volume](GeometryNodeOffsetSDFVolume.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/f.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeOffsetSDFVolume.html)
+
+        #### Args:
+        - distance: Float
+
+        #### Returns:
+        - socket `volume`
+
+
+        """
+
+        return self.stack(nodes.OffsetSdfVolume(volume=self, distance=distance)).node.volume
+
+
+    def sample(self, grid=None, position=None, grid_type='FLOAT', interpolation_mode='TRILINEAR'):
+        """
+
+        > Node: [Sample Volume](GeometryNodeSampleVolume.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/a.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSampleVolume.html)
+
+        #### Args:
+        - grid: ['Vector', 'Float', 'Boolean', 'Integer']
+        - position: Vector
+        - grid_type (str): 'FLOAT' in [FLOAT, FLOAT_VECTOR, INT, BOOLEAN]
+        - interpolation_mode (str): 'TRILINEAR' in [NEAREST, TRILINEAR, TRIQUADRATIC]
+
+        #### Returns:
+        - socket `value`
+
+
+        """
+
+        return nodes.SampleVolume(volume=self, grid=grid, position=position, grid_type=grid_type, interpolation_mode=interpolation_mode).value
+
+
+    def sample_boolean(self, grid=None, position=None, interpolation_mode='TRILINEAR'):
+        """
+
+        > Node: [Sample Volume](GeometryNodeSampleVolume.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/a.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSampleVolume.html)
+
+        #### Args:
+        - grid: ['Vector', 'Float', 'Boolean', 'Integer']
+        - position: Vector
+        - interpolation_mode (str): 'TRILINEAR' in [NEAREST, TRILINEAR, TRIQUADRATIC]
+
+        #### Returns:
+        - socket `value`
+
+
+        """
+
+        return nodes.SampleVolume(volume=self, grid=grid, position=position, grid_type='BOOLEAN', interpolation_mode=interpolation_mode).value
+
+
+    def sample_float(self, grid=None, position=None, interpolation_mode='TRILINEAR'):
+        """
+
+        > Node: [Sample Volume](GeometryNodeSampleVolume.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/a.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSampleVolume.html)
+
+        #### Args:
+        - grid: ['Vector', 'Float', 'Boolean', 'Integer']
+        - position: Vector
+        - interpolation_mode (str): 'TRILINEAR' in [NEAREST, TRILINEAR, TRIQUADRATIC]
+
+        #### Returns:
+        - socket `value`
+
+
+        """
+
+        return nodes.SampleVolume(volume=self, grid=grid, position=position, grid_type='FLOAT', interpolation_mode=interpolation_mode).value
+
+
+    def sample_integer(self, grid=None, position=None, interpolation_mode='TRILINEAR'):
+        """
+
+        > Node: [Sample Volume](GeometryNodeSampleVolume.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/a.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSampleVolume.html)
+
+        #### Args:
+        - grid: ['Vector', 'Float', 'Boolean', 'Integer']
+        - position: Vector
+        - interpolation_mode (str): 'TRILINEAR' in [NEAREST, TRILINEAR, TRIQUADRATIC]
+
+        #### Returns:
+        - socket `value`
+
+
+        """
+
+        return nodes.SampleVolume(volume=self, grid=grid, position=position, grid_type='INT', interpolation_mode=interpolation_mode).value
+
+
+    def sample_vector(self, grid=None, position=None, interpolation_mode='TRILINEAR'):
+        """
+
+        > Node: [Sample Volume](GeometryNodeSampleVolume.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/a.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSampleVolume.html)
+
+        #### Args:
+        - grid: ['Vector', 'Float', 'Boolean', 'Integer']
+        - position: Vector
+        - interpolation_mode (str): 'TRILINEAR' in [NEAREST, TRILINEAR, TRIQUADRATIC]
+
+        #### Returns:
+        - socket `value`
+
+
+        """
+
+        return nodes.SampleVolume(volume=self, grid=grid, position=position, grid_type='FLOAT_VECTOR', interpolation_mode=interpolation_mode).value
+
+
+    def set_material(self, selection=None, material=None):
+        """
+
+        > Node: [Set Material](GeometryNodeSetMaterial.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/set_material.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetMaterial.html)
+
+        #### Args:
+        - selection: Boolean
+        - material: Material
+
+        #### Returns:
+        - self
+
+
+        """
+
+        return self.stack(nodes.SetMaterial(geometry=self, selection=selection, material=material))
+
+
     def to_mesh(self, voxel_size=None, voxel_amount=None, threshold=None, adaptivity=None, resolution_mode='GRID'):
         """
 
@@ -9192,16 +9457,13 @@ class Texture(geosocks.Texture):
         - squash (float): 1.0
         - squash_frequency (int): 2
 
-        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexBrick.webp)
-
         #### Returns:
-        - tuple ('`color`', '`fac`')
+        - node with sockets ['color', 'fac']
 
 
         """
 
-        node = nodes.BrickTexture(vector=vector, color1=color1, color2=color2, mortar=mortar, scale=scale, mortar_size=mortar_size, mortar_smooth=mortar_smooth, bias=bias, brick_width=brick_width, row_height=row_height, offset=offset, offset_frequency=offset_frequency, squash=squash, squash_frequency=squash_frequency)
-        return node.color, node.fac
+        return nodes.BrickTexture(vector=vector, color1=color1, color2=color2, mortar=mortar, scale=scale, mortar_size=mortar_size, mortar_smooth=mortar_smooth, bias=bias, brick_width=brick_width, row_height=row_height, offset=offset, offset_frequency=offset_frequency, squash=squash, squash_frequency=squash_frequency)
 
 
     @staticmethod
@@ -9216,16 +9478,13 @@ class Texture(geosocks.Texture):
         - color2: Color
         - scale: Float
 
-        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexChecker.webp)
-
         #### Returns:
-        - tuple ('`color`', '`fac`')
+        - node with sockets ['color', 'fac']
 
 
         """
 
-        node = nodes.CheckerTexture(vector=vector, color1=color1, color2=color2, scale=scale)
-        return node.color, node.fac
+        return nodes.CheckerTexture(vector=vector, color1=color1, color2=color2, scale=scale)
 
 
     @staticmethod
@@ -9238,16 +9497,13 @@ class Texture(geosocks.Texture):
         - vector: Vector
         - gradient_type (str): 'LINEAR' in [LINEAR, QUADRATIC, EASING, DIAGONAL, SPHERICAL, QUADRATIC_SPHERE, RADIAL]
 
-        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexGradient.webp)
-
         #### Returns:
-        - tuple ('`color`', '`fac`')
+        - node with sockets ['color', 'fac']
 
 
         """
 
-        node = nodes.GradientTexture(vector=vector, gradient_type=gradient_type)
-        return node.color, node.fac
+        return nodes.GradientTexture(vector=vector, gradient_type=gradient_type)
 
 
     @staticmethod
@@ -9259,16 +9515,13 @@ class Texture(geosocks.Texture):
         #### Args:
         - vector: Vector
 
-        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexGradient.webp)
-
         #### Returns:
-        - tuple ('`color`', '`fac`')
+        - node with sockets ['color', 'fac']
 
 
         """
 
-        node = nodes.GradientTexture(vector=vector, gradient_type='DIAGONAL')
-        return node.color, node.fac
+        return nodes.GradientTexture(vector=vector, gradient_type='DIAGONAL')
 
 
     @staticmethod
@@ -9280,16 +9533,13 @@ class Texture(geosocks.Texture):
         #### Args:
         - vector: Vector
 
-        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexGradient.webp)
-
         #### Returns:
-        - tuple ('`color`', '`fac`')
+        - node with sockets ['color', 'fac']
 
 
         """
 
-        node = nodes.GradientTexture(vector=vector, gradient_type='EASING')
-        return node.color, node.fac
+        return nodes.GradientTexture(vector=vector, gradient_type='EASING')
 
 
     @staticmethod
@@ -9301,16 +9551,13 @@ class Texture(geosocks.Texture):
         #### Args:
         - vector: Vector
 
-        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexGradient.webp)
-
         #### Returns:
-        - tuple ('`color`', '`fac`')
+        - node with sockets ['color', 'fac']
 
 
         """
 
-        node = nodes.GradientTexture(vector=vector, gradient_type='LINEAR')
-        return node.color, node.fac
+        return nodes.GradientTexture(vector=vector, gradient_type='LINEAR')
 
 
     @staticmethod
@@ -9322,16 +9569,13 @@ class Texture(geosocks.Texture):
         #### Args:
         - vector: Vector
 
-        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexGradient.webp)
-
         #### Returns:
-        - tuple ('`color`', '`fac`')
+        - node with sockets ['color', 'fac']
 
 
         """
 
-        node = nodes.GradientTexture(vector=vector, gradient_type='QUADRATIC')
-        return node.color, node.fac
+        return nodes.GradientTexture(vector=vector, gradient_type='QUADRATIC')
 
 
     @staticmethod
@@ -9343,16 +9587,13 @@ class Texture(geosocks.Texture):
         #### Args:
         - vector: Vector
 
-        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexGradient.webp)
-
         #### Returns:
-        - tuple ('`color`', '`fac`')
+        - node with sockets ['color', 'fac']
 
 
         """
 
-        node = nodes.GradientTexture(vector=vector, gradient_type='QUADRATIC_SPHERE')
-        return node.color, node.fac
+        return nodes.GradientTexture(vector=vector, gradient_type='QUADRATIC_SPHERE')
 
 
     @staticmethod
@@ -9364,16 +9605,13 @@ class Texture(geosocks.Texture):
         #### Args:
         - vector: Vector
 
-        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexGradient.webp)
-
         #### Returns:
-        - tuple ('`color`', '`fac`')
+        - node with sockets ['color', 'fac']
 
 
         """
 
-        node = nodes.GradientTexture(vector=vector, gradient_type='RADIAL')
-        return node.color, node.fac
+        return nodes.GradientTexture(vector=vector, gradient_type='RADIAL')
 
 
     @staticmethod
@@ -9385,16 +9623,13 @@ class Texture(geosocks.Texture):
         #### Args:
         - vector: Vector
 
-        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexGradient.webp)
-
         #### Returns:
-        - tuple ('`color`', '`fac`')
+        - node with sockets ['color', 'fac']
 
 
         """
 
-        node = nodes.GradientTexture(vector=vector, gradient_type='SPHERICAL')
-        return node.color, node.fac
+        return nodes.GradientTexture(vector=vector, gradient_type='SPHERICAL')
 
 
     @staticmethod
@@ -9410,16 +9645,13 @@ class Texture(geosocks.Texture):
         - extension (str): 'REPEAT' in [REPEAT, EXTEND, CLIP, MIRROR]
         - interpolation (str): 'Linear' in [Linear, Closest, Cubic]
 
-        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeImageTexture.webp)
-
         #### Returns:
-        - tuple ('`color`', '`alpha`')
+        - node with sockets ['color', 'alpha']
 
 
         """
 
-        node = nodes.ImageTexture(image=image, vector=vector, frame=frame, extension=extension, interpolation=interpolation)
-        return node.color, node.alpha
+        return nodes.ImageTexture(image=image, vector=vector, frame=frame, extension=extension, interpolation=interpolation)
 
 
     @staticmethod
@@ -9434,16 +9666,13 @@ class Texture(geosocks.Texture):
         - distortion: Float
         - turbulence_depth (int): 2
 
-        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexMagic.webp)
-
         #### Returns:
-        - tuple ('`color`', '`fac`')
+        - node with sockets ['color', 'fac']
 
 
         """
 
-        node = nodes.MagicTexture(vector=vector, scale=scale, distortion=distortion, turbulence_depth=turbulence_depth)
-        return node.color, node.fac
+        return nodes.MagicTexture(vector=vector, scale=scale, distortion=distortion, turbulence_depth=turbulence_depth)
 
 
     @staticmethod
@@ -9488,16 +9717,13 @@ class Texture(geosocks.Texture):
         - distortion: Float
         - noise_dimensions (str): '3D' in [1D, 2D, 3D, 4D]
 
-        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexNoise.webp)
-
         #### Returns:
-        - tuple ('`color`', '`fac`')
+        - node with sockets ['fac', 'color']
 
 
         """
 
-        node = nodes.NoiseTexture(vector=vector, w=w, scale=scale, detail=detail, roughness=roughness, distortion=distortion, noise_dimensions=noise_dimensions)
-        return node.color, node.fac
+        return nodes.NoiseTexture(vector=vector, w=w, scale=scale, detail=detail, roughness=roughness, distortion=distortion, noise_dimensions=noise_dimensions)
 
 
     @staticmethod
@@ -9513,16 +9739,13 @@ class Texture(geosocks.Texture):
         - roughness: Float
         - distortion: Float
 
-        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexNoise.webp)
-
         #### Returns:
-        - tuple ('`color`', '`fac`')
+        - node with sockets ['fac', 'color']
 
 
         """
 
-        node = nodes.NoiseTexture(vector=None, w=w, scale=scale, detail=detail, roughness=roughness, distortion=distortion, noise_dimensions='1D')
-        return node.color, node.fac
+        return nodes.NoiseTexture(vector=None, w=w, scale=scale, detail=detail, roughness=roughness, distortion=distortion, noise_dimensions='1D')
 
 
     @staticmethod
@@ -9538,16 +9761,13 @@ class Texture(geosocks.Texture):
         - roughness: Float
         - distortion: Float
 
-        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexNoise.webp)
-
         #### Returns:
-        - tuple ('`color`', '`fac`')
+        - node with sockets ['fac', 'color']
 
 
         """
 
-        node = nodes.NoiseTexture(vector=vector, w=None, scale=scale, detail=detail, roughness=roughness, distortion=distortion, noise_dimensions='2D')
-        return node.color, node.fac
+        return nodes.NoiseTexture(vector=vector, w=None, scale=scale, detail=detail, roughness=roughness, distortion=distortion, noise_dimensions='2D')
 
 
     @staticmethod
@@ -9563,16 +9783,13 @@ class Texture(geosocks.Texture):
         - roughness: Float
         - distortion: Float
 
-        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexNoise.webp)
-
         #### Returns:
-        - tuple ('`color`', '`fac`')
+        - node with sockets ['fac', 'color']
 
 
         """
 
-        node = nodes.NoiseTexture(vector=vector, w=None, scale=scale, detail=detail, roughness=roughness, distortion=distortion, noise_dimensions='3D')
-        return node.color, node.fac
+        return nodes.NoiseTexture(vector=vector, w=None, scale=scale, detail=detail, roughness=roughness, distortion=distortion, noise_dimensions='3D')
 
 
     @staticmethod
@@ -9589,16 +9806,13 @@ class Texture(geosocks.Texture):
         - roughness: Float
         - distortion: Float
 
-        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexNoise.webp)
-
         #### Returns:
-        - tuple ('`color`', '`fac`')
+        - node with sockets ['fac', 'color']
 
 
         """
 
-        node = nodes.NoiseTexture(vector=vector, w=w, scale=scale, detail=detail, roughness=roughness, distortion=distortion, noise_dimensions='4D')
-        return node.color, node.fac
+        return nodes.NoiseTexture(vector=vector, w=w, scale=scale, detail=detail, roughness=roughness, distortion=distortion, noise_dimensions='4D')
 
 
     def switch(self, switch=None, true=None):
@@ -9636,16 +9850,13 @@ class Texture(geosocks.Texture):
         - feature (str): 'F1' in [F1, F2, SMOOTH_F1, DISTANCE_TO_EDGE, N_SPHERE_RADIUS]
         - voronoi_dimensions (str): '3D' in [1D, 2D, 3D, 4D]
 
-        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexVoronoi.webp)
-
         #### Returns:
-        - tuple ('`distance`', '`color`', '`position`', '`w`')
+        - node with sockets ['distance', 'color', 'position', 'w', 'radius']
 
 
         """
 
-        node = nodes.VoronoiTexture(vector=vector, w=w, scale=scale, smoothness=smoothness, exponent=exponent, randomness=randomness, distance=distance, feature=feature, voronoi_dimensions=voronoi_dimensions)
-        return node.distance, node.color, node.position, node.w
+        return nodes.VoronoiTexture(vector=vector, w=w, scale=scale, smoothness=smoothness, exponent=exponent, randomness=randomness, distance=distance, feature=feature, voronoi_dimensions=voronoi_dimensions)
 
 
     @staticmethod
@@ -9664,16 +9875,13 @@ class Texture(geosocks.Texture):
         - feature (str): 'F1' in [F1, F2, SMOOTH_F1, DISTANCE_TO_EDGE, N_SPHERE_RADIUS]
         - voronoi_dimensions (str): '3D' in [1D, 2D, 3D, 4D]
 
-        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexVoronoi.webp)
-
         #### Returns:
-        - tuple ('`distance`', '`color`', '`w`')
+        - node with sockets ['distance', 'color', 'position', 'w', 'radius']
 
 
         """
 
-        node = nodes.VoronoiTexture(vector=None, w=w, scale=scale, smoothness=smoothness, exponent=exponent, randomness=randomness, distance=distance, feature=feature, voronoi_dimensions=voronoi_dimensions)
-        return node.distance, node.color, node.w
+        return nodes.VoronoiTexture(vector=None, w=w, scale=scale, smoothness=smoothness, exponent=exponent, randomness=randomness, distance=distance, feature=feature, voronoi_dimensions=voronoi_dimensions)
 
 
     @staticmethod
@@ -9692,16 +9900,13 @@ class Texture(geosocks.Texture):
         - feature (str): 'F1' in [F1, F2, SMOOTH_F1, DISTANCE_TO_EDGE, N_SPHERE_RADIUS]
         - voronoi_dimensions (str): '3D' in [1D, 2D, 3D, 4D]
 
-        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexVoronoi.webp)
-
         #### Returns:
-        - tuple ('`distance`', '`color`', '`position`')
+        - node with sockets ['distance', 'color', 'position', 'w', 'radius']
 
 
         """
 
-        node = nodes.VoronoiTexture(vector=vector, w=None, scale=scale, smoothness=smoothness, exponent=exponent, randomness=randomness, distance=distance, feature=feature, voronoi_dimensions=voronoi_dimensions)
-        return node.distance, node.color, node.position
+        return nodes.VoronoiTexture(vector=vector, w=None, scale=scale, smoothness=smoothness, exponent=exponent, randomness=randomness, distance=distance, feature=feature, voronoi_dimensions=voronoi_dimensions)
 
 
     @staticmethod
@@ -9720,16 +9925,13 @@ class Texture(geosocks.Texture):
         - feature (str): 'F1' in [F1, F2, SMOOTH_F1, DISTANCE_TO_EDGE, N_SPHERE_RADIUS]
         - voronoi_dimensions (str): '3D' in [1D, 2D, 3D, 4D]
 
-        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexVoronoi.webp)
-
         #### Returns:
-        - tuple ('`distance`', '`color`', '`position`')
+        - node with sockets ['distance', 'color', 'position', 'w', 'radius']
 
 
         """
 
-        node = nodes.VoronoiTexture(vector=vector, w=None, scale=scale, smoothness=smoothness, exponent=exponent, randomness=randomness, distance=distance, feature=feature, voronoi_dimensions=voronoi_dimensions)
-        return node.distance, node.color, node.position
+        return nodes.VoronoiTexture(vector=vector, w=None, scale=scale, smoothness=smoothness, exponent=exponent, randomness=randomness, distance=distance, feature=feature, voronoi_dimensions=voronoi_dimensions)
 
 
     @staticmethod
@@ -9749,16 +9951,13 @@ class Texture(geosocks.Texture):
         - feature (str): 'F1' in [F1, F2, SMOOTH_F1, DISTANCE_TO_EDGE, N_SPHERE_RADIUS]
         - voronoi_dimensions (str): '3D' in [1D, 2D, 3D, 4D]
 
-        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexVoronoi.webp)
-
         #### Returns:
-        - tuple ('`distance`', '`color`', '`position`', '`w`')
+        - node with sockets ['distance', 'color', 'position', 'w', 'radius']
 
 
         """
 
-        node = nodes.VoronoiTexture(vector=vector, w=w, scale=scale, smoothness=smoothness, exponent=exponent, randomness=randomness, distance=distance, feature=feature, voronoi_dimensions=voronoi_dimensions)
-        return node.distance, node.color, node.position, node.w
+        return nodes.VoronoiTexture(vector=vector, w=w, scale=scale, smoothness=smoothness, exponent=exponent, randomness=randomness, distance=distance, feature=feature, voronoi_dimensions=voronoi_dimensions)
 
 
     @staticmethod
@@ -9780,16 +9979,13 @@ class Texture(geosocks.Texture):
         - wave_profile (str): 'SIN' in [SIN, SAW, TRI]
         - wave_type (str): 'BANDS' in [BANDS, RINGS]
 
-        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexWave.webp)
-
         #### Returns:
-        - tuple ('`color`', '`fac`')
+        - node with sockets ['color', 'fac']
 
 
         """
 
-        node = nodes.WaveTexture(vector=vector, scale=scale, distortion=distortion, detail=detail, detail_scale=detail_scale, detail_roughness=detail_roughness, phase_offset=phase_offset, bands_direction=bands_direction, rings_direction=rings_direction, wave_profile=wave_profile, wave_type=wave_type)
-        return node.color, node.fac
+        return nodes.WaveTexture(vector=vector, scale=scale, distortion=distortion, detail=detail, detail_scale=detail_scale, detail_roughness=detail_roughness, phase_offset=phase_offset, bands_direction=bands_direction, rings_direction=rings_direction, wave_profile=wave_profile, wave_type=wave_type)
 
 
     @staticmethod
@@ -9809,16 +10005,13 @@ class Texture(geosocks.Texture):
         - direction (str): 'X' in [X, Y, Z, DIAGONAL]
         - wave_profile (str): 'SIN' in [SIN, SAW, TRI]
 
-        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexWave.webp)
-
         #### Returns:
-        - tuple ('`color`', '`fac`')
+        - node with sockets ['color', 'fac']
 
 
         """
 
-        node = nodes.WaveTexture(vector=vector, scale=scale, distortion=distortion, detail=detail, detail_scale=detail_scale, detail_roughness=detail_roughness, phase_offset=phase_offset, bands_direction=direction, rings_direction='X', wave_profile=wave_profile, wave_type='BANDS')
-        return node.color, node.fac
+        return nodes.WaveTexture(vector=vector, scale=scale, distortion=distortion, detail=detail, detail_scale=detail_scale, detail_roughness=detail_roughness, phase_offset=phase_offset, bands_direction=direction, rings_direction='X', wave_profile=wave_profile, wave_type='BANDS')
 
 
     @staticmethod
@@ -9837,16 +10030,13 @@ class Texture(geosocks.Texture):
         - phase_offset: Float
         - direction (str): 'X' in [X, Y, Z, DIAGONAL]
 
-        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexWave.webp)
-
         #### Returns:
-        - tuple ('`color`', '`fac`')
+        - node with sockets ['color', 'fac']
 
 
         """
 
-        node = nodes.WaveTexture(vector=vector, scale=scale, distortion=distortion, detail=detail, detail_scale=detail_scale, detail_roughness=detail_roughness, phase_offset=phase_offset, bands_direction=direction, rings_direction='X', wave_profile='SAW', wave_type='BANDS')
-        return node.color, node.fac
+        return nodes.WaveTexture(vector=vector, scale=scale, distortion=distortion, detail=detail, detail_scale=detail_scale, detail_roughness=detail_roughness, phase_offset=phase_offset, bands_direction=direction, rings_direction='X', wave_profile='SAW', wave_type='BANDS')
 
 
     @staticmethod
@@ -9865,16 +10055,13 @@ class Texture(geosocks.Texture):
         - phase_offset: Float
         - direction (str): 'X' in [X, Y, Z, DIAGONAL]
 
-        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexWave.webp)
-
         #### Returns:
-        - tuple ('`color`', '`fac`')
+        - node with sockets ['color', 'fac']
 
 
         """
 
-        node = nodes.WaveTexture(vector=vector, scale=scale, distortion=distortion, detail=detail, detail_scale=detail_scale, detail_roughness=detail_roughness, phase_offset=phase_offset, bands_direction=direction, rings_direction='X', wave_profile='SIN', wave_type='BANDS')
-        return node.color, node.fac
+        return nodes.WaveTexture(vector=vector, scale=scale, distortion=distortion, detail=detail, detail_scale=detail_scale, detail_roughness=detail_roughness, phase_offset=phase_offset, bands_direction=direction, rings_direction='X', wave_profile='SIN', wave_type='BANDS')
 
 
     @staticmethod
@@ -9893,16 +10080,13 @@ class Texture(geosocks.Texture):
         - phase_offset: Float
         - direction (str): 'X' in [X, Y, Z, DIAGONAL]
 
-        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexWave.webp)
-
         #### Returns:
-        - tuple ('`color`', '`fac`')
+        - node with sockets ['color', 'fac']
 
 
         """
 
-        node = nodes.WaveTexture(vector=vector, scale=scale, distortion=distortion, detail=detail, detail_scale=detail_scale, detail_roughness=detail_roughness, phase_offset=phase_offset, bands_direction=direction, rings_direction='X', wave_profile='TRI', wave_type='BANDS')
-        return node.color, node.fac
+        return nodes.WaveTexture(vector=vector, scale=scale, distortion=distortion, detail=detail, detail_scale=detail_scale, detail_roughness=detail_roughness, phase_offset=phase_offset, bands_direction=direction, rings_direction='X', wave_profile='TRI', wave_type='BANDS')
 
 
     @staticmethod
@@ -9922,16 +10106,13 @@ class Texture(geosocks.Texture):
         - direction (str): 'X' in [X, Y, Z, SPHERICAL]
         - wave_profile (str): 'SIN' in [SIN, SAW, TRI]
 
-        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexWave.webp)
-
         #### Returns:
-        - tuple ('`color`', '`fac`')
+        - node with sockets ['color', 'fac']
 
 
         """
 
-        node = nodes.WaveTexture(vector=vector, scale=scale, distortion=distortion, detail=detail, detail_scale=detail_scale, detail_roughness=detail_roughness, phase_offset=phase_offset, bands_direction='X', rings_direction=direction, wave_profile=wave_profile, wave_type='RINGS')
-        return node.color, node.fac
+        return nodes.WaveTexture(vector=vector, scale=scale, distortion=distortion, detail=detail, detail_scale=detail_scale, detail_roughness=detail_roughness, phase_offset=phase_offset, bands_direction='X', rings_direction=direction, wave_profile=wave_profile, wave_type='RINGS')
 
 
     @staticmethod
@@ -9950,16 +10131,13 @@ class Texture(geosocks.Texture):
         - phase_offset: Float
         - direction (str): 'X' in [X, Y, Z, SPHERICAL]
 
-        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexWave.webp)
-
         #### Returns:
-        - tuple ('`color`', '`fac`')
+        - node with sockets ['color', 'fac']
 
 
         """
 
-        node = nodes.WaveTexture(vector=vector, scale=scale, distortion=distortion, detail=detail, detail_scale=detail_scale, detail_roughness=detail_roughness, phase_offset=phase_offset, bands_direction='X', rings_direction=direction, wave_profile='SAW', wave_type='RINGS')
-        return node.color, node.fac
+        return nodes.WaveTexture(vector=vector, scale=scale, distortion=distortion, detail=detail, detail_scale=detail_scale, detail_roughness=detail_roughness, phase_offset=phase_offset, bands_direction='X', rings_direction=direction, wave_profile='SAW', wave_type='RINGS')
 
 
     @staticmethod
@@ -9978,16 +10156,13 @@ class Texture(geosocks.Texture):
         - phase_offset: Float
         - direction (str): 'X' in [X, Y, Z, SPHERICAL]
 
-        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexWave.webp)
-
         #### Returns:
-        - tuple ('`color`', '`fac`')
+        - node with sockets ['color', 'fac']
 
 
         """
 
-        node = nodes.WaveTexture(vector=vector, scale=scale, distortion=distortion, detail=detail, detail_scale=detail_scale, detail_roughness=detail_roughness, phase_offset=phase_offset, bands_direction='X', rings_direction=direction, wave_profile='SIN', wave_type='RINGS')
-        return node.color, node.fac
+        return nodes.WaveTexture(vector=vector, scale=scale, distortion=distortion, detail=detail, detail_scale=detail_scale, detail_roughness=detail_roughness, phase_offset=phase_offset, bands_direction='X', rings_direction=direction, wave_profile='SIN', wave_type='RINGS')
 
 
     @staticmethod
@@ -10006,16 +10181,13 @@ class Texture(geosocks.Texture):
         - phase_offset: Float
         - direction (str): 'X' in [X, Y, Z, SPHERICAL]
 
-        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexWave.webp)
-
         #### Returns:
-        - tuple ('`color`', '`fac`')
+        - node with sockets ['color', 'fac']
 
 
         """
 
-        node = nodes.WaveTexture(vector=vector, scale=scale, distortion=distortion, detail=detail, detail_scale=detail_scale, detail_roughness=detail_roughness, phase_offset=phase_offset, bands_direction='X', rings_direction=direction, wave_profile='TRI', wave_type='RINGS')
-        return node.color, node.fac
+        return nodes.WaveTexture(vector=vector, scale=scale, distortion=distortion, detail=detail, detail_scale=detail_scale, detail_roughness=detail_roughness, phase_offset=phase_offset, bands_direction='X', rings_direction=direction, wave_profile='TRI', wave_type='RINGS')
 
 
     @staticmethod
@@ -10029,16 +10201,13 @@ class Texture(geosocks.Texture):
         - w: Float
         - noise_dimensions (str): '3D' in [1D, 2D, 3D, 4D]
 
-        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexWhiteNoise.webp)
-
         #### Returns:
-        - tuple ('`value`', '`color`')
+        - node with sockets ['value', 'color']
 
 
         """
 
-        node = nodes.WhiteNoiseTexture(vector=vector, w=w, noise_dimensions=noise_dimensions)
-        return node.value, node.color
+        return nodes.WhiteNoiseTexture(vector=vector, w=w, noise_dimensions=noise_dimensions)
 
 
     @staticmethod
@@ -10050,16 +10219,13 @@ class Texture(geosocks.Texture):
         #### Args:
         - w: Float
 
-        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexWhiteNoise.webp)
-
         #### Returns:
-        - tuple ('`value`', '`color`')
+        - node with sockets ['value', 'color']
 
 
         """
 
-        node = nodes.WhiteNoiseTexture(vector=None, w=w, noise_dimensions='1D')
-        return node.value, node.color
+        return nodes.WhiteNoiseTexture(vector=None, w=w, noise_dimensions='1D')
 
 
     @staticmethod
@@ -10071,16 +10237,13 @@ class Texture(geosocks.Texture):
         #### Args:
         - vector: Vector
 
-        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexWhiteNoise.webp)
-
         #### Returns:
-        - tuple ('`value`', '`color`')
+        - node with sockets ['value', 'color']
 
 
         """
 
-        node = nodes.WhiteNoiseTexture(vector=vector, w=None, noise_dimensions='2D')
-        return node.value, node.color
+        return nodes.WhiteNoiseTexture(vector=vector, w=None, noise_dimensions='2D')
 
 
     @staticmethod
@@ -10092,16 +10255,13 @@ class Texture(geosocks.Texture):
         #### Args:
         - vector: Vector
 
-        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexWhiteNoise.webp)
-
         #### Returns:
-        - tuple ('`value`', '`color`')
+        - node with sockets ['value', 'color']
 
 
         """
 
-        node = nodes.WhiteNoiseTexture(vector=vector, w=None, noise_dimensions='3D')
-        return node.value, node.color
+        return nodes.WhiteNoiseTexture(vector=vector, w=None, noise_dimensions='3D')
 
 
     @staticmethod
@@ -10114,16 +10274,13 @@ class Texture(geosocks.Texture):
         - vector: Vector
         - w: Float
 
-        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_ShaderNodeTexWhiteNoise.webp)
-
         #### Returns:
-        - tuple ('`value`', '`color`')
+        - node with sockets ['value', 'color']
 
 
         """
 
-        node = nodes.WhiteNoiseTexture(vector=vector, w=w, noise_dimensions='3D')
-        return node.value, node.color
+        return nodes.WhiteNoiseTexture(vector=vector, w=w, noise_dimensions='3D')
 
 
 

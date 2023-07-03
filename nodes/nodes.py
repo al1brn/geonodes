@@ -2,11 +2,11 @@
 # -*- coding: utf-8 -*-
 
 """
-Created on 2023-05-08
+Created on 2023-07-03
 
 @author: Generated from generator module
 
-Blender version: 3.5.0
+Blender version: 3.6.0
 """
 
 from geonodes.core.node import Node
@@ -1778,7 +1778,7 @@ class BoundingBox(Node):
 
 
     Output sockets:
-        - **bounding_box** : Geometry
+        - **bounding_box** : Mesh
         - **min** : Vector
         - **max** : Vector
 
@@ -1794,6 +1794,10 @@ class BoundingBox(Node):
 
         self.insockets = {'geometry' : 0, }
         self.outsockets = {'bounding_box' : 0, 'min' : 1, 'max' : 2, }
+
+        # Force class of output sockets
+
+        self.outsockets_classes = {'bounding_box': 'Mesh'}
 
         # Input sockets plugging
 
@@ -2015,7 +2019,7 @@ class ConvexHull(Node):
 
 
     Output sockets:
-        - **convex_hull** : Geometry
+        - **convex_hull** : Mesh
 
     .. blid:: GeometryNodeConvexHull
 
@@ -2029,6 +2033,10 @@ class ConvexHull(Node):
 
         self.insockets = {'geometry' : 0, }
         self.outsockets = {'convex_hull' : 0, }
+
+        # Force class of output sockets
+
+        self.outsockets_classes = {'convex_hull': 'Mesh'}
 
         # Input sockets plugging
 
@@ -3692,6 +3700,10 @@ class DeformCurvesOnSurface(Node):
         self.insockets = {'curves' : 0, }
         self.outsockets = {'curves' : 0, }
 
+        # Force class of output sockets
+
+        self.outsockets_classes = {'curves': 'Curve'}
+
         # Input sockets plugging
 
         if curves          is not None: self.curves          = curves
@@ -4065,7 +4077,7 @@ class DualMesh(Node):
 
 
     Output sockets:
-        - **dual_mesh** : Geometry
+        - **dual_mesh** : Mesh
 
     .. blid:: GeometryNodeDualMesh
 
@@ -4079,6 +4091,10 @@ class DualMesh(Node):
 
         self.insockets = {'mesh' : 0, 'keep_boundaries' : 1, }
         self.outsockets = {'dual_mesh' : 0, }
+
+        # Force class of output sockets
+
+        self.outsockets_classes = {'dual_mesh': 'Mesh'}
 
         # Input sockets plugging
 
@@ -4232,6 +4248,10 @@ class EdgePathsToCurves(Node):
 
         self.insockets = {'mesh' : 0, 'start_vertices' : 1, 'next_vertex_index' : 2, }
         self.outsockets = {'curves' : 0, }
+
+        # Force class of output sockets
+
+        self.outsockets_classes = {'curves': 'Curve'}
 
         # Input sockets plugging
 
@@ -5331,6 +5351,74 @@ class ImageTexture(Node):
         self.set_input_socket('frame', value)
 
 # ----------------------------------------------------------------------------------------------------
+# Node IndexOfNearest for GeometryNodeIndexOfNearest
+
+class IndexOfNearest(Node):
+
+    """Node *Index of Nearest*
+
+    .. _IndexOfNearest:
+
+    Node implementation:
+        Geometry:
+            index_of_nearest 
+        Domain:
+            index_of_nearest 
+
+    Args:
+        position (DataSocket): Vector
+        group_id (DataSocket): Integer
+        node_color (color): Node color
+        node_label (str): Node label
+
+
+    Output sockets:
+        - **index** : Integer
+        - **has_neighbor** : Boolean
+
+    .. blid:: GeometryNodeIndexOfNearest
+
+    """
+
+    def __init__(self, position=None, group_id=None, label=None, node_color=None):
+
+        super().__init__('GeometryNodeIndexOfNearest', node_name='Index of Nearest', label=label, node_color=node_color)
+
+        # Input and output sockets names (for use in __getattr__ and __setattr__)
+
+        self.insockets = {'position' : 0, 'group_id' : 1, }
+        self.outsockets = {'index' : 0, 'has_neighbor' : 1, }
+
+        # Input sockets plugging
+
+        if position        is not None: self.position        = position
+        if group_id        is not None: self.group_id        = group_id
+
+    @property
+    def index(self):
+        return self.get_output_socket('index')
+
+    @property
+    def has_neighbor(self):
+        return self.get_output_socket('has_neighbor')
+
+    @property
+    def position(self):
+        raise AttributeError("Attribute error on node 'IndexOfNearest': the input socket 'position' is write only.")
+
+    @position.setter
+    def position(self, value):
+        self.set_input_socket('position', value)
+
+    @property
+    def group_id(self):
+        raise AttributeError("Attribute error on node 'IndexOfNearest': the input socket 'group_id' is write only.")
+
+    @group_id.setter
+    def group_id(self, value):
+        self.set_input_socket('group_id', value)
+
+# ----------------------------------------------------------------------------------------------------
 # Node CurveHandlePositions for GeometryNodeInputCurveHandlePositions
 
 class CurveHandlePositions(Node):
@@ -5869,17 +5957,17 @@ class FaceArea(Node):
         return self.get_output_socket('area')
 
 # ----------------------------------------------------------------------------------------------------
-# Node FaceIsPlanar for GeometryNodeInputMeshFaceIsPlanar
+# Node IsFacePlanar for GeometryNodeInputMeshFaceIsPlanar
 
-class FaceIsPlanar(Node):
+class IsFacePlanar(Node):
 
-    """Node *Face is Planar*
+    """Node *Is Face Planar*
 
-    .. _FaceIsPlanar:
+    .. _IsFacePlanar:
 
     Node implementation:
         Mesh:
-            face_is_planar 
+            is_face_planar 
         Face:
             is_planar 
 
@@ -5898,7 +5986,7 @@ class FaceIsPlanar(Node):
 
     def __init__(self, threshold=None, label=None, node_color=None):
 
-        super().__init__('GeometryNodeInputMeshFaceIsPlanar', node_name='Face is Planar', label=label, node_color=node_color)
+        super().__init__('GeometryNodeInputMeshFaceIsPlanar', node_name='Is Face Planar', label=label, node_color=node_color)
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -5915,7 +6003,7 @@ class FaceIsPlanar(Node):
 
     @property
     def threshold(self):
-        raise AttributeError("Attribute error on node 'FaceIsPlanar': the input socket 'threshold' is write only.")
+        raise AttributeError("Attribute error on node 'IsFacePlanar': the input socket 'threshold' is write only.")
 
     @threshold.setter
     def threshold(self, value):
@@ -6402,6 +6490,44 @@ class ShortestEdgePaths(Node):
         self.set_input_socket('edge_cost', value)
 
 # ----------------------------------------------------------------------------------------------------
+# Node SignedDistance for GeometryNodeInputSignedDistance
+
+class SignedDistance(Node):
+
+    """Node *Signed Distance*
+
+    .. _SignedDistance:
+
+    Node implementation:
+        Geometry:
+            signed_distance 
+
+    Args:
+        node_color (color): Node color
+        node_label (str): Node label
+
+
+    Output sockets:
+        - **signed_distance** : Float
+
+    .. blid:: GeometryNodeInputSignedDistance
+
+    """
+
+    def __init__(self, label=None, node_color=None):
+
+        super().__init__('GeometryNodeInputSignedDistance', node_name='Signed Distance', label=label, node_color=node_color)
+
+        # Input and output sockets names (for use in __getattr__ and __setattr__)
+
+        self.insockets = {}
+        self.outsockets = {'signed_distance' : 0, }
+
+    @property
+    def signed_distance(self):
+        return self.get_output_socket('signed_distance')
+
+# ----------------------------------------------------------------------------------------------------
 # Node IsSplineCyclic for GeometryNodeInputSplineCyclic
 
 class IsSplineCyclic(Node):
@@ -6764,6 +6890,10 @@ class InterpolateCurves(Node):
         self.insockets = {'guide_curves' : 0, 'guide_up' : 1, 'guide_group_id' : 2, 'points' : 3, 'point_up' : 4, 'point_group_id' : 5, 'max_neighbors' : 6, }
         self.outsockets = {'curves' : 0, 'closest_index' : 1, 'closest_weight' : 2, }
 
+        # Force class of output sockets
+
+        self.outsockets_classes = {'curves': 'Curve'}
+
         # Input sockets plugging
 
         if guide_curves    is not None: self.guide_curves    = guide_curves
@@ -6981,6 +7111,73 @@ class MaterialSelection(Node):
     @material.setter
     def material(self, value):
         self.set_input_socket('material', value)
+
+# ----------------------------------------------------------------------------------------------------
+# Node MeanFilterSdfVolume for GeometryNodeMeanFilterSDFVolume
+
+class MeanFilterSdfVolume(Node):
+
+    """Node *Mean Filter SDF Volume*
+
+    .. _MeanFilterSdfVolume:
+
+    Node implementation:
+        Volume:
+            mean_filter_sdf_volume 
+
+    Args:
+        volume (DataSocket): Volume
+        iterations (DataSocket): Integer
+        width (DataSocket): Integer
+        node_color (color): Node color
+        node_label (str): Node label
+
+
+    Output sockets:
+        - **volume** : Volume
+
+    .. blid:: GeometryNodeMeanFilterSDFVolume
+
+    """
+
+    def __init__(self, volume=None, iterations=None, width=None, label=None, node_color=None):
+
+        super().__init__('GeometryNodeMeanFilterSDFVolume', node_name='Mean Filter SDF Volume', label=label, node_color=node_color)
+
+        # Input and output sockets names (for use in __getattr__ and __setattr__)
+
+        self.insockets = {'volume' : 0, 'iterations' : 1, 'width' : 2, }
+        self.outsockets = {'volume' : 0, }
+
+        # Input sockets plugging
+
+        if volume          is not None: self.volume          = volume
+        if iterations      is not None: self.iterations      = iterations
+        if width           is not None: self.width           = width
+
+    @property
+    def volume(self):
+        return self.get_output_socket('volume')
+
+    @volume.setter
+    def volume(self, value):
+        self.set_input_socket('volume', value)
+
+    @property
+    def iterations(self):
+        raise AttributeError("Attribute error on node 'MeanFilterSdfVolume': the input socket 'iterations' is write only.")
+
+    @iterations.setter
+    def iterations(self, value):
+        self.set_input_socket('iterations', value)
+
+    @property
+    def width(self):
+        raise AttributeError("Attribute error on node 'MeanFilterSdfVolume': the input socket 'width' is write only.")
+
+    @width.setter
+    def width(self, value):
+        self.set_input_socket('width', value)
 
 # ----------------------------------------------------------------------------------------------------
 # Node MergeByDistance for GeometryNodeMergeByDistance
@@ -8050,6 +8247,102 @@ class MeshToPoints(Node):
         self.set_input_socket('radius', value)
 
 # ----------------------------------------------------------------------------------------------------
+# Node MeshToSdfVolume for GeometryNodeMeshToSDFVolume
+
+class MeshToSdfVolume(Node):
+
+    """Node *Mesh to SDF Volume*
+
+    .. _MeshToSdfVolume:
+
+    Node implementation:
+        Mesh:
+            to_sdf_volume 
+        Vertex:
+            to_sdf_volume 
+
+    Args:
+        mesh (DataSocket): Mesh
+        voxel_size (DataSocket): Float
+        voxel_amount (DataSocket): Float
+        half_band_width (DataSocket): Float
+        resolution_mode (str): Node parameter, default = 'VOXEL_AMOUNT' in ('VOXEL_AMOUNT', 'VOXEL_SIZE')
+        node_color (color): Node color
+        node_label (str): Node label
+
+
+    Output sockets:
+        - **volume** : Volume
+
+    .. blid:: GeometryNodeMeshToSDFVolume
+
+    """
+
+    def __init__(self, mesh=None, voxel_size=None, voxel_amount=None, half_band_width=None, resolution_mode='VOXEL_AMOUNT', label=None, node_color=None):
+
+        super().__init__('GeometryNodeMeshToSDFVolume', node_name='Mesh to SDF Volume', label=label, node_color=node_color)
+
+        # Node parameters
+
+        self.bnode.resolution_mode = self.check_enum_value(resolution_mode, 'resolution_mode', ('VOXEL_AMOUNT', 'VOXEL_SIZE'), 'VOXEL_AMOUNT')
+
+        # Input and output sockets names (for use in __getattr__ and __setattr__)
+
+        self.insockets = {'mesh' : 0, 'voxel_size' : 1, 'voxel_amount' : 2, 'half_band_width' : 3, }
+        self.outsockets = {'volume' : 0, }
+
+        # Input sockets plugging
+
+        if mesh            is not None: self.mesh            = mesh
+        if voxel_size      is not None: self.voxel_size      = voxel_size
+        if voxel_amount    is not None: self.voxel_amount    = voxel_amount
+        if half_band_width is not None: self.half_band_width = half_band_width
+
+    @property
+    def resolution_mode(self):
+        return self.bnode.resolution_mode
+
+    @resolution_mode.setter
+    def resolution_mode(self, value):
+        self.bnode.resolution_mode = value
+
+    @property
+    def volume(self):
+        return self.get_output_socket('volume')
+
+    @property
+    def mesh(self):
+        raise AttributeError("Attribute error on node 'MeshToSdfVolume': the input socket 'mesh' is write only.")
+
+    @mesh.setter
+    def mesh(self, value):
+        self.set_input_socket('mesh', value)
+
+    @property
+    def voxel_size(self):
+        raise AttributeError("Attribute error on node 'MeshToSdfVolume': the input socket 'voxel_size' is write only.")
+
+    @voxel_size.setter
+    def voxel_size(self, value):
+        self.set_input_socket('voxel_size', value)
+
+    @property
+    def voxel_amount(self):
+        raise AttributeError("Attribute error on node 'MeshToSdfVolume': the input socket 'voxel_amount' is write only.")
+
+    @voxel_amount.setter
+    def voxel_amount(self, value):
+        self.set_input_socket('voxel_amount', value)
+
+    @property
+    def half_band_width(self):
+        raise AttributeError("Attribute error on node 'MeshToSdfVolume': the input socket 'half_band_width' is write only.")
+
+    @half_band_width.setter
+    def half_band_width(self, value):
+        self.set_input_socket('half_band_width', value)
+
+# ----------------------------------------------------------------------------------------------------
 # Node MeshToVolume for GeometryNodeMeshToVolume
 
 class MeshToVolume(Node):
@@ -8464,6 +8757,65 @@ class OffsetPointInCurve(Node):
         self.set_input_socket('offset', value)
 
 # ----------------------------------------------------------------------------------------------------
+# Node OffsetSdfVolume for GeometryNodeOffsetSDFVolume
+
+class OffsetSdfVolume(Node):
+
+    """Node *Offset SDF Volume*
+
+    .. _OffsetSdfVolume:
+
+    Node implementation:
+        Volume:
+            offset_sdf_volume 
+        Points:
+            offset_sdf_volume 
+
+    Args:
+        volume (DataSocket): Volume
+        distance (DataSocket): Float
+        node_color (color): Node color
+        node_label (str): Node label
+
+
+    Output sockets:
+        - **volume** : Volume
+
+    .. blid:: GeometryNodeOffsetSDFVolume
+
+    """
+
+    def __init__(self, volume=None, distance=None, label=None, node_color=None):
+
+        super().__init__('GeometryNodeOffsetSDFVolume', node_name='Offset SDF Volume', label=label, node_color=node_color)
+
+        # Input and output sockets names (for use in __getattr__ and __setattr__)
+
+        self.insockets = {'volume' : 0, 'distance' : 1, }
+        self.outsockets = {'volume' : 0, }
+
+        # Input sockets plugging
+
+        if volume          is not None: self.volume          = volume
+        if distance        is not None: self.distance        = distance
+
+    @property
+    def volume(self):
+        return self.get_output_socket('volume')
+
+    @volume.setter
+    def volume(self, value):
+        self.set_input_socket('volume', value)
+
+    @property
+    def distance(self):
+        raise AttributeError("Attribute error on node 'OffsetSdfVolume': the input socket 'distance' is write only.")
+
+    @distance.setter
+    def distance(self, value):
+        self.set_input_socket('distance', value)
+
+# ----------------------------------------------------------------------------------------------------
 # Node Points for GeometryNodePoints
 
 class Points(Node):
@@ -8485,7 +8837,7 @@ class Points(Node):
 
 
     Output sockets:
-        - **geometry** : Geometry
+        - **geometry** : Points
 
     .. blid:: GeometryNodePoints
 
@@ -8499,6 +8851,10 @@ class Points(Node):
 
         self.insockets = {'count' : 0, 'position' : 1, 'radius' : 2, }
         self.outsockets = {'geometry' : 0, }
+
+        # Force class of output sockets
+
+        self.outsockets_classes = {'geometry': 'Points'}
 
         # Input sockets plugging
 
@@ -8611,6 +8967,102 @@ class PointsOfCurve(Node):
     @sort_index.setter
     def sort_index(self, value):
         self.set_input_socket('sort_index', value)
+
+# ----------------------------------------------------------------------------------------------------
+# Node PointsToSdfVolume for GeometryNodePointsToSDFVolume
+
+class PointsToSdfVolume(Node):
+
+    """Node *Points to SDF Volume*
+
+    .. _PointsToSdfVolume:
+
+    Node implementation:
+        Points:
+            to_sdf_volume 
+        CloudPoint:
+            to_sdf_volume 
+
+    Args:
+        points (DataSocket): Points
+        voxel_size (DataSocket): Float
+        voxel_amount (DataSocket): Float
+        radius (DataSocket): Float
+        resolution_mode (str): Node parameter, default = 'VOXEL_AMOUNT' in ('VOXEL_AMOUNT', 'VOXEL_SIZE')
+        node_color (color): Node color
+        node_label (str): Node label
+
+
+    Output sockets:
+        - **volume** : Volume
+
+    .. blid:: GeometryNodePointsToSDFVolume
+
+    """
+
+    def __init__(self, points=None, voxel_size=None, voxel_amount=None, radius=None, resolution_mode='VOXEL_AMOUNT', label=None, node_color=None):
+
+        super().__init__('GeometryNodePointsToSDFVolume', node_name='Points to SDF Volume', label=label, node_color=node_color)
+
+        # Node parameters
+
+        self.bnode.resolution_mode = self.check_enum_value(resolution_mode, 'resolution_mode', ('VOXEL_AMOUNT', 'VOXEL_SIZE'), 'VOXEL_AMOUNT')
+
+        # Input and output sockets names (for use in __getattr__ and __setattr__)
+
+        self.insockets = {'points' : 0, 'voxel_size' : 1, 'voxel_amount' : 2, 'radius' : 3, }
+        self.outsockets = {'volume' : 0, }
+
+        # Input sockets plugging
+
+        if points          is not None: self.points          = points
+        if voxel_size      is not None: self.voxel_size      = voxel_size
+        if voxel_amount    is not None: self.voxel_amount    = voxel_amount
+        if radius          is not None: self.radius          = radius
+
+    @property
+    def resolution_mode(self):
+        return self.bnode.resolution_mode
+
+    @resolution_mode.setter
+    def resolution_mode(self, value):
+        self.bnode.resolution_mode = value
+
+    @property
+    def volume(self):
+        return self.get_output_socket('volume')
+
+    @property
+    def points(self):
+        raise AttributeError("Attribute error on node 'PointsToSdfVolume': the input socket 'points' is write only.")
+
+    @points.setter
+    def points(self, value):
+        self.set_input_socket('points', value)
+
+    @property
+    def voxel_size(self):
+        raise AttributeError("Attribute error on node 'PointsToSdfVolume': the input socket 'voxel_size' is write only.")
+
+    @voxel_size.setter
+    def voxel_size(self, value):
+        self.set_input_socket('voxel_size', value)
+
+    @property
+    def voxel_amount(self):
+        raise AttributeError("Attribute error on node 'PointsToSdfVolume': the input socket 'voxel_amount' is write only.")
+
+    @voxel_amount.setter
+    def voxel_amount(self, value):
+        self.set_input_socket('voxel_amount', value)
+
+    @property
+    def radius(self):
+        raise AttributeError("Attribute error on node 'PointsToSdfVolume': the input socket 'radius' is write only.")
+
+    @radius.setter
+    def radius(self, value):
+        self.set_input_socket('radius', value)
 
 # ----------------------------------------------------------------------------------------------------
 # Node PointsToVertices for GeometryNodePointsToVertices
@@ -9140,7 +9592,7 @@ class ReplaceMaterial(Node):
 
 
     Output sockets:
-        - **geometry** : Geometry
+        - **geometry** : Mesh
 
     .. blid:: GeometryNodeReplaceMaterial
 
@@ -9154,6 +9606,10 @@ class ReplaceMaterial(Node):
 
         self.insockets = {'geometry' : 0, 'old' : 1, 'new' : 2, }
         self.outsockets = {'geometry' : 0, }
+
+        # Force class of output sockets
+
+        self.outsockets_classes = {'geometry': 'Mesh'}
 
         # Input sockets plugging
 
@@ -9422,6 +9878,77 @@ class RotateInstances(Node):
     @local_space.setter
     def local_space(self, value):
         self.set_input_socket('local_space', value)
+
+# ----------------------------------------------------------------------------------------------------
+# Node SdfVolumeSphere for GeometryNodeSDFVolumeSphere
+
+class SdfVolumeSphere(Node):
+
+    """Node *SDF Volume Sphere*
+
+    .. _SdfVolumeSphere:
+
+    Node implementation:
+        Volume:
+            SdfSphere 
+
+    Args:
+        radius (DataSocket): Float
+        voxel_size (DataSocket): Float
+        half_band_width (DataSocket): Float
+        node_color (color): Node color
+        node_label (str): Node label
+
+
+    Output sockets:
+        - **volume** : Volume
+
+    .. blid:: GeometryNodeSDFVolumeSphere
+
+    """
+
+    def __init__(self, radius=None, voxel_size=None, half_band_width=None, label=None, node_color=None):
+
+        super().__init__('GeometryNodeSDFVolumeSphere', node_name='SDF Volume Sphere', label=label, node_color=node_color)
+
+        # Input and output sockets names (for use in __getattr__ and __setattr__)
+
+        self.insockets = {'radius' : 0, 'voxel_size' : 1, 'half_band_width' : 2, }
+        self.outsockets = {'volume' : 0, }
+
+        # Input sockets plugging
+
+        if radius          is not None: self.radius          = radius
+        if voxel_size      is not None: self.voxel_size      = voxel_size
+        if half_band_width is not None: self.half_band_width = half_band_width
+
+    @property
+    def volume(self):
+        return self.get_output_socket('volume')
+
+    @property
+    def radius(self):
+        raise AttributeError("Attribute error on node 'SdfVolumeSphere': the input socket 'radius' is write only.")
+
+    @radius.setter
+    def radius(self, value):
+        self.set_input_socket('radius', value)
+
+    @property
+    def voxel_size(self):
+        raise AttributeError("Attribute error on node 'SdfVolumeSphere': the input socket 'voxel_size' is write only.")
+
+    @voxel_size.setter
+    def voxel_size(self, value):
+        self.set_input_socket('voxel_size', value)
+
+    @property
+    def half_band_width(self):
+        raise AttributeError("Attribute error on node 'SdfVolumeSphere': the input socket 'half_band_width' is write only.")
+
+    @half_band_width.setter
+    def half_band_width(self, value):
+        self.set_input_socket('half_band_width', value)
 
 # ----------------------------------------------------------------------------------------------------
 # Node SampleCurve for GeometryNodeSampleCurve
@@ -9932,6 +10459,105 @@ class SampleUvSurface(Node):
         self.set_input_socket('sample_uv', value)
 
 # ----------------------------------------------------------------------------------------------------
+# Node SampleVolume for GeometryNodeSampleVolume
+
+class SampleVolume(Node):
+
+    """Node *Sample Volume*
+
+    .. _SampleVolume:
+
+    Node implementation:
+        Volume:
+            sample sample_float sample_vector sample_integer sample_boolean 
+
+    Args:
+        volume (DataSocket): Volume
+        grid (DataSocket): ``interpolation_mode`` dependant
+        position (DataSocket): Vector
+        grid_type (str): Node parameter, default = 'FLOAT' in ('FLOAT', 'FLOAT_VECTOR', 'INT', 'BOOLEAN')
+        interpolation_mode (str): Node parameter, default = 'TRILINEAR' in ('NEAREST', 'TRILINEAR', 'TRIQUADRATIC')
+        node_color (color): Node color
+        node_label (str): Node label
+
+
+    Output sockets:
+        - **value** : ``interpolation_mode`` dependant
+
+    Shared sockets:
+        - Driving parameter : ``interpolation_mode`` in ('NEAREST', 'TRILINEAR', 'TRIQUADRATIC')
+        - Input sockets  : ['grid']
+        - Output sockets : ['value']
+
+    .. blid:: GeometryNodeSampleVolume
+
+    """
+
+    def __init__(self, volume=None, grid=None, position=None, grid_type='FLOAT', interpolation_mode='TRILINEAR', label=None, node_color=None):
+
+        super().__init__('GeometryNodeSampleVolume', node_name='Sample Volume', label=label, node_color=node_color)
+
+        # Node parameters to configure the sockets enablement
+
+        self.bnode.grid_type       = self.check_enum_value(grid_type, 'grid_type', ('FLOAT', 'FLOAT_VECTOR', 'INT', 'BOOLEAN'), 'FLOAT')
+        self.bnode.interpolation_mode = self.check_enum_value(interpolation_mode, 'interpolation_mode', ('NEAREST', 'TRILINEAR', 'TRIQUADRATIC'), 'TRILINEAR')
+
+        # Input and output sockets names (for use in __getattr__ and __setattr__)
+
+        self.insockets = {'volume' : 0, 'grid' : [1, 2, 3, 4], 'position' : 5, }
+        self.outsockets = {'value' : [0, 1, 2, 3], }
+
+        # Input sockets plugging
+
+        if volume          is not None: self.volume          = volume
+        if grid            is not None: self.grid            = grid
+        if position        is not None: self.position        = position
+
+    @property
+    def grid_type(self):
+        return self.bnode.grid_type
+
+    @grid_type.setter
+    def grid_type(self, value):
+        self.bnode.grid_type = value
+
+    @property
+    def interpolation_mode(self):
+        return self.bnode.interpolation_mode
+
+    @interpolation_mode.setter
+    def interpolation_mode(self, value):
+        self.bnode.interpolation_mode = value
+
+    @property
+    def value(self):
+        return self.get_output_socket('value')
+
+    @property
+    def volume(self):
+        raise AttributeError("Attribute error on node 'SampleVolume': the input socket 'volume' is write only.")
+
+    @volume.setter
+    def volume(self, value):
+        self.set_input_socket('volume', value)
+
+    @property
+    def grid(self):
+        raise AttributeError("Attribute error on node 'SampleVolume': the input socket 'grid' is write only.")
+
+    @grid.setter
+    def grid(self, value):
+        self.set_input_socket('grid', value)
+
+    @property
+    def position(self):
+        raise AttributeError("Attribute error on node 'SampleVolume': the input socket 'position' is write only.")
+
+    @position.setter
+    def position(self, value):
+        self.set_input_socket('position', value)
+
+# ----------------------------------------------------------------------------------------------------
 # Node ScaleElements for GeometryNodeScaleElements
 
 class ScaleElements(Node):
@@ -9961,7 +10587,7 @@ class ScaleElements(Node):
 
 
     Output sockets:
-        - **geometry** : Geometry
+        - **geometry** : Mesh
 
     .. blid:: GeometryNodeScaleElements
 
@@ -9980,6 +10606,10 @@ class ScaleElements(Node):
 
         self.insockets = {'geometry' : 0, 'selection' : 1, 'scale' : 2, 'center' : 3, 'axis' : 4, }
         self.outsockets = {'geometry' : 0, }
+
+        # Force class of output sockets
+
+        self.outsockets_classes = {'geometry': 'Mesh'}
 
         # Input sockets plugging
 
@@ -10193,8 +10823,8 @@ class SeparateComponents(Node):
 
     Output sockets:
         - **mesh** : Mesh
-        - **point_cloud** : Geometry
         - **curve** : Curve
+        - **point_cloud** : Points
         - **volume** : Volume
         - **instances** : Instances
 
@@ -10209,7 +10839,11 @@ class SeparateComponents(Node):
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
         self.insockets = {'geometry' : 0, }
-        self.outsockets = {'mesh' : 0, 'point_cloud' : 1, 'curve' : 2, 'volume' : 3, 'instances' : 4, }
+        self.outsockets = {'mesh' : 0, 'curve' : 1, 'point_cloud' : 2, 'volume' : 3, 'instances' : 4, }
+
+        # Force class of output sockets
+
+        self.outsockets_classes = {'point_cloud': 'Points'}
 
         # Input sockets plugging
 
@@ -10220,12 +10854,12 @@ class SeparateComponents(Node):
         return self.get_output_socket('mesh')
 
     @property
-    def point_cloud(self):
-        return self.get_output_socket('point_cloud')
-
-    @property
     def curve(self):
         return self.get_output_socket('curve')
+
+    @property
+    def point_cloud(self):
+        return self.get_output_socket('point_cloud')
 
     @property
     def volume(self):
@@ -10693,9 +11327,9 @@ class SetMaterial(Node):
     .. _SetMaterial:
 
     Node implementation:
-        Geometry:
+        ('Mesh', 'Points', 'Volume'):
             set_material 
-        ('Face', 'Spline'):
+        ('Face', 'Points'):
             set_material material material 
 
     Args:
@@ -10993,7 +11627,7 @@ class SetShadeSmooth(Node):
 
 
     Output sockets:
-        - **geometry** : Geometry
+        - **geometry** : Mesh
 
     .. blid:: GeometryNodeSetShadeSmooth
 
@@ -11007,6 +11641,10 @@ class SetShadeSmooth(Node):
 
         self.insockets = {'geometry' : 0, 'selection' : 1, 'shade_smooth' : 2, }
         self.outsockets = {'geometry' : 0, }
+
+        # Force class of output sockets
+
+        self.outsockets_classes = {'geometry': 'Mesh'}
 
         # Input sockets plugging
 
@@ -11060,7 +11698,7 @@ class SetSplineCyclic(Node):
 
 
     Output sockets:
-        - **geometry** : Geometry
+        - **geometry** : Curve
 
     .. blid:: GeometryNodeSetSplineCyclic
 
@@ -11074,6 +11712,10 @@ class SetSplineCyclic(Node):
 
         self.insockets = {'geometry' : 0, 'selection' : 1, 'cyclic' : 2, }
         self.outsockets = {'geometry' : 0, }
+
+        # Force class of output sockets
+
+        self.outsockets_classes = {'geometry': 'Curve'}
 
         # Input sockets plugging
 
@@ -11127,7 +11769,7 @@ class SetSplineResolution(Node):
 
 
     Output sockets:
-        - **geometry** : Geometry
+        - **geometry** : Curve
 
     .. blid:: GeometryNodeSetSplineResolution
 
@@ -11141,6 +11783,10 @@ class SetSplineResolution(Node):
 
         self.insockets = {'geometry' : 0, 'selection' : 1, 'resolution' : 2, }
         self.outsockets = {'geometry' : 0, }
+
+        # Force class of output sockets
+
+        self.outsockets_classes = {'geometry': 'Curve'}
 
         # Input sockets plugging
 
@@ -11171,6 +11817,89 @@ class SetSplineResolution(Node):
     @resolution.setter
     def resolution(self, value):
         self.set_input_socket('resolution', value)
+
+# ----------------------------------------------------------------------------------------------------
+# Node SimulationInput for GeometryNodeSimulationInput
+
+class SimulationInput(Node):
+
+    """Node *Simulation Input*
+
+    .. _SimulationInput:
+
+    Args:
+        node_color (color): Node color
+        node_label (str): Node label
+
+
+    .. blid:: GeometryNodeSimulationInput
+
+    """
+
+    def __init__(self, label=None, node_color=None):
+
+        super().__init__('GeometryNodeSimulationInput', node_name='Simulation Input', label=label, node_color=node_color)
+
+        # Input and output sockets names (for use in __getattr__ and __setattr__)
+
+        self.insockets = {}
+        self.outsockets = {}
+
+# ----------------------------------------------------------------------------------------------------
+# Node SimulationOutput for GeometryNodeSimulationOutput
+
+class SimulationOutput(Node):
+
+    """Node *Simulation Output*
+
+    .. _SimulationOutput:
+
+    Args:
+        geometry (DataSocket): Geometry
+        active_index (int): Node parameter, default = 0
+        node_color (color): Node color
+        node_label (str): Node label
+
+
+    Output sockets:
+        - **geometry** : Geometry
+
+    .. blid:: GeometryNodeSimulationOutput
+
+    """
+
+    def __init__(self, geometry=None, active_index=0, label=None, node_color=None):
+
+        super().__init__('GeometryNodeSimulationOutput', node_name='Simulation Output', label=label, node_color=node_color)
+
+        # Node parameters
+
+        self.bnode.active_index    = active_index
+
+        # Input and output sockets names (for use in __getattr__ and __setattr__)
+
+        self.insockets = {'geometry' : 0, }
+        self.outsockets = {'geometry' : 0, }
+
+        # Input sockets plugging
+
+        if geometry        is not None: self.geometry        = geometry
+
+    @property
+    def active_index(self):
+        return self.bnode.active_index
+
+    @active_index.setter
+    def active_index(self, value):
+        self.bnode.active_index = value
+
+    @property
+    def geometry(self):
+        return self.get_output_socket('geometry')
+
+    @geometry.setter
+    def geometry(self, value):
+        self.set_input_socket('geometry', value)
 
 # ----------------------------------------------------------------------------------------------------
 # Node SplineLength for GeometryNodeSplineLength
@@ -11524,7 +12253,7 @@ class StringToCurves(Node):
 
 
     Output sockets:
-        - **curve_instances** : Geometry
+        - **curve_instances** : Instances
         - **remainder** : String
         - **line** : Integer
         - **pivot_point** : Vector
@@ -11548,6 +12277,10 @@ class StringToCurves(Node):
 
         self.insockets = {'string' : 0, 'size' : 1, 'character_spacing' : 2, 'word_spacing' : 3, 'line_spacing' : 4, 'text_box_width' : 5, 'text_box_height' : 6, }
         self.outsockets = {'curve_instances' : 0, 'remainder' : 1, 'line' : 2, 'pivot_point' : 3, }
+
+        # Force class of output sockets
+
+        self.outsockets_classes = {'curve_instances': 'Instances'}
 
         # Input sockets plugging
 
@@ -14695,7 +15428,7 @@ class WhiteNoiseTexture(Node):
 
 class ColorRamp(Node):
 
-    """Node *ColorRamp*
+    """Node *Color Ramp*
 
     .. _ColorRamp:
 
@@ -14721,7 +15454,7 @@ class ColorRamp(Node):
 
     def __init__(self, fac=None, label=None, node_color=None):
 
-        super().__init__('ShaderNodeValToRGB', node_name='ColorRamp', label=label, node_color=node_color)
+        super().__init__('ShaderNodeValToRGB', node_name='Color Ramp', label=label, node_color=node_color)
 
         # Input and output sockets names (for use in __getattr__ and __setattr__)
 
@@ -15124,6 +15857,7 @@ def create_node(bl_idname, *args, **kwargs):
     'GeometryNodeGroup': Group,
     'GeometryNodeImageInfo': ImageInfo,
     'GeometryNodeImageTexture': ImageTexture,
+    'GeometryNodeIndexOfNearest': IndexOfNearest,
     'GeometryNodeInputCurveHandlePositions': CurveHandlePositions,
     'GeometryNodeInputCurveTilt': CurveTilt,
     'GeometryNodeInputID': ID,
@@ -15137,7 +15871,7 @@ def create_node(bl_idname, *args, **kwargs):
     'GeometryNodeInputMeshEdgeNeighbors': EdgeNeighbors,
     'GeometryNodeInputMeshEdgeVertices': EdgeVertices,
     'GeometryNodeInputMeshFaceArea': FaceArea,
-    'GeometryNodeInputMeshFaceIsPlanar': FaceIsPlanar,
+    'GeometryNodeInputMeshFaceIsPlanar': IsFacePlanar,
     'GeometryNodeInputMeshFaceNeighbors': FaceNeighbors,
     'GeometryNodeInputMeshIsland': MeshIsland,
     'GeometryNodeInputMeshVertexNeighbors': VertexNeighbors,
@@ -15148,6 +15882,7 @@ def create_node(bl_idname, *args, **kwargs):
     'GeometryNodeInputSceneTime': SceneTime,
     'GeometryNodeInputShadeSmooth': IsShadeSmooth,
     'GeometryNodeInputShortestEdgePaths': ShortestEdgePaths,
+    'GeometryNodeInputSignedDistance': SignedDistance,
     'GeometryNodeInputSplineCyclic': IsSplineCyclic,
     'GeometryNodeInputSplineResolution': SplineResolution,
     'GeometryNodeInputTangent': CurveTangent,
@@ -15157,6 +15892,7 @@ def create_node(bl_idname, *args, **kwargs):
     'GeometryNodeIsViewport': IsViewport,
     'GeometryNodeJoinGeometry': JoinGeometry,
     'GeometryNodeMaterialSelection': MaterialSelection,
+    'GeometryNodeMeanFilterSDFVolume': MeanFilterSdfVolume,
     'GeometryNodeMergeByDistance': MergeByDistance,
     'GeometryNodeMeshBoolean': MeshBoolean,
     'GeometryNodeMeshCircle': MeshCircle,
@@ -15169,13 +15905,16 @@ def create_node(bl_idname, *args, **kwargs):
     'GeometryNodeMeshLine': MeshLine,
     'GeometryNodeMeshToCurve': MeshToCurve,
     'GeometryNodeMeshToPoints': MeshToPoints,
+    'GeometryNodeMeshToSDFVolume': MeshToSdfVolume,
     'GeometryNodeMeshToVolume': MeshToVolume,
     'GeometryNodeMeshUVSphere': UvSphere,
     'GeometryNodeObjectInfo': ObjectInfo,
     'GeometryNodeOffsetCornerInFace': OffsetCornerInFace,
     'GeometryNodeOffsetPointInCurve': OffsetPointInCurve,
+    'GeometryNodeOffsetSDFVolume': OffsetSdfVolume,
     'GeometryNodePoints': Points,
     'GeometryNodePointsOfCurve': PointsOfCurve,
+    'GeometryNodePointsToSDFVolume': PointsToSdfVolume,
     'GeometryNodePointsToVertices': PointsToVertices,
     'GeometryNodePointsToVolume': PointsToVolume,
     'GeometryNodeProximity': GeometryProximity,
@@ -15186,11 +15925,13 @@ def create_node(bl_idname, *args, **kwargs):
     'GeometryNodeResampleCurve': ResampleCurve,
     'GeometryNodeReverseCurve': ReverseCurve,
     'GeometryNodeRotateInstances': RotateInstances,
+    'GeometryNodeSDFVolumeSphere': SdfVolumeSphere,
     'GeometryNodeSampleCurve': SampleCurve,
     'GeometryNodeSampleIndex': SampleIndex,
     'GeometryNodeSampleNearest': SampleNearest,
     'GeometryNodeSampleNearestSurface': SampleNearestSurface,
     'GeometryNodeSampleUVSurface': SampleUvSurface,
+    'GeometryNodeSampleVolume': SampleVolume,
     'GeometryNodeScaleElements': ScaleElements,
     'GeometryNodeScaleInstances': ScaleInstances,
     'GeometryNodeSelfObject': SelfObject,
@@ -15208,6 +15949,8 @@ def create_node(bl_idname, *args, **kwargs):
     'GeometryNodeSetShadeSmooth': SetShadeSmooth,
     'GeometryNodeSetSplineCyclic': SetSplineCyclic,
     'GeometryNodeSetSplineResolution': SetSplineResolution,
+    'GeometryNodeSimulationInput': SimulationInput,
+    'GeometryNodeSimulationOutput': SimulationOutput,
     'GeometryNodeSplineLength': SplineLength,
     'GeometryNodeSplineParameter': SplineParameter,
     'GeometryNodeSplitEdges': SplitEdges,

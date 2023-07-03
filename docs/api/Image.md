@@ -212,10 +212,8 @@ def texture(self, vector=None, frame=None, extension='REPEAT', interpolation='Li
 - extension (str): 'REPEAT' in [REPEAT, EXTEND, CLIP, MIRROR]
 - interpolation (str): 'Linear' in [Linear, Closest, Cubic]
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeImageTexture.webp)
-
 #### Returns:
-- tuple ('`color`', '`alpha`')
+- node with sockets ['color', 'alpha']
 
 
 

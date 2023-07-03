@@ -36,13 +36,16 @@ node = nodes.SetMaterial(geometry=None, selection=None, material=None)
 | [material](Face.md#material) | `@property`<br> `def material(self):` |
 | [material](Face.md#material) | `@material.setter
 `<br> `def material(self, attr_value):` |
-| **[Geometry](Geometry.md)** |
-| [set_material](Geometry.md#set_material) | `def set_material(self, selection=None, material=None):` |
-| **[Spline](Spline.md)** |
-| [set_material](Spline.md#set_material) | `def set_material(self, material=None):` |
-| [material](Spline.md#material) | `@property`<br> `def material(self):` |
-| [material](Spline.md#material) | `@material.setter
+| **[Mesh](Mesh.md)** |
+| [set_material](Mesh.md#set_material) | `def set_material(self, selection=None, material=None):` |
+| **[Points](Points.md)** |
+| [set_material](Points.md#set_material) | `def set_material(self, selection=None, material=None):` |
+| [set_material](Points.md#set_material) | `def set_material(self, material=None):` |
+| [material](Points.md#material) | `@property`<br> `def material(self):` |
+| [material](Points.md#material) | `@material.setter
 `<br> `def material(self, attr_value):` |
+| **[Volume](Volume.md)** |
+| [set_material](Volume.md#set_material) | `def set_material(self, selection=None, material=None):` |
 
 <sub>Go to [top](#node-Set-Material) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

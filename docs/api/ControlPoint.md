@@ -26,7 +26,7 @@ ControlPoint(self, data_socket, selection=None)
 
 **Properties**
 
-[ID](#ID) | [as_cloud_points](#as_cloud_points) | [as_control_points](#as_control_points) | [as_corners](#as_corners) | [as_edges](#as_edges) | [as_faces](#as_faces) | [as_insts](#as_insts) | [as_splines](#as_splines) | [as_verts](#as_verts) | [count](#count) | [data_socket](#data_socket) | [domain](#domain) | [domain_index](#domain_index) | [index](#index) | [left_handle_positions](#left_handle_positions) | [normal](#normal) | [parameter](#parameter) | [parameter_factor](#parameter_factor) | [parameter_index](#parameter_index) | [parameter_length](#parameter_length) | [position](#position) | [radius](#radius) | [right_handle_positions](#right_handle_positions) | [selection](#selection) | [selection_index](#selection_index) | [tangent](#tangent) | [tilt](#tilt)
+[ID](#ID) | [as_cloud_points](#as_cloud_points) | [as_control_points](#as_control_points) | [as_corners](#as_corners) | [as_edges](#as_edges) | [as_faces](#as_faces) | [as_insts](#as_insts) | [as_splines](#as_splines) | [as_verts](#as_verts) | [count](#count) | [data_socket](#data_socket) | [domain](#domain) | [domain_index](#domain_index) | [index](#index) | [index_of_nearest](#index_of_nearest) | [left_handle_positions](#left_handle_positions) | [normal](#normal) | [parameter](#parameter) | [parameter_factor](#parameter_factor) | [parameter_index](#parameter_index) | [parameter_length](#parameter_length) | [position](#position) | [radius](#radius) | [right_handle_positions](#right_handle_positions) | [selection](#selection) | [selection_index](#selection_index) | [tangent](#tangent) | [tilt](#tilt)
 
 **Class and static methods**
 
@@ -206,6 +206,26 @@ Node implemented as property setter.
 
 <sub>Go to [top](#class-ControlPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
+### index_of_nearest
+
+
+
+> Node: [Index of Nearest](GeometryNodeIndexOfNearest.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/n.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeIndexOfNearest.html)
+
+#### Args:
+- position: Vector
+- group_id: Integer
+
+#### Returns:
+- node with sockets ['index', 'has_neighbor']
+
+
+
+
+
+
+<sub>Go to [top](#class-ControlPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### left_handle_positions
 
 
@@ -261,10 +281,8 @@ Node implemented as property setter.
 
 > Node: [Spline Parameter](GeometryNodeSplineParameter.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/spline_parameter.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSplineParameter.html)
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeSplineParameter.webp)
-
 #### Returns:
-- tuple ('`factor`', '`length`', '`index`')
+- node with sockets ['factor', 'length', 'index']
 
 
 
@@ -618,10 +636,8 @@ def accumulate_field(self, value=None, group_id=None)
 - value: ['Vector', 'Float', 'Integer']
 - group_id: Integer
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeAccumulateField.webp)
-
 #### Returns:
-- tuple ('`leading`', '`trailing`', '`total`')
+- node with sockets ['leading', 'trailing', 'total']
 
 
 
@@ -1022,10 +1038,8 @@ def curve(self)
 
 > Node: [Curve of Point](GeometryNodeCurveOfPoint.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve_topology/curve_of_point.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveOfPoint.html)
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeCurveOfPoint.webp)
-
 #### Returns:
-- tuple ('`curve_index`', '`index_in_curve`')
+- node with sockets ['curve_index', 'index_in_curve']
 
 
 
@@ -1574,10 +1588,8 @@ def offset(self, offset=None)
 #### Args:
 - offset: Integer
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeOffsetPointInCurve.webp)
-
 #### Returns:
-- tuple ('`is_valid_offset`', '`point_index`')
+- node with sockets ['is_valid_offset', 'point_index']
 
 
 
@@ -1696,10 +1708,8 @@ def separate(self)
 
 > Node: [Separate Geometry](GeometryNodeSeparateGeometry.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/separate_geometry.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSeparateGeometry.html)
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeSeparateGeometry.webp)
-
 #### Returns:
-- tuple ('`selection`', '`inverted`')
+- node with sockets ['selection', 'inverted']
 
 
 

@@ -41,7 +41,7 @@ elf.points = Vertex(self) # Initialized before super().__init__ which can overri
 
 **Properties**
 
-[ID](#ID) | [bounding_box](#bounding_box) | [bounding_box_min](#bounding_box_min) | [convex_hull](#convex_hull) | [curve_component](#curve_component) | [domain_size](#domain_size) | [index](#index) | [instances_component](#instances_component) | [is_viewport](#is_viewport) | [length](#length) | [material_index](#material_index) | [mesh_component](#mesh_component) | [normal](#normal) | [point_count](#point_count) | [points_component](#points_component) | [position](#position) | [radius](#radius) | [separate_components](#separate_components) | [spline_count](#spline_count) | [volume_component](#volume_component)
+[ID](#ID) | [bounding_box](#bounding_box) | [bounding_box_min](#bounding_box_min) | [convex_hull](#convex_hull) | [curve_component](#curve_component) | [domain_size](#domain_size) | [index](#index) | [index_of_nearest](#index_of_nearest) | [instances_component](#instances_component) | [is_viewport](#is_viewport) | [length](#length) | [material_index](#material_index) | [mesh_component](#mesh_component) | [normal](#normal) | [point_count](#point_count) | [points_component](#points_component) | [position](#position) | [radius](#radius) | [separate_components](#separate_components) | [signed_distance](#signed_distance) | [spline_count](#spline_count) | [volume_component](#volume_component)
 
 ***Inherited***
 
@@ -57,7 +57,7 @@ elf.points = Vertex(self) # Initialized before super().__init__ which can overri
 
 **Methods**
 
-[attribute_statistic](#attribute_statistic) | [capture_attribute](#capture_attribute) | [curve_of_point](#curve_of_point) | [deform_on_surface](#deform_on_surface) | [delete](#delete) | [duplicate](#duplicate) | [evaluate_at_index](#evaluate_at_index) | [fill](#fill) | [fill_ngons](#fill_ngons) | [fill_triangles](#fill_triangles) | [fillet](#fillet) | [fillet_bezier](#fillet_bezier) | [fillet_poly](#fillet_poly) | [instance_on_points](#instance_on_points) | [instantiate](#instantiate) | [interpolate](#interpolate) | [interpolate_domain](#interpolate_domain) | [join](#join) | [material_selection](#material_selection) | [merge_by_distance](#merge_by_distance) | [named_attribute](#named_attribute) | [named_attribute_exists](#named_attribute_exists) | [named_boolean](#named_boolean) | [named_color](#named_color) | [named_float](#named_float) | [named_integer](#named_integer) | [named_vector](#named_vector) | [offset_point](#offset_point) | [points_of_curve](#points_of_curve) | [proximity](#proximity) | [proximity_edges](#proximity_edges) | [proximity_faces](#proximity_faces) | [proximity_points](#proximity_points) | [raycast](#raycast) | [raycast_interpolated](#raycast_interpolated) | [raycast_nearest](#raycast_nearest) | [remove_named_attribute](#remove_named_attribute) | [replace_material](#replace_material) | [resample](#resample) | [resample_count](#resample_count) | [resample_evaluated](#resample_evaluated) | [resample_length](#resample_length) | [reverse](#reverse) | [sample](#sample) | [sample_index](#sample_index) | [sample_nearest](#sample_nearest) | [separate](#separate) | [set_ID](#set_ID) | [set_material](#set_material) | [set_material_index](#set_material_index) | [set_position](#set_position) | [show_handles](#show_handles) | [store_named_attribute](#store_named_attribute) | [store_named_boolean](#store_named_boolean) | [store_named_color](#store_named_color) | [store_named_float](#store_named_float) | [store_named_integer](#store_named_integer) | [store_named_vector](#store_named_vector) | [subdivide](#subdivide) | [switch](#switch) | [to_instance](#to_instance) | [to_mesh](#to_mesh) | [to_points](#to_points) | [to_points_count](#to_points_count) | [to_points_evaluated](#to_points_evaluated) | [to_points_length](#to_points_length) | [transform](#transform) | [transform_geometry](#transform_geometry) | [trim](#trim) | [trim_factor](#trim_factor) | [trim_length](#trim_length) | [view](#view) | [viewer](#viewer)
+[attribute_statistic](#attribute_statistic) | [capture_attribute](#capture_attribute) | [curve_of_point](#curve_of_point) | [deform_on_surface](#deform_on_surface) | [delete](#delete) | [duplicate](#duplicate) | [evaluate_at_index](#evaluate_at_index) | [fill](#fill) | [fill_ngons](#fill_ngons) | [fill_triangles](#fill_triangles) | [fillet](#fillet) | [fillet_bezier](#fillet_bezier) | [fillet_poly](#fillet_poly) | [instance_on_points](#instance_on_points) | [instantiate](#instantiate) | [interpolate](#interpolate) | [interpolate_domain](#interpolate_domain) | [join](#join) | [material_selection](#material_selection) | [merge_by_distance](#merge_by_distance) | [named_attribute](#named_attribute) | [named_attribute_exists](#named_attribute_exists) | [named_boolean](#named_boolean) | [named_color](#named_color) | [named_float](#named_float) | [named_integer](#named_integer) | [named_vector](#named_vector) | [offset_point](#offset_point) | [points_of_curve](#points_of_curve) | [proximity](#proximity) | [proximity_edges](#proximity_edges) | [proximity_faces](#proximity_faces) | [proximity_points](#proximity_points) | [raycast](#raycast) | [raycast_interpolated](#raycast_interpolated) | [raycast_nearest](#raycast_nearest) | [remove_named_attribute](#remove_named_attribute) | [replace_material](#replace_material) | [resample](#resample) | [resample_count](#resample_count) | [resample_evaluated](#resample_evaluated) | [resample_length](#resample_length) | [reverse](#reverse) | [sample](#sample) | [sample_index](#sample_index) | [sample_nearest](#sample_nearest) | [separate](#separate) | [set_ID](#set_ID) | [set_material_index](#set_material_index) | [set_position](#set_position) | [show_handles](#show_handles) | [store_named_attribute](#store_named_attribute) | [store_named_boolean](#store_named_boolean) | [store_named_color](#store_named_color) | [store_named_float](#store_named_float) | [store_named_integer](#store_named_integer) | [store_named_vector](#store_named_vector) | [subdivide](#subdivide) | [switch](#switch) | [to_instance](#to_instance) | [to_mesh](#to_mesh) | [to_points](#to_points) | [to_points_count](#to_points_count) | [to_points_evaluated](#to_points_evaluated) | [to_points_length](#to_points_length) | [transform](#transform) | [transform_geometry](#transform_geometry) | [trim](#trim) | [trim_factor](#trim_factor) | [trim_length](#trim_length) | [view](#view) | [viewer](#viewer)
 
 ***Inherited***
 
@@ -169,6 +169,26 @@ elf.points = Vertex(self) # Initialized before super().__init__ which can overri
 
 #### Returns:
 - socket `index`
+
+
+
+
+
+
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### index_of_nearest
+
+
+
+> Node: [Index of Nearest](GeometryNodeIndexOfNearest.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/n.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeIndexOfNearest.html)
+
+#### Args:
+- position: Vector
+- group_id: Integer
+
+#### Returns:
+- node with sockets ['index', 'has_neighbor']
 
 
 
@@ -344,7 +364,23 @@ elf.points = Vertex(self) # Initialized before super().__init__ which can overri
 > Node: [Separate Components](GeometryNodeSeparateComponents.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/separate_components.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSeparateComponents.html)
 
 #### Returns:
-- node with sockets ['mesh', 'point_cloud', 'curve', 'volume', 'instances']
+- node with sockets ['mesh', 'curve', 'point_cloud', 'volume', 'instances']
+
+
+
+
+
+
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### signed_distance
+
+
+
+> Node: [Signed Distance](GeometryNodeInputSignedDistance.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/i.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputSignedDistance.html)
+
+#### Returns:
+- socket `signed_distance`
 
 
 
@@ -517,10 +553,8 @@ def CircleFromPoints(resolution=None, point_1=None, point_2=None, point_3=None)
 - point_2: Vector
 - point_3: Vector
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeCurvePrimitiveCircle.webp)
-
 #### Returns:
-- tuple ('`curve`', '`center`')
+- node with sockets ['curve', 'center']
 
 
 
@@ -960,10 +994,8 @@ def curve_of_point(self, point_index=None)
 #### Args:
 - point_index: Integer
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeCurveOfPoint.webp)
-
 #### Returns:
-- tuple ('`curve_index`', '`index_in_curve`')
+- node with sockets ['curve_index', 'index_in_curve']
 
 
 
@@ -1567,10 +1599,8 @@ def offset_point(self, point_index=None, offset=None)
 - point_index: Integer
 - offset: Integer
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeOffsetPointInCurve.webp)
-
 #### Returns:
-- tuple ('`is_valid_offset`', '`point_index`')
+- node with sockets ['is_valid_offset', 'point_index']
 
 
 
@@ -1594,10 +1624,8 @@ def points_of_curve(self, curve_index=None, weights=None, sort_index=None)
 - weights: Float
 - sort_index: Integer
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodePointsOfCurve.webp)
-
 #### Returns:
-- tuple ('`point_index`', '`total`')
+- node with sockets ['point_index', 'total']
 
 
 
@@ -2045,10 +2073,8 @@ def separate(self, selection=None, domain='POINT')
 - selection: Boolean
 - domain (str): 'POINT' in [POINT, EDGE, FACE, CURVE, INSTANCE]
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeSeparateGeometry.webp)
-
 #### Returns:
-- tuple ('`selection`', '`inverted`')
+- node with sockets ['selection', 'inverted']
 
 
 
@@ -2070,30 +2096,6 @@ def set_ID(self, selection=None, ID=None)
 #### Args:
 - selection: Boolean
 - ID: Integer
-
-#### Returns:
-- self
-
-
-
-
-
-
-<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-### set_material
-
-```python
-def set_material(self, selection=None, material=None)
-```
-
-
-
-> Node: [Set Material](GeometryNodeSetMaterial.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/set_material.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetMaterial.html)
-
-#### Args:
-- selection: Boolean
-- material: Material
 
 #### Returns:
 - self
@@ -2446,10 +2448,8 @@ def to_points(self, count=None, length=None, mode='COUNT')
 - length: Float
 - mode (str): 'COUNT' in [EVALUATED, COUNT, LENGTH]
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeCurveToPoints.webp)
-
 #### Returns:
-- tuple ('`points`', '`tangent`', '`normal`', '`rotation`')
+- node with sockets ['points', 'tangent', 'normal', 'rotation']
 
 
 
@@ -2471,10 +2471,8 @@ def to_points_count(self, count=None)
 #### Args:
 - count: Integer
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeCurveToPoints.webp)
-
 #### Returns:
-- tuple ('`points`', '`tangent`', '`normal`', '`rotation`')
+- node with sockets ['points', 'tangent', 'normal', 'rotation']
 
 
 
@@ -2493,10 +2491,8 @@ def to_points_evaluated(self)
 
 > Node: [Curve to Points](GeometryNodeCurveToPoints.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/curve_to_points.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveToPoints.html)
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeCurveToPoints.webp)
-
 #### Returns:
-- tuple ('`points`', '`tangent`', '`normal`', '`rotation`')
+- node with sockets ['points', 'tangent', 'normal', 'rotation']
 
 
 
@@ -2518,10 +2514,8 @@ def to_points_length(self, length=None)
 #### Args:
 - length: Float
 
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeCurveToPoints.webp)
-
 #### Returns:
-- tuple ('`points`', '`tangent`', '`normal`', '`rotation`')
+- node with sockets ['points', 'tangent', 'normal', 'rotation']
 
 
 

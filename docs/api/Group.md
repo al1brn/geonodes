@@ -481,7 +481,7 @@ its unique id with its standard name.
 ### get_output_socket
 
 ```python
-def get_output_socket(self, name)
+def get_output_socket(self, name, class_name=None)
 ```
 
 ock_ind = self.outsockets.get(name.lower())

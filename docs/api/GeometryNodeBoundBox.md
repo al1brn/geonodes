@@ -23,7 +23,7 @@ node = nodes.BoundingBox(geometry=None)
 
 ### Output sockets:
 
-- **bounding_box** : [Geometry](Geometry.md)
+- **bounding_box** : [Mesh](Mesh.md)
 - **min** : [Vector](Vector.md)
 - **max** : [Vector](Vector.md)
 

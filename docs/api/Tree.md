@@ -134,7 +134,7 @@ Tree(self, tree_name, clear=False, group=False, fake_user=False, prefix=None)
 
 **Properties**
 
-[cur_frame](#cur_frame) | [frame](#frame) | [ig](#ig) | [input_geometry](#input_geometry) | [og](#og) | [output_geometry](#output_geometry) | [scene](#scene) | [seconds](#seconds)
+[cur_frame](#cur_frame) | [frame](#frame) | [ig](#ig) | [input_geometry](#input_geometry) | [og](#og) | [output_geometry](#output_geometry) | [seconds](#seconds)
 
 **Methods**
 
@@ -193,14 +193,6 @@ Tree(self, tree_name, clear=False, group=False, fake_user=False, prefix=None)
 ```python
 tree.output_geometry = my_geometry 
 ```
-
-
-
-<sub>Go to [top](#class-Tree) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-### scene
-
- Maintain a single instance of the node :class:`SceneTime`.
 
 
 

@@ -1,4 +1,4 @@
-# Node *ColorRamp*
+# Node *Color Ramp*
 
 > [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)
 
@@ -35,5 +35,5 @@ node = nodes.ColorRamp(fac=None)
 | Global functions |
 | [color_ramp](functions.md#color_ramp) | `def color_ramp(fac=None):` |
 
-<sub>Go to [top](#node-ColorRamp) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+<sub>Go to [top](#node-Color-Ramp) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
