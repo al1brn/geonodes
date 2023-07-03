@@ -76,7 +76,7 @@ with gn.Tree("Simul") as tree:
   # Resulting geometry through output node
   geo = simul.output.geometry
 
-  # Or throughy Simulation shortcuts
+  # Or through Simulation shortcuts
   geo = simul.output_geometry
   geo = simul.og
 ```
