@@ -49,6 +49,8 @@ With the exception of **delta_time** output socket of the input simulation node,
 - input socket of the output node : ``` simul.input.geometry = var```
 - output socket of the output node : ``` var = simul.input.geometry ```
 
+To ease code writing, the Simulation instance exposes attributes for 
+
 
 
 
