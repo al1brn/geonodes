@@ -14,4 +14,10 @@ We want to randomly create curves at the surface of the input geometry:
 A simulation zone is made of two nodes: **Simulation Input** and **Simulation Output**.
 These two nodes have the same input and output sockets with one exception: the **input node** as an additional output socket : **Delta Time**
 
+<img src="images/simulation_zone.png" width="600" class="center">
+
+The nodes are created by instanciating a **Simulation** class:
+
+
+
 
