@@ -99,7 +99,7 @@ The shaft length was computed above, it is equal to `z1`. Hence, the shaft is bu
 
 ``` python
     edges = arrow.edges
-    top, _ = edges.extrude(offset=(0, 0, 1), offset_scale=z1)
+    top = edges.extrude(offset=(0, 0, 1), offset_scale=z1).top
 ```
 
 The extrude method returns two Boolean selections. The first one is the selection the extruded edges and the seconde one a selection
@@ -110,7 +110,7 @@ It the scheme above, we are at points `Q'` and want to extrude to point `Q''`.
 The direction of extrusion is given by the vector `QQ'`.
 The amount of extrusion is given by the maths.
 
-**Extrusion** The ***Extrude*** Node returns 3 sockets: 'Geometry', 'Top', 'Side'. The **extrude** method return the nodes and not a particular socket.
+**Extrusion** The ***Extrude*** Node returns 3 sockets: 'Geometry', 'Top', 'Side'. The **extrude** method returns the nodes and not a particular socket.
 Use 'top' or 'side' attribute of the returned node.
 
 **Note:** Points `Q'` and  `Q''` are multiple (points forming the top circle of the shaft) when the point `Q` is unique.
@@ -168,11 +168,11 @@ with gn.Tree("Arrow") as tree:
     arrow = gn.Mesh.Circle(vertices=vertices, radius=r, fill_type='NGON')
     edges = arrow.edges
     
-    top, _ = edges.extrude(offset=(0, 0, 1), offset_scale=z1)
+    top = edges.extrude(offset=(0, 0, 1), offset_scale=z1).top
     
-    top, _ = edges[top].extrude(offset=edges[top].position - (0, 0, z2), offset_scale=s - 1)
+    top = edges[top].extrude(offset=edges[top].position - (0, 0, z2), offset_scale=s - 1).top
 
-    top, _ = edges[top].extrude(offset=(0, 0, length) - edges[top].position)
+    edges[top].extrude(offset=(0, 0, length) - edges[top].position)
 
     # ----- Output the arrow
     
