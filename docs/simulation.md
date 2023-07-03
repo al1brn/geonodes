@@ -192,8 +192,6 @@ Rather than using the named attribute, we can use a simulation state named **top
 ``` python
 import geonodes as gn
 
-with gn.Tree("Simul") as tree:
-    
 with gn.Tree("Simul 2") as tree:
     
     # Points on the input geometry (allegedly a mesh)
