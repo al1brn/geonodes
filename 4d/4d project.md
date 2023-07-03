@@ -2,7 +2,7 @@
 
 > Compute 4D shapes Geometry Nodes scripted with **geonodes**.
 
-## Important Note
+## :stop_sign: Important Note
 
 New versions of Blender Geometry Nodes imply changes in the **geonodes** API. The code provided in this documentation can be not up to date. The get a running version of this projet, simply use the **fourd.blend** Blender file in the folder **blend files**.
 
