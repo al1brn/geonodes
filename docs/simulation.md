@@ -46,8 +46,8 @@ with gn.Tree("Simul") as tree:
 With the exception of **delta_time** output socket of the input simulation node, the socket names have four meanings:
 - input socket of the input node: ``` simul.input.geometry = var```
 - output socket of the input node : ``` var = simul.input.geometry ```
-- input socket of the output node : ``` simul.input.geometry = var```
-- output socket of the output node : ``` var = simul.input.geometry ```
+- input socket of the output node : ``` simul.output.geometry = var```
+- output socket of the output node : ``` var = simul.output.geometry ```
 
 To ease code writing, the Simulation instance exposes attributes for sockets used within the simulation:
 - when the attribute is read, this is the output socket of the input node
