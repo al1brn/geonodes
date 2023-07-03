@@ -33,13 +33,18 @@ import numpy as np
 import geonodes as gn
 
 with gn.Tree("Arrow") as tree:
-
-    length    = gn.Float.Input(1, "Length", min_value=0)
-    r         = gn.Float.Input(0.1, "Radius", min_value=0.001)
-    s         = gn.Float.Input(2, "Head size", min_value=1.001)
-    angle     = gn.Float.Angle(np.radians(20), "Angle", min_value=np.radians(10), max_value=0.999*gn.pi/2)
-    k         = gn.Float.Input(0.5, "Recess", min_value=0., max_value=0.99)
-    vertices  = gn.Integer.Input(12, "Vertices", min_value=3)
+    
+    length    = gn.Float.Input(   1,                "Length",       min_value=0)
+    r         = gn.Float.Input(   0.02,             "Radius",       min_value=0.001)
+    s         = gn.Float.Input(   3,                "Head size",    min_value=1.001)
+    angle     = gn.Float.Angle(   np.radians(20),   "Angle",        min_value=np.radians(10), max_value=0.999*gn.pi/2)
+    k         = gn.Float.Input(   0.5,              "Recess",       min_value=0., max_value=0.99)
+    vertices  = gn.Integer.Input( 12,               "Vertices",     min_value=3)
+    smooth    = gn.Boolean.Input( True,             "Shade smooth")
+    shaft_mat = gn.Material.Input(None,             "Shaft")
+    head_mat  = gn.Material.Input(None,             "Arrowhead")
+    obj       = gn.Object.Input(  None,             "Orientation")
+    track_obj = gn.Boolean.Input( True,             "Track",        description="Track object if True, copy rotation otherwise")
 
 ```
 
