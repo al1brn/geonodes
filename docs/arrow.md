@@ -59,23 +59,32 @@ The corresponding python code is given here after:
 
 ``` python
 
-    # ----- Arrowhead radius from the shaft radius
+# ----- Arrowhead radius from the shaft radius
 
-    rh = r*s
+rh = r*s
 
-    # ----- Arrowhead height from the angle
+# ----- Arrowhead height from the angle
 
-    tg = gn.tan(angle)
-    hh = rh/tg
-    z0 = length - hh
+tg = gn.tan(angle)
+hh = rh/tg
+z0 = length - hh
 
-    # ----- Recess computation
+# ----- Recess computation
 
-    h  = r/tg
-    d  = k*h*(s - 1)
+h  = r/tg
+d  = k*h*(s - 1)
 
-    z1 = z0 + d
-    z2 = z0 + k*h*s
+z1 = z0 + d
+z2 = z0 + k*h*s
+
+# ----- polygon correction factor
+# Extrusion uses edge position which is the mean of the two
+# extremities. The vertices position is then computed as the mean
+# of the two edges. Twice a cosine factor
+
+f = 1/gn.cos(gn.pi/vertices)**2
+fac = gn.Vector((f, f, 1))
+
 ```
 
 ## Building by extrusion
