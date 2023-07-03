@@ -127,7 +127,7 @@ with gn.Tree("Do nothing simulation") as tree:
 
 ## Something more interesting
 
-The following tree, generates random points on the faces of the input geometry. Each time, the simulation zone is executed, the last vertices are randomly extruded. The last vertex flag is stored in the named attribute "Top".
+The following tree generates random points on the faces of the input geometry. Each time, the simulation zone is executed, the last vertices are randomly extruded. The last vertex flag is stored in the named attribute "Top".
 
 ``` python
 import geonodes as gn
