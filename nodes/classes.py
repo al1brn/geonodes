@@ -281,7 +281,6 @@ class Geometry(geosocks.Geometry):
         return self.attribute_node(nodes.Index()).index
 
 
-    @property
     def index_of_nearest(self, position=None, group_id=None):
         """
 
@@ -621,13 +620,15 @@ class Geometry(geosocks.Geometry):
         - source_position: Vector
         - target_element (str): 'FACES' in [POINTS, EDGES, FACES]
 
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeProximity.webp)
+
         #### Returns:
-        - socket `distance`
+        - node with sockets ['position', 'distance']
 
 
         """
 
-        return self.attribute_node(nodes.GeometryProximity(target=target, source_position=source_position, target_element=target_element)).distance
+        return self.attribute_node(nodes.GeometryProximity(target=target, source_position=source_position, target_element=target_element))
 
 
     def proximity_edges(self, target=None, source_position=None):
@@ -639,13 +640,15 @@ class Geometry(geosocks.Geometry):
         - target: Geometry
         - source_position: Vector
 
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeProximity.webp)
+
         #### Returns:
-        - socket `distance`
+        - node with sockets ['position', 'distance']
 
 
         """
 
-        return self.attribute_node(nodes.GeometryProximity(target=target, source_position=source_position, target_element='EDGES')).distance
+        return self.attribute_node(nodes.GeometryProximity(target=target, source_position=source_position, target_element='EDGES'))
 
 
     def proximity_faces(self, target=None, source_position=None):
@@ -657,13 +660,15 @@ class Geometry(geosocks.Geometry):
         - target: Geometry
         - source_position: Vector
 
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeProximity.webp)
+
         #### Returns:
-        - socket `distance`
+        - node with sockets ['position', 'distance']
 
 
         """
 
-        return self.attribute_node(nodes.GeometryProximity(target=target, source_position=source_position, target_element='FACES')).distance
+        return self.attribute_node(nodes.GeometryProximity(target=target, source_position=source_position, target_element='FACES'))
 
 
     def proximity_points(self, target=None, source_position=None):
@@ -675,13 +680,15 @@ class Geometry(geosocks.Geometry):
         - target: Geometry
         - source_position: Vector
 
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeProximity.webp)
+
         #### Returns:
-        - socket `distance`
+        - node with sockets ['position', 'distance']
 
 
         """
 
-        return self.attribute_node(nodes.GeometryProximity(target=target, source_position=source_position, target_element='POINTS')).distance
+        return self.attribute_node(nodes.GeometryProximity(target=target, source_position=source_position, target_element='POINTS'))
 
 
     @property

@@ -302,7 +302,7 @@
 |      | [Spline](Spline.md) | - [set_material_index](Spline.md#set_material_index)<br>- [material_index](Spline.md#material_index)|
 | [Set Point Radius](GeometryNodeSetPointRadius.md) | [CloudPoint](CloudPoint.md) | [radius](CloudPoint.md#radius) |
 |      | [Points](Points.md) | [set_point_radius](Points.md#set_point_radius) |
-| [Set Position](GeometryNodeSetPosition.md) | [Domain](Domain.md) | - [set_position](Domain.md#set_position)<br>- [position](Domain.md#position)|
+| [Set Position](GeometryNodeSetPosition.md) | [Domain](Domain.md) | - [set_position](Domain.md#set_position)<br>- [position](Domain.md#position)<br>- [position_offset](Domain.md#position_offset)<br>- [position_offset](Domain.md#position_offset)|
 |      | [Geometry](Geometry.md) | [set_position](Geometry.md#set_position) |
 | [Set Shade Smooth](GeometryNodeSetShadeSmooth.md) | [Face](Face.md) | - [set_shade_smooth](Face.md#set_shade_smooth)<br>- [shade_smooth](Face.md#shade_smooth)|
 |      | [Mesh](Mesh.md) | [set_shade_smooth](Mesh.md#set_shade_smooth) |

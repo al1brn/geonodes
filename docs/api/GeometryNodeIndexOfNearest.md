@@ -32,9 +32,9 @@ node = nodes.IndexOfNearest(position=None, group_id=None)
 | Class or method name | Definition |
 |----------------------|------------|
 | **[Domain](Domain.md)** |
-| [index_of_nearest](Domain.md#index_of_nearest) | `@property`<br> `def index_of_nearest(self, position=None, group_id=None):` |
+| [index_of_nearest](Domain.md#index_of_nearest) | `def index_of_nearest(self, position=None, group_id=None):` |
 | **[Geometry](Geometry.md)** |
-| [index_of_nearest](Geometry.md#index_of_nearest) | `@property`<br> `def index_of_nearest(self, position=None, group_id=None):` |
+| [index_of_nearest](Geometry.md#index_of_nearest) | `def index_of_nearest(self, position=None, group_id=None):` |
 
 <sub>Go to [top](#node-Index-of-Nearest) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

@@ -204,7 +204,7 @@
 | [Transform Geometry](GeometryNodeTransform.md) | [Geometry](Geometry.md) | - [transform_geometry](Geometry.md#transform_geometry)<br>- [transform](Geometry.md#transform)|
 | [Set ID](GeometryNodeSetID.md) | [Domain](Domain.md) | - [set_ID](Domain.md#set_ID)<br>- [ID](Domain.md#ID)|
 |      | [Geometry](Geometry.md) | [set_ID](Geometry.md#set_ID) |
-| [Set Position](GeometryNodeSetPosition.md) | [Domain](Domain.md) | - [set_position](Domain.md#set_position)<br>- [position](Domain.md#position)|
+| [Set Position](GeometryNodeSetPosition.md) | [Domain](Domain.md) | - [set_position](Domain.md#set_position)<br>- [position](Domain.md#position)<br>- [position_offset](Domain.md#position_offset)<br>- [position_offset](Domain.md#position_offset)|
 |      | [Geometry](Geometry.md) | [set_position](Geometry.md#set_position) |
 
 <sub>Go to [top](#nodes-menus) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>

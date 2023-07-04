@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 """
-Created on 2023-07-03
+Created on 2023-07-04
 
 @author: Generated from generator module
 
@@ -11535,7 +11535,7 @@ class SetPosition(Node):
         Geometry:
             set_position 
         Domain:
-            set_position position 
+            set_position position position_offset position_offset 
 
     Args:
         geometry (DataSocket): Geometry

@@ -383,7 +383,6 @@ class Domain(geodom.Domain):
         return self.attribute_node(nodes.Index()).index
 
 
-    @property
     def index_of_nearest(self, position=None, group_id=None):
         """
 
@@ -608,6 +607,40 @@ class Domain(geodom.Domain):
         if attr_value is None: return self
 
         self.socket_stack(nodes.SetPosition(geometry=self.data_socket, selection=self.selection, position=attr_value, offset=None))
+
+
+    @property
+    def position_offset(self):
+        """
+
+        > Node: [Set Position](GeometryNodeSetPosition.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/set_position.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetPosition.html)
+
+        'position_offset' is a write only property.
+        Raise an exception if attempt to read.
+
+
+
+        """
+
+        raise Exception("Error: 'position_offset' is a write only property of class Domain!")
+
+
+    @position_offset.setter
+    def position_offset(self, attr_value):
+        """
+
+        > Node: [Set Position](GeometryNodeSetPosition.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/set_position.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetPosition.html)
+
+        Node implemented as property setter.
+
+        #### Args:
+        - attr_value: offset
+
+
+
+        """
+
+        self.socket_stack(nodes.SetPosition(geometry=self.data_socket, selection=self.selection, position=None, offset=attr_value))
 
 
     @staticmethod
@@ -1316,13 +1349,15 @@ class Vertex(Domain):
         - target: Geometry
         - source_position: Vector
 
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeProximity.webp)
+
         #### Returns:
-        - socket `distance`
+        - node with sockets ['position', 'distance']
 
 
         """
 
-        return self.attribute_node(nodes.GeometryProximity(target=target, source_position=source_position, target_element='POINTS')).distance
+        return self.attribute_node(nodes.GeometryProximity(target=target, source_position=source_position, target_element='POINTS'))
 
 
     def sample_nearest(self, sample_position=None):
@@ -1899,13 +1934,15 @@ class Face(Domain):
         - target: Geometry
         - source_position: Vector
 
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeProximity.webp)
+
         #### Returns:
-        - socket `distance`
+        - node with sockets ['position', 'distance']
 
 
         """
 
-        return self.attribute_node(nodes.GeometryProximity(target=target, source_position=source_position, target_element='FACES')).distance
+        return self.attribute_node(nodes.GeometryProximity(target=target, source_position=source_position, target_element='FACES'))
 
 
     def sample_nearest(self, sample_position=None):
@@ -2278,13 +2315,15 @@ class Edge(Domain):
         - target: Geometry
         - source_position: Vector
 
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeProximity.webp)
+
         #### Returns:
-        - socket `distance`
+        - node with sockets ['position', 'distance']
 
 
         """
 
-        return self.attribute_node(nodes.GeometryProximity(target=target, source_position=source_position, target_element='EDGES')).distance
+        return self.attribute_node(nodes.GeometryProximity(target=target, source_position=source_position, target_element='EDGES'))
 
 
     def sample_nearest(self, sample_position=None):
@@ -3518,13 +3557,15 @@ class ControlPoint(Domain):
         - target: Geometry
         - source_position: Vector
 
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeProximity.webp)
+
         #### Returns:
-        - socket `distance`
+        - node with sockets ['position', 'distance']
 
 
         """
 
-        return self.attribute_node(nodes.GeometryProximity(target=target, source_position=source_position, target_element='POINTS')).distance
+        return self.attribute_node(nodes.GeometryProximity(target=target, source_position=source_position, target_element='POINTS'))
 
 
     @property
@@ -3927,13 +3968,15 @@ class CloudPoint(Domain):
         - target: Geometry
         - source_position: Vector
 
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeProximity.webp)
+
         #### Returns:
-        - socket `distance`
+        - node with sockets ['position', 'distance']
 
 
         """
 
-        return self.attribute_node(nodes.GeometryProximity(target=target, source_position=source_position, target_element='POINTS')).distance
+        return self.attribute_node(nodes.GeometryProximity(target=target, source_position=source_position, target_element='POINTS'))
 
 
     @property

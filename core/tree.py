@@ -986,8 +986,12 @@ class Tree:
         ```           
         """
         
-        # Flag to colorize the dependancies
-        track_nodes = False
+        # ----- Debug flags (False = no debug)
+        
+        track_nodes = False # Flag to colorize the dependancies
+        debug_str   = False  # Console tracking
+        no_insert   = False # Do not insert the capture node
+        
         
         from geonodes.nodes.classes import Geometry
         
@@ -1007,7 +1011,7 @@ class Tree:
             
             security   = []
             fed_nodes  = [] # tracking: nodes explored forward
-            end_nodes  = [] # trackin:  nodes with an input geometry socket
+            end_nodes  = [] # tracking: nodes with an input geometry socket
             geometries = [] # tracking: node feeding end nodes
             
             def check_geo_nodes(node):
@@ -1015,6 +1019,11 @@ class Tree:
                 # ----- Loop on the nodes which are fed by the current node
                 
                 for nd in node.fed_nodes:
+                    
+                    # The fed node is also an attribute: we rely on it
+                    
+                    if nd.is_attribute:
+                        continue
                     
                     # Keep track of the fed nodes
                     
@@ -1030,12 +1039,11 @@ class Tree:
                     
                     if in_geo_socket is not None and in_geo_socket.name[:6].lower() == 'target':
                         in_geo_socket = None
-                        
 
                     logging.debug("CHECKING", attr_node, nd, '-->', in_geo_socket)
                     
                     # ---------------------------------------------------------------------------
-                    # If no geometry socket, we continue twoards the fed nodes of this node
+                    # If no geometry socket, we continue towards the fed nodes of this node
                     # Do avoid infinite loop, we keep track of the nodes with the security list
 
                     if in_geo_socket is None:
@@ -1071,7 +1079,7 @@ class Tree:
                                 pass
                                 
                             # The input socket is the owning socket of the attribute
-                            # Nothing to do : we return False to to stop the capture attribute node insetion
+                            # Nothing to do : we return False to to stop the capture attribute node insertion
                             
                             if link.from_socket != attr_node.owning_bsocket:
                                 return False
@@ -1081,7 +1089,7 @@ class Tree:
                 
                 return True
             
-            # ----- True if we need to insert an capture attribute node
+            # ----- True if we need to insert a capture attribute node
                         
             if check_geo_nodes(attr_node):
                 continue
@@ -1094,6 +1102,31 @@ class Tree:
                 'end_nodes': end_nodes,
                 'geometries': geometries,
                 })
+            
+        # ====================================================================================================
+        # Debug the attribute nodes needing a capture node
+            
+        if debug_str:
+            print('-'*70)
+            from pprint import pprint
+            print("check_attributes: list of attributes nodes needing a capture node")
+            print()
+            print("----- attr_nodes")
+            for an in attr_nodes:
+                print("   Node", str(an), ', owning socket:', f"{str(self.get_bnode_wrapper(an.owning_bsocket.node))}.{an.owning_bsocket.name}")
+                
+            for attr_node, path_track in zip(attr_nodes, path_tracks):
+                print()
+                print("----- Path track of", str(attr_node))
+                for key in ['fed_nodes', 'end_nodes', 'geometries']:
+                    track = path_track[key]
+                    print("\n>", key)
+                    for nd in track:
+                        print("  - ", str(nd))
+                        
+            print("\n\n")
+                        
+            #return
             
         # ====================================================================================================
         # Loop on the attribute nodes requiring the insertion of a capture attribute node        
@@ -1129,180 +1162,61 @@ class Tree:
             
             # One loop per output socket
             
-            if True:
-                
-                # Debug
-                # fprint = context.dump_tree(self.btree)
-                
-                out_geometry = attr_node.owning_bsocket
-                
-                for bsocket in attr_node.bnode.outputs:
-    
-                    links = bsocket.links
-                    if len(links) == 0:
-                        continue
-                    
-                    # ----- Create the capture node with the proper type
-                    
-                    data_type = DataSocket.value_data_type(bsocket, 'FLOAT')
-                    capt_node = Geometry(attr_node.owning_bsocket).capture_attribute_node(data_type=data_type, domain=attr_node.domain)
-                    capt_node.bnode.parent = attr_node.bnode.parent
-                    
-                    # ----- The index of the output socket depends upon the data type
-                    
-                    for i in range(1, len(capt_node.bnode.outputs)):
-                        if capt_node.bnode.outputs[i].enabled:
-                            sock_index = i
-                            break
-                    
-                    cut_links = [
-                        {'output_socket': out_geometry, 'node_input': 'geometry', 'node_output': 'geometry'},
-                        {'output_socket': bsocket,      'node_input': sock_index, 'node_output': sock_index},
-                        ]
-                    
-                    self.insert_node(capt_node, cut_links)
-                    
-                    # The capture node containts now the new geometry output
-                    
-                    out_geometry = capt_node.geometry.bsocket
-                    
-                # Debug
-                #diffs = context.changes_in_tree(self.btree, fprint)
-                #print("Differences in tree")
-                #for k, v in diffs.items():
-                #    print(k)
-                #    for line in v:
-                #        print("   ... ", line)
-                #print()
-                
-                
-            # OLD VERSION 
-
-            else:
+            # Debug
+            # fprint = context.dump_tree(self.btree)
             
-                geo_links  = attr_node.owning_bsocket.links
+            out_geometry = attr_node.owning_bsocket
+            
+            for bsocket in attr_node.bnode.outputs:
+
+                links = bsocket.links
+                if len(links) == 0:
+                    continue
                 
-                # Attribute
+                # ----- Create the capture node with the proper type
                 
-                attr_links_s    = []
-                output_indices  = []
-                for index, bsocket in enumerate(attr_node.bnode.outputs):
-                    links = bsocket.links
-                    if links:
-                        attr_links_s.append(links)
-                        output_indices.append(index)
-                        
-                if len(attr_links_s) == 0:
-                    raise Exception("Algo error !")
-    
-                elif len(attr_links_s) > 1:
-                    
-                    frame = self.btree.nodes.new('NodeFrame')
-                    frame.label = "Attribute error"
-                    for nd in fed_nodes:
-                        nd.bnode.parent = frame
-                        nd.node_color = "cyan"
-                        
-                    for nd in end_nodes:
-                        nd.bnode.parent = frame
-                        nd.node_color = "blue"
-                        
-                    for nd in geometries:
-                        nd.parent = frame
-                        nd.node_color = "orange"
-                        
-                    attr_node.parent = frame
-                    attr_node.node_color = "red"
-                    
-                    ok = False
-                    for bnode in self.btree.nodes:
-                        for bsock in bnode.outputs:
-                            if bsock == attr_node.owning_bsocket:
-                                self.get_bnode_wrapper(bnode).node_color = "red"
-                                ok = True
-                                break
-                        if ok:
-                            break
-                    
-                    print('-'*30)
-                    for i, attr_links in enumerate(attr_links_s):
-                        print(f" links {i}: index {output_indices[i]}")
-                        for attr_link in attr_links:
-                            node0 = self.get_bnode_wrapper(attr_link.from_node)
-                            node1 = self.get_bnode_wrapper(attr_link.to_node)
-                            print(f"   - {node0}.{attr_link.from_socket.name} --> {node1}.{attr_link.to_socket.name}")
-                            node0.parent = frame
-                            node1.parent = frame
-                            
-                    print("\nNode forwards")
-                    for node in fed_nodes:
-                        print(f"   - {node}")
-                        
-                    print("\nEnd of forward path")
-                    for node in end_nodes:
-                        print(f"   - {node}")
-    
-                    print("\nFeeding geometries")
-                    for node in geometries:
-                        print(f"   > {node}")
-                    print()
-                    
-                    self.arrange()
-                    
-                    #### DEBUG
-                    DEBUG = False 
-                    if DEBUG:
-                        attr_links   = attr_links_s[0]
-                        output_index = output_indices[0]
-                    else:
-                        raise Exception(f"\nError when inserting a capture node. The attribute node '{attr_node}' has several output sockets which are connected.")
-                        
-                else:
-                    attr_links   = attr_links_s[0]
-                    output_index = output_indices[0]
-                    
-                    
-                # ----- Capture node creation in the proper frame
+                data_type = DataSocket.value_data_type(bsocket, 'FLOAT')
+                capt_node = Geometry(attr_node.owning_bsocket).capture_attribute_node(data_type=data_type, domain=attr_node.domain)
+                capt_node.bnode.parent = attr_node.bnode.parent
                 
-                if False:
-                    data_type = DataSocket.SOCKET_IDS[attr_node.bnode.outputs[output_index].bl_idname][2]
-                    
-                    capt_node = Geometry(attr_node.owning_bsocket).capture_attribute(value=attr_node.outputs[output_index], data_type=data_type, domain=attr_node.domain)
-                    capt_node.bnode.parent = attr_node.bnode.parent
-                else:
-                    capt_node = Geometry(attr_node.owning_bsocket).capture_attribute(value=attr_node.outputs[output_index], domain=attr_node.domain).node
-                    capt_node.bnode.parent = attr_node.bnode.parent
-                    
-                # ----- Some colors to track the process
-                    
-                if track_nodes:
-                    for nd in geometries:
-                        nd.node_color = "light yellow"
-    
-                    attr_node.node_color = "light yellow"
-                    capt_node.node_color = "olive"
+                # ----- The index of the output socket depends upon the data type
                 
-                # ----- Links rerouting
-                
-                # Geometry
-                
-                for link in geo_links:
-                    to_socket = link.to_socket
-                    self.btree.links.remove(link)
-                    self.btree.links.new(capt_node.bnode.outputs[0], to_socket)
-                    
-                # Attribute
-                
-                for index, bsocket in enumerate(capt_node.bnode.outputs):
-                    if index > 0 and bsocket.enabled:
-                        out_bsocket = bsocket
+                for i in range(1, len(capt_node.bnode.outputs)):
+                    if capt_node.bnode.outputs[i].enabled:
+                        sock_index = i
                         break
                 
-                for link in attr_links:
-                    to_socket = link.to_socket
-                    self.btree.links.remove(link)
-                    self.btree.links.new(out_bsocket, to_socket)
-                        
+                cut_links = [
+                    {'output_socket': out_geometry, 'node_input': 'geometry', 'node_output': 'geometry'},
+                    {'output_socket': bsocket,      'node_input': sock_index, 'node_output': sock_index},
+                    ]
+                
+                if debug_str:
+                    print()
+                    print(f"Insertion for {str(attr_node)}, node {str(capt_node)}:")
+                    for lk in cut_links:
+                        print(f"   output_socket: [{lk['output_socket'].node.label}].{lk['output_socket'].name}, node_input: {lk['node_input']}, node_output: {lk['node_output']}")
+                
+                # ----- Insert if not debug mode
+                
+                if not no_insert:
+                    self.insert_node(capt_node, cut_links)
+                
+                # The capture node containts now the new geometry output
+                
+                out_geometry = capt_node.geometry.bsocket
+                
+            # Debug
+            #diffs = context.changes_in_tree(self.btree, fprint)
+            #print("Differences in tree")
+            #for k, v in diffs.items():
+            #    print(k)
+            #    for line in v:
+            #        print("   ... ", line)
+            #print()
+            
+            
+
      
     # ---------------------------------------------------------------------------
     # Get the parameter previously changed in a node

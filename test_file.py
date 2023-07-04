@@ -88,7 +88,7 @@ with gn.Tree('Geometry Nodes') as tree:
     var = gn.Geometry.random_vector()
     var = gn.Geometry.random_boolean()
     geometry.switch()
-    var = geometry.index_of_nearest
+    geometry.index_of_nearest()
     var = geometry.signed_distance
     mesh.verts.attribute_statistic()
     mesh.edges.attribute_statistic()
@@ -322,6 +322,15 @@ with gn.Tree('Geometry Nodes') as tree:
     curve.splines.position = None
     instances.insts.position = None
     points.points.position = None
+    
+    mesh.verts.position_offset = None
+    mesh.edges.position_offset = None
+    mesh.faces.position_offset = None
+    mesh.corners.position_offset = None
+    curve.points.position_offset = None
+    curve.splines.position_offset = None
+    instances.insts.position_offset = None
+    points.points.position_offset = None
     var = mesh.verts.ID
     var = mesh.edges.ID
     var = mesh.faces.ID
@@ -498,14 +507,14 @@ with gn.Tree('Geometry Nodes') as tree:
     var = gn.Domain.random_boolean()
     var = gn.Domain.random_boolean()
     var = gn.Domain.random_boolean()
-    var = mesh.verts.index_of_nearest
-    var = mesh.edges.index_of_nearest
-    var = mesh.faces.index_of_nearest
-    var = mesh.corners.index_of_nearest
-    var = curve.points.index_of_nearest
-    var = curve.splines.index_of_nearest
-    var = instances.insts.index_of_nearest
-    var = points.points.index_of_nearest
+    mesh.verts.index_of_nearest()
+    mesh.edges.index_of_nearest()
+    mesh.faces.index_of_nearest()
+    mesh.corners.index_of_nearest()
+    curve.points.index_of_nearest()
+    curve.splines.index_of_nearest()
+    instances.insts.index_of_nearest()
+    points.points.index_of_nearest()
     var = mesh.domain_size
     var = mesh.point_count
     var = mesh.face_count

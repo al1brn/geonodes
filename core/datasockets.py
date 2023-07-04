@@ -770,6 +770,9 @@ class Vector(DataSocket):
         return ret
     
     def __iadd__(self, other):
+        return self.stack(self.add(other).node)
+
+
         if (self.field_of is None) or (self.node.bl_idname != 'GeometryNodeInputPosition'):
             return self.stack(self.add(other).node)
         
@@ -780,7 +783,7 @@ class Vector(DataSocket):
         node = nodes.SetPosition(geometry=domain.data_socket, selection=domain.selection, position=self, offset=other)
         domain.socket_stack(node, socket_name='geometry')
         
-        return None
+        return self
     
 
     def __sub__(self, other):

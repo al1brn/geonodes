@@ -36,6 +36,9 @@ node = nodes.SetPosition(geometry=None, selection=None, position=None, offset=No
 | [set_position](Domain.md#set_position) | `def set_position(self, position=None, offset=None):` |
 | [position](Domain.md#position) | `@position.setter
 `<br> `def position(self, attr_value):` |
+| [position_offset](Domain.md#position_offset) | `@property`<br> `def position_offset(self):` |
+| [position_offset](Domain.md#position_offset) | `@position_offset.setter
+`<br> `def position_offset(self, attr_value):` |
 | **[Geometry](Geometry.md)** |
 | [set_position](Geometry.md#set_position) | `def set_position(self, selection=None, position=None, offset=None):` |
 

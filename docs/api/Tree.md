@@ -308,7 +308,8 @@ capture_node = nodes.CaptureNode(
 
 
 
-Flag to colorize the dependancies
+----- Debug flags (False = no debug)
+
 
 <sub>Go to [top](#class-Tree) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
