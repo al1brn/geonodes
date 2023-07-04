@@ -258,7 +258,8 @@
 | [Sample Curve](GeometryNodeSampleCurve.md) | [Curve](Curve.md) | [sample](Curve.md#sample) |
 | [Sample Index](GeometryNodeSampleIndex.md) | [Domain](Domain.md) | [sample_index](Domain.md#sample_index) |
 |      | [Geometry](Geometry.md) | [sample_index](Geometry.md#sample_index) |
-| [Sample Nearest](GeometryNodeSampleNearest.md) | [Corner](Corner.md) | [sample_nearest](Corner.md#sample_nearest) |
+| [Sample Nearest](GeometryNodeSampleNearest.md) | [CloudPoint](CloudPoint.md) | [sample_nearest](CloudPoint.md#sample_nearest) |
+|      | [Corner](Corner.md) | [sample_nearest](Corner.md#sample_nearest) |
 |      | [Edge](Edge.md) | [sample_nearest](Edge.md#sample_nearest) |
 |      | [Face](Face.md) | [sample_nearest](Face.md#sample_nearest) |
 |      | [Geometry](Geometry.md) | [sample_nearest](Geometry.md#sample_nearest) |

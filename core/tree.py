@@ -429,6 +429,9 @@ class Tree:
         
         self.btree.use_fake_user = fake_user
         
+        # Capture Node automatique
+        self.auto_capture = True
+        
         # ---------------------------------------------------------------------------
         # Capture the configuration of the nodes
         # TO BE IMPROVED!
@@ -985,6 +988,9 @@ class Tree:
             )
         ```           
         """
+        
+        if not self.auto_capture:
+            return
         
         # ----- Debug flags (False = no debug)
         

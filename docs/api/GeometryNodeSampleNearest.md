@@ -34,6 +34,8 @@ node = nodes.SampleNearest(geometry=None, sample_position=None, domain='POINT')
 
 | Class or method name | Definition |
 |----------------------|------------|
+| **[CloudPoint](CloudPoint.md)** |
+| [sample_nearest](CloudPoint.md#sample_nearest) | `def sample_nearest(self, sample_position=None):` |
 | **[Corner](Corner.md)** |
 | [sample_nearest](Corner.md#sample_nearest) | `def sample_nearest(self, sample_position=None):` |
 | **[Edge](Edge.md)** |

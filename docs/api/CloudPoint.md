@@ -34,7 +34,7 @@ CloudPoint(self, data_socket, selection=None)
 
 **Methods**
 
-[accumulate_field](#accumulate_field) | [attribute_max](#attribute_max) | [attribute_mean](#attribute_mean) | [attribute_median](#attribute_median) | [attribute_min](#attribute_min) | [attribute_node](#attribute_node) | [attribute_range](#attribute_range) | [attribute_statistic](#attribute_statistic) | [attribute_std](#attribute_std) | [attribute_sum](#attribute_sum) | [attribute_var](#attribute_var) | [blur_attribute](#blur_attribute) | [blur_color](#blur_color) | [blur_float](#blur_float) | [blur_integer](#blur_integer) | [blur_vector](#blur_vector) | [capture_attribute](#capture_attribute) | [delete](#delete) | [duplicate](#duplicate) | [evaluate_at_index](#evaluate_at_index) | [index_for_sample](#index_for_sample) | [index_of_nearest](#index_of_nearest) | [instance_on_points](#instance_on_points) | [interpolate](#interpolate) | [material_selection](#material_selection) | [named_attribute](#named_attribute) | [named_attribute_exists](#named_attribute_exists) | [named_boolean](#named_boolean) | [named_color](#named_color) | [named_float](#named_float) | [named_integer](#named_integer) | [named_vector](#named_vector) | [proximity](#proximity) | [remove_named_attribute](#remove_named_attribute) | [sample_index](#sample_index) | [select](#select) | [set_ID](#set_ID) | [set_material](#set_material) | [set_position](#set_position) | [socket_stack](#socket_stack) | [store_named_2D_vector](#store_named_2D_vector) | [store_named_attribute](#store_named_attribute) | [store_named_boolean](#store_named_boolean) | [store_named_byte_color](#store_named_byte_color) | [store_named_color](#store_named_color) | [store_named_float](#store_named_float) | [store_named_integer](#store_named_integer) | [store_named_vector](#store_named_vector) | [to_sdf_volume](#to_sdf_volume) | [to_vertices](#to_vertices) | [view](#view) | [viewer](#viewer)
+[accumulate_field](#accumulate_field) | [attribute_max](#attribute_max) | [attribute_mean](#attribute_mean) | [attribute_median](#attribute_median) | [attribute_min](#attribute_min) | [attribute_node](#attribute_node) | [attribute_range](#attribute_range) | [attribute_statistic](#attribute_statistic) | [attribute_std](#attribute_std) | [attribute_sum](#attribute_sum) | [attribute_var](#attribute_var) | [blur_attribute](#blur_attribute) | [blur_color](#blur_color) | [blur_float](#blur_float) | [blur_integer](#blur_integer) | [blur_vector](#blur_vector) | [capture_attribute](#capture_attribute) | [delete](#delete) | [duplicate](#duplicate) | [evaluate_at_index](#evaluate_at_index) | [index_for_sample](#index_for_sample) | [index_of_nearest](#index_of_nearest) | [instance_on_points](#instance_on_points) | [interpolate](#interpolate) | [material_selection](#material_selection) | [named_attribute](#named_attribute) | [named_attribute_exists](#named_attribute_exists) | [named_boolean](#named_boolean) | [named_color](#named_color) | [named_float](#named_float) | [named_integer](#named_integer) | [named_vector](#named_vector) | [proximity](#proximity) | [remove_named_attribute](#remove_named_attribute) | [sample_index](#sample_index) | [sample_nearest](#sample_nearest) | [select](#select) | [set_ID](#set_ID) | [set_material](#set_material) | [set_position](#set_position) | [socket_stack](#socket_stack) | [store_named_2D_vector](#store_named_2D_vector) | [store_named_attribute](#store_named_attribute) | [store_named_boolean](#store_named_boolean) | [store_named_byte_color](#store_named_byte_color) | [store_named_color](#store_named_color) | [store_named_float](#store_named_float) | [store_named_integer](#store_named_integer) | [store_named_vector](#store_named_vector) | [to_sdf_volume](#to_sdf_volume) | [to_vertices](#to_vertices) | [view](#view) | [viewer](#viewer)
 
 ## Properties
 
@@ -1331,6 +1331,29 @@ def sample_index(self, value=None, index=None, clamp=False)
 
 #### Returns:
 - socket `value`
+
+
+
+
+
+
+<sub>Go to [top](#class-CloudPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### sample_nearest
+
+```python
+def sample_nearest(self, sample_position=None)
+```
+
+
+
+> Node: [Sample Nearest](GeometryNodeSampleNearest.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/sample_nearest.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSampleNearest.html)
+
+#### Args:
+- sample_position: Vector
+
+#### Returns:
+- socket `index`
 
 
 

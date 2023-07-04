@@ -4012,6 +4012,23 @@ class CloudPoint(Domain):
         self.socket_stack(nodes.SetPointRadius(points=self.data_socket, selection=self.selection, radius=attr_value))
 
 
+    def sample_nearest(self, sample_position=None):
+        """
+
+        > Node: [Sample Nearest](GeometryNodeSampleNearest.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/sample_nearest.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSampleNearest.html)
+
+        #### Args:
+        - sample_position: Vector
+
+        #### Returns:
+        - socket `index`
+
+
+        """
+
+        return nodes.SampleNearest(geometry=self.data_socket, sample_position=sample_position, domain=self.domain).index
+
+
     def set_material(self, material=None):
         """
 

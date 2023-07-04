@@ -10207,7 +10207,7 @@ class SampleNearest(Node):
     Node implementation:
         Geometry:
             sample_nearest 
-        ('Vertex', 'Edge', 'Face', 'Corner'):
+        ('Vertex', 'Edge', 'Face', 'Corner', 'CloudPoint'):
             sample_nearest 
 
     Args:

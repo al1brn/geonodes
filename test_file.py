@@ -807,6 +807,7 @@ with gn.Tree('Geometry Nodes') as tree:
     points.points.delete()
     points.points.duplicate()
     points.points.proximity()
+    points.points.sample_nearest()
     var = points.points.radius
     points.points.instance_on_points()
     points.points.set_material()
