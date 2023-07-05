@@ -131,6 +131,7 @@ class Boolean(DataSocket):
     
     def __neg__(self):
         return self.b_not()
+    
 
 # -----------------------------------------------------------------------------------------------------------------------------
 # Shared by Integer, Float and Vector
@@ -771,20 +772,6 @@ class Vector(DataSocket):
     
     def __iadd__(self, other):
         return self.stack(self.add(other).node)
-
-
-        if (self.field_of is None) or (self.node.bl_idname != 'GeometryNodeInputPosition'):
-            return self.stack(self.add(other).node)
-        
-        # ----- Hack to implement set_position(offset = other)
-        # see domain Point and fields Position and Handle
-        
-        domain = self.field_of
-        node = nodes.SetPosition(geometry=domain.data_socket, selection=domain.selection, position=self, offset=other)
-        domain.socket_stack(node, socket_name='geometry')
-        
-        return self
-    
 
     def __sub__(self, other):
         return self.subtract(other)
@@ -1479,11 +1466,26 @@ class Geometry(DataSocket):
             self.points  = domains.CloudPoint(self)
             
     # ----------------------------------------------------------------------------------------------------
-    # Set a node an attribute of the 
+    # Set the node the output geometry belongs to as a capturable attribute
     
-    def attribute_node(self, node, domain='POINT'):
-        return node.as_attribute(owning_socket=self, domain=domain)
+    def attribute_node(self, node, domain=None):
+        """ Set the node as being an attribute of the geometry.
         
+        All the output sockets of the node will have their 'attr_bsocket' property set to this geometry.        
+        
+        Args:
+            - node: the attribute node of the geometry
+            - domain (node): the domain of the attribute. If None, the default domain is taken
+        
+        Returns
+            - The attribute node
+        """
+        
+        if domain is None or isinstance(domain, str):
+            domain = self.default_domain(name=domain)
+        
+        return node.as_attribute(geometry=self, domain=domain)
+    
             
     @classmethod
     def Input(cls, name = None, description = ""):

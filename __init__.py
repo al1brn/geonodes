@@ -47,10 +47,9 @@ from geonodes.nodes.functions import combine_rgb, compare, cos, cosh, cosine, ex
 from geonodes.nodes.functions import inverse_sqrt, join_geometry, join_strings, log, logarithm, math, math_ceil, math_compare, math_floor, math_greater_than
 from geonodes.nodes.functions import math_less_than, math_round, math_trun, math_truncate, max, maximum, min, minimum, modulo, mul_add, multiply_add
 from geonodes.nodes.functions import nand, nimply, nor, ping_pong, power, random_boolean, random_float, random_integer, random_vector, replace_string
-from geonodes.nodes.functions import rgb_curves, rotate_axis_angle, rotate_euler, separate_hsl, separate_hsv, separate_rgb, sign, sin, sine, sinh
-from geonodes.nodes.functions import slice_string, smooth_maximum, smooth_minimum, snap, sqrt, string_length, string_to_curves, switch, switch_boolean
-from geonodes.nodes.functions import switch_collection, switch_color, switch_float, switch_geometry, switch_image, switch_integer, switch_material
-from geonodes.nodes.functions import switch_object, switch_string, switch_texture, switch_vector, tan, tangent, tanh, to_degrees, to_radians, value_to_string
-from geonodes.nodes.functions import vector_mix, wrap, xnor, xor
+from geonodes.nodes.functions import rgb_curves, rotate_axis_angle, rotate_euler, sign, sin, sine, sinh, slice_string, smooth_maximum, smooth_minimum
+from geonodes.nodes.functions import snap, sqrt, string_length, string_to_curves, switch, switch_boolean, switch_collection, switch_color, switch_float
+from geonodes.nodes.functions import switch_geometry, switch_image, switch_integer, switch_material, switch_object, switch_string, switch_texture
+from geonodes.nodes.functions import switch_vector, tan, tangent, tanh, to_degrees, to_radians, value_to_string, vector_mix, wrap, xnor, xor
 
 

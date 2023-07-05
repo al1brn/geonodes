@@ -34,8 +34,6 @@ node = nodes.CornersOfFace(face_index=None, weights=None, sort_index=None)
 |----------------------|------------|
 | **[Face](Face.md)** |
 | [corners](Face.md#corners) | `def corners(self, weights=None, sort_index=None):` |
-| [corners_index](Face.md#corners_index) | `def corners_index(self, weights=None, sort_index=None):` |
-| [corners_total](Face.md#corners_total) | `def corners_total(self, weights=None, sort_index=None):` |
 | **[Mesh](Mesh.md)** |
 | [corners_of_face](Mesh.md#corners_of_face) | `def corners_of_face(self, face_index=None, weights=None, sort_index=None):` |
 

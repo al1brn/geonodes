@@ -37,7 +37,7 @@ node = nodes.MagicTexture(vector=None, scale=None, distortion=None, turbulence_d
 | Class or method name | Definition |
 |----------------------|------------|
 | **[Texture](Texture.md)** |
-| [Magic](Texture.md#Magic) | `@classmethod`<br> `def Magic(cls, vector=None, scale=None, distortion=None, turbulence_depth=2):` |
+| [Magic](Texture.md#Magic) | `@staticmethod`<br> `def Magic(vector=None, scale=None, distortion=None, turbulence_depth=2):` |
 
 <sub>Go to [top](#node-Magic-Texture) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

@@ -32,16 +32,6 @@ node = nodes.SeparateColor(color=None, mode='RGB')
 - **blue** : [Float](Float.md)
 - **alpha** : [Float](Float.md)
 
-## Implementation
-
-| Class or method name | Definition |
-|----------------------|------------|
-| **[Color](Color.md)** |
-| [separate_color](Color.md#separate_color) | `def separate_color(self, mode='RGB'):` |
-| Global functions |
-| [separate_rgb](functions.md#separate_rgb) | `def separate_rgb(color=None):` |
-| [separate_hsv](functions.md#separate_hsv) | `def separate_hsv(color=None):` |
-| [separate_hsl](functions.md#separate_hsl) | `def separate_hsl(color=None):` |
 
 <sub>Go to [top](#node-Separate-Color) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

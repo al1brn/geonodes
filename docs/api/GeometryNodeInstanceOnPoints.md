@@ -36,9 +36,9 @@ node = nodes.InstanceOnPoints(points=None, selection=None, instance=None, pick_i
 | Class or method name | Definition |
 |----------------------|------------|
 | **[CloudPoint](CloudPoint.md)** |
-| [instance_on_points](CloudPoint.md#instance_on_points) | `def instance_on_points(self, instance=None, pick_instance=None, instance_index=None, rotation=None, scale=None):` |
+| [instance_on](CloudPoint.md#instance_on) | `def instance_on(self, instance=None, pick_instance=None, instance_index=None, rotation=None, scale=None):` |
 | **[ControlPoint](ControlPoint.md)** |
-| [instance_on_points](ControlPoint.md#instance_on_points) | `def instance_on_points(self, instance=None, pick_instance=None, instance_index=None, rotation=None, scale=None):` |
+| [instance_on](ControlPoint.md#instance_on) | `def instance_on(self, instance=None, pick_instance=None, instance_index=None, rotation=None, scale=None):` |
 | **[Curve](Curve.md)** |
 | [instance_on_points](Curve.md#instance_on_points) | `def instance_on_points(self, selection=None, instance=None, pick_instance=None, instance_index=None, rotation=None, scale=None):` |
 | **[Instances](Instances.md)** |
@@ -49,7 +49,7 @@ node = nodes.InstanceOnPoints(points=None, selection=None, instance=None, pick_i
 | **[Points](Points.md)** |
 | [instance_on_points](Points.md#instance_on_points) | `def instance_on_points(self, selection=None, instance=None, pick_instance=None, instance_index=None, rotation=None, scale=None):` |
 | **[Vertex](Vertex.md)** |
-| [instance_on_points](Vertex.md#instance_on_points) | `def instance_on_points(self, instance=None, pick_instance=None, instance_index=None, rotation=None, scale=None):` |
+| [instance_on](Vertex.md#instance_on) | `def instance_on(self, instance=None, pick_instance=None, instance_index=None, rotation=None, scale=None):` |
 
 <sub>Go to [top](#node-Instance-on-Points) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

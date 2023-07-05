@@ -36,8 +36,6 @@ node = nodes.CornersOfVertex(vertex_index=None, weights=None, sort_index=None)
 | [corners_of_vertex](Mesh.md#corners_of_vertex) | `def corners_of_vertex(self, vertex_index=None, weights=None, sort_index=None):` |
 | **[Vertex](Vertex.md)** |
 | [corners](Vertex.md#corners) | `def corners(self, weights=None, sort_index=None):` |
-| [corners_index](Vertex.md#corners_index) | `def corners_index(self, weights=None, sort_index=None):` |
-| [corners_total](Vertex.md#corners_total) | `def corners_total(self, weights=None, sort_index=None):` |
 
 <sub>Go to [top](#node-Corners-of-Vertex) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

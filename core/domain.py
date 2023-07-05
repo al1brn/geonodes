@@ -393,7 +393,7 @@ class Domain:
             - Call the method :func:`Node.as_attribute` to tag the node as being an attribute.
               This will allow the :func:`Tree.check_attributes` to see if it is necessary to create
               a *Capture Attribute* for this field.
-            - Set the nde property :attr:`field_of` to self in order to implement the transfer attribute
+            - Set the node property :attr:`attr_domain` to self in order to implement the transfer attribute
               mechanism.
         
         Args:
@@ -403,11 +403,7 @@ class Domain:
             The node argument        
         """
         
-        node = self.data_socket.attribute_node(node, domain=self.domain)
-        #node.as_attribute(owning_socket=self.data_socket, domain=self.domain)
-
-        node.field_of = self
-        return node    
+        return self.data_socket.attribute_node(node, domain=self)
 
     # ----------------------------------------------------------------------------------------------------
     # Access by index

@@ -34,7 +34,7 @@ node = nodes.CheckerTexture(vector=None, color1=None, color2=None, scale=None)
 | Class or method name | Definition |
 |----------------------|------------|
 | **[Texture](Texture.md)** |
-| [Checker](Texture.md#Checker) | `@classmethod`<br> `def Checker(cls, vector=None, color1=None, color2=None, scale=None):` |
+| [Checker](Texture.md#Checker) | `@staticmethod`<br> `def Checker(vector=None, color1=None, color2=None, scale=None):` |
 
 <sub>Go to [top](#node-Checker-Texture) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

@@ -45,11 +45,11 @@ node = nodes.VoronoiTexture(vector=None, w=None, scale=None, smoothness=None, ex
 | Class or method name | Definition |
 |----------------------|------------|
 | **[Texture](Texture.md)** |
-| [Voronoi](Texture.md#Voronoi) | `@classmethod`<br> `def Voronoi(cls, vector=None, w=None, scale=None, smoothness=None, exponent=None, randomness=None, distance='EUCLIDEAN', feature='F1', voronoi_dimensions='3D'):` |
-| [Voronoi1D](Texture.md#Voronoi1D) | `@classmethod`<br> `def Voronoi1D(cls, w=None, scale=None, smoothness=None, exponent=None, randomness=None, distance='EUCLIDEAN', feature='F1', voronoi_dimensions='3D'):` |
-| [Voronoi2D](Texture.md#Voronoi2D) | `@classmethod`<br> `def Voronoi2D(cls, vector=None, scale=None, smoothness=None, exponent=None, randomness=None, distance='EUCLIDEAN', feature='F1', voronoi_dimensions='3D'):` |
-| [Voronoi3D](Texture.md#Voronoi3D) | `@classmethod`<br> `def Voronoi3D(cls, vector=None, scale=None, smoothness=None, exponent=None, randomness=None, distance='EUCLIDEAN', feature='F1', voronoi_dimensions='3D'):` |
-| [Voronoi4D](Texture.md#Voronoi4D) | `@classmethod`<br> `def Voronoi4D(cls, vector=None, w=None, scale=None, smoothness=None, exponent=None, randomness=None, distance='EUCLIDEAN', feature='F1', voronoi_dimensions='3D'):` |
+| [Voronoi](Texture.md#Voronoi) | `@staticmethod`<br> `def Voronoi(vector=None, w=None, scale=None, smoothness=None, exponent=None, randomness=None, distance='EUCLIDEAN', feature='F1', voronoi_dimensions='3D'):` |
+| [Voronoi1D](Texture.md#Voronoi1D) | `@staticmethod`<br> `def Voronoi1D(w=None, scale=None, smoothness=None, exponent=None, randomness=None, distance='EUCLIDEAN', feature='F1', voronoi_dimensions='3D'):` |
+| [Voronoi2D](Texture.md#Voronoi2D) | `@staticmethod`<br> `def Voronoi2D(vector=None, scale=None, smoothness=None, exponent=None, randomness=None, distance='EUCLIDEAN', feature='F1', voronoi_dimensions='3D'):` |
+| [Voronoi3D](Texture.md#Voronoi3D) | `@staticmethod`<br> `def Voronoi3D(vector=None, scale=None, smoothness=None, exponent=None, randomness=None, distance='EUCLIDEAN', feature='F1', voronoi_dimensions='3D'):` |
+| [Voronoi4D](Texture.md#Voronoi4D) | `@staticmethod`<br> `def Voronoi4D(vector=None, w=None, scale=None, smoothness=None, exponent=None, randomness=None, distance='EUCLIDEAN', feature='F1', voronoi_dimensions='3D'):` |
 
 <sub>Go to [top](#node-Voronoi-Texture) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

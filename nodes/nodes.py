@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 """
-Created on 2023-07-04
+Created on 2023-07-05
 
 @author: Generated from generator module
 
@@ -1067,10 +1067,6 @@ class SeparateColor(Node):
     .. _SeparateColor:
 
     Node implementation:
-        global functions:
-            separate_rgb separate_hsv separate_hsl 
-        Color:
-            separate_color 
 
     Args:
         color (DataSocket): Color
@@ -1550,7 +1546,7 @@ class AttributeStatistic(Node):
         Geometry:
             attribute_statistic 
         Domain:
-            attribute_statistic attribute_mean attribute_median attribute_sum attribute_min attribute_max attribute_range attribute_std attribute_var 
+            attribute_statistic 
 
     Args:
         geometry (DataSocket): Geometry
@@ -1769,7 +1765,7 @@ class BoundingBox(Node):
 
     Node implementation:
         Geometry:
-            bounding_box bounding_box_min bounding_box_min 
+            bounding_box 
 
     Args:
         geometry (DataSocket): Geometry
@@ -2067,7 +2063,7 @@ class CornersOfFace(Node):
         Mesh:
             corners_of_face 
         Face:
-            corners corners_index corners_total 
+            corners 
 
     Args:
         face_index (DataSocket): Integer
@@ -2145,7 +2141,7 @@ class CornersOfVertex(Node):
         Mesh:
             corners_of_vertex 
         Vertex:
-            corners corners_index corners_total 
+            corners 
 
     Args:
         vertex_index (DataSocket): Integer
@@ -2447,7 +2443,8 @@ class HandleTypeSelection(Node):
 
     Node implementation:
         ControlPoint:
-            handle_type_selection_node handle_type_selection handle_type_selection handle_type_selection handle_type_selection handle_type_selection 
+            handle_type_selection_node handle_type_selection handle_type_selection handle_type_selection handle_type_selection handle_type_selection handle_type_selection handle_type_selection handle_type_selection handle_type_selection 
+            handle_type_selection 
 
     Args:
         handle_type (str): Node parameter, default = 'AUTO' in ('FREE', 'AUTO', 'VECTOR', 'ALIGN')
@@ -3923,7 +3920,7 @@ class DistributePointsOnFaces(Node):
         Mesh:
             distribute_points_on_faces 
         Face:
-            distribute_points_random distribute_points_poisson 
+            distribute_points distribute_points_random distribute_points_poisson 
 
     Args:
         mesh (DataSocket): Mesh
@@ -4361,7 +4358,7 @@ class EdgesOfCorner(Node):
         Mesh:
             edges_of_corner 
         Corner:
-            edges previous_vertex next_vertex 
+            edges 
 
     Args:
         corner_index (DataSocket): Integer
@@ -4419,7 +4416,7 @@ class EdgesOfVertex(Node):
         Mesh:
             edges_of_vertex 
         Vertex:
-            edges edges_index edges_total 
+            edges 
 
     Args:
         vertex_index (DataSocket): Integer
@@ -4666,7 +4663,7 @@ class FaceOfCorner(Node):
         Mesh:
             face_of_corner 
         Corner:
-            face face_index index_in_face 
+            face 
 
     Args:
         corner_index (DataSocket): Integer
@@ -5429,7 +5426,7 @@ class CurveHandlePositions(Node):
 
     Node implementation:
         ControlPoint:
-            handle_positions left_handle_positions right_handle_positions 
+            handle_positions left_handle_positions right_handle_positions relative_left_handle_positions relative_right_handle_positions 
 
     Args:
         relative (DataSocket): Boolean
@@ -5876,7 +5873,7 @@ class EdgeVertices(Node):
 
     Node implementation:
         Edge:
-            vertices vertices_index vertices_position 
+            vertices 
 
     Args:
         node_color (color): Node color
@@ -6020,7 +6017,7 @@ class FaceNeighbors(Node):
 
     Node implementation:
         Face:
-            neighbors neighbors_vertex_count neighbors_face_count 
+            neighbors 
 
     Args:
         node_color (color): Node color
@@ -6063,9 +6060,9 @@ class MeshIsland(Node):
 
     Node implementation:
         Mesh:
-            island island_index island_count 
+            island 
         Face:
-            island island_index island_count 
+            island 
 
     Args:
         node_color (color): Node color
@@ -6108,7 +6105,7 @@ class VertexNeighbors(Node):
 
     Node implementation:
         Vertex:
-            neighbors neighbors_vertex_count neighbors_face_count 
+            neighbors 
 
     Args:
         node_color (color): Node color
@@ -6151,9 +6148,9 @@ class NamedAttribute(Node):
 
     Node implementation:
         Geometry:
-            named_attribute named_float named_integer named_vector named_color named_boolean named_attribute_exists 
+            named_attribute named_float named_integer named_vector named_color named_boolean 
         Domain:
-            named_attribute named_float named_integer named_vector named_color named_boolean named_attribute_exists 
+            named_attribute named_float named_integer named_vector named_color named_boolean 
 
     Args:
         name (DataSocket): String
@@ -6656,11 +6653,11 @@ class InstanceOnPoints(Node):
         ('Points', 'Mesh', 'Curve'):
             instance_on_points 
         Vertex:
-            instance_on_points 
+            instance_on 
         ControlPoint:
-            instance_on_points 
+            instance_on 
         CloudPoint:
-            instance_on_points 
+            instance_on 
 
     Args:
         points (DataSocket): Points
@@ -6982,8 +6979,6 @@ class IsViewport(Node):
     .. _IsViewport:
 
     Node implementation:
-        Geometry:
-            is_viewport 
 
     Args:
         node_color (color): Node color
@@ -10963,7 +10958,7 @@ class SetHandlePositions(Node):
 
     Node implementation:
         ControlPoint:
-            set_handle_positions set_handle_positions_left set_handle_positions_right left_handle_positions right_handle_positions 
+            set_handle_positions set_left_handle_positions set_right_handle_positions left_handle_positions right_handle_positions left_handle_offset left_handle_offset right_handle_offset right_handle_offset 
 
     Args:
         curve (DataSocket): Curve
@@ -11953,7 +11948,7 @@ class SplineParameter(Node):
 
     Node implementation:
         ControlPoint:
-            parameter parameter_factor parameter_length parameter_index 
+            parameter 
 
     Args:
         node_color (color): Node color

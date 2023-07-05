@@ -409,7 +409,7 @@ class Tree:
     
     TREE = None
     
-    def __init__(self, tree_name, clear=False, group=False, fake_user=False, prefix=None):
+    def __init__(self, tree_name, auto_capture=True, clear=False, group=False, fake_user=False, prefix=None):
         """
         Args:
             - tree_name (str): name of the tree
@@ -430,7 +430,7 @@ class Tree:
         self.btree.use_fake_user = fake_user
         
         # Capture Node automatique
-        self.auto_capture = True
+        self.auto_capture = auto_capture
         
         # ---------------------------------------------------------------------------
         # Capture the configuration of the nodes
@@ -803,6 +803,12 @@ class Tree:
         """
         return self.scene.seconds
 
+    @property
+    def is_viewport(self):
+        from geonodes import nodes
+        
+        return node.IsViewport().is_viewport
+
     # ----------------------------------------------------------------------------------------------------
     # Layouts
     
@@ -1087,7 +1093,7 @@ class Tree:
                             # The input socket is the owning socket of the attribute
                             # Nothing to do : we return False to to stop the capture attribute node insertion
                             
-                            if link.from_socket != attr_node.owning_bsocket:
+                            if link.from_socket != attr_node.attr_bsocket:
                                 return False
                             
                 # If we didn't find the input geometry equal to the owning bsocket
@@ -1119,7 +1125,7 @@ class Tree:
             print()
             print("----- attr_nodes")
             for an in attr_nodes:
-                print("   Node", str(an), ', owning socket:', f"{str(self.get_bnode_wrapper(an.owning_bsocket.node))}.{an.owning_bsocket.name}")
+                print("   Node", str(an), ', owning socket:', f"{str(self.get_bnode_wrapper(an.attr_bsocket.node))}.{an.attr_bsocket.name}")
                 
             for attr_node, path_track in zip(attr_nodes, path_tracks):
                 print()
@@ -1171,7 +1177,7 @@ class Tree:
             # Debug
             # fprint = context.dump_tree(self.btree)
             
-            out_geometry = attr_node.owning_bsocket
+            out_geometry = attr_node.attr_bsocket
             
             for bsocket in attr_node.bnode.outputs:
 
@@ -1182,7 +1188,7 @@ class Tree:
                 # ----- Create the capture node with the proper type
                 
                 data_type = DataSocket.value_data_type(bsocket, 'FLOAT')
-                capt_node = Geometry(attr_node.owning_bsocket).capture_attribute_node(data_type=data_type, domain=attr_node.domain)
+                capt_node = Geometry(attr_node.attr_bsocket).capture_attribute_node(data_type=data_type, domain=attr_node.attr_domain_name)
                 capt_node.bnode.parent = attr_node.bnode.parent
                 
                 # ----- The index of the output socket depends upon the data type

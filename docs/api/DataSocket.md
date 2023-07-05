@@ -88,7 +88,7 @@ DataSocket(self, socket, node=None, label=None)
 
 **Methods**
 
-[connected_sockets](#connected_sockets) | [get_blender_socket](#get_blender_socket) | [init_domains](#init_domains) | [init_socket](#init_socket) | [plug](#plug) | [reroute](#reroute) | [reset_properties](#reset_properties) | [stack](#stack) | [to_output](#to_output)
+[capture](#capture) | [connected_sockets](#connected_sockets) | [get_blender_socket](#get_blender_socket) | [init_domains](#init_domains) | [init_socket](#init_socket) | [plug](#plug) | [reroute](#reroute) | [reset_properties](#reset_properties) | [stack](#stack) | [to_output](#to_output)
 
 ## Properties
 
@@ -421,6 +421,28 @@ This methods is used to compute the **data_type** value in nodes accepting multi
 <sub>Go to [top](#class-DataSocket) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## Methods
+
+### capture
+
+```python
+def capture(self)
+```
+
+ Capture the attribute.
+
+If geometry is None, the attribute is captured from the propezrty 'field_of'.
+Raise an error if both are None.
+
+#### Args:
+- geometry (None): the geometry from which to capture the attribute. If none, self.field_of is used
+    
+#### Returns:
+- attribute socket of 'Capture attribute' node
+
+
+
+
+<sub>Go to [top](#class-DataSocket) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### connected_sockets
 

@@ -40,11 +40,11 @@ node = nodes.NoiseTexture(vector=None, w=None, scale=None, detail=None, roughnes
 | Class or method name | Definition |
 |----------------------|------------|
 | **[Texture](Texture.md)** |
-| [Noise](Texture.md#Noise) | `@classmethod`<br> `def Noise(cls, vector=None, w=None, scale=None, detail=None, roughness=None, distortion=None, noise_dimensions='3D'):` |
-| [Noise1D](Texture.md#Noise1D) | `@classmethod`<br> `def Noise1D(cls, w=None, scale=None, detail=None, roughness=None, distortion=None):` |
-| [Noise2D](Texture.md#Noise2D) | `@classmethod`<br> `def Noise2D(cls, vector=None, scale=None, detail=None, roughness=None, distortion=None):` |
-| [Noise3D](Texture.md#Noise3D) | `@classmethod`<br> `def Noise3D(cls, vector=None, scale=None, detail=None, roughness=None, distortion=None):` |
-| [Noise4D](Texture.md#Noise4D) | `@classmethod`<br> `def Noise4D(cls, vector=None, w=None, scale=None, detail=None, roughness=None, distortion=None):` |
+| [Noise](Texture.md#Noise) | `@staticmethod`<br> `def Noise(vector=None, w=None, scale=None, detail=None, roughness=None, distortion=None, noise_dimensions='3D'):` |
+| [Noise1D](Texture.md#Noise1D) | `@staticmethod`<br> `def Noise1D(w=None, scale=None, detail=None, roughness=None, distortion=None):` |
+| [Noise2D](Texture.md#Noise2D) | `@staticmethod`<br> `def Noise2D(vector=None, scale=None, detail=None, roughness=None, distortion=None):` |
+| [Noise3D](Texture.md#Noise3D) | `@staticmethod`<br> `def Noise3D(vector=None, scale=None, detail=None, roughness=None, distortion=None):` |
+| [Noise4D](Texture.md#Noise4D) | `@staticmethod`<br> `def Noise4D(vector=None, w=None, scale=None, detail=None, roughness=None, distortion=None):` |
 
 <sub>Go to [top](#node-Noise-Texture) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

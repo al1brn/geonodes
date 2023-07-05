@@ -35,14 +35,14 @@ node = nodes.GradientTexture(vector=None, gradient_type='LINEAR')
 | Class or method name | Definition |
 |----------------------|------------|
 | **[Texture](Texture.md)** |
-| [Gradient](Texture.md#Gradient) | `@classmethod`<br> `def Gradient(cls, vector=None, gradient_type='LINEAR'):` |
-| [GradientLinear](Texture.md#GradientLinear) | `@classmethod`<br> `def GradientLinear(cls, vector=None):` |
-| [GradientQuadratic](Texture.md#GradientQuadratic) | `@classmethod`<br> `def GradientQuadratic(cls, vector=None):` |
-| [GradientEeasing](Texture.md#GradientEeasing) | `@classmethod`<br> `def GradientEeasing(cls, vector=None):` |
-| [GradientDiagonal](Texture.md#GradientDiagonal) | `@classmethod`<br> `def GradientDiagonal(cls, vector=None):` |
-| [GradientSpherical](Texture.md#GradientSpherical) | `@classmethod`<br> `def GradientSpherical(cls, vector=None):` |
-| [GradientQuadratic_sphere](Texture.md#GradientQuadratic_sphere) | `@classmethod`<br> `def GradientQuadratic_sphere(cls, vector=None):` |
-| [GradientRadial](Texture.md#GradientRadial) | `@classmethod`<br> `def GradientRadial(cls, vector=None):` |
+| [Gradient](Texture.md#Gradient) | `@staticmethod`<br> `def Gradient(vector=None, gradient_type='LINEAR'):` |
+| [GradientLinear](Texture.md#GradientLinear) | `@staticmethod`<br> `def GradientLinear(vector=None):` |
+| [GradientQuadratic](Texture.md#GradientQuadratic) | `@staticmethod`<br> `def GradientQuadratic(vector=None):` |
+| [GradientEeasing](Texture.md#GradientEeasing) | `@staticmethod`<br> `def GradientEeasing(vector=None):` |
+| [GradientDiagonal](Texture.md#GradientDiagonal) | `@staticmethod`<br> `def GradientDiagonal(vector=None):` |
+| [GradientSpherical](Texture.md#GradientSpherical) | `@staticmethod`<br> `def GradientSpherical(vector=None):` |
+| [GradientQuadratic_sphere](Texture.md#GradientQuadratic_sphere) | `@staticmethod`<br> `def GradientQuadratic_sphere(vector=None):` |
+| [GradientRadial](Texture.md#GradientRadial) | `@staticmethod`<br> `def GradientRadial(vector=None):` |
 
 <sub>Go to [top](#node-Gradient-Texture) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

@@ -37,6 +37,11 @@ node = nodes.HandleTypeSelection(handle_type='AUTO', mode={'LEFT', 'RIGHT'})
 | [handle_type_selection](ControlPoint.md#handle_type_selection) | `def handle_type_selection_auto(self, left=True, right=True):` |
 | [handle_type_selection](ControlPoint.md#handle_type_selection) | `def handle_type_selection_vector(self, left=True, right=True):` |
 | [handle_type_selection](ControlPoint.md#handle_type_selection) | `def handle_type_selection_align(self, left=True, right=True):` |
+| [handle_type_selection](ControlPoint.md#handle_type_selection) | `def capture_handle_type_selection(self, left=True, right=True, handle_type='AUTO'):` |
+| [handle_type_selection](ControlPoint.md#handle_type_selection) | `def capture_handle_type_selection_free(self, left=True, right=True):` |
+| [handle_type_selection](ControlPoint.md#handle_type_selection) | `def capture_handle_type_selection_auto(self, left=True, right=True):` |
+| [handle_type_selection](ControlPoint.md#handle_type_selection) | `def capture_handle_type_selection_vector(self, left=True, right=True):` |
+| [handle_type_selection](ControlPoint.md#handle_type_selection) | `def capture_handle_type_selection_align(self, left=True, right=True):` |
 
 <sub>Go to [top](#node-Handle-Type-Selection) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

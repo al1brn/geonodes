@@ -31,7 +31,7 @@ Frame(self, label
 
 **Class and static methods**
 
-[Boolean](#Boolean) | [Collection](#Collection) | [Color](#Color) | [Curve](#Curve) | [Curves](#Curves) | [DataClass](#DataClass) | [Float](#Float) | [Geometry](#Geometry) | [Image](#Image) | [Instances](#Instances) | [Integer](#Integer) | [Material](#Material) | [Mesh](#Mesh) | [Object](#Object) | [Points](#Points) | [String](#String) | [Texture](#Texture) | [Vector](#Vector) | [Volume](#Volume) | [unitize](#unitize)
+[Boolean](#Boolean) | [Collection](#Collection) | [Color](#Color) | [Curve](#Curve) | [DataClass](#DataClass) | [Float](#Float) | [Geometry](#Geometry) | [Image](#Image) | [Instances](#Instances) | [Integer](#Integer) | [Material](#Material) | [Mesh](#Mesh) | [Object](#Object) | [Points](#Points) | [String](#String) | [Texture](#Texture) | [Vector](#Vector) | [Volume](#Volume) | [unitize](#unitize)
 
 **Methods**
 
@@ -126,18 +126,6 @@ def Color(socket)
 ```python
 @staticmethod
 def Curve(socket)
-```
-
- Initialize a Curve with a DataSocket
-
-
-<sub>Go to [top](#class-Frame) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-### Curves
-
-```python
-@staticmethod
-def Curves(socket)
 ```
 
  Initialize a Curves with a DataSocket
@@ -337,7 +325,7 @@ def unitize(names)
 ### as_attribute
 
 ```python
-def as_attribute(self, owning_socket, domain='POINT')
+def as_attribute(self, geometry, domain='POINT')
 ```
 
  Indicates that the node is an attribute.

@@ -26,7 +26,7 @@ Face(self, data_socket, selection=None)
 
 **Properties**
 
-[ID](#ID) | [area](#area) | [as_cloud_points](#as_cloud_points) | [as_control_points](#as_control_points) | [as_corners](#as_corners) | [as_edges](#as_edges) | [as_faces](#as_faces) | [as_insts](#as_insts) | [as_splines](#as_splines) | [as_verts](#as_verts) | [count](#count) | [data_socket](#data_socket) | [domain](#domain) | [domain_index](#domain_index) | [index](#index) | [island](#island) | [island_count](#island_count) | [island_index](#island_index) | [material](#material) | [material_index](#material_index) | [neighbors](#neighbors) | [neighbors_face_count](#neighbors_face_count) | [neighbors_vertex_count](#neighbors_vertex_count) | [normal](#normal) | [position](#position) | [position_offset](#position_offset) | [selection](#selection) | [selection_index](#selection_index) | [shade_smooth](#shade_smooth)
+[ID](#ID) | [area](#area) | [as_cloud_points](#as_cloud_points) | [as_control_points](#as_control_points) | [as_corners](#as_corners) | [as_edges](#as_edges) | [as_faces](#as_faces) | [as_insts](#as_insts) | [as_splines](#as_splines) | [as_verts](#as_verts) | [count](#count) | [data_socket](#data_socket) | [domain](#domain) | [domain_index](#domain_index) | [index](#index) | [island](#island) | [material](#material) | [material_index](#material_index) | [neighbors](#neighbors) | [normal](#normal) | [position](#position) | [position_offset](#position_offset) | [selection](#selection) | [selection_index](#selection_index) | [shade_smooth](#shade_smooth)
 
 **Class and static methods**
 
@@ -34,7 +34,7 @@ Face(self, data_socket, selection=None)
 
 **Methods**
 
-[accumulate_field](#accumulate_field) | [attribute_max](#attribute_max) | [attribute_mean](#attribute_mean) | [attribute_median](#attribute_median) | [attribute_min](#attribute_min) | [attribute_node](#attribute_node) | [attribute_range](#attribute_range) | [attribute_statistic](#attribute_statistic) | [attribute_std](#attribute_std) | [attribute_sum](#attribute_sum) | [attribute_var](#attribute_var) | [blur_attribute](#blur_attribute) | [blur_color](#blur_color) | [blur_float](#blur_float) | [blur_integer](#blur_integer) | [blur_vector](#blur_vector) | [capture_attribute](#capture_attribute) | [corners](#corners) | [corners_index](#corners_index) | [corners_total](#corners_total) | [delete](#delete) | [delete_all](#delete_all) | [delete_edges](#delete_edges) | [delete_faces](#delete_faces) | [distribute_points_poisson](#distribute_points_poisson) | [distribute_points_random](#distribute_points_random) | [duplicate](#duplicate) | [evaluate_at_index](#evaluate_at_index) | [extrude](#extrude) | [face_group_boundaries](#face_group_boundaries) | [flip](#flip) | [index_for_sample](#index_for_sample) | [index_of_nearest](#index_of_nearest) | [interpolate](#interpolate) | [is_planar](#is_planar) | [material_selection](#material_selection) | [named_attribute](#named_attribute) | [named_attribute_exists](#named_attribute_exists) | [named_boolean](#named_boolean) | [named_color](#named_color) | [named_float](#named_float) | [named_integer](#named_integer) | [named_vector](#named_vector) | [pack_uv_islands](#pack_uv_islands) | [proximity](#proximity) | [remove_named_attribute](#remove_named_attribute) | [sample_index](#sample_index) | [sample_nearest](#sample_nearest) | [scale_single_axis](#scale_single_axis) | [scale_uniform](#scale_uniform) | [select](#select) | [separate](#separate) | [set_ID](#set_ID) | [set_material](#set_material) | [set_material_index](#set_material_index) | [set_position](#set_position) | [set_shade_smooth](#set_shade_smooth) | [socket_stack](#socket_stack) | [store_named_2D_vector](#store_named_2D_vector) | [store_named_attribute](#store_named_attribute) | [store_named_boolean](#store_named_boolean) | [store_named_byte_color](#store_named_byte_color) | [store_named_color](#store_named_color) | [store_named_float](#store_named_float) | [store_named_integer](#store_named_integer) | [store_named_vector](#store_named_vector) | [triangulate](#triangulate) | [uv_unwrap](#uv_unwrap) | [view](#view) | [viewer](#viewer)
+[accumulate_field](#accumulate_field) | [attribute_node](#attribute_node) | [attribute_statistic](#attribute_statistic) | [blur_attribute](#blur_attribute) | [blur_color](#blur_color) | [blur_float](#blur_float) | [blur_integer](#blur_integer) | [blur_vector](#blur_vector) | [capture_attribute](#capture_attribute) | [corners](#corners) | [delete](#delete) | [delete_all](#delete_all) | [delete_edges](#delete_edges) | [delete_faces](#delete_faces) | [distribute_points](#distribute_points) | [distribute_points_poisson](#distribute_points_poisson) | [distribute_points_random](#distribute_points_random) | [duplicate](#duplicate) | [evaluate_at_index](#evaluate_at_index) | [extrude](#extrude) | [face_group_boundaries](#face_group_boundaries) | [flip](#flip) | [index_for_sample](#index_for_sample) | [index_of_nearest](#index_of_nearest) | [interpolate](#interpolate) | [is_planar](#is_planar) | [material_selection](#material_selection) | [named_attribute](#named_attribute) | [named_boolean](#named_boolean) | [named_color](#named_color) | [named_float](#named_float) | [named_integer](#named_integer) | [named_vector](#named_vector) | [pack_uv_islands](#pack_uv_islands) | [proximity](#proximity) | [remove_named_attribute](#remove_named_attribute) | [sample_index](#sample_index) | [sample_nearest](#sample_nearest) | [scale_single_axis](#scale_single_axis) | [scale_uniform](#scale_uniform) | [select](#select) | [separate](#separate) | [set_ID](#set_ID) | [set_material](#set_material) | [set_material_index](#set_material_index) | [set_position](#set_position) | [set_shade_smooth](#set_shade_smooth) | [socket_stack](#socket_stack) | [store_named_2D_vector](#store_named_2D_vector) | [store_named_attribute](#store_named_attribute) | [store_named_boolean](#store_named_boolean) | [store_named_byte_color](#store_named_byte_color) | [store_named_color](#store_named_color) | [store_named_float](#store_named_float) | [store_named_integer](#store_named_integer) | [store_named_vector](#store_named_vector) | [triangulate](#triangulate) | [uv_unwrap](#uv_unwrap) | [view](#view) | [viewer](#viewer)
 
 ## Properties
 
@@ -240,38 +240,6 @@ Node implemented as property setter.
 
 <sub>Go to [top](#class-Face) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
-### island_count
-
-
-
-> Node: [Mesh Island](GeometryNodeInputMeshIsland.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/mesh_island.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshIsland.html)
-
-#### Returns:
-- socket `island_count`
-
-
-
-
-
-
-<sub>Go to [top](#class-Face) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-### island_index
-
-
-
-> Node: [Mesh Island](GeometryNodeInputMeshIsland.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/mesh_island.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshIsland.html)
-
-#### Returns:
-- socket `island_index`
-
-
-
-
-
-
-<sub>Go to [top](#class-Face) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
 ### material
 
 
@@ -349,38 +317,6 @@ Node implemented as property setter.
 
 #### Returns:
 - node with sockets ['vertex_count', 'face_count']
-
-
-
-
-
-
-<sub>Go to [top](#class-Face) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-### neighbors_face_count
-
-
-
-> Node: [Face Neighbors](GeometryNodeInputMeshFaceNeighbors.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/face_neighbors.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshFaceNeighbors.html)
-
-#### Returns:
-- socket `face_count`
-
-
-
-
-
-
-<sub>Go to [top](#class-Face) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-### neighbors_vertex_count
-
-
-
-> Node: [Face Neighbors](GeometryNodeInputMeshFaceNeighbors.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/face_neighbors.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshFaceNeighbors.html)
-
-#### Returns:
-- socket `vertex_count`
 
 
 
@@ -666,98 +602,6 @@ def accumulate_field(self, value=None, group_id=None)
 
 <sub>Go to [top](#class-Face) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
-### attribute_max
-
-```python
-def attribute_max(self, attribute=None)
-```
-
-
-
-> Node: [Attribute Statistic](GeometryNodeAttributeStatistic.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/attribute_statistic.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeStatistic.html)
-
-#### Args:
-- attribute: ['Float', 'Vector']
-
-#### Returns:
-- socket `max`
-
-
-
-
-
-
-<sub>Go to [top](#class-Face) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-### attribute_mean
-
-```python
-def attribute_mean(self, attribute=None)
-```
-
-
-
-> Node: [Attribute Statistic](GeometryNodeAttributeStatistic.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/attribute_statistic.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeStatistic.html)
-
-#### Args:
-- attribute: ['Float', 'Vector']
-
-#### Returns:
-- socket `mean`
-
-
-
-
-
-
-<sub>Go to [top](#class-Face) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-### attribute_median
-
-```python
-def attribute_median(self, attribute=None)
-```
-
-
-
-> Node: [Attribute Statistic](GeometryNodeAttributeStatistic.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/attribute_statistic.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeStatistic.html)
-
-#### Args:
-- attribute: ['Float', 'Vector']
-
-#### Returns:
-- socket `median`
-
-
-
-
-
-
-<sub>Go to [top](#class-Face) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-### attribute_min
-
-```python
-def attribute_min(self, attribute=None)
-```
-
-
-
-> Node: [Attribute Statistic](GeometryNodeAttributeStatistic.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/attribute_statistic.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeStatistic.html)
-
-#### Args:
-- attribute: ['Float', 'Vector']
-
-#### Returns:
-- socket `min`
-
-
-
-
-
-
-<sub>Go to [top](#class-Face) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
 ### attribute_node
 
 ```python
@@ -771,7 +615,7 @@ Called when creating an input node in a property getter. Performs two actions:
     - Call the method :func:`Node.as_attribute` to tag the node as being an attribute.
       This will allow the :func:`Tree.check_attributes` to see if it is necessary to create
       a *Capture Attribute* for this field.
-    - Set the nde property :attr:`field_of` to self in order to implement the transfer attribute
+    - Set the node property :attr:`attr_domain` to self in order to implement the transfer attribute
       mechanism.
 
 #### Args:
@@ -779,29 +623,6 @@ Called when creating an input node in a property getter. Performs two actions:
     
 #### Returns:
 - The node argument
-
-
-
-
-<sub>Go to [top](#class-Face) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-### attribute_range
-
-```python
-def attribute_range(self, attribute=None)
-```
-
-
-
-> Node: [Attribute Statistic](GeometryNodeAttributeStatistic.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/attribute_statistic.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeStatistic.html)
-
-#### Args:
-- attribute: ['Float', 'Vector']
-
-#### Returns:
-- socket `range`
-
-
 
 
 
@@ -825,75 +646,6 @@ def attribute_statistic(self, attribute=None)
 
 #### Returns:
 - node with sockets ['mean', 'median', 'sum', 'min', 'max', 'range', 'standard_deviation', 'variance']
-
-
-
-
-
-
-<sub>Go to [top](#class-Face) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-### attribute_std
-
-```python
-def attribute_std(self, attribute=None)
-```
-
-
-
-> Node: [Attribute Statistic](GeometryNodeAttributeStatistic.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/attribute_statistic.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeStatistic.html)
-
-#### Args:
-- attribute: ['Float', 'Vector']
-
-#### Returns:
-- socket `standard_deviation`
-
-
-
-
-
-
-<sub>Go to [top](#class-Face) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-### attribute_sum
-
-```python
-def attribute_sum(self, attribute=None)
-```
-
-
-
-> Node: [Attribute Statistic](GeometryNodeAttributeStatistic.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/attribute_statistic.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeStatistic.html)
-
-#### Args:
-- attribute: ['Float', 'Vector']
-
-#### Returns:
-- socket `sum`
-
-
-
-
-
-
-<sub>Go to [top](#class-Face) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-### attribute_var
-
-```python
-def attribute_var(self, attribute=None)
-```
-
-
-
-> Node: [Attribute Statistic](GeometryNodeAttributeStatistic.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/attribute_statistic.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeStatistic.html)
-
-#### Args:
-- attribute: ['Float', 'Vector']
-
-#### Returns:
-- socket `variance`
 
 
 
@@ -1076,54 +828,6 @@ def corners(self, weights=None, sort_index=None)
 
 <sub>Go to [top](#class-Face) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
-### corners_index
-
-```python
-def corners_index(self, weights=None, sort_index=None)
-```
-
-
-
-> Node: [Corners of Face](GeometryNodeCornersOfFace.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh_topology/corners_of_face.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeCornersOfFace.html)
-
-#### Args:
-- weights: Float
-- sort_index: Integer
-
-#### Returns:
-- socket `corner_index`
-
-
-
-
-
-
-<sub>Go to [top](#class-Face) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-### corners_total
-
-```python
-def corners_total(self, weights=None, sort_index=None)
-```
-
-
-
-> Node: [Corners of Face](GeometryNodeCornersOfFace.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh_topology/corners_of_face.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeCornersOfFace.html)
-
-#### Args:
-- weights: Float
-- sort_index: Integer
-
-#### Returns:
-- socket `total`
-
-
-
-
-
-
-<sub>Go to [top](#class-Face) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
 ### delete
 
 ```python
@@ -1199,6 +903,37 @@ def delete_faces(self)
 
 #### Returns:
 - self
+
+
+
+
+
+
+<sub>Go to [top](#class-Face) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### distribute_points
+
+```python
+def distribute_points(self, distance_min=None, density_max=None, density=None, density_factor=None, seed=None, distribute_method='RANDOM', use_legacy_normal=False)
+```
+
+
+
+> Node: [Distribute Points on Faces](GeometryNodeDistributePointsOnFaces.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/point/distribute_points_on_faces.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeDistributePointsOnFaces.html)
+
+#### Args:
+- distance_min: Float
+- density_max: Float
+- density: Float
+- density_factor: Float
+- seed: Integer
+- distribute_method (str): 'RANDOM' in [RANDOM, POISSON]
+- use_legacy_normal (bool): False
+
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeDistributePointsOnFaces.webp)
+
+#### Returns:
+- node with sockets ['points', 'normal', 'rotation']
 
 
 
@@ -1340,12 +1075,15 @@ def extrude(self, offset=None, offset_scale=None, individual=None)
 ### face_group_boundaries
 
 ```python
-def face_group_boundaries(self)
+def face_group_boundaries(self, face_group_id=None)
 ```
 
 
 
 > Node: [Face Group Boundaries](GeometryNodeMeshFaceSetBoundaries.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/a.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshFaceSetBoundaries.html)
+
+#### Args:
+- face_group_id: Integer
 
 #### Returns:
 - socket `boundary_edges`
@@ -1511,32 +1249,10 @@ def named_attribute(self, name=None, data_type='FLOAT')
 - name: String
 - data_type (str): 'FLOAT' in [FLOAT, INT, FLOAT_VECTOR, FLOAT_COLOR, BOOLEAN]
 
-#### Returns:
-- socket `attribute`
-
-
-
-
-
-
-<sub>Go to [top](#class-Face) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-### named_attribute_exists
-
-```python
-def named_attribute_exists(self, name=None, data_type='FLOAT')
-```
-
-
-
-> Node: [Named Attribute](GeometryNodeInputNamedAttribute.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/named_attribute.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputNamedAttribute.html)
-
-#### Args:
-- name: String
-- data_type (str): 'FLOAT' in [FLOAT, INT, FLOAT_VECTOR, FLOAT_COLOR, BOOLEAN]
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeInputNamedAttribute.webp)
 
 #### Returns:
-- socket `exists`
+- node with sockets ['attribute', 'exists']
 
 
 
@@ -1688,7 +1404,7 @@ def pack_uv_islands(self, uv=None, margin=None, rotate=None)
 ### proximity
 
 ```python
-def proximity(self, target=None, source_position=None)
+def proximity(self, target=None, source_position=None, target_element='FACES')
 ```
 
 
@@ -1698,6 +1414,7 @@ def proximity(self, target=None, source_position=None)
 #### Args:
 - target: Geometry
 - source_position: Vector
+- target_element (str): 'FACES' in [POINTS, EDGES, FACES]
 
 ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeProximity.webp)
 

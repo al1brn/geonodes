@@ -24,15 +24,15 @@
 
 ***Inherited***
 
-[connected_sockets](DataSocket.md#connected_sockets) | [get_blender_socket](DataSocket.md#get_blender_socket) | [init_domains](DataSocket.md#init_domains) | [init_socket](DataSocket.md#init_socket) | [plug](DataSocket.md#plug) | [reroute](DataSocket.md#reroute) | [reset_properties](DataSocket.md#reset_properties) | [stack](DataSocket.md#stack) | [to_output](DataSocket.md#to_output)
+[capture](DataSocket.md#capture) | [connected_sockets](DataSocket.md#connected_sockets) | [get_blender_socket](DataSocket.md#get_blender_socket) | [init_domains](DataSocket.md#init_domains) | [init_socket](DataSocket.md#init_socket) | [plug](DataSocket.md#plug) | [reroute](DataSocket.md#reroute) | [reset_properties](DataSocket.md#reset_properties) | [stack](DataSocket.md#stack) | [to_output](DataSocket.md#to_output)
 
 ## Class and static methods
 
 ### Brick
 
 ```python
-@classmethod
-def Brick(cls, vector=None, color1=None, color2=None, mortar=None, scale=None, mortar_size=None, mortar_smooth=None, bias=None, brick_width=None, row_height=None, offset=0.5, offset_frequency=2, squash=1.0, squash_frequency=2)
+@staticmethod
+def Brick(vector=None, color1=None, color2=None, mortar=None, scale=None, mortar_size=None, mortar_smooth=None, bias=None, brick_width=None, row_height=None, offset=0.5, offset_frequency=2, squash=1.0, squash_frequency=2)
 ```
 
 
@@ -70,8 +70,8 @@ def Brick(cls, vector=None, color1=None, color2=None, mortar=None, scale=None, m
 ### Checker
 
 ```python
-@classmethod
-def Checker(cls, vector=None, color1=None, color2=None, scale=None)
+@staticmethod
+def Checker(vector=None, color1=None, color2=None, scale=None)
 ```
 
 
@@ -99,8 +99,8 @@ def Checker(cls, vector=None, color1=None, color2=None, scale=None)
 ### Gradient
 
 ```python
-@classmethod
-def Gradient(cls, vector=None, gradient_type='LINEAR')
+@staticmethod
+def Gradient(vector=None, gradient_type='LINEAR')
 ```
 
 
@@ -126,8 +126,8 @@ def Gradient(cls, vector=None, gradient_type='LINEAR')
 ### GradientDiagonal
 
 ```python
-@classmethod
-def GradientDiagonal(cls, vector=None)
+@staticmethod
+def GradientDiagonal(vector=None)
 ```
 
 
@@ -152,8 +152,8 @@ def GradientDiagonal(cls, vector=None)
 ### GradientEeasing
 
 ```python
-@classmethod
-def GradientEeasing(cls, vector=None)
+@staticmethod
+def GradientEeasing(vector=None)
 ```
 
 
@@ -178,8 +178,8 @@ def GradientEeasing(cls, vector=None)
 ### GradientLinear
 
 ```python
-@classmethod
-def GradientLinear(cls, vector=None)
+@staticmethod
+def GradientLinear(vector=None)
 ```
 
 
@@ -204,8 +204,8 @@ def GradientLinear(cls, vector=None)
 ### GradientQuadratic
 
 ```python
-@classmethod
-def GradientQuadratic(cls, vector=None)
+@staticmethod
+def GradientQuadratic(vector=None)
 ```
 
 
@@ -230,8 +230,8 @@ def GradientQuadratic(cls, vector=None)
 ### GradientQuadratic_sphere
 
 ```python
-@classmethod
-def GradientQuadratic_sphere(cls, vector=None)
+@staticmethod
+def GradientQuadratic_sphere(vector=None)
 ```
 
 
@@ -256,8 +256,8 @@ def GradientQuadratic_sphere(cls, vector=None)
 ### GradientRadial
 
 ```python
-@classmethod
-def GradientRadial(cls, vector=None)
+@staticmethod
+def GradientRadial(vector=None)
 ```
 
 
@@ -282,8 +282,8 @@ def GradientRadial(cls, vector=None)
 ### GradientSpherical
 
 ```python
-@classmethod
-def GradientSpherical(cls, vector=None)
+@staticmethod
+def GradientSpherical(vector=None)
 ```
 
 
@@ -308,8 +308,8 @@ def GradientSpherical(cls, vector=None)
 ### Image
 
 ```python
-@classmethod
-def Image(cls, image=None, vector=None, frame=None, extension='REPEAT', interpolation='Linear')
+@staticmethod
+def Image(image=None, vector=None, frame=None, extension='REPEAT', interpolation='Linear')
 ```
 
 
@@ -359,8 +359,8 @@ def Input(cls, value=None, name="Texture", description="")
 ### Magic
 
 ```python
-@classmethod
-def Magic(cls, vector=None, scale=None, distortion=None, turbulence_depth=2)
+@staticmethod
+def Magic(vector=None, scale=None, distortion=None, turbulence_depth=2)
 ```
 
 
@@ -421,8 +421,8 @@ def Musgrave(cls, vector=None, w=None, scale=None, detail=None, dimension=None, 
 ### Noise
 
 ```python
-@classmethod
-def Noise(cls, vector=None, w=None, scale=None, detail=None, roughness=None, distortion=None, noise_dimensions='3D')
+@staticmethod
+def Noise(vector=None, w=None, scale=None, detail=None, roughness=None, distortion=None, noise_dimensions='3D')
 ```
 
 
@@ -453,8 +453,8 @@ def Noise(cls, vector=None, w=None, scale=None, detail=None, roughness=None, dis
 ### Noise1D
 
 ```python
-@classmethod
-def Noise1D(cls, w=None, scale=None, detail=None, roughness=None, distortion=None)
+@staticmethod
+def Noise1D(w=None, scale=None, detail=None, roughness=None, distortion=None)
 ```
 
 
@@ -483,8 +483,8 @@ def Noise1D(cls, w=None, scale=None, detail=None, roughness=None, distortion=Non
 ### Noise2D
 
 ```python
-@classmethod
-def Noise2D(cls, vector=None, scale=None, detail=None, roughness=None, distortion=None)
+@staticmethod
+def Noise2D(vector=None, scale=None, detail=None, roughness=None, distortion=None)
 ```
 
 
@@ -513,8 +513,8 @@ def Noise2D(cls, vector=None, scale=None, detail=None, roughness=None, distortio
 ### Noise3D
 
 ```python
-@classmethod
-def Noise3D(cls, vector=None, scale=None, detail=None, roughness=None, distortion=None)
+@staticmethod
+def Noise3D(vector=None, scale=None, detail=None, roughness=None, distortion=None)
 ```
 
 
@@ -543,8 +543,8 @@ def Noise3D(cls, vector=None, scale=None, detail=None, roughness=None, distortio
 ### Noise4D
 
 ```python
-@classmethod
-def Noise4D(cls, vector=None, w=None, scale=None, detail=None, roughness=None, distortion=None)
+@staticmethod
+def Noise4D(vector=None, w=None, scale=None, detail=None, roughness=None, distortion=None)
 ```
 
 
@@ -574,8 +574,8 @@ def Noise4D(cls, vector=None, w=None, scale=None, detail=None, roughness=None, d
 ### Voronoi
 
 ```python
-@classmethod
-def Voronoi(cls, vector=None, w=None, scale=None, smoothness=None, exponent=None, randomness=None, distance='EUCLIDEAN', feature='F1', voronoi_dimensions='3D')
+@staticmethod
+def Voronoi(vector=None, w=None, scale=None, smoothness=None, exponent=None, randomness=None, distance='EUCLIDEAN', feature='F1', voronoi_dimensions='3D')
 ```
 
 
@@ -608,8 +608,8 @@ def Voronoi(cls, vector=None, w=None, scale=None, smoothness=None, exponent=None
 ### Voronoi1D
 
 ```python
-@classmethod
-def Voronoi1D(cls, w=None, scale=None, smoothness=None, exponent=None, randomness=None, distance='EUCLIDEAN', feature='F1', voronoi_dimensions='3D')
+@staticmethod
+def Voronoi1D(w=None, scale=None, smoothness=None, exponent=None, randomness=None, distance='EUCLIDEAN', feature='F1', voronoi_dimensions='3D')
 ```
 
 
@@ -641,8 +641,8 @@ def Voronoi1D(cls, w=None, scale=None, smoothness=None, exponent=None, randomnes
 ### Voronoi2D
 
 ```python
-@classmethod
-def Voronoi2D(cls, vector=None, scale=None, smoothness=None, exponent=None, randomness=None, distance='EUCLIDEAN', feature='F1', voronoi_dimensions='3D')
+@staticmethod
+def Voronoi2D(vector=None, scale=None, smoothness=None, exponent=None, randomness=None, distance='EUCLIDEAN', feature='F1', voronoi_dimensions='3D')
 ```
 
 
@@ -674,8 +674,8 @@ def Voronoi2D(cls, vector=None, scale=None, smoothness=None, exponent=None, rand
 ### Voronoi3D
 
 ```python
-@classmethod
-def Voronoi3D(cls, vector=None, scale=None, smoothness=None, exponent=None, randomness=None, distance='EUCLIDEAN', feature='F1', voronoi_dimensions='3D')
+@staticmethod
+def Voronoi3D(vector=None, scale=None, smoothness=None, exponent=None, randomness=None, distance='EUCLIDEAN', feature='F1', voronoi_dimensions='3D')
 ```
 
 
@@ -707,8 +707,8 @@ def Voronoi3D(cls, vector=None, scale=None, smoothness=None, exponent=None, rand
 ### Voronoi4D
 
 ```python
-@classmethod
-def Voronoi4D(cls, vector=None, w=None, scale=None, smoothness=None, exponent=None, randomness=None, distance='EUCLIDEAN', feature='F1', voronoi_dimensions='3D')
+@staticmethod
+def Voronoi4D(vector=None, w=None, scale=None, smoothness=None, exponent=None, randomness=None, distance='EUCLIDEAN', feature='F1', voronoi_dimensions='3D')
 ```
 
 
@@ -741,8 +741,8 @@ def Voronoi4D(cls, vector=None, w=None, scale=None, smoothness=None, exponent=No
 ### Wave
 
 ```python
-@classmethod
-def Wave(cls, vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, bands_direction='X', rings_direction='X', wave_profile='SIN', wave_type='BANDS')
+@staticmethod
+def Wave(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, bands_direction='X', rings_direction='X', wave_profile='SIN', wave_type='BANDS')
 ```
 
 
@@ -777,8 +777,8 @@ def Wave(cls, vector=None, scale=None, distortion=None, detail=None, detail_scal
 ### WaveBands
 
 ```python
-@classmethod
-def WaveBands(cls, vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X', wave_profile='SIN')
+@staticmethod
+def WaveBands(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X', wave_profile='SIN')
 ```
 
 
@@ -811,8 +811,8 @@ def WaveBands(cls, vector=None, scale=None, distortion=None, detail=None, detail
 ### WaveBands_saw
 
 ```python
-@classmethod
-def WaveBands_saw(cls, vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X')
+@staticmethod
+def WaveBands_saw(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X')
 ```
 
 
@@ -844,8 +844,8 @@ def WaveBands_saw(cls, vector=None, scale=None, distortion=None, detail=None, de
 ### WaveBands_sine
 
 ```python
-@classmethod
-def WaveBands_sine(cls, vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X')
+@staticmethod
+def WaveBands_sine(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X')
 ```
 
 
@@ -877,8 +877,8 @@ def WaveBands_sine(cls, vector=None, scale=None, distortion=None, detail=None, d
 ### WaveBands_triangle
 
 ```python
-@classmethod
-def WaveBands_triangle(cls, vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X')
+@staticmethod
+def WaveBands_triangle(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X')
 ```
 
 
@@ -910,8 +910,8 @@ def WaveBands_triangle(cls, vector=None, scale=None, distortion=None, detail=Non
 ### WaveRings
 
 ```python
-@classmethod
-def WaveRings(cls, vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X', wave_profile='SIN')
+@staticmethod
+def WaveRings(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X', wave_profile='SIN')
 ```
 
 
@@ -944,8 +944,8 @@ def WaveRings(cls, vector=None, scale=None, distortion=None, detail=None, detail
 ### WaveRings_saw
 
 ```python
-@classmethod
-def WaveRings_saw(cls, vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X')
+@staticmethod
+def WaveRings_saw(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X')
 ```
 
 
@@ -977,8 +977,8 @@ def WaveRings_saw(cls, vector=None, scale=None, distortion=None, detail=None, de
 ### WaveRings_sine
 
 ```python
-@classmethod
-def WaveRings_sine(cls, vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X')
+@staticmethod
+def WaveRings_sine(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X')
 ```
 
 
@@ -1010,8 +1010,8 @@ def WaveRings_sine(cls, vector=None, scale=None, distortion=None, detail=None, d
 ### WaveRings_triangle
 
 ```python
-@classmethod
-def WaveRings_triangle(cls, vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X')
+@staticmethod
+def WaveRings_triangle(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X')
 ```
 
 
@@ -1043,8 +1043,8 @@ def WaveRings_triangle(cls, vector=None, scale=None, distortion=None, detail=Non
 ### WhiteNoise
 
 ```python
-@classmethod
-def WhiteNoise(cls, vector=None, w=None, noise_dimensions='3D')
+@staticmethod
+def WhiteNoise(vector=None, w=None, noise_dimensions='3D')
 ```
 
 
@@ -1071,8 +1071,8 @@ def WhiteNoise(cls, vector=None, w=None, noise_dimensions='3D')
 ### WhiteNoise1D
 
 ```python
-@classmethod
-def WhiteNoise1D(cls, w=None)
+@staticmethod
+def WhiteNoise1D(w=None)
 ```
 
 
@@ -1097,8 +1097,8 @@ def WhiteNoise1D(cls, w=None)
 ### WhiteNoise2D
 
 ```python
-@classmethod
-def WhiteNoise2D(cls, vector=None)
+@staticmethod
+def WhiteNoise2D(vector=None)
 ```
 
 
@@ -1123,8 +1123,8 @@ def WhiteNoise2D(cls, vector=None)
 ### WhiteNoise3D
 
 ```python
-@classmethod
-def WhiteNoise3D(cls, vector=None)
+@staticmethod
+def WhiteNoise3D(vector=None)
 ```
 
 
@@ -1149,8 +1149,8 @@ def WhiteNoise3D(cls, vector=None)
 ### WhiteNoise4D
 
 ```python
-@classmethod
-def WhiteNoise4D(cls, vector=None, w=None)
+@staticmethod
+def WhiteNoise4D(vector=None, w=None)
 ```
 
 

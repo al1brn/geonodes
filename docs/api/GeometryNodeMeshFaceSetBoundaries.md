@@ -30,7 +30,7 @@ node = nodes.FaceGroupBoundaries(face_group_id=None)
 | Class or method name | Definition |
 |----------------------|------------|
 | **[Face](Face.md)** |
-| [face_group_boundaries](Face.md#face_group_boundaries) | `def face_group_boundaries(self):` |
+| [face_group_boundaries](Face.md#face_group_boundaries) | `def face_group_boundaries(self, face_group_id=None):` |
 | **[Mesh](Mesh.md)** |
 | [face_group_boundaries](Mesh.md#face_group_boundaries) | `def face_group_boundaries(self, face_group_id=None):` |
 

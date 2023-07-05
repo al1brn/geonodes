@@ -78,9 +78,6 @@ class Socket:
         'NodeSocketTexture'             : ('Texture',    '',              None,            'TEXTURE'), 
     }
     
-
-
-    
     
     # ----------------------------------------------------------------------------------------------------
     # > Socket initialization
@@ -840,10 +837,6 @@ class DataSocket(Socket):
         
         self.reset_properties()
         
-        # ----- Set by Field
-        
-        self.field_of = None
-        """ Used by field to implement transfer attribute mechanism. This property is set to all node output sockets."""
     
     @property
     def node_chain_label(self):
@@ -996,25 +989,147 @@ class DataSocket(Socket):
         for socket in sockets:
             btree.links.new(node.outputs[0], socket)
 
-    # ----------------------------------------------------------------------------------------------------
-    # Transfer are steered by the Field it belongs to
     
-    def index_transfer(self, index=None):
-        if self.field_of is None:
-            raise Exception(f"{type(self).__name__}.index_transfer: the socket {self} is not a field.")
-        return self.field_of.index_transfer(attribute=self, index=index)
+    # ====================================================================================================
+    # Default domain
     
-    def nearest_transfer(self, source_position=None):
-        if self.field_of is None:
-            raise Exception(f"{type(self).__name__}.nearest_transfer: the socket {self} is not a field.")
-        return self.field_of.nearest_transfer(attribute=self, source_position=source_position)
-    
-    def nearest_face_transfer(self, source_position=None):
-        if self.field_of is None:
-            raise Exception(f"{type(self).__name__}.nearest_face_transfer: the socket {self} is not a field.")
-        return self.field_of.nearest_face_transfer(attribute=self, source_position=source_position)
-
+    def default_domain(self, name=None):
         
+        import geonodes as gn
+        
+        cname = type(self).__name__
+        
+        if name is None:
+            if cname in ['Curve', 'Points']:
+                return self.points
+            elif cname == 'Instances':
+                return self.insts
+            else:
+                return gn.Mesh(self).verts
+
+        elif name == 'POINT':
+            if cname in ['Geometry', 'Mesh']:
+                return gn.Mesh(self).points
+            elif cname in ['Points', 'Curve']:
+                return self.points
+            else:
+                raise Exception(f"'POINTS' is an invalid domain for class '{cname}'")
+
+        elif name == 'EDGE':
+            return gn.Mesh(self).edges
+        elif name == 'FACE':
+            return gn.Mesh(self).faces
+        elif name == 'CORNER':
+            return gn.Mesh(self).corners
+        elif name == 'CURVE':
+            return gn.Curve(self).splines
+        elif name == 'INSTANCE':
+            return gn.Instance(self).instances
+        else:
+            raise Exception(f"Default domain of class '{cname}': incorrect domain name: '{name}'")
+    
+    # ====================================================================================================
+    # Capture the attribute
+
+    # ----------------------------------------------------------------------------------------------------
+    # Look backwards to find an attribute
+    
+    def search_attr_backwards(self):
+        
+        tree = self.node.tree
+        nodes = []
+        
+        # ----- Test if the current blender node is an attribute
+        # It not, looks the nodes finding it
+
+        def test_bnode(bnode):
+            
+            node = tree.get_bnode_wrapper(bnode)
+            if node.is_attribute:
+                return node
+            if node in nodes:
+                return None
+            
+            nodes.append(node)
+            for in_bsocket in node.bnode.inputs:
+                for link in in_bsocket.links:
+                    node = test_bnode(link.from_node)
+                    if node is not None:
+                        return node
+                    
+            return None
+        
+        return test_bnode(self.node.bnode)
+    
+    
+    # ----------------------------------------------------------------------------------------------------
+    # Capture attribute    
+
+    def capture(self):
+        """ Capture the attribute.
+        
+        The geometry socket ois searched backwards in one o-of the node feeding this node.
+        
+        Raise an error if nothing is found.
+        
+        Returns:
+            attribute socket of 'Capture attribute' node       
+        """
+
+        import geonodes as gn
+        
+        # ----------------------------------------------------------------------------------------------------
+        # Let's make sure the attribute is not already captured
+        
+        for link in self.bsocket.links:
+            if link.to_node.bl_idname == 'GeometryNodeCaptureAttribute':
+                for sock in link.to_node.outputs:
+                    if sock.name.lower() != 'attribute':
+                        continue
+                    if sock.enabled:
+                        return type(self)(sock)
+                raise Exception(f"Capture error: the attribute '{self}' is already captured, but impossible to find the enabled output attribute on node {link.to_node}.")
+
+        # ----------------------------------------------------------------------------------------------------
+        # OK: something to do
+        
+        node = self.search_attr_backwards()
+        if node is None:
+            raise Exception(f"Capture attribute error: the socket '{self}' is not a capturable attribute (node attribute node feeds this node).")
+            
+        # ----------------------------------------------------------------------------------------------------
+        # Geometry and self can already be plugged to input sockets
+        # We must remove the links and replace them by links passing thourgh the capture node
+        # We read the link before create the linked 'Capture Attribute' node
+        
+        geo_links  = [(link, link.to_socket) for link in node.attr_bsocket.links]
+        attr_links = [(link, link.to_socket) for link in self.bsocket.links]
+        
+        # ----- Let's create the 'Capture Attibute' node
+            
+        capt_node = gn.nodes.CaptureAttribute(geometry=gn.Geometry(node.attr_bsocket), value=self, data_type=self.value_data_type(self), domain=node.attr_domain.domain)
+
+        geo  = capt_node.geometry
+        attr = capt_node.attribute
+
+        # ----- Inset the node in the existing links
+        
+        tree = self.node.tree
+        
+        for link, in_socket in geo_links:
+            tree.btree.links.remove(link)
+            tree.btree.links.new(geo.bsocket, in_socket)
+            
+        for link, in_socket in attr_links:
+            tree.btree.links.remove(link)
+            tree.btree.links.new(attr.bsocket, in_socket)
+            
+        # ----------------------------------------------------------------------------------------------------
+        # Now the socket must point on the attribute
+        
+        node.attr_domain.data_socket.stack(capt_node, 'geometry')
+        
+        return self.stack(capt_node, 'attribute')
         
     
     

@@ -56,96 +56,6 @@ class Domain(geodom.Domain):
         return self.attribute_node(nodes.AccumulateField(value=value, group_id=group_id, data_type=data_type_, domain=self.domain))
 
 
-    def attribute_max(self, attribute=None):
-        """
-
-        > Node: [Attribute Statistic](GeometryNodeAttributeStatistic.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/attribute_statistic.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeStatistic.html)
-
-        #### Args:
-        - attribute: ['Float', 'Vector']
-
-        #### Returns:
-        - socket `max`
-
-
-        """
-
-        data_type_ = self.value_data_type(attribute, 'FLOAT')
-        return nodes.AttributeStatistic(geometry=self.data_socket, selection=self.selection, attribute=attribute, data_type=data_type_, domain=self.domain).max
-
-
-    def attribute_mean(self, attribute=None):
-        """
-
-        > Node: [Attribute Statistic](GeometryNodeAttributeStatistic.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/attribute_statistic.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeStatistic.html)
-
-        #### Args:
-        - attribute: ['Float', 'Vector']
-
-        #### Returns:
-        - socket `mean`
-
-
-        """
-
-        data_type_ = self.value_data_type(attribute, 'FLOAT')
-        return nodes.AttributeStatistic(geometry=self.data_socket, selection=self.selection, attribute=attribute, data_type=data_type_, domain=self.domain).mean
-
-
-    def attribute_median(self, attribute=None):
-        """
-
-        > Node: [Attribute Statistic](GeometryNodeAttributeStatistic.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/attribute_statistic.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeStatistic.html)
-
-        #### Args:
-        - attribute: ['Float', 'Vector']
-
-        #### Returns:
-        - socket `median`
-
-
-        """
-
-        data_type_ = self.value_data_type(attribute, 'FLOAT')
-        return nodes.AttributeStatistic(geometry=self.data_socket, selection=self.selection, attribute=attribute, data_type=data_type_, domain=self.domain).median
-
-
-    def attribute_min(self, attribute=None):
-        """
-
-        > Node: [Attribute Statistic](GeometryNodeAttributeStatistic.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/attribute_statistic.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeStatistic.html)
-
-        #### Args:
-        - attribute: ['Float', 'Vector']
-
-        #### Returns:
-        - socket `min`
-
-
-        """
-
-        data_type_ = self.value_data_type(attribute, 'FLOAT')
-        return nodes.AttributeStatistic(geometry=self.data_socket, selection=self.selection, attribute=attribute, data_type=data_type_, domain=self.domain).min
-
-
-    def attribute_range(self, attribute=None):
-        """
-
-        > Node: [Attribute Statistic](GeometryNodeAttributeStatistic.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/attribute_statistic.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeStatistic.html)
-
-        #### Args:
-        - attribute: ['Float', 'Vector']
-
-        #### Returns:
-        - socket `range`
-
-
-        """
-
-        data_type_ = self.value_data_type(attribute, 'FLOAT')
-        return nodes.AttributeStatistic(geometry=self.data_socket, selection=self.selection, attribute=attribute, data_type=data_type_, domain=self.domain).range
-
-
     def attribute_statistic(self, attribute=None):
         """
 
@@ -164,60 +74,6 @@ class Domain(geodom.Domain):
 
         data_type_ = self.value_data_type(attribute, 'FLOAT')
         return nodes.AttributeStatistic(geometry=self.data_socket, selection=self.selection, attribute=attribute, data_type=data_type_, domain=self.domain)
-
-
-    def attribute_std(self, attribute=None):
-        """
-
-        > Node: [Attribute Statistic](GeometryNodeAttributeStatistic.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/attribute_statistic.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeStatistic.html)
-
-        #### Args:
-        - attribute: ['Float', 'Vector']
-
-        #### Returns:
-        - socket `standard_deviation`
-
-
-        """
-
-        data_type_ = self.value_data_type(attribute, 'FLOAT')
-        return nodes.AttributeStatistic(geometry=self.data_socket, selection=self.selection, attribute=attribute, data_type=data_type_, domain=self.domain).standard_deviation
-
-
-    def attribute_sum(self, attribute=None):
-        """
-
-        > Node: [Attribute Statistic](GeometryNodeAttributeStatistic.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/attribute_statistic.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeStatistic.html)
-
-        #### Args:
-        - attribute: ['Float', 'Vector']
-
-        #### Returns:
-        - socket `sum`
-
-
-        """
-
-        data_type_ = self.value_data_type(attribute, 'FLOAT')
-        return nodes.AttributeStatistic(geometry=self.data_socket, selection=self.selection, attribute=attribute, data_type=data_type_, domain=self.domain).sum
-
-
-    def attribute_var(self, attribute=None):
-        """
-
-        > Node: [Attribute Statistic](GeometryNodeAttributeStatistic.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/attribute_statistic.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeStatistic.html)
-
-        #### Args:
-        - attribute: ['Float', 'Vector']
-
-        #### Returns:
-        - socket `variance`
-
-
-        """
-
-        data_type_ = self.value_data_type(attribute, 'FLOAT')
-        return nodes.AttributeStatistic(geometry=self.data_socket, selection=self.selection, attribute=attribute, data_type=data_type_, domain=self.domain).variance
 
 
     def blur_attribute(self, value=None, iterations=None, weight=None):
@@ -447,31 +303,15 @@ class Domain(geodom.Domain):
         - name: String
         - data_type (str): 'FLOAT' in [FLOAT, INT, FLOAT_VECTOR, FLOAT_COLOR, BOOLEAN]
 
-        #### Returns:
-        - socket `attribute`
-
-
-        """
-
-        return self.attribute_node(nodes.NamedAttribute(name=name, data_type=data_type)).attribute
-
-
-    def named_attribute_exists(self, name=None, data_type='FLOAT'):
-        """
-
-        > Node: [Named Attribute](GeometryNodeInputNamedAttribute.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/named_attribute.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputNamedAttribute.html)
-
-        #### Args:
-        - name: String
-        - data_type (str): 'FLOAT' in [FLOAT, INT, FLOAT_VECTOR, FLOAT_COLOR, BOOLEAN]
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeInputNamedAttribute.webp)
 
         #### Returns:
-        - socket `exists`
+        - node with sockets ['attribute', 'exists']
 
 
         """
 
-        return self.attribute_node(nodes.NamedAttribute(name=name, data_type=data_type)).exists
+        return self.attribute_node(nodes.NamedAttribute(name=name, data_type=data_type))
 
 
     def named_boolean(self, name=None):
@@ -1002,42 +842,6 @@ class Vertex(Domain):
         return self.attribute_node(nodes.CornersOfVertex(vertex_index=self.selection_index, weights=weights, sort_index=sort_index))
 
 
-    def corners_index(self, weights=None, sort_index=None):
-        """
-
-        > Node: [Corners of Vertex](GeometryNodeCornersOfVertex.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh_topology/corners_of_vertex.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeCornersOfVertex.html)
-
-        #### Args:
-        - weights: Float
-        - sort_index: Integer
-
-        #### Returns:
-        - socket `corner_index`
-
-
-        """
-
-        return self.attribute_node(nodes.CornersOfVertex(vertex_index=self.selection_index, weights=weights, sort_index=sort_index)).corner_index
-
-
-    def corners_total(self, weights=None, sort_index=None):
-        """
-
-        > Node: [Corners of Vertex](GeometryNodeCornersOfVertex.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh_topology/corners_of_vertex.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeCornersOfVertex.html)
-
-        #### Args:
-        - weights: Float
-        - sort_index: Integer
-
-        #### Returns:
-        - socket `total`
-
-
-        """
-
-        return self.attribute_node(nodes.CornersOfVertex(vertex_index=self.selection_index, weights=weights, sort_index=sort_index)).total
-
-
     @property
     def count(self):
         """
@@ -1149,42 +953,6 @@ class Vertex(Domain):
         return self.attribute_node(nodes.EdgesOfVertex(vertex_index=self.selection_index, weights=weights, sort_index=sort_index))
 
 
-    def edges_index(self, weights=None, sort_index=None):
-        """
-
-        > Node: [Edges of Vertex](GeometryNodeEdgesOfVertex.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh_topology/edges_of_vertex.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeEdgesOfVertex.html)
-
-        #### Args:
-        - weights: Float
-        - sort_index: Integer
-
-        #### Returns:
-        - socket `edge_index`
-
-
-        """
-
-        return self.attribute_node(nodes.EdgesOfVertex(vertex_index=self.selection_index, weights=weights, sort_index=sort_index)).edge_index
-
-
-    def edges_total(self, weights=None, sort_index=None):
-        """
-
-        > Node: [Edges of Vertex](GeometryNodeEdgesOfVertex.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh_topology/edges_of_vertex.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeEdgesOfVertex.html)
-
-        #### Args:
-        - weights: Float
-        - sort_index: Integer
-
-        #### Returns:
-        - socket `total`
-
-
-        """
-
-        return self.attribute_node(nodes.EdgesOfVertex(vertex_index=self.selection_index, weights=weights, sort_index=sort_index)).total
-
-
     def extrude(self, offset=None, offset_scale=None, individual=None):
         """
 
@@ -1206,7 +974,7 @@ class Vertex(Domain):
         return self.socket_stack(nodes.ExtrudeMesh(mesh=self.data_socket, selection=self.selection, offset=offset, offset_scale=offset_scale, individual=individual, mode='VERTICES')).node
 
 
-    def instance_on_points(self, instance=None, pick_instance=None, instance_index=None, rotation=None, scale=None):
+    def instance_on(self, instance=None, pick_instance=None, instance_index=None, rotation=None, scale=None):
         """
 
         > Node: [Instance on Points](GeometryNodeInstanceOnPoints.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instance_on_points.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInstanceOnPoints.html)
@@ -1219,13 +987,12 @@ class Vertex(Domain):
         - scale: Vector
 
         #### Returns:
-        - socket `instances` of class Instances
+        - socket `instances`
 
 
         """
 
-        import geonodes as gn
-        return gn.Instances(nodes.InstanceOnPoints(points=self.data_socket, selection=self.selection, instance=instance, pick_instance=pick_instance, instance_index=instance_index, rotation=rotation, scale=scale).instances)
+        return nodes.InstanceOnPoints(points=self.data_socket, selection=self.selection, instance=instance, pick_instance=pick_instance, instance_index=instance_index, rotation=rotation, scale=scale).instances
 
 
     def interpolate(self, guide_curves=None, guide_up=None, guide_group_id=None, point_up=None, point_group_id=None, max_neighbors=None):
@@ -1301,46 +1068,10 @@ class Vertex(Domain):
 
         """
 
-        if not hasattr(self, '_c_geometrynodeinputmeshvertexneighbors'):
-            self._c_geometrynodeinputmeshvertexneighbors = self.attribute_node(nodes.VertexNeighbors())
-        return self._c_geometrynodeinputmeshvertexneighbors
+        return self.attribute_node(nodes.VertexNeighbors())
 
 
-    @property
-    def neighbors_face_count(self):
-        """
-
-        > Node: [Vertex Neighbors](GeometryNodeInputMeshVertexNeighbors.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/vertex_neighbors.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshVertexNeighbors.html)
-
-        #### Returns:
-        - socket `face_count`
-
-
-        """
-
-        if not hasattr(self, '_c_geometrynodeinputmeshvertexneighbors'):
-            self._c_geometrynodeinputmeshvertexneighbors = self.attribute_node(nodes.VertexNeighbors())
-        return self._c_geometrynodeinputmeshvertexneighbors.face_count
-
-
-    @property
-    def neighbors_vertex_count(self):
-        """
-
-        > Node: [Vertex Neighbors](GeometryNodeInputMeshVertexNeighbors.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/vertex_neighbors.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshVertexNeighbors.html)
-
-        #### Returns:
-        - socket `vertex_count`
-
-
-        """
-
-        if not hasattr(self, '_c_geometrynodeinputmeshvertexneighbors'):
-            self._c_geometrynodeinputmeshvertexneighbors = self.attribute_node(nodes.VertexNeighbors())
-        return self._c_geometrynodeinputmeshvertexneighbors.vertex_count
-
-
-    def proximity(self, target=None, source_position=None):
+    def proximity(self, target=None, source_position=None, target_element='FACES'):
         """
 
         > Node: [Geometry Proximity](GeometryNodeProximity.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/geometry_proximity.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeProximity.html)
@@ -1348,6 +1079,7 @@ class Vertex(Domain):
         #### Args:
         - target: Geometry
         - source_position: Vector
+        - target_element (str): 'FACES' in [POINTS, EDGES, FACES]
 
         ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeProximity.webp)
 
@@ -1357,7 +1089,7 @@ class Vertex(Domain):
 
         """
 
-        return self.attribute_node(nodes.GeometryProximity(target=target, source_position=source_position, target_element='POINTS'))
+        return self.attribute_node(nodes.GeometryProximity(target=target, source_position=source_position, target_element=target_element))
 
 
     def sample_nearest(self, sample_position=None):
@@ -1496,42 +1228,6 @@ class Face(Domain):
         return self.attribute_node(nodes.CornersOfFace(face_index=self.selection_index, weights=weights, sort_index=sort_index))
 
 
-    def corners_index(self, weights=None, sort_index=None):
-        """
-
-        > Node: [Corners of Face](GeometryNodeCornersOfFace.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh_topology/corners_of_face.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeCornersOfFace.html)
-
-        #### Args:
-        - weights: Float
-        - sort_index: Integer
-
-        #### Returns:
-        - socket `corner_index`
-
-
-        """
-
-        return self.attribute_node(nodes.CornersOfFace(face_index=self.selection_index, weights=weights, sort_index=sort_index)).corner_index
-
-
-    def corners_total(self, weights=None, sort_index=None):
-        """
-
-        > Node: [Corners of Face](GeometryNodeCornersOfFace.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh_topology/corners_of_face.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeCornersOfFace.html)
-
-        #### Args:
-        - weights: Float
-        - sort_index: Integer
-
-        #### Returns:
-        - socket `total`
-
-
-        """
-
-        return self.attribute_node(nodes.CornersOfFace(face_index=self.selection_index, weights=weights, sort_index=sort_index)).total
-
-
     @property
     def count(self):
         """
@@ -1604,6 +1300,31 @@ class Face(Domain):
         """
 
         return self.socket_stack(nodes.DeleteGeometry(geometry=self.data_socket, selection=self.selection, domain=self.domain, mode='ONLY_FACE'))
+
+
+    def distribute_points(self, distance_min=None, density_max=None, density=None, density_factor=None, seed=None, distribute_method='RANDOM', use_legacy_normal=False):
+        """
+
+        > Node: [Distribute Points on Faces](GeometryNodeDistributePointsOnFaces.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/point/distribute_points_on_faces.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeDistributePointsOnFaces.html)
+
+        #### Args:
+        - distance_min: Float
+        - density_max: Float
+        - density: Float
+        - density_factor: Float
+        - seed: Integer
+        - distribute_method (str): 'RANDOM' in [RANDOM, POISSON]
+        - use_legacy_normal (bool): False
+
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeDistributePointsOnFaces.webp)
+
+        #### Returns:
+        - node with sockets ['points', 'normal', 'rotation']
+
+
+        """
+
+        return nodes.DistributePointsOnFaces(mesh=self.data_socket, selection=self.selection, distance_min=distance_min, density_max=density_max, density=density, density_factor=density_factor, seed=seed, distribute_method=distribute_method, use_legacy_normal=use_legacy_normal)
 
 
     def distribute_points_poisson(self, distance_min=None, density_max=None, density_factor=None, seed=None, use_legacy_normal=False):
@@ -1688,10 +1409,13 @@ class Face(Domain):
         return self.socket_stack(nodes.ExtrudeMesh(mesh=self.data_socket, selection=self.selection, offset=offset, offset_scale=offset_scale, individual=individual, mode='FACES')).node
 
 
-    def face_group_boundaries(self):
+    def face_group_boundaries(self, face_group_id=None):
         """
 
         > Node: [Face Group Boundaries](GeometryNodeMeshFaceSetBoundaries.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/a.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshFaceSetBoundaries.html)
+
+        #### Args:
+        - face_group_id: Integer
 
         #### Returns:
         - socket `boundary_edges`
@@ -1699,7 +1423,7 @@ class Face(Domain):
 
         """
 
-        return self.attribute_node(nodes.FaceGroupBoundaries(face_group_id=self.selection_index)).boundary_edges
+        return self.attribute_node(nodes.FaceGroupBoundaries(face_group_id=face_group_id)).boundary_edges
 
 
     def flip(self):
@@ -1747,43 +1471,7 @@ class Face(Domain):
 
         """
 
-        if not hasattr(self, '_c_geometrynodeinputmeshisland'):
-            self._c_geometrynodeinputmeshisland = self.attribute_node(nodes.MeshIsland())
-        return self._c_geometrynodeinputmeshisland
-
-
-    @property
-    def island_count(self):
-        """
-
-        > Node: [Mesh Island](GeometryNodeInputMeshIsland.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/mesh_island.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshIsland.html)
-
-        #### Returns:
-        - socket `island_count`
-
-
-        """
-
-        if not hasattr(self, '_c_geometrynodeinputmeshisland'):
-            self._c_geometrynodeinputmeshisland = self.attribute_node(nodes.MeshIsland())
-        return self._c_geometrynodeinputmeshisland.island_count
-
-
-    @property
-    def island_index(self):
-        """
-
-        > Node: [Mesh Island](GeometryNodeInputMeshIsland.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/mesh_island.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshIsland.html)
-
-        #### Returns:
-        - socket `island_index`
-
-
-        """
-
-        if not hasattr(self, '_c_geometrynodeinputmeshisland'):
-            self._c_geometrynodeinputmeshisland = self.attribute_node(nodes.MeshIsland())
-        return self._c_geometrynodeinputmeshisland.island_index
+        return self.attribute_node(nodes.MeshIsland())
 
 
     @property
@@ -1867,43 +1555,7 @@ class Face(Domain):
 
         """
 
-        if not hasattr(self, '_c_geometrynodeinputmeshfaceneighbors'):
-            self._c_geometrynodeinputmeshfaceneighbors = self.attribute_node(nodes.FaceNeighbors())
-        return self._c_geometrynodeinputmeshfaceneighbors
-
-
-    @property
-    def neighbors_face_count(self):
-        """
-
-        > Node: [Face Neighbors](GeometryNodeInputMeshFaceNeighbors.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/face_neighbors.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshFaceNeighbors.html)
-
-        #### Returns:
-        - socket `face_count`
-
-
-        """
-
-        if not hasattr(self, '_c_geometrynodeinputmeshfaceneighbors'):
-            self._c_geometrynodeinputmeshfaceneighbors = self.attribute_node(nodes.FaceNeighbors())
-        return self._c_geometrynodeinputmeshfaceneighbors.face_count
-
-
-    @property
-    def neighbors_vertex_count(self):
-        """
-
-        > Node: [Face Neighbors](GeometryNodeInputMeshFaceNeighbors.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/face_neighbors.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshFaceNeighbors.html)
-
-        #### Returns:
-        - socket `vertex_count`
-
-
-        """
-
-        if not hasattr(self, '_c_geometrynodeinputmeshfaceneighbors'):
-            self._c_geometrynodeinputmeshfaceneighbors = self.attribute_node(nodes.FaceNeighbors())
-        return self._c_geometrynodeinputmeshfaceneighbors.vertex_count
+        return self.attribute_node(nodes.FaceNeighbors())
 
 
     def pack_uv_islands(self, uv=None, margin=None, rotate=None):
@@ -1925,7 +1577,7 @@ class Face(Domain):
         return self.attribute_node(nodes.PackUvIslands(uv=uv, selection=self.selection, margin=margin, rotate=rotate)).uv
 
 
-    def proximity(self, target=None, source_position=None):
+    def proximity(self, target=None, source_position=None, target_element='FACES'):
         """
 
         > Node: [Geometry Proximity](GeometryNodeProximity.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/geometry_proximity.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeProximity.html)
@@ -1933,6 +1585,7 @@ class Face(Domain):
         #### Args:
         - target: Geometry
         - source_position: Vector
+        - target_element (str): 'FACES' in [POINTS, EDGES, FACES]
 
         ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeProximity.webp)
 
@@ -1942,7 +1595,7 @@ class Face(Domain):
 
         """
 
-        return self.attribute_node(nodes.GeometryProximity(target=target, source_position=source_position, target_element='FACES'))
+        return self.attribute_node(nodes.GeometryProximity(target=target, source_position=source_position, target_element=target_element))
 
 
     def sample_nearest(self, sample_position=None):
@@ -2155,9 +1808,7 @@ class Edge(Domain):
 
         """
 
-        if not hasattr(self, '_c_geometrynodeinputmeshedgeangle'):
-            self._c_geometrynodeinputmeshedgeangle = self.attribute_node(nodes.EdgeAngle())
-        return self._c_geometrynodeinputmeshedgeangle
+        return self.attribute_node(nodes.EdgeAngle())
 
 
     @property
@@ -2306,7 +1957,7 @@ class Edge(Domain):
         return self.attribute_node(nodes.EdgeNeighbors()).face_count
 
 
-    def proximity(self, target=None, source_position=None):
+    def proximity(self, target=None, source_position=None, target_element='FACES'):
         """
 
         > Node: [Geometry Proximity](GeometryNodeProximity.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/geometry_proximity.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeProximity.html)
@@ -2314,6 +1965,7 @@ class Edge(Domain):
         #### Args:
         - target: Geometry
         - source_position: Vector
+        - target_element (str): 'FACES' in [POINTS, EDGES, FACES]
 
         ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeProximity.webp)
 
@@ -2323,7 +1975,7 @@ class Edge(Domain):
 
         """
 
-        return self.attribute_node(nodes.GeometryProximity(target=target, source_position=source_position, target_element='EDGES'))
+        return self.attribute_node(nodes.GeometryProximity(target=target, source_position=source_position, target_element=target_element))
 
 
     def sample_nearest(self, sample_position=None):
@@ -2408,9 +2060,7 @@ class Edge(Domain):
 
         """
 
-        if not hasattr(self, '_c_geometrynodeinputmeshedgeangle'):
-            self._c_geometrynodeinputmeshedgeangle = self.attribute_node(nodes.EdgeAngle())
-        return self._c_geometrynodeinputmeshedgeangle.signed_angle
+        return self.attribute_node(nodes.EdgeAngle()).signed_angle
 
 
     def split(self):
@@ -2442,10 +2092,13 @@ class Edge(Domain):
         return gn.Curve(nodes.MeshToCurve(mesh=self.data_socket, selection=self.selection).curve)
 
 
-    def to_face_groups(self):
+    def to_face_groups(self, boundary_edges=None):
         """
 
         > Node: [Edges to Face Groups](GeometryNodeEdgesToFaceGroups.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/d.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeEdgesToFaceGroups.html)
+
+        #### Args:
+        - boundary_edges: Boolean
 
         #### Returns:
         - socket `face_group_id`
@@ -2453,7 +2106,7 @@ class Edge(Domain):
 
         """
 
-        return self.attribute_node(nodes.EdgesToFaceGroups(boundary_edges=self.selection)).face_group_id
+        return self.attribute_node(nodes.EdgesToFaceGroups(boundary_edges=boundary_edges)).face_group_id
 
 
     @property
@@ -2468,9 +2121,7 @@ class Edge(Domain):
 
         """
 
-        if not hasattr(self, '_c_geometrynodeinputmeshedgeangle'):
-            self._c_geometrynodeinputmeshedgeangle = self.attribute_node(nodes.EdgeAngle())
-        return self._c_geometrynodeinputmeshedgeangle.unsigned_angle
+        return self.attribute_node(nodes.EdgeAngle()).unsigned_angle
 
 
     @property
@@ -2487,47 +2138,7 @@ class Edge(Domain):
 
         """
 
-        if not hasattr(self, '_c_geometrynodeinputmeshedgevertices'):
-            self._c_geometrynodeinputmeshedgevertices = self.attribute_node(nodes.EdgeVertices())
-        return self._c_geometrynodeinputmeshedgevertices
-
-
-    @property
-    def vertices_index(self):
-        """
-
-        > Node: [Edge Vertices](GeometryNodeInputMeshEdgeVertices.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/edge_vertices.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshEdgeVertices.html)
-
-        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeInputMeshEdgeVertices.webp)
-
-        #### Returns:
-        - node with sockets ['vertex_index_1', 'vertex_index_2', 'position_1', 'position_2']
-
-
-        """
-
-        if not hasattr(self, '_c_geometrynodeinputmeshedgevertices'):
-            self._c_geometrynodeinputmeshedgevertices = self.attribute_node(nodes.EdgeVertices())
-        return self._c_geometrynodeinputmeshedgevertices
-
-
-    @property
-    def vertices_position(self):
-        """
-
-        > Node: [Edge Vertices](GeometryNodeInputMeshEdgeVertices.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/edge_vertices.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshEdgeVertices.html)
-
-        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeInputMeshEdgeVertices.webp)
-
-        #### Returns:
-        - node with sockets ['vertex_index_1', 'vertex_index_2', 'position_1', 'position_2']
-
-
-        """
-
-        if not hasattr(self, '_c_geometrynodeinputmeshedgevertices'):
-            self._c_geometrynodeinputmeshedgevertices = self.attribute_node(nodes.EdgeVertices())
-        return self._c_geometrynodeinputmeshedgevertices
+        return self.attribute_node(nodes.EdgeVertices())
 
 
 
@@ -2580,51 +2191,6 @@ class Corner(Domain):
         return self.attribute_node(nodes.FaceOfCorner(corner_index=self.selection_index))
 
 
-    @property
-    def face_index(self):
-        """
-
-        > Node: [Face of Corner](GeometryNodeFaceOfCorner.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh_topology/face_of_corner.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeFaceOfCorner.html)
-
-        #### Returns:
-        - socket `face_index`
-
-
-        """
-
-        return self.attribute_node(nodes.FaceOfCorner(corner_index=self.selection_index)).face_index
-
-
-    @property
-    def index_in_face(self):
-        """
-
-        > Node: [Face of Corner](GeometryNodeFaceOfCorner.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh_topology/face_of_corner.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeFaceOfCorner.html)
-
-        #### Returns:
-        - socket `index_in_face`
-
-
-        """
-
-        return self.attribute_node(nodes.FaceOfCorner(corner_index=self.selection_index)).index_in_face
-
-
-    @property
-    def next_vertex(self):
-        """
-
-        > Node: [Edges of Corner](GeometryNodeEdgesOfCorner.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh_topology/edges_of_corner.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeEdgesOfCorner.html)
-
-        #### Returns:
-        - socket `next_edge_index`
-
-
-        """
-
-        return self.attribute_node(nodes.EdgesOfCorner(corner_index=self.selection_index)).next_edge_index
-
-
     def offset_in_face(self, offset=None):
         """
 
@@ -2640,21 +2206,6 @@ class Corner(Domain):
         """
 
         return self.attribute_node(nodes.OffsetCornerInFace(corner_index=self.selection_index, offset=offset)).corner_index
-
-
-    @property
-    def previous_vertex(self):
-        """
-
-        > Node: [Edges of Corner](GeometryNodeEdgesOfCorner.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh_topology/edges_of_corner.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeEdgesOfCorner.html)
-
-        #### Returns:
-        - socket `previous_edge_index`
-
-
-        """
-
-        return self.attribute_node(nodes.EdgesOfCorner(corner_index=self.selection_index)).previous_edge_index
 
 
     def sample_nearest(self, sample_position=None):
@@ -3362,6 +2913,96 @@ class ControlPoint(Domain):
         return self.handle_type_selection(left=left, right=right, handle_type='ALIGN')
 
 
+    def capture_handle_type_selection(self, left=True, right=True, handle_type='AUTO'):
+        """
+
+        > Node: [Handle Type Selection](GeometryNodeCurveHandleTypeSelection.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/handle_type_selection.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveHandleTypeSelection.html)
+
+        #### Args:
+        - handle_type (str): 'AUTO' in [FREE, AUTO, VECTOR, ALIGN]
+        - mode (set): {'LEFT', 'RIGHT'}
+
+        #### Returns:
+        - node with sockets ['selection']
+
+
+        """
+
+        return self.capture_node(self.capture_handle_type_selection(left=left, right=right, handle_type=handle_type))
+
+
+    def capture_handle_type_selection_free(self, left=True, right=True):
+        """
+
+        > Node: [Handle Type Selection](GeometryNodeCurveHandleTypeSelection.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/handle_type_selection.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveHandleTypeSelection.html)
+
+        #### Args:
+        - handle_type (str): 'AUTO' in [FREE, AUTO, VECTOR, ALIGN]
+        - mode (set): {'LEFT', 'RIGHT'}
+
+        #### Returns:
+        - node with sockets ['selection']
+
+
+        """
+
+        return self.capture_handle_type_selection(left=left, right=right, handle_type='FREE')
+
+
+    def capture_handle_type_selection_auto(self, left=True, right=True):
+        """
+
+        > Node: [Handle Type Selection](GeometryNodeCurveHandleTypeSelection.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/handle_type_selection.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveHandleTypeSelection.html)
+
+        #### Args:
+        - handle_type (str): 'AUTO' in [FREE, AUTO, VECTOR, ALIGN]
+        - mode (set): {'LEFT', 'RIGHT'}
+
+        #### Returns:
+        - node with sockets ['selection']
+
+
+        """
+
+        return self.capture_handle_type_selection(left=left, right=right, handle_type='AUTO')
+
+
+    def capture_handle_type_selection_vector(self, left=True, right=True):
+        """
+
+        > Node: [Handle Type Selection](GeometryNodeCurveHandleTypeSelection.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/handle_type_selection.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveHandleTypeSelection.html)
+
+        #### Args:
+        - handle_type (str): 'AUTO' in [FREE, AUTO, VECTOR, ALIGN]
+        - mode (set): {'LEFT', 'RIGHT'}
+
+        #### Returns:
+        - node with sockets ['selection']
+
+
+        """
+
+        return self.capture_handle_type_selection(left=left, right=right, handle_type='VECTOR')
+
+
+    def capture_handle_type_selection_align(self, left=True, right=True):
+        """
+
+        > Node: [Handle Type Selection](GeometryNodeCurveHandleTypeSelection.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/handle_type_selection.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveHandleTypeSelection.html)
+
+        #### Args:
+        - handle_type (str): 'AUTO' in [FREE, AUTO, VECTOR, ALIGN]
+        - mode (set): {'LEFT', 'RIGHT'}
+
+        #### Returns:
+        - node with sockets ['selection']
+
+
+        """
+
+        return self.capture_handle_type_selection(left=left, right=right, handle_type='ALIGN')
+
+
     def handle_type_selection_node(self, handle_type='AUTO', mode={'LEFT', 'RIGHT'}):
         """
 
@@ -3380,7 +3021,7 @@ class ControlPoint(Domain):
         return self.attribute_node(nodes.HandleTypeSelection(handle_type=handle_type, mode=mode)).selection
 
 
-    def instance_on_points(self, instance=None, pick_instance=None, instance_index=None, rotation=None, scale=None):
+    def instance_on(self, instance=None, pick_instance=None, instance_index=None, rotation=None, scale=None):
         """
 
         > Node: [Instance on Points](GeometryNodeInstanceOnPoints.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instance_on_points.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInstanceOnPoints.html)
@@ -3393,13 +3034,12 @@ class ControlPoint(Domain):
         - scale: Vector
 
         #### Returns:
-        - socket `instances` of class Instances
+        - socket `instances`
 
 
         """
 
-        import geonodes as gn
-        return gn.Instances(nodes.InstanceOnPoints(points=self.data_socket, selection=self.selection, instance=instance, pick_instance=pick_instance, instance_index=instance_index, rotation=rotation, scale=scale).instances)
+        return nodes.InstanceOnPoints(points=self.data_socket, selection=self.selection, instance=instance, pick_instance=pick_instance, instance_index=instance_index, rotation=rotation, scale=scale).instances
 
 
     def interpolate(self, guide_curves=None, guide_up=None, guide_group_id=None, point_up=None, point_group_id=None, max_neighbors=None):
@@ -3427,6 +3067,40 @@ class ControlPoint(Domain):
 
 
     @property
+    def left_handle_offset(self):
+        """
+
+        > Node: [Set Handle Positions](GeometryNodeSetCurveHandlePositions.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/set_handle_positions.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetCurveHandlePositions.html)
+
+        'left_handle_offset' is a write only property.
+        Raise an exception if attempt to read.
+
+
+
+        """
+
+        raise Exception("Error: 'left_handle_offset' is a write only property of class ControlPoint!")
+
+
+    @left_handle_offset.setter
+    def left_handle_offset(self, attr_value):
+        """
+
+        > Node: [Set Handle Positions](GeometryNodeSetCurveHandlePositions.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/set_handle_positions.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetCurveHandlePositions.html)
+
+        Node implemented as property setter.
+
+        #### Args:
+        - attr_value: offset
+
+
+
+        """
+
+        self.socket_stack(nodes.SetHandlePositions(curve=self.data_socket, selection=self.selection, position=None, offset=attr_value, mode='LEFT'))
+
+
+    @property
     def left_handle_positions(self):
         """
 
@@ -3438,7 +3112,7 @@ class ControlPoint(Domain):
 
         """
 
-        return self.attribute_node(nodes.CurveHandlePositions(relative=None)).left
+        return self.attribute_node(nodes.CurveHandlePositions(relative=False)).left
 
 
     @left_handle_positions.setter
@@ -3497,58 +3171,7 @@ class ControlPoint(Domain):
         return self._c_geometrynodesplineparameter
 
 
-    @property
-    def parameter_factor(self):
-        """
-
-        > Node: [Spline Parameter](GeometryNodeSplineParameter.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/spline_parameter.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSplineParameter.html)
-
-        #### Returns:
-        - socket `factor`
-
-
-        """
-
-        if not hasattr(self, '_c_geometrynodesplineparameter'):
-            self._c_geometrynodesplineparameter = self.attribute_node(nodes.SplineParameter())
-        return self._c_geometrynodesplineparameter.factor
-
-
-    @property
-    def parameter_index(self):
-        """
-
-        > Node: [Spline Parameter](GeometryNodeSplineParameter.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/spline_parameter.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSplineParameter.html)
-
-        #### Returns:
-        - socket `index`
-
-
-        """
-
-        if not hasattr(self, '_c_geometrynodesplineparameter'):
-            self._c_geometrynodesplineparameter = self.attribute_node(nodes.SplineParameter())
-        return self._c_geometrynodesplineparameter.index
-
-
-    @property
-    def parameter_length(self):
-        """
-
-        > Node: [Spline Parameter](GeometryNodeSplineParameter.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/spline_parameter.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSplineParameter.html)
-
-        #### Returns:
-        - socket `length`
-
-
-        """
-
-        if not hasattr(self, '_c_geometrynodesplineparameter'):
-            self._c_geometrynodesplineparameter = self.attribute_node(nodes.SplineParameter())
-        return self._c_geometrynodesplineparameter.length
-
-
-    def proximity(self, target=None, source_position=None):
+    def proximity(self, target=None, source_position=None, target_element='FACES'):
         """
 
         > Node: [Geometry Proximity](GeometryNodeProximity.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/geometry_proximity.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeProximity.html)
@@ -3556,6 +3179,7 @@ class ControlPoint(Domain):
         #### Args:
         - target: Geometry
         - source_position: Vector
+        - target_element (str): 'FACES' in [POINTS, EDGES, FACES]
 
         ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeProximity.webp)
 
@@ -3565,7 +3189,7 @@ class ControlPoint(Domain):
 
         """
 
-        return self.attribute_node(nodes.GeometryProximity(target=target, source_position=source_position, target_element='POINTS'))
+        return self.attribute_node(nodes.GeometryProximity(target=target, source_position=source_position, target_element=target_element))
 
 
     @property
@@ -3602,6 +3226,70 @@ class ControlPoint(Domain):
 
 
     @property
+    def relative_left_handle_positions(self):
+        """
+
+        > Node: [Curve Handle Positions](GeometryNodeInputCurveHandlePositions.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/curve_handle_position.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputCurveHandlePositions.html)
+
+        #### Returns:
+        - socket `left`
+
+
+        """
+
+        return self.attribute_node(nodes.CurveHandlePositions(relative=True)).left
+
+
+    @property
+    def relative_right_handle_positions(self):
+        """
+
+        > Node: [Curve Handle Positions](GeometryNodeInputCurveHandlePositions.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/curve_handle_position.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputCurveHandlePositions.html)
+
+        #### Returns:
+        - socket `right`
+
+
+        """
+
+        return self.attribute_node(nodes.CurveHandlePositions(relative=True)).right
+
+
+    @property
+    def right_handle_offset(self):
+        """
+
+        > Node: [Set Handle Positions](GeometryNodeSetCurveHandlePositions.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/set_handle_positions.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetCurveHandlePositions.html)
+
+        'right_handle_offset' is a write only property.
+        Raise an exception if attempt to read.
+
+
+
+        """
+
+        raise Exception("Error: 'right_handle_offset' is a write only property of class ControlPoint!")
+
+
+    @right_handle_offset.setter
+    def right_handle_offset(self, attr_value):
+        """
+
+        > Node: [Set Handle Positions](GeometryNodeSetCurveHandlePositions.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/set_handle_positions.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetCurveHandlePositions.html)
+
+        Node implemented as property setter.
+
+        #### Args:
+        - attr_value: offset
+
+
+
+        """
+
+        self.socket_stack(nodes.SetHandlePositions(curve=self.data_socket, selection=self.selection, position=None, offset=attr_value, mode='RIGHT'))
+
+
+    @property
     def right_handle_positions(self):
         """
 
@@ -3613,7 +3301,7 @@ class ControlPoint(Domain):
 
         """
 
-        return self.attribute_node(nodes.CurveHandlePositions(relative=None)).right
+        return self.attribute_node(nodes.CurveHandlePositions(relative=False)).right
 
 
     @right_handle_positions.setter
@@ -3669,42 +3357,6 @@ class ControlPoint(Domain):
         return self.socket_stack(nodes.SetHandlePositions(curve=self.data_socket, selection=self.selection, position=position, offset=offset, mode=mode))
 
 
-    def set_handle_positions_left(self, position=None, offset=None):
-        """
-
-        > Node: [Set Handle Positions](GeometryNodeSetCurveHandlePositions.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/set_handle_positions.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetCurveHandlePositions.html)
-
-        #### Args:
-        - position: Vector
-        - offset: Vector
-
-        #### Returns:
-        - self
-
-
-        """
-
-        return self.socket_stack(nodes.SetHandlePositions(curve=self.data_socket, selection=self.selection, position=position, offset=offset, mode='LEFT'))
-
-
-    def set_handle_positions_right(self, position=None, offset=None):
-        """
-
-        > Node: [Set Handle Positions](GeometryNodeSetCurveHandlePositions.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/set_handle_positions.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetCurveHandlePositions.html)
-
-        #### Args:
-        - position: Vector
-        - offset: Vector
-
-        #### Returns:
-        - self
-
-
-        """
-
-        return self.socket_stack(nodes.SetHandlePositions(curve=self.data_socket, selection=self.selection, position=position, offset=offset, mode='RIGHT'))
-
-
     def set_handle_type(self, left=True, right=True, handle_type='AUTO'):
         """
 
@@ -3745,6 +3397,24 @@ class ControlPoint(Domain):
         return self.socket_stack(nodes.SetHandleType(curve=self.data_socket, selection=self.selection, handle_type=handle_type, mode=mode))
 
 
+    def set_left_handle_positions(self, position=None, offset=None):
+        """
+
+        > Node: [Set Handle Positions](GeometryNodeSetCurveHandlePositions.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/set_handle_positions.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetCurveHandlePositions.html)
+
+        #### Args:
+        - position: Vector
+        - offset: Vector
+
+        #### Returns:
+        - self
+
+
+        """
+
+        return self.socket_stack(nodes.SetHandlePositions(curve=self.data_socket, selection=self.selection, position=position, offset=offset, mode='LEFT'))
+
+
     def set_radius(self, radius=None):
         """
 
@@ -3760,6 +3430,24 @@ class ControlPoint(Domain):
         """
 
         return self.socket_stack(nodes.SetCurveRadius(curve=self.data_socket, selection=self.selection, radius=radius))
+
+
+    def set_right_handle_positions(self, position=None, offset=None):
+        """
+
+        > Node: [Set Handle Positions](GeometryNodeSetCurveHandlePositions.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/set_handle_positions.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetCurveHandlePositions.html)
+
+        #### Args:
+        - position: Vector
+        - offset: Vector
+
+        #### Returns:
+        - self
+
+
+        """
+
+        return self.socket_stack(nodes.SetHandlePositions(curve=self.data_socket, selection=self.selection, position=position, offset=offset, mode='RIGHT'))
 
 
     def set_tilt(self, tilt=None):
@@ -3879,7 +3567,7 @@ class CloudPoint(Domain):
         return self.socket_stack(nodes.DuplicateElements(geometry=self.data_socket, selection=self.selection, amount=amount, domain=self.domain)).node.duplicate_index
 
 
-    def instance_on_points(self, instance=None, pick_instance=None, instance_index=None, rotation=None, scale=None):
+    def instance_on(self, instance=None, pick_instance=None, instance_index=None, rotation=None, scale=None):
         """
 
         > Node: [Instance on Points](GeometryNodeInstanceOnPoints.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instance_on_points.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInstanceOnPoints.html)
@@ -3892,13 +3580,12 @@ class CloudPoint(Domain):
         - scale: Vector
 
         #### Returns:
-        - socket `instances` of class Instances
+        - socket `instances`
 
 
         """
 
-        import geonodes as gn
-        return gn.Instances(nodes.InstanceOnPoints(points=self.data_socket, selection=self.selection, instance=instance, pick_instance=pick_instance, instance_index=instance_index, rotation=rotation, scale=scale).instances)
+        return nodes.InstanceOnPoints(points=self.data_socket, selection=self.selection, instance=instance, pick_instance=pick_instance, instance_index=instance_index, rotation=rotation, scale=scale).instances
 
 
     def interpolate(self, guide_curves=None, guide_up=None, guide_group_id=None, point_up=None, point_group_id=None, max_neighbors=None):
@@ -3959,7 +3646,7 @@ class CloudPoint(Domain):
         self.socket_stack(nodes.SetMaterial(geometry=self.data_socket, selection=self.selection, material=attr_value))
 
 
-    def proximity(self, target=None, source_position=None):
+    def proximity(self, target=None, source_position=None, target_element='FACES'):
         """
 
         > Node: [Geometry Proximity](GeometryNodeProximity.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/geometry_proximity.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeProximity.html)
@@ -3967,6 +3654,7 @@ class CloudPoint(Domain):
         #### Args:
         - target: Geometry
         - source_position: Vector
+        - target_element (str): 'FACES' in [POINTS, EDGES, FACES]
 
         ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeProximity.webp)
 
@@ -3976,7 +3664,7 @@ class CloudPoint(Domain):
 
         """
 
-        return self.attribute_node(nodes.GeometryProximity(target=target, source_position=source_position, target_element='POINTS'))
+        return self.attribute_node(nodes.GeometryProximity(target=target, source_position=source_position, target_element=target_element))
 
 
     @property

@@ -28,8 +28,6 @@ node = nodes.EdgeVertices()
 |----------------------|------------|
 | **[Edge](Edge.md)** |
 | [vertices](Edge.md#vertices) | `@property`<br> `def vertices(self):` |
-| [vertices_index](Edge.md#vertices_index) | `@property`<br> `def vertices_index(self):` |
-| [vertices_position](Edge.md#vertices_position) | `@property`<br> `def vertices_position(self):` |
 
 <sub>Go to [top](#node-Edge-Vertices) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

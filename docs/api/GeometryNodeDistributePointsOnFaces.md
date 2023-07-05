@@ -43,6 +43,7 @@ node = nodes.DistributePointsOnFaces(mesh=None, selection=None, distance_min=Non
 | Class or method name | Definition |
 |----------------------|------------|
 | **[Face](Face.md)** |
+| [distribute_points](Face.md#distribute_points) | `def distribute_points(self, distance_min=None, density_max=None, density=None, density_factor=None, seed=None, distribute_method='RANDOM', use_legacy_normal=False):` |
 | [distribute_points_random](Face.md#distribute_points_random) | `def distribute_points_random(self, density=None, seed=None, use_legacy_normal=False):` |
 | [distribute_points_poisson](Face.md#distribute_points_poisson) | `def distribute_points_poisson(self, distance_min=None, density_max=None, density_factor=None, seed=None, use_legacy_normal=False):` |
 | **[Mesh](Mesh.md)** |

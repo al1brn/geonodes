@@ -108,14 +108,18 @@ class Node:
         self.outputs = [DataSocket(bsocket, node=self) for bsocket in self.bnode.outputs]
         """ Output sockets list"""
         
-        # ----- Set by method as_attribute
+        # ----- Field management
         
-        self.is_attribute = False
-        """ Initialized by method :func:`as_attribute`. Will be analyzed by :func:`check_attributes` to complete the Tree."""
+        #self.is_attribute = False
+        #""" Initialized by method :func:`as_attribute`. Will be analyzed by :func:`check_attributes` to complete the Tree."""
         
-        # ----- Set by field for all output sockets
+        self.attr_bsocket = None
+        """ The geometry socket to capture from """
         
-        self.field_of = None
+        self.attr_domain = None
+        """ The domain it is an attribute of """
+        
+        self.field_of_ = None
         """ A pointer to the owning domain. Used to implement transfer attribute."""
         
         # ----- Socket names
@@ -193,7 +197,7 @@ class Node:
             else:
                 ds = class_name(ds.bsocket)
                         
-        ds.field_of = self.field_of
+        ds.attr_domain = self.attr_domain
         return ds
 
     # ------------------------------------------------------------------------------------------
@@ -546,7 +550,20 @@ class Node:
     # ====================================================================================================
     # The node is an attribute
     
-    def as_attribute(self, owning_socket, domain='POINT'):
+    @property
+    def is_attribute(self):
+        return self.attr_bsocket is not None
+    
+    @property
+    def attr_domain_name(self):
+        if self.attr_domain is None:
+            return 'POINT'
+        elif isinstance(self.attr_domain, str):
+            return self.attr_domain
+        else:
+            return self.attr_domain.domain
+    
+    def as_attribute(self, geometry, domain='POINT'):
         """ Indicates that the node is an attribute.
         
         :param owning_socket: The owning socket it is an atribute of
@@ -561,12 +578,11 @@ class Node:
         see :func:`Tree.check_attributes` 
         """
         
-        self.is_attribute = True
-        if isinstance(owning_socket, bpy.types.NodeSocket):
-            self.owning_bsocket = owning_socket
+        if isinstance(geometry, bpy.types.NodeSocket):
+            self.attr_bsocket = geometry
         else:
-            self.owning_bsocket = owning_socket.bsocket
-        self.domain = domain
+            self.attr_bsocket = geometry.bsocket
+        self.attr_domain = domain
         
         return self
         
@@ -700,10 +716,10 @@ class Node:
         return gn.Volume(socket)
     
     @staticmethod
-    def Curves(socket):
+    def Curve(socket):
         """ Initialize a Curves with a DataSocket"""
         from geonodes.nodes import classes as gn
-        return gn.Curves(socket)
+        return gn.Curve(socket)
     
     @staticmethod
     def Texture(socket):
@@ -830,7 +846,7 @@ class CustomGroup(Node):
         if ds is None:
             raise AttributeError(f"'{type(self).__name__}' object has not attribute '{name}'")
         else:
-            ds.field_of = self.field_of
+            ds.attr_domain = self.attr_domain
             return ds
 
     # ------------------------------------------------------------------------------------------

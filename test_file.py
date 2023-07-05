@@ -33,8 +33,6 @@ with gn.Tree('Geometry Nodes') as tree:
     geometry.store_named_vector()
     geometry.store_named_color()
     var = geometry.bounding_box
-    var = geometry.bounding_box_min
-    var = geometry.bounding_box_min
     var = geometry.convex_hull
     geometry.delete()
     geometry.duplicate()
@@ -62,7 +60,6 @@ with gn.Tree('Geometry Nodes') as tree:
     geometry.set_ID()
     geometry.set_position()
     var = gn.Geometry.Collection()
-    var = geometry.is_viewport
     var = geometry.ID
     var = geometry.index
     geometry.named_attribute()
@@ -71,7 +68,6 @@ with gn.Tree('Geometry Nodes') as tree:
     geometry.named_vector()
     geometry.named_color()
     geometry.named_boolean()
-    geometry.named_attribute_exists()
     var = geometry.normal
     var = geometry.position
     var = geometry.radius
@@ -98,70 +94,6 @@ with gn.Tree('Geometry Nodes') as tree:
     curve.splines.attribute_statistic()
     instances.insts.attribute_statistic()
     points.points.attribute_statistic()
-    mesh.verts.attribute_mean()
-    mesh.edges.attribute_mean()
-    mesh.faces.attribute_mean()
-    mesh.corners.attribute_mean()
-    curve.points.attribute_mean()
-    curve.splines.attribute_mean()
-    instances.insts.attribute_mean()
-    points.points.attribute_mean()
-    mesh.verts.attribute_median()
-    mesh.edges.attribute_median()
-    mesh.faces.attribute_median()
-    mesh.corners.attribute_median()
-    curve.points.attribute_median()
-    curve.splines.attribute_median()
-    instances.insts.attribute_median()
-    points.points.attribute_median()
-    mesh.verts.attribute_sum()
-    mesh.edges.attribute_sum()
-    mesh.faces.attribute_sum()
-    mesh.corners.attribute_sum()
-    curve.points.attribute_sum()
-    curve.splines.attribute_sum()
-    instances.insts.attribute_sum()
-    points.points.attribute_sum()
-    mesh.verts.attribute_min()
-    mesh.edges.attribute_min()
-    mesh.faces.attribute_min()
-    mesh.corners.attribute_min()
-    curve.points.attribute_min()
-    curve.splines.attribute_min()
-    instances.insts.attribute_min()
-    points.points.attribute_min()
-    mesh.verts.attribute_max()
-    mesh.edges.attribute_max()
-    mesh.faces.attribute_max()
-    mesh.corners.attribute_max()
-    curve.points.attribute_max()
-    curve.splines.attribute_max()
-    instances.insts.attribute_max()
-    points.points.attribute_max()
-    mesh.verts.attribute_range()
-    mesh.edges.attribute_range()
-    mesh.faces.attribute_range()
-    mesh.corners.attribute_range()
-    curve.points.attribute_range()
-    curve.splines.attribute_range()
-    instances.insts.attribute_range()
-    points.points.attribute_range()
-    mesh.verts.attribute_std()
-    mesh.edges.attribute_std()
-    mesh.faces.attribute_std()
-    mesh.corners.attribute_std()
-    curve.points.attribute_std()
-    curve.splines.attribute_std()
-    instances.insts.attribute_std()
-    points.points.attribute_std()
-    mesh.verts.attribute_var()
-    mesh.edges.attribute_var()
-    mesh.faces.attribute_var()
-    mesh.corners.attribute_var()
-    curve.points.attribute_var()
-    curve.splines.attribute_var()
-    instances.insts.attribute_var()
-    points.points.attribute_var()
     mesh.verts.blur_attribute()
     mesh.edges.blur_attribute()
     mesh.faces.blur_attribute()
@@ -403,14 +335,6 @@ with gn.Tree('Geometry Nodes') as tree:
     curve.splines.named_boolean()
     instances.insts.named_boolean()
     points.points.named_boolean()
-    mesh.verts.named_attribute_exists()
-    mesh.edges.named_attribute_exists()
-    mesh.faces.named_attribute_exists()
-    mesh.corners.named_attribute_exists()
-    curve.points.named_attribute_exists()
-    curve.splines.named_attribute_exists()
-    instances.insts.named_attribute_exists()
-    points.points.named_attribute_exists()
     var = mesh.verts.normal
     var = mesh.edges.normal
     var = mesh.faces.normal
@@ -549,8 +473,6 @@ with gn.Tree('Geometry Nodes') as tree:
     mesh.is_face_planar()
     mesh.is_shade_smooth()
     var = mesh.island
-    var = mesh.island_index
-    var = mesh.island_count
     mesh.shortest_edge_paths()
     mesh.set_shade_smooth()
     mesh.edges_to_face_groups()
@@ -651,19 +573,13 @@ with gn.Tree('Geometry Nodes') as tree:
     mesh.verts.merge_by_distance_connected()
     mesh.verts.sample_nearest()
     mesh.verts.separate()
-    mesh.verts.instance_on_points()
+    mesh.verts.instance_on()
     mesh.verts.extrude()
     mesh.verts.to_points()
     mesh.verts.to_volume()
     var = mesh.verts.neighbors
-    var = mesh.verts.neighbors_vertex_count
-    var = mesh.verts.neighbors_face_count
     mesh.verts.corners()
-    mesh.verts.corners_index()
-    mesh.verts.corners_total()
     mesh.verts.edges()
-    mesh.verts.edges_index()
-    mesh.verts.edges_total()
     mesh.verts.to_sdf_volume()
     var = mesh.faces.count
     mesh.faces.delete()
@@ -687,19 +603,14 @@ with gn.Tree('Geometry Nodes') as tree:
     mesh.faces.triangulate()
     var = mesh.faces.area
     var = mesh.faces.neighbors
-    var = mesh.faces.neighbors_vertex_count
-    var = mesh.faces.neighbors_face_count
     mesh.faces.face_group_boundaries()
     mesh.faces.is_planar()
     var = mesh.faces.shade_smooth
     var = mesh.faces.island
-    var = mesh.faces.island_index
-    var = mesh.faces.island_count
     mesh.faces.set_shade_smooth()
     mesh.faces.shade_smooth = None
     mesh.faces.corners()
-    mesh.faces.corners_index()
-    mesh.faces.corners_total()
+    mesh.faces.distribute_points()
     mesh.faces.distribute_points_random()
     mesh.faces.distribute_points_poisson()
     mesh.faces.pack_uv_islands()
@@ -724,17 +635,11 @@ with gn.Tree('Geometry Nodes') as tree:
     var = mesh.edges.signed_angle
     var = mesh.edges.neighbors
     var = mesh.edges.vertices
-    var = mesh.edges.vertices_index
-    var = mesh.edges.vertices_position
     mesh.edges.to_face_groups()
     var = mesh.corners.count
     mesh.corners.sample_nearest()
     mesh.corners.edges()
-    var = mesh.corners.previous_vertex
-    var = mesh.corners.next_vertex
     mesh.corners.face()
-    var = mesh.corners.face_index
-    var = mesh.corners.index_in_face
     mesh.corners.offset_in_face()
     var = mesh.corners.vertex_index
     var = curve.splines.count
@@ -769,6 +674,8 @@ with gn.Tree('Geometry Nodes') as tree:
     curve.points.handle_positions()
     var = curve.points.left_handle_positions
     var = curve.points.right_handle_positions
+    var = curve.points.relative_left_handle_positions
+    var = curve.points.relative_right_handle_positions
     var = curve.points.tangent
     var = curve.points.tilt
     curve.points.endpoint_selection()
@@ -778,19 +685,25 @@ with gn.Tree('Geometry Nodes') as tree:
     curve.points.handle_type_selection()
     curve.points.handle_type_selection()
     curve.points.handle_type_selection()
+    curve.points.handle_type_selection()
+    curve.points.handle_type_selection()
+    curve.points.handle_type_selection()
+    curve.points.handle_type_selection()
+    curve.points.handle_type_selection()
     var = curve.points.parameter
-    var = curve.points.parameter_factor
-    var = curve.points.parameter_length
-    var = curve.points.parameter_index
     curve.points.set_radius()
     curve.points.radius = None
     curve.points.set_tilt()
     curve.points.tilt = None
     curve.points.set_handle_positions()
-    curve.points.set_handle_positions_left()
-    curve.points.set_handle_positions_right()
+    curve.points.set_left_handle_positions()
+    curve.points.set_right_handle_positions()
     curve.points.left_handle_positions = (1, 2, 3)
     curve.points.right_handle_positions = (1, 2, 3)
+    
+    curve.points.left_handle_offset = (1, 2, 3)
+    
+    curve.points.right_handle_offset = (1, 2, 3)
     curve.points.set_handle_type_node()
     curve.points.set_handle_type()
     curve.points.interpolate()
@@ -801,7 +714,7 @@ with gn.Tree('Geometry Nodes') as tree:
     curve.points.proximity()
     curve.points.separate()
     var = curve.points.radius
-    curve.points.instance_on_points()
+    curve.points.instance_on()
     var = points.points.count
     points.points.interpolate()
     points.points.delete()
@@ -809,7 +722,7 @@ with gn.Tree('Geometry Nodes') as tree:
     points.points.proximity()
     points.points.sample_nearest()
     var = points.points.radius
-    points.points.instance_on_points()
+    points.points.instance_on()
     points.points.set_material()
     
     points.points.material = None
@@ -851,9 +764,6 @@ with gn.Tree('Geometry Nodes') as tree:
     gn.color_color()
     gn.color_value()
     gn.rgb_curves()
-    gn.separate_rgb()
-    gn.separate_hsv()
-    gn.separate_hsl()
     gn.geometry_to_instance()
     gn.join_geometry()
     gn.join_strings()
@@ -1047,7 +957,6 @@ with gn.Tree('Geometry Nodes') as tree:
     color.mix_color()
     color.mix_value()
     var = color.rgb_curves
-    color.separate_color()
     var = gn.Color.Color()
     color.darker()
     color.brighter()

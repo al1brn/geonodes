@@ -36,7 +36,7 @@ class Geometry(geosocks.Geometry):
 
         """
 
-        return self.attribute_node(nodes.ID()).ID
+        return self.attribute_node(nodes.ID(), domain='POINT').ID
 
 
     def attribute_statistic(self, selection=None, attribute=None, domain='POINT'):
@@ -67,50 +67,17 @@ class Geometry(geosocks.Geometry):
 
         > Node: [Bounding Box](GeometryNodeBoundBox.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/bounding_box.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeBoundBox.html)
 
-        #### Returns:
-        - socket `bounding_box` of class Mesh
-
-
-        """
-
-        import geonodes as gn
-        if not hasattr(self, '_c_geometrynodeboundbox'):
-            self._c_geometrynodeboundbox = nodes.BoundingBox(geometry=self)
-        return gn.Mesh(self._c_geometrynodeboundbox.bounding_box)
-
-
-    @property
-    def bounding_box_min(self):
-        """
-
-        > Node: [Bounding Box](GeometryNodeBoundBox.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/bounding_box.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeBoundBox.html)
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeBoundBox.webp)
 
         #### Returns:
-        - socket `min`
+        - node with sockets ['bounding_box', 'min', 'max']
 
 
         """
 
         if not hasattr(self, '_c_geometrynodeboundbox'):
             self._c_geometrynodeboundbox = nodes.BoundingBox(geometry=self)
-        return self._c_geometrynodeboundbox.min
-
-
-    @property
-    def bounding_box_min(self):
-        """
-
-        > Node: [Bounding Box](GeometryNodeBoundBox.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/bounding_box.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeBoundBox.html)
-
-        #### Returns:
-        - socket `max`
-
-
-        """
-
-        if not hasattr(self, '_c_geometrynodeboundbox'):
-            self._c_geometrynodeboundbox = nodes.BoundingBox(geometry=self)
-        return self._c_geometrynodeboundbox.max
+        return self._c_geometrynodeboundbox
 
 
     def capture_attribute(self, value=None, domain='POINT'):
@@ -263,7 +230,7 @@ class Geometry(geosocks.Geometry):
         """
 
         data_type_ = self.value_data_type(value, 'FLOAT')
-        return self.attribute_node(nodes.EvaluateAtIndex(index=index, value=value, data_type=data_type_, domain=domain)).value
+        return self.attribute_node(nodes.EvaluateAtIndex(index=index, value=value, data_type=data_type_, domain=domain), domain='POINT').value
 
 
     @property
@@ -278,7 +245,7 @@ class Geometry(geosocks.Geometry):
 
         """
 
-        return self.attribute_node(nodes.Index()).index
+        return self.attribute_node(nodes.Index(), domain='POINT').index
 
 
     def index_of_nearest(self, position=None, group_id=None):
@@ -298,7 +265,7 @@ class Geometry(geosocks.Geometry):
 
         """
 
-        return self.attribute_node(nodes.IndexOfNearest(position=position, group_id=group_id))
+        return self.attribute_node(nodes.IndexOfNearest(position=position, group_id=group_id), domain='POINT')
 
 
     @property
@@ -335,22 +302,7 @@ class Geometry(geosocks.Geometry):
         """
 
         data_type_ = self.value_data_type(value, 'FLOAT')
-        return self.attribute_node(nodes.EvaluateOnDomain(value=value, data_type=data_type_, domain=domain)).value
-
-
-    @property
-    def is_viewport(self):
-        """
-
-        > Node: [Is Viewport](GeometryNodeIsViewport.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/is_viewport.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeIsViewport.html)
-
-        #### Returns:
-        - socket `is_viewport`
-
-
-        """
-
-        return self.attribute_node(nodes.IsViewport()).is_viewport
+        return self.attribute_node(nodes.EvaluateOnDomain(value=value, data_type=data_type_, domain=domain), domain='POINT').value
 
 
     def join(*geometry):
@@ -384,7 +336,7 @@ class Geometry(geosocks.Geometry):
 
         """
 
-        return self.attribute_node(nodes.MaterialIndex()).material_index
+        return self.attribute_node(nodes.MaterialIndex(), domain='FACE').material_index
 
 
     def material_selection(self, material=None):
@@ -401,7 +353,7 @@ class Geometry(geosocks.Geometry):
 
         """
 
-        return self.attribute_node(nodes.MaterialSelection(material=material)).selection
+        return self.attribute_node(nodes.MaterialSelection(material=material), domain='POINT').selection
 
 
     def merge_by_distance(self, selection=None, distance=None, mode='ALL'):
@@ -450,31 +402,15 @@ class Geometry(geosocks.Geometry):
         - name: String
         - data_type (str): 'FLOAT' in [FLOAT, INT, FLOAT_VECTOR, FLOAT_COLOR, BOOLEAN]
 
-        #### Returns:
-        - socket `attribute`
-
-
-        """
-
-        return self.attribute_node(nodes.NamedAttribute(name=name, data_type=data_type)).attribute
-
-
-    def named_attribute_exists(self, name=None, data_type='FLOAT'):
-        """
-
-        > Node: [Named Attribute](GeometryNodeInputNamedAttribute.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/named_attribute.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputNamedAttribute.html)
-
-        #### Args:
-        - name: String
-        - data_type (str): 'FLOAT' in [FLOAT, INT, FLOAT_VECTOR, FLOAT_COLOR, BOOLEAN]
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeInputNamedAttribute.webp)
 
         #### Returns:
-        - socket `exists`
+        - node with sockets ['attribute', 'exists']
 
 
         """
 
-        return self.attribute_node(nodes.NamedAttribute(name=name, data_type=data_type)).exists
+        return self.attribute_node(nodes.NamedAttribute(name=name, data_type=data_type), domain='POINT')
 
 
     def named_boolean(self, name=None):
@@ -491,7 +427,7 @@ class Geometry(geosocks.Geometry):
 
         """
 
-        return self.attribute_node(nodes.NamedAttribute(name=name, data_type='BOOLEAN')).attribute
+        return self.attribute_node(nodes.NamedAttribute(name=name, data_type='BOOLEAN'), domain='POINT').attribute
 
 
     def named_color(self, name=None):
@@ -508,7 +444,7 @@ class Geometry(geosocks.Geometry):
 
         """
 
-        return self.attribute_node(nodes.NamedAttribute(name=name, data_type='FLOAT_COLOR')).attribute
+        return self.attribute_node(nodes.NamedAttribute(name=name, data_type='FLOAT_COLOR'), domain='POINT').attribute
 
 
     def named_float(self, name=None):
@@ -525,7 +461,7 @@ class Geometry(geosocks.Geometry):
 
         """
 
-        return self.attribute_node(nodes.NamedAttribute(name=name, data_type='FLOAT')).attribute
+        return self.attribute_node(nodes.NamedAttribute(name=name, data_type='FLOAT'), domain='POINT').attribute
 
 
     def named_integer(self, name=None):
@@ -542,7 +478,7 @@ class Geometry(geosocks.Geometry):
 
         """
 
-        return self.attribute_node(nodes.NamedAttribute(name=name, data_type='INT')).attribute
+        return self.attribute_node(nodes.NamedAttribute(name=name, data_type='INT'), domain='POINT').attribute
 
 
     def named_vector(self, name=None):
@@ -559,7 +495,7 @@ class Geometry(geosocks.Geometry):
 
         """
 
-        return self.attribute_node(nodes.NamedAttribute(name=name, data_type='FLOAT_VECTOR')).attribute
+        return self.attribute_node(nodes.NamedAttribute(name=name, data_type='FLOAT_VECTOR'), domain='POINT').attribute
 
 
     @property
@@ -574,7 +510,7 @@ class Geometry(geosocks.Geometry):
 
         """
 
-        return self.attribute_node(nodes.Normal()).normal
+        return self.attribute_node(nodes.Normal(), domain='FACE').normal
 
 
     @property
@@ -607,7 +543,7 @@ class Geometry(geosocks.Geometry):
 
         """
 
-        return self.attribute_node(nodes.Position()).position
+        return self.attribute_node(nodes.Position(), domain='POINT').position
 
 
     def proximity(self, target=None, source_position=None, target_element='FACES'):
@@ -628,7 +564,7 @@ class Geometry(geosocks.Geometry):
 
         """
 
-        return self.attribute_node(nodes.GeometryProximity(target=target, source_position=source_position, target_element=target_element))
+        return self.attribute_node(nodes.GeometryProximity(target=target, source_position=source_position, target_element=target_element), domain='POINT')
 
 
     def proximity_edges(self, target=None, source_position=None):
@@ -648,7 +584,7 @@ class Geometry(geosocks.Geometry):
 
         """
 
-        return self.attribute_node(nodes.GeometryProximity(target=target, source_position=source_position, target_element='EDGES'))
+        return self.attribute_node(nodes.GeometryProximity(target=target, source_position=source_position, target_element='EDGES'), domain='POINT')
 
 
     def proximity_faces(self, target=None, source_position=None):
@@ -668,7 +604,7 @@ class Geometry(geosocks.Geometry):
 
         """
 
-        return self.attribute_node(nodes.GeometryProximity(target=target, source_position=source_position, target_element='FACES'))
+        return self.attribute_node(nodes.GeometryProximity(target=target, source_position=source_position, target_element='FACES'), domain='POINT')
 
 
     def proximity_points(self, target=None, source_position=None):
@@ -688,7 +624,7 @@ class Geometry(geosocks.Geometry):
 
         """
 
-        return self.attribute_node(nodes.GeometryProximity(target=target, source_position=source_position, target_element='POINTS'))
+        return self.attribute_node(nodes.GeometryProximity(target=target, source_position=source_position, target_element='POINTS'), domain='POINT')
 
 
     @property
@@ -703,7 +639,7 @@ class Geometry(geosocks.Geometry):
 
         """
 
-        return self.attribute_node(nodes.Radius()).radius
+        return self.attribute_node(nodes.Radius(), domain='POINT').radius
 
 
     @staticmethod
@@ -811,7 +747,7 @@ class Geometry(geosocks.Geometry):
         """
 
         data_type_ = self.value_data_type(attribute, 'FLOAT')
-        return self.attribute_node(nodes.Raycast(target_geometry=target_geometry, attribute=attribute, source_position=source_position, ray_direction=ray_direction, ray_length=ray_length, data_type=data_type_, mapping=mapping))
+        return self.attribute_node(nodes.Raycast(target_geometry=target_geometry, attribute=attribute, source_position=source_position, ray_direction=ray_direction, ray_length=ray_length, data_type=data_type_, mapping=mapping), domain='POINT')
 
 
     def raycast_interpolated(self, target_geometry=None, attribute=None, source_position=None, ray_direction=None, ray_length=None):
@@ -835,7 +771,7 @@ class Geometry(geosocks.Geometry):
         """
 
         data_type_ = self.value_data_type(attribute, 'FLOAT')
-        return self.attribute_node(nodes.Raycast(target_geometry=target_geometry, attribute=attribute, source_position=source_position, ray_direction=ray_direction, ray_length=ray_length, data_type=data_type_, mapping='INTERPOLATED'))
+        return self.attribute_node(nodes.Raycast(target_geometry=target_geometry, attribute=attribute, source_position=source_position, ray_direction=ray_direction, ray_length=ray_length, data_type=data_type_, mapping='INTERPOLATED'), domain='POINT')
 
 
     def raycast_nearest(self, target_geometry=None, attribute=None, source_position=None, ray_direction=None, ray_length=None):
@@ -859,7 +795,7 @@ class Geometry(geosocks.Geometry):
         """
 
         data_type_ = self.value_data_type(attribute, 'FLOAT')
-        return self.attribute_node(nodes.Raycast(target_geometry=target_geometry, attribute=attribute, source_position=source_position, ray_direction=ray_direction, ray_length=ray_length, data_type=data_type_, mapping='NEAREST'))
+        return self.attribute_node(nodes.Raycast(target_geometry=target_geometry, attribute=attribute, source_position=source_position, ray_direction=ray_direction, ray_length=ray_length, data_type=data_type_, mapping='NEAREST'), domain='POINT')
 
 
     def remove_named_attribute(self, name=None):
@@ -1042,7 +978,7 @@ class Geometry(geosocks.Geometry):
 
         """
 
-        return self.attribute_node(nodes.SignedDistance()).signed_distance
+        return self.attribute_node(nodes.SignedDistance(), domain='POINT').signed_distance
 
 
     def store_named_attribute(self, selection=None, name=None, value=None, domain='POINT'):
@@ -1345,8 +1281,8 @@ class Mesh(Geometry):
         return nodes.Cone(vertices=vertices, side_segments=side_segments, fill_segments=fill_segments, radius_top=radius_top, radius_bottom=radius_bottom, depth=depth, fill_type=fill_type)
 
 
-    @classmethod
-    def Cube(cls, size=None, vertices_x=None, vertices_y=None, vertices_z=None):
+    @staticmethod
+    def Cube(size=None, vertices_x=None, vertices_y=None, vertices_z=None):
         """
 
         > Node: [Cube](GeometryNodeMeshCube.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh_primitives/cube.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshCube.html)
@@ -1393,8 +1329,8 @@ class Mesh(Geometry):
         return nodes.Cylinder(vertices=vertices, side_segments=side_segments, fill_segments=fill_segments, radius=radius, depth=depth, fill_type=fill_type)
 
 
-    @classmethod
-    def Grid(cls, size_x=None, size_y=None, vertices_x=None, vertices_y=None):
+    @staticmethod
+    def Grid(size_x=None, size_y=None, vertices_x=None, vertices_y=None):
         """
 
         > Node: [Grid](GeometryNodeMeshGrid.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh_primitives/grid.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshGrid.html)
@@ -1416,8 +1352,8 @@ class Mesh(Geometry):
         return nodes.Grid(size_x=size_x, size_y=size_y, vertices_x=vertices_x, vertices_y=vertices_y)
 
 
-    @classmethod
-    def IcoSphere(cls, radius=None, subdivisions=None):
+    @staticmethod
+    def IcoSphere(radius=None, subdivisions=None):
         """
 
         > Node: [Ico Sphere](GeometryNodeMeshIcoSphere.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh_primitives/icosphere.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshIcoSphere.html)
@@ -1520,8 +1456,8 @@ class Mesh(Geometry):
         return cls(nodes.MeshLine(count=count, resolution=None, start_location=start_location, offset=offset, count_mode='TOTAL', mode='OFFSET').mesh)
 
 
-    @classmethod
-    def UVSphere(cls, segments=None, rings=None, radius=None):
+    @staticmethod
+    def UVSphere(segments=None, rings=None, radius=None):
         """
 
         > Node: [UV Sphere](GeometryNodeMeshUVSphere.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh_primitives/uv_sphere.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshUVSphere.html)
@@ -1638,7 +1574,7 @@ class Mesh(Geometry):
 
         """
 
-        return self.attribute_node(nodes.CornersOfFace(face_index=face_index, weights=weights, sort_index=sort_index))
+        return self.attribute_node(nodes.CornersOfFace(face_index=face_index, weights=weights, sort_index=sort_index), domain='FACE')
 
 
     def corners_of_vertex(self, vertex_index=None, weights=None, sort_index=None):
@@ -1659,7 +1595,7 @@ class Mesh(Geometry):
 
         """
 
-        return self.attribute_node(nodes.CornersOfVertex(vertex_index=vertex_index, weights=weights, sort_index=sort_index))
+        return self.attribute_node(nodes.CornersOfVertex(vertex_index=vertex_index, weights=weights, sort_index=sort_index), domain='POINT')
 
 
     def delete_all(self, selection=None, domain='POINT'):
@@ -1849,7 +1785,7 @@ class Mesh(Geometry):
 
         """
 
-        return self.attribute_node(nodes.EdgesOfCorner(corner_index=corner_index))
+        return self.attribute_node(nodes.EdgesOfCorner(corner_index=corner_index), domain='CORNER')
 
 
     def edges_of_vertex(self, vertex_index=None, weights=None, sort_index=None):
@@ -1870,7 +1806,7 @@ class Mesh(Geometry):
 
         """
 
-        return self.attribute_node(nodes.EdgesOfVertex(vertex_index=vertex_index, weights=weights, sort_index=sort_index))
+        return self.attribute_node(nodes.EdgesOfVertex(vertex_index=vertex_index, weights=weights, sort_index=sort_index), domain='POINT')
 
 
     def edges_to_face_groups(self, boundary_edges=None):
@@ -1887,7 +1823,7 @@ class Mesh(Geometry):
 
         """
 
-        return self.attribute_node(nodes.EdgesToFaceGroups(boundary_edges=boundary_edges)).face_group_id
+        return self.attribute_node(nodes.EdgesToFaceGroups(boundary_edges=boundary_edges), domain='EDGE').face_group_id
 
 
     def extrude(self, selection=None, offset=None, offset_scale=None, individual=None, mode='FACES'):
@@ -1944,7 +1880,7 @@ class Mesh(Geometry):
 
         """
 
-        return self.attribute_node(nodes.FaceGroupBoundaries(face_group_id=face_group_id)).boundary_edges
+        return self.attribute_node(nodes.FaceGroupBoundaries(face_group_id=face_group_id), domain='FACE').boundary_edges
 
 
     def face_of_corner(self, corner_index=None):
@@ -1963,7 +1899,7 @@ class Mesh(Geometry):
 
         """
 
-        return self.attribute_node(nodes.FaceOfCorner(corner_index=corner_index))
+        return self.attribute_node(nodes.FaceOfCorner(corner_index=corner_index), domain='CORNER')
 
 
     def flip_faces(self, selection=None):
@@ -2019,7 +1955,7 @@ class Mesh(Geometry):
 
         """
 
-        return self.attribute_node(nodes.IsFacePlanar(threshold=threshold)).planar
+        return self.attribute_node(nodes.IsFacePlanar(threshold=threshold), domain='FACE').planar
 
 
     def is_shade_smooth(self):
@@ -2033,7 +1969,7 @@ class Mesh(Geometry):
 
         """
 
-        return self.attribute_node(nodes.IsShadeSmooth()).smooth
+        return self.attribute_node(nodes.IsShadeSmooth(), domain='FACE').smooth
 
 
     @property
@@ -2050,43 +1986,7 @@ class Mesh(Geometry):
 
         """
 
-        if not hasattr(self, '_c_geometrynodeinputmeshisland'):
-            self._c_geometrynodeinputmeshisland = self.attribute_node(nodes.MeshIsland())
-        return self._c_geometrynodeinputmeshisland
-
-
-    @property
-    def island_count(self):
-        """
-
-        > Node: [Mesh Island](GeometryNodeInputMeshIsland.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/mesh_island.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshIsland.html)
-
-        #### Returns:
-        - socket `island_count`
-
-
-        """
-
-        if not hasattr(self, '_c_geometrynodeinputmeshisland'):
-            self._c_geometrynodeinputmeshisland = self.attribute_node(nodes.MeshIsland())
-        return self._c_geometrynodeinputmeshisland.island_count
-
-
-    @property
-    def island_index(self):
-        """
-
-        > Node: [Mesh Island](GeometryNodeInputMeshIsland.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/mesh_island.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshIsland.html)
-
-        #### Returns:
-        - socket `island_index`
-
-
-        """
-
-        if not hasattr(self, '_c_geometrynodeinputmeshisland'):
-            self._c_geometrynodeinputmeshisland = self.attribute_node(nodes.MeshIsland())
-        return self._c_geometrynodeinputmeshisland.island_index
+        return self.attribute_node(nodes.MeshIsland(), domain='FACE')
 
 
     def offset_corner_in_face(self, corner_index=None, offset=None):
@@ -2104,7 +2004,7 @@ class Mesh(Geometry):
 
         """
 
-        return self.attribute_node(nodes.OffsetCornerInFace(corner_index=corner_index, offset=offset)).corner_index
+        return self.attribute_node(nodes.OffsetCornerInFace(corner_index=corner_index, offset=offset), domain='CORNER').corner_index
 
 
     def pack_uv_islands(self, uv=None, selection=None, margin=None, rotate=None):
@@ -2124,7 +2024,7 @@ class Mesh(Geometry):
 
         """
 
-        return self.attribute_node(nodes.PackUvIslands(uv=uv, selection=selection, margin=margin, rotate=rotate)).uv
+        return self.attribute_node(nodes.PackUvIslands(uv=uv, selection=selection, margin=margin, rotate=rotate), domain='FACE').uv
 
 
     @property
@@ -2301,7 +2201,7 @@ class Mesh(Geometry):
 
         """
 
-        return self.attribute_node(nodes.ShortestEdgePaths(end_vertex=end_vertex, edge_cost=edge_cost))
+        return self.attribute_node(nodes.ShortestEdgePaths(end_vertex=end_vertex, edge_cost=edge_cost), domain='POINT')
 
 
     def split_edges(self, selection=None):
@@ -2481,7 +2381,7 @@ class Mesh(Geometry):
 
         """
 
-        return self.attribute_node(nodes.UvUnwrap(selection=selection, seam=seam, margin=margin, fill_holes=fill_holes, method=method)).uv
+        return self.attribute_node(nodes.UvUnwrap(selection=selection, seam=seam, margin=margin, fill_holes=fill_holes, method=method), domain='FACE').uv
 
 
     def vertex_of_corner(self, corner_index=None):
@@ -2498,7 +2398,7 @@ class Mesh(Geometry):
 
         """
 
-        return self.attribute_node(nodes.VertexOfCorner(corner_index=corner_index)).vertex_index
+        return self.attribute_node(nodes.VertexOfCorner(corner_index=corner_index), domain='CORNER').vertex_index
 
 
 
@@ -2769,7 +2669,7 @@ class Curve(Geometry):
 
         """
 
-        return self.attribute_node(nodes.CurveOfPoint(point_index=point_index))
+        return self.attribute_node(nodes.CurveOfPoint(point_index=point_index), domain='POINT')
 
 
     def deform_on_surface(self):
@@ -2988,7 +2888,7 @@ class Curve(Geometry):
 
         """
 
-        return self.attribute_node(nodes.OffsetPointInCurve(point_index=point_index, offset=offset))
+        return self.attribute_node(nodes.OffsetPointInCurve(point_index=point_index, offset=offset), domain='POINT')
 
 
     @property
@@ -3026,7 +2926,7 @@ class Curve(Geometry):
 
         """
 
-        return self.attribute_node(nodes.PointsOfCurve(curve_index=curve_index, weights=weights, sort_index=sort_index))
+        return self.attribute_node(nodes.PointsOfCurve(curve_index=curve_index, weights=weights, sort_index=sort_index), domain='CURVE')
 
 
     def resample(self, selection=None, count=None, length=None, mode='COUNT'):
@@ -3666,7 +3566,7 @@ class Instances(Geometry):
 
         """
 
-        return self.attribute_node(nodes.InstanceRotation()).rotation
+        return self.attribute_node(nodes.InstanceRotation(), domain='INSTANCE').rotation
 
 
     @property
@@ -3681,7 +3581,7 @@ class Instances(Geometry):
 
         """
 
-        return self.attribute_node(nodes.InstanceScale()).scale
+        return self.attribute_node(nodes.InstanceScale(), domain='INSTANCE').scale
 
 
     def set_scale(self, selection=None, scale=None, center=None, local_space=None):
@@ -5692,25 +5592,6 @@ class Color(geosocks.Color):
         """
 
         return nodes.RgbCurves(fac=fac, color=self)
-
-
-    def separate_color(self, mode='RGB'):
-        """
-
-        > Node: [Separate Color](FunctionNodeSeparateColor.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html)
-
-        #### Args:
-        - mode (str): 'RGB' in [RGB, HSV, HSL]
-
-        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_FunctionNodeSeparateColor.webp)
-
-        #### Returns:
-        - node with sockets ['red', 'green', 'blue', 'alpha']
-
-
-        """
-
-        return nodes.SeparateColor(color=self, mode=mode)
 
 
     def switch(self, switch=None, true=None):
@@ -9468,8 +9349,8 @@ class Volume(Geometry):
 
 
 class Texture(geosocks.Texture):
-    @classmethod
-    def Brick(cls, vector=None, color1=None, color2=None, mortar=None, scale=None, mortar_size=None, mortar_smooth=None, bias=None, brick_width=None, row_height=None, offset=0.5, offset_frequency=2, squash=1.0, squash_frequency=2):
+    @staticmethod
+    def Brick(vector=None, color1=None, color2=None, mortar=None, scale=None, mortar_size=None, mortar_smooth=None, bias=None, brick_width=None, row_height=None, offset=0.5, offset_frequency=2, squash=1.0, squash_frequency=2):
         """
 
         > Node: [Brick Texture](ShaderNodeTexBrick.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/brick.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexBrick.html)
@@ -9501,8 +9382,8 @@ class Texture(geosocks.Texture):
         return nodes.BrickTexture(vector=vector, color1=color1, color2=color2, mortar=mortar, scale=scale, mortar_size=mortar_size, mortar_smooth=mortar_smooth, bias=bias, brick_width=brick_width, row_height=row_height, offset=offset, offset_frequency=offset_frequency, squash=squash, squash_frequency=squash_frequency)
 
 
-    @classmethod
-    def Checker(cls, vector=None, color1=None, color2=None, scale=None):
+    @staticmethod
+    def Checker(vector=None, color1=None, color2=None, scale=None):
         """
 
         > Node: [Checker Texture](ShaderNodeTexChecker.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/checker.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexChecker.html)
@@ -9524,8 +9405,8 @@ class Texture(geosocks.Texture):
         return nodes.CheckerTexture(vector=vector, color1=color1, color2=color2, scale=scale)
 
 
-    @classmethod
-    def Gradient(cls, vector=None, gradient_type='LINEAR'):
+    @staticmethod
+    def Gradient(vector=None, gradient_type='LINEAR'):
         """
 
         > Node: [Gradient Texture](ShaderNodeTexGradient.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/gradient.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexGradient.html)
@@ -9545,8 +9426,8 @@ class Texture(geosocks.Texture):
         return nodes.GradientTexture(vector=vector, gradient_type=gradient_type)
 
 
-    @classmethod
-    def GradientDiagonal(cls, vector=None):
+    @staticmethod
+    def GradientDiagonal(vector=None):
         """
 
         > Node: [Gradient Texture](ShaderNodeTexGradient.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/gradient.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexGradient.html)
@@ -9565,8 +9446,8 @@ class Texture(geosocks.Texture):
         return nodes.GradientTexture(vector=vector, gradient_type='DIAGONAL')
 
 
-    @classmethod
-    def GradientEeasing(cls, vector=None):
+    @staticmethod
+    def GradientEeasing(vector=None):
         """
 
         > Node: [Gradient Texture](ShaderNodeTexGradient.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/gradient.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexGradient.html)
@@ -9585,8 +9466,8 @@ class Texture(geosocks.Texture):
         return nodes.GradientTexture(vector=vector, gradient_type='EASING')
 
 
-    @classmethod
-    def GradientLinear(cls, vector=None):
+    @staticmethod
+    def GradientLinear(vector=None):
         """
 
         > Node: [Gradient Texture](ShaderNodeTexGradient.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/gradient.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexGradient.html)
@@ -9605,8 +9486,8 @@ class Texture(geosocks.Texture):
         return nodes.GradientTexture(vector=vector, gradient_type='LINEAR')
 
 
-    @classmethod
-    def GradientQuadratic(cls, vector=None):
+    @staticmethod
+    def GradientQuadratic(vector=None):
         """
 
         > Node: [Gradient Texture](ShaderNodeTexGradient.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/gradient.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexGradient.html)
@@ -9625,8 +9506,8 @@ class Texture(geosocks.Texture):
         return nodes.GradientTexture(vector=vector, gradient_type='QUADRATIC')
 
 
-    @classmethod
-    def GradientQuadratic_sphere(cls, vector=None):
+    @staticmethod
+    def GradientQuadratic_sphere(vector=None):
         """
 
         > Node: [Gradient Texture](ShaderNodeTexGradient.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/gradient.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexGradient.html)
@@ -9645,8 +9526,8 @@ class Texture(geosocks.Texture):
         return nodes.GradientTexture(vector=vector, gradient_type='QUADRATIC_SPHERE')
 
 
-    @classmethod
-    def GradientRadial(cls, vector=None):
+    @staticmethod
+    def GradientRadial(vector=None):
         """
 
         > Node: [Gradient Texture](ShaderNodeTexGradient.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/gradient.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexGradient.html)
@@ -9665,8 +9546,8 @@ class Texture(geosocks.Texture):
         return nodes.GradientTexture(vector=vector, gradient_type='RADIAL')
 
 
-    @classmethod
-    def GradientSpherical(cls, vector=None):
+    @staticmethod
+    def GradientSpherical(vector=None):
         """
 
         > Node: [Gradient Texture](ShaderNodeTexGradient.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/gradient.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexGradient.html)
@@ -9685,8 +9566,8 @@ class Texture(geosocks.Texture):
         return nodes.GradientTexture(vector=vector, gradient_type='SPHERICAL')
 
 
-    @classmethod
-    def Image(cls, image=None, vector=None, frame=None, extension='REPEAT', interpolation='Linear'):
+    @staticmethod
+    def Image(image=None, vector=None, frame=None, extension='REPEAT', interpolation='Linear'):
         """
 
         > Node: [Image Texture](GeometryNodeImageTexture.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/image.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeImageTexture.html)
@@ -9709,8 +9590,8 @@ class Texture(geosocks.Texture):
         return nodes.ImageTexture(image=image, vector=vector, frame=frame, extension=extension, interpolation=interpolation)
 
 
-    @classmethod
-    def Magic(cls, vector=None, scale=None, distortion=None, turbulence_depth=2):
+    @staticmethod
+    def Magic(vector=None, scale=None, distortion=None, turbulence_depth=2):
         """
 
         > Node: [Magic Texture](ShaderNodeTexMagic.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/magic.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexMagic.html)
@@ -9759,8 +9640,8 @@ class Texture(geosocks.Texture):
         return cls(nodes.MusgraveTexture(vector=vector, w=w, scale=scale, detail=detail, dimension=dimension, lacunarity=lacunarity, offset=offset, gain=gain, musgrave_dimensions=musgrave_dimensions, musgrave_type=musgrave_type).fac)
 
 
-    @classmethod
-    def Noise(cls, vector=None, w=None, scale=None, detail=None, roughness=None, distortion=None, noise_dimensions='3D'):
+    @staticmethod
+    def Noise(vector=None, w=None, scale=None, detail=None, roughness=None, distortion=None, noise_dimensions='3D'):
         """
 
         > Node: [Noise Texture](ShaderNodeTexNoise.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/noise.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexNoise.html)
@@ -9785,8 +9666,8 @@ class Texture(geosocks.Texture):
         return nodes.NoiseTexture(vector=vector, w=w, scale=scale, detail=detail, roughness=roughness, distortion=distortion, noise_dimensions=noise_dimensions)
 
 
-    @classmethod
-    def Noise1D(cls, w=None, scale=None, detail=None, roughness=None, distortion=None):
+    @staticmethod
+    def Noise1D(w=None, scale=None, detail=None, roughness=None, distortion=None):
         """
 
         > Node: [Noise Texture](ShaderNodeTexNoise.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/noise.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexNoise.html)
@@ -9809,8 +9690,8 @@ class Texture(geosocks.Texture):
         return nodes.NoiseTexture(vector=None, w=w, scale=scale, detail=detail, roughness=roughness, distortion=distortion, noise_dimensions='1D')
 
 
-    @classmethod
-    def Noise2D(cls, vector=None, scale=None, detail=None, roughness=None, distortion=None):
+    @staticmethod
+    def Noise2D(vector=None, scale=None, detail=None, roughness=None, distortion=None):
         """
 
         > Node: [Noise Texture](ShaderNodeTexNoise.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/noise.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexNoise.html)
@@ -9833,8 +9714,8 @@ class Texture(geosocks.Texture):
         return nodes.NoiseTexture(vector=vector, w=None, scale=scale, detail=detail, roughness=roughness, distortion=distortion, noise_dimensions='2D')
 
 
-    @classmethod
-    def Noise3D(cls, vector=None, scale=None, detail=None, roughness=None, distortion=None):
+    @staticmethod
+    def Noise3D(vector=None, scale=None, detail=None, roughness=None, distortion=None):
         """
 
         > Node: [Noise Texture](ShaderNodeTexNoise.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/noise.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexNoise.html)
@@ -9857,8 +9738,8 @@ class Texture(geosocks.Texture):
         return nodes.NoiseTexture(vector=vector, w=None, scale=scale, detail=detail, roughness=roughness, distortion=distortion, noise_dimensions='3D')
 
 
-    @classmethod
-    def Noise4D(cls, vector=None, w=None, scale=None, detail=None, roughness=None, distortion=None):
+    @staticmethod
+    def Noise4D(vector=None, w=None, scale=None, detail=None, roughness=None, distortion=None):
         """
 
         > Node: [Noise Texture](ShaderNodeTexNoise.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/noise.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexNoise.html)
@@ -9882,8 +9763,8 @@ class Texture(geosocks.Texture):
         return nodes.NoiseTexture(vector=vector, w=w, scale=scale, detail=detail, roughness=roughness, distortion=distortion, noise_dimensions='4D')
 
 
-    @classmethod
-    def Voronoi(cls, vector=None, w=None, scale=None, smoothness=None, exponent=None, randomness=None, distance='EUCLIDEAN', feature='F1', voronoi_dimensions='3D'):
+    @staticmethod
+    def Voronoi(vector=None, w=None, scale=None, smoothness=None, exponent=None, randomness=None, distance='EUCLIDEAN', feature='F1', voronoi_dimensions='3D'):
         """
 
         > Node: [Voronoi Texture](ShaderNodeTexVoronoi.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/voronoi.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexVoronoi.html)
@@ -9910,8 +9791,8 @@ class Texture(geosocks.Texture):
         return nodes.VoronoiTexture(vector=vector, w=w, scale=scale, smoothness=smoothness, exponent=exponent, randomness=randomness, distance=distance, feature=feature, voronoi_dimensions=voronoi_dimensions)
 
 
-    @classmethod
-    def Voronoi1D(cls, w=None, scale=None, smoothness=None, exponent=None, randomness=None, distance='EUCLIDEAN', feature='F1', voronoi_dimensions='3D'):
+    @staticmethod
+    def Voronoi1D(w=None, scale=None, smoothness=None, exponent=None, randomness=None, distance='EUCLIDEAN', feature='F1', voronoi_dimensions='3D'):
         """
 
         > Node: [Voronoi Texture](ShaderNodeTexVoronoi.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/voronoi.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexVoronoi.html)
@@ -9937,8 +9818,8 @@ class Texture(geosocks.Texture):
         return nodes.VoronoiTexture(vector=None, w=w, scale=scale, smoothness=smoothness, exponent=exponent, randomness=randomness, distance=distance, feature=feature, voronoi_dimensions=voronoi_dimensions)
 
 
-    @classmethod
-    def Voronoi2D(cls, vector=None, scale=None, smoothness=None, exponent=None, randomness=None, distance='EUCLIDEAN', feature='F1', voronoi_dimensions='3D'):
+    @staticmethod
+    def Voronoi2D(vector=None, scale=None, smoothness=None, exponent=None, randomness=None, distance='EUCLIDEAN', feature='F1', voronoi_dimensions='3D'):
         """
 
         > Node: [Voronoi Texture](ShaderNodeTexVoronoi.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/voronoi.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexVoronoi.html)
@@ -9964,8 +9845,8 @@ class Texture(geosocks.Texture):
         return nodes.VoronoiTexture(vector=vector, w=None, scale=scale, smoothness=smoothness, exponent=exponent, randomness=randomness, distance=distance, feature=feature, voronoi_dimensions=voronoi_dimensions)
 
 
-    @classmethod
-    def Voronoi3D(cls, vector=None, scale=None, smoothness=None, exponent=None, randomness=None, distance='EUCLIDEAN', feature='F1', voronoi_dimensions='3D'):
+    @staticmethod
+    def Voronoi3D(vector=None, scale=None, smoothness=None, exponent=None, randomness=None, distance='EUCLIDEAN', feature='F1', voronoi_dimensions='3D'):
         """
 
         > Node: [Voronoi Texture](ShaderNodeTexVoronoi.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/voronoi.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexVoronoi.html)
@@ -9991,8 +9872,8 @@ class Texture(geosocks.Texture):
         return nodes.VoronoiTexture(vector=vector, w=None, scale=scale, smoothness=smoothness, exponent=exponent, randomness=randomness, distance=distance, feature=feature, voronoi_dimensions=voronoi_dimensions)
 
 
-    @classmethod
-    def Voronoi4D(cls, vector=None, w=None, scale=None, smoothness=None, exponent=None, randomness=None, distance='EUCLIDEAN', feature='F1', voronoi_dimensions='3D'):
+    @staticmethod
+    def Voronoi4D(vector=None, w=None, scale=None, smoothness=None, exponent=None, randomness=None, distance='EUCLIDEAN', feature='F1', voronoi_dimensions='3D'):
         """
 
         > Node: [Voronoi Texture](ShaderNodeTexVoronoi.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/voronoi.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexVoronoi.html)
@@ -10019,8 +9900,8 @@ class Texture(geosocks.Texture):
         return nodes.VoronoiTexture(vector=vector, w=w, scale=scale, smoothness=smoothness, exponent=exponent, randomness=randomness, distance=distance, feature=feature, voronoi_dimensions=voronoi_dimensions)
 
 
-    @classmethod
-    def Wave(cls, vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, bands_direction='X', rings_direction='X', wave_profile='SIN', wave_type='BANDS'):
+    @staticmethod
+    def Wave(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, bands_direction='X', rings_direction='X', wave_profile='SIN', wave_type='BANDS'):
         """
 
         > Node: [Wave Texture](ShaderNodeTexWave.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/wave.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWave.html)
@@ -10049,8 +9930,8 @@ class Texture(geosocks.Texture):
         return nodes.WaveTexture(vector=vector, scale=scale, distortion=distortion, detail=detail, detail_scale=detail_scale, detail_roughness=detail_roughness, phase_offset=phase_offset, bands_direction=bands_direction, rings_direction=rings_direction, wave_profile=wave_profile, wave_type=wave_type)
 
 
-    @classmethod
-    def WaveBands(cls, vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X', wave_profile='SIN'):
+    @staticmethod
+    def WaveBands(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X', wave_profile='SIN'):
         """
 
         > Node: [Wave Texture](ShaderNodeTexWave.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/wave.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWave.html)
@@ -10077,8 +9958,8 @@ class Texture(geosocks.Texture):
         return nodes.WaveTexture(vector=vector, scale=scale, distortion=distortion, detail=detail, detail_scale=detail_scale, detail_roughness=detail_roughness, phase_offset=phase_offset, bands_direction=direction, rings_direction='X', wave_profile=wave_profile, wave_type='BANDS')
 
 
-    @classmethod
-    def WaveBands_saw(cls, vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X'):
+    @staticmethod
+    def WaveBands_saw(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X'):
         """
 
         > Node: [Wave Texture](ShaderNodeTexWave.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/wave.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWave.html)
@@ -10104,8 +9985,8 @@ class Texture(geosocks.Texture):
         return nodes.WaveTexture(vector=vector, scale=scale, distortion=distortion, detail=detail, detail_scale=detail_scale, detail_roughness=detail_roughness, phase_offset=phase_offset, bands_direction=direction, rings_direction='X', wave_profile='SAW', wave_type='BANDS')
 
 
-    @classmethod
-    def WaveBands_sine(cls, vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X'):
+    @staticmethod
+    def WaveBands_sine(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X'):
         """
 
         > Node: [Wave Texture](ShaderNodeTexWave.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/wave.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWave.html)
@@ -10131,8 +10012,8 @@ class Texture(geosocks.Texture):
         return nodes.WaveTexture(vector=vector, scale=scale, distortion=distortion, detail=detail, detail_scale=detail_scale, detail_roughness=detail_roughness, phase_offset=phase_offset, bands_direction=direction, rings_direction='X', wave_profile='SIN', wave_type='BANDS')
 
 
-    @classmethod
-    def WaveBands_triangle(cls, vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X'):
+    @staticmethod
+    def WaveBands_triangle(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X'):
         """
 
         > Node: [Wave Texture](ShaderNodeTexWave.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/wave.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWave.html)
@@ -10158,8 +10039,8 @@ class Texture(geosocks.Texture):
         return nodes.WaveTexture(vector=vector, scale=scale, distortion=distortion, detail=detail, detail_scale=detail_scale, detail_roughness=detail_roughness, phase_offset=phase_offset, bands_direction=direction, rings_direction='X', wave_profile='TRI', wave_type='BANDS')
 
 
-    @classmethod
-    def WaveRings(cls, vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X', wave_profile='SIN'):
+    @staticmethod
+    def WaveRings(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X', wave_profile='SIN'):
         """
 
         > Node: [Wave Texture](ShaderNodeTexWave.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/wave.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWave.html)
@@ -10186,8 +10067,8 @@ class Texture(geosocks.Texture):
         return nodes.WaveTexture(vector=vector, scale=scale, distortion=distortion, detail=detail, detail_scale=detail_scale, detail_roughness=detail_roughness, phase_offset=phase_offset, bands_direction='X', rings_direction=direction, wave_profile=wave_profile, wave_type='RINGS')
 
 
-    @classmethod
-    def WaveRings_saw(cls, vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X'):
+    @staticmethod
+    def WaveRings_saw(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X'):
         """
 
         > Node: [Wave Texture](ShaderNodeTexWave.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/wave.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWave.html)
@@ -10213,8 +10094,8 @@ class Texture(geosocks.Texture):
         return nodes.WaveTexture(vector=vector, scale=scale, distortion=distortion, detail=detail, detail_scale=detail_scale, detail_roughness=detail_roughness, phase_offset=phase_offset, bands_direction='X', rings_direction=direction, wave_profile='SAW', wave_type='RINGS')
 
 
-    @classmethod
-    def WaveRings_sine(cls, vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X'):
+    @staticmethod
+    def WaveRings_sine(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X'):
         """
 
         > Node: [Wave Texture](ShaderNodeTexWave.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/wave.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWave.html)
@@ -10240,8 +10121,8 @@ class Texture(geosocks.Texture):
         return nodes.WaveTexture(vector=vector, scale=scale, distortion=distortion, detail=detail, detail_scale=detail_scale, detail_roughness=detail_roughness, phase_offset=phase_offset, bands_direction='X', rings_direction=direction, wave_profile='SIN', wave_type='RINGS')
 
 
-    @classmethod
-    def WaveRings_triangle(cls, vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X'):
+    @staticmethod
+    def WaveRings_triangle(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X'):
         """
 
         > Node: [Wave Texture](ShaderNodeTexWave.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/wave.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWave.html)
@@ -10267,8 +10148,8 @@ class Texture(geosocks.Texture):
         return nodes.WaveTexture(vector=vector, scale=scale, distortion=distortion, detail=detail, detail_scale=detail_scale, detail_roughness=detail_roughness, phase_offset=phase_offset, bands_direction='X', rings_direction=direction, wave_profile='TRI', wave_type='RINGS')
 
 
-    @classmethod
-    def WhiteNoise(cls, vector=None, w=None, noise_dimensions='3D'):
+    @staticmethod
+    def WhiteNoise(vector=None, w=None, noise_dimensions='3D'):
         """
 
         > Node: [White Noise Texture](ShaderNodeTexWhiteNoise.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/white_noise.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWhiteNoise.html)
@@ -10289,8 +10170,8 @@ class Texture(geosocks.Texture):
         return nodes.WhiteNoiseTexture(vector=vector, w=w, noise_dimensions=noise_dimensions)
 
 
-    @classmethod
-    def WhiteNoise1D(cls, w=None):
+    @staticmethod
+    def WhiteNoise1D(w=None):
         """
 
         > Node: [White Noise Texture](ShaderNodeTexWhiteNoise.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/white_noise.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWhiteNoise.html)
@@ -10309,8 +10190,8 @@ class Texture(geosocks.Texture):
         return nodes.WhiteNoiseTexture(vector=None, w=w, noise_dimensions='1D')
 
 
-    @classmethod
-    def WhiteNoise2D(cls, vector=None):
+    @staticmethod
+    def WhiteNoise2D(vector=None):
         """
 
         > Node: [White Noise Texture](ShaderNodeTexWhiteNoise.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/white_noise.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWhiteNoise.html)
@@ -10329,8 +10210,8 @@ class Texture(geosocks.Texture):
         return nodes.WhiteNoiseTexture(vector=vector, w=None, noise_dimensions='2D')
 
 
-    @classmethod
-    def WhiteNoise3D(cls, vector=None):
+    @staticmethod
+    def WhiteNoise3D(vector=None):
         """
 
         > Node: [White Noise Texture](ShaderNodeTexWhiteNoise.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/white_noise.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWhiteNoise.html)
@@ -10349,8 +10230,8 @@ class Texture(geosocks.Texture):
         return nodes.WhiteNoiseTexture(vector=vector, w=None, noise_dimensions='3D')
 
 
-    @classmethod
-    def WhiteNoise4D(cls, vector=None, w=None):
+    @staticmethod
+    def WhiteNoise4D(vector=None, w=None):
         """
 
         > Node: [White Noise Texture](ShaderNodeTexWhiteNoise.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/white_noise.html) | [api reference](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWhiteNoise.html)

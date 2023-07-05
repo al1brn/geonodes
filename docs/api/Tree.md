@@ -116,7 +116,7 @@ with gn.Tree("Test") as tree:
 ### Constructor
 
 ```python
-Tree(self, tree_name, clear=False, group=False, fake_user=False, prefix=None)
+Tree(self, tree_name, auto_capture=True, clear=False, group=False, fake_user=False, prefix=None)
 ```
 
 
@@ -307,8 +307,6 @@ capture_node = nodes.CaptureNode(
 ```           
 
 
-
------ Debug flags (False = no debug)
 
 
 <sub>Go to [top](#class-Tree) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>

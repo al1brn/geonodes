@@ -44,15 +44,15 @@ node = nodes.WaveTexture(vector=None, scale=None, distortion=None, detail=None, 
 | Class or method name | Definition |
 |----------------------|------------|
 | **[Texture](Texture.md)** |
-| [Wave](Texture.md#Wave) | `@classmethod`<br> `def Wave(cls, vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, bands_direction='X', rings_direction='X', wave_profile='SIN', wave_type='BANDS'):` |
-| [WaveBands](Texture.md#WaveBands) | `@classmethod`<br> `def WaveBands(cls, vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X', wave_profile='SIN'):` |
-| [WaveRings](Texture.md#WaveRings) | `@classmethod`<br> `def WaveRings(cls, vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X', wave_profile='SIN'):` |
-| [WaveBands_sine](Texture.md#WaveBands_sine) | `@classmethod`<br> `def WaveBands_sine(cls, vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X'):` |
-| [WaveBands_saw](Texture.md#WaveBands_saw) | `@classmethod`<br> `def WaveBands_saw(cls, vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X'):` |
-| [WaveBands_triangle](Texture.md#WaveBands_triangle) | `@classmethod`<br> `def WaveBands_triangle(cls, vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X'):` |
-| [WaveRings_sine](Texture.md#WaveRings_sine) | `@classmethod`<br> `def WaveRings_sine(cls, vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X'):` |
-| [WaveRings_saw](Texture.md#WaveRings_saw) | `@classmethod`<br> `def WaveRings_saw(cls, vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X'):` |
-| [WaveRings_triangle](Texture.md#WaveRings_triangle) | `@classmethod`<br> `def WaveRings_triangle(cls, vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X'):` |
+| [Wave](Texture.md#Wave) | `@staticmethod`<br> `def Wave(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, bands_direction='X', rings_direction='X', wave_profile='SIN', wave_type='BANDS'):` |
+| [WaveBands](Texture.md#WaveBands) | `@staticmethod`<br> `def WaveBands(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X', wave_profile='SIN'):` |
+| [WaveRings](Texture.md#WaveRings) | `@staticmethod`<br> `def WaveRings(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X', wave_profile='SIN'):` |
+| [WaveBands_sine](Texture.md#WaveBands_sine) | `@staticmethod`<br> `def WaveBands_sine(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X'):` |
+| [WaveBands_saw](Texture.md#WaveBands_saw) | `@staticmethod`<br> `def WaveBands_saw(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X'):` |
+| [WaveBands_triangle](Texture.md#WaveBands_triangle) | `@staticmethod`<br> `def WaveBands_triangle(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X'):` |
+| [WaveRings_sine](Texture.md#WaveRings_sine) | `@staticmethod`<br> `def WaveRings_sine(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X'):` |
+| [WaveRings_saw](Texture.md#WaveRings_saw) | `@staticmethod`<br> `def WaveRings_saw(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X'):` |
+| [WaveRings_triangle](Texture.md#WaveRings_triangle) | `@staticmethod`<br> `def WaveRings_triangle(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, direction='X'):` |
 
 <sub>Go to [top](#node-Wave-Texture) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

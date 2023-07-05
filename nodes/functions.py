@@ -1583,63 +1583,6 @@ def rotate_euler(rotation=None, rotate_by=None, space='OBJECT'):
     return nodes.RotateEuler(rotation=rotation, rotate_by=rotate_by, axis=None, angle=None, space=space, type='EULER').rotation
 
 
-def separate_hsl(color=None):
-    """
-
-    > Node: [Separate Color](FunctionNodeSeparateColor.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html)
-
-    #### Args:
-    - color: Color
-
-    ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_FunctionNodeSeparateColor.webp)
-
-    #### Returns:
-    - node with sockets ['red', 'green', 'blue', 'alpha']
-
-
-    """
-
-    return nodes.SeparateColor(color=color, mode='HSL')
-
-
-def separate_hsv(color=None):
-    """
-
-    > Node: [Separate Color](FunctionNodeSeparateColor.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html)
-
-    #### Args:
-    - color: Color
-
-    ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_FunctionNodeSeparateColor.webp)
-
-    #### Returns:
-    - node with sockets ['red', 'green', 'blue', 'alpha']
-
-
-    """
-
-    return nodes.SeparateColor(color=color, mode='HSV')
-
-
-def separate_rgb(color=None):
-    """
-
-    > Node: [Separate Color](FunctionNodeSeparateColor.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/color/separate_color.html) | [api reference](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html)
-
-    #### Args:
-    - color: Color
-
-    ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_FunctionNodeSeparateColor.webp)
-
-    #### Returns:
-    - node with sockets ['red', 'green', 'blue', 'alpha']
-
-
-    """
-
-    return nodes.SeparateColor(color=color, mode='RGB')
-
-
 def sign(value=None, clamp=False):
     """
 

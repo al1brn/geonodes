@@ -26,7 +26,7 @@ ControlPoint(self, data_socket, selection=None)
 
 **Properties**
 
-[ID](#ID) | [as_cloud_points](#as_cloud_points) | [as_control_points](#as_control_points) | [as_corners](#as_corners) | [as_edges](#as_edges) | [as_faces](#as_faces) | [as_insts](#as_insts) | [as_splines](#as_splines) | [as_verts](#as_verts) | [count](#count) | [data_socket](#data_socket) | [domain](#domain) | [domain_index](#domain_index) | [index](#index) | [left_handle_positions](#left_handle_positions) | [normal](#normal) | [parameter](#parameter) | [parameter_factor](#parameter_factor) | [parameter_index](#parameter_index) | [parameter_length](#parameter_length) | [position](#position) | [position_offset](#position_offset) | [radius](#radius) | [right_handle_positions](#right_handle_positions) | [selection](#selection) | [selection_index](#selection_index) | [tangent](#tangent) | [tilt](#tilt)
+[ID](#ID) | [as_cloud_points](#as_cloud_points) | [as_control_points](#as_control_points) | [as_corners](#as_corners) | [as_edges](#as_edges) | [as_faces](#as_faces) | [as_insts](#as_insts) | [as_splines](#as_splines) | [as_verts](#as_verts) | [count](#count) | [data_socket](#data_socket) | [domain](#domain) | [domain_index](#domain_index) | [index](#index) | [left_handle_offset](#left_handle_offset) | [left_handle_positions](#left_handle_positions) | [normal](#normal) | [parameter](#parameter) | [position](#position) | [position_offset](#position_offset) | [radius](#radius) | [relative_left_handle_positions](#relative_left_handle_positions) | [relative_right_handle_positions](#relative_right_handle_positions) | [right_handle_offset](#right_handle_offset) | [right_handle_positions](#right_handle_positions) | [selection](#selection) | [selection_index](#selection_index) | [tangent](#tangent) | [tilt](#tilt)
 
 **Class and static methods**
 
@@ -34,7 +34,7 @@ ControlPoint(self, data_socket, selection=None)
 
 **Methods**
 
-[accumulate_field](#accumulate_field) | [attribute_max](#attribute_max) | [attribute_mean](#attribute_mean) | [attribute_median](#attribute_median) | [attribute_min](#attribute_min) | [attribute_node](#attribute_node) | [attribute_range](#attribute_range) | [attribute_statistic](#attribute_statistic) | [attribute_std](#attribute_std) | [attribute_sum](#attribute_sum) | [attribute_var](#attribute_var) | [blur_attribute](#blur_attribute) | [blur_color](#blur_color) | [blur_float](#blur_float) | [blur_integer](#blur_integer) | [blur_vector](#blur_vector) | [capture_attribute](#capture_attribute) | [curve](#curve) | [delete](#delete) | [duplicate](#duplicate) | [endpoint_selection](#endpoint_selection) | [evaluate_at_index](#evaluate_at_index) | [handle_positions](#handle_positions) | [handle_type_selection](#handle_type_selection) | [handle_type_selection_align](#handle_type_selection_align) | [handle_type_selection_auto](#handle_type_selection_auto) | [handle_type_selection_free](#handle_type_selection_free) | [handle_type_selection_node](#handle_type_selection_node) | [handle_type_selection_vector](#handle_type_selection_vector) | [index_for_sample](#index_for_sample) | [index_of_nearest](#index_of_nearest) | [instance_on_points](#instance_on_points) | [interpolate](#interpolate) | [material_selection](#material_selection) | [named_attribute](#named_attribute) | [named_attribute_exists](#named_attribute_exists) | [named_boolean](#named_boolean) | [named_color](#named_color) | [named_float](#named_float) | [named_integer](#named_integer) | [named_vector](#named_vector) | [offset](#offset) | [proximity](#proximity) | [remove_named_attribute](#remove_named_attribute) | [sample_index](#sample_index) | [select](#select) | [separate](#separate) | [set_ID](#set_ID) | [set_handle_positions](#set_handle_positions) | [set_handle_positions_left](#set_handle_positions_left) | [set_handle_positions_right](#set_handle_positions_right) | [set_handle_type](#set_handle_type) | [set_handle_type_node](#set_handle_type_node) | [set_position](#set_position) | [set_radius](#set_radius) | [set_tilt](#set_tilt) | [socket_stack](#socket_stack) | [store_named_2D_vector](#store_named_2D_vector) | [store_named_attribute](#store_named_attribute) | [store_named_boolean](#store_named_boolean) | [store_named_byte_color](#store_named_byte_color) | [store_named_color](#store_named_color) | [store_named_float](#store_named_float) | [store_named_integer](#store_named_integer) | [store_named_vector](#store_named_vector) | [view](#view) | [viewer](#viewer)
+[accumulate_field](#accumulate_field) | [attribute_node](#attribute_node) | [attribute_statistic](#attribute_statistic) | [blur_attribute](#blur_attribute) | [blur_color](#blur_color) | [blur_float](#blur_float) | [blur_integer](#blur_integer) | [blur_vector](#blur_vector) | [capture_attribute](#capture_attribute) | [capture_handle_type_selection](#capture_handle_type_selection) | [capture_handle_type_selection_align](#capture_handle_type_selection_align) | [capture_handle_type_selection_auto](#capture_handle_type_selection_auto) | [capture_handle_type_selection_free](#capture_handle_type_selection_free) | [capture_handle_type_selection_vector](#capture_handle_type_selection_vector) | [curve](#curve) | [delete](#delete) | [duplicate](#duplicate) | [endpoint_selection](#endpoint_selection) | [evaluate_at_index](#evaluate_at_index) | [handle_positions](#handle_positions) | [handle_type_selection](#handle_type_selection) | [handle_type_selection_align](#handle_type_selection_align) | [handle_type_selection_auto](#handle_type_selection_auto) | [handle_type_selection_free](#handle_type_selection_free) | [handle_type_selection_node](#handle_type_selection_node) | [handle_type_selection_vector](#handle_type_selection_vector) | [index_for_sample](#index_for_sample) | [index_of_nearest](#index_of_nearest) | [instance_on](#instance_on) | [interpolate](#interpolate) | [material_selection](#material_selection) | [named_attribute](#named_attribute) | [named_boolean](#named_boolean) | [named_color](#named_color) | [named_float](#named_float) | [named_integer](#named_integer) | [named_vector](#named_vector) | [offset](#offset) | [proximity](#proximity) | [remove_named_attribute](#remove_named_attribute) | [sample_index](#sample_index) | [select](#select) | [separate](#separate) | [set_ID](#set_ID) | [set_handle_positions](#set_handle_positions) | [set_handle_type](#set_handle_type) | [set_handle_type_node](#set_handle_type_node) | [set_left_handle_positions](#set_left_handle_positions) | [set_position](#set_position) | [set_radius](#set_radius) | [set_right_handle_positions](#set_right_handle_positions) | [set_tilt](#set_tilt) | [socket_stack](#socket_stack) | [store_named_2D_vector](#store_named_2D_vector) | [store_named_attribute](#store_named_attribute) | [store_named_boolean](#store_named_boolean) | [store_named_byte_color](#store_named_byte_color) | [store_named_color](#store_named_color) | [store_named_float](#store_named_float) | [store_named_integer](#store_named_integer) | [store_named_vector](#store_named_vector) | [view](#view) | [viewer](#viewer)
 
 ## Properties
 
@@ -206,6 +206,40 @@ Node implemented as property setter.
 
 <sub>Go to [top](#class-ControlPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
+### left_handle_offset
+
+
+
+> Node: [Set Handle Positions](GeometryNodeSetCurveHandlePositions.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/set_handle_positions.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetCurveHandlePositions.html)
+
+'left_handle_offset' is a write only property.
+Raise an exception if attempt to read.
+
+
+
+
+
+
+
+Setter
+
+
+
+> Node: [Set Handle Positions](GeometryNodeSetCurveHandlePositions.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/set_handle_positions.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetCurveHandlePositions.html)
+
+Node implemented as property setter.
+
+#### Args:
+- attr_value: offset
+
+
+
+
+
+
+
+<sub>Go to [top](#class-ControlPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### left_handle_positions
 
 
@@ -265,54 +299,6 @@ Node implemented as property setter.
 
 #### Returns:
 - node with sockets ['factor', 'length', 'index']
-
-
-
-
-
-
-<sub>Go to [top](#class-ControlPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-### parameter_factor
-
-
-
-> Node: [Spline Parameter](GeometryNodeSplineParameter.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/spline_parameter.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSplineParameter.html)
-
-#### Returns:
-- socket `factor`
-
-
-
-
-
-
-<sub>Go to [top](#class-ControlPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-### parameter_index
-
-
-
-> Node: [Spline Parameter](GeometryNodeSplineParameter.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/spline_parameter.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSplineParameter.html)
-
-#### Returns:
-- socket `index`
-
-
-
-
-
-
-<sub>Go to [top](#class-ControlPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-### parameter_length
-
-
-
-> Node: [Spline Parameter](GeometryNodeSplineParameter.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/spline_parameter.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSplineParameter.html)
-
-#### Returns:
-- socket `length`
 
 
 
@@ -412,6 +398,72 @@ Node implemented as property setter.
 
 #### Args:
 - attr_value: radius
+
+
+
+
+
+
+
+<sub>Go to [top](#class-ControlPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### relative_left_handle_positions
+
+
+
+> Node: [Curve Handle Positions](GeometryNodeInputCurveHandlePositions.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/curve_handle_position.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputCurveHandlePositions.html)
+
+#### Returns:
+- socket `left`
+
+
+
+
+
+
+<sub>Go to [top](#class-ControlPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### relative_right_handle_positions
+
+
+
+> Node: [Curve Handle Positions](GeometryNodeInputCurveHandlePositions.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/curve_handle_position.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputCurveHandlePositions.html)
+
+#### Returns:
+- socket `right`
+
+
+
+
+
+
+<sub>Go to [top](#class-ControlPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### right_handle_offset
+
+
+
+> Node: [Set Handle Positions](GeometryNodeSetCurveHandlePositions.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/set_handle_positions.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetCurveHandlePositions.html)
+
+'right_handle_offset' is a write only property.
+Raise an exception if attempt to read.
+
+
+
+
+
+
+
+Setter
+
+
+
+> Node: [Set Handle Positions](GeometryNodeSetCurveHandlePositions.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/set_handle_positions.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetCurveHandlePositions.html)
+
+Node implemented as property setter.
+
+#### Args:
+- attr_value: offset
 
 
 
@@ -664,98 +716,6 @@ def accumulate_field(self, value=None, group_id=None)
 
 <sub>Go to [top](#class-ControlPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
-### attribute_max
-
-```python
-def attribute_max(self, attribute=None)
-```
-
-
-
-> Node: [Attribute Statistic](GeometryNodeAttributeStatistic.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/attribute_statistic.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeStatistic.html)
-
-#### Args:
-- attribute: ['Float', 'Vector']
-
-#### Returns:
-- socket `max`
-
-
-
-
-
-
-<sub>Go to [top](#class-ControlPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-### attribute_mean
-
-```python
-def attribute_mean(self, attribute=None)
-```
-
-
-
-> Node: [Attribute Statistic](GeometryNodeAttributeStatistic.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/attribute_statistic.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeStatistic.html)
-
-#### Args:
-- attribute: ['Float', 'Vector']
-
-#### Returns:
-- socket `mean`
-
-
-
-
-
-
-<sub>Go to [top](#class-ControlPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-### attribute_median
-
-```python
-def attribute_median(self, attribute=None)
-```
-
-
-
-> Node: [Attribute Statistic](GeometryNodeAttributeStatistic.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/attribute_statistic.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeStatistic.html)
-
-#### Args:
-- attribute: ['Float', 'Vector']
-
-#### Returns:
-- socket `median`
-
-
-
-
-
-
-<sub>Go to [top](#class-ControlPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-### attribute_min
-
-```python
-def attribute_min(self, attribute=None)
-```
-
-
-
-> Node: [Attribute Statistic](GeometryNodeAttributeStatistic.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/attribute_statistic.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeStatistic.html)
-
-#### Args:
-- attribute: ['Float', 'Vector']
-
-#### Returns:
-- socket `min`
-
-
-
-
-
-
-<sub>Go to [top](#class-ControlPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
 ### attribute_node
 
 ```python
@@ -769,7 +729,7 @@ Called when creating an input node in a property getter. Performs two actions:
     - Call the method :func:`Node.as_attribute` to tag the node as being an attribute.
       This will allow the :func:`Tree.check_attributes` to see if it is necessary to create
       a *Capture Attribute* for this field.
-    - Set the nde property :attr:`field_of` to self in order to implement the transfer attribute
+    - Set the node property :attr:`attr_domain` to self in order to implement the transfer attribute
       mechanism.
 
 #### Args:
@@ -777,29 +737,6 @@ Called when creating an input node in a property getter. Performs two actions:
     
 #### Returns:
 - The node argument
-
-
-
-
-<sub>Go to [top](#class-ControlPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-### attribute_range
-
-```python
-def attribute_range(self, attribute=None)
-```
-
-
-
-> Node: [Attribute Statistic](GeometryNodeAttributeStatistic.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/attribute_statistic.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeStatistic.html)
-
-#### Args:
-- attribute: ['Float', 'Vector']
-
-#### Returns:
-- socket `range`
-
-
 
 
 
@@ -823,75 +760,6 @@ def attribute_statistic(self, attribute=None)
 
 #### Returns:
 - node with sockets ['mean', 'median', 'sum', 'min', 'max', 'range', 'standard_deviation', 'variance']
-
-
-
-
-
-
-<sub>Go to [top](#class-ControlPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-### attribute_std
-
-```python
-def attribute_std(self, attribute=None)
-```
-
-
-
-> Node: [Attribute Statistic](GeometryNodeAttributeStatistic.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/attribute_statistic.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeStatistic.html)
-
-#### Args:
-- attribute: ['Float', 'Vector']
-
-#### Returns:
-- socket `standard_deviation`
-
-
-
-
-
-
-<sub>Go to [top](#class-ControlPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-### attribute_sum
-
-```python
-def attribute_sum(self, attribute=None)
-```
-
-
-
-> Node: [Attribute Statistic](GeometryNodeAttributeStatistic.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/attribute_statistic.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeStatistic.html)
-
-#### Args:
-- attribute: ['Float', 'Vector']
-
-#### Returns:
-- socket `sum`
-
-
-
-
-
-
-<sub>Go to [top](#class-ControlPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-### attribute_var
-
-```python
-def attribute_var(self, attribute=None)
-```
-
-
-
-> Node: [Attribute Statistic](GeometryNodeAttributeStatistic.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/attribute_statistic.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeStatistic.html)
-
-#### Args:
-- attribute: ['Float', 'Vector']
-
-#### Returns:
-- socket `variance`
 
 
 
@@ -1040,6 +908,126 @@ def capture_attribute(self, value=None)
 
 #### Returns:
 - socket `attribute`
+
+
+
+
+
+
+<sub>Go to [top](#class-ControlPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### capture_handle_type_selection
+
+```python
+def capture_handle_type_selection(self, left=True, right=True, handle_type='AUTO')
+```
+
+
+
+> Node: [Handle Type Selection](GeometryNodeCurveHandleTypeSelection.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/handle_type_selection.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveHandleTypeSelection.html)
+
+#### Args:
+- handle_type (str): 'AUTO' in [FREE, AUTO, VECTOR, ALIGN]
+- mode (set): {'LEFT', 'RIGHT'}
+
+#### Returns:
+- node with sockets ['selection']
+
+
+
+
+
+
+<sub>Go to [top](#class-ControlPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### capture_handle_type_selection_align
+
+```python
+def capture_handle_type_selection_align(self, left=True, right=True)
+```
+
+
+
+> Node: [Handle Type Selection](GeometryNodeCurveHandleTypeSelection.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/handle_type_selection.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveHandleTypeSelection.html)
+
+#### Args:
+- handle_type (str): 'AUTO' in [FREE, AUTO, VECTOR, ALIGN]
+- mode (set): {'LEFT', 'RIGHT'}
+
+#### Returns:
+- node with sockets ['selection']
+
+
+
+
+
+
+<sub>Go to [top](#class-ControlPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### capture_handle_type_selection_auto
+
+```python
+def capture_handle_type_selection_auto(self, left=True, right=True)
+```
+
+
+
+> Node: [Handle Type Selection](GeometryNodeCurveHandleTypeSelection.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/handle_type_selection.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveHandleTypeSelection.html)
+
+#### Args:
+- handle_type (str): 'AUTO' in [FREE, AUTO, VECTOR, ALIGN]
+- mode (set): {'LEFT', 'RIGHT'}
+
+#### Returns:
+- node with sockets ['selection']
+
+
+
+
+
+
+<sub>Go to [top](#class-ControlPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### capture_handle_type_selection_free
+
+```python
+def capture_handle_type_selection_free(self, left=True, right=True)
+```
+
+
+
+> Node: [Handle Type Selection](GeometryNodeCurveHandleTypeSelection.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/handle_type_selection.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveHandleTypeSelection.html)
+
+#### Args:
+- handle_type (str): 'AUTO' in [FREE, AUTO, VECTOR, ALIGN]
+- mode (set): {'LEFT', 'RIGHT'}
+
+#### Returns:
+- node with sockets ['selection']
+
+
+
+
+
+
+<sub>Go to [top](#class-ControlPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### capture_handle_type_selection_vector
+
+```python
+def capture_handle_type_selection_vector(self, left=True, right=True)
+```
+
+
+
+> Node: [Handle Type Selection](GeometryNodeCurveHandleTypeSelection.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/handle_type_selection.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveHandleTypeSelection.html)
+
+#### Args:
+- handle_type (str): 'AUTO' in [FREE, AUTO, VECTOR, ALIGN]
+- mode (set): {'LEFT', 'RIGHT'}
+
+#### Returns:
+- node with sockets ['selection']
 
 
 
@@ -1384,10 +1372,10 @@ def index_of_nearest(self, position=None, group_id=None)
 
 <sub>Go to [top](#class-ControlPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
-### instance_on_points
+### instance_on
 
 ```python
-def instance_on_points(self, instance=None, pick_instance=None, instance_index=None, rotation=None, scale=None)
+def instance_on(self, instance=None, pick_instance=None, instance_index=None, rotation=None, scale=None)
 ```
 
 
@@ -1402,7 +1390,7 @@ def instance_on_points(self, instance=None, pick_instance=None, instance_index=N
 - scale: Vector
 
 #### Returns:
-- socket `instances` of class Instances
+- socket `instances`
 
 
 
@@ -1478,32 +1466,10 @@ def named_attribute(self, name=None, data_type='FLOAT')
 - name: String
 - data_type (str): 'FLOAT' in [FLOAT, INT, FLOAT_VECTOR, FLOAT_COLOR, BOOLEAN]
 
-#### Returns:
-- socket `attribute`
-
-
-
-
-
-
-<sub>Go to [top](#class-ControlPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-### named_attribute_exists
-
-```python
-def named_attribute_exists(self, name=None, data_type='FLOAT')
-```
-
-
-
-> Node: [Named Attribute](GeometryNodeInputNamedAttribute.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/named_attribute.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputNamedAttribute.html)
-
-#### Args:
-- name: String
-- data_type (str): 'FLOAT' in [FLOAT, INT, FLOAT_VECTOR, FLOAT_COLOR, BOOLEAN]
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeInputNamedAttribute.webp)
 
 #### Returns:
-- socket `exists`
+- node with sockets ['attribute', 'exists']
 
 
 
@@ -1655,7 +1621,7 @@ def offset(self, offset=None)
 ### proximity
 
 ```python
-def proximity(self, target=None, source_position=None)
+def proximity(self, target=None, source_position=None, target_element='FACES')
 ```
 
 
@@ -1665,6 +1631,7 @@ def proximity(self, target=None, source_position=None)
 #### Args:
 - target: Geometry
 - source_position: Vector
+- target_element (str): 'FACES' in [POINTS, EDGES, FACES]
 
 ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeProximity.webp)
 
@@ -1824,54 +1791,6 @@ def set_handle_positions(self, position=None, offset=None, mode='LEFT')
 
 <sub>Go to [top](#class-ControlPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
-### set_handle_positions_left
-
-```python
-def set_handle_positions_left(self, position=None, offset=None)
-```
-
-
-
-> Node: [Set Handle Positions](GeometryNodeSetCurveHandlePositions.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/set_handle_positions.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetCurveHandlePositions.html)
-
-#### Args:
-- position: Vector
-- offset: Vector
-
-#### Returns:
-- self
-
-
-
-
-
-
-<sub>Go to [top](#class-ControlPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-### set_handle_positions_right
-
-```python
-def set_handle_positions_right(self, position=None, offset=None)
-```
-
-
-
-> Node: [Set Handle Positions](GeometryNodeSetCurveHandlePositions.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/set_handle_positions.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetCurveHandlePositions.html)
-
-#### Args:
-- position: Vector
-- offset: Vector
-
-#### Returns:
-- self
-
-
-
-
-
-
-<sub>Go to [top](#class-ControlPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
 ### set_handle_type
 
 ```python
@@ -1922,6 +1841,30 @@ def set_handle_type_node(self, handle_type='AUTO', mode={'LEFT', 'RIGHT'})
 
 <sub>Go to [top](#class-ControlPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
+### set_left_handle_positions
+
+```python
+def set_left_handle_positions(self, position=None, offset=None)
+```
+
+
+
+> Node: [Set Handle Positions](GeometryNodeSetCurveHandlePositions.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/set_handle_positions.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetCurveHandlePositions.html)
+
+#### Args:
+- position: Vector
+- offset: Vector
+
+#### Returns:
+- self
+
+
+
+
+
+
+<sub>Go to [top](#class-ControlPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### set_position
 
 ```python
@@ -1958,6 +1901,30 @@ def set_radius(self, radius=None)
 
 #### Args:
 - radius: Float
+
+#### Returns:
+- self
+
+
+
+
+
+
+<sub>Go to [top](#class-ControlPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### set_right_handle_positions
+
+```python
+def set_right_handle_positions(self, position=None, offset=None)
+```
+
+
+
+> Node: [Set Handle Positions](GeometryNodeSetCurveHandlePositions.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/set_handle_positions.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetCurveHandlePositions.html)
+
+#### Args:
+- position: Vector
+- offset: Vector
 
 #### Returns:
 - self

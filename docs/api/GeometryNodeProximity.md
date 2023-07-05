@@ -36,20 +36,20 @@ node = nodes.GeometryProximity(target=None, source_position=None, target_element
 | Class or method name | Definition |
 |----------------------|------------|
 | **[CloudPoint](CloudPoint.md)** |
-| [proximity](CloudPoint.md#proximity) | `def proximity(self, target=None, source_position=None):` |
+| [proximity](CloudPoint.md#proximity) | `def proximity(self, target=None, source_position=None, target_element='FACES'):` |
 | **[ControlPoint](ControlPoint.md)** |
-| [proximity](ControlPoint.md#proximity) | `def proximity(self, target=None, source_position=None):` |
+| [proximity](ControlPoint.md#proximity) | `def proximity(self, target=None, source_position=None, target_element='FACES'):` |
 | **[Edge](Edge.md)** |
-| [proximity](Edge.md#proximity) | `def proximity(self, target=None, source_position=None):` |
+| [proximity](Edge.md#proximity) | `def proximity(self, target=None, source_position=None, target_element='FACES'):` |
 | **[Face](Face.md)** |
-| [proximity](Face.md#proximity) | `def proximity(self, target=None, source_position=None):` |
+| [proximity](Face.md#proximity) | `def proximity(self, target=None, source_position=None, target_element='FACES'):` |
 | **[Geometry](Geometry.md)** |
 | [proximity](Geometry.md#proximity) | `def proximity(self, target=None, source_position=None, target_element='FACES'):` |
 | [proximity_points](Geometry.md#proximity_points) | `def proximity_points(self, target=None, source_position=None):` |
 | [proximity_edges](Geometry.md#proximity_edges) | `def proximity_edges(self, target=None, source_position=None):` |
 | [proximity_faces](Geometry.md#proximity_faces) | `def proximity_faces(self, target=None, source_position=None):` |
 | **[Vertex](Vertex.md)** |
-| [proximity](Vertex.md#proximity) | `def proximity(self, target=None, source_position=None):` |
+| [proximity](Vertex.md#proximity) | `def proximity(self, target=None, source_position=None, target_element='FACES'):` |
 
 <sub>Go to [top](#node-Geometry-Proximity) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

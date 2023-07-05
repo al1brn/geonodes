@@ -26,7 +26,7 @@ Edge(self, data_socket, selection=None)
 
 **Properties**
 
-[ID](#ID) | [angle](#angle) | [as_cloud_points](#as_cloud_points) | [as_control_points](#as_control_points) | [as_corners](#as_corners) | [as_edges](#as_edges) | [as_faces](#as_faces) | [as_insts](#as_insts) | [as_splines](#as_splines) | [as_verts](#as_verts) | [count](#count) | [data_socket](#data_socket) | [domain](#domain) | [domain_index](#domain_index) | [index](#index) | [neighbors](#neighbors) | [normal](#normal) | [position](#position) | [position_offset](#position_offset) | [selection](#selection) | [selection_index](#selection_index) | [signed_angle](#signed_angle) | [unsigned_angle](#unsigned_angle) | [vertices](#vertices) | [vertices_index](#vertices_index) | [vertices_position](#vertices_position)
+[ID](#ID) | [angle](#angle) | [as_cloud_points](#as_cloud_points) | [as_control_points](#as_control_points) | [as_corners](#as_corners) | [as_edges](#as_edges) | [as_faces](#as_faces) | [as_insts](#as_insts) | [as_splines](#as_splines) | [as_verts](#as_verts) | [count](#count) | [data_socket](#data_socket) | [domain](#domain) | [domain_index](#domain_index) | [index](#index) | [neighbors](#neighbors) | [normal](#normal) | [position](#position) | [position_offset](#position_offset) | [selection](#selection) | [selection_index](#selection_index) | [signed_angle](#signed_angle) | [unsigned_angle](#unsigned_angle) | [vertices](#vertices)
 
 **Class and static methods**
 
@@ -34,7 +34,7 @@ Edge(self, data_socket, selection=None)
 
 **Methods**
 
-[accumulate_field](#accumulate_field) | [attribute_max](#attribute_max) | [attribute_mean](#attribute_mean) | [attribute_median](#attribute_median) | [attribute_min](#attribute_min) | [attribute_node](#attribute_node) | [attribute_range](#attribute_range) | [attribute_statistic](#attribute_statistic) | [attribute_std](#attribute_std) | [attribute_sum](#attribute_sum) | [attribute_var](#attribute_var) | [blur_attribute](#blur_attribute) | [blur_color](#blur_color) | [blur_float](#blur_float) | [blur_integer](#blur_integer) | [blur_vector](#blur_vector) | [capture_attribute](#capture_attribute) | [delete](#delete) | [delete_all](#delete_all) | [delete_edges](#delete_edges) | [delete_faces](#delete_faces) | [duplicate](#duplicate) | [edge_paths_to_curves](#edge_paths_to_curves) | [evaluate_at_index](#evaluate_at_index) | [extrude](#extrude) | [index_for_sample](#index_for_sample) | [index_of_nearest](#index_of_nearest) | [interpolate](#interpolate) | [material_selection](#material_selection) | [named_attribute](#named_attribute) | [named_attribute_exists](#named_attribute_exists) | [named_boolean](#named_boolean) | [named_color](#named_color) | [named_float](#named_float) | [named_integer](#named_integer) | [named_vector](#named_vector) | [proximity](#proximity) | [remove_named_attribute](#remove_named_attribute) | [sample_index](#sample_index) | [sample_nearest](#sample_nearest) | [scale_single_axis](#scale_single_axis) | [scale_uniform](#scale_uniform) | [select](#select) | [separate](#separate) | [set_ID](#set_ID) | [set_position](#set_position) | [socket_stack](#socket_stack) | [split](#split) | [store_named_2D_vector](#store_named_2D_vector) | [store_named_attribute](#store_named_attribute) | [store_named_boolean](#store_named_boolean) | [store_named_byte_color](#store_named_byte_color) | [store_named_color](#store_named_color) | [store_named_float](#store_named_float) | [store_named_integer](#store_named_integer) | [store_named_vector](#store_named_vector) | [to_curve](#to_curve) | [to_face_groups](#to_face_groups) | [view](#view) | [viewer](#viewer)
+[accumulate_field](#accumulate_field) | [attribute_node](#attribute_node) | [attribute_statistic](#attribute_statistic) | [blur_attribute](#blur_attribute) | [blur_color](#blur_color) | [blur_float](#blur_float) | [blur_integer](#blur_integer) | [blur_vector](#blur_vector) | [capture_attribute](#capture_attribute) | [delete](#delete) | [delete_all](#delete_all) | [delete_edges](#delete_edges) | [delete_faces](#delete_faces) | [duplicate](#duplicate) | [edge_paths_to_curves](#edge_paths_to_curves) | [evaluate_at_index](#evaluate_at_index) | [extrude](#extrude) | [index_for_sample](#index_for_sample) | [index_of_nearest](#index_of_nearest) | [interpolate](#interpolate) | [material_selection](#material_selection) | [named_attribute](#named_attribute) | [named_boolean](#named_boolean) | [named_color](#named_color) | [named_float](#named_float) | [named_integer](#named_integer) | [named_vector](#named_vector) | [proximity](#proximity) | [remove_named_attribute](#remove_named_attribute) | [sample_index](#sample_index) | [sample_nearest](#sample_nearest) | [scale_single_axis](#scale_single_axis) | [scale_uniform](#scale_uniform) | [select](#select) | [separate](#separate) | [set_ID](#set_ID) | [set_position](#set_position) | [socket_stack](#socket_stack) | [split](#split) | [store_named_2D_vector](#store_named_2D_vector) | [store_named_attribute](#store_named_attribute) | [store_named_boolean](#store_named_boolean) | [store_named_byte_color](#store_named_byte_color) | [store_named_color](#store_named_color) | [store_named_float](#store_named_float) | [store_named_integer](#store_named_integer) | [store_named_vector](#store_named_vector) | [to_curve](#to_curve) | [to_face_groups](#to_face_groups) | [view](#view) | [viewer](#viewer)
 
 ## Properties
 
@@ -397,42 +397,6 @@ Node implemented as property setter.
 
 <sub>Go to [top](#class-Edge) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
-### vertices_index
-
-
-
-> Node: [Edge Vertices](GeometryNodeInputMeshEdgeVertices.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/edge_vertices.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshEdgeVertices.html)
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeInputMeshEdgeVertices.webp)
-
-#### Returns:
-- node with sockets ['vertex_index_1', 'vertex_index_2', 'position_1', 'position_2']
-
-
-
-
-
-
-<sub>Go to [top](#class-Edge) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-### vertices_position
-
-
-
-> Node: [Edge Vertices](GeometryNodeInputMeshEdgeVertices.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/edge_vertices.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshEdgeVertices.html)
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeInputMeshEdgeVertices.webp)
-
-#### Returns:
-- node with sockets ['vertex_index_1', 'vertex_index_2', 'position_1', 'position_2']
-
-
-
-
-
-
-<sub>Go to [top](#class-Edge) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
 ## Class and static methods
 
 ### random_boolean
@@ -570,98 +534,6 @@ def accumulate_field(self, value=None, group_id=None)
 
 <sub>Go to [top](#class-Edge) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
-### attribute_max
-
-```python
-def attribute_max(self, attribute=None)
-```
-
-
-
-> Node: [Attribute Statistic](GeometryNodeAttributeStatistic.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/attribute_statistic.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeStatistic.html)
-
-#### Args:
-- attribute: ['Float', 'Vector']
-
-#### Returns:
-- socket `max`
-
-
-
-
-
-
-<sub>Go to [top](#class-Edge) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-### attribute_mean
-
-```python
-def attribute_mean(self, attribute=None)
-```
-
-
-
-> Node: [Attribute Statistic](GeometryNodeAttributeStatistic.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/attribute_statistic.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeStatistic.html)
-
-#### Args:
-- attribute: ['Float', 'Vector']
-
-#### Returns:
-- socket `mean`
-
-
-
-
-
-
-<sub>Go to [top](#class-Edge) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-### attribute_median
-
-```python
-def attribute_median(self, attribute=None)
-```
-
-
-
-> Node: [Attribute Statistic](GeometryNodeAttributeStatistic.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/attribute_statistic.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeStatistic.html)
-
-#### Args:
-- attribute: ['Float', 'Vector']
-
-#### Returns:
-- socket `median`
-
-
-
-
-
-
-<sub>Go to [top](#class-Edge) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-### attribute_min
-
-```python
-def attribute_min(self, attribute=None)
-```
-
-
-
-> Node: [Attribute Statistic](GeometryNodeAttributeStatistic.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/attribute_statistic.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeStatistic.html)
-
-#### Args:
-- attribute: ['Float', 'Vector']
-
-#### Returns:
-- socket `min`
-
-
-
-
-
-
-<sub>Go to [top](#class-Edge) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
 ### attribute_node
 
 ```python
@@ -675,7 +547,7 @@ Called when creating an input node in a property getter. Performs two actions:
     - Call the method :func:`Node.as_attribute` to tag the node as being an attribute.
       This will allow the :func:`Tree.check_attributes` to see if it is necessary to create
       a *Capture Attribute* for this field.
-    - Set the nde property :attr:`field_of` to self in order to implement the transfer attribute
+    - Set the node property :attr:`attr_domain` to self in order to implement the transfer attribute
       mechanism.
 
 #### Args:
@@ -683,29 +555,6 @@ Called when creating an input node in a property getter. Performs two actions:
     
 #### Returns:
 - The node argument
-
-
-
-
-<sub>Go to [top](#class-Edge) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-### attribute_range
-
-```python
-def attribute_range(self, attribute=None)
-```
-
-
-
-> Node: [Attribute Statistic](GeometryNodeAttributeStatistic.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/attribute_statistic.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeStatistic.html)
-
-#### Args:
-- attribute: ['Float', 'Vector']
-
-#### Returns:
-- socket `range`
-
-
 
 
 
@@ -729,75 +578,6 @@ def attribute_statistic(self, attribute=None)
 
 #### Returns:
 - node with sockets ['mean', 'median', 'sum', 'min', 'max', 'range', 'standard_deviation', 'variance']
-
-
-
-
-
-
-<sub>Go to [top](#class-Edge) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-### attribute_std
-
-```python
-def attribute_std(self, attribute=None)
-```
-
-
-
-> Node: [Attribute Statistic](GeometryNodeAttributeStatistic.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/attribute_statistic.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeStatistic.html)
-
-#### Args:
-- attribute: ['Float', 'Vector']
-
-#### Returns:
-- socket `standard_deviation`
-
-
-
-
-
-
-<sub>Go to [top](#class-Edge) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-### attribute_sum
-
-```python
-def attribute_sum(self, attribute=None)
-```
-
-
-
-> Node: [Attribute Statistic](GeometryNodeAttributeStatistic.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/attribute_statistic.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeStatistic.html)
-
-#### Args:
-- attribute: ['Float', 'Vector']
-
-#### Returns:
-- socket `sum`
-
-
-
-
-
-
-<sub>Go to [top](#class-Edge) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-### attribute_var
-
-```python
-def attribute_var(self, attribute=None)
-```
-
-
-
-> Node: [Attribute Statistic](GeometryNodeAttributeStatistic.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/attribute_statistic.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeStatistic.html)
-
-#### Args:
-- attribute: ['Float', 'Vector']
-
-#### Returns:
-- socket `variance`
 
 
 
@@ -1246,32 +1026,10 @@ def named_attribute(self, name=None, data_type='FLOAT')
 - name: String
 - data_type (str): 'FLOAT' in [FLOAT, INT, FLOAT_VECTOR, FLOAT_COLOR, BOOLEAN]
 
-#### Returns:
-- socket `attribute`
-
-
-
-
-
-
-<sub>Go to [top](#class-Edge) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-### named_attribute_exists
-
-```python
-def named_attribute_exists(self, name=None, data_type='FLOAT')
-```
-
-
-
-> Node: [Named Attribute](GeometryNodeInputNamedAttribute.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/named_attribute.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputNamedAttribute.html)
-
-#### Args:
-- name: String
-- data_type (str): 'FLOAT' in [FLOAT, INT, FLOAT_VECTOR, FLOAT_COLOR, BOOLEAN]
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeInputNamedAttribute.webp)
 
 #### Returns:
-- socket `exists`
+- node with sockets ['attribute', 'exists']
 
 
 
@@ -1398,7 +1156,7 @@ def named_vector(self, name=None)
 ### proximity
 
 ```python
-def proximity(self, target=None, source_position=None)
+def proximity(self, target=None, source_position=None, target_element='FACES')
 ```
 
 
@@ -1408,6 +1166,7 @@ def proximity(self, target=None, source_position=None)
 #### Args:
 - target: Geometry
 - source_position: Vector
+- target_element (str): 'FACES' in [POINTS, EDGES, FACES]
 
 ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeProximity.webp)
 
@@ -1889,12 +1648,15 @@ def to_curve(self)
 ### to_face_groups
 
 ```python
-def to_face_groups(self)
+def to_face_groups(self, boundary_edges=None)
 ```
 
 
 
 > Node: [Edges to Face Groups](GeometryNodeEdgesToFaceGroups.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/d.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeEdgesToFaceGroups.html)
+
+#### Args:
+- boundary_edges: Boolean
 
 #### Returns:
 - socket `face_group_id`

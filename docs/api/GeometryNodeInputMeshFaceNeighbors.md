@@ -26,8 +26,6 @@ node = nodes.FaceNeighbors()
 |----------------------|------------|
 | **[Face](Face.md)** |
 | [neighbors](Face.md#neighbors) | `@property`<br> `def neighbors(self):` |
-| [neighbors_vertex_count](Face.md#neighbors_vertex_count) | `@property`<br> `def neighbors_vertex_count(self):` |
-| [neighbors_face_count](Face.md#neighbors_face_count) | `@property`<br> `def neighbors_face_count(self):` |
 
 <sub>Go to [top](#node-Face-Neighbors) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
