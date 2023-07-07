@@ -46,10 +46,10 @@ def Fluid(cls, points, velocity, life, setup={}, acceleration={}, finish={})
  Constructor building a basic simulation zone for fluid simulation.
 
 The nodes generated perform the standard operations:
-    - add new points at each step
-    - delete points older thant the life parameter
-    - update the velocity with the acceleration
-    - update the particles position with the updated velocity
+- add new points at each step
+- delete points older thant the life parameter
+- update the velocity with the acceleration
+- update the particles position with the updated velocity
     
 The acceleration nodes are generated through functions passed as argument.
 An template of the acceleration function must be:
@@ -97,12 +97,12 @@ with gn.Tree("Fluid", auto_capture=False) as tree:
 ```
 
 Simulation offers basic acceleration functions:
-    - func_gravity      : constant acceleration
-    - func_turbulence   : noisy acceleration
-    - func_viscosity    : acceletaration decreasing the speed
-    - func_repulsion    : repulsion from the nearest particle
-    - func_attraction   : attraction / repulsion from a location
-    - func_surface_flow : acceleration along a surface slope
+- func_gravity      : constant acceleration
+- func_turbulence   : noisy acceleration
+- func_viscosity    : acceletaration decreasing the speed
+- func_repulsion    : repulsion from the nearest particle
+- func_attraction   : attraction / repulsion from a location
+- func_surface_flow : acceleration along a surface slope
     
 Custom nodes can be added at the begining and at the end of the simulation step with the arguments **setup** and **finish**.
 
