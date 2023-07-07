@@ -215,7 +215,7 @@ class Simulation:
             
             # An acceleration opposed to velocity
             
-            return -velocity/simult.delta_time/3            
+            return -velocity/simul.delta_time/3            
         ```
         
         The following example build a simple simulation from a mesh, with random initial speed and a gravity.
@@ -231,7 +231,7 @@ class Simulation:
             
             # Generate points on the surface
             
-            points   = mesh.faces.distribute_points(10).points
+            points = mesh.faces.distribute_points(10).points
             
             # Random speed
             
@@ -249,7 +249,7 @@ class Simulation:
         Simulation offers basic acceleration functions:
         - func_gravity      : constant acceleration
         - func_turbulence   : noisy acceleration
-        - func_viscosity    : acceletaration decreasing the speed
+        - func_viscosity    : acceleration decreasing the speed
         - func_repulsion    : repulsion from the nearest particle
         - func_attraction   : attraction / repulsion from a location
         - func_surface_flow : acceleration along a surface slope
@@ -593,7 +593,7 @@ class Simulation:
         
         The attraction can be used to simulate Newton gravity loaw with exponent = -2.
         
-        The acceleration is computed with ``` a = intensity / distance**exponent
+        The acceleration is computed with ``` a = intensity / distance**exponent ```
         
         To avoid infinite accelerations, the distance is minimizew with d_min.
         
