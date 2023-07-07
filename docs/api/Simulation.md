@@ -183,11 +183,11 @@ def func_attraction(location=(0, 0, 0), intensity=10, exponent=-2, d_min=.2)
 
  Returns a function which builds an attraction acceleration towards the given location.
 
-The attraction can be used to simulate Newton gravity loaw with exponent = -2.
+The attraction can be used to simulate Newton gravity law with ``` exponent = -2```.
 
 The acceleration is computed with ``` a = intensity / distance**exponent ```
 
-To avoid infinite accelerations, the distance is minimizew with d_min.
+To avoid infinite accelerations, the distance is minimized with d_min.
 
 Note that if the intensity is negative, the attractor becomes a repulsor!
 
@@ -264,7 +264,7 @@ def func_repulsion(intensity=1, exponent=2, d_min=.1, d_max=1)
 The repulsion is base on the vector between the particle and its nearest neighbor.
 The acceleration is computed with the formula: ``` a = intensity * distance**(-exponent) ```
 
-To avoid division by zero, distance is minimized by the argument distance_min.
+To avoid division by zero, distance is minimized by the argument d_min.
 The repulsion is null when the distance is greater thant d_max
 
 The function returned by this method can be used as an argument in a simulation zone creation method:
@@ -305,8 +305,7 @@ def func_stick_on_surface(mesh, kill_outside=False, z_max=50)
 
  Returns a function building nodes which place the particles on the surface.
 
-The algorithm using the raycats node to project the particles onto the surface.
-z_max is the latitude from which to project the particles.
+The algorithm using the raycats node to project the particles onto the surface, ```z_max``` is the latitude from which to project the particles.
 
 if particles are outside the surface, they can be deleted if kiil_outside is True.
 
