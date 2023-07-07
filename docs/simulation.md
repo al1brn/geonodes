@@ -1,6 +1,7 @@
 # Simulation
 
-> Tutorial on how to create a simulation zone. See also [Simulation](api/Simulation.md)
+> Tutorial on how to create a simulation zone.
+> See [Simulation](api/Simulation.md) class documentation to see generators such as Fluid which allow to quickly set up a fluid simulator.
 
 ## Objective
 
