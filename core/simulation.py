@@ -126,6 +126,12 @@ class Simulation:
     
     @classmethod
     def Trajectories(cls, simul, count=10):
+        """ This constructor build a simulation zone building curves tracking points of another simulation zone.
+        
+        Args:
+            - simul (Simulation) : the simulation zone having a geometry of type Points
+            - count (int=10) : the number of frames to use for tracking
+        """
         
         import geonodes as gn
         
@@ -180,13 +186,121 @@ class Simulation:
                 sim.geometry = splines
         
             
-            return sim.og
+            return sim
         
     # ====================================================================================================
     # Fluid simulation
     
     @classmethod
     def Fluid(cls, points, velocity, life, setup={}, acceleration={}, finish={}):
+        """ Constructor building a basic simulation zone for fluid simulation.
+        
+        The nodes generated perform the standard operations:
+            - add new points at each step
+            - delete points older thant the life parameter
+            - update the velocity with the acceleration
+            - update the particles position with the updated velocity
+            
+        The acceleration nodes are generated through functions passed as argument.
+        An template of the acceleration function must be:
+            
+        ``` python
+        def gen(simul=None, points=None, velocity=None, age=None):
+        ```
+        
+        Or use ``` **kwargs ``` for arguments which are not used for generation, for instance:
+
+        ``` python
+        def gen(simul=None, velocity=None, **kwargs):
+            
+            # An acceleration opposed to velocity
+            
+            return -velocity/simult.delta_time/3            
+        ```
+        
+        The following example build a simple simulation from a mesh, with random initial speed and a gravity.
+            
+        ``` python
+        import geonodes as gn
+        
+        with gn.Tree("Fluid", auto_capture=False) as tree:
+            
+            # Input geometry is supposed to be a mesh
+            
+            mesh = gn.Mesh(tree.ig)
+            
+            # Generate points on the surface
+            
+            points   = mesh.faces.distribute_points(10).points
+            
+            # Random speed
+            
+            velocity = gn.Vector.Random((-1, -1, -1), (1, 1, 1), seed=tree.frame)
+            
+            # Fluid simulation with gravity
+            
+            simul = gn.Simulation.Fluid(points, velocity, 50, 
+                acceleration=gn.Simulation.func_gravity((0, 0, -10)),
+                )
+            
+            tree.og = mesh + simul.og    
+        ```
+        
+        Simulation offers basic acceleration functions:
+            - func_gravity      : constant acceleration
+            - func_turbulence   : noisy acceleration
+            - func_viscosity    : acceletaration decreasing the speed
+            - func_repulsion    : repulsion from the nearest particle
+            - func_attraction   : attraction / repulsion from a location
+            - func_surface_flow : acceleration along a surface slope
+            
+        Custom nodes can be added at the begining and at the end of the simulation step with the arguments **setup** and **finish**.
+        
+        The same process is used to generate complementory nodes for the set up and the finalization of the zone.
+        
+        For instance, the following simulation simulates a fluid flowing on a surface:
+            
+        ``` python
+        import geonodes as gn
+        
+        with gn.Tree("Flow", auto_capture=False) as tree:
+        
+            # The surface on which fluid will flow
+        
+            mesh = gn.Mesh(tree.ig)
+            
+            # Particles generation with null initial speed
+            
+            points   = mesh.faces.distribute_points(density=.1, seed=tree.frame).points
+            velocity = gn.Vector()
+            
+            # Simulation with flow with viscosity and repulsion
+            # Finish by making sure the particles stay on the surface and killing outside particles
+            
+            simul = gn.Simulation.Fluid(points, velocity, 30, 
+                acceleration={
+                'flow'      : gn.Simulation.func_surface_flow(mesh, gravity=(0, 0, -10)),
+                'viscosity' : gn.Simulation.func_viscosity(.2),
+                'repulsion' : gn.Simulation.func_repulsion(.2),
+                },
+                finish = {
+                'stick'     : gn.Simulation.func_stick_on_surface(mesh, kill_outside=True),
+                }
+            )
+            
+            # Mesh and particles
+            
+            tree.og = mesh + simul.og
+        ```
+        
+        Args:
+            - points (Points): the points generated at each steap
+            - velocity (Vector) : the points velocity
+            - life (Integer) : particles life
+            - setup (dict or function) : function generating setup nodes or dict of such functions
+            - acceleration (dict or function) : function generating acceleration nodes or dict of such functions
+            - finish (dict or function) : function generating finalization nodes or dict of such functions
+        """
         
         import geonodes as gn
         
