@@ -30,7 +30,7 @@ node = nodes.EdgesToFaceGroups(boundary_edges=None)
 | Class or method name | Definition |
 |----------------------|------------|
 | **[Edge](Edge.md)** |
-| [to_face_groups](Edge.md#to_face_groups) | `def to_face_groups(self, boundary_edges=None):` |
+| [to_face_groups](Edge.md#to_face_groups) | `@property`<br> `def to_face_groups(self):` |
 | **[Mesh](Mesh.md)** |
 | [edges_to_face_groups](Mesh.md#edges_to_face_groups) | `def edges_to_face_groups(self, boundary_edges=None):` |
 

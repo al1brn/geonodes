@@ -34,7 +34,7 @@ Corner(self, data_socket, selection=None)
 
 **Methods**
 
-[accumulate_field](#accumulate_field) | [attribute_node](#attribute_node) | [attribute_statistic](#attribute_statistic) | [blur_attribute](#blur_attribute) | [blur_color](#blur_color) | [blur_float](#blur_float) | [blur_integer](#blur_integer) | [blur_vector](#blur_vector) | [capture_attribute](#capture_attribute) | [edges](#edges) | [evaluate_at_index](#evaluate_at_index) | [face](#face) | [index_for_sample](#index_for_sample) | [index_of_nearest](#index_of_nearest) | [interpolate](#interpolate) | [material_selection](#material_selection) | [named_attribute](#named_attribute) | [named_boolean](#named_boolean) | [named_color](#named_color) | [named_float](#named_float) | [named_integer](#named_integer) | [named_vector](#named_vector) | [offset_in_face](#offset_in_face) | [remove_named_attribute](#remove_named_attribute) | [sample_index](#sample_index) | [sample_nearest](#sample_nearest) | [select](#select) | [set_ID](#set_ID) | [set_position](#set_position) | [socket_stack](#socket_stack) | [store_named_2D_vector](#store_named_2D_vector) | [store_named_attribute](#store_named_attribute) | [store_named_boolean](#store_named_boolean) | [store_named_byte_color](#store_named_byte_color) | [store_named_color](#store_named_color) | [store_named_float](#store_named_float) | [store_named_integer](#store_named_integer) | [store_named_vector](#store_named_vector) | [view](#view) | [viewer](#viewer)
+[accumulate_field](#accumulate_field) | [attribute_node](#attribute_node) | [attribute_statistic](#attribute_statistic) | [blur_attribute](#blur_attribute) | [blur_color](#blur_color) | [blur_float](#blur_float) | [blur_integer](#blur_integer) | [blur_vector](#blur_vector) | [capture_attribute](#capture_attribute) | [edges](#edges) | [face](#face) | [index_for_sample](#index_for_sample) | [index_of_nearest](#index_of_nearest) | [material_selection](#material_selection) | [named_attribute](#named_attribute) | [named_boolean](#named_boolean) | [named_color](#named_color) | [named_float](#named_float) | [named_integer](#named_integer) | [named_vector](#named_vector) | [offset_in_face](#offset_in_face) | [raycast](#raycast) | [raycast_interpolated](#raycast_interpolated) | [raycast_nearest](#raycast_nearest) | [remove_named_attribute](#remove_named_attribute) | [sample_index](#sample_index) | [sample_nearest](#sample_nearest) | [select](#select) | [set_ID](#set_ID) | [set_position](#set_position) | [socket_stack](#socket_stack) | [store_named_2D_vector](#store_named_2D_vector) | [store_named_attribute](#store_named_attribute) | [store_named_boolean](#store_named_boolean) | [store_named_byte_color](#store_named_byte_color) | [store_named_color](#store_named_color) | [store_named_float](#store_named_float) | [store_named_integer](#store_named_integer) | [store_named_vector](#store_named_vector) | [view](#view) | [viewer](#viewer)
 
 ## Properties
 
@@ -688,30 +688,6 @@ def edges(self)
 
 <sub>Go to [top](#class-Corner) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
-### evaluate_at_index
-
-```python
-def evaluate_at_index(self, index=None, value=None)
-```
-
-
-
-> Node: [Evaluate at Index](GeometryNodeFieldAtIndex.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/v.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeFieldAtIndex.html)
-
-#### Args:
-- index: Integer
-- value: ['Float', 'Integer', 'Vector', 'Color', 'Boolean']
-
-#### Returns:
-- socket `value`
-
-
-
-
-
-
-<sub>Go to [top](#class-Corner) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
 ### face
 
 ```python
@@ -777,29 +753,6 @@ def index_of_nearest(self, position=None, group_id=None)
 
 #### Returns:
 - node with sockets ['index', 'has_neighbor']
-
-
-
-
-
-
-<sub>Go to [top](#class-Corner) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-### interpolate
-
-```python
-def interpolate(self, value=None)
-```
-
-
-
-> Node: [Evaluate on Domain](GeometryNodeFieldOnDomain.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/v.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeFieldOnDomain.html)
-
-#### Args:
-- value: ['Float', 'Integer', 'Vector', 'Color', 'Boolean']
-
-#### Returns:
-- socket `value`
 
 
 
@@ -987,6 +940,94 @@ def offset_in_face(self, offset=None)
 
 #### Returns:
 - socket `corner_index`
+
+
+
+
+
+
+<sub>Go to [top](#class-Corner) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### raycast
+
+```python
+def raycast(self, target_geometry=None, attribute=None, source_position=None, ray_direction=None, ray_length=None, mapping='INTERPOLATED')
+```
+
+
+
+> Node: [Raycast](GeometryNodeRaycast.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/raycast.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeRaycast.html)
+
+#### Args:
+- target_geometry: Geometry
+- attribute: ['Vector', 'Float', 'Color', 'Boolean', 'Integer']
+- source_position: Vector
+- ray_direction: Vector
+- ray_length: Float
+- mapping (str): 'INTERPOLATED' in [INTERPOLATED, NEAREST]
+
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeRaycast.webp)
+
+#### Returns:
+- node with sockets ['is_hit', 'hit_position', 'hit_normal', 'hit_distance', 'attribute']
+
+
+
+
+
+
+<sub>Go to [top](#class-Corner) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### raycast_interpolated
+
+```python
+def raycast_interpolated(self, target_geometry=None, attribute=None, source_position=None, ray_direction=None, ray_length=None)
+```
+
+
+
+> Node: [Raycast](GeometryNodeRaycast.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/raycast.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeRaycast.html)
+
+#### Args:
+- target_geometry: Geometry
+- attribute: ['Vector', 'Float', 'Color', 'Boolean', 'Integer']
+- source_position: Vector
+- ray_direction: Vector
+- ray_length: Float
+
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeRaycast.webp)
+
+#### Returns:
+- node with sockets ['is_hit', 'hit_position', 'hit_normal', 'hit_distance', 'attribute']
+
+
+
+
+
+
+<sub>Go to [top](#class-Corner) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### raycast_nearest
+
+```python
+def raycast_nearest(self, target_geometry=None, attribute=None, source_position=None, ray_direction=None, ray_length=None)
+```
+
+
+
+> Node: [Raycast](GeometryNodeRaycast.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/raycast.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeRaycast.html)
+
+#### Args:
+- target_geometry: Geometry
+- attribute: ['Vector', 'Float', 'Color', 'Boolean', 'Integer']
+- source_position: Vector
+- ray_direction: Vector
+- ray_length: Float
+
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeRaycast.webp)
+
+#### Returns:
+- node with sockets ['is_hit', 'hit_position', 'hit_normal', 'hit_distance', 'attribute']
 
 
 

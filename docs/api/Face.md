@@ -34,7 +34,7 @@ Face(self, data_socket, selection=None)
 
 **Methods**
 
-[accumulate_field](#accumulate_field) | [attribute_node](#attribute_node) | [attribute_statistic](#attribute_statistic) | [blur_attribute](#blur_attribute) | [blur_color](#blur_color) | [blur_float](#blur_float) | [blur_integer](#blur_integer) | [blur_vector](#blur_vector) | [capture_attribute](#capture_attribute) | [corners](#corners) | [delete](#delete) | [delete_all](#delete_all) | [delete_edges](#delete_edges) | [delete_faces](#delete_faces) | [distribute_points](#distribute_points) | [distribute_points_poisson](#distribute_points_poisson) | [distribute_points_random](#distribute_points_random) | [duplicate](#duplicate) | [evaluate_at_index](#evaluate_at_index) | [extrude](#extrude) | [face_group_boundaries](#face_group_boundaries) | [flip](#flip) | [index_for_sample](#index_for_sample) | [index_of_nearest](#index_of_nearest) | [interpolate](#interpolate) | [is_planar](#is_planar) | [material_selection](#material_selection) | [named_attribute](#named_attribute) | [named_boolean](#named_boolean) | [named_color](#named_color) | [named_float](#named_float) | [named_integer](#named_integer) | [named_vector](#named_vector) | [pack_uv_islands](#pack_uv_islands) | [proximity](#proximity) | [remove_named_attribute](#remove_named_attribute) | [sample_index](#sample_index) | [sample_nearest](#sample_nearest) | [scale_single_axis](#scale_single_axis) | [scale_uniform](#scale_uniform) | [select](#select) | [separate](#separate) | [set_ID](#set_ID) | [set_material](#set_material) | [set_material_index](#set_material_index) | [set_position](#set_position) | [set_shade_smooth](#set_shade_smooth) | [socket_stack](#socket_stack) | [store_named_2D_vector](#store_named_2D_vector) | [store_named_attribute](#store_named_attribute) | [store_named_boolean](#store_named_boolean) | [store_named_byte_color](#store_named_byte_color) | [store_named_color](#store_named_color) | [store_named_float](#store_named_float) | [store_named_integer](#store_named_integer) | [store_named_vector](#store_named_vector) | [triangulate](#triangulate) | [uv_unwrap](#uv_unwrap) | [view](#view) | [viewer](#viewer)
+[accumulate_field](#accumulate_field) | [attribute_node](#attribute_node) | [attribute_statistic](#attribute_statistic) | [blur_attribute](#blur_attribute) | [blur_color](#blur_color) | [blur_float](#blur_float) | [blur_integer](#blur_integer) | [blur_vector](#blur_vector) | [capture_attribute](#capture_attribute) | [corners](#corners) | [delete](#delete) | [delete_all](#delete_all) | [delete_edges](#delete_edges) | [delete_faces](#delete_faces) | [distribute_points](#distribute_points) | [distribute_points_poisson](#distribute_points_poisson) | [distribute_points_random](#distribute_points_random) | [duplicate](#duplicate) | [extrude](#extrude) | [face_group_boundaries](#face_group_boundaries) | [flip](#flip) | [index_for_sample](#index_for_sample) | [index_of_nearest](#index_of_nearest) | [is_planar](#is_planar) | [material_selection](#material_selection) | [named_attribute](#named_attribute) | [named_boolean](#named_boolean) | [named_color](#named_color) | [named_float](#named_float) | [named_integer](#named_integer) | [named_vector](#named_vector) | [pack_uv_islands](#pack_uv_islands) | [proximity](#proximity) | [proximity_edges](#proximity_edges) | [proximity_faces](#proximity_faces) | [proximity_points](#proximity_points) | [raycast](#raycast) | [raycast_interpolated](#raycast_interpolated) | [raycast_nearest](#raycast_nearest) | [remove_named_attribute](#remove_named_attribute) | [sample_index](#sample_index) | [sample_nearest](#sample_nearest) | [scale_single_axis](#scale_single_axis) | [scale_uniform](#scale_uniform) | [select](#select) | [separate](#separate) | [set_ID](#set_ID) | [set_material](#set_material) | [set_material_index](#set_material_index) | [set_position](#set_position) | [set_shade_smooth](#set_shade_smooth) | [socket_stack](#socket_stack) | [store_named_2D_vector](#store_named_2D_vector) | [store_named_attribute](#store_named_attribute) | [store_named_boolean](#store_named_boolean) | [store_named_byte_color](#store_named_byte_color) | [store_named_color](#store_named_color) | [store_named_float](#store_named_float) | [store_named_integer](#store_named_integer) | [store_named_vector](#store_named_vector) | [triangulate](#triangulate) | [uv_unwrap](#uv_unwrap) | [view](#view) | [viewer](#viewer)
 
 ## Properties
 
@@ -1021,30 +1021,6 @@ def duplicate(self, amount=None)
 
 <sub>Go to [top](#class-Face) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
-### evaluate_at_index
-
-```python
-def evaluate_at_index(self, index=None, value=None)
-```
-
-
-
-> Node: [Evaluate at Index](GeometryNodeFieldAtIndex.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/v.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeFieldAtIndex.html)
-
-#### Args:
-- index: Integer
-- value: ['Float', 'Integer', 'Vector', 'Color', 'Boolean']
-
-#### Returns:
-- socket `value`
-
-
-
-
-
-
-<sub>Go to [top](#class-Face) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
 ### extrude
 
 ```python
@@ -1158,29 +1134,6 @@ def index_of_nearest(self, position=None, group_id=None)
 
 #### Returns:
 - node with sockets ['index', 'has_neighbor']
-
-
-
-
-
-
-<sub>Go to [top](#class-Face) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-### interpolate
-
-```python
-def interpolate(self, value=None)
-```
-
-
-
-> Node: [Evaluate on Domain](GeometryNodeFieldOnDomain.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/v.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeFieldOnDomain.html)
-
-#### Args:
-- value: ['Float', 'Integer', 'Vector', 'Color', 'Boolean']
-
-#### Returns:
-- socket `value`
 
 
 
@@ -1420,6 +1373,172 @@ def proximity(self, target=None, source_position=None, target_element='FACES')
 
 #### Returns:
 - node with sockets ['position', 'distance']
+
+
+
+
+
+
+<sub>Go to [top](#class-Face) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### proximity_edges
+
+```python
+def proximity_edges(self, target=None, source_position=None)
+```
+
+
+
+> Node: [Geometry Proximity](GeometryNodeProximity.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/geometry_proximity.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeProximity.html)
+
+#### Args:
+- target: Geometry
+- source_position: Vector
+
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeProximity.webp)
+
+#### Returns:
+- node with sockets ['position', 'distance']
+
+
+
+
+
+
+<sub>Go to [top](#class-Face) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### proximity_faces
+
+```python
+def proximity_faces(self, target=None, source_position=None)
+```
+
+
+
+> Node: [Geometry Proximity](GeometryNodeProximity.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/geometry_proximity.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeProximity.html)
+
+#### Args:
+- target: Geometry
+- source_position: Vector
+
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeProximity.webp)
+
+#### Returns:
+- node with sockets ['position', 'distance']
+
+
+
+
+
+
+<sub>Go to [top](#class-Face) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### proximity_points
+
+```python
+def proximity_points(self, target=None, source_position=None)
+```
+
+
+
+> Node: [Geometry Proximity](GeometryNodeProximity.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/geometry_proximity.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeProximity.html)
+
+#### Args:
+- target: Geometry
+- source_position: Vector
+
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeProximity.webp)
+
+#### Returns:
+- node with sockets ['position', 'distance']
+
+
+
+
+
+
+<sub>Go to [top](#class-Face) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### raycast
+
+```python
+def raycast(self, target_geometry=None, attribute=None, source_position=None, ray_direction=None, ray_length=None, mapping='INTERPOLATED')
+```
+
+
+
+> Node: [Raycast](GeometryNodeRaycast.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/raycast.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeRaycast.html)
+
+#### Args:
+- target_geometry: Geometry
+- attribute: ['Vector', 'Float', 'Color', 'Boolean', 'Integer']
+- source_position: Vector
+- ray_direction: Vector
+- ray_length: Float
+- mapping (str): 'INTERPOLATED' in [INTERPOLATED, NEAREST]
+
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeRaycast.webp)
+
+#### Returns:
+- node with sockets ['is_hit', 'hit_position', 'hit_normal', 'hit_distance', 'attribute']
+
+
+
+
+
+
+<sub>Go to [top](#class-Face) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### raycast_interpolated
+
+```python
+def raycast_interpolated(self, target_geometry=None, attribute=None, source_position=None, ray_direction=None, ray_length=None)
+```
+
+
+
+> Node: [Raycast](GeometryNodeRaycast.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/raycast.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeRaycast.html)
+
+#### Args:
+- target_geometry: Geometry
+- attribute: ['Vector', 'Float', 'Color', 'Boolean', 'Integer']
+- source_position: Vector
+- ray_direction: Vector
+- ray_length: Float
+
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeRaycast.webp)
+
+#### Returns:
+- node with sockets ['is_hit', 'hit_position', 'hit_normal', 'hit_distance', 'attribute']
+
+
+
+
+
+
+<sub>Go to [top](#class-Face) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### raycast_nearest
+
+```python
+def raycast_nearest(self, target_geometry=None, attribute=None, source_position=None, ray_direction=None, ray_length=None)
+```
+
+
+
+> Node: [Raycast](GeometryNodeRaycast.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/raycast.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeRaycast.html)
+
+#### Args:
+- target_geometry: Geometry
+- attribute: ['Vector', 'Float', 'Color', 'Boolean', 'Integer']
+- source_position: Vector
+- ray_direction: Vector
+- ray_length: Float
+
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeRaycast.webp)
+
+#### Returns:
+- node with sockets ['is_hit', 'hit_position', 'hit_normal', 'hit_distance', 'attribute']
 
 
 

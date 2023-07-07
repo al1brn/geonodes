@@ -31,10 +31,16 @@ node = nodes.IndexOfNearest(position=None, group_id=None)
 
 | Class or method name | Definition |
 |----------------------|------------|
+| **[Curve](Curve.md)** |
+| [index_of_nearest](Curve.md#index_of_nearest) | `def index_of_nearest(self, position=None, group_id=None):` |
 | **[Domain](Domain.md)** |
 | [index_of_nearest](Domain.md#index_of_nearest) | `def index_of_nearest(self, position=None, group_id=None):` |
-| **[Geometry](Geometry.md)** |
-| [index_of_nearest](Geometry.md#index_of_nearest) | `def index_of_nearest(self, position=None, group_id=None):` |
+| **[Instances](Instances.md)** |
+| [index_of_nearest](Instances.md#index_of_nearest) | `def index_of_nearest(self, position=None, group_id=None):` |
+| **[Mesh](Mesh.md)** |
+| [index_of_nearest](Mesh.md#index_of_nearest) | `def index_of_nearest(self, position=None, group_id=None):` |
+| **[Points](Points.md)** |
+| [index_of_nearest](Points.md#index_of_nearest) | `def index_of_nearest(self, position=None, group_id=None):` |
 
 <sub>Go to [top](#node-Index-of-Nearest) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

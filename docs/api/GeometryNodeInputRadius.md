@@ -27,8 +27,10 @@ node = nodes.Radius()
 | [radius](CloudPoint.md#radius) | `@property`<br> `def radius(self):` |
 | **[ControlPoint](ControlPoint.md)** |
 | [radius](ControlPoint.md#radius) | `@property`<br> `def radius(self):` |
-| **[Geometry](Geometry.md)** |
-| [radius](Geometry.md#radius) | `@property`<br> `def radius(self):` |
+| **[Curve](Curve.md)** |
+| [radius](Curve.md#radius) | `@property`<br> `def radius(self):` |
+| **[Points](Points.md)** |
+| [radius](Points.md#radius) | `@property`<br> `def radius(self):` |
 
 <sub>Go to [top](#node-Radius) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

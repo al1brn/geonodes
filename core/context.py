@@ -333,13 +333,13 @@ def plug_to_socket(socket, *values):
     # - Blender resources have not 'python type' equivalent, but the name which is done
     
     if bsocket.hide_value:
-        
-        if isinstance(value, int):
-            plug_to_socket(bsocket, integer_node(value).outputs[0])
-            return
 
         if isinstance(value, bool):
             plug_to_socket(bsocket, boolean_node(value).outputs[0])
+            return
+        
+        if isinstance(value, int):
+            plug_to_socket(bsocket, integer_node(value).outputs[0])
             return
 
         if isinstance(value, float):

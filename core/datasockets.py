@@ -431,7 +431,23 @@ class Float(IntFloat):
             Float: The Float data socket
         """
         
-        return cls(Tree.TREE.new_input('Distance', value=value, name=name, min_value=min_value, max_value=max_value, description=description))    
+        return cls(Tree.TREE.new_input('Distance', value=value, name=name, min_value=min_value, max_value=max_value, description=description))  
+    
+    @classmethod
+    def Normal(cls, points, loc=0, scale=1, seed=0):
+        
+        import geonodes as gn
+        
+        points = gn.Points(points)
+        tree = points.node.tree
+        
+        with tree.layout("Float.Uniform : Random uniform values"):
+            u = points.points.capture_attribute(gn.Float.Random(0, 1, seed=seed))
+            v = points.points.capture_attribute(gn.Float.Random(0, 1, seed=seed+1))
+            n = loc + gn.sqrt(-2*gn.log(u, base=2.718281828459045))*gn.cos((2*gn.pi)*v)*scale
+            
+            return points.points.sample_index(n, index=points.points.index)
+        
 
 # -----------------------------------------------------------------------------------------------------------------------------
 # String
@@ -697,6 +713,30 @@ class Vector(DataSocket):
             Vector: The Vector data socket
         """
         return cls(Tree.TREE.new_input('Xyz', value=value, name=name, description=description))
+    
+    
+    @classmethod
+    def OnSphere(cls, points, seed=0):
+        
+        import geonodes as gn
+        
+        points = gn.Points(points)
+        tree = points.node.tree
+        
+        with tree.layout("Vector.OnSphere : Random points on a sphere"):
+            
+            with tree.layout("Latitude"):
+                u_phi = points.points.capture_attribute(gn.Float.Random(-1, 1, seed=seed))
+                phi = (1 - u_phi.abs().sqrt())*u_phi.sign()*(gn.pi/2)
+                
+            with tree.layout("Longitude"):
+                theta = points.points.capture_attribute(gn.Float.Random(0, gn.pi*2, seed=seed+1))
+                r = gn.cos(phi)
+                
+            v = gn.Vector((r*gn.cos(theta), r*gn.sin(theta), gn.sin(phi)))
+            
+            return points.points.sample_index(v, index=points.points.index)
+
     
     # ---------------------------------------------------------------------------
     # x, y and z components
@@ -1430,11 +1470,19 @@ class Geometry(DataSocket):
     
     def __init__(self, socket, node=None, label=None):
         
-        #from geonodes.nodes import domains
-        
-        #self.points = Vertex(self) # Initialized before super().__init__ which can override points
-        
         super().__init__(socket, node=node, label=label)
+        
+        cname = type(self).__name__
+        if cname == 'Mesh':
+            self.default_domain = self.verts
+        elif cname == 'Curve':
+            self.default_domain = self.points
+        elif cname == 'Points':
+            self.default_domain = self.points
+        elif cname == 'Instances':
+            self.default_domain = self.insts
+        else:
+            self.default_domain = None
     
     
     def init_domains(self):

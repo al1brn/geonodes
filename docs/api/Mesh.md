@@ -36,16 +36,11 @@ The `Line` constructor is also available with the different ways to initialize a
 Mesh(self, socket, node=None, label=None)
 ```
 
-rom geonodes.nodes import domains
-
-elf.points = Vertex(self) # Initialized before super().__init__ which can override points
-
-
 ## Content
 
 **Properties**
 
-[ID](#ID) | [bounding_box](#bounding_box) | [convex_hull](#convex_hull) | [corner_count](#corner_count) | [curve_component](#curve_component) | [domain_size](#domain_size) | [edge_count](#edge_count) | [face_count](#face_count) | [index](#index) | [instances_component](#instances_component) | [island](#island) | [material_index](#material_index) | [mesh_component](#mesh_component) | [normal](#normal) | [point_count](#point_count) | [points_component](#points_component) | [position](#position) | [radius](#radius) | [separate_components](#separate_components) | [signed_distance](#signed_distance) | [volume_component](#volume_component)
+[ID](#ID) | [bounding_box](#bounding_box) | [convex_hull](#convex_hull) | [corner_count](#corner_count) | [curve_component](#curve_component) | [domain_size](#domain_size) | [edge_count](#edge_count) | [face_count](#face_count) | [index](#index) | [instances_component](#instances_component) | [island](#island) | [material_index](#material_index) | [mesh_component](#mesh_component) | [normal](#normal) | [point_count](#point_count) | [points_component](#points_component) | [position](#position) | [separate_components](#separate_components) | [volume_component](#volume_component)
 
 ***Inherited***
 
@@ -61,7 +56,7 @@ elf.points = Vertex(self) # Initialized before super().__init__ which can overri
 
 **Methods**
 
-[attribute_node](#attribute_node) | [attribute_statistic](#attribute_statistic) | [boolean_difference](#boolean_difference) | [boolean_intersect](#boolean_intersect) | [boolean_union](#boolean_union) | [capture_attribute](#capture_attribute) | [corners_of_face](#corners_of_face) | [corners_of_vertex](#corners_of_vertex) | [delete](#delete) | [delete_all](#delete_all) | [delete_edges](#delete_edges) | [delete_faces](#delete_faces) | [distribute_points_on_faces](#distribute_points_on_faces) | [dual_mesh](#dual_mesh) | [duplicate](#duplicate) | [edge_paths_to_curves](#edge_paths_to_curves) | [edge_paths_to_selection](#edge_paths_to_selection) | [edges_of_corner](#edges_of_corner) | [edges_of_vertex](#edges_of_vertex) | [edges_to_face_groups](#edges_to_face_groups) | [evaluate_at_index](#evaluate_at_index) | [extrude](#extrude) | [face_group_boundaries](#face_group_boundaries) | [face_of_corner](#face_of_corner) | [flip_faces](#flip_faces) | [index_of_nearest](#index_of_nearest) | [instance_on_points](#instance_on_points) | [instantiate](#instantiate) | [interpolate_domain](#interpolate_domain) | [is_face_planar](#is_face_planar) | [is_shade_smooth](#is_shade_smooth) | [join](#join) | [material_selection](#material_selection) | [merge_by_distance](#merge_by_distance) | [named_attribute](#named_attribute) | [named_boolean](#named_boolean) | [named_color](#named_color) | [named_float](#named_float) | [named_integer](#named_integer) | [named_vector](#named_vector) | [offset_corner_in_face](#offset_corner_in_face) | [pack_uv_islands](#pack_uv_islands) | [proximity](#proximity) | [proximity_edges](#proximity_edges) | [proximity_faces](#proximity_faces) | [proximity_points](#proximity_points) | [raycast](#raycast) | [raycast_interpolated](#raycast_interpolated) | [raycast_nearest](#raycast_nearest) | [remove_named_attribute](#remove_named_attribute) | [replace_material](#replace_material) | [sample_index](#sample_index) | [sample_nearest](#sample_nearest) | [sample_nearest_surface](#sample_nearest_surface) | [sample_uv_surface](#sample_uv_surface) | [scale_elements](#scale_elements) | [scale_single_axis](#scale_single_axis) | [scale_uniform](#scale_uniform) | [separate](#separate) | [set_ID](#set_ID) | [set_material](#set_material) | [set_material_index](#set_material_index) | [set_position](#set_position) | [set_shade_smooth](#set_shade_smooth) | [shortest_edge_paths](#shortest_edge_paths) | [show_handles](#show_handles) | [split_edges](#split_edges) | [store_named_attribute](#store_named_attribute) | [store_named_boolean](#store_named_boolean) | [store_named_color](#store_named_color) | [store_named_float](#store_named_float) | [store_named_integer](#store_named_integer) | [store_named_vector](#store_named_vector) | [subdivide](#subdivide) | [subdivision_surface](#subdivision_surface) | [switch](#switch) | [to_curve](#to_curve) | [to_instance](#to_instance) | [to_points](#to_points) | [to_sdf_volume](#to_sdf_volume) | [to_volume](#to_volume) | [transform](#transform) | [transform_geometry](#transform_geometry) | [triangulate](#triangulate) | [uv_unwrap](#uv_unwrap) | [vertex_of_corner](#vertex_of_corner) | [view](#view) | [viewer](#viewer)
+[attribute_node](#attribute_node) | [attribute_statistic](#attribute_statistic) | [boolean_difference](#boolean_difference) | [boolean_intersect](#boolean_intersect) | [boolean_union](#boolean_union) | [capture_attribute](#capture_attribute) | [corners_of_face](#corners_of_face) | [corners_of_vertex](#corners_of_vertex) | [delete](#delete) | [delete_all](#delete_all) | [delete_edges](#delete_edges) | [delete_faces](#delete_faces) | [distribute_points_on_faces](#distribute_points_on_faces) | [dual_mesh](#dual_mesh) | [duplicate](#duplicate) | [edge_paths_to_curves](#edge_paths_to_curves) | [edge_paths_to_selection](#edge_paths_to_selection) | [edges_of_corner](#edges_of_corner) | [edges_of_vertex](#edges_of_vertex) | [edges_to_face_groups](#edges_to_face_groups) | [extrude](#extrude) | [face_group_boundaries](#face_group_boundaries) | [face_of_corner](#face_of_corner) | [flip_faces](#flip_faces) | [index_of_nearest](#index_of_nearest) | [instance_on_points](#instance_on_points) | [instantiate](#instantiate) | [is_face_planar](#is_face_planar) | [is_shade_smooth](#is_shade_smooth) | [join](#join) | [material_selection](#material_selection) | [merge_by_distance](#merge_by_distance) | [named_attribute](#named_attribute) | [named_boolean](#named_boolean) | [named_color](#named_color) | [named_float](#named_float) | [named_integer](#named_integer) | [named_vector](#named_vector) | [offset_corner_in_face](#offset_corner_in_face) | [pack_uv_islands](#pack_uv_islands) | [proximity](#proximity) | [proximity_edges](#proximity_edges) | [proximity_faces](#proximity_faces) | [proximity_points](#proximity_points) | [raycast](#raycast) | [raycast_interpolated](#raycast_interpolated) | [raycast_nearest](#raycast_nearest) | [remove_named_attribute](#remove_named_attribute) | [replace_material](#replace_material) | [sample_index](#sample_index) | [sample_nearest](#sample_nearest) | [sample_nearest_surface](#sample_nearest_surface) | [sample_uv_surface](#sample_uv_surface) | [scale_elements](#scale_elements) | [scale_single_axis](#scale_single_axis) | [scale_uniform](#scale_uniform) | [separate](#separate) | [set_ID](#set_ID) | [set_material](#set_material) | [set_material_index](#set_material_index) | [set_position](#set_position) | [set_shade_smooth](#set_shade_smooth) | [shortest_edge_paths](#shortest_edge_paths) | [show_handles](#show_handles) | [split_edges](#split_edges) | [store_named_attribute](#store_named_attribute) | [store_named_boolean](#store_named_boolean) | [store_named_color](#store_named_color) | [store_named_float](#store_named_float) | [store_named_integer](#store_named_integer) | [store_named_vector](#store_named_vector) | [subdivide](#subdivide) | [subdivision_surface](#subdivision_surface) | [switch](#switch) | [to_curve](#to_curve) | [to_instance](#to_instance) | [to_points](#to_points) | [to_sdf_volume](#to_sdf_volume) | [to_volume](#to_volume) | [transform](#transform) | [transform_geometry](#transform_geometry) | [triangulate](#triangulate) | [uv_unwrap](#uv_unwrap) | [vertex_of_corner](#vertex_of_corner) | [view](#view) | [viewer](#viewer)
 
 ***Inherited***
 
@@ -347,22 +342,6 @@ elf.points = Vertex(self) # Initialized before super().__init__ which can overri
 
 <sub>Go to [top](#class-Mesh) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
-### radius
-
-
-
-> Node: [Radius](GeometryNodeInputRadius.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/radius.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputRadius.html)
-
-#### Returns:
-- socket `radius`
-
-
-
-
-
-
-<sub>Go to [top](#class-Mesh) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
 ### separate_components
 
 
@@ -373,22 +352,6 @@ elf.points = Vertex(self) # Initialized before super().__init__ which can overri
 
 #### Returns:
 - node with sockets ['mesh', 'curve', 'point_cloud', 'volume', 'instances']
-
-
-
-
-
-
-<sub>Go to [top](#class-Mesh) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-### signed_distance
-
-
-
-> Node: [Signed Distance](GeometryNodeInputSignedDistance.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/i.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputSignedDistance.html)
-
-#### Returns:
-- socket `signed_distance`
 
 
 
@@ -1428,31 +1391,6 @@ def edges_to_face_groups(self, boundary_edges=None)
 
 <sub>Go to [top](#class-Mesh) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
-### evaluate_at_index
-
-```python
-def evaluate_at_index(self, index=None, value=None, domain='POINT')
-```
-
-
-
-> Node: [Evaluate at Index](GeometryNodeFieldAtIndex.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/v.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeFieldAtIndex.html)
-
-#### Args:
-- index: Integer
-- value: ['Float', 'Integer', 'Vector', 'Color', 'Boolean']
-- domain (str): 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
-
-#### Returns:
-- socket `value`
-
-
-
-
-
-
-<sub>Go to [top](#class-Mesh) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
 ### extrude
 
 ```python
@@ -1635,30 +1573,6 @@ curves = curve * 10
 
 curves = curve.duplicate(10, realize=False)
 ```
-
-
-
-
-<sub>Go to [top](#class-Mesh) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-### interpolate_domain
-
-```python
-def interpolate_domain(self, value=None, domain='POINT')
-```
-
-
-
-> Node: [Evaluate on Domain](GeometryNodeFieldOnDomain.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/v.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeFieldOnDomain.html)
-
-#### Args:
-- value: ['Float', 'Integer', 'Vector', 'Color', 'Boolean']
-- domain (str): 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
-
-#### Returns:
-- socket `value`
-
-
 
 
 

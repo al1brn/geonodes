@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 """
-Created on 2023-07-05
+Created on 2023-07-07
 
 @author: Generated from generator module
 
@@ -2448,7 +2448,7 @@ class HandleTypeSelection(Node):
 
     Args:
         handle_type (str): Node parameter, default = 'AUTO' in ('FREE', 'AUTO', 'VECTOR', 'ALIGN')
-        mode (set): Node parameter, default = {'LEFT', 'RIGHT'}
+        mode (set): Node parameter, default = {'RIGHT', 'LEFT'}
         node_color (color): Node color
         node_label (str): Node label
 
@@ -2460,7 +2460,7 @@ class HandleTypeSelection(Node):
 
     """
 
-    def __init__(self, handle_type='AUTO', mode={'LEFT', 'RIGHT'}, label=None, node_color=None):
+    def __init__(self, handle_type='AUTO', mode={'RIGHT', 'LEFT'}, label=None, node_color=None):
 
         super().__init__('GeometryNodeCurveHandleTypeSelection', node_name='Handle Type Selection', label=label, node_color=node_color)
 
@@ -3172,7 +3172,7 @@ class SetHandleType(Node):
         curve (DataSocket): Curve
         selection (DataSocket): Boolean
         handle_type (str): Node parameter, default = 'AUTO' in ('FREE', 'AUTO', 'VECTOR', 'ALIGN')
-        mode (set): Node parameter, default = {'LEFT', 'RIGHT'}
+        mode (set): Node parameter, default = {'RIGHT', 'LEFT'}
         node_color (color): Node color
         node_label (str): Node label
 
@@ -3184,7 +3184,7 @@ class SetHandleType(Node):
 
     """
 
-    def __init__(self, curve=None, selection=None, handle_type='AUTO', mode={'LEFT', 'RIGHT'}, label=None, node_color=None):
+    def __init__(self, curve=None, selection=None, handle_type='AUTO', mode={'RIGHT', 'LEFT'}, label=None, node_color=None):
 
         super().__init__('GeometryNodeCurveSetHandles', node_name='Set Handle Type', label=label, node_color=node_color)
 
@@ -4718,10 +4718,6 @@ class EvaluateAtIndex(Node):
     .. _EvaluateAtIndex:
 
     Node implementation:
-        Geometry:
-            evaluate_at_index 
-        Domain:
-            evaluate_at_index 
 
     Args:
         index (DataSocket): Integer
@@ -4805,10 +4801,6 @@ class EvaluateOnDomain(Node):
     .. _EvaluateOnDomain:
 
     Node implementation:
-        Geometry:
-            interpolate_domain 
-        Domain:
-            interpolate 
 
     Args:
         value (DataSocket): ``data_type`` dependant
@@ -5357,7 +5349,7 @@ class IndexOfNearest(Node):
     .. _IndexOfNearest:
 
     Node implementation:
-        Geometry:
+        ('Mesh', 'Curve', 'Points', 'Instances'):
             index_of_nearest 
         Domain:
             index_of_nearest 
@@ -5519,7 +5511,7 @@ class ID(Node):
     .. _ID:
 
     Node implementation:
-        Geometry:
+        ('Mesh', 'Curve', 'Points', 'Instances'):
             ID 
         Domain:
             ID 
@@ -5593,7 +5585,7 @@ class Index(Node):
     .. _Index:
 
     Node implementation:
-        Geometry:
+        ('Mesh', 'Curve', 'Points', 'Instances'):
             index 
         Domain:
             index domain_index 
@@ -5751,9 +5743,11 @@ class MaterialIndex(Node):
     .. _MaterialIndex:
 
     Node implementation:
-        Geometry:
+        Mesh:
             material_index 
-        ('Face', 'Spline'):
+        Points:
+            material_index 
+        ('Face', 'CloudPoint'):
             material_index 
 
     Args:
@@ -6147,7 +6141,7 @@ class NamedAttribute(Node):
     .. _NamedAttribute:
 
     Node implementation:
-        Geometry:
+        ('Mesh', 'Curve', 'Points', 'Instances'):
             named_attribute named_float named_integer named_vector named_color named_boolean 
         Domain:
             named_attribute named_float named_integer named_vector named_color named_boolean 
@@ -6223,7 +6217,7 @@ class Normal(Node):
     .. _Normal:
 
     Node implementation:
-        Geometry:
+        ('Mesh', 'Curve', 'Points', 'Instances'):
             normal 
         Domain:
             normal 
@@ -6265,7 +6259,7 @@ class Position(Node):
     .. _Position:
 
     Node implementation:
-        Geometry:
+        ('Mesh', 'Curve', 'Points', 'Instances'):
             position 
         Domain:
             position 
@@ -6305,7 +6299,7 @@ class Radius(Node):
     .. _Radius:
 
     Node implementation:
-        Geometry:
+        ('Curve', 'Points'):
             radius 
         ControlPoint:
             radius 
@@ -6432,6 +6426,8 @@ class ShortestEdgePaths(Node):
     Node implementation:
         Mesh:
             shortest_edge_paths 
+        Vertex:
+            shortest_edge_paths 
 
     Args:
         end_vertex (DataSocket): Boolean
@@ -6496,8 +6492,6 @@ class SignedDistance(Node):
     .. _SignedDistance:
 
     Node implementation:
-        Geometry:
-            signed_distance 
 
     Args:
         node_color (color): Node color
@@ -7064,7 +7058,9 @@ class MaterialSelection(Node):
     .. _MaterialSelection:
 
     Node implementation:
-        Geometry:
+        Mesh:
+            material_selection 
+        Points:
             material_selection 
         Domain:
             material_selection 
@@ -9234,14 +9230,14 @@ class GeometryProximity(Node):
     .. _GeometryProximity:
 
     Node implementation:
-        Geometry:
+        ('Mesh', 'Curve', 'Points', 'Instances'):
             proximity proximity_points proximity_edges proximity_faces 
         ('Vertex', 'ControlPoint', 'CloudPoint'):
-            proximity 
+            proximity proximity_points proximity_edges proximity_faces 
         Edge:
-            proximity 
+            proximity proximity_points proximity_edges proximity_faces 
         Face:
-            proximity 
+            proximity proximity_points proximity_edges proximity_faces 
 
     Args:
         target (DataSocket): Geometry
@@ -9319,7 +9315,9 @@ class Raycast(Node):
     .. _Raycast:
 
     Node implementation:
-        Geometry:
+        ('Mesh', 'Curve', 'Points', 'Instances'):
+            raycast raycast_interpolated raycast_nearest 
+        Domain:
             raycast raycast_interpolated raycast_nearest 
 
     Args:
@@ -11391,7 +11389,7 @@ class SetMaterialIndex(Node):
     Node implementation:
         Geometry:
             set_material_index 
-        ('Face', 'Spline'):
+        ('Face', 'CloudPoint'):
             set_material_index material_index 
 
     Args:

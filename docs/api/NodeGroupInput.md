@@ -18,6 +18,11 @@ node = nodes.GroupInput()
 ### Output sockets:
 
 - **geometry** : [Geometry](Geometry.md)
+- **texture** : [Texture](Texture.md)
+- **image** : [Image](Image.md)
+- **material** : [Material](Material.md)
+- **collection** : [Collection](Collection.md)
+- **object** : [Object](Object.md)
 
 
 <sub>Go to [top](#node-Group-Input) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>

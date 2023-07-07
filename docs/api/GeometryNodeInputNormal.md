@@ -23,10 +23,16 @@ node = nodes.Normal()
 
 | Class or method name | Definition |
 |----------------------|------------|
+| **[Curve](Curve.md)** |
+| [normal](Curve.md#normal) | `@property`<br> `def normal(self):` |
 | **[Domain](Domain.md)** |
 | [normal](Domain.md#normal) | `@property`<br> `def normal(self):` |
-| **[Geometry](Geometry.md)** |
-| [normal](Geometry.md#normal) | `@property`<br> `def normal(self):` |
+| **[Instances](Instances.md)** |
+| [normal](Instances.md#normal) | `@property`<br> `def normal(self):` |
+| **[Mesh](Mesh.md)** |
+| [normal](Mesh.md#normal) | `@property`<br> `def normal(self):` |
+| **[Points](Points.md)** |
+| [normal](Points.md#normal) | `@property`<br> `def normal(self):` |
 | **[Spline](Spline.md)** |
 | [normal](Spline.md#normal) | `@property`<br> `def normal(self):` |
 

@@ -26,7 +26,7 @@ Spline(self, data_socket, selection=None)
 
 **Properties**
 
-[ID](#ID) | [as_cloud_points](#as_cloud_points) | [as_control_points](#as_control_points) | [as_corners](#as_corners) | [as_edges](#as_edges) | [as_faces](#as_faces) | [as_insts](#as_insts) | [as_splines](#as_splines) | [as_verts](#as_verts) | [count](#count) | [cyclic](#cyclic) | [data_socket](#data_socket) | [domain](#domain) | [domain_index](#domain_index) | [index](#index) | [length](#length) | [material_index](#material_index) | [normal](#normal) | [position](#position) | [position_offset](#position_offset) | [resolution](#resolution) | [selection](#selection) | [selection_index](#selection_index) | [type](#type)
+[ID](#ID) | [as_cloud_points](#as_cloud_points) | [as_control_points](#as_control_points) | [as_corners](#as_corners) | [as_edges](#as_edges) | [as_faces](#as_faces) | [as_insts](#as_insts) | [as_splines](#as_splines) | [as_verts](#as_verts) | [count](#count) | [cyclic](#cyclic) | [data_socket](#data_socket) | [domain](#domain) | [domain_index](#domain_index) | [index](#index) | [length](#length) | [normal](#normal) | [position](#position) | [position_offset](#position_offset) | [resolution](#resolution) | [selection](#selection) | [selection_index](#selection_index) | [type](#type)
 
 **Class and static methods**
 
@@ -34,7 +34,7 @@ Spline(self, data_socket, selection=None)
 
 **Methods**
 
-[accumulate_field](#accumulate_field) | [attribute_node](#attribute_node) | [attribute_statistic](#attribute_statistic) | [blur_attribute](#blur_attribute) | [blur_color](#blur_color) | [blur_float](#blur_float) | [blur_integer](#blur_integer) | [blur_vector](#blur_vector) | [capture_attribute](#capture_attribute) | [delete](#delete) | [duplicate](#duplicate) | [evaluate_at_index](#evaluate_at_index) | [index_for_sample](#index_for_sample) | [index_of_nearest](#index_of_nearest) | [interpolate](#interpolate) | [material_selection](#material_selection) | [named_attribute](#named_attribute) | [named_boolean](#named_boolean) | [named_color](#named_color) | [named_float](#named_float) | [named_integer](#named_integer) | [named_vector](#named_vector) | [points](#points) | [remove_named_attribute](#remove_named_attribute) | [resample](#resample) | [resample_count](#resample_count) | [resample_evaluated](#resample_evaluated) | [resample_length](#resample_length) | [sample_index](#sample_index) | [select](#select) | [separate](#separate) | [set_ID](#set_ID) | [set_cyclic](#set_cyclic) | [set_material_index](#set_material_index) | [set_normal](#set_normal) | [set_position](#set_position) | [set_resolution](#set_resolution) | [set_type](#set_type) | [socket_stack](#socket_stack) | [store_named_2D_vector](#store_named_2D_vector) | [store_named_attribute](#store_named_attribute) | [store_named_boolean](#store_named_boolean) | [store_named_byte_color](#store_named_byte_color) | [store_named_color](#store_named_color) | [store_named_float](#store_named_float) | [store_named_integer](#store_named_integer) | [store_named_vector](#store_named_vector) | [trim](#trim) | [trim_factor](#trim_factor) | [trim_length](#trim_length) | [view](#view) | [viewer](#viewer)
+[accumulate_field](#accumulate_field) | [attribute_node](#attribute_node) | [attribute_statistic](#attribute_statistic) | [blur_attribute](#blur_attribute) | [blur_color](#blur_color) | [blur_float](#blur_float) | [blur_integer](#blur_integer) | [blur_vector](#blur_vector) | [capture_attribute](#capture_attribute) | [delete](#delete) | [duplicate](#duplicate) | [index_for_sample](#index_for_sample) | [index_of_nearest](#index_of_nearest) | [material_selection](#material_selection) | [named_attribute](#named_attribute) | [named_boolean](#named_boolean) | [named_color](#named_color) | [named_float](#named_float) | [named_integer](#named_integer) | [named_vector](#named_vector) | [points](#points) | [raycast](#raycast) | [raycast_interpolated](#raycast_interpolated) | [raycast_nearest](#raycast_nearest) | [remove_named_attribute](#remove_named_attribute) | [resample](#resample) | [resample_count](#resample_count) | [resample_evaluated](#resample_evaluated) | [resample_length](#resample_length) | [sample_index](#sample_index) | [select](#select) | [separate](#separate) | [set_ID](#set_ID) | [set_cyclic](#set_cyclic) | [set_normal](#set_normal) | [set_position](#set_position) | [set_resolution](#set_resolution) | [set_type](#set_type) | [socket_stack](#socket_stack) | [store_named_2D_vector](#store_named_2D_vector) | [store_named_attribute](#store_named_attribute) | [store_named_boolean](#store_named_boolean) | [store_named_byte_color](#store_named_byte_color) | [store_named_color](#store_named_color) | [store_named_float](#store_named_float) | [store_named_integer](#store_named_integer) | [store_named_vector](#store_named_vector) | [trim](#trim) | [trim_factor](#trim_factor) | [trim_length](#trim_length) | [view](#view) | [viewer](#viewer)
 
 ## Properties
 
@@ -249,39 +249,6 @@ Node implemented as property setter.
 
 #### Returns:
 - node with sockets ['length', 'point_count']
-
-
-
-
-
-
-<sub>Go to [top](#class-Spline) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-### material_index
-
-
-
-> Node: [Material Index](GeometryNodeInputMaterialIndex.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/material_index.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMaterialIndex.html)
-
-#### Returns:
-- socket `material_index`
-
-
-
-
-
-
-Setter
-
-
-
-> Node: [Set Material Index](GeometryNodeSetMaterialIndex.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/set_material_index.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetMaterialIndex.html)
-
-Node implemented as property setter.
-
-#### Args:
-- attr_value: material_index
-
 
 
 
@@ -864,30 +831,6 @@ def duplicate(self, amount=None)
 
 <sub>Go to [top](#class-Spline) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
-### evaluate_at_index
-
-```python
-def evaluate_at_index(self, index=None, value=None)
-```
-
-
-
-> Node: [Evaluate at Index](GeometryNodeFieldAtIndex.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/v.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeFieldAtIndex.html)
-
-#### Args:
-- index: Integer
-- value: ['Float', 'Integer', 'Vector', 'Color', 'Boolean']
-
-#### Returns:
-- socket `value`
-
-
-
-
-
-
-<sub>Go to [top](#class-Spline) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
 ### index_for_sample
 
 ```python
@@ -931,29 +874,6 @@ def index_of_nearest(self, position=None, group_id=None)
 
 #### Returns:
 - node with sockets ['index', 'has_neighbor']
-
-
-
-
-
-
-<sub>Go to [top](#class-Spline) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-### interpolate
-
-```python
-def interpolate(self, value=None)
-```
-
-
-
-> Node: [Evaluate on Domain](GeometryNodeFieldOnDomain.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/v.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeFieldOnDomain.html)
-
-#### Args:
-- value: ['Float', 'Integer', 'Vector', 'Color', 'Boolean']
-
-#### Returns:
-- socket `value`
 
 
 
@@ -1144,6 +1064,94 @@ def points(self, weights=None, sort_index=None)
 
 #### Returns:
 - node with sockets ['point_index', 'total']
+
+
+
+
+
+
+<sub>Go to [top](#class-Spline) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### raycast
+
+```python
+def raycast(self, target_geometry=None, attribute=None, source_position=None, ray_direction=None, ray_length=None, mapping='INTERPOLATED')
+```
+
+
+
+> Node: [Raycast](GeometryNodeRaycast.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/raycast.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeRaycast.html)
+
+#### Args:
+- target_geometry: Geometry
+- attribute: ['Vector', 'Float', 'Color', 'Boolean', 'Integer']
+- source_position: Vector
+- ray_direction: Vector
+- ray_length: Float
+- mapping (str): 'INTERPOLATED' in [INTERPOLATED, NEAREST]
+
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeRaycast.webp)
+
+#### Returns:
+- node with sockets ['is_hit', 'hit_position', 'hit_normal', 'hit_distance', 'attribute']
+
+
+
+
+
+
+<sub>Go to [top](#class-Spline) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### raycast_interpolated
+
+```python
+def raycast_interpolated(self, target_geometry=None, attribute=None, source_position=None, ray_direction=None, ray_length=None)
+```
+
+
+
+> Node: [Raycast](GeometryNodeRaycast.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/raycast.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeRaycast.html)
+
+#### Args:
+- target_geometry: Geometry
+- attribute: ['Vector', 'Float', 'Color', 'Boolean', 'Integer']
+- source_position: Vector
+- ray_direction: Vector
+- ray_length: Float
+
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeRaycast.webp)
+
+#### Returns:
+- node with sockets ['is_hit', 'hit_position', 'hit_normal', 'hit_distance', 'attribute']
+
+
+
+
+
+
+<sub>Go to [top](#class-Spline) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### raycast_nearest
+
+```python
+def raycast_nearest(self, target_geometry=None, attribute=None, source_position=None, ray_direction=None, ray_length=None)
+```
+
+
+
+> Node: [Raycast](GeometryNodeRaycast.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/raycast.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeRaycast.html)
+
+#### Args:
+- target_geometry: Geometry
+- attribute: ['Vector', 'Float', 'Color', 'Boolean', 'Integer']
+- source_position: Vector
+- ray_direction: Vector
+- ray_length: Float
+
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeRaycast.webp)
+
+#### Returns:
+- node with sockets ['is_hit', 'hit_position', 'hit_normal', 'hit_distance', 'attribute']
 
 
 
@@ -1376,29 +1384,6 @@ def set_cyclic(self, cyclic=None)
 
 #### Args:
 - cyclic: Boolean
-
-#### Returns:
-- self
-
-
-
-
-
-
-<sub>Go to [top](#class-Spline) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-### set_material_index
-
-```python
-def set_material_index(self, material_index=None)
-```
-
-
-
-> Node: [Set Material Index](GeometryNodeSetMaterialIndex.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/set_material_index.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetMaterialIndex.html)
-
-#### Args:
-- material_index: Integer
 
 #### Returns:
 - self

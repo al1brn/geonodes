@@ -23,10 +23,16 @@ node = nodes.Position()
 
 | Class or method name | Definition |
 |----------------------|------------|
+| **[Curve](Curve.md)** |
+| [position](Curve.md#position) | `@property`<br> `def position(self):` |
 | **[Domain](Domain.md)** |
 | [position](Domain.md#position) | `@property`<br> `def position(self):` |
-| **[Geometry](Geometry.md)** |
-| [position](Geometry.md#position) | `@property`<br> `def position(self):` |
+| **[Instances](Instances.md)** |
+| [position](Instances.md#position) | `@property`<br> `def position(self):` |
+| **[Mesh](Mesh.md)** |
+| [position](Mesh.md#position) | `@property`<br> `def position(self):` |
+| **[Points](Points.md)** |
+| [position](Points.md#position) | `@property`<br> `def position(self):` |
 
 <sub>Go to [top](#node-Position) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

@@ -430,12 +430,10 @@ def capture(self)
 
  Capture the attribute.
 
-If geometry is None, the attribute is captured from the propezrty 'field_of'.
-Raise an error if both are None.
+The geometry socket ois searched backwards in one o-of the node feeding this node.
 
-#### Args:
-- geometry (None): the geometry from which to capture the attribute. If none, self.field_of is used
-    
+Raise an error if nothing is found.
+
 #### Returns:
 - attribute socket of 'Capture attribute' node
 

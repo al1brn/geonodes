@@ -410,51 +410,8 @@ class Domain:
     
     def __getitem__(self, index):
         
-        if True:
-            return self.select(index)
-        
-        else:
-            import geonodes as gn
-            
-            # ----- Index is a boolean
-            # We plug it directly
-            
-            if isinstance(index, (bool, gn.Boolean)):
-                return self.select(index)
-    
-            # ----- Index is an int or a socket (different from Boolean addressed above)
-            # We plug it directly
-            
-            elif isinstance(index, int) or Socket.is_socket(index):
-                return self.select(self.index.equal(index))
-    
-            # ----- Index is slice
-            
-            elif isinstance(index, slice):
-                if index.start is None:
-                    return self.select(self.index.less_equal(index.stop))
-                
-                elif index.stop is None:
-                    return self.select(self.index.greater_equal(index.start))
-                
-                else:
-                    center = (index.start + index.stop - 1)/2
-                    amp    = (index.stop - index.start - 1)/2
-                    return self.select(gn.Float(self.index).equal(center, epsilon=amp+0.1))
-                
-            # ----- Index is an array of indices
-            
-            elif hasattr(index, '__len__'):
-                sel = None
-                for i in index[:10]:
-                    if sel is None:
-                        sel = self.index.equal(i)
-                    else:
-                        sel = sel.b_or(self.index.equal(i))
-                return self.select(sel)
-            
-            else:
-                raise Exception(f"Invalid domain index: {index}. Only bool, int, slice and array are valid.")
+        return self.select(index)
+
             
     # ----------------------------------------------------------------------------------------------------
     # To viewer

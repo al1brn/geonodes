@@ -26,7 +26,7 @@ CloudPoint(self, data_socket, selection=None)
 
 **Properties**
 
-[ID](#ID) | [as_cloud_points](#as_cloud_points) | [as_control_points](#as_control_points) | [as_corners](#as_corners) | [as_edges](#as_edges) | [as_faces](#as_faces) | [as_insts](#as_insts) | [as_splines](#as_splines) | [as_verts](#as_verts) | [count](#count) | [data_socket](#data_socket) | [domain](#domain) | [domain_index](#domain_index) | [index](#index) | [material](#material) | [normal](#normal) | [position](#position) | [position_offset](#position_offset) | [radius](#radius) | [selection](#selection) | [selection_index](#selection_index)
+[ID](#ID) | [as_cloud_points](#as_cloud_points) | [as_control_points](#as_control_points) | [as_corners](#as_corners) | [as_edges](#as_edges) | [as_faces](#as_faces) | [as_insts](#as_insts) | [as_splines](#as_splines) | [as_verts](#as_verts) | [count](#count) | [data_socket](#data_socket) | [domain](#domain) | [domain_index](#domain_index) | [index](#index) | [material](#material) | [material_index](#material_index) | [normal](#normal) | [position](#position) | [position_offset](#position_offset) | [radius](#radius) | [selection](#selection) | [selection_index](#selection_index)
 
 **Class and static methods**
 
@@ -34,7 +34,7 @@ CloudPoint(self, data_socket, selection=None)
 
 **Methods**
 
-[accumulate_field](#accumulate_field) | [attribute_node](#attribute_node) | [attribute_statistic](#attribute_statistic) | [blur_attribute](#blur_attribute) | [blur_color](#blur_color) | [blur_float](#blur_float) | [blur_integer](#blur_integer) | [blur_vector](#blur_vector) | [capture_attribute](#capture_attribute) | [delete](#delete) | [duplicate](#duplicate) | [evaluate_at_index](#evaluate_at_index) | [index_for_sample](#index_for_sample) | [index_of_nearest](#index_of_nearest) | [instance_on](#instance_on) | [interpolate](#interpolate) | [material_selection](#material_selection) | [named_attribute](#named_attribute) | [named_boolean](#named_boolean) | [named_color](#named_color) | [named_float](#named_float) | [named_integer](#named_integer) | [named_vector](#named_vector) | [proximity](#proximity) | [remove_named_attribute](#remove_named_attribute) | [sample_index](#sample_index) | [sample_nearest](#sample_nearest) | [select](#select) | [set_ID](#set_ID) | [set_material](#set_material) | [set_position](#set_position) | [socket_stack](#socket_stack) | [store_named_2D_vector](#store_named_2D_vector) | [store_named_attribute](#store_named_attribute) | [store_named_boolean](#store_named_boolean) | [store_named_byte_color](#store_named_byte_color) | [store_named_color](#store_named_color) | [store_named_float](#store_named_float) | [store_named_integer](#store_named_integer) | [store_named_vector](#store_named_vector) | [to_sdf_volume](#to_sdf_volume) | [to_vertices](#to_vertices) | [view](#view) | [viewer](#viewer)
+[accumulate_field](#accumulate_field) | [attribute_node](#attribute_node) | [attribute_statistic](#attribute_statistic) | [blur_attribute](#blur_attribute) | [blur_color](#blur_color) | [blur_float](#blur_float) | [blur_integer](#blur_integer) | [blur_vector](#blur_vector) | [capture_attribute](#capture_attribute) | [delete](#delete) | [duplicate](#duplicate) | [index_for_sample](#index_for_sample) | [index_of_nearest](#index_of_nearest) | [instance_on](#instance_on) | [interpolate](#interpolate) | [material_selection](#material_selection) | [named_attribute](#named_attribute) | [named_boolean](#named_boolean) | [named_color](#named_color) | [named_float](#named_float) | [named_integer](#named_integer) | [named_vector](#named_vector) | [proximity](#proximity) | [proximity_edges](#proximity_edges) | [proximity_faces](#proximity_faces) | [proximity_points](#proximity_points) | [raycast](#raycast) | [raycast_interpolated](#raycast_interpolated) | [raycast_nearest](#raycast_nearest) | [remove_named_attribute](#remove_named_attribute) | [sample_index](#sample_index) | [sample_nearest](#sample_nearest) | [select](#select) | [set_ID](#set_ID) | [set_material](#set_material) | [set_material_index](#set_material_index) | [set_position](#set_position) | [socket_stack](#socket_stack) | [store_named_2D_vector](#store_named_2D_vector) | [store_named_attribute](#store_named_attribute) | [store_named_boolean](#store_named_boolean) | [store_named_byte_color](#store_named_byte_color) | [store_named_color](#store_named_color) | [store_named_float](#store_named_float) | [store_named_integer](#store_named_integer) | [store_named_vector](#store_named_vector) | [to_sdf_volume](#to_sdf_volume) | [to_vertices](#to_vertices) | [view](#view) | [viewer](#viewer)
 
 ## Properties
 
@@ -231,6 +231,39 @@ Node implemented as property setter.
 
 #### Args:
 - attr_value: material
+
+
+
+
+
+
+
+<sub>Go to [top](#class-CloudPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### material_index
+
+
+
+> Node: [Material Index](GeometryNodeInputMaterialIndex.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/material_index.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMaterialIndex.html)
+
+#### Returns:
+- socket `material_index`
+
+
+
+
+
+
+Setter
+
+
+
+> Node: [Set Material Index](GeometryNodeSetMaterialIndex.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/set_material_index.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetMaterialIndex.html)
+
+Node implemented as property setter.
+
+#### Args:
+- attr_value: material_index
 
 
 
@@ -763,30 +796,6 @@ def duplicate(self, amount=None)
 
 <sub>Go to [top](#class-CloudPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
-### evaluate_at_index
-
-```python
-def evaluate_at_index(self, index=None, value=None)
-```
-
-
-
-> Node: [Evaluate at Index](GeometryNodeFieldAtIndex.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/v.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeFieldAtIndex.html)
-
-#### Args:
-- index: Integer
-- value: ['Float', 'Integer', 'Vector', 'Color', 'Boolean']
-
-#### Returns:
-- socket `value`
-
-
-
-
-
-
-<sub>Go to [top](#class-CloudPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
 ### index_for_sample
 
 ```python
@@ -1086,6 +1095,172 @@ def proximity(self, target=None, source_position=None, target_element='FACES')
 
 <sub>Go to [top](#class-CloudPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
+### proximity_edges
+
+```python
+def proximity_edges(self, target=None, source_position=None)
+```
+
+
+
+> Node: [Geometry Proximity](GeometryNodeProximity.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/geometry_proximity.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeProximity.html)
+
+#### Args:
+- target: Geometry
+- source_position: Vector
+
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeProximity.webp)
+
+#### Returns:
+- node with sockets ['position', 'distance']
+
+
+
+
+
+
+<sub>Go to [top](#class-CloudPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### proximity_faces
+
+```python
+def proximity_faces(self, target=None, source_position=None)
+```
+
+
+
+> Node: [Geometry Proximity](GeometryNodeProximity.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/geometry_proximity.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeProximity.html)
+
+#### Args:
+- target: Geometry
+- source_position: Vector
+
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeProximity.webp)
+
+#### Returns:
+- node with sockets ['position', 'distance']
+
+
+
+
+
+
+<sub>Go to [top](#class-CloudPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### proximity_points
+
+```python
+def proximity_points(self, target=None, source_position=None)
+```
+
+
+
+> Node: [Geometry Proximity](GeometryNodeProximity.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/geometry_proximity.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeProximity.html)
+
+#### Args:
+- target: Geometry
+- source_position: Vector
+
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeProximity.webp)
+
+#### Returns:
+- node with sockets ['position', 'distance']
+
+
+
+
+
+
+<sub>Go to [top](#class-CloudPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### raycast
+
+```python
+def raycast(self, target_geometry=None, attribute=None, source_position=None, ray_direction=None, ray_length=None, mapping='INTERPOLATED')
+```
+
+
+
+> Node: [Raycast](GeometryNodeRaycast.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/raycast.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeRaycast.html)
+
+#### Args:
+- target_geometry: Geometry
+- attribute: ['Vector', 'Float', 'Color', 'Boolean', 'Integer']
+- source_position: Vector
+- ray_direction: Vector
+- ray_length: Float
+- mapping (str): 'INTERPOLATED' in [INTERPOLATED, NEAREST]
+
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeRaycast.webp)
+
+#### Returns:
+- node with sockets ['is_hit', 'hit_position', 'hit_normal', 'hit_distance', 'attribute']
+
+
+
+
+
+
+<sub>Go to [top](#class-CloudPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### raycast_interpolated
+
+```python
+def raycast_interpolated(self, target_geometry=None, attribute=None, source_position=None, ray_direction=None, ray_length=None)
+```
+
+
+
+> Node: [Raycast](GeometryNodeRaycast.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/raycast.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeRaycast.html)
+
+#### Args:
+- target_geometry: Geometry
+- attribute: ['Vector', 'Float', 'Color', 'Boolean', 'Integer']
+- source_position: Vector
+- ray_direction: Vector
+- ray_length: Float
+
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeRaycast.webp)
+
+#### Returns:
+- node with sockets ['is_hit', 'hit_position', 'hit_normal', 'hit_distance', 'attribute']
+
+
+
+
+
+
+<sub>Go to [top](#class-CloudPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### raycast_nearest
+
+```python
+def raycast_nearest(self, target_geometry=None, attribute=None, source_position=None, ray_direction=None, ray_length=None)
+```
+
+
+
+> Node: [Raycast](GeometryNodeRaycast.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/raycast.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeRaycast.html)
+
+#### Args:
+- target_geometry: Geometry
+- attribute: ['Vector', 'Float', 'Color', 'Boolean', 'Integer']
+- source_position: Vector
+- ray_direction: Vector
+- ray_length: Float
+
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeRaycast.webp)
+
+#### Returns:
+- node with sockets ['is_hit', 'hit_position', 'hit_normal', 'hit_distance', 'attribute']
+
+
+
+
+
+
+<sub>Go to [top](#class-CloudPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### remove_named_attribute
 
 ```python
@@ -1220,6 +1395,29 @@ def set_material(self, material=None)
 
 #### Args:
 - material: Material
+
+#### Returns:
+- self
+
+
+
+
+
+
+<sub>Go to [top](#class-CloudPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### set_material_index
+
+```python
+def set_material_index(self, material_index=None)
+```
+
+
+
+> Node: [Set Material Index](GeometryNodeSetMaterialIndex.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/set_material_index.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetMaterialIndex.html)
+
+#### Args:
+- material_index: Integer
 
 #### Returns:
 - self

@@ -515,6 +515,7 @@ class Node:
         """
         
         # ----- Index can be a string
+        
         valids = []
         if type(index) is str:
             for i, bsock in enumerate(self.bnode.inputs):

@@ -34,7 +34,7 @@ Vertex(self, data_socket, selection=None)
 
 **Methods**
 
-[accumulate_field](#accumulate_field) | [attribute_node](#attribute_node) | [attribute_statistic](#attribute_statistic) | [blur_attribute](#blur_attribute) | [blur_color](#blur_color) | [blur_float](#blur_float) | [blur_integer](#blur_integer) | [blur_vector](#blur_vector) | [capture_attribute](#capture_attribute) | [corners](#corners) | [delete](#delete) | [delete_all](#delete_all) | [delete_edges](#delete_edges) | [delete_faces](#delete_faces) | [duplicate](#duplicate) | [edges](#edges) | [evaluate_at_index](#evaluate_at_index) | [extrude](#extrude) | [index_for_sample](#index_for_sample) | [index_of_nearest](#index_of_nearest) | [instance_on](#instance_on) | [interpolate](#interpolate) | [material_selection](#material_selection) | [merge_by_distance](#merge_by_distance) | [merge_by_distance_connected](#merge_by_distance_connected) | [named_attribute](#named_attribute) | [named_boolean](#named_boolean) | [named_color](#named_color) | [named_float](#named_float) | [named_integer](#named_integer) | [named_vector](#named_vector) | [proximity](#proximity) | [remove_named_attribute](#remove_named_attribute) | [sample_index](#sample_index) | [sample_nearest](#sample_nearest) | [select](#select) | [separate](#separate) | [set_ID](#set_ID) | [set_position](#set_position) | [socket_stack](#socket_stack) | [store_named_2D_vector](#store_named_2D_vector) | [store_named_attribute](#store_named_attribute) | [store_named_boolean](#store_named_boolean) | [store_named_byte_color](#store_named_byte_color) | [store_named_color](#store_named_color) | [store_named_float](#store_named_float) | [store_named_integer](#store_named_integer) | [store_named_vector](#store_named_vector) | [to_points](#to_points) | [to_sdf_volume](#to_sdf_volume) | [to_volume](#to_volume) | [view](#view) | [viewer](#viewer)
+[accumulate_field](#accumulate_field) | [attribute_node](#attribute_node) | [attribute_statistic](#attribute_statistic) | [blur_attribute](#blur_attribute) | [blur_color](#blur_color) | [blur_float](#blur_float) | [blur_integer](#blur_integer) | [blur_vector](#blur_vector) | [capture_attribute](#capture_attribute) | [corners](#corners) | [delete](#delete) | [delete_all](#delete_all) | [delete_edges](#delete_edges) | [delete_faces](#delete_faces) | [duplicate](#duplicate) | [edges](#edges) | [extrude](#extrude) | [index_for_sample](#index_for_sample) | [index_of_nearest](#index_of_nearest) | [instance_on](#instance_on) | [interpolate](#interpolate) | [material_selection](#material_selection) | [merge_by_distance](#merge_by_distance) | [merge_by_distance_connected](#merge_by_distance_connected) | [named_attribute](#named_attribute) | [named_boolean](#named_boolean) | [named_color](#named_color) | [named_float](#named_float) | [named_integer](#named_integer) | [named_vector](#named_vector) | [proximity](#proximity) | [proximity_edges](#proximity_edges) | [proximity_faces](#proximity_faces) | [proximity_points](#proximity_points) | [raycast](#raycast) | [raycast_interpolated](#raycast_interpolated) | [raycast_nearest](#raycast_nearest) | [remove_named_attribute](#remove_named_attribute) | [sample_index](#sample_index) | [sample_nearest](#sample_nearest) | [select](#select) | [separate](#separate) | [set_ID](#set_ID) | [set_position](#set_position) | [shortest_edge_paths](#shortest_edge_paths) | [socket_stack](#socket_stack) | [store_named_2D_vector](#store_named_2D_vector) | [store_named_attribute](#store_named_attribute) | [store_named_boolean](#store_named_boolean) | [store_named_byte_color](#store_named_byte_color) | [store_named_color](#store_named_color) | [store_named_float](#store_named_float) | [store_named_integer](#store_named_integer) | [store_named_vector](#store_named_vector) | [to_points](#to_points) | [to_sdf_volume](#to_sdf_volume) | [to_volume](#to_volume) | [view](#view) | [viewer](#viewer)
 
 ## Properties
 
@@ -826,30 +826,6 @@ def edges(self, weights=None, sort_index=None)
 
 <sub>Go to [top](#class-Vertex) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
-### evaluate_at_index
-
-```python
-def evaluate_at_index(self, index=None, value=None)
-```
-
-
-
-> Node: [Evaluate at Index](GeometryNodeFieldAtIndex.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/v.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeFieldAtIndex.html)
-
-#### Args:
-- index: Integer
-- value: ['Float', 'Integer', 'Vector', 'Color', 'Boolean']
-
-#### Returns:
-- socket `value`
-
-
-
-
-
-
-<sub>Go to [top](#class-Vertex) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
 ### extrude
 
 ```python
@@ -1223,6 +1199,172 @@ def proximity(self, target=None, source_position=None, target_element='FACES')
 
 <sub>Go to [top](#class-Vertex) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
+### proximity_edges
+
+```python
+def proximity_edges(self, target=None, source_position=None)
+```
+
+
+
+> Node: [Geometry Proximity](GeometryNodeProximity.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/geometry_proximity.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeProximity.html)
+
+#### Args:
+- target: Geometry
+- source_position: Vector
+
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeProximity.webp)
+
+#### Returns:
+- node with sockets ['position', 'distance']
+
+
+
+
+
+
+<sub>Go to [top](#class-Vertex) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### proximity_faces
+
+```python
+def proximity_faces(self, target=None, source_position=None)
+```
+
+
+
+> Node: [Geometry Proximity](GeometryNodeProximity.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/geometry_proximity.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeProximity.html)
+
+#### Args:
+- target: Geometry
+- source_position: Vector
+
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeProximity.webp)
+
+#### Returns:
+- node with sockets ['position', 'distance']
+
+
+
+
+
+
+<sub>Go to [top](#class-Vertex) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### proximity_points
+
+```python
+def proximity_points(self, target=None, source_position=None)
+```
+
+
+
+> Node: [Geometry Proximity](GeometryNodeProximity.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/geometry_proximity.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeProximity.html)
+
+#### Args:
+- target: Geometry
+- source_position: Vector
+
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeProximity.webp)
+
+#### Returns:
+- node with sockets ['position', 'distance']
+
+
+
+
+
+
+<sub>Go to [top](#class-Vertex) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### raycast
+
+```python
+def raycast(self, target_geometry=None, attribute=None, source_position=None, ray_direction=None, ray_length=None, mapping='INTERPOLATED')
+```
+
+
+
+> Node: [Raycast](GeometryNodeRaycast.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/raycast.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeRaycast.html)
+
+#### Args:
+- target_geometry: Geometry
+- attribute: ['Vector', 'Float', 'Color', 'Boolean', 'Integer']
+- source_position: Vector
+- ray_direction: Vector
+- ray_length: Float
+- mapping (str): 'INTERPOLATED' in [INTERPOLATED, NEAREST]
+
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeRaycast.webp)
+
+#### Returns:
+- node with sockets ['is_hit', 'hit_position', 'hit_normal', 'hit_distance', 'attribute']
+
+
+
+
+
+
+<sub>Go to [top](#class-Vertex) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### raycast_interpolated
+
+```python
+def raycast_interpolated(self, target_geometry=None, attribute=None, source_position=None, ray_direction=None, ray_length=None)
+```
+
+
+
+> Node: [Raycast](GeometryNodeRaycast.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/raycast.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeRaycast.html)
+
+#### Args:
+- target_geometry: Geometry
+- attribute: ['Vector', 'Float', 'Color', 'Boolean', 'Integer']
+- source_position: Vector
+- ray_direction: Vector
+- ray_length: Float
+
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeRaycast.webp)
+
+#### Returns:
+- node with sockets ['is_hit', 'hit_position', 'hit_normal', 'hit_distance', 'attribute']
+
+
+
+
+
+
+<sub>Go to [top](#class-Vertex) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### raycast_nearest
+
+```python
+def raycast_nearest(self, target_geometry=None, attribute=None, source_position=None, ray_direction=None, ray_length=None)
+```
+
+
+
+> Node: [Raycast](GeometryNodeRaycast.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/raycast.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeRaycast.html)
+
+#### Args:
+- target_geometry: Geometry
+- attribute: ['Vector', 'Float', 'Color', 'Boolean', 'Integer']
+- source_position: Vector
+- ray_direction: Vector
+- ray_length: Float
+
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeRaycast.webp)
+
+#### Returns:
+- node with sockets ['is_hit', 'hit_position', 'hit_normal', 'hit_distance', 'attribute']
+
+
+
+
+
+
+<sub>Go to [top](#class-Vertex) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### remove_named_attribute
 
 ```python
@@ -1383,6 +1525,32 @@ def set_position(self, position=None, offset=None)
 
 #### Returns:
 - self
+
+
+
+
+
+
+<sub>Go to [top](#class-Vertex) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### shortest_edge_paths
+
+```python
+def shortest_edge_paths(self, end_vertex=None, edge_cost=None)
+```
+
+
+
+> Node: [Shortest Edge Paths](GeometryNodeInputShortestEdgePaths.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/shortest_edge_paths.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputShortestEdgePaths.html)
+
+#### Args:
+- end_vertex: Boolean
+- edge_cost: Float
+
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeInputShortestEdgePaths.webp)
+
+#### Returns:
+- node with sockets ['next_vertex_index', 'total_cost']
 
 
 

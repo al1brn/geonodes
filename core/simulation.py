@@ -181,9 +181,475 @@ class Simulation:
         
             
             return sim.og
-
-
         
+    # ====================================================================================================
+    # Fluid simulation
+    
+    @classmethod
+    def Fluid(cls, points, velocity, life, setup={}, acceleration={}, finish={}):
+        
+        import geonodes as gn
+        
+        tree = points.node.tree
+        
+        # ----------------------------------------------------------------------------------------------------
+        # Simulation step
+            
+        simul = cls(geometry=points, velocity=velocity, age=0)
+        
+        # ----- Get the variables
+        
+        s_points   = simul.geometry
+        s_velocity = simul.velocity
+        s_age      = simul.age
+        
+        # ----- Set up
+        
+        if isinstance(setup, dict):
+            for stu_name, stu in setup.items():
+                with tree.layout(f"Set up: {stu_name}"):
+                    stu(simul=simul, points=s_points, velocity=s_velocity, age=s_age)
+                    
+        else:
+            with tree.layout(f"Set up"):
+                setup(simul=simul, points=s_points, velocity=s_velocity, age=s_age)
+        
+        # ----- Update the age, remove old particles
+        
+        with tree.layout("Update the age and remove old particles"):
+    
+            s_age += 1
+            
+            new_age = s_points.points.capture_attribute(0)
+            s_age += new_age
+    
+            s_points.points[s_age.greater_than(life)].delete()
+            
+        # ----- New points with random velocity
+            
+        with tree.layout("Create new points with random velocity"):
+            
+            new_vel = s_points.points.capture_attribute(velocity)
+            s_points  = gn.Points(s_points + points)
+            s_velocity += new_vel
+    
+        # ----- Accelerations
+            
+        if isinstance(acceleration, dict):
+            a = gn.Vector((0, 0, 0))
+            for acc_name, acc in acceleration.items():
+                with tree.layout(f"Acceleration: {acc_name}"):
+                    a += acc(simul=simul, points=s_points, velocity=s_velocity, age=s_age)
+                    
+        else:
+            with tree.layout(f"Acceleration"):
+                a = acceleration(simul=simul, points=s_points, velocity=s_velocity, age=s_age)
+    
+        # ----- Update velocities and postions
+                
+        with tree.layout("Update velocity and positions"):
+            
+            new_velocity = s_velocity + a.scale(simul.delta_time)
+            s_points.points.position_offset = (s_velocity + new_velocity).scale(simul.delta_time/2)
+            s_velocity = new_velocity
+            
+        # ----- Finishing
+        
+        if isinstance(finish, dict):
+            for fin_name, fin in finish.items():
+                with tree.layout(f"Finish: {fin_name}"):
+                    fin(simul=simul, points=s_points, velocity=s_velocity, age=s_age)
+                    
+        else:
+            with tree.layout(f"Finish"):
+                finish(simul=simul, points=s_points, velocity=s_velocity, age=s_age)
+        
+        # ----- Update the variables
+        
+        simul.geometry = s_points
+        simul.velocity = s_velocity
+        simul.age      = s_age
+        
+        return simul
+    
+    # ====================================================================================================
+    # Accelerations
+    
+    # ----------------------------------------------------------------------------------------------------
+    # A constant acceleration
+    
+    @staticmethod
+    def func_gravity(gravity=(0, 0, -10)):
+        """ Returns a function which builds a constant acceleration.
+        
+        The function returned by this method can be used as an argument in a simulation zone creation method:
+        
+        ``` python    
+        simul = gn.Simulation.Fluid(acceleration=gn.Simulation.func_gravity(...))    
+        ```
+        
+        or, if more than one acceleration function is required
+        
+        ``` python
+        simul = gn.Simulation.Fluid(acceleration={'gravity': gn.Simulation.func_gravity(...)})
+        ```
+        
+        Args:
+            - gravity (Vector) : the gravity vector
+        
+        Returns:
+            - function(**kwargs) : nodes generator
+        """
+        
+        import geonodes as gn
+        
+        return lambda **kwargs: gn.Vector(gravity)
+    
+    # ----------------------------------------------------------------------------------------------------
+    # Noisy turbulence
+    
+    @staticmethod
+    def func_turbulence(intensity=1, scale=.2, offset=(0, 0, 0), w=0.):
+        """ Returns a function which builds a turbulencce for acceleration.
+        
+        The turbulence makes use of a 'Noise 4D' texture initialized with the function arguments.
+        
+        The function returned by this method can be used as an argument in a simulation zone creation method:
+        
+        ``` python    
+        simul = gn.Simulation.Fluid(acceleration=gn.Simulation.func_turbulence(...))    
+        ```
+        
+        or, if more than one acceleration function is required
+        
+        ``` python
+        simul = gn.Simulation.Fluid(acceleration={
+            'gravity'   : gn.Simulation.func_gravity(),
+            'turbulence': gn.Simulation.func_turbulence(...),
+            })
+        ```
+        
+        Args:
+            - intensity (Float) : intensity of the turbulence
+            - scale (Float) : scale of Noise node
+            - offset (Vector) : offset to apply in the 'Vector' socket of the noise node
+            - w (Float) : value of the 'W' socket of the noise node
+        
+        Returns:
+            - function(**kwargs) : nodes generator
+        """
+        
+        import geonodes as gn
+        
+        def gen(points=None, **kwargs):
+            tree = points.node.tree
+            return gn.Vector(gn.Texture.Noise4D(vector=points.points.position + offset, scale=scale, w=w).color).map_range(.5).scale(intensity)
+        
+        return lambda **kwargs: gen(**kwargs)
+    
+    # ----------------------------------------------------------------------------------------------------
+    # Viscosity
+    
+    @staticmethod
+    def func_viscosity(intensity=1, exponent=2):
+        """ Returns a function which builds an acceleration simulating viscosity.
+        
+        The viscosity is a function of the velocity: ``` acc = -intensitty * speed**exponent ```
+    
+        This raw formula can return an acceleration which accelerates the particle in the other direction.
+        To avoid this behavior, the acceleration norm is capped to ``` speed/delta_time ```.
+        
+        The function returned by this method can be used as an argument in a simulation zone creation method:
+        
+        ``` python    
+        simul = gn.Simulation.Fluid(acceleration=gn.Simulation.func_viscosity(...))    
+        ```
+        
+        or, if more than one acceleration function is required
+        
+        ``` python
+        simul = gn.Simulation.Fluid(acceleration={
+            'gravity'   : gn.Simulation.func_gravity(),
+            'viscosity' : gn.Simulation.func_viscosity(...),
+            })
+        ```
+        
+        Args:
+            - intensity (Float) : intensity of the viscosity
+            - exponent (Float) : exponent parameter of the acceleration
+        
+        Returns:
+            - function(**kwargs) : nodes generator
+        """
+        
+        import geonodes as gn
+    
+        def gen(simul=None, velocity=None, **kwargs):
+    
+            # ----- Velocity norm
+    
+            n_vel = velocity.length
+            
+            # ----- acceleration norm
+            
+            a = intensity*n_vel**exponent
+            
+            # ----- Cap and smooth the viscosity
+            
+            a_max = n_vel/simul.delta_time
+            a = a.map_range_smooth(0, a_max, 0, a_max)
+            
+            # ----- Return the acceleration
+            
+            return velocity.scale(-a/n_vel)
+        
+        return lambda **kwargs: gen(**kwargs)
+    
+    # ----------------------------------------------------------------------------------------------------
+    # Repulsion
+    
+    @staticmethod
+    def func_repulsion(intensity=1, exponent=2, d_min=.1, d_max=1):
+        """ Returns a function which builds a repulstion acceleration with the nearest particle.
+        
+        The repulsion is base on the vector between the particle and its nearest neighbor.
+        The acceleration is computed with the formula: ``` a = intensity * distance**(-exponent) ```
+        
+        To avoid division by zero, distance is minimized by the argument distance_min.
+        The repulsion is null when the distance is greater thant d_max
+        
+        The function returned by this method can be used as an argument in a simulation zone creation method:
+        
+        ``` python    
+        simul = gn.Simulation.Fluid(acceleration=gn.Simulation.func_repulsion(...))    
+        ```
+        
+        or, if more than one acceleration function is required
+        
+        ``` python
+        simul = gn.Simulation.Fluid(acceleration={
+            'gravity'   : gn.Simulation.func_gravity(),
+            'repulsion' : gn.Simulation.func_repulsion(...),
+            })
+        ```
+        
+        Args:
+            - intensity (Float) : intensity of the repulstion
+            - exponent (Float) : exponent parameter of the acceleration
+            - d_min (Float) : minimum distance to avoid infinite acceleration
+            - d_max (Float) : repulsion maximum distance
+        
+        Returns:
+            - function(**kwargs) : nodes generator
+        """    
+        
+        import geonodes as gn
+        
+        def gen(points=None, **kwargs):
+            
+            # ----- Index of nearest
+            
+            index = points.points.index_of_nearest(position=points.points.index).index
+            
+            # ----- Vector between the particle and its nearest neighbor
+            
+            v = points.points.position - points.points.sample_index(points.points.position, index=index)
+            
+            # ----- Distance
+            
+            d = v.length
+            
+            # ----- Acceleration computed on the capped distance
+            
+            base = d.map_range_smooth(d_min, d_max, d_min, d_max)
+            a = -intensity*base**(-exponent)
+            
+            # ----- Return the acceleration
+            
+            return v.scale(a/d)
+        
+        return lambda **kwargs: gen(**kwargs)
+    
+    # ----------------------------------------------------------------------------------------------------
+    # Attraction from a location
+    
+    @staticmethod
+    def func_attraction(location=(0, 0, 0), intensity=10, exponent=-2, d_min=.2):
+        """ Returns a function which builds an attraction acceleration towards the given location.
+        
+        The attraction can be used to simulate Newton gravity loaw with exponent = -2.
+        
+        The acceleration is computed with ``` a = intensity / distance**exponent
+        
+        To avoid infinite accelerations, the distance is minimizew with d_min.
+        
+        Note that if the intensity is negative, the attractor becomes a repulsor!
+        
+        The function returned by this method can be used as an argument in a simulation zone creation method:
+        
+        ``` python    
+        simul = gn.Simulation.Fluid(acceleration=gn.Simulation.func_attraction(...))    
+        ```
+        
+        or, if more than one acceleration function is required
+        
+        ``` python
+        simul = gn.Simulation.Fluid(acceleration={
+            'gravity'    : gn.Simulation.func_gravity(),
+            'attraction' : gn.Simulation.func_attraction(...),
+            })
+        ```
+        
+        Args:
+            - location (Vector) : location of the attractor
+            - intensity (Float) : intensity of the attraction
+            - exponent (Float) : exponent parameter of the acceleration
+            - d_min (Float) : minimum distance to avoid infinite accelerations
+        
+        Returns:
+            - function(**kwargs) : nodes generator
+        """    
+        
+        import geonodes as gn
+    
+        def gen(points=None, **kwargs):
+            
+            # ----- Vector to the attractor location
+            
+            v = location - points.points.position
+            
+            # ----- Minimum distance to the attractor
+            
+            d = v.length
+            l = d.switch(d.less_than(d_min), d_min)
+            
+            # ----- Acceleration norm
+            
+            a = intensity*l**exponent
+            
+            # ----- Return the acceleration
+            
+            return v.scale(a/d)
+        
+        return lambda **kwargs: gen(**kwargs)
+    
+    # ====================================================================================================
+    # Surface interaction
+    
+    # ----------------------------------------------------------------------------------------------------
+    # Stick the particle on to the surface
+    
+    @staticmethod
+    def func_stick_on_surface(mesh, kill_outside=False, z_max=50):
+        """ Returns a function building nodes which place the particles on the surface.
+        
+        The algorithm using the raycats node to project the particles onto the surface.
+        z_max is the latitude from which to project the particles.
+        
+        if particles are outside the surface, they can be deleted if kiil_outside is True.
+        
+        The function returned by this method can be used as an argument in a simulation zone creation method:
+        
+        ``` python    
+        simul = gn.Simulation.Fluid(finish=gn.Simulation.func_stick_on_surface(...))    
+        ```
+        
+        or, if more than one finish function is required
+        
+        ``` python
+        simul = gn.Simulation.Fluid(finish={
+            'stick' : gn.Simulation.func_stick_on_surface(...),
+            })
+        ```
+        
+        Args:
+            - mesh (Mesh) : the surface
+            - kill_outside (bool) : delete or not the particles outside the surface
+            - z_max (float) : the altitude higher that the surface to raycast from
+        
+        Returns:
+            - function(**kwargs) : nodes generator
+        """
+        
+        import geonodes as gn
+        
+        def gen(points=None, **kwargs):
+            
+            # ----- Location to raycast from
+            
+            loc = points.points.position
+            loc.z = z_max
+            
+            # ------ Raycast to the surface from the points locations
+            
+            node = points.points.raycast(target_geometry=mesh, source_position=loc, ray_length=2*z_max)
+            
+            # ----- Locate the where we have a hit
+            
+            points.points[node.is_hit].position = node.hit_position
+            
+            # ----- Delete the particles outside the surface
+            
+            if kill_outside:
+                points.points[node.is_hit.b_not()].delete()
+            
+        return lambda **kwargs: gen(**kwargs)
+    
+    # ----------------------------------------------------------------------------------------------------
+    # Acceleration along the slope
+    
+    @staticmethod
+    def func_surface_flow(mesh, gravity=(0, 0, -10)):
+        """ Returns a function which builds an acceleration following the surface slope.
+        
+        The function returned by this method can be used as an argument in a simulation zone creation method:
+        
+        ``` python    
+        simul = gn.Simulation.Fluid(acceleration=gn.Simulation.func_surface_flow(...))    
+        ```
+        
+        or, if more than one acceleration function is required
+        
+        ``` python
+        simul = gn.Simulation.Fluid(acceleration={
+            'viscosity'  : gn.Simulation.func_viscosity(),
+            'flow'       : gn.Simulation.func_surface_flow(...),
+            })
+        ```
+        
+        Args:
+            - mesh (Mesh)       : the surface
+            - gravity (Vector)  : gravity vector
+            - intensity (Float) : intensity of the attraction
+            - exponent (Float) : exponent parameter of the acceleration
+            - d_min (Float) : minimum distance to avoid infinite accelerations
+        
+        Returns:
+            - function(**kwargs) : nodes generator
+        """       
+        
+        import geonodes as gn
+        
+        g = gn.Vector(gravity)
+        
+        def gen(points=None, **kwargs):
+            
+            # ----- Get the normal at each point
+            
+            normal = mesh.sample_nearest_surface(value=mesh.points.normal, sample_position=points.points.position)
+            
+            # ----- Gravity component
+            
+            return normal.cross(g).cross(normal)
+        
+        return lambda **kwargs: gen(**kwargs)
+        
+            
+            
+                
+        
+    
+            
         
         
         

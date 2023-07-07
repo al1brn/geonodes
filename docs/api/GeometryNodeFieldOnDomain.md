@@ -35,14 +35,6 @@ node = nodes.EvaluateOnDomain(value=None, data_type='FLOAT', domain='POINT')
 - Driving parameter : ``data_type`` in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN')
 - Input sockets  : ['value']
 - Output sockets : ['value']
-## Implementation
-
-| Class or method name | Definition |
-|----------------------|------------|
-| **[Domain](Domain.md)** |
-| [interpolate](Domain.md#interpolate) | `def interpolate(self, value=None):` |
-| **[Geometry](Geometry.md)** |
-| [interpolate_domain](Geometry.md#interpolate_domain) | `def interpolate_domain(self, value=None, domain='POINT'):` |
 
 <sub>Go to [top](#node-Evaluate-on-Domain) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

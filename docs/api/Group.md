@@ -506,6 +506,7 @@ When it is a socket, it can be a Blender socket or a DataSocket
 
 ----- Index can be a string
 
+
 <sub>Go to [top](#class-Group) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### plug_node

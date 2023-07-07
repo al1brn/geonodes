@@ -23,11 +23,17 @@ node = nodes.Index()
 
 | Class or method name | Definition |
 |----------------------|------------|
+| **[Curve](Curve.md)** |
+| [index](Curve.md#index) | `@property`<br> `def index(self):` |
 | **[Domain](Domain.md)** |
 | [index](Domain.md#index) | `@property`<br> `def index(self):` |
 | [domain_index](Domain.md#domain_index) | `@property`<br> `def domain_index(self):` |
-| **[Geometry](Geometry.md)** |
-| [index](Geometry.md#index) | `@property`<br> `def index(self):` |
+| **[Instances](Instances.md)** |
+| [index](Instances.md#index) | `@property`<br> `def index(self):` |
+| **[Mesh](Mesh.md)** |
+| [index](Mesh.md#index) | `@property`<br> `def index(self):` |
+| **[Points](Points.md)** |
+| [index](Points.md#index) | `@property`<br> `def index(self):` |
 
 <sub>Go to [top](#node-Index) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

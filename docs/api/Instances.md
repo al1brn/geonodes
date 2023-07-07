@@ -17,16 +17,11 @@ A **Instances** has one domain:
 Instances(self, socket, node=None, label=None)
 ```
 
-rom geonodes.nodes import domains
-
-elf.points = Vertex(self) # Initialized before super().__init__ which can override points
-
-
 ## Content
 
 **Properties**
 
-[ID](#ID) | [bounding_box](#bounding_box) | [convex_hull](#convex_hull) | [curve_component](#curve_component) | [domain_size](#domain_size) | [index](#index) | [instances_component](#instances_component) | [material_index](#material_index) | [mesh_component](#mesh_component) | [normal](#normal) | [points_component](#points_component) | [position](#position) | [radius](#radius) | [rotation](#rotation) | [scale](#scale) | [separate_components](#separate_components) | [signed_distance](#signed_distance) | [volume_component](#volume_component)
+[ID](#ID) | [bounding_box](#bounding_box) | [convex_hull](#convex_hull) | [curve_component](#curve_component) | [domain_size](#domain_size) | [index](#index) | [instances_component](#instances_component) | [mesh_component](#mesh_component) | [normal](#normal) | [points_component](#points_component) | [position](#position) | [rotation](#rotation) | [scale](#scale) | [separate_components](#separate_components) | [volume_component](#volume_component)
 
 ***Inherited***
 
@@ -42,7 +37,7 @@ elf.points = Vertex(self) # Initialized before super().__init__ which can overri
 
 **Methods**
 
-[attribute_node](#attribute_node) | [attribute_statistic](#attribute_statistic) | [capture_attribute](#capture_attribute) | [delete](#delete) | [duplicate](#duplicate) | [evaluate_at_index](#evaluate_at_index) | [index_of_nearest](#index_of_nearest) | [instantiate](#instantiate) | [interpolate_domain](#interpolate_domain) | [join](#join) | [material_selection](#material_selection) | [merge_by_distance](#merge_by_distance) | [named_attribute](#named_attribute) | [named_boolean](#named_boolean) | [named_color](#named_color) | [named_float](#named_float) | [named_integer](#named_integer) | [named_vector](#named_vector) | [on_points](#on_points) | [proximity](#proximity) | [proximity_edges](#proximity_edges) | [proximity_faces](#proximity_faces) | [proximity_points](#proximity_points) | [raycast](#raycast) | [raycast_interpolated](#raycast_interpolated) | [raycast_nearest](#raycast_nearest) | [realize](#realize) | [remove_named_attribute](#remove_named_attribute) | [replace_material](#replace_material) | [rotate](#rotate) | [sample_index](#sample_index) | [sample_nearest](#sample_nearest) | [separate](#separate) | [set_ID](#set_ID) | [set_material_index](#set_material_index) | [set_position](#set_position) | [set_scale](#set_scale) | [show_handles](#show_handles) | [store_named_attribute](#store_named_attribute) | [store_named_boolean](#store_named_boolean) | [store_named_color](#store_named_color) | [store_named_float](#store_named_float) | [store_named_integer](#store_named_integer) | [store_named_vector](#store_named_vector) | [switch](#switch) | [to_instance](#to_instance) | [to_points](#to_points) | [transform](#transform) | [transform_geometry](#transform_geometry) | [translate](#translate) | [view](#view) | [viewer](#viewer)
+[attribute_node](#attribute_node) | [attribute_statistic](#attribute_statistic) | [capture_attribute](#capture_attribute) | [delete](#delete) | [duplicate](#duplicate) | [index_of_nearest](#index_of_nearest) | [instantiate](#instantiate) | [join](#join) | [merge_by_distance](#merge_by_distance) | [named_attribute](#named_attribute) | [named_boolean](#named_boolean) | [named_color](#named_color) | [named_float](#named_float) | [named_integer](#named_integer) | [named_vector](#named_vector) | [on_points](#on_points) | [proximity](#proximity) | [proximity_edges](#proximity_edges) | [proximity_faces](#proximity_faces) | [proximity_points](#proximity_points) | [raycast](#raycast) | [raycast_interpolated](#raycast_interpolated) | [raycast_nearest](#raycast_nearest) | [realize](#realize) | [remove_named_attribute](#remove_named_attribute) | [replace_material](#replace_material) | [rotate](#rotate) | [sample_index](#sample_index) | [sample_nearest](#sample_nearest) | [separate](#separate) | [set_ID](#set_ID) | [set_material_index](#set_material_index) | [set_position](#set_position) | [set_scale](#set_scale) | [show_handles](#show_handles) | [store_named_attribute](#store_named_attribute) | [store_named_boolean](#store_named_boolean) | [store_named_color](#store_named_color) | [store_named_float](#store_named_float) | [store_named_integer](#store_named_integer) | [store_named_vector](#store_named_vector) | [switch](#switch) | [to_instance](#to_instance) | [to_points](#to_points) | [transform](#transform) | [transform_geometry](#transform_geometry) | [translate](#translate) | [view](#view) | [viewer](#viewer)
 
 ***Inherited***
 
@@ -164,22 +159,6 @@ elf.points = Vertex(self) # Initialized before super().__init__ which can overri
 
 <sub>Go to [top](#class-Instances) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
-### material_index
-
-
-
-> Node: [Material Index](GeometryNodeInputMaterialIndex.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/material_index.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMaterialIndex.html)
-
-#### Returns:
-- socket `material_index`
-
-
-
-
-
-
-<sub>Go to [top](#class-Instances) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
 ### mesh_component
 
 
@@ -244,22 +223,6 @@ elf.points = Vertex(self) # Initialized before super().__init__ which can overri
 
 <sub>Go to [top](#class-Instances) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
-### radius
-
-
-
-> Node: [Radius](GeometryNodeInputRadius.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/radius.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputRadius.html)
-
-#### Returns:
-- socket `radius`
-
-
-
-
-
-
-<sub>Go to [top](#class-Instances) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
 ### rotation
 
 
@@ -302,22 +265,6 @@ elf.points = Vertex(self) # Initialized before super().__init__ which can overri
 
 #### Returns:
 - node with sockets ['mesh', 'curve', 'point_cloud', 'volume', 'instances']
-
-
-
-
-
-
-<sub>Go to [top](#class-Instances) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-### signed_distance
-
-
-
-> Node: [Signed Distance](GeometryNodeInputSignedDistance.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/i.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputSignedDistance.html)
-
-#### Returns:
-- socket `signed_distance`
 
 
 
@@ -699,31 +646,6 @@ def duplicate(self, selection=None, amount=None, domain='POINT')
 
 <sub>Go to [top](#class-Instances) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
-### evaluate_at_index
-
-```python
-def evaluate_at_index(self, index=None, value=None, domain='POINT')
-```
-
-
-
-> Node: [Evaluate at Index](GeometryNodeFieldAtIndex.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/v.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeFieldAtIndex.html)
-
-#### Args:
-- index: Integer
-- value: ['Float', 'Integer', 'Vector', 'Color', 'Boolean']
-- domain (str): 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
-
-#### Returns:
-- socket `value`
-
-
-
-
-
-
-<sub>Go to [top](#class-Instances) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
 ### index_of_nearest
 
 ```python
@@ -784,30 +706,6 @@ curves = curve.duplicate(10, realize=False)
 
 <sub>Go to [top](#class-Instances) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
-### interpolate_domain
-
-```python
-def interpolate_domain(self, value=None, domain='POINT')
-```
-
-
-
-> Node: [Evaluate on Domain](GeometryNodeFieldOnDomain.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/v.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeFieldOnDomain.html)
-
-#### Args:
-- value: ['Float', 'Integer', 'Vector', 'Color', 'Boolean']
-- domain (str): 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
-
-#### Returns:
-- socket `value`
-
-
-
-
-
-
-<sub>Go to [top](#class-Instances) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
 ### join
 
 ```python
@@ -823,29 +721,6 @@ def join(*geometry)
 
 #### Returns:
 - socket `geometry`
-
-
-
-
-
-
-<sub>Go to [top](#class-Instances) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-### material_selection
-
-```python
-def material_selection(self, material=None)
-```
-
-
-
-> Node: [Material Selection](GeometryNodeMaterialSelection.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/material_selection.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeMaterialSelection.html)
-
-#### Args:
-- material: Material
-
-#### Returns:
-- socket `selection`
 
 
 

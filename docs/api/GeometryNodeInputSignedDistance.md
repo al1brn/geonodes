@@ -19,12 +19,6 @@ node = nodes.SignedDistance()
 
 - **signed_distance** : [Float](Float.md)
 
-## Implementation
-
-| Class or method name | Definition |
-|----------------------|------------|
-| **[Geometry](Geometry.md)** |
-| [signed_distance](Geometry.md#signed_distance) | `@property`<br> `def signed_distance(self):` |
 
 <sub>Go to [top](#node-Signed-Distance) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

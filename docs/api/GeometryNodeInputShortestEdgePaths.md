@@ -33,6 +33,8 @@ node = nodes.ShortestEdgePaths(end_vertex=None, edge_cost=None)
 |----------------------|------------|
 | **[Mesh](Mesh.md)** |
 | [shortest_edge_paths](Mesh.md#shortest_edge_paths) | `def shortest_edge_paths(self, end_vertex=None, edge_cost=None):` |
+| **[Vertex](Vertex.md)** |
+| [shortest_edge_paths](Vertex.md#shortest_edge_paths) | `def shortest_edge_paths(self, end_vertex=None, edge_cost=None):` |
 
 <sub>Go to [top](#node-Shortest-Edge-Paths) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
