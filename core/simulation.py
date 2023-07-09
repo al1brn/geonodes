@@ -756,6 +756,122 @@ class Simulation:
             return normal.cross(g).cross(normal)
         
         return lambda **kwargs: gen(**kwargs)
+    
+    # ----------------------------------------------------------------------------------------------------
+    # Generation function calling a group
+    
+    @staticmethod
+    def func_group(group_name, out_socket=None, in_delta_time=None, in_points=None, in_velocity=None, in_age=None, out_points=None, out_velocity=None, out_age=None):
+        """ Returns a function creating a Group node of the given name and connect sockets.
+        
+        The Group can have inpout sockets for delta_time, points, velocity and age used in a fluid simulation.
+        It can have output sockets for points, velocity and age.
+        
+        If the sockets exist with this name, they will be connected automatically.If they have differente names,
+        they must be provided using in_... and out_... arguments, for instance:
+        - ``` in_velocity = None ``` : the velocity will be plugged to the input socket named 'velocity' if it exists
+        - ``` in_velocity = 'vector' ``` : the velocity will be plugged to the input socket named 'vector'
+        
+        The same is done for the output socket: variables are updated to match to the corresponding outpout sockets.
+        
+        If the out_socket argument is not node, the generated function return the correspondint outpout socket of the group node.
+        
+        The function returned by this method can be used as an argument in a simulation zone creation method:
+        
+        ``` python    
+        simul = gn.Simulation.Fluid(acceleration=gn.Simulation.func_group("Custom Acceleration", out_socket='acceleration())    
+        ```
+        
+        Args:
+            - group_name (string) : the name of the Group node
+            - out_socket (str=None) : name of the output socket of the created group node to return
+            - in_delta_time (str=None) : nema of the *delta time* input socket
+            - in_points (str=None) : nema of the *points* input socket
+            - in_velocity (str=None) : nema of the *velocity* input socket
+            - in_age (str=None) : nema of the *age* input socket
+            - out_points (str=None) : nema of the *points* output socket
+            - out_velocity (str=None) : nema of the *velocity* output socket
+            - out_age (str=None) : nema of the *age* output socket
+        
+        Returns:
+            - function(**kwargs) : nodes generator
+        """
+        
+        import geonodes as gn
+        
+        def gen(simul=None, points=None, velocity=None, age=None, **kwargs):
+            
+            # ----- Generate the group
+            
+            node = gn.Group("Sub")
+    
+            # ----- Input socket names
+            
+            in_d = in_delta_time
+            in_p = in_points
+            in_v = in_velocity
+            in_a = in_age
+            
+            if in_d is None:
+                if 'delta_time' in node.insockets.keys():
+                    in_d = 'delta_time'
+            if in_p is None:
+                if 'points' in node.insockets.keys():
+                    in_p = 'points'
+            if in_v is None:
+                if 'velocity' in node.insockets.keys():
+                    in_v = 'velocity'
+            if in_a is None:
+                if 'age' in node.insockets.keys():
+                    in_a = 'age'
+    
+            # ----- Connect the input sockets
+    
+            if in_d is not None:
+                setattr(node, in_d, simul.delta_time)
+            if in_p is not None:
+                setattr(node, in_p, points)
+            if in_v is not None:
+                setattr(node, in_v, velocity)
+            if in_a is not None:
+                setattr(node, in_a, age)
+    
+            # ----- Output socket names
+            
+            out_p = out_points
+            out_v = out_velocity
+            out_a = out_age
+            
+            if out_p is None:
+                if 'points' in node.outsockets.keys():
+                    out_p = 'points'
+            if out_v is None:
+                if 'velocity' in node.outsockets.keys():
+                    out_v = 'velocity'
+            if out_a is None:
+                if 'age' in node.outsockets.keys():
+                    out_a = 'age'
+    
+            # ----- Connect the output sockets
+            # Make the data sockets pointing to the outpout sockets of the node
+            # using the stack method        
+                    
+            if out_p is not None:
+                points.stack(node, out_p)
+            if out_v is not None:
+                velocity.stack(node, out_v)
+            if out_a is not None:
+                age.stack(node, out_a)
+                
+            # ----- Return the output socket if a name is given
+                
+            if out_socket is not None:
+                return getattr(node, out_socket)
+            else:
+                return None
+                
+        return lambda **kwargs: gen(**kwargs)
+         
         
             
             

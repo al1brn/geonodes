@@ -9,6 +9,8 @@ from geonodes.core.node import Node, GroupInput, GroupOutput, Frame, SceneTime, 
 from geonodes.core.tree import Tree, Trees
 from geonodes.core.simulation import Simulation
 
+from geonodes.core.pointsmatrix import PointsMatrix
+
 from geonodes.nodes import nodes
 
 from geonodes.nodes.domains import CloudPoint
