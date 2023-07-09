@@ -16,13 +16,13 @@ To compute the height of each surface vertex, one must add the wave of each dip.
 
 Both geometries must have a POINT domain: Mesh, Points or Curve.
 
-An intermediary cloud of points is creating by instanciating 'y_geometry' on 'x_geometry' and the realizing
-the instancing. The number of points of the resulting 'matrix' is the product of the numbers of points
+An intermediary cloud of points is created by instanciating 'y_geometry' on 'x_geometry' and then realizing
+the instances. The number of points of the resulting 'matrix' is the product of the numbers of points
 of the input geometries.
 
-**Note**: whatever the types of geometries, the three geometries are typecasted to 'Points' in the scope of this class.
+**Note**: whatever the types of geometries, the 'matrix' geometry are internally typecasted to 'Points'.
 
-To mix the attributes of the two geometries, use x_attribute and y_attribute méthods.
+To mix the attributes of the two geometries, use *x_attribute* and *y_attribute* methods.
 These methods take an attribute of their corresponding geometry.
 
 The example below shows how to compute the distance between the points of one geometry to the points of a second geometry:
@@ -100,7 +100,7 @@ with gn.Tree("PointsMatrix Demo", auto_capture=False) as tree:
 
 **Class and static methods**
 
-[Demo](#Demo)
+[Demo](#Demo) | [Rain](#Rain)
 
 **Methods**
 
@@ -116,6 +116,20 @@ def Demo(nx=4, ny=3, name="PointsMatrix Demo")
 ```
 
  A demo of PointsMatrix?
+
+
+
+
+<sub>Go to [top](#class-PointsMatrix) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### Rain
+
+```python
+@staticmethod
+def Rain()
+```
+
+ Simulate dips falling on water.
 
 
 
