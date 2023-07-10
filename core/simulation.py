@@ -171,7 +171,7 @@ class Simulation:
                     
                     #pts = gn.Points(simul.geometry)
                     
-                    locs = points.points.sample_index(value=points.points.position)
+                    locs = cloud.points.sample_index(value=cloud.points.position)
                     insts = sim.instances
                     insts.insts.store_named_attribute(name="temp", value=locs)
                     
@@ -192,7 +192,7 @@ class Simulation:
     # Fluid simulation
     
     @classmethod
-    def Fluid(cls, points, velocity, life, setup={}, acceleration={}, finish={}):
+    def Fluid(cls, cloud, velocity=0, life=50, setup={}, acceleration={}, finish={}):
         """ Constructor building a basic simulation zone for fluid simulation.
         
         The nodes generated perform the standard operations:
@@ -294,7 +294,7 @@ class Simulation:
         ```
         
         Args:
-            - points (Points): the points generated at each steap
+            - cloud (Points): the points generated at each steap
             - velocity (Vector) : the points velocity
             - life (Integer) : particles life
             - setup (dict or function) : function generating setup nodes or dict of such functions
@@ -304,48 +304,52 @@ class Simulation:
         
         import geonodes as gn
         
-        tree = points.node.tree
+        tree = cloud.node.tree
         
         # ----------------------------------------------------------------------------------------------------
-        # Simulation step
-            
-        simul = cls(geometry=points, velocity=velocity, age=0)
+        # Simulation zone
+        
+        cloud.points.store_named_vector("velocity", velocity)
+        cloud.points.store_named_integer("age", 0)
+        
+        simul = cls(geometry=cloud) #, velocity=velocity, age=0)
         
         # ----- Get the variables
         
-        s_points   = simul.geometry
-        s_velocity = simul.velocity
-        s_age      = simul.age
+        simul.cloud = simul.geometry
         
         # ----- Set up
         
         if isinstance(setup, dict):
             for stu_name, stu in setup.items():
                 with tree.layout(f"Set up: {stu_name}"):
-                    stu(simul=simul, points=s_points, velocity=s_velocity, age=s_age)
+                    stu(simul=simul) #   , cloud=simul.cloud, velocity=s_velocity, age=s_age)
                     
         else:
             with tree.layout(f"Set up"):
-                setup(simul=simul, points=s_points, velocity=s_velocity, age=s_age)
+                setup(simul=simul)  #, cloud=simul.cloud, velocity=s_velocity, age=s_age)
         
         # ----- Update the age, remove old particles
         
         with tree.layout("Update the age and remove old particles"):
-    
-            s_age += 1
             
-            new_age = s_points.points.capture_attribute(0)
-            s_age += new_age
-    
-            s_points.points[s_age.greater_than(life)].delete()
+            age = simul.cloud.named_integer("age") + 1
+            simul.cloud.points.store_named_integer("age", age)
+            simul.cloud.points[age.greater_than(life)].delete()
             
         # ----- New points with random velocity
             
         with tree.layout("Create new points with random velocity"):
             
-            new_vel = s_points.points.capture_attribute(velocity)
-            s_points  = gn.Points(s_points + points)
-            s_velocity += new_vel
+            if True:
+                cloud.points.store_named_vector("velocity", velocity)
+                cloud.points.store_named_integer("age", 0)
+                
+                simul.cloud = gn.Points(simul.cloud + cloud)
+            else:
+                new_vel = cloud.points.capture_attribute(velocity)
+                simul.cloud  = gn.Points(simul.cloud + cloud)
+                s_velocity += new_vel
     
         # ----- Accelerations
             
@@ -353,36 +357,43 @@ class Simulation:
             a = gn.Vector((0, 0, 0))
             for acc_name, acc in acceleration.items():
                 with tree.layout(f"Acceleration: {acc_name}"):
-                    a += acc(simul=simul, points=s_points, velocity=s_velocity, age=s_age)
+                    a += acc(simul=simul) #, cloud=simul.cloud, velocity=s_velocity, age=s_age)
                     
         else:
             with tree.layout(f"Acceleration"):
-                a = acceleration(simul=simul, points=s_points, velocity=s_velocity, age=s_age)
+                a = acceleration(simul=simul) #, cloud=simul.cloud, velocity=s_velocity, age=s_age)
     
         # ----- Update velocities and postions
                 
         with tree.layout("Update velocity and positions"):
             
-            new_velocity = s_velocity + a.scale(simul.delta_time)
-            s_points.points.position_offset = (s_velocity + new_velocity).scale(simul.delta_time/2)
-            s_velocity = new_velocity
+            if True:
+                vel     = simul.cloud.points.named_vector("velocity")
+                new_vel = vel + a.scale(simul.delta_time)
+                simul.cloud.points.position_offset = (vel + new_vel).scale(simul.delta_time/2)
+                simul.cloud.points.store_named_vector("velocity", new_vel)
+                
+            else:
+                new_velocity = s_velocity + a.scale(simul.delta_time)
+                simul.cloud.points.position_offset = (s_velocity + new_velocity).scale(simul.delta_time/2)
+                s_velocity = new_velocity
             
         # ----- Finishing
         
         if isinstance(finish, dict):
             for fin_name, fin in finish.items():
                 with tree.layout(f"Finish: {fin_name}"):
-                    fin(simul=simul, points=s_points, velocity=s_velocity, age=s_age)
+                    fin(simul=simul) #, cloud=simul.cloud, velocity=s_velocity, age=s_age)
                     
         else:
             with tree.layout(f"Finish"):
-                finish(simul=simul, points=s_points, velocity=s_velocity, age=s_age)
+                finish(simul=simul) #, cloud=simul.cloud, velocity=s_velocity, age=s_age)
         
         # ----- Update the variables
         
-        simul.geometry = s_points
-        simul.velocity = s_velocity
-        simul.age      = s_age
+        simul.geometry = simul.cloud
+        #simul.velocity = s_velocity
+        #simul.age      = s_age
         
         return simul
     
@@ -417,7 +428,7 @@ class Simulation:
         
         import geonodes as gn
         
-        return lambda **kwargs: gn.Vector(gravity)
+        return lambda simul: gn.Vector(gravity)
     
     # ----------------------------------------------------------------------------------------------------
     # Noisy turbulence
@@ -455,11 +466,12 @@ class Simulation:
         
         import geonodes as gn
         
-        def gen(points=None, **kwargs):
-            tree = points.node.tree
-            return gn.Vector(gn.Texture.Noise4D(vector=points.points.position + offset, scale=scale, w=w).color).map_range(.5).scale(intensity)
+        def gen(simul):
+            cloud = simul.cloud
+            tree = cloud.node.tree
+            return gn.Vector(gn.Texture.Noise4D(vector=cloud.points.position + offset, scale=scale, w=w).color).map_range(.5).scale(intensity)
         
-        return lambda **kwargs: gen(**kwargs)
+        return gen
     
     # ----------------------------------------------------------------------------------------------------
     # Viscosity
@@ -498,7 +510,9 @@ class Simulation:
         
         import geonodes as gn
     
-        def gen(simul=None, velocity=None, **kwargs):
+        def gen(simul):
+            
+            velocity = simul.cloud.points.named_vector("velocity")
     
             # ----- Velocity norm
     
@@ -517,7 +531,7 @@ class Simulation:
             
             return velocity.scale(-a/n_vel)
         
-        return lambda **kwargs: gen(**kwargs)
+        return gen
     
     # ----------------------------------------------------------------------------------------------------
     # Repulsion
@@ -559,15 +573,17 @@ class Simulation:
         
         import geonodes as gn
         
-        def gen(points=None, **kwargs):
+        def gen(simul):
+            
+            cloud = simul.cloud
             
             # ----- Index of nearest
             
-            index = points.points.index_of_nearest(position=points.points.index).index
+            index = cloud.points.index_of_nearest(position=cloud.points.index).index
             
             # ----- Vector between the particle and its nearest neighbor
             
-            v = points.points.position - points.points.sample_index(points.points.position, index=index)
+            v = cloud.points.position - cloud.points.sample_index(cloud.points.position, index=index)
             
             # ----- Distance
             
@@ -575,14 +591,14 @@ class Simulation:
             
             # ----- Acceleration computed on the capped distance
             
-            base = d.map_range_smooth(d_min, d_max, d_min, d_max)
+            base = gn.max(d, d_min)
             a = -intensity*base**(-exponent)
             
             # ----- Return the acceleration
             
             return v.scale(a/d)
         
-        return lambda **kwargs: gen(**kwargs)
+        return gen
     
     # ----------------------------------------------------------------------------------------------------
     # Attraction from a location
@@ -626,11 +642,13 @@ class Simulation:
         
         import geonodes as gn
     
-        def gen(points=None, **kwargs):
+        def gen(simul):
+            
+            cloud = simul.cloud
             
             # ----- Vector to the attractor location
             
-            v = location - points.points.position
+            v = location - cloud.points.position
             
             # ----- Minimum distance to the attractor
             
@@ -645,7 +663,7 @@ class Simulation:
             
             return v.scale(a/d)
         
-        return lambda **kwargs: gen(**kwargs)
+        return gen
     
     # ====================================================================================================
     # Surface interaction
@@ -686,27 +704,29 @@ class Simulation:
         
         import geonodes as gn
         
-        def gen(points=None, **kwargs):
+        def gen(simul):
+            
+            cloud = simul.cloud
             
             # ----- Location to raycast from
             
-            loc = points.points.position
+            loc = cloud.points.position
             loc.z = z_max
             
             # ------ Raycast to the surface from the points locations
             
-            node = points.points.raycast(target_geometry=mesh, source_position=loc, ray_length=2*z_max)
+            node = cloud.points.raycast(target_geometry=mesh, source_position=loc, ray_length=2*z_max)
             
             # ----- Locate the where we have a hit
             
-            points.points[node.is_hit].position = node.hit_position
+            cloud.points[node.is_hit].position = node.hit_position
             
             # ----- Delete the particles outside the surface
             
             if kill_outside:
-                points.points[node.is_hit.b_not()].delete()
+                cloud.points[node.is_hit.b_not()].delete()
             
-        return lambda **kwargs: gen(**kwargs)
+        return gen
     
     # ----------------------------------------------------------------------------------------------------
     # Acceleration along the slope
@@ -745,32 +765,94 @@ class Simulation:
         
         g = gn.Vector(gravity)
         
-        def gen(points=None, **kwargs):
+        def gen(simul):
+            
+            cloud = simul.cloud
             
             # ----- Get the normal at each point
             
-            normal = mesh.sample_nearest_surface(value=mesh.points.normal, sample_position=points.points.position)
+            normal = mesh.sample_nearest_surface(value=mesh.verts.normal, sample_position=cloud.points.position)
             
             # ----- Gravity component
             
             return normal.cross(g).cross(normal)
         
-        return lambda **kwargs: gen(**kwargs)
+        return gen
     
+    # ----------------------------------------------------------------------------------------------------
+    # Bounce on the surface of an object
+    
+    @staticmethod
+    def func_bounce(mesh, distance=.1, damp=0.):
+        """ Returns a function creating a bounce simulation onto a mesh.
+        
+        The created nodes test if the points are below the closest surface. If it is the case,
+        it places the points on the external side of the face an reflect the speed with the normal to thge surface.
+        
+        The function returned by this method can be used as the setpt argument in a simulation zone creation method:
+        
+        ``` python    
+        simul = gn.Simulation.Fluid(setup=gn.Simulation.func_bounce(...))    
+
+        
+        Args:
+            - mesh (Mesh)       : the surface
+            - distance (float)  : distance from the surface
+            - damp (float)      : damp factor 
+        
+        Returns:
+            - function(**kwargs) : nodes generator
+        """       
+    
+        import geonodes as gn
+    
+        def gen(simul):
+            
+            cloud = simul.cloud
+            
+            velocity = cloud.points.named_vector("velocity")
+            
+            prox_node = cloud.points.proximity(target=mesh, source_position=cloud.points.position)
+            v = prox_node.position - cloud.points.position
+            
+            rc_node = cloud.points.raycast(
+                target_geometry  = mesh, 
+                source_position  = cloud.points.position,
+                ray_direction    = v,
+                ray_length       = 5*distance)
+                
+            sel = rc_node.is_hit * rc_node.hit_normal.dot(velocity).less_than(0)
+            
+            cloud.points.store_named_attribute("temp_sel", sel)
+            sel = cloud.points.named_boolean("temp_sel")
+            
+            cloud.points[sel].position = rc_node.hit_position + rc_node.hit_normal.scale(distance)
+            
+            if True:
+                cloud.points[sel].store_named_attribute("velocity", velocity.reflect(rc_node.hit_normal).scale(1-damp))
+                simul.cloud = cloud
+            else:
+                new_vel = velocity.switch(sel, velocity.reflect(rc_node.hit_normal).scale(1-damp))
+                cloud.points.store_named_attribute("velocity", new_vel)
+            
+        return gen 
+        
     # ----------------------------------------------------------------------------------------------------
     # Generation function calling a group
     
     @staticmethod
-    def func_group(group_name, out_socket=None, in_delta_time=None, in_points=None, in_velocity=None, in_age=None, out_points=None, out_velocity=None, out_age=None):
+    def func_group(group_name, in_delta_time=None, in_cloud=None, out_cloud=None, out_socket=None):
         """ Returns a function creating a Group node of the given name and connect sockets.
         
-        The Group can have inpout sockets for delta_time, points, velocity and age used in a fluid simulation.
-        It can have output sockets for points, velocity and age.
+        The Group can have input sockets for delta_time and cloud used in a fluid simulation.
+        It can have an output sockets for cloud if the cloud has been changed.
         
-        If the sockets exist with this name, they will be connected automatically.If they have differente names,
+        An additional output socket can be specified if the node must return a value such as an acceleration.
+        
+        If the sockets exist with this name, they will be connected automatically. If they have differente names,
         they must be provided using in_... and out_... arguments, for instance:
-        - ``` in_velocity = None ``` : the velocity will be plugged to the input socket named 'velocity' if it exists
-        - ``` in_velocity = 'vector' ``` : the velocity will be plugged to the input socket named 'vector'
+        - ``` in_cloud = None ``` : the cloud will be plugged to the input socket named 'cloud', 'points' or 'geometry' if it exists
+        - ``` out_cloud = 'geometry' ``` : the cloud will be plugged to the input socket named 'vector'
         
         The same is done for the output socket: variables are updated to match to the corresponding outpout sockets.
         
@@ -786,10 +868,10 @@ class Simulation:
             - group_name (string) : the name of the Group node
             - out_socket (str=None) : name of the output socket of the created group node to return
             - in_delta_time (str=None) : nema of the *delta time* input socket
-            - in_points (str=None) : nema of the *points* input socket
+            - in_cloud (str=None) : nema of the *cloud* input socket
             - in_velocity (str=None) : nema of the *velocity* input socket
             - in_age (str=None) : nema of the *age* input socket
-            - out_points (str=None) : nema of the *points* output socket
+            - out_cloud (str=None) : nema of the *cloud* output socket
             - out_velocity (str=None) : nema of the *velocity* output socket
             - out_age (str=None) : nema of the *age* output socket
         
@@ -799,69 +881,60 @@ class Simulation:
         
         import geonodes as gn
         
-        def gen(simul=None, points=None, velocity=None, age=None, **kwargs):
+        def gen(simul):
+            
+            cloud = simul.cloud
             
             # ----- Generate the group
             
-            node = gn.Group("Sub")
+            node = gn.Group(group_name)
+            
+            print(node.insockets)
+            print(node.outsockets)
     
             # ----- Input socket names
             
             in_d = in_delta_time
-            in_p = in_points
-            in_v = in_velocity
-            in_a = in_age
+            in_c = in_cloud
             
             if in_d is None:
                 if 'delta_time' in node.insockets.keys():
                     in_d = 'delta_time'
-            if in_p is None:
-                if 'points' in node.insockets.keys():
-                    in_p = 'points'
-            if in_v is None:
-                if 'velocity' in node.insockets.keys():
-                    in_v = 'velocity'
-            if in_a is None:
-                if 'age' in node.insockets.keys():
-                    in_a = 'age'
+            if in_c is None:
+                if 'cloud' in node.insockets.keys():
+                    in_c = 'cloud'
+                elif 'points' in node.insockets.keys():
+                    in_c = 'points'
+                elif 'geometry' in node.insockets.keys():
+                    in_c = 'geometry'
     
             # ----- Connect the input sockets
     
             if in_d is not None:
                 setattr(node, in_d, simul.delta_time)
-            if in_p is not None:
-                setattr(node, in_p, points)
-            if in_v is not None:
-                setattr(node, in_v, velocity)
-            if in_a is not None:
-                setattr(node, in_a, age)
+            if in_c is not None:
+                setattr(node, in_c, cloud)
     
             # ----- Output socket names
             
-            out_p = out_points
-            out_v = out_velocity
-            out_a = out_age
+            out_c = out_cloud
             
-            if out_p is None:
-                if 'points' in node.outsockets.keys():
-                    out_p = 'points'
-            if out_v is None:
-                if 'velocity' in node.outsockets.keys():
-                    out_v = 'velocity'
-            if out_a is None:
-                if 'age' in node.outsockets.keys():
-                    out_a = 'age'
-    
+            if out_c is None:
+                if 'cloud' in node.outsockets.keys():
+                    out_c = 'cloud'
+                elif 'points' in node.outsockets.keys():
+                    out_c = 'points'
+                elif 'geometry' in node.outsockets.keys():
+                    out_c = 'geometry'
+
             # ----- Connect the output sockets
             # Make the data sockets pointing to the outpout sockets of the node
             # using the stack method        
                     
-            if out_p is not None:
-                points.stack(node, out_p)
-            if out_v is not None:
-                velocity.stack(node, out_v)
-            if out_a is not None:
-                age.stack(node, out_a)
+            if out_c is not None:
+                cloud.stack(node, out_c)
+                
+            simul.cloud = cloud
                 
             # ----- Return the output socket if a name is given
                 
@@ -870,7 +943,7 @@ class Simulation:
             else:
                 return None
                 
-        return lambda **kwargs: gen(**kwargs)
+        return gen
          
         
             

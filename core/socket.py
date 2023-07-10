@@ -957,6 +957,7 @@ class DataSocket(Socket):
         """
         if not self.is_output:
             raise RuntimeError(f"The socket '{str(self)}' is not an input socket. It can't be sent to group output.")
+            
         self.node.tree.group_output.to_output(self, self.name if name is None else name)
         
     # ----------------------------------------------------------------------------------------------------

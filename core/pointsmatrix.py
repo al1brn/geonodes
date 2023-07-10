@@ -97,6 +97,8 @@ class PointsMatrix:
         - y_geometry (Mesh, Curve or Points) : second geometry of points
         """
         
+        import geonodes as gn
+        
         self.tree = x_geometry.node.tree
         
         with self.tree.layout("PointsMatrix: initialization"):
@@ -124,16 +126,14 @@ class PointsMatrix:
                     raise Exception(f"PointsMatrix accept only geometries with POINT domain (Mesh, Curve or Points), not '{cname}': {y_geometry}")
             
                         
-            # ----- The x and y geometries typecasted to points
+            # ----- The x and y geometries
             
-            #self.x_geometry = gn.Points(x_geometry)
-            #self.y_geometry = gn.Points(y_geometry)
             self.x_geometry = x_geometry
             self.y_geometry = y_geometry
 
             # ----- The matrix
             
-            insts = self.x_geometry.points.instance_on(instance=self.y_geometry)
+            insts = self.x_geometry.instance_on_points(instance=self.y_geometry)
             
             # ----- Make sure not to change the position of the y geometry points
             
@@ -146,10 +146,10 @@ class PointsMatrix:
             # ----- The index of each geometry
             
             with self.tree.layout("x index"):
-                self.x_index = self.matrix.points.index / self.y_count
+                self.x_index = self.capture((self.matrix.points.index / self.y_count).to_integer(rounding_mode='FLOOR'))
             
             with self.tree.layout("y index"):
-                self.y_index = self.matrix.points.index % self.y_count
+                self.y_index = self.capture((self.matrix.points.index % self.y_count).to_integer(rounding_mode='ROUND'))
                 
             # ----- ID set to x_index
 
@@ -228,11 +228,34 @@ class PointsMatrix:
         - value along the y axis
         """
         return self.matrix.points.sample_index(value, index=self.y_geometry.index)
+    
+    # ----------------------------------------------------------------------------------------------------
+    # Get / set an attribute on the matrix
+    
+    def get_attribute(self, attribute):
+        res = self.capture(attribute)
+        res.node.label = "Get attribute"
+        return res
+        
+    def set_attribute(self, attribute, value, selection=True):
+        res = attribute.switch(selection, value)
+        res.node.label = "Set attribute"
+        return res
+    
+    def index(self, i, j):
+        res = self.capture(i*self.y_count + j)
+        res.node.label = "Matrix index"
+        return res
+    
+    def sample(self, i, j, value):
+        res = self.matrix.points[self.index(i, j)].sample_index(value)
+        res.nodes = "Matrix sample"
+        return res
         
     # ----------------------------------------------------------------------------------------------------
     # Accumulate
         
-    def accumulate_node(self, value, group_id='x'):
+    def accumulate(self, value, group_id='x'):
         """ Create an 'Accumulate Field' node to compute along one axis.
         
         Once the node is created, the result can be read in the requested geometry using 'x_get' or 'y_get'.
@@ -257,14 +280,14 @@ class PointsMatrix:
                 elif group_id.lower() == 'y':
                     self.set_id_y()
                 else:
-                    raise Exception(f"PointsMatrix.accumulate error: 'group_id' argument must be 'x' or 'y', not {group_ind}")
+                    raise Exception(f"PointsMatrix.accumulate error: 'group_id' argument must be 'x' or 'y', not {group_id}")
                     
             return self.matrix.points.accumulate_field(value, group_id=self.matrix.points.ID)
         
     def x_total(self, value, set_id=True):
         """ Sum a matrix attribute along x axis.
         
-        This method is equivalent to ``` x_get(accumulate_node(...).total) ```.
+        This method is equivalent to ``` x_get(accumulate(...).total) ```.
         
         Args:
         - value : a matrix attribute
@@ -274,12 +297,12 @@ class PointsMatrix:
         - The total along the x axis
         """
         group_id = 'x' if set_id else None
-        return self.x_get(self.accumulate_node(value, group_id).total)
+        return self.x_get(self.accumulate(value, group_id).total)
     
     def y_total(self, value, set_id=True):
         """ Sum a matrix attribute along y axis.
         
-        This method is equivalent to ``` y_get(accumulate_node(...).total) ```.
+        This method is equivalent to ``` y_get(accumulate(...).total) ```.
         
         Args:
         - value : a matrix attribute
@@ -309,7 +332,7 @@ class PointsMatrix:
     def y_leading(self, value, set_id=True):
         """ Leading sum a matrix attribute along y axis.
         
-        This method is equivalent to ``` y_get(accumulate_node(...).leading) ```.
+        This method is equivalent to ``` y_get(accumulate(...).leading) ```.
         
         Args:
         - value : a matrix attribute
@@ -319,7 +342,7 @@ class PointsMatrix:
         - The leading total along the y axis
         """
         group_id = 'y' if set_id else None
-        return self.y_get(self.accumulate_node(value, group_id).total)
+        return self.y_get(self.accumulate(value, group_id).total)
     
     def x_trailing(self, value, set_id=True):
         """ Trailing sum a matrix attribute along x axis.
@@ -334,12 +357,12 @@ class PointsMatrix:
         - The trailing sum along the x axis
         """
         group_id = 'x' if set_id else None
-        return self.x_get(self.accumulate_node(value, group_id).total)
+        return self.x_get(self.accumulate(value, group_id).total)
     
     def y_trailing(self, value, set_id=True):
         """ Trailing sum a matrix attribute along y axis.
         
-        This method is equivalent to ``` y_get(accumulate_node(...).trailing) ```.
+        This method is equivalent to ``` y_get(accumulate(...).trailing) ```.
         
         Args:
         - value : a matrix attribute
@@ -349,7 +372,46 @@ class PointsMatrix:
         - The trailing total along the y axis
         """
         group_id = 'y' if set_id else None
-        return self.y_get(self.accumulate_node(value, group_id).total)
+        return self.y_get(self.accumulate(value, group_id).total)
+    
+    # ====================================================================================================
+    # For square matrix
+    
+    @property
+    def diagonal_selection(self):
+        res = self.x_index.equal(self.y_index)
+        res.node.label = "Diag selection"
+        return res
+    
+    @property
+    def diagonal_index(self):
+        res = self.x_index*(self.y_count + 1)
+        res.node.label = "Diag index"
+        return res
+    
+    def get_diagonal(self, value):
+        res = self.matrix.points.sample_index(value, index=self.diagonal_index)
+        res.node.label = "Get diagonal"
+        return res
+    
+    def set_diagonal(self, attribute, value):
+        res = self.set_attribute(attribute, value, self.diagonal_selection)
+        res.node.label = "Set diagonale"
+        return res
+    
+    def triangle_selection(self, diagonal=False):
+        if diagonal:
+            res = self.x_index.greater_equal(self.y_index)
+        else:
+            res = self.x_index.greater_than(self.y_index)
+        res.node.label = "Triangle sel"
+        return res
+            
+
+    def set_triangle(self, attribute, value, diagonal=False):
+        res = self.set_attribute(attribute, value, self.triangle_selection(diagonal=diagonal))
+        res.node.label = "Set triangle"
+        return res
     
     # ====================================================================================================
     # Demos

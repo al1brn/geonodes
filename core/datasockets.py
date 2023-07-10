@@ -1685,6 +1685,30 @@ class Geometry(DataSocket):
             pts = gn.Mesh(ctl).to_points(radius=0.005)
                 
             return self.join(ctl, pts)
+        
+    # ----------------------------------------------------------------------------------------------------
+    # Points matrix
+    
+    def matrix(self, points):
+        """ Return a PointsMatrix with another POINT geometry.
+        
+        This geometry is the x geometry and the points geometry is the y axis.
+        
+        Raises an error if one of these two geometries as no POINT domain.
+        
+        See [PointsMatrix](PointsMatrix.md) for more documentation.
+        
+        Args:
+        - points (Mesh, Points, Curve) : the y geometry of the matrix to build
+        
+        Returns:
+        - instance of PointsMatrix
+        """
+        
+        import geonodes as gn
+        
+        return gn.PointsMatrix(self, points)
+        
     
 
 # -----------------------------------------------------------------------------------------------------------------------------
