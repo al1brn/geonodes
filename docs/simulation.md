@@ -18,7 +18,7 @@ These two nodes have the same input and output sockets with one exception: the *
 
 <img src="images/simulation_zone.png" width="600" class="center">
 
-The nodes are created by instanciating a **Simulation** class. The class constructor takes one mandatory argument: the geometry to use in the simulation zone. It accepts additional keyword arguments corresponding to the additional sockets to use in the simulation. In the following example, a simulation zone is created with one vector to be used in the simulation loops:
+The nodes are created by instanciating a **Simulation** class. The class constructor takes key word arguments used to named the sockets of the simulation zone. In the following example, a simulation zone is created with one vector to be used in the simulation loops:
 
 <img src="images/simulation_creation.png" width="600" class="center">
 
