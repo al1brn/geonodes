@@ -26,9 +26,7 @@ The nodes are created by instanciating a **Simulation** class. The class constru
 import geonodes as gn
 
 with gn.Tree("Simul", auto_capture=False) as tree:
-
   # Create a simulation zone for the input geometry with one socket initialized to (0, 0, 0)
-
   simul = gn.Simulation(geometry=tree.ig, position=(0, 0, 0))
 ```
 
@@ -38,12 +36,10 @@ At creation time, the *geometry* sockets inside the simulation zone are not conn
 import geonodes as gn
 
 with gn.Tree("Simul", auto_capture=False) as tree:
-
   # Create a simulation zone for the input geometry with one socket initialized to (0, 0, 0)
   simul = gn.Simulation(geometry=tree.ig, position=(0, 0, 0))
 
   # Connect the sockets
-
   simul.close()
 ```
 
