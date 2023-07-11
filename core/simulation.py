@@ -16,12 +16,12 @@ from geonodes.nodes import nodes
 # Simulation zone
 
 class Simulation:
-    """ Simulation zone
+    """ > Create a simulation zone**
     
     This class Simulation generates the two nodes of a simulation zone: simulation input and output nodes.
     The simulation exposes as class attributes the geometry and the simulation variables used in the simulation zone.
     
-    The key of the keyword arguments is used to name the sockets of the input and outpout node.
+    The key of the keyword arguments is used to name the sockets of the input and output node.
         
     ``` python
     simul = Simulation(geometry=mesh, speed=(0, 0, 0))
@@ -59,6 +59,19 @@ class Simulation:
     # Let's connect the result of the simulation to the output of the tree
     tree.og = simul.geometry
     ``` 
+    
+    A working demo:
+        
+    ``` python
+    import geondes as gn
+    
+    with gn.Tree("Simulation demo", auto_capture=False) as tree:
+        
+        with gn.Simulation(mesh=gn.Mesh(tree.ig)) as simul:
+            simul.mesh.verts.position_offset = gn.Vector.Random(-1, 1, seed=tree.frame).scale(.1)
+            
+    tree.og = simul.mesh
+    ```
     
     Args:
     - **kwargs : variables to use within the loop. Each key word creates a variable accessible within the simulation step
