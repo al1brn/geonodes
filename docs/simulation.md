@@ -125,7 +125,7 @@ The following tree generates random points on the faces of the input geometry. E
 ``` python
 import geonodes as gn
 
-with gn.Tree("Simul", auto_capture = False) as tree:
+with gn.Tree("Simul", auto_capture=False) as tree:
     
     # Points on the input geometry (allegedly a mesh)
     
@@ -178,7 +178,7 @@ Rather than using the named attribute, we can use a simulation state named **top
 ``` python
 import geonodes as gn
 
-with gn.Tree("Simul", auto_capture = False) as tree:
+with gn.Tree("Simul", auto_capture=False) as tree:
     
     # Points on the input geometry (allegedly a mesh)
     
