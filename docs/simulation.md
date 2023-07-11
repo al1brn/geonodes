@@ -59,34 +59,26 @@ For each keyword argument, 4 sockets are created in the simulation zone:
 3. **input socket of the output node** : connected when *close* method is called
 4. **output socket of the output node** : accessible through the attribute of the simulation with the name of the key word
 
+For instance, with the keyword argument ``` geometry=mesh ```:
+1. The mesh geometry is connected to the input socket named 'Geometry' of the simulation input node
+2. **Within the simulation zone** (i.e. before closing) use ``` simul.geometry ``` to get the geometry
+3. The input socket 'Geometry' of the output node is connected with the socket pointed by ``` simul.geometry ```
+4. **Outside the simulation zone** (i.e. after closing) use ``` simul.geometry ``` to get the simulated geometry
 
-
-
-
-
-With the exception of **delta_time** output socket of the input simulation node, the socket names have four meanings:
-- input socket of the input node: ``` simul.input.geometry = var```
-- output socket of the input node : ``` var = simul.input.geometry ```
-- input socket of the output node : ``` simul.output.geometry = var```
-- output socket of the output node : ``` var = simul.output.geometry ```
-
-To ease code writing, the Simulation instance exposes attributes for sockets used within the simulation:
-- when the attribute is read, this is the output socket of the input node
-- when the attribute is written, this is the input socket of the output node
+:warning: **NOTE** ``` simul.geometry ``` refers to different sockets before and after closing the simulation zone.
+The use of ``` with ``` statement makes thing simple.
 
 ``` python
-with gn.Tree("Simul") as tree:
-  simul = gn.Simulation(tree.ig, position=(0, 0, 0))
+import geonodes as gn
 
-  v = simul.input.position # Output socket of simulation input node
-  v = simul.position       # Same
-
-  simul.output.position = v # Input socket of the simulation output node
-  simul.position = v        # Same
-
-  # Outside the simulation zone, the result can read through output node
-
-  my_vector = simul.output.position
+with gn.Tree("Simul", auto_capture=False) as tree:
+    with gn.Simulation(geometry=gn.Mesh(tree.ig)) as simul:
+        # Within the simulation, simul.geometry is output socket of input node        
+        simul.geometry.verts.position_offset = gn.Vector.Random(-1, 1, seed=tree.frame).scale(.1)
+        
+    # Outside the simulation zone, simul.geometry is the output socket of the output node
+    # i.e. the result of the simulation
+    tree.og = simul.geometry
 ```
 
 ### Note
