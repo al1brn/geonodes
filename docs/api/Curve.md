@@ -52,7 +52,7 @@ Curve(self, socket, node=None, label=None)
 
 **Methods**
 
-[attribute_node](#attribute_node) | [attribute_statistic](#attribute_statistic) | [capture_attribute](#capture_attribute) | [curve_of_point](#curve_of_point) | [deform_on_surface](#deform_on_surface) | [delete](#delete) | [duplicate](#duplicate) | [fill](#fill) | [fill_ngons](#fill_ngons) | [fill_triangles](#fill_triangles) | [fillet](#fillet) | [fillet_bezier](#fillet_bezier) | [fillet_poly](#fillet_poly) | [index_of_nearest](#index_of_nearest) | [instance_on_points](#instance_on_points) | [instantiate](#instantiate) | [interpolate](#interpolate) | [join](#join) | [merge_by_distance](#merge_by_distance) | [named_attribute](#named_attribute) | [named_boolean](#named_boolean) | [named_color](#named_color) | [named_float](#named_float) | [named_integer](#named_integer) | [named_vector](#named_vector) | [offset_point](#offset_point) | [points_of_curve](#points_of_curve) | [proximity](#proximity) | [proximity_edges](#proximity_edges) | [proximity_faces](#proximity_faces) | [proximity_points](#proximity_points) | [raycast](#raycast) | [raycast_interpolated](#raycast_interpolated) | [raycast_nearest](#raycast_nearest) | [remove_named_attribute](#remove_named_attribute) | [replace_material](#replace_material) | [resample](#resample) | [resample_count](#resample_count) | [resample_evaluated](#resample_evaluated) | [resample_length](#resample_length) | [reverse](#reverse) | [sample](#sample) | [sample_index](#sample_index) | [sample_nearest](#sample_nearest) | [separate](#separate) | [set_ID](#set_ID) | [set_material_index](#set_material_index) | [set_position](#set_position) | [show_handles](#show_handles) | [store_named_attribute](#store_named_attribute) | [store_named_boolean](#store_named_boolean) | [store_named_color](#store_named_color) | [store_named_float](#store_named_float) | [store_named_integer](#store_named_integer) | [store_named_vector](#store_named_vector) | [subdivide](#subdivide) | [switch](#switch) | [to_instance](#to_instance) | [to_mesh](#to_mesh) | [to_points](#to_points) | [to_points_count](#to_points_count) | [to_points_evaluated](#to_points_evaluated) | [to_points_length](#to_points_length) | [transform](#transform) | [transform_geometry](#transform_geometry) | [trim](#trim) | [trim_factor](#trim_factor) | [trim_length](#trim_length) | [view](#view) | [viewer](#viewer)
+[attribute_node](#attribute_node) | [attribute_statistic](#attribute_statistic) | [capture_attribute](#capture_attribute) | [curve_of_point](#curve_of_point) | [deform_on_surface](#deform_on_surface) | [delete](#delete) | [duplicate](#duplicate) | [fill](#fill) | [fill_ngons](#fill_ngons) | [fill_triangles](#fill_triangles) | [fillet](#fillet) | [fillet_bezier](#fillet_bezier) | [fillet_poly](#fillet_poly) | [index_of_nearest](#index_of_nearest) | [instance_on_points](#instance_on_points) | [instantiate](#instantiate) | [interpolate](#interpolate) | [join](#join) | [matrix](#matrix) | [merge_by_distance](#merge_by_distance) | [named_attribute](#named_attribute) | [named_boolean](#named_boolean) | [named_color](#named_color) | [named_float](#named_float) | [named_integer](#named_integer) | [named_vector](#named_vector) | [offset_point](#offset_point) | [points_of_curve](#points_of_curve) | [proximity](#proximity) | [proximity_edges](#proximity_edges) | [proximity_faces](#proximity_faces) | [proximity_points](#proximity_points) | [raycast](#raycast) | [raycast_interpolated](#raycast_interpolated) | [raycast_nearest](#raycast_nearest) | [remove_named_attribute](#remove_named_attribute) | [replace_material](#replace_material) | [resample](#resample) | [resample_count](#resample_count) | [resample_evaluated](#resample_evaluated) | [resample_length](#resample_length) | [reverse](#reverse) | [sample](#sample) | [sample_index](#sample_index) | [sample_nearest](#sample_nearest) | [separate](#separate) | [set_ID](#set_ID) | [set_material_index](#set_material_index) | [set_position](#set_position) | [show_handles](#show_handles) | [store_named_attribute](#store_named_attribute) | [store_named_boolean](#store_named_boolean) | [store_named_color](#store_named_color) | [store_named_float](#store_named_float) | [store_named_integer](#store_named_integer) | [store_named_vector](#store_named_vector) | [subdivide](#subdivide) | [switch](#switch) | [to_instance](#to_instance) | [to_mesh](#to_mesh) | [to_points](#to_points) | [to_points_count](#to_points_count) | [to_points_evaluated](#to_points_evaluated) | [to_points_length](#to_points_length) | [transform](#transform) | [transform_geometry](#transform_geometry) | [trim](#trim) | [trim_factor](#trim_factor) | [trim_length](#trim_length) | [view](#view) | [viewer](#viewer)
 
 ***Inherited***
 
@@ -1298,6 +1298,31 @@ def join(*geometry)
 - socket `geometry`
 
 
+
+
+
+
+<sub>Go to [top](#class-Curve) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### matrix
+
+```python
+def matrix(self, points)
+```
+
+ Return a PointsMatrix with another POINT geometry.
+
+This geometry is the x geometry and the points geometry is the y axis.
+
+Raises an error if one of these two geometries as no POINT domain.
+
+See [PointsMatrix](PointsMatrix.md) for more documentation.
+
+#### Args:
+- points (Mesh, Points, Curve) : the y geometry of the matrix to build
+
+#### Returns:
+- instance of PointsMatrix
 
 
 

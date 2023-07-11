@@ -35,7 +35,7 @@ Volume(self, socket, node=None, label=None)
 
 **Methods**
 
-[attribute_node](#attribute_node) | [attribute_statistic](#attribute_statistic) | [capture_attribute](#capture_attribute) | [delete](#delete) | [distribute_points](#distribute_points) | [distribute_points_grid](#distribute_points_grid) | [distribute_points_random](#distribute_points_random) | [duplicate](#duplicate) | [instantiate](#instantiate) | [join](#join) | [mean_filter_sdf_volume](#mean_filter_sdf_volume) | [merge_by_distance](#merge_by_distance) | [offset_sdf_volume](#offset_sdf_volume) | [remove_named_attribute](#remove_named_attribute) | [replace_material](#replace_material) | [sample](#sample) | [sample_boolean](#sample_boolean) | [sample_float](#sample_float) | [sample_index](#sample_index) | [sample_integer](#sample_integer) | [sample_nearest](#sample_nearest) | [sample_vector](#sample_vector) | [separate](#separate) | [set_ID](#set_ID) | [set_material](#set_material) | [set_material_index](#set_material_index) | [set_position](#set_position) | [show_handles](#show_handles) | [store_named_attribute](#store_named_attribute) | [store_named_boolean](#store_named_boolean) | [store_named_color](#store_named_color) | [store_named_float](#store_named_float) | [store_named_integer](#store_named_integer) | [store_named_vector](#store_named_vector) | [switch](#switch) | [to_instance](#to_instance) | [to_mesh](#to_mesh) | [transform](#transform) | [transform_geometry](#transform_geometry) | [view](#view) | [viewer](#viewer)
+[attribute_node](#attribute_node) | [attribute_statistic](#attribute_statistic) | [capture_attribute](#capture_attribute) | [delete](#delete) | [distribute_points](#distribute_points) | [distribute_points_grid](#distribute_points_grid) | [distribute_points_random](#distribute_points_random) | [duplicate](#duplicate) | [instantiate](#instantiate) | [join](#join) | [matrix](#matrix) | [mean_filter_sdf_volume](#mean_filter_sdf_volume) | [merge_by_distance](#merge_by_distance) | [offset_sdf_volume](#offset_sdf_volume) | [remove_named_attribute](#remove_named_attribute) | [replace_material](#replace_material) | [sample](#sample) | [sample_boolean](#sample_boolean) | [sample_float](#sample_float) | [sample_index](#sample_index) | [sample_integer](#sample_integer) | [sample_nearest](#sample_nearest) | [sample_vector](#sample_vector) | [separate](#separate) | [set_ID](#set_ID) | [set_material](#set_material) | [set_material_index](#set_material_index) | [set_position](#set_position) | [show_handles](#show_handles) | [store_named_attribute](#store_named_attribute) | [store_named_boolean](#store_named_boolean) | [store_named_color](#store_named_color) | [store_named_float](#store_named_float) | [store_named_integer](#store_named_integer) | [store_named_vector](#store_named_vector) | [switch](#switch) | [to_instance](#to_instance) | [to_mesh](#to_mesh) | [transform](#transform) | [transform_geometry](#transform_geometry) | [view](#view) | [viewer](#viewer)
 
 ***Inherited***
 
@@ -702,6 +702,31 @@ def join(*geometry)
 - socket `geometry`
 
 
+
+
+
+
+<sub>Go to [top](#class-Volume) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### matrix
+
+```python
+def matrix(self, points)
+```
+
+ Return a PointsMatrix with another POINT geometry.
+
+This geometry is the x geometry and the points geometry is the y axis.
+
+Raises an error if one of these two geometries as no POINT domain.
+
+See [PointsMatrix](PointsMatrix.md) for more documentation.
+
+#### Args:
+- points (Mesh, Points, Curve) : the y geometry of the matrix to build
+
+#### Returns:
+- instance of PointsMatrix
 
 
 

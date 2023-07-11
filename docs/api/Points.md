@@ -36,7 +36,7 @@ Points(self, socket, node=None, label=None)
 
 **Methods**
 
-[attribute_node](#attribute_node) | [attribute_statistic](#attribute_statistic) | [capture_attribute](#capture_attribute) | [delete](#delete) | [duplicate](#duplicate) | [index_of_nearest](#index_of_nearest) | [instance_on_points](#instance_on_points) | [instantiate](#instantiate) | [interpolate](#interpolate) | [join](#join) | [material_selection](#material_selection) | [merge_by_distance](#merge_by_distance) | [named_attribute](#named_attribute) | [named_boolean](#named_boolean) | [named_color](#named_color) | [named_float](#named_float) | [named_integer](#named_integer) | [named_vector](#named_vector) | [proximity](#proximity) | [proximity_edges](#proximity_edges) | [proximity_faces](#proximity_faces) | [proximity_points](#proximity_points) | [raycast](#raycast) | [raycast_interpolated](#raycast_interpolated) | [raycast_nearest](#raycast_nearest) | [remove_named_attribute](#remove_named_attribute) | [replace_material](#replace_material) | [sample_index](#sample_index) | [sample_nearest](#sample_nearest) | [separate](#separate) | [set_ID](#set_ID) | [set_material](#set_material) | [set_material_index](#set_material_index) | [set_point_radius](#set_point_radius) | [set_position](#set_position) | [show_handles](#show_handles) | [store_named_attribute](#store_named_attribute) | [store_named_boolean](#store_named_boolean) | [store_named_color](#store_named_color) | [store_named_float](#store_named_float) | [store_named_integer](#store_named_integer) | [store_named_vector](#store_named_vector) | [switch](#switch) | [to_instance](#to_instance) | [to_sdf_volume](#to_sdf_volume) | [to_vertices](#to_vertices) | [to_volume](#to_volume) | [to_volume_amount](#to_volume_amount) | [to_volume_size](#to_volume_size) | [transform](#transform) | [transform_geometry](#transform_geometry) | [view](#view) | [viewer](#viewer)
+[attribute_node](#attribute_node) | [attribute_statistic](#attribute_statistic) | [capture_attribute](#capture_attribute) | [delete](#delete) | [duplicate](#duplicate) | [index_of_nearest](#index_of_nearest) | [instance_on_points](#instance_on_points) | [instantiate](#instantiate) | [interpolate](#interpolate) | [join](#join) | [material_selection](#material_selection) | [matrix](#matrix) | [merge_by_distance](#merge_by_distance) | [named_attribute](#named_attribute) | [named_boolean](#named_boolean) | [named_color](#named_color) | [named_float](#named_float) | [named_integer](#named_integer) | [named_vector](#named_vector) | [proximity](#proximity) | [proximity_edges](#proximity_edges) | [proximity_faces](#proximity_faces) | [proximity_points](#proximity_points) | [raycast](#raycast) | [raycast_interpolated](#raycast_interpolated) | [raycast_nearest](#raycast_nearest) | [remove_named_attribute](#remove_named_attribute) | [replace_material](#replace_material) | [sample_index](#sample_index) | [sample_nearest](#sample_nearest) | [separate](#separate) | [set_ID](#set_ID) | [set_material](#set_material) | [set_material_index](#set_material_index) | [set_point_radius](#set_point_radius) | [set_position](#set_position) | [show_handles](#show_handles) | [store_named_attribute](#store_named_attribute) | [store_named_boolean](#store_named_boolean) | [store_named_color](#store_named_color) | [store_named_float](#store_named_float) | [store_named_integer](#store_named_integer) | [store_named_vector](#store_named_vector) | [switch](#switch) | [to_instance](#to_instance) | [to_sdf_volume](#to_sdf_volume) | [to_vertices](#to_vertices) | [to_volume](#to_volume) | [to_volume_amount](#to_volume_amount) | [to_volume_size](#to_volume_size) | [transform](#transform) | [transform_geometry](#transform_geometry) | [view](#view) | [viewer](#viewer)
 
 ***Inherited***
 
@@ -799,6 +799,31 @@ def material_selection(self, material=None)
 - socket `selection`
 
 
+
+
+
+
+<sub>Go to [top](#class-Points) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### matrix
+
+```python
+def matrix(self, points)
+```
+
+ Return a PointsMatrix with another POINT geometry.
+
+This geometry is the x geometry and the points geometry is the y axis.
+
+Raises an error if one of these two geometries as no POINT domain.
+
+See [PointsMatrix](PointsMatrix.md) for more documentation.
+
+#### Args:
+- points (Mesh, Points, Curve) : the y geometry of the matrix to build
+
+#### Returns:
+- instance of PointsMatrix
 
 
 

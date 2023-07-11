@@ -104,7 +104,7 @@ with gn.Tree("PointsMatrix Demo", auto_capture=False) as tree:
 
 **Methods**
 
-[accumulate_node](#accumulate_node) | [capture](#capture) | [set_id_x](#set_id_x) | [set_id_y](#set_id_y) | [x_attribute](#x_attribute) | [x_get](#x_get) | [x_leading](#x_leading) | [x_total](#x_total) | [x_trailing](#x_trailing) | [y_attribute](#y_attribute) | [y_get](#y_get) | [y_leading](#y_leading) | [y_total](#y_total) | [y_trailing](#y_trailing)
+[accumulate](#accumulate) | [capture](#capture) | [set_id_x](#set_id_x) | [set_id_y](#set_id_y) | [x_attribute](#x_attribute) | [x_get](#x_get) | [x_leading](#x_leading) | [x_total](#x_total) | [x_trailing](#x_trailing) | [y_attribute](#y_attribute) | [y_get](#y_get) | [y_leading](#y_leading) | [y_total](#y_total) | [y_trailing](#y_trailing)
 
 ## Class and static methods
 
@@ -138,10 +138,10 @@ def Rain()
 
 ## Methods
 
-### accumulate_node
+### accumulate
 
 ```python
-def accumulate_node(self, value, group_id='x')
+def accumulate(self, value, group_id='x')
 ```
 
  Create an 'Accumulate Field' node to compute along one axis.
@@ -267,7 +267,7 @@ def x_total(self, value, set_id=True)
 
  Sum a matrix attribute along x axis.
 
-This method is equivalent to ``` x_get(accumulate_node(...).total) ```.
+This method is equivalent to ``` x_get(accumulate(...).total) ```.
 
 #### Args:
 - value : a matrix attribute
@@ -339,7 +339,7 @@ def y_leading(self, value, set_id=True)
 
  Leading sum a matrix attribute along y axis.
 
-This method is equivalent to ``` y_get(accumulate_node(...).leading) ```.
+This method is equivalent to ``` y_get(accumulate(...).leading) ```.
 
 #### Args:
 - value : a matrix attribute
@@ -360,7 +360,7 @@ def y_total(self, value, set_id=True)
 
  Sum a matrix attribute along y axis.
 
-This method is equivalent to ``` y_get(accumulate_node(...).total) ```.
+This method is equivalent to ``` y_get(accumulate(...).total) ```.
 
 #### Args:
 - value : a matrix attribute
@@ -381,7 +381,7 @@ def y_trailing(self, value, set_id=True)
 
  Trailing sum a matrix attribute along y axis.
 
-This method is equivalent to ``` y_get(accumulate_node(...).trailing) ```.
+This method is equivalent to ``` y_get(accumulate(...).trailing) ```.
 
 #### Args:
 - value : a matrix attribute

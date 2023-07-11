@@ -991,7 +991,7 @@ def matrix(self, points)
 
 This geometry is the x geometry and the points geometry is the y axis.
 
-Raise an error if one of these two geometry as no POINT domain.
+Raises an error if one of these two geometries as no POINT domain.
 
 See [PointsMatrix](PointsMatrix.md) for more documentation.
 
