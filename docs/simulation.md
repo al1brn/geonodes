@@ -172,52 +172,40 @@ with gn.Tree("Simul", auto_capture = False) as tree:
 
 <img src="images/simulation_res1.png" width="600" class="center">
 
-## Alternative to the stored attribute
+## Alternative storing a named attribute
 
-Rather than using the named attribute, we can use a simulation state named **top**:
+Rather than using the named attribute, we can use a simulation state named **top**.
+Don't forget to explicitly capture the **top** attribute with the mesh.
 
 ``` python
 import geonodes as gn
 
-with gn.Tree("Simul 2") as tree:
+with gn.Tree("Simul", auto_capture = False) as tree:
     
     # Points on the input geometry (allegedly a mesh)
     
     mesh = gn.Mesh(tree.ig).distribute_points_on_faces(density=gn.Float(10, "Density")).points.to_vertices()
 
-    # ----- The simulation zone starts with all vertices as "Top vertices"
+    # ----- The simulation zone
     
-    simul = gn.Simulation(mesh, top=True)
+    with gn.Simulation(mesh=mesh, top=True) as simul:
+        
+        top = simul.mesh.capture_attribute(simul.top)
     
-    # Read the geometry within the zone
+        # Let's generate the extrusion direction by a random vector perpendicular to the normal
+        
+        normal = simul.mesh.verts.normal
+        v = gn.Vector(gn.Texture.Noise4D(w=tree.seconds).color) - (.5, .5, .5)
 
-    mesh = simul.geometry
-    
-    # Let's get the top vertices selector
-    
-    top = simul.top
-    
-    # Let's generate the extrusion direction by a random vector perpendicular to the normal
-    
-    normal = mesh.verts.normal
-    v = gn.Vector(gn.Texture.Noise4D(w=tree.seconds).color) - (.5, .5, .5)
+        # Extrusion along this vector
+        
+        simul.top = simul.mesh.verts[top].extrude(offset=normal.cross(v).scale(.1)).top
 
-    # Extrusion along this vector
-    
-    top  = mesh.verts[top].extrude(offset=normal.cross(v).scale(.1)).top
-    
-    # Connecting the modified mesh to the simulation output node
-    
-    simul.geometry = mesh
-    
-    # Updating the top vertices
-    
-    simul.top = top
-    
+        
     # ----- Outside the simulation
     # Transformation to NURBS curve
     
-    curve = simul.og.to_curve()
+    curve = simul.mesh.to_curve()
     curve.splines.type = 'NURBS'
 
     # Removing the begining with time
@@ -226,7 +214,7 @@ with gn.Tree("Simul 2") as tree:
     
     # Done
     
-    tree.og = curve    
+    tree.og = curv    
 ```
 
 The image below shows the use of **top** simulation state rather than the stored attribute:
