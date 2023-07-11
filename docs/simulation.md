@@ -51,6 +51,10 @@ The image below shows the effect of the *close* method on the simulation zone:
 
 <img src="images/simulation_zone_closed.png" width="600" class="center">
 
+## With statement
+
+Rather than explicitly clossing the simulation, the ``` with ``` statement can be preferabily used.
+
 ## Accessing the sockets
 
 For each keyword argument, 4 sockets are created in the simulation zone:
@@ -72,6 +76,7 @@ The use of ``` with ``` statement makes things simple.
 import geonodes as gn
 
 with gn.Tree("Simul", auto_capture=False) as tree:
+
     with gn.Simulation(geometry=gn.Mesh(tree.ig)) as simul:
         # Within the simulation zone, simul.geometry is the output socket of the input node        
         simul.geometry.verts.position_offset = gn.Vector.Random(-1, 1, seed=tree.frame).scale(.1)
