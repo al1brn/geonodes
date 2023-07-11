@@ -66,70 +66,19 @@ For instance, with the keyword argument ``` geometry=mesh ```:
 4. **Outside the simulation zone** (i.e. after closing) use ``` simul.geometry ``` to get the simulated geometry
 
 :warning: **NOTE** ``` simul.geometry ``` refers to different sockets before and after closing the simulation zone.
-The use of ``` with ``` statement makes thing simple.
+The use of ``` with ``` statement makes things simple.
 
 ``` python
 import geonodes as gn
 
 with gn.Tree("Simul", auto_capture=False) as tree:
     with gn.Simulation(geometry=gn.Mesh(tree.ig)) as simul:
-        # Within the simulation, simul.geometry is output socket of input node        
+        # Within the simulation zone, simul.geometry is the output socket of the input node        
         simul.geometry.verts.position_offset = gn.Vector.Random(-1, 1, seed=tree.frame).scale(.1)
         
     # Outside the simulation zone, simul.geometry is the output socket of the output node
     # i.e. the result of the simulation
     tree.og = simul.geometry
-```
-
-### Note
-
-**Simulation** class exposes shortcuts for the simulation output geometry:
-
-``` python
-  # Resulting geometry through output node
-  geo = simul.output.geometry
-
-  # Or through Simulation shortcuts
-  geo = simul.output_geometry
-  geo = simul.og
-```
-
-## Geometry class
-
-The type of the simulation geometry is the one of the input geometry. For instance if you instantiate a **Simulation** with a mesh, the simulation geometry will be a mesh:
-
-``` python
-mesh = gn.Mesh.Cube().mesh
-simul = gn.Simulation(mesh)
-
-geo = simul.geometry # Mesh
-geo = simul.og # Mesh
-```
-
-:stop_sign: **Important**: the created sockets must be set within the simulation zone. In particular, the geometry must be updated with an instruction ``` simul.geometry = ...```. A typical simulation is written as in the following example:
-
-``` python
-with gn.Tree("Simul") as tree:
-  simul = gn.Simulation(tree.ig, a_vector=(0, 0, 0), a_bool=False)
-
-  # Getting the simulation variables
-
-  geo = simul.geometry
-  v   = simul.a_vector
-  b   = simul.a_bool
-
-  # Doing some stuff with these guys
-  # ...
-
-  # Done: time to update the simulation zone
-
-  simul.geometry = modified_geometry
-  simul.a_vector = modified_vector
-  simul.a_bool   = modified_bool
-
-  # Outputing the tree
-
-  tree.of = simul.og
 ```
 
 ## Do nothing simulation
@@ -141,13 +90,11 @@ import geonodes as gn
 
 with gn.Tree("Do nothing simulation") as tree:
   # Create the simulation zone with tree input geometry as 
-  simul = gn.Simulation(tree.ig)
-
-  # Link the two simulation nodes
-  simul.geometry = simul.geometry
+  with gn.Simulation(geometry=tree.ig) as simul:
+      pass
 
   # The simulated geometry is use as tree output
-  tree.og = simul.og
+  tree.og = simul.geometry
 ```
 
 ## Something more interesting
