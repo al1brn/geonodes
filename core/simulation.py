@@ -19,7 +19,7 @@ class Simulation:
     """ Simulation zone
     
     This class Simulation generates the two nodes of a simulation zone: simulation input and output nodes.
-    The simulation exposes the geometry and the additional variabesl transformed during the simulation loop.
+    The simulation exposes as class attributes the geometry and the simulation variables used in the simulation zone.
     
     The key of the keyword arguments is used to name the sockets of the input and outpout node.
         
@@ -39,7 +39,7 @@ class Simulation:
     simul.close()
     ```
     
-    Bettter use the context manager with a `with` statement:
+    Bettter use the context manager through a `with` statement:
         
     ``` python
     with gn.Simulation(geometry=mesh, speed=(0, 0, 0)) as simul:
