@@ -211,7 +211,7 @@ with gn.Tree("Simul", auto_capture = False) as tree:
     
     # Done
     
-    tree.og = curve
+    tree.og = curve 
 ```
 
 The image below shows the use of **top** simulation state rather than the stored attribute:
