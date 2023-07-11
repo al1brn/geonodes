@@ -139,33 +139,26 @@ with gn.Tree("Simul", auto_capture = False) as tree:
     
     # ----- The simulation zone
     
-    simul = gn.Simulation(mesh)
+    with gn.Simulation(mesh=mesh) as simul:
     
-    # Read the geometry within the zone
+        # Let's generate the extrusion direction by a random vector perpendicular to the normal
+        
+        normal = simul.mesh.verts.normal
+        v = gn.Vector(gn.Texture.Noise4D(w=tree.seconds).color) - (.5, .5, .5)
 
-    mesh = simul.geometry
-    
-    # Let's generate the extrusion direction by a random vector perpendicular to the normal
-    
-    normal = mesh.verts.normal
-    v = gn.Vector(gn.Texture.Noise4D(w=tree.seconds).color) - (.5, .5, .5)
+        # Extrusion along this vector
+        
+        top  = simul.mesh.verts[mesh.verts.named_boolean("Top")].extrude(offset=normal.cross(v).scale(.1)).top
+        
+        # Let's update the last vertex flag
+        
+        simul.mesh.verts.store_named_attribute("Top", top)
 
-    # Extrusion along this vector
-    
-    top  = mesh.verts[mesh.verts.named_boolean("Top")].extrude(offset=normal.cross(v).scale(.1)).top
-    
-    # Let's update the last vertex flag
-    
-    mesh.verts.store_named_attribute("Top", top)
-
-    # Connecting the modified mesh to the simulation output node
-    
-    simul.geometry = mesh
-    
+        
     # ----- Outside the simulation
     # Transformation to NURBS curve
     
-    curve = simul.og.to_curve()
+    curve = simul.mesh.to_curve()
     curve.splines.type = 'NURBS'
 
     # Removing the begining with time
