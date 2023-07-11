@@ -76,6 +76,9 @@ with gn.Tree("Simul", auto_capture=False) as tree:
     with gn.Simulation(geometry=gn.Mesh(tree.ig)) as simul:
         # Within the simulation zone, simul.geometry is the output socket of the input node        
         simul.geometry.verts.position_offset = gn.Vector.Random(-1, 1, seed=tree.frame).scale(.1)
+
+        # Now simul.geometry points to the output socket of a 'Set Position' node
+        # This will be connected to the simulation output node when closed
         
     # Outside the simulation zone, simul.geometry is the output socket of the output node
     # i.e. the result of the simulation
