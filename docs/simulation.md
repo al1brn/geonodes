@@ -86,6 +86,23 @@ with gn.Tree("Simul", auto_capture=False) as tree:
     tree.og = simul.geometry
 ```
 
+:warning: **NOTE** within the simulation, make sure that, before closing, ``` simul.geometry ``` is the geometry that you want to connect to
+simulation output node.
+
+``` python
+# Incorrect
+with gn.Simulation(geometry=tree.ig) as simul:
+    # Join the geometry with the simulation geometry
+    geo = simul.geometry + gn.Mesh.Cube().mesh
+    # simul.geometry is unchanged
+
+# Correct
+with gn.Simulation(geometry=tree.ig) as simul:
+    # Join the geometry with the simulation geometry
+    simul.geometry = simul.geometry + gn.Mesh.Cube().mesh
+    # simul.geometry points to the result of the geometry join node
+```
+
 ## Do nothing simulation
 
 The *do nothing* simulation can be created with:
@@ -94,7 +111,7 @@ The *do nothing* simulation can be created with:
 import geonodes as gn
 
 with gn.Tree("Do nothing simulation") as tree:
-  # Create the simulation zone with tree input geometry as 
+  # Create the simulation zone with tree input geometry
   with gn.Simulation(geometry=tree.ig) as simul:
       pass
 
@@ -109,7 +126,7 @@ The following tree generates random points on the faces of the input geometry. E
 ``` python
 import geonodes as gn
 
-with gn.Tree("Simul") as tree:
+with gn.Tree("Simul", auto_capture = False) as tree:
     
     # Points on the input geometry (allegedly a mesh)
     
