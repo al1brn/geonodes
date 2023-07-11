@@ -18,23 +18,54 @@ from geonodes.nodes import nodes
 class Simulation:
     """ Simulation zone
     
-    This class Simulation generates two nodes: the simulation input and output nodes.
+    This class Simulation generates the two nodes of a simulation zone: simulation input and output nodes.
+    The simulation exposes the geometry and the additional variabesl transformed during the simulation loop.
     
-    Arguments are named sockets for the state items.
-    Sockets are exposed in Simulation class with the names of the arguments, for instance:
+    The key of the keyword arguments is used to name the sockets of the input and outpout node.
         
-        simul = Simulation(geometry=mesh, speed=(0, 0, 0))
-        geo = simul.geometry  # Get the output socket 'Geometry' from the simulation input node
-        speed = simul.speed
-        # Some changes in geo and speed
-        simul.geometry = geo # Set the input socket Geometry of the output simulation node
-        simul.speed = speed
+    ``` python
+    simul = Simulation(geometry=mesh, speed=(0, 0, 0))
+    simul.geometry  # The geometry within the simulation zone
+    simul.speed     # The speed within the simulation zone
+    ``` 
         
-    To get the resulting values, read the socket from out node
-        tree.og = simul.out_node.geometry   
+    When the simulation loop is terminated, the changes on the simulation variables must be connected to
+    the output nodes : ` simul.output.geometry = simul.geometry `. This is done automatically with the 'close' method :
+        
+    ``` python
+    simul = Simulation(geometry=mesh, speed=(0, 0, 0))
+    simul.geometry.faces.shade_smooth = True
+    simul.speed += (0, 0, 1)
+    simul.close()
+    ```
+    
+    Bettter use the context manager with a `with` statement:
+        
+    ``` python
+    with gn.Simulation(geometry=mesh, speed=(0, 0, 0)) as simul:
+        simul.geometry.faces.shade_smooth = True
+        simul.speed += (0, 0, 1)
+    ```
+    
+    Once the simulation is closed, the variables are the output sockets of the simulation output node.
+    They can be used to get the result of a simulation step:
+        
+    ``` python
+    with gn.Simulation(geometry=mesh) as simul:
+        # simul.geometry refers to the geometry inside the simulation zone
+        simul.geometry.faces.shade_smooth = True
+        
+    # Outside the simulation zone, the geometry refers to the result of the simulation
+    # Let's connect the result of the simulation to the output of the tree
+    tree.og = simul.geometry
+    ``` 
+    
+    Args:
+    - **kwargs : variables to use within the loop. Each key word creates a variable accessible within the simulation step
+      and, once the simulation closed, as the result of the simulation.
     """
     
-    def __init__(self, geometry, **kwargs):
+    def __init__(self, **kwargs):
         
         import geonodes as gn
         
@@ -45,8 +76,14 @@ class Simulation:
         self.input.bnode.pair_with_output(self.output.bnode)
         
         # ----- Create the simulation state items
+        # Geometry socket is created by default, it is first deleted
+        
+        self.output.bnode.state_items.clear()
+        types = {}
         
         for name, value in kwargs.items():
+            typ = None
+            
             if isinstance(value, bool):
                 socket = gn.Boolean(value)
             elif isinstance(value, int):
@@ -59,67 +96,89 @@ class Simulation:
                 socket = gn.Vector(value)
             else:
                 socket = value
+                typ = type(value)
                 
             self.output.bnode.state_items.new(socket_type=socket.base_data_type, name=name.capitalize())
+            types[name] = typ
             
         # ----- Update in and out sockets dynamically created
         
         self.input.update_inout_sockets()
         self.output.update_inout_sockets()
         
+        # ----- Sockets types
+        
+        for name, typ in types.items():
+            if typ is not None:
+                self.input.outsockets_classes[name]  = typ
+                self.output.outsockets_classes[name] = typ
+                
         # ----- Plug the values to the simulation input node
         
-        self.input.set_input_socket('geometry', geometry)
         for name, value in kwargs.items():
             self.input.set_input_socket(name.lower(), value)
+        
+        # ----- Output sockets of the input node
+        # Once the simulation is closed, these attrs will change
+        
+        for name in self.input.outsockets:
+            setattr(self, name, self.input.get_output_socket(name))
             
-        # ----- Create the output values of the simulation
+        # ----- Just for tracking
         
-        for socket in self.output.outputs:
-            name = socket.name.lower()
-            # Geometry is already initialized
-            if name != 'geometry':
-                setattr(self.output, socket.name.lower(), socket)
-                
-        # ----- Geometry class
+        self.closed = False
         
-        self.input.outsockets_classes['geometry']  = type(geometry)
-        self.output.outsockets_classes['geometry'] = type(geometry)
-                
-        # ----- Short cuts
         
-        self.output_geometry = self.output.geometry
-        self.og = self.output.geometry
+    # ====================================================================================================
+    # Context manager
+    
+    def close(self):
+        """ Closing the simulation zone.
+        
+        Two operations are performed when "closing" a simulation zone:
+        - connect the simulation variales to the input sockets of the output node
+        - map the corresponding variables of the Simulation instance to the output sockets of the output node
+        
+        Basically, this correspond to this pseudo code:
+        ``` python
+        simul.output.geometry = simul.geometry # connect simul.geometry to the input socket of output node
+        simul.geometry = simul.output.geometry # simul.gemetry points now to the output socket of output node
+        ```
+        
+        In addition, the 'delta_time' attribute is deleted to avoid use outside the simulation.
+        """
+        
+        if self.closed:
+            return
+        
+        # ----- Connect the input sockets of the output node
+        
+        for name in self.output.outsockets:
+            self.output.set_input_socket(name, getattr(self, name))
+
+        # ----- Now that the simulation is closed, accessing the variables is from the output socket:
+            
+        for name in self.output.outsockets:
+            setattr(self, name, self.output.get_output_socket(name))
+            
+        delattr(self, 'delta_time')
+            
+        
+    def __enter__(self):
+        return self
+    
+    def __exit__(self, exception_type, exception_value, traceback):
+        self.close()
+
+    # ====================================================================================================
+    # Utitlity
             
     def __str__(self):
+        sclosed = "CLOSED" if self.closed else "OPEN"
         vs = list(self.input.insockets.keys())
         vs[0] += f" ({self.output.outsockets_classes['geometry'].__name__})"
         s = ", ".join(vs)
-        return f"<Simulation zone: {s}>"
-
-    def __getattr__(self, name):
-        if name in ('input' 'output'):
-            return super().__setattr__(name, {})
-
-        elif name in self.input.outsockets.keys():
-            return self.input.get_output_socket(name)
-        
-        else:
-            raise AttributeError(f"Simulation: Unknown attribute name {name}")
-            
-    def __setattr__(self, name, value):
-
-        if name in ('input', 'output'):
-            super().__setattr__(name, value)
-            
-        elif name in self.output.insockets.keys():
-            self.output.set_input_socket(name, value)
-            
-        elif name == 'delta_time':
-            raise AttributeError("Simulation: the property 'delta_time' is read only")
-
-        else:
-            super().__setattr__(name, value)
+        return f"<Simulation zone ({sclosed}) : {s}>"
             
     # ----------------------------------------------------------------------------------------------------
     # Create paths for trajectories
@@ -140,6 +199,7 @@ class Simulation:
         with tree.layout("POINTS TRAJECTORIES"):
             
             # ----- Points connected to the input socket Geometry of the simulation input node
+            
             init_points = gn.Points(simul.input.inputs[0].connected_sockets()[0])
             
             # ----- Points connected to the input socket Geometry of the simulation output node
@@ -155,36 +215,26 @@ class Simulation:
                 splines = insts.realize()
                 
             with tree.layout("Curves simulation"):
-        
-                sim = gn.Simulation(geometry=splines, instances=insts)
                 
-                # ----- Shift splines points position
+                with gn.Simulation(splines=splines, instances=insts) as sim:
                 
-                splines = sim.geometry
-                with tree.layout("Shift points position"):
-                    old_locs = splines.points.sample_index(value=splines.points.position, index=splines.points.index + 1)
-                    splines.points.position = old_locs
-        
-                # ----- Points new positions
+                    # ----- Shift splines points position
                     
-                with tree.layout("Update position of last points"):
-                    
-                    #pts = gn.Points(simul.geometry)
-                    
-                    locs = cloud.points.sample_index(value=cloud.points.position)
-                    insts = sim.instances
-                    insts.insts.store_named_attribute(name="temp", value=locs)
-                    
-                    curve = insts.realize()
-                    locs = curve.points.sample_index(value=curve.points.named_vector("temp"))
-                    
-                    splines.points[(splines.points.index % count).to_integer().equal(count-1)].position = locs
-                    
-                # ----- Update simulation variables
-        
-                sim.instances = insts
-                sim.geometry = splines
-        
+                    with tree.layout("Shift points position"):
+                        old_locs = sim.splines.points.sample_index(value=sim.splines.points.position, index=sim.splines.points.index + 1)
+                        sim.splines.points.position = old_locs
+            
+                    # ----- Points new positions
+                        
+                    with tree.layout("Update position of last points"):
+                        
+                        locs = cloud.points.sample_index(value=cloud.points.position)
+                        sim.instances.insts.store_named_attribute(name="temp", value=locs)
+                        
+                        curve = sim.instances.realize()
+                        locs = curve.points.sample_index(value=curve.points.named_vector("temp"))
+                        
+                        sim.geometry.points[(sim.geometry.points.index % count).to_integer().equal(count-1)].position = locs
             
             return sim
         
@@ -194,6 +244,8 @@ class Simulation:
     @classmethod
     def Fluid(cls, cloud, velocity=0, life=50, setup={}, acceleration={}, finish={}):
         """ Constructor building a basic simulation zone for fluid simulation.
+        
+        **Note**: the name of the geometry is '*cloud*'. Use ``` simul.cloud ``` to access to the points animated by the simulation.
         
         The nodes generated perform the standard operations:
         - add new points at each step
@@ -205,17 +257,7 @@ class Simulation:
         An template of the acceleration function must be:
             
         ``` python
-        def gen(simul=None, points=None, velocity=None, age=None):
-        ```
-        
-        Or use ``` **kwargs ``` for arguments which are not used for generation, for instance:
-
-        ``` python
-        def gen(simul=None, velocity=None, **kwargs):
-            
-            # An acceleration opposed to velocity
-            
-            return -velocity/simul.delta_time/3            
+        def gen(simul):
         ```
         
         The following example build a simple simulation from a mesh, with random initial speed and a gravity.
@@ -243,7 +285,7 @@ class Simulation:
                 acceleration=gn.Simulation.func_gravity((0, 0, -10)),
                 )
             
-            tree.og = mesh + simul.og    
+            tree.og = mesh + simul.cloud 
         ```
         
         Simulation offers basic acceleration functions:
@@ -253,6 +295,8 @@ class Simulation:
         - func_repulsion    : repulsion from the nearest particle
         - func_attraction   : attraction / repulsion from a location
         - func_surface_flow : acceleration along a surface slope
+        - func_bounce       : bounce on a surface
+        - func_group        : use a custom group to perform computations inside the simulation loop
             
         Custom nodes can be added at the begining and at the end of the simulation step with the arguments **setup** and **finish**.
         
@@ -290,7 +334,7 @@ class Simulation:
             
             # Mesh and particles
             
-            tree.og = mesh + simul.og
+            tree.og = mesh + simul.cloud
         ```
         
         Args:
@@ -311,89 +355,63 @@ class Simulation:
         
         cloud.points.store_named_vector("velocity", velocity)
         cloud.points.store_named_integer("age", 0)
-        
-        simul = cls(geometry=cloud) #, velocity=velocity, age=0)
-        
-        # ----- Get the variables
-        
-        simul.cloud = simul.geometry
-        
-        # ----- Set up
-        
-        if isinstance(setup, dict):
-            for stu_name, stu in setup.items():
-                with tree.layout(f"Set up: {stu_name}"):
-                    stu(simul=simul) #   , cloud=simul.cloud, velocity=s_velocity, age=s_age)
-                    
-        else:
-            with tree.layout(f"Set up"):
-                setup(simul=simul)  #, cloud=simul.cloud, velocity=s_velocity, age=s_age)
-        
-        # ----- Update the age, remove old particles
-        
-        with tree.layout("Update the age and remove old particles"):
+
+        with cls(cloud=cloud) as simul:
             
-            age = simul.cloud.named_integer("age") + 1
-            simul.cloud.points.store_named_integer("age", age)
-            simul.cloud.points[age.greater_than(life)].delete()
+            # ----- Set up
             
-        # ----- New points with random velocity
-            
-        with tree.layout("Create new points with random velocity"):
-            
-            if True:
-                cloud.points.store_named_vector("velocity", velocity)
-                cloud.points.store_named_integer("age", 0)
-                
-                simul.cloud = gn.Points(simul.cloud + cloud)
+            if isinstance(setup, dict):
+                for stu_name, stu in setup.items():
+                    with tree.layout(f"Set up: {stu_name}"):
+                        stu(simul=simul) #   , cloud=simul.cloud, velocity=s_velocity, age=s_age)
+                        
             else:
-                new_vel = cloud.points.capture_attribute(velocity)
-                simul.cloud  = gn.Points(simul.cloud + cloud)
-                s_velocity += new_vel
-    
-        # ----- Accelerations
+                with tree.layout(f"Set up"):
+                    setup(simul=simul)  #, cloud=simul.cloud, velocity=s_velocity, age=s_age)
             
-        if isinstance(acceleration, dict):
-            a = gn.Vector((0, 0, 0))
-            for acc_name, acc in acceleration.items():
-                with tree.layout(f"Acceleration: {acc_name}"):
-                    a += acc(simul=simul) #, cloud=simul.cloud, velocity=s_velocity, age=s_age)
-                    
-        else:
-            with tree.layout(f"Acceleration"):
-                a = acceleration(simul=simul) #, cloud=simul.cloud, velocity=s_velocity, age=s_age)
-    
-        # ----- Update velocities and postions
+            # ----- Update the age, remove old particles
+            
+            with tree.layout("Update the age and remove old particles"):
                 
-        with tree.layout("Update velocity and positions"):
-            
-            if True:
+                age = simul.cloud.named_integer("age") + 1
+                simul.cloud.points.store_named_integer("age", age)
+                simul.cloud.points[age.greater_than(life)].delete()
+                
+            # ----- New points with random velocity
+                
+            with tree.layout("Create new points with their velocity"):
+                simul.cloud = gn.Points(simul.cloud + cloud)
+        
+            # ----- Accelerations
+                
+            if isinstance(acceleration, dict):
+                a = gn.Vector((0, 0, 0))
+                for acc_name, acc in acceleration.items():
+                    with tree.layout(f"Acceleration: {acc_name}"):
+                        a += acc(simul=simul) 
+                        
+            else:
+                with tree.layout(f"Acceleration"):
+                    a = acceleration(simul=simul) 
+        
+            # ----- Update velocities and postions
+                    
+            with tree.layout("Update velocity and positions"):
                 vel     = simul.cloud.points.named_vector("velocity")
                 new_vel = vel + a.scale(simul.delta_time)
                 simul.cloud.points.position_offset = (vel + new_vel).scale(simul.delta_time/2)
                 simul.cloud.points.store_named_vector("velocity", new_vel)
                 
-            else:
-                new_velocity = s_velocity + a.scale(simul.delta_time)
-                simul.cloud.points.position_offset = (s_velocity + new_velocity).scale(simul.delta_time/2)
-                s_velocity = new_velocity
+            # ----- Finishing
             
-        # ----- Finishing
-        
-        if isinstance(finish, dict):
-            for fin_name, fin in finish.items():
-                with tree.layout(f"Finish: {fin_name}"):
-                    fin(simul=simul) #, cloud=simul.cloud, velocity=s_velocity, age=s_age)
-                    
-        else:
-            with tree.layout(f"Finish"):
-                finish(simul=simul) #, cloud=simul.cloud, velocity=s_velocity, age=s_age)
-        
-        # ----- Update the variables
-        
-        simul.geometry = simul.cloud
-        #simul.velocity = s_velocity
-        #simul.age      = s_age
+            if isinstance(finish, dict):
+                for fin_name, fin in finish.items():
+                    with tree.layout(f"Finish: {fin_name}"):
+                        fin(simul=simul)
+                        
+            else:
+                with tree.layout(f"Finish"):
+                    finish(simul=simul) 
         
         return simul
     
@@ -889,9 +907,6 @@ class Simulation:
             
             node = gn.Group(group_name)
             
-            print(node.insockets)
-            print(node.outsockets)
-    
             # ----- Input socket names
             
             in_d = in_delta_time
