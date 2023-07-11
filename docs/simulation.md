@@ -51,23 +51,18 @@ The image below shows the effect of the *close* method on the simulation zone:
 
 <img src="images/simulation_zone_closed.png" width="600" class="center">
 
-
-
-
-
-
-The input and output nodes can be accessed with the **input** and **output** attributes:
-
-``` python
-import geonodes as gn
-
-with gn.Tree("Simul") as tree:
-  simul = gn.Simulation(tree.ig, position=(0, 0, 0))
-  node = simul.input  # Simulation input node
-  node = simul.output # Simulation output node
-```
-
 ## Accessing the sockets
+
+For each keyword argument, 4 sockets are created in the simulation zone:
+1. **input socket of the input node** : connected with the value of the arguments
+2. **output socket of the input node** : accessible through the attribute of the simulation with the name of the key word
+3. **input socket of the output node** : connected when *close* method is called
+4. **output socket of the output node** : accessible through the attribute of the simulation with the name of the key word
+
+
+
+
+
 
 With the exception of **delta_time** output socket of the input simulation node, the socket names have four meanings:
 - input socket of the input node: ``` simul.input.geometry = var```
