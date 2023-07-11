@@ -47,6 +47,11 @@ with gn.Tree("Simul", auto_capture=False) as tree:
   simul.close()
 ```
 
+The image below shows the effect of the *close* method on the simulation zone:
+
+<img src="images/simulation_zone_closed.png" width="600" class="center">
+
+
 
 
 
