@@ -51,7 +51,7 @@ The image below shows the effect of the *close* method on the simulation zone:
 
 <img src="images/simulation_zone_closed.png" width="600" class="center">
 
-## With statement
+### With statement
 
 Rather than explicitly clossing the simulation, the ``` with ``` statement can be preferabily used.
 
