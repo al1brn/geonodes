@@ -175,7 +175,6 @@ with gn.Tree("Simul", auto_capture = False) as tree:
 ## Alternative storing a named attribute
 
 Rather than using the named attribute, we can use a simulation state named **top**.
-Don't forget to explicitly capture the **top** attribute with the mesh.
 
 ``` python
 import geonodes as gn
@@ -190,17 +189,15 @@ with gn.Tree("Simul", auto_capture = False) as tree:
     
     with gn.Simulation(mesh=mesh, top=True) as simul:
         
-        top = simul.mesh.capture_attribute(simul.top)
-    
         # Let's generate the extrusion direction by a random vector perpendicular to the normal
         
         normal = simul.mesh.verts.normal
         v = gn.Vector(gn.Texture.Noise4D(w=tree.seconds).color) - (.5, .5, .5)
 
         # Extrusion along this vector
+        # By setting the top result into simul.top attribute, it will be connected to the simulation output node
         
-        simul.top = simul.mesh.verts[top].extrude(offset=normal.cross(v).scale(.1)).top
-
+        simul.top = simul.mesh.verts[simul.top].extrude(offset=normal.cross(v).scale(.1)).top
         
     # ----- Outside the simulation
     # Transformation to NURBS curve
@@ -214,7 +211,7 @@ with gn.Tree("Simul", auto_capture = False) as tree:
     
     # Done
     
-    tree.og = curv    
+    tree.og = curve
 ```
 
 The image below shows the use of **top** simulation state rather than the stored attribute:
