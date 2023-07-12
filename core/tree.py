@@ -28,6 +28,8 @@ from typing import Any
 import bpy
 import mathutils
 
+from geonodes.core.localsmonitor import LocalsMonitor
+
 
 NODE_STD_ATTRS = [
    '__doc__', '__module__', '__slots__', 'bl_description', 'bl_height_default', 'bl_height_max',
@@ -559,10 +561,17 @@ class Tree:
         
         colors.reset()
         
+        # ----- The global variables
+        
+        self.new_vars = {}
+        self.locsmon  = LocalsMonitor()
+        
+        
     def __enter__(self):
         return self
     
     def __exit__(self, exception_type, exception_value, traceback):
+        self.new_vars = self.locsmon.close()
         self.close()
         
     def __str__(self):
@@ -848,11 +857,24 @@ class Tree:
         else:
             try:
                 layout = Frame(label=label, color=color)
+                layout.locsmon  = LocalsMonitor()
+
                 self.layouts.append(layout)
                 yield layout
                 
             finally:
                 frame = self.layouts.pop()
+                
+                # ----- Naming nodes
+                
+                new_vars = frame.locsmon.close()
+                for k, v in self.new_vars.items():
+                    if not isinstance(v, DataSocket):
+                        continue
+                    v.node.label = k
+        
+                # ----- Close the frame
+                
                 if capture_inputs is None:
                     capture_inputs = self.capture_inputs
                 frame.ok_capture_inputs = capture_inputs
@@ -1277,6 +1299,13 @@ class Tree:
         - Nodes arrangement, see :func:`arrange`.   
                                            
         """
+        
+        # ----- The global variables
+        
+        for k, v in self.new_vars.items():
+            if not isinstance(v, DataSocket):
+                continue
+            v.node.label = k
         
         # ----- Capture attributes
         

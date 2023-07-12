@@ -30,11 +30,11 @@ ControlPoint(self, data_socket, selection=None)
 
 **Class and static methods**
 
-[random_boolean](#random_boolean) | [random_float](#random_float) | [random_integer](#random_integer) | [random_vector](#random_vector)
+[geo_dom](#geo_dom) | [random_boolean](#random_boolean) | [random_float](#random_float) | [random_integer](#random_integer) | [random_vector](#random_vector)
 
 **Methods**
 
-[accumulate_field](#accumulate_field) | [attribute_node](#attribute_node) | [attribute_statistic](#attribute_statistic) | [blur_attribute](#blur_attribute) | [blur_color](#blur_color) | [blur_float](#blur_float) | [blur_integer](#blur_integer) | [blur_vector](#blur_vector) | [capture_attribute](#capture_attribute) | [capture_handle_type_selection](#capture_handle_type_selection) | [capture_handle_type_selection_align](#capture_handle_type_selection_align) | [capture_handle_type_selection_auto](#capture_handle_type_selection_auto) | [capture_handle_type_selection_free](#capture_handle_type_selection_free) | [capture_handle_type_selection_vector](#capture_handle_type_selection_vector) | [curve](#curve) | [delete](#delete) | [duplicate](#duplicate) | [endpoint_selection](#endpoint_selection) | [handle_positions](#handle_positions) | [handle_type_selection](#handle_type_selection) | [handle_type_selection_align](#handle_type_selection_align) | [handle_type_selection_auto](#handle_type_selection_auto) | [handle_type_selection_free](#handle_type_selection_free) | [handle_type_selection_node](#handle_type_selection_node) | [handle_type_selection_vector](#handle_type_selection_vector) | [index_for_sample](#index_for_sample) | [index_of_nearest](#index_of_nearest) | [instance_on](#instance_on) | [interpolate](#interpolate) | [material_selection](#material_selection) | [matrix](#matrix) | [named_attribute](#named_attribute) | [named_boolean](#named_boolean) | [named_color](#named_color) | [named_float](#named_float) | [named_integer](#named_integer) | [named_vector](#named_vector) | [offset](#offset) | [proximity](#proximity) | [proximity_edges](#proximity_edges) | [proximity_faces](#proximity_faces) | [proximity_points](#proximity_points) | [raycast](#raycast) | [raycast_interpolated](#raycast_interpolated) | [raycast_nearest](#raycast_nearest) | [remove_named_attribute](#remove_named_attribute) | [sample_index](#sample_index) | [select](#select) | [separate](#separate) | [set_ID](#set_ID) | [set_handle_positions](#set_handle_positions) | [set_handle_type](#set_handle_type) | [set_handle_type_node](#set_handle_type_node) | [set_left_handle_positions](#set_left_handle_positions) | [set_position](#set_position) | [set_radius](#set_radius) | [set_right_handle_positions](#set_right_handle_positions) | [set_tilt](#set_tilt) | [socket_stack](#socket_stack) | [store_named_2D_vector](#store_named_2D_vector) | [store_named_attribute](#store_named_attribute) | [store_named_boolean](#store_named_boolean) | [store_named_byte_color](#store_named_byte_color) | [store_named_color](#store_named_color) | [store_named_float](#store_named_float) | [store_named_integer](#store_named_integer) | [store_named_vector](#store_named_vector) | [view](#view) | [viewer](#viewer)
+[accumulate_field](#accumulate_field) | [attribute_node](#attribute_node) | [attribute_statistic](#attribute_statistic) | [blur_attribute](#blur_attribute) | [blur_color](#blur_color) | [blur_float](#blur_float) | [blur_integer](#blur_integer) | [blur_vector](#blur_vector) | [capture_attribute](#capture_attribute) | [capture_handle_type_selection](#capture_handle_type_selection) | [capture_handle_type_selection_align](#capture_handle_type_selection_align) | [capture_handle_type_selection_auto](#capture_handle_type_selection_auto) | [capture_handle_type_selection_free](#capture_handle_type_selection_free) | [capture_handle_type_selection_vector](#capture_handle_type_selection_vector) | [curve](#curve) | [delete](#delete) | [duplicate](#duplicate) | [endpoint_selection](#endpoint_selection) | [geometry_proximity](#geometry_proximity) | [handle_positions](#handle_positions) | [handle_type_selection](#handle_type_selection) | [handle_type_selection_align](#handle_type_selection_align) | [handle_type_selection_auto](#handle_type_selection_auto) | [handle_type_selection_free](#handle_type_selection_free) | [handle_type_selection_node](#handle_type_selection_node) | [handle_type_selection_vector](#handle_type_selection_vector) | [index_for_sample](#index_for_sample) | [index_of_nearest](#index_of_nearest) | [instance_on](#instance_on) | [interpolate](#interpolate) | [material_selection](#material_selection) | [matrix](#matrix) | [named_attribute](#named_attribute) | [named_boolean](#named_boolean) | [named_color](#named_color) | [named_float](#named_float) | [named_integer](#named_integer) | [named_vector](#named_vector) | [offset](#offset) | [raycast](#raycast) | [raycast_interpolated](#raycast_interpolated) | [raycast_nearest](#raycast_nearest) | [remove_named_attribute](#remove_named_attribute) | [sample_index](#sample_index) | [sample_nearest](#sample_nearest) | [select](#select) | [separate](#separate) | [set_ID](#set_ID) | [set_handle_positions](#set_handle_positions) | [set_handle_type](#set_handle_type) | [set_handle_type_node](#set_handle_type_node) | [set_left_handle_positions](#set_left_handle_positions) | [set_position](#set_position) | [set_radius](#set_radius) | [set_right_handle_positions](#set_right_handle_positions) | [set_tilt](#set_tilt) | [socket_stack](#socket_stack) | [store_named_2D_vector](#store_named_2D_vector) | [store_named_attribute](#store_named_attribute) | [store_named_boolean](#store_named_boolean) | [store_named_byte_color](#store_named_byte_color) | [store_named_color](#store_named_color) | [store_named_float](#store_named_float) | [store_named_integer](#store_named_integer) | [store_named_vector](#store_named_vector) | [view](#view) | [viewer](#viewer)
 
 ## Properties
 
@@ -581,6 +581,37 @@ Node implemented as property setter.
 
 ## Class and static methods
 
+### geo_dom
+
+```python
+@staticmethod
+def geo_dom(geometry, domain='POINT')
+```
+
+ Split a domain into (geometry, domain code)
+
+Nodes such as 'sample_index' or 'sample_nearest' need a geometry and a domain code:
+    
+``` python
+def sample_index(self, geometry=None, value=None, index=None, clamp=False, domain='POINT'):
+```
+
+One can pass a domain rather that a geometry. In that case, this utility get the proper domain code
+to pass to the node.
+
+``` python
+    return self.default_domain.attribute_node(nodes.SampleNearest(
+        geometry         = Domain.geo_dom(geometry, domain)[0],
+        sample_position  = sample_position, 
+        domain           = Domain.geo_dom(geometry, domain)[1]
+        )).index
+``` 
+
+
+
+
+<sub>Go to [top](#class-ControlPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### random_boolean
 
 ```python
@@ -928,7 +959,7 @@ def capture_handle_type_selection(self, left=True, right=True, handle_type='AUTO
 
 #### Args:
 - handle_type (str): 'AUTO' in [FREE, AUTO, VECTOR, ALIGN]
-- mode (set): {'RIGHT', 'LEFT'}
+- mode (set): {'LEFT', 'RIGHT'}
 
 #### Returns:
 - node with sockets ['selection']
@@ -952,7 +983,7 @@ def capture_handle_type_selection_align(self, left=True, right=True)
 
 #### Args:
 - handle_type (str): 'AUTO' in [FREE, AUTO, VECTOR, ALIGN]
-- mode (set): {'RIGHT', 'LEFT'}
+- mode (set): {'LEFT', 'RIGHT'}
 
 #### Returns:
 - node with sockets ['selection']
@@ -976,7 +1007,7 @@ def capture_handle_type_selection_auto(self, left=True, right=True)
 
 #### Args:
 - handle_type (str): 'AUTO' in [FREE, AUTO, VECTOR, ALIGN]
-- mode (set): {'RIGHT', 'LEFT'}
+- mode (set): {'LEFT', 'RIGHT'}
 
 #### Returns:
 - node with sockets ['selection']
@@ -1000,7 +1031,7 @@ def capture_handle_type_selection_free(self, left=True, right=True)
 
 #### Args:
 - handle_type (str): 'AUTO' in [FREE, AUTO, VECTOR, ALIGN]
-- mode (set): {'RIGHT', 'LEFT'}
+- mode (set): {'LEFT', 'RIGHT'}
 
 #### Returns:
 - node with sockets ['selection']
@@ -1024,7 +1055,7 @@ def capture_handle_type_selection_vector(self, left=True, right=True)
 
 #### Args:
 - handle_type (str): 'AUTO' in [FREE, AUTO, VECTOR, ALIGN]
-- mode (set): {'RIGHT', 'LEFT'}
+- mode (set): {'LEFT', 'RIGHT'}
 
 #### Returns:
 - node with sockets ['selection']
@@ -1128,6 +1159,33 @@ def endpoint_selection(self, start_size=None, end_size=None)
 
 <sub>Go to [top](#class-ControlPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
+### geometry_proximity
+
+```python
+def geometry_proximity(self, target=None, source_position=None, target_element='FACES')
+```
+
+
+
+> Node: [Geometry Proximity](GeometryNodeProximity.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/geometry_proximity.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeProximity.html)
+
+#### Args:
+- target: Geometry
+- source_position: Vector
+- target_element (str): 'FACES' in [POINTS, EDGES, FACES]
+
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeProximity.webp)
+
+#### Returns:
+- node with sockets ['position', 'distance']
+
+
+
+
+
+
+<sub>Go to [top](#class-ControlPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### handle_positions
 
 ```python
@@ -1165,7 +1223,7 @@ def handle_type_selection(self, left=True, right=True, handle_type='AUTO')
 
 #### Args:
 - handle_type (str): 'AUTO' in [FREE, AUTO, VECTOR, ALIGN]
-- mode (set): {'RIGHT', 'LEFT'}
+- mode (set): {'LEFT', 'RIGHT'}
 
 #### Returns:
 - node with sockets ['selection']
@@ -1189,7 +1247,7 @@ def handle_type_selection_align(self, left=True, right=True)
 
 #### Args:
 - handle_type (str): 'AUTO' in [FREE, AUTO, VECTOR, ALIGN]
-- mode (set): {'RIGHT', 'LEFT'}
+- mode (set): {'LEFT', 'RIGHT'}
 
 #### Returns:
 - node with sockets ['selection']
@@ -1213,7 +1271,7 @@ def handle_type_selection_auto(self, left=True, right=True)
 
 #### Args:
 - handle_type (str): 'AUTO' in [FREE, AUTO, VECTOR, ALIGN]
-- mode (set): {'RIGHT', 'LEFT'}
+- mode (set): {'LEFT', 'RIGHT'}
 
 #### Returns:
 - node with sockets ['selection']
@@ -1237,7 +1295,7 @@ def handle_type_selection_free(self, left=True, right=True)
 
 #### Args:
 - handle_type (str): 'AUTO' in [FREE, AUTO, VECTOR, ALIGN]
-- mode (set): {'RIGHT', 'LEFT'}
+- mode (set): {'LEFT', 'RIGHT'}
 
 #### Returns:
 - node with sockets ['selection']
@@ -1252,7 +1310,7 @@ def handle_type_selection_free(self, left=True, right=True)
 ### handle_type_selection_node
 
 ```python
-def handle_type_selection_node(self, handle_type='AUTO', mode={'RIGHT', 'LEFT'})
+def handle_type_selection_node(self, handle_type='AUTO', mode={'LEFT', 'RIGHT'})
 ```
 
 
@@ -1261,7 +1319,7 @@ def handle_type_selection_node(self, handle_type='AUTO', mode={'RIGHT', 'LEFT'})
 
 #### Args:
 - handle_type (str): 'AUTO' in [FREE, AUTO, VECTOR, ALIGN]
-- mode (set): {'RIGHT', 'LEFT'}
+- mode (set): {'LEFT', 'RIGHT'}
 
 #### Returns:
 - socket `selection`
@@ -1285,7 +1343,7 @@ def handle_type_selection_vector(self, left=True, right=True)
 
 #### Args:
 - handle_type (str): 'AUTO' in [FREE, AUTO, VECTOR, ALIGN]
-- mode (set): {'RIGHT', 'LEFT'}
+- mode (set): {'LEFT', 'RIGHT'}
 
 #### Returns:
 - node with sockets ['selection']
@@ -1619,111 +1677,6 @@ def offset(self, offset=None)
 
 <sub>Go to [top](#class-ControlPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
-### proximity
-
-```python
-def proximity(self, target=None, source_position=None, target_element='FACES')
-```
-
-
-
-> Node: [Geometry Proximity](GeometryNodeProximity.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/geometry_proximity.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeProximity.html)
-
-#### Args:
-- target: Geometry
-- source_position: Vector
-- target_element (str): 'FACES' in [POINTS, EDGES, FACES]
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeProximity.webp)
-
-#### Returns:
-- node with sockets ['position', 'distance']
-
-
-
-
-
-
-<sub>Go to [top](#class-ControlPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-### proximity_edges
-
-```python
-def proximity_edges(self, target=None, source_position=None)
-```
-
-
-
-> Node: [Geometry Proximity](GeometryNodeProximity.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/geometry_proximity.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeProximity.html)
-
-#### Args:
-- target: Geometry
-- source_position: Vector
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeProximity.webp)
-
-#### Returns:
-- node with sockets ['position', 'distance']
-
-
-
-
-
-
-<sub>Go to [top](#class-ControlPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-### proximity_faces
-
-```python
-def proximity_faces(self, target=None, source_position=None)
-```
-
-
-
-> Node: [Geometry Proximity](GeometryNodeProximity.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/geometry_proximity.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeProximity.html)
-
-#### Args:
-- target: Geometry
-- source_position: Vector
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeProximity.webp)
-
-#### Returns:
-- node with sockets ['position', 'distance']
-
-
-
-
-
-
-<sub>Go to [top](#class-ControlPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-### proximity_points
-
-```python
-def proximity_points(self, target=None, source_position=None)
-```
-
-
-
-> Node: [Geometry Proximity](GeometryNodeProximity.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/geometry_proximity.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeProximity.html)
-
-#### Args:
-- target: Geometry
-- source_position: Vector
-
-![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeProximity.webp)
-
-#### Returns:
-- node with sockets ['position', 'distance']
-
-
-
-
-
-
-<sub>Go to [top](#class-ControlPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
 ### raycast
 
 ```python
@@ -1838,7 +1791,7 @@ def remove_named_attribute(self, name=None)
 ### sample_index
 
 ```python
-def sample_index(self, value=None, index=None, clamp=False)
+def sample_index(self, geometry=None, value=None, index=None, clamp=False, domain='POINT')
 ```
 
 
@@ -1846,12 +1799,39 @@ def sample_index(self, value=None, index=None, clamp=False)
 > Node: [Sample Index](GeometryNodeSampleIndex.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/sample_index.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSampleIndex.html)
 
 #### Args:
+- geometry: Geometry
 - value: ['Float', 'Integer', 'Vector', 'Color', 'Boolean']
 - index: Integer
 - clamp (bool): False
+- domain (str): 'POINT' in [POINT, EDGE, FACE, CORNER, CURVE, INSTANCE]
 
 #### Returns:
 - socket `value`
+
+
+
+
+
+
+<sub>Go to [top](#class-ControlPoint) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### sample_nearest
+
+```python
+def sample_nearest(self, geometry=None, sample_position=None, domain='POINT')
+```
+
+
+
+> Node: [Sample Nearest](GeometryNodeSampleNearest.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/sample_nearest.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSampleNearest.html)
+
+#### Args:
+- geometry: Geometry
+- sample_position: Vector
+- domain (str): 'POINT' in [POINT, EDGE, FACE, CORNER]
+
+#### Returns:
+- socket `index`
 
 
 
@@ -1972,7 +1952,7 @@ def set_handle_type(self, left=True, right=True, handle_type='AUTO')
 - curve: Curve
 - selection: Boolean
 - handle_type (str): 'AUTO' in [FREE, AUTO, VECTOR, ALIGN]
-- mode (set): {'RIGHT', 'LEFT'}
+- mode (set): {'LEFT', 'RIGHT'}
 
 #### Returns:
 - node with sockets ['curve']
@@ -1987,7 +1967,7 @@ def set_handle_type(self, left=True, right=True, handle_type='AUTO')
 ### set_handle_type_node
 
 ```python
-def set_handle_type_node(self, handle_type='AUTO', mode={'RIGHT', 'LEFT'})
+def set_handle_type_node(self, handle_type='AUTO', mode={'LEFT', 'RIGHT'})
 ```
 
 
@@ -1996,7 +1976,7 @@ def set_handle_type_node(self, handle_type='AUTO', mode={'RIGHT', 'LEFT'})
 
 #### Args:
 - handle_type (str): 'AUTO' in [FREE, AUTO, VECTOR, ALIGN]
-- mode (set): {'RIGHT', 'LEFT'}
+- mode (set): {'LEFT', 'RIGHT'}
 
 #### Returns:
 - self

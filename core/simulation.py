@@ -60,7 +60,7 @@ class Simulation:
     tree.og = simul.geometry
     ``` 
     
-    A working demo:
+    ### A working demo:
         
     ``` python
     import geonodes as gn
@@ -184,7 +184,7 @@ class Simulation:
         self.close()
 
     # ====================================================================================================
-    # Utitlity
+    # Utility
             
     def __str__(self):
         sclosed = "CLOSED" if self.closed else "OPEN"
@@ -192,64 +192,58 @@ class Simulation:
         vs[0] += f" ({self.output.outsockets_classes['geometry'].__name__})"
         s = ", ".join(vs)
         return f"<Simulation zone ({sclosed}) : {s}>"
-            
-    # ----------------------------------------------------------------------------------------------------
+    
+    # ====================================================================================================
     # Create paths for trajectories
     
     @classmethod
-    def Trajectories(cls, simul, count=10):
+    def Trajectories(cls, simulation, count=10):
         """ This constructor build a simulation zone building curves tracking points of another simulation zone.
         
         Args:
-            - simul (Simulation) : the simulation zone having a geometry of type Points
+            - simulation (Simulation) : the simulation zone having a geometry of type Points
             - count (int=10) : the number of frames to use for tracking
+        Returns:
+            - simulation with curves attribute
         """
         
         import geonodes as gn
         
         tree = gn.Tree.TREE
-        
-        with tree.layout("POINTS TRAJECTORIES"):
+    
+        with tree.layout("POINTS TRAJECTORIES", color='UTIL'):
+    
+            # ----- Points from the other simulation
+            # CAUTION: input of INPUT node
+            cloud = gn.Points(simulation.input.inputs[0].connected_sockets()[0])
             
-            # ----- Points connected to the input socket Geometry of the simulation input node
-            
-            init_points = gn.Points(simul.input.inputs[0].connected_sockets()[0])
-            
-            # ----- Points connected to the input socket Geometry of the simulation output node
-            # These points have the final position
-            
-            points = gn.Points(simul.output.inputs[0].connected_sockets()[0])
-
-            with tree.layout("One spline instance per point"):
+            # ----- One spline per point
+            with tree.layout("One spline instance per point", color='UTIL'):
                 curve = gn.Curve.Line(start=0, end=0).resample(count=count)
-                insts = init_points.instance_on_points(instance=curve)
-                insts.insts.store_named_attribute(name="temp", value=(0, 0, 0))
+                insts = cloud.instance_on_points(instance=curve)
+                curves = gn.Curve(insts.realize())
                 
-                splines = insts.realize()
+            #----- Simulation
+        
+            with cls(curves=curves) as simul:
                 
-            with tree.layout("Curves simulation"):
+                # ----- Points from the other simulation
+                # CAUTION: input of OUTPUT node
+                cur_cloud = gn.Points(simulation.output.outputs[0])
+                pts = simul.curves.points
                 
-                with gn.Simulation(splines=splines, instances=insts) as sim:
+                # ----- Shift splines points position
                 
-                    # ----- Shift splines points position
+                with tree.layout("Shift points position", color='UTIL'):
+                    pts.position = pts.sample_index(pts, pts.position, index=pts.index + 1)
+        
+                # ----- Points new positions
                     
-                    with tree.layout("Shift points position"):
-                        old_locs = sim.splines.points.sample_index(value=sim.splines.points.position, index=sim.splines.points.index + 1)
-                        sim.splines.points.position = old_locs
-            
-                    # ----- Points new positions
-                        
-                    with tree.layout("Update position of last points"):
-                        
-                        locs = cloud.points.sample_index(value=cloud.points.position)
-                        sim.instances.insts.store_named_attribute(name="temp", value=locs)
-                        
-                        curve = sim.instances.realize()
-                        locs = curve.points.sample_index(value=curve.points.named_vector("temp"))
-                        
-                        sim.geometry.points[(sim.geometry.points.index % count).to_integer().equal(count-1)].position = locs
-            
-            return sim
+                with tree.layout("Update position of last points", color='UTIL'):
+                    pts[(pts.index % count).equal(count-1)].position = pts.sample_index(cur_cloud.points, cur_cloud.points.position, index=simul.curves.splines.index.capture())
+        
+        return simul
+
         
     # ====================================================================================================
     # Fluid simulation
@@ -802,7 +796,8 @@ class Simulation:
             
             # ----- Get the normal at each point
             
-            normal = mesh.sample_nearest_surface(value=mesh.verts.normal, sample_position=cloud.points.position)
+            index  = simul.cloud.points.sample_nearest(mesh.faces)
+            normal = simul.cloud.points.sample_index(mesh.faces, value=mesh.normal, index=index)
             
             # ----- Gravity component
             

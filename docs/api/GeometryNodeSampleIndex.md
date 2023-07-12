@@ -43,9 +43,9 @@ node = nodes.SampleIndex(geometry=None, value=None, index=None, clamp=False, dat
 | Class or method name | Definition |
 |----------------------|------------|
 | **[Domain](Domain.md)** |
-| [sample_index](Domain.md#sample_index) | `def sample_index(self, value=None, index=None, clamp=False):` |
+| [sample_index](Domain.md#sample_index) | `def sample_index(self, geometry=None, value=None, index=None, clamp=False, domain='POINT'):` |
 | **[Geometry](Geometry.md)** |
-| [sample_index](Geometry.md#sample_index) | `def sample_index(self, value=None, index=None, clamp=False, domain='POINT'):` |
+| [sample_index](Geometry.md#sample_index) | `def sample_index(self, geometry=None, value=None, index=None, clamp=False, domain='POINT'):` |
 
 <sub>Go to [top](#node-Sample-Index) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

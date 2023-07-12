@@ -373,6 +373,79 @@ class Geometry(geosocks.Geometry):
         return nodes.RandomValue(min=min, max=max, probability=None, ID=ID, seed=seed, data_type='FLOAT_VECTOR').value
 
 
+    def raycast(self, target_geometry=None, attribute=None, source_position=None, ray_direction=None, ray_length=None, mapping='INTERPOLATED'):
+        """
+
+        > Node: [Raycast](GeometryNodeRaycast.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/raycast.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeRaycast.html)
+
+        #### Args:
+        - target_geometry: Geometry
+        - attribute: ['Vector', 'Float', 'Color', 'Boolean', 'Integer']
+        - source_position: Vector
+        - ray_direction: Vector
+        - ray_length: Float
+        - mapping (str): 'INTERPOLATED' in [INTERPOLATED, NEAREST]
+
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeRaycast.webp)
+
+        #### Returns:
+        - node with sockets ['is_hit', 'hit_position', 'hit_normal', 'hit_distance', 'attribute']
+
+
+        """
+
+        data_type_ = self.value_data_type(attribute, 'FLOAT')
+        return self.default_domain.attribute_node(nodes.Raycast(target_geometry=target_geometry, attribute=attribute, source_position=source_position, ray_direction=ray_direction, ray_length=ray_length, data_type=data_type_, mapping=mapping))
+
+
+    def raycast_interpolated(self, target_geometry=None, attribute=None, source_position=None, ray_direction=None, ray_length=None):
+        """
+
+        > Node: [Raycast](GeometryNodeRaycast.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/raycast.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeRaycast.html)
+
+        #### Args:
+        - target_geometry: Geometry
+        - attribute: ['Vector', 'Float', 'Color', 'Boolean', 'Integer']
+        - source_position: Vector
+        - ray_direction: Vector
+        - ray_length: Float
+
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeRaycast.webp)
+
+        #### Returns:
+        - node with sockets ['is_hit', 'hit_position', 'hit_normal', 'hit_distance', 'attribute']
+
+
+        """
+
+        data_type_ = self.value_data_type(attribute, 'FLOAT')
+        return self.default_domain.attribute_node(nodes.Raycast(target_geometry=target_geometry, attribute=attribute, source_position=source_position, ray_direction=ray_direction, ray_length=ray_length, data_type=data_type_, mapping='INTERPOLATED'))
+
+
+    def raycast_nearest(self, target_geometry=None, attribute=None, source_position=None, ray_direction=None, ray_length=None):
+        """
+
+        > Node: [Raycast](GeometryNodeRaycast.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/raycast.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeRaycast.html)
+
+        #### Args:
+        - target_geometry: Geometry
+        - attribute: ['Vector', 'Float', 'Color', 'Boolean', 'Integer']
+        - source_position: Vector
+        - ray_direction: Vector
+        - ray_length: Float
+
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeRaycast.webp)
+
+        #### Returns:
+        - node with sockets ['is_hit', 'hit_position', 'hit_normal', 'hit_distance', 'attribute']
+
+
+        """
+
+        data_type_ = self.value_data_type(attribute, 'FLOAT')
+        return self.default_domain.attribute_node(nodes.Raycast(target_geometry=target_geometry, attribute=attribute, source_position=source_position, ray_direction=ray_direction, ray_length=ray_length, data_type=data_type_, mapping='NEAREST'))
+
+
     def remove_named_attribute(self, name=None):
         """
 
@@ -408,12 +481,13 @@ class Geometry(geosocks.Geometry):
         return self.stack(nodes.ReplaceMaterial(geometry=self, old=old, new=new))
 
 
-    def sample_index(self, value=None, index=None, clamp=False, domain='POINT'):
+    def sample_index(self, geometry=None, value=None, index=None, clamp=False, domain='POINT'):
         """
 
         > Node: [Sample Index](GeometryNodeSampleIndex.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/sample_index.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSampleIndex.html)
 
         #### Args:
+        - geometry: Geometry
         - value: ['Float', 'Integer', 'Vector', 'Color', 'Boolean']
         - index: Integer
         - clamp (bool): False
@@ -426,15 +500,16 @@ class Geometry(geosocks.Geometry):
         """
 
         data_type_ = self.value_data_type(value, 'FLOAT')
-        return nodes.SampleIndex(geometry=self, value=value, index=index, clamp=clamp, data_type=data_type_, domain=domain).value
+        return self.default_domain.attribute_node(nodes.SampleIndex(geometry=self.geo_dom(geometry, domain)[0], value=value, index=index, clamp=clamp, data_type=data_type_, domain=self.geo_dom(geometry, domain)[1])).value
 
 
-    def sample_nearest(self, sample_position=None, domain='POINT'):
+    def sample_nearest(self, geometry=None, sample_position=None, domain='POINT'):
         """
 
         > Node: [Sample Nearest](GeometryNodeSampleNearest.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/sample_nearest.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSampleNearest.html)
 
         #### Args:
+        - geometry: Geometry
         - sample_position: Vector
         - domain (str): 'POINT' in [POINT, EDGE, FACE, CORNER]
 
@@ -444,7 +519,7 @@ class Geometry(geosocks.Geometry):
 
         """
 
-        return nodes.SampleNearest(geometry=self, sample_position=sample_position, domain=domain).index
+        return self.default_domain.attribute_node(nodes.SampleNearest(geometry=self.geo_dom(geometry, domain)[0], sample_position=sample_position, domain=self.geo_dom(geometry, domain)[1])).index
 
 
     def separate(self, selection=None, domain='POINT'):
@@ -1821,160 +1896,6 @@ class Mesh(Geometry):
         return self.default_domain.attribute_node(nodes.Position()).position
 
 
-    def proximity(self, target=None, source_position=None, target_element='FACES'):
-        """
-
-        > Node: [Geometry Proximity](GeometryNodeProximity.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/geometry_proximity.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeProximity.html)
-
-        #### Args:
-        - target: Geometry
-        - source_position: Vector
-        - target_element (str): 'FACES' in [POINTS, EDGES, FACES]
-
-        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeProximity.webp)
-
-        #### Returns:
-        - node with sockets ['position', 'distance']
-
-
-        """
-
-        return self.default_domain.attribute_node(nodes.GeometryProximity(target=target, source_position=source_position, target_element=target_element))
-
-
-    def proximity_edges(self, target=None, source_position=None):
-        """
-
-        > Node: [Geometry Proximity](GeometryNodeProximity.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/geometry_proximity.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeProximity.html)
-
-        #### Args:
-        - target: Geometry
-        - source_position: Vector
-
-        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeProximity.webp)
-
-        #### Returns:
-        - node with sockets ['position', 'distance']
-
-
-        """
-
-        return self.default_domain.attribute_node(nodes.GeometryProximity(target=target, source_position=source_position, target_element='EDGES'))
-
-
-    def proximity_faces(self, target=None, source_position=None):
-        """
-
-        > Node: [Geometry Proximity](GeometryNodeProximity.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/geometry_proximity.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeProximity.html)
-
-        #### Args:
-        - target: Geometry
-        - source_position: Vector
-
-        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeProximity.webp)
-
-        #### Returns:
-        - node with sockets ['position', 'distance']
-
-
-        """
-
-        return self.default_domain.attribute_node(nodes.GeometryProximity(target=target, source_position=source_position, target_element='FACES'))
-
-
-    def proximity_points(self, target=None, source_position=None):
-        """
-
-        > Node: [Geometry Proximity](GeometryNodeProximity.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/geometry_proximity.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeProximity.html)
-
-        #### Args:
-        - target: Geometry
-        - source_position: Vector
-
-        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeProximity.webp)
-
-        #### Returns:
-        - node with sockets ['position', 'distance']
-
-
-        """
-
-        return self.default_domain.attribute_node(nodes.GeometryProximity(target=target, source_position=source_position, target_element='POINTS'))
-
-
-    def raycast(self, target_geometry=None, attribute=None, source_position=None, ray_direction=None, ray_length=None, mapping='INTERPOLATED'):
-        """
-
-        > Node: [Raycast](GeometryNodeRaycast.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/raycast.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeRaycast.html)
-
-        #### Args:
-        - target_geometry: Geometry
-        - attribute: ['Vector', 'Float', 'Color', 'Boolean', 'Integer']
-        - source_position: Vector
-        - ray_direction: Vector
-        - ray_length: Float
-        - mapping (str): 'INTERPOLATED' in [INTERPOLATED, NEAREST]
-
-        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeRaycast.webp)
-
-        #### Returns:
-        - node with sockets ['is_hit', 'hit_position', 'hit_normal', 'hit_distance', 'attribute']
-
-
-        """
-
-        data_type_ = self.value_data_type(attribute, 'FLOAT')
-        return self.default_domain.attribute_node(nodes.Raycast(target_geometry=target_geometry, attribute=attribute, source_position=source_position, ray_direction=ray_direction, ray_length=ray_length, data_type=data_type_, mapping=mapping))
-
-
-    def raycast_interpolated(self, target_geometry=None, attribute=None, source_position=None, ray_direction=None, ray_length=None):
-        """
-
-        > Node: [Raycast](GeometryNodeRaycast.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/raycast.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeRaycast.html)
-
-        #### Args:
-        - target_geometry: Geometry
-        - attribute: ['Vector', 'Float', 'Color', 'Boolean', 'Integer']
-        - source_position: Vector
-        - ray_direction: Vector
-        - ray_length: Float
-
-        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeRaycast.webp)
-
-        #### Returns:
-        - node with sockets ['is_hit', 'hit_position', 'hit_normal', 'hit_distance', 'attribute']
-
-
-        """
-
-        data_type_ = self.value_data_type(attribute, 'FLOAT')
-        return self.default_domain.attribute_node(nodes.Raycast(target_geometry=target_geometry, attribute=attribute, source_position=source_position, ray_direction=ray_direction, ray_length=ray_length, data_type=data_type_, mapping='INTERPOLATED'))
-
-
-    def raycast_nearest(self, target_geometry=None, attribute=None, source_position=None, ray_direction=None, ray_length=None):
-        """
-
-        > Node: [Raycast](GeometryNodeRaycast.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/raycast.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeRaycast.html)
-
-        #### Args:
-        - target_geometry: Geometry
-        - attribute: ['Vector', 'Float', 'Color', 'Boolean', 'Integer']
-        - source_position: Vector
-        - ray_direction: Vector
-        - ray_length: Float
-
-        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeRaycast.webp)
-
-        #### Returns:
-        - node with sockets ['is_hit', 'hit_position', 'hit_normal', 'hit_distance', 'attribute']
-
-
-        """
-
-        data_type_ = self.value_data_type(attribute, 'FLOAT')
-        return self.default_domain.attribute_node(nodes.Raycast(target_geometry=target_geometry, attribute=attribute, source_position=source_position, ray_direction=ray_direction, ray_length=ray_length, data_type=data_type_, mapping='NEAREST'))
-
-
     def sample_nearest_surface(self, value=None, sample_position=None):
         """
 
@@ -3045,87 +2966,6 @@ class Curve(Geometry):
         return self.default_domain.attribute_node(nodes.Position()).position
 
 
-    def proximity(self, target=None, source_position=None, target_element='FACES'):
-        """
-
-        > Node: [Geometry Proximity](GeometryNodeProximity.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/geometry_proximity.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeProximity.html)
-
-        #### Args:
-        - target: Geometry
-        - source_position: Vector
-        - target_element (str): 'FACES' in [POINTS, EDGES, FACES]
-
-        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeProximity.webp)
-
-        #### Returns:
-        - node with sockets ['position', 'distance']
-
-
-        """
-
-        return self.default_domain.attribute_node(nodes.GeometryProximity(target=target, source_position=source_position, target_element=target_element))
-
-
-    def proximity_edges(self, target=None, source_position=None):
-        """
-
-        > Node: [Geometry Proximity](GeometryNodeProximity.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/geometry_proximity.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeProximity.html)
-
-        #### Args:
-        - target: Geometry
-        - source_position: Vector
-
-        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeProximity.webp)
-
-        #### Returns:
-        - node with sockets ['position', 'distance']
-
-
-        """
-
-        return self.default_domain.attribute_node(nodes.GeometryProximity(target=target, source_position=source_position, target_element='EDGES'))
-
-
-    def proximity_faces(self, target=None, source_position=None):
-        """
-
-        > Node: [Geometry Proximity](GeometryNodeProximity.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/geometry_proximity.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeProximity.html)
-
-        #### Args:
-        - target: Geometry
-        - source_position: Vector
-
-        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeProximity.webp)
-
-        #### Returns:
-        - node with sockets ['position', 'distance']
-
-
-        """
-
-        return self.default_domain.attribute_node(nodes.GeometryProximity(target=target, source_position=source_position, target_element='FACES'))
-
-
-    def proximity_points(self, target=None, source_position=None):
-        """
-
-        > Node: [Geometry Proximity](GeometryNodeProximity.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/geometry_proximity.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeProximity.html)
-
-        #### Args:
-        - target: Geometry
-        - source_position: Vector
-
-        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeProximity.webp)
-
-        #### Returns:
-        - node with sockets ['position', 'distance']
-
-
-        """
-
-        return self.default_domain.attribute_node(nodes.GeometryProximity(target=target, source_position=source_position, target_element='POINTS'))
-
-
     @property
     def radius(self):
         """
@@ -3139,79 +2979,6 @@ class Curve(Geometry):
         """
 
         return self.default_domain.attribute_node(nodes.Radius()).radius
-
-
-    def raycast(self, target_geometry=None, attribute=None, source_position=None, ray_direction=None, ray_length=None, mapping='INTERPOLATED'):
-        """
-
-        > Node: [Raycast](GeometryNodeRaycast.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/raycast.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeRaycast.html)
-
-        #### Args:
-        - target_geometry: Geometry
-        - attribute: ['Vector', 'Float', 'Color', 'Boolean', 'Integer']
-        - source_position: Vector
-        - ray_direction: Vector
-        - ray_length: Float
-        - mapping (str): 'INTERPOLATED' in [INTERPOLATED, NEAREST]
-
-        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeRaycast.webp)
-
-        #### Returns:
-        - node with sockets ['is_hit', 'hit_position', 'hit_normal', 'hit_distance', 'attribute']
-
-
-        """
-
-        data_type_ = self.value_data_type(attribute, 'FLOAT')
-        return self.default_domain.attribute_node(nodes.Raycast(target_geometry=target_geometry, attribute=attribute, source_position=source_position, ray_direction=ray_direction, ray_length=ray_length, data_type=data_type_, mapping=mapping))
-
-
-    def raycast_interpolated(self, target_geometry=None, attribute=None, source_position=None, ray_direction=None, ray_length=None):
-        """
-
-        > Node: [Raycast](GeometryNodeRaycast.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/raycast.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeRaycast.html)
-
-        #### Args:
-        - target_geometry: Geometry
-        - attribute: ['Vector', 'Float', 'Color', 'Boolean', 'Integer']
-        - source_position: Vector
-        - ray_direction: Vector
-        - ray_length: Float
-
-        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeRaycast.webp)
-
-        #### Returns:
-        - node with sockets ['is_hit', 'hit_position', 'hit_normal', 'hit_distance', 'attribute']
-
-
-        """
-
-        data_type_ = self.value_data_type(attribute, 'FLOAT')
-        return self.default_domain.attribute_node(nodes.Raycast(target_geometry=target_geometry, attribute=attribute, source_position=source_position, ray_direction=ray_direction, ray_length=ray_length, data_type=data_type_, mapping='INTERPOLATED'))
-
-
-    def raycast_nearest(self, target_geometry=None, attribute=None, source_position=None, ray_direction=None, ray_length=None):
-        """
-
-        > Node: [Raycast](GeometryNodeRaycast.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/raycast.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeRaycast.html)
-
-        #### Args:
-        - target_geometry: Geometry
-        - attribute: ['Vector', 'Float', 'Color', 'Boolean', 'Integer']
-        - source_position: Vector
-        - ray_direction: Vector
-        - ray_length: Float
-
-        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeRaycast.webp)
-
-        #### Returns:
-        - node with sockets ['is_hit', 'hit_position', 'hit_normal', 'hit_distance', 'attribute']
-
-
-        """
-
-        data_type_ = self.value_data_type(attribute, 'FLOAT')
-        return self.default_domain.attribute_node(nodes.Raycast(target_geometry=target_geometry, attribute=attribute, source_position=source_position, ray_direction=ray_direction, ray_length=ray_length, data_type=data_type_, mapping='NEAREST'))
 
 
     def resample(self, selection=None, count=None, length=None, mode='COUNT'):
@@ -3816,87 +3583,6 @@ class Points(Geometry):
         return self.default_domain.attribute_node(nodes.Position()).position
 
 
-    def proximity(self, target=None, source_position=None, target_element='FACES'):
-        """
-
-        > Node: [Geometry Proximity](GeometryNodeProximity.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/geometry_proximity.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeProximity.html)
-
-        #### Args:
-        - target: Geometry
-        - source_position: Vector
-        - target_element (str): 'FACES' in [POINTS, EDGES, FACES]
-
-        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeProximity.webp)
-
-        #### Returns:
-        - node with sockets ['position', 'distance']
-
-
-        """
-
-        return self.default_domain.attribute_node(nodes.GeometryProximity(target=target, source_position=source_position, target_element=target_element))
-
-
-    def proximity_edges(self, target=None, source_position=None):
-        """
-
-        > Node: [Geometry Proximity](GeometryNodeProximity.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/geometry_proximity.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeProximity.html)
-
-        #### Args:
-        - target: Geometry
-        - source_position: Vector
-
-        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeProximity.webp)
-
-        #### Returns:
-        - node with sockets ['position', 'distance']
-
-
-        """
-
-        return self.default_domain.attribute_node(nodes.GeometryProximity(target=target, source_position=source_position, target_element='EDGES'))
-
-
-    def proximity_faces(self, target=None, source_position=None):
-        """
-
-        > Node: [Geometry Proximity](GeometryNodeProximity.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/geometry_proximity.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeProximity.html)
-
-        #### Args:
-        - target: Geometry
-        - source_position: Vector
-
-        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeProximity.webp)
-
-        #### Returns:
-        - node with sockets ['position', 'distance']
-
-
-        """
-
-        return self.default_domain.attribute_node(nodes.GeometryProximity(target=target, source_position=source_position, target_element='FACES'))
-
-
-    def proximity_points(self, target=None, source_position=None):
-        """
-
-        > Node: [Geometry Proximity](GeometryNodeProximity.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/geometry_proximity.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeProximity.html)
-
-        #### Args:
-        - target: Geometry
-        - source_position: Vector
-
-        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeProximity.webp)
-
-        #### Returns:
-        - node with sockets ['position', 'distance']
-
-
-        """
-
-        return self.default_domain.attribute_node(nodes.GeometryProximity(target=target, source_position=source_position, target_element='POINTS'))
-
-
     @property
     def radius(self):
         """
@@ -3910,79 +3596,6 @@ class Points(Geometry):
         """
 
         return self.default_domain.attribute_node(nodes.Radius()).radius
-
-
-    def raycast(self, target_geometry=None, attribute=None, source_position=None, ray_direction=None, ray_length=None, mapping='INTERPOLATED'):
-        """
-
-        > Node: [Raycast](GeometryNodeRaycast.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/raycast.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeRaycast.html)
-
-        #### Args:
-        - target_geometry: Geometry
-        - attribute: ['Vector', 'Float', 'Color', 'Boolean', 'Integer']
-        - source_position: Vector
-        - ray_direction: Vector
-        - ray_length: Float
-        - mapping (str): 'INTERPOLATED' in [INTERPOLATED, NEAREST]
-
-        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeRaycast.webp)
-
-        #### Returns:
-        - node with sockets ['is_hit', 'hit_position', 'hit_normal', 'hit_distance', 'attribute']
-
-
-        """
-
-        data_type_ = self.value_data_type(attribute, 'FLOAT')
-        return self.default_domain.attribute_node(nodes.Raycast(target_geometry=target_geometry, attribute=attribute, source_position=source_position, ray_direction=ray_direction, ray_length=ray_length, data_type=data_type_, mapping=mapping))
-
-
-    def raycast_interpolated(self, target_geometry=None, attribute=None, source_position=None, ray_direction=None, ray_length=None):
-        """
-
-        > Node: [Raycast](GeometryNodeRaycast.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/raycast.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeRaycast.html)
-
-        #### Args:
-        - target_geometry: Geometry
-        - attribute: ['Vector', 'Float', 'Color', 'Boolean', 'Integer']
-        - source_position: Vector
-        - ray_direction: Vector
-        - ray_length: Float
-
-        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeRaycast.webp)
-
-        #### Returns:
-        - node with sockets ['is_hit', 'hit_position', 'hit_normal', 'hit_distance', 'attribute']
-
-
-        """
-
-        data_type_ = self.value_data_type(attribute, 'FLOAT')
-        return self.default_domain.attribute_node(nodes.Raycast(target_geometry=target_geometry, attribute=attribute, source_position=source_position, ray_direction=ray_direction, ray_length=ray_length, data_type=data_type_, mapping='INTERPOLATED'))
-
-
-    def raycast_nearest(self, target_geometry=None, attribute=None, source_position=None, ray_direction=None, ray_length=None):
-        """
-
-        > Node: [Raycast](GeometryNodeRaycast.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/raycast.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeRaycast.html)
-
-        #### Args:
-        - target_geometry: Geometry
-        - attribute: ['Vector', 'Float', 'Color', 'Boolean', 'Integer']
-        - source_position: Vector
-        - ray_direction: Vector
-        - ray_length: Float
-
-        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeRaycast.webp)
-
-        #### Returns:
-        - node with sockets ['is_hit', 'hit_position', 'hit_normal', 'hit_distance', 'attribute']
-
-
-        """
-
-        data_type_ = self.value_data_type(attribute, 'FLOAT')
-        return self.default_domain.attribute_node(nodes.Raycast(target_geometry=target_geometry, attribute=attribute, source_position=source_position, ray_direction=ray_direction, ray_length=ray_length, data_type=data_type_, mapping='NEAREST'))
 
 
     def set_material(self, selection=None, material=None):
@@ -4371,160 +3984,6 @@ class Instances(Geometry):
         """
 
         return self.default_domain.attribute_node(nodes.Position()).position
-
-
-    def proximity(self, target=None, source_position=None, target_element='FACES'):
-        """
-
-        > Node: [Geometry Proximity](GeometryNodeProximity.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/geometry_proximity.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeProximity.html)
-
-        #### Args:
-        - target: Geometry
-        - source_position: Vector
-        - target_element (str): 'FACES' in [POINTS, EDGES, FACES]
-
-        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeProximity.webp)
-
-        #### Returns:
-        - node with sockets ['position', 'distance']
-
-
-        """
-
-        return self.default_domain.attribute_node(nodes.GeometryProximity(target=target, source_position=source_position, target_element=target_element))
-
-
-    def proximity_edges(self, target=None, source_position=None):
-        """
-
-        > Node: [Geometry Proximity](GeometryNodeProximity.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/geometry_proximity.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeProximity.html)
-
-        #### Args:
-        - target: Geometry
-        - source_position: Vector
-
-        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeProximity.webp)
-
-        #### Returns:
-        - node with sockets ['position', 'distance']
-
-
-        """
-
-        return self.default_domain.attribute_node(nodes.GeometryProximity(target=target, source_position=source_position, target_element='EDGES'))
-
-
-    def proximity_faces(self, target=None, source_position=None):
-        """
-
-        > Node: [Geometry Proximity](GeometryNodeProximity.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/geometry_proximity.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeProximity.html)
-
-        #### Args:
-        - target: Geometry
-        - source_position: Vector
-
-        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeProximity.webp)
-
-        #### Returns:
-        - node with sockets ['position', 'distance']
-
-
-        """
-
-        return self.default_domain.attribute_node(nodes.GeometryProximity(target=target, source_position=source_position, target_element='FACES'))
-
-
-    def proximity_points(self, target=None, source_position=None):
-        """
-
-        > Node: [Geometry Proximity](GeometryNodeProximity.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/geometry_proximity.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeProximity.html)
-
-        #### Args:
-        - target: Geometry
-        - source_position: Vector
-
-        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeProximity.webp)
-
-        #### Returns:
-        - node with sockets ['position', 'distance']
-
-
-        """
-
-        return self.default_domain.attribute_node(nodes.GeometryProximity(target=target, source_position=source_position, target_element='POINTS'))
-
-
-    def raycast(self, target_geometry=None, attribute=None, source_position=None, ray_direction=None, ray_length=None, mapping='INTERPOLATED'):
-        """
-
-        > Node: [Raycast](GeometryNodeRaycast.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/raycast.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeRaycast.html)
-
-        #### Args:
-        - target_geometry: Geometry
-        - attribute: ['Vector', 'Float', 'Color', 'Boolean', 'Integer']
-        - source_position: Vector
-        - ray_direction: Vector
-        - ray_length: Float
-        - mapping (str): 'INTERPOLATED' in [INTERPOLATED, NEAREST]
-
-        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeRaycast.webp)
-
-        #### Returns:
-        - node with sockets ['is_hit', 'hit_position', 'hit_normal', 'hit_distance', 'attribute']
-
-
-        """
-
-        data_type_ = self.value_data_type(attribute, 'FLOAT')
-        return self.default_domain.attribute_node(nodes.Raycast(target_geometry=target_geometry, attribute=attribute, source_position=source_position, ray_direction=ray_direction, ray_length=ray_length, data_type=data_type_, mapping=mapping))
-
-
-    def raycast_interpolated(self, target_geometry=None, attribute=None, source_position=None, ray_direction=None, ray_length=None):
-        """
-
-        > Node: [Raycast](GeometryNodeRaycast.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/raycast.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeRaycast.html)
-
-        #### Args:
-        - target_geometry: Geometry
-        - attribute: ['Vector', 'Float', 'Color', 'Boolean', 'Integer']
-        - source_position: Vector
-        - ray_direction: Vector
-        - ray_length: Float
-
-        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeRaycast.webp)
-
-        #### Returns:
-        - node with sockets ['is_hit', 'hit_position', 'hit_normal', 'hit_distance', 'attribute']
-
-
-        """
-
-        data_type_ = self.value_data_type(attribute, 'FLOAT')
-        return self.default_domain.attribute_node(nodes.Raycast(target_geometry=target_geometry, attribute=attribute, source_position=source_position, ray_direction=ray_direction, ray_length=ray_length, data_type=data_type_, mapping='INTERPOLATED'))
-
-
-    def raycast_nearest(self, target_geometry=None, attribute=None, source_position=None, ray_direction=None, ray_length=None):
-        """
-
-        > Node: [Raycast](GeometryNodeRaycast.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/raycast.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeRaycast.html)
-
-        #### Args:
-        - target_geometry: Geometry
-        - attribute: ['Vector', 'Float', 'Color', 'Boolean', 'Integer']
-        - source_position: Vector
-        - ray_direction: Vector
-        - ray_length: Float
-
-        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeRaycast.webp)
-
-        #### Returns:
-        - node with sockets ['is_hit', 'hit_position', 'hit_normal', 'hit_distance', 'attribute']
-
-
-        """
-
-        data_type_ = self.value_data_type(attribute, 'FLOAT')
-        return self.default_domain.attribute_node(nodes.Raycast(target_geometry=target_geometry, attribute=attribute, source_position=source_position, ray_direction=ray_direction, ray_length=ray_length, data_type=data_type_, mapping='NEAREST'))
 
 
     def realize(self, legacy_behavior=False):

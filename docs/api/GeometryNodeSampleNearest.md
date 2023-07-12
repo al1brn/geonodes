@@ -34,18 +34,10 @@ node = nodes.SampleNearest(geometry=None, sample_position=None, domain='POINT')
 
 | Class or method name | Definition |
 |----------------------|------------|
-| **[CloudPoint](CloudPoint.md)** |
-| [sample_nearest](CloudPoint.md#sample_nearest) | `def sample_nearest(self, sample_position=None):` |
-| **[Corner](Corner.md)** |
-| [sample_nearest](Corner.md#sample_nearest) | `def sample_nearest(self, sample_position=None):` |
-| **[Edge](Edge.md)** |
-| [sample_nearest](Edge.md#sample_nearest) | `def sample_nearest(self, sample_position=None):` |
-| **[Face](Face.md)** |
-| [sample_nearest](Face.md#sample_nearest) | `def sample_nearest(self, sample_position=None):` |
+| **[Domain](Domain.md)** |
+| [sample_nearest](Domain.md#sample_nearest) | `def sample_nearest(self, geometry=None, sample_position=None, domain='POINT'):` |
 | **[Geometry](Geometry.md)** |
-| [sample_nearest](Geometry.md#sample_nearest) | `def sample_nearest(self, sample_position=None, domain='POINT'):` |
-| **[Vertex](Vertex.md)** |
-| [sample_nearest](Vertex.md#sample_nearest) | `def sample_nearest(self, sample_position=None):` |
+| [sample_nearest](Geometry.md#sample_nearest) | `def sample_nearest(self, geometry=None, sample_position=None, domain='POINT'):` |
 
 <sub>Go to [top](#node-Sample-Nearest) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 

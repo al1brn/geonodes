@@ -10,7 +10,7 @@ Created on Sun Jul  9 08:08:16 2023
 # Create a matrix of points from to geometries having a POINT domain
 
 class PointsMatrix:
-    def __init__(self, x_geometry, y_geometry):
+    def __init__(self, x_geometry, y_geometry=None):
         """ Cross two geometries to perform computation on each couple of points between the two.
         
         This can be used to accumulate the effect of a set of points to each points of another geometry.
@@ -21,52 +21,107 @@ class PointsMatrix:
         
         An intermediary cloud of points is created by instanciating 'y_geometry' on 'x_geometry' and then realizing
         the instances. The number of points of the resulting 'matrix' is the product of the numbers of points
-        of the input geometries.
+        of the input geometries. Whatever the types of geometries, they are internally typecasted to 'Points'.
         
-        **Note**: whatever the types of geometries, the 'matrix' geometry are internally typecasted to 'Points'.
+        **NOTE** Take care of the size of your geometries since multiplying big geometries could produce a huge number of points.
         
-        To mix the attributes of the two geometries, use *x_attribute* and *y_attribute* methods.
-        These methods take an attribute of their corresponding geometry.
+        **Naming conventions**:
+        - method starting by x_ or y_ accept indices from geometies:
+          - x_get : read values in the matrix with ``` x_geometry.index ```
+        - method not starting by x_ or y_ accept indices in the matrix dimension
+          - get : read values from the whole matrix with ``` matrix.index ```
+          
+        ### Computing cells
         
-        The example below shows how to compute the distance between the points of one geometry to the points of a second geometry:
+        A cell operation combines values from x dimension with values from y dimension and stores the result in the matrix,
+        one value per cell, i.e. per couple (x index, y index). For instance, the following line multiply values from the
+        two dimensions:
             
         ``` python
-        mesh   = gn.Mesh.Cube().mesh
-        points = gn.Points.Points(10)
-        
-        matrix = PointsMatrix(mesh, points)
-        dists = (matrix.x_attribute(mesh.verts.position) - matrix.y_attribute(points.points.position).length
-        
-        # Sum of the distances in the mesh vertices
-        
-        mesh.verts.store_named_attribute("dists sum", matrix.x_total(dists))
-        
-        # Sum of the distances in the points
-        
-        points.points.store_named_attribute("dists sum", matrix.y_total(dists))
+        # a is an attribute of x geometry and b an attribute of y geometry
+        prod = matrix.set_x(a) * matrix.set_y(b)
         ```
         
-        The following piece of code is a full demo of PointsMatrix.
-        The results can be viewed with the 'Viewer' nodes.
+        It is important to use ``` set_x ``` and ``` set_y ``` methods which explode the attribute on the whole matrix.
+        
+        ### Reading cells
+        
+        Cells are read along a dimension using ``` x_get ``` or ``` y_get ```. In the following example, the previous
+        result is read in the x dimension, for y index = 2:
+            
+        ``` python
+        x = matrix.x_get(prod, y_index=2)
+        ``` 
+        
+        ### Total
+        
+        The main benefit of the matrix is the use of `Accumulate Field` node allowing to sum the values along a dimension.
+        
+        ``` python
+        prod = matrix.set_x(a) * matrix.set_y(b)
+        # Total along the  y dimension into the x dimension
+        total = matrix.x_total(prod)
+        ```
+        
+        ### Square matrices
+        
+        A square matrix is a matrix where the sizes of the dimensions are equal. Square matrices offer specicific features:
+        - **set_diagonal**: set values in the diagonal cells
+        - **get_diagonal**: read the cells of the diagonal
+        - **set_triangle**: set values in the triangle cells
+        
+        In the following example, the sum of all possible products is performed:
+            
+        ``` python
+        # Only one argument produces a square matrix
+        matrix = PointsMatrix(cloud)
+        # Products of the radius
+        prod = matrix.set_x(cloud.points.radius) * matrix.set_y(cloud.points.radius)
+        # To have only one instance of the products, set the triangle values to 0, including the diagonal
+        prod = matrix.set_triangle(prod, 0, diagonal=True)
+        # Sum per points
+        prod_sum = matrix.x_total(prod)
+        ```
+        
+        ### Selections
+        
+        The PointsMatrix class exposes selection methods / properties:
+        - sel_x 
+        - sel_y
+        - diagonal_selection
+        
+        The selection are used to selectively change a matrix wide attribute with ``` switch ``` :
+            
+        ``` python
+        # v is a value in the matrix scope
+        # Set the value to zero for y index == 3
+        v = v.switch(matrix.sel_x(y_index=3), 0)
+        # Set the diagonal to 0 (equivalent to matrix.set_diagonal(v, 0))
+        v = matrix.set_diagonal(v, 0)
+        ```
+        
+        ### Example
+        
+        The following piece of code is a full demo of PointsMatrix. The results can be viewed with the 'Viewer' nodes.
             
         ``` python
         import geonodes as gn
-        
+                
         with gn.Tree("PointsMatrix Demo", auto_capture=False) as tree:
             
             # Let's build a 4x3 matrix
             
-            xg = gn.Curve.Line().resample(count=4)
-            yg = gn.Points.Points(3)
+            xg = gn.Curve.Line(end=(3, 0, 0)).to_points(count=4).points
+            yg = gn.Curve.Line(end=(0, 2, 0)).resample(count=3)
             
-            mx = PointsMatrix(xg, yg)
+            mx = gn.PointsMatrix(xg, yg)
             
             # Values 10, 20, 30, 40 for the x direction
-            x = mx.x_attribute((xg.points.index+1)*10)
-
+            x = mx.set_x((xg.points.index + 1)*10)
+        
             # Values 1, 2, 3 for the y direction
-            y = mx.y_attribute(yg.points.index+1)
-
+            y = mx.set_y(yg.points.index + 1)
+        
             # Matrix values are sums x + y
             # 11 21 31 41
             # 12 22 32 42
@@ -89,7 +144,14 @@ class PointsMatrix:
             yg.points.store_named_attribute("Total", mx.y_total(sum))
             yg.view()
             
-            tree.og = xg + yg        
+            # Visualize the matrix points by setting z to the distance between the points
+            px = mx.set_x(xg.points.position)
+            py = mx.set_y(yg.points.position)
+            d = (py - px).length**4/100
+            
+            mx.matrix.points.position_offset = (0, 0, .1 + d)
+            
+            tree.og = xg + yg + mx.matrix       
         ```
         
         Args:
@@ -101,43 +163,30 @@ class PointsMatrix:
         
         self.tree = x_geometry.node.tree
         
-        with self.tree.layout("PointsMatrix: initialization"):
+        if y_geometry is None:
+            y_geometry = x_geometry
+        
+        with self.tree.layout("PointsMatrix: initialization", color='UTIL'):
             
-            # ----- Size of each domain
+            # ----- Domain size and indices
             
-            if False:
-                for name, geo in zip(('x_count', 'y_count'), (x_geometry, y_geometry)):
-                    cname = type(geo).__name__
-                    if cname == 'Mesh':
-                        setattr(self, name, geo.verts.count)
-                    elif cname == 'Curve':
-                        setattr(self, name, geo.points.count)
-                    elif cname == 'Points':
-                        setattr(self, name, geo.points.count)
-                    else:
-                        raise Exception(f"PointsMatrix accept only geometries with POINT domain (Mesh, Curve or Points), not '{cname}': {geo}")
-            else:
-                cname = type(y_geometry).__name__
+            for geo, prefix in zip((x_geometry, y_geometry), ('x', 'y')):
+                cname = type(geo).__name__
                 if cname == 'Mesh':
-                    self.y_count = y_geometry.verts.count
+                    setattr(self, prefix + '_points', geo.verts)
+                                        
                 elif cname in ['Curve', 'Points']:
-                    self.y_count = y_geometry.points.count
+                    setattr(self, prefix + '_points', geo.points)
                 else:
-                    raise Exception(f"PointsMatrix accept only geometries with POINT domain (Mesh, Curve or Points), not '{cname}': {y_geometry}")
-            
+                    raise Exception(f"PointsMatrix accept only geometries with POINT domain (Mesh, Curve or Points), not '{cname}': {geo}")
                         
             # ----- The x and y geometries
             
-            self.x_geometry = x_geometry
-            self.y_geometry = y_geometry
-
+            self.y_count = self.y_points.count
+            
             # ----- The matrix
             
-            insts = self.x_geometry.instance_on_points(instance=self.y_geometry)
-            
-            # ----- Make sure not to change the position of the y geometry points
-            
-            #insts.insts.position = 0
+            insts = x_geometry.instance_on_points(instance=y_geometry)
             
             # ----- The matrix as a Points geometry
             
@@ -145,38 +194,67 @@ class PointsMatrix:
             
             # ----- The index of each geometry
             
-            with self.tree.layout("x index"):
-                self.x_index = self.capture((self.matrix.points.index / self.y_count).to_integer(rounding_mode='FLOOR'))
+            with self.tree.layout("PointsMatrix - index x", color='UTIL'):
+                self.index_x = self.capture((self.matrix.points.index / self.y_count).to_integer(rounding_mode='FLOOR'))
+                self.index_x.node.label = "index_x"
             
-            with self.tree.layout("y index"):
-                self.y_index = self.capture((self.matrix.points.index % self.y_count).to_integer(rounding_mode='ROUND'))
+            with self.tree.layout("PointsMatrix - index y", color='UTIL'):
+                self.index_y = self.capture((self.matrix.points.index % self.y_count).to_integer(rounding_mode='ROUND'))
+                self.index_y.node.label = "index_y"
                 
-            # ----- ID set to x_index
-
-            #self.matrix.points.ID = self.x_index 
+            
+    # ----------------------------------------------------------------------------------------------------
+    # Visualize the matrix points as a grid
+    
+    def to_grid_shape(self, size=.1, z=0):
+        """ Arrange the matrix points into a grid shape (for tests).
+        """
+        with self.tree.layout("PointsMatrix - to grid shape", color='UTIL'):
+            self.matrix.points.position = (self.index_x*size, self.index_y*size, z)
+        
+    # ====================================================================================================
+    # Exploding dimension attributes to the whole matrix
     
     # ----------------------------------------------------------------------------------------------------
-    # x attribute
+    # x attribute in the matrix
+    
+    def set_x(self, value):
+        """ Value along x geometry is exploded in the whole matrix.
+        
+        Used in combination with 'set_y', allows to combine the two dimensions:
             
-    def x_attribute(self, value):
-        """ x attribute is sampled on the x geometry with the global index.
+        Args:
+        - value (any): an x_geometry attribute
+        
+        Returns:
+        - matrix.points attribute
         """
-        res = self.x_geometry.points.sample_index(value=value, index=self.x_index)
-        res.node.label = 'x_attribute'
+
+        res = self.matrix.points.sample_index(self.x_points, value=value, index=self.index_x)
+        res.node.label = 'set_x'
         return res
 
     # ----------------------------------------------------------------------------------------------------
-    # y attribute
+    # y attribute in the matrix
         
-    def y_attribute(self, value):
-        """ y attribute is sampled on the y geometry with the global index.
+    def set_y(self, value):
+        """ Value along y geometry is exploded in the whole matrix.
+        
+        Used in combination with 'set_x', allows to combine the two dimensions:
+            
+        Args:
+        - value (any): an y_geometry attribute
+        
+        Returns:
+        - matrix.points attribute
         """
-        res = self.y_geometry.points.sample_index(value=value, index=self.y_index)
-        res.node.label = 'y_attribute'
-        return res
         
+        res = self.matrix.points.sample_index(self.y_points, value=value, index=self.index_y)
+        res.node.label = 'set_y'
+        return res
+    
     # ----------------------------------------------------------------------------------------------------
-    # Capture a matrix attribute
+    # Capture an attribute into the matrix
     
     def capture(self, value):
         """ Capture a value in the matrix.
@@ -190,45 +268,130 @@ class PointsMatrix:
         - Attribute socket of the 'Capture Attribute' node attribute
         """
         return self.matrix.points.capture_attribute(value)
+    
+    # ----------------------------------------------------------------------------------------------------
+    # Selection
+    
+    @property
+    def diagonal_selection(self):
+        """ Build the selection for the diagonal of a sqaure matrix.
         
+        Returns:
+        - Boolean in the matrix scope
+        """
+        
+        res = self.index_x.equal(self.index_y)
+        res.node.label = "Diag selection"
+        return res
+    
+    def sel_x(self, y_index=0):
+        """ Build the selection for a line along the x dimension.
+        
+        Args:
+        - y_index (Integer): y index of the line
+        
+        Returns:
+        - Boolean in the matrix scope
+        """
+        with self.tree.layout("PointsMatrix - x selection", color='UTIL'):
+            index = self.index_x*self.y_count
+            if not(isinstance(y_index, int) and y_index == 0):
+                index = index + y_index
+            return self.matrix.points.index.equal(index)
+    
+    def sel_y(self, x_index=0):
+        """ Build the selection for a line along the y dimension.
+        
+        Args:
+        - x_index (Integer): x index of the line
+        
+        Returns:
+        - Boolean in the matrix scope
+        """
+        
+        with self.tree.layout("PointsMatrix - y selection", color='UTIL'):
+            index = self.index_y
+            if not(isinstance(x_index, int) and x_index == 0):
+                index = index + x_index*self.y_count
+            return self.matrix.points.index.equal(index)
+        
+        
+    # ====================================================================================================
+    # Output : read with dimension index
+        
+    # ----------------------------------------------------------------------------------------------------
+    # Get a value along x
+    
+    def x_get(self, value, y_index=0):
+        """ Get a value from the matrix with index of the x geometry.
+        
+        Args:
+        - value : a matrix attribute
+        - y_index (Integer=0) : y index
+        
+        Returns:
+        - value along the x axis
+        """
+        x_index = self.x_points.index
+        return self.x_points.sample_index(self.matrix.points, value=value, index=x_index*self.y_count + y_index)
+    
+    def y_get(self, value, x_index=0):
+        """ Get a value from the matrix with index of the y geometry.
+        
+        Args:
+        - value : a matrix attribute
+        - x_index (Integer=0) : x index
+        
+        Returns:
+        - value along the y axis
+        """
+        return self.y_points.sample_index(self.matrix.points, value=value, index=(x_index * self.y_count) + self.y_points.index)
+    
+    # ====================================================================================================
+    # Set the ID to x or y index
+
     # ----------------------------------------------------------------------------------------------------
     # Set ID x and y
     
     def set_id_x(self):
         """ Set matrix points ID to x index.
+        
+        Performed to compute the field accumulation along x axis.
         """
-        self.matrix.points.ID = self.x_index 
+        self.matrix.points.ID = self.index_x
         
     def set_id_y(self):
         """ Set matrix points ID to y index.
-        """
-        self.matrix.points.ID = self.y_index 
         
+        Performed to compute the field accumulation along y axis.
+        """
+        self.matrix.points.ID = self.index_y 
+        
+    
+        
+    ##### OLD            
+    
     # ----------------------------------------------------------------------------------------------------
-    # Get a value along x
-    
-    def x_get(self, value):
-        """ Get a value from the matrix with index of the x geometry.
-        
-        Args:
-        - value : a matrix attribute
-        
-        Returns:
-        - value along the x axis
+    # x attribute
+            
+    def x_attribute(self, value):
+        """ x attribute is sampled on the x geometry with the global index.
         """
-        return self.matrix.points.sample_index(value, index=self.x_geometry.index*self.y_count)
-    
-    def y_get(self, value):
-        """ Get a value from the matrix with index of the y geometry.
+        res = self.matrix.points.sample_index(self.x_points, value=value, index=self.index_x)
+        res.node.label = 'x_attribute'
+        return res
+
+    # ----------------------------------------------------------------------------------------------------
+    # y attribute
         
-        Args:
-        - value : a matrix attribute
-        
-        Returns:
-        - value along the y axis
+    def y_attribute(self, value):
+        """ y attribute is sampled on the y geometry with the global index.
         """
-        return self.matrix.points.sample_index(value, index=self.y_geometry.index)
-    
+        res = self.matrix.points.sample_index(self.y_points, value=value, index=self.index_y)
+        res.node.label = 'y_attribute'
+        return res
+        
+        
     # ----------------------------------------------------------------------------------------------------
     # Get / set an attribute on the matrix
     
@@ -247,10 +410,12 @@ class PointsMatrix:
         res.node.label = "Matrix index"
         return res
     
-    def sample(self, i, j, value):
-        res = self.matrix.points[self.index(i, j)].sample_index(value)
-        res.nodes = "Matrix sample"
-        return res
+    #def sample(self, i, j, value):
+    #    res = self.matrix.points.sample_index()
+    #    res.nodes = "Matrix sample"
+    #    return res
+    
+    ### END OF OLD
         
     # ----------------------------------------------------------------------------------------------------
     # Accumulate
@@ -272,7 +437,7 @@ class PointsMatrix:
         - 'Accumulate Field' node
         """
         
-        with self.tree.layout("PointsMatrix: accumulate"):
+        with self.tree.layout("PointsMatrix: accumulate", color='UTIL'):
             
             if group_id is not None:
                 if group_id.lower() == 'x':
@@ -312,7 +477,7 @@ class PointsMatrix:
         - The total along the x axis
         """
         group_id = 'y' if set_id else None
-        return self.y_get(self.accumulate_node(value, group_id).total)
+        return self.y_get(self.accumulate(value, group_id).total)
     
     def x_leading(self, value, set_id=True):
         """ Leading sum a matrix attribute along x axis.
@@ -327,7 +492,7 @@ class PointsMatrix:
         - The leading sum along the x axis
         """
         group_id = 'x' if set_id else None
-        return self.x_get(self.accumulate_node(value, group_id).total)
+        return self.x_get(self.accumulate(value, group_id).total)
     
     def y_leading(self, value, set_id=True):
         """ Leading sum a matrix attribute along y axis.
@@ -378,32 +543,27 @@ class PointsMatrix:
     # For square matrix
     
     @property
-    def diagonal_selection(self):
-        res = self.x_index.equal(self.y_index)
-        res.node.label = "Diag selection"
-        return res
-    
-    @property
     def diagonal_index(self):
-        res = self.x_index*(self.y_count + 1)
+        res = self.index_x*(self.y_count + 1)
         res.node.label = "Diag index"
         return res
     
     def get_diagonal(self, value):
-        res = self.matrix.points.sample_index(value, index=self.diagonal_index)
-        res.node.label = "Get diagonal"
-        return res
+        with self.tree.layout("PointsMatrix - Get diagonal", color='UTIL'):
+            x_index = self.x_points.index
+            return self.x_points.sample_index(self.matrix.points, value, index=x_index*(self.y_count + 1))
     
     def set_diagonal(self, attribute, value):
-        res = self.set_attribute(attribute, value, self.diagonal_selection)
-        res.node.label = "Set diagonale"
-        return res
+        with self.tree.layout("PointsMatrix - Set diagonal", color='UTIL'):
+            res = self.set_attribute(attribute, value, self.diagonal_selection)
+            res.node.label = "Set diagonal"
+            return res
     
     def triangle_selection(self, diagonal=False):
         if diagonal:
-            res = self.x_index.greater_equal(self.y_index)
+            res = self.index_x.greater_equal(self.index_y)
         else:
-            res = self.x_index.greater_than(self.y_index)
+            res = self.index_x.greater_than(self.index_y)
         res.node.label = "Triangle sel"
         return res
             
@@ -465,121 +625,5 @@ class PointsMatrix:
             
             tree.og = xg + yg
             
-    # ----------------------------------------------------------------------------------------------------
-    # Falling dips
-    
-    @staticmethod
-    def Rain():
-        """ Simulate dips falling on water.
-        """
-        
-        import geonodes as gn
-        
-        with gn.Tree("Rain", auto_capture=False) as tree:
-            
-            # ---------------------------------------------------------------------------
-            # Parameters
-            
-            rain    = gn.Float.Input(.1, "Rain intensity", min_value=0, max_value=1)
-            a_min   = gn.Float.Input(.2, "Min Amplitude", min_value=0, max_value=2.)
-            a_max   = gn.Float.Input(1., "Max Amplitude", min_value=.1, max_value=10)
-
-            T       = gn.Float.Input(.5, "Time period", min_value=.1, max_value=5)
-            nT      = gn.Float.Input(3, "Duration", min_value=1, max_value=10) 
-            L       = gn.Float.Input(6., "Space period", min_value=.1, max_value=20)
-            #nL      = gn.Float.Input(3, "Distance", min_value=1, max_value=10) 
-            seed    = gn.Integer.Input(0, "Seed")
-            
-            # ------ Initial computations
-            
-            with tree.layout("Initialization"):
-            
-                density = rain.map_range(0, 1, 0, .001)
-                
-                c      = L/T             # Speed
-                wt     = (2*gn.pi)/T     # Time pulsation
-                wd     = (2*gn.pi)/L     # Space pulsation
-                
-                t_max  = T*nT            # Duration
-                d_max  = L*nT            # Distance max
-                life   = t_max + d_max/c # Duration of dip effect
-                
-                # ---------------------------------------------------------------------------
-                # Before simulation zone
-                
-                # ----- Water surface is supposed to be a mesh 
-                
-                mesh = gn.Mesh(tree.ig)
-                
-                # ----- Generate random dips
-                
-                new_dips = mesh.faces.distribute_points(density=density, seed=seed + tree.frame).points
-                new_dips.points.store_named_attribute("time", 0.)
-                new_dips.points.store_named_attribute("amplitude", gn.Float.Random(a_min, a_max, seed=tree.frame))
-
-            # ---------------------------------------------------------------------------
-            # Simulation zone
-            
-            simul = gn.Simulation(mesh, dips=new_dips)
-            
-            water = simul.geometry
-            dips  = gn.Points(simul.dips + new_dips)
-            
-            # ----- Time of each dip
-            
-            t = dips.points.named_float("time") + simul.delta_time
-            dips.points.store_named_attribute("time", t)
-
-            # ----- Delete all dips
-            
-            dips.points[t.greater_than(life)].delete()
-            
-            # ----- Multiply water vertices per dips
-            # to compute the effect of each dip on each vertex
-
-            mx = PointsMatrix(water, dips)
-            
-            # ----- Wave computation
-            
-            with tree.layout("Wave"):
-                
-                # ----- Distances between vertices and dips
-                
-                d = (mx.x_attribute(water.verts.position) - mx.y_attribute(dips.points.position)).length
-                
-                # ----- Amplitude
-                
-                amplitude = dips.points.named_float("amplitude")
-                
-                ampl = d.map_range_smooth(0, d_max, amplitude, 0)*gn.Float(t).map_range(0, t_max + d/c, 1, 0)
-                
-                # ----- Compute z
-                
-                z = ampl*gn.sin(wt*t - wd*d)
-                z = z.switch(d.greater_than(c*t), 0)
-                
-                # ----- Sum the z dips per vertex
-                    
-                Z = mx.x_total(z)
-
-            # ----- Update simulation
-            
-            water.verts.store_named_attribute("height", Z)
-
-            simul.geometry = water
-            simul.dips     = dips
-            
-            # ---------------------------------------------------------------------------
-            # After Simulation zone
-            
-            mesh = simul.og
-
-            p = mesh.verts.position
-            z = mesh.verts.named_float("height")
-            p.z = z
-            mesh.verts.position = p
-                
-            mesh.faces.shade_smooth = True
-                
-            tree.og = mesh        
+     
    

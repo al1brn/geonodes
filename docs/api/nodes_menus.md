@@ -171,34 +171,18 @@
 |      | [Instance](Instance.md) | [duplicate](Instance.md#duplicate) |
 |      | [Spline](Spline.md) | [duplicate](Spline.md#duplicate) |
 |      | [Vertex](Vertex.md) | [duplicate](Vertex.md#duplicate) |
-| [Geometry Proximity](GeometryNodeProximity.md) | [CloudPoint](CloudPoint.md) | - [proximity](CloudPoint.md#proximity)<br>- [proximity_points](CloudPoint.md#proximity_points)<br>- [proximity_edges](CloudPoint.md#proximity_edges)<br>- [proximity_faces](CloudPoint.md#proximity_faces)|
-|      | [ControlPoint](ControlPoint.md) | - [proximity](ControlPoint.md#proximity)<br>- [proximity_points](ControlPoint.md#proximity_points)<br>- [proximity_edges](ControlPoint.md#proximity_edges)<br>- [proximity_faces](ControlPoint.md#proximity_faces)|
-|      | [Curve](Curve.md) | - [proximity](Curve.md#proximity)<br>- [proximity_points](Curve.md#proximity_points)<br>- [proximity_edges](Curve.md#proximity_edges)<br>- [proximity_faces](Curve.md#proximity_faces)|
-|      | [Edge](Edge.md) | - [proximity](Edge.md#proximity)<br>- [proximity_points](Edge.md#proximity_points)<br>- [proximity_edges](Edge.md#proximity_edges)<br>- [proximity_faces](Edge.md#proximity_faces)|
-|      | [Face](Face.md) | - [proximity](Face.md#proximity)<br>- [proximity_points](Face.md#proximity_points)<br>- [proximity_edges](Face.md#proximity_edges)<br>- [proximity_faces](Face.md#proximity_faces)|
-|      | [Instances](Instances.md) | - [proximity](Instances.md#proximity)<br>- [proximity_points](Instances.md#proximity_points)<br>- [proximity_edges](Instances.md#proximity_edges)<br>- [proximity_faces](Instances.md#proximity_faces)|
-|      | [Mesh](Mesh.md) | - [proximity](Mesh.md#proximity)<br>- [proximity_points](Mesh.md#proximity_points)<br>- [proximity_edges](Mesh.md#proximity_edges)<br>- [proximity_faces](Mesh.md#proximity_faces)|
-|      | [Points](Points.md) | - [proximity](Points.md#proximity)<br>- [proximity_points](Points.md#proximity_points)<br>- [proximity_edges](Points.md#proximity_edges)<br>- [proximity_faces](Points.md#proximity_faces)|
-|      | [Vertex](Vertex.md) | - [proximity](Vertex.md#proximity)<br>- [proximity_points](Vertex.md#proximity_points)<br>- [proximity_edges](Vertex.md#proximity_edges)<br>- [proximity_faces](Vertex.md#proximity_faces)|
 | [Geometry to Instance](GeometryNodeGeometryToInstance.md) | [Geometry](Geometry.md) | [to_instance](Geometry.md#to_instance) |
 |      | [functions](functions.md) | [geometry_to_instance](functions.md#geometry_to_instance) |
 | [Join Geometry](GeometryNodeJoinGeometry.md) | [Geometry](Geometry.md) | [join](Geometry.md#join) |
 |      | [functions](functions.md) | [join_geometry](functions.md#join_geometry) |
 | [Merge by Distance](GeometryNodeMergeByDistance.md) | [Geometry](Geometry.md) | [merge_by_distance](Geometry.md#merge_by_distance) |
 |      | [Vertex](Vertex.md) | - [merge_by_distance](Vertex.md#merge_by_distance)<br>- [merge_by_distance_connected](Vertex.md#merge_by_distance_connected)|
-| [Raycast](GeometryNodeRaycast.md) | [Curve](Curve.md) | - [raycast](Curve.md#raycast)<br>- [raycast_interpolated](Curve.md#raycast_interpolated)<br>- [raycast_nearest](Curve.md#raycast_nearest)|
-|      | [Domain](Domain.md) | - [raycast](Domain.md#raycast)<br>- [raycast_interpolated](Domain.md#raycast_interpolated)<br>- [raycast_nearest](Domain.md#raycast_nearest)|
-|      | [Instances](Instances.md) | - [raycast](Instances.md#raycast)<br>- [raycast_interpolated](Instances.md#raycast_interpolated)<br>- [raycast_nearest](Instances.md#raycast_nearest)|
-|      | [Mesh](Mesh.md) | - [raycast](Mesh.md#raycast)<br>- [raycast_interpolated](Mesh.md#raycast_interpolated)<br>- [raycast_nearest](Mesh.md#raycast_nearest)|
-|      | [Points](Points.md) | - [raycast](Points.md#raycast)<br>- [raycast_interpolated](Points.md#raycast_interpolated)<br>- [raycast_nearest](Points.md#raycast_nearest)|
+| [Raycast](GeometryNodeRaycast.md) | [Domain](Domain.md) | - [raycast](Domain.md#raycast)<br>- [raycast_interpolated](Domain.md#raycast_interpolated)<br>- [raycast_nearest](Domain.md#raycast_nearest)|
+|      | [Geometry](Geometry.md) | - [raycast](Geometry.md#raycast)<br>- [raycast_interpolated](Geometry.md#raycast_interpolated)<br>- [raycast_nearest](Geometry.md#raycast_nearest)|
 | [Sample Index](GeometryNodeSampleIndex.md) | [Domain](Domain.md) | [sample_index](Domain.md#sample_index) |
 |      | [Geometry](Geometry.md) | [sample_index](Geometry.md#sample_index) |
-| [Sample Nearest](GeometryNodeSampleNearest.md) | [CloudPoint](CloudPoint.md) | [sample_nearest](CloudPoint.md#sample_nearest) |
-|      | [Corner](Corner.md) | [sample_nearest](Corner.md#sample_nearest) |
-|      | [Edge](Edge.md) | [sample_nearest](Edge.md#sample_nearest) |
-|      | [Face](Face.md) | [sample_nearest](Face.md#sample_nearest) |
+| [Sample Nearest](GeometryNodeSampleNearest.md) | [Domain](Domain.md) | [sample_nearest](Domain.md#sample_nearest) |
 |      | [Geometry](Geometry.md) | [sample_nearest](Geometry.md#sample_nearest) |
-|      | [Vertex](Vertex.md) | [sample_nearest](Vertex.md#sample_nearest) |
 | [Separate Components](GeometryNodeSeparateComponents.md) | [Geometry](Geometry.md) | [separate_components](Geometry.md#separate_components) / [mesh_component](Geometry.md#mesh_component) / [curve_component](Geometry.md#curve_component) / [points_component](Geometry.md#points_component) / [volume_component](Geometry.md#volume_component) / [instances_component](Geometry.md#instances_component) / |
 | [Separate Geometry](GeometryNodeSeparateGeometry.md) | [ControlPoint](ControlPoint.md) | [separate](ControlPoint.md#separate) |
 |      | [Edge](Edge.md) | [separate](Edge.md#separate) |

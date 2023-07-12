@@ -31,15 +31,15 @@ Volume(self, socket, node=None, label=None)
 
 ***Inherited***
 
-[get_bl_idname](DataSocket.md#get_bl_idname) | [get_class_name](DataSocket.md#get_class_name) | [gives_bsocket](DataSocket.md#gives_bsocket) | [is_socket](DataSocket.md#is_socket) | [is_vector](DataSocket.md#is_vector) | [python_type_to_socket](DataSocket.md#python_type_to_socket) | [value_data_type](DataSocket.md#value_data_type)
+[geo_dom](DataSocket.md#geo_dom) | [get_bl_idname](DataSocket.md#get_bl_idname) | [get_class_name](DataSocket.md#get_class_name) | [gives_bsocket](DataSocket.md#gives_bsocket) | [is_socket](DataSocket.md#is_socket) | [is_vector](DataSocket.md#is_vector) | [python_type_to_socket](DataSocket.md#python_type_to_socket) | [value_data_type](DataSocket.md#value_data_type)
 
 **Methods**
 
-[attribute_node](#attribute_node) | [attribute_statistic](#attribute_statistic) | [capture_attribute](#capture_attribute) | [delete](#delete) | [distribute_points](#distribute_points) | [distribute_points_grid](#distribute_points_grid) | [distribute_points_random](#distribute_points_random) | [duplicate](#duplicate) | [instantiate](#instantiate) | [join](#join) | [matrix](#matrix) | [mean_filter_sdf_volume](#mean_filter_sdf_volume) | [merge_by_distance](#merge_by_distance) | [offset_sdf_volume](#offset_sdf_volume) | [remove_named_attribute](#remove_named_attribute) | [replace_material](#replace_material) | [sample](#sample) | [sample_boolean](#sample_boolean) | [sample_float](#sample_float) | [sample_index](#sample_index) | [sample_integer](#sample_integer) | [sample_nearest](#sample_nearest) | [sample_vector](#sample_vector) | [separate](#separate) | [set_ID](#set_ID) | [set_material](#set_material) | [set_material_index](#set_material_index) | [set_position](#set_position) | [show_handles](#show_handles) | [store_named_attribute](#store_named_attribute) | [store_named_boolean](#store_named_boolean) | [store_named_color](#store_named_color) | [store_named_float](#store_named_float) | [store_named_integer](#store_named_integer) | [store_named_vector](#store_named_vector) | [switch](#switch) | [to_instance](#to_instance) | [to_mesh](#to_mesh) | [transform](#transform) | [transform_geometry](#transform_geometry) | [view](#view) | [viewer](#viewer)
+[attribute_node](#attribute_node) | [attribute_statistic](#attribute_statistic) | [capture_attribute](#capture_attribute) | [delete](#delete) | [distribute_points](#distribute_points) | [distribute_points_grid](#distribute_points_grid) | [distribute_points_random](#distribute_points_random) | [duplicate](#duplicate) | [instantiate](#instantiate) | [join](#join) | [matrix](#matrix) | [mean_filter_sdf_volume](#mean_filter_sdf_volume) | [merge_by_distance](#merge_by_distance) | [offset_sdf_volume](#offset_sdf_volume) | [raycast](#raycast) | [raycast_interpolated](#raycast_interpolated) | [raycast_nearest](#raycast_nearest) | [remove_named_attribute](#remove_named_attribute) | [replace_material](#replace_material) | [sample](#sample) | [sample_boolean](#sample_boolean) | [sample_float](#sample_float) | [sample_index](#sample_index) | [sample_integer](#sample_integer) | [sample_nearest](#sample_nearest) | [sample_vector](#sample_vector) | [separate](#separate) | [set_ID](#set_ID) | [set_material](#set_material) | [set_material_index](#set_material_index) | [set_position](#set_position) | [show_handles](#show_handles) | [store_named_attribute](#store_named_attribute) | [store_named_boolean](#store_named_boolean) | [store_named_color](#store_named_color) | [store_named_float](#store_named_float) | [store_named_integer](#store_named_integer) | [store_named_vector](#store_named_vector) | [switch](#switch) | [to_instance](#to_instance) | [to_mesh](#to_mesh) | [transform](#transform) | [transform_geometry](#transform_geometry) | [view](#view) | [viewer](#viewer)
 
 ***Inherited***
 
-[capture](DataSocket.md#capture) | [connected_sockets](DataSocket.md#connected_sockets) | [get_blender_socket](DataSocket.md#get_blender_socket) | [init_domains](DataSocket.md#init_domains) | [init_socket](DataSocket.md#init_socket) | [plug](DataSocket.md#plug) | [reroute](DataSocket.md#reroute) | [reset_properties](DataSocket.md#reset_properties) | [stack](DataSocket.md#stack) | [to_output](DataSocket.md#to_output)
+[capture](DataSocket.md#capture) | [connected_sockets](DataSocket.md#connected_sockets) | [geometry_proximity](DataSocket.md#geometry_proximity) | [get_blender_socket](DataSocket.md#get_blender_socket) | [init_domains](DataSocket.md#init_domains) | [init_socket](DataSocket.md#init_socket) | [plug](DataSocket.md#plug) | [reroute](DataSocket.md#reroute) | [reset_properties](DataSocket.md#reset_properties) | [stack](DataSocket.md#stack) | [to_output](DataSocket.md#to_output)
 
 ## Properties
 
@@ -805,6 +805,94 @@ def offset_sdf_volume(self, distance=None)
 
 <sub>Go to [top](#class-Volume) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
+### raycast
+
+```python
+def raycast(self, target_geometry=None, attribute=None, source_position=None, ray_direction=None, ray_length=None, mapping='INTERPOLATED')
+```
+
+
+
+> Node: [Raycast](GeometryNodeRaycast.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/raycast.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeRaycast.html)
+
+#### Args:
+- target_geometry: Geometry
+- attribute: ['Vector', 'Float', 'Color', 'Boolean', 'Integer']
+- source_position: Vector
+- ray_direction: Vector
+- ray_length: Float
+- mapping (str): 'INTERPOLATED' in [INTERPOLATED, NEAREST]
+
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeRaycast.webp)
+
+#### Returns:
+- node with sockets ['is_hit', 'hit_position', 'hit_normal', 'hit_distance', 'attribute']
+
+
+
+
+
+
+<sub>Go to [top](#class-Volume) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### raycast_interpolated
+
+```python
+def raycast_interpolated(self, target_geometry=None, attribute=None, source_position=None, ray_direction=None, ray_length=None)
+```
+
+
+
+> Node: [Raycast](GeometryNodeRaycast.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/raycast.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeRaycast.html)
+
+#### Args:
+- target_geometry: Geometry
+- attribute: ['Vector', 'Float', 'Color', 'Boolean', 'Integer']
+- source_position: Vector
+- ray_direction: Vector
+- ray_length: Float
+
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeRaycast.webp)
+
+#### Returns:
+- node with sockets ['is_hit', 'hit_position', 'hit_normal', 'hit_distance', 'attribute']
+
+
+
+
+
+
+<sub>Go to [top](#class-Volume) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### raycast_nearest
+
+```python
+def raycast_nearest(self, target_geometry=None, attribute=None, source_position=None, ray_direction=None, ray_length=None)
+```
+
+
+
+> Node: [Raycast](GeometryNodeRaycast.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/raycast.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeRaycast.html)
+
+#### Args:
+- target_geometry: Geometry
+- attribute: ['Vector', 'Float', 'Color', 'Boolean', 'Integer']
+- source_position: Vector
+- ray_direction: Vector
+- ray_length: Float
+
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeRaycast.webp)
+
+#### Returns:
+- node with sockets ['is_hit', 'hit_position', 'hit_normal', 'hit_distance', 'attribute']
+
+
+
+
+
+
+<sub>Go to [top](#class-Volume) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### remove_named_attribute
 
 ```python
@@ -931,7 +1019,7 @@ def sample_float(self, grid=None, position=None, interpolation_mode='TRILINEAR')
 ### sample_index
 
 ```python
-def sample_index(self, value=None, index=None, clamp=False, domain='POINT')
+def sample_index(self, geometry=None, value=None, index=None, clamp=False, domain='POINT')
 ```
 
 
@@ -939,6 +1027,7 @@ def sample_index(self, value=None, index=None, clamp=False, domain='POINT')
 > Node: [Sample Index](GeometryNodeSampleIndex.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/sample_index.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSampleIndex.html)
 
 #### Args:
+- geometry: Geometry
 - value: ['Float', 'Integer', 'Vector', 'Color', 'Boolean']
 - index: Integer
 - clamp (bool): False
@@ -982,7 +1071,7 @@ def sample_integer(self, grid=None, position=None, interpolation_mode='TRILINEAR
 ### sample_nearest
 
 ```python
-def sample_nearest(self, sample_position=None, domain='POINT')
+def sample_nearest(self, geometry=None, sample_position=None, domain='POINT')
 ```
 
 
@@ -990,6 +1079,7 @@ def sample_nearest(self, sample_position=None, domain='POINT')
 > Node: [Sample Nearest](GeometryNodeSampleNearest.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/sample_nearest.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeSampleNearest.html)
 
 #### Args:
+- geometry: Geometry
 - sample_position: Vector
 - domain (str): 'POINT' in [POINT, EDGE, FACE, CORNER]
 

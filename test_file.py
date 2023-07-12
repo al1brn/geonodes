@@ -39,6 +39,9 @@ with gn.Tree('Geometry Nodes') as tree:
     geometry.to_instance()
     geometry.join()
     geometry.merge_by_distance()
+    geometry.raycast()
+    geometry.raycast_interpolated()
+    geometry.raycast_nearest()
     geometry.sample_index()
     geometry.sample_nearest()
     var = geometry.separate_components
@@ -222,6 +225,14 @@ with gn.Tree('Geometry Nodes') as tree:
     curve.splines.sample_index()
     instances.insts.sample_index()
     points.points.sample_index()
+    mesh.verts.sample_nearest()
+    mesh.edges.sample_nearest()
+    mesh.faces.sample_nearest()
+    mesh.corners.sample_nearest()
+    curve.points.sample_nearest()
+    curve.splines.sample_nearest()
+    instances.insts.sample_nearest()
+    points.points.sample_nearest()
     mesh.verts.set_ID()
     mesh.edges.set_ID()
     mesh.faces.set_ID()
@@ -431,13 +442,6 @@ with gn.Tree('Geometry Nodes') as tree:
     mesh.delete_all()
     mesh.delete_edges()
     mesh.delete_faces()
-    mesh.proximity()
-    mesh.proximity_points()
-    mesh.proximity_edges()
-    mesh.proximity_faces()
-    mesh.raycast()
-    mesh.raycast_interpolated()
-    mesh.raycast_nearest()
     var = mesh.ID
     var = mesh.index
     mesh.named_attribute()
@@ -543,13 +547,6 @@ with gn.Tree('Geometry Nodes') as tree:
     curve.offset_point()
     curve.curve_of_point()
     curve.points_of_curve()
-    curve.proximity()
-    curve.proximity_points()
-    curve.proximity_edges()
-    curve.proximity_faces()
-    curve.raycast()
-    curve.raycast_interpolated()
-    curve.raycast_nearest()
     var = curve.ID
     var = curve.index
     curve.named_attribute()
@@ -565,13 +562,6 @@ with gn.Tree('Geometry Nodes') as tree:
     curve.index_of_nearest()
     var = points.domain_size
     points.interpolate()
-    points.proximity()
-    points.proximity_points()
-    points.proximity_edges()
-    points.proximity_faces()
-    points.raycast()
-    points.raycast_interpolated()
-    points.raycast_nearest()
     var = points.ID
     var = points.index
     points.named_attribute()
@@ -596,13 +586,6 @@ with gn.Tree('Geometry Nodes') as tree:
     points.index_of_nearest()
     points.to_sdf_volume()
     var = instances.domain_size
-    instances.proximity()
-    instances.proximity_points()
-    instances.proximity_edges()
-    instances.proximity_faces()
-    instances.raycast()
-    instances.raycast_interpolated()
-    instances.raycast_nearest()
     var = instances.ID
     var = instances.index
     instances.named_attribute()
@@ -630,13 +613,8 @@ with gn.Tree('Geometry Nodes') as tree:
     mesh.verts.delete_edges()
     mesh.verts.delete_faces()
     mesh.verts.duplicate()
-    mesh.verts.proximity()
-    mesh.verts.proximity_points()
-    mesh.verts.proximity_edges()
-    mesh.verts.proximity_faces()
     mesh.verts.merge_by_distance()
     mesh.verts.merge_by_distance_connected()
-    mesh.verts.sample_nearest()
     mesh.verts.separate()
     mesh.verts.instance_on()
     mesh.verts.extrude()
@@ -653,11 +631,6 @@ with gn.Tree('Geometry Nodes') as tree:
     mesh.faces.delete_edges()
     mesh.faces.delete_faces()
     mesh.faces.duplicate()
-    mesh.faces.proximity()
-    mesh.faces.proximity_points()
-    mesh.faces.proximity_edges()
-    mesh.faces.proximity_faces()
-    mesh.faces.sample_nearest()
     mesh.faces.separate()
     var = mesh.faces.material_index
     mesh.faces.set_material()
@@ -690,11 +663,6 @@ with gn.Tree('Geometry Nodes') as tree:
     mesh.edges.delete_edges()
     mesh.edges.delete_faces()
     mesh.edges.duplicate()
-    mesh.edges.proximity()
-    mesh.edges.proximity_points()
-    mesh.edges.proximity_edges()
-    mesh.edges.proximity_faces()
-    mesh.edges.sample_nearest()
     mesh.edges.separate()
     mesh.edges.edge_paths_to_curves()
     mesh.edges.extrude()
@@ -709,7 +677,6 @@ with gn.Tree('Geometry Nodes') as tree:
     var = mesh.edges.vertices
     var = mesh.edges.to_face_groups
     var = mesh.corners.count
-    mesh.corners.sample_nearest()
     mesh.corners.edges()
     mesh.corners.face()
     mesh.corners.offset_in_face()
@@ -780,10 +747,6 @@ with gn.Tree('Geometry Nodes') as tree:
     curve.points.curve()
     curve.points.delete()
     curve.points.duplicate()
-    curve.points.proximity()
-    curve.points.proximity_points()
-    curve.points.proximity_edges()
-    curve.points.proximity_faces()
     curve.points.separate()
     var = curve.points.radius
     curve.points.instance_on()
@@ -791,11 +754,6 @@ with gn.Tree('Geometry Nodes') as tree:
     points.points.interpolate()
     points.points.delete()
     points.points.duplicate()
-    points.points.proximity()
-    points.points.proximity_points()
-    points.points.proximity_edges()
-    points.points.proximity_faces()
-    points.points.sample_nearest()
     var = points.points.radius
     points.points.instance_on()
     var = points.points.material_index

@@ -84,11 +84,11 @@ DataSocket(self, socket, node=None, label=None)
 
 **Class and static methods**
 
-[get_bl_idname](#get_bl_idname) | [get_class_name](#get_class_name) | [gives_bsocket](#gives_bsocket) | [is_socket](#is_socket) | [is_vector](#is_vector) | [python_type_to_socket](#python_type_to_socket) | [value_data_type](#value_data_type)
+[geo_dom](#geo_dom) | [get_bl_idname](#get_bl_idname) | [get_class_name](#get_class_name) | [gives_bsocket](#gives_bsocket) | [is_socket](#is_socket) | [is_vector](#is_vector) | [python_type_to_socket](#python_type_to_socket) | [value_data_type](#value_data_type)
 
 **Methods**
 
-[capture](#capture) | [connected_sockets](#connected_sockets) | [get_blender_socket](#get_blender_socket) | [init_domains](#init_domains) | [init_socket](#init_socket) | [plug](#plug) | [reroute](#reroute) | [reset_properties](#reset_properties) | [stack](#stack) | [to_output](#to_output)
+[capture](#capture) | [connected_sockets](#connected_sockets) | [geometry_proximity](#geometry_proximity) | [get_blender_socket](#get_blender_socket) | [init_domains](#init_domains) | [init_socket](#init_socket) | [plug](#plug) | [reroute](#reroute) | [reset_properties](#reset_properties) | [stack](#stack) | [to_output](#to_output)
 
 ## Properties
 
@@ -195,6 +195,37 @@ Depending on the _is_output_ property, the socket belongs either to *node.inputs
 <sub>Go to [top](#class-DataSocket) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## Class and static methods
+
+### geo_dom
+
+```python
+@staticmethod
+def geo_dom(geometry, domain='POINT')
+```
+
+ Split a domain into (geometry, domain code)
+
+Nodes such as 'sample_index' or 'sample_nearest' need a geometry and a domain code:
+    
+``` python
+def sample_index(self, geometry=None, value=None, index=None, clamp=False, domain='POINT'):
+```
+
+One can pass a domain rather that a geometry. In that case, this utility get the proper domain code
+to pass to the node.
+
+``` python
+    return self.default_domain.attribute_node(nodes.SampleNearest(
+        geometry         = Domain.geo_dom(geometry, domain)[0],
+        sample_position  = sample_position, 
+        domain           = Domain.geo_dom(geometry, domain)[1]
+        )).index
+``` 
+
+
+
+
+<sub>Go to [top](#class-DataSocket) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### get_bl_idname
 
@@ -452,6 +483,33 @@ def connected_sockets(self)
 
 #### Returns:
 - list of connected sockets (list of Sockets)
+
+
+
+
+<sub>Go to [top](#class-DataSocket) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### geometry_proximity
+
+```python
+def geometry_proximity(self, target=None, source_position=None, target_element='FACES')
+```
+
+
+
+> Node: [Geometry Proximity](GeometryNodeProximity.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/geometry_proximity.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeProximity.html)
+
+#### Args:
+- target: Geometry
+- source_position: Vector
+- target_element (str): 'FACES' in [POINTS, EDGES, FACES]
+
+![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeProximity.webp)
+
+#### Returns:
+- node with sockets ['position', 'distance']
+
+
 
 
 

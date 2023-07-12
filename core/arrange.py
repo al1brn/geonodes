@@ -560,6 +560,12 @@ NODE_DIMS = {
 }
 
 
+for blid in ['GeometryNodeSimulationInput', 'GeometryNodeSimulationOutput']:
+    dim = list(NODE_DIMS[blid]['dimensions'])
+    dim[0] += 50
+    dim[1] += 300
+    NODE_DIMS[blid]['dimensions'] = list(dim)
+
 
 
 # ====================================================================================================
@@ -1047,6 +1053,7 @@ def frame_inputs(tree):
             
             node = tree.nodes.new(type='NodeReroute')
             node.parent = frame
+            node.label = f"[{from_socket.node.label}].{from_socket.name}"
             
             tree.links.new(from_socket, node.inputs[0])
             
@@ -1102,6 +1109,7 @@ def frame_outputs(tree):
             
             node = tree.nodes.new(type='NodeReroute')
             node.parent = frame
+            node.label = f"[{from_socket.node.label}].{from_socket.name}"
             
             tree.links.new(from_socket, node.inputs[0])
             
@@ -1171,7 +1179,11 @@ class Box:
         
         self._dims   = [0, 0]
         self._margin = [0, 0]
+        
+        self.single_left = None
+        
         if self.node is not None:
+            
             if self.node.bl_idname == 'NodeFrame':
                 pass
             
@@ -1181,6 +1193,28 @@ class Box:
                 
             else:
                 self._dims = node_dim(node, self.tree)
+                
+            # ----- Single left
+        
+            self.single_left = True
+            for socket in node.inputs:
+                if len(socket.links):
+                    self.single_left = False
+                    break
+                
+            if self.single_left:
+                count = 0
+                for socket in node.outputs:
+                    if len(socket.links):
+                        count += len(socket.links)
+                        fed_node = socket.links[0].to_node
+                    
+            self.single_left = self.single_left and (count == 1)
+            
+            # ----- Ensure single left is in the same frame
+            
+            if self.single_left:
+                self.node.parent = fed_node.parent
         
         # ----- Links
         
@@ -1382,6 +1416,15 @@ class Box:
                     
             self.infinite_loop = False
             
+        # ----- Put the feeding single left nodes in the same column
+        
+        for b in self.in_siblings:
+            box = Box.BOXES[b]
+            if box.single_left:
+                box.col = self.col
+        
+        
+            
     # ---------------------------------------------------------------------------
     # Is a reroute node
     
@@ -1414,7 +1457,6 @@ class Box:
             
 # ====================================================================================================
 # A link between two boxes
-#
 
 class BoxLink(list):
     def __init__(self, top, link, nodes=None):
@@ -1774,7 +1816,45 @@ class Frame(Box):
         for box in self.boxes:
             self.cols[box.col].append(box)
             
-        # Columns x location
+        # ----- Make sure the single left boxes are just below the node they feed
+        
+        """
+        for col in self.cols:
+            fed_nodes = []
+            sl_nodes  = []
+            for box in col:
+                if box.single_left:
+                    sl_nodes.append(box)
+                else:
+                    fed_nodes.append(box)
+                    
+            index = 0
+            for box in fed_nodes:
+                col[index] = box
+                index += 1
+                
+                for b in box.in_siblings:
+                    f_box = Box.BOXES[b]
+                    if f_box.single_left:
+                        col[index] = f_box
+                        index += 1
+                        
+            if index != len(col):
+                print('-'*30)
+                print("COL")
+                print(col)
+                print('-'*30)
+                print("FED NODES")
+                print(fed_nodes)
+                print('-'*30)
+                print("SL NODES")
+                print(sl_nodes)
+                print('-')
+                
+                raise Exception(f"Algo error: {index} != {len(col)}")
+        """
+            
+        # ----- Columns x location
             
         x = 0
         for col in reversed(self.cols):
@@ -1805,7 +1885,6 @@ class Frame(Box):
                 bug = False
                 break
         
-            #feedings = sorted(new_feedings, key=lambda b: b.col)
             feedings = new_feedings
             new_feedings = []
             
@@ -1843,7 +1922,16 @@ class Frame(Box):
                 for box_link in box_links:
                     fb = box_link.sib_from
                     if not fb.located and fb not in new_feedings:
-                        new_feedings.append(fb)
+                        
+                        # ------ If single left feeder, put it right below
+                        
+                        if fb.single_left:
+                            col.locate_box(fb, box.y - box.h - Column.Y_SEPA/4)
+                            
+                        # ----- else put it in the new feedings list
+                        
+                        else:
+                            new_feedings.append(fb)
                     
                         
         if bug:

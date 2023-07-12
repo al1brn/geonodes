@@ -434,19 +434,18 @@ class Float(IntFloat):
         return cls(Tree.TREE.new_input('Distance', value=value, name=name, min_value=min_value, max_value=max_value, description=description))  
     
     @classmethod
-    def Normal(cls, points, loc=0, scale=1, seed=0):
+    def Normal(cls, loc=0, scale=1, seed=0):
         
         import geonodes as gn
         
-        points = gn.Points(points)
-        tree = points.node.tree
+        #points = gn.Points(points)
+        #tree = points.node.tree
+        tree = gn.Tree.TREE
         
-        with tree.layout("Float.Uniform : Random uniform values"):
-            u = points.points.capture_attribute(gn.Float.Random(0, 1, seed=seed))
-            v = points.points.capture_attribute(gn.Float.Random(0, 1, seed=seed+1))
-            n = loc + gn.sqrt(-2*gn.log(u, base=2.718281828459045))*gn.cos((2*gn.pi)*v)*scale
-            
-            return points.points.sample_index(n, index=points.points.index)
+        with tree.layout("Float.Uniform : Random normal values"):
+            u = gn.Float.Random(0, 1, seed=seed)
+            v = gn.Float.Random(0, 1, seed=seed+1)
+            return loc + gn.sqrt(-2*gn.log(u, base=2.718281828459045))*gn.cos((2*gn.pi)*v)*scale
         
 
 # -----------------------------------------------------------------------------------------------------------------------------
@@ -716,26 +715,40 @@ class Vector(DataSocket):
     
     
     @classmethod
-    def OnSphere(cls, points, seed=0):
+    def OnSphere(cls, seed=0):
         
         import geonodes as gn
         
-        points = gn.Points(points)
-        tree = points.node.tree
+        #points = gn.Points(points)
+        #tree = points.node.tree
+        
+        tree = gn.Tree.TREE
         
         with tree.layout("Vector.OnSphere : Random points on a sphere"):
             
-            with tree.layout("Latitude"):
-                u_phi = points.points.capture_attribute(gn.Float.Random(-1, 1, seed=seed))
-                phi = (1 - u_phi.abs().sqrt())*u_phi.sign()*(gn.pi/2)
-                
-            with tree.layout("Longitude"):
-                theta = points.points.capture_attribute(gn.Float.Random(0, gn.pi*2, seed=seed+1))
-                r = gn.cos(phi)
-                
-            v = gn.Vector((r*gn.cos(theta), r*gn.sin(theta), gn.sin(phi)))
+            if True:
+                with tree.layout("Latitude"):
+                    u_phi = gn.Float.Random(-1, 1, seed=seed)
+                    phi = (1 - u_phi.abs().sqrt())*u_phi.sign()*(gn.pi/2)
+                    
+                with tree.layout("Longitude"):
+                    theta = gn.Float.Random(0, gn.pi*2, seed=seed+1)
+                    r = gn.cos(phi)
+                    
+                return cls((r*gn.cos(theta), r*gn.sin(theta), gn.sin(phi)))
             
-            return points.points.sample_index(v, index=points.points.index)
+            else:
+                with tree.layout("Latitude"):
+                    u_phi = points.points.capture_attribute(gn.Float.Random(-1, 1, seed=seed))
+                    phi = (1 - u_phi.abs().sqrt())*u_phi.sign()*(gn.pi/2)
+                    
+                with tree.layout("Longitude"):
+                    theta = points.points.capture_attribute(gn.Float.Random(0, gn.pi*2, seed=seed+1))
+                    r = gn.cos(phi)
+                    
+                v = cls((r*gn.cos(theta), r*gn.sin(theta), gn.sin(phi)))
+                
+                return points.points.sample_index(v, index=points.points.index)
 
     
     # ---------------------------------------------------------------------------
@@ -1689,7 +1702,7 @@ class Geometry(DataSocket):
     # ----------------------------------------------------------------------------------------------------
     # Points matrix
     
-    def matrix(self, points):
+    def matrix(self, points=None):
         """ Return a PointsMatrix with another POINT geometry.
         
         This geometry is the x geometry and the points geometry is the y axis.

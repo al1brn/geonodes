@@ -1028,6 +1028,37 @@ class DataSocket(Socket):
             return gn.Instance(self).instances
         else:
             raise Exception(f"Default domain of class '{cname}': incorrect domain name: '{name}'")
+            
+    
+    # ====================================================================================================
+    # geo_and_domain
+    
+    @staticmethod
+    def geo_dom(geometry, domain='POINT'):
+        """ Split a domain into (geometry, domain code)
+        
+        Nodes such as 'sample_index' or 'sample_nearest' need a geometry and a domain code:
+            
+        ``` python
+        def sample_index(self, geometry=None, value=None, index=None, clamp=False, domain='POINT'):
+        ```
+        
+        One can pass a domain rather that a geometry. In that case, this utility get the proper domain code
+        to pass to the node.
+        
+        ``` python
+            return self.default_domain.attribute_node(nodes.SampleNearest(
+                geometry         = Domain.geo_dom(geometry, domain)[0],
+                sample_position  = sample_position, 
+                domain           = Domain.geo_dom(geometry, domain)[1]
+                )).index
+        ``` 
+        """
+        
+        if hasattr(geometry, 'is_domain_class'):
+            return geometry.data_socket, geometry.domain
+        else:
+            return geometry, domain
     
     # ====================================================================================================
     # Capture the attribute
@@ -1131,6 +1162,47 @@ class DataSocket(Socket):
         node.attr_domain.data_socket.stack(capt_node, 'geometry')
         
         return self.stack(capt_node, 'attribute')
+    
+    
+    # ====================================================================================================
+    # Methods implemented manually
+    
+    # ----------------------------------------------------------------------------------------------------
+    # Geometry proximity
+    
+    def geometry_proximity(self, target=None, source_position=None, target_element='FACES'):
+        """
+
+        > Node: [Geometry Proximity](GeometryNodeProximity.md) | [Blender reference](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/geometry_proximity.html) | [api reference](https://docs.blender.org/api/current/bpy.types.GeometryNodeProximity.html)
+
+        #### Args:
+        - target: Geometry
+        - source_position: Vector
+        - target_element (str): 'FACES' in [POINTS, EDGES, FACES]
+
+        ![Node Image](https://docs.blender.org/manual/en/latest/_images/node-types_GeometryNodeProximity.webp)
+
+        #### Returns:
+        - node with sockets ['position', 'distance']
+
+
+        """
+        
+        from geonodes.nodes import nodes
+        
+        geo, dom = self.geo_dom(target, target_element)
+        if dom == 'POINT':
+            dom = 'POINTS'
+        elif dom == 'EDGE':
+            dom = 'EDGES'
+        elif dom == 'FACE':
+            dom == 'FACESS'
+        else:
+            raise Exception(f"geometry proximity error: the domain of the target {target} must be POINTS, EDGES or FACES, not '{dom}'.")
+
+        return self.attribute_node(nodes.GeometryProximity(target=geo, source_position=source_position, target_element=dom))
+
+    
         
     
     

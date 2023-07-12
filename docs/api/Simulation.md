@@ -49,7 +49,7 @@ tree.og = simul.geometry
 A working demo:
     
 ``` python
-import geondes as gn
+import geonodes as gn
 
 with gn.Tree("Simulation demo", auto_capture=False) as tree:
     
