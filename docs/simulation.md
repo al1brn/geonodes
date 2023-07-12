@@ -26,9 +26,7 @@ The nodes are created by instanciating a **Simulation** class. The class constru
 import geonodes as gn
 
 with gn.Tree("Simul", auto_capture=False) as tree:
-
   # Create a simulation zone for the input geometry with one socket initialized to (0, 0, 0)
-
   simul = gn.Simulation(geometry=tree.ig, position=(0, 0, 0))
 ```
 
@@ -38,12 +36,10 @@ At creation time, the *geometry* sockets inside the simulation zone are not conn
 import geonodes as gn
 
 with gn.Tree("Simul", auto_capture=False) as tree:
-
   # Create a simulation zone for the input geometry with one socket initialized to (0, 0, 0)
   simul = gn.Simulation(geometry=tree.ig, position=(0, 0, 0))
 
   # Connect the sockets
-
   simul.close()
 ```
 
@@ -80,6 +76,9 @@ with gn.Tree("Simul", auto_capture=False) as tree:
     with gn.Simulation(geometry=gn.Mesh(tree.ig)) as simul:
         # Within the simulation zone, simul.geometry is the output socket of the input node        
         simul.geometry.verts.position_offset = gn.Vector.Random(-1, 1, seed=tree.frame).scale(.1)
+
+        # Now simul.geometry points to the output socket of a 'Set Position' node
+        # This will be connected to the simulation output node when closed
         
     # Outside the simulation zone, simul.geometry is the output socket of the output node
     # i.e. the result of the simulation
@@ -126,7 +125,7 @@ The following tree generates random points on the faces of the input geometry. E
 ``` python
 import geonodes as gn
 
-with gn.Tree("Simul", auto_capture = False) as tree:
+with gn.Tree("Simul", auto_capture=False) as tree:
     
     # Points on the input geometry (allegedly a mesh)
     
@@ -179,7 +178,7 @@ Rather than using the named attribute, we can use a simulation state named **top
 ``` python
 import geonodes as gn
 
-with gn.Tree("Simul", auto_capture = False) as tree:
+with gn.Tree("Simul", auto_capture=False) as tree:
     
     # Points on the input geometry (allegedly a mesh)
     
