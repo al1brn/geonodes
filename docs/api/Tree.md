@@ -136,9 +136,13 @@ Tree(self, tree_name, auto_capture=True, clear=False, group=False, fake_user=Fal
 
 [cur_frame](#cur_frame) | [frame](#frame) | [ig](#ig) | [input_geometry](#input_geometry) | [og](#og) | [output_geometry](#output_geometry) | [seconds](#seconds)
 
+**Class and static methods**
+
+[set_auto_labels](#set_auto_labels)
+
 **Methods**
 
-[activate](#activate) | [arrange](#arrange) | [check_attributes](#check_attributes) | [close](#close) | [get_bnode](#get_bnode) | [get_bnode_wrapper](#get_bnode_wrapper) | [get_bsocket_wrapper](#get_bsocket_wrapper) | [layout](#layout) | [new_group_input](#new_group_input) | [new_group_output](#new_group_output) | [new_input](#new_input) | [prev_node](#prev_node) | [register_node](#register_node) | [to_output](#to_output)
+[__exit__](#__exit__) | [activate](#activate) | [arrange](#arrange) | [check_attributes](#check_attributes) | [close](#close) | [get_bnode](#get_bnode) | [get_bnode_wrapper](#get_bnode_wrapper) | [get_bsocket_wrapper](#get_bsocket_wrapper) | [layout](#layout) | [new_group_input](#new_group_input) | [new_group_output](#new_group_output) | [new_input](#new_input) | [prev_node](#prev_node) | [register_node](#register_node) | [to_output](#to_output)
 
 ## Properties
 
@@ -206,7 +210,32 @@ tree.output_geometry = my_geometry
 
 <sub>Go to [top](#class-Tree) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
+## Class and static methods
+
+### set_auto_labels
+
+```python
+@staticmethod
+def set_auto_labels(new_vars)
+```
+
+----- Name the nodes after the variable names
+
+
+<sub>Go to [top](#class-Tree) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ## Methods
+
+### __exit__
+
+```python
+def __exit__(self, exception_type, exception_value, traceback)
+```
+
+----- Auto labels
+
+
+<sub>Go to [top](#class-Tree) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ### activate
 

@@ -1307,7 +1307,7 @@ def join(*geometry)
 ### matrix
 
 ```python
-def matrix(self, points)
+def matrix(self, points=None)
 ```
 
  Return a PointsMatrix with another POINT geometry.

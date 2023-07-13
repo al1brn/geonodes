@@ -46,7 +46,7 @@ with gn.Simulation(geometry=mesh) as simul:
 tree.og = simul.geometry
 ``` 
 
-A working demo:
+### A working demo:
     
 ``` python
 import geonodes as gn
@@ -202,14 +202,16 @@ with gn.Tree("Flow", auto_capture=False) as tree:
 
 ```python
 @classmethod
-def Trajectories(cls, simul, count=10)
+def Trajectories(cls, simulation, count=10)
 ```
 
  This constructor build a simulation zone building curves tracking points of another simulation zone.
 
 #### Args:
-- simul (Simulation) : the simulation zone having a geometry of type Points
+- simulation (Simulation) : the simulation zone having a geometry of type Points
 - count (int=10) : the number of frames to use for tracking
+Returns:
+- simulation with curves attribute
 
 
 

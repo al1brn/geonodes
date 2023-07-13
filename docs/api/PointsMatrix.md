@@ -5,7 +5,7 @@
 ### Constructor
 
 ```python
-PointsMatrix(self, x_geometry, y_geometry)
+PointsMatrix(self, x_geometry, y_geometry=None)
 ```
 
  Cross two geometries to perform computation on each couple of points between the two.
@@ -18,51 +18,106 @@ Both geometries must have a POINT domain: Mesh, Points or Curve.
 
 An intermediary cloud of points is created by instanciating 'y_geometry' on 'x_geometry' and then realizing
 the instances. The number of points of the resulting 'matrix' is the product of the numbers of points
-of the input geometries.
+of the input geometries. Whatever the types of geometries, they are internally typecasted to 'Points'.
 
-**Note**: whatever the types of geometries, the 'matrix' geometry are internally typecasted to 'Points'.
+**NOTE** Take care of the size of your geometries since multiplying big geometries could produce a huge number of points.
 
-To mix the attributes of the two geometries, use *x_attribute* and *y_attribute* methods.
-These methods take an attribute of their corresponding geometry.
+**Naming conventions**:
+- method starting by x_ or y_ accept indices from geometies:
+  - x_get : read values in the matrix with ``` x_geometry.index ```
+- method not starting by x_ or y_ accept indices in the matrix dimension
+  - get : read values from the whole matrix with ``` matrix.index ```
+  
+### Computing cells
 
-The example below shows how to compute the distance between the points of one geometry to the points of a second geometry:
+A cell operation combines values from x dimension with values from y dimension and stores the result in the matrix,
+one value per cell, i.e. per couple (x index, y index). For instance, the following line multiply values from the
+two dimensions:
     
 ``` python
-mesh   = gn.Mesh.Cube().mesh
-points = gn.Points.Points(10)
-
-matrix = PointsMatrix(mesh, points)
-dists = (matrix.x_attribute(mesh.verts.position) - matrix.y_attribute(points.points.position).length
-
-# Sum of the distances in the mesh vertices
-
-mesh.verts.store_named_attribute("dists sum", matrix.x_total(dists))
-
-# Sum of the distances in the points
-
-points.points.store_named_attribute("dists sum", matrix.y_total(dists))
+# a is an attribute of x geometry and b an attribute of y geometry
+prod = matrix.set_x(a) * matrix.set_y(b)
 ```
 
-The following piece of code is a full demo of PointsMatrix.
-The results can be viewed with the 'Viewer' nodes.
+It is important to use ``` set_x ``` and ``` set_y ``` methods which explode the attribute on the whole matrix.
+
+### Reading cells
+
+Cells are read along a dimension using ``` x_get ``` or ``` y_get ```. In the following example, the previous
+result is read in the x dimension, for y index = 2:
+    
+``` python
+x = matrix.x_get(prod, y_index=2)
+``` 
+
+### Total
+
+The main benefit of the matrix is the use of `Accumulate Field` node allowing to sum the values along a dimension.
+
+``` python
+prod = matrix.set_x(a) * matrix.set_y(b)
+# Total along the  y dimension into the x dimension
+total = matrix.x_total(prod)
+```
+
+### Square matrices
+
+A square matrix is a matrix where the sizes of the dimensions are equal. Square matrices offer specicific features:
+- **set_diagonal**: set values in the diagonal cells
+- **get_diagonal**: read the cells of the diagonal
+- **set_triangle**: set values in the triangle cells
+
+In the following example, the sum of all possible products is performed:
+    
+``` python
+# Only one argument produces a square matrix
+matrix = PointsMatrix(cloud)
+# Products of the radius
+prod = matrix.set_x(cloud.points.radius) * matrix.set_y(cloud.points.radius)
+# To have only one instance of the products, set the triangle values to 0, including the diagonal
+prod = matrix.set_triangle(prod, 0, diagonal=True)
+# Sum per points
+prod_sum = matrix.x_total(prod)
+```
+
+### Selections
+
+The PointsMatrix class exposes selection methods / properties:
+- sel_x 
+- sel_y
+- diagonal_selection
+
+The selection are used to selectively change a matrix wide attribute with ``` switch ``` :
+    
+``` python
+# v is a value in the matrix scope
+# Set the value to zero for y index == 3
+v = v.switch(matrix.sel_x(y_index=3), 0)
+# Set the diagonal to 0 (equivalent to matrix.set_diagonal(v, 0))
+v = matrix.set_diagonal(v, 0)
+```
+
+### Example
+
+The following piece of code is a full demo of PointsMatrix. The results can be viewed with the 'Viewer' nodes.
     
 ``` python
 import geonodes as gn
-
+        
 with gn.Tree("PointsMatrix Demo", auto_capture=False) as tree:
     
     # Let's build a 4x3 matrix
     
-    xg = gn.Curve.Line().resample(count=4)
-    yg = gn.Points.Points(3)
+    xg = gn.Curve.Line(end=(3, 0, 0)).to_points(count=4).points
+    yg = gn.Curve.Line(end=(0, 2, 0)).resample(count=3)
     
-    mx = PointsMatrix(xg, yg)
+    mx = gn.PointsMatrix(xg, yg)
     
     # Values 10, 20, 30, 40 for the x direction
-    x = mx.x_attribute((xg.points.index+1)*10)
+    x = mx.set_x((xg.points.index + 1)*10)
 
     # Values 1, 2, 3 for the y direction
-    y = mx.y_attribute(yg.points.index+1)
+    y = mx.set_y(yg.points.index + 1)
 
     # Matrix values are sums x + y
     # 11 21 31 41
@@ -86,7 +141,14 @@ with gn.Tree("PointsMatrix Demo", auto_capture=False) as tree:
     yg.points.store_named_attribute("Total", mx.y_total(sum))
     yg.view()
     
-    tree.og = xg + yg        
+    # Visualize the matrix points by setting z to the distance between the points
+    px = mx.set_x(xg.points.position)
+    py = mx.set_y(yg.points.position)
+    d = (py - px).length**4/100
+    
+    mx.matrix.points.position_offset = (0, 0, .1 + d)
+    
+    tree.og = xg + yg + mx.matrix       
 ```
 
 #### Args:
@@ -98,13 +160,31 @@ with gn.Tree("PointsMatrix Demo", auto_capture=False) as tree:
 
 ## Content
 
+**Properties**
+
+[diagonal_selection](#diagonal_selection)
+
 **Class and static methods**
 
-[Demo](#Demo) | [Rain](#Rain)
+[Demo](#Demo)
 
 **Methods**
 
-[accumulate](#accumulate) | [capture](#capture) | [set_id_x](#set_id_x) | [set_id_y](#set_id_y) | [x_attribute](#x_attribute) | [x_get](#x_get) | [x_leading](#x_leading) | [x_total](#x_total) | [x_trailing](#x_trailing) | [y_attribute](#y_attribute) | [y_get](#y_get) | [y_leading](#y_leading) | [y_total](#y_total) | [y_trailing](#y_trailing)
+[accumulate](#accumulate) | [capture](#capture) | [sel_x](#sel_x) | [sel_y](#sel_y) | [set_id_x](#set_id_x) | [set_id_y](#set_id_y) | [set_x](#set_x) | [set_y](#set_y) | [to_grid_shape](#to_grid_shape) | [x_attribute](#x_attribute) | [x_get](#x_get) | [x_leading](#x_leading) | [x_total](#x_total) | [x_trailing](#x_trailing) | [y_attribute](#y_attribute) | [y_get](#y_get) | [y_leading](#y_leading) | [y_total](#y_total) | [y_trailing](#y_trailing)
+
+## Properties
+
+### diagonal_selection
+
+ Build the selection for the diagonal of a sqaure matrix.
+
+#### Returns:
+- Boolean in the matrix scope
+
+
+
+
+<sub>Go to [top](#class-PointsMatrix) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
 ## Class and static methods
 
@@ -116,20 +196,6 @@ def Demo(nx=4, ny=3, name="PointsMatrix Demo")
 ```
 
  A demo of PointsMatrix?
-
-
-
-
-<sub>Go to [top](#class-PointsMatrix) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
-
-### Rain
-
-```python
-@staticmethod
-def Rain()
-```
-
- Simulate dips falling on water.
 
 
 
@@ -184,6 +250,43 @@ This method simply calls ``` self.matrix.points.capture_attribute(value) ```.
 
 <sub>Go to [top](#class-PointsMatrix) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
 
+### sel_x
+
+```python
+def sel_x(self, y_index=0)
+```
+
+ Build the selection for a line along the x dimension.
+
+#### Args:
+- y_index (Integer): y index of the line
+
+#### Returns:
+- Boolean in the matrix scope
+
+
+
+<sub>Go to [top](#class-PointsMatrix) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### sel_y
+
+```python
+def sel_y(self, x_index=0)
+```
+
+ Build the selection for a line along the y dimension.
+
+#### Args:
+- x_index (Integer): x index of the line
+
+#### Returns:
+- Boolean in the matrix scope
+
+
+
+
+<sub>Go to [top](#class-PointsMatrix) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
 ### set_id_x
 
 ```python
@@ -191,6 +294,8 @@ def set_id_x(self)
 ```
 
  Set matrix points ID to x index.
+
+Performed to compute the field accumulation along x axis.
 
 
 
@@ -203,6 +308,62 @@ def set_id_y(self)
 ```
 
  Set matrix points ID to y index.
+
+Performed to compute the field accumulation along y axis.
+
+
+
+<sub>Go to [top](#class-PointsMatrix) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### set_x
+
+```python
+def set_x(self, value)
+```
+
+ Value along x geometry is exploded in the whole matrix.
+
+Used in combination with 'set_y', allows to combine the two dimensions:
+    
+#### Args:
+- value (any): an x_geometry attribute
+
+#### Returns:
+- matrix.points attribute
+
+
+
+
+<sub>Go to [top](#class-PointsMatrix) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### set_y
+
+```python
+def set_y(self, value)
+```
+
+ Value along y geometry is exploded in the whole matrix.
+
+Used in combination with 'set_x', allows to combine the two dimensions:
+    
+#### Args:
+- value (any): an y_geometry attribute
+
+#### Returns:
+- matrix.points attribute
+
+
+
+
+<sub>Go to [top](#class-PointsMatrix) - [main](../index.md) - [nodes](nodes.md) - [nodes menus](nodes_menus.md)</sub>
+
+### to_grid_shape
+
+```python
+def to_grid_shape(self, size=.1, z=0)
+```
+
+ Arrange the matrix points into a grid shape (for tests).
 
 
 
@@ -223,13 +384,14 @@ def x_attribute(self, value)
 ### x_get
 
 ```python
-def x_get(self, value)
+def x_get(self, value, y_index=0)
 ```
 
  Get a value from the matrix with index of the x geometry.
 
 #### Args:
 - value : a matrix attribute
+- y_index (Integer=0) : y index
 
 #### Returns:
 - value along the x axis
@@ -316,13 +478,14 @@ def y_attribute(self, value)
 ### y_get
 
 ```python
-def y_get(self, value)
+def y_get(self, value, x_index=0)
 ```
 
  Get a value from the matrix with index of the y geometry.
 
 #### Args:
 - value : a matrix attribute
+- x_index (Integer=0) : x index
 
 #### Returns:
 - value along the y axis
