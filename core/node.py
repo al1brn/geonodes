@@ -359,6 +359,19 @@ class Node:
         self.bnode.label = self.get_label()
         
     # ---------------------------------------------------------------------------
+    # Auto label is set automatically
+    # The level of priority is less than label
+    
+    @property
+    def auto_label(self):
+        return self.label_
+    
+    @auto_label.setter
+    def auto_label(self, value):
+        if self.label_ is None:
+            self.label = value
+        
+    # ---------------------------------------------------------------------------
     # Chain label used when labeling chained nodes
     # eg: separate property of Vector is labeled: {chain_label}.separate
         

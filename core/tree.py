@@ -563,7 +563,6 @@ class Tree:
         
         # ----- The global variables
         
-        self.new_vars = {}
         self.locsmon  = LocalsMonitor()
         
         
@@ -571,7 +570,13 @@ class Tree:
         return self
     
     def __exit__(self, exception_type, exception_value, traceback):
-        self.new_vars = self.locsmon.close()
+        
+        # ----- Auto labels
+
+        Tree.set_auto_labels(self.locsmon.close())
+        
+        # ----- Close the tree
+
         self.close()
         
     def __str__(self):
@@ -865,13 +870,9 @@ class Tree:
             finally:
                 frame = self.layouts.pop()
                 
-                # ----- Naming nodes
+                # ----- Auto labels
                 
-                new_vars = frame.locsmon.close()
-                for k, v in self.new_vars.items():
-                    if not isinstance(v, DataSocket):
-                        continue
-                    v.node.label = k
+                Tree.set_auto_labels(frame.locsmon.close())
         
                 # ----- Close the frame
                 
@@ -1288,6 +1289,29 @@ class Tree:
     #
     # Called by __exit__
     
+    @staticmethod
+    def set_auto_labels(new_vars):
+        
+        # ----- Name the nodes after the variable names
+        
+        for k, v in new_vars.items():
+            if not isinstance(v, DataSocket):
+                continue
+            v.node.auto_label = k
+            
+        # ----- Name the named attributes after the attribute name
+        
+        tree = Tree.TREE
+        for node in tree.nodes:
+            if node.bl_idname not in ['GeometryNodeStoreNamedAttribute', 'GeometryNodeInputNamedAttribute']:
+                continue
+            
+            for socket in node.inputs:
+                if socket.bsocket.name == 'Name':
+                    if not socket.is_plugged:
+                        socket.node.auto_label = socket.bsocket.default_value
+        
+    
     def close(self):
         """ Call to indicate that the tree is completed and that it can be finalized
         
@@ -1299,14 +1323,7 @@ class Tree:
         - Nodes arrangement, see :func:`arrange`.   
                                            
         """
-        
-        # ----- The global variables
-        
-        for k, v in self.new_vars.items():
-            if not isinstance(v, DataSocket):
-                continue
-            v.node.label = k
-        
+
         # ----- Capture attributes
         
         if self.capture_attributes:

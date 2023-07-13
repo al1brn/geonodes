@@ -1210,6 +1210,8 @@ class Box:
                         fed_node = socket.links[0].to_node
                     
             self.single_left = self.single_left and (count == 1)
+            if node.bl_idname in ['NodeGroupInput', 'GeometryNodeSimulationInput']:
+                self.single_left = False
             
             # ----- Ensure single left is in the same frame
             

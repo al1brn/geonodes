@@ -342,10 +342,10 @@ class Socket:
         Returns:
             is plugged (bool)
         """
-        if self.is_input:
-            return bool(self.connected_sockets)
-        else:
+        if self.is_output:
             raise Exception(f"No 'is_plugged' property for output sockets: {self}")
+        else:
+            return bool(len(self.connected_sockets()))
     
     # ----------------------------------------------------------------------------------------------------
     # Data type from 
