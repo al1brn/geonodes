@@ -5,62 +5,76 @@ from pprint import pprint
 # Capture locals in the stack and compare with previous state to get the created variables
 
 class LocalsMonitor:
-    def __init__(self, f_call=lambda s: s.strip().startswith('with')):
+    def __init__(self):
+        """ Monitor the creation of variables between construction and new_war()
+        """
+        
+        # ----- Take a snaphot of the vars for each frame in the context
+        
+        self.snapshots = []
+        for frame in reversed(inspect.stack()):
+            self.snapshots.append((
+                frame.function,
+                [key for key in frame.frame.f_locals]
+                ))
+        
+    # ----------------------------------------------------------------------------------------------------
+    # Get the new variables created since the initialization
+        
+    def new_vars(self):
+        
+        # ----- Start from the bottom, last common frame in the stack
+        
+        calling_frame = None
+        for i, frame in enumerate(reversed(inspect.stack())):
+            if frame.function == self.snapshots[i][0]:
+                calling_frame = frame
+            else:
+                snapshot = self.snapshots[i - 1]
+                return {key: value for key, value in calling_frame.frame.f_locals.items() if not key in snapshot}
+  
+    # ----------------------------------------------------------------------------------------------------
+    # Get the new variables created since the initialization
+
+    def __str__(self):
+        stack = [f"{i}: ({function} [{len(sn)}])" for i, (function, sn) in enumerate(self.snapshots)]
+        return f"<LocalsMonitor, stack: " + ", ".join(stack) + ">"
+
+    # ====================================================================================================
+    # Dump the frames
+
+    @staticmethod
+    def dump_stack(title=""):
         
         frames = inspect.stack()
         
-        calling_frame = None
-        self.locals_snapshot = []
-        self.frame_depth = -1
-        for frame in frames:
-            
-            self.frame_depth += 1
-            
-            if frame is None:
-                continue
-            
-            code_context = frame.code_context
-            if code_context is None:
-                calling_frame = frame
-                break
-            
-            if f_call(code_context[0]):
-                calling_frame = frame
-                break
-                    
-        if calling_frame is None:
-            self.frame_depth = None
-            return
-        
-        self.locals_snapshot = [key for key in calling_frame.frame.f_locals]
-        
-    def close(self):
-        
-        if self.frame_depth is None:
-            return {}
-        
-        frame = inspect.stack()[self.frame_depth]
-            
-        return {key: value for key, value in frame.frame.f_locals.items() if not key in self.locals_snapshot}
-    
-    def __str__(self):
-        return f"<LocalsMonitor, ok={self.frame_depth is not None}, snapshot:\n" + "\n   ".join(self.locals_snapshot) + "\n>\n"
-    
-    @staticmethod
-    def dump_frames(frames):
         print("="*60)
-        print(f"Dump frames: {len(frames)}")
+        print(f"{title} - LocalsMonitor dump frames ({len(frames)})")
         for i, frame in enumerate(frames):
             
-            print(f"{i:3}> ", end = "")
-            if frame is None:
-                print("None")
-                continue
-            
+            print(f"{i:3d} ({len(frame.frame.f_locals):3d})>", list(frame.frame.f_locals.keys()))
             code_context = frame.code_context
             if code_context is None:
-                print("CC None", frame.frame.f_locals)
-                continue
-            
-            print(f"{code_context[0]:60s}")
+                print("    | CC None\n")
+            else:
+                print(f"    | {code_context[0]:60s}")
+                
+            for k in dir(frame):
+                if k.startswith('_'):
+                    continue
+                print(f"   frame.{k:12s} = {str(getattr(frame, k))[:30]}")
+            print()
+                
+        print()
+
+    # ====================================================================================================
+    # Dump new variables
+
+    @staticmethod
+    def dump_new_vars(new_vars, title=""):
+        
+        print("="*60)
+        print(f"{title} - LocalsMonitor dump new_vars ({len(new_vars)})")
+        for k, v in new_vars.items():
+            print(f"   {k:12s}: {str(v)[:30]}")
         print()

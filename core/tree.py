@@ -535,13 +535,14 @@ class Tree:
         """ Just for fun"""
         
         self.layouts = []
-        """ Stack of layouts (see :func:`layout`)"""
-        self.util_color = "dark_green"
-        """ Color code for internal layouts"""
-        self.gene_color = "dark_orange"
-        """ Color code for internal layouts"""
-        self.auto_color = "dark_rose"
-        """ Color code for internal layouts"""
+        
+        #""" Stack of layouts (see :func:`layout`)"""
+        #self.util_color = "dark_green"
+        #""" Color code for internal layouts"""
+        #self.gene_color = "dark_orange"
+        #""" Color code for internal layouts"""
+        #self.auto_color = "dark_rose"
+        #""" Color code for internal layouts"""
         
         # ----- Input and outputs
         
@@ -565,7 +566,6 @@ class Tree:
         
         self.locsmon  = LocalsMonitor()
         
-        
     def __enter__(self):
         return self
     
@@ -573,7 +573,7 @@ class Tree:
         
         # ----- Auto labels
 
-        Tree.set_auto_labels(self.locsmon.close())
+        Tree.set_auto_labels(self.locsmon.new_vars())
         
         # ----- Close the tree
 
@@ -845,13 +845,16 @@ class Tree:
         ```
         """
         
-        if isinstance(color, str):
-            if color.upper() == 'UTIL':
-                color = self.util_color
-            elif color.upper() == 'GENE':
-                color = self.gene_color
-            elif color.upper() == 'AUTO':
-                color = self.auto_color
+        if self.cur_frame is not None:
+            color = colors.sub_color(self.cur_frame.color)
+        
+        #if isinstance(color, str):
+        #    if color.upper() == 'UTIL':
+        #        color = self.util_color
+        #    elif color.upper() == 'GENE':
+        #        color = self.gene_color
+        #    elif color.upper() == 'AUTO':
+        #        color = self.auto_color
                 
         if self.disable_layouts:
             try:
@@ -872,7 +875,7 @@ class Tree:
                 
                 # ----- Auto labels
                 
-                Tree.set_auto_labels(frame.locsmon.close())
+                Tree.set_auto_labels(frame.locsmon.new_vars())
         
                 # ----- Close the frame
                 

@@ -7,22 +7,62 @@ Created on Thu May  5 09:22:32 2022
 """
 
 import numpy as np
+import mathutils
 
 # ----------------------------------------------------------------------------------------------------
-# Mathutils can't be imported by sphinx
-# Hack to simulate a correct loading
+# Create color from hsv
 
-try:
-    import mathutils
-except:
-    class mathutils:
-        @staticmethod
-        def Color(*args, **kwargs):
-            class C:
-                hsv = 0
-            return C()
+def Hsv(h, s, v):
+    col = mathutils.Color()
+    col.hsv = h, s, v
+    return col
+
+AUTO_LABEL = Hsv(.1, .9, .4) # Color for auto label nodes
+LABEL      = Hsv(.1, .9, .6) # Color for nodes with label
 
 # ----------------------------------------------------------------------------------------------------
+# Layout colors
+
+ADMIN_COLORS = {
+    'UTIL':  Hsv(.1, .95, .2),
+    'GENE':  Hsv(.2, .95, .2),
+    'AUTO':  Hsv(.9, .95, .2),
+    'ERROR': Hsv(1., .95, .2),
+    }
+
+
+
+count = 10
+layout_colors = np.zeros((count, 3), float)
+layout_colors[:, 0] = np.linspace(.4, .8, count)
+layout_colors[:, 1] = .95
+layout_colors[:, 2] = .2
+layout_index = 0
+
+def reset():
+    global layout_index
+    layout_index = 0
+
+def next_color():
+    global layout_index
+    c = color(layout_colors[layout_index])
+    layout_index += 1
+    return c
+
+def sub_color(color):
+    c = mathutils.Color(color)
+    c.v *= 1.3
+    return c
+
+def admin_color(key):
+    try:
+        return ADMIN_COLORS[key.upper()]
+    except:
+        return None
+
+
+# ----------------------------------------------------------------------------------------------------
+# OLD Version
 
 np.random.seed = 0
 count = 1000
@@ -70,6 +110,9 @@ def color(name, saturation=None, value=None):
             hsv = name
             
     elif type(name) is str:
+        
+        if name.upper() in ADMIN_COLORS:
+            return ADMIN_COLORS[name.upper()]
 
         name  = name.lower().replace(' ', '_')
         
@@ -108,16 +151,6 @@ def color(name, saturation=None, value=None):
         
     return c
 
-def next_color():
-    global color_stack_index
-    c = color(color_stack[color_stack_index])
-    color_stack_index += 1
-    return c
-
-def reset():
-    global color_stack_index
-    color_stack_index = 0
-    
 
 white         = color('white')
 black         = color('black')

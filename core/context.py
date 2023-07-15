@@ -14,6 +14,7 @@ Created on Sun Dec 18 10:54:06 2022
 # These variables are managed by class Tree
 
 import bpy
+import mathutils
 import logging
 logger = logging.getLogger('geonodes')
 

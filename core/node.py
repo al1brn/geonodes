@@ -357,6 +357,7 @@ class Node:
     def label(self, value):
         self.label_ = value
         self.bnode.label = self.get_label()
+        self.node_color = colors.LABEL
         
     # ---------------------------------------------------------------------------
     # Auto label is set automatically
@@ -368,8 +369,12 @@ class Node:
     
     @auto_label.setter
     def auto_label(self, value):
+        if self.bnode.bl_idname in ['NodeGroupInput', 'GeometryNodeSimulationInput', 'GeometryNodeSimulationInput']:
+            return
+
         if self.label_ is None:
             self.label = value
+            self.node_color = colors.AUTO_LABEL
         
     # ---------------------------------------------------------------------------
     # Chain label used when labeling chained nodes
