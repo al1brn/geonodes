@@ -118,22 +118,80 @@ with GeoNodes("Geometry Nodes name", options) as tree:
     ...
 ```
 
-Inside the with statment block, nodes can be created by using the cammel case version of their user name:
+Inside the with statment block, nodes can be created by using the camel case version of their user name:
+
+```python
+with GeoNodes("Demo") as tree:
+     # Create an Ico Sphere with default initial values
+     node = tree.IcoSphere()
+```
+
+At initialization time, the sockets can be set using arguments. The arguments are the snake case of the socket names:
+
+```python
+with GeoNodes("Demo") as tree:
+    # Create an Ico Sphre with custom initial values
+    node = tree.IcoSphere(radius=2, subdivisions=3)
+```
+
+The sockets can also be set afterwards:
 
 ``` python
-# Create "Set Material" node
-node = tree.SetMaterial()
+with GeoNodes("Demo") as tree:
+    node = tree.IcoSphere()
+    node.radius=2
+    node.subdivisions = 3
 ``` 
+
+The sphere geometry can be read from the node output socket named
+
+``` python
+with GeoNodes("Demo") as tree:
+    node = tree.IcoSphere(radius=2, subdivisions=3)
+    sphere = node.mesh
+    # If the sphere uv map is required
+    uvmap = node.uv_map
+```
+
+Other nodes can be created using the geometry as input. Rather than using the node class name, one can use a method of the socket.
+The following example shows two ways to create the node "Set Material":
+- Creating the node with SetMaterial
+- Using the methode set_material of the Geometry class
+
+``` python
+with GeoNodes("Demo") as tree:
+    node = tree.IcoSphere(radius=2, subdivisions=3)
+    sphere = node.mesh
+    uvmap = node.uv_map
+    
+    sphere = tree.SetMaterial(geometry=sphere, material="Material").geometry
+    
+    # or, better
+    
+    sphere.set_material("Material")
+```
+
+In addition to create the node, the set_material method makes the python sphere variable points to the output socket of the newly created node:
+- Before calling set_material method : sphere is the IcoSphere.mesh socket
+- After calling set_material method : sphere is the SetMaterial.geometry method
+
+Note that in this example, the material socket accept:
+- None to keep the material socket empty
+- A string as the name of an existing Material
+- A Blender Material object
+- A socket
+
+    
+  
+
+
 
 **geonodes** presents the nodes sockets as classes and the nodes as methods.
 
 Rather than thinking : _"What are the inputs of the 'Set Curve Tilt' node to change the tilt of spline #2?"_,
 you take benefit of an object oriented language and simply write:
 
-```python
-with GeoNodes("Demo") as tree:
-     node = tree.IcoSphere()
-```
+
 
 ### Geometry classes
 
