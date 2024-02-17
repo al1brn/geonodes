@@ -156,7 +156,7 @@ with GeoNodes("Demo") as tree:
 Other nodes can be created using the geometry as input. Rather than using the node class name, one can use a method of the socket.
 The following example shows two ways to create the node "Set Material":
 - Creating the node with SetMaterial
-- Using the methode set_material of the Geometry class
+- Using the method set_material of the Geometry class
 
 ``` python
 with GeoNodes("Demo") as tree:
