@@ -181,136 +181,28 @@ Note that in this example, the material socket accept:
 - A Blender Material object
 - A socket
 
-    
-  
+To plug a geometry to the group input node as the result of the Geometry Node modifier, use the socket `tree.output_socket':
 
-
-
-**geonodes** presents the nodes sockets as classes and the nodes as methods.
-
-Rather than thinking : _"What are the inputs of the 'Set Curve Tilt' node to change the tilt of spline #2?"_,
-you take benefit of an object oriented language and simply write:
-
-
-
-### Geometry classes
-
-The geometry classes are:
-- [Mesh](docs/api/Mesh.md)
-- [Curve](docs/api/Curve.md)
-- [Points](docs/api/Points.md)
-- [Instances](docs/api/Instances.md)
-- [Volume](docs/api/Volume.md)
-
-### Domains
-
-In geometry nodes, attributes refer to [domains](docs/api/Domain.md) such as Point, Corner, Face, Spline... 
-
-**geonodes** implement [domains](https://al1brn.github.io/geonodes/domains.html) as properties of geometry classes.
-- Mesh
-  - [verts](docs/api/Vertex.md)
-  - [faces](docs/api/Face.md)
-  - [edges](docs/api/Edge.md)
-  - [corners](docs/api/Corner.md)
-- Curve
-  - [points](docs/api/ControlPoint.md)
-  - [splines](docs/api/Spline.md)
-- Points cloud
-  - [points](docs/api/CloudPoint.md)
-- Instances
-  - [insts](docs/api/Instance.md)
-
-Attributes are properties or domain properties, for instances:
-
-```python
-
-mesh.verts.position += (0, 0, 1)        # All the mesh points are moved 1 upwards (node 'Set Position')
-cloud = mesh.faces.distribute_points()  # Node 'Distribute Points on Faces'
-mesh.edges.extrude()                    # Node 'Extrude Mesh' with option 'Edges'
-curve.splines.type = 'BEZIER'           # Curve splines type to BEZIER
-curve.points.handle_type = 'FREE'       # Curve handle type to FREE
-instances.insts[0].position = (1, 2, 3) # The instance # 0 is set at position (1, 2, 3)
-
+``` python
+with GeoNodes("Demo") as tree:
+    sphere = tree.IcoSphere(radius=2, subdivisions=3).mesh
+    sphere.set_material("Material")
+    tree.output_geometry = sphere
 ```
 
-**Note 1:** **Mesh** and **Curve** have several domains, respectively (**verts**, **faces**, **edges**, **corners*) and (**splines**, **points**),
-when **Points** and **Instances** have only one domain each, respectively **points** and **insts**.
+Similary, input geometry can be read from the input node using the tree.input_geometry socket.
+Custom parameters can be created using tree.xxx_input methods as shown in the example below:
 
-### Values
-
-To manipulate geometry, the available classes are:
-- [Boolean](docs/api/Boolean.md)
-- [Integer](docs/api/Integer.md)
-- [Float](docs/api/Float.md)
-- [Vector](docs/api/Vector.md)
-- [Color](docs/api/Color.md)
-- [String](docs/api/String.md)
-
-These values are used as arguments of geometry and domain classes. With the notable exception of **Booleans**,
-the values can be manipulated with python operators:
-
-```python
-import geonodes as gn
-
-with gn.Tree("Geometry Nodes") as tree:
-
-    count = gn.Integer.Input(2, "Subdivisions")     # Creation of a modifier input parameter
+``` python
+with GeoNodes("Demo") as tree:
+    radius = tree.float_input("Radius", 1.)
+    subs   = tree.int_input("Subdivisions", 3, min_value=1, max_value=6, description="Ico sphere subdivisions. Don't be too ambitious!")
+    mat    = tree.material_input("Material")
     
-    sphere = gn.Mesh.IcoSphere(subdivisions=count)  # Creation primitives are implemented as class static methods
-    n = sphere.verts.count                          # count is generated with node 'Attribute statistic'
-    v = gn.sqrt(n + 10)                             # Standard math functions are available as global functions
-                                                    # standard operators can be used between values or between values and python data
-    
-    label = (gn.String("The square root of the number of vertices + 10 is: ") + gn.String.Value(v, 3)).to_curves().curve_instances
-    
-    location = gn.Vector()                          # Creation of null vector
-    location += (1, v, 3)                           # Triplets can be used. Triplets can include geonodes types
-    
-    label.transform(translation=location, rotation=(gn.pi/2, 0, 0))
-    
-    tree.output_geometry = label + sphere           # Addition between geometries is implemented with the node 'Join Geometry'
-                                                    # Setting the output_geometry property defines the ouput geometry
+    sphere = tree.IcoSphere(radius=radius, subdivisions=subs).mesh
+    sphere.set_material(mat)
+    tree.output_geometry = sphere
 ```
-
-### Booleans
-
-**geonodes** Booleans can't be manipulated with standard python operators:
-
-```python
-a = gn.Boolean(True)
-b = gn.Boolean(False)
-c = a or b            # No logical operation is performed, c has the value of a
-d = gn.b_or(a, b)     # The right instruction to compute a logical operation in geometry nodes
-d = a.b_or(b)         # Alternative syntax: boolean operators are also implemented as methods
-```
-
-Similary, logical operations between values can't be used:
-
-```python
-i = gn.Integer(10)
-a = i == 10           # a is a python bool, not a geonodes Boolean
-b = i.equal(10)       # Correct way to compare two values in geonodes
-```
-
-To ease the way to implement logical operations in geonodes, `+`, `-` and `*` can be used as alernative to `or`, `not` and `and`:
-
-```python
-a = gn.Boolean(True)
-b = gn.Boolean(False)
-c = a + b      # a or b
-d = a * b      # a and b
-e = -a         # not a
-```
-
-### Other sockets
-
-Other data are available through the following classes:
-
-  - [Collection](docs/api/Collection.md)
-  - [Object](docs/api/Object.md)
-  - [Image](docs/api/Image.md)
-  - [Texture](docs/api/Texture.md)
-  - [Material](docs/api/Material.md)
 
 ## Naming
 
