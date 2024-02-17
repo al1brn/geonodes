@@ -205,11 +205,15 @@ with Shader("Ico Shader") as tree:
 # A variable Ico Sphere using our shader
 
 with GeoNodes("Demo") as tree:
+    # Let's expose two parameters
     radius = tree.float_input("Radius", 1.)
     subs   = tree.int_input("Subdivisions", 3, min_value=1, max_value=6, description="Ico sphere subdivisions. Don't be too ambitious!")
-    
+
+    # An ico sphere with out material
     sphere = tree.IcoSphere(radius=radius, subdivisions=subs).mesh
     sphere.set_material("Ico Shader")
+
+    # Let's plug it into the modifier output
     tree.output_geometry = sphere
 ```
 
