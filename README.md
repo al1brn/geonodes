@@ -82,7 +82,6 @@ After the install, the Blender scripts hierarchy should look like:
                __init__.py
                core/
                nodes/
-               sockets/
                ...
 ```
 
@@ -92,15 +91,39 @@ To make the module available in your script, use `import` in your script:
 import geonodes as gn
 ```
 
+or
+
+``` python
+from geonodes import GeoNodes, Shader
+```
+
 > `gn` is the recommended alias for geonodes.
 
 ## Documentation
 
 Uses [index](docs/index.md) to gain access to the list of availables classes.
 
-## Scripting geometry
+## Scripting nodes
 
-Geometry nodes are global functions operating on geometry passed through sockets.
+All nodes belong to a tree. 4 types are available:
+- GeoNodes : Geometry Nodes
+- Shader : Shader Nodes
+- Compositor : Compositor Nodes
+- Texture : Texture Nodes
+
+A tree is created using the with statement:
+
+``` python
+with GeoNodes("Geometry Nodes name", options) as tree:
+    ...
+```
+
+Inside the with statment block, nodes can be created by using the cammel case version of their user name:
+
+``` python
+# Create "Set Material" node
+node = tree.SetMaterial()
+``` 
 
 **geonodes** presents the nodes sockets as classes and the nodes as methods.
 
@@ -108,9 +131,8 @@ Rather than thinking : _"What are the inputs of the 'Set Curve Tilt' node to cha
 you take benefit of an object oriented language and simply write:
 
 ```python
-
-curve.splines[2].tilt = 1
-
+with GeoNodes("Demo") as tree:
+     node = tree.IcoSphere()
 ```
 
 ### Geometry classes
