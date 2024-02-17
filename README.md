@@ -175,7 +175,7 @@ In addition to create the node, the set_material method makes the python sphere 
 - Before calling set_material method : sphere is the IcoSphere.mesh socket
 - After calling set_material method : sphere is the SetMaterial.geometry method
 
-Note that in this example, the material socket accept:
+Note that in this example, the material socket accepts:
 - None to keep the material socket empty
 - A string as the name of an existing Material
 - A Blender Material object
