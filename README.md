@@ -181,7 +181,7 @@ Note that in this example, the material socket accepts:
 - A Blender Material object
 - A socket
 
-To plug a geometry to the group input node as the result of the Geometry Node modifier, use the socket `tree.output_socket':
+To plug a geometry to the group input node as the result of the Geometry Node modifier, use the socket `tree.output_socket`:
 
 ``` python
 with GeoNodes("Demo") as tree:
