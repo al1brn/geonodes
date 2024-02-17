@@ -106,10 +106,10 @@ Uses [index](docs/index.md) to gain access to the list of availables classes.
 ## Scripting nodes overview
 
 All nodes belong to a tree. 4 types are available:
-- GeoNodes : Geometry Nodes
-- Shader : Shader Nodes
-- Compositor : Compositor Nodes
-- Texture : Texture Nodes
+- `GeoNodes` : Geometry Nodes
+- `Shader` : Shader Nodes
+- `Compositor` : Compositor Nodes
+- `Texture` : Texture Nodes
 
 A tree is created using the with statement:
 
@@ -155,8 +155,8 @@ with GeoNodes("Demo") as tree:
 
 Other nodes can be created using the geometry as input. Rather than using the node class name, one can use a method of the socket.
 The following example shows two ways to create the node "Set Material":
-- Creating the node with SetMaterial
-- Using the method set_material of the Geometry class
+- Creating the node with `SetMaterial`
+- Using the method `set_material` of the `Geometry` class
 
 ``` python
 with GeoNodes("Demo") as tree:
@@ -171,17 +171,17 @@ with GeoNodes("Demo") as tree:
     sphere.set_material("Material")
 ```
 
-In addition to create the node, the set_material method makes the python sphere variable points to the output socket of the newly created node:
-- Before calling set_material method : sphere is the IcoSphere.mesh socket
-- After calling set_material method : sphere is the SetMaterial.geometry method
+In addition to create the node, the `set_material` method makes the python `sphere` variable points to the output socket of the newly created node:
+- Before calling `set_material` method : `sphere` is the `IcoSphere.mesh` socket
+- After calling `set_material` method : `sphere` is the `SetMaterial.geometry` method
 
-Note that in this example, the material socket accepts:
-- None to keep the material socket empty
+Note that in this example, the `material` socket accepts:
+- `None` to keep the material socket empty
 - A string as the name of an existing Material
 - A Blender Material object
 - A socket
 
-To plug a geometry to the group input node as the result of the Geometry Node modifier, use the socket `tree.output_socket`:
+To plug a geometry to the group input node as the result of the Geometry Node modifier, use the socket `tree.output_geometry`:
 
 ``` python
 with GeoNodes("Demo") as tree:
@@ -190,8 +190,8 @@ with GeoNodes("Demo") as tree:
     tree.output_geometry = sphere
 ```
 
-Similary, input geometry can be read from the input node using the tree.input_geometry socket.
-Custom parameters can be created using tree.xxx_input methods as shown in the example below:
+Similary, input geometry can be read from the input node using the `tree.input_geometry` socket.
+Custom parameters can be created using `tree.xxx_input` methods as shown in the example below:
 
 ``` python
 from geonodes import GeoNodes, Shader
