@@ -4,22 +4,39 @@
 Created on Sat Feb 10 10:55:10 2024
 
 @author: alain
+
+-----------------------------------------------------
+geonodes module
+- Generates nodes with python
+- Use numpy to manage vertices
+-----------------------------------------------------
+
+module : nodeinfo
+-----------------
+- Dynamically build the node clases and the socket classes
+- NodeInfo.__init__:
+    - analyze the nodes
+    - create the associated class
+    - create the socket classes
+    - create some sockets methods
+    - implement the custom functions declared with custom.add_function
+The dynamic biulding is triggered by the instanciation of a Tree class by calling nodeinfo.tree_class_setup.
+
+update : 2024/02/17
 """
 
 from pprint import pprint
 
 import bpy
-from geopy.nodes import documentation
-from geopy.nodes import constants
-from geopy.nodes import custom
-from geopy.nodes import utils
-from geopy.nodes import treestack
-from geopy.nodes.treestack import StackedTree, StackedNode
-from geopy.nodes.sockets import Socket, Sockets
+from geonodes.nodes import documentation
+from geonodes.nodes import constants
+from geonodes.nodes import custom
+from geonodes.nodes import utils
+from geonodes.nodes import treestack
+from geonodes.nodes.treestack import StackedTree, StackedNode
+from geonodes.nodes.sockets import Socket, Sockets
 
-from geopy.nodes import sockets
-
-IMPORT = f"\t{constants.IMPORT_STMT} current_tree\n"
+from geonodes.nodes import sockets
 
 # ====================================================================================================
 # Analyze a node
@@ -258,7 +275,7 @@ class NodeInfo:
             name = constants.CONSTANT_NODES[self.class_name]
             
             s = f"def {name}({name}, node_label=None, node_color=None):\n"
-            s += f"\t{constants.IMPORT_STMT} current_tree\n"
+            s += constants.IMPORT_TREE
             if name == 'material':
                 s += f"\tmaterial = current_tree().Material._material_value(material)\n"
             if name == 'image':
@@ -1131,6 +1148,8 @@ def tree_class_setup(tree_type):
 
     treestack.del_tree(btree.name)
     
+# ====================================================================================================
+# Imort tree dictionaty into locals
     
 def tree_import(tree_type, names):
     for name, obj in constants.tree_dict(tree_type).items():

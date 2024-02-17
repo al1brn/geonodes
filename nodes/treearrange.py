@@ -4,6 +4,18 @@
 Created on Wed Aug 24 07:40:10 2022
 
 @author: alain
+
+-----------------------------------------------------
+geonodes module
+- Generates nodes with python
+- Use numpy to manage vertices
+-----------------------------------------------------
+
+module : arrange
+----------------
+- Arrange the nodes
+
+update : 2024/02/17
 """
 
 from pprint import pprint

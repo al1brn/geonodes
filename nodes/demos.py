@@ -6,7 +6,7 @@ Created on Mon Feb 12 15:17:44 2024
 @author: alain
 """
 
-from geopy.nodes.tree import GeoNodes
+from geonodes.nodes.tree import GeoNodes
 
 # ====================================================================================================
 # Test tree input sockets

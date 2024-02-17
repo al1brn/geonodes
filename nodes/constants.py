@@ -4,27 +4,42 @@
 Created on Mon Feb 12 07:14:33 2024
 
 @author: alain
+
+-----------------------------------------------------
+geonodes module
+- Generates nodes with python
+- Use numpy to manage vertices
+-----------------------------------------------------
+
+module : constants
+------------------
+- low level constants uses by dynamic nodes generator
+- dictionaries used to register the class created dynamically
+
+update : 2024/02/17
 """
 
 from pprint import pprint
 
-#from geopy.nodes.documentation import doc_dict, cross_ref_dict
-
 # ====================================================================================================
 # Import statement to include in dynamic source code
 
-CONSTANTS_IMPORT_STMT  = "from geopy.nodes import constants\n"
-CONST_MODULE = "constants"
-IMPORT_STMT  = "from geopy.nodes.constants import"
+CONSTANTS_IMPORT_STMT  = "from geonodes.nodes import constants\n"
+CONST_MODULE           = "constants"
+IMPORT_STMT            = "from geonodes.nodes.constants import"
 
-BASE_NODE = "StackedNode"
-IMPORT_BASE_NODE = f"\tfrom geopy.nodes.treestack import {BASE_NODE}\n"
+BASE_NODE              = "StackedNode"
+IMPORT_BASE_NODE       = f"\tfrom geonodes.nodes.treestack import {BASE_NODE}\n"
 
-CUR_TREE = "current_tree"
-IMPORT_TREE = f"\tfrom geopy.nodes.constants import {CUR_TREE}\n"
+CUR_TREE               = "current_tree"
+IMPORT_TREE            = f"\tfrom geonodes.nodes.constants import {CUR_TREE}\n"
 
 # ====================================================================================================
 # Tree stack
+#
+# One tree can be edited at a time.
+# The current tree is stacked
+# The method constants.current_tree() returns the current tree
 
 TREE_STACK  = []
 FRAME_STACK = []
@@ -192,21 +207,60 @@ def dynamic_dict(DICT, tree_type):
     return d
 
 def nodesocket_classes(tree_type=None):
+    """ Returns the dictionary registring the node socket classes.
+    
+    Arguments
+    ---------
+        - tree_type (str) : valid blender tree type
+        
+    Returns
+    -------
+        - dict
+    """
+    
     return dynamic_dict(NODESOCKET_CLASSES, tree_type)
 
 def socket_classes(tree_type=None):
+    """ Returns the dictionary registring the socket classes.
+    
+    Arguments
+    ---------
+        - tree_type (str) : valid blender tree type
+        
+    Returns
+    -------
+        - dict
+    """
+    
     return dynamic_dict(SOCKET_CLASSES, tree_type)
 
 def node_classes(tree_type=None):
+    """ Returns the dictionary registring the node classes.
+    
+    Arguments
+    ---------
+        - tree_type (str) : valid blender tree type
+        
+    Returns
+    -------
+        - dict
+    """
+    
     return dynamic_dict(NODE_CLASSES, tree_type)
 
 def tree_dict(tree_type=None):
+    """ Returns the global dictionary registring all the dynamic classes and functions.
+    
+    Arguments
+    ---------
+        - tree_type (str) : valid blender tree type
+        
+    Returns
+    -------
+        - dict
+    """
+    
     return dynamic_dict(TREE_DICTS, tree_type)
-
-
-
-        
-        
         
             
         

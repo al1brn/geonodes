@@ -1,19 +1,26 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Blender Python Geometry module
+Created on Mon Feb 12 07:14:33 2024
 
-Created on Fri Nov  3 09:36:21 2023
+@author: alain
 
-@author: alain.bernard
-@email: alain@ligloo.net
+-----------------------------------------------------
+geonodes module
+- Generates nodes with python
+- Use numpy to manage vertices
+-----------------------------------------------------
 
------
+module : sockets
+----------------
+- Socket wrapper
+- Sockets wrapper
+- Domain class
+- Geometry root class
 
-Python to nodes module
+Socket and Sockets are used both for dynamic nodes building and running.
 
-List of Sockets
-
+update : 2024/02/17
 """
 
 from pprint import pprint
@@ -21,8 +28,8 @@ from pprint import pprint
 import numpy as np
 
 import bpy
-from geopy.nodes import constants
-from geopy.nodes import utils
+from geonodes.nodes import constants
+from geonodes.nodes import utils
 
 
 # ====================================================================================================
@@ -30,7 +37,7 @@ from geopy.nodes import utils
 # Wrap a blender NodeSocket instance or a python value which can be used to initialize an input socket
 
 class Socket:
-    
+
     def __new__(cls, bsocket):
         
         if cls == Socket:

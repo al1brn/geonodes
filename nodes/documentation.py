@@ -4,6 +4,19 @@
 Created on Fri Feb 16 07:20:36 2024
 
 @author: alain
+
+-----------------------------------------------------
+geonodes module
+- Generates nodes with python
+- Use numpy to manage vertices
+-----------------------------------------------------
+
+module : documentation
+----------------------
+- dynamic nodes documentation
+- static document builder
+
+update : 2024/02/17
 """
 
 from pprint import pprint
@@ -21,6 +34,23 @@ CROSS_REF_DICT = {}
 # Dynamic access
 
 def doc_dict(tree_type, class_name=None):
+    """ Get a doc dictionary dedicated to a given tree type.
+    
+    Create the dictionary if it doesn't exist
+    
+    A tree type dictionary contains:
+        - 'GLOBAL' : a dictionary for global functions such as sin or tan
+        - On dictionary per entry
+    
+    Arguments
+    ---------
+        - tree_type (str) : valid blender tree type
+        - class_name (str = None) : class name entry
+        
+    Returns
+    -------
+        - dict
+    """
     
     dct = DOCUMENTATION_DICT.get(tree_type)
     if dct is None:
@@ -44,9 +74,38 @@ def doc_dict(tree_type, class_name=None):
     return d
 
 def global_doc_dict(tree_type):
+    """ Get the global dictionary for a tree type.
+    
+    Arguments
+    ---------
+        - tree_type (str) : valid blender tree type
+        
+    Returns
+    -------
+        - dict
+    """
+    
     return doc_dict(tree_type, class_name = 'GLOBAL')
 
 def cross_ref_dict(tree_type=None, class_name=None):
+    """ Get the cross ref dictionary for a tree type.
+    
+    The cross reference provides an entry per method or function implementing a node class.
+    
+    cross_ref[Math] = {'GLOBAL' : ['sin', 'cos', ...],
+                       'Float'  : ['sin', 'cos', ...],
+                       'Int';   : ['sin', 'cos', ...],
+                       }
+    
+    Arguments
+    ---------
+        - tree_type (str) : valid blender tree type
+        - class_name : Node class name
+        
+    Returns
+    -------
+        - dict
+    """
     
     dct = CROSS_REF_DICT.get(tree_type)
     if dct is None:
@@ -63,6 +122,22 @@ def cross_ref_dict(tree_type=None, class_name=None):
     return d
 
 def new_cross_ref(tree_type, class_name, target=None, name=None):
+    """ Register a new cross reference for a node.
+    
+    Name is the name of the global function or of the target class method.
+    If name is None, the cross_ref dict is created for further use.
+    An empty dict means that the Node is not implemented.
+    
+    Target is the name of the socket class implementing the node.
+    Use 'target=None' for global functions.
+    
+    Arguments
+    ---------
+        - tree_type (str) : valid blender tree type
+        - class_name (str) : Node class name
+        - target (str = None) : class name using the node
+        - name (str = None) : method name using the node
+    """    
         
     dct = cross_ref_dict(tree_type, class_name)
 

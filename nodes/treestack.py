@@ -4,13 +4,28 @@
 Created on Sat Feb 10 10:30:38 2024
 
 @author: alain
+
+-----------------------------------------------------
+geonodes module
+- Generates nodes with python
+- Use numpy to manage vertices
+-----------------------------------------------------
+
+module : treestack
+------------------
+- get create trees according tree type
+- StakedTree offering context management for with statement
+- StackedNode implementing roog method and context management for layouts
+- Trees offering groups management
+
+update : 2024/02/17
 """
 
 import bpy
 
-from geopy.nodes import constants
-from geopy.nodes import utils
-from geopy.nodes import sockets
+from geonodes.nodes import constants
+from geonodes.nodes import utils
+from geonodes.nodes import sockets
 
 # ====================================================================================================
 # Get / delete a tree

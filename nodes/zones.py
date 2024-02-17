@@ -6,9 +6,9 @@ Created on Tue Jun 27 10:08:03 2023
 @author: alain
 """
 
-from geopy.nodes.tree import GeoNodes
-from geopy.nodes.constants import current_tree
-from geopy.nodes import utils
+from geonodes.nodes.tree import GeoNodes
+from geonodes.nodes.constants import current_tree
+from geonodes.nodes import utils
 
 # ====================================================================================================
 # Simulation zone
@@ -61,7 +61,7 @@ class Simulation:
     ### A working demo:
         
     ``` python
-    from geopy.nodes import GeoNodes
+    from geonodes.nodes import GeoNodes
     
     with GeoNodes("Simulation demo") as tree:
         

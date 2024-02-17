@@ -1,18 +1,25 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Blender Python Geometry module
+Created on Sat Feb 10 10:55:10 2024
 
-Created on Fri Nov  3 09:36:21 2023
+@author: alain
 
-@author: alain.bernard
-@email: alain@ligloo.net
+-----------------------------------------------------
+geonodes module
+- Generates nodes with python
+- Use numpy to manage vertices
+-----------------------------------------------------
 
------
+module : tree
+-------------
+- Tree root class
+- GeoNodes for Geometry Nodes trees
+- Shader for Shader Nodes trees
+- Compositor for Compositor Nodes Trees
+- Texture for Texture Nodes Trees
 
-Python to nodes module
-
-Tree Class
+update : 2024/02/17
 """
 
 from pprint import pprint
@@ -20,15 +27,15 @@ from pprint import pprint
 import numpy as np
 
 import bpy
-from geopy.nodes import constants
-from geopy.nodes import utils
-from geopy.nodes import treestack
-from geopy.nodes import sockets
-from geopy.nodes.treestack import StackedTree, StackedNode, Trees
-from geopy.nodes.sockets import Socket, Sockets
-from geopy.nodes import nodeinfo
+from geonodes.nodes import constants
+from geonodes.nodes import utils
+from geonodes.nodes import treestack
+from geonodes.nodes import sockets
+from geonodes.nodes.treestack import StackedTree, StackedNode, Trees
+from geonodes.nodes.sockets import Socket, Sockets
+from geonodes.nodes import nodeinfo
 
-from geopy.nodes.treearrange import arrange
+from geonodes.nodes.treearrange import arrange
 
 
 # ====================================================================================================
@@ -531,223 +538,9 @@ class Tree(StackedTree):
             setattr(node, k, v)
             
         return node
-
-
-
-
-
-
-
-
-class Tree_OLD(StackedTree):
-
-    def __init__(self, name, create=True, clear=False, is_group=False):
-        
-        if not self.INIT:
-            self.class_setup()
-        
-        self.is_group = is_group
-            
-        if isinstance(name, str):
-            self.btree = utils.get_tree(name, self.tree_type, create=create, clear=False)
-        else:
-            self.btree = name
-            
-        self.btree.is_modifier = not self.is_group
-            
-        if clear:
-            self.clear()
-            
-    def clear(self):
-        self.btree.nodes.clear()
-
-    # ====================================================================================================
-    # Str
-        
-    def __str__(self):
-        return f"<Tree '{self.btree.name}' ({self.tree_type}): {len(self.btree.nodes)} nodes and {len(self.btree.links)} links>"
-
-    # ====================================================================================================
-    # Class Initialization
-    # - add node creation methods
-            
-    @classmethod
-    def class_setup(cls):
-        
-        btree = utils.get_tree("GEOPY - Temp", tree_type=cls.tree_type, create=True, clear=True)
-    
-        for type_name in dir(bpy.types):
-            try:
-                bnode = btree.nodes.new(type=type_name)
-            except RuntimeError as e:
-                continue
-            
-            if 'legacy' in bnode.name.lower():
-                continue
-            
-            cls.create_node_class(btree, bnode)  
-                
-        utils.del_tree(btree.name)
-        
-        cls.INIT = True        
-
-
-
-
-
-    # ====================================================================================================
-    # Has user input / output
-    
-    # Node access
-        
-    def node_OLD(self, node_name, node_label=None, node_color=None, **kwargs):
-        node = Node(self, self.btree.nodes.new(type=self.get_type_name(node_name)), node_label=node_label, node_color=node_color, **kwargs)
-        self.arrange()
-        return node
-    
-    def new_node(self, bl_idname, node_label=None, node_color=None, **kwargs):
-        node = Node(self, self.btree.nodes.new(type=bl_idname), node_label=node_label, node_color=node_color, **kwargs)
-        self.arrange()
-        return node
-    
-    def get_nodes(self, node_name):
-        return [Node(self, bnode) for bnode in self.btree.nodes if self.get_type_name(node_name) == bnode.bl_idname]
-    
-    def get_create(self, node_name, **kwargs):
-        cands = self.get_nodes(node_name)
-        if len(cands) == 0:
-            return self.node(node_name, **kwargs)
-        return Node(self, cands[0].bnode, **kwargs)
-
-    # ====================================================================================================
-    # Clear
-    
-    @staticmethod
-    def clear_inout(inouts, keep_first=False):
-        ios = [io for io in inouts]
-        if keep_first:
-            ios = ios[1:]
-            
-        for io in ios:
-            inouts.remove(io)
-
-    def clear(self):
-        self.btree.nodes.clear()
-        
-    # ====================================================================================================
-    # Get the socket type NodeSocketBool, NodeSocketInt,... from data type 'BOOLEAN', 'FLOAT' or a python type
-    
-    @classmethod
-    def get_socket_type(cls, socket_type):
-        if isinstance(socket_type, str):
-            socket_type = socket_type.upper()
-            
-        if socket_type in cls.SOCKET_TYPES.keys():
-            return cls.SOCKET_TYPES[socket_type]
-        else:
-            return socket_type
-
-    # ====================================================================================================
-    # Tree inputs / outputs
-    
-    def new_input(self, name, socket_type, value=None):
-        inp = self.btree.inputs.new(name=name, type=Tree.get_socket_type(socket_type))
-        inp.default_value = utils.value_for(value, socket_type)
-    
-    def new_output(self, name, socket_type, value=None):
-        outp = self.btree.outputs.new(name=name, type=Tree.get_socket_type(socket_type))
-        outp.default_value = utils.value_for(value, socket_type)
-        
-    # ----------------------------------------------------------------------------------------------------
-    # Connect an Group input to the input socket of a Node
-        
-    def input_from(self, socket, name=None):
-        
-        # ----- Group input Node
-        in_node = self.group_input
-        if in_node is None:
-            return
-        
-        # ----- Create the new Group Input
-        inp = self.btree.inputs.new(name=socket.name if name is None else name, type=socket.bl_idname)
-        inp.default_value = socket.default_value
-        
-        # ----- It is the last one in the input Node
-        for in_socket in reversed(in_node.bnode.outputs):
-            if in_socket.bl_idname == 'NodeSocketVirtual':
-                continue
-            in_socket.default_value = socket.default_value
-            self.link(in_socket, socket)
-            return
-        
-    # ----------------------------------------------------------------------------------------------------
-    # Connect the output of a node to a group output
-        
-    def output_from(self, socket, name=None):
-
-        # ----- Group input Node
-        out_node = self.group_output
-        if out_node is None:
-            return
-        
-        # ----- Create the new Group Input
-        outp = self.btree.outputs.new(name=socket.name if name is None else name, type=socket.bl_idname)
-        outp.default_value = socket.default_value
-        
-        # ----- It is the last one in the input Node
-        for out_socket in reversed(out_node.bnode.inputs):
-            if out_socket.bl_idname == 'NodeSocketVirtual':
-                continue
-            out_socket.default_value = socket.default_value
-            self.link(socket, out_socket)
-            return
-        
-    # ----------------------------------------------------------------------------------------------------
-    # Get the input / output from a name
-        
-    def get_input(self, name, socket_type=None):
-        for inp in self.btree.inputs:
-            if inp.name != name:
-                continue
-            if socket_type is not None:
-                if socket_type.upper() != inp.type:
-                    continue
-            return inp
-        return None
-    
-    def get_output(self, name, socket_type=None):
-        for outp in self.btree.outputs:
-            if outp.name != name:
-                continue
-            if socket_type is not None:
-                if socket_type.upper() != outp.type:
-                    continue
-            return outp
-        return None
     
     # ====================================================================================================
-    # Add a link
-    
-    def link(self, in_socket, out_socket):
-        link = self.btree.links.new(in_socket, out_socket, verify_limits=True)
-        self.arrange()
-        return link
-    
-    def set_socket(self, socket, value):
-        if value is None:
-            return
-
-        if isinstance(value, bpy.types.NodeSocket):
-            if socket.is_output:
-                self.btree.links.new(value, socket, verify_limits = True)
-            else:
-                self.btree.links.new(socket, value, verify_limits = True)
-            self.arrange()
-        else:
-            socket.default_value = utils.value_for(value, socket.bl_idname)
-    
-    # ====================================================================================================
-    # Insert a node in a link
+    # For reference
     
     def insert(self, link, node):
         
@@ -763,70 +556,8 @@ class Tree_OLD(StackedTree):
         
         self.arrange()
         
-    # ====================================================================================================
-    # Common input nodes
-    
-    """
-    def boolean(self, value=True, **kwargs):
-        node = self.new_node('FunctionNodeInputBool', **kwargs)
-        node.boolean = value
-        return node._boolean
-    
-    """
-    def int(self, value=0, **kwargs):
-        node = self.new_node('FunctionNodeInputInt', **kwargs)
-        node.integer = value
-        return node._integer
-    
-    def float(self, value=True, **kwargs):
-        node = self.new_node('ShaderNodeValue', **kwargs)
-        self.set_socket(node._value, value)
-        return node._value
-    
-    def string(self, value="", **kwargs):
-        node = self.new_node('FunctionNodeInputString', **kwargs)
-        node.string=value
-        return node._string
-        
-    def vector(self, value=(0, 0, 0), **kwargs):
-        node = self.new_node('FunctionNodeInputVector', **kwargs)
-        node.vector=Vector(value)
-        return node._vector
-    
-    def rgb(self, value=(.9, .9, .9, 1), **kwargs):
-        node = self.new_node('FunctionNodeInputInt', **kwargs)
-        self.set_socket(node._color, value)
-        return node._color
-        
-    # ====================================================================================================
-    # Some common operations
-    
-    @property
-    def frame(self):
-        return self.node("Scene Time")._frame
-    
-    @property
-    def seconds(self):
-        return self.node("Scene Time")._seconds
-    
-    def math(self, a, b=None, operation='ADD'):
-        return self.node("Math", value_0_ = a, value_1_ = b, operation=operation).output
-        
-    def vector_math(self, a, b=None, operation='ADD'):
-        return self.node("Vector Math", vector_0_ = a, vector_1_ = b, operation=operation).output
-        
-    def mix_color(self, a, b=None, factor=.5):
-        return self.node("Mix", a = a, b = b, factor=factor, data_type='RGBA').output
-        
-    def mix_float(self, a, b=None, factor=.5):
-        return self.node("Mix", a = a, b = b, factor=factor, data_type='FLOAT').output
-
-    def mix_vector(self, a, b=None, factor=.5):
-        return self.node("Mix", a = a, b = b, factor=factor, data_type='VECTOR').output
-        
-        
 # ====================================================================================================
-# Geometry Nodes Tree
+# Shader Tree
 
 class Shader(Tree):
 
@@ -967,98 +698,6 @@ class GeoNodes(Tree):
     
     def layout(self, label="Frame", color=None, label_size=None):
         return self.Frame(label_size=label_size, node_label=label, node_color=color)
-
-    # ====================================================================================================
-    # Some usefull Trees
-    
-    @classmethod
-    def IcoSpheres(cls, name="IcoSpheres", size=.1, scale=.01, material=None):
-        
-        tree = cls(name=name, create=True, clear=True)
-        
-        to_points = tree.node("Mesh to Points", mesh=tree.ig)
-        ico = tree.node("Ico Sphere", size=size)
-        tree.input_from(cube.size, name="Size")
-        #rot = tree.node("Random", data_type='FLOAT_VECTOR', max=2*np.pi, seed=tree.frame)
-        insts = tree.node("Instance on points", points=tree.ig, instance=ico.output)
-        
-        link = tree.link(insts.output, tree.og)
-        
-        mat = tree.node("Set Material", material=material)
-        tree.input_from(mat.material)
-        
-        tree.insert(link, mat)
-        
-        return tree
-    
-    @classmethod
-    def Particles(cls, name="Particles", size=.1, scale=.01, material=None):
-        
-        tree = cls(name=name, create=True, clear=True)
-        
-        to_points = tree.node("Mesh to Points", mesh=tree.ig)
-        cube = tree.node("Cube", size=size)
-        tree.input_from(cube.size, name="Size")
-        rot = tree.node("Random", data_type='FLOAT_VECTOR', max=2*np.pi, seed=tree.frame)
-        insts = tree.node("Instance on points", points=to_points.output, instance=cube.output, rotation=rot.output)
-        
-        link = tree.link(insts.output, tree.og)
-        
-        mat = tree.node("Set Material", material=material)
-        tree.input_from(mat.material)
-        
-        tree.insert(link, mat)
-        
-        return tree
-    
-    @classmethod
-    def Smoke(cls, name="To Smoke", radius=2, material=None):
-        tree = cls(name, create=True, clear=True)
-        
-        to_points = tree.node("Mesh to Points", mesh=tree.ig)
-        to_vol    = tree.node("Points to Volume", points=to_points.output, radius=radius)
-
-        tree.input_from(to_vol.density)
-        tree.input_from(to_vol.voxel_amount)
-        tree.input_from(to_vol.radius)
-        
-        link = tree.link(to_vol.output, tree.og)
-        
-        mat = tree.node("Set Material", material=material)
-        tree.input_from(mat.material)
-        
-        tree.insert(link, mat)
-        
-        
-        return tree
-    
-# ====================================================================================================
-# Demo
-
-def demo():
-    
-    # ----- Shader
-    
-    shader = Shader("Demo", clear=False)
-    bsdf = shader.get_create("Principled BSDF",
-            metallic=.5, 
-            roughness=1,
-            )
-    bsdf.base_color_ = (0, 1, 0, 1)
-    
-    shader.surface = bsdf.output
-    
-    # ----- Geometry nodes
-    
-    tree = GeoNodes("Demo", clear=True)
-    spiral = tree.node("Spiral", resolution=128, rotations=tree.float(3))
-    prof   = tree.node("Curve Circle", resolution=8, radius=.1)
-    to_mesh = tree.node("Curve to Mesh", curve=spiral.output, profile_curve=prof._curve)
-    link = tree.link(to_mesh.output, tree.output_geometry)
-    
-    tree.insert(link, tree.node("Set Material", material = shader.material, selection=tree.boolean(True)))
-        
-
 
 
 
