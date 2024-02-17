@@ -333,6 +333,8 @@ class NodeInfo:
         # ====================================================================================================
         # Domain method
         
+        as_method = False
+        
         if self.has_socket_method and self.sm_in_bsock.bl_idname == 'NodeSocketGeometry' and 'domain' in self.params:
             
             domain_class = sockets.Domain
@@ -354,6 +356,26 @@ class NodeInfo:
 
             descr = f"Node {self.class_name}, {self.sm_pyname}=self, domain=DOMAIN"
             self.add_method(domain_class_name, self.python_name, meth_code, descr=descr)
+            as_method = True
+            
+        # ====================================================================================================
+        # One single input socket
+        
+        if not as_method and self.max_in == 1:
+            
+            target = constants.SOCKET_CLASS_NAMES[self.bnode.inputs[0].type]
+            self_socket = list(self.in_counts.keys())[0]
+
+            return_socket = self.max_out == 1
+            
+            meth_code = self.method_code(self.python_name,
+                        method_type   = 'METHOD', 
+                        self_socket   = self_socket,
+                        use_enabled   = False,
+                        node_return   = "node.output_socket" if return_socket else "node",
+                        )
+            
+            self.add_method(target, self.python_name, meth_code, is_static=False, descr=f"{self.class_name}, {self_socket}=self, return {'socket' if return_socket else 'node'}")
             
         # ====================================================================================================
         # Input nodes

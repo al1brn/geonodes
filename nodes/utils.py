@@ -1,19 +1,21 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Blender Python Geometry module
+Created on Mon Feb 12 07:14:33 2024
 
-Created on Fri Nov  3 09:36:21 2023
+@author: alain
 
-@author: alain.bernard
-@email: alain@ligloo.net
+-----------------------------------------------------
+geonodes module
+- Generates nodes with python
+- Use numpy to manage vertices
+-----------------------------------------------------
 
------
+module : utils
+--------------
+- low level utilities
 
-Python to nodes module
-
-Basic utility functions
-
+update : 2024/02/17
 """
 
 from pprint import pprint
@@ -23,7 +25,7 @@ import numpy as np
 import bpy
 import mathutils
 
-from geopy.nodes import constants
+from geonodes.nodes import constants
 
 
 # ====================================================================================================

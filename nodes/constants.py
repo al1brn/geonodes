@@ -53,6 +53,12 @@ def current_tree(bl_idname=None):
 def current_tree_type(bl_idname=None):
     return type(current_tree(bl_idname).btree).__name__
 
+def dump_stack(title="Dump stack"):
+    print(f"{title} :", len(TREE_STACK))
+    for tree in TREE_STACK:
+        print(tree)
+    print()
+
 # ====================================================================================================
 # Standard node attribute names which are not properties
 
