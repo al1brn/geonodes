@@ -194,13 +194,22 @@ Similary, input geometry can be read from the input node using the tree.input_ge
 Custom parameters can be created using tree.xxx_input methods as shown in the example below:
 
 ``` python
+from geonodes import GeoNodes, Shader
+
+# Let's build a shader specific to our amazing Geometry Nodes modifier
+
+with Shader("Ico Shader") as tree:
+    node = tree.PrincipledBSDF(base_color=(.1, .2, .3), roughness=.1)
+    tree.output_surface = node.bsdf
+
+# A variable Ico Sphere using our shader
+
 with GeoNodes("Demo") as tree:
     radius = tree.float_input("Radius", 1.)
     subs   = tree.int_input("Subdivisions", 3, min_value=1, max_value=6, description="Ico sphere subdivisions. Don't be too ambitious!")
-    mat    = tree.material_input("Material")
     
     sphere = tree.IcoSphere(radius=radius, subdivisions=subs).mesh
-    sphere.set_material(mat)
+    sphere.set_material("Ico Shader")
     tree.output_geometry = sphere
 ```
 
