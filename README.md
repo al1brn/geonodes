@@ -173,7 +173,7 @@ with GeoNodes("Demo") as tree:
 
 In addition to create the node, the `set_material` method makes the python `sphere` variable points to the output socket of the newly created node:
 - Before calling `set_material` method : `sphere` is the `IcoSphere.mesh` socket
-- After calling `set_material` method : `sphere` is the `SetMaterial.geometry` method
+- After calling `set_material` method : `sphere` is the `SetMaterial.geometry` socket
 
 Note that in this example, the `material` socket accepts:
 - `None` to keep the material socket empty
