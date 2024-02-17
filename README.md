@@ -103,7 +103,7 @@ from geonodes import GeoNodes, Shader
 
 Uses [index](docs/index.md) to gain access to the list of availables classes.
 
-## Scripting nodes
+## Scripting nodes overview
 
 All nodes belong to a tree. 4 types are available:
 - GeoNodes : Geometry Nodes
@@ -118,7 +118,7 @@ with GeoNodes("Geometry Nodes name", options) as tree:
     ...
 ```
 
-Inside the with statment block, nodes can be created by using the camel case version of their user name:
+Inside the with statement block, nodes can be created by using the camel case version of their label:
 
 ```python
 with GeoNodes("Demo") as tree:
