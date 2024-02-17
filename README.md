@@ -130,7 +130,7 @@ At initialization time, the sockets can be set using arguments. The arguments ar
 
 ```python
 with GeoNodes("Demo") as tree:
-    # Create an Ico Sphre with custom initial values
+    # Create an Ico Sphere with custom initial values
     node = tree.IcoSphere(radius=2, subdivisions=3)
 ```
 
