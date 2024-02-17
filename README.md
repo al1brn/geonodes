@@ -143,7 +143,7 @@ with GeoNodes("Demo") as tree:
     node.subdivisions = 3
 ``` 
 
-The sphere geometry can be read from the node output socket named
+The sphere geometry can be read from the node output socket name:
 
 ``` python
 with GeoNodes("Demo") as tree:
