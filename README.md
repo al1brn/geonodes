@@ -17,6 +17,7 @@ You keep the full power of Blender geometry nodes but with the elegance of Pytho
 - [Better a demo than long words](#better-a-demo-than-long-words)
 - [Installation](#installation)
 - [Documentation](#documentation)
+- [Scripting nodes overview][#Scripting-nodes-overview]
 - [API reference](docs/index.md)
 - Tutorials by examples:
   - [Getting started](docs/getting_started.md) with the "Hello world" script
@@ -105,18 +106,79 @@ Uses [index](docs/index.md) to gain access to the list of availables classes.
 
 ## Scripting nodes overview
 
-All nodes belong to a tree. 4 types are available:
+All nodes belong to a tree. Four tree types are available:
 - `GeoNodes` : Geometry Nodes
-- `Shader` : Shader Nodes
+- `Shader` : Material Nodes
 - `Compositor` : Compositor Nodes
 - `Texture` : Texture Nodes
+
+### Creating a new tree
 
 A tree is created using the with statement:
 
 ``` python
+# A new geometry nodes modifier
 with GeoNodes("Geometry Nodes name", options) as tree:
     ...
+
+# A new material
+with Shader("Material") as tree:
+    ...
 ```
+
+###CAUTION### : when opening a tree, the existing nodes are deleted!
+
+### Nodes and sockets
+
+The module handles two types of classes:
+- ##Node## classes : by instanciating such a class, a node is created in the current tree
+- ##Socket## classes : the #sockets## of a node are exposed as attributes the node class
+
+In the example below, a node "Ico Sphere" is created and the two output sockets are used to set two python variables:
+
+``` python
+with GeoNodes("Demo") as tree:
+    # Node class instanciation
+    node = tree.IcoSphere(radius=2, subdivisions=3)
+
+    # Getting the two output sockets of the node
+    sphere = node.mesh
+    uvmap = node.uv_map
+```
+
+##Sockets## instances are then used as input sockets of for other nodes:
+
+``` python
+with GeoNodes("Demo") as tree:
+    sphere = tree.IcoSphere(radius=2, subdivisions=3).mesh
+
+    node = tree.SetMaterial(geometry=sphere, material="Material")
+```
+
+##Sockets## also expose methods to create node in a more 'pythonist' style:
+
+``` python
+with GeoNodes("Demo") as tree:
+    sphere = tree.IcoSphere(radius=2, subdivisions=3).mesh
+
+    # The two following statements are equivalent
+
+    sphere = tree.SetMaterial(geometry=sphere, material="Material").geometry
+
+    sphere.set_material("Material")
+```
+
+### Naming conventions
+
+The name of the classes, sockets and methods are built with the following coventions: 
+- Nodes classes are **CamelCase** versions of the node name:
+  - Node _'Set Shade Smooth'_ --> `SetShadeSmooth`
+- Methods calling a node are **snake_case** of the Blender name:
+  - `mesh.set_shade_smooth()`
+- Node sockets are **snake_case** of their Blender name:
+  - Socket _'Mesh'_ --> `mesh`
+
+
 
 Inside the with statement block, nodes can be created by using the camel case version of their label:
 
@@ -145,13 +207,6 @@ with GeoNodes("Demo") as tree:
 
 The sphere geometry can be read from the node output socket name:
 
-``` python
-with GeoNodes("Demo") as tree:
-    node = tree.IcoSphere(radius=2, subdivisions=3)
-    sphere = node.mesh
-    # If the sphere uv map is required
-    uvmap = node.uv_map
-```
 
 Other nodes can be created using the geometry as input. Rather than using the node class name, one can use a method of the socket.
 The following example shows two ways to create the node "Set Material":
@@ -221,12 +276,4 @@ with GeoNodes("Demo") as tree:
 
 **geonodes** classes and properties are named after the Blender names.
 
-- Nodes classes are **CamelCase** versions of Blender geometry nodes name:
-  - Node _'Set Shade Smooth'_ --> `SetShadeSmooth`
-- Methods calling a node are **snake_case** of the Blender name:
-  - `mesh.set_shade_smooth()`
-- Node sockets are **snake_case** of their Blender name:
-  - Socket _'Mesh'_ --> `mesh`
-
-For more details, refer to [Naming conventions](docs/naming.md)
 
