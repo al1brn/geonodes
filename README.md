@@ -179,7 +179,7 @@ The name of the classes, sockets and methods are built with the following covent
   - Socket _'Mesh'_ --> `mesh`
 - When several sockets of a node share the same name, their python name is suffixed with **_i** starting from the second one:
   - `Math` has up to 3 input sockets named "Value", their python names are `value`, `value_1` and ` value_2`.
-  - ***Note*** : the numbering is done for the "enabled" sockets. A node such as "Store Named Attribute" has several sockets sharing the name "Attribute" but only one at a time is enabled (the one the type of which corresponds to the data type). In that case, the node class `StoreNamedAttribute` has only one socket named attribute which points to the enabled one.
+  - ***Note*** : the numbering is done for the "enabled" sockets. A node such as "Store Named Attribute" has several sockets sharing the name "Attribute" but only one at a time is enabled (the one the type of which corresponds to the data type). In that case, the node class `StoreNamedAttribute` has only one socket named `attribute` which points to the enabled one.
  
 ### Links, input and output sockets
 
