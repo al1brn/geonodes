@@ -2,6 +2,42 @@
 
 > Example of simulation zone
 
+Simulation zone is created with `tree.simulation` method using a `with` statement.
+Loop variables are created with `kwargs` syntax:
+
+``` python
+# Create a simulation zone with age loop parameter
+with tree.simulation(geometry=tree.ig, age=10):
+   ...
+```
+
+**Simulation** sockets:
+- Inside the zone (i.e. inside the `with` statement):
+  - reading a socket get the **output socket** of the zone input node
+  - setting a socket set the **input socket** of the zone output node
+- Outside the zone (i.e. after the `with`statement);
+  - reading a socket get the **output socket** of the zone output node
+ 
+``` python
+with tree.simulation(geometry=tree.ig, age=10) as simul:
+
+    # simulation input node age socket has been initialized to 10
+
+    # Reading the age socket from the input node
+    a = simul.age
+
+    ...
+
+    # Updating age for the next simulation loop
+    simul.age = a
+
+# Outside the context, getting the resulting geometry
+geo = simul.geometry
+```    
+
+
+## Sample code
+
 In this demo:
 - Create a material using an attribute created by the geometry node modifier
 - Create a simulation loop creating balls sent at a random speed
