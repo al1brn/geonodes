@@ -17,7 +17,7 @@ You keep the full power of Blender geometry nodes but with the elegance of Pytho
 - [Better a demo than long words](#better-a-demo-than-long-words)
 - [Installation](#installation)
 - [Documentation](#documentation)
-- [Scripting nodes overview][#scripting-nodes-overview]
+- [Scripting nodes overview](#scripting-nodes-overview)
 - [API reference](docs/index.md)
 - Tutorials by examples:
   - [Getting started](docs/getting_started.md) with the "Hello world" script
@@ -146,7 +146,7 @@ with GeoNodes("Demo") as tree:
     uvmap = node.uv_map
 ```
 
-##Sockets## instances are then used as input sockets of for other nodes:
+**Sockets** instances are then used as input sockets of for other nodes:
 
 ``` python
 with GeoNodes("Demo") as tree:
@@ -155,7 +155,7 @@ with GeoNodes("Demo") as tree:
     node = tree.SetMaterial(geometry=sphere, material="Material")
 ```
 
-##Sockets## also expose methods to create node in a more 'pythonist' style:
+**Sockets** also expose methods to create node in a more 'pythonist' style:
 
 ``` python
 with GeoNodes("Demo") as tree:
@@ -177,6 +177,34 @@ The name of the classes, sockets and methods are built with the following covent
   - `mesh.set_shade_smooth()`
 - Node sockets are **snake_case** of their Blender name:
   - Socket _'Mesh'_ --> `mesh`
+- When several sockets of a node share the same name, their python name is suffixed with **_i** starting from the second one:
+  - `Math` has up to 3 input sockets named "Value", their python names are `value`, `value_1` and ` value_2`.
+  - ***Note** : the numbering is done for the "enabled" sockets. A node such a "Store Named Attribute" has several sockets sharing the name "Attribute" but only one at a time is enabled (the one the type of which corresponds to the data type). In that case, the node class `StoreNamedAttribute` has only one socket named attribute which points to the enabled one.
+ 
+### Links, input and output sockets
+
+A link is created between two nodes by **setting an input socket** with an **output socket**.
+
+**Input sockets** are write-only attributes of the node when **Output sockets** are read-only. Hence, when a node uses the same name for an input socket and an output socket, the same name is use in the corresponding class without ambiguity.
+
+The node "Set Shade Smooth" has an input socket and an output socket named "Geometry". The `SetShadeSmooth` class owns a single attribute named geometry which refers to these two sockets depending on of it is set or read:
+
+``` python
+with GeoNodes("Demo") as tree:
+
+    sphere = tree.IcoSphere(radius=2, subdivisions=3).mesh
+
+    node = tree.SetShadeSmooth()
+
+    # Link output geometry of "Ico Sphere" Node into "Set Shade Smooth" input geometry
+    node.geometry = sphere
+
+    # Get the output socket of the node "Set Shade Smooth" for further use
+    shaded_sphere = node.geometry
+```
+
+
+
 
 
 
