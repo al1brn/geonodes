@@ -1,3 +1,11 @@
+# Simulation
+
+> Example of simulation zone
+
+In this demo:
+- Create a material using an attribute created by the geometry node modifier
+- Create a simulation loop creating balls sent at a random speed
+- Simulating gravity
 
 
 ``` python
