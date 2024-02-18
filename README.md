@@ -132,7 +132,7 @@ with Shader("Material") as tree:
 
 The module handles two types of classes:
 - **Node** classes : by instanciating such a class, a node is created in the current tree
-- **Socket** classes : the **sockets** of a node are exposed as attributes the node class
+- **Socket** classes : the **sockets** of a node are exposed as attributes of a node class
 
 In the example below, a node "Ico Sphere" is created and the two output sockets are used to set two python variables:
 
