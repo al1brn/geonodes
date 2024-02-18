@@ -211,7 +211,7 @@ Some nodes have parameters. The parameters are exposed as properties of the clas
 with GeoNodes("Demo") as tree:
     node = tree.SetShadeSmooth(domain='EDGE')
 ``` 
-***Important*** : the behavior of some nodes can change with parameter settings. For instance, changing a parameter can disable and/or enable sockets. Hence, it is adviced to initialie the node parameters at creation time. The example illustrates why it is important :
+***Important*** : the behavior of some nodes can change with parameter settings. For instance, changing a parameter can disable and/or enable sockets. Hence, it is adviced to initialize the node parameters at creation time. The example illustrates why it is important :
 
 ``` python
 with GeoNodes("Demo") as tree:
@@ -221,7 +221,7 @@ with GeoNodes("Demo") as tree:
     # By default, "Store Named Attribute" data_type is 'FLOAT'
     # The following statement will plug to the FLOAT value
     node = tree.StoreNamedAttribute(name="V", value=tree.position())
-    # Setting the parameter afterwards don't change the link previsouly created
+    # Setting the parameter afterwards don't change the link previously created
     node.data_type = 'FLOAT_VECTOR'
     
     # ---- CORRECT
