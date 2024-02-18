@@ -34,11 +34,32 @@ See [Scripting nodes overview](/README.md#scripting-nodes-overview) for a quick 
 
 ![Result](images/ico_tuto.png)
 
-
-
+In this example:
+- Two simple materials are created to be used in the geometry node modifier
+- Two modifier parameters are exposed
+- The array indexing syntaxe is used as an alternative to the `selection` socket
+- Faces are extruded based on their material index
 
 ``` python
-from geonodes import GeoNodes
+from geonodes import GeoNodes, Shader
+
+# Let's create the base material of the Ico Sphre
+
+with Shader("Base Material") as tree:
+    tree.output_surface = tree.PrincipledBSDF(
+        base_color = (0, 0, 1),
+        roughness = .9,
+        ).bsdf
+        
+# Material for selected faces
+
+with Shader("Sel Material") as tree:
+    tree.output_surface = tree.PrincipledBSDF(
+        base_color = (1, 0, 0),
+        roughness = .1,
+        ).bsdf
+        
+# The Ico Sphere modifier
 
 with GeoNodes("Icosphere tuto") as tree:
 
@@ -54,13 +75,20 @@ with GeoNodes("Icosphere tuto") as tree:
    # The materials
    
    ico.set_material("Base Material")
-   ico[tree.random_boolean(probability=.5)].set_material("Sel Material")
+   # A geometry socket can use [boolean] as an alternative to selection=boolean
+   # The two following statements are equivalent
+   if True:
+      ico[tree.random_boolean(probability=.5)].set_material("Sel Material")
+   else:
+      ico.set_material("Sel Material", selection=tree.random_boolean(probability=.5))
+
    
    # Extrude the select faces
    
-   extruded = ico[tree.material_index().equal(2)].extrude_mesh(offset_scale=0.3)
+   ico = ico[tree.material_index().equal(2)].extrude_mesh(offset_scale=0.3)
    
-   tree.og = extruded
+   tree.og = ico
+    
 ```
 
 ![Result](images/ico_tuto.png)
