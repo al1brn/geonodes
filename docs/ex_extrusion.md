@@ -1,38 +1,6 @@
-# Getting started
+# Extrusion
 
-## Prerequisites
-
-To use the **geonodes** python module, you are supposed to be familiar with:
-- Blender Geometry and Shader nodes
-- Python language
-- Running python scripts in Blender
-
-Install the version of **geonodes** compatible with the Blender version you use.
-
-## Important
-
-> You can ask yourself what is the name of the method implementing a particular node and what are the name of the node sockets.
-> Simply use the `snake_case` version of the names.
-> You can also refer to the [API reference](index.md) or use `geonodes.print_doc(tree.xxxx)` method to dynamically print help into the console.
-
-
-## Importing the module
-
-We suppose that all scripts start with the following import instruction:
-
-``` python
-import geonodes as gn
-
-or
-
-from geonodes import GeoNodes, Shader, Simulation, Repeat, print_doc
-``` 
-
-See [Scripting nodes overview](/README.md#scripting-nodes-overview) for a quick overview of ***geonodes*** features.
-
-## Playing with an icosphere
-
-![Result](images/ico_tuto.png)
+> How to extrude faces.
 
 In this example:
 - Two simple materials are created to be used in the geometry node modifier
@@ -94,21 +62,6 @@ with GeoNodes("Icosphere tuto") as tree:
 ```
 
 ![Result](images/ico_tuto.png)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
