@@ -2,7 +2,7 @@
 
 > Example of repeat zone
 
-**Repeat** zone is created as a [Simulation zone](#ex_simulation.md)
+**Repeat** zone is created as a [Simulation zone](ex_simulation.md)
 
 ## Sample code
 
