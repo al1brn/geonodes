@@ -69,18 +69,20 @@ with GeoNodes("Icosphere tuto") as tree:
    subs   = tree.integer_input("Subdivisions", 3, min_value=1, max_value=6, description="Ico Sphere d-subdivisions. Don't be too ambitious")
    
    # The icosphere
-   
    ico = tree.IcoSphere(radius=radius, subdivisions=subs).mesh
    
-   # The materials
-   
+   # Base material
    ico.set_material("Base Material")
-   # A geometry socket can use [boolean] as an alternative to selection=boolean
+
+   # Faces selection
+   sel = tree.random_boolean(probability=.5)
+
+   # A geometry socket can use [sel] as an alternative to selection=sel
    # The two following statements are equivalent
    if True:
-      ico[tree.random_boolean(probability=.5)].set_material("Sel Material")
+      ico[sel].set_material("Sel Material")
    else:
-      ico.set_material("Sel Material", selection=tree.random_boolean(probability=.5))
+      ico.set_material("Sel Material", selection=sel)
 
    
    # Extrude the select faces
