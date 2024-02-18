@@ -37,7 +37,7 @@ See [Scripting nodes overview](/README.md#scripting-nodes-overview) for a quick 
 In this example:
 - Two simple materials are created to be used in the geometry node modifier
 - Two modifier parameters are exposed
-- The array indexing syntaxe is used as an alternative to the `selection` socket
+- The array indexing syntax is used as an alternative to the `selection` socket
 - Faces are extruded based on their material index
 
 ``` python
