@@ -11,111 +11,50 @@ In this demo:
 - Create a simulation loop creating balls sent at a random speed
 - Simulating gravity
 
-![Result](images/ex_simulation.png)
+![Result](images/ex_repeat.png)
 
 ``` python
 from geonodes import GeoNodes, Shader
 
-# ----- Create the material for the balls
-# The geometry node will create an attribute 'hue' for each instance
-# This attribute is read by the shader
+# ----- Material for the lines
+# The Geometry Nodes modifier with set a color attribute named "col"
 
-with Shader("Ball Material") as tree:
-    # Get the hue instance attribute
-    hue = tree.Attribute(attribute_name="hue", attribute_type='INSTANCER').fac
-    
-    # Build the color from this value
-    col = tree.combine_hsv(hue, 1., 1.)
-    
-    # A simple principled bsdf
-    tree.output_surface = tree.PrincipledBSDF(
-            base_color=col,
-            roughness=.1).bsdf
-            
-            
-# ----- The geometry node modifier
-# Generates points on surface pointing upwards with an initial speed
-# Apply gravity on the speeds
-# Kill the particles once they are below the ground
+with Shader("Line Material") as tree:
+    col = tree.Attribute("col").color
+    col = col.hue_saturation_value(saturation=2)
+    tree.output_surface = tree.PrincipledBSDF(base_color=col).bsdf
 
-with GeoNodes("Rockets") as tree:
+# ----- Create random lines
+
+with GeoNodes("Demo Repeat") as tree:
     
-    # Modifier parameters
+    # Input parameter
     
-    density = tree.float_input("Density", 1., min_value=0., max_value=10.)
-    speed   = tree.float_input("Speed", 20.)
-    acc     = tree.acceleration_input("Acceleration", (0, 0, -9.86))
-    radius  = tree.float_input("Balls radius", .1)
+    count = tree.int_input("Count", 1, min_value=1, max_value=1000)
     
-    # Get the input geometry
+    # Create one random line per loop
     
-    geo = tree.ig
+    with tree.repeat(iterations=count, geometry=None, seed=0) as repeat:
+        
+        # ----- Build a random line
+        
+        curve = tree.CurveLine(end=(0, 0, 10)).curve.resample_curve(count=30)
+        curve.set_position(offset=tree.random_vector(-.2, .2, seed=repeat.seed+1))
+        curve.transform_geometry(rotation=tree.random_vector(-1, 1, ID=tree.integer(1), seed=repeat.seed+2))
+        
+        repeat.geometry = repeat.geometry + curve
+        
+        repeat.seed = repeat.seed + 2
+        
+    # A different color per line
+    lines = repeat.geometry
+    lines.CURVE.store_named_float_color("col", tree.random_vector(.2, .8, seed=1000))
     
-    # Simulation
-    
-    points = tree.Points(count=0).geometry
-    
-    with tree.simulation(points=points, age=50) as simul:
+    # To mes
         
-        with tree.layout("New points"):
+    mesh = lines.curve_to_mesh(profile_curve=tree.CurveCircle(radius=.02))
         
-            # Face normals
-            # use xyz short cut of separate_xyz
-            normal = tree.normal().xyz()
-            
-            # Faces oriented upwards
-            sel = normal.z.greater_than(0.1)
-            
-            # Current frame as seed
-            cur_frame = tree.SceneTime().frame
-            
-            # Points on these surface
-            new_points = geo[sel].distribute_points_on_faces(density=density, seed=3*cur_frame)
-            
-            
-        with tree.layout("Initial speed"):
-            # Normals
-            pts_normal = new_points.node.normal
-            
-            # Speeds
-            
-            speeds = tree.random_vector(min=pts_normal*speed/10, max=pts_normal*speed/3, seed=3*cur_frame+1)
-            new_points.store_named_vector("speed", value=speeds)
-            
-            # Random hue
-            new_points.store_named_float("hue", value=tree.random_float(0, 1, seed=3*cur_frame+2))
-            
-            
-        # Join to the current geometry
-        pts = simul.points + new_points
-        
-        with tree.layout("Gravity"):
-        
-            # Apply gravity
-            speeds = tree.named_vector("speed")
-            speeds += acc*simul.delta_time
-            pts.store_named_vector("speed", speeds)
-            
-        with tree.layout("Move the points according their speed and kill below ground 0"):
-            
-            # Move the points
-            pts.set_position(offset=tree.named_vector("speed")*simul.delta_time)
-            
-            # Kill on the ground
-            pts[tree.position().xyz().z.less_than(0)].delete_geometry()
-            
-        # Loop
-        simul.points = pts
-        
-    with tree.layout("Ball instances"):
-        
-        ball = tree.UVSphere(radius=radius).mesh
-        ball.set_material("Ball Material") 
-            
-        balls = simul.points.instance_on_points(instance=ball)
-        
-            
-    tree.og = geo + balls
+    tree.og = mesh.set_material("Line Material")
 ```
         
     
