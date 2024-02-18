@@ -1,6 +1,6 @@
 # Extrusion
 
-How to extrude faces.
+> How to extrude faces.
 
 In this example:
 - Two simple materials are created to be used in the geometry node modifier
