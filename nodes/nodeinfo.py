@@ -323,8 +323,6 @@ class NodeInfo:
         
         if self.has_socket_method and self.sm_in_bsock.bl_idname == 'NodeSocketGeometry' and 'domain' in self.params:
             
-            print("DOMAIN", self.class_name)
-            
             domain_class = sockets.Domain
             self.register_class(domain_class, 'Other')
             domain_class_name = domain_class.__name__

@@ -11,9 +11,132 @@ from geonodes.nodes.constants import current_tree
 from geonodes.nodes import utils
 
 # ====================================================================================================
+# A zone
+
+class Zone:
+    def init_zone(self, create_geometry=True, **kwargs):
+        
+        # ----- Create the simulation state items
+        # Geometry socket is created by default, it is first deleted
+        
+        self._items.clear()
+        first = create_geometry
+        for name, value in kwargs.items():
+            
+            if value is None:
+                stype = 'GEOMETRY'
+            else:
+                stype = utils.get_value_socket_type(value)
+                
+            if create_geometry and first and stype != 'GEOMETRY':
+                self._items.new(socket_type='GEOMETRY', name='Geometry')
+                
+            self._items.new(socket_type=stype, name=name)
+            
+            first = False
+            
+        self._closed = True
+        
+        # ----- Initialize the attributes
+        
+        for name, value in kwargs.items():
+            setattr(self, name, value)   
+            
+    def __str__(self):
+        return f"<{type(self).__name__} Zone>"
+            
+
+    # ====================================================================================================
+    # Context management
+            
+    def __enter__(self):
+        self._closed = False
+        return self
+    
+    def __exit__(self, exception_type, exception_value, traceback):
+        self._closed = True
+        
+    # ====================================================================================================
+    # Dynamic attributes
+    
+    def __getattr__(self, name):
+
+        closed = self.__dict__.get('_closed')
+        if closed is not None:
+            node = self.__dict__.get("_output") if closed else self.__dict__.get("_input")
+            if node is not None:
+                return getattr(node, name)
+        
+        raise AttributeError(f"Repeat doesn't have input socket named '{name}'.")
+        
+    def __setattr__(self, name, value):
+        
+        if name == '_closed':
+            super().__setattr__(name, value)
+        
+        closed = self.__dict__.get('_closed')
+        if closed is not None:
+            node = self.__dict__.get("_input") if closed else self.__dict__.get("_output")
+            if node is not None:
+                setattr(node, name, value)
+                return
+        super().__setattr__(name, value)    
+        
+        
+        
+# ====================================================================================================
+# Reapet zone
+
+class Repeat(Zone):
+    
+    def __init__(self, iterations=1, **kwargs):
+        
+        tree = current_tree()
+        
+        # ----- Create an link the input and output simulation nodes
+        
+        self._input  = tree.RepeatInput()
+        self._output = tree.RepeatOutput()
+        self._input.bnode.pair_with_output(self._output.bnode)
+        
+        if True:
+            self.init_zone(create_geometry=True, **kwargs)
+            self._input.iterations = iterations
+            
+        else:
+        
+            # ----- Create the simulation state items
+            # Geometry socket is created by default, it is first deleted
+            
+            self._output.bnode.repeat_items.clear()
+            for name, value in kwargs.items():
+                
+                if value is None:
+                    raise AttributeError(f"Repeat initialization error: argument '{name}' must not be None.")
+                else:
+                    stype = utils.get_value_socket_type(value)
+                    
+                self._output.bnode.repeat_items.new(socket_type=stype, name=name)
+                
+            self._closed = False
+            
+            # ----- Initialize the attributes
+    
+            self._input.iterations = iterations
+            
+            for name, value in kwargs.items():
+                setattr(self, name, value)
+            
+    @property
+    def _items(self):
+        return self._output.bnode.repeat_items
+
+
+
+# ====================================================================================================
 # Simulation zone
 
-class Simulation:
+class Simulation(Zone):
     """ > Create a simulation zone**
     
     This class Simulation generates the two nodes of a simulation zone: simulation input and output nodes.
@@ -86,75 +209,45 @@ class Simulation:
         self._output = tree.SimulationOutput()
         self._input.bnode.pair_with_output(self._output.bnode)
         
-        # ----- Create the simulation state items
-        # Geometry socket is created by default, it is first deleted
         
-        self._output.bnode.state_items.clear()
-        first = True
-        for name, value in kwargs.items():
+        if True:
+            self.init_zone(create_geometry=True, **kwargs)
             
-            if value is None:
-                if first:
-                    stype = 'GEOMETRY'
+        else:
+        
+            # ----- Create the simulation state items
+            # Geometry socket is created by default, it is first deleted
+            
+            self._output.bnode.state_items.clear()
+            first = True
+            for name, value in kwargs.items():
+                
+                if value is None:
+                    if first:
+                        stype = 'GEOMETRY'
+                    else:
+                        raise AttributeError(f"Simulation initialization error: argument '{name}' must not be None.")
                 else:
-                    raise AttributeError(f"Simulation initialization error: argument '{name}' must not be None.")
-            else:
-                stype = utils.get_value_socket_type(value)
+                    stype = utils.get_value_socket_type(value)
+                    
+                    
+                if first and stype != 'GEOMETRY':
+                    self._output.bnode.state_items.new(socket_type='GEOMETRY', name='Geometry')
+                    
+                self._output.bnode.state_items.new(socket_type=stype, name=name)
                 
+                first = False
                 
-            if first and stype != 'GEOMETRY':
-                self._output.bnode.state_items.new(socket_type='GEOMETRY', name='Geometry')
-                
-            self._output.bnode.state_items.new(socket_type=stype, name=name)
+            self._closed = True
             
-            first = False
+            # ----- Initialize the attributes
             
-        self._closed = True
-        
-        # ----- Initialize the attributes
-        
-        for name, value in kwargs.items():
-            setattr(self, name, value)
+            for name, value in kwargs.items():
+                setattr(self, name, value)
             
-        
-    def __enter__(self):
-        self._closed = False
-        return self
-    
-    def __exit__(self, exception_type, exception_value, traceback):
-        self._closed = True
-
-    # ====================================================================================================
-    # Utility
-            
-    def __str__(self):
-        return "<Simulation zone>"
-    
-    # ====================================================================================================
-    # Dynamic attributes
-    
-    def __getattr__(self, name):
-
-        closed = self.__dict__.get('_closed')
-        if closed is not None:
-            node = self.__dict__.get("_output") if closed else self.__dict__.get("_input")
-            if node is not None:
-                return getattr(node, name)
-        
-        raise AttributeError(f"Simulation doesn't have socket named '{name}'.")
-        
-    def __setattr__(self, name, value):
-        
-        if name == '_closed':
-            super().__setattr__(name, value)
-        
-        closed = self.__dict__.get('_closed')
-        if closed is not None:
-            node = self.__dict__.get("_input") if closed else self.__dict__.get("_output")
-            if node is not None:
-                setattr(node, name, value)
-                return
-        super().__setattr__(name, value)
+    @property
+    def _items(self):
+        return self._output.bnode.state_items
     
     # ====================================================================================================
     # Create paths for trajectories
@@ -931,89 +1024,7 @@ class Simulation:
                 
         return gen
     
-# ====================================================================================================
-# Reapet zone
-
-class Repeat:
-    
-    def __init__(self, iterations=1, **kwargs):
-
-        tree = current_tree()
-        
-        # ----- Create an link the input and output simulation nodes
-        
-        self._input  = tree.RepeatInput()
-        self._output = tree.RepeatOutput()
-        self._input.bnode.pair_with_output(self._output.bnode)
-        
-        #for k in dir(self._output.bnode):
-        #    print(f"{k:15s} = {getattr(self._output.bnode, k)}")
-        
-        # ----- Create the simulation state items
-        # Geometry socket is created by default, it is first deleted
-        
-        self._output.bnode.repeat_items.clear()
-        for name, value in kwargs.items():
-            
-            if value is None:
-                raise AttributeError(f"Repeat initialization error: argument '{name}' must not be None.")
-            else:
-                stype = utils.get_value_socket_type(value)
-                
-            self._output.bnode.repeat_items.new(socket_type=stype, name=name)
-            
-        self._closed = False
-        
-        # ----- Initialize the attributes
-
-        self._input.iterations = iterations
-        
-        for name, value in kwargs.items():
-            setattr(self, name, value)
-        
-        
-        
-    def __enter__(self):
-        return self
-    
-    def __exit__(self, exception_type, exception_value, traceback):
-        self._closed = True
-
-    # ====================================================================================================
-    # Utility
-            
-    def __str__(self):
-        return "<Repeat zone>"
-    
-    # ====================================================================================================
-    # Dynamic attributes
-    
-    def __getattr__(self, name):
-
-        closed = self.__dict__.get('_closed')
-        if closed is not None:
-            node = self.__dict__.get("_output") if closed else self.__dict__.get("_input")
-            if node is not None:
-                return getattr(node, name)
-        
-        raise AttributeError(f"Repeat doesn't have input socket named '{name}'.")
-        
-    def __setattr__(self, name, value):
-        
-        if name == '_closed':
-            super().__setattr__(name, value)
-        
-        closed = self.__dict__.get('_closed')
-        if closed is not None:
-            node = self.__dict__.get("_input") if closed else self.__dict__.get("_output")
-            if node is not None:
-                setattr(node, name, value)
-                return
-        super().__setattr__(name, value)    
          
-        
-            
-            
                 
         
     
