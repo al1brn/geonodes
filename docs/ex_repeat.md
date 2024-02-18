@@ -2,7 +2,7 @@
 
 > Example of repeat zone
 
-**Repeat** zone is created as a [Simulation zone](ex_simulation.md)
+**Repeat** zone is created with `tree.repeat` method following the same principles of a **simulation** zone. See [Simulation zone](ex_simulation.md) for details.
 
 ## Sample code
 
