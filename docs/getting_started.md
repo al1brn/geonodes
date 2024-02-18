@@ -38,35 +38,29 @@ See [Scripting nodes overview](/README.md#scripting-nodes-overview) for a quick 
 
 
 ``` python
-import geonodes as gn
+from geonodes import GeoNodes
 
-with gn.Tree("Icosphere tuto") as tree:
+with GeoNodes("Icosphere tuto") as tree:
 
    # Good practice: let's start with the tree inputs
 
-   radius = gn.Float.Input(1, "Radius", min_value=0.01, max_value=10, description="A reasonable radius for the sphere")
-   subs   = gn.Integer.Input(3, description="No limits: I trust you")
-   
-   mat_base = gn.Material.Input(None, "Base")
-   mat_sel  = gn.Material.Input(None, "Selected")
-   
+   radius = tree.float_input("Radius", 1., min_value=0.01, max_value=10, description="A reasonable radius for the sphere")
+   subs   = tree.integer_input("Subdivisions", 3, min_value=1, max_value=6, description="Ico Sphere d-subdivisions. Don't be too ambitious")
    
    # The icosphere
    
-   icosphere = gn.Mesh.IcoSphere(radius=radius, subdivisions=subs).mesh
+   ico = tree.IcoSphere(radius=radius, subdivisions=subs).mesh
    
    # The materials
    
-   faces = icosphere.faces
-   
-   faces.material = mat_base
-   faces[ gn.Boolean.Random(probability=.5) ].material = mat_sel
+   ico.set_material("Base Material")
+   ico[tree.random_boolean(probability=.5)].set_material("Sel Material")
    
    # Extrude the select faces
    
-   faces[faces.material_index.equal(2)].extrude(offset_scale=0.3)
+   ico = ico[tree.material_index().equal(2)].extrude_mesh(offset_scale=0.3)
    
-   tree.og = icosphere
+   tree.og = ico
 ```
 
 ![Result](images/ico_tuto.png)
