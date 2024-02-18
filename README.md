@@ -286,7 +286,7 @@ with GeoNodes("Demo") as tree:
     (a + b).to_output("At last")
 ```
 
-***Note*** : boolean operator such as `and` or `not` can't be used to generated nodes. One can use `+` and `*` between boolean sockets:
+***Note*** : boolean operator such as `and` or `not` can't be used to generate nodes. One can use `+` and `*` between boolean sockets:
 
 ``` python
 with GeoNodes("Demo") as tree:
