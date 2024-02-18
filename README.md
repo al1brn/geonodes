@@ -179,7 +179,7 @@ The name of the classes, sockets and methods are built with the following covent
   - Socket _'Mesh'_ --> `mesh`
 - When several sockets of a node share the same name, their python name is suffixed with **_i** starting from the second one:
   - `Math` has up to 3 input sockets named "Value", their python names are `value`, `value_1` and ` value_2`.
-  - ***Note*** : the numbering is done for the "enabled" sockets. A node such as "Store Named Attribute" has several sockets sharing the name "Attribute" but only one at a time is enabled (the one the type of which corresponds to the data type). In that case, the node class `StoreNamedAttribute` has only one socket named `attribute` which points to the enabled one.
+  - ***Note*** : the numbering is done for the "enabled" sockets. A node such as "Store Named Attribute" has several sockets sharing the name "Attribute" but only one at a time is enabled (the one the type of which corresponds to the data type). In that case, the node class `StoreNamedAttribute` has only one socket named `value` which points to the enabled one.
  
 ### Links, input and output sockets
 
@@ -201,6 +201,37 @@ with GeoNodes("Demo") as tree:
 
     # Get the output socket of the node "Set Shade Smooth" for further use
     shaded_sphere = node.geometry
+```
+
+### Node parameters
+
+Some nodes have parameters. The parameters are exposed as properties of the class. In the example below, the "Set Shade Smooth" node is created with "domain" parameter set to `'EDGE'` :
+
+``` python
+with GeoNodes("Demo") as tree:
+    node = tree.SetShadeSmooth(domain='EDGE')
+``` 
+***Important*** : the behavior of some nodes can change with parameter settings. For instance, changing a parameter can disable and/or enable sockets. Hence, it is adviced to initialie the node parameters at creation time. The example illustrates why it is important :
+
+``` python
+with GeoNodes("Demo") as tree:
+    
+    # ----- WRONG
+    
+    # By default, "Store Named Attribute" data_type is 'FLOAT'
+    # The following statement will plug to the FLOAT value
+    node = tree.StoreNamedAttribute(name="V", value=tree.position())
+    # Setting the parameter afterwards don't change the link previsouly created
+    node.data_type = 'FLOAT_VECTOR'
+    
+    # ---- CORRECT
+    
+    node = tree.StoreNamedAttribute(name="V", value=tree.position(), data_type='FLOAT_VECTOR')
+    
+    # ----- BEST
+    
+    sphere = tree.IcoSphere().mesh
+    sphere.store_named_vector("V", tree.position())
 ```
 
 
