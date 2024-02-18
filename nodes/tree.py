@@ -698,6 +698,20 @@ class GeoNodes(Tree):
     
     def layout(self, label="Frame", color=None, label_size=None):
         return self.Frame(label_size=label_size, node_label=label, node_color=color)
+    
+    # ====================================================================================================
+    # Simulation and Repeat
+    
+    def simulation(self, **kwargs):
+        from geonodes.nodes.zones import Simulation
+        
+        return Simulation(**kwargs)
+    
+    def repeat(self, iterations=1, **kwargs):
+        from geonodes.nodes.zones import Repeat
+
+        return Repeat(iterations=iterations, **kwargs)
+    
 
 
 

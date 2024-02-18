@@ -108,7 +108,6 @@ class NodeInfo:
         
         # ----- Remove the external links
         for link in to_delete:
-            #print("LINK", link.from_socket, link.to_socket)
             if link.from_socket is not None:
                 btree.links.remove(link)
             
@@ -140,19 +139,7 @@ class NodeInfo:
         
         for bsock in bsocks:
             if bsock.type not in socket_classes:
-                if True:
-                    self.add_socket_class(bsock)
-                else:
-                    socket_class_name = constants.SOCKET_CLASS_NAMES[bsock.type]
-                    base_class = sockets.Geometry if socket_class_name == 'Geometry' else sockets.Socket
-
-                    str_f = utils.compile_f
-                    #methods = {'__str__': utils.compile_f(f"def __str__(self):\n\treturn '<Socket {socket_class_name}>'", "__str__")}
-                    #methods['__repr__'] = utils.compile_f(f"def __repr__(self):\n\treturn '<Socket {socket_class_name}>'", "__repr__")
-                    
-
-                    socket_classes[bsock.type] = type(socket_class_name, (base_class,), {})
-                    tree_dict[socket_class_name] = socket_classes[bsock.type]
+                self.add_socket_class(bsock)
             
             if bsock.bl_idname not in nodesocket_classes:
                 nodesocket_classes[bsock.bl_idname] = socket_classes[bsock.type]
@@ -294,14 +281,13 @@ class NodeInfo:
             
             s += f"\treturn node.output_socket\n\n"
             
-            print("INPUT DEBUG")
-            print(s)
-            
             self.add_function(name, s, descr=f"{self.class_name}, return socket")
                 
         
         # ====================================================================================================
         # Socket method
+        
+        ok_method = True
         
         # ----- Standard
         
@@ -329,13 +315,15 @@ class NodeInfo:
                 
                 self.add_method(socket_class.__name__, self.python_name, meth_code, descr=f"{self.class_name}, {self.sm_pyname}=self")
                 
+            ok_method = False
+                
 
         # ====================================================================================================
         # Domain method
         
-        as_method = False
-        
         if self.has_socket_method and self.sm_in_bsock.bl_idname == 'NodeSocketGeometry' and 'domain' in self.params:
+            
+            print("DOMAIN", self.class_name)
             
             domain_class = sockets.Domain
             self.register_class(domain_class, 'Other')
@@ -356,12 +344,11 @@ class NodeInfo:
 
             descr = f"Node {self.class_name}, {self.sm_pyname}=self, domain=DOMAIN"
             self.add_method(domain_class_name, self.python_name, meth_code, descr=descr)
-            as_method = True
             
         # ====================================================================================================
         # One single input socket
         
-        if not as_method and self.max_in == 1:
+        if ok_method and self.max_in == 1:
             
             target = constants.SOCKET_CLASS_NAMES[self.bnode.inputs[0].type]
             self_socket = list(self.in_counts.keys())[0]
@@ -376,6 +363,8 @@ class NodeInfo:
                         )
             
             self.add_method(target, self.python_name, meth_code, is_static=False, descr=f"{self.class_name}, {self_socket}=self, return {'socket' if return_socket else 'node'}")
+            
+            ok_method = False
             
         # ====================================================================================================
         # Input nodes
@@ -863,7 +852,7 @@ class NodeInfo:
                 
         # ----------------------------------------------------------------------------------------------------
         # Main
-        
+
         custs = custom.get_custom(self.tree_type, self.class_name)
         if custs is None:
             return
@@ -980,6 +969,11 @@ class NodeInfo:
         doc['socket type'] = bsocket.type
         doc['bl_idname']   = utils.nodesocket_main_class(bsocket.bl_idname)
         doc['descr']       = descr
+        
+        # ----- Register Domain class if Geometry
+        
+        if class_name == 'Geometry':
+            self.register_class(sockets.Domain, 'Other', descr="Geometry domain")
         
         return socket_classes[bsocket.type]
     
@@ -1137,6 +1131,9 @@ def tree_class_setup(tree_type):
     
     btree = treestack.get_tree("TREE - Temp", tree_type=tree_type, create=True, clear=True)
     
+    if tree_type == 'GeometryNodeTree':
+        pass
+    
     for type_name in dir(bpy.types):
         try:
             bnode = btree.nodes.new(type=type_name)
@@ -1147,7 +1144,7 @@ def tree_class_setup(tree_type):
             continue
         
         node_info = NodeInfo(btree, bnode)
-            
+        
     # ====================================================================================================
     # Documentation
     # Very slooowwww

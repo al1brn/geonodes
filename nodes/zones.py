@@ -86,10 +86,6 @@ class Simulation:
         self._output = tree.SimulationOutput()
         self._input.bnode.pair_with_output(self._output.bnode)
         
-        #for k in dir(self._output.bnode):
-        #    print(f"{k:15s} = {getattr(self._output.bnode, k)}")
-        
-        
         # ----- Create the simulation state items
         # Geometry socket is created by default, it is first deleted
         
@@ -105,15 +101,24 @@ class Simulation:
             else:
                 stype = utils.get_value_socket_type(value)
                 
+                
             if first and stype != 'GEOMETRY':
                 self._output.bnode.state_items.new(socket_type='GEOMETRY', name='Geometry')
                 
             self._output.bnode.state_items.new(socket_type=stype, name=name)
+            
             first = False
             
-        self._closed = False
+        self._closed = True
+        
+        # ----- Initialize the attributes
+        
+        for name, value in kwargs.items():
+            setattr(self, name, value)
+            
         
     def __enter__(self):
+        self._closed = False
         return self
     
     def __exit__(self, exception_type, exception_value, traceback):
@@ -959,7 +964,14 @@ class Repeat:
             
         self._closed = False
         
+        # ----- Initialize the attributes
+
         self._input.iterations = iterations
+        
+        for name, value in kwargs.items():
+            setattr(self, name, value)
+        
+        
         
     def __enter__(self):
         return self

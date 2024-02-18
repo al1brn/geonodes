@@ -52,16 +52,16 @@ def get_custom(tree_type, class_name, create=False):
 # Declare a custom function for a node class name
 
 def add_function(class_name, name,
-                 target      = None,  # tuple of / or : None (Global), str or 'SOCKET'
-                 self_socket = None,  # Static if None
-                 use_enabled = False,
-                 node_label  = True,
-                 node_return = "node",
-                 domain      = None,
-                 loops       = None,
-                 debug       = None,
-                 descr       = None,
-                 tree_class  = "GeoNodes",
+                 target       = None,  # tuple of / or : None (Global), str or 'SOCKET'
+                 self_socket  = None,  # Static if None
+                 use_enabled  = False,
+                 node_label   = True,
+                 node_return  = "node",
+                 domain       = None,
+                 loops        = None,
+                 debug        = None,
+                 descr        = None,
+                 tree_classes = None,
                  **kwargs):
     
     """ Declare a custom function for a node class name.
@@ -109,42 +109,54 @@ def add_function(class_name, name,
         
     """
     
+    if tree_classes is None:
+        tree_classes = ("GeoNodes", "Shader")
+    elif isinstance(tree_classes, str):
+        tree_classes = (tree_classes,)
     
-    methods = get_custom(constants.TREE_BL_IDS[tree_class], class_name, create=True)
-    
-    if name in methods:
-        print(f"CAUTION: method {name} added twice for class {class_name}, target: {target}.")
+    for tree_class in tree_classes:
+        methods = get_custom(constants.TREE_BL_IDS[tree_class], class_name, create=True)
         
-    if loops is not None and target != 'SOCKET':
-        for key in loops:
-            if key.upper() not in name:
-                raise AttributeError(f"Custom function error: the function name template {name} should contain {key.upper()} for distinct function names with loops {loops}.")
-        
-    methods[name] = {
-        'target'      : target,
-        'self_socket' : self_socket,
-        'use_enabled' : use_enabled,
-        'node_label'  : node_label,
-        'node_return' : node_return,
-        'domain'      : domain,
-        'loops'       : [] if loops is None else list(loops),
-        'debug'       : debug,
-        'descr'       : descr,
-        'kwargs'      : {**kwargs},
-        'descr'       : descr,
-        }
+        if name in methods:
+            print(f"CAUTION: method {name} added twice for class {class_name}, target: {target}.")
+            
+        if loops is not None and target != 'SOCKET':
+            for key in loops:
+                if key.upper() not in name:
+                    raise AttributeError(f"Custom function error: the function name template {name} should contain {key.upper()} for distinct function names with loops {loops}.")
+            
+        methods[name] = {
+            'target'      : target,
+            'self_socket' : self_socket,
+            'use_enabled' : use_enabled,
+            'node_label'  : node_label,
+            'node_return' : node_return,
+            'domain'      : domain,
+            'loops'       : [] if loops is None else list(loops),
+            'debug'       : debug,
+            'descr'       : descr,
+            'kwargs'      : {**kwargs},
+            'descr'       : descr,
+            }
     
     
 # =============================================================================================================================
 # Maths
+
+for tree_classes in ['GeoNodes', ('Shader', 'Compositor', 'Texture')]:
+    if tree_classes == 'GeoNodes':
+        targets = ('Float', 'Int', None)
+    else:
+        targets = ('Float', None)
     
-add_function("Math", "OPERATION", ('Float', 'Int', None),
-             self_socket = 'value',
-             use_enabled = True,
-             node_return = "node.output_socket",
-             loops       = ['operation'],
-             descr       = "value=self",
-             )
+    add_function("Math", "OPERATION", targets,
+                 self_socket  = 'value',
+                 use_enabled  = True,
+                 node_return  = "node.output_socket",
+                 loops        = ['operation'],
+                 descr        = "value=self",
+                 tree_classes = tree_classes,
+                 )
 
 add_function("VectorMath", "OPERATION", 'Vect',
              self_socket = 'vector',
@@ -152,6 +164,11 @@ add_function("VectorMath", "OPERATION", 'Vect',
              node_return = "node.output_socket",
              loops       = ['operation'],
              descr       = "vector=self",
+             )
+
+add_function("SeparateXYZ", "xyz", 'Vect',
+             self_socket = 'vector',
+             descr       = "Shortcut for Vect.separate_xyz",
              )
 
 add_function("BooleanMath", "OPERATION", ('Bool', None),
@@ -193,6 +210,14 @@ add_function("Switch", "switch", 'SOCKET',
                  node_return = "node.output",
                  loops       = ['input_type'],
                  descr       = "false=self",
+             )
+
+add_function("RandomValue", "random_DATA_TYPE", None,
+                 self_socket = None,
+                 use_enabled = True,
+                 node_return = "node.value",
+                 loops       = ['data_type'],
+                 descr       = None,
              )
 
 # =============================================================================================================================
@@ -250,7 +275,7 @@ add_function("MeshBoolean", "union", "Geometry",
 
 
 # =============================================================================================================================
-# Mesh methods
+# Geometry methods
     
 add_function("SampleIndex", "sample_index_DATA_TYPE", "Geometry",
              self_socket = 'geometry',
@@ -259,6 +284,17 @@ add_function("SampleIndex", "sample_index_DATA_TYPE", "Geometry",
              domain      = 'domain',
              loops       = ['data_type'],
              )
+
+# =============================================================================================================================
+# Shader nodes
+
+add_function("CombineColor", "combine_MODE", None,
+             self_socket = None,
+             use_enabled = True,
+             node_return = "node.output_socket",
+             loops       = ['mode'],
+             )
+
     
 
 

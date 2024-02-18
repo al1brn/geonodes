@@ -368,6 +368,9 @@ def get_value_socket_type(value):
         print(f"Caution {value} variable is used rather than one of its sockets in {list(value.outputs.sockets_pynames().keys())}. '{stype}' returned.")
         return stype
     
+    elif hasattr(value, 'bsocket'):
+        return value.bsocket.type
+    
     else:
         raise Exception(f"Python value '{value}' of type {type(value).__name__} doesn't match any socket type in {list(constants.SOCKET_CLASSES.keys())}")
 

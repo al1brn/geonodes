@@ -248,6 +248,11 @@ class Socket:
     # ----- Negative
     
     def __neg__(self):
+        stype = self._socket_type
+        
+        if stype == 'BOOLEAN':
+            return self.bnot()
+        
         return self * -1
     
     # ----- Division
@@ -658,6 +663,9 @@ class Domain:
         
     def jump(self, socket):
         return self.geometry.jump(socket)
+    
+    def _get_selection(self, selection):
+        return self.geometry._get_selection(selection)
 
 class Geometry(Socket):
     def __init__(self, bsocket):
