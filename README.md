@@ -187,7 +187,7 @@ A link is created between two nodes by **setting an input socket** with an **out
 
 **Input sockets** are write-only attributes of the node when **Output sockets** are read-only. Hence, when a node uses the same name for an input socket and an output socket, the same name is use in the corresponding class without ambiguity.
 
-The node "Set Shade Smooth" has an input socket and an output socket named "Geometry". The `SetShadeSmooth` class owns a single attribute named `geometry` which refers to these two sockets depending on of it is set or read:
+The node "Set Shade Smooth" has an input socket and an output socket named "Geometry". The `SetShadeSmooth` class owns a single attribute named `geometry` which refers to these two sockets depending on if it is set or read:
 
 ``` python
 with GeoNodes("Demo") as tree:
