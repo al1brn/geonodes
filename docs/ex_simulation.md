@@ -43,6 +43,7 @@ In this demo:
 - Create a simulation loop creating balls sent at a random speed
 - Simulating gravity
 
+![Result](images/ex_simulation.png)
 
 ``` python
 from geonodes import GeoNodes, Shader
