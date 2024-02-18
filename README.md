@@ -234,78 +234,76 @@ with GeoNodes("Demo") as tree:
     sphere.store_named_vector("V", tree.position())
 ```
 
+### Group inputs and outputs, constants
 
+Group inputs and outputs sockets can be access as properties of the `tree`:
+- **GeoNodes**:
+  - `tree.input_geometry` or `tree.ig` : get the modfier input geometry socket
+  - `tree.output_geometry` or `tree.og` : set the modifier output geometry socket
+- **Shader**:
+  - `tree.output_surface` : set the output surface BSDF socket
+  - `tree.output_volume` : set the output volume BSDF socket
+  - `tree.output_displacement` : set the output displacement socket
 
-
-
-
-Inside the with statement block, nodes can be created by using the camel case version of their label:
-
-```python
-with GeoNodes("Demo") as tree:
-     # Create an Ico Sphere with default initial values
-     node = tree.IcoSphere()
-```
-
-At initialization time, the sockets can be set using arguments. The arguments are the snake case of the socket names:
-
-```python
-with GeoNodes("Demo") as tree:
-    # Create an Ico Sphere with custom initial values
-    node = tree.IcoSphere(radius=2, subdivisions=3)
-```
-
-The sockets can also be set afterwards:
+Geometry nodes tree allows custom input and output sockets. Use `xxx_input` to create custom sockets.
 
 ``` python
 with GeoNodes("Demo") as tree:
-    node = tree.IcoSphere()
-    node.radius=2
-    node.subdivisions = 3
-``` 
+    # Let's expose two parameters
+    radius = tree.float_input("Radius", 1.)
+    subs   = tree.int_input("Subdivisions", 3, min_value=1, max_value=6, description="Ico sphere subdivisions. Don't be too ambitious!")
 
-The sphere geometry can be read from the node output socket name:
+    # An ico sphere
+    tree.output_geometry = tree.IcoSphere(radius=radius, subdivisions=subs).mesh
+```
 
+With a **GeoNodes** tree, any socket can be plugged to the output with the method `to_output(name)`.
 
-Other nodes can be created using the geometry as input. Rather than using the node class name, one can use a method of the socket.
-The following example shows two ways to create the node "Set Material":
-- Creating the node with `SetMaterial`
-- Using the method `set_material` of the `Geometry` class
+Constant values, if required, can be created by calling snake case version of the input nodes:
 
 ``` python
 with GeoNodes("Demo") as tree:
-    node = tree.IcoSphere(radius=2, subdivisions=3)
-    sphere = node.mesh
-    uvmap = node.uv_map
-    
-    sphere = tree.SetMaterial(geometry=sphere, material="Material").geometry
-    
-    # or, better
-    
-    sphere.set_material("Material")
+    pi = tree.value(3.1415926)
+    count = tree.integer(50)
 ```
 
-In addition to create the node, the `set_material` method makes the python `sphere` variable points to the output socket of the newly created node:
-- Before calling `set_material` method : `sphere` is the `IcoSphere.mesh` socket
-- After calling `set_material` method : `sphere` is the `SetMaterial.geometry` socket
+### Maths
 
-Note that in this example, the `material` socket accepts:
-- `None` to keep the material socket empty
-- A string as the name of an existing Material
-- A Blender Material object
-- A socket
-
-To plug a geometry to the group input node as the result of the Geometry Node modifier, use the socket `tree.output_geometry`:
+Python operators can be used with sockets and between sockets and standard python value.
 
 ``` python
 with GeoNodes("Demo") as tree:
-    sphere = tree.IcoSphere(radius=2, subdivisions=3).mesh
-    sphere.set_material("Material")
-    tree.output_geometry = sphere
+    pi = tree.value(3.1415926)
+    # Use input
+    count = tree.integer_input("Count", 50)
+
+    # Some strange but certainly smart computations
+    angle = 2*pi/count
+    a = tree.sin(angle/17)
+    b = tree.cos((angle**2 + 67) % 5)
+
+    # To node output
+    (a + b).to_output("At last")
 ```
 
-Similary, input geometry can be read from the input node using the `tree.input_geometry` socket.
-Custom parameters can be created using `tree.xxx_input` methods as shown in the example below:
+***Note*** : boolean operator such as `and` or `not` can't be used to generated nodes. One can use `+` and `*` between boolean sockets:
+
+``` python
+with GeoNodes("Demo") as tree:
+    
+    a = tree.bool_input("A", False)
+    b = tree.bool_input("B", False)
+    
+    # a OR b
+    c = a + b
+    
+    # a AND b
+    d = a*b
+    
+    # NOT a
+    e = -a
+```
+### wrap up
 
 ``` python
 from geonodes import GeoNodes, Shader
@@ -323,16 +321,19 @@ with GeoNodes("Demo") as tree:
     radius = tree.float_input("Radius", 1.)
     subs   = tree.int_input("Subdivisions", 3, min_value=1, max_value=6, description="Ico sphere subdivisions. Don't be too ambitious!")
 
-    # An ico sphere with out material
+    # An ico sphere with our material
     sphere = tree.IcoSphere(radius=radius, subdivisions=subs).mesh
     sphere.set_material("Ico Shader")
 
+    # Let move it upwards
+    sphere.set_position(offset=(0, 0, 2))
+
+    # We join it with the input geometry
+    geo = tree.ig + sphere
+
     # Let's plug it into the modifier output
-    tree.output_geometry = sphere
+    tree.output_geometry = geo
 ```
 
-## Naming
-
-**geonodes** classes and properties are named after the Blender names.
 
 
