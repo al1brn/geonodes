@@ -28,7 +28,7 @@ or
 from geonodes import GeoNodes, Shader, Simulation, Repeat, print_doc
 ``` 
 
-See [Scripting nodes overview](README.md#scripting-nodes-overview)
+See [Scripting nodes overview](/README.md#scripting-nodes-overview)
 
 ## A more advanced example
 
