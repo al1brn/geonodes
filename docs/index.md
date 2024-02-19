@@ -9,6 +9,8 @@
 [Texture](#texture)
 
 
+# GeoNodes
+
 ## Socket
 
 [Bool](/docs/GeoNodes_classes/Bool.md) [Col](/docs/GeoNodes_classes/Col.md) [Collection](/docs/GeoNodes_classes/Collection.md) [Custom](/docs/GeoNodes_classes/Custom.md) [Float](/docs/GeoNodes_classes/Float.md) [Geometry](/docs/GeoNodes_classes/Geometry.md) [Img](/docs/GeoNodes_classes/Img.md) [Int](/docs/GeoNodes_classes/Int.md) [Mat](/docs/GeoNodes_classes/Mat.md) [Object](/docs/GeoNodes_classes/Object.md) [Rot](/docs/GeoNodes_classes/Rot.md) [Str](/docs/GeoNodes_classes/Str.md) [Texture](/docs/GeoNodes_classes/Texture.md) [Vect](/docs/GeoNodes_classes/Vect.md)
@@ -61,3 +63,8 @@
 ## Other
 
 [Domain](/docs/GeoNodes_classes/Domain.md)
+# Shader
+
+# Compositor
+
+# Texture
