@@ -1,44 +1,44 @@
 # Global functions
 
-***A*** : [abs](/docs/Shader_classes/abs.md) [add](/docs/Shader_classes/add.md) [add_shader](/docs/Shader_classes/add_shader.md) [arccos](/docs/Shader_classes/arccos.md) [arcsin](/docs/Shader_classes/arcsin.md) [arctan](/docs/Shader_classes/arctan.md) [arctan2](/docs/Shader_classes/arctan2.md) [attribute](/docs/Shader_classes/attribute.md)
+***A*** : [abs](#abs) [add](#add) [add_shader](#add_shader) [arccos](#arccos) [arcsin](#arcsin) [arctan](#arctan) [arctan2](#arctan2) [attribute](#attribute)
 
-***B*** : [background](/docs/Shader_classes/background.md) [bevel](/docs/Shader_classes/bevel.md) [blackbody](/docs/Shader_classes/blackbody.md) [brightness_contrast](/docs/Shader_classes/brightness_contrast.md) [bump](/docs/Shader_classes/bump.md)
+***B*** : [background](#background) [bevel](#bevel) [blackbody](#blackbody) [brightness_contrast](#brightness_contrast) [bump](#bump)
 
-***C*** : [camera_data](/docs/Shader_classes/camera_data.md) [ceil](/docs/Shader_classes/ceil.md) [clamp](/docs/Shader_classes/clamp.md) [color_attribute](/docs/Shader_classes/color_attribute.md) [combine_color](/docs/Shader_classes/combine_color.md) [combine_hsl](/docs/Shader_classes/combine_hsl.md) [combine_hsv](/docs/Shader_classes/combine_hsv.md) [combine_rgb](/docs/Shader_classes/combine_rgb.md) [combine_xyz](/docs/Shader_classes/combine_xyz.md) [compare](/docs/Shader_classes/compare.md) [cos](/docs/Shader_classes/cos.md) [cosh](/docs/Shader_classes/cosh.md) [curves_info](/docs/Shader_classes/curves_info.md)
+***C*** : [camera_data](#camera_data) [ceil](#ceil) [clamp](#clamp) [color_attribute](#color_attribute) [combine_color](#combine_color) [combine_hsl](#combine_hsl) [combine_hsv](#combine_hsv) [combine_rgb](#combine_rgb) [combine_xyz](#combine_xyz) [compare](#compare) [cos](#cos) [cosh](#cosh) [curves_info](#curves_info)
 
-***D*** : [degrees](/docs/Shader_classes/degrees.md) [diffuse_bsdf](/docs/Shader_classes/diffuse_bsdf.md) [displacement](/docs/Shader_classes/displacement.md) [divide](/docs/Shader_classes/divide.md)
+***D*** : [degrees](#degrees) [diffuse_bsdf](#diffuse_bsdf) [displacement](#displacement) [divide](#divide)
 
-***E*** : [emission](/docs/Shader_classes/emission.md) [environment_texture](/docs/Shader_classes/environment_texture.md) [exp](/docs/Shader_classes/exp.md)
+***E*** : [emission](#emission) [environment_texture](#environment_texture) [exp](#exp)
 
-***F*** : [float_curve](/docs/Shader_classes/float_curve.md) [floor](/docs/Shader_classes/floor.md) [floored_modulo](/docs/Shader_classes/floored_modulo.md) [fract](/docs/Shader_classes/fract.md) [frame](/docs/Shader_classes/frame.md) [fresnel](/docs/Shader_classes/fresnel.md)
+***F*** : [float_curve](#float_curve) [floor](#floor) [floored_modulo](#floored_modulo) [fract](#fract) [frame](#frame) [fresnel](#fresnel)
 
-***G*** : [gamma](/docs/Shader_classes/gamma.md) [geometry](/docs/Shader_classes/geometry.md) [glass_bsdf](/docs/Shader_classes/glass_bsdf.md) [glossy_bsdf](/docs/Shader_classes/glossy_bsdf.md) [greater_than](/docs/Shader_classes/greater_than.md)
+***G*** : [gamma](#gamma) [geometry](#geometry) [glass_bsdf](#glass_bsdf) [glossy_bsdf](#glossy_bsdf) [greater_than](#greater_than)
 
-***H*** : [hair_bsdf](/docs/Shader_classes/hair_bsdf.md) [holdout](/docs/Shader_classes/holdout.md) [hue_saturation_value](/docs/Shader_classes/hue_saturation_value.md)
+***H*** : [hair_bsdf](#hair_bsdf) [holdout](#holdout) [hue_saturation_value](#hue_saturation_value)
 
-***I*** : [ies_texture](/docs/Shader_classes/ies_texture.md) [inverse_sqrt](/docs/Shader_classes/inverse_sqrt.md) [invert_color](/docs/Shader_classes/invert_color.md)
+***I*** : [ies_texture](#ies_texture) [inverse_sqrt](#inverse_sqrt) [invert_color](#invert_color)
 
-***L*** : [less_than](/docs/Shader_classes/less_than.md) [light_path](/docs/Shader_classes/light_path.md) [log](/docs/Shader_classes/log.md)
+***L*** : [less_than](#less_than) [light_path](#light_path) [log](#log)
 
-***M*** : [mapping](/docs/Shader_classes/mapping.md) [math](/docs/Shader_classes/math.md) [max](/docs/Shader_classes/max.md) [min](/docs/Shader_classes/min.md) [mix](/docs/Shader_classes/mix.md) [mix_shader](/docs/Shader_classes/mix_shader.md) [mod](/docs/Shader_classes/mod.md) [multiply](/docs/Shader_classes/multiply.md) [multiply_add](/docs/Shader_classes/multiply_add.md) [musgrave_texture](/docs/Shader_classes/musgrave_texture.md)
+***M*** : [mapping](#mapping) [math](#math) [max](#max) [min](#min) [mix](#mix) [mix_shader](#mix_shader) [mod](#mod) [multiply](#multiply) [multiply_add](#multiply_add) [musgrave_texture](#musgrave_texture)
 
-***N*** : [normal_map](/docs/Shader_classes/normal_map.md)
+***N*** : [normal_map](#normal_map)
 
-***O*** : [object_info](/docs/Shader_classes/object_info.md)
+***O*** : [object_info](#object_info)
 
-***P*** : [particle_info](/docs/Shader_classes/particle_info.md) [pingpong](/docs/Shader_classes/pingpong.md) [point_info](/docs/Shader_classes/point_info.md) [power](/docs/Shader_classes/power.md) [principled_bsdf](/docs/Shader_classes/principled_bsdf.md) [principled_hair_bsdf](/docs/Shader_classes/principled_hair_bsdf.md) [principled_volume](/docs/Shader_classes/principled_volume.md)
+***P*** : [particle_info](#particle_info) [pingpong](#pingpong) [point_info](#point_info) [power](#power) [principled_bsdf](#principled_bsdf) [principled_hair_bsdf](#principled_hair_bsdf) [principled_volume](#principled_volume)
 
-***R*** : [radians](/docs/Shader_classes/radians.md) [refraction_bsdf](/docs/Shader_classes/refraction_bsdf.md) [reroute](/docs/Shader_classes/reroute.md) [rgb](/docs/Shader_classes/rgb.md) [rgb_curves](/docs/Shader_classes/rgb_curves.md) [rgb_to_bw](/docs/Shader_classes/rgb_to_bw.md) [round](/docs/Shader_classes/round.md)
+***R*** : [radians](#radians) [refraction_bsdf](#refraction_bsdf) [reroute](#reroute) [rgb](#rgb) [rgb_curves](#rgb_curves) [rgb_to_bw](#rgb_to_bw) [round](#round)
 
-***S*** : [script](/docs/Shader_classes/script.md) [sheen_bsdf](/docs/Shader_classes/sheen_bsdf.md) [sign](/docs/Shader_classes/sign.md) [sin](/docs/Shader_classes/sin.md) [sinh](/docs/Shader_classes/sinh.md) [sky_texture](/docs/Shader_classes/sky_texture.md) [smooth_max](/docs/Shader_classes/smooth_max.md) [smooth_min](/docs/Shader_classes/smooth_min.md) [snap](/docs/Shader_classes/snap.md) [specular_bsdf](/docs/Shader_classes/specular_bsdf.md) [sqrt](/docs/Shader_classes/sqrt.md) [subsurface_scattering](/docs/Shader_classes/subsurface_scattering.md) [subtract](/docs/Shader_classes/subtract.md)
+***S*** : [script](#script) [sheen_bsdf](#sheen_bsdf) [sign](#sign) [sin](#sin) [sinh](#sinh) [sky_texture](#sky_texture) [smooth_max](#smooth_max) [smooth_min](#smooth_min) [snap](#snap) [specular_bsdf](#specular_bsdf) [sqrt](#sqrt) [subsurface_scattering](#subsurface_scattering) [subtract](#subtract)
 
-***T*** : [tan](/docs/Shader_classes/tan.md) [tangent](/docs/Shader_classes/tangent.md) [tanh](/docs/Shader_classes/tanh.md) [texture_coordinate](/docs/Shader_classes/texture_coordinate.md) [toon_bsdf](/docs/Shader_classes/toon_bsdf.md) [translucent_bsdf](/docs/Shader_classes/translucent_bsdf.md) [transparent_bsdf](/docs/Shader_classes/transparent_bsdf.md) [trunc](/docs/Shader_classes/trunc.md)
+***T*** : [tan](#tan) [tangent](#tangent) [tanh](#tanh) [texture_coordinate](#texture_coordinate) [toon_bsdf](#toon_bsdf) [translucent_bsdf](#translucent_bsdf) [transparent_bsdf](#transparent_bsdf) [trunc](#trunc)
 
-***U*** : [uv_along_stroke](/docs/Shader_classes/uv_along_stroke.md) [uv_map](/docs/Shader_classes/uv_map.md)
+***U*** : [uv_along_stroke](#uv_along_stroke) [uv_map](#uv_map)
 
-***V*** : [value](/docs/Shader_classes/value.md) [vector_curves](/docs/Shader_classes/vector_curves.md) [vector_displacement](/docs/Shader_classes/vector_displacement.md) [vector_rotate](/docs/Shader_classes/vector_rotate.md) [vector_transform](/docs/Shader_classes/vector_transform.md) [volume_absorption](/docs/Shader_classes/volume_absorption.md) [volume_info](/docs/Shader_classes/volume_info.md) [volume_scatter](/docs/Shader_classes/volume_scatter.md)
+***V*** : [value](#value) [vector_curves](#vector_curves) [vector_displacement](#vector_displacement) [vector_rotate](#vector_rotate) [vector_transform](#vector_transform) [volume_absorption](#volume_absorption) [volume_info](#volume_info) [volume_scatter](#volume_scatter)
 
-***W*** : [wavelength](/docs/Shader_classes/wavelength.md) [wireframe](/docs/Shader_classes/wireframe.md) [wrap](/docs/Shader_classes/wrap.md)
+***W*** : [wavelength](#wavelength) [wireframe](#wireframe) [wrap](#wrap)
 
 ## abs
 

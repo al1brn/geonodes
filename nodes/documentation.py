@@ -865,9 +865,9 @@ def build_doc(folder):
                 initials = index_doc.initials(keys)
                 for initial in sorted(initials.keys()):
                     sub = initials[initial]
-                    links = " ".join(doc.list_links(sorted(sub)))
+                    links = " ".join(doc.list_links(sorted(sub), page=True))
                     doc.add(Paragraph(f"***{initial}*** : " + links), new_line=True)
-                
+                    
                 for name in keys:
                     member = doc.dct['GLOBAL'][name]
                     doc.member_doc(member)
