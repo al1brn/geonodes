@@ -320,14 +320,17 @@ class NodeInfo:
             for vtype in types:
                 socket_class = socket_classes[vtype]
                 
-                meth_code = self.method_code(self.python_name,
+                meth_code, meth_args, node_args = self.method_code(self.python_name,
                             method_type   = 'METHOD', 
                             self_socket   = self.sm_pyname,
                             use_enabled   = False,
                             node_return   = f"self.jump(node.{self.sm_out_pyname})" if jump else f"node.{self.sm_out_pyname}",
+                            return_args   = True,
                             )
                 
-                self.add_method(socket_class.__name__, self.python_name, meth_code, descr=f"{self.class_name}, {self.sm_pyname}=self")
+                self.add_method(socket_class.__name__, self.python_name, meth_code, 
+                                meth_args = meth_args, node_args = node_args,
+                                descr=f"{self.class_name}, {self.sm_pyname}=self")
                 
             ok_method = False
                 

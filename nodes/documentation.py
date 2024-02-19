@@ -622,9 +622,12 @@ class Doc:
             with self.bullets("Node", new_line=True) as bullets:
                 bullets.add('class_name', self.class_link(member['node_class']))
                 bullets.add('bl_idname', member['bl_idname'])
-            
+                
+                
         if member['type'] == 'Methods':
             meth_args = member['meth_args']
+            print("MEMBER DOC", title, member['type'], meth_args)
+            
             if meth_args is not None and (len(meth_args) > 1 or (len(meth_args) == 1 and meth_args[0] != "self")):
                 with self.bullets("Arguments", new_line=True) as bullets:
                     for item in meth_args:
