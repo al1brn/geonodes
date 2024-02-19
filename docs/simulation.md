@@ -64,7 +64,6 @@ For instance, with the keyword argument `geometry=mesh`:
 5. **Outside the simulation zone** use `simul.geometry` to get the simulated geometry
 
 :warning: **NOTE** ``` simul.geometry ``` refers to different sockets before and after closing the simulation zone.
-The use of ``` with ``` statement makes things simple.
 
 ``` python
 import geonodes as gn
