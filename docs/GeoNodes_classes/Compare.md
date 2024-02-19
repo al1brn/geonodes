@@ -40,9 +40,9 @@ def Compare(self, a=None, b=None, epsilon=None, data_type='FLOAT', mode='ELEMENT
 ## Implementations
 
 o functions : [compare](/docs/GeoNodes_classes/compare.md)
-o Float : [less_than](/docs/GeoNodes_classes/less_than.md) [less_equal](/docs/GeoNodes_classes/less_equal.md) [greater_than](/docs/GeoNodes_classes/greater_than.md) [greater_equal](/docs/GeoNodes_classes/greater_equal.md) [equal](/docs/GeoNodes_classes/equal.md) [not_equal](/docs/GeoNodes_classes/not_equal.md) 
-o Int : [less_than](/docs/GeoNodes_classes/less_than.md) [less_equal](/docs/GeoNodes_classes/less_equal.md) [greater_than](/docs/GeoNodes_classes/greater_than.md) [greater_equal](/docs/GeoNodes_classes/greater_equal.md) [equal](/docs/GeoNodes_classes/equal.md) [not_equal](/docs/GeoNodes_classes/not_equal.md) 
-o Vect : [less_than](/docs/GeoNodes_classes/less_than.md) [less_equal](/docs/GeoNodes_classes/less_equal.md) [greater_than](/docs/GeoNodes_classes/greater_than.md) [greater_equal](/docs/GeoNodes_classes/greater_equal.md) [equal](/docs/GeoNodes_classes/equal.md) [not_equal](/docs/GeoNodes_classes/not_equal.md) 
-o Str : [equal](/docs/GeoNodes_classes/equal.md) [not_equal](/docs/GeoNodes_classes/not_equal.md) 
-o Col : [equal](/docs/GeoNodes_classes/equal.md) [not_equal](/docs/GeoNodes_classes/not_equal.md) [brighter](/docs/GeoNodes_classes/brighter.md) [darker](/docs/GeoNodes_classes/darker.md) 
+o Float : [less_than](/docs/GeoNodes_classes/Float.md#less_than) [less_equal](/docs/GeoNodes_classes/Float.md#less_equal) [greater_than](/docs/GeoNodes_classes/Float.md#greater_than) [greater_equal](/docs/GeoNodes_classes/Float.md#greater_equal) [equal](/docs/GeoNodes_classes/Float.md#equal) [not_equal](/docs/GeoNodes_classes/Float.md#not_equal) 
+o Int : [less_than](/docs/GeoNodes_classes/Int.md#less_than) [less_equal](/docs/GeoNodes_classes/Int.md#less_equal) [greater_than](/docs/GeoNodes_classes/Int.md#greater_than) [greater_equal](/docs/GeoNodes_classes/Int.md#greater_equal) [equal](/docs/GeoNodes_classes/Int.md#equal) [not_equal](/docs/GeoNodes_classes/Int.md#not_equal) 
+o Vect : [less_than](/docs/GeoNodes_classes/Vect.md#less_than) [less_equal](/docs/GeoNodes_classes/Vect.md#less_equal) [greater_than](/docs/GeoNodes_classes/Vect.md#greater_than) [greater_equal](/docs/GeoNodes_classes/Vect.md#greater_equal) [equal](/docs/GeoNodes_classes/Vect.md#equal) [not_equal](/docs/GeoNodes_classes/Vect.md#not_equal) 
+o Str : [equal](/docs/GeoNodes_classes/Str.md#equal) [not_equal](/docs/GeoNodes_classes/Str.md#not_equal) 
+o Col : [equal](/docs/GeoNodes_classes/Col.md#equal) [not_equal](/docs/GeoNodes_classes/Col.md#not_equal) [brighter](/docs/GeoNodes_classes/Col.md#brighter) [darker](/docs/GeoNodes_classes/Col.md#darker) 
 

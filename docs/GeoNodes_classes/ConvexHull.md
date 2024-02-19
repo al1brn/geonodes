@@ -25,5 +25,5 @@ def ConvexHull(self, geometry=None, node_label=None, node_color=None):
 ## Implementations
 
 o functions : [convex_hull](/docs/GeoNodes_classes/convex_hull.md)
-o Geometry : [convex_hull](/docs/GeoNodes_classes/convex_hull.md) 
+o Geometry : [convex_hull](/docs/GeoNodes_classes/Geometry.md#convex_hull) 
 

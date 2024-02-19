@@ -10,7 +10,7 @@ Node
 
 Node parameters
  - handle_type : 'AUTO'
- - mode : {'LEFT', 'RIGHT'}
+ - mode : {'RIGHT', 'LEFT'}
 
 Input sockets
 
@@ -20,7 +20,7 @@ Output sockets
 ### Header
 
 ``` python
-def HandleTypeSelection(self, handle_type='AUTO', mode={'LEFT', 'RIGHT'}, node_label=None, node_color=None):
+def HandleTypeSelection(self, handle_type='AUTO', mode={'RIGHT', 'LEFT'}, node_label=None, node_color=None):
 ```
 
 ## Implementations

@@ -41,5 +41,5 @@ squash_frequency=2, texture_mapping=None, node_label=None, node_color=None):
 
 ## Implementations
 
-o Col : [brick_texture](/docs/GeoNodes_classes/brick_texture.md) 
+o Col : [brick_texture](/docs/GeoNodes_classes/Col.md#brick_texture) 
 

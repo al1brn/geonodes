@@ -27,6 +27,6 @@ def PointsOfCurve(self, curve_index=None, weights=None, sort_index=None, node_la
 
 ## Implementations
 
-o Int : [points_of_curve](/docs/GeoNodes_classes/points_of_curve.md) 
-o Float : [points_of_curve](/docs/GeoNodes_classes/points_of_curve.md) 
+o Int : [points_of_curve](/docs/GeoNodes_classes/Int.md#points_of_curve) 
+o Float : [points_of_curve](/docs/GeoNodes_classes/Float.md#points_of_curve) 
 

@@ -29,5 +29,5 @@ def MeshToPoints(self, mesh=None, position=None, radius=None, selection=None, mo
 ## Implementations
 
 o functions : [mesh_to_points](/docs/GeoNodes_classes/mesh_to_points.md)
-o Geometry : [mesh_to_points](/docs/GeoNodes_classes/mesh_to_points.md) 
+o Geometry : [mesh_to_points](/docs/GeoNodes_classes/Geometry.md#mesh_to_points) 
 

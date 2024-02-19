@@ -26,5 +26,5 @@ def ColorRamp(self, fac=None, color_ramp=None, node_label=None, node_color=None)
 
 ## Implementations
 
-o Float : [color_ramp](/docs/Shader_classes/color_ramp.md) 
+o Float : [color_ramp](/docs/Shader_classes/Float.md#color_ramp) 
 

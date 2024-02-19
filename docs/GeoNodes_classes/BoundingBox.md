@@ -26,5 +26,5 @@ def BoundingBox(self, geometry=None, node_label=None, node_color=None):
 
 ## Implementations
 
-o Geometry : [bounding_box](/docs/GeoNodes_classes/bounding_box.md) 
+o Geometry : [bounding_box](/docs/GeoNodes_classes/Geometry.md#bounding_box) 
 

@@ -29,5 +29,5 @@ def Mapping(self, vector=None, location=None, rotation=None, scale=None, vector_
 ## Implementations
 
 o functions : [mapping](/docs/Shader_classes/mapping.md)
-o Vect : [mapping](/docs/Shader_classes/mapping.md) 
+o Vect : [mapping](/docs/Shader_classes/Vect.md#mapping) 
 

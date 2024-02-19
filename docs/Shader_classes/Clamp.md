@@ -28,5 +28,5 @@ def Clamp(self, value=None, min=None, max=None, clamp_type='MINMAX', node_label=
 ## Implementations
 
 o functions : [clamp](/docs/Shader_classes/clamp.md)
-o Float : [clamp](/docs/Shader_classes/clamp.md) 
+o Float : [clamp](/docs/Shader_classes/Float.md#clamp) 
 

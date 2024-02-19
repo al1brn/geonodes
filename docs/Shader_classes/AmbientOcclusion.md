@@ -30,5 +30,5 @@ def AmbientOcclusion(self, color=None, distance=None, normal=None, inside=False,
 
 ## Implementations
 
-o Col : [ambient_occlusion](/docs/Shader_classes/ambient_occlusion.md) 
+o Col : [ambient_occlusion](/docs/Shader_classes/Col.md#ambient_occlusion) 
 

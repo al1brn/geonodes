@@ -35,6 +35,6 @@ def SampleVolume(self, volume=None, grid=None, position=None, grid_type='FLOAT',
 ## Implementations
 
 o functions : [sample_volume](/docs/GeoNodes_classes/sample_volume.md)
-o Float : [sample_volume](/docs/GeoNodes_classes/sample_volume.md) 
-o Int : [sample_volume](/docs/GeoNodes_classes/sample_volume.md) 
+o Float : [sample_volume](/docs/GeoNodes_classes/Float.md#sample_volume) 
+o Int : [sample_volume](/docs/GeoNodes_classes/Int.md#sample_volume) 
 

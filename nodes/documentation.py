@@ -573,13 +573,17 @@ class Doc:
     # ====================================================================================================
     # Links
     
-    def class_link(self, class_name):
-        if class_name is None:
+    def class_link(self, name, class_name=None):
+        if name is None:
             return "None"
         elif self.doc_spec.target == 'MD':
-            return f"[{class_name}](/docs/{self.tree_class}_classes/{class_name}.md)"
+            if class_name is None:
+                return f"[{name}](/docs/{self.tree_class}_classes/{name}.md)"
+            else:
+                return f"[{name}](/docs/{self.tree_class}_classes/{class_name}.md#{name})"
+                
         else:
-            return class_name
+            return name
         
     def page_link(self, name):
         if name is None:
@@ -587,12 +591,12 @@ class Doc:
         elif self.doc_spec.target == 'MD':
             return f"[{name}](#{name.lower().replace(' ', '-')})"
         
-    def list_links(self, names, page=False):
+    def list_links(self, names, page=False, class_name=None):
         if self.doc_spec.target == 'MD':
             if page:
                 return [self.page_link(name) for name in names]
             else:
-                return [self.class_link(name) for name in names]
+                return [self.class_link(name, class_name=class_name) for name in names]
         else:
             return names
         
@@ -616,7 +620,7 @@ class Doc:
                 if target == 'GLOBAL':
                     continue
     
-                bullets.add(target, " ".join(self.list_links(names)) + " ")
+                bullets.add(target, " ".join(self.list_links(names, class_name=target)) + " ")
     
     # ====================================================================================================
     # Member documentation
@@ -815,7 +819,7 @@ class Doc:
 FULL_BUILD = """
 
 from geonodes import GeoNodes, Shader
-from geonodes.nodes.documentation
+from geonodes.nodes.documentation import build_doc
 
 with GeoNodes("Build"):
     pass

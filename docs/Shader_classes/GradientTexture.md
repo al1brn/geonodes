@@ -28,5 +28,5 @@ def GradientTexture(self, vector=None, color_mapping=None, gradient_type='LINEAR
 
 ## Implementations
 
-o Vect : [gradient_texture](/docs/Shader_classes/gradient_texture.md) 
+o Vect : [gradient_texture](/docs/Shader_classes/Vect.md#gradient_texture) 
 

@@ -26,6 +26,6 @@ def ShortestEdgePaths(self, end_vertex=None, edge_cost=None, node_label=None, no
 
 ## Implementations
 
-o Float : [shortest_edge_paths](/docs/GeoNodes_classes/shortest_edge_paths.md) 
-o Int : [shortest_edge_paths](/docs/GeoNodes_classes/shortest_edge_paths.md) 
+o Float : [shortest_edge_paths](/docs/GeoNodes_classes/Float.md#shortest_edge_paths) 
+o Int : [shortest_edge_paths](/docs/GeoNodes_classes/Int.md#shortest_edge_paths) 
 

@@ -31,5 +31,5 @@ def InstanceOnPoints(self, points=None, instance=None, pick_instance=None, insta
 ## Implementations
 
 o functions : [instance_on_points](/docs/GeoNodes_classes/instance_on_points.md)
-o Geometry : [instance_on_points](/docs/GeoNodes_classes/instance_on_points.md) 
+o Geometry : [instance_on_points](/docs/GeoNodes_classes/Geometry.md#instance_on_points) 
 

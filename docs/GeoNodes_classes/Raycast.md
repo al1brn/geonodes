@@ -44,6 +44,6 @@ def Raycast(self, target_geometry=None, attribute=None, source_position=None, ra
 
 ## Implementations
 
-o Float : [raycast](/docs/GeoNodes_classes/raycast.md) 
-o Int : [raycast](/docs/GeoNodes_classes/raycast.md) 
+o Float : [raycast](/docs/GeoNodes_classes/Float.md#raycast) 
+o Int : [raycast](/docs/GeoNodes_classes/Int.md#raycast) 
 

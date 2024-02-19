@@ -28,5 +28,5 @@ def InstancesToPoints(self, instances=None, position=None, radius=None, selectio
 ## Implementations
 
 o functions : [instances_to_points](/docs/GeoNodes_classes/instances_to_points.md)
-o Geometry : [instances_to_points](/docs/GeoNodes_classes/instances_to_points.md) 
+o Geometry : [instances_to_points](/docs/GeoNodes_classes/Geometry.md#instances_to_points) 
 

@@ -39,6 +39,6 @@ def SampleUVSurface(self, mesh=None, value=None, source_uv_map=None, sample_uv=N
 
 ## Implementations
 
-o Float : [sample_uv_surface](/docs/GeoNodes_classes/sample_uv_surface.md) 
-o Int : [sample_uv_surface](/docs/GeoNodes_classes/sample_uv_surface.md) 
+o Float : [sample_uv_surface](/docs/GeoNodes_classes/Float.md#sample_uv_surface) 
+o Int : [sample_uv_surface](/docs/GeoNodes_classes/Int.md#sample_uv_surface) 
 

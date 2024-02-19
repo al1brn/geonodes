@@ -38,6 +38,6 @@ def SampleNearestSurface(self, mesh=None, value=None, sample_position=None, data
 ## Implementations
 
 o functions : [sample_nearest_surface](/docs/GeoNodes_classes/sample_nearest_surface.md)
-o Float : [sample_nearest_surface](/docs/GeoNodes_classes/sample_nearest_surface.md) 
-o Int : [sample_nearest_surface](/docs/GeoNodes_classes/sample_nearest_surface.md) 
+o Float : [sample_nearest_surface](/docs/GeoNodes_classes/Float.md#sample_nearest_surface) 
+o Int : [sample_nearest_surface](/docs/GeoNodes_classes/Int.md#sample_nearest_surface) 
 

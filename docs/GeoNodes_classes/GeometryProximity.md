@@ -27,5 +27,5 @@ def GeometryProximity(self, target=None, source_position=None, target_element='F
 
 ## Implementations
 
-o Vect : [geometry_proximity](/docs/GeoNodes_classes/geometry_proximity.md) 
+o Vect : [geometry_proximity](/docs/GeoNodes_classes/Vect.md#geometry_proximity) 
 

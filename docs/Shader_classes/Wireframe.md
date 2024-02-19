@@ -26,5 +26,5 @@ def Wireframe(self, size=None, use_pixel_size=False, node_label=None, node_color
 ## Implementations
 
 o functions : [wireframe](/docs/Shader_classes/wireframe.md)
-o Float : [wireframe](/docs/Shader_classes/wireframe.md) 
+o Float : [wireframe](/docs/Shader_classes/Float.md#wireframe) 
 

@@ -26,6 +26,6 @@ def OffsetCornerInFace(self, corner_index=None, offset=None, node_label=None, no
 ## Implementations
 
 o functions : [offset_corner_in_face](/docs/GeoNodes_classes/offset_corner_in_face.md)
-o Int : [offset_corner_in_face](/docs/GeoNodes_classes/offset_corner_in_face.md) 
-o Float : [offset_corner_in_face](/docs/GeoNodes_classes/offset_corner_in_face.md) 
+o Int : [offset_corner_in_face](/docs/GeoNodes_classes/Int.md#offset_corner_in_face) 
+o Float : [offset_corner_in_face](/docs/GeoNodes_classes/Float.md#offset_corner_in_face) 
 

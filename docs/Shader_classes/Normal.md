@@ -25,5 +25,5 @@ def Normal(self, normal=None, node_label=None, node_color=None):
 
 ## Implementations
 
-o Vect : [normal](/docs/Shader_classes/normal.md) 
+o Vect : [normal](/docs/Shader_classes/Vect.md#normal) 
 

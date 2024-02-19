@@ -27,5 +27,5 @@ def Bevel(self, radius=None, normal=None, samples=4, node_label=None, node_color
 ## Implementations
 
 o functions : [bevel](/docs/Shader_classes/bevel.md)
-o Vect : [bevel](/docs/Shader_classes/bevel.md) 
+o Vect : [bevel](/docs/Shader_classes/Vect.md#bevel) 
 

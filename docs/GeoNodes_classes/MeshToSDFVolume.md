@@ -29,5 +29,5 @@ def MeshToSDFVolume(self, mesh=None, voxel_amount=None, half_band_width=None, vo
 ## Implementations
 
 o functions : [mesh_to_sdf_volume](/docs/GeoNodes_classes/mesh_to_sdf_volume.md)
-o Geometry : [mesh_to_sdf_volume](/docs/GeoNodes_classes/mesh_to_sdf_volume.md) 
+o Geometry : [mesh_to_sdf_volume](/docs/GeoNodes_classes/Geometry.md#mesh_to_sdf_volume) 
 

@@ -30,5 +30,5 @@ def CurveToPoints(self, curve=None, count=None, length=None, mode='COUNT', node_
 
 ## Implementations
 
-o Geometry : [curve_to_points](/docs/GeoNodes_classes/curve_to_points.md) 
+o Geometry : [curve_to_points](/docs/GeoNodes_classes/Geometry.md#curve_to_points) 
 
