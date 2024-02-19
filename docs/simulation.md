@@ -39,7 +39,7 @@ At creation time, the *geometry* sockets inside the simulation zone are not conn
 from geonodes import GeoNodes
 
 with GeoNodes("Simul") as tree:
-    with tree.simulation(geometry=tree.ig, position=(0, 0, 0)):
+    with tree.simulation(geometry=tree.ig, position=(0, 0, 0)) as simul:
         simul.geometry = simul.geometry
         simul.position = simul.position
 ```
@@ -47,10 +47,6 @@ with GeoNodes("Simul") as tree:
 The image below shows the effect the resulting simulation zone:
 
 <img src="images/simulation_zone_closed.png" width="600" class="center">
-
-### With statement
-
-Rather than explicitly clossing the simulation, the ``` with ``` statement can be preferabily used.
 
 ## Accessing the sockets
 
@@ -60,11 +56,12 @@ For each keyword argument, 4 sockets are created in the simulation zone:
 3. **input socket of the output node** : connected when *close* method is called
 4. **output socket of the output node** : accessible through the attribute of the simulation with the name of the key word
 
-For instance, with the keyword argument ``` geometry=mesh ```:
-1. The mesh geometry is connected to the input socket named 'Geometry' of the simulation input node
-2. **Within the simulation zone** (i.e. before closing) use ``` simul.geometry ``` to get the geometry
-3. The input socket 'Geometry' of the output node is connected with the socket pointed by ``` simul.geometry ```
-4. **Outside the simulation zone** (i.e. after closing) use ``` simul.geometry ``` to get the simulated geometry
+For instance, with the keyword argument `geometry=mesh`:
+1. The `mesh` geometry is connected to the input socket named 'Geometry' of the simulation input node
+2. **Within the simulation zone** :
+    - `a = simul.geometry` : reads the **output socket** of the zone input node
+    - `simul.geometry = b` : writes the **input socket** of the zon output node
+5. **Outside the simulation zone** use `simul.geometry` to get the simulated geometry
 
 :warning: **NOTE** ``` simul.geometry ``` refers to different sockets before and after closing the simulation zone.
 The use of ``` with ``` statement makes things simple.
