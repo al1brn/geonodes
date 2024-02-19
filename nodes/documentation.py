@@ -625,10 +625,17 @@ class Doc:
                 
                 
         if member['type'] == 'Methods':
-            meth_args = member['meth_args']
             
+            meth_args = member['meth_args']
             if meth_args is not None and (len(meth_args) > 1 or (len(meth_args) == 1 and meth_args[0] != "self")):
                 with self.bullets("Arguments", new_line=True) as bullets:
+                    
+                    
+                    print("MEMBER_DOC", title, "Bullets arguments")
+                    
+                    bullets.add("HELLO")
+                    
+                    
                     for item in meth_args:
                         if item == "self":
                             continue
@@ -759,6 +766,7 @@ class Doc:
                     
                     for member_name in sorted(s_dct[stype].keys()):
                         member = s_dct[stype][member_name]
+                        
                         self.member_doc(member, level=2)
                 
                 

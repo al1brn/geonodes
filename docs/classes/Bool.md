@@ -33,6 +33,7 @@ Node
  - bl_idname : FunctionNodeBooleanMath
 
 Arguments
+ - HELLO
  - boolean : None
  - node_label : None
  - node_color : None
@@ -56,6 +57,7 @@ Node
  - bl_idname : FunctionNodeBooleanMath
 
 Arguments
+ - HELLO
  - node_label : None
  - node_color : None
 
@@ -77,6 +79,7 @@ Node
  - bl_idname : FunctionNodeBooleanMath
 
 Arguments
+ - HELLO
  - boolean : None
  - operation : 'AND'
  - node_label : None
@@ -101,6 +104,7 @@ Node
  - bl_idname : FunctionNodeBooleanMath
 
 Arguments
+ - HELLO
  - boolean : None
  - node_label : None
  - node_color : None
@@ -124,6 +128,7 @@ Node
  - bl_idname : GeometryNodeInputCurveHandlePositions
 
 Arguments
+ - HELLO
  - node_label : None
  - node_color : None
 
@@ -144,6 +149,7 @@ Node
  - bl_idname : GeometryNodeEdgePathsToSelection
 
 Arguments
+ - HELLO
  - next_vertex_index : None
  - node_label : None
  - node_color : None
@@ -166,6 +172,7 @@ Node
  - bl_idname : GeometryNodeEdgesToFaceGroups
 
 Arguments
+ - HELLO
  - node_label : None
  - node_color : None
 
@@ -186,6 +193,7 @@ Node
  - bl_idname : FunctionNodeBooleanMath
 
 Arguments
+ - HELLO
  - boolean : None
  - node_label : None
  - node_color : None
@@ -209,6 +217,7 @@ Node
  - bl_idname : FunctionNodeBooleanMath
 
 Arguments
+ - HELLO
  - boolean : None
  - node_label : None
  - node_color : None
@@ -232,6 +241,7 @@ Node
  - bl_idname : FunctionNodeBooleanMath
 
 Arguments
+ - HELLO
  - boolean : None
  - node_label : None
  - node_color : None
@@ -255,6 +265,7 @@ Node
  - bl_idname : FunctionNodeBooleanMath
 
 Arguments
+ - HELLO
  - boolean : None
  - node_label : None
  - node_color : None
@@ -278,6 +289,7 @@ Node
  - bl_idname : GeometryNodeSwitch
 
 Arguments
+ - HELLO
  - switch : None
  - true : None
  - node_label : None
@@ -303,6 +315,7 @@ Node
  - bl_idname : FunctionNodeBooleanMath
 
 Arguments
+ - HELLO
  - boolean : None
  - node_label : None
  - node_color : None
@@ -326,6 +339,7 @@ Node
  - bl_idname : FunctionNodeBooleanMath
 
 Arguments
+ - HELLO
  - boolean : None
  - node_label : None
  - node_color : None

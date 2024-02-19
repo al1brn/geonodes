@@ -25,6 +25,7 @@ Node
  - bl_idname : FunctionNodeInvertRotation
 
 Arguments
+ - HELLO
  - node_label : None
  - node_color : None
 
@@ -45,6 +46,7 @@ Node
  - bl_idname : ShaderNodeMix
 
 Arguments
+ - HELLO
  - factor : None
  - b : None
  - blend_type : 'MIX'
@@ -78,6 +80,7 @@ Node
  - bl_idname : FunctionNodeRotationToAxisAngle
 
 Arguments
+ - HELLO
  - node_label : None
  - node_color : None
 
@@ -98,6 +101,7 @@ Node
  - bl_idname : FunctionNodeRotationToEuler
 
 Arguments
+ - HELLO
  - node_label : None
  - node_color : None
 
@@ -118,6 +122,7 @@ Node
  - bl_idname : FunctionNodeRotationToQuaternion
 
 Arguments
+ - HELLO
  - node_label : None
  - node_color : None
 
@@ -138,6 +143,7 @@ Node
  - bl_idname : GeometryNodeSwitch
 
 Arguments
+ - HELLO
  - switch : None
  - true : None
  - node_label : None

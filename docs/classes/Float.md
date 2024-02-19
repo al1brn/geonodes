@@ -101,6 +101,7 @@ Node
  - bl_idname : ShaderNodeMath
 
 Arguments
+ - HELLO
  - use_clamp : False
  - node_label : None
  - node_color : None
@@ -124,6 +125,7 @@ Node
  - bl_idname : GeometryNodeAccumulateField
 
 Arguments
+ - HELLO
  - group_id : None
  - data_type : 'FLOAT'
  - domain : 'POINT'
@@ -150,6 +152,7 @@ Node
  - bl_idname : ShaderNodeMath
 
 Arguments
+ - HELLO
  - value : None
  - use_clamp : False
  - node_label : None
@@ -175,6 +178,7 @@ Node
  - bl_idname : ShaderNodeMath
 
 Arguments
+ - HELLO
  - use_clamp : False
  - node_label : None
  - node_color : None
@@ -198,6 +202,7 @@ Node
  - bl_idname : ShaderNodeMath
 
 Arguments
+ - HELLO
  - use_clamp : False
  - node_label : None
  - node_color : None
@@ -221,6 +226,7 @@ Node
  - bl_idname : ShaderNodeMath
 
 Arguments
+ - HELLO
  - use_clamp : False
  - node_label : None
  - node_color : None
@@ -244,6 +250,7 @@ Node
  - bl_idname : ShaderNodeMath
 
 Arguments
+ - HELLO
  - value : None
  - use_clamp : False
  - node_label : None
@@ -269,6 +276,7 @@ Node
  - bl_idname : GeometryNodeAttributeStatistic
 
 Arguments
+ - HELLO
  - geometry : None
  - selection : None
  - data_type : 'FLOAT'
@@ -297,6 +305,7 @@ Node
  - bl_idname : GeometryNodeBlurAttribute
 
 Arguments
+ - HELLO
  - iterations : None
  - weight : None
  - data_type : 'FLOAT'
@@ -323,6 +332,7 @@ Node
  - bl_idname : ShaderNodeMath
 
 Arguments
+ - HELLO
  - use_clamp : False
  - node_label : None
  - node_color : None
@@ -346,6 +356,7 @@ Node
  - bl_idname : ShaderNodeClamp
 
 Arguments
+ - HELLO
  - min : None
  - max : None
  - clamp_type : 'MINMAX'
@@ -372,6 +383,7 @@ Node
  - bl_idname : ShaderNodeValToRGB
 
 Arguments
+ - HELLO
  - color_ramp
  - node_label : None
  - node_color : None
@@ -394,6 +406,7 @@ Node
  - bl_idname : GeometryNodeCornersOfEdge
 
 Arguments
+ - HELLO
  - weights : None
  - sort_index : None
  - node_label : None
@@ -418,6 +431,7 @@ Node
  - bl_idname : GeometryNodeCornersOfFace
 
 Arguments
+ - HELLO
  - weights : None
  - sort_index : None
  - node_label : None
@@ -442,6 +456,7 @@ Node
  - bl_idname : GeometryNodeCornersOfVertex
 
 Arguments
+ - HELLO
  - weights : None
  - sort_index : None
  - node_label : None
@@ -466,6 +481,7 @@ Node
  - bl_idname : ShaderNodeMath
 
 Arguments
+ - HELLO
  - use_clamp : False
  - node_label : None
  - node_color : None
@@ -489,6 +505,7 @@ Node
  - bl_idname : ShaderNodeMath
 
 Arguments
+ - HELLO
  - use_clamp : False
  - node_label : None
  - node_color : None
@@ -512,6 +529,7 @@ Node
  - bl_idname : GeometryNodeCurveOfPoint
 
 Arguments
+ - HELLO
  - node_label : None
  - node_color : None
 
@@ -532,6 +550,7 @@ Node
  - bl_idname : ShaderNodeMath
 
 Arguments
+ - HELLO
  - use_clamp : False
  - node_label : None
  - node_color : None
@@ -555,6 +574,7 @@ Node
  - bl_idname : ShaderNodeMath
 
 Arguments
+ - HELLO
  - value : None
  - use_clamp : False
  - node_label : None
@@ -580,6 +600,7 @@ Node
  - bl_idname : GeometryNodeEdgesOfCorner
 
 Arguments
+ - HELLO
  - node_label : None
  - node_color : None
 
@@ -600,6 +621,7 @@ Node
  - bl_idname : GeometryNodeEdgesOfVertex
 
 Arguments
+ - HELLO
  - weights : None
  - sort_index : None
  - node_label : None
@@ -624,6 +646,7 @@ Node
  - bl_idname : FunctionNodeCompare
 
 Arguments
+ - HELLO
  - b : None
  - epsilon : None
  - mode : 'ELEMENT'
@@ -652,6 +675,7 @@ Node
  - bl_idname : GeometryNodeFieldAtIndex
 
 Arguments
+ - HELLO
  - index : None
  - data_type : 'FLOAT'
  - domain : 'POINT'
@@ -678,6 +702,7 @@ Node
  - bl_idname : GeometryNodeFieldOnDomain
 
 Arguments
+ - HELLO
  - data_type : 'FLOAT'
  - domain : 'POINT'
  - node_label : None
@@ -702,6 +727,7 @@ Node
  - bl_idname : ShaderNodeMath
 
 Arguments
+ - HELLO
  - use_clamp : False
  - node_label : None
  - node_color : None
@@ -725,6 +751,7 @@ Node
  - bl_idname : GeometryNodeFaceOfCorner
 
 Arguments
+ - HELLO
  - node_label : None
  - node_color : None
 
@@ -745,6 +772,7 @@ Node
  - bl_idname : ShaderNodeFloatCurve
 
 Arguments
+ - HELLO
  - factor : None
  - mapping
  - node_label : None
@@ -769,6 +797,7 @@ Node
  - bl_idname : FunctionNodeFloatToInt
 
 Arguments
+ - HELLO
  - rounding_mode : 'ROUND'
  - node_label : None
  - node_color : None
@@ -791,6 +820,7 @@ Node
  - bl_idname : ShaderNodeMath
 
 Arguments
+ - HELLO
  - use_clamp : False
  - node_label : None
  - node_color : None
@@ -814,6 +844,7 @@ Node
  - bl_idname : ShaderNodeMath
 
 Arguments
+ - HELLO
  - value : None
  - use_clamp : False
  - node_label : None
@@ -839,6 +870,7 @@ Node
  - bl_idname : ShaderNodeMath
 
 Arguments
+ - HELLO
  - use_clamp : False
  - node_label : None
  - node_color : None
@@ -862,6 +894,7 @@ Node
  - bl_idname : FunctionNodeCompare
 
 Arguments
+ - HELLO
  - b : None
  - mode : 'ELEMENT'
  - node_label : None
@@ -888,6 +921,7 @@ Node
  - bl_idname : FunctionNodeCompare
 
 Arguments
+ - HELLO
  - b : None
  - mode : 'ELEMENT'
  - node_label : None
@@ -914,6 +948,7 @@ Node
  - bl_idname : GeometryNodeImageInfo
 
 Arguments
+ - HELLO
  - image : None
  - node_label : None
  - node_color : None
@@ -936,6 +971,7 @@ Node
  - bl_idname : GeometryNodeIndexOfNearest
 
 Arguments
+ - HELLO
  - position : None
  - node_label : None
  - node_color : None
@@ -958,6 +994,7 @@ Node
  - bl_idname : ShaderNodeMath
 
 Arguments
+ - HELLO
  - use_clamp : False
  - node_label : None
  - node_color : None
@@ -981,6 +1018,7 @@ Node
  - bl_idname : GeometryNodeInputMeshFaceIsPlanar
 
 Arguments
+ - HELLO
  - node_label : None
  - node_color : None
 
@@ -1001,6 +1039,7 @@ Node
  - bl_idname : FunctionNodeCompare
 
 Arguments
+ - HELLO
  - b : None
  - mode : 'ELEMENT'
  - node_label : None
@@ -1027,6 +1066,7 @@ Node
  - bl_idname : FunctionNodeCompare
 
 Arguments
+ - HELLO
  - b : None
  - mode : 'ELEMENT'
  - node_label : None
@@ -1053,6 +1093,7 @@ Node
  - bl_idname : ShaderNodeMath
 
 Arguments
+ - HELLO
  - value : None
  - use_clamp : False
  - node_label : None
@@ -1078,6 +1119,7 @@ Node
  - bl_idname : ShaderNodeMapRange
 
 Arguments
+ - HELLO
  - from_min : None
  - from_max : None
  - to_min : None
@@ -1116,6 +1158,7 @@ Node
  - bl_idname : ShaderNodeMath
 
 Arguments
+ - HELLO
  - value : None
  - value_1 : None
  - operation : 'ADD'
@@ -1144,6 +1187,7 @@ Node
  - bl_idname : ShaderNodeMath
 
 Arguments
+ - HELLO
  - value : None
  - value_1 : None
  - use_clamp : False
@@ -1171,6 +1215,7 @@ Node
  - bl_idname : ShaderNodeMath
 
 Arguments
+ - HELLO
  - value : None
  - use_clamp : False
  - node_label : None
@@ -1196,6 +1241,7 @@ Node
  - bl_idname : ShaderNodeMath
 
 Arguments
+ - HELLO
  - value : None
  - use_clamp : False
  - node_label : None
@@ -1221,6 +1267,7 @@ Node
  - bl_idname : ShaderNodeMath
 
 Arguments
+ - HELLO
  - value : None
  - use_clamp : False
  - node_label : None
@@ -1246,6 +1293,7 @@ Node
  - bl_idname : ShaderNodeMath
 
 Arguments
+ - HELLO
  - value : None
  - use_clamp : False
  - node_label : None
@@ -1271,6 +1319,7 @@ Node
  - bl_idname : ShaderNodeMix
 
 Arguments
+ - HELLO
  - factor : None
  - b : None
  - blend_type : 'MIX'
@@ -1304,6 +1353,7 @@ Node
  - bl_idname : ShaderNodeMath
 
 Arguments
+ - HELLO
  - value : None
  - use_clamp : False
  - node_label : None
@@ -1329,6 +1379,7 @@ Node
  - bl_idname : ShaderNodeMath
 
 Arguments
+ - HELLO
  - value : None
  - use_clamp : False
  - node_label : None
@@ -1354,6 +1405,7 @@ Node
  - bl_idname : ShaderNodeMath
 
 Arguments
+ - HELLO
  - value : None
  - value_1 : None
  - use_clamp : False
@@ -1381,6 +1433,7 @@ Node
  - bl_idname : FunctionNodeCompare
 
 Arguments
+ - HELLO
  - b : None
  - epsilon : None
  - mode : 'ELEMENT'
@@ -1409,6 +1462,7 @@ Node
  - bl_idname : GeometryNodeOffsetCornerInFace
 
 Arguments
+ - HELLO
  - offset : None
  - node_label : None
  - node_color : None
@@ -1431,6 +1485,7 @@ Node
  - bl_idname : GeometryNodeOffsetPointInCurve
 
 Arguments
+ - HELLO
  - offset : None
  - node_label : None
  - node_color : None
@@ -1453,6 +1508,7 @@ Node
  - bl_idname : ShaderNodeMath
 
 Arguments
+ - HELLO
  - value : None
  - use_clamp : False
  - node_label : None
@@ -1478,6 +1534,7 @@ Node
  - bl_idname : GeometryNodePointsOfCurve
 
 Arguments
+ - HELLO
  - weights : None
  - sort_index : None
  - node_label : None
@@ -1502,6 +1559,7 @@ Node
  - bl_idname : ShaderNodeMath
 
 Arguments
+ - HELLO
  - value : None
  - use_clamp : False
  - node_label : None
@@ -1527,6 +1585,7 @@ Node
  - bl_idname : ShaderNodeMath
 
 Arguments
+ - HELLO
  - use_clamp : False
  - node_label : None
  - node_color : None
@@ -1550,6 +1609,7 @@ Node
  - bl_idname : FunctionNodeRandomValue
 
 Arguments
+ - HELLO
  - max : None
  - ID : None
  - seed : None
@@ -1580,6 +1640,7 @@ Node
  - bl_idname : GeometryNodeRaycast
 
 Arguments
+ - HELLO
  - target_geometry : None
  - source_position : None
  - ray_direction : None
@@ -1612,6 +1673,7 @@ Node
  - bl_idname : ShaderNodeMath
 
 Arguments
+ - HELLO
  - use_clamp : False
  - node_label : None
  - node_color : None
@@ -1635,6 +1697,7 @@ Node
  - bl_idname : GeometryNodeSampleCurve
 
 Arguments
+ - HELLO
  - curves : None
  - factor : None
  - curve_index : None
@@ -1669,6 +1732,7 @@ Node
  - bl_idname : GeometryNodeSampleIndex
 
 Arguments
+ - HELLO
  - geometry : None
  - index : None
  - clamp : False
@@ -1699,6 +1763,7 @@ Node
  - bl_idname : GeometryNodeSampleNearestSurface
 
 Arguments
+ - HELLO
  - mesh : None
  - sample_position : None
  - data_type : 'FLOAT'
@@ -1725,6 +1790,7 @@ Node
  - bl_idname : GeometryNodeSampleUVSurface
 
 Arguments
+ - HELLO
  - mesh : None
  - source_uv_map : None
  - sample_uv : None
@@ -1753,6 +1819,7 @@ Node
  - bl_idname : GeometryNodeSampleVolume
 
 Arguments
+ - HELLO
  - volume : None
  - position : None
  - grid_type : 'FLOAT'
@@ -1781,6 +1848,7 @@ Node
  - bl_idname : GeometryNodeInputShortestEdgePaths
 
 Arguments
+ - HELLO
  - end_vertex : None
  - node_label : None
  - node_color : None
@@ -1803,6 +1871,7 @@ Node
  - bl_idname : ShaderNodeMath
 
 Arguments
+ - HELLO
  - use_clamp : False
  - node_label : None
  - node_color : None
@@ -1826,6 +1895,7 @@ Node
  - bl_idname : ShaderNodeMath
 
 Arguments
+ - HELLO
  - use_clamp : False
  - node_label : None
  - node_color : None
@@ -1849,6 +1919,7 @@ Node
  - bl_idname : ShaderNodeMath
 
 Arguments
+ - HELLO
  - use_clamp : False
  - node_label : None
  - node_color : None
@@ -1872,6 +1943,7 @@ Node
  - bl_idname : ShaderNodeMath
 
 Arguments
+ - HELLO
  - value : None
  - value_1 : None
  - use_clamp : False
@@ -1899,6 +1971,7 @@ Node
  - bl_idname : ShaderNodeMath
 
 Arguments
+ - HELLO
  - value : None
  - value_1 : None
  - use_clamp : False
@@ -1926,6 +1999,7 @@ Node
  - bl_idname : ShaderNodeMath
 
 Arguments
+ - HELLO
  - value : None
  - use_clamp : False
  - node_label : None
@@ -1951,6 +2025,7 @@ Node
  - bl_idname : ShaderNodeMath
 
 Arguments
+ - HELLO
  - use_clamp : False
  - node_label : None
  - node_color : None
@@ -1974,6 +2049,7 @@ Node
  - bl_idname : ShaderNodeMath
 
 Arguments
+ - HELLO
  - value : None
  - use_clamp : False
  - node_label : None
@@ -1999,6 +2075,7 @@ Node
  - bl_idname : GeometryNodeSwitch
 
 Arguments
+ - HELLO
  - switch : None
  - true : None
  - node_label : None
@@ -2024,6 +2101,7 @@ Node
  - bl_idname : ShaderNodeMath
 
 Arguments
+ - HELLO
  - use_clamp : False
  - node_label : None
  - node_color : None
@@ -2047,6 +2125,7 @@ Node
  - bl_idname : ShaderNodeMath
 
 Arguments
+ - HELLO
  - use_clamp : False
  - node_label : None
  - node_color : None
@@ -2070,6 +2149,7 @@ Node
  - bl_idname : ShaderNodeMath
 
 Arguments
+ - HELLO
  - use_clamp : False
  - node_label : None
  - node_color : None
@@ -2093,6 +2173,7 @@ Node
  - bl_idname : GeometryNodeVertexOfCorner
 
 Arguments
+ - HELLO
  - node_label : None
  - node_color : None
 
@@ -2113,6 +2194,7 @@ Node
  - bl_idname : ShaderNodeMath
 
 Arguments
+ - HELLO
  - value : None
  - value_1 : None
  - use_clamp : False

@@ -21,6 +21,7 @@ Node
  - bl_idname : GeometryNodeMaterialSelection
 
 Arguments
+ - HELLO
  - node_label : None
  - node_color : None
 
@@ -41,6 +42,7 @@ Node
  - bl_idname : GeometryNodeSwitch
 
 Arguments
+ - HELLO
  - switch : None
  - true : None
  - node_label : None
