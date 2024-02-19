@@ -28,3 +28,4 @@ def Background(self, color=None, strength=None, node_label=None, node_color=None
 
 o functions : [background](/docs/Shader_classes/GLOBAL.md#background)
 
+

@@ -29,3 +29,4 @@ def CollectionInfo(self, collection=None, separate_children=None, reset_children
 
 o functions : [collection_info](/docs/GeoNodes_classes/GLOBAL.md#collection_info)
 
+

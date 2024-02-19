@@ -26,3 +26,4 @@ def SplineLength(self, node_label=None, node_color=None):
 
 o functions : [spline_length](/docs/GeoNodes_classes/GLOBAL.md#spline_length)
 
+

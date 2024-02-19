@@ -27,3 +27,4 @@ def ShaderToRGB(self, shader=None, node_label=None, node_color=None):
 
 o Shader : [shader_to_rgb](/docs/Shader_classes/Shader.md#shader_to_rgb)
 
+

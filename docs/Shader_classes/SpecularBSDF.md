@@ -36,3 +36,4 @@ def SpecularBSDF(self, base_color=None, specular=None, roughness=None, emissive_
 
 o functions : [specular_bsdf](/docs/Shader_classes/GLOBAL.md#specular_bsdf)
 
+

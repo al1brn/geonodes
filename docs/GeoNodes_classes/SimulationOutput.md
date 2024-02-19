@@ -29,5 +29,7 @@ def SimulationOutput(self, skip=None, geometry=None, active_index=0, active_item
 ## Implementations
 
 o functions : [simulation_output](/docs/GeoNodes_classes/GLOBAL.md#simulation_output)
+
 o Geometry : [simulation_output](/docs/GeoNodes_classes/Geometry.md#simulation_output)
+
 

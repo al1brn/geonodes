@@ -38,6 +38,9 @@ def EvaluateAtIndex(self, index=None, value=None, data_type='FLOAT', domain='POI
 ## Implementations
 
 o functions : [evaluate_at_index](/docs/GeoNodes_classes/GLOBAL.md#evaluate_at_index)
+
 o Float : [evaluate_at_index](/docs/GeoNodes_classes/Float.md#evaluate_at_index)
+
 o Int : [evaluate_at_index](/docs/GeoNodes_classes/Int.md#evaluate_at_index)
+
 

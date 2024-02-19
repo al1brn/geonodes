@@ -29,5 +29,7 @@ def Displacement(self, height=None, midlevel=None, scale=None, normal=None, spac
 ## Implementations
 
 o functions : [displacement](/docs/Shader_classes/GLOBAL.md#displacement)
+
 o Vect : [displacement](/docs/Shader_classes/Vect.md#displacement)
+
 

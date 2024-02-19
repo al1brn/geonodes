@@ -26,3 +26,4 @@ def FaceNeighbors(self, node_label=None, node_color=None):
 
 o functions : [face_neighbors](/docs/GeoNodes_classes/GLOBAL.md#face_neighbors)
 
+

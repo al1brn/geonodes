@@ -39,5 +39,7 @@ def CaptureAttribute(self, geometry=None, value=None, data_type='FLOAT', domain=
 ## Implementations
 
 o Geometry : [capture_attribute](/docs/GeoNodes_classes/Geometry.md#capture_attribute) [capture_float](/docs/GeoNodes_classes/Geometry.md#capture_float) [capture_int](/docs/GeoNodes_classes/Geometry.md#capture_int) [capture_vector](/docs/GeoNodes_classes/Geometry.md#capture_vector) [capture_color](/docs/GeoNodes_classes/Geometry.md#capture_color) [capture_boolean](/docs/GeoNodes_classes/Geometry.md#capture_boolean) [capture_quaternion](/docs/GeoNodes_classes/Geometry.md#capture_quaternion)
+
 o Domain : [capture_attribute](/docs/GeoNodes_classes/Domain.md#capture_attribute) [capture_float](/docs/GeoNodes_classes/Domain.md#capture_float) [capture_int](/docs/GeoNodes_classes/Domain.md#capture_int) [capture_vector](/docs/GeoNodes_classes/Domain.md#capture_vector) [capture_color](/docs/GeoNodes_classes/Domain.md#capture_color) [capture_boolean](/docs/GeoNodes_classes/Domain.md#capture_boolean) [capture_quaternion](/docs/GeoNodes_classes/Domain.md#capture_quaternion)
+
 

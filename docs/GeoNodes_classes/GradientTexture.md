@@ -30,3 +30,4 @@ def GradientTexture(self, vector=None, color_mapping=None, gradient_type='LINEAR
 
 o Vect : [gradient_texture](/docs/GeoNodes_classes/Vect.md#gradient_texture)
 
+

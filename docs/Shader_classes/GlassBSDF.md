@@ -31,3 +31,4 @@ def GlassBSDF(self, color=None, roughness=None, ior=None, normal=None, distribut
 
 o functions : [glass_bsdf](/docs/Shader_classes/GLOBAL.md#glass_bsdf)
 
+

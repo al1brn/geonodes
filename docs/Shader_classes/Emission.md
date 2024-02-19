@@ -28,3 +28,4 @@ def Emission(self, color=None, strength=None, node_label=None, node_color=None):
 
 o functions : [emission](/docs/Shader_classes/GLOBAL.md#emission)
 
+

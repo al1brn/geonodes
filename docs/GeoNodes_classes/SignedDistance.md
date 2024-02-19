@@ -25,3 +25,4 @@ def SignedDistance(self, node_label=None, node_color=None):
 
 o functions : [signed_distance](/docs/GeoNodes_classes/GLOBAL.md#signed_distance)
 
+

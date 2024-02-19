@@ -27,5 +27,7 @@ def OffsetPointInCurve(self, point_index=None, offset=None, node_label=None, nod
 ## Implementations
 
 o Int : [offset_point_in_curve](/docs/GeoNodes_classes/Int.md#offset_point_in_curve)
+
 o Float : [offset_point_in_curve](/docs/GeoNodes_classes/Float.md#offset_point_in_curve)
+
 

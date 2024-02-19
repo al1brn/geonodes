@@ -30,3 +30,4 @@ def CurveLine(self, start=None, end=None, direction=None, length=None, mode='POI
 
 o functions : [curve_line](/docs/GeoNodes_classes/GLOBAL.md#curve_line)
 
+

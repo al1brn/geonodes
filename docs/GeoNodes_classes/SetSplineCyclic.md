@@ -27,5 +27,7 @@ def SetSplineCyclic(self, geometry=None, cyclic=None, selection=None, node_label
 ## Implementations
 
 o functions : [set_spline_cyclic](/docs/GeoNodes_classes/GLOBAL.md#set_spline_cyclic)
+
 o Geometry : [set_spline_cyclic](/docs/GeoNodes_classes/Geometry.md#set_spline_cyclic) [spline_cyclic](/docs/GeoNodes_classes/Geometry.md#spline_cyclic)
+
 

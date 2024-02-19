@@ -28,3 +28,4 @@ def Points(self, count=None, position=None, radius=None, node_label=None, node_c
 
 o functions : [points](/docs/GeoNodes_classes/GLOBAL.md#points)
 
+

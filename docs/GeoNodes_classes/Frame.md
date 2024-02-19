@@ -27,3 +27,4 @@ def Frame(self, label_size=20, shrink=True, text=None, node_label=None, node_col
 
 o functions : [frame](/docs/GeoNodes_classes/GLOBAL.md#frame)
 
+

@@ -1597,7 +1597,7 @@ Node initialization
 > HandleTypeSelection, return socket
 
 ``` python
-def handle_type_selection(handle_type='AUTO', mode={'LEFT', 'RIGHT'}, node_label=None, node_color=None):
+def handle_type_selection(handle_type='AUTO', mode={'RIGHT', 'LEFT'}, node_label=None, node_color=None):
 ```
 Node
  - class_name : [HandleTypeSelection](/docs/GeoNodes_classes/HandleTypeSelection.md)
@@ -1605,7 +1605,7 @@ Node
 
 Arguments
  - handle_type : 'AUTO'
- - mode : {'LEFT', 'RIGHT'}
+ - mode : {'RIGHT', 'LEFT'}
  - node_label : None
  - node_color : None
 
@@ -4134,7 +4134,7 @@ Node initialization
 > SetHandleType, return single output socket
 
 ``` python
-def set_handle_type(curve=None, selection=None, handle_type='AUTO', mode={'LEFT', 'RIGHT'}, node_label=None, node_color=None):
+def set_handle_type(curve=None, selection=None, handle_type='AUTO', mode={'RIGHT', 'LEFT'}, node_label=None, node_color=None):
 ```
 Node
  - class_name : [SetHandleType](/docs/GeoNodes_classes/SetHandleType.md)
@@ -4144,7 +4144,7 @@ Arguments
  - curve : None
  - selection : None
  - handle_type : 'AUTO'
- - mode : {'LEFT', 'RIGHT'}
+ - mode : {'RIGHT', 'LEFT'}
  - node_label : None
  - node_color : None
 

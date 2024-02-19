@@ -28,5 +28,7 @@ def SeparateGeometry(self, geometry=None, selection=None, domain='POINT', node_l
 ## Implementations
 
 o Geometry : [separate_geometry](/docs/GeoNodes_classes/Geometry.md#separate_geometry)
+
 o Domain : [separate_geometry](/docs/GeoNodes_classes/Domain.md#separate_geometry)
+
 

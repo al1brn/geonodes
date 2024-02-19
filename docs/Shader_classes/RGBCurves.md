@@ -27,5 +27,7 @@ def RGBCurves(self, fac=None, color=None, mapping=None, node_label=None, node_co
 ## Implementations
 
 o functions : [rgb_curves](/docs/Shader_classes/GLOBAL.md#rgb_curves)
+
 o Col : [rgb_curves](/docs/Shader_classes/Col.md#rgb_curves)
+
 

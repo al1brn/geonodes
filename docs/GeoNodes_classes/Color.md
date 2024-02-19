@@ -25,3 +25,4 @@ def Color(self, node_label=None, node_color=None):
 
 o functions : [color](/docs/GeoNodes_classes/GLOBAL.md#color)
 
+

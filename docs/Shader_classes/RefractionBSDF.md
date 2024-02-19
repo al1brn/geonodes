@@ -31,3 +31,4 @@ def RefractionBSDF(self, color=None, roughness=None, ior=None, normal=None, dist
 
 o functions : [refraction_bsdf](/docs/Shader_classes/GLOBAL.md#refraction_bsdf)
 
+

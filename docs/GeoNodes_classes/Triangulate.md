@@ -29,5 +29,7 @@ def Triangulate(self, mesh=None, minimum_vertices=None, selection=None, ngon_met
 ## Implementations
 
 o functions : [triangulate](/docs/GeoNodes_classes/GLOBAL.md#triangulate)
+
 o Geometry : [triangulate](/docs/GeoNodes_classes/Geometry.md#triangulate)
+
 

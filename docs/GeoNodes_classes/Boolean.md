@@ -26,3 +26,4 @@ def Boolean(self, boolean=False, node_label=None, node_color=None):
 
 o functions : [boolean](/docs/GeoNodes_classes/GLOBAL.md#boolean)
 
+

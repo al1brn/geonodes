@@ -32,3 +32,4 @@ def HairBSDF(self, color=None, offset=None, roughnessu=None, roughnessv=None, ta
 
 o functions : [hair_bsdf](/docs/Shader_classes/GLOBAL.md#hair_bsdf)
 
+

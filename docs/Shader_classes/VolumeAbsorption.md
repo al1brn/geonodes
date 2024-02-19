@@ -28,3 +28,4 @@ def VolumeAbsorption(self, color=None, density=None, node_label=None, node_color
 
 o functions : [volume_absorption](/docs/Shader_classes/GLOBAL.md#volume_absorption)
 
+

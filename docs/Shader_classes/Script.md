@@ -30,3 +30,4 @@ def Script(self, bytecode='', bytecode_hash='', filepath='', mode='INTERNAL', sc
 
 o functions : [script](/docs/Shader_classes/GLOBAL.md#script)
 
+

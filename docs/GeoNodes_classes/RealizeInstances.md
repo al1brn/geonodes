@@ -25,5 +25,7 @@ def RealizeInstances(self, geometry=None, node_label=None, node_color=None):
 ## Implementations
 
 o functions : [realize_instances](/docs/GeoNodes_classes/GLOBAL.md#realize_instances)
+
 o Geometry : [realize_instances](/docs/GeoNodes_classes/Geometry.md#realize_instances)
+
 

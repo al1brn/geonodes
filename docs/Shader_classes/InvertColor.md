@@ -26,5 +26,7 @@ def InvertColor(self, fac=None, color=None, node_label=None, node_color=None):
 ## Implementations
 
 o functions : [invert_color](/docs/Shader_classes/GLOBAL.md#invert_color)
+
 o Col : [invert_color](/docs/Shader_classes/Col.md#invert_color)
+
 

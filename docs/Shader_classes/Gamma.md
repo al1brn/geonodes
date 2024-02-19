@@ -26,5 +26,7 @@ def Gamma(self, color=None, gamma=None, node_label=None, node_color=None):
 ## Implementations
 
 o functions : [gamma](/docs/Shader_classes/GLOBAL.md#gamma)
+
 o Col : [gamma](/docs/Shader_classes/Col.md#gamma)
+
 

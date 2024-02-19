@@ -28,3 +28,4 @@ def ColorRamp(self, fac=None, color_ramp=None, node_label=None, node_color=None)
 
 o Float : [color_ramp](/docs/Shader_classes/Float.md#color_ramp)
 
+

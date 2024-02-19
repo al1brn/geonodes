@@ -26,3 +26,4 @@ def EdgeAngle(self, node_label=None, node_color=None):
 
 o functions : [edge_angle](/docs/GeoNodes_classes/GLOBAL.md#edge_angle)
 
+

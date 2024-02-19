@@ -27,3 +27,4 @@ def UVMap(self, from_instancer=False, uv_map='', node_label=None, node_color=Non
 
 o functions : [uv_map](/docs/Shader_classes/GLOBAL.md#uv_map)
 
+

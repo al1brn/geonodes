@@ -26,3 +26,4 @@ def String(self, string='', node_label=None, node_color=None):
 
 o functions : [string](/docs/GeoNodes_classes/GLOBAL.md#string)
 
+

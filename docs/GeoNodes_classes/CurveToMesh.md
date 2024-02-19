@@ -27,5 +27,7 @@ def CurveToMesh(self, curve=None, profile_curve=None, fill_caps=None, node_label
 ## Implementations
 
 o functions : [curve_to_mesh](/docs/GeoNodes_classes/GLOBAL.md#curve_to_mesh)
+
 o Geometry : [curve_to_mesh](/docs/GeoNodes_classes/Geometry.md#curve_to_mesh)
+
 

@@ -27,6 +27,9 @@ def SetSelection(self, geometry=None, selection=None, domain='POINT', node_label
 ## Implementations
 
 o functions : [set_selection](/docs/GeoNodes_classes/GLOBAL.md#set_selection)
+
 o Geometry : [set_selection](/docs/GeoNodes_classes/Geometry.md#set_selection)
+
 o Domain : [set_selection](/docs/GeoNodes_classes/Domain.md#set_selection)
+
 

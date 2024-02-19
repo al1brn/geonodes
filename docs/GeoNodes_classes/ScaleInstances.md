@@ -29,5 +29,7 @@ def ScaleInstances(self, instances=None, scale=None, center=None, local_space=No
 ## Implementations
 
 o functions : [scale_instances](/docs/GeoNodes_classes/GLOBAL.md#scale_instances)
+
 o Geometry : [scale_instances](/docs/GeoNodes_classes/Geometry.md#scale_instances)
+
 

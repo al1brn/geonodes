@@ -27,5 +27,7 @@ def FloatCurve(self, factor=None, value=None, mapping=None, node_label=None, nod
 ## Implementations
 
 o functions : [float_curve](/docs/Shader_classes/GLOBAL.md#float_curve)
+
 o Float : [float_curve](/docs/Shader_classes/Float.md#float_curve)
+
 

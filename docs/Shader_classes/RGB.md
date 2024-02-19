@@ -25,3 +25,4 @@ def RGB(self, node_label=None, node_color=None):
 
 o functions : [rgb](/docs/Shader_classes/GLOBAL.md#rgb)
 
+

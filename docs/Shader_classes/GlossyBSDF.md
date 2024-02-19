@@ -33,3 +33,4 @@ def GlossyBSDF(self, color=None, roughness=None, anisotropy=None, rotation=None,
 
 o functions : [glossy_bsdf](/docs/Shader_classes/GLOBAL.md#glossy_bsdf)
 
+

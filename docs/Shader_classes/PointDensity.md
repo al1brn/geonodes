@@ -41,3 +41,4 @@ radius=0.30000001192092896, resolution=100, space='OBJECT', vertex_attribute_nam
 
 o Vect : [point_density](/docs/Shader_classes/Vect.md#point_density)
 
+

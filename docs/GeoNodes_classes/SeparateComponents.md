@@ -30,3 +30,4 @@ def SeparateComponents(self, geometry=None, node_label=None, node_color=None):
 
 o Geometry : [separate_components](/docs/GeoNodes_classes/Geometry.md#separate_components)
 
+

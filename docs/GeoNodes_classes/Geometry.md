@@ -1800,7 +1800,7 @@ Node initialization
 > SetHandleType, curve=self
 
 ``` python
-def set_handle_type(self, selection=None, handle_type='AUTO', mode={'LEFT', 'RIGHT'}, node_label=None, node_color=None):
+def set_handle_type(self, selection=None, handle_type='AUTO', mode={'RIGHT', 'LEFT'}, node_label=None, node_color=None):
 ```
 Node
  - class_name : [SetHandleType](/docs/GeoNodes_classes/SetHandleType.md)
@@ -1809,7 +1809,7 @@ Node
 Arguments
  - selection : None
  - handle_type : 'AUTO'
- - mode : {'LEFT', 'RIGHT'}
+ - mode : {'RIGHT', 'LEFT'}
  - node_label : None
  - node_color : None
 

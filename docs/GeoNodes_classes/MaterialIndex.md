@@ -25,3 +25,4 @@ def MaterialIndex(self, node_label=None, node_color=None):
 
 o functions : [material_index](/docs/GeoNodes_classes/GLOBAL.md#material_index)
 
+

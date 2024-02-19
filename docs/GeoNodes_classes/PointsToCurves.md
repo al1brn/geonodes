@@ -27,5 +27,7 @@ def PointsToCurves(self, points=None, curve_group_id=None, weight=None, node_lab
 ## Implementations
 
 o functions : [points_to_curves](/docs/GeoNodes_classes/GLOBAL.md#points_to_curves)
+
 o Geometry : [points_to_curves](/docs/GeoNodes_classes/Geometry.md#points_to_curves)
+
 

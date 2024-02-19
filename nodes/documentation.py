@@ -615,13 +615,13 @@ class Doc:
         with self.bullets(new_line=True) as bullets:
         
             if 'GLOBAL' in cref:
-                bullets.add("functions", " ".join(self.list_links(cref['GLOBAL'], class_name='GLOBAL')))
+                bullets.add("functions", " ".join(self.list_links(cref['GLOBAL'], class_name='GLOBAL'))  + "\n")
                 
             for target, names in cref.items():
                 if target == 'GLOBAL':
                     continue
                 
-                bullets.add(target, " ".join(self.list_links(names, class_name=target)))
+                bullets.add(target, " ".join(self.list_links(names, class_name=target))  + "\n")
     
     # ====================================================================================================
     # Member documentation

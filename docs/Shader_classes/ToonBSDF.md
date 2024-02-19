@@ -31,3 +31,4 @@ def ToonBSDF(self, color=None, size=None, smooth=None, normal=None, component='D
 
 o functions : [toon_bsdf](/docs/Shader_classes/GLOBAL.md#toon_bsdf)
 
+

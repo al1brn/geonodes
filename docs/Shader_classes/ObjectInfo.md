@@ -30,3 +30,4 @@ def ObjectInfo(self, node_label=None, node_color=None):
 
 o functions : [object_info](/docs/Shader_classes/GLOBAL.md#object_info)
 
+

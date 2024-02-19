@@ -28,3 +28,4 @@ def SampleNearest(self, geometry=None, sample_position=None, domain='POINT', nod
 
 o functions : [sample_nearest](/docs/GeoNodes_classes/GLOBAL.md#sample_nearest)
 
+

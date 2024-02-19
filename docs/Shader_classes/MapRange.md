@@ -41,3 +41,4 @@ def MapRange(self, value=None, from_min=None, from_max=None, to_min=None, to_max
 
 o Float : [map_range](/docs/Shader_classes/Float.md#map_range)
 
+

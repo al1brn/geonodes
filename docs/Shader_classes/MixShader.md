@@ -27,5 +27,7 @@ def MixShader(self, fac=None, shader=None, shader_1=None, node_label=None, node_
 ## Implementations
 
 o functions : [mix_shader](/docs/Shader_classes/GLOBAL.md#mix_shader)
+
 o Shader : [mix_shader](/docs/Shader_classes/Shader.md#mix_shader)
+
 

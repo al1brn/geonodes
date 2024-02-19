@@ -29,5 +29,7 @@ def FilletCurve(self, curve=None, radius=None, limit_radius=None, count=None, mo
 ## Implementations
 
 o functions : [fillet_curve](/docs/GeoNodes_classes/GLOBAL.md#fillet_curve)
+
 o Geometry : [fillet_curve](/docs/GeoNodes_classes/Geometry.md#fillet_curve)
+
 

@@ -29,3 +29,4 @@ def VectorDisplacement(self, vector=None, midlevel=None, scale=None, space='TANG
 
 o functions : [vector_displacement](/docs/Shader_classes/GLOBAL.md#vector_displacement)
 
+

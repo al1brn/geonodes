@@ -30,5 +30,7 @@ def PointsToVolume(self, points=None, density=None, voxel_amount=None, radius=No
 ## Implementations
 
 o functions : [points_to_volume](/docs/GeoNodes_classes/GLOBAL.md#points_to_volume)
+
 o Geometry : [points_to_volume](/docs/GeoNodes_classes/Geometry.md#points_to_volume)
+
 

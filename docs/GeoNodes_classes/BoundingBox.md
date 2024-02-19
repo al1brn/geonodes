@@ -28,3 +28,4 @@ def BoundingBox(self, geometry=None, node_label=None, node_color=None):
 
 o Geometry : [bounding_box](/docs/GeoNodes_classes/Geometry.md#bounding_box)
 
+

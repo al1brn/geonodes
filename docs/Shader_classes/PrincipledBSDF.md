@@ -57,3 +57,4 @@ sheen_tint=None, emission_color=None, emission_strength=None, subsurface_ior=Non
 
 o functions : [principled_bsdf](/docs/Shader_classes/GLOBAL.md#principled_bsdf)
 
+

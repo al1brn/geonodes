@@ -31,3 +31,4 @@ def BezierSegment(self, resolution=None, start=None, start_handle=None, end_hand
 
 o functions : [bezier_segment](/docs/GeoNodes_classes/GLOBAL.md#bezier_segment)
 
+

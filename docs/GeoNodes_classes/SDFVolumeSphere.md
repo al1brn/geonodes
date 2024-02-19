@@ -28,3 +28,4 @@ def SDFVolumeSphere(self, radius=None, voxel_size=None, half_band_width=None, no
 
 o functions : [sdf_volume_sphere](/docs/GeoNodes_classes/GLOBAL.md#sdf_volume_sphere)
 
+

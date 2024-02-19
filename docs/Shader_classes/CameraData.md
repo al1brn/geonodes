@@ -27,3 +27,4 @@ def CameraData(self, node_label=None, node_color=None):
 
 o functions : [camera_data](/docs/Shader_classes/GLOBAL.md#camera_data)
 
+

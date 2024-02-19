@@ -25,5 +25,7 @@ def Reroute(self, input=None, node_label=None, node_color=None):
 ## Implementations
 
 o functions : [reroute](/docs/GeoNodes_classes/GLOBAL.md#reroute)
+
 o Col : [reroute](/docs/GeoNodes_classes/Col.md#reroute)
+
 

@@ -29,3 +29,4 @@ def QuadraticBezier(self, resolution=None, start=None, middle=None, end=None, no
 
 o functions : [quadratic_bezier](/docs/GeoNodes_classes/GLOBAL.md#quadratic_bezier)
 
+

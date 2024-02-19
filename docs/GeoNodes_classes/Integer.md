@@ -26,3 +26,4 @@ def Integer(self, integer=0, node_label=None, node_color=None):
 
 o functions : [integer](/docs/GeoNodes_classes/GLOBAL.md#integer)
 
+
