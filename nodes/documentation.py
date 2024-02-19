@@ -816,7 +816,7 @@ def build_doc(folder):
     
     INDEX = {tree_type : {} for tree_type in TREE_CLASSES.keys()}
     
-    index_doc = Doc('GeometryNodeTree')
+    index_doc = Doc('GeometryNodeTree', doc_spec=DocSpec(target='MD'))
     index_doc.add(Header("Index", 0))
     for key in sorted(TREE_CLASSES.values()):
         index_doc.add(Paragraph(f"[{key}](#{key.lower()})\n"))
