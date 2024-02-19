@@ -31,4 +31,3 @@ def AlignEulerToVector(self, rotation=None, factor=None, vector=None, axis='X', 
 o functions : [align_euler_to_vector](/docs/GeoNodes_classes/GLOBAL.md#align_euler_to_vector)
 o Vect : [align_euler_to_vector](/docs/GeoNodes_classes/Vect.md#align_euler_to_vector)
 
-

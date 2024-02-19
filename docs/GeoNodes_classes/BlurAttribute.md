@@ -35,7 +35,5 @@ def BlurAttribute(self, value=None, iterations=None, weight=None, data_type='FLO
 
 o functions : [blur_attribute](/docs/GeoNodes_classes/GLOBAL.md#blur_attribute)
 o Float : [blur_attribute](/docs/GeoNodes_classes/Float.md#blur_attribute)
-
 o Int : [blur_attribute](/docs/GeoNodes_classes/Int.md#blur_attribute)
-
 

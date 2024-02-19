@@ -29,4 +29,3 @@ def Bevel(self, radius=None, normal=None, samples=4, node_label=None, node_color
 o functions : [bevel](/docs/Shader_classes/GLOBAL.md#bevel)
 o Vect : [bevel](/docs/Shader_classes/Vect.md#bevel)
 
-

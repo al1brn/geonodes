@@ -31,4 +31,3 @@ def RotateEuler(self, rotation=None, rotate_by=None, space='OBJECT', node_label=
 o functions : [rotate_euler](/docs/GeoNodes_classes/GLOBAL.md#rotate_euler)
 o Vect : [rotate_euler](/docs/GeoNodes_classes/Vect.md#rotate_euler)
 
-

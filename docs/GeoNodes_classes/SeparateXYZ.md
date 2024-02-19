@@ -28,4 +28,3 @@ def SeparateXYZ(self, vector=None, node_label=None, node_color=None):
 
 o Vect : [separate_xyz](/docs/GeoNodes_classes/Vect.md#separate_xyz) [xyz](/docs/GeoNodes_classes/Vect.md#xyz)
 
-

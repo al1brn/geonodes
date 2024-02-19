@@ -26,4 +26,3 @@ def SplineResolution(self, node_label=None, node_color=None):
 o functions : [spline_resolution](/docs/GeoNodes_classes/GLOBAL.md#spline_resolution)
 o Geometry : [spline_resolution](/docs/GeoNodes_classes/Geometry.md#spline_resolution)
 
-

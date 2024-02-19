@@ -26,4 +26,3 @@ def Index(self, node_label=None, node_color=None):
 o functions : [index](/docs/GeoNodes_classes/GLOBAL.md#index)
 o Geometry : [index](/docs/GeoNodes_classes/Geometry.md#index)
 
-

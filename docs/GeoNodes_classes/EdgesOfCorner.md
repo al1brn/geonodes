@@ -26,7 +26,5 @@ def EdgesOfCorner(self, corner_index=None, node_label=None, node_color=None):
 ## Implementations
 
 o Int : [edges_of_corner](/docs/GeoNodes_classes/Int.md#edges_of_corner)
-
 o Float : [edges_of_corner](/docs/GeoNodes_classes/Float.md#edges_of_corner)
-
 

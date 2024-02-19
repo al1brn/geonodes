@@ -31,4 +31,3 @@ def RotateInstances(self, instances=None, rotation=None, pivot_point=None, local
 o functions : [rotate_instances](/docs/GeoNodes_classes/GLOBAL.md#rotate_instances)
 o Geometry : [rotate_instances](/docs/GeoNodes_classes/Geometry.md#rotate_instances)
 
-

@@ -32,4 +32,3 @@ def DistributePointsInVolume(self, volume=None, density=None, seed=None, spacing
 o functions : [distribute_points_in_volume](/docs/GeoNodes_classes/GLOBAL.md#distribute_points_in_volume)
 o Geometry : [distribute_points_in_volume](/docs/GeoNodes_classes/Geometry.md#distribute_points_in_volume)
 
-

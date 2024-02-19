@@ -621,7 +621,7 @@ class Doc:
                 if target == 'GLOBAL':
                     continue
                 
-                bullets.add(target, " ".join(self.list_links(names, class_name=target)) + "\n")
+                bullets.add(target, " ".join(self.list_links(names, class_name=target)))
     
     # ====================================================================================================
     # Member documentation

@@ -27,4 +27,3 @@ def LightOutput(self, surface=None, is_active_output=True, target='ALL', node_la
 
 o Shader : [light_output](/docs/Shader_classes/Shader.md#light_output)
 
-

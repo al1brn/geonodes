@@ -28,4 +28,3 @@ def RemoveNamedAttribute(self, geometry=None, name=None, node_label=None, node_c
 o functions : [remove_named_attribute](/docs/GeoNodes_classes/GLOBAL.md#remove_named_attribute)
 o Geometry : [remove_named_attribute](/docs/GeoNodes_classes/Geometry.md#remove_named_attribute)
 
-

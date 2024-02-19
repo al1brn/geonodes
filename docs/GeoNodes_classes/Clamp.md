@@ -29,7 +29,5 @@ def Clamp(self, value=None, min=None, max=None, clamp_type='MINMAX', node_label=
 
 o functions : [clamp](/docs/GeoNodes_classes/GLOBAL.md#clamp)
 o Float : [clamp](/docs/GeoNodes_classes/Float.md#clamp)
-
 o Int : [clamp](/docs/GeoNodes_classes/Int.md#clamp)
-
 

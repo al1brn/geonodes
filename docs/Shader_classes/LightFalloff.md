@@ -29,4 +29,3 @@ def LightFalloff(self, strength=None, smooth=None, node_label=None, node_color=N
 
 o Float : [light_falloff](/docs/Shader_classes/Float.md#light_falloff)
 
-

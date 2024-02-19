@@ -33,4 +33,3 @@ def EnvironmentTexture(self, vector=None, color_mapping=None, image=None, image_
 o functions : [environment_texture](/docs/Shader_classes/GLOBAL.md#environment_texture)
 o Vect : [environment_texture](/docs/Shader_classes/Vect.md#environment_texture)
 
-

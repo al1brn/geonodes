@@ -30,4 +30,3 @@ def SetHandleType(self, curve=None, selection=None, handle_type='AUTO', mode={'L
 o functions : [set_handle_type](/docs/GeoNodes_classes/GLOBAL.md#set_handle_type)
 o Geometry : [set_handle_type](/docs/GeoNodes_classes/Geometry.md#set_handle_type)
 
-

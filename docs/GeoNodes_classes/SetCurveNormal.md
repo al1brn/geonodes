@@ -29,4 +29,3 @@ def SetCurveNormal(self, curve=None, selection=None, mode='MINIMUM_TWIST', node_
 o functions : [set_curve_normal](/docs/GeoNodes_classes/GLOBAL.md#set_curve_normal)
 o Geometry : [set_curve_normal](/docs/GeoNodes_classes/Geometry.md#set_curve_normal)
 
-

@@ -30,4 +30,3 @@ def TranslateInstances(self, instances=None, translation=None, local_space=None,
 o functions : [translate_instances](/docs/GeoNodes_classes/GLOBAL.md#translate_instances)
 o Geometry : [translate_instances](/docs/GeoNodes_classes/Geometry.md#translate_instances)
 
-

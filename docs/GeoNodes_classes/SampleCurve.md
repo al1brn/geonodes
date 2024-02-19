@@ -45,7 +45,5 @@ def SampleCurve(self, curves=None, value=None, factor=None, curve_index=None, le
 ## Implementations
 
 o Float : [sample_curve](/docs/GeoNodes_classes/Float.md#sample_curve)
-
 o Int : [sample_curve](/docs/GeoNodes_classes/Int.md#sample_curve)
-
 

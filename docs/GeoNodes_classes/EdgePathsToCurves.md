@@ -29,4 +29,3 @@ def EdgePathsToCurves(self, mesh=None, start_vertices=None, next_vertex_index=No
 o functions : [edge_paths_to_curves](/docs/GeoNodes_classes/GLOBAL.md#edge_paths_to_curves)
 o Geometry : [edge_paths_to_curves](/docs/GeoNodes_classes/Geometry.md#edge_paths_to_curves)
 
-

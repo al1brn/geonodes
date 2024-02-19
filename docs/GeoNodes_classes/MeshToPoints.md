@@ -31,4 +31,3 @@ def MeshToPoints(self, mesh=None, position=None, radius=None, selection=None, mo
 o functions : [mesh_to_points](/docs/GeoNodes_classes/GLOBAL.md#mesh_to_points)
 o Geometry : [mesh_to_points](/docs/GeoNodes_classes/Geometry.md#mesh_to_points)
 
-

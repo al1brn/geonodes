@@ -27,4 +27,3 @@ def RGBToBW(self, color=None, node_label=None, node_color=None):
 o functions : [rgb_to_bw](/docs/Shader_classes/GLOBAL.md#rgb_to_bw)
 o Col : [rgb_to_bw](/docs/Shader_classes/Col.md#rgb_to_bw)
 
-

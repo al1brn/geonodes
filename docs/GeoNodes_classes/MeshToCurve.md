@@ -28,4 +28,3 @@ def MeshToCurve(self, mesh=None, selection=None, node_label=None, node_color=Non
 o functions : [mesh_to_curve](/docs/GeoNodes_classes/GLOBAL.md#mesh_to_curve)
 o Geometry : [mesh_to_curve](/docs/GeoNodes_classes/Geometry.md#mesh_to_curve)
 
-

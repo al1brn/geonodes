@@ -45,7 +45,5 @@ def AttributeStatistic(self, geometry=None, attribute=None, selection=None, data
 ## Implementations
 
 o Float : [attribute_statistic](/docs/GeoNodes_classes/Float.md#attribute_statistic)
-
 o Int : [attribute_statistic](/docs/GeoNodes_classes/Int.md#attribute_statistic)
-
 

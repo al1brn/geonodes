@@ -32,7 +32,5 @@ def ScaleElements(self, geometry=None, scale=None, center=None, axis=None, selec
 
 o functions : [scale_elements](/docs/GeoNodes_classes/GLOBAL.md#scale_elements)
 o Geometry : [scale_elements](/docs/GeoNodes_classes/Geometry.md#scale_elements)
-
 o Domain : [scale_elements](/docs/GeoNodes_classes/Domain.md#scale_elements)
-
 

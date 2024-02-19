@@ -26,4 +26,3 @@ def CurveTangent(self, node_label=None, node_color=None):
 o functions : [curve_tangent](/docs/GeoNodes_classes/GLOBAL.md#curve_tangent)
 o Geometry : [tangent](/docs/GeoNodes_classes/Geometry.md#tangent)
 
-

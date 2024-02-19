@@ -29,4 +29,3 @@ def SetMaterial(self, geometry=None, material=None, selection=None, node_label=N
 o functions : [set_material](/docs/GeoNodes_classes/GLOBAL.md#set_material)
 o Geometry : [set_material](/docs/GeoNodes_classes/Geometry.md#set_material)
 
-

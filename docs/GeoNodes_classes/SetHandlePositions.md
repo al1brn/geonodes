@@ -31,4 +31,3 @@ def SetHandlePositions(self, curve=None, position=None, offset=None, selection=N
 o functions : [set_handle_positions](/docs/GeoNodes_classes/GLOBAL.md#set_handle_positions)
 o Geometry : [set_handle_positions](/docs/GeoNodes_classes/Geometry.md#set_handle_positions)
 
-

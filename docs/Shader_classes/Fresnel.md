@@ -28,4 +28,3 @@ def Fresnel(self, ior=None, normal=None, node_label=None, node_color=None):
 o functions : [fresnel](/docs/Shader_classes/GLOBAL.md#fresnel)
 o Float : [fresnel](/docs/Shader_classes/Float.md#fresnel)
 
-

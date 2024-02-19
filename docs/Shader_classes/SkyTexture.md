@@ -43,4 +43,3 @@ sun_elevation=0.2617993950843811, sun_intensity=1.0, sun_rotation=0.0, sun_size=
 o functions : [sky_texture](/docs/Shader_classes/GLOBAL.md#sky_texture)
 o Vect : [sky_texture](/docs/Shader_classes/Vect.md#sky_texture)
 
-

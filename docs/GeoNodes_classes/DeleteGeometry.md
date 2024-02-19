@@ -29,7 +29,5 @@ def DeleteGeometry(self, geometry=None, selection=None, domain='POINT', mode='AL
 
 o functions : [delete_geometry](/docs/GeoNodes_classes/GLOBAL.md#delete_geometry)
 o Geometry : [delete_geometry](/docs/GeoNodes_classes/Geometry.md#delete_geometry)
-
 o Domain : [delete_geometry](/docs/GeoNodes_classes/Domain.md#delete_geometry)
-
 

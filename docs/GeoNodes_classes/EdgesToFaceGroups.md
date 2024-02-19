@@ -27,4 +27,3 @@ def EdgesToFaceGroups(self, boundary_edges=None, node_label=None, node_color=Non
 o functions : [edges_to_face_groups](/docs/GeoNodes_classes/GLOBAL.md#edges_to_face_groups)
 o Bool : [edges_to_face_groups](/docs/GeoNodes_classes/Bool.md#edges_to_face_groups)
 
-

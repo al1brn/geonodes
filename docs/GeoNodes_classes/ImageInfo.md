@@ -30,7 +30,5 @@ def ImageInfo(self, image=None, frame=None, node_label=None, node_color=None):
 ## Implementations
 
 o Int : [image_info](/docs/GeoNodes_classes/Int.md#image_info)
-
 o Float : [image_info](/docs/GeoNodes_classes/Float.md#image_info)
-
 

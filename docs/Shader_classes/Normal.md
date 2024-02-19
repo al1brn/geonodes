@@ -27,4 +27,3 @@ def Normal(self, normal=None, node_label=None, node_color=None):
 
 o Vect : [normal](/docs/Shader_classes/Vect.md#normal)
 
-

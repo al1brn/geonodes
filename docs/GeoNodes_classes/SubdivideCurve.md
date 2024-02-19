@@ -28,4 +28,3 @@ def SubdivideCurve(self, curve=None, cuts=None, node_label=None, node_color=None
 o functions : [subdivide_curve](/docs/GeoNodes_classes/GLOBAL.md#subdivide_curve)
 o Geometry : [subdivide_curve](/docs/GeoNodes_classes/Geometry.md#subdivide_curve)
 
-

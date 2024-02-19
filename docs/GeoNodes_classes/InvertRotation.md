@@ -27,4 +27,3 @@ def InvertRotation(self, rotation=None, node_label=None, node_color=None):
 o functions : [invert_rotation](/docs/GeoNodes_classes/GLOBAL.md#invert_rotation)
 o Rot : [invert_rotation](/docs/GeoNodes_classes/Rot.md#invert_rotation)
 
-

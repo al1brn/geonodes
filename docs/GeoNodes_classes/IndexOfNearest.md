@@ -27,7 +27,5 @@ def IndexOfNearest(self, position=None, group_id=None, node_label=None, node_col
 ## Implementations
 
 o Int : [index_of_nearest](/docs/GeoNodes_classes/Int.md#index_of_nearest)
-
 o Float : [index_of_nearest](/docs/GeoNodes_classes/Float.md#index_of_nearest)
-
 

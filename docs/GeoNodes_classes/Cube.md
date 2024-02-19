@@ -30,4 +30,3 @@ def Cube(self, size=None, vertices_x=None, vertices_y=None, vertices_z=None, nod
 
 o Vect : [cube](/docs/GeoNodes_classes/Vect.md#cube)
 
-

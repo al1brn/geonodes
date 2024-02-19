@@ -30,4 +30,3 @@ def SeparateColor(self, color=None, mode='RGB', node_label=None, node_color=None
 
 o Col : [separate_color](/docs/GeoNodes_classes/Col.md#separate_color)
 
-

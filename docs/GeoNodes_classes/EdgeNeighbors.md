@@ -26,4 +26,3 @@ def EdgeNeighbors(self, node_label=None, node_color=None):
 o functions : [edge_neighbors](/docs/GeoNodes_classes/GLOBAL.md#edge_neighbors)
 o Geometry : [edge_neighbors](/docs/GeoNodes_classes/Geometry.md#edge_neighbors)
 
-

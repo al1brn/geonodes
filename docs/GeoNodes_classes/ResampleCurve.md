@@ -31,4 +31,3 @@ def ResampleCurve(self, curve=None, count=None, length=None, selection=None, mod
 o functions : [resample_curve](/docs/GeoNodes_classes/GLOBAL.md#resample_curve)
 o Geometry : [resample_curve](/docs/GeoNodes_classes/Geometry.md#resample_curve)
 
-

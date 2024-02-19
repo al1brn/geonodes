@@ -31,4 +31,3 @@ def PointsToSDFVolume(self, points=None, voxel_amount=None, radius=None, voxel_s
 o functions : [points_to_sdf_volume](/docs/GeoNodes_classes/GLOBAL.md#points_to_sdf_volume)
 o Geometry : [points_to_sdf_volume](/docs/GeoNodes_classes/Geometry.md#points_to_sdf_volume)
 
-

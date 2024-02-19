@@ -29,4 +29,3 @@ def SetSplineType(self, curve=None, selection=None, spline_type='POLY', node_lab
 o functions : [set_spline_type](/docs/GeoNodes_classes/GLOBAL.md#set_spline_type)
 o Geometry : [set_spline_type](/docs/GeoNodes_classes/Geometry.md#set_spline_type)
 
-
