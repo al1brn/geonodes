@@ -587,7 +587,7 @@ class Doc:
     @staticmethod
     def initials(names):
         initials = set([name.upper()[0] for name in names])
-        return {initial: [name for name in names if name.upper()[0] == initial for initial in initials]}
+        return {initial: [name for name in names if name.upper()[0] == initial] for initial in initials}
     
     # ====================================================================================================
     # Cross references
@@ -833,7 +833,7 @@ def build_doc(tree_type, folder):
     doc.add(Header("Index", 0))
     for cat, class_names in classes.items():
         doc.add(Header(cat, 1))
-        if len(class_names) > 20:
+        if len(class_names) > 2:
             initials = doc.initials(class_names)
             for initial, sub in initials.items():
                 doc.add(Header(initial, 2))
