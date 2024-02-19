@@ -163,9 +163,9 @@ def add_method_doc(tree_type, class_name, name,
                      static     = static,
                      bl_idname  = bl_idname,
                      node_class = node_class,
-                     code       = None,
-                     meth_args  = None,
-                     node_args  = None,
+                     code       = code,
+                     meth_args  = meth_args,
+                     node_args  = node_args,
                      **kwargs)
 
     if node_class is not None:
