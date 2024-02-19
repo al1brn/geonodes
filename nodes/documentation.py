@@ -576,6 +576,7 @@ class Doc:
     def class_link(self, name, class_name=None):
         if name is None:
             return "None"
+        
         elif self.doc_spec.target == 'MD':
             if class_name is None:
                 return f"[{name}](/docs/{self.tree_class}_classes/{name}.md)"
@@ -593,7 +594,7 @@ class Doc:
         
     def list_links(self, names, page=False, class_name=None):
         if self.doc_spec.target == 'MD':
-            if page:
+            if page or class_name is not None:
                 return [self.page_link(name) for name in names]
             else:
                 return [self.class_link(name, class_name=class_name) for name in names]

@@ -27,5 +27,5 @@ def ReplaceMaterial(self, geometry=None, old=None, new=None, node_label=None, no
 ## Implementations
 
 o functions : [replace_material](/docs/GeoNodes_classes/replace_material.md)
-o Geometry : [replace_material](/docs/GeoNodes_classes/Geometry.md#replace_material) 
+o Geometry : [replace_material](#replace_material) 
 

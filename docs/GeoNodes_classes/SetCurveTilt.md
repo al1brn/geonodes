@@ -27,5 +27,5 @@ def SetCurveTilt(self, curve=None, tilt=None, selection=None, node_label=None, n
 ## Implementations
 
 o functions : [set_curve_tilt](/docs/GeoNodes_classes/set_curve_tilt.md)
-o Geometry : [set_curve_tilt](/docs/GeoNodes_classes/Geometry.md#set_curve_tilt) [curve_tilt](/docs/GeoNodes_classes/Geometry.md#curve_tilt) 
+o Geometry : [set_curve_tilt](#set_curve_tilt) [curve_tilt](#curve_tilt) 
 

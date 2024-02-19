@@ -26,5 +26,5 @@ def OffsetSDFVolume(self, volume=None, distance=None, node_label=None, node_colo
 ## Implementations
 
 o functions : [offset_sdf_volume](/docs/GeoNodes_classes/offset_sdf_volume.md)
-o Geometry : [offset_sdf_volume](/docs/GeoNodes_classes/Geometry.md#offset_sdf_volume) 
+o Geometry : [offset_sdf_volume](#offset_sdf_volume) 
 

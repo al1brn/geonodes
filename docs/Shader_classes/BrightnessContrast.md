@@ -27,5 +27,5 @@ def BrightnessContrast(self, color=None, bright=None, contrast=None, node_label=
 ## Implementations
 
 o functions : [brightness_contrast](/docs/Shader_classes/brightness_contrast.md)
-o Col : [brightness_contrast](/docs/Shader_classes/Col.md#brightness_contrast) 
+o Col : [brightness_contrast](#brightness_contrast) 
 

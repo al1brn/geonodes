@@ -42,9 +42,9 @@ def Mix(self, factor=None, a=None, b=None, blend_type='MIX', clamp_factor=True, 
 ## Implementations
 
 o functions : [mix](/docs/GeoNodes_classes/mix.md)
-o Float : [mix](/docs/GeoNodes_classes/Float.md#mix) [mix](/docs/GeoNodes_classes/Float.md#mix) 
-o Int : [mix](/docs/GeoNodes_classes/Int.md#mix) 
-o Col : [mix_mix](/docs/GeoNodes_classes/Col.md#mix_mix) [mix_darken](/docs/GeoNodes_classes/Col.md#mix_darken) [mix_multiply](/docs/GeoNodes_classes/Col.md#mix_multiply) [mix_burn](/docs/GeoNodes_classes/Col.md#mix_burn) [mix_lighten](/docs/GeoNodes_classes/Col.md#mix_lighten) [mix_screen](/docs/GeoNodes_classes/Col.md#mix_screen) [mix_dodge](/docs/GeoNodes_classes/Col.md#mix_dodge) [mix_add](/docs/GeoNodes_classes/Col.md#mix_add) [mix_overlay](/docs/GeoNodes_classes/Col.md#mix_overlay) [mix_soft_light](/docs/GeoNodes_classes/Col.md#mix_soft_light) [mix_linear_light](/docs/GeoNodes_classes/Col.md#mix_linear_light) [mix_difference](/docs/GeoNodes_classes/Col.md#mix_difference) [mix_exclusion](/docs/GeoNodes_classes/Col.md#mix_exclusion) [mix_subtract](/docs/GeoNodes_classes/Col.md#mix_subtract) [mix_divide](/docs/GeoNodes_classes/Col.md#mix_divide) [mix_hue](/docs/GeoNodes_classes/Col.md#mix_hue) [mix_saturation](/docs/GeoNodes_classes/Col.md#mix_saturation) [mix_color](/docs/GeoNodes_classes/Col.md#mix_color) [mix_value](/docs/GeoNodes_classes/Col.md#mix_value) [mix](/docs/GeoNodes_classes/Col.md#mix) 
-o Vect : [mix](/docs/GeoNodes_classes/Vect.md#mix) 
-o Rot : [mix](/docs/GeoNodes_classes/Rot.md#mix) 
+o Float : [mix](#mix) [mix](#mix) 
+o Int : [mix](#mix) 
+o Col : [mix_mix](#mix_mix) [mix_darken](#mix_darken) [mix_multiply](#mix_multiply) [mix_burn](#mix_burn) [mix_lighten](#mix_lighten) [mix_screen](#mix_screen) [mix_dodge](#mix_dodge) [mix_add](#mix_add) [mix_overlay](#mix_overlay) [mix_soft_light](#mix_soft_light) [mix_linear_light](#mix_linear_light) [mix_difference](#mix_difference) [mix_exclusion](#mix_exclusion) [mix_subtract](#mix_subtract) [mix_divide](#mix_divide) [mix_hue](#mix_hue) [mix_saturation](#mix_saturation) [mix_color](#mix_color) [mix_value](#mix_value) [mix](#mix) 
+o Vect : [mix](#mix) 
+o Rot : [mix](#mix) 
 

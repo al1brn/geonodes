@@ -25,5 +25,5 @@ def StringLength(self, string=None, node_label=None, node_color=None):
 ## Implementations
 
 o functions : [string_length](/docs/GeoNodes_classes/string_length.md)
-o Str : [string_length](/docs/GeoNodes_classes/Str.md#string_length) 
+o Str : [string_length](#string_length) 
 

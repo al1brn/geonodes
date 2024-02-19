@@ -24,5 +24,5 @@ def Position(self, node_label=None, node_color=None):
 ## Implementations
 
 o functions : [position](/docs/GeoNodes_classes/position.md)
-o Geometry : [position](/docs/GeoNodes_classes/Geometry.md#position) 
+o Geometry : [position](#position) 
 

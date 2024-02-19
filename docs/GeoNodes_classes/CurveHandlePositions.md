@@ -25,5 +25,5 @@ def CurveHandlePositions(self, relative=None, node_label=None, node_color=None):
 
 ## Implementations
 
-o Bool : [curve_handle_positions](/docs/GeoNodes_classes/Bool.md#curve_handle_positions) 
+o Bool : [curve_handle_positions](#curve_handle_positions) 
 

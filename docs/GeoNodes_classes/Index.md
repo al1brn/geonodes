@@ -24,5 +24,5 @@ def Index(self, node_label=None, node_color=None):
 ## Implementations
 
 o functions : [index](/docs/GeoNodes_classes/index.md)
-o Geometry : [index](/docs/GeoNodes_classes/Geometry.md#index) 
+o Geometry : [index](#index) 
 

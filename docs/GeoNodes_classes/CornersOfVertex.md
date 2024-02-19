@@ -27,6 +27,6 @@ def CornersOfVertex(self, vertex_index=None, weights=None, sort_index=None, node
 
 ## Implementations
 
-o Int : [corners_of_vertex](/docs/GeoNodes_classes/Int.md#corners_of_vertex) 
-o Float : [corners_of_vertex](/docs/GeoNodes_classes/Float.md#corners_of_vertex) 
+o Int : [corners_of_vertex](#corners_of_vertex) 
+o Float : [corners_of_vertex](#corners_of_vertex) 
 

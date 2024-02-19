@@ -29,5 +29,5 @@ def MeshBoolean(self, *args, mesh_1=None, mesh_2=None, self_intersection=None, h
 
 ## Implementations
 
-o Geometry : [mesh_boolean](/docs/GeoNodes_classes/Geometry.md#mesh_boolean) [difference](/docs/GeoNodes_classes/Geometry.md#difference) [intersect](/docs/GeoNodes_classes/Geometry.md#intersect) [union](/docs/GeoNodes_classes/Geometry.md#union) 
+o Geometry : [mesh_boolean](#mesh_boolean) [difference](#difference) [intersect](#intersect) [union](#union) 
 

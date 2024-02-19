@@ -28,5 +28,5 @@ def SeparateComponents(self, geometry=None, node_label=None, node_color=None):
 
 ## Implementations
 
-o Geometry : [separate_components](/docs/GeoNodes_classes/Geometry.md#separate_components) 
+o Geometry : [separate_components](#separate_components) 
 

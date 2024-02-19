@@ -27,5 +27,5 @@ def SetMaterial(self, geometry=None, material=None, selection=None, node_label=N
 ## Implementations
 
 o functions : [set_material](/docs/GeoNodes_classes/set_material.md)
-o Geometry : [set_material](/docs/GeoNodes_classes/Geometry.md#set_material) 
+o Geometry : [set_material](#set_material) 
 

@@ -30,5 +30,5 @@ def VolumeToMesh(self, volume=None, threshold=None, adaptivity=None, voxel_amoun
 ## Implementations
 
 o functions : [volume_to_mesh](/docs/GeoNodes_classes/volume_to_mesh.md)
-o Geometry : [volume_to_mesh](/docs/GeoNodes_classes/Geometry.md#volume_to_mesh) 
+o Geometry : [volume_to_mesh](#volume_to_mesh) 
 

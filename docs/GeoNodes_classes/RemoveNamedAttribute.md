@@ -26,5 +26,5 @@ def RemoveNamedAttribute(self, geometry=None, name=None, node_label=None, node_c
 ## Implementations
 
 o functions : [remove_named_attribute](/docs/GeoNodes_classes/remove_named_attribute.md)
-o Geometry : [remove_named_attribute](/docs/GeoNodes_classes/Geometry.md#remove_named_attribute) 
+o Geometry : [remove_named_attribute](#remove_named_attribute) 
 

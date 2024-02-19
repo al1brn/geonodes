@@ -31,5 +31,5 @@ def ExtrudeMesh(self, mesh=None, offset=None, offset_scale=None, individual=None
 
 ## Implementations
 
-o Geometry : [extrude_mesh](/docs/GeoNodes_classes/Geometry.md#extrude_mesh) 
+o Geometry : [extrude_mesh](#extrude_mesh) 
 

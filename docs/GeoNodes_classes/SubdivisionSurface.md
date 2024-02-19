@@ -30,5 +30,5 @@ def SubdivisionSurface(self, mesh=None, level=None, edge_crease=None, vertex_cre
 ## Implementations
 
 o functions : [subdivision_surface](/docs/GeoNodes_classes/subdivision_surface.md)
-o Geometry : [subdivision_surface](/docs/GeoNodes_classes/Geometry.md#subdivision_surface) 
+o Geometry : [subdivision_surface](#subdivision_surface) 
 
