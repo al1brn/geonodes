@@ -17,10 +17,9 @@ You keep the full power of Blender geometry nodes but with the elegance of Pytho
 - [Better a demo than long words](#better-a-demo-than-long-words)
 - [Installation](#installation)
 - [Documentation](#documentation)
-- [Scripting nodes overview](#scripting-nodes-overview)
+- [Getting started](docs/getting_started.md) with the "Hello world" script
 - [API reference](docs/index.md)
 - Tutorials by examples:
-  - [Getting started](docs/getting_started.md) with the "Hello world" script
   - [Building an arrow](docs/arrow.md)
   - [4D project](4d/4d%20project.md): a"big" project using **geonodes** to create 4D geometry modifiers.
   - [Simulation](docs/simulation.md) : how to create and use a simulation zone
