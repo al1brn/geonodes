@@ -2653,6 +2653,7 @@ Nodes
 @property
 def ID(self):
 	return self.tree.ID().output_socket
+
 ID.setter
 def ID(self, value):
 	self.set_id(value)
@@ -2669,6 +2670,7 @@ Nodes
 @property
 def curve_radius(self):
 	return self.tree.Radius().output_socket
+
 curve_radius.setter
 def curve_radius(self, value):
 	self.set_curve_radius(value)
@@ -2683,6 +2685,7 @@ Nodes
 @property
 def curve_tilt(self):
 	return self.tree.CurveTilt().output_socket
+
 curve_tilt.setter
 def curve_tilt(self, value):
 	self.set_curve_tilt(value)
@@ -2710,6 +2713,7 @@ Nodes
 @property
 def edge_shade_smooth(self):
 	return self.tree.IsEdgeSmooth().output_socket
+
 edge_shade_smooth.setter
 def edge_shade_smooth(self, value):
 	self.set_shade_smooth(value, domain='EDGE')
@@ -2737,6 +2741,7 @@ Nodes
 @property
 def face_shade_smooth(self):
 	return self.tree.IsFaceSmooth().output_socket
+
 face_shade_smooth.setter
 def face_shade_smooth(self, value):
 	self.set_shade_smooth(value, domain='FACE')
@@ -2762,6 +2767,7 @@ Nodes
 
 ``` python
 # Write only property
+
 offset.setter
 def offset(self, value):
 	self.set_position(offset=value)
@@ -2778,6 +2784,7 @@ Nodes
 @property
 def point_radius(self):
 	return self.tree.Radius().output_socket
+
 point_radius.setter
 def point_radius(self, value):
 	self.set_point_radius(value)
@@ -2794,6 +2801,7 @@ Nodes
 @property
 def position(self):
 	return self.tree.Position().output_socket
+
 position.setter
 def position(self, value):
 	self.set_position(value)
@@ -2808,6 +2816,7 @@ Nodes
 @property
 def spline_cyclic(self):
 	return self.tree.IsSplineCyclic().output_socket
+
 spline_cyclic.setter
 def spline_cyclic(self, value):
 	self.set_spline_cyclic(value)
@@ -2822,6 +2831,7 @@ Nodes
 @property
 def spline_resolution(self):
 	return self.tree.SplineResolution().output_socket
+
 spline_resolution.setter
 def spline_resolution(self, value):
 	self.set_spline_resolution(value)

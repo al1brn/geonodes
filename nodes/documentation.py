@@ -630,7 +630,7 @@ class Doc:
             
             setter = member.get('setter')
             if setter is not None:
-                s += f"\n{title}.setter\n" + setter.strip()
+                s += f"\n\n{title}.setter\n" + setter.strip()
                 
             self.add(Source(s))
                 
