@@ -26,24 +26,25 @@ The nodes are created by instanciating a **Simulation** class. The class constru
 from geonodes import GeoNodes
 
 with GeoNodes("Simul") as tree:
-    with tree.simulation(geometry=tree.ig, position=(0, 0, 0)):
+    with tree.simulation(geometry=tree.ig, position=(0, 0, 0)) as simul:
         pass
 ```
 
-At creation time, the *geometry* sockets inside the simulation zone are not connected. This is done by using the *close* method.
+The zone internal links can be manually set with:
+
+
+At creation time, the *geometry* sockets inside the simulation zone are not connected. Within the `with` block, this can be done by
 
 ``` python
-import geonodes as gn
+from geonodes import GeoNodes
 
-with gn.Tree("Simul", auto_capture=False) as tree:
-  # Create a simulation zone for the input geometry with one socket initialized to (0, 0, 0)
-  simul = gn.Simulation(geometry=tree.ig, position=(0, 0, 0))
-
-  # Connect the sockets
-  simul.close()
+with GeoNodes("Simul") as tree:
+    with tree.simulation(geometry=tree.ig, position=(0, 0, 0)):
+        simul.geometry = simul.geometry
+        simul.position = simul.position
 ```
 
-The image below shows the effect of the *close* method on the simulation zone:
+The image below shows the effect the resulting simulation zone:
 
 <img src="images/simulation_zone_closed.png" width="600" class="center">
 
