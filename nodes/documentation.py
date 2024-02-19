@@ -799,24 +799,43 @@ def build_doc(tree_type, folder):
     
     classes_folder = root / "classes"
     
-    doc = Doc(tree_type, DocSpec(target='MD', path=root))
+    classes = {}
+    globs   = []
     
-    wd = 0
+    doc = Doc(tree_type, DocSpec(target='MD', path=root))
     for class_name in doc.dct.keys():
         if class_name == 'GLOBAL':
-            continue
+            for name, member in doc.dct['GLOBAL'].items():
+                doc.member_doc(member)
+                globs.append(name)
         
-        doc.class_doc(class_name)
-        
+        else:
+            doc.class_doc(class_name)
+            cat = doc.dct[class_name]['category']
+            if cat not in classes:
+                classes[cat] = []
+                
+            classes[cat].append(class_name)
+            
         with open(classes_folder / f"{class_name}.md", 'w') as f:
             f.write(doc.text)
-
         doc.clear()
-            
         
-        wd += 1
-        if False and wd > 5:
-            break
+    # ----- Index
+    
+    doc.add(Header("Index", 0))
+    for cat, class_names in classes.items():
+        doc.add(Header(cat, 1))
+        links = " ".join(doc.list_links(sorted(class_names)))
+        doc.add(Paragraph(links))
+
+    with open(root / "index.md", 'w') as f:
+        f.write(doc.text)
+        
+    doc.clear()
+    
+    
+        
         
     
     

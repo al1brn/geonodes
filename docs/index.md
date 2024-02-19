@@ -1,73 +1,11 @@
+# Index
 
-# API structure
+## Socket
 
-## Tree
+[Bool](#bool) [Col](#col) [Collection](#collection) [Custom](#custom) [Float](#float) [Geometry](#geometry) [Img](#img) [Int](#int) [Mat](#mat) [Object](#object) [Rot](#rot) [Str](#str) [Texture](#texture) [Vect](#vect)
+## Node
 
-- [Tree](api/Tree.md)
-- [Trees](api/Trees.md)
+[AccumulateField](#accumulatefield) [AlignEulerToVector](#aligneulertovector) [Arc](#arc) [AttributeStatistic](#attributestatistic) [AxisAngleToRotation](#axisangletorotation) [BezierSegment](#beziersegment) [BlurAttribute](#blurattribute) [Boolean](#boolean) [BooleanMath](#booleanmath) [BoundingBox](#boundingbox) [BrickTexture](#bricktexture) [CaptureAttribute](#captureattribute) [CheckerTexture](#checkertexture) [Clamp](#clamp) [CollectionInfo](#collectioninfo) [Color](#color) [ColorRamp](#colorramp) [CombineColor](#combinecolor) [CombineXYZ](#combinexyz) [Compare](#compare) [Cone](#cone) [ConvexHull](#convexhull) [CornersOfEdge](#cornersofedge) [CornersOfFace](#cornersofface) [CornersOfVertex](#cornersofvertex) [Cube](#cube) [CurveCircle](#curvecircle) [CurveHandlePositions](#curvehandlepositions) [CurveLength](#curvelength) [CurveLine](#curveline) [CurveOfPoint](#curveofpoint) [CurveTangent](#curvetangent) [CurveTilt](#curvetilt) [CurveToMesh](#curvetomesh) [CurveToPoints](#curvetopoints) [Cylinder](#cylinder) [DeformCurvesOnSurface](#deformcurvesonsurface) [DeleteGeometry](#deletegeometry) [DistributePointsInVolume](#distributepointsinvolume) [DistributePointsOnFaces](#distributepointsonfaces) [DomainSize](#domainsize) [DualMesh](#dualmesh) [DuplicateElements](#duplicateelements) [EdgeAngle](#edgeangle) [EdgeNeighbors](#edgeneighbors) [EdgePathsToCurves](#edgepathstocurves) [EdgePathsToSelection](#edgepathstoselection) [EdgeVertices](#edgevertices) [EdgesOfCorner](#edgesofcorner) [EdgesOfVertex](#edgesofvertex) [EdgesToFaceGroups](#edgestofacegroups) [EndpointSelection](#endpointselection) [EulerToRotation](#eulertorotation) [EvaluateAtIndex](#evaluateatindex) [EvaluateOnDomain](#evaluateondomain) [ExtrudeMesh](#extrudemesh) [FaceArea](#facearea) [FaceGroupBoundaries](#facegroupboundaries) [FaceNeighbors](#faceneighbors) [FaceOfCorner](#faceofcorner) [FaceSet](#faceset) [FillCurve](#fillcurve) [FilletCurve](#filletcurve) [FlipFaces](#flipfaces) [FloatCurve](#floatcurve) [FloatToInteger](#floattointeger) [Frame](#frame) [GeometryProximity](#geometryproximity) [GeometryToInstance](#geometrytoinstance) [GradientTexture](#gradienttexture) [Grid](#grid) [Group](#group) [GroupInput](#groupinput) [GroupOutput](#groupoutput) [HandleTypeSelection](#handletypeselection) [ID](#id) [IcoSphere](#icosphere) [Image](#image) [ImageInfo](#imageinfo) [ImageTexture](#imagetexture) [Index](#index) [IndexOfNearest](#indexofnearest) [InstanceOnPoints](#instanceonpoints) [InstanceRotation](#instancerotation) [InstanceScale](#instancescale) [InstancesToPoints](#instancestopoints) [Integer](#integer) [InterpolateCurves](#interpolatecurves) [InvertRotation](#invertrotation) [IsEdgeSmooth](#isedgesmooth) [IsFacePlanar](#isfaceplanar) [IsFaceSmooth](#isfacesmooth) [IsSplineCyclic](#issplinecyclic) [IsViewport](#isviewport) [JoinGeometry](#joingeometry) [JoinStrings](#joinstrings) [MagicTexture](#magictexture) [MapRange](#maprange) [Material](#material) [MaterialIndex](#materialindex) [MaterialSelection](#materialselection) [Math](#math) [MeanFilterSDFVolume](#meanfiltersdfvolume) [MergeByDistance](#mergebydistance) [MeshBoolean](#meshboolean) [MeshCircle](#meshcircle) [MeshIsland](#meshisland) [MeshLine](#meshline) [MeshToCurve](#meshtocurve) [MeshToPoints](#meshtopoints) [MeshToSDFVolume](#meshtosdfvolume) [MeshToVolume](#meshtovolume) [Mix](#mix) [MusgraveTexture](#musgravetexture) [NamedAttribute](#namedattribute) [NoiseTexture](#noisetexture) [Normal](#normal) [ObjectInfo](#objectinfo) [OffsetCornerInFace](#offsetcornerinface) [OffsetPointInCurve](#offsetpointincurve) [OffsetSDFVolume](#offsetsdfvolume) [PackUVIslands](#packuvislands) [Points](#points) [PointsOfCurve](#pointsofcurve) [PointsToCurves](#pointstocurves) [PointsToSDFVolume](#pointstosdfvolume) [PointsToVertices](#pointstovertices) [PointsToVolume](#pointstovolume) [Position](#position) [QuadraticBezier](#quadraticbezier) [Quadrilateral](#quadrilateral) [QuaternionToRotation](#quaterniontorotation) [RGBCurves](#rgbcurves) [Radius](#radius) [RandomValue](#randomvalue) [Raycast](#raycast) [RealizeInstances](#realizeinstances) [RemoveNamedAttribute](#removenamedattribute) [RepeatInput](#repeatinput) [RepeatOutput](#repeatoutput) [ReplaceMaterial](#replacematerial) [ReplaceString](#replacestring) [Reroute](#reroute) [ResampleCurve](#resamplecurve) [ReverseCurve](#reversecurve) [RotateEuler](#rotateeuler) [RotateInstances](#rotateinstances) [RotateVector](#rotatevector) [RotationToAxisAngle](#rotationtoaxisangle) [RotationToEuler](#rotationtoeuler) [RotationToQuaternion](#rotationtoquaternion) [SDFVolumeSphere](#sdfvolumesphere) [SampleCurve](#samplecurve) [SampleIndex](#sampleindex) [SampleNearest](#samplenearest) [SampleNearestSurface](#samplenearestsurface) [SampleUVSurface](#sampleuvsurface) [SampleVolume](#samplevolume) [ScaleElements](#scaleelements) [ScaleInstances](#scaleinstances) [SceneTime](#scenetime) [Selection](#selection) [SelfObject](#selfobject) [SeparateColor](#separatecolor) [SeparateComponents](#separatecomponents) [SeparateGeometry](#separategeometry) [SeparateXYZ](#separatexyz) [SetCurveNormal](#setcurvenormal) [SetCurveRadius](#setcurveradius) [SetCurveTilt](#setcurvetilt) [SetFaceSet](#setfaceset) [SetHandlePositions](#sethandlepositions) [SetHandleType](#sethandletype) [SetID](#setid) [SetMaterial](#setmaterial) [SetMaterialIndex](#setmaterialindex) [SetPointRadius](#setpointradius) [SetPosition](#setposition) [SetSelection](#setselection) [SetShadeSmooth](#setshadesmooth) [SetSplineCyclic](#setsplinecyclic) [SetSplineResolution](#setsplineresolution) [SetSplineType](#setsplinetype) [ShortestEdgePaths](#shortestedgepaths) [SignedDistance](#signeddistance) [SimulationInput](#simulationinput) [SimulationOutput](#simulationoutput) [SliceString](#slicestring) [SpecialCharacters](#specialcharacters) [Spiral](#spiral) [SplineLength](#splinelength) [SplineParameter](#splineparameter) [SplineResolution](#splineresolution) [SplitEdges](#splitedges) [Star](#star) [StoreNamedAttribute](#storenamedattribute) [String](#string) [StringLength](#stringlength) [StringToCurves](#stringtocurves) [SubdivideCurve](#subdividecurve) [SubdivideMesh](#subdividemesh) [SubdivisionSurface](#subdivisionsurface) [Switch](#switch) [TransformGeometry](#transformgeometry) [TranslateInstances](#translateinstances) [Triangulate](#triangulate) [TrimCurve](#trimcurve) [UVSphere](#uvsphere) [UVUnwrap](#uvunwrap) [Value](#value) [ValueToString](#valuetostring) [Vector](#vector) [VectorCurves](#vectorcurves) [VectorMath](#vectormath) [VectorRotate](#vectorrotate) [VertexNeighbors](#vertexneighbors) [VertexOfCorner](#vertexofcorner) [Viewer](#viewer) [VolumeCube](#volumecube) [VolumeToMesh](#volumetomesh) [VoronoiTexture](#voronoitexture) [WaveTexture](#wavetexture) [WhiteNoiseTexture](#whitenoisetexture) [_3DCursor](#_3dcursor)
+## Other
 
-## Root for types
-
-- [DataSocket](api/DataSocket.md)
-
-## Basic types
-
-- [Boolean](api/Boolean.md)
-- [Integer](api/Integer.md)
-- [Float](api/Float.md)
-- [Vector](api/Vector.md)
-- [Color](api/Color.md)
-- [String](api/String.md)
-
-## Geometry types
-
-The geometry classes are:
-- [Geometry](api/Geometry.Md)
-- [Mesh](api/Mesh.md)
-- [Curve](api/Curve.md)
-- [Points](api/Points.md)
-- [Instances](api/Instances.md)
-- [Volume](api/Volume.md)
-
-## Domain types
-
-In geometry nodes, attributes refer to [domains](https://al1brn.github.io/geonodes/domains.html) such as Point, Corner, Face, Spline... 
-
-**geonodes** implement [domains](https://al1brn.github.io/geonodes/domains.html) as properties of geometry classes.
-- Mesh
-  - verts [Vertex](api/Vertex.md)
-  - faces [Face](api/Face.md)
-  - edges [Edge](api/Edge.md)
-  - corners [Corner](api/Corner.md)
-- Curve
-  - points [ControlPoint]api/ControlPoint.md)
-  - spline [Spline](api/Spline.md)
-- Points cloud
-  - points [CloudPoint](api/CloudPoint.md)
-- Instances
-  - inst [Instance](api/Instance.md)
-
-## Blender types
-
-- [Collection](api/Collection.md)
-- [Object](api/Object.md)
-- [Texture](api/Texture.md)
-- [Image](api/Image.md)
-- [Material](api/Material.md)
-
-## Nodes layer
-
-- [Nodes](api/nodes.md)
-- [Nodes by menus](api/nodes_menus.md)
-
-## Global functions
-
-- [Global functions](api/functions.md)
-
-## Simulation
-
-- [Simulation](api/Simulation.md)
-
-
-
-
+[Domain](#domain)
