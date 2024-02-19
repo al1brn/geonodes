@@ -22,6 +22,15 @@ update : 2024/02/17
 from pprint import pprint
 from pathlib import Path
 
+TREE_CLASSES = {
+    'GeometryNodeTree'    : 'GeoNodes',
+    'ShaderNodeTree'      : 'Shader',
+    'CompositorNodeTree'  : 'Compositor',
+    'TextureNodeTree'     : 'Texture',
+    }
+    
+
+
 # ----- Documentation
 
 DOCUMENTATION_DICT = {}
@@ -514,6 +523,9 @@ class List:
 class Doc:
     def __init__(self, tree_type, doc_spec=None):
         
+        self.tree_type  = tree_type
+        self.tree_class = TREE_CLASSES[tree_type]
+        
         self.dct  = doc_dict(tree_type)
         self.cref = cross_ref_dict(tree_type)
         
@@ -565,7 +577,7 @@ class Doc:
         if class_name is None:
             return "None"
         elif self.doc_spec.target == 'MD':
-            return f"[{class_name}](/docs/classes/{class_name}.md)"
+            return f"[{class_name}](/docs/{self.tree_class}_classes/{class_name}.md)"
         else:
             return class_name
         
@@ -800,52 +812,65 @@ class Doc:
 # =============================================================================================================================
 # Build the documentation
 
-def build_doc(tree_type, folder):
+def build_doc(folder):
     
-    root = Path(folder)
+    INDEX = {tree_type : {} for tree_type in TREE_CLASSES.keys()}
     
-    classes_folder = root / "classes"
+    index_doc = Doc('GeometryNodeTree')
+    index_doc.add(Header("Index", 0))
+    for key in sorted(TREE_CLASSES.values()):
+        index_doc.add(Paragraph(f"[{key}](#{key.lower()})\n"))
+    index_doc.add(new_line=True)
     
-    classes = {}
-    globs   = []
-    
-    doc = Doc(tree_type, DocSpec(target='MD', path=root))
-    for class_name in doc.dct.keys():
-        if class_name == 'GLOBAL':
-            for name, member in doc.dct['GLOBAL'].items():
-                doc.member_doc(member)
-                globs.append(name)
+    for tree_type in TREE_CLASSES.keys():
         
-        else:
-            doc.class_doc(class_name)
-            cat = doc.dct[class_name]['category']
-            if cat not in classes:
-                classes[cat] = []
-                
-            classes[cat].append(class_name)
+        # ----- Documentation of classes
+        
+        tree_class = TREE_CLASSES[tree_type]
+        
+        root = Path(folder)
+        
+        classes_folder = root / f"{tree_class}_classes"
+        
+        classes = {}
+        globs   = []
+        
+        doc = Doc(tree_type, DocSpec(target='MD', path=root))
+        for class_name in doc.dct.keys():
+            if class_name == 'GLOBAL':
+                for name, member in doc.dct['GLOBAL'].items():
+                    doc.member_doc(member)
+                    globs.append(name)
             
-        with open(classes_folder / f"{class_name}.md", 'w') as f:
-            f.write(doc.text)
-        doc.clear()
-        
-    # ----- Index
-    
-    doc.add(Header("Index", 0))
-    for cat, class_names in classes.items():
-        doc.add(Header(cat, 1))
-        if len(class_names) > 20:
-            initials = doc.initials(class_names)
-            for initial in sorted(initials.keys()):
-                sub = initials[initial]
-                #doc.add(Header(initial, 2))
-                links = " ".join(doc.list_links(sorted(sub)))
-                doc.add(Paragraph(f"***{initial}*** : " + links), new_line=True)
-        else:
-            links = " ".join(doc.list_links(sorted(class_names)))
-            doc.add(Paragraph(links))
+            else:
+                doc.class_doc(class_name)
+                cat = doc.dct[class_name]['category']
+                if cat not in classes:
+                    classes[cat] = []
+                    
+                classes[cat].append(class_name)
+                
+            with open(classes_folder / f"{class_name}.md", 'w') as f:
+                f.write(doc.text)
+            doc.clear()
+            
+            # ----- Index
+            
+            index_doc.add(Header("Index", 0))
+            for cat, class_names in classes.items():
+                index_doc.add(Header(cat, 1))
+                if len(class_names) > 20:
+                    initials = index_doc.initials(class_names)
+                    for initial in sorted(initials.keys()):
+                        sub = initials[initial]
+                        links = " ".join(doc.list_links(sorted(sub)))
+                        index_doc.add(Paragraph(f"***{initial}*** : " + links), new_line=True)
+                else:
+                    links = " ".join(index_doc.list_links(sorted(class_names)))
+                    index_doc.add(Paragraph(links))
 
     with open(root / "index.md", 'w') as f:
-        f.write(doc.text)
+        f.write(index_doc.text)
         
     doc.clear()
     
