@@ -856,7 +856,7 @@ def build_doc(folder):
             
             # ----- Index
             
-            index_doc.add(Header("Index", 0))
+            #index_doc.add(Header("Index", 0))
             for cat, class_names in classes.items():
                 index_doc.add(Header(cat, 1))
                 if len(class_names) > 20:
