@@ -839,7 +839,7 @@ def build_doc(tree_type, folder):
                 sub = initials[initial]
                 #doc.add(Header(initial, 2))
                 links = " ".join(doc.list_links(sorted(sub)))
-                doc.add(Paragraph(initial + " " + links))
+                doc.add(Paragraph(f"- ***{initial}*** : " + links), new_line=True)
         else:
             links = " ".join(doc.list_links(sorted(class_names)))
             doc.add(Paragraph(links))
