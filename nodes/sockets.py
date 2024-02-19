@@ -30,6 +30,7 @@ import numpy as np
 import bpy
 from geonodes.nodes import constants
 from geonodes.nodes import utils
+from geonodes.nodes import documentation
 
 
 # ====================================================================================================
@@ -82,6 +83,14 @@ class Socket:
             return f"[Socket '{self.bsocket.name}' ({'output' if self._is_output else 'input'}) of type '{self._socket_type}' from node {self.node}]"
         else:
             return f"[Socket value {self._value} of type '{self._socket_type}']"
+        
+    # ====================================================================================================
+    # Tree (run time only)
+    
+    @property
+    def tree(self):
+        from geonodes.nodes.constants import current_tree
+        return current_tree()
     
     # ====================================================================================================
     # Some properties
@@ -155,6 +164,13 @@ class Socket:
                 
         if in_bsocket is not None:
             link = self.node.tree.btree.links.new(in_bsocket, self.bsocket, verify_limits=True)
+            
+    # ====================================================================================================
+    # Helper
+
+    @classmethod
+    def print_doc(cls, member_name=None):
+        documentation.print_doc(cls, member_name=member_name)
 
     # ====================================================================================================
     # Operations
@@ -654,7 +670,7 @@ class Sockets:
     
     
 # ====================================================================================================
-# Geometry socket
+# Domain class
 
 class Domain:
     def __init__(self, geometry, domain_name):
@@ -666,6 +682,9 @@ class Domain:
     
     def _get_selection(self, selection):
         return self.geometry._get_selection(selection)
+
+# ====================================================================================================
+# Geometry socket
 
 class Geometry(Socket):
     def __init__(self, bsocket):
@@ -690,7 +709,6 @@ class Geometry(Socket):
             return sel
         
         return constants.current_tree().band(sel, selection, node_label="[sel] and selection")
-        
 
         
     

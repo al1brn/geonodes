@@ -112,6 +112,15 @@ class Tree(StackedTree):
             nodeinfo.tree_import(self.TREE_TYPE, names)
             
     # ====================================================================================================
+    # For debug
+    
+    @classmethod
+    def _reset(cls):
+        cls.INIT = False
+        constants.reset()
+            
+            
+    # ====================================================================================================
     # Arrange
 
     def arrange(self):

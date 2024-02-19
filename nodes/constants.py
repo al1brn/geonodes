@@ -201,6 +201,14 @@ NODE_CLASSES = {}
 
 TREE_DICTS = {}
 
+
+def reset():
+    NODESOCKET_CLASSES.clear()
+    SOCKET_CLASSES.clear()
+    NODE_CLASSES.clear()
+    TREE_DICTS.clear()
+    
+
 # ---- Transparent access for the current tree
 
 def dynamic_dict(DICT, tree_type):

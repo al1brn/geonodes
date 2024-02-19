@@ -54,7 +54,9 @@ def doc_dict(tree_type, class_name=None):
     
     dct = DOCUMENTATION_DICT.get(tree_type)
     if dct is None:
-        dct = {'GLOBAL': {}}
+        dct = {
+            'GLOBAL'  : {},  # Global functions
+             }
         DOCUMENTATION_DICT[tree_type] = dct
         
     if class_name is None:
@@ -62,8 +64,7 @@ def doc_dict(tree_type, class_name=None):
     
     d = dct.get(class_name)
     if d is None:
-        d = {'name'      : class_name,
-             'category'  : None,
+        d = {'category'  : None,
              'bl_idname' : None,
              'descr'     : None,
              'code'      : None,
@@ -85,7 +86,99 @@ def global_doc_dict(tree_type):
         - dict
     """
     
-    return doc_dict(tree_type, class_name = 'GLOBAL')
+    return doc_dict(tree_type, class_name='GLOBAL')
+
+# ====================================================================================================
+# Add a member to a class_name
+
+def add_member_doc(tree_type, class_name, name, attr_type, descr=None, **kwargs):
+    
+    # ----- Class documentation
+    
+    member_doc = {'name'       : name,
+                  'type'       : attr_type, 
+                  'class_name' : class_name,
+                  'descr'      : descr}
+    member_doc.update(kwargs)
+    
+    # ----- Into the global dict
+    
+    if class_name is None or class_name == 'GLOBAL':
+        doc = global_doc_dict(tree_type)
+    else:
+        doc = doc_dict(tree_type, class_name)['members']
+    
+    if name in doc.keys():
+        print(f"CAUTION: the member {name} already registered for class {class_name}:")
+        print("OLD")
+        pprint(doc[name])
+        print("NEW")
+        pprint(doc[name])
+        print()
+        
+    doc[name] = member_doc
+    
+    return member_doc
+
+# ----------------------------------------------------------------------------------------------------
+# Add a propperty
+
+def add_property_doc(tree_type, class_name, name,
+                     attr_type     = 'Property',
+                     getter        = None,
+                     setter        = None,
+                     getter_node   = None,
+                     setter_node   = None,
+                     descr         = None,
+                     **kwargs):
+    
+    if getter_node is not None:
+        new_cross_ref(tree_type, getter_node, class_name, name)
+
+    if setter_node is not None:
+        new_cross_ref(tree_type, setter_node, class_name, name)
+                     
+    return add_member_doc(tree_type, class_name, name, attr_type=attr_type, descr=descr,
+                          getter=getter, setter=setter, getter_node=getter_node, setter_node=setter_node, **kwargs)
+
+# ----------------------------------------------------------------------------------------------------
+# Add a method / function
+
+def add_method_doc(tree_type, class_name, name,
+                attr_type  = 'Method',
+                static     = False,
+                bl_idname  = None,
+                node_class = None,
+                code       = None,
+                meth_args  = None,
+                node_args  = None,
+                descr      = None,
+                **kwargs):
+    
+    if attr_type == 'Function':
+        class_name = 'GLOBAL'
+    
+    doc = add_member_doc(tree_type, class_name, name, attr_type=attr_type, descr=descr,
+                     static     = static,
+                     bl_idname  = bl_idname,
+                     node_class = node_class,
+                     code       = None,
+                     meth_args  = None,
+                     node_args  = None,
+                     **kwargs)
+
+    if node_class is not None:
+        new_cross_ref(tree_type, node_class, class_name, name)
+    
+    if static and attr_type != 'Function':
+        global_doc_dict(self.tree_type)[name] = doc
+        if node_class is not None:
+            new_cross_ref(tree_type, node_class, 'GLOBAL', name)
+        
+    return doc
+
+# ====================================================================================================
+# Add a cross reference
 
 def cross_ref_dict(tree_type=None, class_name=None):
     """ Get the cross ref dictionary for a tree type.
@@ -435,6 +528,7 @@ class Doc:
     # Member documentation
     
     def member_doc(self, member, level=1):
+        
         title = member['name']
         if member.get('static', False):
             title += ' (static)'
@@ -443,9 +537,17 @@ class Doc:
         if member['descr'] is not None:
             self.add(Paragraph(member['descr']), new_line=True)
             
-        with self.bullets("Node", new_line=True) as bullets:
-            bullets.add('class_name', member['class_name'])
-            bullets.add('bl_idname', member['bl_idname'])
+        is_property = member['type'] == 'Property'
+        
+        if is_property:
+            print("PROP", title, member)
+            with self.bullets("Nodes", new_line=True) as bullets:
+                bullets.add('get', member['getter_node'])
+                bullets.add('set', member['setter_node'])
+        else:
+            with self.bullets("Node", new_line=True) as bullets:
+                bullets.add('class_name', member['node_class'])
+                bullets.add('bl_idname', member['bl_idname'])
             
         if member['type'] == 'Method':
             meth_args = member['meth_args']
@@ -491,7 +593,7 @@ class Doc:
         self.add(Header("Node reference", 1))
         
         with self.bullets("Node") as bullets:
-            bullets.add("Class name", dct['name'])
+            bullets.add("Class name", class_name)
             bullets.add("bl_idname", dct['bl_idname'])
             
         params = dct.get('params')
@@ -528,9 +630,21 @@ class Doc:
     # ====================================================================================================
     # Socket documentation
     
-    def socket_class_doc(self, class_name, small=True):
+    def socket_class_doc(self, class_name, member_name=None, small=True):
         
         dct = self.dct[class_name]
+        
+        # ----- Member detail
+        
+        if member_name is not None:
+            dct = dct['members'].get(member_name)
+            if dct is None:
+                self.add(Paragraph(f"Class {class_name} has no member named {member_name}."), new_line=True)
+            else:
+                self.member_doc(dct, level=1)
+            return
+
+        # ----- Class documentation
         
         self.add(Header(f"class {class_name} ({dct['category']})", 0))
     
@@ -550,7 +664,7 @@ class Doc:
 
         s_dct = sort_dict(dct['members'], "type", none_key=None)
         if len(s_dct):
-            for stype in ['Method']:
+            for stype in s_dct:
                 
                 if small:
                     with self.bullets(stype) as bullets:
@@ -568,13 +682,13 @@ class Doc:
     # ====================================================================================================
     # Class documentation
     
-    def class_doc(self, class_name):
+    def class_doc(self, class_name, member_name=None):
         
         dct = self.dct[class_name]
         if dct['category'] == 'Node':
             self.node_class_doc(class_name)
         elif dct['category'] == 'Socket':
-            self.socket_class_doc(class_name)
+            self.socket_class_doc(class_name, member_name=member_name)
         else:
             self.add(Header(f"class {class_name} ({dct['category']})", 0))
         
@@ -584,9 +698,7 @@ class Doc:
 # =============================================================================================================================
 # Documentation
 
-def print_doc(obj):
-    
-    # ----- Tree type
+def print_doc(obj, member_name=None):
     
     tree_type = obj.__dict__.get('_tree_type', None)
     if tree_type is None:
@@ -606,7 +718,7 @@ def print_doc(obj):
             print("Sorry: {obj} is not documented.")
             return
 
-        doc.class_doc(class_name)
+        doc.class_doc(class_name, member_name=member_name)
 
     # ----- Global function
 

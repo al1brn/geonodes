@@ -19,10 +19,17 @@ The custom functions defined more accurate ways to implement nodes using add_fun
 update : 2024/02/17
 """
 
+from pprint import pprint
+
 from geonodes.nodes import constants
 from geonodes.nodes import utils
+from geonodes.nodes import documentation
 
 CUSTOM = {bl_id: {} for bl_id in constants.TREE_BL_IDS.values()}
+
+CUST_PROPS = {bl_id: [] for bl_id in constants.TREE_BL_IDS.values()}
+
+TEST_PROPS = {bl_id: {} for bl_id in constants.TREE_BL_IDS.values()}
 
 # =============================================================================================================================
 # Get the custom functions declared for a node class name
@@ -47,6 +54,12 @@ def get_custom(tree_type, class_name, create=False):
         d = {}
         cm[class_name] = d
     return d
+
+# =============================================================================================================================
+# Get the custom properties
+
+def get_cust_props(tree_type):
+    return CUST_PROPS[tree_type]
 
 # =============================================================================================================================
 # Declare a custom function for a node class name
@@ -115,6 +128,7 @@ def add_function(class_name, name,
         tree_classes = (tree_classes,)
     
     for tree_class in tree_classes:
+        
         methods = get_custom(constants.TREE_BL_IDS[tree_class], class_name, create=True)
         
         if name in methods:
@@ -138,6 +152,121 @@ def add_function(class_name, name,
             'kwargs'      : {**kwargs},
             'descr'       : descr,
             }
+        
+# =============================================================================================================================
+# Register a custom property
+
+def add_property(target, name,
+                 getter_class = None,
+                 setter_class = None,
+                 getter       = None,
+                 setter       = None,
+                 descr        = None,
+                 tree_class   = "GeoNodes"):
+    
+    cust_props = get_cust_props(constants.TREE_BL_IDS[tree_class])
+    cust_props.append({
+        'target'       : target,
+        'name'         : name,
+        'getter_class' : getter_class,
+        'setter_class' : setter_class,
+        'getter'       : getter,
+        'setter'       : setter,
+        'descr'        : descr,
+        })
+    
+    test_prop = TEST_PROPS[constants.TREE_BL_IDS[tree_class]]
+    if setter_class is not None:
+        if getter_class is None:
+            test_prop[name] = f"geo.{name} = geo\n"
+        else:
+            test_prop[name] = f"geo.{name} = geo.{name}\n"
+    else:
+        test_prop[name] = f"a = geo.{name}\n"
+        
+            
+
+# =============================================================================================================================
+# Test the properties
+
+def test_properties(tree_class):
+    test_props = TEST_PROPS[constants.TREE_BL_IDS[tree_class]]
+    
+    s = f"with {tree_class}('Test properties') as tree:\n"
+    s += "    geo = tree.ig\n"
+    for prop, line in test_props.items():
+        s += f"    {line}\n"
+        
+    print(s)
+    
+# =============================================================================================================================
+# Create the properties
+
+def create_properties(tree_type):
+    
+    cust_props = get_cust_props(tree_type)
+    tree_dict = constants.tree_dict(tree_type)
+    doc = documentation.doc_dict(tree_type)
+
+    for prop in cust_props:
+        getter_class = prop['getter_class']
+        setter_class = prop['setter_class']
+        
+        fget = None
+        fset = None
+        
+        getter_code = None
+        setter_code = None
+        
+        name = prop['name']
+        
+        if getter_class is not None:
+            getter = prop['getter']
+            if getter is None:
+                getter = f"return self.tree.{getter_class}().output_socket"
+            getter_code = f"def {name}(self):\n\t{getter}\n"
+            fget = utils.compile_f(getter_code, name)
+            
+        if setter_class is not None:
+            setter = prop['setter']
+            if setter is None:
+                pyname = doc[setter_class]['pyname']
+                setter = f"self.{pyname}(value)"
+            setter_code = f"def {name}(self, value):\n\t{setter}\n"
+                
+            fset = utils.compile_f(setter_code, name)
+        
+        the_class = tree_dict[prop['target']]
+        setattr(the_class, name, property(fget, fset))
+        
+        # ----- Documentation
+
+        documentation.add_property_doc(tree_type, prop['target'], name,
+                             attr_type     = 'Property',
+                             getter        = getter_code,
+                             setter        = setter_code,
+                             getter_node   = getter_class,
+                             setter_node   = setter_class,
+                             descr         = prop['descr'],
+                             )
+        
+        
+        if False:
+            print("Property", name)
+            print("   Getter:\n", f"def {name}(self):\n\t{getter}\n")
+            print("   Getter:\n", f"def {name}(self, value):\n\t{setter}\n")
+            print()
+                
+
+"""
+add_property('Geometry', 'edge_shade_smoot',
+             getter_class = 'IsEdgeSmooth',
+             setter_class = 'SetSmooth',
+             getter       = None,
+             setter       = "self.set_shade_smooth(value, domain='EDGE')",
+             descr        = None,
+             )
+"""
     
     
 # =============================================================================================================================
@@ -295,8 +424,102 @@ add_function("CombineColor", "combine_MODE", None,
              loops       = ['mode'],
              )
 
-    
 
+# =============================================================================================================================
+# Properties
+
+# curve tangennt
+
+# -----------------------------------------------------------------------------------------------------------------------------
+# Geometry
+
+"""
+add_property('Geometry', 'id',
+             getter_class = 'ID',
+             setter_class = 'SetID',
+             )
+"""
+add_property('Geometry', 'index',
+             getter_class = 'Index',
+             )
+
+add_property('Geometry', 'position',
+             getter_class = 'Position',
+             setter_class = 'SetPosition',
+             descr        = "SetPosition(position=value)",
+             )
+
+add_property('Geometry', 'offset',
+             setter_class = 'SetPosition',
+             setter       = "self.set_position(offset=value)",
+             descr        = "SetPosition(offset=value)",
+             )
+
+# -----------------------------------------------------------------------------------------------------------------------------
+# Curve
+
+add_property('Geometry', 'spline_cyclic',
+             getter_class = 'IsSplineCyclic',
+             setter_class = 'SetSplineCyclic',
+             )
+
+add_property('Geometry', 'curve_radius',
+             getter_class = 'Radius',
+             setter_class = 'SetCurveRadius',
+             getter       = None,
+             setter       = None,
+             descr        = "Curve radius property",
+             )
+
+add_property('Geometry', 'tangent',
+             getter_class = 'CurveTangent',
+             )
+
+add_property('Geometry', 'curve_tilt',
+             getter_class = 'CurveTilt',
+             setter_class = 'SetCurveTilt',
+             )
+
+add_property('Geometry', 'spline_resolution',
+             getter_class = 'SplineResolution',
+             setter_class = 'SetSplineResolution',
+             )
+
+# -----------------------------------------------------------------------------------------------------------------------------
+# Mesh
+
+add_property('Geometry', 'edge_shade_smooth',
+             getter_class = 'IsEdgeSmooth',
+             setter_class = 'SetSmooth',
+             setter       = "self.set_shade_smooth(value, domain='EDGE')",
+             descr        = "SetShadeSmooth(domain='EDGE')",
+             )
+
+add_property('Geometry', 'face_shade_smooth',
+             getter_class = 'IsFaceSmooth',
+             setter_class = 'SetSmooth',
+             setter       = "self.set_shade_smooth(value, domain='FACE')",
+             descr        = "SetShadeSmooth(domain='FACE')",
+             )
+
+add_property('Geometry', 'face_area',
+             getter_class = 'FaceArea',
+             )
+
+add_property('Geometry', 'edge_neighbors',
+             getter_class = 'EdgeNeighbors',
+             )
+
+# -----------------------------------------------------------------------------------------------------------------------------
+# Points
+
+add_property('Geometry', 'point_radius',
+             getter_class = 'Radius',
+             setter_class = 'SetPointRadius',
+             getter       = None,
+             setter       = None,
+             descr        = "Point radius property",
+             )
 
 
 

@@ -230,6 +230,20 @@ class NodeInfo:
             self.node_args.append(param)
             
         # ====================================================================================================
+        # Set xxx node can be used to create a property
+        
+        """
+        self.prop_candidate = None
+        name_split = self.name.split(" ")
+        if name_split[0] == 'Set' and self.max_out==1:
+            self.prop_candidate = {
+                'setter_classe_name': self.class_name,
+                'getter_class_name' : utils.node_class_name(" ".join(name_split[1:])),
+                }
+        """
+            
+            
+        # ====================================================================================================
         # Node class
         
         # ----- __init__ method
@@ -922,13 +936,14 @@ class NodeInfo:
         doc = documentation.doc_dict(self.tree_type, class_name)
         doc['category']  = 'Node'
         doc['bl_idname'] = self.bl_idname
+        doc['pyname']    = self.python_name
+        doc['node name'] = self.name
         doc['descr']     = descr
         doc['code']      = init_code
         
         doc['params']         = {param: utils.python_constant(value) for param, value in self.prm_defs.items()}
         doc['input_sockets']  = self.inputs.sockets_doc(enabled_only=False)
         doc['output_sockets'] = self.outputs.sockets_doc(enabled_only=False)
-        
         
         # Create entry for cross reference
         
@@ -1018,14 +1033,14 @@ class NodeInfo:
         
         # ----- Documentation
         
-        doc = documentation.doc_dict(self.tree_type, class_name)['members']
-        
-        doc[name] = {'name'      : name, 
-                     'type'      : attr_type, 
-                     'getter'    : getter, 
-                     'setter'    : setter, 
-                     'descr'     : descr}
-        
+        documentation.add_property_doc(self.tree_type, class_name, name,
+                 attr_type     = attr_type,
+                 getter        = getter,
+                 setter        = setter,
+                 getter_node   = None,
+                 setter_node   = None,
+                 descr         = descr,
+                 )
 
     # ----------------------------------------------------------------------------------------------------
     # Add a new node class method
@@ -1054,28 +1069,16 @@ class NodeInfo:
         
         # ----- Documentation
         
-        doc = documentation.doc_dict(self.tree_type, class_name)['members']
-        doc[name] = {'name'       : name,
-                     'type'       : 'Method',
-                     'static'     : is_static,
-                     'bl_idname'  : self.bl_idname,
-                     'class_name' : self.class_name,
-                     'class'      : class_name,
-                     'code'       : code,
-                     'meth_args'  : meth_args,
-                     'node_args'  : node_args,
-                     'descr'      : descr}
-        
-        if is_static:
-            documentation.global_doc_dict(self.tree_type)[name] = doc
-        
-        # Cross reference
-        
-        documentation.new_cross_ref(self.tree_type, self.class_name, class_name, name)
-        if is_static:
-            documentation.new_cross_ref(self.tree_type, self.class_name, None, name)
-            
-            
+        documentation.add_method_doc(self.tree_type, class_name, name,
+                        attr_type  = 'Method',
+                        static     = is_static,
+                        bl_idname  = self.bl_idname,
+                        node_class = self.class_name,
+                        code       = code,
+                        meth_args  = meth_args,
+                        node_args  = node_args,
+                        descr      = descr,
+                        )
         
     # ----------------------------------------------------------------------------------------------------
     # Add a global function
@@ -1089,34 +1092,22 @@ class NodeInfo:
         if name in tree_dict:
             print(f"CAUTION function {name} registered twice! (Class {self.class_name})")
             
-        if True:
-            
-            f = staticmethod(utils.compile_f(code, name))
-            f._tree_type  = self.tree_type
-            f._class_name = 'GLOBAL'
-            tree_dict[name] = f
-            
-        else:
-            tree_dict[name] = staticmethod(utils.compile_f(code, name))
-            tree_dict[name]._tree_type  = self.tree_type
-            tree_dict[name]._class_name = 'GLOBAL'
+        f = staticmethod(utils.compile_f(code, name))
+        f._tree_type  = self.tree_type
+        f._class_name = 'GLOBAL'
+        tree_dict[name] = f
         
         # ----- Documentation
         
-        doc = documentation.global_doc_dict(self.tree_type)
-        
-        doc[name] = {'name'       : name, 
-                     'type'       : 'Function',
-                     'bl_idname'  : self.bl_idname,
-                     'class_name' : self.class_name,
-                     'code'       : code, 
-                     'meth_args'  : meth_args,
-                     'node_args'  : node_args,
-                     'descr'      : descr}
-        
-        # Cross reference
-        
-        documentation.new_cross_ref(self.tree_type, self.class_name, None, name)
+        documentation.add_method_doc(self.tree_type, None, name,
+                        attr_type  = 'Function',
+                        bl_idname  = self.bl_idname,
+                        node_class = self.class_name,
+                        code       = code,
+                        meth_args  = meth_args,
+                        node_args  = node_args,
+                        descr      = descr,
+                        )
     
     
 # ====================================================================================================
@@ -1142,6 +1133,10 @@ def tree_class_setup(tree_type):
             continue
         
         node_info = NodeInfo(btree, bnode)
+        
+    # ----- Custom properties
+    
+    custom.create_properties(tree_type)
         
     # ====================================================================================================
     # Documentation
