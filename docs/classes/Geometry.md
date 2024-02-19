@@ -125,8 +125,11 @@ Properties
 
 ### bounding_box
 
-BoundingBox, geometry=self
+> BoundingBox, geometry=self
 
+``` python
+def bounding_box(self, node_label=None, node_color=None):
+```
 Node
  - class_name : [BoundingBox](/docs/classes/BoundingBox.md)
  - bl_idname : GeometryNodeBoundBox
@@ -140,13 +143,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def bounding_box(self, node_label=None, node_color=None):
-```
 ### capture_attribute
 
-CaptureAttribute, geometry=self
+> CaptureAttribute, geometry=self
 
+``` python
+def capture_attribute(self, value=None, data_type='FLOAT', domain='POINT', node_label=None, node_color=None):
+```
 Node
  - class_name : [CaptureAttribute](/docs/classes/CaptureAttribute.md)
  - bl_idname : GeometryNodeCaptureAttribute
@@ -166,13 +169,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def capture_attribute(self, value=None, data_type='FLOAT', domain='POINT', node_label=None, node_color=None):
-```
 ### capture_boolean
 
-CaptureAttribute, geometry=self, data_type='BOOLEAN'
+> CaptureAttribute, geometry=self, data_type='BOOLEAN'
 
+``` python
+def capture_boolean(self, value=None, domain='POINT', node_label=None, node_color=None):
+```
 Node
  - class_name : [CaptureAttribute](/docs/classes/CaptureAttribute.md)
  - bl_idname : GeometryNodeCaptureAttribute
@@ -191,13 +194,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def capture_boolean(self, value=None, domain='POINT', node_label=None, node_color=None):
-```
 ### capture_color
 
-CaptureAttribute, geometry=self, data_type='FLOAT_COLOR'
+> CaptureAttribute, geometry=self, data_type='FLOAT_COLOR'
 
+``` python
+def capture_color(self, value=None, domain='POINT', node_label=None, node_color=None):
+```
 Node
  - class_name : [CaptureAttribute](/docs/classes/CaptureAttribute.md)
  - bl_idname : GeometryNodeCaptureAttribute
@@ -216,13 +219,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def capture_color(self, value=None, domain='POINT', node_label=None, node_color=None):
-```
 ### capture_float
 
-CaptureAttribute, geometry=self, data_type='FLOAT'
+> CaptureAttribute, geometry=self, data_type='FLOAT'
 
+``` python
+def capture_float(self, value=None, domain='POINT', node_label=None, node_color=None):
+```
 Node
  - class_name : [CaptureAttribute](/docs/classes/CaptureAttribute.md)
  - bl_idname : GeometryNodeCaptureAttribute
@@ -241,13 +244,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def capture_float(self, value=None, domain='POINT', node_label=None, node_color=None):
-```
 ### capture_int
 
-CaptureAttribute, geometry=self, data_type='INT'
+> CaptureAttribute, geometry=self, data_type='INT'
 
+``` python
+def capture_int(self, value=None, domain='POINT', node_label=None, node_color=None):
+```
 Node
  - class_name : [CaptureAttribute](/docs/classes/CaptureAttribute.md)
  - bl_idname : GeometryNodeCaptureAttribute
@@ -266,13 +269,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def capture_int(self, value=None, domain='POINT', node_label=None, node_color=None):
-```
 ### capture_quaternion
 
-CaptureAttribute, geometry=self, data_type='QUATERNION'
+> CaptureAttribute, geometry=self, data_type='QUATERNION'
 
+``` python
+def capture_quaternion(self, value=None, domain='POINT', node_label=None, node_color=None):
+```
 Node
  - class_name : [CaptureAttribute](/docs/classes/CaptureAttribute.md)
  - bl_idname : GeometryNodeCaptureAttribute
@@ -291,13 +294,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def capture_quaternion(self, value=None, domain='POINT', node_label=None, node_color=None):
-```
 ### capture_vector
 
-CaptureAttribute, geometry=self, data_type='FLOAT_VECTOR'
+> CaptureAttribute, geometry=self, data_type='FLOAT_VECTOR'
 
+``` python
+def capture_vector(self, value=None, domain='POINT', node_label=None, node_color=None):
+```
 Node
  - class_name : [CaptureAttribute](/docs/classes/CaptureAttribute.md)
  - bl_idname : GeometryNodeCaptureAttribute
@@ -316,13 +319,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def capture_vector(self, value=None, domain='POINT', node_label=None, node_color=None):
-```
 ### convex_hull
 
-ConvexHull, geometry=self
+> ConvexHull, geometry=self
 
+``` python
+def convex_hull(self, node_label=None, node_color=None):
+```
 Node
  - class_name : [ConvexHull](/docs/classes/ConvexHull.md)
  - bl_idname : GeometryNodeConvexHull
@@ -336,13 +339,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def convex_hull(self, node_label=None, node_color=None):
-```
 ### curve_length
 
-CurveLength, curve=self, return socket
+> CurveLength, curve=self, return socket
 
+``` python
+def curve_length(self, node_label=None, node_color=None):
+```
 Node
  - class_name : [CurveLength](/docs/classes/CurveLength.md)
  - bl_idname : GeometryNodeCurveLength
@@ -356,13 +359,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def curve_length(self, node_label=None, node_color=None):
-```
 ### curve_to_mesh
 
-CurveToMesh, curve=self
+> CurveToMesh, curve=self
 
+``` python
+def curve_to_mesh(self, profile_curve=None, fill_caps=None, node_label=None, node_color=None):
+```
 Node
  - class_name : [CurveToMesh](/docs/classes/CurveToMesh.md)
  - bl_idname : GeometryNodeCurveToMesh
@@ -380,13 +383,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def curve_to_mesh(self, profile_curve=None, fill_caps=None, node_label=None, node_color=None):
-```
 ### curve_to_points
 
-CurveToPoints, curve=self
+> CurveToPoints, curve=self
 
+``` python
+def curve_to_points(self, count=None, length=None, mode='COUNT', node_label=None, node_color=None):
+```
 Node
  - class_name : [CurveToPoints](/docs/classes/CurveToPoints.md)
  - bl_idname : GeometryNodeCurveToPoints
@@ -406,13 +409,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def curve_to_points(self, count=None, length=None, mode='COUNT', node_label=None, node_color=None):
-```
 ### deform_curves_on_surface
 
-DeformCurvesOnSurface, curves=self
+> DeformCurvesOnSurface, curves=self
 
+``` python
+def deform_curves_on_surface(self, node_label=None, node_color=None):
+```
 Node
  - class_name : [DeformCurvesOnSurface](/docs/classes/DeformCurvesOnSurface.md)
  - bl_idname : GeometryNodeDeformCurvesOnSurface
@@ -426,13 +429,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def deform_curves_on_surface(self, node_label=None, node_color=None):
-```
 ### delete_geometry
 
-DeleteGeometry, geometry=self
+> DeleteGeometry, geometry=self
 
+``` python
+def delete_geometry(self, selection=None, domain='POINT', mode='ALL', node_label=None, node_color=None):
+```
 Node
  - class_name : [DeleteGeometry](/docs/classes/DeleteGeometry.md)
  - bl_idname : GeometryNodeDeleteGeometry
@@ -452,13 +455,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def delete_geometry(self, selection=None, domain='POINT', mode='ALL', node_label=None, node_color=None):
-```
 ### difference
 
-MeshBoolean, mesh_1=self, mesh_2=args
+> MeshBoolean, mesh_1=self, mesh_2=args
 
+``` python
+def difference(self, *args, mesh_2=None, self_intersection=None, hole_tolerant=None, node_label=None, node_color=None):
+```
 Node
  - class_name : [MeshBoolean](/docs/classes/MeshBoolean.md)
  - bl_idname : GeometryNodeMeshBoolean
@@ -481,13 +484,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def difference(self, *args, mesh_2=None, self_intersection=None, hole_tolerant=None, node_label=None, node_color=None):
-```
 ### distribute_points_in_volume
 
-DistributePointsInVolume, volume=self
+> DistributePointsInVolume, volume=self
 
+``` python
+def distribute_points_in_volume(self, density=None, seed=None, spacing=None, threshold=None, mode='DENSITY_RANDOM', node_label=None, node_color=None):
+```
 Node
  - class_name : [DistributePointsInVolume](/docs/classes/DistributePointsInVolume.md)
  - bl_idname : GeometryNodeDistributePointsInVolume
@@ -511,13 +514,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def distribute_points_in_volume(self, density=None, seed=None, spacing=None, threshold=None, mode='DENSITY_RANDOM', node_label=None, node_color=None):
-```
 ### distribute_points_on_faces
 
-DistributePointsOnFaces, mesh=self
+> DistributePointsOnFaces, mesh=self
 
+``` python
+def distribute_points_on_faces(self, density=None, seed=None, distance_min=None, density_max=None, density_factor=None, selection=None, distribute_method='RANDOM', use_legacy_normal=False, node_label=None, node_color=None):
+```
 Node
  - class_name : [DistributePointsOnFaces](/docs/classes/DistributePointsOnFaces.md)
  - bl_idname : GeometryNodeDistributePointsOnFaces
@@ -547,13 +550,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def distribute_points_on_faces(self, density=None, seed=None, distance_min=None, density_max=None, density_factor=None, selection=None, distribute_method='RANDOM', use_legacy_normal=False, node_label=None, node_color=None):
-```
 ### domain_size
 
-DomainSize, geometry=self, return node
+> DomainSize, geometry=self, return node
 
+``` python
+def domain_size(self, component='MESH', node_label=None, node_color=None):
+```
 Node
  - class_name : [DomainSize](/docs/classes/DomainSize.md)
  - bl_idname : GeometryNodeAttributeDomainSize
@@ -569,13 +572,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def domain_size(self, component='MESH', node_label=None, node_color=None):
-```
 ### dual_mesh
 
-DualMesh, mesh=self
+> DualMesh, mesh=self
 
+``` python
+def dual_mesh(self, keep_boundaries=None, node_label=None, node_color=None):
+```
 Node
  - class_name : [DualMesh](/docs/classes/DualMesh.md)
  - bl_idname : GeometryNodeDualMesh
@@ -591,13 +594,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def dual_mesh(self, keep_boundaries=None, node_label=None, node_color=None):
-```
 ### duplicate_elements
 
-DuplicateElements, geometry=self
+> DuplicateElements, geometry=self
 
+``` python
+def duplicate_elements(self, amount=None, selection=None, domain='POINT', node_label=None, node_color=None):
+```
 Node
  - class_name : [DuplicateElements](/docs/classes/DuplicateElements.md)
  - bl_idname : GeometryNodeDuplicateElements
@@ -617,13 +620,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def duplicate_elements(self, amount=None, selection=None, domain='POINT', node_label=None, node_color=None):
-```
 ### edge_paths_to_curves
 
-EdgePathsToCurves, mesh=self
+> EdgePathsToCurves, mesh=self
 
+``` python
+def edge_paths_to_curves(self, start_vertices=None, next_vertex_index=None, node_label=None, node_color=None):
+```
 Node
  - class_name : [EdgePathsToCurves](/docs/classes/EdgePathsToCurves.md)
  - bl_idname : GeometryNodeEdgePathsToCurves
@@ -641,13 +644,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def edge_paths_to_curves(self, start_vertices=None, next_vertex_index=None, node_label=None, node_color=None):
-```
 ### extrude_mesh
 
-ExtrudeMesh, mesh=self
+> ExtrudeMesh, mesh=self
 
+``` python
+def extrude_mesh(self, offset=None, offset_scale=None, individual=None, selection=None, mode='FACES', node_label=None, node_color=None):
+```
 Node
  - class_name : [ExtrudeMesh](/docs/classes/ExtrudeMesh.md)
  - bl_idname : GeometryNodeExtrudeMesh
@@ -671,13 +674,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def extrude_mesh(self, offset=None, offset_scale=None, individual=None, selection=None, mode='FACES', node_label=None, node_color=None):
-```
 ### fill_curve
 
-FillCurve, curve=self
+> FillCurve, curve=self
 
+``` python
+def fill_curve(self, mode='TRIANGLES', node_label=None, node_color=None):
+```
 Node
  - class_name : [FillCurve](/docs/classes/FillCurve.md)
  - bl_idname : GeometryNodeFillCurve
@@ -693,13 +696,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def fill_curve(self, mode='TRIANGLES', node_label=None, node_color=None):
-```
 ### fillet_curve
 
-FilletCurve, curve=self
+> FilletCurve, curve=self
 
+``` python
+def fillet_curve(self, radius=None, limit_radius=None, count=None, mode='BEZIER', node_label=None, node_color=None):
+```
 Node
  - class_name : [FilletCurve](/docs/classes/FilletCurve.md)
  - bl_idname : GeometryNodeFilletCurve
@@ -721,13 +724,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def fillet_curve(self, radius=None, limit_radius=None, count=None, mode='BEZIER', node_label=None, node_color=None):
-```
 ### flip_faces
 
-FlipFaces, mesh=self
+> FlipFaces, mesh=self
 
+``` python
+def flip_faces(self, selection=None, node_label=None, node_color=None):
+```
 Node
  - class_name : [FlipFaces](/docs/classes/FlipFaces.md)
  - bl_idname : GeometryNodeFlipFaces
@@ -743,13 +746,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def flip_faces(self, selection=None, node_label=None, node_color=None):
-```
 ### geometry_to_instance
 
-GeometryToInstance, geometry=self
+> GeometryToInstance, geometry=self
 
+``` python
+def geometry_to_instance(self, *args, node_label=None, node_color=None):
+```
 Node
  - class_name : [GeometryToInstance](/docs/classes/GeometryToInstance.md)
  - bl_idname : GeometryNodeGeometryToInstance
@@ -765,13 +768,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def geometry_to_instance(self, *args, node_label=None, node_color=None):
-```
 ### instance_on_points
 
-InstanceOnPoints, points=self
+> InstanceOnPoints, points=self
 
+``` python
+def instance_on_points(self, instance=None, pick_instance=None, instance_index=None, rotation=None, scale=None, selection=None, node_label=None, node_color=None):
+```
 Node
  - class_name : [InstanceOnPoints](/docs/classes/InstanceOnPoints.md)
  - bl_idname : GeometryNodeInstanceOnPoints
@@ -797,13 +800,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def instance_on_points(self, instance=None, pick_instance=None, instance_index=None, rotation=None, scale=None, selection=None, node_label=None, node_color=None):
-```
 ### instances_to_points
 
-InstancesToPoints, instances=self
+> InstancesToPoints, instances=self
 
+``` python
+def instances_to_points(self, position=None, radius=None, selection=None, node_label=None, node_color=None):
+```
 Node
  - class_name : [InstancesToPoints](/docs/classes/InstancesToPoints.md)
  - bl_idname : GeometryNodeInstancesToPoints
@@ -823,13 +826,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def instances_to_points(self, position=None, radius=None, selection=None, node_label=None, node_color=None):
-```
 ### interpolate_curves
 
-InterpolateCurves, guide_curves=self
+> InterpolateCurves, guide_curves=self
 
+``` python
+def interpolate_curves(self, guide_up=None, guide_group_id=None, points=None, point_up=None, point_group_id=None, max_neighbors=None, node_label=None, node_color=None):
+```
 Node
  - class_name : [InterpolateCurves](/docs/classes/InterpolateCurves.md)
  - bl_idname : GeometryNodeInterpolateCurves
@@ -855,13 +858,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def interpolate_curves(self, guide_up=None, guide_group_id=None, points=None, point_up=None, point_group_id=None, max_neighbors=None, node_label=None, node_color=None):
-```
 ### intersect
 
-MeshBoolean, mesh=geometry + args
+> MeshBoolean, mesh=geometry + args
 
+``` python
+def intersect(self, *args, self_intersection=None, hole_tolerant=None, node_label=None, node_color=None):
+```
 Node
  - class_name : [MeshBoolean](/docs/classes/MeshBoolean.md)
  - bl_idname : GeometryNodeMeshBoolean
@@ -882,13 +885,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def intersect(self, *args, self_intersection=None, hole_tolerant=None, node_label=None, node_color=None):
-```
 ### join_geometry
 
-JoinGeometry, geometry=self
+> JoinGeometry, geometry=self
 
+``` python
+def join_geometry(self, *args, node_label=None, node_color=None):
+```
 Node
  - class_name : [JoinGeometry](/docs/classes/JoinGeometry.md)
  - bl_idname : GeometryNodeJoinGeometry
@@ -904,13 +907,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def join_geometry(self, *args, node_label=None, node_color=None):
-```
 ### mean_filter_sdf_volume
 
-MeanFilterSDFVolume, volume=self
+> MeanFilterSDFVolume, volume=self
 
+``` python
+def mean_filter_sdf_volume(self, iterations=None, width=None, node_label=None, node_color=None):
+```
 Node
  - class_name : [MeanFilterSDFVolume](/docs/classes/MeanFilterSDFVolume.md)
  - bl_idname : GeometryNodeMeanFilterSDFVolume
@@ -928,13 +931,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def mean_filter_sdf_volume(self, iterations=None, width=None, node_label=None, node_color=None):
-```
 ### merge_by_distance
 
-MergeByDistance, geometry=self
+> MergeByDistance, geometry=self
 
+``` python
+def merge_by_distance(self, distance=None, selection=None, mode='ALL', node_label=None, node_color=None):
+```
 Node
  - class_name : [MergeByDistance](/docs/classes/MergeByDistance.md)
  - bl_idname : GeometryNodeMergeByDistance
@@ -954,13 +957,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def merge_by_distance(self, distance=None, selection=None, mode='ALL', node_label=None, node_color=None):
-```
 ### mesh_boolean
 
-MeshBoolean, mesh_1=self
+> MeshBoolean, mesh_1=self
 
+``` python
+def mesh_boolean(self, *args, mesh_2=None, self_intersection=None, hole_tolerant=None, operation='DIFFERENCE', node_label=None, node_color=None):
+```
 Node
  - class_name : [MeshBoolean](/docs/classes/MeshBoolean.md)
  - bl_idname : GeometryNodeMeshBoolean
@@ -984,13 +987,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def mesh_boolean(self, *args, mesh_2=None, self_intersection=None, hole_tolerant=None, operation='DIFFERENCE', node_label=None, node_color=None):
-```
 ### mesh_to_curve
 
-MeshToCurve, mesh=self
+> MeshToCurve, mesh=self
 
+``` python
+def mesh_to_curve(self, selection=None, node_label=None, node_color=None):
+```
 Node
  - class_name : [MeshToCurve](/docs/classes/MeshToCurve.md)
  - bl_idname : GeometryNodeMeshToCurve
@@ -1006,13 +1009,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def mesh_to_curve(self, selection=None, node_label=None, node_color=None):
-```
 ### mesh_to_points
 
-MeshToPoints, mesh=self
+> MeshToPoints, mesh=self
 
+``` python
+def mesh_to_points(self, position=None, radius=None, selection=None, mode='VERTICES', node_label=None, node_color=None):
+```
 Node
  - class_name : [MeshToPoints](/docs/classes/MeshToPoints.md)
  - bl_idname : GeometryNodeMeshToPoints
@@ -1034,13 +1037,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def mesh_to_points(self, position=None, radius=None, selection=None, mode='VERTICES', node_label=None, node_color=None):
-```
 ### mesh_to_sdf_volume
 
-MeshToSDFVolume, mesh=self
+> MeshToSDFVolume, mesh=self
 
+``` python
+def mesh_to_sdf_volume(self, voxel_amount=None, half_band_width=None, voxel_size=None, resolution_mode='VOXEL_AMOUNT', node_label=None, node_color=None):
+```
 Node
  - class_name : [MeshToSDFVolume](/docs/classes/MeshToSDFVolume.md)
  - bl_idname : GeometryNodeMeshToSDFVolume
@@ -1062,13 +1065,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def mesh_to_sdf_volume(self, voxel_amount=None, half_band_width=None, voxel_size=None, resolution_mode='VOXEL_AMOUNT', node_label=None, node_color=None):
-```
 ### mesh_to_volume
 
-MeshToVolume, mesh=self
+> MeshToVolume, mesh=self
 
+``` python
+def mesh_to_volume(self, density=None, voxel_amount=None, interior_band_width=None, voxel_size=None, resolution_mode='VOXEL_AMOUNT', node_label=None, node_color=None):
+```
 Node
  - class_name : [MeshToVolume](/docs/classes/MeshToVolume.md)
  - bl_idname : GeometryNodeMeshToVolume
@@ -1092,13 +1095,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def mesh_to_volume(self, density=None, voxel_amount=None, interior_band_width=None, voxel_size=None, resolution_mode='VOXEL_AMOUNT', node_label=None, node_color=None):
-```
 ### offset_sdf_volume
 
-OffsetSDFVolume, volume=self
+> OffsetSDFVolume, volume=self
 
+``` python
+def offset_sdf_volume(self, distance=None, node_label=None, node_color=None):
+```
 Node
  - class_name : [OffsetSDFVolume](/docs/classes/OffsetSDFVolume.md)
  - bl_idname : GeometryNodeOffsetSDFVolume
@@ -1114,13 +1117,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def offset_sdf_volume(self, distance=None, node_label=None, node_color=None):
-```
 ### points_to_curves
 
-PointsToCurves, points=self
+> PointsToCurves, points=self
 
+``` python
+def points_to_curves(self, curve_group_id=None, weight=None, node_label=None, node_color=None):
+```
 Node
  - class_name : [PointsToCurves](/docs/classes/PointsToCurves.md)
  - bl_idname : GeometryNodePointsToCurves
@@ -1138,13 +1141,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def points_to_curves(self, curve_group_id=None, weight=None, node_label=None, node_color=None):
-```
 ### points_to_sdf_volume
 
-PointsToSDFVolume, points=self
+> PointsToSDFVolume, points=self
 
+``` python
+def points_to_sdf_volume(self, voxel_amount=None, radius=None, voxel_size=None, resolution_mode='VOXEL_AMOUNT', node_label=None, node_color=None):
+```
 Node
  - class_name : [PointsToSDFVolume](/docs/classes/PointsToSDFVolume.md)
  - bl_idname : GeometryNodePointsToSDFVolume
@@ -1166,13 +1169,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def points_to_sdf_volume(self, voxel_amount=None, radius=None, voxel_size=None, resolution_mode='VOXEL_AMOUNT', node_label=None, node_color=None):
-```
 ### points_to_vertices
 
-PointsToVertices, points=self
+> PointsToVertices, points=self
 
+``` python
+def points_to_vertices(self, selection=None, node_label=None, node_color=None):
+```
 Node
  - class_name : [PointsToVertices](/docs/classes/PointsToVertices.md)
  - bl_idname : GeometryNodePointsToVertices
@@ -1188,13 +1191,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def points_to_vertices(self, selection=None, node_label=None, node_color=None):
-```
 ### points_to_volume
 
-PointsToVolume, points=self
+> PointsToVolume, points=self
 
+``` python
+def points_to_volume(self, density=None, voxel_amount=None, radius=None, voxel_size=None, resolution_mode='VOXEL_AMOUNT', node_label=None, node_color=None):
+```
 Node
  - class_name : [PointsToVolume](/docs/classes/PointsToVolume.md)
  - bl_idname : GeometryNodePointsToVolume
@@ -1218,13 +1221,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def points_to_volume(self, density=None, voxel_amount=None, radius=None, voxel_size=None, resolution_mode='VOXEL_AMOUNT', node_label=None, node_color=None):
-```
 ### realize_instances
 
-RealizeInstances, geometry=self
+> RealizeInstances, geometry=self
 
+``` python
+def realize_instances(self, node_label=None, node_color=None):
+```
 Node
  - class_name : [RealizeInstances](/docs/classes/RealizeInstances.md)
  - bl_idname : GeometryNodeRealizeInstances
@@ -1238,13 +1241,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def realize_instances(self, node_label=None, node_color=None):
-```
 ### remove_named_attribute
 
-RemoveNamedAttribute, geometry=self
+> RemoveNamedAttribute, geometry=self
 
+``` python
+def remove_named_attribute(self, name=None, node_label=None, node_color=None):
+```
 Node
  - class_name : [RemoveNamedAttribute](/docs/classes/RemoveNamedAttribute.md)
  - bl_idname : GeometryNodeRemoveAttribute
@@ -1260,13 +1263,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def remove_named_attribute(self, name=None, node_label=None, node_color=None):
-```
 ### repeat_output
 
-RepeatOutput, geometry=self
+> RepeatOutput, geometry=self
 
+``` python
+def repeat_output(self, active_index=0, active_item=None, inspection_index=0, repeat_items=None, node_label=None, node_color=None):
+```
 Node
  - class_name : [RepeatOutput](/docs/classes/RepeatOutput.md)
  - bl_idname : GeometryNodeRepeatOutput
@@ -1288,13 +1291,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def repeat_output(self, active_index=0, active_item=None, inspection_index=0, repeat_items=None, node_label=None, node_color=None):
-```
 ### replace_material
 
-ReplaceMaterial, geometry=self
+> ReplaceMaterial, geometry=self
 
+``` python
+def replace_material(self, old=None, new=None, node_label=None, node_color=None):
+```
 Node
  - class_name : [ReplaceMaterial](/docs/classes/ReplaceMaterial.md)
  - bl_idname : GeometryNodeReplaceMaterial
@@ -1312,13 +1315,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def replace_material(self, old=None, new=None, node_label=None, node_color=None):
-```
 ### resample_curve
 
-ResampleCurve, curve=self
+> ResampleCurve, curve=self
 
+``` python
+def resample_curve(self, count=None, length=None, selection=None, mode='COUNT', node_label=None, node_color=None):
+```
 Node
  - class_name : [ResampleCurve](/docs/classes/ResampleCurve.md)
  - bl_idname : GeometryNodeResampleCurve
@@ -1340,13 +1343,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def resample_curve(self, count=None, length=None, selection=None, mode='COUNT', node_label=None, node_color=None):
-```
 ### reverse_curve
 
-ReverseCurve, curve=self
+> ReverseCurve, curve=self
 
+``` python
+def reverse_curve(self, selection=None, node_label=None, node_color=None):
+```
 Node
  - class_name : [ReverseCurve](/docs/classes/ReverseCurve.md)
  - bl_idname : GeometryNodeReverseCurve
@@ -1362,13 +1365,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def reverse_curve(self, selection=None, node_label=None, node_color=None):
-```
 ### rotate_instances
 
-RotateInstances, instances=self
+> RotateInstances, instances=self
 
+``` python
+def rotate_instances(self, rotation=None, pivot_point=None, local_space=None, selection=None, node_label=None, node_color=None):
+```
 Node
  - class_name : [RotateInstances](/docs/classes/RotateInstances.md)
  - bl_idname : GeometryNodeRotateInstances
@@ -1390,13 +1393,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def rotate_instances(self, rotation=None, pivot_point=None, local_space=None, selection=None, node_label=None, node_color=None):
-```
 ### sample_index_boolean
 
-SampleIndex, value=self, data_type='BOOLEAN'
+> SampleIndex, value=self, data_type='BOOLEAN'
 
+``` python
+def sample_index_boolean(self, value=None, index=None, clamp=False, domain='POINT', node_label=None, node_color=None):
+```
 Node
  - class_name : [SampleIndex](/docs/classes/SampleIndex.md)
  - bl_idname : GeometryNodeSampleIndex
@@ -1419,13 +1422,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def sample_index_boolean(self, value=None, index=None, clamp=False, domain='POINT', node_label=None, node_color=None):
-```
 ### sample_index_color
 
-SampleIndex, value=self, data_type='FLOAT_COLOR'
+> SampleIndex, value=self, data_type='FLOAT_COLOR'
 
+``` python
+def sample_index_color(self, value=None, index=None, clamp=False, domain='POINT', node_label=None, node_color=None):
+```
 Node
  - class_name : [SampleIndex](/docs/classes/SampleIndex.md)
  - bl_idname : GeometryNodeSampleIndex
@@ -1448,13 +1451,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def sample_index_color(self, value=None, index=None, clamp=False, domain='POINT', node_label=None, node_color=None):
-```
 ### sample_index_float
 
-SampleIndex, value=self, data_type='FLOAT'
+> SampleIndex, value=self, data_type='FLOAT'
 
+``` python
+def sample_index_float(self, value=None, index=None, clamp=False, domain='POINT', node_label=None, node_color=None):
+```
 Node
  - class_name : [SampleIndex](/docs/classes/SampleIndex.md)
  - bl_idname : GeometryNodeSampleIndex
@@ -1477,13 +1480,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def sample_index_float(self, value=None, index=None, clamp=False, domain='POINT', node_label=None, node_color=None):
-```
 ### sample_index_int
 
-SampleIndex, value=self, data_type='INT'
+> SampleIndex, value=self, data_type='INT'
 
+``` python
+def sample_index_int(self, value=None, index=None, clamp=False, domain='POINT', node_label=None, node_color=None):
+```
 Node
  - class_name : [SampleIndex](/docs/classes/SampleIndex.md)
  - bl_idname : GeometryNodeSampleIndex
@@ -1506,13 +1509,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def sample_index_int(self, value=None, index=None, clamp=False, domain='POINT', node_label=None, node_color=None):
-```
 ### sample_index_quaternion
 
-SampleIndex, value=self, data_type='QUATERNION'
+> SampleIndex, value=self, data_type='QUATERNION'
 
+``` python
+def sample_index_quaternion(self, value=None, index=None, clamp=False, domain='POINT', node_label=None, node_color=None):
+```
 Node
  - class_name : [SampleIndex](/docs/classes/SampleIndex.md)
  - bl_idname : GeometryNodeSampleIndex
@@ -1535,13 +1538,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def sample_index_quaternion(self, value=None, index=None, clamp=False, domain='POINT', node_label=None, node_color=None):
-```
 ### sample_index_vector
 
-SampleIndex, value=self, data_type='FLOAT_VECTOR'
+> SampleIndex, value=self, data_type='FLOAT_VECTOR'
 
+``` python
+def sample_index_vector(self, value=None, index=None, clamp=False, domain='POINT', node_label=None, node_color=None):
+```
 Node
  - class_name : [SampleIndex](/docs/classes/SampleIndex.md)
  - bl_idname : GeometryNodeSampleIndex
@@ -1564,13 +1567,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def sample_index_vector(self, value=None, index=None, clamp=False, domain='POINT', node_label=None, node_color=None):
-```
 ### scale_elements
 
-ScaleElements, geometry=self
+> ScaleElements, geometry=self
 
+``` python
+def scale_elements(self, scale=None, center=None, axis=None, selection=None, domain='FACE', scale_mode='UNIFORM', node_label=None, node_color=None):
+```
 Node
  - class_name : [ScaleElements](/docs/classes/ScaleElements.md)
  - bl_idname : GeometryNodeScaleElements
@@ -1596,13 +1599,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def scale_elements(self, scale=None, center=None, axis=None, selection=None, domain='FACE', scale_mode='UNIFORM', node_label=None, node_color=None):
-```
 ### scale_instances
 
-ScaleInstances, instances=self
+> ScaleInstances, instances=self
 
+``` python
+def scale_instances(self, scale=None, center=None, local_space=None, selection=None, node_label=None, node_color=None):
+```
 Node
  - class_name : [ScaleInstances](/docs/classes/ScaleInstances.md)
  - bl_idname : GeometryNodeScaleInstances
@@ -1624,13 +1627,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def scale_instances(self, scale=None, center=None, local_space=None, selection=None, node_label=None, node_color=None):
-```
 ### separate_components
 
-SeparateComponents, geometry=self
+> SeparateComponents, geometry=self
 
+``` python
+def separate_components(self, node_label=None, node_color=None):
+```
 Node
  - class_name : [SeparateComponents](/docs/classes/SeparateComponents.md)
  - bl_idname : GeometryNodeSeparateComponents
@@ -1644,13 +1647,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def separate_components(self, node_label=None, node_color=None):
-```
 ### separate_geometry
 
-SeparateGeometry, geometry=self
+> SeparateGeometry, geometry=self
 
+``` python
+def separate_geometry(self, selection=None, domain='POINT', node_label=None, node_color=None):
+```
 Node
  - class_name : [SeparateGeometry](/docs/classes/SeparateGeometry.md)
  - bl_idname : GeometryNodeSeparateGeometry
@@ -1668,13 +1671,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def separate_geometry(self, selection=None, domain='POINT', node_label=None, node_color=None):
-```
 ### set_curve_normal
 
-SetCurveNormal, curve=self
+> SetCurveNormal, curve=self
 
+``` python
+def set_curve_normal(self, selection=None, mode='MINIMUM_TWIST', node_label=None, node_color=None):
+```
 Node
  - class_name : [SetCurveNormal](/docs/classes/SetCurveNormal.md)
  - bl_idname : GeometryNodeSetCurveNormal
@@ -1692,13 +1695,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def set_curve_normal(self, selection=None, mode='MINIMUM_TWIST', node_label=None, node_color=None):
-```
 ### set_curve_radius
 
-SetCurveRadius, curve=self
+> SetCurveRadius, curve=self
 
+``` python
+def set_curve_radius(self, radius=None, selection=None, node_label=None, node_color=None):
+```
 Node
  - class_name : [SetCurveRadius](/docs/classes/SetCurveRadius.md)
  - bl_idname : GeometryNodeSetCurveRadius
@@ -1716,13 +1719,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def set_curve_radius(self, radius=None, selection=None, node_label=None, node_color=None):
-```
 ### set_curve_tilt
 
-SetCurveTilt, curve=self
+> SetCurveTilt, curve=self
 
+``` python
+def set_curve_tilt(self, tilt=None, selection=None, node_label=None, node_color=None):
+```
 Node
  - class_name : [SetCurveTilt](/docs/classes/SetCurveTilt.md)
  - bl_idname : GeometryNodeSetCurveTilt
@@ -1740,13 +1743,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def set_curve_tilt(self, tilt=None, selection=None, node_label=None, node_color=None):
-```
 ### set_face_set
 
-SetFaceSet, mesh=self
+> SetFaceSet, mesh=self
 
+``` python
+def set_face_set(self, face_set=None, selection=None, node_label=None, node_color=None):
+```
 Node
  - class_name : [SetFaceSet](/docs/classes/SetFaceSet.md)
  - bl_idname : GeometryNodeToolSetFaceSet
@@ -1764,13 +1767,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def set_face_set(self, face_set=None, selection=None, node_label=None, node_color=None):
-```
 ### set_handle_positions
 
-SetHandlePositions, curve=self
+> SetHandlePositions, curve=self
 
+``` python
+def set_handle_positions(self, position=None, offset=None, selection=None, mode='LEFT', node_label=None, node_color=None):
+```
 Node
  - class_name : [SetHandlePositions](/docs/classes/SetHandlePositions.md)
  - bl_idname : GeometryNodeSetCurveHandlePositions
@@ -1792,13 +1795,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def set_handle_positions(self, position=None, offset=None, selection=None, mode='LEFT', node_label=None, node_color=None):
-```
 ### set_handle_type
 
-SetHandleType, curve=self
+> SetHandleType, curve=self
 
+``` python
+def set_handle_type(self, selection=None, handle_type='AUTO', mode={'RIGHT', 'LEFT'}, node_label=None, node_color=None):
+```
 Node
  - class_name : [SetHandleType](/docs/classes/SetHandleType.md)
  - bl_idname : GeometryNodeCurveSetHandles
@@ -1818,13 +1821,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def set_handle_type(self, selection=None, handle_type='AUTO', mode={'RIGHT', 'LEFT'}, node_label=None, node_color=None):
-```
 ### set_id
 
-SetID, geometry=self
+> SetID, geometry=self
 
+``` python
+def set_id(self, ID=None, selection=None, node_label=None, node_color=None):
+```
 Node
  - class_name : [SetID](/docs/classes/SetID.md)
  - bl_idname : GeometryNodeSetID
@@ -1842,13 +1845,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def set_id(self, ID=None, selection=None, node_label=None, node_color=None):
-```
 ### set_material
 
-SetMaterial, geometry=self
+> SetMaterial, geometry=self
 
+``` python
+def set_material(self, material=None, selection=None, node_label=None, node_color=None):
+```
 Node
  - class_name : [SetMaterial](/docs/classes/SetMaterial.md)
  - bl_idname : GeometryNodeSetMaterial
@@ -1866,13 +1869,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def set_material(self, material=None, selection=None, node_label=None, node_color=None):
-```
 ### set_material_index
 
-SetMaterialIndex, geometry=self
+> SetMaterialIndex, geometry=self
 
+``` python
+def set_material_index(self, material_index=None, selection=None, node_label=None, node_color=None):
+```
 Node
  - class_name : [SetMaterialIndex](/docs/classes/SetMaterialIndex.md)
  - bl_idname : GeometryNodeSetMaterialIndex
@@ -1890,13 +1893,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def set_material_index(self, material_index=None, selection=None, node_label=None, node_color=None):
-```
 ### set_point_radius
 
-SetPointRadius, points=self
+> SetPointRadius, points=self
 
+``` python
+def set_point_radius(self, radius=None, selection=None, node_label=None, node_color=None):
+```
 Node
  - class_name : [SetPointRadius](/docs/classes/SetPointRadius.md)
  - bl_idname : GeometryNodeSetPointRadius
@@ -1914,13 +1917,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def set_point_radius(self, radius=None, selection=None, node_label=None, node_color=None):
-```
 ### set_position
 
-SetPosition, geometry=self
+> SetPosition, geometry=self
 
+``` python
+def set_position(self, position=None, offset=None, selection=None, node_label=None, node_color=None):
+```
 Node
  - class_name : [SetPosition](/docs/classes/SetPosition.md)
  - bl_idname : GeometryNodeSetPosition
@@ -1940,13 +1943,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def set_position(self, position=None, offset=None, selection=None, node_label=None, node_color=None):
-```
 ### set_selection
 
-SetSelection, geometry=self
+> SetSelection, geometry=self
 
+``` python
+def set_selection(self, selection=None, domain='POINT', node_label=None, node_color=None):
+```
 Node
  - class_name : [SetSelection](/docs/classes/SetSelection.md)
  - bl_idname : GeometryNodeToolSetSelection
@@ -1964,13 +1967,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def set_selection(self, selection=None, domain='POINT', node_label=None, node_color=None):
-```
 ### set_shade_smooth
 
-SetShadeSmooth, geometry=self
+> SetShadeSmooth, geometry=self
 
+``` python
+def set_shade_smooth(self, shade_smooth=None, selection=None, domain='FACE', node_label=None, node_color=None):
+```
 Node
  - class_name : [SetShadeSmooth](/docs/classes/SetShadeSmooth.md)
  - bl_idname : GeometryNodeSetShadeSmooth
@@ -1990,13 +1993,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def set_shade_smooth(self, shade_smooth=None, selection=None, domain='FACE', node_label=None, node_color=None):
-```
 ### set_spline_cyclic
 
-SetSplineCyclic, geometry=self
+> SetSplineCyclic, geometry=self
 
+``` python
+def set_spline_cyclic(self, cyclic=None, selection=None, node_label=None, node_color=None):
+```
 Node
  - class_name : [SetSplineCyclic](/docs/classes/SetSplineCyclic.md)
  - bl_idname : GeometryNodeSetSplineCyclic
@@ -2014,13 +2017,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def set_spline_cyclic(self, cyclic=None, selection=None, node_label=None, node_color=None):
-```
 ### set_spline_resolution
 
-SetSplineResolution, geometry=self
+> SetSplineResolution, geometry=self
 
+``` python
+def set_spline_resolution(self, resolution=None, selection=None, node_label=None, node_color=None):
+```
 Node
  - class_name : [SetSplineResolution](/docs/classes/SetSplineResolution.md)
  - bl_idname : GeometryNodeSetSplineResolution
@@ -2038,13 +2041,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def set_spline_resolution(self, resolution=None, selection=None, node_label=None, node_color=None):
-```
 ### set_spline_type
 
-SetSplineType, curve=self
+> SetSplineType, curve=self
 
+``` python
+def set_spline_type(self, selection=None, spline_type='POLY', node_label=None, node_color=None):
+```
 Node
  - class_name : [SetSplineType](/docs/classes/SetSplineType.md)
  - bl_idname : GeometryNodeCurveSplineType
@@ -2062,13 +2065,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def set_spline_type(self, selection=None, spline_type='POLY', node_label=None, node_color=None):
-```
 ### simulation_output
 
-SimulationOutput, geometry=self
+> SimulationOutput, geometry=self
 
+``` python
+def simulation_output(self, skip=None, active_index=0, active_item=None, state_items=None, node_label=None, node_color=None):
+```
 Node
  - class_name : [SimulationOutput](/docs/classes/SimulationOutput.md)
  - bl_idname : GeometryNodeSimulationOutput
@@ -2090,13 +2093,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def simulation_output(self, skip=None, active_index=0, active_item=None, state_items=None, node_label=None, node_color=None):
-```
 ### split_edges
 
-SplitEdges, mesh=self
+> SplitEdges, mesh=self
 
+``` python
+def split_edges(self, selection=None, node_label=None, node_color=None):
+```
 Node
  - class_name : [SplitEdges](/docs/classes/SplitEdges.md)
  - bl_idname : GeometryNodeSplitEdges
@@ -2112,13 +2115,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def split_edges(self, selection=None, node_label=None, node_color=None):
-```
 ### store_named_attribute
 
-StoreNamedAttribute, geometry=self
+> StoreNamedAttribute, geometry=self
 
+``` python
+def store_named_attribute(self, name=None, value=None, selection=None, data_type='FLOAT', domain='POINT', node_label=None, node_color=None):
+```
 Node
  - class_name : [StoreNamedAttribute](/docs/classes/StoreNamedAttribute.md)
  - bl_idname : GeometryNodeStoreNamedAttribute
@@ -2142,13 +2145,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def store_named_attribute(self, name=None, value=None, selection=None, data_type='FLOAT', domain='POINT', node_label=None, node_color=None):
-```
 ### store_named_boolean
 
-StoreNamedAttribute, geometry=self, data_type='BOOLEAN'
+> StoreNamedAttribute, geometry=self, data_type='BOOLEAN'
 
+``` python
+def store_named_boolean(self, name=None, value=None, selection=None, domain='POINT', node_label=None, node_color=None):
+```
 Node
  - class_name : [StoreNamedAttribute](/docs/classes/StoreNamedAttribute.md)
  - bl_idname : GeometryNodeStoreNamedAttribute
@@ -2171,13 +2174,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def store_named_boolean(self, name=None, value=None, selection=None, domain='POINT', node_label=None, node_color=None):
-```
 ### store_named_byte_color
 
-StoreNamedAttribute, geometry=self, data_type='BYTE_COLOR'
+> StoreNamedAttribute, geometry=self, data_type='BYTE_COLOR'
 
+``` python
+def store_named_byte_color(self, name=None, value=None, selection=None, domain='POINT', node_label=None, node_color=None):
+```
 Node
  - class_name : [StoreNamedAttribute](/docs/classes/StoreNamedAttribute.md)
  - bl_idname : GeometryNodeStoreNamedAttribute
@@ -2200,13 +2203,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def store_named_byte_color(self, name=None, value=None, selection=None, domain='POINT', node_label=None, node_color=None):
-```
 ### store_named_float
 
-StoreNamedAttribute, geometry=self, data_type='FLOAT'
+> StoreNamedAttribute, geometry=self, data_type='FLOAT'
 
+``` python
+def store_named_float(self, name=None, value=None, selection=None, domain='POINT', node_label=None, node_color=None):
+```
 Node
  - class_name : [StoreNamedAttribute](/docs/classes/StoreNamedAttribute.md)
  - bl_idname : GeometryNodeStoreNamedAttribute
@@ -2229,13 +2232,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def store_named_float(self, name=None, value=None, selection=None, domain='POINT', node_label=None, node_color=None):
-```
 ### store_named_float2
 
-StoreNamedAttribute, geometry=self, data_type='FLOAT2'
+> StoreNamedAttribute, geometry=self, data_type='FLOAT2'
 
+``` python
+def store_named_float2(self, name=None, value=None, selection=None, domain='POINT', node_label=None, node_color=None):
+```
 Node
  - class_name : [StoreNamedAttribute](/docs/classes/StoreNamedAttribute.md)
  - bl_idname : GeometryNodeStoreNamedAttribute
@@ -2258,13 +2261,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def store_named_float2(self, name=None, value=None, selection=None, domain='POINT', node_label=None, node_color=None):
-```
 ### store_named_float_color
 
-StoreNamedAttribute, geometry=self, data_type='FLOAT_COLOR'
+> StoreNamedAttribute, geometry=self, data_type='FLOAT_COLOR'
 
+``` python
+def store_named_float_color(self, name=None, value=None, selection=None, domain='POINT', node_label=None, node_color=None):
+```
 Node
  - class_name : [StoreNamedAttribute](/docs/classes/StoreNamedAttribute.md)
  - bl_idname : GeometryNodeStoreNamedAttribute
@@ -2287,13 +2290,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def store_named_float_color(self, name=None, value=None, selection=None, domain='POINT', node_label=None, node_color=None):
-```
 ### store_named_int
 
-StoreNamedAttribute, geometry=self, data_type='INT'
+> StoreNamedAttribute, geometry=self, data_type='INT'
 
+``` python
+def store_named_int(self, name=None, value=None, selection=None, domain='POINT', node_label=None, node_color=None):
+```
 Node
  - class_name : [StoreNamedAttribute](/docs/classes/StoreNamedAttribute.md)
  - bl_idname : GeometryNodeStoreNamedAttribute
@@ -2316,13 +2319,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def store_named_int(self, name=None, value=None, selection=None, domain='POINT', node_label=None, node_color=None):
-```
 ### store_named_quaternion
 
-StoreNamedAttribute, geometry=self, data_type='QUATERNION'
+> StoreNamedAttribute, geometry=self, data_type='QUATERNION'
 
+``` python
+def store_named_quaternion(self, name=None, value=None, selection=None, domain='POINT', node_label=None, node_color=None):
+```
 Node
  - class_name : [StoreNamedAttribute](/docs/classes/StoreNamedAttribute.md)
  - bl_idname : GeometryNodeStoreNamedAttribute
@@ -2345,13 +2348,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def store_named_quaternion(self, name=None, value=None, selection=None, domain='POINT', node_label=None, node_color=None):
-```
 ### store_named_vector
 
-StoreNamedAttribute, geometry=self, data_type='FLOAT_VECTOR'
+> StoreNamedAttribute, geometry=self, data_type='FLOAT_VECTOR'
 
+``` python
+def store_named_vector(self, name=None, value=None, selection=None, domain='POINT', node_label=None, node_color=None):
+```
 Node
  - class_name : [StoreNamedAttribute](/docs/classes/StoreNamedAttribute.md)
  - bl_idname : GeometryNodeStoreNamedAttribute
@@ -2374,13 +2377,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def store_named_vector(self, name=None, value=None, selection=None, domain='POINT', node_label=None, node_color=None):
-```
 ### subdivide_curve
 
-SubdivideCurve, curve=self
+> SubdivideCurve, curve=self
 
+``` python
+def subdivide_curve(self, cuts=None, node_label=None, node_color=None):
+```
 Node
  - class_name : [SubdivideCurve](/docs/classes/SubdivideCurve.md)
  - bl_idname : GeometryNodeSubdivideCurve
@@ -2396,13 +2399,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def subdivide_curve(self, cuts=None, node_label=None, node_color=None):
-```
 ### subdivide_mesh
 
-SubdivideMesh, mesh=self
+> SubdivideMesh, mesh=self
 
+``` python
+def subdivide_mesh(self, level=None, node_label=None, node_color=None):
+```
 Node
  - class_name : [SubdivideMesh](/docs/classes/SubdivideMesh.md)
  - bl_idname : GeometryNodeSubdivideMesh
@@ -2418,13 +2421,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def subdivide_mesh(self, level=None, node_label=None, node_color=None):
-```
 ### subdivision_surface
 
-SubdivisionSurface, mesh=self
+> SubdivisionSurface, mesh=self
 
+``` python
+def subdivision_surface(self, level=None, edge_crease=None, vertex_crease=None, boundary_smooth='ALL', uv_smooth='PRESERVE_BOUNDARIES', node_label=None, node_color=None):
+```
 Node
  - class_name : [SubdivisionSurface](/docs/classes/SubdivisionSurface.md)
  - bl_idname : GeometryNodeSubdivisionSurface
@@ -2448,13 +2451,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def subdivision_surface(self, level=None, edge_crease=None, vertex_crease=None, boundary_smooth='ALL', uv_smooth='PRESERVE_BOUNDARIES', node_label=None, node_color=None):
-```
 ### switch
 
-Switch, false=self, input_type='GEOMETRY'
+> Switch, false=self, input_type='GEOMETRY'
 
+``` python
+def switch(self, switch=None, true=None, node_label=None, node_color=None):
+```
 Node
  - class_name : [Switch](/docs/classes/Switch.md)
  - bl_idname : GeometryNodeSwitch
@@ -2473,13 +2476,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def switch(self, switch=None, true=None, node_label=None, node_color=None):
-```
 ### transform_geometry
 
-TransformGeometry, geometry=self
+> TransformGeometry, geometry=self
 
+``` python
+def transform_geometry(self, translation=None, rotation=None, scale=None, node_label=None, node_color=None):
+```
 Node
  - class_name : [TransformGeometry](/docs/classes/TransformGeometry.md)
  - bl_idname : GeometryNodeTransform
@@ -2499,13 +2502,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def transform_geometry(self, translation=None, rotation=None, scale=None, node_label=None, node_color=None):
-```
 ### translate_instances
 
-TranslateInstances, instances=self
+> TranslateInstances, instances=self
 
+``` python
+def translate_instances(self, translation=None, local_space=None, selection=None, node_label=None, node_color=None):
+```
 Node
  - class_name : [TranslateInstances](/docs/classes/TranslateInstances.md)
  - bl_idname : GeometryNodeTranslateInstances
@@ -2525,13 +2528,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def translate_instances(self, translation=None, local_space=None, selection=None, node_label=None, node_color=None):
-```
 ### triangulate
 
-Triangulate, mesh=self
+> Triangulate, mesh=self
 
+``` python
+def triangulate(self, minimum_vertices=None, selection=None, ngon_method='BEAUTY', quad_method='SHORTEST_DIAGONAL', node_label=None, node_color=None):
+```
 Node
  - class_name : [Triangulate](/docs/classes/Triangulate.md)
  - bl_idname : GeometryNodeTriangulate
@@ -2553,13 +2556,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def triangulate(self, minimum_vertices=None, selection=None, ngon_method='BEAUTY', quad_method='SHORTEST_DIAGONAL', node_label=None, node_color=None):
-```
 ### trim_curve
 
-TrimCurve, curve=self
+> TrimCurve, curve=self
 
+``` python
+def trim_curve(self, start=None, end=None, selection=None, mode='FACTOR', node_label=None, node_color=None):
+```
 Node
  - class_name : [TrimCurve](/docs/classes/TrimCurve.md)
  - bl_idname : GeometryNodeTrimCurve
@@ -2581,13 +2584,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def trim_curve(self, start=None, end=None, selection=None, mode='FACTOR', node_label=None, node_color=None):
-```
 ### union
 
-MeshBoolean, mesh=geometry + args
+> MeshBoolean, mesh=geometry + args
 
+``` python
+def union(self, *args, self_intersection=None, hole_tolerant=None, node_label=None, node_color=None):
+```
 Node
  - class_name : [MeshBoolean](/docs/classes/MeshBoolean.md)
  - bl_idname : GeometryNodeMeshBoolean
@@ -2608,13 +2611,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def union(self, *args, self_intersection=None, hole_tolerant=None, node_label=None, node_color=None):
-```
 ### volume_to_mesh
 
-VolumeToMesh, volume=self
+> VolumeToMesh, volume=self
 
+``` python
+def volume_to_mesh(self, threshold=None, adaptivity=None, voxel_amount=None, voxel_size=None, resolution_mode='GRID', node_label=None, node_color=None):
+```
 Node
  - class_name : [VolumeToMesh](/docs/classes/VolumeToMesh.md)
  - bl_idname : GeometryNodeVolumeToMesh
@@ -2638,9 +2641,6 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def volume_to_mesh(self, threshold=None, adaptivity=None, voxel_amount=None, voxel_size=None, resolution_mode='GRID', node_label=None, node_color=None):
-```
 ## Properties
 
 ### ID
@@ -2651,7 +2651,7 @@ Nodes
 
 ### curve_radius
 
-Curve radius property
+> Curve radius property
 
 Nodes
  - get : [Radius](/docs/classes/Radius.md)
@@ -2671,7 +2671,7 @@ Nodes
 
 ### edge_shade_smooth
 
-SetShadeSmooth(domain='EDGE')
+> SetShadeSmooth(domain='EDGE')
 
 Nodes
  - get : [IsEdgeSmooth](/docs/classes/IsEdgeSmooth.md)
@@ -2685,7 +2685,7 @@ Nodes
 
 ### face_shade_smooth
 
-SetShadeSmooth(domain='FACE')
+> SetShadeSmooth(domain='FACE')
 
 Nodes
  - get : [IsFaceSmooth](/docs/classes/IsFaceSmooth.md)
@@ -2699,7 +2699,7 @@ Nodes
 
 ### offset
 
-SetPosition(offset=value)
+> SetPosition(offset=value)
 
 Nodes
  - get : None
@@ -2707,7 +2707,7 @@ Nodes
 
 ### point_radius
 
-Point radius property
+> Point radius property
 
 Nodes
  - get : [Radius](/docs/classes/Radius.md)
@@ -2715,7 +2715,7 @@ Nodes
 
 ### position
 
-SetPosition(position=value)
+> SetPosition(position=value)
 
 Nodes
  - get : [Position](/docs/classes/Position.md)

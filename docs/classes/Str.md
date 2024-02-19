@@ -20,8 +20,11 @@ Methods
 
 ### equal
 
-Compare, a=self, data_type='STRING', operation='EQUAL'
+> Compare, a=self, data_type='STRING', operation='EQUAL'
 
+``` python
+def equal(self, b=None, mode='ELEMENT', node_label=None, node_color=None):
+```
 Node
  - class_name : [Compare](/docs/classes/Compare.md)
  - bl_idname : FunctionNodeCompare
@@ -41,13 +44,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def equal(self, b=None, mode='ELEMENT', node_label=None, node_color=None):
-```
 ### join_strings
 
-JoinStrings, delimiter=self
+> JoinStrings, delimiter=self
 
+``` python
+def join_strings(self, *args, strings=None, node_label=None, node_color=None):
+```
 Node
  - class_name : [JoinStrings](/docs/classes/JoinStrings.md)
  - bl_idname : GeometryNodeStringJoin
@@ -65,13 +68,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def join_strings(self, *args, strings=None, node_label=None, node_color=None):
-```
 ### named_attribute
 
-NamedAttribute, name=self, return node
+> NamedAttribute, name=self, return node
 
+``` python
+def named_attribute(self, data_type='FLOAT', node_label=None, node_color=None):
+```
 Node
  - class_name : [NamedAttribute](/docs/classes/NamedAttribute.md)
  - bl_idname : GeometryNodeInputNamedAttribute
@@ -87,13 +90,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def named_attribute(self, data_type='FLOAT', node_label=None, node_color=None):
-```
 ### not_equal
 
-Compare, a=self, data_type='STRING', operation='NOT_EQUAL'
+> Compare, a=self, data_type='STRING', operation='NOT_EQUAL'
 
+``` python
+def not_equal(self, b=None, mode='ELEMENT', node_label=None, node_color=None):
+```
 Node
  - class_name : [Compare](/docs/classes/Compare.md)
  - bl_idname : FunctionNodeCompare
@@ -113,13 +116,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def not_equal(self, b=None, mode='ELEMENT', node_label=None, node_color=None):
-```
 ### replace_string
 
-ReplaceString, string=self
+> ReplaceString, string=self
 
+``` python
+def replace_string(self, find=None, replace=None, node_label=None, node_color=None):
+```
 Node
  - class_name : [ReplaceString](/docs/classes/ReplaceString.md)
  - bl_idname : FunctionNodeReplaceString
@@ -137,13 +140,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def replace_string(self, find=None, replace=None, node_label=None, node_color=None):
-```
 ### slice_string
 
-SliceString, string=self
+> SliceString, string=self
 
+``` python
+def slice_string(self, position=None, length=None, node_label=None, node_color=None):
+```
 Node
  - class_name : [SliceString](/docs/classes/SliceString.md)
  - bl_idname : FunctionNodeSliceString
@@ -161,13 +164,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def slice_string(self, position=None, length=None, node_label=None, node_color=None):
-```
 ### string_length
 
-StringLength, string=self, return socket
+> StringLength, string=self, return socket
 
+``` python
+def string_length(self, node_label=None, node_color=None):
+```
 Node
  - class_name : [StringLength](/docs/classes/StringLength.md)
  - bl_idname : FunctionNodeStringLength
@@ -181,13 +184,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def string_length(self, node_label=None, node_color=None):
-```
 ### switch
 
-Switch, false=self, input_type='STRING'
+> Switch, false=self, input_type='STRING'
 
+``` python
+def switch(self, switch=None, true=None, node_label=None, node_color=None):
+```
 Node
  - class_name : [Switch](/docs/classes/Switch.md)
  - bl_idname : GeometryNodeSwitch
@@ -205,7 +208,3 @@ Node initialization
  - input_type : 'STRING'
  - node_label : node_label
  - node_color : node_color
-
-``` python
-def switch(self, switch=None, true=None, node_label=None, node_color=None):
-```

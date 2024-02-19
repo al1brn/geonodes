@@ -61,8 +61,11 @@ Methods
 
 ### abs
 
-VectorMath, vector=self, operation='ABSOLUTE'
+> VectorMath, vector=self, operation='ABSOLUTE'
 
+``` python
+def abs(self, node_label=None, node_color=None):
+```
 Node
  - class_name : [VectorMath](/docs/classes/VectorMath.md)
  - bl_idname : ShaderNodeVectorMath
@@ -77,13 +80,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def abs(self, node_label=None, node_color=None):
-```
 ### add
 
-VectorMath, vector=self, operation='ADD'
+> VectorMath, vector=self, operation='ADD'
 
+``` python
+def add(self, vector=None, node_label=None, node_color=None):
+```
 Node
  - class_name : [VectorMath](/docs/classes/VectorMath.md)
  - bl_idname : ShaderNodeVectorMath
@@ -100,13 +103,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def add(self, vector=None, node_label=None, node_color=None):
-```
 ### align_euler_to_vector
 
-AlignEulerToVector, rotation=self
+> AlignEulerToVector, rotation=self
 
+``` python
+def align_euler_to_vector(self, factor=None, vector=None, axis='X', pivot_axis='AUTO', node_label=None, node_color=None):
+```
 Node
  - class_name : [AlignEulerToVector](/docs/classes/AlignEulerToVector.md)
  - bl_idname : FunctionNodeAlignEulerToVector
@@ -128,13 +131,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def align_euler_to_vector(self, factor=None, vector=None, axis='X', pivot_axis='AUTO', node_label=None, node_color=None):
-```
 ### ceil
 
-VectorMath, vector=self, operation='CEIL'
+> VectorMath, vector=self, operation='CEIL'
 
+``` python
+def ceil(self, node_label=None, node_color=None):
+```
 Node
  - class_name : [VectorMath](/docs/classes/VectorMath.md)
  - bl_idname : ShaderNodeVectorMath
@@ -149,13 +152,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def ceil(self, node_label=None, node_color=None):
-```
 ### cos
 
-VectorMath, vector=self, operation='COSINE'
+> VectorMath, vector=self, operation='COSINE'
 
+``` python
+def cos(self, node_label=None, node_color=None):
+```
 Node
  - class_name : [VectorMath](/docs/classes/VectorMath.md)
  - bl_idname : ShaderNodeVectorMath
@@ -170,13 +173,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def cos(self, node_label=None, node_color=None):
-```
 ### cross
 
-VectorMath, vector=self, operation='CROSS_PRODUCT'
+> VectorMath, vector=self, operation='CROSS_PRODUCT'
 
+``` python
+def cross(self, vector=None, node_label=None, node_color=None):
+```
 Node
  - class_name : [VectorMath](/docs/classes/VectorMath.md)
  - bl_idname : ShaderNodeVectorMath
@@ -193,13 +196,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def cross(self, vector=None, node_label=None, node_color=None):
-```
 ### cube
 
-Cube, size=self
+> Cube, size=self
 
+``` python
+def cube(self, vertices_x=None, vertices_y=None, vertices_z=None, node_label=None, node_color=None):
+```
 Node
  - class_name : [Cube](/docs/classes/Cube.md)
  - bl_idname : GeometryNodeMeshCube
@@ -219,13 +222,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def cube(self, vertices_x=None, vertices_y=None, vertices_z=None, node_label=None, node_color=None):
-```
 ### distance
 
-VectorMath, vector=self, operation='DISTANCE'
+> VectorMath, vector=self, operation='DISTANCE'
 
+``` python
+def distance(self, vector=None, node_label=None, node_color=None):
+```
 Node
  - class_name : [VectorMath](/docs/classes/VectorMath.md)
  - bl_idname : ShaderNodeVectorMath
@@ -242,13 +245,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def distance(self, vector=None, node_label=None, node_color=None):
-```
 ### divide
 
-VectorMath, vector=self, operation='DIVIDE'
+> VectorMath, vector=self, operation='DIVIDE'
 
+``` python
+def divide(self, vector=None, node_label=None, node_color=None):
+```
 Node
  - class_name : [VectorMath](/docs/classes/VectorMath.md)
  - bl_idname : ShaderNodeVectorMath
@@ -265,13 +268,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def divide(self, vector=None, node_label=None, node_color=None):
-```
 ### dot
 
-VectorMath, vector=self, operation='DOT_PRODUCT'
+> VectorMath, vector=self, operation='DOT_PRODUCT'
 
+``` python
+def dot(self, vector=None, node_label=None, node_color=None):
+```
 Node
  - class_name : [VectorMath](/docs/classes/VectorMath.md)
  - bl_idname : ShaderNodeVectorMath
@@ -288,13 +291,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def dot(self, vector=None, node_label=None, node_color=None):
-```
 ### equal
 
-Compare, a=self, data_type='VECTOR', operation='EQUAL'
+> Compare, a=self, data_type='VECTOR', operation='EQUAL'
 
+``` python
+def equal(self, b=None, epsilon=None, mode='ELEMENT', node_label=None, node_color=None):
+```
 Node
  - class_name : [Compare](/docs/classes/Compare.md)
  - bl_idname : FunctionNodeCompare
@@ -316,13 +319,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def equal(self, b=None, epsilon=None, mode='ELEMENT', node_label=None, node_color=None):
-```
 ### euler_to_rotation
 
-EulerToRotation, euler=self, return socket
+> EulerToRotation, euler=self, return socket
 
+``` python
+def euler_to_rotation(self, node_label=None, node_color=None):
+```
 Node
  - class_name : [EulerToRotation](/docs/classes/EulerToRotation.md)
  - bl_idname : FunctionNodeEulerToRotation
@@ -336,13 +339,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def euler_to_rotation(self, node_label=None, node_color=None):
-```
 ### faceforward
 
-VectorMath, vector=self, operation='FACEFORWARD'
+> VectorMath, vector=self, operation='FACEFORWARD'
 
+``` python
+def faceforward(self, vector=None, vector_1=None, node_label=None, node_color=None):
+```
 Node
  - class_name : [VectorMath](/docs/classes/VectorMath.md)
  - bl_idname : ShaderNodeVectorMath
@@ -361,13 +364,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def faceforward(self, vector=None, vector_1=None, node_label=None, node_color=None):
-```
 ### floor
 
-VectorMath, vector=self, operation='FLOOR'
+> VectorMath, vector=self, operation='FLOOR'
 
+``` python
+def floor(self, node_label=None, node_color=None):
+```
 Node
  - class_name : [VectorMath](/docs/classes/VectorMath.md)
  - bl_idname : ShaderNodeVectorMath
@@ -382,13 +385,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def floor(self, node_label=None, node_color=None):
-```
 ### frac
 
-VectorMath, vector=self, operation='FRACTION'
+> VectorMath, vector=self, operation='FRACTION'
 
+``` python
+def frac(self, node_label=None, node_color=None):
+```
 Node
  - class_name : [VectorMath](/docs/classes/VectorMath.md)
  - bl_idname : ShaderNodeVectorMath
@@ -403,13 +406,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def frac(self, node_label=None, node_color=None):
-```
 ### geometry_proximity
 
-GeometryProximity, source_position=self
+> GeometryProximity, source_position=self
 
+``` python
+def geometry_proximity(self, target=None, target_element='FACES', node_label=None, node_color=None):
+```
 Node
  - class_name : [GeometryProximity](/docs/classes/GeometryProximity.md)
  - bl_idname : GeometryNodeProximity
@@ -427,13 +430,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def geometry_proximity(self, target=None, target_element='FACES', node_label=None, node_color=None):
-```
 ### gradient_texture
 
-GradientTexture, vector=self, return node
+> GradientTexture, vector=self, return node
 
+``` python
+def gradient_texture(self, color_mapping=None, gradient_type='LINEAR', texture_mapping=None, node_label=None, node_color=None):
+```
 Node
  - class_name : [GradientTexture](/docs/classes/GradientTexture.md)
  - bl_idname : ShaderNodeTexGradient
@@ -453,13 +456,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def gradient_texture(self, color_mapping=None, gradient_type='LINEAR', texture_mapping=None, node_label=None, node_color=None):
-```
 ### greater_equal
 
-Compare, a=self, data_type='VECTOR', operation='GREATER_EQUAL'
+> Compare, a=self, data_type='VECTOR', operation='GREATER_EQUAL'
 
+``` python
+def greater_equal(self, b=None, mode='ELEMENT', node_label=None, node_color=None):
+```
 Node
  - class_name : [Compare](/docs/classes/Compare.md)
  - bl_idname : FunctionNodeCompare
@@ -479,13 +482,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def greater_equal(self, b=None, mode='ELEMENT', node_label=None, node_color=None):
-```
 ### greater_than
 
-Compare, a=self, data_type='VECTOR', operation='GREATER_THAN'
+> Compare, a=self, data_type='VECTOR', operation='GREATER_THAN'
 
+``` python
+def greater_than(self, b=None, mode='ELEMENT', node_label=None, node_color=None):
+```
 Node
  - class_name : [Compare](/docs/classes/Compare.md)
  - bl_idname : FunctionNodeCompare
@@ -505,13 +508,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def greater_than(self, b=None, mode='ELEMENT', node_label=None, node_color=None):
-```
 ### length
 
-VectorMath, vector=self, operation='LENGTH'
+> VectorMath, vector=self, operation='LENGTH'
 
+``` python
+def length(self, node_label=None, node_color=None):
+```
 Node
  - class_name : [VectorMath](/docs/classes/VectorMath.md)
  - bl_idname : ShaderNodeVectorMath
@@ -526,13 +529,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def length(self, node_label=None, node_color=None):
-```
 ### less_equal
 
-Compare, a=self, data_type='VECTOR', operation='LESS_EQUAL'
+> Compare, a=self, data_type='VECTOR', operation='LESS_EQUAL'
 
+``` python
+def less_equal(self, b=None, mode='ELEMENT', node_label=None, node_color=None):
+```
 Node
  - class_name : [Compare](/docs/classes/Compare.md)
  - bl_idname : FunctionNodeCompare
@@ -552,13 +555,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def less_equal(self, b=None, mode='ELEMENT', node_label=None, node_color=None):
-```
 ### less_than
 
-Compare, a=self, data_type='VECTOR', operation='LESS_THAN'
+> Compare, a=self, data_type='VECTOR', operation='LESS_THAN'
 
+``` python
+def less_than(self, b=None, mode='ELEMENT', node_label=None, node_color=None):
+```
 Node
  - class_name : [Compare](/docs/classes/Compare.md)
  - bl_idname : FunctionNodeCompare
@@ -578,13 +581,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def less_than(self, b=None, mode='ELEMENT', node_label=None, node_color=None):
-```
 ### max
 
-VectorMath, vector=self, operation='MAXIMUM'
+> VectorMath, vector=self, operation='MAXIMUM'
 
+``` python
+def max(self, vector=None, node_label=None, node_color=None):
+```
 Node
  - class_name : [VectorMath](/docs/classes/VectorMath.md)
  - bl_idname : ShaderNodeVectorMath
@@ -601,13 +604,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def max(self, vector=None, node_label=None, node_color=None):
-```
 ### min
 
-VectorMath, vector=self, operation='MINIMUM'
+> VectorMath, vector=self, operation='MINIMUM'
 
+``` python
+def min(self, vector=None, node_label=None, node_color=None):
+```
 Node
  - class_name : [VectorMath](/docs/classes/VectorMath.md)
  - bl_idname : ShaderNodeVectorMath
@@ -624,13 +627,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def min(self, vector=None, node_label=None, node_color=None):
-```
 ### mix
 
-Mix, a=self, data_type='VECTOR'
+> Mix, a=self, data_type='VECTOR'
 
+``` python
+def mix(self, factor=None, b=None, blend_type='MIX', clamp_factor=True, clamp_result=False, factor_mode='UNIFORM', node_label=None, node_color=None):
+```
 Node
  - class_name : [Mix](/docs/classes/Mix.md)
  - bl_idname : ShaderNodeMix
@@ -657,13 +660,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def mix(self, factor=None, b=None, blend_type='MIX', clamp_factor=True, clamp_result=False, factor_mode='UNIFORM', node_label=None, node_color=None):
-```
 ### mod
 
-VectorMath, vector=self, operation='MODULO'
+> VectorMath, vector=self, operation='MODULO'
 
+``` python
+def mod(self, vector=None, node_label=None, node_color=None):
+```
 Node
  - class_name : [VectorMath](/docs/classes/VectorMath.md)
  - bl_idname : ShaderNodeVectorMath
@@ -680,13 +683,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def mod(self, vector=None, node_label=None, node_color=None):
-```
 ### multiply
 
-VectorMath, vector=self, operation='MULTIPLY'
+> VectorMath, vector=self, operation='MULTIPLY'
 
+``` python
+def multiply(self, vector=None, node_label=None, node_color=None):
+```
 Node
  - class_name : [VectorMath](/docs/classes/VectorMath.md)
  - bl_idname : ShaderNodeVectorMath
@@ -703,13 +706,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def multiply(self, vector=None, node_label=None, node_color=None):
-```
 ### multiply_add
 
-VectorMath, vector=self, operation='MULTIPLY_ADD'
+> VectorMath, vector=self, operation='MULTIPLY_ADD'
 
+``` python
+def multiply_add(self, vector=None, vector_1=None, node_label=None, node_color=None):
+```
 Node
  - class_name : [VectorMath](/docs/classes/VectorMath.md)
  - bl_idname : ShaderNodeVectorMath
@@ -728,13 +731,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def multiply_add(self, vector=None, vector_1=None, node_label=None, node_color=None):
-```
 ### normalize
 
-VectorMath, vector=self, operation='NORMALIZE'
+> VectorMath, vector=self, operation='NORMALIZE'
 
+``` python
+def normalize(self, node_label=None, node_color=None):
+```
 Node
  - class_name : [VectorMath](/docs/classes/VectorMath.md)
  - bl_idname : ShaderNodeVectorMath
@@ -749,13 +752,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def normalize(self, node_label=None, node_color=None):
-```
 ### not_equal
 
-Compare, a=self, data_type='VECTOR', operation='NOT_EQUAL'
+> Compare, a=self, data_type='VECTOR', operation='NOT_EQUAL'
 
+``` python
+def not_equal(self, b=None, epsilon=None, mode='ELEMENT', node_label=None, node_color=None):
+```
 Node
  - class_name : [Compare](/docs/classes/Compare.md)
  - bl_idname : FunctionNodeCompare
@@ -777,13 +780,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def not_equal(self, b=None, epsilon=None, mode='ELEMENT', node_label=None, node_color=None):
-```
 ### pack_uv_islands
 
-PackUVIslands, uv=self
+> PackUVIslands, uv=self
 
+``` python
+def pack_uv_islands(self, margin=None, rotate=None, selection=None, node_label=None, node_color=None):
+```
 Node
  - class_name : [PackUVIslands](/docs/classes/PackUVIslands.md)
  - bl_idname : GeometryNodeUVPackIslands
@@ -803,13 +806,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def pack_uv_islands(self, margin=None, rotate=None, selection=None, node_label=None, node_color=None):
-```
 ### project
 
-VectorMath, vector=self, operation='PROJECT'
+> VectorMath, vector=self, operation='PROJECT'
 
+``` python
+def project(self, vector=None, node_label=None, node_color=None):
+```
 Node
  - class_name : [VectorMath](/docs/classes/VectorMath.md)
  - bl_idname : ShaderNodeVectorMath
@@ -826,13 +829,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def project(self, vector=None, node_label=None, node_color=None):
-```
 ### reflect
 
-VectorMath, vector=self, operation='REFLECT'
+> VectorMath, vector=self, operation='REFLECT'
 
+``` python
+def reflect(self, vector=None, node_label=None, node_color=None):
+```
 Node
  - class_name : [VectorMath](/docs/classes/VectorMath.md)
  - bl_idname : ShaderNodeVectorMath
@@ -849,13 +852,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def reflect(self, vector=None, node_label=None, node_color=None):
-```
 ### refract
 
-VectorMath, vector=self, operation='REFRACT'
+> VectorMath, vector=self, operation='REFRACT'
 
+``` python
+def refract(self, vector=None, scale=None, node_label=None, node_color=None):
+```
 Node
  - class_name : [VectorMath](/docs/classes/VectorMath.md)
  - bl_idname : ShaderNodeVectorMath
@@ -874,13 +877,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def refract(self, vector=None, scale=None, node_label=None, node_color=None):
-```
 ### rotate_euler
 
-RotateEuler, rotation=self
+> RotateEuler, rotation=self
 
+``` python
+def rotate_euler(self, rotate_by=None, space='OBJECT', node_label=None, node_color=None):
+```
 Node
  - class_name : [RotateEuler](/docs/classes/RotateEuler.md)
  - bl_idname : FunctionNodeRotateEuler
@@ -898,13 +901,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def rotate_euler(self, rotate_by=None, space='OBJECT', node_label=None, node_color=None):
-```
 ### rotate_vector
 
-RotateVector, vector=self
+> RotateVector, vector=self
 
+``` python
+def rotate_vector(self, rotation=None, node_label=None, node_color=None):
+```
 Node
  - class_name : [RotateVector](/docs/classes/RotateVector.md)
  - bl_idname : FunctionNodeRotateVector
@@ -920,13 +923,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def rotate_vector(self, rotation=None, node_label=None, node_color=None):
-```
 ### scale
 
-VectorMath, vector=self, operation='SCALE'
+> VectorMath, vector=self, operation='SCALE'
 
+``` python
+def scale(self, scale=None, node_label=None, node_color=None):
+```
 Node
  - class_name : [VectorMath](/docs/classes/VectorMath.md)
  - bl_idname : ShaderNodeVectorMath
@@ -943,13 +946,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def scale(self, scale=None, node_label=None, node_color=None):
-```
 ### separate_xyz
 
-SeparateXYZ, vector=self, return node
+> SeparateXYZ, vector=self, return node
 
+``` python
+def separate_xyz(self, node_label=None, node_color=None):
+```
 Node
  - class_name : [SeparateXYZ](/docs/classes/SeparateXYZ.md)
  - bl_idname : ShaderNodeSeparateXYZ
@@ -963,13 +966,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def separate_xyz(self, node_label=None, node_color=None):
-```
 ### sin
 
-VectorMath, vector=self, operation='SINE'
+> VectorMath, vector=self, operation='SINE'
 
+``` python
+def sin(self, node_label=None, node_color=None):
+```
 Node
  - class_name : [VectorMath](/docs/classes/VectorMath.md)
  - bl_idname : ShaderNodeVectorMath
@@ -984,13 +987,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def sin(self, node_label=None, node_color=None):
-```
 ### snap
 
-VectorMath, vector=self, operation='SNAP'
+> VectorMath, vector=self, operation='SNAP'
 
+``` python
+def snap(self, vector=None, node_label=None, node_color=None):
+```
 Node
  - class_name : [VectorMath](/docs/classes/VectorMath.md)
  - bl_idname : ShaderNodeVectorMath
@@ -1007,13 +1010,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def snap(self, vector=None, node_label=None, node_color=None):
-```
 ### subtract
 
-VectorMath, vector=self, operation='SUBTRACT'
+> VectorMath, vector=self, operation='SUBTRACT'
 
+``` python
+def subtract(self, vector=None, node_label=None, node_color=None):
+```
 Node
  - class_name : [VectorMath](/docs/classes/VectorMath.md)
  - bl_idname : ShaderNodeVectorMath
@@ -1030,13 +1033,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def subtract(self, vector=None, node_label=None, node_color=None):
-```
 ### switch
 
-Switch, false=self, input_type='VECTOR'
+> Switch, false=self, input_type='VECTOR'
 
+``` python
+def switch(self, switch=None, true=None, node_label=None, node_color=None):
+```
 Node
  - class_name : [Switch](/docs/classes/Switch.md)
  - bl_idname : GeometryNodeSwitch
@@ -1055,13 +1058,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def switch(self, switch=None, true=None, node_label=None, node_color=None):
-```
 ### tan
 
-VectorMath, vector=self, operation='TANGENT'
+> VectorMath, vector=self, operation='TANGENT'
 
+``` python
+def tan(self, node_label=None, node_color=None):
+```
 Node
  - class_name : [VectorMath](/docs/classes/VectorMath.md)
  - bl_idname : ShaderNodeVectorMath
@@ -1076,13 +1079,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def tan(self, node_label=None, node_color=None):
-```
 ### vector_curves
 
-VectorCurves, vector=self
+> VectorCurves, vector=self
 
+``` python
+def vector_curves(self, fac=None, mapping=None, node_label=None, node_color=None):
+```
 Node
  - class_name : [VectorCurves](/docs/classes/VectorCurves.md)
  - bl_idname : ShaderNodeVectorCurve
@@ -1100,13 +1103,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def vector_curves(self, fac=None, mapping=None, node_label=None, node_color=None):
-```
 ### vector_math
 
-VectorMath, vector=self
+> VectorMath, vector=self
 
+``` python
+def vector_math(self, vector=None, vector_1=None, scale=None, operation='ADD', node_label=None, node_color=None):
+```
 Node
  - class_name : [VectorMath](/docs/classes/VectorMath.md)
  - bl_idname : ShaderNodeVectorMath
@@ -1128,13 +1131,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def vector_math(self, vector=None, vector_1=None, scale=None, operation='ADD', node_label=None, node_color=None):
-```
 ### vector_rotate
 
-VectorRotate, vector=self
+> VectorRotate, vector=self
 
+``` python
+def vector_rotate(self, center=None, axis=None, angle=None, rotation=None, invert=False, rotation_type='AXIS_ANGLE', node_label=None, node_color=None):
+```
 Node
  - class_name : [VectorRotate](/docs/classes/VectorRotate.md)
  - bl_idname : ShaderNodeVectorRotate
@@ -1160,13 +1163,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def vector_rotate(self, center=None, axis=None, angle=None, rotation=None, invert=False, rotation_type='AXIS_ANGLE', node_label=None, node_color=None):
-```
 ### white_noise_texture
 
-WhiteNoiseTexture, vector=self
+> WhiteNoiseTexture, vector=self
 
+``` python
+def white_noise_texture(self, w=None, noise_dimensions='3D', node_label=None, node_color=None):
+```
 Node
  - class_name : [WhiteNoiseTexture](/docs/classes/WhiteNoiseTexture.md)
  - bl_idname : ShaderNodeTexWhiteNoise
@@ -1184,13 +1187,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def white_noise_texture(self, w=None, noise_dimensions='3D', node_label=None, node_color=None):
-```
 ### wrap
 
-VectorMath, vector=self, operation='WRAP'
+> VectorMath, vector=self, operation='WRAP'
 
+``` python
+def wrap(self, vector=None, vector_1=None, node_label=None, node_color=None):
+```
 Node
  - class_name : [VectorMath](/docs/classes/VectorMath.md)
  - bl_idname : ShaderNodeVectorMath
@@ -1209,13 +1212,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def wrap(self, vector=None, vector_1=None, node_label=None, node_color=None):
-```
 ### xyz
 
-SeparateXYZ, Shortcut for Vect.separate_xyz
+> SeparateXYZ, Shortcut for Vect.separate_xyz
 
+``` python
+def xyz(self, node_label=None, node_color=None):
+```
 Node
  - class_name : [SeparateXYZ](/docs/classes/SeparateXYZ.md)
  - bl_idname : ShaderNodeSeparateXYZ
@@ -1228,7 +1231,3 @@ Node initialization
  - vector : self
  - node_label : node_label
  - node_color : node_color
-
-``` python
-def xyz(self, node_label=None, node_color=None):
-```

@@ -610,7 +610,10 @@ class Doc:
         self.add(Header(title, level=level))
         
         if member['descr'] is not None:
-            self.add(Paragraph(member['descr']), new_line=True)
+            self.add(Paragraph('> ' + member['descr']), new_line=True)
+            
+        if member.get('code') is not None:
+            self.add(Source(member['code'].strip().split("\n")[0]))
             
         is_property = member['type'] == 'Properties'
         
@@ -643,9 +646,6 @@ class Doc:
                     else:
                         bullets.add(item, "")
 
-        if member.get('code') is not None:
-            self.add(Source(member['code'].strip().split("\n")[0]))
-            
         if is_property:
             pass
 

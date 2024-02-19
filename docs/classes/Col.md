@@ -42,8 +42,12 @@ Methods
 
 ### brick_texture
 
-BrickTexture, color1=self
+> BrickTexture, color1=self
 
+``` python
+def brick_texture(self, vector=None, color2=None, mortar=None, scale=None, mortar_size=None, mortar_smooth=None, bias=None, brick_width=None, row_height=None, color_mapping=None, offset=0.5, offset_frequency=2, squash=1.0, squash_frequency=2,
+texture_mapping=None, node_label=None, node_color=None):
+```
 Node
  - class_name : [BrickTexture](/docs/classes/BrickTexture.md)
  - bl_idname : ShaderNodeTexBrick
@@ -87,14 +91,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def brick_texture(self, vector=None, color2=None, mortar=None, scale=None, mortar_size=None, mortar_smooth=None, bias=None, brick_width=None, row_height=None, color_mapping=None, offset=0.5, offset_frequency=2, squash=1.0, squash_frequency=2,
-texture_mapping=None, node_label=None, node_color=None):
-```
 ### brighter
 
-Compare, a=self, data_type='RGBA', operation='BRIGHTER'
+> Compare, a=self, data_type='RGBA', operation='BRIGHTER'
 
+``` python
+def brighter(self, b=None, mode='ELEMENT', node_label=None, node_color=None):
+```
 Node
  - class_name : [Compare](/docs/classes/Compare.md)
  - bl_idname : FunctionNodeCompare
@@ -114,13 +117,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def brighter(self, b=None, mode='ELEMENT', node_label=None, node_color=None):
-```
 ### checker_texture
 
-CheckerTexture, color1=self
+> CheckerTexture, color1=self
 
+``` python
+def checker_texture(self, vector=None, color2=None, scale=None, color_mapping=None, texture_mapping=None, node_label=None, node_color=None):
+```
 Node
  - class_name : [CheckerTexture](/docs/classes/CheckerTexture.md)
  - bl_idname : ShaderNodeTexChecker
@@ -144,13 +147,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def checker_texture(self, vector=None, color2=None, scale=None, color_mapping=None, texture_mapping=None, node_label=None, node_color=None):
-```
 ### darker
 
-Compare, a=self, data_type='RGBA', operation='DARKER'
+> Compare, a=self, data_type='RGBA', operation='DARKER'
 
+``` python
+def darker(self, b=None, mode='ELEMENT', node_label=None, node_color=None):
+```
 Node
  - class_name : [Compare](/docs/classes/Compare.md)
  - bl_idname : FunctionNodeCompare
@@ -170,13 +173,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def darker(self, b=None, mode='ELEMENT', node_label=None, node_color=None):
-```
 ### equal
 
-Compare, a=self, data_type='RGBA', operation='EQUAL'
+> Compare, a=self, data_type='RGBA', operation='EQUAL'
 
+``` python
+def equal(self, b=None, epsilon=None, mode='ELEMENT', node_label=None, node_color=None):
+```
 Node
  - class_name : [Compare](/docs/classes/Compare.md)
  - bl_idname : FunctionNodeCompare
@@ -198,13 +201,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def equal(self, b=None, epsilon=None, mode='ELEMENT', node_label=None, node_color=None):
-```
 ### mix
 
-Mix, a=self, data_type='RGBA'
+> Mix, a=self, data_type='RGBA'
 
+``` python
+def mix(self, factor=None, b=None, blend_type='MIX', clamp_factor=True, clamp_result=False, factor_mode='UNIFORM', node_label=None, node_color=None):
+```
 Node
  - class_name : [Mix](/docs/classes/Mix.md)
  - bl_idname : ShaderNodeMix
@@ -231,13 +234,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def mix(self, factor=None, b=None, blend_type='MIX', clamp_factor=True, clamp_result=False, factor_mode='UNIFORM', node_label=None, node_color=None):
-```
 ### mix_add
 
-Mix, a=self, blend_type='ADD'
+> Mix, a=self, blend_type='ADD'
 
+``` python
+def mix_add(self, factor=None, b=None, clamp_factor=True, clamp_result=False, factor_mode='UNIFORM', node_label=None, node_color=None):
+```
 Node
  - class_name : [Mix](/docs/classes/Mix.md)
  - bl_idname : ShaderNodeMix
@@ -263,13 +266,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def mix_add(self, factor=None, b=None, clamp_factor=True, clamp_result=False, factor_mode='UNIFORM', node_label=None, node_color=None):
-```
 ### mix_burn
 
-Mix, a=self, blend_type='BURN'
+> Mix, a=self, blend_type='BURN'
 
+``` python
+def mix_burn(self, factor=None, b=None, clamp_factor=True, clamp_result=False, factor_mode='UNIFORM', node_label=None, node_color=None):
+```
 Node
  - class_name : [Mix](/docs/classes/Mix.md)
  - bl_idname : ShaderNodeMix
@@ -295,13 +298,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def mix_burn(self, factor=None, b=None, clamp_factor=True, clamp_result=False, factor_mode='UNIFORM', node_label=None, node_color=None):
-```
 ### mix_color
 
-Mix, a=self, blend_type='COLOR'
+> Mix, a=self, blend_type='COLOR'
 
+``` python
+def mix_color(self, factor=None, b=None, clamp_factor=True, clamp_result=False, factor_mode='UNIFORM', node_label=None, node_color=None):
+```
 Node
  - class_name : [Mix](/docs/classes/Mix.md)
  - bl_idname : ShaderNodeMix
@@ -327,13 +330,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def mix_color(self, factor=None, b=None, clamp_factor=True, clamp_result=False, factor_mode='UNIFORM', node_label=None, node_color=None):
-```
 ### mix_darken
 
-Mix, a=self, blend_type='DARKEN'
+> Mix, a=self, blend_type='DARKEN'
 
+``` python
+def mix_darken(self, factor=None, b=None, clamp_factor=True, clamp_result=False, factor_mode='UNIFORM', node_label=None, node_color=None):
+```
 Node
  - class_name : [Mix](/docs/classes/Mix.md)
  - bl_idname : ShaderNodeMix
@@ -359,13 +362,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def mix_darken(self, factor=None, b=None, clamp_factor=True, clamp_result=False, factor_mode='UNIFORM', node_label=None, node_color=None):
-```
 ### mix_difference
 
-Mix, a=self, blend_type='DIFFERENCE'
+> Mix, a=self, blend_type='DIFFERENCE'
 
+``` python
+def mix_difference(self, factor=None, b=None, clamp_factor=True, clamp_result=False, factor_mode='UNIFORM', node_label=None, node_color=None):
+```
 Node
  - class_name : [Mix](/docs/classes/Mix.md)
  - bl_idname : ShaderNodeMix
@@ -391,13 +394,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def mix_difference(self, factor=None, b=None, clamp_factor=True, clamp_result=False, factor_mode='UNIFORM', node_label=None, node_color=None):
-```
 ### mix_divide
 
-Mix, a=self, blend_type='DIVIDE'
+> Mix, a=self, blend_type='DIVIDE'
 
+``` python
+def mix_divide(self, factor=None, b=None, clamp_factor=True, clamp_result=False, factor_mode='UNIFORM', node_label=None, node_color=None):
+```
 Node
  - class_name : [Mix](/docs/classes/Mix.md)
  - bl_idname : ShaderNodeMix
@@ -423,13 +426,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def mix_divide(self, factor=None, b=None, clamp_factor=True, clamp_result=False, factor_mode='UNIFORM', node_label=None, node_color=None):
-```
 ### mix_dodge
 
-Mix, a=self, blend_type='DODGE'
+> Mix, a=self, blend_type='DODGE'
 
+``` python
+def mix_dodge(self, factor=None, b=None, clamp_factor=True, clamp_result=False, factor_mode='UNIFORM', node_label=None, node_color=None):
+```
 Node
  - class_name : [Mix](/docs/classes/Mix.md)
  - bl_idname : ShaderNodeMix
@@ -455,13 +458,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def mix_dodge(self, factor=None, b=None, clamp_factor=True, clamp_result=False, factor_mode='UNIFORM', node_label=None, node_color=None):
-```
 ### mix_exclusion
 
-Mix, a=self, blend_type='EXCLUSION'
+> Mix, a=self, blend_type='EXCLUSION'
 
+``` python
+def mix_exclusion(self, factor=None, b=None, clamp_factor=True, clamp_result=False, factor_mode='UNIFORM', node_label=None, node_color=None):
+```
 Node
  - class_name : [Mix](/docs/classes/Mix.md)
  - bl_idname : ShaderNodeMix
@@ -487,13 +490,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def mix_exclusion(self, factor=None, b=None, clamp_factor=True, clamp_result=False, factor_mode='UNIFORM', node_label=None, node_color=None):
-```
 ### mix_hue
 
-Mix, a=self, blend_type='HUE'
+> Mix, a=self, blend_type='HUE'
 
+``` python
+def mix_hue(self, factor=None, b=None, clamp_factor=True, clamp_result=False, factor_mode='UNIFORM', node_label=None, node_color=None):
+```
 Node
  - class_name : [Mix](/docs/classes/Mix.md)
  - bl_idname : ShaderNodeMix
@@ -519,13 +522,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def mix_hue(self, factor=None, b=None, clamp_factor=True, clamp_result=False, factor_mode='UNIFORM', node_label=None, node_color=None):
-```
 ### mix_lighten
 
-Mix, a=self, blend_type='LIGHTEN'
+> Mix, a=self, blend_type='LIGHTEN'
 
+``` python
+def mix_lighten(self, factor=None, b=None, clamp_factor=True, clamp_result=False, factor_mode='UNIFORM', node_label=None, node_color=None):
+```
 Node
  - class_name : [Mix](/docs/classes/Mix.md)
  - bl_idname : ShaderNodeMix
@@ -551,13 +554,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def mix_lighten(self, factor=None, b=None, clamp_factor=True, clamp_result=False, factor_mode='UNIFORM', node_label=None, node_color=None):
-```
 ### mix_linear_light
 
-Mix, a=self, blend_type='LINEAR_LIGHT'
+> Mix, a=self, blend_type='LINEAR_LIGHT'
 
+``` python
+def mix_linear_light(self, factor=None, b=None, clamp_factor=True, clamp_result=False, factor_mode='UNIFORM', node_label=None, node_color=None):
+```
 Node
  - class_name : [Mix](/docs/classes/Mix.md)
  - bl_idname : ShaderNodeMix
@@ -583,13 +586,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def mix_linear_light(self, factor=None, b=None, clamp_factor=True, clamp_result=False, factor_mode='UNIFORM', node_label=None, node_color=None):
-```
 ### mix_mix
 
-Mix, a=self, blend_type='MIX'
+> Mix, a=self, blend_type='MIX'
 
+``` python
+def mix_mix(self, factor=None, b=None, clamp_factor=True, clamp_result=False, factor_mode='UNIFORM', node_label=None, node_color=None):
+```
 Node
  - class_name : [Mix](/docs/classes/Mix.md)
  - bl_idname : ShaderNodeMix
@@ -615,13 +618,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def mix_mix(self, factor=None, b=None, clamp_factor=True, clamp_result=False, factor_mode='UNIFORM', node_label=None, node_color=None):
-```
 ### mix_multiply
 
-Mix, a=self, blend_type='MULTIPLY'
+> Mix, a=self, blend_type='MULTIPLY'
 
+``` python
+def mix_multiply(self, factor=None, b=None, clamp_factor=True, clamp_result=False, factor_mode='UNIFORM', node_label=None, node_color=None):
+```
 Node
  - class_name : [Mix](/docs/classes/Mix.md)
  - bl_idname : ShaderNodeMix
@@ -647,13 +650,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def mix_multiply(self, factor=None, b=None, clamp_factor=True, clamp_result=False, factor_mode='UNIFORM', node_label=None, node_color=None):
-```
 ### mix_overlay
 
-Mix, a=self, blend_type='OVERLAY'
+> Mix, a=self, blend_type='OVERLAY'
 
+``` python
+def mix_overlay(self, factor=None, b=None, clamp_factor=True, clamp_result=False, factor_mode='UNIFORM', node_label=None, node_color=None):
+```
 Node
  - class_name : [Mix](/docs/classes/Mix.md)
  - bl_idname : ShaderNodeMix
@@ -679,13 +682,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def mix_overlay(self, factor=None, b=None, clamp_factor=True, clamp_result=False, factor_mode='UNIFORM', node_label=None, node_color=None):
-```
 ### mix_saturation
 
-Mix, a=self, blend_type='SATURATION'
+> Mix, a=self, blend_type='SATURATION'
 
+``` python
+def mix_saturation(self, factor=None, b=None, clamp_factor=True, clamp_result=False, factor_mode='UNIFORM', node_label=None, node_color=None):
+```
 Node
  - class_name : [Mix](/docs/classes/Mix.md)
  - bl_idname : ShaderNodeMix
@@ -711,13 +714,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def mix_saturation(self, factor=None, b=None, clamp_factor=True, clamp_result=False, factor_mode='UNIFORM', node_label=None, node_color=None):
-```
 ### mix_screen
 
-Mix, a=self, blend_type='SCREEN'
+> Mix, a=self, blend_type='SCREEN'
 
+``` python
+def mix_screen(self, factor=None, b=None, clamp_factor=True, clamp_result=False, factor_mode='UNIFORM', node_label=None, node_color=None):
+```
 Node
  - class_name : [Mix](/docs/classes/Mix.md)
  - bl_idname : ShaderNodeMix
@@ -743,13 +746,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def mix_screen(self, factor=None, b=None, clamp_factor=True, clamp_result=False, factor_mode='UNIFORM', node_label=None, node_color=None):
-```
 ### mix_soft_light
 
-Mix, a=self, blend_type='SOFT_LIGHT'
+> Mix, a=self, blend_type='SOFT_LIGHT'
 
+``` python
+def mix_soft_light(self, factor=None, b=None, clamp_factor=True, clamp_result=False, factor_mode='UNIFORM', node_label=None, node_color=None):
+```
 Node
  - class_name : [Mix](/docs/classes/Mix.md)
  - bl_idname : ShaderNodeMix
@@ -775,13 +778,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def mix_soft_light(self, factor=None, b=None, clamp_factor=True, clamp_result=False, factor_mode='UNIFORM', node_label=None, node_color=None):
-```
 ### mix_subtract
 
-Mix, a=self, blend_type='SUBTRACT'
+> Mix, a=self, blend_type='SUBTRACT'
 
+``` python
+def mix_subtract(self, factor=None, b=None, clamp_factor=True, clamp_result=False, factor_mode='UNIFORM', node_label=None, node_color=None):
+```
 Node
  - class_name : [Mix](/docs/classes/Mix.md)
  - bl_idname : ShaderNodeMix
@@ -807,13 +810,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def mix_subtract(self, factor=None, b=None, clamp_factor=True, clamp_result=False, factor_mode='UNIFORM', node_label=None, node_color=None):
-```
 ### mix_value
 
-Mix, a=self, blend_type='VALUE'
+> Mix, a=self, blend_type='VALUE'
 
+``` python
+def mix_value(self, factor=None, b=None, clamp_factor=True, clamp_result=False, factor_mode='UNIFORM', node_label=None, node_color=None):
+```
 Node
  - class_name : [Mix](/docs/classes/Mix.md)
  - bl_idname : ShaderNodeMix
@@ -839,13 +842,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def mix_value(self, factor=None, b=None, clamp_factor=True, clamp_result=False, factor_mode='UNIFORM', node_label=None, node_color=None):
-```
 ### not_equal
 
-Compare, a=self, data_type='RGBA', operation='NOT_EQUAL'
+> Compare, a=self, data_type='RGBA', operation='NOT_EQUAL'
 
+``` python
+def not_equal(self, b=None, epsilon=None, mode='ELEMENT', node_label=None, node_color=None):
+```
 Node
  - class_name : [Compare](/docs/classes/Compare.md)
  - bl_idname : FunctionNodeCompare
@@ -867,13 +870,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def not_equal(self, b=None, epsilon=None, mode='ELEMENT', node_label=None, node_color=None):
-```
 ### reroute
 
-Reroute, input=self
+> Reroute, input=self
 
+``` python
+def reroute(self, node_label=None, node_color=None):
+```
 Node
  - class_name : [Reroute](/docs/classes/Reroute.md)
  - bl_idname : NodeReroute
@@ -887,13 +890,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def reroute(self, node_label=None, node_color=None):
-```
 ### rgb_curves
 
-RGBCurves, color=self
+> RGBCurves, color=self
 
+``` python
+def rgb_curves(self, fac=None, mapping=None, node_label=None, node_color=None):
+```
 Node
  - class_name : [RGBCurves](/docs/classes/RGBCurves.md)
  - bl_idname : ShaderNodeRGBCurve
@@ -911,13 +914,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def rgb_curves(self, fac=None, mapping=None, node_label=None, node_color=None):
-```
 ### separate_color
 
-SeparateColor, color=self, return node
+> SeparateColor, color=self, return node
 
+``` python
+def separate_color(self, mode='RGB', node_label=None, node_color=None):
+```
 Node
  - class_name : [SeparateColor](/docs/classes/SeparateColor.md)
  - bl_idname : FunctionNodeSeparateColor
@@ -933,13 +936,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def separate_color(self, mode='RGB', node_label=None, node_color=None):
-```
 ### switch
 
-Switch, false=self, input_type='RGBA'
+> Switch, false=self, input_type='RGBA'
 
+``` python
+def switch(self, switch=None, true=None, node_label=None, node_color=None):
+```
 Node
  - class_name : [Switch](/docs/classes/Switch.md)
  - bl_idname : GeometryNodeSwitch
@@ -957,7 +960,3 @@ Node initialization
  - input_type : 'RGBA'
  - node_label : node_label
  - node_color : node_color
-
-``` python
-def switch(self, switch=None, true=None, node_label=None, node_color=None):
-```

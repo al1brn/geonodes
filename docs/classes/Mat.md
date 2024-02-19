@@ -14,8 +14,11 @@ Methods
 
 ### material_selection
 
-MaterialSelection, material=self, return socket
+> MaterialSelection, material=self, return socket
 
+``` python
+def material_selection(self, node_label=None, node_color=None):
+```
 Node
  - class_name : [MaterialSelection](/docs/classes/MaterialSelection.md)
  - bl_idname : GeometryNodeMaterialSelection
@@ -29,13 +32,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def material_selection(self, node_label=None, node_color=None):
-```
 ### switch
 
-Switch, false=self, input_type='MATERIAL'
+> Switch, false=self, input_type='MATERIAL'
 
+``` python
+def switch(self, switch=None, true=None, node_label=None, node_color=None):
+```
 Node
  - class_name : [Switch](/docs/classes/Switch.md)
  - bl_idname : GeometryNodeSwitch
@@ -53,7 +56,3 @@ Node initialization
  - input_type : 'MATERIAL'
  - node_label : node_label
  - node_color : node_color
-
-``` python
-def switch(self, switch=None, true=None, node_label=None, node_color=None):
-```

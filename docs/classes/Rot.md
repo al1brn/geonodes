@@ -18,8 +18,11 @@ Methods
 
 ### invert_rotation
 
-InvertRotation, rotation=self
+> InvertRotation, rotation=self
 
+``` python
+def invert_rotation(self, node_label=None, node_color=None):
+```
 Node
  - class_name : [InvertRotation](/docs/classes/InvertRotation.md)
  - bl_idname : FunctionNodeInvertRotation
@@ -33,13 +36,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def invert_rotation(self, node_label=None, node_color=None):
-```
 ### mix
 
-Mix, a=self, data_type='ROTATION'
+> Mix, a=self, data_type='ROTATION'
 
+``` python
+def mix(self, factor=None, b=None, blend_type='MIX', clamp_factor=True, clamp_result=False, factor_mode='UNIFORM', node_label=None, node_color=None):
+```
 Node
  - class_name : [Mix](/docs/classes/Mix.md)
  - bl_idname : ShaderNodeMix
@@ -66,13 +69,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def mix(self, factor=None, b=None, blend_type='MIX', clamp_factor=True, clamp_result=False, factor_mode='UNIFORM', node_label=None, node_color=None):
-```
 ### rotation_to_axis_angle
 
-RotationToAxisAngle, rotation=self, return node
+> RotationToAxisAngle, rotation=self, return node
 
+``` python
+def rotation_to_axis_angle(self, node_label=None, node_color=None):
+```
 Node
  - class_name : [RotationToAxisAngle](/docs/classes/RotationToAxisAngle.md)
  - bl_idname : FunctionNodeRotationToAxisAngle
@@ -86,13 +89,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def rotation_to_axis_angle(self, node_label=None, node_color=None):
-```
 ### rotation_to_euler
 
-RotationToEuler, rotation=self, return socket
+> RotationToEuler, rotation=self, return socket
 
+``` python
+def rotation_to_euler(self, node_label=None, node_color=None):
+```
 Node
  - class_name : [RotationToEuler](/docs/classes/RotationToEuler.md)
  - bl_idname : FunctionNodeRotationToEuler
@@ -106,13 +109,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def rotation_to_euler(self, node_label=None, node_color=None):
-```
 ### rotation_to_quaternion
 
-RotationToQuaternion, rotation=self, return node
+> RotationToQuaternion, rotation=self, return node
 
+``` python
+def rotation_to_quaternion(self, node_label=None, node_color=None):
+```
 Node
  - class_name : [RotationToQuaternion](/docs/classes/RotationToQuaternion.md)
  - bl_idname : FunctionNodeRotationToQuaternion
@@ -126,13 +129,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def rotation_to_quaternion(self, node_label=None, node_color=None):
-```
 ### switch
 
-Switch, false=self, input_type='ROTATION'
+> Switch, false=self, input_type='ROTATION'
 
+``` python
+def switch(self, switch=None, true=None, node_label=None, node_color=None):
+```
 Node
  - class_name : [Switch](/docs/classes/Switch.md)
  - bl_idname : GeometryNodeSwitch
@@ -150,7 +153,3 @@ Node initialization
  - input_type : 'ROTATION'
  - node_label : node_label
  - node_color : node_color
-
-``` python
-def switch(self, switch=None, true=None, node_label=None, node_color=None):
-```

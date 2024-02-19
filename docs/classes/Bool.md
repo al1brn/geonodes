@@ -26,8 +26,11 @@ Methods
 
 ### band
 
-BooleanMath, boolean=self, operation='AND'
+> BooleanMath, boolean=self, operation='AND'
 
+``` python
+def band(self, boolean=None, node_label=None, node_color=None):
+```
 Node
  - class_name : [BooleanMath](/docs/classes/BooleanMath.md)
  - bl_idname : FunctionNodeBooleanMath
@@ -44,13 +47,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def band(self, boolean=None, node_label=None, node_color=None):
-```
 ### bnot
 
-BooleanMath, boolean=self, operation='NOT'
+> BooleanMath, boolean=self, operation='NOT'
 
+``` python
+def bnot(self, node_label=None, node_color=None):
+```
 Node
  - class_name : [BooleanMath](/docs/classes/BooleanMath.md)
  - bl_idname : FunctionNodeBooleanMath
@@ -65,13 +68,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def bnot(self, node_label=None, node_color=None):
-```
 ### boolean_math
 
-BooleanMath, boolean=self
+> BooleanMath, boolean=self
 
+``` python
+def boolean_math(self, boolean=None, operation='AND', node_label=None, node_color=None):
+```
 Node
  - class_name : [BooleanMath](/docs/classes/BooleanMath.md)
  - bl_idname : FunctionNodeBooleanMath
@@ -89,13 +92,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def boolean_math(self, boolean=None, operation='AND', node_label=None, node_color=None):
-```
 ### bor
 
-BooleanMath, boolean=self, operation='OR'
+> BooleanMath, boolean=self, operation='OR'
 
+``` python
+def bor(self, boolean=None, node_label=None, node_color=None):
+```
 Node
  - class_name : [BooleanMath](/docs/classes/BooleanMath.md)
  - bl_idname : FunctionNodeBooleanMath
@@ -112,13 +115,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def bor(self, boolean=None, node_label=None, node_color=None):
-```
 ### curve_handle_positions
 
-CurveHandlePositions, relative=self, return node
+> CurveHandlePositions, relative=self, return node
 
+``` python
+def curve_handle_positions(self, node_label=None, node_color=None):
+```
 Node
  - class_name : [CurveHandlePositions](/docs/classes/CurveHandlePositions.md)
  - bl_idname : GeometryNodeInputCurveHandlePositions
@@ -132,13 +135,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def curve_handle_positions(self, node_label=None, node_color=None):
-```
 ### edge_paths_to_selection
 
-EdgePathsToSelection, start_vertices=self
+> EdgePathsToSelection, start_vertices=self
 
+``` python
+def edge_paths_to_selection(self, next_vertex_index=None, node_label=None, node_color=None):
+```
 Node
  - class_name : [EdgePathsToSelection](/docs/classes/EdgePathsToSelection.md)
  - bl_idname : GeometryNodeEdgePathsToSelection
@@ -154,13 +157,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def edge_paths_to_selection(self, next_vertex_index=None, node_label=None, node_color=None):
-```
 ### edges_to_face_groups
 
-EdgesToFaceGroups, boundary_edges=self, return socket
+> EdgesToFaceGroups, boundary_edges=self, return socket
 
+``` python
+def edges_to_face_groups(self, node_label=None, node_color=None):
+```
 Node
  - class_name : [EdgesToFaceGroups](/docs/classes/EdgesToFaceGroups.md)
  - bl_idname : GeometryNodeEdgesToFaceGroups
@@ -174,13 +177,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def edges_to_face_groups(self, node_label=None, node_color=None):
-```
 ### imply
 
-BooleanMath, boolean=self, operation='IMPLY'
+> BooleanMath, boolean=self, operation='IMPLY'
 
+``` python
+def imply(self, boolean=None, node_label=None, node_color=None):
+```
 Node
  - class_name : [BooleanMath](/docs/classes/BooleanMath.md)
  - bl_idname : FunctionNodeBooleanMath
@@ -197,13 +200,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def imply(self, boolean=None, node_label=None, node_color=None):
-```
 ### nand
 
-BooleanMath, boolean=self, operation='NAND'
+> BooleanMath, boolean=self, operation='NAND'
 
+``` python
+def nand(self, boolean=None, node_label=None, node_color=None):
+```
 Node
  - class_name : [BooleanMath](/docs/classes/BooleanMath.md)
  - bl_idname : FunctionNodeBooleanMath
@@ -220,13 +223,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def nand(self, boolean=None, node_label=None, node_color=None):
-```
 ### nimply
 
-BooleanMath, boolean=self, operation='NIMPLY'
+> BooleanMath, boolean=self, operation='NIMPLY'
 
+``` python
+def nimply(self, boolean=None, node_label=None, node_color=None):
+```
 Node
  - class_name : [BooleanMath](/docs/classes/BooleanMath.md)
  - bl_idname : FunctionNodeBooleanMath
@@ -243,13 +246,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def nimply(self, boolean=None, node_label=None, node_color=None):
-```
 ### nor
 
-BooleanMath, boolean=self, operation='NOR'
+> BooleanMath, boolean=self, operation='NOR'
 
+``` python
+def nor(self, boolean=None, node_label=None, node_color=None):
+```
 Node
  - class_name : [BooleanMath](/docs/classes/BooleanMath.md)
  - bl_idname : FunctionNodeBooleanMath
@@ -266,13 +269,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def nor(self, boolean=None, node_label=None, node_color=None):
-```
 ### switch
 
-Switch, false=self, input_type='BOOLEAN'
+> Switch, false=self, input_type='BOOLEAN'
 
+``` python
+def switch(self, switch=None, true=None, node_label=None, node_color=None):
+```
 Node
  - class_name : [Switch](/docs/classes/Switch.md)
  - bl_idname : GeometryNodeSwitch
@@ -291,13 +294,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def switch(self, switch=None, true=None, node_label=None, node_color=None):
-```
 ### xnor
 
-BooleanMath, boolean=self, operation='XNOR'
+> BooleanMath, boolean=self, operation='XNOR'
 
+``` python
+def xnor(self, boolean=None, node_label=None, node_color=None):
+```
 Node
  - class_name : [BooleanMath](/docs/classes/BooleanMath.md)
  - bl_idname : FunctionNodeBooleanMath
@@ -314,13 +317,13 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-``` python
-def xnor(self, boolean=None, node_label=None, node_color=None):
-```
 ### xor
 
-BooleanMath, boolean=self, operation='XOR'
+> BooleanMath, boolean=self, operation='XOR'
 
+``` python
+def xor(self, boolean=None, node_label=None, node_color=None):
+```
 Node
  - class_name : [BooleanMath](/docs/classes/BooleanMath.md)
  - bl_idname : FunctionNodeBooleanMath
@@ -336,7 +339,3 @@ Node initialization
  - operation : 'XOR'
  - node_label : node_label
  - node_color : node_color
-
-``` python
-def xor(self, boolean=None, node_label=None, node_color=None):
-```

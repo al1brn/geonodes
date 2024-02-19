@@ -13,8 +13,11 @@ Methods
 
 ### switch
 
-Switch, false=self, input_type='OBJECT'
+> Switch, false=self, input_type='OBJECT'
 
+``` python
+def switch(self, switch=None, true=None, node_label=None, node_color=None):
+```
 Node
  - class_name : [Switch](/docs/classes/Switch.md)
  - bl_idname : GeometryNodeSwitch
@@ -32,7 +35,3 @@ Node initialization
  - input_type : 'OBJECT'
  - node_label : node_label
  - node_color : node_color
-
-``` python
-def switch(self, switch=None, true=None, node_label=None, node_color=None):
-```
