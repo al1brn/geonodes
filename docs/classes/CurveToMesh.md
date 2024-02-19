@@ -5,21 +5,17 @@
 ## Node reference
 
 Node
-----
  - Class name : CurveToMesh
  - bl_idname : GeometryNodeCurveToMesh
 
 Node parameters
----------------
 
 Input sockets
--------------
  - curve : Geometry
  - profile_curve : Geometry
  - fill_caps : Bool
 
 Output sockets
---------------
  - mesh : Geometry
 
 ### Header

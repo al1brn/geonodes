@@ -5,23 +5,19 @@
 ## Node reference
 
 Node
-----
  - Class name : CurveLine
  - bl_idname : GeometryNodeCurvePrimitiveLine
 
 Node parameters
----------------
  - mode : 'POINTS'
 
 Input sockets
--------------
  - start : Vect
  - end : Vect
  - direction : Vect
  - length : Float
 
 Output sockets
---------------
  - curve : Geometry
 
 ### Header

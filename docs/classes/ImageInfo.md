@@ -5,20 +5,16 @@
 ## Node reference
 
 Node
-----
  - Class name : ImageInfo
  - bl_idname : GeometryNodeImageInfo
 
 Node parameters
----------------
 
 Input sockets
--------------
  - image : Img
  - frame : Int
 
 Output sockets
---------------
  - width : Int
  - height : Int
  - has_alpha : Bool

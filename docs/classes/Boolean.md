@@ -5,19 +5,15 @@
 ## Node reference
 
 Node
-----
  - Class name : Boolean
  - bl_idname : FunctionNodeInputBool
 
 Node parameters
----------------
  - boolean : False
 
 Input sockets
--------------
 
 Output sockets
---------------
  - boolean : Bool
 
 ### Header

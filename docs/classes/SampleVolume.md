@@ -5,17 +5,14 @@
 ## Node reference
 
 Node
-----
  - Class name : SampleVolume
  - bl_idname : GeometryNodeSampleVolume
 
 Node parameters
----------------
  - grid_type : 'FLOAT'
  - interpolation_mode : 'TRILINEAR'
 
 Input sockets
--------------
  - volume : Geometry
  - grid : Vect
  - grid_1 : Float
@@ -24,7 +21,6 @@ Input sockets
  - position : Vect
 
 Output sockets
---------------
  - value : Vect
  - value_1 : Float
  - value_2 : Bool

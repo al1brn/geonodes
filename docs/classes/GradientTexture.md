@@ -5,22 +5,18 @@
 ## Node reference
 
 Node
-----
  - Class name : GradientTexture
  - bl_idname : ShaderNodeTexGradient
 
 Node parameters
----------------
  - color_mapping
  - gradient_type : 'LINEAR'
  - texture_mapping
 
 Input sockets
--------------
  - vector : Vect
 
 Output sockets
---------------
  - color : Col
  - fac : Float
 

@@ -5,12 +5,10 @@
 ## Node reference
 
 Node
-----
  - Class name : Mix
  - bl_idname : ShaderNodeMix
 
 Node parameters
----------------
  - blend_type : 'MIX'
  - clamp_factor : True
  - clamp_result : False
@@ -18,7 +16,6 @@ Node parameters
  - factor_mode : 'UNIFORM'
 
 Input sockets
--------------
  - factor : Float
  - factor_1 : Vect
  - a : Float
@@ -31,7 +28,6 @@ Input sockets
  - b_3 : Rot
 
 Output sockets
---------------
  - result : Float
  - result_1 : Vect
  - result_2 : Col

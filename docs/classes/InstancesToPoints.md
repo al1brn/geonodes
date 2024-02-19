@@ -5,22 +5,18 @@
 ## Node reference
 
 Node
-----
  - Class name : InstancesToPoints
  - bl_idname : GeometryNodeInstancesToPoints
 
 Node parameters
----------------
 
 Input sockets
--------------
  - instances : Geometry
  - selection : Bool
  - position : Vect
  - radius : Float
 
 Output sockets
---------------
  - points : Geometry
 
 ### Header

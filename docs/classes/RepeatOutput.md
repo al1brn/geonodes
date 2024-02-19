@@ -5,23 +5,19 @@
 ## Node reference
 
 Node
-----
  - Class name : RepeatOutput
  - bl_idname : GeometryNodeRepeatOutput
 
 Node parameters
----------------
  - active_index : 0
  - active_item
  - inspection_index : 0
  - repeat_items
 
 Input sockets
--------------
  - geometry : Geometry
 
 Output sockets
---------------
  - geometry : Geometry
 
 ### Header

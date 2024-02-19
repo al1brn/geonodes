@@ -5,21 +5,17 @@
 ## Node reference
 
 Node
-----
  - Class name : EdgePathsToCurves
  - bl_idname : GeometryNodeEdgePathsToCurves
 
 Node parameters
----------------
 
 Input sockets
--------------
  - mesh : Geometry
  - start_vertices : Bool
  - next_vertex_index : Int
 
 Output sockets
---------------
  - curves : Geometry
 
 ### Header

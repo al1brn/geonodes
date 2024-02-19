@@ -5,17 +5,14 @@
 ## Node reference
 
 Node
-----
  - Class name : EvaluateAtIndex
  - bl_idname : GeometryNodeFieldAtIndex
 
 Node parameters
----------------
  - data_type : 'FLOAT'
  - domain : 'POINT'
 
 Input sockets
--------------
  - index : Int
  - value : Float
  - value_1 : Int
@@ -25,7 +22,6 @@ Input sockets
  - value_5 : Rot
 
 Output sockets
---------------
  - value : Float
  - value_1 : Int
  - value_2 : Vect

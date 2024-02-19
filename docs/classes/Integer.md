@@ -5,19 +5,15 @@
 ## Node reference
 
 Node
-----
  - Class name : Integer
  - bl_idname : FunctionNodeInputInt
 
 Node parameters
----------------
  - integer : 0
 
 Input sockets
--------------
 
 Output sockets
---------------
  - integer : Int
 
 ### Header

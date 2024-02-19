@@ -5,22 +5,18 @@
 ## Node reference
 
 Node
-----
  - Class name : QuadraticBezier
  - bl_idname : GeometryNodeCurveQuadraticBezier
 
 Node parameters
----------------
 
 Input sockets
--------------
  - resolution : Int
  - start : Vect
  - middle : Vect
  - end : Vect
 
 Output sockets
---------------
  - curve : Geometry
 
 ### Header

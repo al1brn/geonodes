@@ -5,20 +5,16 @@
 ## Node reference
 
 Node
-----
  - Class name : SeparateColor
  - bl_idname : FunctionNodeSeparateColor
 
 Node parameters
----------------
  - mode : 'RGB'
 
 Input sockets
--------------
  - color : Col
 
 Output sockets
---------------
  - red : Float
  - green : Float
  - blue : Float

@@ -5,21 +5,17 @@
 ## Node reference
 
 Node
-----
  - Class name : RGBCurves
  - bl_idname : ShaderNodeRGBCurve
 
 Node parameters
----------------
  - mapping
 
 Input sockets
--------------
  - fac : Float
  - color : Col
 
 Output sockets
---------------
  - color : Col
 
 ### Header

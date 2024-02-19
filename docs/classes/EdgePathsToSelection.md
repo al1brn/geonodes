@@ -5,20 +5,16 @@
 ## Node reference
 
 Node
-----
  - Class name : EdgePathsToSelection
  - bl_idname : GeometryNodeEdgePathsToSelection
 
 Node parameters
----------------
 
 Input sockets
--------------
  - start_vertices : Bool
  - next_vertex_index : Int
 
 Output sockets
---------------
  - selection : Bool
 
 ### Header

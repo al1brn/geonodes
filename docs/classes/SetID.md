@@ -5,21 +5,17 @@
 ## Node reference
 
 Node
-----
  - Class name : SetID
  - bl_idname : GeometryNodeSetID
 
 Node parameters
----------------
 
 Input sockets
--------------
  - geometry : Geometry
  - selection : Bool
  - ID : Int
 
 Output sockets
---------------
  - geometry : Geometry
 
 ### Header

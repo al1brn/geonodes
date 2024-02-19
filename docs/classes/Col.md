@@ -3,12 +3,10 @@
 <sub>go to [index](/docs/index.md)</sub>
 
 Socket
-------
  - Type : RGBA
  - bl_idname : NodeSocketColor
 
 Methods
--------
  - [brick_texture](#brick_texture) : BrickTexture, color1=self
  - [brighter](#brighter) : Compare, a=self, data_type='RGBA', operation='BRIGHTER'
  - [checker_texture](#checker_texture) : CheckerTexture, color1=self
@@ -47,7 +45,6 @@ Methods
 BrickTexture, color1=self
 
 Node
-----
  - class_name : [BrickTexture](/docs/classes/BrickTexture.md)
  - bl_idname : ShaderNodeTexBrick
 
@@ -56,7 +53,6 @@ Node
 Compare, a=self, data_type='RGBA', operation='BRIGHTER'
 
 Node
-----
  - class_name : [Compare](/docs/classes/Compare.md)
  - bl_idname : FunctionNodeCompare
 
@@ -65,7 +61,6 @@ Node
 CheckerTexture, color1=self
 
 Node
-----
  - class_name : [CheckerTexture](/docs/classes/CheckerTexture.md)
  - bl_idname : ShaderNodeTexChecker
 
@@ -74,7 +69,6 @@ Node
 Compare, a=self, data_type='RGBA', operation='DARKER'
 
 Node
-----
  - class_name : [Compare](/docs/classes/Compare.md)
  - bl_idname : FunctionNodeCompare
 
@@ -83,7 +77,6 @@ Node
 Compare, a=self, data_type='RGBA', operation='EQUAL'
 
 Node
-----
  - class_name : [Compare](/docs/classes/Compare.md)
  - bl_idname : FunctionNodeCompare
 
@@ -92,7 +85,6 @@ Node
 Mix, a=self, data_type='RGBA'
 
 Node
-----
  - class_name : [Mix](/docs/classes/Mix.md)
  - bl_idname : ShaderNodeMix
 
@@ -101,7 +93,6 @@ Node
 Mix, a=self, blend_type='ADD'
 
 Node
-----
  - class_name : [Mix](/docs/classes/Mix.md)
  - bl_idname : ShaderNodeMix
 
@@ -110,7 +101,6 @@ Node
 Mix, a=self, blend_type='BURN'
 
 Node
-----
  - class_name : [Mix](/docs/classes/Mix.md)
  - bl_idname : ShaderNodeMix
 
@@ -119,7 +109,6 @@ Node
 Mix, a=self, blend_type='COLOR'
 
 Node
-----
  - class_name : [Mix](/docs/classes/Mix.md)
  - bl_idname : ShaderNodeMix
 
@@ -128,7 +117,6 @@ Node
 Mix, a=self, blend_type='DARKEN'
 
 Node
-----
  - class_name : [Mix](/docs/classes/Mix.md)
  - bl_idname : ShaderNodeMix
 
@@ -137,7 +125,6 @@ Node
 Mix, a=self, blend_type='DIFFERENCE'
 
 Node
-----
  - class_name : [Mix](/docs/classes/Mix.md)
  - bl_idname : ShaderNodeMix
 
@@ -146,7 +133,6 @@ Node
 Mix, a=self, blend_type='DIVIDE'
 
 Node
-----
  - class_name : [Mix](/docs/classes/Mix.md)
  - bl_idname : ShaderNodeMix
 
@@ -155,7 +141,6 @@ Node
 Mix, a=self, blend_type='DODGE'
 
 Node
-----
  - class_name : [Mix](/docs/classes/Mix.md)
  - bl_idname : ShaderNodeMix
 
@@ -164,7 +149,6 @@ Node
 Mix, a=self, blend_type='EXCLUSION'
 
 Node
-----
  - class_name : [Mix](/docs/classes/Mix.md)
  - bl_idname : ShaderNodeMix
 
@@ -173,7 +157,6 @@ Node
 Mix, a=self, blend_type='HUE'
 
 Node
-----
  - class_name : [Mix](/docs/classes/Mix.md)
  - bl_idname : ShaderNodeMix
 
@@ -182,7 +165,6 @@ Node
 Mix, a=self, blend_type='LIGHTEN'
 
 Node
-----
  - class_name : [Mix](/docs/classes/Mix.md)
  - bl_idname : ShaderNodeMix
 
@@ -191,7 +173,6 @@ Node
 Mix, a=self, blend_type='LINEAR_LIGHT'
 
 Node
-----
  - class_name : [Mix](/docs/classes/Mix.md)
  - bl_idname : ShaderNodeMix
 
@@ -200,7 +181,6 @@ Node
 Mix, a=self, blend_type='MIX'
 
 Node
-----
  - class_name : [Mix](/docs/classes/Mix.md)
  - bl_idname : ShaderNodeMix
 
@@ -209,7 +189,6 @@ Node
 Mix, a=self, blend_type='MULTIPLY'
 
 Node
-----
  - class_name : [Mix](/docs/classes/Mix.md)
  - bl_idname : ShaderNodeMix
 
@@ -218,7 +197,6 @@ Node
 Mix, a=self, blend_type='OVERLAY'
 
 Node
-----
  - class_name : [Mix](/docs/classes/Mix.md)
  - bl_idname : ShaderNodeMix
 
@@ -227,7 +205,6 @@ Node
 Mix, a=self, blend_type='SATURATION'
 
 Node
-----
  - class_name : [Mix](/docs/classes/Mix.md)
  - bl_idname : ShaderNodeMix
 
@@ -236,7 +213,6 @@ Node
 Mix, a=self, blend_type='SCREEN'
 
 Node
-----
  - class_name : [Mix](/docs/classes/Mix.md)
  - bl_idname : ShaderNodeMix
 
@@ -245,7 +221,6 @@ Node
 Mix, a=self, blend_type='SOFT_LIGHT'
 
 Node
-----
  - class_name : [Mix](/docs/classes/Mix.md)
  - bl_idname : ShaderNodeMix
 
@@ -254,7 +229,6 @@ Node
 Mix, a=self, blend_type='SUBTRACT'
 
 Node
-----
  - class_name : [Mix](/docs/classes/Mix.md)
  - bl_idname : ShaderNodeMix
 
@@ -263,7 +237,6 @@ Node
 Mix, a=self, blend_type='VALUE'
 
 Node
-----
  - class_name : [Mix](/docs/classes/Mix.md)
  - bl_idname : ShaderNodeMix
 
@@ -272,7 +245,6 @@ Node
 Compare, a=self, data_type='RGBA', operation='NOT_EQUAL'
 
 Node
-----
  - class_name : [Compare](/docs/classes/Compare.md)
  - bl_idname : FunctionNodeCompare
 
@@ -281,7 +253,6 @@ Node
 Reroute, input=self
 
 Node
-----
  - class_name : [Reroute](/docs/classes/Reroute.md)
  - bl_idname : NodeReroute
 
@@ -290,7 +261,6 @@ Node
 RGBCurves, color=self
 
 Node
-----
  - class_name : [RGBCurves](/docs/classes/RGBCurves.md)
  - bl_idname : ShaderNodeRGBCurve
 
@@ -299,7 +269,6 @@ Node
 SeparateColor, color=self, return node
 
 Node
-----
  - class_name : [SeparateColor](/docs/classes/SeparateColor.md)
  - bl_idname : FunctionNodeSeparateColor
 
@@ -308,6 +277,5 @@ Node
 Switch, false=self, input_type='RGBA'
 
 Node
-----
  - class_name : [Switch](/docs/classes/Switch.md)
  - bl_idname : GeometryNodeSwitch

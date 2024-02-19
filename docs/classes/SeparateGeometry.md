@@ -5,21 +5,17 @@
 ## Node reference
 
 Node
-----
  - Class name : SeparateGeometry
  - bl_idname : GeometryNodeSeparateGeometry
 
 Node parameters
----------------
  - domain : 'POINT'
 
 Input sockets
--------------
  - geometry : Geometry
  - selection : Bool
 
 Output sockets
---------------
  - selection : Geometry
  - inverted : Geometry
 

@@ -5,19 +5,15 @@
 ## Node reference
 
 Node
-----
  - Class name : CurveLength
  - bl_idname : GeometryNodeCurveLength
 
 Node parameters
----------------
 
 Input sockets
--------------
  - curve : Geometry
 
 Output sockets
---------------
  - length : Float
 
 ### Header

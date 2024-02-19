@@ -5,24 +5,20 @@
 ## Node reference
 
 Node
-----
  - Class name : AccumulateField
  - bl_idname : GeometryNodeAccumulateField
 
 Node parameters
----------------
  - data_type : 'FLOAT'
  - domain : 'POINT'
 
 Input sockets
--------------
  - value : Vect
  - value_1 : Float
  - value_2 : Int
  - group_id : Int
 
 Output sockets
---------------
  - leading : Vect
  - leading_1 : Float
  - leading_2 : Int

@@ -5,20 +5,16 @@
 ## Node reference
 
 Node
-----
  - Class name : RemoveNamedAttribute
  - bl_idname : GeometryNodeRemoveAttribute
 
 Node parameters
----------------
 
 Input sockets
--------------
  - geometry : Geometry
  - name : Str
 
 Output sockets
---------------
  - geometry : Geometry
 
 ### Header

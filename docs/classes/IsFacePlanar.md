@@ -5,19 +5,15 @@
 ## Node reference
 
 Node
-----
  - Class name : IsFacePlanar
  - bl_idname : GeometryNodeInputMeshFaceIsPlanar
 
 Node parameters
----------------
 
 Input sockets
--------------
  - threshold : Float
 
 Output sockets
---------------
  - planar : Bool
 
 ### Header

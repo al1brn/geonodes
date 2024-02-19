@@ -5,20 +5,16 @@
 ## Node reference
 
 Node
-----
  - Class name : MeshToCurve
  - bl_idname : GeometryNodeMeshToCurve
 
 Node parameters
----------------
 
 Input sockets
--------------
  - mesh : Geometry
  - selection : Bool
 
 Output sockets
---------------
  - curve : Geometry
 
 ### Header

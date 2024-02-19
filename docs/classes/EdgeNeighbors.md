@@ -5,18 +5,14 @@
 ## Node reference
 
 Node
-----
  - Class name : EdgeNeighbors
  - bl_idname : GeometryNodeInputMeshEdgeNeighbors
 
 Node parameters
----------------
 
 Input sockets
--------------
 
 Output sockets
---------------
  - face_count : Int
 
 ### Header

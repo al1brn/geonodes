@@ -5,20 +5,16 @@
 ## Node reference
 
 Node
-----
  - Class name : FlipFaces
  - bl_idname : GeometryNodeFlipFaces
 
 Node parameters
----------------
 
 Input sockets
--------------
  - mesh : Geometry
  - selection : Bool
 
 Output sockets
---------------
  - mesh : Geometry
 
 ### Header

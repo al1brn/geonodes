@@ -5,21 +5,17 @@
 ## Node reference
 
 Node
-----
  - Class name : SetSelection
  - bl_idname : GeometryNodeToolSetSelection
 
 Node parameters
----------------
  - domain : 'POINT'
 
 Input sockets
--------------
  - geometry : Geometry
  - selection : Bool
 
 Output sockets
---------------
  - geometry : Geometry
 
 ### Header

@@ -5,22 +5,18 @@
 ## Node reference
 
 Node
-----
  - Class name : SetPosition
  - bl_idname : GeometryNodeSetPosition
 
 Node parameters
----------------
 
 Input sockets
--------------
  - geometry : Geometry
  - selection : Bool
  - position : Vect
  - offset : Vect
 
 Output sockets
---------------
  - geometry : Geometry
 
 ### Header

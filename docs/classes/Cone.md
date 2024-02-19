@@ -5,16 +5,13 @@
 ## Node reference
 
 Node
-----
  - Class name : Cone
  - bl_idname : GeometryNodeMeshCone
 
 Node parameters
----------------
  - fill_type : 'NGON'
 
 Input sockets
--------------
  - vertices : Int
  - side_segments : Int
  - fill_segments : Int
@@ -23,7 +20,6 @@ Input sockets
  - depth : Float
 
 Output sockets
---------------
  - mesh : Geometry
  - top : Bool
  - bottom : Bool

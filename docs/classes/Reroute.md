@@ -5,19 +5,15 @@
 ## Node reference
 
 Node
-----
  - Class name : Reroute
  - bl_idname : NodeReroute
 
 Node parameters
----------------
 
 Input sockets
--------------
  - input : Col
 
 Output sockets
---------------
  - output : Col
 
 ### Header

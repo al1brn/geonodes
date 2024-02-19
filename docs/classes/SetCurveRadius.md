@@ -5,21 +5,17 @@
 ## Node reference
 
 Node
-----
  - Class name : SetCurveRadius
  - bl_idname : GeometryNodeSetCurveRadius
 
 Node parameters
----------------
 
 Input sockets
--------------
  - curve : Geometry
  - selection : Bool
  - radius : Float
 
 Output sockets
---------------
  - curve : Geometry
 
 ### Header

@@ -5,16 +5,13 @@
 ## Node reference
 
 Node
-----
  - Class name : RandomValue
  - bl_idname : FunctionNodeRandomValue
 
 Node parameters
----------------
  - data_type : 'FLOAT'
 
 Input sockets
--------------
  - min : Vect
  - max : Vect
  - min_1 : Float
@@ -26,7 +23,6 @@ Input sockets
  - seed : Int
 
 Output sockets
---------------
  - value : Vect
  - value_1 : Float
  - value_2 : Int

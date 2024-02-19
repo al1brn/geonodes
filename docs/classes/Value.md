@@ -5,18 +5,14 @@
 ## Node reference
 
 Node
-----
  - Class name : Value
  - bl_idname : ShaderNodeValue
 
 Node parameters
----------------
 
 Input sockets
--------------
 
 Output sockets
---------------
  - value : Float
 
 ### Header

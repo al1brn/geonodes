@@ -5,21 +5,17 @@
 ## Node reference
 
 Node
-----
  - Class name : SetSplineResolution
  - bl_idname : GeometryNodeSetSplineResolution
 
 Node parameters
----------------
 
 Input sockets
--------------
  - geometry : Geometry
  - selection : Bool
  - resolution : Int
 
 Output sockets
---------------
  - geometry : Geometry
 
 ### Header

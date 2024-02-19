@@ -5,21 +5,17 @@
 ## Node reference
 
 Node
-----
  - Class name : Points
  - bl_idname : GeometryNodePoints
 
 Node parameters
----------------
 
 Input sockets
--------------
  - count : Int
  - position : Vect
  - radius : Float
 
 Output sockets
---------------
  - geometry : Geometry
 
 ### Header

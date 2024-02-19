@@ -5,21 +5,17 @@
 ## Node reference
 
 Node
-----
  - Class name : BooleanMath
  - bl_idname : FunctionNodeBooleanMath
 
 Node parameters
----------------
  - operation : 'AND'
 
 Input sockets
--------------
  - boolean : Bool
  - boolean_1 : Bool
 
 Output sockets
---------------
  - boolean : Bool
 
 ### Header

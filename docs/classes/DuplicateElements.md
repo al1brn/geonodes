@@ -5,22 +5,18 @@
 ## Node reference
 
 Node
-----
  - Class name : DuplicateElements
  - bl_idname : GeometryNodeDuplicateElements
 
 Node parameters
----------------
  - domain : 'POINT'
 
 Input sockets
--------------
  - geometry : Geometry
  - selection : Bool
  - amount : Int
 
 Output sockets
---------------
  - geometry : Geometry
  - duplicate_index : Int
 

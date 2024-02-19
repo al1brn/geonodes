@@ -5,22 +5,18 @@
 ## Node reference
 
 Node
-----
  - Class name : DeleteGeometry
  - bl_idname : GeometryNodeDeleteGeometry
 
 Node parameters
----------------
  - domain : 'POINT'
  - mode : 'ALL'
 
 Input sockets
--------------
  - geometry : Geometry
  - selection : Bool
 
 Output sockets
---------------
  - geometry : Geometry
 
 ### Header

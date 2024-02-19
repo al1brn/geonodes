@@ -5,19 +5,16 @@
 ## Node reference
 
 Node
-----
  - Class name : NoiseTexture
  - bl_idname : ShaderNodeTexNoise
 
 Node parameters
----------------
  - color_mapping
  - noise_dimensions : '3D'
  - normalize : True
  - texture_mapping
 
 Input sockets
--------------
  - vector : Vect
  - w : Float
  - scale : Float
@@ -27,7 +24,6 @@ Input sockets
  - distortion : Float
 
 Output sockets
---------------
  - fac : Float
  - color : Col
 

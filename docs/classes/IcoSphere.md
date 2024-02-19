@@ -5,20 +5,16 @@
 ## Node reference
 
 Node
-----
  - Class name : IcoSphere
  - bl_idname : GeometryNodeMeshIcoSphere
 
 Node parameters
----------------
 
 Input sockets
--------------
  - radius : Float
  - subdivisions : Int
 
 Output sockets
---------------
  - mesh : Geometry
  - uv_map : Vect
 

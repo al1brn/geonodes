@@ -5,16 +5,13 @@
 ## Node reference
 
 Node
-----
  - Class name : ExtrudeMesh
  - bl_idname : GeometryNodeExtrudeMesh
 
 Node parameters
----------------
  - mode : 'FACES'
 
 Input sockets
--------------
  - mesh : Geometry
  - selection : Bool
  - offset : Vect
@@ -22,7 +19,6 @@ Input sockets
  - individual : Bool
 
 Output sockets
---------------
  - mesh : Geometry
  - top : Bool
  - side : Bool

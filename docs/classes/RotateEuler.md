@@ -5,23 +5,19 @@
 ## Node reference
 
 Node
-----
  - Class name : RotateEuler
  - bl_idname : FunctionNodeRotateEuler
 
 Node parameters
----------------
  - space : 'OBJECT'
 
 Input sockets
--------------
  - rotation : Vect
  - rotate_by : Vect
  - axis : Vect
  - angle : Float
 
 Output sockets
---------------
  - rotation : Vect
 
 ### Header

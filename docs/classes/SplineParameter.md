@@ -5,18 +5,14 @@
 ## Node reference
 
 Node
-----
  - Class name : SplineParameter
  - bl_idname : GeometryNodeSplineParameter
 
 Node parameters
----------------
 
 Input sockets
--------------
 
 Output sockets
---------------
  - factor : Float
  - length : Float
  - index : Int

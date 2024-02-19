@@ -5,18 +5,15 @@
 ## Node reference
 
 Node
-----
  - Class name : MapRange
  - bl_idname : ShaderNodeMapRange
 
 Node parameters
----------------
  - clamp : True
  - data_type : 'FLOAT'
  - interpolation_type : 'LINEAR'
 
 Input sockets
--------------
  - value : Float
  - from_min : Float
  - from_max : Float
@@ -31,7 +28,6 @@ Input sockets
  - steps_1 : Vect
 
 Output sockets
---------------
  - result : Float
  - vector : Vect
 

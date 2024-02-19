@@ -5,18 +5,14 @@
 ## Node reference
 
 Node
-----
  - Class name : Selection
  - bl_idname : GeometryNodeToolSelection
 
 Node parameters
----------------
 
 Input sockets
--------------
 
 Output sockets
---------------
  - selection : Bool
 
 ### Header

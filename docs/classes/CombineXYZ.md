@@ -5,21 +5,17 @@
 ## Node reference
 
 Node
-----
  - Class name : CombineXYZ
  - bl_idname : ShaderNodeCombineXYZ
 
 Node parameters
----------------
 
 Input sockets
--------------
  - x : Float
  - y : Float
  - z : Float
 
 Output sockets
---------------
  - vector : Vect
 
 ### Header

@@ -5,19 +5,15 @@
 ## Node reference
 
 Node
-----
  - Class name : VertexOfCorner
  - bl_idname : GeometryNodeVertexOfCorner
 
 Node parameters
----------------
 
 Input sockets
--------------
  - corner_index : Int
 
 Output sockets
---------------
  - vertex_index : Int
 
 ### Header

@@ -5,16 +5,13 @@
 ## Node reference
 
 Node
-----
  - Class name : Arc
  - bl_idname : GeometryNodeCurveArc
 
 Node parameters
----------------
  - mode : 'RADIUS'
 
 Input sockets
--------------
  - resolution : Int
  - start : Vect
  - middle : Vect
@@ -27,7 +24,6 @@ Input sockets
  - invert_arc : Bool
 
 Output sockets
---------------
  - curve : Geometry
  - center : Vect
  - normal : Vect

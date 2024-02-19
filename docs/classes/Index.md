@@ -5,18 +5,14 @@
 ## Node reference
 
 Node
-----
  - Class name : Index
  - bl_idname : GeometryNodeInputIndex
 
 Node parameters
----------------
 
 Input sockets
--------------
 
 Output sockets
---------------
  - index : Int
 
 ### Header

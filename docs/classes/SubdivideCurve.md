@@ -5,20 +5,16 @@
 ## Node reference
 
 Node
-----
  - Class name : SubdivideCurve
  - bl_idname : GeometryNodeSubdivideCurve
 
 Node parameters
----------------
 
 Input sockets
--------------
  - curve : Geometry
  - cuts : Int
 
 Output sockets
---------------
  - curve : Geometry
 
 ### Header

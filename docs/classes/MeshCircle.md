@@ -5,21 +5,17 @@
 ## Node reference
 
 Node
-----
  - Class name : MeshCircle
  - bl_idname : GeometryNodeMeshCircle
 
 Node parameters
----------------
  - fill_type : 'NONE'
 
 Input sockets
--------------
  - vertices : Int
  - radius : Float
 
 Output sockets
---------------
  - mesh : Geometry
 
 ### Header

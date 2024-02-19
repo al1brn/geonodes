@@ -5,24 +5,20 @@
 ## Node reference
 
 Node
-----
  - Class name : MeshLine
  - bl_idname : GeometryNodeMeshLine
 
 Node parameters
----------------
  - count_mode : 'TOTAL'
  - mode : 'OFFSET'
 
 Input sockets
--------------
  - count : Int
  - resolution : Float
  - start_location : Vect
  - offset : Vect
 
 Output sockets
---------------
  - mesh : Geometry
 
 ### Header

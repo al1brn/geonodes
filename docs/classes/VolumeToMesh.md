@@ -5,16 +5,13 @@
 ## Node reference
 
 Node
-----
  - Class name : VolumeToMesh
  - bl_idname : GeometryNodeVolumeToMesh
 
 Node parameters
----------------
  - resolution_mode : 'GRID'
 
 Input sockets
--------------
  - volume : Geometry
  - voxel_size : Float
  - voxel_amount : Float
@@ -22,7 +19,6 @@ Input sockets
  - adaptivity : Float
 
 Output sockets
---------------
  - mesh : Geometry
 
 ### Header

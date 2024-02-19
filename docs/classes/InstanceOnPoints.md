@@ -5,15 +5,12 @@
 ## Node reference
 
 Node
-----
  - Class name : InstanceOnPoints
  - bl_idname : GeometryNodeInstanceOnPoints
 
 Node parameters
----------------
 
 Input sockets
--------------
  - points : Geometry
  - selection : Bool
  - instance : Geometry
@@ -23,7 +20,6 @@ Input sockets
  - scale : Vect
 
 Output sockets
---------------
  - instances : Geometry
 
 ### Header

@@ -5,16 +5,13 @@
 ## Node reference
 
 Node
-----
  - Class name : Switch
  - bl_idname : GeometryNodeSwitch
 
 Node parameters
----------------
  - input_type : 'GEOMETRY'
 
 Input sockets
--------------
  - switch : Bool
  - switch_1 : Bool
  - false : Float
@@ -45,7 +42,6 @@ Input sockets
  - true_12 : Rot
 
 Output sockets
---------------
  - output : Float
  - output_1 : Int
  - output_2 : Bool

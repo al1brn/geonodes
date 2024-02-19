@@ -5,21 +5,17 @@
 ## Node reference
 
 Node
-----
  - Class name : RepeatInput
  - bl_idname : GeometryNodeRepeatInput
 
 Node parameters
----------------
  - pair_with_output
  - paired_output : None
 
 Input sockets
--------------
  - iterations : Int
 
 Output sockets
---------------
 
 ### Header
 

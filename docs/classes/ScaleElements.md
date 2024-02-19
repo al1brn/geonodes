@@ -5,17 +5,14 @@
 ## Node reference
 
 Node
-----
  - Class name : ScaleElements
  - bl_idname : GeometryNodeScaleElements
 
 Node parameters
----------------
  - domain : 'FACE'
  - scale_mode : 'UNIFORM'
 
 Input sockets
--------------
  - geometry : Geometry
  - selection : Bool
  - scale : Float
@@ -23,7 +20,6 @@ Input sockets
  - axis : Vect
 
 Output sockets
---------------
  - geometry : Geometry
 
 ### Header

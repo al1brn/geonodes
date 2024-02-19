@@ -3,12 +3,10 @@
 <sub>go to [index](/docs/index.md)</sub>
 
 Socket
-------
  - Type : INT
  - bl_idname : NodeSocketInt
 
 Methods
--------
  - [abs](#abs) : Math, value=self, operation='ABSOLUTE'
  - [accumulate_field](#accumulate_field) : AccumulateField, value=self
  - [add](#add) : Math, value=self, operation='ADD'
@@ -99,7 +97,6 @@ Methods
 Math, value=self, operation='ABSOLUTE'
 
 Node
-----
  - class_name : [Math](/docs/classes/Math.md)
  - bl_idname : ShaderNodeMath
 
@@ -108,7 +105,6 @@ Node
 AccumulateField, value=self
 
 Node
-----
  - class_name : [AccumulateField](/docs/classes/AccumulateField.md)
  - bl_idname : GeometryNodeAccumulateField
 
@@ -117,7 +113,6 @@ Node
 Math, value=self, operation='ADD'
 
 Node
-----
  - class_name : [Math](/docs/classes/Math.md)
  - bl_idname : ShaderNodeMath
 
@@ -126,7 +121,6 @@ Node
 Math, value=self, operation='ARCCOSINE'
 
 Node
-----
  - class_name : [Math](/docs/classes/Math.md)
  - bl_idname : ShaderNodeMath
 
@@ -135,7 +129,6 @@ Node
 Math, value=self, operation='ARCSINE'
 
 Node
-----
  - class_name : [Math](/docs/classes/Math.md)
  - bl_idname : ShaderNodeMath
 
@@ -144,7 +137,6 @@ Node
 Math, value=self, operation='ARCTANGENT'
 
 Node
-----
  - class_name : [Math](/docs/classes/Math.md)
  - bl_idname : ShaderNodeMath
 
@@ -153,7 +145,6 @@ Node
 Math, value=self, operation='ARCTAN2'
 
 Node
-----
  - class_name : [Math](/docs/classes/Math.md)
  - bl_idname : ShaderNodeMath
 
@@ -162,7 +153,6 @@ Node
 AttributeStatistic, attribute=self
 
 Node
-----
  - class_name : [AttributeStatistic](/docs/classes/AttributeStatistic.md)
  - bl_idname : GeometryNodeAttributeStatistic
 
@@ -171,7 +161,6 @@ Node
 BlurAttribute, value=self
 
 Node
-----
  - class_name : [BlurAttribute](/docs/classes/BlurAttribute.md)
  - bl_idname : GeometryNodeBlurAttribute
 
@@ -180,7 +169,6 @@ Node
 Math, value=self, operation='CEIL'
 
 Node
-----
  - class_name : [Math](/docs/classes/Math.md)
  - bl_idname : ShaderNodeMath
 
@@ -189,7 +177,6 @@ Node
 Clamp, value=self
 
 Node
-----
  - class_name : [Clamp](/docs/classes/Clamp.md)
  - bl_idname : ShaderNodeClamp
 
@@ -198,7 +185,6 @@ Node
 ColorRamp, fac=self
 
 Node
-----
  - class_name : [ColorRamp](/docs/classes/ColorRamp.md)
  - bl_idname : ShaderNodeValToRGB
 
@@ -207,7 +193,6 @@ Node
 CornersOfEdge, edge_index=self
 
 Node
-----
  - class_name : [CornersOfEdge](/docs/classes/CornersOfEdge.md)
  - bl_idname : GeometryNodeCornersOfEdge
 
@@ -216,7 +201,6 @@ Node
 CornersOfFace, face_index=self
 
 Node
-----
  - class_name : [CornersOfFace](/docs/classes/CornersOfFace.md)
  - bl_idname : GeometryNodeCornersOfFace
 
@@ -225,7 +209,6 @@ Node
 CornersOfVertex, vertex_index=self
 
 Node
-----
  - class_name : [CornersOfVertex](/docs/classes/CornersOfVertex.md)
  - bl_idname : GeometryNodeCornersOfVertex
 
@@ -234,7 +217,6 @@ Node
 Math, value=self, operation='COSINE'
 
 Node
-----
  - class_name : [Math](/docs/classes/Math.md)
  - bl_idname : ShaderNodeMath
 
@@ -243,7 +225,6 @@ Node
 Math, value=self, operation='COSH'
 
 Node
-----
  - class_name : [Math](/docs/classes/Math.md)
  - bl_idname : ShaderNodeMath
 
@@ -252,7 +233,6 @@ Node
 CurveOfPoint, point_index=self
 
 Node
-----
  - class_name : [CurveOfPoint](/docs/classes/CurveOfPoint.md)
  - bl_idname : GeometryNodeCurveOfPoint
 
@@ -261,7 +241,6 @@ Node
 Math, value=self, operation='DEGREES'
 
 Node
-----
  - class_name : [Math](/docs/classes/Math.md)
  - bl_idname : ShaderNodeMath
 
@@ -270,7 +249,6 @@ Node
 Math, value=self, operation='DIVIDE'
 
 Node
-----
  - class_name : [Math](/docs/classes/Math.md)
  - bl_idname : ShaderNodeMath
 
@@ -279,7 +257,6 @@ Node
 EdgesOfCorner, corner_index=self
 
 Node
-----
  - class_name : [EdgesOfCorner](/docs/classes/EdgesOfCorner.md)
  - bl_idname : GeometryNodeEdgesOfCorner
 
@@ -288,7 +265,6 @@ Node
 EdgesOfVertex, vertex_index=self
 
 Node
-----
  - class_name : [EdgesOfVertex](/docs/classes/EdgesOfVertex.md)
  - bl_idname : GeometryNodeEdgesOfVertex
 
@@ -297,7 +273,6 @@ Node
 Compare, a=self, data_type='INT', operation='EQUAL'
 
 Node
-----
  - class_name : [Compare](/docs/classes/Compare.md)
  - bl_idname : FunctionNodeCompare
 
@@ -306,7 +281,6 @@ Node
 EvaluateAtIndex, value=self
 
 Node
-----
  - class_name : [EvaluateAtIndex](/docs/classes/EvaluateAtIndex.md)
  - bl_idname : GeometryNodeFieldAtIndex
 
@@ -315,7 +289,6 @@ Node
 EvaluateOnDomain, value=self
 
 Node
-----
  - class_name : [EvaluateOnDomain](/docs/classes/EvaluateOnDomain.md)
  - bl_idname : GeometryNodeFieldOnDomain
 
@@ -324,7 +297,6 @@ Node
 Math, value=self, operation='EXPONENT'
 
 Node
-----
  - class_name : [Math](/docs/classes/Math.md)
  - bl_idname : ShaderNodeMath
 
@@ -333,7 +305,6 @@ Node
 FaceGroupBoundaries, face_group_id=self, return socket
 
 Node
-----
  - class_name : [FaceGroupBoundaries](/docs/classes/FaceGroupBoundaries.md)
  - bl_idname : GeometryNodeMeshFaceSetBoundaries
 
@@ -342,7 +313,6 @@ Node
 FaceOfCorner, corner_index=self
 
 Node
-----
  - class_name : [FaceOfCorner](/docs/classes/FaceOfCorner.md)
  - bl_idname : GeometryNodeFaceOfCorner
 
@@ -351,7 +321,6 @@ Node
 FloatCurve, value=self
 
 Node
-----
  - class_name : [FloatCurve](/docs/classes/FloatCurve.md)
  - bl_idname : ShaderNodeFloatCurve
 
@@ -360,7 +329,6 @@ Node
 Math, value=self, operation='FLOOR'
 
 Node
-----
  - class_name : [Math](/docs/classes/Math.md)
  - bl_idname : ShaderNodeMath
 
@@ -369,7 +337,6 @@ Node
 Math, value=self, operation='FLOORED_MODULO'
 
 Node
-----
  - class_name : [Math](/docs/classes/Math.md)
  - bl_idname : ShaderNodeMath
 
@@ -378,7 +345,6 @@ Node
 Math, value=self, operation='FRACT'
 
 Node
-----
  - class_name : [Math](/docs/classes/Math.md)
  - bl_idname : ShaderNodeMath
 
@@ -387,7 +353,6 @@ Node
 Compare, a=self, data_type='INT', operation='GREATER_EQUAL'
 
 Node
-----
  - class_name : [Compare](/docs/classes/Compare.md)
  - bl_idname : FunctionNodeCompare
 
@@ -396,7 +361,6 @@ Node
 Compare, a=self, data_type='INT', operation='GREATER_THAN'
 
 Node
-----
  - class_name : [Compare](/docs/classes/Compare.md)
  - bl_idname : FunctionNodeCompare
 
@@ -405,7 +369,6 @@ Node
 ImageInfo, frame=self
 
 Node
-----
  - class_name : [ImageInfo](/docs/classes/ImageInfo.md)
  - bl_idname : GeometryNodeImageInfo
 
@@ -414,7 +377,6 @@ Node
 IndexOfNearest, group_id=self
 
 Node
-----
  - class_name : [IndexOfNearest](/docs/classes/IndexOfNearest.md)
  - bl_idname : GeometryNodeIndexOfNearest
 
@@ -423,7 +385,6 @@ Node
 Math, value=self, operation='INVERSE_SQRT'
 
 Node
-----
  - class_name : [Math](/docs/classes/Math.md)
  - bl_idname : ShaderNodeMath
 
@@ -432,7 +393,6 @@ Node
 Compare, a=self, data_type='INT', operation='LESS_EQUAL'
 
 Node
-----
  - class_name : [Compare](/docs/classes/Compare.md)
  - bl_idname : FunctionNodeCompare
 
@@ -441,7 +401,6 @@ Node
 Compare, a=self, data_type='INT', operation='LESS_THAN'
 
 Node
-----
  - class_name : [Compare](/docs/classes/Compare.md)
  - bl_idname : FunctionNodeCompare
 
@@ -450,7 +409,6 @@ Node
 Math, value=self, operation='LOGARITHM'
 
 Node
-----
  - class_name : [Math](/docs/classes/Math.md)
  - bl_idname : ShaderNodeMath
 
@@ -459,7 +417,6 @@ Node
 MapRange, value=self
 
 Node
-----
  - class_name : [MapRange](/docs/classes/MapRange.md)
  - bl_idname : ShaderNodeMapRange
 
@@ -468,7 +425,6 @@ Node
 Math, value=self
 
 Node
-----
  - class_name : [Math](/docs/classes/Math.md)
  - bl_idname : ShaderNodeMath
 
@@ -477,7 +433,6 @@ Node
 Math, value=self, operation='COMPARE'
 
 Node
-----
  - class_name : [Math](/docs/classes/Math.md)
  - bl_idname : ShaderNodeMath
 
@@ -486,7 +441,6 @@ Node
 Math, value=self, operation='GREATER_THAN'
 
 Node
-----
  - class_name : [Math](/docs/classes/Math.md)
  - bl_idname : ShaderNodeMath
 
@@ -495,7 +449,6 @@ Node
 Math, value=self, operation='LESS_THAN'
 
 Node
-----
  - class_name : [Math](/docs/classes/Math.md)
  - bl_idname : ShaderNodeMath
 
@@ -504,7 +457,6 @@ Node
 Math, value=self, operation='MAXIMUM'
 
 Node
-----
  - class_name : [Math](/docs/classes/Math.md)
  - bl_idname : ShaderNodeMath
 
@@ -513,7 +465,6 @@ Node
 Math, value=self, operation='MINIMUM'
 
 Node
-----
  - class_name : [Math](/docs/classes/Math.md)
  - bl_idname : ShaderNodeMath
 
@@ -522,7 +473,6 @@ Node
 Mix, a=self
 
 Node
-----
  - class_name : [Mix](/docs/classes/Mix.md)
  - bl_idname : ShaderNodeMix
 
@@ -531,7 +481,6 @@ Node
 Math, value=self, operation='MODULO'
 
 Node
-----
  - class_name : [Math](/docs/classes/Math.md)
  - bl_idname : ShaderNodeMath
 
@@ -540,7 +489,6 @@ Node
 Math, value=self, operation='MULTIPLY'
 
 Node
-----
  - class_name : [Math](/docs/classes/Math.md)
  - bl_idname : ShaderNodeMath
 
@@ -549,7 +497,6 @@ Node
 Math, value=self, operation='MULTIPLY_ADD'
 
 Node
-----
  - class_name : [Math](/docs/classes/Math.md)
  - bl_idname : ShaderNodeMath
 
@@ -558,7 +505,6 @@ Node
 Compare, a=self, data_type='INT', operation='NOT_EQUAL'
 
 Node
-----
  - class_name : [Compare](/docs/classes/Compare.md)
  - bl_idname : FunctionNodeCompare
 
@@ -567,7 +513,6 @@ Node
 OffsetCornerInFace, corner_index=self
 
 Node
-----
  - class_name : [OffsetCornerInFace](/docs/classes/OffsetCornerInFace.md)
  - bl_idname : GeometryNodeOffsetCornerInFace
 
@@ -576,7 +521,6 @@ Node
 OffsetPointInCurve, point_index=self
 
 Node
-----
  - class_name : [OffsetPointInCurve](/docs/classes/OffsetPointInCurve.md)
  - bl_idname : GeometryNodeOffsetPointInCurve
 
@@ -585,7 +529,6 @@ Node
 Math, value=self, operation='PINGPONG'
 
 Node
-----
  - class_name : [Math](/docs/classes/Math.md)
  - bl_idname : ShaderNodeMath
 
@@ -594,7 +537,6 @@ Node
 PointsOfCurve, curve_index=self
 
 Node
-----
  - class_name : [PointsOfCurve](/docs/classes/PointsOfCurve.md)
  - bl_idname : GeometryNodePointsOfCurve
 
@@ -603,7 +545,6 @@ Node
 Math, value=self, operation='POWER'
 
 Node
-----
  - class_name : [Math](/docs/classes/Math.md)
  - bl_idname : ShaderNodeMath
 
@@ -612,7 +553,6 @@ Node
 Math, value=self, operation='RADIANS'
 
 Node
-----
  - class_name : [Math](/docs/classes/Math.md)
  - bl_idname : ShaderNodeMath
 
@@ -621,7 +561,6 @@ Node
 RandomValue, min=self
 
 Node
-----
  - class_name : [RandomValue](/docs/classes/RandomValue.md)
  - bl_idname : FunctionNodeRandomValue
 
@@ -630,7 +569,6 @@ Node
 Raycast, attribute=self
 
 Node
-----
  - class_name : [Raycast](/docs/classes/Raycast.md)
  - bl_idname : GeometryNodeRaycast
 
@@ -639,7 +577,6 @@ Node
 RepeatInput, iterations=self, return node
 
 Node
-----
  - class_name : [RepeatInput](/docs/classes/RepeatInput.md)
  - bl_idname : GeometryNodeRepeatInput
 
@@ -648,7 +585,6 @@ Node
 Math, value=self, operation='ROUND'
 
 Node
-----
  - class_name : [Math](/docs/classes/Math.md)
  - bl_idname : ShaderNodeMath
 
@@ -657,7 +593,6 @@ Node
 SampleCurve, value=self
 
 Node
-----
  - class_name : [SampleCurve](/docs/classes/SampleCurve.md)
  - bl_idname : GeometryNodeSampleCurve
 
@@ -666,7 +601,6 @@ Node
 SampleIndex, value=self
 
 Node
-----
  - class_name : [SampleIndex](/docs/classes/SampleIndex.md)
  - bl_idname : GeometryNodeSampleIndex
 
@@ -675,7 +609,6 @@ Node
 SampleNearestSurface, value=self
 
 Node
-----
  - class_name : [SampleNearestSurface](/docs/classes/SampleNearestSurface.md)
  - bl_idname : GeometryNodeSampleNearestSurface
 
@@ -684,7 +617,6 @@ Node
 SampleUVSurface, value=self
 
 Node
-----
  - class_name : [SampleUVSurface](/docs/classes/SampleUVSurface.md)
  - bl_idname : GeometryNodeSampleUVSurface
 
@@ -693,7 +625,6 @@ Node
 SampleVolume, grid=self
 
 Node
-----
  - class_name : [SampleVolume](/docs/classes/SampleVolume.md)
  - bl_idname : GeometryNodeSampleVolume
 
@@ -702,7 +633,6 @@ Node
 ShortestEdgePaths, edge_cost=self
 
 Node
-----
  - class_name : [ShortestEdgePaths](/docs/classes/ShortestEdgePaths.md)
  - bl_idname : GeometryNodeInputShortestEdgePaths
 
@@ -711,7 +641,6 @@ Node
 Math, value=self, operation='SIGN'
 
 Node
-----
  - class_name : [Math](/docs/classes/Math.md)
  - bl_idname : ShaderNodeMath
 
@@ -720,7 +649,6 @@ Node
 Math, value=self, operation='SINE'
 
 Node
-----
  - class_name : [Math](/docs/classes/Math.md)
  - bl_idname : ShaderNodeMath
 
@@ -729,7 +657,6 @@ Node
 Math, value=self, operation='SINH'
 
 Node
-----
  - class_name : [Math](/docs/classes/Math.md)
  - bl_idname : ShaderNodeMath
 
@@ -738,7 +665,6 @@ Node
 Math, value=self, operation='SMOOTH_MAX'
 
 Node
-----
  - class_name : [Math](/docs/classes/Math.md)
  - bl_idname : ShaderNodeMath
 
@@ -747,7 +673,6 @@ Node
 Math, value=self, operation='SMOOTH_MIN'
 
 Node
-----
  - class_name : [Math](/docs/classes/Math.md)
  - bl_idname : ShaderNodeMath
 
@@ -756,7 +681,6 @@ Node
 Math, value=self, operation='SNAP'
 
 Node
-----
  - class_name : [Math](/docs/classes/Math.md)
  - bl_idname : ShaderNodeMath
 
@@ -765,7 +689,6 @@ Node
 Math, value=self, operation='SQRT'
 
 Node
-----
  - class_name : [Math](/docs/classes/Math.md)
  - bl_idname : ShaderNodeMath
 
@@ -774,7 +697,6 @@ Node
 Math, value=self, operation='SUBTRACT'
 
 Node
-----
  - class_name : [Math](/docs/classes/Math.md)
  - bl_idname : ShaderNodeMath
 
@@ -783,7 +705,6 @@ Node
 Switch, false=self, input_type='INT'
 
 Node
-----
  - class_name : [Switch](/docs/classes/Switch.md)
  - bl_idname : GeometryNodeSwitch
 
@@ -792,7 +713,6 @@ Node
 Math, value=self, operation='TANGENT'
 
 Node
-----
  - class_name : [Math](/docs/classes/Math.md)
  - bl_idname : ShaderNodeMath
 
@@ -801,7 +721,6 @@ Node
 Math, value=self, operation='TANH'
 
 Node
-----
  - class_name : [Math](/docs/classes/Math.md)
  - bl_idname : ShaderNodeMath
 
@@ -810,7 +729,6 @@ Node
 Math, value=self, operation='TRUNC'
 
 Node
-----
  - class_name : [Math](/docs/classes/Math.md)
  - bl_idname : ShaderNodeMath
 
@@ -819,7 +737,6 @@ Node
 VertexOfCorner, corner_index=self
 
 Node
-----
  - class_name : [VertexOfCorner](/docs/classes/VertexOfCorner.md)
  - bl_idname : GeometryNodeVertexOfCorner
 
@@ -828,6 +745,5 @@ Node
 Math, value=self, operation='WRAP'
 
 Node
-----
  - class_name : [Math](/docs/classes/Math.md)
  - bl_idname : ShaderNodeMath

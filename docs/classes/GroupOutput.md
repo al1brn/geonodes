@@ -5,19 +5,15 @@
 ## Node reference
 
 Node
-----
  - Class name : GroupOutput
  - bl_idname : NodeGroupOutput
 
 Node parameters
----------------
  - is_active_output : True
 
 Input sockets
--------------
 
 Output sockets
---------------
 
 ### Header
 

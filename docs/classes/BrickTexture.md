@@ -5,12 +5,10 @@
 ## Node reference
 
 Node
-----
  - Class name : BrickTexture
  - bl_idname : ShaderNodeTexBrick
 
 Node parameters
----------------
  - color_mapping
  - offset : 0.5
  - offset_frequency : 2
@@ -19,7 +17,6 @@ Node parameters
  - texture_mapping
 
 Input sockets
--------------
  - vector : Vect
  - color1 : Col
  - color2 : Col
@@ -32,7 +29,6 @@ Input sockets
  - row_height : Float
 
 Output sockets
---------------
  - color : Col
  - fac : Float
 

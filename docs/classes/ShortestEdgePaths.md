@@ -5,20 +5,16 @@
 ## Node reference
 
 Node
-----
  - Class name : ShortestEdgePaths
  - bl_idname : GeometryNodeInputShortestEdgePaths
 
 Node parameters
----------------
 
 Input sockets
--------------
  - end_vertex : Bool
  - edge_cost : Float
 
 Output sockets
---------------
  - next_vertex_index : Int
  - total_cost : Float
 

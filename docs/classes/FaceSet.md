@@ -5,18 +5,14 @@
 ## Node reference
 
 Node
-----
  - Class name : FaceSet
  - bl_idname : GeometryNodeToolFaceSet
 
 Node parameters
----------------
 
 Input sockets
--------------
 
 Output sockets
---------------
  - face_set : Int
  - exists : Bool
 

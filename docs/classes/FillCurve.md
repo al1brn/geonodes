@@ -5,20 +5,16 @@
 ## Node reference
 
 Node
-----
  - Class name : FillCurve
  - bl_idname : GeometryNodeFillCurve
 
 Node parameters
----------------
  - mode : 'TRIANGLES'
 
 Input sockets
--------------
  - curve : Geometry
 
 Output sockets
---------------
  - mesh : Geometry
 
 ### Header

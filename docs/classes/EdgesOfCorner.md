@@ -5,19 +5,15 @@
 ## Node reference
 
 Node
-----
  - Class name : EdgesOfCorner
  - bl_idname : GeometryNodeEdgesOfCorner
 
 Node parameters
----------------
 
 Input sockets
--------------
  - corner_index : Int
 
 Output sockets
---------------
  - next_edge_index : Int
  - previous_edge_index : Int
 

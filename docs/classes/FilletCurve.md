@@ -5,23 +5,19 @@
 ## Node reference
 
 Node
-----
  - Class name : FilletCurve
  - bl_idname : GeometryNodeFilletCurve
 
 Node parameters
----------------
  - mode : 'BEZIER'
 
 Input sockets
--------------
  - curve : Geometry
  - count : Int
  - radius : Float
  - limit_radius : Bool
 
 Output sockets
---------------
  - curve : Geometry
 
 ### Header

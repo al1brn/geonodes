@@ -5,22 +5,18 @@
 ## Node reference
 
 Node
-----
  - Class name : SetShadeSmooth
  - bl_idname : GeometryNodeSetShadeSmooth
 
 Node parameters
----------------
  - domain : 'FACE'
 
 Input sockets
--------------
  - geometry : Geometry
  - selection : Bool
  - shade_smooth : Bool
 
 Output sockets
---------------
  - geometry : Geometry
 
 ### Header

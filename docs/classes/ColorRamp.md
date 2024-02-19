@@ -5,20 +5,16 @@
 ## Node reference
 
 Node
-----
  - Class name : ColorRamp
  - bl_idname : ShaderNodeValToRGB
 
 Node parameters
----------------
  - color_ramp
 
 Input sockets
--------------
  - fac : Float
 
 Output sockets
---------------
  - color : Col
  - alpha : Float
 

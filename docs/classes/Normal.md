@@ -5,18 +5,14 @@
 ## Node reference
 
 Node
-----
  - Class name : Normal
  - bl_idname : GeometryNodeInputNormal
 
 Node parameters
----------------
 
 Input sockets
--------------
 
 Output sockets
---------------
  - normal : Vect
 
 ### Header

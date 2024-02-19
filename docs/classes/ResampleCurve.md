@@ -5,23 +5,19 @@
 ## Node reference
 
 Node
-----
  - Class name : ResampleCurve
  - bl_idname : GeometryNodeResampleCurve
 
 Node parameters
----------------
  - mode : 'COUNT'
 
 Input sockets
--------------
  - curve : Geometry
  - selection : Bool
  - count : Int
  - length : Float
 
 Output sockets
---------------
  - curve : Geometry
 
 ### Header

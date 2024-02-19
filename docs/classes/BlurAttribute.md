@@ -5,16 +5,13 @@
 ## Node reference
 
 Node
-----
  - Class name : BlurAttribute
  - bl_idname : GeometryNodeBlurAttribute
 
 Node parameters
----------------
  - data_type : 'FLOAT'
 
 Input sockets
--------------
  - value : Float
  - value_1 : Int
  - value_2 : Vect
@@ -23,7 +20,6 @@ Input sockets
  - weight : Float
 
 Output sockets
---------------
  - value : Float
  - value_1 : Int
  - value_2 : Vect

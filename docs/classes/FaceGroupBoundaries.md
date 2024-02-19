@@ -5,19 +5,15 @@
 ## Node reference
 
 Node
-----
  - Class name : FaceGroupBoundaries
  - bl_idname : GeometryNodeMeshFaceSetBoundaries
 
 Node parameters
----------------
 
 Input sockets
--------------
  - face_group_id : Int
 
 Output sockets
---------------
  - boundary_edges : Bool
 
 ### Header

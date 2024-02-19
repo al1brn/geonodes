@@ -5,21 +5,17 @@
 ## Node reference
 
 Node
-----
  - Class name : SDFVolumeSphere
  - bl_idname : GeometryNodeSDFVolumeSphere
 
 Node parameters
----------------
 
 Input sockets
--------------
  - radius : Float
  - voxel_size : Float
  - half_band_width : Float
 
 Output sockets
---------------
  - volume : Geometry
 
 ### Header

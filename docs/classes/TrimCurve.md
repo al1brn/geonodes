@@ -5,16 +5,13 @@
 ## Node reference
 
 Node
-----
  - Class name : TrimCurve
  - bl_idname : GeometryNodeTrimCurve
 
 Node parameters
----------------
  - mode : 'FACTOR'
 
 Input sockets
--------------
  - curve : Geometry
  - selection : Bool
  - start : Float
@@ -23,7 +20,6 @@ Input sockets
  - end_1 : Float
 
 Output sockets
---------------
  - curve : Geometry
 
 ### Header

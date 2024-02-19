@@ -5,21 +5,17 @@
 ## Node reference
 
 Node
-----
  - Class name : SampleNearest
  - bl_idname : GeometryNodeSampleNearest
 
 Node parameters
----------------
  - domain : 'POINT'
 
 Input sockets
--------------
  - geometry : Geometry
  - sample_position : Vect
 
 Output sockets
---------------
  - index : Int
 
 ### Header

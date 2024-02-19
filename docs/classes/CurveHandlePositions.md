@@ -5,19 +5,15 @@
 ## Node reference
 
 Node
-----
  - Class name : CurveHandlePositions
  - bl_idname : GeometryNodeInputCurveHandlePositions
 
 Node parameters
----------------
 
 Input sockets
--------------
  - relative : Bool
 
 Output sockets
---------------
  - left : Vect
  - right : Vect
 

@@ -5,18 +5,14 @@
 ## Node reference
 
 Node
-----
  - Class name : Radius
  - bl_idname : GeometryNodeInputRadius
 
 Node parameters
----------------
 
 Input sockets
--------------
 
 Output sockets
---------------
  - radius : Float
 
 ### Header

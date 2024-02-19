@@ -5,18 +5,14 @@
 ## Node reference
 
 Node
-----
  - Class name : InstanceScale
  - bl_idname : GeometryNodeInputInstanceScale
 
 Node parameters
----------------
 
 Input sockets
--------------
 
 Output sockets
---------------
  - scale : Vect
 
 ### Header

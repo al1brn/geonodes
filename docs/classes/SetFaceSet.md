@@ -5,21 +5,17 @@
 ## Node reference
 
 Node
-----
  - Class name : SetFaceSet
  - bl_idname : GeometryNodeToolSetFaceSet
 
 Node parameters
----------------
 
 Input sockets
--------------
  - mesh : Geometry
  - selection : Bool
  - face_set : Int
 
 Output sockets
---------------
  - mesh : Geometry
 
 ### Header

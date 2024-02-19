@@ -5,19 +5,15 @@
 ## Node reference
 
 Node
-----
  - Class name : SeparateXYZ
  - bl_idname : ShaderNodeSeparateXYZ
 
 Node parameters
----------------
 
 Input sockets
--------------
  - vector : Vect
 
 Output sockets
---------------
  - x : Float
  - y : Float
  - z : Float

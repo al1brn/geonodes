@@ -5,22 +5,18 @@
 ## Node reference
 
 Node
-----
  - Class name : TranslateInstances
  - bl_idname : GeometryNodeTranslateInstances
 
 Node parameters
----------------
 
 Input sockets
--------------
  - instances : Geometry
  - selection : Bool
  - translation : Vect
  - local_space : Bool
 
 Output sockets
---------------
  - instances : Geometry
 
 ### Header

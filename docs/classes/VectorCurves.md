@@ -5,21 +5,17 @@
 ## Node reference
 
 Node
-----
  - Class name : VectorCurves
  - bl_idname : ShaderNodeVectorCurve
 
 Node parameters
----------------
  - mapping
 
 Input sockets
--------------
  - fac : Float
  - vector : Vect
 
 Output sockets
---------------
  - vector : Vect
 
 ### Header

@@ -5,21 +5,17 @@
 ## Node reference
 
 Node
-----
  - Class name : GeometryProximity
  - bl_idname : GeometryNodeProximity
 
 Node parameters
----------------
  - target_element : 'FACES'
 
 Input sockets
--------------
  - target : Geometry
  - source_position : Vect
 
 Output sockets
---------------
  - position : Vect
  - distance : Float
 

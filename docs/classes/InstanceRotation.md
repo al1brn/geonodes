@@ -5,18 +5,14 @@
 ## Node reference
 
 Node
-----
  - Class name : InstanceRotation
  - bl_idname : GeometryNodeInputInstanceRotation
 
 Node parameters
----------------
 
 Input sockets
--------------
 
 Output sockets
---------------
  - rotation : Vect
 
 ### Header

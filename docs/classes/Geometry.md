@@ -3,12 +3,10 @@
 <sub>go to [index](/docs/index.md)</sub>
 
 Socket
-------
  - Type : GEOMETRY
  - bl_idname : NodeSocketGeometry
 
 Methods
--------
  - [bounding_box](#bounding_box) : BoundingBox, geometry=self
  - [capture_attribute](#capture_attribute) : CaptureAttribute, geometry=self
  - [capture_boolean](#capture_boolean) : CaptureAttribute, geometry=self, data_type='BOOLEAN'
@@ -108,7 +106,6 @@ Methods
  - [volume_to_mesh](#volume_to_mesh) : VolumeToMesh, volume=self
 
 Properties
-----------
  - [ID](#id)
  - [curve_radius](#curve_radius) : Curve radius property
  - [curve_tilt](#curve_tilt)
@@ -131,7 +128,6 @@ Properties
 BoundingBox, geometry=self
 
 Node
-----
  - class_name : [BoundingBox](/docs/classes/BoundingBox.md)
  - bl_idname : GeometryNodeBoundBox
 
@@ -140,7 +136,6 @@ Node
 CaptureAttribute, geometry=self
 
 Node
-----
  - class_name : [CaptureAttribute](/docs/classes/CaptureAttribute.md)
  - bl_idname : GeometryNodeCaptureAttribute
 
@@ -149,7 +144,6 @@ Node
 CaptureAttribute, geometry=self, data_type='BOOLEAN'
 
 Node
-----
  - class_name : [CaptureAttribute](/docs/classes/CaptureAttribute.md)
  - bl_idname : GeometryNodeCaptureAttribute
 
@@ -158,7 +152,6 @@ Node
 CaptureAttribute, geometry=self, data_type='FLOAT_COLOR'
 
 Node
-----
  - class_name : [CaptureAttribute](/docs/classes/CaptureAttribute.md)
  - bl_idname : GeometryNodeCaptureAttribute
 
@@ -167,7 +160,6 @@ Node
 CaptureAttribute, geometry=self, data_type='FLOAT'
 
 Node
-----
  - class_name : [CaptureAttribute](/docs/classes/CaptureAttribute.md)
  - bl_idname : GeometryNodeCaptureAttribute
 
@@ -176,7 +168,6 @@ Node
 CaptureAttribute, geometry=self, data_type='INT'
 
 Node
-----
  - class_name : [CaptureAttribute](/docs/classes/CaptureAttribute.md)
  - bl_idname : GeometryNodeCaptureAttribute
 
@@ -185,7 +176,6 @@ Node
 CaptureAttribute, geometry=self, data_type='QUATERNION'
 
 Node
-----
  - class_name : [CaptureAttribute](/docs/classes/CaptureAttribute.md)
  - bl_idname : GeometryNodeCaptureAttribute
 
@@ -194,7 +184,6 @@ Node
 CaptureAttribute, geometry=self, data_type='FLOAT_VECTOR'
 
 Node
-----
  - class_name : [CaptureAttribute](/docs/classes/CaptureAttribute.md)
  - bl_idname : GeometryNodeCaptureAttribute
 
@@ -203,7 +192,6 @@ Node
 ConvexHull, geometry=self
 
 Node
-----
  - class_name : [ConvexHull](/docs/classes/ConvexHull.md)
  - bl_idname : GeometryNodeConvexHull
 
@@ -212,7 +200,6 @@ Node
 CurveLength, curve=self, return socket
 
 Node
-----
  - class_name : [CurveLength](/docs/classes/CurveLength.md)
  - bl_idname : GeometryNodeCurveLength
 
@@ -221,7 +208,6 @@ Node
 CurveToMesh, curve=self
 
 Node
-----
  - class_name : [CurveToMesh](/docs/classes/CurveToMesh.md)
  - bl_idname : GeometryNodeCurveToMesh
 
@@ -230,7 +216,6 @@ Node
 CurveToPoints, curve=self
 
 Node
-----
  - class_name : [CurveToPoints](/docs/classes/CurveToPoints.md)
  - bl_idname : GeometryNodeCurveToPoints
 
@@ -239,7 +224,6 @@ Node
 DeformCurvesOnSurface, curves=self
 
 Node
-----
  - class_name : [DeformCurvesOnSurface](/docs/classes/DeformCurvesOnSurface.md)
  - bl_idname : GeometryNodeDeformCurvesOnSurface
 
@@ -248,7 +232,6 @@ Node
 DeleteGeometry, geometry=self
 
 Node
-----
  - class_name : [DeleteGeometry](/docs/classes/DeleteGeometry.md)
  - bl_idname : GeometryNodeDeleteGeometry
 
@@ -257,7 +240,6 @@ Node
 MeshBoolean, mesh_1=self, mesh_2=args
 
 Node
-----
  - class_name : [MeshBoolean](/docs/classes/MeshBoolean.md)
  - bl_idname : GeometryNodeMeshBoolean
 
@@ -266,7 +248,6 @@ Node
 DistributePointsInVolume, volume=self
 
 Node
-----
  - class_name : [DistributePointsInVolume](/docs/classes/DistributePointsInVolume.md)
  - bl_idname : GeometryNodeDistributePointsInVolume
 
@@ -275,7 +256,6 @@ Node
 DistributePointsOnFaces, mesh=self
 
 Node
-----
  - class_name : [DistributePointsOnFaces](/docs/classes/DistributePointsOnFaces.md)
  - bl_idname : GeometryNodeDistributePointsOnFaces
 
@@ -284,7 +264,6 @@ Node
 DomainSize, geometry=self, return node
 
 Node
-----
  - class_name : [DomainSize](/docs/classes/DomainSize.md)
  - bl_idname : GeometryNodeAttributeDomainSize
 
@@ -293,7 +272,6 @@ Node
 DualMesh, mesh=self
 
 Node
-----
  - class_name : [DualMesh](/docs/classes/DualMesh.md)
  - bl_idname : GeometryNodeDualMesh
 
@@ -302,7 +280,6 @@ Node
 DuplicateElements, geometry=self
 
 Node
-----
  - class_name : [DuplicateElements](/docs/classes/DuplicateElements.md)
  - bl_idname : GeometryNodeDuplicateElements
 
@@ -311,7 +288,6 @@ Node
 EdgePathsToCurves, mesh=self
 
 Node
-----
  - class_name : [EdgePathsToCurves](/docs/classes/EdgePathsToCurves.md)
  - bl_idname : GeometryNodeEdgePathsToCurves
 
@@ -320,7 +296,6 @@ Node
 ExtrudeMesh, mesh=self
 
 Node
-----
  - class_name : [ExtrudeMesh](/docs/classes/ExtrudeMesh.md)
  - bl_idname : GeometryNodeExtrudeMesh
 
@@ -329,7 +304,6 @@ Node
 FillCurve, curve=self
 
 Node
-----
  - class_name : [FillCurve](/docs/classes/FillCurve.md)
  - bl_idname : GeometryNodeFillCurve
 
@@ -338,7 +312,6 @@ Node
 FilletCurve, curve=self
 
 Node
-----
  - class_name : [FilletCurve](/docs/classes/FilletCurve.md)
  - bl_idname : GeometryNodeFilletCurve
 
@@ -347,7 +320,6 @@ Node
 FlipFaces, mesh=self
 
 Node
-----
  - class_name : [FlipFaces](/docs/classes/FlipFaces.md)
  - bl_idname : GeometryNodeFlipFaces
 
@@ -356,7 +328,6 @@ Node
 GeometryToInstance, geometry=self
 
 Node
-----
  - class_name : [GeometryToInstance](/docs/classes/GeometryToInstance.md)
  - bl_idname : GeometryNodeGeometryToInstance
 
@@ -365,7 +336,6 @@ Node
 InstanceOnPoints, points=self
 
 Node
-----
  - class_name : [InstanceOnPoints](/docs/classes/InstanceOnPoints.md)
  - bl_idname : GeometryNodeInstanceOnPoints
 
@@ -374,7 +344,6 @@ Node
 InstancesToPoints, instances=self
 
 Node
-----
  - class_name : [InstancesToPoints](/docs/classes/InstancesToPoints.md)
  - bl_idname : GeometryNodeInstancesToPoints
 
@@ -383,7 +352,6 @@ Node
 InterpolateCurves, guide_curves=self
 
 Node
-----
  - class_name : [InterpolateCurves](/docs/classes/InterpolateCurves.md)
  - bl_idname : GeometryNodeInterpolateCurves
 
@@ -392,7 +360,6 @@ Node
 MeshBoolean, mesh=geometry + args
 
 Node
-----
  - class_name : [MeshBoolean](/docs/classes/MeshBoolean.md)
  - bl_idname : GeometryNodeMeshBoolean
 
@@ -401,7 +368,6 @@ Node
 JoinGeometry, geometry=self
 
 Node
-----
  - class_name : [JoinGeometry](/docs/classes/JoinGeometry.md)
  - bl_idname : GeometryNodeJoinGeometry
 
@@ -410,7 +376,6 @@ Node
 MeanFilterSDFVolume, volume=self
 
 Node
-----
  - class_name : [MeanFilterSDFVolume](/docs/classes/MeanFilterSDFVolume.md)
  - bl_idname : GeometryNodeMeanFilterSDFVolume
 
@@ -419,7 +384,6 @@ Node
 MergeByDistance, geometry=self
 
 Node
-----
  - class_name : [MergeByDistance](/docs/classes/MergeByDistance.md)
  - bl_idname : GeometryNodeMergeByDistance
 
@@ -428,7 +392,6 @@ Node
 MeshBoolean, mesh_1=self
 
 Node
-----
  - class_name : [MeshBoolean](/docs/classes/MeshBoolean.md)
  - bl_idname : GeometryNodeMeshBoolean
 
@@ -437,7 +400,6 @@ Node
 MeshToCurve, mesh=self
 
 Node
-----
  - class_name : [MeshToCurve](/docs/classes/MeshToCurve.md)
  - bl_idname : GeometryNodeMeshToCurve
 
@@ -446,7 +408,6 @@ Node
 MeshToPoints, mesh=self
 
 Node
-----
  - class_name : [MeshToPoints](/docs/classes/MeshToPoints.md)
  - bl_idname : GeometryNodeMeshToPoints
 
@@ -455,7 +416,6 @@ Node
 MeshToSDFVolume, mesh=self
 
 Node
-----
  - class_name : [MeshToSDFVolume](/docs/classes/MeshToSDFVolume.md)
  - bl_idname : GeometryNodeMeshToSDFVolume
 
@@ -464,7 +424,6 @@ Node
 MeshToVolume, mesh=self
 
 Node
-----
  - class_name : [MeshToVolume](/docs/classes/MeshToVolume.md)
  - bl_idname : GeometryNodeMeshToVolume
 
@@ -473,7 +432,6 @@ Node
 OffsetSDFVolume, volume=self
 
 Node
-----
  - class_name : [OffsetSDFVolume](/docs/classes/OffsetSDFVolume.md)
  - bl_idname : GeometryNodeOffsetSDFVolume
 
@@ -482,7 +440,6 @@ Node
 PointsToCurves, points=self
 
 Node
-----
  - class_name : [PointsToCurves](/docs/classes/PointsToCurves.md)
  - bl_idname : GeometryNodePointsToCurves
 
@@ -491,7 +448,6 @@ Node
 PointsToSDFVolume, points=self
 
 Node
-----
  - class_name : [PointsToSDFVolume](/docs/classes/PointsToSDFVolume.md)
  - bl_idname : GeometryNodePointsToSDFVolume
 
@@ -500,7 +456,6 @@ Node
 PointsToVertices, points=self
 
 Node
-----
  - class_name : [PointsToVertices](/docs/classes/PointsToVertices.md)
  - bl_idname : GeometryNodePointsToVertices
 
@@ -509,7 +464,6 @@ Node
 PointsToVolume, points=self
 
 Node
-----
  - class_name : [PointsToVolume](/docs/classes/PointsToVolume.md)
  - bl_idname : GeometryNodePointsToVolume
 
@@ -518,7 +472,6 @@ Node
 RealizeInstances, geometry=self
 
 Node
-----
  - class_name : [RealizeInstances](/docs/classes/RealizeInstances.md)
  - bl_idname : GeometryNodeRealizeInstances
 
@@ -527,7 +480,6 @@ Node
 RemoveNamedAttribute, geometry=self
 
 Node
-----
  - class_name : [RemoveNamedAttribute](/docs/classes/RemoveNamedAttribute.md)
  - bl_idname : GeometryNodeRemoveAttribute
 
@@ -536,7 +488,6 @@ Node
 RepeatOutput, geometry=self
 
 Node
-----
  - class_name : [RepeatOutput](/docs/classes/RepeatOutput.md)
  - bl_idname : GeometryNodeRepeatOutput
 
@@ -545,7 +496,6 @@ Node
 ReplaceMaterial, geometry=self
 
 Node
-----
  - class_name : [ReplaceMaterial](/docs/classes/ReplaceMaterial.md)
  - bl_idname : GeometryNodeReplaceMaterial
 
@@ -554,7 +504,6 @@ Node
 ResampleCurve, curve=self
 
 Node
-----
  - class_name : [ResampleCurve](/docs/classes/ResampleCurve.md)
  - bl_idname : GeometryNodeResampleCurve
 
@@ -563,7 +512,6 @@ Node
 ReverseCurve, curve=self
 
 Node
-----
  - class_name : [ReverseCurve](/docs/classes/ReverseCurve.md)
  - bl_idname : GeometryNodeReverseCurve
 
@@ -572,7 +520,6 @@ Node
 RotateInstances, instances=self
 
 Node
-----
  - class_name : [RotateInstances](/docs/classes/RotateInstances.md)
  - bl_idname : GeometryNodeRotateInstances
 
@@ -581,7 +528,6 @@ Node
 SampleIndex, value=self, data_type='BOOLEAN'
 
 Node
-----
  - class_name : [SampleIndex](/docs/classes/SampleIndex.md)
  - bl_idname : GeometryNodeSampleIndex
 
@@ -590,7 +536,6 @@ Node
 SampleIndex, value=self, data_type='FLOAT_COLOR'
 
 Node
-----
  - class_name : [SampleIndex](/docs/classes/SampleIndex.md)
  - bl_idname : GeometryNodeSampleIndex
 
@@ -599,7 +544,6 @@ Node
 SampleIndex, value=self, data_type='FLOAT'
 
 Node
-----
  - class_name : [SampleIndex](/docs/classes/SampleIndex.md)
  - bl_idname : GeometryNodeSampleIndex
 
@@ -608,7 +552,6 @@ Node
 SampleIndex, value=self, data_type='INT'
 
 Node
-----
  - class_name : [SampleIndex](/docs/classes/SampleIndex.md)
  - bl_idname : GeometryNodeSampleIndex
 
@@ -617,7 +560,6 @@ Node
 SampleIndex, value=self, data_type='QUATERNION'
 
 Node
-----
  - class_name : [SampleIndex](/docs/classes/SampleIndex.md)
  - bl_idname : GeometryNodeSampleIndex
 
@@ -626,7 +568,6 @@ Node
 SampleIndex, value=self, data_type='FLOAT_VECTOR'
 
 Node
-----
  - class_name : [SampleIndex](/docs/classes/SampleIndex.md)
  - bl_idname : GeometryNodeSampleIndex
 
@@ -635,7 +576,6 @@ Node
 ScaleElements, geometry=self
 
 Node
-----
  - class_name : [ScaleElements](/docs/classes/ScaleElements.md)
  - bl_idname : GeometryNodeScaleElements
 
@@ -644,7 +584,6 @@ Node
 ScaleInstances, instances=self
 
 Node
-----
  - class_name : [ScaleInstances](/docs/classes/ScaleInstances.md)
  - bl_idname : GeometryNodeScaleInstances
 
@@ -653,7 +592,6 @@ Node
 SeparateComponents, geometry=self
 
 Node
-----
  - class_name : [SeparateComponents](/docs/classes/SeparateComponents.md)
  - bl_idname : GeometryNodeSeparateComponents
 
@@ -662,7 +600,6 @@ Node
 SeparateGeometry, geometry=self
 
 Node
-----
  - class_name : [SeparateGeometry](/docs/classes/SeparateGeometry.md)
  - bl_idname : GeometryNodeSeparateGeometry
 
@@ -671,7 +608,6 @@ Node
 SetCurveNormal, curve=self
 
 Node
-----
  - class_name : [SetCurveNormal](/docs/classes/SetCurveNormal.md)
  - bl_idname : GeometryNodeSetCurveNormal
 
@@ -680,7 +616,6 @@ Node
 SetCurveRadius, curve=self
 
 Node
-----
  - class_name : [SetCurveRadius](/docs/classes/SetCurveRadius.md)
  - bl_idname : GeometryNodeSetCurveRadius
 
@@ -689,7 +624,6 @@ Node
 SetCurveTilt, curve=self
 
 Node
-----
  - class_name : [SetCurveTilt](/docs/classes/SetCurveTilt.md)
  - bl_idname : GeometryNodeSetCurveTilt
 
@@ -698,7 +632,6 @@ Node
 SetFaceSet, mesh=self
 
 Node
-----
  - class_name : [SetFaceSet](/docs/classes/SetFaceSet.md)
  - bl_idname : GeometryNodeToolSetFaceSet
 
@@ -707,7 +640,6 @@ Node
 SetHandlePositions, curve=self
 
 Node
-----
  - class_name : [SetHandlePositions](/docs/classes/SetHandlePositions.md)
  - bl_idname : GeometryNodeSetCurveHandlePositions
 
@@ -716,7 +648,6 @@ Node
 SetHandleType, curve=self
 
 Node
-----
  - class_name : [SetHandleType](/docs/classes/SetHandleType.md)
  - bl_idname : GeometryNodeCurveSetHandles
 
@@ -725,7 +656,6 @@ Node
 SetID, geometry=self
 
 Node
-----
  - class_name : [SetID](/docs/classes/SetID.md)
  - bl_idname : GeometryNodeSetID
 
@@ -734,7 +664,6 @@ Node
 SetMaterial, geometry=self
 
 Node
-----
  - class_name : [SetMaterial](/docs/classes/SetMaterial.md)
  - bl_idname : GeometryNodeSetMaterial
 
@@ -743,7 +672,6 @@ Node
 SetMaterialIndex, geometry=self
 
 Node
-----
  - class_name : [SetMaterialIndex](/docs/classes/SetMaterialIndex.md)
  - bl_idname : GeometryNodeSetMaterialIndex
 
@@ -752,7 +680,6 @@ Node
 SetPointRadius, points=self
 
 Node
-----
  - class_name : [SetPointRadius](/docs/classes/SetPointRadius.md)
  - bl_idname : GeometryNodeSetPointRadius
 
@@ -761,7 +688,6 @@ Node
 SetPosition, geometry=self
 
 Node
-----
  - class_name : [SetPosition](/docs/classes/SetPosition.md)
  - bl_idname : GeometryNodeSetPosition
 
@@ -770,7 +696,6 @@ Node
 SetSelection, geometry=self
 
 Node
-----
  - class_name : [SetSelection](/docs/classes/SetSelection.md)
  - bl_idname : GeometryNodeToolSetSelection
 
@@ -779,7 +704,6 @@ Node
 SetShadeSmooth, geometry=self
 
 Node
-----
  - class_name : [SetShadeSmooth](/docs/classes/SetShadeSmooth.md)
  - bl_idname : GeometryNodeSetShadeSmooth
 
@@ -788,7 +712,6 @@ Node
 SetSplineCyclic, geometry=self
 
 Node
-----
  - class_name : [SetSplineCyclic](/docs/classes/SetSplineCyclic.md)
  - bl_idname : GeometryNodeSetSplineCyclic
 
@@ -797,7 +720,6 @@ Node
 SetSplineResolution, geometry=self
 
 Node
-----
  - class_name : [SetSplineResolution](/docs/classes/SetSplineResolution.md)
  - bl_idname : GeometryNodeSetSplineResolution
 
@@ -806,7 +728,6 @@ Node
 SetSplineType, curve=self
 
 Node
-----
  - class_name : [SetSplineType](/docs/classes/SetSplineType.md)
  - bl_idname : GeometryNodeCurveSplineType
 
@@ -815,7 +736,6 @@ Node
 SimulationOutput, geometry=self
 
 Node
-----
  - class_name : [SimulationOutput](/docs/classes/SimulationOutput.md)
  - bl_idname : GeometryNodeSimulationOutput
 
@@ -824,7 +744,6 @@ Node
 SplitEdges, mesh=self
 
 Node
-----
  - class_name : [SplitEdges](/docs/classes/SplitEdges.md)
  - bl_idname : GeometryNodeSplitEdges
 
@@ -833,7 +752,6 @@ Node
 StoreNamedAttribute, geometry=self
 
 Node
-----
  - class_name : [StoreNamedAttribute](/docs/classes/StoreNamedAttribute.md)
  - bl_idname : GeometryNodeStoreNamedAttribute
 
@@ -842,7 +760,6 @@ Node
 StoreNamedAttribute, geometry=self, data_type='BOOLEAN'
 
 Node
-----
  - class_name : [StoreNamedAttribute](/docs/classes/StoreNamedAttribute.md)
  - bl_idname : GeometryNodeStoreNamedAttribute
 
@@ -851,7 +768,6 @@ Node
 StoreNamedAttribute, geometry=self, data_type='BYTE_COLOR'
 
 Node
-----
  - class_name : [StoreNamedAttribute](/docs/classes/StoreNamedAttribute.md)
  - bl_idname : GeometryNodeStoreNamedAttribute
 
@@ -860,7 +776,6 @@ Node
 StoreNamedAttribute, geometry=self, data_type='FLOAT'
 
 Node
-----
  - class_name : [StoreNamedAttribute](/docs/classes/StoreNamedAttribute.md)
  - bl_idname : GeometryNodeStoreNamedAttribute
 
@@ -869,7 +784,6 @@ Node
 StoreNamedAttribute, geometry=self, data_type='FLOAT2'
 
 Node
-----
  - class_name : [StoreNamedAttribute](/docs/classes/StoreNamedAttribute.md)
  - bl_idname : GeometryNodeStoreNamedAttribute
 
@@ -878,7 +792,6 @@ Node
 StoreNamedAttribute, geometry=self, data_type='FLOAT_COLOR'
 
 Node
-----
  - class_name : [StoreNamedAttribute](/docs/classes/StoreNamedAttribute.md)
  - bl_idname : GeometryNodeStoreNamedAttribute
 
@@ -887,7 +800,6 @@ Node
 StoreNamedAttribute, geometry=self, data_type='INT'
 
 Node
-----
  - class_name : [StoreNamedAttribute](/docs/classes/StoreNamedAttribute.md)
  - bl_idname : GeometryNodeStoreNamedAttribute
 
@@ -896,7 +808,6 @@ Node
 StoreNamedAttribute, geometry=self, data_type='QUATERNION'
 
 Node
-----
  - class_name : [StoreNamedAttribute](/docs/classes/StoreNamedAttribute.md)
  - bl_idname : GeometryNodeStoreNamedAttribute
 
@@ -905,7 +816,6 @@ Node
 StoreNamedAttribute, geometry=self, data_type='FLOAT_VECTOR'
 
 Node
-----
  - class_name : [StoreNamedAttribute](/docs/classes/StoreNamedAttribute.md)
  - bl_idname : GeometryNodeStoreNamedAttribute
 
@@ -914,7 +824,6 @@ Node
 SubdivideCurve, curve=self
 
 Node
-----
  - class_name : [SubdivideCurve](/docs/classes/SubdivideCurve.md)
  - bl_idname : GeometryNodeSubdivideCurve
 
@@ -923,7 +832,6 @@ Node
 SubdivideMesh, mesh=self
 
 Node
-----
  - class_name : [SubdivideMesh](/docs/classes/SubdivideMesh.md)
  - bl_idname : GeometryNodeSubdivideMesh
 
@@ -932,7 +840,6 @@ Node
 SubdivisionSurface, mesh=self
 
 Node
-----
  - class_name : [SubdivisionSurface](/docs/classes/SubdivisionSurface.md)
  - bl_idname : GeometryNodeSubdivisionSurface
 
@@ -941,7 +848,6 @@ Node
 Switch, false=self, input_type='GEOMETRY'
 
 Node
-----
  - class_name : [Switch](/docs/classes/Switch.md)
  - bl_idname : GeometryNodeSwitch
 
@@ -950,7 +856,6 @@ Node
 TransformGeometry, geometry=self
 
 Node
-----
  - class_name : [TransformGeometry](/docs/classes/TransformGeometry.md)
  - bl_idname : GeometryNodeTransform
 
@@ -959,7 +864,6 @@ Node
 TranslateInstances, instances=self
 
 Node
-----
  - class_name : [TranslateInstances](/docs/classes/TranslateInstances.md)
  - bl_idname : GeometryNodeTranslateInstances
 
@@ -968,7 +872,6 @@ Node
 Triangulate, mesh=self
 
 Node
-----
  - class_name : [Triangulate](/docs/classes/Triangulate.md)
  - bl_idname : GeometryNodeTriangulate
 
@@ -977,7 +880,6 @@ Node
 TrimCurve, curve=self
 
 Node
-----
  - class_name : [TrimCurve](/docs/classes/TrimCurve.md)
  - bl_idname : GeometryNodeTrimCurve
 
@@ -986,7 +888,6 @@ Node
 MeshBoolean, mesh=geometry + args
 
 Node
-----
  - class_name : [MeshBoolean](/docs/classes/MeshBoolean.md)
  - bl_idname : GeometryNodeMeshBoolean
 
@@ -995,7 +896,6 @@ Node
 VolumeToMesh, volume=self
 
 Node
-----
  - class_name : [VolumeToMesh](/docs/classes/VolumeToMesh.md)
  - bl_idname : GeometryNodeVolumeToMesh
 
@@ -1004,7 +904,6 @@ Node
 ### ID
 
 Nodes
------
  - get : [ID](/docs/classes/ID.md)
  - set : [SetID](/docs/classes/SetID.md)
 
@@ -1013,21 +912,18 @@ Nodes
 Curve radius property
 
 Nodes
------
  - get : [Radius](/docs/classes/Radius.md)
  - set : [SetCurveRadius](/docs/classes/SetCurveRadius.md)
 
 ### curve_tilt
 
 Nodes
------
  - get : [CurveTilt](/docs/classes/CurveTilt.md)
  - set : [SetCurveTilt](/docs/classes/SetCurveTilt.md)
 
 ### edge_neighbors
 
 Nodes
------
  - get : [EdgeNeighbors](/docs/classes/EdgeNeighbors.md)
  - set : None
 
@@ -1036,14 +932,12 @@ Nodes
 SetShadeSmooth(domain='EDGE')
 
 Nodes
------
  - get : [IsEdgeSmooth](/docs/classes/IsEdgeSmooth.md)
  - set : [SetSmooth](/docs/classes/SetSmooth.md)
 
 ### face_area
 
 Nodes
------
  - get : [FaceArea](/docs/classes/FaceArea.md)
  - set : None
 
@@ -1052,14 +946,12 @@ Nodes
 SetShadeSmooth(domain='FACE')
 
 Nodes
------
  - get : [IsFaceSmooth](/docs/classes/IsFaceSmooth.md)
  - set : [SetSmooth](/docs/classes/SetSmooth.md)
 
 ### index
 
 Nodes
------
  - get : [Index](/docs/classes/Index.md)
  - set : None
 
@@ -1068,7 +960,6 @@ Nodes
 SetPosition(offset=value)
 
 Nodes
------
  - get : None
  - set : [SetPosition](/docs/classes/SetPosition.md)
 
@@ -1077,7 +968,6 @@ Nodes
 Point radius property
 
 Nodes
------
  - get : [Radius](/docs/classes/Radius.md)
  - set : [SetPointRadius](/docs/classes/SetPointRadius.md)
 
@@ -1086,27 +976,23 @@ Nodes
 SetPosition(position=value)
 
 Nodes
------
  - get : [Position](/docs/classes/Position.md)
  - set : [SetPosition](/docs/classes/SetPosition.md)
 
 ### spline_cyclic
 
 Nodes
------
  - get : [IsSplineCyclic](/docs/classes/IsSplineCyclic.md)
  - set : [SetSplineCyclic](/docs/classes/SetSplineCyclic.md)
 
 ### spline_resolution
 
 Nodes
------
  - get : [SplineResolution](/docs/classes/SplineResolution.md)
  - set : [SetSplineResolution](/docs/classes/SetSplineResolution.md)
 
 ### tangent
 
 Nodes
------
  - get : [CurveTangent](/docs/classes/CurveTangent.md)
  - set : None

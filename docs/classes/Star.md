@@ -5,22 +5,18 @@
 ## Node reference
 
 Node
-----
  - Class name : Star
  - bl_idname : GeometryNodeCurveStar
 
 Node parameters
----------------
 
 Input sockets
--------------
  - points : Int
  - inner_radius : Float
  - outer_radius : Float
  - twist : Float
 
 Output sockets
---------------
  - curve : Geometry
  - outer_points : Bool
 

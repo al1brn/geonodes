@@ -5,17 +5,14 @@
 ## Node reference
 
 Node
-----
  - Class name : VectorRotate
  - bl_idname : ShaderNodeVectorRotate
 
 Node parameters
----------------
  - invert : False
  - rotation_type : 'AXIS_ANGLE'
 
 Input sockets
--------------
  - vector : Vect
  - center : Vect
  - axis : Vect
@@ -23,7 +20,6 @@ Input sockets
  - rotation : Vect
 
 Output sockets
---------------
  - vector : Vect
 
 ### Header

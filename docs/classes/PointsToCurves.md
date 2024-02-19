@@ -5,21 +5,17 @@
 ## Node reference
 
 Node
-----
  - Class name : PointsToCurves
  - bl_idname : GeometryNodePointsToCurves
 
 Node parameters
----------------
 
 Input sockets
--------------
  - points : Geometry
  - curve_group_id : Int
  - weight : Float
 
 Output sockets
---------------
  - curves : Geometry
 
 ### Header

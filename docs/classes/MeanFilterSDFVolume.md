@@ -5,21 +5,17 @@
 ## Node reference
 
 Node
-----
  - Class name : MeanFilterSDFVolume
  - bl_idname : GeometryNodeMeanFilterSDFVolume
 
 Node parameters
----------------
 
 Input sockets
--------------
  - volume : Geometry
  - iterations : Int
  - width : Int
 
 Output sockets
---------------
  - volume : Geometry
 
 ### Header

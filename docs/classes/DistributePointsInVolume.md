@@ -5,16 +5,13 @@
 ## Node reference
 
 Node
-----
  - Class name : DistributePointsInVolume
  - bl_idname : GeometryNodeDistributePointsInVolume
 
 Node parameters
----------------
  - mode : 'DENSITY_RANDOM'
 
 Input sockets
--------------
  - volume : Geometry
  - density : Float
  - seed : Int
@@ -22,7 +19,6 @@ Input sockets
  - threshold : Float
 
 Output sockets
---------------
  - points : Geometry
 
 ### Header

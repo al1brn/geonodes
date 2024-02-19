@@ -5,22 +5,18 @@
 ## Node reference
 
 Node
-----
  - Class name : TransformGeometry
  - bl_idname : GeometryNodeTransform
 
 Node parameters
----------------
 
 Input sockets
--------------
  - geometry : Geometry
  - translation : Vect
  - rotation : Vect
  - scale : Vect
 
 Output sockets
---------------
  - geometry : Geometry
 
 ### Header

@@ -5,19 +5,15 @@
 ## Node reference
 
 Node
-----
  - Class name : RealizeInstances
  - bl_idname : GeometryNodeRealizeInstances
 
 Node parameters
----------------
 
 Input sockets
--------------
  - geometry : Geometry
 
 Output sockets
---------------
  - geometry : Geometry
 
 ### Header

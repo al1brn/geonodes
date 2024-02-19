@@ -5,23 +5,19 @@
 ## Node reference
 
 Node
-----
  - Class name : MeshBoolean
  - bl_idname : GeometryNodeMeshBoolean
 
 Node parameters
----------------
  - operation : 'DIFFERENCE'
 
 Input sockets
--------------
  - mesh_1 : Geometry
  - mesh_2 : Geometry
  - self_intersection : Bool
  - hole_tolerant : Bool
 
 Output sockets
---------------
  - mesh : Geometry
  - intersecting_edges : Bool
 

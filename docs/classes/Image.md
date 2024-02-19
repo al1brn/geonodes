@@ -5,19 +5,15 @@
 ## Node reference
 
 Node
-----
  - Class name : Image
  - bl_idname : GeometryNodeInputImage
 
 Node parameters
----------------
  - image : None
 
 Input sockets
--------------
 
 Output sockets
---------------
  - image : Img
 
 ### Header

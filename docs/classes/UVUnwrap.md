@@ -5,23 +5,19 @@
 ## Node reference
 
 Node
-----
  - Class name : UVUnwrap
  - bl_idname : GeometryNodeUVUnwrap
 
 Node parameters
----------------
  - method : 'ANGLE_BASED'
 
 Input sockets
--------------
  - selection : Bool
  - seam : Bool
  - margin : Float
  - fill_holes : Bool
 
 Output sockets
---------------
  - uv : Vect
 
 ### Header

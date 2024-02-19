@@ -5,23 +5,19 @@
 ## Node reference
 
 Node
-----
  - Class name : SetHandlePositions
  - bl_idname : GeometryNodeSetCurveHandlePositions
 
 Node parameters
----------------
  - mode : 'LEFT'
 
 Input sockets
--------------
  - curve : Geometry
  - selection : Bool
  - position : Vect
  - offset : Vect
 
 Output sockets
---------------
  - curve : Geometry
 
 ### Header

@@ -5,15 +5,12 @@
 ## Node reference
 
 Node
-----
  - Class name : ScaleInstances
  - bl_idname : GeometryNodeScaleInstances
 
 Node parameters
----------------
 
 Input sockets
--------------
  - instances : Geometry
  - selection : Bool
  - scale : Vect
@@ -21,7 +18,6 @@ Input sockets
  - local_space : Bool
 
 Output sockets
---------------
  - instances : Geometry
 
 ### Header

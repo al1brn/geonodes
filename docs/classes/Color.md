@@ -5,18 +5,14 @@
 ## Node reference
 
 Node
-----
  - Class name : Color
  - bl_idname : FunctionNodeInputColor
 
 Node parameters
----------------
 
 Input sockets
--------------
 
 Output sockets
---------------
  - color : Col
 
 ### Header

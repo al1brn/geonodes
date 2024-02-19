@@ -5,21 +5,17 @@
 ## Node reference
 
 Node
-----
  - Class name : UVSphere
  - bl_idname : GeometryNodeMeshUVSphere
 
 Node parameters
----------------
 
 Input sockets
--------------
  - segments : Int
  - rings : Int
  - radius : Float
 
 Output sockets
---------------
  - mesh : Geometry
  - uv_map : Vect
 

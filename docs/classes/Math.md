@@ -5,23 +5,19 @@
 ## Node reference
 
 Node
-----
  - Class name : Math
  - bl_idname : ShaderNodeMath
 
 Node parameters
----------------
  - operation : 'ADD'
  - use_clamp : False
 
 Input sockets
--------------
  - value : Float
  - value_1 : Float
  - value_2 : Float
 
 Output sockets
---------------
  - value : Float
 
 ### Header

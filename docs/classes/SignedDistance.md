@@ -5,18 +5,14 @@
 ## Node reference
 
 Node
-----
  - Class name : SignedDistance
  - bl_idname : GeometryNodeInputSignedDistance
 
 Node parameters
----------------
 
 Input sockets
--------------
 
 Output sockets
---------------
  - signed_distance : Float
 
 ### Header

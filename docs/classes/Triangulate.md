@@ -5,23 +5,19 @@
 ## Node reference
 
 Node
-----
  - Class name : Triangulate
  - bl_idname : GeometryNodeTriangulate
 
 Node parameters
----------------
  - ngon_method : 'BEAUTY'
  - quad_method : 'SHORTEST_DIAGONAL'
 
 Input sockets
--------------
  - mesh : Geometry
  - selection : Bool
  - minimum_vertices : Int
 
 Output sockets
---------------
  - mesh : Geometry
 
 ### Header

@@ -5,18 +5,14 @@
 ## Node reference
 
 Node
-----
  - Class name : SelfObject
  - bl_idname : GeometryNodeSelfObject
 
 Node parameters
----------------
 
 Input sockets
--------------
 
 Output sockets
---------------
  - self_object : Object
 
 ### Header

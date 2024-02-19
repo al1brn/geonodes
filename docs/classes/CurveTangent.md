@@ -5,18 +5,14 @@
 ## Node reference
 
 Node
-----
  - Class name : CurveTangent
  - bl_idname : GeometryNodeInputTangent
 
 Node parameters
----------------
 
 Input sockets
--------------
 
 Output sockets
---------------
  - tangent : Vect
 
 ### Header

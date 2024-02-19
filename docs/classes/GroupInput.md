@@ -5,18 +5,14 @@
 ## Node reference
 
 Node
-----
  - Class name : GroupInput
  - bl_idname : NodeGroupInput
 
 Node parameters
----------------
 
 Input sockets
--------------
 
 Output sockets
---------------
 
 ### Header
 

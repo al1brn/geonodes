@@ -5,18 +5,14 @@
 ## Node reference
 
 Node
-----
  - Class name : IsViewport
  - bl_idname : GeometryNodeIsViewport
 
 Node parameters
----------------
 
 Input sockets
--------------
 
 Output sockets
---------------
  - is_viewport : Bool
 
 ### Header

@@ -5,12 +5,10 @@
 ## Node reference
 
 Node
-----
  - Class name : VoronoiTexture
  - bl_idname : ShaderNodeTexVoronoi
 
 Node parameters
----------------
  - color_mapping
  - distance : 'EUCLIDEAN'
  - feature : 'F1'
@@ -19,7 +17,6 @@ Node parameters
  - voronoi_dimensions : '3D'
 
 Input sockets
--------------
  - vector : Vect
  - w : Float
  - scale : Float
@@ -31,7 +28,6 @@ Input sockets
  - randomness : Float
 
 Output sockets
---------------
  - distance : Float
  - color : Col
  - position : Vect

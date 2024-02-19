@@ -5,21 +5,17 @@
 ## Node reference
 
 Node
-----
  - Class name : Frame
  - bl_idname : NodeFrame
 
 Node parameters
----------------
  - label_size : 20
  - shrink : True
  - text : None
 
 Input sockets
--------------
 
 Output sockets
---------------
 
 ### Header
 

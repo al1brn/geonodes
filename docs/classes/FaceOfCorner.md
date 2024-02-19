@@ -5,19 +5,15 @@
 ## Node reference
 
 Node
-----
  - Class name : FaceOfCorner
  - bl_idname : GeometryNodeFaceOfCorner
 
 Node parameters
----------------
 
 Input sockets
--------------
  - corner_index : Int
 
 Output sockets
---------------
  - face_index : Int
  - index_in_face : Int
 

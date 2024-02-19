@@ -478,7 +478,11 @@ class List:
 
         if self.title is not None:
             #self.doc.add(Header(self.title, 2, indent=self.doc.list_level, use_margin=True))
-            self.doc.add(Paragraph(self.title, level=self.doc.list_level), Paragraph('-'*len(self.title), level=self.doc.list_level))
+            if self.doc.is_md:
+                self.doc.add(Paragraph(self.title, level=self.doc.list_level))
+            else:
+                self.doc.add(Paragraph(self.title, level=self.doc.list_level), Paragraph('-'*len(self.title), level=self.doc.list_level))
+
             self.doc.list_level += 1
         
         self.level    = self.doc.list_level

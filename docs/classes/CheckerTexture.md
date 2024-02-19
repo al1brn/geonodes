@@ -5,24 +5,20 @@
 ## Node reference
 
 Node
-----
  - Class name : CheckerTexture
  - bl_idname : ShaderNodeTexChecker
 
 Node parameters
----------------
  - color_mapping
  - texture_mapping
 
 Input sockets
--------------
  - vector : Vect
  - color1 : Col
  - color2 : Col
  - scale : Float
 
 Output sockets
---------------
  - color : Col
  - fac : Float
 

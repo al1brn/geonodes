@@ -5,16 +5,13 @@
 ## Node reference
 
 Node
-----
  - Class name : Quadrilateral
  - bl_idname : GeometryNodeCurvePrimitiveQuadrilateral
 
 Node parameters
----------------
  - mode : 'RECTANGLE'
 
 Input sockets
--------------
  - width : Float
  - height : Float
  - bottom_width : Float
@@ -28,7 +25,6 @@ Input sockets
  - point_4 : Vect
 
 Output sockets
---------------
  - curve : Geometry
 
 ### Header

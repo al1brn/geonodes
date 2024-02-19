@@ -5,20 +5,16 @@
 ## Node reference
 
 Node
-----
  - Class name : EndpointSelection
  - bl_idname : GeometryNodeCurveEndpointSelection
 
 Node parameters
----------------
 
 Input sockets
--------------
  - start_size : Int
  - end_size : Int
 
 Output sockets
---------------
  - selection : Bool
 
 ### Header

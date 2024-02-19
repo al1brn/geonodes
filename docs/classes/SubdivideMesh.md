@@ -5,20 +5,16 @@
 ## Node reference
 
 Node
-----
  - Class name : SubdivideMesh
  - bl_idname : GeometryNodeSubdivideMesh
 
 Node parameters
----------------
 
 Input sockets
--------------
  - mesh : Geometry
  - level : Int
 
 Output sockets
---------------
  - mesh : Geometry
 
 ### Header

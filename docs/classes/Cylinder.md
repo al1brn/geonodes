@@ -5,16 +5,13 @@
 ## Node reference
 
 Node
-----
  - Class name : Cylinder
  - bl_idname : GeometryNodeMeshCylinder
 
 Node parameters
----------------
  - fill_type : 'NGON'
 
 Input sockets
--------------
  - vertices : Int
  - side_segments : Int
  - fill_segments : Int
@@ -22,7 +19,6 @@ Input sockets
  - depth : Float
 
 Output sockets
---------------
  - mesh : Geometry
  - top : Bool
  - side : Bool

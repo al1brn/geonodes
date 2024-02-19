@@ -5,24 +5,20 @@
 ## Node reference
 
 Node
-----
  - Class name : AttributeStatistic
  - bl_idname : GeometryNodeAttributeStatistic
 
 Node parameters
----------------
  - data_type : 'FLOAT'
  - domain : 'POINT'
 
 Input sockets
--------------
  - geometry : Geometry
  - selection : Bool
  - attribute : Float
  - attribute_1 : Vect
 
 Output sockets
---------------
  - mean : Float
  - median : Float
  - sum : Float

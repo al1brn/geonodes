@@ -5,19 +5,15 @@
 ## Node reference
 
 Node
-----
  - Class name : GeometryToInstance
  - bl_idname : GeometryNodeGeometryToInstance
 
 Node parameters
----------------
 
 Input sockets
--------------
  - geometry : Geometry
 
 Output sockets
---------------
  - instances : Geometry
 
 ### Header

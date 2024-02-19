@@ -5,18 +5,14 @@
 ## Node reference
 
 Node
-----
  - Class name : MeshIsland
  - bl_idname : GeometryNodeInputMeshIsland
 
 Node parameters
----------------
 
 Input sockets
--------------
 
 Output sockets
---------------
  - island_index : Int
  - island_count : Int
 

@@ -5,20 +5,16 @@
 ## Node reference
 
 Node
-----
  - Class name : JoinStrings
  - bl_idname : GeometryNodeStringJoin
 
 Node parameters
----------------
 
 Input sockets
--------------
  - delimiter : Str
  - strings : Str
 
 Output sockets
---------------
  - string : Str
 
 ### Header

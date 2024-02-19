@@ -5,22 +5,18 @@
 ## Node reference
 
 Node
-----
  - Class name : Grid
  - bl_idname : GeometryNodeMeshGrid
 
 Node parameters
----------------
 
 Input sockets
--------------
  - size_x : Float
  - size_y : Float
  - vertices_x : Int
  - vertices_y : Int
 
 Output sockets
---------------
  - mesh : Geometry
  - uv_map : Vect
 

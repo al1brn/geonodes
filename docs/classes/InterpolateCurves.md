@@ -5,15 +5,12 @@
 ## Node reference
 
 Node
-----
  - Class name : InterpolateCurves
  - bl_idname : GeometryNodeInterpolateCurves
 
 Node parameters
----------------
 
 Input sockets
--------------
  - guide_curves : Geometry
  - guide_up : Vect
  - guide_group_id : Int
@@ -23,7 +20,6 @@ Input sockets
  - max_neighbors : Int
 
 Output sockets
---------------
  - curves : Geometry
  - closest_index : Int
  - closest_weight : Float

@@ -5,19 +5,15 @@
 ## Node reference
 
 Node
-----
  - Class name : BoundingBox
  - bl_idname : GeometryNodeBoundBox
 
 Node parameters
----------------
 
 Input sockets
--------------
  - geometry : Geometry
 
 Output sockets
---------------
  - bounding_box : Geometry
  - min : Vect
  - max : Vect

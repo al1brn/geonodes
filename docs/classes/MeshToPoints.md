@@ -5,23 +5,19 @@
 ## Node reference
 
 Node
-----
  - Class name : MeshToPoints
  - bl_idname : GeometryNodeMeshToPoints
 
 Node parameters
----------------
  - mode : 'VERTICES'
 
 Input sockets
--------------
  - mesh : Geometry
  - selection : Bool
  - position : Vect
  - radius : Float
 
 Output sockets
---------------
  - points : Geometry
 
 ### Header

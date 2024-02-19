@@ -5,20 +5,16 @@
 ## Node reference
 
 Node
-----
  - Class name : OffsetSDFVolume
  - bl_idname : GeometryNodeOffsetSDFVolume
 
 Node parameters
----------------
 
 Input sockets
--------------
  - volume : Geometry
  - distance : Float
 
 Output sockets
---------------
  - volume : Geometry
 
 ### Header

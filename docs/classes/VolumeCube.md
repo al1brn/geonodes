@@ -5,15 +5,12 @@
 ## Node reference
 
 Node
-----
  - Class name : VolumeCube
  - bl_idname : GeometryNodeVolumeCube
 
 Node parameters
----------------
 
 Input sockets
--------------
  - density : Float
  - background : Float
  - min : Vect
@@ -23,7 +20,6 @@ Input sockets
  - resolution_z : Int
 
 Output sockets
---------------
  - volume : Geometry
 
 ### Header

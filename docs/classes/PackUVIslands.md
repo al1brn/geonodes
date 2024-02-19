@@ -5,22 +5,18 @@
 ## Node reference
 
 Node
-----
  - Class name : PackUVIslands
  - bl_idname : GeometryNodeUVPackIslands
 
 Node parameters
----------------
 
 Input sockets
--------------
  - uv : Vect
  - selection : Bool
  - margin : Float
  - rotate : Bool
 
 Output sockets
---------------
  - uv : Vect
 
 ### Header

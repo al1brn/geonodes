@@ -5,20 +5,16 @@
 ## Node reference
 
 Node
-----
  - Class name : OffsetCornerInFace
  - bl_idname : GeometryNodeOffsetCornerInFace
 
 Node parameters
----------------
 
 Input sockets
--------------
  - corner_index : Int
  - offset : Int
 
 Output sockets
---------------
  - corner_index : Int
 
 ### Header

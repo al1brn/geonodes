@@ -5,18 +5,14 @@
 ## Node reference
 
 Node
-----
  - Class name : EdgeVertices
  - bl_idname : GeometryNodeInputMeshEdgeVertices
 
 Node parameters
----------------
 
 Input sockets
--------------
 
 Output sockets
---------------
  - vertex_index_1 : Int
  - vertex_index_2 : Int
  - position_1 : Vect

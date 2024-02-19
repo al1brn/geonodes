@@ -5,21 +5,17 @@
 ## Node reference
 
 Node
-----
  - Class name : SetSplineCyclic
  - bl_idname : GeometryNodeSetSplineCyclic
 
 Node parameters
----------------
 
 Input sockets
--------------
  - geometry : Geometry
  - selection : Bool
  - cyclic : Bool
 
 Output sockets
---------------
  - geometry : Geometry
 
 ### Header

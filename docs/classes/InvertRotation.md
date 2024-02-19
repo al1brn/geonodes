@@ -5,19 +5,15 @@
 ## Node reference
 
 Node
-----
  - Class name : InvertRotation
  - bl_idname : FunctionNodeInvertRotation
 
 Node parameters
----------------
 
 Input sockets
--------------
  - rotation : Rot
 
 Output sockets
---------------
  - rotation : Rot
 
 ### Header

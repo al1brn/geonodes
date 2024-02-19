@@ -5,23 +5,19 @@
 ## Node reference
 
 Node
-----
  - Class name : MeshToSDFVolume
  - bl_idname : GeometryNodeMeshToSDFVolume
 
 Node parameters
----------------
  - resolution_mode : 'VOXEL_AMOUNT'
 
 Input sockets
--------------
  - mesh : Geometry
  - voxel_size : Float
  - voxel_amount : Float
  - half_band_width : Float
 
 Output sockets
---------------
  - volume : Geometry
 
 ### Header

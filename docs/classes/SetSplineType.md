@@ -5,21 +5,17 @@
 ## Node reference
 
 Node
-----
  - Class name : SetSplineType
  - bl_idname : GeometryNodeCurveSplineType
 
 Node parameters
----------------
  - spline_type : 'POLY'
 
 Input sockets
--------------
  - curve : Geometry
  - selection : Bool
 
 Output sockets
---------------
  - curve : Geometry
 
 ### Header

@@ -5,19 +5,15 @@
 ## Node reference
 
 Node
-----
  - Class name : JoinGeometry
  - bl_idname : GeometryNodeJoinGeometry
 
 Node parameters
----------------
 
 Input sockets
--------------
  - geometry : Geometry
 
 Output sockets
---------------
  - geometry : Geometry
 
 ### Header

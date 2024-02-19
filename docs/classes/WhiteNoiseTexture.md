@@ -5,21 +5,17 @@
 ## Node reference
 
 Node
-----
  - Class name : WhiteNoiseTexture
  - bl_idname : ShaderNodeTexWhiteNoise
 
 Node parameters
----------------
  - noise_dimensions : '3D'
 
 Input sockets
--------------
  - vector : Vect
  - w : Float
 
 Output sockets
---------------
  - value : Float
  - color : Col
 

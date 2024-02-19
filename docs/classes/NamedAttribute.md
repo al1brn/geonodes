@@ -5,20 +5,16 @@
 ## Node reference
 
 Node
-----
  - Class name : NamedAttribute
  - bl_idname : GeometryNodeInputNamedAttribute
 
 Node parameters
----------------
  - data_type : 'FLOAT'
 
 Input sockets
--------------
  - name : Str
 
 Output sockets
---------------
  - attribute : Vect
  - attribute_1 : Float
  - attribute_2 : Col

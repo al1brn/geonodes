@@ -5,19 +5,16 @@
 ## Node reference
 
 Node
-----
  - Class name : MusgraveTexture
  - bl_idname : ShaderNodeTexMusgrave
 
 Node parameters
----------------
  - color_mapping
  - musgrave_dimensions : '3D'
  - musgrave_type : 'FBM'
  - texture_mapping
 
 Input sockets
--------------
  - vector : Vect
  - w : Float
  - scale : Float
@@ -28,7 +25,6 @@ Input sockets
  - gain : Float
 
 Output sockets
---------------
  - fac : Float
 
 ### Header

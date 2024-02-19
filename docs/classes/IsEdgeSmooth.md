@@ -5,18 +5,14 @@
 ## Node reference
 
 Node
-----
  - Class name : IsEdgeSmooth
  - bl_idname : GeometryNodeInputEdgeSmooth
 
 Node parameters
----------------
 
 Input sockets
--------------
 
 Output sockets
---------------
  - smooth : Bool
 
 ### Header

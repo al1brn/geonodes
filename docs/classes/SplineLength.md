@@ -5,18 +5,14 @@
 ## Node reference
 
 Node
-----
  - Class name : SplineLength
  - bl_idname : GeometryNodeSplineLength
 
 Node parameters
----------------
 
 Input sockets
--------------
 
 Output sockets
---------------
  - length : Float
  - point_count : Int
 

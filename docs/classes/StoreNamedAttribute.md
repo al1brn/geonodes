@@ -5,17 +5,14 @@
 ## Node reference
 
 Node
-----
  - Class name : StoreNamedAttribute
  - bl_idname : GeometryNodeStoreNamedAttribute
 
 Node parameters
----------------
  - data_type : 'FLOAT'
  - domain : 'POINT'
 
 Input sockets
--------------
  - geometry : Geometry
  - selection : Bool
  - name : Str
@@ -27,7 +24,6 @@ Input sockets
  - value_5 : Rot
 
 Output sockets
---------------
  - geometry : Geometry
 
 ### Header

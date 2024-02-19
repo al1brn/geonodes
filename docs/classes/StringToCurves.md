@@ -5,12 +5,10 @@
 ## Node reference
 
 Node
-----
  - Class name : StringToCurves
  - bl_idname : GeometryNodeStringToCurves
 
 Node parameters
----------------
  - align_x : 'LEFT'
  - align_y : 'TOP_BASELINE'
  - font
@@ -18,7 +16,6 @@ Node parameters
  - pivot_mode : 'BOTTOM_LEFT'
 
 Input sockets
--------------
  - string : Str
  - size : Float
  - character_spacing : Float
@@ -28,7 +25,6 @@ Input sockets
  - text_box_height : Float
 
 Output sockets
---------------
  - curve_instances : Geometry
  - remainder : Str
  - line : Int

@@ -5,19 +5,15 @@
 ## Node reference
 
 Node
-----
  - Class name : String
  - bl_idname : FunctionNodeInputString
 
 Node parameters
----------------
  - string : ''
 
 Input sockets
--------------
 
 Output sockets
---------------
  - string : Str
 
 ### Header

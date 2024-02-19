@@ -5,20 +5,16 @@
 ## Node reference
 
 Node
-----
  - Class name : RotateVector
  - bl_idname : FunctionNodeRotateVector
 
 Node parameters
----------------
 
 Input sockets
--------------
  - vector : Vect
  - rotation : Rot
 
 Output sockets
---------------
  - vector : Vect
 
 ### Header

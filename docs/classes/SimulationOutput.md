@@ -5,23 +5,19 @@
 ## Node reference
 
 Node
-----
  - Class name : SimulationOutput
  - bl_idname : GeometryNodeSimulationOutput
 
 Node parameters
----------------
  - active_index : 0
  - active_item
  - state_items
 
 Input sockets
--------------
  - skip : Bool
  - geometry : Geometry
 
 Output sockets
---------------
  - geometry : Geometry
 
 ### Header

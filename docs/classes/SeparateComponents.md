@@ -5,19 +5,15 @@
 ## Node reference
 
 Node
-----
  - Class name : SeparateComponents
  - bl_idname : GeometryNodeSeparateComponents
 
 Node parameters
----------------
 
 Input sockets
--------------
  - geometry : Geometry
 
 Output sockets
---------------
  - mesh : Geometry
  - curve : Geometry
  - point_cloud : Geometry

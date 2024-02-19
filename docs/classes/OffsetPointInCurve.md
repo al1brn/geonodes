@@ -5,20 +5,16 @@
 ## Node reference
 
 Node
-----
  - Class name : OffsetPointInCurve
  - bl_idname : GeometryNodeOffsetPointInCurve
 
 Node parameters
----------------
 
 Input sockets
--------------
  - point_index : Int
  - offset : Int
 
 Output sockets
---------------
  - is_valid_offset : Bool
  - point_index : Int
 

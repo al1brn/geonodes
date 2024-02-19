@@ -5,23 +5,19 @@
 ## Node reference
 
 Node
-----
  - Class name : VectorMath
  - bl_idname : ShaderNodeVectorMath
 
 Node parameters
----------------
  - operation : 'ADD'
 
 Input sockets
--------------
  - vector : Vect
  - vector_1 : Vect
  - vector_2 : Vect
  - scale : Float
 
 Output sockets
---------------
  - vector : Vect
  - value : Float
 

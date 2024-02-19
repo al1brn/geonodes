@@ -5,19 +5,15 @@
 ## Node reference
 
 Node
-----
  - Class name : StringLength
  - bl_idname : FunctionNodeStringLength
 
 Node parameters
----------------
 
 Input sockets
--------------
  - string : Str
 
 Output sockets
---------------
  - length : Int
 
 ### Header

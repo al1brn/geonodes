@@ -5,19 +5,15 @@
 ## Node reference
 
 Node
-----
  - Class name : RotationToQuaternion
  - bl_idname : FunctionNodeRotationToQuaternion
 
 Node parameters
----------------
 
 Input sockets
--------------
  - rotation : Rot
 
 Output sockets
---------------
  - w : Float
  - x : Float
  - y : Float

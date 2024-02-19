@@ -5,20 +5,16 @@
 ## Node reference
 
 Node
-----
  - Class name : SimulationInput
  - bl_idname : GeometryNodeSimulationInput
 
 Node parameters
----------------
  - pair_with_output
  - paired_output : None
 
 Input sockets
--------------
 
 Output sockets
---------------
 
 ### Header
 

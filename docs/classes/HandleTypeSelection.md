@@ -5,20 +5,16 @@
 ## Node reference
 
 Node
-----
  - Class name : HandleTypeSelection
  - bl_idname : GeometryNodeCurveHandleTypeSelection
 
 Node parameters
----------------
  - handle_type : 'AUTO'
  - mode : {'RIGHT', 'LEFT'}
 
 Input sockets
--------------
 
 Output sockets
---------------
  - selection : Bool
 
 ### Header

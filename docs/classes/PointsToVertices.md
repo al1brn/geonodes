@@ -5,20 +5,16 @@
 ## Node reference
 
 Node
-----
  - Class name : PointsToVertices
  - bl_idname : GeometryNodePointsToVertices
 
 Node parameters
----------------
 
 Input sockets
--------------
  - points : Geometry
  - selection : Bool
 
 Output sockets
---------------
  - mesh : Geometry
 
 ### Header

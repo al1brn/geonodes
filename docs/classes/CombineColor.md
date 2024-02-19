@@ -5,23 +5,19 @@
 ## Node reference
 
 Node
-----
  - Class name : CombineColor
  - bl_idname : FunctionNodeCombineColor
 
 Node parameters
----------------
  - mode : 'RGB'
 
 Input sockets
--------------
  - red : Float
  - green : Float
  - blue : Float
  - alpha : Float
 
 Output sockets
---------------
  - color : Col
 
 ### Header

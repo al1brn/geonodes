@@ -5,21 +5,17 @@
 ## Node reference
 
 Node
-----
  - Class name : PointsOfCurve
  - bl_idname : GeometryNodePointsOfCurve
 
 Node parameters
----------------
 
 Input sockets
--------------
  - curve_index : Int
  - weights : Float
  - sort_index : Int
 
 Output sockets
---------------
  - point_index : Int
  - total : Int
 

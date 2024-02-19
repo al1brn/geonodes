@@ -5,19 +5,15 @@
 ## Node reference
 
 Node
-----
  - Class name : RotationToAxisAngle
  - bl_idname : FunctionNodeRotationToAxisAngle
 
 Node parameters
----------------
 
 Input sockets
--------------
  - rotation : Rot
 
 Output sockets
---------------
  - axis : Vect
  - angle : Float
 

@@ -5,20 +5,16 @@
 ## Node reference
 
 Node
-----
  - Class name : IndexOfNearest
  - bl_idname : GeometryNodeIndexOfNearest
 
 Node parameters
----------------
 
 Input sockets
--------------
  - position : Vect
  - group_id : Int
 
 Output sockets
---------------
  - index : Int
  - has_neighbor : Bool
 

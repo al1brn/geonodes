@@ -5,22 +5,18 @@
 ## Node reference
 
 Node
-----
  - Class name : Clamp
  - bl_idname : ShaderNodeClamp
 
 Node parameters
----------------
  - clamp_type : 'MINMAX'
 
 Input sockets
--------------
  - value : Float
  - min : Float
  - max : Float
 
 Output sockets
---------------
  - result : Float
 
 ### Header

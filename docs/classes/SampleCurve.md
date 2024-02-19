@@ -5,18 +5,15 @@
 ## Node reference
 
 Node
-----
  - Class name : SampleCurve
  - bl_idname : GeometryNodeSampleCurve
 
 Node parameters
----------------
  - data_type : 'FLOAT'
  - mode : 'FACTOR'
  - use_all_curves : False
 
 Input sockets
--------------
  - curves : Geometry
  - value : Float
  - value_1 : Int
@@ -29,7 +26,6 @@ Input sockets
  - curve_index : Int
 
 Output sockets
---------------
  - value : Float
  - value_1 : Int
  - value_2 : Vect

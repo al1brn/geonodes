@@ -5,18 +5,14 @@
 ## Node reference
 
 Node
-----
  - Class name : IsSplineCyclic
  - bl_idname : GeometryNodeInputSplineCyclic
 
 Node parameters
----------------
 
 Input sockets
--------------
 
 Output sockets
---------------
  - cyclic : Bool
 
 ### Header

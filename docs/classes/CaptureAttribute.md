@@ -5,17 +5,14 @@
 ## Node reference
 
 Node
-----
  - Class name : CaptureAttribute
  - bl_idname : GeometryNodeCaptureAttribute
 
 Node parameters
----------------
  - data_type : 'FLOAT'
  - domain : 'POINT'
 
 Input sockets
--------------
  - geometry : Geometry
  - value : Vect
  - value_1 : Float
@@ -25,7 +22,6 @@ Input sockets
  - value_5 : Rot
 
 Output sockets
---------------
  - geometry : Geometry
  - attribute : Vect
  - attribute_1 : Float

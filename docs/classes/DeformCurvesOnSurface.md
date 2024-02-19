@@ -5,19 +5,15 @@
 ## Node reference
 
 Node
-----
  - Class name : DeformCurvesOnSurface
  - bl_idname : GeometryNodeDeformCurvesOnSurface
 
 Node parameters
----------------
 
 Input sockets
--------------
  - curves : Geometry
 
 Output sockets
---------------
  - curves : Geometry
 
 ### Header

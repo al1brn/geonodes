@@ -5,24 +5,20 @@
 ## Node reference
 
 Node
-----
  - Class name : SubdivisionSurface
  - bl_idname : GeometryNodeSubdivisionSurface
 
 Node parameters
----------------
  - boundary_smooth : 'ALL'
  - uv_smooth : 'PRESERVE_BOUNDARIES'
 
 Input sockets
--------------
  - mesh : Geometry
  - level : Int
  - edge_crease : Float
  - vertex_crease : Float
 
 Output sockets
---------------
  - mesh : Geometry
 
 ### Header

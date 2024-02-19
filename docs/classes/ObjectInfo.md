@@ -5,21 +5,17 @@
 ## Node reference
 
 Node
-----
  - Class name : ObjectInfo
  - bl_idname : GeometryNodeObjectInfo
 
 Node parameters
----------------
  - transform_space : 'ORIGINAL'
 
 Input sockets
--------------
  - object : Object
  - as_instance : Bool
 
 Output sockets
---------------
  - location : Vect
  - rotation : Vect
  - scale : Vect

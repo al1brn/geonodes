@@ -5,20 +5,16 @@
 ## Node reference
 
 Node
-----
  - Class name : FloatToInteger
  - bl_idname : FunctionNodeFloatToInt
 
 Node parameters
----------------
  - rounding_mode : 'ROUND'
 
 Input sockets
--------------
  - float : Float
 
 Output sockets
---------------
  - integer : Int
 
 ### Header

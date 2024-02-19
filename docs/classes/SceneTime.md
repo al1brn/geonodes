@@ -5,18 +5,14 @@
 ## Node reference
 
 Node
-----
  - Class name : SceneTime
  - bl_idname : GeometryNodeInputSceneTime
 
 Node parameters
----------------
 
 Input sockets
--------------
 
 Output sockets
---------------
  - seconds : Float
  - frame : Float
 

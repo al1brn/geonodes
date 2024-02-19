@@ -5,20 +5,16 @@
 ## Node reference
 
 Node
-----
  - Class name : ValueToString
  - bl_idname : FunctionNodeValueToString
 
 Node parameters
----------------
 
 Input sockets
--------------
  - value : Float
  - decimals : Int
 
 Output sockets
---------------
  - string : Str
 
 ### Header

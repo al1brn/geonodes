@@ -5,18 +5,15 @@
 ## Node reference
 
 Node
-----
  - Class name : SampleIndex
  - bl_idname : GeometryNodeSampleIndex
 
 Node parameters
----------------
  - clamp : False
  - data_type : 'FLOAT'
  - domain : 'POINT'
 
 Input sockets
--------------
  - geometry : Geometry
  - value : Float
  - value_1 : Int
@@ -27,7 +24,6 @@ Input sockets
  - index : Int
 
 Output sockets
---------------
  - value : Float
  - value_1 : Int
  - value_2 : Vect

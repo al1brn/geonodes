@@ -5,16 +5,13 @@
 ## Node reference
 
 Node
-----
  - Class name : CurveCircle
  - bl_idname : GeometryNodeCurvePrimitiveCircle
 
 Node parameters
----------------
  - mode : 'RADIUS'
 
 Input sockets
--------------
  - resolution : Int
  - point_1 : Vect
  - point_2 : Vect
@@ -22,7 +19,6 @@ Input sockets
  - radius : Float
 
 Output sockets
---------------
  - curve : Geometry
  - center : Vect
 

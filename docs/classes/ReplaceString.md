@@ -5,21 +5,17 @@
 ## Node reference
 
 Node
-----
  - Class name : ReplaceString
  - bl_idname : FunctionNodeReplaceString
 
 Node parameters
----------------
 
 Input sockets
--------------
  - string : Str
  - find : Str
  - replace : Str
 
 Output sockets
---------------
  - string : Str
 
 ### Header

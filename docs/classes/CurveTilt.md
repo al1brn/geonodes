@@ -5,18 +5,14 @@
 ## Node reference
 
 Node
-----
  - Class name : CurveTilt
  - bl_idname : GeometryNodeInputCurveTilt
 
 Node parameters
----------------
 
 Input sockets
--------------
 
 Output sockets
---------------
  - tilt : Float
 
 ### Header

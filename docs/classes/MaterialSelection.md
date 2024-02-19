@@ -5,19 +5,15 @@
 ## Node reference
 
 Node
-----
  - Class name : MaterialSelection
  - bl_idname : GeometryNodeMaterialSelection
 
 Node parameters
----------------
 
 Input sockets
--------------
  - material : Mat
 
 Output sockets
---------------
  - selection : Bool
 
 ### Header

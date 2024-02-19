@@ -5,23 +5,19 @@
 ## Node reference
 
 Node
-----
  - Class name : AlignEulerToVector
  - bl_idname : FunctionNodeAlignEulerToVector
 
 Node parameters
----------------
  - axis : 'X'
  - pivot_axis : 'AUTO'
 
 Input sockets
--------------
  - rotation : Vect
  - factor : Float
  - vector : Vect
 
 Output sockets
---------------
  - rotation : Vect
 
 ### Header

@@ -5,22 +5,18 @@
 ## Node reference
 
 Node
-----
  - Class name : CurveToPoints
  - bl_idname : GeometryNodeCurveToPoints
 
 Node parameters
----------------
  - mode : 'COUNT'
 
 Input sockets
--------------
  - curve : Geometry
  - count : Int
  - length : Float
 
 Output sockets
---------------
  - points : Geometry
  - tangent : Vect
  - normal : Vect

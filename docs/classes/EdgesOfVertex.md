@@ -5,21 +5,17 @@
 ## Node reference
 
 Node
-----
  - Class name : EdgesOfVertex
  - bl_idname : GeometryNodeEdgesOfVertex
 
 Node parameters
----------------
 
 Input sockets
--------------
  - vertex_index : Int
  - weights : Float
  - sort_index : Int
 
 Output sockets
---------------
  - edge_index : Int
  - total : Int
 

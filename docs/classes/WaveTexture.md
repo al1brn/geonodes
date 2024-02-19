@@ -5,12 +5,10 @@
 ## Node reference
 
 Node
-----
  - Class name : WaveTexture
  - bl_idname : ShaderNodeTexWave
 
 Node parameters
----------------
  - bands_direction : 'X'
  - color_mapping
  - rings_direction : 'X'
@@ -19,7 +17,6 @@ Node parameters
  - wave_type : 'BANDS'
 
 Input sockets
--------------
  - vector : Vect
  - scale : Float
  - distortion : Float
@@ -29,7 +26,6 @@ Input sockets
  - phase_offset : Float
 
 Output sockets
---------------
  - color : Col
  - fac : Float
 

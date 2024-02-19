@@ -3,12 +3,10 @@
 <sub>go to [index](/docs/index.md)</sub>
 
 Socket
-------
  - Type : BOOLEAN
  - bl_idname : NodeSocketBool
 
 Methods
--------
  - [band](#band) : BooleanMath, boolean=self, operation='AND'
  - [bnot](#bnot) : BooleanMath, boolean=self, operation='NOT'
  - [boolean_math](#boolean_math) : BooleanMath, boolean=self
@@ -31,7 +29,6 @@ Methods
 BooleanMath, boolean=self, operation='AND'
 
 Node
-----
  - class_name : [BooleanMath](/docs/classes/BooleanMath.md)
  - bl_idname : FunctionNodeBooleanMath
 
@@ -40,7 +37,6 @@ Node
 BooleanMath, boolean=self, operation='NOT'
 
 Node
-----
  - class_name : [BooleanMath](/docs/classes/BooleanMath.md)
  - bl_idname : FunctionNodeBooleanMath
 
@@ -49,7 +45,6 @@ Node
 BooleanMath, boolean=self
 
 Node
-----
  - class_name : [BooleanMath](/docs/classes/BooleanMath.md)
  - bl_idname : FunctionNodeBooleanMath
 
@@ -58,7 +53,6 @@ Node
 BooleanMath, boolean=self, operation='OR'
 
 Node
-----
  - class_name : [BooleanMath](/docs/classes/BooleanMath.md)
  - bl_idname : FunctionNodeBooleanMath
 
@@ -67,7 +61,6 @@ Node
 CurveHandlePositions, relative=self, return node
 
 Node
-----
  - class_name : [CurveHandlePositions](/docs/classes/CurveHandlePositions.md)
  - bl_idname : GeometryNodeInputCurveHandlePositions
 
@@ -76,7 +69,6 @@ Node
 EdgePathsToSelection, start_vertices=self
 
 Node
-----
  - class_name : [EdgePathsToSelection](/docs/classes/EdgePathsToSelection.md)
  - bl_idname : GeometryNodeEdgePathsToSelection
 
@@ -85,7 +77,6 @@ Node
 EdgesToFaceGroups, boundary_edges=self, return socket
 
 Node
-----
  - class_name : [EdgesToFaceGroups](/docs/classes/EdgesToFaceGroups.md)
  - bl_idname : GeometryNodeEdgesToFaceGroups
 
@@ -94,7 +85,6 @@ Node
 BooleanMath, boolean=self, operation='IMPLY'
 
 Node
-----
  - class_name : [BooleanMath](/docs/classes/BooleanMath.md)
  - bl_idname : FunctionNodeBooleanMath
 
@@ -103,7 +93,6 @@ Node
 BooleanMath, boolean=self, operation='NAND'
 
 Node
-----
  - class_name : [BooleanMath](/docs/classes/BooleanMath.md)
  - bl_idname : FunctionNodeBooleanMath
 
@@ -112,7 +101,6 @@ Node
 BooleanMath, boolean=self, operation='NIMPLY'
 
 Node
-----
  - class_name : [BooleanMath](/docs/classes/BooleanMath.md)
  - bl_idname : FunctionNodeBooleanMath
 
@@ -121,7 +109,6 @@ Node
 BooleanMath, boolean=self, operation='NOR'
 
 Node
-----
  - class_name : [BooleanMath](/docs/classes/BooleanMath.md)
  - bl_idname : FunctionNodeBooleanMath
 
@@ -130,7 +117,6 @@ Node
 Switch, false=self, input_type='BOOLEAN'
 
 Node
-----
  - class_name : [Switch](/docs/classes/Switch.md)
  - bl_idname : GeometryNodeSwitch
 
@@ -139,7 +125,6 @@ Node
 BooleanMath, boolean=self, operation='XNOR'
 
 Node
-----
  - class_name : [BooleanMath](/docs/classes/BooleanMath.md)
  - bl_idname : FunctionNodeBooleanMath
 
@@ -148,6 +133,5 @@ Node
 BooleanMath, boolean=self, operation='XOR'
 
 Node
-----
  - class_name : [BooleanMath](/docs/classes/BooleanMath.md)
  - bl_idname : FunctionNodeBooleanMath

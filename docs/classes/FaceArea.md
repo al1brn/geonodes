@@ -5,18 +5,14 @@
 ## Node reference
 
 Node
-----
  - Class name : FaceArea
  - bl_idname : GeometryNodeInputMeshFaceArea
 
 Node parameters
----------------
 
 Input sockets
--------------
 
 Output sockets
---------------
  - area : Float
 
 ### Header

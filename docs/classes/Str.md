@@ -3,12 +3,10 @@
 <sub>go to [index](/docs/index.md)</sub>
 
 Socket
-------
  - Type : STRING
  - bl_idname : NodeSocketString
 
 Methods
--------
  - [equal](#equal) : Compare, a=self, data_type='STRING', operation='EQUAL'
  - [join_strings](#join_strings) : JoinStrings, delimiter=self
  - [named_attribute](#named_attribute) : NamedAttribute, name=self, return node
@@ -25,7 +23,6 @@ Methods
 Compare, a=self, data_type='STRING', operation='EQUAL'
 
 Node
-----
  - class_name : [Compare](/docs/classes/Compare.md)
  - bl_idname : FunctionNodeCompare
 
@@ -34,7 +31,6 @@ Node
 JoinStrings, delimiter=self
 
 Node
-----
  - class_name : [JoinStrings](/docs/classes/JoinStrings.md)
  - bl_idname : GeometryNodeStringJoin
 
@@ -43,7 +39,6 @@ Node
 NamedAttribute, name=self, return node
 
 Node
-----
  - class_name : [NamedAttribute](/docs/classes/NamedAttribute.md)
  - bl_idname : GeometryNodeInputNamedAttribute
 
@@ -52,7 +47,6 @@ Node
 Compare, a=self, data_type='STRING', operation='NOT_EQUAL'
 
 Node
-----
  - class_name : [Compare](/docs/classes/Compare.md)
  - bl_idname : FunctionNodeCompare
 
@@ -61,7 +55,6 @@ Node
 ReplaceString, string=self
 
 Node
-----
  - class_name : [ReplaceString](/docs/classes/ReplaceString.md)
  - bl_idname : FunctionNodeReplaceString
 
@@ -70,7 +63,6 @@ Node
 SliceString, string=self
 
 Node
-----
  - class_name : [SliceString](/docs/classes/SliceString.md)
  - bl_idname : FunctionNodeSliceString
 
@@ -79,7 +71,6 @@ Node
 StringLength, string=self, return socket
 
 Node
-----
  - class_name : [StringLength](/docs/classes/StringLength.md)
  - bl_idname : FunctionNodeStringLength
 
@@ -88,6 +79,5 @@ Node
 Switch, false=self, input_type='STRING'
 
 Node
-----
  - class_name : [Switch](/docs/classes/Switch.md)
  - bl_idname : GeometryNodeSwitch

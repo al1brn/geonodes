@@ -5,20 +5,16 @@
 ## Node reference
 
 Node
-----
  - Class name : DomainSize
  - bl_idname : GeometryNodeAttributeDomainSize
 
 Node parameters
----------------
  - component : 'MESH'
 
 Input sockets
--------------
  - geometry : Geometry
 
 Output sockets
---------------
  - point_count : Int
  - edge_count : Int
  - face_count : Int

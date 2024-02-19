@@ -5,16 +5,13 @@
 ## Node reference
 
 Node
-----
  - Class name : MeshToVolume
  - bl_idname : GeometryNodeMeshToVolume
 
 Node parameters
----------------
  - resolution_mode : 'VOXEL_AMOUNT'
 
 Input sockets
--------------
  - mesh : Geometry
  - density : Float
  - voxel_size : Float
@@ -22,7 +19,6 @@ Input sockets
  - interior_band_width : Float
 
 Output sockets
---------------
  - volume : Geometry
 
 ### Header

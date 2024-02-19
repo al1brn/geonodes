@@ -5,21 +5,17 @@
 ## Node reference
 
 Node
-----
  - Class name : SetPointRadius
  - bl_idname : GeometryNodeSetPointRadius
 
 Node parameters
----------------
 
 Input sockets
--------------
  - points : Geometry
  - selection : Bool
  - radius : Float
 
 Output sockets
---------------
  - points : Geometry
 
 ### Header

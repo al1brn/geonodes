@@ -5,19 +5,15 @@
 ## Node reference
 
 Node
-----
  - Class name : Vector
  - bl_idname : FunctionNodeInputVector
 
 Node parameters
----------------
  - vector : (0.0, 0.0, 0.0)
 
 Input sockets
--------------
 
 Output sockets
---------------
  - vector : Vect
 
 ### Header

@@ -5,16 +5,13 @@
 ## Node reference
 
 Node
-----
  - Class name : PointsToVolume
  - bl_idname : GeometryNodePointsToVolume
 
 Node parameters
----------------
  - resolution_mode : 'VOXEL_AMOUNT'
 
 Input sockets
--------------
  - points : Geometry
  - density : Float
  - voxel_size : Float
@@ -22,7 +19,6 @@ Input sockets
  - radius : Float
 
 Output sockets
---------------
  - volume : Geometry
 
 ### Header

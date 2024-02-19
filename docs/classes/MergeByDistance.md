@@ -5,22 +5,18 @@
 ## Node reference
 
 Node
-----
  - Class name : MergeByDistance
  - bl_idname : GeometryNodeMergeByDistance
 
 Node parameters
----------------
  - mode : 'ALL'
 
 Input sockets
--------------
  - geometry : Geometry
  - selection : Bool
  - distance : Float
 
 Output sockets
---------------
  - geometry : Geometry
 
 ### Header

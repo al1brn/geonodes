@@ -5,19 +5,15 @@
 ## Node reference
 
 Node
-----
  - Class name : Group
  - bl_idname : GeometryNodeGroup
 
 Node parameters
----------------
  - node_tree : None
 
 Input sockets
--------------
 
 Output sockets
---------------
 
 ### Header
 

@@ -5,21 +5,17 @@
 ## Node reference
 
 Node
-----
  - Class name : ReplaceMaterial
  - bl_idname : GeometryNodeReplaceMaterial
 
 Node parameters
----------------
 
 Input sockets
--------------
  - geometry : Geometry
  - old : Mat
  - new : Mat
 
 Output sockets
---------------
  - geometry : Geometry
 
 ### Header

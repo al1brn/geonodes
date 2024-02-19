@@ -5,21 +5,17 @@
 ## Node reference
 
 Node
-----
  - Class name : FloatCurve
  - bl_idname : ShaderNodeFloatCurve
 
 Node parameters
----------------
  - mapping
 
 Input sockets
--------------
  - factor : Float
  - value : Float
 
 Output sockets
---------------
  - value : Float
 
 ### Header

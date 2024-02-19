@@ -5,18 +5,14 @@
 ## Node reference
 
 Node
-----
  - Class name : Position
  - bl_idname : GeometryNodeInputPosition
 
 Node parameters
----------------
 
 Input sockets
--------------
 
 Output sockets
---------------
  - position : Vect
 
 ### Header

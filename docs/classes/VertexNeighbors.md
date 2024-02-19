@@ -5,18 +5,14 @@
 ## Node reference
 
 Node
-----
  - Class name : VertexNeighbors
  - bl_idname : GeometryNodeInputMeshVertexNeighbors
 
 Node parameters
----------------
 
 Input sockets
--------------
 
 Output sockets
---------------
  - vertex_count : Int
  - face_count : Int
 

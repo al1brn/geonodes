@@ -5,15 +5,12 @@
 ## Node reference
 
 Node
-----
  - Class name : Spiral
  - bl_idname : GeometryNodeCurveSpiral
 
 Node parameters
----------------
 
 Input sockets
--------------
  - resolution : Int
  - rotations : Float
  - start_radius : Float
@@ -22,7 +19,6 @@ Input sockets
  - reverse : Bool
 
 Output sockets
---------------
  - curve : Geometry
 
 ### Header

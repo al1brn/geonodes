@@ -5,17 +5,14 @@
 ## Node reference
 
 Node
-----
  - Class name : Viewer
  - bl_idname : GeometryNodeViewer
 
 Node parameters
----------------
  - data_type : 'FLOAT'
  - domain : 'AUTO'
 
 Input sockets
--------------
  - geometry : Geometry
  - value : Float
  - value_1 : Vect
@@ -25,7 +22,6 @@ Input sockets
  - value_5 : Rot
 
 Output sockets
---------------
 
 ### Header
 

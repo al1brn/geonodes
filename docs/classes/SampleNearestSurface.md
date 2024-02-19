@@ -5,16 +5,13 @@
 ## Node reference
 
 Node
-----
  - Class name : SampleNearestSurface
  - bl_idname : GeometryNodeSampleNearestSurface
 
 Node parameters
----------------
  - data_type : 'FLOAT'
 
 Input sockets
--------------
  - mesh : Geometry
  - value : Float
  - value_1 : Int
@@ -25,7 +22,6 @@ Input sockets
  - sample_position : Vect
 
 Output sockets
---------------
  - value : Float
  - value_1 : Int
  - value_2 : Vect

@@ -5,18 +5,14 @@
 ## Node reference
 
 Node
-----
  - Class name : SpecialCharacters
  - bl_idname : FunctionNodeInputSpecialCharacters
 
 Node parameters
----------------
 
 Input sockets
--------------
 
 Output sockets
---------------
  - line_break : Str
  - tab : Str
 

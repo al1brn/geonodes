@@ -3,12 +3,10 @@
 <sub>go to [index](/docs/index.md)</sub>
 
 Socket
-------
  - Type : VECTOR
  - bl_idname : NodeSocketVector
 
 Methods
--------
  - [abs](#abs) : VectorMath, vector=self, operation='ABSOLUTE'
  - [add](#add) : VectorMath, vector=self, operation='ADD'
  - [align_euler_to_vector](#align_euler_to_vector) : AlignEulerToVector, rotation=self
@@ -66,7 +64,6 @@ Methods
 VectorMath, vector=self, operation='ABSOLUTE'
 
 Node
-----
  - class_name : [VectorMath](/docs/classes/VectorMath.md)
  - bl_idname : ShaderNodeVectorMath
 
@@ -75,7 +72,6 @@ Node
 VectorMath, vector=self, operation='ADD'
 
 Node
-----
  - class_name : [VectorMath](/docs/classes/VectorMath.md)
  - bl_idname : ShaderNodeVectorMath
 
@@ -84,7 +80,6 @@ Node
 AlignEulerToVector, rotation=self
 
 Node
-----
  - class_name : [AlignEulerToVector](/docs/classes/AlignEulerToVector.md)
  - bl_idname : FunctionNodeAlignEulerToVector
 
@@ -93,7 +88,6 @@ Node
 VectorMath, vector=self, operation='CEIL'
 
 Node
-----
  - class_name : [VectorMath](/docs/classes/VectorMath.md)
  - bl_idname : ShaderNodeVectorMath
 
@@ -102,7 +96,6 @@ Node
 VectorMath, vector=self, operation='COSINE'
 
 Node
-----
  - class_name : [VectorMath](/docs/classes/VectorMath.md)
  - bl_idname : ShaderNodeVectorMath
 
@@ -111,7 +104,6 @@ Node
 VectorMath, vector=self, operation='CROSS_PRODUCT'
 
 Node
-----
  - class_name : [VectorMath](/docs/classes/VectorMath.md)
  - bl_idname : ShaderNodeVectorMath
 
@@ -120,7 +112,6 @@ Node
 Cube, size=self
 
 Node
-----
  - class_name : [Cube](/docs/classes/Cube.md)
  - bl_idname : GeometryNodeMeshCube
 
@@ -129,7 +120,6 @@ Node
 VectorMath, vector=self, operation='DISTANCE'
 
 Node
-----
  - class_name : [VectorMath](/docs/classes/VectorMath.md)
  - bl_idname : ShaderNodeVectorMath
 
@@ -138,7 +128,6 @@ Node
 VectorMath, vector=self, operation='DIVIDE'
 
 Node
-----
  - class_name : [VectorMath](/docs/classes/VectorMath.md)
  - bl_idname : ShaderNodeVectorMath
 
@@ -147,7 +136,6 @@ Node
 VectorMath, vector=self, operation='DOT_PRODUCT'
 
 Node
-----
  - class_name : [VectorMath](/docs/classes/VectorMath.md)
  - bl_idname : ShaderNodeVectorMath
 
@@ -156,7 +144,6 @@ Node
 Compare, a=self, data_type='VECTOR', operation='EQUAL'
 
 Node
-----
  - class_name : [Compare](/docs/classes/Compare.md)
  - bl_idname : FunctionNodeCompare
 
@@ -165,7 +152,6 @@ Node
 EulerToRotation, euler=self, return socket
 
 Node
-----
  - class_name : [EulerToRotation](/docs/classes/EulerToRotation.md)
  - bl_idname : FunctionNodeEulerToRotation
 
@@ -174,7 +160,6 @@ Node
 VectorMath, vector=self, operation='FACEFORWARD'
 
 Node
-----
  - class_name : [VectorMath](/docs/classes/VectorMath.md)
  - bl_idname : ShaderNodeVectorMath
 
@@ -183,7 +168,6 @@ Node
 VectorMath, vector=self, operation='FLOOR'
 
 Node
-----
  - class_name : [VectorMath](/docs/classes/VectorMath.md)
  - bl_idname : ShaderNodeVectorMath
 
@@ -192,7 +176,6 @@ Node
 VectorMath, vector=self, operation='FRACTION'
 
 Node
-----
  - class_name : [VectorMath](/docs/classes/VectorMath.md)
  - bl_idname : ShaderNodeVectorMath
 
@@ -201,7 +184,6 @@ Node
 GeometryProximity, source_position=self
 
 Node
-----
  - class_name : [GeometryProximity](/docs/classes/GeometryProximity.md)
  - bl_idname : GeometryNodeProximity
 
@@ -210,7 +192,6 @@ Node
 GradientTexture, vector=self, return node
 
 Node
-----
  - class_name : [GradientTexture](/docs/classes/GradientTexture.md)
  - bl_idname : ShaderNodeTexGradient
 
@@ -219,7 +200,6 @@ Node
 Compare, a=self, data_type='VECTOR', operation='GREATER_EQUAL'
 
 Node
-----
  - class_name : [Compare](/docs/classes/Compare.md)
  - bl_idname : FunctionNodeCompare
 
@@ -228,7 +208,6 @@ Node
 Compare, a=self, data_type='VECTOR', operation='GREATER_THAN'
 
 Node
-----
  - class_name : [Compare](/docs/classes/Compare.md)
  - bl_idname : FunctionNodeCompare
 
@@ -237,7 +216,6 @@ Node
 VectorMath, vector=self, operation='LENGTH'
 
 Node
-----
  - class_name : [VectorMath](/docs/classes/VectorMath.md)
  - bl_idname : ShaderNodeVectorMath
 
@@ -246,7 +224,6 @@ Node
 Compare, a=self, data_type='VECTOR', operation='LESS_EQUAL'
 
 Node
-----
  - class_name : [Compare](/docs/classes/Compare.md)
  - bl_idname : FunctionNodeCompare
 
@@ -255,7 +232,6 @@ Node
 Compare, a=self, data_type='VECTOR', operation='LESS_THAN'
 
 Node
-----
  - class_name : [Compare](/docs/classes/Compare.md)
  - bl_idname : FunctionNodeCompare
 
@@ -264,7 +240,6 @@ Node
 VectorMath, vector=self, operation='MAXIMUM'
 
 Node
-----
  - class_name : [VectorMath](/docs/classes/VectorMath.md)
  - bl_idname : ShaderNodeVectorMath
 
@@ -273,7 +248,6 @@ Node
 VectorMath, vector=self, operation='MINIMUM'
 
 Node
-----
  - class_name : [VectorMath](/docs/classes/VectorMath.md)
  - bl_idname : ShaderNodeVectorMath
 
@@ -282,7 +256,6 @@ Node
 Mix, a=self, data_type='VECTOR'
 
 Node
-----
  - class_name : [Mix](/docs/classes/Mix.md)
  - bl_idname : ShaderNodeMix
 
@@ -291,7 +264,6 @@ Node
 VectorMath, vector=self, operation='MODULO'
 
 Node
-----
  - class_name : [VectorMath](/docs/classes/VectorMath.md)
  - bl_idname : ShaderNodeVectorMath
 
@@ -300,7 +272,6 @@ Node
 VectorMath, vector=self, operation='MULTIPLY'
 
 Node
-----
  - class_name : [VectorMath](/docs/classes/VectorMath.md)
  - bl_idname : ShaderNodeVectorMath
 
@@ -309,7 +280,6 @@ Node
 VectorMath, vector=self, operation='MULTIPLY_ADD'
 
 Node
-----
  - class_name : [VectorMath](/docs/classes/VectorMath.md)
  - bl_idname : ShaderNodeVectorMath
 
@@ -318,7 +288,6 @@ Node
 VectorMath, vector=self, operation='NORMALIZE'
 
 Node
-----
  - class_name : [VectorMath](/docs/classes/VectorMath.md)
  - bl_idname : ShaderNodeVectorMath
 
@@ -327,7 +296,6 @@ Node
 Compare, a=self, data_type='VECTOR', operation='NOT_EQUAL'
 
 Node
-----
  - class_name : [Compare](/docs/classes/Compare.md)
  - bl_idname : FunctionNodeCompare
 
@@ -336,7 +304,6 @@ Node
 PackUVIslands, uv=self
 
 Node
-----
  - class_name : [PackUVIslands](/docs/classes/PackUVIslands.md)
  - bl_idname : GeometryNodeUVPackIslands
 
@@ -345,7 +312,6 @@ Node
 VectorMath, vector=self, operation='PROJECT'
 
 Node
-----
  - class_name : [VectorMath](/docs/classes/VectorMath.md)
  - bl_idname : ShaderNodeVectorMath
 
@@ -354,7 +320,6 @@ Node
 VectorMath, vector=self, operation='REFLECT'
 
 Node
-----
  - class_name : [VectorMath](/docs/classes/VectorMath.md)
  - bl_idname : ShaderNodeVectorMath
 
@@ -363,7 +328,6 @@ Node
 VectorMath, vector=self, operation='REFRACT'
 
 Node
-----
  - class_name : [VectorMath](/docs/classes/VectorMath.md)
  - bl_idname : ShaderNodeVectorMath
 
@@ -372,7 +336,6 @@ Node
 RotateEuler, rotation=self
 
 Node
-----
  - class_name : [RotateEuler](/docs/classes/RotateEuler.md)
  - bl_idname : FunctionNodeRotateEuler
 
@@ -381,7 +344,6 @@ Node
 RotateVector, vector=self
 
 Node
-----
  - class_name : [RotateVector](/docs/classes/RotateVector.md)
  - bl_idname : FunctionNodeRotateVector
 
@@ -390,7 +352,6 @@ Node
 VectorMath, vector=self, operation='SCALE'
 
 Node
-----
  - class_name : [VectorMath](/docs/classes/VectorMath.md)
  - bl_idname : ShaderNodeVectorMath
 
@@ -399,7 +360,6 @@ Node
 SeparateXYZ, vector=self, return node
 
 Node
-----
  - class_name : [SeparateXYZ](/docs/classes/SeparateXYZ.md)
  - bl_idname : ShaderNodeSeparateXYZ
 
@@ -408,7 +368,6 @@ Node
 VectorMath, vector=self, operation='SINE'
 
 Node
-----
  - class_name : [VectorMath](/docs/classes/VectorMath.md)
  - bl_idname : ShaderNodeVectorMath
 
@@ -417,7 +376,6 @@ Node
 VectorMath, vector=self, operation='SNAP'
 
 Node
-----
  - class_name : [VectorMath](/docs/classes/VectorMath.md)
  - bl_idname : ShaderNodeVectorMath
 
@@ -426,7 +384,6 @@ Node
 VectorMath, vector=self, operation='SUBTRACT'
 
 Node
-----
  - class_name : [VectorMath](/docs/classes/VectorMath.md)
  - bl_idname : ShaderNodeVectorMath
 
@@ -435,7 +392,6 @@ Node
 Switch, false=self, input_type='VECTOR'
 
 Node
-----
  - class_name : [Switch](/docs/classes/Switch.md)
  - bl_idname : GeometryNodeSwitch
 
@@ -444,7 +400,6 @@ Node
 VectorMath, vector=self, operation='TANGENT'
 
 Node
-----
  - class_name : [VectorMath](/docs/classes/VectorMath.md)
  - bl_idname : ShaderNodeVectorMath
 
@@ -453,7 +408,6 @@ Node
 VectorCurves, vector=self
 
 Node
-----
  - class_name : [VectorCurves](/docs/classes/VectorCurves.md)
  - bl_idname : ShaderNodeVectorCurve
 
@@ -462,7 +416,6 @@ Node
 VectorMath, vector=self
 
 Node
-----
  - class_name : [VectorMath](/docs/classes/VectorMath.md)
  - bl_idname : ShaderNodeVectorMath
 
@@ -471,7 +424,6 @@ Node
 VectorRotate, vector=self
 
 Node
-----
  - class_name : [VectorRotate](/docs/classes/VectorRotate.md)
  - bl_idname : ShaderNodeVectorRotate
 
@@ -480,7 +432,6 @@ Node
 WhiteNoiseTexture, vector=self
 
 Node
-----
  - class_name : [WhiteNoiseTexture](/docs/classes/WhiteNoiseTexture.md)
  - bl_idname : ShaderNodeTexWhiteNoise
 
@@ -489,7 +440,6 @@ Node
 VectorMath, vector=self, operation='WRAP'
 
 Node
-----
  - class_name : [VectorMath](/docs/classes/VectorMath.md)
  - bl_idname : ShaderNodeVectorMath
 
@@ -498,6 +448,5 @@ Node
 SeparateXYZ, Shortcut for Vect.separate_xyz
 
 Node
-----
  - class_name : [SeparateXYZ](/docs/classes/SeparateXYZ.md)
  - bl_idname : ShaderNodeSeparateXYZ

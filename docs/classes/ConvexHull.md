@@ -5,19 +5,15 @@
 ## Node reference
 
 Node
-----
  - Class name : ConvexHull
  - bl_idname : GeometryNodeConvexHull
 
 Node parameters
----------------
 
 Input sockets
--------------
  - geometry : Geometry
 
 Output sockets
---------------
  - convex_hull : Geometry
 
 ### Header

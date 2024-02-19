@@ -5,21 +5,17 @@
 ## Node reference
 
 Node
-----
  - Class name : SetCurveNormal
  - bl_idname : GeometryNodeSetCurveNormal
 
 Node parameters
----------------
  - mode : 'MINIMUM_TWIST'
 
 Input sockets
--------------
  - curve : Geometry
  - selection : Bool
 
 Output sockets
---------------
  - curve : Geometry
 
 ### Header

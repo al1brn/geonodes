@@ -5,18 +5,14 @@
 ## Node reference
 
 Node
-----
  - Class name : EdgeAngle
  - bl_idname : GeometryNodeInputMeshEdgeAngle
 
 Node parameters
----------------
 
 Input sockets
--------------
 
 Output sockets
---------------
  - unsigned_angle : Float
  - signed_angle : Float
 

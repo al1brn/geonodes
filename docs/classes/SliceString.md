@@ -5,21 +5,17 @@
 ## Node reference
 
 Node
-----
  - Class name : SliceString
  - bl_idname : FunctionNodeSliceString
 
 Node parameters
----------------
 
 Input sockets
--------------
  - string : Str
  - position : Int
  - length : Int
 
 Output sockets
---------------
  - string : Str
 
 ### Header

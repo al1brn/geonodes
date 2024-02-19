@@ -5,18 +5,15 @@
 ## Node reference
 
 Node
-----
  - Class name : Compare
  - bl_idname : FunctionNodeCompare
 
 Node parameters
----------------
  - data_type : 'FLOAT'
  - mode : 'ELEMENT'
  - operation : 'GREATER_THAN'
 
 Input sockets
--------------
  - a : Float
  - b : Float
  - a_1 : Int
@@ -32,7 +29,6 @@ Input sockets
  - epsilon : Float
 
 Output sockets
---------------
  - result : Bool
 
 ### Header

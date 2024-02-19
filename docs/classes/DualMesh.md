@@ -5,20 +5,16 @@
 ## Node reference
 
 Node
-----
  - Class name : DualMesh
  - bl_idname : GeometryNodeDualMesh
 
 Node parameters
----------------
 
 Input sockets
--------------
  - mesh : Geometry
  - keep_boundaries : Bool
 
 Output sockets
---------------
  - dual_mesh : Geometry
 
 ### Header

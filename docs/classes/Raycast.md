@@ -5,17 +5,14 @@
 ## Node reference
 
 Node
-----
  - Class name : Raycast
  - bl_idname : GeometryNodeRaycast
 
 Node parameters
----------------
  - data_type : 'FLOAT'
  - mapping : 'INTERPOLATED'
 
 Input sockets
--------------
  - target_geometry : Geometry
  - attribute : Vect
  - attribute_1 : Float
@@ -28,7 +25,6 @@ Input sockets
  - ray_length : Float
 
 Output sockets
---------------
  - is_hit : Bool
  - hit_position : Vect
  - hit_normal : Vect

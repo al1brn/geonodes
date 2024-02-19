@@ -5,16 +5,13 @@
 ## Node reference
 
 Node
-----
  - Class name : BezierSegment
  - bl_idname : GeometryNodeCurvePrimitiveBezierSegment
 
 Node parameters
----------------
  - mode : 'POSITION'
 
 Input sockets
--------------
  - resolution : Int
  - start : Vect
  - start_handle : Vect
@@ -22,7 +19,6 @@ Input sockets
  - end : Vect
 
 Output sockets
---------------
  - curve : Geometry
 
 ### Header

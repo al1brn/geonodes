@@ -5,18 +5,14 @@
 ## Node reference
 
 Node
-----
  - Class name : _3DCursor
  - bl_idname : GeometryNodeTool3DCursor
 
 Node parameters
----------------
 
 Input sockets
--------------
 
 Output sockets
---------------
  - location : Vect
  - rotation : Rot
 

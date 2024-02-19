@@ -5,20 +5,16 @@
 ## Node reference
 
 Node
-----
  - Class name : ReverseCurve
  - bl_idname : GeometryNodeReverseCurve
 
 Node parameters
----------------
 
 Input sockets
--------------
  - curve : Geometry
  - selection : Bool
 
 Output sockets
---------------
  - curve : Geometry
 
 ### Header

@@ -5,17 +5,14 @@
 ## Node reference
 
 Node
-----
  - Class name : DistributePointsOnFaces
  - bl_idname : GeometryNodeDistributePointsOnFaces
 
 Node parameters
----------------
  - distribute_method : 'RANDOM'
  - use_legacy_normal : False
 
 Input sockets
--------------
  - mesh : Geometry
  - selection : Bool
  - distance_min : Float
@@ -25,7 +22,6 @@ Input sockets
  - seed : Int
 
 Output sockets
---------------
  - points : Geometry
  - normal : Vect
  - rotation : Vect

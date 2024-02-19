@@ -5,22 +5,18 @@
 ## Node reference
 
 Node
-----
  - Class name : CollectionInfo
  - bl_idname : GeometryNodeCollectionInfo
 
 Node parameters
----------------
  - transform_space : 'ORIGINAL'
 
 Input sockets
--------------
  - collection : Collection
  - separate_children : Bool
  - reset_children : Bool
 
 Output sockets
---------------
  - instances : Geometry
 
 ### Header

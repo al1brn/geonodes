@@ -5,16 +5,13 @@
 ## Node reference
 
 Node
-----
  - Class name : SampleUVSurface
  - bl_idname : GeometryNodeSampleUVSurface
 
 Node parameters
----------------
  - data_type : 'FLOAT'
 
 Input sockets
--------------
  - mesh : Geometry
  - value : Float
  - value_1 : Int
@@ -26,7 +23,6 @@ Input sockets
  - sample_uv : Vect
 
 Output sockets
---------------
  - value : Float
  - value_1 : Int
  - value_2 : Vect
