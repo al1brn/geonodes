@@ -833,9 +833,10 @@ def build_doc(tree_type, folder):
     doc.add(Header("Index", 0))
     for cat, class_names in classes.items():
         doc.add(Header(cat, 1))
-        if len(class_names) > 2:
+        if len(class_names) > 20:
             initials = doc.initials(class_names)
-            for initial, sub in initials.items():
+            for initial in sorted(initials.keys()):
+                sub = initials[initial]
                 doc.add(Header(initial, 2))
                 links = " ".join(doc.list_links(sorted(sub)))
                 doc.add(Paragraph(links))
