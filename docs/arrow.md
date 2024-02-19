@@ -87,92 +87,35 @@ fac = tree.combine_xyz(f, f, 1)
 The starting point is a disk:
 
 ``` python
-    arrow = gn.Mesh.Circle(vertices=vertices, radius=r, fill_type='NGON')
+    arrow = tree.MeshCircle(vertices=vertices, radius=r, fill_type='NGON').mesh
 ```
 
 The shaft length was computed above, it is equal to `z1`. Hence, the shaft is built by extruding the disk edges up to z1:
 
 ``` python
-    edges = arrow.edges
-    top = edges.extrude(offset=(0, 0, 1), offset_scale=z1).top
+    arrow = arrow.extrude_mesh(offset=(0, 0, 1), offset_scale=z1, mode='EDGES')
+    # Extrusion node arrow provides selection sockets 'top' and 'side'
+    node = arrow.node
 ```
 
-The extrude method returns two Boolean selections. The first one is the selection the extruded edges and the seconde one a selection
-on the side faces. The faces are useless for now. In the final version we will set material to the faces and we will collect the faces.
+The `extrude_mesh` method returns the `mesh` socket of the extrusion node. To get access to `top` and `side` sockets, we simply read the node attribute from the `arrow` socket.
 
 The next extrusion step is to extrude the edges downwards and outwards.
 It the scheme above, we are at points `Q'` and want to extrude to point `Q''`.
 The direction of extrusion is given by the vector `QQ'`.
 The amount of extrusion is given by the maths.
 
-**Extrusion** The ***Extrude*** Node returns 3 sockets: 'Geometry', 'Top', 'Side'. The **extrude** method returns the nodes and not a particular socket.
-Use 'top' or 'side' attribute of the returned node.
-
 **Note:** Points `Q'` and  `Q''` are multiple (points forming the top circle of the shaft) when the point `Q` is unique.
 
 ``` python
-    top = edges[top].extrude(offset=edges[top].position - (0, 0, z2), offset_scale=s - 1).top
+    arrow = arrow[node.top].extrude_mesh(offset=arrow.position - (0, 0, z2), offset_scale=s - 1, mode='EDGES')
+    node = arrow.node
 ```
 
 To finish the arrow, we simply extrude from the current position to the top of the arrow:
 
 ``` python
-    top = edges[top].extrude(offset=(0, 0, length) - edges[top].position).top
-```
-
-## First version
-
-The first version of our arrow is then the following:
-
-``` python
-import numpy as np
-import geonodes as gn
-
-with gn.Tree("Arrow") as tree:
-
-    length    = gn.Float.Input(1, "Length", min_value=0)
-    r         = gn.Float.Input(0.02, "Radius", min_value=0.001)
-    s         = gn.Float.Input(3, "Head size", min_value=1.001)
-    angle     = gn.Float.Angle(np.radians(20), "Angle", min_value=np.radians(10), max_value=0.999*gn.pi/2)
-    k         = gn.Float.Input(0.5, "Recess", min_value=0., max_value=0.99)
-    vertices  = gn.Integer.Input(12, "Vertices", min_value=3)
-
-
-    with tree.layout("Maths stuff..."):
-
-        # ----- Arrowhead radius from the shaft radius
-
-        rh = r*s
-
-        # ----- Arrowhead height from the angle
-
-        tg = gn.tan(angle)
-        hh = rh/tg
-        z0 = length - hh
-
-        # ----- Recess computation
-
-        h  = r/tg
-        d  = k*h*(s - 1)
-
-        z1 = z0 + d
-        z2 = z0 + k*h*s
-
-    # -----Extrusion
-
-    arrow = gn.Mesh.Circle(vertices=vertices, radius=r, fill_type='NGON')
-    edges = arrow.edges
-    
-    top = edges.extrude(offset=(0, 0, 1), offset_scale=z1).top
-    
-    top = edges[top].extrude(offset=edges[top].position - (0, 0, z2), offset_scale=s - 1).top
-
-    edges[top].extrude(offset=(0, 0, length) - edges[top].position)
-
-    # ----- Output the arrow
-    
-    tree.og = arrow
-
+    arrow = arrow[node.top].extrude_mesh(offset=(0, 0, length) - arrow.position, mode='EDGES')
 ```
 
 ## Edges and vertices position
@@ -193,65 +136,37 @@ To correct that, we have to correct the edges positions with a factor computed f
 Without detailling the maths, the correction is the following:
 
 ``` python
-
     # ----- polygon correction factor
     # Extrusion uses edge position which is the mean of the two
     # extremities. The vertices position is then computed as the mean
     # of the two edges. Twice a cosine factor
-
-    f = 1/gn.cos(gn.pi/vertices)**2
-    fac = gn.Vector((f, f, 1))
-     
-        
+    
+    f = 1/tree.cos(np.pi/vertices)**2
+    fac = tree.combine_xyz(f, f, 1)
 ```
 
 And then:
 
 ``` python
-
-    top = edges[top].extrude(offset=edges[top].position*fac - (0, 0, z2), offset_scale=s - 1).top
-
-    top = edges[top].extrude(offset=(0, 0, length) - edges[top].position*fac).top
-
+    arrow = arrow[node.top].extrude_mesh(offset=arrow.position*fac - (0, 0, z2), offset_scale=s - 1, mode='EDGES')
+    ...
+    arrow = arrow[node.top].extrude_mesh(offset=(0, 0, length) - arrow.position*fac, mode='EDGES')
 ```
 
 ## Materials
 
 We want to apply materials: one for the shaft and one for the rest.
 
-Material is a property of faces, then we modify the code to:
-
 - Get the materials as input
 - Get the extruded faces
 - Setting the material to the faces
 
 ``` python
+    # Default material
+    arrow.material = head_mat
 
-    # Materials to apply
-
-    shaft_mat = gn.Material.Input(None, "Shaft")
-    head_mat  = gn.Material.Input(None, "Arrowhead")
-    
-    # ...
-    
-    arrow = gn.Mesh.Circle(vertices=vertices, radius=r, fill_type='NGON')
-    
-    # Apply the material to the base disk
-    
-    arrow.faces.material = head_mat
-
-    # Applying material to extruded faces
-    
-    node = arrow.edges.extrude(offset=(0, 0, 1), offset_scale=z1)
-    top, sides = node.top, node.sides
-    arrow.faces[sides].material = shaft_mat
-
-    node = edges[top].extrude(offset=edges[top].position*fac - (0, 0, z2), offset_scale=s - 1)
-    top, sides = node.top, node.sides
-    arrow.faces[sides].material = head_mat
-
-    edges[top].extrude(offset=(0, 0, length) - edges[top].position*fac)
-
+    # Material for extruded faces
+    arrow[node.side].material = shaft_mat
 ```
 
 ## Arrow orientation
@@ -270,11 +185,15 @@ In standard python, we would use a `if` statement.
 But here, we need to compute both orientations and use a `switch` node:
 
 ``` python
-    rot_copy  = obj.rotation(transform_space='ORIGINAL')
-    loc       = obj.location(transform_space='RELATIVE')
-    rot_track = gn.Vector.AlignToVector(vector=loc, axis='Z')
+    info = tree.ObjectInfo(obj, transform_space='ORIGINAL')
+    rot_copy  = info.rotation
 
-    arrow.transform(rotation=rot_copy.switch(track_obj, rot_track))
+    info = tree.ObjectInfo(obj, transform_space='RELATIVE')
+    loc       = info.location
+    
+    rot_track = tree.AlignEulerToVector(vector=loc, axis='Z')
+    
+    arrow.transform_geometry(rotation=rot_copy.switch(track_obj, rot_track))
 ``` 
 
 ## The final arrow
@@ -361,7 +280,6 @@ with GeoNodes("Arrow") as tree:
     # ----- Orientation
 
     with tree.layout("Orientation"):
-        
         info = tree.ObjectInfo(obj, transform_space='ORIGINAL')
         rot_copy  = info.rotation
 
