@@ -837,9 +837,9 @@ def build_doc(tree_type, folder):
             initials = doc.initials(class_names)
             for initial in sorted(initials.keys()):
                 sub = initials[initial]
-                doc.add(Header(initial, 2))
+                #doc.add(Header(initial, 2))
                 links = " ".join(doc.list_links(sorted(sub)))
-                doc.add(Paragraph(links))
+                doc.add(Paragraph(initial + " " + links))
         else:
             links = " ".join(doc.list_links(sorted(class_names)))
             doc.add(Paragraph(links))
