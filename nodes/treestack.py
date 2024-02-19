@@ -24,6 +24,7 @@ update : 2024/02/17
 import bpy
 
 from geonodes.nodes import constants
+from geonodes.nodes import documentation
 from geonodes.nodes import utils
 from geonodes.nodes import sockets
 
@@ -277,6 +278,13 @@ class StackedNode(object):
         
     def _input_socket_exists(self, name):
         return self.inputs.sockets_pynames(enabled_only=True).get(name) is not None
+    
+    # ====================================================================================================
+    # Documentation
+    
+    @classmethod
+    def print_doc(cls):
+        documentation.print_doc(cls)
     
     # ====================================================================================================
     # Plug one node into another

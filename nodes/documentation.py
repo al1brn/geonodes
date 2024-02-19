@@ -20,6 +20,7 @@ update : 2024/02/17
 """
 
 from pprint import pprint
+from pathlib import Path
 
 # ----- Documentation
 
@@ -124,7 +125,7 @@ def add_member_doc(tree_type, class_name, name, attr_type, descr=None, **kwargs)
 # Add a propperty
 
 def add_property_doc(tree_type, class_name, name,
-                     attr_type     = 'Property',
+                     attr_type     = 'Properties',
                      getter        = None,
                      setter        = None,
                      getter_node   = None,
@@ -145,7 +146,7 @@ def add_property_doc(tree_type, class_name, name,
 # Add a method / function
 
 def add_method_doc(tree_type, class_name, name,
-                attr_type  = 'Method',
+                attr_type  = 'Methods',
                 static     = False,
                 bl_idname  = None,
                 node_class = None,
@@ -299,10 +300,15 @@ def split_line(line, width, indent=0, bullet=None):
 # Doc specification
 
 class DocSpec:
-    def __init__(self, target='TEXT', width=100, margin=4):
+    def __init__(self, target='TEXT', width=100, margin=4, path=None):
         self.target = target
         self.width  = width
         self.margin = margin
+        self.path   = path
+        
+    @property
+    def is_md(self):
+        return self.target == 'MD'
         
 # ====================================================================================================
 # Sort a dictionnary from a field
@@ -344,11 +350,14 @@ class DocText:
     def __str__(self):
         return f"<DocText {self.level}, {self.text[:20]}>"
     
-    def lines(self, width):
+    def lines(self, doc_spec):
+        
         if self.text is None:
             return [""]
+        elif doc_spec.target == 'MD':
+            return ['  '*self.level + self.text]
         else:
-            return split_line(self.text, width, indent=self.level)
+            return split_line(self.text, doc_spec.width, indent=self.level)
         
 # ----------------------------------------------------------------------------------------------------
 # Paragraph
@@ -358,13 +367,30 @@ class Paragraph(DocText):
         super().__init__(text, level=level)
         
         self.bullet   = bullet
-        self.item     = item     # item   : text
+        self.item     = item
         self.item_len = 1
         
     def __str__(self):
         return f"<Paragraph {self.level}, {self.bullet}, {self.item}, {self.text[:20]}>"
         
-    def lines(self, width):
+    def lines(self, doc_spec):
+        if doc_spec.target == 'MD':
+            s = ' '*self.level
+            if self.bullet is not None:
+                s += self.bullet + ' '
+            if self.item is None:
+                if self.text is None:
+                    return ["\n"]
+                else:
+                    return [s + self.text]
+            else:
+                if self.text is None:
+                    return [s + self.item]
+                else:
+                    return [s + self.item + ' : ' + self.text]
+        
+        width = doc_spec.width
+        
         if self.item is None:
             return split_line(self.text, width, indent=self.level, bullet=self.bullet)
         else:
@@ -384,9 +410,14 @@ class Header(DocText):
         self.indent = indent
         self.use_margin = use_margin or level > 3
         
-    def lines(self, width):
+    def lines(self, doc_spec):
         if self.level < 0:
             return []
+        
+        if doc_spec.is_md:
+            return ['#'*(self.level +1 ) + ' ' + self.text + "\n"]
+        
+        width = doc_spec.width
         
         n = len(self.text)
         s_top = None
@@ -418,8 +449,9 @@ class Header(DocText):
 class Source(DocText):
     text_type = 'PYTHON'
     
-    def lines(self, width):
-        return split_line("``` python", width, indent=self.level) + super().lines(250) + split_line("```", width, indent=self.level)
+    def lines(self, doc_spec):
+        width = 250 if doc_spec.target == 'MD' else 120
+        return split_line("``` python", width, indent=self.level) + super().lines(DocSpec(width=width)) + split_line("```", width, indent=self.level)
         
 # ====================================================================================================
 # List
@@ -437,7 +469,8 @@ class List:
         self.doc.add(para)
         self.paras.append(para)
         
-        self.item_len = max(self.item_len, len(label))
+        if label is not None:
+            self.item_len = max(self.item_len, len(label))
         
     def __enter__(self):
 
@@ -462,6 +495,16 @@ class List:
 # ====================================================================================================
 # Documentation builder
 
+"""
+
+# Node BooleanMath
+
+> Geometry node name: [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/boolean_math.html)<br>
+  Blender type: [Boolean Math](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html)
+  
+<sub>go to [index](/docs/index.md)</sub>
+"""
+
 class Doc:
     def __init__(self, tree_type, doc_spec=None):
         
@@ -477,6 +520,9 @@ class Doc:
         self.list_level = 0
         self.paragraphs = []
         
+    @property
+    def is_md(self):
+        return self.doc_spec.is_md
         
     def add(self, *paras, new_line=False):
         for para in paras:
@@ -496,7 +542,7 @@ class Doc:
     def lines(self):
         lines = []
         for para in self.paragraphs:
-            ls = para.lines(self.doc_spec.width)
+            ls = para.lines(self.doc_spec)
             if para.use_margin:
                 ls = [" "*self.doc_spec.margin + l for l in ls]
             lines.extend(ls)
@@ -507,22 +553,45 @@ class Doc:
         return "\n".join(self.lines)
     
     # ====================================================================================================
+    # Links
+    
+    def class_link(self, class_name):
+        if class_name is None:
+            return "None"
+        elif self.doc_spec.target == 'MD':
+            return f"[{class_name}](/docs/classes/{class_name}.md)"
+        else:
+            return class_name
+        
+    def page_link(self, name):
+        if name is None:
+            return ""
+        elif self.doc_spec.target == 'MD':
+            return f"[{name}](#{name.lower().replace(' ', '-')})"
+        
+    def list_links(self, names):
+        if self.doc_spec.target == 'MD':
+            return [self.page_link(name) for name in names]
+        else:
+            return names
+            
+    
+    # ====================================================================================================
     # Cross references
     
     def cross_reference(self, class_name):
         
         cref = self.cref[class_name]
-        
         with self.bullets(new_line=True) as bullets:
         
             if 'GLOBAL' in cref:
-                bullets.add("functions", " ".join(cref['GLOBAL']))
+                bullets.add("functions", " ".join(self.list_links(cref['GLOBAL'])))
                 
             for target, names in cref.items():
                 if target == 'GLOBAL':
                     continue
     
-                bullets.add(target, " ".join(names) + " ")
+                bullets.add(target, " ".join(self.list_links(names)) + " ")
     
     # ====================================================================================================
     # Member documentation
@@ -537,19 +606,18 @@ class Doc:
         if member['descr'] is not None:
             self.add(Paragraph(member['descr']), new_line=True)
             
-        is_property = member['type'] == 'Property'
+        is_property = member['type'] == 'Properties'
         
         if is_property:
-            print("PROP", title, member)
             with self.bullets("Nodes", new_line=True) as bullets:
-                bullets.add('get', member['getter_node'])
-                bullets.add('set', member['setter_node'])
+                bullets.add('get', self.class_link(member['getter_node']))
+                bullets.add('set', self.class_link(member['setter_node']))
         else:
             with self.bullets("Node", new_line=True) as bullets:
-                bullets.add('class_name', member['node_class'])
+                bullets.add('class_name', self.class_link(member['node_class']))
                 bullets.add('bl_idname', member['bl_idname'])
             
-        if member['type'] == 'Method':
+        if member['type'] == 'Methods':
             meth_args = member['meth_args']
             if meth_args is not None and (len(meth_args) > 1 or (len(meth_args) == 1 and meth_args[0] != "self")):
                 with self.bullets("Arguments", new_line=True) as bullets:
@@ -572,9 +640,6 @@ class Doc:
 
             if member['code'] is not None:
                 self.add(Source(member['code'].strip().split("\n")[0]))
-                
-            if False and member['code'] is not None:
-                self.add(Source(member['code'].strip()))
 
     # ====================================================================================================
     # Class documentation
@@ -584,6 +649,9 @@ class Doc:
         dct = self.dct[class_name]
         
         self.add(Header(f"class {class_name} ({dct['category']})", 0))
+
+        if self.is_md:
+            self.add(Paragraph("<sub>go to [index](/docs/index.md)</sub>"), new_line=True)
     
         if dct['descr'] is not None:
             self.add(Paragraph(dct['descr']), new_line=True)
@@ -647,9 +715,12 @@ class Doc:
         # ----- Class documentation
         
         self.add(Header(f"class {class_name} ({dct['category']})", 0))
+        
+        if self.is_md:
+            self.add(Paragraph("<sub>go to [index](/docs/index.md)</sub>"), new_line=True)
     
         if dct['descr'] is not None:
-            self.add(Paragraph(dct['descr']), new_line=True)
+            self.add(Paragraph("> " + dct['descr']), new_line=True)
             
         # ----- Socket reference
         
@@ -664,14 +735,18 @@ class Doc:
 
         s_dct = sort_dict(dct['members'], "type", none_key=None)
         if len(s_dct):
+            
+            # ----- Member list
+            
             for stype in s_dct:
-                
-                if small:
-                    with self.bullets(stype) as bullets:
-                        for member_name in sorted(s_dct[stype].keys()):
-                            bullets.add(member_name, s_dct[stype][member_name]['descr'])
-                
-                else:
+                with self.bullets(stype) as bullets:
+                    for member_name in sorted(s_dct[stype].keys()):
+                        bullets.add(self.page_link(member_name), s_dct[stype][member_name]['descr'])
+                        
+            # ----- Member detail
+                        
+            if self.is_md:
+                for stype in s_dct:
                     self.add(Header(stype, 1))
                     
                     for member_name in sorted(s_dct[stype].keys()):
@@ -694,6 +769,38 @@ class Doc:
         
             if dct['descr'] is not None:
                 self.add(Paragraph(dct['descr']), new_line=True)
+                
+# =============================================================================================================================
+# Build the documentation
+
+def build_doc(tree_type, folder):
+    
+    root = Path(folder)
+    
+    classes_folder = root / "classes"
+    
+    doc = Doc(tree_type, DocSpec(target='MD', path=root))
+    
+    wd = 0
+    for class_name in doc.dct.keys():
+        if class_name == 'GLOBAL':
+            continue
+        
+        doc.class_doc(class_name)
+        
+        with open(classes_folder / f"{class_name}.md", 'w') as f:
+            f.write(doc.text)
+
+        doc.clear()
+            
+        
+        wd += 1
+        if False and wd > 5:
+            break
+        
+    
+    
+                
             
 # =============================================================================================================================
 # Documentation
@@ -707,7 +814,7 @@ def print_doc(obj, member_name=None):
     
     # ----- Initialize the documentation
     
-    doc = Doc(tree_type)
+    doc = Doc(tree_type, doc_spec=DocSpec())
     class_name = obj.__dict__.get('_class_name')
     
     # ----- No class_name : this is a class

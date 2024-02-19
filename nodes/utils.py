@@ -97,10 +97,10 @@ def node_class_name(name):
 
     assert(name != "")
 
-    if name == 'ID':
-        return 'Id'
+    #if name == 'ID':
+    #    return 'Id'
     
-    elif name == 'ColorRamp':
+    if name == 'ColorRamp':
         return 'ColorRamp'
     
     else:
@@ -114,10 +114,10 @@ def node_method(name):
 
     assert(name != "")
     
-    if name == 'ID':
-        return 'ID'
+    #if name == 'ID':
+    #    return 'ID'
     
-    elif name == 'ColorRamp':
+    if name == 'ColorRamp':
         return 'color_ramp'
     
     else:

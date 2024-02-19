@@ -1017,7 +1017,7 @@ class NodeInfo:
     # ----------------------------------------------------------------------------------------------------
     # Add a new node class method
     
-    def add_property(self, class_name, name, getter=None, setter=None, attr_type='Property', descr=None):
+    def add_property(self, class_name, name, getter=None, setter=None, attr_type='Properties', descr=None):
         
         tree_dict = constants.tree_dict(self.tree_type)
         the_class = tree_dict[class_name]
@@ -1070,7 +1070,7 @@ class NodeInfo:
         # ----- Documentation
         
         documentation.add_method_doc(self.tree_type, class_name, name,
-                        attr_type  = 'Method',
+                        attr_type  = 'Methods',
                         static     = is_static,
                         bl_idname  = self.bl_idname,
                         node_class = self.class_name,

@@ -242,7 +242,7 @@ def create_properties(tree_type):
         # ----- Documentation
 
         documentation.add_property_doc(tree_type, prop['target'], name,
-                             attr_type     = 'Property',
+                             attr_type     = 'Properties',
                              getter        = getter_code,
                              setter        = setter_code,
                              getter_node   = getter_class,
@@ -428,17 +428,18 @@ add_function("CombineColor", "combine_MODE", None,
 # =============================================================================================================================
 # Properties
 
-# curve tangennt
+# -----------------------------------------------------------------------------------------------------------------------------
+# Vector
+
 
 # -----------------------------------------------------------------------------------------------------------------------------
 # Geometry
 
-"""
-add_property('Geometry', 'id',
+add_property('Geometry', 'ID',
              getter_class = 'ID',
              setter_class = 'SetID',
              )
-"""
+
 add_property('Geometry', 'index',
              getter_class = 'Index',
              )
