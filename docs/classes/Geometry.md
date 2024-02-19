@@ -2649,6 +2649,14 @@ Nodes
  - get : [ID](/docs/classes/ID.md)
  - set : [SetID](/docs/classes/SetID.md)
 
+``` python
+@property
+def ID(self):
+	return self.tree.ID().output_socket
+ID.setter
+def ID(self, value):
+	self.set_id(value)
+```
 ### curve_radius
 
 > Curve radius property
@@ -2657,18 +2665,39 @@ Nodes
  - get : [Radius](/docs/classes/Radius.md)
  - set : [SetCurveRadius](/docs/classes/SetCurveRadius.md)
 
+``` python
+@property
+def curve_radius(self):
+	return self.tree.Radius().output_socket
+curve_radius.setter
+def curve_radius(self, value):
+	self.set_curve_radius(value)
+```
 ### curve_tilt
 
 Nodes
  - get : [CurveTilt](/docs/classes/CurveTilt.md)
  - set : [SetCurveTilt](/docs/classes/SetCurveTilt.md)
 
+``` python
+@property
+def curve_tilt(self):
+	return self.tree.CurveTilt().output_socket
+curve_tilt.setter
+def curve_tilt(self, value):
+	self.set_curve_tilt(value)
+```
 ### edge_neighbors
 
 Nodes
  - get : [EdgeNeighbors](/docs/classes/EdgeNeighbors.md)
  - set : None
 
+``` python
+@property
+def edge_neighbors(self):
+	return self.tree.EdgeNeighbors().output_socket
+```
 ### edge_shade_smooth
 
 > SetShadeSmooth(domain='EDGE')
@@ -2677,12 +2706,25 @@ Nodes
  - get : [IsEdgeSmooth](/docs/classes/IsEdgeSmooth.md)
  - set : [SetSmooth](/docs/classes/SetSmooth.md)
 
+``` python
+@property
+def edge_shade_smooth(self):
+	return self.tree.IsEdgeSmooth().output_socket
+edge_shade_smooth.setter
+def edge_shade_smooth(self, value):
+	self.set_shade_smooth(value, domain='EDGE')
+```
 ### face_area
 
 Nodes
  - get : [FaceArea](/docs/classes/FaceArea.md)
  - set : None
 
+``` python
+@property
+def face_area(self):
+	return self.tree.FaceArea().output_socket
+```
 ### face_shade_smooth
 
 > SetShadeSmooth(domain='FACE')
@@ -2691,12 +2733,25 @@ Nodes
  - get : [IsFaceSmooth](/docs/classes/IsFaceSmooth.md)
  - set : [SetSmooth](/docs/classes/SetSmooth.md)
 
+``` python
+@property
+def face_shade_smooth(self):
+	return self.tree.IsFaceSmooth().output_socket
+face_shade_smooth.setter
+def face_shade_smooth(self, value):
+	self.set_shade_smooth(value, domain='FACE')
+```
 ### index
 
 Nodes
  - get : [Index](/docs/classes/Index.md)
  - set : None
 
+``` python
+@property
+def index(self):
+	return self.tree.Index().output_socket
+```
 ### offset
 
 > SetPosition(offset=value)
@@ -2705,6 +2760,12 @@ Nodes
  - get : None
  - set : [SetPosition](/docs/classes/SetPosition.md)
 
+``` python
+# Write only property
+offset.setter
+def offset(self, value):
+	self.set_position(offset=value)
+```
 ### point_radius
 
 > Point radius property
@@ -2713,6 +2774,14 @@ Nodes
  - get : [Radius](/docs/classes/Radius.md)
  - set : [SetPointRadius](/docs/classes/SetPointRadius.md)
 
+``` python
+@property
+def point_radius(self):
+	return self.tree.Radius().output_socket
+point_radius.setter
+def point_radius(self, value):
+	self.set_point_radius(value)
+```
 ### position
 
 > SetPosition(position=value)
@@ -2721,20 +2790,50 @@ Nodes
  - get : [Position](/docs/classes/Position.md)
  - set : [SetPosition](/docs/classes/SetPosition.md)
 
+``` python
+@property
+def position(self):
+	return self.tree.Position().output_socket
+position.setter
+def position(self, value):
+	self.set_position(value)
+```
 ### spline_cyclic
 
 Nodes
  - get : [IsSplineCyclic](/docs/classes/IsSplineCyclic.md)
  - set : [SetSplineCyclic](/docs/classes/SetSplineCyclic.md)
 
+``` python
+@property
+def spline_cyclic(self):
+	return self.tree.IsSplineCyclic().output_socket
+spline_cyclic.setter
+def spline_cyclic(self, value):
+	self.set_spline_cyclic(value)
+```
 ### spline_resolution
 
 Nodes
  - get : [SplineResolution](/docs/classes/SplineResolution.md)
  - set : [SetSplineResolution](/docs/classes/SetSplineResolution.md)
 
+``` python
+@property
+def spline_resolution(self):
+	return self.tree.SplineResolution().output_socket
+spline_resolution.setter
+def spline_resolution(self, value):
+	self.set_spline_resolution(value)
+```
 ### tangent
 
 Nodes
  - get : [CurveTangent](/docs/classes/CurveTangent.md)
  - set : None
+
+``` python
+@property
+def tangent(self):
+	return self.tree.CurveTangent().output_socket
+```

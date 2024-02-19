@@ -1050,10 +1050,10 @@ class NodeInfo:
         
         documentation.add_property_doc(self.tree_type, class_name, name,
                  attr_type     = attr_type,
-                 getter        = getter,
-                 setter        = setter,
                  getter_node   = None,
                  setter_node   = None,
+                 getter        = getter,
+                 setter        = setter,
                  descr         = descr,
                  )
 

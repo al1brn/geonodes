@@ -611,16 +611,29 @@ class Doc:
         
         if member['descr'] is not None:
             self.add(Paragraph('> ' + member['descr']), new_line=True)
+
+        is_property = member['type'] == 'Properties'
             
         if member.get('code') is not None:
             self.add(Source(member['code'].strip().split("\n")[0]))
-            
-        is_property = member['type'] == 'Properties'
         
         if is_property:
             with self.bullets("Nodes", new_line=True) as bullets:
                 bullets.add('get', self.class_link(member['getter_node']))
                 bullets.add('set', self.class_link(member['setter_node']))
+                
+            getter = member.get('getter')
+            if getter is None:
+                s = f"# Write only property"
+            else:
+                s = "@property\n" + getter.strip()
+            
+            setter = member.get('setter')
+            if setter is not None:
+                s += f"\n{title}.setter\n" + setter.strip()
+                
+            self.add(Source(s))
+                
         else:
             with self.bullets("Node", new_line=True) as bullets:
                 bullets.add('class_name', self.class_link(member['node_class']))
@@ -646,8 +659,6 @@ class Doc:
                     else:
                         bullets.add(item, "")
 
-        if is_property:
-            pass
 
     # ====================================================================================================
     # Class documentation
