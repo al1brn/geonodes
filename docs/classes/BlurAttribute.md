@@ -1,6 +1,6 @@
 # class BlurAttribute (Node)
 
-    <sub>go to [index](/docs/index.md)</sub>
+<sub>go to [index](/docs/index.md)</sub>
     
 ## Node reference
 
