@@ -854,20 +854,20 @@ def build_doc(folder):
                 f.write(doc.text)
             doc.clear()
             
-            # ----- Index
-            
-            #index_doc.add(Header("Index", 0))
-            for cat, class_names in classes.items():
-                index_doc.add(Header(cat, 1))
-                if len(class_names) > 20:
-                    initials = index_doc.initials(class_names)
-                    for initial in sorted(initials.keys()):
-                        sub = initials[initial]
-                        links = " ".join(doc.list_links(sorted(sub)))
-                        index_doc.add(Paragraph(f"***{initial}*** : " + links), new_line=True)
-                else:
-                    links = " ".join(index_doc.list_links(sorted(class_names)))
-                    index_doc.add(Paragraph(links))
+        # ----- Index
+        
+        #index_doc.add(Header("Index", 0))
+        for cat, class_names in classes.items():
+            index_doc.add(Header(cat, 1))
+            if len(class_names) > 20:
+                initials = index_doc.initials(class_names)
+                for initial in sorted(initials.keys()):
+                    sub = initials[initial]
+                    links = " ".join(doc.list_links(sorted(sub)))
+                    index_doc.add(Paragraph(f"***{initial}*** : " + links), new_line=True)
+            else:
+                links = " ".join(index_doc.list_links(sorted(class_names)))
+                index_doc.add(Paragraph(links))
 
     with open(root / "index.md", 'w') as f:
         f.write(index_doc.text)
