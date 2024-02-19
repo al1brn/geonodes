@@ -31,5 +31,5 @@ def VectorRotate(self, vector=None, center=None, axis=None, angle=None, rotation
 ## Implementations
 
 o functions : [vector_rotate](/docs/GeoNodes_classes/vector_rotate.md)
-o Vect : [vector_rotate](#vector_rotate) 
+o Vect : [vector_rotate](/docs/GeoNodes_classes/Vect.md#vector_rotate) 
 

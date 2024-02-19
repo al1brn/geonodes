@@ -34,5 +34,5 @@ def DistributePointsOnFaces(self, mesh=None, density=None, seed=None, distance_m
 
 ## Implementations
 
-o Geometry : [distribute_points_on_faces](#distribute_points_on_faces) 
+o Geometry : [distribute_points_on_faces](/docs/GeoNodes_classes/Geometry.md#distribute_points_on_faces) 
 

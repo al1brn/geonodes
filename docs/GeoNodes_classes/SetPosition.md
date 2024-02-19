@@ -28,5 +28,5 @@ def SetPosition(self, geometry=None, position=None, offset=None, selection=None,
 ## Implementations
 
 o functions : [set_position](/docs/GeoNodes_classes/set_position.md)
-o Geometry : [set_position](#set_position) [position](#position) [offset](#offset) 
+o Geometry : [set_position](/docs/GeoNodes_classes/Geometry.md#set_position) [position](/docs/GeoNodes_classes/Geometry.md#position) [offset](/docs/GeoNodes_classes/Geometry.md#offset) 
 

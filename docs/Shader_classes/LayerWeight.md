@@ -26,5 +26,5 @@ def LayerWeight(self, blend=None, normal=None, node_label=None, node_color=None)
 
 ## Implementations
 
-o Float : [layer_weight](#layer_weight) 
+o Float : [layer_weight](/docs/Shader_classes/Float.md#layer_weight) 
 

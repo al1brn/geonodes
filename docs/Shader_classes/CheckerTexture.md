@@ -30,5 +30,5 @@ def CheckerTexture(self, vector=None, color1=None, color2=None, scale=None, colo
 
 ## Implementations
 
-o Col : [checker_texture](#checker_texture) 
+o Col : [checker_texture](/docs/Shader_classes/Col.md#checker_texture) 
 

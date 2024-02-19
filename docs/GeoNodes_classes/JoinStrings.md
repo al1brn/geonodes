@@ -26,5 +26,5 @@ def JoinStrings(self, *args, delimiter=None, strings=None, node_label=None, node
 ## Implementations
 
 o functions : [join_strings](/docs/GeoNodes_classes/join_strings.md)
-o Str : [join_strings](#join_strings) 
+o Str : [join_strings](/docs/GeoNodes_classes/Str.md#join_strings) 
 

@@ -25,6 +25,6 @@ def VertexOfCorner(self, corner_index=None, node_label=None, node_color=None):
 ## Implementations
 
 o functions : [vertex_of_corner](/docs/GeoNodes_classes/vertex_of_corner.md)
-o Int : [vertex_of_corner](#vertex_of_corner) 
-o Float : [vertex_of_corner](#vertex_of_corner) 
+o Int : [vertex_of_corner](/docs/GeoNodes_classes/Int.md#vertex_of_corner) 
+o Float : [vertex_of_corner](/docs/GeoNodes_classes/Float.md#vertex_of_corner) 
 

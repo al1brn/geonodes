@@ -29,5 +29,5 @@ def HueSaturationValue(self, hue=None, saturation=None, value=None, fac=None, co
 ## Implementations
 
 o functions : [hue_saturation_value](/docs/Shader_classes/hue_saturation_value.md)
-o Col : [hue_saturation_value](#hue_saturation_value) 
+o Col : [hue_saturation_value](/docs/Shader_classes/Col.md#hue_saturation_value) 
 

@@ -594,7 +594,7 @@ class Doc:
         
     def list_links(self, names, page=False, class_name=None):
         if self.doc_spec.target == 'MD':
-            if page or class_name is not None:
+            if page:
                 return [self.page_link(name) for name in names]
             else:
                 return [self.class_link(name, class_name=class_name) for name in names]
@@ -620,7 +620,7 @@ class Doc:
             for target, names in cref.items():
                 if target == 'GLOBAL':
                     continue
-    
+                
                 bullets.add(target, " ".join(self.list_links(names, class_name=target)) + " ")
     
     # ====================================================================================================

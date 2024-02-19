@@ -26,5 +26,5 @@ def FlipFaces(self, mesh=None, selection=None, node_label=None, node_color=None)
 ## Implementations
 
 o functions : [flip_faces](/docs/GeoNodes_classes/flip_faces.md)
-o Geometry : [flip_faces](#flip_faces) 
+o Geometry : [flip_faces](/docs/GeoNodes_classes/Geometry.md#flip_faces) 
 

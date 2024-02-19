@@ -25,5 +25,5 @@ def MaterialSelection(self, material=None, node_label=None, node_color=None):
 ## Implementations
 
 o functions : [material_selection](/docs/GeoNodes_classes/material_selection.md)
-o Mat : [material_selection](#material_selection) 
+o Mat : [material_selection](/docs/GeoNodes_classes/Mat.md#material_selection) 
 

@@ -28,6 +28,6 @@ def DuplicateElements(self, geometry=None, amount=None, selection=None, domain='
 
 ## Implementations
 
-o Geometry : [duplicate_elements](#duplicate_elements) 
-o Domain : [duplicate_elements](#duplicate_elements) 
+o Geometry : [duplicate_elements](/docs/GeoNodes_classes/Geometry.md#duplicate_elements) 
+o Domain : [duplicate_elements](/docs/GeoNodes_classes/Domain.md#duplicate_elements) 
 

@@ -27,5 +27,5 @@ def ReplaceString(self, string=None, find=None, replace=None, node_label=None, n
 ## Implementations
 
 o functions : [replace_string](/docs/GeoNodes_classes/replace_string.md)
-o Str : [replace_string](#replace_string) 
+o Str : [replace_string](/docs/GeoNodes_classes/Str.md#replace_string) 
 
