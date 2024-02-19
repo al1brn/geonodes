@@ -20,7 +20,6 @@ Node
  - bl_idname : GeometryNodeSwitch
 
 Arguments
- - HELLO
  - switch : None
  - true : None
  - node_label : None

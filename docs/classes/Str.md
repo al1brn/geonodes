@@ -27,7 +27,6 @@ Node
  - bl_idname : FunctionNodeCompare
 
 Arguments
- - HELLO
  - b : None
  - mode : 'ELEMENT'
  - node_label : None
@@ -54,7 +53,6 @@ Node
  - bl_idname : GeometryNodeStringJoin
 
 Arguments
- - HELLO
  - *args : 
  - strings : None
  - node_label : None
@@ -79,7 +77,6 @@ Node
  - bl_idname : GeometryNodeInputNamedAttribute
 
 Arguments
- - HELLO
  - data_type : 'FLOAT'
  - node_label : None
  - node_color : None
@@ -102,7 +99,6 @@ Node
  - bl_idname : FunctionNodeCompare
 
 Arguments
- - HELLO
  - b : None
  - mode : 'ELEMENT'
  - node_label : None
@@ -129,7 +125,6 @@ Node
  - bl_idname : FunctionNodeReplaceString
 
 Arguments
- - HELLO
  - find : None
  - replace : None
  - node_label : None
@@ -154,7 +149,6 @@ Node
  - bl_idname : FunctionNodeSliceString
 
 Arguments
- - HELLO
  - position : None
  - length : None
  - node_label : None
@@ -179,7 +173,6 @@ Node
  - bl_idname : FunctionNodeStringLength
 
 Arguments
- - HELLO
  - node_label : None
  - node_color : None
 
@@ -200,7 +193,6 @@ Node
  - bl_idname : GeometryNodeSwitch
 
 Arguments
- - HELLO
  - switch : None
  - true : None
  - node_label : None

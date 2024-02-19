@@ -49,7 +49,6 @@ Node
  - bl_idname : ShaderNodeTexBrick
 
 Arguments
- - HELLO
  - vector : None
  - color2 : None
  - mortar : None
@@ -101,7 +100,6 @@ Node
  - bl_idname : FunctionNodeCompare
 
 Arguments
- - HELLO
  - b : None
  - mode : 'ELEMENT'
  - node_label : None
@@ -128,7 +126,6 @@ Node
  - bl_idname : ShaderNodeTexChecker
 
 Arguments
- - HELLO
  - vector : None
  - color2 : None
  - scale : None
@@ -159,7 +156,6 @@ Node
  - bl_idname : FunctionNodeCompare
 
 Arguments
- - HELLO
  - b : None
  - mode : 'ELEMENT'
  - node_label : None
@@ -186,7 +182,6 @@ Node
  - bl_idname : FunctionNodeCompare
 
 Arguments
- - HELLO
  - b : None
  - epsilon : None
  - mode : 'ELEMENT'
@@ -215,7 +210,6 @@ Node
  - bl_idname : ShaderNodeMix
 
 Arguments
- - HELLO
  - factor : None
  - b : None
  - blend_type : 'MIX'
@@ -249,7 +243,6 @@ Node
  - bl_idname : ShaderNodeMix
 
 Arguments
- - HELLO
  - factor : None
  - b : None
  - clamp_factor : True
@@ -282,7 +275,6 @@ Node
  - bl_idname : ShaderNodeMix
 
 Arguments
- - HELLO
  - factor : None
  - b : None
  - clamp_factor : True
@@ -315,7 +307,6 @@ Node
  - bl_idname : ShaderNodeMix
 
 Arguments
- - HELLO
  - factor : None
  - b : None
  - clamp_factor : True
@@ -348,7 +339,6 @@ Node
  - bl_idname : ShaderNodeMix
 
 Arguments
- - HELLO
  - factor : None
  - b : None
  - clamp_factor : True
@@ -381,7 +371,6 @@ Node
  - bl_idname : ShaderNodeMix
 
 Arguments
- - HELLO
  - factor : None
  - b : None
  - clamp_factor : True
@@ -414,7 +403,6 @@ Node
  - bl_idname : ShaderNodeMix
 
 Arguments
- - HELLO
  - factor : None
  - b : None
  - clamp_factor : True
@@ -447,7 +435,6 @@ Node
  - bl_idname : ShaderNodeMix
 
 Arguments
- - HELLO
  - factor : None
  - b : None
  - clamp_factor : True
@@ -480,7 +467,6 @@ Node
  - bl_idname : ShaderNodeMix
 
 Arguments
- - HELLO
  - factor : None
  - b : None
  - clamp_factor : True
@@ -513,7 +499,6 @@ Node
  - bl_idname : ShaderNodeMix
 
 Arguments
- - HELLO
  - factor : None
  - b : None
  - clamp_factor : True
@@ -546,7 +531,6 @@ Node
  - bl_idname : ShaderNodeMix
 
 Arguments
- - HELLO
  - factor : None
  - b : None
  - clamp_factor : True
@@ -579,7 +563,6 @@ Node
  - bl_idname : ShaderNodeMix
 
 Arguments
- - HELLO
  - factor : None
  - b : None
  - clamp_factor : True
@@ -612,7 +595,6 @@ Node
  - bl_idname : ShaderNodeMix
 
 Arguments
- - HELLO
  - factor : None
  - b : None
  - clamp_factor : True
@@ -645,7 +627,6 @@ Node
  - bl_idname : ShaderNodeMix
 
 Arguments
- - HELLO
  - factor : None
  - b : None
  - clamp_factor : True
@@ -678,7 +659,6 @@ Node
  - bl_idname : ShaderNodeMix
 
 Arguments
- - HELLO
  - factor : None
  - b : None
  - clamp_factor : True
@@ -711,7 +691,6 @@ Node
  - bl_idname : ShaderNodeMix
 
 Arguments
- - HELLO
  - factor : None
  - b : None
  - clamp_factor : True
@@ -744,7 +723,6 @@ Node
  - bl_idname : ShaderNodeMix
 
 Arguments
- - HELLO
  - factor : None
  - b : None
  - clamp_factor : True
@@ -777,7 +755,6 @@ Node
  - bl_idname : ShaderNodeMix
 
 Arguments
- - HELLO
  - factor : None
  - b : None
  - clamp_factor : True
@@ -810,7 +787,6 @@ Node
  - bl_idname : ShaderNodeMix
 
 Arguments
- - HELLO
  - factor : None
  - b : None
  - clamp_factor : True
@@ -843,7 +819,6 @@ Node
  - bl_idname : ShaderNodeMix
 
 Arguments
- - HELLO
  - factor : None
  - b : None
  - clamp_factor : True
@@ -876,7 +851,6 @@ Node
  - bl_idname : FunctionNodeCompare
 
 Arguments
- - HELLO
  - b : None
  - epsilon : None
  - mode : 'ELEMENT'
@@ -905,7 +879,6 @@ Node
  - bl_idname : NodeReroute
 
 Arguments
- - HELLO
  - node_label : None
  - node_color : None
 
@@ -926,7 +899,6 @@ Node
  - bl_idname : ShaderNodeRGBCurve
 
 Arguments
- - HELLO
  - fac : None
  - mapping
  - node_label : None
@@ -951,7 +923,6 @@ Node
  - bl_idname : FunctionNodeSeparateColor
 
 Arguments
- - HELLO
  - mode : 'RGB'
  - node_label : None
  - node_color : None
@@ -974,7 +945,6 @@ Node
  - bl_idname : GeometryNodeSwitch
 
 Arguments
- - HELLO
  - switch : None
  - true : None
  - node_label : None

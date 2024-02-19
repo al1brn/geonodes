@@ -623,38 +623,31 @@ class Doc:
                 bullets.add('class_name', self.class_link(member['node_class']))
                 bullets.add('bl_idname', member['bl_idname'])
                 
-                
-        if member['type'] == 'Methods':
-            
-            meth_args = member['meth_args']
-            if meth_args is not None and (len(meth_args) > 1 or (len(meth_args) == 1 and meth_args[0] != "self")):
-                with self.bullets("Arguments", new_line=True) as bullets:
-                    
-                    
-                    print("MEMBER_DOC", title, "Bullets arguments")
-                    
-                    bullets.add("HELLO")
-                    
-                    
-                    for item in meth_args:
-                        if item == "self":
-                            continue
-                        if isinstance(item, tuple):
-                            bullets.add(item[0], item[1])
-                        else:
-                            bullets.add(item, "")
-                            
-            node_args = member['node_args']
-            if node_args is not None:
-                with self.bullets("Node initialization", new_line=True) as bullets:
-                    for item in node_args:
-                        if isinstance(item, tuple):
-                            bullets.add(item[0], item[1])
-                        else:
-                            bullets.add(item, "")
+        meth_args = member.get('meth_args')
+        if meth_args is not None and (len(meth_args) > 1 or (len(meth_args) == 1 and meth_args[0] != "self")):
+            with self.bullets("Arguments", new_line=True) as bullets:
+                for item in meth_args:
+                    if item == "self":
+                        continue
+                    if isinstance(item, tuple):
+                        bullets.add(item[0], item[1])
+                    else:
+                        bullets.add(item, "")
+                        
+        node_args = member.get('node_args')
+        if node_args is not None:
+            with self.bullets("Node initialization", new_line=True) as bullets:
+                for item in node_args:
+                    if isinstance(item, tuple):
+                        bullets.add(item[0], item[1])
+                    else:
+                        bullets.add(item, "")
 
-            if member['code'] is not None:
-                self.add(Source(member['code'].strip().split("\n")[0]))
+        if member.get('code') is not None:
+            self.add(Source(member['code'].strip().split("\n")[0]))
+            
+        if is_property:
+            pass
 
     # ====================================================================================================
     # Class documentation
