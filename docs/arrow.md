@@ -29,23 +29,20 @@ We will add complementatry parameters later on but for the moment, these paramet
 The good practice is to start by declaring the parameters at the begining of the tree.
 
 ``` python
-import numpy as np
-import geonodes as gn
+from geonodes import GeoNodes
 
-with gn.Tree("Arrow") as tree:
-    
-    length    = gn.Float.Input(   1,                "Length",       min_value=0)
-    r         = gn.Float.Input(   0.02,             "Radius",       min_value=0.001)
-    s         = gn.Float.Input(   3,                "Head size",    min_value=1.001)
-    angle     = gn.Float.Angle(   np.radians(20),   "Angle",        min_value=np.radians(10), max_value=0.999*gn.pi/2)
-    k         = gn.Float.Input(   0.5,              "Recess",       min_value=0., max_value=0.99)
-    vertices  = gn.Integer.Input( 12,               "Vertices",     min_value=3)
-    smooth    = gn.Boolean.Input( True,             "Shade smooth")
-    shaft_mat = gn.Material.Input(None,             "Shaft")
-    head_mat  = gn.Material.Input(None,             "Arrowhead")
-    obj       = gn.Object.Input(  None,             "Orientation")
-    track_obj = gn.Boolean.Input( True,             "Track",        description="Track object if True, copy rotation otherwise")
-
+with GeoNodes("Arrow") as tree:
+    length    = tree.float_input(   "Length",       1., min_value=0)
+    r         = tree.float_input(   "Radius",       .02, min_value=0.001)
+    s         = tree.float_input(   "Head size",    3., min_value=1.001)
+    angle     = tree.angle_input(   "Angle",        np.radians(20),   min_value=np.radians(10), max_value=0.999*np.pi/2)
+    k         = tree.float_input(   "Recess",       .5, min_value=0., max_value=0.99)
+    vertices  = tree.integer_input( "Vertices",     12, min_value=3)
+    smooth    = tree.bool_input(    "Shade smooth", True)
+    shaft_mat = tree.material_input("Shaft")
+    head_mat  = tree.material_input ("Arrowhead")
+    obj       = tree.object_input(  "Orientation")
+    track_obj = tree.bool_input(     "Track",        description="Track object if True, copy rotation otherwise")
 ```
 
 ## Some maths
