@@ -17,7 +17,7 @@ You keep the full power of Blender geometry nodes but with the elegance of Pytho
 - [Better a demo than long words](#better-a-demo-than-long-words)
 - [Installation](#installation)
 - [Documentation](#documentation)
-- [Getting started](docs/getting_started.md) with the "Hello world" script
+- [Getting started](docs/getting_started.md)
 - [API reference](docs/index.md)
 - Tutorials by examples:
   - [Building an arrow](docs/arrow.md)
