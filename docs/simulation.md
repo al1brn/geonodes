@@ -2,7 +2,7 @@
 
 > Tutorial on how to create a simulation zone.
 >
-> Also refer to [Simulation](api/Simulation.md) class documentation to see generators such as Fluid which allow to quickly set up a fluid simulator.
+> Also refer to [Simulation](GeoNodes_classes/Simulation.md) class documentation to see generators such as Fluid which allow to quickly set up a fluid simulator.
 
 ## Objective
 
@@ -23,11 +23,11 @@ The nodes are created by instanciating a **Simulation** class. The class constru
 <img src="images/simulation_creation.png" width="600" class="center">
 
 ``` python
-import geonodes as gn
+from geonodes import GeoNodes
 
-with gn.Tree("Simul", auto_capture=False) as tree:
-  # Create a simulation zone for the input geometry with one socket initialized to (0, 0, 0)
-  simul = gn.Simulation(geometry=tree.ig, position=(0, 0, 0))
+with GeoNodes("Simul") as tree:
+    with tree.simulation(geometry=tree.ig, position=(0, 0, 0)):
+        pass
 ```
 
 At creation time, the *geometry* sockets inside the simulation zone are not connected. This is done by using the *close* method.
