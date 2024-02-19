@@ -287,22 +287,21 @@ But here, we need to compute both orientations and use a `switch` node:
 The final code includes a smoothing option and the crease property is set to 1 for "horizontal" edges.
 
 ``` python
-import numpy as np
-import geonodes as gn
+from geonodes import GeoNodes
 
-with gn.Tree("Arrow") as tree:
+with GeoNodes("Arrow") as tree:
     
-    length    = gn.Float.Input(   1,                "Length",       min_value=0)
-    r         = gn.Float.Input(   0.02,             "Radius",       min_value=0.001)
-    s         = gn.Float.Input(   3,                "Head size",    min_value=1.001)
-    angle     = gn.Float.Angle(   np.radians(20),   "Angle",        min_value=np.radians(10), max_value=0.999*gn.pi/2)
-    k         = gn.Float.Input(   0.5,              "Recess",       min_value=0., max_value=0.99)
-    vertices  = gn.Integer.Input( 12,               "Vertices",     min_value=3)
-    smooth    = gn.Boolean.Input( True,             "Shade smooth")
-    shaft_mat = gn.Material.Input(None,             "Shaft")
-    head_mat  = gn.Material.Input(None,             "Arrowhead")
-    obj       = gn.Object.Input(  None,             "Orientation")
-    track_obj = gn.Boolean.Input( True,             "Track",        description="Track object if True, copy rotation otherwise")
+    length    = tree.float_input(   "Length",       1., min_value=0)
+    r         = tree.float_input(   "Radius",       .02, min_value=0.001)
+    s         = tree.float_input(   "Head size",    3., min_value=1.001)
+    angle     = tree.angle_input(   "Angle",        np.radians(20),   min_value=np.radians(10), max_value=0.999*np.pi/2)
+    k         = tree.float_input(   "Recess",       .5, min_value=0., max_value=0.99)
+    vertices  = tree.integer_input( "Vertices",     12, min_value=3)
+    smooth    = tree.bool_input(    "Shade smooth", True)
+    shaft_mat = tree.material_input("Shaft")
+    head_mat  = tree.material_input ("Arrowhead")
+    obj       = tree.object_input(  "Orientation")
+    track_obj = tree.bool_input(     "Track",        description="Track object if True, copy rotation otherwise")
     
     with tree.layout("Maths stuff..."):
         
@@ -312,7 +311,7 @@ with gn.Tree("Arrow") as tree:
         
         # ----- Arrowhead height from the angle
 
-        tg = gn.tan(angle)
+        tg = tree.tan(angle)
         hh = rh/tg
         z0 = length - hh
         
@@ -329,55 +328,58 @@ with gn.Tree("Arrow") as tree:
         # extremities. The vertices position is then computed as the mean
         # of the two edges. Twice a cosine factor
         
-        f = 1/gn.cos(gn.pi/vertices)**2
-        fac = gn.Vector((f, f, 1))
+        f = 1/tree.cos(np.pi/vertices)**2
+        fac = tree.combine_xyz(f, f, 1)
         
     # ----- Let's go
     
     with tree.layout("Arrow base"):
     
-        arrow = gn.Mesh.Circle(vertices=vertices, radius=r, fill_type='NGON')
-        arrow.faces.material = head_mat
+        arrow = tree.MeshCircle(vertices=vertices, radius=r, fill_type='NGON').mesh
+        arrow.material = head_mat
         
     with tree.layout("Extrusion"):
         
-        edges = arrow.edges
+        arrow = arrow.extrude_mesh(offset=(0, 0, 1), offset_scale=z1, mode='EDGES')
+        node = arrow.node
+        arrow[node.side].material = shaft_mat
         
-        node = edges.extrude(offset=(0, 0, 1), offset_scale=z1)
-        arrow.faces[node.side].material = shaft_mat
-        
-        node = edges[node.top].extrude(offset=edges[node.top].position*fac - (0, 0, z2), offset_scale=s - 1)
-        arrow.faces[node.side].material = head_mat
+        arrow = arrow[node.top].extrude_mesh(offset=arrow.position*fac - (0, 0, z2), offset_scale=s - 1, mode='EDGES')
+        node = arrow.node
+        arrow[node.side].material = head_mat
 
-        edges[node.top].extrude(offset=(0, 0, length) - edges[node.top].position*fac)
+        arrow = arrow[node.top].extrude_mesh(offset=(0, 0, length) - arrow.position*fac, mode='EDGES')
         
     # ----- Set crease to 1 for horizontal edges
     
     with tree.layout("crease and smoothing"):
-    
-        node = arrow.edges.vertices_position
-        p1, p2 = node.position_1, node.position_2
+        
+        node = tree.edge_vertices()
+        p1, p2 = node.position_1.xyz, node.position_2.xyz
         hrz = (p1.z - p2.z).abs().less_than(0.001)
-        arrow.edges.store_named_float("crease", gn.Float(0).switch(hrz, 1))
+        arrow.store_named_float("crease", tree.value(0).switch(hrz, 1))
         
         # ----- Shade smooth
         
-        arrow.faces.shade_smooth = smooth
+        arrow.FACE.shade_smooth = smooth
         
     # ----- Orientation
 
     with tree.layout("Orientation"):
-    
-        rot_copy  = obj.rotation(transform_space='ORIGINAL')
-        loc       = obj.location(transform_space='RELATIVE')
-        rot_track = gn.Vector.AlignToVector(vector=loc, axis='Z')
         
-        arrow.transform(rotation=rot_copy.switch(track_obj, rot_track))
+        info = tree.ObjectInfo(obj, transform_space='ORIGINAL')
+        rot_copy  = info.rotation
+
+        info = tree.ObjectInfo(obj, transform_space='RELATIVE')
+        loc       = info.location
+        
+        rot_track = tree.AlignEulerToVector(vector=loc, axis='Z')
+        
+        arrow.transform_geometry(rotation=rot_copy.switch(track_obj, rot_track))
 
     # ----- Done
     
     tree.og = arrow
-
 ```
 
 
