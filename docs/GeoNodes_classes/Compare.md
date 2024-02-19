@@ -39,7 +39,7 @@ def Compare(self, a=None, b=None, epsilon=None, data_type='FLOAT', mode='ELEMENT
 
 ## Implementations
 
-o functions : [compare](/docs/GeoNodes_classes/compare.md)
+o functions : [compare](/docs/GeoNodes_classes/GLOBAL.md#compare)
 o Float : [less_than](/docs/GeoNodes_classes/Float.md#less_than) [less_equal](/docs/GeoNodes_classes/Float.md#less_equal) [greater_than](/docs/GeoNodes_classes/Float.md#greater_than) [greater_equal](/docs/GeoNodes_classes/Float.md#greater_equal) [equal](/docs/GeoNodes_classes/Float.md#equal) [not_equal](/docs/GeoNodes_classes/Float.md#not_equal) 
 o Int : [less_than](/docs/GeoNodes_classes/Int.md#less_than) [less_equal](/docs/GeoNodes_classes/Int.md#less_equal) [greater_than](/docs/GeoNodes_classes/Int.md#greater_than) [greater_equal](/docs/GeoNodes_classes/Int.md#greater_equal) [equal](/docs/GeoNodes_classes/Int.md#equal) [not_equal](/docs/GeoNodes_classes/Int.md#not_equal) 
 o Vect : [less_than](/docs/GeoNodes_classes/Vect.md#less_than) [less_equal](/docs/GeoNodes_classes/Vect.md#less_equal) [greater_than](/docs/GeoNodes_classes/Vect.md#greater_than) [greater_equal](/docs/GeoNodes_classes/Vect.md#greater_equal) [equal](/docs/GeoNodes_classes/Vect.md#equal) [not_equal](/docs/GeoNodes_classes/Vect.md#not_equal) 

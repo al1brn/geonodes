@@ -25,5 +25,5 @@ def ValueToString(self, value=None, decimals=None, node_label=None, node_color=N
 
 ## Implementations
 
-o functions : [value_to_string](/docs/GeoNodes_classes/value_to_string.md)
+o functions : [value_to_string](/docs/GeoNodes_classes/GLOBAL.md#value_to_string)
 

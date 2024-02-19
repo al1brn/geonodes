@@ -24,6 +24,6 @@ def EulerToRotation(self, euler=None, node_label=None, node_color=None):
 
 ## Implementations
 
-o functions : [euler_to_rotation](/docs/GeoNodes_classes/euler_to_rotation.md)
+o functions : [euler_to_rotation](/docs/GeoNodes_classes/GLOBAL.md#euler_to_rotation)
 o Vect : [euler_to_rotation](/docs/GeoNodes_classes/Vect.md#euler_to_rotation) 
 

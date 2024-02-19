@@ -24,6 +24,6 @@ def JoinGeometry(self, *args, geometry=None, node_label=None, node_color=None):
 
 ## Implementations
 
-o functions : [join_geometry](/docs/GeoNodes_classes/join_geometry.md)
+o functions : [join_geometry](/docs/GeoNodes_classes/GLOBAL.md#join_geometry)
 o Geometry : [join_geometry](/docs/GeoNodes_classes/Geometry.md#join_geometry) 
 

@@ -24,5 +24,5 @@ def String(self, string='', node_label=None, node_color=None):
 
 ## Implementations
 
-o functions : [string](/docs/GeoNodes_classes/string.md)
+o functions : [string](/docs/GeoNodes_classes/GLOBAL.md#string)
 

@@ -28,5 +28,5 @@ def CombineColor(self, red=None, green=None, blue=None, alpha=None, mode='RGB', 
 
 ## Implementations
 
-o functions : [combine_color](/docs/GeoNodes_classes/combine_color.md) [combine_rgb](/docs/GeoNodes_classes/combine_rgb.md) [combine_hsv](/docs/GeoNodes_classes/combine_hsv.md) [combine_hsl](/docs/GeoNodes_classes/combine_hsl.md)
+o functions : [combine_color](/docs/GeoNodes_classes/GLOBAL.md#combine_color) [combine_rgb](/docs/GeoNodes_classes/GLOBAL.md#combine_rgb) [combine_hsv](/docs/GeoNodes_classes/GLOBAL.md#combine_hsv) [combine_hsl](/docs/GeoNodes_classes/GLOBAL.md#combine_hsl)
 

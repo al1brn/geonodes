@@ -26,5 +26,5 @@ def EdgeVertices(self, node_label=None, node_color=None):
 
 ## Implementations
 
-o functions : [edge_vertices](/docs/GeoNodes_classes/edge_vertices.md)
+o functions : [edge_vertices](/docs/GeoNodes_classes/GLOBAL.md#edge_vertices)
 

@@ -23,5 +23,5 @@ def Selection(self, node_label=None, node_color=None):
 
 ## Implementations
 
-o functions : [selection](/docs/GeoNodes_classes/selection.md)
+o functions : [selection](/docs/GeoNodes_classes/GLOBAL.md#selection)
 

@@ -31,6 +31,6 @@ def NamedAttribute(self, name=None, data_type='FLOAT', node_label=None, node_col
 
 ## Implementations
 
-o functions : [named_float](/docs/GeoNodes_classes/named_float.md) [named_int](/docs/GeoNodes_classes/named_int.md) [named_vector](/docs/GeoNodes_classes/named_vector.md) [named_color](/docs/GeoNodes_classes/named_color.md) [named_boolean](/docs/GeoNodes_classes/named_boolean.md) [named_quaternion](/docs/GeoNodes_classes/named_quaternion.md)
+o functions : [named_float](/docs/GeoNodes_classes/GLOBAL.md#named_float) [named_int](/docs/GeoNodes_classes/GLOBAL.md#named_int) [named_vector](/docs/GeoNodes_classes/GLOBAL.md#named_vector) [named_color](/docs/GeoNodes_classes/GLOBAL.md#named_color) [named_boolean](/docs/GeoNodes_classes/GLOBAL.md#named_boolean) [named_quaternion](/docs/GeoNodes_classes/GLOBAL.md#named_quaternion)
 o Str : [named_attribute](/docs/GeoNodes_classes/Str.md#named_attribute) 
 

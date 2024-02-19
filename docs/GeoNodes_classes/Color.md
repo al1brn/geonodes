@@ -23,5 +23,5 @@ def Color(self, node_label=None, node_color=None):
 
 ## Implementations
 
-o functions : [color](/docs/GeoNodes_classes/color.md)
+o functions : [color](/docs/GeoNodes_classes/GLOBAL.md#color)
 

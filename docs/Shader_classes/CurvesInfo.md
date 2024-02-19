@@ -28,5 +28,5 @@ def CurvesInfo(self, node_label=None, node_color=None):
 
 ## Implementations
 
-o functions : [curves_info](/docs/Shader_classes/curves_info.md)
+o functions : [curves_info](/docs/Shader_classes/GLOBAL.md#curves_info)
 

@@ -24,5 +24,5 @@ def SpecialCharacters(self, node_label=None, node_color=None):
 
 ## Implementations
 
-o functions : [special_characters](/docs/GeoNodes_classes/special_characters.md)
+o functions : [special_characters](/docs/GeoNodes_classes/GLOBAL.md#special_characters)
 

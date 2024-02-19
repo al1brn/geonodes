@@ -23,5 +23,5 @@ def IsViewport(self, node_label=None, node_color=None):
 
 ## Implementations
 
-o functions : [is_viewport](/docs/GeoNodes_classes/is_viewport.md)
+o functions : [is_viewport](/docs/GeoNodes_classes/GLOBAL.md#is_viewport)
 

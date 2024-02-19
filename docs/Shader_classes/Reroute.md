@@ -24,6 +24,6 @@ def Reroute(self, input=None, node_label=None, node_color=None):
 
 ## Implementations
 
-o functions : [reroute](/docs/Shader_classes/reroute.md)
+o functions : [reroute](/docs/Shader_classes/GLOBAL.md#reroute)
 o Col : [reroute](/docs/Shader_classes/Col.md#reroute) 
 

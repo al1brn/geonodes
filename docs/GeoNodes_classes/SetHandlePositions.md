@@ -28,6 +28,6 @@ def SetHandlePositions(self, curve=None, position=None, offset=None, selection=N
 
 ## Implementations
 
-o functions : [set_handle_positions](/docs/GeoNodes_classes/set_handle_positions.md)
+o functions : [set_handle_positions](/docs/GeoNodes_classes/GLOBAL.md#set_handle_positions)
 o Geometry : [set_handle_positions](/docs/GeoNodes_classes/Geometry.md#set_handle_positions) 
 

@@ -27,6 +27,6 @@ def TranslateInstances(self, instances=None, translation=None, local_space=None,
 
 ## Implementations
 
-o functions : [translate_instances](/docs/GeoNodes_classes/translate_instances.md)
+o functions : [translate_instances](/docs/GeoNodes_classes/GLOBAL.md#translate_instances)
 o Geometry : [translate_instances](/docs/GeoNodes_classes/Geometry.md#translate_instances) 
 

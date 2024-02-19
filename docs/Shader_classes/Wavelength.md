@@ -24,6 +24,6 @@ def Wavelength(self, wavelength=None, node_label=None, node_color=None):
 
 ## Implementations
 
-o functions : [wavelength](/docs/Shader_classes/wavelength.md)
+o functions : [wavelength](/docs/Shader_classes/GLOBAL.md#wavelength)
 o Float : [wavelength](/docs/Shader_classes/Float.md#wavelength) 
 

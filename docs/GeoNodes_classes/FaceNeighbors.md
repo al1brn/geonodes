@@ -24,5 +24,5 @@ def FaceNeighbors(self, node_label=None, node_color=None):
 
 ## Implementations
 
-o functions : [face_neighbors](/docs/GeoNodes_classes/face_neighbors.md)
+o functions : [face_neighbors](/docs/GeoNodes_classes/GLOBAL.md#face_neighbors)
 

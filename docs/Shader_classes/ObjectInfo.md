@@ -28,5 +28,5 @@ def ObjectInfo(self, node_label=None, node_color=None):
 
 ## Implementations
 
-o functions : [object_info](/docs/Shader_classes/object_info.md)
+o functions : [object_info](/docs/Shader_classes/GLOBAL.md#object_info)
 

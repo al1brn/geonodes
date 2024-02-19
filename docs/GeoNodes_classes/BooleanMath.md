@@ -26,6 +26,6 @@ def BooleanMath(self, boolean=None, boolean_1=None, operation='AND', node_label=
 
 ## Implementations
 
-o functions : [boolean_math](/docs/GeoNodes_classes/boolean_math.md) [band](/docs/GeoNodes_classes/band.md) [bor](/docs/GeoNodes_classes/bor.md) [bnot](/docs/GeoNodes_classes/bnot.md) [nand](/docs/GeoNodes_classes/nand.md) [nor](/docs/GeoNodes_classes/nor.md) [xnor](/docs/GeoNodes_classes/xnor.md) [xor](/docs/GeoNodes_classes/xor.md) [imply](/docs/GeoNodes_classes/imply.md) [nimply](/docs/GeoNodes_classes/nimply.md)
+o functions : [boolean_math](/docs/GeoNodes_classes/GLOBAL.md#boolean_math) [band](/docs/GeoNodes_classes/GLOBAL.md#band) [bor](/docs/GeoNodes_classes/GLOBAL.md#bor) [bnot](/docs/GeoNodes_classes/GLOBAL.md#bnot) [nand](/docs/GeoNodes_classes/GLOBAL.md#nand) [nor](/docs/GeoNodes_classes/GLOBAL.md#nor) [xnor](/docs/GeoNodes_classes/GLOBAL.md#xnor) [xor](/docs/GeoNodes_classes/GLOBAL.md#xor) [imply](/docs/GeoNodes_classes/GLOBAL.md#imply) [nimply](/docs/GeoNodes_classes/GLOBAL.md#nimply)
 o Bool : [boolean_math](/docs/GeoNodes_classes/Bool.md#boolean_math) [band](/docs/GeoNodes_classes/Bool.md#band) [bor](/docs/GeoNodes_classes/Bool.md#bor) [bnot](/docs/GeoNodes_classes/Bool.md#bnot) [nand](/docs/GeoNodes_classes/Bool.md#nand) [nor](/docs/GeoNodes_classes/Bool.md#nor) [xnor](/docs/GeoNodes_classes/Bool.md#xnor) [xor](/docs/GeoNodes_classes/Bool.md#xor) [imply](/docs/GeoNodes_classes/Bool.md#imply) [nimply](/docs/GeoNodes_classes/Bool.md#nimply) 
 

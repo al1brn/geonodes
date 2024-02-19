@@ -24,5 +24,5 @@ def UVAlongStroke(self, use_tips=False, node_label=None, node_color=None):
 
 ## Implementations
 
-o functions : [uv_along_stroke](/docs/Shader_classes/uv_along_stroke.md)
+o functions : [uv_along_stroke](/docs/Shader_classes/GLOBAL.md#uv_along_stroke)
 

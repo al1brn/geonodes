@@ -24,5 +24,5 @@ def Holdout(self, node_label=None, node_color=None):
 
 ## Implementations
 
-o functions : [holdout](/docs/Shader_classes/holdout.md)
+o functions : [holdout](/docs/Shader_classes/GLOBAL.md#holdout)
 

@@ -31,5 +31,5 @@ def SubsurfaceScattering(self, color=None, scale=None, radius=None, ior=None, an
 
 ## Implementations
 
-o functions : [subsurface_scattering](/docs/Shader_classes/subsurface_scattering.md)
+o functions : [subsurface_scattering](/docs/Shader_classes/GLOBAL.md#subsurface_scattering)
 

@@ -28,6 +28,6 @@ def RepeatOutput(self, geometry=None, active_index=0, active_item=None, inspecti
 
 ## Implementations
 
-o functions : [repeat_output](/docs/GeoNodes_classes/repeat_output.md)
+o functions : [repeat_output](/docs/GeoNodes_classes/GLOBAL.md#repeat_output)
 o Geometry : [repeat_output](/docs/GeoNodes_classes/Geometry.md#repeat_output) 
 

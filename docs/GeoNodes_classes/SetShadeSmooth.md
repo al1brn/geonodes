@@ -27,7 +27,7 @@ def SetShadeSmooth(self, geometry=None, shade_smooth=None, selection=None, domai
 
 ## Implementations
 
-o functions : [set_shade_smooth](/docs/GeoNodes_classes/set_shade_smooth.md)
+o functions : [set_shade_smooth](/docs/GeoNodes_classes/GLOBAL.md#set_shade_smooth)
 o Geometry : [set_shade_smooth](/docs/GeoNodes_classes/Geometry.md#set_shade_smooth) 
 o Domain : [set_shade_smooth](/docs/GeoNodes_classes/Domain.md#set_shade_smooth) 
 

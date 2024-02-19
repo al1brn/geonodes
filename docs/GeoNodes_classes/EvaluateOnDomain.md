@@ -36,7 +36,7 @@ def EvaluateOnDomain(self, value=None, data_type='FLOAT', domain='POINT', node_l
 
 ## Implementations
 
-o functions : [evaluate_on_domain](/docs/GeoNodes_classes/evaluate_on_domain.md)
+o functions : [evaluate_on_domain](/docs/GeoNodes_classes/GLOBAL.md#evaluate_on_domain)
 o Float : [evaluate_on_domain](/docs/GeoNodes_classes/Float.md#evaluate_on_domain) 
 o Int : [evaluate_on_domain](/docs/GeoNodes_classes/Int.md#evaluate_on_domain) 
 

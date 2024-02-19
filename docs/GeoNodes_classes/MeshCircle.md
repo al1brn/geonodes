@@ -26,5 +26,5 @@ def MeshCircle(self, vertices=None, radius=None, fill_type='NONE', node_label=No
 
 ## Implementations
 
-o functions : [mesh_circle](/docs/GeoNodes_classes/mesh_circle.md)
+o functions : [mesh_circle](/docs/GeoNodes_classes/GLOBAL.md#mesh_circle)
 

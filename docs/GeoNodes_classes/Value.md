@@ -23,5 +23,5 @@ def Value(self, node_label=None, node_color=None):
 
 ## Implementations
 
-o functions : [value](/docs/GeoNodes_classes/value.md)
+o functions : [value](/docs/GeoNodes_classes/GLOBAL.md#value)
 

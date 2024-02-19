@@ -24,6 +24,6 @@ def Blackbody(self, temperature=None, node_label=None, node_color=None):
 
 ## Implementations
 
-o functions : [blackbody](/docs/Shader_classes/blackbody.md)
+o functions : [blackbody](/docs/Shader_classes/GLOBAL.md#blackbody)
 o Float : [blackbody](/docs/Shader_classes/Float.md#blackbody) 
 

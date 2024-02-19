@@ -25,6 +25,6 @@ def RotateVector(self, vector=None, rotation=None, node_label=None, node_color=N
 
 ## Implementations
 
-o functions : [rotate_vector](/docs/GeoNodes_classes/rotate_vector.md)
+o functions : [rotate_vector](/docs/GeoNodes_classes/GLOBAL.md#rotate_vector)
 o Vect : [rotate_vector](/docs/GeoNodes_classes/Vect.md#rotate_vector) 
 

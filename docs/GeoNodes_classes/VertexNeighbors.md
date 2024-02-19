@@ -24,5 +24,5 @@ def VertexNeighbors(self, node_label=None, node_color=None):
 
 ## Implementations
 
-o functions : [vertex_neighbors](/docs/GeoNodes_classes/vertex_neighbors.md)
+o functions : [vertex_neighbors](/docs/GeoNodes_classes/GLOBAL.md#vertex_neighbors)
 

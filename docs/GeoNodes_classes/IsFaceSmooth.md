@@ -23,6 +23,6 @@ def IsFaceSmooth(self, node_label=None, node_color=None):
 
 ## Implementations
 
-o functions : [is_face_smooth](/docs/GeoNodes_classes/is_face_smooth.md)
+o functions : [is_face_smooth](/docs/GeoNodes_classes/GLOBAL.md#is_face_smooth)
 o Geometry : [face_shade_smooth](/docs/GeoNodes_classes/Geometry.md#face_shade_smooth) 
 

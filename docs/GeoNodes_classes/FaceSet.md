@@ -24,5 +24,5 @@ def FaceSet(self, node_label=None, node_color=None):
 
 ## Implementations
 
-o functions : [face_set](/docs/GeoNodes_classes/face_set.md)
+o functions : [face_set](/docs/GeoNodes_classes/GLOBAL.md#face_set)
 

@@ -23,5 +23,5 @@ def InstanceScale(self, node_label=None, node_color=None):
 
 ## Implementations
 
-o functions : [instance_scale](/docs/GeoNodes_classes/instance_scale.md)
+o functions : [instance_scale](/docs/GeoNodes_classes/GLOBAL.md#instance_scale)
 

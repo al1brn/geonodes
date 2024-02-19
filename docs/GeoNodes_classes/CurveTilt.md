@@ -23,6 +23,6 @@ def CurveTilt(self, node_label=None, node_color=None):
 
 ## Implementations
 
-o functions : [curve_tilt](/docs/GeoNodes_classes/curve_tilt.md)
+o functions : [curve_tilt](/docs/GeoNodes_classes/GLOBAL.md#curve_tilt)
 o Geometry : [curve_tilt](/docs/GeoNodes_classes/Geometry.md#curve_tilt) 
 

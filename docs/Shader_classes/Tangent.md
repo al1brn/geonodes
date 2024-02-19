@@ -26,5 +26,5 @@ def Tangent(self, axis='Z', direction_type='RADIAL', uv_map='', node_label=None,
 
 ## Implementations
 
-o functions : [tangent](/docs/Shader_classes/tangent.md)
+o functions : [tangent](/docs/Shader_classes/GLOBAL.md#tangent)
 

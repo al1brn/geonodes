@@ -10,7 +10,7 @@ Node
 
 Node parameters
  - handle_type : 'AUTO'
- - mode : {'RIGHT', 'LEFT'}
+ - mode : {'LEFT', 'RIGHT'}
 
 Input sockets
  - curve : Geometry
@@ -22,11 +22,11 @@ Output sockets
 ### Header
 
 ``` python
-def SetHandleType(self, curve=None, selection=None, handle_type='AUTO', mode={'RIGHT', 'LEFT'}, node_label=None, node_color=None):
+def SetHandleType(self, curve=None, selection=None, handle_type='AUTO', mode={'LEFT', 'RIGHT'}, node_label=None, node_color=None):
 ```
 
 ## Implementations
 
-o functions : [set_handle_type](/docs/GeoNodes_classes/set_handle_type.md)
+o functions : [set_handle_type](/docs/GeoNodes_classes/GLOBAL.md#set_handle_type)
 o Geometry : [set_handle_type](/docs/GeoNodes_classes/Geometry.md#set_handle_type) 
 

@@ -26,6 +26,6 @@ def SetMaterialIndex(self, geometry=None, material_index=None, selection=None, n
 
 ## Implementations
 
-o functions : [set_material_index](/docs/GeoNodes_classes/set_material_index.md)
+o functions : [set_material_index](/docs/GeoNodes_classes/GLOBAL.md#set_material_index)
 o Geometry : [set_material_index](/docs/GeoNodes_classes/Geometry.md#set_material_index) 
 

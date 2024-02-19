@@ -26,6 +26,6 @@ def SliceString(self, string=None, position=None, length=None, node_label=None, 
 
 ## Implementations
 
-o functions : [slice_string](/docs/GeoNodes_classes/slice_string.md)
+o functions : [slice_string](/docs/GeoNodes_classes/GLOBAL.md#slice_string)
 o Str : [slice_string](/docs/GeoNodes_classes/Str.md#slice_string) 
 

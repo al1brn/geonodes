@@ -35,5 +35,5 @@ def Quadrilateral(self, width=None, height=None, offset=None, bottom_width=None,
 
 ## Implementations
 
-o functions : [quadrilateral](/docs/GeoNodes_classes/quadrilateral.md)
+o functions : [quadrilateral](/docs/GeoNodes_classes/GLOBAL.md#quadrilateral)
 

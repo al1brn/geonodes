@@ -37,5 +37,5 @@ temperature_attribute=None, node_label=None, node_color=None):
 
 ## Implementations
 
-o functions : [principled_volume](/docs/Shader_classes/principled_volume.md)
+o functions : [principled_volume](/docs/Shader_classes/GLOBAL.md#principled_volume)
 

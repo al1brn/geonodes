@@ -28,5 +28,5 @@ def SheenBSDF(self, color=None, roughness=None, normal=None, distribution='MICRO
 
 ## Implementations
 
-o functions : [sheen_bsdf](/docs/Shader_classes/sheen_bsdf.md)
+o functions : [sheen_bsdf](/docs/Shader_classes/GLOBAL.md#sheen_bsdf)
 

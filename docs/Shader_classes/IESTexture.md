@@ -28,6 +28,6 @@ def IESTexture(self, vector=None, strength=None, filepath='', ies=None, mode='IN
 
 ## Implementations
 
-o functions : [ies_texture](/docs/Shader_classes/ies_texture.md)
+o functions : [ies_texture](/docs/Shader_classes/GLOBAL.md#ies_texture)
 o Float : [ies_texture](/docs/Shader_classes/Float.md#ies_texture) 
 

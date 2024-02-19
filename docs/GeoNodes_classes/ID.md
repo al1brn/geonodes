@@ -23,6 +23,6 @@ def ID(self, node_label=None, node_color=None):
 
 ## Implementations
 
-o functions : [id](/docs/GeoNodes_classes/id.md)
+o functions : [id](/docs/GeoNodes_classes/GLOBAL.md#id)
 o Geometry : [ID](/docs/GeoNodes_classes/Geometry.md#ID) 
 

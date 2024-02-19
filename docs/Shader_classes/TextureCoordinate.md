@@ -31,5 +31,5 @@ def TextureCoordinate(self, from_instancer=False, object=None, node_label=None, 
 
 ## Implementations
 
-o functions : [texture_coordinate](/docs/Shader_classes/texture_coordinate.md)
+o functions : [texture_coordinate](/docs/Shader_classes/GLOBAL.md#texture_coordinate)
 

@@ -30,5 +30,5 @@ def VolumeCube(self, density=None, background=None, min=None, max=None, resoluti
 
 ## Implementations
 
-o functions : [volume_cube](/docs/GeoNodes_classes/volume_cube.md)
+o functions : [volume_cube](/docs/GeoNodes_classes/GLOBAL.md#volume_cube)
 

@@ -24,5 +24,5 @@ def Material(self, material=None, node_label=None, node_color=None):
 
 ## Implementations
 
-o functions : [material](/docs/GeoNodes_classes/material.md)
+o functions : [material](/docs/GeoNodes_classes/GLOBAL.md#material)
 

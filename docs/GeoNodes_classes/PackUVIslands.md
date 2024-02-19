@@ -27,6 +27,6 @@ def PackUVIslands(self, uv=None, margin=None, rotate=None, selection=None, node_
 
 ## Implementations
 
-o functions : [pack_uv_islands](/docs/GeoNodes_classes/pack_uv_islands.md)
+o functions : [pack_uv_islands](/docs/GeoNodes_classes/GLOBAL.md#pack_uv_islands)
 o Vect : [pack_uv_islands](/docs/GeoNodes_classes/Vect.md#pack_uv_islands) 
 

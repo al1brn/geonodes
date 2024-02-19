@@ -25,6 +25,6 @@ def EdgePathsToSelection(self, start_vertices=None, next_vertex_index=None, node
 
 ## Implementations
 
-o functions : [edge_paths_to_selection](/docs/GeoNodes_classes/edge_paths_to_selection.md)
+o functions : [edge_paths_to_selection](/docs/GeoNodes_classes/GLOBAL.md#edge_paths_to_selection)
 o Bool : [edge_paths_to_selection](/docs/GeoNodes_classes/Bool.md#edge_paths_to_selection) 
 

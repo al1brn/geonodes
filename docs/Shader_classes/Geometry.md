@@ -31,5 +31,5 @@ def Geometry(self, node_label=None, node_color=None):
 
 ## Implementations
 
-o functions : [geometry](/docs/Shader_classes/geometry.md)
+o functions : [geometry](/docs/Shader_classes/GLOBAL.md#geometry)
 

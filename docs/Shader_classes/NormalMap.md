@@ -27,5 +27,5 @@ def NormalMap(self, strength=None, color=None, space='TANGENT', uv_map='', node_
 
 ## Implementations
 
-o functions : [normal_map](/docs/Shader_classes/normal_map.md)
+o functions : [normal_map](/docs/Shader_classes/GLOBAL.md#normal_map)
 

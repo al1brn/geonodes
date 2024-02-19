@@ -30,6 +30,6 @@ def TrimCurve(self, curve=None, start=None, end=None, selection=None, mode='FACT
 
 ## Implementations
 
-o functions : [trim_curve](/docs/GeoNodes_classes/trim_curve.md)
+o functions : [trim_curve](/docs/GeoNodes_classes/GLOBAL.md#trim_curve)
 o Geometry : [trim_curve](/docs/GeoNodes_classes/Geometry.md#trim_curve) 
 

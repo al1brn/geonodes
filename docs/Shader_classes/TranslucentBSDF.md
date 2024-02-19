@@ -26,5 +26,5 @@ def TranslucentBSDF(self, color=None, normal=None, node_label=None, node_color=N
 
 ## Implementations
 
-o functions : [translucent_bsdf](/docs/Shader_classes/translucent_bsdf.md)
+o functions : [translucent_bsdf](/docs/Shader_classes/GLOBAL.md#translucent_bsdf)
 

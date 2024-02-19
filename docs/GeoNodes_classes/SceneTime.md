@@ -24,5 +24,5 @@ def SceneTime(self, node_label=None, node_color=None):
 
 ## Implementations
 
-o functions : [scene_time](/docs/GeoNodes_classes/scene_time.md)
+o functions : [scene_time](/docs/GeoNodes_classes/GLOBAL.md#scene_time)
 

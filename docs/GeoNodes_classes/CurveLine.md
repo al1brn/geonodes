@@ -28,5 +28,5 @@ def CurveLine(self, start=None, end=None, direction=None, length=None, mode='POI
 
 ## Implementations
 
-o functions : [curve_line](/docs/GeoNodes_classes/curve_line.md)
+o functions : [curve_line](/docs/GeoNodes_classes/GLOBAL.md#curve_line)
 

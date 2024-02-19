@@ -23,5 +23,5 @@ def Normal(self, node_label=None, node_color=None):
 
 ## Implementations
 
-o functions : [normal](/docs/GeoNodes_classes/normal.md)
+o functions : [normal](/docs/GeoNodes_classes/GLOBAL.md#normal)
 

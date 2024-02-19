@@ -27,6 +27,6 @@ def VectorTransform(self, vector=None, convert_from='WORLD', convert_to='OBJECT'
 
 ## Implementations
 
-o functions : [vector_transform](/docs/Shader_classes/vector_transform.md)
+o functions : [vector_transform](/docs/Shader_classes/GLOBAL.md#vector_transform)
 o Vect : [vector_transform](/docs/Shader_classes/Vect.md#vector_transform) 
 

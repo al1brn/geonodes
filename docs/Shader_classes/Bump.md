@@ -28,6 +28,6 @@ def Bump(self, strength=None, distance=None, height=None, normal=None, invert=Fa
 
 ## Implementations
 
-o functions : [bump](/docs/Shader_classes/bump.md)
+o functions : [bump](/docs/Shader_classes/GLOBAL.md#bump)
 o Vect : [bump](/docs/Shader_classes/Vect.md#bump) 
 

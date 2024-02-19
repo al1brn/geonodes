@@ -23,5 +23,5 @@ def SelfObject(self, node_label=None, node_color=None):
 
 ## Implementations
 
-o functions : [self_object](/docs/GeoNodes_classes/self_object.md)
+o functions : [self_object](/docs/GeoNodes_classes/GLOBAL.md#self_object)
 

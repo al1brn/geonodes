@@ -24,5 +24,5 @@ def MeshIsland(self, node_label=None, node_color=None):
 
 ## Implementations
 
-o functions : [mesh_island](/docs/GeoNodes_classes/mesh_island.md)
+o functions : [mesh_island](/docs/GeoNodes_classes/GLOBAL.md#mesh_island)
 

@@ -29,5 +29,5 @@ def Spiral(self, resolution=None, rotations=None, start_radius=None, end_radius=
 
 ## Implementations
 
-o functions : [spiral](/docs/GeoNodes_classes/spiral.md)
+o functions : [spiral](/docs/GeoNodes_classes/GLOBAL.md#spiral)
 

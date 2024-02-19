@@ -64,7 +64,7 @@ def Switch(self, switch=None, false=None, true=None, input_type='GEOMETRY', node
 
 ## Implementations
 
-o functions : [switch](/docs/GeoNodes_classes/switch.md)
+o functions : [switch](/docs/GeoNodes_classes/GLOBAL.md#switch)
 o Float : [switch](/docs/GeoNodes_classes/Float.md#switch) 
 o Int : [switch](/docs/GeoNodes_classes/Int.md#switch) 
 o Bool : [switch](/docs/GeoNodes_classes/Bool.md#switch) 

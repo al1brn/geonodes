@@ -28,5 +28,5 @@ def Attribute(self, attribute_name='', attribute_type='GEOMETRY', node_label=Non
 
 ## Implementations
 
-o functions : [attribute](/docs/Shader_classes/attribute.md)
+o functions : [attribute](/docs/Shader_classes/GLOBAL.md#attribute)
 

@@ -29,5 +29,5 @@ def MeshLine(self, count=None, start_location=None, offset=None, count_mode='TOT
 
 ## Implementations
 
-o functions : [mesh_line](/docs/GeoNodes_classes/mesh_line.md)
+o functions : [mesh_line](/docs/GeoNodes_classes/GLOBAL.md#mesh_line)
 

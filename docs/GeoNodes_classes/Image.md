@@ -24,5 +24,5 @@ def Image(self, image=None, node_label=None, node_color=None):
 
 ## Implementations
 
-o functions : [image](/docs/GeoNodes_classes/image.md)
+o functions : [image](/docs/GeoNodes_classes/GLOBAL.md#image)
 

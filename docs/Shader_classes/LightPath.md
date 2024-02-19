@@ -35,5 +35,5 @@ def LightPath(self, node_label=None, node_color=None):
 
 ## Implementations
 
-o functions : [light_path](/docs/Shader_classes/light_path.md)
+o functions : [light_path](/docs/Shader_classes/GLOBAL.md#light_path)
 

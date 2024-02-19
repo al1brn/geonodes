@@ -24,6 +24,6 @@ def FaceGroupBoundaries(self, face_group_id=None, node_label=None, node_color=No
 
 ## Implementations
 
-o functions : [face_group_boundaries](/docs/GeoNodes_classes/face_group_boundaries.md)
+o functions : [face_group_boundaries](/docs/GeoNodes_classes/GLOBAL.md#face_group_boundaries)
 o Int : [face_group_boundaries](/docs/GeoNodes_classes/Int.md#face_group_boundaries) 
 

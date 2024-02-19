@@ -27,5 +27,5 @@ def DiffuseBSDF(self, color=None, roughness=None, normal=None, node_label=None, 
 
 ## Implementations
 
-o functions : [diffuse_bsdf](/docs/Shader_classes/diffuse_bsdf.md)
+o functions : [diffuse_bsdf](/docs/Shader_classes/GLOBAL.md#diffuse_bsdf)
 

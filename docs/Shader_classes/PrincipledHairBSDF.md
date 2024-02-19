@@ -44,5 +44,5 @@ absorption_coefficient=None, melanin=None, melanin_redness=None, tint=None, rand
 
 ## Implementations
 
-o functions : [principled_hair_bsdf](/docs/Shader_classes/principled_hair_bsdf.md)
+o functions : [principled_hair_bsdf](/docs/Shader_classes/GLOBAL.md#principled_hair_bsdf)
 

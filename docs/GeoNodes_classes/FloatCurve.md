@@ -26,7 +26,7 @@ def FloatCurve(self, factor=None, value=None, mapping=None, node_label=None, nod
 
 ## Implementations
 
-o functions : [float_curve](/docs/GeoNodes_classes/float_curve.md)
+o functions : [float_curve](/docs/GeoNodes_classes/GLOBAL.md#float_curve)
 o Float : [float_curve](/docs/GeoNodes_classes/Float.md#float_curve) 
 o Int : [float_curve](/docs/GeoNodes_classes/Int.md#float_curve) 
 

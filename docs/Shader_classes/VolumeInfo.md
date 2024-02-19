@@ -26,5 +26,5 @@ def VolumeInfo(self, node_label=None, node_color=None):
 
 ## Implementations
 
-o functions : [volume_info](/docs/Shader_classes/volume_info.md)
+o functions : [volume_info](/docs/Shader_classes/GLOBAL.md#volume_info)
 

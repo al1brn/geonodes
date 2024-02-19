@@ -25,5 +25,5 @@ def SplineParameter(self, node_label=None, node_color=None):
 
 ## Implementations
 
-o functions : [spline_parameter](/docs/GeoNodes_classes/spline_parameter.md)
+o functions : [spline_parameter](/docs/GeoNodes_classes/GLOBAL.md#spline_parameter)
 

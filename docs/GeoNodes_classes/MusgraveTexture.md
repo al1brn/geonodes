@@ -36,5 +36,5 @@ node_color=None):
 
 ## Implementations
 
-o functions : [musgrave_texture](/docs/GeoNodes_classes/musgrave_texture.md)
+o functions : [musgrave_texture](/docs/GeoNodes_classes/GLOBAL.md#musgrave_texture)
 

@@ -27,5 +27,5 @@ def CombineColor(self, red=None, green=None, blue=None, mode='RGB', node_label=N
 
 ## Implementations
 
-o functions : [combine_color](/docs/Shader_classes/combine_color.md) [combine_rgb](/docs/Shader_classes/combine_rgb.md) [combine_hsv](/docs/Shader_classes/combine_hsv.md) [combine_hsl](/docs/Shader_classes/combine_hsl.md)
+o functions : [combine_color](/docs/Shader_classes/GLOBAL.md#combine_color) [combine_rgb](/docs/Shader_classes/GLOBAL.md#combine_rgb) [combine_hsv](/docs/Shader_classes/GLOBAL.md#combine_hsv) [combine_hsl](/docs/Shader_classes/GLOBAL.md#combine_hsl)
 

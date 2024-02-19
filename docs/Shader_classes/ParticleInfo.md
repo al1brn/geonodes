@@ -30,5 +30,5 @@ def ParticleInfo(self, node_label=None, node_color=None):
 
 ## Implementations
 
-o functions : [particle_info](/docs/Shader_classes/particle_info.md)
+o functions : [particle_info](/docs/Shader_classes/GLOBAL.md#particle_info)
 

@@ -27,6 +27,6 @@ def TransformGeometry(self, geometry=None, translation=None, rotation=None, scal
 
 ## Implementations
 
-o functions : [transform_geometry](/docs/GeoNodes_classes/transform_geometry.md)
+o functions : [transform_geometry](/docs/GeoNodes_classes/GLOBAL.md#transform_geometry)
 o Geometry : [transform_geometry](/docs/GeoNodes_classes/Geometry.md#transform_geometry) 
 

@@ -26,5 +26,5 @@ def CombineXYZ(self, x=None, y=None, z=None, node_label=None, node_color=None):
 
 ## Implementations
 
-o functions : [combine_xyz](/docs/Shader_classes/combine_xyz.md)
+o functions : [combine_xyz](/docs/Shader_classes/GLOBAL.md#combine_xyz)
 

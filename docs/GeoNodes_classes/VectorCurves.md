@@ -26,6 +26,6 @@ def VectorCurves(self, fac=None, vector=None, mapping=None, node_label=None, nod
 
 ## Implementations
 
-o functions : [vector_curves](/docs/GeoNodes_classes/vector_curves.md)
+o functions : [vector_curves](/docs/GeoNodes_classes/GLOBAL.md#vector_curves)
 o Vect : [vector_curves](/docs/GeoNodes_classes/Vect.md#vector_curves) 
 

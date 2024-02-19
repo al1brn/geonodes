@@ -24,5 +24,5 @@ def _3DCursor(self, node_label=None, node_color=None):
 
 ## Implementations
 
-o functions : [_3d_cursor](/docs/GeoNodes_classes/_3d_cursor.md)
+o functions : [_3d_cursor](/docs/GeoNodes_classes/GLOBAL.md#_3d_cursor)
 

@@ -28,5 +28,5 @@ def Script(self, bytecode='', bytecode_hash='', filepath='', mode='INTERNAL', sc
 
 ## Implementations
 
-o functions : [script](/docs/Shader_classes/script.md)
+o functions : [script](/docs/Shader_classes/GLOBAL.md#script)
 

@@ -26,5 +26,5 @@ def Background(self, color=None, strength=None, node_label=None, node_color=None
 
 ## Implementations
 
-o functions : [background](/docs/Shader_classes/background.md)
+o functions : [background](/docs/Shader_classes/GLOBAL.md#background)
 

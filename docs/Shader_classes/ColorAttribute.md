@@ -25,5 +25,5 @@ def ColorAttribute(self, layer_name='', node_label=None, node_color=None):
 
 ## Implementations
 
-o functions : [color_attribute](/docs/Shader_classes/color_attribute.md)
+o functions : [color_attribute](/docs/Shader_classes/GLOBAL.md#color_attribute)
 
