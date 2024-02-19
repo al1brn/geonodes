@@ -24,6 +24,6 @@ def RotationToEuler(self, rotation=None, node_label=None, node_color=None):
 
 ## Implementations
 
-o functions : [rotation_to_euler](#rotation_to_euler)
-o Rot : [rotation_to_euler](#rotation_to_euler) 
+o functions : [rotation_to_euler](/docs/classes/rotation_to_euler.md)
+o Rot : [rotation_to_euler](/docs/classes/rotation_to_euler.md) 
 

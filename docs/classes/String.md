@@ -24,5 +24,5 @@ def String(self, string='', node_label=None, node_color=None):
 
 ## Implementations
 
-o functions : [string](#string)
+o functions : [string](/docs/classes/string.md)
 

@@ -23,6 +23,6 @@ def EdgeNeighbors(self, node_label=None, node_color=None):
 
 ## Implementations
 
-o functions : [edge_neighbors](#edge_neighbors)
-o Geometry : [edge_neighbors](#edge_neighbors) 
+o functions : [edge_neighbors](/docs/classes/edge_neighbors.md)
+o Geometry : [edge_neighbors](/docs/classes/edge_neighbors.md) 
 

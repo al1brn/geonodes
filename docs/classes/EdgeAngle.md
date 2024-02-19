@@ -24,5 +24,5 @@ def EdgeAngle(self, node_label=None, node_color=None):
 
 ## Implementations
 
-o functions : [edge_angle](#edge_angle)
+o functions : [edge_angle](/docs/classes/edge_angle.md)
 

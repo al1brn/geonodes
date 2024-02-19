@@ -23,6 +23,6 @@ def Index(self, node_label=None, node_color=None):
 
 ## Implementations
 
-o functions : [index](#index)
-o Geometry : [index](#index) 
+o functions : [index](/docs/classes/index.md)
+o Geometry : [index](/docs/classes/index.md) 
 

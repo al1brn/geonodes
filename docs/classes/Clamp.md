@@ -27,7 +27,7 @@ def Clamp(self, value=None, min=None, max=None, clamp_type='MINMAX', node_label=
 
 ## Implementations
 
-o functions : [clamp](#clamp)
-o Float : [clamp](#clamp) 
-o Int : [clamp](#clamp) 
+o functions : [clamp](/docs/classes/clamp.md)
+o Float : [clamp](/docs/classes/clamp.md) 
+o Int : [clamp](/docs/classes/clamp.md) 
 

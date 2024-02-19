@@ -27,5 +27,5 @@ def WhiteNoiseTexture(self, vector=None, w=None, noise_dimensions='3D', node_lab
 
 ## Implementations
 
-o Vect : [white_noise_texture](#white_noise_texture) 
+o Vect : [white_noise_texture](/docs/classes/white_noise_texture.md) 
 

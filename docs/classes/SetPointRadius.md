@@ -26,6 +26,6 @@ def SetPointRadius(self, points=None, radius=None, selection=None, node_label=No
 
 ## Implementations
 
-o functions : [set_point_radius](#set_point_radius)
-o Geometry : [set_point_radius](#set_point_radius) [point_radius](#point_radius) 
+o functions : [set_point_radius](/docs/classes/set_point_radius.md)
+o Geometry : [set_point_radius](/docs/classes/set_point_radius.md) [point_radius](/docs/classes/point_radius.md) 
 

@@ -23,6 +23,6 @@ def IsSplineCyclic(self, node_label=None, node_color=None):
 
 ## Implementations
 
-o functions : [is_spline_cyclic](#is_spline_cyclic)
-o Geometry : [spline_cyclic](#spline_cyclic) 
+o functions : [is_spline_cyclic](/docs/classes/is_spline_cyclic.md)
+o Geometry : [spline_cyclic](/docs/classes/spline_cyclic.md) 
 

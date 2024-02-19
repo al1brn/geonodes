@@ -25,6 +25,6 @@ def JoinStrings(self, *args, delimiter=None, strings=None, node_label=None, node
 
 ## Implementations
 
-o functions : [join_strings](#join_strings)
-o Str : [join_strings](#join_strings) 
+o functions : [join_strings](/docs/classes/join_strings.md)
+o Str : [join_strings](/docs/classes/join_strings.md) 
 

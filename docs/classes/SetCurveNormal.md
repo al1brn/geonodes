@@ -26,6 +26,6 @@ def SetCurveNormal(self, curve=None, selection=None, mode='MINIMUM_TWIST', node_
 
 ## Implementations
 
-o functions : [set_curve_normal](#set_curve_normal)
-o Geometry : [set_curve_normal](#set_curve_normal) 
+o functions : [set_curve_normal](/docs/classes/set_curve_normal.md)
+o Geometry : [set_curve_normal](/docs/classes/set_curve_normal.md) 
 

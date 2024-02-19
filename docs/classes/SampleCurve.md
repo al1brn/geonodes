@@ -44,6 +44,6 @@ def SampleCurve(self, curves=None, value=None, factor=None, curve_index=None, le
 
 ## Implementations
 
-o Float : [sample_curve](#sample_curve) 
-o Int : [sample_curve](#sample_curve) 
+o Float : [sample_curve](/docs/classes/sample_curve.md) 
+o Int : [sample_curve](/docs/classes/sample_curve.md) 
 

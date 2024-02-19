@@ -28,6 +28,6 @@ def ScaleInstances(self, instances=None, scale=None, center=None, local_space=No
 
 ## Implementations
 
-o functions : [scale_instances](#scale_instances)
-o Geometry : [scale_instances](#scale_instances) 
+o functions : [scale_instances](/docs/classes/scale_instances.md)
+o Geometry : [scale_instances](/docs/classes/scale_instances.md) 
 

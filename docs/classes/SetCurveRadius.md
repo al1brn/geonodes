@@ -26,6 +26,6 @@ def SetCurveRadius(self, curve=None, radius=None, selection=None, node_label=Non
 
 ## Implementations
 
-o functions : [set_curve_radius](#set_curve_radius)
-o Geometry : [set_curve_radius](#set_curve_radius) [curve_radius](#curve_radius) 
+o functions : [set_curve_radius](/docs/classes/set_curve_radius.md)
+o Geometry : [set_curve_radius](/docs/classes/set_curve_radius.md) [curve_radius](/docs/classes/curve_radius.md) 
 

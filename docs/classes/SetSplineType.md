@@ -26,6 +26,6 @@ def SetSplineType(self, curve=None, selection=None, spline_type='POLY', node_lab
 
 ## Implementations
 
-o functions : [set_spline_type](#set_spline_type)
-o Geometry : [set_spline_type](#set_spline_type) 
+o functions : [set_spline_type](/docs/classes/set_spline_type.md)
+o Geometry : [set_spline_type](/docs/classes/set_spline_type.md) 
 

@@ -27,6 +27,6 @@ def CornersOfVertex(self, vertex_index=None, weights=None, sort_index=None, node
 
 ## Implementations
 
-o Int : [corners_of_vertex](#corners_of_vertex) 
-o Float : [corners_of_vertex](#corners_of_vertex) 
+o Int : [corners_of_vertex](/docs/classes/corners_of_vertex.md) 
+o Float : [corners_of_vertex](/docs/classes/corners_of_vertex.md) 
 

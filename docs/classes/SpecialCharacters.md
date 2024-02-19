@@ -24,5 +24,5 @@ def SpecialCharacters(self, node_label=None, node_color=None):
 
 ## Implementations
 
-o functions : [special_characters](#special_characters)
+o functions : [special_characters](/docs/classes/special_characters.md)
 

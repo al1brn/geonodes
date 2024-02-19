@@ -24,5 +24,5 @@ def Integer(self, integer=0, node_label=None, node_color=None):
 
 ## Implementations
 
-o functions : [integer](#integer)
+o functions : [integer](/docs/classes/integer.md)
 

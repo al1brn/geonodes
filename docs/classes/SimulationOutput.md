@@ -28,6 +28,6 @@ def SimulationOutput(self, skip=None, geometry=None, active_index=0, active_item
 
 ## Implementations
 
-o functions : [simulation_output](#simulation_output)
-o Geometry : [simulation_output](#simulation_output) 
+o functions : [simulation_output](/docs/classes/simulation_output.md)
+o Geometry : [simulation_output](/docs/classes/simulation_output.md) 
 

@@ -24,5 +24,5 @@ def Image(self, image=None, node_label=None, node_color=None):
 
 ## Implementations
 
-o functions : [image](#image)
+o functions : [image](/docs/classes/image.md)
 

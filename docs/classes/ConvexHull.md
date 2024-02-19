@@ -24,6 +24,6 @@ def ConvexHull(self, geometry=None, node_label=None, node_color=None):
 
 ## Implementations
 
-o functions : [convex_hull](#convex_hull)
-o Geometry : [convex_hull](#convex_hull) 
+o functions : [convex_hull](/docs/classes/convex_hull.md)
+o Geometry : [convex_hull](/docs/classes/convex_hull.md) 
 

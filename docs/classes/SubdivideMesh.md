@@ -25,6 +25,6 @@ def SubdivideMesh(self, mesh=None, level=None, node_label=None, node_color=None)
 
 ## Implementations
 
-o functions : [subdivide_mesh](#subdivide_mesh)
-o Geometry : [subdivide_mesh](#subdivide_mesh) 
+o functions : [subdivide_mesh](/docs/classes/subdivide_mesh.md)
+o Geometry : [subdivide_mesh](/docs/classes/subdivide_mesh.md) 
 

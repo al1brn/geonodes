@@ -28,6 +28,6 @@ def Triangulate(self, mesh=None, minimum_vertices=None, selection=None, ngon_met
 
 ## Implementations
 
-o functions : [triangulate](#triangulate)
-o Geometry : [triangulate](#triangulate) 
+o functions : [triangulate](/docs/classes/triangulate.md)
+o Geometry : [triangulate](/docs/classes/triangulate.md) 
 

@@ -29,5 +29,5 @@ def Spiral(self, resolution=None, rotations=None, start_radius=None, end_radius=
 
 ## Implementations
 
-o functions : [spiral](#spiral)
+o functions : [spiral](/docs/classes/spiral.md)
 

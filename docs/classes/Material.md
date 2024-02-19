@@ -24,5 +24,5 @@ def Material(self, material=None, node_label=None, node_color=None):
 
 ## Implementations
 
-o functions : [material](#material)
+o functions : [material](/docs/classes/material.md)
 

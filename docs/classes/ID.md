@@ -23,6 +23,6 @@ def ID(self, node_label=None, node_color=None):
 
 ## Implementations
 
-o functions : [id](#id)
-o Geometry : [ID](#id) 
+o functions : [id](/docs/classes/id.md)
+o Geometry : [ID](/docs/classes/ID.md) 
 

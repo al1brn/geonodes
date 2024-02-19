@@ -24,5 +24,5 @@ def _3DCursor(self, node_label=None, node_color=None):
 
 ## Implementations
 
-o functions : [_3d_cursor](#_3d_cursor)
+o functions : [_3d_cursor](/docs/classes/_3d_cursor.md)
 

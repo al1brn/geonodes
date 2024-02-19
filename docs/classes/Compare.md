@@ -39,10 +39,10 @@ def Compare(self, a=None, b=None, epsilon=None, data_type='FLOAT', mode='ELEMENT
 
 ## Implementations
 
-o functions : [compare](#compare)
-o Float : [less_than](#less_than) [less_equal](#less_equal) [greater_than](#greater_than) [greater_equal](#greater_equal) [equal](#equal) [not_equal](#not_equal) 
-o Int : [less_than](#less_than) [less_equal](#less_equal) [greater_than](#greater_than) [greater_equal](#greater_equal) [equal](#equal) [not_equal](#not_equal) 
-o Vect : [less_than](#less_than) [less_equal](#less_equal) [greater_than](#greater_than) [greater_equal](#greater_equal) [equal](#equal) [not_equal](#not_equal) 
-o Str : [equal](#equal) [not_equal](#not_equal) 
-o Col : [equal](#equal) [not_equal](#not_equal) [brighter](#brighter) [darker](#darker) 
+o functions : [compare](/docs/classes/compare.md)
+o Float : [less_than](/docs/classes/less_than.md) [less_equal](/docs/classes/less_equal.md) [greater_than](/docs/classes/greater_than.md) [greater_equal](/docs/classes/greater_equal.md) [equal](/docs/classes/equal.md) [not_equal](/docs/classes/not_equal.md) 
+o Int : [less_than](/docs/classes/less_than.md) [less_equal](/docs/classes/less_equal.md) [greater_than](/docs/classes/greater_than.md) [greater_equal](/docs/classes/greater_equal.md) [equal](/docs/classes/equal.md) [not_equal](/docs/classes/not_equal.md) 
+o Vect : [less_than](/docs/classes/less_than.md) [less_equal](/docs/classes/less_equal.md) [greater_than](/docs/classes/greater_than.md) [greater_equal](/docs/classes/greater_equal.md) [equal](/docs/classes/equal.md) [not_equal](/docs/classes/not_equal.md) 
+o Str : [equal](/docs/classes/equal.md) [not_equal](/docs/classes/not_equal.md) 
+o Col : [equal](/docs/classes/equal.md) [not_equal](/docs/classes/not_equal.md) [brighter](/docs/classes/brighter.md) [darker](/docs/classes/darker.md) 
 

@@ -23,6 +23,6 @@ def Radius(self, node_label=None, node_color=None):
 
 ## Implementations
 
-o functions : [radius](#radius)
-o Geometry : [curve_radius](#curve_radius) [point_radius](#point_radius) 
+o functions : [radius](/docs/classes/radius.md)
+o Geometry : [curve_radius](/docs/classes/curve_radius.md) [point_radius](/docs/classes/point_radius.md) 
 

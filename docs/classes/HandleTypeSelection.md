@@ -25,5 +25,5 @@ def HandleTypeSelection(self, handle_type='AUTO', mode={'RIGHT', 'LEFT'}, node_l
 
 ## Implementations
 
-o functions : [handle_type_selection](#handle_type_selection)
+o functions : [handle_type_selection](/docs/classes/handle_type_selection.md)
 

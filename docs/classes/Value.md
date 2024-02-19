@@ -23,5 +23,5 @@ def Value(self, node_label=None, node_color=None):
 
 ## Implementations
 
-o functions : [value](#value)
+o functions : [value](/docs/classes/value.md)
 

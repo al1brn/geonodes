@@ -36,5 +36,5 @@ node_color=None):
 
 ## Implementations
 
-o functions : [musgrave_texture](#musgrave_texture)
+o functions : [musgrave_texture](/docs/classes/musgrave_texture.md)
 

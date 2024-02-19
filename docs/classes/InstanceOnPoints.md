@@ -30,6 +30,6 @@ def InstanceOnPoints(self, points=None, instance=None, pick_instance=None, insta
 
 ## Implementations
 
-o functions : [instance_on_points](#instance_on_points)
-o Geometry : [instance_on_points](#instance_on_points) 
+o functions : [instance_on_points](/docs/classes/instance_on_points.md)
+o Geometry : [instance_on_points](/docs/classes/instance_on_points.md) 
 

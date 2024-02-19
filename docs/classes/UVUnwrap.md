@@ -28,5 +28,5 @@ def UVUnwrap(self, seam=None, margin=None, fill_holes=None, selection=None, meth
 
 ## Implementations
 
-o functions : [uv_unwrap](#uv_unwrap)
+o functions : [uv_unwrap](/docs/classes/uv_unwrap.md)
 

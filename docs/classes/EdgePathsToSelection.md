@@ -25,6 +25,6 @@ def EdgePathsToSelection(self, start_vertices=None, next_vertex_index=None, node
 
 ## Implementations
 
-o functions : [edge_paths_to_selection](#edge_paths_to_selection)
-o Bool : [edge_paths_to_selection](#edge_paths_to_selection) 
+o functions : [edge_paths_to_selection](/docs/classes/edge_paths_to_selection.md)
+o Bool : [edge_paths_to_selection](/docs/classes/edge_paths_to_selection.md) 
 

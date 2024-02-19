@@ -23,6 +23,6 @@ def IsFaceSmooth(self, node_label=None, node_color=None):
 
 ## Implementations
 
-o functions : [is_face_smooth](#is_face_smooth)
-o Geometry : [face_shade_smooth](#face_shade_smooth) 
+o functions : [is_face_smooth](/docs/classes/is_face_smooth.md)
+o Geometry : [face_shade_smooth](/docs/classes/face_shade_smooth.md) 
 

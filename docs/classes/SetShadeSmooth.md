@@ -27,7 +27,7 @@ def SetShadeSmooth(self, geometry=None, shade_smooth=None, selection=None, domai
 
 ## Implementations
 
-o functions : [set_shade_smooth](#set_shade_smooth)
-o Geometry : [set_shade_smooth](#set_shade_smooth) 
-o Domain : [set_shade_smooth](#set_shade_smooth) 
+o functions : [set_shade_smooth](/docs/classes/set_shade_smooth.md)
+o Geometry : [set_shade_smooth](/docs/classes/set_shade_smooth.md) 
+o Domain : [set_shade_smooth](/docs/classes/set_shade_smooth.md) 
 

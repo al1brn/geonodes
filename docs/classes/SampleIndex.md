@@ -39,9 +39,9 @@ def SampleIndex(self, geometry=None, value=None, index=None, clamp=False, data_t
 
 ## Implementations
 
-o functions : [sample_index](#sample_index)
-o Float : [sample_index](#sample_index) 
-o Int : [sample_index](#sample_index) 
-o Geometry : [sample_index_float](#sample_index_float) [sample_index_int](#sample_index_int) [sample_index_vector](#sample_index_vector) [sample_index_color](#sample_index_color) [sample_index_boolean](#sample_index_boolean) [sample_index_quaternion](#sample_index_quaternion) 
-o Domain : [sample_index_float](#sample_index_float) [sample_index_int](#sample_index_int) [sample_index_vector](#sample_index_vector) [sample_index_color](#sample_index_color) [sample_index_boolean](#sample_index_boolean) [sample_index_quaternion](#sample_index_quaternion) 
+o functions : [sample_index](/docs/classes/sample_index.md)
+o Float : [sample_index](/docs/classes/sample_index.md) 
+o Int : [sample_index](/docs/classes/sample_index.md) 
+o Geometry : [sample_index_float](/docs/classes/sample_index_float.md) [sample_index_int](/docs/classes/sample_index_int.md) [sample_index_vector](/docs/classes/sample_index_vector.md) [sample_index_color](/docs/classes/sample_index_color.md) [sample_index_boolean](/docs/classes/sample_index_boolean.md) [sample_index_quaternion](/docs/classes/sample_index_quaternion.md) 
+o Domain : [sample_index_float](/docs/classes/sample_index_float.md) [sample_index_int](/docs/classes/sample_index_int.md) [sample_index_vector](/docs/classes/sample_index_vector.md) [sample_index_color](/docs/classes/sample_index_color.md) [sample_index_boolean](/docs/classes/sample_index_boolean.md) [sample_index_quaternion](/docs/classes/sample_index_quaternion.md) 
 

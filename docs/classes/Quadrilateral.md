@@ -35,5 +35,5 @@ def Quadrilateral(self, width=None, height=None, offset=None, bottom_width=None,
 
 ## Implementations
 
-o functions : [quadrilateral](#quadrilateral)
+o functions : [quadrilateral](/docs/classes/quadrilateral.md)
 

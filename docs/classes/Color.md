@@ -23,5 +23,5 @@ def Color(self, node_label=None, node_color=None):
 
 ## Implementations
 
-o functions : [color](#color)
+o functions : [color](/docs/classes/color.md)
 

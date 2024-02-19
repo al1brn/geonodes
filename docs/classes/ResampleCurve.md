@@ -28,6 +28,6 @@ def ResampleCurve(self, curve=None, count=None, length=None, selection=None, mod
 
 ## Implementations
 
-o functions : [resample_curve](#resample_curve)
-o Geometry : [resample_curve](#resample_curve) 
+o functions : [resample_curve](/docs/classes/resample_curve.md)
+o Geometry : [resample_curve](/docs/classes/resample_curve.md) 
 

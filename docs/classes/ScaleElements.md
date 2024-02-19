@@ -30,7 +30,7 @@ def ScaleElements(self, geometry=None, scale=None, center=None, axis=None, selec
 
 ## Implementations
 
-o functions : [scale_elements](#scale_elements)
-o Geometry : [scale_elements](#scale_elements) 
-o Domain : [scale_elements](#scale_elements) 
+o functions : [scale_elements](/docs/classes/scale_elements.md)
+o Geometry : [scale_elements](/docs/classes/scale_elements.md) 
+o Domain : [scale_elements](/docs/classes/scale_elements.md) 
 

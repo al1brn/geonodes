@@ -27,6 +27,6 @@ def EdgesOfVertex(self, vertex_index=None, weights=None, sort_index=None, node_l
 
 ## Implementations
 
-o Int : [edges_of_vertex](#edges_of_vertex) 
-o Float : [edges_of_vertex](#edges_of_vertex) 
+o Int : [edges_of_vertex](/docs/classes/edges_of_vertex.md) 
+o Float : [edges_of_vertex](/docs/classes/edges_of_vertex.md) 
 

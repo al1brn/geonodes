@@ -36,7 +36,7 @@ def RandomValue(self, min=None, max=None, ID=None, seed=None, probability=None, 
 
 ## Implementations
 
-o functions : [random_value](#random_value) [random_float](#random_float) [random_int](#random_int) [random_vector](#random_vector) [random_boolean](#random_boolean)
-o Float : [random_value](#random_value) 
-o Int : [random_value](#random_value) 
+o functions : [random_value](/docs/classes/random_value.md) [random_float](/docs/classes/random_float.md) [random_int](/docs/classes/random_int.md) [random_vector](/docs/classes/random_vector.md) [random_boolean](/docs/classes/random_boolean.md)
+o Float : [random_value](/docs/classes/random_value.md) 
+o Int : [random_value](/docs/classes/random_value.md) 
 

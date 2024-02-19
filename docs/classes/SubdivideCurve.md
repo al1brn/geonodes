@@ -25,6 +25,6 @@ def SubdivideCurve(self, curve=None, cuts=None, node_label=None, node_color=None
 
 ## Implementations
 
-o functions : [subdivide_curve](#subdivide_curve)
-o Geometry : [subdivide_curve](#subdivide_curve) 
+o functions : [subdivide_curve](/docs/classes/subdivide_curve.md)
+o Geometry : [subdivide_curve](/docs/classes/subdivide_curve.md) 
 

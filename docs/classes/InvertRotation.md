@@ -24,6 +24,6 @@ def InvertRotation(self, rotation=None, node_label=None, node_color=None):
 
 ## Implementations
 
-o functions : [invert_rotation](#invert_rotation)
-o Rot : [invert_rotation](#invert_rotation) 
+o functions : [invert_rotation](/docs/classes/invert_rotation.md)
+o Rot : [invert_rotation](/docs/classes/invert_rotation.md) 
 

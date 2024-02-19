@@ -28,6 +28,6 @@ def PointsToSDFVolume(self, points=None, voxel_amount=None, radius=None, voxel_s
 
 ## Implementations
 
-o functions : [points_to_sdf_volume](#points_to_sdf_volume)
-o Geometry : [points_to_sdf_volume](#points_to_sdf_volume) 
+o functions : [points_to_sdf_volume](/docs/classes/points_to_sdf_volume.md)
+o Geometry : [points_to_sdf_volume](/docs/classes/points_to_sdf_volume.md) 
 

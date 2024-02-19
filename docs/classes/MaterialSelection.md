@@ -24,6 +24,6 @@ def MaterialSelection(self, material=None, node_label=None, node_color=None):
 
 ## Implementations
 
-o functions : [material_selection](#material_selection)
-o Mat : [material_selection](#material_selection) 
+o functions : [material_selection](/docs/classes/material_selection.md)
+o Mat : [material_selection](/docs/classes/material_selection.md) 
 

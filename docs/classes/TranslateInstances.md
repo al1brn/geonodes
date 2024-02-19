@@ -27,6 +27,6 @@ def TranslateInstances(self, instances=None, translation=None, local_space=None,
 
 ## Implementations
 
-o functions : [translate_instances](#translate_instances)
-o Geometry : [translate_instances](#translate_instances) 
+o functions : [translate_instances](/docs/classes/translate_instances.md)
+o Geometry : [translate_instances](/docs/classes/translate_instances.md) 
 

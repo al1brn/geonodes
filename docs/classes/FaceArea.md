@@ -23,6 +23,6 @@ def FaceArea(self, node_label=None, node_color=None):
 
 ## Implementations
 
-o functions : [face_area](#face_area)
-o Geometry : [face_area](#face_area) 
+o functions : [face_area](/docs/classes/face_area.md)
+o Geometry : [face_area](/docs/classes/face_area.md) 
 

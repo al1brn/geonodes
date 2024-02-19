@@ -25,6 +25,6 @@ def CurveOfPoint(self, point_index=None, node_label=None, node_color=None):
 
 ## Implementations
 
-o Int : [curve_of_point](#curve_of_point) 
-o Float : [curve_of_point](#curve_of_point) 
+o Int : [curve_of_point](/docs/classes/curve_of_point.md) 
+o Float : [curve_of_point](/docs/classes/curve_of_point.md) 
 

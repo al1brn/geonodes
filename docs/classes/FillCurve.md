@@ -25,6 +25,6 @@ def FillCurve(self, curve=None, mode='TRIANGLES', node_label=None, node_color=No
 
 ## Implementations
 
-o functions : [fill_curve](#fill_curve)
-o Geometry : [fill_curve](#fill_curve) 
+o functions : [fill_curve](/docs/classes/fill_curve.md)
+o Geometry : [fill_curve](/docs/classes/fill_curve.md) 
 

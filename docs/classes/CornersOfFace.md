@@ -27,6 +27,6 @@ def CornersOfFace(self, face_index=None, weights=None, sort_index=None, node_lab
 
 ## Implementations
 
-o Int : [corners_of_face](#corners_of_face) 
-o Float : [corners_of_face](#corners_of_face) 
+o Int : [corners_of_face](/docs/classes/corners_of_face.md) 
+o Float : [corners_of_face](/docs/classes/corners_of_face.md) 
 

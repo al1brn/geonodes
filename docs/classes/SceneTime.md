@@ -24,5 +24,5 @@ def SceneTime(self, node_label=None, node_color=None):
 
 ## Implementations
 
-o functions : [scene_time](#scene_time)
+o functions : [scene_time](/docs/classes/scene_time.md)
 

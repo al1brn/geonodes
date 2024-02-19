@@ -23,5 +23,5 @@ def MaterialIndex(self, node_label=None, node_color=None):
 
 ## Implementations
 
-o functions : [material_index](#material_index)
+o functions : [material_index](/docs/classes/material_index.md)
 

@@ -29,6 +29,6 @@ def ImageInfo(self, image=None, frame=None, node_label=None, node_color=None):
 
 ## Implementations
 
-o Int : [image_info](#image_info) 
-o Float : [image_info](#image_info) 
+o Int : [image_info](/docs/classes/image_info.md) 
+o Float : [image_info](/docs/classes/image_info.md) 
 

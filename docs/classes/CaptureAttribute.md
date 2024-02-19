@@ -38,6 +38,6 @@ def CaptureAttribute(self, geometry=None, value=None, data_type='FLOAT', domain=
 
 ## Implementations
 
-o Geometry : [capture_attribute](#capture_attribute) [capture_float](#capture_float) [capture_int](#capture_int) [capture_vector](#capture_vector) [capture_color](#capture_color) [capture_boolean](#capture_boolean) [capture_quaternion](#capture_quaternion) 
-o Domain : [capture_attribute](#capture_attribute) [capture_float](#capture_float) [capture_int](#capture_int) [capture_vector](#capture_vector) [capture_color](#capture_color) [capture_boolean](#capture_boolean) [capture_quaternion](#capture_quaternion) 
+o Geometry : [capture_attribute](/docs/classes/capture_attribute.md) [capture_float](/docs/classes/capture_float.md) [capture_int](/docs/classes/capture_int.md) [capture_vector](/docs/classes/capture_vector.md) [capture_color](/docs/classes/capture_color.md) [capture_boolean](/docs/classes/capture_boolean.md) [capture_quaternion](/docs/classes/capture_quaternion.md) 
+o Domain : [capture_attribute](/docs/classes/capture_attribute.md) [capture_float](/docs/classes/capture_float.md) [capture_int](/docs/classes/capture_int.md) [capture_vector](/docs/classes/capture_vector.md) [capture_color](/docs/classes/capture_color.md) [capture_boolean](/docs/classes/capture_boolean.md) [capture_quaternion](/docs/classes/capture_quaternion.md) 
 

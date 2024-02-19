@@ -25,6 +25,6 @@ def ReverseCurve(self, curve=None, selection=None, node_label=None, node_color=N
 
 ## Implementations
 
-o functions : [reverse_curve](#reverse_curve)
-o Geometry : [reverse_curve](#reverse_curve) 
+o functions : [reverse_curve](/docs/classes/reverse_curve.md)
+o Geometry : [reverse_curve](/docs/classes/reverse_curve.md) 
 

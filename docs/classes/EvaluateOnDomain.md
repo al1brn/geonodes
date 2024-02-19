@@ -36,7 +36,7 @@ def EvaluateOnDomain(self, value=None, data_type='FLOAT', domain='POINT', node_l
 
 ## Implementations
 
-o functions : [evaluate_on_domain](#evaluate_on_domain)
-o Float : [evaluate_on_domain](#evaluate_on_domain) 
-o Int : [evaluate_on_domain](#evaluate_on_domain) 
+o functions : [evaluate_on_domain](/docs/classes/evaluate_on_domain.md)
+o Float : [evaluate_on_domain](/docs/classes/evaluate_on_domain.md) 
+o Int : [evaluate_on_domain](/docs/classes/evaluate_on_domain.md) 
 

@@ -26,5 +26,5 @@ def SDFVolumeSphere(self, radius=None, voxel_size=None, half_band_width=None, no
 
 ## Implementations
 
-o functions : [sdf_volume_sphere](#sdf_volume_sphere)
+o functions : [sdf_volume_sphere](/docs/classes/sdf_volume_sphere.md)
 

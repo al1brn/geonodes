@@ -29,5 +29,5 @@ def MeshLine(self, count=None, start_location=None, offset=None, count_mode='TOT
 
 ## Implementations
 
-o functions : [mesh_line](#mesh_line)
+o functions : [mesh_line](/docs/classes/mesh_line.md)
 

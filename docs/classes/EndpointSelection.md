@@ -25,5 +25,5 @@ def EndpointSelection(self, start_size=None, end_size=None, node_label=None, nod
 
 ## Implementations
 
-o functions : [endpoint_selection](#endpoint_selection)
+o functions : [endpoint_selection](/docs/classes/endpoint_selection.md)
 

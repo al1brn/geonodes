@@ -27,7 +27,7 @@ def DeleteGeometry(self, geometry=None, selection=None, domain='POINT', mode='AL
 
 ## Implementations
 
-o functions : [delete_geometry](#delete_geometry)
-o Geometry : [delete_geometry](#delete_geometry) 
-o Domain : [delete_geometry](#delete_geometry) 
+o functions : [delete_geometry](/docs/classes/delete_geometry.md)
+o Geometry : [delete_geometry](/docs/classes/delete_geometry.md) 
+o Domain : [delete_geometry](/docs/classes/delete_geometry.md) 
 

@@ -24,5 +24,5 @@ def Vector(self, vector=(0.0, 0.0, 0.0), node_label=None, node_color=None):
 
 ## Implementations
 
-o functions : [vector](#vector)
+o functions : [vector](/docs/classes/vector.md)
 

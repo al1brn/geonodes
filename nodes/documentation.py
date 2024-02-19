@@ -575,9 +575,12 @@ class Doc:
         elif self.doc_spec.target == 'MD':
             return f"[{name}](#{name.lower().replace(' ', '-')})"
         
-    def list_links(self, names):
+    def list_links(self, names, page=False):
         if self.doc_spec.target == 'MD':
-            return [self.page_link(name) for name in names]
+            if page:
+                return [self.page_link(name) for name in names]
+            else:
+                return [self.class_link(name) for name in names]
         else:
             return names
             

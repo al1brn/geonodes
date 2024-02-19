@@ -26,5 +26,5 @@ def Points(self, count=None, position=None, radius=None, node_label=None, node_c
 
 ## Implementations
 
-o functions : [points](#points)
+o functions : [points](/docs/classes/points.md)
 

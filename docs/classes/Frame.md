@@ -25,5 +25,5 @@ def Frame(self, label_size=20, shrink=True, text=None, node_label=None, node_col
 
 ## Implementations
 
-o functions : [frame](#frame)
+o functions : [frame](/docs/classes/frame.md)
 

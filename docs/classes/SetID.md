@@ -26,6 +26,6 @@ def SetID(self, geometry=None, ID=None, selection=None, node_label=None, node_co
 
 ## Implementations
 
-o functions : [set_id](#set_id)
-o Geometry : [set_id](#set_id) [ID](#id) 
+o functions : [set_id](/docs/classes/set_id.md)
+o Geometry : [set_id](/docs/classes/set_id.md) [ID](/docs/classes/ID.md) 
 

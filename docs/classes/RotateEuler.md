@@ -28,6 +28,6 @@ def RotateEuler(self, rotation=None, rotate_by=None, space='OBJECT', node_label=
 
 ## Implementations
 
-o functions : [rotate_euler](#rotate_euler)
-o Vect : [rotate_euler](#rotate_euler) 
+o functions : [rotate_euler](/docs/classes/rotate_euler.md)
+o Vect : [rotate_euler](/docs/classes/rotate_euler.md) 
 

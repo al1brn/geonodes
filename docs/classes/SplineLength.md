@@ -24,5 +24,5 @@ def SplineLength(self, node_label=None, node_color=None):
 
 ## Implementations
 
-o functions : [spline_length](#spline_length)
+o functions : [spline_length](/docs/classes/spline_length.md)
 

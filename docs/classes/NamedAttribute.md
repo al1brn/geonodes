@@ -31,6 +31,6 @@ def NamedAttribute(self, name=None, data_type='FLOAT', node_label=None, node_col
 
 ## Implementations
 
-o functions : [named_float](#named_float) [named_int](#named_int) [named_vector](#named_vector) [named_color](#named_color) [named_boolean](#named_boolean) [named_quaternion](#named_quaternion)
-o Str : [named_attribute](#named_attribute) 
+o functions : [named_float](/docs/classes/named_float.md) [named_int](/docs/classes/named_int.md) [named_vector](/docs/classes/named_vector.md) [named_color](/docs/classes/named_color.md) [named_boolean](/docs/classes/named_boolean.md) [named_quaternion](/docs/classes/named_quaternion.md)
+o Str : [named_attribute](/docs/classes/named_attribute.md) 
 

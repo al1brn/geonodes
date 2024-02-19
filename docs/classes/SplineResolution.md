@@ -23,6 +23,6 @@ def SplineResolution(self, node_label=None, node_color=None):
 
 ## Implementations
 
-o functions : [spline_resolution](#spline_resolution)
-o Geometry : [spline_resolution](#spline_resolution) 
+o functions : [spline_resolution](/docs/classes/spline_resolution.md)
+o Geometry : [spline_resolution](/docs/classes/spline_resolution.md) 
 

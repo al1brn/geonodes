@@ -26,6 +26,6 @@ def PointsToCurves(self, points=None, curve_group_id=None, weight=None, node_lab
 
 ## Implementations
 
-o functions : [points_to_curves](#points_to_curves)
-o Geometry : [points_to_curves](#points_to_curves) 
+o functions : [points_to_curves](/docs/classes/points_to_curves.md)
+o Geometry : [points_to_curves](/docs/classes/points_to_curves.md) 
 

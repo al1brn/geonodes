@@ -26,5 +26,5 @@ def CombineXYZ(self, x=None, y=None, z=None, node_label=None, node_color=None):
 
 ## Implementations
 
-o functions : [combine_xyz](#combine_xyz)
+o functions : [combine_xyz](/docs/classes/combine_xyz.md)
 

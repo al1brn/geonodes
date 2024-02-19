@@ -23,5 +23,5 @@ def SignedDistance(self, node_label=None, node_color=None):
 
 ## Implementations
 
-o functions : [signed_distance](#signed_distance)
+o functions : [signed_distance](/docs/classes/signed_distance.md)
 

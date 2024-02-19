@@ -26,6 +26,6 @@ def VectorCurves(self, fac=None, vector=None, mapping=None, node_label=None, nod
 
 ## Implementations
 
-o functions : [vector_curves](#vector_curves)
-o Vect : [vector_curves](#vector_curves) 
+o functions : [vector_curves](/docs/classes/vector_curves.md)
+o Vect : [vector_curves](/docs/classes/vector_curves.md) 
 

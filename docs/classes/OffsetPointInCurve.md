@@ -26,6 +26,6 @@ def OffsetPointInCurve(self, point_index=None, offset=None, node_label=None, nod
 
 ## Implementations
 
-o Int : [offset_point_in_curve](#offset_point_in_curve) 
-o Float : [offset_point_in_curve](#offset_point_in_curve) 
+o Int : [offset_point_in_curve](/docs/classes/offset_point_in_curve.md) 
+o Float : [offset_point_in_curve](/docs/classes/offset_point_in_curve.md) 
 

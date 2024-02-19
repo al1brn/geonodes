@@ -23,6 +23,6 @@ def Position(self, node_label=None, node_color=None):
 
 ## Implementations
 
-o functions : [position](#position)
-o Geometry : [position](#position) 
+o functions : [position](/docs/classes/position.md)
+o Geometry : [position](/docs/classes/position.md) 
 

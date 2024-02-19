@@ -29,5 +29,5 @@ def MeshBoolean(self, *args, mesh_1=None, mesh_2=None, self_intersection=None, h
 
 ## Implementations
 
-o Geometry : [mesh_boolean](#mesh_boolean) [difference](#difference) [intersect](#intersect) [union](#union) 
+o Geometry : [mesh_boolean](/docs/classes/mesh_boolean.md) [difference](/docs/classes/difference.md) [intersect](/docs/classes/intersect.md) [union](/docs/classes/union.md) 
 

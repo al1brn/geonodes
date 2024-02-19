@@ -26,5 +26,5 @@ def EdgeVertices(self, node_label=None, node_color=None):
 
 ## Implementations
 
-o functions : [edge_vertices](#edge_vertices)
+o functions : [edge_vertices](/docs/classes/edge_vertices.md)
 

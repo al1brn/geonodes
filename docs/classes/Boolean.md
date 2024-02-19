@@ -24,5 +24,5 @@ def Boolean(self, boolean=False, node_label=None, node_color=None):
 
 ## Implementations
 
-o functions : [boolean](#boolean)
+o functions : [boolean](/docs/classes/boolean.md)
 

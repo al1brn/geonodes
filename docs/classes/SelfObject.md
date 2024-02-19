@@ -23,5 +23,5 @@ def SelfObject(self, node_label=None, node_color=None):
 
 ## Implementations
 
-o functions : [self_object](#self_object)
+o functions : [self_object](/docs/classes/self_object.md)
 

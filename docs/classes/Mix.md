@@ -41,10 +41,10 @@ def Mix(self, factor=None, a=None, b=None, blend_type='MIX', clamp_factor=True, 
 
 ## Implementations
 
-o functions : [mix](#mix)
-o Float : [mix](#mix) [mix](#mix) 
-o Int : [mix](#mix) 
-o Col : [mix_mix](#mix_mix) [mix_darken](#mix_darken) [mix_multiply](#mix_multiply) [mix_burn](#mix_burn) [mix_lighten](#mix_lighten) [mix_screen](#mix_screen) [mix_dodge](#mix_dodge) [mix_add](#mix_add) [mix_overlay](#mix_overlay) [mix_soft_light](#mix_soft_light) [mix_linear_light](#mix_linear_light) [mix_difference](#mix_difference) [mix_exclusion](#mix_exclusion) [mix_subtract](#mix_subtract) [mix_divide](#mix_divide) [mix_hue](#mix_hue) [mix_saturation](#mix_saturation) [mix_color](#mix_color) [mix_value](#mix_value) [mix](#mix) 
-o Vect : [mix](#mix) 
-o Rot : [mix](#mix) 
+o functions : [mix](/docs/classes/mix.md)
+o Float : [mix](/docs/classes/mix.md) [mix](/docs/classes/mix.md) 
+o Int : [mix](/docs/classes/mix.md) 
+o Col : [mix_mix](/docs/classes/mix_mix.md) [mix_darken](/docs/classes/mix_darken.md) [mix_multiply](/docs/classes/mix_multiply.md) [mix_burn](/docs/classes/mix_burn.md) [mix_lighten](/docs/classes/mix_lighten.md) [mix_screen](/docs/classes/mix_screen.md) [mix_dodge](/docs/classes/mix_dodge.md) [mix_add](/docs/classes/mix_add.md) [mix_overlay](/docs/classes/mix_overlay.md) [mix_soft_light](/docs/classes/mix_soft_light.md) [mix_linear_light](/docs/classes/mix_linear_light.md) [mix_difference](/docs/classes/mix_difference.md) [mix_exclusion](/docs/classes/mix_exclusion.md) [mix_subtract](/docs/classes/mix_subtract.md) [mix_divide](/docs/classes/mix_divide.md) [mix_hue](/docs/classes/mix_hue.md) [mix_saturation](/docs/classes/mix_saturation.md) [mix_color](/docs/classes/mix_color.md) [mix_value](/docs/classes/mix_value.md) [mix](/docs/classes/mix.md) 
+o Vect : [mix](/docs/classes/mix.md) 
+o Rot : [mix](/docs/classes/mix.md) 
 

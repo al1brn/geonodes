@@ -25,6 +25,6 @@ def RotateVector(self, vector=None, rotation=None, node_label=None, node_color=N
 
 ## Implementations
 
-o functions : [rotate_vector](#rotate_vector)
-o Vect : [rotate_vector](#rotate_vector) 
+o functions : [rotate_vector](/docs/classes/rotate_vector.md)
+o Vect : [rotate_vector](/docs/classes/rotate_vector.md) 
 

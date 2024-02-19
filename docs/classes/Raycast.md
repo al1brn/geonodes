@@ -44,6 +44,6 @@ def Raycast(self, target_geometry=None, attribute=None, source_position=None, ra
 
 ## Implementations
 
-o Float : [raycast](#raycast) 
-o Int : [raycast](#raycast) 
+o Float : [raycast](/docs/classes/raycast.md) 
+o Int : [raycast](/docs/classes/raycast.md) 
 

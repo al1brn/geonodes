@@ -29,6 +29,6 @@ def DistributePointsInVolume(self, volume=None, density=None, seed=None, spacing
 
 ## Implementations
 
-o functions : [distribute_points_in_volume](#distribute_points_in_volume)
-o Geometry : [distribute_points_in_volume](#distribute_points_in_volume) 
+o functions : [distribute_points_in_volume](/docs/classes/distribute_points_in_volume.md)
+o Geometry : [distribute_points_in_volume](/docs/classes/distribute_points_in_volume.md) 
 

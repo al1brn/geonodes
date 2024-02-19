@@ -27,5 +27,5 @@ def QuadraticBezier(self, resolution=None, start=None, middle=None, end=None, no
 
 ## Implementations
 
-o functions : [quadratic_bezier](#quadratic_bezier)
+o functions : [quadratic_bezier](/docs/classes/quadratic_bezier.md)
 

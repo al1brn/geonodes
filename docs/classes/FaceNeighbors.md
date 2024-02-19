@@ -24,5 +24,5 @@ def FaceNeighbors(self, node_label=None, node_color=None):
 
 ## Implementations
 
-o functions : [face_neighbors](#face_neighbors)
+o functions : [face_neighbors](/docs/classes/face_neighbors.md)
 

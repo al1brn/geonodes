@@ -23,6 +23,6 @@ def IsEdgeSmooth(self, node_label=None, node_color=None):
 
 ## Implementations
 
-o functions : [is_edge_smooth](#is_edge_smooth)
-o Geometry : [edge_shade_smooth](#edge_shade_smooth) 
+o functions : [is_edge_smooth](/docs/classes/is_edge_smooth.md)
+o Geometry : [edge_shade_smooth](/docs/classes/edge_shade_smooth.md) 
 

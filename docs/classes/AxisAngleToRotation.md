@@ -25,5 +25,5 @@ def AxisAngleToRotation(self, axis=None, angle=None, node_label=None, node_color
 
 ## Implementations
 
-o functions : [axis_angle_to_rotation](#axis_angle_to_rotation)
+o functions : [axis_angle_to_rotation](/docs/classes/axis_angle_to_rotation.md)
 

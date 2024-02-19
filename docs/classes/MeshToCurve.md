@@ -25,6 +25,6 @@ def MeshToCurve(self, mesh=None, selection=None, node_label=None, node_color=Non
 
 ## Implementations
 
-o functions : [mesh_to_curve](#mesh_to_curve)
-o Geometry : [mesh_to_curve](#mesh_to_curve) 
+o functions : [mesh_to_curve](/docs/classes/mesh_to_curve.md)
+o Geometry : [mesh_to_curve](/docs/classes/mesh_to_curve.md) 
 

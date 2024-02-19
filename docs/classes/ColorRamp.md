@@ -26,6 +26,6 @@ def ColorRamp(self, fac=None, color_ramp=None, node_label=None, node_color=None)
 
 ## Implementations
 
-o Float : [color_ramp](#color_ramp) 
-o Int : [color_ramp](#color_ramp) 
+o Float : [color_ramp](/docs/classes/color_ramp.md) 
+o Int : [color_ramp](/docs/classes/color_ramp.md) 
 

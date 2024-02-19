@@ -27,5 +27,5 @@ def QuaternionToRotation(self, w=None, x=None, y=None, z=None, node_label=None, 
 
 ## Implementations
 
-o functions : [quaternion_to_rotation](#quaternion_to_rotation)
+o functions : [quaternion_to_rotation](/docs/classes/quaternion_to_rotation.md)
 

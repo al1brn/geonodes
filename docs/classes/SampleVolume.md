@@ -34,7 +34,7 @@ def SampleVolume(self, volume=None, grid=None, position=None, grid_type='FLOAT',
 
 ## Implementations
 
-o functions : [sample_volume](#sample_volume)
-o Float : [sample_volume](#sample_volume) 
-o Int : [sample_volume](#sample_volume) 
+o functions : [sample_volume](/docs/classes/sample_volume.md)
+o Float : [sample_volume](/docs/classes/sample_volume.md) 
+o Int : [sample_volume](/docs/classes/sample_volume.md) 
 

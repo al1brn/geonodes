@@ -25,5 +25,5 @@ def RepeatInput(self, iterations=None, pair_with_output=None, paired_output=None
 
 ## Implementations
 
-o Int : [repeat_input](#repeat_input) 
+o Int : [repeat_input](/docs/classes/repeat_input.md) 
 

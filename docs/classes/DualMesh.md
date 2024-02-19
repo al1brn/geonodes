@@ -25,6 +25,6 @@ def DualMesh(self, mesh=None, keep_boundaries=None, node_label=None, node_color=
 
 ## Implementations
 
-o functions : [dual_mesh](#dual_mesh)
-o Geometry : [dual_mesh](#dual_mesh) 
+o functions : [dual_mesh](/docs/classes/dual_mesh.md)
+o Geometry : [dual_mesh](/docs/classes/dual_mesh.md) 
 

@@ -26,7 +26,7 @@ def SetSelection(self, geometry=None, selection=None, domain='POINT', node_label
 
 ## Implementations
 
-o functions : [set_selection](#set_selection)
-o Geometry : [set_selection](#set_selection) 
-o Domain : [set_selection](#set_selection) 
+o functions : [set_selection](/docs/classes/set_selection.md)
+o Geometry : [set_selection](/docs/classes/set_selection.md) 
+o Domain : [set_selection](/docs/classes/set_selection.md) 
 

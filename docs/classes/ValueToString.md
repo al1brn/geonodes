@@ -25,5 +25,5 @@ def ValueToString(self, value=None, decimals=None, node_label=None, node_color=N
 
 ## Implementations
 
-o functions : [value_to_string](#value_to_string)
+o functions : [value_to_string](/docs/classes/value_to_string.md)
 

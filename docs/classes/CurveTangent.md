@@ -23,6 +23,6 @@ def CurveTangent(self, node_label=None, node_color=None):
 
 ## Implementations
 
-o functions : [curve_tangent](#curve_tangent)
-o Geometry : [tangent](#tangent) 
+o functions : [curve_tangent](/docs/classes/curve_tangent.md)
+o Geometry : [tangent](/docs/classes/tangent.md) 
 

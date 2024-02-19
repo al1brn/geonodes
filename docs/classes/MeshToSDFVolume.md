@@ -28,6 +28,6 @@ def MeshToSDFVolume(self, mesh=None, voxel_amount=None, half_band_width=None, vo
 
 ## Implementations
 
-o functions : [mesh_to_sdf_volume](#mesh_to_sdf_volume)
-o Geometry : [mesh_to_sdf_volume](#mesh_to_sdf_volume) 
+o functions : [mesh_to_sdf_volume](/docs/classes/mesh_to_sdf_volume.md)
+o Geometry : [mesh_to_sdf_volume](/docs/classes/mesh_to_sdf_volume.md) 
 

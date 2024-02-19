@@ -23,6 +23,6 @@ def CurveTilt(self, node_label=None, node_color=None):
 
 ## Implementations
 
-o functions : [curve_tilt](#curve_tilt)
-o Geometry : [curve_tilt](#curve_tilt) 
+o functions : [curve_tilt](/docs/classes/curve_tilt.md)
+o Geometry : [curve_tilt](/docs/classes/curve_tilt.md) 
 

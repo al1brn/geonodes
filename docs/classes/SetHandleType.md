@@ -27,6 +27,6 @@ def SetHandleType(self, curve=None, selection=None, handle_type='AUTO', mode={'R
 
 ## Implementations
 
-o functions : [set_handle_type](#set_handle_type)
-o Geometry : [set_handle_type](#set_handle_type) 
+o functions : [set_handle_type](/docs/classes/set_handle_type.md)
+o Geometry : [set_handle_type](/docs/classes/set_handle_type.md) 
 

@@ -23,5 +23,5 @@ def InstanceRotation(self, node_label=None, node_color=None):
 
 ## Implementations
 
-o functions : [instance_rotation](#instance_rotation)
+o functions : [instance_rotation](/docs/classes/instance_rotation.md)
 

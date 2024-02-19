@@ -23,5 +23,5 @@ def InstanceScale(self, node_label=None, node_color=None):
 
 ## Implementations
 
-o functions : [instance_scale](#instance_scale)
+o functions : [instance_scale](/docs/classes/instance_scale.md)
 

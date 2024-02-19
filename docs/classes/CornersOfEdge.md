@@ -27,6 +27,6 @@ def CornersOfEdge(self, edge_index=None, weights=None, sort_index=None, node_lab
 
 ## Implementations
 
-o Int : [corners_of_edge](#corners_of_edge) 
-o Float : [corners_of_edge](#corners_of_edge) 
+o Int : [corners_of_edge](/docs/classes/corners_of_edge.md) 
+o Float : [corners_of_edge](/docs/classes/corners_of_edge.md) 
 

@@ -30,6 +30,6 @@ def TrimCurve(self, curve=None, start=None, end=None, selection=None, mode='FACT
 
 ## Implementations
 
-o functions : [trim_curve](#trim_curve)
-o Geometry : [trim_curve](#trim_curve) 
+o functions : [trim_curve](/docs/classes/trim_curve.md)
+o Geometry : [trim_curve](/docs/classes/trim_curve.md) 
 

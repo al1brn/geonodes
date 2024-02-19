@@ -27,6 +27,6 @@ def SetPosition(self, geometry=None, position=None, offset=None, selection=None,
 
 ## Implementations
 
-o functions : [set_position](#set_position)
-o Geometry : [set_position](#set_position) [position](#position) [offset](#offset) 
+o functions : [set_position](/docs/classes/set_position.md)
+o Geometry : [set_position](/docs/classes/set_position.md) [position](/docs/classes/position.md) [offset](/docs/classes/offset.md) 
 

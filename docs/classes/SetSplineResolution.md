@@ -26,6 +26,6 @@ def SetSplineResolution(self, geometry=None, resolution=None, selection=None, no
 
 ## Implementations
 
-o functions : [set_spline_resolution](#set_spline_resolution)
-o Geometry : [set_spline_resolution](#set_spline_resolution) [spline_resolution](#spline_resolution) 
+o functions : [set_spline_resolution](/docs/classes/set_spline_resolution.md)
+o Geometry : [set_spline_resolution](/docs/classes/set_spline_resolution.md) [spline_resolution](/docs/classes/spline_resolution.md) 
 

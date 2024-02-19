@@ -28,5 +28,5 @@ def CurveLine(self, start=None, end=None, direction=None, length=None, mode='POI
 
 ## Implementations
 
-o functions : [curve_line](#curve_line)
+o functions : [curve_line](/docs/classes/curve_line.md)
 

@@ -28,6 +28,6 @@ def FilletCurve(self, curve=None, radius=None, limit_radius=None, count=None, mo
 
 ## Implementations
 
-o functions : [fillet_curve](#fillet_curve)
-o Geometry : [fillet_curve](#fillet_curve) 
+o functions : [fillet_curve](/docs/classes/fillet_curve.md)
+o Geometry : [fillet_curve](/docs/classes/fillet_curve.md) 
 

@@ -27,5 +27,5 @@ def CollectionInfo(self, collection=None, separate_children=None, reset_children
 
 ## Implementations
 
-o functions : [collection_info](#collection_info)
+o functions : [collection_info](/docs/classes/collection_info.md)
 

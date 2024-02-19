@@ -26,6 +26,6 @@ def MeanFilterSDFVolume(self, volume=None, iterations=None, width=None, node_lab
 
 ## Implementations
 
-o functions : [mean_filter_sdf_volume](#mean_filter_sdf_volume)
-o Geometry : [mean_filter_sdf_volume](#mean_filter_sdf_volume) 
+o functions : [mean_filter_sdf_volume](/docs/classes/mean_filter_sdf_volume.md)
+o Geometry : [mean_filter_sdf_volume](/docs/classes/mean_filter_sdf_volume.md) 
 

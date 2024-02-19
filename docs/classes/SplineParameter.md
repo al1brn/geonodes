@@ -25,5 +25,5 @@ def SplineParameter(self, node_label=None, node_color=None):
 
 ## Implementations
 
-o functions : [spline_parameter](#spline_parameter)
+o functions : [spline_parameter](/docs/classes/spline_parameter.md)
 

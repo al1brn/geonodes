@@ -27,6 +27,6 @@ def MergeByDistance(self, geometry=None, distance=None, selection=None, mode='AL
 
 ## Implementations
 
-o functions : [merge_by_distance](#merge_by_distance)
-o Geometry : [merge_by_distance](#merge_by_distance) 
+o functions : [merge_by_distance](/docs/classes/merge_by_distance.md)
+o Geometry : [merge_by_distance](/docs/classes/merge_by_distance.md) 
 

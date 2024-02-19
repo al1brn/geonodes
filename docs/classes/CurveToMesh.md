@@ -26,6 +26,6 @@ def CurveToMesh(self, curve=None, profile_curve=None, fill_caps=None, node_label
 
 ## Implementations
 
-o functions : [curve_to_mesh](#curve_to_mesh)
-o Geometry : [curve_to_mesh](#curve_to_mesh) 
+o functions : [curve_to_mesh](/docs/classes/curve_to_mesh.md)
+o Geometry : [curve_to_mesh](/docs/classes/curve_to_mesh.md) 
 

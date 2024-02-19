@@ -25,6 +25,6 @@ def FaceOfCorner(self, corner_index=None, node_label=None, node_color=None):
 
 ## Implementations
 
-o Int : [face_of_corner](#face_of_corner) 
-o Float : [face_of_corner](#face_of_corner) 
+o Int : [face_of_corner](/docs/classes/face_of_corner.md) 
+o Float : [face_of_corner](/docs/classes/face_of_corner.md) 
 

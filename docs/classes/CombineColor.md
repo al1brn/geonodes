@@ -28,5 +28,5 @@ def CombineColor(self, red=None, green=None, blue=None, alpha=None, mode='RGB', 
 
 ## Implementations
 
-o functions : [combine_color](#combine_color) [combine_rgb](#combine_rgb) [combine_hsv](#combine_hsv) [combine_hsl](#combine_hsl)
+o functions : [combine_color](/docs/classes/combine_color.md) [combine_rgb](/docs/classes/combine_rgb.md) [combine_hsv](/docs/classes/combine_hsv.md) [combine_hsl](/docs/classes/combine_hsl.md)
 

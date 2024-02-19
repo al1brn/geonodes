@@ -28,6 +28,6 @@ def RepeatOutput(self, geometry=None, active_index=0, active_item=None, inspecti
 
 ## Implementations
 
-o functions : [repeat_output](#repeat_output)
-o Geometry : [repeat_output](#repeat_output) 
+o functions : [repeat_output](/docs/classes/repeat_output.md)
+o Geometry : [repeat_output](/docs/classes/repeat_output.md) 
 

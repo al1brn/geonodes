@@ -29,6 +29,6 @@ def MeshToVolume(self, mesh=None, density=None, voxel_amount=None, interior_band
 
 ## Implementations
 
-o functions : [mesh_to_volume](#mesh_to_volume)
-o Geometry : [mesh_to_volume](#mesh_to_volume) 
+o functions : [mesh_to_volume](/docs/classes/mesh_to_volume.md)
+o Geometry : [mesh_to_volume](/docs/classes/mesh_to_volume.md) 
 

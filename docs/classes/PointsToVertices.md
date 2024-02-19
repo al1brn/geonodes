@@ -25,6 +25,6 @@ def PointsToVertices(self, points=None, selection=None, node_label=None, node_co
 
 ## Implementations
 
-o functions : [points_to_vertices](#points_to_vertices)
-o Geometry : [points_to_vertices](#points_to_vertices) 
+o functions : [points_to_vertices](/docs/classes/points_to_vertices.md)
+o Geometry : [points_to_vertices](/docs/classes/points_to_vertices.md) 
 

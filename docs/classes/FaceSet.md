@@ -24,5 +24,5 @@ def FaceSet(self, node_label=None, node_color=None):
 
 ## Implementations
 
-o functions : [face_set](#face_set)
+o functions : [face_set](/docs/classes/face_set.md)
 

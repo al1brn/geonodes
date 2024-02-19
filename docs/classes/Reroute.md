@@ -24,6 +24,6 @@ def Reroute(self, input=None, node_label=None, node_color=None):
 
 ## Implementations
 
-o functions : [reroute](#reroute)
-o Col : [reroute](#reroute) 
+o functions : [reroute](/docs/classes/reroute.md)
+o Col : [reroute](/docs/classes/reroute.md) 
 

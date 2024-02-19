@@ -24,7 +24,7 @@ def VertexOfCorner(self, corner_index=None, node_label=None, node_color=None):
 
 ## Implementations
 
-o functions : [vertex_of_corner](#vertex_of_corner)
-o Int : [vertex_of_corner](#vertex_of_corner) 
-o Float : [vertex_of_corner](#vertex_of_corner) 
+o functions : [vertex_of_corner](/docs/classes/vertex_of_corner.md)
+o Int : [vertex_of_corner](/docs/classes/vertex_of_corner.md) 
+o Float : [vertex_of_corner](/docs/classes/vertex_of_corner.md) 
 

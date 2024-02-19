@@ -28,6 +28,6 @@ def AlignEulerToVector(self, rotation=None, factor=None, vector=None, axis='X', 
 
 ## Implementations
 
-o functions : [align_euler_to_vector](#align_euler_to_vector)
-o Vect : [align_euler_to_vector](#align_euler_to_vector) 
+o functions : [align_euler_to_vector](/docs/classes/align_euler_to_vector.md)
+o Vect : [align_euler_to_vector](/docs/classes/align_euler_to_vector.md) 
 

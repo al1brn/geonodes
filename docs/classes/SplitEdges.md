@@ -25,6 +25,6 @@ def SplitEdges(self, mesh=None, selection=None, node_label=None, node_color=None
 
 ## Implementations
 
-o functions : [split_edges](#split_edges)
-o Geometry : [split_edges](#split_edges) 
+o functions : [split_edges](/docs/classes/split_edges.md)
+o Geometry : [split_edges](/docs/classes/split_edges.md) 
 

@@ -29,5 +29,5 @@ def BezierSegment(self, resolution=None, start=None, start_handle=None, end_hand
 
 ## Implementations
 
-o functions : [bezier_segment](#bezier_segment)
+o functions : [bezier_segment](/docs/classes/bezier_segment.md)
 

@@ -23,5 +23,5 @@ def Selection(self, node_label=None, node_color=None):
 
 ## Implementations
 
-o functions : [selection](#selection)
+o functions : [selection](/docs/classes/selection.md)
 

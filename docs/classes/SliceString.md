@@ -26,6 +26,6 @@ def SliceString(self, string=None, position=None, length=None, node_label=None, 
 
 ## Implementations
 
-o functions : [slice_string](#slice_string)
-o Str : [slice_string](#slice_string) 
+o functions : [slice_string](/docs/classes/slice_string.md)
+o Str : [slice_string](/docs/classes/slice_string.md) 
 

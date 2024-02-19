@@ -37,7 +37,7 @@ def EvaluateAtIndex(self, index=None, value=None, data_type='FLOAT', domain='POI
 
 ## Implementations
 
-o functions : [evaluate_at_index](#evaluate_at_index)
-o Float : [evaluate_at_index](#evaluate_at_index) 
-o Int : [evaluate_at_index](#evaluate_at_index) 
+o functions : [evaluate_at_index](/docs/classes/evaluate_at_index.md)
+o Float : [evaluate_at_index](/docs/classes/evaluate_at_index.md) 
+o Int : [evaluate_at_index](/docs/classes/evaluate_at_index.md) 
 

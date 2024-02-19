@@ -27,6 +27,6 @@ def PointsOfCurve(self, curve_index=None, weights=None, sort_index=None, node_la
 
 ## Implementations
 
-o Int : [points_of_curve](#points_of_curve) 
-o Float : [points_of_curve](#points_of_curve) 
+o Int : [points_of_curve](/docs/classes/points_of_curve.md) 
+o Float : [points_of_curve](/docs/classes/points_of_curve.md) 
 

@@ -37,6 +37,6 @@ def AccumulateField(self, value=None, group_id=None, data_type='FLOAT', domain='
 
 ## Implementations
 
-o Float : [accumulate_field](#accumulate_field) 
-o Int : [accumulate_field](#accumulate_field) 
+o Float : [accumulate_field](/docs/classes/accumulate_field.md) 
+o Int : [accumulate_field](/docs/classes/accumulate_field.md) 
 

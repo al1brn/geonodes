@@ -44,6 +44,6 @@ def AttributeStatistic(self, geometry=None, attribute=None, selection=None, data
 
 ## Implementations
 
-o Float : [attribute_statistic](#attribute_statistic) 
-o Int : [attribute_statistic](#attribute_statistic) 
+o Float : [attribute_statistic](/docs/classes/attribute_statistic.md) 
+o Int : [attribute_statistic](/docs/classes/attribute_statistic.md) 
 

@@ -26,5 +26,5 @@ def SeparateXYZ(self, vector=None, node_label=None, node_color=None):
 
 ## Implementations
 
-o Vect : [separate_xyz](#separate_xyz) [xyz](#xyz) 
+o Vect : [separate_xyz](/docs/classes/separate_xyz.md) [xyz](/docs/classes/xyz.md) 
 

@@ -24,5 +24,5 @@ def VertexNeighbors(self, node_label=None, node_color=None):
 
 ## Implementations
 
-o functions : [vertex_neighbors](#vertex_neighbors)
+o functions : [vertex_neighbors](/docs/classes/vertex_neighbors.md)
 

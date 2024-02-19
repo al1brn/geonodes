@@ -23,5 +23,5 @@ def Normal(self, node_label=None, node_color=None):
 
 ## Implementations
 
-o functions : [normal](#normal)
+o functions : [normal](/docs/classes/normal.md)
 

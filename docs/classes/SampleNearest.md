@@ -26,5 +26,5 @@ def SampleNearest(self, geometry=None, sample_position=None, domain='POINT', nod
 
 ## Implementations
 
-o functions : [sample_nearest](#sample_nearest)
+o functions : [sample_nearest](/docs/classes/sample_nearest.md)
 

@@ -28,5 +28,5 @@ def SeparateColor(self, color=None, mode='RGB', node_label=None, node_color=None
 
 ## Implementations
 
-o Col : [separate_color](#separate_color) 
+o Col : [separate_color](/docs/classes/separate_color.md) 
 
