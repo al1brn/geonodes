@@ -41,5 +41,6 @@ squash_frequency=2, texture_mapping=None, node_label=None, node_color=None):
 
 ## Implementations
 
-o Col : [brick_texture](/docs/Shader_classes/Col.md#brick_texture) 
+o Col : [brick_texture](/docs/Shader_classes/Col.md#brick_texture)
+
 

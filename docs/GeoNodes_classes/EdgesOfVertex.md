@@ -27,6 +27,8 @@ def EdgesOfVertex(self, vertex_index=None, weights=None, sort_index=None, node_l
 
 ## Implementations
 
-o Int : [edges_of_vertex](/docs/GeoNodes_classes/Int.md#edges_of_vertex) 
-o Float : [edges_of_vertex](/docs/GeoNodes_classes/Float.md#edges_of_vertex) 
+o Int : [edges_of_vertex](/docs/GeoNodes_classes/Int.md#edges_of_vertex)
+
+o Float : [edges_of_vertex](/docs/GeoNodes_classes/Float.md#edges_of_vertex)
+
 

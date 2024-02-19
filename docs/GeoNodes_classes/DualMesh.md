@@ -26,5 +26,6 @@ def DualMesh(self, mesh=None, keep_boundaries=None, node_label=None, node_color=
 ## Implementations
 
 o functions : [dual_mesh](/docs/GeoNodes_classes/GLOBAL.md#dual_mesh)
-o Geometry : [dual_mesh](/docs/GeoNodes_classes/Geometry.md#dual_mesh) 
+o Geometry : [dual_mesh](/docs/GeoNodes_classes/Geometry.md#dual_mesh)
+
 

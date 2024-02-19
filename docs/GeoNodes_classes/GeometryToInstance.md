@@ -25,5 +25,6 @@ def GeometryToInstance(self, *args, geometry=None, node_label=None, node_color=N
 ## Implementations
 
 o functions : [geometry_to_instance](/docs/GeoNodes_classes/GLOBAL.md#geometry_to_instance)
-o Geometry : [geometry_to_instance](/docs/GeoNodes_classes/Geometry.md#geometry_to_instance) 
+o Geometry : [geometry_to_instance](/docs/GeoNodes_classes/Geometry.md#geometry_to_instance)
+
 

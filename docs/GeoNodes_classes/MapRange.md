@@ -39,6 +39,8 @@ def MapRange(self, value=None, from_min=None, from_max=None, to_min=None, to_max
 
 ## Implementations
 
-o Float : [map_range](/docs/GeoNodes_classes/Float.md#map_range) 
-o Int : [map_range](/docs/GeoNodes_classes/Int.md#map_range) 
+o Float : [map_range](/docs/GeoNodes_classes/Float.md#map_range)
+
+o Int : [map_range](/docs/GeoNodes_classes/Int.md#map_range)
+
 

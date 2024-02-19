@@ -25,5 +25,6 @@ def DeformCurvesOnSurface(self, curves=None, node_label=None, node_color=None):
 ## Implementations
 
 o functions : [deform_curves_on_surface](/docs/GeoNodes_classes/GLOBAL.md#deform_curves_on_surface)
-o Geometry : [deform_curves_on_surface](/docs/GeoNodes_classes/Geometry.md#deform_curves_on_surface) 
+o Geometry : [deform_curves_on_surface](/docs/GeoNodes_classes/Geometry.md#deform_curves_on_surface)
+
 

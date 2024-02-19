@@ -27,5 +27,6 @@ def SetCurveRadius(self, curve=None, radius=None, selection=None, node_label=Non
 ## Implementations
 
 o functions : [set_curve_radius](/docs/GeoNodes_classes/GLOBAL.md#set_curve_radius)
-o Geometry : [set_curve_radius](/docs/GeoNodes_classes/Geometry.md#set_curve_radius) [curve_radius](/docs/GeoNodes_classes/Geometry.md#curve_radius) 
+o Geometry : [set_curve_radius](/docs/GeoNodes_classes/Geometry.md#set_curve_radius) [curve_radius](/docs/GeoNodes_classes/Geometry.md#curve_radius)
+
 

@@ -26,5 +26,6 @@ def PointsToVertices(self, points=None, selection=None, node_label=None, node_co
 ## Implementations
 
 o functions : [points_to_vertices](/docs/GeoNodes_classes/GLOBAL.md#points_to_vertices)
-o Geometry : [points_to_vertices](/docs/GeoNodes_classes/Geometry.md#points_to_vertices) 
+o Geometry : [points_to_vertices](/docs/GeoNodes_classes/Geometry.md#points_to_vertices)
+
 

@@ -33,5 +33,6 @@ def ImageTexture(self, vector=None, color_mapping=None, extension='REPEAT', imag
 
 ## Implementations
 
-o Vect : [image_texture](/docs/Shader_classes/Vect.md#image_texture) 
+o Vect : [image_texture](/docs/Shader_classes/Vect.md#image_texture)
+
 

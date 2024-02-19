@@ -26,5 +26,6 @@ def SplitEdges(self, mesh=None, selection=None, node_label=None, node_color=None
 ## Implementations
 
 o functions : [split_edges](/docs/GeoNodes_classes/GLOBAL.md#split_edges)
-o Geometry : [split_edges](/docs/GeoNodes_classes/Geometry.md#split_edges) 
+o Geometry : [split_edges](/docs/GeoNodes_classes/Geometry.md#split_edges)
+
 

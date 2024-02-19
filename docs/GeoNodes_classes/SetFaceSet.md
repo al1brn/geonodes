@@ -27,5 +27,6 @@ def SetFaceSet(self, mesh=None, face_set=None, selection=None, node_label=None, 
 ## Implementations
 
 o functions : [set_face_set](/docs/GeoNodes_classes/GLOBAL.md#set_face_set)
-o Geometry : [set_face_set](/docs/GeoNodes_classes/Geometry.md#set_face_set) 
+o Geometry : [set_face_set](/docs/GeoNodes_classes/Geometry.md#set_face_set)
+
 

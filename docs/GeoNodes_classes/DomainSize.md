@@ -30,5 +30,6 @@ def DomainSize(self, geometry=None, component='MESH', node_label=None, node_colo
 
 ## Implementations
 
-o Geometry : [domain_size](/docs/GeoNodes_classes/Geometry.md#domain_size) 
+o Geometry : [domain_size](/docs/GeoNodes_classes/Geometry.md#domain_size)
+
 

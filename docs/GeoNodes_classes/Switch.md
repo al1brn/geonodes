@@ -65,17 +65,30 @@ def Switch(self, switch=None, false=None, true=None, input_type='GEOMETRY', node
 ## Implementations
 
 o functions : [switch](/docs/GeoNodes_classes/GLOBAL.md#switch)
-o Float : [switch](/docs/GeoNodes_classes/Float.md#switch) 
-o Int : [switch](/docs/GeoNodes_classes/Int.md#switch) 
-o Bool : [switch](/docs/GeoNodes_classes/Bool.md#switch) 
-o Vect : [switch](/docs/GeoNodes_classes/Vect.md#switch) 
-o Rot : [switch](/docs/GeoNodes_classes/Rot.md#switch) 
-o Str : [switch](/docs/GeoNodes_classes/Str.md#switch) 
-o Col : [switch](/docs/GeoNodes_classes/Col.md#switch) 
-o Object : [switch](/docs/GeoNodes_classes/Object.md#switch) 
-o Img : [switch](/docs/GeoNodes_classes/Img.md#switch) 
-o Geometry : [switch](/docs/GeoNodes_classes/Geometry.md#switch) 
-o Collection : [switch](/docs/GeoNodes_classes/Collection.md#switch) 
-o Texture : [switch](/docs/GeoNodes_classes/Texture.md#switch) 
-o Mat : [switch](/docs/GeoNodes_classes/Mat.md#switch) 
+o Float : [switch](/docs/GeoNodes_classes/Float.md#switch)
+
+o Int : [switch](/docs/GeoNodes_classes/Int.md#switch)
+
+o Bool : [switch](/docs/GeoNodes_classes/Bool.md#switch)
+
+o Vect : [switch](/docs/GeoNodes_classes/Vect.md#switch)
+
+o Rot : [switch](/docs/GeoNodes_classes/Rot.md#switch)
+
+o Str : [switch](/docs/GeoNodes_classes/Str.md#switch)
+
+o Col : [switch](/docs/GeoNodes_classes/Col.md#switch)
+
+o Object : [switch](/docs/GeoNodes_classes/Object.md#switch)
+
+o Img : [switch](/docs/GeoNodes_classes/Img.md#switch)
+
+o Geometry : [switch](/docs/GeoNodes_classes/Geometry.md#switch)
+
+o Collection : [switch](/docs/GeoNodes_classes/Collection.md#switch)
+
+o Texture : [switch](/docs/GeoNodes_classes/Texture.md#switch)
+
+o Mat : [switch](/docs/GeoNodes_classes/Mat.md#switch)
+
 

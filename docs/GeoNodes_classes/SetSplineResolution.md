@@ -27,5 +27,6 @@ def SetSplineResolution(self, geometry=None, resolution=None, selection=None, no
 ## Implementations
 
 o functions : [set_spline_resolution](/docs/GeoNodes_classes/GLOBAL.md#set_spline_resolution)
-o Geometry : [set_spline_resolution](/docs/GeoNodes_classes/Geometry.md#set_spline_resolution) [spline_resolution](/docs/GeoNodes_classes/Geometry.md#spline_resolution) 
+o Geometry : [set_spline_resolution](/docs/GeoNodes_classes/Geometry.md#set_spline_resolution) [spline_resolution](/docs/GeoNodes_classes/Geometry.md#spline_resolution)
+
 

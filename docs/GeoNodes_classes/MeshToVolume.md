@@ -30,5 +30,6 @@ def MeshToVolume(self, mesh=None, density=None, voxel_amount=None, interior_band
 ## Implementations
 
 o functions : [mesh_to_volume](/docs/GeoNodes_classes/GLOBAL.md#mesh_to_volume)
-o Geometry : [mesh_to_volume](/docs/GeoNodes_classes/Geometry.md#mesh_to_volume) 
+o Geometry : [mesh_to_volume](/docs/GeoNodes_classes/Geometry.md#mesh_to_volume)
+
 

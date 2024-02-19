@@ -26,5 +26,6 @@ def AddShader(self, shader=None, shader_1=None, node_label=None, node_color=None
 ## Implementations
 
 o functions : [add_shader](/docs/Shader_classes/GLOBAL.md#add_shader)
-o Shader : [add_shader](/docs/Shader_classes/Shader.md#add_shader) 
+o Shader : [add_shader](/docs/Shader_classes/Shader.md#add_shader)
+
 

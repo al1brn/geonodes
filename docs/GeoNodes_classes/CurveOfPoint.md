@@ -25,6 +25,8 @@ def CurveOfPoint(self, point_index=None, node_label=None, node_color=None):
 
 ## Implementations
 
-o Int : [curve_of_point](/docs/GeoNodes_classes/Int.md#curve_of_point) 
-o Float : [curve_of_point](/docs/GeoNodes_classes/Float.md#curve_of_point) 
+o Int : [curve_of_point](/docs/GeoNodes_classes/Int.md#curve_of_point)
+
+o Float : [curve_of_point](/docs/GeoNodes_classes/Float.md#curve_of_point)
+
 
