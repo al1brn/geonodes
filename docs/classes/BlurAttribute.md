@@ -37,8 +37,8 @@ def BlurAttribute(self, value=None, iterations=None, weight=None, data_type='FLO
     
 ## Implementations
 
-o functions : [blur_attribute](#blur_attribute)
-o Float : [blur_attribute](#blur_attribute) 
-o Int : [blur_attribute](#blur_attribute) 
+- functions : [blur_attribute](#blur_attribute)
+- Float : [blur_attribute](#blur_attribute)
+- Int : [blur_attribute](#blur_attribute)
     
     
