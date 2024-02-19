@@ -346,11 +346,12 @@ class NodeInfo:
             
             jump = self.max_out == 1
             
-            meth_code = self.method_code(self.python_name,
+            meth_code, meth_args, node_args = self.method_code(self.python_name,
                         method_type   = 'METHOD', 
                         self_socket   = self.sm_pyname,
                         use_enabled   = True,
                         node_return   = f"node.output_socket",
+                        return_args   = True,
                         **{
                             f"{self.sm_pyname}" : "self.geometry",
                             'domain' : f"self.geometry.jump(node.{self.sm_out_pyname})",
@@ -358,7 +359,9 @@ class NodeInfo:
                         )
 
             descr = f"Node {self.class_name}, {self.sm_pyname}=self, domain=DOMAIN"
-            self.add_method(domain_class_name, self.python_name, meth_code, descr=descr)
+            self.add_method(domain_class_name, self.python_name, meth_code,
+                            meth_args=meth_args, node_args=node_args,
+                            descr=descr)
             
         # ====================================================================================================
         # One single input socket
@@ -370,14 +373,17 @@ class NodeInfo:
 
             return_socket = self.max_out == 1
             
-            meth_code = self.method_code(self.python_name,
+            meth_code, meth_args, node_args = self.method_code(self.python_name,
                         method_type   = 'METHOD', 
                         self_socket   = self_socket,
                         use_enabled   = False,
                         node_return   = "node.output_socket" if return_socket else "node",
+                        return_args   = True,
                         )
             
-            self.add_method(target, self.python_name, meth_code, is_static=False, descr=f"{self.class_name}, {self_socket}=self, return {'socket' if return_socket else 'node'}")
+            self.add_method(target, self.python_name, meth_code, is_static=False, 
+                            meth_args=meth_args, node_args=node_args,
+                            descr=f"{self.class_name}, {self_socket}=self, return {'socket' if return_socket else 'node'}")
             
             ok_method = False
             
@@ -388,13 +394,16 @@ class NodeInfo:
             
             return_socket = self.max_out == 1
             
-            meth_code = self.method_code(self.python_name,
+            meth_code, meth_args, node_args = self.method_code(self.python_name,
                         method_type   = 'STATIC', 
                         self_socket   = None,
                         use_enabled   = False,
                         node_return   = "node.output_socket" if return_socket else "node",
+                        return_args   = True,
                         )
-            self.add_function(self.python_name, meth_code, descr=f"{self.class_name}, return {'socket' if return_socket else 'node'}")
+            self.add_function(self.python_name, meth_code, 
+                            meth_args=meth_args, node_args=node_args,
+                            descr=f"{self.class_name}, return {'socket' if return_socket else 'node'}")
 
         # ====================================================================================================
         # Single output socket
@@ -405,13 +414,16 @@ class NodeInfo:
             
             if self.python_name not in tree_dict:
                 
-                meth_code = self.method_code(self.python_name,
+                meth_code, meth_args, node_args = self.method_code(self.python_name,
                             method_type   = 'STATIC', 
                             self_socket   = None,
                             use_enabled   = False,
                             node_return   = "node.output_socket",
+                            return_args   = True,
                             )
-                self.add_function(self.python_name, meth_code, descr=f"{self.class_name}, return single output socket")
+                self.add_function(self.python_name, meth_code, 
+                            meth_args=meth_args, node_args=node_args,
+                            descr=f"{self.class_name}, return single output socket")
                 
         # ====================================================================================================
         # Custom methods
