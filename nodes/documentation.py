@@ -583,7 +583,11 @@ class Doc:
                 return [self.class_link(name) for name in names]
         else:
             return names
-            
+        
+    @staticmethod
+    def initials(names):
+        initials = set([name.upper()[0] for name in names])
+        return {initial: [name for name in names if name.upper()[0] == initial for initial in initials]}
     
     # ====================================================================================================
     # Cross references
@@ -829,8 +833,15 @@ def build_doc(tree_type, folder):
     doc.add(Header("Index", 0))
     for cat, class_names in classes.items():
         doc.add(Header(cat, 1))
-        links = " ".join(doc.list_links(sorted(class_names)))
-        doc.add(Paragraph(links))
+        if len(class_names) > 20:
+            initials = doc.initials(class_names)
+            for initial, sub in initials.items():
+                doc.add(Header(initial, 2))
+                links = " ".join(doc.list_links(sorted(sub)))
+                doc.add(Paragraph(links))
+        else:
+            links = " ".join(doc.list_links(sorted(class_names)))
+            doc.add(Paragraph(links))
 
     with open(root / "index.md", 'w') as f:
         f.write(doc.text)
