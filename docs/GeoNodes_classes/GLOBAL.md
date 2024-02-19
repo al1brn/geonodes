@@ -1,3 +1,72 @@
+## _3d_cursor
+
+> _3DCursor, return node
+
+``` python
+def _3d_cursor(node_label=None, node_color=None):
+```
+Node
+ - class_name : [_3DCursor](/docs/GeoNodes_classes/_3DCursor.md)
+ - bl_idname : GeometryNodeTool3DCursor
+
+Arguments
+ - node_label : None
+ - node_color : None
+
+Node initialization
+ - node_label : node_label
+ - node_color : node_color
+
+## abs
+
+> Math, value=self, operation='ABSOLUTE'
+
+``` python
+def abs(value=None, use_clamp=False, node_label=None, node_color=None):
+```
+Node
+ - class_name : [Math](/docs/GeoNodes_classes/Math.md)
+ - bl_idname : ShaderNodeMath
+
+Arguments
+ - value : None
+ - use_clamp : False
+ - node_label : None
+ - node_color : None
+
+Node initialization
+ - value : value
+ - operation : 'ABSOLUTE'
+ - use_clamp : use_clamp
+ - node_label : node_label
+ - node_color : node_color
+
+## add
+
+> Math, value=self, operation='ADD'
+
+``` python
+def add(value=None, value_1=None, use_clamp=False, node_label=None, node_color=None):
+```
+Node
+ - class_name : [Math](/docs/GeoNodes_classes/Math.md)
+ - bl_idname : ShaderNodeMath
+
+Arguments
+ - value : None
+ - value_1 : None
+ - use_clamp : False
+ - node_label : None
+ - node_color : None
+
+Node initialization
+ - value : value
+ - value_1 : value_1
+ - operation : 'ADD'
+ - use_clamp : use_clamp
+ - node_label : node_label
+ - node_color : node_color
+
 ## align_euler_to_vector
 
 > AlignEulerToVector, return single output socket
@@ -27,6 +96,104 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
+## arccos
+
+> Math, value=self, operation='ARCCOSINE'
+
+``` python
+def arccos(value=None, use_clamp=False, node_label=None, node_color=None):
+```
+Node
+ - class_name : [Math](/docs/GeoNodes_classes/Math.md)
+ - bl_idname : ShaderNodeMath
+
+Arguments
+ - value : None
+ - use_clamp : False
+ - node_label : None
+ - node_color : None
+
+Node initialization
+ - value : value
+ - operation : 'ARCCOSINE'
+ - use_clamp : use_clamp
+ - node_label : node_label
+ - node_color : node_color
+
+## arcsin
+
+> Math, value=self, operation='ARCSINE'
+
+``` python
+def arcsin(value=None, use_clamp=False, node_label=None, node_color=None):
+```
+Node
+ - class_name : [Math](/docs/GeoNodes_classes/Math.md)
+ - bl_idname : ShaderNodeMath
+
+Arguments
+ - value : None
+ - use_clamp : False
+ - node_label : None
+ - node_color : None
+
+Node initialization
+ - value : value
+ - operation : 'ARCSINE'
+ - use_clamp : use_clamp
+ - node_label : node_label
+ - node_color : node_color
+
+## arctan
+
+> Math, value=self, operation='ARCTANGENT'
+
+``` python
+def arctan(value=None, use_clamp=False, node_label=None, node_color=None):
+```
+Node
+ - class_name : [Math](/docs/GeoNodes_classes/Math.md)
+ - bl_idname : ShaderNodeMath
+
+Arguments
+ - value : None
+ - use_clamp : False
+ - node_label : None
+ - node_color : None
+
+Node initialization
+ - value : value
+ - operation : 'ARCTANGENT'
+ - use_clamp : use_clamp
+ - node_label : node_label
+ - node_color : node_color
+
+## arctan2
+
+> Math, value=self, operation='ARCTAN2'
+
+``` python
+def arctan2(value=None, value_1=None, use_clamp=False, node_label=None, node_color=None):
+```
+Node
+ - class_name : [Math](/docs/GeoNodes_classes/Math.md)
+ - bl_idname : ShaderNodeMath
+
+Arguments
+ - value : None
+ - value_1 : None
+ - use_clamp : False
+ - node_label : None
+ - node_color : None
+
+Node initialization
+ - value : value
+ - value_1 : value_1
+ - operation : 'ARCTAN2'
+ - use_clamp : use_clamp
+ - node_label : node_label
+ - node_color : node_color
+
 ## axis_angle_to_rotation
 
 > AxisAngleToRotation, return single output socket
@@ -47,31 +214,6 @@ Arguments
 Node initialization
  - axis : axis
  - angle : angle
- - node_label : node_label
- - node_color : node_color
-
-## boolean_math
-
-> BooleanMath, return single output socket
-
-``` python
-def boolean_math(boolean=None, boolean_1=None, operation='AND', node_label=None, node_color=None):
-```
-Node
- - class_name : [BooleanMath](/docs/GeoNodes_classes/BooleanMath.md)
- - bl_idname : FunctionNodeBooleanMath
-
-Arguments
- - boolean : None
- - boolean_1 : None
- - operation : 'AND'
- - node_label : None
- - node_color : None
-
-Node initialization
- - boolean : boolean
- - boolean_1 : boolean_1
- - operation : operation
  - node_label : node_label
  - node_color : node_color
 
@@ -96,952 +238,6 @@ Node initialization
  - boolean : boolean
  - boolean_1 : boolean_1
  - operation : 'AND'
- - node_label : node_label
- - node_color : node_color
-
-## bor
-
-> BooleanMath, boolean=self, operation='OR'
-
-``` python
-def bor(boolean=None, boolean_1=None, node_label=None, node_color=None):
-```
-Node
- - class_name : [BooleanMath](/docs/GeoNodes_classes/BooleanMath.md)
- - bl_idname : FunctionNodeBooleanMath
-
-Arguments
- - boolean : None
- - boolean_1 : None
- - node_label : None
- - node_color : None
-
-Node initialization
- - boolean : boolean
- - boolean_1 : boolean_1
- - operation : 'OR'
- - node_label : node_label
- - node_color : node_color
-
-## bnot
-
-> BooleanMath, boolean=self, operation='NOT'
-
-``` python
-def bnot(boolean=None, node_label=None, node_color=None):
-```
-Node
- - class_name : [BooleanMath](/docs/GeoNodes_classes/BooleanMath.md)
- - bl_idname : FunctionNodeBooleanMath
-
-Arguments
- - boolean : None
- - node_label : None
- - node_color : None
-
-Node initialization
- - boolean : boolean
- - operation : 'NOT'
- - node_label : node_label
- - node_color : node_color
-
-## nand
-
-> BooleanMath, boolean=self, operation='NAND'
-
-``` python
-def nand(boolean=None, boolean_1=None, node_label=None, node_color=None):
-```
-Node
- - class_name : [BooleanMath](/docs/GeoNodes_classes/BooleanMath.md)
- - bl_idname : FunctionNodeBooleanMath
-
-Arguments
- - boolean : None
- - boolean_1 : None
- - node_label : None
- - node_color : None
-
-Node initialization
- - boolean : boolean
- - boolean_1 : boolean_1
- - operation : 'NAND'
- - node_label : node_label
- - node_color : node_color
-
-## nor
-
-> BooleanMath, boolean=self, operation='NOR'
-
-``` python
-def nor(boolean=None, boolean_1=None, node_label=None, node_color=None):
-```
-Node
- - class_name : [BooleanMath](/docs/GeoNodes_classes/BooleanMath.md)
- - bl_idname : FunctionNodeBooleanMath
-
-Arguments
- - boolean : None
- - boolean_1 : None
- - node_label : None
- - node_color : None
-
-Node initialization
- - boolean : boolean
- - boolean_1 : boolean_1
- - operation : 'NOR'
- - node_label : node_label
- - node_color : node_color
-
-## xnor
-
-> BooleanMath, boolean=self, operation='XNOR'
-
-``` python
-def xnor(boolean=None, boolean_1=None, node_label=None, node_color=None):
-```
-Node
- - class_name : [BooleanMath](/docs/GeoNodes_classes/BooleanMath.md)
- - bl_idname : FunctionNodeBooleanMath
-
-Arguments
- - boolean : None
- - boolean_1 : None
- - node_label : None
- - node_color : None
-
-Node initialization
- - boolean : boolean
- - boolean_1 : boolean_1
- - operation : 'XNOR'
- - node_label : node_label
- - node_color : node_color
-
-## xor
-
-> BooleanMath, boolean=self, operation='XOR'
-
-``` python
-def xor(boolean=None, boolean_1=None, node_label=None, node_color=None):
-```
-Node
- - class_name : [BooleanMath](/docs/GeoNodes_classes/BooleanMath.md)
- - bl_idname : FunctionNodeBooleanMath
-
-Arguments
- - boolean : None
- - boolean_1 : None
- - node_label : None
- - node_color : None
-
-Node initialization
- - boolean : boolean
- - boolean_1 : boolean_1
- - operation : 'XOR'
- - node_label : node_label
- - node_color : node_color
-
-## imply
-
-> BooleanMath, boolean=self, operation='IMPLY'
-
-``` python
-def imply(boolean=None, boolean_1=None, node_label=None, node_color=None):
-```
-Node
- - class_name : [BooleanMath](/docs/GeoNodes_classes/BooleanMath.md)
- - bl_idname : FunctionNodeBooleanMath
-
-Arguments
- - boolean : None
- - boolean_1 : None
- - node_label : None
- - node_color : None
-
-Node initialization
- - boolean : boolean
- - boolean_1 : boolean_1
- - operation : 'IMPLY'
- - node_label : node_label
- - node_color : node_color
-
-## nimply
-
-> BooleanMath, boolean=self, operation='NIMPLY'
-
-``` python
-def nimply(boolean=None, boolean_1=None, node_label=None, node_color=None):
-```
-Node
- - class_name : [BooleanMath](/docs/GeoNodes_classes/BooleanMath.md)
- - bl_idname : FunctionNodeBooleanMath
-
-Arguments
- - boolean : None
- - boolean_1 : None
- - node_label : None
- - node_color : None
-
-Node initialization
- - boolean : boolean
- - boolean_1 : boolean_1
- - operation : 'NIMPLY'
- - node_label : node_label
- - node_color : node_color
-
-## combine_color
-
-> CombineColor, return single output socket
-
-``` python
-def combine_color(red=None, green=None, blue=None, alpha=None, mode='RGB', node_label=None, node_color=None):
-```
-Node
- - class_name : [CombineColor](/docs/GeoNodes_classes/CombineColor.md)
- - bl_idname : FunctionNodeCombineColor
-
-Arguments
- - red : None
- - green : None
- - blue : None
- - alpha : None
- - mode : 'RGB'
- - node_label : None
- - node_color : None
-
-Node initialization
- - red : red
- - green : green
- - blue : blue
- - alpha : alpha
- - mode : mode
- - node_label : node_label
- - node_color : node_color
-
-## combine_rgb
-
-> CombineColor, mode='RGB'
-
-``` python
-def combine_rgb(red=None, green=None, blue=None, alpha=None, node_label=None, node_color=None):
-```
-Node
- - class_name : [CombineColor](/docs/GeoNodes_classes/CombineColor.md)
- - bl_idname : FunctionNodeCombineColor
-
-Arguments
- - red : None
- - green : None
- - blue : None
- - alpha : None
- - node_label : None
- - node_color : None
-
-Node initialization
- - red : red
- - green : green
- - blue : blue
- - alpha : alpha
- - mode : 'RGB'
- - node_label : node_label
- - node_color : node_color
-
-## combine_hsv
-
-> CombineColor, mode='HSV'
-
-``` python
-def combine_hsv(red=None, green=None, blue=None, alpha=None, node_label=None, node_color=None):
-```
-Node
- - class_name : [CombineColor](/docs/GeoNodes_classes/CombineColor.md)
- - bl_idname : FunctionNodeCombineColor
-
-Arguments
- - red : None
- - green : None
- - blue : None
- - alpha : None
- - node_label : None
- - node_color : None
-
-Node initialization
- - red : red
- - green : green
- - blue : blue
- - alpha : alpha
- - mode : 'HSV'
- - node_label : node_label
- - node_color : node_color
-
-## combine_hsl
-
-> CombineColor, mode='HSL'
-
-``` python
-def combine_hsl(red=None, green=None, blue=None, alpha=None, node_label=None, node_color=None):
-```
-Node
- - class_name : [CombineColor](/docs/GeoNodes_classes/CombineColor.md)
- - bl_idname : FunctionNodeCombineColor
-
-Arguments
- - red : None
- - green : None
- - blue : None
- - alpha : None
- - node_label : None
- - node_color : None
-
-Node initialization
- - red : red
- - green : green
- - blue : blue
- - alpha : alpha
- - mode : 'HSL'
- - node_label : node_label
- - node_color : node_color
-
-## compare
-
-> Compare, return single output socket
-
-``` python
-def compare(a=None, b=None, epsilon=None, data_type='FLOAT', mode='ELEMENT', operation='GREATER_THAN', node_label=None, node_color=None):
-```
-Node
- - class_name : [Compare](/docs/GeoNodes_classes/Compare.md)
- - bl_idname : FunctionNodeCompare
-
-Arguments
- - a : None
- - b : None
- - epsilon : None
- - data_type : 'FLOAT'
- - mode : 'ELEMENT'
- - operation : 'GREATER_THAN'
- - node_label : None
- - node_color : None
-
-Node initialization
- - a : a
- - b : b
- - epsilon : epsilon
- - data_type : data_type
- - mode : mode
- - operation : operation
- - node_label : node_label
- - node_color : node_color
-
-## euler_to_rotation
-
-> EulerToRotation, return single output socket
-
-``` python
-def euler_to_rotation(euler=None, node_label=None, node_color=None):
-```
-Node
- - class_name : [EulerToRotation](/docs/GeoNodes_classes/EulerToRotation.md)
- - bl_idname : FunctionNodeEulerToRotation
-
-Arguments
- - euler : None
- - node_label : None
- - node_color : None
-
-Node initialization
- - euler : euler
- - node_label : node_label
- - node_color : node_color
-
-## float_to_integer
-
-> FloatToInteger, return single output socket
-
-``` python
-def float_to_integer(float=None, rounding_mode='ROUND', node_label=None, node_color=None):
-```
-Node
- - class_name : [FloatToInteger](/docs/GeoNodes_classes/FloatToInteger.md)
- - bl_idname : FunctionNodeFloatToInt
-
-Arguments
- - float : None
- - rounding_mode : 'ROUND'
- - node_label : None
- - node_color : None
-
-Node initialization
- - float : float
- - rounding_mode : rounding_mode
- - node_label : node_label
- - node_color : node_color
-
-## boolean
-
-> Boolean, return socket
-
-``` python
-def boolean(boolean, node_label=None, node_color=None):
-```
-Node
- - class_name : [Boolean](/docs/GeoNodes_classes/Boolean.md)
- - bl_idname : FunctionNodeInputBool
-
-## color
-
-> Color, return socket
-
-``` python
-def color(color, node_label=None, node_color=None):
-```
-Node
- - class_name : [Color](/docs/GeoNodes_classes/Color.md)
- - bl_idname : FunctionNodeInputColor
-
-## integer
-
-> Integer, return socket
-
-``` python
-def integer(integer, node_label=None, node_color=None):
-```
-Node
- - class_name : [Integer](/docs/GeoNodes_classes/Integer.md)
- - bl_idname : FunctionNodeInputInt
-
-## special_characters
-
-> SpecialCharacters, return node
-
-``` python
-def special_characters(node_label=None, node_color=None):
-```
-Node
- - class_name : [SpecialCharacters](/docs/GeoNodes_classes/SpecialCharacters.md)
- - bl_idname : FunctionNodeInputSpecialCharacters
-
-Arguments
- - node_label : None
- - node_color : None
-
-Node initialization
- - node_label : node_label
- - node_color : node_color
-
-## string
-
-> String, return socket
-
-``` python
-def string(string, node_label=None, node_color=None):
-```
-Node
- - class_name : [String](/docs/GeoNodes_classes/String.md)
- - bl_idname : FunctionNodeInputString
-
-## vector
-
-> Vector, return socket
-
-``` python
-def vector(vector, node_label=None, node_color=None):
-```
-Node
- - class_name : [Vector](/docs/GeoNodes_classes/Vector.md)
- - bl_idname : FunctionNodeInputVector
-
-## invert_rotation
-
-> InvertRotation, return single output socket
-
-``` python
-def invert_rotation(rotation=None, node_label=None, node_color=None):
-```
-Node
- - class_name : [InvertRotation](/docs/GeoNodes_classes/InvertRotation.md)
- - bl_idname : FunctionNodeInvertRotation
-
-Arguments
- - rotation : None
- - node_label : None
- - node_color : None
-
-Node initialization
- - rotation : rotation
- - node_label : node_label
- - node_color : node_color
-
-## quaternion_to_rotation
-
-> QuaternionToRotation, return single output socket
-
-``` python
-def quaternion_to_rotation(w=None, x=None, y=None, z=None, node_label=None, node_color=None):
-```
-Node
- - class_name : [QuaternionToRotation](/docs/GeoNodes_classes/QuaternionToRotation.md)
- - bl_idname : FunctionNodeQuaternionToRotation
-
-Arguments
- - w : None
- - x : None
- - y : None
- - z : None
- - node_label : None
- - node_color : None
-
-Node initialization
- - w : w
- - x : x
- - y : y
- - z : z
- - node_label : node_label
- - node_color : node_color
-
-## random_value
-
-> RandomValue, return single output socket
-
-``` python
-def random_value(min=None, max=None, ID=None, seed=None, probability=None, data_type='FLOAT', node_label=None, node_color=None):
-```
-Node
- - class_name : [RandomValue](/docs/GeoNodes_classes/RandomValue.md)
- - bl_idname : FunctionNodeRandomValue
-
-Arguments
- - min : None
- - max : None
- - ID : None
- - seed : None
- - probability : None
- - data_type : 'FLOAT'
- - node_label : None
- - node_color : None
-
-Node initialization
- - min : min
- - max : max
- - ID : ID
- - seed : seed
- - probability : probability
- - data_type : data_type
- - node_label : node_label
- - node_color : node_color
-
-## random_float
-
-> RandomValue, data_type='FLOAT'
-
-``` python
-def random_float(min=None, max=None, ID=None, seed=None, node_label=None, node_color=None):
-```
-Node
- - class_name : [RandomValue](/docs/GeoNodes_classes/RandomValue.md)
- - bl_idname : FunctionNodeRandomValue
-
-Arguments
- - min : None
- - max : None
- - ID : None
- - seed : None
- - node_label : None
- - node_color : None
-
-Node initialization
- - min : min
- - max : max
- - ID : ID
- - seed : seed
- - data_type : 'FLOAT'
- - node_label : node_label
- - node_color : node_color
-
-## random_int
-
-> RandomValue, data_type='INT'
-
-``` python
-def random_int(min=None, max=None, ID=None, seed=None, node_label=None, node_color=None):
-```
-Node
- - class_name : [RandomValue](/docs/GeoNodes_classes/RandomValue.md)
- - bl_idname : FunctionNodeRandomValue
-
-Arguments
- - min : None
- - max : None
- - ID : None
- - seed : None
- - node_label : None
- - node_color : None
-
-Node initialization
- - min : min
- - max : max
- - ID : ID
- - seed : seed
- - data_type : 'INT'
- - node_label : node_label
- - node_color : node_color
-
-## random_vector
-
-> RandomValue, data_type='FLOAT_VECTOR'
-
-``` python
-def random_vector(min=None, max=None, ID=None, seed=None, node_label=None, node_color=None):
-```
-Node
- - class_name : [RandomValue](/docs/GeoNodes_classes/RandomValue.md)
- - bl_idname : FunctionNodeRandomValue
-
-Arguments
- - min : None
- - max : None
- - ID : None
- - seed : None
- - node_label : None
- - node_color : None
-
-Node initialization
- - min : min
- - max : max
- - ID : ID
- - seed : seed
- - data_type : 'FLOAT_VECTOR'
- - node_label : node_label
- - node_color : node_color
-
-## random_boolean
-
-> RandomValue, data_type='BOOLEAN'
-
-``` python
-def random_boolean(probability=None, ID=None, seed=None, node_label=None, node_color=None):
-```
-Node
- - class_name : [RandomValue](/docs/GeoNodes_classes/RandomValue.md)
- - bl_idname : FunctionNodeRandomValue
-
-Arguments
- - probability : None
- - ID : None
- - seed : None
- - node_label : None
- - node_color : None
-
-Node initialization
- - probability : probability
- - ID : ID
- - seed : seed
- - data_type : 'BOOLEAN'
- - node_label : node_label
- - node_color : node_color
-
-## replace_string
-
-> ReplaceString, return single output socket
-
-``` python
-def replace_string(string=None, find=None, replace=None, node_label=None, node_color=None):
-```
-Node
- - class_name : [ReplaceString](/docs/GeoNodes_classes/ReplaceString.md)
- - bl_idname : FunctionNodeReplaceString
-
-Arguments
- - string : None
- - find : None
- - replace : None
- - node_label : None
- - node_color : None
-
-Node initialization
- - string : string
- - find : find
- - replace : replace
- - node_label : node_label
- - node_color : node_color
-
-## rotate_euler
-
-> RotateEuler, return single output socket
-
-``` python
-def rotate_euler(rotation=None, rotate_by=None, space='OBJECT', node_label=None, node_color=None):
-```
-Node
- - class_name : [RotateEuler](/docs/GeoNodes_classes/RotateEuler.md)
- - bl_idname : FunctionNodeRotateEuler
-
-Arguments
- - rotation : None
- - rotate_by : None
- - space : 'OBJECT'
- - node_label : None
- - node_color : None
-
-Node initialization
- - rotation : rotation
- - rotate_by : rotate_by
- - space : space
- - node_label : node_label
- - node_color : node_color
-
-## rotate_vector
-
-> RotateVector, return single output socket
-
-``` python
-def rotate_vector(vector=None, rotation=None, node_label=None, node_color=None):
-```
-Node
- - class_name : [RotateVector](/docs/GeoNodes_classes/RotateVector.md)
- - bl_idname : FunctionNodeRotateVector
-
-Arguments
- - vector : None
- - rotation : None
- - node_label : None
- - node_color : None
-
-Node initialization
- - vector : vector
- - rotation : rotation
- - node_label : node_label
- - node_color : node_color
-
-## rotation_to_euler
-
-> RotationToEuler, return single output socket
-
-``` python
-def rotation_to_euler(rotation=None, node_label=None, node_color=None):
-```
-Node
- - class_name : [RotationToEuler](/docs/GeoNodes_classes/RotationToEuler.md)
- - bl_idname : FunctionNodeRotationToEuler
-
-Arguments
- - rotation : None
- - node_label : None
- - node_color : None
-
-Node initialization
- - rotation : rotation
- - node_label : node_label
- - node_color : node_color
-
-## slice_string
-
-> SliceString, return single output socket
-
-``` python
-def slice_string(string=None, position=None, length=None, node_label=None, node_color=None):
-```
-Node
- - class_name : [SliceString](/docs/GeoNodes_classes/SliceString.md)
- - bl_idname : FunctionNodeSliceString
-
-Arguments
- - string : None
- - position : None
- - length : None
- - node_label : None
- - node_color : None
-
-Node initialization
- - string : string
- - position : position
- - length : length
- - node_label : node_label
- - node_color : node_color
-
-## string_length
-
-> StringLength, return single output socket
-
-``` python
-def string_length(string=None, node_label=None, node_color=None):
-```
-Node
- - class_name : [StringLength](/docs/GeoNodes_classes/StringLength.md)
- - bl_idname : FunctionNodeStringLength
-
-Arguments
- - string : None
- - node_label : None
- - node_color : None
-
-Node initialization
- - string : string
- - node_label : node_label
- - node_color : node_color
-
-## value_to_string
-
-> ValueToString, return single output socket
-
-``` python
-def value_to_string(value=None, decimals=None, node_label=None, node_color=None):
-```
-Node
- - class_name : [ValueToString](/docs/GeoNodes_classes/ValueToString.md)
- - bl_idname : FunctionNodeValueToString
-
-Arguments
- - value : None
- - decimals : None
- - node_label : None
- - node_color : None
-
-Node initialization
- - value : value
- - decimals : decimals
- - node_label : node_label
- - node_color : node_color
-
-## blur_attribute
-
-> BlurAttribute, return single output socket
-
-``` python
-def blur_attribute(value=None, iterations=None, weight=None, data_type='FLOAT', node_label=None, node_color=None):
-```
-Node
- - class_name : [BlurAttribute](/docs/GeoNodes_classes/BlurAttribute.md)
- - bl_idname : GeometryNodeBlurAttribute
-
-Arguments
- - value : None
- - iterations : None
- - weight : None
- - data_type : 'FLOAT'
- - node_label : None
- - node_color : None
-
-Node initialization
- - value : value
- - iterations : iterations
- - weight : weight
- - data_type : data_type
- - node_label : node_label
- - node_color : node_color
-
-## collection_info
-
-> CollectionInfo, return single output socket
-
-``` python
-def collection_info(collection=None, separate_children=None, reset_children=None, transform_space='ORIGINAL', node_label=None, node_color=None):
-```
-Node
- - class_name : [CollectionInfo](/docs/GeoNodes_classes/CollectionInfo.md)
- - bl_idname : GeometryNodeCollectionInfo
-
-Arguments
- - collection : None
- - separate_children : None
- - reset_children : None
- - transform_space : 'ORIGINAL'
- - node_label : None
- - node_color : None
-
-Node initialization
- - collection : collection
- - separate_children : separate_children
- - reset_children : reset_children
- - transform_space : transform_space
- - node_label : node_label
- - node_color : node_color
-
-## convex_hull
-
-> ConvexHull, return single output socket
-
-``` python
-def convex_hull(geometry=None, node_label=None, node_color=None):
-```
-Node
- - class_name : [ConvexHull](/docs/GeoNodes_classes/ConvexHull.md)
- - bl_idname : GeometryNodeConvexHull
-
-Arguments
- - geometry : None
- - node_label : None
- - node_color : None
-
-Node initialization
- - geometry : geometry
- - node_label : node_label
- - node_color : node_color
-
-## endpoint_selection
-
-> EndpointSelection, return single output socket
-
-``` python
-def endpoint_selection(start_size=None, end_size=None, node_label=None, node_color=None):
-```
-Node
- - class_name : [EndpointSelection](/docs/GeoNodes_classes/EndpointSelection.md)
- - bl_idname : GeometryNodeCurveEndpointSelection
-
-Arguments
- - start_size : None
- - end_size : None
- - node_label : None
- - node_color : None
-
-Node initialization
- - start_size : start_size
- - end_size : end_size
- - node_label : node_label
- - node_color : node_color
-
-## handle_type_selection
-
-> HandleTypeSelection, return socket
-
-``` python
-def handle_type_selection(handle_type='AUTO', mode={'LEFT', 'RIGHT'}, node_label=None, node_color=None):
-```
-Node
- - class_name : [HandleTypeSelection](/docs/GeoNodes_classes/HandleTypeSelection.md)
- - bl_idname : GeometryNodeCurveHandleTypeSelection
-
-Arguments
- - handle_type : 'AUTO'
- - mode : {'LEFT', 'RIGHT'}
- - node_label : None
- - node_color : None
-
-Node initialization
- - handle_type : handle_type
- - mode : mode
- - node_label : node_label
- - node_color : node_color
-
-## curve_length
-
-> CurveLength, return single output socket
-
-``` python
-def curve_length(curve=None, node_label=None, node_color=None):
-```
-Node
- - class_name : [CurveLength](/docs/GeoNodes_classes/CurveLength.md)
- - bl_idname : GeometryNodeCurveLength
-
-Arguments
- - curve : None
- - node_label : None
- - node_color : None
-
-Node initialization
- - curve : curve
  - node_label : node_label
  - node_color : node_color
 
@@ -1076,6 +272,463 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
+## blur_attribute
+
+> BlurAttribute, return single output socket
+
+``` python
+def blur_attribute(value=None, iterations=None, weight=None, data_type='FLOAT', node_label=None, node_color=None):
+```
+Node
+ - class_name : [BlurAttribute](/docs/GeoNodes_classes/BlurAttribute.md)
+ - bl_idname : GeometryNodeBlurAttribute
+
+Arguments
+ - value : None
+ - iterations : None
+ - weight : None
+ - data_type : 'FLOAT'
+ - node_label : None
+ - node_color : None
+
+Node initialization
+ - value : value
+ - iterations : iterations
+ - weight : weight
+ - data_type : data_type
+ - node_label : node_label
+ - node_color : node_color
+
+## bnot
+
+> BooleanMath, boolean=self, operation='NOT'
+
+``` python
+def bnot(boolean=None, node_label=None, node_color=None):
+```
+Node
+ - class_name : [BooleanMath](/docs/GeoNodes_classes/BooleanMath.md)
+ - bl_idname : FunctionNodeBooleanMath
+
+Arguments
+ - boolean : None
+ - node_label : None
+ - node_color : None
+
+Node initialization
+ - boolean : boolean
+ - operation : 'NOT'
+ - node_label : node_label
+ - node_color : node_color
+
+## boolean
+
+> Boolean, return socket
+
+``` python
+def boolean(boolean, node_label=None, node_color=None):
+```
+Node
+ - class_name : [Boolean](/docs/GeoNodes_classes/Boolean.md)
+ - bl_idname : FunctionNodeInputBool
+
+## boolean_math
+
+> BooleanMath, return single output socket
+
+``` python
+def boolean_math(boolean=None, boolean_1=None, operation='AND', node_label=None, node_color=None):
+```
+Node
+ - class_name : [BooleanMath](/docs/GeoNodes_classes/BooleanMath.md)
+ - bl_idname : FunctionNodeBooleanMath
+
+Arguments
+ - boolean : None
+ - boolean_1 : None
+ - operation : 'AND'
+ - node_label : None
+ - node_color : None
+
+Node initialization
+ - boolean : boolean
+ - boolean_1 : boolean_1
+ - operation : operation
+ - node_label : node_label
+ - node_color : node_color
+
+## bor
+
+> BooleanMath, boolean=self, operation='OR'
+
+``` python
+def bor(boolean=None, boolean_1=None, node_label=None, node_color=None):
+```
+Node
+ - class_name : [BooleanMath](/docs/GeoNodes_classes/BooleanMath.md)
+ - bl_idname : FunctionNodeBooleanMath
+
+Arguments
+ - boolean : None
+ - boolean_1 : None
+ - node_label : None
+ - node_color : None
+
+Node initialization
+ - boolean : boolean
+ - boolean_1 : boolean_1
+ - operation : 'OR'
+ - node_label : node_label
+ - node_color : node_color
+
+## ceil
+
+> Math, value=self, operation='CEIL'
+
+``` python
+def ceil(value=None, use_clamp=False, node_label=None, node_color=None):
+```
+Node
+ - class_name : [Math](/docs/GeoNodes_classes/Math.md)
+ - bl_idname : ShaderNodeMath
+
+Arguments
+ - value : None
+ - use_clamp : False
+ - node_label : None
+ - node_color : None
+
+Node initialization
+ - value : value
+ - operation : 'CEIL'
+ - use_clamp : use_clamp
+ - node_label : node_label
+ - node_color : node_color
+
+## clamp
+
+> Clamp, return single output socket
+
+``` python
+def clamp(value=None, min=None, max=None, clamp_type='MINMAX', node_label=None, node_color=None):
+```
+Node
+ - class_name : [Clamp](/docs/GeoNodes_classes/Clamp.md)
+ - bl_idname : ShaderNodeClamp
+
+Arguments
+ - value : None
+ - min : None
+ - max : None
+ - clamp_type : 'MINMAX'
+ - node_label : None
+ - node_color : None
+
+Node initialization
+ - value : value
+ - min : min
+ - max : max
+ - clamp_type : clamp_type
+ - node_label : node_label
+ - node_color : node_color
+
+## collection_info
+
+> CollectionInfo, return single output socket
+
+``` python
+def collection_info(collection=None, separate_children=None, reset_children=None, transform_space='ORIGINAL', node_label=None, node_color=None):
+```
+Node
+ - class_name : [CollectionInfo](/docs/GeoNodes_classes/CollectionInfo.md)
+ - bl_idname : GeometryNodeCollectionInfo
+
+Arguments
+ - collection : None
+ - separate_children : None
+ - reset_children : None
+ - transform_space : 'ORIGINAL'
+ - node_label : None
+ - node_color : None
+
+Node initialization
+ - collection : collection
+ - separate_children : separate_children
+ - reset_children : reset_children
+ - transform_space : transform_space
+ - node_label : node_label
+ - node_color : node_color
+
+## color
+
+> Color, return socket
+
+``` python
+def color(color, node_label=None, node_color=None):
+```
+Node
+ - class_name : [Color](/docs/GeoNodes_classes/Color.md)
+ - bl_idname : FunctionNodeInputColor
+
+## combine_color
+
+> CombineColor, return single output socket
+
+``` python
+def combine_color(red=None, green=None, blue=None, alpha=None, mode='RGB', node_label=None, node_color=None):
+```
+Node
+ - class_name : [CombineColor](/docs/GeoNodes_classes/CombineColor.md)
+ - bl_idname : FunctionNodeCombineColor
+
+Arguments
+ - red : None
+ - green : None
+ - blue : None
+ - alpha : None
+ - mode : 'RGB'
+ - node_label : None
+ - node_color : None
+
+Node initialization
+ - red : red
+ - green : green
+ - blue : blue
+ - alpha : alpha
+ - mode : mode
+ - node_label : node_label
+ - node_color : node_color
+
+## combine_hsl
+
+> CombineColor, mode='HSL'
+
+``` python
+def combine_hsl(red=None, green=None, blue=None, alpha=None, node_label=None, node_color=None):
+```
+Node
+ - class_name : [CombineColor](/docs/GeoNodes_classes/CombineColor.md)
+ - bl_idname : FunctionNodeCombineColor
+
+Arguments
+ - red : None
+ - green : None
+ - blue : None
+ - alpha : None
+ - node_label : None
+ - node_color : None
+
+Node initialization
+ - red : red
+ - green : green
+ - blue : blue
+ - alpha : alpha
+ - mode : 'HSL'
+ - node_label : node_label
+ - node_color : node_color
+
+## combine_hsv
+
+> CombineColor, mode='HSV'
+
+``` python
+def combine_hsv(red=None, green=None, blue=None, alpha=None, node_label=None, node_color=None):
+```
+Node
+ - class_name : [CombineColor](/docs/GeoNodes_classes/CombineColor.md)
+ - bl_idname : FunctionNodeCombineColor
+
+Arguments
+ - red : None
+ - green : None
+ - blue : None
+ - alpha : None
+ - node_label : None
+ - node_color : None
+
+Node initialization
+ - red : red
+ - green : green
+ - blue : blue
+ - alpha : alpha
+ - mode : 'HSV'
+ - node_label : node_label
+ - node_color : node_color
+
+## combine_rgb
+
+> CombineColor, mode='RGB'
+
+``` python
+def combine_rgb(red=None, green=None, blue=None, alpha=None, node_label=None, node_color=None):
+```
+Node
+ - class_name : [CombineColor](/docs/GeoNodes_classes/CombineColor.md)
+ - bl_idname : FunctionNodeCombineColor
+
+Arguments
+ - red : None
+ - green : None
+ - blue : None
+ - alpha : None
+ - node_label : None
+ - node_color : None
+
+Node initialization
+ - red : red
+ - green : green
+ - blue : blue
+ - alpha : alpha
+ - mode : 'RGB'
+ - node_label : node_label
+ - node_color : node_color
+
+## combine_xyz
+
+> CombineXYZ, return single output socket
+
+``` python
+def combine_xyz(x=None, y=None, z=None, node_label=None, node_color=None):
+```
+Node
+ - class_name : [CombineXYZ](/docs/GeoNodes_classes/CombineXYZ.md)
+ - bl_idname : ShaderNodeCombineXYZ
+
+Arguments
+ - x : None
+ - y : None
+ - z : None
+ - node_label : None
+ - node_color : None
+
+Node initialization
+ - x : x
+ - y : y
+ - z : z
+ - node_label : node_label
+ - node_color : node_color
+
+## compare
+
+> Compare, return single output socket
+
+``` python
+def compare(a=None, b=None, epsilon=None, data_type='FLOAT', mode='ELEMENT', operation='GREATER_THAN', node_label=None, node_color=None):
+```
+Node
+ - class_name : [Compare](/docs/GeoNodes_classes/Compare.md)
+ - bl_idname : FunctionNodeCompare
+
+Arguments
+ - a : None
+ - b : None
+ - epsilon : None
+ - data_type : 'FLOAT'
+ - mode : 'ELEMENT'
+ - operation : 'GREATER_THAN'
+ - node_label : None
+ - node_color : None
+
+Node initialization
+ - a : a
+ - b : b
+ - epsilon : epsilon
+ - data_type : data_type
+ - mode : mode
+ - operation : operation
+ - node_label : node_label
+ - node_color : node_color
+
+## convex_hull
+
+> ConvexHull, return single output socket
+
+``` python
+def convex_hull(geometry=None, node_label=None, node_color=None):
+```
+Node
+ - class_name : [ConvexHull](/docs/GeoNodes_classes/ConvexHull.md)
+ - bl_idname : GeometryNodeConvexHull
+
+Arguments
+ - geometry : None
+ - node_label : None
+ - node_color : None
+
+Node initialization
+ - geometry : geometry
+ - node_label : node_label
+ - node_color : node_color
+
+## cos
+
+> Math, value=self, operation='COSINE'
+
+``` python
+def cos(value=None, use_clamp=False, node_label=None, node_color=None):
+```
+Node
+ - class_name : [Math](/docs/GeoNodes_classes/Math.md)
+ - bl_idname : ShaderNodeMath
+
+Arguments
+ - value : None
+ - use_clamp : False
+ - node_label : None
+ - node_color : None
+
+Node initialization
+ - value : value
+ - operation : 'COSINE'
+ - use_clamp : use_clamp
+ - node_label : node_label
+ - node_color : node_color
+
+## cosh
+
+> Math, value=self, operation='COSH'
+
+``` python
+def cosh(value=None, use_clamp=False, node_label=None, node_color=None):
+```
+Node
+ - class_name : [Math](/docs/GeoNodes_classes/Math.md)
+ - bl_idname : ShaderNodeMath
+
+Arguments
+ - value : None
+ - use_clamp : False
+ - node_label : None
+ - node_color : None
+
+Node initialization
+ - value : value
+ - operation : 'COSH'
+ - use_clamp : use_clamp
+ - node_label : node_label
+ - node_color : node_color
+
+## curve_length
+
+> CurveLength, return single output socket
+
+``` python
+def curve_length(curve=None, node_label=None, node_color=None):
+```
+Node
+ - class_name : [CurveLength](/docs/GeoNodes_classes/CurveLength.md)
+ - bl_idname : GeometryNodeCurveLength
+
+Arguments
+ - curve : None
+ - node_label : None
+ - node_color : None
+
+Node initialization
+ - curve : curve
+ - node_label : node_label
+ - node_color : node_color
+
 ## curve_line
 
 > CurveLine, return single output socket
@@ -1105,156 +758,41 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-## quadrilateral
+## curve_tangent
 
-> Quadrilateral, return single output socket
+> CurveTangent, return socket
 
 ``` python
-def quadrilateral(width=None, height=None, offset=None, bottom_width=None, top_width=None, bottom_height=None, top_height=None, point_1=None, point_2=None, point_3=None, point_4=None, mode='RECTANGLE', node_label=None, node_color=None):
+def curve_tangent(node_label=None, node_color=None):
 ```
 Node
- - class_name : [Quadrilateral](/docs/GeoNodes_classes/Quadrilateral.md)
- - bl_idname : GeometryNodeCurvePrimitiveQuadrilateral
+ - class_name : [CurveTangent](/docs/GeoNodes_classes/CurveTangent.md)
+ - bl_idname : GeometryNodeInputTangent
 
 Arguments
- - width : None
- - height : None
- - offset : None
- - bottom_width : None
- - top_width : None
- - bottom_height : None
- - top_height : None
- - point_1 : None
- - point_2 : None
- - point_3 : None
- - point_4 : None
- - mode : 'RECTANGLE'
  - node_label : None
  - node_color : None
 
 Node initialization
- - width : width
- - height : height
- - offset : offset
- - bottom_width : bottom_width
- - top_width : top_width
- - bottom_height : bottom_height
- - top_height : top_height
- - point_1 : point_1
- - point_2 : point_2
- - point_3 : point_3
- - point_4 : point_4
- - mode : mode
  - node_label : node_label
  - node_color : node_color
 
-## quadratic_bezier
+## curve_tilt
 
-> QuadraticBezier, return single output socket
+> CurveTilt, return socket
 
 ``` python
-def quadratic_bezier(resolution=None, start=None, middle=None, end=None, node_label=None, node_color=None):
+def curve_tilt(node_label=None, node_color=None):
 ```
 Node
- - class_name : [QuadraticBezier](/docs/GeoNodes_classes/QuadraticBezier.md)
- - bl_idname : GeometryNodeCurveQuadraticBezier
+ - class_name : [CurveTilt](/docs/GeoNodes_classes/CurveTilt.md)
+ - bl_idname : GeometryNodeInputCurveTilt
 
 Arguments
- - resolution : None
- - start : None
- - middle : None
- - end : None
  - node_label : None
  - node_color : None
 
 Node initialization
- - resolution : resolution
- - start : start
- - middle : middle
- - end : end
- - node_label : node_label
- - node_color : node_color
-
-## set_handle_type
-
-> SetHandleType, return single output socket
-
-``` python
-def set_handle_type(curve=None, selection=None, handle_type='AUTO', mode={'LEFT', 'RIGHT'}, node_label=None, node_color=None):
-```
-Node
- - class_name : [SetHandleType](/docs/GeoNodes_classes/SetHandleType.md)
- - bl_idname : GeometryNodeCurveSetHandles
-
-Arguments
- - curve : None
- - selection : None
- - handle_type : 'AUTO'
- - mode : {'LEFT', 'RIGHT'}
- - node_label : None
- - node_color : None
-
-Node initialization
- - curve : curve
- - selection : self._get_selection(selection)
- - handle_type : handle_type
- - mode : mode
- - node_label : node_label
- - node_color : node_color
-
-## spiral
-
-> Spiral, return single output socket
-
-``` python
-def spiral(resolution=None, rotations=None, start_radius=None, end_radius=None, height=None, reverse=None, node_label=None, node_color=None):
-```
-Node
- - class_name : [Spiral](/docs/GeoNodes_classes/Spiral.md)
- - bl_idname : GeometryNodeCurveSpiral
-
-Arguments
- - resolution : None
- - rotations : None
- - start_radius : None
- - end_radius : None
- - height : None
- - reverse : None
- - node_label : None
- - node_color : None
-
-Node initialization
- - resolution : resolution
- - rotations : rotations
- - start_radius : start_radius
- - end_radius : end_radius
- - height : height
- - reverse : reverse
- - node_label : node_label
- - node_color : node_color
-
-## set_spline_type
-
-> SetSplineType, return single output socket
-
-``` python
-def set_spline_type(curve=None, selection=None, spline_type='POLY', node_label=None, node_color=None):
-```
-Node
- - class_name : [SetSplineType](/docs/GeoNodes_classes/SetSplineType.md)
- - bl_idname : GeometryNodeCurveSplineType
-
-Arguments
- - curve : None
- - selection : None
- - spline_type : 'POLY'
- - node_label : None
- - node_color : None
-
-Node initialization
- - curve : curve
- - selection : self._get_selection(selection)
- - spline_type : spline_type
  - node_label : node_label
  - node_color : node_color
 
@@ -1301,6 +839,30 @@ Arguments
 
 Node initialization
  - curves : curves
+ - node_label : node_label
+ - node_color : node_color
+
+## degrees
+
+> Math, value=self, operation='DEGREES'
+
+``` python
+def degrees(value=None, use_clamp=False, node_label=None, node_color=None):
+```
+Node
+ - class_name : [Math](/docs/GeoNodes_classes/Math.md)
+ - bl_idname : ShaderNodeMath
+
+Arguments
+ - value : None
+ - use_clamp : False
+ - node_label : None
+ - node_color : None
+
+Node initialization
+ - value : value
+ - operation : 'DEGREES'
+ - use_clamp : use_clamp
  - node_label : node_label
  - node_color : node_color
 
@@ -1362,6 +924,32 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
+## divide
+
+> Math, value=self, operation='DIVIDE'
+
+``` python
+def divide(value=None, value_1=None, use_clamp=False, node_label=None, node_color=None):
+```
+Node
+ - class_name : [Math](/docs/GeoNodes_classes/Math.md)
+ - bl_idname : ShaderNodeMath
+
+Arguments
+ - value : None
+ - value_1 : None
+ - use_clamp : False
+ - node_label : None
+ - node_color : None
+
+Node initialization
+ - value : value
+ - value_1 : value_1
+ - operation : 'DIVIDE'
+ - use_clamp : use_clamp
+ - node_label : node_label
+ - node_color : node_color
+
 ## dual_mesh
 
 > DualMesh, return single output socket
@@ -1382,6 +970,44 @@ Arguments
 Node initialization
  - mesh : mesh
  - keep_boundaries : keep_boundaries
+ - node_label : node_label
+ - node_color : node_color
+
+## edge_angle
+
+> EdgeAngle, return node
+
+``` python
+def edge_angle(node_label=None, node_color=None):
+```
+Node
+ - class_name : [EdgeAngle](/docs/GeoNodes_classes/EdgeAngle.md)
+ - bl_idname : GeometryNodeInputMeshEdgeAngle
+
+Arguments
+ - node_label : None
+ - node_color : None
+
+Node initialization
+ - node_label : node_label
+ - node_color : node_color
+
+## edge_neighbors
+
+> EdgeNeighbors, return socket
+
+``` python
+def edge_neighbors(node_label=None, node_color=None):
+```
+Node
+ - class_name : [EdgeNeighbors](/docs/GeoNodes_classes/EdgeNeighbors.md)
+ - bl_idname : GeometryNodeInputMeshEdgeNeighbors
+
+Arguments
+ - node_label : None
+ - node_color : None
+
+Node initialization
  - node_label : node_label
  - node_color : node_color
 
@@ -1433,6 +1059,25 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
+## edge_vertices
+
+> EdgeVertices, return node
+
+``` python
+def edge_vertices(node_label=None, node_color=None):
+```
+Node
+ - class_name : [EdgeVertices](/docs/GeoNodes_classes/EdgeVertices.md)
+ - bl_idname : GeometryNodeInputMeshEdgeVertices
+
+Arguments
+ - node_label : None
+ - node_color : None
+
+Node initialization
+ - node_label : node_label
+ - node_color : node_color
+
 ## edges_to_face_groups
 
 > EdgesToFaceGroups, return single output socket
@@ -1451,6 +1096,50 @@ Arguments
 
 Node initialization
  - boundary_edges : boundary_edges
+ - node_label : node_label
+ - node_color : node_color
+
+## endpoint_selection
+
+> EndpointSelection, return single output socket
+
+``` python
+def endpoint_selection(start_size=None, end_size=None, node_label=None, node_color=None):
+```
+Node
+ - class_name : [EndpointSelection](/docs/GeoNodes_classes/EndpointSelection.md)
+ - bl_idname : GeometryNodeCurveEndpointSelection
+
+Arguments
+ - start_size : None
+ - end_size : None
+ - node_label : None
+ - node_color : None
+
+Node initialization
+ - start_size : start_size
+ - end_size : end_size
+ - node_label : node_label
+ - node_color : node_color
+
+## euler_to_rotation
+
+> EulerToRotation, return single output socket
+
+``` python
+def euler_to_rotation(euler=None, node_label=None, node_color=None):
+```
+Node
+ - class_name : [EulerToRotation](/docs/GeoNodes_classes/EulerToRotation.md)
+ - bl_idname : FunctionNodeEulerToRotation
+
+Arguments
+ - euler : None
+ - node_label : None
+ - node_color : None
+
+Node initialization
+ - euler : euler
  - node_label : node_label
  - node_color : node_color
 
@@ -1503,6 +1192,108 @@ Node initialization
  - value : value
  - data_type : data_type
  - domain : domain
+ - node_label : node_label
+ - node_color : node_color
+
+## exp
+
+> Math, value=self, operation='EXPONENT'
+
+``` python
+def exp(value=None, use_clamp=False, node_label=None, node_color=None):
+```
+Node
+ - class_name : [Math](/docs/GeoNodes_classes/Math.md)
+ - bl_idname : ShaderNodeMath
+
+Arguments
+ - value : None
+ - use_clamp : False
+ - node_label : None
+ - node_color : None
+
+Node initialization
+ - value : value
+ - operation : 'EXPONENT'
+ - use_clamp : use_clamp
+ - node_label : node_label
+ - node_color : node_color
+
+## face_area
+
+> FaceArea, return socket
+
+``` python
+def face_area(node_label=None, node_color=None):
+```
+Node
+ - class_name : [FaceArea](/docs/GeoNodes_classes/FaceArea.md)
+ - bl_idname : GeometryNodeInputMeshFaceArea
+
+Arguments
+ - node_label : None
+ - node_color : None
+
+Node initialization
+ - node_label : node_label
+ - node_color : node_color
+
+## face_group_boundaries
+
+> FaceGroupBoundaries, return single output socket
+
+``` python
+def face_group_boundaries(face_group_id=None, node_label=None, node_color=None):
+```
+Node
+ - class_name : [FaceGroupBoundaries](/docs/GeoNodes_classes/FaceGroupBoundaries.md)
+ - bl_idname : GeometryNodeMeshFaceSetBoundaries
+
+Arguments
+ - face_group_id : None
+ - node_label : None
+ - node_color : None
+
+Node initialization
+ - face_group_id : face_group_id
+ - node_label : node_label
+ - node_color : node_color
+
+## face_neighbors
+
+> FaceNeighbors, return node
+
+``` python
+def face_neighbors(node_label=None, node_color=None):
+```
+Node
+ - class_name : [FaceNeighbors](/docs/GeoNodes_classes/FaceNeighbors.md)
+ - bl_idname : GeometryNodeInputMeshFaceNeighbors
+
+Arguments
+ - node_label : None
+ - node_color : None
+
+Node initialization
+ - node_label : node_label
+ - node_color : node_color
+
+## face_set
+
+> FaceSet, return node
+
+``` python
+def face_set(node_label=None, node_color=None):
+```
+Node
+ - class_name : [FaceSet](/docs/GeoNodes_classes/FaceSet.md)
+ - bl_idname : GeometryNodeToolFaceSet
+
+Arguments
+ - node_label : None
+ - node_color : None
+
+Node initialization
  - node_label : node_label
  - node_color : node_color
 
@@ -1581,6 +1372,153 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
+## float_curve
+
+> FloatCurve, return single output socket
+
+``` python
+def float_curve(factor=None, value=None, mapping=None, node_label=None, node_color=None):
+```
+Node
+ - class_name : [FloatCurve](/docs/GeoNodes_classes/FloatCurve.md)
+ - bl_idname : ShaderNodeFloatCurve
+
+Arguments
+ - factor : None
+ - value : None
+ - mapping
+ - node_label : None
+ - node_color : None
+
+Node initialization
+ - factor : factor
+ - value : value
+ - mapping : mapping
+ - node_label : node_label
+ - node_color : node_color
+
+## float_to_integer
+
+> FloatToInteger, return single output socket
+
+``` python
+def float_to_integer(float=None, rounding_mode='ROUND', node_label=None, node_color=None):
+```
+Node
+ - class_name : [FloatToInteger](/docs/GeoNodes_classes/FloatToInteger.md)
+ - bl_idname : FunctionNodeFloatToInt
+
+Arguments
+ - float : None
+ - rounding_mode : 'ROUND'
+ - node_label : None
+ - node_color : None
+
+Node initialization
+ - float : float
+ - rounding_mode : rounding_mode
+ - node_label : node_label
+ - node_color : node_color
+
+## floor
+
+> Math, value=self, operation='FLOOR'
+
+``` python
+def floor(value=None, use_clamp=False, node_label=None, node_color=None):
+```
+Node
+ - class_name : [Math](/docs/GeoNodes_classes/Math.md)
+ - bl_idname : ShaderNodeMath
+
+Arguments
+ - value : None
+ - use_clamp : False
+ - node_label : None
+ - node_color : None
+
+Node initialization
+ - value : value
+ - operation : 'FLOOR'
+ - use_clamp : use_clamp
+ - node_label : node_label
+ - node_color : node_color
+
+## floored_modulo
+
+> Math, value=self, operation='FLOORED_MODULO'
+
+``` python
+def floored_modulo(value=None, value_1=None, use_clamp=False, node_label=None, node_color=None):
+```
+Node
+ - class_name : [Math](/docs/GeoNodes_classes/Math.md)
+ - bl_idname : ShaderNodeMath
+
+Arguments
+ - value : None
+ - value_1 : None
+ - use_clamp : False
+ - node_label : None
+ - node_color : None
+
+Node initialization
+ - value : value
+ - value_1 : value_1
+ - operation : 'FLOORED_MODULO'
+ - use_clamp : use_clamp
+ - node_label : node_label
+ - node_color : node_color
+
+## fract
+
+> Math, value=self, operation='FRACT'
+
+``` python
+def fract(value=None, use_clamp=False, node_label=None, node_color=None):
+```
+Node
+ - class_name : [Math](/docs/GeoNodes_classes/Math.md)
+ - bl_idname : ShaderNodeMath
+
+Arguments
+ - value : None
+ - use_clamp : False
+ - node_label : None
+ - node_color : None
+
+Node initialization
+ - value : value
+ - operation : 'FRACT'
+ - use_clamp : use_clamp
+ - node_label : node_label
+ - node_color : node_color
+
+## frame
+
+> Frame, return node
+
+``` python
+def frame(label_size=20, shrink=True, text=None, node_label=None, node_color=None):
+```
+Node
+ - class_name : [Frame](/docs/GeoNodes_classes/Frame.md)
+ - bl_idname : NodeFrame
+
+Arguments
+ - label_size : 20
+ - shrink : True
+ - text : None
+ - node_label : None
+ - node_color : None
+
+Node initialization
+ - label_size : label_size
+ - shrink : shrink
+ - text : text
+ - node_label : node_label
+ - node_color : node_color
+
 ## geometry_to_instance
 
 > GeometryToInstance, return single output socket
@@ -1604,41 +1542,26 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-## curve_tilt
+## handle_type_selection
 
-> CurveTilt, return socket
+> HandleTypeSelection, return socket
 
 ``` python
-def curve_tilt(node_label=None, node_color=None):
+def handle_type_selection(handle_type='AUTO', mode={'RIGHT', 'LEFT'}, node_label=None, node_color=None):
 ```
 Node
- - class_name : [CurveTilt](/docs/GeoNodes_classes/CurveTilt.md)
- - bl_idname : GeometryNodeInputCurveTilt
+ - class_name : [HandleTypeSelection](/docs/GeoNodes_classes/HandleTypeSelection.md)
+ - bl_idname : GeometryNodeCurveHandleTypeSelection
 
 Arguments
+ - handle_type : 'AUTO'
+ - mode : {'RIGHT', 'LEFT'}
  - node_label : None
  - node_color : None
 
 Node initialization
- - node_label : node_label
- - node_color : node_color
-
-## is_edge_smooth
-
-> IsEdgeSmooth, return socket
-
-``` python
-def is_edge_smooth(node_label=None, node_color=None):
-```
-Node
- - class_name : [IsEdgeSmooth](/docs/GeoNodes_classes/IsEdgeSmooth.md)
- - bl_idname : GeometryNodeInputEdgeSmooth
-
-Arguments
- - node_label : None
- - node_color : None
-
-Node initialization
+ - handle_type : handle_type
+ - mode : mode
  - node_label : node_label
  - node_color : node_color
 
@@ -1672,6 +1595,30 @@ Node
  - class_name : [Image](/docs/GeoNodes_classes/Image.md)
  - bl_idname : GeometryNodeInputImage
 
+## imply
+
+> BooleanMath, boolean=self, operation='IMPLY'
+
+``` python
+def imply(boolean=None, boolean_1=None, node_label=None, node_color=None):
+```
+Node
+ - class_name : [BooleanMath](/docs/GeoNodes_classes/BooleanMath.md)
+ - bl_idname : FunctionNodeBooleanMath
+
+Arguments
+ - boolean : None
+ - boolean_1 : None
+ - node_label : None
+ - node_color : None
+
+Node initialization
+ - boolean : boolean
+ - boolean_1 : boolean_1
+ - operation : 'IMPLY'
+ - node_label : node_label
+ - node_color : node_color
+
 ## index
 
 > Index, return socket
@@ -1682,531 +1629,6 @@ def index(node_label=None, node_color=None):
 Node
  - class_name : [Index](/docs/GeoNodes_classes/Index.md)
  - bl_idname : GeometryNodeInputIndex
-
-Arguments
- - node_label : None
- - node_color : None
-
-Node initialization
- - node_label : node_label
- - node_color : node_color
-
-## instance_rotation
-
-> InstanceRotation, return socket
-
-``` python
-def instance_rotation(node_label=None, node_color=None):
-```
-Node
- - class_name : [InstanceRotation](/docs/GeoNodes_classes/InstanceRotation.md)
- - bl_idname : GeometryNodeInputInstanceRotation
-
-Arguments
- - node_label : None
- - node_color : None
-
-Node initialization
- - node_label : node_label
- - node_color : node_color
-
-## instance_scale
-
-> InstanceScale, return socket
-
-``` python
-def instance_scale(node_label=None, node_color=None):
-```
-Node
- - class_name : [InstanceScale](/docs/GeoNodes_classes/InstanceScale.md)
- - bl_idname : GeometryNodeInputInstanceScale
-
-Arguments
- - node_label : None
- - node_color : None
-
-Node initialization
- - node_label : node_label
- - node_color : node_color
-
-## material
-
-> Material, return socket
-
-``` python
-def material(material, node_label=None, node_color=None):
-```
-Node
- - class_name : [Material](/docs/GeoNodes_classes/Material.md)
- - bl_idname : GeometryNodeInputMaterial
-
-## material_index
-
-> MaterialIndex, return socket
-
-``` python
-def material_index(node_label=None, node_color=None):
-```
-Node
- - class_name : [MaterialIndex](/docs/GeoNodes_classes/MaterialIndex.md)
- - bl_idname : GeometryNodeInputMaterialIndex
-
-Arguments
- - node_label : None
- - node_color : None
-
-Node initialization
- - node_label : node_label
- - node_color : node_color
-
-## edge_angle
-
-> EdgeAngle, return node
-
-``` python
-def edge_angle(node_label=None, node_color=None):
-```
-Node
- - class_name : [EdgeAngle](/docs/GeoNodes_classes/EdgeAngle.md)
- - bl_idname : GeometryNodeInputMeshEdgeAngle
-
-Arguments
- - node_label : None
- - node_color : None
-
-Node initialization
- - node_label : node_label
- - node_color : node_color
-
-## edge_neighbors
-
-> EdgeNeighbors, return socket
-
-``` python
-def edge_neighbors(node_label=None, node_color=None):
-```
-Node
- - class_name : [EdgeNeighbors](/docs/GeoNodes_classes/EdgeNeighbors.md)
- - bl_idname : GeometryNodeInputMeshEdgeNeighbors
-
-Arguments
- - node_label : None
- - node_color : None
-
-Node initialization
- - node_label : node_label
- - node_color : node_color
-
-## edge_vertices
-
-> EdgeVertices, return node
-
-``` python
-def edge_vertices(node_label=None, node_color=None):
-```
-Node
- - class_name : [EdgeVertices](/docs/GeoNodes_classes/EdgeVertices.md)
- - bl_idname : GeometryNodeInputMeshEdgeVertices
-
-Arguments
- - node_label : None
- - node_color : None
-
-Node initialization
- - node_label : node_label
- - node_color : node_color
-
-## face_area
-
-> FaceArea, return socket
-
-``` python
-def face_area(node_label=None, node_color=None):
-```
-Node
- - class_name : [FaceArea](/docs/GeoNodes_classes/FaceArea.md)
- - bl_idname : GeometryNodeInputMeshFaceArea
-
-Arguments
- - node_label : None
- - node_color : None
-
-Node initialization
- - node_label : node_label
- - node_color : node_color
-
-## is_face_planar
-
-> IsFacePlanar, return single output socket
-
-``` python
-def is_face_planar(threshold=None, node_label=None, node_color=None):
-```
-Node
- - class_name : [IsFacePlanar](/docs/GeoNodes_classes/IsFacePlanar.md)
- - bl_idname : GeometryNodeInputMeshFaceIsPlanar
-
-Arguments
- - threshold : None
- - node_label : None
- - node_color : None
-
-Node initialization
- - threshold : threshold
- - node_label : node_label
- - node_color : node_color
-
-## face_neighbors
-
-> FaceNeighbors, return node
-
-``` python
-def face_neighbors(node_label=None, node_color=None):
-```
-Node
- - class_name : [FaceNeighbors](/docs/GeoNodes_classes/FaceNeighbors.md)
- - bl_idname : GeometryNodeInputMeshFaceNeighbors
-
-Arguments
- - node_label : None
- - node_color : None
-
-Node initialization
- - node_label : node_label
- - node_color : node_color
-
-## mesh_island
-
-> MeshIsland, return node
-
-``` python
-def mesh_island(node_label=None, node_color=None):
-```
-Node
- - class_name : [MeshIsland](/docs/GeoNodes_classes/MeshIsland.md)
- - bl_idname : GeometryNodeInputMeshIsland
-
-Arguments
- - node_label : None
- - node_color : None
-
-Node initialization
- - node_label : node_label
- - node_color : node_color
-
-## vertex_neighbors
-
-> VertexNeighbors, return node
-
-``` python
-def vertex_neighbors(node_label=None, node_color=None):
-```
-Node
- - class_name : [VertexNeighbors](/docs/GeoNodes_classes/VertexNeighbors.md)
- - bl_idname : GeometryNodeInputMeshVertexNeighbors
-
-Arguments
- - node_label : None
- - node_color : None
-
-Node initialization
- - node_label : node_label
- - node_color : node_color
-
-## named_float
-
-> NamedAttribute, data_type='FLOAT'
-
-``` python
-def named_float(name=None, node_label=None, node_color=None):
-```
-Node
- - class_name : [NamedAttribute](/docs/GeoNodes_classes/NamedAttribute.md)
- - bl_idname : GeometryNodeInputNamedAttribute
-
-Arguments
- - name : None
- - node_label : None
- - node_color : None
-
-Node initialization
- - name : name
- - data_type : 'FLOAT'
- - node_label : node_label
- - node_color : node_color
-
-## named_int
-
-> NamedAttribute, data_type='INT'
-
-``` python
-def named_int(name=None, node_label=None, node_color=None):
-```
-Node
- - class_name : [NamedAttribute](/docs/GeoNodes_classes/NamedAttribute.md)
- - bl_idname : GeometryNodeInputNamedAttribute
-
-Arguments
- - name : None
- - node_label : None
- - node_color : None
-
-Node initialization
- - name : name
- - data_type : 'INT'
- - node_label : node_label
- - node_color : node_color
-
-## named_vector
-
-> NamedAttribute, data_type='FLOAT_VECTOR'
-
-``` python
-def named_vector(name=None, node_label=None, node_color=None):
-```
-Node
- - class_name : [NamedAttribute](/docs/GeoNodes_classes/NamedAttribute.md)
- - bl_idname : GeometryNodeInputNamedAttribute
-
-Arguments
- - name : None
- - node_label : None
- - node_color : None
-
-Node initialization
- - name : name
- - data_type : 'FLOAT_VECTOR'
- - node_label : node_label
- - node_color : node_color
-
-## named_color
-
-> NamedAttribute, data_type='FLOAT_COLOR'
-
-``` python
-def named_color(name=None, node_label=None, node_color=None):
-```
-Node
- - class_name : [NamedAttribute](/docs/GeoNodes_classes/NamedAttribute.md)
- - bl_idname : GeometryNodeInputNamedAttribute
-
-Arguments
- - name : None
- - node_label : None
- - node_color : None
-
-Node initialization
- - name : name
- - data_type : 'FLOAT_COLOR'
- - node_label : node_label
- - node_color : node_color
-
-## named_boolean
-
-> NamedAttribute, data_type='BOOLEAN'
-
-``` python
-def named_boolean(name=None, node_label=None, node_color=None):
-```
-Node
- - class_name : [NamedAttribute](/docs/GeoNodes_classes/NamedAttribute.md)
- - bl_idname : GeometryNodeInputNamedAttribute
-
-Arguments
- - name : None
- - node_label : None
- - node_color : None
-
-Node initialization
- - name : name
- - data_type : 'BOOLEAN'
- - node_label : node_label
- - node_color : node_color
-
-## named_quaternion
-
-> NamedAttribute, data_type='QUATERNION'
-
-``` python
-def named_quaternion(name=None, node_label=None, node_color=None):
-```
-Node
- - class_name : [NamedAttribute](/docs/GeoNodes_classes/NamedAttribute.md)
- - bl_idname : GeometryNodeInputNamedAttribute
-
-Arguments
- - name : None
- - node_label : None
- - node_color : None
-
-Node initialization
- - name : name
- - data_type : 'QUATERNION'
- - node_label : node_label
- - node_color : node_color
-
-## normal
-
-> Normal, return socket
-
-``` python
-def normal(node_label=None, node_color=None):
-```
-Node
- - class_name : [Normal](/docs/GeoNodes_classes/Normal.md)
- - bl_idname : GeometryNodeInputNormal
-
-Arguments
- - node_label : None
- - node_color : None
-
-Node initialization
- - node_label : node_label
- - node_color : node_color
-
-## position
-
-> Position, return socket
-
-``` python
-def position(node_label=None, node_color=None):
-```
-Node
- - class_name : [Position](/docs/GeoNodes_classes/Position.md)
- - bl_idname : GeometryNodeInputPosition
-
-Arguments
- - node_label : None
- - node_color : None
-
-Node initialization
- - node_label : node_label
- - node_color : node_color
-
-## radius
-
-> Radius, return socket
-
-``` python
-def radius(node_label=None, node_color=None):
-```
-Node
- - class_name : [Radius](/docs/GeoNodes_classes/Radius.md)
- - bl_idname : GeometryNodeInputRadius
-
-Arguments
- - node_label : None
- - node_color : None
-
-Node initialization
- - node_label : node_label
- - node_color : node_color
-
-## scene_time
-
-> SceneTime, return node
-
-``` python
-def scene_time(node_label=None, node_color=None):
-```
-Node
- - class_name : [SceneTime](/docs/GeoNodes_classes/SceneTime.md)
- - bl_idname : GeometryNodeInputSceneTime
-
-Arguments
- - node_label : None
- - node_color : None
-
-Node initialization
- - node_label : node_label
- - node_color : node_color
-
-## is_face_smooth
-
-> IsFaceSmooth, return socket
-
-``` python
-def is_face_smooth(node_label=None, node_color=None):
-```
-Node
- - class_name : [IsFaceSmooth](/docs/GeoNodes_classes/IsFaceSmooth.md)
- - bl_idname : GeometryNodeInputShadeSmooth
-
-Arguments
- - node_label : None
- - node_color : None
-
-Node initialization
- - node_label : node_label
- - node_color : node_color
-
-## signed_distance
-
-> SignedDistance, return socket
-
-``` python
-def signed_distance(node_label=None, node_color=None):
-```
-Node
- - class_name : [SignedDistance](/docs/GeoNodes_classes/SignedDistance.md)
- - bl_idname : GeometryNodeInputSignedDistance
-
-Arguments
- - node_label : None
- - node_color : None
-
-Node initialization
- - node_label : node_label
- - node_color : node_color
-
-## is_spline_cyclic
-
-> IsSplineCyclic, return socket
-
-``` python
-def is_spline_cyclic(node_label=None, node_color=None):
-```
-Node
- - class_name : [IsSplineCyclic](/docs/GeoNodes_classes/IsSplineCyclic.md)
- - bl_idname : GeometryNodeInputSplineCyclic
-
-Arguments
- - node_label : None
- - node_color : None
-
-Node initialization
- - node_label : node_label
- - node_color : node_color
-
-## spline_resolution
-
-> SplineResolution, return socket
-
-``` python
-def spline_resolution(node_label=None, node_color=None):
-```
-Node
- - class_name : [SplineResolution](/docs/GeoNodes_classes/SplineResolution.md)
- - bl_idname : GeometryNodeInputSplineResolution
-
-Arguments
- - node_label : None
- - node_color : None
-
-Node initialization
- - node_label : node_label
- - node_color : node_color
-
-## curve_tangent
-
-> CurveTangent, return socket
-
-``` python
-def curve_tangent(node_label=None, node_color=None):
-```
-Node
- - class_name : [CurveTangent](/docs/GeoNodes_classes/CurveTangent.md)
- - bl_idname : GeometryNodeInputTangent
 
 Arguments
  - node_label : None
@@ -2249,6 +1671,44 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
+## instance_rotation
+
+> InstanceRotation, return socket
+
+``` python
+def instance_rotation(node_label=None, node_color=None):
+```
+Node
+ - class_name : [InstanceRotation](/docs/GeoNodes_classes/InstanceRotation.md)
+ - bl_idname : GeometryNodeInputInstanceRotation
+
+Arguments
+ - node_label : None
+ - node_color : None
+
+Node initialization
+ - node_label : node_label
+ - node_color : node_color
+
+## instance_scale
+
+> InstanceScale, return socket
+
+``` python
+def instance_scale(node_label=None, node_color=None):
+```
+Node
+ - class_name : [InstanceScale](/docs/GeoNodes_classes/InstanceScale.md)
+ - bl_idname : GeometryNodeInputInstanceScale
+
+Arguments
+ - node_label : None
+ - node_color : None
+
+Node initialization
+ - node_label : node_label
+ - node_color : node_color
+
 ## instances_to_points
 
 > InstancesToPoints, return single output socket
@@ -2273,6 +1733,140 @@ Node initialization
  - position : position
  - radius : radius
  - selection : self._get_selection(selection)
+ - node_label : node_label
+ - node_color : node_color
+
+## integer
+
+> Integer, return socket
+
+``` python
+def integer(integer, node_label=None, node_color=None):
+```
+Node
+ - class_name : [Integer](/docs/GeoNodes_classes/Integer.md)
+ - bl_idname : FunctionNodeInputInt
+
+## inverse_sqrt
+
+> Math, value=self, operation='INVERSE_SQRT'
+
+``` python
+def inverse_sqrt(value=None, use_clamp=False, node_label=None, node_color=None):
+```
+Node
+ - class_name : [Math](/docs/GeoNodes_classes/Math.md)
+ - bl_idname : ShaderNodeMath
+
+Arguments
+ - value : None
+ - use_clamp : False
+ - node_label : None
+ - node_color : None
+
+Node initialization
+ - value : value
+ - operation : 'INVERSE_SQRT'
+ - use_clamp : use_clamp
+ - node_label : node_label
+ - node_color : node_color
+
+## invert_rotation
+
+> InvertRotation, return single output socket
+
+``` python
+def invert_rotation(rotation=None, node_label=None, node_color=None):
+```
+Node
+ - class_name : [InvertRotation](/docs/GeoNodes_classes/InvertRotation.md)
+ - bl_idname : FunctionNodeInvertRotation
+
+Arguments
+ - rotation : None
+ - node_label : None
+ - node_color : None
+
+Node initialization
+ - rotation : rotation
+ - node_label : node_label
+ - node_color : node_color
+
+## is_edge_smooth
+
+> IsEdgeSmooth, return socket
+
+``` python
+def is_edge_smooth(node_label=None, node_color=None):
+```
+Node
+ - class_name : [IsEdgeSmooth](/docs/GeoNodes_classes/IsEdgeSmooth.md)
+ - bl_idname : GeometryNodeInputEdgeSmooth
+
+Arguments
+ - node_label : None
+ - node_color : None
+
+Node initialization
+ - node_label : node_label
+ - node_color : node_color
+
+## is_face_planar
+
+> IsFacePlanar, return single output socket
+
+``` python
+def is_face_planar(threshold=None, node_label=None, node_color=None):
+```
+Node
+ - class_name : [IsFacePlanar](/docs/GeoNodes_classes/IsFacePlanar.md)
+ - bl_idname : GeometryNodeInputMeshFaceIsPlanar
+
+Arguments
+ - threshold : None
+ - node_label : None
+ - node_color : None
+
+Node initialization
+ - threshold : threshold
+ - node_label : node_label
+ - node_color : node_color
+
+## is_face_smooth
+
+> IsFaceSmooth, return socket
+
+``` python
+def is_face_smooth(node_label=None, node_color=None):
+```
+Node
+ - class_name : [IsFaceSmooth](/docs/GeoNodes_classes/IsFaceSmooth.md)
+ - bl_idname : GeometryNodeInputShadeSmooth
+
+Arguments
+ - node_label : None
+ - node_color : None
+
+Node initialization
+ - node_label : node_label
+ - node_color : node_color
+
+## is_spline_cyclic
+
+> IsSplineCyclic, return socket
+
+``` python
+def is_spline_cyclic(node_label=None, node_color=None):
+```
+Node
+ - class_name : [IsSplineCyclic](/docs/GeoNodes_classes/IsSplineCyclic.md)
+ - bl_idname : GeometryNodeInputSplineCyclic
+
+Arguments
+ - node_label : None
+ - node_color : None
+
+Node initialization
  - node_label : node_label
  - node_color : node_color
 
@@ -2318,6 +1912,87 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
+## join_strings
+
+> JoinStrings, return single output socket
+
+``` python
+def join_strings(*args, delimiter=None, strings=None, node_label=None, node_color=None):
+```
+Node
+ - class_name : [JoinStrings](/docs/GeoNodes_classes/JoinStrings.md)
+ - bl_idname : GeometryNodeStringJoin
+
+Arguments
+ - *args : 
+ - delimiter : None
+ - strings : None
+ - node_label : None
+ - node_color : None
+
+Node initialization
+ - *args : 
+ - delimiter : delimiter
+ - strings : strings
+ - node_label : node_label
+ - node_color : node_color
+
+## log
+
+> Math, value=self, operation='LOGARITHM'
+
+``` python
+def log(value=None, value_1=None, use_clamp=False, node_label=None, node_color=None):
+```
+Node
+ - class_name : [Math](/docs/GeoNodes_classes/Math.md)
+ - bl_idname : ShaderNodeMath
+
+Arguments
+ - value : None
+ - value_1 : None
+ - use_clamp : False
+ - node_label : None
+ - node_color : None
+
+Node initialization
+ - value : value
+ - value_1 : value_1
+ - operation : 'LOGARITHM'
+ - use_clamp : use_clamp
+ - node_label : node_label
+ - node_color : node_color
+
+## material
+
+> Material, return socket
+
+``` python
+def material(material, node_label=None, node_color=None):
+```
+Node
+ - class_name : [Material](/docs/GeoNodes_classes/Material.md)
+ - bl_idname : GeometryNodeInputMaterial
+
+## material_index
+
+> MaterialIndex, return socket
+
+``` python
+def material_index(node_label=None, node_color=None):
+```
+Node
+ - class_name : [MaterialIndex](/docs/GeoNodes_classes/MaterialIndex.md)
+ - bl_idname : GeometryNodeInputMaterialIndex
+
+Arguments
+ - node_label : None
+ - node_color : None
+
+Node initialization
+ - node_label : node_label
+ - node_color : node_color
+
 ## material_selection
 
 > MaterialSelection, return single output socket
@@ -2336,6 +2011,141 @@ Arguments
 
 Node initialization
  - material : material
+ - node_label : node_label
+ - node_color : node_color
+
+## math
+
+> Math, return single output socket
+
+``` python
+def math(value=None, value_1=None, value_2=None, operation='ADD', use_clamp=False, node_label=None, node_color=None):
+```
+Node
+ - class_name : [Math](/docs/GeoNodes_classes/Math.md)
+ - bl_idname : ShaderNodeMath
+
+Arguments
+ - value : None
+ - value_1 : None
+ - value_2 : None
+ - operation : 'ADD'
+ - use_clamp : False
+ - node_label : None
+ - node_color : None
+
+Node initialization
+ - value : value
+ - value_1 : value_1
+ - value_2 : value_2
+ - operation : operation
+ - use_clamp : use_clamp
+ - node_label : node_label
+ - node_color : node_color
+
+## math_compare
+
+> Math, value=self, operation='COMPARE'
+
+``` python
+def math_compare(value=None, value_1=None, value_2=None, use_clamp=False, node_label=None, node_color=None):
+```
+Node
+ - class_name : [Math](/docs/GeoNodes_classes/Math.md)
+ - bl_idname : ShaderNodeMath
+
+Arguments
+ - value : None
+ - value_1 : None
+ - value_2 : None
+ - use_clamp : False
+ - node_label : None
+ - node_color : None
+
+Node initialization
+ - value : value
+ - value_1 : value_1
+ - value_2 : value_2
+ - operation : 'COMPARE'
+ - use_clamp : use_clamp
+ - node_label : node_label
+ - node_color : node_color
+
+## math_greater_than
+
+> Math, value=self, operation='GREATER_THAN'
+
+``` python
+def math_greater_than(value=None, value_1=None, use_clamp=False, node_label=None, node_color=None):
+```
+Node
+ - class_name : [Math](/docs/GeoNodes_classes/Math.md)
+ - bl_idname : ShaderNodeMath
+
+Arguments
+ - value : None
+ - value_1 : None
+ - use_clamp : False
+ - node_label : None
+ - node_color : None
+
+Node initialization
+ - value : value
+ - value_1 : value_1
+ - operation : 'GREATER_THAN'
+ - use_clamp : use_clamp
+ - node_label : node_label
+ - node_color : node_color
+
+## math_less_than
+
+> Math, value=self, operation='LESS_THAN'
+
+``` python
+def math_less_than(value=None, value_1=None, use_clamp=False, node_label=None, node_color=None):
+```
+Node
+ - class_name : [Math](/docs/GeoNodes_classes/Math.md)
+ - bl_idname : ShaderNodeMath
+
+Arguments
+ - value : None
+ - value_1 : None
+ - use_clamp : False
+ - node_label : None
+ - node_color : None
+
+Node initialization
+ - value : value
+ - value_1 : value_1
+ - operation : 'LESS_THAN'
+ - use_clamp : use_clamp
+ - node_label : node_label
+ - node_color : node_color
+
+## max
+
+> Math, value=self, operation='MAXIMUM'
+
+``` python
+def max(value=None, value_1=None, use_clamp=False, node_label=None, node_color=None):
+```
+Node
+ - class_name : [Math](/docs/GeoNodes_classes/Math.md)
+ - bl_idname : ShaderNodeMath
+
+Arguments
+ - value : None
+ - value_1 : None
+ - use_clamp : False
+ - node_label : None
+ - node_color : None
+
+Node initialization
+ - value : value
+ - value_1 : value_1
+ - operation : 'MAXIMUM'
+ - use_clamp : use_clamp
  - node_label : node_label
  - node_color : node_color
 
@@ -2416,24 +2226,22 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-## face_group_boundaries
+## mesh_island
 
-> FaceGroupBoundaries, return single output socket
+> MeshIsland, return node
 
 ``` python
-def face_group_boundaries(face_group_id=None, node_label=None, node_color=None):
+def mesh_island(node_label=None, node_color=None):
 ```
 Node
- - class_name : [FaceGroupBoundaries](/docs/GeoNodes_classes/FaceGroupBoundaries.md)
- - bl_idname : GeometryNodeMeshFaceSetBoundaries
+ - class_name : [MeshIsland](/docs/GeoNodes_classes/MeshIsland.md)
+ - bl_idname : GeometryNodeInputMeshIsland
 
 Arguments
- - face_group_id : None
  - node_label : None
  - node_color : None
 
 Node initialization
- - face_group_id : face_group_id
  - node_label : node_label
  - node_color : node_color
 
@@ -2578,6 +2386,413 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
+## min
+
+> Math, value=self, operation='MINIMUM'
+
+``` python
+def min(value=None, value_1=None, use_clamp=False, node_label=None, node_color=None):
+```
+Node
+ - class_name : [Math](/docs/GeoNodes_classes/Math.md)
+ - bl_idname : ShaderNodeMath
+
+Arguments
+ - value : None
+ - value_1 : None
+ - use_clamp : False
+ - node_label : None
+ - node_color : None
+
+Node initialization
+ - value : value
+ - value_1 : value_1
+ - operation : 'MINIMUM'
+ - use_clamp : use_clamp
+ - node_label : node_label
+ - node_color : node_color
+
+## mix
+
+> Mix, return single output socket
+
+``` python
+def mix(factor=None, a=None, b=None, blend_type='MIX', clamp_factor=True, clamp_result=False, data_type='FLOAT', factor_mode='UNIFORM', node_label=None, node_color=None):
+```
+Node
+ - class_name : [Mix](/docs/GeoNodes_classes/Mix.md)
+ - bl_idname : ShaderNodeMix
+
+Arguments
+ - factor : None
+ - a : None
+ - b : None
+ - blend_type : 'MIX'
+ - clamp_factor : True
+ - clamp_result : False
+ - data_type : 'FLOAT'
+ - factor_mode : 'UNIFORM'
+ - node_label : None
+ - node_color : None
+
+Node initialization
+ - factor : factor
+ - a : a
+ - b : b
+ - blend_type : blend_type
+ - clamp_factor : clamp_factor
+ - clamp_result : clamp_result
+ - data_type : data_type
+ - factor_mode : factor_mode
+ - node_label : node_label
+ - node_color : node_color
+
+## mod
+
+> Math, value=self, operation='MODULO'
+
+``` python
+def mod(value=None, value_1=None, use_clamp=False, node_label=None, node_color=None):
+```
+Node
+ - class_name : [Math](/docs/GeoNodes_classes/Math.md)
+ - bl_idname : ShaderNodeMath
+
+Arguments
+ - value : None
+ - value_1 : None
+ - use_clamp : False
+ - node_label : None
+ - node_color : None
+
+Node initialization
+ - value : value
+ - value_1 : value_1
+ - operation : 'MODULO'
+ - use_clamp : use_clamp
+ - node_label : node_label
+ - node_color : node_color
+
+## multiply
+
+> Math, value=self, operation='MULTIPLY'
+
+``` python
+def multiply(value=None, value_1=None, use_clamp=False, node_label=None, node_color=None):
+```
+Node
+ - class_name : [Math](/docs/GeoNodes_classes/Math.md)
+ - bl_idname : ShaderNodeMath
+
+Arguments
+ - value : None
+ - value_1 : None
+ - use_clamp : False
+ - node_label : None
+ - node_color : None
+
+Node initialization
+ - value : value
+ - value_1 : value_1
+ - operation : 'MULTIPLY'
+ - use_clamp : use_clamp
+ - node_label : node_label
+ - node_color : node_color
+
+## multiply_add
+
+> Math, value=self, operation='MULTIPLY_ADD'
+
+``` python
+def multiply_add(value=None, value_1=None, value_2=None, use_clamp=False, node_label=None, node_color=None):
+```
+Node
+ - class_name : [Math](/docs/GeoNodes_classes/Math.md)
+ - bl_idname : ShaderNodeMath
+
+Arguments
+ - value : None
+ - value_1 : None
+ - value_2 : None
+ - use_clamp : False
+ - node_label : None
+ - node_color : None
+
+Node initialization
+ - value : value
+ - value_1 : value_1
+ - value_2 : value_2
+ - operation : 'MULTIPLY_ADD'
+ - use_clamp : use_clamp
+ - node_label : node_label
+ - node_color : node_color
+
+## musgrave_texture
+
+> MusgraveTexture, return single output socket
+
+``` python
+def musgrave_texture(vector=None, scale=None, detail=None, dimension=None, lacunarity=None, w=None, offset=None, gain=None, color_mapping=None, musgrave_dimensions='3D', musgrave_type='FBM', texture_mapping=None, node_label=None, node_color=None):
+```
+Node
+ - class_name : [MusgraveTexture](/docs/GeoNodes_classes/MusgraveTexture.md)
+ - bl_idname : ShaderNodeTexMusgrave
+
+Arguments
+ - vector : None
+ - scale : None
+ - detail : None
+ - dimension : None
+ - lacunarity : None
+ - w : None
+ - offset : None
+ - gain : None
+ - color_mapping
+ - musgrave_dimensions : '3D'
+ - musgrave_type : 'FBM'
+ - texture_mapping
+ - node_label : None
+ - node_color : None
+
+Node initialization
+ - vector : vector
+ - scale : scale
+ - detail : detail
+ - dimension : dimension
+ - lacunarity : lacunarity
+ - w : w
+ - offset : offset
+ - gain : gain
+ - color_mapping : color_mapping
+ - musgrave_dimensions : musgrave_dimensions
+ - musgrave_type : musgrave_type
+ - texture_mapping : texture_mapping
+ - node_label : node_label
+ - node_color : node_color
+
+## named_boolean
+
+> NamedAttribute, data_type='BOOLEAN'
+
+``` python
+def named_boolean(name=None, node_label=None, node_color=None):
+```
+Node
+ - class_name : [NamedAttribute](/docs/GeoNodes_classes/NamedAttribute.md)
+ - bl_idname : GeometryNodeInputNamedAttribute
+
+Arguments
+ - name : None
+ - node_label : None
+ - node_color : None
+
+Node initialization
+ - name : name
+ - data_type : 'BOOLEAN'
+ - node_label : node_label
+ - node_color : node_color
+
+## named_color
+
+> NamedAttribute, data_type='FLOAT_COLOR'
+
+``` python
+def named_color(name=None, node_label=None, node_color=None):
+```
+Node
+ - class_name : [NamedAttribute](/docs/GeoNodes_classes/NamedAttribute.md)
+ - bl_idname : GeometryNodeInputNamedAttribute
+
+Arguments
+ - name : None
+ - node_label : None
+ - node_color : None
+
+Node initialization
+ - name : name
+ - data_type : 'FLOAT_COLOR'
+ - node_label : node_label
+ - node_color : node_color
+
+## named_float
+
+> NamedAttribute, data_type='FLOAT'
+
+``` python
+def named_float(name=None, node_label=None, node_color=None):
+```
+Node
+ - class_name : [NamedAttribute](/docs/GeoNodes_classes/NamedAttribute.md)
+ - bl_idname : GeometryNodeInputNamedAttribute
+
+Arguments
+ - name : None
+ - node_label : None
+ - node_color : None
+
+Node initialization
+ - name : name
+ - data_type : 'FLOAT'
+ - node_label : node_label
+ - node_color : node_color
+
+## named_int
+
+> NamedAttribute, data_type='INT'
+
+``` python
+def named_int(name=None, node_label=None, node_color=None):
+```
+Node
+ - class_name : [NamedAttribute](/docs/GeoNodes_classes/NamedAttribute.md)
+ - bl_idname : GeometryNodeInputNamedAttribute
+
+Arguments
+ - name : None
+ - node_label : None
+ - node_color : None
+
+Node initialization
+ - name : name
+ - data_type : 'INT'
+ - node_label : node_label
+ - node_color : node_color
+
+## named_quaternion
+
+> NamedAttribute, data_type='QUATERNION'
+
+``` python
+def named_quaternion(name=None, node_label=None, node_color=None):
+```
+Node
+ - class_name : [NamedAttribute](/docs/GeoNodes_classes/NamedAttribute.md)
+ - bl_idname : GeometryNodeInputNamedAttribute
+
+Arguments
+ - name : None
+ - node_label : None
+ - node_color : None
+
+Node initialization
+ - name : name
+ - data_type : 'QUATERNION'
+ - node_label : node_label
+ - node_color : node_color
+
+## named_vector
+
+> NamedAttribute, data_type='FLOAT_VECTOR'
+
+``` python
+def named_vector(name=None, node_label=None, node_color=None):
+```
+Node
+ - class_name : [NamedAttribute](/docs/GeoNodes_classes/NamedAttribute.md)
+ - bl_idname : GeometryNodeInputNamedAttribute
+
+Arguments
+ - name : None
+ - node_label : None
+ - node_color : None
+
+Node initialization
+ - name : name
+ - data_type : 'FLOAT_VECTOR'
+ - node_label : node_label
+ - node_color : node_color
+
+## nand
+
+> BooleanMath, boolean=self, operation='NAND'
+
+``` python
+def nand(boolean=None, boolean_1=None, node_label=None, node_color=None):
+```
+Node
+ - class_name : [BooleanMath](/docs/GeoNodes_classes/BooleanMath.md)
+ - bl_idname : FunctionNodeBooleanMath
+
+Arguments
+ - boolean : None
+ - boolean_1 : None
+ - node_label : None
+ - node_color : None
+
+Node initialization
+ - boolean : boolean
+ - boolean_1 : boolean_1
+ - operation : 'NAND'
+ - node_label : node_label
+ - node_color : node_color
+
+## nimply
+
+> BooleanMath, boolean=self, operation='NIMPLY'
+
+``` python
+def nimply(boolean=None, boolean_1=None, node_label=None, node_color=None):
+```
+Node
+ - class_name : [BooleanMath](/docs/GeoNodes_classes/BooleanMath.md)
+ - bl_idname : FunctionNodeBooleanMath
+
+Arguments
+ - boolean : None
+ - boolean_1 : None
+ - node_label : None
+ - node_color : None
+
+Node initialization
+ - boolean : boolean
+ - boolean_1 : boolean_1
+ - operation : 'NIMPLY'
+ - node_label : node_label
+ - node_color : node_color
+
+## nor
+
+> BooleanMath, boolean=self, operation='NOR'
+
+``` python
+def nor(boolean=None, boolean_1=None, node_label=None, node_color=None):
+```
+Node
+ - class_name : [BooleanMath](/docs/GeoNodes_classes/BooleanMath.md)
+ - bl_idname : FunctionNodeBooleanMath
+
+Arguments
+ - boolean : None
+ - boolean_1 : None
+ - node_label : None
+ - node_color : None
+
+Node initialization
+ - boolean : boolean
+ - boolean_1 : boolean_1
+ - operation : 'NOR'
+ - node_label : node_label
+ - node_color : node_color
+
+## normal
+
+> Normal, return socket
+
+``` python
+def normal(node_label=None, node_color=None):
+```
+Node
+ - class_name : [Normal](/docs/GeoNodes_classes/Normal.md)
+ - bl_idname : GeometryNodeInputNormal
+
+Arguments
+ - node_label : None
+ - node_color : None
+
+Node initialization
+ - node_label : node_label
+ - node_color : node_color
+
 ## offset_corner_in_face
 
 > OffsetCornerInFace, return single output socket
@@ -2621,6 +2836,59 @@ Arguments
 Node initialization
  - volume : volume
  - distance : distance
+ - node_label : node_label
+ - node_color : node_color
+
+## pack_uv_islands
+
+> PackUVIslands, return single output socket
+
+``` python
+def pack_uv_islands(uv=None, margin=None, rotate=None, selection=None, node_label=None, node_color=None):
+```
+Node
+ - class_name : [PackUVIslands](/docs/GeoNodes_classes/PackUVIslands.md)
+ - bl_idname : GeometryNodeUVPackIslands
+
+Arguments
+ - uv : None
+ - margin : None
+ - rotate : None
+ - selection : None
+ - node_label : None
+ - node_color : None
+
+Node initialization
+ - uv : uv
+ - margin : margin
+ - rotate : rotate
+ - selection : self._get_selection(selection)
+ - node_label : node_label
+ - node_color : node_color
+
+## pingpong
+
+> Math, value=self, operation='PINGPONG'
+
+``` python
+def pingpong(value=None, value_1=None, use_clamp=False, node_label=None, node_color=None):
+```
+Node
+ - class_name : [Math](/docs/GeoNodes_classes/Math.md)
+ - bl_idname : ShaderNodeMath
+
+Arguments
+ - value : None
+ - value_1 : None
+ - use_clamp : False
+ - node_label : None
+ - node_color : None
+
+Node initialization
+ - value : value
+ - value_1 : value_1
+ - operation : 'PINGPONG'
+ - use_clamp : use_clamp
  - node_label : node_label
  - node_color : node_color
 
@@ -2757,6 +3025,332 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
+## position
+
+> Position, return socket
+
+``` python
+def position(node_label=None, node_color=None):
+```
+Node
+ - class_name : [Position](/docs/GeoNodes_classes/Position.md)
+ - bl_idname : GeometryNodeInputPosition
+
+Arguments
+ - node_label : None
+ - node_color : None
+
+Node initialization
+ - node_label : node_label
+ - node_color : node_color
+
+## power
+
+> Math, value=self, operation='POWER'
+
+``` python
+def power(value=None, value_1=None, use_clamp=False, node_label=None, node_color=None):
+```
+Node
+ - class_name : [Math](/docs/GeoNodes_classes/Math.md)
+ - bl_idname : ShaderNodeMath
+
+Arguments
+ - value : None
+ - value_1 : None
+ - use_clamp : False
+ - node_label : None
+ - node_color : None
+
+Node initialization
+ - value : value
+ - value_1 : value_1
+ - operation : 'POWER'
+ - use_clamp : use_clamp
+ - node_label : node_label
+ - node_color : node_color
+
+## quadratic_bezier
+
+> QuadraticBezier, return single output socket
+
+``` python
+def quadratic_bezier(resolution=None, start=None, middle=None, end=None, node_label=None, node_color=None):
+```
+Node
+ - class_name : [QuadraticBezier](/docs/GeoNodes_classes/QuadraticBezier.md)
+ - bl_idname : GeometryNodeCurveQuadraticBezier
+
+Arguments
+ - resolution : None
+ - start : None
+ - middle : None
+ - end : None
+ - node_label : None
+ - node_color : None
+
+Node initialization
+ - resolution : resolution
+ - start : start
+ - middle : middle
+ - end : end
+ - node_label : node_label
+ - node_color : node_color
+
+## quadrilateral
+
+> Quadrilateral, return single output socket
+
+``` python
+def quadrilateral(width=None, height=None, offset=None, bottom_width=None, top_width=None, bottom_height=None, top_height=None, point_1=None, point_2=None, point_3=None, point_4=None, mode='RECTANGLE', node_label=None, node_color=None):
+```
+Node
+ - class_name : [Quadrilateral](/docs/GeoNodes_classes/Quadrilateral.md)
+ - bl_idname : GeometryNodeCurvePrimitiveQuadrilateral
+
+Arguments
+ - width : None
+ - height : None
+ - offset : None
+ - bottom_width : None
+ - top_width : None
+ - bottom_height : None
+ - top_height : None
+ - point_1 : None
+ - point_2 : None
+ - point_3 : None
+ - point_4 : None
+ - mode : 'RECTANGLE'
+ - node_label : None
+ - node_color : None
+
+Node initialization
+ - width : width
+ - height : height
+ - offset : offset
+ - bottom_width : bottom_width
+ - top_width : top_width
+ - bottom_height : bottom_height
+ - top_height : top_height
+ - point_1 : point_1
+ - point_2 : point_2
+ - point_3 : point_3
+ - point_4 : point_4
+ - mode : mode
+ - node_label : node_label
+ - node_color : node_color
+
+## quaternion_to_rotation
+
+> QuaternionToRotation, return single output socket
+
+``` python
+def quaternion_to_rotation(w=None, x=None, y=None, z=None, node_label=None, node_color=None):
+```
+Node
+ - class_name : [QuaternionToRotation](/docs/GeoNodes_classes/QuaternionToRotation.md)
+ - bl_idname : FunctionNodeQuaternionToRotation
+
+Arguments
+ - w : None
+ - x : None
+ - y : None
+ - z : None
+ - node_label : None
+ - node_color : None
+
+Node initialization
+ - w : w
+ - x : x
+ - y : y
+ - z : z
+ - node_label : node_label
+ - node_color : node_color
+
+## radians
+
+> Math, value=self, operation='RADIANS'
+
+``` python
+def radians(value=None, use_clamp=False, node_label=None, node_color=None):
+```
+Node
+ - class_name : [Math](/docs/GeoNodes_classes/Math.md)
+ - bl_idname : ShaderNodeMath
+
+Arguments
+ - value : None
+ - use_clamp : False
+ - node_label : None
+ - node_color : None
+
+Node initialization
+ - value : value
+ - operation : 'RADIANS'
+ - use_clamp : use_clamp
+ - node_label : node_label
+ - node_color : node_color
+
+## radius
+
+> Radius, return socket
+
+``` python
+def radius(node_label=None, node_color=None):
+```
+Node
+ - class_name : [Radius](/docs/GeoNodes_classes/Radius.md)
+ - bl_idname : GeometryNodeInputRadius
+
+Arguments
+ - node_label : None
+ - node_color : None
+
+Node initialization
+ - node_label : node_label
+ - node_color : node_color
+
+## random_boolean
+
+> RandomValue, data_type='BOOLEAN'
+
+``` python
+def random_boolean(probability=None, ID=None, seed=None, node_label=None, node_color=None):
+```
+Node
+ - class_name : [RandomValue](/docs/GeoNodes_classes/RandomValue.md)
+ - bl_idname : FunctionNodeRandomValue
+
+Arguments
+ - probability : None
+ - ID : None
+ - seed : None
+ - node_label : None
+ - node_color : None
+
+Node initialization
+ - probability : probability
+ - ID : ID
+ - seed : seed
+ - data_type : 'BOOLEAN'
+ - node_label : node_label
+ - node_color : node_color
+
+## random_float
+
+> RandomValue, data_type='FLOAT'
+
+``` python
+def random_float(min=None, max=None, ID=None, seed=None, node_label=None, node_color=None):
+```
+Node
+ - class_name : [RandomValue](/docs/GeoNodes_classes/RandomValue.md)
+ - bl_idname : FunctionNodeRandomValue
+
+Arguments
+ - min : None
+ - max : None
+ - ID : None
+ - seed : None
+ - node_label : None
+ - node_color : None
+
+Node initialization
+ - min : min
+ - max : max
+ - ID : ID
+ - seed : seed
+ - data_type : 'FLOAT'
+ - node_label : node_label
+ - node_color : node_color
+
+## random_int
+
+> RandomValue, data_type='INT'
+
+``` python
+def random_int(min=None, max=None, ID=None, seed=None, node_label=None, node_color=None):
+```
+Node
+ - class_name : [RandomValue](/docs/GeoNodes_classes/RandomValue.md)
+ - bl_idname : FunctionNodeRandomValue
+
+Arguments
+ - min : None
+ - max : None
+ - ID : None
+ - seed : None
+ - node_label : None
+ - node_color : None
+
+Node initialization
+ - min : min
+ - max : max
+ - ID : ID
+ - seed : seed
+ - data_type : 'INT'
+ - node_label : node_label
+ - node_color : node_color
+
+## random_value
+
+> RandomValue, return single output socket
+
+``` python
+def random_value(min=None, max=None, ID=None, seed=None, probability=None, data_type='FLOAT', node_label=None, node_color=None):
+```
+Node
+ - class_name : [RandomValue](/docs/GeoNodes_classes/RandomValue.md)
+ - bl_idname : FunctionNodeRandomValue
+
+Arguments
+ - min : None
+ - max : None
+ - ID : None
+ - seed : None
+ - probability : None
+ - data_type : 'FLOAT'
+ - node_label : None
+ - node_color : None
+
+Node initialization
+ - min : min
+ - max : max
+ - ID : ID
+ - seed : seed
+ - probability : probability
+ - data_type : data_type
+ - node_label : node_label
+ - node_color : node_color
+
+## random_vector
+
+> RandomValue, data_type='FLOAT_VECTOR'
+
+``` python
+def random_vector(min=None, max=None, ID=None, seed=None, node_label=None, node_color=None):
+```
+Node
+ - class_name : [RandomValue](/docs/GeoNodes_classes/RandomValue.md)
+ - bl_idname : FunctionNodeRandomValue
+
+Arguments
+ - min : None
+ - max : None
+ - ID : None
+ - seed : None
+ - node_label : None
+ - node_color : None
+
+Node initialization
+ - min : min
+ - max : max
+ - ID : ID
+ - seed : seed
+ - data_type : 'FLOAT_VECTOR'
+ - node_label : node_label
+ - node_color : node_color
+
 ## realize_instances
 
 > RealizeInstances, return single output socket
@@ -2855,6 +3449,52 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
+## replace_string
+
+> ReplaceString, return single output socket
+
+``` python
+def replace_string(string=None, find=None, replace=None, node_label=None, node_color=None):
+```
+Node
+ - class_name : [ReplaceString](/docs/GeoNodes_classes/ReplaceString.md)
+ - bl_idname : FunctionNodeReplaceString
+
+Arguments
+ - string : None
+ - find : None
+ - replace : None
+ - node_label : None
+ - node_color : None
+
+Node initialization
+ - string : string
+ - find : find
+ - replace : replace
+ - node_label : node_label
+ - node_color : node_color
+
+## reroute
+
+> Reroute, return single output socket
+
+``` python
+def reroute(input=None, node_label=None, node_color=None):
+```
+Node
+ - class_name : [Reroute](/docs/GeoNodes_classes/Reroute.md)
+ - bl_idname : NodeReroute
+
+Arguments
+ - input : None
+ - node_label : None
+ - node_color : None
+
+Node initialization
+ - input : input
+ - node_label : node_label
+ - node_color : node_color
+
 ## resample_curve
 
 > ResampleCurve, return single output socket
@@ -2907,6 +3547,56 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
+## rgb_curves
+
+> RGBCurves, return single output socket
+
+``` python
+def rgb_curves(fac=None, color=None, mapping=None, node_label=None, node_color=None):
+```
+Node
+ - class_name : [RGBCurves](/docs/GeoNodes_classes/RGBCurves.md)
+ - bl_idname : ShaderNodeRGBCurve
+
+Arguments
+ - fac : None
+ - color : None
+ - mapping
+ - node_label : None
+ - node_color : None
+
+Node initialization
+ - fac : fac
+ - color : color
+ - mapping : mapping
+ - node_label : node_label
+ - node_color : node_color
+
+## rotate_euler
+
+> RotateEuler, return single output socket
+
+``` python
+def rotate_euler(rotation=None, rotate_by=None, space='OBJECT', node_label=None, node_color=None):
+```
+Node
+ - class_name : [RotateEuler](/docs/GeoNodes_classes/RotateEuler.md)
+ - bl_idname : FunctionNodeRotateEuler
+
+Arguments
+ - rotation : None
+ - rotate_by : None
+ - space : 'OBJECT'
+ - node_label : None
+ - node_color : None
+
+Node initialization
+ - rotation : rotation
+ - rotate_by : rotate_by
+ - space : space
+ - node_label : node_label
+ - node_color : node_color
+
 ## rotate_instances
 
 > RotateInstances, return single output socket
@@ -2936,28 +3626,71 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-## sdf_volume_sphere
+## rotate_vector
 
-> SDFVolumeSphere, return single output socket
+> RotateVector, return single output socket
 
 ``` python
-def sdf_volume_sphere(radius=None, voxel_size=None, half_band_width=None, node_label=None, node_color=None):
+def rotate_vector(vector=None, rotation=None, node_label=None, node_color=None):
 ```
 Node
- - class_name : [SDFVolumeSphere](/docs/GeoNodes_classes/SDFVolumeSphere.md)
- - bl_idname : GeometryNodeSDFVolumeSphere
+ - class_name : [RotateVector](/docs/GeoNodes_classes/RotateVector.md)
+ - bl_idname : FunctionNodeRotateVector
 
 Arguments
- - radius : None
- - voxel_size : None
- - half_band_width : None
+ - vector : None
+ - rotation : None
  - node_label : None
  - node_color : None
 
 Node initialization
- - radius : radius
- - voxel_size : voxel_size
- - half_band_width : half_band_width
+ - vector : vector
+ - rotation : rotation
+ - node_label : node_label
+ - node_color : node_color
+
+## rotation_to_euler
+
+> RotationToEuler, return single output socket
+
+``` python
+def rotation_to_euler(rotation=None, node_label=None, node_color=None):
+```
+Node
+ - class_name : [RotationToEuler](/docs/GeoNodes_classes/RotationToEuler.md)
+ - bl_idname : FunctionNodeRotationToEuler
+
+Arguments
+ - rotation : None
+ - node_label : None
+ - node_color : None
+
+Node initialization
+ - rotation : rotation
+ - node_label : node_label
+ - node_color : node_color
+
+## round
+
+> Math, value=self, operation='ROUND'
+
+``` python
+def round(value=None, use_clamp=False, node_label=None, node_color=None):
+```
+Node
+ - class_name : [Math](/docs/GeoNodes_classes/Math.md)
+ - bl_idname : ShaderNodeMath
+
+Arguments
+ - value : None
+ - use_clamp : False
+ - node_label : None
+ - node_color : None
+
+Node initialization
+ - value : value
+ - operation : 'ROUND'
+ - use_clamp : use_clamp
  - node_label : node_label
  - node_color : node_color
 
@@ -3135,6 +3868,69 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
+## scene_time
+
+> SceneTime, return node
+
+``` python
+def scene_time(node_label=None, node_color=None):
+```
+Node
+ - class_name : [SceneTime](/docs/GeoNodes_classes/SceneTime.md)
+ - bl_idname : GeometryNodeInputSceneTime
+
+Arguments
+ - node_label : None
+ - node_color : None
+
+Node initialization
+ - node_label : node_label
+ - node_color : node_color
+
+## sdf_volume_sphere
+
+> SDFVolumeSphere, return single output socket
+
+``` python
+def sdf_volume_sphere(radius=None, voxel_size=None, half_band_width=None, node_label=None, node_color=None):
+```
+Node
+ - class_name : [SDFVolumeSphere](/docs/GeoNodes_classes/SDFVolumeSphere.md)
+ - bl_idname : GeometryNodeSDFVolumeSphere
+
+Arguments
+ - radius : None
+ - voxel_size : None
+ - half_band_width : None
+ - node_label : None
+ - node_color : None
+
+Node initialization
+ - radius : radius
+ - voxel_size : voxel_size
+ - half_band_width : half_band_width
+ - node_label : node_label
+ - node_color : node_color
+
+## selection
+
+> Selection, return socket
+
+``` python
+def selection(node_label=None, node_color=None):
+```
+Node
+ - class_name : [Selection](/docs/GeoNodes_classes/Selection.md)
+ - bl_idname : GeometryNodeToolSelection
+
+Arguments
+ - node_label : None
+ - node_color : None
+
+Node initialization
+ - node_label : node_label
+ - node_color : node_color
+
 ## self_object
 
 > SelfObject, return socket
@@ -3151,35 +3947,6 @@ Arguments
  - node_color : None
 
 Node initialization
- - node_label : node_label
- - node_color : node_color
-
-## set_handle_positions
-
-> SetHandlePositions, return single output socket
-
-``` python
-def set_handle_positions(curve=None, position=None, offset=None, selection=None, mode='LEFT', node_label=None, node_color=None):
-```
-Node
- - class_name : [SetHandlePositions](/docs/GeoNodes_classes/SetHandlePositions.md)
- - bl_idname : GeometryNodeSetCurveHandlePositions
-
-Arguments
- - curve : None
- - position : None
- - offset : None
- - selection : None
- - mode : 'LEFT'
- - node_label : None
- - node_color : None
-
-Node initialization
- - curve : curve
- - position : position
- - offset : offset
- - selection : self._get_selection(selection)
- - mode : mode
  - node_label : node_label
  - node_color : node_color
 
@@ -3255,6 +4022,87 @@ Node initialization
  - curve : curve
  - tilt : tilt
  - selection : self._get_selection(selection)
+ - node_label : node_label
+ - node_color : node_color
+
+## set_face_set
+
+> SetFaceSet, return single output socket
+
+``` python
+def set_face_set(mesh=None, face_set=None, selection=None, node_label=None, node_color=None):
+```
+Node
+ - class_name : [SetFaceSet](/docs/GeoNodes_classes/SetFaceSet.md)
+ - bl_idname : GeometryNodeToolSetFaceSet
+
+Arguments
+ - mesh : None
+ - face_set : None
+ - selection : None
+ - node_label : None
+ - node_color : None
+
+Node initialization
+ - mesh : mesh
+ - face_set : face_set
+ - selection : self._get_selection(selection)
+ - node_label : node_label
+ - node_color : node_color
+
+## set_handle_positions
+
+> SetHandlePositions, return single output socket
+
+``` python
+def set_handle_positions(curve=None, position=None, offset=None, selection=None, mode='LEFT', node_label=None, node_color=None):
+```
+Node
+ - class_name : [SetHandlePositions](/docs/GeoNodes_classes/SetHandlePositions.md)
+ - bl_idname : GeometryNodeSetCurveHandlePositions
+
+Arguments
+ - curve : None
+ - position : None
+ - offset : None
+ - selection : None
+ - mode : 'LEFT'
+ - node_label : None
+ - node_color : None
+
+Node initialization
+ - curve : curve
+ - position : position
+ - offset : offset
+ - selection : self._get_selection(selection)
+ - mode : mode
+ - node_label : node_label
+ - node_color : node_color
+
+## set_handle_type
+
+> SetHandleType, return single output socket
+
+``` python
+def set_handle_type(curve=None, selection=None, handle_type='AUTO', mode={'RIGHT', 'LEFT'}, node_label=None, node_color=None):
+```
+Node
+ - class_name : [SetHandleType](/docs/GeoNodes_classes/SetHandleType.md)
+ - bl_idname : GeometryNodeCurveSetHandles
+
+Arguments
+ - curve : None
+ - selection : None
+ - handle_type : 'AUTO'
+ - mode : {'RIGHT', 'LEFT'}
+ - node_label : None
+ - node_color : None
+
+Node initialization
+ - curve : curve
+ - selection : self._get_selection(selection)
+ - handle_type : handle_type
+ - mode : mode
  - node_label : node_label
  - node_color : node_color
 
@@ -3385,6 +4233,31 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
+## set_selection
+
+> SetSelection, return single output socket
+
+``` python
+def set_selection(geometry=None, selection=None, domain='POINT', node_label=None, node_color=None):
+```
+Node
+ - class_name : [SetSelection](/docs/GeoNodes_classes/SetSelection.md)
+ - bl_idname : GeometryNodeToolSetSelection
+
+Arguments
+ - geometry : None
+ - selection : None
+ - domain : 'POINT'
+ - node_label : None
+ - node_color : None
+
+Node initialization
+ - geometry : geometry
+ - selection : self._get_selection(selection)
+ - domain : domain
+ - node_label : node_label
+ - node_color : node_color
+
 ## set_shade_smooth
 
 > SetShadeSmooth, return single output socket
@@ -3462,6 +4335,74 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
+## set_spline_type
+
+> SetSplineType, return single output socket
+
+``` python
+def set_spline_type(curve=None, selection=None, spline_type='POLY', node_label=None, node_color=None):
+```
+Node
+ - class_name : [SetSplineType](/docs/GeoNodes_classes/SetSplineType.md)
+ - bl_idname : GeometryNodeCurveSplineType
+
+Arguments
+ - curve : None
+ - selection : None
+ - spline_type : 'POLY'
+ - node_label : None
+ - node_color : None
+
+Node initialization
+ - curve : curve
+ - selection : self._get_selection(selection)
+ - spline_type : spline_type
+ - node_label : node_label
+ - node_color : node_color
+
+## sign
+
+> Math, value=self, operation='SIGN'
+
+``` python
+def sign(value=None, use_clamp=False, node_label=None, node_color=None):
+```
+Node
+ - class_name : [Math](/docs/GeoNodes_classes/Math.md)
+ - bl_idname : ShaderNodeMath
+
+Arguments
+ - value : None
+ - use_clamp : False
+ - node_label : None
+ - node_color : None
+
+Node initialization
+ - value : value
+ - operation : 'SIGN'
+ - use_clamp : use_clamp
+ - node_label : node_label
+ - node_color : node_color
+
+## signed_distance
+
+> SignedDistance, return socket
+
+``` python
+def signed_distance(node_label=None, node_color=None):
+```
+Node
+ - class_name : [SignedDistance](/docs/GeoNodes_classes/SignedDistance.md)
+ - bl_idname : GeometryNodeInputSignedDistance
+
+Arguments
+ - node_label : None
+ - node_color : None
+
+Node initialization
+ - node_label : node_label
+ - node_color : node_color
+
 ## simulation_output
 
 > SimulationOutput, return single output socket
@@ -3488,6 +4429,211 @@ Node initialization
  - active_index : active_index
  - active_item : active_item
  - state_items : state_items
+ - node_label : node_label
+ - node_color : node_color
+
+## sin
+
+> Math, value=self, operation='SINE'
+
+``` python
+def sin(value=None, use_clamp=False, node_label=None, node_color=None):
+```
+Node
+ - class_name : [Math](/docs/GeoNodes_classes/Math.md)
+ - bl_idname : ShaderNodeMath
+
+Arguments
+ - value : None
+ - use_clamp : False
+ - node_label : None
+ - node_color : None
+
+Node initialization
+ - value : value
+ - operation : 'SINE'
+ - use_clamp : use_clamp
+ - node_label : node_label
+ - node_color : node_color
+
+## sinh
+
+> Math, value=self, operation='SINH'
+
+``` python
+def sinh(value=None, use_clamp=False, node_label=None, node_color=None):
+```
+Node
+ - class_name : [Math](/docs/GeoNodes_classes/Math.md)
+ - bl_idname : ShaderNodeMath
+
+Arguments
+ - value : None
+ - use_clamp : False
+ - node_label : None
+ - node_color : None
+
+Node initialization
+ - value : value
+ - operation : 'SINH'
+ - use_clamp : use_clamp
+ - node_label : node_label
+ - node_color : node_color
+
+## slice_string
+
+> SliceString, return single output socket
+
+``` python
+def slice_string(string=None, position=None, length=None, node_label=None, node_color=None):
+```
+Node
+ - class_name : [SliceString](/docs/GeoNodes_classes/SliceString.md)
+ - bl_idname : FunctionNodeSliceString
+
+Arguments
+ - string : None
+ - position : None
+ - length : None
+ - node_label : None
+ - node_color : None
+
+Node initialization
+ - string : string
+ - position : position
+ - length : length
+ - node_label : node_label
+ - node_color : node_color
+
+## smooth_max
+
+> Math, value=self, operation='SMOOTH_MAX'
+
+``` python
+def smooth_max(value=None, value_1=None, value_2=None, use_clamp=False, node_label=None, node_color=None):
+```
+Node
+ - class_name : [Math](/docs/GeoNodes_classes/Math.md)
+ - bl_idname : ShaderNodeMath
+
+Arguments
+ - value : None
+ - value_1 : None
+ - value_2 : None
+ - use_clamp : False
+ - node_label : None
+ - node_color : None
+
+Node initialization
+ - value : value
+ - value_1 : value_1
+ - value_2 : value_2
+ - operation : 'SMOOTH_MAX'
+ - use_clamp : use_clamp
+ - node_label : node_label
+ - node_color : node_color
+
+## smooth_min
+
+> Math, value=self, operation='SMOOTH_MIN'
+
+``` python
+def smooth_min(value=None, value_1=None, value_2=None, use_clamp=False, node_label=None, node_color=None):
+```
+Node
+ - class_name : [Math](/docs/GeoNodes_classes/Math.md)
+ - bl_idname : ShaderNodeMath
+
+Arguments
+ - value : None
+ - value_1 : None
+ - value_2 : None
+ - use_clamp : False
+ - node_label : None
+ - node_color : None
+
+Node initialization
+ - value : value
+ - value_1 : value_1
+ - value_2 : value_2
+ - operation : 'SMOOTH_MIN'
+ - use_clamp : use_clamp
+ - node_label : node_label
+ - node_color : node_color
+
+## snap
+
+> Math, value=self, operation='SNAP'
+
+``` python
+def snap(value=None, value_1=None, use_clamp=False, node_label=None, node_color=None):
+```
+Node
+ - class_name : [Math](/docs/GeoNodes_classes/Math.md)
+ - bl_idname : ShaderNodeMath
+
+Arguments
+ - value : None
+ - value_1 : None
+ - use_clamp : False
+ - node_label : None
+ - node_color : None
+
+Node initialization
+ - value : value
+ - value_1 : value_1
+ - operation : 'SNAP'
+ - use_clamp : use_clamp
+ - node_label : node_label
+ - node_color : node_color
+
+## special_characters
+
+> SpecialCharacters, return node
+
+``` python
+def special_characters(node_label=None, node_color=None):
+```
+Node
+ - class_name : [SpecialCharacters](/docs/GeoNodes_classes/SpecialCharacters.md)
+ - bl_idname : FunctionNodeInputSpecialCharacters
+
+Arguments
+ - node_label : None
+ - node_color : None
+
+Node initialization
+ - node_label : node_label
+ - node_color : node_color
+
+## spiral
+
+> Spiral, return single output socket
+
+``` python
+def spiral(resolution=None, rotations=None, start_radius=None, end_radius=None, height=None, reverse=None, node_label=None, node_color=None):
+```
+Node
+ - class_name : [Spiral](/docs/GeoNodes_classes/Spiral.md)
+ - bl_idname : GeometryNodeCurveSpiral
+
+Arguments
+ - resolution : None
+ - rotations : None
+ - start_radius : None
+ - end_radius : None
+ - height : None
+ - reverse : None
+ - node_label : None
+ - node_color : None
+
+Node initialization
+ - resolution : resolution
+ - rotations : rotations
+ - start_radius : start_radius
+ - end_radius : end_radius
+ - height : height
+ - reverse : reverse
  - node_label : node_label
  - node_color : node_color
 
@@ -3529,6 +4675,25 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
+## spline_resolution
+
+> SplineResolution, return socket
+
+``` python
+def spline_resolution(node_label=None, node_color=None):
+```
+Node
+ - class_name : [SplineResolution](/docs/GeoNodes_classes/SplineResolution.md)
+ - bl_idname : GeometryNodeInputSplineResolution
+
+Arguments
+ - node_label : None
+ - node_color : None
+
+Node initialization
+ - node_label : node_label
+ - node_color : node_color
+
 ## split_edges
 
 > SplitEdges, return single output socket
@@ -3549,6 +4714,30 @@ Arguments
 Node initialization
  - mesh : mesh
  - selection : self._get_selection(selection)
+ - node_label : node_label
+ - node_color : node_color
+
+## sqrt
+
+> Math, value=self, operation='SQRT'
+
+``` python
+def sqrt(value=None, use_clamp=False, node_label=None, node_color=None):
+```
+Node
+ - class_name : [Math](/docs/GeoNodes_classes/Math.md)
+ - bl_idname : ShaderNodeMath
+
+Arguments
+ - value : None
+ - use_clamp : False
+ - node_label : None
+ - node_color : None
+
+Node initialization
+ - value : value
+ - operation : 'SQRT'
+ - use_clamp : use_clamp
  - node_label : node_label
  - node_color : node_color
 
@@ -3583,28 +4772,35 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-## join_strings
+## string
 
-> JoinStrings, return single output socket
+> String, return socket
 
 ``` python
-def join_strings(*args, delimiter=None, strings=None, node_label=None, node_color=None):
+def string(string, node_label=None, node_color=None):
 ```
 Node
- - class_name : [JoinStrings](/docs/GeoNodes_classes/JoinStrings.md)
- - bl_idname : GeometryNodeStringJoin
+ - class_name : [String](/docs/GeoNodes_classes/String.md)
+ - bl_idname : FunctionNodeInputString
+
+## string_length
+
+> StringLength, return single output socket
+
+``` python
+def string_length(string=None, node_label=None, node_color=None):
+```
+Node
+ - class_name : [StringLength](/docs/GeoNodes_classes/StringLength.md)
+ - bl_idname : FunctionNodeStringLength
 
 Arguments
- - *args : 
- - delimiter : None
- - strings : None
+ - string : None
  - node_label : None
  - node_color : None
 
 Node initialization
- - *args : 
- - delimiter : delimiter
- - strings : strings
+ - string : string
  - node_label : node_label
  - node_color : node_color
 
@@ -3685,6 +4881,32 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
+## subtract
+
+> Math, value=self, operation='SUBTRACT'
+
+``` python
+def subtract(value=None, value_1=None, use_clamp=False, node_label=None, node_color=None):
+```
+Node
+ - class_name : [Math](/docs/GeoNodes_classes/Math.md)
+ - bl_idname : ShaderNodeMath
+
+Arguments
+ - value : None
+ - value_1 : None
+ - use_clamp : False
+ - node_label : None
+ - node_color : None
+
+Node initialization
+ - value : value
+ - value_1 : value_1
+ - operation : 'SUBTRACT'
+ - use_clamp : use_clamp
+ - node_label : node_label
+ - node_color : node_color
+
 ## switch
 
 > Switch, return single output socket
@@ -3712,110 +4934,51 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-## _3d_cursor
+## tan
 
-> _3DCursor, return node
+> Math, value=self, operation='TANGENT'
 
 ``` python
-def _3d_cursor(node_label=None, node_color=None):
+def tan(value=None, use_clamp=False, node_label=None, node_color=None):
 ```
 Node
- - class_name : [_3DCursor](/docs/GeoNodes_classes/_3DCursor.md)
- - bl_idname : GeometryNodeTool3DCursor
+ - class_name : [Math](/docs/GeoNodes_classes/Math.md)
+ - bl_idname : ShaderNodeMath
 
 Arguments
+ - value : None
+ - use_clamp : False
  - node_label : None
  - node_color : None
 
 Node initialization
+ - value : value
+ - operation : 'TANGENT'
+ - use_clamp : use_clamp
  - node_label : node_label
  - node_color : node_color
 
-## face_set
+## tanh
 
-> FaceSet, return node
+> Math, value=self, operation='TANH'
 
 ``` python
-def face_set(node_label=None, node_color=None):
+def tanh(value=None, use_clamp=False, node_label=None, node_color=None):
 ```
 Node
- - class_name : [FaceSet](/docs/GeoNodes_classes/FaceSet.md)
- - bl_idname : GeometryNodeToolFaceSet
+ - class_name : [Math](/docs/GeoNodes_classes/Math.md)
+ - bl_idname : ShaderNodeMath
 
 Arguments
+ - value : None
+ - use_clamp : False
  - node_label : None
  - node_color : None
 
 Node initialization
- - node_label : node_label
- - node_color : node_color
-
-## selection
-
-> Selection, return socket
-
-``` python
-def selection(node_label=None, node_color=None):
-```
-Node
- - class_name : [Selection](/docs/GeoNodes_classes/Selection.md)
- - bl_idname : GeometryNodeToolSelection
-
-Arguments
- - node_label : None
- - node_color : None
-
-Node initialization
- - node_label : node_label
- - node_color : node_color
-
-## set_face_set
-
-> SetFaceSet, return single output socket
-
-``` python
-def set_face_set(mesh=None, face_set=None, selection=None, node_label=None, node_color=None):
-```
-Node
- - class_name : [SetFaceSet](/docs/GeoNodes_classes/SetFaceSet.md)
- - bl_idname : GeometryNodeToolSetFaceSet
-
-Arguments
- - mesh : None
- - face_set : None
- - selection : None
- - node_label : None
- - node_color : None
-
-Node initialization
- - mesh : mesh
- - face_set : face_set
- - selection : self._get_selection(selection)
- - node_label : node_label
- - node_color : node_color
-
-## set_selection
-
-> SetSelection, return single output socket
-
-``` python
-def set_selection(geometry=None, selection=None, domain='POINT', node_label=None, node_color=None):
-```
-Node
- - class_name : [SetSelection](/docs/GeoNodes_classes/SetSelection.md)
- - bl_idname : GeometryNodeToolSetSelection
-
-Arguments
- - geometry : None
- - selection : None
- - domain : 'POINT'
- - node_label : None
- - node_color : None
-
-Node initialization
- - geometry : geometry
- - selection : self._get_selection(selection)
- - domain : domain
+ - value : value
+ - operation : 'TANH'
+ - use_clamp : use_clamp
  - node_label : node_label
  - node_color : node_color
 
@@ -3931,30 +5094,27 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-## pack_uv_islands
+## trunc
 
-> PackUVIslands, return single output socket
+> Math, value=self, operation='TRUNC'
 
 ``` python
-def pack_uv_islands(uv=None, margin=None, rotate=None, selection=None, node_label=None, node_color=None):
+def trunc(value=None, use_clamp=False, node_label=None, node_color=None):
 ```
 Node
- - class_name : [PackUVIslands](/docs/GeoNodes_classes/PackUVIslands.md)
- - bl_idname : GeometryNodeUVPackIslands
+ - class_name : [Math](/docs/GeoNodes_classes/Math.md)
+ - bl_idname : ShaderNodeMath
 
 Arguments
- - uv : None
- - margin : None
- - rotate : None
- - selection : None
+ - value : None
+ - use_clamp : False
  - node_label : None
  - node_color : None
 
 Node initialization
- - uv : uv
- - margin : margin
- - rotate : rotate
- - selection : self._get_selection(selection)
+ - value : value
+ - operation : 'TRUNC'
+ - use_clamp : use_clamp
  - node_label : node_label
  - node_color : node_color
 
@@ -3984,6 +5144,128 @@ Node initialization
  - fill_holes : fill_holes
  - selection : self._get_selection(selection)
  - method : method
+ - node_label : node_label
+ - node_color : node_color
+
+## value
+
+> Value, return socket
+
+``` python
+def value(value, node_label=None, node_color=None):
+```
+Node
+ - class_name : [Value](/docs/GeoNodes_classes/Value.md)
+ - bl_idname : ShaderNodeValue
+
+## value_to_string
+
+> ValueToString, return single output socket
+
+``` python
+def value_to_string(value=None, decimals=None, node_label=None, node_color=None):
+```
+Node
+ - class_name : [ValueToString](/docs/GeoNodes_classes/ValueToString.md)
+ - bl_idname : FunctionNodeValueToString
+
+Arguments
+ - value : None
+ - decimals : None
+ - node_label : None
+ - node_color : None
+
+Node initialization
+ - value : value
+ - decimals : decimals
+ - node_label : node_label
+ - node_color : node_color
+
+## vector
+
+> Vector, return socket
+
+``` python
+def vector(vector, node_label=None, node_color=None):
+```
+Node
+ - class_name : [Vector](/docs/GeoNodes_classes/Vector.md)
+ - bl_idname : FunctionNodeInputVector
+
+## vector_curves
+
+> VectorCurves, return single output socket
+
+``` python
+def vector_curves(fac=None, vector=None, mapping=None, node_label=None, node_color=None):
+```
+Node
+ - class_name : [VectorCurves](/docs/GeoNodes_classes/VectorCurves.md)
+ - bl_idname : ShaderNodeVectorCurve
+
+Arguments
+ - fac : None
+ - vector : None
+ - mapping
+ - node_label : None
+ - node_color : None
+
+Node initialization
+ - fac : fac
+ - vector : vector
+ - mapping : mapping
+ - node_label : node_label
+ - node_color : node_color
+
+## vector_rotate
+
+> VectorRotate, return single output socket
+
+``` python
+def vector_rotate(vector=None, center=None, axis=None, angle=None, rotation=None, invert=False, rotation_type='AXIS_ANGLE', node_label=None, node_color=None):
+```
+Node
+ - class_name : [VectorRotate](/docs/GeoNodes_classes/VectorRotate.md)
+ - bl_idname : ShaderNodeVectorRotate
+
+Arguments
+ - vector : None
+ - center : None
+ - axis : None
+ - angle : None
+ - rotation : None
+ - invert : False
+ - rotation_type : 'AXIS_ANGLE'
+ - node_label : None
+ - node_color : None
+
+Node initialization
+ - vector : vector
+ - center : center
+ - axis : axis
+ - angle : angle
+ - rotation : rotation
+ - invert : invert
+ - rotation_type : rotation_type
+ - node_label : node_label
+ - node_color : node_color
+
+## vertex_neighbors
+
+> VertexNeighbors, return node
+
+``` python
+def vertex_neighbors(node_label=None, node_color=None):
+```
+Node
+ - class_name : [VertexNeighbors](/docs/GeoNodes_classes/VertexNeighbors.md)
+ - bl_idname : GeometryNodeInputMeshVertexNeighbors
+
+Arguments
+ - node_label : None
+ - node_color : None
+
+Node initialization
  - node_label : node_label
  - node_color : node_color
 
@@ -4072,822 +5354,6 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-## frame
-
-> Frame, return node
-
-``` python
-def frame(label_size=20, shrink=True, text=None, node_label=None, node_color=None):
-```
-Node
- - class_name : [Frame](/docs/GeoNodes_classes/Frame.md)
- - bl_idname : NodeFrame
-
-Arguments
- - label_size : 20
- - shrink : True
- - text : None
- - node_label : None
- - node_color : None
-
-Node initialization
- - label_size : label_size
- - shrink : shrink
- - text : text
- - node_label : node_label
- - node_color : node_color
-
-## reroute
-
-> Reroute, return single output socket
-
-``` python
-def reroute(input=None, node_label=None, node_color=None):
-```
-Node
- - class_name : [Reroute](/docs/GeoNodes_classes/Reroute.md)
- - bl_idname : NodeReroute
-
-Arguments
- - input : None
- - node_label : None
- - node_color : None
-
-Node initialization
- - input : input
- - node_label : node_label
- - node_color : node_color
-
-## clamp
-
-> Clamp, return single output socket
-
-``` python
-def clamp(value=None, min=None, max=None, clamp_type='MINMAX', node_label=None, node_color=None):
-```
-Node
- - class_name : [Clamp](/docs/GeoNodes_classes/Clamp.md)
- - bl_idname : ShaderNodeClamp
-
-Arguments
- - value : None
- - min : None
- - max : None
- - clamp_type : 'MINMAX'
- - node_label : None
- - node_color : None
-
-Node initialization
- - value : value
- - min : min
- - max : max
- - clamp_type : clamp_type
- - node_label : node_label
- - node_color : node_color
-
-## combine_xyz
-
-> CombineXYZ, return single output socket
-
-``` python
-def combine_xyz(x=None, y=None, z=None, node_label=None, node_color=None):
-```
-Node
- - class_name : [CombineXYZ](/docs/GeoNodes_classes/CombineXYZ.md)
- - bl_idname : ShaderNodeCombineXYZ
-
-Arguments
- - x : None
- - y : None
- - z : None
- - node_label : None
- - node_color : None
-
-Node initialization
- - x : x
- - y : y
- - z : z
- - node_label : node_label
- - node_color : node_color
-
-## float_curve
-
-> FloatCurve, return single output socket
-
-``` python
-def float_curve(factor=None, value=None, mapping=None, node_label=None, node_color=None):
-```
-Node
- - class_name : [FloatCurve](/docs/GeoNodes_classes/FloatCurve.md)
- - bl_idname : ShaderNodeFloatCurve
-
-Arguments
- - factor : None
- - value : None
- - mapping
- - node_label : None
- - node_color : None
-
-Node initialization
- - factor : factor
- - value : value
- - mapping : mapping
- - node_label : node_label
- - node_color : node_color
-
-## math
-
-> Math, return single output socket
-
-``` python
-def math(value=None, value_1=None, value_2=None, operation='ADD', use_clamp=False, node_label=None, node_color=None):
-```
-Node
- - class_name : [Math](/docs/GeoNodes_classes/Math.md)
- - bl_idname : ShaderNodeMath
-
-Arguments
- - value : None
- - value_1 : None
- - value_2 : None
- - operation : 'ADD'
- - use_clamp : False
- - node_label : None
- - node_color : None
-
-Node initialization
- - value : value
- - value_1 : value_1
- - value_2 : value_2
- - operation : operation
- - use_clamp : use_clamp
- - node_label : node_label
- - node_color : node_color
-
-## add
-
-> Math, value=self, operation='ADD'
-
-``` python
-def add(value=None, value_1=None, use_clamp=False, node_label=None, node_color=None):
-```
-Node
- - class_name : [Math](/docs/GeoNodes_classes/Math.md)
- - bl_idname : ShaderNodeMath
-
-Arguments
- - value : None
- - value_1 : None
- - use_clamp : False
- - node_label : None
- - node_color : None
-
-Node initialization
- - value : value
- - value_1 : value_1
- - operation : 'ADD'
- - use_clamp : use_clamp
- - node_label : node_label
- - node_color : node_color
-
-## subtract
-
-> Math, value=self, operation='SUBTRACT'
-
-``` python
-def subtract(value=None, value_1=None, use_clamp=False, node_label=None, node_color=None):
-```
-Node
- - class_name : [Math](/docs/GeoNodes_classes/Math.md)
- - bl_idname : ShaderNodeMath
-
-Arguments
- - value : None
- - value_1 : None
- - use_clamp : False
- - node_label : None
- - node_color : None
-
-Node initialization
- - value : value
- - value_1 : value_1
- - operation : 'SUBTRACT'
- - use_clamp : use_clamp
- - node_label : node_label
- - node_color : node_color
-
-## multiply
-
-> Math, value=self, operation='MULTIPLY'
-
-``` python
-def multiply(value=None, value_1=None, use_clamp=False, node_label=None, node_color=None):
-```
-Node
- - class_name : [Math](/docs/GeoNodes_classes/Math.md)
- - bl_idname : ShaderNodeMath
-
-Arguments
- - value : None
- - value_1 : None
- - use_clamp : False
- - node_label : None
- - node_color : None
-
-Node initialization
- - value : value
- - value_1 : value_1
- - operation : 'MULTIPLY'
- - use_clamp : use_clamp
- - node_label : node_label
- - node_color : node_color
-
-## divide
-
-> Math, value=self, operation='DIVIDE'
-
-``` python
-def divide(value=None, value_1=None, use_clamp=False, node_label=None, node_color=None):
-```
-Node
- - class_name : [Math](/docs/GeoNodes_classes/Math.md)
- - bl_idname : ShaderNodeMath
-
-Arguments
- - value : None
- - value_1 : None
- - use_clamp : False
- - node_label : None
- - node_color : None
-
-Node initialization
- - value : value
- - value_1 : value_1
- - operation : 'DIVIDE'
- - use_clamp : use_clamp
- - node_label : node_label
- - node_color : node_color
-
-## multiply_add
-
-> Math, value=self, operation='MULTIPLY_ADD'
-
-``` python
-def multiply_add(value=None, value_1=None, value_2=None, use_clamp=False, node_label=None, node_color=None):
-```
-Node
- - class_name : [Math](/docs/GeoNodes_classes/Math.md)
- - bl_idname : ShaderNodeMath
-
-Arguments
- - value : None
- - value_1 : None
- - value_2 : None
- - use_clamp : False
- - node_label : None
- - node_color : None
-
-Node initialization
- - value : value
- - value_1 : value_1
- - value_2 : value_2
- - operation : 'MULTIPLY_ADD'
- - use_clamp : use_clamp
- - node_label : node_label
- - node_color : node_color
-
-## power
-
-> Math, value=self, operation='POWER'
-
-``` python
-def power(value=None, value_1=None, use_clamp=False, node_label=None, node_color=None):
-```
-Node
- - class_name : [Math](/docs/GeoNodes_classes/Math.md)
- - bl_idname : ShaderNodeMath
-
-Arguments
- - value : None
- - value_1 : None
- - use_clamp : False
- - node_label : None
- - node_color : None
-
-Node initialization
- - value : value
- - value_1 : value_1
- - operation : 'POWER'
- - use_clamp : use_clamp
- - node_label : node_label
- - node_color : node_color
-
-## log
-
-> Math, value=self, operation='LOGARITHM'
-
-``` python
-def log(value=None, value_1=None, use_clamp=False, node_label=None, node_color=None):
-```
-Node
- - class_name : [Math](/docs/GeoNodes_classes/Math.md)
- - bl_idname : ShaderNodeMath
-
-Arguments
- - value : None
- - value_1 : None
- - use_clamp : False
- - node_label : None
- - node_color : None
-
-Node initialization
- - value : value
- - value_1 : value_1
- - operation : 'LOGARITHM'
- - use_clamp : use_clamp
- - node_label : node_label
- - node_color : node_color
-
-## sqrt
-
-> Math, value=self, operation='SQRT'
-
-``` python
-def sqrt(value=None, use_clamp=False, node_label=None, node_color=None):
-```
-Node
- - class_name : [Math](/docs/GeoNodes_classes/Math.md)
- - bl_idname : ShaderNodeMath
-
-Arguments
- - value : None
- - use_clamp : False
- - node_label : None
- - node_color : None
-
-Node initialization
- - value : value
- - operation : 'SQRT'
- - use_clamp : use_clamp
- - node_label : node_label
- - node_color : node_color
-
-## inverse_sqrt
-
-> Math, value=self, operation='INVERSE_SQRT'
-
-``` python
-def inverse_sqrt(value=None, use_clamp=False, node_label=None, node_color=None):
-```
-Node
- - class_name : [Math](/docs/GeoNodes_classes/Math.md)
- - bl_idname : ShaderNodeMath
-
-Arguments
- - value : None
- - use_clamp : False
- - node_label : None
- - node_color : None
-
-Node initialization
- - value : value
- - operation : 'INVERSE_SQRT'
- - use_clamp : use_clamp
- - node_label : node_label
- - node_color : node_color
-
-## abs
-
-> Math, value=self, operation='ABSOLUTE'
-
-``` python
-def abs(value=None, use_clamp=False, node_label=None, node_color=None):
-```
-Node
- - class_name : [Math](/docs/GeoNodes_classes/Math.md)
- - bl_idname : ShaderNodeMath
-
-Arguments
- - value : None
- - use_clamp : False
- - node_label : None
- - node_color : None
-
-Node initialization
- - value : value
- - operation : 'ABSOLUTE'
- - use_clamp : use_clamp
- - node_label : node_label
- - node_color : node_color
-
-## exp
-
-> Math, value=self, operation='EXPONENT'
-
-``` python
-def exp(value=None, use_clamp=False, node_label=None, node_color=None):
-```
-Node
- - class_name : [Math](/docs/GeoNodes_classes/Math.md)
- - bl_idname : ShaderNodeMath
-
-Arguments
- - value : None
- - use_clamp : False
- - node_label : None
- - node_color : None
-
-Node initialization
- - value : value
- - operation : 'EXPONENT'
- - use_clamp : use_clamp
- - node_label : node_label
- - node_color : node_color
-
-## min
-
-> Math, value=self, operation='MINIMUM'
-
-``` python
-def min(value=None, value_1=None, use_clamp=False, node_label=None, node_color=None):
-```
-Node
- - class_name : [Math](/docs/GeoNodes_classes/Math.md)
- - bl_idname : ShaderNodeMath
-
-Arguments
- - value : None
- - value_1 : None
- - use_clamp : False
- - node_label : None
- - node_color : None
-
-Node initialization
- - value : value
- - value_1 : value_1
- - operation : 'MINIMUM'
- - use_clamp : use_clamp
- - node_label : node_label
- - node_color : node_color
-
-## max
-
-> Math, value=self, operation='MAXIMUM'
-
-``` python
-def max(value=None, value_1=None, use_clamp=False, node_label=None, node_color=None):
-```
-Node
- - class_name : [Math](/docs/GeoNodes_classes/Math.md)
- - bl_idname : ShaderNodeMath
-
-Arguments
- - value : None
- - value_1 : None
- - use_clamp : False
- - node_label : None
- - node_color : None
-
-Node initialization
- - value : value
- - value_1 : value_1
- - operation : 'MAXIMUM'
- - use_clamp : use_clamp
- - node_label : node_label
- - node_color : node_color
-
-## math_less_than
-
-> Math, value=self, operation='LESS_THAN'
-
-``` python
-def math_less_than(value=None, value_1=None, use_clamp=False, node_label=None, node_color=None):
-```
-Node
- - class_name : [Math](/docs/GeoNodes_classes/Math.md)
- - bl_idname : ShaderNodeMath
-
-Arguments
- - value : None
- - value_1 : None
- - use_clamp : False
- - node_label : None
- - node_color : None
-
-Node initialization
- - value : value
- - value_1 : value_1
- - operation : 'LESS_THAN'
- - use_clamp : use_clamp
- - node_label : node_label
- - node_color : node_color
-
-## math_greater_than
-
-> Math, value=self, operation='GREATER_THAN'
-
-``` python
-def math_greater_than(value=None, value_1=None, use_clamp=False, node_label=None, node_color=None):
-```
-Node
- - class_name : [Math](/docs/GeoNodes_classes/Math.md)
- - bl_idname : ShaderNodeMath
-
-Arguments
- - value : None
- - value_1 : None
- - use_clamp : False
- - node_label : None
- - node_color : None
-
-Node initialization
- - value : value
- - value_1 : value_1
- - operation : 'GREATER_THAN'
- - use_clamp : use_clamp
- - node_label : node_label
- - node_color : node_color
-
-## sign
-
-> Math, value=self, operation='SIGN'
-
-``` python
-def sign(value=None, use_clamp=False, node_label=None, node_color=None):
-```
-Node
- - class_name : [Math](/docs/GeoNodes_classes/Math.md)
- - bl_idname : ShaderNodeMath
-
-Arguments
- - value : None
- - use_clamp : False
- - node_label : None
- - node_color : None
-
-Node initialization
- - value : value
- - operation : 'SIGN'
- - use_clamp : use_clamp
- - node_label : node_label
- - node_color : node_color
-
-## math_compare
-
-> Math, value=self, operation='COMPARE'
-
-``` python
-def math_compare(value=None, value_1=None, value_2=None, use_clamp=False, node_label=None, node_color=None):
-```
-Node
- - class_name : [Math](/docs/GeoNodes_classes/Math.md)
- - bl_idname : ShaderNodeMath
-
-Arguments
- - value : None
- - value_1 : None
- - value_2 : None
- - use_clamp : False
- - node_label : None
- - node_color : None
-
-Node initialization
- - value : value
- - value_1 : value_1
- - value_2 : value_2
- - operation : 'COMPARE'
- - use_clamp : use_clamp
- - node_label : node_label
- - node_color : node_color
-
-## smooth_min
-
-> Math, value=self, operation='SMOOTH_MIN'
-
-``` python
-def smooth_min(value=None, value_1=None, value_2=None, use_clamp=False, node_label=None, node_color=None):
-```
-Node
- - class_name : [Math](/docs/GeoNodes_classes/Math.md)
- - bl_idname : ShaderNodeMath
-
-Arguments
- - value : None
- - value_1 : None
- - value_2 : None
- - use_clamp : False
- - node_label : None
- - node_color : None
-
-Node initialization
- - value : value
- - value_1 : value_1
- - value_2 : value_2
- - operation : 'SMOOTH_MIN'
- - use_clamp : use_clamp
- - node_label : node_label
- - node_color : node_color
-
-## smooth_max
-
-> Math, value=self, operation='SMOOTH_MAX'
-
-``` python
-def smooth_max(value=None, value_1=None, value_2=None, use_clamp=False, node_label=None, node_color=None):
-```
-Node
- - class_name : [Math](/docs/GeoNodes_classes/Math.md)
- - bl_idname : ShaderNodeMath
-
-Arguments
- - value : None
- - value_1 : None
- - value_2 : None
- - use_clamp : False
- - node_label : None
- - node_color : None
-
-Node initialization
- - value : value
- - value_1 : value_1
- - value_2 : value_2
- - operation : 'SMOOTH_MAX'
- - use_clamp : use_clamp
- - node_label : node_label
- - node_color : node_color
-
-## round
-
-> Math, value=self, operation='ROUND'
-
-``` python
-def round(value=None, use_clamp=False, node_label=None, node_color=None):
-```
-Node
- - class_name : [Math](/docs/GeoNodes_classes/Math.md)
- - bl_idname : ShaderNodeMath
-
-Arguments
- - value : None
- - use_clamp : False
- - node_label : None
- - node_color : None
-
-Node initialization
- - value : value
- - operation : 'ROUND'
- - use_clamp : use_clamp
- - node_label : node_label
- - node_color : node_color
-
-## floor
-
-> Math, value=self, operation='FLOOR'
-
-``` python
-def floor(value=None, use_clamp=False, node_label=None, node_color=None):
-```
-Node
- - class_name : [Math](/docs/GeoNodes_classes/Math.md)
- - bl_idname : ShaderNodeMath
-
-Arguments
- - value : None
- - use_clamp : False
- - node_label : None
- - node_color : None
-
-Node initialization
- - value : value
- - operation : 'FLOOR'
- - use_clamp : use_clamp
- - node_label : node_label
- - node_color : node_color
-
-## ceil
-
-> Math, value=self, operation='CEIL'
-
-``` python
-def ceil(value=None, use_clamp=False, node_label=None, node_color=None):
-```
-Node
- - class_name : [Math](/docs/GeoNodes_classes/Math.md)
- - bl_idname : ShaderNodeMath
-
-Arguments
- - value : None
- - use_clamp : False
- - node_label : None
- - node_color : None
-
-Node initialization
- - value : value
- - operation : 'CEIL'
- - use_clamp : use_clamp
- - node_label : node_label
- - node_color : node_color
-
-## trunc
-
-> Math, value=self, operation='TRUNC'
-
-``` python
-def trunc(value=None, use_clamp=False, node_label=None, node_color=None):
-```
-Node
- - class_name : [Math](/docs/GeoNodes_classes/Math.md)
- - bl_idname : ShaderNodeMath
-
-Arguments
- - value : None
- - use_clamp : False
- - node_label : None
- - node_color : None
-
-Node initialization
- - value : value
- - operation : 'TRUNC'
- - use_clamp : use_clamp
- - node_label : node_label
- - node_color : node_color
-
-## fract
-
-> Math, value=self, operation='FRACT'
-
-``` python
-def fract(value=None, use_clamp=False, node_label=None, node_color=None):
-```
-Node
- - class_name : [Math](/docs/GeoNodes_classes/Math.md)
- - bl_idname : ShaderNodeMath
-
-Arguments
- - value : None
- - use_clamp : False
- - node_label : None
- - node_color : None
-
-Node initialization
- - value : value
- - operation : 'FRACT'
- - use_clamp : use_clamp
- - node_label : node_label
- - node_color : node_color
-
-## mod
-
-> Math, value=self, operation='MODULO'
-
-``` python
-def mod(value=None, value_1=None, use_clamp=False, node_label=None, node_color=None):
-```
-Node
- - class_name : [Math](/docs/GeoNodes_classes/Math.md)
- - bl_idname : ShaderNodeMath
-
-Arguments
- - value : None
- - value_1 : None
- - use_clamp : False
- - node_label : None
- - node_color : None
-
-Node initialization
- - value : value
- - value_1 : value_1
- - operation : 'MODULO'
- - use_clamp : use_clamp
- - node_label : node_label
- - node_color : node_color
-
-## floored_modulo
-
-> Math, value=self, operation='FLOORED_MODULO'
-
-``` python
-def floored_modulo(value=None, value_1=None, use_clamp=False, node_label=None, node_color=None):
-```
-Node
- - class_name : [Math](/docs/GeoNodes_classes/Math.md)
- - bl_idname : ShaderNodeMath
-
-Arguments
- - value : None
- - value_1 : None
- - use_clamp : False
- - node_label : None
- - node_color : None
-
-Node initialization
- - value : value
- - value_1 : value_1
- - operation : 'FLOORED_MODULO'
- - use_clamp : use_clamp
- - node_label : node_label
- - node_color : node_color
-
 ## wrap
 
 > Math, value=self, operation='WRAP'
@@ -4916,516 +5382,50 @@ Node initialization
  - node_label : node_label
  - node_color : node_color
 
-## snap
+## xnor
 
-> Math, value=self, operation='SNAP'
+> BooleanMath, boolean=self, operation='XNOR'
 
 ``` python
-def snap(value=None, value_1=None, use_clamp=False, node_label=None, node_color=None):
+def xnor(boolean=None, boolean_1=None, node_label=None, node_color=None):
 ```
 Node
- - class_name : [Math](/docs/GeoNodes_classes/Math.md)
- - bl_idname : ShaderNodeMath
+ - class_name : [BooleanMath](/docs/GeoNodes_classes/BooleanMath.md)
+ - bl_idname : FunctionNodeBooleanMath
 
 Arguments
- - value : None
- - value_1 : None
- - use_clamp : False
+ - boolean : None
+ - boolean_1 : None
  - node_label : None
  - node_color : None
 
 Node initialization
- - value : value
- - value_1 : value_1
- - operation : 'SNAP'
- - use_clamp : use_clamp
+ - boolean : boolean
+ - boolean_1 : boolean_1
+ - operation : 'XNOR'
  - node_label : node_label
  - node_color : node_color
 
-## pingpong
+## xor
 
-> Math, value=self, operation='PINGPONG'
+> BooleanMath, boolean=self, operation='XOR'
 
 ``` python
-def pingpong(value=None, value_1=None, use_clamp=False, node_label=None, node_color=None):
+def xor(boolean=None, boolean_1=None, node_label=None, node_color=None):
 ```
 Node
- - class_name : [Math](/docs/GeoNodes_classes/Math.md)
- - bl_idname : ShaderNodeMath
+ - class_name : [BooleanMath](/docs/GeoNodes_classes/BooleanMath.md)
+ - bl_idname : FunctionNodeBooleanMath
 
 Arguments
- - value : None
- - value_1 : None
- - use_clamp : False
+ - boolean : None
+ - boolean_1 : None
  - node_label : None
  - node_color : None
 
 Node initialization
- - value : value
- - value_1 : value_1
- - operation : 'PINGPONG'
- - use_clamp : use_clamp
- - node_label : node_label
- - node_color : node_color
-
-## sin
-
-> Math, value=self, operation='SINE'
-
-``` python
-def sin(value=None, use_clamp=False, node_label=None, node_color=None):
-```
-Node
- - class_name : [Math](/docs/GeoNodes_classes/Math.md)
- - bl_idname : ShaderNodeMath
-
-Arguments
- - value : None
- - use_clamp : False
- - node_label : None
- - node_color : None
-
-Node initialization
- - value : value
- - operation : 'SINE'
- - use_clamp : use_clamp
- - node_label : node_label
- - node_color : node_color
-
-## cos
-
-> Math, value=self, operation='COSINE'
-
-``` python
-def cos(value=None, use_clamp=False, node_label=None, node_color=None):
-```
-Node
- - class_name : [Math](/docs/GeoNodes_classes/Math.md)
- - bl_idname : ShaderNodeMath
-
-Arguments
- - value : None
- - use_clamp : False
- - node_label : None
- - node_color : None
-
-Node initialization
- - value : value
- - operation : 'COSINE'
- - use_clamp : use_clamp
- - node_label : node_label
- - node_color : node_color
-
-## tan
-
-> Math, value=self, operation='TANGENT'
-
-``` python
-def tan(value=None, use_clamp=False, node_label=None, node_color=None):
-```
-Node
- - class_name : [Math](/docs/GeoNodes_classes/Math.md)
- - bl_idname : ShaderNodeMath
-
-Arguments
- - value : None
- - use_clamp : False
- - node_label : None
- - node_color : None
-
-Node initialization
- - value : value
- - operation : 'TANGENT'
- - use_clamp : use_clamp
- - node_label : node_label
- - node_color : node_color
-
-## arcsin
-
-> Math, value=self, operation='ARCSINE'
-
-``` python
-def arcsin(value=None, use_clamp=False, node_label=None, node_color=None):
-```
-Node
- - class_name : [Math](/docs/GeoNodes_classes/Math.md)
- - bl_idname : ShaderNodeMath
-
-Arguments
- - value : None
- - use_clamp : False
- - node_label : None
- - node_color : None
-
-Node initialization
- - value : value
- - operation : 'ARCSINE'
- - use_clamp : use_clamp
- - node_label : node_label
- - node_color : node_color
-
-## arccos
-
-> Math, value=self, operation='ARCCOSINE'
-
-``` python
-def arccos(value=None, use_clamp=False, node_label=None, node_color=None):
-```
-Node
- - class_name : [Math](/docs/GeoNodes_classes/Math.md)
- - bl_idname : ShaderNodeMath
-
-Arguments
- - value : None
- - use_clamp : False
- - node_label : None
- - node_color : None
-
-Node initialization
- - value : value
- - operation : 'ARCCOSINE'
- - use_clamp : use_clamp
- - node_label : node_label
- - node_color : node_color
-
-## arctan
-
-> Math, value=self, operation='ARCTANGENT'
-
-``` python
-def arctan(value=None, use_clamp=False, node_label=None, node_color=None):
-```
-Node
- - class_name : [Math](/docs/GeoNodes_classes/Math.md)
- - bl_idname : ShaderNodeMath
-
-Arguments
- - value : None
- - use_clamp : False
- - node_label : None
- - node_color : None
-
-Node initialization
- - value : value
- - operation : 'ARCTANGENT'
- - use_clamp : use_clamp
- - node_label : node_label
- - node_color : node_color
-
-## arctan2
-
-> Math, value=self, operation='ARCTAN2'
-
-``` python
-def arctan2(value=None, value_1=None, use_clamp=False, node_label=None, node_color=None):
-```
-Node
- - class_name : [Math](/docs/GeoNodes_classes/Math.md)
- - bl_idname : ShaderNodeMath
-
-Arguments
- - value : None
- - value_1 : None
- - use_clamp : False
- - node_label : None
- - node_color : None
-
-Node initialization
- - value : value
- - value_1 : value_1
- - operation : 'ARCTAN2'
- - use_clamp : use_clamp
- - node_label : node_label
- - node_color : node_color
-
-## sinh
-
-> Math, value=self, operation='SINH'
-
-``` python
-def sinh(value=None, use_clamp=False, node_label=None, node_color=None):
-```
-Node
- - class_name : [Math](/docs/GeoNodes_classes/Math.md)
- - bl_idname : ShaderNodeMath
-
-Arguments
- - value : None
- - use_clamp : False
- - node_label : None
- - node_color : None
-
-Node initialization
- - value : value
- - operation : 'SINH'
- - use_clamp : use_clamp
- - node_label : node_label
- - node_color : node_color
-
-## cosh
-
-> Math, value=self, operation='COSH'
-
-``` python
-def cosh(value=None, use_clamp=False, node_label=None, node_color=None):
-```
-Node
- - class_name : [Math](/docs/GeoNodes_classes/Math.md)
- - bl_idname : ShaderNodeMath
-
-Arguments
- - value : None
- - use_clamp : False
- - node_label : None
- - node_color : None
-
-Node initialization
- - value : value
- - operation : 'COSH'
- - use_clamp : use_clamp
- - node_label : node_label
- - node_color : node_color
-
-## tanh
-
-> Math, value=self, operation='TANH'
-
-``` python
-def tanh(value=None, use_clamp=False, node_label=None, node_color=None):
-```
-Node
- - class_name : [Math](/docs/GeoNodes_classes/Math.md)
- - bl_idname : ShaderNodeMath
-
-Arguments
- - value : None
- - use_clamp : False
- - node_label : None
- - node_color : None
-
-Node initialization
- - value : value
- - operation : 'TANH'
- - use_clamp : use_clamp
- - node_label : node_label
- - node_color : node_color
-
-## radians
-
-> Math, value=self, operation='RADIANS'
-
-``` python
-def radians(value=None, use_clamp=False, node_label=None, node_color=None):
-```
-Node
- - class_name : [Math](/docs/GeoNodes_classes/Math.md)
- - bl_idname : ShaderNodeMath
-
-Arguments
- - value : None
- - use_clamp : False
- - node_label : None
- - node_color : None
-
-Node initialization
- - value : value
- - operation : 'RADIANS'
- - use_clamp : use_clamp
- - node_label : node_label
- - node_color : node_color
-
-## degrees
-
-> Math, value=self, operation='DEGREES'
-
-``` python
-def degrees(value=None, use_clamp=False, node_label=None, node_color=None):
-```
-Node
- - class_name : [Math](/docs/GeoNodes_classes/Math.md)
- - bl_idname : ShaderNodeMath
-
-Arguments
- - value : None
- - use_clamp : False
- - node_label : None
- - node_color : None
-
-Node initialization
- - value : value
- - operation : 'DEGREES'
- - use_clamp : use_clamp
- - node_label : node_label
- - node_color : node_color
-
-## mix
-
-> Mix, return single output socket
-
-``` python
-def mix(factor=None, a=None, b=None, blend_type='MIX', clamp_factor=True, clamp_result=False, data_type='FLOAT', factor_mode='UNIFORM', node_label=None, node_color=None):
-```
-Node
- - class_name : [Mix](/docs/GeoNodes_classes/Mix.md)
- - bl_idname : ShaderNodeMix
-
-Arguments
- - factor : None
- - a : None
- - b : None
- - blend_type : 'MIX'
- - clamp_factor : True
- - clamp_result : False
- - data_type : 'FLOAT'
- - factor_mode : 'UNIFORM'
- - node_label : None
- - node_color : None
-
-Node initialization
- - factor : factor
- - a : a
- - b : b
- - blend_type : blend_type
- - clamp_factor : clamp_factor
- - clamp_result : clamp_result
- - data_type : data_type
- - factor_mode : factor_mode
- - node_label : node_label
- - node_color : node_color
-
-## rgb_curves
-
-> RGBCurves, return single output socket
-
-``` python
-def rgb_curves(fac=None, color=None, mapping=None, node_label=None, node_color=None):
-```
-Node
- - class_name : [RGBCurves](/docs/GeoNodes_classes/RGBCurves.md)
- - bl_idname : ShaderNodeRGBCurve
-
-Arguments
- - fac : None
- - color : None
- - mapping
- - node_label : None
- - node_color : None
-
-Node initialization
- - fac : fac
- - color : color
- - mapping : mapping
- - node_label : node_label
- - node_color : node_color
-
-## musgrave_texture
-
-> MusgraveTexture, return single output socket
-
-``` python
-def musgrave_texture(vector=None, scale=None, detail=None, dimension=None, lacunarity=None, w=None, offset=None, gain=None, color_mapping=None, musgrave_dimensions='3D', musgrave_type='FBM', texture_mapping=None, node_label=None, node_color=None):
-```
-Node
- - class_name : [MusgraveTexture](/docs/GeoNodes_classes/MusgraveTexture.md)
- - bl_idname : ShaderNodeTexMusgrave
-
-Arguments
- - vector : None
- - scale : None
- - detail : None
- - dimension : None
- - lacunarity : None
- - w : None
- - offset : None
- - gain : None
- - color_mapping
- - musgrave_dimensions : '3D'
- - musgrave_type : 'FBM'
- - texture_mapping
- - node_label : None
- - node_color : None
-
-Node initialization
- - vector : vector
- - scale : scale
- - detail : detail
- - dimension : dimension
- - lacunarity : lacunarity
- - w : w
- - offset : offset
- - gain : gain
- - color_mapping : color_mapping
- - musgrave_dimensions : musgrave_dimensions
- - musgrave_type : musgrave_type
- - texture_mapping : texture_mapping
- - node_label : node_label
- - node_color : node_color
-
-## value
-
-> Value, return socket
-
-``` python
-def value(value, node_label=None, node_color=None):
-```
-Node
- - class_name : [Value](/docs/GeoNodes_classes/Value.md)
- - bl_idname : ShaderNodeValue
-
-## vector_curves
-
-> VectorCurves, return single output socket
-
-``` python
-def vector_curves(fac=None, vector=None, mapping=None, node_label=None, node_color=None):
-```
-Node
- - class_name : [VectorCurves](/docs/GeoNodes_classes/VectorCurves.md)
- - bl_idname : ShaderNodeVectorCurve
-
-Arguments
- - fac : None
- - vector : None
- - mapping
- - node_label : None
- - node_color : None
-
-Node initialization
- - fac : fac
- - vector : vector
- - mapping : mapping
- - node_label : node_label
- - node_color : node_color
-
-## vector_rotate
-
-> VectorRotate, return single output socket
-
-``` python
-def vector_rotate(vector=None, center=None, axis=None, angle=None, rotation=None, invert=False, rotation_type='AXIS_ANGLE', node_label=None, node_color=None):
-```
-Node
- - class_name : [VectorRotate](/docs/GeoNodes_classes/VectorRotate.md)
- - bl_idname : ShaderNodeVectorRotate
-
-Arguments
- - vector : None
- - center : None
- - axis : None
- - angle : None
- - rotation : None
- - invert : False
- - rotation_type : 'AXIS_ANGLE'
- - node_label : None
- - node_color : None
-
-Node initialization
- - vector : vector
- - center : center
- - axis : axis
- - angle : angle
- - rotation : rotation
- - invert : invert
- - rotation_type : rotation_type
+ - boolean : boolean
+ - boolean_1 : boolean_1
+ - operation : 'XOR'
  - node_label : node_label
  - node_color : node_color

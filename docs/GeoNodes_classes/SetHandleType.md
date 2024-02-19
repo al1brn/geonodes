@@ -10,7 +10,7 @@ Node
 
 Node parameters
  - handle_type : 'AUTO'
- - mode : {'LEFT', 'RIGHT'}
+ - mode : {'RIGHT', 'LEFT'}
 
 Input sockets
  - curve : Geometry
@@ -22,7 +22,7 @@ Output sockets
 ### Header
 
 ``` python
-def SetHandleType(self, curve=None, selection=None, handle_type='AUTO', mode={'LEFT', 'RIGHT'}, node_label=None, node_color=None):
+def SetHandleType(self, curve=None, selection=None, handle_type='AUTO', mode={'RIGHT', 'LEFT'}, node_label=None, node_color=None):
 ```
 
 ## Implementations

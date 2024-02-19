@@ -858,7 +858,16 @@ def build_doc(folder):
         doc = Doc(tree_type, DocSpec(target='MD', path=root))
         for class_name in doc.dct.keys():
             if class_name == 'GLOBAL':
-                for name, member in doc.dct['GLOBAL'].items():
+                keys = sorted(doc.dct['GLOBAL'].keys())
+
+                initials = index_doc.initials(keys)
+                for initial in sorted(initials.keys()):
+                    sub = initials[initial]
+                    links = " ".join(doc.list_links(sorted(sub)))
+                    index_doc.add(Paragraph(f"***{initial}*** : " + links), new_line=True)
+                
+                for name in keys:
+                    member = doc.dct['GLOBAL'][name]
                     doc.member_doc(member)
                     globs.append(name)
             
