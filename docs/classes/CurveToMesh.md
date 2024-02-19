@@ -1,36 +1,35 @@
 # class CurveToMesh (Node)
 
-    <sub>go to [index](/docs/index.md)</sub>
-    
+<sub>go to [index](/docs/index.md)</sub>
+
 ## Node reference
 
-    Node
-    ----
-     - Class name : CurveToMesh
-     - bl_idname : GeometryNodeCurveToMesh
-    
-    Node parameters
-    ---------------
-    
-    Input sockets
-    -------------
-     - curve : Geometry
-     - profile_curve : Geometry
-     - fill_caps : Bool
-    
-    Output sockets
-    --------------
-     - mesh : Geometry
-    
-    ### Header
+Node
+----
+ - Class name : CurveToMesh
+ - bl_idname : GeometryNodeCurveToMesh
 
-    ``` python
-    def CurveToMesh(self, curve=None, profile_curve=None, fill_caps=None, node_label=None, node_color=None):
-    ```
-    
+Node parameters
+---------------
+
+Input sockets
+-------------
+ - curve : Geometry
+ - profile_curve : Geometry
+ - fill_caps : Bool
+
+Output sockets
+--------------
+ - mesh : Geometry
+
+### Header
+
+``` python
+def CurveToMesh(self, curve=None, profile_curve=None, fill_caps=None, node_label=None, node_color=None):
+```
+
 ## Implementations
 
-    o functions : [curve_to_mesh](#curve_to_mesh)
-    o Geometry : [curve_to_mesh](#curve_to_mesh) 
-    
-    
+o functions : [curve_to_mesh](#curve_to_mesh)
+o Geometry : [curve_to_mesh](#curve_to_mesh) 
+

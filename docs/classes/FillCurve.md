@@ -1,35 +1,34 @@
 # class FillCurve (Node)
 
-    <sub>go to [index](/docs/index.md)</sub>
-    
+<sub>go to [index](/docs/index.md)</sub>
+
 ## Node reference
 
-    Node
-    ----
-     - Class name : FillCurve
-     - bl_idname : GeometryNodeFillCurve
-    
-    Node parameters
-    ---------------
-     - mode : 'TRIANGLES'
-    
-    Input sockets
-    -------------
-     - curve : Geometry
-    
-    Output sockets
-    --------------
-     - mesh : Geometry
-    
-    ### Header
+Node
+----
+ - Class name : FillCurve
+ - bl_idname : GeometryNodeFillCurve
 
-    ``` python
-    def FillCurve(self, curve=None, mode='TRIANGLES', node_label=None, node_color=None):
-    ```
-    
+Node parameters
+---------------
+ - mode : 'TRIANGLES'
+
+Input sockets
+-------------
+ - curve : Geometry
+
+Output sockets
+--------------
+ - mesh : Geometry
+
+### Header
+
+``` python
+def FillCurve(self, curve=None, mode='TRIANGLES', node_label=None, node_color=None):
+```
+
 ## Implementations
 
-    o functions : [fill_curve](#fill_curve)
-    o Geometry : [fill_curve](#fill_curve) 
-    
-    
+o functions : [fill_curve](#fill_curve)
+o Geometry : [fill_curve](#fill_curve) 
+

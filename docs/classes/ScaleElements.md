@@ -1,41 +1,40 @@
 # class ScaleElements (Node)
 
-    <sub>go to [index](/docs/index.md)</sub>
-    
+<sub>go to [index](/docs/index.md)</sub>
+
 ## Node reference
 
-    Node
-    ----
-     - Class name : ScaleElements
-     - bl_idname : GeometryNodeScaleElements
-    
-    Node parameters
-    ---------------
-     - domain : 'FACE'
-     - scale_mode : 'UNIFORM'
-    
-    Input sockets
-    -------------
-     - geometry : Geometry
-     - selection : Bool
-     - scale : Float
-     - center : Vect
-     - axis : Vect
-    
-    Output sockets
-    --------------
-     - geometry : Geometry
-    
-    ### Header
+Node
+----
+ - Class name : ScaleElements
+ - bl_idname : GeometryNodeScaleElements
 
-    ``` python
-    def ScaleElements(self, geometry=None, scale=None, center=None, axis=None, selection=None, domain='FACE', scale_mode='UNIFORM', node_label=None, node_color=None):
-    ```
-    
+Node parameters
+---------------
+ - domain : 'FACE'
+ - scale_mode : 'UNIFORM'
+
+Input sockets
+-------------
+ - geometry : Geometry
+ - selection : Bool
+ - scale : Float
+ - center : Vect
+ - axis : Vect
+
+Output sockets
+--------------
+ - geometry : Geometry
+
+### Header
+
+``` python
+def ScaleElements(self, geometry=None, scale=None, center=None, axis=None, selection=None, domain='FACE', scale_mode='UNIFORM', node_label=None, node_color=None):
+```
+
 ## Implementations
 
-    o functions : [scale_elements](#scale_elements)
-    o Geometry : [scale_elements](#scale_elements) 
-    o Domain : [scale_elements](#scale_elements) 
-    
-    
+o functions : [scale_elements](#scale_elements)
+o Geometry : [scale_elements](#scale_elements) 
+o Domain : [scale_elements](#scale_elements) 
+

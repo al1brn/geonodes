@@ -1,38 +1,37 @@
 # class Clamp (Node)
 
-    <sub>go to [index](/docs/index.md)</sub>
-    
+<sub>go to [index](/docs/index.md)</sub>
+
 ## Node reference
 
-    Node
-    ----
-     - Class name : Clamp
-     - bl_idname : ShaderNodeClamp
-    
-    Node parameters
-    ---------------
-     - clamp_type : 'MINMAX'
-    
-    Input sockets
-    -------------
-     - value : Float
-     - min : Float
-     - max : Float
-    
-    Output sockets
-    --------------
-     - result : Float
-    
-    ### Header
+Node
+----
+ - Class name : Clamp
+ - bl_idname : ShaderNodeClamp
 
-    ``` python
-    def Clamp(self, value=None, min=None, max=None, clamp_type='MINMAX', node_label=None, node_color=None):
-    ```
-    
+Node parameters
+---------------
+ - clamp_type : 'MINMAX'
+
+Input sockets
+-------------
+ - value : Float
+ - min : Float
+ - max : Float
+
+Output sockets
+--------------
+ - result : Float
+
+### Header
+
+``` python
+def Clamp(self, value=None, min=None, max=None, clamp_type='MINMAX', node_label=None, node_color=None):
+```
+
 ## Implementations
 
-    o functions : [clamp](#clamp)
-    o Float : [clamp](#clamp) 
-    o Int : [clamp](#clamp) 
-    
-    
+o functions : [clamp](#clamp)
+o Float : [clamp](#clamp) 
+o Int : [clamp](#clamp) 
+

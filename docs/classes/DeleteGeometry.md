@@ -1,38 +1,37 @@
 # class DeleteGeometry (Node)
 
-    <sub>go to [index](/docs/index.md)</sub>
-    
+<sub>go to [index](/docs/index.md)</sub>
+
 ## Node reference
 
-    Node
-    ----
-     - Class name : DeleteGeometry
-     - bl_idname : GeometryNodeDeleteGeometry
-    
-    Node parameters
-    ---------------
-     - domain : 'POINT'
-     - mode : 'ALL'
-    
-    Input sockets
-    -------------
-     - geometry : Geometry
-     - selection : Bool
-    
-    Output sockets
-    --------------
-     - geometry : Geometry
-    
-    ### Header
+Node
+----
+ - Class name : DeleteGeometry
+ - bl_idname : GeometryNodeDeleteGeometry
 
-    ``` python
-    def DeleteGeometry(self, geometry=None, selection=None, domain='POINT', mode='ALL', node_label=None, node_color=None):
-    ```
-    
+Node parameters
+---------------
+ - domain : 'POINT'
+ - mode : 'ALL'
+
+Input sockets
+-------------
+ - geometry : Geometry
+ - selection : Bool
+
+Output sockets
+--------------
+ - geometry : Geometry
+
+### Header
+
+``` python
+def DeleteGeometry(self, geometry=None, selection=None, domain='POINT', mode='ALL', node_label=None, node_color=None):
+```
+
 ## Implementations
 
-    o functions : [delete_geometry](#delete_geometry)
-    o Geometry : [delete_geometry](#delete_geometry) 
-    o Domain : [delete_geometry](#delete_geometry) 
-    
-    
+o functions : [delete_geometry](#delete_geometry)
+o Geometry : [delete_geometry](#delete_geometry) 
+o Domain : [delete_geometry](#delete_geometry) 
+

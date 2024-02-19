@@ -1,33 +1,32 @@
 # class Index (Node)
 
-    <sub>go to [index](/docs/index.md)</sub>
-    
+<sub>go to [index](/docs/index.md)</sub>
+
 ## Node reference
 
-    Node
-    ----
-     - Class name : Index
-     - bl_idname : GeometryNodeInputIndex
-    
-    Node parameters
-    ---------------
-    
-    Input sockets
-    -------------
-    
-    Output sockets
-    --------------
-     - index : Int
-    
-    ### Header
+Node
+----
+ - Class name : Index
+ - bl_idname : GeometryNodeInputIndex
 
-    ``` python
-    def Index(self, node_label=None, node_color=None):
-    ```
-    
+Node parameters
+---------------
+
+Input sockets
+-------------
+
+Output sockets
+--------------
+ - index : Int
+
+### Header
+
+``` python
+def Index(self, node_label=None, node_color=None):
+```
+
 ## Implementations
 
-    o functions : [index](#index)
-    o Geometry : [index](#index) 
-    
-    
+o functions : [index](#index)
+o Geometry : [index](#index) 
+

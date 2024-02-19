@@ -1,35 +1,34 @@
 # class SubdivideMesh (Node)
 
-    <sub>go to [index](/docs/index.md)</sub>
-    
+<sub>go to [index](/docs/index.md)</sub>
+
 ## Node reference
 
-    Node
-    ----
-     - Class name : SubdivideMesh
-     - bl_idname : GeometryNodeSubdivideMesh
-    
-    Node parameters
-    ---------------
-    
-    Input sockets
-    -------------
-     - mesh : Geometry
-     - level : Int
-    
-    Output sockets
-    --------------
-     - mesh : Geometry
-    
-    ### Header
+Node
+----
+ - Class name : SubdivideMesh
+ - bl_idname : GeometryNodeSubdivideMesh
 
-    ``` python
-    def SubdivideMesh(self, mesh=None, level=None, node_label=None, node_color=None):
-    ```
-    
+Node parameters
+---------------
+
+Input sockets
+-------------
+ - mesh : Geometry
+ - level : Int
+
+Output sockets
+--------------
+ - mesh : Geometry
+
+### Header
+
+``` python
+def SubdivideMesh(self, mesh=None, level=None, node_label=None, node_color=None):
+```
+
 ## Implementations
 
-    o functions : [subdivide_mesh](#subdivide_mesh)
-    o Geometry : [subdivide_mesh](#subdivide_mesh) 
-    
-    
+o functions : [subdivide_mesh](#subdivide_mesh)
+o Geometry : [subdivide_mesh](#subdivide_mesh) 
+

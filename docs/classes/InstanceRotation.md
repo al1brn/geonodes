@@ -1,32 +1,31 @@
 # class InstanceRotation (Node)
 
-    <sub>go to [index](/docs/index.md)</sub>
-    
+<sub>go to [index](/docs/index.md)</sub>
+
 ## Node reference
 
-    Node
-    ----
-     - Class name : InstanceRotation
-     - bl_idname : GeometryNodeInputInstanceRotation
-    
-    Node parameters
-    ---------------
-    
-    Input sockets
-    -------------
-    
-    Output sockets
-    --------------
-     - rotation : Vect
-    
-    ### Header
+Node
+----
+ - Class name : InstanceRotation
+ - bl_idname : GeometryNodeInputInstanceRotation
 
-    ``` python
-    def InstanceRotation(self, node_label=None, node_color=None):
-    ```
-    
+Node parameters
+---------------
+
+Input sockets
+-------------
+
+Output sockets
+--------------
+ - rotation : Vect
+
+### Header
+
+``` python
+def InstanceRotation(self, node_label=None, node_color=None):
+```
+
 ## Implementations
 
-    o functions : [instance_rotation](#instance_rotation)
-    
-    
+o functions : [instance_rotation](#instance_rotation)
+

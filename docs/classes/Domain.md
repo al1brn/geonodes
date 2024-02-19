@@ -1,4 +1,3 @@
 # class Domain (Other)
 
-    Geometry domain
-    
+Geometry domain

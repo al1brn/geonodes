@@ -1,36 +1,35 @@
 # class SetPointRadius (Node)
 
-    <sub>go to [index](/docs/index.md)</sub>
-    
+<sub>go to [index](/docs/index.md)</sub>
+
 ## Node reference
 
-    Node
-    ----
-     - Class name : SetPointRadius
-     - bl_idname : GeometryNodeSetPointRadius
-    
-    Node parameters
-    ---------------
-    
-    Input sockets
-    -------------
-     - points : Geometry
-     - selection : Bool
-     - radius : Float
-    
-    Output sockets
-    --------------
-     - points : Geometry
-    
-    ### Header
+Node
+----
+ - Class name : SetPointRadius
+ - bl_idname : GeometryNodeSetPointRadius
 
-    ``` python
-    def SetPointRadius(self, points=None, radius=None, selection=None, node_label=None, node_color=None):
-    ```
-    
+Node parameters
+---------------
+
+Input sockets
+-------------
+ - points : Geometry
+ - selection : Bool
+ - radius : Float
+
+Output sockets
+--------------
+ - points : Geometry
+
+### Header
+
+``` python
+def SetPointRadius(self, points=None, radius=None, selection=None, node_label=None, node_color=None):
+```
+
 ## Implementations
 
-    o functions : [set_point_radius](#set_point_radius)
-    o Geometry : [set_point_radius](#set_point_radius) [point_radius](#point_radius) 
-    
-    
+o functions : [set_point_radius](#set_point_radius)
+o Geometry : [set_point_radius](#set_point_radius) [point_radius](#point_radius) 
+

@@ -1,33 +1,32 @@
 # class SplineResolution (Node)
 
-    <sub>go to [index](/docs/index.md)</sub>
-    
+<sub>go to [index](/docs/index.md)</sub>
+
 ## Node reference
 
-    Node
-    ----
-     - Class name : SplineResolution
-     - bl_idname : GeometryNodeInputSplineResolution
-    
-    Node parameters
-    ---------------
-    
-    Input sockets
-    -------------
-    
-    Output sockets
-    --------------
-     - resolution : Int
-    
-    ### Header
+Node
+----
+ - Class name : SplineResolution
+ - bl_idname : GeometryNodeInputSplineResolution
 
-    ``` python
-    def SplineResolution(self, node_label=None, node_color=None):
-    ```
-    
+Node parameters
+---------------
+
+Input sockets
+-------------
+
+Output sockets
+--------------
+ - resolution : Int
+
+### Header
+
+``` python
+def SplineResolution(self, node_label=None, node_color=None):
+```
+
 ## Implementations
 
-    o functions : [spline_resolution](#spline_resolution)
-    o Geometry : [spline_resolution](#spline_resolution) 
-    
-    
+o functions : [spline_resolution](#spline_resolution)
+o Geometry : [spline_resolution](#spline_resolution) 
+

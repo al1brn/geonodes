@@ -305,6 +305,8 @@ class DocSpec:
         self.width  = width
         self.margin = margin
         self.path   = path
+        if self.is_md:
+            self.margin = 0
         
     @property
     def is_md(self):

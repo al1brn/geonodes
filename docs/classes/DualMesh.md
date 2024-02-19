@@ -1,35 +1,34 @@
 # class DualMesh (Node)
 
-    <sub>go to [index](/docs/index.md)</sub>
-    
+<sub>go to [index](/docs/index.md)</sub>
+
 ## Node reference
 
-    Node
-    ----
-     - Class name : DualMesh
-     - bl_idname : GeometryNodeDualMesh
-    
-    Node parameters
-    ---------------
-    
-    Input sockets
-    -------------
-     - mesh : Geometry
-     - keep_boundaries : Bool
-    
-    Output sockets
-    --------------
-     - dual_mesh : Geometry
-    
-    ### Header
+Node
+----
+ - Class name : DualMesh
+ - bl_idname : GeometryNodeDualMesh
 
-    ``` python
-    def DualMesh(self, mesh=None, keep_boundaries=None, node_label=None, node_color=None):
-    ```
-    
+Node parameters
+---------------
+
+Input sockets
+-------------
+ - mesh : Geometry
+ - keep_boundaries : Bool
+
+Output sockets
+--------------
+ - dual_mesh : Geometry
+
+### Header
+
+``` python
+def DualMesh(self, mesh=None, keep_boundaries=None, node_label=None, node_color=None):
+```
+
 ## Implementations
 
-    o functions : [dual_mesh](#dual_mesh)
-    o Geometry : [dual_mesh](#dual_mesh) 
-    
-    
+o functions : [dual_mesh](#dual_mesh)
+o Geometry : [dual_mesh](#dual_mesh) 
+

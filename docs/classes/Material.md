@@ -1,33 +1,32 @@
 # class Material (Node)
 
-    <sub>go to [index](/docs/index.md)</sub>
-    
+<sub>go to [index](/docs/index.md)</sub>
+
 ## Node reference
 
-    Node
-    ----
-     - Class name : Material
-     - bl_idname : GeometryNodeInputMaterial
-    
-    Node parameters
-    ---------------
-     - material : None
-    
-    Input sockets
-    -------------
-    
-    Output sockets
-    --------------
-     - material : Mat
-    
-    ### Header
+Node
+----
+ - Class name : Material
+ - bl_idname : GeometryNodeInputMaterial
 
-    ``` python
-    def Material(self, material=None, node_label=None, node_color=None):
-    ```
-    
+Node parameters
+---------------
+ - material : None
+
+Input sockets
+-------------
+
+Output sockets
+--------------
+ - material : Mat
+
+### Header
+
+``` python
+def Material(self, material=None, node_label=None, node_color=None):
+```
+
 ## Implementations
 
-    o functions : [material](#material)
-    
-    
+o functions : [material](#material)
+

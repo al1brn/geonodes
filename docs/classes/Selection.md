@@ -1,32 +1,31 @@
 # class Selection (Node)
 
-    <sub>go to [index](/docs/index.md)</sub>
-    
+<sub>go to [index](/docs/index.md)</sub>
+
 ## Node reference
 
-    Node
-    ----
-     - Class name : Selection
-     - bl_idname : GeometryNodeToolSelection
-    
-    Node parameters
-    ---------------
-    
-    Input sockets
-    -------------
-    
-    Output sockets
-    --------------
-     - selection : Bool
-    
-    ### Header
+Node
+----
+ - Class name : Selection
+ - bl_idname : GeometryNodeToolSelection
 
-    ``` python
-    def Selection(self, node_label=None, node_color=None):
-    ```
-    
+Node parameters
+---------------
+
+Input sockets
+-------------
+
+Output sockets
+--------------
+ - selection : Bool
+
+### Header
+
+``` python
+def Selection(self, node_label=None, node_color=None):
+```
+
 ## Implementations
 
-    o functions : [selection](#selection)
-    
-    
+o functions : [selection](#selection)
+

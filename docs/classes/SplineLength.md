@@ -1,33 +1,32 @@
 # class SplineLength (Node)
 
-    <sub>go to [index](/docs/index.md)</sub>
-    
+<sub>go to [index](/docs/index.md)</sub>
+
 ## Node reference
 
-    Node
-    ----
-     - Class name : SplineLength
-     - bl_idname : GeometryNodeSplineLength
-    
-    Node parameters
-    ---------------
-    
-    Input sockets
-    -------------
-    
-    Output sockets
-    --------------
-     - length : Float
-     - point_count : Int
-    
-    ### Header
+Node
+----
+ - Class name : SplineLength
+ - bl_idname : GeometryNodeSplineLength
 
-    ``` python
-    def SplineLength(self, node_label=None, node_color=None):
-    ```
-    
+Node parameters
+---------------
+
+Input sockets
+-------------
+
+Output sockets
+--------------
+ - length : Float
+ - point_count : Int
+
+### Header
+
+``` python
+def SplineLength(self, node_label=None, node_color=None):
+```
+
 ## Implementations
 
-    o functions : [spline_length](#spline_length)
-    
-    
+o functions : [spline_length](#spline_length)
+

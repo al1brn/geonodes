@@ -1,32 +1,31 @@
 # class Color (Node)
 
-    <sub>go to [index](/docs/index.md)</sub>
-    
+<sub>go to [index](/docs/index.md)</sub>
+
 ## Node reference
 
-    Node
-    ----
-     - Class name : Color
-     - bl_idname : FunctionNodeInputColor
-    
-    Node parameters
-    ---------------
-    
-    Input sockets
-    -------------
-    
-    Output sockets
-    --------------
-     - color : Col
-    
-    ### Header
+Node
+----
+ - Class name : Color
+ - bl_idname : FunctionNodeInputColor
 
-    ``` python
-    def Color(self, node_label=None, node_color=None):
-    ```
-    
+Node parameters
+---------------
+
+Input sockets
+-------------
+
+Output sockets
+--------------
+ - color : Col
+
+### Header
+
+``` python
+def Color(self, node_label=None, node_color=None):
+```
+
 ## Implementations
 
-    o functions : [color](#color)
-    
-    
+o functions : [color](#color)
+

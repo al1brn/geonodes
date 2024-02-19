@@ -1,33 +1,32 @@
 # class SceneTime (Node)
 
-    <sub>go to [index](/docs/index.md)</sub>
-    
+<sub>go to [index](/docs/index.md)</sub>
+
 ## Node reference
 
-    Node
-    ----
-     - Class name : SceneTime
-     - bl_idname : GeometryNodeInputSceneTime
-    
-    Node parameters
-    ---------------
-    
-    Input sockets
-    -------------
-    
-    Output sockets
-    --------------
-     - seconds : Float
-     - frame : Float
-    
-    ### Header
+Node
+----
+ - Class name : SceneTime
+ - bl_idname : GeometryNodeInputSceneTime
 
-    ``` python
-    def SceneTime(self, node_label=None, node_color=None):
-    ```
-    
+Node parameters
+---------------
+
+Input sockets
+-------------
+
+Output sockets
+--------------
+ - seconds : Float
+ - frame : Float
+
+### Header
+
+``` python
+def SceneTime(self, node_label=None, node_color=None):
+```
+
 ## Implementations
 
-    o functions : [scene_time](#scene_time)
-    
-    
+o functions : [scene_time](#scene_time)
+
