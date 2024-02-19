@@ -859,12 +859,14 @@ def build_doc(folder):
         for class_name in doc.dct.keys():
             if class_name == 'GLOBAL':
                 keys = sorted(doc.dct['GLOBAL'].keys())
+                
+                doc.add(Header("Global functions", 0))
 
                 initials = index_doc.initials(keys)
                 for initial in sorted(initials.keys()):
                     sub = initials[initial]
                     links = " ".join(doc.list_links(sorted(sub)))
-                    index_doc.add(Paragraph(f"***{initial}*** : " + links), new_line=True)
+                    doc.add(Paragraph(f"***{initial}*** : " + links), new_line=True)
                 
                 for name in keys:
                     member = doc.dct['GLOBAL'][name]

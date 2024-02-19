@@ -1,3 +1,53 @@
+# Global functions
+
+***A*** : [abs](/docs/GeoNodes_classes/abs.md) [add](/docs/GeoNodes_classes/add.md) [align_euler_to_vector](/docs/GeoNodes_classes/align_euler_to_vector.md) [arccos](/docs/GeoNodes_classes/arccos.md) [arcsin](/docs/GeoNodes_classes/arcsin.md) [arctan](/docs/GeoNodes_classes/arctan.md) [arctan2](/docs/GeoNodes_classes/arctan2.md) [axis_angle_to_rotation](/docs/GeoNodes_classes/axis_angle_to_rotation.md)
+
+***B*** : [band](/docs/GeoNodes_classes/band.md) [bezier_segment](/docs/GeoNodes_classes/bezier_segment.md) [blur_attribute](/docs/GeoNodes_classes/blur_attribute.md) [bnot](/docs/GeoNodes_classes/bnot.md) [boolean](/docs/GeoNodes_classes/boolean.md) [boolean_math](/docs/GeoNodes_classes/boolean_math.md) [bor](/docs/GeoNodes_classes/bor.md)
+
+***C*** : [ceil](/docs/GeoNodes_classes/ceil.md) [clamp](/docs/GeoNodes_classes/clamp.md) [collection_info](/docs/GeoNodes_classes/collection_info.md) [color](/docs/GeoNodes_classes/color.md) [combine_color](/docs/GeoNodes_classes/combine_color.md) [combine_hsl](/docs/GeoNodes_classes/combine_hsl.md) [combine_hsv](/docs/GeoNodes_classes/combine_hsv.md) [combine_rgb](/docs/GeoNodes_classes/combine_rgb.md) [combine_xyz](/docs/GeoNodes_classes/combine_xyz.md) [compare](/docs/GeoNodes_classes/compare.md) [convex_hull](/docs/GeoNodes_classes/convex_hull.md) [cos](/docs/GeoNodes_classes/cos.md) [cosh](/docs/GeoNodes_classes/cosh.md) [curve_length](/docs/GeoNodes_classes/curve_length.md) [curve_line](/docs/GeoNodes_classes/curve_line.md) [curve_tangent](/docs/GeoNodes_classes/curve_tangent.md) [curve_tilt](/docs/GeoNodes_classes/curve_tilt.md) [curve_to_mesh](/docs/GeoNodes_classes/curve_to_mesh.md)
+
+***D*** : [deform_curves_on_surface](/docs/GeoNodes_classes/deform_curves_on_surface.md) [degrees](/docs/GeoNodes_classes/degrees.md) [delete_geometry](/docs/GeoNodes_classes/delete_geometry.md) [distribute_points_in_volume](/docs/GeoNodes_classes/distribute_points_in_volume.md) [divide](/docs/GeoNodes_classes/divide.md) [dual_mesh](/docs/GeoNodes_classes/dual_mesh.md)
+
+***E*** : [edge_angle](/docs/GeoNodes_classes/edge_angle.md) [edge_neighbors](/docs/GeoNodes_classes/edge_neighbors.md) [edge_paths_to_curves](/docs/GeoNodes_classes/edge_paths_to_curves.md) [edge_paths_to_selection](/docs/GeoNodes_classes/edge_paths_to_selection.md) [edge_vertices](/docs/GeoNodes_classes/edge_vertices.md) [edges_to_face_groups](/docs/GeoNodes_classes/edges_to_face_groups.md) [endpoint_selection](/docs/GeoNodes_classes/endpoint_selection.md) [euler_to_rotation](/docs/GeoNodes_classes/euler_to_rotation.md) [evaluate_at_index](/docs/GeoNodes_classes/evaluate_at_index.md) [evaluate_on_domain](/docs/GeoNodes_classes/evaluate_on_domain.md) [exp](/docs/GeoNodes_classes/exp.md)
+
+***F*** : [face_area](/docs/GeoNodes_classes/face_area.md) [face_group_boundaries](/docs/GeoNodes_classes/face_group_boundaries.md) [face_neighbors](/docs/GeoNodes_classes/face_neighbors.md) [face_set](/docs/GeoNodes_classes/face_set.md) [fill_curve](/docs/GeoNodes_classes/fill_curve.md) [fillet_curve](/docs/GeoNodes_classes/fillet_curve.md) [flip_faces](/docs/GeoNodes_classes/flip_faces.md) [float_curve](/docs/GeoNodes_classes/float_curve.md) [float_to_integer](/docs/GeoNodes_classes/float_to_integer.md) [floor](/docs/GeoNodes_classes/floor.md) [floored_modulo](/docs/GeoNodes_classes/floored_modulo.md) [fract](/docs/GeoNodes_classes/fract.md) [frame](/docs/GeoNodes_classes/frame.md)
+
+***G*** : [geometry_to_instance](/docs/GeoNodes_classes/geometry_to_instance.md)
+
+***H*** : [handle_type_selection](/docs/GeoNodes_classes/handle_type_selection.md)
+
+***I*** : [id](/docs/GeoNodes_classes/id.md) [image](/docs/GeoNodes_classes/image.md) [imply](/docs/GeoNodes_classes/imply.md) [index](/docs/GeoNodes_classes/index.md) [instance_on_points](/docs/GeoNodes_classes/instance_on_points.md) [instance_rotation](/docs/GeoNodes_classes/instance_rotation.md) [instance_scale](/docs/GeoNodes_classes/instance_scale.md) [instances_to_points](/docs/GeoNodes_classes/instances_to_points.md) [integer](/docs/GeoNodes_classes/integer.md) [inverse_sqrt](/docs/GeoNodes_classes/inverse_sqrt.md) [invert_rotation](/docs/GeoNodes_classes/invert_rotation.md) [is_edge_smooth](/docs/GeoNodes_classes/is_edge_smooth.md) [is_face_planar](/docs/GeoNodes_classes/is_face_planar.md) [is_face_smooth](/docs/GeoNodes_classes/is_face_smooth.md) [is_spline_cyclic](/docs/GeoNodes_classes/is_spline_cyclic.md) [is_viewport](/docs/GeoNodes_classes/is_viewport.md)
+
+***J*** : [join_geometry](/docs/GeoNodes_classes/join_geometry.md) [join_strings](/docs/GeoNodes_classes/join_strings.md)
+
+***L*** : [log](/docs/GeoNodes_classes/log.md)
+
+***M*** : [material](/docs/GeoNodes_classes/material.md) [material_index](/docs/GeoNodes_classes/material_index.md) [material_selection](/docs/GeoNodes_classes/material_selection.md) [math](/docs/GeoNodes_classes/math.md) [math_compare](/docs/GeoNodes_classes/math_compare.md) [math_greater_than](/docs/GeoNodes_classes/math_greater_than.md) [math_less_than](/docs/GeoNodes_classes/math_less_than.md) [max](/docs/GeoNodes_classes/max.md) [mean_filter_sdf_volume](/docs/GeoNodes_classes/mean_filter_sdf_volume.md) [merge_by_distance](/docs/GeoNodes_classes/merge_by_distance.md) [mesh_circle](/docs/GeoNodes_classes/mesh_circle.md) [mesh_island](/docs/GeoNodes_classes/mesh_island.md) [mesh_line](/docs/GeoNodes_classes/mesh_line.md) [mesh_to_curve](/docs/GeoNodes_classes/mesh_to_curve.md) [mesh_to_points](/docs/GeoNodes_classes/mesh_to_points.md) [mesh_to_sdf_volume](/docs/GeoNodes_classes/mesh_to_sdf_volume.md) [mesh_to_volume](/docs/GeoNodes_classes/mesh_to_volume.md) [min](/docs/GeoNodes_classes/min.md) [mix](/docs/GeoNodes_classes/mix.md) [mod](/docs/GeoNodes_classes/mod.md) [multiply](/docs/GeoNodes_classes/multiply.md) [multiply_add](/docs/GeoNodes_classes/multiply_add.md) [musgrave_texture](/docs/GeoNodes_classes/musgrave_texture.md)
+
+***N*** : [named_boolean](/docs/GeoNodes_classes/named_boolean.md) [named_color](/docs/GeoNodes_classes/named_color.md) [named_float](/docs/GeoNodes_classes/named_float.md) [named_int](/docs/GeoNodes_classes/named_int.md) [named_quaternion](/docs/GeoNodes_classes/named_quaternion.md) [named_vector](/docs/GeoNodes_classes/named_vector.md) [nand](/docs/GeoNodes_classes/nand.md) [nimply](/docs/GeoNodes_classes/nimply.md) [nor](/docs/GeoNodes_classes/nor.md) [normal](/docs/GeoNodes_classes/normal.md)
+
+***O*** : [offset_corner_in_face](/docs/GeoNodes_classes/offset_corner_in_face.md) [offset_sdf_volume](/docs/GeoNodes_classes/offset_sdf_volume.md)
+
+***P*** : [pack_uv_islands](/docs/GeoNodes_classes/pack_uv_islands.md) [pingpong](/docs/GeoNodes_classes/pingpong.md) [points](/docs/GeoNodes_classes/points.md) [points_to_curves](/docs/GeoNodes_classes/points_to_curves.md) [points_to_sdf_volume](/docs/GeoNodes_classes/points_to_sdf_volume.md) [points_to_vertices](/docs/GeoNodes_classes/points_to_vertices.md) [points_to_volume](/docs/GeoNodes_classes/points_to_volume.md) [position](/docs/GeoNodes_classes/position.md) [power](/docs/GeoNodes_classes/power.md)
+
+***Q*** : [quadratic_bezier](/docs/GeoNodes_classes/quadratic_bezier.md) [quadrilateral](/docs/GeoNodes_classes/quadrilateral.md) [quaternion_to_rotation](/docs/GeoNodes_classes/quaternion_to_rotation.md)
+
+***R*** : [radians](/docs/GeoNodes_classes/radians.md) [radius](/docs/GeoNodes_classes/radius.md) [random_boolean](/docs/GeoNodes_classes/random_boolean.md) [random_float](/docs/GeoNodes_classes/random_float.md) [random_int](/docs/GeoNodes_classes/random_int.md) [random_value](/docs/GeoNodes_classes/random_value.md) [random_vector](/docs/GeoNodes_classes/random_vector.md) [realize_instances](/docs/GeoNodes_classes/realize_instances.md) [remove_named_attribute](/docs/GeoNodes_classes/remove_named_attribute.md) [repeat_output](/docs/GeoNodes_classes/repeat_output.md) [replace_material](/docs/GeoNodes_classes/replace_material.md) [replace_string](/docs/GeoNodes_classes/replace_string.md) [reroute](/docs/GeoNodes_classes/reroute.md) [resample_curve](/docs/GeoNodes_classes/resample_curve.md) [reverse_curve](/docs/GeoNodes_classes/reverse_curve.md) [rgb_curves](/docs/GeoNodes_classes/rgb_curves.md) [rotate_euler](/docs/GeoNodes_classes/rotate_euler.md) [rotate_instances](/docs/GeoNodes_classes/rotate_instances.md) [rotate_vector](/docs/GeoNodes_classes/rotate_vector.md) [rotation_to_euler](/docs/GeoNodes_classes/rotation_to_euler.md) [round](/docs/GeoNodes_classes/round.md)
+
+***S*** : [sample_index](/docs/GeoNodes_classes/sample_index.md) [sample_nearest](/docs/GeoNodes_classes/sample_nearest.md) [sample_nearest_surface](/docs/GeoNodes_classes/sample_nearest_surface.md) [sample_volume](/docs/GeoNodes_classes/sample_volume.md) [scale_elements](/docs/GeoNodes_classes/scale_elements.md) [scale_instances](/docs/GeoNodes_classes/scale_instances.md) [scene_time](/docs/GeoNodes_classes/scene_time.md) [sdf_volume_sphere](/docs/GeoNodes_classes/sdf_volume_sphere.md) [selection](/docs/GeoNodes_classes/selection.md) [self_object](/docs/GeoNodes_classes/self_object.md) [set_curve_normal](/docs/GeoNodes_classes/set_curve_normal.md) [set_curve_radius](/docs/GeoNodes_classes/set_curve_radius.md) [set_curve_tilt](/docs/GeoNodes_classes/set_curve_tilt.md) [set_face_set](/docs/GeoNodes_classes/set_face_set.md) [set_handle_positions](/docs/GeoNodes_classes/set_handle_positions.md) [set_handle_type](/docs/GeoNodes_classes/set_handle_type.md) [set_id](/docs/GeoNodes_classes/set_id.md) [set_material](/docs/GeoNodes_classes/set_material.md) [set_material_index](/docs/GeoNodes_classes/set_material_index.md) [set_point_radius](/docs/GeoNodes_classes/set_point_radius.md) [set_position](/docs/GeoNodes_classes/set_position.md) [set_selection](/docs/GeoNodes_classes/set_selection.md) [set_shade_smooth](/docs/GeoNodes_classes/set_shade_smooth.md) [set_spline_cyclic](/docs/GeoNodes_classes/set_spline_cyclic.md) [set_spline_resolution](/docs/GeoNodes_classes/set_spline_resolution.md) [set_spline_type](/docs/GeoNodes_classes/set_spline_type.md) [sign](/docs/GeoNodes_classes/sign.md) [signed_distance](/docs/GeoNodes_classes/signed_distance.md) [simulation_output](/docs/GeoNodes_classes/simulation_output.md) [sin](/docs/GeoNodes_classes/sin.md) [sinh](/docs/GeoNodes_classes/sinh.md) [slice_string](/docs/GeoNodes_classes/slice_string.md) [smooth_max](/docs/GeoNodes_classes/smooth_max.md) [smooth_min](/docs/GeoNodes_classes/smooth_min.md) [snap](/docs/GeoNodes_classes/snap.md) [special_characters](/docs/GeoNodes_classes/special_characters.md) [spiral](/docs/GeoNodes_classes/spiral.md) [spline_length](/docs/GeoNodes_classes/spline_length.md) [spline_parameter](/docs/GeoNodes_classes/spline_parameter.md) [spline_resolution](/docs/GeoNodes_classes/spline_resolution.md) [split_edges](/docs/GeoNodes_classes/split_edges.md) [sqrt](/docs/GeoNodes_classes/sqrt.md) [store_named_attribute](/docs/GeoNodes_classes/store_named_attribute.md) [string](/docs/GeoNodes_classes/string.md) [string_length](/docs/GeoNodes_classes/string_length.md) [subdivide_curve](/docs/GeoNodes_classes/subdivide_curve.md) [subdivide_mesh](/docs/GeoNodes_classes/subdivide_mesh.md) [subdivision_surface](/docs/GeoNodes_classes/subdivision_surface.md) [subtract](/docs/GeoNodes_classes/subtract.md) [switch](/docs/GeoNodes_classes/switch.md)
+
+***T*** : [tan](/docs/GeoNodes_classes/tan.md) [tanh](/docs/GeoNodes_classes/tanh.md) [transform_geometry](/docs/GeoNodes_classes/transform_geometry.md) [translate_instances](/docs/GeoNodes_classes/translate_instances.md) [triangulate](/docs/GeoNodes_classes/triangulate.md) [trim_curve](/docs/GeoNodes_classes/trim_curve.md) [trunc](/docs/GeoNodes_classes/trunc.md)
+
+***U*** : [uv_unwrap](/docs/GeoNodes_classes/uv_unwrap.md)
+
+***V*** : [value](/docs/GeoNodes_classes/value.md) [value_to_string](/docs/GeoNodes_classes/value_to_string.md) [vector](/docs/GeoNodes_classes/vector.md) [vector_curves](/docs/GeoNodes_classes/vector_curves.md) [vector_rotate](/docs/GeoNodes_classes/vector_rotate.md) [vertex_neighbors](/docs/GeoNodes_classes/vertex_neighbors.md) [vertex_of_corner](/docs/GeoNodes_classes/vertex_of_corner.md) [volume_cube](/docs/GeoNodes_classes/volume_cube.md) [volume_to_mesh](/docs/GeoNodes_classes/volume_to_mesh.md)
+
+***W*** : [wrap](/docs/GeoNodes_classes/wrap.md)
+
+***X*** : [xnor](/docs/GeoNodes_classes/xnor.md) [xor](/docs/GeoNodes_classes/xor.md)
+
+***_*** : [_3d_cursor](/docs/GeoNodes_classes/_3d_cursor.md)
+
 ## _3d_cursor
 
 > _3DCursor, return node
@@ -1547,7 +1597,7 @@ Node initialization
 > HandleTypeSelection, return socket
 
 ``` python
-def handle_type_selection(handle_type='AUTO', mode={'RIGHT', 'LEFT'}, node_label=None, node_color=None):
+def handle_type_selection(handle_type='AUTO', mode={'LEFT', 'RIGHT'}, node_label=None, node_color=None):
 ```
 Node
  - class_name : [HandleTypeSelection](/docs/GeoNodes_classes/HandleTypeSelection.md)
@@ -1555,7 +1605,7 @@ Node
 
 Arguments
  - handle_type : 'AUTO'
- - mode : {'RIGHT', 'LEFT'}
+ - mode : {'LEFT', 'RIGHT'}
  - node_label : None
  - node_color : None
 
@@ -4084,7 +4134,7 @@ Node initialization
 > SetHandleType, return single output socket
 
 ``` python
-def set_handle_type(curve=None, selection=None, handle_type='AUTO', mode={'RIGHT', 'LEFT'}, node_label=None, node_color=None):
+def set_handle_type(curve=None, selection=None, handle_type='AUTO', mode={'LEFT', 'RIGHT'}, node_label=None, node_color=None):
 ```
 Node
  - class_name : [SetHandleType](/docs/GeoNodes_classes/SetHandleType.md)
@@ -4094,7 +4144,7 @@ Arguments
  - curve : None
  - selection : None
  - handle_type : 'AUTO'
- - mode : {'RIGHT', 'LEFT'}
+ - mode : {'LEFT', 'RIGHT'}
  - node_label : None
  - node_color : None
 
