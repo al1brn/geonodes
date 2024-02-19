@@ -55,14 +55,13 @@ Some maths are required to build the arrow according the parameters.
 The corresponding python code is given here after:
 
 ``` python
-
 # ----- Arrowhead radius from the shaft radius
 
 rh = r*s
 
 # ----- Arrowhead height from the angle
 
-tg = gn.tan(angle)
+tg = tree.tan(angle)
 hh = rh/tg
 z0 = length - hh
 
@@ -79,9 +78,8 @@ z2 = z0 + k*h*s
 # extremities. The vertices position is then computed as the mean
 # of the two edges. Twice a cosine factor
 
-f = 1/gn.cos(gn.pi/vertices)**2
-fac = gn.Vector((f, f, 1))
-
+f = 1/tree.cos(np.pi/vertices)**2
+fac = tree.combine_xyz(f, f, 1)
 ```
 
 ## Building by extrusion
