@@ -65,6 +65,51 @@
 [Domain](/docs/GeoNodes_classes/Domain.md)
 # Shader
 
+## Node
+
+***A*** : [AddShader](/docs/Shader_classes/AddShader.md) [AmbientOcclusion](/docs/Shader_classes/AmbientOcclusion.md) [Attribute](/docs/Shader_classes/Attribute.md)
+
+***B*** : [Background](/docs/Shader_classes/Background.md) [Bevel](/docs/Shader_classes/Bevel.md) [Blackbody](/docs/Shader_classes/Blackbody.md) [BrickTexture](/docs/Shader_classes/BrickTexture.md) [BrightnessContrast](/docs/Shader_classes/BrightnessContrast.md) [Bump](/docs/Shader_classes/Bump.md)
+
+***C*** : [CameraData](/docs/Shader_classes/CameraData.md) [CheckerTexture](/docs/Shader_classes/CheckerTexture.md) [Clamp](/docs/Shader_classes/Clamp.md) [ColorAttribute](/docs/Shader_classes/ColorAttribute.md) [ColorRamp](/docs/Shader_classes/ColorRamp.md) [CombineColor](/docs/Shader_classes/CombineColor.md) [CombineXYZ](/docs/Shader_classes/CombineXYZ.md) [CurvesInfo](/docs/Shader_classes/CurvesInfo.md)
+
+***D*** : [DiffuseBSDF](/docs/Shader_classes/DiffuseBSDF.md) [Displacement](/docs/Shader_classes/Displacement.md)
+
+***E*** : [Emission](/docs/Shader_classes/Emission.md) [EnvironmentTexture](/docs/Shader_classes/EnvironmentTexture.md)
+
+***F*** : [FloatCurve](/docs/Shader_classes/FloatCurve.md) [Frame](/docs/Shader_classes/Frame.md) [Fresnel](/docs/Shader_classes/Fresnel.md)
+
+***G*** : [Gamma](/docs/Shader_classes/Gamma.md) [Geometry](/docs/Shader_classes/Geometry.md) [GlassBSDF](/docs/Shader_classes/GlassBSDF.md) [GlossyBSDF](/docs/Shader_classes/GlossyBSDF.md) [GradientTexture](/docs/Shader_classes/GradientTexture.md) [Group](/docs/Shader_classes/Group.md) [GroupInput](/docs/Shader_classes/GroupInput.md) [GroupOutput](/docs/Shader_classes/GroupOutput.md)
+
+***H*** : [HairBSDF](/docs/Shader_classes/HairBSDF.md) [Holdout](/docs/Shader_classes/Holdout.md) [HueSaturationValue](/docs/Shader_classes/HueSaturationValue.md)
+
+***I*** : [IESTexture](/docs/Shader_classes/IESTexture.md) [ImageTexture](/docs/Shader_classes/ImageTexture.md) [InvertColor](/docs/Shader_classes/InvertColor.md)
+
+***L*** : [LayerWeight](/docs/Shader_classes/LayerWeight.md) [LightFalloff](/docs/Shader_classes/LightFalloff.md) [LightOutput](/docs/Shader_classes/LightOutput.md) [LightPath](/docs/Shader_classes/LightPath.md) [LineStyleOutput](/docs/Shader_classes/LineStyleOutput.md)
+
+***M*** : [MagicTexture](/docs/Shader_classes/MagicTexture.md) [MapRange](/docs/Shader_classes/MapRange.md) [Mapping](/docs/Shader_classes/Mapping.md) [MaterialOutput](/docs/Shader_classes/MaterialOutput.md) [Math](/docs/Shader_classes/Math.md) [Mix](/docs/Shader_classes/Mix.md) [MixShader](/docs/Shader_classes/MixShader.md) [MusgraveTexture](/docs/Shader_classes/MusgraveTexture.md)
+
+***N*** : [NoiseTexture](/docs/Shader_classes/NoiseTexture.md) [Normal](/docs/Shader_classes/Normal.md) [NormalMap](/docs/Shader_classes/NormalMap.md)
+
+***O*** : [ObjectInfo](/docs/Shader_classes/ObjectInfo.md)
+
+***P*** : [ParticleInfo](/docs/Shader_classes/ParticleInfo.md) [PointDensity](/docs/Shader_classes/PointDensity.md) [PointInfo](/docs/Shader_classes/PointInfo.md) [PrincipledBSDF](/docs/Shader_classes/PrincipledBSDF.md) [PrincipledHairBSDF](/docs/Shader_classes/PrincipledHairBSDF.md) [PrincipledVolume](/docs/Shader_classes/PrincipledVolume.md)
+
+***R*** : [RGB](/docs/Shader_classes/RGB.md) [RGBCurves](/docs/Shader_classes/RGBCurves.md) [RGBToBW](/docs/Shader_classes/RGBToBW.md) [RefractionBSDF](/docs/Shader_classes/RefractionBSDF.md) [Reroute](/docs/Shader_classes/Reroute.md)
+
+***S*** : [Script](/docs/Shader_classes/Script.md) [SeparateColor](/docs/Shader_classes/SeparateColor.md) [SeparateXYZ](/docs/Shader_classes/SeparateXYZ.md) [ShaderToRGB](/docs/Shader_classes/ShaderToRGB.md) [Shadernodeoutputaov](/docs/Shader_classes/Shadernodeoutputaov.md) [SheenBSDF](/docs/Shader_classes/SheenBSDF.md) [SkyTexture](/docs/Shader_classes/SkyTexture.md) [SpecularBSDF](/docs/Shader_classes/SpecularBSDF.md) [SubsurfaceScattering](/docs/Shader_classes/SubsurfaceScattering.md)
+
+***T*** : [Tangent](/docs/Shader_classes/Tangent.md) [TextureCoordinate](/docs/Shader_classes/TextureCoordinate.md) [ToonBSDF](/docs/Shader_classes/ToonBSDF.md) [TranslucentBSDF](/docs/Shader_classes/TranslucentBSDF.md) [TransparentBSDF](/docs/Shader_classes/TransparentBSDF.md)
+
+***U*** : [UVAlongStroke](/docs/Shader_classes/UVAlongStroke.md) [UVMap](/docs/Shader_classes/UVMap.md)
+
+***V*** : [Value](/docs/Shader_classes/Value.md) [VectorCurves](/docs/Shader_classes/VectorCurves.md) [VectorDisplacement](/docs/Shader_classes/VectorDisplacement.md) [VectorMath](/docs/Shader_classes/VectorMath.md) [VectorRotate](/docs/Shader_classes/VectorRotate.md) [VectorTransform](/docs/Shader_classes/VectorTransform.md) [VolumeAbsorption](/docs/Shader_classes/VolumeAbsorption.md) [VolumeInfo](/docs/Shader_classes/VolumeInfo.md) [VolumeScatter](/docs/Shader_classes/VolumeScatter.md) [VoronoiTexture](/docs/Shader_classes/VoronoiTexture.md)
+
+***W*** : [WaveTexture](/docs/Shader_classes/WaveTexture.md) [Wavelength](/docs/Shader_classes/Wavelength.md) [WhiteNoiseTexture](/docs/Shader_classes/WhiteNoiseTexture.md) [Wireframe](/docs/Shader_classes/Wireframe.md) [WorldOutput](/docs/Shader_classes/WorldOutput.md)
+
+## Socket
+
+[Col](/docs/GeoNodes_classes/Col.md) [Custom](/docs/GeoNodes_classes/Custom.md) [Float](/docs/GeoNodes_classes/Float.md) [Rot](/docs/GeoNodes_classes/Rot.md) [Shader](/docs/GeoNodes_classes/Shader.md) [Str](/docs/GeoNodes_classes/Str.md) [Vect](/docs/GeoNodes_classes/Vect.md)
 # Compositor
 
 # Texture

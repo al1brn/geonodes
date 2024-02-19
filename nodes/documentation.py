@@ -812,6 +812,21 @@ class Doc:
 # =============================================================================================================================
 # Build the documentation
 
+FULL_BUILD = """
+
+from geonodes import GeoNodes, Shader
+from geonodes.nodes.documentation
+
+with GeoNodes("Build"):
+    pass
+
+with Shader("Build"):
+    pass
+
+build_doc(...)
+
+"""
+
 def build_doc(folder):
     
     INDEX = {tree_type : {} for tree_type in TREE_CLASSES.keys()}
