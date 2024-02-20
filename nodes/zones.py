@@ -35,16 +35,24 @@ class Zone:
             
             first = False
             
+        # ----- Variables used within the with statement
+            
+        self._locals = {name: getattr(self._input, name) for name in kwargs.keys()}
+        
+        # ----- Let's active dynamic attributes
+        # _closed = True  : variables point to input and output nodes
+        # -close  = False : variables point to _locals dict
+            
         self._closed = True
         
         # ----- Initialize the attributes
         
         for name, value in kwargs.items():
-            setattr(self, name, value)   
+            setattr(self, name, value)
+            
             
     def __str__(self):
         return f"<{type(self).__name__} Zone>"
-            
 
     # ====================================================================================================
     # Context management
@@ -56,10 +64,60 @@ class Zone:
     def __exit__(self, exception_type, exception_value, traceback):
         self._closed = True
         
+        for name, value in self._locals.items():
+            setattr(self._output, name, value)
+        
     # ====================================================================================================
     # Dynamic attributes
-    
+
     def __getattr__(self, name):
+
+        closed = self.__dict__.get('_closed')
+        if closed is not None:
+            if closed:
+                val = getattr(self._output, name)
+            else:
+                val = self._locals.get(name)
+                # Trying to access fixed sockets
+                if val is None:
+                    val = getattr(self._input, name)
+                
+            if val is not None:
+                return val
+        
+        raise AttributeError(f"{self} doesn't have input socket named '{name}'.")
+        
+    def __setattr__(self, name, value):
+        
+        if name == '_closed':
+            super().__setattr__(name, value)
+            return
+        
+        closed = self.__dict__.get('_closed')
+        if closed is None:
+            super().__setattr__(name, value)
+            return
+        
+        ok = True
+        if closed:
+            if name in self._input.inputs.sockets_pynames().keys():
+                setattr(self._input, name, value)
+            else:
+                ok = False
+        else:
+            if name in self._locals:
+                self._locals[name] = value
+            elif name in self._output.inputs.sockets_pynames().keys():
+                setattr(self._output, name, value)
+            else:
+                ok = False
+                
+        if not ok:
+            raise AttributeError(f"{self} has not socket named {name}!")
+                
+    
+    
+    def __getattr__OLD(self, name):
 
         closed = self.__dict__.get('_closed')
         if closed is not None:
@@ -67,9 +125,9 @@ class Zone:
             if node is not None:
                 return getattr(node, name)
         
-        raise AttributeError(f"Repeat doesn't have input socket named '{name}'.")
+        raise AttributeError(f"{self} doesn't have input socket named '{name}'.")
         
-    def __setattr__(self, name, value):
+    def __setattr__OLD(self, name, value):
         
         if name == '_closed':
             super().__setattr__(name, value)

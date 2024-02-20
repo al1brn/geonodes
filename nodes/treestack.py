@@ -208,6 +208,54 @@ class StackedNode(object):
         if value is not None:
             setattr(self.bnode, param, value)
             
+    # ----------------------------------------------------------------------------------------------------
+    # component : ('MESH', 'POINTCLOUD', 'CURVE', 'INSTANCES')
+    # mode ('ALL', 'EDGE_FACE', 'ONLY_FACE') DeleteGeometry
+    # mode ('VERTICES', 'EDGES', 'FACES') ExtrudeMesh
+    # mode ('VERTICES', 'EDGES', 'FACES', 'CORNERS') MeshToPoints
+    # target_element ('POINTS', 'EDGES', 'FACES') GeometryProximity
+            
+    @classmethod
+    def _get_domain_value(cls, domain, default):
+        
+        if domain is None or cls.DOMAIN_VALUES is None:
+            return default
+        
+        def get_value(values):
+            for val in values:
+                if val in cls.DOMAIN_VALUES:
+                    return val
+            print(f"CAUTION: domain '{domain}' not valid for node '{type(self).__name__}', valid values are: {values}. Default '{default}' is used")
+            return default
+        
+        if domain == 'POINT':
+            return get_value(['POINT', 'POINTS', 'MESH', 'VERTICES', 'ALL'])
+        
+        elif domain == 'CLOUD':
+            return get_value(['POINTCLOUD'])
+        
+        elif domain == 'EDGE':
+            return get_value(['EDGE', 'EDGES', 'EDGE_FACE'])
+        
+        elif domain == 'FACE':
+            return get_value(['FACE', 'FACES', 'ONLY_FACE'])
+        
+        elif domain == 'CORNER':
+            return get_value(['CORNER', ' CORNERS'])
+        
+        elif domain == 'CURVE':
+            return get_value(['CURVE', 'CURVES'])
+        
+        elif domain == 'SPLINE':
+            return get_value(['SPLINE', 'SPLINES'])
+        
+        elif domain == 'INSTANCE':
+            return get_value(['INSTANCE', 'INSTANCES'])
+        
+        else:
+            raise AttributeError(f"Domain {domain} not valid")
+
+            
     # ====================================================================================================
     # Sockets
     

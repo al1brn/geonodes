@@ -230,20 +230,6 @@ class NodeInfo:
             self.node_args.append(param)
             
         # ====================================================================================================
-        # Set xxx node can be used to create a property
-        
-        """
-        self.prop_candidate = None
-        name_split = self.name.split(" ")
-        if name_split[0] == 'Set' and self.max_out==1:
-            self.prop_candidate = {
-                'setter_classe_name': self.class_name,
-                'getter_class_name' : utils.node_class_name(" ".join(name_split[1:])),
-                }
-        """
-            
-            
-        # ====================================================================================================
         # Node class
         
         # ----- __init__ method
@@ -260,6 +246,14 @@ class NodeInfo:
         # ----- Add the class
         
         self.add_node_class(init_code=init_code, descr=None)
+        
+        # ----- Domain param and values
+        
+        setattr(node_classes[self.bl_idname], 'DOMAIN_PARAM',  self.domain_param)
+        setattr(node_classes[self.bl_idname], 'DOMAIN_VALUES', self.domain_values)
+        
+        # ----- Attributes
+        
         self.add_attribute(self.class_name, 'bl_idname',   self.bl_idname)
         self.add_attribute(self.class_name, 'params',      self.params)
         self.add_attribute(self.class_name, 'dynamic_in',  self.dynamic_in)
@@ -333,35 +327,6 @@ class NodeInfo:
                                 descr=f"{self.class_name}, {self.sm_pyname}=self")
                 
             ok_method = False
-                
-
-        # ====================================================================================================
-        # Domain method
-        
-        if self.has_socket_method and self.sm_in_bsock.bl_idname == 'NodeSocketGeometry' and 'domain' in self.params:
-            
-            domain_class = sockets.Domain
-            self.register_class(domain_class, 'Other')
-            domain_class_name = domain_class.__name__
-            
-            jump = self.max_out == 1
-            
-            meth_code, meth_args, node_args = self.method_code(self.python_name,
-                        method_type   = 'METHOD', 
-                        self_socket   = self.sm_pyname,
-                        use_enabled   = True,
-                        node_return   = f"node.output_socket",
-                        return_args   = True,
-                        **{
-                            f"{self.sm_pyname}" : "self.geometry",
-                            'domain' : f"self.geometry.jump(node.{self.sm_out_pyname})",
-                            }
-                        )
-
-            descr = f"Node {self.class_name}, {self.sm_pyname}=self, domain=DOMAIN"
-            self.add_method(domain_class_name, self.python_name, meth_code,
-                            meth_args=meth_args, node_args=node_args,
-                            descr=descr)
             
         # ====================================================================================================
         # One single input socket
@@ -509,11 +474,28 @@ class NodeInfo:
         
         # ----- Parameters in enum
         
-        self.enum_params = {}
+        self.enum_params   = {}
+        self.domain_param  = None
+        self.domain_values = None
         for param in self.params:
             enums = self.get_enum_list(param)
             if enums is not None:
                 self.enum_params[param] = enums
+                
+                # ----- Do we have a domain parameter ?
+                c = 0
+                for dom in ['POINT', 'EDGE', 'FACE', 'CURVE', 'INSTANCE']:
+                    for e in enums:
+                        if dom in e:
+                            c += 1
+                            if c == 2:
+                                self.domain_param  = param
+                                self.domain_values = enums
+                                break
+                            
+                    if self.domain_param is not None:
+                        self.domain_values = enums
+                        break
                 
         # ----- DEBUG
 
@@ -573,7 +555,16 @@ class NodeInfo:
     # ====================================================================================================
     # Create a node class
     
-    def method_code(self, name, method_type='INIT', self_socket=None, use_enabled=False, node_label=True, node_return="node", debug=None, return_args=False, **kwargs):
+    def method_code(self, name,
+                    method_type   = 'INIT',
+                    self_socket   = None, 
+                    use_enabled   = False,
+                    node_label    = True, 
+                    node_return   = "node", 
+                    debug         = None, 
+                    return_args   = False,
+                    **kwargs):
+        
         """ Build the arguments string for the header of a function.
         
         The 'method_type' argument can be:
@@ -595,6 +586,8 @@ class NodeInfo:
             - use_enabled (bool = False) : compute the current count per socket if True else get node.max_per_name
             - node_label (bool = True) : add node_label and node_color arguments
             - node_return (str = 'node') : can be replaced by 'self.jump(node)' or 'node.output_socket' for instance
+            - debug (str = None) : additional lines to insert
+            - return_args (bool = False) : return tuple (code, args, call_args) if True
             - kwargs : param, value to exclude
             
         Returns
@@ -687,6 +680,8 @@ class NodeInfo:
                 param_setter = "\t# Node parameters\n" + "".join([f"\tself.{param:12s} = {param}\n" for param in self.params]) + "\n"
             
         else:
+            # ----- Build the call_args list
+            
             if len(kwargs) == 0:
                 call_args.extend([(param, param) for param in self.params])
                 
@@ -697,6 +692,16 @@ class NodeInfo:
                     else:
                         args.append((param, utils.python_constant(self.prm_defs[param])))
                         call_args.append((param, param))
+                        
+            # ----- Replace: domain = DEFAULT by domain = self._get_domain(DEFAULT)
+            
+            if self.domain_param is not None:
+                for i, item in enumerate(call_args):
+                    if not isinstance(item, tuple):
+                        continue
+                    if item[0] == self.domain_param:
+                        call_args[i] = (self.domain_param, f"self._get_domain({item[1]})")
+                        break
                         
         # ----------------------------------------------------------------------------------------------------
         # Node label
@@ -742,6 +747,7 @@ class NodeInfo:
             s += f"\tnode = {constants.CUR_TREE}().{self.class_name}(" + all_call + ")\n"
             s += f"\treturn {node_return}\n\n"
             
+            
         if return_args:
             return s, args, call_args
         else:
@@ -753,34 +759,6 @@ class NodeInfo:
     def add_customs(self):
         
         def add_from_dict(name, cust):
-            
-            # ----- Loop on domains
-            
-            domain_key = cust['domain']
-            if domain_key is not None:
-                
-                # ----- Geometry
-
-                cust2 = {**cust}
-                cust2['target']      = 'Geometry'
-                cust2['domain']      = None
-                cust2['descr'] += f", {self.sm_pyname}=self"
-                
-                add_from_dict(name, cust2)
-                    
-                # ----- Domain
-
-                cust2 = {**cust}
-                cust2['target']      = 'Domain'
-                cust2['domain']      = None
-                cust2['kwargs'][domain_key] = 'self.domain_name'
-                if cust['self_socket'] is not None:
-                    cust2['kwargs'][cust['self_socket']] = 'self.geometry'
-                cust2['descr'] += ", domain=DOMAIN"
-                
-                add_from_dict(name, cust2)
-                
-                return
             
             # ----- Loop on loops
             
@@ -836,14 +814,14 @@ class NodeInfo:
             meth_code, meth_args, node_args = self.method_code(name,
                     method_type     = 'STATIC' if is_static else 'METHOD', 
                     self_socket     = None if cust['target'] is None else cust['self_socket'], 
-                    use_enabled     = cust['use_enabled'], 
+                    use_enabled     = cust['use_enabled'],
                     node_label      = cust['node_label'], 
                     node_return     = cust['node_return'], 
                     debug           = cust['debug'],
                     return_args     = True,
                     **kwargs,
                     )
-            
+
             # ----- Restore the params
             
             for k in reversed(mems.keys()):
@@ -1000,7 +978,7 @@ class NodeInfo:
         
         # ----- Register Domain class if Geometry
         
-        if class_name == 'Geometry':
+        if False and class_name == 'Geometry':
             self.register_class(sockets.Domain, 'Other', descr="Geometry domain")
         
         return socket_classes[bsocket.type]

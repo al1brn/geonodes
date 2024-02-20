@@ -70,7 +70,6 @@ def add_function(class_name, name,
                  use_enabled  = False,
                  node_label   = True,
                  node_return  = "node",
-                 domain       = None,
                  loops        = None,
                  debug        = None,
                  descr        = None,
@@ -79,7 +78,7 @@ def add_function(class_name, name,
     
     """ Declare a custom function for a node class name.
     
-    Can be use to create as many functions as they are possible values for a node parameter.
+    Can be used to create as many functions as they are possible values for a node parameter.
     For instance, the node Math can give birth to one global function and one method per possible value of the operation parameter:
         - operation = 'SINE' -> sin global function, Float.sin method
         - operation = 'COSINE' -> cos global function, Float.sin method
@@ -91,14 +90,13 @@ def add_function(class_name, name,
         
     The parameters to loop on are given in the loops argument.
     
-    The following example create the Geometry and Domain method: store_named_float, store_named, vector, store_named_color,...
+    The following example create the Geometry methods: store_named_float, store_named, vector, store_named_color,...
         
     ```python
     add_function("StoreNamedAttribute", "store_named_DATA_TYPE", "Geometry",
                  self_socket = 'geometry',
                  use_enabled = True,
                  node_return = "self.jump(node.geometry)",
-                 domain      = 'domain',
                  loops       = ['data_type'],
              )
     ```
@@ -113,7 +111,6 @@ def add_function(class_name, name,
         - use_enabled (bool = False) : Get the enabled sockets rather than all the possible sockets
         - node_label (bool = True) : add node_label and node_color arguments
         - node_return (str = "node") : return statement. By default, returns the node. Use node_return = node.output_socket to return the socket
-        - domain (str = None) : name of the domain parameter. If not None, create a function for the Domain class (target should be Geometry)
         - loops (list = None) : list of parameters to loop on. One function is created per parameter possible values
         - debug (str = None) : python source code to insert for debug
         - descr (str = None) : description string
@@ -145,7 +142,6 @@ def add_function(class_name, name,
             'use_enabled' : use_enabled,
             'node_label'  : node_label,
             'node_return' : node_return,
-            'domain'      : domain,
             'loops'       : [] if loops is None else list(loops),
             'debug'       : debug,
             'descr'       : descr,
@@ -207,6 +203,8 @@ def create_properties(tree_type):
     cust_props = get_cust_props(tree_type)
     tree_dict = constants.tree_dict(tree_type)
     doc = documentation.doc_dict(tree_type)
+    
+    set_color = f"node_color=constants.NODE_COLORS['property']"
 
     for prop in cust_props:
         getter_class = prop['getter_class']
@@ -223,7 +221,7 @@ def create_properties(tree_type):
         if getter_class is not None:
             getter = prop['getter']
             if getter is None:
-                getter = f"return self.tree.{getter_class}().output_socket"
+                getter = f"return self.tree.{getter_class}({set_color}).output_socket"
             getter_code = f"def {name}(self):\n\t{getter}\n"
             fget = utils.compile_f(getter_code, name)
             
@@ -231,7 +229,7 @@ def create_properties(tree_type):
             setter = prop['setter']
             if setter is None:
                 pyname = doc[setter_class]['pyname']
-                setter = f"self.{pyname}(value)"
+                setter = f"self.{pyname}(value, {set_color})"
             setter_code = f"def {name}(self, value):\n\t{setter}\n"
                 
             fset = utils.compile_f(setter_code, name)
@@ -256,18 +254,6 @@ def create_properties(tree_type):
             print("   Getter:\n", f"def {name}(self):\n\t{getter}\n")
             print("   Getter:\n", f"def {name}(self, value):\n\t{setter}\n")
             print()
-                
-
-"""
-add_property('Geometry', 'edge_shade_smoot',
-             getter_class = 'IsEdgeSmooth',
-             setter_class = 'SetSmooth',
-             getter       = None,
-             setter       = "self.set_shade_smooth(value, domain='EDGE')",
-             descr        = None,
-             )
-"""
-    
     
 # =============================================================================================================================
 # Maths
@@ -293,11 +279,6 @@ add_function("VectorMath", "OPERATION", 'Vect',
              node_return = "node.output_socket",
              loops       = ['operation'],
              descr       = "vector=self",
-             )
-
-add_function("SeparateXYZ", "xyz", 'Vect',
-             self_socket = 'vector',
-             descr       = "Shortcut for Vect.separate_xyz",
              )
 
 add_function("BooleanMath", "OPERATION", ('Bool', None),
@@ -356,7 +337,6 @@ add_function("StoreNamedAttribute", "store_named_DATA_TYPE", "Geometry",
              self_socket = 'geometry',
              use_enabled = True,
              node_return = "self.jump(node.geometry)",
-             domain      = 'domain',
              loops       = ['data_type'],
              )
 
@@ -370,7 +350,6 @@ add_function("CaptureAttribute", "capture_DATA_TYPE", "Geometry",
              self_socket = 'geometry',
              use_enabled = True,
              node_return = "self.jump(node.geometry).node.attribute",
-             domain      = 'domain',
              loops       = ['data_type'],
              )
 
@@ -410,7 +389,6 @@ add_function("SampleIndex", "sample_index_DATA_TYPE", "Geometry",
              self_socket = 'geometry',
              use_enabled = True,
              node_return = "node.output_socket",
-             domain      = 'domain',
              loops       = ['data_type'],
              )
 
@@ -428,9 +406,18 @@ add_function("CombineColor", "combine_MODE", None,
 # =============================================================================================================================
 # Properties
 
+prop_color = f"node_color={constants.NODE_COLORS['property']}"
+
+
 # -----------------------------------------------------------------------------------------------------------------------------
 # Vector
 
+add_property('Vect', 'xyz',
+             getter_class = 'SeparateXYZ',
+             setter_class = 'CombineXYZ',
+             getter       = f"return self.separate_xyz({prop_color})",
+             setter       = f"self.jump(self.tree.CombineXYZ(*value, {prop_color}).vector if hasattr(value, '__len__') else self.tree.CombineXYZ(value, value, value, {prop_color}).vector)"
+             )
 
 # -----------------------------------------------------------------------------------------------------------------------------
 # Geometry
@@ -447,13 +434,18 @@ add_property('Geometry', 'index',
 add_property('Geometry', 'position',
              getter_class = 'Position',
              setter_class = 'SetPosition',
-             descr        = "SetPosition(position=value)",
+             descr        = f"SetPosition(position=value, {prop_color})",
              )
 
 add_property('Geometry', 'offset',
              setter_class = 'SetPosition',
-             setter       = "self.set_position(offset=value)",
+             setter       = f"self.set_position(offset=value, {prop_color})",
              descr        = "SetPosition(offset=value)",
+             )
+
+add_property('Geometry', 'material',
+             getter_class = 'Material',
+             setter_class = 'SetMaterial',
              )
 
 # -----------------------------------------------------------------------------------------------------------------------------
@@ -489,18 +481,13 @@ add_property('Geometry', 'spline_resolution',
 # -----------------------------------------------------------------------------------------------------------------------------
 # Mesh
 
-add_property('Geometry', 'edge_shade_smooth',
-             getter_class = 'IsEdgeSmooth',
-             setter_class = 'SetSmooth',
-             setter       = "self.set_shade_smooth(value, domain='EDGE')",
-             descr        = "SetShadeSmooth(domain='EDGE')",
-             )
-
-add_property('Geometry', 'face_shade_smooth',
+add_property('Geometry', 'shade_smooth',
              getter_class = 'IsFaceSmooth',
              setter_class = 'SetSmooth',
-             setter       = "self.set_shade_smooth(value, domain='FACE')",
-             descr        = "SetShadeSmooth(domain='FACE')",
+             getter       = f"return self.tree.is_edge_smooth({prop_color}) if self._domain == 'EDGE' else self.tree.is_face_smooth({prop_color})",
+             #setter       = "self.set_shade_smooth(value, domain=self._get_domain('FACE'))",
+             setter       = f"self.set_shade_smooth(value, domain='EDGE' if self._domain == 'EDGE' else 'FACE', {prop_color})",
+             descr        = "SetShadeSmooth()",
              )
 
 add_property('Geometry', 'face_area',

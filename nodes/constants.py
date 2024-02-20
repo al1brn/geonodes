@@ -58,6 +58,16 @@ def dump_stack(title="Dump stack"):
     for tree in TREE_STACK:
         print(tree)
     print()
+    
+    
+# ====================================================================================================
+# Colors
+
+NODE_COLORS = {
+    'property': (.3, .3, .25),
+    'gen':      (.2, .1, .05),
+    }
+    
 
 # ====================================================================================================
 # Standard node attribute names which are not properties

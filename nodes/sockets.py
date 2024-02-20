@@ -23,6 +23,9 @@ Socket and Sockets are used both for dynamic nodes building and running.
 update : 2024/02/17
 """
 
+
+import inspect
+
 from pprint import pprint
 
 import numpy as np
@@ -672,7 +675,7 @@ class Sockets:
 # ====================================================================================================
 # Domain class
 
-class Domain:
+class Domain_OLD:
     def __init__(self, geometry, domain_name):
         self.geometry    = geometry
         self.domain_name = domain_name
@@ -682,17 +685,131 @@ class Domain:
     
     def _get_selection(self, selection):
         return self.geometry._get_selection(selection)
+    
+class Domain_OLD2:
+    def __init__(self, geometry, domain_name):
+        self._geometry = geometry
+        self._domain   = domain_name
+        
+    def __getattr__(self, name):
+        
+        # ----- Get the attr in the class dict
+        attr = type(self._geometry).__dict__.get(name)
+        #if attr is None:
+        #    attr = type(self._geometry).__dict__.get(name)
+        if attr is None:
+            raise AttributeError(f"Geometry has no attribute {name}")
+            
+        # ----- The attribute is a function
+        # Let insert domain=
+            
+        if inspect.isfunction(attr):
+            
+            # By default domain=self._domain
+            domain_arg = 'domain'
+            domain_val = self._domain
+            
+            # Some hacks
+            if name == 'extrude_mesh':
+                domain_arg = 'mode'
+                domain_val = self._domain + 'S'
+                
+            # Let's insert the domain argument
+            argspec= inspect.getfullargspec(attr)
+            if domain_arg in argspec.args:
+                return lambda *args, **kwargs: attr(self._geometry, *args, **{domain_arg: domain_val}, **kwargs)
+            else:
+                print(f"CAUTION: Geometry method {name} doesn't have a 'domain' argument.\nSimply call 'geometry.{name}' rather than 'geometry.{self._domain}.{name}'.")
+                return lambda *args, **kwargs: attr(self._geometry, *args, **kwargs)
+            
+        # ----- The attribute is a property
+            
+        if type(attr).__name__ == 'property':
+            return getattr(self._geometry, name)
+        
+        # ----- Something else !!!
+        
+        raise AttributeError(f"Geometry has no attribute {name}: {attr}")
+        
+    def __setattr__(self, name, value):
+        geometry = self.__dict__.get('_geometry')
+        if geometry is None or name in ['_domain']:
+            super().__setattr__(name, value)
+            return
+        
+        setattr(geometry, name, value)
 
 # ====================================================================================================
 # Geometry socket
 
 class Geometry(Socket):
+    
     def __init__(self, bsocket):
         super().__init__(bsocket)
         self._selection = None
+        self._domain    = None
         
-        for domain_name in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'SPLINE', 'INSTANCE'):
-            setattr(self, domain_name, Domain(self, domain_name))
+        #for domain_name in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'SPLINE', 'INSTANCE'):
+        #    setattr(self, domain_name, Domain(self, domain_name))
+            
+    def jump(self, socket):
+        self._selection = None
+        self._domain    = None
+        return super().jump(socket)
+    
+    # ----------------------------------------------------------------------------------------------------
+    # Domains
+    
+    @property
+    def POINT(self):
+        self._domain = 'POINT'
+        return self
+    
+    @property
+    def CLOUD(self):
+        self._domain = 'CLOUD'
+        return self
+    
+    @property
+    def EDGE(self):
+        self._domain = 'EDGE'
+        return self
+    
+    @property
+    def FACE(self):
+        self._domain = 'FACE'
+        return self
+    
+    @property
+    def CORNER(self):
+        self._domain = 'CORNER'
+        return self
+    
+    @property
+    def CURVE(self):
+        self._domain = 'CURVE'
+        return self
+    
+    @property
+    def SPLINE(self):
+        self._domain = 'SPLINE'
+        return self
+    
+    @property
+    def INSTANCE(self):
+        self._domain = 'INSTANCE'
+        return self
+    
+    def _get_domain(self, default):
+        if False:
+            print(f"{type(self).__name__}._GET_DOMAIN (_domain={self._domain}, default={default}) -> ({type(self.node).__name__}) = {self.node._get_domain_value(self._domain, default)} //", self.node.DOMAIN_VALUES)
+        _domain = self._domain
+        self._domain = None
+        return self.node._get_domain_value(_domain, default)
+    
+    
+    # ----------------------------------------------------------------------------------------------------
+    # Syntax geometry[sel].xxx() -> xxx(selection=sel)
             
     def __getitem__(self, index):
         self._selection = index
@@ -700,15 +817,52 @@ class Geometry(Socket):
     
     def _get_selection(self, selection):
         
-        sel = self._selection
-        if sel is None:
+        gen_color = constants.NODE_COLORS['gen']
+        
+        # ----- No selection, we return the default
+        
+        if self._selection is None:
             return selection
+
+        # ----- Selection valid only once
         
+        _selection = self._selection
         self._selection = None
-        if selection is None:
-            return sel
         
-        return constants.current_tree().band(sel, selection, node_label="[sel] and selection")
+        # ----- If _selection is int or slice, we generated comparizon nodes with index
+        
+        tree = constants.current_tree()
+        
+        if isinstance(_selection, slice):
+            
+            with tree.layout(f"Slice [{_selection.start}:{_selection.stop}]", node_color=gen_color):
+            
+                if _selection.start is None:
+                    # [:]
+                    if _selection.stop is None:
+                        _selection = None
+                    # [:10]
+                    else:
+                        _selection = tree.index(node_color=gen_color).less_than(_selection.stop, node_color=gen_color)
+                else:
+                    # [10:]
+                    if _selection.stop is None:
+                        _selection = tree.index(node_color=gen_color).greater_equal(_selection.start, node_color=gen_color)
+                    # [10:20]
+                    else:
+                        half = (_selection.stop  - _selection.start)/2 + .1
+                        mid  = (_selection.start + _selection.stop)/2
+                        
+                        _selection = tree.compare(tree.index(node_color=gen_color), mid, epsilon=half, operation='EQUAL', data_type='FLOAT', node_color=gen_color)
+                
+        
+        elif utils.get_value_socket_type(_selection) == 'INT':
+            _selection = tree.index().equal(_selection, node_color=gen_color)
+            
+        if selection is None:
+            return _selection
+        
+        return tree.band(_selection, selection, node_color=constants.NODE_COLORS['gen'])
 
         
     
