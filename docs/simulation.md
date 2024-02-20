@@ -2,7 +2,7 @@
 
 > Tutorial on how to create a simulation zone.
 >
-> Also refer to [Simulation](api/Simulation.md) class documentation to see generators such as Fluid which allow to quickly set up a fluid simulator.
+> Also refer to [Simulation](GeoNodes_classes/Simulation.md) class documentation to see generators such as Fluid which allow to quickly set up a fluid simulator.
 
 ## Objective
 
@@ -23,33 +23,30 @@ The nodes are created by instanciating a **Simulation** class. The class constru
 <img src="images/simulation_creation.png" width="600" class="center">
 
 ``` python
-import geonodes as gn
+from geonodes import GeoNodes
 
-with gn.Tree("Simul", auto_capture=False) as tree:
-  # Create a simulation zone for the input geometry with one socket initialized to (0, 0, 0)
-  simul = gn.Simulation(geometry=tree.ig, position=(0, 0, 0))
+with GeoNodes("Simul") as tree:
+    with tree.simulation(geometry=tree.ig, position=(0, 0, 0)) as simul:
+        pass
 ```
 
-At creation time, the *geometry* sockets inside the simulation zone are not connected. This is done by using the *close* method.
+The zone internal links can be manually set with:
+
+
+At creation time, the *geometry* sockets inside the simulation zone are not connected. Within the `with` block, this can be done by
 
 ``` python
-import geonodes as gn
+from geonodes import GeoNodes
 
-with gn.Tree("Simul", auto_capture=False) as tree:
-  # Create a simulation zone for the input geometry with one socket initialized to (0, 0, 0)
-  simul = gn.Simulation(geometry=tree.ig, position=(0, 0, 0))
-
-  # Connect the sockets
-  simul.close()
+with GeoNodes("Simul") as tree:
+    with tree.simulation(geometry=tree.ig, position=(0, 0, 0)) as simul:
+        simul.geometry = simul.geometry
+        simul.position = simul.position
 ```
 
-The image below shows the effect of the *close* method on the simulation zone:
+The image below shows the effect the resulting simulation zone:
 
 <img src="images/simulation_zone_closed.png" width="600" class="center">
-
-### With statement
-
-Rather than explicitly clossing the simulation, the ``` with ``` statement can be preferabily used.
 
 ## Accessing the sockets
 
@@ -59,14 +56,14 @@ For each keyword argument, 4 sockets are created in the simulation zone:
 3. **input socket of the output node** : connected when *close* method is called
 4. **output socket of the output node** : accessible through the attribute of the simulation with the name of the key word
 
-For instance, with the keyword argument ``` geometry=mesh ```:
-1. The mesh geometry is connected to the input socket named 'Geometry' of the simulation input node
-2. **Within the simulation zone** (i.e. before closing) use ``` simul.geometry ``` to get the geometry
-3. The input socket 'Geometry' of the output node is connected with the socket pointed by ``` simul.geometry ```
-4. **Outside the simulation zone** (i.e. after closing) use ``` simul.geometry ``` to get the simulated geometry
+For instance, with the keyword argument `geometry=mesh`:
+1. The `mesh` geometry is connected to the input socket named 'Geometry' of the simulation input node
+2. **Within the simulation zone** :
+    - `a = simul.geometry` : reads the **output socket** of the zone input node
+    - `simul.geometry = b` : writes the **input socket** of the zon output node
+5. **Outside the simulation zone** use `simul.geometry` to get the simulated geometry
 
 :warning: **NOTE** ``` simul.geometry ``` refers to different sockets before and after closing the simulation zone.
-The use of ``` with ``` statement makes things simple.
 
 ``` python
 import geonodes as gn
