@@ -234,8 +234,6 @@ def value_for(value, socket_type):
             pass
         
         raise Exception(f"Impossible to convert the value {value} for the socket {socket_type}")
-        
-        
     
     elif socket_type in ['NodeSocketVector', 'NodeSocketVectorEuler', 'NodeSocketVectorXYZ', 'NodeSocketVectorTranslation', 'NodeSocketVectorAcceleration',
                          'NodeSocketVectorDirection', 'NodeSocketVectorVelocity']:
@@ -256,20 +254,27 @@ def value_for(value, socket_type):
             pass
         
         return constants.current_tree().CombineXYZ(v[0], v[1], v[2]).output_socket
-        
     
     elif socket_type in ['NodeSocketColor']:
         if isinstance(value, mathutils.Color):
             return (value.r, value.g, value.b, 1.)
         
         elif np.shape(value) == ():
-            return (value, value, value, 1.)
+            v = (value, value, value, 1.)
         
         elif len(value) == 3:
-            return tuple(value) + (1.,)
+            v = tuple(value) + (1.,)
         
         else:
-            return value
+            v = value
+            
+        try:
+            return mathutils.Color(v)
+        except:
+            pass
+        
+        return constants.current_tree().CombineColor(v[0], v[1], v[2]).output_socket
+            
     
     elif socket_type in ['NodeSocketString']:
         return str(value)

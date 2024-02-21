@@ -265,7 +265,7 @@ class NodeInfo:
         # ----------------------------------------------------------------------------------------------------
         # Input node
         
-        if self.class_name in constants.CONSTANT_NODES.keys():
+        if False and self.class_name in constants.CONSTANT_NODES.keys():
             
             name = constants.CONSTANT_NODES[self.class_name]
             
@@ -283,13 +283,20 @@ class NodeInfo:
                 s += "\tif value is not None: node.bnode.outputs[0].default_value = float(value)\n"
             if name == 'color':
                 s += "\tif color is not None: node.bnode.color = node._color_value(color)\n"
-
+                
             # CAUTION : Vector.vector return the mathutils Vector node property, not the socket named Vector !
             # Use output_socket to get the socket :-)
             
             s += f"\treturn node.output_socket\n\n"
             
-            self.add_function(name, s, descr=f"{self.class_name}, return socket")
+            
+            print(s)
+            
+            # ----------------------------------------------------------------------------------------------------
+            # HACK for Vector : implemented manually to return Vector or CombineXYZ
+                
+            if self.class_name != 'Vector':
+                self.add_function(name, s, descr=f"{self.class_name}, return socket")
                 
         
         # ====================================================================================================
@@ -377,7 +384,7 @@ class NodeInfo:
             
             # ----- Already done
             
-            if self.python_name not in tree_dict:
+            if self.python_name not in tree_dict and self.class_name not in constants.CONSTANT_NODES.keys():
                 
                 meth_code, meth_args, node_args = self.method_code(self.python_name,
                             method_type   = 'STATIC', 
@@ -1077,6 +1084,12 @@ class NodeInfo:
     # Add a global function
     
     def add_function(self, name, code, descr=None, meth_args=None, node_args=None):
+        
+        if name == 'vector':
+            print("OUPS "*100)
+            print(self.class_name)
+            print(code)
+            aa
         
         tree_dict = constants.tree_dict(self.tree_type)
         

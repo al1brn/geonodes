@@ -123,7 +123,7 @@ def add_member_doc(tree_type, class_name, name, attr_type, descr=None, **kwargs)
         print("OLD")
         pprint(doc[name])
         print("NEW")
-        pprint(doc[name])
+        pprint(member_doc)
         print()
         
     doc[name] = member_doc
@@ -186,6 +186,69 @@ def add_method_doc(tree_type, class_name, name,
             new_cross_ref(tree_type, node_class, 'GLOBAL', name)
         
     return doc
+
+# ----------------------------------------------------------------------------------------------------
+# Add static documentation
+
+def add_static_doc(tree_type, the_class, class_name=None):
+    
+    # ----------------------------------------------------------------------------------------------------
+    # Extract key_word : comment template from the documentation
+    
+    def analyze_doc(s):
+        lines = s.split("\n")
+
+        dct = {}
+        keep = []
+        for line in lines:
+            kv = line.split(':')
+            is_kw = False
+            if len(kv) > 1:
+                kw = kv[0].strip()
+                if kw in ['class_name']:
+                    dct[kw] = kv[1].strip()
+                    is_kw = True
+                    
+            if not is_kw:
+                keep.append(line)
+                
+        dct['descr'] = "\n".join(keep)
+        return dct
+    
+    # ----------------------------------------------------------------------------------------------------
+    # Loop on the documented methods and property
+    
+    if class_name is None:
+        class_name = the_class.__name__
+    
+    for name in dir(the_class):
+        
+        f = getattr(the_class, name)
+        cat = type(f).__name__
+        f_doc = f.__doc__
+        if f_doc is None:
+            continue
+        
+        print('-'*50)
+        
+        if cat == 'function':
+            defs = f.__defaults__
+            is_static = defs is not None and defs[0] == 'Static name'
+            print("Function", name, type(f).__name__, is_static)
+            
+        elif cat == 'property':
+            print("Property", name)
+            
+        dct = analyze_doc(f.__doc__)
+        print(f.__doc__)
+        print('.'*50)
+        print(dct['descr'])
+        #print('.'*50)
+        #pprint(analyze_doc(f.__doc__))
+        #print()
+                
+    
+
 
 # ====================================================================================================
 # Add a cross reference

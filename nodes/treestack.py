@@ -22,6 +22,7 @@ update : 2024/02/17
 """
 
 import bpy
+import mathutils
 
 from geonodes.nodes import constants
 from geonodes.nodes import documentation
@@ -131,6 +132,88 @@ class StackedTree:
             raise Exception(f"Tree {self} has no node owning the socket '{bsocket.name}' in Blender node '{bsocket.node.name}'.")
         else:
             return node
+
+    # ====================================================================================================
+    # Base input nodes
+    
+    def boolean(self, boolean, node_label=None, node_color=None):
+        """ Boolean input
+        class_name = Boolean
+        """
+        return self.Boolean(boolean, node_label=node_label, node_color=node_color).boolean
+    
+    def color(self, color, node_label=None, node_color=None):
+        """ A color socket either from CombineColor or from Color
+        class_name = Color
+        """
+        
+        c = utils.value_for(color, 'NodeSocketColor')
+        if isinstance(c, sockets.Socket):
+            c.node.node_label = node_label
+            c.node.node_color = node_color
+            return c
+    
+        node = self.Color(node_label=node_label, node_color=node_color)
+        node.bnode.color = c
+        return node.output_socket
+    
+    
+    def integer(self, integer, node_label=None, node_color=None):
+        """ Integer input
+        class_name = Integer
+        """
+        return self.Integer(integer, node_label=node_label, node_color=node_color).integer
+    
+    def string(self, string, node_label=None, node_color=None):
+        """ String input
+        class_name = String
+        """
+        return self.String(string, node_label=node_label, node_color=node_color).string
+
+    def value(self, value, node_label=None, node_color=None):
+        """ Value input
+        class_name = Value
+        """
+        node = self.Value(node_label=node_label, node_color=node_color)
+        node.bnode.outputs[0].default_value = utils.value_for(value, 'NodeSocketFloat')
+        return node.output_socket
+    
+    def float(self, value, node_label=None, node_color=None):
+        """ Value input
+        class_name = Value
+        """
+        return self.value(value, node_label=node_label, node_color=node_color).integer
+    
+    def vector(self, vector, node_label=None, node_color=None):
+        """ Boolean input
+        class_name = Vector
+        """
+        v = utils.value_for(vector, 'NodeSocketVector')
+        if isinstance(v, sockets.Socket):
+            v.node.node_label = node_label
+            v.node.node_color = node_color
+            return v
+    
+        node = self.Vector(node_label=node_label, node_color=node_color)
+        node.bnode.vector = v
+        return node.output_socket
+    
+    def image(self, image, node_label=None, node_color=None):
+        """ Image input
+        class_name = Image
+        """        
+        image = self.Image._image_value(image)
+        return self.Image(image, node_label=node_label, node_color=node_color).image
+    
+    
+    def material(self, material, node_label=None, node_color=None):
+        """ Material input
+        class_name = Material
+        """
+        material = self.Material._material_value(material)
+        return self.Material(material, node_label=node_label, node_color=node_color).material
+    
+        
         
 # ====================================================================================================
 # Node created in the current tree
