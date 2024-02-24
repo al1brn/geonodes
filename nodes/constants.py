@@ -135,7 +135,40 @@ SOCKET_CLASS_NAMES = {
     'GEOMETRY'   : 'Geometry', 
     'COLLECTION' : 'Collection', 
     'TEXTURE'    : 'Texture', 
-    'MATERIAL'   : 'Mat'    
+    'MATERIAL'   : 'Mat', 
+    }
+
+SOCKET_CLASS_DEFAULT_SOCKET_NAME = {
+    'Float'      : 'value', 
+    'Int'        : 'integer', 
+    'Bool'       : 'boolean', 
+    'Vect'       : 'vector', 
+    'Rot'        : 'rotation', 
+    'Str'        : 'string', 
+    'Col'        : 'color', 
+    'Shader'     : 'shader',
+    'Object'     : 'object', 
+    'Img'        : 'image', 
+    'Geometry'   : 'geometry', 
+    'Collection' : 'collection', 
+    'Texture'    : 'texture', 
+    'Mat'        : 'material',  
+    }
+
+DATA_TYPE_CLASSES = {
+    'FLOAT'      : 'Float', 
+    'INT'        : 'Int', 
+    'BOOLEAN'    : 'Bool', 
+    'VECTOR'     : 'Vect', 
+    'ROTATION'   : 'Rot', 
+    'STRING'     : 'Str', 
+    'RGBA'       : 'Col', 
+    'OBJECT'     : 'Object', 
+    'IMAGE'      : 'Img', 
+    'GEOMETRY'   : 'Geometry', 
+    'COLLECTION' : 'Collection', 
+    'TEXTURE'    : 'Texture', 
+    'MATERIAL'   : 'Mat',
     }
 
 # ====================================================================================================

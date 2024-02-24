@@ -165,7 +165,7 @@ def add_method_doc(tree_type, class_name, name,
                 descr      = None,
                 **kwargs):
     
-    if attr_type == 'Function':
+    if attr_type == 'Functions':
         class_name = 'GLOBAL'
     
     doc = add_member_doc(tree_type, class_name, name, attr_type=attr_type, descr=descr,
@@ -180,8 +180,8 @@ def add_method_doc(tree_type, class_name, name,
     if node_class is not None:
         new_cross_ref(tree_type, node_class, class_name, name)
     
-    if static and attr_type != 'Function':
-        global_doc_dict(self.tree_type)[name] = doc
+    if static and attr_type != 'Functions':
+        global_doc_dict(tree_type)[name] = doc
         if node_class is not None:
             new_cross_ref(tree_type, node_class, 'GLOBAL', name)
         
@@ -220,6 +220,9 @@ def add_static_doc(tree_type, the_class, class_name=None):
     
     if class_name is None:
         class_name = the_class.__name__
+        
+    if class_name in ['Tree', 'StackedTree']:
+        class_name = 'GLOBAL'
     
     for name in dir(the_class):
         
@@ -229,24 +232,34 @@ def add_static_doc(tree_type, the_class, class_name=None):
         if f_doc is None:
             continue
         
-        print('-'*50)
+        dct = analyze_doc(f_doc)
         
         if cat == 'function':
             defs = f.__defaults__
             is_static = defs is not None and defs[0] == 'Static name'
-            print("Function", name, type(f).__name__, is_static)
+            
+            add_method_doc(tree_type, class_name, name,
+                            attr_type  = 'Functions' if is_static else 'Methods',
+                            static     = is_static,
+                            bl_idname  = dct.get('bl_idname'),
+                            node_class = dct.get('class_name'),
+                            code       = None,
+                            meth_args  = None,
+                            node_args  = None,
+                            descr      = dct.get('descr'),
+                            )
             
         elif cat == 'property':
-            print("Property", name)
-            
-        dct = analyze_doc(f.__doc__)
-        print(f.__doc__)
-        print('.'*50)
-        print(dct['descr'])
-        #print('.'*50)
-        #pprint(analyze_doc(f.__doc__))
-        #print()
-                
+
+            add_method_doc(tree_type, class_name, name,
+                            attr_type  = 'Properties',
+                            bl_idname  = dct.get('bl_idname'),
+                            node_class = dct.get('class_name'),
+                            code       = None,
+                            meth_args  = None,
+                            node_args  = None,
+                            descr      = dct.get('descr'),
+                            )
     
 
 

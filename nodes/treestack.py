@@ -23,6 +23,7 @@ update : 2024/02/17
 
 import bpy
 import mathutils
+from pprint import pprint
 
 from geonodes.nodes import constants
 from geonodes.nodes import documentation
@@ -129,6 +130,12 @@ class StackedTree:
             for node in self.nodes.values():
                 if bsocket.node == node.bnode:
                     return node
+                
+            print("List of tree nodes:")
+            for name, node in self.nodes.items():
+                print(f"{name:20s}") #" : {node}")
+            print()
+            
             raise Exception(f"Tree {self} has no node owning the socket '{bsocket.name}' in Blender node '{bsocket.node.name}'.")
         else:
             return node
@@ -182,7 +189,7 @@ class StackedTree:
         """ Value input
         class_name = Value
         """
-        return self.value(value, node_label=node_label, node_color=node_color).integer
+        return self.value(value, node_label=node_label, node_color=node_color)
     
     def vector(self, vector, node_label=None, node_color=None):
         """ Boolean input
@@ -432,6 +439,41 @@ class StackedNode(object):
                 if in_key == out_key and in_bsock.bl_idname == out_bsock.bl_idname:
                     tree.btree.links.new(in_bsock, out_bsock)
                     break
+                
+    # ====================================================================================================
+    # Uggly hacks
+    
+    @property
+    def hue(self):
+        if type(self).__name__ == 'SeparateColor' and self.bnode.mode in ['HSL', 'HSV']:
+            return self.red
+        else:
+            # To raise an error message
+            return self.__getattr__('hue')
+                                                                       
+    @property
+    def saturation(self):
+        if type(self).__name__ == 'SeparateColor' and self.bnode.mode in ['HSL', 'HSV']:
+            return self.green
+        else:
+            # To raise an error message
+            return self.__getattr__('saturation')
+                                                                       
+    @property
+    def value(self):
+        if type(self).__name__ == 'SeparateColor' and self.bnode.mode in ['HSV']:
+            return self.blue
+        else:
+            # To raise an error message
+            return self.__getattr__('value')
+                                                                       
+    @property
+    def lightness(self):
+        if type(self).__name__ == 'SeparateColor' and self.bnode.mode in ['HSL']:
+            return self.blue
+        else:
+            # To raise an error message
+            return self.__getattr__('lightness')
         
     
 # ====================================================================================================

@@ -199,7 +199,14 @@ class Socket:
             return self.mix_color(other, blend_type='ADD')
         
         elif stype == 'GEOMETRY':
-            return self.join_geometry(other)
+            if self.node.bnode.bl_idname == 'GeometryNodeJoinGeometry':
+                self.node.geometry = other
+                return self
+            elif isinstance(other, Geometry) and self.node.bnode.bl_idname == 'GeometryNodeJoinGeometry':
+                other.node.geometry = other
+                return other
+            else:
+                return self.join_geometry(other)
         
         else:
             self.op_error('ADD')
@@ -670,74 +677,6 @@ class Sockets:
             if bsock.enabled:
                 return Socket(bsock)
         return None
-    
-    
-# ====================================================================================================
-# Domain class
-
-class Domain_OLD:
-    def __init__(self, geometry, domain_name):
-        self.geometry    = geometry
-        self.domain_name = domain_name
-        
-    def jump(self, socket):
-        return self.geometry.jump(socket)
-    
-    def _get_selection(self, selection):
-        return self.geometry._get_selection(selection)
-    
-class Domain_OLD2:
-    def __init__(self, geometry, domain_name):
-        self._geometry = geometry
-        self._domain   = domain_name
-        
-    def __getattr__(self, name):
-        
-        # ----- Get the attr in the class dict
-        attr = type(self._geometry).__dict__.get(name)
-        #if attr is None:
-        #    attr = type(self._geometry).__dict__.get(name)
-        if attr is None:
-            raise AttributeError(f"Geometry has no attribute {name}")
-            
-        # ----- The attribute is a function
-        # Let insert domain=
-            
-        if inspect.isfunction(attr):
-            
-            # By default domain=self._domain
-            domain_arg = 'domain'
-            domain_val = self._domain
-            
-            # Some hacks
-            if name == 'extrude_mesh':
-                domain_arg = 'mode'
-                domain_val = self._domain + 'S'
-                
-            # Let's insert the domain argument
-            argspec= inspect.getfullargspec(attr)
-            if domain_arg in argspec.args:
-                return lambda *args, **kwargs: attr(self._geometry, *args, **{domain_arg: domain_val}, **kwargs)
-            else:
-                print(f"CAUTION: Geometry method {name} doesn't have a 'domain' argument.\nSimply call 'geometry.{name}' rather than 'geometry.{self._domain}.{name}'.")
-                return lambda *args, **kwargs: attr(self._geometry, *args, **kwargs)
-            
-        # ----- The attribute is a property
-            
-        if type(attr).__name__ == 'property':
-            return getattr(self._geometry, name)
-        
-        # ----- Something else !!!
-        
-        raise AttributeError(f"Geometry has no attribute {name}: {attr}")
-        
-    def __setattr__(self, name, value):
-        geometry = self.__dict__.get('_geometry')
-        if geometry is None or name in ['_domain']:
-            super().__setattr__(name, value)
-            return
-        
-        setattr(geometry, name, value)
 
 # ====================================================================================================
 # Geometry socket

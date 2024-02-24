@@ -39,6 +39,117 @@ from geonodes.nodes.sockets import Socket, Sockets
 from geonodes.nodes import sockets
 
 # ====================================================================================================
+# A node argument
+
+NO_VALUE = 'ARG_NO_VALUE'
+IGNORE   = 'ARG_IGNORE'
+
+
+class Argument:
+    
+    def __init__(self, name, header=NO_VALUE, call=None, descr=None):
+        self.name   = name
+        self.header = header
+        self.call   = call
+        self.descr  = descr
+        
+    def __str__(self):
+        return f"<Argument {self.name}, header={self.header} -> ({self.header_code}), call={self.call} -> ({self.call_code})>"
+        
+    @property
+    def header_code(self):
+        if self.header == IGNORE:
+            return None
+
+        elif self.header == NO_VALUE:
+            return self.name
+
+        else:
+            return self.name + "=" + utils.python_constant(self.header)
+    
+    @property
+    def call_code(self):
+        # Ignore in call
+        if self.call == IGNORE:
+            return None
+
+        # Ignored in header and no value specified
+        elif self.header == IGNORE and self.call is None:
+            print(f"CAUTION: Argument call_code is stange: {self.name=}, {self.header=}, {self.call=}")
+            return None
+        
+        # No value specified
+        elif self.call == NO_VALUE:
+            return self.name
+        
+        # selection socket
+        elif self.name == 'selection' and self.call is None:
+            return f"selection=self._get_selection(selection)"
+        
+        # name = value
+        else:
+            return self.name + "=" + (self.name if self.call is None else utils.python_constant(self.call))
+    
+    @property
+    def init(self):
+        return f"self.{self.name:15s} = {self.name}"
+    
+    @property
+    def doc(self):
+        return f"- {self.name} : {self.descr}\n"
+    
+class Arguments:
+    
+    def __init__(self, is_static):
+        self.is_static = is_static
+        self.args = []
+        
+    def __str__(self):
+        s = f"[Arguments static: {self.is_static}, {len(self.args)}:"
+        for arg in self.args:
+            s += "\n   " + str(arg)
+        return s + "\n]"
+        
+    def __len__(self):
+        return len(self.args)
+    
+    def __getitem__(self, name):
+        for arg in self.args:
+            if arg.name == name:
+                return arg
+        return None
+    
+    def add(self, name, header=NO_VALUE, call=None, descr=None):
+        a = Argument(name, header=header, call=call, descr=descr)
+        self.args.append(a)
+        return a
+    
+    @property
+    def header_code(self):
+        args = ", ".join([arg.header_code for arg in self.args if arg.header != IGNORE])
+        if self.is_static:
+            return args
+        elif args == "":
+            return "self"
+        else:
+            return "self, " + args
+    
+    @property
+    def call_code(self):
+        return ", ".join([arg.call_code for arg in self.args if arg.call != IGNORE])
+    
+    @property
+    def init_code(self):
+        return "\n\t".join([arg.init for arg in self.args]) + "\n"
+    
+    @property
+    def doc(self):
+        return "".join([arg.doc for arg in self.args]) + "\n"
+    
+    
+
+
+# ====================================================================================================
 # Analyze a node
 
 class NodeInfo:
@@ -99,12 +210,13 @@ class NodeInfo:
                     to_delete.append(link)
                     
         # ----- Capture the internal links which are set when muting the node
-
-        bnode.mute = True
+        
         int_links = []
-        for link in bnode.internal_links:
-            int_links.append((link.from_socket, link.to_socket))
-        bnode.mute = False
+        if self.class_name not in ['SeparateComponents']:
+            bnode.mute = True
+            for link in bnode.internal_links:
+                int_links.append((link.from_socket, link.to_socket))
+            bnode.mute = False
         
         # ----- Remove the external links
         for link in to_delete:
@@ -127,22 +239,6 @@ class NodeInfo:
             self.sm_out_pyname = utils.socket_name(self.sm_out_bsock.name)
             self.sm_is_multi   = False
             
-        # ====================================================================================================
-        # Create the socket classes
-        
-        nodesocket_classes = constants.nodesocket_classes(self.tree_type)
-        socket_classes = constants.socket_classes(self.tree_type)
-        node_classes = constants.node_classes(self.tree_type)
-        tree_dict = constants.tree_dict(self.tree_type)
-        
-        bsocks = [bsock for bsock in self.bnode.inputs] + [bsock for bsock in self.bnode.outputs]
-        
-        for bsock in bsocks:
-            if bsock.type not in socket_classes:
-                self.add_socket_class(bsock)
-            
-            if bsock.bl_idname not in nodesocket_classes:
-                nodesocket_classes[bsock.bl_idname] = socket_classes[bsock.type]
                 
         # ====================================================================================================
         # Node attributes
@@ -229,6 +325,28 @@ class NodeInfo:
             
             self.node_args.append(param)
             
+    # =============================================================================================================================
+    # Generate the methods
+            
+    def generate_dynamic_classes(self):
+        
+        # ====================================================================================================
+        # Create the socket classes
+        
+        nodesocket_classes = constants.nodesocket_classes(self.tree_type)
+        socket_classes = constants.socket_classes(self.tree_type)
+        node_classes = constants.node_classes(self.tree_type)
+        tree_dict = constants.tree_dict(self.tree_type)
+        
+        bsocks = [bsock for bsock in self.bnode.inputs] + [bsock for bsock in self.bnode.outputs]
+        
+        for bsock in bsocks:
+            if bsock.type not in socket_classes:
+                self.add_socket_class(bsock)
+            
+            if bsock.bl_idname not in nodesocket_classes:
+                nodesocket_classes[bsock.bl_idname] = socket_classes[bsock.type]
+            
         # ====================================================================================================
         # Node class
         
@@ -262,43 +380,6 @@ class NodeInfo:
         for name, attr in self.node_attrs.items():
             self.add_property(self.class_name, name, attr['getter'], attr['setter'], attr_type=attr['type'], descr=attr['descr'])
         
-        # ----------------------------------------------------------------------------------------------------
-        # Input node
-        
-        if False and self.class_name in constants.CONSTANT_NODES.keys():
-            
-            name = constants.CONSTANT_NODES[self.class_name]
-            
-            s = f"def {name}({name}, node_label=None, node_color=None):\n"
-            s += constants.IMPORT_TREE
-            if name == 'material':
-                s += f"\tmaterial = current_tree().Material._material_value(material)\n"
-            if name == 'image':
-                s += f"\timage = current_tree().Image._image_value(image)\n"
-            s += f"\tnode = current_tree().{self.class_name}("
-            if name not in ['value', 'color']:
-                s += f"{name}, "
-            s += "node_label=node_label, node_color=node_color)\n"
-            if name == 'value':
-                s += "\tif value is not None: node.bnode.outputs[0].default_value = float(value)\n"
-            if name == 'color':
-                s += "\tif color is not None: node.bnode.color = node._color_value(color)\n"
-                
-            # CAUTION : Vector.vector return the mathutils Vector node property, not the socket named Vector !
-            # Use output_socket to get the socket :-)
-            
-            s += f"\treturn node.output_socket\n\n"
-            
-            
-            print(s)
-            
-            # ----------------------------------------------------------------------------------------------------
-            # HACK for Vector : implemented manually to return Vector or CombineXYZ
-                
-            if self.class_name != 'Vector':
-                self.add_function(name, s, descr=f"{self.class_name}, return socket")
-                
-        
         # ====================================================================================================
         # Socket method
         
@@ -306,7 +387,7 @@ class NodeInfo:
         
         # ----- Standard
         
-        if self.has_socket_method and self.class_name not in ['Switch']:
+        if self.has_socket_method and self.class_name not in ['Switch', 'Mix']:
             
             jump = False
             if self.max_out == 1 and self.sm_out_bsock.bl_idname == 'NodeSocketGeometry':
@@ -557,6 +638,252 @@ class NodeInfo:
             print(self.class_name, "DATA_TYPE", count)
             pprint(counts)
             print()
+            
+    # =============================================================================================================================
+    # Config the node
+    
+    def setup(self, **kwargs):
+        mems = {}
+        for param in self.params:
+            if param in kwargs:
+                mems[param] = getattr(self.bnode, param)
+                setattr(self.bnode, param, kwargs[param])
+        return mems
+            
+    # =============================================================================================================================
+    # Get the args and call_args list
+            
+    def build_meth_args(self,
+                  self_socket = None,  # Which socket to set with self
+                  all_sockets = True,  # Use all the sockets (True) or the current node config (False)
+                  node_label  = True,  # Add node_label and node_color
+                  **kwargs):           # Fixed node arguments
+        
+        """ Build the arguments list.
+        
+        if the argument 'self_socket' is None, the Arguments list is initialized as static
+        
+        Arguments
+        ---------
+            - self_socket (str = None) : Name of the socket to plug self (is excluded from argument list)
+            - use_enabled (bool = False) : compute the current count per socket if True else get node.max_per_name
+            - node_label (bool = True) : add node_label and node_color arguments
+            - kwargs : Fixed arguments
+            
+        Returns
+        -------
+            - Arguments
+        """
+
+        # ----------------------------------------------------------------------------------------------------
+        # Lists initialization
+        
+        args = Arguments(self_socket is None)
+
+        if self.has_multi_input:
+            args.add("*args", NO_VALUE, NO_VALUE)
+            
+        # ----------------------------------------------------------------------------------------------------
+        # Set up the node
+
+        prm_defs = {**self.prm_defs}
+        prm_vals = {}
+        
+        # ----- Change parameters
+        if all_sockets:
+            in_counts = {**self.in_counts}
+        else:
+            mems = self.setup(**kwargs)
+            in_counts = self.inputs.enabled_counts()
+                    
+        # Get node config
+        prm_defs = {param: getattr(self.bnode, param) for param in self.params}
+        
+        # Param possible values
+        for param in self.params:
+            if param not in kwargs:
+                prm_vals[param] = self.get_enum_list(param)
+                
+        # ----- Restore parameters
+        if not all_sockets:
+            self.setup(**mems)
+
+        #else:
+        #    in_counts = {**self.in_counts}
+            
+        #    # Param possible values
+        #    for param in self.params:
+        #        if param not in kwargs:
+        #            prm_vals[param] = self.get_enum_list(param)
+            
+            
+        if self_socket is not None:
+            in_counts[self_socket] -= 1
+            
+        # ----------------------------------------------------------------------------------------------------
+        # Input sockets
+        
+        if len(in_counts) > 0:
+
+            for sock_name in utils.input_sockets_order(in_counts):
+                
+                descr = f"Socket"
+                
+                count = in_counts[sock_name]
+                
+                # ----- Socket where to plug self
+                
+                if sock_name == self_socket:
+                    if sock_name in kwargs:
+                        args.add(sock_name, None, kwargs[sock_name], descr=descr)
+                    else:
+                        args.add(sock_name, IGNORE, 'self', descr=descr)
+
+                # ----- Loop on the sockets sharing the same name
+
+                for i in range(count):
+                    sock_i = sock_name if i == 0 else f"{sock_name}_{i}"
+                    
+                    if self_socket == sock_name:
+                        if i == 0:
+                            args.add(f"{sock_name}_1", None, sock_name, descr=descr)
+                        else:
+                            args.add(f"{sock_name}_{i+1}", None, sock_i, descr=descr)
+                            
+                    elif sock_i in kwargs:
+                        args.add(sock_i, None, kwargs[sock_i], descr=descr)
+                        
+                    #elif sock_i == 'selection':
+                    #    args.add('selection', None, 'self._get_selection(selection)', descr=descr)
+                        
+                    else:
+                        args.add(sock_i, None, descr=descr)
+                            
+        # ----------------------------------------------------------------------------------------------------
+        # Parameters
+
+        for param in self.params:
+            if param in kwargs:
+                args.add(param, IGNORE, kwargs[param])
+            else:
+                descr = f"Parameter"
+                vals = prm_vals[param]
+                if vals is not None:
+                    descr += f" in {vals}"
+                args.add(param, prm_defs[param], descr=descr)
+                    
+        # ----- Replace: domain = DEFAULT by domain = self._get_domain(DEFAULT)
+        
+        if self.domain_param is not None:
+            arg = args[self.domain_param]
+            if arg is not None:
+                if arg.call is None:
+                    arg.call = f"self._get_domain({utils.python_constant(prm_defs[self.domain_param])})"
+                else:
+                    arg.call = f"self._get_domain({arg.call})"
+                
+        # ----------------------------------------------------------------------------------------------------
+        # Node_label and node_color
+        
+        if node_label:
+            args.add('node_label', None)
+            args.add('node_color', None)
+                
+        # ----------------------------------------------------------------------------------------------------
+        # Return the arguments
+        
+        return args
+    
+    # ====================================================================================================
+    # Create the node
+    
+    def node_class_init_code(self):
+        
+        args = self.build_meth_args()
+        args.is_static = False
+        
+        return f"def __init__({args.header_code}):\n\t{args.init_code}\n"
+    
+    def class_method_code(self, name, self_socket, jump=None, ret_socket=None, **kwargs):
+        
+        args = self.build_meth_args(self_socket=self_socket, **kwargs)
+        
+        # Header
+        s = f"def {name}({args.header_code}):\n"
+        
+        # Create the node
+        s += f"\tnode = self.tree.{self.class_name}({args.call_code})\n"
+        
+        # Self jump
+        if jump is not None:
+            s += f"\tself.jump(node.{jump})\n"
+            
+        # Return node or socket
+        if ret_socket is None:
+            s += "\treturn node\n"
+            
+        elif ret_socket == 'self':
+            s += "\treturn self\n"
+
+        else:
+            s += f"\treturn node.{ret_socket}\n"
+            
+        return s
+    
+    def class_getter_code(self, name, self_socket=None, jump=None, ret_socket=None, **kwargs):
+
+        args = self.build_meth_args(self_socket=self_socket, node_label=False, **kwargs)
+        args.is_static = False
+        
+        # Header
+        s = f"def {name}(self):\n"
+        
+        # Create the node
+        s += f"\tnode = self.tree.{self.class_name}({args.call_code})\n"
+        
+        # Self jump
+        if jump is not None:
+            s += f"\tself.jump(node.{jump})\n"
+            
+        # Return node or socket
+        if ret_socket is None:
+            s += "\treturn node"
+        else:
+            s += f"\treturn node.{ret_socket}"
+            
+        return s
+
+    def class_setter_code(self, name, self_socket, value_socket, jump=None, **kwargs):
+
+        args = self.build_meth_args(self_socket=self_socket, node_label=False, **{value_socket: 'value'}, **kwargs)
+        
+        # Header
+        s = f"def {name}(self, value):\n"
+        
+        # Create the node
+        s += f"\tnode = self.tree.{self.class_name}({self_socket}=self, {value_socket}=value"
+        
+        # Selection socket
+        if args['selection'] is not None and 'selection' not in kwargs:
+            s +=  ", selection=self._get_selection(None)"
+            
+        # kwargs
+        for k, v in kwargs.items():
+            s += f", {k}={v}"
+            
+        # Done
+        s += ")\n"
+        
+        # Self jump
+        if jump is not None:
+            s += f"\tself.jump(node.{jump})\n"
+            
+        return s
+        
+        
+            
+        
+    
 
     
     # ====================================================================================================
@@ -773,6 +1100,11 @@ class NodeInfo:
             if len(loops):
                 key = loops[0]
                 values = utils.get_enum_list(self.bnode, key)
+                
+                
+                if False and self.class_name == 'SeparateColor':
+                    print(f"CUSTOM {self.class_name}, {key} = {values}")
+                
                 loops2 = list(loops[1:])
                 mem_key = getattr(self.bnode, key)
                 for value in values:
@@ -993,7 +1325,7 @@ class NodeInfo:
     # ----------------------------------------------------------------------------------------------------
     # Add a new attribute to a class
     
-    def add_attribute(self, class_name, name, value, attr_type='Attribute', descr=None):
+    def add_attribute(self, class_name, name, value, attr_type='Attributes', descr=None):
         
         tree_dict = constants.tree_dict(self.tree_type)
         the_class = tree_dict[class_name]
@@ -1106,7 +1438,7 @@ class NodeInfo:
         # ----- Documentation
         
         documentation.add_method_doc(self.tree_type, None, name,
-                        attr_type  = 'Function',
+                        attr_type  = 'Functions',
                         bl_idname  = self.bl_idname,
                         node_class = self.class_name,
                         code       = code,
@@ -1114,6 +1446,69 @@ class NodeInfo:
                         node_args  = node_args,
                         descr      = descr,
                         )
+        
+        
+# ====================================================================================================
+# Nodes list
+
+def list_nodes(tree_type='GeometryNodeTree'):
+    
+    print("="*100)
+    print("List of nodes")
+    print()
+    
+    btree = treestack.get_tree("TREE - Temp", tree_type=tree_type, create=True, clear=True)
+    
+    for type_name in dir(bpy.types):
+        
+        try:
+            bnode = btree.nodes.new(type=type_name)
+        except RuntimeError as e:
+            continue
+        
+        if 'legacy' in bnode.name.lower():
+            continue
+        
+        class_name = utils.node_class_name(bnode.name)
+        
+        has_geo = False
+        for bsock in bnode.inputs:
+            if bsock.type == 'GEOMETRY':
+                has_geo = True
+        for bsock in bnode.outputs:
+            if bsock.type == 'GEOMETRY':
+                has_geo = True
+                
+        if has_geo:
+            print(f"{class_name:20s} {has_geo=}")
+        
+    print()
+    treestack.del_tree(btree.name)
+    
+# ====================================================================================================
+# Loop on the nodes
+
+def loop_on_nodes(tree_type='GeometryNodeTree', func=lambda node_info: None):
+    
+    # ====================================================================================================
+    # Node and Socket classes
+    
+    btree = treestack.get_tree("TREE - Temp", tree_type=tree_type, create=True, clear=True)
+    
+    for type_name in dir(bpy.types):
+        try:
+            bnode = btree.nodes.new(type=type_name)
+        except RuntimeError as e:
+            continue
+        
+        if 'legacy' in bnode.name.lower():
+            continue
+        
+        node_info = NodeInfo(btree, bnode)
+        
+        func(node_info)
+
+    treestack.del_tree(btree.name)
     
     
 # ====================================================================================================
@@ -1126,9 +1521,6 @@ def tree_class_setup(tree_type):
     
     btree = treestack.get_tree("TREE - Temp", tree_type=tree_type, create=True, clear=True)
     
-    if tree_type == 'GeometryNodeTree':
-        pass
-    
     for type_name in dir(bpy.types):
         try:
             bnode = btree.nodes.new(type=type_name)
@@ -1139,6 +1531,8 @@ def tree_class_setup(tree_type):
             continue
         
         node_info = NodeInfo(btree, bnode)
+        
+        node_info.generate_dynamic_classes()
         
     # ----- Custom properties
     

@@ -440,13 +440,20 @@ def list_to_call_header(args, self_key=None):
 def python_constant(value):
     
     if isinstance(value, str):
-        return f"'{value}'"
+        # TOKEN
+        if value.upper() == value:
+            return f"'{value}'"
+        # Source code
+        else:
+            return value
+    
     elif isinstance(value, mathutils.Vector):
         return f"({value.x}, {value.y}, {value.z})"
+    
     else:
         s = str(value)
         if s[0] == '<':
-            return None
+            return 'None'
         else:
             return s
 

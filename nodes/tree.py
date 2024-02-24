@@ -27,6 +27,7 @@ from pprint import pprint
 import numpy as np
 
 import bpy
+from geonodes.nodes import documentation
 from geonodes.nodes import constants
 from geonodes.nodes import utils
 from geonodes.nodes import treestack
@@ -51,6 +52,13 @@ class Tree(StackedTree):
         """
         
         if not cls.INIT:
+            
+            # ----- Existing methods and properties 
+            
+            documentation.add_static_doc(cls.TREE_TYPE, cls)
+            
+            # ----- Dynamic methods and properties
+            
             nodeinfo.tree_class_setup(cls.TREE_TYPE)
             
             for name, obj in constants.tree_dict(cls.TREE_TYPE).items():
@@ -523,7 +531,6 @@ class Tree(StackedTree):
     @classmethod
     def clear_group(cls, prefix):
         btrees = cls.get_group_btrees(prefix)
-        print("BTREES", btrees)
         for btree in btrees:
             bpy.data.node_groups.remove(btree)
             
@@ -538,8 +545,15 @@ class Tree(StackedTree):
         # ----- Create the node group
         
         node = self.Group()
+        
+        # Name Group will change
+        del self.nodes[node.bnode.name]
+
         node.bnode.name = group_tree.name
         node.bnode.node_tree = group_tree
+        
+        # Register with new name
+        self._register_node(node)
         
         for k, v in kwargs.items():
             if not node._input_socket_exists(k):
