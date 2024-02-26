@@ -166,6 +166,9 @@ class Socket:
         else:
             def_value = value
             
+        print("SOCKET._set_value", self.bsocket.name, '<-', value)
+        print("in_bsocket", in_bsocket)
+            
         if in_bsocket is None:
             in_bsocket = utils.value_for(def_value, self.bsocket.bl_idname)
             if isinstance(in_bsocket, Socket):
@@ -177,6 +180,7 @@ class Socket:
                 
         if in_bsocket is not None:
             link = self.node.tree.btree.links.new(in_bsocket, self.bsocket, verify_limits=True)
+            print("THE LINK", link)
             
             
     # ====================================================================================================

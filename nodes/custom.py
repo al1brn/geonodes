@@ -200,6 +200,12 @@ class C:
         # ---------------------------------------------------------------------------
         # Main
         
+        # ----- Target not implemented in this Tree
+        # For instance Int doesn't exist in Shaders
+        
+        if self.target is not None and self.target not in constants.SOCKETS[tree_type]:
+            return
+        
         # ----- Replace @ tokens
         
         if False and node_info.class_name == 'MapRange':
@@ -291,15 +297,24 @@ class C:
             
         elif self.impl_type == C.METHOD:
             
-            
             # Little hack to exclude redundant methods
             
             if tree_type == 'GeometryNodeTree':
                 if node_info.class_name == 'Math':
                     if name in ['less_than', 'greater_than', 'round', 'floor']:
                         name = 'math_' + name
-        
-            args = node_info.build_meth_args(self_socket=self_socket, all_sockets=all_sockets, **self.kwargs)
+                        
+            try:
+                args = node_info.build_meth_args(self_socket=self_socket, all_sockets=all_sockets, **self.kwargs)
+                
+            except Exception as e:
+                # Implementatio not valid for this tree_type !
+                if False:
+                    print('='*100)
+                    print(f"Custom C.Code error ({tree_type})): node {node_info.class_name} ({node_info.bl_idname})), target: {self.target}, kwargs:", self.kwargs)
+                    print()
+                return
+                #raise Exception(e)
             
             # To access self.tree
             args.is_static = False
@@ -416,7 +431,7 @@ class C:
             
         # ----- Debug
         
-        if True and node_info.class_name == 'Switch' and name not in ['']:
+        if False and node_info.class_name == 'Switch' and name not in ['']:
             print('='*100)
             print("C.CODE", node_info.class_name, '->', self.target, self.name)
             print(s)
@@ -427,7 +442,7 @@ class C:
 
 NODE_IMPLEMENTATIONS = {    
     'AccumulateField'    : None,
-    'AlignEulerToVector' : C.Meth('Rot'),
+    'AlignEulerToVector' : C.Meth(('Rot', 'Vect'), self_socket='rotation'),
     'Arc'                : None,
     'AttributeStatistic' : [C.Meth('Geometry'),
                             C.Meth('Geometry', name='@_DATA_TYPE', loops=['data_type'])],

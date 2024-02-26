@@ -393,6 +393,16 @@ class Dynamic:
                 print(" -", socket, end = " : ")
                 print(" ".join(sorted(cross_ref[socket])))
             print()
+
+        print("Init")
+        print("====")
+        print()
+        print(func['code'])
+        print()
+        
+
+            
+            
         print()
         
     # ----------------------------------------------------------------------------------------------------

@@ -1942,6 +1942,8 @@ def tree_class_setup(tree_class):
     tree_type = tree_class.TREE_TYPE
     sockets   = constants.SOCKETS[tree_type]
     
+    print(f"SETUP Tree: {tree_type}, sockets: {list(constants.all_socket_classes(tree_type).keys())}")
+    
     # ----- Create the Tree Dynamic entry for documentation
     
     constants.TREES[tree_type] = dynamic.Dynamic.Tree(tree_class, descr=None)
@@ -2006,7 +2008,7 @@ def tree_class_setup(tree_class):
         setattr(tree_class, class_name, sockets[class_name].dyn_class)
         
         
-    if True:
+    if False:
         print("SOCKETS")
         print(list(constants.SOCKETS[node_info.tree_type].keys()))
         

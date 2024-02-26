@@ -192,7 +192,7 @@ class StackedTree:
         return self.value(value, node_label=node_label, node_color=node_color)
     
     def vector(self, vector, node_label=None, node_color=None):
-        """ Boolean input
+        """ Vector input
         class_name = Vector
         """
         v = utils.value_for(vector, 'NodeSocketVector')
@@ -356,7 +356,7 @@ class StackedNode(object):
         return sockets.Socket(bsock)
     
     def _set_input_socket(self, pyname, value):
-
+        
         if value is None:
             return
 
