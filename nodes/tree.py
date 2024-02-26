@@ -53,16 +53,7 @@ class Tree(StackedTree):
         
         if not cls.INIT:
             
-            # ----- Existing methods and properties 
-            
-            documentation.add_static_doc(cls.TREE_TYPE, cls)
-            
-            # ----- Dynamic methods and properties
-            
-            nodeinfo.tree_class_setup(cls.TREE_TYPE)
-            
-            for name, obj in constants.tree_dict(cls.TREE_TYPE).items():
-                setattr(cls, name, obj)
+            nodeinfo.tree_class_setup(cls) #.TREE_TYPE)
                 
             cls.INIT = True
             
@@ -124,7 +115,7 @@ class Tree(StackedTree):
     
     @classmethod
     def _reset(cls):
-        cls.INIT = False
+        #cls.INIT = False
         constants.reset()
             
             
@@ -159,7 +150,7 @@ class Tree(StackedTree):
                 return node
             
         if create:
-            return constants.node_classes()[bl_idname]()
+            return constants.get_node_class(self.TREE_TYPE, bl_idname)()
         else:
             return None
         
@@ -259,7 +250,10 @@ class Tree(StackedTree):
         
         # ----- Socket class
         
-        socket_class = constants.nodesocket_classes()[bl_idname]
+        if True:
+            socket_class = constants.get_socket_class_from_bl_idname(self.TREE_TYPE, bl_idname)
+        else:
+            socket_class = constants.nodesocket_classes()[bl_idname]
         
         # ----------------------------------------------------------------------------------------------------
         # Get or create
@@ -387,9 +381,15 @@ class Tree(StackedTree):
         if io_socket is None:
             io_socket = self.new_io_socket(bl_idname, 'OUTPUT', name)
             
-        socket_class = constants.nodesocket_classes()[bl_idname]
-        out_socket = socket_class(self.output_node.bnode.inputs[io_socket.identifier])
-        out_socket._set_value(socket)
+        if True:
+            socket_class = constants.get_socket_class(socket.bsocket.type)
+            out_socket = socket_class(self.output_node.bnode.inputs[io_socket.identifier])
+            out_socket._set_value(socket)
+        
+        else:
+            socket_class = constants.nodesocket_classes()[bl_idname]
+            out_socket = socket_class(self.output_node.bnode.inputs[io_socket.identifier])
+            out_socket._set_value(socket)
     
     
     # ====================================================================================================
@@ -681,6 +681,10 @@ class GeoNodes(Tree):
         
         self.btree.interface.move(io_socket, 0)
         
+        return self.Geometry(self.input_node.bnode.outputs[io_socket.identifier])
+    
+        # OLD
+        
         return constants.nodesocket_classes()['NodeSocketGeometry'](self.input_node.bnode.outputs[io_socket.identifier])
             
         
@@ -697,6 +701,10 @@ class GeoNodes(Tree):
         # ----- As the first
         
         self.btree.interface.move(io_socket, 0)
+        
+        return self.Geometry(self.output_node.bnode.inputs[io_socket.identifier])
+    
+        # OLD
         
         return constants.nodesocket_classes()['NodeSocketGeometry'](self.output_node.bnode.inputs[io_socket.identifier])
     

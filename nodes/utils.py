@@ -437,11 +437,11 @@ def list_to_call_header(args, self_key=None):
 # ====================================================================================================
 # Source code initialization string
 
-def python_constant(value):
+def python_constant(value, keep_lower=True):
     
     if isinstance(value, str):
         # TOKEN
-        if value.upper() == value:
+        if value.upper() == value or (not keep_lower):
             return f"'{value}'"
         # Source code
         else:

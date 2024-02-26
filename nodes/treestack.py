@@ -396,6 +396,12 @@ class StackedNode(object):
     # Dynamic sockets
     
     def __getattr__(self, name):
+        
+        # ----- Why ?
+        # I don't know why the 2 lines below is required !
+        #if name in type(self).__dict__:
+        #    return type(self).__dict__[name]
+        
         outputs = self.__dict__.get('outputs')
         if outputs is not None and type(self).dynamic_out:
             bsocket = outputs.sockets_pynames(enabled_only=True).get(name)
@@ -411,7 +417,7 @@ class StackedNode(object):
             if bsocket is not None:
                 sockets.Socket(bsocket)._set_value(value)
                 return
-        
+            
         super().__setattr__(name, value)
         
     def _input_socket_exists(self, name):
@@ -576,8 +582,9 @@ class Trees:
     
     def __getattr__(self, name):
         
-        tree = self.trees.get(name)
+        tree = self.trees.get(self.python_name(name))
         if tree is None:
+            print("TREES", list(self.trees.keys()))
             raise AttributeError(f"Tree named '{name}' not found in {self}")
             
         def f(**kwargs):

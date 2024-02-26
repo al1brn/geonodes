@@ -21,9 +21,10 @@ update : 2024/02/17
 
 from pprint import pprint
 
+from geonodes.nodes import documentation
 from geonodes.nodes import constants
 from geonodes.nodes import utils
-from geonodes.nodes import documentation
+from geonodes.nodes import dynamic
 
 CUSTOM = {bl_id: {} for bl_id in constants.TREE_BL_IDS.values()}
 
@@ -62,6 +63,9 @@ class C:
         self.loops        = loops
         self.descr        = descr
         self.kwargs       = kwargs
+        
+    def __str__(self):
+        return f"[C: {self.impl_type=}, {self.target=}, {self.name=}, {self.self_socket=}, {self.ret_socket=}"
         
     @classmethod
     def Glob(cls, name="@", ret_socket=None, loops=[], descr=None, **kwargs):
@@ -109,6 +113,8 @@ class C:
     
     def code(self, node_info):
         
+        tree_type = node_info.tree_type
+        
         # ---------------------------------------------------------------------------
         # Loop on targets
         # - Can be a tuple (several targets), e.g.: ('Float', 'Int')
@@ -129,7 +135,7 @@ class C:
                 else:
                     kwargs = {**self.kwargs}
                     kwargs[data_type_socket] = target
-                    target = constants.DATA_TYPE_CLASSES[target]
+                    target = constants.DATA_TYPE_TO_SOCKET_CLASS_NAME[target]
                 
                 C(impl_type    = self.impl_type,
                   target       = target,
@@ -196,6 +202,9 @@ class C:
         
         # ----- Replace @ tokens
         
+        if False and node_info.class_name == 'MapRange':
+            print("C.code:", node_info.class_name, str(self))
+        
         # Name : replace by the node python name
         name = self.name.replace('@', node_info.python_name)
         
@@ -229,15 +238,26 @@ class C:
         
         if ret_socket is None and self.jump is not None:
             ret_socket = 'self'
+            
+        # ----- For documentation
+        
+        doc_kwargs = {
+            'self_socket' : self_socket,
+            'jump'        : 'No' if self.jump is None else self.jump,
+            'return'      : 'node' if ret_socket is None else ret_socket,
+            }
         
         # ---------------------------------------------------------------------------
         # Global method (= method of Tree)
         
         if self.impl_type == C.GLOBAL:
             
-            is_prop = ret_socket is not None
+            args = node_info.build_meth_args(all_sockets=all_sockets, node_label=False, **self.kwargs)
             
-            args = node_info.build_meth_args(all_sockets=all_sockets, node_label=not is_prop, **self.kwargs)
+            is_prop = ret_socket is not None and len(args) == 0
+            if not is_prop:
+                args.add('node_label', None)
+                args.add('node_color', None)
             
             # As method of Tree
             args.is_static = False
@@ -255,10 +275,29 @@ class C:
             else:
                 s += f"\treturn node.{ret_socket}\n"
                 
+            # ----- Add to dynamic class of the Tree
+            
+            del doc_kwargs['jump'], doc_kwargs['self_socket']
+            
+            dyn = constants.TREES[node_info.tree_type]
+            if is_prop:
+                dyn.add_member('GETTER', name, s, node_info.class_name, args=args, descr=None, **doc_kwargs)
+            else:
+                
+                dyn.add_member('METHOD', name, s, node_info.class_name, args=args, descr=None, **doc_kwargs)
+                
         # ---------------------------------------------------------------------------
         # Socket method
             
         elif self.impl_type == C.METHOD:
+            
+            
+            # Little hack to exclude redundant methods
+            
+            if tree_type == 'GeometryNodeTree':
+                if node_info.class_name == 'Math':
+                    if name in ['less_than', 'greater_than', 'round', 'floor']:
+                        name = 'math_' + name
         
             args = node_info.build_meth_args(self_socket=self_socket, all_sockets=all_sockets, **self.kwargs)
             
@@ -285,13 +324,19 @@ class C:
             else:
                 s += f"\treturn node.{ret_socket}\n"
                 
+            # ----- Add to dynamic class
+            
+            dyn = constants.SOCKETS[node_info.tree_type][self.target]
+            dyn.add_member('METHOD', name, s, node_info.class_name, args=args, descr=None, **doc_kwargs)
+                
         # ---------------------------------------------------------------------------
         # Property getter
         
         elif self.impl_type == C.GETTER:
             
             args = node_info.build_meth_args(self_socket=self_socket, all_sockets=all_sockets, node_label=False, **self.kwargs)
-            args.add("node_color", call=str(constants.NODE_COLORS['property']))
+            #args.add("node_color", call=str(constants.NODE_COLORS['property']))
+            args.add("node_color", call=constants.NODE_COLORS['property'])
             
             # To access self.tree
             args.is_static = False
@@ -316,6 +361,12 @@ class C:
             else:
                 s += f"\treturn node.{ret_socket}\n"
                 
+            # ----- Add to dynamic class
+            
+            dyn = constants.SOCKETS[node_info.tree_type][self.target]
+            dyn.add_member('GETTER', name, s, node_info.class_name, args=args, descr=None, **doc_kwargs)
+                
+                
         # ---------------------------------------------------------------------------
         # Property setter
         
@@ -330,14 +381,14 @@ class C:
             s = f"def {name}(self, value):\n"
             
             # Create the node
-            if True:
-                s += f"\tnode = self.tree.{node_info.class_name}({args.call_code})\n"
+            if False:
+                s += f"\tnode = self.tree.{node_info.class_name}({args.call_code}"
             else:
                 s += f"\tnode = self.tree.{node_info.class_name}({self_socket}=self, {value_socket}=value"
             
             # Selection socket
-            if args['selection'] is not None and 'selection' not in self.kwargs:
-                s +=  ", selection=self._get_selection(None)"
+            #if args['selection'] is not None and 'selection' not in self.kwargs:
+            #    s +=  ", selection=self._get_selection(None)"
                 
             # kwargs
             for k, v in self.kwargs.items():
@@ -353,22 +404,34 @@ class C:
             if self.jump is not None:
                 s += f"\tself.jump(node.{self.jump})\n"
                 
-        # ---------------------------------------------------------------------------
-        # Implement the code
+            # ----- Add to dynamic class
+            
+            dyn = constants.SOCKETS[node_info.tree_type][self.target]
+            dyn.add_member('SETTER', name, s, node_info.class_name, args=args, descr=None, **doc_kwargs)
+            
+            
+        # ----- Register cross reference
         
-        print('-'*100)
-        print("CODE", node_info.class_name, '->', self.target, self.name)
-        print(s)
-        print()
+        constants.cross_ref(node_info.tree_type, node_info.class_name, None if self.impl_type == C.GLOBAL else self.target, name)
+            
+        # ----- Debug
+        
+        if True and node_info.class_name == 'Switch' and name not in ['']:
+            print('='*100)
+            print("C.CODE", node_info.class_name, '->', self.target, self.name)
+            print(s)
+            print()
+        
+# =============================================================================================================================
+# DEFAULT NODE IMPLEMENTATIONS
 
-        
 NODE_IMPLEMENTATIONS = {    
     'AccumulateField'    : None,
     'AlignEulerToVector' : C.Meth('Rot'),
     'Arc'                : None,
     'AttributeStatistic' : [C.Meth('Geometry'),
                             C.Meth('Geometry', name='@_DATA_TYPE', loops=['data_type'])],
-    'AxisAngleToRotation' : C.Meth('Vect', 'axis', ret_socket='rotation'),
+    'AxisAngleToRotation': C.Meth('Vect', 'axis', ret_socket='rotation'),
     'BezierSegment'      : None,
     'BlurAttribute'      : [C.Meth('Geometry', self_socket=None, ret_socket='value'),
                             C.Meth('Int',   'value', ret_socket='value', data_type='INT'),
@@ -426,7 +489,7 @@ NODE_IMPLEMENTATIONS = {
     'EvaluateAtIndex'    : [C.Meth('Geometry', None, ret_socket='value'),
                             C.Meth('Geometry', None, ret_socket='value', name='evaluate_at_index_DATA_TYPE', loops=['data_type'])],
     'EvaluateOnDomain'   : [C.Meth('Geometry', None, ret_socket='value'),
-                            C.Meth('Geometry', None, ret_socket='value', name='evaluate_at_index_DATA_TYPE', loops=['data_type'])],
+                            C.Meth('Geometry', None, ret_socket='value', name='evaluate_on_domain_DATA_TYPE', loops=['data_type'])],
     'ExtrudeMesh'        : C.Meth('Geometry', 'mesh', jump='mesh'),
     'FaceArea'           : C.Get('Geometry', '@', None, 'area'),
     'FaceGroupBoundaries': C.Meth('Geometry', None, ret_socket='boundaries_edges'),
@@ -449,7 +512,7 @@ NODE_IMPLEMENTATIONS = {
     'Group'              : None,
     'GroupInput'         : None,
     'GroupOutput'        : None,
-    'HandleTypeSelection' : [C.Meth('Geometry', None, ret_socket='selection'),
+    'HandleTypeSelection': [C.Meth('Geometry', None, ret_socket='selection'),
                              C.Meth('Geometry', None, ret_socket='selection', name='left_@',  mode = {'LEFT'}),
                              C.Meth('Geometry', None, ret_socket='selection', name='right_@', mode = {'RIGHT'})],
     'ID'                 : C.Get('Geometry', '@', None, 'id'),
@@ -467,7 +530,7 @@ NODE_IMPLEMENTATIONS = {
     'InterpolateCurves'  : C.Meth('Geometry', 'guide_curves'),
     'InvertRotation'     : C.Meth(('Rot', 'Vect'), 'rotation', jump='rotation'),
     'IsEdgeSmooth'       : C.Get( 'Geometry', 'edge_smooth',   None, 'smooth'),
-    'IsFacePlanar'       : C.Meth('Geometry', 'face_planar',   None, 'planer'),
+    'IsFacePlanar'       : C.Meth('Geometry', None, ret_socket='planar'),
     'IsFaceSmooth'       : C.Get( 'Geometry', 'face_smooth',   None, 'smooth'),
     'IsSplineCyclic'     : C.Get( 'Geometry', 'spline_cyclic', None, 'cyclic'),
     'IsViewport'         : C.Glob(ret_socket='is_view_port'),
@@ -480,7 +543,7 @@ NODE_IMPLEMENTATIONS = {
                             C.Meth('Vect',           'value', ret_socket='result')],
     'Material'           : None,
     'MaterialIndex'      : C.Get('Geometry', '@', None, 'material_index'),
-    'MaterialSelection'  : C.Meth('Material', None, ret_socket='selection'),
+    'MaterialSelection'  : C.Meth('Mat', None, ret_socket='selection'),
     'Math'               : [C.Glob(name='OPERATION',  ret_socket='value', loops=['operation']),
                             C.Meth(('Float', 'Int'), 'value', ret_socket='value', name='OPERATION', loops=['operation'])],
     'MeanFilterSDFVolume': None,
@@ -503,10 +566,11 @@ NODE_IMPLEMENTATIONS = {
                             #C.Meth({'data_type': ('FLOAT', 'VECTOR', 'RGBA', 'ROTATION')}, 'a', jump='result', name='mix_BLEND_TYPE', loops=['blend_type']),
                             ],
     'MusgraveTexture'    : None,
-    'NamedAttribute'     : [C.Meth('Geometry', None, ret_socket='attribute'),
+    'NamedAttribute'     : [C.Glob(name='named_DATA_TYPE', ret_socket='attribute', loops=['data_type']),
+                            C.Meth('Geometry', None, ret_socket='attribute'),
                             C.Meth('Geometry', None, ret_socket='attribute', name='named_DATA_TYPE', loops=['data_type'])],
     'NoiseTexture'       : None,
-    'Normal'             : C.Meth('Geometry', None, ret_socket='normal'),
+    'Normal'             : C.Get('Geometry', 'normal', None, ret_socket='normal'),
     'ObjectInfo'         : C.Meth('Object'),
     'OffsetCornerInFace' : C.Meth('Geometry', None, ret_socket='corner_index'),
     'OffsetPointInCurve' : C.Meth('Geometry', None),
@@ -533,10 +597,10 @@ NODE_IMPLEMENTATIONS = {
     'RepeatInput'        : None,
     'RepeatOutput'       : None,
     'ReplaceMaterial'    : C.Meth('Geometry', jump='geometry'),
-    'ReplaceString'      : C.Meth('String', jump='string'),
+    'ReplaceString'      : C.Meth('Str', jump='string'),
     'Reroute'            : None,
-    'ResampleCurve'      : C.Meth('curve', jump='curve', ret_socket='self'),
-    'ReverseCurve'       : C.Meth('curve', jump='curve', ret_socket='self'),
+    'ResampleCurve'      : C.Meth('Geometry', 'curve', jump='curve', ret_socket='self'),
+    'ReverseCurve'       : C.Meth('Geometry', 'curve', jump='curve', ret_socket='self'),
     'RotateEuler'        : [C.Meth(('Vect', 'Rot'), 'rotation', jump='rotation'), # ('AXIS_ANGLE', 'EULER')
                             C.Meth(('Vect', 'Rot'), 'rotation', jump='rotation', name= '@_axis_angle', type='AXIS_ANGLE'), 
                             C.Meth(('Vect', 'Rot'), 'rotation', jump='rotation', name= '@_euler', type='EULER')],
@@ -558,7 +622,7 @@ NODE_IMPLEMENTATIONS = {
                             C.Meth('Geometry', 'mesh', name='@_DATA_TYPE', loops=['data_type'])],
     'SampleVolume'       : None,
     'ScaleElements'      : C.Meth('Geometry', jump='geometry'),
-    'ScaleInstances'     : C.Meth('Geometry', jump='instances'),
+    'ScaleInstances'     : C.Meth('Geometry', 'instances', jump='instances'),
     'SceneTime'          : [C.Glob(),
                             C.Glob(name='seconds', ret_socket='seconds'),
                             C.Glob(name='frame',   ret_socket='frame')
@@ -566,11 +630,13 @@ NODE_IMPLEMENTATIONS = {
     'Selection'          : None,
     'SelfObject'         : None,
     'SeparateColor'      : [C.Meth('Col'),
-                            C.Get('Col', 'MODE', 'color', None, loops=['mode'])],
+                            #C.Get('Col', 'MODE', 'color', None, loops=['mode'])
+                            ],
     'SeparateComponents' : C.Meth('Geometry'),
     'SeparateGeometry'   : C.Meth('Geometry'),
     'SeparateXYZ'        : [C.Meth('Vect'),
-                            C.Get('Vect', 'xyz', 'vector', None)],
+                            #C.Get('Vect', 'xyz', 'vector', None)
+                            ],
     'SetCurveNormal'     : [C.Meth('Geometry', 'curve', jump='curve'),
                             C.Set( 'Geometry', 'normal', 'curve', 'mode', jump='curve')],
     'SetCurveRadius'     : [C.Meth('Geometry', 'curve', jump='curve'),
@@ -619,9 +685,9 @@ NODE_IMPLEMENTATIONS = {
     'String'             : None,
     'StringLength'       : C.Get('Str', 'length', 'string', 'length'),
     'StringToCurves'     : C.Meth('Str'),
-    'SubdivideCurve'     : C.Meth('Geometry', 'mesh',  jump='mesh'),
-    'SubdivideMesh'      : C.Meth('Geometry', 'curve', jump='curve'),
-    'SubdivisionSurface' : C.Meth('Geometry', 'mesh',  jump='mesh'),
+    'SubdivideCurve'     : C.Meth('Geometry', 'curve',  jump='curve'),
+    'SubdivideMesh'      : C.Meth('Geometry', 'mesh',   jump='mesh'),
+    'SubdivisionSurface' : C.Meth('Geometry', 'mesh',   jump='mesh'),
     'Switch'             : C.Meth({'input_type': ('FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'ROTATION', 'STRING', 'RGBA', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'TEXTURE', 'MATERIAL')}, 'false', ret_socket='output'),
     'TransformGeometry'  : C.Meth('Geometry',              jump='geometry'),
     'TranslateInstances' : C.Meth('Geometry', 'instances', jump='instances'),
@@ -633,8 +699,8 @@ NODE_IMPLEMENTATIONS = {
     'ValueToString'      : C.Meth(('Float', 'Int'), 'value', ret_socket='string'),
     'Vector'             : None,
     'VectorCurves'       : C.Meth(('Vect', 'Rot'), 'vector', jump='vector'),
-    'VectorMath'         : [C.Glob(name='OPERATION',  ret_socket='vector', loops=['operation']),
-                            C.Meth(('Vect', 'Rot'), 'vector', ret_socket='vector', name='OPERATION', loops=['operation'])],
+    'VectorMath'         : [C.Glob(name='vOPERATION',  ret_socket='output_socket', loops=['operation']),
+                            C.Meth(('Vect', 'Rot'), 'vector', ret_socket='output_socket', name='OPERATION', loops=['operation'])],
     'VectorRotate'       : C.Meth('Vect', ret_socket='vector'),
     'VertexNeighbors'    : C.Meth('Geometry', None),
     'VertexOfCorner'     : C.Meth('Geometry', None),
@@ -649,10 +715,6 @@ NODE_IMPLEMENTATIONS = {
     'WhiteNoiseTexture'  : None,
     '_3DCursor'          : None,
     }
-
-
-
-
 
 
 # =============================================================================================================================
@@ -743,6 +805,8 @@ def add_function(class_name, name,
         
     """
     
+    return
+    
     if tree_classes is None:
         tree_classes = ("GeoNodes", "Shader")
     elif isinstance(tree_classes, str):
@@ -784,6 +848,8 @@ def add_property(target, name,
                  descr        = None,
                  tree_class   = "GeoNodes"):
     
+    return
+    
     cust_props = get_cust_props(constants.TREE_BL_IDS[tree_class])
     cust_props.append({
         'target'       : target,
@@ -823,6 +889,8 @@ def test_properties(tree_class):
 # Create the properties
 
 def create_properties(tree_type):
+    
+    return
     
     cust_props = get_cust_props(tree_type)
     tree_dict = constants.tree_dict(tree_type)

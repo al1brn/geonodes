@@ -45,6 +45,7 @@ class Socket:
     def __new__(cls, bsocket):
         
         if cls == Socket:
+            
             if isinstance(bsocket, bpy.types.NodeSocket):
                 sock_type = bsocket.type
                 
@@ -54,7 +55,8 @@ class Socket:
             else:
                 sock_type = utils.get_value_socket_type(bsocket)
                 
-            socket_class = constants.socket_classes().get(sock_type)
+            #socket_class = constants.socket_classes().get(sock_type)
+            socket_class = constants.get_socket_class(sock_type) 
             
         else:
             socket_class = None
@@ -80,6 +82,12 @@ class Socket:
             self.node    = None
             self.bsocket = None
             self._value  = bsocket
+            
+            
+        # ----- Used to cache SeparateXYZ or SeparateColor
+            
+        self._sub_nodes = {}
+        
 
     def __str__(self):
         if self._is_socket:
@@ -133,6 +141,8 @@ class Socket:
         self.node    = socket.node
         self.bsocket = socket.bsocket
         self._value  = None
+        self._sub_nodes.clear()
+        
         return self
     
     # ====================================================================================================
@@ -167,6 +177,120 @@ class Socket:
                 
         if in_bsocket is not None:
             link = self.node.tree.btree.links.new(in_bsocket, self.bsocket, verify_limits=True)
+            
+            
+    # ====================================================================================================
+    # Vector / Color
+    
+    # ----------------------------------------------------------------------------------------------------
+    # Vector
+    
+    @property
+    def xyz(self):
+        xyz = self._sub_nodes.get('xyz')
+        if xyz is None:
+            xyz = self.tree.SeparateXYZ(vector=self)
+            self._sub_nodes['xyz'] = xyz
+        return xyz
+    
+    @property
+    def x(self):
+        return self.xyz.x
+    
+    @property
+    def y(self):
+        return self.xyz.y
+    
+    @property
+    def z(self):
+        return self.xyz.z
+    
+    # ----------------------------------------------------------------------------------------------------
+    # Color
+    
+    @property
+    def rgb(self):
+        rgb = self._sub_nodes.get('rgb')
+        if rgb is None:
+            rgb = self.tree.SeparateColor(color=self, mode='RGB')
+            self._sub_nodes['rgb'] = rgb
+        return rgb
+    
+    @property
+    def hsv(self):
+        hsv = self._sub_nodes.get('hsv')
+        if hsv is None:
+            hsv = self.tree.SeparateColor(color=self, mode='HSV')
+            self._sub_nodes['hsv'] = hsv
+        return hsv
+    
+    @property
+    def hsl(self):
+        hsl = self._sub_nodes.get('hsl')
+        if hsl is None:
+            hsl = self.tree.SeparateColor(color=self, mode='HSL')
+            self._sub_nodes['hsl'] = hsl
+        return hsl
+    
+    @property
+    def r(self):
+        return self.rgb.red
+    
+    @property
+    def g(self):
+        return self.rgb.green
+    
+    @property
+    def b(self):
+        return self.rgb.blue
+    
+    @property
+    def red(self):
+        return self.rgb.red
+    
+    @property
+    def green(self):
+        return self.rgb.green
+    
+    @property
+    def blue(self):
+        return self.rgb.blue
+    
+    @property
+    def alpha(self):
+        for sep_name in ['rgb', 'hsv', 'hsl']:
+            sep = self._sub_nodes.get(sep_name)
+            if sep is not None:
+                return sep.alpha
+        
+        return self.rgb.alpha
+    
+    @property
+    def hue(self):
+        for sep_name in ['hsv', 'hsl']:
+            sep = self._sub_nodes.get(sep_name)
+            if sep is not None:
+                return sep.hue
+        
+        return self.hsv.hue
+    
+    @property
+    def saturation(self):
+        for sep_name in ['hsv', 'hsl']:
+            sep = self._sub_nodes.get(sep_name)
+            if sep is not None:
+                return sep.saturation
+        
+        return self.hsv.saturation
+    
+    @property
+    def value(self):
+        return self.hsv.value
+    
+    @property
+    def lightness(self):
+        return self.hsl.lightness
+            
             
     # ====================================================================================================
     # Helper
@@ -356,7 +480,8 @@ class Socket:
         stype = self._socket_type
         
         if stype in ['VALUE', 'INT']:
-            return self.math(other, operation='POWER')
+            #return self.tree.Math(other, operation='POWER')
+            return self.power(other)
         
         else:
             self.op_error('POWER')
@@ -782,21 +907,21 @@ class Geometry(Socket):
                         _selection = None
                     # [:10]
                     else:
-                        _selection = tree.index(node_color=gen_color).less_than(_selection.stop, node_color=gen_color)
+                        _selection = tree.Index(node_color=gen_color).index.less_than(_selection.stop, node_color=gen_color)
                 else:
                     # [10:]
                     if _selection.stop is None:
-                        _selection = tree.index(node_color=gen_color).greater_equal(_selection.start, node_color=gen_color)
+                        _selection = tree.Index(node_color=gen_color).index.greater_equal(_selection.start, node_color=gen_color)
                     # [10:20]
                     else:
                         half = (_selection.stop  - _selection.start)/2 + .1
                         mid  = (_selection.start + _selection.stop)/2
                         
-                        _selection = tree.compare(tree.index(node_color=gen_color), mid, epsilon=half, operation='EQUAL', data_type='FLOAT', node_color=gen_color)
+                        _selection = tree.Compare(tree.Index(node_color=gen_color).index, mid, epsilon=half, operation='EQUAL', data_type='FLOAT', node_color=gen_color).result
                 
         
         elif utils.get_value_socket_type(_selection) == 'INT':
-            _selection = tree.index().equal(_selection, node_color=gen_color)
+            _selection = tree.Index().index.equal(_selection, node_color=gen_color)
             
         if selection is None:
             return _selection
