@@ -22,303 +22,21 @@ update : 2024/02/17
 from pprint import pprint
 from pathlib import Path
 
-TREE_CLASSES = {
-    'GeometryNodeTree'    : 'GeoNodes',
-    'ShaderNodeTree'      : 'Shader',
-    'CompositorNodeTree'  : 'Compositor',
-    'TextureNodeTree'     : 'Texture',
-    }
-
 # ====================================================================================================
-# Dynamic access
+# Doc specification
 
-def doc_dict(tree_type, class_name=None):
-    """ Get a doc dictionary dedicated to a given tree type.
-    
-    Create the dictionary if it doesn't exist
-    
-    A tree type dictionary contains:
-        - 'GLOBAL' : a dictionary for global functions such as sin or tan
-        - On dictionary per entry
-    
-    Arguments
-    ---------
-        - tree_type (str) : valid blender tree type
-        - class_name (str = None) : class name entry
+class DocSpec:
+    def __init__(self, target='TEXT', width=100, margin=4, path=None):
+        self.target = target
+        self.width  = width
+        self.margin = margin
+        self.path   = path
+        if self.is_md:
+            self.margin = 0
         
-    Returns
-    -------
-        - dict
-    """
-    
-    dct = DOCUMENTATION_DICT.get(tree_type)
-    if dct is None:
-        dct = {
-            'GLOBAL'  : {},  # Global functions
-             }
-        DOCUMENTATION_DICT[tree_type] = dct
-        
-    if class_name is None:
-        return dct
-    
-    d = dct.get(class_name)
-    if d is None:
-        d = {'category'  : None,
-             'bl_idname' : None,
-             'descr'     : None,
-             'code'      : None,
-             'members'   : {},
-            }
-        dct[class_name] = d
-        
-    return d
-
-def global_doc_dict(tree_type):
-    """ Get the global dictionary for a tree type.
-    
-    Arguments
-    ---------
-        - tree_type (str) : valid blender tree type
-        
-    Returns
-    -------
-        - dict
-    """
-    
-    return doc_dict(tree_type, class_name='GLOBAL')
-
-# ====================================================================================================
-# Add a member to a class_name
-
-def add_member_doc(tree_type, class_name, name, attr_type, descr=None, **kwargs):
-    
-    # ----- Class documentation
-    
-    member_doc = {'name'       : name,
-                  'type'       : attr_type, 
-                  'class_name' : class_name,
-                  'descr'      : descr}
-    member_doc.update(kwargs)
-    
-    # ----- Into the global dict
-    
-    if class_name is None or class_name == 'GLOBAL':
-        doc = global_doc_dict(tree_type)
-    else:
-        doc = doc_dict(tree_type, class_name)['members']
-    
-    if name in doc.keys():
-        print(f"CAUTION: the member {name} already registered for class {class_name}:")
-        print("OLD")
-        pprint(doc[name])
-        print("NEW")
-        pprint(member_doc)
-        print()
-        
-    doc[name] = member_doc
-    
-    return member_doc
-
-# ----------------------------------------------------------------------------------------------------
-# Add a propperty
-
-def add_property_doc(tree_type, class_name, name,
-                     attr_type     = 'Properties',
-                     getter        = None,
-                     setter        = None,
-                     getter_node   = None,
-                     setter_node   = None,
-                     descr         = None,
-                     **kwargs):
-    
-    if getter_node is not None:
-        new_cross_ref(tree_type, getter_node, class_name, name)
-
-    if setter_node is not None:
-        new_cross_ref(tree_type, setter_node, class_name, name)
-                     
-    return add_member_doc(tree_type, class_name, name, attr_type=attr_type, descr=descr,
-                          getter=getter, setter=setter, getter_node=getter_node, setter_node=setter_node, **kwargs)
-
-# ----------------------------------------------------------------------------------------------------
-# Add a method / function
-
-def add_method_doc(tree_type, class_name, name,
-                attr_type  = 'Methods',
-                static     = False,
-                bl_idname  = None,
-                node_class = None,
-                code       = None,
-                meth_args  = None,
-                node_args  = None,
-                descr      = None,
-                **kwargs):
-    
-    if attr_type == 'Functions':
-        class_name = 'GLOBAL'
-    
-    doc = add_member_doc(tree_type, class_name, name, attr_type=attr_type, descr=descr,
-                     static     = static,
-                     bl_idname  = bl_idname,
-                     node_class = node_class,
-                     code       = code,
-                     meth_args  = meth_args,
-                     node_args  = node_args,
-                     **kwargs)
-
-    if node_class is not None:
-        new_cross_ref(tree_type, node_class, class_name, name)
-    
-    if static and attr_type != 'Functions':
-        global_doc_dict(tree_type)[name] = doc
-        if node_class is not None:
-            new_cross_ref(tree_type, node_class, 'GLOBAL', name)
-        
-    return doc
-
-# ----------------------------------------------------------------------------------------------------
-# Add static documentation
-
-def add_static_doc(tree_type, the_class, class_name=None):
-    
-    # ----------------------------------------------------------------------------------------------------
-    # Extract key_word : comment template from the documentation
-    
-    def analyze_doc(s):
-        lines = s.split("\n")
-
-        dct = {}
-        keep = []
-        for line in lines:
-            kv = line.split(':')
-            is_kw = False
-            if len(kv) > 1:
-                kw = kv[0].strip()
-                if kw in ['class_name']:
-                    dct[kw] = kv[1].strip()
-                    is_kw = True
-                    
-            if not is_kw:
-                keep.append(line)
-                
-        dct['descr'] = "\n".join(keep)
-        return dct
-    
-    # ----------------------------------------------------------------------------------------------------
-    # Loop on the documented methods and property
-    
-    if class_name is None:
-        class_name = the_class.__name__
-        
-    if class_name in ['Tree', 'StackedTree']:
-        class_name = 'GLOBAL'
-    
-    for name in dir(the_class):
-        
-        f = getattr(the_class, name)
-        cat = type(f).__name__
-        f_doc = f.__doc__
-        if f_doc is None:
-            continue
-        
-        dct = analyze_doc(f_doc)
-        
-        if cat == 'function':
-            defs = f.__defaults__
-            is_static = defs is not None and defs[0] == 'Static name'
-            
-            add_method_doc(tree_type, class_name, name,
-                            attr_type  = 'Functions' if is_static else 'Methods',
-                            static     = is_static,
-                            bl_idname  = dct.get('bl_idname'),
-                            node_class = dct.get('class_name'),
-                            code       = None,
-                            meth_args  = None,
-                            node_args  = None,
-                            descr      = dct.get('descr'),
-                            )
-            
-        elif cat == 'property':
-
-            add_method_doc(tree_type, class_name, name,
-                            attr_type  = 'Properties',
-                            bl_idname  = dct.get('bl_idname'),
-                            node_class = dct.get('class_name'),
-                            code       = None,
-                            meth_args  = None,
-                            node_args  = None,
-                            descr      = dct.get('descr'),
-                            )
-    
-
-
-# ====================================================================================================
-# Add a cross reference
-
-def cross_ref_dict(tree_type=None, class_name=None):
-    """ Get the cross ref dictionary for a tree type.
-    
-    The cross reference provides an entry per method or function implementing a node class.
-    
-    cross_ref[Math] = {'GLOBAL' : ['sin', 'cos', ...],
-                       'Float'  : ['sin', 'cos', ...],
-                       'Int';   : ['sin', 'cos', ...],
-                       }
-    
-    Arguments
-    ---------
-        - tree_type (str) : valid blender tree type
-        - class_name : Node class name
-        
-    Returns
-    -------
-        - dict
-    """
-    
-    dct = CROSS_REF_DICT.get(tree_type)
-    if dct is None:
-        dct = {}
-        CROSS_REF_DICT[tree_type] = dct
-        
-    if class_name is None:
-        return dct
-    
-    d = dct.get(class_name)
-    if d is None:
-        d = {}
-        dct[class_name] = d
-    return d
-
-def new_cross_ref(tree_type, class_name, target=None, name=None):
-    """ Register a new cross reference for a node.
-    
-    Name is the name of the global function or of the target class method.
-    If name is None, the cross_ref dict is created for further use.
-    An empty dict means that the Node is not implemented.
-    
-    Target is the name of the socket class implementing the node.
-    Use 'target=None' for global functions.
-    
-    Arguments
-    ---------
-        - tree_type (str) : valid blender tree type
-        - class_name (str) : Node class name
-        - target (str = None) : class name using the node
-        - name (str = None) : method name using the node
-    """    
-        
-    dct = cross_ref_dict(tree_type, class_name)
-
-    if name is None: # Just to create the entry for cross reference
-        return
-
-    if target is None:
-        target = 'GLOBAL'
-    
-    if target not in dct:
-        dct[target] = [name]
-    else:
-        dct[target].append(name)
+    @property
+    def is_md(self):
+        return self.target == 'MD'
 
 # ====================================================================================================
 # Split a big line in several lines
@@ -371,22 +89,6 @@ def split_line(line, width, indent=0, bullet=None):
     return lines
 
 # ====================================================================================================
-# Doc specification
-
-class DocSpec:
-    def __init__(self, target='TEXT', width=100, margin=4, path=None):
-        self.target = target
-        self.width  = width
-        self.margin = margin
-        self.path   = path
-        if self.is_md:
-            self.margin = 0
-        
-    @property
-    def is_md(self):
-        return self.target == 'MD'
-        
-# ====================================================================================================
 # Sort a dictionnary from a field
 
 def sort_dict(dct, field, none_key=None):
@@ -405,8 +107,6 @@ def sort_dict(dct, field, none_key=None):
             s_dct[value] = {key: item}
             
     return s_dct
-        
-
 
 # ====================================================================================================
 # Doc items
@@ -430,8 +130,10 @@ class DocText:
         
         if self.text is None:
             return [""]
+        
         elif doc_spec.target == 'MD':
             return ['  '*self.level + self.text]
+        
         else:
             return split_line(self.text, doc_spec.width, indent=self.level)
         
@@ -472,6 +174,10 @@ class Paragraph(DocText):
         else:
             item_len = max(1, self.item_len)
             return split_line(f"{self.item:{item_len}s} : {self.text}", width, indent=self.level, bullet=self.bullet)
+        
+class NewLine(Paragraph):
+    def __init__(self):
+        super().__init__()
 
 # ----------------------------------------------------------------------------------------------------
 # Section
@@ -490,23 +196,41 @@ class Header(DocText):
         if self.level < 0:
             return []
         
+        # ---------------------------------------------------------------------------
+        # Markdown
+        
         if doc_spec.is_md:
             return ['#'*(self.level +1 ) + ' ' + self.text + "\n"]
+        
+        # ---------------------------------------------------------------------------
+        # Text
         
         width = doc_spec.width
         
         n = len(self.text)
         s_top = None
         s_bot = None
+        
+        prefix = ""
+        
         if self.level == 0:
-            s_bot = "="*n
+            s_top = "\n"
+            s_bot = "="*width
+            
         elif self.level == 1:
+            s_bot = "="*n
+            
+        elif self.level == 2:
             s_top = "-"*n
             s_bot = "-"*n
-        elif self.level == 2:
+            
+        elif self.level == 3:
             s_bot = "-"*n
             
-        prefix = "  "*self.indent
+        else:
+            prefix = "---" * (self.level-3) + " "
+            
+        prefix = "  "*self.indent + prefix
             
         lines = []
         if s_top is not None: lines.append(prefix + s_top)
@@ -575,6 +299,172 @@ class List:
 # ====================================================================================================
 # Documentation builder
 
+class Doc:
+    def __init__(self, doc_spec=None):
+        
+        self.doc_spec = DocSpec() if doc_spec is None else doc_spec
+
+        self.list_level = 0
+        self.paragraphs = []
+        
+    # ---------------------------------------------------------------------------
+    # Clear the content
+        
+    def clear(self):
+        self.list_level = 0
+        self.paragraphs = []
+
+    # ---------------------------------------------------------------------------
+    # Is markdown tag
+        
+    @property
+    def is_md(self):
+        return self.doc_spec.is_md
+    
+    # ---------------------------------------------------------------------------
+    # Add paragraphs
+        
+    def add(self, *paras, new_line=False):
+        for para in paras:
+            self.paragraphs.append(para)
+        if new_line:
+            self.paragraphs.append(Paragraph())
+            
+    # ---------------------------------------------------------------------------
+    # New line
+            
+    def new_line(self):
+        self.add(new_line=True)
+
+    # ---------------------------------------------------------------------------
+    # Separator
+        
+    def separator(self, fill=None):
+        if self.is_md:
+            self.add(Paragraph("\n-----\n"), new_line=True)
+        else:
+            self.add(new_line=True)
+            if fill is None:
+                self.add(Paragraph(fill), new_line=True)
+
+    # ---------------------------------------------------------------------------
+    # Paragraph
+            
+    def paragraph(self, text="", level=0, bullet=None, item=None, new_line=True):
+        self.add(Paragraph(text=text, level=level, bullet=bullet, item=item), new_line=new_line)
+
+    # ---------------------------------------------------------------------------
+    # Description
+
+    def description(self, text="", level=0, new_line=True):
+        self.add(Paragraph(text=text, level=level, bullet=">"), new_line=new_line)
+
+    # ---------------------------------------------------------------------------
+    # Header
+
+    def header(self, title, level=0, prefix=None, indent=0, use_margin=False, new_line=False):
+        self.add(Header(title, level=level, prefix=prefix, indent=indent, use_margin=use_margin), new_line=new_line)
+            
+    # ---------------------------------------------------------------------------
+    # Bullets
+        
+    def bullets(self, title=None, bullet="-", new_line=True):
+        return List(self, title=title, bullet=bullet, new_line=new_line)
+    
+    # ====================================================================================================
+    # Build the resulting text
+    
+    # ---------------------------------------------------------------------------
+    # List of lines
+    
+    @property
+    def lines(self):
+        lines = []
+        for para in self.paragraphs:
+            ls = para.lines(self.doc_spec)
+            if para.use_margin:
+                ls = [" "*self.doc_spec.margin + l for l in ls]
+            lines.extend(ls)
+        return lines
+
+    # ---------------------------------------------------------------------------
+    # Global text
+    
+    @property
+    def text(self):
+        return "\n".join(self.lines)      
+    
+    # ====================================================================================================
+    # Demo
+    
+    @staticmethod
+    def demo():
+        
+        def test(doc, title):
+            doc.header(title, 0)
+            doc.description("This a demo document containing a main header and sub sections. One can also find list of bullets points.")
+            doc.header("Section 1", 1)
+            doc.description("This is the first section of the document.")
+            with doc.bullets("Here is what you'll find:") as bs:
+                bs.add("Section 1", "This section")
+                bs.add("Another section", "Just for fun")
+                bs.add("The last section", "The description of this section is very long. "*5)
+            
+            doc.header("Another section", 1)
+            doc.description("This section has several sub sections.")
+
+            doc.header("Sub section 1", 2)
+            doc.header("Sub sub section 1", 3)
+            doc.header("Last sub section 1", 4)
+            doc.paragraph("Some standard text in ths final subsection. "*5)
+            doc.header("Last sub section 2", 4)
+            doc.paragraph("Some standard text in ths final subsection. "*5)
+            doc.header("Last sub section 3", 4)
+            doc.paragraph("Some standard text in ths final subsection. "*5)
+            
+            doc.header("Sub sub section 2", 3)
+            doc.header("Last sub section 1", 4)
+            doc.paragraph("Some standard text in ths final subsection. "*5)
+            doc.header("Last sub section 2", 4)
+            doc.paragraph("Some standard text in ths final subsection. "*5)
+            doc.header("Last sub section 3", 4)
+            doc.paragraph("Some standard text in ths final subsection. "*5)
+            
+            doc.header("Sub section 2", 2)
+            doc.header("Sub sub section 1", 3)
+            doc.header("Last sub section 1", 4)
+            doc.paragraph("Some standard text in ths final subsection. "*5)
+            doc.header("Last sub section 2", 4)
+            doc.paragraph("Some standard text in ths final subsection. "*5)
+            doc.header("Last sub section 3", 4)
+            doc.paragraph("Some standard text in ths final subsection. "*5)
+            
+            doc.header("Sub sub section 2", 3)
+            doc.header("Last sub section 1", 4)
+            doc.paragraph("Some standard text in ths final subsection. "*5)
+            doc.header("Last sub section 2", 4)
+            doc.paragraph("Some standard text in ths final subsection. "*5)
+            doc.header("Last sub section 3", 4)
+            doc.paragraph("Some standard text in ths final subsection. "*5)
+            
+            doc.header("The last section", 1)
+            doc.paragraph("This closes this demo.")
+            
+        
+        doc = Doc()
+        test(doc, "Text version")
+        
+        print(doc.text)
+        
+        doc = Doc(DocSpec(target='MD'))
+        test(doc, "MarkDown version")
+        
+        print(doc.text)
+        
+Doc.demo()
+    
+    
+
 """
 
 # Node BooleanMath
@@ -585,7 +475,7 @@ class List:
 <sub>go to [index](/docs/index.md)</sub>
 """
 
-class Doc:
+class Doc_OLD:
     def __init__(self, tree_type, doc_spec=None):
         
         self.tree_type  = tree_type
