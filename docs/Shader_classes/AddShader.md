@@ -1,23 +1,12 @@
-<style>
-.heading1 {
-    color: red;
-    font-weight:700;
-    font-size: 35px;
-}
-.heading2 {
-    color: blue;
-    font-weight:700;
-    font-size: 30px;
-}
-</style>
 
-# Markdown heading styles {#identifier .heading1}
-## Markdown heading styles {#identifier .heading2}
+
       
 
 # MarkDown version
 
-> This a demo document containing a main header and sub sections. One can also find list of bullets points.
+<span style="color:blue">some *blue* text</span>
+
+> This a demo document containing a main <span style="color:blue">some *blue* text</span> header and sub sections. One can also find list of bullets points.
 
 ## Section 1
 
