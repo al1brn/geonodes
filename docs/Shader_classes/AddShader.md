@@ -1,9 +1,14 @@
-<html>
-<link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-<link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-<link rel="stylesheet" href="_static/css/theme_overrides.css" type="text/css" />
-<link rel="stylesheet" href="_static/css/version_switch.css" type="text/css" />
-</html>
+<style>
+.green {
+    color: green;
+    font-weight:700;
+    font-size: 30px;
+}
+</style>
+
+<div class="green">
+    Markdown css styles
+</div>
       
 
 # MarkDown version
