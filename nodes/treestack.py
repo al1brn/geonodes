@@ -65,17 +65,18 @@ def get_tree(name, tree_type='GeometryNodeTree', create=False, clear=False):
 # ----------------------------------------------------------------------------------------------------
 # Delete a tree
 
-def del_tree(name, tree_type='GeometryNodeTree'):
+def del_tree(btree): #, tree_type='GeometryNodeTree'):
 
     """ Delete a tree
     
     Arguments
     ---------
-        - name (str) : Tree name
-        - tree_type (str = 'GeometryNodeTree') : tree type in ('CompositorNodeTree', 'TextureNodeTree', 'GeometryNodeTree', 'ShaderNodeTree')
+        - btree (blender Tree or str : Tree or tree name
     """
     
-    btree = get_tree(name, tree_type=tree_type)
+    if isinstance(btree, str):
+        btree = bpy.data.node_groups.get(name)
+        
     if btree is not None:
         bpy.data.node_groups.remove(btree)   
         
@@ -104,6 +105,9 @@ class StackedTree:
 
     def _stack_done(self):
         pass
+    
+    class Break(Exception):
+        pass
 
     def __enter__(self):
         constants.TREE_STACK.append(self)
@@ -115,8 +119,10 @@ class StackedTree:
         constants.FRAME_STACK.clear()
         
         self.arrange()
-        
         self._stack_done()
+        
+        if exc_type == self.Break:
+            return
         
     # ====================================================================================================
     # List of nodes
@@ -258,7 +264,7 @@ class StackedNode(object):
         constants.FRAME_STACK.pop()
         
     def __str__(self):
-        return f"<Node  '{self.node_label}' ({self.bnode.name})>"
+        return f"<Node  {type(self).__name__} '{self.bnode.name}'>"
         
     # ====================================================================================================
     # Node label and color
@@ -396,12 +402,7 @@ class StackedNode(object):
     # Dynamic sockets
     
     def __getattr__(self, name):
-        
-        # ----- Why ?
-        # I don't know why the 2 lines below is required !
-        #if name in type(self).__dict__:
-        #    return type(self).__dict__[name]
-        
+
         outputs = self.__dict__.get('outputs')
         if outputs is not None and type(self).dynamic_out:
             bsocket = outputs.sockets_pynames(enabled_only=True).get(name)
@@ -538,7 +539,6 @@ class Trees:
         if pname[0].isnumeric():
             pname = '_' + pname
         return pname
-        
     
     @property
     def trees(self):
@@ -592,6 +592,20 @@ class Trees:
             return cur_tree.group(tree.name, **kwargs)
         
         return f
+    
+    # ----------------------------------------------------------------------------------------------------
+    # Call with its user name
+    
+    def call(self, name, **kwargs):
+        
+        cur_tree = constants.current_tree()
+        return cur_tree.group(self.prefixed_name(name), **kwargs)
+            
+        
+        
+        
+        
+    
     
         
     

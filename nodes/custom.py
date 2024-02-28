@@ -50,6 +50,7 @@ class C:
                  loops        = [],   # Loop on node parameter
                  value_socket = None, # For property setter
                  descr        = None, # Documentation
+                 tree_type    = None, # Tree type filter (some nodes share the same name)
                  **kwargs):           # Node parameters
         
         self.impl_type  = impl_type
@@ -62,49 +63,54 @@ class C:
         self.value_socket = value_socket
         self.loops        = loops
         self.descr        = descr
+        self.tree_type    = tree_type
         self.kwargs       = kwargs
         
     def __str__(self):
         return f"[C: {self.impl_type=}, {self.target=}, {self.name=}, {self.self_socket=}, {self.ret_socket=}"
         
     @classmethod
-    def Glob(cls, name="@", ret_socket=None, loops=[], descr=None, **kwargs):
+    def Glob(cls, name="@", ret_socket=None, loops=[], descr=None, tree_type=None, **kwargs):
         return cls(C.GLOBAL, None, 
                    name       = name,
                    ret_socket = ret_socket,
                    loops      = loops,
                    descr      = descr,
+                   tree_type  = tree_type,
                    **kwargs)
     
     @classmethod
-    def Meth(cls, target, self_socket="@", name="@", jump=None, ret_socket=None, loops=[], descr=None, **kwargs):
+    def Meth(cls, target, self_socket="@", name="@", jump=None, ret_socket=None, loops=[], descr=None, tree_type=None, **kwargs):
         return cls(C.METHOD, target, 
                  self_socket  = self_socket,
                  name         = name,
                  jump         = jump,
                  ret_socket   = ret_socket,
                  loops        = loops,
+                 tree_type    = tree_type,
                  descr        = descr,
                  **kwargs)
     
     @classmethod
-    def Get(cls, target, name, self_socket, ret_socket, loops=[], descr=None, **kwargs):
+    def Get(cls, target, name, self_socket, ret_socket, loops=[], descr=None, tree_type=None, **kwargs):
         return cls(C.GETTER, target, 
                  self_socket  = self_socket,
                  name         = name,
                  ret_socket   = ret_socket,
                  loops        = loops,
+                 tree_type    = tree_type,
                  descr        = descr,
                  **kwargs)
 
     @classmethod
-    def Set(cls, target, name, self_socket, value_socket, jump=None, loops=[], descr=None, **kwargs):
+    def Set(cls, target, name, self_socket, value_socket, jump=None, loops=[], descr=None, tree_type=None, **kwargs):
         return cls(C.SETTER, target,
                  name         = name,
                  self_socket  = self_socket,
                  value_socket = value_socket,
                  jump         = jump,
                  loops        = loops,
+                 tree_type    = tree_type,
                  descr        = descr,
                  **kwargs)
     
@@ -113,7 +119,27 @@ class C:
     
     def code(self, node_info):
         
+        # ----- Check tree type is ok
+        
         tree_type = node_info.tree_type
+        
+        if self.tree_type is not None:
+            if isinstance(self.tree_type, tuple):
+                if tree_type not in self.tree_type:
+                    return
+            else:
+                if tree_type != self.tree_type:
+                    return
+                
+        # ----- Debug
+        
+        if False and node_info.class_name in ['Math']:
+            print("="*100)
+            print("C.Code", tree_type, self)
+            print("")
+            print("bl_idname", node_info.bl_idname)
+            print(node_info.class_name, node_info.params)
+            print()
         
         # ---------------------------------------------------------------------------
         # Loop on targets
@@ -431,9 +457,9 @@ class C:
             
         # ----- Debug
         
-        if False and node_info.class_name == 'Switch' and name not in ['']:
+        if False and node_info.class_name == 'Math' and name not in ['']:
             print('='*100)
-            print("C.CODE", node_info.class_name, '->', self.target, self.name)
+            print("C.CODE", node_info.tree_name, node_info.class_name, '->', self.target, self.name)
             print(s)
             print()
         
@@ -719,9 +745,9 @@ NODE_IMPLEMENTATIONS = {
     'VectorRotate'       : C.Meth('Vect', ret_socket='vector'),
     'VertexNeighbors'    : C.Meth('Geometry', None),
     'VertexOfCorner'     : C.Meth('Geometry', None),
-    'Viewer'             : [C.Glob(name='viewer'),
-                            C.Meth('Geometry'),
-                            C.Meth('Geometry', name='viewer_DATA_TYPE', loops=['data_type']),
+    'Viewer'             : [C.Glob(name='viewer', tree_type='GeometryNodeTree'),
+                            C.Meth('Geometry', tree_type='GeometryNodeTree'),
+                            C.Meth('Geometry', name='viewer_DATA_TYPE', loops=['data_type'], tree_type='GeometryNodeTree'),
                             ],
     'VolumeCube'         : None,
     'VolumeToMesh'       : C.Meth('Geometry', 'volume', ret_socket='mesh'),
@@ -730,6 +756,9 @@ NODE_IMPLEMENTATIONS = {
     'WhiteNoiseTexture'  : None,
     '_3DCursor'          : None,
     }
+
+# GeometryNodeViewer
+# CompositorNodeViewer
 
 
 # =============================================================================================================================

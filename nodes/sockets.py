@@ -166,9 +166,6 @@ class Socket:
         else:
             def_value = value
             
-        print("SOCKET._set_value", self.bsocket.name, '<-', value)
-        print("in_bsocket", in_bsocket)
-            
         if in_bsocket is None:
             in_bsocket = utils.value_for(def_value, self.bsocket.bl_idname)
             if isinstance(in_bsocket, Socket):
@@ -180,7 +177,6 @@ class Socket:
                 
         if in_bsocket is not None:
             link = self.node.tree.btree.links.new(in_bsocket, self.bsocket, verify_limits=True)
-            print("THE LINK", link)
             
             
     # ====================================================================================================
@@ -216,7 +212,12 @@ class Socket:
     def rgb(self):
         rgb = self._sub_nodes.get('rgb')
         if rgb is None:
-            rgb = self.tree.SeparateColor(color=self, mode='RGB')
+            if True:
+                rgb = self.tree.SeparateColor(mode='RGB')
+                # Compositor : color is named Image, otherwise Color
+                rgb.inputs.socket_of_type('RGBA')._set_value(self)
+            else:
+                rgb = self.tree.SeparateColor(color=self, mode='RGB')
             self._sub_nodes['rgb'] = rgb
         return rgb
     
@@ -721,10 +722,10 @@ class Sockets:
     # ====================================================================================================
     # Count the number of enabled sockets with the same name
         
-    def enabled_counts(self, max_counts=None):
+    def enabled_counts(self, max_counts=None, ignore_disabled=False):
         counts = {}
         for bsocket in self.bsockets:
-            if bsocket.enabled and bsocket.name != "":
+            if (bsocket.enabled or ignore_disabled) and bsocket.name != "":
                 pyname = utils.socket_name(bsocket.name)
                 if pyname in counts.keys():
                     counts[pyname] += 1
@@ -806,6 +807,30 @@ class Sockets:
             if bsock.enabled:
                 return Socket(bsock)
         return None
+    
+    # ====================================================================================================
+    # Access to a socket by its type
+    # Allow to manage nodes such as CombineColor or SeparateColor
+    # Color sockets has the same type RGBA but have different name : Image for compositor and Color for Shaders
+    
+    def socket_of_type(self, socket_type, rank=0, halt=True):
+        count = rank
+        if isinstance(socket_type, tuple):
+            types = socket_type
+        else:
+            types = (socket_type,)
+            
+        for bsocket in self.bsockets:
+            if bsocket.type in types:
+                if count == 0:
+                    return Socket(bsocket)
+                count -= 1
+                
+        if halt:
+            raise AttributeError(f"Impossible to find a socket of type '{socket_type}' (rank {rank}) in sockets {[bs.name for bs in self.bsockets]}.")
+        else:
+            return None
+    
 
 # ====================================================================================================
 # Geometry socket

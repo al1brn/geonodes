@@ -28,17 +28,6 @@ TREE_CLASSES = {
     'CompositorNodeTree'  : 'Compositor',
     'TextureNodeTree'     : 'Texture',
     }
-    
-
-
-# ----- Documentation
-
-DOCUMENTATION_DICT = {}
-
-# ----- CROSS REFERENCES
-# How nodes are implemented
-
-CROSS_REF_DICT = {}
 
 # ====================================================================================================
 # Dynamic access

@@ -38,7 +38,7 @@ if True:
 # =============================================================================================================================
 # Nodes generator
 
-from .nodes.tree import GeoNodes, Shader
+from .nodes.tree import GeoNodes, Shader, Compositor
 from .nodes.treestack import Trees
 from .nodes.zones import Simulation, Repeat
 from .nodes.documentation import print_doc

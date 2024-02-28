@@ -404,12 +404,19 @@ class NodeInfo:
                 self.mi_bsocket = bsock
                 self.mi_pyname = utils.socket_name(bsock.name)
                 break
+
+        # ----------------------------------------------------------------------------------------------------
+        # DEBUG
+        
+        if False and self.class_name in ['CombineColor', 'SeparateColor']:
+            print("NodeInfo.__init__", self.tree_type, self.class_name)
+            for bsocket in [bs for bs in self.inputs.bsockets] + [bs for bs in self.outputs.bsockets]:
+                print(f"   - {bsocket.bl_idname}, {bsocket.type}, {bsocket.name}")
         
         # ----------------------------------------------------------------------------------------------------
         # Parameters
         
         self.analyze_parameters()
-        
             
         if False:
         
@@ -629,13 +636,13 @@ class NodeInfo:
         
         s += "\nInput sockets"
         s += "\n-------------"
-        for sck in self.in_socks:
+        for sck in self.inputs:
             s += f"\n{tab}{sck[0]:12s} {'X' if sck[1] else '-'} {sck[2]}"
         s += "\n"
         
         s += "\nOutput sockets"
         s += "\n--------------"
-        for sck in self.out_socks:
+        for sck in self.outputs:
             s += f"\n{tab}{sck[0]:12s} {'X' if sck[1] else '-'} {sck[2]}"
         s += "\n"
         
@@ -664,13 +671,18 @@ class NodeInfo:
         
         try:
             setattr(self.bnode, param, 'ERROR')
+            
         except TypeError as e:
             msg = str(e)
             i = msg.find('enum "ERROR" not found in')
             if i <= 0:
                 return None
             
-            return eval(msg[i+26:])
+            vals = eval(msg[i+26:])
+            # Only one possible value : ('VALUE') is evaluated as a str, not a singleton of a str
+            if isinstance(vals, str):
+                vals = (vals,)
+            return vals
         
         return None
     
@@ -688,8 +700,8 @@ class NodeInfo:
         # ----- Max number of sockets per name
         
         self.in_counts  = self.inputs.enabled_counts()
-        self.out_counts = self.outputs.enabled_counts()
-
+        self.out_counts = self.outputs.enabled_counts(ignore_disabled=self.bl_idname in constants.INCLUDE_HIDDEN_OUTPUT_SOCKETS)
+        
         self.max_in  = sum(self.in_counts.values())
         self.max_out = sum(self.out_counts.values())
         
@@ -736,7 +748,7 @@ class NodeInfo:
         self.driver_params = []
         for param, values in self.enum_params.items():
             for value in values:
-                    
+                
                 setattr(self.bnode, param, value)
 
                 self.inputs.enabled_counts(self.in_counts)
@@ -1836,43 +1848,6 @@ class NodeInfo:
                         node_args  = node_args,
                         descr      = descr,
                         )
-        
-# ====================================================================================================
-# Utility : loop on nodes
-
-def list_nodes_OLD(tree_type='GeometryNodeTree'):
-    
-    print("="*100)
-    print("List of nodes")
-    print()
-    
-    btree = treestack.get_tree("TREE - Temp", tree_type=tree_type, create=True, clear=True)
-    
-    for type_name in dir(bpy.types):
-        
-        try:
-            bnode = btree.nodes.new(type=type_name)
-        except RuntimeError as e:
-            continue
-        
-        if 'legacy' in bnode.name.lower():
-            continue
-        
-        class_name = utils.node_class_name(bnode.name)
-        
-        has_geo = False
-        for bsock in bnode.inputs:
-            if bsock.type == 'GEOMETRY':
-                has_geo = True
-        for bsock in bnode.outputs:
-            if bsock.type == 'GEOMETRY':
-                has_geo = True
-                
-        if has_geo:
-            print(f"{class_name:20s} {has_geo=}")
-        
-    print()
-    treestack.del_tree(btree.name)
     
 # ====================================================================================================
 # Loop on the nodes
@@ -1885,6 +1860,7 @@ def loop_on_nodes(tree_type='GeometryNodeTree', func=lambda node_info: None):
     btree = treestack.get_tree("TREE - Temp", tree_type=tree_type, create=True, clear=True)
     
     for type_name in dir(bpy.types):
+        
         try:
             bnode = btree.nodes.new(type=type_name)
         except RuntimeError as e:
@@ -1897,7 +1873,7 @@ def loop_on_nodes(tree_type='GeometryNodeTree', func=lambda node_info: None):
         
         func(node_info)
 
-    treestack.del_tree(btree.name)
+    treestack.del_tree(btree)
     
     
 # ====================================================================================================
@@ -1942,8 +1918,6 @@ def tree_class_setup(tree_class):
     tree_type = tree_class.TREE_TYPE
     sockets   = constants.SOCKETS[tree_type]
     
-    print(f"SETUP Tree: {tree_type}, sockets: {list(constants.all_socket_classes(tree_type).keys())}")
-    
     # ----- Create the Tree Dynamic entry for documentation
     
     constants.TREES[tree_type] = dynamic.Dynamic.Tree(tree_class, descr=None)
@@ -1959,11 +1933,37 @@ def tree_class_setup(tree_class):
     unknown_sockets = {}
     node_infos = []
     
+    to_delete = []
+    scene     = None
+    
     for type_name in dir(bpy.types):
-        try:
-            bnode = btree.nodes.new(type=type_name)
-        except RuntimeError as e:
-            continue
+        
+        # ----- Hack
+        # CompositorNodeRLayers can't be set in a Group
+        
+        if type_name == 'CompositorNodeRLayers':
+            if scene is None:
+                scene = bpy.context.scene
+                mem_un = scene.use_nodes
+                scene.use_nodes = True
+                
+            bnode = None
+            for bn in scene.node_tree.nodes:
+                if bn.bl_idname == type_name:
+                    bnode = bn
+                    break
+
+            if bnode is None:
+                bnode = scene.node_tree.nodes.new(type=type_name)
+                to_delete.append(bnode)
+                
+        # ----- Main loop
+            
+        else:
+            try:
+                bnode = btree.nodes.new(type=type_name)
+            except RuntimeError as e:
+                continue
         
         if 'legacy' in bnode.name.lower():
             continue
@@ -1973,15 +1973,18 @@ def tree_class_setup(tree_class):
         node_info = NodeInfo(btree, bnode)
         node_infos.append(node_info)
         
+        # ----- Debug
         
-        # Check if there are no new sockets since last supported version
+        if True:
+            print(f"tree_class_setup: {node_info.bl_idname:35s}: {node_info.class_name}")
+        
+        # ----- Check if there are no new sockets since last supported version
         
         node_info.check_socket_bl_idnames(unknown_sockets)
         
-        # Create the node class
+        # ----- Create the node class
         
         node_info.create_node_class()
-        
         
         # Node class accessible as Tree attributes:
         # node = tree.NodeClass(...)
@@ -2018,6 +2021,7 @@ def tree_class_setup(tree_class):
     for node_info in node_infos:
         
         custs = custom.NODE_IMPLEMENTATIONS.get(node_info.class_name)
+        
         if custs is None:
             continue
         
@@ -2028,22 +2032,16 @@ def tree_class_setup(tree_class):
             
         for cust in custs:
             cust.code(node_info)
-            
-    # ----------------------------------------------------------------------------------------------------
-    # Finalize the building of the sockets
-                
-    #self.dynamic.build_class()
-        
-    
-            
 
     # ====================================================================================================
     # Done
 
-    treestack.del_tree(btree.name)
+    treestack.del_tree(btree)
     
-
-
+    if scene is not None:
+        for bnode in to_delete:
+            scene.node_tree.nodes.remove(bnode)
+        scene.use_nodes = mem_un
     
                 
             

@@ -187,7 +187,11 @@ NO_INPUT_NODES = list(CONSTANT_NODES.keys()) + [
 # Nodes with in / out custom sockets
 
 CUSTOM_INPUT_SOCKETS = [
-    'GeometryNodeGroup', 
+    
+    'ShaderNodeGroup',
+    'CompositorNodeGroup',
+    'GeometryNodeGroup',
+    
     'GeometryNodeSimulationInput', 
     'GeometryNodeSimulationOutput',
     'GeometryNodeRepeatInput',
@@ -195,11 +199,21 @@ CUSTOM_INPUT_SOCKETS = [
     ]
 
 CUSTOM_OUTPUT_SOCKETS = [
+    
+    'ShaderNodeGroup',
+    'CompositorNodeGroup',
     'GeometryNodeGroup', 
+    
     'GeometryNodeSimulationInput', 
     'GeometryNodeSimulationOutput',
     'GeometryNodeRepeatInput',
     'GeometryNodeRepeatOutput',
+    ]
+
+# Include all output sockets, even the hidden ones
+
+INCLUDE_HIDDEN_OUTPUT_SOCKETS = [
+    'CompositorNodeRLayers',
     ]
 
 
@@ -310,6 +324,10 @@ def get_node_class(tree_type, bl_idname):
         raise AttributeError(f"Node bl_idname {bl_idname} not found for tree type {tree_type}")
     else:
         return dyn.dyn_class
+    
+def print_node_bl_idnames(tree_type):
+    for blid, dyn in NODES[tree_type].items():
+        print(f"{dyn.node_info.class_name:20s}: {blid}")
 
 # =============================================================================================================================
 # Sockets dict
@@ -378,19 +396,19 @@ def reset():
         
         # ----- Remove the node classes
         
-        for class_name in NODES.keys():
-            delattr(tree_class, class_name)
+        for bl_idname, dyn in NODES[tree_type].items():
+            delattr(tree_class, dyn.node_info.class_name)
         NODES[tree_type].clear()
 
         # ----- Remove the socket classes
         
-        for class_name in SOCKETS.keys():
+        for class_name in SOCKETS[tree_type].keys():
             delattr(tree_class, class_name)
         SOCKETS[tree_type].clear()
 
         # ----- Remove the global functions
 
-        for name in GLOBAL.keys():
+        for name in GLOBAL[tree_type].keys():
             delattr(tree_class, name)
         GLOBAL[tree_type].clear()
         

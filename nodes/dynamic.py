@@ -172,7 +172,7 @@ class Dynamic:
             - kwargs : addition information for documentation
         """
         
-        if True and self.class_name == 'SeparateXYZ':
+        if False and self.class_name == 'SeparateXYZ':
             print('-'*100)
             print(f"DYNAMIC add_member {self.class_name}, name: {name}, type: {member_type}")
             print()

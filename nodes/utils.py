@@ -494,7 +494,13 @@ def get_enum_list(bnode, param_name):
         if i <= 0:
             return None
         
-        return eval(msg[i+26:])
+        vals = eval(msg[i+26:])
+
+        # Only one possible value : ('VALUE') is evaluated as a str, not a singleton of a str
+        if isinstance(vals, str):
+            vals = (vals,)
+        return vals
+        
     
     return None
 

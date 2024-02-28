@@ -62,21 +62,8 @@ class Tree(StackedTree):
     # ----------------------------------------------------------------------------------------------------
     # init
     
-    def __init__(self, name, create=True, clear=True, fake_user=True, is_group=False, prefix=None, names=None):
+    def __init__(self, name, create=True, clear=True, fake_user=True, is_group=False, prefix=None):
         """ Tree of Nodes.
-        
-        The Tree can be initialized with a dictionary the set the dynamic classes.
-        This avoids to prefix the classes and functions with the tree class.
-        
-        ``` python
-        # No names dictionary : classes are read from tree
-        with Tree("Test", names=None) as tree:
-            a = tree.Math()
-            
-        # Provides the locals dictionary
-        with Tree("Test", names=locals()) as tree:
-            a = Math()
-        ```
         
         Arguments
         ---------
@@ -85,7 +72,6 @@ class Tree(StackedTree):
             - clear (bool = False) : erase the existing nodes
             - is_group (bool = False) : initialize as a ground
             - prefix (str = None) : prefix to use in the name
-            - names (dict=None) : locals dict where to create the dynamic classes
         """
         
         super().__init__()
@@ -97,18 +83,17 @@ class Tree(StackedTree):
         if isinstance(name, str):
             name = Trees(prefix).prefixed_name(name)
             self.btree = treestack.get_tree(name, self.TREE_TYPE, create=create, clear=False)
+            
         else:
             self.btree = name
             
         if hasattr(self.btree, 'is_modifier'):
             self.btree.is_modifier = not self.is_group
+            
         self.btree.use_fake_user = fake_user
             
         if clear:
             self.clear()
-            
-        if names is not None:
-            nodeinfo.tree_import(self.TREE_TYPE, names)
             
     # ====================================================================================================
     # For debug
@@ -117,7 +102,6 @@ class Tree(StackedTree):
     def _reset(cls):
         #cls.INIT = False
         constants.reset()
-            
             
     # ====================================================================================================
     # Arrange
@@ -555,6 +539,8 @@ class Tree(StackedTree):
         # Register with new name
         self._register_node(node)
         
+        # ----- Set the input sockets
+        
         for k, v in kwargs.items():
             if not node._input_socket_exists(k):
                 raise AttributeError(f"Node group {node} has no input socket named '{k}' in {list(node.inputs.sockets_pynames().keys())}")
@@ -578,61 +564,7 @@ class Tree(StackedTree):
         self.btree.links.new(sock2, sock3)
         
         self.arrange()
-        
-# ====================================================================================================
-# Shader Tree
 
-class Shader(Tree):
-
-    INIT = False
-    TREE_TYPE = 'ShaderNodeTree'
-    
-    def __init__(self, name, create=True, fake_user=True, is_group=False, prefix=None, names=None):
-        
-        self.material = None
-        if is_group:
-            super().__init__(name, create=create, clear=True, is_group=True, names=names)
-            
-        else:
-            mat = bpy.data.materials.get(name)
-            if mat is None:
-                mat = bpy.data.materials.new(name)
-                
-            mat.use_nodes = True
-            super().__init__(mat.node_tree, create=False, clear=True, is_group=False, names=names)
-            self.material = mat
-            
-    # ====================================================================================================
-    # Tree output    
-
-    @property
-    def output_node(self):
-        return self.get_node('ShaderNodeOutputMaterial', create=True)
-    
-    @property
-    def output_surface(self):
-        raise AttributeError(f"Material 'output_surface' is write only")
-        
-    @output_surface.setter
-    def output_surface(self, value):
-        self.output_node.surface = value
-        
-    @property
-    def output_volume(self):
-        raise AttributeError(f"Material 'output_volume' is write only")
-        
-    @output_volume.setter
-    def output_volume(self, value):
-        self.output_node.volume = value
-        
-    @property
-    def output_displacement(self):
-        raise AttributeError(f"Material 'output_displacement' is write only")
-        
-    @output_displacement.setter
-    def output_displacement(self, value):
-        self.output_node.displacement = value
-    
         
 # ====================================================================================================
 # Geometry Nodes Tree
@@ -742,6 +674,222 @@ class GeoNodes(Tree):
         from geonodes.nodes.zones import Repeat
 
         return Repeat(iterations=iterations, **kwargs)
+    
+# ====================================================================================================
+# Shader Tree
+
+class Shader(Tree):
+
+    INIT = False
+    TREE_TYPE = 'ShaderNodeTree'
+    
+    def __init__(self, name, create=True, fake_user=True, is_group=False, prefix=None):
+        
+        self.material = None
+        if is_group:
+            super().__init__(name, create=create, clear=True, is_group=True)
+            
+        else:
+            mat = bpy.data.materials.get(name)
+            if mat is None:
+                mat = bpy.data.materials.new(name)
+                
+            mat.use_nodes = True
+            super().__init__(mat.node_tree, create=False, clear=True, is_group=False)
+            self.material = mat
+            
+    # ====================================================================================================
+    # Input and output nodes
+            
+    @property
+    def input_node(self):
+        if self.is_group:
+            return self.get_node('NodeGroupInput', create=True)
+        else:
+            raise AttributeError(f"Shader '{self.name}' has not input node.")
+        
+    @property
+    def output_node(self):
+        if self.is_group:
+            return self.get_node('NodeGroupOutput', create=True)
+        else:
+            return self.get_node('ShaderNodeOutputMaterial', create=True)
+            
+    # ====================================================================================================
+    # Tree output    
+
+    @property
+    def output_surface(self):
+        raise AttributeError(f"Material 'output_surface' is write only")
+        
+    @output_surface.setter
+    def output_surface(self, value):
+        self.output_node.surface = value
+        
+    @property
+    def output_volume(self):
+        raise AttributeError(f"Material 'output_volume' is write only")
+        
+    @output_volume.setter
+    def output_volume(self, value):
+        self.output_node.volume = value
+        
+    @property
+    def output_displacement(self):
+        raise AttributeError(f"Material 'output_displacement' is write only")
+        
+    @output_displacement.setter
+    def output_displacement(self, value):
+        self.output_node.displacement = value
+    
+# ====================================================================================================
+# Compositor Tree
+
+class Compositor(Tree):
+
+    INIT = False
+    TREE_TYPE = 'CompositorNodeTree'
+    
+    def __init__(self, name=None, create=True, clear=True, fake_user=True, is_group=False, prefix=None):
+        
+        if is_group:
+            if name is None:
+                name = "Group"
+            super().__init__(name, create=create, clear=clear, fake_user=fake_user, is_group=True, prefix=None)
+            self.scene = None
+        
+        else:
+            if name is None:
+                name = bpy.context.scene.name
+            scene = bpy.data.scenes.get(name)
+            if scene is None:
+                raise AttributeError(f"Scene '{name}' not found in {list(bpy.data.scenes.keys())} for Compositor initialization.")
+                
+            scene.use_nodes = True
+            super().__init__(scene.node_tree, create=create, clear=clear, fake_user=False, is_group=False)
+            self.scene = scene
+            
+    # ====================================================================================================
+    # Input and output nodes
+            
+    @property
+    def input_node(self):
+        if self.is_group:
+            return self.get_node('NodeGroupInput', create=True)
+        else:
+            return self.get_node('CompositorNodeRLayers', create=True)
+        
+    @property
+    def output_node(self):
+        if self.is_group:
+            return self.get_node('NodeGroupOutput', create=True)
+        else:
+            return self.get_node('CompositorNodeComposite', create=True)
+            
+    # ====================================================================================================
+    # Tree output
+    
+    @property
+    def use_alpha(self):
+        return self.output_node.use_alpha
+    
+    @use_alpha.setter
+    def use_alpha(self, value):
+        self.output_node.use_alpha = value
+        
+    @property
+    def output_image(self):
+        raise AttributeError(f"Image 'output_image' is write only")
+        
+    @output_image.setter
+    def output_image(self, value):
+        self.output_node.image = value
+        
+    @property
+    def output_alpha(self):
+        raise AttributeError(f"Image 'output_alpha' is write only")
+        
+    @output_alpha.setter
+    def output_alpha(self, value):
+        self.output_node.alpha = value
+        
+# ====================================================================================================
+# Compositor Tree
+
+class TextureLegacy(Tree):
+
+    INIT = False
+    TREE_TYPE = 'TextureNodeTree'
+    
+    def __init__(self, name, create=True, clear=True, fake_user=True, is_group=False, prefix=None):
+        
+        if is_group:
+            if name is None:
+                name = "Group"
+            super().__init__(name, create=create, clear=clear, fake_user=fake_user, is_group=True, prefix=None)
+            self.texture = None
+        
+        else:
+            texture = bpy.data.textures.get(name)
+            if texture is None:
+                if create:
+                    texture = bpy.data.textures.new(name)
+                else:
+                    raise AttributeError(f"Texture named '{name}' not found.")
+                
+            texture.use_nodes = True
+            super().__init__(texture.node_tree, create=False, clear=clear, fake_user=False, is_group=False)
+            self.texture = texture
+            
+    # ====================================================================================================
+    # Input and output nodes
+            
+    @property
+    def input_node(self):
+        if self.is_group:
+            return self.get_node('NodeGroupInput', create=True)
+        else:
+            return self.get_node('CompositorNodeRLayers', create=True)
+        
+    @property
+    def output_node(self):
+        if self.is_group:
+            return self.get_node('NodeGroupOutput', create=True)
+        else:
+            return self.get_node('CompositorNodeComposite', create=True)
+            
+    # ====================================================================================================
+    # Tree output
+    
+    @property
+    def use_alpha(self):
+        return self.output_node.use_alpha
+    
+    @use_alpha.setter
+    def use_alpha(self, value):
+        self.output_node.use_alpha = value
+        
+    @property
+    def output_image(self):
+        raise AttributeError(f"Image 'output_image' is write only")
+        
+    @output_image.setter
+    def output_image(self, value):
+        self.output_node.image = value
+        
+    @property
+    def output_alpha(self):
+        raise AttributeError(f"Image 'output_alpha' is write only")
+        
+    @output_alpha.setter
+    def output_alpha(self, value):
+        self.output_node.alpha = value
+
+    
+    
+        
+
+    
     
 
 
