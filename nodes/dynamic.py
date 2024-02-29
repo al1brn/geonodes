@@ -23,6 +23,8 @@ from pprint import pprint
 from geonodes.nodes import constants
 from geonodes.nodes import utils
 
+from geonodes.nodes.documentation import Doc, DocSpec
+
 # ----------------------------------------------------------------------------------------------------
 # print_doc class method implemented in the dynamic classes
 
@@ -34,13 +36,13 @@ def print_doc(cls, member=None):
         print(f"Sorry, the class '{cls.__name__}' is not documented (no '_dynamic' attribute).")
         
     elif dyn.dyn_type == Dynamic.TREE:
-        dyn.tree_print_doc(member)
+        dyn.tree_print_doc(member, target_doc=None)
         
     elif dyn.dyn_type == Dynamic.NODE:
-        dyn.node_print_doc(member)
+        dyn.node_print_doc(target_doc=None)
         
     elif dyn.dyn_type == Dynamic.SOCKET:
-        dyn.socket_print_doc(member)
+        dyn.socket_print_doc(member, target_doc=None)
         
     else:
         print(f"Sorry, the class '{cls.__name__}' has an unsupported type: '{dyn.dyn_type}'.")
@@ -260,165 +262,202 @@ class Dynamic:
     # Print list of args
     
     @staticmethod
-    def print_args(args):
-        docs = args.docs
-        if len(docs) == 0:
+    def print_args(doc, args):
+        
+        arg_docs = args.docs
+        if len(arg_docs) == 0:
             return
-        print("Arguments")
-        print('---------')
-        for doc in docs:
-            print(f" - {doc[0]:15s}", end = "")
-            if doc[1] != 'ARG_NO_VALUE':
-                print(f": {doc[1]}", end="")
-                if doc[2] is not None:
-                    print(f" in {doc[2]}", end="")
-            print()
-        print()
+        
+        with doc.bullets("Arguments") as bs:
+            for arg_doc in arg_docs:
+                if True:
+                    descr = None
+                    if arg_doc[1] != 'ARG_NO_VALUE':
+                        descr = arg_doc[1]
+                        if arg_doc[2] is not None:
+                            descr += f" in {arg_doc[2]}"
+                    bs.add(arg_doc[0], descr)
+                    
+                else:
+                    print(f" - {doc[0]:15s}", end = "")
+                    if doc[1] != 'ARG_NO_VALUE':
+                        print(f": {doc[1]}", end="")
+                        if doc[2] is not None:
+                            print(f" in {doc[2]}", end="")
+                    print()
 
     # ----------------------------------------------------------------------------------------------------
     # Print func dict
                     
     @staticmethod
-    def print_func(func):
-        if func['descr'] is not None:
-            print(func['descr'])
-            print()
-            
-        print(f"- {'node':15s} : {func['node_class_name']}")
-        for k, v in func['kwargs'].items():
-            k_ = 'self' if k == 'self_socket' else k
-            print(f"- {k_:15s} : {v}")
-        print()
+    def print_func(doc, func):
         
-        Dynamic.print_args(func['args'])
-
-        print()
-        print("Source code")
-        print("-----------")
-        print(func['code'].replace('\t', '    '))
+        if func['descr'] is not None:
+            doc.description(func['descr'])
+            
+        with doc.bullets() as bs:
+            bs.add("node", func['node_class_name'])
+            for k, v in func['kwargs'].items():
+                k_ = 'self' if k == 'self_socket' else k
+                bs.add(k_, v)
+        
+        Dynamic.print_args(doc, func['args'])
+        
+        doc.header("Source code", 3)
+        doc.source(func['code'])
     
     # ----------------------------------------------------------------------------------------------------
     # Tree documentation
     
-    def tree_print_doc(self, function=None):
+    def tree_print_doc(self, function=None, target_doc=None):
+
+        if target_doc is None:
+            doc = Doc()
+        else:
+            doc = target_doc
+            
+        # DEBUG            
+        doc.doc_spec.target = 'MD'
+                
+            
         
         tree_type = self.dyn_class.TREE_TYPE
         
-        print('-'*80)
-        print(f"Tree {self.class_name} ({tree_type})")
-        print()
+        doc.header(f"Tree {self.class_name} ({tree_type})")
         
-        # ----------------------------------------------------------------------------------------------------
-        # A specific function
-        
-        if function is not None:
-            func = self.methods.get(function)
-            if func is None:
-                print(f"Sorry, no function named '{function}' found in tree '{cls.__name__}'.")
-            
-            else:
-                self.print_func(func)
-            
-            return
-
         # ----------------------------------------------------------------------------------------------------
         # The whole Tree
 
-        if self.descr is not None:
-            print(self.descr)
-            print()
-            
-        print("Socket Classes")
-        print("------------")
-        print()
-        for class_name in sorted(constants.SOCKETS[tree_type].keys()):
-            print(" -", class_name)
-        print()
+        if function is None:
         
-        print("Node Classes")
-        print("------------")
-        print()
-        for class_name in sorted(constants.NODES[tree_type].keys()):
-            print(class_name, end=" ")
-        print()
-        print()
+            if self.descr is not None:
+                doc.description(self.descr)
+                
+            with doc.bullets("Socket Classes") as bullets:
+                links = [doc.page_link(class_name, f"{tree_type}/{class_name}") for class_name in constants.SOCKETS[tree_type].keys()]
+                #links = {class_name: class_name for class_name in constants.SOCKETS[tree_type].keys()}
+                bullets.alphabetical(links, len(links))
+                    
+            with doc.bullets("Node Classes") as bullets:
+                links = [doc.page_link(dyn.node_info.class_name, f"{tree_type}/{dyn.node_info.class_name}") for bl_idname, dyn in constants.NODES[tree_type].items()]
+                #links = {dyn.node_info.class_name: bl_idname for bl_idname, dyn in constants.NODES[tree_type].items()}
+                bullets.alphabetical(links)
+                
+            with doc.bullets("Functions") as bullets:
+                links = [doc.title_link(name, name) for name in self.methods.keys()]
+                
+                #links = {name: name for name in self.methods.keys()}
+                bullets.alphabetical(links)
 
-        print("Functions")
-        print("---------")
-        print()
-        for name in sorted(self.methods.keys()):
-            print(name, end=" ")
-        print()
-        print()
+            if doc.doc_spec.is_md:
+                doc.header("Functions", 1)
+                
+                for name in sorted(self.methods.keys()):
+                    func = self.methods[name]
+                    doc.header(f"{name} (function)", 2)
+                    self.print_func(doc, func)
+            
+            
+        # ----------------------------------------------------------------------------------------------------
+        # A specific function
+        
+        else:
+            func = self.methods.get(function)
+            if func is None:
+                doc.descr(f"Sorry, no function named '{function}' found in tree '{cls.__name__}'.")
+            else:
+                doc.header(f"{function} (function)", 1)
+                self.print_func(doc, func)
+            
+        # ----------------------------------------------------------------------------------------------------
+        # Print the doc
+        
+        if target_doc is None:
+            doc.done()
         
     # ----------------------------------------------------------------------------------------------------
     # Node documentation
     
-    def node_print_doc(self, member=None):
+    def node_print_doc(self, target_doc=None):
+        
+        if target_doc is None:
+            doc = Doc()
+        else:
+            doc = target_doc
         
         tree_type  = self.node_info.tree_type
         class_name = self.node_info.class_name
         
-        print('-'*80)
-        print(f"Node {class_name}")
-        print()
-        print(f"- Node name : '{self.node_info.name}'")
-        print(f"- bl_idname : {self.node_info.bl_idname}")
-        print()
+        doc.header(f"Node {class_name}", 0)
+        
+        with doc.bullets() as bullets:
+            bullets.add("Node name", f"'{self.node_info.name}'")
+            bullets.add("bl_idname", self.node_info.bl_idname)
         
         if self.descr is not None:
-            print(self.descr)
-            print()
-            
-        print("")
+            doc.description(self.descr)
         
         func = self.methods.get('__init__')
         if func is not None:
             header = func['code'].split("\n")[0].replace("def __init__(self, ", class_name + "(").strip()[:-1]
-            print(header)
-            print()
+            doc.source(header)
             
-            self.print_args(func['args'])
+            self.print_args(doc, func['args'])
             
-        print("Implementation")
-        print("==============")
-        print()
+        doc.header("Implementation", 1)
 
         cross_ref = constants.CROSS_REF[tree_type].get(class_name)
         if cross_ref is None:
-            print("No implementation in sockets")
-            print()
+            doc.paragraph("No implementation in sockets")
+
         else:
-            for socket in sorted(cross_ref.keys()):
-                print(" -", socket, end = " : ")
-                print(" ".join(sorted(cross_ref[socket])))
-            print()
-
-        print("Init")
-        print("====")
-        print()
-        print(func['code'])
-        print()
+            with doc.bullets() as bullets:
+                for socket in sorted(cross_ref.keys()):
+                    doc.add(socket, " ".join(sorted(cross_ref[socket])))
+                            
+        doc.header("Init")
+        doc.source(func['code'])
         
-
-            
-            
-        print()
+        # ----------------------------------------------------------------------------------------------------
+        # Print the doc
+        
+        if target_doc is None:
+            doc.done()
+        
         
     # ----------------------------------------------------------------------------------------------------
     # Class documentation
     
-    def socket_print_doc(self, member=None):
-
-        print('-'*80)
+    def socket_print_doc(self, member=None, target_doc=None):
+        
+        if target_doc is None:
+            doc = Doc()
+        else:
+            doc = target_doc
+            
         s = "" if member is None else f".{member}"
-        print(f"Socket {self.class_name}{s}")
-        print()
+        doc.header(f"Socket {self.class_name}{s}", 0)
+        
+        # ----------------------------------------------------------------------------------------------------
+        # The Socket class
+            
+        if member is None:
+            
+            if self.descr is not None:
+                doc.description(self.descr)
+                
+            with doc.bullets(f"Properties ({len(self.properties)})") as bullets:
+                for name in sorted(self.properties.keys()):
+                    bullets.add(name)
+
+            with doc.bullets(f"Methods ({len(self.methods)})") as bullets:
+                for name in sorted(self.methods.keys()):
+                    bullets.add(name)
         
         # ----------------------------------------------------------------------------------------------------
         # A specific member
             
-        if member is not None:
+        else:
             
             is_meth = True
             func    = self.methods.get(member)
@@ -427,63 +466,36 @@ class Dynamic:
                 func    = self.properties.get(member)
                 
             if func is None:
-                print(f"Sorry, Socket class '{type(self).__name__}' has no member named {member}\n\n")
-                return
-            
-            if is_meth:
-                print(f"{member} (Method):")
-                print()
-                self.print_func(func)
+                doc.paragraph(f"Sorry, Socket class '{type(self).__name__}' has no member named {member}\n\n")
                 
             else:
-                cat = 'Property'
-                if func['getter'] is None:
-                    cat = 'Write only Property'
-                elif func['setter'] is None:
-                    cat = 'Read only Property'
+                if is_meth:
                     
-                print(f"{member} ({cat}):")
-                print()
-                if func['getter'] is not None:
-                    print("GET")
-                    print('==========')
-                    print()
-                    self.print_func(func['getter'])
-                print()
-    
-                if func['setter'] is not None:
-                    print("SET")
-                    print('==========')
-                    print()
-                    self.print_func(func['setter'])
-                print()
-                
-            print()
-            print()
-            return
+                    doc.header(f"{member} (Method)", 1)
+                    self.print_func(doc, func)
+                    
+                else:
+                    cat = 'Property'
+                    if func['getter'] is None:
+                        cat = 'Write only Property'
+                    elif func['setter'] is None:
+                        cat = 'Read only Property'
+                        
+                    doc.header(f"{member} ({cat})", 1)
+                    
+                    if func['getter'] is not None:
+                        doc.header("GET", 2)
+                        self.print_func(doc, func['getter'])
         
+                    if func['setter'] is not None:
+                        doc.header("SET", 2)
+                        self.print_func(doc, func['setter'])
+                        
         # ----------------------------------------------------------------------------------------------------
-        # The Socket class
-            
-        if self.descr is not None:
-            print(self.desct)
-            print()
-            
-        print(f"Properties ({len(self.properties)}):")
-        print( "-----------------")
-        for name in sorted(self.properties.keys()):
-            print(name, end=" ")
-        print()
-        print()
+        # Print the doc
         
-        print(f"Methods ({len(self.methods)}):" )
-        print( "-----------------")
-        for name in sorted(self.methods.keys()):
-            print(name, end=" ")
-        print()
-        print()
-            
-
+        if target_doc is None:
+            doc.done()
                 
         
         

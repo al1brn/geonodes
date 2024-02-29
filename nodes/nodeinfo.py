@@ -1975,7 +1975,7 @@ def tree_class_setup(tree_class):
         
         # ----- Debug
         
-        if True:
+        if False:
             print(f"tree_class_setup: {node_info.bl_idname:35s}: {node_info.class_name}")
         
         # ----- Check if there are no new sockets since last supported version

@@ -23,21 +23,37 @@ from pprint import pprint
 from pathlib import Path
 
 # ====================================================================================================
+# A link
+
+class Link:
+    def __init__(self, name, link=None):
+        self.name      = name
+        self.link      = link
+        
+    def text(self, target='TEXT'):
+        if target == 'TEXT':
+            return self.name
+        elif target == 'MD':
+            return f"[{self.name}]({self.link})"
+
+# ====================================================================================================
 # Doc specification
 
 class DocSpec:
-    def __init__(self, target='TEXT', width=100, margin=4, path=None):
+    def __init__(self, target='TEXT', width=100, margin=4, path=None, link_root="/docs"):
         self.target = target
         self.width  = width
         self.margin = margin
         self.path   = path
         if self.is_md:
             self.margin = 0
+
+        self.link_root = link_root
         
     @property
     def is_md(self):
         return self.target == 'MD'
-
+    
 # ====================================================================================================
 # Split a big line in several lines
 
@@ -248,16 +264,29 @@ class Header(DocText):
 
 class Source(DocText):
     text_type = 'PYTHON'
+
+    def __init__(self, text=""):
+        super().__init__(text.strip().replace('\t', '    '))
+        self.use_margin = False
     
     def lines(self, doc_spec):
-        width = 250 if doc_spec.target == 'MD' else 120
-        return split_line("``` python", width, indent=self.level) + super().lines(DocSpec(width=width)) + split_line("```", width, indent=self.level)
+        if doc_spec.is_md:
+            
+            return ("``` python\n" + self.text + "\n```\n").split("\n")
+        
+        else:
+            width = 150
+            lines = super().lines(DocSpec(width=width))
+            for i in range(len(lines)):
+                lines[i] = f"{i+1:2d}. " + lines[i]
+            return lines
+            
         
 # ====================================================================================================
 # List
 
 class List:
-    def __init__(self, doc, title=None, bullet=None, new_line=True):
+    def __init__(self, doc, title=None, bullet="-", new_line=True):
         self.doc      = doc
         self.paras    = []
         self.title    = title
@@ -265,7 +294,7 @@ class List:
         self.new_line = True
         
     def add(self, label, description=None):
-        para = Paragraph(description, level=self.level, bullet=self.bullet, item=label)
+        para = Paragraph(str(description), level=self.level, bullet=self.bullet, item=label)
         self.doc.add(para)
         self.paras.append(para)
         
@@ -295,6 +324,30 @@ class List:
             para.item_len = self.item_len
         if self.new_line:
             self.doc.add(new_line=True)
+            
+    # ----------------------------------------------------------------------------------------------------
+    # Alphabetical list
+    
+    def alphabetical(self, dct, max_list=10):
+        
+        if isinstance(dct, (tuple, list)):
+            dct = {key: None for key in dct}
+
+        keys = sorted(dct.keys())
+        
+        # ----- A short list
+            
+        if len(dct) <= max_list:
+            for key in keys:
+                self.add(key)
+            return
+        
+        # ----- A long list
+        
+        initials = sorted(set([key[0].upper() for key in keys]))
+        for initial in initials:
+            self.add(initial, " ".join([key for key in keys if key[0].upper() == initial]))
+    
 
 # ====================================================================================================
 # Documentation builder
@@ -307,6 +360,32 @@ class Doc:
         self.list_level = 0
         self.paragraphs = []
         
+        
+    # ====================================================================================================
+    # Links
+        
+    def url(self, name, url):
+        if self.doc_spec.target == 'TEXT' or url is None:
+            return name
+        
+        elif self.doc_spec.target == 'MD':
+            return f"[{name}]({url})"
+        
+        else:
+            return f"<Unknown target {self.doc_spec.target} for link '{name}' -> '{url}'>"
+    
+    def title_link(self, name, title):
+        return self.url(name, f"#{title.replace(' ', '-')}")
+    
+    def page_link(self, name, path, title=None):
+        url = f"{self.doc_spec.link_root}/{path}.md"
+        if title is not None:
+            url += "#{title.replace(' ', '-')}"
+        return self.url(name, url)
+
+    # ====================================================================================================
+    # Text management
+
     # ---------------------------------------------------------------------------
     # Clear the content
         
@@ -370,6 +449,12 @@ class Doc:
         
     def bullets(self, title=None, bullet="-", new_line=True):
         return List(self, title=title, bullet=bullet, new_line=new_line)
+
+    # ---------------------------------------------------------------------------
+    # Source code
+    
+    def source(self, text, new_line=True):
+        self.add(Source(text), new_line=new_line)
     
     # ====================================================================================================
     # Build the resulting text
@@ -392,7 +477,15 @@ class Doc:
     
     @property
     def text(self):
-        return "\n".join(self.lines)      
+        return "\n".join(self.lines)     
+
+    # ====================================================================================================
+    # Done
+    
+    def done(self):
+        print(self.text)
+        self.clear()
+    
     
     # ====================================================================================================
     # Demo
@@ -409,6 +502,11 @@ class Doc:
                 bs.add("Section 1", "This section")
                 bs.add("Another section", "Just for fun")
                 bs.add("The last section", "The description of this section is very long. "*5)
+                doc.new_line()
+                with doc.bullets("No finished yet :-)", "-") as b:
+                    b.add("Foo")
+                    b.add("Bar")
+                    b.add("Baz")
             
             doc.header("Another section", 1)
             doc.description("This section has several sub sections.")
@@ -418,34 +516,30 @@ class Doc:
             doc.header("Last sub section 1", 4)
             doc.paragraph("Some standard text in ths final subsection. "*5)
             doc.header("Last sub section 2", 4)
-            doc.paragraph("Some standard text in ths final subsection. "*5)
+            doc.paragraph("Some standard text in ths final subsection.")
             doc.header("Last sub section 3", 4)
-            doc.paragraph("Some standard text in ths final subsection. "*5)
+            doc.paragraph("Some standard text in ths final subsection.")
             
             doc.header("Sub sub section 2", 3)
             doc.header("Last sub section 1", 4)
             doc.paragraph("Some standard text in ths final subsection. "*5)
             doc.header("Last sub section 2", 4)
-            doc.paragraph("Some standard text in ths final subsection. "*5)
+            doc.paragraph("Some standard text in ths final subsection.")
             doc.header("Last sub section 3", 4)
-            doc.paragraph("Some standard text in ths final subsection. "*5)
+            doc.paragraph("Some standard text in ths final subsection.")
             
             doc.header("Sub section 2", 2)
             doc.header("Sub sub section 1", 3)
             doc.header("Last sub section 1", 4)
-            doc.paragraph("Some standard text in ths final subsection. "*5)
+            doc.paragraph("Some standard text in ths final subsection. ")
             doc.header("Last sub section 2", 4)
-            doc.paragraph("Some standard text in ths final subsection. "*5)
+            doc.paragraph("Some standard text in ths final subsection.")
             doc.header("Last sub section 3", 4)
-            doc.paragraph("Some standard text in ths final subsection. "*5)
+            doc.paragraph("Some standard text in ths final subsection.")
             
             doc.header("Sub sub section 2", 3)
             doc.header("Last sub section 1", 4)
-            doc.paragraph("Some standard text in ths final subsection. "*5)
-            doc.header("Last sub section 2", 4)
-            doc.paragraph("Some standard text in ths final subsection. "*5)
-            doc.header("Last sub section 3", 4)
-            doc.paragraph("Some standard text in ths final subsection. "*5)
+            doc.paragraph("Some standard text in ths final subsection. ")
             
             doc.header("The last section", 1)
             doc.paragraph("This closes this demo.")
@@ -454,15 +548,14 @@ class Doc:
         doc = Doc()
         test(doc, "Text version")
         
-        print(doc.text)
+        doc.done()
         
         doc = Doc(DocSpec(target='MD'))
         test(doc, "MarkDown version")
         
-        print(doc.text)
+        doc.done()
         
-Doc.demo()
-    
+#Doc.demo()
     
 
 """
