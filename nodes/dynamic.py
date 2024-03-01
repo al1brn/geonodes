@@ -191,6 +191,7 @@ class Dynamic:
             ccode = utils.compile_f(code, name)
         
         func = {
+            'cat'             : 'METHOD',
             'f'               : ccode,
             'node_class_name' : node_class_name,
             'code'            : code.strip(),
@@ -217,7 +218,7 @@ class Dynamic:
                 
             prop = self.properties.get(name)
             if prop is None:
-                prop = {'fget': None, 'fset': None, 'getter': None, 'setter': None}
+                prop = {'cat': 'PROPERTY', 'fget': None, 'fset': None, 'getter': None, 'setter': None, 'descr': "Property"}
                 self.properties[name] = prop
                 
             if member_type == 'GETTER':
@@ -225,11 +226,21 @@ class Dynamic:
                     print(f"CAUTION: getter of property named '{name}' is already defined")
                 prop['getter'] = func
                 prop['fget']   = func['f']
+                if prop['getter'] is None:
+                    prop['descr'] = "Read only property"
+                else:
+                    prop['descr'] = "Property"
             else:
                 if prop['setter'] is not None:
                     print(f"CAUTION: setter of property named '{name}' is already defined")
                 prop['setter'] = func
                 prop['fset']   = func['f']
+                if prop['setter'] is None:
+                    prop['descr'] = "Write only property"
+                else:
+                    prop['descr'] = "Property"
+                
+            
                 
             setattr(self.dyn_class, name, property(prop['fget'], prop['fset']))
                 
@@ -286,16 +297,38 @@ class Dynamic:
         
         doc.descr(func['descr'])
         
-        with doc.bullets(item_len=["node"] + [k for k in func['kwargs']]) as bs:
-            bs.add("node", doc.page_link(func['node_class_name']))
-            for k, v in func['kwargs'].items():
-                k_ = 'self' if k == 'self_socket' else k
-                bs.add(k_, v)
+        # ---------------------------------------------------------------------------
+        # Method
         
-        Dynamic.print_args(doc, func['args'])
+        if func['cat'] == 'METHOD':
         
-        doc.header("Source code", 3)
-        doc.source(func['code'])
+            with doc.bullets(item_len=["node"] + [k for k in func['kwargs']]) as bs:
+                bs.add("node", doc.page_link(func['node_class_name']))
+                for k, v in func['kwargs'].items():
+                    k_ = 'self' if k == 'self_socket' else k
+                    bs.add(k_, v)
+            
+            Dynamic.print_args(doc, func['args'])
+            
+            doc.header("Source code", 3)
+            doc.source(func['code'])
+        
+        # ---------------------------------------------------------------------------
+        # Property
+        
+        elif func['cat'] == 'PROPERTY':
+        
+            if func['getter'] is not None:
+                doc.header("GET", 2)
+                Dynamic.print_func(doc, func['getter'])
+
+            if func['setter'] is not None:
+                doc.header("SET", 2)
+                Dynamic.print_func(doc, func['setter'])
+                
+        else:
+            raise Exception(f"Unknown func category: {func['cat']}")
+        
     
     # ----------------------------------------------------------------------------------------------------
     # Tree documentation
@@ -383,7 +416,7 @@ class Dynamic:
             doc = target_doc
             
         # DEBUG            
-        doc = Doc.MarkDown()
+        #doc = Doc.MarkDown()
         
         tree_type  = self.node_info.tree_type
         class_name = self.node_info.class_name
@@ -413,11 +446,12 @@ class Dynamic:
             with doc.bullets() as bullets:
                 globs = None
                 for socket in sorted(cross_ref.keys()):
-                    links = [doc.page_link(name, title=name) for name in sorted(cross_ref[socket])]
                     if socket == 'GLOBAL':
-                        globs = links
+                        globs = [doc.page_link(name, socket, title=name) for name in sorted(cross_ref[socket])]
                     else:
+                        links = [doc.page_link(name, socket, title=name) for name in sorted(cross_ref[socket])]
                         bullets.add(doc.page_link(socket), " ".join(links))
+                        
                 if globs is not None:
                         bullets.add("Functions", " ".join(links))
                     
@@ -442,6 +476,9 @@ class Dynamic:
         else:
             doc = target_doc
             
+        # DEBUG            
+        doc = Doc.MarkDown()
+            
         s = "" if member is None else f".{member}"
         doc.header(f"Socket {self.class_name}{s}", 0)
         
@@ -453,13 +490,30 @@ class Dynamic:
             if self.descr is not None:
                 doc.description(self.descr)
                 
-            with doc.bullets(f"Properties ({len(self.properties)})") as bullets:
-                for name in sorted(self.properties.keys()):
-                    bullets.add(name)
+            doc.header("Properties", 2)
+            with doc.bullets() as bullets:
+                for name in sorted(self.properties):
+                    bullets.add(doc.title_link(name))
 
-            with doc.bullets(f"Methods ({len(self.methods)})") as bullets:
+            doc.header("Methods", 2)
+            with doc.bullets() as bullets:
+                for name in sorted(self.methods):
+                    bullets.add(doc.title_link(name))
+                    
+            if doc.is_md:
+                
+                doc.header("Properties", 1)
+                for name in sorted(self.properties.keys()):
+                    func = self.properties[name]
+                    doc.header(f"{name}", 2)
+                    self.print_func(doc, func)
+                
+                doc.header("Methods", 1)
                 for name in sorted(self.methods.keys()):
-                    bullets.add(name)
+                    func = self.methods[name]
+                    doc.header(f"{name}", 2)
+                    self.print_func(doc, func)
+                
         
         # ----------------------------------------------------------------------------------------------------
         # A specific member
@@ -490,13 +544,8 @@ class Dynamic:
                         
                     doc.header(f"{member} ({cat})", 1)
                     
-                    if func['getter'] is not None:
-                        doc.header("GET", 2)
-                        self.print_func(doc, func['getter'])
-        
-                    if func['setter'] is not None:
-                        doc.header("SET", 2)
-                        self.print_func(doc, func['setter'])
+                    self.print_func(func)
+                    
                         
         # ----------------------------------------------------------------------------------------------------
         # Print the doc
