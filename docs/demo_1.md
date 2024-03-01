@@ -45,7 +45,7 @@ The generated nodes and the result of the Geometry nodes modifier is given below
 ### Import
 
 ```python
-import geonodes as gn
+from geonodes import GeoNodes, Shader
 ```
 
 Be sure to have properly installed the **geonodes** module as described in the [Installation section](/README.md#installation).
@@ -57,7 +57,7 @@ Be sure to have properly installed the **geonodes** module as described in the [
 A Tree instance can be created with
   
 ```python
-tree = Tree(tree_name)
+tree = GeonNodes(tree_name)
 ...
 tree.close()
 ```
@@ -65,7 +65,7 @@ tree.close()
 But it is recommanded to use `with` syntax to ensure that the tree will be properly closed. The closing performs final mandatory treatments.
 
 ```python
-with gn.Tree("Geometry Nodes") as tree:
+with gn.GeoNodes("Geometry Nodes") as tree:
     ...
 ```
 
@@ -73,25 +73,24 @@ The `tree_name` is the name of a geometry nodes modifier. If it doesn't exist, i
 
 > **Warning** when calling `tree(tree_name)`, ***all the nodes and links are erased***. Be sure not to open a tree with an existing valuable tree you don't want to loose.
 
-The tree can be created with the argument `group=True` when the generated tree is not to be used as a modifier:
+The tree can be created with the argument `is_group=True` when the generated tree is not to be used as a modifier:
 
 ``` python
 
-with gn.Tree("Custom function", group=True):
+with gn.GeoNodes("Custom function", is_group=True):
    ...
 
 ```
 
-With the default option `group=False`, first sockets (input and output) are `Geometry`.
+With the default option `is_group=False`, first sockets (input and output) are `Geometry`.
 
-Within the scope of a Tree creation / closure, all nodes are created within this tree without the need to make explicit reference to this tree.
+Within the scope of a Tree creation / closure, use `tree` as the variable owning node and socket classes.
 
-In the following example, the `grid` mesh is created in `tree` without making any explicit reference to it. 
+In the following example, the `grid` mesh is created in `tree`: 
 
 ```python
-with gn.Tree("Geometry Nodes') as tree:
-
-    grid = gn.Mesh.Grid(vertices_x=count, vertices_y=count, size_x=size, size_y=size).mesh
+with GeoNodes("Geometry Nodes') as tree:
+    grid = tree.Grid(vertices_x=count, vertices_y=count, size_x=size, size_y=size).mesh
 ```
 
 Fore more details, see [class Tree reference](Tree.md)
