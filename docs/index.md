@@ -1,9 +1,9 @@
 # Index
 
-Geometry nodes : [GeoNodes](/docs/GeoNodes/GeoNodes.md) class
+**Geometry nodes*$ : [GeoNodes class](/docs/GeoNodes/GeoNodes.md)
 
-Shader : [Shader](/docs/GeoNodes/GeoNodes.md) class
+**Shader** : [Shader class](/docs/GeoNodes/Shader.md)
 
-Compositor : [Compositor](/docs/GeoNodes/GeoNodes.md) class
+**Compositor** : [Compositor](/docs/GeoNodes/Compositor.md)
 
 
