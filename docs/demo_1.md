@@ -57,7 +57,7 @@ Be sure to have properly installed the **geonodes** module as described in the [
 A Tree instance can be created with
   
 ```python
-tree = GeonNodes(tree_name)
+tree = GeoNodes(tree_name)
 ...
 tree.close()
 ```
@@ -118,7 +118,7 @@ The variables can also be used as default values of node sockets:
 ```python
 # Let's create an UV sphere of radius 0.5
 r = 0.5
-sphere = gn.Mesh.UVSphere(radius=r).mesh
+sphere = tree.UVSphere(radius=r).mesh
 ```
 
 In the created node, the input socket `radius` is initialized with `0.5`:
@@ -135,7 +135,7 @@ In the following script, we slightly modify our code by initializing `size` as a
 
 ```python
     count  = 100
-    size   = gn.Float(20.)
+    size   = tree.Float(20.)
     
     grid = gn.Mesh.Grid(vertices_x=count, vertices_y=count, size_x=size, size_y=size).mesh
 ````
