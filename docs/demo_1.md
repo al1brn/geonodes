@@ -158,7 +158,7 @@ Let's modify our script. This time, we initialize `count` as being a Group input
 
 ```python
     count  = tree.integer_nput("Grid resolution", 100)
-    size   = tree.float_input("Grid size", 20.)
+    size   = tree.Float(20.)
     
     grid = gn.Mesh.Grid(vertices_x=count, vertices_y=count, size_x=size, size_y=size).mesh
 ````
