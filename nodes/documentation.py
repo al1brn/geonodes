@@ -405,8 +405,8 @@ class Doc:
         doc.header("How to use", 1)
         doc.para("One initialized, the Doc offers a set of writing instructions:")
         with doc.bullets(item_len = len('new_line')) as b:
-            b.add(doc.title_link('header'), "Create a header at a certain level (starting from 0)")
-            b.add('para', "Create a simple paragraph")
+            b.add(doc.title_link('header', 'headers'), "Create a header at a certain level (starting from 0)")
+            b.add(doc.title_link('para'), "Create a simple paragraph")
             b.add('descr', "Write text as description")
             b.add('new_line', "Write a new line")
             b.add('sepa', "Write an horizontal separator")

@@ -6,8 +6,8 @@
 
 One initialized, the Doc offers a set of writing instructions:
 
-- [header](#header) : Create a header at a certain level (starting from 0)
-- para : Create a simple paragraph
+- [header](#headers) : Create a header at a certain level (starting from 0)
+- [para](#para) : Create a simple paragraph
 - descr : Write text as description
 - new_line : Write a new line
 - sepa : Write an horizontal separator
@@ -62,5 +62,3 @@ Bullet points allow to write list with bullet points or numbers:
 
 
 End of demo
-
-
