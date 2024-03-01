@@ -165,25 +165,20 @@ class Bullets:
     # ----------------------------------------------------------------------------------------------------
     # Alphabetical list
     
-    def alphabetical(self, dct, max_list=10):
-        
-        if isinstance(dct, (tuple, list)):
-            dct = {key: None for key in dct}
-
-        keys = sorted(dct.keys())
+    def alphabetical(self, items, max_list=10):
         
         # ----- A short list
             
-        if len(dct) <= max_list:
-            for key in keys:
-                self.add(key)
+        if len(items) <= max_list:
+            for item in sorted(items):
+                self.add(item)
             return
         
         # ----- A long list
         
-        initials = sorted(set([key[0].upper() for key in keys]))
+        initials = sorted(set([item[0].upper() for item in items]))
         for initial in initials:
-            self.add(initial, " ".join([key for key in keys if key[0].upper() == initial]))
+            self.add(initial, " ".join([item for item in items if item[0].upper() == initial]))
             
 # ====================================================================================================
 # Documentation builder

@@ -23,7 +23,7 @@ from pprint import pprint
 from geonodes.nodes import constants
 from geonodes.nodes import utils
 
-from geonodes.nodes.documentation import Doc, DocSpec
+from geonodes.nodes.documentation import Doc
 
 # ----------------------------------------------------------------------------------------------------
 # print_doc class method implemented in the dynamic classes
@@ -268,23 +268,14 @@ class Dynamic:
         if len(arg_docs) == 0:
             return
         
-        with doc.bullets("Arguments") as bs:
+        with doc.bullets("Arguments", item_len=[arg_doc[0] for arg_doc in arg_docs]) as bs:
             for arg_doc in arg_docs:
-                if True:
-                    descr = None
-                    if arg_doc[1] != 'ARG_NO_VALUE':
-                        descr = arg_doc[1]
-                        if arg_doc[2] is not None:
-                            descr += f" in {arg_doc[2]}"
-                    bs.add(arg_doc[0], descr)
-                    
-                else:
-                    print(f" - {doc[0]:15s}", end = "")
-                    if doc[1] != 'ARG_NO_VALUE':
-                        print(f": {doc[1]}", end="")
-                        if doc[2] is not None:
-                            print(f" in {doc[2]}", end="")
-                    print()
+                descr = None
+                if arg_doc[1] != 'ARG_NO_VALUE':
+                    descr = str(arg_doc[1])
+                    if arg_doc[2] is not None:
+                        descr += f" in {arg_doc[2]}"
+                bs.add(arg_doc[0], descr)
 
     # ----------------------------------------------------------------------------------------------------
     # Print func dict
@@ -292,10 +283,9 @@ class Dynamic:
     @staticmethod
     def print_func(doc, func):
         
-        if func['descr'] is not None:
-            doc.description(func['descr'])
-            
-        with doc.bullets() as bs:
+        doc.descr(func['descr'])
+        
+        with doc.bullets(item_len=["node"] + [k for k in func['kwargs']]) as bs:
             bs.add("node", func['node_class_name'])
             for k, v in func['kwargs'].items():
                 k_ = 'self' if k == 'self_socket' else k
@@ -317,46 +307,52 @@ class Dynamic:
             doc = target_doc
             
         # DEBUG            
-        doc.doc_spec.target = 'MD'
-                
-            
+        doc = Doc.MarkDown()
         
         tree_type = self.dyn_class.TREE_TYPE
         
-        doc.header(f"Tree {self.class_name} ({tree_type})")
+        doc.header(f"Tree {self.class_name} ({tree_type})", 0)
         
         # ----------------------------------------------------------------------------------------------------
         # The whole Tree
 
         if function is None:
         
-            if self.descr is not None:
-                doc.description(self.descr)
-                
-            with doc.bullets("Socket Classes") as bullets:
-                links = [doc.page_link(class_name, f"{tree_type}/{class_name}") for class_name in constants.SOCKETS[tree_type].keys()]
-                #links = {class_name: class_name for class_name in constants.SOCKETS[tree_type].keys()}
-                bullets.alphabetical(links, len(links))
-                    
-            with doc.bullets("Node Classes") as bullets:
-                links = [doc.page_link(dyn.node_info.class_name, f"{tree_type}/{dyn.node_info.class_name}") for bl_idname, dyn in constants.NODES[tree_type].items()]
-                #links = {dyn.node_info.class_name: bl_idname for bl_idname, dyn in constants.NODES[tree_type].items()}
-                bullets.alphabetical(links)
-                
-            with doc.bullets("Functions") as bullets:
-                links = [doc.title_link(name, name) for name in self.methods.keys()]
-                
-                #links = {name: name for name in self.methods.keys()}
-                bullets.alphabetical(links)
+            doc.descr(self.descr)
+            
+            # ----- Socket classes
+            
+            doc.header("Socket classes", 2)
 
-            if doc.doc_spec.is_md:
+            links = [doc.page_link(class_name, f"{tree_type}/{class_name}") for class_name in constants.SOCKETS[tree_type]]
+            with doc.bullets() as bullets:
+                bullets.alphabetical(links, len(links))
+                
+            # ----- Node classes
+            
+            doc.header("Node classes", 2)
+            
+            links = [doc.page_link(dyn.node_info.class_name, f"{tree_type}/{dyn.node_info.class_name}") for bl_idname, dyn in constants.NODES[tree_type].items()]
+            with doc.bullets() as bullets:
+                bullets.alphabetical(links)
+                
+            # ----- Global function
+            
+            doc.header("Functions", 2)
+
+            links = [doc.title_link(name) for name in self.methods.keys()]
+            with doc.bullets() as bullets:
+                bullets.alphabetical(links)
+                
+            # ----- All the functions if MarkDown
+
+            if doc.is_md:
                 doc.header("Functions", 1)
                 
                 for name in sorted(self.methods.keys()):
                     func = self.methods[name]
-                    doc.header(f"{name} (function)", 2)
+                    doc.header(f"{name}", 2)
                     self.print_func(doc, func)
-            
             
         # ----------------------------------------------------------------------------------------------------
         # A specific function

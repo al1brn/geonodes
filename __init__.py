@@ -41,7 +41,6 @@ if True:
 from .nodes.tree import GeoNodes, Shader, Compositor
 from .nodes.treestack import Trees
 from .nodes.zones import Simulation, Repeat
-from .nodes.documentation import print_doc
 from .nodes.constants import current_tree, dump_stack
 
 # =============================================================================================================================
