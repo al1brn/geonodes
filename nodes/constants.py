@@ -432,117 +432,20 @@ def reset():
         
     TREES.clear()
     
-    
-# OLD OLD OLD OLD 
-
-
-# ====================================================================================================
-# Dynamically created arrays
-# 2-level dictionaries : one dictionary per tree type
-#    'CompositorNodeTree' 
-#    'TextureNodeTree'    
-#    'GeometryNodeTree'   
-#    'ShaderNodeTree'
-
-
-
-#SOCKETS = {}
-
-# ----- Socket classes
-# Dictionaries : NodeSocket.type str --> Dynamic Socket class
-
-SOCKET_CLASSES_OLD = {}
-
-# ----- Node classes
-# Dictionnaries : bl_idname str --> Dynamic Node Class
-
-NODE_CLASSES_OLD = {}
-
-# ----- All dynamic classes and functions
-
-TREE_DICTS_OLD = {}
-
-
-def reset_OLD():
-    NODESOCKET_CLASSES.clear()
-    SOCKET_CLASSES.clear()
-    NODE_CLASSES.clear()
-    TREE_DICTS.clear()
-    
-
-# ---- Transparent access for the current tree
-
-def dynamic_dict_OLD(DICT, tree_type):
-    if tree_type is None:
-        tree_type = current_tree_type()
-    d = DICT.get(tree_type)
-    if d is None:
-        d = {}
-        DICT[tree_type] = d
-    return d
-
-def nodesocket_classes_OLD(tree_type=None):
-    """ Returns the dictionary registring the node socket classes.
-    
-    Arguments
-    ---------
-        - tree_type (str) : valid blender tree type
-        
-    Returns
-    -------
-        - dict
-    """
-    
-    return dynamic_dict(NODESOCKET_CLASSES, tree_type)
-
-def socket_classes_OLD(tree_type=None):
-    """ Returns the dictionary registring the socket classes.
-    
-    Arguments
-    ---------
-        - tree_type (str) : valid blender tree type
-        
-    Returns
-    -------
-        - dict
-    """
-    
-    return dynamic_dict(SOCKET_CLASSES, tree_type)
-
-def node_classes_OLD(tree_type=None):
-    """ Returns the dictionary registring the node classes.
-    
-    Arguments
-    ---------
-        - tree_type (str) : valid blender tree type
-        
-    Returns
-    -------
-        - dict
-    """
-    
-    return dynamic_dict(NODE_CLASSES, tree_type)
-
-def tree_dict_OLD(tree_type=None):
-    """ Returns the global dictionary registring all the dynamic classes and functions.
-    
-    Arguments
-    ---------
-        - tree_type (str) : valid blender tree type
-        
-    Returns
-    -------
-        - dict
-    """
-    
-    return dynamic_dict(TREE_DICTS, tree_type)
-        
-            
         
         
     
     
-        
+    
+    
+    
+    
+    
+    
+    
+    
+    
+     
         
         
     

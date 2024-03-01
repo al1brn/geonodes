@@ -19,6 +19,8 @@ update : 2024/02/17
 """
 
 from pprint import pprint
+from pathlib import Path
+
 
 from geonodes.nodes import constants
 from geonodes.nodes import utils
@@ -226,7 +228,7 @@ class Dynamic:
                     print(f"CAUTION: getter of property named '{name}' is already defined")
                 prop['getter'] = func
                 prop['fget']   = func['f']
-                if prop['getter'] is None:
+                if prop['setter'] is None:
                     prop['descr'] = "Read only property"
                 else:
                     prop['descr'] = "Property"
@@ -235,7 +237,7 @@ class Dynamic:
                     print(f"CAUTION: setter of property named '{name}' is already defined")
                 prop['setter'] = func
                 prop['fset']   = func['f']
-                if prop['setter'] is None:
+                if prop['getter'] is None:
                     prop['descr'] = "Write only property"
                 else:
                     prop['descr'] = "Property"
@@ -394,7 +396,7 @@ class Dynamic:
         else:
             func = self.methods.get(function)
             if func is None:
-                doc.descr(f"Sorry, no function named '{function}' found in tree '{cls.__name__}'.")
+                doc.descr(f"Sorry, no function named '{function}' found in tree '{type(self).__name__}'.")
             else:
                 doc.header(f"{function} (function)", 1)
                 self.print_func(doc, func)
@@ -477,7 +479,7 @@ class Dynamic:
             doc = target_doc
             
         # DEBUG            
-        doc = Doc.MarkDown()
+        #doc = Doc.MarkDown()
             
         s = "" if member is None else f".{member}"
         doc.header(f"Socket {self.class_name}{s}", 0)
@@ -545,14 +547,49 @@ class Dynamic:
                     doc.header(f"{member} ({cat})", 1)
                     
                     self.print_func(func)
-                    
                         
         # ----------------------------------------------------------------------------------------------------
         # Print the doc
         
         if target_doc is None:
             doc.done()
-                
+            
+# =============================================================================================================================
+# Print MD doc
+
+def print_md_doc(folder="/Users/alain/Documents/blender/scripts/modules/geonodes/docs"):
+    
+    root = Path(folder)
+    
+    for tree_type, dyn_tree in constants.TREES.items():
+        
+        print(f"Tree documentation: ", tree_type)
+        
+        tree_class = dyn_tree.dyn_class
+        
+        link_root = f"/docs/{tree_class.__name__}"
+        file_root = root / tree_class.__name__
+        
+        # ----- Tree class
+        
+        doc = Doc.MarkDown(link_root=link_root, file_path=file_root / "index.md")
+        dyn_tree.tree_print_doc(None, target_doc=doc)
+        doc.done()
+        
+    print("Document done")
+        
+        
+"""
+    elif dyn.dyn_type == Dynamic.TREE:
+        dyn.tree_print_doc(member, target_doc=None)
+        
+    elif dyn.dyn_type == Dynamic.NODE:
+        dyn.node_print_doc(target_doc=None)
+        
+    elif dyn.dyn_type == Dynamic.SOCKET:
+        dyn.socket_print_doc(member, target_doc=None)
+            
+"""                
         
         
         
