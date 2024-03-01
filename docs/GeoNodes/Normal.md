@@ -1,7 +1,7 @@
 # Node Normal
 
 - Node name : 'Normal'
-- bl_idname : GeometryNodeInputNormal
+- bl_idname : [GeometryNodeInputNormal](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
 
 
 ``` python

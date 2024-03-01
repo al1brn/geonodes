@@ -1,7 +1,7 @@
 # Node ReplaceString
 
 - Node name : 'Replace String'
-- bl_idname : FunctionNodeReplaceString
+- bl_idname : [FunctionNodeReplaceString](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
 
 
 ``` python

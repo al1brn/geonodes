@@ -1,7 +1,7 @@
 # Node Background
 
 - Node name : 'Background'
-- bl_idname : ShaderNodeBackground
+- bl_idname : [ShaderNodeBackground](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
 
 
 ``` python

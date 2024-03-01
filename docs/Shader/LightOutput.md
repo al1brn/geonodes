@@ -1,7 +1,7 @@
 # Node LightOutput
 
 - Node name : 'Light Output'
-- bl_idname : ShaderNodeOutputLight
+- bl_idname : [ShaderNodeOutputLight](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
 
 
 ``` python

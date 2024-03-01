@@ -1,7 +1,7 @@
 # Node ReverseCurve
 
 - Node name : 'Reverse Curve'
-- bl_idname : GeometryNodeReverseCurve
+- bl_idname : [GeometryNodeReverseCurve](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
 
 
 ``` python

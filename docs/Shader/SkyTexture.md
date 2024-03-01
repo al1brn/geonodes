@@ -1,7 +1,7 @@
 # Node SkyTexture
 
 - Node name : 'Sky Texture'
-- bl_idname : ShaderNodeTexSky
+- bl_idname : [ShaderNodeTexSky](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
 
 
 ``` python

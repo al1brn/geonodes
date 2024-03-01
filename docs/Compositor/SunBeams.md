@@ -1,7 +1,7 @@
 # Node SunBeams
 
 - Node name : 'Sun Beams'
-- bl_idname : CompositorNodeSunBeams
+- bl_idname : [CompositorNodeSunBeams](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
 
 
 ``` python

@@ -1,7 +1,7 @@
 # Node TrimCurve
 
 - Node name : 'Trim Curve'
-- bl_idname : GeometryNodeTrimCurve
+- bl_idname : [GeometryNodeTrimCurve](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
 
 
 ``` python

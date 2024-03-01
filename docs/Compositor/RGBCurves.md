@@ -1,7 +1,7 @@
 # Node RGBCurves
 
 - Node name : 'RGB Curves'
-- bl_idname : CompositorNodeCurveRGB
+- bl_idname : [CompositorNodeCurveRGB](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
 
 
 ``` python

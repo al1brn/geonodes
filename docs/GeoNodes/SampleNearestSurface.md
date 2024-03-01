@@ -1,7 +1,7 @@
 # Node SampleNearestSurface
 
 - Node name : 'Sample Nearest Surface'
-- bl_idname : GeometryNodeSampleNearestSurface
+- bl_idname : [GeometryNodeSampleNearestSurface](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
 
 
 ``` python

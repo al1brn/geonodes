@@ -1,7 +1,7 @@
 # Node ToonBSDF
 
 - Node name : 'Toon BSDF'
-- bl_idname : ShaderNodeBsdfToon
+- bl_idname : [ShaderNodeBsdfToon](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
 
 
 ``` python

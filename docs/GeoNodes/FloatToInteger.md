@@ -1,7 +1,7 @@
 # Node FloatToInteger
 
 - Node name : 'Float to Integer'
-- bl_idname : FunctionNodeFloatToInt
+- bl_idname : [FunctionNodeFloatToInt](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
 
 
 ``` python

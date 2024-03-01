@@ -1,7 +1,7 @@
 # Node InterpolateCurves
 
 - Node name : 'Interpolate Curves'
-- bl_idname : GeometryNodeInterpolateCurves
+- bl_idname : [GeometryNodeInterpolateCurves](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
 
 
 ``` python

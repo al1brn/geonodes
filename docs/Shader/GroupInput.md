@@ -1,7 +1,7 @@
 # Node GroupInput
 
 - Node name : 'Group Input'
-- bl_idname : NodeGroupInput
+- bl_idname : [NodeGroupInput](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
 
 
 ``` python

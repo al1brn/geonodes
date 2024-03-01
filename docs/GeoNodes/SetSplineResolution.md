@@ -1,7 +1,7 @@
 # Node SetSplineResolution
 
 - Node name : 'Set Spline Resolution'
-- bl_idname : GeometryNodeSetSplineResolution
+- bl_idname : [GeometryNodeSetSplineResolution](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
 
 
 ``` python

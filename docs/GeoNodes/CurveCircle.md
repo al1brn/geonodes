@@ -1,7 +1,7 @@
 # Node CurveCircle
 
 - Node name : 'Curve Circle'
-- bl_idname : GeometryNodeCurvePrimitiveCircle
+- bl_idname : [GeometryNodeCurvePrimitiveCircle](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
 
 
 ``` python

@@ -1,7 +1,7 @@
 # Node SetCurveTilt
 
 - Node name : 'Set Curve Tilt'
-- bl_idname : GeometryNodeSetCurveTilt
+- bl_idname : [GeometryNodeSetCurveTilt](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
 
 
 ``` python

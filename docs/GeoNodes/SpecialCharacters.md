@@ -1,7 +1,7 @@
 # Node SpecialCharacters
 
 - Node name : 'Special Characters'
-- bl_idname : FunctionNodeInputSpecialCharacters
+- bl_idname : [FunctionNodeInputSpecialCharacters](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
 
 
 ``` python

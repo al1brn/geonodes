@@ -1,7 +1,7 @@
 # Node RGB
 
 - Node name : 'RGB'
-- bl_idname : CompositorNodeRGB
+- bl_idname : [CompositorNodeRGB](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
 
 
 ``` python

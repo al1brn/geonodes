@@ -1,7 +1,7 @@
 # Node IcoSphere
 
 - Node name : 'Ico Sphere'
-- bl_idname : GeometryNodeMeshIcoSphere
+- bl_idname : [GeometryNodeMeshIcoSphere](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
 
 
 ``` python

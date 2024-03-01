@@ -1,7 +1,7 @@
 # Node ColorBalance
 
 - Node name : 'Color Balance'
-- bl_idname : CompositorNodeColorBalance
+- bl_idname : [CompositorNodeColorBalance](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
 
 
 ``` python

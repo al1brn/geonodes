@@ -1,7 +1,7 @@
 # Node Normal
 
 - Node name : 'Normal'
-- bl_idname : ShaderNodeNormal
+- bl_idname : [ShaderNodeNormal](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
 
 
 ``` python

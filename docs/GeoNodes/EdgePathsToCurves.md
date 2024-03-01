@@ -1,7 +1,7 @@
 # Node EdgePathsToCurves
 
 - Node name : 'Edge Paths to Curves'
-- bl_idname : GeometryNodeEdgePathsToCurves
+- bl_idname : [GeometryNodeEdgePathsToCurves](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
 
 
 ``` python

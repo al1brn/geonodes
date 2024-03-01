@@ -1,7 +1,7 @@
 # Node MeshToSDFVolume
 
 - Node name : 'Mesh to SDF Volume'
-- bl_idname : GeometryNodeMeshToSDFVolume
+- bl_idname : [GeometryNodeMeshToSDFVolume](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
 
 
 ``` python

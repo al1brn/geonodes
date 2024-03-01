@@ -1,7 +1,7 @@
 # Node RealizeInstances
 
 - Node name : 'Realize Instances'
-- bl_idname : GeometryNodeRealizeInstances
+- bl_idname : [GeometryNodeRealizeInstances](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
 
 
 ``` python

@@ -1,7 +1,7 @@
 # Node NamedAttribute
 
 - Node name : 'Named Attribute'
-- bl_idname : GeometryNodeInputNamedAttribute
+- bl_idname : [GeometryNodeInputNamedAttribute](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
 
 
 ``` python

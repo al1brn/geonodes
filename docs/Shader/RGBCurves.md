@@ -1,7 +1,7 @@
 # Node RGBCurves
 
 - Node name : 'RGB Curves'
-- bl_idname : ShaderNodeRGBCurve
+- bl_idname : [ShaderNodeRGBCurve](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
 
 
 ``` python

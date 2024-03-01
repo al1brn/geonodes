@@ -1,7 +1,7 @@
 # Node Quadrilateral
 
 - Node name : 'Quadrilateral'
-- bl_idname : GeometryNodeCurvePrimitiveQuadrilateral
+- bl_idname : [GeometryNodeCurvePrimitiveQuadrilateral](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
 
 
 ``` python

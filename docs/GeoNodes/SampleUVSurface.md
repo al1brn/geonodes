@@ -1,7 +1,7 @@
 # Node SampleUVSurface
 
 - Node name : 'Sample UV Surface'
-- bl_idname : GeometryNodeSampleUVSurface
+- bl_idname : [GeometryNodeSampleUVSurface](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
 
 
 ``` python

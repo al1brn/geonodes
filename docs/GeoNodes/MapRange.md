@@ -1,7 +1,7 @@
 # Node MapRange
 
 - Node name : 'Map Range'
-- bl_idname : ShaderNodeMapRange
+- bl_idname : [ShaderNodeMapRange](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
 
 
 ``` python

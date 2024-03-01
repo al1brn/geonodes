@@ -1,7 +1,7 @@
 # Node Grid
 
 - Node name : 'Grid'
-- bl_idname : GeometryNodeMeshGrid
+- bl_idname : [GeometryNodeMeshGrid](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
 
 
 ``` python

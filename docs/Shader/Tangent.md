@@ -1,7 +1,7 @@
 # Node Tangent
 
 - Node name : 'Tangent'
-- bl_idname : ShaderNodeTangent
+- bl_idname : [ShaderNodeTangent](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
 
 
 ``` python

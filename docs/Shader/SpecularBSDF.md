@@ -1,7 +1,7 @@
 # Node SpecularBSDF
 
 - Node name : 'Specular BSDF'
-- bl_idname : ShaderNodeEeveeSpecular
+- bl_idname : [ShaderNodeEeveeSpecular](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
 
 
 ``` python

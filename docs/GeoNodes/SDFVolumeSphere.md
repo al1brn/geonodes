@@ -1,7 +1,7 @@
 # Node SDFVolumeSphere
 
 - Node name : 'SDF Volume Sphere'
-- bl_idname : GeometryNodeSDFVolumeSphere
+- bl_idname : [GeometryNodeSDFVolumeSphere](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
 
 
 ``` python

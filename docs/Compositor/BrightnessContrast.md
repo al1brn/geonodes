@@ -1,7 +1,7 @@
 # Node BrightnessContrast
 
 - Node name : 'Brightness/Contrast'
-- bl_idname : CompositorNodeBrightContrast
+- bl_idname : [CompositorNodeBrightContrast](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
 
 
 ``` python

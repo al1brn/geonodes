@@ -1,7 +1,7 @@
 # Node SetShadeSmooth
 
 - Node name : 'Set Shade Smooth'
-- bl_idname : GeometryNodeSetShadeSmooth
+- bl_idname : [GeometryNodeSetShadeSmooth](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
 
 
 ``` python

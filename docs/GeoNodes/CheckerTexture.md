@@ -1,7 +1,7 @@
 # Node CheckerTexture
 
 - Node name : 'Checker Texture'
-- bl_idname : ShaderNodeTexChecker
+- bl_idname : [ShaderNodeTexChecker](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
 
 
 ``` python

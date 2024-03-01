@@ -1,7 +1,7 @@
 # Node StringLength
 
 - Node name : 'String Length'
-- bl_idname : FunctionNodeStringLength
+- bl_idname : [FunctionNodeStringLength](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
 
 
 ``` python

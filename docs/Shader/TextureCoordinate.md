@@ -1,7 +1,7 @@
 # Node TextureCoordinate
 
 - Node name : 'Texture Coordinate'
-- bl_idname : ShaderNodeTexCoord
+- bl_idname : [ShaderNodeTexCoord](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
 
 
 ``` python

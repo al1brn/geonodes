@@ -1,7 +1,7 @@
 # Node Bevel
 
 - Node name : 'Bevel'
-- bl_idname : ShaderNodeBevel
+- bl_idname : [ShaderNodeBevel](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
 
 
 ``` python

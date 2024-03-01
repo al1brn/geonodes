@@ -1,7 +1,7 @@
 # Node ReplaceMaterial
 
 - Node name : 'Replace Material'
-- bl_idname : GeometryNodeReplaceMaterial
+- bl_idname : [GeometryNodeReplaceMaterial](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
 
 
 ``` python

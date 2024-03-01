@@ -21,6 +21,16 @@ update : 2024/02/17
 
 from pprint import pprint
 
+# ====================================================================================================
+# Version
+
+version = (2, 0, 0)
+blender = (4, 1, 0)
+
+bldoc_node_bl_idname = "https://docs.blender.org/api/current/bpy.types"
+    
+
+
 # =============================================================================================================================
 # One tree can be edited at a time.
 # The current tree is stacked
@@ -43,6 +53,8 @@ def dump_stack(title="Dump stack"):
     for tree in TREE_STACK:
         print(tree)
     print()
+    
+
     
 # ====================================================================================================
 # System Colors

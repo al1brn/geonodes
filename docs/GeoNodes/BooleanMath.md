@@ -1,7 +1,7 @@
 # Node BooleanMath
 
 - Node name : 'Boolean Math'
-- bl_idname : FunctionNodeBooleanMath
+- bl_idname : [FunctionNodeBooleanMath](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
 
 
 ``` python

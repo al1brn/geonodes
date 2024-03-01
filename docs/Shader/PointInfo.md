@@ -1,7 +1,7 @@
 # Node PointInfo
 
 - Node name : 'Point Info'
-- bl_idname : ShaderNodePointInfo
+- bl_idname : [ShaderNodePointInfo](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
 
 
 ``` python

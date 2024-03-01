@@ -1,7 +1,7 @@
 # Node MusgraveTexture
 
 - Node name : 'Musgrave Texture'
-- bl_idname : ShaderNodeTexMusgrave
+- bl_idname : [ShaderNodeTexMusgrave](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
 
 
 ``` python

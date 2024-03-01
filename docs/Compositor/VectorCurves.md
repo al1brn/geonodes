@@ -1,7 +1,7 @@
 # Node VectorCurves
 
 - Node name : 'Vector Curves'
-- bl_idname : CompositorNodeCurveVec
+- bl_idname : [CompositorNodeCurveVec](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
 
 
 ``` python

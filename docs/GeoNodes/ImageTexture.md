@@ -1,7 +1,7 @@
 # Node ImageTexture
 
 - Node name : 'Image Texture'
-- bl_idname : GeometryNodeImageTexture
+- bl_idname : [GeometryNodeImageTexture](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
 
 
 ``` python

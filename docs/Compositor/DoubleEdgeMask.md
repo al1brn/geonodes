@@ -1,7 +1,7 @@
 # Node DoubleEdgeMask
 
 - Node name : 'Double Edge Mask'
-- bl_idname : CompositorNodeDoubleEdgeMask
+- bl_idname : [CompositorNodeDoubleEdgeMask](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
 
 
 ``` python

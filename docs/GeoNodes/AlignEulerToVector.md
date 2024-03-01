@@ -1,7 +1,7 @@
 # Node AlignEulerToVector
 
 - Node name : 'Align Euler to Vector'
-- bl_idname : FunctionNodeAlignEulerToVector
+- bl_idname : [FunctionNodeAlignEulerToVector](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
 
 
 ``` python

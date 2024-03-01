@@ -1,7 +1,7 @@
 # Node Switch
 
 - Node name : 'Switch'
-- bl_idname : CompositorNodeSwitch
+- bl_idname : [CompositorNodeSwitch](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
 
 
 ``` python

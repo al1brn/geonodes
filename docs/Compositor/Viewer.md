@@ -1,7 +1,7 @@
 # Node Viewer
 
 - Node name : 'Viewer'
-- bl_idname : CompositorNodeViewer
+- bl_idname : [CompositorNodeViewer](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
 
 
 ``` python

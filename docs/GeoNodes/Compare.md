@@ -1,7 +1,7 @@
 # Node Compare
 
 - Node name : 'Compare'
-- bl_idname : FunctionNodeCompare
+- bl_idname : [FunctionNodeCompare](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
 
 
 ``` python

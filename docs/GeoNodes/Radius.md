@@ -1,7 +1,7 @@
 # Node Radius
 
 - Node name : 'Radius'
-- bl_idname : GeometryNodeInputRadius
+- bl_idname : [GeometryNodeInputRadius](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
 
 
 ``` python

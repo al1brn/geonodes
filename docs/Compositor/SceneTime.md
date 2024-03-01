@@ -1,7 +1,7 @@
 # Node SceneTime
 
 - Node name : 'Scene Time'
-- bl_idname : CompositorNodeSceneTime
+- bl_idname : [CompositorNodeSceneTime](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
 
 
 ``` python

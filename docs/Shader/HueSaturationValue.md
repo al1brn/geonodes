@@ -1,7 +1,7 @@
 # Node HueSaturationValue
 
 - Node name : 'Hue/Saturation/Value'
-- bl_idname : ShaderNodeHueSaturation
+- bl_idname : [ShaderNodeHueSaturation](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
 
 
 ``` python

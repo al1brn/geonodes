@@ -1,7 +1,7 @@
 # Node CombineColor
 
 - Node name : 'Combine Color'
-- bl_idname : FunctionNodeCombineColor
+- bl_idname : [FunctionNodeCombineColor](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
 
 
 ``` python

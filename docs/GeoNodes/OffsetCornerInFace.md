@@ -1,7 +1,7 @@
 # Node OffsetCornerInFace
 
 - Node name : 'Offset Corner in Face'
-- bl_idname : GeometryNodeOffsetCornerInFace
+- bl_idname : [GeometryNodeOffsetCornerInFace](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
 
 
 ``` python

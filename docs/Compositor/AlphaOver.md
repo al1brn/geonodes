@@ -1,7 +1,7 @@
 # Node AlphaOver
 
 - Node name : 'Alpha Over'
-- bl_idname : CompositorNodeAlphaOver
+- bl_idname : [CompositorNodeAlphaOver](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
 
 
 ``` python

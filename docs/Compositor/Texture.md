@@ -1,7 +1,7 @@
 # Node Texture
 
 - Node name : 'Texture'
-- bl_idname : CompositorNodeTexture
+- bl_idname : [CompositorNodeTexture](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
 
 
 ``` python

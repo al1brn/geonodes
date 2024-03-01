@@ -1,7 +1,7 @@
 # Node Keying
 
 - Node name : 'Keying'
-- bl_idname : CompositorNodeKeying
+- bl_idname : [CompositorNodeKeying](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
 
 
 ``` python

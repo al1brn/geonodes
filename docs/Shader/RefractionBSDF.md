@@ -1,7 +1,7 @@
 # Node RefractionBSDF
 
 - Node name : 'Refraction BSDF'
-- bl_idname : ShaderNodeBsdfRefraction
+- bl_idname : [ShaderNodeBsdfRefraction](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
 
 
 ``` python

@@ -1,7 +1,7 @@
 # Node CameraData
 
 - Node name : 'Camera Data'
-- bl_idname : ShaderNodeCameraData
+- bl_idname : [ShaderNodeCameraData](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
 
 
 ``` python

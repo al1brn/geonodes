@@ -1,7 +1,7 @@
 # Node SetSplineType
 
 - Node name : 'Set Spline Type'
-- bl_idname : GeometryNodeCurveSplineType
+- bl_idname : [GeometryNodeCurveSplineType](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
 
 
 ``` python

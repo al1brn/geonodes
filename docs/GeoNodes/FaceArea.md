@@ -1,7 +1,7 @@
 # Node FaceArea
 
 - Node name : 'Face Area'
-- bl_idname : GeometryNodeInputMeshFaceArea
+- bl_idname : [GeometryNodeInputMeshFaceArea](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
 
 
 ``` python

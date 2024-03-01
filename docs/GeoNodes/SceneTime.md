@@ -1,7 +1,7 @@
 # Node SceneTime
 
 - Node name : 'Scene Time'
-- bl_idname : GeometryNodeInputSceneTime
+- bl_idname : [GeometryNodeInputSceneTime](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
 
 
 ``` python

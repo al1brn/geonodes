@@ -1,7 +1,7 @@
 # Node Cube
 
 - Node name : 'Cube'
-- bl_idname : GeometryNodeMeshCube
+- bl_idname : [GeometryNodeMeshCube](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
 
 
 ``` python

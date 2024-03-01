@@ -1,7 +1,7 @@
 # Node MapUV
 
 - Node name : 'Map UV'
-- bl_idname : CompositorNodeMapUV
+- bl_idname : [CompositorNodeMapUV](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
 
 
 ``` python

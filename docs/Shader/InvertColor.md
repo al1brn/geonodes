@@ -1,7 +1,7 @@
 # Node InvertColor
 
 - Node name : 'Invert Color'
-- bl_idname : ShaderNodeInvert
+- bl_idname : [ShaderNodeInvert](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
 
 
 ``` python

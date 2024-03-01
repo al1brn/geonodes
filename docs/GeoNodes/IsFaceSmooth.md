@@ -1,7 +1,7 @@
 # Node IsFaceSmooth
 
 - Node name : 'Is Face Smooth'
-- bl_idname : GeometryNodeInputShadeSmooth
+- bl_idname : [GeometryNodeInputShadeSmooth](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
 
 
 ``` python

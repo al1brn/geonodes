@@ -1,7 +1,7 @@
 # Node CollectionInfo
 
 - Node name : 'Collection Info'
-- bl_idname : GeometryNodeCollectionInfo
+- bl_idname : [GeometryNodeCollectionInfo](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
 
 
 ``` python

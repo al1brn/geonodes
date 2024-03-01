@@ -1,7 +1,7 @@
 # Node PointsToVertices
 
 - Node name : 'Points to Vertices'
-- bl_idname : GeometryNodePointsToVertices
+- bl_idname : [GeometryNodePointsToVertices](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
 
 
 ``` python

@@ -1,7 +1,7 @@
 # Node CombineXYZ
 
 - Node name : 'Combine XYZ'
-- bl_idname : CompositorNodeCombineXYZ
+- bl_idname : [CompositorNodeCombineXYZ](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
 
 
 ``` python

@@ -1,7 +1,7 @@
 # Node SeparateColor
 
 - Node name : 'Separate Color'
-- bl_idname : FunctionNodeSeparateColor
+- bl_idname : [FunctionNodeSeparateColor](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
 
 
 ``` python

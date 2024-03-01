@@ -1,7 +1,7 @@
 # Node CurvesInfo
 
 - Node name : 'Curves Info'
-- bl_idname : ShaderNodeHairInfo
+- bl_idname : [ShaderNodeHairInfo](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
 
 
 ``` python

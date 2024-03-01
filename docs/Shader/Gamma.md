@@ -1,7 +1,7 @@
 # Node Gamma
 
 - Node name : 'Gamma'
-- bl_idname : ShaderNodeGamma
+- bl_idname : [ShaderNodeGamma](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
 
 
 ``` python

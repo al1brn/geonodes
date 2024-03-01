@@ -1,7 +1,7 @@
 # Node CaptureAttribute
 
 - Node name : 'Capture Attribute'
-- bl_idname : GeometryNodeCaptureAttribute
+- bl_idname : [GeometryNodeCaptureAttribute](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
 
 
 ``` python

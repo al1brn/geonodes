@@ -1,7 +1,7 @@
 # Node JoinStrings
 
 - Node name : 'Join Strings'
-- bl_idname : GeometryNodeStringJoin
+- bl_idname : [GeometryNodeStringJoin](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
 
 
 ``` python

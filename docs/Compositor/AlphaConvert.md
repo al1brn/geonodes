@@ -1,7 +1,7 @@
 # Node AlphaConvert
 
 - Node name : 'Alpha Convert'
-- bl_idname : CompositorNodePremulKey
+- bl_idname : [CompositorNodePremulKey](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
 
 
 ``` python

@@ -1,7 +1,7 @@
 # Node PrincipledHairBSDF
 
 - Node name : 'Principled Hair BSDF'
-- bl_idname : ShaderNodeBsdfHairPrincipled
+- bl_idname : [ShaderNodeBsdfHairPrincipled](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
 
 
 ``` python

@@ -1,7 +1,7 @@
 # Node ChannelKey
 
 - Node name : 'Channel Key'
-- bl_idname : CompositorNodeChannelMatte
+- bl_idname : [CompositorNodeChannelMatte](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
 
 
 ``` python

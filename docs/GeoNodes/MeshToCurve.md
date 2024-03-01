@@ -1,7 +1,7 @@
 # Node MeshToCurve
 
 - Node name : 'Mesh to Curve'
-- bl_idname : GeometryNodeMeshToCurve
+- bl_idname : [GeometryNodeMeshToCurve](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
 
 
 ``` python

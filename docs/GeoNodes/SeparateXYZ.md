@@ -1,7 +1,7 @@
 # Node SeparateXYZ
 
 - Node name : 'Separate XYZ'
-- bl_idname : ShaderNodeSeparateXYZ
+- bl_idname : [ShaderNodeSeparateXYZ](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
 
 
 ``` python

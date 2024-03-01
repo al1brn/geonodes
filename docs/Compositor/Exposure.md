@@ -1,7 +1,7 @@
 # Node Exposure
 
 - Node name : 'Exposure'
-- bl_idname : CompositorNodeExposure
+- bl_idname : [CompositorNodeExposure](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
 
 
 ``` python

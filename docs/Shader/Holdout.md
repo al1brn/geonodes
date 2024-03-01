@@ -1,7 +1,7 @@
 # Node Holdout
 
 - Node name : 'Holdout'
-- bl_idname : ShaderNodeHoldout
+- bl_idname : [ShaderNodeHoldout](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
 
 
 ``` python

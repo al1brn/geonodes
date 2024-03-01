@@ -1,7 +1,7 @@
 # Node DistanceKey
 
 - Node name : 'Distance Key'
-- bl_idname : CompositorNodeDistanceMatte
+- bl_idname : [CompositorNodeDistanceMatte](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
 
 
 ``` python

@@ -1,7 +1,7 @@
 # Node Defocus
 
 - Node name : 'Defocus'
-- bl_idname : CompositorNodeDefocus
+- bl_idname : [CompositorNodeDefocus](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
 
 
 ``` python

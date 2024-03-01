@@ -1,7 +1,7 @@
 # Node PointsToVolume
 
 - Node name : 'Points to Volume'
-- bl_idname : GeometryNodePointsToVolume
+- bl_idname : [GeometryNodePointsToVolume](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
 
 
 ``` python

@@ -1,7 +1,7 @@
 # Node AddShader
 
 - Node name : 'Add Shader'
-- bl_idname : ShaderNodeAddShader
+- bl_idname : [ShaderNodeAddShader](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
 
 
 ``` python

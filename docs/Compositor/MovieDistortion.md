@@ -1,7 +1,7 @@
 # Node MovieDistortion
 
 - Node name : 'Movie Distortion'
-- bl_idname : CompositorNodeMovieDistortion
+- bl_idname : [CompositorNodeMovieDistortion](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
 
 
 ``` python

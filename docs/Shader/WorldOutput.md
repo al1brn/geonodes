@@ -1,7 +1,7 @@
 # Node WorldOutput
 
 - Node name : 'World Output'
-- bl_idname : ShaderNodeOutputWorld
+- bl_idname : [ShaderNodeOutputWorld](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
 
 
 ``` python

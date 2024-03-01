@@ -1,7 +1,7 @@
 # Node BokehBlur
 
 - Node name : 'Bokeh Blur'
-- bl_idname : CompositorNodeBokehBlur
+- bl_idname : [CompositorNodeBokehBlur](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
 
 
 ``` python

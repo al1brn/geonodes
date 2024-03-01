@@ -1,7 +1,7 @@
 # Node DilateErode
 
 - Node name : 'Dilate/Erode'
-- bl_idname : CompositorNodeDilateErode
+- bl_idname : [CompositorNodeDilateErode](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
 
 
 ``` python

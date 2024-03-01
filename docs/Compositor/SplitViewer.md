@@ -1,7 +1,7 @@
 # Node SplitViewer
 
 - Node name : 'Split Viewer'
-- bl_idname : CompositorNodeSplitViewer
+- bl_idname : [CompositorNodeSplitViewer](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
 
 
 ``` python

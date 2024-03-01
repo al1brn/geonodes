@@ -1,7 +1,7 @@
 # Node RotateVector
 
 - Node name : 'Rotate Vector'
-- bl_idname : FunctionNodeRotateVector
+- bl_idname : [FunctionNodeRotateVector](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
 
 
 ``` python

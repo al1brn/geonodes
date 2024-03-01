@@ -1,7 +1,7 @@
 # Node Cone
 
 - Node name : 'Cone'
-- bl_idname : GeometryNodeMeshCone
+- bl_idname : [GeometryNodeMeshCone](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
 
 
 ``` python

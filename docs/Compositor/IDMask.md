@@ -1,7 +1,7 @@
 # Node IDMask
 
 - Node name : 'ID Mask'
-- bl_idname : CompositorNodeIDMask
+- bl_idname : [CompositorNodeIDMask](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
 
 
 ``` python

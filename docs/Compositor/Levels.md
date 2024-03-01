@@ -1,7 +1,7 @@
 # Node Levels
 
 - Node name : 'Levels'
-- bl_idname : CompositorNodeLevels
+- bl_idname : [CompositorNodeLevels](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
 
 
 ``` python

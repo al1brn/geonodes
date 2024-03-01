@@ -1,7 +1,7 @@
 # Node VolumeAbsorption
 
 - Node name : 'Volume Absorption'
-- bl_idname : ShaderNodeVolumeAbsorption
+- bl_idname : [ShaderNodeVolumeAbsorption](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
 
 
 ``` python

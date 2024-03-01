@@ -1,7 +1,7 @@
 # Node EllipseMask
 
 - Node name : 'Ellipse Mask'
-- bl_idname : CompositorNodeEllipseMask
+- bl_idname : [CompositorNodeEllipseMask](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
 
 
 ``` python

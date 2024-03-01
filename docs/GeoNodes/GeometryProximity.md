@@ -1,7 +1,7 @@
 # Node GeometryProximity
 
 - Node name : 'Geometry Proximity'
-- bl_idname : GeometryNodeProximity
+- bl_idname : [GeometryNodeProximity](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
 
 
 ``` python

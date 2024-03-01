@@ -1,7 +1,7 @@
 # Node FillCurve
 
 - Node name : 'Fill Curve'
-- bl_idname : GeometryNodeFillCurve
+- bl_idname : [GeometryNodeFillCurve](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
 
 
 ``` python

@@ -1,7 +1,7 @@
 # Node DistributePointsOnFaces
 
 - Node name : 'Distribute Points on Faces'
-- bl_idname : GeometryNodeDistributePointsOnFaces
+- bl_idname : [GeometryNodeDistributePointsOnFaces](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
 
 
 ``` python

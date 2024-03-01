@@ -1,7 +1,7 @@
 # Node IsViewport
 
 - Node name : 'Is Viewport'
-- bl_idname : GeometryNodeIsViewport
+- bl_idname : [GeometryNodeIsViewport](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
 
 
 ``` python

@@ -1,7 +1,7 @@
 # Node Boolean
 
 - Node name : 'Boolean'
-- bl_idname : FunctionNodeInputBool
+- bl_idname : [FunctionNodeInputBool](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
 
 
 ``` python

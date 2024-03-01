@@ -1,7 +1,7 @@
 # Node DeformCurvesOnSurface
 
 - Node name : 'Deform Curves on Surface'
-- bl_idname : GeometryNodeDeformCurvesOnSurface
+- bl_idname : [GeometryNodeDeformCurvesOnSurface](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
 
 
 ``` python

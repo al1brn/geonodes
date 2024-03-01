@@ -1,7 +1,7 @@
 # Node LayerWeight
 
 - Node name : 'Layer Weight'
-- bl_idname : ShaderNodeLayerWeight
+- bl_idname : [ShaderNodeLayerWeight](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
 
 
 ``` python

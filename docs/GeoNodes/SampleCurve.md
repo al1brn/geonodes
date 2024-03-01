@@ -1,7 +1,7 @@
 # Node SampleCurve
 
 - Node name : 'Sample Curve'
-- bl_idname : GeometryNodeSampleCurve
+- bl_idname : [GeometryNodeSampleCurve](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
 
 
 ``` python

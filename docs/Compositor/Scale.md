@@ -1,7 +1,7 @@
 # Node Scale
 
 - Node name : 'Scale'
-- bl_idname : CompositorNodeScale
+- bl_idname : [CompositorNodeScale](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
 
 
 ``` python

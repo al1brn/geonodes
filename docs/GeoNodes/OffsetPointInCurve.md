@@ -1,7 +1,7 @@
 # Node OffsetPointInCurve
 
 - Node name : 'Offset Point in Curve'
-- bl_idname : GeometryNodeOffsetPointInCurve
+- bl_idname : [GeometryNodeOffsetPointInCurve](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
 
 
 ``` python

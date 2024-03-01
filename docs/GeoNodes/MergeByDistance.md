@@ -1,7 +1,7 @@
 # Node MergeByDistance
 
 - Node name : 'Merge by Distance'
-- bl_idname : GeometryNodeMergeByDistance
+- bl_idname : [GeometryNodeMergeByDistance](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
 
 
 ``` python

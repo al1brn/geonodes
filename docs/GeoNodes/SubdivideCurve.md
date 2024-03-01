@@ -1,7 +1,7 @@
 # Node SubdivideCurve
 
 - Node name : 'Subdivide Curve'
-- bl_idname : GeometryNodeSubdivideCurve
+- bl_idname : [GeometryNodeSubdivideCurve](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
 
 
 ``` python

@@ -1,7 +1,7 @@
 # Node Mapping
 
 - Node name : 'Mapping'
-- bl_idname : ShaderNodeMapping
+- bl_idname : [ShaderNodeMapping](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
 
 
 ``` python

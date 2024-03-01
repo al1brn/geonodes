@@ -1,7 +1,7 @@
 # Node EdgePathsToSelection
 
 - Node name : 'Edge Paths to Selection'
-- bl_idname : GeometryNodeEdgePathsToSelection
+- bl_idname : [GeometryNodeEdgePathsToSelection](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
 
 
 ``` python

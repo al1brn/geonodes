@@ -1,7 +1,7 @@
 # Node Wireframe
 
 - Node name : 'Wireframe'
-- bl_idname : ShaderNodeWireframe
+- bl_idname : [ShaderNodeWireframe](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
 
 
 ``` python

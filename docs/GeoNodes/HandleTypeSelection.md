@@ -1,7 +1,7 @@
 # Node HandleTypeSelection
 
 - Node name : 'Handle Type Selection'
-- bl_idname : GeometryNodeCurveHandleTypeSelection
+- bl_idname : [GeometryNodeCurveHandleTypeSelection](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
 
 
 ``` python

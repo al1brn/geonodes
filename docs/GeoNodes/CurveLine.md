@@ -1,7 +1,7 @@
 # Node CurveLine
 
 - Node name : 'Curve Line'
-- bl_idname : GeometryNodeCurvePrimitiveLine
+- bl_idname : [GeometryNodeCurvePrimitiveLine](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
 
 
 ``` python

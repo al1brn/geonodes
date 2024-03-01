@@ -1,7 +1,7 @@
 # Node SetID
 
 - Node name : 'Set ID'
-- bl_idname : GeometryNodeSetID
+- bl_idname : [GeometryNodeSetID](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
 
 
 ``` python

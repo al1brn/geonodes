@@ -1,7 +1,7 @@
 # Node SeparateXYZ
 
 - Node name : 'Separate XYZ'
-- bl_idname : CompositorNodeSeparateXYZ
+- bl_idname : [CompositorNodeSeparateXYZ](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
 
 
 ``` python

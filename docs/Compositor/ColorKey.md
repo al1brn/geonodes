@@ -1,7 +1,7 @@
 # Node ColorKey
 
 - Node name : 'Color Key'
-- bl_idname : CompositorNodeColorMatte
+- bl_idname : [CompositorNodeColorMatte](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
 
 
 ``` python

@@ -1,7 +1,7 @@
 # Node ObjectInfo
 
 - Node name : 'Object Info'
-- bl_idname : ShaderNodeObjectInfo
+- bl_idname : [ShaderNodeObjectInfo](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
 
 
 ``` python

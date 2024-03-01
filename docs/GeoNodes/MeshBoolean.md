@@ -1,7 +1,7 @@
 # Node MeshBoolean
 
 - Node name : 'Mesh Boolean'
-- bl_idname : GeometryNodeMeshBoolean
+- bl_idname : [GeometryNodeMeshBoolean](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
 
 
 ``` python

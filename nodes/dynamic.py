@@ -27,6 +27,7 @@ from geonodes.nodes import utils
 
 from geonodes.nodes.documentation import Doc
 
+
 # ----------------------------------------------------------------------------------------------------
 # print_doc class method implemented in the dynamic classes
 
@@ -407,7 +408,7 @@ class Dynamic:
 
         with doc.bullets() as bullets:
             bullets.add("Node name", f"'{self.node_info.name}'")
-            bullets.add("bl_idname", self.node_info.bl_idname)
+            bullets.add("bl_idname", doc.url(self.node_info.bl_idname, constants.bldoc_node_bl_idname + ".{bl_idname}.html"))
 
         doc.descr(self.descr)
 

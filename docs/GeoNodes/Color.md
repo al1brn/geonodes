@@ -1,7 +1,7 @@
 # Node Color
 
 - Node name : 'Color'
-- bl_idname : FunctionNodeInputColor
+- bl_idname : [FunctionNodeInputColor](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
 
 
 ``` python

@@ -1,7 +1,7 @@
 # Node RandomValue
 
 - Node name : 'Random Value'
-- bl_idname : FunctionNodeRandomValue
+- bl_idname : [FunctionNodeRandomValue](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
 
 
 ``` python

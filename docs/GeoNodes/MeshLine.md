@@ -1,7 +1,7 @@
 # Node MeshLine
 
 - Node name : 'Mesh Line'
-- bl_idname : GeometryNodeMeshLine
+- bl_idname : [GeometryNodeMeshLine](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
 
 
 ``` python

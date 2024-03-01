@@ -1,7 +1,7 @@
 # Node SampleIndex
 
 - Node name : 'Sample Index'
-- bl_idname : GeometryNodeSampleIndex
+- bl_idname : [GeometryNodeSampleIndex](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
 
 
 ``` python

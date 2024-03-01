@@ -1,7 +1,7 @@
 # Node BoundingBox
 
 - Node name : 'Bounding Box'
-- bl_idname : GeometryNodeBoundBox
+- bl_idname : [GeometryNodeBoundBox](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
 
 
 ``` python

@@ -1,7 +1,7 @@
 # Node AccumulateField
 
 - Node name : 'Accumulate Field'
-- bl_idname : GeometryNodeAccumulateField
+- bl_idname : [GeometryNodeAccumulateField](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
 
 
 ``` python

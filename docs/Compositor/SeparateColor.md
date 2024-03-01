@@ -1,7 +1,7 @@
 # Node SeparateColor
 
 - Node name : 'Separate Color'
-- bl_idname : CompositorNodeSeparateColor
+- bl_idname : [CompositorNodeSeparateColor](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
 
 
 ``` python

@@ -1,7 +1,7 @@
 # Node VectorDisplacement
 
 - Node name : 'Vector Displacement'
-- bl_idname : ShaderNodeVectorDisplacement
+- bl_idname : [ShaderNodeVectorDisplacement](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
 
 
 ``` python

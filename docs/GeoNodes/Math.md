@@ -1,7 +1,7 @@
 # Node Math
 
 - Node name : 'Math'
-- bl_idname : ShaderNodeMath
+- bl_idname : [ShaderNodeMath](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
 
 
 ``` python

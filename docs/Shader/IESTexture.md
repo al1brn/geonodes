@@ -1,7 +1,7 @@
 # Node IESTexture
 
 - Node name : 'IES Texture'
-- bl_idname : ShaderNodeTexIES
+- bl_idname : [ShaderNodeTexIES](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
 
 
 ``` python

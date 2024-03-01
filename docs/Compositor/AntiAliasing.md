@@ -1,7 +1,7 @@
 # Node AntiAliasing
 
 - Node name : 'Anti-Aliasing'
-- bl_idname : CompositorNodeAntiAliasing
+- bl_idname : [CompositorNodeAntiAliasing](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
 
 
 ``` python

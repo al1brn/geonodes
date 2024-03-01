@@ -1,7 +1,7 @@
 # Node SliceString
 
 - Node name : 'Slice String'
-- bl_idname : FunctionNodeSliceString
+- bl_idname : [FunctionNodeSliceString](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
 
 
 ``` python

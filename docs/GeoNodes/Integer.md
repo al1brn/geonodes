@@ -1,7 +1,7 @@
 # Node Integer
 
 - Node name : 'Integer'
-- bl_idname : FunctionNodeInputInt
+- bl_idname : [FunctionNodeInputInt](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
 
 
 ``` python
