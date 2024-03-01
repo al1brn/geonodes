@@ -570,19 +570,18 @@ def print_md_doc(folder="/Users/alain/Documents/blender/scripts/modules/geonodes
         link_root = f"/docs/{tree_class.__name__}"
         file_root = root / tree_class.__name__
         
+        doc = Doc.MarkDown(link_root=link_root)
         # ----- Tree class
         
-        doc = Doc.MarkDown(link_root=link_root, file_path=file_root / "index.md")
         dyn_tree.tree_print_doc(None, target_doc=doc)
-        doc.done()
+        doc.done(file_name=file_root / "index.md")
         
         # ----- Socket classes
         
         for class_name, dyn in constants.SOCKETS[tree_type].items():
-            doc = Doc.MarkDown(link_root=link_root, file_path=file_root / f"{class_name}.md")
+            doc = Doc.MarkDown(link_root=link_root)
             dyn.socket_print_doc(None, target_doc=doc)
-            doc.done()
-        
+            doc.done(file_name=file_root / f"{class_name}.md")
         
         
     print("Document done")

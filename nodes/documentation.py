@@ -187,7 +187,7 @@ class Bullets:
 # Documentation builder
 
 class Doc:
-    def __init__(self, target='TEXT', width=100, margin=4, link_root=None, file_path=None):
+    def __init__(self, target='TEXT', width=100, margin=4, link_root=None):
         
         if target not in ['TEXT', 'MD']:
             raise AttributeError (f"Unknown doc target '{target}'")
@@ -196,7 +196,6 @@ class Doc:
         self.width     = width
         self.margin    = margin
         self.link_root = link_root
-        self.file_path = file_path
         
         self.clear()
         
@@ -216,7 +215,7 @@ class Doc:
         
     @classmethod
     def MarkDown(cls, link_root="/docs", file_path=None):
-        return cls(target='MD', link_root=link_root, file_path=file_path)
+        return cls(target='MD', link_root=link_root)
     
     @classmethod
     def Html(cls, link_root="/docs"):
@@ -385,12 +384,13 @@ class Doc:
     # ====================================================================================================
     # Links
     
-    def done(self):
-        if self.file_path is None:
+    def done(self, file_name=None):
+        if file_name is None:
             print(self._text)
+            
         else:
-            print("Doc: writing", self.file_path)
-            with open(self.file_path, "w") as f:
+            print("Doc: writing", file_name)
+            with open(file_name, "w") as f:
                 f.write(self._text)
                 
         self.clear()
