@@ -53,7 +53,7 @@ Bullet points allow to write list with bullet points or numbers:
 - Second item : Items of a list can simple text or a couple (item, description)
 - Not described item
 - With a sub list : Lists can be nested
-  1 Order item : Example of an order list
-  1 Other ordered items : Which follows the same principe
-  1 Not described item
+  1. Order item : Example of an order list
+  1. Other ordered items : Which follows the same principe
+  1. Not described item
 - Item : Back to the main list
