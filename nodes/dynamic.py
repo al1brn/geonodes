@@ -268,7 +268,8 @@ class Dynamic:
         if len(arg_docs) == 0:
             return
         
-        with doc.bullets("Arguments", item_len=[arg_doc[0] for arg_doc in arg_docs]) as bs:
+        doc.header("Arguments", 4)
+        with doc.bullets(item_len=[arg_doc[0] for arg_doc in arg_docs]) as bs:
             for arg_doc in arg_docs:
                 descr = None
                 if arg_doc[1] != 'ARG_NO_VALUE':
@@ -324,7 +325,7 @@ class Dynamic:
             
             doc.header("Socket classes", 2)
 
-            links = [doc.page_link(class_name, f"{tree_type}/{class_name}") for class_name in constants.SOCKETS[tree_type]]
+            links = {class_name: doc.page_link(class_name, f"{tree_type}/{class_name}") for class_name in constants.SOCKETS[tree_type]}
             with doc.bullets() as bullets:
                 bullets.alphabetical(links, len(links))
                 
@@ -332,7 +333,7 @@ class Dynamic:
             
             doc.header("Node classes", 2)
             
-            links = [doc.page_link(dyn.node_info.class_name, f"{tree_type}/{dyn.node_info.class_name}") for bl_idname, dyn in constants.NODES[tree_type].items()]
+            links = {dyn.node_info.class_name: doc.page_link(dyn.node_info.class_name, f"{tree_type}/{dyn.node_info.class_name}") for bl_idname, dyn in constants.NODES[tree_type].items()}
             with doc.bullets() as bullets:
                 bullets.alphabetical(links)
                 
@@ -340,12 +341,12 @@ class Dynamic:
             
             doc.header("Functions", 2)
 
-            links = [doc.title_link(name) for name in self.methods.keys()]
+            links = {name: doc.title_link(name) for name in self.methods.keys()}
             with doc.bullets() as bullets:
                 bullets.alphabetical(links)
                 
             # ----- All the functions if MarkDown
-
+            
             if doc.is_md:
                 doc.header("Functions", 1)
                 

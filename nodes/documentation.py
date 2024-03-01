@@ -167,18 +167,21 @@ class Bullets:
     
     def alphabetical(self, items, max_list=10):
         
+        if isinstance(items, (list, tuple)):
+            items = {item: item for item in items}
+        
         # ----- A short list
             
         if len(items) <= max_list:
-            for item in sorted(items):
-                self.add(item)
+            for key in sorted(items):
+                self.add(items[key])
             return
         
         # ----- A long list
         
-        initials = sorted(set([item[0].upper() for item in items]))
+        initials = sorted(set([key[0].upper() for key in items]))
         for initial in initials:
-            self.add(initial, " ".join([item for item in items if item[0].upper() == initial]))
+            self.add(initial, " ".join([items[key] for key in items if key[0].upper() == initial]))
             
 # ====================================================================================================
 # Documentation builder
@@ -447,8 +450,6 @@ class Doc:
         doc.para("End of demo")
         doc.done()
                 
-
-Doc.demo('MD')
 
 
 
