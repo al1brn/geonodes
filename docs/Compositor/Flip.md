@@ -1,7 +1,7 @@
 # Node Flip
 
 - Node name : 'Flip'
-- bl_idname : [CompositorNodeFlip](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
+- bl_idname : [Flip](https://docs.blender.org/api/current/bpy.types.Flip.html)
 
 
 ``` python

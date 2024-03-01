@@ -1,7 +1,7 @@
 # Node DistributePointsInVolume
 
 - Node name : 'Distribute Points in Volume'
-- bl_idname : [GeometryNodeDistributePointsInVolume](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
+- bl_idname : [Distribute Points in Volume](https://docs.blender.org/api/current/bpy.types.Distribute Points in Volume.html)
 
 
 ``` python

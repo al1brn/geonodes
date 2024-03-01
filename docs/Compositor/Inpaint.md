@@ -1,7 +1,7 @@
 # Node Inpaint
 
 - Node name : 'Inpaint'
-- bl_idname : [CompositorNodeInpaint](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
+- bl_idname : [Inpaint](https://docs.blender.org/api/current/bpy.types.Inpaint.html)
 
 
 ``` python

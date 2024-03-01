@@ -1,7 +1,7 @@
 # Node DuplicateElements
 
 - Node name : 'Duplicate Elements'
-- bl_idname : [GeometryNodeDuplicateElements](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
+- bl_idname : [Duplicate Elements](https://docs.blender.org/api/current/bpy.types.Duplicate Elements.html)
 
 
 ``` python

@@ -1,7 +1,7 @@
 # Node Fresnel
 
 - Node name : 'Fresnel'
-- bl_idname : [ShaderNodeFresnel](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
+- bl_idname : [Fresnel](https://docs.blender.org/api/current/bpy.types.Fresnel.html)
 
 
 ``` python

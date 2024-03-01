@@ -1,7 +1,7 @@
 # Node PackUVIslands
 
 - Node name : 'Pack UV Islands'
-- bl_idname : [GeometryNodeUVPackIslands](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
+- bl_idname : [Pack UV Islands](https://docs.blender.org/api/current/bpy.types.Pack UV Islands.html)
 
 
 ``` python

@@ -1,7 +1,7 @@
 # Node SetSplineCyclic
 
 - Node name : 'Set Spline Cyclic'
-- bl_idname : [GeometryNodeSetSplineCyclic](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
+- bl_idname : [Set Spline Cyclic](https://docs.blender.org/api/current/bpy.types.Set Spline Cyclic.html)
 
 
 ``` python

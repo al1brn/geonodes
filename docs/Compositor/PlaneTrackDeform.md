@@ -1,7 +1,7 @@
 # Node PlaneTrackDeform
 
 - Node name : 'Plane Track Deform'
-- bl_idname : [CompositorNodePlaneTrackDeform](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
+- bl_idname : [Plane Track Deform](https://docs.blender.org/api/current/bpy.types.Plane Track Deform.html)
 
 
 ``` python

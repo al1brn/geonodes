@@ -1,7 +1,7 @@
 # Node Despeckle
 
 - Node name : 'Despeckle'
-- bl_idname : [CompositorNodeDespeckle](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
+- bl_idname : [Despeckle](https://docs.blender.org/api/current/bpy.types.Despeckle.html)
 
 
 ``` python

@@ -1,7 +1,7 @@
 # Node RotateEuler
 
 - Node name : 'Rotate Euler'
-- bl_idname : [FunctionNodeRotateEuler](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
+- bl_idname : [Rotate Euler](https://docs.blender.org/api/current/bpy.types.Rotate Euler.html)
 
 
 ``` python

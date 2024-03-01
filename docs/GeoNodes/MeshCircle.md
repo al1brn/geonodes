@@ -1,7 +1,7 @@
 # Node MeshCircle
 
 - Node name : 'Mesh Circle'
-- bl_idname : [GeometryNodeMeshCircle](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
+- bl_idname : [Mesh Circle](https://docs.blender.org/api/current/bpy.types.Mesh Circle.html)
 
 
 ``` python

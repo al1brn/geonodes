@@ -1,7 +1,7 @@
 # Node Frame
 
 - Node name : 'Frame'
-- bl_idname : [NodeFrame](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
+- bl_idname : [Frame](https://docs.blender.org/api/current/bpy.types.Frame.html)
 
 
 ``` python

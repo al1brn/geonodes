@@ -1,7 +1,7 @@
 # Node _3DCursor
 
 - Node name : '3D Cursor'
-- bl_idname : [GeometryNodeTool3DCursor](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
+- bl_idname : [3D Cursor](https://docs.blender.org/api/current/bpy.types.3D Cursor.html)
 
 
 ``` python

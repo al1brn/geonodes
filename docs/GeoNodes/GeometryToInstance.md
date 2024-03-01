@@ -1,7 +1,7 @@
 # Node GeometryToInstance
 
 - Node name : 'Geometry to Instance'
-- bl_idname : [GeometryNodeGeometryToInstance](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
+- bl_idname : [Geometry to Instance](https://docs.blender.org/api/current/bpy.types.Geometry to Instance.html)
 
 
 ``` python

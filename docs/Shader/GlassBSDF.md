@@ -1,7 +1,7 @@
 # Node GlassBSDF
 
 - Node name : 'Glass BSDF'
-- bl_idname : [ShaderNodeBsdfGlass](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
+- bl_idname : [Glass BSDF](https://docs.blender.org/api/current/bpy.types.Glass BSDF.html)
 
 
 ``` python

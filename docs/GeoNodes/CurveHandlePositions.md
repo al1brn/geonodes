@@ -1,7 +1,7 @@
 # Node CurveHandlePositions
 
 - Node name : 'Curve Handle Positions'
-- bl_idname : [GeometryNodeInputCurveHandlePositions](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
+- bl_idname : [Curve Handle Positions](https://docs.blender.org/api/current/bpy.types.Curve Handle Positions.html)
 
 
 ``` python

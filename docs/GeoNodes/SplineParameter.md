@@ -1,7 +1,7 @@
 # Node SplineParameter
 
 - Node name : 'Spline Parameter'
-- bl_idname : [GeometryNodeSplineParameter](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
+- bl_idname : [Spline Parameter](https://docs.blender.org/api/current/bpy.types.Spline Parameter.html)
 
 
 ``` python

@@ -1,7 +1,7 @@
 # Node ConvertColorspace
 
 - Node name : 'Convert Colorspace'
-- bl_idname : [CompositorNodeConvertColorSpace](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
+- bl_idname : [Convert Colorspace](https://docs.blender.org/api/current/bpy.types.Convert Colorspace.html)
 
 
 ``` python

@@ -1,7 +1,7 @@
 # Node QuadraticBezier
 
 - Node name : 'Quadratic Bezier'
-- bl_idname : [GeometryNodeCurveQuadraticBezier](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
+- bl_idname : [Quadratic Bezier](https://docs.blender.org/api/current/bpy.types.Quadratic Bezier.html)
 
 
 ``` python

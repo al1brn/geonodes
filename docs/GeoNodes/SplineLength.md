@@ -1,7 +1,7 @@
 # Node SplineLength
 
 - Node name : 'Spline Length'
-- bl_idname : [GeometryNodeSplineLength](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
+- bl_idname : [Spline Length](https://docs.blender.org/api/current/bpy.types.Spline Length.html)
 
 
 ``` python

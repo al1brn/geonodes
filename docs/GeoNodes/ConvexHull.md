@@ -1,7 +1,7 @@
 # Node ConvexHull
 
 - Node name : 'Convex Hull'
-- bl_idname : [GeometryNodeConvexHull](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
+- bl_idname : [Convex Hull](https://docs.blender.org/api/current/bpy.types.Convex Hull.html)
 
 
 ``` python

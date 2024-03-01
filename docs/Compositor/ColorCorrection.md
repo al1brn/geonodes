@@ -1,7 +1,7 @@
 # Node ColorCorrection
 
 - Node name : 'Color Correction'
-- bl_idname : [CompositorNodeColorCorrection](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
+- bl_idname : [Color Correction](https://docs.blender.org/api/current/bpy.types.Color Correction.html)
 
 
 ``` python

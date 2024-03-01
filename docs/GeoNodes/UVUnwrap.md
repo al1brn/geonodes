@@ -1,7 +1,7 @@
 # Node UVUnwrap
 
 - Node name : 'UV Unwrap'
-- bl_idname : [GeometryNodeUVUnwrap](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
+- bl_idname : [UV Unwrap](https://docs.blender.org/api/current/bpy.types.UV Unwrap.html)
 
 
 ``` python

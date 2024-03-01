@@ -1,7 +1,7 @@
 # Node ImageInfo
 
 - Node name : 'Image Info'
-- bl_idname : [GeometryNodeImageInfo](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
+- bl_idname : [Image Info](https://docs.blender.org/api/current/bpy.types.Image Info.html)
 
 
 ``` python

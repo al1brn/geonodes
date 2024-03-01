@@ -1,7 +1,7 @@
 # Node EdgeAngle
 
 - Node name : 'Edge Angle'
-- bl_idname : [GeometryNodeInputMeshEdgeAngle](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
+- bl_idname : [Edge Angle](https://docs.blender.org/api/current/bpy.types.Edge Angle.html)
 
 
 ``` python

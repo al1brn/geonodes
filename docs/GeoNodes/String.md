@@ -1,7 +1,7 @@
 # Node String
 
 - Node name : 'String'
-- bl_idname : [FunctionNodeInputString](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
+- bl_idname : [String](https://docs.blender.org/api/current/bpy.types.String.html)
 
 
 ``` python

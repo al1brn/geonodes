@@ -1,7 +1,7 @@
 # Node ScaleElements
 
 - Node name : 'Scale Elements'
-- bl_idname : [GeometryNodeScaleElements](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
+- bl_idname : [Scale Elements](https://docs.blender.org/api/current/bpy.types.Scale Elements.html)
 
 
 ``` python

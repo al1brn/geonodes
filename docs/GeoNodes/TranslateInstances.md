@@ -1,7 +1,7 @@
 # Node TranslateInstances
 
 - Node name : 'Translate Instances'
-- bl_idname : [GeometryNodeTranslateInstances](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
+- bl_idname : [Translate Instances](https://docs.blender.org/api/current/bpy.types.Translate Instances.html)
 
 
 ``` python

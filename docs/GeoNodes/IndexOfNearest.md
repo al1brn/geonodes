@@ -1,7 +1,7 @@
 # Node IndexOfNearest
 
 - Node name : 'Index of Nearest'
-- bl_idname : [GeometryNodeIndexOfNearest](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
+- bl_idname : [Index of Nearest](https://docs.blender.org/api/current/bpy.types.Index of Nearest.html)
 
 
 ``` python

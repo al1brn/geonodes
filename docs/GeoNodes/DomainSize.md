@@ -1,7 +1,7 @@
 # Node DomainSize
 
 - Node name : 'Domain Size'
-- bl_idname : [GeometryNodeAttributeDomainSize](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
+- bl_idname : [Domain Size](https://docs.blender.org/api/current/bpy.types.Domain Size.html)
 
 
 ``` python

@@ -1,7 +1,7 @@
 # Node Shadernodeoutputaov
 
 - Node name : 'ShaderNodeOutputAOV'
-- bl_idname : [ShaderNodeOutputAOV](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
+- bl_idname : [ShaderNodeOutputAOV](https://docs.blender.org/api/current/bpy.types.ShaderNodeOutputAOV.html)
 
 
 ``` python

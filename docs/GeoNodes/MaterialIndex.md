@@ -1,7 +1,7 @@
 # Node MaterialIndex
 
 - Node name : 'Material Index'
-- bl_idname : [GeometryNodeInputMaterialIndex](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
+- bl_idname : [Material Index](https://docs.blender.org/api/current/bpy.types.Material Index.html)
 
 
 ``` python

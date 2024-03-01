@@ -1,7 +1,7 @@
 # Node CombineColor
 
 - Node name : 'Combine Color'
-- bl_idname : [CompositorNodeCombineColor](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
+- bl_idname : [Combine Color](https://docs.blender.org/api/current/bpy.types.Combine Color.html)
 
 
 ``` python

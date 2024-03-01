@@ -1,7 +1,7 @@
 # Node Crop
 
 - Node name : 'Crop'
-- bl_idname : [CompositorNodeCrop](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
+- bl_idname : [Crop](https://docs.blender.org/api/current/bpy.types.Crop.html)
 
 
 ``` python

@@ -1,7 +1,7 @@
 # Node Filter
 
 - Node name : 'Filter'
-- bl_idname : [CompositorNodeFilter](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
+- bl_idname : [Filter](https://docs.blender.org/api/current/bpy.types.Filter.html)
 
 
 ``` python

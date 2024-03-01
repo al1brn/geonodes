@@ -1,7 +1,7 @@
 # Node FloatCurve
 
 - Node name : 'Float Curve'
-- bl_idname : [ShaderNodeFloatCurve](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
+- bl_idname : [Float Curve](https://docs.blender.org/api/current/bpy.types.Float Curve.html)
 
 
 ``` python

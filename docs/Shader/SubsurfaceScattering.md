@@ -1,7 +1,7 @@
 # Node SubsurfaceScattering
 
 - Node name : 'Subsurface Scattering'
-- bl_idname : [ShaderNodeSubsurfaceScattering](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
+- bl_idname : [Subsurface Scattering](https://docs.blender.org/api/current/bpy.types.Subsurface Scattering.html)
 
 
 ``` python

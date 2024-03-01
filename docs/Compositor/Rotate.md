@@ -1,7 +1,7 @@
 # Node Rotate
 
 - Node name : 'Rotate'
-- bl_idname : [CompositorNodeRotate](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
+- bl_idname : [Rotate](https://docs.blender.org/api/current/bpy.types.Rotate.html)
 
 
 ``` python

@@ -1,7 +1,7 @@
 # Node UVMap
 
 - Node name : 'UV Map'
-- bl_idname : [ShaderNodeUVMap](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
+- bl_idname : [UV Map](https://docs.blender.org/api/current/bpy.types.UV Map.html)
 
 
 ``` python

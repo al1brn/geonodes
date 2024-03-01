@@ -1,7 +1,7 @@
 # Node IsEdgeSmooth
 
 - Node name : 'Is Edge Smooth'
-- bl_idname : [GeometryNodeInputEdgeSmooth](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
+- bl_idname : [Is Edge Smooth](https://docs.blender.org/api/current/bpy.types.Is Edge Smooth.html)
 
 
 ``` python

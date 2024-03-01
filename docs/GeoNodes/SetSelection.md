@@ -1,7 +1,7 @@
 # Node SetSelection
 
 - Node name : 'Set Selection'
-- bl_idname : [GeometryNodeToolSetSelection](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
+- bl_idname : [Set Selection](https://docs.blender.org/api/current/bpy.types.Set Selection.html)
 
 
 ``` python

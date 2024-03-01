@@ -1,7 +1,7 @@
 # Node InvertRotation
 
 - Node name : 'Invert Rotation'
-- bl_idname : [FunctionNodeInvertRotation](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
+- bl_idname : [Invert Rotation](https://docs.blender.org/api/current/bpy.types.Invert Rotation.html)
 
 
 ``` python

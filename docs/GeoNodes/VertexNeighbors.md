@@ -1,7 +1,7 @@
 # Node VertexNeighbors
 
 - Node name : 'Vertex Neighbors'
-- bl_idname : [GeometryNodeInputMeshVertexNeighbors](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
+- bl_idname : [Vertex Neighbors](https://docs.blender.org/api/current/bpy.types.Vertex Neighbors.html)
 
 
 ``` python

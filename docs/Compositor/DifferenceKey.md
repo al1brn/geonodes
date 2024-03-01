@@ -1,7 +1,7 @@
 # Node DifferenceKey
 
 - Node name : 'Difference Key'
-- bl_idname : [CompositorNodeDiffMatte](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
+- bl_idname : [Difference Key](https://docs.blender.org/api/current/bpy.types.Difference Key.html)
 
 
 ``` python

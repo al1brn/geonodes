@@ -1,7 +1,7 @@
 # Node MeshToPoints
 
 - Node name : 'Mesh to Points'
-- bl_idname : [GeometryNodeMeshToPoints](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
+- bl_idname : [Mesh to Points](https://docs.blender.org/api/current/bpy.types.Mesh to Points.html)
 
 
 ``` python

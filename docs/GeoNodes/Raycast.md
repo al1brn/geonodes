@@ -1,7 +1,7 @@
 # Node Raycast
 
 - Node name : 'Raycast'
-- bl_idname : [GeometryNodeRaycast](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
+- bl_idname : [Raycast](https://docs.blender.org/api/current/bpy.types.Raycast.html)
 
 
 ``` python

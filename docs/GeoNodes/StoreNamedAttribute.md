@@ -1,7 +1,7 @@
 # Node StoreNamedAttribute
 
 - Node name : 'Store Named Attribute'
-- bl_idname : [GeometryNodeStoreNamedAttribute](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
+- bl_idname : [Store Named Attribute](https://docs.blender.org/api/current/bpy.types.Store Named Attribute.html)
 
 
 ``` python

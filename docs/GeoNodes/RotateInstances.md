@@ -1,7 +1,7 @@
 # Node RotateInstances
 
 - Node name : 'Rotate Instances'
-- bl_idname : [GeometryNodeRotateInstances](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
+- bl_idname : [Rotate Instances](https://docs.blender.org/api/current/bpy.types.Rotate Instances.html)
 
 
 ``` python

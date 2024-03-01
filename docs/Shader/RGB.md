@@ -1,7 +1,7 @@
 # Node RGB
 
 - Node name : 'RGB'
-- bl_idname : [ShaderNodeRGB](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
+- bl_idname : [RGB](https://docs.blender.org/api/current/bpy.types.RGB.html)
 
 
 ``` python

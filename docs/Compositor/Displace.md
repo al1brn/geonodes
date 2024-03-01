@@ -1,7 +1,7 @@
 # Node Displace
 
 - Node name : 'Displace'
-- bl_idname : [CompositorNodeDisplace](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
+- bl_idname : [Displace](https://docs.blender.org/api/current/bpy.types.Displace.html)
 
 
 ``` python

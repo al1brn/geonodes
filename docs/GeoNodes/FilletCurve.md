@@ -1,7 +1,7 @@
 # Node FilletCurve
 
 - Node name : 'Fillet Curve'
-- bl_idname : [GeometryNodeFilletCurve](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
+- bl_idname : [Fillet Curve](https://docs.blender.org/api/current/bpy.types.Fillet Curve.html)
 
 
 ``` python

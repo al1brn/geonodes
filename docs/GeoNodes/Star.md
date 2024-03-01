@@ -1,7 +1,7 @@
 # Node Star
 
 - Node name : 'Star'
-- bl_idname : [GeometryNodeCurveStar](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
+- bl_idname : [Star](https://docs.blender.org/api/current/bpy.types.Star.html)
 
 
 ``` python

@@ -1,7 +1,7 @@
 # Node InstancesToPoints
 
 - Node name : 'Instances to Points'
-- bl_idname : [GeometryNodeInstancesToPoints](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
+- bl_idname : [Instances to Points](https://docs.blender.org/api/current/bpy.types.Instances to Points.html)
 
 
 ``` python

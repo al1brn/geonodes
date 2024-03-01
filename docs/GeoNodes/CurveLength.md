@@ -1,7 +1,7 @@
 # Node CurveLength
 
 - Node name : 'Curve Length'
-- bl_idname : [GeometryNodeCurveLength](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
+- bl_idname : [Curve Length](https://docs.blender.org/api/current/bpy.types.Curve Length.html)
 
 
 ``` python

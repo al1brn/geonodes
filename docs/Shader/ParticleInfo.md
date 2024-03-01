@@ -1,7 +1,7 @@
 # Node ParticleInfo
 
 - Node name : 'Particle Info'
-- bl_idname : [ShaderNodeParticleInfo](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
+- bl_idname : [Particle Info](https://docs.blender.org/api/current/bpy.types.Particle Info.html)
 
 
 ``` python

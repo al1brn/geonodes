@@ -1,7 +1,7 @@
 # Node DiffuseBSDF
 
 - Node name : 'Diffuse BSDF'
-- bl_idname : [ShaderNodeBsdfDiffuse](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
+- bl_idname : [Diffuse BSDF](https://docs.blender.org/api/current/bpy.types.Diffuse BSDF.html)
 
 
 ``` python

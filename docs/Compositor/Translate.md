@@ -1,7 +1,7 @@
 # Node Translate
 
 - Node name : 'Translate'
-- bl_idname : [CompositorNodeTranslate](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
+- bl_idname : [Translate](https://docs.blender.org/api/current/bpy.types.Translate.html)
 
 
 ``` python

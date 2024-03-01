@@ -1,7 +1,7 @@
 # Node RotationToQuaternion
 
 - Node name : 'Rotation to Quaternion'
-- bl_idname : [FunctionNodeRotationToQuaternion](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
+- bl_idname : [Rotation to Quaternion](https://docs.blender.org/api/current/bpy.types.Rotation to Quaternion.html)
 
 
 ``` python

@@ -1,7 +1,7 @@
 # Node CurveTangent
 
 - Node name : 'Curve Tangent'
-- bl_idname : [GeometryNodeInputTangent](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
+- bl_idname : [Curve Tangent](https://docs.blender.org/api/current/bpy.types.Curve Tangent.html)
 
 
 ``` python

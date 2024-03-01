@@ -1,7 +1,7 @@
 # Node Cylinder
 
 - Node name : 'Cylinder'
-- bl_idname : [GeometryNodeMeshCylinder](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
+- bl_idname : [Cylinder](https://docs.blender.org/api/current/bpy.types.Cylinder.html)
 
 
 ``` python

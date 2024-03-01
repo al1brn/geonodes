@@ -1,7 +1,7 @@
 # Node Emission
 
 - Node name : 'Emission'
-- bl_idname : [ShaderNodeEmission](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
+- bl_idname : [Emission](https://docs.blender.org/api/current/bpy.types.Emission.html)
 
 
 ``` python

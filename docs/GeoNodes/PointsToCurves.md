@@ -1,7 +1,7 @@
 # Node PointsToCurves
 
 - Node name : 'Points to Curves'
-- bl_idname : [GeometryNodePointsToCurves](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
+- bl_idname : [Points to Curves](https://docs.blender.org/api/current/bpy.types.Points to Curves.html)
 
 
 ``` python

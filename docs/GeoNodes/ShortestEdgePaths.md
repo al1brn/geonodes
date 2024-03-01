@@ -1,7 +1,7 @@
 # Node ShortestEdgePaths
 
 - Node name : 'Shortest Edge Paths'
-- bl_idname : [GeometryNodeInputShortestEdgePaths](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
+- bl_idname : [Shortest Edge Paths](https://docs.blender.org/api/current/bpy.types.Shortest Edge Paths.html)
 
 
 ``` python

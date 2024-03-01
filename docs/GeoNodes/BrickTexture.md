@@ -1,7 +1,7 @@
 # Node BrickTexture
 
 - Node name : 'Brick Texture'
-- bl_idname : [ShaderNodeTexBrick](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
+- bl_idname : [Brick Texture](https://docs.blender.org/api/current/bpy.types.Brick Texture.html)
 
 
 ``` python

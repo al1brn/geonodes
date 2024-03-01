@@ -1,7 +1,7 @@
 # Node EdgeNeighbors
 
 - Node name : 'Edge Neighbors'
-- bl_idname : [GeometryNodeInputMeshEdgeNeighbors](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
+- bl_idname : [Edge Neighbors](https://docs.blender.org/api/current/bpy.types.Edge Neighbors.html)
 
 
 ``` python

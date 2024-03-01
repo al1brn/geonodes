@@ -1,7 +1,7 @@
 # Node MaterialOutput
 
 - Node name : 'Material Output'
-- bl_idname : [ShaderNodeOutputMaterial](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
+- bl_idname : [Material Output](https://docs.blender.org/api/current/bpy.types.Material Output.html)
 
 
 ``` python

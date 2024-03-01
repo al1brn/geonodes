@@ -1,7 +1,7 @@
 # Node ValueToString
 
 - Node name : 'Value to String'
-- bl_idname : [FunctionNodeValueToString](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
+- bl_idname : [Value to String](https://docs.blender.org/api/current/bpy.types.Value to String.html)
 
 
 ``` python

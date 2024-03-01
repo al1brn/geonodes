@@ -1,7 +1,7 @@
 # Node WaveTexture
 
 - Node name : 'Wave Texture'
-- bl_idname : [ShaderNodeTexWave](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
+- bl_idname : [Wave Texture](https://docs.blender.org/api/current/bpy.types.Wave Texture.html)
 
 
 ``` python

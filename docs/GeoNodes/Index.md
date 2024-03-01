@@ -1,7 +1,7 @@
 # Node Index
 
 - Node name : 'Index'
-- bl_idname : [GeometryNodeInputIndex](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
+- bl_idname : [Index](https://docs.blender.org/api/current/bpy.types.Index.html)
 
 
 ``` python

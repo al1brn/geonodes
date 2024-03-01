@@ -1,7 +1,7 @@
 # Node GradientTexture
 
 - Node name : 'Gradient Texture'
-- bl_idname : [ShaderNodeTexGradient](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
+- bl_idname : [Gradient Texture](https://docs.blender.org/api/current/bpy.types.Gradient Texture.html)
 
 
 ``` python

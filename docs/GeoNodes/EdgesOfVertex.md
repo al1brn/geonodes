@@ -1,7 +1,7 @@
 # Node EdgesOfVertex
 
 - Node name : 'Edges of Vertex'
-- bl_idname : [GeometryNodeEdgesOfVertex](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
+- bl_idname : [Edges of Vertex](https://docs.blender.org/api/current/bpy.types.Edges of Vertex.html)
 
 
 ``` python

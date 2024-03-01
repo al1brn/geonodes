@@ -1,7 +1,7 @@
 # Node Composite
 
 - Node name : 'Composite'
-- bl_idname : [CompositorNodeComposite](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
+- bl_idname : [Composite](https://docs.blender.org/api/current/bpy.types.Composite.html)
 
 
 ``` python

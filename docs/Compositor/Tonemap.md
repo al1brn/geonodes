@@ -1,7 +1,7 @@
 # Node Tonemap
 
 - Node name : 'Tonemap'
-- bl_idname : [CompositorNodeTonemap](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
+- bl_idname : [Tonemap](https://docs.blender.org/api/current/bpy.types.Tonemap.html)
 
 
 ``` python

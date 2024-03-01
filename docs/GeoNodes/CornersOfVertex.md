@@ -1,7 +1,7 @@
 # Node CornersOfVertex
 
 - Node name : 'Corners of Vertex'
-- bl_idname : [GeometryNodeCornersOfVertex](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
+- bl_idname : [Corners of Vertex](https://docs.blender.org/api/current/bpy.types.Corners of Vertex.html)
 
 
 ``` python

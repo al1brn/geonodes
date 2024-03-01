@@ -1,7 +1,7 @@
 # Node SelfObject
 
 - Node name : 'Self Object'
-- bl_idname : [GeometryNodeSelfObject](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
+- bl_idname : [Self Object](https://docs.blender.org/api/current/bpy.types.Self Object.html)
 
 
 ``` python

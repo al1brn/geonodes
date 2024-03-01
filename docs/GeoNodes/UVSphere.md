@@ -1,7 +1,7 @@
 # Node UVSphere
 
 - Node name : 'UV Sphere'
-- bl_idname : [GeometryNodeMeshUVSphere](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
+- bl_idname : [UV Sphere](https://docs.blender.org/api/current/bpy.types.UV Sphere.html)
 
 
 ``` python

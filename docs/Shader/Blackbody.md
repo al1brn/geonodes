@@ -1,7 +1,7 @@
 # Node Blackbody
 
 - Node name : 'Blackbody'
-- bl_idname : [ShaderNodeBlackbody](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
+- bl_idname : [Blackbody](https://docs.blender.org/api/current/bpy.types.Blackbody.html)
 
 
 ``` python

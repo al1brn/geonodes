@@ -1,7 +1,7 @@
 # Node ChromaKey
 
 - Node name : 'Chroma Key'
-- bl_idname : [CompositorNodeChromaMatte](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
+- bl_idname : [Chroma Key](https://docs.blender.org/api/current/bpy.types.Chroma Key.html)
 
 
 ``` python

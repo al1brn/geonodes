@@ -1,7 +1,7 @@
 # Node SetHandleType
 
 - Node name : 'Set Handle Type'
-- bl_idname : [GeometryNodeCurveSetHandles](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
+- bl_idname : [Set Handle Type](https://docs.blender.org/api/current/bpy.types.Set Handle Type.html)
 
 
 ``` python

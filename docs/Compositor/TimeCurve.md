@@ -1,7 +1,7 @@
 # Node TimeCurve
 
 - Node name : 'Time Curve'
-- bl_idname : [CompositorNodeTime](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
+- bl_idname : [Time Curve](https://docs.blender.org/api/current/bpy.types.Time Curve.html)
 
 
 ``` python

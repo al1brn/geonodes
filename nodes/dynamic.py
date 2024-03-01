@@ -403,12 +403,13 @@ class Dynamic:
             
         tree_type  = self.node_info.tree_type
         class_name = self.node_info.class_name
+        bl_idname  = self.node_info.name
         
         doc.header(f"Node {class_name}", 0)
 
         with doc.bullets() as bullets:
             bullets.add("Node name", f"'{self.node_info.name}'")
-            bullets.add("bl_idname", doc.url(self.node_info.bl_idname, constants.bldoc_node_bl_idname + ".{bl_idname}.html"))
+            bullets.add("bl_idname", doc.url(bl_idname, constants.bldoc_node_bl_idname + f".{bl_idname}.html"))
 
         doc.descr(self.descr)
 

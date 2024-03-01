@@ -1,7 +1,7 @@
 # Node BokehImage
 
 - Node name : 'Bokeh Image'
-- bl_idname : [CompositorNodeBokehImage](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
+- bl_idname : [Bokeh Image](https://docs.blender.org/api/current/bpy.types.Bokeh Image.html)
 
 
 ``` python

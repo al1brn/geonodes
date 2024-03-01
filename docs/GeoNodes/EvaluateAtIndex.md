@@ -1,7 +1,7 @@
 # Node EvaluateAtIndex
 
 - Node name : 'Evaluate at Index'
-- bl_idname : [GeometryNodeFieldAtIndex](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
+- bl_idname : [Evaluate at Index](https://docs.blender.org/api/current/bpy.types.Evaluate at Index.html)
 
 
 ``` python

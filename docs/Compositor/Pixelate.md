@@ -1,7 +1,7 @@
 # Node Pixelate
 
 - Node name : 'Pixelate'
-- bl_idname : [CompositorNodePixelate](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
+- bl_idname : [Pixelate](https://docs.blender.org/api/current/bpy.types.Pixelate.html)
 
 
 ``` python

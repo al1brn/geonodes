@@ -1,7 +1,7 @@
 # Node IsFacePlanar
 
 - Node name : 'Is Face Planar'
-- bl_idname : [GeometryNodeInputMeshFaceIsPlanar](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
+- bl_idname : [Is Face Planar](https://docs.blender.org/api/current/bpy.types.Is Face Planar.html)
 
 
 ``` python

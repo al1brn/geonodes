@@ -1,7 +1,7 @@
 # Node FileOutput
 
 - Node name : 'File Output'
-- bl_idname : [CompositorNodeOutputFile](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
+- bl_idname : [File Output](https://docs.blender.org/api/current/bpy.types.File Output.html)
 
 
 ``` python

@@ -1,7 +1,7 @@
 # Node VolumeCube
 
 - Node name : 'Volume Cube'
-- bl_idname : [GeometryNodeVolumeCube](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
+- bl_idname : [Volume Cube](https://docs.blender.org/api/current/bpy.types.Volume Cube.html)
 
 
 ``` python

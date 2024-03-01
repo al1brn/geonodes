@@ -1,7 +1,7 @@
 # Node Displacement
 
 - Node name : 'Displacement'
-- bl_idname : [ShaderNodeDisplacement](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
+- bl_idname : [Displacement](https://docs.blender.org/api/current/bpy.types.Displacement.html)
 
 
 ``` python

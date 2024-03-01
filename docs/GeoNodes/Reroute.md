@@ -1,7 +1,7 @@
 # Node Reroute
 
 - Node name : 'Reroute'
-- bl_idname : [NodeReroute](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
+- bl_idname : [Reroute](https://docs.blender.org/api/current/bpy.types.Reroute.html)
 
 
 ``` python

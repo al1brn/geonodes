@@ -1,7 +1,7 @@
 # Node SheenBSDF
 
 - Node name : 'Sheen BSDF'
-- bl_idname : [ShaderNodeBsdfSheen](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
+- bl_idname : [Sheen BSDF](https://docs.blender.org/api/current/bpy.types.Sheen BSDF.html)
 
 
 ``` python

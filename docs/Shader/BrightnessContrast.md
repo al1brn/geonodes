@@ -1,7 +1,7 @@
 # Node BrightnessContrast
 
 - Node name : 'Brightness/Contrast'
-- bl_idname : [ShaderNodeBrightContrast](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
+- bl_idname : [Brightness/Contrast](https://docs.blender.org/api/current/bpy.types.Brightness/Contrast.html)
 
 
 ``` python

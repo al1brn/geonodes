@@ -1,7 +1,7 @@
 # Node PrincipledVolume
 
 - Node name : 'Principled Volume'
-- bl_idname : [ShaderNodeVolumePrincipled](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
+- bl_idname : [Principled Volume](https://docs.blender.org/api/current/bpy.types.Principled Volume.html)
 
 
 ``` python

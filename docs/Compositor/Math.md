@@ -1,7 +1,7 @@
 # Node Math
 
 - Node name : 'Math'
-- bl_idname : [CompositorNodeMath](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
+- bl_idname : [Math](https://docs.blender.org/api/current/bpy.types.Math.html)
 
 
 ``` python

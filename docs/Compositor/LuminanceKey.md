@@ -1,7 +1,7 @@
 # Node LuminanceKey
 
 - Node name : 'Luminance Key'
-- bl_idname : [CompositorNodeLumaMatte](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
+- bl_idname : [Luminance Key](https://docs.blender.org/api/current/bpy.types.Luminance Key.html)
 
 
 ``` python

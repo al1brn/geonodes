@@ -1,7 +1,7 @@
 # Node DualMesh
 
 - Node name : 'Dual Mesh'
-- bl_idname : [GeometryNodeDualMesh](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
+- bl_idname : [Dual Mesh](https://docs.blender.org/api/current/bpy.types.Dual Mesh.html)
 
 
 ``` python

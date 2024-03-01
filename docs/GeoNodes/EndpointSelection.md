@@ -1,7 +1,7 @@
 # Node EndpointSelection
 
 - Node name : 'Endpoint Selection'
-- bl_idname : [GeometryNodeCurveEndpointSelection](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
+- bl_idname : [Endpoint Selection](https://docs.blender.org/api/current/bpy.types.Endpoint Selection.html)
 
 
 ``` python

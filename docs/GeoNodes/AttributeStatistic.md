@@ -1,7 +1,7 @@
 # Node AttributeStatistic
 
 - Node name : 'Attribute Statistic'
-- bl_idname : [GeometryNodeAttributeStatistic](https://docs.blender.org/api/current/bpy.types.{bl_idname}.html)
+- bl_idname : [Attribute Statistic](https://docs.blender.org/api/current/bpy.types.Attribute Statistic.html)
 
 
 ``` python
