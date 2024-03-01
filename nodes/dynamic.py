@@ -567,7 +567,7 @@ def print_md_doc(folder="/Users/alain/Documents/blender/scripts/modules/geonodes
         # ----- Tree class
         
         dyn_tree.tree_print_doc(None, target_doc=doc)
-        doc.done(file_name=file_root / "index.md")
+        doc.done(file_name=file_root / f"{tree_class.__name__}.md")
         
         # ----- Socket classes
         
