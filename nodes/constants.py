@@ -372,11 +372,17 @@ CROSS_REF = {tree_type: {} for tree_type in TREE_TYPES}
 
 def cross_ref(tree_type, node_class_name, target_class_name, name):
     
+    # Node class name entry
+    
     dct = CROSS_REF[tree_type].get(node_class_name)
     if dct is None:
         dct = {}
         CROSS_REF[tree_type][node_class_name] = dct
         
+    # Socket class name entry
+        
+    if target_class_name is None:
+        target_class_name = 'GLOBAL'
         
     names = dct.get(target_class_name)
     if names is None:
@@ -384,6 +390,8 @@ def cross_ref(tree_type, node_class_name, target_class_name, name):
         dct[target_class_name] = names
         
     names.append(name)
+    
+    #print("constants.cross_ref", target_class_name)
     
 # =============================================================================================================================
 # Reset    

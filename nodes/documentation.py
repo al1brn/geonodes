@@ -252,7 +252,9 @@ class Doc:
             title = name
         return self.url(name, f"#{title.replace(' ', '-')}")
     
-    def page_link(self, name, path, title=None):
+    def page_link(self, name, path=None, title=None):
+        if path is None:
+            path = name
         url = f"{self.link_root}/{path}.md"
         if title is not None:
             url += "#{title.replace(' ', '-')}"
@@ -375,7 +377,6 @@ class Doc:
         
         else:
             lines = text.split("\n")
-            self._text += "-"*3 + " python\n\n"
             for i, line in enumerate(lines):
                 self._text += f"{i+1:2d}. " + line + "\n"
             self._text += "\n\n"

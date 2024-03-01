@@ -287,7 +287,7 @@ class Dynamic:
         doc.descr(func['descr'])
         
         with doc.bullets(item_len=["node"] + [k for k in func['kwargs']]) as bs:
-            bs.add("node", func['node_class_name'])
+            bs.add("node", doc.page_link(func['node_class_name']))
             for k, v in func['kwargs'].items():
                 k_ = 'self' if k == 'self_socket' else k
                 bs.add(k_, v)
@@ -308,7 +308,7 @@ class Dynamic:
             doc = target_doc
             
         # DEBUG            
-        doc = Doc.MarkDown()
+        #doc = Doc.MarkDown()
         
         tree_type = self.dyn_class.TREE_TYPE
         
@@ -381,6 +381,9 @@ class Dynamic:
             doc = Doc()
         else:
             doc = target_doc
+            
+        # DEBUG            
+        doc = Doc.MarkDown()
         
         tree_type  = self.node_info.tree_type
         class_name = self.node_info.class_name
@@ -391,8 +394,7 @@ class Dynamic:
             bullets.add("Node name", f"'{self.node_info.name}'")
             bullets.add("bl_idname", self.node_info.bl_idname)
         
-        if self.descr is not None:
-            doc.description(self.descr)
+        doc.descr(self.descr)
         
         func = self.methods.get('__init__')
         if func is not None:
@@ -409,10 +411,18 @@ class Dynamic:
 
         else:
             with doc.bullets() as bullets:
+                globs = None
                 for socket in sorted(cross_ref.keys()):
-                    doc.add(socket, " ".join(sorted(cross_ref[socket])))
+                    links = [doc.page_link(name, title=name) for name in sorted(cross_ref[socket])]
+                    if socket == 'GLOBAL':
+                        globs = links
+                    else:
+                        bullets.add(doc.page_link(socket), " ".join(links))
+                if globs is not None:
+                        bullets.add("Functions", " ".join(links))
+                    
                             
-        doc.header("Init")
+        doc.header("Init", 1)
         doc.source(func['code'])
         
         # ----------------------------------------------------------------------------------------------------
