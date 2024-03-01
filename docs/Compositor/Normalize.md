@@ -1,7 +1,7 @@
 # Node Normalize
 
 - Node name : 'Normalize'
-- bl_idname : [Normalize](https://docs.blender.org/api/current/bpy.types.Normalize.html)
+- bl_idname : [CompositorNodeNormalize](https://docs.blender.org/api/current/bpy.types.CompositorNodeNormalize.html)
 
 
 ``` python

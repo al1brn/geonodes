@@ -1,7 +1,7 @@
 # Node Normal
 
 - Node name : 'Normal'
-- bl_idname : [Normal](https://docs.blender.org/api/current/bpy.types.Normal.html)
+- bl_idname : [CompositorNodeNormal](https://docs.blender.org/api/current/bpy.types.CompositorNodeNormal.html)
 
 
 ``` python

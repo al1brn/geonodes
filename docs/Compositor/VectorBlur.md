@@ -1,7 +1,7 @@
 # Node VectorBlur
 
 - Node name : 'Vector Blur'
-- bl_idname : [Vector Blur](https://docs.blender.org/api/current/bpy.types.Vector Blur.html)
+- bl_idname : [CompositorNodeVecBlur](https://docs.blender.org/api/current/bpy.types.CompositorNodeVecBlur.html)
 
 
 ``` python

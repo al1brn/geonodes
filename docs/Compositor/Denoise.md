@@ -1,7 +1,7 @@
 # Node Denoise
 
 - Node name : 'Denoise'
-- bl_idname : [Denoise](https://docs.blender.org/api/current/bpy.types.Denoise.html)
+- bl_idname : [CompositorNodeDenoise](https://docs.blender.org/api/current/bpy.types.CompositorNodeDenoise.html)
 
 
 ``` python

@@ -1,7 +1,7 @@
 # Node GlossyBSDF
 
 - Node name : 'Glossy BSDF'
-- bl_idname : [Glossy BSDF](https://docs.blender.org/api/current/bpy.types.Glossy BSDF.html)
+- bl_idname : [ShaderNodeBsdfAnisotropic](https://docs.blender.org/api/current/bpy.types.ShaderNodeBsdfAnisotropic.html)
 
 
 ``` python

@@ -1,7 +1,7 @@
 # Node RenderLayers
 
 - Node name : 'Render Layers'
-- bl_idname : [Render Layers](https://docs.blender.org/api/current/bpy.types.Render Layers.html)
+- bl_idname : [CompositorNodeRLayers](https://docs.blender.org/api/current/bpy.types.CompositorNodeRLayers.html)
 
 
 ``` python

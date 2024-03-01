@@ -1,7 +1,7 @@
 # Node AxisAngleToRotation
 
 - Node name : 'Axis Angle to Rotation'
-- bl_idname : [Axis Angle to Rotation](https://docs.blender.org/api/current/bpy.types.Axis Angle to Rotation.html)
+- bl_idname : [FunctionNodeAxisAngleToRotation](https://docs.blender.org/api/current/bpy.types.FunctionNodeAxisAngleToRotation.html)
 
 
 ``` python

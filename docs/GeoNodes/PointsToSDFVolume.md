@@ -1,7 +1,7 @@
 # Node PointsToSDFVolume
 
 - Node name : 'Points to SDF Volume'
-- bl_idname : [Points to SDF Volume](https://docs.blender.org/api/current/bpy.types.Points to SDF Volume.html)
+- bl_idname : [GeometryNodePointsToSDFVolume](https://docs.blender.org/api/current/bpy.types.GeometryNodePointsToSDFVolume.html)
 
 
 ``` python

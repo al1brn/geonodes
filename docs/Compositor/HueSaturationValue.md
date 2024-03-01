@@ -1,7 +1,7 @@
 # Node HueSaturationValue
 
 - Node name : 'Hue/Saturation/Value'
-- bl_idname : [Hue/Saturation/Value](https://docs.blender.org/api/current/bpy.types.Hue/Saturation/Value.html)
+- bl_idname : [CompositorNodeHueSat](https://docs.blender.org/api/current/bpy.types.CompositorNodeHueSat.html)
 
 
 ``` python

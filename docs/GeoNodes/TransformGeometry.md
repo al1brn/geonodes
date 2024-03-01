@@ -1,7 +1,7 @@
 # Node TransformGeometry
 
 - Node name : 'Transform Geometry'
-- bl_idname : [Transform Geometry](https://docs.blender.org/api/current/bpy.types.Transform Geometry.html)
+- bl_idname : [GeometryNodeTransform](https://docs.blender.org/api/current/bpy.types.GeometryNodeTransform.html)
 
 
 ``` python

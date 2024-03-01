@@ -1,7 +1,7 @@
 # Node Glare
 
 - Node name : 'Glare'
-- bl_idname : [Glare](https://docs.blender.org/api/current/bpy.types.Glare.html)
+- bl_idname : [CompositorNodeGlare](https://docs.blender.org/api/current/bpy.types.CompositorNodeGlare.html)
 
 
 ``` python

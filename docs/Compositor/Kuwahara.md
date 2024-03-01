@@ -1,7 +1,7 @@
 # Node Kuwahara
 
 - Node name : 'Kuwahara'
-- bl_idname : [Kuwahara](https://docs.blender.org/api/current/bpy.types.Kuwahara.html)
+- bl_idname : [CompositorNodeKuwahara](https://docs.blender.org/api/current/bpy.types.CompositorNodeKuwahara.html)
 
 
 ``` python

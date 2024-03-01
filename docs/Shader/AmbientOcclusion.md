@@ -1,7 +1,7 @@
 # Node AmbientOcclusion
 
 - Node name : 'Ambient Occlusion'
-- bl_idname : [Ambient Occlusion](https://docs.blender.org/api/current/bpy.types.Ambient Occlusion.html)
+- bl_idname : [ShaderNodeAmbientOcclusion](https://docs.blender.org/api/current/bpy.types.ShaderNodeAmbientOcclusion.html)
 
 
 ``` python

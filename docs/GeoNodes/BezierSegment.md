@@ -1,7 +1,7 @@
 # Node BezierSegment
 
 - Node name : 'Bezier Segment'
-- bl_idname : [Bezier Segment](https://docs.blender.org/api/current/bpy.types.Bezier Segment.html)
+- bl_idname : [GeometryNodeCurvePrimitiveBezierSegment](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurvePrimitiveBezierSegment.html)
 
 
 ``` python

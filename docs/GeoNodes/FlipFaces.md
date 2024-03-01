@@ -1,7 +1,7 @@
 # Node FlipFaces
 
 - Node name : 'Flip Faces'
-- bl_idname : [Flip Faces](https://docs.blender.org/api/current/bpy.types.Flip Faces.html)
+- bl_idname : [GeometryNodeFlipFaces](https://docs.blender.org/api/current/bpy.types.GeometryNodeFlipFaces.html)
 
 
 ``` python

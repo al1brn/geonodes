@@ -1,7 +1,7 @@
 # Node WhiteNoiseTexture
 
 - Node name : 'White Noise Texture'
-- bl_idname : [White Noise Texture](https://docs.blender.org/api/current/bpy.types.White Noise Texture.html)
+- bl_idname : [ShaderNodeTexWhiteNoise](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWhiteNoise.html)
 
 
 ``` python

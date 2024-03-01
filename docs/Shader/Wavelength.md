@@ -1,7 +1,7 @@
 # Node Wavelength
 
 - Node name : 'Wavelength'
-- bl_idname : [Wavelength](https://docs.blender.org/api/current/bpy.types.Wavelength.html)
+- bl_idname : [ShaderNodeWavelength](https://docs.blender.org/api/current/bpy.types.ShaderNodeWavelength.html)
 
 
 ``` python

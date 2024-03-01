@@ -1,7 +1,7 @@
 # Node Triangulate
 
 - Node name : 'Triangulate'
-- bl_idname : [Triangulate](https://docs.blender.org/api/current/bpy.types.Triangulate.html)
+- bl_idname : [GeometryNodeTriangulate](https://docs.blender.org/api/current/bpy.types.GeometryNodeTriangulate.html)
 
 
 ``` python

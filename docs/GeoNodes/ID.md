@@ -1,7 +1,7 @@
 # Node ID
 
 - Node name : 'ID'
-- bl_idname : [ID](https://docs.blender.org/api/current/bpy.types.ID.html)
+- bl_idname : [GeometryNodeInputID](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputID.html)
 
 
 ``` python

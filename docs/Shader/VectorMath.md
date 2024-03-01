@@ -1,7 +1,7 @@
 # Node VectorMath
 
 - Node name : 'Vector Math'
-- bl_idname : [Vector Math](https://docs.blender.org/api/current/bpy.types.Vector Math.html)
+- bl_idname : [ShaderNodeVectorMath](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html)
 
 
 ``` python

@@ -1,7 +1,7 @@
 # Node Points
 
 - Node name : 'Points'
-- bl_idname : [Points](https://docs.blender.org/api/current/bpy.types.Points.html)
+- bl_idname : [GeometryNodePoints](https://docs.blender.org/api/current/bpy.types.GeometryNodePoints.html)
 
 
 ``` python

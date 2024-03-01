@@ -1,7 +1,7 @@
 # Node MovieClip
 
 - Node name : 'Movie Clip'
-- bl_idname : [Movie Clip](https://docs.blender.org/api/current/bpy.types.Movie Clip.html)
+- bl_idname : [CompositorNodeMovieClip](https://docs.blender.org/api/current/bpy.types.CompositorNodeMovieClip.html)
 
 
 ``` python

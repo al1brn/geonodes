@@ -1,7 +1,7 @@
 # Node LensDistortion
 
 - Node name : 'Lens Distortion'
-- bl_idname : [Lens Distortion](https://docs.blender.org/api/current/bpy.types.Lens Distortion.html)
+- bl_idname : [CompositorNodeLensdist](https://docs.blender.org/api/current/bpy.types.CompositorNodeLensdist.html)
 
 
 ``` python

@@ -1,7 +1,7 @@
 # Node VolumeInfo
 
 - Node name : 'Volume Info'
-- bl_idname : [Volume Info](https://docs.blender.org/api/current/bpy.types.Volume Info.html)
+- bl_idname : [ShaderNodeVolumeInfo](https://docs.blender.org/api/current/bpy.types.ShaderNodeVolumeInfo.html)
 
 
 ``` python

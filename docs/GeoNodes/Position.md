@@ -1,7 +1,7 @@
 # Node Position
 
 - Node name : 'Position'
-- bl_idname : [Position](https://docs.blender.org/api/current/bpy.types.Position.html)
+- bl_idname : [GeometryNodeInputPosition](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputPosition.html)
 
 
 ``` python

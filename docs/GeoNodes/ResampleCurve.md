@@ -1,7 +1,7 @@
 # Node ResampleCurve
 
 - Node name : 'Resample Curve'
-- bl_idname : [Resample Curve](https://docs.blender.org/api/current/bpy.types.Resample Curve.html)
+- bl_idname : [GeometryNodeResampleCurve](https://docs.blender.org/api/current/bpy.types.GeometryNodeResampleCurve.html)
 
 
 ``` python

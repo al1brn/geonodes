@@ -1,7 +1,7 @@
 # Node Mix
 
 - Node name : 'Mix'
-- bl_idname : [Mix](https://docs.blender.org/api/current/bpy.types.Mix.html)
+- bl_idname : [CompositorNodeMixRGB](https://docs.blender.org/api/current/bpy.types.CompositorNodeMixRGB.html)
 
 
 ``` python

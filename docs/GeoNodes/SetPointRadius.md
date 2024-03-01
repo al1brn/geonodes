@@ -1,7 +1,7 @@
 # Node SetPointRadius
 
 - Node name : 'Set Point Radius'
-- bl_idname : [Set Point Radius](https://docs.blender.org/api/current/bpy.types.Set Point Radius.html)
+- bl_idname : [GeometryNodeSetPointRadius](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetPointRadius.html)
 
 
 ``` python

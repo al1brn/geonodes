@@ -1,7 +1,7 @@
 # Node TrackPosition
 
 - Node name : 'Track Position'
-- bl_idname : [Track Position](https://docs.blender.org/api/current/bpy.types.Track Position.html)
+- bl_idname : [CompositorNodeTrackPos](https://docs.blender.org/api/current/bpy.types.CompositorNodeTrackPos.html)
 
 
 ``` python

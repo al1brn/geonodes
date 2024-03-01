@@ -1,7 +1,7 @@
 # Node Script
 
 - Node name : 'Script'
-- bl_idname : [Script](https://docs.blender.org/api/current/bpy.types.Script.html)
+- bl_idname : [ShaderNodeScript](https://docs.blender.org/api/current/bpy.types.ShaderNodeScript.html)
 
 
 ``` python

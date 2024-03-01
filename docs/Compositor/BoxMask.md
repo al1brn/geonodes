@@ -1,7 +1,7 @@
 # Node BoxMask
 
 - Node name : 'Box Mask'
-- bl_idname : [Box Mask](https://docs.blender.org/api/current/bpy.types.Box Mask.html)
+- bl_idname : [CompositorNodeBoxMask](https://docs.blender.org/api/current/bpy.types.CompositorNodeBoxMask.html)
 
 
 ``` python

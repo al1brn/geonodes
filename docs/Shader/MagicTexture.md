@@ -1,7 +1,7 @@
 # Node MagicTexture
 
 - Node name : 'Magic Texture'
-- bl_idname : [Magic Texture](https://docs.blender.org/api/current/bpy.types.Magic Texture.html)
+- bl_idname : [ShaderNodeTexMagic](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexMagic.html)
 
 
 ``` python

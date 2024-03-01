@@ -1,7 +1,7 @@
 # Node SeparateGeometry
 
 - Node name : 'Separate Geometry'
-- bl_idname : [Separate Geometry](https://docs.blender.org/api/current/bpy.types.Separate Geometry.html)
+- bl_idname : [GeometryNodeSeparateGeometry](https://docs.blender.org/api/current/bpy.types.GeometryNodeSeparateGeometry.html)
 
 
 ``` python

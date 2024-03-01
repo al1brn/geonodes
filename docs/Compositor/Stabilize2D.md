@@ -1,7 +1,7 @@
 # Node Stabilize2D
 
 - Node name : 'Stabilize 2D'
-- bl_idname : [Stabilize 2D](https://docs.blender.org/api/current/bpy.types.Stabilize 2D.html)
+- bl_idname : [CompositorNodeStabilize](https://docs.blender.org/api/current/bpy.types.CompositorNodeStabilize.html)
 
 
 ``` python

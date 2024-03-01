@@ -1,7 +1,7 @@
 # Node ColorAttribute
 
 - Node name : 'Color Attribute'
-- bl_idname : [Color Attribute](https://docs.blender.org/api/current/bpy.types.Color Attribute.html)
+- bl_idname : [ShaderNodeVertexColor](https://docs.blender.org/api/current/bpy.types.ShaderNodeVertexColor.html)
 
 
 ``` python

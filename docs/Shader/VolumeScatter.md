@@ -1,7 +1,7 @@
 # Node VolumeScatter
 
 - Node name : 'Volume Scatter'
-- bl_idname : [Volume Scatter](https://docs.blender.org/api/current/bpy.types.Volume Scatter.html)
+- bl_idname : [ShaderNodeVolumeScatter](https://docs.blender.org/api/current/bpy.types.ShaderNodeVolumeScatter.html)
 
 
 ``` python

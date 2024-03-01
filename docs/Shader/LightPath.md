@@ -1,7 +1,7 @@
 # Node LightPath
 
 - Node name : 'Light Path'
-- bl_idname : [Light Path](https://docs.blender.org/api/current/bpy.types.Light Path.html)
+- bl_idname : [ShaderNodeLightPath](https://docs.blender.org/api/current/bpy.types.ShaderNodeLightPath.html)
 
 
 ``` python

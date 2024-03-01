@@ -1,7 +1,7 @@
 # Node TranslucentBSDF
 
 - Node name : 'Translucent BSDF'
-- bl_idname : [Translucent BSDF](https://docs.blender.org/api/current/bpy.types.Translucent BSDF.html)
+- bl_idname : [ShaderNodeBsdfTranslucent](https://docs.blender.org/api/current/bpy.types.ShaderNodeBsdfTranslucent.html)
 
 
 ``` python

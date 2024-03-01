@@ -1,7 +1,7 @@
 # Node Transform
 
 - Node name : 'Transform'
-- bl_idname : [Transform](https://docs.blender.org/api/current/bpy.types.Transform.html)
+- bl_idname : [CompositorNodeTransform](https://docs.blender.org/api/current/bpy.types.CompositorNodeTransform.html)
 
 
 ``` python

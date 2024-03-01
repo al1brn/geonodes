@@ -1,7 +1,7 @@
 # Node NoiseTexture
 
 - Node name : 'Noise Texture'
-- bl_idname : [Noise Texture](https://docs.blender.org/api/current/bpy.types.Noise Texture.html)
+- bl_idname : [ShaderNodeTexNoise](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexNoise.html)
 
 
 ``` python

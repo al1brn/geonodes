@@ -1,7 +1,7 @@
 # Node VectorRotate
 
 - Node name : 'Vector Rotate'
-- bl_idname : [Vector Rotate](https://docs.blender.org/api/current/bpy.types.Vector Rotate.html)
+- bl_idname : [ShaderNodeVectorRotate](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorRotate.html)
 
 
 ``` python

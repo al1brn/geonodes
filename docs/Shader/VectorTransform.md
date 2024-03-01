@@ -1,7 +1,7 @@
 # Node VectorTransform
 
 - Node name : 'Vector Transform'
-- bl_idname : [Vector Transform](https://docs.blender.org/api/current/bpy.types.Vector Transform.html)
+- bl_idname : [ShaderNodeVectorTransform](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorTransform.html)
 
 
 ``` python

@@ -1,7 +1,7 @@
 # Node VolumeToMesh
 
 - Node name : 'Volume to Mesh'
-- bl_idname : [Volume to Mesh](https://docs.blender.org/api/current/bpy.types.Volume to Mesh.html)
+- bl_idname : [GeometryNodeVolumeToMesh](https://docs.blender.org/api/current/bpy.types.GeometryNodeVolumeToMesh.html)
 
 
 ``` python

@@ -1,7 +1,7 @@
 # Node SubdivisionSurface
 
 - Node name : 'Subdivision Surface'
-- bl_idname : [Subdivision Surface](https://docs.blender.org/api/current/bpy.types.Subdivision Surface.html)
+- bl_idname : [GeometryNodeSubdivisionSurface](https://docs.blender.org/api/current/bpy.types.GeometryNodeSubdivisionSurface.html)
 
 
 ``` python

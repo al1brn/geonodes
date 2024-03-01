@@ -1,7 +1,7 @@
 # Node SplitEdges
 
 - Node name : 'Split Edges'
-- bl_idname : [Split Edges](https://docs.blender.org/api/current/bpy.types.Split Edges.html)
+- bl_idname : [GeometryNodeSplitEdges](https://docs.blender.org/api/current/bpy.types.GeometryNodeSplitEdges.html)
 
 
 ``` python

@@ -1,7 +1,7 @@
 # Node UVAlongStroke
 
 - Node name : 'UV Along Stroke'
-- bl_idname : [UV Along Stroke](https://docs.blender.org/api/current/bpy.types.UV Along Stroke.html)
+- bl_idname : [ShaderNodeUVAlongStroke](https://docs.blender.org/api/current/bpy.types.ShaderNodeUVAlongStroke.html)
 
 
 ``` python

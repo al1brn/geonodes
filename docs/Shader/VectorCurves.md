@@ -1,7 +1,7 @@
 # Node VectorCurves
 
 - Node name : 'Vector Curves'
-- bl_idname : [Vector Curves](https://docs.blender.org/api/current/bpy.types.Vector Curves.html)
+- bl_idname : [ShaderNodeVectorCurve](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorCurve.html)
 
 
 ``` python

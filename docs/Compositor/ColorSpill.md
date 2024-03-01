@@ -1,7 +1,7 @@
 # Node ColorSpill
 
 - Node name : 'Color Spill'
-- bl_idname : [Color Spill](https://docs.blender.org/api/current/bpy.types.Color Spill.html)
+- bl_idname : [CompositorNodeColorSpill](https://docs.blender.org/api/current/bpy.types.CompositorNodeColorSpill.html)
 
 
 ``` python

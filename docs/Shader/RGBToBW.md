@@ -1,7 +1,7 @@
 # Node RGBToBW
 
 - Node name : 'RGB to BW'
-- bl_idname : [RGB to BW](https://docs.blender.org/api/current/bpy.types.RGB to BW.html)
+- bl_idname : [ShaderNodeRGBToBW](https://docs.blender.org/api/current/bpy.types.ShaderNodeRGBToBW.html)
 
 
 ``` python

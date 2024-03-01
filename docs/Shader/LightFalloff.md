@@ -1,7 +1,7 @@
 # Node LightFalloff
 
 - Node name : 'Light Falloff'
-- bl_idname : [Light Falloff](https://docs.blender.org/api/current/bpy.types.Light Falloff.html)
+- bl_idname : [ShaderNodeLightFalloff](https://docs.blender.org/api/current/bpy.types.ShaderNodeLightFalloff.html)
 
 
 ``` python

@@ -1,7 +1,7 @@
 # Node ImageTexture
 
 - Node name : 'Image Texture'
-- bl_idname : [Image Texture](https://docs.blender.org/api/current/bpy.types.Image Texture.html)
+- bl_idname : [ShaderNodeTexImage](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexImage.html)
 
 
 ``` python

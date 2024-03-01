@@ -1,7 +1,7 @@
 # Node KeyingScreen
 
 - Node name : 'Keying Screen'
-- bl_idname : [Keying Screen](https://docs.blender.org/api/current/bpy.types.Keying Screen.html)
+- bl_idname : [CompositorNodeKeyingScreen](https://docs.blender.org/api/current/bpy.types.CompositorNodeKeyingScreen.html)
 
 
 ``` python

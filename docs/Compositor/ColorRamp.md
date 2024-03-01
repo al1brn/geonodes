@@ -1,7 +1,7 @@
 # Node ColorRamp
 
 - Node name : 'Color Ramp'
-- bl_idname : [Color Ramp](https://docs.blender.org/api/current/bpy.types.Color Ramp.html)
+- bl_idname : [CompositorNodeValToRGB](https://docs.blender.org/api/current/bpy.types.CompositorNodeValToRGB.html)
 
 
 ``` python

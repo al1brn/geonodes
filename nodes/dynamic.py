@@ -403,7 +403,7 @@ class Dynamic:
             
         tree_type  = self.node_info.tree_type
         class_name = self.node_info.class_name
-        bl_idname  = self.node_info.name
+        bl_idname  = self.node_info.bl_idname
         
         doc.header(f"Node {class_name}", 0)
 

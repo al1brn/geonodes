@@ -1,7 +1,7 @@
 # Node NormalMap
 
 - Node name : 'Normal Map'
-- bl_idname : [Normal Map](https://docs.blender.org/api/current/bpy.types.Normal Map.html)
+- bl_idname : [ShaderNodeNormalMap](https://docs.blender.org/api/current/bpy.types.ShaderNodeNormalMap.html)
 
 
 ``` python

@@ -1,7 +1,7 @@
 # Node RemoveNamedAttribute
 
 - Node name : 'Remove Named Attribute'
-- bl_idname : [Remove Named Attribute](https://docs.blender.org/api/current/bpy.types.Remove Named Attribute.html)
+- bl_idname : [GeometryNodeRemoveAttribute](https://docs.blender.org/api/current/bpy.types.GeometryNodeRemoveAttribute.html)
 
 
 ``` python

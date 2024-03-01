@@ -1,7 +1,7 @@
 # Node EdgesToFaceGroups
 
 - Node name : 'Edges to Face Groups'
-- bl_idname : [Edges to Face Groups](https://docs.blender.org/api/current/bpy.types.Edges to Face Groups.html)
+- bl_idname : [GeometryNodeEdgesToFaceGroups](https://docs.blender.org/api/current/bpy.types.GeometryNodeEdgesToFaceGroups.html)
 
 
 ``` python

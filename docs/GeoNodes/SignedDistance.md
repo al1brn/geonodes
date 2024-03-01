@@ -1,7 +1,7 @@
 # Node SignedDistance
 
 - Node name : 'Signed Distance'
-- bl_idname : [Signed Distance](https://docs.blender.org/api/current/bpy.types.Signed Distance.html)
+- bl_idname : [GeometryNodeInputSignedDistance](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputSignedDistance.html)
 
 
 ``` python

@@ -1,7 +1,7 @@
 # Node Vector
 
 - Node name : 'Vector'
-- bl_idname : [Vector](https://docs.blender.org/api/current/bpy.types.Vector.html)
+- bl_idname : [FunctionNodeInputVector](https://docs.blender.org/api/current/bpy.types.FunctionNodeInputVector.html)
 
 
 ``` python

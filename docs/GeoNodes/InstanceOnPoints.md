@@ -1,7 +1,7 @@
 # Node InstanceOnPoints
 
 - Node name : 'Instance on Points'
-- bl_idname : [Instance on Points](https://docs.blender.org/api/current/bpy.types.Instance on Points.html)
+- bl_idname : [GeometryNodeInstanceOnPoints](https://docs.blender.org/api/current/bpy.types.GeometryNodeInstanceOnPoints.html)
 
 
 ``` python

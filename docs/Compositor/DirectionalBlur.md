@@ -1,7 +1,7 @@
 # Node DirectionalBlur
 
 - Node name : 'Directional Blur'
-- bl_idname : [Directional Blur](https://docs.blender.org/api/current/bpy.types.Directional Blur.html)
+- bl_idname : [CompositorNodeDBlur](https://docs.blender.org/api/current/bpy.types.CompositorNodeDBlur.html)
 
 
 ``` python

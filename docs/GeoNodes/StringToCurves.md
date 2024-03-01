@@ -1,7 +1,7 @@
 # Node StringToCurves
 
 - Node name : 'String to Curves'
-- bl_idname : [String to Curves](https://docs.blender.org/api/current/bpy.types.String to Curves.html)
+- bl_idname : [GeometryNodeStringToCurves](https://docs.blender.org/api/current/bpy.types.GeometryNodeStringToCurves.html)
 
 
 ``` python

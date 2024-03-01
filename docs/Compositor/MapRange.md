@@ -1,7 +1,7 @@
 # Node MapRange
 
 - Node name : 'Map Range'
-- bl_idname : [Map Range](https://docs.blender.org/api/current/bpy.types.Map Range.html)
+- bl_idname : [CompositorNodeMapRange](https://docs.blender.org/api/current/bpy.types.CompositorNodeMapRange.html)
 
 
 ``` python

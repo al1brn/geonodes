@@ -1,7 +1,7 @@
 # Node JoinGeometry
 
 - Node name : 'Join Geometry'
-- bl_idname : [Join Geometry](https://docs.blender.org/api/current/bpy.types.Join Geometry.html)
+- bl_idname : [GeometryNodeJoinGeometry](https://docs.blender.org/api/current/bpy.types.GeometryNodeJoinGeometry.html)
 
 
 ``` python

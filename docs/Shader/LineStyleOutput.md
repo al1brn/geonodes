@@ -1,7 +1,7 @@
 # Node LineStyleOutput
 
 - Node name : 'Line Style Output'
-- bl_idname : [Line Style Output](https://docs.blender.org/api/current/bpy.types.Line Style Output.html)
+- bl_idname : [ShaderNodeOutputLineStyle](https://docs.blender.org/api/current/bpy.types.ShaderNodeOutputLineStyle.html)
 
 
 ``` python

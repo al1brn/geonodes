@@ -1,7 +1,7 @@
 # Node MeanFilterSDFVolume
 
 - Node name : 'Mean Filter SDF Volume'
-- bl_idname : [Mean Filter SDF Volume](https://docs.blender.org/api/current/bpy.types.Mean Filter SDF Volume.html)
+- bl_idname : [GeometryNodeMeanFilterSDFVolume](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeanFilterSDFVolume.html)
 
 
 ``` python

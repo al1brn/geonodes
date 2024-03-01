@@ -1,7 +1,7 @@
 # Node HueCorrect
 
 - Node name : 'Hue Correct'
-- bl_idname : [Hue Correct](https://docs.blender.org/api/current/bpy.types.Hue Correct.html)
+- bl_idname : [CompositorNodeHueCorrect](https://docs.blender.org/api/current/bpy.types.CompositorNodeHueCorrect.html)
 
 
 ``` python

@@ -1,7 +1,7 @@
 # Node SetFaceSet
 
 - Node name : 'Set Face Set'
-- bl_idname : [Set Face Set](https://docs.blender.org/api/current/bpy.types.Set Face Set.html)
+- bl_idname : [GeometryNodeToolSetFaceSet](https://docs.blender.org/api/current/bpy.types.GeometryNodeToolSetFaceSet.html)
 
 
 ``` python

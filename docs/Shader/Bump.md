@@ -1,7 +1,7 @@
 # Node Bump
 
 - Node name : 'Bump'
-- bl_idname : [Bump](https://docs.blender.org/api/current/bpy.types.Bump.html)
+- bl_idname : [ShaderNodeBump](https://docs.blender.org/api/current/bpy.types.ShaderNodeBump.html)
 
 
 ``` python

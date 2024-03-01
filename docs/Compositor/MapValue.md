@@ -1,7 +1,7 @@
 # Node MapValue
 
 - Node name : 'Map Value'
-- bl_idname : [Map Value](https://docs.blender.org/api/current/bpy.types.Map Value.html)
+- bl_idname : [CompositorNodeMapValue](https://docs.blender.org/api/current/bpy.types.CompositorNodeMapValue.html)
 
 
 ``` python

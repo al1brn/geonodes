@@ -1,7 +1,7 @@
 # Node SetAlpha
 
 - Node name : 'Set Alpha'
-- bl_idname : [Set Alpha](https://docs.blender.org/api/current/bpy.types.Set Alpha.html)
+- bl_idname : [CompositorNodeSetAlpha](https://docs.blender.org/api/current/bpy.types.CompositorNodeSetAlpha.html)
 
 
 ``` python

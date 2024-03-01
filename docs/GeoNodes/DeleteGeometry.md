@@ -1,7 +1,7 @@
 # Node DeleteGeometry
 
 - Node name : 'Delete Geometry'
-- bl_idname : [Delete Geometry](https://docs.blender.org/api/current/bpy.types.Delete Geometry.html)
+- bl_idname : [GeometryNodeDeleteGeometry](https://docs.blender.org/api/current/bpy.types.GeometryNodeDeleteGeometry.html)
 
 
 ``` python

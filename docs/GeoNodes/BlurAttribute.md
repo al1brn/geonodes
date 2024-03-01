@@ -1,7 +1,7 @@
 # Node BlurAttribute
 
 - Node name : 'Blur Attribute'
-- bl_idname : [Blur Attribute](https://docs.blender.org/api/current/bpy.types.Blur Attribute.html)
+- bl_idname : [GeometryNodeBlurAttribute](https://docs.blender.org/api/current/bpy.types.GeometryNodeBlurAttribute.html)
 
 
 ``` python

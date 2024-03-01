@@ -1,7 +1,7 @@
 # Node Geometry
 
 - Node name : 'Geometry'
-- bl_idname : [Geometry](https://docs.blender.org/api/current/bpy.types.Geometry.html)
+- bl_idname : [ShaderNodeNewGeometry](https://docs.blender.org/api/current/bpy.types.ShaderNodeNewGeometry.html)
 
 
 ``` python

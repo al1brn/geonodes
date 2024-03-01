@@ -1,7 +1,7 @@
 # Node VoronoiTexture
 
 - Node name : 'Voronoi Texture'
-- bl_idname : [Voronoi Texture](https://docs.blender.org/api/current/bpy.types.Voronoi Texture.html)
+- bl_idname : [ShaderNodeTexVoronoi](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexVoronoi.html)
 
 
 ``` python

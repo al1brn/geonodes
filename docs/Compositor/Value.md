@@ -1,7 +1,7 @@
 # Node Value
 
 - Node name : 'Value'
-- bl_idname : [Value](https://docs.blender.org/api/current/bpy.types.Value.html)
+- bl_idname : [CompositorNodeValue](https://docs.blender.org/api/current/bpy.types.CompositorNodeValue.html)
 
 
 ``` python

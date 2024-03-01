@@ -1,7 +1,7 @@
 # Node SetCurveNormal
 
 - Node name : 'Set Curve Normal'
-- bl_idname : [Set Curve Normal](https://docs.blender.org/api/current/bpy.types.Set Curve Normal.html)
+- bl_idname : [GeometryNodeSetCurveNormal](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetCurveNormal.html)
 
 
 ``` python

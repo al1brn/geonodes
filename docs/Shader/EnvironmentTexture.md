@@ -1,7 +1,7 @@
 # Node EnvironmentTexture
 
 - Node name : 'Environment Texture'
-- bl_idname : [Environment Texture](https://docs.blender.org/api/current/bpy.types.Environment Texture.html)
+- bl_idname : [ShaderNodeTexEnvironment](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexEnvironment.html)
 
 
 ``` python

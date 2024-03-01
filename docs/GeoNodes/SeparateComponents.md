@@ -1,7 +1,7 @@
 # Node SeparateComponents
 
 - Node name : 'Separate Components'
-- bl_idname : [Separate Components](https://docs.blender.org/api/current/bpy.types.Separate Components.html)
+- bl_idname : [GeometryNodeSeparateComponents](https://docs.blender.org/api/current/bpy.types.GeometryNodeSeparateComponents.html)
 
 
 ``` python

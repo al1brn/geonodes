@@ -1,7 +1,7 @@
 # Node PointDensity
 
 - Node name : 'Point Density'
-- bl_idname : [Point Density](https://docs.blender.org/api/current/bpy.types.Point Density.html)
+- bl_idname : [ShaderNodeTexPointDensity](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexPointDensity.html)
 
 
 ``` python

@@ -1,7 +1,7 @@
 # Node CornerPin
 
 - Node name : 'Corner Pin'
-- bl_idname : [Corner Pin](https://docs.blender.org/api/current/bpy.types.Corner Pin.html)
+- bl_idname : [CompositorNodeCornerPin](https://docs.blender.org/api/current/bpy.types.CompositorNodeCornerPin.html)
 
 
 ``` python

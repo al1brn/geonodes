@@ -1,7 +1,7 @@
 # Node Blur
 
 - Node name : 'Blur'
-- bl_idname : [Blur](https://docs.blender.org/api/current/bpy.types.Blur.html)
+- bl_idname : [CompositorNodeBlur](https://docs.blender.org/api/current/bpy.types.CompositorNodeBlur.html)
 
 
 ``` python

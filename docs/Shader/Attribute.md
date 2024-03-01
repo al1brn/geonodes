@@ -1,7 +1,7 @@
 # Node Attribute
 
 - Node name : 'Attribute'
-- bl_idname : [Attribute](https://docs.blender.org/api/current/bpy.types.Attribute.html)
+- bl_idname : [ShaderNodeAttribute](https://docs.blender.org/api/current/bpy.types.ShaderNodeAttribute.html)
 
 
 ``` python

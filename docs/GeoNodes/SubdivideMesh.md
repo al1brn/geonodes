@@ -1,7 +1,7 @@
 # Node SubdivideMesh
 
 - Node name : 'Subdivide Mesh'
-- bl_idname : [Subdivide Mesh](https://docs.blender.org/api/current/bpy.types.Subdivide Mesh.html)
+- bl_idname : [GeometryNodeSubdivideMesh](https://docs.blender.org/api/current/bpy.types.GeometryNodeSubdivideMesh.html)
 
 
 ``` python

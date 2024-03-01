@@ -1,7 +1,7 @@
 # Node SetCurveRadius
 
 - Node name : 'Set Curve Radius'
-- bl_idname : [Set Curve Radius](https://docs.blender.org/api/current/bpy.types.Set Curve Radius.html)
+- bl_idname : [GeometryNodeSetCurveRadius](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetCurveRadius.html)
 
 
 ``` python

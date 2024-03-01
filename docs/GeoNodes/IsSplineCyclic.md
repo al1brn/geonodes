@@ -1,7 +1,7 @@
 # Node IsSplineCyclic
 
 - Node name : 'Is Spline Cyclic'
-- bl_idname : [Is Spline Cyclic](https://docs.blender.org/api/current/bpy.types.Is Spline Cyclic.html)
+- bl_idname : [GeometryNodeInputSplineCyclic](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputSplineCyclic.html)
 
 
 ``` python

@@ -1,7 +1,7 @@
 # Node SetPosition
 
 - Node name : 'Set Position'
-- bl_idname : [Set Position](https://docs.blender.org/api/current/bpy.types.Set Position.html)
+- bl_idname : [GeometryNodeSetPosition](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetPosition.html)
 
 
 ``` python

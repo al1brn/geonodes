@@ -1,7 +1,7 @@
 # Node Arc
 
 - Node name : 'Arc'
-- bl_idname : [Arc](https://docs.blender.org/api/current/bpy.types.Arc.html)
+- bl_idname : [GeometryNodeCurveArc](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveArc.html)
 
 
 ``` python

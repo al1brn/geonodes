@@ -1,7 +1,7 @@
 # Node SampleVolume
 
 - Node name : 'Sample Volume'
-- bl_idname : [Sample Volume](https://docs.blender.org/api/current/bpy.types.Sample Volume.html)
+- bl_idname : [GeometryNodeSampleVolume](https://docs.blender.org/api/current/bpy.types.GeometryNodeSampleVolume.html)
 
 
 ``` python

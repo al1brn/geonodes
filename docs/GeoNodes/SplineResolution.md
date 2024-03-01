@@ -1,7 +1,7 @@
 # Node SplineResolution
 
 - Node name : 'Spline Resolution'
-- bl_idname : [Spline Resolution](https://docs.blender.org/api/current/bpy.types.Spline Resolution.html)
+- bl_idname : [GeometryNodeInputSplineResolution](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputSplineResolution.html)
 
 
 ``` python

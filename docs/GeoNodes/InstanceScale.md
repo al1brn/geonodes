@@ -1,7 +1,7 @@
 # Node InstanceScale
 
 - Node name : 'Instance Scale'
-- bl_idname : [Instance Scale](https://docs.blender.org/api/current/bpy.types.Instance Scale.html)
+- bl_idname : [GeometryNodeInputInstanceScale](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputInstanceScale.html)
 
 
 ``` python

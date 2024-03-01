@@ -1,7 +1,7 @@
 # Node GroupOutput
 
 - Node name : 'Group Output'
-- bl_idname : [Group Output](https://docs.blender.org/api/current/bpy.types.Group Output.html)
+- bl_idname : [NodeGroupOutput](https://docs.blender.org/api/current/bpy.types.NodeGroupOutput.html)
 
 
 ``` python

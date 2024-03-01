@@ -1,7 +1,7 @@
 # Node CornersOfEdge
 
 - Node name : 'Corners of Edge'
-- bl_idname : [Corners of Edge](https://docs.blender.org/api/current/bpy.types.Corners of Edge.html)
+- bl_idname : [GeometryNodeCornersOfEdge](https://docs.blender.org/api/current/bpy.types.GeometryNodeCornersOfEdge.html)
 
 
 ``` python

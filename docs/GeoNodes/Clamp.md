@@ -1,7 +1,7 @@
 # Node Clamp
 
 - Node name : 'Clamp'
-- bl_idname : [Clamp](https://docs.blender.org/api/current/bpy.types.Clamp.html)
+- bl_idname : [ShaderNodeClamp](https://docs.blender.org/api/current/bpy.types.ShaderNodeClamp.html)
 
 
 ``` python

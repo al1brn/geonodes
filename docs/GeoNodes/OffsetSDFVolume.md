@@ -1,7 +1,7 @@
 # Node OffsetSDFVolume
 
 - Node name : 'Offset SDF Volume'
-- bl_idname : [Offset SDF Volume](https://docs.blender.org/api/current/bpy.types.Offset SDF Volume.html)
+- bl_idname : [GeometryNodeOffsetSDFVolume](https://docs.blender.org/api/current/bpy.types.GeometryNodeOffsetSDFVolume.html)
 
 
 ``` python

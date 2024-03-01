@@ -1,7 +1,7 @@
 # Node MeshIsland
 
 - Node name : 'Mesh Island'
-- bl_idname : [Mesh Island](https://docs.blender.org/api/current/bpy.types.Mesh Island.html)
+- bl_idname : [GeometryNodeInputMeshIsland](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshIsland.html)
 
 
 ``` python

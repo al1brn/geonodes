@@ -1,7 +1,7 @@
 # Node PrincipledBSDF
 
 - Node name : 'Principled BSDF'
-- bl_idname : [Principled BSDF](https://docs.blender.org/api/current/bpy.types.Principled BSDF.html)
+- bl_idname : [ShaderNodeBsdfPrincipled](https://docs.blender.org/api/current/bpy.types.ShaderNodeBsdfPrincipled.html)
 
 
 ``` python

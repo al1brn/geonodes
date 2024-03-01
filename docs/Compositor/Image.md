@@ -1,7 +1,7 @@
 # Node Image
 
 - Node name : 'Image'
-- bl_idname : [Image](https://docs.blender.org/api/current/bpy.types.Image.html)
+- bl_idname : [CompositorNodeImage](https://docs.blender.org/api/current/bpy.types.CompositorNodeImage.html)
 
 
 ``` python

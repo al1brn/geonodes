@@ -1,7 +1,7 @@
 # Node FaceGroupBoundaries
 
 - Node name : 'Face Group Boundaries'
-- bl_idname : [Face Group Boundaries](https://docs.blender.org/api/current/bpy.types.Face Group Boundaries.html)
+- bl_idname : [GeometryNodeMeshFaceSetBoundaries](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshFaceSetBoundaries.html)
 
 
 ``` python

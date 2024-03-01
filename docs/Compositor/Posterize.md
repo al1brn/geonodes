@@ -1,7 +1,7 @@
 # Node Posterize
 
 - Node name : 'Posterize'
-- bl_idname : [Posterize](https://docs.blender.org/api/current/bpy.types.Posterize.html)
+- bl_idname : [CompositorNodePosterize](https://docs.blender.org/api/current/bpy.types.CompositorNodePosterize.html)
 
 
 ``` python

@@ -1,7 +1,7 @@
 # Node Spiral
 
 - Node name : 'Spiral'
-- bl_idname : [Spiral](https://docs.blender.org/api/current/bpy.types.Spiral.html)
+- bl_idname : [GeometryNodeCurveSpiral](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveSpiral.html)
 
 
 ``` python

@@ -1,7 +1,7 @@
 # Node ExtrudeMesh
 
 - Node name : 'Extrude Mesh'
-- bl_idname : [Extrude Mesh](https://docs.blender.org/api/current/bpy.types.Extrude Mesh.html)
+- bl_idname : [GeometryNodeExtrudeMesh](https://docs.blender.org/api/current/bpy.types.GeometryNodeExtrudeMesh.html)
 
 
 ``` python

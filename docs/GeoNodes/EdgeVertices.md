@@ -1,7 +1,7 @@
 # Node EdgeVertices
 
 - Node name : 'Edge Vertices'
-- bl_idname : [Edge Vertices](https://docs.blender.org/api/current/bpy.types.Edge Vertices.html)
+- bl_idname : [GeometryNodeInputMeshEdgeVertices](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshEdgeVertices.html)
 
 
 ``` python
