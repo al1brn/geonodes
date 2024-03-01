@@ -18,7 +18,7 @@ RandomValue(min=None, max=None, ID=None, seed=None, probability=None, data_type=
 
 ## Implementation
 
-- Functions : [random_boolean](/docs/GeoNodes/index.md#random_boolean) [random_float](/docs/GeoNodes/index.md#random_float) [random_int](/docs/GeoNodes/index.md#random_int) [random_value](/docs/GeoNodes/index.md#random_value) [random_vector](/docs/GeoNodes/index.md#random_vector)
+- Functions : [random_boolean](/docs/GeoNodes/GeoNodes.md#random_boolean) [random_float](/docs/GeoNodes/GeoNodes.md#random_float) [random_int](/docs/GeoNodes/GeoNodes.md#random_int) [random_value](/docs/GeoNodes/GeoNodes.md#random_value) [random_vector](/docs/GeoNodes/GeoNodes.md#random_vector)
 
 ## Init
 

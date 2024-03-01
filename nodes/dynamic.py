@@ -429,7 +429,7 @@ class Dynamic:
                 globs = None
                 for socket in sorted(cross_ref.keys()):
                     if socket == 'GLOBAL':
-                        globs = [doc.page_link(name, "index", title=name) for name in sorted(cross_ref[socket])]
+                        globs = [doc.page_link(name, constants.TREE_CLASS_NAMES[tree_type], title=name) for name in sorted(cross_ref[socket])]
                     else:
                         links = [doc.page_link(name, socket, title=name) for name in sorted(cross_ref[socket])]
                         bullets.add(doc.page_link(socket), " ".join(links))

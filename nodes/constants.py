@@ -64,6 +64,13 @@ TREE_BL_IDS = {
     'Texture'    : 'TextureNodeTree',
     }
 
+TREE_CLASS_NAMES = {
+    'GeometryNodeTree'   : 'GeoNodes',
+    'ShaderNodeTree'     : 'Shader',
+    'CompositorNodeTree' : 'Compositor',
+    'TextureNodeTree'    : 'Texture',
+    }
+
 # ====================================================================================================
 # Standard node attribute names which are not properties
 
