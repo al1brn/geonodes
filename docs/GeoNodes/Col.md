@@ -1,7 +1,5 @@
 # Socket Col
 
-### Properties
-
 
 ### Methods
 
@@ -33,8 +31,6 @@
 - [rgb_curves](#rgb_curves)
 - [separate_color](#separate_color)
 - [switch](#switch)
-
-## Properties
 
 ## Methods
 
@@ -662,7 +658,7 @@ def not_equal(self, b=None, epsilon=None, mode='ELEMENT', node_label=None, node_
 ##### Arguments
 
 - fac : None
-- mapping : <bpy_struct, CurveMapping at 0x2bc026788>
+- mapping : <bpy_struct, CurveMapping at 0x2c74930c8>
 - node_label : None
 - node_color : None
 

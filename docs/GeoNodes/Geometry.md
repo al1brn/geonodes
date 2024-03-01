@@ -230,7 +230,7 @@
 
 > Read only property
 
-### GET
+### Get
 
 
 - node : [CurveLength](/docs/GeoNodes/CurveLength.md)
@@ -253,7 +253,7 @@ def curve_length(self):
 
 > Read only property
 
-### GET
+### Get
 
 
 - node : [CurveTangent](/docs/GeoNodes/CurveTangent.md)
@@ -276,7 +276,7 @@ def curve_tangent(self):
 
 > Read only property
 
-### GET
+### Get
 
 
 - node : [CurveTilt](/docs/GeoNodes/CurveTilt.md)
@@ -299,7 +299,7 @@ def curve_tilt(self):
 
 > Write only property
 
-### SET
+### Set
 
 
 - node : [SetSplineCyclic](/docs/GeoNodes/SetSplineCyclic.md)
@@ -323,7 +323,7 @@ def cyclic(self, value):
 
 > Read only property
 
-### GET
+### Get
 
 
 - node : [EdgeNeighbors](/docs/GeoNodes/EdgeNeighbors.md)
@@ -346,7 +346,7 @@ def edge_neighbors(self):
 
 > Read only property
 
-### GET
+### Get
 
 
 - node : [IsEdgeSmooth](/docs/GeoNodes/IsEdgeSmooth.md)
@@ -369,7 +369,7 @@ def edge_smooth(self):
 
 > Read only property
 
-### GET
+### Get
 
 
 - node : [FaceArea](/docs/GeoNodes/FaceArea.md)
@@ -392,7 +392,7 @@ def face_area(self):
 
 > Read only property
 
-### GET
+### Get
 
 
 - node : [IsFaceSmooth](/docs/GeoNodes/IsFaceSmooth.md)
@@ -415,7 +415,7 @@ def face_smooth(self):
 
 > Property
 
-### GET
+### Get
 
 
 - node : [ID](/docs/GeoNodes/ID.md)
@@ -434,7 +434,7 @@ def id(self):
     node = self.tree.ID(node_color=(0.3, 0.3, 0.25))
     return node.id
 ```
-### SET
+### Set
 
 
 - node : [SetID](/docs/GeoNodes/SetID.md)
@@ -458,7 +458,7 @@ def id(self, value):
 
 > Read only property
 
-### GET
+### Get
 
 
 - node : [Index](/docs/GeoNodes/Index.md)
@@ -481,7 +481,7 @@ def index(self):
 
 > Read only property
 
-### GET
+### Get
 
 
 - node : [InstanceRotation](/docs/GeoNodes/InstanceRotation.md)
@@ -504,7 +504,7 @@ def instance_rotation(self):
 
 > Read only property
 
-### GET
+### Get
 
 
 - node : [InstanceScale](/docs/GeoNodes/InstanceScale.md)
@@ -527,7 +527,7 @@ def instance_scale(self):
 
 > Write only property
 
-### SET
+### Set
 
 
 - node : [SetMaterial](/docs/GeoNodes/SetMaterial.md)
@@ -551,7 +551,7 @@ def material(self, value):
 
 > Property
 
-### GET
+### Get
 
 
 - node : [MaterialIndex](/docs/GeoNodes/MaterialIndex.md)
@@ -570,7 +570,7 @@ def material_index(self):
     node = self.tree.MaterialIndex(node_color=(0.3, 0.3, 0.25))
     return node.material_index
 ```
-### SET
+### Set
 
 
 - node : [SetMaterialIndex](/docs/GeoNodes/SetMaterialIndex.md)
@@ -594,7 +594,7 @@ def material_index(self, value):
 
 > Property
 
-### GET
+### Get
 
 
 - node : [Normal](/docs/GeoNodes/Normal.md)
@@ -613,7 +613,7 @@ def normal(self):
     node = self.tree.Normal(node_color=(0.3, 0.3, 0.25))
     return node.normal
 ```
-### SET
+### Set
 
 
 - node : [SetCurveNormal](/docs/GeoNodes/SetCurveNormal.md)
@@ -636,7 +636,7 @@ def normal(self, value):
 
 > Write only property
 
-### SET
+### Set
 
 
 - node : [SetPosition](/docs/GeoNodes/SetPosition.md)
@@ -661,7 +661,7 @@ def offset(self, value):
 
 > Write only property
 
-### SET
+### Set
 
 
 - node : [SetPointRadius](/docs/GeoNodes/SetPointRadius.md)
@@ -685,7 +685,7 @@ def point_radius(self, value):
 
 > Property
 
-### GET
+### Get
 
 
 - node : [Position](/docs/GeoNodes/Position.md)
@@ -704,7 +704,7 @@ def position(self):
     node = self.tree.Position(node_color=(0.3, 0.3, 0.25))
     return node.position
 ```
-### SET
+### Set
 
 
 - node : [SetPosition](/docs/GeoNodes/SetPosition.md)
@@ -729,7 +729,7 @@ def position(self, value):
 
 > Property
 
-### GET
+### Get
 
 
 - node : [Radius](/docs/GeoNodes/Radius.md)
@@ -748,7 +748,7 @@ def radius(self):
     node = self.tree.Radius(node_color=(0.3, 0.3, 0.25))
     return node.radius
 ```
-### SET
+### Set
 
 
 - node : [SetCurveRadius](/docs/GeoNodes/SetCurveRadius.md)
@@ -772,7 +772,7 @@ def radius(self, value):
 
 > Write only property
 
-### SET
+### Set
 
 
 - node : [SetShadeSmooth](/docs/GeoNodes/SetShadeSmooth.md)
@@ -797,7 +797,7 @@ def shade_smooth(self, value):
 
 > Read only property
 
-### GET
+### Get
 
 
 - node : [IsSplineCyclic](/docs/GeoNodes/IsSplineCyclic.md)
@@ -820,7 +820,7 @@ def spline_cyclic(self):
 
 > Property
 
-### GET
+### Get
 
 
 - node : [SplineResolution](/docs/GeoNodes/SplineResolution.md)
@@ -839,7 +839,7 @@ def spline_resolution(self):
     node = self.tree.SplineResolution(node_color=(0.3, 0.3, 0.25))
     return node.resolution
 ```
-### SET
+### Set
 
 
 - node : [SetSplineResolution](/docs/GeoNodes/SetSplineResolution.md)
@@ -863,7 +863,7 @@ def spline_resolution(self, value):
 
 > Write only property
 
-### SET
+### Set
 
 
 - node : [SetSplineType](/docs/GeoNodes/SetSplineType.md)
@@ -886,7 +886,7 @@ def spline_type(self, value):
 
 > Write only property
 
-### SET
+### Set
 
 
 - node : [SetCurveTilt](/docs/GeoNodes/SetCurveTilt.md)

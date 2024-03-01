@@ -1,7 +1,5 @@
 # Socket Vect
 
-### Properties
-
 
 ### Methods
 
@@ -57,8 +55,6 @@
 - [vector_curves](#vector_curves)
 - [vector_rotate](#vector_rotate)
 - [wrap](#wrap)
-
-## Properties
 
 ## Methods
 
@@ -1127,7 +1123,7 @@ def tan(self, node_label=None, node_color=None):
 ##### Arguments
 
 - fac : None
-- mapping : <bpy_struct, CurveMapping at 0x2a8e640a8>
+- mapping : <bpy_struct, CurveMapping at 0x2c74a6b18>
 - node_label : None
 - node_color : None
 

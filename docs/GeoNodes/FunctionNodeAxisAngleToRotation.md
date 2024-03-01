@@ -1,0 +1,28 @@
+# Node AxisAngleToRotation
+
+- Node name : 'Axis Angle to Rotation'
+- bl_idname : FunctionNodeAxisAngleToRotation
+
+
+``` python
+AxisAngleToRotation(axis=None, angle=None, node_label=None, node_color=None)
+```
+##### Arguments
+
+- axis : None
+- angle : None
+
+## Implementation
+
+- [Vect](/docs/GeoNodes/Vect.md) : [axis_angle_to_rotation](/docs/GeoNodes/Vect.md#axis_angle_to_rotation)
+
+## Init
+
+``` python
+def __init__(self, axis=None, angle=None, node_label=None, node_color=None):
+
+    StackedNode.__init__(self, 'FunctionNodeAxisAngleToRotation', node_label=node_label, node_color=node_color)
+
+    self.axis            = axis
+    self.angle           = angle
+```

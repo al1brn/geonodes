@@ -1,14 +1,10 @@
 # Socket Collection
 
-### Properties
-
 
 ### Methods
 
 - [collection_info](#collection_info)
 - [switch](#switch)
-
-## Properties
 
 ## Methods
 

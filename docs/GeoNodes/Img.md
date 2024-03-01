@@ -1,15 +1,11 @@
 # Socket Img
 
-### Properties
-
 
 ### Methods
 
 - [image_info](#image_info)
 - [image_texture](#image_texture)
 - [switch](#switch)
-
-## Properties
 
 ## Methods
 

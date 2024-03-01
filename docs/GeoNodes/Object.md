@@ -1,14 +1,10 @@
 # Socket Object
 
-### Properties
-
 
 ### Methods
 
 - [object_info](#object_info)
 - [switch](#switch)
-
-## Properties
 
 ## Methods
 

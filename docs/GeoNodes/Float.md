@@ -1,7 +1,5 @@
 # Socket Float
 
-### Properties
-
 
 ### Methods
 
@@ -69,8 +67,6 @@
 - [truncate](#truncate)
 - [value_to_string](#value_to_string)
 - [wrap](#wrap)
-
-## Properties
 
 ## Methods
 
@@ -298,7 +294,7 @@ def clamp(self, min=None, max=None, clamp_type='MINMAX', node_label=None, node_c
 
 ##### Arguments
 
-- color_ramp : <bpy_struct, ColorRamp at 0x2a8e62ed8>
+- color_ramp : <bpy_struct, ColorRamp at 0x114898238>
 - node_label : None
 - node_color : None
 
@@ -472,7 +468,7 @@ def exp(self, use_clamp=False, node_label=None, node_color=None):
 ##### Arguments
 
 - factor : None
-- mapping : <bpy_struct, CurveMapping at 0x2bc04aaf8>
+- mapping : <bpy_struct, CurveMapping at 0x2c74936a8>
 - node_label : None
 - node_color : None
 

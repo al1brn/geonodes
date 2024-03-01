@@ -321,11 +321,11 @@ class Dynamic:
         elif func['cat'] == 'PROPERTY':
         
             if func['getter'] is not None:
-                doc.header("GET", 2)
+                doc.header("Get", 2)
                 Dynamic.print_func(doc, func['getter'])
 
             if func['setter'] is not None:
-                doc.header("SET", 2)
+                doc.header("Set", 2)
                 Dynamic.print_func(doc, func['setter'])
                 
         else:
@@ -442,14 +442,14 @@ class Dynamic:
 
         cross_ref = constants.CROSS_REF[tree_type].get(class_name)
         if cross_ref is None:
-            doc.paragraph("No implementation in sockets")
+            doc.para("No implementation in sockets")
 
         else:
             with doc.bullets() as bullets:
                 globs = None
                 for socket in sorted(cross_ref.keys()):
                     if socket == 'GLOBAL':
-                        globs = [doc.page_link(name, socket, title=name) for name in sorted(cross_ref[socket])]
+                        globs = [doc.page_link(name, "index", title=name) for name in sorted(cross_ref[socket])]
                     else:
                         links = [doc.page_link(name, socket, title=name) for name in sorted(cross_ref[socket])]
                         bullets.add(doc.page_link(socket), " ".join(links))
@@ -492,26 +492,40 @@ class Dynamic:
             if self.descr is not None:
                 doc.description(self.descr)
                 
-            doc.header("Properties", 2)
+            ok_header = True
             with doc.bullets() as bullets:
                 for name in sorted(self.properties):
+                    if ok_header:
+                        doc.header("Properties", 2)
+                        ok_header = False
                     bullets.add(doc.title_link(name))
 
-            doc.header("Methods", 2)
+            ok_header = True            
             with doc.bullets() as bullets:
                 for name in sorted(self.methods):
+                    if ok_header:
+                        doc.header("Methods", 2)
+                        ok_header = False
                     bullets.add(doc.title_link(name))
                     
             if doc.is_md:
                 
-                doc.header("Properties", 1)
+                ok_header = True
                 for name in sorted(self.properties.keys()):
+                    if ok_header:
+                        doc.header("Properties", 1)
+                        ok_header = False
+                        
                     func = self.properties[name]
                     doc.header(f"{name}", 2)
                     self.print_func(doc, func)
                 
-                doc.header("Methods", 1)
+                ok_header = True
                 for name in sorted(self.methods.keys()):
+                    if ok_header:
+                        doc.header("Methods", 1)
+                        ok_header = False
+                        
                     func = self.methods[name]
                     doc.header(f"{name}", 2)
                     self.print_func(doc, func)
@@ -581,6 +595,13 @@ def print_md_doc(folder="/Users/alain/Documents/blender/scripts/modules/geonodes
         for class_name, dyn in constants.SOCKETS[tree_type].items():
             doc = Doc.MarkDown(link_root=link_root)
             dyn.socket_print_doc(None, target_doc=doc)
+            doc.done(file_name=file_root / f"{class_name}.md")
+        
+        # ----- Node classes
+        
+        for class_name, dyn in constants.NODES[tree_type].items():
+            doc = Doc.MarkDown(link_root=link_root)
+            dyn.node_print_doc(target_doc=doc)
             doc.done(file_name=file_root / f"{class_name}.md")
         
         

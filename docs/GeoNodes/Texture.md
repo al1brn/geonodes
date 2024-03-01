@@ -1,13 +1,9 @@
 # Socket Texture
 
-### Properties
-
 
 ### Methods
 
 - [switch](#switch)
-
-## Properties
 
 ## Methods
 

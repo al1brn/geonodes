@@ -1,7 +1,5 @@
 # Socket Bool
 
-### Properties
-
 
 ### Methods
 
@@ -15,8 +13,6 @@
 - [switch](#switch)
 - [xnor](#xnor)
 - [xor](#xor)
-
-## Properties
 
 ## Methods
 

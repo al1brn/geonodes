@@ -1,14 +1,10 @@
 # Socket Mat
 
-### Properties
-
 
 ### Methods
 
 - [material_selection](#material_selection)
 - [switch](#switch)
-
-## Properties
 
 ## Methods
 

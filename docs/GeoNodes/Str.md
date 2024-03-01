@@ -23,7 +23,7 @@
 
 > Read only property
 
-### GET
+### Get
 
 
 - node : [StringLength](/docs/GeoNodes/StringLength.md)
@@ -46,7 +46,7 @@ def length(self):
 
 > Read only property
 
-### GET
+### Get
 
 
 - node : [SpecialCharacters](/docs/GeoNodes/SpecialCharacters.md)
@@ -69,7 +69,7 @@ def line_break(self):
 
 > Read only property
 
-### GET
+### Get
 
 
 - node : [SpecialCharacters](/docs/GeoNodes/SpecialCharacters.md)
@@ -241,7 +241,7 @@ def special_characters(self, node_label=None, node_color=None):
 - text_box_height : None
 - align_x : LEFT in ('LEFT', 'CENTER', 'RIGHT', 'JUSTIFY', 'FLUSH')
 - align_y : TOP_BASELINE in ('TOP', 'TOP_BASELINE', 'MIDDLE', 'BOTTOM_BASELINE', 'BOTTOM')
-- font : <bpy_struct, VectorFont("Bfont Regular") at 0x29738ce08>
+- font : <bpy_struct, VectorFont("Bfont Regular") at 0x2c68fe808>
 - overflow : OVERFLOW in ('OVERFLOW', 'SCALE_TO_FIT', 'TRUNCATE')
 - pivot_mode : BOTTOM_LEFT in ('MIDPOINT', 'TOP_LEFT', 'TOP_CENTER', 'TOP_RIGHT', 'BOTTOM_LEFT', 'BOTTOM_CENTER', 'BOTTOM_RIGHT')
 - node_label : None
