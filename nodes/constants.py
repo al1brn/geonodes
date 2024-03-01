@@ -28,6 +28,13 @@ version = (2, 0, 0)
 blender = (4, 1, 0)
 
 bldoc_node_bl_idname = "https://docs.blender.org/api/current/bpy.types"
+
+bldoc_nodes = {
+    'GeometryNodeTree'   : 'https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/blur_attribute.html',
+    'ShaderNodeTree'     : '',
+    'CompositorNodeTree' : '',
+    'TextureNodeTree'    : '',
+    }
     
 
 
