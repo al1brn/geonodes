@@ -114,6 +114,9 @@ class Bullets:
 
         if self.doc.is_md:
             
+            if self._bullet == "1":
+                self.bullet = f"{1}."
+            
             s = text
             if description is not None:
                 s = text + " : " + description
