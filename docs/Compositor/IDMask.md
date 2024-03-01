@@ -1,0 +1,32 @@
+# Node IDMask
+
+- Node name : 'ID Mask'
+- bl_idname : CompositorNodeIDMask
+
+
+``` python
+IDMask(id_value=None, index=0, tag_need_exec=None, use_antialiasing=False, node_label=None, node_color=None)
+```
+##### Arguments
+
+- id_value : None
+- index : 0
+- tag_need_exec : None
+- use_antialiasing : False
+
+## Implementation
+
+No implementation in sockets
+
+## Init
+
+``` python
+def __init__(self, id_value=None, index=0, tag_need_exec=None, use_antialiasing=False, node_label=None, node_color=None):
+
+    StackedNode.__init__(self, 'CompositorNodeIDMask', node_label=node_label, node_color=node_color)
+
+    self.index           = index
+    self.tag_need_exec   = tag_need_exec
+    self.use_antialiasing = use_antialiasing
+    self.id_value        = id_value
+```

@@ -564,6 +564,25 @@ class Tree(StackedTree):
         self.btree.links.new(sock2, sock3)
         
         self.arrange()
+        
+    # ====================================================================================================
+    # Buiild the full doc
+    
+    @staticmethod
+    def build_doc(folder):
+        
+        from geonodes.nodes import dynamic
+    
+        with GeoNodes("Doc") as tree:
+            pass
+        
+        with Shader("Doc") as tree:
+            pass
+        
+        with Compositor() as tree:
+            pass
+        
+        dynamic.print_md_doc(folder)
 
         
 # ====================================================================================================
@@ -884,6 +903,7 @@ class TextureLegacy(Tree):
     @output_alpha.setter
     def output_alpha(self, value):
         self.output_node.alpha = value
+        
 
     
     

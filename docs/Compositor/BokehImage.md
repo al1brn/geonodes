@@ -1,0 +1,36 @@
+# Node BokehImage
+
+- Node name : 'Bokeh Image'
+- bl_idname : CompositorNodeBokehImage
+
+
+``` python
+BokehImage(angle=0.0, catadioptric=0.0, flaps=5, rounding=0.0, shift=0.0, tag_need_exec=None, node_label=None, node_color=None)
+```
+##### Arguments
+
+- angle : 0.0
+- catadioptric : 0.0
+- flaps : 5
+- rounding : 0.0
+- shift : 0.0
+- tag_need_exec : None
+
+## Implementation
+
+No implementation in sockets
+
+## Init
+
+``` python
+def __init__(self, angle=0.0, catadioptric=0.0, flaps=5, rounding=0.0, shift=0.0, tag_need_exec=None, node_label=None, node_color=None):
+
+    StackedNode.__init__(self, 'CompositorNodeBokehImage', node_label=node_label, node_color=node_color)
+
+    self.angle           = angle
+    self.catadioptric    = catadioptric
+    self.flaps           = flaps
+    self.rounding        = rounding
+    self.shift           = shift
+    self.tag_need_exec   = tag_need_exec
+```

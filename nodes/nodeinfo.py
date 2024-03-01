@@ -119,6 +119,9 @@ class Argument:
             
         if isinstance(header, mathutils.Vector):
             self.header = mathutils.Vector(header)
+            
+        if isinstance(header, mathutils.Color):
+            self.header = mathutils.Color(header)
         
     def __str__(self):
         
@@ -600,7 +603,7 @@ class NodeInfo:
         
         # ----- DEBUG
         
-        if False and self.class_name == "Vector":
+        if False and self.class_name == "ColorBalance":
             print("-"*100)
             print("NodeInfo.init", self.class_name, "__init__ source code\n")
             print(self.init_code)

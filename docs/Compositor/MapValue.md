@@ -1,0 +1,40 @@
+# Node MapValue
+
+- Node name : 'Map Value'
+- bl_idname : CompositorNodeMapValue
+
+
+``` python
+MapValue(value=None, max=None, min=None, offset=None, size=None, tag_need_exec=None, use_max=False, use_min=False, node_label=None, node_color=None)
+```
+##### Arguments
+
+- value : None
+- max : None
+- min : None
+- offset : None
+- size : None
+- tag_need_exec : None
+- use_max : False
+- use_min : False
+
+## Implementation
+
+No implementation in sockets
+
+## Init
+
+``` python
+def __init__(self, value=None, max=None, min=None, offset=None, size=None, tag_need_exec=None, use_max=False, use_min=False, node_label=None, node_color=None):
+
+    StackedNode.__init__(self, 'CompositorNodeMapValue', node_label=node_label, node_color=node_color)
+
+    self.max             = max
+    self.min             = min
+    self.offset          = offset
+    self.size            = size
+    self.tag_need_exec   = tag_need_exec
+    self.use_max         = use_max
+    self.use_min         = use_min
+    self.value           = value
+```

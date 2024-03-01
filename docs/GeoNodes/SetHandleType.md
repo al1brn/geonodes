@@ -5,14 +5,14 @@
 
 
 ``` python
-SetHandleType(curve=None, selection=None, handle_type='AUTO', mode={'LEFT', 'RIGHT'}, node_label=None, node_color=None)
+SetHandleType(curve=None, selection=None, handle_type='AUTO', mode={'RIGHT', 'LEFT'}, node_label=None, node_color=None)
 ```
 ##### Arguments
 
 - curve : None
 - selection : None
 - handle_type : 'AUTO'
-- mode : {'LEFT', 'RIGHT'}
+- mode : {'RIGHT', 'LEFT'}
 
 ## Implementation
 
@@ -21,7 +21,7 @@ SetHandleType(curve=None, selection=None, handle_type='AUTO', mode={'LEFT', 'RIG
 ## Init
 
 ``` python
-def __init__(self, curve=None, selection=None, handle_type='AUTO', mode={'LEFT', 'RIGHT'}, node_label=None, node_color=None):
+def __init__(self, curve=None, selection=None, handle_type='AUTO', mode={'RIGHT', 'LEFT'}, node_label=None, node_color=None):
 
     StackedNode.__init__(self, 'GeometryNodeCurveSetHandles', node_label=node_label, node_color=node_color)
 

@@ -550,13 +550,15 @@ class Dynamic:
 # =============================================================================================================================
 # Print MD doc
 
-def print_md_doc(folder="/Users/alain/Documents/blender/scripts/modules/geonodes/docs"):
+def print_md_doc(folder):
     
     root = Path(folder)
     
     for tree_type, dyn_tree in constants.TREES.items():
         
+        print('-'*100)
         print(f"Tree documentation: ", tree_type)
+        print()
         
         tree_class = dyn_tree.dyn_class
         
@@ -585,7 +587,7 @@ def print_md_doc(folder="/Users/alain/Documents/blender/scripts/modules/geonodes
             if bl_idname in constants.NO_DOC_NODES:
                 continue
             
-            if False: # DEBUG
+            if True: # DEBUG
                 print(f"Node class {class_name} ({bl_idname})")
             
             dyn.node_print_doc(target_doc=doc)

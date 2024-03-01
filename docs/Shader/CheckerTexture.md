@@ -1,0 +1,36 @@
+# Node CheckerTexture
+
+- Node name : 'Checker Texture'
+- bl_idname : ShaderNodeTexChecker
+
+
+``` python
+CheckerTexture(vector=None, color1=None, color2=None, scale=None, color_mapping=None, texture_mapping=None, node_label=None, node_color=None)
+```
+##### Arguments
+
+- vector : None
+- color1 : None
+- color2 : None
+- scale : None
+- color_mapping : None
+- texture_mapping : None
+
+## Implementation
+
+No implementation in sockets
+
+## Init
+
+``` python
+def __init__(self, vector=None, color1=None, color2=None, scale=None, color_mapping=None, texture_mapping=None, node_label=None, node_color=None):
+
+    StackedNode.__init__(self, 'ShaderNodeTexChecker', node_label=node_label, node_color=node_color)
+
+    self.color_mapping   = color_mapping
+    self.texture_mapping = texture_mapping
+    self.vector          = vector
+    self.color1          = color1
+    self.color2          = color2
+    self.scale           = scale
+```

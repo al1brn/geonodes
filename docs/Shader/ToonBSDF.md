@@ -1,0 +1,34 @@
+# Node ToonBSDF
+
+- Node name : 'Toon BSDF'
+- bl_idname : ShaderNodeBsdfToon
+
+
+``` python
+ToonBSDF(color=None, size=None, smooth=None, normal=None, component='DIFFUSE', node_label=None, node_color=None)
+```
+##### Arguments
+
+- color : None
+- size : None
+- smooth : None
+- normal : None
+- component : 'DIFFUSE'
+
+## Implementation
+
+No implementation in sockets
+
+## Init
+
+``` python
+def __init__(self, color=None, size=None, smooth=None, normal=None, component='DIFFUSE', node_label=None, node_color=None):
+
+    StackedNode.__init__(self, 'ShaderNodeBsdfToon', node_label=node_label, node_color=node_color)
+
+    self.component       = component
+    self.color           = color
+    self.size            = size
+    self.smooth          = smooth
+    self.normal          = normal
+```
