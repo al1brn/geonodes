@@ -10,7 +10,7 @@ FloatToInteger(float=None, rounding_mode='ROUND', node_label=None, node_color=No
 ##### Arguments
 
 - float : None
-- rounding_mode : ROUND
+- rounding_mode : 'ROUND'
 
 ## Implementation
 

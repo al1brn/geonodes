@@ -1,0 +1,27 @@
+# Node RotationToEuler
+
+- Node name : 'Rotation to Euler'
+- bl_idname : FunctionNodeRotationToEuler
+
+
+``` python
+RotationToEuler(rotation=None, node_label=None, node_color=None)
+```
+##### Arguments
+
+- rotation : None
+
+## Implementation
+
+- [Rot](/docs/GeoNodes/Rot.md) : [rotation_to_euler](/docs/GeoNodes/Rot.md#rotation_to_euler)
+- [Vect](/docs/GeoNodes/Vect.md) : [rotation_to_euler](/docs/GeoNodes/Vect.md#rotation_to_euler)
+
+## Init
+
+``` python
+def __init__(self, rotation=None, node_label=None, node_color=None):
+
+    StackedNode.__init__(self, 'FunctionNodeRotationToEuler', node_label=node_label, node_color=node_color)
+
+    self.rotation        = rotation
+```

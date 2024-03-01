@@ -1,0 +1,20 @@
+# Node IsViewport
+
+- Node name : 'Is Viewport'
+- bl_idname : GeometryNodeIsViewport
+
+
+``` python
+IsViewport(node_label=None, node_color=None)
+```
+## Implementation
+
+- Functions : [is_viewport](/docs/GeoNodes/index.md#is_viewport)
+
+## Init
+
+``` python
+def __init__(self, node_label=None, node_color=None):
+
+    StackedNode.__init__(self, 'GeometryNodeIsViewport', node_label=node_label, node_color=node_color)
+```

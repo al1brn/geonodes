@@ -1,0 +1,32 @@
+# Node CollectionInfo
+
+- Node name : 'Collection Info'
+- bl_idname : GeometryNodeCollectionInfo
+
+
+``` python
+CollectionInfo(collection=None, separate_children=None, reset_children=None, transform_space='ORIGINAL', node_label=None, node_color=None)
+```
+##### Arguments
+
+- collection : None
+- separate_children : None
+- reset_children : None
+- transform_space : 'ORIGINAL'
+
+## Implementation
+
+- [Collection](/docs/GeoNodes/Collection.md) : [collection_info](/docs/GeoNodes/Collection.md#collection_info)
+
+## Init
+
+``` python
+def __init__(self, collection=None, separate_children=None, reset_children=None, transform_space='ORIGINAL', node_label=None, node_color=None):
+
+    StackedNode.__init__(self, 'GeometryNodeCollectionInfo', node_label=node_label, node_color=node_color)
+
+    self.transform_space = transform_space
+    self.collection      = collection
+    self.separate_children = separate_children
+    self.reset_children  = reset_children
+```

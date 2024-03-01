@@ -1,0 +1,32 @@
+# Node SampleNearestSurface
+
+- Node name : 'Sample Nearest Surface'
+- bl_idname : GeometryNodeSampleNearestSurface
+
+
+``` python
+SampleNearestSurface(mesh=None, value=None, sample_position=None, data_type='FLOAT', node_label=None, node_color=None)
+```
+##### Arguments
+
+- mesh : None
+- value : None
+- sample_position : None
+- data_type : 'FLOAT'
+
+## Implementation
+
+- [Geometry](/docs/GeoNodes/Geometry.md) : [sample_nearest_surface](/docs/GeoNodes/Geometry.md#sample_nearest_surface) [sample_nearest_surface_boolean](/docs/GeoNodes/Geometry.md#sample_nearest_surface_boolean) [sample_nearest_surface_color](/docs/GeoNodes/Geometry.md#sample_nearest_surface_color) [sample_nearest_surface_float](/docs/GeoNodes/Geometry.md#sample_nearest_surface_float) [sample_nearest_surface_int](/docs/GeoNodes/Geometry.md#sample_nearest_surface_int) [sample_nearest_surface_quaternion](/docs/GeoNodes/Geometry.md#sample_nearest_surface_quaternion) [sample_nearest_surface_vector](/docs/GeoNodes/Geometry.md#sample_nearest_surface_vector)
+
+## Init
+
+``` python
+def __init__(self, mesh=None, value=None, sample_position=None, data_type='FLOAT', node_label=None, node_color=None):
+
+    StackedNode.__init__(self, 'GeometryNodeSampleNearestSurface', node_label=node_label, node_color=node_color)
+
+    self.data_type       = data_type
+    self.mesh            = mesh
+    self.value           = value
+    self.sample_position = sample_position
+```

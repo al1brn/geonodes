@@ -273,7 +273,7 @@ def ceiling(self, node_label=None, node_color=None):
 
 - min : None
 - max : None
-- clamp_type : MINMAX in ('MINMAX', 'RANGE')
+- clamp_type : 'MINMAX' in ('MINMAX', 'RANGE')
 - node_label : None
 - node_color : None
 
@@ -294,7 +294,7 @@ def clamp(self, min=None, max=None, clamp_type='MINMAX', node_label=None, node_c
 
 ##### Arguments
 
-- color_ramp : <bpy_struct, ColorRamp at 0x12ef302e8>
+- color_ramp : None
 - node_label : None
 - node_color : None
 
@@ -425,7 +425,7 @@ def divide(self, value=None, use_clamp=False, node_label=None, node_color=None):
 
 - b : None
 - epsilon : None
-- mode : ELEMENT in ('ELEMENT', 'LENGTH', 'AVERAGE', 'DOT_PRODUCT', 'DIRECTION')
+- mode : 'ELEMENT' in ('ELEMENT', 'LENGTH', 'AVERAGE', 'DOT_PRODUCT', 'DIRECTION')
 - node_label : None
 - node_color : None
 
@@ -468,7 +468,7 @@ def exp(self, use_clamp=False, node_label=None, node_color=None):
 ##### Arguments
 
 - factor : None
-- mapping : <bpy_struct, CurveMapping at 0x2a7008e48>
+- mapping : None
 - node_label : None
 - node_color : None
 
@@ -490,7 +490,7 @@ def float_curve(self, factor=None, mapping=None, node_label=None, node_color=Non
 
 ##### Arguments
 
-- rounding_mode : ROUND in ('ROUND', 'FLOOR', 'CEILING', 'TRUNCATE')
+- rounding_mode : 'ROUND' in ('ROUND', 'FLOOR', 'CEILING', 'TRUNCATE')
 - node_label : None
 - node_color : None
 
@@ -655,7 +655,7 @@ def fract(self, use_clamp=False, node_label=None, node_color=None):
 ##### Arguments
 
 - b : None
-- mode : ELEMENT in ('ELEMENT', 'LENGTH', 'AVERAGE', 'DOT_PRODUCT', 'DIRECTION')
+- mode : 'ELEMENT' in ('ELEMENT', 'LENGTH', 'AVERAGE', 'DOT_PRODUCT', 'DIRECTION')
 - node_label : None
 - node_color : None
 
@@ -677,7 +677,7 @@ def greater_equal(self, b=None, mode='ELEMENT', node_label=None, node_color=None
 ##### Arguments
 
 - b : None
-- mode : ELEMENT in ('ELEMENT', 'LENGTH', 'AVERAGE', 'DOT_PRODUCT', 'DIRECTION')
+- mode : 'ELEMENT' in ('ELEMENT', 'LENGTH', 'AVERAGE', 'DOT_PRODUCT', 'DIRECTION')
 - node_label : None
 - node_color : None
 
@@ -720,7 +720,7 @@ def inverse_sqrt(self, use_clamp=False, node_label=None, node_color=None):
 ##### Arguments
 
 - b : None
-- mode : ELEMENT in ('ELEMENT', 'LENGTH', 'AVERAGE', 'DOT_PRODUCT', 'DIRECTION')
+- mode : 'ELEMENT' in ('ELEMENT', 'LENGTH', 'AVERAGE', 'DOT_PRODUCT', 'DIRECTION')
 - node_label : None
 - node_color : None
 
@@ -742,7 +742,7 @@ def less_equal(self, b=None, mode='ELEMENT', node_label=None, node_color=None):
 ##### Arguments
 
 - b : None
-- mode : ELEMENT in ('ELEMENT', 'LENGTH', 'AVERAGE', 'DOT_PRODUCT', 'DIRECTION')
+- mode : 'ELEMENT' in ('ELEMENT', 'LENGTH', 'AVERAGE', 'DOT_PRODUCT', 'DIRECTION')
 - node_label : None
 - node_color : None
 
@@ -792,8 +792,8 @@ def log(self, value=None, use_clamp=False, node_label=None, node_color=None):
 - vector : None
 - steps : None
 - clamp : True
-- data_type : FLOAT in ('FLOAT', 'FLOAT_VECTOR')
-- interpolation_type : LINEAR in ('LINEAR', 'STEPPED', 'SMOOTHSTEP', 'SMOOTHERSTEP')
+- data_type : 'FLOAT' in ('FLOAT', 'FLOAT_VECTOR')
+- interpolation_type : 'LINEAR' in ('LINEAR', 'STEPPED', 'SMOOTHSTEP', 'SMOOTHERSTEP')
 - node_label : None
 - node_color : None
 
@@ -1038,7 +1038,7 @@ def multiply_add(self, value=None, value_1=None, use_clamp=False, node_label=Non
 
 - b : None
 - epsilon : None
-- mode : ELEMENT in ('ELEMENT', 'LENGTH', 'AVERAGE', 'DOT_PRODUCT', 'DIRECTION')
+- mode : 'ELEMENT' in ('ELEMENT', 'LENGTH', 'AVERAGE', 'DOT_PRODUCT', 'DIRECTION')
 - node_label : None
 - node_color : None
 

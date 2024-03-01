@@ -97,8 +97,8 @@ def add(self, vector=None, node_label=None, node_color=None):
 
 - factor : None
 - vector : None
-- axis : X in ('X', 'Y', 'Z')
-- pivot_axis : AUTO in ('AUTO', 'X', 'Y', 'Z')
+- axis : 'X' in ('X', 'Y', 'Z')
+- pivot_axis : 'AUTO' in ('AUTO', 'X', 'Y', 'Z')
 - node_label : None
 - node_color : None
 
@@ -562,7 +562,7 @@ def refract(self, vector=None, scale=None, node_label=None, node_color=None):
 ##### Arguments
 
 - rotate_by : None
-- space : OBJECT in ('OBJECT', 'LOCAL')
+- space : 'OBJECT' in ('OBJECT', 'LOCAL')
 - node_label : None
 - node_color : None
 
@@ -585,7 +585,7 @@ def rotate_euler(self, rotate_by=None, space='OBJECT', node_label=None, node_col
 ##### Arguments
 
 - rotate_by : None
-- space : OBJECT in ('OBJECT', 'LOCAL')
+- space : 'OBJECT' in ('OBJECT', 'LOCAL')
 - node_label : None
 - node_color : None
 
@@ -608,7 +608,7 @@ def rotate_euler_axis_angle(self, rotate_by=None, space='OBJECT', node_label=Non
 ##### Arguments
 
 - rotate_by : None
-- space : OBJECT in ('OBJECT', 'LOCAL')
+- space : 'OBJECT' in ('OBJECT', 'LOCAL')
 - node_label : None
 - node_color : None
 
@@ -816,7 +816,7 @@ def tan(self, node_label=None, node_color=None):
 ##### Arguments
 
 - fac : None
-- mapping : <bpy_struct, CurveMapping at 0x12ef328c8>
+- mapping : None
 - node_label : None
 - node_color : None
 

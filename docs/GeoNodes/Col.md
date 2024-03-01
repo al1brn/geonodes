@@ -67,7 +67,7 @@ def blur_attribute(self, iterations=None, weight=None, node_label=None, node_col
 ##### Arguments
 
 - b : None
-- mode : ELEMENT in ('ELEMENT', 'LENGTH', 'AVERAGE', 'DOT_PRODUCT', 'DIRECTION')
+- mode : 'ELEMENT' in ('ELEMENT', 'LENGTH', 'AVERAGE', 'DOT_PRODUCT', 'DIRECTION')
 - node_label : None
 - node_color : None
 
@@ -89,7 +89,7 @@ def brighter(self, b=None, mode='ELEMENT', node_label=None, node_color=None):
 ##### Arguments
 
 - b : None
-- mode : ELEMENT in ('ELEMENT', 'LENGTH', 'AVERAGE', 'DOT_PRODUCT', 'DIRECTION')
+- mode : 'ELEMENT' in ('ELEMENT', 'LENGTH', 'AVERAGE', 'DOT_PRODUCT', 'DIRECTION')
 - node_label : None
 - node_color : None
 
@@ -112,7 +112,7 @@ def darker(self, b=None, mode='ELEMENT', node_label=None, node_color=None):
 
 - b : None
 - epsilon : None
-- mode : ELEMENT in ('ELEMENT', 'LENGTH', 'AVERAGE', 'DOT_PRODUCT', 'DIRECTION')
+- mode : 'ELEMENT' in ('ELEMENT', 'LENGTH', 'AVERAGE', 'DOT_PRODUCT', 'DIRECTION')
 - node_label : None
 - node_color : None
 
@@ -135,7 +135,7 @@ def equal(self, b=None, epsilon=None, mode='ELEMENT', node_label=None, node_colo
 
 - factor : None
 - b : None
-- blend_type : MIX in ('MIX', 'DARKEN', 'MULTIPLY', 'BURN', 'LIGHTEN', 'SCREEN', 'DODGE', 'ADD', 'OVERLAY', 'SOFT_LIGHT', 'LINEAR_LIGHT', 'DIFFERENCE', 'EXCLUSION', 'SUBTRACT', 'DIVIDE', 'HUE', 'SATURATION', 'COLOR', 'VALUE')
+- blend_type : 'MIX' in ('MIX', 'DARKEN', 'MULTIPLY', 'BURN', 'LIGHTEN', 'SCREEN', 'DODGE', 'ADD', 'OVERLAY', 'SOFT_LIGHT', 'LINEAR_LIGHT', 'DIFFERENCE', 'EXCLUSION', 'SUBTRACT', 'DIVIDE', 'HUE', 'SATURATION', 'COLOR', 'VALUE')
 - clamp_factor : True
 - clamp_result : False
 - node_label : None
@@ -636,7 +636,7 @@ def mix_value(self, factor=None, b=None, clamp_factor=True, clamp_result=False, 
 
 - b : None
 - epsilon : None
-- mode : ELEMENT in ('ELEMENT', 'LENGTH', 'AVERAGE', 'DOT_PRODUCT', 'DIRECTION')
+- mode : 'ELEMENT' in ('ELEMENT', 'LENGTH', 'AVERAGE', 'DOT_PRODUCT', 'DIRECTION')
 - node_label : None
 - node_color : None
 
@@ -658,7 +658,7 @@ def not_equal(self, b=None, epsilon=None, mode='ELEMENT', node_label=None, node_
 ##### Arguments
 
 - fac : None
-- mapping : <bpy_struct, CurveMapping at 0x2a7013998>
+- mapping : None
 - node_label : None
 - node_color : None
 
@@ -680,7 +680,7 @@ def rgb_curves(self, fac=None, mapping=None, node_label=None, node_color=None):
 
 ##### Arguments
 
-- mode : RGB in ('RGB', 'HSV', 'HSL')
+- mode : 'RGB' in ('RGB', 'HSV', 'HSL')
 - node_label : None
 - node_color : None
 

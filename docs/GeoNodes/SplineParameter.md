@@ -1,0 +1,20 @@
+# Node SplineParameter
+
+- Node name : 'Spline Parameter'
+- bl_idname : GeometryNodeSplineParameter
+
+
+``` python
+SplineParameter(node_label=None, node_color=None)
+```
+## Implementation
+
+- [Geometry](/docs/GeoNodes/Geometry.md) : [spline_parameter](/docs/GeoNodes/Geometry.md#spline_parameter)
+
+## Init
+
+``` python
+def __init__(self, node_label=None, node_color=None):
+
+    StackedNode.__init__(self, 'GeometryNodeSplineParameter', node_label=node_label, node_color=node_color)
+```

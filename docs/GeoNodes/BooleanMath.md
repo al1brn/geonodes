@@ -11,12 +11,12 @@ BooleanMath(boolean=None, boolean_1=None, operation='AND', node_label=None, node
 
 - boolean : None
 - boolean_1 : None
-- operation : AND
+- operation : 'AND'
 
 ## Implementation
 
 - [Bool](/docs/GeoNodes/Bool.md) : [band](/docs/GeoNodes/Bool.md#band) [bnot](/docs/GeoNodes/Bool.md#bnot) [bor](/docs/GeoNodes/Bool.md#bor) [imply](/docs/GeoNodes/Bool.md#imply) [nand](/docs/GeoNodes/Bool.md#nand) [nimply](/docs/GeoNodes/Bool.md#nimply) [nor](/docs/GeoNodes/Bool.md#nor) [xnor](/docs/GeoNodes/Bool.md#xnor) [xor](/docs/GeoNodes/Bool.md#xor)
-- Functions : [band](/docs/GeoNodes/Bool.md#band) [bnot](/docs/GeoNodes/Bool.md#bnot) [bor](/docs/GeoNodes/Bool.md#bor) [imply](/docs/GeoNodes/Bool.md#imply) [nand](/docs/GeoNodes/Bool.md#nand) [nimply](/docs/GeoNodes/Bool.md#nimply) [nor](/docs/GeoNodes/Bool.md#nor) [xnor](/docs/GeoNodes/Bool.md#xnor) [xor](/docs/GeoNodes/Bool.md#xor)
+- Functions : [band](/docs/GeoNodes/index.md#band) [bnot](/docs/GeoNodes/index.md#bnot) [bor](/docs/GeoNodes/index.md#bor) [imply](/docs/GeoNodes/index.md#imply) [nand](/docs/GeoNodes/index.md#nand) [nimply](/docs/GeoNodes/index.md#nimply) [nor](/docs/GeoNodes/index.md#nor) [xnor](/docs/GeoNodes/index.md#xnor) [xor](/docs/GeoNodes/index.md#xor)
 
 ## Init
 

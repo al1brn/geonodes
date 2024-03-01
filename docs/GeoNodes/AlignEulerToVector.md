@@ -12,8 +12,8 @@ AlignEulerToVector(rotation=None, factor=None, vector=None, axis='X', pivot_axis
 - rotation : None
 - factor : None
 - vector : None
-- axis : X
-- pivot_axis : AUTO
+- axis : 'X'
+- pivot_axis : 'AUTO'
 
 ## Implementation
 

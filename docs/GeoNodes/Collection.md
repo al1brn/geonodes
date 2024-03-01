@@ -20,7 +20,7 @@
 
 - separate_children : None
 - reset_children : None
-- transform_space : ORIGINAL in ('ORIGINAL', 'RELATIVE')
+- transform_space : 'ORIGINAL' in ('ORIGINAL', 'RELATIVE')
 - node_label : None
 - node_color : None
 

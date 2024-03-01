@@ -249,24 +249,6 @@ class Dynamic:
                 
         else:
             raise AttributeError(f"Dynamic.add_member error: unknown member_type: '{member_type}' for member '{name}' in class '{self.class_name}'")
-                
-    # ====================================================================================================
-    # Build the class
-        
-    def build_class_OLD(self):
-        """ Set methods and properties to the class.
-        
-        Done afterward in order to collect fget and fset for properties
-        """
-        
-        if True and self.class_name == 'SeparateXYZ':
-            print("DYNAMIC build_class", self.class_name, list(self.methods.keys()), list(self.properties.keys()))
-        
-        for name, method in self.methods.items():
-            setattr(self.dyn_class, name, method['f'])
-            
-        for name, prop in self.properties.items():
-            setattr(self.dyn_class, name, property(prop['fget'], prop['fset']))
             
     # ====================================================================================================
     # Inline documentation
@@ -278,6 +260,7 @@ class Dynamic:
     def print_args(doc, args):
         
         arg_docs = args.docs
+        
         if len(arg_docs) == 0:
             return
         
@@ -417,25 +400,22 @@ class Dynamic:
         else:
             doc = target_doc
             
-        # DEBUG            
-        #doc = Doc.MarkDown()
-        
         tree_type  = self.node_info.tree_type
         class_name = self.node_info.class_name
         
         doc.header(f"Node {class_name}", 0)
-        
+
         with doc.bullets() as bullets:
             bullets.add("Node name", f"'{self.node_info.name}'")
             bullets.add("bl_idname", self.node_info.bl_idname)
-        
+
         doc.descr(self.descr)
-        
+
         func = self.methods.get('__init__')
+
         if func is not None:
             header = func['code'].split("\n")[0].replace("def __init__(self, ", class_name + "(").strip()[:-1]
             doc.source(header)
-            
             self.print_args(doc, func['args'])
             
         doc.header("Implementation", 1)
@@ -455,9 +435,8 @@ class Dynamic:
                         bullets.add(doc.page_link(socket), " ".join(links))
                         
                 if globs is not None:
-                        bullets.add("Functions", " ".join(links))
-                    
-                            
+                    bullets.add("Functions", " ".join(globs))
+
         doc.header("Init", 1)
         doc.source(func['code'])
         
@@ -593,34 +572,26 @@ def print_md_doc(folder="/Users/alain/Documents/blender/scripts/modules/geonodes
         # ----- Socket classes
         
         for class_name, dyn in constants.SOCKETS[tree_type].items():
-            doc = Doc.MarkDown(link_root=link_root)
             dyn.socket_print_doc(None, target_doc=doc)
             doc.done(file_name=file_root / f"{class_name}.md")
         
         # ----- Node classes
         
         for bl_idname, dyn in constants.NODES[tree_type].items():
-            print("dynamic", bl_idname, dyn)
+
+            bl_idname  = dyn.node_info.bl_idname
+            class_name = dyn.dyn_class.__name__
+            if bl_idname in constants.NO_DOC_NODES:
+                continue
             
-            doc = Doc.MarkDown(link_root=link_root)
+            if False: # DEBUG
+                print(f"Node class {class_name} ({bl_idname})")
+            
             dyn.node_print_doc(target_doc=doc)
-            doc.done(file_name=file_root / f"{dyn.dyn_class.__name__}.md")
+            doc.done(file_name=file_root / f"{class_name}.md")
         
         
-    print("Document done")
-        
-        
-"""
-    elif dyn.dyn_type == Dynamic.TREE:
-        dyn.tree_print_doc(member, target_doc=None)
-        
-    elif dyn.dyn_type == Dynamic.NODE:
-        dyn.node_print_doc(target_doc=None)
-        
-    elif dyn.dyn_type == Dynamic.SOCKET:
-        dyn.socket_print_doc(member, target_doc=None)
-            
-"""                
+    print("\nDocumentation built")
         
         
         

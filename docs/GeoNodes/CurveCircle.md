@@ -1,0 +1,36 @@
+# Node CurveCircle
+
+- Node name : 'Curve Circle'
+- bl_idname : GeometryNodeCurvePrimitiveCircle
+
+
+``` python
+CurveCircle(resolution=None, radius=None, point_1=None, point_2=None, point_3=None, mode='RADIUS', node_label=None, node_color=None)
+```
+##### Arguments
+
+- resolution : None
+- radius : None
+- point_1 : None
+- point_2 : None
+- point_3 : None
+- mode : 'RADIUS'
+
+## Implementation
+
+No implementation in sockets
+
+## Init
+
+``` python
+def __init__(self, resolution=None, radius=None, point_1=None, point_2=None, point_3=None, mode='RADIUS', node_label=None, node_color=None):
+
+    StackedNode.__init__(self, 'GeometryNodeCurvePrimitiveCircle', node_label=node_label, node_color=node_color)
+
+    self.mode            = mode
+    self.resolution      = resolution
+    self.radius          = radius
+    self.point_1         = point_1
+    self.point_2         = point_2
+    self.point_3         = point_3
+```

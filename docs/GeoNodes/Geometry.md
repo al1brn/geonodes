@@ -240,7 +240,7 @@
 
 ##### Arguments
 
-- node_color
+- node_color : 'ARG_NO_VALUE'
 
 #### Source code
 
@@ -263,7 +263,7 @@ def curve_length(self):
 
 ##### Arguments
 
-- node_color
+- node_color : 'ARG_NO_VALUE'
 
 #### Source code
 
@@ -286,7 +286,7 @@ def curve_tangent(self):
 
 ##### Arguments
 
-- node_color
+- node_color : 'ARG_NO_VALUE'
 
 #### Source code
 
@@ -333,7 +333,7 @@ def cyclic(self, value):
 
 ##### Arguments
 
-- node_color
+- node_color : 'ARG_NO_VALUE'
 
 #### Source code
 
@@ -356,7 +356,7 @@ def edge_neighbors(self):
 
 ##### Arguments
 
-- node_color
+- node_color : 'ARG_NO_VALUE'
 
 #### Source code
 
@@ -379,7 +379,7 @@ def edge_smooth(self):
 
 ##### Arguments
 
-- node_color
+- node_color : 'ARG_NO_VALUE'
 
 #### Source code
 
@@ -402,7 +402,7 @@ def face_area(self):
 
 ##### Arguments
 
-- node_color
+- node_color : 'ARG_NO_VALUE'
 
 #### Source code
 
@@ -425,7 +425,7 @@ def face_smooth(self):
 
 ##### Arguments
 
-- node_color
+- node_color : 'ARG_NO_VALUE'
 
 #### Source code
 
@@ -468,7 +468,7 @@ def id(self, value):
 
 ##### Arguments
 
-- node_color
+- node_color : 'ARG_NO_VALUE'
 
 #### Source code
 
@@ -491,7 +491,7 @@ def index(self):
 
 ##### Arguments
 
-- node_color
+- node_color : 'ARG_NO_VALUE'
 
 #### Source code
 
@@ -514,7 +514,7 @@ def instance_rotation(self):
 
 ##### Arguments
 
-- node_color
+- node_color : 'ARG_NO_VALUE'
 
 #### Source code
 
@@ -561,7 +561,7 @@ def material(self, value):
 
 ##### Arguments
 
-- node_color
+- node_color : 'ARG_NO_VALUE'
 
 #### Source code
 
@@ -604,7 +604,7 @@ def material_index(self, value):
 
 ##### Arguments
 
-- node_color
+- node_color : 'ARG_NO_VALUE'
 
 #### Source code
 
@@ -695,7 +695,7 @@ def point_radius(self, value):
 
 ##### Arguments
 
-- node_color
+- node_color : 'ARG_NO_VALUE'
 
 #### Source code
 
@@ -739,7 +739,7 @@ def position(self, value):
 
 ##### Arguments
 
-- node_color
+- node_color : 'ARG_NO_VALUE'
 
 #### Source code
 
@@ -784,7 +784,7 @@ def radius(self, value):
 
 - shade_smooth : None
 - selection : None
-- domain : FACE in ('EDGE', 'FACE')
+- domain : 'FACE' in ('EDGE', 'FACE')
 
 #### Source code
 
@@ -807,7 +807,7 @@ def shade_smooth(self, value):
 
 ##### Arguments
 
-- node_color
+- node_color : 'ARG_NO_VALUE'
 
 #### Source code
 
@@ -830,7 +830,7 @@ def spline_cyclic(self):
 
 ##### Arguments
 
-- node_color
+- node_color : 'ARG_NO_VALUE'
 
 #### Source code
 
@@ -920,8 +920,8 @@ def tilt(self, value):
 
 - attribute : None
 - selection : None
-- data_type : FLOAT in ('FLOAT', 'FLOAT_VECTOR')
-- domain : POINT in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
+- data_type : 'FLOAT' in ('FLOAT', 'FLOAT_VECTOR')
+- domain : 'POINT' in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
 - node_label : None
 - node_color : None
 
@@ -944,7 +944,7 @@ def attribute_statistic(self, attribute=None, selection=None, data_type='FLOAT',
 
 - attribute : None
 - selection : None
-- domain : POINT in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
+- domain : 'POINT' in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
 - node_label : None
 - node_color : None
 
@@ -967,7 +967,7 @@ def attribute_statistic_float(self, attribute=None, selection=None, domain='POIN
 
 - attribute : None
 - selection : None
-- domain : POINT in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
+- domain : 'POINT' in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
 - node_label : None
 - node_color : None
 
@@ -991,7 +991,7 @@ def attribute_statistic_vector(self, attribute=None, selection=None, domain='POI
 - value : None
 - iterations : None
 - weight : None
-- data_type : FLOAT in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR')
+- data_type : 'FLOAT' in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR')
 - node_label : None
 - node_color : None
 
@@ -1033,8 +1033,8 @@ def bounding_box(self, node_label=None, node_color=None):
 ##### Arguments
 
 - value : None
-- data_type : FLOAT in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN', 'QUATERNION')
-- domain : POINT in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
+- data_type : 'FLOAT' in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN', 'QUATERNION')
+- domain : 'POINT' in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
 - node_label : None
 - node_color : None
 
@@ -1057,7 +1057,7 @@ def capture_attribute(self, value=None, data_type='FLOAT', domain='POINT', node_
 ##### Arguments
 
 - value : None
-- domain : POINT in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
+- domain : 'POINT' in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
 - node_label : None
 - node_color : None
 
@@ -1080,7 +1080,7 @@ def capture_boolean(self, value=None, domain='POINT', node_label=None, node_colo
 ##### Arguments
 
 - value : None
-- domain : POINT in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
+- domain : 'POINT' in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
 - node_label : None
 - node_color : None
 
@@ -1103,7 +1103,7 @@ def capture_color(self, value=None, domain='POINT', node_label=None, node_color=
 ##### Arguments
 
 - value : None
-- domain : POINT in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
+- domain : 'POINT' in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
 - node_label : None
 - node_color : None
 
@@ -1126,7 +1126,7 @@ def capture_float(self, value=None, domain='POINT', node_label=None, node_color=
 ##### Arguments
 
 - value : None
-- domain : POINT in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
+- domain : 'POINT' in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
 - node_label : None
 - node_color : None
 
@@ -1149,7 +1149,7 @@ def capture_int(self, value=None, domain='POINT', node_label=None, node_color=No
 ##### Arguments
 
 - value : None
-- domain : POINT in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
+- domain : 'POINT' in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
 - node_label : None
 - node_color : None
 
@@ -1172,7 +1172,7 @@ def capture_quaternion(self, value=None, domain='POINT', node_label=None, node_c
 ##### Arguments
 
 - value : None
-- domain : POINT in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
+- domain : 'POINT' in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
 - node_label : None
 - node_color : None
 
@@ -1349,7 +1349,7 @@ def curve_to_mesh(self, profile_curve=None, fill_caps=None, node_label=None, nod
 
 - count : None
 - length : None
-- mode : COUNT in ('EVALUATED', 'COUNT', 'LENGTH')
+- mode : 'COUNT' in ('EVALUATED', 'COUNT', 'LENGTH')
 - node_label : None
 - node_color : None
 
@@ -1392,8 +1392,8 @@ def deform_curves_on_surface(self, node_label=None, node_color=None):
 ##### Arguments
 
 - selection : None
-- domain : POINT in ('POINT', 'EDGE', 'FACE', 'CURVE', 'INSTANCE')
-- mode : ALL in ('ALL', 'EDGE_FACE', 'ONLY_FACE')
+- domain : 'POINT' in ('POINT', 'EDGE', 'FACE', 'CURVE', 'INSTANCE')
+- mode : 'ALL' in ('ALL', 'EDGE_FACE', 'ONLY_FACE')
 - node_label : None
 - node_color : None
 
@@ -1419,7 +1419,7 @@ def delete_geometry(self, selection=None, domain='POINT', mode='ALL', node_label
 - seed : None
 - spacing : None
 - threshold : None
-- mode : DENSITY_RANDOM in ('DENSITY_RANDOM', 'DENSITY_GRID')
+- mode : 'DENSITY_RANDOM' in ('DENSITY_RANDOM', 'DENSITY_GRID')
 - node_label : None
 - node_color : None
 
@@ -1446,7 +1446,7 @@ def distribute_points_in_volume(self, density=None, seed=None, spacing=None, thr
 - density_max : None
 - density_factor : None
 - selection : None
-- distribute_method : RANDOM in ('RANDOM', 'POISSON')
+- distribute_method : 'RANDOM' in ('RANDOM', 'POISSON')
 - use_legacy_normal : False
 - node_label : None
 - node_color : None
@@ -1468,7 +1468,7 @@ def distribute_points_on_faces(self, density=None, seed=None, distance_min=None,
 
 ##### Arguments
 
-- component : MESH in ('MESH', 'POINTCLOUD', 'CURVE', 'INSTANCES')
+- component : 'MESH' in ('MESH', 'POINTCLOUD', 'CURVE', 'INSTANCES')
 - node_label : None
 - node_color : None
 
@@ -1512,7 +1512,7 @@ def dual_mesh(self, keep_boundaries=None, node_label=None, node_color=None):
 
 - amount : None
 - selection : None
-- domain : POINT in ('POINT', 'EDGE', 'FACE', 'SPLINE', 'INSTANCE')
+- domain : 'POINT' in ('POINT', 'EDGE', 'FACE', 'SPLINE', 'INSTANCE')
 - node_label : None
 - node_color : None
 
@@ -1706,8 +1706,8 @@ def endpoint_selection(self, start_size=None, end_size=None, node_label=None, no
 
 - index : None
 - value : None
-- data_type : FLOAT in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN', 'QUATERNION')
-- domain : POINT in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
+- data_type : 'FLOAT' in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN', 'QUATERNION')
+- domain : 'POINT' in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
 - node_label : None
 - node_color : None
 
@@ -1730,7 +1730,7 @@ def evaluate_at_index(self, index=None, value=None, data_type='FLOAT', domain='P
 
 - index : None
 - value : None
-- domain : POINT in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
+- domain : 'POINT' in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
 - node_label : None
 - node_color : None
 
@@ -1753,7 +1753,7 @@ def evaluate_at_index_boolean(self, index=None, value=None, domain='POINT', node
 
 - index : None
 - value : None
-- domain : POINT in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
+- domain : 'POINT' in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
 - node_label : None
 - node_color : None
 
@@ -1776,7 +1776,7 @@ def evaluate_at_index_color(self, index=None, value=None, domain='POINT', node_l
 
 - index : None
 - value : None
-- domain : POINT in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
+- domain : 'POINT' in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
 - node_label : None
 - node_color : None
 
@@ -1799,7 +1799,7 @@ def evaluate_at_index_float(self, index=None, value=None, domain='POINT', node_l
 
 - index : None
 - value : None
-- domain : POINT in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
+- domain : 'POINT' in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
 - node_label : None
 - node_color : None
 
@@ -1822,7 +1822,7 @@ def evaluate_at_index_int(self, index=None, value=None, domain='POINT', node_lab
 
 - index : None
 - value : None
-- domain : POINT in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
+- domain : 'POINT' in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
 - node_label : None
 - node_color : None
 
@@ -1845,7 +1845,7 @@ def evaluate_at_index_quaternion(self, index=None, value=None, domain='POINT', n
 
 - index : None
 - value : None
-- domain : POINT in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
+- domain : 'POINT' in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
 - node_label : None
 - node_color : None
 
@@ -1867,8 +1867,8 @@ def evaluate_at_index_vector(self, index=None, value=None, domain='POINT', node_
 ##### Arguments
 
 - value : None
-- data_type : FLOAT in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN', 'QUATERNION')
-- domain : POINT in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
+- data_type : 'FLOAT' in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN', 'QUATERNION')
+- domain : 'POINT' in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
 - node_label : None
 - node_color : None
 
@@ -1890,7 +1890,7 @@ def evaluate_on_domain(self, value=None, data_type='FLOAT', domain='POINT', node
 ##### Arguments
 
 - value : None
-- domain : POINT in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
+- domain : 'POINT' in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
 - node_label : None
 - node_color : None
 
@@ -1912,7 +1912,7 @@ def evaluate_on_domain_boolean(self, value=None, domain='POINT', node_label=None
 ##### Arguments
 
 - value : None
-- domain : POINT in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
+- domain : 'POINT' in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
 - node_label : None
 - node_color : None
 
@@ -1934,7 +1934,7 @@ def evaluate_on_domain_color(self, value=None, domain='POINT', node_label=None, 
 ##### Arguments
 
 - value : None
-- domain : POINT in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
+- domain : 'POINT' in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
 - node_label : None
 - node_color : None
 
@@ -1956,7 +1956,7 @@ def evaluate_on_domain_float(self, value=None, domain='POINT', node_label=None, 
 ##### Arguments
 
 - value : None
-- domain : POINT in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
+- domain : 'POINT' in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
 - node_label : None
 - node_color : None
 
@@ -1978,7 +1978,7 @@ def evaluate_on_domain_int(self, value=None, domain='POINT', node_label=None, no
 ##### Arguments
 
 - value : None
-- domain : POINT in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
+- domain : 'POINT' in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
 - node_label : None
 - node_color : None
 
@@ -2000,7 +2000,7 @@ def evaluate_on_domain_quaternion(self, value=None, domain='POINT', node_label=N
 ##### Arguments
 
 - value : None
-- domain : POINT in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
+- domain : 'POINT' in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
 - node_label : None
 - node_color : None
 
@@ -2025,7 +2025,7 @@ def evaluate_on_domain_vector(self, value=None, domain='POINT', node_label=None,
 - offset_scale : None
 - individual : None
 - selection : None
-- mode : FACES in ('VERTICES', 'EDGES', 'FACES')
+- mode : 'FACES' in ('VERTICES', 'EDGES', 'FACES')
 - node_label : None
 - node_color : None
 
@@ -2109,7 +2109,7 @@ def face_of_corner(self, corner_index=None, node_label=None, node_color=None):
 
 ##### Arguments
 
-- mode : TRIANGLES in ('TRIANGLES', 'NGONS')
+- mode : 'TRIANGLES' in ('TRIANGLES', 'NGONS')
 - node_label : None
 - node_color : None
 
@@ -2133,7 +2133,7 @@ def fill_curve(self, mode='TRIANGLES', node_label=None, node_color=None):
 - radius : None
 - limit_radius : None
 - count : None
-- mode : BEZIER in ('BEZIER', 'POLY')
+- mode : 'BEZIER' in ('BEZIER', 'POLY')
 - node_label : None
 - node_color : None
 
@@ -2225,7 +2225,7 @@ def flip_faces(self, selection=None, node_label=None, node_color=None):
 ##### Arguments
 
 - source_position : None
-- target_element : FACES in ('POINTS', 'EDGES', 'FACES')
+- target_element : 'FACES' in ('POINTS', 'EDGES', 'FACES')
 - node_label : None
 - node_color : None
 
@@ -2246,7 +2246,7 @@ def geometry_proximity(self, source_position=None, target_element='FACES', node_
 
 ##### Arguments
 
-- *args
+- *args : 'ARG_NO_VALUE'
 - node_label : None
 - node_color : None
 
@@ -2267,15 +2267,15 @@ def geometry_to_instance(self, *args, node_label=None, node_color=None):
 
 ##### Arguments
 
-- handle_type : AUTO in ('FREE', 'AUTO', 'VECTOR', 'ALIGN')
-- mode : {'RIGHT', 'LEFT'}
+- handle_type : 'AUTO' in ('FREE', 'AUTO', 'VECTOR', 'ALIGN')
+- mode : {'LEFT', 'RIGHT'}
 - node_label : None
 - node_color : None
 
 #### Source code
 
 ``` python
-def handle_type_selection(self, handle_type='AUTO', mode={'RIGHT', 'LEFT'}, node_label=None, node_color=None):
+def handle_type_selection(self, handle_type='AUTO', mode={'LEFT', 'RIGHT'}, node_label=None, node_color=None):
     node = self.tree.HandleTypeSelection(handle_type=handle_type, mode=mode, node_label=node_label, node_color=node_color)
     return node.selection
 ```
@@ -2407,7 +2407,7 @@ def is_face_planar(self, threshold=None, node_label=None, node_color=None):
 
 ##### Arguments
 
-- *args
+- *args : 'ARG_NO_VALUE'
 - node_label : None
 - node_color : None
 
@@ -2429,7 +2429,7 @@ def join_geometry(self, *args, node_label=None, node_color=None):
 
 ##### Arguments
 
-- handle_type : AUTO in ('FREE', 'AUTO', 'VECTOR', 'ALIGN')
+- handle_type : 'AUTO' in ('FREE', 'AUTO', 'VECTOR', 'ALIGN')
 - node_label : None
 - node_color : None
 
@@ -2452,7 +2452,7 @@ def left_handle_type_selection(self, handle_type='AUTO', node_label=None, node_c
 
 - distance : None
 - selection : None
-- mode : ALL in ('ALL', 'CONNECTED')
+- mode : 'ALL' in ('ALL', 'CONNECTED')
 - node_label : None
 - node_color : None
 
@@ -2474,7 +2474,7 @@ def merge_by_distance(self, distance=None, selection=None, mode='ALL', node_labe
 
 ##### Arguments
 
-- *args
+- *args : 'ARG_NO_VALUE'
 - mesh_2 : None
 - self_intersection : None
 - hole_tolerant : None
@@ -2498,7 +2498,7 @@ def mesh_difference(self, *args, mesh_2=None, self_intersection=None, hole_toler
 
 ##### Arguments
 
-- *args
+- *args : 'ARG_NO_VALUE'
 - self_intersection : None
 - hole_tolerant : None
 - node_label : None
@@ -2565,7 +2565,7 @@ def mesh_to_curve(self, selection=None, node_label=None, node_color=None):
 - position : None
 - radius : None
 - selection : None
-- mode : VERTICES in ('VERTICES', 'EDGES', 'FACES', 'CORNERS')
+- mode : 'VERTICES' in ('VERTICES', 'EDGES', 'FACES', 'CORNERS')
 - node_label : None
 - node_color : None
 
@@ -2590,7 +2590,7 @@ def mesh_to_points(self, position=None, radius=None, selection=None, mode='VERTI
 - voxel_amount : None
 - interior_band_width : None
 - voxel_size : None
-- resolution_mode : VOXEL_AMOUNT in ('VOXEL_AMOUNT', 'VOXEL_SIZE')
+- resolution_mode : 'VOXEL_AMOUNT' in ('VOXEL_AMOUNT', 'VOXEL_SIZE')
 - node_label : None
 - node_color : None
 
@@ -2611,7 +2611,7 @@ def mesh_to_volume(self, density=None, voxel_amount=None, interior_band_width=No
 
 ##### Arguments
 
-- *args
+- *args : 'ARG_NO_VALUE'
 - self_intersection : None
 - hole_tolerant : None
 - node_label : None
@@ -2635,7 +2635,7 @@ def mesh_union(self, *args, self_intersection=None, hole_tolerant=None, node_lab
 ##### Arguments
 
 - name : None
-- data_type : FLOAT in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN', 'QUATERNION')
+- data_type : 'FLOAT' in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN', 'QUATERNION')
 - node_label : None
 - node_color : None
 
@@ -2896,7 +2896,7 @@ def points_to_vertices(self, selection=None, node_label=None, node_color=None):
 - voxel_amount : None
 - radius : None
 - voxel_size : None
-- resolution_mode : VOXEL_AMOUNT in ('VOXEL_AMOUNT', 'VOXEL_SIZE')
+- resolution_mode : 'VOXEL_AMOUNT' in ('VOXEL_AMOUNT', 'VOXEL_SIZE')
 - node_label : None
 - node_color : None
 
@@ -2921,8 +2921,8 @@ def points_to_volume(self, density=None, voxel_amount=None, radius=None, voxel_s
 - source_position : None
 - ray_direction : None
 - ray_length : None
-- data_type : FLOAT in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN', 'QUATERNION')
-- mapping : INTERPOLATED in ('INTERPOLATED', 'NEAREST')
+- data_type : 'FLOAT' in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN', 'QUATERNION')
+- mapping : 'INTERPOLATED' in ('INTERPOLATED', 'NEAREST')
 - node_label : None
 - node_color : None
 
@@ -2947,7 +2947,7 @@ def raycast(self, attribute=None, source_position=None, ray_direction=None, ray_
 - source_position : None
 - ray_direction : None
 - ray_length : None
-- mapping : INTERPOLATED in ('INTERPOLATED', 'NEAREST')
+- mapping : 'INTERPOLATED' in ('INTERPOLATED', 'NEAREST')
 - node_label : None
 - node_color : None
 
@@ -2972,7 +2972,7 @@ def raycast_boolean(self, attribute=None, source_position=None, ray_direction=No
 - source_position : None
 - ray_direction : None
 - ray_length : None
-- mapping : INTERPOLATED in ('INTERPOLATED', 'NEAREST')
+- mapping : 'INTERPOLATED' in ('INTERPOLATED', 'NEAREST')
 - node_label : None
 - node_color : None
 
@@ -2997,7 +2997,7 @@ def raycast_color(self, attribute=None, source_position=None, ray_direction=None
 - source_position : None
 - ray_direction : None
 - ray_length : None
-- mapping : INTERPOLATED in ('INTERPOLATED', 'NEAREST')
+- mapping : 'INTERPOLATED' in ('INTERPOLATED', 'NEAREST')
 - node_label : None
 - node_color : None
 
@@ -3022,7 +3022,7 @@ def raycast_float(self, attribute=None, source_position=None, ray_direction=None
 - source_position : None
 - ray_direction : None
 - ray_length : None
-- mapping : INTERPOLATED in ('INTERPOLATED', 'NEAREST')
+- mapping : 'INTERPOLATED' in ('INTERPOLATED', 'NEAREST')
 - node_label : None
 - node_color : None
 
@@ -3047,7 +3047,7 @@ def raycast_int(self, attribute=None, source_position=None, ray_direction=None, 
 - source_position : None
 - ray_direction : None
 - ray_length : None
-- mapping : INTERPOLATED in ('INTERPOLATED', 'NEAREST')
+- mapping : 'INTERPOLATED' in ('INTERPOLATED', 'NEAREST')
 - node_label : None
 - node_color : None
 
@@ -3072,7 +3072,7 @@ def raycast_quaternion(self, attribute=None, source_position=None, ray_direction
 - source_position : None
 - ray_direction : None
 - ray_length : None
-- mapping : INTERPOLATED in ('INTERPOLATED', 'NEAREST')
+- mapping : 'INTERPOLATED' in ('INTERPOLATED', 'NEAREST')
 - node_label : None
 - node_color : None
 
@@ -3162,7 +3162,7 @@ def replace_material(self, old=None, new=None, node_label=None, node_color=None)
 - count : None
 - length : None
 - selection : None
-- mode : COUNT in ('EVALUATED', 'COUNT', 'LENGTH')
+- mode : 'COUNT' in ('EVALUATED', 'COUNT', 'LENGTH')
 - node_label : None
 - node_color : None
 
@@ -3206,7 +3206,7 @@ def reverse_curve(self, selection=None, node_label=None, node_color=None):
 
 ##### Arguments
 
-- handle_type : AUTO in ('FREE', 'AUTO', 'VECTOR', 'ALIGN')
+- handle_type : 'AUTO' in ('FREE', 'AUTO', 'VECTOR', 'ALIGN')
 - node_label : None
 - node_color : None
 
@@ -3256,8 +3256,8 @@ def rotate_instances(self, rotation=None, pivot_point=None, local_space=None, se
 - factor : None
 - curve_index : None
 - length : None
-- data_type : FLOAT in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN', 'QUATERNION')
-- mode : FACTOR in ('FACTOR', 'LENGTH')
+- data_type : 'FLOAT' in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN', 'QUATERNION')
+- mode : 'FACTOR' in ('FACTOR', 'LENGTH')
 - use_all_curves : False
 - node_label : None
 - node_color : None
@@ -3282,7 +3282,7 @@ def sample_curve(self, value=None, factor=None, curve_index=None, length=None, d
 - value : None
 - factor : None
 - curve_index : None
-- mode : FACTOR in ('FACTOR', 'LENGTH')
+- mode : 'FACTOR' in ('FACTOR', 'LENGTH')
 - use_all_curves : False
 - node_label : None
 - node_color : None
@@ -3355,7 +3355,7 @@ def sample_curve_boolean_length(self, value=None, length=None, curve_index=None,
 - value : None
 - factor : None
 - curve_index : None
-- mode : FACTOR in ('FACTOR', 'LENGTH')
+- mode : 'FACTOR' in ('FACTOR', 'LENGTH')
 - use_all_curves : False
 - node_label : None
 - node_color : None
@@ -3428,7 +3428,7 @@ def sample_curve_color_length(self, value=None, length=None, curve_index=None, u
 - value : None
 - factor : None
 - curve_index : None
-- mode : FACTOR in ('FACTOR', 'LENGTH')
+- mode : 'FACTOR' in ('FACTOR', 'LENGTH')
 - use_all_curves : False
 - node_label : None
 - node_color : None
@@ -3501,7 +3501,7 @@ def sample_curve_float_length(self, value=None, length=None, curve_index=None, u
 - value : None
 - factor : None
 - curve_index : None
-- mode : FACTOR in ('FACTOR', 'LENGTH')
+- mode : 'FACTOR' in ('FACTOR', 'LENGTH')
 - use_all_curves : False
 - node_label : None
 - node_color : None
@@ -3574,7 +3574,7 @@ def sample_curve_int_length(self, value=None, length=None, curve_index=None, use
 - value : None
 - factor : None
 - curve_index : None
-- mode : FACTOR in ('FACTOR', 'LENGTH')
+- mode : 'FACTOR' in ('FACTOR', 'LENGTH')
 - use_all_curves : False
 - node_label : None
 - node_color : None
@@ -3647,7 +3647,7 @@ def sample_curve_quaternion_length(self, value=None, length=None, curve_index=No
 - value : None
 - factor : None
 - curve_index : None
-- mode : FACTOR in ('FACTOR', 'LENGTH')
+- mode : 'FACTOR' in ('FACTOR', 'LENGTH')
 - use_all_curves : False
 - node_label : None
 - node_color : None
@@ -3720,8 +3720,8 @@ def sample_curve_vector_length(self, value=None, length=None, curve_index=None, 
 - value : None
 - index : None
 - clamp : False
-- data_type : FLOAT in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN', 'QUATERNION')
-- domain : POINT in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
+- data_type : 'FLOAT' in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN', 'QUATERNION')
+- domain : 'POINT' in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
 - node_label : None
 - node_color : None
 
@@ -3745,7 +3745,7 @@ def sample_index(self, value=None, index=None, clamp=False, data_type='FLOAT', d
 - value : None
 - index : None
 - clamp : False
-- domain : POINT in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
+- domain : 'POINT' in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
 - node_label : None
 - node_color : None
 
@@ -3769,7 +3769,7 @@ def sample_index_boolean(self, value=None, index=None, clamp=False, domain='POIN
 - value : None
 - index : None
 - clamp : False
-- domain : POINT in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
+- domain : 'POINT' in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
 - node_label : None
 - node_color : None
 
@@ -3793,7 +3793,7 @@ def sample_index_color(self, value=None, index=None, clamp=False, domain='POINT'
 - value : None
 - index : None
 - clamp : False
-- domain : POINT in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
+- domain : 'POINT' in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
 - node_label : None
 - node_color : None
 
@@ -3817,7 +3817,7 @@ def sample_index_float(self, value=None, index=None, clamp=False, domain='POINT'
 - value : None
 - index : None
 - clamp : False
-- domain : POINT in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
+- domain : 'POINT' in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
 - node_label : None
 - node_color : None
 
@@ -3841,7 +3841,7 @@ def sample_index_int(self, value=None, index=None, clamp=False, domain='POINT', 
 - value : None
 - index : None
 - clamp : False
-- domain : POINT in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
+- domain : 'POINT' in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
 - node_label : None
 - node_color : None
 
@@ -3865,7 +3865,7 @@ def sample_index_quaternion(self, value=None, index=None, clamp=False, domain='P
 - value : None
 - index : None
 - clamp : False
-- domain : POINT in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
+- domain : 'POINT' in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
 - node_label : None
 - node_color : None
 
@@ -3887,7 +3887,7 @@ def sample_index_vector(self, value=None, index=None, clamp=False, domain='POINT
 ##### Arguments
 
 - sample_position : None
-- domain : POINT in ('POINT', 'EDGE', 'FACE', 'CORNER')
+- domain : 'POINT' in ('POINT', 'EDGE', 'FACE', 'CORNER')
 - node_label : None
 - node_color : None
 
@@ -3910,7 +3910,7 @@ def sample_nearest(self, sample_position=None, domain='POINT', node_label=None, 
 
 - value : None
 - sample_position : None
-- data_type : FLOAT in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN', 'QUATERNION')
+- data_type : 'FLOAT' in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN', 'QUATERNION')
 - node_label : None
 - node_color : None
 
@@ -4066,7 +4066,7 @@ def sample_nearest_surface_vector(self, value=None, sample_position=None, node_l
 - value : None
 - source_uv_map : None
 - sample_uv : None
-- data_type : FLOAT in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN', 'QUATERNION')
+- data_type : 'FLOAT' in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN', 'QUATERNION')
 - node_label : None
 - node_color : None
 
@@ -4229,8 +4229,8 @@ def sample_uv_surface_vector(self, value=None, source_uv_map=None, sample_uv=Non
 - center : None
 - axis : None
 - selection : None
-- domain : FACE in ('FACE', 'EDGE')
-- scale_mode : UNIFORM in ('UNIFORM', 'SINGLE_AXIS')
+- domain : 'FACE' in ('FACE', 'EDGE')
+- scale_mode : 'UNIFORM' in ('UNIFORM', 'SINGLE_AXIS')
 - node_label : None
 - node_color : None
 
@@ -4298,7 +4298,7 @@ def separate_components(self, node_label=None, node_color=None):
 ##### Arguments
 
 - selection : None
-- domain : POINT in ('POINT', 'EDGE', 'FACE', 'CURVE', 'INSTANCE')
+- domain : 'POINT' in ('POINT', 'EDGE', 'FACE', 'CURVE', 'INSTANCE')
 - node_label : None
 - node_color : None
 
@@ -4320,7 +4320,7 @@ def separate_geometry(self, selection=None, domain='POINT', node_label=None, nod
 ##### Arguments
 
 - selection : None
-- mode : MINIMUM_TWIST in ('MINIMUM_TWIST', 'Z_UP')
+- mode : 'MINIMUM_TWIST' in ('MINIMUM_TWIST', 'Z_UP')
 - node_label : None
 - node_color : None
 
@@ -4391,7 +4391,7 @@ def set_curve_tilt(self, tilt=None, selection=None, node_label=None, node_color=
 - position : None
 - offset : None
 - selection : None
-- mode : LEFT in ('LEFT', 'RIGHT')
+- mode : 'LEFT' in ('LEFT', 'RIGHT')
 - node_label : None
 - node_color : None
 
@@ -4414,15 +4414,15 @@ def set_handle_positions(self, position=None, offset=None, selection=None, mode=
 ##### Arguments
 
 - selection : None
-- handle_type : AUTO in ('FREE', 'AUTO', 'VECTOR', 'ALIGN')
-- mode : {'RIGHT', 'LEFT'}
+- handle_type : 'AUTO' in ('FREE', 'AUTO', 'VECTOR', 'ALIGN')
+- mode : {'LEFT', 'RIGHT'}
 - node_label : None
 - node_color : None
 
 #### Source code
 
 ``` python
-def set_handle_type(self, selection=None, handle_type='AUTO', mode={'RIGHT', 'LEFT'}, node_label=None, node_color=None):
+def set_handle_type(self, selection=None, handle_type='AUTO', mode={'LEFT', 'RIGHT'}, node_label=None, node_color=None):
     node = self.tree.SetHandleType(curve=self, selection=self._get_selection(selection), handle_type=handle_type, mode=mode, node_label=node_label, node_color=node_color)
     self.jump(node.curve)
     return self
@@ -4555,7 +4555,7 @@ def set_position(self, position=None, offset=None, selection=None, node_label=No
 
 - shade_smooth : None
 - selection : None
-- domain : FACE in ('EDGE', 'FACE')
+- domain : 'FACE' in ('EDGE', 'FACE')
 - node_label : None
 - node_color : None
 
@@ -4624,7 +4624,7 @@ def set_spline_resolution(self, resolution=None, selection=None, node_label=None
 ##### Arguments
 
 - selection : None
-- spline_type : POLY in ('CATMULL_ROM', 'POLY', 'BEZIER', 'NURBS')
+- spline_type : 'POLY' in ('CATMULL_ROM', 'POLY', 'BEZIER', 'NURBS')
 - node_label : None
 - node_color : None
 
@@ -4733,8 +4733,8 @@ def split_edges(self, selection=None, node_label=None, node_color=None):
 - name : None
 - value : None
 - selection : None
-- data_type : FLOAT in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BYTE_COLOR', 'BOOLEAN', 'FLOAT2', 'QUATERNION')
-- domain : POINT in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
+- data_type : 'FLOAT' in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BYTE_COLOR', 'BOOLEAN', 'FLOAT2', 'QUATERNION')
+- domain : 'POINT' in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
 - node_label : None
 - node_color : None
 
@@ -4759,7 +4759,7 @@ def store_named_attribute(self, name=None, value=None, selection=None, data_type
 - name : None
 - value : None
 - selection : None
-- domain : POINT in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
+- domain : 'POINT' in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
 - node_label : None
 - node_color : None
 
@@ -4784,7 +4784,7 @@ def store_named_boolean(self, name=None, value=None, selection=None, domain='POI
 - name : None
 - value : None
 - selection : None
-- domain : POINT in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
+- domain : 'POINT' in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
 - node_label : None
 - node_color : None
 
@@ -4809,7 +4809,7 @@ def store_named_byte_color(self, name=None, value=None, selection=None, domain='
 - name : None
 - value : None
 - selection : None
-- domain : POINT in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
+- domain : 'POINT' in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
 - node_label : None
 - node_color : None
 
@@ -4834,7 +4834,7 @@ def store_named_float(self, name=None, value=None, selection=None, domain='POINT
 - name : None
 - value : None
 - selection : None
-- domain : POINT in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
+- domain : 'POINT' in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
 - node_label : None
 - node_color : None
 
@@ -4859,7 +4859,7 @@ def store_named_float2(self, name=None, value=None, selection=None, domain='POIN
 - name : None
 - value : None
 - selection : None
-- domain : POINT in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
+- domain : 'POINT' in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
 - node_label : None
 - node_color : None
 
@@ -4884,7 +4884,7 @@ def store_named_float_color(self, name=None, value=None, selection=None, domain=
 - name : None
 - value : None
 - selection : None
-- domain : POINT in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
+- domain : 'POINT' in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
 - node_label : None
 - node_color : None
 
@@ -4909,7 +4909,7 @@ def store_named_int(self, name=None, value=None, selection=None, domain='POINT',
 - name : None
 - value : None
 - selection : None
-- domain : POINT in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
+- domain : 'POINT' in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
 - node_label : None
 - node_color : None
 
@@ -4934,7 +4934,7 @@ def store_named_quaternion(self, name=None, value=None, selection=None, domain='
 - name : None
 - value : None
 - selection : None
-- domain : POINT in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
+- domain : 'POINT' in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
 - node_label : None
 - node_color : None
 
@@ -5003,8 +5003,8 @@ def subdivide_mesh(self, level=None, node_label=None, node_color=None):
 - level : None
 - edge_crease : None
 - vertex_crease : None
-- boundary_smooth : ALL in ('PRESERVE_CORNERS', 'ALL')
-- uv_smooth : PRESERVE_BOUNDARIES in ('NONE', 'PRESERVE_CORNERS', 'PRESERVE_CORNERS_AND_JUNCTIONS', 'PRESERVE_CORNERS_JUNCTIONS_AND_CONCAVE', 'PRESERVE_BOUNDARIES', 'SMOOTH_ALL')
+- boundary_smooth : 'ALL' in ('PRESERVE_CORNERS', 'ALL')
+- uv_smooth : 'PRESERVE_BOUNDARIES' in ('NONE', 'PRESERVE_CORNERS', 'PRESERVE_CORNERS_AND_JUNCTIONS', 'PRESERVE_CORNERS_JUNCTIONS_AND_CONCAVE', 'PRESERVE_BOUNDARIES', 'SMOOTH_ALL')
 - node_label : None
 - node_color : None
 
@@ -5098,8 +5098,8 @@ def translate_instances(self, translation=None, local_space=None, selection=None
 
 - minimum_vertices : None
 - selection : None
-- ngon_method : BEAUTY in ('BEAUTY', 'CLIP')
-- quad_method : SHORTEST_DIAGONAL in ('BEAUTY', 'FIXED', 'FIXED_ALTERNATE', 'SHORTEST_DIAGONAL', 'LONGEST_DIAGONAL')
+- ngon_method : 'BEAUTY' in ('BEAUTY', 'CLIP')
+- quad_method : 'SHORTEST_DIAGONAL' in ('BEAUTY', 'FIXED', 'FIXED_ALTERNATE', 'SHORTEST_DIAGONAL', 'LONGEST_DIAGONAL')
 - node_label : None
 - node_color : None
 
@@ -5124,7 +5124,7 @@ def triangulate(self, minimum_vertices=None, selection=None, ngon_method='BEAUTY
 - start : None
 - end : None
 - selection : None
-- mode : FACTOR in ('FACTOR', 'LENGTH')
+- mode : 'FACTOR' in ('FACTOR', 'LENGTH')
 - node_label : None
 - node_color : None
 
@@ -5150,7 +5150,7 @@ def trim_curve(self, start=None, end=None, selection=None, mode='FACTOR', node_l
 - margin : None
 - fill_holes : None
 - selection : None
-- method : ANGLE_BASED in ('ANGLE_BASED', 'CONFORMAL')
+- method : 'ANGLE_BASED' in ('ANGLE_BASED', 'CONFORMAL')
 - node_label : None
 - node_color : None
 
@@ -5213,8 +5213,8 @@ def vertex_of_corner(self, corner_index=None, node_label=None, node_color=None):
 ##### Arguments
 
 - value : None
-- data_type : FLOAT in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN', 'QUATERNION')
-- domain : AUTO in ('AUTO', 'POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
+- data_type : 'FLOAT' in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN', 'QUATERNION')
+- domain : 'AUTO' in ('AUTO', 'POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
 - node_label : None
 - node_color : None
 
@@ -5236,7 +5236,7 @@ def viewer(self, value=None, data_type='FLOAT', domain='AUTO', node_label=None, 
 ##### Arguments
 
 - value : None
-- domain : AUTO in ('AUTO', 'POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
+- domain : 'AUTO' in ('AUTO', 'POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
 - node_label : None
 - node_color : None
 
@@ -5258,7 +5258,7 @@ def viewer_boolean(self, value=None, domain='AUTO', node_label=None, node_color=
 ##### Arguments
 
 - value : None
-- domain : AUTO in ('AUTO', 'POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
+- domain : 'AUTO' in ('AUTO', 'POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
 - node_label : None
 - node_color : None
 
@@ -5280,7 +5280,7 @@ def viewer_color(self, value=None, domain='AUTO', node_label=None, node_color=No
 ##### Arguments
 
 - value : None
-- domain : AUTO in ('AUTO', 'POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
+- domain : 'AUTO' in ('AUTO', 'POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
 - node_label : None
 - node_color : None
 
@@ -5302,7 +5302,7 @@ def viewer_float(self, value=None, domain='AUTO', node_label=None, node_color=No
 ##### Arguments
 
 - value : None
-- domain : AUTO in ('AUTO', 'POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
+- domain : 'AUTO' in ('AUTO', 'POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
 - node_label : None
 - node_color : None
 
@@ -5324,7 +5324,7 @@ def viewer_int(self, value=None, domain='AUTO', node_label=None, node_color=None
 ##### Arguments
 
 - value : None
-- domain : AUTO in ('AUTO', 'POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
+- domain : 'AUTO' in ('AUTO', 'POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
 - node_label : None
 - node_color : None
 
@@ -5346,7 +5346,7 @@ def viewer_quaternion(self, value=None, domain='AUTO', node_label=None, node_col
 ##### Arguments
 
 - value : None
-- domain : AUTO in ('AUTO', 'POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
+- domain : 'AUTO' in ('AUTO', 'POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
 - node_label : None
 - node_color : None
 
@@ -5371,7 +5371,7 @@ def viewer_vector(self, value=None, domain='AUTO', node_label=None, node_color=N
 - adaptivity : None
 - voxel_amount : None
 - voxel_size : None
-- resolution_mode : GRID in ('GRID', 'VOXEL_AMOUNT', 'VOXEL_SIZE')
+- resolution_mode : 'GRID' in ('GRID', 'VOXEL_AMOUNT', 'VOXEL_SIZE')
 - node_label : None
 - node_color : None
 

@@ -1,0 +1,20 @@
+# Node EdgeAngle
+
+- Node name : 'Edge Angle'
+- bl_idname : GeometryNodeInputMeshEdgeAngle
+
+
+``` python
+EdgeAngle(node_label=None, node_color=None)
+```
+## Implementation
+
+- [Geometry](/docs/GeoNodes/Geometry.md) : [edge_angle](/docs/GeoNodes/Geometry.md#edge_angle)
+
+## Init
+
+``` python
+def __init__(self, node_label=None, node_color=None):
+
+    StackedNode.__init__(self, 'GeometryNodeInputMeshEdgeAngle', node_label=node_label, node_color=node_color)
+```

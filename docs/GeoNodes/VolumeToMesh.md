@@ -1,0 +1,36 @@
+# Node VolumeToMesh
+
+- Node name : 'Volume to Mesh'
+- bl_idname : GeometryNodeVolumeToMesh
+
+
+``` python
+VolumeToMesh(volume=None, threshold=None, adaptivity=None, voxel_amount=None, voxel_size=None, resolution_mode='GRID', node_label=None, node_color=None)
+```
+##### Arguments
+
+- volume : None
+- threshold : None
+- adaptivity : None
+- voxel_amount : None
+- voxel_size : None
+- resolution_mode : 'GRID'
+
+## Implementation
+
+- [Geometry](/docs/GeoNodes/Geometry.md) : [volume_to_mesh](/docs/GeoNodes/Geometry.md#volume_to_mesh)
+
+## Init
+
+``` python
+def __init__(self, volume=None, threshold=None, adaptivity=None, voxel_amount=None, voxel_size=None, resolution_mode='GRID', node_label=None, node_color=None):
+
+    StackedNode.__init__(self, 'GeometryNodeVolumeToMesh', node_label=node_label, node_color=node_color)
+
+    self.resolution_mode = resolution_mode
+    self.volume          = volume
+    self.threshold       = threshold
+    self.adaptivity      = adaptivity
+    self.voxel_amount    = voxel_amount
+    self.voxel_size      = voxel_size
+```

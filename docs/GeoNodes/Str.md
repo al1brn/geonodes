@@ -33,7 +33,7 @@
 
 ##### Arguments
 
-- node_color
+- node_color : 'ARG_NO_VALUE'
 
 #### Source code
 
@@ -56,7 +56,7 @@ def length(self):
 
 ##### Arguments
 
-- node_color
+- node_color : 'ARG_NO_VALUE'
 
 #### Source code
 
@@ -79,7 +79,7 @@ def line_break(self):
 
 ##### Arguments
 
-- node_color
+- node_color : 'ARG_NO_VALUE'
 
 #### Source code
 
@@ -101,7 +101,7 @@ def tab(self):
 ##### Arguments
 
 - b : None
-- mode : ELEMENT in ('ELEMENT', 'LENGTH', 'AVERAGE', 'DOT_PRODUCT', 'DIRECTION')
+- mode : 'ELEMENT' in ('ELEMENT', 'LENGTH', 'AVERAGE', 'DOT_PRODUCT', 'DIRECTION')
 - node_label : None
 - node_color : None
 
@@ -122,7 +122,7 @@ def equal(self, b=None, mode='ELEMENT', node_label=None, node_color=None):
 
 ##### Arguments
 
-- *args
+- *args : 'ARG_NO_VALUE'
 - delimiter : None
 - node_label : None
 - node_color : None
@@ -146,7 +146,7 @@ def join_strings(self, *args, delimiter=None, node_label=None, node_color=None):
 ##### Arguments
 
 - b : None
-- mode : ELEMENT in ('ELEMENT', 'LENGTH', 'AVERAGE', 'DOT_PRODUCT', 'DIRECTION')
+- mode : 'ELEMENT' in ('ELEMENT', 'LENGTH', 'AVERAGE', 'DOT_PRODUCT', 'DIRECTION')
 - node_label : None
 - node_color : None
 
@@ -239,11 +239,11 @@ def special_characters(self, node_label=None, node_color=None):
 - line_spacing : None
 - text_box_width : None
 - text_box_height : None
-- align_x : LEFT in ('LEFT', 'CENTER', 'RIGHT', 'JUSTIFY', 'FLUSH')
-- align_y : TOP_BASELINE in ('TOP', 'TOP_BASELINE', 'MIDDLE', 'BOTTOM_BASELINE', 'BOTTOM')
-- font : <bpy_struct, VectorFont("Bfont Regular") at 0x296b87408>
-- overflow : OVERFLOW in ('OVERFLOW', 'SCALE_TO_FIT', 'TRUNCATE')
-- pivot_mode : BOTTOM_LEFT in ('MIDPOINT', 'TOP_LEFT', 'TOP_CENTER', 'TOP_RIGHT', 'BOTTOM_LEFT', 'BOTTOM_CENTER', 'BOTTOM_RIGHT')
+- align_x : 'LEFT' in ('LEFT', 'CENTER', 'RIGHT', 'JUSTIFY', 'FLUSH')
+- align_y : 'TOP_BASELINE' in ('TOP', 'TOP_BASELINE', 'MIDDLE', 'BOTTOM_BASELINE', 'BOTTOM')
+- font : None
+- overflow : 'OVERFLOW' in ('OVERFLOW', 'SCALE_TO_FIT', 'TRUNCATE')
+- pivot_mode : 'BOTTOM_LEFT' in ('MIDPOINT', 'TOP_LEFT', 'TOP_CENTER', 'TOP_RIGHT', 'BOTTOM_LEFT', 'BOTTOM_CENTER', 'BOTTOM_RIGHT')
 - node_label : None
 - node_color : None
 

@@ -1,0 +1,30 @@
+# Node SetID
+
+- Node name : 'Set ID'
+- bl_idname : GeometryNodeSetID
+
+
+``` python
+SetID(geometry=None, selection=None, ID=None, node_label=None, node_color=None)
+```
+##### Arguments
+
+- geometry : None
+- selection : None
+- ID : None
+
+## Implementation
+
+- [Geometry](/docs/GeoNodes/Geometry.md) : [id](/docs/GeoNodes/Geometry.md#id) [set_id](/docs/GeoNodes/Geometry.md#set_id)
+
+## Init
+
+``` python
+def __init__(self, geometry=None, selection=None, ID=None, node_label=None, node_color=None):
+
+    StackedNode.__init__(self, 'GeometryNodeSetID', node_label=node_label, node_color=node_color)
+
+    self.geometry        = geometry
+    self.selection       = selection
+    self.ID              = ID
+```

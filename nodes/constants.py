@@ -195,7 +195,7 @@ CUSTOM_INPUT_SOCKETS = [
     'GeometryNodeSimulationInput', 
     'GeometryNodeSimulationOutput',
     'GeometryNodeRepeatInput',
-    'GeometryNodeRepeatInput',
+    'GeometryNodeRepeatOutput',
     ]
 
 CUSTOM_OUTPUT_SOCKETS = [
@@ -214,6 +214,17 @@ CUSTOM_OUTPUT_SOCKETS = [
 
 INCLUDE_HIDDEN_OUTPUT_SOCKETS = [
     'CompositorNodeRLayers',
+    ]
+
+NO_DOC_NODES = [
+    'ShaderNodeGroup',
+    'CompositorNodeGroup',
+    'GeometryNodeGroup',
+    
+    'GeometryNodeSimulationInput', 
+    'GeometryNodeSimulationOutput',
+    'GeometryNodeRepeatInput',
+    'GeometryNodeRepeatOutput',
     ]
 
 

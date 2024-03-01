@@ -28,6 +28,7 @@ update : 2024/02/17
 from pprint import pprint
 
 import bpy
+import mathutils
 from geonodes.nodes import documentation
 from geonodes.nodes import constants
 from geonodes.nodes import dynamic
@@ -110,7 +111,20 @@ class Argument:
         self.enums  = enums
         self.descr  = descr
         
+        #if type(header).__name__ in dir(bpy.types):
+        #    self.header = None
+            
+        # Header can be a property of bnode
+        # Can crash later on
+            
+        if isinstance(header, mathutils.Vector):
+            self.header = mathutils.Vector(header)
+        
     def __str__(self):
+        
+        #return f"<Argument {self.name}, header=CENSORED -> (CENSORED), call={self.call} -> ({self.call_code})>"
+        
+        
         return f"<Argument {self.name}, header={self.header} -> ({self.header_code}), call={self.call} -> ({self.call_code})>"
         
     @property
@@ -195,8 +209,9 @@ class Argument:
         
         if self.header == IGNORE:
             return None
+        
         else:
-            return self.name, self.header, self.enums
+            return self.name, utils.python_constant(self.header), self.enums
         
         #return f"- {self.name} : {self.descr}\n"
         
@@ -317,6 +332,7 @@ class Arguments:
             if doc is None:
                 continue
             docs.append(doc)
+            
         return docs
     
 
@@ -408,7 +424,7 @@ class NodeInfo:
         # ----------------------------------------------------------------------------------------------------
         # DEBUG
         
-        if False and self.class_name in ['CombineColor', 'SeparateColor']:
+        if False and self.class_name in ['Vector']:
             print("NodeInfo.__init__", self.tree_type, self.class_name)
             for bsocket in [bs for bs in self.inputs.bsockets] + [bs for bs in self.outputs.bsockets]:
                 print(f"   - {bsocket.bl_idname}, {bsocket.type}, {bsocket.name}")
@@ -584,10 +600,23 @@ class NodeInfo:
         
         # ----- DEBUG
         
-        if False and self.class_name == "JoinGeometry":
+        if False and self.class_name == "Vector":
             print("-"*100)
             print("NodeInfo.init", self.class_name, "__init__ source code\n")
             print(self.init_code)
+            print("Arguments")
+            print(self.node_args)
+            print(self.node_args.docs)
+            
+            for arg in self.node_args.args:
+                print(arg.doc)
+                
+            for arg in self.node_args.args:
+                print("   arg", arg)
+                print(arg.header)
+                print(arg.call)
+                
+            #assert(False)
         
             
     # =============================================================================================================================
@@ -2035,6 +2064,11 @@ def tree_class_setup(tree_class):
 
     # ====================================================================================================
     # Done
+    
+    for node_info in node_infos:
+        node_info.bnode   = None
+        node_info.inputs  = None
+        node_info.outputs = None
 
     treestack.del_tree(btree)
     

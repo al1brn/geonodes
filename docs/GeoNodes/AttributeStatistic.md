@@ -1,0 +1,34 @@
+# Node AttributeStatistic
+
+- Node name : 'Attribute Statistic'
+- bl_idname : GeometryNodeAttributeStatistic
+
+
+``` python
+AttributeStatistic(geometry=None, selection=None, attribute=None, data_type='FLOAT', domain='POINT', node_label=None, node_color=None)
+```
+##### Arguments
+
+- geometry : None
+- selection : None
+- attribute : None
+- data_type : 'FLOAT'
+- domain : 'POINT'
+
+## Implementation
+
+- [Geometry](/docs/GeoNodes/Geometry.md) : [attribute_statistic](/docs/GeoNodes/Geometry.md#attribute_statistic) [attribute_statistic_float](/docs/GeoNodes/Geometry.md#attribute_statistic_float) [attribute_statistic_vector](/docs/GeoNodes/Geometry.md#attribute_statistic_vector)
+
+## Init
+
+``` python
+def __init__(self, geometry=None, selection=None, attribute=None, data_type='FLOAT', domain='POINT', node_label=None, node_color=None):
+
+    StackedNode.__init__(self, 'GeometryNodeAttributeStatistic', node_label=node_label, node_color=node_color)
+
+    self.data_type       = data_type
+    self.domain          = domain
+    self.geometry        = geometry
+    self.selection       = selection
+    self.attribute       = attribute
+```

@@ -1,0 +1,29 @@
+# Node ColorRamp
+
+- Node name : 'Color Ramp'
+- bl_idname : ShaderNodeValToRGB
+
+
+``` python
+ColorRamp(fac=None, color_ramp=None, node_label=None, node_color=None)
+```
+##### Arguments
+
+- fac : None
+- color_ramp : None
+
+## Implementation
+
+- [Float](/docs/GeoNodes/Float.md) : [color_ramp](/docs/GeoNodes/Float.md#color_ramp)
+- [Int](/docs/GeoNodes/Int.md) : [color_ramp](/docs/GeoNodes/Int.md#color_ramp)
+
+## Init
+
+``` python
+def __init__(self, fac=None, color_ramp=None, node_label=None, node_color=None):
+
+    StackedNode.__init__(self, 'ShaderNodeValToRGB', node_label=node_label, node_color=node_color)
+
+    self.color_ramp      = color_ramp
+    self.fac             = fac
+```

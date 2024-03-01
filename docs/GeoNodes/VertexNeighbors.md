@@ -1,0 +1,20 @@
+# Node VertexNeighbors
+
+- Node name : 'Vertex Neighbors'
+- bl_idname : GeometryNodeInputMeshVertexNeighbors
+
+
+``` python
+VertexNeighbors(node_label=None, node_color=None)
+```
+## Implementation
+
+- [Geometry](/docs/GeoNodes/Geometry.md) : [vertex_neighbors](/docs/GeoNodes/Geometry.md#vertex_neighbors)
+
+## Init
+
+``` python
+def __init__(self, node_label=None, node_color=None):
+
+    StackedNode.__init__(self, 'GeometryNodeInputMeshVertexNeighbors', node_label=node_label, node_color=node_color)
+```

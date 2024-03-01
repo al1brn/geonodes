@@ -1,0 +1,32 @@
+# Node DuplicateElements
+
+- Node name : 'Duplicate Elements'
+- bl_idname : GeometryNodeDuplicateElements
+
+
+``` python
+DuplicateElements(geometry=None, selection=None, amount=None, domain='POINT', node_label=None, node_color=None)
+```
+##### Arguments
+
+- geometry : None
+- selection : None
+- amount : None
+- domain : 'POINT'
+
+## Implementation
+
+- [Geometry](/docs/GeoNodes/Geometry.md) : [duplicate_elements](/docs/GeoNodes/Geometry.md#duplicate_elements)
+
+## Init
+
+``` python
+def __init__(self, geometry=None, selection=None, amount=None, domain='POINT', node_label=None, node_color=None):
+
+    StackedNode.__init__(self, 'GeometryNodeDuplicateElements', node_label=node_label, node_color=node_color)
+
+    self.domain          = domain
+    self.geometry        = geometry
+    self.selection       = selection
+    self.amount          = amount
+```

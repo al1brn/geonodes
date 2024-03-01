@@ -1,0 +1,26 @@
+# Node EdgesToFaceGroups
+
+- Node name : 'Edges to Face Groups'
+- bl_idname : GeometryNodeEdgesToFaceGroups
+
+
+``` python
+EdgesToFaceGroups(boundary_edges=None, node_label=None, node_color=None)
+```
+##### Arguments
+
+- boundary_edges : None
+
+## Implementation
+
+- [Geometry](/docs/GeoNodes/Geometry.md) : [edges_to_face_groups](/docs/GeoNodes/Geometry.md#edges_to_face_groups)
+
+## Init
+
+``` python
+def __init__(self, boundary_edges=None, node_label=None, node_color=None):
+
+    StackedNode.__init__(self, 'GeometryNodeEdgesToFaceGroups', node_label=node_label, node_color=node_color)
+
+    self.boundary_edges  = boundary_edges
+```

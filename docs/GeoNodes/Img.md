@@ -42,7 +42,7 @@ def image_info(self, frame=None, node_label=None, node_color=None):
 
 - vector : None
 - frame : None
-- extension : REPEAT in ('REPEAT', 'EXTEND', 'CLIP', 'MIRROR')
+- extension : 'REPEAT' in ('REPEAT', 'EXTEND', 'CLIP', 'MIRROR')
 - interpolation : Linear in ('Linear', 'Closest', 'Cubic')
 - node_label : None
 - node_color : None

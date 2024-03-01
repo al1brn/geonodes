@@ -111,8 +111,8 @@ def add(self, vector=None, node_label=None, node_color=None):
 
 - factor : None
 - vector : None
-- axis : X in ('X', 'Y', 'Z')
-- pivot_axis : AUTO in ('AUTO', 'X', 'Y', 'Z')
+- axis : 'X' in ('X', 'Y', 'Z')
+- pivot_axis : 'AUTO' in ('AUTO', 'X', 'Y', 'Z')
 - node_label : None
 - node_color : None
 
@@ -302,7 +302,7 @@ def dot(self, vector=None, node_label=None, node_color=None):
 
 - b : None
 - epsilon : None
-- mode : ELEMENT in ('ELEMENT', 'LENGTH', 'AVERAGE', 'DOT_PRODUCT', 'DIRECTION')
+- mode : 'ELEMENT' in ('ELEMENT', 'LENGTH', 'AVERAGE', 'DOT_PRODUCT', 'DIRECTION')
 - node_label : None
 - node_color : None
 
@@ -406,7 +406,7 @@ def frac(self, node_label=None, node_color=None):
 ##### Arguments
 
 - b : None
-- mode : ELEMENT in ('ELEMENT', 'LENGTH', 'AVERAGE', 'DOT_PRODUCT', 'DIRECTION')
+- mode : 'ELEMENT' in ('ELEMENT', 'LENGTH', 'AVERAGE', 'DOT_PRODUCT', 'DIRECTION')
 - node_label : None
 - node_color : None
 
@@ -428,7 +428,7 @@ def greater_equal(self, b=None, mode='ELEMENT', node_label=None, node_color=None
 ##### Arguments
 
 - b : None
-- mode : ELEMENT in ('ELEMENT', 'LENGTH', 'AVERAGE', 'DOT_PRODUCT', 'DIRECTION')
+- mode : 'ELEMENT' in ('ELEMENT', 'LENGTH', 'AVERAGE', 'DOT_PRODUCT', 'DIRECTION')
 - node_label : None
 - node_color : None
 
@@ -491,7 +491,7 @@ def length(self, node_label=None, node_color=None):
 ##### Arguments
 
 - b : None
-- mode : ELEMENT in ('ELEMENT', 'LENGTH', 'AVERAGE', 'DOT_PRODUCT', 'DIRECTION')
+- mode : 'ELEMENT' in ('ELEMENT', 'LENGTH', 'AVERAGE', 'DOT_PRODUCT', 'DIRECTION')
 - node_label : None
 - node_color : None
 
@@ -513,7 +513,7 @@ def less_equal(self, b=None, mode='ELEMENT', node_label=None, node_color=None):
 ##### Arguments
 
 - b : None
-- mode : ELEMENT in ('ELEMENT', 'LENGTH', 'AVERAGE', 'DOT_PRODUCT', 'DIRECTION')
+- mode : 'ELEMENT' in ('ELEMENT', 'LENGTH', 'AVERAGE', 'DOT_PRODUCT', 'DIRECTION')
 - node_label : None
 - node_color : None
 
@@ -541,8 +541,8 @@ def less_than(self, b=None, mode='ELEMENT', node_label=None, node_color=None):
 - vector : None
 - steps : None
 - clamp : True
-- data_type : FLOAT in ('FLOAT', 'FLOAT_VECTOR')
-- interpolation_type : LINEAR in ('LINEAR', 'STEPPED', 'SMOOTHSTEP', 'SMOOTHERSTEP')
+- data_type : 'FLOAT' in ('FLOAT', 'FLOAT_VECTOR')
+- interpolation_type : 'LINEAR' in ('LINEAR', 'STEPPED', 'SMOOTHSTEP', 'SMOOTHERSTEP')
 - node_label : None
 - node_color : None
 
@@ -609,7 +609,7 @@ def min(self, vector=None, node_label=None, node_color=None):
 - b : None
 - clamp_factor : True
 - clamp_result : False
-- factor_mode : UNIFORM in ('UNIFORM', 'NON_UNIFORM')
+- factor_mode : 'UNIFORM' in ('UNIFORM', 'NON_UNIFORM')
 - node_label : None
 - node_color : None
 
@@ -717,7 +717,7 @@ def normalize(self, node_label=None, node_color=None):
 
 - b : None
 - epsilon : None
-- mode : ELEMENT in ('ELEMENT', 'LENGTH', 'AVERAGE', 'DOT_PRODUCT', 'DIRECTION')
+- mode : 'ELEMENT' in ('ELEMENT', 'LENGTH', 'AVERAGE', 'DOT_PRODUCT', 'DIRECTION')
 - node_label : None
 - node_color : None
 
@@ -827,7 +827,7 @@ def refract(self, vector=None, scale=None, node_label=None, node_color=None):
 ##### Arguments
 
 - rotate_by : None
-- space : OBJECT in ('OBJECT', 'LOCAL')
+- space : 'OBJECT' in ('OBJECT', 'LOCAL')
 - node_label : None
 - node_color : None
 
@@ -850,7 +850,7 @@ def rotate_euler(self, rotate_by=None, space='OBJECT', node_label=None, node_col
 ##### Arguments
 
 - rotate_by : None
-- space : OBJECT in ('OBJECT', 'LOCAL')
+- space : 'OBJECT' in ('OBJECT', 'LOCAL')
 - node_label : None
 - node_color : None
 
@@ -873,7 +873,7 @@ def rotate_euler_axis_angle(self, rotate_by=None, space='OBJECT', node_label=Non
 ##### Arguments
 
 - rotate_by : None
-- space : OBJECT in ('OBJECT', 'LOCAL')
+- space : 'OBJECT' in ('OBJECT', 'LOCAL')
 - node_label : None
 - node_color : None
 
@@ -1123,7 +1123,7 @@ def tan(self, node_label=None, node_color=None):
 ##### Arguments
 
 - fac : None
-- mapping : <bpy_struct, CurveMapping at 0x12ef328c8>
+- mapping : None
 - node_label : None
 - node_color : None
 
@@ -1150,7 +1150,7 @@ def vector_curves(self, fac=None, mapping=None, node_label=None, node_color=None
 - angle : None
 - rotation : None
 - invert : False
-- rotation_type : AXIS_ANGLE in ('AXIS_ANGLE', 'X_AXIS', 'Y_AXIS', 'Z_AXIS', 'EULER_XYZ')
+- rotation_type : 'AXIS_ANGLE' in ('AXIS_ANGLE', 'X_AXIS', 'Y_AXIS', 'Z_AXIS', 'EULER_XYZ')
 - node_label : None
 - node_color : None
 

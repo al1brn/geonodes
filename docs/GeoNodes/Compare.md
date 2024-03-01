@@ -12,9 +12,9 @@ Compare(a=None, b=None, epsilon=None, data_type='FLOAT', mode='ELEMENT', operati
 - a : None
 - b : None
 - epsilon : None
-- data_type : FLOAT
-- mode : ELEMENT
-- operation : GREATER_THAN
+- data_type : 'FLOAT'
+- mode : 'ELEMENT'
+- operation : 'GREATER_THAN'
 
 ## Implementation
 

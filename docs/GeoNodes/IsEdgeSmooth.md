@@ -1,0 +1,20 @@
+# Node IsEdgeSmooth
+
+- Node name : 'Is Edge Smooth'
+- bl_idname : GeometryNodeInputEdgeSmooth
+
+
+``` python
+IsEdgeSmooth(node_label=None, node_color=None)
+```
+## Implementation
+
+- [Geometry](/docs/GeoNodes/Geometry.md) : [edge_smooth](/docs/GeoNodes/Geometry.md#edge_smooth)
+
+## Init
+
+``` python
+def __init__(self, node_label=None, node_color=None):
+
+    StackedNode.__init__(self, 'GeometryNodeInputEdgeSmooth', node_label=node_label, node_color=node_color)
+```

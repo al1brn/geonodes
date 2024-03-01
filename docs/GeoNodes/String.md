@@ -9,7 +9,7 @@ String(string='', node_label=None, node_color=None)
 ```
 ##### Arguments
 
-- string : 
+- string : ''
 
 ## Implementation
 

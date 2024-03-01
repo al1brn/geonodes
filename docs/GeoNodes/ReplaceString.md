@@ -1,0 +1,30 @@
+# Node ReplaceString
+
+- Node name : 'Replace String'
+- bl_idname : FunctionNodeReplaceString
+
+
+``` python
+ReplaceString(string=None, find=None, replace=None, node_label=None, node_color=None)
+```
+##### Arguments
+
+- string : None
+- find : None
+- replace : None
+
+## Implementation
+
+- [Str](/docs/GeoNodes/Str.md) : [replace_string](/docs/GeoNodes/Str.md#replace_string)
+
+## Init
+
+``` python
+def __init__(self, string=None, find=None, replace=None, node_label=None, node_color=None):
+
+    StackedNode.__init__(self, 'FunctionNodeReplaceString', node_label=node_label, node_color=node_color)
+
+    self.string          = string
+    self.find            = find
+    self.replace         = replace
+```

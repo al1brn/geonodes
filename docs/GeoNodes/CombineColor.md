@@ -13,7 +13,7 @@ CombineColor(red=None, green=None, blue=None, alpha=None, mode='RGB', node_label
 - green : None
 - blue : None
 - alpha : None
-- mode : RGB
+- mode : 'RGB'
 
 ## Implementation
 

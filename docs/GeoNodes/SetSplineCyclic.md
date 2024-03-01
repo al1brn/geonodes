@@ -1,0 +1,30 @@
+# Node SetSplineCyclic
+
+- Node name : 'Set Spline Cyclic'
+- bl_idname : GeometryNodeSetSplineCyclic
+
+
+``` python
+SetSplineCyclic(geometry=None, selection=None, cyclic=None, node_label=None, node_color=None)
+```
+##### Arguments
+
+- geometry : None
+- selection : None
+- cyclic : None
+
+## Implementation
+
+- [Geometry](/docs/GeoNodes/Geometry.md) : [cyclic](/docs/GeoNodes/Geometry.md#cyclic) [set_spline_cyclic](/docs/GeoNodes/Geometry.md#set_spline_cyclic)
+
+## Init
+
+``` python
+def __init__(self, geometry=None, selection=None, cyclic=None, node_label=None, node_color=None):
+
+    StackedNode.__init__(self, 'GeometryNodeSetSplineCyclic', node_label=node_label, node_color=node_color)
+
+    self.geometry        = geometry
+    self.selection       = selection
+    self.cyclic          = cyclic
+```

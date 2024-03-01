@@ -1,0 +1,36 @@
+# Node RandomValue
+
+- Node name : 'Random Value'
+- bl_idname : FunctionNodeRandomValue
+
+
+``` python
+RandomValue(min=None, max=None, ID=None, seed=None, probability=None, data_type='FLOAT', node_label=None, node_color=None)
+```
+##### Arguments
+
+- min : None
+- max : None
+- ID : None
+- seed : None
+- probability : None
+- data_type : 'FLOAT'
+
+## Implementation
+
+- Functions : [random_boolean](/docs/GeoNodes/index.md#random_boolean) [random_float](/docs/GeoNodes/index.md#random_float) [random_int](/docs/GeoNodes/index.md#random_int) [random_value](/docs/GeoNodes/index.md#random_value) [random_vector](/docs/GeoNodes/index.md#random_vector)
+
+## Init
+
+``` python
+def __init__(self, min=None, max=None, ID=None, seed=None, probability=None, data_type='FLOAT', node_label=None, node_color=None):
+
+    StackedNode.__init__(self, 'FunctionNodeRandomValue', node_label=node_label, node_color=node_color)
+
+    self.data_type       = data_type
+    self.min             = min
+    self.max             = max
+    self.ID              = ID
+    self.seed            = seed
+    self.probability     = probability
+```
