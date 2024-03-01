@@ -257,7 +257,7 @@ class Doc:
             path = name
         url = f"{self.link_root}/{path}.md"
         if title is not None:
-            url += "#{title.replace(' ', '-')}"
+            url += f"#{title.replace(' ', '-')}"
         return self.url(name, url)
     
     # ----------------------------------------------------------------------------------------------------
