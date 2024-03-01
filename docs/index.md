@@ -1,9 +1,9 @@
 # Index
 
-**Geometry nodes** tree : [GeoNodes](/docs/GeoNodes/GeoNodes.md)
+**Geometry nodes** tree : [GeoNodes](/docs/GeoNodes/GeoNodesTree.md)
 
-**Shader** tree : [Shader](/docs/Shader/Shader.md)
+**Shader** tree : [Shader](/docs/Shader/ShaderTree.md)
 
-**Compositor** tree : [Compositor](/docs/Compositor/Compositor.md)
+**Compositor** tree : [Compositor](/docs/Compositor/CompositorTree.md)
 
 

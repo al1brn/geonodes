@@ -16,7 +16,7 @@ BooleanMath(boolean=None, boolean_1=None, operation='AND', node_label=None, node
 ## Implementation
 
 - [Bool](/docs/GeoNodes/Bool.md) : [band](/docs/GeoNodes/Bool.md#band) [bnot](/docs/GeoNodes/Bool.md#bnot) [bor](/docs/GeoNodes/Bool.md#bor) [imply](/docs/GeoNodes/Bool.md#imply) [nand](/docs/GeoNodes/Bool.md#nand) [nimply](/docs/GeoNodes/Bool.md#nimply) [nor](/docs/GeoNodes/Bool.md#nor) [xnor](/docs/GeoNodes/Bool.md#xnor) [xor](/docs/GeoNodes/Bool.md#xor)
-- Functions : [band](/docs/GeoNodes/GeoNodes.md#band) [bnot](/docs/GeoNodes/GeoNodes.md#bnot) [bor](/docs/GeoNodes/GeoNodes.md#bor) [imply](/docs/GeoNodes/GeoNodes.md#imply) [nand](/docs/GeoNodes/GeoNodes.md#nand) [nimply](/docs/GeoNodes/GeoNodes.md#nimply) [nor](/docs/GeoNodes/GeoNodes.md#nor) [xnor](/docs/GeoNodes/GeoNodes.md#xnor) [xor](/docs/GeoNodes/GeoNodes.md#xor)
+- Functions : [band](/docs/GeoNodes/GeoNodesTree.md#band) [bnot](/docs/GeoNodes/GeoNodesTree.md#bnot) [bor](/docs/GeoNodes/GeoNodesTree.md#bor) [imply](/docs/GeoNodes/GeoNodesTree.md#imply) [nand](/docs/GeoNodes/GeoNodesTree.md#nand) [nimply](/docs/GeoNodes/GeoNodesTree.md#nimply) [nor](/docs/GeoNodes/GeoNodesTree.md#nor) [xnor](/docs/GeoNodes/GeoNodesTree.md#xnor) [xor](/docs/GeoNodes/GeoNodesTree.md#xor)
 
 ## Init
 

@@ -15,7 +15,7 @@ NamedAttribute(name=None, data_type='FLOAT', node_label=None, node_color=None)
 ## Implementation
 
 - [Geometry](/docs/GeoNodes/Geometry.md) : [named_attribute](/docs/GeoNodes/Geometry.md#named_attribute) [named_boolean](/docs/GeoNodes/Geometry.md#named_boolean) [named_color](/docs/GeoNodes/Geometry.md#named_color) [named_float](/docs/GeoNodes/Geometry.md#named_float) [named_int](/docs/GeoNodes/Geometry.md#named_int) [named_quaternion](/docs/GeoNodes/Geometry.md#named_quaternion) [named_vector](/docs/GeoNodes/Geometry.md#named_vector)
-- Functions : [named_boolean](/docs/GeoNodes/GeoNodes.md#named_boolean) [named_color](/docs/GeoNodes/GeoNodes.md#named_color) [named_float](/docs/GeoNodes/GeoNodes.md#named_float) [named_int](/docs/GeoNodes/GeoNodes.md#named_int) [named_quaternion](/docs/GeoNodes/GeoNodes.md#named_quaternion) [named_vector](/docs/GeoNodes/GeoNodes.md#named_vector)
+- Functions : [named_boolean](/docs/GeoNodes/GeoNodesTree.md#named_boolean) [named_color](/docs/GeoNodes/GeoNodesTree.md#named_color) [named_float](/docs/GeoNodes/GeoNodesTree.md#named_float) [named_int](/docs/GeoNodes/GeoNodesTree.md#named_int) [named_quaternion](/docs/GeoNodes/GeoNodesTree.md#named_quaternion) [named_vector](/docs/GeoNodes/GeoNodesTree.md#named_vector)
 
 ## Init
 

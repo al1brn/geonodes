@@ -16,7 +16,7 @@ JoinStrings(*args, delimiter=None, strings=None, node_label=None, node_color=Non
 ## Implementation
 
 - [Str](/docs/GeoNodes/Str.md) : [join_strings](/docs/GeoNodes/Str.md#join_strings)
-- Functions : [join_strings](/docs/GeoNodes/GeoNodes.md#join_strings)
+- Functions : [join_strings](/docs/GeoNodes/GeoNodesTree.md#join_strings)
 
 ## Init
 

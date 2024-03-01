@@ -9,7 +9,7 @@ SceneTime(node_label=None, node_color=None)
 ```
 ## Implementation
 
-- Functions : [frame](/docs/GeoNodes/GeoNodes.md#frame) [scene_time](/docs/GeoNodes/GeoNodes.md#scene_time) [seconds](/docs/GeoNodes/GeoNodes.md#seconds)
+- Functions : [frame](/docs/GeoNodes/GeoNodesTree.md#frame) [scene_time](/docs/GeoNodes/GeoNodesTree.md#scene_time) [seconds](/docs/GeoNodes/GeoNodesTree.md#seconds)
 
 ## Init
 

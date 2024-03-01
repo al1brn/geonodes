@@ -9,7 +9,7 @@ IsViewport(node_label=None, node_color=None)
 ```
 ## Implementation
 
-- Functions : [is_viewport](/docs/GeoNodes/GeoNodes.md#is_viewport)
+- Functions : [is_viewport](/docs/GeoNodes/GeoNodesTree.md#is_viewport)
 
 ## Init
 

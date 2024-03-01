@@ -13,7 +13,7 @@ SceneTime(tag_need_exec=None, node_label=None, node_color=None)
 
 ## Implementation
 
-- Functions : [frame](/docs/Compositor/Compositor.md#frame) [scene_time](/docs/Compositor/Compositor.md#scene_time) [seconds](/docs/Compositor/Compositor.md#seconds)
+- Functions : [frame](/docs/Compositor/CompositorTree.md#frame) [scene_time](/docs/Compositor/CompositorTree.md#scene_time) [seconds](/docs/Compositor/CompositorTree.md#seconds)
 
 ## Init
 
