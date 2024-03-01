@@ -249,7 +249,9 @@ class Doc:
         elif self.is_md:
             return f"[{name}]({url})"
     
-    def title_link(self, name, title):
+    def title_link(self, name, title=None):
+        if title is None:
+            title = name
         return self.url(name, f"#{title.replace(' ', '-')}")
     
     def page_link(self, name, path, title=None):
@@ -403,7 +405,7 @@ class Doc:
         doc.header("How to use", 1)
         doc.para("One initialized, the Doc offers a set of writing instructions:")
         with doc.bullets(item_len = len('new_line')) as b:
-            b.add('header', "Create a header at a certain level (starting from 0)")
+            b.add(doc.title_link('header'), "Create a header at a certain level (starting from 0)")
             b.add('para', "Create a simple paragraph")
             b.add('descr', "Write text as description")
             b.add('new_line', "Write a new line")
@@ -412,7 +414,7 @@ class Doc:
             b.add('source', "Write source code")
             
         doc.header("Headers", 1)
-        doc.para("Headers are created with 'doc.header' method. The level start from 0 for the main top title", new_line=False)
+        doc.para("Headers are created with `doc.header` method. The level start from 0 for the main top title", new_line=False)
         doc.para("This section uses the level 1 style. See below for upper levels:")
         doc.header("Level 2", 2)
         doc.header("Level 3", 3)
@@ -421,7 +423,7 @@ class Doc:
         
         
         doc.header("Para", 1)
-        doc.para("Text is written with 'doc.para' method.", new_line=False)
+        doc.para("Text is written with `doc.para` method.", new_line=False)
         doc.para("The paragraph uses the current 'bullets' context. see bullets")
 
         doc.source("doc.para(text, new_line=True)")    

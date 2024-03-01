@@ -6,7 +6,7 @@
 
 One initialized, the Doc offers a set of writing instructions:
 
-- header : Create a header at a certain level (starting from 0)
+- [header](#header) : Create a header at a certain level (starting from 0)
 - para : Create a simple paragraph
 - descr : Write text as description
 - new_line : Write a new line
@@ -16,7 +16,7 @@ One initialized, the Doc offers a set of writing instructions:
 
 ## Headers
 
-Headers are created with 'doc.header' method. The level start from 0 for the main top title
+Headers are created with `doc.header` method. The level start from 0 for the main top title
 This section uses the level 1 style. See below for upper levels:
 
 ### Level 2
@@ -30,7 +30,7 @@ doc.header(title, level=0)
 ```
 ## Para
 
-Text is written with 'doc.para' method.
+Text is written with `doc.para` method.
 The paragraph uses the current 'bullets' context. see bullets
 
 ``` python
@@ -62,3 +62,5 @@ Bullet points allow to write list with bullet points or numbers:
 
 
 End of demo
+
+
