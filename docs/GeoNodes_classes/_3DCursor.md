@@ -8,10 +8,10 @@ One initialized, the Doc offers a set of writing instructions:
 
 - [header](#headers) : Create a header at a certain level (starting from 0)
 - [para](#para) : Create a simple paragraph
-- descr : Write text as description
+- [descr](#descr) : Write text as description
 - new_line : Write a new line
 - sepa : Write an horizontal separator
-- bullets : List of bullet points
+- [bullets](#bullet-points) : List of bullet points
 - source : Write source code
 
 ## Headers

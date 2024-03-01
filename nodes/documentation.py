@@ -407,10 +407,10 @@ class Doc:
         with doc.bullets(item_len = len('new_line')) as b:
             b.add(doc.title_link('header', 'headers'), "Create a header at a certain level (starting from 0)")
             b.add(doc.title_link('para'), "Create a simple paragraph")
-            b.add('descr', "Write text as description")
+            b.add(doc.title_link('descr'), "Write text as description")
             b.add('new_line', "Write a new line")
             b.add('sepa', "Write an horizontal separator")
-            b.add('bullets', "List of bullet points")
+            b.add(doc.title_link('bullets', 'bullet points'), "List of bullet points")
             b.add('source', "Write source code")
             
         doc.header("Headers", 1)
