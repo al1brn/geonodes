@@ -6,30 +6,34 @@ The script creates a surface from a grid by computing
 `z = sin(d)/d` where `d=sqrt(x^2 + y^2)` is the distance of the vertex to the center.
 
 ```python
-import geonodes as gn
+from geonodes import GeoNodes, Shader
 
-with gn.Tree("Geometry Nodes") as tree:
-
+with GeoNodes("Hello World", clear=True) as tree:
+    
     # Let's document our parameters
     count  = 100  # Grid resolution
     size   = 20   # Size
     omega  = 2.   # Period
     height = 2.   # Height of the surface
     
+    
     # The base (x, y) grid
-    grid = gn.Mesh.Grid(vertices_x=count, vertices_y=count, size_x=size, size_y=size).mesh
+    grid = tree.Grid(vertices_x=count, vertices_y=count, size_x=size, size_y=size).mesh
     
     # We compute z
-    with tree.layout("Computing the wave", color="dark_rose"):
-        distance = gn.sqrt(grid.verts.position.x**2 + grid.verts.position.y**2)
-        z = height * gn.sin(distance*omega)/distance
+    with tree.layout("Computing the wave"):
+        # Separate XYZ the position vector 
+        pos = grid.position
+        # Compute the distance
+        distance = tree.sqrt(pos.x**2 + pos.y**2)
+        # Height in z
+        z = height * tree.sin(distance*omega)/distance
         
     # Let's change the z coordinate of our vertices
-    grid.verts.position += (0, 0, z)
+    grid.offset = (0, 0, z)
     
     # We are done: plugging the deformed grid as the modified geometry
-    tree.output_geometry = grid.set_shade_smooth()
-                   
+    tree.output_geometry = grid.set_shade_smooth()     
 ```
 
 The generated nodes and the result of the Geometry nodes modifier is given below:
