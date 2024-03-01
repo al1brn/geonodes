@@ -33,27 +33,550 @@ class Link:
     def text(self, target='TEXT'):
         if target == 'TEXT':
             return self.name
+        
         elif target == 'MD':
             return f"[{self.name}]({self.link})"
+    
+# ====================================================================================================
+# Split a big line in several lines
+
+def split_text(text, width, bullet=None, margin=0):
+
+    if text is None:
+        return None
+    
+    # ----- Split in lines
+    
+    lines = text.split("\n")
+    if bullet is None:
+        prefix0   = ""
+        prefix    = ""
+        rem_width = width
+    else:
+        prefix0   = bullet + " "
+        prefix    = " "*len(prefix0)
+        rem_width = width - len(prefix0)
+        
+    prefix0 = " "*margin + prefix0
+    prefix  = " "*margin + prefix
+        
+    # ----- Loop on the lines
+    
+    text = ""
+    for line in lines:
+        while len(line):
+            if len(line) > width:
+                force = True
+                for i in reversed(range(width)):
+                    if line[i] == " ":
+                        text += prefix0 + line[:i] + "\n"
+                        line = line[i+1:]
+                        force = False
+                        break
+                    
+                if force:
+                    text += prefix0 + line[:width]  + "\n"
+                    line = line[width:]
+            else:
+                text += prefix0 + line[:width]  + "\n"
+                line = ""
+            
+            prefix0 = prefix
+            
+    return text
 
 # ====================================================================================================
-# Doc specification
+# Bullets list
 
-class DocSpec:
-    def __init__(self, target='TEXT', width=100, margin=4, path=None, link_root="/docs"):
-        self.target = target
-        self.width  = width
-        self.margin = margin
-        self.path   = path
-        if self.is_md:
-            self.margin = 0
+class Bullets:
+    def __init__(self, doc, bullet="-", item_len=None, new_line=True):
+        
+        self.doc        = doc
 
+        self._bullet    = bullet
+        self.bullet     = bullet
+        self.indent     = 3 if bullet == "1" else 2
+        
+        if isinstance(item_len, (list, tuple)):
+            self.item_len = max([len(item) for item in item_len])
+        else:
+            self.item_len = item_len
+        self.item_count = 0
+        
+        self.new_line   = new_line
+        
+    def add(self, text, description=None):
+        
+        self.item_count += 1
+        
+        # ---------------------------------------------------------------------------
+        # MarkDown
+
+        if self.doc.is_md:
+            
+            s = text
+            if description is not None:
+                s = text + " : " + description
+                
+            self.doc.para(s, new_line=False)
+                
+        # ---------------------------------------------------------------------------
+        # Text
+                
+        else:
+            if self._bullet == "1":
+                self.bullet = f"{self.item_count}."
+            
+            s = text
+            if description is not None:
+                if self.item_len is not None:
+                    s = f"{s:{self.item_len}s}"
+                s += " : " + description
+                    
+            self.doc.para(s, new_line=False)
+            
+    def __enter__(self):
+        
+        self.doc.push_bullets(self)
+        return self
+
+    def __exit__(self, exc_type, exc_value, exc_tb):
+       
+        self.doc.pop_bullets()
+
+        if self.new_line:
+            self.doc.new_line()
+            
+    # ----------------------------------------------------------------------------------------------------
+    # Alphabetical list
+    
+    def alphabetical(self, dct, max_list=10):
+        
+        if isinstance(dct, (tuple, list)):
+            dct = {key: None for key in dct}
+
+        keys = sorted(dct.keys())
+        
+        # ----- A short list
+            
+        if len(dct) <= max_list:
+            for key in keys:
+                self.add(key)
+            return
+        
+        # ----- A long list
+        
+        initials = sorted(set([key[0].upper() for key in keys]))
+        for initial in initials:
+            self.add(initial, " ".join([key for key in keys if key[0].upper() == initial]))
+            
+# ====================================================================================================
+# Documentation builder
+
+class Doc:
+    def __init__(self, target='TEXT', width=100, margin=4, link_root=None):
+        
+        if target not in ['TEXT', 'MD']:
+            raise AttributeError (f"Unknown doc target '{target}'")
+
+        self.target    = target
+        self.width     = width
+        self.margin    = margin
         self.link_root = link_root
         
+        self.clear()
+        
+    # ====================================================================================================
+    # Clear
+    
+    def clear(self):
+        self._text    = ""
+        self._bullets = []
+    
+    # ====================================================================================================
+    # Constructors
+        
+    @classmethod
+    def Text(cls, width=100, margin=4):
+        return cls(target='TEXT', width=width, margin=margin)
+        
+    @classmethod
+    def MarkDown(cls, link_root="/docs"):
+        return cls(target='MD', link_root=link_root)
+    
+    @classmethod
+    def Html(cls, link_root="/docs"):
+        return cls(target='HTML', link_root=link_root)
+    
+    # ====================================================================================================
+    # Doc type
+    
+    @property
+    def is_text(self):
+        return self.target == 'TEXT'
+    
     @property
     def is_md(self):
         return self.target == 'MD'
     
+    @property
+    def is_html(self):
+        return self.target == 'HTML'
+
+    # ====================================================================================================
+    # Links
+        
+    def url(self, name, url):
+        
+        if self.is_text or url is None:
+            return name
+        
+        elif self.is_md:
+            return f"[{name}]({url})"
+    
+    def title_link(self, name, title):
+        return self.url(name, f"#{title.replace(' ', '-')}")
+    
+    def page_link(self, name, path, title=None):
+        url = f"{self.link_root}/{path}.md"
+        if title is not None:
+            url += "#{title.replace(' ', '-')}"
+        return self.url(name, url)
+    
+    # ----------------------------------------------------------------------------------------------------
+    # Bullets
+        
+    def bullets(self, bullet="-", item_len=None, new_line=True):
+        return Bullets(self, bullet=bullet, item_len=item_len, new_line=new_line)
+    
+    def push_bullets(self, bullets):
+        self._bullets.append(bullets)
+        
+    def pop_bullets(self):
+        if not len(self._bullets):
+            raise RuntimeError("Doc.pop_bullets error: pop called on empty list. problem in balance with push_bullets and pop_bullets.")
+        self._bullets.pop()
+        
+    @property
+    def bullet(self):
+        if len(self._bullets):
+            return self._bullets[-1].bullet
+        else:
+            return None
+        
+    @property
+    def indent(self):
+        return sum([bullets.indent for bullets in self._bullets[:-1]])
+    
+    # ====================================================================================================
+    # Writing document
+        
+    # ----------------------------------------------------------------------------------------------------
+    # New line
+    
+    def new_line(self):
+        self._text += "\n"
+    
+    # ----------------------------------------------------------------------------------------------------
+    # Header
+    
+    def header(self, text, level):
+        
+        if self.is_md:
+            self._text += "#" * (level + 1) + " " + text + "\n\n"
+            
+        else:
+            n = len(text)
+            if level <= 2:
+                self._text += text + "\n"
+                if level == 0:
+                    self._text += "="*self.width
+                elif level == 1:
+                    self._text += "="*n
+                elif level == 2:
+                    self._text += "-"*n
+                self._text += "\n\n"
+            else:
+                self._text += "---"*(level-2) + " " + text + "\n\n"
+        
+    # ----------------------------------------------------------------------------------------------------
+    # A paragraph
+    
+    def para(self, text, new_line=True):
+        
+        if text is None:
+            return
+        
+        bullet = self.bullet
+        indent = self.indent
+        
+        # ----- Markdown
+        
+        if self.is_md:
+            if bullet is None:
+                indent  = " "*indent
+                indent0 = indent
+            else:
+                indent0 = " "*self.indent + bullet + " "
+                indent = "\n" + " "*self.indent
+                
+            lines = text.split("\n")
+            self._text += indent0 + indent.join(lines) + "\n"
+            
+        # ----- Text
+
+        else:
+            self._text += split_text(text, self.width - self.margin - indent, bullet=bullet, margin=self.margin + indent)
+                
+        if new_line:
+            self._text += "\n"
+    
+    # ---------------------------------------------------------------------------
+    # Separator
+        
+    def sepa(self, fill=None):
+        if self.is_md:
+            self._text += "\n-----\n\n"
+        else:
+            self._text += "\n" + '-'*self.width + "\n\n"
+
+    # ---------------------------------------------------------------------------
+    # Description
+
+    def descr(self, text="", new_line=True):
+        with self.bullets(bullet=">", new_line=new_line):
+            self.para(text, new_line=False)
+            
+    # ---------------------------------------------------------------------------
+    # Source code
+    
+    def source(self, text):
+        
+        source = text.strip().replace("\t", "    ")
+
+        if self.is_md:
+            
+            self._text += "``` python\n" + source + "\n```\n"
+        
+        else:
+            lines = text.split("\n")
+            self._text += "-"*3 + " python\n\n"
+            for i, line in enumerate(lines):
+                self._text += f"{i+1:2d}. " + line + "\n"
+            self._text += "\n\n"
+           
+    # ====================================================================================================
+    # Links
+    
+    def done(self):
+        print(self._text)
+        self.clear()
+
+    # ====================================================================================================
+    # Demo
+    
+    @staticmethod
+    def demo(md=False):
+        if md:
+            doc = Doc.MarkDown()
+        else:
+            doc = Doc.Text(width=60, margin=4)
+
+        doc.header(f"Doc demo, target {doc.target}", 0)
+        doc.descr("This is a demo of class 'Doc' which allows to build document with a set a basic instructions.")
+        
+        doc.header("How to use", 1)
+        doc.para("One initialized, the Doc offers a set of writing instructions:")
+        with doc.bullets(item_len = len('new_line')) as b:
+            b.add('header', "Create a header at a certain level (starting from 0)")
+            b.add('para', "Create a simple paragraph")
+            b.add('descr', "Write text as description")
+            b.add('new_line', "Write a new line")
+            b.add('sepa', "Write an horizontal separator")
+            b.add('bullets', "List of bullet points")
+            b.add('source', "Write source code")
+            
+        doc.header("Headers", 1)
+        doc.para("Headers are created with 'doc.header' method. The level start from 0 for the main top title", new_line=False)
+        doc.para("This section uses the level 1 style. See below for upper levels:")
+        doc.header("Level 2", 2)
+        doc.header("Level 3", 3)
+        doc.header("Level 4", 4)
+        doc.source("doc.header(title, level=0)")
+        
+        
+        doc.header("Para", 1)
+        doc.para("Text is written with 'doc.para' method.", new_line=False)
+        doc.para("The paragraph uses the current 'bullets' context. see bullets")
+
+        doc.source("doc.para(text, new_line=True)")    
+        doc.header("Arguments:", 2)
+        with doc.bullets(item_len=len('new_line (bool=True)')) as b:
+            b.add('text (str)', "Text to write")
+            b.add('new_line (bool=True)', "Add an additional new line at the end")
+            
+        doc.header("Descr", 1)
+        doc.para("The 'doc.descr', method use the '>' bullet for the paragraphs.")
+        
+        doc.header("Bullet points", 1)
+        doc.para("Bullet points allow to write list with bullet points or numbers:")
+        with doc.bullets(item_len=10) as b:
+            b.add("First item", "Item description")
+            b.add("Second item", "Items of a list can simple text or a couple (item, description)")
+            b.add("Not described item")
+            b.add("With a sub list", "Lists can be nested")
+            with doc.bullets(bullet="1", new_line=False) as b1:
+                b1.add("Order item", "Example of an order list")
+                b1.add("Other ordered items", "Which follows the same principe")
+                b1.add("Not described item")
+            b.add("Item", "Back to the main list")
+            
+        doc.done()
+                
+
+Doc.demo('MD')
+            
+            
+# ====================================================================================================
+# Document part
+
+class DocPart:
+    def __init__(self, doc, indent=0):
+        self.doc    = doc
+        self.indent = indent
+        
+    @property
+    def width(self):
+        if self.doc is None:
+            return self._width
+        else:
+            return self.doc.width - self.indent - self.doc.margin
+        
+    @property
+    def margin(self):
+        if self.doc is None:
+            return self._margin
+        else:
+            return self.doc.margin
+        
+    @property
+    def link_root(self):
+        if self.doc is None:
+            return self._link_root
+        else:
+            return self.doc.link_root
+        
+    @property
+    def child_indent(self):
+        if hasattr(self, 'bullet'):
+            if self.bullet is None:
+                return self.indent
+            elif self.bullet == "1":
+                return self.indent + 3
+            else:
+                return self.indent + 2
+        else:
+            return self.indent
+    
+
+        
+    
+    
+# ====================================================================================================
+# Text part
+
+class TextPart(DocPart):
+    def __init__(self, doc, text="", indent=0, bullet=None):
+
+        self.doc    = doc        
+        self.indent = indent
+        self.bullet = bullet
+        
+        self._text  = str(text)
+        
+    # ====================================================================================================
+    # Part infos
+    
+    @property
+    def width(self):
+        return self.doc.width - self.indent - self.doc.margin
+    
+    @property
+    def bullet_len(self):
+        return 0 if self.bullet is None else (3 if self.bullet == '1' else 2)
+    
+    # ====================================================================================================
+    # Resulting text
+    
+    @property
+    def text(self):
+        return self._text
+        
+            
+# ====================================================================================================
+# List of parts
+
+class Parts(DocPart):
+    def __init__(self, doc, part, indent=0):
+        
+        super().__init__(doc, indent)
+        
+        if part is None:
+            self._parts = []
+        else:
+            self._parts = [part]
+        
+    # ====================================================================================================
+    # Parts management
+    
+    @property
+    def part(self):
+        return self._parts[-1]
+    
+    def add_part(self, part):
+        self._parts.append(part)
+        return part
+        
+    def new_text_part(self, text="", indent=0, bullet=None):
+        return self.add_part(TextPart(self.doc, text=text, indent=self.indent + indent, bullet=bullet))
+    
+    # ====================================================================================================
+    # Writing document
+        
+    # ----------------------------------------------------------------------------------------------------
+    # New line
+    
+    def new_line(self):
+        return self.part.new_line()
+    
+    # ----------------------------------------------------------------------------------------------------
+    # Header
+    
+    def header(self, text, level):
+        return self.part.header(text, level)
+        
+    # ----------------------------------------------------------------------------------------------------
+    # A paragraph
+    
+    def para(self, text, bullet=None, new_line=True):
+        return self.part.para(text, bullet=bullet, new_line=new_line)
+    
+    # ----------------------------------------------------------------------------------------------------
+    # Bullets
+        
+    def bullets(self, bullet="-", new_line=True):
+        return Bullets(self, bullet=bullet, new_line=new_line)
+    
+    
+    # ====================================================================================================
+    # Resulting text
+    
+    @property
+    def text(self):
+        return "\n".join([part.text for part in self._parts])
+
+
+
 # ====================================================================================================
 # Split a big line in several lines
 
@@ -126,6 +649,53 @@ def sort_dict(dct, field, none_key=None):
 
 # ====================================================================================================
 # Doc items
+
+class Text:
+    
+    text_type = 'TEXT'
+    
+    def __init__(self, text, indent=0, bullet=None):
+        
+        self.text       = text
+        self.indent     = indent
+        self.bullet     = bullet
+        self.use_margin = use_margin
+        
+    def __str__(self):
+        return f"<Text {self.indent}, {self.bullet}, {self.text[:20]}>"
+    
+    
+    def get_text(self, doc_spec):
+        
+        if self.text is None:
+            return None
+        
+        elif doc_spec.target == 'MD':
+            lines = self.text.split("\n")
+            if self.bullet == "1":
+                return self.indent
+                
+            else:
+                n = 2
+                
+            
+            
+            
+            return self.bullet + " " + self.text + "\n"
+        
+        
+        
+        if self.text is None:
+            return [""]
+        
+        elif doc_spec.target == 'MD':
+            return ['  '*self.level + self.text]
+        
+        else:
+            return split_line(self.text, doc_spec.width, indent=self.level)
+
+
+
 
 # ----------------------------------------------------------------------------------------------------
 # Base text
@@ -282,77 +852,11 @@ class Source(DocText):
             return lines
             
         
-# ====================================================================================================
-# List
-
-class List:
-    def __init__(self, doc, title=None, bullet="-", new_line=True):
-        self.doc      = doc
-        self.paras    = []
-        self.title    = title
-        self.bullet   = bullet
-        self.new_line = True
-        
-    def add(self, label, description=None):
-        para = Paragraph(str(description), level=self.level, bullet=self.bullet, item=label)
-        self.doc.add(para)
-        self.paras.append(para)
-        
-        if label is not None:
-            self.item_len = max(self.item_len, len(label))
-        
-    def __enter__(self):
-
-        if self.title is not None:
-            #self.doc.add(Header(self.title, 2, indent=self.doc.list_level, use_margin=True))
-            if self.doc.is_md:
-                self.doc.add(Paragraph(self.title, level=self.doc.list_level))
-            else:
-                self.doc.add(Paragraph(self.title, level=self.doc.list_level), Paragraph('-'*len(self.title), level=self.doc.list_level))
-
-            self.doc.list_level += 1
-        
-        self.level    = self.doc.list_level
-        self.bullet   = ['o', '-', '.', ':'][self.level % 4] if self.bullet is None else self.bullet
-        self.item_len = 1
-        self.doc.list_level += 1
-        return self
-
-    def __exit__(self, exc_type, exc_value, exc_tb):
-        self.doc.list_level -= 1 if self.title is None else 2
-        for para in self.paras:
-            para.item_len = self.item_len
-        if self.new_line:
-            self.doc.add(new_line=True)
-            
-    # ----------------------------------------------------------------------------------------------------
-    # Alphabetical list
-    
-    def alphabetical(self, dct, max_list=10):
-        
-        if isinstance(dct, (tuple, list)):
-            dct = {key: None for key in dct}
-
-        keys = sorted(dct.keys())
-        
-        # ----- A short list
-            
-        if len(dct) <= max_list:
-            for key in keys:
-                self.add(key)
-            return
-        
-        # ----- A long list
-        
-        initials = sorted(set([key[0].upper() for key in keys]))
-        for initial in initials:
-            self.add(initial, " ".join([key for key in keys if key[0].upper() == initial]))
-    
 
 # ====================================================================================================
 # Documentation builder
 
-class Doc:
+class Doc_OLD:
     def __init__(self, doc_spec=None):
         
         self.doc_spec = DocSpec() if doc_spec is None else doc_spec
