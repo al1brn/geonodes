@@ -294,7 +294,7 @@ def clamp(self, min=None, max=None, clamp_type='MINMAX', node_label=None, node_c
 
 ##### Arguments
 
-- color_ramp : <bpy_struct, ColorRamp at 0x114898238>
+- color_ramp : <bpy_struct, ColorRamp at 0x12ef302e8>
 - node_label : None
 - node_color : None
 
@@ -468,7 +468,7 @@ def exp(self, use_clamp=False, node_label=None, node_color=None):
 ##### Arguments
 
 - factor : None
-- mapping : <bpy_struct, CurveMapping at 0x2c74936a8>
+- mapping : <bpy_struct, CurveMapping at 0x2a7008e48>
 - node_label : None
 - node_color : None
 

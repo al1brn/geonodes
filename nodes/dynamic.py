@@ -599,10 +599,12 @@ def print_md_doc(folder="/Users/alain/Documents/blender/scripts/modules/geonodes
         
         # ----- Node classes
         
-        for class_name, dyn in constants.NODES[tree_type].items():
+        for bl_idname, dyn in constants.NODES[tree_type].items():
+            print("dynamic", bl_idname, dyn)
+            
             doc = Doc.MarkDown(link_root=link_root)
             dyn.node_print_doc(target_doc=doc)
-            doc.done(file_name=file_root / f"{class_name}.md")
+            doc.done(file_name=file_root / f"{dyn.dyn_class.__name__}.md")
         
         
     print("Document done")
