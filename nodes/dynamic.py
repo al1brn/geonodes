@@ -343,7 +343,7 @@ class Dynamic:
             
             doc.header("Socket classes", 2)
 
-            links = {class_name: doc.page_link(class_name, f"{tree_type}/{class_name}") for class_name in constants.SOCKETS[tree_type]}
+            links = {class_name: doc.page_link(class_name, class_name) for class_name in constants.SOCKETS[tree_type]}
             with doc.bullets() as bullets:
                 bullets.alphabetical(links, len(links))
                 
@@ -351,7 +351,7 @@ class Dynamic:
             
             doc.header("Node classes", 2)
             
-            links = {dyn.node_info.class_name: doc.page_link(dyn.node_info.class_name, f"{tree_type}/{dyn.node_info.class_name}") for bl_idname, dyn in constants.NODES[tree_type].items()}
+            links = {dyn.node_info.class_name: doc.page_link(dyn.node_info.class_name, dyn.node_info.class_name) for bl_idname, dyn in constants.NODES[tree_type].items()}
             with doc.bullets() as bullets:
                 bullets.alphabetical(links)
                 
@@ -564,6 +564,7 @@ def print_md_doc(folder="/Users/alain/Documents/blender/scripts/modules/geonodes
         file_root = root / tree_class.__name__
         
         doc = Doc.MarkDown(link_root=link_root)
+        
         # ----- Tree class
         
         dyn_tree.tree_print_doc(None, target_doc=doc)
