@@ -226,20 +226,19 @@ sure = yes * no    # Operator * can be used as logical and
 
 See [Nodes parameters and method names](/docs/nodes_and_sockets.md#nodes-parameters-and-method-names)
 
-### Nodes methods
+### Sockets methods
 
 The call of a data socket method creates a Geometry node which performs the expected operation.
 
 ```python
-    z = gn.Float(1)
-    grid.set_position(offset=(0, 0, z))    
+    grid.set_position(offset=(0, 0, a))    
 ```
 
 The node 'Set Position' has 4 input sockets (Geometry, Selection, Position, Offset). In this example, the node is created with the following links:
 - Geometry : linked with the output socket **Mesh** of the 'Grid' node
 - Selection : no link
 - Position : no link
-- Offset : linked ot the output socket **Vector** of a 'Combine XYZ' node
+- Offset : linked to the output socket **Vector** of a 'Combine XYZ' node
 
 This is illustrated here below:
 
