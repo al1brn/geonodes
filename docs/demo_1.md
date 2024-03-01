@@ -171,26 +171,7 @@ In the resulting tree, the node 'Grid' is now fed by one node and a user paramet
 In our demo, the initial grid is created with the following line:
 
 ```python
-    grid = gn.Mesh.Grid(vertices_x=count, vertices_y=count, size_x=size, size_y=size).mesh
-```
-
-Geometry creation is done through the nodes located in the Blender add menus **Mesh Primitives** and **Curve Primitives**.
-
-In **geonodes**, these nodes are implemented as **constructors** (_class_ or _static_ methods) of [Mesh](/docs/sockets/Mesh.md) of [Curve](/docs/sockets/Curve.md) classes.
-
-From Blender V3.5, mesh primitives such as Grid or UVSphere nodes have two output sockets : **Mesh** and **UV Map**. When a node has more than one socket, the function returns the node itself rather than a socket:
-
-```python
-    # Grid node chas two output sockets
-    grid_node = gn.Mesh.Grid() # Node
-    grid = grid_node.mesh
-    uv_map = grid_node.uv_map
-    
-    # Circle node has only one output socket
-    circle = gn.Mesh.Circle() # Mesh
-    
-    # Join the two meshes
-    gn.output_geometry = grid + circle 
+    grid = tree.Grid(vertices_x=count, vertices_y=count, size_x=size, size_y=size).mesh
 ```
 
 ### Layouts
@@ -198,12 +179,12 @@ From Blender V3.5, mesh primitives such as Grid or UVSphere nodes have two outpu
 Layouts are ways to make the trees clearer. Creating a layout is done in the context of `with` syntax: any new node created in the scope of a `with` is included in the layout:
 
 ```python
-    with tree.layout("Computing the wave", color="dark_rose"):
+    with tree.layout("Computing the wave"):
     
         # From now on, nodes will be created in a dark pink layout
         
-        distance = gn.sqrt(grid.position.x**2 + grid.position.y**2)
-        z = height * gn.sin(distance*omega)/distance
+        distance = tree.sqrt(grid.position.x**2 + grid.position.y**2)
+        z = height * tree.sin(distance*omega)/distance
         
    # New nodes are created out of the previous layout
 ```
@@ -214,30 +195,30 @@ Note that layouts can be imbricated.
 
 ### Math
 
-**geonodes** provides math functions such as `sin`, `arccos` or `color_subtract` based on the nodes 'Math', 'Vector Math' and 'Boolean Math'... Here after are examples of valid operations:
+`GeoNodes` class provides math functions such as `sin`, `arccos` or `color_subtract` based on the nodes 'Math', 'Vector Math' and 'Boolean Math'... Here after are examples of valid operations:
 
 ```python
-a = gn.Float(10)         # The node "Value"
-a += 3                   # Node "Math" between previous node and default value 3
-b = gn.sin(a)            # Math operations are implemented as functions
-v = gn.Vector((1, 2, 3)) # Node "Combine XYZ"
-w = v - (2, 3, a)        # Vector math between the previous vector and a "Combine XYZ" node
+a = tree.Float(1           # The node "Value"
+a += 3                     # Node "Math" between previous node and default value 3
+b = tree.sin(a)            # Math operations are implemented as functions
+v = tree.Vector((1, 2, 3)) # Node "Combine XYZ"
+w = v - (2, 3, a)          # Vector math between the previous vector and a "Combine XYZ" node
 ```
 
 #### Boolean math
 
-Python bool operators `and`, `or` and `not` are reserved keywords. **geonodes** functions are respectively named `b_and`, `b_or` and `b_not`:
+Python bool operators `and`, `or` and `not` are reserved keywords. **geonodes** functions are respectively named `band`, `bor` and `bnot`:
 
 ```python
-yes = gn.Boolean(True)
-no = yes.b_not()            # Don't use no = not yes
-perhaps = gn.b_or(yes, no)  # don't use perhaps = yes or no
+yes = tree.Boolean(True)
+no = yes.bnot()              # Don't use no = not yes
+perhaps = tree.bor(yes, no)  # don't use perhaps = yes or no
 ```
 
 The basic logical operations are implemented with math operator `+`, `*` and `-`:
 
 ```python
-yes = gn.Boolean(True)
+yes = tree.Boolean(True)
 no = -yes          # Unary operator can be used as logical not
 perhaps = yes + no # Operator + can be used as logical or
 sure = yes * no    # Operator * can be used as logical and 
