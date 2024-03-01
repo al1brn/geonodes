@@ -57,3 +57,8 @@ Bullet points allow to write list with bullet points or numbers:
   1. Other ordered items : Which follows the same principe
   1. Not described item
 - Item : Back to the main list
+
+  Text can be added to a bullet point as a complementary paragraph to the current bullet.
+
+
+End of demo
