@@ -47,17 +47,17 @@ with GeoNodes("Hello World", clear=True) as tree:
     # We compute z
     with tree.layout("Computing the wave"):
         # Separate XYZ the position vector 
-        s_pos = tree.position().separate_xyz()
+        pos = grid.position
         # Compute the distance
-        distance = tree.sqrt(s_pos.x**2 + s_pos.y**2)
+        distance = tree.sqrt(pos.x**2 + pos.y**2)
         # Height in z
         z = height * tree.sin(distance*omega)/distance
         
     # Let's change the z coordinate of our vertices
-    grid.set_position(offset=(0, 0, z))
+    grid.offset = (0, 0, z)
     
     # We are done: plugging the deformed grid as the modified geometry
-    tree.output_geometry = grid.set_shade_smooth()     
+    tree.output_geometry = grid.set_shade_smooth()          
 ```
 
 > See [Demo details](docs/demo_1.md)
