@@ -1,6 +1,6 @@
 # Index
 
-**Geometry nodes*$ : [GeoNodes class](/docs/GeoNodes/GeoNodes.md)
+**Geometry nodes** : [GeoNodes class](/docs/GeoNodes/GeoNodes.md)
 
 **Shader** : [Shader class](/docs/GeoNodes/Shader.md)
 
