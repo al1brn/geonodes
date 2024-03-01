@@ -246,67 +246,55 @@ This is illustrated here below:
 
 ### Domains
 
-Geometry domains are implemented as properties of the geometry classes:
+Some nodes accept a **domain** parameter. For instance the node **StoreNamedAttribute** must specify a domain where to store the attribute.
+An alternative syntax is proposed to simplify the code:
 
-- Mesh:
-  - verts
-  - faces
-  - edges
-  - corners
-- Curve
-  - points
-  - splines
-- Points (cloud points)
-  - points
-- Instances
-  - insts
+``` python
+geo.store_named_attribute("name", attribute=value, domain='FACE')
 
-Writing `grid.set_position()` means that you change the position of the grid.
-**But this is not what is done!**. In fact, you change the position of the **vertices** of the grid.
+# is equivalent to:
 
-This is why, it is far more better to write:
-
-```python
-grid.verts.position += (0, 0, z)
+geo.FACE.store_named_attribute("name", attribute=value)
 ```
 
-#### Domains selection
+### Selection
 
-Operations on domains use a **Selection** input socket. This feature is implemented as indexing the domain. The index can be either a **Boolean** or an **Integer**:
+The selection socket can be replaced by item selector syntax:
 
-- Indexing with a **Boolean**:
+``` python
+# Selection of vertices by their index
+selection = geo.index.greater_then(10)
 
-  Since the **Selection** input socket, the boolean value is plugged into the socket.
+# Change the position of these vertices
+geo.set_position(position=some_vector, selection=selection)
 
-  ```python
-  # Only one vertex on two will be changed
-  grid.verts[(grid.verts.index % 2).equal(0)].position += (1, 2, 3)
-  ```
+# Is equivalent to
+geo[selection].set_position(position=some_vector)
+```
 
-- Indexing with **Integer**:
+Rather than a bool selection, the selector can be an integer. In that case, **geonodes** generates the nodes to compare the index with the passes argument:
 
-  The integer is compare to the value in order to produce a **Boolean** value:
+``` python
 
-  ```python
-  # Change position of vertex 10
-  grid.verts[10].position += (1, 2, 3)
-  ```
+# ----- index equal a value
+geo.set_position(position=v, selection=geo.index.equal(some_index))
 
-  The slice syntax is valid and is implemented with a 'Compare' Node:
+# is equivalent to
+geo[some_index].set_position(position=v)
 
-  ```python
-  # The vertices between 5000 and 8000 will be changed
-  grid.verts[5000:8000].position += (1, 2, 3)
-  ```
+# ----- index in a range (python int only)
+geo.set_position(position=v, selection=geo.index.greather_than(10) * geo.index.greather_than(20))
 
-  
-Indexing can be chained, in that case the conditions are combined with a 'And' node:
+# is equivalent to
+geo[10:20].set_position(position=v)
+```
 
-  ```python
-  # Vertices with even index between 5000 and 8000
-  grid.verts[(grid.verts.index % 2).equal(0)][5000:8000].position += (0, 0, z)
-  ```
+Selection and domain shortcut can be comabined
 
+``` python
+# Store the value 15 on the faces indexed between 10 and 20
+geo.FACE[10:20].store_named_attribute("name", attribute=15)
+``` 
 
 
 ### Output geometry
