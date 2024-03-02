@@ -1,9 +1,10 @@
 # Getting started
 
 - [Prerequisites](#prerequisites)
-  - [3 types of nodes trees](#3-types-of-nodes-trees)
-  - [Importing the module](#importing-the-module)
+  - [3 Types of Nodes Trees](#3-types-of-nodes-trees)
+  - [Importing the Module](#importing-the-module)
 - [Creating a new Tree](#creating-a-new_tree)
+  - [Creating a Group](#creating-a-group)
 - [Creating a Node](#creating-a-node)
   - [Node Sockets](#node-sockets)
   - [Links](#links)
@@ -11,6 +12,7 @@
   - [Node parameters](#node-parameters)
   - [Node init arguments order](#node-init-arguments-order)
   - [Multi Input Sockets](#multi-input-sockets)
+  - [Input and Output Nodes](#input-and-output-nodes)
 - [Socket Classes](#socket-classes)
 
 ## Prerequisites
@@ -22,7 +24,7 @@ To use the **geonodes** python module, you are supposed to be familiar with:
 
 Install the version of **geonodes** compatible with the Blender version you use.
 
-### 3 types of nodes trees
+### 3 types of Nodes Trees
 
 **geonodes** support 3 types of nodes trees:
 
@@ -33,7 +35,7 @@ Install the version of **geonodes** compatible with the Blender version you use.
 Once initialized as described below, there is no major differences in the behavior.
 Differences exists in the inputs and outputs of the trees and on the set of possible nodes.
 
-### Importing the module
+### Importing the Module
 
 We suppose that all scripts start with the following import instruction:
 
@@ -70,9 +72,9 @@ with Compositor("Scene.001") as tree:
 
 > :warning: when opening a tree, the existing nodes are deleted!
 
-### Creating a group
+### Creating a Group
 
-A **Node Group** can be created by using the `is_group`:
+A **Node Group** can be created by using the `is_group` argument:
 
 ```python
 with GeoNodes("My Group", is_group=True):
@@ -242,6 +244,24 @@ with GeoNodes("Geometry Nodes") as tree:
     joined_geo = tree.JoinGeometry(geo1, geo2, geo3).geometry
 ```
 
+### Input and Output Nodes
+
+Tree classes have optional input and output nodes named `tree.input_node` and `tree.output_node`.
+The type of these nodes depends upon the type of tree:
+
+- `GeoNodes` : Geometry Nodes **Group Input** and **Group Output**
+- `Shader` : only **Material Output** node
+- `Compositor` : **Render Layers** and **Composite**
+- `Group` (`is_group = True`) : **Group Input** and **Group Output**
+
+In the following example we connect the tree input geometry to the tree output geometry:
+
+``` python
+with GeoNodes("Do Nothing") as tree:
+    tree.output_node.geometry = tree.input_node.geometry
+``` 
+
+
 ## Socket Classes
 
 One could implement any tree by simply creating nodes and setting sockets input sockets from output sockets.
@@ -311,7 +331,107 @@ Normally, the socket classes are never directly instantied but are read from nod
 
 > :warning: not all types exist in the different trees : **GeoNodes**, **Shader** and **Compositor**.
 
-### Primit
+### Tree input and output Sockets
+
+As mentioned in the section [Input and Output Nodes](#input-and-output-nodes), the input and output nodes
+can be read from a tree through its attributes `tree.input_node` and `tree.output_node`.
+
+The default sockets can be directly read with dedicated attributes:
+
+- GeoNodes
+  - `tree.input_geometry` (shortcut `tree.ig`) : input ***Geometry*** socket
+  - `tree.output_geometry` (shortcut `tree.og`) : output ***Geometry*** socket
+- Shader
+  - `tree.output_surface` : output ***Surface*** socket
+  - `tree.output_volume` : output ***Volume*** socket
+  - `tree.output_displacement` : output ***Displacement*** socket
+- Compositor
+  - `tree.use_alpha` : parameter ***Use Alpha*** of the output node
+  - `tree.output_image` : output ***Image*** socket
+  - `tree.output_alpha` : output ***Alpha*** socket
+  
+In the example below, a "Do Nothing" geometry nodes tree is created:
+
+``` python
+with GeoNodes("Do Nothing") as tree:
+    tree.og = tree.ig
+```
+
+### Creating group input sockets
+
+Tree groups and geometry nodes tree accept user created sockets.
+To create custom sockets, use the methods `tree.xxx_input()` methods where `xxx` is the type
+of socket input you want.
+
+Sockets of type `FLOAT` and `VECTOR` accept sub types. The example below show all the possible inputs:
+
+``` python
+with GeoNodes("All inputs") as tree:
+    
+    val = 123
+    min_value = 0
+    max_value = 1000
+    
+    # Integers
+    
+    tree.int_input(           "Int",            value=val, min_value=min_value, max_value=max_value, description="Int")
+    tree.integer_input(       "Integer",        value=val, min_value=min_value, max_value=max_value, description="Integer")
+    tree.int_factor_input(    "Int Factor",     value=val, min_value=min_value, max_value=max_value, description="Int Factor")
+    tree.int_percentage_input("Int Percentage", value=val, min_value=min_value, max_value=max_value, description="Int Percentage")
+    
+    # Floats
+
+    tree.float_input(        "Float",       value=val, min_value=min_value, max_value=max_value, description="Float")
+    tree.value_input(        "Value",       value=val, min_value=min_value, max_value=max_value, description="Value")
+    tree.angle_input(        "Angle",       value=val, min_value=min_value, max_value=max_value, description="Angle")
+    tree.distance_input(     "Distance",    value=val, min_value=min_value, max_value=max_value, description="Factor")
+    tree.factor_input(       "Factor",      value=val, description="")
+    tree.percentage_input(   "Percentage",  value=val, min_value=min_value, max_value=max_value, description="Percentage")
+    tree.time_input(         "Time",        value=val, min_value=min_value, max_value=max_value, description="Time")
+    tree.time_absolute_input("Time abs",    value=1., min_value=min_value, max_value=max_value, description="Time Absolute")
+    
+    # Rotation and vectors
+    
+    tree.rotation_input("Rotation", value=None, min_value=None, max_value=None, description="")
+
+    tree.vector_input(      "Vector",       value=val, min_value=min_value, max_value=max_value, description="Vector")
+    tree.translation_input( "Translation",  value=val, min_value=min_value, max_value=max_value, description="Translation")
+    tree.direction_input(   "Direction",    value=val, min_value=min_value, max_value=max_value, description="Direction")
+    tree.velocity_input(    "Velocity",     value=val, min_value=min_value, max_value=max_value, description="Velocity")
+    tree.acceleration_input("Acceleration", value=val, min_value=min_value, max_value=max_value, description="Acceleration")
+    tree.euler_input(       "Euler",        value=val, min_value=min_value, max_value=max_value, description="Euler")
+    tree.xyz_input(         "xyz",          value=val, min_value=min_value, max_value=max_value, description="xyz")
+    
+    # Geometry
+    
+    tree.geometry_input(    "Geometry",     value=None, description="Geometry")
+    
+    # Other
+    
+    tree.bool_input(        "Bool",         value=True,         description="Bool")
+    tree.color_input(       "Color",        value=(.2, .3, 5),  description="Color")
+    tree.string_input(      "String",       value="Def string", description="String")
+    
+    # Blender data
+
+    tree.collection_input(  "Collection",   value=None,         description="Collection")
+    tree.image_input(       "Image",        value=None,         description="Image")
+    tree.material_input(    "Material",     value=None,         description="Material")
+    tree.object_input(      "Object",       value=None,         description="Object")
+    tree.texture_input(     "Texture",      value=None,         description="Texture")
+```
+
+
+
+
+
+
+
+
+  
+  
+
+
 
 
 
