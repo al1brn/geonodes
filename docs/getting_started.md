@@ -764,11 +764,11 @@ with GeoNodes("Demo") as tree:
 
 ## Simulation and Repeat Zones
 
-**Simulation** and **Repeat** zones are created in the same way, using context managers `tree.simulation()` and `'tree.repeat()`:
+**Simulation** and **Repeat** zones are created in the same way, using context managers `tree.simulation()` and `tree.repeat()`:
 
 The sockets required within the zone are created as arguments of the `simulation` and `repeat` methods and are then refered as properties of the zone:
 
-- `with tree.Simulation(geometry=None, hue=1.) as simul` :
+- `with tree.simulation(geometry=None, hue=1.) as simul` :
   - `geometry` socket is initialized to None
   - `hue` can be read with `simul.hue`
   - `a = simul.geometry` : read the geometry from the input node of the zone
@@ -779,17 +779,15 @@ After the `with` block, the result of the simulation can be read with `simul.geo
 The example below shows a simple example of a simulation zone:
 
 ``` python
-# This shader will be used in the geometry nodes
-
+# A Shader to be used by the Geometry Nodes modifier
 with Shader("Mat Demo") as tree:
     # Build a color base on the arribute hue
     hue = tree.Attribute("hue").fac
     col = tree.CombineColor(hue, 1, 1, mode='HSV')
     ped = tree.PrincipledBSDF(base_color=col)
     tree.output_surface = ped.bsdf
-    
-# The geometry nodes modifier
 
+# The Geometry Nodes modifier
 with GeoNodes("Demo") as tree:
     
     # Create a Simulation zone
@@ -812,7 +810,7 @@ with GeoNodes("Demo") as tree:
         
         # Increase the age
         age = simul.geometry.named_int("age")
-        simul.geometry.store_named_int("age", age + 1)
+        simul.geometry.POINT.store_named_int("age", age + 1)
         
         # Delete old points
         simul.geometry.POINT[age.greater_than(20)].delete_geometry()
@@ -831,6 +829,39 @@ with GeoNodes("Demo") as tree:
 ```
 
 <img src="images/gs_img_07.png" width="600" class="center">
+
+The example below gives a simple example of a **Repeat** zone:
+
+``` python
+with GeoNodes("Demo") as tree:
+    
+    count = tree.integer_input("Number of layers", 10, min_value=1, max_value=100)
+    
+    # Create several planes rotating
+    with tree.repeat(planes=None, iterations=count, z=0., rot=0., scale=1., dz=.2) as rep:
+        
+        # Create a new plane
+        plane = tree.cube()
+        
+        # Rotate and scale
+        plane.transform_geometry(translation=(0, 0, rep.z), rotation=(0, 0, rep.rot), scale=(rep.scale, rep.scale, .01))
+        
+        # Join to the planes
+        rep.planes.join_geometry(plane)
+        
+        # Update the loop variales
+        rep.z  += rep.dz
+        rep.dz *= .9
+        rep.rot  += .1
+        rep.scale *= .95
+    
+    # Output the result     
+    tree.og = rep.planes
+```
+
+<img src="images/gs_img_08.png" width="600" class="center">
+
+
 
 
 

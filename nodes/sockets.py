@@ -315,8 +315,6 @@ class Socket:
     def __add__(self, other):
         stype = self._socket_type
         
-        print("HERE ADD", stype)
-        
         if stype in ['VALUE', 'INT', 'VECTOR', 'ROTATION']:
             return self.add(other)
         
@@ -902,7 +900,7 @@ class Geometry(Socket):
             domain = self._domain
             self._domain = None
             
-            if True:
+            if False:
                 print(f"GEOMETRY._get_domain({default}, {DOMAIN_VALUES}): // _domain={domain}")
             
             if domain is None or DOMAIN_VALUES is None:
