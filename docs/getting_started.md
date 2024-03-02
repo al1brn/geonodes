@@ -477,10 +477,8 @@ with GeoNodes("Some computation") as tree:
     z = 3*tree.sin(distance*10)/distance
 ```
 
-<img src="images/simulation_zone_closed.png" width="600" class="center">
+<img src="images/gs_img_01.png" width="600" class="center">
 
-
-![Texte alternatif](/images/gs Img 01.png "Nodes").
 
 
 
