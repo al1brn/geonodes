@@ -769,7 +769,7 @@ with GeoNodes("Demo") as tree:
 The sockets required within the zone are created as arguments of the `simulation` and `repeat` methods and are then refered as properties of the zone:
 
 - `with tree.simulation(geometry=None, hue=1.) as simul` :
-  - `geometry` socket is initialized to None
+  - `geometry` socket is initialized to `None`
   - `hue` can be read with `simul.hue`
   - `a = simul.geometry` : read the geometry from the input node of the zone
   - `simul.geometry = geo` : write the geometry to the output node of the zone
@@ -814,9 +814,6 @@ with GeoNodes("Demo") as tree:
         
         # Delete old points
         simul.geometry.POINT[age.greater_than(20)].delete_geometry()
-        
-        # Decrease hue
-        simul.hue += 1.13
         
     # Cubes on points
     geo = simul.geometry.instance_on_points(instance=tree.Cube(size=.1))
