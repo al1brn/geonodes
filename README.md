@@ -21,8 +21,7 @@ You keep the full power of Blender geometry nodes but with the elegance of Pytho
 - [API reference](docs/index.md)
 - Tutorials by examples:
   - [Building an arrow](docs/arrow.md)
-  - [Simulation](docs/simulation.md) : how to create and use a simulation zone
-
+    
 ## Better a demo than long words
 
 The following script creates a surface from a grid by computing
