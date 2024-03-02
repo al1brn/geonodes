@@ -153,7 +153,7 @@ class StackedTree:
         """ Boolean input
         class_name = Boolean
         """
-        return self.Boolean(boolean, node_label=node_label, node_color=node_color).boolean
+        return self.Boolean(boolean, node_label=node_label, node_color=node_color).output_socket
     
     def color(self, color, node_label=None, node_color=None):
         """ A color socket either from CombineColor or from Color

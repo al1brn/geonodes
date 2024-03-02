@@ -315,10 +315,13 @@ class Socket:
     def __add__(self, other):
         stype = self._socket_type
         
+        print("HERE ADD", stype)
+        
         if stype in ['VALUE', 'INT', 'VECTOR', 'ROTATION']:
             return self.add(other)
         
         elif stype == 'BOOLEAN':
+            
             return self.bor(other)
         
         elif stype == 'STRING':

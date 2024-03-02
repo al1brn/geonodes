@@ -382,6 +382,9 @@ class Tree(StackedTree):
     def bool_input(self, name, value=None, description=""):
         return self.new_input('NodeSocketBool', name, value=value, description=description)
     
+    def boolean_input(self, name, value=None, description=""):
+        return self.new_input('NodeSocketBool', name, value=value, description=description)
+    
     # ----- Float subtypes
 
     def float_input(self, name, value=None, min_value=None, max_value=None, description=""):
