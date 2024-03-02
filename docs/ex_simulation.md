@@ -2,13 +2,13 @@
 
 > Example of simulation zone
 
-Simulation zone is created with `tree.simulation` method using a `with` statement.
+Simulation zone is created with `tree.simulation` method using a `with` block.
 Loop variables are created with `kwargs` syntax:
 
 ``` python
 # Create a simulation zone with age loop parameter
 with tree.simulation(geometry=tree.ig, age=10):
-   ...
+   pass
 ```
 
 **Simulation** sockets:
@@ -29,7 +29,7 @@ with tree.simulation(geometry=tree.ig, age=10) as simul:
     ...
 
     # Updating age for the next simulation loop
-    simul.age = a
+    simul.age += 1
 
 # Outside the context, getting the resulting geometry
 geo = simul.geometry
@@ -57,7 +57,7 @@ with Shader("Ball Material") as tree:
     hue = tree.Attribute(attribute_name="hue", attribute_type='INSTANCER').fac
     
     # Build the color from this value
-    col = tree.combine_hsv(hue, 1., 1.)
+    col = tree.combine_color(hue, 1., 1., mode='HSV')
     
     # A simple principled bsdf
     tree.output_surface = tree.PrincipledBSDF(
@@ -75,7 +75,7 @@ with GeoNodes("Rockets") as tree:
     # Modifier parameters
     
     density = tree.float_input("Density", 1., min_value=0., max_value=10.)
-    speed   = tree.float_input("Speed", 20.)
+    speed   = tree.float_input("Speed", 40.)
     acc     = tree.acceleration_input("Acceleration", (0, 0, -9.86))
     radius  = tree.float_input("Balls radius", .1)
     
@@ -92,8 +92,7 @@ with GeoNodes("Rockets") as tree:
         with tree.layout("New points"):
         
             # Face normals
-            # use xyz short cut of separate_xyz
-            normal = tree.normal().xyz()
+            normal = geo.normal
             
             # Faces oriented upwards
             sel = normal.z.greater_than(0.1)
@@ -102,16 +101,22 @@ with GeoNodes("Rockets") as tree:
             cur_frame = tree.SceneTime().frame
             
             # Points on these surface
-            new_points = geo[sel].distribute_points_on_faces(density=density, seed=3*cur_frame)
+            new_points = geo[sel].distribute_points_on_faces(density=density, seed=3*cur_frame).points
             
             
         with tree.layout("Initial speed"):
+            
             # Normals
             pts_normal = new_points.node.normal
             
             # Speeds
-            
             speeds = tree.random_vector(min=pts_normal*speed/10, max=pts_normal*speed/3, seed=3*cur_frame+1)
+            
+            # Some rotation
+            tree.VectorRotate.print_doc()
+            rot = tree.random_vector(min=-.2, max=.2, seed=10*cur_frame)
+            speeds = speeds.vector_rotate(rotation=rot, rotation_type='EULER_XYZ')
+            
             new_points.store_named_vector("speed", value=speeds)
             
             # Random hue
@@ -134,7 +139,7 @@ with GeoNodes("Rockets") as tree:
             pts.set_position(offset=tree.named_vector("speed")*simul.delta_time)
             
             # Kill on the ground
-            pts[tree.position().xyz().z.less_than(0)].delete_geometry()
+            pts.POINT[pts.position.z.less_than(0)].delete_geometry()
             
         # Loop
         simul.points = pts
