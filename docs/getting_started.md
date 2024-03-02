@@ -28,15 +28,15 @@ We suppose that all scripts start with the following import instruction:
 from geonodes import GeoNodes, Shader, Compositor
 ```
 
-- (Creating a new Tree)[#createing-a-new_tree]
-- (Creating a Node)[#creating-a-node]
-  - (Node Sockets)[#node-sockets]
-  - (Links)[#links]
-  - (Sockets sharing the same Name)[#sockets-sharing-the-same-name]
-  - (Node parameters)[#node-parameters]
-  - (Node init arguments order)[#node-init-arguments-order]
-  - (Multi Input Sockets)[#multi-input-sockets]
-- (Socket Classes)[#socket-classes]
+- [Creating a new Tree](#creating-a-new_tree)
+- [Creating a Node](#creating-a-node)
+  - [Node Sockets](#node-sockets)
+  - [Links](#links)
+  - [Sockets sharing the same Name](#sockets-sharing-the-same-name)
+  - [Node parameters](#node-parameters)
+  - [Node init arguments order](#node-init-arguments-order)
+  - [Multi Input Sockets](#multi-input-sockets)
+- [Socket Classes](#socket-classes)
   
 
 ## Creating a new Tree
