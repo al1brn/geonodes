@@ -16,7 +16,7 @@ InstancesToPoints(instances=None, selection=None, position=None, radius=None, no
 
 ## Implementation
 
-- [Geometry](/docs/GeoNodes/Geometry.md) : [instances_to_points](/docs/GeoNodes/Geometry.md#instances_to_points)
+- [GEOMETRY](/docs/GeoNodes/GEOMETRY.md) : [instances_to_points](/docs/GeoNodes/GEOMETRY.md#instances_to_points) [instances_to_points](/docs/GeoNodes/GEOMETRY.md#instances_to_points)
 
 ## Init
 

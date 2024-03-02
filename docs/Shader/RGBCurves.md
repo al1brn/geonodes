@@ -15,7 +15,7 @@ RGBCurves(fac=None, color=None, mapping=None, node_label=None, node_color=None)
 
 ## Implementation
 
-- [Col](/docs/Shader/Col.md) : [rgb_curves](/docs/Shader/Col.md#rgb_curves)
+- [RGBA](/docs/Shader/RGBA.md) : [rgb_curves](/docs/Shader/RGBA.md#rgb_curves)
 
 ## Init
 

@@ -16,7 +16,7 @@ PackUVIslands(uv=None, selection=None, margin=None, rotate=None, node_label=None
 
 ## Implementation
 
-- [Vect](/docs/GeoNodes/Vect.md) : [pack_uv_islands](/docs/GeoNodes/Vect.md#pack_uv_islands)
+- [VECTOR](/docs/GeoNodes/VECTOR.md) : [pack_uv_islands](/docs/GeoNodes/VECTOR.md#pack_uv_islands) [pack_uv_islands](/docs/GeoNodes/VECTOR.md#pack_uv_islands)
 
 ## Init
 

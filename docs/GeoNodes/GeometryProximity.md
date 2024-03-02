@@ -15,7 +15,7 @@ GeometryProximity(target=None, source_position=None, target_element='FACES', nod
 
 ## Implementation
 
-- [Geometry](/docs/GeoNodes/Geometry.md) : [geometry_proximity](/docs/GeoNodes/Geometry.md#geometry_proximity)
+- [GEOMETRY](/docs/GeoNodes/GEOMETRY.md) : [geometry_proximity](/docs/GeoNodes/GEOMETRY.md#geometry_proximity) [geometry_proximity](/docs/GeoNodes/GEOMETRY.md#geometry_proximity)
 
 ## Init
 

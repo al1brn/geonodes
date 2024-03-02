@@ -16,7 +16,7 @@ TransformGeometry(geometry=None, translation=None, rotation=None, scale=None, no
 
 ## Implementation
 
-- [Geometry](/docs/GeoNodes/Geometry.md) : [transform_geometry](/docs/GeoNodes/Geometry.md#transform_geometry)
+- [GEOMETRY](/docs/GeoNodes/GEOMETRY.md) : [transform_geometry](/docs/GeoNodes/GEOMETRY.md#transform_geometry) [transform_geometry](/docs/GeoNodes/GEOMETRY.md#transform_geometry)
 
 ## Init
 

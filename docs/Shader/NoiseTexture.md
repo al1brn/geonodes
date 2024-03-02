@@ -23,7 +23,7 @@ NoiseTexture(vector=None, scale=None, detail=None, roughness=None, lacunarity=No
 
 ## Implementation
 
-No implementation in sockets
+- Functions : [noise_texture](/docs/Shader/ShaderTree.md#noise_texture)
 
 ## Init
 

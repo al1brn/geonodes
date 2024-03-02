@@ -16,19 +16,19 @@ Switch(switch=None, false=None, true=None, input_type='GEOMETRY', node_label=Non
 
 ## Implementation
 
-- [Bool](/docs/GeoNodes/Bool.md) : [switch](/docs/GeoNodes/Bool.md#switch)
-- [Col](/docs/GeoNodes/Col.md) : [switch](/docs/GeoNodes/Col.md#switch)
-- [Collection](/docs/GeoNodes/Collection.md) : [switch](/docs/GeoNodes/Collection.md#switch)
-- [Float](/docs/GeoNodes/Float.md) : [switch](/docs/GeoNodes/Float.md#switch)
-- [Geometry](/docs/GeoNodes/Geometry.md) : [switch](/docs/GeoNodes/Geometry.md#switch)
-- [Img](/docs/GeoNodes/Img.md) : [switch](/docs/GeoNodes/Img.md#switch)
-- [Int](/docs/GeoNodes/Int.md) : [switch](/docs/GeoNodes/Int.md#switch)
-- [Mat](/docs/GeoNodes/Mat.md) : [switch](/docs/GeoNodes/Mat.md#switch)
-- [Object](/docs/GeoNodes/Object.md) : [switch](/docs/GeoNodes/Object.md#switch)
-- [Rot](/docs/GeoNodes/Rot.md) : [switch](/docs/GeoNodes/Rot.md#switch)
-- [Str](/docs/GeoNodes/Str.md) : [switch](/docs/GeoNodes/Str.md#switch)
-- [Texture](/docs/GeoNodes/Texture.md) : [switch](/docs/GeoNodes/Texture.md#switch)
-- [Vect](/docs/GeoNodes/Vect.md) : [switch](/docs/GeoNodes/Vect.md#switch)
+- [BOOLEAN](/docs/GeoNodes/BOOLEAN.md) : [switch](/docs/GeoNodes/BOOLEAN.md#switch) [switch](/docs/GeoNodes/BOOLEAN.md#switch)
+- [COLLECTION](/docs/GeoNodes/COLLECTION.md) : [switch](/docs/GeoNodes/COLLECTION.md#switch) [switch](/docs/GeoNodes/COLLECTION.md#switch)
+- [GEOMETRY](/docs/GeoNodes/GEOMETRY.md) : [switch](/docs/GeoNodes/GEOMETRY.md#switch) [switch](/docs/GeoNodes/GEOMETRY.md#switch)
+- [IMAGE](/docs/GeoNodes/IMAGE.md) : [switch](/docs/GeoNodes/IMAGE.md#switch) [switch](/docs/GeoNodes/IMAGE.md#switch)
+- [INT](/docs/GeoNodes/INT.md) : [switch](/docs/GeoNodes/INT.md#switch) [switch](/docs/GeoNodes/INT.md#switch)
+- [MATERIAL](/docs/GeoNodes/MATERIAL.md) : [switch](/docs/GeoNodes/MATERIAL.md#switch) [switch](/docs/GeoNodes/MATERIAL.md#switch)
+- [OBJECT](/docs/GeoNodes/OBJECT.md) : [switch](/docs/GeoNodes/OBJECT.md#switch) [switch](/docs/GeoNodes/OBJECT.md#switch)
+- [RGBA](/docs/GeoNodes/RGBA.md) : [switch](/docs/GeoNodes/RGBA.md#switch) [switch](/docs/GeoNodes/RGBA.md#switch)
+- [ROTATION](/docs/GeoNodes/ROTATION.md) : [switch](/docs/GeoNodes/ROTATION.md#switch) [switch](/docs/GeoNodes/ROTATION.md#switch)
+- [STRING](/docs/GeoNodes/STRING.md) : [switch](/docs/GeoNodes/STRING.md#switch) [switch](/docs/GeoNodes/STRING.md#switch)
+- [TEXTURE](/docs/GeoNodes/TEXTURE.md) : [switch](/docs/GeoNodes/TEXTURE.md#switch) [switch](/docs/GeoNodes/TEXTURE.md#switch)
+- [VALUE](/docs/GeoNodes/VALUE.md) : [switch](/docs/GeoNodes/VALUE.md#switch) [switch](/docs/GeoNodes/VALUE.md#switch)
+- [VECTOR](/docs/GeoNodes/VECTOR.md) : [switch](/docs/GeoNodes/VECTOR.md#switch) [switch](/docs/GeoNodes/VECTOR.md#switch)
 
 ## Init
 

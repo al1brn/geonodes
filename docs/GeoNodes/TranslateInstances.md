@@ -16,7 +16,7 @@ TranslateInstances(instances=None, selection=None, translation=None, local_space
 
 ## Implementation
 
-- [Geometry](/docs/GeoNodes/Geometry.md) : [translate_instances](/docs/GeoNodes/Geometry.md#translate_instances)
+- [GEOMETRY](/docs/GeoNodes/GEOMETRY.md) : [translate_instances](/docs/GeoNodes/GEOMETRY.md#translate_instances) [translate_instances](/docs/GeoNodes/GEOMETRY.md#translate_instances)
 
 ## Init
 

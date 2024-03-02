@@ -19,7 +19,7 @@ InterpolateCurves(guide_curves=None, guide_up=None, guide_group_id=None, points=
 
 ## Implementation
 
-- [Geometry](/docs/GeoNodes/Geometry.md) : [interpolate_curves](/docs/GeoNodes/Geometry.md#interpolate_curves)
+- [GEOMETRY](/docs/GeoNodes/GEOMETRY.md) : [interpolate_curves](/docs/GeoNodes/GEOMETRY.md#interpolate_curves) [interpolate_curves](/docs/GeoNodes/GEOMETRY.md#interpolate_curves)
 
 ## Init
 

@@ -17,7 +17,7 @@ ImageTexture(image=None, vector=None, frame=None, extension='REPEAT', interpolat
 
 ## Implementation
 
-- [Img](/docs/GeoNodes/Img.md) : [image_texture](/docs/GeoNodes/Img.md#image_texture)
+- [IMAGE](/docs/GeoNodes/IMAGE.md) : [image_texture](/docs/GeoNodes/IMAGE.md#image_texture) [image_texture](/docs/GeoNodes/IMAGE.md#image_texture)
 
 ## Init
 

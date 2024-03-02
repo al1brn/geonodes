@@ -15,7 +15,7 @@ WhiteNoiseTexture(vector=None, w=None, noise_dimensions='3D', node_label=None, n
 
 ## Implementation
 
-No implementation in sockets
+- Functions : [white_noise_texture](/docs/Shader/ShaderTree.md#white_noise_texture)
 
 ## Init
 

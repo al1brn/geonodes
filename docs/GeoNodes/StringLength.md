@@ -13,7 +13,7 @@ StringLength(string=None, node_label=None, node_color=None)
 
 ## Implementation
 
-- [Str](/docs/GeoNodes/Str.md) : [length](/docs/GeoNodes/Str.md#length)
+- [STRING](/docs/GeoNodes/STRING.md) : [length](/docs/GeoNodes/STRING.md#length) [length](/docs/GeoNodes/STRING.md#length)
 
 ## Init
 

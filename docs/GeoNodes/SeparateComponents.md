@@ -13,7 +13,7 @@ SeparateComponents(geometry=None, node_label=None, node_color=None)
 
 ## Implementation
 
-- [Geometry](/docs/GeoNodes/Geometry.md) : [separate_components](/docs/GeoNodes/Geometry.md#separate_components)
+- [GEOMETRY](/docs/GeoNodes/GEOMETRY.md) : [separate_components](/docs/GeoNodes/GEOMETRY.md#separate_components) [separate_components](/docs/GeoNodes/GEOMETRY.md#separate_components)
 
 ## Init
 

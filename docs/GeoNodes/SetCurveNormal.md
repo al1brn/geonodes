@@ -15,7 +15,7 @@ SetCurveNormal(curve=None, selection=None, mode='MINIMUM_TWIST', node_label=None
 
 ## Implementation
 
-- [Geometry](/docs/GeoNodes/Geometry.md) : [normal](/docs/GeoNodes/Geometry.md#normal) [set_curve_normal](/docs/GeoNodes/Geometry.md#set_curve_normal)
+- [GEOMETRY](/docs/GeoNodes/GEOMETRY.md) : [normal](/docs/GeoNodes/GEOMETRY.md#normal) [normal](/docs/GeoNodes/GEOMETRY.md#normal) [set_curve_normal](/docs/GeoNodes/GEOMETRY.md#set_curve_normal) [set_curve_normal](/docs/GeoNodes/GEOMETRY.md#set_curve_normal)
 
 ## Init
 

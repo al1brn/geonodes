@@ -17,7 +17,7 @@ MeshToPoints(mesh=None, selection=None, position=None, radius=None, mode='VERTIC
 
 ## Implementation
 
-- [Geometry](/docs/GeoNodes/Geometry.md) : [mesh_to_points](/docs/GeoNodes/Geometry.md#mesh_to_points)
+- [GEOMETRY](/docs/GeoNodes/GEOMETRY.md) : [mesh_to_points](/docs/GeoNodes/GEOMETRY.md#mesh_to_points) [mesh_to_points](/docs/GeoNodes/GEOMETRY.md#mesh_to_points)
 
 ## Init
 

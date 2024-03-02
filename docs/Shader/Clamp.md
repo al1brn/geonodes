@@ -16,7 +16,7 @@ Clamp(value=None, min=None, max=None, clamp_type='MINMAX', node_label=None, node
 
 ## Implementation
 
-- [Float](/docs/Shader/Float.md) : [clamp](/docs/Shader/Float.md#clamp)
+- [VALUE](/docs/Shader/VALUE.md) : [clamp](/docs/Shader/VALUE.md#clamp)
 
 ## Init
 

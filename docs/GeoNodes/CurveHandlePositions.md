@@ -13,7 +13,7 @@ CurveHandlePositions(relative=None, node_label=None, node_color=None)
 
 ## Implementation
 
-- [Geometry](/docs/GeoNodes/Geometry.md) : [curve_handle_positions](/docs/GeoNodes/Geometry.md#curve_handle_positions)
+- [GEOMETRY](/docs/GeoNodes/GEOMETRY.md) : [curve_handle_positions](/docs/GeoNodes/GEOMETRY.md#curve_handle_positions) [curve_handle_positions](/docs/GeoNodes/GEOMETRY.md#curve_handle_positions)
 
 ## Init
 

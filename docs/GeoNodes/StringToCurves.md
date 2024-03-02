@@ -24,7 +24,7 @@ StringToCurves(string=None, size=None, character_spacing=None, word_spacing=None
 
 ## Implementation
 
-- [Str](/docs/GeoNodes/Str.md) : [string_to_curves](/docs/GeoNodes/Str.md#string_to_curves)
+- [STRING](/docs/GeoNodes/STRING.md) : [string_to_curves](/docs/GeoNodes/STRING.md#string_to_curves) [string_to_curves](/docs/GeoNodes/STRING.md#string_to_curves)
 
 ## Init
 

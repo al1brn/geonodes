@@ -14,7 +14,7 @@ IcoSphere(radius=None, subdivisions=None, node_label=None, node_color=None)
 
 ## Implementation
 
-No implementation in sockets
+- Functions : [ico_sphere](/docs/GeoNodes/GeoNodesTree.md#ico_sphere) [ico_sphere](/docs/GeoNodes/GeoNodesTree.md#ico_sphere)
 
 ## Init
 

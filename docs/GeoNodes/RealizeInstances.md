@@ -13,7 +13,7 @@ RealizeInstances(geometry=None, node_label=None, node_color=None)
 
 ## Implementation
 
-- [Geometry](/docs/GeoNodes/Geometry.md) : [realize_instances](/docs/GeoNodes/Geometry.md#realize_instances)
+- [GEOMETRY](/docs/GeoNodes/GEOMETRY.md) : [realize_instances](/docs/GeoNodes/GEOMETRY.md#realize_instances) [realize_instances](/docs/GeoNodes/GEOMETRY.md#realize_instances)
 
 ## Init
 

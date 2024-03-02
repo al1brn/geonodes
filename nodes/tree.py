@@ -632,11 +632,7 @@ class GeoNodes(Tree):
         
         self.btree.interface.move(io_socket, 0)
         
-        return self.Geometry(self.input_node.bnode.outputs[io_socket.identifier])
-    
-        # OLD
-        
-        return constants.nodesocket_classes()['NodeSocketGeometry'](self.input_node.bnode.outputs[io_socket.identifier])
+        return self.GEOMETRY(self.input_node.bnode.outputs[io_socket.identifier])
             
         
     @property
@@ -653,7 +649,7 @@ class GeoNodes(Tree):
         
         self.btree.interface.move(io_socket, 0)
         
-        return self.Geometry(self.output_node.bnode.inputs[io_socket.identifier])
+        return self.GEOMETRY(self.output_node.bnode.inputs[io_socket.identifier])
     
         # OLD
         

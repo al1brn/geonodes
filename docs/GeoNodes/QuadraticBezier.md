@@ -16,7 +16,7 @@ QuadraticBezier(resolution=None, start=None, middle=None, end=None, node_label=N
 
 ## Implementation
 
-No implementation in sockets
+- Functions : [quadratic_bezier](/docs/GeoNodes/GeoNodesTree.md#quadratic_bezier) [quadratic_bezier](/docs/GeoNodes/GeoNodesTree.md#quadratic_bezier)
 
 ## Init
 

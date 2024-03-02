@@ -14,7 +14,7 @@ ColorRamp(fac=None, color_ramp=None, node_label=None, node_color=None)
 
 ## Implementation
 
-- [Float](/docs/Shader/Float.md) : [color_ramp](/docs/Shader/Float.md#color_ramp)
+- [VALUE](/docs/Shader/VALUE.md) : [color_ramp](/docs/Shader/VALUE.md#color_ramp)
 
 ## Init
 

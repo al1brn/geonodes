@@ -9,7 +9,7 @@ Normal(node_label=None, node_color=None)
 ```
 ## Implementation
 
-- [Geometry](/docs/GeoNodes/Geometry.md) : [normal](/docs/GeoNodes/Geometry.md#normal)
+- [GEOMETRY](/docs/GeoNodes/GEOMETRY.md) : [normal](/docs/GeoNodes/GEOMETRY.md#normal) [normal](/docs/GeoNodes/GEOMETRY.md#normal)
 
 ## Init
 

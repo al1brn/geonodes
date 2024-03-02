@@ -9,7 +9,7 @@ SplineLength(node_label=None, node_color=None)
 ```
 ## Implementation
 
-- [Geometry](/docs/GeoNodes/Geometry.md) : [spline_length](/docs/GeoNodes/Geometry.md#spline_length)
+- [GEOMETRY](/docs/GeoNodes/GEOMETRY.md) : [spline_length](/docs/GeoNodes/GEOMETRY.md#spline_length) [spline_length](/docs/GeoNodes/GEOMETRY.md#spline_length)
 
 ## Init
 

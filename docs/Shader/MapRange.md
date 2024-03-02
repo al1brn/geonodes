@@ -22,8 +22,8 @@ MapRange(value=None, from_min=None, from_max=None, to_min=None, to_max=None, vec
 
 ## Implementation
 
-- [Float](/docs/Shader/Float.md) : [map_range](/docs/Shader/Float.md#map_range)
-- [Vect](/docs/Shader/Vect.md) : [map_range](/docs/Shader/Vect.md#map_range)
+- [VALUE](/docs/Shader/VALUE.md) : [map_range](/docs/Shader/VALUE.md#map_range)
+- [VECTOR](/docs/Shader/VECTOR.md) : [map_range](/docs/Shader/VECTOR.md#map_range)
 
 ## Init
 

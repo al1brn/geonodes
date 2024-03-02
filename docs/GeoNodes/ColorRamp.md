@@ -14,8 +14,8 @@ ColorRamp(fac=None, color_ramp=None, node_label=None, node_color=None)
 
 ## Implementation
 
-- [Float](/docs/GeoNodes/Float.md) : [color_ramp](/docs/GeoNodes/Float.md#color_ramp)
-- [Int](/docs/GeoNodes/Int.md) : [color_ramp](/docs/GeoNodes/Int.md#color_ramp)
+- [INT](/docs/GeoNodes/INT.md) : [color_ramp](/docs/GeoNodes/INT.md#color_ramp) [color_ramp](/docs/GeoNodes/INT.md#color_ramp)
+- [VALUE](/docs/GeoNodes/VALUE.md) : [color_ramp](/docs/GeoNodes/VALUE.md#color_ramp) [color_ramp](/docs/GeoNodes/VALUE.md#color_ramp)
 
 ## Init
 

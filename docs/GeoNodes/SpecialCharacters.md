@@ -9,7 +9,7 @@ SpecialCharacters(node_label=None, node_color=None)
 ```
 ## Implementation
 
-- [Str](/docs/GeoNodes/Str.md) : [line_break](/docs/GeoNodes/Str.md#line_break) [special_characters](/docs/GeoNodes/Str.md#special_characters) [tab](/docs/GeoNodes/Str.md#tab)
+- [STRING](/docs/GeoNodes/STRING.md) : [line_break](/docs/GeoNodes/STRING.md#line_break) [line_break](/docs/GeoNodes/STRING.md#line_break) [special_characters](/docs/GeoNodes/STRING.md#special_characters) [special_characters](/docs/GeoNodes/STRING.md#special_characters) [tab](/docs/GeoNodes/STRING.md#tab) [tab](/docs/GeoNodes/STRING.md#tab)
 
 ## Init
 

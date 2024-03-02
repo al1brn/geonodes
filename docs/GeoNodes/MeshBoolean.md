@@ -18,7 +18,7 @@ MeshBoolean(*args, mesh_1=None, mesh_2=None, self_intersection=None, hole_tolera
 
 ## Implementation
 
-- [Geometry](/docs/GeoNodes/Geometry.md) : [mesh_difference](/docs/GeoNodes/Geometry.md#mesh_difference) [mesh_intersect](/docs/GeoNodes/Geometry.md#mesh_intersect) [mesh_union](/docs/GeoNodes/Geometry.md#mesh_union)
+- [GEOMETRY](/docs/GeoNodes/GEOMETRY.md) : [mesh_difference](/docs/GeoNodes/GEOMETRY.md#mesh_difference) [mesh_difference](/docs/GeoNodes/GEOMETRY.md#mesh_difference) [mesh_intersect](/docs/GeoNodes/GEOMETRY.md#mesh_intersect) [mesh_intersect](/docs/GeoNodes/GEOMETRY.md#mesh_intersect) [mesh_union](/docs/GeoNodes/GEOMETRY.md#mesh_union) [mesh_union](/docs/GeoNodes/GEOMETRY.md#mesh_union)
 
 ## Init
 

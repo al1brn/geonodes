@@ -18,7 +18,7 @@ DistributePointsInVolume(volume=None, density=None, seed=None, spacing=None, thr
 
 ## Implementation
 
-- [Geometry](/docs/GeoNodes/Geometry.md) : [distribute_points_in_volume](/docs/GeoNodes/Geometry.md#distribute_points_in_volume)
+- [GEOMETRY](/docs/GeoNodes/GEOMETRY.md) : [distribute_points_in_volume](/docs/GeoNodes/GEOMETRY.md#distribute_points_in_volume) [distribute_points_in_volume](/docs/GeoNodes/GEOMETRY.md#distribute_points_in_volume)
 
 ## Init
 

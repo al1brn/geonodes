@@ -15,7 +15,7 @@ FloatCurve(factor=None, value=None, mapping=None, node_label=None, node_color=No
 
 ## Implementation
 
-- [Float](/docs/Shader/Float.md) : [float_curve](/docs/Shader/Float.md#float_curve)
+- [VALUE](/docs/Shader/VALUE.md) : [float_curve](/docs/Shader/VALUE.md#float_curve)
 
 ## Init
 

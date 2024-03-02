@@ -15,7 +15,7 @@ SetSplineType(curve=None, selection=None, spline_type='POLY', node_label=None, n
 
 ## Implementation
 
-- [Geometry](/docs/GeoNodes/Geometry.md) : [set_spline_type](/docs/GeoNodes/Geometry.md#set_spline_type) [spline_type](/docs/GeoNodes/Geometry.md#spline_type)
+- [GEOMETRY](/docs/GeoNodes/GEOMETRY.md) : [set_spline_type](/docs/GeoNodes/GEOMETRY.md#set_spline_type) [set_spline_type](/docs/GeoNodes/GEOMETRY.md#set_spline_type) [spline_type](/docs/GeoNodes/GEOMETRY.md#spline_type) [spline_type](/docs/GeoNodes/GEOMETRY.md#spline_type)
 
 ## Init
 

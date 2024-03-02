@@ -14,8 +14,8 @@ JoinGeometry(*args, geometry=None, node_label=None, node_color=None)
 
 ## Implementation
 
-- [Geometry](/docs/GeoNodes/Geometry.md) : [join_geometry](/docs/GeoNodes/Geometry.md#join_geometry)
-- Functions : [join_geometry](/docs/GeoNodes/GeoNodesTree.md#join_geometry)
+- [GEOMETRY](/docs/GeoNodes/GEOMETRY.md) : [join_geometry](/docs/GeoNodes/GEOMETRY.md#join_geometry) [join_geometry](/docs/GeoNodes/GEOMETRY.md#join_geometry)
+- Functions : [join_geometry](/docs/GeoNodes/GeoNodesTree.md#join_geometry) [join_geometry](/docs/GeoNodes/GeoNodesTree.md#join_geometry)
 
 ## Init
 

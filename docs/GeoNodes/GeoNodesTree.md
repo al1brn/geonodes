@@ -3,20 +3,20 @@
 
 ### Socket classes
 
-- [Bool](/docs/GeoNodes/Bool.md)
-- [Col](/docs/GeoNodes/Col.md)
-- [Collection](/docs/GeoNodes/Collection.md)
-- [Custom](/docs/GeoNodes/Custom.md)
-- [Float](/docs/GeoNodes/Float.md)
-- [Geometry](/docs/GeoNodes/Geometry.md)
-- [Img](/docs/GeoNodes/Img.md)
-- [Int](/docs/GeoNodes/Int.md)
-- [Mat](/docs/GeoNodes/Mat.md)
-- [Object](/docs/GeoNodes/Object.md)
-- [Rot](/docs/GeoNodes/Rot.md)
-- [Str](/docs/GeoNodes/Str.md)
-- [Texture](/docs/GeoNodes/Texture.md)
-- [Vect](/docs/GeoNodes/Vect.md)
+- [BOOLEAN](/docs/GeoNodes/BOOLEAN.md)
+- [COLLECTION](/docs/GeoNodes/COLLECTION.md)
+- [CUSTOM](/docs/GeoNodes/CUSTOM.md)
+- [GEOMETRY](/docs/GeoNodes/GEOMETRY.md)
+- [IMAGE](/docs/GeoNodes/IMAGE.md)
+- [INT](/docs/GeoNodes/INT.md)
+- [MATERIAL](/docs/GeoNodes/MATERIAL.md)
+- [OBJECT](/docs/GeoNodes/OBJECT.md)
+- [RGBA](/docs/GeoNodes/RGBA.md)
+- [ROTATION](/docs/GeoNodes/ROTATION.md)
+- [STRING](/docs/GeoNodes/STRING.md)
+- [TEXTURE](/docs/GeoNodes/TEXTURE.md)
+- [VALUE](/docs/GeoNodes/VALUE.md)
+- [VECTOR](/docs/GeoNodes/VECTOR.md)
 
 ### Node classes
 
@@ -45,24 +45,26 @@
 
 ### Functions
 
-- A : [add](#add) [abs](#abs) [arcsin](#arcsin) [arccos](#arccos) [arctan](#arctan) [arctan2](#arctan2)
-- B : [band](#band) [bor](#bor) [bnot](#bnot)
-- C : [compare](#compare) [ceil](#ceil) [cos](#cos) [cosh](#cosh)
+- A : [arc](#arc) [add](#add) [abs](#abs) [arcsin](#arcsin) [arccos](#arccos) [arctan](#arctan) [arctan2](#arctan2)
+- B : [band](#band) [bor](#bor) [bnot](#bnot) [bezier_segment](#bezier_segment) [brick_texture](#brick_texture)
+- C : [combine_color](#combine_color) [curve_circle](#curve_circle) [curve_line](#curve_line) [cone](#cone) [cube](#cube) [cylinder](#cylinder) [combine_xyz](#combine_xyz) [compare](#compare) [ceil](#ceil) [cos](#cos) [cosh](#cosh) [checker_texture](#checker_texture)
 - D : [divide](#divide) [degrees](#degrees)
 - E : [exp](#exp)
 - F : [floor](#floor) [fract](#fract) [floored_modulo](#floored_modulo)
-- G : [greater_than](#greater_than)
-- I : [imply](#imply) [inverse_sqrt](#inverse_sqrt)
+- G : [grid](#grid) [greater_than](#greater_than) [gradient_texture](#gradient_texture)
+- I : [imply](#imply) [ico_sphere](#ico_sphere) [inverse_sqrt](#inverse_sqrt)
 - J : [join_geometry](#join_geometry) [join_strings](#join_strings)
 - L : [log](#log) [less_than](#less_than)
-- M : [multiply](#multiply) [multiply_add](#multiply_add) [min](#min) [max](#max) [mod](#mod)
-- N : [nand](#nand) [nor](#nor) [nimply](#nimply) [named_float](#named_float) [named_int](#named_int) [named_vector](#named_vector) [named_color](#named_color) [named_boolean](#named_boolean) [named_quaternion](#named_quaternion)
-- P : [power](#power) [pingpong](#pingpong)
+- M : [mesh_circle](#mesh_circle) [mesh_line](#mesh_line) [multiply](#multiply) [multiply_add](#multiply_add) [min](#min) [max](#max) [mod](#mod) [magic_texture](#magic_texture) [musgrave_texture](#musgrave_texture)
+- N : [nand](#nand) [nor](#nor) [nimply](#nimply) [named_float](#named_float) [named_int](#named_int) [named_vector](#named_vector) [named_color](#named_color) [named_boolean](#named_boolean) [named_quaternion](#named_quaternion) [noise_texture](#noise_texture)
+- P : [points](#points) [power](#power) [pingpong](#pingpong)
+- Q : [quaternion_to_rotation](#quaternion_to_rotation) [quadrilateral](#quadrilateral) [quadratic_bezier](#quadratic_bezier)
 - R : [random_value](#random_value) [random_float](#random_float) [random_int](#random_int) [random_vector](#random_vector) [random_boolean](#random_boolean) [round](#round) [radians](#radians)
-- S : [scene_time](#scene_time) [subtract](#subtract) [sqrt](#sqrt) [sign](#sign) [smooth_min](#smooth_min) [smooth_max](#smooth_max) [snap](#snap) [sin](#sin) [sinh](#sinh)
+- S : [spiral](#spiral) [star](#star) [scene_time](#scene_time) [subtract](#subtract) [sqrt](#sqrt) [sign](#sign) [smooth_min](#smooth_min) [smooth_max](#smooth_max) [snap](#snap) [sin](#sin) [sinh](#sinh)
 - T : [trunc](#trunc) [tan](#tan) [tanh](#tanh)
-- V : [viewer](#viewer) [vadd](#vadd) [vsubtract](#vsubtract) [vmultiply](#vmultiply) [vdivide](#vdivide) [vmultiply_add](#vmultiply_add) [vcross](#vcross) [vproject](#vproject) [vreflect](#vreflect) [vrefract](#vrefract) [vfaceforward](#vfaceforward) [vdot](#vdot) [vdistance](#vdistance) [vlength](#vlength) [vscale](#vscale) [vnormalize](#vnormalize) [vabs](#vabs) [vmin](#vmin) [vmax](#vmax) [vfloor](#vfloor) [vceil](#vceil) [vfrac](#vfrac) [vmod](#vmod) [vwrap](#vwrap) [vsnap](#vsnap) [vsin](#vsin) [vcos](#vcos) [vtan](#vtan)
-- W : [wrap](#wrap)
+- U : [uv_sphere](#uv_sphere)
+- V : [viewer](#viewer) [volume_cube](#volume_cube) [voronoi_texture](#voronoi_texture) [vadd](#vadd) [vsubtract](#vsubtract) [vmultiply](#vmultiply) [vdivide](#vdivide) [vmultiply_add](#vmultiply_add) [vcross](#vcross) [vproject](#vproject) [vreflect](#vreflect) [vrefract](#vrefract) [vfaceforward](#vfaceforward) [vdot](#vdot) [vdistance](#vdistance) [vlength](#vlength) [vscale](#vscale) [vnormalize](#vnormalize) [vabs](#vabs) [vmin](#vmin) [vmax](#vmax) [vfloor](#vfloor) [vceil](#vceil) [vfrac](#vfrac) [vmod](#vmod) [vwrap](#vwrap) [vsnap](#vsnap) [vsin](#vsin) [vcos](#vcos) [vtan](#vtan)
+- W : [wrap](#wrap) [wave_texture](#wave_texture) [white_noise_texture](#white_noise_texture)
 - X : [xnor](#xnor) [xor](#xor)
 
 ## Functions
@@ -107,6 +109,35 @@ def abs(self, value=None, use_clamp=False, node_label=None, node_color=None):
 def add(self, value=None, value_1=None, use_clamp=False, node_label=None, node_color=None):
     node = self.Math(value=value, value_1=value_1, operation='ADD', use_clamp=use_clamp, node_label=node_label, node_color=node_color)
     return node.value
+```
+### arc
+
+
+- node : [Arc](/docs/GeoNodes/Arc.md)
+- return : curve
+
+##### Arguments
+
+- resolution : None
+- radius : None
+- start_angle : None
+- sweep_angle : None
+- connect_center : None
+- invert_arc : None
+- start : None
+- middle : None
+- end : None
+- offset_angle : None
+- mode : 'RADIUS' in ('POINTS', 'RADIUS')
+- node_label : None
+- node_color : None
+
+#### Source code
+
+``` python
+def arc(self, resolution=None, radius=None, start_angle=None, sweep_angle=None, connect_center=None, invert_arc=None, start=None, middle=None, end=None, offset_angle=None, mode='RADIUS', node_label=None, node_color=None):
+    node = self.Arc(resolution=resolution, radius=radius, start_angle=start_angle, sweep_angle=sweep_angle, connect_center=connect_center, invert_arc=invert_arc, start=start, middle=middle, end=end, offset_angle=offset_angle, mode=mode, node_label=node_label, node_color=node_color)
+    return node.curve
 ```
 ### arccos
 
@@ -209,6 +240,30 @@ def band(self, boolean=None, boolean_1=None, node_label=None, node_color=None):
     node = self.BooleanMath(boolean=boolean, boolean_1=boolean_1, operation='AND', node_label=node_label, node_color=node_color)
     return node.boolean
 ```
+### bezier_segment
+
+
+- node : [BezierSegment](/docs/GeoNodes/BezierSegment.md)
+- return : curve
+
+##### Arguments
+
+- resolution : None
+- start : None
+- start_handle : None
+- end_handle : None
+- end : None
+- mode : 'POSITION' in ('POSITION', 'OFFSET')
+- node_label : None
+- node_color : None
+
+#### Source code
+
+``` python
+def bezier_segment(self, resolution=None, start=None, start_handle=None, end_handle=None, end=None, mode='POSITION', node_label=None, node_color=None):
+    node = self.BezierSegment(resolution=resolution, start=start, start_handle=start_handle, end_handle=end_handle, end=end, mode=mode, node_label=node_label, node_color=node_color)
+    return node.curve
+```
 ### bnot
 
 
@@ -248,6 +303,40 @@ def bor(self, boolean=None, boolean_1=None, node_label=None, node_color=None):
     node = self.BooleanMath(boolean=boolean, boolean_1=boolean_1, operation='OR', node_label=node_label, node_color=node_color)
     return node.boolean
 ```
+### brick_texture
+
+
+- node : [BrickTexture](/docs/GeoNodes/BrickTexture.md)
+- return : color
+
+##### Arguments
+
+- vector : None
+- color1 : None
+- color2 : None
+- mortar : None
+- scale : None
+- mortar_size : None
+- mortar_smooth : None
+- bias : None
+- brick_width : None
+- row_height : None
+- color_mapping : None
+- offset : 0.5
+- offset_frequency : 2
+- squash : 1.0
+- squash_frequency : 2
+- texture_mapping : None
+- node_label : None
+- node_color : None
+
+#### Source code
+
+``` python
+def brick_texture(self, vector=None, color1=None, color2=None, mortar=None, scale=None, mortar_size=None, mortar_smooth=None, bias=None, brick_width=None, row_height=None, color_mapping=None, offset=0.5, offset_frequency=2, squash=1.0, squash_frequency=2, texture_mapping=None, node_label=None, node_color=None):
+    node = self.BrickTexture(vector=vector, color1=color1, color2=color2, mortar=mortar, scale=scale, mortar_size=mortar_size, mortar_smooth=mortar_smooth, bias=bias, brick_width=brick_width, row_height=row_height, color_mapping=color_mapping, offset=offset, offset_frequency=offset_frequency, squash=squash, squash_frequency=squash_frequency, texture_mapping=texture_mapping, node_label=node_label, node_color=node_color)
+    return node.color
+```
 ### ceil
 
 
@@ -267,6 +356,74 @@ def bor(self, boolean=None, boolean_1=None, node_label=None, node_color=None):
 def ceil(self, value=None, use_clamp=False, node_label=None, node_color=None):
     node = self.Math(value=value, operation='CEIL', use_clamp=use_clamp, node_label=node_label, node_color=node_color)
     return node.value
+```
+### checker_texture
+
+
+- node : [CheckerTexture](/docs/GeoNodes/CheckerTexture.md)
+- return : curve
+
+##### Arguments
+
+- vector : None
+- color1 : None
+- color2 : None
+- scale : None
+- color_mapping : None
+- texture_mapping : None
+- node_label : None
+- node_color : None
+
+#### Source code
+
+``` python
+def checker_texture(self, vector=None, color1=None, color2=None, scale=None, color_mapping=None, texture_mapping=None, node_label=None, node_color=None):
+    node = self.CheckerTexture(vector=vector, color1=color1, color2=color2, scale=scale, color_mapping=color_mapping, texture_mapping=texture_mapping, node_label=node_label, node_color=node_color)
+    return node.curve
+```
+### combine_color
+
+
+- node : [CombineColor](/docs/GeoNodes/CombineColor.md)
+- return : color
+
+##### Arguments
+
+- red : None
+- green : None
+- blue : None
+- alpha : None
+- mode : 'RGB' in ('RGB', 'HSV', 'HSL')
+- node_label : None
+- node_color : None
+
+#### Source code
+
+``` python
+def combine_color(self, red=None, green=None, blue=None, alpha=None, mode='RGB', node_label=None, node_color=None):
+    node = self.CombineColor(red=red, green=green, blue=blue, alpha=alpha, mode=mode, node_label=node_label, node_color=node_color)
+    return node.color
+```
+### combine_xyz
+
+
+- node : [CombineXYZ](/docs/GeoNodes/CombineXYZ.md)
+- return : vector
+
+##### Arguments
+
+- x : None
+- y : None
+- z : None
+- node_label : None
+- node_color : None
+
+#### Source code
+
+``` python
+def combine_xyz(self, x=None, y=None, z=None, node_label=None, node_color=None):
+    node = self.CombineXYZ(x=x, y=y, z=z, node_label=node_label, node_color=node_color)
+    return node.vector
 ```
 ### compare
 
@@ -289,6 +446,31 @@ def ceil(self, value=None, use_clamp=False, node_label=None, node_color=None):
 def compare(self, value=None, value_1=None, value_2=None, use_clamp=False, node_label=None, node_color=None):
     node = self.Math(value=value, value_1=value_1, value_2=value_2, operation='COMPARE', use_clamp=use_clamp, node_label=node_label, node_color=node_color)
     return node.value
+```
+### cone
+
+
+- node : [Cone](/docs/GeoNodes/Cone.md)
+- return : mesh
+
+##### Arguments
+
+- vertices : None
+- side_segments : None
+- fill_segments : None
+- radius_top : None
+- radius_bottom : None
+- depth : None
+- fill_type : 'NGON' in ('NONE', 'NGON', 'TRIANGLE_FAN')
+- node_label : None
+- node_color : None
+
+#### Source code
+
+``` python
+def cone(self, vertices=None, side_segments=None, fill_segments=None, radius_top=None, radius_bottom=None, depth=None, fill_type='NGON', node_label=None, node_color=None):
+    node = self.Cone(vertices=vertices, side_segments=side_segments, fill_segments=fill_segments, radius_top=radius_top, radius_bottom=radius_bottom, depth=depth, fill_type=fill_type, node_label=node_label, node_color=node_color)
+    return node.mesh
 ```
 ### cos
 
@@ -329,6 +511,99 @@ def cos(self, value=None, use_clamp=False, node_label=None, node_color=None):
 def cosh(self, value=None, use_clamp=False, node_label=None, node_color=None):
     node = self.Math(value=value, operation='COSH', use_clamp=use_clamp, node_label=node_label, node_color=node_color)
     return node.value
+```
+### cube
+
+
+- node : [Cube](/docs/GeoNodes/Cube.md)
+- return : mesh
+
+##### Arguments
+
+- size : None
+- vertices_x : None
+- vertices_y : None
+- vertices_z : None
+- node_label : None
+- node_color : None
+
+#### Source code
+
+``` python
+def cube(self, size=None, vertices_x=None, vertices_y=None, vertices_z=None, node_label=None, node_color=None):
+    node = self.Cube(size=size, vertices_x=vertices_x, vertices_y=vertices_y, vertices_z=vertices_z, node_label=node_label, node_color=node_color)
+    return node.mesh
+```
+### curve_circle
+
+
+- node : [CurveCircle](/docs/GeoNodes/CurveCircle.md)
+- return : curve
+
+##### Arguments
+
+- resolution : None
+- radius : None
+- point_1 : None
+- point_2 : None
+- point_3 : None
+- mode : 'RADIUS' in ('POINTS', 'RADIUS')
+- node_label : None
+- node_color : None
+
+#### Source code
+
+``` python
+def curve_circle(self, resolution=None, radius=None, point_1=None, point_2=None, point_3=None, mode='RADIUS', node_label=None, node_color=None):
+    node = self.CurveCircle(resolution=resolution, radius=radius, point_1=point_1, point_2=point_2, point_3=point_3, mode=mode, node_label=node_label, node_color=node_color)
+    return node.curve
+```
+### curve_line
+
+
+- node : [CurveLine](/docs/GeoNodes/CurveLine.md)
+- return : curve
+
+##### Arguments
+
+- start : None
+- end : None
+- direction : None
+- length : None
+- mode : 'POINTS' in ('POINTS', 'DIRECTION')
+- node_label : None
+- node_color : None
+
+#### Source code
+
+``` python
+def curve_line(self, start=None, end=None, direction=None, length=None, mode='POINTS', node_label=None, node_color=None):
+    node = self.CurveLine(start=start, end=end, direction=direction, length=length, mode=mode, node_label=node_label, node_color=node_color)
+    return node.curve
+```
+### cylinder
+
+
+- node : [Cylinder](/docs/GeoNodes/Cylinder.md)
+- return : mesh
+
+##### Arguments
+
+- vertices : None
+- side_segments : None
+- fill_segments : None
+- radius : None
+- depth : None
+- fill_type : 'NGON' in ('NONE', 'NGON', 'TRIANGLE_FAN')
+- node_label : None
+- node_color : None
+
+#### Source code
+
+``` python
+def cylinder(self, vertices=None, side_segments=None, fill_segments=None, radius=None, depth=None, fill_type='NGON', node_label=None, node_color=None):
+    node = self.Cylinder(vertices=vertices, side_segments=side_segments, fill_segments=fill_segments, radius=radius, depth=depth, fill_type=fill_type, node_label=node_label, node_color=node_color)
+    return node.mesh
 ```
 ### degrees
 
@@ -452,6 +727,28 @@ def fract(self, value=None, use_clamp=False, node_label=None, node_color=None):
     node = self.Math(value=value, operation='FRACT', use_clamp=use_clamp, node_label=node_label, node_color=node_color)
     return node.value
 ```
+### gradient_texture
+
+
+- node : [GradientTexture](/docs/GeoNodes/GradientTexture.md)
+- return : color
+
+##### Arguments
+
+- vector : None
+- color_mapping : None
+- gradient_type : 'LINEAR' in ('LINEAR', 'QUADRATIC', 'EASING', 'DIAGONAL', 'SPHERICAL', 'QUADRATIC_SPHERE', 'RADIAL')
+- texture_mapping : None
+- node_label : None
+- node_color : None
+
+#### Source code
+
+``` python
+def gradient_texture(self, vector=None, color_mapping=None, gradient_type='LINEAR', texture_mapping=None, node_label=None, node_color=None):
+    node = self.GradientTexture(vector=vector, color_mapping=color_mapping, gradient_type=gradient_type, texture_mapping=texture_mapping, node_label=node_label, node_color=node_color)
+    return node.color
+```
 ### greater_than
 
 
@@ -472,6 +769,48 @@ def fract(self, value=None, use_clamp=False, node_label=None, node_color=None):
 def greater_than(self, value=None, value_1=None, use_clamp=False, node_label=None, node_color=None):
     node = self.Math(value=value, value_1=value_1, operation='GREATER_THAN', use_clamp=use_clamp, node_label=node_label, node_color=node_color)
     return node.value
+```
+### grid
+
+
+- node : [Grid](/docs/GeoNodes/Grid.md)
+- return : mesh
+
+##### Arguments
+
+- size_x : None
+- size_y : None
+- vertices_x : None
+- vertices_y : None
+- node_label : None
+- node_color : None
+
+#### Source code
+
+``` python
+def grid(self, size_x=None, size_y=None, vertices_x=None, vertices_y=None, node_label=None, node_color=None):
+    node = self.Grid(size_x=size_x, size_y=size_y, vertices_x=vertices_x, vertices_y=vertices_y, node_label=node_label, node_color=node_color)
+    return node.mesh
+```
+### ico_sphere
+
+
+- node : [IcoSphere](/docs/GeoNodes/IcoSphere.md)
+- return : mesh
+
+##### Arguments
+
+- radius : None
+- subdivisions : None
+- node_label : None
+- node_color : None
+
+#### Source code
+
+``` python
+def ico_sphere(self, radius=None, subdivisions=None, node_label=None, node_color=None):
+    node = self.IcoSphere(radius=radius, subdivisions=subdivisions, node_label=node_label, node_color=node_color)
+    return node.mesh
 ```
 ### imply
 
@@ -596,6 +935,30 @@ def log(self, value=None, value_1=None, use_clamp=False, node_label=None, node_c
     node = self.Math(value=value, value_1=value_1, operation='LOGARITHM', use_clamp=use_clamp, node_label=node_label, node_color=node_color)
     return node.value
 ```
+### magic_texture
+
+
+- node : [MagicTexture](/docs/GeoNodes/MagicTexture.md)
+- return : color
+
+##### Arguments
+
+- vector : None
+- scale : None
+- distortion : None
+- color_mapping : None
+- texture_mapping : None
+- turbulence_depth : 2
+- node_label : None
+- node_color : None
+
+#### Source code
+
+``` python
+def magic_texture(self, vector=None, scale=None, distortion=None, color_mapping=None, texture_mapping=None, turbulence_depth=2, node_label=None, node_color=None):
+    node = self.MagicTexture(vector=vector, scale=scale, distortion=distortion, color_mapping=color_mapping, texture_mapping=texture_mapping, turbulence_depth=turbulence_depth, node_label=node_label, node_color=node_color)
+    return node.color
+```
 ### max
 
 
@@ -616,6 +979,50 @@ def log(self, value=None, value_1=None, use_clamp=False, node_label=None, node_c
 def max(self, value=None, value_1=None, use_clamp=False, node_label=None, node_color=None):
     node = self.Math(value=value, value_1=value_1, operation='MAXIMUM', use_clamp=use_clamp, node_label=node_label, node_color=node_color)
     return node.value
+```
+### mesh_circle
+
+
+- node : [MeshCircle](/docs/GeoNodes/MeshCircle.md)
+- return : mesh
+
+##### Arguments
+
+- vertices : None
+- radius : None
+- fill_type : 'NONE' in ('NONE', 'NGON', 'TRIANGLE_FAN')
+- node_label : None
+- node_color : None
+
+#### Source code
+
+``` python
+def mesh_circle(self, vertices=None, radius=None, fill_type='NONE', node_label=None, node_color=None):
+    node = self.MeshCircle(vertices=vertices, radius=radius, fill_type=fill_type, node_label=node_label, node_color=node_color)
+    return node.mesh
+```
+### mesh_line
+
+
+- node : [MeshLine](/docs/GeoNodes/MeshLine.md)
+- return : line
+
+##### Arguments
+
+- count : None
+- start_location : None
+- offset : None
+- count_mode : 'TOTAL' in ('TOTAL', 'RESOLUTION')
+- mode : 'OFFSET' in ('OFFSET', 'END_POINTS')
+- node_label : None
+- node_color : None
+
+#### Source code
+
+``` python
+def mesh_line(self, count=None, start_location=None, offset=None, count_mode='TOTAL', mode='OFFSET', node_label=None, node_color=None):
+    node = self.MeshLine(count=count, start_location=start_location, offset=offset, count_mode=count_mode, mode=mode, node_label=node_label, node_color=node_color)
+    return node.line
 ```
 ### min
 
@@ -701,6 +1108,36 @@ def multiply(self, value=None, value_1=None, use_clamp=False, node_label=None, n
 def multiply_add(self, value=None, value_1=None, value_2=None, use_clamp=False, node_label=None, node_color=None):
     node = self.Math(value=value, value_1=value_1, value_2=value_2, operation='MULTIPLY_ADD', use_clamp=use_clamp, node_label=node_label, node_color=node_color)
     return node.value
+```
+### musgrave_texture
+
+
+- node : [MusgraveTexture](/docs/GeoNodes/MusgraveTexture.md)
+- return : height
+
+##### Arguments
+
+- vector : None
+- scale : None
+- detail : None
+- dimension : None
+- lacunarity : None
+- w : None
+- offset : None
+- gain : None
+- color_mapping : None
+- musgrave_dimensions : '3D' in ('1D', '2D', '3D', '4D')
+- musgrave_type : 'FBM' in ('MULTIFRACTAL', 'RIDGED_MULTIFRACTAL', 'HYBRID_MULTIFRACTAL', 'FBM', 'HETERO_TERRAIN')
+- texture_mapping : None
+- node_label : None
+- node_color : None
+
+#### Source code
+
+``` python
+def musgrave_texture(self, vector=None, scale=None, detail=None, dimension=None, lacunarity=None, w=None, offset=None, gain=None, color_mapping=None, musgrave_dimensions='3D', musgrave_type='FBM', texture_mapping=None, node_label=None, node_color=None):
+    node = self.MusgraveTexture(vector=vector, scale=scale, detail=detail, dimension=dimension, lacunarity=lacunarity, w=w, offset=offset, gain=gain, color_mapping=color_mapping, musgrave_dimensions=musgrave_dimensions, musgrave_type=musgrave_type, texture_mapping=texture_mapping, node_label=node_label, node_color=node_color)
+    return node.height
 ```
 ### named_boolean
 
@@ -856,6 +1293,35 @@ def nimply(self, boolean=None, boolean_1=None, node_label=None, node_color=None)
     node = self.BooleanMath(boolean=boolean, boolean_1=boolean_1, operation='NIMPLY', node_label=node_label, node_color=node_color)
     return node.boolean
 ```
+### noise_texture
+
+
+- node : [NoiseTexture](/docs/GeoNodes/NoiseTexture.md)
+- return : fac
+
+##### Arguments
+
+- vector : None
+- scale : None
+- detail : None
+- roughness : None
+- lacunarity : None
+- distortion : None
+- w : None
+- color_mapping : None
+- noise_dimensions : '3D' in ('1D', '2D', '3D', '4D')
+- normalize : True
+- texture_mapping : None
+- node_label : None
+- node_color : None
+
+#### Source code
+
+``` python
+def noise_texture(self, vector=None, scale=None, detail=None, roughness=None, lacunarity=None, distortion=None, w=None, color_mapping=None, noise_dimensions='3D', normalize=True, texture_mapping=None, node_label=None, node_color=None):
+    node = self.NoiseTexture(vector=vector, scale=scale, detail=detail, roughness=roughness, lacunarity=lacunarity, distortion=distortion, w=w, color_mapping=color_mapping, noise_dimensions=noise_dimensions, normalize=normalize, texture_mapping=texture_mapping, node_label=node_label, node_color=node_color)
+    return node.fac
+```
 ### nor
 
 
@@ -897,6 +1363,27 @@ def pingpong(self, value=None, value_1=None, use_clamp=False, node_label=None, n
     node = self.Math(value=value, value_1=value_1, operation='PINGPONG', use_clamp=use_clamp, node_label=node_label, node_color=node_color)
     return node.value
 ```
+### points
+
+
+- node : [Points](/docs/GeoNodes/Points.md)
+- return : geometry
+
+##### Arguments
+
+- count : None
+- position : None
+- radius : None
+- node_label : None
+- node_color : None
+
+#### Source code
+
+``` python
+def points(self, count=None, position=None, radius=None, node_label=None, node_color=None):
+    node = self.Points(count=count, position=position, radius=radius, node_label=node_label, node_color=node_color)
+    return node.geometry
+```
 ### power
 
 
@@ -917,6 +1404,80 @@ def pingpong(self, value=None, value_1=None, use_clamp=False, node_label=None, n
 def power(self, value=None, value_1=None, use_clamp=False, node_label=None, node_color=None):
     node = self.Math(value=value, value_1=value_1, operation='POWER', use_clamp=use_clamp, node_label=node_label, node_color=node_color)
     return node.value
+```
+### quadratic_bezier
+
+
+- node : [QuadraticBezier](/docs/GeoNodes/QuadraticBezier.md)
+- return : curve
+
+##### Arguments
+
+- resolution : None
+- start : None
+- middle : None
+- end : None
+- node_label : None
+- node_color : None
+
+#### Source code
+
+``` python
+def quadratic_bezier(self, resolution=None, start=None, middle=None, end=None, node_label=None, node_color=None):
+    node = self.QuadraticBezier(resolution=resolution, start=start, middle=middle, end=end, node_label=node_label, node_color=node_color)
+    return node.curve
+```
+### quadrilateral
+
+
+- node : [Quadrilateral](/docs/GeoNodes/Quadrilateral.md)
+- return : curve
+
+##### Arguments
+
+- width : None
+- height : None
+- offset : None
+- bottom_width : None
+- top_width : None
+- bottom_height : None
+- top_height : None
+- point_1 : None
+- point_2 : None
+- point_3 : None
+- point_4 : None
+- mode : 'RECTANGLE' in ('RECTANGLE', 'PARALLELOGRAM', 'TRAPEZOID', 'KITE', 'POINTS')
+- node_label : None
+- node_color : None
+
+#### Source code
+
+``` python
+def quadrilateral(self, width=None, height=None, offset=None, bottom_width=None, top_width=None, bottom_height=None, top_height=None, point_1=None, point_2=None, point_3=None, point_4=None, mode='RECTANGLE', node_label=None, node_color=None):
+    node = self.Quadrilateral(width=width, height=height, offset=offset, bottom_width=bottom_width, top_width=top_width, bottom_height=bottom_height, top_height=top_height, point_1=point_1, point_2=point_2, point_3=point_3, point_4=point_4, mode=mode, node_label=node_label, node_color=node_color)
+    return node.curve
+```
+### quaternion_to_rotation
+
+
+- node : [QuaternionToRotation](/docs/GeoNodes/QuaternionToRotation.md)
+- return : rotation
+
+##### Arguments
+
+- w : None
+- x : None
+- y : None
+- z : None
+- node_label : None
+- node_color : None
+
+#### Source code
+
+``` python
+def quaternion_to_rotation(self, w=None, x=None, y=None, z=None, node_label=None, node_color=None):
+    node = self.QuaternionToRotation(w=w, x=x, y=y, z=z, node_label=node_label, node_color=node_color)
+    return node.rotation
 ```
 ### radians
 
@@ -1212,6 +1773,30 @@ def snap(self, value=None, value_1=None, use_clamp=False, node_label=None, node_
     node = self.Math(value=value, value_1=value_1, operation='SNAP', use_clamp=use_clamp, node_label=node_label, node_color=node_color)
     return node.value
 ```
+### spiral
+
+
+- node : [Spiral](/docs/GeoNodes/Spiral.md)
+- return : curve
+
+##### Arguments
+
+- resolution : None
+- rotations : None
+- start_radius : None
+- end_radius : None
+- height : None
+- reverse : None
+- node_label : None
+- node_color : None
+
+#### Source code
+
+``` python
+def spiral(self, resolution=None, rotations=None, start_radius=None, end_radius=None, height=None, reverse=None, node_label=None, node_color=None):
+    node = self.Spiral(resolution=resolution, rotations=rotations, start_radius=start_radius, end_radius=end_radius, height=height, reverse=reverse, node_label=node_label, node_color=node_color)
+    return node.curve
+```
 ### sqrt
 
 
@@ -1231,6 +1816,28 @@ def snap(self, value=None, value_1=None, use_clamp=False, node_label=None, node_
 def sqrt(self, value=None, use_clamp=False, node_label=None, node_color=None):
     node = self.Math(value=value, operation='SQRT', use_clamp=use_clamp, node_label=node_label, node_color=node_color)
     return node.value
+```
+### star
+
+
+- node : [Star](/docs/GeoNodes/Star.md)
+- return : curve
+
+##### Arguments
+
+- points : None
+- inner_radius : None
+- outer_radius : None
+- twist : None
+- node_label : None
+- node_color : None
+
+#### Source code
+
+``` python
+def star(self, points=None, inner_radius=None, outer_radius=None, twist=None, node_label=None, node_color=None):
+    node = self.Star(points=points, inner_radius=inner_radius, outer_radius=outer_radius, twist=twist, node_label=node_label, node_color=node_color)
+    return node.curve
 ```
 ### subtract
 
@@ -1312,6 +1919,27 @@ def tanh(self, value=None, use_clamp=False, node_label=None, node_color=None):
 def trunc(self, value=None, use_clamp=False, node_label=None, node_color=None):
     node = self.Math(value=value, operation='TRUNC', use_clamp=use_clamp, node_label=node_label, node_color=node_color)
     return node.value
+```
+### uv_sphere
+
+
+- node : [UVSphere](/docs/GeoNodes/UVSphere.md)
+- return : mesh
+
+##### Arguments
+
+- segments : None
+- rings : None
+- radius : None
+- node_label : None
+- node_color : None
+
+#### Source code
+
+``` python
+def uv_sphere(self, segments=None, rings=None, radius=None, node_label=None, node_color=None):
+    node = self.UVSphere(segments=segments, rings=rings, radius=radius, node_label=node_label, node_color=node_color)
+    return node.mesh
 ```
 ### vabs
 
@@ -1690,6 +2318,64 @@ def vnormalize(self, vector=None, node_label=None, node_color=None):
     node = self.VectorMath(vector=vector, operation='NORMALIZE', node_label=node_label, node_color=node_color)
     return node.output_socket
 ```
+### volume_cube
+
+
+- node : [VolumeCube](/docs/GeoNodes/VolumeCube.md)
+- return : volume
+
+##### Arguments
+
+- density : None
+- background : None
+- min : None
+- max : None
+- resolution_x : None
+- resolution_y : None
+- resolution_z : None
+- node_label : None
+- node_color : None
+
+#### Source code
+
+``` python
+def volume_cube(self, density=None, background=None, min=None, max=None, resolution_x=None, resolution_y=None, resolution_z=None, node_label=None, node_color=None):
+    node = self.VolumeCube(density=density, background=background, min=min, max=max, resolution_x=resolution_x, resolution_y=resolution_y, resolution_z=resolution_z, node_label=node_label, node_color=node_color)
+    return node.volume
+```
+### voronoi_texture
+
+
+- node : [VoronoiTexture](/docs/GeoNodes/VoronoiTexture.md)
+- return : distance
+
+##### Arguments
+
+- vector : None
+- scale : None
+- detail : None
+- roughness : None
+- lacunarity : None
+- randomness : None
+- exponent : None
+- smoothness : None
+- w : None
+- color_mapping : None
+- distance : 'EUCLIDEAN' in ('EUCLIDEAN', 'MANHATTAN', 'CHEBYCHEV', 'MINKOWSKI')
+- feature : 'F1' in ('F1', 'F2', 'SMOOTH_F1', 'DISTANCE_TO_EDGE', 'N_SPHERE_RADIUS')
+- normalize : False
+- texture_mapping : None
+- voronoi_dimensions : '3D' in ('1D', '2D', '3D', '4D')
+- node_label : None
+- node_color : None
+
+#### Source code
+
+``` python
+def voronoi_texture(self, vector=None, scale=None, detail=None, roughness=None, lacunarity=None, randomness=None, exponent=None, smoothness=None, w=None, color_mapping=None, distance='EUCLIDEAN', feature='F1', normalize=False, texture_mapping=None, voronoi_dimensions='3D', node_label=None, node_color=None):
+    node = self.VoronoiTexture(vector=vector, scale=scale, detail=detail, roughness=roughness, lacunarity=lacunarity, randomness=randomness, exponent=exponent, smoothness=smoothness, w=w, color_mapping=color_mapping, distance=distance, feature=feature, normalize=normalize, texture_mapping=texture_mapping, voronoi_dimensions=voronoi_dimensions, node_label=node_label, node_color=node_color)
+    return node.distance
+```
 ### vproject
 
 
@@ -1869,6 +2555,58 @@ def vtan(self, vector=None, node_label=None, node_color=None):
 def vwrap(self, vector=None, vector_1=None, vector_2=None, node_label=None, node_color=None):
     node = self.VectorMath(vector=vector, vector_1=vector_1, vector_2=vector_2, operation='WRAP', node_label=node_label, node_color=node_color)
     return node.output_socket
+```
+### wave_texture
+
+
+- node : [WaveTexture](/docs/GeoNodes/WaveTexture.md)
+- return : curve
+
+##### Arguments
+
+- vector : None
+- scale : None
+- distortion : None
+- detail : None
+- detail_scale : None
+- detail_roughness : None
+- phase_offset : None
+- bands_direction : 'X' in ('X', 'Y', 'Z', 'DIAGONAL')
+- color_mapping : None
+- rings_direction : 'X' in ('X', 'Y', 'Z', 'SPHERICAL')
+- texture_mapping : None
+- wave_profile : 'SIN' in ('SIN', 'SAW', 'TRI')
+- wave_type : 'BANDS' in ('BANDS', 'RINGS')
+- node_label : None
+- node_color : None
+
+#### Source code
+
+``` python
+def wave_texture(self, vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, bands_direction='X', color_mapping=None, rings_direction='X', texture_mapping=None, wave_profile='SIN', wave_type='BANDS', node_label=None, node_color=None):
+    node = self.WaveTexture(vector=vector, scale=scale, distortion=distortion, detail=detail, detail_scale=detail_scale, detail_roughness=detail_roughness, phase_offset=phase_offset, bands_direction=bands_direction, color_mapping=color_mapping, rings_direction=rings_direction, texture_mapping=texture_mapping, wave_profile=wave_profile, wave_type=wave_type, node_label=node_label, node_color=node_color)
+    return node.curve
+```
+### white_noise_texture
+
+
+- node : [WhiteNoiseTexture](/docs/GeoNodes/WhiteNoiseTexture.md)
+- return : value
+
+##### Arguments
+
+- vector : None
+- w : None
+- noise_dimensions : '3D' in ('1D', '2D', '3D', '4D')
+- node_label : None
+- node_color : None
+
+#### Source code
+
+``` python
+def white_noise_texture(self, vector=None, w=None, noise_dimensions='3D', node_label=None, node_color=None):
+    node = self.WhiteNoiseTexture(vector=vector, w=w, noise_dimensions=noise_dimensions, node_label=node_label, node_color=node_color)
+    return node.value
 ```
 ### wrap
 

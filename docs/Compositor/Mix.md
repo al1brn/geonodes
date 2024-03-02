@@ -19,9 +19,9 @@ Mix(fac=None, image=None, image_1=None, blend_type='MIX', tag_need_exec=None, us
 
 ## Implementation
 
-- [Col](/docs/Compositor/Col.md) : [mix](/docs/Compositor/Col.md#mix) [mix_add](/docs/Compositor/Col.md#mix_add) [mix_burn](/docs/Compositor/Col.md#mix_burn) [mix_color](/docs/Compositor/Col.md#mix_color) [mix_darken](/docs/Compositor/Col.md#mix_darken) [mix_difference](/docs/Compositor/Col.md#mix_difference) [mix_divide](/docs/Compositor/Col.md#mix_divide) [mix_dodge](/docs/Compositor/Col.md#mix_dodge) [mix_exclusion](/docs/Compositor/Col.md#mix_exclusion) [mix_hue](/docs/Compositor/Col.md#mix_hue) [mix_lighten](/docs/Compositor/Col.md#mix_lighten) [mix_linear_light](/docs/Compositor/Col.md#mix_linear_light) [mix_mix](/docs/Compositor/Col.md#mix_mix) [mix_multiply](/docs/Compositor/Col.md#mix_multiply) [mix_overlay](/docs/Compositor/Col.md#mix_overlay) [mix_saturation](/docs/Compositor/Col.md#mix_saturation) [mix_screen](/docs/Compositor/Col.md#mix_screen) [mix_soft_light](/docs/Compositor/Col.md#mix_soft_light) [mix_subtract](/docs/Compositor/Col.md#mix_subtract) [mix_value](/docs/Compositor/Col.md#mix_value)
-- [Float](/docs/Compositor/Float.md) : [mix](/docs/Compositor/Float.md#mix)
-- [Vect](/docs/Compositor/Vect.md) : [mix](/docs/Compositor/Vect.md#mix)
+- [RGBA](/docs/Compositor/RGBA.md) : [mix](/docs/Compositor/RGBA.md#mix) [mix_add](/docs/Compositor/RGBA.md#mix_add) [mix_burn](/docs/Compositor/RGBA.md#mix_burn) [mix_color](/docs/Compositor/RGBA.md#mix_color) [mix_darken](/docs/Compositor/RGBA.md#mix_darken) [mix_difference](/docs/Compositor/RGBA.md#mix_difference) [mix_divide](/docs/Compositor/RGBA.md#mix_divide) [mix_dodge](/docs/Compositor/RGBA.md#mix_dodge) [mix_exclusion](/docs/Compositor/RGBA.md#mix_exclusion) [mix_hue](/docs/Compositor/RGBA.md#mix_hue) [mix_lighten](/docs/Compositor/RGBA.md#mix_lighten) [mix_linear_light](/docs/Compositor/RGBA.md#mix_linear_light) [mix_mix](/docs/Compositor/RGBA.md#mix_mix) [mix_multiply](/docs/Compositor/RGBA.md#mix_multiply) [mix_overlay](/docs/Compositor/RGBA.md#mix_overlay) [mix_saturation](/docs/Compositor/RGBA.md#mix_saturation) [mix_screen](/docs/Compositor/RGBA.md#mix_screen) [mix_soft_light](/docs/Compositor/RGBA.md#mix_soft_light) [mix_subtract](/docs/Compositor/RGBA.md#mix_subtract) [mix_value](/docs/Compositor/RGBA.md#mix_value)
+- [VALUE](/docs/Compositor/VALUE.md) : [mix](/docs/Compositor/VALUE.md#mix)
+- [VECTOR](/docs/Compositor/VECTOR.md) : [mix](/docs/Compositor/VECTOR.md#mix)
 
 ## Init
 

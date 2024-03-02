@@ -15,7 +15,7 @@ SliceString(string=None, position=None, length=None, node_label=None, node_color
 
 ## Implementation
 
-- [Str](/docs/GeoNodes/Str.md) : [slice_string](/docs/GeoNodes/Str.md#slice_string)
+- [STRING](/docs/GeoNodes/STRING.md) : [slice_string](/docs/GeoNodes/STRING.md#slice_string) [slice_string](/docs/GeoNodes/STRING.md#slice_string)
 
 ## Init
 

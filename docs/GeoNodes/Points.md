@@ -15,7 +15,7 @@ Points(count=None, position=None, radius=None, node_label=None, node_color=None)
 
 ## Implementation
 
-No implementation in sockets
+- Functions : [points](/docs/GeoNodes/GeoNodesTree.md#points) [points](/docs/GeoNodes/GeoNodesTree.md#points)
 
 ## Init
 

@@ -14,7 +14,7 @@ DomainSize(geometry=None, component='MESH', node_label=None, node_color=None)
 
 ## Implementation
 
-- [Geometry](/docs/GeoNodes/Geometry.md) : [domain_size](/docs/GeoNodes/Geometry.md#domain_size)
+- [GEOMETRY](/docs/GeoNodes/GEOMETRY.md) : [domain_size](/docs/GeoNodes/GEOMETRY.md#domain_size) [domain_size](/docs/GeoNodes/GEOMETRY.md#domain_size)
 
 ## Init
 

@@ -17,7 +17,7 @@ UVUnwrap(selection=None, seam=None, margin=None, fill_holes=None, method='ANGLE_
 
 ## Implementation
 
-- [Geometry](/docs/GeoNodes/Geometry.md) : [uv_unwrap](/docs/GeoNodes/Geometry.md#uv_unwrap)
+- [GEOMETRY](/docs/GeoNodes/GEOMETRY.md) : [uv_unwrap](/docs/GeoNodes/GEOMETRY.md#uv_unwrap) [uv_unwrap](/docs/GeoNodes/GEOMETRY.md#uv_unwrap)
 
 ## Init
 

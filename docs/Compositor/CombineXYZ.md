@@ -16,7 +16,7 @@ CombineXYZ(x=None, y=None, z=None, tag_need_exec=None, node_label=None, node_col
 
 ## Implementation
 
-No implementation in sockets
+- Functions : [combine_xyz](/docs/Compositor/CompositorTree.md#combine_xyz)
 
 ## Init
 

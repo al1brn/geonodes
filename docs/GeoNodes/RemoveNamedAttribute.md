@@ -14,7 +14,7 @@ RemoveNamedAttribute(geometry=None, name=None, node_label=None, node_color=None)
 
 ## Implementation
 
-- [Geometry](/docs/GeoNodes/Geometry.md) : [remove_named_attribute](/docs/GeoNodes/Geometry.md#remove_named_attribute)
+- [GEOMETRY](/docs/GeoNodes/GEOMETRY.md) : [remove_named_attribute](/docs/GeoNodes/GEOMETRY.md#remove_named_attribute) [remove_named_attribute](/docs/GeoNodes/GEOMETRY.md#remove_named_attribute)
 
 ## Init
 

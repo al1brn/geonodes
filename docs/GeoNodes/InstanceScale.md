@@ -9,7 +9,7 @@ InstanceScale(node_label=None, node_color=None)
 ```
 ## Implementation
 
-- [Geometry](/docs/GeoNodes/Geometry.md) : [instance_scale](/docs/GeoNodes/Geometry.md#instance_scale)
+- [GEOMETRY](/docs/GeoNodes/GEOMETRY.md) : [instance_scale](/docs/GeoNodes/GEOMETRY.md#instance_scale) [instance_scale](/docs/GeoNodes/GEOMETRY.md#instance_scale)
 
 ## Init
 

@@ -16,7 +16,7 @@ DeleteGeometry(geometry=None, selection=None, domain='POINT', mode='ALL', node_l
 
 ## Implementation
 
-- [Geometry](/docs/GeoNodes/Geometry.md) : [delete_geometry](/docs/GeoNodes/Geometry.md#delete_geometry)
+- [GEOMETRY](/docs/GeoNodes/GEOMETRY.md) : [delete_geometry](/docs/GeoNodes/GEOMETRY.md#delete_geometry) [delete_geometry](/docs/GeoNodes/GEOMETRY.md#delete_geometry)
 
 ## Init
 

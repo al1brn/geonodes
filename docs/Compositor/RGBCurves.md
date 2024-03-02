@@ -18,7 +18,7 @@ RGBCurves(fac=None, image=None, black_level=None, white_level=None, mapping=None
 
 ## Implementation
 
-- [Col](/docs/Compositor/Col.md) : [rgb_curves](/docs/Compositor/Col.md#rgb_curves)
+- [RGBA](/docs/Compositor/RGBA.md) : [rgb_curves](/docs/Compositor/RGBA.md#rgb_curves)
 
 ## Init
 

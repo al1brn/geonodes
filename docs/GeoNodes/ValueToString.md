@@ -14,8 +14,8 @@ ValueToString(value=None, decimals=None, node_label=None, node_color=None)
 
 ## Implementation
 
-- [Float](/docs/GeoNodes/Float.md) : [value_to_string](/docs/GeoNodes/Float.md#value_to_string)
-- [Int](/docs/GeoNodes/Int.md) : [value_to_string](/docs/GeoNodes/Int.md#value_to_string)
+- [INT](/docs/GeoNodes/INT.md) : [value_to_string](/docs/GeoNodes/INT.md#value_to_string) [value_to_string](/docs/GeoNodes/INT.md#value_to_string)
+- [VALUE](/docs/GeoNodes/VALUE.md) : [value_to_string](/docs/GeoNodes/VALUE.md#value_to_string) [value_to_string](/docs/GeoNodes/VALUE.md#value_to_string)
 
 ## Init
 

@@ -16,7 +16,7 @@ MergeByDistance(geometry=None, selection=None, distance=None, mode='ALL', node_l
 
 ## Implementation
 
-- [Geometry](/docs/GeoNodes/Geometry.md) : [merge_by_distance](/docs/GeoNodes/Geometry.md#merge_by_distance)
+- [GEOMETRY](/docs/GeoNodes/GEOMETRY.md) : [merge_by_distance](/docs/GeoNodes/GEOMETRY.md#merge_by_distance) [merge_by_distance](/docs/GeoNodes/GEOMETRY.md#merge_by_distance)
 
 ## Init
 

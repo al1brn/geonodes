@@ -27,7 +27,7 @@ VoronoiTexture(vector=None, scale=None, detail=None, roughness=None, lacunarity=
 
 ## Implementation
 
-No implementation in sockets
+- Functions : [voronoi_texture](/docs/GeoNodes/GeoNodesTree.md#voronoi_texture) [voronoi_texture](/docs/GeoNodes/GeoNodesTree.md#voronoi_texture)
 
 ## Init
 

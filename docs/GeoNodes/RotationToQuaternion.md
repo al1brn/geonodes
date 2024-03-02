@@ -13,8 +13,8 @@ RotationToQuaternion(rotation=None, node_label=None, node_color=None)
 
 ## Implementation
 
-- [Rot](/docs/GeoNodes/Rot.md) : [rotation_to_quaternion](/docs/GeoNodes/Rot.md#rotation_to_quaternion)
-- [Vect](/docs/GeoNodes/Vect.md) : [rotation_to_quaternion](/docs/GeoNodes/Vect.md#rotation_to_quaternion)
+- [ROTATION](/docs/GeoNodes/ROTATION.md) : [rotation_to_quaternion](/docs/GeoNodes/ROTATION.md#rotation_to_quaternion) [rotation_to_quaternion](/docs/GeoNodes/ROTATION.md#rotation_to_quaternion)
+- [VECTOR](/docs/GeoNodes/VECTOR.md) : [rotation_to_quaternion](/docs/GeoNodes/VECTOR.md#rotation_to_quaternion) [rotation_to_quaternion](/docs/GeoNodes/VECTOR.md#rotation_to_quaternion)
 
 ## Init
 

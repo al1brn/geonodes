@@ -17,7 +17,7 @@ RotateInstances(instances=None, selection=None, rotation=None, pivot_point=None,
 
 ## Implementation
 
-- [Geometry](/docs/GeoNodes/Geometry.md) : [rotate_instances](/docs/GeoNodes/Geometry.md#rotate_instances)
+- [GEOMETRY](/docs/GeoNodes/GEOMETRY.md) : [rotate_instances](/docs/GeoNodes/GEOMETRY.md#rotate_instances) [rotate_instances](/docs/GeoNodes/GEOMETRY.md#rotate_instances)
 
 ## Init
 

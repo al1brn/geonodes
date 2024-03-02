@@ -14,7 +14,7 @@ GeometryToInstance(*args, geometry=None, node_label=None, node_color=None)
 
 ## Implementation
 
-- [Geometry](/docs/GeoNodes/Geometry.md) : [geometry_to_instance](/docs/GeoNodes/Geometry.md#geometry_to_instance)
+- [GEOMETRY](/docs/GeoNodes/GEOMETRY.md) : [geometry_to_instance](/docs/GeoNodes/GEOMETRY.md#geometry_to_instance) [geometry_to_instance](/docs/GeoNodes/GEOMETRY.md#geometry_to_instance)
 
 ## Init
 

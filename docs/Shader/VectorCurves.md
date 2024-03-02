@@ -15,8 +15,8 @@ VectorCurves(fac=None, vector=None, mapping=None, node_label=None, node_color=No
 
 ## Implementation
 
-- [Rot](/docs/Shader/Rot.md) : [vector_curves](/docs/Shader/Rot.md#vector_curves)
-- [Vect](/docs/Shader/Vect.md) : [vector_curves](/docs/Shader/Vect.md#vector_curves)
+- [ROTATION](/docs/Shader/ROTATION.md) : [vector_curves](/docs/Shader/ROTATION.md#vector_curves)
+- [VECTOR](/docs/Shader/VECTOR.md) : [vector_curves](/docs/Shader/VECTOR.md#vector_curves)
 
 ## Init
 

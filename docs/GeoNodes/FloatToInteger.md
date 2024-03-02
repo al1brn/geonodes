@@ -14,7 +14,7 @@ FloatToInteger(float=None, rounding_mode='ROUND', node_label=None, node_color=No
 
 ## Implementation
 
-- [Float](/docs/GeoNodes/Float.md) : [ceiling](/docs/GeoNodes/Float.md#ceiling) [float_to_integer](/docs/GeoNodes/Float.md#float_to_integer) [float_to_integer_ceiling](/docs/GeoNodes/Float.md#float_to_integer_ceiling) [float_to_integer_floor](/docs/GeoNodes/Float.md#float_to_integer_floor) [float_to_integer_round](/docs/GeoNodes/Float.md#float_to_integer_round) [float_to_integer_truncate](/docs/GeoNodes/Float.md#float_to_integer_truncate) [floor](/docs/GeoNodes/Float.md#floor) [round](/docs/GeoNodes/Float.md#round) [truncate](/docs/GeoNodes/Float.md#truncate)
+- [VALUE](/docs/GeoNodes/VALUE.md) : [ceiling](/docs/GeoNodes/VALUE.md#ceiling) [ceiling](/docs/GeoNodes/VALUE.md#ceiling) [float_to_integer](/docs/GeoNodes/VALUE.md#float_to_integer) [float_to_integer](/docs/GeoNodes/VALUE.md#float_to_integer) [float_to_integer_ceiling](/docs/GeoNodes/VALUE.md#float_to_integer_ceiling) [float_to_integer_ceiling](/docs/GeoNodes/VALUE.md#float_to_integer_ceiling) [float_to_integer_floor](/docs/GeoNodes/VALUE.md#float_to_integer_floor) [float_to_integer_floor](/docs/GeoNodes/VALUE.md#float_to_integer_floor) [float_to_integer_round](/docs/GeoNodes/VALUE.md#float_to_integer_round) [float_to_integer_round](/docs/GeoNodes/VALUE.md#float_to_integer_round) [float_to_integer_truncate](/docs/GeoNodes/VALUE.md#float_to_integer_truncate) [float_to_integer_truncate](/docs/GeoNodes/VALUE.md#float_to_integer_truncate) [floor](/docs/GeoNodes/VALUE.md#floor) [floor](/docs/GeoNodes/VALUE.md#floor) [round](/docs/GeoNodes/VALUE.md#round) [round](/docs/GeoNodes/VALUE.md#round) [truncate](/docs/GeoNodes/VALUE.md#truncate) [truncate](/docs/GeoNodes/VALUE.md#truncate)
 
 ## Init
 

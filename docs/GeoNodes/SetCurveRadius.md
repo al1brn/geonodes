@@ -15,7 +15,7 @@ SetCurveRadius(curve=None, selection=None, radius=None, node_label=None, node_co
 
 ## Implementation
 
-- [Geometry](/docs/GeoNodes/Geometry.md) : [radius](/docs/GeoNodes/Geometry.md#radius) [set_curve_radius](/docs/GeoNodes/Geometry.md#set_curve_radius)
+- [GEOMETRY](/docs/GeoNodes/GEOMETRY.md) : [radius](/docs/GeoNodes/GEOMETRY.md#radius) [radius](/docs/GeoNodes/GEOMETRY.md#radius) [set_curve_radius](/docs/GeoNodes/GEOMETRY.md#set_curve_radius) [set_curve_radius](/docs/GeoNodes/GEOMETRY.md#set_curve_radius)
 
 ## Init
 

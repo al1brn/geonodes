@@ -15,8 +15,8 @@ VectorCurves(fac=None, vector=None, mapping=None, node_label=None, node_color=No
 
 ## Implementation
 
-- [Rot](/docs/GeoNodes/Rot.md) : [vector_curves](/docs/GeoNodes/Rot.md#vector_curves)
-- [Vect](/docs/GeoNodes/Vect.md) : [vector_curves](/docs/GeoNodes/Vect.md#vector_curves)
+- [ROTATION](/docs/GeoNodes/ROTATION.md) : [vector_curves](/docs/GeoNodes/ROTATION.md#vector_curves) [vector_curves](/docs/GeoNodes/ROTATION.md#vector_curves)
+- [VECTOR](/docs/GeoNodes/VECTOR.md) : [vector_curves](/docs/GeoNodes/VECTOR.md#vector_curves) [vector_curves](/docs/GeoNodes/VECTOR.md#vector_curves)
 
 ## Init
 

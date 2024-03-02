@@ -16,7 +16,7 @@ QuaternionToRotation(w=None, x=None, y=None, z=None, node_label=None, node_color
 
 ## Implementation
 
-No implementation in sockets
+- Functions : [quaternion_to_rotation](/docs/GeoNodes/GeoNodesTree.md#quaternion_to_rotation) [quaternion_to_rotation](/docs/GeoNodes/GeoNodesTree.md#quaternion_to_rotation)
 
 ## Init
 

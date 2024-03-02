@@ -17,7 +17,7 @@ MeshLine(count=None, start_location=None, offset=None, count_mode='TOTAL', mode=
 
 ## Implementation
 
-No implementation in sockets
+- Functions : [mesh_line](/docs/GeoNodes/GeoNodesTree.md#mesh_line) [mesh_line](/docs/GeoNodes/GeoNodesTree.md#mesh_line)
 
 ## Init
 

@@ -1,4 +1,4 @@
-# Socket Texture
+# Socket TEXTURE
 
 
 ### Methods

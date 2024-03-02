@@ -18,7 +18,7 @@ PointsToVolume(points=None, density=None, voxel_amount=None, radius=None, voxel_
 
 ## Implementation
 
-- [Geometry](/docs/GeoNodes/Geometry.md) : [points_to_volume](/docs/GeoNodes/Geometry.md#points_to_volume)
+- [GEOMETRY](/docs/GeoNodes/GEOMETRY.md) : [points_to_volume](/docs/GeoNodes/GEOMETRY.md#points_to_volume) [points_to_volume](/docs/GeoNodes/GEOMETRY.md#points_to_volume)
 
 ## Init
 

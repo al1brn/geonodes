@@ -17,7 +17,7 @@ CombineColor(red=None, green=None, blue=None, alpha=None, mode='RGB', node_label
 
 ## Implementation
 
-No implementation in sockets
+- Functions : [combine_color](/docs/GeoNodes/GeoNodesTree.md#combine_color) [combine_color](/docs/GeoNodes/GeoNodesTree.md#combine_color)
 
 ## Init
 

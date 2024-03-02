@@ -15,7 +15,7 @@ SetPointRadius(points=None, selection=None, radius=None, node_label=None, node_c
 
 ## Implementation
 
-- [Geometry](/docs/GeoNodes/Geometry.md) : [point_radius](/docs/GeoNodes/Geometry.md#point_radius) [set_point_radius](/docs/GeoNodes/Geometry.md#set_point_radius)
+- [GEOMETRY](/docs/GeoNodes/GEOMETRY.md) : [point_radius](/docs/GeoNodes/GEOMETRY.md#point_radius) [point_radius](/docs/GeoNodes/GEOMETRY.md#point_radius) [set_point_radius](/docs/GeoNodes/GEOMETRY.md#set_point_radius) [set_point_radius](/docs/GeoNodes/GEOMETRY.md#set_point_radius)
 
 ## Init
 

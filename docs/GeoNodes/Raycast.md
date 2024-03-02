@@ -19,7 +19,7 @@ Raycast(target_geometry=None, attribute=None, source_position=None, ray_directio
 
 ## Implementation
 
-- [Geometry](/docs/GeoNodes/Geometry.md) : [raycast](/docs/GeoNodes/Geometry.md#raycast) [raycast_boolean](/docs/GeoNodes/Geometry.md#raycast_boolean) [raycast_color](/docs/GeoNodes/Geometry.md#raycast_color) [raycast_float](/docs/GeoNodes/Geometry.md#raycast_float) [raycast_int](/docs/GeoNodes/Geometry.md#raycast_int) [raycast_quaternion](/docs/GeoNodes/Geometry.md#raycast_quaternion) [raycast_vector](/docs/GeoNodes/Geometry.md#raycast_vector)
+- [GEOMETRY](/docs/GeoNodes/GEOMETRY.md) : [raycast](/docs/GeoNodes/GEOMETRY.md#raycast) [raycast](/docs/GeoNodes/GEOMETRY.md#raycast) [raycast_boolean](/docs/GeoNodes/GEOMETRY.md#raycast_boolean) [raycast_boolean](/docs/GeoNodes/GEOMETRY.md#raycast_boolean) [raycast_color](/docs/GeoNodes/GEOMETRY.md#raycast_color) [raycast_color](/docs/GeoNodes/GEOMETRY.md#raycast_color) [raycast_float](/docs/GeoNodes/GEOMETRY.md#raycast_float) [raycast_float](/docs/GeoNodes/GEOMETRY.md#raycast_float) [raycast_int](/docs/GeoNodes/GEOMETRY.md#raycast_int) [raycast_int](/docs/GeoNodes/GEOMETRY.md#raycast_int) [raycast_quaternion](/docs/GeoNodes/GEOMETRY.md#raycast_quaternion) [raycast_quaternion](/docs/GeoNodes/GEOMETRY.md#raycast_quaternion) [raycast_vector](/docs/GeoNodes/GEOMETRY.md#raycast_vector) [raycast_vector](/docs/GeoNodes/GEOMETRY.md#raycast_vector)
 
 ## Init
 

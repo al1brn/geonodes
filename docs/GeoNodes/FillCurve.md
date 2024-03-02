@@ -14,7 +14,7 @@ FillCurve(curve=None, mode='TRIANGLES', node_label=None, node_color=None)
 
 ## Implementation
 
-- [Geometry](/docs/GeoNodes/Geometry.md) : [fill_curve](/docs/GeoNodes/Geometry.md#fill_curve)
+- [GEOMETRY](/docs/GeoNodes/GEOMETRY.md) : [fill_curve](/docs/GeoNodes/GEOMETRY.md#fill_curve) [fill_curve](/docs/GeoNodes/GEOMETRY.md#fill_curve)
 
 ## Init
 

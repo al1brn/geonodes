@@ -18,7 +18,7 @@ SampleIndex(geometry=None, value=None, index=None, clamp=False, data_type='FLOAT
 
 ## Implementation
 
-- [Geometry](/docs/GeoNodes/Geometry.md) : [sample_index](/docs/GeoNodes/Geometry.md#sample_index) [sample_index_boolean](/docs/GeoNodes/Geometry.md#sample_index_boolean) [sample_index_color](/docs/GeoNodes/Geometry.md#sample_index_color) [sample_index_float](/docs/GeoNodes/Geometry.md#sample_index_float) [sample_index_int](/docs/GeoNodes/Geometry.md#sample_index_int) [sample_index_quaternion](/docs/GeoNodes/Geometry.md#sample_index_quaternion) [sample_index_vector](/docs/GeoNodes/Geometry.md#sample_index_vector)
+- [GEOMETRY](/docs/GeoNodes/GEOMETRY.md) : [sample_index](/docs/GeoNodes/GEOMETRY.md#sample_index) [sample_index](/docs/GeoNodes/GEOMETRY.md#sample_index) [sample_index_boolean](/docs/GeoNodes/GEOMETRY.md#sample_index_boolean) [sample_index_boolean](/docs/GeoNodes/GEOMETRY.md#sample_index_boolean) [sample_index_color](/docs/GeoNodes/GEOMETRY.md#sample_index_color) [sample_index_color](/docs/GeoNodes/GEOMETRY.md#sample_index_color) [sample_index_float](/docs/GeoNodes/GEOMETRY.md#sample_index_float) [sample_index_float](/docs/GeoNodes/GEOMETRY.md#sample_index_float) [sample_index_int](/docs/GeoNodes/GEOMETRY.md#sample_index_int) [sample_index_int](/docs/GeoNodes/GEOMETRY.md#sample_index_int) [sample_index_quaternion](/docs/GeoNodes/GEOMETRY.md#sample_index_quaternion) [sample_index_quaternion](/docs/GeoNodes/GEOMETRY.md#sample_index_quaternion) [sample_index_vector](/docs/GeoNodes/GEOMETRY.md#sample_index_vector) [sample_index_vector](/docs/GeoNodes/GEOMETRY.md#sample_index_vector)
 
 ## Init
 

@@ -15,7 +15,7 @@ MeshCircle(vertices=None, radius=None, fill_type='NONE', node_label=None, node_c
 
 ## Implementation
 
-No implementation in sockets
+- Functions : [mesh_circle](/docs/GeoNodes/GeoNodesTree.md#mesh_circle) [mesh_circle](/docs/GeoNodes/GeoNodesTree.md#mesh_circle)
 
 ## Init
 

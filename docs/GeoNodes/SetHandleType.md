@@ -16,7 +16,7 @@ SetHandleType(curve=None, selection=None, handle_type='AUTO', mode={'RIGHT', 'LE
 
 ## Implementation
 
-- [Geometry](/docs/GeoNodes/Geometry.md) : [set_handle_type](/docs/GeoNodes/Geometry.md#set_handle_type)
+- [GEOMETRY](/docs/GeoNodes/GEOMETRY.md) : [set_handle_type](/docs/GeoNodes/GEOMETRY.md#set_handle_type) [set_handle_type](/docs/GeoNodes/GEOMETRY.md#set_handle_type)
 
 ## Init
 

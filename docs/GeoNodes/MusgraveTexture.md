@@ -24,7 +24,7 @@ MusgraveTexture(vector=None, scale=None, detail=None, dimension=None, lacunarity
 
 ## Implementation
 
-No implementation in sockets
+- Functions : [musgrave_texture](/docs/GeoNodes/GeoNodesTree.md#musgrave_texture) [musgrave_texture](/docs/GeoNodes/GeoNodesTree.md#musgrave_texture)
 
 ## Init
 

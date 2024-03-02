@@ -19,7 +19,7 @@ CombineColor(red=None, green=None, blue=None, alpha=None, mode='RGB', tag_need_e
 
 ## Implementation
 
-No implementation in sockets
+- Functions : [combine_color](/docs/Compositor/CompositorTree.md#combine_color)
 
 ## Init
 

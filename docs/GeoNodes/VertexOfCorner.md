@@ -13,7 +13,7 @@ VertexOfCorner(corner_index=None, node_label=None, node_color=None)
 
 ## Implementation
 
-- [Geometry](/docs/GeoNodes/Geometry.md) : [vertex_of_corner](/docs/GeoNodes/Geometry.md#vertex_of_corner)
+- [GEOMETRY](/docs/GeoNodes/GEOMETRY.md) : [vertex_of_corner](/docs/GeoNodes/GEOMETRY.md#vertex_of_corner) [vertex_of_corner](/docs/GeoNodes/GEOMETRY.md#vertex_of_corner)
 
 ## Init
 

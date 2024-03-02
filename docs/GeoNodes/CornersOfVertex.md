@@ -15,7 +15,7 @@ CornersOfVertex(vertex_index=None, weights=None, sort_index=None, node_label=Non
 
 ## Implementation
 
-- [Geometry](/docs/GeoNodes/Geometry.md) : [corners_of_vertex](/docs/GeoNodes/Geometry.md#corners_of_vertex)
+- [GEOMETRY](/docs/GeoNodes/GEOMETRY.md) : [corners_of_vertex](/docs/GeoNodes/GEOMETRY.md#corners_of_vertex) [corners_of_vertex](/docs/GeoNodes/GEOMETRY.md#corners_of_vertex)
 
 ## Init
 

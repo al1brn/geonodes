@@ -9,7 +9,7 @@ VertexNeighbors(node_label=None, node_color=None)
 ```
 ## Implementation
 
-- [Geometry](/docs/GeoNodes/Geometry.md) : [vertex_neighbors](/docs/GeoNodes/Geometry.md#vertex_neighbors)
+- [GEOMETRY](/docs/GeoNodes/GEOMETRY.md) : [vertex_neighbors](/docs/GeoNodes/GEOMETRY.md#vertex_neighbors) [vertex_neighbors](/docs/GeoNodes/GEOMETRY.md#vertex_neighbors)
 
 ## Init
 

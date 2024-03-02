@@ -1,4 +1,4 @@
-# Socket Collection
+# Socket COLLECTION
 
 
 ### Methods

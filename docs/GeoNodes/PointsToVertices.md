@@ -14,7 +14,7 @@ PointsToVertices(points=None, selection=None, node_label=None, node_color=None)
 
 ## Implementation
 
-- [Geometry](/docs/GeoNodes/Geometry.md) : [points_to_vertices](/docs/GeoNodes/Geometry.md#points_to_vertices)
+- [GEOMETRY](/docs/GeoNodes/GEOMETRY.md) : [points_to_vertices](/docs/GeoNodes/GEOMETRY.md#points_to_vertices) [points_to_vertices](/docs/GeoNodes/GEOMETRY.md#points_to_vertices)
 
 ## Init
 

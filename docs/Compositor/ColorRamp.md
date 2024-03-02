@@ -15,7 +15,7 @@ ColorRamp(fac=None, color_ramp=None, tag_need_exec=None, node_label=None, node_c
 
 ## Implementation
 
-- [Float](/docs/Compositor/Float.md) : [color_ramp](/docs/Compositor/Float.md#color_ramp)
+- [VALUE](/docs/Compositor/VALUE.md) : [color_ramp](/docs/Compositor/VALUE.md#color_ramp)
 
 ## Init
 

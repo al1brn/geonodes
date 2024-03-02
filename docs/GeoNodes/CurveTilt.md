@@ -9,7 +9,7 @@ CurveTilt(node_label=None, node_color=None)
 ```
 ## Implementation
 
-- [Geometry](/docs/GeoNodes/Geometry.md) : [curve_tilt](/docs/GeoNodes/Geometry.md#curve_tilt)
+- [GEOMETRY](/docs/GeoNodes/GEOMETRY.md) : [curve_tilt](/docs/GeoNodes/GEOMETRY.md#curve_tilt) [curve_tilt](/docs/GeoNodes/GEOMETRY.md#curve_tilt)
 
 ## Init
 

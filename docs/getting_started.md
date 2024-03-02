@@ -9,44 +9,324 @@ To use the **geonodes** python module, you are supposed to be familiar with:
 
 Install the version of **geonodes** compatible with the Blender version you use.
 
-## Important
+## 3 types of nodes trees
 
-> You can ask yourself what is the name of the method implementing a particular node and what are the name of the node sockets.
-> Simply use the `snake_case` version of the names.
-> You can also refer to the [API reference](index.md) or use `geonodes.print_doc(tree.xxxx)` method to dynamically print help into the console.
+**geonodes** support 3 types of nodes trees:
 
+- Geometry nodes (class `geonodes.GeoNodes`)
+- Shader nodes (class `geonodes.Shader`)
+- Compositor nodes (class `geonodes.Compositor`)
+
+Once initialized as described below, there is no major differences in the behavior.
+Differences exists in the inputs and outputs of the trees and on the set of possible nodes.
 
 ## Importing the module
 
 We suppose that all scripts start with the following import instruction:
 
 ``` python
-import geonodes as gn
-
-or
-
-from geonodes import GeoNodes, Shader, Simulation, Repeat, print_doc
+from geonodes import GeoNodes, Shader, Compositor
 ```
 
- ## Getting started
-
-### Creating a new tree
+## Creating a new tree
 
 A tree is created using the with statement:
 
 ``` python
-# A new geometry nodes modifier
-with GeoNodes("Geometry Nodes name", options) as tree:
-    ...
+# Creating a new Geometry nodes modifier
+with GeoNodes("Geometry Nodes") as tree:
+    pass
 
-# A new material
+# Creating a new material
 with Shader("Material") as tree:
-    ...
+    pass
+    
+# Accessing the scene compositor nodes:
+with Compositor() as tree:
+    pass
+```
+
+The first parameter is the name of the tree to create. For `Compositor`, the nodes are the one of the current scene.
+If your file hase several scenes, you can specify the name of the scene you want to edit the compositor of:
+
+``` python
+# Edit the compositor nodes of the scene named "Scene.001"
+with Compositor("Scene.001") as tree:
+    pass
 ```
 
 ***CAUTION***: when opening a tree, the existing nodes are deleted!
 
-### Nodes and sockets
+## Creating a Node
+
+Create a node by using its **CamelCase** name. For instance:
+- Node *Set Shade Smooth* : `tree.SetShadeSmooth``
+- Node *Set Position* : `tree.SetPosition`
+- Node *Curve Circle* : `tree.CurveCircle` 
+
+The following piece of code creates an *Ico Sphere* node with default parameters:
+
+``` python
+with GeoNodes("Geometry Nodes") as tree:
+    # Create an ico sphere
+    node = tree.IcoSphere()
+``` 
+
+Nodes generally have input sockets and can have parameters.
+These can be set as initialization arguments of the node:
+
+``` python
+with GeoNodes("Geometry Nodes") as tree:
+
+    # Create a Math node adding 2 and 2 and get the result in the value variable
+    value = tree.Math(2, 2, operation='ADD').value
+    
+    # Use this result as resolution of the ico sphere
+    ico = tree.IcoSphere(resolution=value).mesh
+```
+
+The way sockets and parameters are named is described below.
+
+### Node sockets
+
+The node sockets are named with the **snake_case** version of their actual name. For instance:
+- Input sockets of `IcoSphere` node: `radius` and `subdivisions`
+- Output sockets of `IcoSphere` node : `mesh` and `uv_map`
+
+Input sockets are **write only** node attributes when output sockets are **read only** node attributes:
+
+``` python
+with GeoNodes("Geometry Nodes") as tree:
+    # Create an ico sphere
+    node = tree.IcoSphere()
+    
+    # Set the input sockets (write only attributes)
+    node.radius = 2.
+    node.subdivisions = 5
+    
+    # Get the output sockets (read only attributes)
+    mesh = node.mesh
+    uv = node.uv_map
+```
+
+### Links
+
+Links between nodes are simply created by setting an input socket with an output sockets.
+In the following examplen the ico sphere is smoothed:
+
+``` python
+with GeoNodes("Geometry Nodes") as tree:
+    # Create an ico sphere
+    node = tree.IcoSphere()
+    
+    # Create a Set Shade Smooth node
+    smooth = tree.SetShadeSmooth()
+    
+    # Link the two nodes
+    smooth.geometry = node.mesh
+```
+
+### Sockets with the same name
+
+When a node uses the same name for an input and an output socket, the same **snake_case** name is used for both sockets with no ambiguity.
+
+``` python
+with GeoNodes("Geometry Nodes") as tree:
+
+    # Create a Set Shade Smooth node
+    smooth = tree.SetShadeSmooth()
+
+    # set : Input geometry of the SetShadeSmooth node
+    smooth.geometry = node.mesh
+    
+    # get : Output geometry of the SetShadeSmooth node
+    smoothed = smooth.geometry
+```
+
+The same name can be used several times for input and output sockets. In that case, the sockets are numerbered
+in their order in the node from the seconde one (the first one keeps its raw snake_case name) as shown
+in the example below:
+
+``` python
+with GeoNodes("Geometry Nodes") as tree:
+
+    # A math node
+    node = tree.Math()
+    
+    node.value    = 1 # Set the first 'Value' socket
+    node.value_1  = 2 # Set the second 'Value' socket
+    node.value_2  = 3 # Set the third 'Value' socket
+    
+    # Get the result
+    result = node.value # Output 'Value' socket
+```
+
+### Node parameters
+
+Node parameters can be accessed with their Blender attribute name. For instance de Blender node *Math* has
+a parameter named `operation` which can set as an attribute of the `Math` node:
+
+``` python
+
+    # A math node
+    node = tree.Math()
+    
+    # Setting the operation
+    node.operation = 'MULTIPLY'
+```
+
+### Node init arguments order
+
+Sockets and parameters can be set as arguments of the node creation `__init__` instruction.
+The first arguments are the sockets, then the parameters.
+
+``` python
+# Math node __init__ header
+def __init__(self, value=None, value_1=None, value_2=None, operation='ADD', use_clamp=False):
+```
+
+> :warning: some sockets are hidden in the default configuration but they are present in the initialization.
+> Hence, it is recommended to use keyword arguments for paramters
+
+``` python
+with GeoNodes("Geometry Nodes") as tree:
+
+    # Add two values
+    value = tree.Math(2, 2, operation='ADD').value
+    
+    # The following line uses 'ADD' string as input for the third socket named 'Value'
+    value = tree.math(2, 2, 'ADD').value
+```
+
+> :warning: by exception when a selection socket exists, it is placed as the last socket
+
+``` python
+# SetPosition __init__ header: selection is the last socket even if it is the second one in the actual Node
+def __init__(self, geometry=None, position=None, offset=None, selection=None)
+```
+
+### Multi input sockets
+
+Some nodes have multi input sockets. Multiple output sockets can be set simultaneously through `*args`:
+
+``` python
+with GeoNodes("Geometry Nodes") as tree:
+
+    # Creating geometries geo1, geo2 and geo3
+    
+    ...
+    
+    # Joining the geometries    
+    joined_geo = tree.JoinGeometry(geo1, geo2, geo3).geometry
+```
+
+## Socket Classes
+
+One could implement any tree by simply creating nodes and setting sockets input sockets from output sockets.
+But this wouldn't be very interesting compared to using directly the nodes editor in Blender.
+
+A better way to create nodes is to think them as **methods** or **properties** of sockets. For instance creating a `SetShadeSmooth` node
+can be thought as setting the `shade_smooth` property of a geometry:
+
+``` python
+with GeoNodes("Geometry Nodes") as tree:
+
+    # Create an ico sphere
+    ico = tree.IcoSphere(radius=2., subdivisions=4).mesh
+    
+    # Shading smooth
+    ico.shade_smooth = True
+    
+    # This is equivalent to
+    ico = tree.SetShadeSmooth(geometry=ico, shade_smooth=True).geometry
+```
+
+Some nodes are also implemented as **operators** between sockets and other sockets or values:
+
+``` python
+with GeoNodes("Geometry Nodes") as tree:
+
+    # Add two values, set the result in a
+    a = tree.Math(2, 2, operation='ADD').value
+    
+    # variable a is a socket or type VALUE
+    # Standard operations are possible
+    
+    # Between a socket and a python value
+    b = 2*a
+    
+    # Between two sockets
+    c = b/a
+    
+    # In place operators are possible
+    c *= 5
+    b /= a
+    
+    # Unary operator
+    e = -b
+```
+
+### Socket types
+
+The methods available depend upon the socket types:
+
+- VALUE
+- INT
+- BOOLEAN
+- VECTOR
+- ROTATION
+- STRING
+- RGBA
+- SHADER
+- OBJECT
+- IMAGE
+- GEOMETRY 
+- COLLECTION
+- TEXTURE
+- MATERIAL
+
+Normally, the socket classes are never directly instantied but are read from nodes.
+
+> :warning: not all types exist in the different trees : **GeoNodes**, **Shader** and **Compositor**.
+
+### Primit
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 The module handles two types of classes:
 - **Node** classes : by instanciating such a class, a node is created in the current tree

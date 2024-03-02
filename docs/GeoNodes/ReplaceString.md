@@ -15,7 +15,7 @@ ReplaceString(string=None, find=None, replace=None, node_label=None, node_color=
 
 ## Implementation
 
-- [Str](/docs/GeoNodes/Str.md) : [replace_string](/docs/GeoNodes/Str.md#replace_string)
+- [STRING](/docs/GeoNodes/STRING.md) : [replace_string](/docs/GeoNodes/STRING.md#replace_string) [replace_string](/docs/GeoNodes/STRING.md#replace_string)
 
 ## Init
 

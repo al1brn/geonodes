@@ -13,8 +13,8 @@ RotationToAxisAngle(rotation=None, node_label=None, node_color=None)
 
 ## Implementation
 
-- [Rot](/docs/GeoNodes/Rot.md) : [rotation_to_axis_angle](/docs/GeoNodes/Rot.md#rotation_to_axis_angle)
-- [Vect](/docs/GeoNodes/Vect.md) : [rotation_to_axis_angle](/docs/GeoNodes/Vect.md#rotation_to_axis_angle)
+- [ROTATION](/docs/GeoNodes/ROTATION.md) : [rotation_to_axis_angle](/docs/GeoNodes/ROTATION.md#rotation_to_axis_angle) [rotation_to_axis_angle](/docs/GeoNodes/ROTATION.md#rotation_to_axis_angle)
+- [VECTOR](/docs/GeoNodes/VECTOR.md) : [rotation_to_axis_angle](/docs/GeoNodes/VECTOR.md#rotation_to_axis_angle) [rotation_to_axis_angle](/docs/GeoNodes/VECTOR.md#rotation_to_axis_angle)
 
 ## Init
 

@@ -13,7 +13,7 @@ SeparateXYZ(vector=None, node_label=None, node_color=None)
 
 ## Implementation
 
-- [Vect](/docs/GeoNodes/Vect.md) : [separate_xyz](/docs/GeoNodes/Vect.md#separate_xyz)
+- [VECTOR](/docs/GeoNodes/VECTOR.md) : [separate_xyz](/docs/GeoNodes/VECTOR.md#separate_xyz) [separate_xyz](/docs/GeoNodes/VECTOR.md#separate_xyz)
 
 ## Init
 

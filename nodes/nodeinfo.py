@@ -67,14 +67,14 @@ class Argument:
         self has no value in the header.
         self can be the value of a socket in the node creation
         
-        Example (Geometry class):
+        Example (GEOMETRY class):
             def set_shade_smooth(self, shade_smooth=None):
                 SetShadeSmooth(geometry=self, shade_smooth=shade_smooth)
                 
     *args
     -----
         For multi input sockets, *args is used:
-        Example (Geometry class):
+        Example (GEOMETRY class):
             def join_geometry(self, *args):
                 JoinGeometr(*args, geometry=self)
         
@@ -1734,7 +1734,7 @@ class NodeInfo:
             
         # ----- Create the class
         
-        base_class = sockets.Geometry if class_name == 'Geometry' else sockets.Socket
+        base_class = sockets.Geometry if class_name == 'GEOMETRY' else sockets.Socket
         socket_classes[bsocket.type] = type(class_name, (base_class,), {'_tree_type': self.tree_type})
         tree_dict[class_name] = socket_classes[bsocket.type]
             
@@ -1749,10 +1749,10 @@ class NodeInfo:
         doc['bl_idname']   = utils.nodesocket_main_class(bsocket.bl_idname)
         doc['descr']       = descr
         
-        # ----- Register Domain class if Geometry
+        # ----- Register Domain class if GEOMETRY
         
-        if False and class_name == 'Geometry':
-            self.register_class(sockets.Domain, 'Other', descr="Geometry domain")
+        if False and class_name == 'GEOMETRY':
+            self.register_class(sockets.Domain, 'Other', descr="GEOMETRY domain")
         
         return socket_classes[bsocket.type]
     
@@ -1921,7 +1921,7 @@ def tree_class_setup(tree_class):
         
     All of them are properties of the tree class, for instance:
         - Tree.Math : Node class 'Math'
-        - Tree.Geometry : Socket class 'Geometry'
+        - Tree.GEOMETRY : Socket class 'GEOMETRY'
         - Tree.cos : function cos
         
     Tree, Node and Socket classes are generated and enriched thourgh Dynamic instances.
@@ -2035,7 +2035,7 @@ def tree_class_setup(tree_class):
     socket_classes = constants.all_socket_classes(tree_type)
     for class_name, socket_type in socket_classes.items():
         
-        base_class = Geometry if class_name == 'Geometry' else Socket
+        base_class = Geometry if class_name == 'GEOMETRY' else Socket
         sockets[class_name] = dynamic.Dynamic.NewSocket(class_name, base_class, socket_type, descr=None)
         
         # ----- The class as attribute of the Tree class

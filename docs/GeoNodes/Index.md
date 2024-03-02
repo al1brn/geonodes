@@ -9,7 +9,7 @@ Index(node_label=None, node_color=None)
 ```
 ## Implementation
 
-- [Geometry](/docs/GeoNodes/Geometry.md) : [index](/docs/GeoNodes/Geometry.md#index)
+- [GEOMETRY](/docs/GeoNodes/GEOMETRY.md) : [index](/docs/GeoNodes/GEOMETRY.md#index) [index](/docs/GeoNodes/GEOMETRY.md#index)
 
 ## Init
 

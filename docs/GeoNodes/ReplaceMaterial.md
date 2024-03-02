@@ -15,7 +15,7 @@ ReplaceMaterial(geometry=None, old=None, new=None, node_label=None, node_color=N
 
 ## Implementation
 
-- [Geometry](/docs/GeoNodes/Geometry.md) : [replace_material](/docs/GeoNodes/Geometry.md#replace_material)
+- [GEOMETRY](/docs/GeoNodes/GEOMETRY.md) : [replace_material](/docs/GeoNodes/GEOMETRY.md#replace_material) [replace_material](/docs/GeoNodes/GEOMETRY.md#replace_material)
 
 ## Init
 

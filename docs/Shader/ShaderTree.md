@@ -3,13 +3,13 @@
 
 ### Socket classes
 
-- [Col](/docs/Shader/Col.md)
-- [Custom](/docs/Shader/Custom.md)
-- [Float](/docs/Shader/Float.md)
-- [Rot](/docs/Shader/Rot.md)
-- [Shader](/docs/Shader/Shader.md)
-- [Str](/docs/Shader/Str.md)
-- [Vect](/docs/Shader/Vect.md)
+- [CUSTOM](/docs/Shader/CUSTOM.md)
+- [RGBA](/docs/Shader/RGBA.md)
+- [ROTATION](/docs/Shader/ROTATION.md)
+- [SHADER](/docs/Shader/SHADER.md)
+- [STRING](/docs/Shader/STRING.md)
+- [VALUE](/docs/Shader/VALUE.md)
+- [VECTOR](/docs/Shader/VECTOR.md)
 
 ### Node classes
 
@@ -37,20 +37,22 @@
 ### Functions
 
 - A : [add](#add) [abs](#abs) [arcsin](#arcsin) [arccos](#arccos) [arctan](#arctan) [arctan2](#arctan2)
-- C : [compare](#compare) [ceil](#ceil) [cos](#cos) [cosh](#cosh)
+- B : [brick_texture](#brick_texture)
+- C : [combine_color](#combine_color) [combine_xyz](#combine_xyz) [compare](#compare) [ceil](#ceil) [cos](#cos) [cosh](#cosh) [checker_texture](#checker_texture)
 - D : [divide](#divide) [degrees](#degrees)
 - E : [exp](#exp)
 - F : [floor](#floor) [fract](#fract) [floored_modulo](#floored_modulo)
-- G : [greater_than](#greater_than)
+- G : [greater_than](#greater_than) [gradient_texture](#gradient_texture)
 - I : [inverse_sqrt](#inverse_sqrt)
 - L : [log](#log) [less_than](#less_than)
-- M : [multiply](#multiply) [multiply_add](#multiply_add) [min](#min) [max](#max) [mod](#mod)
+- M : [multiply](#multiply) [multiply_add](#multiply_add) [min](#min) [max](#max) [mod](#mod) [magic_texture](#magic_texture) [musgrave_texture](#musgrave_texture)
+- N : [noise_texture](#noise_texture)
 - P : [power](#power) [pingpong](#pingpong)
 - R : [round](#round) [radians](#radians)
 - S : [subtract](#subtract) [sqrt](#sqrt) [sign](#sign) [smooth_min](#smooth_min) [smooth_max](#smooth_max) [snap](#snap) [sin](#sin) [sinh](#sinh)
 - T : [trunc](#trunc) [tan](#tan) [tanh](#tanh)
-- V : [vadd](#vadd) [vsubtract](#vsubtract) [vmultiply](#vmultiply) [vdivide](#vdivide) [vmultiply_add](#vmultiply_add) [vcross](#vcross) [vproject](#vproject) [vreflect](#vreflect) [vrefract](#vrefract) [vfaceforward](#vfaceforward) [vdot](#vdot) [vdistance](#vdistance) [vlength](#vlength) [vscale](#vscale) [vnormalize](#vnormalize) [vabs](#vabs) [vmin](#vmin) [vmax](#vmax) [vfloor](#vfloor) [vceil](#vceil) [vfrac](#vfrac) [vmod](#vmod) [vwrap](#vwrap) [vsnap](#vsnap) [vsin](#vsin) [vcos](#vcos) [vtan](#vtan)
-- W : [wrap](#wrap)
+- V : [voronoi_texture](#voronoi_texture) [vadd](#vadd) [vsubtract](#vsubtract) [vmultiply](#vmultiply) [vdivide](#vdivide) [vmultiply_add](#vmultiply_add) [vcross](#vcross) [vproject](#vproject) [vreflect](#vreflect) [vrefract](#vrefract) [vfaceforward](#vfaceforward) [vdot](#vdot) [vdistance](#vdistance) [vlength](#vlength) [vscale](#vscale) [vnormalize](#vnormalize) [vabs](#vabs) [vmin](#vmin) [vmax](#vmax) [vfloor](#vfloor) [vceil](#vceil) [vfrac](#vfrac) [vmod](#vmod) [vwrap](#vwrap) [vsnap](#vsnap) [vsin](#vsin) [vcos](#vcos) [vtan](#vtan)
+- W : [wrap](#wrap) [wave_texture](#wave_texture) [white_noise_texture](#white_noise_texture)
 
 ## Functions
 
@@ -176,6 +178,40 @@ def arctan2(self, value=None, value_1=None, use_clamp=False, node_label=None, no
     node = self.Math(value=value, value_1=value_1, operation='ARCTAN2', use_clamp=use_clamp, node_label=node_label, node_color=node_color)
     return node.value
 ```
+### brick_texture
+
+
+- node : [BrickTexture](/docs/Shader/BrickTexture.md)
+- return : color
+
+##### Arguments
+
+- vector : None
+- color1 : None
+- color2 : None
+- mortar : None
+- scale : None
+- mortar_size : None
+- mortar_smooth : None
+- bias : None
+- brick_width : None
+- row_height : None
+- color_mapping : None
+- offset : 0.5
+- offset_frequency : 2
+- squash : 1.0
+- squash_frequency : 2
+- texture_mapping : None
+- node_label : None
+- node_color : None
+
+#### Source code
+
+``` python
+def brick_texture(self, vector=None, color1=None, color2=None, mortar=None, scale=None, mortar_size=None, mortar_smooth=None, bias=None, brick_width=None, row_height=None, color_mapping=None, offset=0.5, offset_frequency=2, squash=1.0, squash_frequency=2, texture_mapping=None, node_label=None, node_color=None):
+    node = self.BrickTexture(vector=vector, color1=color1, color2=color2, mortar=mortar, scale=scale, mortar_size=mortar_size, mortar_smooth=mortar_smooth, bias=bias, brick_width=brick_width, row_height=row_height, color_mapping=color_mapping, offset=offset, offset_frequency=offset_frequency, squash=squash, squash_frequency=squash_frequency, texture_mapping=texture_mapping, node_label=node_label, node_color=node_color)
+    return node.color
+```
 ### ceil
 
 
@@ -195,6 +231,73 @@ def arctan2(self, value=None, value_1=None, use_clamp=False, node_label=None, no
 def ceil(self, value=None, use_clamp=False, node_label=None, node_color=None):
     node = self.Math(value=value, operation='CEIL', use_clamp=use_clamp, node_label=node_label, node_color=node_color)
     return node.value
+```
+### checker_texture
+
+
+- node : [CheckerTexture](/docs/Shader/CheckerTexture.md)
+- return : curve
+
+##### Arguments
+
+- vector : None
+- color1 : None
+- color2 : None
+- scale : None
+- color_mapping : None
+- texture_mapping : None
+- node_label : None
+- node_color : None
+
+#### Source code
+
+``` python
+def checker_texture(self, vector=None, color1=None, color2=None, scale=None, color_mapping=None, texture_mapping=None, node_label=None, node_color=None):
+    node = self.CheckerTexture(vector=vector, color1=color1, color2=color2, scale=scale, color_mapping=color_mapping, texture_mapping=texture_mapping, node_label=node_label, node_color=node_color)
+    return node.curve
+```
+### combine_color
+
+
+- node : [CombineColor](/docs/Shader/CombineColor.md)
+- return : color
+
+##### Arguments
+
+- red : None
+- green : None
+- blue : None
+- mode : 'RGB' in ('RGB', 'HSV', 'HSL')
+- node_label : None
+- node_color : None
+
+#### Source code
+
+``` python
+def combine_color(self, red=None, green=None, blue=None, mode='RGB', node_label=None, node_color=None):
+    node = self.CombineColor(red=red, green=green, blue=blue, mode=mode, node_label=node_label, node_color=node_color)
+    return node.color
+```
+### combine_xyz
+
+
+- node : [CombineXYZ](/docs/Shader/CombineXYZ.md)
+- return : vector
+
+##### Arguments
+
+- x : None
+- y : None
+- z : None
+- node_label : None
+- node_color : None
+
+#### Source code
+
+``` python
+def combine_xyz(self, x=None, y=None, z=None, node_label=None, node_color=None):
+    node = self.CombineXYZ(x=x, y=y, z=z, node_label=node_label, node_color=node_color)
+    return node.vector
 ```
 ### compare
 
@@ -380,6 +483,28 @@ def fract(self, value=None, use_clamp=False, node_label=None, node_color=None):
     node = self.Math(value=value, operation='FRACT', use_clamp=use_clamp, node_label=node_label, node_color=node_color)
     return node.value
 ```
+### gradient_texture
+
+
+- node : [GradientTexture](/docs/Shader/GradientTexture.md)
+- return : color
+
+##### Arguments
+
+- vector : None
+- color_mapping : None
+- gradient_type : 'LINEAR' in ('LINEAR', 'QUADRATIC', 'EASING', 'DIAGONAL', 'SPHERICAL', 'QUADRATIC_SPHERE', 'RADIAL')
+- texture_mapping : None
+- node_label : None
+- node_color : None
+
+#### Source code
+
+``` python
+def gradient_texture(self, vector=None, color_mapping=None, gradient_type='LINEAR', texture_mapping=None, node_label=None, node_color=None):
+    node = self.GradientTexture(vector=vector, color_mapping=color_mapping, gradient_type=gradient_type, texture_mapping=texture_mapping, node_label=node_label, node_color=node_color)
+    return node.color
+```
 ### greater_than
 
 
@@ -462,6 +587,30 @@ def less_than(self, value=None, value_1=None, use_clamp=False, node_label=None, 
 def log(self, value=None, value_1=None, use_clamp=False, node_label=None, node_color=None):
     node = self.Math(value=value, value_1=value_1, operation='LOGARITHM', use_clamp=use_clamp, node_label=node_label, node_color=node_color)
     return node.value
+```
+### magic_texture
+
+
+- node : [MagicTexture](/docs/Shader/MagicTexture.md)
+- return : color
+
+##### Arguments
+
+- vector : None
+- scale : None
+- distortion : None
+- color_mapping : None
+- texture_mapping : None
+- turbulence_depth : 2
+- node_label : None
+- node_color : None
+
+#### Source code
+
+``` python
+def magic_texture(self, vector=None, scale=None, distortion=None, color_mapping=None, texture_mapping=None, turbulence_depth=2, node_label=None, node_color=None):
+    node = self.MagicTexture(vector=vector, scale=scale, distortion=distortion, color_mapping=color_mapping, texture_mapping=texture_mapping, turbulence_depth=turbulence_depth, node_label=node_label, node_color=node_color)
+    return node.color
 ```
 ### max
 
@@ -568,6 +717,65 @@ def multiply(self, value=None, value_1=None, use_clamp=False, node_label=None, n
 def multiply_add(self, value=None, value_1=None, value_2=None, use_clamp=False, node_label=None, node_color=None):
     node = self.Math(value=value, value_1=value_1, value_2=value_2, operation='MULTIPLY_ADD', use_clamp=use_clamp, node_label=node_label, node_color=node_color)
     return node.value
+```
+### musgrave_texture
+
+
+- node : [MusgraveTexture](/docs/Shader/MusgraveTexture.md)
+- return : height
+
+##### Arguments
+
+- vector : None
+- scale : None
+- detail : None
+- dimension : None
+- lacunarity : None
+- w : None
+- offset : None
+- gain : None
+- color_mapping : None
+- musgrave_dimensions : '3D' in ('1D', '2D', '3D', '4D')
+- musgrave_type : 'FBM' in ('MULTIFRACTAL', 'RIDGED_MULTIFRACTAL', 'HYBRID_MULTIFRACTAL', 'FBM', 'HETERO_TERRAIN')
+- texture_mapping : None
+- node_label : None
+- node_color : None
+
+#### Source code
+
+``` python
+def musgrave_texture(self, vector=None, scale=None, detail=None, dimension=None, lacunarity=None, w=None, offset=None, gain=None, color_mapping=None, musgrave_dimensions='3D', musgrave_type='FBM', texture_mapping=None, node_label=None, node_color=None):
+    node = self.MusgraveTexture(vector=vector, scale=scale, detail=detail, dimension=dimension, lacunarity=lacunarity, w=w, offset=offset, gain=gain, color_mapping=color_mapping, musgrave_dimensions=musgrave_dimensions, musgrave_type=musgrave_type, texture_mapping=texture_mapping, node_label=node_label, node_color=node_color)
+    return node.height
+```
+### noise_texture
+
+
+- node : [NoiseTexture](/docs/Shader/NoiseTexture.md)
+- return : fac
+
+##### Arguments
+
+- vector : None
+- scale : None
+- detail : None
+- roughness : None
+- lacunarity : None
+- distortion : None
+- w : None
+- color_mapping : None
+- noise_dimensions : '3D' in ('1D', '2D', '3D', '4D')
+- normalize : True
+- texture_mapping : None
+- node_label : None
+- node_color : None
+
+#### Source code
+
+``` python
+def noise_texture(self, vector=None, scale=None, detail=None, roughness=None, lacunarity=None, distortion=None, w=None, color_mapping=None, noise_dimensions='3D', normalize=True, texture_mapping=None, node_label=None, node_color=None):
+    node = self.NoiseTexture(vector=vector, scale=scale, detail=detail, roughness=roughness, lacunarity=lacunarity, distortion=distortion, w=w, color_mapping=color_mapping, noise_dimensions=noise_dimensions, normalize=normalize, texture_mapping=texture_mapping, node_label=node_label, node_color=node_color)
+    return node.fac
 ```
 ### pingpong
 
@@ -1232,6 +1440,39 @@ def vnormalize(self, vector=None, node_label=None, node_color=None):
     node = self.VectorMath(vector=vector, operation='NORMALIZE', node_label=node_label, node_color=node_color)
     return node.output_socket
 ```
+### voronoi_texture
+
+
+- node : [VoronoiTexture](/docs/Shader/VoronoiTexture.md)
+- return : distance
+
+##### Arguments
+
+- vector : None
+- scale : None
+- detail : None
+- roughness : None
+- lacunarity : None
+- randomness : None
+- exponent : None
+- smoothness : None
+- w : None
+- color_mapping : None
+- distance : 'EUCLIDEAN' in ('EUCLIDEAN', 'MANHATTAN', 'CHEBYCHEV', 'MINKOWSKI')
+- feature : 'F1' in ('F1', 'F2', 'SMOOTH_F1', 'DISTANCE_TO_EDGE', 'N_SPHERE_RADIUS')
+- normalize : False
+- texture_mapping : None
+- voronoi_dimensions : '3D' in ('1D', '2D', '3D', '4D')
+- node_label : None
+- node_color : None
+
+#### Source code
+
+``` python
+def voronoi_texture(self, vector=None, scale=None, detail=None, roughness=None, lacunarity=None, randomness=None, exponent=None, smoothness=None, w=None, color_mapping=None, distance='EUCLIDEAN', feature='F1', normalize=False, texture_mapping=None, voronoi_dimensions='3D', node_label=None, node_color=None):
+    node = self.VoronoiTexture(vector=vector, scale=scale, detail=detail, roughness=roughness, lacunarity=lacunarity, randomness=randomness, exponent=exponent, smoothness=smoothness, w=w, color_mapping=color_mapping, distance=distance, feature=feature, normalize=normalize, texture_mapping=texture_mapping, voronoi_dimensions=voronoi_dimensions, node_label=node_label, node_color=node_color)
+    return node.distance
+```
 ### vproject
 
 
@@ -1411,6 +1652,58 @@ def vtan(self, vector=None, node_label=None, node_color=None):
 def vwrap(self, vector=None, vector_1=None, vector_2=None, node_label=None, node_color=None):
     node = self.VectorMath(vector=vector, vector_1=vector_1, vector_2=vector_2, operation='WRAP', node_label=node_label, node_color=node_color)
     return node.output_socket
+```
+### wave_texture
+
+
+- node : [WaveTexture](/docs/Shader/WaveTexture.md)
+- return : curve
+
+##### Arguments
+
+- vector : None
+- scale : None
+- distortion : None
+- detail : None
+- detail_scale : None
+- detail_roughness : None
+- phase_offset : None
+- bands_direction : 'X' in ('X', 'Y', 'Z', 'DIAGONAL')
+- color_mapping : None
+- rings_direction : 'X' in ('X', 'Y', 'Z', 'SPHERICAL')
+- texture_mapping : None
+- wave_profile : 'SIN' in ('SIN', 'SAW', 'TRI')
+- wave_type : 'BANDS' in ('BANDS', 'RINGS')
+- node_label : None
+- node_color : None
+
+#### Source code
+
+``` python
+def wave_texture(self, vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, bands_direction='X', color_mapping=None, rings_direction='X', texture_mapping=None, wave_profile='SIN', wave_type='BANDS', node_label=None, node_color=None):
+    node = self.WaveTexture(vector=vector, scale=scale, distortion=distortion, detail=detail, detail_scale=detail_scale, detail_roughness=detail_roughness, phase_offset=phase_offset, bands_direction=bands_direction, color_mapping=color_mapping, rings_direction=rings_direction, texture_mapping=texture_mapping, wave_profile=wave_profile, wave_type=wave_type, node_label=node_label, node_color=node_color)
+    return node.curve
+```
+### white_noise_texture
+
+
+- node : [WhiteNoiseTexture](/docs/Shader/WhiteNoiseTexture.md)
+- return : value
+
+##### Arguments
+
+- vector : None
+- w : None
+- noise_dimensions : '3D' in ('1D', '2D', '3D', '4D')
+- node_label : None
+- node_color : None
+
+#### Source code
+
+``` python
+def white_noise_texture(self, vector=None, w=None, noise_dimensions='3D', node_label=None, node_color=None):
+    node = self.WhiteNoiseTexture(vector=vector, w=w, noise_dimensions=noise_dimensions, node_label=node_label, node_color=node_color)
+    return node.value
 ```
 ### wrap
 

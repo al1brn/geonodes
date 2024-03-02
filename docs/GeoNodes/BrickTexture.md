@@ -28,7 +28,7 @@ BrickTexture(vector=None, color1=None, color2=None, mortar=None, scale=None, mor
 
 ## Implementation
 
-No implementation in sockets
+- Functions : [brick_texture](/docs/GeoNodes/GeoNodesTree.md#brick_texture) [brick_texture](/docs/GeoNodes/GeoNodesTree.md#brick_texture)
 
 ## Init
 

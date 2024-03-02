@@ -13,7 +13,7 @@ MaterialSelection(material=None, node_label=None, node_color=None)
 
 ## Implementation
 
-- [Mat](/docs/GeoNodes/Mat.md) : [material_selection](/docs/GeoNodes/Mat.md#material_selection)
+- [MATERIAL](/docs/GeoNodes/MATERIAL.md) : [material_selection](/docs/GeoNodes/MATERIAL.md#material_selection) [material_selection](/docs/GeoNodes/MATERIAL.md#material_selection)
 
 ## Init
 

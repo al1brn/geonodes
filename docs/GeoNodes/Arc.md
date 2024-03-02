@@ -23,7 +23,7 @@ Arc(resolution=None, radius=None, start_angle=None, sweep_angle=None, connect_ce
 
 ## Implementation
 
-No implementation in sockets
+- Functions : [arc](/docs/GeoNodes/GeoNodesTree.md#arc) [arc](/docs/GeoNodes/GeoNodesTree.md#arc)
 
 ## Init
 

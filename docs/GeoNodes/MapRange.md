@@ -22,9 +22,9 @@ MapRange(value=None, from_min=None, from_max=None, to_min=None, to_max=None, vec
 
 ## Implementation
 
-- [Float](/docs/GeoNodes/Float.md) : [map_range](/docs/GeoNodes/Float.md#map_range)
-- [Int](/docs/GeoNodes/Int.md) : [map_range](/docs/GeoNodes/Int.md#map_range)
-- [Vect](/docs/GeoNodes/Vect.md) : [map_range](/docs/GeoNodes/Vect.md#map_range)
+- [INT](/docs/GeoNodes/INT.md) : [map_range](/docs/GeoNodes/INT.md#map_range) [map_range](/docs/GeoNodes/INT.md#map_range)
+- [VALUE](/docs/GeoNodes/VALUE.md) : [map_range](/docs/GeoNodes/VALUE.md#map_range) [map_range](/docs/GeoNodes/VALUE.md#map_range)
+- [VECTOR](/docs/GeoNodes/VECTOR.md) : [map_range](/docs/GeoNodes/VECTOR.md#map_range) [map_range](/docs/GeoNodes/VECTOR.md#map_range)
 
 ## Init
 

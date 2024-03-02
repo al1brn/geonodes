@@ -18,7 +18,7 @@ CheckerTexture(vector=None, color1=None, color2=None, scale=None, color_mapping=
 
 ## Implementation
 
-No implementation in sockets
+- Functions : [checker_texture](/docs/Shader/ShaderTree.md#checker_texture)
 
 ## Init
 

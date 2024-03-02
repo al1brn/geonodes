@@ -14,7 +14,7 @@ ShortestEdgePaths(end_vertex=None, edge_cost=None, node_label=None, node_color=N
 
 ## Implementation
 
-- [Geometry](/docs/GeoNodes/Geometry.md) : [shortest_edge_paths](/docs/GeoNodes/Geometry.md#shortest_edge_paths)
+- [GEOMETRY](/docs/GeoNodes/GEOMETRY.md) : [shortest_edge_paths](/docs/GeoNodes/GEOMETRY.md#shortest_edge_paths) [shortest_edge_paths](/docs/GeoNodes/GEOMETRY.md#shortest_edge_paths)
 
 ## Init
 

@@ -9,7 +9,7 @@ SelfObject(node_label=None, node_color=None)
 ```
 ## Implementation
 
-No implementation in sockets
+- Functions : [self_object](/docs/GeoNodes/GeoNodesTree.md#self_object) [self_object](/docs/GeoNodes/GeoNodesTree.md#self_object)
 
 ## Init
 

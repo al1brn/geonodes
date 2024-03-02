@@ -3,10 +3,10 @@
 
 ### Socket classes
 
-- [Col](/docs/Compositor/Col.md)
-- [Custom](/docs/Compositor/Custom.md)
-- [Float](/docs/Compositor/Float.md)
-- [Vect](/docs/Compositor/Vect.md)
+- [CUSTOM](/docs/Compositor/CUSTOM.md)
+- [RGBA](/docs/Compositor/RGBA.md)
+- [VALUE](/docs/Compositor/VALUE.md)
+- [VECTOR](/docs/Compositor/VECTOR.md)
 
 ### Node classes
 
@@ -33,7 +33,7 @@
 ### Functions
 
 - A : [add](#add) [abs](#abs) [arcsin](#arcsin) [arccos](#arccos) [arctan](#arctan) [arctan2](#arctan2)
-- C : [compare](#compare) [ceil](#ceil) [cos](#cos) [cosh](#cosh)
+- C : [combine_color](#combine_color) [combine_xyz](#combine_xyz) [compare](#compare) [ceil](#ceil) [cos](#cos) [cosh](#cosh)
 - D : [divide](#divide) [degrees](#degrees)
 - E : [exp](#exp)
 - F : [floor](#floor) [fract](#fract) [floored_modulo](#floored_modulo) [frame](#frame)
@@ -197,6 +197,53 @@ def arctan2(self, value=None, value_1=None, tag_need_exec=None, use_clamp=False,
 def ceil(self, value=None, tag_need_exec=None, use_clamp=False, node_label=None, node_color=None):
     node = self.Math(value=value, operation='CEIL', tag_need_exec=tag_need_exec, use_clamp=use_clamp, node_label=node_label, node_color=node_color)
     return node.value
+```
+### combine_color
+
+
+- node : [CombineColor](/docs/Compositor/CombineColor.md)
+- return : color
+
+##### Arguments
+
+- red : None
+- green : None
+- blue : None
+- alpha : None
+- mode : 'RGB' in ('RGB', 'HSV', 'HSL', 'YCC', 'YUV')
+- tag_need_exec : None
+- ycc_mode : 'ITUBT709' in ('ITUBT601', 'ITUBT709', 'JFIF')
+- node_label : None
+- node_color : None
+
+#### Source code
+
+``` python
+def combine_color(self, red=None, green=None, blue=None, alpha=None, mode='RGB', tag_need_exec=None, ycc_mode='ITUBT709', node_label=None, node_color=None):
+    node = self.CombineColor(red=red, green=green, blue=blue, alpha=alpha, mode=mode, tag_need_exec=tag_need_exec, ycc_mode=ycc_mode, node_label=node_label, node_color=node_color)
+    return node.color
+```
+### combine_xyz
+
+
+- node : [CombineXYZ](/docs/Compositor/CombineXYZ.md)
+- return : vector
+
+##### Arguments
+
+- x : None
+- y : None
+- z : None
+- tag_need_exec : None
+- node_label : None
+- node_color : None
+
+#### Source code
+
+``` python
+def combine_xyz(self, x=None, y=None, z=None, tag_need_exec=None, node_label=None, node_color=None):
+    node = self.CombineXYZ(x=x, y=y, z=z, tag_need_exec=tag_need_exec, node_label=node_label, node_color=node_color)
+    return node.vector
 ```
 ### compare
 

@@ -16,9 +16,9 @@ Switch(off=None, on=None, check=False, tag_need_exec=None, node_label=None, node
 
 ## Implementation
 
-- [Col](/docs/Compositor/Col.md) : [switch](/docs/Compositor/Col.md#switch)
-- [Float](/docs/Compositor/Float.md) : [switch](/docs/Compositor/Float.md#switch)
-- [Vect](/docs/Compositor/Vect.md) : [switch](/docs/Compositor/Vect.md#switch)
+- [RGBA](/docs/Compositor/RGBA.md) : [switch](/docs/Compositor/RGBA.md#switch)
+- [VALUE](/docs/Compositor/VALUE.md) : [switch](/docs/Compositor/VALUE.md#switch)
+- [VECTOR](/docs/Compositor/VECTOR.md) : [switch](/docs/Compositor/VECTOR.md#switch)
 
 ## Init
 

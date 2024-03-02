@@ -129,7 +129,7 @@ TYPE_TO_SOCKET_BL_ID = {  # OLD = BLENDER_SOCKET_CLASSES
 # ====================================================================================================
 # Internal class name for socket types
 
-TYPE_TO_SOCKET_CLASS_NAME = { # SOCKET_CLASS_NAMES
+TYPE_TO_SOCKET_CLASS_NAME_OLD = { # SOCKET_CLASS_NAMES
     'CUSTOM'     : 'Custom',
     'VALUE'      : 'Float', 
     'INT'        : 'Int', 
@@ -147,7 +147,44 @@ TYPE_TO_SOCKET_CLASS_NAME = { # SOCKET_CLASS_NAMES
     'MATERIAL'   : 'Mat', 
     }
 
-SOCKET_CLASS_DEFAULT_SOCKET_NAME = {
+TYPE_TO_SOCKET_CLASS_NAME = { # SOCKET_CLASS_NAMES
+    'CUSTOM'     : 'CUSTOM',
+    'VALUE'      : 'VALUE', 
+    'INT'        : 'INT', 
+    'BOOLEAN'    : 'BOOLEAN', 
+    'VECTOR'     : 'VECTOR', 
+    'ROTATION'   : 'ROTATION', 
+    'STRING'     : 'STRING', 
+    'RGBA'       : 'RGBA', 
+    'SHADER'     : 'SHADER',
+    'OBJECT'     : 'OBJECT', 
+    'IMAGE'      : 'IMAGE', 
+    'GEOMETRY'   : 'GEOMETRY', 
+    'COLLECTION' : 'COLLECTION', 
+    'TEXTURE'    : 'TEXTURE', 
+    'MATERIAL'   : 'MATERIAL', 
+    }
+
+SOCKET_CLASS_NAME_SHORTCUTS = {
+    'Custom'     : 'CUSTOM',
+    'Float'      : 'VALUE', 
+    'Int'        : 'INT', 
+    'Bool'       : 'BOOLEAN', 
+    'Vect'       : 'VECTOR', 
+    'Rot'        : 'ROTATION', 
+    'Str'        : 'STRING', 
+    'Col'        : 'RGBA', 
+    'Shader'     : 'SHADER',
+    'Object'     : 'OBJECT', 
+    'Img'        : 'IMAGE', 
+    'Geometry'   : 'GEOMETRY', 
+    'Collection' : 'COLLECTION', 
+    'Texture'    : 'TEXTURE', 
+    'Mat'        : 'MATERIAL', 
+    
+    }
+
+SOCKET_CLASS_DEFAULT_SOCKET_NAME_OLD = {
     'Float'      : 'value', 
     'Int'        : 'integer', 
     'Bool'       : 'boolean', 
@@ -164,7 +201,26 @@ SOCKET_CLASS_DEFAULT_SOCKET_NAME = {
     'Mat'        : 'material',  
     }
 
-DATA_TYPE_TO_SOCKET_CLASS_NAME = { # DATA_TYPE_CLASSES
+SOCKET_CLASS_DEFAULT_SOCKET_NAME = {
+    'VALUE'      : 'value', 
+    'INT'        : 'integer', 
+    'BOOLEAN'    : 'boolean', 
+    'VECTOR'     : 'vector', 
+    'ROTATION'   : 'rotation', 
+    'STRING'     : 'string', 
+    'RGBA'       : 'color', 
+    'SHADER'     : 'shader',
+    'OBJECT'     : 'object', 
+    'IMAGE'      : 'image', 
+    'GEOMETRY'   : 'geometry', 
+    'COLLECTION' : 'collection', 
+    'TEXTURE'    : 'texture', 
+    'MATERIAL'   : 'material',  
+    }
+
+
+
+DATA_TYPE_TO_SOCKET_CLASS_NAME_OLD = { # DATA_TYPE_CLASSES
     'FLOAT'      : 'Float', 
     'INT'        : 'Int', 
     'BOOLEAN'    : 'Bool', 
@@ -178,6 +234,22 @@ DATA_TYPE_TO_SOCKET_CLASS_NAME = { # DATA_TYPE_CLASSES
     'COLLECTION' : 'Collection', 
     'TEXTURE'    : 'Texture', 
     'MATERIAL'   : 'Mat',
+    }
+
+DATA_TYPE_TO_SOCKET_CLASS_NAME = { # DATA_TYPE_CLASSES
+    'FLOAT'      : 'VALUE', 
+    'INT'        : 'INT', 
+    'BOOLEAN'    : 'BOOLEAN', 
+    'VECTOR'     : 'VECTOR', 
+    'ROTATION'   : 'ROTATION', 
+    'STRING'     : 'STRING', 
+    'RGBA'       : 'RGBA', 
+    'OBJECT'     : 'OBJECT', 
+    'IMAGE'      : 'IMAGE', 
+    'GEOMETRY'   : 'GEOMETRY', 
+    'COLLECTION' : 'COLLECTION', 
+    'TEXTURE'    : 'TEXTURE', 
+    'MATERIAL'   : 'MATERIAL',
     }
 
 # ====================================================================================================

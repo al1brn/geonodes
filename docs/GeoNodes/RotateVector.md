@@ -14,7 +14,7 @@ RotateVector(vector=None, rotation=None, node_label=None, node_color=None)
 
 ## Implementation
 
-- [Vect](/docs/GeoNodes/Vect.md) : [rotate_vector](/docs/GeoNodes/Vect.md#rotate_vector)
+- [VECTOR](/docs/GeoNodes/VECTOR.md) : [rotate_vector](/docs/GeoNodes/VECTOR.md#rotate_vector) [rotate_vector](/docs/GeoNodes/VECTOR.md#rotate_vector)
 
 ## Init
 

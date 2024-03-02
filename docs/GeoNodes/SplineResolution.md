@@ -9,7 +9,7 @@ SplineResolution(node_label=None, node_color=None)
 ```
 ## Implementation
 
-- [Geometry](/docs/GeoNodes/Geometry.md) : [spline_resolution](/docs/GeoNodes/Geometry.md#spline_resolution)
+- [GEOMETRY](/docs/GeoNodes/GEOMETRY.md) : [spline_resolution](/docs/GeoNodes/GEOMETRY.md#spline_resolution) [spline_resolution](/docs/GeoNodes/GEOMETRY.md#spline_resolution)
 
 ## Init
 

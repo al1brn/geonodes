@@ -15,7 +15,7 @@ CombineXYZ(x=None, y=None, z=None, node_label=None, node_color=None)
 
 ## Implementation
 
-No implementation in sockets
+- Functions : [combine_xyz](/docs/Shader/ShaderTree.md#combine_xyz)
 
 ## Init
 

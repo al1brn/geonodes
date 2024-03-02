@@ -14,7 +14,7 @@ ImageInfo(image=None, frame=None, node_label=None, node_color=None)
 
 ## Implementation
 
-- [Img](/docs/GeoNodes/Img.md) : [image_info](/docs/GeoNodes/Img.md#image_info)
+- [IMAGE](/docs/GeoNodes/IMAGE.md) : [image_info](/docs/GeoNodes/IMAGE.md#image_info) [image_info](/docs/GeoNodes/IMAGE.md#image_info)
 
 ## Init
 

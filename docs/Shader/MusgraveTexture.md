@@ -24,7 +24,7 @@ MusgraveTexture(vector=None, scale=None, detail=None, dimension=None, lacunarity
 
 ## Implementation
 
-No implementation in sockets
+- Functions : [musgrave_texture](/docs/Shader/ShaderTree.md#musgrave_texture)
 
 ## Init
 

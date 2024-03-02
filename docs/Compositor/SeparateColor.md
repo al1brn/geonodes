@@ -16,7 +16,7 @@ SeparateColor(image=None, mode='RGB', tag_need_exec=None, ycc_mode='ITUBT709', n
 
 ## Implementation
 
-- [Col](/docs/Compositor/Col.md) : [separate_color](/docs/Compositor/Col.md#separate_color)
+- [RGBA](/docs/Compositor/RGBA.md) : [separate_color](/docs/Compositor/RGBA.md#separate_color)
 
 ## Init
 

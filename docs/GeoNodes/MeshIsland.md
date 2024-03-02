@@ -9,7 +9,7 @@ MeshIsland(node_label=None, node_color=None)
 ```
 ## Implementation
 
-- [Geometry](/docs/GeoNodes/Geometry.md) : [mesh_island](/docs/GeoNodes/Geometry.md#mesh_island)
+- [GEOMETRY](/docs/GeoNodes/GEOMETRY.md) : [mesh_island](/docs/GeoNodes/GEOMETRY.md#mesh_island) [mesh_island](/docs/GeoNodes/GEOMETRY.md#mesh_island)
 
 ## Init
 

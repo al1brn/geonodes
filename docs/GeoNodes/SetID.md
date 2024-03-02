@@ -15,7 +15,7 @@ SetID(geometry=None, selection=None, ID=None, node_label=None, node_color=None)
 
 ## Implementation
 
-- [Geometry](/docs/GeoNodes/Geometry.md) : [id](/docs/GeoNodes/Geometry.md#id) [set_id](/docs/GeoNodes/Geometry.md#set_id)
+- [GEOMETRY](/docs/GeoNodes/GEOMETRY.md) : [id](/docs/GeoNodes/GEOMETRY.md#id) [id](/docs/GeoNodes/GEOMETRY.md#id) [set_id](/docs/GeoNodes/GEOMETRY.md#set_id) [set_id](/docs/GeoNodes/GEOMETRY.md#set_id)
 
 ## Init
 

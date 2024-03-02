@@ -15,7 +15,7 @@ VectorCurves(vector=None, mapping=None, tag_need_exec=None, node_label=None, nod
 
 ## Implementation
 
-- [Vect](/docs/Compositor/Vect.md) : [vector_curves](/docs/Compositor/Vect.md#vector_curves)
+- [VECTOR](/docs/Compositor/VECTOR.md) : [vector_curves](/docs/Compositor/VECTOR.md#vector_curves)
 
 ## Init
 

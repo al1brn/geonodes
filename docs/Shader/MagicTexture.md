@@ -18,7 +18,7 @@ MagicTexture(vector=None, scale=None, distortion=None, color_mapping=None, textu
 
 ## Implementation
 
-No implementation in sockets
+- Functions : [magic_texture](/docs/Shader/ShaderTree.md#magic_texture)
 
 ## Init
 

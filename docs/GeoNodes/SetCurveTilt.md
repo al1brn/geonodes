@@ -15,7 +15,7 @@ SetCurveTilt(curve=None, selection=None, tilt=None, node_label=None, node_color=
 
 ## Implementation
 
-- [Geometry](/docs/GeoNodes/Geometry.md) : [set_curve_tilt](/docs/GeoNodes/Geometry.md#set_curve_tilt) [tilt](/docs/GeoNodes/Geometry.md#tilt)
+- [GEOMETRY](/docs/GeoNodes/GEOMETRY.md) : [set_curve_tilt](/docs/GeoNodes/GEOMETRY.md#set_curve_tilt) [set_curve_tilt](/docs/GeoNodes/GEOMETRY.md#set_curve_tilt) [tilt](/docs/GeoNodes/GEOMETRY.md#tilt) [tilt](/docs/GeoNodes/GEOMETRY.md#tilt)
 
 ## Init
 

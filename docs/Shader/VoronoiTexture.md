@@ -27,7 +27,7 @@ VoronoiTexture(vector=None, scale=None, detail=None, roughness=None, lacunarity=
 
 ## Implementation
 
-No implementation in sockets
+- Functions : [voronoi_texture](/docs/Shader/ShaderTree.md#voronoi_texture)
 
 ## Init
 

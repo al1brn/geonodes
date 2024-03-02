@@ -16,7 +16,7 @@ CombineColor(red=None, green=None, blue=None, mode='RGB', node_label=None, node_
 
 ## Implementation
 
-No implementation in sockets
+- Functions : [combine_color](/docs/Shader/ShaderTree.md#combine_color)
 
 ## Init
 

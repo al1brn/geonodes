@@ -16,7 +16,7 @@ SetPosition(geometry=None, selection=None, position=None, offset=None, node_labe
 
 ## Implementation
 
-- [Geometry](/docs/GeoNodes/Geometry.md) : [offset](/docs/GeoNodes/Geometry.md#offset) [position](/docs/GeoNodes/Geometry.md#position) [set_position](/docs/GeoNodes/Geometry.md#set_position)
+- [GEOMETRY](/docs/GeoNodes/GEOMETRY.md) : [offset](/docs/GeoNodes/GEOMETRY.md#offset) [offset](/docs/GeoNodes/GEOMETRY.md#offset) [position](/docs/GeoNodes/GEOMETRY.md#position) [position](/docs/GeoNodes/GEOMETRY.md#position) [set_position](/docs/GeoNodes/GEOMETRY.md#set_position) [set_position](/docs/GeoNodes/GEOMETRY.md#set_position)
 
 ## Init
 

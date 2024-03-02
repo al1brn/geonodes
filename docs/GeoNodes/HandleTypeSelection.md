@@ -14,7 +14,7 @@ HandleTypeSelection(handle_type='AUTO', mode={'RIGHT', 'LEFT'}, node_label=None,
 
 ## Implementation
 
-- [Geometry](/docs/GeoNodes/Geometry.md) : [handle_type_selection](/docs/GeoNodes/Geometry.md#handle_type_selection) [left_handle_type_selection](/docs/GeoNodes/Geometry.md#left_handle_type_selection) [right_handle_type_selection](/docs/GeoNodes/Geometry.md#right_handle_type_selection)
+- [GEOMETRY](/docs/GeoNodes/GEOMETRY.md) : [handle_type_selection](/docs/GeoNodes/GEOMETRY.md#handle_type_selection) [handle_type_selection](/docs/GeoNodes/GEOMETRY.md#handle_type_selection) [left_handle_type_selection](/docs/GeoNodes/GEOMETRY.md#left_handle_type_selection) [left_handle_type_selection](/docs/GeoNodes/GEOMETRY.md#left_handle_type_selection) [right_handle_type_selection](/docs/GeoNodes/GEOMETRY.md#right_handle_type_selection) [right_handle_type_selection](/docs/GeoNodes/GEOMETRY.md#right_handle_type_selection)
 
 ## Init
 

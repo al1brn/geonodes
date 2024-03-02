@@ -14,7 +14,7 @@ EdgePathsToSelection(start_vertices=None, next_vertex_index=None, node_label=Non
 
 ## Implementation
 
-- [Geometry](/docs/GeoNodes/Geometry.md) : [edge_paths_to_selection](/docs/GeoNodes/Geometry.md#edge_paths_to_selection)
+- [GEOMETRY](/docs/GeoNodes/GEOMETRY.md) : [edge_paths_to_selection](/docs/GeoNodes/GEOMETRY.md#edge_paths_to_selection) [edge_paths_to_selection](/docs/GeoNodes/GEOMETRY.md#edge_paths_to_selection)
 
 ## Init
 

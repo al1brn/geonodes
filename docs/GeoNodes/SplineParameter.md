@@ -9,7 +9,7 @@ SplineParameter(node_label=None, node_color=None)
 ```
 ## Implementation
 
-- [Geometry](/docs/GeoNodes/Geometry.md) : [spline_parameter](/docs/GeoNodes/Geometry.md#spline_parameter)
+- [GEOMETRY](/docs/GeoNodes/GEOMETRY.md) : [spline_parameter](/docs/GeoNodes/GEOMETRY.md#spline_parameter) [spline_parameter](/docs/GeoNodes/GEOMETRY.md#spline_parameter)
 
 ## Init
 

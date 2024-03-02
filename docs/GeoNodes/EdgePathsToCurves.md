@@ -15,7 +15,7 @@ EdgePathsToCurves(mesh=None, start_vertices=None, next_vertex_index=None, node_l
 
 ## Implementation
 
-- [Geometry](/docs/GeoNodes/Geometry.md) : [edge_paths_to_curves](/docs/GeoNodes/Geometry.md#edge_paths_to_curves)
+- [GEOMETRY](/docs/GeoNodes/GEOMETRY.md) : [edge_paths_to_curves](/docs/GeoNodes/GEOMETRY.md#edge_paths_to_curves) [edge_paths_to_curves](/docs/GeoNodes/GEOMETRY.md#edge_paths_to_curves)
 
 ## Init
 

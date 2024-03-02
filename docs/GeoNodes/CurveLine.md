@@ -17,7 +17,7 @@ CurveLine(start=None, end=None, direction=None, length=None, mode='POINTS', node
 
 ## Implementation
 
-No implementation in sockets
+- Functions : [curve_line](/docs/GeoNodes/GeoNodesTree.md#curve_line) [curve_line](/docs/GeoNodes/GeoNodesTree.md#curve_line)
 
 ## Init
 

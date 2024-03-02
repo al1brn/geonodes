@@ -1,4 +1,4 @@
-# Socket Geometry
+# Socket GEOMETRY
 
 ### Properties
 

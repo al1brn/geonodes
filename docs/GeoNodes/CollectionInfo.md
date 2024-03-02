@@ -16,7 +16,7 @@ CollectionInfo(collection=None, separate_children=None, reset_children=None, tra
 
 ## Implementation
 
-- [Collection](/docs/GeoNodes/Collection.md) : [collection_info](/docs/GeoNodes/Collection.md#collection_info)
+- [COLLECTION](/docs/GeoNodes/COLLECTION.md) : [collection_info](/docs/GeoNodes/COLLECTION.md#collection_info) [collection_info](/docs/GeoNodes/COLLECTION.md#collection_info)
 
 ## Init
 

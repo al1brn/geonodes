@@ -19,7 +19,7 @@ VectorRotate(vector=None, center=None, axis=None, angle=None, rotation=None, inv
 
 ## Implementation
 
-- [Vect](/docs/GeoNodes/Vect.md) : [vector_rotate](/docs/GeoNodes/Vect.md#vector_rotate)
+- [VECTOR](/docs/GeoNodes/VECTOR.md) : [vector_rotate](/docs/GeoNodes/VECTOR.md#vector_rotate) [vector_rotate](/docs/GeoNodes/VECTOR.md#vector_rotate)
 
 ## Init
 

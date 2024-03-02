@@ -24,7 +24,7 @@ Quadrilateral(width=None, height=None, offset=None, bottom_width=None, top_width
 
 ## Implementation
 
-No implementation in sockets
+- Functions : [quadrilateral](/docs/GeoNodes/GeoNodesTree.md#quadrilateral) [quadrilateral](/docs/GeoNodes/GeoNodesTree.md#quadrilateral)
 
 ## Init
 

@@ -15,7 +15,7 @@ EdgesOfVertex(vertex_index=None, weights=None, sort_index=None, node_label=None,
 
 ## Implementation
 
-- [Geometry](/docs/GeoNodes/Geometry.md) : [edges_of_vertex](/docs/GeoNodes/Geometry.md#edges_of_vertex)
+- [GEOMETRY](/docs/GeoNodes/GEOMETRY.md) : [edges_of_vertex](/docs/GeoNodes/GEOMETRY.md#edges_of_vertex) [edges_of_vertex](/docs/GeoNodes/GEOMETRY.md#edges_of_vertex)
 
 ## Init
 

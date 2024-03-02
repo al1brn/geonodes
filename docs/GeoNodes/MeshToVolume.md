@@ -18,7 +18,7 @@ MeshToVolume(mesh=None, density=None, voxel_amount=None, interior_band_width=Non
 
 ## Implementation
 
-- [Geometry](/docs/GeoNodes/Geometry.md) : [mesh_to_volume](/docs/GeoNodes/Geometry.md#mesh_to_volume)
+- [GEOMETRY](/docs/GeoNodes/GEOMETRY.md) : [mesh_to_volume](/docs/GeoNodes/GEOMETRY.md#mesh_to_volume) [mesh_to_volume](/docs/GeoNodes/GEOMETRY.md#mesh_to_volume)
 
 ## Init
 

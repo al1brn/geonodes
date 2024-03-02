@@ -15,8 +15,8 @@ RotateEuler(rotation=None, rotate_by=None, space='OBJECT', node_label=None, node
 
 ## Implementation
 
-- [Rot](/docs/GeoNodes/Rot.md) : [rotate_euler](/docs/GeoNodes/Rot.md#rotate_euler) [rotate_euler_axis_angle](/docs/GeoNodes/Rot.md#rotate_euler_axis_angle) [rotate_euler_euler](/docs/GeoNodes/Rot.md#rotate_euler_euler)
-- [Vect](/docs/GeoNodes/Vect.md) : [rotate_euler](/docs/GeoNodes/Vect.md#rotate_euler) [rotate_euler_axis_angle](/docs/GeoNodes/Vect.md#rotate_euler_axis_angle) [rotate_euler_euler](/docs/GeoNodes/Vect.md#rotate_euler_euler)
+- [ROTATION](/docs/GeoNodes/ROTATION.md) : [rotate_euler](/docs/GeoNodes/ROTATION.md#rotate_euler) [rotate_euler](/docs/GeoNodes/ROTATION.md#rotate_euler) [rotate_euler_axis_angle](/docs/GeoNodes/ROTATION.md#rotate_euler_axis_angle) [rotate_euler_axis_angle](/docs/GeoNodes/ROTATION.md#rotate_euler_axis_angle) [rotate_euler_euler](/docs/GeoNodes/ROTATION.md#rotate_euler_euler) [rotate_euler_euler](/docs/GeoNodes/ROTATION.md#rotate_euler_euler)
+- [VECTOR](/docs/GeoNodes/VECTOR.md) : [rotate_euler](/docs/GeoNodes/VECTOR.md#rotate_euler) [rotate_euler](/docs/GeoNodes/VECTOR.md#rotate_euler) [rotate_euler_axis_angle](/docs/GeoNodes/VECTOR.md#rotate_euler_axis_angle) [rotate_euler_axis_angle](/docs/GeoNodes/VECTOR.md#rotate_euler_axis_angle) [rotate_euler_euler](/docs/GeoNodes/VECTOR.md#rotate_euler_euler) [rotate_euler_euler](/docs/GeoNodes/VECTOR.md#rotate_euler_euler)
 
 ## Init
 

@@ -13,7 +13,7 @@ CurveOfPoint(point_index=None, node_label=None, node_color=None)
 
 ## Implementation
 
-- [Geometry](/docs/GeoNodes/Geometry.md) : [curve_of_point](/docs/GeoNodes/Geometry.md#curve_of_point)
+- [GEOMETRY](/docs/GeoNodes/GEOMETRY.md) : [curve_of_point](/docs/GeoNodes/GEOMETRY.md#curve_of_point) [curve_of_point](/docs/GeoNodes/GEOMETRY.md#curve_of_point)
 
 ## Init
 

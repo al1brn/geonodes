@@ -13,8 +13,8 @@ InvertRotation(rotation=None, node_label=None, node_color=None)
 
 ## Implementation
 
-- [Rot](/docs/GeoNodes/Rot.md) : [invert_rotation](/docs/GeoNodes/Rot.md#invert_rotation)
-- [Vect](/docs/GeoNodes/Vect.md) : [invert_rotation](/docs/GeoNodes/Vect.md#invert_rotation)
+- [ROTATION](/docs/GeoNodes/ROTATION.md) : [invert_rotation](/docs/GeoNodes/ROTATION.md#invert_rotation) [invert_rotation](/docs/GeoNodes/ROTATION.md#invert_rotation)
+- [VECTOR](/docs/GeoNodes/VECTOR.md) : [invert_rotation](/docs/GeoNodes/VECTOR.md#invert_rotation) [invert_rotation](/docs/GeoNodes/VECTOR.md#invert_rotation)
 
 ## Init
 

@@ -9,7 +9,7 @@ InstanceRotation(node_label=None, node_color=None)
 ```
 ## Implementation
 
-- [Geometry](/docs/GeoNodes/Geometry.md) : [instance_rotation](/docs/GeoNodes/Geometry.md#instance_rotation)
+- [GEOMETRY](/docs/GeoNodes/GEOMETRY.md) : [instance_rotation](/docs/GeoNodes/GEOMETRY.md#instance_rotation) [instance_rotation](/docs/GeoNodes/GEOMETRY.md#instance_rotation)
 
 ## Init
 

@@ -16,8 +16,8 @@ Viewer(geometry=None, value=None, data_type='FLOAT', domain='AUTO', node_label=N
 
 ## Implementation
 
-- [Geometry](/docs/GeoNodes/Geometry.md) : [viewer](/docs/GeoNodes/Geometry.md#viewer) [viewer_boolean](/docs/GeoNodes/Geometry.md#viewer_boolean) [viewer_color](/docs/GeoNodes/Geometry.md#viewer_color) [viewer_float](/docs/GeoNodes/Geometry.md#viewer_float) [viewer_int](/docs/GeoNodes/Geometry.md#viewer_int) [viewer_quaternion](/docs/GeoNodes/Geometry.md#viewer_quaternion) [viewer_vector](/docs/GeoNodes/Geometry.md#viewer_vector)
-- Functions : [viewer](/docs/GeoNodes/GeoNodesTree.md#viewer)
+- [GEOMETRY](/docs/GeoNodes/GEOMETRY.md) : [viewer](/docs/GeoNodes/GEOMETRY.md#viewer) [viewer](/docs/GeoNodes/GEOMETRY.md#viewer) [viewer_boolean](/docs/GeoNodes/GEOMETRY.md#viewer_boolean) [viewer_boolean](/docs/GeoNodes/GEOMETRY.md#viewer_boolean) [viewer_color](/docs/GeoNodes/GEOMETRY.md#viewer_color) [viewer_color](/docs/GeoNodes/GEOMETRY.md#viewer_color) [viewer_float](/docs/GeoNodes/GEOMETRY.md#viewer_float) [viewer_float](/docs/GeoNodes/GEOMETRY.md#viewer_float) [viewer_int](/docs/GeoNodes/GEOMETRY.md#viewer_int) [viewer_int](/docs/GeoNodes/GEOMETRY.md#viewer_int) [viewer_quaternion](/docs/GeoNodes/GEOMETRY.md#viewer_quaternion) [viewer_quaternion](/docs/GeoNodes/GEOMETRY.md#viewer_quaternion) [viewer_vector](/docs/GeoNodes/GEOMETRY.md#viewer_vector) [viewer_vector](/docs/GeoNodes/GEOMETRY.md#viewer_vector)
+- Functions : [viewer](/docs/GeoNodes/GeoNodesTree.md#viewer) [viewer](/docs/GeoNodes/GeoNodesTree.md#viewer)
 
 ## Init
 

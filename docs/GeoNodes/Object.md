@@ -1,4 +1,4 @@
-# Socket Object
+# Socket OBJECT
 
 
 ### Methods

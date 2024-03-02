@@ -16,8 +16,8 @@ Clamp(value=None, min=None, max=None, clamp_type='MINMAX', node_label=None, node
 
 ## Implementation
 
-- [Float](/docs/GeoNodes/Float.md) : [clamp](/docs/GeoNodes/Float.md#clamp)
-- [Int](/docs/GeoNodes/Int.md) : [clamp](/docs/GeoNodes/Int.md#clamp)
+- [INT](/docs/GeoNodes/INT.md) : [clamp](/docs/GeoNodes/INT.md#clamp) [clamp](/docs/GeoNodes/INT.md#clamp)
+- [VALUE](/docs/GeoNodes/VALUE.md) : [clamp](/docs/GeoNodes/VALUE.md#clamp) [clamp](/docs/GeoNodes/VALUE.md#clamp)
 
 ## Init
 

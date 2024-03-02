@@ -23,7 +23,7 @@ NoiseTexture(vector=None, scale=None, detail=None, roughness=None, lacunarity=No
 
 ## Implementation
 
-No implementation in sockets
+- Functions : [noise_texture](/docs/GeoNodes/GeoNodesTree.md#noise_texture) [noise_texture](/docs/GeoNodes/GeoNodesTree.md#noise_texture)
 
 ## Init
 
