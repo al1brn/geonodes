@@ -32,14 +32,25 @@ The following script creates a surface from a grid by computing
 ```python
 from geonodes import GeoNodes, Shader
 
-with GeoNodes("Hello World", clear=True) as tree:
+# A Shader to be used by the Geometry Nodes modifier
+with Shader("Hello Material") as tree:
+    # Read the color from the arribute nameed 'surf_color'
+    col = tree.Attribute("surf_color").color
     
-    # Let's document our parameters
-    count  = 100  # Grid resolution
+    # A Principled BSDF shader 
+    tree.output_surface = tree.PrincipledBSDF(
+        base_color = col,
+        roughness  = .1,
+        metallic   = .7).bsdf
+        
+# The Geometry Nodes modifier
+with GeoNodes("Hello World") as tree:
+    
+    # Let's get the parameters from the user
+    count  = tree.integer_input("Resolution", 100, min_value=10, max_value=300)
     size   = 20   # Size
-    omega  = 2.   # Period
-    height = 2.   # Height of the surface
-    
+    omega  = tree.integer_input("Omega", 2.)
+    height = tree.integer_input("Height", 2.)
     
     # The base (x, y) grid
     grid = tree.Grid(vertices_x=count, vertices_y=count, size_x=size, size_y=size).mesh
@@ -48,16 +59,34 @@ with GeoNodes("Hello World", clear=True) as tree:
     with tree.layout("Computing the wave"):
         # Separate XYZ the position vector 
         pos = grid.position
+        
         # Compute the distance
         distance = tree.sqrt(pos.x**2 + pos.y**2)
+        
         # Height in z
         z = height * tree.sin(distance*omega)/distance
         
     # Let's change the z coordinate of our vertices
     grid.offset = (0, 0, z)
     
+    # The color of the surface depends upon the orientation of the faces
+    # towerd a control object
+    
+    target = tree.object_input("Direction")
+    loc = target.object_info().location
+    
+    hue = (grid.normal.dot(loc)/2 + .5)**2
+    grid.POINT.store_named_vector("surf_color", tree.CombineColor(hue, .9, .7, mode='HSV'))
+    
+    
+    # We smooth the grid
+    grid.FACE.shade_smooth = True
+    
+    # We set the material created above
+    grid.material = "Hello Material"
+    
     # We are done: plugging the deformed grid as the modified geometry
-    tree.output_geometry = grid.set_shade_smooth()          
+    tree.output_geometry = grid        
 ```
 
 > See [Demo details](docs/demo_1.md)
