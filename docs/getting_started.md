@@ -803,7 +803,7 @@ with GeoNodes("Demo") as tree:
         points.POINT.store_named_float("hue", simul.hue % 1)
 
         # Update hue for next loop
-        simul.hue += 1.13
+        simul.hue += 0.13
         
         # Equivalent to simul.geometry.join_geometry(points)
         simul.geometry += points
