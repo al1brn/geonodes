@@ -14,6 +14,20 @@
   - [Multi Input Sockets](#multi-input-sockets)
   - [Input and Output Nodes](#input-and-output-nodes)
 - [Socket Classes](#socket-classes)
+  - [Socket Types](#socket-types)
+  - [Tree input and output Sockets](#tree-input-and-output-sockets)
+  - [Creating group input sockets](#creating-group-input-sockets)
+  - [Input sockets](#input-sockets)
+  - [Operations on Values](#operations-on-values)
+  - [Boolean operations](#boolean-operations)
+  - [Vectors, Rotations and Colors automatic Separation](#vectors-rotations-and-colors-automatic-separation)
+  - [Geometry primitives](#geometry-primitives)
+  - [Geometry attributes](#geometry-attributes)
+  - [Selection socket](#selection-socket)
+  - [Data Type](#data-type)
+  - [Domain Parameter](#domain-parameter)
+  - [Operations on Geometry](#operations-on-geometry)
+
 
 ## Prerequisites
 
@@ -264,7 +278,6 @@ with GeoNodes("Do Nothing") as tree:
     tree.output_node.geometry = tree.input_node.geometry
 ``` 
 
-
 ## Socket Classes
 
 One could implement any tree by simply creating nodes and setting sockets input sockets from output sockets.
@@ -311,7 +324,7 @@ with GeoNodes("Geometry Nodes") as tree:
     e = -b
 ```
 
-### Socket types
+### Socket Types
 
 The methods available depend upon the socket types:
 
@@ -707,7 +720,7 @@ with GeoNodes("Demo") as tree:
 
 <img src="images/gs_img_05.png" width="600" class="center">
 
-### Data type
+### Data Type
 
 Some nodes needs to specify a data type for the input socket. This is for instance the case for nodes
 `StoreNamedAttribute` or `Switch`. This kind of node is implemented severale times in order to avoid to have
@@ -725,7 +738,7 @@ is implemented in:
 - `store_named_quaternion`  : `data_type='QUATERNION'`
 - `store_named_vector`  : `data_type='FLOAT_VECTOR'`
 
-Combine with `domain` prefix and `selection` as index, the code is highly simplified as shown below:
+Combined with `domain` prefix and `selection` as index, the code is highly simplified as shown below:
 
 ``` python
 with GeoNodes("Demo") as tree:
@@ -743,6 +756,11 @@ with GeoNodes("Demo") as tree:
 ``` 
 
 <img src="images/gs_img_06.png" width="600" class="center">
+
+
+## Simulation and Repeat Zones
+
+
 
 
 
