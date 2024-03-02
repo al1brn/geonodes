@@ -421,6 +421,67 @@ with GeoNodes("All inputs") as tree:
     tree.texture_input(     "Texture",      value=None,         description="Texture")
 ```
 
+### Input sockets
+
+Sockets can be created with input nodes such as `Boolean` or `Value`.
+
+``` python
+with GeoNodes("All inputs") as tree:
+    # Input boolean
+    b = tree.Boolean(True).boolean
+```
+
+A better way is to use the equivalent Tree function returning directly the desired socket:
+
+``` python
+with GeoNodes("All inputs") as tree:
+    bool = tree.boolean(True)
+    col  = tree.color(mathutils.Color((.1, .2, .3)))
+    img  = tree.image(bpy.data.images.get("Image"))
+    i    = tree.integer(123)
+    mat  = tree.material(bpy.data.materials.get("Material"))
+    s    = tree.string("Hello")
+    v    = tree.value(3.14)
+    vect = tree.vector((1, 2, 3))
+``` 
+
+### Operations on Values
+
+Value sockets are basic types such as VALUE (float), INT, STRING, BOOLEAN, VECTOR, RGBA (color), ROTATION.
+
+Nodes operating on basic types are implemented as functions, methods and operations to allow a
+"pythonistic" syntax. The operations can mix sockets and true python values.
+
+For instance, the `Math` nodes is iemplemented in the following way:
+- single argument operations
+  - as Tree function, e.g. `a = tree.cos(socket)`
+  - as socket method, e.g. `a = socket.cos()`
+  - as unary operator, e.g. `a = -b`
+- several arguments operations
+  - as Tree function, e.g. `a = tree.atan2(y, x)`
+  - as socket method, e.g. `a = y.atan2(x)`
+  - as operator, e.g. `a = b + c`
+
+The following example
+
+``` python
+from geonodes import GeoNodes
+
+with GeoNodes("Some computation") as tree:
+    
+    x = tree.value(10)
+    y = tree.value(20)
+    
+    distance = tree.sqrt(x**2 + y**2)
+
+    z = 3*tree.sin(distance*10)/distance
+```
+
+![Texte alternatif](/images/gs Img 01.png "Nodes").
+
+
+
+
 
 
 
