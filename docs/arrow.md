@@ -202,6 +202,7 @@ The final code includes a smoothing option and the crease property is set to 1 f
 
 ``` python
 from geonodes import GeoNodes
+import numpy as np
 
 with GeoNodes("Arrow") as tree:
     
@@ -268,7 +269,7 @@ with GeoNodes("Arrow") as tree:
     
     with tree.layout("crease and smoothing"):
         
-        node = tree.edge_vertices()
+        node = arrow.edge_vertices()
         p1, p2 = node.position_1.xyz, node.position_2.xyz
         hrz = (p1.z - p2.z).abs().less_than(0.001)
         arrow.store_named_float("crease", tree.value(0).switch(hrz, 1))
