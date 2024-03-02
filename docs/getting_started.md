@@ -23,10 +23,11 @@
   - [Vectors, Rotations and Colors automatic Separation](#vectors-rotations-and-colors-automatic-separation)
   - [Geometry primitives](#geometry-primitives)
   - [Geometry attributes](#geometry-attributes)
+  - [Operations on Geometry](#operations-on-geometry)
+  - [Domain Parameter](#domain-parameter)
   - [Selection socket](#selection-socket)
   - [Data Type](#data-type)
-  - [Domain Parameter](#domain-parameter)
-  - [Operations on Geometry](#operations-on-geometry)
+- [Simulation and Repeat Zones](#simulation-and-repeat-zones)
 
 
 ## Prerequisites
