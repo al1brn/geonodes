@@ -55,7 +55,7 @@ with GeoNodes("Icosphere tuto") as tree:
    
    # Extrude the select faces
    
-   ico = ico[tree.material_index().equal(2)].extrude_mesh(offset_scale=0.3)
+   ico = ico[ico.material_index.equal(2)].extrude_mesh(offset_scale=0.3)
    
    tree.og = ico
     
