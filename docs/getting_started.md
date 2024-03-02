@@ -617,10 +617,11 @@ is implemented as a method.
 > Since `position` is also a read property, the GEOMETRY socket has a read/write property named `position`.
 
 > [!IMPORTANT]
-> Operations on geometry changes the actual socket warpped by the class GEOMETRY:
-> `geo.position = v` :
-> - before the operation, geo points to the output socket of node A
-> - after the operation, geo points to the output socket of node `SetPosition` 
+> Operations on geometry changes the actual socket pointed by the class GEOMETRY.
+>
+> For instance with `geo.position = v` :
+> - before setting the position, `geo` points to the output socket of node A
+> - after the operation, `geo` points to the output socket of node `SetPosition` 
 
 ``` python
 with GeoNodes("Demo") as tree:
