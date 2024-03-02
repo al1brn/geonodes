@@ -175,13 +175,13 @@ class StackedTree:
         """ Integer input
         class_name = Integer
         """
-        return self.Integer(integer, node_label=node_label, node_color=node_color).integer
+        return self.Integer(integer, node_label=node_label, node_color=node_color).output_socket
     
     def string(self, string, node_label=None, node_color=None):
         """ String input
         class_name = String
         """
-        return self.String(string, node_label=node_label, node_color=node_color).string
+        return self.String(string, node_label=node_label, node_color=node_color).output_socket
 
     def value(self, value, node_label=None, node_color=None):
         """ Value input
@@ -216,7 +216,7 @@ class StackedTree:
         class_name = Image
         """        
         image = self.Image._image_value(image)
-        return self.Image(image, node_label=node_label, node_color=node_color).image
+        return self.Image(image, node_label=node_label, node_color=node_color).output_socket
     
     
     def material(self, material, node_label=None, node_color=None):
@@ -224,7 +224,7 @@ class StackedTree:
         class_name = Material
         """
         material = self.Material._material_value(material)
-        return self.Material(material, node_label=node_label, node_color=node_color).material
+        return self.Material(material, node_label=node_label, node_color=node_color).output_socket
     
         
         
