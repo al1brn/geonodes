@@ -2,6 +2,9 @@
 
 > Let's review this demo script in detail. Afterwards, you should be able to script your own tree.
 
+> [!NOTE]
+> To start using this module, it is recommaned to reaf first [Getting Started](getting_started.md).
+
 The script creates a surface from a grid by computing
 `z = sin(d)/d` where `d=sqrt(x^2 + y^2)` is the distance of the vertex to the center.
 
