@@ -28,7 +28,18 @@ We suppose that all scripts start with the following import instruction:
 from geonodes import GeoNodes, Shader, Compositor
 ```
 
-## Creating a new tree
+- (Creating a new Tree)[#createing-a-new_tree]
+- (Creating a Node)[#creating-a-node]
+  - (Node Sockets)[#node-sockets]
+  - (Links)[#links]
+  - (Sockets sharing the same Name)[#sockets-sharing-the-same-name]
+  - (Node parameters)[#node-parameters]
+  - (Node init arguments order)[#node-init-arguments-order]
+  - (Multi Input Sockets)[#multi-input-sockets]
+- (Socket Classes)[#socket-classes]
+  
+
+## Creating a new Tree
 
 A tree is created using the with statement:
 
@@ -87,7 +98,7 @@ with GeoNodes("Geometry Nodes") as tree:
 
 The way sockets and parameters are named is described below.
 
-### Node sockets
+### Node Sockets
 
 The node sockets are named with the **snake_case** version of their actual name. For instance:
 - Input sockets of `IcoSphere` node: `radius` and `subdivisions`
@@ -126,7 +137,7 @@ with GeoNodes("Geometry Nodes") as tree:
     smooth.geometry = node.mesh
 ```
 
-### Sockets with the same name
+### Sockets sharing the same Name
 
 When a node uses the same name for an input and an output socket, the same **snake_case** name is used for both sockets with no ambiguity.
 
@@ -175,7 +186,7 @@ a parameter named `operation` which can set as an attribute of the `Math` node:
     node.operation = 'MULTIPLY'
 ```
 
-### Node init arguments order
+### Node Init Arguments Order
 
 Sockets and parameters can be set as arguments of the node creation `__init__` instruction.
 The first arguments are the sockets, then the parameters.
@@ -205,7 +216,7 @@ with GeoNodes("Geometry Nodes") as tree:
 def __init__(self, geometry=None, position=None, offset=None, selection=None)
 ```
 
-### Multi input sockets
+### Multi Input Sockets
 
 Some nodes have multi input sockets. Multiple output sockets can be set simultaneously through `*args`:
 
