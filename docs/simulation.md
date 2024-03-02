@@ -1,8 +1,6 @@
 # Simulation
 
 > Tutorial on how to create a simulation zone.
->
-> Also refer to [Simulation](GeoNodes_classes/Simulation.md) class documentation to see generators such as Fluid which allow to quickly set up a fluid simulator.
 
 ## Objective
 
