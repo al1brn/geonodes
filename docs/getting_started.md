@@ -564,7 +564,7 @@ with GeoNodes("Demo") as tree:
 
 ### Geometry attributes
 
-Nodes giving geometry attributes are implemented as methods or properties of the GEOMETRY socket.
+Nodes giving geometry attributes are implemented as methods or read properties of the GEOMETRY socket.
 They are properties when no parameter is required (for instance `position` or `index`).
 If a parameter is required, the node is implemented as a method (for instance `named_attribute` or `handle_type_selection`).
 In both case, if there is only one output socket, this single socket is returned, otherwise the node is returned.
@@ -597,6 +597,47 @@ with GeoNodes("Demo") as tree:
 ```
 
 <img src="images/gs_img_02.png" width="600" class="center">
+
+### Operations on Geometry
+
+Nodes operating on geometry accept one input GEOMETRY socket and return one output GEOMETRY socket.
+These nodes are implemented as methods or write properties of the GEOMETRY socket.
+The nodes is impplemenetd as a write properties when it has only one input parameter, otherwise the node
+is implemented as a method.
+
+`SetPosition` is implemented twice :
+- as `position` property
+- as `offset` property
+
+> :note: Since position is also a read property, the GEOMETRY socket has a read/write property named `position`.
+
+``` python
+with GeoNodes("Demo") as tree:
+    
+    # Get the input geometry
+    geo = tree.ig
+    
+    # position is a read/write property
+    geo.position = geo.position + (0, 0, 1)
+    
+    # One can also use the write only property offset
+    # The following line is equivalent
+    geo.offset = (0, 0, 1)
+    
+    # Transform the geometru
+    geo.transform_geometry(translation=(0, 0, 1), rotation=(1, 2, 3), scale=2)
+    
+    # Getting the result
+    tree.og = geo
+```
+
+<img src="images/gs_img_03.png" width="600" class="center">
+
+
+
+
+
+
 
 
 
