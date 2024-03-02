@@ -24,7 +24,7 @@ No implementation in sockets
 ``` python
 def __init__(self, inner_mask=None, outer_mask=None, edge_mode='BLEED_OUT', inner_mode='ALL', tag_need_exec=None, node_label=None, node_color=None):
 
-    StackedNode.__init__(self, 'CompositorNodeDoubleEdgeMask', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'CompositorNodeDoubleEdgeMask', node_label=node_label, node_color=node_color)
 
     self.edge_mode       = edge_mode
     self.inner_mode      = inner_mode

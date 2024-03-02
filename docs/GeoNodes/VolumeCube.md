@@ -26,7 +26,7 @@ VolumeCube(density=None, background=None, min=None, max=None, resolution_x=None,
 ``` python
 def __init__(self, density=None, background=None, min=None, max=None, resolution_x=None, resolution_y=None, resolution_z=None, node_label=None, node_color=None):
 
-    StackedNode.__init__(self, 'GeometryNodeVolumeCube', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'GeometryNodeVolumeCube', node_label=node_label, node_color=node_color)
 
     self.density         = density
     self.background      = background

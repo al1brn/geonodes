@@ -22,7 +22,7 @@ SetPointRadius(points=None, selection=None, radius=None, node_label=None, node_c
 ``` python
 def __init__(self, points=None, selection=None, radius=None, node_label=None, node_color=None):
 
-    StackedNode.__init__(self, 'GeometryNodeSetPointRadius', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'GeometryNodeSetPointRadius', node_label=node_label, node_color=node_color)
 
     self.points          = points
     self.selection       = selection

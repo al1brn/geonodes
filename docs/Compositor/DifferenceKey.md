@@ -24,7 +24,7 @@ No implementation in sockets
 ``` python
 def __init__(self, image_1=None, image_2=None, falloff=0.10000000149011612, tag_need_exec=None, tolerance=0.10000000149011612, node_label=None, node_color=None):
 
-    StackedNode.__init__(self, 'CompositorNodeDiffMatte', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'CompositorNodeDiffMatte', node_label=node_label, node_color=node_color)
 
     self.falloff         = falloff
     self.tag_need_exec   = tag_need_exec

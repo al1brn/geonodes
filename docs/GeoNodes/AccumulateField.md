@@ -23,7 +23,7 @@ No implementation in sockets
 ``` python
 def __init__(self, value=None, group_id=None, data_type='FLOAT', domain='POINT', node_label=None, node_color=None):
 
-    StackedNode.__init__(self, 'GeometryNodeAccumulateField', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'GeometryNodeAccumulateField', node_label=node_label, node_color=node_color)
 
     self.data_type       = data_type
     self.domain          = domain

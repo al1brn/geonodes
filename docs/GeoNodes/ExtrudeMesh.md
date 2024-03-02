@@ -25,7 +25,7 @@ ExtrudeMesh(mesh=None, selection=None, offset=None, offset_scale=None, individua
 ``` python
 def __init__(self, mesh=None, selection=None, offset=None, offset_scale=None, individual=None, mode='FACES', node_label=None, node_color=None):
 
-    StackedNode.__init__(self, 'GeometryNodeExtrudeMesh', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'GeometryNodeExtrudeMesh', node_label=node_label, node_color=node_color)
 
     self.mode            = mode
     self.mesh            = mesh

@@ -25,7 +25,7 @@ No implementation in sockets
 ``` python
 def __init__(self, bytecode='', bytecode_hash='', filepath='', mode='INTERNAL', script=None, use_auto_update=False, node_label=None, node_color=None):
 
-    StackedNode.__init__(self, 'ShaderNodeScript', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'ShaderNodeScript', node_label=node_label, node_color=node_color)
 
     self.bytecode        = bytecode
     self.bytecode_hash   = bytecode_hash

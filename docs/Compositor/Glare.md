@@ -32,7 +32,7 @@ No implementation in sockets
 ``` python
 def __init__(self, image=None, angle_offset=0.0, color_modulation=0.25, fade=0.8999999761581421, glare_type='STREAKS', iterations=3, mix=0.0, quality='MEDIUM', size=8, streaks=4, tag_need_exec=None, threshold=1.0, use_rotate_45=True, node_label=None, node_color=None):
 
-    StackedNode.__init__(self, 'CompositorNodeGlare', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'CompositorNodeGlare', node_label=node_label, node_color=node_color)
 
     self.angle_offset    = angle_offset
     self.color_modulation = color_modulation

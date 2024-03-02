@@ -30,7 +30,7 @@ MapRange(value=None, from_min=None, from_max=None, to_min=None, to_max=None, vec
 ``` python
 def __init__(self, value=None, from_min=None, from_max=None, to_min=None, to_max=None, vector=None, steps=None, clamp=True, data_type='FLOAT', interpolation_type='LINEAR', node_label=None, node_color=None):
 
-    StackedNode.__init__(self, 'ShaderNodeMapRange', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'ShaderNodeMapRange', node_label=node_label, node_color=node_color)
 
     self.clamp           = clamp
     self.data_type       = data_type

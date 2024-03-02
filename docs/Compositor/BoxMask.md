@@ -26,7 +26,7 @@ No implementation in sockets
 ``` python
 def __init__(self, mask=None, value=None, mask_type='ADD', rotation=0.0, tag_need_exec=None, x=0.5, y=0.5, node_label=None, node_color=None):
 
-    StackedNode.__init__(self, 'CompositorNodeBoxMask', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'CompositorNodeBoxMask', node_label=node_label, node_color=node_color)
 
     self.mask_type       = mask_type
     self.rotation        = rotation

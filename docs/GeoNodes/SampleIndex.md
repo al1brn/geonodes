@@ -25,7 +25,7 @@ SampleIndex(geometry=None, value=None, index=None, clamp=False, data_type='FLOAT
 ``` python
 def __init__(self, geometry=None, value=None, index=None, clamp=False, data_type='FLOAT', domain='POINT', node_label=None, node_color=None):
 
-    StackedNode.__init__(self, 'GeometryNodeSampleIndex', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'GeometryNodeSampleIndex', node_label=node_label, node_color=node_color)
 
     self.clamp           = clamp
     self.data_type       = data_type

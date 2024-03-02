@@ -24,7 +24,7 @@ ResampleCurve(curve=None, selection=None, count=None, length=None, mode='COUNT',
 ``` python
 def __init__(self, curve=None, selection=None, count=None, length=None, mode='COUNT', node_label=None, node_color=None):
 
-    StackedNode.__init__(self, 'GeometryNodeResampleCurve', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'GeometryNodeResampleCurve', node_label=node_label, node_color=node_color)
 
     self.mode            = mode
     self.curve           = curve

@@ -25,7 +25,7 @@ MeshBoolean(*args, mesh_1=None, mesh_2=None, self_intersection=None, hole_tolera
 ``` python
 def __init__(self, *args, mesh_1=None, mesh_2=None, self_intersection=None, hole_tolerant=None, operation='DIFFERENCE', node_label=None, node_color=None):
 
-    StackedNode.__init__(self, 'GeometryNodeMeshBoolean', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'GeometryNodeMeshBoolean', node_label=node_label, node_color=node_color)
 
     self.operation       = operation
     self._set_multi_input(*args)

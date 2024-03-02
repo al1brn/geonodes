@@ -27,7 +27,7 @@ No implementation in sockets
 ``` python
 def __init__(self, image=None, color_space='RGB', limit_channel='R', limit_max=1.0, limit_method='MAX', limit_min=0.0, matte_channel='G', tag_need_exec=None, node_label=None, node_color=None):
 
-    StackedNode.__init__(self, 'CompositorNodeChannelMatte', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'CompositorNodeChannelMatte', node_label=node_label, node_color=node_color)
 
     self.color_space     = color_space
     self.limit_channel   = limit_channel

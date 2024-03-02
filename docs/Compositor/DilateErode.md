@@ -25,7 +25,7 @@ No implementation in sockets
 ``` python
 def __init__(self, mask=None, distance=0, edge=0.0, falloff='SMOOTH', mode='STEP', tag_need_exec=None, node_label=None, node_color=None):
 
-    StackedNode.__init__(self, 'CompositorNodeDilateErode', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'CompositorNodeDilateErode', node_label=node_label, node_color=node_color)
 
     self.distance        = distance
     self.edge            = edge

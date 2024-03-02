@@ -15,7 +15,7 @@ module : treestack
 ------------------
 - get create trees according tree type
 - StakedTree offering context management for with statement
-- StackedNode implementing roog method and context management for layouts
+- Node implementing roog method and context management for layouts
 - Trees offering groups management
 
 update : 2024/02/17
@@ -231,7 +231,7 @@ class StackedTree:
 # ====================================================================================================
 # Node created in the current tree
 
-class StackedNode(object):
+class Node(object):
     
     def __init__(self, bl_idname, node_label=None, node_color=None):
         

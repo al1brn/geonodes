@@ -25,7 +25,7 @@ Cylinder(vertices=None, side_segments=None, fill_segments=None, radius=None, dep
 ``` python
 def __init__(self, vertices=None, side_segments=None, fill_segments=None, radius=None, depth=None, fill_type='NGON', node_label=None, node_color=None):
 
-    StackedNode.__init__(self, 'GeometryNodeMeshCylinder', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'GeometryNodeMeshCylinder', node_label=node_label, node_color=node_color)
 
     self.fill_type       = fill_type
     self.vertices        = vertices

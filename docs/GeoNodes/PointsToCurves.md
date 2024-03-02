@@ -22,7 +22,7 @@ PointsToCurves(points=None, curve_group_id=None, weight=None, node_label=None, n
 ``` python
 def __init__(self, points=None, curve_group_id=None, weight=None, node_label=None, node_color=None):
 
-    StackedNode.__init__(self, 'GeometryNodePointsToCurves', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'GeometryNodePointsToCurves', node_label=node_label, node_color=node_color)
 
     self.points          = points
     self.curve_group_id  = curve_group_id

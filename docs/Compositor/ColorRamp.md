@@ -22,7 +22,7 @@ ColorRamp(fac=None, color_ramp=None, tag_need_exec=None, node_label=None, node_c
 ``` python
 def __init__(self, fac=None, color_ramp=None, tag_need_exec=None, node_label=None, node_color=None):
 
-    StackedNode.__init__(self, 'CompositorNodeValToRGB', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'CompositorNodeValToRGB', node_label=node_label, node_color=node_color)
 
     self.color_ramp      = color_ramp
     self.tag_need_exec   = tag_need_exec

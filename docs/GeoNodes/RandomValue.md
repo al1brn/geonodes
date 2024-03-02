@@ -25,7 +25,7 @@ RandomValue(min=None, max=None, ID=None, seed=None, probability=None, data_type=
 ``` python
 def __init__(self, min=None, max=None, ID=None, seed=None, probability=None, data_type='FLOAT', node_label=None, node_color=None):
 
-    StackedNode.__init__(self, 'FunctionNodeRandomValue', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'FunctionNodeRandomValue', node_label=node_label, node_color=node_color)
 
     self.data_type       = data_type
     self.min             = min

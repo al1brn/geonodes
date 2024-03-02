@@ -22,7 +22,7 @@ FloatCurve(factor=None, value=None, mapping=None, node_label=None, node_color=No
 ``` python
 def __init__(self, factor=None, value=None, mapping=None, node_label=None, node_color=None):
 
-    StackedNode.__init__(self, 'ShaderNodeFloatCurve', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'ShaderNodeFloatCurve', node_label=node_label, node_color=node_color)
 
     self.mapping         = mapping
     self.factor          = factor

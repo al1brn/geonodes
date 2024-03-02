@@ -25,7 +25,7 @@ BezierSegment(resolution=None, start=None, start_handle=None, end_handle=None, e
 ``` python
 def __init__(self, resolution=None, start=None, start_handle=None, end_handle=None, end=None, mode='POSITION', node_label=None, node_color=None):
 
-    StackedNode.__init__(self, 'GeometryNodeCurvePrimitiveBezierSegment', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'GeometryNodeCurvePrimitiveBezierSegment', node_label=node_label, node_color=node_color)
 
     self.mode            = mode
     self.resolution      = resolution

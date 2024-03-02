@@ -25,7 +25,7 @@ AlignEulerToVector(rotation=None, factor=None, vector=None, axis='X', pivot_axis
 ``` python
 def __init__(self, rotation=None, factor=None, vector=None, axis='X', pivot_axis='AUTO', node_label=None, node_color=None):
 
-    StackedNode.__init__(self, 'FunctionNodeAlignEulerToVector', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'FunctionNodeAlignEulerToVector', node_label=node_label, node_color=node_color)
 
     self.axis            = axis
     self.pivot_axis      = pivot_axis

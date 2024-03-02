@@ -31,7 +31,7 @@ Quadrilateral(width=None, height=None, offset=None, bottom_width=None, top_width
 ``` python
 def __init__(self, width=None, height=None, offset=None, bottom_width=None, top_width=None, bottom_height=None, top_height=None, point_1=None, point_2=None, point_3=None, point_4=None, mode='RECTANGLE', node_label=None, node_color=None):
 
-    StackedNode.__init__(self, 'GeometryNodeCurvePrimitiveQuadrilateral', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'GeometryNodeCurvePrimitiveQuadrilateral', node_label=node_label, node_color=node_color)
 
     self.mode            = mode
     self.width           = width

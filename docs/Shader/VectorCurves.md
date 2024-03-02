@@ -23,7 +23,7 @@ VectorCurves(fac=None, vector=None, mapping=None, node_label=None, node_color=No
 ``` python
 def __init__(self, fac=None, vector=None, mapping=None, node_label=None, node_color=None):
 
-    StackedNode.__init__(self, 'ShaderNodeVectorCurve', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'ShaderNodeVectorCurve', node_label=node_label, node_color=node_color)
 
     self.mapping         = mapping
     self.fac             = fac

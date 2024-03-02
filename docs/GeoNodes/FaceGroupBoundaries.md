@@ -20,7 +20,7 @@ FaceGroupBoundaries(face_group_id=None, node_label=None, node_color=None)
 ``` python
 def __init__(self, face_group_id=None, node_label=None, node_color=None):
 
-    StackedNode.__init__(self, 'GeometryNodeMeshFaceSetBoundaries', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'GeometryNodeMeshFaceSetBoundaries', node_label=node_label, node_color=node_color)
 
     self.face_group_id   = face_group_id
 ```

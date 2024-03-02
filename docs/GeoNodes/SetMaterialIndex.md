@@ -22,7 +22,7 @@ SetMaterialIndex(geometry=None, selection=None, material_index=None, node_label=
 ``` python
 def __init__(self, geometry=None, selection=None, material_index=None, node_label=None, node_color=None):
 
-    StackedNode.__init__(self, 'GeometryNodeSetMaterialIndex', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'GeometryNodeSetMaterialIndex', node_label=node_label, node_color=node_color)
 
     self.geometry        = geometry
     self.selection       = selection

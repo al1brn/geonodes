@@ -24,7 +24,7 @@ MeshLine(count=None, start_location=None, offset=None, count_mode='TOTAL', mode=
 ``` python
 def __init__(self, count=None, start_location=None, offset=None, count_mode='TOTAL', mode='OFFSET', node_label=None, node_color=None):
 
-    StackedNode.__init__(self, 'GeometryNodeMeshLine', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'GeometryNodeMeshLine', node_label=node_label, node_color=node_color)
 
     self.count_mode      = count_mode
     self.mode            = mode

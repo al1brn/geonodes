@@ -22,7 +22,7 @@ No implementation in sockets
 ``` python
 def __init__(self, radius=None, voxel_size=None, half_band_width=None, node_label=None, node_color=None):
 
-    StackedNode.__init__(self, 'GeometryNodeSDFVolumeSphere', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'GeometryNodeSDFVolumeSphere', node_label=node_label, node_color=node_color)
 
     self.radius          = radius
     self.voxel_size      = voxel_size

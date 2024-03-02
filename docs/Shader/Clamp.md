@@ -23,7 +23,7 @@ Clamp(value=None, min=None, max=None, clamp_type='MINMAX', node_label=None, node
 ``` python
 def __init__(self, value=None, min=None, max=None, clamp_type='MINMAX', node_label=None, node_color=None):
 
-    StackedNode.__init__(self, 'ShaderNodeClamp', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'ShaderNodeClamp', node_label=node_label, node_color=node_color)
 
     self.clamp_type      = clamp_type
     self.value           = value

@@ -29,7 +29,7 @@ Compare(a=None, b=None, epsilon=None, data_type='FLOAT', mode='ELEMENT', operati
 ``` python
 def __init__(self, a=None, b=None, epsilon=None, data_type='FLOAT', mode='ELEMENT', operation='GREATER_THAN', node_label=None, node_color=None):
 
-    StackedNode.__init__(self, 'FunctionNodeCompare', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'FunctionNodeCompare', node_label=node_label, node_color=node_color)
 
     self.data_type       = data_type
     self.mode            = mode

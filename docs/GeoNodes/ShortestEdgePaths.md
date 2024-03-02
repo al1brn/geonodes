@@ -21,7 +21,7 @@ ShortestEdgePaths(end_vertex=None, edge_cost=None, node_label=None, node_color=N
 ``` python
 def __init__(self, end_vertex=None, edge_cost=None, node_label=None, node_color=None):
 
-    StackedNode.__init__(self, 'GeometryNodeInputShortestEdgePaths', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'GeometryNodeInputShortestEdgePaths', node_label=node_label, node_color=node_color)
 
     self.end_vertex      = end_vertex
     self.edge_cost       = edge_cost

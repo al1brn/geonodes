@@ -24,7 +24,7 @@ No implementation in sockets
 ``` python
 def __init__(self, vector=None, location=None, rotation=None, scale=None, vector_type='POINT', node_label=None, node_color=None):
 
-    StackedNode.__init__(self, 'ShaderNodeMapping', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'ShaderNodeMapping', node_label=node_label, node_color=node_color)
 
     self.vector_type     = vector_type
     self.vector          = vector

@@ -22,7 +22,7 @@ No implementation in sockets
 ``` python
 def __init__(self, layer='ViewLayer', scene=None, tag_need_exec=None, node_label=None, node_color=None):
 
-    StackedNode.__init__(self, 'CompositorNodeRLayers', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'CompositorNodeRLayers', node_label=node_label, node_color=node_color)
 
     self.layer           = layer
     self.scene           = scene

@@ -23,7 +23,7 @@ BooleanMath(boolean=None, boolean_1=None, operation='AND', node_label=None, node
 ``` python
 def __init__(self, boolean=None, boolean_1=None, operation='AND', node_label=None, node_color=None):
 
-    StackedNode.__init__(self, 'FunctionNodeBooleanMath', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'FunctionNodeBooleanMath', node_label=node_label, node_color=node_color)
 
     self.operation       = operation
     self.boolean         = boolean

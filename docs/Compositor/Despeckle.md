@@ -24,7 +24,7 @@ No implementation in sockets
 ``` python
 def __init__(self, fac=None, image=None, tag_need_exec=None, threshold=0.5, threshold_neighbor=0.5, node_label=None, node_color=None):
 
-    StackedNode.__init__(self, 'CompositorNodeDespeckle', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'CompositorNodeDespeckle', node_label=node_label, node_color=node_color)
 
     self.tag_need_exec   = tag_need_exec
     self.threshold       = threshold

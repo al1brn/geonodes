@@ -24,7 +24,7 @@ SampleUVSurface(mesh=None, value=None, source_uv_map=None, sample_uv=None, data_
 ``` python
 def __init__(self, mesh=None, value=None, source_uv_map=None, sample_uv=None, data_type='FLOAT', node_label=None, node_color=None):
 
-    StackedNode.__init__(self, 'GeometryNodeSampleUVSurface', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'GeometryNodeSampleUVSurface', node_label=node_label, node_color=node_color)
 
     self.data_type       = data_type
     self.mesh            = mesh

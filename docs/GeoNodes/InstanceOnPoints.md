@@ -26,7 +26,7 @@ InstanceOnPoints(points=None, selection=None, instance=None, pick_instance=None,
 ``` python
 def __init__(self, points=None, selection=None, instance=None, pick_instance=None, instance_index=None, rotation=None, scale=None, node_label=None, node_color=None):
 
-    StackedNode.__init__(self, 'GeometryNodeInstanceOnPoints', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'GeometryNodeInstanceOnPoints', node_label=node_label, node_color=node_color)
 
     self.points          = points
     self.selection       = selection

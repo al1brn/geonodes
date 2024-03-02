@@ -25,7 +25,7 @@ Math(value=None, value_1=None, value_2=None, operation='ADD', use_clamp=False, n
 ``` python
 def __init__(self, value=None, value_1=None, value_2=None, operation='ADD', use_clamp=False, node_label=None, node_color=None):
 
-    StackedNode.__init__(self, 'ShaderNodeMath', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'ShaderNodeMath', node_label=node_label, node_color=node_color)
 
     self.operation       = operation
     self.use_clamp       = use_clamp

@@ -25,7 +25,7 @@ Spiral(resolution=None, rotations=None, start_radius=None, end_radius=None, heig
 ``` python
 def __init__(self, resolution=None, rotations=None, start_radius=None, end_radius=None, height=None, reverse=None, node_label=None, node_color=None):
 
-    StackedNode.__init__(self, 'GeometryNodeCurveSpiral', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'GeometryNodeCurveSpiral', node_label=node_label, node_color=node_color)
 
     self.resolution      = resolution
     self.rotations       = rotations

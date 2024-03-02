@@ -21,7 +21,7 @@ FloatToInteger(float=None, rounding_mode='ROUND', node_label=None, node_color=No
 ``` python
 def __init__(self, float=None, rounding_mode='ROUND', node_label=None, node_color=None):
 
-    StackedNode.__init__(self, 'FunctionNodeFloatToInt', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'FunctionNodeFloatToInt', node_label=node_label, node_color=node_color)
 
     self.rounding_mode   = rounding_mode
     self.float           = float

@@ -24,7 +24,7 @@ ImageTexture(image=None, vector=None, frame=None, extension='REPEAT', interpolat
 ``` python
 def __init__(self, image=None, vector=None, frame=None, extension='REPEAT', interpolation='Linear', node_label=None, node_color=None):
 
-    StackedNode.__init__(self, 'GeometryNodeImageTexture', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'GeometryNodeImageTexture', node_label=node_label, node_color=node_color)
 
     self.extension       = extension
     self.interpolation   = interpolation

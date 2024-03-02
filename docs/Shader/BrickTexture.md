@@ -35,7 +35,7 @@ BrickTexture(vector=None, color1=None, color2=None, mortar=None, scale=None, mor
 ``` python
 def __init__(self, vector=None, color1=None, color2=None, mortar=None, scale=None, mortar_size=None, mortar_smooth=None, bias=None, brick_width=None, row_height=None, color_mapping=None, offset=0.5, offset_frequency=2, squash=1.0, squash_frequency=2, texture_mapping=None, node_label=None, node_color=None):
 
-    StackedNode.__init__(self, 'ShaderNodeTexBrick', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'ShaderNodeTexBrick', node_label=node_label, node_color=node_color)
 
     self.color_mapping   = color_mapping
     self.offset          = offset

@@ -26,7 +26,7 @@ Cone(vertices=None, side_segments=None, fill_segments=None, radius_top=None, rad
 ``` python
 def __init__(self, vertices=None, side_segments=None, fill_segments=None, radius_top=None, radius_bottom=None, depth=None, fill_type='NGON', node_label=None, node_color=None):
 
-    StackedNode.__init__(self, 'GeometryNodeMeshCone', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'GeometryNodeMeshCone', node_label=node_label, node_color=node_color)
 
     self.fill_type       = fill_type
     self.vertices        = vertices

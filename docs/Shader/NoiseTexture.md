@@ -30,7 +30,7 @@ NoiseTexture(vector=None, scale=None, detail=None, roughness=None, lacunarity=No
 ``` python
 def __init__(self, vector=None, scale=None, detail=None, roughness=None, lacunarity=None, distortion=None, w=None, color_mapping=None, noise_dimensions='3D', normalize=True, texture_mapping=None, node_label=None, node_color=None):
 
-    StackedNode.__init__(self, 'ShaderNodeTexNoise', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'ShaderNodeTexNoise', node_label=node_label, node_color=node_color)
 
     self.color_mapping   = color_mapping
     self.noise_dimensions = noise_dimensions

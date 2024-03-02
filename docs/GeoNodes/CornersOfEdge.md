@@ -22,7 +22,7 @@ CornersOfEdge(edge_index=None, weights=None, sort_index=None, node_label=None, n
 ``` python
 def __init__(self, edge_index=None, weights=None, sort_index=None, node_label=None, node_color=None):
 
-    StackedNode.__init__(self, 'GeometryNodeCornersOfEdge', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'GeometryNodeCornersOfEdge', node_label=node_label, node_color=node_color)
 
     self.edge_index      = edge_index
     self.weights         = weights

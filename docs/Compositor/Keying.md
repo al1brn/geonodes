@@ -36,7 +36,7 @@ No implementation in sockets
 ``` python
 def __init__(self, image=None, key_color=None, garbage_matte=None, core_matte=None, blur_post=0, blur_pre=0, clip_black=0.0, clip_white=1.0, despill_balance=0.5, despill_factor=1.0, dilate_distance=0, edge_kernel_radius=3, edge_kernel_tolerance=0.10000000149011612, feather_distance=0, feather_falloff='SMOOTH', screen_balance=0.5, tag_need_exec=None, node_label=None, node_color=None):
 
-    StackedNode.__init__(self, 'CompositorNodeKeying', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'CompositorNodeKeying', node_label=node_label, node_color=node_color)
 
     self.blur_post       = blur_post
     self.blur_pre        = blur_pre

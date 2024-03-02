@@ -22,7 +22,7 @@ JoinGeometry(*args, geometry=None, node_label=None, node_color=None)
 ``` python
 def __init__(self, *args, geometry=None, node_label=None, node_color=None):
 
-    StackedNode.__init__(self, 'GeometryNodeJoinGeometry', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'GeometryNodeJoinGeometry', node_label=node_label, node_color=node_color)
 
     self._set_multi_input(*args)
     self.geometry        = geometry

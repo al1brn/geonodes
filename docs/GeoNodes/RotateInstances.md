@@ -24,7 +24,7 @@ RotateInstances(instances=None, selection=None, rotation=None, pivot_point=None,
 ``` python
 def __init__(self, instances=None, selection=None, rotation=None, pivot_point=None, local_space=None, node_label=None, node_color=None):
 
-    StackedNode.__init__(self, 'GeometryNodeRotateInstances', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'GeometryNodeRotateInstances', node_label=node_label, node_color=node_color)
 
     self.instances       = instances
     self.selection       = selection

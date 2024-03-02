@@ -23,7 +23,7 @@ No implementation in sockets
 ``` python
 def __init__(self, curve=None, frame_end=250, frame_start=1, tag_need_exec=None, node_label=None, node_color=None):
 
-    StackedNode.__init__(self, 'CompositorNodeTime', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'CompositorNodeTime', node_label=node_label, node_color=node_color)
 
     self.curve           = curve
     self.frame_end       = frame_end

@@ -26,7 +26,7 @@ ScaleElements(geometry=None, selection=None, scale=None, center=None, axis=None,
 ``` python
 def __init__(self, geometry=None, selection=None, scale=None, center=None, axis=None, domain='FACE', scale_mode='UNIFORM', node_label=None, node_color=None):
 
-    StackedNode.__init__(self, 'GeometryNodeScaleElements', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'GeometryNodeScaleElements', node_label=node_label, node_color=node_color)
 
     self.domain          = domain
     self.scale_mode      = scale_mode

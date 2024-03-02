@@ -24,7 +24,7 @@ FilletCurve(curve=None, radius=None, limit_radius=None, count=None, mode='BEZIER
 ``` python
 def __init__(self, curve=None, radius=None, limit_radius=None, count=None, mode='BEZIER', node_label=None, node_color=None):
 
-    StackedNode.__init__(self, 'GeometryNodeFilletCurve', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'GeometryNodeFilletCurve', node_label=node_label, node_color=node_color)
 
     self.mode            = mode
     self.curve           = curve

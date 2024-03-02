@@ -25,7 +25,7 @@ VolumeToMesh(volume=None, threshold=None, adaptivity=None, voxel_amount=None, vo
 ``` python
 def __init__(self, volume=None, threshold=None, adaptivity=None, voxel_amount=None, voxel_size=None, resolution_mode='GRID', node_label=None, node_color=None):
 
-    StackedNode.__init__(self, 'GeometryNodeVolumeToMesh', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'GeometryNodeVolumeToMesh', node_label=node_label, node_color=node_color)
 
     self.resolution_mode = resolution_mode
     self.volume          = volume

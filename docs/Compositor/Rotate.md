@@ -23,7 +23,7 @@ No implementation in sockets
 ``` python
 def __init__(self, image=None, degr=None, filter_type='BILINEAR', tag_need_exec=None, node_label=None, node_color=None):
 
-    StackedNode.__init__(self, 'CompositorNodeRotate', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'CompositorNodeRotate', node_label=node_label, node_color=node_color)
 
     self.filter_type     = filter_type
     self.tag_need_exec   = tag_need_exec

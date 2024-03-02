@@ -28,7 +28,7 @@ No implementation in sockets
 ``` python
 def __init__(self, image=None, z=None, speed=None, factor=1.0, samples=32, speed_max=0, speed_min=0, tag_need_exec=None, use_curved=False, node_label=None, node_color=None):
 
-    StackedNode.__init__(self, 'CompositorNodeVecBlur', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'CompositorNodeVecBlur', node_label=node_label, node_color=node_color)
 
     self.factor          = factor
     self.samples         = samples

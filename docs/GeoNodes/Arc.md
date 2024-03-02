@@ -30,7 +30,7 @@ Arc(resolution=None, radius=None, start_angle=None, sweep_angle=None, connect_ce
 ``` python
 def __init__(self, resolution=None, radius=None, start_angle=None, sweep_angle=None, connect_center=None, invert_arc=None, start=None, middle=None, end=None, offset_angle=None, mode='RADIUS', node_label=None, node_color=None):
 
-    StackedNode.__init__(self, 'GeometryNodeCurveArc', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'GeometryNodeCurveArc', node_label=node_label, node_color=node_color)
 
     self.mode            = mode
     self.resolution      = resolution

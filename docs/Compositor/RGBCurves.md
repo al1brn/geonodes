@@ -25,7 +25,7 @@ RGBCurves(fac=None, image=None, black_level=None, white_level=None, mapping=None
 ``` python
 def __init__(self, fac=None, image=None, black_level=None, white_level=None, mapping=None, tag_need_exec=None, node_label=None, node_color=None):
 
-    StackedNode.__init__(self, 'CompositorNodeCurveRGB', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'CompositorNodeCurveRGB', node_label=node_label, node_color=node_color)
 
     self.mapping         = mapping
     self.tag_need_exec   = tag_need_exec

@@ -35,7 +35,7 @@ Switch(switch=None, false=None, true=None, input_type='GEOMETRY', node_label=Non
 ``` python
 def __init__(self, switch=None, false=None, true=None, input_type='GEOMETRY', node_label=None, node_color=None):
 
-    StackedNode.__init__(self, 'GeometryNodeSwitch', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'GeometryNodeSwitch', node_label=node_label, node_color=node_color)
 
     self.input_type      = input_type
     self.switch          = switch

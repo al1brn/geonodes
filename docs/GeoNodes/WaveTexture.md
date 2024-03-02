@@ -32,7 +32,7 @@ WaveTexture(vector=None, scale=None, distortion=None, detail=None, detail_scale=
 ``` python
 def __init__(self, vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, bands_direction='X', color_mapping=None, rings_direction='X', texture_mapping=None, wave_profile='SIN', wave_type='BANDS', node_label=None, node_color=None):
 
-    StackedNode.__init__(self, 'ShaderNodeTexWave', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'ShaderNodeTexWave', node_label=node_label, node_color=node_color)
 
     self.bands_direction = bands_direction
     self.color_mapping   = color_mapping

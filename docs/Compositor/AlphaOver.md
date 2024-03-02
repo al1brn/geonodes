@@ -25,7 +25,7 @@ No implementation in sockets
 ``` python
 def __init__(self, fac=None, image=None, image_1=None, premul=0.0, tag_need_exec=None, use_premultiply=False, node_label=None, node_color=None):
 
-    StackedNode.__init__(self, 'CompositorNodeAlphaOver', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'CompositorNodeAlphaOver', node_label=node_label, node_color=node_color)
 
     self.premul          = premul
     self.tag_need_exec   = tag_need_exec

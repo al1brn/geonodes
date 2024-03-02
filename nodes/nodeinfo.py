@@ -35,7 +35,7 @@ from geonodes.nodes import dynamic
 from geonodes.nodes import custom
 from geonodes.nodes import utils
 from geonodes.nodes import treestack
-from geonodes.nodes.treestack import StackedTree, StackedNode
+from geonodes.nodes.treestack import StackedTree
 from geonodes.nodes.sockets import Socket, Geometry, Sockets
 
 from geonodes.nodes import sockets
@@ -594,12 +594,12 @@ class NodeInfo:
         # ----- Source code
         
         self.init_code  = f"def __init__({init_header}, node_label=None, node_color=None):\n"
-        self.init_code += f"\n\tStackedNode.__init__(self, '{self.bl_idname}', node_label=node_label, node_color=node_color)\n"
+        self.init_code += f"\n\tNode.__init__(self, '{self.bl_idname}', node_label=node_label, node_color=node_color)\n"
         self.init_code += params_init
         self.init_code += sockets_init
         self.init_code += "\n"
         
-        self.compiled_init = utils.compile_f(self.init_code, '__init__', {'StackedNode': StackedNode})
+        self.compiled_init = utils.compile_f(self.init_code, '__init__', {'Node': treestack.Node})
         
         # ----- DEBUG
         
@@ -1036,15 +1036,15 @@ class NodeInfo:
             - node_info.node_class : the Node class
         """
 
-        self.dynamic = dynamic.Dynamic.NewNode(self, StackedNode, descr=None)
+        self.dynamic = dynamic.Dynamic.NewNode(self, treestack.Node, descr=None)
         
         if False:
             args = self.build_meth_args()
             args.is_static = False
             
             code = f"def __init__({args.header_code}):\n"
-            code += f"\tfrom geonodes.nodes.treestack import StackedNode\n"
-            code += f"\tStackedNode.__init__(self, '{self.bl_idname}', node_label=node_label, node_color=node_color)\n\n"
+            code += f"\tfrom geonodes.nodes.treestack import Node\n"
+            code += f"\tNode.__init__(self, '{self.bl_idname}', node_label=node_label, node_color=node_color)\n\n"
             code += f"\t{args.init_code}\n\n"
         
         if False and self.class_name == 'GroupInput':
@@ -1693,7 +1693,7 @@ class NodeInfo:
         methods = {'_tree_type': self.tree_type}
         if init_code is not None:
             methods['__init__'] = utils.compile_f(init_code, self.class_name) #, treestack.__dict__)
-        node_classes[self.bl_idname] = type(class_name, (StackedNode,), methods)
+        node_classes[self.bl_idname] = type(class_name, (treestack.Node,), methods)
         
         tree_dict[class_name] = node_classes[self.bl_idname]
         

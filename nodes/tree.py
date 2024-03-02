@@ -32,7 +32,7 @@ from geonodes.nodes import constants
 from geonodes.nodes import utils
 from geonodes.nodes import treestack
 from geonodes.nodes import sockets
-from geonodes.nodes.treestack import StackedTree, StackedNode, Trees
+from geonodes.nodes.treestack import StackedTree, Trees
 from geonodes.nodes.sockets import Socket, Sockets
 from geonodes.nodes import nodeinfo
 

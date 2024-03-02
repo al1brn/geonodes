@@ -27,7 +27,7 @@ MapRange(value=None, from_min=None, from_max=None, to_min=None, to_max=None, tag
 ``` python
 def __init__(self, value=None, from_min=None, from_max=None, to_min=None, to_max=None, tag_need_exec=None, use_clamp=False, node_label=None, node_color=None):
 
-    StackedNode.__init__(self, 'CompositorNodeMapRange', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'CompositorNodeMapRange', node_label=node_label, node_color=node_color)
 
     self.tag_need_exec   = tag_need_exec
     self.use_clamp       = use_clamp

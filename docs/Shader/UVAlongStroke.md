@@ -20,7 +20,7 @@ No implementation in sockets
 ``` python
 def __init__(self, use_tips=False, node_label=None, node_color=None):
 
-    StackedNode.__init__(self, 'ShaderNodeUVAlongStroke', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'ShaderNodeUVAlongStroke', node_label=node_label, node_color=node_color)
 
     self.use_tips        = use_tips
 ```

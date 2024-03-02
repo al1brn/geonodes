@@ -28,7 +28,7 @@ No implementation in sockets
 ``` python
 def __init__(self, color=None, color_fac=None, alpha=None, alpha_fac=None, blend_type='MIX', is_active_output=True, target='ALL', use_alpha=False, use_clamp=False, node_label=None, node_color=None):
 
-    StackedNode.__init__(self, 'ShaderNodeOutputLineStyle', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'ShaderNodeOutputLineStyle', node_label=node_label, node_color=node_color)
 
     self.blend_type      = blend_type
     self.is_active_output = is_active_output

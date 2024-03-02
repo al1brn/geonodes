@@ -25,7 +25,7 @@ DistributePointsInVolume(volume=None, density=None, seed=None, spacing=None, thr
 ``` python
 def __init__(self, volume=None, density=None, seed=None, spacing=None, threshold=None, mode='DENSITY_RANDOM', node_label=None, node_color=None):
 
-    StackedNode.__init__(self, 'GeometryNodeDistributePointsInVolume', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'GeometryNodeDistributePointsInVolume', node_label=node_label, node_color=node_color)
 
     self.mode            = mode
     self.volume          = volume

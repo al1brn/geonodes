@@ -22,7 +22,7 @@ MeshCircle(vertices=None, radius=None, fill_type='NONE', node_label=None, node_c
 ``` python
 def __init__(self, vertices=None, radius=None, fill_type='NONE', node_label=None, node_color=None):
 
-    StackedNode.__init__(self, 'GeometryNodeMeshCircle', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'GeometryNodeMeshCircle', node_label=node_label, node_color=node_color)
 
     self.fill_type       = fill_type
     self.vertices        = vertices

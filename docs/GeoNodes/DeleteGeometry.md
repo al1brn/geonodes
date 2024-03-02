@@ -23,7 +23,7 @@ DeleteGeometry(geometry=None, selection=None, domain='POINT', mode='ALL', node_l
 ``` python
 def __init__(self, geometry=None, selection=None, domain='POINT', mode='ALL', node_label=None, node_color=None):
 
-    StackedNode.__init__(self, 'GeometryNodeDeleteGeometry', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'GeometryNodeDeleteGeometry', node_label=node_label, node_color=node_color)
 
     self.domain          = domain
     self.mode            = mode

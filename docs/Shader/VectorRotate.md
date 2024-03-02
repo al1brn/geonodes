@@ -26,7 +26,7 @@ VectorRotate(vector=None, center=None, axis=None, angle=None, rotation=None, inv
 ``` python
 def __init__(self, vector=None, center=None, axis=None, angle=None, rotation=None, invert=False, rotation_type='AXIS_ANGLE', node_label=None, node_color=None):
 
-    StackedNode.__init__(self, 'ShaderNodeVectorRotate', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'ShaderNodeVectorRotate', node_label=node_label, node_color=node_color)
 
     self.invert          = invert
     self.rotation_type   = rotation_type

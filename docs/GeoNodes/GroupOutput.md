@@ -20,7 +20,7 @@ No implementation in sockets
 ``` python
 def __init__(self, is_active_output=True, node_label=None, node_color=None):
 
-    StackedNode.__init__(self, 'NodeGroupOutput', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'NodeGroupOutput', node_label=node_label, node_color=node_color)
 
     self.is_active_output = is_active_output
 ```

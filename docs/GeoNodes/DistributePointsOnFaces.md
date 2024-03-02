@@ -28,7 +28,7 @@ DistributePointsOnFaces(mesh=None, selection=None, density=None, seed=None, dist
 ``` python
 def __init__(self, mesh=None, selection=None, density=None, seed=None, distance_min=None, density_max=None, density_factor=None, distribute_method='RANDOM', use_legacy_normal=False, node_label=None, node_color=None):
 
-    StackedNode.__init__(self, 'GeometryNodeDistributePointsOnFaces', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'GeometryNodeDistributePointsOnFaces', node_label=node_label, node_color=node_color)
 
     self.distribute_method = distribute_method
     self.use_legacy_normal = use_legacy_normal

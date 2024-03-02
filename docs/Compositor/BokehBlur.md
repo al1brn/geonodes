@@ -27,7 +27,7 @@ No implementation in sockets
 ``` python
 def __init__(self, image=None, bokeh=None, size=None, bounding_box=None, blur_max=16.0, tag_need_exec=None, use_extended_bounds=False, use_variable_size=False, node_label=None, node_color=None):
 
-    StackedNode.__init__(self, 'CompositorNodeBokehBlur', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'CompositorNodeBokehBlur', node_label=node_label, node_color=node_color)
 
     self.blur_max        = blur_max
     self.tag_need_exec   = tag_need_exec

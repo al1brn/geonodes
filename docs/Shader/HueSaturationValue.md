@@ -24,7 +24,7 @@ No implementation in sockets
 ``` python
 def __init__(self, hue=None, saturation=None, value=None, fac=None, color=None, node_label=None, node_color=None):
 
-    StackedNode.__init__(self, 'ShaderNodeHueSaturation', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'ShaderNodeHueSaturation', node_label=node_label, node_color=node_color)
 
     self.hue             = hue
     self.saturation      = saturation

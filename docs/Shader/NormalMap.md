@@ -23,7 +23,7 @@ No implementation in sockets
 ``` python
 def __init__(self, strength=None, color=None, space='TANGENT', uv_map='', node_label=None, node_color=None):
 
-    StackedNode.__init__(self, 'ShaderNodeNormalMap', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'ShaderNodeNormalMap', node_label=node_label, node_color=node_color)
 
     self.space           = space
     self.uv_map          = uv_map

@@ -23,7 +23,7 @@ Grid(size_x=None, size_y=None, vertices_x=None, vertices_y=None, node_label=None
 ``` python
 def __init__(self, size_x=None, size_y=None, vertices_x=None, vertices_y=None, node_label=None, node_color=None):
 
-    StackedNode.__init__(self, 'GeometryNodeMeshGrid', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'GeometryNodeMeshGrid', node_label=node_label, node_color=node_color)
 
     self.size_x          = size_x
     self.size_y          = size_y

@@ -21,7 +21,7 @@ No implementation in sockets
 ``` python
 def __init__(self, size=None, use_pixel_size=False, node_label=None, node_color=None):
 
-    StackedNode.__init__(self, 'ShaderNodeWireframe', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'ShaderNodeWireframe', node_label=node_label, node_color=node_color)
 
     self.use_pixel_size  = use_pixel_size
     self.size            = size

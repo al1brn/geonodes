@@ -25,7 +25,7 @@ Switch(off=None, on=None, check=False, tag_need_exec=None, node_label=None, node
 ``` python
 def __init__(self, off=None, on=None, check=False, tag_need_exec=None, node_label=None, node_color=None):
 
-    StackedNode.__init__(self, 'CompositorNodeSwitch', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'CompositorNodeSwitch', node_label=node_label, node_color=node_color)
 
     self.check           = check
     self.tag_need_exec   = tag_need_exec

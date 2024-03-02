@@ -23,7 +23,7 @@ SetShadeSmooth(geometry=None, selection=None, shade_smooth=None, domain='FACE', 
 ``` python
 def __init__(self, geometry=None, selection=None, shade_smooth=None, domain='FACE', node_label=None, node_color=None):
 
-    StackedNode.__init__(self, 'GeometryNodeSetShadeSmooth', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'GeometryNodeSetShadeSmooth', node_label=node_label, node_color=node_color)
 
     self.domain          = domain
     self.geometry        = geometry

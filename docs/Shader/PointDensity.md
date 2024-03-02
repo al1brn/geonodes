@@ -33,7 +33,7 @@ No implementation in sockets
 ``` python
 def __init__(self, vector=None, cache_point_density=None, calc_point_density=None, calc_point_density_minmax=None, interpolation='Linear', object=None, particle_color_source='PARTICLE_AGE', particle_system=None, point_source='PARTICLE_SYSTEM', radius=0.30000001192092896, resolution=100, space='OBJECT', vertex_attribute_name='', vertex_color_source='VERTEX_COLOR', node_label=None, node_color=None):
 
-    StackedNode.__init__(self, 'ShaderNodeTexPointDensity', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'ShaderNodeTexPointDensity', node_label=node_label, node_color=node_color)
 
     self.cache_point_density = cache_point_density
     self.calc_point_density = calc_point_density

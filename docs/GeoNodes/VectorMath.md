@@ -26,7 +26,7 @@ VectorMath(vector=None, vector_1=None, vector_2=None, scale=None, operation='ADD
 ``` python
 def __init__(self, vector=None, vector_1=None, vector_2=None, scale=None, operation='ADD', node_label=None, node_color=None):
 
-    StackedNode.__init__(self, 'ShaderNodeVectorMath', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'ShaderNodeVectorMath', node_label=node_label, node_color=node_color)
 
     self.operation       = operation
     self.vector          = vector

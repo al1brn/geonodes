@@ -23,7 +23,7 @@ DuplicateElements(geometry=None, selection=None, amount=None, domain='POINT', no
 ``` python
 def __init__(self, geometry=None, selection=None, amount=None, domain='POINT', node_label=None, node_color=None):
 
-    StackedNode.__init__(self, 'GeometryNodeDuplicateElements', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'GeometryNodeDuplicateElements', node_label=node_label, node_color=node_color)
 
     self.domain          = domain
     self.geometry        = geometry

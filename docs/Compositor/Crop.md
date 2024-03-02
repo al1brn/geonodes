@@ -31,7 +31,7 @@ No implementation in sockets
 ``` python
 def __init__(self, image=None, max_x=0, max_y=0, min_x=0, min_y=0, rel_max_x=0.0, rel_max_y=0.0, rel_min_x=0.0, rel_min_y=0.0, relative=False, tag_need_exec=None, use_crop_size=False, node_label=None, node_color=None):
 
-    StackedNode.__init__(self, 'CompositorNodeCrop', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'CompositorNodeCrop', node_label=node_label, node_color=node_color)
 
     self.max_x           = max_x
     self.max_y           = max_y

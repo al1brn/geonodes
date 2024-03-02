@@ -29,7 +29,7 @@ No implementation in sockets
 ``` python
 def __init__(self, base_color=None, specular=None, roughness=None, emissive_color=None, transparency=None, normal=None, clear_coat=None, clear_coat_roughness=None, clear_coat_normal=None, ambient_occlusion=None, node_label=None, node_color=None):
 
-    StackedNode.__init__(self, 'ShaderNodeEeveeSpecular', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'ShaderNodeEeveeSpecular', node_label=node_label, node_color=node_color)
 
     self.base_color      = base_color
     self.specular        = specular

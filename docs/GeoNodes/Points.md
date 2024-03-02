@@ -22,7 +22,7 @@ Points(count=None, position=None, radius=None, node_label=None, node_color=None)
 ``` python
 def __init__(self, count=None, position=None, radius=None, node_label=None, node_color=None):
 
-    StackedNode.__init__(self, 'GeometryNodePoints', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'GeometryNodePoints', node_label=node_label, node_color=node_color)
 
     self.count           = count
     self.position        = position

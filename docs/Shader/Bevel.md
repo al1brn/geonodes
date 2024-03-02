@@ -22,7 +22,7 @@ No implementation in sockets
 ``` python
 def __init__(self, radius=None, normal=None, samples=4, node_label=None, node_color=None):
 
-    StackedNode.__init__(self, 'ShaderNodeBevel', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'ShaderNodeBevel', node_label=node_label, node_color=node_color)
 
     self.samples         = samples
     self.radius          = radius

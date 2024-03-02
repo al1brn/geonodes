@@ -23,7 +23,7 @@ TranslateInstances(instances=None, selection=None, translation=None, local_space
 ``` python
 def __init__(self, instances=None, selection=None, translation=None, local_space=None, node_label=None, node_color=None):
 
-    StackedNode.__init__(self, 'GeometryNodeTranslateInstances', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'GeometryNodeTranslateInstances', node_label=node_label, node_color=node_color)
 
     self.instances       = instances
     self.selection       = selection

@@ -23,7 +23,7 @@ RotateEuler(rotation=None, rotate_by=None, space='OBJECT', node_label=None, node
 ``` python
 def __init__(self, rotation=None, rotate_by=None, space='OBJECT', node_label=None, node_color=None):
 
-    StackedNode.__init__(self, 'FunctionNodeRotateEuler', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'FunctionNodeRotateEuler', node_label=node_label, node_color=node_color)
 
     self.space           = space
     self.rotation        = rotation

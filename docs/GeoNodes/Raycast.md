@@ -26,7 +26,7 @@ Raycast(target_geometry=None, attribute=None, source_position=None, ray_directio
 ``` python
 def __init__(self, target_geometry=None, attribute=None, source_position=None, ray_direction=None, ray_length=None, data_type='FLOAT', mapping='INTERPOLATED', node_label=None, node_color=None):
 
-    StackedNode.__init__(self, 'GeometryNodeRaycast', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'GeometryNodeRaycast', node_label=node_label, node_color=node_color)
 
     self.data_type       = data_type
     self.mapping         = mapping

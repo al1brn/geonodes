@@ -21,7 +21,7 @@ OffsetPointInCurve(point_index=None, offset=None, node_label=None, node_color=No
 ``` python
 def __init__(self, point_index=None, offset=None, node_label=None, node_color=None):
 
-    StackedNode.__init__(self, 'GeometryNodeOffsetPointInCurve', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'GeometryNodeOffsetPointInCurve', node_label=node_label, node_color=node_color)
 
     self.point_index     = point_index
     self.offset          = offset

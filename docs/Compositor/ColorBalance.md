@@ -30,7 +30,7 @@ No implementation in sockets
 ``` python
 def __init__(self, fac=None, image=None, correction_method='LIFT_GAMMA_GAIN', gain=None, gamma=None, lift=None, offset=None, offset_basis=0.0, power=None, slope=None, tag_need_exec=None, node_label=None, node_color=None):
 
-    StackedNode.__init__(self, 'CompositorNodeColorBalance', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'CompositorNodeColorBalance', node_label=node_label, node_color=node_color)
 
     self.correction_method = correction_method
     self.gain            = gain

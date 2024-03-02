@@ -22,7 +22,7 @@ SliceString(string=None, position=None, length=None, node_label=None, node_color
 ``` python
 def __init__(self, string=None, position=None, length=None, node_label=None, node_color=None):
 
-    StackedNode.__init__(self, 'FunctionNodeSliceString', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'FunctionNodeSliceString', node_label=node_label, node_color=node_color)
 
     self.string          = string
     self.position        = position

@@ -23,7 +23,7 @@ QuadraticBezier(resolution=None, start=None, middle=None, end=None, node_label=N
 ``` python
 def __init__(self, resolution=None, start=None, middle=None, end=None, node_label=None, node_color=None):
 
-    StackedNode.__init__(self, 'GeometryNodeCurveQuadraticBezier', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'GeometryNodeCurveQuadraticBezier', node_label=node_label, node_color=node_color)
 
     self.resolution      = resolution
     self.start           = start

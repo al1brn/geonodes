@@ -27,7 +27,7 @@ No implementation in sockets
 ``` python
 def __init__(self, image=None, key_color=None, gain=1.0, lift=0.0, shadow_adjust=0.0, tag_need_exec=None, threshold=0.1745329201221466, tolerance=0.5235987901687622, node_label=None, node_color=None):
 
-    StackedNode.__init__(self, 'CompositorNodeChromaMatte', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'CompositorNodeChromaMatte', node_label=node_label, node_color=node_color)
 
     self.gain            = gain
     self.lift            = lift

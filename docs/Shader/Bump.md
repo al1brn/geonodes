@@ -24,7 +24,7 @@ No implementation in sockets
 ``` python
 def __init__(self, strength=None, distance=None, height=None, normal=None, invert=False, node_label=None, node_color=None):
 
-    StackedNode.__init__(self, 'ShaderNodeBump', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'ShaderNodeBump', node_label=node_label, node_color=node_color)
 
     self.invert          = invert
     self.strength        = strength

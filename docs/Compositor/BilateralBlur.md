@@ -25,7 +25,7 @@ No implementation in sockets
 ``` python
 def __init__(self, image=None, determinator=None, iterations=1, sigma_color=0.30000001192092896, sigma_space=5.0, tag_need_exec=None, node_label=None, node_color=None):
 
-    StackedNode.__init__(self, 'CompositorNodeBilateralblur', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'CompositorNodeBilateralblur', node_label=node_label, node_color=node_color)
 
     self.iterations      = iterations
     self.sigma_color     = sigma_color

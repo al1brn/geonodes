@@ -24,7 +24,7 @@ Triangulate(mesh=None, selection=None, minimum_vertices=None, ngon_method='BEAUT
 ``` python
 def __init__(self, mesh=None, selection=None, minimum_vertices=None, ngon_method='BEAUTY', quad_method='SHORTEST_DIAGONAL', node_label=None, node_color=None):
 
-    StackedNode.__init__(self, 'GeometryNodeTriangulate', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'GeometryNodeTriangulate', node_label=node_label, node_color=node_color)
 
     self.ngon_method     = ngon_method
     self.quad_method     = quad_method

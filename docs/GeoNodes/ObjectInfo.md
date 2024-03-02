@@ -22,7 +22,7 @@ ObjectInfo(object=None, as_instance=None, transform_space='ORIGINAL', node_label
 ``` python
 def __init__(self, object=None, as_instance=None, transform_space='ORIGINAL', node_label=None, node_color=None):
 
-    StackedNode.__init__(self, 'GeometryNodeObjectInfo', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'GeometryNodeObjectInfo', node_label=node_label, node_color=node_color)
 
     self.transform_space = transform_space
     self.object          = object

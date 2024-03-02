@@ -24,7 +24,7 @@ CombineColor(red=None, green=None, blue=None, alpha=None, mode='RGB', node_label
 ``` python
 def __init__(self, red=None, green=None, blue=None, alpha=None, mode='RGB', node_label=None, node_color=None):
 
-    StackedNode.__init__(self, 'FunctionNodeCombineColor', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'FunctionNodeCombineColor', node_label=node_label, node_color=node_color)
 
     self.mode            = mode
     self.red             = red

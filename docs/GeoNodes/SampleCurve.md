@@ -27,7 +27,7 @@ SampleCurve(curves=None, value=None, factor=None, curve_index=None, length=None,
 ``` python
 def __init__(self, curves=None, value=None, factor=None, curve_index=None, length=None, data_type='FLOAT', mode='FACTOR', use_all_curves=False, node_label=None, node_color=None):
 
-    StackedNode.__init__(self, 'GeometryNodeSampleCurve', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'GeometryNodeSampleCurve', node_label=node_label, node_color=node_color)
 
     self.data_type       = data_type
     self.mode            = mode

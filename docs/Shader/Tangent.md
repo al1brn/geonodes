@@ -22,7 +22,7 @@ No implementation in sockets
 ``` python
 def __init__(self, axis='Z', direction_type='RADIAL', uv_map='', node_label=None, node_color=None):
 
-    StackedNode.__init__(self, 'ShaderNodeTangent', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'ShaderNodeTangent', node_label=node_label, node_color=node_color)
 
     self.axis            = axis
     self.direction_type  = direction_type

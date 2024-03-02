@@ -23,7 +23,7 @@ SampleNearestSurface(mesh=None, value=None, sample_position=None, data_type='FLO
 ``` python
 def __init__(self, mesh=None, value=None, sample_position=None, data_type='FLOAT', node_label=None, node_color=None):
 
-    StackedNode.__init__(self, 'GeometryNodeSampleNearestSurface', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'GeometryNodeSampleNearestSurface', node_label=node_label, node_color=node_color)
 
     self.data_type       = data_type
     self.mesh            = mesh

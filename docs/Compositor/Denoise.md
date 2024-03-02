@@ -25,7 +25,7 @@ No implementation in sockets
 ``` python
 def __init__(self, image=None, normal=None, albedo=None, prefilter='ACCURATE', tag_need_exec=None, use_hdr=True, node_label=None, node_color=None):
 
-    StackedNode.__init__(self, 'CompositorNodeDenoise', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'CompositorNodeDenoise', node_label=node_label, node_color=node_color)
 
     self.prefilter       = prefilter
     self.tag_need_exec   = tag_need_exec

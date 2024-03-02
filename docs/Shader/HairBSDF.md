@@ -25,7 +25,7 @@ No implementation in sockets
 ``` python
 def __init__(self, color=None, offset=None, roughnessu=None, roughnessv=None, tangent=None, component='Reflection', node_label=None, node_color=None):
 
-    StackedNode.__init__(self, 'ShaderNodeBsdfHair', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'ShaderNodeBsdfHair', node_label=node_label, node_color=node_color)
 
     self.component       = component
     self.color           = color

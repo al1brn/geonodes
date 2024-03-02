@@ -22,7 +22,7 @@ SetCurveNormal(curve=None, selection=None, mode='MINIMUM_TWIST', node_label=None
 ``` python
 def __init__(self, curve=None, selection=None, mode='MINIMUM_TWIST', node_label=None, node_color=None):
 
-    StackedNode.__init__(self, 'GeometryNodeSetCurveNormal', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'GeometryNodeSetCurveNormal', node_label=node_label, node_color=node_color)
 
     self.mode            = mode
     self.curve           = curve

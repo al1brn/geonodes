@@ -26,7 +26,7 @@ CombineColor(red=None, green=None, blue=None, alpha=None, mode='RGB', tag_need_e
 ``` python
 def __init__(self, red=None, green=None, blue=None, alpha=None, mode='RGB', tag_need_exec=None, ycc_mode='ITUBT709', node_label=None, node_color=None):
 
-    StackedNode.__init__(self, 'CompositorNodeCombineColor', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'CompositorNodeCombineColor', node_label=node_label, node_color=node_color)
 
     self.mode            = mode
     self.tag_need_exec   = tag_need_exec

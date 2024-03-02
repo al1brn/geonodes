@@ -22,7 +22,7 @@ UVSphere(segments=None, rings=None, radius=None, node_label=None, node_color=Non
 ``` python
 def __init__(self, segments=None, rings=None, radius=None, node_label=None, node_color=None):
 
-    StackedNode.__init__(self, 'GeometryNodeMeshUVSphere', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'GeometryNodeMeshUVSphere', node_label=node_label, node_color=node_color)
 
     self.segments        = segments
     self.rings           = rings

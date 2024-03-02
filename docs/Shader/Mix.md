@@ -29,7 +29,7 @@ Mix(factor=None, a=None, b=None, blend_type='MIX', clamp_factor=True, clamp_resu
 ``` python
 def __init__(self, factor=None, a=None, b=None, blend_type='MIX', clamp_factor=True, clamp_result=False, data_type='FLOAT', factor_mode='UNIFORM', node_label=None, node_color=None):
 
-    StackedNode.__init__(self, 'ShaderNodeMix', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'ShaderNodeMix', node_label=node_label, node_color=node_color)
 
     self.blend_type      = blend_type
     self.clamp_factor    = clamp_factor

@@ -23,7 +23,7 @@ Cube(size=None, vertices_x=None, vertices_y=None, vertices_z=None, node_label=No
 ``` python
 def __init__(self, size=None, vertices_x=None, vertices_y=None, vertices_z=None, node_label=None, node_color=None):
 
-    StackedNode.__init__(self, 'GeometryNodeMeshCube', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'GeometryNodeMeshCube', node_label=node_label, node_color=node_color)
 
     self.size            = size
     self.vertices_x      = vertices_x

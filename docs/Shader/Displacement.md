@@ -24,7 +24,7 @@ No implementation in sockets
 ``` python
 def __init__(self, height=None, midlevel=None, scale=None, normal=None, space='OBJECT', node_label=None, node_color=None):
 
-    StackedNode.__init__(self, 'ShaderNodeDisplacement', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'ShaderNodeDisplacement', node_label=node_label, node_color=node_color)
 
     self.space           = space
     self.height          = height

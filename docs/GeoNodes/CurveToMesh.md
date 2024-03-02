@@ -22,7 +22,7 @@ CurveToMesh(curve=None, profile_curve=None, fill_caps=None, node_label=None, nod
 ``` python
 def __init__(self, curve=None, profile_curve=None, fill_caps=None, node_label=None, node_color=None):
 
-    StackedNode.__init__(self, 'GeometryNodeCurveToMesh', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'GeometryNodeCurveToMesh', node_label=node_label, node_color=node_color)
 
     self.curve           = curve
     self.profile_curve   = profile_curve

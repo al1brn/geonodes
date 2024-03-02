@@ -24,7 +24,7 @@ No implementation in sockets
 ``` python
 def __init__(self, volume=None, grid=None, position=None, grid_type='FLOAT', interpolation_mode='TRILINEAR', node_label=None, node_color=None):
 
-    StackedNode.__init__(self, 'GeometryNodeSampleVolume', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'GeometryNodeSampleVolume', node_label=node_label, node_color=node_color)
 
     self.grid_type       = grid_type
     self.interpolation_mode = interpolation_mode

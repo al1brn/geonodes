@@ -27,7 +27,7 @@ No implementation in sockets
 ``` python
 def __init__(self, value=None, max=None, min=None, offset=None, size=None, tag_need_exec=None, use_max=False, use_min=False, node_label=None, node_color=None):
 
-    StackedNode.__init__(self, 'CompositorNodeMapValue', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'CompositorNodeMapValue', node_label=node_label, node_color=node_color)
 
     self.max             = max
     self.min             = min

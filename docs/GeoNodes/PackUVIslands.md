@@ -23,7 +23,7 @@ PackUVIslands(uv=None, selection=None, margin=None, rotate=None, node_label=None
 ``` python
 def __init__(self, uv=None, selection=None, margin=None, rotate=None, node_label=None, node_color=None):
 
-    StackedNode.__init__(self, 'GeometryNodeUVPackIslands', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'GeometryNodeUVPackIslands', node_label=node_label, node_color=node_color)
 
     self.uv              = uv
     self.selection       = selection

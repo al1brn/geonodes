@@ -31,7 +31,7 @@ MusgraveTexture(vector=None, scale=None, detail=None, dimension=None, lacunarity
 ``` python
 def __init__(self, vector=None, scale=None, detail=None, dimension=None, lacunarity=None, w=None, offset=None, gain=None, color_mapping=None, musgrave_dimensions='3D', musgrave_type='FBM', texture_mapping=None, node_label=None, node_color=None):
 
-    StackedNode.__init__(self, 'ShaderNodeTexMusgrave', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'ShaderNodeTexMusgrave', node_label=node_label, node_color=node_color)
 
     self.color_mapping   = color_mapping
     self.musgrave_dimensions = musgrave_dimensions
