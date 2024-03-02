@@ -8,7 +8,9 @@
 The script creates a surface from a grid by computing
 `z = sin(d)/d` where `d=sqrt(x^2 + y^2)` is the distance of the vertex to the center.
 
-## Module import
+## Comments
+
+### Module import
 
 Import the tree classes `GeoNodes`,  `Shader` and/or `Compositor` from the module
 
@@ -17,7 +19,7 @@ Import the tree classes `GeoNodes`,  `Shader` and/or `Compositor` from the modul
 from geonodes import GeoNodes, Shader
 ```
 
-## Creating the tree nodes
+### Creating the tree nodes
 
 The tree nodes are created using the `with` context management. The material is created first because it is then used in the Geometry Nodes modifier.
 
@@ -34,7 +36,7 @@ with GeoNodes("Hello World") as tree:
     pass
 ```
 
-## Modifier input
+### Modifier input
 
 User input can be created using `tree.<DATA_TYPE>_input()` methods as shown below:
 
@@ -49,7 +51,7 @@ with GeoNodes("Hello World") as tree:
     target = tree.object_input("Direction")
 ```
 
-## Geometry primitive
+### Geometry primitive
 
 Use the **CamelCase** name of the node to create the node in the current tree. The code below create a grid:
 
@@ -65,7 +67,7 @@ Alternatively, use the **snake_case** version of the name to directly get the ou
     grid = tree.grid(vertices_x=count, vertices_y=count, size_x=size, size_y=size)
 ```
 
-## Computations
+### Computations
 
 Do maths on vectors, floats, booleans, integers using operators and maths functions available in the tree:
 
@@ -79,7 +81,7 @@ Do maths on vectors, floats, booleans, integers using operators and maths functi
     # Height in z
     z = height * tree.sin(distance*omega)/distance
 ```
-## Modify the Geometry
+### Modify the Geometry
 
 Use geometry socket methods to modify the geometry
 
@@ -100,7 +102,7 @@ Use geometry socket methods to modify the geometry
     grid = tree.SetMaterial(geometry=grid, material=bpy.data.materials["Hello Material"]).geometr
 ```
 
-## Tree input and output geometry
+### Tree input and output geometry
 
 Input and output geometries are geometry socket of the tree:
 
@@ -116,7 +118,7 @@ Input and output geometries are geometry socket of the tree:
     geo = tree.ig
 ```
 
-## Layouts
+### Layouts
 
 Layouts are ways to make the trees clearer. Creating a layout is done in the context of `with` syntax: any new node created in the scope of a `with` is included in the layout.
 Note that layouts can be imbricated.
@@ -135,5 +137,69 @@ Note that layouts can be imbricated.
 
    # New nodes are created out of the previous layout
 ```
+
+## Full code
+
+``` python
+from geonodes import GeoNodes, Shader
+
+# A Shader to be used by the Geometry Nodes modifier
+with Shader("Hello Material") as tree:
+    # Read the color from the arribute nameed 'surf_color'
+    col = tree.Attribute("surf_color").color
+    
+    # A Principled BSDF shader 
+    tree.output_surface = tree.PrincipledBSDF(
+        base_color = col,
+        roughness  = .1,
+        metallic   = .7).bsdf
+        
+# The Geometry Nodes modifier
+with GeoNodes("Hello World") as tree:
+    
+    # Let's get the parameters from the user
+    count  = tree.integer_input("Resolution", 100, min_value=10, max_value=300)
+    size   = 20   # Size
+    omega  = tree.integer_input("Omega", 2.)
+    height = tree.integer_input("Height", 2.)
+    
+    # The base (x, y) grid
+    grid = tree.Grid(vertices_x=count, vertices_y=count, size_x=size, size_y=size).mesh
+    
+    # We compute z
+    with tree.layout("Computing the wave"):
+        # Separate XYZ the position vector 
+        pos = grid.position
+        
+        # Compute the distance
+        distance = tree.sqrt(pos.x**2 + pos.y**2)
+        
+        # Height in z
+        z = height * tree.sin(distance*omega)/distance
+        
+    # Let's change the z coordinate of our vertices
+    grid.offset = (0, 0, z)
+    
+    # The color of the surface depends upon the orientation of the faces
+    # toward a control object
+    
+    target = tree.object_input("Direction")
+    loc = target.object_info().location
+    
+    hue = (grid.normal.dot(loc)/2 + .5)**2
+    grid.POINT.store_named_vector("surf_color", tree.CombineColor(hue, .9, .7, mode='HSV'))
+    
+    
+    # We smooth the grid
+    grid.FACE.shade_smooth = True
+    
+    # We set the material created above
+    grid.material = "Hello Material"
+    
+    # We are done: plugging the deformed grid as the modified geometry
+    tree.output_geometry = grid
+```
+
+
 
 
