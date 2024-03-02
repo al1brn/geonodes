@@ -1,0 +1,26 @@
+# Node SeparateXYZ
+
+- Node name : 'Separate XYZ'
+- bl_idname : [ShaderNodeSeparateXYZ](https://docs.blender.org/api/current/bpy.types.ShaderNodeSeparateXYZ.html)
+
+
+``` python
+SeparateXYZ(vector=None, node_label=None, node_color=None)
+```
+##### Arguments
+
+- vector : None
+
+## Implementation
+
+- [VECTOR](/docs/GeoNodes/VECTOR.md) : [separate_xyz](/docs/GeoNodes/socket_VECTOR.md#separate_xyz) [separate_xyz](/docs/GeoNodes/socket_VECTOR.md#separate_xyz)
+
+## Init
+
+``` python
+def __init__(self, vector=None, node_label=None, node_color=None):
+
+    StackedNode.__init__(self, 'ShaderNodeSeparateXYZ', node_label=node_label, node_color=node_color)
+
+    self.vector          = vector
+```

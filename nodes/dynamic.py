@@ -433,7 +433,7 @@ class Dynamic:
                     if socket == 'GLOBAL':
                         globs = [doc.page_link(name, constants.TREE_CLASS_NAMES[tree_type]+"Tree", title=name) for name in sorted(cross_ref[socket])]
                     else:
-                        links = [doc.page_link(name, socket, title=name) for name in sorted(cross_ref[socket])]
+                        links = [doc.page_link(name, f"socket_{socket}", title=name) for name in sorted(cross_ref[socket])]
                         bullets.add(doc.page_link(socket), " ".join(links))
                         
                 if globs is not None:
@@ -578,7 +578,7 @@ def print_md_doc(folder):
         
         for class_name, dyn in constants.SOCKETS[tree_type].items():
             dyn.socket_print_doc(None, target_doc=doc)
-            doc.done(file_name=file_root / f"{class_name}.md")
+            doc.done(file_name=file_root / f"socket_{class_name}.md")
         
         # ----- Node classes
         
