@@ -1,0 +1,20 @@
+# Node Normal
+
+- Node name : 'Normal'
+- bl_idname : [GeometryNodeInputNormal](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputNormal.html)
+
+
+``` python
+Normal(node_label=None, node_color=None)
+```
+## Implementation
+
+- [GEOMETRY](/docs/GeoNodes/GEOMETRY.md) : [normal](/docs/GeoNodes/GEOMETRY.md#normal) [normal](/docs/GeoNodes/GEOMETRY.md#normal)
+
+## Init
+
+``` python
+def __init__(self, node_label=None, node_color=None):
+
+    StackedNode.__init__(self, 'GeometryNodeInputNormal', node_label=node_label, node_color=node_color)
+```

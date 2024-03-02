@@ -1,0 +1,30 @@
+# Node CurveToMesh
+
+- Node name : 'Curve to Mesh'
+- bl_idname : [GeometryNodeCurveToMesh](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveToMesh.html)
+
+
+``` python
+CurveToMesh(curve=None, profile_curve=None, fill_caps=None, node_label=None, node_color=None)
+```
+##### Arguments
+
+- curve : None
+- profile_curve : None
+- fill_caps : None
+
+## Implementation
+
+- [GEOMETRY](/docs/GeoNodes/GEOMETRY.md) : [curve_to_mesh](/docs/GeoNodes/GEOMETRY.md#curve_to_mesh) [curve_to_mesh](/docs/GeoNodes/GEOMETRY.md#curve_to_mesh)
+
+## Init
+
+``` python
+def __init__(self, curve=None, profile_curve=None, fill_caps=None, node_label=None, node_color=None):
+
+    StackedNode.__init__(self, 'GeometryNodeCurveToMesh', node_label=node_label, node_color=node_color)
+
+    self.curve           = curve
+    self.profile_curve   = profile_curve
+    self.fill_caps       = fill_caps
+```

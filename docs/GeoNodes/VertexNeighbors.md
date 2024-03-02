@@ -1,0 +1,20 @@
+# Node VertexNeighbors
+
+- Node name : 'Vertex Neighbors'
+- bl_idname : [GeometryNodeInputMeshVertexNeighbors](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshVertexNeighbors.html)
+
+
+``` python
+VertexNeighbors(node_label=None, node_color=None)
+```
+## Implementation
+
+- [GEOMETRY](/docs/GeoNodes/GEOMETRY.md) : [vertex_neighbors](/docs/GeoNodes/GEOMETRY.md#vertex_neighbors) [vertex_neighbors](/docs/GeoNodes/GEOMETRY.md#vertex_neighbors)
+
+## Init
+
+``` python
+def __init__(self, node_label=None, node_color=None):
+
+    StackedNode.__init__(self, 'GeometryNodeInputMeshVertexNeighbors', node_label=node_label, node_color=node_color)
+```

@@ -1,0 +1,26 @@
+# Node SeparateComponents
+
+- Node name : 'Separate Components'
+- bl_idname : [GeometryNodeSeparateComponents](https://docs.blender.org/api/current/bpy.types.GeometryNodeSeparateComponents.html)
+
+
+``` python
+SeparateComponents(geometry=None, node_label=None, node_color=None)
+```
+##### Arguments
+
+- geometry : None
+
+## Implementation
+
+- [GEOMETRY](/docs/GeoNodes/GEOMETRY.md) : [separate_components](/docs/GeoNodes/GEOMETRY.md#separate_components) [separate_components](/docs/GeoNodes/GEOMETRY.md#separate_components)
+
+## Init
+
+``` python
+def __init__(self, geometry=None, node_label=None, node_color=None):
+
+    StackedNode.__init__(self, 'GeometryNodeSeparateComponents', node_label=node_label, node_color=node_color)
+
+    self.geometry        = geometry
+```

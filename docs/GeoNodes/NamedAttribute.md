@@ -1,0 +1,29 @@
+# Node NamedAttribute
+
+- Node name : 'Named Attribute'
+- bl_idname : [GeometryNodeInputNamedAttribute](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputNamedAttribute.html)
+
+
+``` python
+NamedAttribute(name=None, data_type='FLOAT', node_label=None, node_color=None)
+```
+##### Arguments
+
+- name : None
+- data_type : 'FLOAT'
+
+## Implementation
+
+- [GEOMETRY](/docs/GeoNodes/GEOMETRY.md) : [named_attribute](/docs/GeoNodes/GEOMETRY.md#named_attribute) [named_attribute](/docs/GeoNodes/GEOMETRY.md#named_attribute) [named_boolean](/docs/GeoNodes/GEOMETRY.md#named_boolean) [named_boolean](/docs/GeoNodes/GEOMETRY.md#named_boolean) [named_color](/docs/GeoNodes/GEOMETRY.md#named_color) [named_color](/docs/GeoNodes/GEOMETRY.md#named_color) [named_float](/docs/GeoNodes/GEOMETRY.md#named_float) [named_float](/docs/GeoNodes/GEOMETRY.md#named_float) [named_int](/docs/GeoNodes/GEOMETRY.md#named_int) [named_int](/docs/GeoNodes/GEOMETRY.md#named_int) [named_quaternion](/docs/GeoNodes/GEOMETRY.md#named_quaternion) [named_quaternion](/docs/GeoNodes/GEOMETRY.md#named_quaternion) [named_vector](/docs/GeoNodes/GEOMETRY.md#named_vector) [named_vector](/docs/GeoNodes/GEOMETRY.md#named_vector)
+- Functions : [named_boolean](/docs/GeoNodes/GeoNodesTree.md#named_boolean) [named_boolean](/docs/GeoNodes/GeoNodesTree.md#named_boolean) [named_color](/docs/GeoNodes/GeoNodesTree.md#named_color) [named_color](/docs/GeoNodes/GeoNodesTree.md#named_color) [named_float](/docs/GeoNodes/GeoNodesTree.md#named_float) [named_float](/docs/GeoNodes/GeoNodesTree.md#named_float) [named_int](/docs/GeoNodes/GeoNodesTree.md#named_int) [named_int](/docs/GeoNodes/GeoNodesTree.md#named_int) [named_quaternion](/docs/GeoNodes/GeoNodesTree.md#named_quaternion) [named_quaternion](/docs/GeoNodes/GeoNodesTree.md#named_quaternion) [named_vector](/docs/GeoNodes/GeoNodesTree.md#named_vector) [named_vector](/docs/GeoNodes/GeoNodesTree.md#named_vector)
+
+## Init
+
+``` python
+def __init__(self, name=None, data_type='FLOAT', node_label=None, node_color=None):
+
+    StackedNode.__init__(self, 'GeometryNodeInputNamedAttribute', node_label=node_label, node_color=node_color)
+
+    self.data_type       = data_type
+    self.name            = name
+```
