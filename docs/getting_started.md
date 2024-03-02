@@ -68,7 +68,16 @@ with Compositor("Scene.001") as tree:
     pass
 ```
 
-***CAUTION***: when opening a tree, the existing nodes are deleted!
+> :warning: when opening a tree, the existing nodes are deleted!
+
+### Creating a group
+
+A **Node Group** can be created by using the `is_group`:
+
+```python
+with GeoNodes("My Group", is_group=True):
+    pass
+```
 
 ## Creating a Node
 
