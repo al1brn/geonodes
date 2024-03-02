@@ -677,7 +677,7 @@ class GeoNodes(Tree):
     # ====================================================================================================
     # Frame
     
-    def layout(self, node_label="Frame", node_color=None, label_size=None):
+    def layout(self, node_label="Frame", node_color=(.1, .2, .2), label_size=None):
         return self.Frame(label_size=label_size, node_label=node_label, node_color=node_color)
     
     # ====================================================================================================
