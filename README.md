@@ -135,9 +135,7 @@ Uses [index](docs/index.md) to gain access to the list of availables classes.
 ## Scripting nodes overview
 
 All nodes belong to a tree. Four tree types are available:
-- `GeoNodes` : [Geometry Nodes](docs/GeoNdoes/GeoNodesTree.md)
-- `Shader` : Material Nodes
-- `Compositor` : Compositor Nodes
-
-
+- `GeoNodes` : [Geometry Nodes](docs/GeoNodes/GeoNodesTree.md)
+- `Shader` : [Material Nodes](docs/Shader/ShaderTree.md)
+- `Compositor` : [Compositor Nodes](docs/Compositor/CompositorTree.md)
 
