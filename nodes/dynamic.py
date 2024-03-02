@@ -589,7 +589,7 @@ def print_md_doc(folder):
             if bl_idname in constants.NO_DOC_NODES:
                 continue
             
-            if True: # DEBUG
+            if False: # DEBUG
                 print(f"Node class {class_name} ({bl_idname})")
             
             dyn.node_print_doc(target_doc=doc)
