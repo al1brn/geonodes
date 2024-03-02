@@ -1,5 +1,18 @@
 # Getting started
 
+- [Prerequisites](#prerequisites)
+  - [3 types of nodes trees](#3-types-of-nodes-trees)
+  - [Importing the module](#importing-the-module)
+- [Creating a new Tree](#creating-a-new_tree)
+- [Creating a Node](#creating-a-node)
+  - [Node Sockets](#node-sockets)
+  - [Links](#links)
+  - [Sockets sharing the same Name](#sockets-sharing-the-same-name)
+  - [Node parameters](#node-parameters)
+  - [Node init arguments order](#node-init-arguments-order)
+  - [Multi Input Sockets](#multi-input-sockets)
+- [Socket Classes](#socket-classes)
+
 ## Prerequisites
 
 To use the **geonodes** python module, you are supposed to be familiar with:
@@ -9,7 +22,7 @@ To use the **geonodes** python module, you are supposed to be familiar with:
 
 Install the version of **geonodes** compatible with the Blender version you use.
 
-## 3 types of nodes trees
+### 3 types of nodes trees
 
 **geonodes** support 3 types of nodes trees:
 
@@ -20,24 +33,13 @@ Install the version of **geonodes** compatible with the Blender version you use.
 Once initialized as described below, there is no major differences in the behavior.
 Differences exists in the inputs and outputs of the trees and on the set of possible nodes.
 
-## Importing the module
+### Importing the module
 
 We suppose that all scripts start with the following import instruction:
 
 ``` python
 from geonodes import GeoNodes, Shader, Compositor
 ```
-
-- [Creating a new Tree](#creating-a-new_tree)
-- [Creating a Node](#creating-a-node)
-  - [Node Sockets](#node-sockets)
-  - [Links](#links)
-  - [Sockets sharing the same Name](#sockets-sharing-the-same-name)
-  - [Node parameters](#node-parameters)
-  - [Node init arguments order](#node-init-arguments-order)
-  - [Multi Input Sockets](#multi-input-sockets)
-- [Socket Classes](#socket-classes)
-  
 
 ## Creating a new Tree
 
