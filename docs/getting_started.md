@@ -21,6 +21,7 @@
   - [Operations on Values](#operations-on-values)
   - [Boolean operations](#boolean-operations)
   - [Vectors, Rotations and Colors automatic Separation](#vectors-rotations-and-colors-automatic-separation)
+- [Geometry](#geometry)
   - [Geometry primitives](#geometry-primitives)
   - [Geometry attributes](#geometry-attributes)
   - [Operations on Geometry](#operations-on-geometry)
@@ -616,6 +617,8 @@ with GeoNodes("Demo") as tree:
 
 <img src="images/gs_img_02.png" width="600" class="center">
 
+## Geometry
+
 ### Operations on Geometry
 
 Nodes operating on geometry accept one input GEOMETRY socket and return one output GEOMETRY socket.
@@ -760,6 +763,83 @@ with GeoNodes("Demo") as tree:
 
 
 ## Simulation and Repeat Zones
+
+**Simulation** and **Repeat** zones are created in the same way, using context managers `tree.simulation()` and `'tree.repeat()`:
+
+The sockets required within the zone are created as arguments of the `simulation` and `repeat` methods and are then refered as properties of the zone:
+
+- `with tree.Simulation(geometry=None, hue=1.) as simul` :
+  - `geometry` socket is initialized to None
+  - `hue` can be read with `simul.hue`
+  - `a = simul.geometry` : read the geometry from the input node of the zone
+  - `simul.geometry = geo` : write the geometry to the output node of the zone
+
+After the `with` block, the result of the simulation can be read with `simul.geometry`.
+
+The example below shows a simple example of a simulation zone:
+
+``` python
+# This shader will be used in the geometry nodes
+
+with Shader("Mat Demo") as tree:
+    # Build a color base on the arribute hue
+    hue = tree.Attribute("hue").fac
+    col = tree.CombineColor(hue, 1, 1, mode='HSV')
+    ped = tree.PrincipledBSDF(base_color=col)
+    tree.output_surface = ped.bsdf
+    
+# The geometry nodes modifier
+
+with GeoNodes("Demo") as tree:
+    
+    # Create a Simulation zone
+    with tree.simulation(geometry=None, hue=1.) as simul:
+        
+        # Create random points on the faces
+        points = tree.ig.distribute_points_on_faces(density=1., seed=tree.frame).points
+        
+        # Starting age is 0
+        points.POINT.store_named_int("age", 0)
+        
+        # Stores the hue
+        points.POINT.store_named_float("hue", simul.hue % 1)
+
+        # Update hue for next loop
+        simul.hue += 1.13
+        
+        # Equivalent to simul.geometry.join_geometry(points)
+        simul.geometry += points
+        
+        # Increase the age
+        age = simul.geometry.named_int("age")
+        simul.geometry.store_named_int("age", age + 1)
+        
+        # Delete old points
+        simul.geometry.POINT[age.greater_than(20)].delete_geometry()
+        
+        # Decrease hue
+        simul.hue += 1.13
+        
+    # Cubes on points
+    geo = simul.geometry.instance_on_points(instance=tree.Cube(size=.1))
+
+    # Set the material reading hue attribute
+    geo.material = "Mat Demo"
+    
+    # Output the realized mesh        
+    tree.og = geo.realize_instances()
+```
+
+<img src="images/gs_img_07.png" width="600" class="center">
+
+
+
+
+
+
+    
+
+
 
 
 

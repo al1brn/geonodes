@@ -31,6 +31,9 @@ class Zone:
             if create_geometry and first and stype != 'GEOMETRY':
                 self._items.new(socket_type='GEOMETRY', name='Geometry')
                 
+            if stype == 'VALUE':
+                stype = 'FLOAT'
+                
             self._items.new(socket_type=stype, name=name)
             
             first = False
