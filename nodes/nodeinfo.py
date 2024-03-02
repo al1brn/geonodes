@@ -1001,23 +1001,12 @@ class NodeInfo:
         if self.domain_param is not None:
             arg = args[self.domain_param]
             if arg is not None:
-                if True:
-                    if arg.header == 'IGNORE':
-                        pass
-                    elif arg.call is None:
-                        arg.call = f"self._get_domain({arg.name}, {self.domain_values})"
-                    else:
-                        arg.call = f"self._get_domain({arg.call}, {self.domain_values})"
-                
+                if arg.header == 'IGNORE':
+                    pass
+                elif arg.call is None:
+                    arg.call = f"self._get_domain({arg.name}, {self.domain_values})"
                 else:
-                    if arg.call is None:
-                        if arg.name == 'mode':
-                            print("node info mode=None")
-                        arg.call = f"self._get_domain({utils.python_constant(prm_defs[self.domain_param])}, {self.domain_values})"
-                    else:
-                        if arg.name == 'mode':
-                            print("node info mode=", arg.call)
-                        arg.call = f"self._get_domain({arg.call}, {self.domain_values})"
+                    arg.call = f"self._get_domain({arg.call}, {self.domain_values})"
                 
         # ----------------------------------------------------------------------------------------------------
         # Node_label and node_color

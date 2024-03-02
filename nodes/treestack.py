@@ -312,7 +312,7 @@ class Node(object):
     # target_element ('POINTS', 'EDGES', 'FACES') GeometryProximity
             
     @classmethod
-    def _get_domain_value(cls, domain, default):
+    def _get_domain_value_OLD(cls, domain, default):
         
         #print(f"{cls.__name__}._get_domain_value({domain}, {default})", "values", cls.DOMAIN_VALUES)
         
