@@ -20,6 +20,7 @@ You keep the full power of Blender geometry nodes but with the elegance of Pytho
 - [Getting started](docs/getting_started.md)
 - [API reference](docs/index.md)
 - Tutorials by examples:
+  - [Extrusion](docs/ex_extrusion.md)
   - [Building an arrow](docs/arrow.md)
     
 ## Better a demo than long words
