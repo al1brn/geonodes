@@ -609,7 +609,8 @@ is implemented as a method.
 - as `position` property
 - as `offset` property
 
-> :note: Since position is also a read property, the GEOMETRY socket has a read/write property named `position`.
+> [!NOTE]
+> Since position is also a read property, the GEOMETRY socket has a read/write property named `position`.
 
 ``` python
 with GeoNodes("Demo") as tree:
