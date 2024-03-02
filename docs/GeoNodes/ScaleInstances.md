@@ -17,7 +17,7 @@ ScaleInstances(instances=None, selection=None, scale=None, center=None, local_sp
 
 ## Implementation
 
-- [GEOMETRY](/docs/GeoNodes/GEOMETRY.md) : [scale_instances](/docs/GeoNodes/socket_GEOMETRY.md#scale_instances) [scale_instances](/docs/GeoNodes/socket_GEOMETRY.md#scale_instances)
+- [GEOMETRY](/docs/GeoNodes/socket_GEOMETRY.md) : [scale_instances](/docs/GeoNodes/socket_GEOMETRY.md#scale_instances) [scale_instances](/docs/GeoNodes/socket_GEOMETRY.md#scale_instances)
 
 ## Init
 

@@ -14,7 +14,7 @@ SeparateXYZ(vector=None, tag_need_exec=None, node_label=None, node_color=None)
 
 ## Implementation
 
-- [VECTOR](/docs/Compositor/VECTOR.md) : [separate_xyz](/docs/Compositor/socket_VECTOR.md#separate_xyz)
+- [VECTOR](/docs/Compositor/socket_VECTOR.md) : [separate_xyz](/docs/Compositor/socket_VECTOR.md#separate_xyz)
 
 ## Init
 

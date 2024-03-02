@@ -16,7 +16,7 @@ CurveToPoints(curve=None, count=None, length=None, mode='COUNT', node_label=None
 
 ## Implementation
 
-- [GEOMETRY](/docs/GeoNodes/GEOMETRY.md) : [curve_to_points](/docs/GeoNodes/socket_GEOMETRY.md#curve_to_points) [curve_to_points](/docs/GeoNodes/socket_GEOMETRY.md#curve_to_points)
+- [GEOMETRY](/docs/GeoNodes/socket_GEOMETRY.md) : [curve_to_points](/docs/GeoNodes/socket_GEOMETRY.md#curve_to_points) [curve_to_points](/docs/GeoNodes/socket_GEOMETRY.md#curve_to_points)
 
 ## Init
 

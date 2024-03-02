@@ -17,7 +17,7 @@ FilletCurve(curve=None, radius=None, limit_radius=None, count=None, mode='BEZIER
 
 ## Implementation
 
-- [GEOMETRY](/docs/GeoNodes/GEOMETRY.md) : [fillet_curve](/docs/GeoNodes/socket_GEOMETRY.md#fillet_curve) [fillet_curve](/docs/GeoNodes/socket_GEOMETRY.md#fillet_curve) [fillet_curve_bezier](/docs/GeoNodes/socket_GEOMETRY.md#fillet_curve_bezier) [fillet_curve_bezier](/docs/GeoNodes/socket_GEOMETRY.md#fillet_curve_bezier) [fillet_curve_poly](/docs/GeoNodes/socket_GEOMETRY.md#fillet_curve_poly) [fillet_curve_poly](/docs/GeoNodes/socket_GEOMETRY.md#fillet_curve_poly)
+- [GEOMETRY](/docs/GeoNodes/socket_GEOMETRY.md) : [fillet_curve](/docs/GeoNodes/socket_GEOMETRY.md#fillet_curve) [fillet_curve](/docs/GeoNodes/socket_GEOMETRY.md#fillet_curve) [fillet_curve_bezier](/docs/GeoNodes/socket_GEOMETRY.md#fillet_curve_bezier) [fillet_curve_bezier](/docs/GeoNodes/socket_GEOMETRY.md#fillet_curve_bezier) [fillet_curve_poly](/docs/GeoNodes/socket_GEOMETRY.md#fillet_curve_poly) [fillet_curve_poly](/docs/GeoNodes/socket_GEOMETRY.md#fillet_curve_poly)
 
 ## Init
 

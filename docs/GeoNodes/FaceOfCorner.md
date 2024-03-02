@@ -13,7 +13,7 @@ FaceOfCorner(corner_index=None, node_label=None, node_color=None)
 
 ## Implementation
 
-- [GEOMETRY](/docs/GeoNodes/GEOMETRY.md) : [face_of_corner](/docs/GeoNodes/socket_GEOMETRY.md#face_of_corner) [face_of_corner](/docs/GeoNodes/socket_GEOMETRY.md#face_of_corner)
+- [GEOMETRY](/docs/GeoNodes/socket_GEOMETRY.md) : [face_of_corner](/docs/GeoNodes/socket_GEOMETRY.md#face_of_corner) [face_of_corner](/docs/GeoNodes/socket_GEOMETRY.md#face_of_corner)
 
 ## Init
 

@@ -19,8 +19,8 @@ MapRange(value=None, from_min=None, from_max=None, to_min=None, to_max=None, tag
 
 ## Implementation
 
-- [VALUE](/docs/Compositor/VALUE.md) : [map_range](/docs/Compositor/socket_VALUE.md#map_range)
-- [VECTOR](/docs/Compositor/VECTOR.md) : [map_range](/docs/Compositor/socket_VECTOR.md#map_range)
+- [VALUE](/docs/Compositor/socket_VALUE.md) : [map_range](/docs/Compositor/socket_VALUE.md#map_range)
+- [VECTOR](/docs/Compositor/socket_VECTOR.md) : [map_range](/docs/Compositor/socket_VECTOR.md#map_range)
 
 ## Init
 

@@ -15,7 +15,7 @@ ColorRamp(fac=None, color_ramp=None, tag_need_exec=None, node_label=None, node_c
 
 ## Implementation
 
-- [VALUE](/docs/Compositor/VALUE.md) : [color_ramp](/docs/Compositor/socket_VALUE.md#color_ramp)
+- [VALUE](/docs/Compositor/socket_VALUE.md) : [color_ramp](/docs/Compositor/socket_VALUE.md#color_ramp)
 
 ## Init
 

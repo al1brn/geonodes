@@ -13,7 +13,7 @@ CurveLength(curve=None, node_label=None, node_color=None)
 
 ## Implementation
 
-- [GEOMETRY](/docs/GeoNodes/GEOMETRY.md) : [curve_length](/docs/GeoNodes/socket_GEOMETRY.md#curve_length) [curve_length](/docs/GeoNodes/socket_GEOMETRY.md#curve_length)
+- [GEOMETRY](/docs/GeoNodes/socket_GEOMETRY.md) : [curve_length](/docs/GeoNodes/socket_GEOMETRY.md#curve_length) [curve_length](/docs/GeoNodes/socket_GEOMETRY.md#curve_length)
 
 ## Init
 

@@ -13,7 +13,7 @@ ConvexHull(geometry=None, node_label=None, node_color=None)
 
 ## Implementation
 
-- [GEOMETRY](/docs/GeoNodes/GEOMETRY.md) : [convex_hull](/docs/GeoNodes/socket_GEOMETRY.md#convex_hull) [convex_hull](/docs/GeoNodes/socket_GEOMETRY.md#convex_hull)
+- [GEOMETRY](/docs/GeoNodes/socket_GEOMETRY.md) : [convex_hull](/docs/GeoNodes/socket_GEOMETRY.md#convex_hull) [convex_hull](/docs/GeoNodes/socket_GEOMETRY.md#convex_hull)
 
 ## Init
 

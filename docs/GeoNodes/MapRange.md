@@ -22,9 +22,9 @@ MapRange(value=None, from_min=None, from_max=None, to_min=None, to_max=None, vec
 
 ## Implementation
 
-- [INT](/docs/GeoNodes/INT.md) : [map_range](/docs/GeoNodes/socket_INT.md#map_range) [map_range](/docs/GeoNodes/socket_INT.md#map_range)
-- [VALUE](/docs/GeoNodes/VALUE.md) : [map_range](/docs/GeoNodes/socket_VALUE.md#map_range) [map_range](/docs/GeoNodes/socket_VALUE.md#map_range)
-- [VECTOR](/docs/GeoNodes/VECTOR.md) : [map_range](/docs/GeoNodes/socket_VECTOR.md#map_range) [map_range](/docs/GeoNodes/socket_VECTOR.md#map_range)
+- [INT](/docs/GeoNodes/socket_INT.md) : [map_range](/docs/GeoNodes/socket_INT.md#map_range) [map_range](/docs/GeoNodes/socket_INT.md#map_range)
+- [VALUE](/docs/GeoNodes/socket_VALUE.md) : [map_range](/docs/GeoNodes/socket_VALUE.md#map_range) [map_range](/docs/GeoNodes/socket_VALUE.md#map_range)
+- [VECTOR](/docs/GeoNodes/socket_VECTOR.md) : [map_range](/docs/GeoNodes/socket_VECTOR.md#map_range) [map_range](/docs/GeoNodes/socket_VECTOR.md#map_range)
 
 ## Init
 

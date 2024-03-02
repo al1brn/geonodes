@@ -15,7 +15,7 @@ PointsToCurves(points=None, curve_group_id=None, weight=None, node_label=None, n
 
 ## Implementation
 
-- [GEOMETRY](/docs/GeoNodes/GEOMETRY.md) : [points_to_curves](/docs/GeoNodes/socket_GEOMETRY.md#points_to_curves) [points_to_curves](/docs/GeoNodes/socket_GEOMETRY.md#points_to_curves)
+- [GEOMETRY](/docs/GeoNodes/socket_GEOMETRY.md) : [points_to_curves](/docs/GeoNodes/socket_GEOMETRY.md#points_to_curves) [points_to_curves](/docs/GeoNodes/socket_GEOMETRY.md#points_to_curves)
 
 ## Init
 

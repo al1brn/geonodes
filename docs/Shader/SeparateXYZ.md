@@ -13,7 +13,7 @@ SeparateXYZ(vector=None, node_label=None, node_color=None)
 
 ## Implementation
 
-- [VECTOR](/docs/Shader/VECTOR.md) : [separate_xyz](/docs/Shader/socket_VECTOR.md#separate_xyz)
+- [VECTOR](/docs/Shader/socket_VECTOR.md) : [separate_xyz](/docs/Shader/socket_VECTOR.md#separate_xyz)
 
 ## Init
 

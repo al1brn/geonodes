@@ -15,7 +15,7 @@ CurveToMesh(curve=None, profile_curve=None, fill_caps=None, node_label=None, nod
 
 ## Implementation
 
-- [GEOMETRY](/docs/GeoNodes/GEOMETRY.md) : [curve_to_mesh](/docs/GeoNodes/socket_GEOMETRY.md#curve_to_mesh) [curve_to_mesh](/docs/GeoNodes/socket_GEOMETRY.md#curve_to_mesh)
+- [GEOMETRY](/docs/GeoNodes/socket_GEOMETRY.md) : [curve_to_mesh](/docs/GeoNodes/socket_GEOMETRY.md#curve_to_mesh) [curve_to_mesh](/docs/GeoNodes/socket_GEOMETRY.md#curve_to_mesh)
 
 ## Init
 

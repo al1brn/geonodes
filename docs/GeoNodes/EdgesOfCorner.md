@@ -13,7 +13,7 @@ EdgesOfCorner(corner_index=None, node_label=None, node_color=None)
 
 ## Implementation
 
-- [GEOMETRY](/docs/GeoNodes/GEOMETRY.md) : [edges_of_corner](/docs/GeoNodes/socket_GEOMETRY.md#edges_of_corner) [edges_of_corner](/docs/GeoNodes/socket_GEOMETRY.md#edges_of_corner)
+- [GEOMETRY](/docs/GeoNodes/socket_GEOMETRY.md) : [edges_of_corner](/docs/GeoNodes/socket_GEOMETRY.md#edges_of_corner) [edges_of_corner](/docs/GeoNodes/socket_GEOMETRY.md#edges_of_corner)
 
 ## Init
 

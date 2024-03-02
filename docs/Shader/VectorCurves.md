@@ -15,8 +15,8 @@ VectorCurves(fac=None, vector=None, mapping=None, node_label=None, node_color=No
 
 ## Implementation
 
-- [ROTATION](/docs/Shader/ROTATION.md) : [vector_curves](/docs/Shader/socket_ROTATION.md#vector_curves)
-- [VECTOR](/docs/Shader/VECTOR.md) : [vector_curves](/docs/Shader/socket_VECTOR.md#vector_curves)
+- [ROTATION](/docs/Shader/socket_ROTATION.md) : [vector_curves](/docs/Shader/socket_ROTATION.md#vector_curves)
+- [VECTOR](/docs/Shader/socket_VECTOR.md) : [vector_curves](/docs/Shader/socket_VECTOR.md#vector_curves)
 
 ## Init
 

@@ -9,7 +9,7 @@ Position(node_label=None, node_color=None)
 ```
 ## Implementation
 
-- [GEOMETRY](/docs/GeoNodes/GEOMETRY.md) : [position](/docs/GeoNodes/socket_GEOMETRY.md#position) [position](/docs/GeoNodes/socket_GEOMETRY.md#position)
+- [GEOMETRY](/docs/GeoNodes/socket_GEOMETRY.md) : [position](/docs/GeoNodes/socket_GEOMETRY.md#position) [position](/docs/GeoNodes/socket_GEOMETRY.md#position)
 
 ## Init
 

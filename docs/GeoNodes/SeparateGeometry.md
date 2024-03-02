@@ -15,7 +15,7 @@ SeparateGeometry(geometry=None, selection=None, domain='POINT', node_label=None,
 
 ## Implementation
 
-- [GEOMETRY](/docs/GeoNodes/GEOMETRY.md) : [separate_geometry](/docs/GeoNodes/socket_GEOMETRY.md#separate_geometry) [separate_geometry](/docs/GeoNodes/socket_GEOMETRY.md#separate_geometry)
+- [GEOMETRY](/docs/GeoNodes/socket_GEOMETRY.md) : [separate_geometry](/docs/GeoNodes/socket_GEOMETRY.md#separate_geometry) [separate_geometry](/docs/GeoNodes/socket_GEOMETRY.md#separate_geometry)
 
 ## Init
 

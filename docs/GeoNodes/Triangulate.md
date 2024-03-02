@@ -17,7 +17,7 @@ Triangulate(mesh=None, selection=None, minimum_vertices=None, ngon_method='BEAUT
 
 ## Implementation
 
-- [GEOMETRY](/docs/GeoNodes/GEOMETRY.md) : [triangulate](/docs/GeoNodes/socket_GEOMETRY.md#triangulate) [triangulate](/docs/GeoNodes/socket_GEOMETRY.md#triangulate)
+- [GEOMETRY](/docs/GeoNodes/socket_GEOMETRY.md) : [triangulate](/docs/GeoNodes/socket_GEOMETRY.md#triangulate) [triangulate](/docs/GeoNodes/socket_GEOMETRY.md#triangulate)
 
 ## Init
 

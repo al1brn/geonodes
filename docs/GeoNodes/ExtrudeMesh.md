@@ -18,7 +18,7 @@ ExtrudeMesh(mesh=None, selection=None, offset=None, offset_scale=None, individua
 
 ## Implementation
 
-- [GEOMETRY](/docs/GeoNodes/GEOMETRY.md) : [extrude_mesh](/docs/GeoNodes/socket_GEOMETRY.md#extrude_mesh) [extrude_mesh](/docs/GeoNodes/socket_GEOMETRY.md#extrude_mesh)
+- [GEOMETRY](/docs/GeoNodes/socket_GEOMETRY.md) : [extrude_mesh](/docs/GeoNodes/socket_GEOMETRY.md#extrude_mesh) [extrude_mesh](/docs/GeoNodes/socket_GEOMETRY.md#extrude_mesh)
 
 ## Init
 

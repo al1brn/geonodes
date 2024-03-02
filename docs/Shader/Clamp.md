@@ -16,7 +16,7 @@ Clamp(value=None, min=None, max=None, clamp_type='MINMAX', node_label=None, node
 
 ## Implementation
 
-- [VALUE](/docs/Shader/VALUE.md) : [clamp](/docs/Shader/socket_VALUE.md#clamp)
+- [VALUE](/docs/Shader/socket_VALUE.md) : [clamp](/docs/Shader/socket_VALUE.md#clamp)
 
 ## Init
 

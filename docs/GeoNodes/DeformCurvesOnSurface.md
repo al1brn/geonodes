@@ -13,7 +13,7 @@ DeformCurvesOnSurface(curves=None, node_label=None, node_color=None)
 
 ## Implementation
 
-- [GEOMETRY](/docs/GeoNodes/GEOMETRY.md) : [deform_curves_on_surface](/docs/GeoNodes/socket_GEOMETRY.md#deform_curves_on_surface) [deform_curves_on_surface](/docs/GeoNodes/socket_GEOMETRY.md#deform_curves_on_surface)
+- [GEOMETRY](/docs/GeoNodes/socket_GEOMETRY.md) : [deform_curves_on_surface](/docs/GeoNodes/socket_GEOMETRY.md#deform_curves_on_surface) [deform_curves_on_surface](/docs/GeoNodes/socket_GEOMETRY.md#deform_curves_on_surface)
 
 ## Init
 

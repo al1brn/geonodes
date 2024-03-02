@@ -17,7 +17,7 @@ TrimCurve(curve=None, selection=None, start=None, end=None, mode='FACTOR', node_
 
 ## Implementation
 
-- [GEOMETRY](/docs/GeoNodes/GEOMETRY.md) : [trim_curve](/docs/GeoNodes/socket_GEOMETRY.md#trim_curve) [trim_curve](/docs/GeoNodes/socket_GEOMETRY.md#trim_curve)
+- [GEOMETRY](/docs/GeoNodes/socket_GEOMETRY.md) : [trim_curve](/docs/GeoNodes/socket_GEOMETRY.md#trim_curve) [trim_curve](/docs/GeoNodes/socket_GEOMETRY.md#trim_curve)
 
 ## Init
 

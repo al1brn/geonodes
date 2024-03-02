@@ -14,7 +14,7 @@ SubdivideCurve(curve=None, cuts=None, node_label=None, node_color=None)
 
 ## Implementation
 
-- [GEOMETRY](/docs/GeoNodes/GEOMETRY.md) : [subdivide_curve](/docs/GeoNodes/socket_GEOMETRY.md#subdivide_curve) [subdivide_curve](/docs/GeoNodes/socket_GEOMETRY.md#subdivide_curve)
+- [GEOMETRY](/docs/GeoNodes/socket_GEOMETRY.md) : [subdivide_curve](/docs/GeoNodes/socket_GEOMETRY.md#subdivide_curve) [subdivide_curve](/docs/GeoNodes/socket_GEOMETRY.md#subdivide_curve)
 
 ## Init
 

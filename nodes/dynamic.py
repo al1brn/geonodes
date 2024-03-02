@@ -434,7 +434,7 @@ class Dynamic:
                         globs = [doc.page_link(name, constants.TREE_CLASS_NAMES[tree_type]+"Tree", title=name) for name in sorted(cross_ref[socket])]
                     else:
                         links = [doc.page_link(name, f"socket_{socket}", title=name) for name in sorted(cross_ref[socket])]
-                        bullets.add(doc.page_link(socket), " ".join(links))
+                        bullets.add(doc.page_link(socket, f"socket_{socket}"), " ".join(links))
                         
                 if globs is not None:
                     bullets.add("Functions", " ".join(globs))

@@ -9,7 +9,7 @@ IsFaceSmooth(node_label=None, node_color=None)
 ```
 ## Implementation
 
-- [GEOMETRY](/docs/GeoNodes/GEOMETRY.md) : [face_smooth](/docs/GeoNodes/socket_GEOMETRY.md#face_smooth) [face_smooth](/docs/GeoNodes/socket_GEOMETRY.md#face_smooth)
+- [GEOMETRY](/docs/GeoNodes/socket_GEOMETRY.md) : [face_smooth](/docs/GeoNodes/socket_GEOMETRY.md#face_smooth) [face_smooth](/docs/GeoNodes/socket_GEOMETRY.md#face_smooth)
 
 ## Init
 

@@ -14,7 +14,7 @@ EndpointSelection(start_size=None, end_size=None, node_label=None, node_color=No
 
 ## Implementation
 
-- [GEOMETRY](/docs/GeoNodes/GEOMETRY.md) : [endpoint_selection](/docs/GeoNodes/socket_GEOMETRY.md#endpoint_selection) [endpoint_selection](/docs/GeoNodes/socket_GEOMETRY.md#endpoint_selection)
+- [GEOMETRY](/docs/GeoNodes/socket_GEOMETRY.md) : [endpoint_selection](/docs/GeoNodes/socket_GEOMETRY.md#endpoint_selection) [endpoint_selection](/docs/GeoNodes/socket_GEOMETRY.md#endpoint_selection)
 
 ## Init
 

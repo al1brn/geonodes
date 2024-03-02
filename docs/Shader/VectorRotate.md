@@ -19,7 +19,7 @@ VectorRotate(vector=None, center=None, axis=None, angle=None, rotation=None, inv
 
 ## Implementation
 
-- [VECTOR](/docs/Shader/VECTOR.md) : [vector_rotate](/docs/Shader/socket_VECTOR.md#vector_rotate)
+- [VECTOR](/docs/Shader/socket_VECTOR.md) : [vector_rotate](/docs/Shader/socket_VECTOR.md#vector_rotate)
 
 ## Init
 

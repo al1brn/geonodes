@@ -14,7 +14,7 @@ MeshToCurve(mesh=None, selection=None, node_label=None, node_color=None)
 
 ## Implementation
 
-- [GEOMETRY](/docs/GeoNodes/GEOMETRY.md) : [mesh_to_curve](/docs/GeoNodes/socket_GEOMETRY.md#mesh_to_curve) [mesh_to_curve](/docs/GeoNodes/socket_GEOMETRY.md#mesh_to_curve)
+- [GEOMETRY](/docs/GeoNodes/socket_GEOMETRY.md) : [mesh_to_curve](/docs/GeoNodes/socket_GEOMETRY.md#mesh_to_curve) [mesh_to_curve](/docs/GeoNodes/socket_GEOMETRY.md#mesh_to_curve)
 
 ## Init
 

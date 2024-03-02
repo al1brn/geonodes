@@ -9,7 +9,7 @@ FaceNeighbors(node_label=None, node_color=None)
 ```
 ## Implementation
 
-- [GEOMETRY](/docs/GeoNodes/GEOMETRY.md) : [face_neighbors](/docs/GeoNodes/socket_GEOMETRY.md#face_neighbors) [face_neighbors](/docs/GeoNodes/socket_GEOMETRY.md#face_neighbors)
+- [GEOMETRY](/docs/GeoNodes/socket_GEOMETRY.md) : [face_neighbors](/docs/GeoNodes/socket_GEOMETRY.md#face_neighbors) [face_neighbors](/docs/GeoNodes/socket_GEOMETRY.md#face_neighbors)
 
 ## Init
 

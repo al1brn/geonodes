@@ -15,7 +15,7 @@ ReplaceString(string=None, find=None, replace=None, node_label=None, node_color=
 
 ## Implementation
 
-- [STRING](/docs/GeoNodes/STRING.md) : [replace_string](/docs/GeoNodes/socket_STRING.md#replace_string) [replace_string](/docs/GeoNodes/socket_STRING.md#replace_string)
+- [STRING](/docs/GeoNodes/socket_STRING.md) : [replace_string](/docs/GeoNodes/socket_STRING.md#replace_string) [replace_string](/docs/GeoNodes/socket_STRING.md#replace_string)
 
 ## Init
 

@@ -14,7 +14,7 @@ ColorRamp(fac=None, color_ramp=None, node_label=None, node_color=None)
 
 ## Implementation
 
-- [VALUE](/docs/Shader/VALUE.md) : [color_ramp](/docs/Shader/socket_VALUE.md#color_ramp)
+- [VALUE](/docs/Shader/socket_VALUE.md) : [color_ramp](/docs/Shader/socket_VALUE.md#color_ramp)
 
 ## Init
 

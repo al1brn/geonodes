@@ -14,7 +14,7 @@ IndexOfNearest(position=None, group_id=None, node_label=None, node_color=None)
 
 ## Implementation
 
-- [GEOMETRY](/docs/GeoNodes/GEOMETRY.md) : [index_of_nearest](/docs/GeoNodes/socket_GEOMETRY.md#index_of_nearest) [index_of_nearest](/docs/GeoNodes/socket_GEOMETRY.md#index_of_nearest)
+- [GEOMETRY](/docs/GeoNodes/socket_GEOMETRY.md) : [index_of_nearest](/docs/GeoNodes/socket_GEOMETRY.md#index_of_nearest) [index_of_nearest](/docs/GeoNodes/socket_GEOMETRY.md#index_of_nearest)
 
 ## Init
 

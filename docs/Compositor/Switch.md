@@ -16,9 +16,9 @@ Switch(off=None, on=None, check=False, tag_need_exec=None, node_label=None, node
 
 ## Implementation
 
-- [RGBA](/docs/Compositor/RGBA.md) : [switch](/docs/Compositor/socket_RGBA.md#switch)
-- [VALUE](/docs/Compositor/VALUE.md) : [switch](/docs/Compositor/socket_VALUE.md#switch)
-- [VECTOR](/docs/Compositor/VECTOR.md) : [switch](/docs/Compositor/socket_VECTOR.md#switch)
+- [RGBA](/docs/Compositor/socket_RGBA.md) : [switch](/docs/Compositor/socket_RGBA.md#switch)
+- [VALUE](/docs/Compositor/socket_VALUE.md) : [switch](/docs/Compositor/socket_VALUE.md#switch)
+- [VECTOR](/docs/Compositor/socket_VECTOR.md) : [switch](/docs/Compositor/socket_VECTOR.md#switch)
 
 ## Init
 

@@ -15,8 +15,8 @@ FloatCurve(factor=None, value=None, mapping=None, node_label=None, node_color=No
 
 ## Implementation
 
-- [INT](/docs/GeoNodes/INT.md) : [float_curve](/docs/GeoNodes/socket_INT.md#float_curve) [float_curve](/docs/GeoNodes/socket_INT.md#float_curve)
-- [VALUE](/docs/GeoNodes/VALUE.md) : [float_curve](/docs/GeoNodes/socket_VALUE.md#float_curve) [float_curve](/docs/GeoNodes/socket_VALUE.md#float_curve)
+- [INT](/docs/GeoNodes/socket_INT.md) : [float_curve](/docs/GeoNodes/socket_INT.md#float_curve) [float_curve](/docs/GeoNodes/socket_INT.md#float_curve)
+- [VALUE](/docs/GeoNodes/socket_VALUE.md) : [float_curve](/docs/GeoNodes/socket_VALUE.md#float_curve) [float_curve](/docs/GeoNodes/socket_VALUE.md#float_curve)
 
 ## Init
 

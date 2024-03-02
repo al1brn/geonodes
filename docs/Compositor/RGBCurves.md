@@ -18,7 +18,7 @@ RGBCurves(fac=None, image=None, black_level=None, white_level=None, mapping=None
 
 ## Implementation
 
-- [RGBA](/docs/Compositor/RGBA.md) : [rgb_curves](/docs/Compositor/socket_RGBA.md#rgb_curves)
+- [RGBA](/docs/Compositor/socket_RGBA.md) : [rgb_curves](/docs/Compositor/socket_RGBA.md#rgb_curves)
 
 ## Init
 

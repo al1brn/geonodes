@@ -2268,14 +2268,14 @@ def geometry_to_instance(self, *args, node_label=None, node_color=None):
 ##### Arguments
 
 - handle_type : 'AUTO' in ('FREE', 'AUTO', 'VECTOR', 'ALIGN')
-- mode : {'RIGHT', 'LEFT'}
+- mode : {'LEFT', 'RIGHT'}
 - node_label : None
 - node_color : None
 
 #### Source code
 
 ``` python
-def handle_type_selection(self, handle_type='AUTO', mode={'RIGHT', 'LEFT'}, node_label=None, node_color=None):
+def handle_type_selection(self, handle_type='AUTO', mode={'LEFT', 'RIGHT'}, node_label=None, node_color=None):
     node = self.tree.HandleTypeSelection(handle_type=handle_type, mode=mode, node_label=node_label, node_color=node_color)
     return node.selection
 ```
@@ -4415,14 +4415,14 @@ def set_handle_positions(self, position=None, offset=None, selection=None, mode=
 
 - selection : None
 - handle_type : 'AUTO' in ('FREE', 'AUTO', 'VECTOR', 'ALIGN')
-- mode : {'RIGHT', 'LEFT'}
+- mode : {'LEFT', 'RIGHT'}
 - node_label : None
 - node_color : None
 
 #### Source code
 
 ``` python
-def set_handle_type(self, selection=None, handle_type='AUTO', mode={'RIGHT', 'LEFT'}, node_label=None, node_color=None):
+def set_handle_type(self, selection=None, handle_type='AUTO', mode={'LEFT', 'RIGHT'}, node_label=None, node_color=None):
     node = self.tree.SetHandleType(curve=self, selection=self._get_selection(selection), handle_type=handle_type, mode=mode, node_label=node_label, node_color=node_color)
     self.jump(node.curve)
     return self

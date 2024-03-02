@@ -9,7 +9,7 @@ FaceArea(node_label=None, node_color=None)
 ```
 ## Implementation
 
-- [GEOMETRY](/docs/GeoNodes/GEOMETRY.md) : [face_area](/docs/GeoNodes/socket_GEOMETRY.md#face_area) [face_area](/docs/GeoNodes/socket_GEOMETRY.md#face_area)
+- [GEOMETRY](/docs/GeoNodes/socket_GEOMETRY.md) : [face_area](/docs/GeoNodes/socket_GEOMETRY.md#face_area) [face_area](/docs/GeoNodes/socket_GEOMETRY.md#face_area)
 
 ## Init
 

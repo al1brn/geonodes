@@ -15,7 +15,7 @@ SetSplineCyclic(geometry=None, selection=None, cyclic=None, node_label=None, nod
 
 ## Implementation
 
-- [GEOMETRY](/docs/GeoNodes/GEOMETRY.md) : [cyclic](/docs/GeoNodes/socket_GEOMETRY.md#cyclic) [cyclic](/docs/GeoNodes/socket_GEOMETRY.md#cyclic) [set_spline_cyclic](/docs/GeoNodes/socket_GEOMETRY.md#set_spline_cyclic) [set_spline_cyclic](/docs/GeoNodes/socket_GEOMETRY.md#set_spline_cyclic)
+- [GEOMETRY](/docs/GeoNodes/socket_GEOMETRY.md) : [cyclic](/docs/GeoNodes/socket_GEOMETRY.md#cyclic) [cyclic](/docs/GeoNodes/socket_GEOMETRY.md#cyclic) [set_spline_cyclic](/docs/GeoNodes/socket_GEOMETRY.md#set_spline_cyclic) [set_spline_cyclic](/docs/GeoNodes/socket_GEOMETRY.md#set_spline_cyclic)
 
 ## Init
 

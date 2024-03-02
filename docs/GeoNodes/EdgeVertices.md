@@ -9,7 +9,7 @@ EdgeVertices(node_label=None, node_color=None)
 ```
 ## Implementation
 
-- [GEOMETRY](/docs/GeoNodes/GEOMETRY.md) : [edge_vertices](/docs/GeoNodes/socket_GEOMETRY.md#edge_vertices) [edge_vertices](/docs/GeoNodes/socket_GEOMETRY.md#edge_vertices)
+- [GEOMETRY](/docs/GeoNodes/socket_GEOMETRY.md) : [edge_vertices](/docs/GeoNodes/socket_GEOMETRY.md#edge_vertices) [edge_vertices](/docs/GeoNodes/socket_GEOMETRY.md#edge_vertices)
 
 ## Init
 

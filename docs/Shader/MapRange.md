@@ -22,8 +22,8 @@ MapRange(value=None, from_min=None, from_max=None, to_min=None, to_max=None, vec
 
 ## Implementation
 
-- [VALUE](/docs/Shader/VALUE.md) : [map_range](/docs/Shader/socket_VALUE.md#map_range)
-- [VECTOR](/docs/Shader/VECTOR.md) : [map_range](/docs/Shader/socket_VECTOR.md#map_range)
+- [VALUE](/docs/Shader/socket_VALUE.md) : [map_range](/docs/Shader/socket_VALUE.md#map_range)
+- [VECTOR](/docs/Shader/socket_VECTOR.md) : [map_range](/docs/Shader/socket_VECTOR.md#map_range)
 
 ## Init
 

@@ -9,7 +9,7 @@ Index(node_label=None, node_color=None)
 ```
 ## Implementation
 
-- [GEOMETRY](/docs/GeoNodes/GEOMETRY.md) : [index](/docs/GeoNodes/socket_GEOMETRY.md#index) [index](/docs/GeoNodes/socket_GEOMETRY.md#index)
+- [GEOMETRY](/docs/GeoNodes/socket_GEOMETRY.md) : [index](/docs/GeoNodes/socket_GEOMETRY.md#index) [index](/docs/GeoNodes/socket_GEOMETRY.md#index)
 
 ## Init
 

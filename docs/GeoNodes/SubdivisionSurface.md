@@ -18,7 +18,7 @@ SubdivisionSurface(mesh=None, level=None, edge_crease=None, vertex_crease=None, 
 
 ## Implementation
 
-- [GEOMETRY](/docs/GeoNodes/GEOMETRY.md) : [subdivision_surface](/docs/GeoNodes/socket_GEOMETRY.md#subdivision_surface) [subdivision_surface](/docs/GeoNodes/socket_GEOMETRY.md#subdivision_surface)
+- [GEOMETRY](/docs/GeoNodes/socket_GEOMETRY.md) : [subdivision_surface](/docs/GeoNodes/socket_GEOMETRY.md#subdivision_surface) [subdivision_surface](/docs/GeoNodes/socket_GEOMETRY.md#subdivision_surface)
 
 ## Init
 

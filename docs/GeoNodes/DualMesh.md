@@ -14,7 +14,7 @@ DualMesh(mesh=None, keep_boundaries=None, node_label=None, node_color=None)
 
 ## Implementation
 
-- [GEOMETRY](/docs/GeoNodes/GEOMETRY.md) : [dual_mesh](/docs/GeoNodes/socket_GEOMETRY.md#dual_mesh) [dual_mesh](/docs/GeoNodes/socket_GEOMETRY.md#dual_mesh)
+- [GEOMETRY](/docs/GeoNodes/socket_GEOMETRY.md) : [dual_mesh](/docs/GeoNodes/socket_GEOMETRY.md#dual_mesh) [dual_mesh](/docs/GeoNodes/socket_GEOMETRY.md#dual_mesh)
 
 ## Init
 

@@ -13,7 +13,7 @@ FaceGroupBoundaries(face_group_id=None, node_label=None, node_color=None)
 
 ## Implementation
 
-- [GEOMETRY](/docs/GeoNodes/GEOMETRY.md) : [face_group_boundaries](/docs/GeoNodes/socket_GEOMETRY.md#face_group_boundaries) [face_group_boundaries](/docs/GeoNodes/socket_GEOMETRY.md#face_group_boundaries)
+- [GEOMETRY](/docs/GeoNodes/socket_GEOMETRY.md) : [face_group_boundaries](/docs/GeoNodes/socket_GEOMETRY.md#face_group_boundaries) [face_group_boundaries](/docs/GeoNodes/socket_GEOMETRY.md#face_group_boundaries)
 
 ## Init
 

@@ -14,7 +14,7 @@ SeparateColor(color=None, mode='RGB', node_label=None, node_color=None)
 
 ## Implementation
 
-- [RGBA](/docs/Shader/RGBA.md) : [separate_color](/docs/Shader/socket_RGBA.md#separate_color)
+- [RGBA](/docs/Shader/socket_RGBA.md) : [separate_color](/docs/Shader/socket_RGBA.md#separate_color)
 
 ## Init
 

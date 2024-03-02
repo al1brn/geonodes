@@ -13,7 +13,7 @@ EdgesToFaceGroups(boundary_edges=None, node_label=None, node_color=None)
 
 ## Implementation
 
-- [GEOMETRY](/docs/GeoNodes/GEOMETRY.md) : [edges_to_face_groups](/docs/GeoNodes/socket_GEOMETRY.md#edges_to_face_groups) [edges_to_face_groups](/docs/GeoNodes/socket_GEOMETRY.md#edges_to_face_groups)
+- [GEOMETRY](/docs/GeoNodes/socket_GEOMETRY.md) : [edges_to_face_groups](/docs/GeoNodes/socket_GEOMETRY.md#edges_to_face_groups) [edges_to_face_groups](/docs/GeoNodes/socket_GEOMETRY.md#edges_to_face_groups)
 
 ## Init
 

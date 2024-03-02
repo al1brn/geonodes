@@ -14,7 +14,7 @@ ReverseCurve(curve=None, selection=None, node_label=None, node_color=None)
 
 ## Implementation
 
-- [GEOMETRY](/docs/GeoNodes/GEOMETRY.md) : [reverse_curve](/docs/GeoNodes/socket_GEOMETRY.md#reverse_curve) [reverse_curve](/docs/GeoNodes/socket_GEOMETRY.md#reverse_curve)
+- [GEOMETRY](/docs/GeoNodes/socket_GEOMETRY.md) : [reverse_curve](/docs/GeoNodes/socket_GEOMETRY.md#reverse_curve) [reverse_curve](/docs/GeoNodes/socket_GEOMETRY.md#reverse_curve)
 
 ## Init
 

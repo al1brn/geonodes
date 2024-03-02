@@ -15,7 +15,7 @@ RGBCurves(fac=None, color=None, mapping=None, node_label=None, node_color=None)
 
 ## Implementation
 
-- [RGBA](/docs/Shader/RGBA.md) : [rgb_curves](/docs/Shader/socket_RGBA.md#rgb_curves)
+- [RGBA](/docs/Shader/socket_RGBA.md) : [rgb_curves](/docs/Shader/socket_RGBA.md#rgb_curves)
 
 ## Init
 

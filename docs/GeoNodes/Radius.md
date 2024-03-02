@@ -9,7 +9,7 @@ Radius(node_label=None, node_color=None)
 ```
 ## Implementation
 
-- [GEOMETRY](/docs/GeoNodes/GEOMETRY.md) : [radius](/docs/GeoNodes/socket_GEOMETRY.md#radius) [radius](/docs/GeoNodes/socket_GEOMETRY.md#radius)
+- [GEOMETRY](/docs/GeoNodes/socket_GEOMETRY.md) : [radius](/docs/GeoNodes/socket_GEOMETRY.md#radius) [radius](/docs/GeoNodes/socket_GEOMETRY.md#radius)
 
 ## Init
 
