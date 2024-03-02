@@ -93,7 +93,7 @@ with GeoNodes("Hello World") as tree:
 
 The generated nodes and the result of the Geometry nodes modifier is given below:
 
-<img src="docs/images/demo_intro.png" width="600" class="center">
+<img src="docs/images/hello_world_blender.png" width="600" class="center">
 
 ## Installation
 
