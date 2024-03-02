@@ -8,8 +8,26 @@
 The script creates a surface from a grid by computing
 `z = sin(d)/d` where `d=sqrt(x^2 + y^2)` is the distance of the vertex to the center.
 
+## Module import
+
+Import the tree classes `GeoNodes`,  `Shader` and/or `Compositor` from the module
+
 ```python
+# Compositor class is not required in this demo
 from geonodes import GeoNodes, Shader
+```
+
+## Creating the tree nodes
+
+The tree nodes are created using the `with` context management. 
+
+> [!CAUTION]
+> All nodes are erased.
+
+```
+
+
+
 
 with GeoNodes("Hello World", clear=True) as tree:
     
