@@ -3,7 +3,7 @@
 > Let's review this demo script in detail. Afterwards, you should be able to script your own tree.
 
 > [!NOTE]
-> To start using this module, it is recommaned to reaf first [Getting Started](getting_started.md).
+> To start using this module, it is recommanded to read first [Getting Started](getting_started.md).
 
 The script creates a surface from a grid by computing
 `z = sin(d)/d` where `d=sqrt(x^2 + y^2)` is the distance of the vertex to the center.
@@ -19,89 +19,76 @@ from geonodes import GeoNodes, Shader
 
 ## Creating the tree nodes
 
-The tree nodes are created using the `with` context management. 
+The tree nodes are created using the `with` context management. The material is created first because it is then used in the Geometry Nodes modifier.
 
 > [!CAUTION]
 > All nodes are erased.
 
 ```
-
-
-
-
-with GeoNodes("Hello World", clear=True) as tree:
-    
-    # Let's document our parameters
-    count  = 100  # Grid resolution
-    size   = 20   # Size
-    omega  = 2.   # Period
-    height = 2.   # Height of the surface
-    
-    
-    # The base (x, y) grid
-    grid = tree.Grid(vertices_x=count, vertices_y=count, size_x=size, size_y=size).mesh
-    
-    # We compute z
-    with tree.layout("Computing the wave"):
-        # Separate XYZ the position vector 
-        pos = grid.position
-        # Compute the distance
-        distance = tree.sqrt(pos.x**2 + pos.y**2)
-        # Height in z
-        z = height * tree.sin(distance*omega)/distance
+# A Shader to be used by the Geometry Nodes modifier
+with Shader("Hello Material") as tree:
+    pass
         
-    # Let's change the z coordinate of our vertices
-    grid.offset = (0, 0, z)
-    
-    # We are done: plugging the deformed grid as the modified geometry
-    tree.output_geometry = grid.set_shade_smooth()     
+# The Geometry Nodes modifier
+with GeoNodes("Hello World") as tree:
+    pass
 ```
 
-The generated nodes and the result of the Geometry nodes modifier is given below:
+## Modifier input
 
-<img src="images/demo_intro.png" width="600" class="center">
-
-## Description
-
-### Import
-
-```python
-from geonodes import GeoNodes, Shader
-```
-
-Be sure to have properly installed the **geonodes** module as described in the [Installation section](/README.md#installation).
-
-`gn` is the proposed alias to use as **geonodes** naming space.
-
-### Tree creation
-
-A Tree instance can be created with
-  
-```python
-tree = GeoNodes(tree_name)
-...
-tree.close()
-```
-
-But it is recommanded to use `with` syntax to ensure that the tree will be properly closed. The closing performs final mandatory treatments.
-
-```python
-with gn.GeoNodes("Geometry Nodes") as tree:
-    ...
-```
-
-The `tree_name` is the name of a geometry nodes modifier. If it doesn't exist, it will be created.
-
-> **Warning** when calling `tree(tree_name)`, ***all the nodes and links are erased***. Be sure not to open a tree with an existing valuable tree you don't want to loose.
-
-The tree can be created with the argument `is_group=True` when the generated tree is not to be used as a modifier:
+User input can be created using `tree.<DATA_TYPE>_input()` methods as shown below:
 
 ``` python
-
-with gn.GeoNodes("Custom function", is_group=True):
-   ...
-
+with GeoNodes("Hello World") as tree:
+    
+    # Let's get the parameters from the user
+    count  = tree.integer_input("Resolution", 100, min_value=10, max_value=300)
+    size   = 20   # Size
+    omega  = tree.integer_input("Omega", 2.)
+    height = tree.integer_input("Height", 2.)
+    target = tree.object_input("Direction")
 ```
+
+## Geometry primitive
+
+Use the **CamelCase** name of the node to create the node in the current tree. The code below create a grid:
+
+``` python
+    # Create the grid and get the output socket mesh in the variable grid
+    grid = tree.Grid(vertices_x=count, vertices_y=count, size_x=size, size_y=size).mesh
+```
+
+Alternatively, use the **snake_case** version of the name to directly get the output socket:
+
+``` python
+    # Create the grid and get the output socket mesh in the variable grid
+    grid = tree.grid(vertices_x=count, vertices_y=count, size_x=size, size_y=size)
+```
+
+## Computations
+
+Do maths on vectors, floats, booleans, integers using operators and maths functions available in the tree:
+
+``` python
+    # Separate XYZ the position vector 
+    pos = grid.position
+    
+    # Compute the distance
+    distance = tree.sqrt(pos.x**2 + pos.y**2)
+    
+    # Height in z
+    z = height * tree.sin(distance*omega)/distance
+```
+
+
+
+
+
+
+
+
+
+
 
 With the default option `is_group=False`, first sockets (input and output) are `Geometry`.
 
