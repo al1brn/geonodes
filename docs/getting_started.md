@@ -614,7 +614,13 @@ is implemented as a method.
 - as `offset` property
 
 > [!NOTE]
-> Since position is also a read property, the GEOMETRY socket has a read/write property named `position`.
+> Since `position` is also a read property, the GEOMETRY socket has a read/write property named `position`.
+
+> [!IMPORTANT]
+> Operations on geometry changes the actual socket warpped by the class GEOMETRY:
+> `geo.position = v` :
+> - before the operation, geo points to the output socket of node A
+> - after the operation, geo points to the output socket of node `SetPosition` 
 
 ``` python
 with GeoNodes("Demo") as tree:
@@ -637,6 +643,7 @@ with GeoNodes("Demo") as tree:
 ```
 
 <img src="images/gs_img_03.png" width="600" class="center">
+
 
 
 
