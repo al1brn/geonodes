@@ -651,8 +651,6 @@ Some nodes need to specify the domain through a `domain` parameter.
 As an alternative to specify the domain as an argument, the domain can be specified as a property
 of the geometry as shown below.
 
-For instance, the node `ExtrudeMesh` can operate on 3 domains:
-
 ``` python
 with GeoNodes("Demo") as tree:
     
@@ -708,6 +706,44 @@ with GeoNodes("Demo") as tree:
 ```
 
 <img src="images/gs_img_05.png" width="600" class="center">
+
+### Data type
+
+Some nodes needs to specify a data type for the input socket. This is for instance the case for nodes
+`StoreNamedAttribute` or `Switch`. This kind of node is implemented severale times in order to avoid to have
+to specify the `data_type` parameter.
+
+If the node operates on a GEOMETRY socket, its named include the data type. For instance, `StoreNamedAttribute`
+is implemented in:
+- `store_named_attribute` : need to specify the `data_type` argument
+- `store_named_boolean` : `data_type='BOOLEAN'`
+- `store_named_byte_color` : `data_type='BYTE_COLOR'`
+- `store_named_float` : `data_type='FLOAT'`
+- `store_named_float2` : `data_type='FLOAT2'`
+- `store_named_float_color`  : `data_type='FLOAT_COLOR'`
+- `store_named_int` : `data_type='INT'`
+- `store_named_quaternion`  : `data_type='QUATERNION'`
+- `store_named_vector`  : `data_type='FLOAT_VECTOR'`
+
+Combine with `domain` prefix and `selection` as index, the code is highly simplified as shown below:
+
+``` python
+with GeoNodes("Demo") as tree:
+    
+    geo = tree.ig
+    
+    # Use directly the node
+    geo.store_named_attribute("int", value=0, selection=geo.index.less_than(10), domain='FACE', data_type='INT')
+    
+    # Same using shortcuts
+    geo.FACE[:10].store_named_int("int", 0)
+    
+    # To output
+    tree.og = geo
+``` 
+
+<img src="images/gs_img_06.png" width="600" class="center">
+
 
 
 
