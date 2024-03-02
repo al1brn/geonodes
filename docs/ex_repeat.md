@@ -20,7 +20,6 @@ from geonodes import GeoNodes, Shader
 
 with Shader("Line Material") as tree:
     col = tree.Attribute("col").color
-    col = col.hue_saturation_value(saturation=2)
     tree.output_surface = tree.PrincipledBSDF(base_color=col).bsdf
 
 # ----- Create random lines
