@@ -70,7 +70,8 @@ with Compositor("Scene.001") as tree:
     pass
 ```
 
-> :warning: when opening a tree, the existing nodes are deleted!
+> [!WARNING]
+> When opening a tree, the existing nodes are deleted!
 
 ### Creating a Group
 
@@ -209,7 +210,8 @@ The first arguments are the sockets, then the parameters.
 def __init__(self, value=None, value_1=None, value_2=None, operation='ADD', use_clamp=False):
 ```
 
-> :warning: some sockets are hidden in the default configuration but they are present in the initialization.
+> [!CAUTION]
+> Some sockets are hidden in the default configuration but they are present in the initialization.
 > Hence, it is recommended to use keyword arguments for paramters
 
 ``` python
@@ -222,7 +224,8 @@ with GeoNodes("Geometry Nodes") as tree:
     value = tree.math(2, 2, 'ADD').value
 ```
 
-> :warning: by exception when a selection socket exists, it is placed as the last socket
+> [!CAUTION]
+> By exception when a selection socket exists, it is placed as the last socket
 
 ``` python
 # SetPosition __init__ header: selection is the last socket even if it is the second one in the actual Node
@@ -329,7 +332,8 @@ The methods available depend upon the socket types:
 
 Normally, the socket classes are never directly instantied but are read from nodes.
 
-> :warning: not all types exist in the different trees : **GeoNodes**, **Shader** and **Compositor**.
+> [!CAUTION]
+> Not all types exist in the different trees : **GeoNodes**, **Shader** and **Compositor**.
 
 ### Tree input and output Sockets
 
