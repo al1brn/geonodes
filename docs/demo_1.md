@@ -138,7 +138,9 @@ Note that layouts can be imbricated.
    # New nodes are created out of the previous layout
 ```
 
-## Full code
+## Full example
+
+### Source code
 
 ``` python
 from geonodes import GeoNodes, Shader
@@ -199,6 +201,17 @@ with GeoNodes("Hello World") as tree:
     # We are done: plugging the deformed grid as the modified geometry
     tree.output_geometry = grid
 ```
+
+### Generated nodes
+
+<img src="images/hello_world_nodes.png" width="600" class="center">
+
+### Resulting mesh
+
+<img src="images/hello_world.png" width="600" class="center">
+
+
+
 
 
 
