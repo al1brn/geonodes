@@ -764,15 +764,16 @@ class NodeInfo:
                                 break
                             
                     if self.domain_param is not None:
-                        self.domain_values = enums
+                        #self.domain_values = enums
                         break
                 
         # ----- DEBUG
 
-        if False and self.class_name in ['Math', 'BooleanMath', 'VectorMath', 'Mix']:
+        if False and self.class_name in ['ExtrudeMesh']:
             print('-'*30)
             print(self.class_name)
-            pprint(self.enum_params)
+            print(self.domain_param, self.domain_values)
+            #pprint(self.enum_params)
         
         # ----- Several enum params
         # Need to sort them
@@ -1000,10 +1001,23 @@ class NodeInfo:
         if self.domain_param is not None:
             arg = args[self.domain_param]
             if arg is not None:
-                if arg.call is None:
-                    arg.call = f"self._get_domain({utils.python_constant(prm_defs[self.domain_param])})"
+                if True:
+                    if arg.header == 'IGNORE':
+                        pass
+                    elif arg.call is None:
+                        arg.call = f"self._get_domain({arg.name}, {self.domain_values})"
+                    else:
+                        arg.call = f"self._get_domain({arg.call}, {self.domain_values})"
+                
                 else:
-                    arg.call = f"self._get_domain({arg.call})"
+                    if arg.call is None:
+                        if arg.name == 'mode':
+                            print("node info mode=None")
+                        arg.call = f"self._get_domain({utils.python_constant(prm_defs[self.domain_param])}, {self.domain_values})"
+                    else:
+                        if arg.name == 'mode':
+                            print("node info mode=", arg.call)
+                        arg.call = f"self._get_domain({arg.call}, {self.domain_values})"
                 
         # ----------------------------------------------------------------------------------------------------
         # Node_label and node_color

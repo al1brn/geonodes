@@ -645,6 +645,43 @@ with GeoNodes("Demo") as tree:
 
 <img src="images/gs_img_03.png" width="600" class="center">
 
+### Domain selection
+
+Some nodes need to specify the domain through a `domain` parameter.
+As an alternative to specify the domain as an argument, the domain can be specified as a property
+of the geometry as shown below.
+
+For instance, the node `ExtrudeMesh` can operate on 3 domains:
+
+``` python
+with GeoNodes("Demo") as tree:
+    
+    # Operate on a Cube
+    geo = tree.cube()
+    
+    # Store 0 on faces and 1 on corners
+    
+    geo.store_named_attribute("face", 0, domain='FACE')
+    
+    geo.CORNER.store_named_attribute("corner", 1)
+    
+    # Syntaxe extended to node operating on domains
+    
+    # Extrude the edges
+    
+    geo.EDGE.extrude_mesh()
+    
+    
+    tree.og = geo
+```
+
+<img src="images/gs_img_04.png" width="600" class="center">
+
+
+
+
+
+
 
 
 

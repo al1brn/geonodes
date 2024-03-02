@@ -314,6 +314,8 @@ class Node(object):
     @classmethod
     def _get_domain_value(cls, domain, default):
         
+        #print(f"{cls.__name__}._get_domain_value({domain}, {default})", "values", cls.DOMAIN_VALUES)
+        
         if domain is None or cls.DOMAIN_VALUES is None:
             return default
         

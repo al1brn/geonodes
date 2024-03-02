@@ -39,7 +39,6 @@ class C:
     GETTER = 'GETTER'
     SETTER = 'SETTER'
     
-    
     def __init__(self, 
                  impl_type,           # Implementation type
                  target,              # Target class

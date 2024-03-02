@@ -896,12 +896,63 @@ class Geometry(Socket):
         self._domain = 'INSTANCE'
         return self
     
-    def _get_domain(self, default):
-        if False:
-            print(f"{type(self).__name__}._GET_DOMAIN (_domain={self._domain}, default={default}) -> ({type(self.node).__name__}) = {self.node._get_domain_value(self._domain, default)} //", self.node.DOMAIN_VALUES)
-        _domain = self._domain
-        self._domain = None
-        return self.node._get_domain_value(_domain, default)
+    def _get_domain(self, default, DOMAIN_VALUES):
+        
+        if True:
+            domain = self._domain
+            self._domain = None
+            
+            if True:
+                print(f"GEOMETRY._get_domain({default}, {DOMAIN_VALUES}): // _domain={domain}")
+            
+            if domain is None or DOMAIN_VALUES is None:
+                return default
+            
+            # ----- Sub
+            
+            def get_value(values):
+                for val in values:
+                    if val in DOMAIN_VALUES:
+                        return val
+                print(f"CAUTION: domain '{domain}' not valid, valid values are: {values}. Default '{default}' is used")
+                return default
+            
+            # ----- Switch
+            
+            if domain == 'POINT':
+                return get_value(['POINT', 'POINTS', 'MESH', 'VERTICES', 'ALL'])
+            
+            elif domain == 'CLOUD':
+                return get_value(['POINTCLOUD'])
+            
+            elif domain == 'EDGE':
+                return get_value(['EDGE', 'EDGES', 'EDGE_FACE'])
+            
+            elif domain == 'FACE':
+                return get_value(['FACE', 'FACES', 'ONLY_FACE'])
+            
+            elif domain == 'CORNER':
+                return get_value(['CORNER', ' CORNERS'])
+            
+            elif domain == 'CURVE':
+                return get_value(['CURVE', 'CURVES'])
+            
+            elif domain == 'SPLINE':
+                return get_value(['SPLINE', 'SPLINES'])
+            
+            elif domain == 'INSTANCE':
+                return get_value(['INSTANCE', 'INSTANCES'])
+            
+            else:
+                raise AttributeError(f"Domain {domain} not valid")    
+            
+        else:       
+            if False:
+                print(f"{type(self).__name__}._get_domain(default={default}) // _domain={self._domain} -> ({type(self.node).__name__}) = {self.node._get_domain_value(self._domain, default)} //", self.node.DOMAIN_VALUES)
+            _domain = self._domain
+            self._domain = None
+            
+            return self.node._get_domain_value(_domain, default)
     
     
     # ----------------------------------------------------------------------------------------------------
