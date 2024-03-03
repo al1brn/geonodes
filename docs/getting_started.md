@@ -29,6 +29,10 @@
   - [Selection socket](#selection-socket)
   - [Data Type](#data-type)
 - [Simulation and Repeat Zones](#simulation-and-repeat-zones)
+- [Groups](#groups)
+  - [Creating a Group](#creating-a-group)
+  - [Calling a Group](#calling-a-group)
+  - [Working with Prefix](#working-with-prefix)
 
 
 ## Prerequisites
@@ -857,6 +861,140 @@ with GeoNodes("Demo") as tree:
 ```
 
 <img src="images/gs_img_08.png" width="600" class="center">
+
+
+## Groups
+
+### Creating a Group
+
+A node **Group** is created as any tree using the argument `is_group=True`:
+
+``` python
+
+# Create the group named "Function"
+
+with GeoNodes("Function", is_group=True):
+    pass
+```
+
+The input sockets are created as for any tree using the `tree.xxx_input` methods.
+The result of the group computation can be created used the socket method `to_output(name)`.
+
+``` python
+from geonodes import GeoNodes
+
+# Compute the spherical coordinates of a vector
+
+with GeoNodes("Spherical", is_group=True) as tree:
+    # Take a vector as input
+    v = tree.vector_input("Vector")
+    
+    # Norm
+    r = v.length()
+    
+    # xy norm
+    xy = tree.vector((v.x, v.y, 0)).length()
+    
+    # Theta : xy angle
+    theta = tree.arctan2(v.y, v.x)
+    
+    # Phi : angle along z
+    phi = tree.arctan2(v.z, xy)
+    
+    # Return the result
+    r.to_output("R")
+    theta.switch(xy.less_than(0.001), 0).to_output("Theta")
+    phi.switch(r.less_than(0.001), 0).to_output("Phi")
+```
+
+<img src="images/gs_img_09.png" width="600" class="center">
+
+### Calling a Group
+
+A custom **Group** can be called with the method `tree.group(name, **kwargs)` where:
+- `name`is the name of the group
+- `**kwargs` set the initial values of the sockets
+
+The method returns a node providing access to the output sockets through their **snake_case** name.
+
+> [!Note]
+> Any group node can be called in that way, event groups which are created outside **geonode** module.
+
+``` python
+with GeoNodes("Demo") as tree:
+    
+    geo = tree.ig
+    
+    # Getting the spherical coordinates of the vertices    
+    sph = tree.group("Spherical", vector=geo.position)
+    
+    # Doing something with the result    
+    geo.offset = sph.theta*.3
+    
+    tree.og = geo
+```
+
+### Working with Prefix
+
+For big projects, you may want to prefix the names of your trees and groups in order to better organize them.
+For instance, in the **4D Project**, mathematical nodes groups are prefixed by the letter M.
+
+You can prefix "manually" the name of your Group. This requires to include the prefix when calling the nodes:
+
+
+``` python
+with GeoNodes("M Spherical", is_group=True) as tree:
+    pass
+    
+with GeoNodes("Demo") as tree:
+    node = tree.group("M Spherical")
+```
+
+But you can also use the class method `tree.prefixed` class which provides automations for this:
+- Add automatically the prefix to the **Group** names
+- Provides **snake_case** method to call the group
+- Provides a way to delete trees using the prefix
+
+> [!Caution]
+> `GeoNodes.prefixed(None).clear()` erases all the Geometry Nodes modifiers
+
+``` python
+from geonodes import GeoNodes
+
+# Create the set of groups prefixed by the lette 'M'
+groups = GeoNodes.prefixed("M")
+
+# Clear all the existing groups prefixed by M
+groups.clear()
+
+
+# Create a first group
+with GeoNodes("First Function", is_group=True, prefix=groups) as tree:
+    # Simply micmics separate xyz node
+    v = tree.vector_input("Vector")
+    v.x.to_output("X")
+    v.y.to_output("Y")
+    v.z.to_output("Z")
+    
+# Create a second group
+with GeoNodes("Second Function", is_group=True, prefix=groups) as tree:
+    # Simply micmics combine xyz node
+    x, y, z = tree.float_input("X"), tree.float_input("Y"), tree.float_input("Z")
+    tree.vector((x, y, z)).to_output("Vector")
+
+# Uses these groups
+with GeoNodes("Demo") as tree:
+    
+    geo = tree.ig
+    
+    # Call the nodes as methods of trees
+    node = groups.first_function(vector=geo.position)
+    
+    v = groups.second_function(x=node.x, y=node.y, z=node.z).vector
+    
+    tree.og = geo
+``
+
 
 
 

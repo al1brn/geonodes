@@ -44,6 +44,9 @@ bldoc_nodes = {
 TREE_STACK  = []
 FRAME_STACK = []
 
+def get_tree_type():
+    return None if len(TREE_STACK) == 0 else TREE_STACK[-1].TREE_TYPE
+
 def current_tree(bl_idname=None):
     if len(TREE_STACK):
         return TREE_STACK[-1]

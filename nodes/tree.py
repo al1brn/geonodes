@@ -32,7 +32,7 @@ from geonodes.nodes import constants
 from geonodes.nodes import utils
 from geonodes.nodes import treestack
 from geonodes.nodes import sockets
-from geonodes.nodes.treestack import StackedTree, Trees
+from geonodes.nodes.treestack import StackedTree, Prefixed
 from geonodes.nodes.sockets import Socket, Sockets
 from geonodes.nodes import nodeinfo
 
@@ -81,7 +81,7 @@ class Tree(StackedTree):
         # ----- Load the btree
         
         if isinstance(name, str):
-            name = Trees(prefix).prefixed_name(name)
+            name = self.prefixed(prefix).prefixed_name(name)
             self.btree = treestack.get_tree(name, self.TREE_TYPE, create=create, clear=False)
             
         else:
@@ -521,13 +521,14 @@ class Tree(StackedTree):
         for btree in btrees:
             bpy.data.node_groups.remove(btree)
             
-    def group(self, name, prefix=None, **kwargs):
+    def group(self, name, **kwargs):
         
         # ----- Get the tree
         
-        group_tree = Trees(prefix).trees.get(Trees.python_name(name))
+        group_tree = bpy.data.node_groups.get(name)
+        #group_tree = self.prefixed(prefix).get(Prefixed.python_name(name))
         if group_tree is None:
-            raise AttributeError(f"Impossible to find the group named '{self.prefixed_name(name, prefix)}'")
+            raise AttributeError(f"Impossible to find the group named '{name}'")
             
         # ----- Create the node group
         

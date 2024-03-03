@@ -39,9 +39,9 @@ if True:
 # Nodes generator
 
 from .nodes.tree import GeoNodes, Shader, Compositor
-from .nodes.treestack import Trees
-from .nodes.zones import Simulation, Repeat
-from .nodes.constants import current_tree, dump_stack
+#from .nodes.treestack import Trees
+#from .nodes.zones import Simulation, Repeat
+#from .nodes.constants import current_tree, dump_stack
 
 # =============================================================================================================================
 # Python geometry

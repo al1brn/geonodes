@@ -145,6 +145,19 @@ class StackedTree:
             raise Exception(f"Tree {self} has no node owning the socket '{bsocket.name}' in Blender node '{bsocket.node.name}'.")
         else:
             return node
+        
+    # ====================================================================================================
+    # Group of trees
+    
+    @classmethod
+    def prefixed(cls, name):
+        if name is None:
+            return Prefixed(cls.TREE_TYPE)
+        elif isinstance(name, str):
+            return Prefixed(cls.TREE_TYPE, name)
+        else:
+            return Prefixed(cls.TREE_TYPE, name.prefix)
+            
 
     # ====================================================================================================
     # Base input nodes
@@ -488,29 +501,31 @@ class Node(object):
 # ====================================================================================================
 # A group of trees
 
-class Trees:
+class Prefixed:
     
-    def __init__(self, prefix=None):
+    def __init__(self, tree_type, prefix=None):
         """ A group of trees.
         
         Names are prefixed.
         
         Arguments
         ----------
+            - tree_type (str) : Tree bl_idname
             - prefix (str = None) : The prefix to use
         """
-        if isinstance(prefix, Trees):
+        
+        self.tree_type = tree_type
+        
+        if prefix is None:
+            self.prefix = ""
+        elif isinstance(prefix, Prefixed):
             self.prefix = prefix.prefix
         else:
-            self.prefix = "" if prefix is None else prefix.strip() + " "
+            self.prefix = prefix.strip() + " "
         
     def __str__(self):
-        return f"<Group of trees prefixed: {self.prefix.strip()}>"
+        return f"<Group of trees prefixed by '{self.prefix.strip()}'>"
     
-    @property
-    def tree_type(self):
-        return constants.current_tree().TREE_TYPE
-
     def prefixed_name(self, name):
         """ Compute the prefixed name.
         
@@ -555,8 +570,10 @@ class Trees:
         
         trees = {}
         for tree in bpy.data.node_groups:
+            
             if tree.bl_idname != self.tree_type:
                 continue
+                
             if tree.name[:len(self.prefix)] == self.prefix:
                 trees[self.python_name(tree.name[len(self.prefix):])] = tree
                 
@@ -570,11 +587,11 @@ class Trees:
         return self.trees.get(key)
         
     def clear(self):
-        """ Delete all the **Geometry Nodes** whose name has a given prefix.
+        """ Delete all the **Trees** whose name has a given prefix.
         
-        For instance, to delete all the **Geometry Nodes** whose name starts with 'Utils':
-        
+        For instance, to delete all the **Geometry Nodes** whose name starts with 'Utils':        
         """
+        
         trees = self.trees
         for tree in trees.values():
             bpy.data.node_groups.remove(tree)
