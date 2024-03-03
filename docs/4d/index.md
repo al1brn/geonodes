@@ -22,8 +22,7 @@ For instance, to plunge a standard UV sphere into 4D, simply stack the two nodes
 
 Applied to a sphere, the result of this transformation is:
 
-<img src="images/img_01.png" width = "100px"/>
-<img src="images/img_02.png" width = "100px"/>
+<img src="images/img_02.png" width = "400px"/>
 
 
 
