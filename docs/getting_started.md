@@ -878,7 +878,7 @@ with GeoNodes("Function", is_group=True):
 ```
 
 The input sockets are created as for any tree using the `tree.xxx_input` methods.
-The result of the group computation can be created used the socket method `to_output(name)`.
+The result of the group computation can be created using the socket method `to_output(name)`.
 
 ``` python
 from geonodes import GeoNodes
@@ -918,7 +918,7 @@ A custom **Group** can be called with the method `tree.group(name, **kwargs)` wh
 The method returns a node providing access to the output sockets through their **snake_case** name.
 
 > [!Note]
-> Any group node can be called in that way, event groups which are created outside **geonode** module.
+> Any group node can be called in that way, even groups which are created outside **geonode** module.
 
 ``` python
 with GeoNodes("Demo") as tree:
@@ -950,9 +950,9 @@ with GeoNodes("Demo") as tree:
     node = tree.group("M Spherical")
 ```
 
-But you can also use the class method `tree.prefixed` class which provides automations for this:
+But you can also use the class method `tree.prefixed(prefix)` which provides automations for this:
 - Add automatically the prefix to the **Group** names
-- Provides **snake_case** method to call the group
+- Provides **snake_case** method to call the **Groups**
 - Provides a way to delete trees using the prefix
 
 > [!Caution]
@@ -961,12 +961,11 @@ But you can also use the class method `tree.prefixed` class which provides autom
 ``` python
 from geonodes import GeoNodes
 
-# Create the set of groups prefixed by the lette 'M'
+# Create the set of groups prefixed by the letter 'M'
 groups = GeoNodes.prefixed("M")
 
 # Clear all the existing groups prefixed by M
 groups.clear()
-
 
 # Create a first group
 with GeoNodes("First Function", is_group=True, prefix=groups) as tree:
@@ -985,15 +984,13 @@ with GeoNodes("Second Function", is_group=True, prefix=groups) as tree:
 # Uses these groups
 with GeoNodes("Demo") as tree:
     
-    geo = tree.ig
+    # ...
     
-    # Call the nodes as methods of trees
-    node = groups.first_function(vector=geo.position)
+    # Call the nodes as methods of groups
     
+    node = groups.first_function(vector=geo.position)   
     v = groups.second_function(x=node.x, y=node.y, z=node.z).vector
-    
-    tree.og = geo
-``
+```
 
 
 
