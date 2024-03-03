@@ -12,13 +12,19 @@ The architecture of the Engine is the following:
 - The last modifier to stack is "Projection"
 
 > [!Note]
-> All modifiers are prefixed by 4D, hence the actual name of the "Projection" modifer is "4D Projection".
+> All modifiers are prefixed by 4D, hence the actual name of the "Projection" modifier is "4D Projection".
 
 For instance, to plunge a standard UV sphere into 4D, simply stack the two nodes:
 - ***To 4D***
 - ***Projection***
 
 <img src="images/img_03.png" width = "400px"/>
+
+Applied to a sphre, the result of this transformation is:
+
+<img src="images/img_01.png" width = "400px"/>
+<img src="images/img_02.png" width = "400px"/>
+
 
 
 
