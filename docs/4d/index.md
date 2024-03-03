@@ -22,16 +22,94 @@ For instance, to plunge a standard UV sphere into 4D, simply stack the two nodes
 
 Applied to a sphere, the result of this transformation is:
 
-<img src="images/img_02.png" width = "400px"/>
-
-
-
-
-
-
+<img src="images/img_02.png" width = "600px"/>
 
 The projection 4D -> 3D is driven by the Euler rotation of the object named "Projection".
 
+The group "Projection Matrix" reads the Euler transformation of the "Projection" object and
+computes the projection matrix from the 3 angles:
+
+``` python
+with GeoNodes("Projection Matrix", is_group=True, fake_user=True, prefix=maths) as tree:
+    
+    abc = tree.ObjectInfo("Projection").rotation
+    
+    a = abc.x  # Rotation x - w
+    b = abc.y  # Rotation y - w
+    c = abc.z  # Rotation z - w
+    
+    # Compute the projection matrix using
+    # ...
+```
+
+With the architecture, all the 4D objects are projected with the same parameters
+
+## Building the engine
+
+Each group or modifier is build within a dedicated function. For instance, the modifier "Add Normals"
+is build in the function `add_normals`. This allows to partially change the engine without having to rebuild the full engine.
+
+``` python
+def add_normals():
+    
+    with GeoNodes("Add normals", fake_user=True, prefix=modifiers) as tree:
+        
+        mesh  = tree.ig
+        
+        # The normals
+        
+        mesh.POINT.store_named_vector("Nxyz", mesh.normal)
+        mesh.POINT.store_named_float( "Nw",   0)
+            
+        tree.og = mesh
+```
+
+Building the full engine requires to call all the building functions.
+
+``` python
+def gen():
+    
+    add_normals()
+    add_tangents()
+    to_4D()
+    
+    dot_normal()
+    projection()
+    
+    # ...
+
+# Building the engine
+
+if True:
+    gen()
+    
+``` 
+
+## Conventions
+
+The 4 dimensions of a 4-vector are stored in a couple (**Vector**, **Float**).
+Input and output sockets use the name `xyz` for the vector and `w` for the float.
+
+For instance, the group "Rotate from hyperplane" needs two 4-vectors as input which are named:
+- `xyz` and `w``
+- `Hyper xyz` and `hyper w`
+- Output sockets : `xyz` and `w`
+
+<img src="images/img_04.png" width = "400px"/>
+
+
+
+
+
+
+
+
+
+
+
+## Maths nodes groups
+
+Maths 
 
 
 
