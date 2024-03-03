@@ -44,6 +44,8 @@ from geonodes.nodes.treearrange import arrange
 
 class Tree(StackedTree):
     
+    pi = 3.1415926535898
+    
     # ====================================================================================================
     # Initialization
     
@@ -234,10 +236,7 @@ class Tree(StackedTree):
         
         # ----- Socket class
         
-        if True:
-            socket_class = constants.get_socket_class_from_bl_idname(self.TREE_TYPE, bl_idname)
-        else:
-            socket_class = constants.nodesocket_classes()[bl_idname]
+        socket_class = constants.get_socket_class_from_bl_idname(self.TREE_TYPE, bl_idname)
         
         # ----------------------------------------------------------------------------------------------------
         # Get or create
@@ -476,6 +475,42 @@ class Tree(StackedTree):
     
     def texture_input(self, name, value=None, description=""):
         return self.new_input('NodeSocketTexture', name, value=value, description=description)
+    
+    
+    # ----------------------------------------------------------------------------------------------------
+    # Create a socket from an input socket
+    
+    def input_from_socket(self, socket):
+        
+        name = socket.bsocket.name
+        blid = socket.bsocket.bl_idname
+        
+        io_socket = self.io_socket_exists(blid, 'INPUT', name)
+        if io_socket is None:
+            interface = self.btree.interface
+            io_socket = interface.new_socket(name, in_out='INPUT', socket_type=blid)
+
+        io_socket.from_socket(socket.node.bnode, socket.bsocket)
+        
+        socket_class = constants.get_socket_class_from_bl_idname(self.TREE_TYPE, blid)
+        socket = socket_class(self.input_node.bnode.outputs[io_socket.identifier])
+        
+        return socket
+    
+    def inputs_from_node(self, node, exclude=None, include=None):
+        
+        sockets = []
+        
+        for socket in node.inputs:
+            name = socket.bsocket.name
+            if exclude is not None and name in exclude:
+                continue
+            if include is not None and name not in include:
+                continue
+
+            sockets.append(self.input_from_socket(socket))
+        
+        return sockets
     
     # ====================================================================================================
     # Group management
