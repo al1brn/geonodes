@@ -11,7 +11,7 @@ The architecture of the Engine is the following:
 - A set of Geometry Nodes modifiers can be stacked to build 4D objects and project them
 - The last modifier to stack is "Projection"
 
-> [! Note]
+> [!Note]
 > All modifiers are prefixed by 4D, hence the actual name of the "Projection" modifer is "4D Projection".
 
 For instance, to plunge a standard UV sphere into 4D, simply stack the two nodes:
