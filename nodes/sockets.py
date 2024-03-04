@@ -117,7 +117,6 @@ class Socket:
     def _socket_type(self):
         return type(self).__name__
     
-    
         if self.bsocket is None:
             return utils.get_value_socket_type(self._value)
         else:
@@ -182,350 +181,12 @@ class Socket:
             
             
     # ====================================================================================================
-    # Vector / Color
-    
-    # ----------------------------------------------------------------------------------------------------
-    # Vector
-    
-    @property
-    def xyz(self):
-        xyz = self._sub_nodes.get('xyz')
-        if xyz is None:
-            xyz = self.tree.SeparateXYZ(vector=self)
-            self._sub_nodes['xyz'] = xyz
-        return xyz
-    
-    @property
-    def x(self):
-        return self.xyz.x
-    
-    @property
-    def y(self):
-        return self.xyz.y
-    
-    @property
-    def z(self):
-        return self.xyz.z
-    
-    # ----------------------------------------------------------------------------------------------------
-    # Color
-    
-    @property
-    def rgb(self):
-        rgb = self._sub_nodes.get('rgb')
-        if rgb is None:
-            if True:
-                rgb = self.tree.SeparateColor(mode='RGB')
-                # Compositor : color is named Image, otherwise Color
-                rgb.inputs.socket_of_type('RGBA')._set_value(self)
-            else:
-                rgb = self.tree.SeparateColor(color=self, mode='RGB')
-            self._sub_nodes['rgb'] = rgb
-        return rgb
-    
-    @property
-    def hsv(self):
-        hsv = self._sub_nodes.get('hsv')
-        if hsv is None:
-            hsv = self.tree.SeparateColor(color=self, mode='HSV')
-            self._sub_nodes['hsv'] = hsv
-        return hsv
-    
-    @property
-    def hsl(self):
-        hsl = self._sub_nodes.get('hsl')
-        if hsl is None:
-            hsl = self.tree.SeparateColor(color=self, mode='HSL')
-            self._sub_nodes['hsl'] = hsl
-        return hsl
-    
-    @property
-    def r(self):
-        return self.rgb.red
-    
-    @property
-    def g(self):
-        return self.rgb.green
-    
-    @property
-    def b(self):
-        return self.rgb.blue
-    
-    @property
-    def red(self):
-        return self.rgb.red
-    
-    @property
-    def green(self):
-        return self.rgb.green
-    
-    @property
-    def blue(self):
-        return self.rgb.blue
-    
-    @property
-    def alpha(self):
-        for sep_name in ['rgb', 'hsv', 'hsl']:
-            sep = self._sub_nodes.get(sep_name)
-            if sep is not None:
-                return sep.alpha
-        
-        return self.rgb.alpha
-    
-    @property
-    def hue(self):
-        for sep_name in ['hsv', 'hsl']:
-            sep = self._sub_nodes.get(sep_name)
-            if sep is not None:
-                return sep.hue
-        
-        return self.hsv.hue
-    
-    @property
-    def saturation(self):
-        for sep_name in ['hsv', 'hsl']:
-            sep = self._sub_nodes.get(sep_name)
-            if sep is not None:
-                return sep.saturation
-        
-        return self.hsv.saturation
-    
-    @property
-    def value(self):
-        return self.hsv.value
-    
-    @property
-    def lightness(self):
-        return self.hsl.lightness
-            
-            
-    # ====================================================================================================
     # Helper
 
     @classmethod
     def print_doc(cls, member_name=None):
         documentation.print_doc(cls, member_name=member_name)
 
-    # ====================================================================================================
-    # Operations
-    
-    def _op_error(self, operation):
-        raise Exception(f"Operation error: operation '{operation}' not implemented for socket type '{self._socket_type}'")
-    
-    # ----- Addition
-    
-    def __add__(self, other):
-        stype = self._socket_type
-        
-        if stype in ['VALUE', 'INT', 'VECTOR', 'ROTATION']:
-            return self.add(other)
-        
-        elif stype == 'BOOLEAN':
-            
-            return self.bor(other)
-        
-        elif stype == 'STRING':
-            return self.join_strings(other)
-        
-        elif stype == 'RGBA':
-            return self.mix_add(other) #, blend_type='ADD')
-        
-        elif stype == 'GEOMETRY':
-            if self.node.bnode.bl_idname == 'GeometryNodeJoinGeometry':
-                self.node.geometry = other
-                return self
-            elif isinstance(other, Geometry) and self.node.bnode.bl_idname == 'GeometryNodeJoinGeometry':
-                other.node.geometry = other
-                return other
-            else:
-                return self.join_geometry(other)
-        
-        else:
-            self.op_error('ADD')
-            
-    def __radd__(self, other):
-        return type(self).Value(other) + self
-    
-    def __iadd__(self, other):
-        return self.jump(self + other)
-        
-    # ----- Subtract
-
-    def __sub__(self, other):
-        stype = self._socket_type
-        
-        if stype in ['VALUE', 'INT', 'VECTOR', 'ROTATION', 'RGBA']:
-            return self.subtract(other)
-            
-        else:
-            self.op_error('SUBTRACT')
-            
-    def __rsub__(self, other):
-        return type(self)(other) - self
-    
-    def __isub__(self, other):
-        return self.jump(self - other)
-        
-    # ----- Multiplication
-    
-    def __mul__(self, other):
-        stype = self._socket_type
-        
-        if stype in ['VALUE', 'INT']:
-            if isinstance(other, Socket):
-                if other._socket_type in ['VECTOR', 'ROTATION']:
-                    return other * self
-                
-            return self.multiply(other)
-        
-        elif stype in ['VECTOR', 'ROTATION']:
-            other_is_value = isinstance(other, (int, float, np.int_, np.float_))
-            if isinstance(other, Socket) and other._socket_type in ['VALUE', 'INT']:
-                other_is_value = True
-                
-            if other_is_value:
-                return self.scale(other)
-            else:
-                return self.multiply(other)
-            
-        elif stype == 'BOOLEAN':
-            return self.band(other)
-        
-        elif stype == 'RGBA':
-            return self.multiply(other)
-        
-        else:
-            self.op_error('MULTIPLY')
-            
-    def __rmul__(self, other):
-        return type(self)(other) * self
-    
-    def __imul__(self, other):
-        return self.jump(self * other)
-    
-    # ----- Negative
-    
-    def __neg__(self):
-        stype = self._socket_type
-        
-        if stype == 'BOOLEAN':
-            return self.bnot()
-        
-        return self * -1
-    
-    # ----- Division
-
-    def __truediv__(self, other):
-        stype = self._socket_type
-        
-        if stype in ['VALUE', 'INT']:
-            return self.divide(other)
-        
-        elif stype in ['VECTOR', 'ROTATION']:
-            return self.divide(other)
-            
-        elif stype == 'RGBA':
-            return self.divide(other)
-        
-        else:
-            self.op_error('DIVIDE')
-            
-    def __rtruediv__(self, other):
-        return type(self)(other) / self
-    
-    def __itruediv__(self, other):
-        return self.jump(self / other)
-
-    # ----- Division
-
-    def __floordiv__(self, other):
-        stype = self._socket_type
-        
-        if stype in ['VALUE', 'INT']:
-            return self.divide(other)
-        
-        elif stype in ['VECTOR', 'ROTATION']:
-            return self.divice(other)
-            
-        elif stype == 'RGBA':
-            return self.divide(other)
-        
-        else:
-            self.op_error('DIVIDE')
-            
-    def __rfloordiv__(self, other):
-        return type(self)(other) // self
-    
-    def __ifloordiv__(self, other):
-        return self.jump(self // other)
-    
-    # ----- Modulo
-
-    def __mod__(self, other):
-        stype = self._socket_type
-        
-        if stype in ['VALUE', 'INT']:
-            return self.mod(other)
-        
-        elif stype == 'RGBA':
-            if isinstance(other, tuple) and len(other) == 2:
-                self.mix(factor=other[1], b=other[0])
-            else:
-                return self.mix(other)
-        
-        else:
-            self.op_error('MODULO')
-            
-    def __rmod__(self, other):
-        return type(self)(other) % self
-    
-    def __imod__(self, other):
-        return self.jump(self % other)
-    
-    # ----- Power
-    
-    def __pow__(self, other):
-        stype = self._socket_type
-        
-        if stype in ['VALUE', 'INT']:
-            #return self.tree.Math(other, operation='POWER')
-            return self.power(other)
-        
-        else:
-            self.op_error('POWER')
-            
-    def __rpow__(self, other):
-        return type(self)(other) ** self
-    
-    def __ipow__(self, other):
-        return self.jump(self ** other)    
-    
-    # ----- Mat mul
-    
-    def __matmul__(self, other):
-        stype = self._socket_type
-        
-        if stype in ['VALUE', 'INT']:
-            if isinstance(other, tuple) and len(other) == 2:
-                return self.multiply_add(other[0], other[1])
-            else:
-                return self.multiply_add(other)
-        
-        elif stype in ['VECTOR', 'ROTATION']:
-            return self.dot(other)
-        
-        else:
-            self.op_error('MAT MUL')
-            
-    def __rmatmul__(self, other):
-        return type(self)(other) @ self
-    
-    def __imatmul__(self, other):
-        return self.jump(self @ other)    
-    
-        
-        
-        
 # ====================================================================================================
 # List of sockets
 
@@ -833,12 +494,567 @@ class Sockets:
             raise AttributeError(f"Impossible to find a socket of type '{socket_type}' (rank {rank}) in sockets {[bs.name for bs in self.bsockets]}.")
         else:
             return None
+        
+# ====================================================================================================
+
+# ----------------------------------------------------------------------------------------------------
+# COMMON TO INT AND VALUE
+    
+class INT_VALUE(Socket):
+    
+    def __neg__(self):
+        return self.node.tree.Math(self, -1, operation='MULTIPLY').value
+    
+    # ----- Addition
+    
+    def __add__(self, other):
+        dtype = utils.get_value_socket_type(other)
+        if dtype in ['VECTOR', 'ROTATION']:
+            return self.node.tree.VectorMath(self, other, operation='ADD').vector
+        elif dtype == 'RGBA':
+            return self.node.tree.RGBA(other) + self
+            
+        return self.node.tree.Math(self, other, operation='ADD').value
+
+    def __radd__(self, other):
+        return self + other
+    
+    def __iadd__(self, other):
+        return self.jump(self.node.tree.Math(self, other, operation='ADD').value)
+    
+    # ----- Subtraction
+    
+    def __sub__(self, other):
+        dtype = utils.get_value_socket_type(other)
+        if dtype in ['VECTOR', 'ROTATION']:
+            return self.node.tree.VectorMath(self, other, operation='SUB').vector
+        elif dtype == 'RGBA':
+            return -self.node.tree.RGBA(other) + self
+            
+        return self.node.tree.Math(self, other, operation='SUBTRACT').value
+
+    def __rsub__(self, other):
+        dtype = utils.get_value_socket_type(other)
+        if dtype in ['VECTOR', 'ROTATION']:
+            return self.node.tree.VectorMath(other, self, operation='SUB').vector
+        elif dtype == 'RGBA':
+            return -self.node.tree.RGBA(other) + self
+            
+        return self.node.tree.Math(other, self, operation='SUBTRACT').value
+    
+    def __isub__(self, other):
+        return self.jump(self.node.tree.Math(self, other, operation='SUBTRACT').value)
+    
+    # ----- Multiplication
+    
+    def __mul__(self, other):
+        dtype = utils.get_value_socket_type(other)
+        if dtype in ['VECTOR', 'ROTATION']:
+            return self.node.tree.VectorMath(other, scale=self, operation='SCALE').vector
+        elif dtype == 'RGBA':
+            return -self.node.tree.RGBA(other) + self
+            
+        return self.node.tree.Math(self, other, operation='MULTIPLY').value
+
+    def __rmul__(self, other):
+        return self*other
+    
+    def __imul__(self, other):
+        return self.jump(self.node.tree.Math(self, other, operation='MULTIPLY').value)
+    
+    # ----- Division
+    
+    def __truediv__(self, other):
+        return self.node.tree.Math(self, other, operation='DIVIDE').value
+
+    def __rtruediv__(self, other):
+        return self.node.tree.Math(other, self, operation='DIVIDE').value
+    
+    def __itruediv__(self, other):
+        return self.jump(self / other)
+    
+    # ----- Modulo
+
+    def __mod__(self, other):
+        return self.node.tree.Math(self, other, operation='MODULO').value
+            
+    def __rmod__(self, other):
+        return self.node.tree.Math(other, self, operation='MODULO').value
+    
+    def __imod__(self, other):
+        return self.jump(self % other)
+    
+    # ----- Power
+    
+    def __pow__(self, other):
+        return self.node.tree.Math(self, other, operation='POWER').value
+            
+    def __rpow__(self, other):
+        return self.node.tree.Math(other, self, operation='POWER').value
+    
+    def __ipow__(self, other):
+        return self.jump(self ** other)    
+
+class INT(INT_VALUE):
+    pass
+    
+class VALUE(INT_VALUE):
+    pass
+
+# ----------------------------------------------------------------------------------------------------
+# Vector / Rotation
+
+class VECTOR_ROT(Socket):
+    
+    # ----------------------------------------------------------------------------------------------------
+    # Vector
+    
+    @property
+    def _xyz(self):
+        xyz = self._sub_nodes.get('xyz')
+        if xyz is None:
+            xyz = self.tree.SeparateXYZ(vector=self)
+            self._sub_nodes['xyz'] = xyz
+        return xyz
+    
+    @property
+    def x(self):
+        return self._xyz.x
+    
+    @property
+    def y(self):
+        return self._xyz.y
+    
+    @property
+    def z(self):
+        return self._xyz.z
+    
+    # ----------------------------------------------------------------------------------------------------
+    # Operations
+    
+    def __neg__(self):
+        return self.node.tree.VectorMath(self, -1, operation='SCALE').vector
+    
+    # ----- Addition
+    
+    def __add__(self, other):
+        dtype = utils.get_value_socket_type(other)
+        if dtype == 'RGBA':
+            return self.node.tree.RGBA(other) + self
+        
+        return self.node.tree.VectorMath(self, other, operation='ADD').vector
+
+    def __radd__(self, other):
+        return self + other
+    
+    def __iadd__(self, other):
+        return self.jump(self.node.tree.VectorMath(self, other, operation='ADD').vector)
+    
+    # ----- Subtraction
+    
+    def __sub__(self, other):
+        dtype = utils.get_value_socket_type(other)
+        if dtype == 'RGBA':
+            return -self.node.tree.RGBA(other) + self
+            
+        return self.node.tree.VectorMath(self, other, operation='SUBTRACT').vector
+
+    def __rsub__(self, other):
+        dtype = utils.get_value_socket_type(other)
+        if dtype == 'RGBA':
+            return self.node.tree.RGBA(other) - self
+            
+        return self.node.tree.VectorMath(other, self, operation='SUBTRACT').vector
+    
+    def __isub__(self, other):
+        return self.jump(self.node.tree.VectorMath(self, other, operation='SUBTRACT').vector)
+    
+    # ----- Multiplication
+    
+    def __mul__(self, other):
+        dtype = utils.get_value_socket_type(other)
+        if dtype == 'RGBA':
+            return self.node.tree.RGBA(other)*self
+        elif dtype == 'VECTOR':
+            return self.node.tree.VectorMath(self, other, operation='MULTIPLY').vector
+        else:
+            return self.node.tree.VectorMath(self, scale=other, operation='SCALE').vector
+
+    def __rmul__(self, other):
+        dtype = utils.get_value_socket_type(other)
+        if dtype == 'RGBA':
+            return self.node.tree.RGBA(other)*self
+        elif dtype == 'VECTOR':
+            return self.node.tree.VectorMath(other, self, operation='MULTIPLY').vector
+        else:
+            return self.node.tree.VectorMath(self, scale=other, operation='SCALE').vector
+    
+    def __imul__(self, other):
+        return self.jump(self * other)
+    
+    # ----- Division
+    
+    def __truediv__(self, other):
+        return self.node.tree.VectorMath(self, other, operation='DIVIDE').vector
+
+    def __rtruediv__(self, other):
+        return self.node.tree.VectorMath(other, self, operation='DIVIDE').vector
+    
+    def __itruediv__(self, other):
+        return self.jump(self / other)
+    
+    # ----- Modulo
+
+    def __mod__(self, other):
+        return self.node.tree.VectorMath(self, other, operation='MODULO').value
+            
+    def __rmod__(self, other):
+        return self.node.tree.VectorMath(other, self, operation='MODULO').value
+    
+    def __imod__(self, other):
+        return self.jump(self % other)
+    
+class VECTOR(VECTOR_ROT):
+    pass
+
+class ROTATION(VECTOR_ROT):
+    pass
+
+# ----------------------------------------------------------------------------------------------------
+# Boolean
+
+class BOOLEAN(Socket):
+    
+    # ----- Not
+    
+    def __neg__(self):
+        return self.node.tree.BooleanMath(self, operation='NOT').boolean
+    
+    # ----- Or
+    
+    def __add__(self, other):
+        return self.node.tree.BooleanMath(self, other, operation='OR').boolean
+
+    def __radd__(self, other):
+        return self.node.tree.BooleanMath(other, self, operation='OR').boolean
+    
+    def __iadd__(self, other):
+        return self.jump(self + other)
+    
+    # ----- And
+    
+    def __mul__(self, other):
+        return self.node.tree.BooleanMath(self, other, operation='AND').boolean
+
+    def __rmul__(self, other):
+        return self.node.tree.BooleanMath(other, self, operation='AND').boolean
+    
+    def __imul__(self, other):
+        return self.jump(self * other)
+    
+# ----------------------------------------------------------------------------------------------------
+# String
+
+class STRING(Socket):
+    
+    # ----- Concat
+    
+    def __add__(self, other):
+        
+        if self.node.bnode.bl_idname == 'GeometryNodeJoinStrings':
+            self.node.strings = other
+            return self
+        
+        if hasattr(other, 'bsocket'):
+            if other.node.bnode.bl_idname == 'GeometryNodeJoinStrings':
+                other.node.geometry = self
+                return other
+        else:
+            return self.node.tree.JoinStrings(self, other).strings
+
+    def __radd__(self, other):
+        return self + other
+    
+    def __iadd__(self, other):
+        return self.jump(self + other)
+    
+# ----------------------------------------------------------------------------------------------------
+# RGBA : maths are used for V4 vector
+    
+class RGBA(Socket):
+    
+    # ----------------------------------------------------------------------------------------------------
+    # Color
+    
+    @property
+    def rgb(self):
+        rgb = self._sub_nodes.get('rgb')
+        if rgb is None:
+            if True:
+                rgb = self.tree.SeparateColor(mode='RGB')
+                # Compositor : color is named Image, otherwise Color
+                rgb.inputs.socket_of_type('RGBA')._set_value(self)
+            else:
+                rgb = self.tree.SeparateColor(color=self, mode='RGB')
+            self._sub_nodes['rgb'] = rgb
+        return rgb
+    
+    @property
+    def hsv(self):
+        hsv = self._sub_nodes.get('hsv')
+        if hsv is None:
+            hsv = self.tree.SeparateColor(color=self, mode='HSV')
+            self._sub_nodes['hsv'] = hsv
+        return hsv
+    
+    @property
+    def hsl(self):
+        hsl = self._sub_nodes.get('hsl')
+        if hsl is None:
+            hsl = self.tree.SeparateColor(color=self, mode='HSL')
+            self._sub_nodes['hsl'] = hsl
+        return hsl
+    
+    @property
+    def r(self):
+        return self.rgb.red
+    
+    @property
+    def g(self):
+        return self.rgb.green
+    
+    @property
+    def b(self):
+        return self.rgb.blue
+    
+    @property
+    def red(self):
+        return self.rgb.red
+    
+    @property
+    def green(self):
+        return self.rgb.green
+    
+    @property
+    def blue(self):
+        return self.rgb.blue
+    
+    @property
+    def alpha(self):
+        for sep_name in ['rgb', 'hsv', 'hsl']:
+            sep = self._sub_nodes.get(sep_name)
+            if sep is not None:
+                return sep.alpha
+        
+        return self.rgb.alpha
+    
+    @property
+    def hue(self):
+        for sep_name in ['hsv', 'hsl']:
+            sep = self._sub_nodes.get(sep_name)
+            if sep is not None:
+                return sep.hue
+        
+        return self.hsv.hue
+    
+    @property
+    def saturation(self):
+        for sep_name in ['hsv', 'hsl']:
+            sep = self._sub_nodes.get(sep_name)
+            if sep is not None:
+                return sep.saturation
+        
+        return self.hsv.saturation
+    
+    @property
+    def value(self):
+        return self.hsv.value
+    
+    @property
+    def lightness(self):
+        return self.hsl.lightness
+    
+    # ----------------------------------------------------------------------------------------------------
+    # V4
+    
+    @property
+    def x(self):
+        return self.red
+
+    @property
+    def y(self):
+        return self.green
+
+    @property
+    def z(self):
+        return self.blue
+    
+    @property
+    def w(self):
+        return self.alpha
+    
+    @property
+    def xyz(self):
+        return self.tree.xyz(self.x, self.y, self.z)
+    
+    @property
+    def xyz_w(self):
+        return self.xyz, self.alpha
+    
+    @xyz_w.setter
+    def xyz_w(self, value):
+        if not hasattr(value, '__len__') or len(value) != 2:
+            raise AttributeError(f"Property RGBA.xyz_w must be set with a vector and a float, not {value}")
+        try:
+            with self.node.tree.layout("V4", node_color=constants.V4_COLOR):
+                return self.jump(self.node.tree.rgb(value[0].x, value[0].y, value[0].z, value[1]))
+        except:
+            pass
+        
+        raise AttributeError(f"Property RGBA.xyz_w must be set with a vector and a float. First item is not a vector: {value[0]}")
+        
+    # Compose from v and w
+    
+    def XYZ_W(self, v, w):
+        with self.node.tree.layout("V4", node_color=constants.V4_COLOR1):
+            return self.node.tree.rgb(v.x, v.y, v.z, w)   
+        
+    # ----------------------------------------------------------------------------------------------------
+    # Decompose other in v, w
+    
+    def _other_xyz_w(self, other):
+
+        dtype = utils.get_value_socket_type(other)
+        if dtype == 'RGBA':
+            return self.tree.RGBA(other).xyz_w
+        elif dtype == 'VECTOR':
+            return self.tree.VECTOR(other), 0
+        else:
+            v = self.tree.VALUE(other)
+            return v, v        
+        
+    # ----------------------------------------------------------------------------------------------------
+    # Maths
+    
+    def dot(self, other):
+        with self.node.tree.layout("V4 Dot", node_color=constants.V4_COLOR2):
+            v0, w0 = self.xyz_w
+            v1, w1 = self._other_xyz_w(other)
+            return self.node.tree.VectorMath(v0, v1, operation='DOT_PRODUCT').value + w0*w1
+
+    @property
+    def length(self):
+        with self.node.tree.layout("V4 Length", node_color=constants.V4_COLOR2):
+            v0, w0 = self.xyz_w
+            return self.node.tree.Math(
+                self.node.tree.VectorMath(v0, v0, operation='DOT_PRODUCT').value + w0*w0,
+                operation='SQRT').value
+        
+    def normalized(self, zero=None):
+        with self.node.tree.layout("V4 Normalized", node_color=constants.V4_COLOR2):
+            v0, w0 = self.xyz_w
+            n =self.node.tree.Math(
+                self.node.tree.VectorMath(v0, v0, operation='DOT_PRODUCT').value + w0*w0,
+                operation='SQRT').value
+            
+            if zero is None:
+                return self/n
+            else:
+                return self/n, n.less_than(zero)
+    
+    # ----------------------------------------------------------------------------------------------------
+    # Operations
+
+    def __neg__(self):
+        with self.node.tree.layout("-V4"):
+            return self.XYZ_W(self.node.tree.VectorMath(self, scale=-1, operation='SCALE').vector, self.w*-1)
+    
+    # ----- Addition
+    
+    def __add__(self, other):
+        with self.node.tree.layout("V4 Add", node_color=constants.V4_COLOR):
+            v0, w0 = self.xyz_w
+            v1, w1 = self._other_xyz_w(other)
+                
+            return self.XYZ_W(v0 + v1, w0 + w1)
+
+    def __radd__(self, other):
+        return self + other
+    
+    def __iadd__(self, other):
+        return self.jump(self + other)
+    
+    # ----- Subtraction
+    
+    def __sub__(self, other):
+        with self.node.tree.layout("V4 Subtract", node_color=constants.V4_COLOR):
+            v0, w0 = self.xyz_w
+            v1, w1 = self._other_xyz_w(other)
+                
+            return self.XYZ_W(v0 - v1, w0 - w1)
+
+    def __rsub__(self, other):
+        with self.node.tree.layout("V4 Subtract", node_color=constants.V4_COLOR):
+            v0, w0 = self.xyz_w
+            v1, w1 = self._other_xyz_w(other)
+                
+            return self.XYZ_W(v1 - v0, w1 - w0)
+    
+    def __isub__(self, other):
+        return self.jump(self - other)
+    
+    # ----- Multiplication
+    
+    def __mul__(self, other):
+        with self.node.tree.layout("V4 Multiply", node_color=constants.V4_COLOR):
+            v0, w0 = self.xyz_w
+            v1, w1 = self._other_xyz_w(other)
+                
+            return self.XYZ_W(v0 * v1, w0 * w1)
+
+    def __rmul__(self, other):
+        return self * other
+    
+    def __imul__(self, other):
+        return self.jump(self * other)
+    
+    # ----- Division
+    
+    def __truediv__(self, other):
+        with self.node.tree.layout("V4 Divide", node_color=constants.V4_COLOR):
+            v0, w0 = self.xyz_w
+            v1, w1 = self._other_xyz_w(other)
+                
+            return self.XYZ_W(v0 / v1, w0 / w1)
+
+    def __rtruediv__(self, other):
+        with self.node.tree.layout("V4 Divide", node_color=constants.V4_COLOR):
+            v0, w0 = self.xyz_w
+            v1, w1 = self._other_xyz_w(other)
+                
+            return self.XYZ_W(v1 / v0, w1 / w0)
+    
+    def __itruediv__(self, other):
+        return self.jump(self / other)
+    
+    # ----- Modulo
+
+    def __mod__(self, other):
+        with self.node.tree.layout("V4 Modulo", node_color=constants.V4_COLOR):
+            v0, w0 = self.xyz_w
+            v1, w1 = self._other_xyz_w(other)
+                
+            return self.XYZ_W(v0 % v1, w0 % w1)
+            
+    def __imod__(self, other):
+        return self.jump(self % other)
+    
     
 
 # ====================================================================================================
 # Geometry socket
 
-class Geometry(Socket):
+class GEOMETRY(Socket):
     
     def __init__(self, bsocket):
         super().__init__(bsocket)
@@ -1010,6 +1226,42 @@ class Geometry(Socket):
             return _selection
         
         return tree.band(_selection, selection, node_color=constants.NODE_COLORS['gen'])
+    
+    # ----------------------------------------------------------------------------------------------------
+    # Operations
+    
+    # ----- Addition
+    
+    def __add__(self, other):
+        if self.node.bnode.bl_idname == 'GeometryNodeJoinGeometry':
+            self.node.geometry = other
+            return self
+        
+        elif hasattr(other, 'node') and other.node.bnode.bl_idname == 'GeometryNodeJoinGeometry':
+            other.node.geometry = self
+            return other
+        
+        else:
+            return self.node.tree.JoinGeometry(self, other).geometry
+
+    def __radd__(self, other):
+        return self + other
+    
+    def __iadd__(self, other):
+        return self.jump(self + other)
+    
+    # ----- Subtract
+
+    def __sub__(self, other):
+        return self.node.tree.MeshBoolean(self, other, operation='DIFFERENCE').mesh
+            
+    def __isub__(self, other):
+        return self.jump(self - other)
+    
+    
+    
+    
+    
 
         
     

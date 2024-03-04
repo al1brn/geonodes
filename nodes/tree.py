@@ -66,7 +66,7 @@ class Tree(StackedTree):
     # ----------------------------------------------------------------------------------------------------
     # init
     
-    def __init__(self, name, create=True, clear=True, fake_user=True, is_group=False, prefix=None):
+    def __init__(self, name, create=True, clear=True, fake_user=False, is_group=False, prefix=None):
         """ Tree of Nodes.
         
         Arguments

@@ -183,6 +183,16 @@ class StackedTree:
         node.bnode.color = c
         return node.output_socket
     
+    def rgb_a(self, v, w):
+        with self.layout("V4", node_color=constants.V4_COLOR):
+            try:
+                return self.rgb(v.x, v.y, v.z, w)
+            except:
+                pass
+        
+        raise AttributeError(f"Method rgb_a requires a vector and a float. First item is not a vector: {v}")
+        
+    
     
     def integer(self, integer, node_label=None, node_color=None):
         """ Integer input

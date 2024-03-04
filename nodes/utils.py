@@ -342,6 +342,9 @@ def nodesocket_main_class(bl_idname):
 
 def get_value_socket_type(value):
     
+    if hasattr(value, 'bsocket'):
+        return type(value).__name__
+    
     if isinstance(value, (float, np.float_, np.float64, np.float32)):
         return 'VALUE'
     elif isinstance(value, (int, np.int_, np.int32, np.int64, np.int8)):

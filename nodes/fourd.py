@@ -26,115 +26,21 @@ modifiers = GeoNodes.prefixed("4D")
 curves    = GeoNodes.prefixed("C")
 surfaces  = GeoNodes.prefixed("S")
 
-
-CLEAR   = True
-REBUILD = False
-
 ZERO = 0.0001
 
-if CLEAR:
+def clear_all():
     maths.clear()
     modifiers.clear()
     curves.clear()
     surfaces.clear()
     
-
-# =============================================================================================================================
-# V4 class
-#
-# Enhance RGBA class to a 4-Vector class
-
-# ----- Need to setup the class to create RGBA class
-
-GeoNodes._setup()
-
-# ----- GeoNodes RGBA exists now :-)
-
-class V4(GeoNodes.RGBA):
+def rebuild():
+    g_matrices()
+    m_base()
+    g_vectors()
     
-    @classmethod
-    def FromXYZW(cls, xyz, w):
-        tree = xyz.node.tree
-        return cls(tree.rgb(xyz.x, xyz.y, xyz.z, w))
     
-    @property
-    def xyzw(self):
-        tree = self.node.tree
-        return tree.xyz(self.x, self.y, self.z), self.w
     
-    @property
-    def x(self):
-        return self.red
-    
-    @property
-    def y(self):
-        return self.green
-    
-    @property
-    def z(self):
-        return self.blue
-    
-    @property
-    def w(self):
-        return self.alpha
-    
-    def __neg__(self):
-        tree = self.node.tree
-        with tree.layout("4-neg"):
-            v = tree.VECTOR(self).scale(-1)
-            return V4(tree.rgb(v.x, v.y, v.z, -self.alpha))
-
-    def __add__(self, other):
-        tree = self.node.tree
-        with tree.layout("4-add"):
-            v = tree.VECTOR(self) + V4(other)
-            return V4(tree.rgb(v.x, v.y, v.z, self.alpha + other.alpha))
-
-    def __sub__(self, other):
-        tree = self.node.tree
-        with tree.layout("4-sub"):
-            v = tree.VECTOR(self) - V4(other)
-            return V4(tree.rgb(v.x, v.y, v.z, self.alpha + other.alpha))
-        
-    def __mul__(self, other):
-        tree = self.node.tree
-        with tree.layout("4-mul"):
-            v = tree.VECTOR(self).scale(other)
-            return V4(tree.rgb(v.x, v.y, v.z, self.alpha*other))
-        
-    def __truediv__(self, other):
-        tree = self.node.tree
-        with tree.layout("4-div"):
-            v = tree.VECTOR(self) / other
-            return V4(tree.rgb(v.x, v.y, v.z, self.alpha/other))
-        
-    def dot(self, other):
-        tree = self.node.tree
-        with tree.layout("4-dot"):
-            return tree.VECTOR(self).dot(other) + self.w*other.w
-        
-    @property
-    def length(self):
-        tree = self.node.tree
-        with tree.layout("4-length"):
-            return tree.sqrt(tree.VECTOR(self).dot(self) + self.w*self.w)
-        
-    def normalized(self, return_error=False):
-        tree = self.node.tree
-        with tree.layout("4-normalize"):
-            n = self.length
-            if return_error:
-                return self/n, n.less_than(ZERO)
-            else:
-                return self/n
-            
-# -----------------------------------------------------------------------------------------------------------------------------
-# Enrich GeoNodes class
-        
-setattr(GeoNodes, 'V4', V4)
-setattr(GeoNodes, 'v4', lambda self, x, y, z, w : self.V4(self.rgb(x, y, z, w)))
-setattr(GeoNodes, 'v4_input', lambda self, name, value=None: V4(self.color_input(name, value)))
-
 
 # ====================================================================================================
 # Shaders
@@ -160,14 +66,14 @@ with Shader("4 Axis") as tree:
 def mat_dot(m, v):
     tree = m.tree
     with tree.layout("Matrix @ 4-Vector"):
-        return tree.v4(
+        return tree.rgb(
             m.m_0.red*v.red + m.m_0.green*v.green + m.m_0.blue*v.blue + m.m_0.alpha*v.alpha,
             m.m_1.red*v.red + m.m_1.green*v.green + m.m_1.blue*v.blue + m.m_1.alpha*v.alpha,
             m.m_2.red*v.red + m.m_2.green*v.green + m.m_2.blue*v.blue + m.m_2.alpha*v.alpha,
             m.m_3.red*v.red + m.m_3.green*v.green + m.m_3.blue*v.blue + m.m_3.alpha*v.alpha)
     
 def position4(geo):
-    return V4.From_XYZW(geo.position, geo.named_float("w"))
+    return geo.node.tree.rgb_a(geo.position, geo.named_float("w"))
 
 def set_position4(geo, v4):
     tree = geo.tree
@@ -189,8 +95,15 @@ def set_tangent4(geo, v4):
 
 # =============================================================================================================================
 # Matrices groups
+# Groups:
+# - Mat Mult
+# - XW Rotation
+# - YW Rotation
+# - ZW Rotation
+# - Projection Matrix
+# - Projection
 
-def tree_matrices():
+def g_matrices():
     
     # ----------------------------------------------------------------------------------------------------
     # Ensure Projection and Projection2 objects exist
@@ -201,32 +114,32 @@ def tree_matrices():
     # ----------------------------------------------------------------------------------------------------
     # Matrices multiplication
     
-    with GeoNodes("Mat Mult", is_group=False, prefix=maths) as tree:
+    with GeoNodes("Mat Mult", is_group=True, fake_user=True, prefix=maths) as tree:
         
-        a0 = tree.v4_input("A 0")
-        a1 = tree.v4_input("A 1")
-        a2 = tree.v4_input("A 2")
-        a3 = tree.v4_input("A 3")
+        a0 = tree.color_input("A 0")
+        a1 = tree.color_input("A 1")
+        a2 = tree.color_input("A 2")
+        a3 = tree.color_input("A 3")
         
-        b0 = tree.v4_input("B 0")
-        b1 = tree.v4_input("B 1")
-        b2 = tree.v4_input("B 2")
-        b3 = tree.v4_input("B 3")
+        b0 = tree.color_input("B 0")
+        b1 = tree.color_input("B 1")
+        b2 = tree.color_input("B 2")
+        b3 = tree.color_input("B 3")
         
-        c0 = tree.v4(b0.x, b1.x, b2.x, b3.x)
-        c1 = tree.v4(b0.y, b1.y, b2.y, b3.y)
-        c2 = tree.v4(b0.z, b1.z, b2.z, b3.z)
-        c3 = tree.v4(b0.w, b1.w, b2.w, b3.w)
+        c0 = tree.rgb(b0.x, b1.x, b2.x, b3.x)
+        c1 = tree.rgb(b0.y, b1.y, b2.y, b3.y)
+        c2 = tree.rgb(b0.z, b1.z, b2.z, b3.z)
+        c3 = tree.rgb(b0.w, b1.w, b2.w, b3.w)
         
-        tree.v4(a0.dot(c0), a0.dot(c1), a0.dot(c2), a0.dot(c3)).to_output("M 0")
-        tree.v4(a1.dot(c0), a1.dot(c1), a1.dot(c2), a1.dot(c3)).to_output("M 1")
-        tree.v4(a2.dot(c0), a2.dot(c1), a2.dot(c2), a2.dot(c3)).to_output("M 2")
-        tree.v4(a3.dot(c0), a3.dot(c1), a3.dot(c2), a3.dot(c3)).to_output("M 3")
+        tree.rgb(a0.dot(c0), a0.dot(c1), a0.dot(c2), a0.dot(c3)).to_output("M 0")
+        tree.rgb(a1.dot(c0), a1.dot(c1), a1.dot(c2), a1.dot(c3)).to_output("M 1")
+        tree.rgb(a2.dot(c0), a2.dot(c1), a2.dot(c2), a2.dot(c3)).to_output("M 2")
+        tree.rgb(a3.dot(c0), a3.dot(c1), a3.dot(c2), a3.dot(c3)).to_output("M 3")
             
     # ----------------------------------------------------------------------------------------------------
     # XW / YZ rotations
     
-    with GeoNodes("XW Rotation", is_group=True, prefix=maths) as tree:
+    with GeoNodes("XW Rotation", is_group=True, fake_user=True, prefix=maths) as tree:
 
         ag = tree.angle_input("Angle")
         ca = tree.cos(ag)
@@ -236,15 +149,15 @@ def tree_matrices():
         c2 = tree.cos(a2)
         s2 = tree.sin(a2)
         
-        tree.v4(ca,  0,   0, -sa).to_output("M 0")
-        tree.v4( 0, c2, -s2,   0).to_output("M 1")
-        tree.v4( 0, s2,  c2,   0).to_output("M 2")
-        tree.v4(sa,  0,   0,  ca).to_output("M 3")
+        tree.rgb(ca,  0,   0, -sa).to_output("M 0")
+        tree.rgb( 0, c2, -s2,   0).to_output("M 1")
+        tree.rgb( 0, s2,  c2,   0).to_output("M 2")
+        tree.rgb(sa,  0,   0,  ca).to_output("M 3")
         
     # ----------------------------------------------------------------------------------------------------
     # YW / ZX rotations
     
-    with GeoNodes("YW Rotation", is_group=True, prefix=maths) as tree:
+    with GeoNodes("YW Rotation", is_group=True, fake_user=True, prefix=maths) as tree:
 
         ag = tree.angle_input("Angle")
         ca = tree.cos(ag)
@@ -254,15 +167,15 @@ def tree_matrices():
         c2 = tree.cos(a2)
         s2 = tree.sin(a2)
         
-        tree.v4(  c2,  0, s2,   0).to_output("M 0")
-        tree.v4(   0, ca,  0,  sa).to_output("M 1")
-        tree.v4( -s2,  0, c2,   0).to_output("M 2")
-        tree.v4(   0,-sa,  0,  ca).to_output("M 3")
+        tree.rgb(  c2,  0, s2,   0).to_output("M 0")
+        tree.rgb(   0, ca,  0,  sa).to_output("M 1")
+        tree.rgb( -s2,  0, c2,   0).to_output("M 2")
+        tree.rgb(   0,-sa,  0,  ca).to_output("M 3")
         
     # ----------------------------------------------------------------------------------------------------
     # ZW / XY rotations
     
-    with GeoNodes("ZW Rotation", is_group=True, prefix=maths) as tree:
+    with GeoNodes("ZW Rotation", is_group=True, fake_user=True, prefix=maths) as tree:
 
         ag = tree.angle_input("Angle")
         ca = tree.cos(ag)
@@ -272,10 +185,10 @@ def tree_matrices():
         c2 = tree.cos(a2)
         s2 = tree.sin(a2)
         
-        tree.v4( c2, -s2,  0,   0).to_output("M 0")
-        tree.v4( s2,  c2,  0,   0).to_output("M 1")
-        tree.v4(  0,   0, ca, -sa).to_output("M 2")
-        tree.v4(  0,   0, sa,  ca).to_output("M 3")
+        tree.rgb( c2, -s2,  0,   0).to_output("M 0")
+        tree.rgb( s2,  c2,  0,   0).to_output("M 1")
+        tree.rgb(  0,   0, ca, -sa).to_output("M 2")
+        tree.rgb(  0,   0, sa,  ca).to_output("M 3")
 
     # ----------------------------------------------------------------------------------------------------
     # Projection matrix
@@ -316,11 +229,11 @@ def tree_matrices():
 
     with GeoNodes("Projection", is_group=True, fake_user=True, prefix=maths) as tree:
         
-        v = tree.v4_input("V4")
+        v = tree.color_input("V4")
         m = maths.projection_matrix()
         
         r = mat_dot(m, v)
-        xyz, w = r.xyzw
+        xyz, w = r.xyz_w
         
         xyz.to_output("Vector")
         w.to_output("w")
@@ -328,8 +241,14 @@ def tree_matrices():
 
 # ====================================================================================================
 # Base modifiers
+# Modifiers:
+# - To 4D
+# - Arrow
+# - Axis
+# - Dot normal
+# - Projection
 
-def mod_base():
+def m_base():
         
     # ----------------------------------------------------------------------------------------------------
     # Add the 4D attributes
@@ -354,11 +273,11 @@ def mod_base():
         
         # ---- Mesh normals
         
-        mesh = set_normal4(mesh, V4.FromXYZW(mesh.normal, 0.))
+        mesh.POINT.store_named_float_color("N4", tree.rgb_a(mesh.normal, 0.))
         
         # ---- Curve tangents
         
-        curve = set_tangent4(curve, V4.FromXYZW(curve.curve_tangent, 0.))
+        curve.POINT.store_named_float_color("T4", tree.rgb_a(curve.curve_tangent, 0.))
             
         # ---- Result
         
@@ -382,8 +301,8 @@ def mod_base():
         
             # ----- Arrow direction
             
-            u0 = V4.FromXYZW(v0, w0)
-            u1 = V4.FromXYZW(v1, w1)
+            u0 = tree.rgb_a(v0, w0)
+            u1 = tree.rgb_a(v1, w1)
             
             # ----- Start and end point
 
@@ -411,7 +330,7 @@ def mod_base():
         tree.og = mesh
         
     # ----------------------------------------------------------------------------------------------------
-    # The 4 Axis            
+    # The four Axis            
             
     with GeoNodes("Axis", fake_user=True, prefix=modifiers) as tree:
         
@@ -444,33 +363,9 @@ def mod_base():
                     
         tree.og = axis
         
-        
-# ----------------------------------------------------------------------------------------------------
-# Compute the dot product between the normals and the projection direction
+    # ----------------------------------------------------------------------------------------------------
+    # Perform a projection
 
-def dot_normal():
-    
-    with GeoNodes("Dot normal", fake_user=True, prefix=modifiers) as tree:
-        
-        mesh  = tree.ig
-        
-        Vxyz  = tree.vector_input("xyz")
-        Vw    = tree.float_input( "w", 1)
-        
-        v = tree.named_vector("Nxyz")
-        w = tree.named_float("Nw")
-        
-        (v.dot(Vxyz) + w*Vw).to_output("Dot")
-
-        tree.og = mesh
-        
-# ----------------------------------------------------------------------------------------------------
-# Perform a projection
-# - xyz : the xyz components
-# - w   : the addition 4th component
-
-def projection():
-    
     with GeoNodes("Projection", fake_user=True, prefix=modifiers) as tree:
         
         geo          = tree.ig
@@ -480,10 +375,8 @@ def projection():
         
         with tree.layout("All points projection"):
             
-            v = geo.position
-            w = tree.named_float("w")
-            
-            geo.POINT.position = maths.projection(xyz=v, w=w).vector
+            v4 = tree.rgb_a(geo.position, geo.named_float("w"))
+            geo.POINT.position = maths.projection(v4=v4).vector
             
         # ----- Components
         
@@ -498,30 +391,15 @@ def projection():
             
             with tree.layout("Normals projection"):
                 
-                v = tree.named_vector("Nxyz")
-                w = tree.named_float("Nw")
+                n4 = mesh.named_color("N4")
+                n  = maths.projection(v4=n4).vector
                 
-                N = maths.projection(xyz=v, w=w).vector
-                
-                mesh.POINT.store_named_vector("N", N)
+                mesh.POINT.store_named_vector("N", n)
                 
             with tree.layout("Back face"):
                 
-                mproj = maths.projection_matrix()
-                mproj.node_label="MPROJ"
-                print("MPROJ", mproj)
-                print("MPROJ dir", mproj.dir_xyz)
-                
-
-                node = maths.projection(xyz=0, w=1)
-                node.node_label="NODE"
-                print("MPROJ", mproj)
-                print("NODE ", node)
-                print("MPROJ dir", mproj.dir_xyz)
-                
-                a = mproj.dir_xyz
-                
-                mesh.POINT.store_named_float("orientation", modifiers.dot_normal(geometry=mesh, xyz=mproj.dir_xyz, w=mproj.dir_w).dot)
+                proj_dir = maths.projection_matrix().m_3
+                mesh.POINT.store_named_float("orientation", proj_dir.dot(n4))
                 
             mesh.FACE.shade_smooth = shade_smooth
             
@@ -529,26 +407,19 @@ def projection():
             
             with tree.layout("Tangents projection"):
                 
-                v = tree.named_vector("Txyz")
-                w = tree.named_float("Tw")
+                t  = maths.projection(v4=mesh.named_color("T4")).vector
                 
-                curve.POINT.store_named_vector("T", maths.projection(xyz=v, w=w).vector)
+                curve.POINT.store_named_vector("T", t)
                 
         tree.og = tree.join_geometry(mesh, curve, cloud, inst)
-                
-        
-        
-        
-        
-        
-        
-        
         
         
 # =============================================================================================================================
 # Vectors groups
+# Groups
+# - Normal basis
         
-def tree_vectors():
+def g_vectors():
             
     # ----------------------------------------------------------------------------------------------------
     # Normal basis
@@ -557,24 +428,24 @@ def tree_vectors():
 
     with GeoNodes("Normal basis", is_group=True, fake_user=True, prefix=maths) as tree:
         
-        u0 = tree.v4_input("V4 0", (1., 0., 0., 0.))
-        u1 = tree.v4_input("V4 1", (0., 1., 0., 0.))
-        u2 = tree.v4_input("V4 2", (0., 0., 1., 0.))
+        u0 = tree.color_input("V4 0", (1., 0., 0., 0.))
+        u1 = tree.color_input("V4 1", (0., 1., 0., 0.))
+        u2 = tree.color_input("V4 2", (0., 0., 1., 0.))
         
         # ----- Let's normalize the first input
         
-        e0, err = u0.normalize(True)
+        e0, err = u0.normalized(ZERO)
             
         # Let's suppress this dimension in the second one
         
         with tree.layout("Make the second vector perp to the first"):
             
             d = e0.dot(u1)
-            u1 = u1 - e0*d
+            u1 = u1 - d*e0
             
             # ----- Let's normalize
             
-            e1, err1 = u1.normalize(True)
+            e1, err1 = u1.normalized(ZERO)
             err += err1
             
         with tree.layout("Make the third vector perp to the two other ones"):
@@ -583,14 +454,14 @@ def tree_vectors():
             # Let's suppress these dimensions in the third one
 
             d   = e0.dot(u2)
-            u2  = u2 - e0*d
+            u2  = u2 - d*e0
             
             d = e1.dot(u2)
-            u2 = u2 - e1*d
+            u2 = u2 - d*e1
             
             # ----- Let's normalize
             
-            e2, err2 = u2.normalize(True)
+            e2, err2 = u2.normalized(ZERO)
             err += err2
             
         # ----- We are done :-)
@@ -599,74 +470,7 @@ def tree_vectors():
         e1.to_output("V4 1")
         e2.to_output("V4 2")
         
-        err.to_ouput("Error")
-        
-        if False:      
-            u0 = tree.vector_input("xyz 0", (1, 0, 0))
-            w0 = tree.float_input( "w 0")
-            u1 = tree.vector_input("xyz 1", (0, 1, 0))
-            w1 = tree.float_input( "w 1")
-            u2 = tree.vector_input("xyz 2", (0, 0, 1))
-            w2 = tree.float_input( "w 2")
-            
-            # ----- Let's normalize the first input
-            
-            with tree.layout("Normalize entry"):
-            
-                node = maths.normalize(xyz=u0, w=w0)
-                e0   = node.xyz
-                t0   = node.w
-                null = node.null
-                
-            # ----- (e0, t0) is the first vector
-            # Let's suppress this dimension in the second one
-            
-            with tree.layout("Make the second vector perp to the first"):
-            
-                #d   = e0.dot(u1) + t0*w1
-                d   = gen_dot(tree, e0, t0, u1, w1, layout=True)
-                u1 -= e0*d
-                w1 -= t0*d
-                
-                # ----- Let's normalize
-                
-                node = maths.normalize(xyz=u1, w=w1)
-                e1   = node.xyz
-                t1   = node.w
-                null = null + node.null
-                
-            with tree.layout("Make the third vector perp to the two other ones"):
-            
-                # ----- (e0, t0) and (e1, t1) are two basis vectors
-                # Let's suppress these dimensions in the third one
-
-                #d = e0.dot(u2) + t0*w2
-                d   = gen_dot(tree, e0, t0, u2, w2, layout=True)
-                u2 -= e0*d
-                w2 -= t0*d
-                
-                #d = e1.dot(u2) + t1*w2
-                d   = gen_dot(tree, e1, t1, u2, w2, layout=True)
-                u2 -= e1*d
-                w2 -= t1*d
-                
-                # ----- Let's normalize
-                
-                node = maths.normalize(xyz=u2, w=w2)
-                e2   = node.xyz
-                t2   = node.w
-                null = null + node.null
-                
-            # ----- We are done :-)
-            
-            e0.to_output("xyz 0")
-            t0.to_output("w 0")
-            e1.to_output("xyz 1")
-            t1.to_output("w 1")
-            e2.to_output("xyz 2")
-            t2.to_output("w 2")
-            
-            null.to_output("Error")
+        err.to_output("Error")
                 
     # ----------------------------------------------------------------------------------------------------
     # Cross
@@ -675,84 +479,57 @@ def tree_vectors():
 
     with GeoNodes("Cross", is_group=True, fake_user=True, prefix=maths) as tree:
         
-        u0 = tree.v4_input("V4 0", (1., 0., 0., 0.))
-        u1 = tree.v4_input("V4 1", (0., 1., 0., 0.))
-        u2 = tree.v4_input("V4 2", (0., 0., 1., 0.))
+        u0 = tree.color_input("V4 0") #, (1., 0., 0., 0.))
+        u1 = tree.color_input("V4 1") #, (0., 1., 0., 0.))
+        u2 = tree.color_input("V4 2") #, (0., 0., 1., 0.))
         
         # ----- Convert the three input vectors in a normal basis
         
         node = maths.normal_basis()
         tree.input_node.plug_to(node)
         
-        u0 = tree.V4(node.v4_0)
-        u1 = tree.V4(node.v4_1)
-        u2 = tree.V4(node.v4_2)
+        u0 = node.v4_0
+        u1 = node.v4_1
+        u2 = node.v4_2
         
         error = node.error
         
         # ----- Test the 4 basis vectors
         
-        n3 = tree.float(0)
-        u3 = tree.v4(0., 0., 0., 0.)
-        for i in range(4):
+        if True:
             
-            with tree.layout(f"Axis {i}"):
-                
-                v4 = [0] * 4
-                v4[i] = 1
-                
-                u = tree.v4(*v4)
+            pts = tree.points(4)
+            pts.POINT[0].store_named_float_color("u", (1., 0., 0., 0.))
+            pts.POINT[1].store_named_float_color("u", (0., 1., 0., 0.))
+            pts.POINT[2].store_named_float_color("u", (0., 0., 1., 0.))
+            pts.POINT[3].store_named_float_color("u", (0., 0., 0., 1.))
+            
+            with tree.repeat(u3=tree.rgb(0., 0., 0., 0.), n3=tree.float(0), index=0, iterations=4) as rep:
+
+                u = pts.sample_index_color(pts.named_color("u"), index=rep.index)
+                rep.index += 1
                 
                 d0 = u0.dot(u)
                 d1 = u1.dot(u)
                 d2 = u2.dot(u)
-                u = u - u0*d0
-                u = u - u1*d1
-                u = u - u2*d2
+                u -= d0*u0
+                u -= d1*u1
+                u -= d2*u2
                 
                 # Resulting norm
                 
                 n = u.length
                 
-                greater = n.greater_than(n3)
-                u3 = tree.V4(u3.switch(greater, u))
-                n3 = n3.switch(greater, n)
+                greater = n.greater_than(rep.n3)
+                rep.u3 = rep.u3.switch(greater, u)
+                rep.n3 = rep.n3.switch(greater, n)
+                
+            u3 = rep.u3
             
-        # ----- Let's normalize the result
         
-        u3 = u3.normalize()
-
-        u3.to_output("V4")
-        error.to_output("Error")
-        
-        
-        if False:
-            # ----- Convert the three input vectors in a normal basis
-            
-            u0 = tree.vector_input("xyz 0", (1, 0, 0))
-            w0 = tree.float_input( "w 0")
-            u1 = tree.vector_input("xyz 1", (0, 1, 0))
-            w1 = tree.float_input( "w 1")
-            u2 = tree.vector_input("xyz 2", (0, 0, 1))
-            w2 = tree.float_input( "w 2")
-
-            node = maths.normal_basis()
-            tree.input_node.plug_to(node)
-            
-            u0 = node.xyz_0
-            w0 = node.w_0
-            u1 = node.xyz_1
-            w1 = node.w_1
-            u2 = node.xyz_2
-            w2 = node.w_2
-            
-            error = node.error
-            
-            # ----- Test the fourth basis vectors
-            
+        else:
             n3 = tree.float(0)
-            u3 = tree.vector(0)
-            w3 = tree.float(0)
+            u3 = tree.rgb(0., 0., 0., 0.)
             for i in range(4):
                 
                 with tree.layout(f"Axis {i}"):
@@ -760,36 +537,30 @@ def tree_vectors():
                     v4 = [0] * 4
                     v4[i] = 1
                     
-                    u = tree.vector(v4[:3])
-                    w = tree.float(v4[3])
+                    u = tree.rgb(*v4)
                     
-                    d0 = u0.dot(u) + w*w0
-                    d1 = u1.dot(u) + w*w1
-                    d2 = u2.dot(u) + w*w2
+                    d0 = u0.dot(u)
+                    d1 = u1.dot(u)
+                    d2 = u2.dot(u)
                     u -= d0*u0
-                    w -= d0*w0
                     u -= d1*u1
-                    w -= d1*w1
                     u -= d2*u2
-                    w -= d2*w2
                     
                     # Resulting norm
                     
-                    n = maths.length(xyz=u, w=w).length
+                    n = u.length
                     
                     greater = n.greater_than(n3)
                     u3 = u3.switch(greater, u)
-                    w3 = w3.switch(greater, w)
                     n3 = n3.switch(greater, n)
-                
-            # ----- Let's normalize the result
             
-            u3 /= n3
-            w3 /= n3
-            
-            u3.to_output("xyz")
-            w3.to_output("w")
-            error.to_output("Error")
+        # ----- Let's normalize the result
+        
+        u3 = u3.normalized()
+
+        u3.to_output("V4")
+        error.to_output("Error")
+
             
     # ----------------------------------------------------------------------------------------------------
     # Get two vectors forming a basis for a plane
