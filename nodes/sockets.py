@@ -35,7 +35,6 @@ from geonodes.nodes import constants
 from geonodes.nodes import utils
 from geonodes.nodes import documentation
 
-
 # ====================================================================================================
 # Socket Class
 # Wrap a blender NodeSocket instance or a python value which can be used to initialize an input socket
@@ -116,6 +115,9 @@ class Socket:
     
     @property
     def _socket_type(self):
+        return type(self).__name__
+    
+    
         if self.bsocket is None:
             return utils.get_value_socket_type(self._value)
         else:
@@ -326,7 +328,7 @@ class Socket:
             return self.join_strings(other)
         
         elif stype == 'RGBA':
-            return self.mix_color(other, blend_type='ADD')
+            return self.mix_add(other) #, blend_type='ADD')
         
         elif stype == 'GEOMETRY':
             if self.node.bnode.bl_idname == 'GeometryNodeJoinGeometry':

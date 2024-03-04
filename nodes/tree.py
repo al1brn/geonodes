@@ -55,9 +55,11 @@ class Tree(StackedTree):
         
         if not cls.INIT:
             
-            nodeinfo.tree_class_setup(cls) #.TREE_TYPE)
+            cls._setup()
+            
+            #nodeinfo.tree_class_setup(cls) #.TREE_TYPE)
                 
-            cls.INIT = True
+            #cls.INIT = True
             
         return StackedTree.__new__(cls)
 
@@ -97,6 +99,15 @@ class Tree(StackedTree):
         if clear:
             self.clear()
             
+    # ====================================================================================================
+    # setup the class
+    
+    @classmethod
+    def _setup(cls):
+        nodeinfo.tree_class_setup(cls) #.TREE_TYPE)
+        cls.INIT = True
+        
+    
     # ====================================================================================================
     # For debug
     
