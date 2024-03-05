@@ -38,6 +38,7 @@ def rebuild():
     g_matrices()
     m_base()
     g_vectors()
+    rotations()
     
     
     
@@ -229,7 +230,7 @@ def g_matrices():
 
     with GeoNodes("Projection", is_group=True, fake_user=True, prefix=maths) as tree:
         
-        v = tree.color_input("V4")
+        v = tree.color_input("V")
         m = maths.projection_matrix()
         
         r = mat_dot(m, v)
@@ -273,7 +274,7 @@ def m_base():
         
         # ---- Mesh normals
         
-        mesh.POINT.store_named_float_color("N4", tree.rgb_a(mesh.normal, 0.))
+        mesh.FACE.store_named_float_color("N4", tree.rgb_a(mesh.normal, 0.))
         
         # ---- Curve tangents
         
@@ -306,8 +307,8 @@ def m_base():
             
             # ----- Start and end point
 
-            p0 = maths.projection(v4=u0).vector
-            p1 = maths.projection(v4=u1).vector
+            p0 = maths.projection(v=u0).vector
+            p1 = maths.projection(v=u1).vector
             
             # ----- Arrow shaft
             
@@ -375,8 +376,8 @@ def m_base():
         
         with tree.layout("All points projection"):
             
-            v4 = tree.rgb_a(geo.position, geo.named_float("w"))
-            geo.POINT.position = maths.projection(v4=v4).vector
+            v = tree.rgb_a(geo.position, geo.named_float("w"))
+            geo.POINT.position = maths.projection(v=v).vector
             
         # ----- Components
         
@@ -392,14 +393,14 @@ def m_base():
             with tree.layout("Normals projection"):
                 
                 n4 = mesh.named_color("N4")
-                n  = maths.projection(v4=n4).vector
+                n  = maths.projection(v=n4).vector
                 
-                mesh.POINT.store_named_vector("N", n)
+                mesh.FACE.store_named_vector("N", n)
                 
             with tree.layout("Back face"):
                 
                 proj_dir = maths.projection_matrix().m_3
-                mesh.POINT.store_named_float("orientation", proj_dir.dot(n4))
+                mesh.FACE.store_named_float("orientation", proj_dir.dot(n4))
                 
             mesh.FACE.shade_smooth = shade_smooth
             
@@ -407,7 +408,7 @@ def m_base():
             
             with tree.layout("Tangents projection"):
                 
-                t  = maths.projection(v4=mesh.named_color("T4")).vector
+                t  = maths.projection(v=mesh.named_color("T4")).vector
                 
                 curve.POINT.store_named_vector("T", t)
                 
@@ -418,6 +419,10 @@ def m_base():
 # Vectors groups
 # Groups
 # - Normal basis
+# - Cross product between 3 vectors
+# - Plane basis
+# - Hyperplane
+# - Two equations solver 
         
 def g_vectors():
             
@@ -428,9 +433,9 @@ def g_vectors():
 
     with GeoNodes("Normal basis", is_group=True, fake_user=True, prefix=maths) as tree:
         
-        u0 = tree.color_input("V4 0", (1., 0., 0., 0.))
-        u1 = tree.color_input("V4 1", (0., 1., 0., 0.))
-        u2 = tree.color_input("V4 2", (0., 0., 1., 0.))
+        u0 = tree.color_input("I", (1., 0., 0., 0.))
+        u1 = tree.color_input("J", (0., 1., 0., 0.))
+        u2 = tree.color_input("K", (0., 0., 1., 0.))
         
         # ----- Let's normalize the first input
         
@@ -466,9 +471,9 @@ def g_vectors():
             
         # ----- We are done :-)
         
-        e0.to_output("V4 0")
-        e1.to_output("V4 1")
-        e2.to_output("V4 2")
+        e0.to_output("I")
+        e1.to_output("J")
+        e2.to_output("K")
         
         err.to_output("Error")
                 
@@ -479,18 +484,18 @@ def g_vectors():
 
     with GeoNodes("Cross", is_group=True, fake_user=True, prefix=maths) as tree:
         
-        u0 = tree.color_input("V4 0") #, (1., 0., 0., 0.))
-        u1 = tree.color_input("V4 1") #, (0., 1., 0., 0.))
-        u2 = tree.color_input("V4 2") #, (0., 0., 1., 0.))
+        u0 = tree.color_input("I") #, (1., 0., 0., 0.))
+        u1 = tree.color_input("J") #, (0., 1., 0., 0.))
+        u2 = tree.color_input("K") #, (0., 0., 1., 0.))
         
         # ----- Convert the three input vectors in a normal basis
         
         node = maths.normal_basis()
         tree.input_node.plug_to(node)
         
-        u0 = node.v4_0
-        u1 = node.v4_1
-        u2 = node.v4_2
+        u0 = node.i
+        u1 = node.j
+        u2 = node.k
         
         error = node.error
         
@@ -558,132 +563,71 @@ def g_vectors():
         
         u3 = u3.normalized()
 
-        u3.to_output("V4")
+        u3.to_output("V")
         error.to_output("Error")
 
             
     # ----------------------------------------------------------------------------------------------------
     # Get two vectors forming a basis for a plane
-    #
-    # BUGGED
 
-    def plane_basis():
+    with GeoNodes("Plane basis", is_group=True, fake_user=True, prefix=maths) as tree:
         
-        with GeoNodes("Plane basis", is_group=True, fake_user=True, prefix=maths) as tree:
-            
-            u0 = tree.vector_input("xyz 0", (1, 0, 0))
-            w0 = tree.float_input( "w 0")
-            u1 = tree.vector_input("xyz 1", (0, 1, 0))
-            w1 = tree.float_input( "w 1")
-            
-            # ----- Let's try (0, 0, 1, 0) as third vector to form an hyperplane
+        u0 = tree.color_input("A")
+        u1 = tree.color_input("B")
+        
+        # ----- We suppress from u1 the u0 component
+        
+        u1 -= (u1.dot(u0))*u0
+        
+        # Normalized
+        
+        u0.normalized().to_output("A")
+        u1.normalized().to_output("B")
 
-            basis0 = maths.normal_basis(
-                xyz_0 = u0,
-                w_0   = w0,
-                xyz_1 = u1,
-                w_1   = w1,
-                xyz_2 = (0, 0, 1),
-                w_2   = 0)
-            
-            # ----- Let's try (0, 0, 0, 1) as third vector to form an hyperplane
-
-            basis1 = maths.normal_basis(
-                xyz_0 = u0,
-                w_0   = w0,
-                xyz_1 = u1,
-                w_1   = w1,
-                xyz_2 = (0, 0, 0),
-                w_2   = 1)
-                
-            # ----- Return basis0 or basis1 depending upon the error
-            
-            basis0.xyz_0.switch(basis0.error, basis1.xyz_0).to_output("xyz 0")
-            basis0.w_0.switch(  basis0.error, basis1.w_0  ).to_output("w 0")
-            basis0.xyz_1.switch(basis0.error, basis1.xyz_1).to_output("xyz 1")
-            basis0.w_1.switch(  basis0.error, basis1.w_1  ).to_output("w 1")
             
     # ----------------------------------------------------------------------------------------------------
     # Get three vectors perpendicular to a vector
 
-    def hyperplane():
+    with GeoNodes("Hyperplane", is_group=True, fake_user=True, prefix=maths) as tree:
         
-        with GeoNodes("Hyperplane", is_group=True, fake_user=True, prefix=maths) as tree:
+        v = tree.color_input("V")
+        
+        # ----- Normalize the entry
+        
+        v = v.normalized()
+        
+        # ----- Try to build a 3D-base with v and plane (k, l)
+        
+        node = maths.normal_basis(i=v, j=(0., 0., 1., 0.), k=(0., 0., 0., 1.))
             
-            v = tree.vector_input("xyz")
-            w = tree.float_input("w", 1.)
+        u0 = node.j
+        u1 = node.k
+        
+        error = node.error
+        
+        # ---------------------------------------------------------------------------
+        # If error, it does mean that v is in plane (k, l), hence (i, j) is perp to v
+        
+        node = maths.cross(i=v, j=(1., 0., 0., 0.), k=(0., 1., 0., 0.))
             
-            # ----- Normalize the entry
-            
-            node = maths.normalize(xyz=v, w=w)
-            v    = node.xyz
-            w    = node.w
-            
-            # ----- Try to build a 3D-base with v and plane (k, l)
-            
-            node = maths.normal_basis(
-                xyz_0 = v,
-                w_0   = w,
-                xyz_1 = (0, 0, 1),
-                w_1   = 0,
-                xyz_2 = (0, 0, 0),
-                w_2   = 1)
-                
-            u0 = node.xyz_1
-            w0 = node.w_1
-            u1 = node.xyz_2
-            w1 = node.w_2
-            
-            error = node.error
-            
-            # ---------------------------------------------------------------------------
-            # If error, it does mean that v is in plane (k, l), hence (i, j) is perp to v
-            
-            node = maths.cross(
-                xyz_0 = v,
-                w_0   = w,
-                xyz_1 = (1, 0, 0),
-                w_1   = 0,
-                xyz_2 = (0, 1, 0),
-                w_2   = 0,
-                )
-                
-            e_u2 = node.xyz
-            e_w2 = node.w
-            
-            # ---------------------------------------------------------------------------
-            # If no error, we have (u0, u1) perp to input vector
-            # The third basis vector is perpendicular to these 3 vectors
-            
-            node = maths.cross(
-                xyz_0 = v,
-                w_0   = w,
-                xyz_1 = u0,
-                w_1   = w0,
-                xyz_2 = u1,
-                w_2   = w1,
-                )
+        e_u2 = node.v
+        
+        # ---------------------------------------------------------------------------
+        # If no error, we have (u0, u1) perp to input vector
+        # The third basis vector is perpendicular to these 3 vectors
+        
+        node = maths.cross(i=v, j= u0, k=u1)
 
-            u0 = u0.switch(error, (1, 0, 0))
-            w0 = w0.switch(error, 0)
-            u1 = u1.switch(error, (0, 1, 0))
-            w1 = w1.switch(error, 0)
-            u2 = node.xyz.switch(error, e_u2)
-            w2 = node.w.switch(error, e_w2)
-            
-            # ----- Done
-            
-            u0.to_output("xyz 0")
-            w0.to_output("w 0")
-
-            u1.to_output("xyz 1")
-            w1.to_output("w 1")
-                
-            u2.to_output("xyz 2")
-            w2.to_output("w 2")
-            
-            v.to_output("xyz 3")
-            w.to_output("w 3")
+        u0 = u0.switch(error, (1., 0., 0., 0.))
+        u1 = u1.switch(error, (0., 1., 0., 0.))
+        u2 = node.v.switch(error, e_u2)
+        
+        # ----- Done
+        
+        u0.to_output("I")
+        u1.to_output("J")
+        u2.to_output("K")
+        v.to_output("L")
             
             
     # ----------------------------------------------------------------------------------------------------
@@ -695,159 +639,142 @@ def g_vectors():
     # x = (b1c0 - b0c1)/D
     # y = (a0c1 - a1c0)/D
 
-    def two_equations_solver():
-        with GeoNodes("Two equations solver", is_group=True, prefix=maths) as tree:
-            
-            a0 = tree.float_input("a0")
-            b0 = tree.float_input("b0")
-            c0 = tree.float_input("c0")
-
-            a1 = tree.float_input("a1")
-            b1 = tree.float_input("b1")
-            c1 = tree.float_input("c1")
-            
-            with tree.layout("Discriminant"):
-             D = a0*b1 - a1*b0
-             
-            with tree.layout("x"):
-                x = (b1*c0 - b0*c1)/D 
-                x.to_output("x")
-                
-            with tree.layout("y"):
-                y = (a0*c1 - b1*c0)/D 
-                y.to_output("y")
-            
-            tree.abs(D).less_than(0.001).to_output("Error")
-            tree.vector((x, y, 0)).length().to_output("Length")
+    with GeoNodes("Two equations solver", is_group=True, prefix=maths) as tree:
         
-# ----------------------------------------------------------------------------------------------------
-# Rotate to an hyperplane 
+        a0 = tree.float_input("a0")
+        b0 = tree.float_input("b0")
+        c0 = tree.float_input("c0")
 
-def rotate_to_hyperplane():
-    
+        a1 = tree.float_input("a1")
+        b1 = tree.float_input("b1")
+        c1 = tree.float_input("c1")
+        
+        with tree.layout("Discriminant"):
+         D = a0*b1 - a1*b0
+         
+        with tree.layout("x"):
+            x = (b1*c0 - b0*c1)/D 
+            x.to_output("x")
+            
+        with tree.layout("y"):
+            y = (a0*c1 - b1*c0)/D 
+            y.to_output("y")
+        
+        tree.abs(D).less_than(0.001).to_output("Error")
+        tree.vector((x, y, 0)).length().to_output("Length")
+        
+# =============================================================================================================================
+# Rotations
+# Groups
+# - Rotate to hyperplane
+# - Rotate from hyperplane
+# - Rotate in hyperplane
+# - Follow vector
+# - W Plane rotation
+# - Rotation 2D
+# Modifiers
+# - W Plane rotation
+# - Rotation 2D
+# - Rotate in hyperplane
+        
+def rotations():
+        
+    # ----------------------------------------------------------------------------------------------------
+    # Rotate to an hyperplane 
+
     with GeoNodes("Rotate to hyperplane", is_group=True, fake_user=True, prefix=maths) as tree:
 
-        v = tree.vector_input("xyz")
-        w = tree.float_input("w")
+        v = tree.color_input("V")
         
-        hv = tree.vector_input("Hyper xyz")
-        hw = tree.float_input("Hyper w", 1)
+        hv = tree.color_input("Hyperplane")
         
-        node = maths.hyperplane(xyz=hv, w=hw)
+        node = maths.hyperplane(v=hv)
         
-        x = node.xyz_0.dot(v) + node.w_0*w
-        y = node.xyz_1.dot(v) + node.w_1*w
-        z = node.xyz_2.dot(v) + node.w_2*w
-        w = node.xyz_3.dot(v) + node.w_3*w
+        x = node.i.dot(v)
+        y = node.j.dot(v)
+        z = node.k.dot(v)
+        w = node.l.dot(v)
         
-        tree.vector((x, y, z)).to_output("xyz")
-        w.to_output("w")
+        tree.rgb(x, y, z, w).to_output("V")
         
-# ----------------------------------------------------------------------------------------------------
-# Rotate from an hyperplane 
+    # ----------------------------------------------------------------------------------------------------
+    # Rotate from an hyperplane 
 
-def rotate_from_hyperplane():
-    
     with GeoNodes("Rotate from hyperplane", is_group=True, fake_user=True, prefix=maths) as tree:
         
-        v = tree.vector_input("xyz")
-        w = tree.float_input("w")
+        v  = tree.color_input("V")
+        hv = tree.color_input("Hyperplane")
         
-        hv = tree.vector_input("Hyper xyz")
-        hw = tree.float_input("Hyper w", 1)
+        node = maths.hyperplane(v=hv)
         
-        node = maths.hyperplane(xyz=hv, w=hw)
+        r = node.i*v.x + node.j*v.y + node.k*v.z + node.l*v.w
         
-        rv = node.xyz_0*v.x + node.xyz_1*v.y + node.xyz_2*v.z + node.xyz_3*w
-        rw = node.w_0*v.x   + node.w_1*v.y   + node.w_2*v.z   + node.w_3*w
+        r.to_output("V")
+        
+        #rv = node.xyz_0*v.x + node.xyz_1*v.y + node.xyz_2*v.z + node.xyz_3*w
+        #rw = node.w_0*v.x   + node.w_1*v.y   + node.w_2*v.z   + node.w_3*w
 
-        rv.to_output("xyz")
-        rw.to_output("w")
+        #rv.to_output("xyz")
+        #rw.to_output("w")
         
-        
-# ----------------------------------------------------------------------------------------------------
-# Rotation 3D in an hyperplane
+    # ----------------------------------------------------------------------------------------------------
+    # Rotation 3D in an hyperplane
+    # Perform a 3D rotation with an hyperplane
 
-def rotate_in_hyperplane():
-    
     with GeoNodes("Rotate in hyperplane", is_group=True, fake_user=True, prefix=maths) as tree:
         
-        v = tree.vector_input("xyz")
-        w = tree.float_input("w")
-        
-        hv = tree.vector_input("Hyper xyz")
-        hw = tree.float_input("Hyper w", 1)
+        v  = tree.color_input("V")
+        hv = tree.color_input("Hyperplane")
 
-        #euler = gn.Vector.Rotation((0, 0, 0), "Euler")
         euler = tree.rotation_input("Euler")
-        axis  = tree.vector_input(  "Axis", (0, 0, 1))
+        axis  = tree.vector_input(  "Axis", (0., 0., 1.))
         angle = tree.angle_input(   "Angle")
         
-        to_hp = maths.rotate_to_hyperplane(
-            xyz       = v,
-            w         = w,
-            hyper_xyz = hv,
-            hyper_w   = hw,
-        )
+        to_hp = maths.rotate_to_hyperplane(v=v, hyperplane=hv)
         
-        v = to_hp.xyz
-        w = to_hp.w
+        v3 = tree.VECTOR(to_hp.v)
         
-        v = v.vector_rotate(rotation=euler, rotation_type='EULER_XYZ')
-        v = v.vector_rotate(axis=axis, angle=angle, rotation_type='AXIS_ANGLE')
+        v3 = v3.vector_rotate(rotation=euler, rotation_type='EULER_XYZ')
+        v3 = v3.vector_rotate(axis=axis, angle=angle, rotation_type='AXIS_ANGLE')
         
-        from_hp = maths.rotate_from_hyperplane(
-            xyz       = v,
-            w         = w,
-            hyper_xyz = hv,
-            hyper_w   = hw,
-        )
+        from_hp = maths.rotate_from_hyperplane(v=tree.rgb_a(v3, to_hp.v.w), hyperplane=hv)
         
-        from_hp.xyz.to_output("xyz")
-        from_hp.w.to_output("w")
+        from_hp.v.to_output("V")
         
         
-# ----------------------------------------------------------------------------------------------------
-# Follow a vector
-#
-# Rotate a vector such as the vector a rotates to vector b
+    # ----------------------------------------------------------------------------------------------------
+    # Follow a vector
+    #
+    # Rotate a vector such as the vector a rotates to vector b
 
-def follow_vector():
-    
     with GeoNodes("Follow vector", is_group=True, fake_user=True, prefix=maths) as tree:
         
-        v = tree.vector_input("xyz")
-        w = tree.float_input("w")
+        v = tree.color_input("V")
 
-        va = tree.vector_input("A xyz")
-        wa = tree.float_input( "A w", 1)
-        vb = tree.vector_input("B xyz")
-        wb = tree.float_input( "B w", 1)
+        va = tree.color_input("From")
+        vb = tree.color_input("To")
         
         # ----- Create a normalized basis in the plane (a, b)
         
         with tree.layout("e0 = Basis first vector aligned on A"):
             
-            node = maths.length(xyz=va, w=wa)
+            #node = maths.length(xyz=va, w=wa)
 
-            xa   = node.length
-            null = node.null
+            xa   = va.length
+            null = xa.less_than(ZERO)
 
             e0 = va / xa
-            t0 = wa / xa
             
         with tree.layout("e1 = Basis second vector: B - (B.e0).e0"):
             
-            xb = e0.dot(vb) + t0*wb
-            e1 = vb - e0*xb
-            t1 = wb - t0*xb
             
-            node = maths.length(xyz=e1, w=t1)
-            yb   = node.length
-
-            null = null + node.null
+            xb = e0.dot(vb)
+            e1 = vb - xb*e0
+            
+            yb = e1.length
+            null = null + yb.less_than(ZERO)
+            
             e1 /= yb
-            t1 /= yb
             
             # If vector are colinear, they can be opposite
             
@@ -866,8 +793,8 @@ def follow_vector():
         
         with tree.layout("Components (xv, yv) on (e0, e1)"):
         
-            xv = e0.dot(v) + t0*w
-            yv = e1.dot(v) + t1*w
+            xv = e0.dot(v)
+            yv = e1.dot(v)
             
             xv.node.node_label = "xv"
             yv.node.node_label = "yv"
@@ -877,7 +804,6 @@ def follow_vector():
         with tree.layout("Part out of the rotation plane"):
             
             v3 = v - xv*e0 - yv*e1
-            w3 = w - xv*t0 - yv*t1
             
         # ----- Rotate in the plane
 
@@ -891,36 +817,20 @@ def follow_vector():
         with tree.layout("Build the resulting vector"):
             
             rv = v3 + fac0*e0 + fac1*e1
-            rw = w3 + fac0*t0 + fac1*t1
             
         with tree.layout("No rotation if null"):
             
-            #print(" V", v)
-            #print("-V", -v)
-            
-            #print("SWITCH", v.switch(opposite, -v))
-            #print("BEF", v)
-            #v = v.switch(opposite, -v)
-            #print("AFT", v)
-            
-            print("BEF", rv)
             rv = rv.switch(null, v.switch(opposite, -v))
-            rw = rw.switch(null, w.switch(opposite, -w))
-            print("AFT", rv)
             
-        rv.to_output("xyz")
-        rw.to_output("w")
+        rv.to_output("V")
         
 
-# ----------------------------------------------------------------------------------------------------
-# Rotation in a plane (x|y|z, w)
+    # ----------------------------------------------------------------------------------------------------
+    # Rotation in a plane (x|y|z, w)
         
-def w_plane_rotation():
-    
     with GeoNodes("W plane rotation", is_group=True, fake_user=True, prefix=maths) as tree:
         
-        v = tree.vector_input("xyz")
-        w = tree.float_input("w")
+        v = tree.color_input("V")
         
         axis  = tree.integer_input("Axis", 0, min_value=0, max_value=2)
         angle = tree.angle_input(  "Angle")
@@ -937,59 +847,46 @@ def w_plane_rotation():
             # rotation around z axis
             
             #r = gn.Vector((w, y, 0)).rotate_axis_angle(axis=(0, 0, 1), angle=angle)
-            r = tree.vector((w, y, 0)).vector_rotate(axis=(0, 0, 1), angle=angle, rotation_type='AXIS_ANGLE')
+            r = tree.vector((v.w, y, 0)).vector_rotate(axis=(0, 0, 1), angle=angle, rotation_type='AXIS_ANGLE')
             
         with tree.layout("y result on axis, x result on w"):
             
             # Returns the result
             
-            tree.vector((v.x.switch(axis.equal(0), r.y),
-                         v.y.switch(axis.equal(1), r.y),
-                         v.z.switch(axis.equal(2), r.y)) ).to_output("xyz")
-                       
-            r.x.to_output("w")
+            tree.rgb(v.x.switch(axis.equal(0), r.y),
+                     v.y.switch(axis.equal(1), r.y),
+                     v.z.switch(axis.equal(2), r.y),
+                     r.x).to_output("V")
             
-# ----------------------------------------------------------------------------------------------------
-# Utility Rotation in a plane defined by two 4D vectors
+    # ----------------------------------------------------------------------------------------------------
+    # Utility Rotation in a plane defined by two 4D vectors
         
-def rotation_2D():
-    
     with GeoNodes("Rotation 2D", is_group=True, fake_user=True, prefix=maths) as tree:
 
-        v  = tree.vector_input("xyz")
-        w  = tree.float_input( "w")
+        v  = tree.color_input("V")
         
-        v0 = tree.vector_input("xyz 0")
-        w0 = tree.float_input( "w 0", 1)
-        v1 = tree.vector_input("xyz 1", (1, 0, 0))
-        w1 = tree.float_input( "w 1")
-        a  = tree.angle_input( "Angle", description="Rotation angle in plane (V0, V1)")
+        v0 = tree.color_input("I")
+        v1 = tree.color_input("J")
+        a  = tree.angle_input( "Angle", description="Rotation angle in plane (I, J)")
         
-        with tree.layout("Normalize vector 0"):
-
-            n = tree.sqrt(v0.x*v0.x + v0.y*v0.y + v0.z*v0.z + w0*w0)
-            v0 = v0/n
-            w0 = w0/n
+        
+        # Normalize first vector
+        
+        v0 = v0.normalized()
+        
             
         with tree.layout("Build second vector orthogonally"):
+            d = v0.dot(v1)
+            v1 -= v0*d
             
-            d = v0.dot(v1) + w0*w1
-            
-            v1 = v1 - v0*d
-            w1 = w1 - w0*d
-            
-        with tree.layout("Normalize second vector"):
-            
-            n = tree.sqrt(v1.x*v1.x + v1.y*v1.y + v1.z*v1.z + w1*w1)
-            v1 = v1/n
-            w1 = w1/n
+            v1 = v1.normalized()
             
         with tree.layout("Rotation V0 towards V1"):
             
             # ----- Components in plane (V0, V1)
             
-            x = v0.dot(v) + w0*w
-            y = v1.dot(v) + w1*w
+            x = v0.dot(v)
+            y = v1.dot(v)
             
             # ----- Rotation
 
@@ -1005,10 +902,186 @@ def rotation_2D():
             # V = V - P01 components + P01 rotated components
             
             rv = v + xp*v0 + yp*v1
-            rw = w + xp*w0 + yp*w1
             
-        rv.to_output("xyz")
-        rw.to_output("w")
+        rv.to_output("V")
+        
+    # ----------------------------------------------------------------------------------------------------
+    # Rotation in a plane (x|y|z, w)
+    # Rotate a 4D object: coordinates and normals
+            
+    with GeoNodes("W Plane Rotation", fake_user=True, prefix=modifiers) as tree:
+        
+        geo   = tree.ig
+        axis  = tree.integer_input("Axis", 0, min_value=0, max_value=2) 
+        angle = tree.angle_input(  "Angle", 0.)
+        
+        # ----- All
+        
+        with tree.layout("All points rotation"):
+            
+            node = maths.w_plane_rotation(
+                    v = tree.rgb_a(geo.position, geo.named_float("w")),
+                    axis = axis, angle=angle)
+            
+            geo.POINT.position = node.v
+            geo.POINT.store_named_float("w", node.v.w)
+            
+            
+        # --- Components
+            
+        comps = geo.separate_components()
+        
+        mesh  = comps.mesh
+        curve = comps.curve
+        cloud = comps.point_cloud
+        inst  = comps.instances
+        
+        # Mesh
+        
+        with tree.layout("Mesh"):
+
+            node = maths.w_plane_rotation(
+                        v = mesh.named_color("N4"),
+                        axis = axis, angle=angle)
+            
+            mesh.FACE.store_named_float_color("N4", node.v)
+            
+        # Curve
+        
+        with tree.layout("Curve"):
+
+            node = maths.w_plane_rotation(
+                        v = curve.named_color("T4"),
+                        axis = axis, angle=angle)
+            
+            curve.POINT.store_named_float_color("T4", node.v)
+
+        tree.og = mesh + curve + cloud + inst
+        
+    # ----------------------------------------------------------------------------------------------------
+    # Rotation in a plane defined by two vectors V0 and V1
+            
+    with GeoNodes("Rotation 2D", fake_user=True, prefix=modifiers) as tree:
+        
+        geo   = tree.ig
+
+        v0    = tree.vector_input("xyz 0")
+        w0    = tree.float_input( "w 0")
+        v1    = tree.vector_input("xyz 1")
+        w1    = tree.float_input( "w 1")
+        angle = tree.angle_input( "Angle", 0. , description="Rotation angle in plane (V0, V1)")
+        
+        I = tree.rgb_a(v0, w0)
+        J = tree.rgb_a(v1, w1)
+        
+        # ----- All
+        
+        with tree.layout("All points rotation"):
+            
+            node = maths.rotation_2d(
+                v = tree.rgb_a(geo.position, geo.named_float("w")),
+                i=I, j=J, angle=angle)
+
+            geo.position = node.v
+            geo.POINT.store_named_float("w", node.v.w)
+            
+        # --- Components
+            
+        comps = geo.separate_components()
+        
+        mesh  = comps.mesh
+        curve = comps.curve
+        cloud = comps.point_cloud
+        inst  = comps.instances
+        
+        # Mesh
+        
+        with tree.layout("Mesh"):
+            
+            node = maths.rotation_2d(
+                v = mesh.named_color("N4"),
+                i=I, j=J, angle=angle)
+
+            mesh.FACE.store_named_float_color("N4", node.v)
+            
+        # Curve
+        
+        with tree.layout("Curve"):
+            
+            node = maths.rotation_2d(
+                v = curve.named_color("T4"),
+                i=I, j=J, angle=angle)
+            
+            curve.POINT.store_named_float_color("T4", node.v)
+            
+
+        tree.og = mesh + curve + cloud + inst
+
+    # ----------------------------------------------------------------------------------------------------
+    # Rotate in an hyperplane perpendicular to an axis
+
+    with GeoNodes("Rotate in hyperplane", fake_user=True, prefix=modifiers) as tree:
+    
+        geo   = tree.ig
+        
+        hv    = tree.vector_input(  "Hyper xyz")
+        hw    = tree.float_input(   "Hyper w", 1.)
+        euler = tree.rotation_input("Euler", description="Euler rotation within the hyperplane")
+        axis  = tree.vector_input(  "Axis", (0., 0., 1.), description="Axis inside the hyperplane")
+        angle = tree.angle_input(   "Angle", description="Angle to rotate around the axis within the hyperplane")
+        
+        hp = tree.rgb_a(hv, hw)
+        
+        # ----- All
+        
+        with tree.layout("All points rotation"):
+            
+            node = maths.rotate_in_hyperplane(
+                v = tree.rgb_a(geo.position, geo.named_float("w")),
+                hyperplane = hp, euler=euler, axis=axis, angle=angle)
+
+            geo.position = node.v
+            geo.POINT.store_named_float("w", node.v.w)
+            
+
+        tree.og = geo
+        raise tree.Break()
+            
+            
+            
+            
+        # --- Components
+            
+        comps = geo.separate_components()
+        
+        mesh  = comps.mesh
+        curve = comps.curve
+        cloud = comps.point_cloud
+        inst  = comps.instances
+        
+        # Mesh
+        
+        with tree.layout("Mesh"):
+            
+            node = maths.rotate_in_hyperplane(
+                v = mesh.named_color("N4"),
+                hyperplane = hp, euler=euler, axis=axis, angle=angle)
+            
+            mesh.FACE.store_named_float_color("N4", node.v)
+            
+        # Curve
+        
+        with tree.layout("Curve"):
+            
+            node = maths.rotate_in_hyperplane(
+                v = curve.named_color("T4"),
+                hyperplane = hp, euler=euler, axis=axis, angle=angle)
+            
+            curve.POINT.store_named_float_color("T4", node.v)
+
+        tree.og = mesh + curve + cloud + inst             
+        
+        
         
 # ----------------------------------------------------------------------------------------------------
 # Mesh along a curve
@@ -1168,35 +1241,7 @@ def debug():
             tree.og = geo
     
 
-if CLEAR:
-    maths.clear()        
-  
-if REBUILD:
-    
-    tree_matrices()
-    
-    axis_rotations()        
-    
-    projection_matrix()
-    projection()
-    length()
-    normalize()
-    normal_basis()
-    cross()
-    hyperplane()
-    
-    two_equations_solver()
-    plane_basis()    
 
-    rotate_to_hyperplane()
-    rotate_from_hyperplane()
-    rotate_in_hyperplane()
-    follow_vector()
-    
-    w_plane_rotation()
-    rotation_2D()
-    
-    build_along_curve()
     
         
     

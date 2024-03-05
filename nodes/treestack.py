@@ -121,8 +121,8 @@ class StackedTree:
         self.arrange()
         self._stack_done()
         
-        if exc_type == self.Break:
-            return
+        if isinstance(exc_value, self.Break):
+            return True
         
     # ====================================================================================================
     # List of nodes

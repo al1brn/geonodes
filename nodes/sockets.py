@@ -177,7 +177,7 @@ class Socket:
                 in_bsocket = None
                 
         if in_bsocket is not None:
-            link = self.node.tree.btree.links.new(in_bsocket, self.bsocket, verify_limits=True)
+            link = self.tree.btree.links.new(in_bsocket, self.bsocket, verify_limits=True)
             
             
     # ====================================================================================================
@@ -503,72 +503,72 @@ class Sockets:
 class INT_VALUE(Socket):
     
     def __neg__(self):
-        return self.node.tree.Math(self, -1, operation='MULTIPLY').value
+        return self.tree.Math(self, -1, operation='MULTIPLY').value
     
     # ----- Addition
     
     def __add__(self, other):
         dtype = utils.get_value_socket_type(other)
         if dtype in ['VECTOR', 'ROTATION']:
-            return self.node.tree.VectorMath(self, other, operation='ADD').vector
+            return self.tree.VectorMath(self, other, operation='ADD').vector
         elif dtype == 'RGBA':
-            return self.node.tree.RGBA(other) + self
+            return self.tree.RGBA(other) + self
             
-        return self.node.tree.Math(self, other, operation='ADD').value
+        return self.tree.Math(self, other, operation='ADD').value
 
     def __radd__(self, other):
         return self + other
     
     def __iadd__(self, other):
-        return self.jump(self.node.tree.Math(self, other, operation='ADD').value)
+        return self.jump(self.tree.Math(self, other, operation='ADD').value)
     
     # ----- Subtraction
     
     def __sub__(self, other):
         dtype = utils.get_value_socket_type(other)
         if dtype in ['VECTOR', 'ROTATION']:
-            return self.node.tree.VectorMath(self, other, operation='SUB').vector
+            return self.tree.VectorMath(self, other, operation='SUBTRACT').vector
         elif dtype == 'RGBA':
-            return -self.node.tree.RGBA(other) + self
+            return -self.tree.RGBA(other) + self
             
-        return self.node.tree.Math(self, other, operation='SUBTRACT').value
+        return self.tree.Math(self, other, operation='SUBTRACT').value
 
     def __rsub__(self, other):
         dtype = utils.get_value_socket_type(other)
         if dtype in ['VECTOR', 'ROTATION']:
-            return self.node.tree.VectorMath(other, self, operation='SUB').vector
+            return self.tree.VectorMath(other, self, operation='SUBTRACT').vector
         elif dtype == 'RGBA':
-            return -self.node.tree.RGBA(other) + self
+            return -self.tree.RGBA(other) + self
             
-        return self.node.tree.Math(other, self, operation='SUBTRACT').value
+        return self.tree.Math(other, self, operation='SUBTRACT').value
     
     def __isub__(self, other):
-        return self.jump(self.node.tree.Math(self, other, operation='SUBTRACT').value)
+        return self.jump(self.tree.Math(self, other, operation='SUBTRACT').value)
     
     # ----- Multiplication
     
     def __mul__(self, other):
         dtype = utils.get_value_socket_type(other)
         if dtype in ['VECTOR', 'ROTATION']:
-            return self.node.tree.VectorMath(other, scale=self, operation='SCALE').vector
+            return self.tree.VectorMath(other, scale=self, operation='SCALE').vector
         elif dtype == 'RGBA':
-            return -self.node.tree.RGBA(other) + self
+            return -self.tree.RGBA(other) + self
             
-        return self.node.tree.Math(self, other, operation='MULTIPLY').value
+        return self.tree.Math(self, other, operation='MULTIPLY').value
 
     def __rmul__(self, other):
         return self*other
     
     def __imul__(self, other):
-        return self.jump(self.node.tree.Math(self, other, operation='MULTIPLY').value)
+        return self.jump(self.tree.Math(self, other, operation='MULTIPLY').value)
     
     # ----- Division
     
     def __truediv__(self, other):
-        return self.node.tree.Math(self, other, operation='DIVIDE').value
+        return self.tree.Math(self, other, operation='DIVIDE').value
 
     def __rtruediv__(self, other):
-        return self.node.tree.Math(other, self, operation='DIVIDE').value
+        return self.tree.Math(other, self, operation='DIVIDE').value
     
     def __itruediv__(self, other):
         return self.jump(self / other)
@@ -576,10 +576,10 @@ class INT_VALUE(Socket):
     # ----- Modulo
 
     def __mod__(self, other):
-        return self.node.tree.Math(self, other, operation='MODULO').value
+        return self.tree.Math(self, other, operation='MODULO').value
             
     def __rmod__(self, other):
-        return self.node.tree.Math(other, self, operation='MODULO').value
+        return self.tree.Math(other, self, operation='MODULO').value
     
     def __imod__(self, other):
         return self.jump(self % other)
@@ -587,10 +587,10 @@ class INT_VALUE(Socket):
     # ----- Power
     
     def __pow__(self, other):
-        return self.node.tree.Math(self, other, operation='POWER').value
+        return self.tree.Math(self, other, operation='POWER').value
             
     def __rpow__(self, other):
-        return self.node.tree.Math(other, self, operation='POWER').value
+        return self.tree.Math(other, self, operation='POWER').value
     
     def __ipow__(self, other):
         return self.jump(self ** other)    
@@ -633,61 +633,61 @@ class VECTOR_ROT(Socket):
     # Operations
     
     def __neg__(self):
-        return self.node.tree.VectorMath(self, -1, operation='SCALE').vector
+        return self.tree.VectorMath(self, -1, operation='SCALE').vector
     
     # ----- Addition
     
     def __add__(self, other):
         dtype = utils.get_value_socket_type(other)
         if dtype == 'RGBA':
-            return self.node.tree.RGBA(other) + self
+            return self.tree.RGBA(other) + self
         
-        return self.node.tree.VectorMath(self, other, operation='ADD').vector
+        return self.tree.VectorMath(self, other, operation='ADD').vector
 
     def __radd__(self, other):
         return self + other
     
     def __iadd__(self, other):
-        return self.jump(self.node.tree.VectorMath(self, other, operation='ADD').vector)
+        return self.jump(self.tree.VectorMath(self, other, operation='ADD').vector)
     
     # ----- Subtraction
     
     def __sub__(self, other):
         dtype = utils.get_value_socket_type(other)
         if dtype == 'RGBA':
-            return -self.node.tree.RGBA(other) + self
+            return -self.tree.RGBA(other) + self
             
-        return self.node.tree.VectorMath(self, other, operation='SUBTRACT').vector
+        return self.tree.VectorMath(self, other, operation='SUBTRACT').vector
 
     def __rsub__(self, other):
         dtype = utils.get_value_socket_type(other)
         if dtype == 'RGBA':
-            return self.node.tree.RGBA(other) - self
+            return self.tree.RGBA(other) - self
             
-        return self.node.tree.VectorMath(other, self, operation='SUBTRACT').vector
+        return self.tree.VectorMath(other, self, operation='SUBTRACT').vector
     
     def __isub__(self, other):
-        return self.jump(self.node.tree.VectorMath(self, other, operation='SUBTRACT').vector)
+        return self.jump(self.tree.VectorMath(self, other, operation='SUBTRACT').vector)
     
     # ----- Multiplication
     
     def __mul__(self, other):
         dtype = utils.get_value_socket_type(other)
         if dtype == 'RGBA':
-            return self.node.tree.RGBA(other)*self
+            return self.tree.RGBA(other)*self
         elif dtype == 'VECTOR':
-            return self.node.tree.VectorMath(self, other, operation='MULTIPLY').vector
+            return self.tree.VectorMath(self, other, operation='MULTIPLY').vector
         else:
-            return self.node.tree.VectorMath(self, scale=other, operation='SCALE').vector
+            return self.tree.VectorMath(self, scale=other, operation='SCALE').vector
 
     def __rmul__(self, other):
         dtype = utils.get_value_socket_type(other)
         if dtype == 'RGBA':
-            return self.node.tree.RGBA(other)*self
+            return self.tree.RGBA(other)*self
         elif dtype == 'VECTOR':
-            return self.node.tree.VectorMath(other, self, operation='MULTIPLY').vector
+            return self.tree.VectorMath(other, self, operation='MULTIPLY').vector
         else:
-            return self.node.tree.VectorMath(self, scale=other, operation='SCALE').vector
+            return self.tree.VectorMath(self, scale=other, operation='SCALE').vector
     
     def __imul__(self, other):
         return self.jump(self * other)
@@ -695,10 +695,10 @@ class VECTOR_ROT(Socket):
     # ----- Division
     
     def __truediv__(self, other):
-        return self.node.tree.VectorMath(self, other, operation='DIVIDE').vector
+        return self.tree.VectorMath(self, other, operation='DIVIDE').vector
 
     def __rtruediv__(self, other):
-        return self.node.tree.VectorMath(other, self, operation='DIVIDE').vector
+        return self.tree.VectorMath(other, self, operation='DIVIDE').vector
     
     def __itruediv__(self, other):
         return self.jump(self / other)
@@ -706,10 +706,10 @@ class VECTOR_ROT(Socket):
     # ----- Modulo
 
     def __mod__(self, other):
-        return self.node.tree.VectorMath(self, other, operation='MODULO').value
+        return self.tree.VectorMath(self, other, operation='MODULO').value
             
     def __rmod__(self, other):
-        return self.node.tree.VectorMath(other, self, operation='MODULO').value
+        return self.tree.VectorMath(other, self, operation='MODULO').value
     
     def __imod__(self, other):
         return self.jump(self % other)
@@ -728,15 +728,15 @@ class BOOLEAN(Socket):
     # ----- Not
     
     def __neg__(self):
-        return self.node.tree.BooleanMath(self, operation='NOT').boolean
+        return self.tree.BooleanMath(self, operation='NOT').boolean
     
     # ----- Or
     
     def __add__(self, other):
-        return self.node.tree.BooleanMath(self, other, operation='OR').boolean
+        return self.tree.BooleanMath(self, other, operation='OR').boolean
 
     def __radd__(self, other):
-        return self.node.tree.BooleanMath(other, self, operation='OR').boolean
+        return self.tree.BooleanMath(other, self, operation='OR').boolean
     
     def __iadd__(self, other):
         return self.jump(self + other)
@@ -744,10 +744,10 @@ class BOOLEAN(Socket):
     # ----- And
     
     def __mul__(self, other):
-        return self.node.tree.BooleanMath(self, other, operation='AND').boolean
+        return self.tree.BooleanMath(self, other, operation='AND').boolean
 
     def __rmul__(self, other):
-        return self.node.tree.BooleanMath(other, self, operation='AND').boolean
+        return self.tree.BooleanMath(other, self, operation='AND').boolean
     
     def __imul__(self, other):
         return self.jump(self * other)
@@ -770,7 +770,7 @@ class STRING(Socket):
                 other.node.geometry = self
                 return other
         else:
-            return self.node.tree.JoinStrings(self, other).strings
+            return self.tree.JoinStrings(self, other).strings
 
     def __radd__(self, other):
         return self + other
@@ -895,7 +895,8 @@ class RGBA(Socket):
     
     @property
     def xyz(self):
-        return self.tree.xyz(self.x, self.y, self.z)
+        return self.tree.VECTOR(self)
+        #return self.tree.xyz(self.x, self.y, self.z)
     
     @property
     def xyz_w(self):
@@ -906,8 +907,8 @@ class RGBA(Socket):
         if not hasattr(value, '__len__') or len(value) != 2:
             raise AttributeError(f"Property RGBA.xyz_w must be set with a vector and a float, not {value}")
         try:
-            with self.node.tree.layout("V4", node_color=constants.V4_COLOR):
-                return self.jump(self.node.tree.rgb(value[0].x, value[0].y, value[0].z, value[1]))
+            with self.tree.layout("V4", node_color=constants.V4_COLOR):
+                return self.jump(self.tree.rgb(value[0].x, value[0].y, value[0].z, value[1]))
         except:
             pass
         
@@ -916,8 +917,8 @@ class RGBA(Socket):
     # Compose from v and w
     
     def XYZ_W(self, v, w):
-        with self.node.tree.layout("V4", node_color=constants.V4_COLOR1):
-            return self.node.tree.rgb(v.x, v.y, v.z, w)   
+        with self.tree.layout("V4", node_color=constants.V4_COLOR1):
+            return self.tree.rgb(v.x, v.y, v.z, w)   
         
     # ----------------------------------------------------------------------------------------------------
     # Decompose other in v, w
@@ -930,31 +931,32 @@ class RGBA(Socket):
         elif dtype == 'VECTOR':
             return self.tree.VECTOR(other), 0
         else:
-            v = self.tree.VALUE(other)
-            return v, v        
+            return self.tree.VECTOR(other), self.tree.VALUE(other)
+            #v = self.tree.VALUE(other)
+            #return v, v        
         
     # ----------------------------------------------------------------------------------------------------
     # Maths
     
     def dot(self, other):
-        with self.node.tree.layout("V4 Dot", node_color=constants.V4_COLOR2):
+        with self.tree.layout("V4 Dot", node_color=constants.V4_COLOR2):
             v0, w0 = self.xyz_w
             v1, w1 = self._other_xyz_w(other)
-            return self.node.tree.VectorMath(v0, v1, operation='DOT_PRODUCT').value + w0*w1
+            return self.tree.VectorMath(v0, v1, operation='DOT_PRODUCT').value + w0*w1
 
     @property
     def length(self):
-        with self.node.tree.layout("V4 Length", node_color=constants.V4_COLOR2):
+        with self.tree.layout("V4 Length", node_color=constants.V4_COLOR2):
             v0, w0 = self.xyz_w
-            return self.node.tree.Math(
-                self.node.tree.VectorMath(v0, v0, operation='DOT_PRODUCT').value + w0*w0,
+            return self.tree.Math(
+                self.tree.VectorMath(v0, v0, operation='DOT_PRODUCT').value + w0*w0,
                 operation='SQRT').value
         
     def normalized(self, zero=None):
-        with self.node.tree.layout("V4 Normalized", node_color=constants.V4_COLOR2):
+        with self.tree.layout("V4 Normalized", node_color=constants.V4_COLOR2):
             v0, w0 = self.xyz_w
-            n =self.node.tree.Math(
-                self.node.tree.VectorMath(v0, v0, operation='DOT_PRODUCT').value + w0*w0,
+            n =self.tree.Math(
+                self.tree.VectorMath(v0, v0, operation='DOT_PRODUCT').value + w0*w0,
                 operation='SQRT').value
             
             if zero is None:
@@ -966,13 +968,13 @@ class RGBA(Socket):
     # Operations
 
     def __neg__(self):
-        with self.node.tree.layout("-V4"):
-            return self.XYZ_W(self.node.tree.VectorMath(self, scale=-1, operation='SCALE').vector, self.w*-1)
+        with self.tree.layout("-V4"):
+            return self.XYZ_W(self.tree.VectorMath(self, scale=-1, operation='SCALE').vector, self.w*-1)
     
     # ----- Addition
     
     def __add__(self, other):
-        with self.node.tree.layout("V4 Add", node_color=constants.V4_COLOR):
+        with self.tree.layout("V4 Add", node_color=constants.V4_COLOR):
             v0, w0 = self.xyz_w
             v1, w1 = self._other_xyz_w(other)
                 
@@ -987,14 +989,14 @@ class RGBA(Socket):
     # ----- Subtraction
     
     def __sub__(self, other):
-        with self.node.tree.layout("V4 Subtract", node_color=constants.V4_COLOR):
+        with self.tree.layout("V4 Subtract", node_color=constants.V4_COLOR):
             v0, w0 = self.xyz_w
             v1, w1 = self._other_xyz_w(other)
                 
             return self.XYZ_W(v0 - v1, w0 - w1)
 
     def __rsub__(self, other):
-        with self.node.tree.layout("V4 Subtract", node_color=constants.V4_COLOR):
+        with self.tree.layout("V4 Subtract", node_color=constants.V4_COLOR):
             v0, w0 = self.xyz_w
             v1, w1 = self._other_xyz_w(other)
                 
@@ -1006,7 +1008,7 @@ class RGBA(Socket):
     # ----- Multiplication
     
     def __mul__(self, other):
-        with self.node.tree.layout("V4 Multiply", node_color=constants.V4_COLOR):
+        with self.tree.layout("V4 Multiply", node_color=constants.V4_COLOR):
             v0, w0 = self.xyz_w
             v1, w1 = self._other_xyz_w(other)
                 
@@ -1021,14 +1023,14 @@ class RGBA(Socket):
     # ----- Division
     
     def __truediv__(self, other):
-        with self.node.tree.layout("V4 Divide", node_color=constants.V4_COLOR):
+        with self.tree.layout("V4 Divide", node_color=constants.V4_COLOR):
             v0, w0 = self.xyz_w
             v1, w1 = self._other_xyz_w(other)
                 
             return self.XYZ_W(v0 / v1, w0 / w1)
 
     def __rtruediv__(self, other):
-        with self.node.tree.layout("V4 Divide", node_color=constants.V4_COLOR):
+        with self.tree.layout("V4 Divide", node_color=constants.V4_COLOR):
             v0, w0 = self.xyz_w
             v1, w1 = self._other_xyz_w(other)
                 
@@ -1040,7 +1042,7 @@ class RGBA(Socket):
     # ----- Modulo
 
     def __mod__(self, other):
-        with self.node.tree.layout("V4 Modulo", node_color=constants.V4_COLOR):
+        with self.tree.layout("V4 Modulo", node_color=constants.V4_COLOR):
             v0, w0 = self.xyz_w
             v1, w1 = self._other_xyz_w(other)
                 
@@ -1242,7 +1244,7 @@ class GEOMETRY(Socket):
             return other
         
         else:
-            return self.node.tree.JoinGeometry(self, other).geometry
+            return self.tree.JoinGeometry(self, other).geometry
 
     def __radd__(self, other):
         return self + other
@@ -1253,7 +1255,7 @@ class GEOMETRY(Socket):
     # ----- Subtract
 
     def __sub__(self, other):
-        return self.node.tree.MeshBoolean(self, other, operation='DIFFERENCE').mesh
+        return self.tree.MeshBoolean(self, other, operation='DIFFERENCE').mesh
             
     def __isub__(self, other):
         return self.jump(self - other)
