@@ -96,6 +96,10 @@ class StackedTree:
     
     def clear(self):
         self.btree.nodes.clear()
+        
+    @staticmethod
+    def current_tree():
+        return constants.current_tree()
 
     # ====================================================================================================
     # Stacking the Tree
@@ -288,7 +292,7 @@ class Node(object):
         
     def __str__(self):
         return f"<Node  {type(self).__name__} '{self.bnode.name}'>"
-        
+    
     # ====================================================================================================
     # Node label and color
     
