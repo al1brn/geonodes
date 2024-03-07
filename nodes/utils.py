@@ -256,6 +256,7 @@ def value_for(value, socket_type):
         return constants.current_tree().CombineXYZ(v[0], v[1], v[2]).output_socket
     
     elif socket_type in ['NodeSocketColor']:
+        
         if isinstance(value, mathutils.Color):
             return (value.r, value.g, value.b, 1.)
         
@@ -267,13 +268,13 @@ def value_for(value, socket_type):
         
         else:
             v = value
-            
+
         try:
             return mathutils.Color(v)
         except:
             pass
         
-        return constants.current_tree().CombineColor(v[0], v[1], v[2]).output_socket
+        return constants.current_tree().CombineColor(v[0], v[1], v[2], v[3]).output_socket
             
     
     elif socket_type in ['NodeSocketString']:

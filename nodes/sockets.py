@@ -290,6 +290,14 @@ class Sockets:
         return bsocks
     
     # ----------------------------------------------------------------------------------------------------
+    # Valid socket names
+    # For customizable sockets
+    
+    @property
+    def socket_names(self):
+        return [self.pyname(bsock.name) for bsock in self.bsockets if bsock.enabled and bsock.bl_idname != 'NodeSocketVirtual']
+    
+    # ----------------------------------------------------------------------------------------------------
     # Socket documentation
     # return dict : socket : list of socket types
     
@@ -552,7 +560,7 @@ class INT_VALUE(Socket):
         if dtype in ['VECTOR', 'ROTATION']:
             return self.tree.VectorMath(other, scale=self, operation='SCALE').vector
         elif dtype == 'RGBA':
-            return -self.tree.RGBA(other) + self
+            return self.tree.RGBA(other) * self
             
         return self.tree.Math(self, other, operation='MULTIPLY').value
 
@@ -633,7 +641,7 @@ class VECTOR_ROT(Socket):
     # Operations
     
     def __neg__(self):
-        return self.tree.VectorMath(self, -1, operation='SCALE').vector
+        return self.tree.VectorMath(self, scale=-1, operation='SCALE').vector
     
     # ----- Addition
     
@@ -877,6 +885,8 @@ class RGBA(Socket):
     # ----------------------------------------------------------------------------------------------------
     # V4
     
+    """
+    
     @property
     def x(self):
         return self.red
@@ -1051,6 +1061,8 @@ class RGBA(Socket):
     def __imod__(self, other):
         return self.jump(self % other)
     
+    """
+    
     
 
 # ====================================================================================================
@@ -1221,7 +1233,7 @@ class GEOMETRY(Socket):
                         _selection = tree.Compare(tree.Index(node_color=gen_color).index, mid, epsilon=half, operation='EQUAL', data_type='FLOAT', node_color=gen_color).result
                 
         
-        elif utils.get_value_socket_type(_selection) == 'INT':
+        elif utils.get_value_socket_type(_selection) in ['INT', 'VALUE']:
             _selection = tree.Index().index.equal(_selection, node_color=gen_color)
             
         if selection is None:

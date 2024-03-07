@@ -567,12 +567,11 @@ class Tree(StackedTree):
         for btree in btrees:
             bpy.data.node_groups.remove(btree)
             
-    def group(self, name, **kwargs):
+    def group(self, name, *args, **kwargs):
         
         # ----- Get the tree
         
         group_tree = bpy.data.node_groups.get(name)
-        #group_tree = self.prefixed(prefix).get(Prefixed.python_name(name))
         if group_tree is None:
             raise AttributeError(f"Impossible to find the group named '{name}'")
             
@@ -591,9 +590,21 @@ class Tree(StackedTree):
         
         # ----- Set the input sockets
         
+        all_kwargs = {}
+        keys = list(node.inputs.socket_names)
+        for i, value in enumerate(args):
+            if i >= len(keys):
+                raise AttributeError(f"Node Group '{name}' error: the number of args ({len(args)}) is greater than the number of sockets: {keys}")
+            all_kwargs[keys[i]] = value
+
         for k, v in kwargs.items():
+            if k in all_kwargs:
+                raise AttributeError(f"Node Group '{name}' error: key argument {k} is already set with arg={all_kwargs[k]}")
+            all_kwargs[k] = v
+        
+        for k, v in all_kwargs.items():
             if not node._input_socket_exists(k):
-                raise AttributeError(f"Node group {node} has no input socket named '{k}' in {list(node.inputs.sockets_pynames().keys())}")
+                raise AttributeError(f"Node group '{name}' error: no input socket named '{k}' in {keys}")
             setattr(node, k, v)
             
         return node

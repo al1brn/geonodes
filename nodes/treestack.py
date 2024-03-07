@@ -616,9 +616,9 @@ class Prefixed:
             print("TREES", list(self.trees.keys()))
             raise AttributeError(f"Tree named '{name}' not found in {self}")
             
-        def f(**kwargs):
+        def f(*args, **kwargs):
             cur_tree = constants.current_tree()
-            return cur_tree.group(tree.name, **kwargs)
+            return cur_tree.group(tree.name, *args, **kwargs)
         
         return f
     
