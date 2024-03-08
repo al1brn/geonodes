@@ -28,6 +28,9 @@ g_surfs   = GeoNodes.prefixed("S")
 
 ZERO = 0.0001
 
+V4_COL = (.3, .1, .1)
+
+
 # ----- Named attributes
 
 def clear_all():
@@ -46,6 +49,7 @@ def rebuild():
     build_transformations()
     build_lights()
     build_curves()
+    build_surfaces()
     
 
 # ====================================================================================================
@@ -87,8 +91,10 @@ def build_shaders():
         
         col = base.mix(intensity, color)
         
-        col.to_output("Color")
+        col.to_output( "Color")
         back.to_output("Back")
+        back.to_output("Intensity")
+        
         
 # =============================================================================================================================
 # A 4-vector is a couple (V: Vector, w: float)
@@ -105,7 +111,15 @@ class V4:
         if hasattr(w, 'bsocket'):
             self.w = w
         else:
-            self.w = tree.value(w) 
+            self.w = tree.value(w)
+            
+    # ----------------------------------------------------------------------------------------------------
+    # X, y, z, w
+    
+    @classmethod
+    def Xyzw(cls, x, y, z, w):
+        tree = GeoNodes.current_tree()
+        return cls(tree.xyz(x, y, z), w)
         
     @property
     def x(self):
@@ -119,6 +133,9 @@ class V4:
     def z(self):
         return self.V.z
     
+    # ----------------------------------------------------------------------------------------------------
+    # Tree input / output
+    
     @classmethod
     def Input(cls, tree, name=None, v=(0., 0., 0., 0.), description=""):
         name = "" if name is None else name + " "
@@ -130,6 +147,9 @@ class V4:
         name = "" if name is None else name + " "
         self.V.to_output(name + "V")
         self.w.to_output(name + "w")
+        
+    # ----------------------------------------------------------------------------------------------------
+    # Node input / output
         
     @classmethod
     def NodeOutput(cls, node, name=None):
@@ -144,120 +164,167 @@ class V4:
         name = "" if name is None else name.lower().replace(' ', '_') + "_"
         return {name + "v": self.V, name + "w": self.w}
     
-    @classmethod
-    def Xyzw(cls, x, y, z, w):
-        tree = GeoNodes.current_tree()
-        return cls(tree.xyz(x, y, z), w)
+    # ----------------------------------------------------------------------------------------------------
+    # From / to position
     
     @classmethod
-    def Position(cls, geo):
-        return cls(geo.position, geo.named_float("w"))
+    def Position(cls, geo, sample_index=None):
+        with GeoNodes.current_tree().layout("Get Position V4", V4_COL):
+            if sample_index is None:
+                return cls(geo.position, geo.named_float("w"))
+            else:
+                return cls(
+                    geo.POINT.sample_index_vector(geo.position,         index=sample_index), 
+                    geo.POINT.sample_index_float( geo.named_float("w"), index=sample_index))
     
     def set_position(self, geo):
-        geo.position = self.V
-        return geo.store_named_float("w", self.w)
+        with GeoNodes.current_tree().layout("Set Position V4", V4_COL):
+            w = geo.POINT.sample_index_float(self.w, index=geo.index)
+            geo.position = self.V
+            return geo.store_named_float("w", w)
+    
+    # ----------------------------------------------------------------------------------------------------
+    # From / to face normal
         
     @classmethod
-    def Normal(cls, geo, suffix):
-        return cls(geo.named_vector(f"N{suffix}V"), geo.FACE.named_float(f"N{suffix}w"))
+    def Normal(cls, geo, suffix, sample_index=None):
+        with GeoNodes.current_tree().layout("Get Normal", V4_COL):
+            if sample_index is None:
+                return cls(geo.named_vector(f"N{suffix}V"), geo.named_float(f"N{suffix}w"))
+            else:
+                return cls(
+                    geo.FACE.sample_index_vector(geo.named_vector(f"N{suffix}V"), index=sample_index), 
+                    geo.FACE.sample_index_float( geo.named_float( f"N{suffix}w"), index=sample_index))
     
     def set_normal(self, geo, suffix):
-        geo.FACE.store_named_vector(f"N{suffix}V", self.V)
-        return geo.FACE.store_named_float( f"N{suffix}w", self.w)
+        with GeoNodes.current_tree().layout("Set Normal", V4_COL):
+            w = geo.FACE.sample_index_float(self.w, index=geo.index)
+            geo.FACE.store_named_vector(f"N{suffix}V", self.V)
+            return geo.FACE.store_named_float( f"N{suffix}w", w)
+    
+    # ----------------------------------------------------------------------------------------------------
+    # From / to curve tangent
     
     @classmethod
-    def Tangent(cls, geo):
-        return cls(geo.named_vector("TV"), geo.FACE.named_float("Tw"))
+    def Tangent(cls, geo, sample_index=None):
+        with GeoNodes.current_tree().layout("Get Tangent", V4_COL):
+            if sample_index is None:
+                return cls(geo.named_vector("TV"), geo.named_float("Tw"))
+            else:
+                return cls(
+                    geo.POINT.sample_index_vector(geo.named_vector("TV"), index=sample_index), 
+                    geo.POINT.sample_index_float( geo.named_float( "Tw"), index=sample_index))
     
     def set_tangent(self, geo):
-        geo.POINT.store_named_vector("TV", self.V)
-        return geo.POINT.store_named_float( "Tw", self.w)
+        with GeoNodes.current_tree().layout("Set Tangent", V4_COL):
+            w = geo.POINT.sample_index_float(self.w, index=geo.index)
+            geo.POINT.store_named_vector("TV", self.V)
+            return geo.POINT.store_named_float( "Tw", w)
         
     # ----------------------------------------------------------------------------------------------------
     # Operations
         
     def __neg__(self):
-        return cls(-self.V, -self.w)
+        with GeoNodes.current_tree().layout("-V4", V4_COL):
+            return cls(-self.V, -self.w)
         
     def __add__(self, other):
-        return V4(self.V + other.V, self.w + other.w)
+        with GeoNodes.current_tree().layout("V4 Add", V4_COL):
+            return V4(self.V + other.V, self.w + other.w)
     
     def __iadd__(self, other):
-        self.V += other.V
-        self.w += other.w
+        with GeoNodes.current_tree().layout("V4 Add", V4_COL):
+            self.V += other.V
+            self.w += other.w
+            return self
         
     def __sub__(self, other):
-        return V4(self.V - other.V, self.w - other.w)
+        with GeoNodes.current_tree().layout("V4 Sub", V4_COL):
+            return V4(self.V - other.V, self.w - other.w)
     
-    def __iadd__(self, other):
-        self.V -= other.V
-        self.w -= other.w
+    def __isub__(self, other):
+        with GeoNodes.current_tree().layout("V4 Sub", V4_COL):
+            self.V -= other.V
+            self.w -= other.w
+            return self
         
     def __mul__(self, other):
-        if isinstance(other, V4):
-            return V4(self.V*other.V, self.w*other.w)
-        else:
-            return V4(self.V*other, self.w*other)
+        with GeoNodes.current_tree().layout("V4 Mul", V4_COL):
+            if isinstance(other, V4):
+                return V4(self.V*other.V, self.w*other.w)
+            else:
+                return V4(self.V*other, self.w*other)
 
     def __imul__(self, other):
-        if isinstance(other, V4):
-            self.V *= other.V
-            self.w *= other.w
-        else:
-            self.V *= other
-            self.w *= other
+        with GeoNodes.current_tree().layout("V4 Mul", V4_COL):
+            if isinstance(other, V4):
+                self.V *= other.V
+                self.w *= other.w
+            else:
+                self.V *= other
+                self.w *= other
+            return self
             
     def __truediv__(self, other):
-        if isinstance(other, V4):
-            return V4(self.V/other.V, self.w/other.w)
-        else:
-            return V4(self.V/other, self.w/other)
+        with GeoNodes.current_tree().layout("V4 Div", V4_COL):
+            if isinstance(other, V4):
+                return V4(self.V/other.V, self.w/other.w)
+            else:
+                return V4(self.V/other, self.w/other)
 
     def __itruediv__(self, other):
-        if isinstance(other, V4):
-            self.V /= other.V
-            self.w /= other.w
-        else:
-            self.V /= other
-            self.w /= other
+        with GeoNodes.current_tree().layout("V4 Div", V4_COL):
+            if isinstance(other, V4):
+                self.V /= other.V
+                self.w /= other.w
+            else:
+                self.V /= other
+                self.w /= other
+            return self
             
     def dot(self, other):
-        return self.V.dot(other.V) + self.w*other.w
+        with GeoNodes.current_tree().layout("Dot 4", V4_COL):
+            return self.V.dot(other.V) + self.w*other.w
     
     @property
     def length(self):
-        return self.V.tree.sqrt(self.V.dot(self.V) + self.w*self.w)
+        with GeoNodes.current_tree().layout("V4 Length", V4_COL):
+            return self.V.tree.sqrt(self.V.dot(self.V) + self.w*self.w)
     
     def normalized(self, return_error=False):
-        n = self.length
-        err = n.less_than(ZERO)
-        v4 = V4((self.V/n).switch(err, self.V), (self.w/n).switch(err, self.w))
-        if return_error:
-            return v4, err
-        else:
-            return v4
+        with GeoNodes.current_tree().layout("V4 Normalized", V4_COL):
+            n = self.length
+            err = n.less_than(ZERO)
+            v4 = V4((self.V/n).switch(err, self.V), (self.w/n).switch(err, self.w))
+            if return_error:
+                return v4, err
+            else:
+                return v4
         
     def mat_dot(self, M):
+        with GeoNodes.current_tree().layout("Mat (4x4) @ V4", V4_COL):
         
-        v0 = V4.NodeOutput(M, "R 0")
-        v1 = V4.NodeOutput(M, "R 1")
-        v2 = V4.NodeOutput(M, "R 2")
-        v3 = V4.NodeOutput(M, "R 3")
-        
-        return V4.Xyzw(
-            v0.x*self.x + v0.y*self.y + v0.z*self.z + v0.w*self.w,
-            v1.x*self.x + v1.y*self.y + v1.z*self.z + v1.w*self.w,
-            v2.x*self.x + v2.y*self.y + v2.z*self.z + v2.w*self.w,
-            v3.x*self.x + v3.y*self.y + v3.z*self.z + v3.w*self.w)
+            v0 = V4.NodeOutput(M, "R 0")
+            v1 = V4.NodeOutput(M, "R 1")
+            v2 = V4.NodeOutput(M, "R 2")
+            v3 = V4.NodeOutput(M, "R 3")
+            
+            return V4.Xyzw(
+                v0.x*self.x + v0.y*self.y + v0.z*self.z + v0.w*self.w,
+                v1.x*self.x + v1.y*self.y + v1.z*self.z + v1.w*self.w,
+                v2.x*self.x + v2.y*self.y + v2.z*self.z + v2.w*self.w,
+                v3.x*self.x + v3.y*self.y + v3.z*self.z + v3.w*self.w)
     
     def switch(self, b, other):
-        return V4(self.V.switch(b, other.V), self.w.switch(b, other.w))
+        with GeoNodes.current_tree().layout("Switch V4", V4_COL):
+            return V4(self.V.switch(b, other.V), self.w.switch(b, other.w))
     
     def angle_with(self, other):
-        a = self.normalized()
-        b = other.normalized()
-        
-        return self.V.tree.arccos(a.dot(b))
+        with GeoNodes.current_tree().layout("V4 Angle", V4_COL):
+            a = self.normalized()
+            b = other.normalized()
+            
+            return self.V.tree.arccos(a.dot(b))
 
 # =============================================================================================================================
 # Matrices groups
@@ -542,8 +609,10 @@ def build_base():
                 n = V4.Normal(mesh, sn)
                 dot = v_proj.dot(n)
                 back *= dot.less_than(0)
-
-            mesh.FACE.store_named_boolean("Back", back)
+                
+            # NOTE : Storing the back flag on POINT smoothes the transition
+            mesh.POINT.store_named_boolean("Back", back)
+            
             mesh.FACE.shade_smooth = shade_smooth
             
                 
@@ -845,30 +914,33 @@ def build_transformations():
         
         # ----- Rotation xy / zw
         
-        ca, sa = tree.cos(xy), tree.sin(xy)
-        cb, sb = tree.cos(zw), tree.sin(zw)
-        A0 = V4.Xyzw( ca, -sa,  0.,  0.)
-        A1 = V4.Xyzw( sa,  ca,  0.,  0.)
-        A2 = V4.Xyzw( 0.,  0.,  cb, -sb)
-        A3 = V4.Xyzw( 0.,  0.,  sb,  cb)
+        with tree.layout("Angles XY ZW"):
+            ca, sa = tree.cos(xy), tree.sin(xy)
+            cb, sb = tree.cos(zw), tree.sin(zw)
+            A0 = V4.Xyzw( ca, -sa,  0.,  0.)
+            A1 = V4.Xyzw( sa,  ca,  0.,  0.)
+            A2 = V4.Xyzw( 0.,  0.,  cb, -sb)
+            A3 = V4.Xyzw( 0.,  0.,  sb,  cb)
         
         # ----- Rotation xz / yw
-        
-        ca, sa = tree.cos(xz), tree.sin(xz)
-        cb, sb = tree.cos(yw), tree.sin(yw)
-        B0 = V4.Xyzw( ca,  0.,  sa,  0.)
-        B1 = V4.Xyzw( 0.,  cb,  0.,  sb)
-        B2 = V4.Xyzw(-sa,  0.,  ca,  0.)
-        B3 = V4.Xyzw( 0., -sb,  0.,  cb)
+
+        with tree.layout("Angles XZ YW"):
+            ca, sa = tree.cos(xz), tree.sin(xz)
+            cb, sb = tree.cos(yw), tree.sin(yw)
+            B0 = V4.Xyzw( ca,  0.,  sa,  0.)
+            B1 = V4.Xyzw( 0.,  cb,  0.,  sb)
+            B2 = V4.Xyzw(-sa,  0.,  ca,  0.)
+            B3 = V4.Xyzw( 0., -sb,  0.,  cb)
         
         # ----- Rotation xw / yz
         
-        ca, sa = tree.cos(xw), tree.sin(xw)
-        cb, sb = tree.cos(yz), tree.sin(yz)
-        C0 = V4.Xyzw( ca,  0.,  0., -sa)
-        C1 = V4.Xyzw( 0.,  cb, -sb,  0.)
-        C2 = V4.Xyzw( 0.,  sb, cb,  0.)
-        C3 = V4.Xyzw( sa,  0.,  0.,  ca)
+        with tree.layout("Angles XW YZ"):
+            ca, sa = tree.cos(xw), tree.sin(xw)
+            cb, sb = tree.cos(yz), tree.sin(yz)
+            C0 = V4.Xyzw( ca,  0.,   0., -sa)
+            C1 = V4.Xyzw( 0.,  cb, -sb,  0.)
+            C2 = V4.Xyzw( 0.,  sb,  cb,  0.)
+            C3 = V4.Xyzw( sa,  0.,   0.,  ca)
         
         # ----- Multiply the matrices
         
@@ -920,9 +992,8 @@ def build_transformations():
         
         # ----- Mesh
         
-        with tree.layout("Mesh"):
-            
-            for s in ["A","B"]:
+        for s in ["A","B"]:
+            with tree.layout(f"Normal {s}"):
                 node = g_maths.rotation_4d(**V4.Normal(mesh, s).kwargs())
                 tree.input_node.plug_to(node)
                 V4.NodeOutput(node).set_normal(mesh, s)
@@ -1101,22 +1172,20 @@ def build_transformations():
 # - Light emitter
 # - Light capture
 
-def lights():
+def build_lights():
     
     # ---------------------------------------------------------------------------------------------------
     # MODIFIER - Set an object as a 4-point
     
-    with GeoNodes("Point", fake_user=True, prefix=modifiers) as tree:
+    with GeoNodes("Point", fake_user=True, prefix=g_mods) as tree:
         
-        xyz     = tree.vector_input("xyz", 0., description="xyz component")
-        w       = tree.float_input("w",   0., description="w component")
+        v       = V4.Input(tree)
         radius  = tree.float_input("Radius", .1)
         visible = tree.bool_input( "Visible", True)
         mat     = tree.material_input("Material")
         
         point = tree.points(count=1)
-        point_loc = tree.rgb_a(xyz, w)
-        point.POINT.store_named_float_color("P4", point_loc)
+        v.set_position(point)
         
         # ----- Point visualization
         
@@ -1124,7 +1193,7 @@ def lights():
         sphere.shade_smooth = True
         sphere.material     = mat
         
-        sphere.transform_geometry(translation=maths.projection(point_loc).vector)
+        sphere.transform_geometry(translation=g_maths.projection(*v.args).v)
         
         # ----- To output
         
@@ -1133,25 +1202,25 @@ def lights():
     # ---------------------------------------------------------------------------------------------------
     # MODIFIER - Set an object as light emitter
 
-    with GeoNodes("Light Emitter", fake_user=True, prefix=modifiers) as tree:
+    with GeoNodes("Light Emitter", fake_user=True, prefix=g_mods) as tree:
         
-        xyz       = tree.vector_input("xyz", 0., description="xyz component")
-        w         = tree.float_input("w", 0., description="w component")
-        color     = tree.color_input( "Color", (1., 1., 1., 1.))
-        intensity = tree.float_input( "Intensity", 1., min_value = 0)
-        radius    = tree.float_input("Radius", .1)
-        visible   = tree.bool_input( "Visible", True)
+        v         = V4.Input(tree)
+
+        color     = tree.color_input(   "Color", (1., 1., 1., 1.))
+        intensity = tree.float_input(   "Intensity", 1., min_value = 0)
+        radius    = tree.float_input(   "Radius", .1)
+        visible   = tree.bool_input(    "Visible", True)
         mat       = tree.material_input("Material")
         
         # ----- Is a 4 point
         
-        geo = modifiers.point(xyz=xyz, w=w, radius=radius, visible=visible, material=mat).geometry
+        geo = g_mods.point(None, *v.args, radius=radius, visible=visible, material=mat).geometry
         
         comps = geo.separate_components()
         mesh  = comps.mesh
         cloud = comps.point_cloud
         
-        cloud.POINT.store_named_float("Intensity", intensity)
+        cloud.POINT.store_named_float(      "Intensity", intensity)
         cloud.POINT.store_named_float_color("Color", color)
         
         tree.og = cloud + mesh
@@ -1159,38 +1228,38 @@ def lights():
     # ----------------------------------------------------------------------------------------------------
     # GROUP - Reflect on a surface given the two normals
     
-    with GeoNodes("Surface reflection", is_group=True, prefix=maths) as tree:
+    with GeoNodes("Surface reflection", is_group=True, prefix=g_maths) as tree:
         
-        v  = tree.color_input("V")
-        Na = tree.color_input(N4A)
-        Nb = tree.color_input(N4B)
+        v  = V4.Input(tree)
+        Na = V4.Input(tree, "Normal A")
+        Nb = V4.Input(tree, "Normal B")
         
         # ---------------------------------------------------------------------------
         # Decompose the vector along the two normals and remainder
         
         with tree.layout("Decompose along the two normals and the remainder"):
-            x = utils.dot(Na, v).value
-            y = utils.dot(Nb, v).value
-            v_ = utils.sub(v, utils.add(utils.scale(x, Na).v, utils.scale(y, Nb).v).v).v
-            x_back = x.less_than(0)
-            y_back = y.less_than(0)
+            x = Na.dot(v)
+            y = Nb.dot(v)
         
         # ---------------------------------------------------------------------------
-        # Recompose inverting the components along the normals
+        # Reflected vector inverted the decomposed parts
         
-        with tree.layout("Recompose, inverting the components along the normals"):
+        with tree.layout("Inverting the components along the normals"):
             
-            r = utils.add(utils.add(utils.scale(-x, Na), utils.scale(-y, Nb)).v, v_).v
-            
-        r.to_output("V")
-        x_back.to_output("Back A")
-        y_back.to_output("Back B")
-        #(x_back * y_back).to_output("Back")
+            r = v - Na*(2*x) - Nb*(2*y)
+
+            front_a = x.map_range(-.1, 0., 1, 0.)
+            front_b = y.map_range(-.1, 0., 1, 0.)
+                
+        r.to_output()
+        
+        front_a.to_output("Front A")
+        front_b.to_output("Front B")
         
     # ----------------------------------------------------------------------------------------------------
     # MODIFIER - Capture light from an emitter
     
-    with GeoNodes("Light Capture", fake_user=True, prefix=modifiers) as tree:
+    with GeoNodes("Light Capture", fake_user=True, prefix=g_mods) as tree:
         
         geo   = tree.ig
         light = tree.object_input("Light")
@@ -1201,14 +1270,10 @@ def lights():
         
         with tree.layout("Read light information"):
         
-            info = light.object_info()
+            info      = light.object_info()
+            cloud     = info.geometry.separate_components().point_cloud
             
-            #loc   = info.location
-            cloud = info.geometry.separate_components().point_cloud
-            
-            #w         = cloud.POINT.sample_index_float(cloud.named_float("w"),         0)
-            #light_loc = tree.rgb_a(loc, w)
-            light_loc = cloud.POINT.sample_index_color(cloud.named_color("P4"),        0)
+            light_loc = V4.Position(cloud, sample_index=0)
             color     = cloud.POINT.sample_index_color(cloud.named_color("Color"),     0)
             intensity = cloud.POINT.sample_index_float(cloud.named_color("Intensity"), 0)
             
@@ -1223,37 +1288,47 @@ def lights():
         # Incident vector
         
         with tree.layout("Incident vector"):
-        
-            v = tree.rgb_a(mesh.position, mesh.named_float("w"))        
-            Na = mesh.named_color(N4A)
-            Nb = mesh.named_color(N4B)
             
-            incident = utils.normalize(utils.sub(v, light_loc).v).v
+            v  = V4.Position(mesh)
+            Na = V4.Normal(mesh, "A")
+            Nb = V4.Normal(mesh, "B")
+            
+            vray     = v - light_loc
+            distance = vray.length
+            incident = vray/distance
             
         # ----------------------------------------------------------------------------------------------------
         # Reflected vector
         
-        with tree.layout("Reflected vector"):
-            
-            ref_node = maths.surface_reflection(v=incident, n4a=Na, n4b=Nb)
-            reflected = ref_node.v
+        ref_node  = g_maths.surface_reflection(*incident.args, *Na.args, *Nb.args)
+        reflected = V4.NodeOutput(ref_node)
             
         # ----------------------------------------------------------------------------------------------------
         # Intensity
         
-        with tree.layout("Intensity with projection direction"):
-            proj = maths.projection_matrix().m_3
+        proj = V4.NodeOutput(g_maths.projection_matrix(), "R 3")
             
-            direct = utils.dot(proj, reflected).value
-            direct = direct.switch(direct.less_than(0), 0.)
+        with tree.layout("Light intensity"):
             
+            direct = proj.dot(reflected)
             intensity = intensity*(direct**focus)
             
-            color = tree.hsl(color.hue, color.saturation, color.lightness*intensity)
-            color = color.switch(ref_node.back, color.mix_difference(1., (.3, .3, .3)))
-
-            mesh.POINT.store_named_float(  "L4 Intensity", intensity)
-            mesh.POINT.store_named_vector( "L4 Color",     color)
+            
+        for s in ["A", "B"]:
+            with tree.layout(f"Normal {s} color"):
+                
+                front_col = mesh.named_color(f"Front Color {s}")
+                back_col  = mesh.named_color(f"Back Color {s}")
+                front_col = front_col.switch(-front_col.node.exists, (0., 0., 0., 1.))
+                back_col  = back_col.switch( -back_col.node.exists,  (0., 0., 0., 1.))
+                
+                f = getattr(ref_node, f"front_{s}".lower())
+                
+                front_col = front_col.mix_add(f*intensity, color)
+                back_col  = back_col.mix_add((1-f)*intensity, color)
+                
+                mesh.POINT.store_named_float_color(f"Front Color {s}", front_col)
+                mesh.POINT.store_named_float_color(f"Back Color {s}",  back_col)
         
         
         tree.og = mesh + curve + cloud + inst
@@ -1264,33 +1339,24 @@ def lights():
 # - Circle
 # - Spiral
 
-def m_curves():
+def build_curves():
     
     # ---------------------------------------------------------------------------------------------------- 
     # MODIFIER - A line
 
-    with GeoNodes("Line", prefix=curves) as tree:
+    with GeoNodes("Line", prefix=g_curves) as tree:
         
-        v0 = tree.vector_input("Start xyz")
-        w0 = tree.float_input( "Start w")
-        
-        v1 = tree.vector_input("End xyz", (0., 0., 1.))
-        w1 = tree.float_input( "End w")
+        v0 = V4.Input(tree, "Start")
+        v1 = V4.Input(tree, "End", (0., 0., 1., 0.))
         
         count = tree.integer_input("Resolution", 2, min_value=2)
         
-        line = tree.curve_line(v0, v1)
-        line.POINT.store_named_float("w", w0)
-        line.POINT[1].store_named_float("w", w1)
-        
-        line.resample_curve(count)
+        line = tree.curve_line(v0.V, v1.V).resample_curve(count)
+        line.POINT.store_named_float("w", line.index.map_range(0, count-1, v0.w, v1.w))
         
         # Tangent is constant
         
-        p0 = tree.rgb_a(v0, w0)
-        p1 = tree.rgb_a(v1, w1)
-        
-        line.POINT.store_named_float_color("T4", utils.normalize(utils.sub(p1, p0).v).v)
+        (v1 - v0).normalized().set_tangent(line)
         
         # Done
         
@@ -1299,10 +1365,9 @@ def m_curves():
     # ----------------------------------------------------------------------------------------------------
     # MODIFIER - Parametric Curve
     
-    with GeoNodes("Parametric Curve", fake_user=True, prefix=curves) as tree:
+    with GeoNodes("Parametric Curve", fake_user=True, prefix=g_curves) as tree:
         
-        s_xyz  = tree.vector_input("Speed xyz", (0., 0., 0.), description="x = speed * t")
-        s_w    = tree.float_input( "Speed w",             0., description="w = speed * t")
+        speed  = V4.Input(tree, "Speed")
         
         r_xy   =  tree.float_input("Radius XY",           1., description="Radius in plane XY")
         om_xy  =  tree.angle_input("Omega XY",            0., description="Rotation speed in plane XY")
@@ -1327,10 +1392,10 @@ def m_curves():
         
         with tree.layout("Point position"):
             
-            x = s_xyz.x*t + ca*r_xy
-            y = s_xyz.y*t + sa*r_xy
-            z = s_xyz.z*t + cb*r_zw
-            w = s_w*t     + sb*r_zw
+            x = speed.x*t + ca*r_xy
+            y = speed.y*t + sa*r_xy
+            z = speed.z*t + cb*r_zw
+            w = speed.w*t + sb*r_zw
 
             curve.position = tree.xyz(x, y, z)
             curve.POINT.store_named_float("w", w)
@@ -1343,29 +1408,30 @@ def m_curves():
             ro_xy = om_xy*r_xy
             ro_zw = om_zw*r_zw
             
-            tx = s_xyz.x - ro_xy*sa
-            ty = s_xyz.y + ro_xy*ca
-            tz = s_xyz.z - ro_zw*sb
-            tw = s_w     + ro_zw*cb
+            tx = speed.x - ro_xy*sa
+            ty = speed.y + ro_xy*ca
+            tz = speed.z - ro_zw*sb
+            tw = speed.w + ro_zw*cb
             
-            curve.POINT.store_named_float_color(T4, utils.normalize(tree.rgb(tx, ty, tz, tw)).v)
+            V4.Xyzw(tx, ty, tz, tw).normalized().set_tangent(curve)
         
         tree.og = curve
         
     # ----------------------------------------------------------------------------------------------------
     # GROUP - Mesh along a curve
     
-    with GeoNodes("Curve to Mesh", is_group=True, fake_user=True, prefix=maths) as tree:
+    with GeoNodes("Curve to Mesh", is_group=True, fake_user=True, prefix=g_maths) as tree:
         
         curve      = tree.geometry_input("Curve")
         mesh       = tree.geometry_input("Mesh")
         scale      = tree.float_input(   "Scale", 1.)
         use_radius = tree.bool_input(    "Use Radius", False)
+        align_w    = tree.bool_input(    "Align w",    True)
         
         # ---------------------------------------------------------------------------
         # Points at origin to instantiate the meshes
         
-        count = curve.CURVE.domain_size().point_count
+        count = curve.domain_size(component='CURVE').point_count
         pts = tree.Points(count).geometry
         pts.position = 0
         
@@ -1373,37 +1439,32 @@ def m_curves():
         # Instantiate the surface the right number of times at location zero
         # to perform rotation
         
-        n = mesh.domain_size().point_count
+        n = mesh.domain_size(component='MESH').point_count
         
         insts = pts.instance_on_points(instance=mesh)
         
         # Scale with spline radius
-        insts.scale_instances(scale=scale.switch(use_radius, curve.sample_index_float(curve.radius, insts.index)))
+        insts.scale_instances(scale=scale.switch(use_radius, curve.sample_index_float(curve.radius, insts.index)*scale))
         
         # Realize the instances
         meshes = insts.realize_instances()
         mesh_index = meshes.index/n
 
         # ---------------------------------------------------------------------------
-        # Read the information from the curve
+        # Read position and tangent from the curve
         
-        # Points location
-        Cxyz = curve.sample_index_vector(curve.position, index=mesh_index)
-        Cw   = curve.sample_index_float(curve.named_float("w"), index=mesh_index)
-        
-        # Tangent
-        T    = curve.sample_index_color(curve.named_color(T4), index=mesh_index)
-        node = utils.to_xyz_w(T)
-        Txyz, Tw = node.xyz, node.w
-        
+        centers  = V4.Position(curve, sample_index=mesh_index)
+        tangents = V4.Tangent(curve, sample_index=mesh_index)
 
         # ---------------------------------------------------------------------------
         # Rotation to align (0, 0, 0, 1) -> Tangent and then translation
         
-        meshes = modifiers.align_vector(meshes, from_xyz=(0., 0., 0.), from_w=1., to_xyz=Txyz, to_w=Tw).geometry
+        tg = V4.Xyzw(0., 0., 1., 0.).switch(align_w, V4.Xyzw(0., 0., 0., 1.))
         
-        meshes.offset = Cxyz
-        meshes.POINT.store_named_float("w", Cw + meshes.named_float("w"))
+        meshes = g_mods.align_vector(meshes, **tg.kwargs("From"), **tangents.kwargs("To")).geometry
+        
+        meshes.offset = centers.V
+        meshes.POINT.store_named_float("w", meshes.named_float("w") + centers.w)
         
         # Done
         
@@ -1412,120 +1473,117 @@ def m_curves():
     # ----------------------------------------------------------------------------------------------------
     # MODIFIER - Mesh along a curve
     
-    with GeoNodes("Curve to Mesh", fake_user=True, prefix=curves) as tree:
+    with GeoNodes("Curve to Mesh", fake_user=True, prefix=g_curves) as tree:
         
         curve      = tree.ig
         surface    = tree.object_input("Mesh Object", description="3D Mesh to instantiate along the curve")
         scale      = tree.float_input( "Scale", 1.)
-        use_radius = tree.bool_input(  "Use Radius", False)
+        use_radius = tree.bool_input(  "Use Radius", False, description="Use curve radius attribute")
+        align_w    = tree.bool_input(  "Align w",    True, description="Use mesh w axis along the curve tangent (z otherwise)")
+        
 
         mesh = surface.object_info().geometry
         
-        mesh = maths.curve_to_mesh(
+        mesh = g_maths.curve_to_mesh(
             curve      = curve,
             mesh       = mesh,
             scale      = scale,
-            use_radius = use_radius).mesh
+            use_radius = use_radius,
+            align_w    = align_w).mesh
         
         tree.og = mesh
-        
-        if False:
-            
-            # ---------------------------------------------------------------------------
-            # Points at origin to instantiate the meshes
-            
-            count = curve.CURVE.domain_size().point_count
-            pts = tree.Points(count).geometry
-            pts.position = 0
-            
-            # ---------------------------------------------------------------------------
-            # Instantiate the surface the right number of times at location zero
-            # to perform rotation
-            
-            mesh = surface.object_info().geometry
-            n = mesh.domain_size().point_count
-            
-            insts = pts.instance_on_points(instance=mesh)
-            
-            # Scale with spline radius
-            #insts.scale_instances(scale=scale.switch(use_radius, curve.sample_index_float(curve.radius, insts.index)))
-            
-            # Realize the instances
-            meshes = insts.realize_instances()
-            mesh_index = meshes.index/n
-    
-            # ---------------------------------------------------------------------------
-            # Read the information from the curve
-            
-            # Points location
-            Cxyz = curve.sample_index_vector(curve.position, index=mesh_index)
-            Cw   = curve.sample_index_float(curve.named_float("w"), index=mesh_index)
-            
-            # Tangent
-            T    = curve.sample_index_color(curve.named_color(T4), index=mesh_index)
-            node = utils.to_xyz_w(T)
-            Txyz, Tw = node.xyz, node.w
-            
-    
-            # ---------------------------------------------------------------------------
-            # Rotation to align (0, 0, 0, 1) -> Tangent and then translation
-            
-            meshes = modifiers.align_vector(meshes, from_xyz=(0., 0., 0.), from_w=1., to_xyz=Txyz, to_w=Tw).geometry
-            
-            meshes.offset = Cxyz
-            meshes.store_named_float("w", Cw)
-            
-            # Done
-            
-            tree.og = meshes
             
     # ----------------------------------------------------------------------------------------------------
     # MODIFIER - Mesh along a curve
     
-    with GeoNodes("Curve to Mesh with Spheres", fake_user=True, prefix=curves) as tree:
+    with GeoNodes("Curve to Mesh with Spheres", fake_user=True, prefix=g_curves) as tree:
         
         curve      = tree.ig
-        resol      = tree.integer_input("Sphere Resolution", 16, min_value=3)
-        size       = tree.float_input(  "Size", 1.)
-        use_radius = tree.bool_input(   "Use Radius", False)
+        resol      = tree.integer_input( "Sphere Resolution", 16, min_value=3)
+        size       = tree.float_input(   "Size", 1.)
+        use_radius = tree.bool_input(    "Use Radius", False)
+        align_w    = tree.bool_input(    "Align w",    True, description="Use mesh w axis along the curve tangent (z otherwise)")
         mat        = tree.material_input("Material")
         
         sphere = tree.uv_sphere(rings=resol, segments=2*resol, radius=size)
         sphere.material=mat
         
-        mesh = maths.curve_to_mesh(
+        mesh = g_maths.curve_to_mesh(
                 curve       = curve,
                 mesh        = sphere,
                 scale       = 1.,
-                use_radius  = use_radius).mesh
+                use_radius  = use_radius,
+                align_w     = align_w).mesh
         
         mesh.shade_smooth = True
         
         tree.og = mesh
         
+    # ----------------------------------------------------------------------------------------------------
+    # MODIFIER - Tube on curves
+    
+    with GeoNodes("Curves profile", fake_user=True, prefix=g_curves) as tree:
+        
+        geo = tree.ig
+        radius     = tree.float_input("Radius", .1)
+        resol      = tree.integer_input("Resolution", 8)
+        mat        = tree.material_input("Material")
+        smooth     = tree.bool_input("Shade Smooth", True)
+        ok_points  = tree.bool_input("Points", False)
+        pt_radius  = tree.float_input("Points radius", .2)
+        
+        comps = geo.separate_components()
+        
+        mesh  = comps.mesh
+        curve = comps.curve
+        cloud = comps.point_cloud
+        inst  = comps.instances
+        
+        # ----- Profile
+        
+        meshed = curve.curve_to_mesh(profile_curve=tree.curve_circle(radius=radius, resolution=resol))
+        
+        # ----- Points
+        
+        spheres = curve.instance_on_points(instance=tree.uv_sphere(radius=pt_radius, rings=resol, segments=2*resol))
+        meshed  = meshed.switch(ok_points, meshed + spheres)
+        
+        # ----- Finalization
+        
+        meshed.material = mat
+        meshed.shade_smooth = smooth
+        
+        # ----- Done
+        
+        tree.og = mesh + meshed + cloud + inst        
+        
 # ====================================================================================================
 # Surfaces
 
-def m_surfaces():
+def build_surfaces():
     
-    with GeoNodes("HyperSphere", fake_user=True, prefix=surfaces) as tree:
+    # ----------------------------------------------------------------------------------------------------
+    # Hypersphere
+    
+    with GeoNodes("Hypersphere", fake_user=True, prefix=g_surfs) as tree:
         
-        radius = tree.float_input("Radius",       1., min_value=.01)
-        resol  = tree.integer_input("Resolution", 16, min_value=3)
-        slices = tree.integer_input("Slices",     7,  min_value=1)
+        radius = tree.float_input(   "Radius",       1., min_value=.01)
+        resol  = tree.integer_input( "Resolution", 16, min_value=3)
+        slices = tree.integer_input( "Slices",     7,  min_value=1)
         mat    = tree.material_input("Material")
         
-        line = curves.line(start_xyz=(0, 0, -radius), end_xyz=(0, 0, radius), resolution=slices+2).geometry
-        z = (2*line.index/(slices+1) - 1)*(tree.pi/2)
-        line.radius = radius*tree.cos(z)
+        line = g_curves.line(start_v=0., start_w=-radius, end_v=0., end_w=radius, resolution=slices+2).geometry
+        
+        line.radius = tree.sqrt(tree.abs(radius**2 - line.named_float("w")**2))
         
         line[slices+1].POINT.delete_geometry()
         line[0].POINT.delete_geometry()
         
-        hs = curves.curve_to_mesh_with_spheres(
+        hs = g_curves.curve_to_mesh_with_spheres(
             geometry   = line,
             sphere_resolution = resol,
             use_radius = True,
+            align_w    = True,
             material   = mat,
             )
         
@@ -1533,7 +1591,201 @@ def m_surfaces():
         
         tree.og = hs
         
+    # ----------------------------------------------------------------------------------------------------
+    # Hypercube
         
+    with GeoNodes("Hypercube", fake_user=True, prefix=g_surfs) as tree:
+        
+        radius = tree.float_input(   "Size",       1., min_value=.01)
+        slices = tree.integer_input( "Slices",     7,  min_value=1)
+        mat    = tree.material_input("Material")
+        
+        line = g_curves.line(start_v=0., start_w=-radius, end_v=0., end_w=radius, resolution=slices).geometry
+        
+        cube = tree.cube()
+        cube.material=mat
+        
+        mesh = g_maths.curve_to_mesh(
+                curve       = line,
+                mesh        = cube,
+                scale       = 1.,
+                use_radius  = False,
+                align_w     = True).mesh
+        
+        tree.og = mesh
+        
+    # ----------------------------------------------------------------------------------------------------
+    # Extrude along w
+        
+    with GeoNodes("Extrude w", fake_user=True, prefix=g_surfs) as tree:
+        
+        mesh     = tree.ig
+        size_w   = tree.float_input("Offset w", 1.)
+        as_curve = tree.bool_input("As curve", True)
+        
+        # ----- Start a minus size
+        
+        size_w /= 2
+        mesh.POINT.store_named_float("w", -size_w)
+        
+        # ----- Extrude to plus size
+        
+        mesh.EDGE.extrude_mesh(offset_scale=0.)
+        mesh.POINT[mesh.node.top].store_named_float("w", size_w)
+
+        # ----- Return the result
+        
+        tree.og = mesh.switch(as_curve, mesh.mesh_to_curve())
+        
+
+
+    # ----------------------------------------------------------------------------------------------------
+    # Torus
+    
+    with GeoNodes("Torus", fake_user=True, prefix=g_surfs) as tree:
+        
+        radius0 = tree.float_input(  "Radius XY",  1.)
+        radius1 = tree.float_input(  "Radius ZW",  1.)
+        resol   = tree.integer_input("Resolution", 32, min_value=3)
+        factor0 = tree.factor_input( "Factor XY", 1., min_value=0, max_value=1.)  
+        factor1 = tree.factor_input( "Factor ZW", 1., min_value=0, max_value=1.)  
+        twists  = tree.float_input(  "Twists", 0, min_value=-10, max_value=10)
+        mat     = tree.material_input("Material")
+        smooth  = tree.bool_input(    "Shade smooth", True)
+        
+        # ----------------------------------------------------------------------------------------------------
+        # Starting from a grid
+        
+        grid = tree.grid(vertices_x=resol, vertices_y=resol)
+        a = (grid.index/resol)/(resol-1)
+        b = (grid.index%resol)/(resol-1)
+        
+        #grid.position = (0.,0., 0.)
+        #grid.POINT.store_named_float("w", 0.)
+        
+        # ----------------------------------------------------------------------------------------------------
+        # Curve in the plane xy
+        
+        # ----- Line
+        
+        with tree.layout("XY Factor=0: straight line"):
+            l_xy = (tree.pi*2)*radius0
+            lx = 0.
+            ly = a*l_xy - l_xy/2
+            
+            line0 = tree.GEOMETRY(grid)
+            line0.position = (lx, ly, 0)
+        
+        # ----- Circle in plane XY
+
+        with tree.layout("XY Curve lined up to Circle"):
+            ag0 = (tree.pi*2)*factor0
+            r0 = l_xy/ag0
+            c0 = tree.xyz(0, -r0, 0)
+            
+            ag0_ = a*ag0 - ag0/2
+            cx = r0*tree.cos(ag0_)
+            cy = r0*tree.sin(ag0_)
+            
+            circle0 = tree.GEOMETRY(grid)
+            circle0.position = (cx - r0 + factor0*radius0, cy, 0)
+            
+        circle0 = circle0.switch(factor0.less_than(0.001), line0)
+        #circle0.POINT.store_named_float("w", 0.)
+        
+        # ----------------------------------------------------------------------------------------------------
+        # Curve in the plane zw
+        
+        # ----- Line
+        
+        with tree.layout("ZW Factor=0: straight line"):
+            l_zw = (tree.pi*2)*radius1
+            lz = 0.
+            lw = b*l_zw - l_zw/2
+            
+            line1 = tree.GEOMETRY(circle0)
+            line1.offset = (0., 0., lz)
+            line1.POINT.store_named_float("w", lw)
+        
+        # ----- Circle in plane ZW
+
+        with tree.layout("ZW Curve lined up to Circle"):
+            ag1 = (tree.pi*2)*factor1
+            r1 = l_zw/ag1
+            c1 = tree.xyz(0, 0, 0)
+            
+            ag1_ = b*ag1 - ag1/2
+            
+            cz = r1*tree.cos(ag1_)
+            cw = r1*tree.sin(ag1_)
+            
+            circle1 = tree.GEOMETRY(circle0)
+            circle1.offset = (0., 0., cz - r1 + factor1*radius1)
+            circle1.POINT.store_named_float("w", cw)
+            
+        circle1 = circle1.switch(factor1.less_than(0.001), line1)
+            
+        # ----- Twists
+        
+        with tree.layout("ZW Twist the profile"):
+            
+            y0 = circle0.sample_index_vector(circle0.position, circle1.index).y
+            
+            ag_twist = a*(tree.pi*twists)
+            cost = tree.cos(a*ag_twist)
+            sint = tree.sin(a*ag_twist)
+
+            loc = circle1.position
+            
+            y = loc.y - y0
+            
+            y_ =   y*cost + loc.z*sint
+            z_ =  -y*sint + loc.z*cost
+            
+            circle1.position = (loc.x, y0 + y_, z_)
+            
+            
+        # ----- Finalize
+        
+        #circle1.merge_by_distance()
+        circle1.material = mat
+        circle1.shade_smooth = smooth
+        
+        tree.og = circle1
+        
+    # ----------------------------------------------------------------------------------------------------
+    # Clifford Torus
+    
+    with GeoNodes("Clifford Torus", fake_user=True, prefix=g_surfs) as tree:
+        
+        tree.og = g_surfs.torus(
+            radius_xy    = tree.float_input(  "Radius XY",  1.),
+            radius_zw    = tree.float_input(  "Radius ZW",  1.),
+            resolution   = tree.integer_input("Resolution", 32, min_value=3),
+            factor_xy    = 1.,
+            factor_zw    = 1.,
+            twists       = 0.,
+            material     = tree.material_input("Material"),
+            shade_smooth = tree.bool_input(    "Shade smooth", True),
+            ).geometry
+
+        
+    # ----------------------------------------------------------------------------------------------------
+    # Klein Torus
+    
+    with GeoNodes("Klein Torus", fake_user=True, prefix=g_surfs) as tree:
+        
+        tree.og = g_surfs.torus(
+            radius_xy    = tree.float_input(  "Radius XY",  1.),
+            radius_zw    = tree.float_input(  "Radius ZW",  1.),
+            resolution   = tree.integer_input("Resolution", 32, min_value=3),
+            factor_xy    = 1.,
+            factor_zw    = 1.,
+            twists       = 1.,
+            material     = tree.material_input("Material"),
+            shade_smooth = tree.bool_input(    "Shade smooth", True),
+            ).geometry
+
         
         
 
@@ -1569,251 +1821,6 @@ def debug():
                     
             tree.og = geo
             
-            
-# ====================================================================================================
-# Legacy
-
-def legacy():
-
-    # ----------------------------------------------------------------------------------------------------
-    # GROUP - Rotate to an hyperplane 
-
-    with GeoNodes("Rotate to hyperplane", is_group=True, fake_user=True, prefix=maths) as tree:
-
-        v = tree.color_input("V")
-        
-        hv = tree.color_input("Hyperplane")
-        
-        node = maths.hyperplane(v=hv)
-        
-        x = node.i.dot(v)
-        y = node.j.dot(v)
-        z = node.k.dot(v)
-        w = node.l.dot(v)
-        
-        tree.rgb(x, y, z, w).to_output("V")
-        
-    # ----------------------------------------------------------------------------------------------------
-    # GROUP - Rotate from an hyperplane 
-
-    with GeoNodes("Rotate from hyperplane", is_group=True, fake_user=True, prefix=maths) as tree:
-        
-        v  = tree.color_input("V")
-        hv = tree.color_input("Hyperplane")
-        
-        node = maths.hyperplane(v=hv)
-        
-        r = node.i*v.x + node.j*v.y + node.k*v.z + node.l*v.w
-        
-        r.to_output("V")
-        
-    # ----------------------------------------------------------------------------------------------------
-    # GROUP - Rotation 3D in an hyperplane
-    # Perform a 3D rotation with an hyperplane
-
-    with GeoNodes("Rotation 3D", is_group=True, fake_user=True, prefix=maths) as tree:
-        
-        v  = tree.color_input("V")
-        hv = tree.color_input("Hyperplane")
-
-        euler = tree.rotation_input("Euler")
-        axis  = tree.vector_input(  "Axis", (0., 0., 1.))
-        angle = tree.angle_input(   "Angle")
-        
-        to_hp = maths.rotate_to_hyperplane(v=v, hyperplane=hv)
-        
-        v3 = tree.VECTOR(to_hp.v)
-        
-        v3 = v3.vector_rotate(rotation=euler.rotation_to_euler(), rotation_type='EULER_XYZ')
-        v3 = v3.vector_rotate(axis=axis, angle=angle, rotation_type='AXIS_ANGLE')
-        
-        from_hp = maths.rotate_from_hyperplane(v=tree.rgb_a(v3, to_hp.v.w), hyperplane=hv)
-        
-        from_hp.v.to_output("V")
-        
-    # ----------------------------------------------------------------------------------------------------
-    # MODIFIER - 3D Rotation
-
-    with GeoNodes("Rotation 3D", fake_user=True, prefix=modifiers) as tree:
-    
-        geo   = tree.ig
-        
-        hv    = tree.vector_input(  "Hyper xyz")
-        hw    = tree.float_input(   "Hyper w", 1.)
-        euler = tree.rotation_input("Euler", description="Euler rotation within the hyperplane")
-        axis  = tree.vector_input(  "Axis", (0., 0., 1.), description="Axis inside the hyperplane")
-        angle = tree.angle_input(   "Angle", description="Angle to rotate around the axis within the hyperplane")
-        
-        hp = tree.rgb_a(hv, hw)
-        
-        # ===== Geometry position
-        
-        with tree.layout("All points rotation"):
-            
-            node = maths.rotation_3d(
-                v = tree.rgb_a(geo.position, geo.named_float("w")),
-                hyperplane = hp, euler=euler, axis=axis, angle=angle)
-
-            geo.position = node.v
-            geo.POINT.store_named_float("w", node.v.w)
-            
-        # ===== Normals and tangents
-            
-        comps = geo.separate_components()
-        
-        mesh  = comps.mesh
-        curve = comps.curve
-        cloud = comps.point_cloud
-        inst  = comps.instances
-        
-        # ----- Mesh
-        
-        with tree.layout("Mesh"):
-            
-            node = maths.rotation_3d(
-                v = mesh.named_color("N4a"),
-                hyperplane = hp, euler=euler, axis=axis, angle=angle)
-            
-            mesh.FACE.store_named_float_color("N4a", node.v)
-            
-            node = maths.rotation_3d(
-                v = mesh.named_color("N4b"),
-                hyperplane = hp, euler=euler, axis=axis, angle=angle)
-            
-            mesh.FACE.store_named_float_color("N4b", node.v)
-            
-        # ----- Curve
-        
-        with tree.layout("Curve"):
-            
-            node = maths.rotation_3d(
-                v = curve.named_color("T4"),
-                hyperplane = hp, euler=euler, axis=axis, angle=angle)
-            
-            curve.POINT.store_named_float_color("T4", node.v)
-
-        tree.og = mesh + curve + cloud + inst
-        
-    # ----------------------------------------------------------------------------------------------------
-    # Rotation in a plane (x|y|z, w)
-    # Rotate a 4D object: coordinates and normals
-            
-    with GeoNodes("W Plane Rotation", fake_user=True, prefix=modifiers) as tree:
-        
-        geo   = tree.ig
-        axis  = tree.integer_input("Axis", 0, min_value=0, max_value=2) 
-        angle = tree.angle_input(  "Angle", 0.)
-        
-        # ----- All
-        
-        with tree.layout("All points rotation"):
-            
-            node = maths.w_plane_rotation(
-                    v = tree.rgb_a(geo.position, geo.named_float("w")),
-                    axis = axis, angle=angle)
-            
-            geo.POINT.position = node.v
-            geo.POINT.store_named_float("w", node.v.w)
-            
-            
-        # --- Components
-            
-        comps = geo.separate_components()
-        
-        mesh  = comps.mesh
-        curve = comps.curve
-        cloud = comps.point_cloud
-        inst  = comps.instances
-        
-        # Mesh
-        
-        with tree.layout("Mesh"):
-
-            node = maths.w_plane_rotation(
-                        v = mesh.named_color("N4"),
-                        axis = axis, angle=angle)
-            
-            mesh.FACE.store_named_float_color("N4", node.v)
-            
-        # Curve
-        
-        with tree.layout("Curve"):
-
-            node = maths.w_plane_rotation(
-                        v = curve.named_color("T4"),
-                        axis = axis, angle=angle)
-            
-            curve.POINT.store_named_float_color("T4", node.v)
-
-        tree.og = mesh + curve + cloud + inst
-        
-    # ----------------------------------------------------------------------------------------------------
-    # Rotation in a plane defined by two vectors V0 and V1
-            
-    with GeoNodes("Rotation 2D", fake_user=True, prefix=modifiers) as tree:
-        
-        geo   = tree.ig
-
-        v0    = tree.vector_input("xyz 0")
-        w0    = tree.float_input( "w 0")
-        v1    = tree.vector_input("xyz 1")
-        w1    = tree.float_input( "w 1")
-        angle = tree.angle_input( "Angle", 0. , description="Rotation angle in plane (V0, V1)")
-        
-        I = tree.rgb_a(v0, w0)
-        J = tree.rgb_a(v1, w1)
-        
-        # ----- All
-        
-        with tree.layout("All points rotation"):
-            
-            node = maths.rotation_2d(
-                v = tree.rgb_a(geo.position, geo.named_float("w")),
-                i=I, j=J, angle=angle)
-
-            geo.position = node.v
-            geo.POINT.store_named_float("w", node.v.w)
-            
-        # --- Components
-            
-        comps = geo.separate_components()
-        
-        mesh  = comps.mesh
-        curve = comps.curve
-        cloud = comps.point_cloud
-        inst  = comps.instances
-        
-        # Mesh
-        
-        with tree.layout("Mesh"):
-            
-            node = maths.rotation_2d(
-                v = mesh.named_color("N4"),
-                i=I, j=J, angle=angle)
-
-            mesh.FACE.store_named_float_color("N4", node.v)
-            
-        # Curve
-        
-        with tree.layout("Curve"):
-            
-            node = maths.rotation_2d(
-                v = curve.named_color("T4"),
-                i=I, j=J, angle=angle)
-            
-            curve.POINT.store_named_float_color("T4", node.v)
-            
-
-        tree.og = mesh + curve + cloud + inst
-
-
-                
-        
-            
-            
-            
-    
-
 
     
         
