@@ -343,6 +343,9 @@ def nodesocket_main_class(bl_idname):
 
 def get_value_socket_type(value):
     
+    if value is None:
+        return 'GEOMETRY'
+    
     if hasattr(value, 'bsocket'):
         return type(value).__name__
     
@@ -381,7 +384,7 @@ def get_value_socket_type(value):
         return value.bsocket.type
     
     else:
-        raise Exception(f"Python value '{value}' of type {type(value).__name__} doesn't match any socket type in {list(constants.SOCKET_CLASSES.keys())}")
+        raise Exception(f"Python value '{value}' of type {type(value).__name__} doesn't match any socket type in {constants.all_socket_classes(constants.get_tree_type())}")
 
 # ====================================================================================================
 # Socket bl_idname from a value

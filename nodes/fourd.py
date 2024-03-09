@@ -47,6 +47,7 @@ def rebuild():
     build_base()
     build_vectors()
     build_transformations()
+    build_extrusions()
     build_lights()
     build_curves()
     build_surfaces()
@@ -182,6 +183,12 @@ class V4:
             w = geo.POINT.sample_index_float(self.w, index=geo.index)
             geo.position = self.V
             return geo.store_named_float("w", w)
+    
+    def set_offset(self, geo):
+        with GeoNodes.current_tree().layout("Set Offset V4", V4_COL):
+            w = geo.POINT.sample_index_float(self.w, index=geo.index)
+            geo.offset = self.V
+            return geo.store_named_float("w", w + geo.named_float("w"))
     
     # ----------------------------------------------------------------------------------------------------
     # From / to face normal
@@ -797,7 +804,8 @@ def build_vectors():
         u1.to_output("J")
         u2.to_output("K")
         v.to_output("L")
-            
+        
+    
             
     # ----------------------------------------------------------------------------------------------------
     # Resolution system de deux équations à deux inconnues
@@ -1165,6 +1173,227 @@ def build_transformations():
 
         tree.og = mesh + curve + cloud + inst
         
+def build_extrusions():
+        
+    # ----------------------------------------------------------------------------------------------------
+    # GROUP - Link slices
+    #
+    # Slices are isntanntied along a curve and properly rotated
+    # Then faces can be created to link the instances between them
+    # Count is the number of instances
+    # The indices and edges are supposed to be ordered instance after instance
+    
+    with GeoNodes("Link Slices", is_group=True, fake_user=True, prefix=g_maths) as tree:
+        
+        mesh       = tree.geometry_input("Mesh")
+        count      = tree.integer_input( "Count", 1, min_value=1, description="Number of items to link")
+        with_faces = tree.bool_input(    "With Faces", True)
+        side_mat   = tree.material_input("Sides Material")
+
+        # ----------------------------------------------------------------------------------------------------
+        # Dimensions
+        
+        with tree.layout("Dimenions"):
+            domain_size = mesh.domain_size(component='MESH')
+            total_verts = domain_size.point_count
+            total_edges = domain_size.edge_count
+            nedges      = (total_edges / count).float_to_integer()
+        
+        # ----------------------------------------------------------------------------------------------------
+        # Unique ID per vertex
+        
+        with tree.layout("Index unique id"):
+            mesh.POINT.store_named_int("vid", mesh.index)
+            
+        # ----------------------------------------------------------------------------------------------------
+        # Loop on the edges
+        
+        with tree.repeat(iterations=nedges, faces=None, index=0) as rep:
+        #with tree.repeat(iterations=1, faces=None, index=0) as rep:
+            
+            # ----- Create a new face per interval
+            # face (grid) : 2*count points
+            # instance index : face/2
+            # instance edge index : (instance index)*(# edges) + num
+            
+            with tree.layout("Grid with one edge per instance"):
+                face = tree.grid(vertices_x=count, vertices_y=2)
+                edge_index = rep.index + (face.index/2).float_to_integer(rounding_mode='FLOOR')*nedges
+                edge_vertices = tree.EdgeVertices()
+                
+            # ----- The two vertex indices of edge per instance
+            
+            with tree.layout("The two vertex indices"):
+                
+                i0 = mesh.EDGE.sample_index_int(edge_vertices.vertex_index_1, index=edge_index)
+                i1 = mesh.EDGE.sample_index_int(edge_vertices.vertex_index_2, index=edge_index)
+                
+            # ----- Locate each vertex
+                
+            for i, vert_index in enumerate([i0, i1]):
+                with tree.layout(f"Vertex #{i}"):
+                    v   = mesh.POINT.sample_index_vector(mesh.position,         index=vert_index)
+                    w   = mesh.POINT.sample_index_float( mesh.named_int("w"),   index=vert_index)
+                    vid = mesh.POINT.sample_index_int(   mesh.named_int("vid"), index=vert_index)
+                    sel = (face.index % 2).equal(i)
+                    face.POINT[sel].set_position(position=v)
+                    face.POINT[sel].store_named_float("w", w)
+                    face.POINT[sel].store_named_int("vid", vid)
+            
+            rep.faces += face
+            rep.index += 1
+            
+        # ----------------------------------------------------------------------------------------------------
+        # Finalization
+        
+        faces = rep.faces
+        faces.material = side_mat
+        
+        edges_only = tree.GEOMETRY(faces).FACE.delete_geometry(mode='ONLY_FACE')
+        mesh += edges_only.switch(with_faces, faces)
+        
+        # ----------------------------------------------------------------------------------------------------
+        # Remove duplicate indices
+        
+        with tree.repeat(iterations=total_verts, mesh=mesh, index=0) as rep:
+            rep.mesh[rep.mesh.named_int("vid").equal(rep.index)].merge_by_distance(distance=1000.)
+            rep.index += 1
+            
+        mesh = rep.mesh
+        
+        mesh.to_output("Mesh")
+        
+    # ----------------------------------------------------------------------------------------------------
+    # GROUP - Mesh along a curve
+    
+    with GeoNodes("Mesh instances on curve", is_group=True, fake_user=True, prefix=g_maths) as tree:
+        
+        curve       = tree.geometry_input("Curve")
+        mesh        = tree.geometry_input("Mesh")
+        scale       = tree.float_input(   "Scale", 1.)
+        use_radius  = tree.bool_input(    "Use Radius",  False)
+        align_w     = tree.bool_input(    "Align w",     True)
+        
+        # ---------------------------------------------------------------------------
+        # Points at origin to instantiate the meshes
+        
+        count = curve.domain_size(component='CURVE').point_count
+        pts = tree.Points(count).geometry
+        pts.position = 0
+        
+        # ---------------------------------------------------------------------------
+        # Instantiate the surface the right number of times at location zero
+        # to perform rotation
+        
+        n = mesh.domain_size(component='MESH').point_count
+        
+        insts = pts.instance_on_points(instance=mesh)
+        
+        # Scale with spline radius
+        insts.scale_instances(scale=scale.switch(use_radius, curve.sample_index_float(curve.radius, insts.index)*scale))
+        
+        # Realize the instances
+        meshes = insts.realize_instances()
+        mesh_index = meshes.index/n
+
+        # ---------------------------------------------------------------------------
+        # Read position and tangent from the curve
+        
+        centers  = V4.Position(curve, sample_index=mesh_index)
+        tangents = V4.Tangent(curve, sample_index=mesh_index)
+
+        # ---------------------------------------------------------------------------
+        # Rotation to align (0, 0, 0, 1) -> Tangent and then translation
+        
+        tg = V4.Xyzw(0., 0., 1., 0.).switch(align_w, V4.Xyzw(0., 0., 0., 1.))
+        
+        meshes = g_mods.align_vector(meshes, **tg.kwargs("From"), **tangents.kwargs("To")).geometry
+        
+        meshes.offset = centers.V
+        meshes.POINT.store_named_float("w", meshes.named_float("w") + centers.w)
+        
+        # Done
+        
+        meshes.to_output("Mesh")        
+
+    # ----------------------------------------------------------------------------------------------------
+    # GROUP - Mesh along a curve
+    
+    with GeoNodes("Curve to Mesh  OLD", is_group=True, fake_user=True, prefix=g_maths) as tree:
+        
+        curve       = tree.geometry_input("Curve")
+        mesh        = tree.geometry_input("Mesh")
+        scale       = tree.float_input(   "Scale", 1.)
+        use_radius  = tree.bool_input(    "Use Radius",  False)
+        align_w     = tree.bool_input(    "Align w",     True)
+        ok_surfaces = tree.bool_input(    "With Surfaces", False)
+        
+        # ---------------------------------------------------------------------------
+        # Number of points in the curve and number of points in the mesh
+        
+        count = curve.domain_size(component='CURVE').point_count
+        n     = mesh.domain_size(component='MESH').point_count
+        
+        # ---------------------------------------------------------------------------
+        # Vertical vector
+        
+        with tree.layout("'vertical' vector"):
+            vertical = V4.Xyzw(0., 0., 1., 0.).switch(align_w, V4.Xyzw(0., 0., 0., 1.))
+            
+        # ---------------------------------------------------------------------------
+        # Set mesh at the curve location and orient it along the tangent
+        
+        def new_instance(index, title):
+            
+            with tree.layout("Locate and orient instance: " + title):
+
+                mesh_ = tree.GEOMETRY(mesh)
+    
+                # Rotation
+                tg   = V4.Tangent(curve, sample_index=index)
+                mesh_ = g_mods.align_vector(mesh_, **vertical.kwargs("From"), **tg.kwargs("To")).geometry
+                
+                # Offset
+                loc = V4.Position(curve, sample_index=index)
+                loc.set_offset(mesh_)
+                
+                return mesh_
+        
+        # ---------------------------------------------------------------------------
+        # Loop on the points in the curve
+        
+        mesh_ = new_instance(0, "Initial")
+        with tree.repeat(iterations=count-1, meshes=mesh_, last_mesh=mesh_, index=1) as rep:
+            
+            mesh_ = new_instance(rep.index, "New instance")
+            
+            # ----- Extrusion
+            
+            with tree.layout("Extrusion towards last instance"):
+            
+                last_v = V4.Position(rep.last_mesh, sample_index=mesh_.index - n)
+                rep.last_mesh = tree.GEOMETRY(mesh_)
+                
+                edges_ = tree.GEOMETRY(mesh_).POINT.extrude_mesh()
+                edges_top = edges_.node.top
+                
+                faces_ = tree.GEOMETRY(mesh_).EDGE.extrude_mesh()
+                faces_top = faces_.node.top
+                
+                mesh_ = edges_.switch(ok_surfaces, faces_)
+                top   = edges_top.switch(ok_surfaces, faces_top)
+
+                mesh_[top].set_position(position=last_v.V)
+                mesh_[top].POINT.store_named_float("w", last_v.w)
+                
+            # ----- Join and next loop
+            
+            rep.meshes += mesh_
+            rep.index += 1
+                
+                
+        rep.meshes.to_output("Mesh")            
+        
         
 # ====================================================================================================
 # Lights
@@ -1418,78 +1647,45 @@ def build_curves():
         tree.og = curve
         
     # ----------------------------------------------------------------------------------------------------
-    # GROUP - Mesh along a curve
-    
-    with GeoNodes("Curve to Mesh", is_group=True, fake_user=True, prefix=g_maths) as tree:
-        
-        curve      = tree.geometry_input("Curve")
-        mesh       = tree.geometry_input("Mesh")
-        scale      = tree.float_input(   "Scale", 1.)
-        use_radius = tree.bool_input(    "Use Radius", False)
-        align_w    = tree.bool_input(    "Align w",    True)
-        
-        # ---------------------------------------------------------------------------
-        # Points at origin to instantiate the meshes
-        
-        count = curve.domain_size(component='CURVE').point_count
-        pts = tree.Points(count).geometry
-        pts.position = 0
-        
-        # ---------------------------------------------------------------------------
-        # Instantiate the surface the right number of times at location zero
-        # to perform rotation
-        
-        n = mesh.domain_size(component='MESH').point_count
-        
-        insts = pts.instance_on_points(instance=mesh)
-        
-        # Scale with spline radius
-        insts.scale_instances(scale=scale.switch(use_radius, curve.sample_index_float(curve.radius, insts.index)*scale))
-        
-        # Realize the instances
-        meshes = insts.realize_instances()
-        mesh_index = meshes.index/n
-
-        # ---------------------------------------------------------------------------
-        # Read position and tangent from the curve
-        
-        centers  = V4.Position(curve, sample_index=mesh_index)
-        tangents = V4.Tangent(curve, sample_index=mesh_index)
-
-        # ---------------------------------------------------------------------------
-        # Rotation to align (0, 0, 0, 1) -> Tangent and then translation
-        
-        tg = V4.Xyzw(0., 0., 1., 0.).switch(align_w, V4.Xyzw(0., 0., 0., 1.))
-        
-        meshes = g_mods.align_vector(meshes, **tg.kwargs("From"), **tangents.kwargs("To")).geometry
-        
-        meshes.offset = centers.V
-        meshes.POINT.store_named_float("w", meshes.named_float("w") + centers.w)
-        
-        # Done
-        
-        meshes.to_output("Mesh")
-        
-    # ----------------------------------------------------------------------------------------------------
     # MODIFIER - Mesh along a curve
     
     with GeoNodes("Curve to Mesh", fake_user=True, prefix=g_curves) as tree:
         
-        curve      = tree.ig
-        surface    = tree.object_input("Mesh Object", description="3D Mesh to instantiate along the curve")
-        scale      = tree.float_input( "Scale", 1.)
-        use_radius = tree.bool_input(  "Use Radius", False, description="Use curve radius attribute")
-        align_w    = tree.bool_input(  "Align w",    True, description="Use mesh w axis along the curve tangent (z otherwise)")
+        curve       = tree.ig
+        prof_object = tree.object_input(   "Mesh Profile", description="3D Mesh to instantiate along the curve")
+        mat         = tree.material_input( "Material")
+        scale       = tree.float_input(    "Scale", 1.)
+        use_radius  = tree.bool_input(     "Use Radius",  False, description="Use curve radius attribute")
+        align_w     = tree.bool_input(     "Align w",     True,  description="Use mesh w axis along the curve tangent (z otherwise)")
+        link_slices = tree.bool_input(     "Link slices", False, description="Link the instances between them")
+        with_faces  = tree.bool_input(     "With Faces",  False, description="If the slices are linked, create surfaces between the instances.")
+        sides_mat   = tree.material_input( "Sides Material")
         
-
-        mesh = surface.object_info().geometry
+        # ----------------------------------------------------------------------------------------------------
+        # The mesh to instantiate
         
-        mesh = g_maths.curve_to_mesh(
-            curve      = curve,
-            mesh       = mesh,
-            scale      = scale,
-            use_radius = use_radius,
-            align_w    = align_w).mesh
+        mesh = prof_object.object_info().geometry
+        mesh.material = mat
+        
+        # ----- Instantiate
+        
+        mesh = g_maths.mesh_instances_on_curve(
+            curve         = curve,
+            mesh          = mesh,
+            scale         = scale,
+            use_radius    = use_radius,
+            align_w       = align_w).mesh
+        
+        # ----- Link the slices
+        
+        mesh = mesh.switch(link_slices, g_maths.link_slices(
+            mesh           = mesh,
+            count          = curve.domain_size(component='CURVE').point_count,
+            with_faces     = with_faces,
+            sides_material = sides_mat,
+            ))
+        
+        # Done
         
         tree.og = mesh
             
@@ -1498,24 +1694,41 @@ def build_curves():
     
     with GeoNodes("Curve to Mesh with Spheres", fake_user=True, prefix=g_curves) as tree:
         
-        curve      = tree.ig
-        resol      = tree.integer_input( "Sphere Resolution", 16, min_value=3)
-        size       = tree.float_input(   "Size", 1.)
-        use_radius = tree.bool_input(    "Use Radius", False)
-        align_w    = tree.bool_input(    "Align w",    True, description="Use mesh w axis along the curve tangent (z otherwise)")
-        mat        = tree.material_input("Material")
+        curve       = tree.ig
+        resol       = tree.integer_input( "Sphere Resolution", 16, min_value=3)
+        size        = tree.float_input(   "Size", 1.)
+        use_radius  = tree.bool_input(    "Use Radius", False)
+        align_w     = tree.bool_input(    "Align w",    True, description="Use mesh w axis along the curve tangent (z otherwise)")
+        mat         = tree.material_input("Material")
+        link_slices = tree.bool_input(     "Link slices", False, description="Link the instances between them")
+        with_faces  = tree.bool_input(     "With Faces",  False, description="If the slices are linked, create surfaces between the instances.")
+        sides_mat   = tree.material_input( "Sides Material")
+        
+        # ----------------------------------------------------------------------------------------------------
+        # The mesh to instantiate
         
         sphere = tree.uv_sphere(rings=resol, segments=2*resol, radius=size)
         sphere.material=mat
         
-        mesh = g_maths.curve_to_mesh(
-                curve       = curve,
-                mesh        = sphere,
-                scale       = 1.,
-                use_radius  = use_radius,
-                align_w     = align_w).mesh
+        # ----- Instantiate
         
-        mesh.shade_smooth = True
+        mesh = g_maths.mesh_instances_on_curve(
+            curve         = curve,
+            mesh          = sphere,
+            scale         = size,
+            use_radius    = use_radius,
+            align_w       = align_w).mesh
+        
+        # ----- Link the slices
+        
+        mesh = mesh.switch(link_slices, g_maths.link_slices(
+            mesh           = mesh,
+            count          = curve.domain_size(component='CURVE').point_count,
+            with_faces     = with_faces,
+            sides_material = sides_mat,
+            ).mesh)
+        
+        # Done
         
         tree.og = mesh
         
@@ -1525,12 +1738,12 @@ def build_curves():
     with GeoNodes("Curves profile", fake_user=True, prefix=g_curves) as tree:
         
         geo = tree.ig
-        radius     = tree.float_input("Radius", .1)
-        resol      = tree.integer_input("Resolution", 8)
+        radius     = tree.float_input(   "Radius", .1)
+        resol      = tree.integer_input( "Resolution", 8)
         mat        = tree.material_input("Material")
-        smooth     = tree.bool_input("Shade Smooth", True)
-        ok_points  = tree.bool_input("Points", False)
-        pt_radius  = tree.float_input("Points radius", .2)
+        ok_points  = tree.bool_input(    "With Points", False)
+        pt_radius  = tree.float_input(   "Points Radius", .2)
+        smooth     = tree.bool_input(    "Shade Smooth", True)
         
         comps = geo.separate_components()
         
@@ -1555,13 +1768,168 @@ def build_curves():
         
         # ----- Done
         
-        tree.og = mesh + meshed + cloud + inst        
+        tree.og = mesh + meshed + cloud + inst
+        
+    # ----------------------------------------------------------------------------------------------------
+    # MODIFIER - Mesh to curve (to see the edges)
+    
+    with GeoNodes("Mesh to Curve", fake_user=True, prefix=g_curves) as tree:
+        
+        geo         = tree.ig
+        keep_faces  = tree.bool_input(    "Keep faces", False)
+        
+        use_profile = tree.bool_input(    "With Profile", True)
+        radius      = tree.float_input(   "Radius", .1)
+        resol       = tree.integer_input( "Resolution", 8)
+        mat         = tree.material_input("Material")
+        ok_points   = tree.bool_input(    "With Points", False)
+        pt_radius   = tree.float_input(   "Points Radius", .2)
+        smooth      = tree.bool_input(    "Shade Smooth", True)
+        
+        comps = geo.separate_components()
+        
+        mesh  = comps.mesh
+        curve = comps.curve
+        cloud = comps.point_cloud
+        inst  = comps.instances
+        
+        # ----- To curve
+        
+        curved = mesh.mesh_to_curve() + curve
+        
+        # ----- Profile on the curve
+        
+        tubes_node = g_curves.curves_profile()
+        tree.input_node.plug_to(tubes_node)
+        # Replace geometry by curve only
+        tubes_node.geometry = curved
+        
+        curved = curved.switch(use_profile, tubes_node.geometry)
+        
+        # ----- Done
+        
+        geo = curved + cloud + inst
+        geo = geo.switch(keep_faces, tree.GEOMETRY(geo).join_geometry(mesh))
+        
+        tree.og = geo
+        
+        
         
 # ====================================================================================================
 # Surfaces
 
 def build_surfaces():
     
+    # ----------------------------------------------------------------------------------------------------
+    # MODIFIER - Extrude a mesh of a given offset
+    
+    with GeoNodes("Extrude", fake_user=True, prefix=g_surfs) as tree:
+        
+        mesh0      = tree.ig
+        offset     = V4.Input(tree, "Offset", (0., 0., 1., 1.))
+        with_faces = tree.bool_input(   "With Faces")
+        mat        = tree.material_input("Sides Material")
+        keep0      = tree.bool_input("Keep first", True)
+        keep1      = tree.bool_input("Keep last",  True)
+        
+        # ----------------------------------------------------------------------------------------------------
+        # Dimensions
+        
+        dom_size = mesh0.domain_size(component='MESH')
+        nverts = dom_size.point_count
+        nedges = dom_size.edge_count
+        
+        # ----------------------------------------------------------------------------------------------------
+        # Duplicate
+        
+        mesh1 = tree.GEOMETRY(mesh0)
+        offset.set_offset(mesh1)
+
+        # ----------------------------------------------------------------------------------------------------
+        # Unique ID per vertex
+        
+        mesh0.POINT.store_named_int("vid", mesh0.index)
+        mesh1.POINT.store_named_int("vid", mesh0.index + nverts)
+        
+        # ----------------------------------------------------------------------------------------------------
+        # Loop on the edges
+        
+        with tree.repeat(iterations=nedges, faces=None, index=0) as rep:
+            
+            # ----- Create a new face
+            
+            with tree.layout("Face base"):
+                face = tree.grid(vertices_x=2, vertices_y=2)
+                edge_vertices = tree.EdgeVertices()
+            
+            with tree.layout("The four vertex indices"):
+                indices = [
+                    (mesh0, mesh0.EDGE.sample_index_int(edge_vertices.vertex_index_1, index=rep.index)),
+                    (mesh0, mesh0.EDGE.sample_index_int(edge_vertices.vertex_index_2, index=rep.index)),
+                    (mesh1, mesh1.EDGE.sample_index_int(edge_vertices.vertex_index_1, index=rep.index)),
+                    (mesh1, mesh1.EDGE.sample_index_int(edge_vertices.vertex_index_2, index=rep.index)),
+                    ]
+                
+            for i, (msh, vert_index) in enumerate(indices):
+                with tree.layout(f"Vertex #{i}"):
+                    v   = msh.POINT.sample_index_vector(msh.position,      index=vert_index)
+                    w   = msh.POINT.sample_index_float(msh.named_int("w"), index=vert_index)
+                    vid = msh.POINT.sample_index_int(msh.named_int("vid"), index=vert_index)
+                    sel = face.index.equal(i)
+                    face.POINT[sel].set_position(position=v)
+                    face.POINT[sel].store_named_float("w", w)
+                    face.POINT[sel].store_named_int("vid", vid)
+            
+            rep.faces += face
+            rep.index += 1
+            
+        # ----------------------------------------------------------------------------------------------------
+        # Finalization
+        
+        faces = rep.faces
+        faces.material = mat
+        
+        edges_only = tree.GEOMETRY(faces).FACE.delete_geometry(mode='ONLY_FACE')
+        mesh = edges_only.switch(with_faces, faces)
+        
+        mesh = mesh.switch(keep0, mesh0 + mesh)
+        mesh = mesh.switch(keep1, mesh + mesh1)
+
+        # ----------------------------------------------------------------------------------------------------
+        # Remove duplicate indices
+        
+        with tree.repeat(iterations=nverts*2, mesh=mesh, index=0) as rep:
+            rep.mesh[rep.mesh.named_int("vid").equal(rep.index)].merge_by_distance(distance=1000.)
+            rep.index += 1
+            
+        mesh = rep.mesh
+        mesh.remove_named_attribute("vid")
+        
+        tree.og = mesh
+        
+    # ----------------------------------------------------------------------------------------------------
+    # Hypercube
+        
+    with GeoNodes("Hypercube", fake_user=True, prefix=g_surfs) as tree:
+        
+        size   = tree.float_input(   "Size",       1., min_value=.01)
+        slices = tree.integer_input( "Slices",     7,  min_value=1)
+        mat    = tree.material_input("Material")
+        
+        cube = tree.cube()
+        cube.material=mat
+        V4.Xyzw(0., 0., 0., -size/2).set_offset(cube)
+        
+        tree.og = g_surfs.extrude(
+            geometry       = cube,
+            **V4.Xyzw(0., 0., 0., size).kwargs("Offset"),
+            with_faces     = True,
+            sides_material = mat,
+            keep_first     = True,
+            keep_last      = True,
+            ).geometry
+        
+
     # ----------------------------------------------------------------------------------------------------
     # Hypersphere
     
@@ -1591,29 +1959,7 @@ def build_surfaces():
         
         tree.og = hs
         
-    # ----------------------------------------------------------------------------------------------------
-    # Hypercube
-        
-    with GeoNodes("Hypercube", fake_user=True, prefix=g_surfs) as tree:
-        
-        radius = tree.float_input(   "Size",       1., min_value=.01)
-        slices = tree.integer_input( "Slices",     7,  min_value=1)
-        mat    = tree.material_input("Material")
-        
-        line = g_curves.line(start_v=0., start_w=-radius, end_v=0., end_w=radius, resolution=slices).geometry
-        
-        cube = tree.cube()
-        cube.material=mat
-        
-        mesh = g_maths.curve_to_mesh(
-                curve       = line,
-                mesh        = cube,
-                scale       = 1.,
-                use_radius  = False,
-                align_w     = True).mesh
-        
-        tree.og = mesh
-        
+
     # ----------------------------------------------------------------------------------------------------
     # Extrude along w
         
