@@ -434,8 +434,8 @@ class C:
                 s += f"\tnode = self.tree.{node_info.class_name}({self_socket}=self, {value_socket}=value"
             
             # Selection socket
-            #if args['selection'] is not None and 'selection' not in self.kwargs:
-            #    s +=  ", selection=self._get_selection(None)"
+            if args['selection'] is not None and 'selection' not in self.kwargs:
+                s +=  ", selection=self._get_selection(None)"
                 
             # kwargs
             for k, v in self.kwargs.items():
