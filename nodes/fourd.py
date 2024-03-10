@@ -1203,8 +1203,6 @@ def build_extrusions():
         
         def compute(fac0, fac1, title="Compute tangent: normalized(V4(t + dt) - V4(t - dt)"):
             with tree.layout(title):
-                fac0 %= 1
-                fac1 %= 1
                 v1 = V4(curve.sample_curve(      factor=fac1, mode='FACTOR').position,
                         curve.sample_curve_float(factor=fac1, value=curve.named_float("w"), mode='FACTOR').value)
         
@@ -1215,7 +1213,7 @@ def build_extrusions():
             
         # ------ All points
         
-        compute(curve.index/(count1) - dt, curve.index/(count1) + dt).set_tangent(curve)
+        compute((curve.index/(count1) - dt) % 1.0001, (curve.index/(count1) + dt) % 1.0001).set_tangent(curve)
 
         cyclic_curve = tree.GEOMETRY(curve)
         
@@ -1644,6 +1642,7 @@ def build_curves():
             curve.position = tree.xyz(x, y, z)
             curve.POINT.store_named_float("w", w)
         
+        """
         # ===== Tangent
         # dx/dt = s - o.r.sin(o.t)
         
@@ -1658,6 +1657,7 @@ def build_curves():
             tw = speed.w + ro_zw*cb
             
             V4.Xyzw(tx, ty, tz, tw).normalized().set_tangent(curve)
+        """
         
         tree.og = curve
         
@@ -2162,6 +2162,9 @@ def build_surfaces():
     
     with GeoNodes("5 Cell Polytope", fake_user=True, prefix=g_surfs) as tree:
         
+        size = tree.float_input(   "Size", 1.)
+        mat  = tree.material_input("Material", bpy.data.materials.get("4 Face"))
+        
         from math import sqrt
         
         v0 = V4.Xyzw(1/2/sqrt(10),  1/2/sqrt(6),  1/sqrt(12),  1/2)
@@ -2172,14 +2175,14 @@ def build_surfaces():
         
         S = tree.cone(vertices=3)
         
-        S[0].position = v0.V
-        S[0].store_named_float("w", v0.w)
-        S[1].position = v1.V
-        S[1].store_named_float("w", v1.w)
-        S[2].position = v2.V
-        S[2].store_named_float("w", v2.w)
-        S[3].position = v3.V
-        S[3].store_named_float("w", v3.w)
+        S[0].position = v0.V*size
+        S[0].store_named_float("w", v0.w)*size
+        S[1].position = v1.V*size
+        S[1].store_named_float("w", v1.w)*size
+        S[2].position = v2.V*size
+        S[2].store_named_float("w", v2.w)*size
+        S[3].position = v3.V*size
+        S[3].store_named_float("w", v3.w)*size
         
         S = S.extrude_mesh(mode='EDGES')
         top = S.node.top
@@ -2188,6 +2191,8 @@ def build_surfaces():
         S[top].store_named_float("w", v4.w)
         
         S[top].merge_by_distance(distance=1)
+        
+        S.material = mat
         
         tree.og = S
         
