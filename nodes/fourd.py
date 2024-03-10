@@ -39,7 +39,10 @@ def clear_all():
     g_curves.clear()
     g_surfs.clear()
     
-def rebuild():
+def build4D(clear=False):
+    
+    if clear:
+        clear_all()
     
     build_shaders()
     
@@ -103,8 +106,11 @@ def build_shaders():
 
 class V4:
     def __init__(self, V, w):
+        
+        # Get the current tree
         tree = GeoNodes.current_tree()
         
+        # The arguments can be either a socket or a value
         if hasattr(V, 'bsocket'):
             self.V = V
         else:
@@ -180,6 +186,9 @@ class V4:
                     geo.POINT.sample_index_float( geo.named_float("w"), index=sample_index))
     
     def set_position(self, geo):
+        # Need to sample w before setting the position because w can be computed
+        # from the position (for instance after a rotation)
+        # Changing the position would change w before it is written
         with GeoNodes.current_tree().layout("Set Position V4", V4_COL):
             w = geo.POINT.sample_index_float(self.w, index=geo.index)
             geo.position = self.V
