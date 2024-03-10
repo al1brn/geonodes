@@ -140,7 +140,8 @@ Thanks to the `V4` class, one can generate nodes by simply scripting python oper
 The piece of code below shows how to use `V4` class.
 - The `Input` constructor creates two input sockets suffixed by 'V' and 'w' (`"I V"` and `"I w"` for the first vector for instance)
 - `normalized` returns a normalized version of the 4-vector. Here, it also returns an error if the vector is null
-- In the layout frame, operations are performed on the 4-vectors
+- In the layout frame, operations are performed on the 4-vectors using standard python syntax
+  (just take care place `V4` instance first when operating with a value factor)
 
 ``` python
     with GeoNodes("Normalize 3-Basis", is_group=True, fake_user=True, prefix=g_maths) as tree:
