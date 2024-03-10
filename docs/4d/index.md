@@ -59,9 +59,9 @@ In the exemple below, the nodes group ***M Projection*** accepts a 4-vector as i
 
 <img src="images/4D_img_03.png" width = "600px"/>
 
-The `V` part is the geometry position, and the `w` fourth component is stored are named attribute "w".
+The `V` part is the geometry position, and the `w` fourth component is stored as named attribute "w".
 
-## 4D Class
+## V4 Class
 
 Computing needs to perform operations on 4-Vectors: dot product, normalization, addition, scale...
 To make source code as clear as possible the 4D engine uses a specific class which is basically a couple (Vector, Float):
@@ -105,8 +105,8 @@ class V4:
             return V4(self.V + other.V, self.w + other.w)
 ```
 
-The `V4` class also implements initialization, outputing function to ease its us.
-For instance, the `Position`constructor load the position and the "w" named attribute.
+The `V4` class also implements initialization and outputing functions to ease its use.
+For instance, the `Position`constructor loads the position and the "w" named attribute.
 If can read these information directly from the geometry or sample it:
 
 ``` python
@@ -136,9 +136,9 @@ class V4:
             return geo.store_named_float("w", w)
 ```
 
-Thanks to the `V4` class, one can generate nodes by simply scription python operation on 4-vectors.
+Thanks to the `V4` class, one can generate nodes by simply scripting python operation on 4-vectors.
 The piece of code below shows how to use `V4` class.
-- The `Input` constructor creates two input sockets suffixed by V and v ("I V" and "I w" for the first vector for instance)
+- The `Input` constructor creates two input sockets suffixed by 'V' and 'w' (`"I V"` and `"I w"` for the first vector for instance)
 - `normalized` returns a normalized version of the 4-vector. Here, it also returns an error if the vector is null
 - In the layout frame, operations are performed on the 4-vectors
 
