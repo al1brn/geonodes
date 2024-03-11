@@ -182,12 +182,12 @@ The image below shows the generated nodes:
 
 ***4D Modifiers*** perform basic operations on geometries:
 
-- ***Axis Viewer*** : shows the 4 axis. Note that yhe axis are directly projected, there is no need
+- ***Axis Viewer*** : shows the 4 axis. Note that the axis are directly projected, there is no need
   to stack ***4D Projection*** after this modifier.
-- ***Plunge 3D Geometry*** : a a `w` coordinate to a standard 3D geometry. The 4-Geometry can be then
+- ***Plunge 3D Geometry*** : add a `w` coordinate to a standard 3D geometry. The 4-Geometry can be then
  transformed using other modifiers
 - ***4D Projection*** : project a 4D geometry into 3D
-- ***4D Translation*** : translate of a given 4-Vector
+- ***4D Translation*** : translate geometry using a 4-Vector
 - ***4D Scale*** : scale the geometry in the fourth dimensions
 - ***4D Rotation 4D*** : rotation with 6 possible angles
 - ***4D Rotation 2D*** : rotation in a plane defined with the parameters
@@ -200,17 +200,17 @@ The image below shows the generated nodes:
 
 ***Curves modifiers*** work on curves.
 
-- ***C W from curve*** : works as ***Plunge 3D Geometry*** but read the `w` coordinated from the `z` coordinate
+- ***C W from curve*** : works as ***Plunge 3D Geometry*** but read the `w` coordinate from the `z` coordinate
   of another curve
 - ***C Line*** : a line segment
 - ***C Parametric Curve*** : a simple 4-curve generator with parameters to play with
 - ***C Curve to Mesh*** : instantiate 3D-Mesh along the 4D-Curve. The 3D meshes are aligned either
-  along its `Z` axis or `W`
+  along its `Z` or `W` axis
 - ***C Curve to Mesh with Spheres*** : same as ***C Curve to Mesh*** using UV Sphere as profile.
 - ***C Mesh to Curve*** : use the edges of a mesh to create curves. Faces can be removed or kept.
 - ***C Curves Profile*** : create tubes around the curves to make them visible. **To be used after projection**.
 
-> [!INote]
+> [!Note]
 > The modifier ***C Curves Profile*** must be used after the projection since its crate geometry.
 
 ### Surface modifiers
