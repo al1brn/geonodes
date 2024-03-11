@@ -12,6 +12,9 @@ TAU  = 6.283185307179586
 from .core import blender
 from .core import engine
 
+version         = (2, 0, 0)
+blender_version = (4, 0, 2)
+
 if True:
 
     # ----- Reload
