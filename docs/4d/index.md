@@ -236,19 +236,19 @@ The image below shows the generated nodes:
 ### Hypersphere
 
 <p align="center">
-    <img src="images/Hypercube.png" width = "600px"/>
+    <img src="images/4D_Hypercube.png" width = "600px"/>
 </p>
 
 ### Clifford Torus
 
 <p align="center">
-    <img src="images/Clifford.png" width = "600px"/>
+    <img src="images/4D_Clifford.png" width = "600px"/>
 </p>
 
 ### Klein Torus
 
 <p align="center">
-    <img src="images/Klein.png" width = "600px"/>
+    <img src="images/4D_Klein.png" width = "600px"/>
 </p>
 
 ### 5-Cell Polytope
