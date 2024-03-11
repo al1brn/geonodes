@@ -236,7 +236,7 @@ The image below shows the generated nodes:
 ### Hypersphere
 
 <p align="center">
-    <img src="images/4D_Hypercube.png" width = "600px"/>
+    <img src="images/4D_Hypersphere.png" width = "600px"/>
 </p>
 
 ### Clifford Torus
