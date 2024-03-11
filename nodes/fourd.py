@@ -82,7 +82,7 @@ def build_shaders():
         
         ped = tree.PrincipledBSDF(
             base_color = tree.rgb(.3, .8, .7),
-            metallic   = 0.
+            metallic   = 0.,
             roughness  = 0.,
             alpha      = .1,
             normal     = bump.normal,
@@ -1427,6 +1427,7 @@ def build_lights():
         # ----- Point visualization
         
         sphere = tree.uv_sphere(radius=radius)
+        sphere.uv_map = sphere.node.uv_map
         sphere.shade_smooth = True
         sphere.material     = mat
         
@@ -1749,6 +1750,7 @@ def build_curves():
         # The mesh to instantiate
         
         sphere = tree.uv_sphere(rings=resol, segments=2*resol, radius=size)
+        sphere.uv_map = sphere.node.uv_map
         sphere.material=mat
         
         # ----- Instantiate
@@ -1801,7 +1803,9 @@ def build_curves():
         
         # ----- Points
         
-        spheres = curve.instance_on_points(instance=tree.uv_sphere(radius=pt_radius, rings=resol, segments=2*resol))
+        sph = tree.uv_sphere(radius=pt_radius, rings=resol, segments=2*resol)
+        sph.uv_map = sph.node.uv_map
+        spheres = curve.instance_on_points(instance=sph)
         meshed  = meshed.switch(ok_points, meshed + spheres)
         
         # ----- Finalization
@@ -2044,6 +2048,7 @@ def build_surfaces():
         # Starting from a grid
         
         grid = tree.grid(vertices_x=resol, vertices_y=resol)
+        grid.uv_map = grid.node.uv_map
         a = (grid.index/resol)/(resol-1)
         b = (grid.index%resol)/(resol-1)
         

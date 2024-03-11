@@ -1242,6 +1242,17 @@ class GEOMETRY(Socket):
         return tree.band(_selection, selection, node_color=constants.NODE_COLORS['gen'])
     
     # ----------------------------------------------------------------------------------------------------
+    # UVMap
+    
+    @property
+    def uv_map(self):
+        return self.CORNER.named_vector("UVMap")
+    
+    @uv_map.setter
+    def uv_map(self, vector):
+        return self.CORNER.store_named_float2("UVMap", vector)
+    
+    # ----------------------------------------------------------------------------------------------------
     # Operations
     
     # ----- Addition

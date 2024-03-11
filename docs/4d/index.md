@@ -231,4 +231,44 @@ The image below shows the generated nodes:
 - ***S 5-Cell Polytope*** : 5-cell polytope
 - ***S 16-Cell Polytope*** : 16-cell polytope
 
+## Showcase
+
+### Hypersphere
+
+<p align="center">
+    <img src="images/Hypercube.png" width = "600px"/>
+</p>
+
+### Clifford Torus
+
+<p align="center">
+    <img src="images/Clifford.png" width = "600px"/>
+</p>
+
+### Klein Torus
+
+<p align="center">
+    <img src="images/Klein.png" width = "600px"/>
+</p>
+
+### 5-Cell Polytope
+
+<p align="center">
+    <img src="images/4D_5-Cell.png" width = "600px"/>
+</p>
+
+### 16-Cell Polytope
+
+<p align="center">
+    <img src="images/4D_16-Cell.png" width = "600px"/>
+</p>
+
+
+
+
+
+
+
+
+
 
