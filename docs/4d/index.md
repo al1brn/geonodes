@@ -176,122 +176,54 @@ The image below shows the generated nodes:
 <img src="images/4D_img_05.png" width = "600px"/>
 
 
+## Engine modifiers
 
+### 4D Modifiers
 
+***4D Modifiers*** perform basic operations on geometries:
 
+- ***Axis Viewer*** : shows the 4 axis. Note that yhe axis are directly projected, there is no need
+  to stack ***4D Projection*** after this modifier.
+- ***Plunge 3D Geometry*** : a a `w` coordinate to a standard 3D geometry. The 4-Geometry can be then
+ transformed using other modifiers
+- ***4D Projection*** : project a 4D geometry into 3D
+- ***4D Translation*** : translate of a given 4-Vector
+- ***4D Scale*** : scale the geometry in the fourth dimensions
+- ***4D Rotation 4D*** : rotation with 6 possible angles
+- ***4D Rotation 2D*** : rotation in a plane defined with the parameters
+- ***4D Align Vector*** : rotation that aligns a vector along another one
 
-    
+> [!Important]
+> After the modifier ***4D Projection***, the geometry is not a 4-Geometry anymore
 
+### Curves modifiers
 
+***Curves modifiers*** work on curves.
 
+- ***C W from curve*** : works as ***Plunge 3D Geometry*** but read the `w` coordinated from the `z` coordinate
+  of another curve
+- ***C Line*** : a line segment
+- ***C Parametric Curve*** : a simple 4-curve generator with parameters to play with
+- ***C Curve to Mesh*** : instantiate 3D-Mesh along the 4D-Curve. The 3D meshes are aligned either
+  along its `Z` axis or `W`
+- ***C Curve to Mesh with Spheres*** : same as ***C Curve to Mesh*** using UV Sphere as profile.
+- ***C Mesh to Curve*** : use the edges of a mesh to create curves. Faces can be removed or kept.
+- ***C Curves Profile*** : create tubes around the curves to make them visible. **To be used after projection**.
 
-    
+> [!INote]
+> The modifier ***C Curves Profile*** must be used after the projection since its crate geometry.
 
+### Surface modifiers
 
+***Surface Modifiers*** work on surfaces.
 
-
-Note that both suffixes are 
-Input and output sockets use the name `xyz` for the vector and `w` for the float.
-
-For instance, the group "Rotate from hyperplane" needs two 4-vectors as input which are named:
-- `xyz` and `w`
-- `Hyper xyz` and `Hyper w`
-- Output sockets : `xyz` and `w`
-
-<img src="images/img_04.png" width = "400px"/>
-
-The fourth component is stored as **named attribute** `w`.
-
-Meshes normals are saved as **named atributes** `Nxyz` and `Nw`.
-
-Curves tangents are aved as **named atributes** `Txyz` and `Tw`.
-
-
-## Maths Groups
-
-- Projection
-  - **Projection matrix** : build the projection Matrix from the ***Projection*** object
-  - **Projection** : project the geometry into 3D. Must be the last modifier of the stack.
-
-- Normalization
-  - **Length** : length of a 4-vector
-  - **Normalize** : normalize a 4-vector
-  - **Normal basis** : build a normal basis from as set of 3 independant 4-vectors
-  - **Cross** : cross product like between three 4-vectors, returns a 4-vector normal to the input
-  - **Hyperplane** : return a normal basis perpendicular to a 4-vector
-
-- Rotation
-  - **Rotate to hyperplane** : rotate a vector to an hyperplane defined by a 4-vector
-  - **Rotate from hyperplane** : rotate a vector from an hyperplane defined by a 4-vector
-  - **Rotate in hyperplane** : rotate a vector within an hyperplane by either Euler or axis angle
-  - **Follow vector** : rotate a vector such as vector A is aligned with vector B
-  - **W Plane rotation** : rotate a vector within the w plane
-  - **Rotation 2D** : rotate a vecor within a 2D plane defined by two 4-vectors
-
-- Special
-  - **Build along curve** : build a 4D shape by duplicating a 3D shape along a 4D curve
-
-
-### Modifiers trees
-
-- Initiaiization / utilities
-  - **To 4D** : plunge a standard curve of mesh into 4D by setting its w component
-  - **Add normals** : compute the 4D normals to a mesh surface
-  - **Add tangents** : compute the 4D tangents of a curve 
-
-- Projection
-  - **Dot normal** : compute the dot product between the normals and the projection direction
-  - **Projection** : projection from 4D to 3D
-
-- Rotation
-  - **Rotate in hyperplane** : rotate a 4D geometry in hyperplane
-  - **Rotation 2D** : 2D rotation of a 4D geometry
-  - **W Plane rotation** : rotation in the w plane
-
-- Objects
-  - **Axis** : visualize the 4 axis as they are projected
-  - **Line** : a simple line
-  - **Clifford torus** : Clifford torus
-  - **Hypersphere** : hypersphere
-  
-
-- Light
-  - **Light Set** : make the object emits 4D light
-  - **Light Capture** : the object receive 4D light
-  
-- Miscelleanous
-  - **Curve to mesh** : transform a 4D curve into a 4D mesh
-  - **Build along curve** : build along curve
-
-
-
-
-## Show case
-### A sphere plunged in 4D
-
-<img src="images/hypersphere 1.png"
-     alt="Markdown Monster icon"
-     style="float: left; margin-right: 10px;" />
-     
-### An hypersphere made of 7 slices
-
-<img src="images/hypersphere 2.png"
-     alt="Markdown Monster icon"
-     style="float: left; margin-right: 10px;" />
-
-### Clifford torus
-
-<img src="images/clifford 1.png"
-     alt="Markdown Monster icon"
-     style="float: left; margin-right: 10px;" />
-
-### Cones along a circle
-
-<img src="images/cones 1.png"
-     alt="Markdown Monster icon"
-     style="float: left; margin-right: 10px;" />
-
-
-
+- ***S Extrude*** : Extrude a surface a in given direction
+- ***S Hypercube*** : create an hypercube (or tesseract)
+- ***S Hypersphere*** : create an hypersphere
+- ***S Torus*** : parametrable torus
+- ***S Clifford Torus*** : Clifford Torus
+- ***S Klein Torus*** : Klein Torus
+- ***S 5-Cell Polytope*** : 5-cell polytope
+- ***S 16-Cell Polytope*** : 16-cell polytope
 
 
