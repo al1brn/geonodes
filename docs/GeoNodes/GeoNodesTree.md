@@ -3,20 +3,20 @@
 
 ### Socket classes
 
-- [BOOLEAN](/docs/GeoNodes/BOOLEAN.md)
-- [COLLECTION](/docs/GeoNodes/COLLECTION.md)
-- [CUSTOM](/docs/GeoNodes/CUSTOM.md)
-- [GEOMETRY](/docs/GeoNodes/GEOMETRY.md)
-- [IMAGE](/docs/GeoNodes/IMAGE.md)
-- [INT](/docs/GeoNodes/INT.md)
-- [MATERIAL](/docs/GeoNodes/MATERIAL.md)
-- [OBJECT](/docs/GeoNodes/OBJECT.md)
-- [RGBA](/docs/GeoNodes/RGBA.md)
-- [ROTATION](/docs/GeoNodes/ROTATION.md)
-- [STRING](/docs/GeoNodes/STRING.md)
-- [TEXTURE](/docs/GeoNodes/TEXTURE.md)
-- [VALUE](/docs/GeoNodes/VALUE.md)
-- [VECTOR](/docs/GeoNodes/VECTOR.md)
+- [BOOLEAN](/docs/GeoNodes/socket_BOOLEAN.md)
+- [COLLECTION](/docs/GeoNodes/socket_COLLECTION.md)
+- [CUSTOM](/docs/GeoNodes/socket_CUSTOM.md)
+- [GEOMETRY](/docs/GeoNodes/socket_GEOMETRY.md)
+- [IMAGE](/docs/GeoNodes/socket_IMAGE.md)
+- [INT](/docs/GeoNodes/socket_INT.md)
+- [MATERIAL](/docs/GeoNodes/socket_MATERIAL.md)
+- [OBJECT](/docs/GeoNodes/socket_OBJECT.md)
+- [RGBA](/docs/GeoNodes/socket_RGBA.md)
+- [ROTATION](/docs/GeoNodes/socket_ROTATION.md)
+- [STRING](/docs/GeoNodes/socket_STRING.md)
+- [TEXTURE](/docs/GeoNodes/socket_TEXTURE.md)
+- [VALUE](/docs/GeoNodes/socket_VALUE.md)
+- [VECTOR](/docs/GeoNodes/socket_VECTOR.md)
 
 ### Node classes
 

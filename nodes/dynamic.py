@@ -344,7 +344,7 @@ class Dynamic:
             
             doc.header("Socket classes", 2)
 
-            links = {class_name: doc.page_link(class_name, class_name) for class_name in constants.SOCKETS[tree_type]}
+            links = {class_name: doc.page_link(class_name, "socket_"+class_name) for class_name in constants.SOCKETS[tree_type]}
             with doc.bullets() as bullets:
                 bullets.alphabetical(links, len(links))
                 

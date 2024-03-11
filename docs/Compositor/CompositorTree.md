@@ -3,10 +3,10 @@
 
 ### Socket classes
 
-- [CUSTOM](/docs/Compositor/CUSTOM.md)
-- [RGBA](/docs/Compositor/RGBA.md)
-- [VALUE](/docs/Compositor/VALUE.md)
-- [VECTOR](/docs/Compositor/VECTOR.md)
+- [CUSTOM](/docs/Compositor/socket_CUSTOM.md)
+- [RGBA](/docs/Compositor/socket_RGBA.md)
+- [VALUE](/docs/Compositor/socket_VALUE.md)
+- [VECTOR](/docs/Compositor/socket_VECTOR.md)
 
 ### Node classes
 

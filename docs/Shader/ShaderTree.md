@@ -3,13 +3,13 @@
 
 ### Socket classes
 
-- [CUSTOM](/docs/Shader/CUSTOM.md)
-- [RGBA](/docs/Shader/RGBA.md)
-- [ROTATION](/docs/Shader/ROTATION.md)
-- [SHADER](/docs/Shader/SHADER.md)
-- [STRING](/docs/Shader/STRING.md)
-- [VALUE](/docs/Shader/VALUE.md)
-- [VECTOR](/docs/Shader/VECTOR.md)
+- [CUSTOM](/docs/Shader/socket_CUSTOM.md)
+- [RGBA](/docs/Shader/socket_RGBA.md)
+- [ROTATION](/docs/Shader/socket_ROTATION.md)
+- [SHADER](/docs/Shader/socket_SHADER.md)
+- [STRING](/docs/Shader/socket_STRING.md)
+- [VALUE](/docs/Shader/socket_VALUE.md)
+- [VECTOR](/docs/Shader/socket_VECTOR.md)
 
 ### Node classes
 
