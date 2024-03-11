@@ -77,10 +77,15 @@ def build_shaders():
     
     with Shader("4 Face") as tree:
         
+        noise = tree.NoiseTexture(scale=5.)
+        bump = tree.Bump(height=noise.color, strength=.1)
+        
         ped = tree.PrincipledBSDF(
             base_color = tree.rgb(.3, .8, .7),
-            roughness  = .9,
-            alpha      = .2,
+            metallic   = 0.
+            roughness  = 0.,
+            alpha      = .1,
+            normal     = bump.normal,
             )
         
         tree.output_surface = ped.bsdf
@@ -94,8 +99,8 @@ def build_shaders():
     with Shader("4 Edge") as tree:
         
         ped = tree.PrincipledBSDF(
-            base_color = tree.rgb(.2, .15, .85),
-            roughness  = .3,
+            base_color = tree.rgb(0., .05, .9),
+            roughness  = 0.,
             )
         
         tree.output_surface = ped.bsdf
@@ -926,14 +931,14 @@ def build_transformations():
         
         v = V4.Input(tree)
         
-        xy = tree.angle_input("XY", description="Rotation in the plane XY")
-        zw = tree.angle_input("ZW", description="Rotation in the plane ZW")
+        xy = tree.angle_input("XY", description="Rotation (XY,ZW) : X -> Y")
+        zw = tree.angle_input("ZW", description="Rotation (XY,ZW) : Z -> W")
 
-        xz = tree.angle_input("XZ", description="Rotation in the plane XZ")
-        yw = tree.angle_input("YW", description="Rotation in the plane YW")
-        
-        xw = tree.angle_input("XW", description="Rotation in the plane XW")
-        yz = tree.angle_input("YZ", description="Rotation in the plane YZ")
+        yz = tree.angle_input("YZ", description="Rotation (YZ,ZW) : Y -> Z")
+        xw = tree.angle_input("XW", description="Rotation (YZ,ZW) : X -> W")
+
+        zx = tree.angle_input("ZX", description="Rotation (ZX,YW) : Z -> X")
+        yw = tree.angle_input("YW", description="Rotation (ZX,YW) : Y -> W")
         
         # ----- Rotation xy / zw
         
@@ -947,13 +952,13 @@ def build_transformations():
         
         # ----- Rotation xz / yw
 
-        with tree.layout("Angles XZ YW"):
-            ca, sa = tree.cos(xz), tree.sin(xz)
+        with tree.layout("Angles ZX YW"):
+            ca, sa = tree.cos(zx), tree.sin(zx)
             cb, sb = tree.cos(yw), tree.sin(yw)
             B0 = V4.Xyzw( ca,  0.,  sa,  0.)
-            B1 = V4.Xyzw( 0.,  cb,  0.,  sb)
+            B1 = V4.Xyzw( 0.,  cb,  0., -sb)
             B2 = V4.Xyzw(-sa,  0.,  ca,  0.)
-            B3 = V4.Xyzw( 0., -sb,  0.,  cb)
+            B3 = V4.Xyzw( 0.,  sb,  0.,  cb)
         
         # ----- Rotation xw / yz
         
@@ -986,14 +991,14 @@ def build_transformations():
         
         geo = tree.ig
         
-        xy = tree.angle_input("XY", description="Rotation in the plane XY")
-        zw = tree.angle_input("ZW", description="Rotation in the plane ZW")
+        xy = tree.angle_input("XY", description="Rotation (XY,ZW) : X -> Y")
+        zw = tree.angle_input("ZW", description="Rotation (XY,ZW) : Z -> W")
 
-        xz = tree.angle_input("XZ", description="Rotation in the plane XZ")
-        yw = tree.angle_input("YW", description="Rotation in the plane YW")
-        
-        xw = tree.angle_input("XW", description="Rotation in the plane XW")
-        yz = tree.angle_input("YZ", description="Rotation in the plane YZ")
+        yz = tree.angle_input("YZ", description="Rotation (YZ,ZW) : Y -> Z")
+        xw = tree.angle_input("XW", description="Rotation (YZ,ZW) : X -> W")
+
+        zx = tree.angle_input("ZX", description="Rotation (ZX,YW) : Z -> X")
+        yw = tree.angle_input("YW", description="Rotation (ZX,YW) : Y -> W")
         
         # ===== Geometry position
         
@@ -1607,7 +1612,9 @@ def build_curves():
         
         # Tangent is constant
         
+        """
         (v1 - v0).normalized().set_tangent(line)
+        """
         
         # Done
         

@@ -2,6 +2,11 @@
 
 > Compute 4D shapes Geometry Nodes scripted with **geonodes**.
 
+<p align="center">
+    <img src="images/Hypercube.gif" width = "600px"/>
+</p>
+
+
 ## Overview
 
 This project implements a 4D Engine to viualize 4D shapes in Blender by projecting them from 4D to 3D.
@@ -211,7 +216,7 @@ The image below shows the generated nodes:
 - ***C Curves Profile*** : create tubes around the curves to make them visible. **To be used after projection**.
 
 > [!Note]
-> The modifier ***C Curves Profile*** must be used after the projection since its crate geometry.
+> The modifier ***C Curves Profile*** must be used after the projection since its creates 3D geometry around the edges.
 
 ### Surface modifiers
 

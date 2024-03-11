@@ -633,15 +633,24 @@ class Tree(StackedTree):
     def build_doc(folder):
         
         from geonodes.nodes import dynamic
-    
-        with GeoNodes("Doc") as tree:
-            pass
         
-        with Shader("Doc") as tree:
-            pass
-        
-        with Compositor() as tree:
-            pass
+        if True:
+            if not GeoNodes.INIT:
+                GeoNodes._setup()
+            if not Shader.INIT:
+                Shader._setup()
+            if not Compositor.INIT:
+                Compositor._setup()
+                
+        else:
+            with GeoNodes("Doc") as tree:
+                pass
+            
+            with Shader("Doc") as tree:
+                pass
+            
+            with Compositor() as tree:
+                pass
         
         dynamic.print_md_doc(folder)
 
