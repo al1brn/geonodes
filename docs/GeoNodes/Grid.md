@@ -16,7 +16,7 @@ Grid(size_x=None, size_y=None, vertices_x=None, vertices_y=None, node_label=None
 
 ## Implementation
 
-- Functions : [grid](/docs/GeoNodes/GeoNodesTree.md#grid) [grid](/docs/GeoNodes/GeoNodesTree.md#grid)
+- Functions : [grid](/docs/GeoNodes/GeoNodesTree.md#grid)
 
 ## Init
 

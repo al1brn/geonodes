@@ -15,8 +15,8 @@ VectorCurves(fac=None, vector=None, mapping=None, node_label=None, node_color=No
 
 ## Implementation
 
-- [ROTATION](/docs/GeoNodes/socket_ROTATION.md) : [vector_curves](/docs/GeoNodes/socket_ROTATION.md#vector_curves) [vector_curves](/docs/GeoNodes/socket_ROTATION.md#vector_curves)
-- [VECTOR](/docs/GeoNodes/socket_VECTOR.md) : [vector_curves](/docs/GeoNodes/socket_VECTOR.md#vector_curves) [vector_curves](/docs/GeoNodes/socket_VECTOR.md#vector_curves)
+- [ROTATION](/docs/GeoNodes/socket_ROTATION.md) : [vector_curves](/docs/GeoNodes/socket_ROTATION.md#vector_curves)
+- [VECTOR](/docs/GeoNodes/socket_VECTOR.md) : [vector_curves](/docs/GeoNodes/socket_VECTOR.md#vector_curves)
 
 ## Init
 

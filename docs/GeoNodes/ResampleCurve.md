@@ -17,7 +17,7 @@ ResampleCurve(curve=None, selection=None, count=None, length=None, mode='COUNT',
 
 ## Implementation
 
-- [GEOMETRY](/docs/GeoNodes/socket_GEOMETRY.md) : [resample_curve](/docs/GeoNodes/socket_GEOMETRY.md#resample_curve) [resample_curve](/docs/GeoNodes/socket_GEOMETRY.md#resample_curve)
+- [GEOMETRY](/docs/GeoNodes/socket_GEOMETRY.md) : [resample_curve](/docs/GeoNodes/socket_GEOMETRY.md#resample_curve)
 
 ## Init
 

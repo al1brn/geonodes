@@ -16,7 +16,7 @@ CaptureAttribute(geometry=None, value=None, data_type='FLOAT', domain='POINT', n
 
 ## Implementation
 
-- [GEOMETRY](/docs/GeoNodes/socket_GEOMETRY.md) : [capture_attribute](/docs/GeoNodes/socket_GEOMETRY.md#capture_attribute) [capture_attribute](/docs/GeoNodes/socket_GEOMETRY.md#capture_attribute) [capture_boolean](/docs/GeoNodes/socket_GEOMETRY.md#capture_boolean) [capture_boolean](/docs/GeoNodes/socket_GEOMETRY.md#capture_boolean) [capture_color](/docs/GeoNodes/socket_GEOMETRY.md#capture_color) [capture_color](/docs/GeoNodes/socket_GEOMETRY.md#capture_color) [capture_float](/docs/GeoNodes/socket_GEOMETRY.md#capture_float) [capture_float](/docs/GeoNodes/socket_GEOMETRY.md#capture_float) [capture_int](/docs/GeoNodes/socket_GEOMETRY.md#capture_int) [capture_int](/docs/GeoNodes/socket_GEOMETRY.md#capture_int) [capture_quaternion](/docs/GeoNodes/socket_GEOMETRY.md#capture_quaternion) [capture_quaternion](/docs/GeoNodes/socket_GEOMETRY.md#capture_quaternion) [capture_vector](/docs/GeoNodes/socket_GEOMETRY.md#capture_vector) [capture_vector](/docs/GeoNodes/socket_GEOMETRY.md#capture_vector)
+- [GEOMETRY](/docs/GeoNodes/socket_GEOMETRY.md) : [capture_attribute](/docs/GeoNodes/socket_GEOMETRY.md#capture_attribute) [capture_boolean](/docs/GeoNodes/socket_GEOMETRY.md#capture_boolean) [capture_color](/docs/GeoNodes/socket_GEOMETRY.md#capture_color) [capture_float](/docs/GeoNodes/socket_GEOMETRY.md#capture_float) [capture_int](/docs/GeoNodes/socket_GEOMETRY.md#capture_int) [capture_quaternion](/docs/GeoNodes/socket_GEOMETRY.md#capture_quaternion) [capture_vector](/docs/GeoNodes/socket_GEOMETRY.md#capture_vector)
 
 ## Init
 

@@ -9,7 +9,7 @@ Normal(node_label=None, node_color=None)
 ```
 ## Implementation
 
-- [GEOMETRY](/docs/GeoNodes/socket_GEOMETRY.md) : [normal](/docs/GeoNodes/socket_GEOMETRY.md#normal) [normal](/docs/GeoNodes/socket_GEOMETRY.md#normal)
+- [GEOMETRY](/docs/GeoNodes/socket_GEOMETRY.md) : [normal](/docs/GeoNodes/socket_GEOMETRY.md#normal)
 
 ## Init
 

@@ -105,7 +105,7 @@ def add(self, vector=None, node_label=None, node_color=None):
 - node : [AlignEulerToVector](/docs/GeoNodes/AlignEulerToVector.md)
 - self : rotation
 - jump : No
-- return : node
+- return : rotation
 
 ##### Arguments
 
@@ -121,7 +121,7 @@ def add(self, vector=None, node_label=None, node_color=None):
 ``` python
 def align_euler_to_vector(self, factor=None, vector=None, axis='X', pivot_axis='AUTO', node_label=None, node_color=None):
     node = self.tree.AlignEulerToVector(rotation=self, factor=factor, vector=vector, axis=axis, pivot_axis=pivot_axis, node_label=node_label, node_color=node_color)
-    return node
+    return node.rotation
 ```
 ### axis_angle_to_rotation
 

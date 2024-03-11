@@ -13,8 +13,8 @@ InvertRotation(rotation=None, node_label=None, node_color=None)
 
 ## Implementation
 
-- [ROTATION](/docs/GeoNodes/socket_ROTATION.md) : [invert_rotation](/docs/GeoNodes/socket_ROTATION.md#invert_rotation) [invert_rotation](/docs/GeoNodes/socket_ROTATION.md#invert_rotation)
-- [VECTOR](/docs/GeoNodes/socket_VECTOR.md) : [invert_rotation](/docs/GeoNodes/socket_VECTOR.md#invert_rotation) [invert_rotation](/docs/GeoNodes/socket_VECTOR.md#invert_rotation)
+- [ROTATION](/docs/GeoNodes/socket_ROTATION.md) : [invert_rotation](/docs/GeoNodes/socket_ROTATION.md#invert_rotation)
+- [VECTOR](/docs/GeoNodes/socket_VECTOR.md) : [invert_rotation](/docs/GeoNodes/socket_VECTOR.md#invert_rotation)
 
 ## Init
 

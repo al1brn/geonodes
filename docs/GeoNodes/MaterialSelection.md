@@ -13,7 +13,7 @@ MaterialSelection(material=None, node_label=None, node_color=None)
 
 ## Implementation
 
-- [MATERIAL](/docs/GeoNodes/socket_MATERIAL.md) : [material_selection](/docs/GeoNodes/socket_MATERIAL.md#material_selection) [material_selection](/docs/GeoNodes/socket_MATERIAL.md#material_selection)
+- [MATERIAL](/docs/GeoNodes/socket_MATERIAL.md) : [material_selection](/docs/GeoNodes/socket_MATERIAL.md#material_selection)
 
 ## Init
 

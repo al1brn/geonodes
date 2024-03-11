@@ -14,7 +14,7 @@ OffsetPointInCurve(point_index=None, offset=None, node_label=None, node_color=No
 
 ## Implementation
 
-- [GEOMETRY](/docs/GeoNodes/socket_GEOMETRY.md) : [offset_point_in_curve](/docs/GeoNodes/socket_GEOMETRY.md#offset_point_in_curve) [offset_point_in_curve](/docs/GeoNodes/socket_GEOMETRY.md#offset_point_in_curve)
+- [GEOMETRY](/docs/GeoNodes/socket_GEOMETRY.md) : [offset_point_in_curve](/docs/GeoNodes/socket_GEOMETRY.md#offset_point_in_curve)
 
 ## Init
 

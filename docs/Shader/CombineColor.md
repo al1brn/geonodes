@@ -16,7 +16,7 @@ CombineColor(red=None, green=None, blue=None, mode='RGB', node_label=None, node_
 
 ## Implementation
 
-- Functions : [combine_color](/docs/Shader/ShaderTree.md#combine_color)
+- Functions : [combine_color](/docs/Shader/ShaderTree.md#combine_color) [hsl](/docs/Shader/ShaderTree.md#hsl) [hsv](/docs/Shader/ShaderTree.md#hsv) [rgb](/docs/Shader/ShaderTree.md#rgb)
 
 ## Init
 

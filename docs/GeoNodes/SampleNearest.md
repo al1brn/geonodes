@@ -15,7 +15,7 @@ SampleNearest(geometry=None, sample_position=None, domain='POINT', node_label=No
 
 ## Implementation
 
-- [GEOMETRY](/docs/GeoNodes/socket_GEOMETRY.md) : [sample_nearest](/docs/GeoNodes/socket_GEOMETRY.md#sample_nearest) [sample_nearest](/docs/GeoNodes/socket_GEOMETRY.md#sample_nearest)
+- [GEOMETRY](/docs/GeoNodes/socket_GEOMETRY.md) : [sample_nearest](/docs/GeoNodes/socket_GEOMETRY.md#sample_nearest)
 
 ## Init
 

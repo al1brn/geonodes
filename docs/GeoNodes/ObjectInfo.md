@@ -15,7 +15,7 @@ ObjectInfo(object=None, as_instance=None, transform_space='ORIGINAL', node_label
 
 ## Implementation
 
-- [OBJECT](/docs/GeoNodes/socket_OBJECT.md) : [object_info](/docs/GeoNodes/socket_OBJECT.md#object_info) [object_info](/docs/GeoNodes/socket_OBJECT.md#object_info)
+- [OBJECT](/docs/GeoNodes/socket_OBJECT.md) : [object_info](/docs/GeoNodes/socket_OBJECT.md#object_info)
 
 ## Init
 

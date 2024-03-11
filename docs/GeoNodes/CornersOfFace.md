@@ -15,7 +15,7 @@ CornersOfFace(face_index=None, weights=None, sort_index=None, node_label=None, n
 
 ## Implementation
 
-- [GEOMETRY](/docs/GeoNodes/socket_GEOMETRY.md) : [corners_of_face](/docs/GeoNodes/socket_GEOMETRY.md#corners_of_face) [corners_of_face](/docs/GeoNodes/socket_GEOMETRY.md#corners_of_face)
+- [GEOMETRY](/docs/GeoNodes/socket_GEOMETRY.md) : [corners_of_face](/docs/GeoNodes/socket_GEOMETRY.md#corners_of_face)
 
 ## Init
 

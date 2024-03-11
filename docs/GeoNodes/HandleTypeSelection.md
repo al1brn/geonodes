@@ -5,21 +5,21 @@
 
 
 ``` python
-HandleTypeSelection(handle_type='AUTO', mode={'RIGHT', 'LEFT'}, node_label=None, node_color=None)
+HandleTypeSelection(handle_type='AUTO', mode={'LEFT', 'RIGHT'}, node_label=None, node_color=None)
 ```
 ##### Arguments
 
 - handle_type : 'AUTO'
-- mode : {'RIGHT', 'LEFT'}
+- mode : {'LEFT', 'RIGHT'}
 
 ## Implementation
 
-- [GEOMETRY](/docs/GeoNodes/socket_GEOMETRY.md) : [handle_type_selection](/docs/GeoNodes/socket_GEOMETRY.md#handle_type_selection) [handle_type_selection](/docs/GeoNodes/socket_GEOMETRY.md#handle_type_selection) [left_handle_type_selection](/docs/GeoNodes/socket_GEOMETRY.md#left_handle_type_selection) [left_handle_type_selection](/docs/GeoNodes/socket_GEOMETRY.md#left_handle_type_selection) [right_handle_type_selection](/docs/GeoNodes/socket_GEOMETRY.md#right_handle_type_selection) [right_handle_type_selection](/docs/GeoNodes/socket_GEOMETRY.md#right_handle_type_selection)
+- [GEOMETRY](/docs/GeoNodes/socket_GEOMETRY.md) : [handle_type_selection](/docs/GeoNodes/socket_GEOMETRY.md#handle_type_selection) [left_handle_type_selection](/docs/GeoNodes/socket_GEOMETRY.md#left_handle_type_selection) [right_handle_type_selection](/docs/GeoNodes/socket_GEOMETRY.md#right_handle_type_selection)
 
 ## Init
 
 ``` python
-def __init__(self, handle_type='AUTO', mode={'RIGHT', 'LEFT'}, node_label=None, node_color=None):
+def __init__(self, handle_type='AUTO', mode={'LEFT', 'RIGHT'}, node_label=None, node_color=None):
 
     Node.__init__(self, 'GeometryNodeCurveHandleTypeSelection', node_label=node_label, node_color=node_color)
 

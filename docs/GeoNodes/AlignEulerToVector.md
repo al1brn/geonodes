@@ -17,8 +17,8 @@ AlignEulerToVector(rotation=None, factor=None, vector=None, axis='X', pivot_axis
 
 ## Implementation
 
-- [ROTATION](/docs/GeoNodes/socket_ROTATION.md) : [align_euler_to_vector](/docs/GeoNodes/socket_ROTATION.md#align_euler_to_vector) [align_euler_to_vector](/docs/GeoNodes/socket_ROTATION.md#align_euler_to_vector)
-- [VECTOR](/docs/GeoNodes/socket_VECTOR.md) : [align_euler_to_vector](/docs/GeoNodes/socket_VECTOR.md#align_euler_to_vector) [align_euler_to_vector](/docs/GeoNodes/socket_VECTOR.md#align_euler_to_vector)
+- [ROTATION](/docs/GeoNodes/socket_ROTATION.md) : [align_euler_to_vector](/docs/GeoNodes/socket_ROTATION.md#align_euler_to_vector)
+- [VECTOR](/docs/GeoNodes/socket_VECTOR.md) : [align_euler_to_vector](/docs/GeoNodes/socket_VECTOR.md#align_euler_to_vector)
 
 ## Init
 

@@ -13,7 +13,7 @@ IsFacePlanar(threshold=None, node_label=None, node_color=None)
 
 ## Implementation
 
-- [GEOMETRY](/docs/GeoNodes/socket_GEOMETRY.md) : [is_face_planar](/docs/GeoNodes/socket_GEOMETRY.md#is_face_planar) [is_face_planar](/docs/GeoNodes/socket_GEOMETRY.md#is_face_planar)
+- [GEOMETRY](/docs/GeoNodes/socket_GEOMETRY.md) : [is_face_planar](/docs/GeoNodes/socket_GEOMETRY.md#is_face_planar)
 
 ## Init
 

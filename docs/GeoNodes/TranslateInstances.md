@@ -16,7 +16,7 @@ TranslateInstances(instances=None, selection=None, translation=None, local_space
 
 ## Implementation
 
-- [GEOMETRY](/docs/GeoNodes/socket_GEOMETRY.md) : [translate_instances](/docs/GeoNodes/socket_GEOMETRY.md#translate_instances) [translate_instances](/docs/GeoNodes/socket_GEOMETRY.md#translate_instances)
+- [GEOMETRY](/docs/GeoNodes/socket_GEOMETRY.md) : [translate_instances](/docs/GeoNodes/socket_GEOMETRY.md#translate_instances)
 
 ## Init
 

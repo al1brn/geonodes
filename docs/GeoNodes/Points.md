@@ -15,7 +15,7 @@ Points(count=None, position=None, radius=None, node_label=None, node_color=None)
 
 ## Implementation
 
-- Functions : [points](/docs/GeoNodes/GeoNodesTree.md#points) [points](/docs/GeoNodes/GeoNodesTree.md#points)
+- Functions : [points](/docs/GeoNodes/GeoNodesTree.md#points)
 
 ## Init
 

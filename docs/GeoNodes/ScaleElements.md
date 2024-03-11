@@ -19,7 +19,7 @@ ScaleElements(geometry=None, selection=None, scale=None, center=None, axis=None,
 
 ## Implementation
 
-- [GEOMETRY](/docs/GeoNodes/socket_GEOMETRY.md) : [scale_elements](/docs/GeoNodes/socket_GEOMETRY.md#scale_elements) [scale_elements](/docs/GeoNodes/socket_GEOMETRY.md#scale_elements)
+- [GEOMETRY](/docs/GeoNodes/socket_GEOMETRY.md) : [scale_elements](/docs/GeoNodes/socket_GEOMETRY.md#scale_elements)
 
 ## Init
 

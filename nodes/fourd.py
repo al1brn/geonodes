@@ -41,6 +41,10 @@ def clear_all():
     
 def build4D(clear=False):
     
+    print("-"*100)
+    print("Build 4D Engine")
+    print()
+    
     if clear:
         clear_all()
     
@@ -54,6 +58,19 @@ def build4D(clear=False):
     build_lights()
     build_curves()
     build_surfaces()
+    
+    nodes = 0
+    links = 0
+    for pref in [g_maths, g_mods, g_curves, g_surfs]:
+        
+        n, l = pref._nodes_links_count
+        nodes += n
+        links += l
+        
+    print()
+    print(f"4D Engine built : {nodes} nodes, {links} links")
+    print()
+        
     
 
 # ====================================================================================================
@@ -119,7 +136,7 @@ class V4:
         if hasattr(V, 'bsocket'):
             self.V = V
         else:
-            self.V = tree.Vector(V)
+            self.V = tree.Vector(V).vector
             
         if hasattr(w, 'bsocket'):
             self.w = w
@@ -1721,7 +1738,7 @@ def build_curves():
             count          = curve.domain_size(component='CURVE').point_count,
             with_faces     = with_faces,
             sides_material = sides_mat,
-            ))
+            ).mesh)
         
         # Done
         
@@ -1998,7 +2015,7 @@ def build_surfaces():
             use_radius = True,
             align_w    = True,
             material   = mat,
-            )
+            ).geometry
         
         hs.shade_smooth = True
         

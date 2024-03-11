@@ -15,7 +15,7 @@ PointsOfCurve(curve_index=None, weights=None, sort_index=None, node_label=None, 
 
 ## Implementation
 
-- [GEOMETRY](/docs/GeoNodes/socket_GEOMETRY.md) : [points_of_curve](/docs/GeoNodes/socket_GEOMETRY.md#points_of_curve) [points_of_curve](/docs/GeoNodes/socket_GEOMETRY.md#points_of_curve)
+- [GEOMETRY](/docs/GeoNodes/socket_GEOMETRY.md) : [points_of_curve](/docs/GeoNodes/socket_GEOMETRY.md#points_of_curve)
 
 ## Init
 

@@ -9,7 +9,7 @@ IsSplineCyclic(node_label=None, node_color=None)
 ```
 ## Implementation
 
-- [GEOMETRY](/docs/GeoNodes/socket_GEOMETRY.md) : [spline_cyclic](/docs/GeoNodes/socket_GEOMETRY.md#spline_cyclic) [spline_cyclic](/docs/GeoNodes/socket_GEOMETRY.md#spline_cyclic)
+- [GEOMETRY](/docs/GeoNodes/socket_GEOMETRY.md) : [spline_cyclic](/docs/GeoNodes/socket_GEOMETRY.md#spline_cyclic)
 
 ## Init
 

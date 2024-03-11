@@ -15,7 +15,7 @@ SetMaterialIndex(geometry=None, selection=None, material_index=None, node_label=
 
 ## Implementation
 
-- [GEOMETRY](/docs/GeoNodes/socket_GEOMETRY.md) : [material_index](/docs/GeoNodes/socket_GEOMETRY.md#material_index) [material_index](/docs/GeoNodes/socket_GEOMETRY.md#material_index) [set_material_index](/docs/GeoNodes/socket_GEOMETRY.md#set_material_index) [set_material_index](/docs/GeoNodes/socket_GEOMETRY.md#set_material_index)
+- [GEOMETRY](/docs/GeoNodes/socket_GEOMETRY.md) : [material_index](/docs/GeoNodes/socket_GEOMETRY.md#material_index) [set_material_index](/docs/GeoNodes/socket_GEOMETRY.md#set_material_index)
 
 ## Init
 

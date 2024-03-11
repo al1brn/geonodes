@@ -18,7 +18,7 @@ CurveCircle(resolution=None, radius=None, point_1=None, point_2=None, point_3=No
 
 ## Implementation
 
-- Functions : [curve_circle](/docs/GeoNodes/GeoNodesTree.md#curve_circle) [curve_circle](/docs/GeoNodes/GeoNodesTree.md#curve_circle)
+- Functions : [curve_circle](/docs/GeoNodes/GeoNodesTree.md#curve_circle)
 
 ## Init
 

@@ -43,16 +43,18 @@
 - E : [exp](#exp)
 - F : [floor](#floor) [fract](#fract) [floored_modulo](#floored_modulo)
 - G : [greater_than](#greater_than) [gradient_texture](#gradient_texture)
+- H : [hsv](#hsv) [hsl](#hsl)
 - I : [inverse_sqrt](#inverse_sqrt)
 - L : [log](#log) [less_than](#less_than)
 - M : [multiply](#multiply) [multiply_add](#multiply_add) [min](#min) [max](#max) [mod](#mod) [magic_texture](#magic_texture) [musgrave_texture](#musgrave_texture)
 - N : [noise_texture](#noise_texture)
 - P : [power](#power) [pingpong](#pingpong)
-- R : [round](#round) [radians](#radians)
+- R : [rgb](#rgb) [round](#round) [radians](#radians)
 - S : [subtract](#subtract) [sqrt](#sqrt) [sign](#sign) [smooth_min](#smooth_min) [smooth_max](#smooth_max) [snap](#snap) [sin](#sin) [sinh](#sinh)
 - T : [trunc](#trunc) [tan](#tan) [tanh](#tanh)
 - V : [voronoi_texture](#voronoi_texture) [vadd](#vadd) [vsubtract](#vsubtract) [vmultiply](#vmultiply) [vdivide](#vdivide) [vmultiply_add](#vmultiply_add) [vcross](#vcross) [vproject](#vproject) [vreflect](#vreflect) [vrefract](#vrefract) [vfaceforward](#vfaceforward) [vdot](#vdot) [vdistance](#vdistance) [vlength](#vlength) [vscale](#vscale) [vnormalize](#vnormalize) [vabs](#vabs) [vmin](#vmin) [vmax](#vmax) [vfloor](#vfloor) [vceil](#vceil) [vfrac](#vfrac) [vmod](#vmod) [vwrap](#vwrap) [vsnap](#vsnap) [vsin](#vsin) [vcos](#vcos) [vtan](#vtan)
 - W : [wrap](#wrap) [wave_texture](#wave_texture) [white_noise_texture](#white_noise_texture)
+- X : [xyz](#xyz)
 
 ## Functions
 
@@ -526,6 +528,48 @@ def greater_than(self, value=None, value_1=None, use_clamp=False, node_label=Non
     node = self.Math(value=value, value_1=value_1, operation='GREATER_THAN', use_clamp=use_clamp, node_label=node_label, node_color=node_color)
     return node.value
 ```
+### hsl
+
+
+- node : [CombineColor](/docs/Shader/CombineColor.md)
+- return : color
+
+##### Arguments
+
+- red : None
+- green : None
+- blue : None
+- node_label : None
+- node_color : None
+
+#### Source code
+
+``` python
+def hsl(self, red=None, green=None, blue=None, node_label=None, node_color=None):
+    node = self.CombineColor(red=red, green=green, blue=blue, mode='HSL', node_label=node_label, node_color=node_color)
+    return node.color
+```
+### hsv
+
+
+- node : [CombineColor](/docs/Shader/CombineColor.md)
+- return : color
+
+##### Arguments
+
+- red : None
+- green : None
+- blue : None
+- node_label : None
+- node_color : None
+
+#### Source code
+
+``` python
+def hsv(self, red=None, green=None, blue=None, node_label=None, node_color=None):
+    node = self.CombineColor(red=red, green=green, blue=blue, mode='HSV', node_label=node_label, node_color=node_color)
+    return node.color
+```
 ### inverse_sqrt
 
 
@@ -838,6 +882,27 @@ def power(self, value=None, value_1=None, use_clamp=False, node_label=None, node
 def radians(self, value=None, use_clamp=False, node_label=None, node_color=None):
     node = self.Math(value=value, operation='RADIANS', use_clamp=use_clamp, node_label=node_label, node_color=node_color)
     return node.value
+```
+### rgb
+
+
+- node : [CombineColor](/docs/Shader/CombineColor.md)
+- return : color
+
+##### Arguments
+
+- red : None
+- green : None
+- blue : None
+- node_label : None
+- node_color : None
+
+#### Source code
+
+``` python
+def rgb(self, red=None, green=None, blue=None, node_label=None, node_color=None):
+    node = self.CombineColor(red=red, green=green, blue=blue, mode='RGB', node_label=node_label, node_color=node_color)
+    return node.color
 ```
 ### round
 
@@ -1726,4 +1791,25 @@ def white_noise_texture(self, vector=None, w=None, noise_dimensions='3D', node_l
 def wrap(self, value=None, value_1=None, value_2=None, use_clamp=False, node_label=None, node_color=None):
     node = self.Math(value=value, value_1=value_1, value_2=value_2, operation='WRAP', use_clamp=use_clamp, node_label=node_label, node_color=node_color)
     return node.value
+```
+### xyz
+
+
+- node : [CombineXYZ](/docs/Shader/CombineXYZ.md)
+- return : vector
+
+##### Arguments
+
+- x : None
+- y : None
+- z : None
+- node_label : None
+- node_color : None
+
+#### Source code
+
+``` python
+def xyz(self, x=None, y=None, z=None, node_label=None, node_color=None):
+    node = self.CombineXYZ(x=x, y=y, z=z, node_label=node_label, node_color=node_color)
+    return node.vector
 ```

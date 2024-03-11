@@ -9,7 +9,7 @@ MaterialIndex(node_label=None, node_color=None)
 ```
 ## Implementation
 
-- [GEOMETRY](/docs/GeoNodes/socket_GEOMETRY.md) : [material_index](/docs/GeoNodes/socket_GEOMETRY.md#material_index) [material_index](/docs/GeoNodes/socket_GEOMETRY.md#material_index)
+- [GEOMETRY](/docs/GeoNodes/socket_GEOMETRY.md) : [material_index](/docs/GeoNodes/socket_GEOMETRY.md#material_index)
 
 ## Init
 

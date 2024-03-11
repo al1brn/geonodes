@@ -13,8 +13,8 @@ RotationToEuler(rotation=None, node_label=None, node_color=None)
 
 ## Implementation
 
-- [ROTATION](/docs/GeoNodes/socket_ROTATION.md) : [rotation_to_euler](/docs/GeoNodes/socket_ROTATION.md#rotation_to_euler) [rotation_to_euler](/docs/GeoNodes/socket_ROTATION.md#rotation_to_euler)
-- [VECTOR](/docs/GeoNodes/socket_VECTOR.md) : [rotation_to_euler](/docs/GeoNodes/socket_VECTOR.md#rotation_to_euler) [rotation_to_euler](/docs/GeoNodes/socket_VECTOR.md#rotation_to_euler)
+- [ROTATION](/docs/GeoNodes/socket_ROTATION.md) : [rotation_to_euler](/docs/GeoNodes/socket_ROTATION.md#rotation_to_euler)
+- [VECTOR](/docs/GeoNodes/socket_VECTOR.md) : [rotation_to_euler](/docs/GeoNodes/socket_VECTOR.md#rotation_to_euler)
 
 ## Init
 

@@ -18,7 +18,7 @@ BezierSegment(resolution=None, start=None, start_handle=None, end_handle=None, e
 
 ## Implementation
 
-- Functions : [bezier_segment](/docs/GeoNodes/GeoNodesTree.md#bezier_segment) [bezier_segment](/docs/GeoNodes/GeoNodesTree.md#bezier_segment)
+- Functions : [bezier_segment](/docs/GeoNodes/GeoNodesTree.md#bezier_segment)
 
 ## Init
 

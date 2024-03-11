@@ -16,7 +16,7 @@ SetShadeSmooth(geometry=None, selection=None, shade_smooth=None, domain='FACE', 
 
 ## Implementation
 
-- [GEOMETRY](/docs/GeoNodes/socket_GEOMETRY.md) : [set_shade_smooth](/docs/GeoNodes/socket_GEOMETRY.md#set_shade_smooth) [set_shade_smooth](/docs/GeoNodes/socket_GEOMETRY.md#set_shade_smooth) [shade_smooth](/docs/GeoNodes/socket_GEOMETRY.md#shade_smooth) [shade_smooth](/docs/GeoNodes/socket_GEOMETRY.md#shade_smooth)
+- [GEOMETRY](/docs/GeoNodes/socket_GEOMETRY.md) : [set_shade_smooth](/docs/GeoNodes/socket_GEOMETRY.md#set_shade_smooth) [shade_smooth](/docs/GeoNodes/socket_GEOMETRY.md#shade_smooth)
 
 ## Init
 

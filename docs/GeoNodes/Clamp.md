@@ -16,8 +16,8 @@ Clamp(value=None, min=None, max=None, clamp_type='MINMAX', node_label=None, node
 
 ## Implementation
 
-- [INT](/docs/GeoNodes/socket_INT.md) : [clamp](/docs/GeoNodes/socket_INT.md#clamp) [clamp](/docs/GeoNodes/socket_INT.md#clamp)
-- [VALUE](/docs/GeoNodes/socket_VALUE.md) : [clamp](/docs/GeoNodes/socket_VALUE.md#clamp) [clamp](/docs/GeoNodes/socket_VALUE.md#clamp)
+- [INT](/docs/GeoNodes/socket_INT.md) : [clamp](/docs/GeoNodes/socket_INT.md#clamp)
+- [VALUE](/docs/GeoNodes/socket_VALUE.md) : [clamp](/docs/GeoNodes/socket_VALUE.md#clamp)
 
 ## Init
 

@@ -17,7 +17,7 @@ AttributeStatistic(geometry=None, selection=None, attribute=None, data_type='FLO
 
 ## Implementation
 
-- [GEOMETRY](/docs/GeoNodes/socket_GEOMETRY.md) : [attribute_statistic](/docs/GeoNodes/socket_GEOMETRY.md#attribute_statistic) [attribute_statistic](/docs/GeoNodes/socket_GEOMETRY.md#attribute_statistic) [attribute_statistic_float](/docs/GeoNodes/socket_GEOMETRY.md#attribute_statistic_float) [attribute_statistic_float](/docs/GeoNodes/socket_GEOMETRY.md#attribute_statistic_float) [attribute_statistic_vector](/docs/GeoNodes/socket_GEOMETRY.md#attribute_statistic_vector) [attribute_statistic_vector](/docs/GeoNodes/socket_GEOMETRY.md#attribute_statistic_vector)
+- [GEOMETRY](/docs/GeoNodes/socket_GEOMETRY.md) : [attribute_statistic](/docs/GeoNodes/socket_GEOMETRY.md#attribute_statistic) [attribute_statistic_float](/docs/GeoNodes/socket_GEOMETRY.md#attribute_statistic_float) [attribute_statistic_vector](/docs/GeoNodes/socket_GEOMETRY.md#attribute_statistic_vector)
 
 ## Init
 

@@ -25,7 +25,7 @@ WaveTexture(vector=None, scale=None, distortion=None, detail=None, detail_scale=
 
 ## Implementation
 
-- Functions : [wave_texture](/docs/GeoNodes/GeoNodesTree.md#wave_texture) [wave_texture](/docs/GeoNodes/GeoNodesTree.md#wave_texture)
+- Functions : [wave_texture](/docs/GeoNodes/GeoNodesTree.md#wave_texture)
 
 ## Init
 

@@ -15,8 +15,8 @@ JoinStrings(*args, delimiter=None, strings=None, node_label=None, node_color=Non
 
 ## Implementation
 
-- [STRING](/docs/GeoNodes/socket_STRING.md) : [join_strings](/docs/GeoNodes/socket_STRING.md#join_strings) [join_strings](/docs/GeoNodes/socket_STRING.md#join_strings)
-- Functions : [join_strings](/docs/GeoNodes/GeoNodesTree.md#join_strings) [join_strings](/docs/GeoNodes/GeoNodesTree.md#join_strings)
+- [STRING](/docs/GeoNodes/socket_STRING.md) : [join_strings](/docs/GeoNodes/socket_STRING.md#join_strings)
+- Functions : [join_strings](/docs/GeoNodes/GeoNodesTree.md#join_strings)
 
 ## Init
 

@@ -9,7 +9,7 @@ IsEdgeSmooth(node_label=None, node_color=None)
 ```
 ## Implementation
 
-- [GEOMETRY](/docs/GeoNodes/socket_GEOMETRY.md) : [edge_smooth](/docs/GeoNodes/socket_GEOMETRY.md#edge_smooth) [edge_smooth](/docs/GeoNodes/socket_GEOMETRY.md#edge_smooth)
+- [GEOMETRY](/docs/GeoNodes/socket_GEOMETRY.md) : [edge_smooth](/docs/GeoNodes/socket_GEOMETRY.md#edge_smooth)
 
 ## Init
 

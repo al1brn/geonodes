@@ -13,7 +13,7 @@ RealizeInstances(geometry=None, node_label=None, node_color=None)
 
 ## Implementation
 
-- [GEOMETRY](/docs/GeoNodes/socket_GEOMETRY.md) : [realize_instances](/docs/GeoNodes/socket_GEOMETRY.md#realize_instances) [realize_instances](/docs/GeoNodes/socket_GEOMETRY.md#realize_instances)
+- [GEOMETRY](/docs/GeoNodes/socket_GEOMETRY.md) : [realize_instances](/docs/GeoNodes/socket_GEOMETRY.md#realize_instances)
 
 ## Init
 

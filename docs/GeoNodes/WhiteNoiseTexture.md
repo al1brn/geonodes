@@ -15,7 +15,7 @@ WhiteNoiseTexture(vector=None, w=None, noise_dimensions='3D', node_label=None, n
 
 ## Implementation
 
-- Functions : [white_noise_texture](/docs/GeoNodes/GeoNodesTree.md#white_noise_texture) [white_noise_texture](/docs/GeoNodes/GeoNodesTree.md#white_noise_texture)
+- Functions : [white_noise_texture](/docs/GeoNodes/GeoNodesTree.md#white_noise_texture)
 
 ## Init
 

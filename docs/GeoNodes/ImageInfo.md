@@ -14,7 +14,7 @@ ImageInfo(image=None, frame=None, node_label=None, node_color=None)
 
 ## Implementation
 
-- [IMAGE](/docs/GeoNodes/socket_IMAGE.md) : [image_info](/docs/GeoNodes/socket_IMAGE.md#image_info) [image_info](/docs/GeoNodes/socket_IMAGE.md#image_info)
+- [IMAGE](/docs/GeoNodes/socket_IMAGE.md) : [image_info](/docs/GeoNodes/socket_IMAGE.md#image_info)
 
 ## Init
 

@@ -17,7 +17,7 @@ CombineColor(red=None, green=None, blue=None, alpha=None, mode='RGB', node_label
 
 ## Implementation
 
-- Functions : [combine_color](/docs/GeoNodes/GeoNodesTree.md#combine_color) [combine_color](/docs/GeoNodes/GeoNodesTree.md#combine_color)
+- Functions : [combine_color](/docs/GeoNodes/GeoNodesTree.md#combine_color) [hsl](/docs/GeoNodes/GeoNodesTree.md#hsl) [hsv](/docs/GeoNodes/GeoNodesTree.md#hsv) [rgb](/docs/GeoNodes/GeoNodesTree.md#rgb)
 
 ## Init
 

@@ -474,7 +474,7 @@ class C:
 
 NODE_IMPLEMENTATIONS = {    
     'AccumulateField'    : None,
-    'AlignEulerToVector' : C.Meth(('Rot', 'Vect'), self_socket='rotation'),
+    'AlignEulerToVector' : C.Meth(('Rot', 'Vect'), self_socket='rotation', ret_socket='rotation'),
     'Arc'                : C.Glob(ret_socket='curve'),
     'AttributeStatistic' : [C.Meth('Geometry'),
                             C.Meth('Geometry', name='@_DATA_TYPE', loops=['data_type'])],

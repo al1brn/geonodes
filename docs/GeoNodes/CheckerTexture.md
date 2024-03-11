@@ -18,7 +18,7 @@ CheckerTexture(vector=None, color1=None, color2=None, scale=None, color_mapping=
 
 ## Implementation
 
-- Functions : [checker_texture](/docs/GeoNodes/GeoNodesTree.md#checker_texture) [checker_texture](/docs/GeoNodes/GeoNodesTree.md#checker_texture)
+- Functions : [checker_texture](/docs/GeoNodes/GeoNodesTree.md#checker_texture)
 
 ## Init
 

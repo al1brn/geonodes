@@ -15,7 +15,7 @@ SetPointRadius(points=None, selection=None, radius=None, node_label=None, node_c
 
 ## Implementation
 
-- [GEOMETRY](/docs/GeoNodes/socket_GEOMETRY.md) : [point_radius](/docs/GeoNodes/socket_GEOMETRY.md#point_radius) [point_radius](/docs/GeoNodes/socket_GEOMETRY.md#point_radius) [set_point_radius](/docs/GeoNodes/socket_GEOMETRY.md#set_point_radius) [set_point_radius](/docs/GeoNodes/socket_GEOMETRY.md#set_point_radius)
+- [GEOMETRY](/docs/GeoNodes/socket_GEOMETRY.md) : [point_radius](/docs/GeoNodes/socket_GEOMETRY.md#point_radius) [set_point_radius](/docs/GeoNodes/socket_GEOMETRY.md#set_point_radius)
 
 ## Init
 

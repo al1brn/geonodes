@@ -14,8 +14,8 @@ ValueToString(value=None, decimals=None, node_label=None, node_color=None)
 
 ## Implementation
 
-- [INT](/docs/GeoNodes/socket_INT.md) : [value_to_string](/docs/GeoNodes/socket_INT.md#value_to_string) [value_to_string](/docs/GeoNodes/socket_INT.md#value_to_string)
-- [VALUE](/docs/GeoNodes/socket_VALUE.md) : [value_to_string](/docs/GeoNodes/socket_VALUE.md#value_to_string) [value_to_string](/docs/GeoNodes/socket_VALUE.md#value_to_string)
+- [INT](/docs/GeoNodes/socket_INT.md) : [value_to_string](/docs/GeoNodes/socket_INT.md#value_to_string)
+- [VALUE](/docs/GeoNodes/socket_VALUE.md) : [value_to_string](/docs/GeoNodes/socket_VALUE.md#value_to_string)
 
 ## Init
 

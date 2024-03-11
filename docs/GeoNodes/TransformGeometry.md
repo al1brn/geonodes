@@ -16,7 +16,7 @@ TransformGeometry(geometry=None, translation=None, rotation=None, scale=None, no
 
 ## Implementation
 
-- [GEOMETRY](/docs/GeoNodes/socket_GEOMETRY.md) : [transform_geometry](/docs/GeoNodes/socket_GEOMETRY.md#transform_geometry) [transform_geometry](/docs/GeoNodes/socket_GEOMETRY.md#transform_geometry)
+- [GEOMETRY](/docs/GeoNodes/socket_GEOMETRY.md) : [transform_geometry](/docs/GeoNodes/socket_GEOMETRY.md#transform_geometry)
 
 ## Init
 

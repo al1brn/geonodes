@@ -14,7 +14,7 @@ AxisAngleToRotation(axis=None, angle=None, node_label=None, node_color=None)
 
 ## Implementation
 
-- [VECTOR](/docs/GeoNodes/socket_VECTOR.md) : [axis_angle_to_rotation](/docs/GeoNodes/socket_VECTOR.md#axis_angle_to_rotation) [axis_angle_to_rotation](/docs/GeoNodes/socket_VECTOR.md#axis_angle_to_rotation)
+- [VECTOR](/docs/GeoNodes/socket_VECTOR.md) : [axis_angle_to_rotation](/docs/GeoNodes/socket_VECTOR.md#axis_angle_to_rotation)
 
 ## Init
 

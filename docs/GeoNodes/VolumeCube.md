@@ -19,7 +19,7 @@ VolumeCube(density=None, background=None, min=None, max=None, resolution_x=None,
 
 ## Implementation
 
-- Functions : [volume_cube](/docs/GeoNodes/GeoNodesTree.md#volume_cube) [volume_cube](/docs/GeoNodes/GeoNodesTree.md#volume_cube)
+- Functions : [volume_cube](/docs/GeoNodes/GeoNodesTree.md#volume_cube)
 
 ## Init
 

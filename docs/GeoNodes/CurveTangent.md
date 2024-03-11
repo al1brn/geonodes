@@ -9,7 +9,7 @@ CurveTangent(node_label=None, node_color=None)
 ```
 ## Implementation
 
-- [GEOMETRY](/docs/GeoNodes/socket_GEOMETRY.md) : [curve_tangent](/docs/GeoNodes/socket_GEOMETRY.md#curve_tangent) [curve_tangent](/docs/GeoNodes/socket_GEOMETRY.md#curve_tangent)
+- [GEOMETRY](/docs/GeoNodes/socket_GEOMETRY.md) : [curve_tangent](/docs/GeoNodes/socket_GEOMETRY.md#curve_tangent)
 
 ## Init
 

@@ -14,8 +14,8 @@ ColorRamp(fac=None, color_ramp=None, node_label=None, node_color=None)
 
 ## Implementation
 
-- [INT](/docs/GeoNodes/socket_INT.md) : [color_ramp](/docs/GeoNodes/socket_INT.md#color_ramp) [color_ramp](/docs/GeoNodes/socket_INT.md#color_ramp)
-- [VALUE](/docs/GeoNodes/socket_VALUE.md) : [color_ramp](/docs/GeoNodes/socket_VALUE.md#color_ramp) [color_ramp](/docs/GeoNodes/socket_VALUE.md#color_ramp)
+- [INT](/docs/GeoNodes/socket_INT.md) : [color_ramp](/docs/GeoNodes/socket_INT.md#color_ramp)
+- [VALUE](/docs/GeoNodes/socket_VALUE.md) : [color_ramp](/docs/GeoNodes/socket_VALUE.md#color_ramp)
 
 ## Init
 

@@ -35,39 +35,30 @@ def get_node_params(bnode):
     return [name for name in dir(bnode) if name not in STANDARD_NODE_ATTRS]    
 
 # ====================================================================================================
-# Snake case
+# Print stack
+
+def print_stack(count=3):
+    
+    import traceback
+    
+    EXCL = 3
+    
+    tb = traceback.extract_stack()
+    for i, t in enumerate(tb):
+        if i > len(tb) - EXCL:
+            continue
+        print(f"{i:2d} ", t.filename)
+        print(f"   {t.lineno:4d}:", t.line)
         
-def snake_case_OLD(name):
-    """ Convert a string in snake case
-    
-    Some hacks are implemented :
-        - ID --> ID (unchanged)
-        - ColorRamp -> color_ramp
-    
-    Arguments
-    ---------
-        - name (str) : the name to convert
+    return
+
         
-    Returns
-    -------
-        - str : snake case version
-    """
-    
-    if name == 'ID':
-        return name
-    elif name == 'ColorRamp':
-        return 'color_ramp'
-    else:
-        sc = name.lower().replace(' ', '_').replace('-', '_')
-        if sc == '':
-            return "no_name"
-        else:
-            return sc
+
         
 # ====================================================================================================
 # Add a rank to a list of arguments to get list of unique keys
 
-def add_rank(args):
+def add_rank_OLD(args):
     counts = {}
     keys = []
     for arg in args:
@@ -215,6 +206,9 @@ def value_for(value, socket_type):
         return None
     
     if hasattr(value, 'bnode'):
+        
+        print_stack()
+
         outs = value.output_socket
         print(f"Caution {value} variable is used rather than one of its sockets. Used socket: {outs}.")
         return outs
@@ -376,6 +370,9 @@ def get_value_socket_type(value):
         return 'MATERIAL'
     
     elif hasattr(value, 'bnode'):
+        
+        print_stack()
+        
         stype = value.output_socket.bsocket.type 
         print(f"Caution {value} variable is used rather than one of its sockets in {list(value.outputs.sockets_pynames().keys())}. '{stype}' returned.")
         return stype

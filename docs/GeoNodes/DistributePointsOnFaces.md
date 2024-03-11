@@ -21,7 +21,7 @@ DistributePointsOnFaces(mesh=None, selection=None, density=None, seed=None, dist
 
 ## Implementation
 
-- [GEOMETRY](/docs/GeoNodes/socket_GEOMETRY.md) : [distribute_points_on_faces](/docs/GeoNodes/socket_GEOMETRY.md#distribute_points_on_faces) [distribute_points_on_faces](/docs/GeoNodes/socket_GEOMETRY.md#distribute_points_on_faces)
+- [GEOMETRY](/docs/GeoNodes/socket_GEOMETRY.md) : [distribute_points_on_faces](/docs/GeoNodes/socket_GEOMETRY.md#distribute_points_on_faces)
 
 ## Init
 

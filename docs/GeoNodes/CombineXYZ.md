@@ -15,7 +15,7 @@ CombineXYZ(x=None, y=None, z=None, node_label=None, node_color=None)
 
 ## Implementation
 
-- Functions : [combine_xyz](/docs/GeoNodes/GeoNodesTree.md#combine_xyz) [combine_xyz](/docs/GeoNodes/GeoNodesTree.md#combine_xyz)
+- Functions : [combine_xyz](/docs/GeoNodes/GeoNodesTree.md#combine_xyz) [xyz](/docs/GeoNodes/GeoNodesTree.md#xyz)
 
 ## Init
 

@@ -14,7 +14,7 @@ SeparateColor(color=None, mode='RGB', node_label=None, node_color=None)
 
 ## Implementation
 
-- [RGBA](/docs/GeoNodes/socket_RGBA.md) : [separate_color](/docs/GeoNodes/socket_RGBA.md#separate_color) [separate_color](/docs/GeoNodes/socket_RGBA.md#separate_color)
+- [RGBA](/docs/GeoNodes/socket_RGBA.md) : [separate_color](/docs/GeoNodes/socket_RGBA.md#separate_color)
 
 ## Init
 

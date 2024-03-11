@@ -18,7 +18,7 @@ VolumeToMesh(volume=None, threshold=None, adaptivity=None, voxel_amount=None, vo
 
 ## Implementation
 
-- [GEOMETRY](/docs/GeoNodes/socket_GEOMETRY.md) : [volume_to_mesh](/docs/GeoNodes/socket_GEOMETRY.md#volume_to_mesh) [volume_to_mesh](/docs/GeoNodes/socket_GEOMETRY.md#volume_to_mesh)
+- [GEOMETRY](/docs/GeoNodes/socket_GEOMETRY.md) : [volume_to_mesh](/docs/GeoNodes/socket_GEOMETRY.md#volume_to_mesh)
 
 ## Init
 

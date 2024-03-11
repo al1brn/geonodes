@@ -9,7 +9,7 @@ EdgeNeighbors(node_label=None, node_color=None)
 ```
 ## Implementation
 
-- [GEOMETRY](/docs/GeoNodes/socket_GEOMETRY.md) : [edge_neighbors](/docs/GeoNodes/socket_GEOMETRY.md#edge_neighbors) [edge_neighbors](/docs/GeoNodes/socket_GEOMETRY.md#edge_neighbors)
+- [GEOMETRY](/docs/GeoNodes/socket_GEOMETRY.md) : [edge_neighbors](/docs/GeoNodes/socket_GEOMETRY.md#edge_neighbors)
 
 ## Init
 

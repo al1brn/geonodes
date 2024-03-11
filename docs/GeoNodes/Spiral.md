@@ -18,7 +18,7 @@ Spiral(resolution=None, rotations=None, start_radius=None, end_radius=None, heig
 
 ## Implementation
 
-- Functions : [spiral](/docs/GeoNodes/GeoNodesTree.md#spiral) [spiral](/docs/GeoNodes/GeoNodesTree.md#spiral)
+- Functions : [spiral](/docs/GeoNodes/GeoNodesTree.md#spiral)
 
 ## Init
 

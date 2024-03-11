@@ -18,7 +18,7 @@ Cylinder(vertices=None, side_segments=None, fill_segments=None, radius=None, dep
 
 ## Implementation
 
-- Functions : [cylinder](/docs/GeoNodes/GeoNodesTree.md#cylinder) [cylinder](/docs/GeoNodes/GeoNodesTree.md#cylinder)
+- Functions : [cylinder](/docs/GeoNodes/GeoNodesTree.md#cylinder)
 
 ## Init
 

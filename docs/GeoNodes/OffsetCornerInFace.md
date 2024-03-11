@@ -14,7 +14,7 @@ OffsetCornerInFace(corner_index=None, offset=None, node_label=None, node_color=N
 
 ## Implementation
 
-- [GEOMETRY](/docs/GeoNodes/socket_GEOMETRY.md) : [offset_corner_in_face](/docs/GeoNodes/socket_GEOMETRY.md#offset_corner_in_face) [offset_corner_in_face](/docs/GeoNodes/socket_GEOMETRY.md#offset_corner_in_face)
+- [GEOMETRY](/docs/GeoNodes/socket_GEOMETRY.md) : [offset_corner_in_face](/docs/GeoNodes/socket_GEOMETRY.md#offset_corner_in_face)
 
 ## Init
 

@@ -17,7 +17,7 @@ SetHandlePositions(curve=None, selection=None, position=None, offset=None, mode=
 
 ## Implementation
 
-- [GEOMETRY](/docs/GeoNodes/socket_GEOMETRY.md) : [set_handle_positions](/docs/GeoNodes/socket_GEOMETRY.md#set_handle_positions) [set_handle_positions](/docs/GeoNodes/socket_GEOMETRY.md#set_handle_positions)
+- [GEOMETRY](/docs/GeoNodes/socket_GEOMETRY.md) : [set_handle_positions](/docs/GeoNodes/socket_GEOMETRY.md#set_handle_positions)
 
 ## Init
 

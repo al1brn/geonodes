@@ -13,7 +13,7 @@ CurveOfPoint(point_index=None, node_label=None, node_color=None)
 
 ## Implementation
 
-- [GEOMETRY](/docs/GeoNodes/socket_GEOMETRY.md) : [curve_of_point](/docs/GeoNodes/socket_GEOMETRY.md#curve_of_point) [curve_of_point](/docs/GeoNodes/socket_GEOMETRY.md#curve_of_point)
+- [GEOMETRY](/docs/GeoNodes/socket_GEOMETRY.md) : [curve_of_point](/docs/GeoNodes/socket_GEOMETRY.md#curve_of_point)
 
 ## Init
 

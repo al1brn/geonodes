@@ -9,7 +9,7 @@ EdgeAngle(node_label=None, node_color=None)
 ```
 ## Implementation
 
-- [GEOMETRY](/docs/GeoNodes/socket_GEOMETRY.md) : [edge_angle](/docs/GeoNodes/socket_GEOMETRY.md#edge_angle) [edge_angle](/docs/GeoNodes/socket_GEOMETRY.md#edge_angle)
+- [GEOMETRY](/docs/GeoNodes/socket_GEOMETRY.md) : [edge_angle](/docs/GeoNodes/socket_GEOMETRY.md#edge_angle)
 
 ## Init
 

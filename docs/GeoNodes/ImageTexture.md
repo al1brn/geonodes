@@ -17,7 +17,7 @@ ImageTexture(image=None, vector=None, frame=None, extension='REPEAT', interpolat
 
 ## Implementation
 
-- [IMAGE](/docs/GeoNodes/socket_IMAGE.md) : [image_texture](/docs/GeoNodes/socket_IMAGE.md#image_texture) [image_texture](/docs/GeoNodes/socket_IMAGE.md#image_texture)
+- [IMAGE](/docs/GeoNodes/socket_IMAGE.md) : [image_texture](/docs/GeoNodes/socket_IMAGE.md#image_texture)
 
 ## Init
 

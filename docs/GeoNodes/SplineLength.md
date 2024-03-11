@@ -9,7 +9,7 @@ SplineLength(node_label=None, node_color=None)
 ```
 ## Implementation
 
-- [GEOMETRY](/docs/GeoNodes/socket_GEOMETRY.md) : [spline_length](/docs/GeoNodes/socket_GEOMETRY.md#spline_length) [spline_length](/docs/GeoNodes/socket_GEOMETRY.md#spline_length)
+- [GEOMETRY](/docs/GeoNodes/socket_GEOMETRY.md) : [spline_length](/docs/GeoNodes/socket_GEOMETRY.md#spline_length)
 
 ## Init
 

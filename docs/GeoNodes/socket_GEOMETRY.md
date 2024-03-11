@@ -316,7 +316,7 @@ def curve_tilt(self):
 
 ``` python
 def cyclic(self, value):
-    node = self.tree.SetSplineCyclic(geometry=self, cyclic=value, node_color=(0.3, 0.3, 0.25))
+    node = self.tree.SetSplineCyclic(geometry=self, cyclic=value, selection=self._get_selection(None), node_color=(0.3, 0.3, 0.25))
     self.jump(node.geometry)
 ```
 ### edge_neighbors
@@ -451,7 +451,7 @@ def id(self):
 
 ``` python
 def id(self, value):
-    node = self.tree.SetID(geometry=self, id=value, node_color=(0.3, 0.3, 0.25))
+    node = self.tree.SetID(geometry=self, id=value, selection=self._get_selection(None), node_color=(0.3, 0.3, 0.25))
     self.jump(node.geometry)
 ```
 ### index
@@ -544,7 +544,7 @@ def instance_scale(self):
 
 ``` python
 def material(self, value):
-    node = self.tree.SetMaterial(geometry=self, material=value, node_color=(0.3, 0.3, 0.25))
+    node = self.tree.SetMaterial(geometry=self, material=value, selection=self._get_selection(None), node_color=(0.3, 0.3, 0.25))
     self.jump(node.geometry)
 ```
 ### material_index
@@ -587,7 +587,7 @@ def material_index(self):
 
 ``` python
 def material_index(self, value):
-    node = self.tree.SetMaterialIndex(geometry=self, material_index=value, node_color=(0.3, 0.3, 0.25))
+    node = self.tree.SetMaterialIndex(geometry=self, material_index=value, selection=self._get_selection(None), node_color=(0.3, 0.3, 0.25))
     self.jump(node.geometry)
 ```
 ### normal
@@ -629,7 +629,7 @@ def normal(self):
 
 ``` python
 def normal(self, value):
-    node = self.tree.SetCurveNormal(curve=self, mode=value, node_color=(0.3, 0.3, 0.25))
+    node = self.tree.SetCurveNormal(curve=self, mode=value, selection=self._get_selection(None), node_color=(0.3, 0.3, 0.25))
     self.jump(node.curve)
 ```
 ### offset
@@ -654,7 +654,7 @@ def normal(self, value):
 
 ``` python
 def offset(self, value):
-    node = self.tree.SetPosition(geometry=self, offset=value, node_color=(0.3, 0.3, 0.25))
+    node = self.tree.SetPosition(geometry=self, offset=value, selection=self._get_selection(None), node_color=(0.3, 0.3, 0.25))
     self.jump(node.geometry)
 ```
 ### point_radius
@@ -678,7 +678,7 @@ def offset(self, value):
 
 ``` python
 def point_radius(self, value):
-    node = self.tree.SetPointRadius(points=self, radius=value, node_color=(0.3, 0.3, 0.25))
+    node = self.tree.SetPointRadius(points=self, radius=value, selection=self._get_selection(None), node_color=(0.3, 0.3, 0.25))
     self.jump(node.points)
 ```
 ### position
@@ -722,7 +722,7 @@ def position(self):
 
 ``` python
 def position(self, value):
-    node = self.tree.SetPosition(geometry=self, position=value, node_color=(0.3, 0.3, 0.25))
+    node = self.tree.SetPosition(geometry=self, position=value, selection=self._get_selection(None), node_color=(0.3, 0.3, 0.25))
     self.jump(node.geometry)
 ```
 ### radius
@@ -765,7 +765,7 @@ def radius(self):
 
 ``` python
 def radius(self, value):
-    node = self.tree.SetCurveRadius(curve=self, radius=value, node_color=(0.3, 0.3, 0.25))
+    node = self.tree.SetCurveRadius(curve=self, radius=value, selection=self._get_selection(None), node_color=(0.3, 0.3, 0.25))
     self.jump(node.curve)
 ```
 ### shade_smooth
@@ -790,7 +790,7 @@ def radius(self, value):
 
 ``` python
 def shade_smooth(self, value):
-    node = self.tree.SetShadeSmooth(geometry=self, shade_smooth=value, node_color=(0.3, 0.3, 0.25))
+    node = self.tree.SetShadeSmooth(geometry=self, shade_smooth=value, selection=self._get_selection(None), node_color=(0.3, 0.3, 0.25))
     self.jump(node.geometry)
 ```
 ### spline_cyclic
@@ -856,7 +856,7 @@ def spline_resolution(self):
 
 ``` python
 def spline_resolution(self, value):
-    node = self.tree.SetSplineResolution(geometry=self, resolution=value, node_color=(0.3, 0.3, 0.25))
+    node = self.tree.SetSplineResolution(geometry=self, resolution=value, selection=self._get_selection(None), node_color=(0.3, 0.3, 0.25))
     self.jump(node.geometry)
 ```
 ### spline_type
@@ -879,7 +879,7 @@ def spline_resolution(self, value):
 
 ``` python
 def spline_type(self, value):
-    node = self.tree.SetSplineType(curve=self, spline_type=value, node_color=(0.3, 0.3, 0.25))
+    node = self.tree.SetSplineType(curve=self, spline_type=value, selection=self._get_selection(None), node_color=(0.3, 0.3, 0.25))
     self.jump(node.geometry)
 ```
 ### tilt
@@ -903,7 +903,7 @@ def spline_type(self, value):
 
 ``` python
 def tilt(self, value):
-    node = self.tree.SetCurveTilt(curve=self, tilt=value, node_color=(0.3, 0.3, 0.25))
+    node = self.tree.SetCurveTilt(curve=self, tilt=value, selection=self._get_selection(None), node_color=(0.3, 0.3, 0.25))
     self.jump(node.curve)
 ```
 ## Methods
@@ -929,7 +929,7 @@ def tilt(self, value):
 
 ``` python
 def attribute_statistic(self, attribute=None, selection=None, data_type='FLOAT', domain='POINT', node_label=None, node_color=None):
-    node = self.tree.AttributeStatistic(geometry=self, attribute=attribute, selection=self._get_selection(selection), data_type=data_type, domain=self._get_domain('POINT'), node_label=node_label, node_color=node_color)
+    node = self.tree.AttributeStatistic(geometry=self, attribute=attribute, selection=self._get_selection(selection), data_type=data_type, domain=self._get_domain(domain, ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color)
     return node
 ```
 ### attribute_statistic_float
@@ -952,7 +952,7 @@ def attribute_statistic(self, attribute=None, selection=None, data_type='FLOAT',
 
 ``` python
 def attribute_statistic_float(self, attribute=None, selection=None, domain='POINT', node_label=None, node_color=None):
-    node = self.tree.AttributeStatistic(geometry=self, attribute=attribute, selection=self._get_selection(selection), data_type='FLOAT', domain=self._get_domain('POINT'), node_label=node_label, node_color=node_color)
+    node = self.tree.AttributeStatistic(geometry=self, attribute=attribute, selection=self._get_selection(selection), data_type='FLOAT', domain=self._get_domain(domain, ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color)
     return node
 ```
 ### attribute_statistic_vector
@@ -975,7 +975,7 @@ def attribute_statistic_float(self, attribute=None, selection=None, domain='POIN
 
 ``` python
 def attribute_statistic_vector(self, attribute=None, selection=None, domain='POINT', node_label=None, node_color=None):
-    node = self.tree.AttributeStatistic(geometry=self, attribute=attribute, selection=self._get_selection(selection), data_type='FLOAT_VECTOR', domain=self._get_domain('POINT'), node_label=node_label, node_color=node_color)
+    node = self.tree.AttributeStatistic(geometry=self, attribute=attribute, selection=self._get_selection(selection), data_type='FLOAT_VECTOR', domain=self._get_domain(domain, ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color)
     return node
 ```
 ### blur_attribute
@@ -1042,7 +1042,7 @@ def bounding_box(self, node_label=None, node_color=None):
 
 ``` python
 def capture_attribute(self, value=None, data_type='FLOAT', domain='POINT', node_label=None, node_color=None):
-    node = self.tree.CaptureAttribute(geometry=self, value=value, data_type=data_type, domain=self._get_domain('POINT'), node_label=node_label, node_color=node_color)
+    node = self.tree.CaptureAttribute(geometry=self, value=value, data_type=data_type, domain=self._get_domain(domain, ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color)
     self.jump(node.geometry)
     return node.attribute
 ```
@@ -1065,7 +1065,7 @@ def capture_attribute(self, value=None, data_type='FLOAT', domain='POINT', node_
 
 ``` python
 def capture_boolean(self, value=None, domain='POINT', node_label=None, node_color=None):
-    node = self.tree.CaptureAttribute(geometry=self, value=value, data_type='BOOLEAN', domain=self._get_domain('POINT'), node_label=node_label, node_color=node_color)
+    node = self.tree.CaptureAttribute(geometry=self, value=value, data_type='BOOLEAN', domain=self._get_domain(domain, ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color)
     self.jump(node.geometry)
     return node.attribute
 ```
@@ -1088,7 +1088,7 @@ def capture_boolean(self, value=None, domain='POINT', node_label=None, node_colo
 
 ``` python
 def capture_color(self, value=None, domain='POINT', node_label=None, node_color=None):
-    node = self.tree.CaptureAttribute(geometry=self, value=value, data_type='FLOAT_COLOR', domain=self._get_domain('POINT'), node_label=node_label, node_color=node_color)
+    node = self.tree.CaptureAttribute(geometry=self, value=value, data_type='FLOAT_COLOR', domain=self._get_domain(domain, ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color)
     self.jump(node.geometry)
     return node.attribute
 ```
@@ -1111,7 +1111,7 @@ def capture_color(self, value=None, domain='POINT', node_label=None, node_color=
 
 ``` python
 def capture_float(self, value=None, domain='POINT', node_label=None, node_color=None):
-    node = self.tree.CaptureAttribute(geometry=self, value=value, data_type='FLOAT', domain=self._get_domain('POINT'), node_label=node_label, node_color=node_color)
+    node = self.tree.CaptureAttribute(geometry=self, value=value, data_type='FLOAT', domain=self._get_domain(domain, ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color)
     self.jump(node.geometry)
     return node.attribute
 ```
@@ -1134,7 +1134,7 @@ def capture_float(self, value=None, domain='POINT', node_label=None, node_color=
 
 ``` python
 def capture_int(self, value=None, domain='POINT', node_label=None, node_color=None):
-    node = self.tree.CaptureAttribute(geometry=self, value=value, data_type='INT', domain=self._get_domain('POINT'), node_label=node_label, node_color=node_color)
+    node = self.tree.CaptureAttribute(geometry=self, value=value, data_type='INT', domain=self._get_domain(domain, ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color)
     self.jump(node.geometry)
     return node.attribute
 ```
@@ -1157,7 +1157,7 @@ def capture_int(self, value=None, domain='POINT', node_label=None, node_color=No
 
 ``` python
 def capture_quaternion(self, value=None, domain='POINT', node_label=None, node_color=None):
-    node = self.tree.CaptureAttribute(geometry=self, value=value, data_type='QUATERNION', domain=self._get_domain('POINT'), node_label=node_label, node_color=node_color)
+    node = self.tree.CaptureAttribute(geometry=self, value=value, data_type='QUATERNION', domain=self._get_domain(domain, ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color)
     self.jump(node.geometry)
     return node.attribute
 ```
@@ -1180,7 +1180,7 @@ def capture_quaternion(self, value=None, domain='POINT', node_label=None, node_c
 
 ``` python
 def capture_vector(self, value=None, domain='POINT', node_label=None, node_color=None):
-    node = self.tree.CaptureAttribute(geometry=self, value=value, data_type='FLOAT_VECTOR', domain=self._get_domain('POINT'), node_label=node_label, node_color=node_color)
+    node = self.tree.CaptureAttribute(geometry=self, value=value, data_type='FLOAT_VECTOR', domain=self._get_domain(domain, ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color)
     self.jump(node.geometry)
     return node.attribute
 ```
@@ -1401,7 +1401,7 @@ def deform_curves_on_surface(self, node_label=None, node_color=None):
 
 ``` python
 def delete_geometry(self, selection=None, domain='POINT', mode='ALL', node_label=None, node_color=None):
-    node = self.tree.DeleteGeometry(geometry=self, selection=self._get_selection(selection), domain=self._get_domain('POINT'), mode=mode, node_label=node_label, node_color=node_color)
+    node = self.tree.DeleteGeometry(geometry=self, selection=self._get_selection(selection), domain=self._get_domain(domain, ('POINT', 'EDGE', 'FACE', 'CURVE', 'INSTANCE')), mode=mode, node_label=node_label, node_color=node_color)
     self.jump(node.geometry)
     return self
 ```
@@ -1476,7 +1476,7 @@ def distribute_points_on_faces(self, density=None, seed=None, distance_min=None,
 
 ``` python
 def domain_size(self, component='MESH', node_label=None, node_color=None):
-    node = self.tree.DomainSize(geometry=self, component=self._get_domain('MESH'), node_label=node_label, node_color=node_color)
+    node = self.tree.DomainSize(geometry=self, component=self._get_domain(component, ('MESH', 'POINTCLOUD', 'CURVE', 'INSTANCES')), node_label=node_label, node_color=node_color)
     return node
 ```
 ### dual_mesh
@@ -1520,7 +1520,7 @@ def dual_mesh(self, keep_boundaries=None, node_label=None, node_color=None):
 
 ``` python
 def duplicate_elements(self, amount=None, selection=None, domain='POINT', node_label=None, node_color=None):
-    node = self.tree.DuplicateElements(geometry=self, amount=amount, selection=self._get_selection(selection), domain=self._get_domain('POINT'), node_label=node_label, node_color=node_color)
+    node = self.tree.DuplicateElements(geometry=self, amount=amount, selection=self._get_selection(selection), domain=self._get_domain(domain, ('POINT', 'EDGE', 'FACE', 'SPLINE', 'INSTANCE')), node_label=node_label, node_color=node_color)
     return node
 ```
 ### edge_angle
@@ -1715,7 +1715,7 @@ def endpoint_selection(self, start_size=None, end_size=None, node_label=None, no
 
 ``` python
 def evaluate_at_index(self, index=None, value=None, data_type='FLOAT', domain='POINT', node_label=None, node_color=None):
-    node = self.tree.EvaluateAtIndex(index=index, value=value, data_type=data_type, domain=self._get_domain('POINT'), node_label=node_label, node_color=node_color)
+    node = self.tree.EvaluateAtIndex(index=index, value=value, data_type=data_type, domain=self._get_domain(domain, ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color)
     return node.value
 ```
 ### evaluate_at_index_boolean
@@ -1738,7 +1738,7 @@ def evaluate_at_index(self, index=None, value=None, data_type='FLOAT', domain='P
 
 ``` python
 def evaluate_at_index_boolean(self, index=None, value=None, domain='POINT', node_label=None, node_color=None):
-    node = self.tree.EvaluateAtIndex(index=index, value=value, data_type='BOOLEAN', domain=self._get_domain('POINT'), node_label=node_label, node_color=node_color)
+    node = self.tree.EvaluateAtIndex(index=index, value=value, data_type='BOOLEAN', domain=self._get_domain(domain, ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color)
     return node.value
 ```
 ### evaluate_at_index_color
@@ -1761,7 +1761,7 @@ def evaluate_at_index_boolean(self, index=None, value=None, domain='POINT', node
 
 ``` python
 def evaluate_at_index_color(self, index=None, value=None, domain='POINT', node_label=None, node_color=None):
-    node = self.tree.EvaluateAtIndex(index=index, value=value, data_type='FLOAT_COLOR', domain=self._get_domain('POINT'), node_label=node_label, node_color=node_color)
+    node = self.tree.EvaluateAtIndex(index=index, value=value, data_type='FLOAT_COLOR', domain=self._get_domain(domain, ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color)
     return node.value
 ```
 ### evaluate_at_index_float
@@ -1784,7 +1784,7 @@ def evaluate_at_index_color(self, index=None, value=None, domain='POINT', node_l
 
 ``` python
 def evaluate_at_index_float(self, index=None, value=None, domain='POINT', node_label=None, node_color=None):
-    node = self.tree.EvaluateAtIndex(index=index, value=value, data_type='FLOAT', domain=self._get_domain('POINT'), node_label=node_label, node_color=node_color)
+    node = self.tree.EvaluateAtIndex(index=index, value=value, data_type='FLOAT', domain=self._get_domain(domain, ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color)
     return node.value
 ```
 ### evaluate_at_index_int
@@ -1807,7 +1807,7 @@ def evaluate_at_index_float(self, index=None, value=None, domain='POINT', node_l
 
 ``` python
 def evaluate_at_index_int(self, index=None, value=None, domain='POINT', node_label=None, node_color=None):
-    node = self.tree.EvaluateAtIndex(index=index, value=value, data_type='INT', domain=self._get_domain('POINT'), node_label=node_label, node_color=node_color)
+    node = self.tree.EvaluateAtIndex(index=index, value=value, data_type='INT', domain=self._get_domain(domain, ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color)
     return node.value
 ```
 ### evaluate_at_index_quaternion
@@ -1830,7 +1830,7 @@ def evaluate_at_index_int(self, index=None, value=None, domain='POINT', node_lab
 
 ``` python
 def evaluate_at_index_quaternion(self, index=None, value=None, domain='POINT', node_label=None, node_color=None):
-    node = self.tree.EvaluateAtIndex(index=index, value=value, data_type='QUATERNION', domain=self._get_domain('POINT'), node_label=node_label, node_color=node_color)
+    node = self.tree.EvaluateAtIndex(index=index, value=value, data_type='QUATERNION', domain=self._get_domain(domain, ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color)
     return node.value
 ```
 ### evaluate_at_index_vector
@@ -1853,7 +1853,7 @@ def evaluate_at_index_quaternion(self, index=None, value=None, domain='POINT', n
 
 ``` python
 def evaluate_at_index_vector(self, index=None, value=None, domain='POINT', node_label=None, node_color=None):
-    node = self.tree.EvaluateAtIndex(index=index, value=value, data_type='FLOAT_VECTOR', domain=self._get_domain('POINT'), node_label=node_label, node_color=node_color)
+    node = self.tree.EvaluateAtIndex(index=index, value=value, data_type='FLOAT_VECTOR', domain=self._get_domain(domain, ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color)
     return node.value
 ```
 ### evaluate_on_domain
@@ -1876,7 +1876,7 @@ def evaluate_at_index_vector(self, index=None, value=None, domain='POINT', node_
 
 ``` python
 def evaluate_on_domain(self, value=None, data_type='FLOAT', domain='POINT', node_label=None, node_color=None):
-    node = self.tree.EvaluateOnDomain(value=value, data_type=data_type, domain=self._get_domain('POINT'), node_label=node_label, node_color=node_color)
+    node = self.tree.EvaluateOnDomain(value=value, data_type=data_type, domain=self._get_domain(domain, ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color)
     return node.value
 ```
 ### evaluate_on_domain_boolean
@@ -1898,7 +1898,7 @@ def evaluate_on_domain(self, value=None, data_type='FLOAT', domain='POINT', node
 
 ``` python
 def evaluate_on_domain_boolean(self, value=None, domain='POINT', node_label=None, node_color=None):
-    node = self.tree.EvaluateOnDomain(value=value, data_type='BOOLEAN', domain=self._get_domain('POINT'), node_label=node_label, node_color=node_color)
+    node = self.tree.EvaluateOnDomain(value=value, data_type='BOOLEAN', domain=self._get_domain(domain, ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color)
     return node.value
 ```
 ### evaluate_on_domain_color
@@ -1920,7 +1920,7 @@ def evaluate_on_domain_boolean(self, value=None, domain='POINT', node_label=None
 
 ``` python
 def evaluate_on_domain_color(self, value=None, domain='POINT', node_label=None, node_color=None):
-    node = self.tree.EvaluateOnDomain(value=value, data_type='FLOAT_COLOR', domain=self._get_domain('POINT'), node_label=node_label, node_color=node_color)
+    node = self.tree.EvaluateOnDomain(value=value, data_type='FLOAT_COLOR', domain=self._get_domain(domain, ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color)
     return node.value
 ```
 ### evaluate_on_domain_float
@@ -1942,7 +1942,7 @@ def evaluate_on_domain_color(self, value=None, domain='POINT', node_label=None, 
 
 ``` python
 def evaluate_on_domain_float(self, value=None, domain='POINT', node_label=None, node_color=None):
-    node = self.tree.EvaluateOnDomain(value=value, data_type='FLOAT', domain=self._get_domain('POINT'), node_label=node_label, node_color=node_color)
+    node = self.tree.EvaluateOnDomain(value=value, data_type='FLOAT', domain=self._get_domain(domain, ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color)
     return node.value
 ```
 ### evaluate_on_domain_int
@@ -1964,7 +1964,7 @@ def evaluate_on_domain_float(self, value=None, domain='POINT', node_label=None, 
 
 ``` python
 def evaluate_on_domain_int(self, value=None, domain='POINT', node_label=None, node_color=None):
-    node = self.tree.EvaluateOnDomain(value=value, data_type='INT', domain=self._get_domain('POINT'), node_label=node_label, node_color=node_color)
+    node = self.tree.EvaluateOnDomain(value=value, data_type='INT', domain=self._get_domain(domain, ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color)
     return node.value
 ```
 ### evaluate_on_domain_quaternion
@@ -1986,7 +1986,7 @@ def evaluate_on_domain_int(self, value=None, domain='POINT', node_label=None, no
 
 ``` python
 def evaluate_on_domain_quaternion(self, value=None, domain='POINT', node_label=None, node_color=None):
-    node = self.tree.EvaluateOnDomain(value=value, data_type='QUATERNION', domain=self._get_domain('POINT'), node_label=node_label, node_color=node_color)
+    node = self.tree.EvaluateOnDomain(value=value, data_type='QUATERNION', domain=self._get_domain(domain, ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color)
     return node.value
 ```
 ### evaluate_on_domain_vector
@@ -2008,7 +2008,7 @@ def evaluate_on_domain_quaternion(self, value=None, domain='POINT', node_label=N
 
 ``` python
 def evaluate_on_domain_vector(self, value=None, domain='POINT', node_label=None, node_color=None):
-    node = self.tree.EvaluateOnDomain(value=value, data_type='FLOAT_VECTOR', domain=self._get_domain('POINT'), node_label=node_label, node_color=node_color)
+    node = self.tree.EvaluateOnDomain(value=value, data_type='FLOAT_VECTOR', domain=self._get_domain(domain, ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color)
     return node.value
 ```
 ### extrude_mesh
@@ -2033,7 +2033,7 @@ def evaluate_on_domain_vector(self, value=None, domain='POINT', node_label=None,
 
 ``` python
 def extrude_mesh(self, offset=None, offset_scale=None, individual=None, selection=None, mode='FACES', node_label=None, node_color=None):
-    node = self.tree.ExtrudeMesh(mesh=self, offset=offset, offset_scale=offset_scale, individual=individual, selection=self._get_selection(selection), mode=self._get_domain('FACES'), node_label=node_label, node_color=node_color)
+    node = self.tree.ExtrudeMesh(mesh=self, offset=offset, offset_scale=offset_scale, individual=individual, selection=self._get_selection(selection), mode=self._get_domain(mode, ('VERTICES', 'EDGES', 'FACES')), node_label=node_label, node_color=node_color)
     self.jump(node.mesh)
     return self
 ```
@@ -2233,7 +2233,7 @@ def flip_faces(self, selection=None, node_label=None, node_color=None):
 
 ``` python
 def geometry_proximity(self, source_position=None, target_element='FACES', node_label=None, node_color=None):
-    node = self.tree.GeometryProximity(target=self, source_position=source_position, target_element=self._get_domain('FACES'), node_label=node_label, node_color=node_color)
+    node = self.tree.GeometryProximity(target=self, source_position=source_position, target_element=self._get_domain(target_element, ('POINTS', 'EDGES', 'FACES')), node_label=node_label, node_color=node_color)
     return node
 ```
 ### geometry_to_instance
@@ -2268,14 +2268,14 @@ def geometry_to_instance(self, *args, node_label=None, node_color=None):
 ##### Arguments
 
 - handle_type : 'AUTO' in ('FREE', 'AUTO', 'VECTOR', 'ALIGN')
-- mode : {'RIGHT', 'LEFT'}
+- mode : {'LEFT', 'RIGHT'}
 - node_label : None
 - node_color : None
 
 #### Source code
 
 ``` python
-def handle_type_selection(self, handle_type='AUTO', mode={'RIGHT', 'LEFT'}, node_label=None, node_color=None):
+def handle_type_selection(self, handle_type='AUTO', mode={'LEFT', 'RIGHT'}, node_label=None, node_color=None):
     node = self.tree.HandleTypeSelection(handle_type=handle_type, mode=mode, node_label=node_label, node_color=node_color)
     return node.selection
 ```
@@ -2573,7 +2573,7 @@ def mesh_to_curve(self, selection=None, node_label=None, node_color=None):
 
 ``` python
 def mesh_to_points(self, position=None, radius=None, selection=None, mode='VERTICES', node_label=None, node_color=None):
-    node = self.tree.MeshToPoints(mesh=self, position=position, radius=radius, selection=self._get_selection(selection), mode=self._get_domain('VERTICES'), node_label=node_label, node_color=node_color)
+    node = self.tree.MeshToPoints(mesh=self, position=position, radius=radius, selection=self._get_selection(selection), mode=self._get_domain(mode, ('VERTICES', 'EDGES', 'FACES', 'CORNERS')), node_label=node_label, node_color=node_color)
     return node.points
 ```
 ### mesh_to_volume
@@ -3729,7 +3729,7 @@ def sample_curve_vector_length(self, value=None, length=None, curve_index=None, 
 
 ``` python
 def sample_index(self, value=None, index=None, clamp=False, data_type='FLOAT', domain='POINT', node_label=None, node_color=None):
-    node = self.tree.SampleIndex(geometry=self, value=value, index=index, clamp=clamp, data_type=data_type, domain=self._get_domain('POINT'), node_label=node_label, node_color=node_color)
+    node = self.tree.SampleIndex(geometry=self, value=value, index=index, clamp=clamp, data_type=data_type, domain=self._get_domain(domain, ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color)
     return node.value
 ```
 ### sample_index_boolean
@@ -3753,7 +3753,7 @@ def sample_index(self, value=None, index=None, clamp=False, data_type='FLOAT', d
 
 ``` python
 def sample_index_boolean(self, value=None, index=None, clamp=False, domain='POINT', node_label=None, node_color=None):
-    node = self.tree.SampleIndex(geometry=self, value=value, index=index, clamp=clamp, data_type='BOOLEAN', domain=self._get_domain('POINT'), node_label=node_label, node_color=node_color)
+    node = self.tree.SampleIndex(geometry=self, value=value, index=index, clamp=clamp, data_type='BOOLEAN', domain=self._get_domain(domain, ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color)
     return node.value
 ```
 ### sample_index_color
@@ -3777,7 +3777,7 @@ def sample_index_boolean(self, value=None, index=None, clamp=False, domain='POIN
 
 ``` python
 def sample_index_color(self, value=None, index=None, clamp=False, domain='POINT', node_label=None, node_color=None):
-    node = self.tree.SampleIndex(geometry=self, value=value, index=index, clamp=clamp, data_type='FLOAT_COLOR', domain=self._get_domain('POINT'), node_label=node_label, node_color=node_color)
+    node = self.tree.SampleIndex(geometry=self, value=value, index=index, clamp=clamp, data_type='FLOAT_COLOR', domain=self._get_domain(domain, ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color)
     return node.value
 ```
 ### sample_index_float
@@ -3801,7 +3801,7 @@ def sample_index_color(self, value=None, index=None, clamp=False, domain='POINT'
 
 ``` python
 def sample_index_float(self, value=None, index=None, clamp=False, domain='POINT', node_label=None, node_color=None):
-    node = self.tree.SampleIndex(geometry=self, value=value, index=index, clamp=clamp, data_type='FLOAT', domain=self._get_domain('POINT'), node_label=node_label, node_color=node_color)
+    node = self.tree.SampleIndex(geometry=self, value=value, index=index, clamp=clamp, data_type='FLOAT', domain=self._get_domain(domain, ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color)
     return node.value
 ```
 ### sample_index_int
@@ -3825,7 +3825,7 @@ def sample_index_float(self, value=None, index=None, clamp=False, domain='POINT'
 
 ``` python
 def sample_index_int(self, value=None, index=None, clamp=False, domain='POINT', node_label=None, node_color=None):
-    node = self.tree.SampleIndex(geometry=self, value=value, index=index, clamp=clamp, data_type='INT', domain=self._get_domain('POINT'), node_label=node_label, node_color=node_color)
+    node = self.tree.SampleIndex(geometry=self, value=value, index=index, clamp=clamp, data_type='INT', domain=self._get_domain(domain, ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color)
     return node.value
 ```
 ### sample_index_quaternion
@@ -3849,7 +3849,7 @@ def sample_index_int(self, value=None, index=None, clamp=False, domain='POINT', 
 
 ``` python
 def sample_index_quaternion(self, value=None, index=None, clamp=False, domain='POINT', node_label=None, node_color=None):
-    node = self.tree.SampleIndex(geometry=self, value=value, index=index, clamp=clamp, data_type='QUATERNION', domain=self._get_domain('POINT'), node_label=node_label, node_color=node_color)
+    node = self.tree.SampleIndex(geometry=self, value=value, index=index, clamp=clamp, data_type='QUATERNION', domain=self._get_domain(domain, ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color)
     return node.value
 ```
 ### sample_index_vector
@@ -3873,7 +3873,7 @@ def sample_index_quaternion(self, value=None, index=None, clamp=False, domain='P
 
 ``` python
 def sample_index_vector(self, value=None, index=None, clamp=False, domain='POINT', node_label=None, node_color=None):
-    node = self.tree.SampleIndex(geometry=self, value=value, index=index, clamp=clamp, data_type='FLOAT_VECTOR', domain=self._get_domain('POINT'), node_label=node_label, node_color=node_color)
+    node = self.tree.SampleIndex(geometry=self, value=value, index=index, clamp=clamp, data_type='FLOAT_VECTOR', domain=self._get_domain(domain, ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color)
     return node.value
 ```
 ### sample_nearest
@@ -3895,7 +3895,7 @@ def sample_index_vector(self, value=None, index=None, clamp=False, domain='POINT
 
 ``` python
 def sample_nearest(self, sample_position=None, domain='POINT', node_label=None, node_color=None):
-    node = self.tree.SampleNearest(geometry=self, sample_position=sample_position, domain=self._get_domain('POINT'), node_label=node_label, node_color=node_color)
+    node = self.tree.SampleNearest(geometry=self, sample_position=sample_position, domain=self._get_domain(domain, ('POINT', 'EDGE', 'FACE', 'CORNER')), node_label=node_label, node_color=node_color)
     return node.index
 ```
 ### sample_nearest_surface
@@ -4238,7 +4238,7 @@ def sample_uv_surface_vector(self, value=None, source_uv_map=None, sample_uv=Non
 
 ``` python
 def scale_elements(self, scale=None, center=None, axis=None, selection=None, domain='FACE', scale_mode='UNIFORM', node_label=None, node_color=None):
-    node = self.tree.ScaleElements(geometry=self, scale=scale, center=center, axis=axis, selection=self._get_selection(selection), domain=self._get_domain('FACE'), scale_mode=scale_mode, node_label=node_label, node_color=node_color)
+    node = self.tree.ScaleElements(geometry=self, scale=scale, center=center, axis=axis, selection=self._get_selection(selection), domain=self._get_domain(domain, ('FACE', 'EDGE')), scale_mode=scale_mode, node_label=node_label, node_color=node_color)
     self.jump(node.geometry)
     return self
 ```
@@ -4306,7 +4306,7 @@ def separate_components(self, node_label=None, node_color=None):
 
 ``` python
 def separate_geometry(self, selection=None, domain='POINT', node_label=None, node_color=None):
-    node = self.tree.SeparateGeometry(geometry=self, selection=self._get_selection(selection), domain=self._get_domain('POINT'), node_label=node_label, node_color=node_color)
+    node = self.tree.SeparateGeometry(geometry=self, selection=self._get_selection(selection), domain=self._get_domain(domain, ('POINT', 'EDGE', 'FACE', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color)
     return node
 ```
 ### set_curve_normal
@@ -4415,14 +4415,14 @@ def set_handle_positions(self, position=None, offset=None, selection=None, mode=
 
 - selection : None
 - handle_type : 'AUTO' in ('FREE', 'AUTO', 'VECTOR', 'ALIGN')
-- mode : {'RIGHT', 'LEFT'}
+- mode : {'LEFT', 'RIGHT'}
 - node_label : None
 - node_color : None
 
 #### Source code
 
 ``` python
-def set_handle_type(self, selection=None, handle_type='AUTO', mode={'RIGHT', 'LEFT'}, node_label=None, node_color=None):
+def set_handle_type(self, selection=None, handle_type='AUTO', mode={'LEFT', 'RIGHT'}, node_label=None, node_color=None):
     node = self.tree.SetHandleType(curve=self, selection=self._get_selection(selection), handle_type=handle_type, mode=mode, node_label=node_label, node_color=node_color)
     self.jump(node.curve)
     return self
@@ -4563,7 +4563,7 @@ def set_position(self, position=None, offset=None, selection=None, node_label=No
 
 ``` python
 def set_shade_smooth(self, shade_smooth=None, selection=None, domain='FACE', node_label=None, node_color=None):
-    node = self.tree.SetShadeSmooth(geometry=self, shade_smooth=shade_smooth, selection=self._get_selection(selection), domain=self._get_domain('FACE'), node_label=node_label, node_color=node_color)
+    node = self.tree.SetShadeSmooth(geometry=self, shade_smooth=shade_smooth, selection=self._get_selection(selection), domain=self._get_domain(domain, ('EDGE', 'FACE')), node_label=node_label, node_color=node_color)
     self.jump(node.geometry)
     return self
 ```
@@ -4742,7 +4742,7 @@ def split_edges(self, selection=None, node_label=None, node_color=None):
 
 ``` python
 def store_named_attribute(self, name=None, value=None, selection=None, data_type='FLOAT', domain='POINT', node_label=None, node_color=None):
-    node = self.tree.StoreNamedAttribute(geometry=self, name=name, value=value, selection=self._get_selection(selection), data_type=data_type, domain=self._get_domain('POINT'), node_label=node_label, node_color=node_color)
+    node = self.tree.StoreNamedAttribute(geometry=self, name=name, value=value, selection=self._get_selection(selection), data_type=data_type, domain=self._get_domain(domain, ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color)
     self.jump(node.geometry)
     return self
 ```
@@ -4767,7 +4767,7 @@ def store_named_attribute(self, name=None, value=None, selection=None, data_type
 
 ``` python
 def store_named_boolean(self, name=None, value=None, selection=None, domain='POINT', node_label=None, node_color=None):
-    node = self.tree.StoreNamedAttribute(geometry=self, name=name, value=value, selection=self._get_selection(selection), data_type='BOOLEAN', domain=self._get_domain('POINT'), node_label=node_label, node_color=node_color)
+    node = self.tree.StoreNamedAttribute(geometry=self, name=name, value=value, selection=self._get_selection(selection), data_type='BOOLEAN', domain=self._get_domain(domain, ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color)
     self.jump(node.geometry)
     return self
 ```
@@ -4792,7 +4792,7 @@ def store_named_boolean(self, name=None, value=None, selection=None, domain='POI
 
 ``` python
 def store_named_byte_color(self, name=None, value=None, selection=None, domain='POINT', node_label=None, node_color=None):
-    node = self.tree.StoreNamedAttribute(geometry=self, name=name, value=value, selection=self._get_selection(selection), data_type='BYTE_COLOR', domain=self._get_domain('POINT'), node_label=node_label, node_color=node_color)
+    node = self.tree.StoreNamedAttribute(geometry=self, name=name, value=value, selection=self._get_selection(selection), data_type='BYTE_COLOR', domain=self._get_domain(domain, ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color)
     self.jump(node.geometry)
     return self
 ```
@@ -4817,7 +4817,7 @@ def store_named_byte_color(self, name=None, value=None, selection=None, domain='
 
 ``` python
 def store_named_float(self, name=None, value=None, selection=None, domain='POINT', node_label=None, node_color=None):
-    node = self.tree.StoreNamedAttribute(geometry=self, name=name, value=value, selection=self._get_selection(selection), data_type='FLOAT', domain=self._get_domain('POINT'), node_label=node_label, node_color=node_color)
+    node = self.tree.StoreNamedAttribute(geometry=self, name=name, value=value, selection=self._get_selection(selection), data_type='FLOAT', domain=self._get_domain(domain, ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color)
     self.jump(node.geometry)
     return self
 ```
@@ -4842,7 +4842,7 @@ def store_named_float(self, name=None, value=None, selection=None, domain='POINT
 
 ``` python
 def store_named_float2(self, name=None, value=None, selection=None, domain='POINT', node_label=None, node_color=None):
-    node = self.tree.StoreNamedAttribute(geometry=self, name=name, value=value, selection=self._get_selection(selection), data_type='FLOAT2', domain=self._get_domain('POINT'), node_label=node_label, node_color=node_color)
+    node = self.tree.StoreNamedAttribute(geometry=self, name=name, value=value, selection=self._get_selection(selection), data_type='FLOAT2', domain=self._get_domain(domain, ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color)
     self.jump(node.geometry)
     return self
 ```
@@ -4867,7 +4867,7 @@ def store_named_float2(self, name=None, value=None, selection=None, domain='POIN
 
 ``` python
 def store_named_float_color(self, name=None, value=None, selection=None, domain='POINT', node_label=None, node_color=None):
-    node = self.tree.StoreNamedAttribute(geometry=self, name=name, value=value, selection=self._get_selection(selection), data_type='FLOAT_COLOR', domain=self._get_domain('POINT'), node_label=node_label, node_color=node_color)
+    node = self.tree.StoreNamedAttribute(geometry=self, name=name, value=value, selection=self._get_selection(selection), data_type='FLOAT_COLOR', domain=self._get_domain(domain, ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color)
     self.jump(node.geometry)
     return self
 ```
@@ -4892,7 +4892,7 @@ def store_named_float_color(self, name=None, value=None, selection=None, domain=
 
 ``` python
 def store_named_int(self, name=None, value=None, selection=None, domain='POINT', node_label=None, node_color=None):
-    node = self.tree.StoreNamedAttribute(geometry=self, name=name, value=value, selection=self._get_selection(selection), data_type='INT', domain=self._get_domain('POINT'), node_label=node_label, node_color=node_color)
+    node = self.tree.StoreNamedAttribute(geometry=self, name=name, value=value, selection=self._get_selection(selection), data_type='INT', domain=self._get_domain(domain, ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color)
     self.jump(node.geometry)
     return self
 ```
@@ -4917,7 +4917,7 @@ def store_named_int(self, name=None, value=None, selection=None, domain='POINT',
 
 ``` python
 def store_named_quaternion(self, name=None, value=None, selection=None, domain='POINT', node_label=None, node_color=None):
-    node = self.tree.StoreNamedAttribute(geometry=self, name=name, value=value, selection=self._get_selection(selection), data_type='QUATERNION', domain=self._get_domain('POINT'), node_label=node_label, node_color=node_color)
+    node = self.tree.StoreNamedAttribute(geometry=self, name=name, value=value, selection=self._get_selection(selection), data_type='QUATERNION', domain=self._get_domain(domain, ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color)
     self.jump(node.geometry)
     return self
 ```
@@ -4942,7 +4942,7 @@ def store_named_quaternion(self, name=None, value=None, selection=None, domain='
 
 ``` python
 def store_named_vector(self, name=None, value=None, selection=None, domain='POINT', node_label=None, node_color=None):
-    node = self.tree.StoreNamedAttribute(geometry=self, name=name, value=value, selection=self._get_selection(selection), data_type='FLOAT_VECTOR', domain=self._get_domain('POINT'), node_label=node_label, node_color=node_color)
+    node = self.tree.StoreNamedAttribute(geometry=self, name=name, value=value, selection=self._get_selection(selection), data_type='FLOAT_VECTOR', domain=self._get_domain(domain, ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color)
     self.jump(node.geometry)
     return self
 ```
@@ -5222,7 +5222,7 @@ def vertex_of_corner(self, corner_index=None, node_label=None, node_color=None):
 
 ``` python
 def viewer(self, value=None, data_type='FLOAT', domain='AUTO', node_label=None, node_color=None):
-    node = self.tree.Viewer(geometry=self, value=value, data_type=data_type, domain=self._get_domain('AUTO'), node_label=node_label, node_color=node_color)
+    node = self.tree.Viewer(geometry=self, value=value, data_type=data_type, domain=self._get_domain(domain, ('AUTO', 'POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color)
     return node
 ```
 ### viewer_boolean
@@ -5244,7 +5244,7 @@ def viewer(self, value=None, data_type='FLOAT', domain='AUTO', node_label=None, 
 
 ``` python
 def viewer_boolean(self, value=None, domain='AUTO', node_label=None, node_color=None):
-    node = self.tree.Viewer(geometry=self, value=value, data_type='BOOLEAN', domain=self._get_domain('AUTO'), node_label=node_label, node_color=node_color)
+    node = self.tree.Viewer(geometry=self, value=value, data_type='BOOLEAN', domain=self._get_domain(domain, ('AUTO', 'POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color)
     return node
 ```
 ### viewer_color
@@ -5266,7 +5266,7 @@ def viewer_boolean(self, value=None, domain='AUTO', node_label=None, node_color=
 
 ``` python
 def viewer_color(self, value=None, domain='AUTO', node_label=None, node_color=None):
-    node = self.tree.Viewer(geometry=self, value=value, data_type='FLOAT_COLOR', domain=self._get_domain('AUTO'), node_label=node_label, node_color=node_color)
+    node = self.tree.Viewer(geometry=self, value=value, data_type='FLOAT_COLOR', domain=self._get_domain(domain, ('AUTO', 'POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color)
     return node
 ```
 ### viewer_float
@@ -5288,7 +5288,7 @@ def viewer_color(self, value=None, domain='AUTO', node_label=None, node_color=No
 
 ``` python
 def viewer_float(self, value=None, domain='AUTO', node_label=None, node_color=None):
-    node = self.tree.Viewer(geometry=self, value=value, data_type='FLOAT', domain=self._get_domain('AUTO'), node_label=node_label, node_color=node_color)
+    node = self.tree.Viewer(geometry=self, value=value, data_type='FLOAT', domain=self._get_domain(domain, ('AUTO', 'POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color)
     return node
 ```
 ### viewer_int
@@ -5310,7 +5310,7 @@ def viewer_float(self, value=None, domain='AUTO', node_label=None, node_color=No
 
 ``` python
 def viewer_int(self, value=None, domain='AUTO', node_label=None, node_color=None):
-    node = self.tree.Viewer(geometry=self, value=value, data_type='INT', domain=self._get_domain('AUTO'), node_label=node_label, node_color=node_color)
+    node = self.tree.Viewer(geometry=self, value=value, data_type='INT', domain=self._get_domain(domain, ('AUTO', 'POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color)
     return node
 ```
 ### viewer_quaternion
@@ -5332,7 +5332,7 @@ def viewer_int(self, value=None, domain='AUTO', node_label=None, node_color=None
 
 ``` python
 def viewer_quaternion(self, value=None, domain='AUTO', node_label=None, node_color=None):
-    node = self.tree.Viewer(geometry=self, value=value, data_type='QUATERNION', domain=self._get_domain('AUTO'), node_label=node_label, node_color=node_color)
+    node = self.tree.Viewer(geometry=self, value=value, data_type='QUATERNION', domain=self._get_domain(domain, ('AUTO', 'POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color)
     return node
 ```
 ### viewer_vector
@@ -5354,7 +5354,7 @@ def viewer_quaternion(self, value=None, domain='AUTO', node_label=None, node_col
 
 ``` python
 def viewer_vector(self, value=None, domain='AUTO', node_label=None, node_color=None):
-    node = self.tree.Viewer(geometry=self, value=value, data_type='FLOAT_VECTOR', domain=self._get_domain('AUTO'), node_label=node_label, node_color=node_color)
+    node = self.tree.Viewer(geometry=self, value=value, data_type='FLOAT_VECTOR', domain=self._get_domain(domain, ('AUTO', 'POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color)
     return node
 ```
 ### volume_to_mesh

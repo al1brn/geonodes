@@ -14,7 +14,7 @@ SplitEdges(mesh=None, selection=None, node_label=None, node_color=None)
 
 ## Implementation
 
-- [GEOMETRY](/docs/GeoNodes/socket_GEOMETRY.md) : [split_edges](/docs/GeoNodes/socket_GEOMETRY.md#split_edges) [split_edges](/docs/GeoNodes/socket_GEOMETRY.md#split_edges)
+- [GEOMETRY](/docs/GeoNodes/socket_GEOMETRY.md) : [split_edges](/docs/GeoNodes/socket_GEOMETRY.md#split_edges)
 
 ## Init
 

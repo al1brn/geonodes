@@ -15,7 +15,7 @@ SetCurveRadius(curve=None, selection=None, radius=None, node_label=None, node_co
 
 ## Implementation
 
-- [GEOMETRY](/docs/GeoNodes/socket_GEOMETRY.md) : [radius](/docs/GeoNodes/socket_GEOMETRY.md#radius) [radius](/docs/GeoNodes/socket_GEOMETRY.md#radius) [set_curve_radius](/docs/GeoNodes/socket_GEOMETRY.md#set_curve_radius) [set_curve_radius](/docs/GeoNodes/socket_GEOMETRY.md#set_curve_radius)
+- [GEOMETRY](/docs/GeoNodes/socket_GEOMETRY.md) : [radius](/docs/GeoNodes/socket_GEOMETRY.md#radius) [set_curve_radius](/docs/GeoNodes/socket_GEOMETRY.md#set_curve_radius)
 
 ## Init
 

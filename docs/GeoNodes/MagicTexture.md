@@ -18,7 +18,7 @@ MagicTexture(vector=None, scale=None, distortion=None, color_mapping=None, textu
 
 ## Implementation
 
-- Functions : [magic_texture](/docs/GeoNodes/GeoNodesTree.md#magic_texture) [magic_texture](/docs/GeoNodes/GeoNodesTree.md#magic_texture)
+- Functions : [magic_texture](/docs/GeoNodes/GeoNodesTree.md#magic_texture)
 
 ## Init
 

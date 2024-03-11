@@ -14,7 +14,7 @@ SubdivideMesh(mesh=None, level=None, node_label=None, node_color=None)
 
 ## Implementation
 
-- [GEOMETRY](/docs/GeoNodes/socket_GEOMETRY.md) : [subdivide_mesh](/docs/GeoNodes/socket_GEOMETRY.md#subdivide_mesh) [subdivide_mesh](/docs/GeoNodes/socket_GEOMETRY.md#subdivide_mesh)
+- [GEOMETRY](/docs/GeoNodes/socket_GEOMETRY.md) : [subdivide_mesh](/docs/GeoNodes/socket_GEOMETRY.md#subdivide_mesh)
 
 ## Init
 

@@ -15,7 +15,7 @@ SetSplineResolution(geometry=None, selection=None, resolution=None, node_label=N
 
 ## Implementation
 
-- [GEOMETRY](/docs/GeoNodes/socket_GEOMETRY.md) : [set_spline_resolution](/docs/GeoNodes/socket_GEOMETRY.md#set_spline_resolution) [set_spline_resolution](/docs/GeoNodes/socket_GEOMETRY.md#set_spline_resolution) [spline_resolution](/docs/GeoNodes/socket_GEOMETRY.md#spline_resolution) [spline_resolution](/docs/GeoNodes/socket_GEOMETRY.md#spline_resolution)
+- [GEOMETRY](/docs/GeoNodes/socket_GEOMETRY.md) : [set_spline_resolution](/docs/GeoNodes/socket_GEOMETRY.md#set_spline_resolution) [spline_resolution](/docs/GeoNodes/socket_GEOMETRY.md#spline_resolution)
 
 ## Init
 

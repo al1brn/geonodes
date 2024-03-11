@@ -38,14 +38,17 @@
 - E : [exp](#exp)
 - F : [floor](#floor) [fract](#fract) [floored_modulo](#floored_modulo) [frame](#frame)
 - G : [greater_than](#greater_than)
+- H : [hsv](#hsv) [hsl](#hsl)
 - I : [inverse_sqrt](#inverse_sqrt)
 - L : [log](#log) [less_than](#less_than)
 - M : [multiply](#multiply) [multiply_add](#multiply_add) [min](#min) [max](#max) [mod](#mod)
 - P : [power](#power) [pingpong](#pingpong)
-- R : [round](#round) [radians](#radians)
+- R : [rgb](#rgb) [round](#round) [radians](#radians)
 - S : [subtract](#subtract) [sqrt](#sqrt) [sign](#sign) [smooth_min](#smooth_min) [smooth_max](#smooth_max) [snap](#snap) [sin](#sin) [sinh](#sinh) [scene_time](#scene_time) [seconds](#seconds)
 - T : [trunc](#trunc) [tan](#tan) [tanh](#tanh)
 - W : [wrap](#wrap)
+- X : [xyz](#xyz)
+- Y : [ycc](#ycc) [yuv](#yuv)
 
 ## Functions
 
@@ -479,6 +482,54 @@ def greater_than(self, value=None, value_1=None, tag_need_exec=None, use_clamp=F
     node = self.Math(value=value, value_1=value_1, operation='GREATER_THAN', tag_need_exec=tag_need_exec, use_clamp=use_clamp, node_label=node_label, node_color=node_color)
     return node.value
 ```
+### hsl
+
+
+- node : [CombineColor](/docs/Compositor/CombineColor.md)
+- return : color
+
+##### Arguments
+
+- red : None
+- green : None
+- blue : None
+- alpha : None
+- tag_need_exec : None
+- ycc_mode : 'ITUBT709' in ('ITUBT601', 'ITUBT709', 'JFIF')
+- node_label : None
+- node_color : None
+
+#### Source code
+
+``` python
+def hsl(self, red=None, green=None, blue=None, alpha=None, tag_need_exec=None, ycc_mode='ITUBT709', node_label=None, node_color=None):
+    node = self.CombineColor(red=red, green=green, blue=blue, alpha=alpha, mode='HSL', tag_need_exec=tag_need_exec, ycc_mode=ycc_mode, node_label=node_label, node_color=node_color)
+    return node.color
+```
+### hsv
+
+
+- node : [CombineColor](/docs/Compositor/CombineColor.md)
+- return : color
+
+##### Arguments
+
+- red : None
+- green : None
+- blue : None
+- alpha : None
+- tag_need_exec : None
+- ycc_mode : 'ITUBT709' in ('ITUBT601', 'ITUBT709', 'JFIF')
+- node_label : None
+- node_color : None
+
+#### Source code
+
+``` python
+def hsv(self, red=None, green=None, blue=None, alpha=None, tag_need_exec=None, ycc_mode='ITUBT709', node_label=None, node_color=None):
+    node = self.CombineColor(red=red, green=green, blue=blue, alpha=alpha, mode='HSV', tag_need_exec=tag_need_exec, ycc_mode=ycc_mode, node_label=node_label, node_color=node_color)
+    return node.color
+```
 ### inverse_sqrt
 
 
@@ -719,6 +770,30 @@ def power(self, value=None, value_1=None, tag_need_exec=None, use_clamp=False, n
 def radians(self, value=None, tag_need_exec=None, use_clamp=False, node_label=None, node_color=None):
     node = self.Math(value=value, operation='RADIANS', tag_need_exec=tag_need_exec, use_clamp=use_clamp, node_label=node_label, node_color=node_color)
     return node.value
+```
+### rgb
+
+
+- node : [CombineColor](/docs/Compositor/CombineColor.md)
+- return : color
+
+##### Arguments
+
+- red : None
+- green : None
+- blue : None
+- alpha : None
+- tag_need_exec : None
+- ycc_mode : 'ITUBT709' in ('ITUBT601', 'ITUBT709', 'JFIF')
+- node_label : None
+- node_color : None
+
+#### Source code
+
+``` python
+def rgb(self, red=None, green=None, blue=None, alpha=None, tag_need_exec=None, ycc_mode='ITUBT709', node_label=None, node_color=None):
+    node = self.CombineColor(red=red, green=green, blue=blue, alpha=alpha, mode='RGB', tag_need_exec=tag_need_exec, ycc_mode=ycc_mode, node_label=node_label, node_color=node_color)
+    return node.color
 ```
 ### round
 
@@ -1038,4 +1113,74 @@ def trunc(self, value=None, tag_need_exec=None, use_clamp=False, node_label=None
 def wrap(self, value=None, value_1=None, value_2=None, tag_need_exec=None, use_clamp=False, node_label=None, node_color=None):
     node = self.Math(value=value, value_1=value_1, value_2=value_2, operation='WRAP', tag_need_exec=tag_need_exec, use_clamp=use_clamp, node_label=node_label, node_color=node_color)
     return node.value
+```
+### xyz
+
+
+- node : [CombineXYZ](/docs/Compositor/CombineXYZ.md)
+- return : vector
+
+##### Arguments
+
+- x : None
+- y : None
+- z : None
+- tag_need_exec : None
+- node_label : None
+- node_color : None
+
+#### Source code
+
+``` python
+def xyz(self, x=None, y=None, z=None, tag_need_exec=None, node_label=None, node_color=None):
+    node = self.CombineXYZ(x=x, y=y, z=z, tag_need_exec=tag_need_exec, node_label=node_label, node_color=node_color)
+    return node.vector
+```
+### ycc
+
+
+- node : [CombineColor](/docs/Compositor/CombineColor.md)
+- return : color
+
+##### Arguments
+
+- red : None
+- green : None
+- blue : None
+- alpha : None
+- tag_need_exec : None
+- ycc_mode : 'ITUBT709' in ('ITUBT601', 'ITUBT709', 'JFIF')
+- node_label : None
+- node_color : None
+
+#### Source code
+
+``` python
+def ycc(self, red=None, green=None, blue=None, alpha=None, tag_need_exec=None, ycc_mode='ITUBT709', node_label=None, node_color=None):
+    node = self.CombineColor(red=red, green=green, blue=blue, alpha=alpha, mode='YCC', tag_need_exec=tag_need_exec, ycc_mode=ycc_mode, node_label=node_label, node_color=node_color)
+    return node.color
+```
+### yuv
+
+
+- node : [CombineColor](/docs/Compositor/CombineColor.md)
+- return : color
+
+##### Arguments
+
+- red : None
+- green : None
+- blue : None
+- alpha : None
+- tag_need_exec : None
+- ycc_mode : 'ITUBT709' in ('ITUBT601', 'ITUBT709', 'JFIF')
+- node_label : None
+- node_color : None
+
+#### Source code
+
+``` python
+def yuv(self, red=None, green=None, blue=None, alpha=None, tag_need_exec=None, ycc_mode='ITUBT709', node_label=None, node_color=None):
+    node = self.CombineColor(red=red, green=green, blue=blue, alpha=alpha, mode='YUV', tag_need_exec=tag_need_exec, ycc_mode=ycc_mode, node_label=node_label, node_color=node_color)
+    return node.color
 ```

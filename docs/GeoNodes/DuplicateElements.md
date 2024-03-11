@@ -16,7 +16,7 @@ DuplicateElements(geometry=None, selection=None, amount=None, domain='POINT', no
 
 ## Implementation
 
-- [GEOMETRY](/docs/GeoNodes/socket_GEOMETRY.md) : [duplicate_elements](/docs/GeoNodes/socket_GEOMETRY.md#duplicate_elements) [duplicate_elements](/docs/GeoNodes/socket_GEOMETRY.md#duplicate_elements)
+- [GEOMETRY](/docs/GeoNodes/socket_GEOMETRY.md) : [duplicate_elements](/docs/GeoNodes/socket_GEOMETRY.md#duplicate_elements)
 
 ## Init
 

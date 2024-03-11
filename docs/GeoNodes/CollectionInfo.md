@@ -16,7 +16,7 @@ CollectionInfo(collection=None, separate_children=None, reset_children=None, tra
 
 ## Implementation
 
-- [COLLECTION](/docs/GeoNodes/socket_COLLECTION.md) : [collection_info](/docs/GeoNodes/socket_COLLECTION.md#collection_info) [collection_info](/docs/GeoNodes/socket_COLLECTION.md#collection_info)
+- [COLLECTION](/docs/GeoNodes/socket_COLLECTION.md) : [collection_info](/docs/GeoNodes/socket_COLLECTION.md#collection_info)
 
 ## Init
 

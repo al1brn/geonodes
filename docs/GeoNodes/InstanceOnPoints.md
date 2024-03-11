@@ -19,7 +19,7 @@ InstanceOnPoints(points=None, selection=None, instance=None, pick_instance=None,
 
 ## Implementation
 
-- [GEOMETRY](/docs/GeoNodes/socket_GEOMETRY.md) : [instance_on_points](/docs/GeoNodes/socket_GEOMETRY.md#instance_on_points) [instance_on_points](/docs/GeoNodes/socket_GEOMETRY.md#instance_on_points)
+- [GEOMETRY](/docs/GeoNodes/socket_GEOMETRY.md) : [instance_on_points](/docs/GeoNodes/socket_GEOMETRY.md#instance_on_points)
 
 ## Init
 

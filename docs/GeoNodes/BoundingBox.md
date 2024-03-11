@@ -13,7 +13,7 @@ BoundingBox(geometry=None, node_label=None, node_color=None)
 
 ## Implementation
 
-- [GEOMETRY](/docs/GeoNodes/socket_GEOMETRY.md) : [bounding_box](/docs/GeoNodes/socket_GEOMETRY.md#bounding_box) [bounding_box](/docs/GeoNodes/socket_GEOMETRY.md#bounding_box)
+- [GEOMETRY](/docs/GeoNodes/socket_GEOMETRY.md) : [bounding_box](/docs/GeoNodes/socket_GEOMETRY.md#bounding_box)
 
 ## Init
 

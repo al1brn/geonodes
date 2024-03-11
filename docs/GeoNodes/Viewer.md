@@ -16,8 +16,8 @@ Viewer(geometry=None, value=None, data_type='FLOAT', domain='AUTO', node_label=N
 
 ## Implementation
 
-- [GEOMETRY](/docs/GeoNodes/socket_GEOMETRY.md) : [viewer](/docs/GeoNodes/socket_GEOMETRY.md#viewer) [viewer](/docs/GeoNodes/socket_GEOMETRY.md#viewer) [viewer_boolean](/docs/GeoNodes/socket_GEOMETRY.md#viewer_boolean) [viewer_boolean](/docs/GeoNodes/socket_GEOMETRY.md#viewer_boolean) [viewer_color](/docs/GeoNodes/socket_GEOMETRY.md#viewer_color) [viewer_color](/docs/GeoNodes/socket_GEOMETRY.md#viewer_color) [viewer_float](/docs/GeoNodes/socket_GEOMETRY.md#viewer_float) [viewer_float](/docs/GeoNodes/socket_GEOMETRY.md#viewer_float) [viewer_int](/docs/GeoNodes/socket_GEOMETRY.md#viewer_int) [viewer_int](/docs/GeoNodes/socket_GEOMETRY.md#viewer_int) [viewer_quaternion](/docs/GeoNodes/socket_GEOMETRY.md#viewer_quaternion) [viewer_quaternion](/docs/GeoNodes/socket_GEOMETRY.md#viewer_quaternion) [viewer_vector](/docs/GeoNodes/socket_GEOMETRY.md#viewer_vector) [viewer_vector](/docs/GeoNodes/socket_GEOMETRY.md#viewer_vector)
-- Functions : [viewer](/docs/GeoNodes/GeoNodesTree.md#viewer) [viewer](/docs/GeoNodes/GeoNodesTree.md#viewer)
+- [GEOMETRY](/docs/GeoNodes/socket_GEOMETRY.md) : [viewer](/docs/GeoNodes/socket_GEOMETRY.md#viewer) [viewer_boolean](/docs/GeoNodes/socket_GEOMETRY.md#viewer_boolean) [viewer_color](/docs/GeoNodes/socket_GEOMETRY.md#viewer_color) [viewer_float](/docs/GeoNodes/socket_GEOMETRY.md#viewer_float) [viewer_int](/docs/GeoNodes/socket_GEOMETRY.md#viewer_int) [viewer_quaternion](/docs/GeoNodes/socket_GEOMETRY.md#viewer_quaternion) [viewer_vector](/docs/GeoNodes/socket_GEOMETRY.md#viewer_vector)
+- Functions : [viewer](/docs/GeoNodes/GeoNodesTree.md#viewer)
 
 ## Init
 

@@ -16,7 +16,7 @@ Star(points=None, inner_radius=None, outer_radius=None, twist=None, node_label=N
 
 ## Implementation
 
-- Functions : [star](/docs/GeoNodes/GeoNodesTree.md#star) [star](/docs/GeoNodes/GeoNodesTree.md#star)
+- Functions : [star](/docs/GeoNodes/GeoNodesTree.md#star)
 
 ## Init
 

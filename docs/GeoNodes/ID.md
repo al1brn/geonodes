@@ -9,7 +9,7 @@ ID(node_label=None, node_color=None)
 ```
 ## Implementation
 
-- [GEOMETRY](/docs/GeoNodes/socket_GEOMETRY.md) : [id](/docs/GeoNodes/socket_GEOMETRY.md#id) [id](/docs/GeoNodes/socket_GEOMETRY.md#id)
+- [GEOMETRY](/docs/GeoNodes/socket_GEOMETRY.md) : [id](/docs/GeoNodes/socket_GEOMETRY.md#id)
 
 ## Init
 

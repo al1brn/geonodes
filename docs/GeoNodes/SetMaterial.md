@@ -15,7 +15,7 @@ SetMaterial(geometry=None, selection=None, material=None, node_label=None, node_
 
 ## Implementation
 
-- [GEOMETRY](/docs/GeoNodes/socket_GEOMETRY.md) : [material](/docs/GeoNodes/socket_GEOMETRY.md#material) [material](/docs/GeoNodes/socket_GEOMETRY.md#material) [set_material](/docs/GeoNodes/socket_GEOMETRY.md#set_material) [set_material](/docs/GeoNodes/socket_GEOMETRY.md#set_material)
+- [GEOMETRY](/docs/GeoNodes/socket_GEOMETRY.md) : [material](/docs/GeoNodes/socket_GEOMETRY.md#material) [set_material](/docs/GeoNodes/socket_GEOMETRY.md#set_material)
 
 ## Init
 

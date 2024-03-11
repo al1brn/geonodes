@@ -16,7 +16,7 @@ SetPosition(geometry=None, selection=None, position=None, offset=None, node_labe
 
 ## Implementation
 
-- [GEOMETRY](/docs/GeoNodes/socket_GEOMETRY.md) : [offset](/docs/GeoNodes/socket_GEOMETRY.md#offset) [offset](/docs/GeoNodes/socket_GEOMETRY.md#offset) [position](/docs/GeoNodes/socket_GEOMETRY.md#position) [position](/docs/GeoNodes/socket_GEOMETRY.md#position) [set_position](/docs/GeoNodes/socket_GEOMETRY.md#set_position) [set_position](/docs/GeoNodes/socket_GEOMETRY.md#set_position)
+- [GEOMETRY](/docs/GeoNodes/socket_GEOMETRY.md) : [offset](/docs/GeoNodes/socket_GEOMETRY.md#offset) [position](/docs/GeoNodes/socket_GEOMETRY.md#position) [set_position](/docs/GeoNodes/socket_GEOMETRY.md#set_position)
 
 ## Init
 

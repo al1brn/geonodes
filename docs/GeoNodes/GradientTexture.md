@@ -16,7 +16,7 @@ GradientTexture(vector=None, color_mapping=None, gradient_type='LINEAR', texture
 
 ## Implementation
 
-- Functions : [gradient_texture](/docs/GeoNodes/GeoNodesTree.md#gradient_texture) [gradient_texture](/docs/GeoNodes/GeoNodesTree.md#gradient_texture)
+- Functions : [gradient_texture](/docs/GeoNodes/GeoNodesTree.md#gradient_texture)
 
 ## Init
 

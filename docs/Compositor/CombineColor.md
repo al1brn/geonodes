@@ -19,7 +19,7 @@ CombineColor(red=None, green=None, blue=None, alpha=None, mode='RGB', tag_need_e
 
 ## Implementation
 
-- Functions : [combine_color](/docs/Compositor/CompositorTree.md#combine_color)
+- Functions : [combine_color](/docs/Compositor/CompositorTree.md#combine_color) [hsl](/docs/Compositor/CompositorTree.md#hsl) [hsv](/docs/Compositor/CompositorTree.md#hsv) [rgb](/docs/Compositor/CompositorTree.md#rgb) [ycc](/docs/Compositor/CompositorTree.md#ycc) [yuv](/docs/Compositor/CompositorTree.md#yuv)
 
 ## Init
 

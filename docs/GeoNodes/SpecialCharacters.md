@@ -9,7 +9,7 @@ SpecialCharacters(node_label=None, node_color=None)
 ```
 ## Implementation
 
-- [STRING](/docs/GeoNodes/socket_STRING.md) : [line_break](/docs/GeoNodes/socket_STRING.md#line_break) [line_break](/docs/GeoNodes/socket_STRING.md#line_break) [special_characters](/docs/GeoNodes/socket_STRING.md#special_characters) [special_characters](/docs/GeoNodes/socket_STRING.md#special_characters) [tab](/docs/GeoNodes/socket_STRING.md#tab) [tab](/docs/GeoNodes/socket_STRING.md#tab)
+- [STRING](/docs/GeoNodes/socket_STRING.md) : [line_break](/docs/GeoNodes/socket_STRING.md#line_break) [special_characters](/docs/GeoNodes/socket_STRING.md#special_characters) [tab](/docs/GeoNodes/socket_STRING.md#tab)
 
 ## Init
 

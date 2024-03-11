@@ -16,7 +16,7 @@ Cube(size=None, vertices_x=None, vertices_y=None, vertices_z=None, node_label=No
 
 ## Implementation
 
-- Functions : [cube](/docs/GeoNodes/GeoNodesTree.md#cube) [cube](/docs/GeoNodes/GeoNodesTree.md#cube)
+- Functions : [cube](/docs/GeoNodes/GeoNodesTree.md#cube)
 
 ## Init
 

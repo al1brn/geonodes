@@ -15,7 +15,7 @@ UVSphere(segments=None, rings=None, radius=None, node_label=None, node_color=Non
 
 ## Implementation
 
-- Functions : [uv_sphere](/docs/GeoNodes/GeoNodesTree.md#uv_sphere) [uv_sphere](/docs/GeoNodes/GeoNodesTree.md#uv_sphere)
+- Functions : [uv_sphere](/docs/GeoNodes/GeoNodesTree.md#uv_sphere)
 
 ## Init
 

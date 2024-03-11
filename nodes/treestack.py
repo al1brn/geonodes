@@ -94,6 +94,10 @@ class StackedTree:
     def __str__(self):
         return f"<Tree '{self.btree.name}' ({self.TREE_TYPE}): {len(self.btree.nodes)} nodes and {len(self.btree.links)} links>"
     
+    @property
+    def _str_stats(self):
+        return f"{len(self.btree.nodes)} nodes, {len(self.btree.links)} links"
+    
     def clear(self):
         self.btree.nodes.clear()
         
@@ -124,6 +128,8 @@ class StackedTree:
         
         self.arrange()
         self._stack_done()
+        
+        print(f"Tree '{self.btree.name}' built: {self._str_stats}")
         
         if isinstance(exc_value, self.Break):
             return True
@@ -611,6 +617,19 @@ class Prefixed:
             bpy.data.node_groups.remove(tree)
             
     # ----------------------------------------------------------------------------------------------------
+    # Stats
+    
+    @property
+    def _nodes_links_count(self):
+        nodes = 0
+        links = 0
+        for tree in self.trees.values():
+            reroutes = [node for node in tree.nodes if node.bl_idname in ['NodeReroute']]
+            nodes += len(tree.nodes) - len(reroutes)
+            links += len(tree.links) - len(reroutes)
+        return nodes, links
+            
+    # ----------------------------------------------------------------------------------------------------
     # Call Group as tree attribute
     
     def __getattr__(self, name):
@@ -633,11 +652,7 @@ class Prefixed:
         
         cur_tree = constants.current_tree()
         return cur_tree.group(self.prefixed_name(name), **kwargs)
-            
-        
-        
-        
-        
+    
     
     
         

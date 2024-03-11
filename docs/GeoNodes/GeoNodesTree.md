@@ -52,6 +52,7 @@
 - E : [exp](#exp)
 - F : [floor](#floor) [fract](#fract) [floored_modulo](#floored_modulo)
 - G : [grid](#grid) [greater_than](#greater_than) [gradient_texture](#gradient_texture)
+- H : [hsv](#hsv) [hsl](#hsl)
 - I : [imply](#imply) [ico_sphere](#ico_sphere) [inverse_sqrt](#inverse_sqrt)
 - J : [join_geometry](#join_geometry) [join_strings](#join_strings)
 - L : [log](#log) [less_than](#less_than)
@@ -59,13 +60,13 @@
 - N : [nand](#nand) [nor](#nor) [nimply](#nimply) [named_float](#named_float) [named_int](#named_int) [named_vector](#named_vector) [named_color](#named_color) [named_boolean](#named_boolean) [named_quaternion](#named_quaternion) [noise_texture](#noise_texture)
 - P : [points](#points) [power](#power) [pingpong](#pingpong)
 - Q : [quaternion_to_rotation](#quaternion_to_rotation) [quadrilateral](#quadrilateral) [quadratic_bezier](#quadratic_bezier)
-- R : [random_value](#random_value) [random_float](#random_float) [random_int](#random_int) [random_vector](#random_vector) [random_boolean](#random_boolean) [round](#round) [radians](#radians)
+- R : [rgb](#rgb) [random_value](#random_value) [random_float](#random_float) [random_int](#random_int) [random_vector](#random_vector) [random_boolean](#random_boolean) [round](#round) [radians](#radians)
 - S : [spiral](#spiral) [star](#star) [scene_time](#scene_time) [subtract](#subtract) [sqrt](#sqrt) [sign](#sign) [smooth_min](#smooth_min) [smooth_max](#smooth_max) [snap](#snap) [sin](#sin) [sinh](#sinh)
 - T : [trunc](#trunc) [tan](#tan) [tanh](#tanh)
 - U : [uv_sphere](#uv_sphere)
 - V : [viewer](#viewer) [volume_cube](#volume_cube) [voronoi_texture](#voronoi_texture) [vadd](#vadd) [vsubtract](#vsubtract) [vmultiply](#vmultiply) [vdivide](#vdivide) [vmultiply_add](#vmultiply_add) [vcross](#vcross) [vproject](#vproject) [vreflect](#vreflect) [vrefract](#vrefract) [vfaceforward](#vfaceforward) [vdot](#vdot) [vdistance](#vdistance) [vlength](#vlength) [vscale](#vscale) [vnormalize](#vnormalize) [vabs](#vabs) [vmin](#vmin) [vmax](#vmax) [vfloor](#vfloor) [vceil](#vceil) [vfrac](#vfrac) [vmod](#vmod) [vwrap](#vwrap) [vsnap](#vsnap) [vsin](#vsin) [vcos](#vcos) [vtan](#vtan)
 - W : [wrap](#wrap) [wave_texture](#wave_texture) [white_noise_texture](#white_noise_texture)
-- X : [xnor](#xnor) [xor](#xor)
+- X : [xnor](#xnor) [xor](#xor) [xyz](#xyz)
 
 ## Functions
 
@@ -791,6 +792,50 @@ def greater_than(self, value=None, value_1=None, use_clamp=False, node_label=Non
 def grid(self, size_x=None, size_y=None, vertices_x=None, vertices_y=None, node_label=None, node_color=None):
     node = self.Grid(size_x=size_x, size_y=size_y, vertices_x=vertices_x, vertices_y=vertices_y, node_label=node_label, node_color=node_color)
     return node.mesh
+```
+### hsl
+
+
+- node : [CombineColor](/docs/GeoNodes/CombineColor.md)
+- return : color
+
+##### Arguments
+
+- red : None
+- green : None
+- blue : None
+- alpha : None
+- node_label : None
+- node_color : None
+
+#### Source code
+
+``` python
+def hsl(self, red=None, green=None, blue=None, alpha=None, node_label=None, node_color=None):
+    node = self.CombineColor(red=red, green=green, blue=blue, alpha=alpha, mode='HSL', node_label=node_label, node_color=node_color)
+    return node.color
+```
+### hsv
+
+
+- node : [CombineColor](/docs/GeoNodes/CombineColor.md)
+- return : color
+
+##### Arguments
+
+- red : None
+- green : None
+- blue : None
+- alpha : None
+- node_label : None
+- node_color : None
+
+#### Source code
+
+``` python
+def hsv(self, red=None, green=None, blue=None, alpha=None, node_label=None, node_color=None):
+    node = self.CombineColor(red=red, green=green, blue=blue, alpha=alpha, mode='HSV', node_label=node_label, node_color=node_color)
+    return node.color
 ```
 ### ico_sphere
 
@@ -1610,6 +1655,28 @@ def random_vector(self, min=None, max=None, ID=None, seed=None, node_label=None,
     node = self.RandomValue(min=min, max=max, ID=ID, seed=seed, data_type='FLOAT_VECTOR', node_label=node_label, node_color=node_color)
     return node.value
 ```
+### rgb
+
+
+- node : [CombineColor](/docs/GeoNodes/CombineColor.md)
+- return : color
+
+##### Arguments
+
+- red : None
+- green : None
+- blue : None
+- alpha : None
+- node_label : None
+- node_color : None
+
+#### Source code
+
+``` python
+def rgb(self, red=None, green=None, blue=None, alpha=None, node_label=None, node_color=None):
+    node = self.CombineColor(red=red, green=green, blue=blue, alpha=alpha, mode='RGB', node_label=node_label, node_color=node_color)
+    return node.color
+```
 ### round
 
 
@@ -2176,7 +2243,7 @@ def vfrac(self, vector=None, node_label=None, node_color=None):
 
 ``` python
 def viewer(self, geometry=None, value=None, data_type='FLOAT', domain='AUTO', node_label=None, node_color=None):
-    node = self.Viewer(geometry=geometry, value=value, data_type=data_type, domain=self._get_domain('AUTO'), node_label=node_label, node_color=node_color)
+    node = self.Viewer(geometry=geometry, value=value, data_type=data_type, domain=self._get_domain(domain, ('AUTO', 'POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color)
     return node
 ```
 ### vlength
@@ -2669,4 +2736,25 @@ def xnor(self, boolean=None, boolean_1=None, node_label=None, node_color=None):
 def xor(self, boolean=None, boolean_1=None, node_label=None, node_color=None):
     node = self.BooleanMath(boolean=boolean, boolean_1=boolean_1, operation='XOR', node_label=node_label, node_color=node_color)
     return node.boolean
+```
+### xyz
+
+
+- node : [CombineXYZ](/docs/GeoNodes/CombineXYZ.md)
+- return : vector
+
+##### Arguments
+
+- x : None
+- y : None
+- z : None
+- node_label : None
+- node_color : None
+
+#### Source code
+
+``` python
+def xyz(self, x=None, y=None, z=None, node_label=None, node_color=None):
+    node = self.CombineXYZ(x=x, y=y, z=z, node_label=node_label, node_color=node_color)
+    return node.vector
 ```

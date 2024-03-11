@@ -19,7 +19,7 @@ Cone(vertices=None, side_segments=None, fill_segments=None, radius_top=None, rad
 
 ## Implementation
 
-- Functions : [cone](/docs/GeoNodes/GeoNodesTree.md#cone) [cone](/docs/GeoNodes/GeoNodesTree.md#cone)
+- Functions : [cone](/docs/GeoNodes/GeoNodesTree.md#cone)
 
 ## Init
 

@@ -5,13 +5,13 @@
 
 
 ``` python
-FileOutput(image=None, active_input_index=0, base_path='//', file_slots=None, format=None, layer_slots=None, tag_need_exec=None, node_label=None, node_color=None)
+FileOutput(image=None, active_input_index=0, base_path='/tmp/', file_slots=None, format=None, layer_slots=None, tag_need_exec=None, node_label=None, node_color=None)
 ```
 ##### Arguments
 
 - image : None
 - active_input_index : 0
-- base_path : '//'
+- base_path : /tmp/
 - file_slots : None
 - format : None
 - layer_slots : None
@@ -24,7 +24,7 @@ No implementation in sockets
 ## Init
 
 ``` python
-def __init__(self, image=None, active_input_index=0, base_path='//', file_slots=None, format=None, layer_slots=None, tag_need_exec=None, node_label=None, node_color=None):
+def __init__(self, image=None, active_input_index=0, base_path='/tmp/', file_slots=None, format=None, layer_slots=None, tag_need_exec=None, node_label=None, node_color=None):
 
     Node.__init__(self, 'CompositorNodeOutputFile', node_label=node_label, node_color=node_color)
 

@@ -14,7 +14,7 @@ FlipFaces(mesh=None, selection=None, node_label=None, node_color=None)
 
 ## Implementation
 
-- [GEOMETRY](/docs/GeoNodes/socket_GEOMETRY.md) : [flip_faces](/docs/GeoNodes/socket_GEOMETRY.md#flip_faces) [flip_faces](/docs/GeoNodes/socket_GEOMETRY.md#flip_faces)
+- [GEOMETRY](/docs/GeoNodes/socket_GEOMETRY.md) : [flip_faces](/docs/GeoNodes/socket_GEOMETRY.md#flip_faces)
 
 ## Init
 

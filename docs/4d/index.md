@@ -6,6 +6,9 @@
     <img src="images/Hypercube.gif" width = "600px"/>
 </p>
 
+> Source code of this project can be found in `geonodes.nodes.fourd.py` file.
+> It shows how scripting nodes can simplify calcul intensive projects.
+
 
 ## Overview
 

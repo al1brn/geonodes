@@ -13,7 +13,7 @@ CurveHandlePositions(relative=None, node_label=None, node_color=None)
 
 ## Implementation
 
-- [GEOMETRY](/docs/GeoNodes/socket_GEOMETRY.md) : [curve_handle_positions](/docs/GeoNodes/socket_GEOMETRY.md#curve_handle_positions) [curve_handle_positions](/docs/GeoNodes/socket_GEOMETRY.md#curve_handle_positions)
+- [GEOMETRY](/docs/GeoNodes/socket_GEOMETRY.md) : [curve_handle_positions](/docs/GeoNodes/socket_GEOMETRY.md#curve_handle_positions)
 
 ## Init
 

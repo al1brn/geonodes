@@ -16,7 +16,7 @@ InstancesToPoints(instances=None, selection=None, position=None, radius=None, no
 
 ## Implementation
 
-- [GEOMETRY](/docs/GeoNodes/socket_GEOMETRY.md) : [instances_to_points](/docs/GeoNodes/socket_GEOMETRY.md#instances_to_points) [instances_to_points](/docs/GeoNodes/socket_GEOMETRY.md#instances_to_points)
+- [GEOMETRY](/docs/GeoNodes/socket_GEOMETRY.md) : [instances_to_points](/docs/GeoNodes/socket_GEOMETRY.md#instances_to_points)
 
 ## Init
 
