@@ -15,7 +15,37 @@ from .core import engine
 version         = (2, 0, 0)
 blender_version = (4, 0, 2)
 
-if True:
+# -----------------------------------------------------------------------------------------------------------------------------
+# Scipy is required
+
+try:
+    from scipy.spatial.transform import RotationSpline
+    from scipy.spatial.transform import Rotation
+    from scipy.spatial import KDTree
+    from scipy.interpolate import CubicSpline, BSpline, make_interp_spline, splder
+
+    OK_SCIPY = True
+    
+except:
+    print("CAUTION: Module 'scipy' not installed in Blender. Some features will crash...")
+    OK_SCIPY = False
+    
+    class ScipyMissing:
+        def __init__(self, *args, **kwargs):
+            raise Exception("Module scipy is not installed in Blender")
+    
+    RotationSpline     = ScipyMissing
+    Rotation           = ScipyMissing
+    KDTree             = ScipyMissing
+    CubicSpline        = ScipyMissing
+    BSpline            = ScipyMissing
+    make_interp_spline = ScipyMissing
+    splder             = ScipyMissing
+    
+    
+
+
+if True: # RELOAD
 
     # ----- Reload
     
@@ -50,7 +80,6 @@ from .nodes.fourd import build4D
 # =============================================================================================================================
 # Python geometry
 
-    
 # ----- Maths
     
 # Maths modules
@@ -114,20 +143,6 @@ from .core.bingrid import BinGrid
 from .core.simulation import Simulation
 from .core.kinematics import Kinematics
     
-
-if False:
-    from geopy.core.noise import lerp, smooth, smoother, maprange, SNoise, BNoise, noise
-    
-    from geopy.core.transformations import Vectors, Rotations, Matrices, Eulers, Quaternions, TMatrices, Instances
-    from geopy.core.meshbuilder import MeshBuilder
-    from geopy.core.curvebuilder import CurveBuilder, PolyBuilder, BezierBuilder, NurbsBuilder
-    from geopy.core.points import Points
-    from geopy.core.functions import Function
-    from geopy.core.shapekeys import ShapeKeys, MeshShapeKeys, CurveShapeKeys
-    from geopy.core.treenodes import GeoNodes, Shader
-
-
-
 
 
 

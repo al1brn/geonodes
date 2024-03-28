@@ -23,7 +23,7 @@ if __name__ == '__main__':
     from transformations import tracker, axis_vector
     
 else:
-    from geopy.maths.transformations import tracker, axis_vector
+    from geonodes.maths.transformations import tracker, axis_vector
 
 
 PI  = np.pi

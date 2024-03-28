@@ -81,7 +81,7 @@ gp.engine.go(update)
 """
 
 import bpy
-from geopy.core import blender
+from geonodes.core import blender
 
 GROUPS = {}
 
@@ -361,7 +361,7 @@ class GeoPyPanel(bpy.types.Panel):
         
         if len(GROUPS) == 0:
             layout.label(text='No parameter group defined')
-            layout.label(text="Use: group = geopy.new_param_group(name)")
+            layout.label(text="Use: group = geonodes.new_param_group(name)")
             layout.label(text="   to create a group")
             layout.label(text="Use: group.to_object(object)")
             layout.label(text="   to set parameter to the object")
@@ -376,7 +376,7 @@ class GeoPyPanel(bpy.types.Panel):
         groups = obj.get(OBJ_GROUP_LIST)
         if groups is None:
             layout.label(text='No group defined for this object')
-            layout.label(text="Use geopy.param_group(name).to_object(object)")
+            layout.label(text="Use geonodes.param_group(name).to_object(object)")
             layout.label(text="   to set parameters to the object")
             return
         

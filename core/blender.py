@@ -1504,7 +1504,7 @@ def get_key_block(spec, index, create=False, name=None):
 
 def bake_frame(collection, names=None, frame=None, reset=False):
     
-    from geopy.core.meshbuilder import MeshBuilder
+    from geonodes.core.meshbuilder import MeshBuilder
         
     coll = create_collection(collection)
     

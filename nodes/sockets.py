@@ -155,6 +155,14 @@ class Socket:
         
         if self._is_output:
             raise AttributeError(f"Impossible to set value to an output socket {self}")
+            
+        # ----- Value is a function : creation of an input socket
+        
+        if type(value).__name__ == 'function':
+            value(self).plug_in(self)
+            return
+
+        # ----- Value is value or a socket
         
         in_bsocket = None
         def_value  = None
@@ -170,17 +178,72 @@ class Socket:
             def_value = value
             
         if in_bsocket is None:
-            in_bsocket = utils.value_for(def_value, self.bsocket.bl_idname)
-            if isinstance(in_bsocket, Socket):
-                in_bsocket = in_bsocket.bsocket
+            
+            # ----- Menu
+            
+            if self.bsocket.type == 'MENU':
+                if def_value is None:
+                    return
+                enum_items = self.bsocket.node.enum_definition.enum_items
+                for i, item in enumerate(enum_items):
+                    if item.name.lower() == str(def_value).lower():
+                        self.bsocket.default_value = item.name
+                        return
+                raise Exception(f"Invalid item name for Socket Menu: '{str(def_value)}' not in {[item.name for item in enum_items]}")
+                        
+            # ----- Something else
+            
             else:
-                if in_bsocket is not None:
-                    self.bsocket.default_value = in_bsocket
-                in_bsocket = None
+                in_bsocket = utils.value_for(def_value, self.bsocket.bl_idname)
+                if isinstance(in_bsocket, Socket):
+                    in_bsocket = in_bsocket.bsocket
+                else:
+                    if in_bsocket is not None:
+                        self.bsocket.default_value = in_bsocket
+                    in_bsocket = None
                 
         if in_bsocket is not None:
             link = self.tree.btree.links.new(in_bsocket, self.bsocket, verify_limits=True)
             
+    # ====================================================================================================
+    # Plug into
+    
+    def plug_in(self, value):
+        
+        bsock = None
+        bnode = None
+        
+        if isinstance(value, bpy.types.Node):
+            bnode = value
+            
+        elif hasattr(value, 'bnode'):
+            bnode = value.bnode
+            
+        elif isinstance(value, bpy.types.NodeSocket):
+            bsock = value
+            
+        elif isinstance(value, Socket):
+            bsock = value.bsocket
+            
+        else:
+            raise Exception(f"Impossible to plug the socket {self}. Value '{value}' should be an input socket.")
+            
+        if bsock is not None:
+            if (not bsock.is_output) and bsock.type == self.bsocket.type:
+                self.tree.btree.links.new(self.bsocket, bsock, verify_limits=True)
+                return
+            bnode = bsock.node
+            
+        if bnode is not None:
+            for bsock in bnode.inputs:
+                if not bsock.enabled:
+                    continue
+                
+                if bsock.type == self.bsocket.type:
+                    self.tree.btree.links.new(self.bsocket, bsock, verify_limits=True)
+                    return
+                
+        raise Exception(f"Impossible to plug the socket {self} in {value}. No input socket of the same type ({self.bsocket.type}) found.")
             
     # ====================================================================================================
     # Helper
@@ -710,6 +773,12 @@ class VECTOR(VECTOR_ROT):
     pass
 
 class ROTATION(VECTOR_ROT):
+    pass
+
+# ----------------------------------------------------------------------------------------------------
+# Menu
+
+class MENU(Socket):
     pass
 
 # ----------------------------------------------------------------------------------------------------

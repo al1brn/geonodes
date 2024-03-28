@@ -18,7 +18,12 @@ Implement the maths necessary to compute thje curve splines using scipy module.
 """
 
 import numpy as np
-from scipy.interpolate import BSpline, make_interp_spline, CubicSpline, splder
+
+if True:
+    from geonodes import CubicSpline, BSpline, make_interp_spline, splder
+else:
+    from scipy.interpolate import BSpline, make_interp_spline, CubicSpline, splder
+
 
 PI  = np.pi
 TAU = 2*np.pi

@@ -259,6 +259,9 @@ class StackedTree:
         material = self.Material._material_value(material)
         return self.Material(material, node_label=node_label, node_color=node_color).output_socket
     
+    @property
+    def active_camera(self):
+        return self.ActiveCamera().active_camera
         
         
 # ====================================================================================================
@@ -266,9 +269,9 @@ class StackedTree:
 
 class Node(object):
     
-    def __init__(self, bl_idname, node_label=None, node_color=None):
+    def __init__(self, bl_idname, node_label=None, node_color=None, **kwargs):
         
-        self.tree  = constants.current_tree()
+        self.tree = constants.current_tree()
         if isinstance(bl_idname, str):
             self.bnode = self.tree.btree.nodes.new(type=bl_idname)
         else:
@@ -283,9 +286,32 @@ class Node(object):
         self.inputs  = sockets.Sockets(self, True)
         self.outputs = sockets.Sockets(self, False)
         
+        # ----- Virtual sockets
+        
+        if len(kwargs) and not self.has_virtual_sockets:
+            raise Exception(f"Node '{self.bnode.name}' ({self.bnode.bl_idname}) has no virtual socket. Impossible to set up sockets {kwargs}")
+            
+        for name, value in kwargs.items():
+            
+            if value is None:
+                stype = 'GEOMETRY'
+            else:
+                stype = utils.get_value_socket_type(value)
+                
+            if stype == 'VALUE':
+                stype = 'FLOAT'
+                
+            self._items.new(socket_type=stype, name=name)
+
+        # ----- Register the node
+        
         self.tree._register_node(self)
         
-        
+        # ----- Set the sockets
+            
+        for name, value in kwargs.items():
+            setattr(self, name, value)
+            
     def __enter__(self):
         if self.bnode.bl_idname != 'NodeFrame':
             raise Exception(f"Only a node of type Frame can be the parent of new nodes, not node of type '{self.bnode.bl_idname}'")
@@ -337,56 +363,6 @@ class Node(object):
         if value is not None:
             setattr(self.bnode, param, value)
             
-    # ----------------------------------------------------------------------------------------------------
-    # component : ('MESH', 'POINTCLOUD', 'CURVE', 'INSTANCES')
-    # mode ('ALL', 'EDGE_FACE', 'ONLY_FACE') DeleteGeometry
-    # mode ('VERTICES', 'EDGES', 'FACES') ExtrudeMesh
-    # mode ('VERTICES', 'EDGES', 'FACES', 'CORNERS') MeshToPoints
-    # target_element ('POINTS', 'EDGES', 'FACES') GeometryProximity
-            
-    @classmethod
-    def _get_domain_value_OLD(cls, domain, default):
-        
-        #print(f"{cls.__name__}._get_domain_value({domain}, {default})", "values", cls.DOMAIN_VALUES)
-        
-        if domain is None or cls.DOMAIN_VALUES is None:
-            return default
-        
-        def get_value(values):
-            for val in values:
-                if val in cls.DOMAIN_VALUES:
-                    return val
-            print(f"CAUTION: domain '{domain}' not valid for node '{type(self).__name__}', valid values are: {values}. Default '{default}' is used")
-            return default
-        
-        if domain == 'POINT':
-            return get_value(['POINT', 'POINTS', 'MESH', 'VERTICES', 'ALL'])
-        
-        elif domain == 'CLOUD':
-            return get_value(['POINTCLOUD'])
-        
-        elif domain == 'EDGE':
-            return get_value(['EDGE', 'EDGES', 'EDGE_FACE'])
-        
-        elif domain == 'FACE':
-            return get_value(['FACE', 'FACES', 'ONLY_FACE'])
-        
-        elif domain == 'CORNER':
-            return get_value(['CORNER', ' CORNERS'])
-        
-        elif domain == 'CURVE':
-            return get_value(['CURVE', 'CURVES'])
-        
-        elif domain == 'SPLINE':
-            return get_value(['SPLINE', 'SPLINES'])
-        
-        elif domain == 'INSTANCE':
-            return get_value(['INSTANCE', 'INSTANCES'])
-        
-        else:
-            raise AttributeError(f"Domain {domain} not valid")
-
-            
     # ====================================================================================================
     # Sockets
     
@@ -405,7 +381,7 @@ class Node(object):
         if bsock is None:
             bsock = self.inputs.sockets_pynames(enabled_only=False).get(pyname)
             if bsock is None:
-                raise AttributeError(f"Socket error: {self}. No inpout socket named {pyname} in list: {list(self.inputs.sockets_pynames(enabled_only=False).keys())}")
+                raise AttributeError(f"Socket error: {self}. No input socket named {pyname} in list: {list(self.inputs.sockets_pynames(enabled_only=False).keys())}")
                 
         sockets.Socket(bsock)._set_value(value)
             
@@ -435,6 +411,14 @@ class Node(object):
     
     # ====================================================================================================
     # Dynamic sockets
+    
+    @property
+    def has_virtual_sockets(self):
+        return self.bl_idname in constants.HAS_VIRTUAL_SOCKETS
+    
+    @property
+    def _items(self):
+        return getattr(self.bnode, constants.HAS_VIRTUAL_SOCKETS.get(self.bl_idname))
     
     def __getattr__(self, name):
 
@@ -516,6 +500,136 @@ class Node(object):
         else:
             # To raise an error message
             return self.__getattr__('lightness')
+
+# ====================================================================================================
+# Specific nodes
+
+# ----------------------------------------------------------------------------------------------------
+# Index Switch
+        
+class IndexSwitchNode(Node):
+    
+    def __init__(self, *args, index=None, data_type='GEOMETRY', node_label=None, node_color=None, **kwargs):
+        
+        bnode = constants.current_tree().btree.nodes.new(type='GeometryNodeIndexSwitch')
+        bnode.index_switch_items.clear()
+        
+        super().__init__(bnode, node_label=node_label, node_color=node_color)
+        
+        self.data_type = data_type
+        self.index = index
+        
+        # ----- Create the entries
+        
+        n = len(args) + len(kwargs)
+        for _ in range(n):
+            self.bnode.index_switch_items.new()
+            
+        # ----- Plug the entries
+        
+        plugged = []
+        for k, v in kwargs.items():
+            if not k[1:].isnumeric():
+                raise Exception(f"Node 'Index Switch' initialization error: socket name '{k}' is not valid ; node needs socket named '_x' (x is the socket number)")
+            setattr(self, k, v)
+            plugged.append(int(k[1:]))
+
+        for val in args:
+            for i in range(n):
+                if i not in plugged:
+                    setattr(self, f"_{i}", val)
+                    plugged.append(i)
+                    break
+            
+    @property
+    def index(self):
+        return None
+    
+    @index.setter
+    def index(self, value):
+        sockets.Socket(self.inputs["Index"])._set_value(value)
+
+    @property
+    def data_type(self):
+        return self.bnode.data_type
+    
+    @data_type.setter
+    def data_type(self, value):
+        self.bnode.data_type = value
+        
+    def __setattr__(self, name, value):
+        
+        inputs = self.__dict__.get('inputs')
+        if inputs is not None:
+            if name[0] == '_' and name[1:].isnumeric():
+                i = int(name[1:])
+                bsocket = inputs.sockets_pynames(enabled_only=True).get(name)
+                if bsocket is not None:
+                    sockets.Socket(bsocket)._set_value(value)
+                    return
+            
+        super().__setattr__(name, value)
+        
+# ----------------------------------------------------------------------------------------------------
+# Menu Switch
+        
+class MenuSwitchNode(Node):
+    
+    def __init__(self, menu=None, data_type='GEOMETRY', node_label=None, node_color=None, **kwargs):
+        
+        bnode = constants.current_tree().btree.nodes.new(type='GeometryNodeMenuSwitch')
+        bnode.enum_definition.enum_items.clear()
+        
+        super().__init__(bnode, node_label=node_label, node_color=node_color)
+        
+        self.data_type = data_type
+        
+        # ----- Create the entries
+        
+        for k in kwargs:
+            self.bnode.enum_definition.enum_items.new(k)
+            
+        # ----- Plug the entries
+
+        for k, v in kwargs.items():
+            setattr(self, k.lower(), v)
+
+        # ----- Set the menu
+        
+        self.menu = menu
+            
+            
+
+            
+    @property
+    def menu(self):
+        return None
+    
+    @menu.setter
+    def menu(self, value):
+        if value is not None:
+            sockets.Socket(self.inputs["Menu"])._set_value(value)
+
+    @property
+    def data_type(self):
+        return self.bnode.data_type
+    
+    @data_type.setter
+    def data_type(self, value):
+        self.bnode.data_type = value
+        
+    def __setattr__(self, name, value):
+        
+        inputs = self.__dict__.get('inputs')
+        if inputs is not None:
+            bsocket = inputs.sockets_pynames(enabled_only=True).get(name)
+            if bsocket is not None:
+                sockets.Socket(bsocket)._set_value(value)
+                return
+            
+        super().__setattr__(name, value)
+        
+
         
     
 # ====================================================================================================

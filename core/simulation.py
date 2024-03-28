@@ -19,20 +19,20 @@ import inspect
 import numpy as np
 
 """
-from geopy.new_maths.transformations import Eulers, Transformations, axis_vector
-from geopy.new_maths.functions import Function, keyed
-from geopy.new_maths import distribs
+from geonodes.new_maths.transformations import Eulers, Transformations, axis_vector
+from geonodes.new_maths.functions import Function, keyed
+from geonodes.new_maths import distribs
 
-from geopy.new_core import blender
-from geopy.new_core.cloud import Cloud
-from geopy.new_core.mesh import Mesh
-from geopy.new_core.curve import Curve
+from geonodes.new_core import blender
+from geonodes.new_core.cloud import Cloud
+from geonodes.new_core.mesh import Mesh
+from geonodes.new_core.curve import Curve
 """
 
-from geopy.core import engine
-from geopy.core import blender
-from geopy.core.mesh import Mesh
-from geopy.maths import functions
+from geonodes.core import engine
+from geonodes.core import blender
+from geonodes.core.mesh import Mesh
+from geonodes.maths import functions
 
 
 PI  = np.pi

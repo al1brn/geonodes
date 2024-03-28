@@ -487,13 +487,20 @@ class Tree(StackedTree):
     def texture_input(self, name, value=None, description=""):
         return self.new_input('NodeSocketTexture', name, value=value, description=description)
     
+    # ----- Menu input
+    
+    def menu_input(self, name, value, description=""):
+        out_socket = self.new_input('NodeSocketMenu', name, description=description)
+        out_socket.plug_in(value)
+        return out_socket
     
     # ----------------------------------------------------------------------------------------------------
     # Create a socket from an input socket
     
-    def input_from_socket(self, socket):
+    def input_from_socket(self, socket, name=None):
         
-        name = socket.bsocket.name
+        if name is None:
+            name = socket.bsocket.name
         blid = socket.bsocket.bl_idname
         
         io_socket = self.io_socket_exists(blid, 'INPUT', name)
@@ -504,9 +511,7 @@ class Tree(StackedTree):
         io_socket.from_socket(socket.node.bnode, socket.bsocket)
         
         socket_class = constants.get_socket_class_from_bl_idname(self.TREE_TYPE, blid)
-        socket = socket_class(self.input_node.bnode.outputs[io_socket.identifier])
-        
-        return socket
+        return socket_class(self.input_node.bnode.outputs[io_socket.identifier])
     
     def inputs_from_node(self, node, exclude=None, include=None):
         
@@ -522,6 +527,21 @@ class Tree(StackedTree):
             sockets.append(self.input_from_socket(socket))
         
         return sockets
+    
+    # ----------------------------------------------------------------------------------------------------
+    # Create dynamically an group input socket as an argument of node creation
+    #
+    # Use syntax:
+    # node = tree.Node(value=tree.input_for_socket("Parameter"))
+    #
+    # Implemented
+    
+    def input_for_socket(self, name=None):
+        
+        def create_func(socket):
+            return self.input_from_socket(socket, name=name)
+        
+        return create_func
     
     # ====================================================================================================
     # Group management

@@ -14,7 +14,7 @@ Root class for geometries
 """
 
 import bpy
-from geopy.core import blender
+from geonodes.core import blender
 
 # =============================================================================================================================
 # Root class for geometries
@@ -34,8 +34,8 @@ class Geometry:
             - Mesh or Curve
         """
 
-        from geopy.core.mesh import Mesh
-        from geopy.core.curve import Curve
+        from geonodes.core.mesh import Mesh
+        from geonodes.core.curve import Curve
         
         obj = blender_getobject(name)
         if isinstance(obj.data, bpy.types.Mesh):
@@ -70,10 +70,10 @@ class Geometry:
             - Mesh or Curve or arrays of Meshes and Curves
         """
 
-        from geopy.core.mesh import Mesh
-        from geopy.core.curve import Curve
-        from geopy.core.cloud import Cloud
-        from geopy.core.instances import Instances
+        from geonodes.core.mesh import Mesh
+        from geonodes.core.curve import Curve
+        from geonodes.core.cloud import Cloud
+        from geonodes.core.instances import Instances
         
         if isinstance(model, (Mesh, Curve, Cloud, Instances)):
             return model

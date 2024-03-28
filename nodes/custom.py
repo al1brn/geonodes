@@ -40,17 +40,17 @@ class C:
     SETTER = 'SETTER'
     
     def __init__(self, 
-                 impl_type,           # Implementation type
-                 target,              # Target class
-                 self_socket  = None, # Socket to plug self into
-                 name         = "@",  # Name template
-                 jump         = None, # Name of the socket to jump on
-                 ret_socket   = None, # Socket to return
-                 loops        = [],   # Loop on node parameter
-                 value_socket = None, # For property setter
-                 descr        = None, # Documentation
-                 tree_type    = None, # Tree type filter (some nodes share the same name)
-                 **kwargs):           # Node parameters
+                 impl_type,            # Implementation type
+                 target,               # Target class
+                 self_socket  = None,  # Socket to plug self into
+                 name         = "@",   # Name template
+                 jump         = None,  # Name of the socket to jump on
+                 ret_socket   = None,  # Socket to return
+                 loops        = [],    # Loop on node parameter
+                 value_socket = None,  # For property setter
+                 descr        = None,  # Documentation
+                 tree_type    = None,  # Tree type filter (some nodes share the same name)
+                 **kwargs):            # Node parameters
         
         self.impl_type  = impl_type
         
@@ -231,7 +231,6 @@ class C:
         if self.target is not None and self.target in constants.SOCKET_CLASS_NAME_SHORTCUTS:
             self.target = constants.SOCKET_CLASS_NAME_SHORTCUTS[self.target]
         
-        
         # ----- Target not implemented in this Tree
         # For instance Int doesn't exist in Shaders
         
@@ -262,7 +261,7 @@ class C:
             if value_socket is not None:
                 value_socket = value_socket.replace('@', constants.SOCKET_CLASS_DEFAULT_SOCKET_NAME[self.target])
                 
-        # ----- All sockets if not param is set
+        # ----- All sockets if no param is set
 
         all_sockets = True
         for param in node_info.params:
@@ -285,12 +284,14 @@ class C:
             'return'      : 'node' if ret_socket is None else ret_socket,
             }
         
+        use_args = node_info.bl_idname in constants.USE_ARGS_NODES
+        
         # ---------------------------------------------------------------------------
         # Global method (= method of Tree)
         
         if self.impl_type == C.GLOBAL:
             
-            args = node_info.build_meth_args(all_sockets=all_sockets, node_label=False, **self.kwargs)
+            args = node_info.build_meth_args(all_sockets=all_sockets, node_label=False, use_args=use_args, **self.kwargs)
             
             is_prop = ret_socket is not None and len(args) == 0
             if not is_prop:
@@ -301,10 +302,16 @@ class C:
             args.is_static = False
             
             # Header
-            s = f"def {name}({args.header_code}):\n"
+            if args.header_code == "":
+                s = f"def {name}(**kwargs):\n"
+            else:
+                s = f"def {name}({args.header_code}, **kwargs):\n"
             
             # Create the node
-            s += f"\tnode = self.{node_info.class_name}({args.call_code})\n"
+            if args.call_code == "":
+                s += f"\tnode = self.{node_info.class_name}(**kwargs)\n"
+            else:
+                s += f"\tnode = self.{node_info.class_name}({args.call_code}, **kwargs)\n"
             
             # Return node or socket
             if ret_socket is None:
@@ -337,7 +344,7 @@ class C:
                         name = 'math_' + name
                         
             try:
-                args = node_info.build_meth_args(self_socket=self_socket, all_sockets=all_sockets, **self.kwargs)
+                args = node_info.build_meth_args(self_socket=self_socket, all_sockets=all_sockets, use_args=use_args, **self.kwargs)
                 
             except Exception as e:
                 # Implementatio not valid for this tree_type !
@@ -352,10 +359,16 @@ class C:
             args.is_static = False
         
             # Header
-            s = f"def {name}({args.header_code}):\n"
+            if args.header_code == "":
+                s = f"def {name}(**kwargs):\n"
+            else:
+                s = f"def {name}({args.header_code}, **kwargs):\n"
             
             # Create the node
-            s += f"\tnode = self.tree.{node_info.class_name}({args.call_code})\n"
+            if args.call_code == "":
+                s += f"\tnode = self.tree.{node_info.class_name}(**kwargs)\n"
+            else:
+                s += f"\tnode = self.tree.{node_info.class_name}({args.call_code}, **kwargs)\n"
             
             # Self jump
             if self.jump is not None:
@@ -479,6 +492,8 @@ NODE_IMPLEMENTATIONS = {
     'AttributeStatistic' : [C.Meth('Geometry'),
                             C.Meth('Geometry', name='@_DATA_TYPE', loops=['data_type'])],
     'AxisAngleToRotation': C.Meth('Vect', 'axis', ret_socket='rotation'),
+    'Bake'               : [C.Glob(ret_socket='geometry'),
+                            C.Meth('Geometry', self_socket='geometry', ret_socket='geometry')],
     'BezierSegment'      : C.Glob(ret_socket='curve'),
     'BlurAttribute'      : [C.Meth('Geometry', self_socket=None, ret_socket='value'),
                             C.Meth('Int',   'value', ret_socket='value', data_type='INT'),
@@ -571,6 +586,8 @@ NODE_IMPLEMENTATIONS = {
     'ImageTexture'       : C.Meth('Img'),
     'Index'              : C.Get('Geometry', '@', None, 'index'),
     'IndexOfNearest'     : C.Meth('Geometry', None),
+    'IndexSwitch'        : C.Meth({'data_type': ('FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'ROTATION', 'STRING', 'RGBA', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'TEXTURE', 'MATERIAL')}, 'ARG0', ret_socket='output'),
+    
     'InstanceOnPoints'   : C.Meth('Geometry', 'points', ret_socket='instances'),
     'InstanceRotation'   : C.Get('Geometry', '@', None, 'rotation'),
     'InstanceScale'      : C.Get('Geometry', '@', None, 'scale'),
@@ -596,13 +613,14 @@ NODE_IMPLEMENTATIONS = {
     'Math'               : [C.Glob(name='OPERATION',  ret_socket='value', loops=['operation']),
                             C.Meth(('Float', 'Int'), 'value', ret_socket='value', name='OPERATION', loops=['operation'])],
     'MeanFilterSDFVolume': None,
+    'MenuSwitch'         : C.Glob(ret_socket='output'),
     'MergeByDistance'    : C.Meth('Geometry', jump='geometry'),
     'MeshBoolean'        : [C.Meth('Geometry', 'mesh_2', name='mesh_intersect',  ret_socket='mesh', operation='INTERSECT'),
                             C.Meth('Geometry', 'mesh_2', name='mesh_union',      ret_socket='mesh', operation='UNION'),                            
                             C.Meth('Geometry', 'mesh_1', name='mesh_difference', ret_socket='mesh', operation='DIFFERENCE')],
     'MeshCircle'         : C.Glob(ret_socket='mesh'),
     'MeshIsland'         : C.Meth('Geometry', None),
-    'MeshLine'           : C.Glob(ret_socket='line'),
+    'MeshLine'           : C.Glob(ret_socket='mesh'),
     'MeshToCurve'        : C.Meth('Geometry', 'mesh', ret_socket='curve'),
     'MeshToPoints'       : C.Meth('Geometry', 'mesh', ret_socket='points'),
     'MeshToSDFVolume'    : None,
@@ -654,6 +672,7 @@ NODE_IMPLEMENTATIONS = {
                             C.Meth(('Vect', 'Rot'), 'rotation', jump='rotation', name= '@_axis_angle', type='AXIS_ANGLE'), 
                             C.Meth(('Vect', 'Rot'), 'rotation', jump='rotation', name= '@_euler', type='EULER')],
     'RotateInstances'    : C.Meth('Geometry', 'instances', jump='instances'),
+    'RotateRotation'     : C.Meth('Rot', 'rotation', jump='rotation'),
     'RotateVector'       : C.Meth('Vect', jump='vector'),
     'RotationToAxisAngle' : C.Meth(('Rot', 'Vect'), 'rotation'),
     'RotationToEuler'     : C.Meth(('Rot', 'Vect'), 'rotation', rot_socket='euler'),
@@ -720,6 +739,7 @@ NODE_IMPLEMENTATIONS = {
     'SimulationInput'    : None,
     'SimulationOutput'   : None,
     'SliceString'        : C.Meth('Str', jump='string'),
+    'SortElements'       : C.Meth('Geometry', 'geometry', jump='geometry'),
     'SpecialCharacters'  : [C.Meth('Str', None),
                             C.Get('Str', 'line_break', None, 'line_break'),
                             C.Get('Str', 'tab',        None, 'tab')],
@@ -728,6 +748,7 @@ NODE_IMPLEMENTATIONS = {
     'SplineParameter'    : C.Meth('Geometry', None),
     'SplineResolution'   : C.Get( 'Geometry', '@', None, 'resolution'),
     'SplitEdges'         : C.Meth('Geometry', 'mesh', jump='mesh'),
+    'SplitToInstances'   : C.Meth('Geometry', 'geometry', ret_socket='instances'),
     'Star'               : C.Glob(ret_socket='curve'),
     'StoreNamedAttribute': [C.Meth('Geometry', jump='geometry'),
                             C.Meth('Geometry', jump='geometry', name='store_named_DATA_TYPE', loops=['data_type']),],

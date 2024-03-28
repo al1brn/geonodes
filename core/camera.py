@@ -11,8 +11,7 @@ import numpy as np
 import bpy
 from mathutils import Vector
 
-#from geopy.core.timer import Timer
-from geopy.core import engine
+from geonodes.core import engine
 
 # =============================================================================================================================
 # Camera
@@ -237,8 +236,8 @@ class Camera:
     @staticmethod
     def demo(count=100000, size=1000, seed=0):
         
-        from geopy.core.instances import Instances
-        from geopy.core.mesh import Mesh
+        from geonodes.core.instances import Instances
+        from geonodes.core.mesh import Mesh
         
         rng = np.random.default_rng(seed)
         

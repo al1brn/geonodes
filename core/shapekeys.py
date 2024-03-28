@@ -23,25 +23,24 @@ Created on Sat Oct  1 17:29:17 2022
 # Series are managed through a key name and a number of steps
 
 import numpy as np
-from scipy.interpolate import CubicSpline
-from scipy.interpolate import BSpline
+from geonodes import CubicSpline, BSpline
 
 
 if __name__ != '__main__':
     
     import bpy
 
-    from geopy.core import blender
-    from geopy.core.cloud import Cloud
-    from geopy.core.instances import Instances
-    from geopy.core.mesh import Mesh
-    from geopy.core.curve import Curve
+    from geonodes.core import blender
+    from geonodes.core.cloud import Cloud
+    from geonodes.core.instances import Instances
+    from geonodes.core.mesh import Mesh
+    from geonodes.core.curve import Curve
 
 
-#from geopy.core.meshbuilder import MeshBuilder
-#from geopy.core.curvebuilder import CurveBuilder, BezierBuilder, PolyBuilder, NurbsBuilder
-#from geopy.core.maprange import maprange
-#from geopy.core.transformations import TMatrices
+#from geonodes.core.meshbuilder import MeshBuilder
+#from geonodes.core.curvebuilder import CurveBuilder, BezierBuilder, PolyBuilder, NurbsBuilder
+#from geonodes.core.maprange import maprange
+#from geonodes.core.transformations import TMatrices
 
 # ====================================================================================================
 # Float attributes shape keys

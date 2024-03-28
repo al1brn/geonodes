@@ -20,7 +20,7 @@ module : nodeinfo
     - create the socket classes
     - create some sockets methods
     - implement the custom functions declared with custom.add_function
-The dynamic biulding is triggered by the instanciation of a Tree class by calling nodeinfo.tree_class_setup.
+The dynamic building is triggered by the instanciation of a Tree class by calling nodeinfo.tree_class_setup.
 
 update : 2024/02/17
 """
@@ -392,6 +392,16 @@ class NodeInfo:
             - btree (Blender NodeTree) : the current node tree
             - bnode (Blender Node) : a node in the tree
         """
+
+        # ----------------------------------------------------------------------------------------------------
+        # Specific
+        
+        if bnode.bl_idname == 'GeometryNodeIndexSwitch':
+            bnode.index_switch_items.clear()
+        elif bnode.bl_idname == 'GeometryNodeMenuSwitch':
+            print(dir(bnode))
+            bnode.enum_definition.enum_items.clear()
+            
         
         # ----------------------------------------------------------------------------------------------------
         # Initialization
@@ -436,55 +446,6 @@ class NodeInfo:
         # Parameters
         
         self.analyze_parameters()
-            
-        if False:
-        
-            # ====================================================================================================
-            # When muting a node, internal links are built
-            # The first socket with an internal link is used to build a method
-            #
-            # Example
-            # SetMaterial(geometry, material)
-            # geometry.set_material(material) implemented as SetMaterial(self, material)
-            
-            # ----- Force internal links by connecting output sockets to the input sockets
-            
-            to_delete = []
-            for out_socket in bnode.outputs:
-                for in_socket in bnode.inputs:
-                    if in_socket.type == out_socket.type:
-                        link = btree.links.new(in_socket, out_socket, verify_limits=True)
-                        to_delete.append(link)
-                        
-            # ----- Capture the internal links which are set when muting the node
-            
-            int_links = []
-            if self.class_name not in ['SeparateComponents']:
-                bnode.mute = True
-                for link in bnode.internal_links:
-                    int_links.append((link.from_socket, link.to_socket))
-                bnode.mute = False
-            
-            # ----- Remove the external links
-            for link in to_delete:
-                if link.from_socket is not None:
-                    btree.links.remove(link)
-                
-            self.has_socket_method = len(int_links) > 0
-            if self.has_socket_method:
-                self.sm_in_bsock   = int_links[0][0]
-                self.sm_out_bsock  = int_links[0][1]
-                self.sm_pyname     = utils.socket_name(self.sm_in_bsock.name)
-                self.sm_out_pyname = utils.socket_name(self.sm_out_bsock.name)
-                self.sm_is_multi   = self.sm_in_bsock.is_multi_input
-                
-            if self.class_name == 'StoreNamedAttribute':
-                self.has_socket_method = True
-                self.sm_in_bsock   = self.bnode.inputs[0]
-                self.sm_out_bsock  = self.bnode.outputs[0]
-                self.sm_pyname     = utils.socket_name(self.sm_in_bsock.name)
-                self.sm_out_pyname = utils.socket_name(self.sm_out_bsock.name)
-                self.sm_is_multi   = False
                 
         # ====================================================================================================
         # Node attributes
@@ -588,13 +549,10 @@ class NodeInfo:
             init_header += f", {param}={utils.python_constant(value, keep_lower=False)}"
             params_init += f"\n\tself.{param:15s} = {param}"
             
-        #self.node_args.add('node_label', None)
-        #self.node_args.add('node_color', None)
-            
         # ----- Source code
         
-        self.init_code  = f"def __init__({init_header}, node_label=None, node_color=None):\n"
-        self.init_code += f"\n\tNode.__init__(self, '{self.bl_idname}', node_label=node_label, node_color=node_color)\n"
+        self.init_code  = f"def __init__({init_header}, node_label=None, node_color=None, **kwargs):\n"
+        self.init_code += f"\n\tNode.__init__(self, '{self.bl_idname}', node_label=node_label, node_color=node_color, **kwargs)\n"
         self.init_code += params_init
         self.init_code += sockets_init
         self.init_code += "\n"
@@ -851,6 +809,7 @@ class NodeInfo:
                   self_socket = None,  # Which socket to set with self
                   all_sockets = True,  # Use all the sockets (True) or the current node config (False)
                   node_label  = True,  # Add node_label and node_color
+                  use_args    = False, # Use *args in header
                   **kwargs):           # Fixed node arguments
         
         """ Build the arguments list.
@@ -862,6 +821,7 @@ class NodeInfo:
             - self_socket (str = None) : Name of the socket to plug self (is excluded from argument list)
             - use_enabled (bool = False) : compute the current count per socket if True else get node.max_per_name
             - node_label (bool = True) : add node_label and node_color arguments
+            - use_args (bool=False) : use *args
             - kwargs : Fixed arguments
             
         Returns
@@ -873,8 +833,11 @@ class NodeInfo:
         # Lists initialization
         
         args = Arguments(self_socket is None)
+        
+        if self_socket == 'ARG0':
+            args.add('self', IGNORE, NO_VALUE)
 
-        if self.has_multi_input:
+        if self.has_multi_input or use_args:
             args.add("*args", NO_VALUE, NO_VALUE)
             
         # ----------------------------------------------------------------------------------------------------
@@ -1038,8 +1001,18 @@ class NodeInfo:
             - node_info.dynamic : the Dynamic instance
             - node_info.node_class : the Node class
         """
+        
+        root_class = treestack.Node
+        gen_init   = True
+        
+        if self.bl_idname == 'GeometryNodeIndexSwitch':
+            root_class = treestack.IndexSwitchNode
+            gen_init   = False
+        elif  self.bl_idname == 'GeometryNodeMenuSwitch':
+            root_class = treestack.MenuSwitchNode
+            gen_init   = False
 
-        self.dynamic = dynamic.Dynamic.NewNode(self, treestack.Node, descr=None)
+        self.dynamic = dynamic.Dynamic.NewNode(self, root_class, descr=None)
         
         if False:
             args = self.build_meth_args()
@@ -1054,8 +1027,9 @@ class NodeInfo:
             print(f"====== create_node_class {self.class_name}")
             print(self.init_code)
             print()
-
-        self.dynamic.add_member('METHOD', '__init__', (self.init_code, self.compiled_init), None, args=self.node_args, descr=None)
+            
+        if gen_init:
+            self.dynamic.add_member('METHOD', '__init__', (self.init_code, self.compiled_init), None, args=self.node_args, descr=None)
         
         #self.dynamic.build_class()
         

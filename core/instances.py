@@ -15,14 +15,14 @@ from contextlib import contextmanager
 import numpy as np
 import bpy
 
-from geopy.maths.transformations import Transformations
+from geonodes.maths.transformations import Transformations
 
-from geopy.core import blender
-from geopy.core.domain import InstanceDomain
-from geopy.core.geometry import Geometry
-from geopy.core.mesh import Mesh
-from geopy.core.curve import Curve
-from geopy.core.cloud import Cloud
+from geonodes.core import blender
+from geonodes.core.domain import InstanceDomain
+from geonodes.core.geometry import Geometry
+from geonodes.core.mesh import Mesh
+from geonodes.core.curve import Curve
+from geonodes.core.cloud import Cloud
 
 
 

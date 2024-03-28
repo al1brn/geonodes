@@ -21,8 +21,8 @@ on the array of floats.
 """
 
 import numpy as np
-from geopy.core.cached_array import CachedArray
-from geopy.core import blender
+from geonodes.core.cached_array import CachedArray
+from geonodes.core import blender
 
 
 # =============================================================================================================================

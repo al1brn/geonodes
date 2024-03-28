@@ -15,10 +15,9 @@ Spatial transformations and geometry utilities
 """
 
 import numpy as np
-import scipy
 from numpy import pi
 
-from scipy.spatial.transform import Rotation
+from geonodes import Rotation
 
 # Zero
 ZERO = 1e-6

@@ -17,19 +17,20 @@ Created on Tue Oct 10 07:45:22 2023
 import inspect
 
 import numpy as np
-from scipy.spatial import KDTree
+
+from geonodes import KDTree
 
 
-from geopy.maths.transformations import Transformations, axis_vector, normalize
-from geopy.maths.functions import Function, keyed
-from geopy.maths import distribs
+from geonodes.maths.transformations import Transformations, axis_vector, normalize
+from geonodes.maths.functions import Function, keyed
+from geonodes.maths import distribs
 
-from geopy.core.simulation import Action, Simulation
-from geopy.core.cloud import Cloud
-from geopy.core.mesh import Mesh
-from geopy.core.instances import Instances
-from geopy.core import blender
-from geopy.core import engine
+from geonodes.core.simulation import Action, Simulation
+from geonodes.core.cloud import Cloud
+from geonodes.core.mesh import Mesh
+from geonodes.core.instances import Instances
+from geonodes.core import blender
+from geonodes.core import engine
 
 PI  = np.pi
 TAU = np.pi*2
@@ -856,7 +857,7 @@ class Kinematics(Simulation):
     
     def set_key_frames(self, objects, frame, properties=['locations', 'scales', 'eulers']):
         
-        from geopy.core import blender
+        from geonodes.core import blender
         
         if len(objects) != self.size:
             raise Exception(f"bake_locations error: {len(objects)} are provided for {self.size} points!")
@@ -927,7 +928,7 @@ class Kinematics(Simulation):
     def to_mesh_object(self, spec, model=None, update=False, attributes=[], shade_smooth=True):
         
         import bpy
-        from geopy.core.meshbuilder import MeshBuilder
+        from geonodes.core.meshbuilder import MeshBuilder
         
         if model is not None and isinstance(model, (str, bpy.types.Object)):
             model = MeshBuilder.FromObject(model)
@@ -1003,7 +1004,7 @@ class Kinematics(Simulation):
             
     def to_cloud(self, spec, attributes=[]):
         
-        from geopy.core import blender
+        from geonodes.core import blender
         
         obj = blender.create_mesh_object(spec)
         mesh = obj.data
@@ -1204,8 +1205,8 @@ class Kinematics(Simulation):
     @staticmethod
     def anime_particles(points_list, model=None, name="Particles", dead_location=None, frame0=1, frame1=None, interpolation='LINEAR'):
         
-        from geopy.core.meshbuilder import MeshBuilder
-        from geopy.core.shapekeys import MeshShapeKeys
+        from geonodes.core.meshbuilder import MeshBuilder
+        from geonodes.core.shapekeys import MeshShapeKeys
         
         frames = len(points_list)
         if frames == 0:
@@ -1279,7 +1280,7 @@ class Kinematics(Simulation):
     
     def visu(self, size=10, resolution=100, z=0, speeds=0, scale=1., name="Field"):
         
-        from geopy.core.meshbuilder import MeshBuilder
+        from geonodes.core.meshbuilder import MeshBuilder
         
         x, y = np.meshgrid(np.linspace(-size/2, size/2, resolution), np.linspace(-size/2, size/2, resolution))
         locs = np.stack((x, y, np.ones_like(x)*z), axis=-1)
@@ -1505,10 +1506,10 @@ def demo_surface():
 def demo_wind():
     import numpy as np
     
-    from geopy.core.points import Points
-    from geopy.core.meshbuilder import MeshBuilder
+    from geonodes.core.points import Points
+    from geonodes.core.meshbuilder import MeshBuilder
     
-    from geopy.core import engine
+    from geonodes.core import engine
     
     engine.init()
     
@@ -1570,11 +1571,11 @@ def demo_centrifugal():
     
     import numpy as np
     
-    from geopy.core.points import Points
-    from geopy.core.meshbuilder import MeshBuilder
-    from geopy.core.curvebuilder import PolyBuilder
+    from geonodes.core.points import Points
+    from geonodes.core.meshbuilder import MeshBuilder
+    from geonodes.core.curvebuilder import PolyBuilder
     
-    from geopy.core import engine
+    from geonodes.core import engine
     
     engine.init()
     

@@ -21,11 +21,11 @@ import numpy as np
 
 import bpy
 
-from geopy.core import blender
-from geopy.core.cached_array import CachedArray
-from geopy.core.camera import Camera
-from geopy.core import attributes
-from geopy.core import engine
+from geonodes.core import blender
+from geonodes.core.cached_array import CachedArray
+from geonodes.core.camera import Camera
+from geonodes.core import attributes
+from geonodes.core import engine
 
 QUICK = True
  

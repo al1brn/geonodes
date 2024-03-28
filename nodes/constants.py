@@ -108,7 +108,8 @@ STANDARD_NODE_ATTRS = [
    'is_registered_node_type', 'label', 'location', 'mute', 'name', 'output_template', 'outputs',
    'parent', 'poll', 'poll_instance', 'rna_type', 'select', 'show_options', 'show_preview',
    'show_texture', 'socket_value_update', 'type', 'update', 'use_custom_color',
-   'width', 'width_hidden']
+   'width', 'width_hidden',
+   'index_switch_items', 'enum_definition']
 
 # ====================================================================================================
 # Gives the Blender socket type from a python type or a node socket type
@@ -133,6 +134,8 @@ TYPE_TO_SOCKET_BL_ID = {  # OLD = BLENDER_SOCKET_CLASSES
     'MATERIAL'      : 'NodeSocketMaterial',
     'OBJECT'        : 'NodeSocketObject',
     'TEXTURE'       : 'NodeSocketTexture',
+    
+    'MENU'          : 'NodeSocketMenu',
     }
 
 # ====================================================================================================
@@ -204,6 +207,8 @@ CUSTOM_INPUT_SOCKETS = [
     'GeometryNodeSimulationOutput',
     'GeometryNodeRepeatInput',
     'GeometryNodeRepeatOutput',
+    
+    'GeometryNodeMenuSwitch',
     ]
 
 CUSTOM_OUTPUT_SOCKETS = [
@@ -216,6 +221,19 @@ CUSTOM_OUTPUT_SOCKETS = [
     'GeometryNodeSimulationOutput',
     'GeometryNodeRepeatInput',
     'GeometryNodeRepeatOutput',
+    ]
+
+# ====================================================================================================
+# Nodes with virtual sockets (other input nodes and zones)
+
+HAS_VIRTUAL_SOCKETS = {
+    'GeometryNodeBake' : 'bake_items',
+    }
+
+# ---- Node with *args in header
+
+USE_ARGS_NODES = [
+    'GeometryNodeIndexSwitch',
     ]
 
 # Include all output sockets, even the hidden ones
@@ -265,6 +283,7 @@ BL_ID_SOCKET_TO_TYPE = {
              'NodeSocketVectorTranslation'  : 'VECTOR',
              'NodeSocketVectorXYZ'          : 'VECTOR',
              'NodeSocketVirtual'            : 'CUSTOM',
+             'NodeSocketMenu'               : 'MENU',
         },
     'ShaderNodeTree' : {
              'NodeSocketColor'              : 'RGBA',
@@ -516,8 +535,6 @@ TYPE_TO_SOCKET_CLASS_NAME_LEGACY = { # SOCKET_CLASS_NAMES
     'TEXTURE'    : 'TEXTURE', 
     'MATERIAL'   : 'MATERIAL', 
     }
-
-
 
 DATA_TYPE_TO_SOCKET_CLASS_NAME_OLD = { # DATA_TYPE_CLASSES
     'FLOAT'      : 'Float', 

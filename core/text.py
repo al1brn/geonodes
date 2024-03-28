@@ -16,9 +16,9 @@ Text.
 import bpy
 import mathutils
 
-from geopy.core import blender
-from geopy.core.curve import Curve
-from geopy.core.mesh import Mesh
+from geonodes.core import blender
+from geonodes.core.curve import Curve
+from geonodes.core.mesh import Mesh
 
 PROPERTIES = ['align_x', 'align_y', 'family', 'font', 'font_bold', 'font_bold_italic', 'font_italic',
               'shear', 'size', 'small_caps_scale', 'space_character', 'space_line', 'space_word',

@@ -22,12 +22,12 @@ from contextlib import contextmanager
 import numpy as np
 
 
-from geopy.maths.transformations import Transformations
+from geonodes.maths.transformations import Transformations
 
-from geopy.core import blender
-from geopy.core import topology
-from geopy.core.geometry import Geometry
-from geopy.core.domain import PointDomain, CornerDomain, FaceDomain
+from geonodes.core import blender
+from geonodes.core import topology
+from geonodes.core.geometry import Geometry
+from geonodes.core.domain import PointDomain, CornerDomain, FaceDomain
 
 
 DATA_TEMP_NAME = "GEOPY_TEMP"

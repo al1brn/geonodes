@@ -20,15 +20,15 @@ import numpy as np
 import bpy
 import mathutils
 
-from scipy.spatial.transform import RotationSpline
+from geonodes import RotationSpline
 
-from geopy.core import blender
-from geopy.core import topology
+from geonodes.core import blender
+from geonodes.core import topology
 
-from geopy.maths.transformations import Transformations, tracker
+from geonodes.maths.transformations import Transformations, tracker
 
-from geopy.core.geometry import Geometry
-from geopy.core.domain import ControlPointDomain, SplineDomain
+from geonodes.core.geometry import Geometry
+from geonodes.core.domain import ControlPointDomain, SplineDomain
 
 
 DATA_TEMP_NAME = "GEOPY_TEMP"
@@ -830,7 +830,7 @@ class Curve(Geometry):
     
     def to_mesh(self, profile=None, caps=True, t0=None, t1=1.):
     
-        from geopy.core.mesh import Mesh
+        from geonodes.core.mesh import Mesh
         
         # ---------------------------------------------------------------------------
         # Which profile for the section ?

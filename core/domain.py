@@ -18,13 +18,13 @@ Mesh, Curve, Instances and Cloud then manage the relationshp between the domains
 import bpy
 
 import numpy as np
-from scipy.spatial.transform import Rotation
+from geonodes import Rotation
 
-from geopy.maths.transformations import Transformations, axis_vector, axis_index
-from geopy.maths import splinesmaths
+from geonodes.maths.transformations import Transformations, axis_vector, axis_index
+from geonodes.maths import splinesmaths
 
-from geopy.core import blender
-from geopy.core.attributes import Attributes
+from geonodes.core import blender
+from geonodes.core.attributes import Attributes
 
 # =============================================================================================================================
 # A domain can own its attributes or be a selection of a True domain

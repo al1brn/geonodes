@@ -10,7 +10,7 @@ import bpy
 from mathutils import Vector, Color
 import numpy as np
 
-from geopy.core.treearrange import arrange
+from geonodes.core.treearrange import arrange
 
 
 # ====================================================================================================
