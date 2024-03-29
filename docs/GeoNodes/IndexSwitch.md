@@ -18,7 +18,7 @@ IndexSwitch(*args, index=None, data_type=None, node_label=None, node_color=None,
 > The total number of sockets is the sum of the number of items in args and in kwargs
 
 > [!CAUTION]
-> Keys of kwargs dict must be a socket number : `**_0**`, `**_1**`, `**_2**`, ... 
+> Keys of kwargs dict must be a socket number : '**_0**', '**_1**', '**_2**', ... 
 
 ## Example
 
