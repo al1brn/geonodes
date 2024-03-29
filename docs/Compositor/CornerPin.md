@@ -5,7 +5,7 @@
 
 
 ``` python
-CornerPin(image=None, upper_left=None, upper_right=None, lower_left=None, lower_right=None, tag_need_exec=None, node_label=None, node_color=None)
+CornerPin(image=None, upper_left=None, upper_right=None, lower_left=None, lower_right=None, tag_need_exec=None, node_label=None, node_color=None, **kwargs)
 ```
 ##### Arguments
 
@@ -23,9 +23,9 @@ No implementation in sockets
 ## Init
 
 ``` python
-def __init__(self, image=None, upper_left=None, upper_right=None, lower_left=None, lower_right=None, tag_need_exec=None, node_label=None, node_color=None):
+def __init__(self, image=None, upper_left=None, upper_right=None, lower_left=None, lower_right=None, tag_need_exec=None, node_label=None, node_color=None, **kwargs):
 
-    Node.__init__(self, 'CompositorNodeCornerPin', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'CompositorNodeCornerPin', node_label=node_label, node_color=node_color, **kwargs)
 
     self.tag_need_exec   = tag_need_exec
     self.image           = image

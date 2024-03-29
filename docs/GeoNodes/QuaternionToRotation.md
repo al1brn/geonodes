@@ -5,7 +5,7 @@
 
 
 ``` python
-QuaternionToRotation(w=None, x=None, y=None, z=None, node_label=None, node_color=None)
+QuaternionToRotation(w=None, x=None, y=None, z=None, node_label=None, node_color=None, **kwargs)
 ```
 ##### Arguments
 
@@ -21,9 +21,9 @@ QuaternionToRotation(w=None, x=None, y=None, z=None, node_label=None, node_color
 ## Init
 
 ``` python
-def __init__(self, w=None, x=None, y=None, z=None, node_label=None, node_color=None):
+def __init__(self, w=None, x=None, y=None, z=None, node_label=None, node_color=None, **kwargs):
 
-    Node.__init__(self, 'FunctionNodeQuaternionToRotation', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'FunctionNodeQuaternionToRotation', node_label=node_label, node_color=node_color, **kwargs)
 
     self.w               = w
     self.x               = x

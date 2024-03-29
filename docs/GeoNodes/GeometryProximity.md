@@ -5,12 +5,12 @@
 
 
 ``` python
-GeometryProximity(target=None, source_position=None, target_element='FACES', node_label=None, node_color=None)
+GeometryProximity(geometry=None, sample_position=None, target_element='FACES', node_label=None, node_color=None, **kwargs)
 ```
 ##### Arguments
 
-- target : None
-- source_position : None
+- geometry : None
+- sample_position : None
 - target_element : 'FACES'
 
 ## Implementation
@@ -20,11 +20,11 @@ GeometryProximity(target=None, source_position=None, target_element='FACES', nod
 ## Init
 
 ``` python
-def __init__(self, target=None, source_position=None, target_element='FACES', node_label=None, node_color=None):
+def __init__(self, geometry=None, sample_position=None, target_element='FACES', node_label=None, node_color=None, **kwargs):
 
-    Node.__init__(self, 'GeometryNodeProximity', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'GeometryNodeProximity', node_label=node_label, node_color=node_color, **kwargs)
 
     self.target_element  = target_element
-    self.target          = target
-    self.source_position = source_position
+    self.geometry        = geometry
+    self.sample_position = sample_position
 ```

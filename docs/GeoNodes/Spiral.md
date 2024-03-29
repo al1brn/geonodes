@@ -5,7 +5,7 @@
 
 
 ``` python
-Spiral(resolution=None, rotations=None, start_radius=None, end_radius=None, height=None, reverse=None, node_label=None, node_color=None)
+Spiral(resolution=None, rotations=None, start_radius=None, end_radius=None, height=None, reverse=None, node_label=None, node_color=None, **kwargs)
 ```
 ##### Arguments
 
@@ -23,9 +23,9 @@ Spiral(resolution=None, rotations=None, start_radius=None, end_radius=None, heig
 ## Init
 
 ``` python
-def __init__(self, resolution=None, rotations=None, start_radius=None, end_radius=None, height=None, reverse=None, node_label=None, node_color=None):
+def __init__(self, resolution=None, rotations=None, start_radius=None, end_radius=None, height=None, reverse=None, node_label=None, node_color=None, **kwargs):
 
-    Node.__init__(self, 'GeometryNodeCurveSpiral', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'GeometryNodeCurveSpiral', node_label=node_label, node_color=node_color, **kwargs)
 
     self.resolution      = resolution
     self.rotations       = rotations

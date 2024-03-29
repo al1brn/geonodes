@@ -5,7 +5,7 @@
 
 
 ``` python
-VectorMath(vector=None, vector_1=None, vector_2=None, scale=None, operation='ADD', node_label=None, node_color=None)
+VectorMath(vector=None, vector_1=None, vector_2=None, scale=None, operation='ADD', node_label=None, node_color=None, **kwargs)
 ```
 ##### Arguments
 
@@ -24,9 +24,9 @@ VectorMath(vector=None, vector_1=None, vector_2=None, scale=None, operation='ADD
 ## Init
 
 ``` python
-def __init__(self, vector=None, vector_1=None, vector_2=None, scale=None, operation='ADD', node_label=None, node_color=None):
+def __init__(self, vector=None, vector_1=None, vector_2=None, scale=None, operation='ADD', node_label=None, node_color=None, **kwargs):
 
-    Node.__init__(self, 'ShaderNodeVectorMath', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'ShaderNodeVectorMath', node_label=node_label, node_color=node_color, **kwargs)
 
     self.operation       = operation
     self.vector          = vector

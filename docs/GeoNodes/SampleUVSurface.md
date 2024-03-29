@@ -5,13 +5,13 @@
 
 
 ``` python
-SampleUVSurface(mesh=None, value=None, source_uv_map=None, sample_uv=None, data_type='FLOAT', node_label=None, node_color=None)
+SampleUVSurface(mesh=None, value=None, uv_map=None, sample_uv=None, data_type='FLOAT', node_label=None, node_color=None, **kwargs)
 ```
 ##### Arguments
 
 - mesh : None
 - value : None
-- source_uv_map : None
+- uv_map : None
 - sample_uv : None
 - data_type : 'FLOAT'
 
@@ -22,13 +22,13 @@ SampleUVSurface(mesh=None, value=None, source_uv_map=None, sample_uv=None, data_
 ## Init
 
 ``` python
-def __init__(self, mesh=None, value=None, source_uv_map=None, sample_uv=None, data_type='FLOAT', node_label=None, node_color=None):
+def __init__(self, mesh=None, value=None, uv_map=None, sample_uv=None, data_type='FLOAT', node_label=None, node_color=None, **kwargs):
 
-    Node.__init__(self, 'GeometryNodeSampleUVSurface', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'GeometryNodeSampleUVSurface', node_label=node_label, node_color=node_color, **kwargs)
 
     self.data_type       = data_type
     self.mesh            = mesh
     self.value           = value
-    self.source_uv_map   = source_uv_map
+    self.uv_map          = uv_map
     self.sample_uv       = sample_uv
 ```

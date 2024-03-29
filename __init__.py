@@ -13,13 +13,16 @@ from .core import blender
 from .core import engine
 
 version         = (2, 0, 0)
-blender_version = (4, 0, 2)
+blender_version = (4, 1, 0)
 
 # -----------------------------------------------------------------------------------------------------------------------------
 # Scipy is required
 
-import pip
-pip.main(['install', 'scipy', '--user'])
+try:
+    import scipy
+except:
+    import pip
+    pip.main(['install', 'scipy', '--user'])
 
 try:
     from scipy.spatial.transform import RotationSpline

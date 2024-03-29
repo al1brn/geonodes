@@ -5,7 +5,7 @@
 
 
 ``` python
-SeparateGeometry(geometry=None, selection=None, domain='POINT', node_label=None, node_color=None)
+SeparateGeometry(geometry=None, selection=None, domain='POINT', node_label=None, node_color=None, **kwargs)
 ```
 ##### Arguments
 
@@ -20,9 +20,9 @@ SeparateGeometry(geometry=None, selection=None, domain='POINT', node_label=None,
 ## Init
 
 ``` python
-def __init__(self, geometry=None, selection=None, domain='POINT', node_label=None, node_color=None):
+def __init__(self, geometry=None, selection=None, domain='POINT', node_label=None, node_color=None, **kwargs):
 
-    Node.__init__(self, 'GeometryNodeSeparateGeometry', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'GeometryNodeSeparateGeometry', node_label=node_label, node_color=node_color, **kwargs)
 
     self.domain          = domain
     self.geometry        = geometry

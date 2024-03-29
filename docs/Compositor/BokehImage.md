@@ -5,7 +5,7 @@
 
 
 ``` python
-BokehImage(angle=0.0, catadioptric=0.0, flaps=5, rounding=0.0, shift=0.0, tag_need_exec=None, node_label=None, node_color=None)
+BokehImage(angle=0.0, catadioptric=0.0, flaps=5, rounding=0.0, shift=0.0, tag_need_exec=None, node_label=None, node_color=None, **kwargs)
 ```
 ##### Arguments
 
@@ -23,9 +23,9 @@ No implementation in sockets
 ## Init
 
 ``` python
-def __init__(self, angle=0.0, catadioptric=0.0, flaps=5, rounding=0.0, shift=0.0, tag_need_exec=None, node_label=None, node_color=None):
+def __init__(self, angle=0.0, catadioptric=0.0, flaps=5, rounding=0.0, shift=0.0, tag_need_exec=None, node_label=None, node_color=None, **kwargs):
 
-    Node.__init__(self, 'CompositorNodeBokehImage', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'CompositorNodeBokehImage', node_label=node_label, node_color=node_color, **kwargs)
 
     self.angle           = angle
     self.catadioptric    = catadioptric

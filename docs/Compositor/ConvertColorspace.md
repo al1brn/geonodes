@@ -5,7 +5,7 @@
 
 
 ``` python
-ConvertColorspace(image=None, from_color_space='Linear Rec.709', tag_need_exec=None, to_color_space='Linear Rec.709', node_label=None, node_color=None)
+ConvertColorspace(image=None, from_color_space='Linear Rec.709', tag_need_exec=None, to_color_space='Linear Rec.709', node_label=None, node_color=None, **kwargs)
 ```
 ##### Arguments
 
@@ -21,9 +21,9 @@ No implementation in sockets
 ## Init
 
 ``` python
-def __init__(self, image=None, from_color_space='Linear Rec.709', tag_need_exec=None, to_color_space='Linear Rec.709', node_label=None, node_color=None):
+def __init__(self, image=None, from_color_space='Linear Rec.709', tag_need_exec=None, to_color_space='Linear Rec.709', node_label=None, node_color=None, **kwargs):
 
-    Node.__init__(self, 'CompositorNodeConvertColorSpace', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'CompositorNodeConvertColorSpace', node_label=node_label, node_color=node_color, **kwargs)
 
     self.from_color_space = from_color_space
     self.tag_need_exec   = tag_need_exec

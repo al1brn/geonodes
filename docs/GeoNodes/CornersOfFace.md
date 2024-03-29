@@ -5,7 +5,7 @@
 
 
 ``` python
-CornersOfFace(face_index=None, weights=None, sort_index=None, node_label=None, node_color=None)
+CornersOfFace(face_index=None, weights=None, sort_index=None, node_label=None, node_color=None, **kwargs)
 ```
 ##### Arguments
 
@@ -20,9 +20,9 @@ CornersOfFace(face_index=None, weights=None, sort_index=None, node_label=None, n
 ## Init
 
 ``` python
-def __init__(self, face_index=None, weights=None, sort_index=None, node_label=None, node_color=None):
+def __init__(self, face_index=None, weights=None, sort_index=None, node_label=None, node_color=None, **kwargs):
 
-    Node.__init__(self, 'GeometryNodeCornersOfFace', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'GeometryNodeCornersOfFace', node_label=node_label, node_color=node_color, **kwargs)
 
     self.face_index      = face_index
     self.weights         = weights

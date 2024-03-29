@@ -5,7 +5,7 @@
 
 
 ``` python
-ImageTexture(image=None, vector=None, frame=None, extension='REPEAT', interpolation='Linear', node_label=None, node_color=None)
+ImageTexture(image=None, vector=None, frame=None, extension='REPEAT', interpolation='Linear', node_label=None, node_color=None, **kwargs)
 ```
 ##### Arguments
 
@@ -22,9 +22,9 @@ ImageTexture(image=None, vector=None, frame=None, extension='REPEAT', interpolat
 ## Init
 
 ``` python
-def __init__(self, image=None, vector=None, frame=None, extension='REPEAT', interpolation='Linear', node_label=None, node_color=None):
+def __init__(self, image=None, vector=None, frame=None, extension='REPEAT', interpolation='Linear', node_label=None, node_color=None, **kwargs):
 
-    Node.__init__(self, 'GeometryNodeImageTexture', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'GeometryNodeImageTexture', node_label=node_label, node_color=node_color, **kwargs)
 
     self.extension       = extension
     self.interpolation   = interpolation

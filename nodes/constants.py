@@ -17,6 +17,7 @@ module : constants
 - dictionaries used to register the class created dynamically
 
 update : 2024/02/17
+update : 2024/03/29
 """
 
 from pprint import pprint
@@ -109,7 +110,7 @@ STANDARD_NODE_ATTRS = [
    'parent', 'poll', 'poll_instance', 'rna_type', 'select', 'show_options', 'show_preview',
    'show_texture', 'socket_value_update', 'type', 'update', 'use_custom_color',
    'width', 'width_hidden',
-   'index_switch_items', 'enum_definition']
+   'index_switch_items', 'enum_definition', 'bake_items', 'active_index', 'active_item']
 
 # ====================================================================================================
 # Gives the Blender socket type from a python type or a node socket type

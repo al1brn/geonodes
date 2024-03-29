@@ -5,7 +5,7 @@
 
 
 ``` python
-ImageTexture(vector=None, color_mapping=None, extension='REPEAT', image=None, image_user=None, interpolation='Linear', projection='FLAT', projection_blend=0.0, texture_mapping=None, node_label=None, node_color=None)
+ImageTexture(vector=None, color_mapping=None, extension='REPEAT', image=None, image_user=None, interpolation='Linear', projection='FLAT', projection_blend=0.0, texture_mapping=None, node_label=None, node_color=None, **kwargs)
 ```
 ##### Arguments
 
@@ -26,9 +26,9 @@ No implementation in sockets
 ## Init
 
 ``` python
-def __init__(self, vector=None, color_mapping=None, extension='REPEAT', image=None, image_user=None, interpolation='Linear', projection='FLAT', projection_blend=0.0, texture_mapping=None, node_label=None, node_color=None):
+def __init__(self, vector=None, color_mapping=None, extension='REPEAT', image=None, image_user=None, interpolation='Linear', projection='FLAT', projection_blend=0.0, texture_mapping=None, node_label=None, node_color=None, **kwargs):
 
-    Node.__init__(self, 'ShaderNodeTexImage', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'ShaderNodeTexImage', node_label=node_label, node_color=node_color, **kwargs)
 
     self.color_mapping   = color_mapping
     self.extension       = extension

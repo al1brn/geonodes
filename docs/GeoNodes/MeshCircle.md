@@ -5,7 +5,7 @@
 
 
 ``` python
-MeshCircle(vertices=None, radius=None, fill_type='NONE', node_label=None, node_color=None)
+MeshCircle(vertices=None, radius=None, fill_type='NONE', node_label=None, node_color=None, **kwargs)
 ```
 ##### Arguments
 
@@ -20,9 +20,9 @@ MeshCircle(vertices=None, radius=None, fill_type='NONE', node_label=None, node_c
 ## Init
 
 ``` python
-def __init__(self, vertices=None, radius=None, fill_type='NONE', node_label=None, node_color=None):
+def __init__(self, vertices=None, radius=None, fill_type='NONE', node_label=None, node_color=None, **kwargs):
 
-    Node.__init__(self, 'GeometryNodeMeshCircle', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'GeometryNodeMeshCircle', node_label=node_label, node_color=node_color, **kwargs)
 
     self.fill_type       = fill_type
     self.vertices        = vertices

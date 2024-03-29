@@ -32,6 +32,7 @@
 - [attribute_statistic](#attribute_statistic)
 - [attribute_statistic_float](#attribute_statistic_float)
 - [attribute_statistic_vector](#attribute_statistic_vector)
+- [bake](#bake)
 - [blur_attribute](#blur_attribute)
 - [bounding_box](#bounding_box)
 - [capture_attribute](#capture_attribute)
@@ -91,6 +92,7 @@
 - [geometry_to_instance](#geometry_to_instance)
 - [handle_type_selection](#handle_type_selection)
 - [index_of_nearest](#index_of_nearest)
+- [index_switch](#index_switch)
 - [instance_on_points](#instance_on_points)
 - [instances_to_points](#instances_to_points)
 - [interpolate_curves](#interpolate_curves)
@@ -192,9 +194,11 @@
 - [set_spline_resolution](#set_spline_resolution)
 - [set_spline_type](#set_spline_type)
 - [shortest_edge_paths](#shortest_edge_paths)
+- [sort_elements](#sort_elements)
 - [spline_length](#spline_length)
 - [spline_parameter](#spline_parameter)
 - [split_edges](#split_edges)
+- [split_to_instances](#split_to_instances)
 - [store_named_attribute](#store_named_attribute)
 - [store_named_boolean](#store_named_boolean)
 - [store_named_byte_color](#store_named_byte_color)
@@ -623,6 +627,7 @@ def normal(self):
 
 ##### Arguments
 
+- normal : None
 - selection : None
 
 #### Source code
@@ -928,8 +933,8 @@ def tilt(self, value):
 #### Source code
 
 ``` python
-def attribute_statistic(self, attribute=None, selection=None, data_type='FLOAT', domain='POINT', node_label=None, node_color=None):
-    node = self.tree.AttributeStatistic(geometry=self, attribute=attribute, selection=self._get_selection(selection), data_type=data_type, domain=self._get_domain(domain, ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color)
+def attribute_statistic(self, attribute=None, selection=None, data_type='FLOAT', domain='POINT', node_label=None, node_color=None, **kwargs):
+    node = self.tree.AttributeStatistic(geometry=self, attribute=attribute, selection=self._get_selection(selection), data_type=data_type, domain=self._get_domain(domain, ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color, **kwargs)
     return node
 ```
 ### attribute_statistic_float
@@ -951,8 +956,8 @@ def attribute_statistic(self, attribute=None, selection=None, data_type='FLOAT',
 #### Source code
 
 ``` python
-def attribute_statistic_float(self, attribute=None, selection=None, domain='POINT', node_label=None, node_color=None):
-    node = self.tree.AttributeStatistic(geometry=self, attribute=attribute, selection=self._get_selection(selection), data_type='FLOAT', domain=self._get_domain(domain, ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color)
+def attribute_statistic_float(self, attribute=None, selection=None, domain='POINT', node_label=None, node_color=None, **kwargs):
+    node = self.tree.AttributeStatistic(geometry=self, attribute=attribute, selection=self._get_selection(selection), data_type='FLOAT', domain=self._get_domain(domain, ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color, **kwargs)
     return node
 ```
 ### attribute_statistic_vector
@@ -974,9 +979,29 @@ def attribute_statistic_float(self, attribute=None, selection=None, domain='POIN
 #### Source code
 
 ``` python
-def attribute_statistic_vector(self, attribute=None, selection=None, domain='POINT', node_label=None, node_color=None):
-    node = self.tree.AttributeStatistic(geometry=self, attribute=attribute, selection=self._get_selection(selection), data_type='FLOAT_VECTOR', domain=self._get_domain(domain, ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color)
+def attribute_statistic_vector(self, attribute=None, selection=None, domain='POINT', node_label=None, node_color=None, **kwargs):
+    node = self.tree.AttributeStatistic(geometry=self, attribute=attribute, selection=self._get_selection(selection), data_type='FLOAT_VECTOR', domain=self._get_domain(domain, ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color, **kwargs)
     return node
+```
+### bake
+
+
+- node : [Bake](/docs/GeoNodes/Bake.md)
+- self : geometry
+- jump : No
+- return : geometry
+
+##### Arguments
+
+- node_label : None
+- node_color : None
+
+#### Source code
+
+``` python
+def bake(self, node_label=None, node_color=None, **kwargs):
+    node = self.tree.Bake(geometry=self, node_label=node_label, node_color=node_color, **kwargs)
+    return node.geometry
 ```
 ### blur_attribute
 
@@ -998,8 +1023,8 @@ def attribute_statistic_vector(self, attribute=None, selection=None, domain='POI
 #### Source code
 
 ``` python
-def blur_attribute(self, value=None, iterations=None, weight=None, data_type='FLOAT', node_label=None, node_color=None):
-    node = self.tree.BlurAttribute(value=value, iterations=iterations, weight=weight, data_type=data_type, node_label=node_label, node_color=node_color)
+def blur_attribute(self, value=None, iterations=None, weight=None, data_type='FLOAT', node_label=None, node_color=None, **kwargs):
+    node = self.tree.BlurAttribute(value=value, iterations=iterations, weight=weight, data_type=data_type, node_label=node_label, node_color=node_color, **kwargs)
     return node.value
 ```
 ### bounding_box
@@ -1018,8 +1043,8 @@ def blur_attribute(self, value=None, iterations=None, weight=None, data_type='FL
 #### Source code
 
 ``` python
-def bounding_box(self, node_label=None, node_color=None):
-    node = self.tree.BoundingBox(geometry=self, node_label=node_label, node_color=node_color)
+def bounding_box(self, node_label=None, node_color=None, **kwargs):
+    node = self.tree.BoundingBox(geometry=self, node_label=node_label, node_color=node_color, **kwargs)
     return node
 ```
 ### capture_attribute
@@ -1041,8 +1066,8 @@ def bounding_box(self, node_label=None, node_color=None):
 #### Source code
 
 ``` python
-def capture_attribute(self, value=None, data_type='FLOAT', domain='POINT', node_label=None, node_color=None):
-    node = self.tree.CaptureAttribute(geometry=self, value=value, data_type=data_type, domain=self._get_domain(domain, ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color)
+def capture_attribute(self, value=None, data_type='FLOAT', domain='POINT', node_label=None, node_color=None, **kwargs):
+    node = self.tree.CaptureAttribute(geometry=self, value=value, data_type=data_type, domain=self._get_domain(domain, ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color, **kwargs)
     self.jump(node.geometry)
     return node.attribute
 ```
@@ -1064,8 +1089,8 @@ def capture_attribute(self, value=None, data_type='FLOAT', domain='POINT', node_
 #### Source code
 
 ``` python
-def capture_boolean(self, value=None, domain='POINT', node_label=None, node_color=None):
-    node = self.tree.CaptureAttribute(geometry=self, value=value, data_type='BOOLEAN', domain=self._get_domain(domain, ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color)
+def capture_boolean(self, value=None, domain='POINT', node_label=None, node_color=None, **kwargs):
+    node = self.tree.CaptureAttribute(geometry=self, value=value, data_type='BOOLEAN', domain=self._get_domain(domain, ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color, **kwargs)
     self.jump(node.geometry)
     return node.attribute
 ```
@@ -1087,8 +1112,8 @@ def capture_boolean(self, value=None, domain='POINT', node_label=None, node_colo
 #### Source code
 
 ``` python
-def capture_color(self, value=None, domain='POINT', node_label=None, node_color=None):
-    node = self.tree.CaptureAttribute(geometry=self, value=value, data_type='FLOAT_COLOR', domain=self._get_domain(domain, ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color)
+def capture_color(self, value=None, domain='POINT', node_label=None, node_color=None, **kwargs):
+    node = self.tree.CaptureAttribute(geometry=self, value=value, data_type='FLOAT_COLOR', domain=self._get_domain(domain, ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color, **kwargs)
     self.jump(node.geometry)
     return node.attribute
 ```
@@ -1110,8 +1135,8 @@ def capture_color(self, value=None, domain='POINT', node_label=None, node_color=
 #### Source code
 
 ``` python
-def capture_float(self, value=None, domain='POINT', node_label=None, node_color=None):
-    node = self.tree.CaptureAttribute(geometry=self, value=value, data_type='FLOAT', domain=self._get_domain(domain, ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color)
+def capture_float(self, value=None, domain='POINT', node_label=None, node_color=None, **kwargs):
+    node = self.tree.CaptureAttribute(geometry=self, value=value, data_type='FLOAT', domain=self._get_domain(domain, ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color, **kwargs)
     self.jump(node.geometry)
     return node.attribute
 ```
@@ -1133,8 +1158,8 @@ def capture_float(self, value=None, domain='POINT', node_label=None, node_color=
 #### Source code
 
 ``` python
-def capture_int(self, value=None, domain='POINT', node_label=None, node_color=None):
-    node = self.tree.CaptureAttribute(geometry=self, value=value, data_type='INT', domain=self._get_domain(domain, ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color)
+def capture_int(self, value=None, domain='POINT', node_label=None, node_color=None, **kwargs):
+    node = self.tree.CaptureAttribute(geometry=self, value=value, data_type='INT', domain=self._get_domain(domain, ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color, **kwargs)
     self.jump(node.geometry)
     return node.attribute
 ```
@@ -1156,8 +1181,8 @@ def capture_int(self, value=None, domain='POINT', node_label=None, node_color=No
 #### Source code
 
 ``` python
-def capture_quaternion(self, value=None, domain='POINT', node_label=None, node_color=None):
-    node = self.tree.CaptureAttribute(geometry=self, value=value, data_type='QUATERNION', domain=self._get_domain(domain, ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color)
+def capture_quaternion(self, value=None, domain='POINT', node_label=None, node_color=None, **kwargs):
+    node = self.tree.CaptureAttribute(geometry=self, value=value, data_type='QUATERNION', domain=self._get_domain(domain, ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color, **kwargs)
     self.jump(node.geometry)
     return node.attribute
 ```
@@ -1179,8 +1204,8 @@ def capture_quaternion(self, value=None, domain='POINT', node_label=None, node_c
 #### Source code
 
 ``` python
-def capture_vector(self, value=None, domain='POINT', node_label=None, node_color=None):
-    node = self.tree.CaptureAttribute(geometry=self, value=value, data_type='FLOAT_VECTOR', domain=self._get_domain(domain, ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color)
+def capture_vector(self, value=None, domain='POINT', node_label=None, node_color=None, **kwargs):
+    node = self.tree.CaptureAttribute(geometry=self, value=value, data_type='FLOAT_VECTOR', domain=self._get_domain(domain, ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color, **kwargs)
     self.jump(node.geometry)
     return node.attribute
 ```
@@ -1200,8 +1225,8 @@ def capture_vector(self, value=None, domain='POINT', node_label=None, node_color
 #### Source code
 
 ``` python
-def convex_hull(self, node_label=None, node_color=None):
-    node = self.tree.ConvexHull(geometry=self, node_label=node_label, node_color=node_color)
+def convex_hull(self, node_label=None, node_color=None, **kwargs):
+    node = self.tree.ConvexHull(geometry=self, node_label=node_label, node_color=node_color, **kwargs)
     return node.convex_hull
 ```
 ### corners_of_edge
@@ -1223,8 +1248,8 @@ def convex_hull(self, node_label=None, node_color=None):
 #### Source code
 
 ``` python
-def corners_of_edge(self, edge_index=None, weights=None, sort_index=None, node_label=None, node_color=None):
-    node = self.tree.CornersOfEdge(edge_index=edge_index, weights=weights, sort_index=sort_index, node_label=node_label, node_color=node_color)
+def corners_of_edge(self, edge_index=None, weights=None, sort_index=None, node_label=None, node_color=None, **kwargs):
+    node = self.tree.CornersOfEdge(edge_index=edge_index, weights=weights, sort_index=sort_index, node_label=node_label, node_color=node_color, **kwargs)
     return node
 ```
 ### corners_of_face
@@ -1246,8 +1271,8 @@ def corners_of_edge(self, edge_index=None, weights=None, sort_index=None, node_l
 #### Source code
 
 ``` python
-def corners_of_face(self, face_index=None, weights=None, sort_index=None, node_label=None, node_color=None):
-    node = self.tree.CornersOfFace(face_index=face_index, weights=weights, sort_index=sort_index, node_label=node_label, node_color=node_color)
+def corners_of_face(self, face_index=None, weights=None, sort_index=None, node_label=None, node_color=None, **kwargs):
+    node = self.tree.CornersOfFace(face_index=face_index, weights=weights, sort_index=sort_index, node_label=node_label, node_color=node_color, **kwargs)
     return node
 ```
 ### corners_of_vertex
@@ -1269,8 +1294,8 @@ def corners_of_face(self, face_index=None, weights=None, sort_index=None, node_l
 #### Source code
 
 ``` python
-def corners_of_vertex(self, vertex_index=None, weights=None, sort_index=None, node_label=None, node_color=None):
-    node = self.tree.CornersOfVertex(vertex_index=vertex_index, weights=weights, sort_index=sort_index, node_label=node_label, node_color=node_color)
+def corners_of_vertex(self, vertex_index=None, weights=None, sort_index=None, node_label=None, node_color=None, **kwargs):
+    node = self.tree.CornersOfVertex(vertex_index=vertex_index, weights=weights, sort_index=sort_index, node_label=node_label, node_color=node_color, **kwargs)
     return node
 ```
 ### curve_handle_positions
@@ -1290,8 +1315,8 @@ def corners_of_vertex(self, vertex_index=None, weights=None, sort_index=None, no
 #### Source code
 
 ``` python
-def curve_handle_positions(self, relative=None, node_label=None, node_color=None):
-    node = self.tree.CurveHandlePositions(relative=relative, node_label=node_label, node_color=node_color)
+def curve_handle_positions(self, relative=None, node_label=None, node_color=None, **kwargs):
+    node = self.tree.CurveHandlePositions(relative=relative, node_label=node_label, node_color=node_color, **kwargs)
     return node
 ```
 ### curve_of_point
@@ -1311,8 +1336,8 @@ def curve_handle_positions(self, relative=None, node_label=None, node_color=None
 #### Source code
 
 ``` python
-def curve_of_point(self, point_index=None, node_label=None, node_color=None):
-    node = self.tree.CurveOfPoint(point_index=point_index, node_label=node_label, node_color=node_color)
+def curve_of_point(self, point_index=None, node_label=None, node_color=None, **kwargs):
+    node = self.tree.CurveOfPoint(point_index=point_index, node_label=node_label, node_color=node_color, **kwargs)
     return node
 ```
 ### curve_to_mesh
@@ -1333,8 +1358,8 @@ def curve_of_point(self, point_index=None, node_label=None, node_color=None):
 #### Source code
 
 ``` python
-def curve_to_mesh(self, profile_curve=None, fill_caps=None, node_label=None, node_color=None):
-    node = self.tree.CurveToMesh(curve=self, profile_curve=profile_curve, fill_caps=fill_caps, node_label=node_label, node_color=node_color)
+def curve_to_mesh(self, profile_curve=None, fill_caps=None, node_label=None, node_color=None, **kwargs):
+    node = self.tree.CurveToMesh(curve=self, profile_curve=profile_curve, fill_caps=fill_caps, node_label=node_label, node_color=node_color, **kwargs)
     return node.mesh
 ```
 ### curve_to_points
@@ -1356,8 +1381,8 @@ def curve_to_mesh(self, profile_curve=None, fill_caps=None, node_label=None, nod
 #### Source code
 
 ``` python
-def curve_to_points(self, count=None, length=None, mode='COUNT', node_label=None, node_color=None):
-    node = self.tree.CurveToPoints(curve=self, count=count, length=length, mode=mode, node_label=node_label, node_color=node_color)
+def curve_to_points(self, count=None, length=None, mode='COUNT', node_label=None, node_color=None, **kwargs):
+    node = self.tree.CurveToPoints(curve=self, count=count, length=length, mode=mode, node_label=node_label, node_color=node_color, **kwargs)
     return node
 ```
 ### deform_curves_on_surface
@@ -1376,8 +1401,8 @@ def curve_to_points(self, count=None, length=None, mode='COUNT', node_label=None
 #### Source code
 
 ``` python
-def deform_curves_on_surface(self, node_label=None, node_color=None):
-    node = self.tree.DeformCurvesOnSurface(curves=self, node_label=node_label, node_color=node_color)
+def deform_curves_on_surface(self, node_label=None, node_color=None, **kwargs):
+    node = self.tree.DeformCurvesOnSurface(curves=self, node_label=node_label, node_color=node_color, **kwargs)
     self.jump(node.curves)
     return self
 ```
@@ -1400,8 +1425,8 @@ def deform_curves_on_surface(self, node_label=None, node_color=None):
 #### Source code
 
 ``` python
-def delete_geometry(self, selection=None, domain='POINT', mode='ALL', node_label=None, node_color=None):
-    node = self.tree.DeleteGeometry(geometry=self, selection=self._get_selection(selection), domain=self._get_domain(domain, ('POINT', 'EDGE', 'FACE', 'CURVE', 'INSTANCE')), mode=mode, node_label=node_label, node_color=node_color)
+def delete_geometry(self, selection=None, domain='POINT', mode='ALL', node_label=None, node_color=None, **kwargs):
+    node = self.tree.DeleteGeometry(geometry=self, selection=self._get_selection(selection), domain=self._get_domain(domain, ('POINT', 'EDGE', 'FACE', 'CURVE', 'INSTANCE')), mode=mode, node_label=node_label, node_color=node_color, **kwargs)
     self.jump(node.geometry)
     return self
 ```
@@ -1426,8 +1451,8 @@ def delete_geometry(self, selection=None, domain='POINT', mode='ALL', node_label
 #### Source code
 
 ``` python
-def distribute_points_in_volume(self, density=None, seed=None, spacing=None, threshold=None, mode='DENSITY_RANDOM', node_label=None, node_color=None):
-    node = self.tree.DistributePointsInVolume(volume=self, density=density, seed=seed, spacing=spacing, threshold=threshold, mode=mode, node_label=node_label, node_color=node_color)
+def distribute_points_in_volume(self, density=None, seed=None, spacing=None, threshold=None, mode='DENSITY_RANDOM', node_label=None, node_color=None, **kwargs):
+    node = self.tree.DistributePointsInVolume(volume=self, density=density, seed=seed, spacing=spacing, threshold=threshold, mode=mode, node_label=node_label, node_color=node_color, **kwargs)
     return node.points
 ```
 ### distribute_points_on_faces
@@ -1454,8 +1479,8 @@ def distribute_points_in_volume(self, density=None, seed=None, spacing=None, thr
 #### Source code
 
 ``` python
-def distribute_points_on_faces(self, density=None, seed=None, distance_min=None, density_max=None, density_factor=None, selection=None, distribute_method='RANDOM', use_legacy_normal=False, node_label=None, node_color=None):
-    node = self.tree.DistributePointsOnFaces(mesh=self, density=density, seed=seed, distance_min=distance_min, density_max=density_max, density_factor=density_factor, selection=self._get_selection(selection), distribute_method=distribute_method, use_legacy_normal=use_legacy_normal, node_label=node_label, node_color=node_color)
+def distribute_points_on_faces(self, density=None, seed=None, distance_min=None, density_max=None, density_factor=None, selection=None, distribute_method='RANDOM', use_legacy_normal=False, node_label=None, node_color=None, **kwargs):
+    node = self.tree.DistributePointsOnFaces(mesh=self, density=density, seed=seed, distance_min=distance_min, density_max=density_max, density_factor=density_factor, selection=self._get_selection(selection), distribute_method=distribute_method, use_legacy_normal=use_legacy_normal, node_label=node_label, node_color=node_color, **kwargs)
     return node
 ```
 ### domain_size
@@ -1468,15 +1493,15 @@ def distribute_points_on_faces(self, density=None, seed=None, distance_min=None,
 
 ##### Arguments
 
-- component : 'MESH' in ('MESH', 'POINTCLOUD', 'CURVE', 'INSTANCES')
+- component : 'MESH' in ('MESH', 'POINTCLOUD', 'CURVE', 'INSTANCES', 'GREASEPENCIL')
 - node_label : None
 - node_color : None
 
 #### Source code
 
 ``` python
-def domain_size(self, component='MESH', node_label=None, node_color=None):
-    node = self.tree.DomainSize(geometry=self, component=self._get_domain(component, ('MESH', 'POINTCLOUD', 'CURVE', 'INSTANCES')), node_label=node_label, node_color=node_color)
+def domain_size(self, component='MESH', node_label=None, node_color=None, **kwargs):
+    node = self.tree.DomainSize(geometry=self, component=self._get_domain(component, ('MESH', 'POINTCLOUD', 'CURVE', 'INSTANCES', 'GREASEPENCIL')), node_label=node_label, node_color=node_color, **kwargs)
     return node
 ```
 ### dual_mesh
@@ -1496,8 +1521,8 @@ def domain_size(self, component='MESH', node_label=None, node_color=None):
 #### Source code
 
 ``` python
-def dual_mesh(self, keep_boundaries=None, node_label=None, node_color=None):
-    node = self.tree.DualMesh(mesh=self, keep_boundaries=keep_boundaries, node_label=node_label, node_color=node_color)
+def dual_mesh(self, keep_boundaries=None, node_label=None, node_color=None, **kwargs):
+    node = self.tree.DualMesh(mesh=self, keep_boundaries=keep_boundaries, node_label=node_label, node_color=node_color, **kwargs)
     return node.mesh
 ```
 ### duplicate_elements
@@ -1519,8 +1544,8 @@ def dual_mesh(self, keep_boundaries=None, node_label=None, node_color=None):
 #### Source code
 
 ``` python
-def duplicate_elements(self, amount=None, selection=None, domain='POINT', node_label=None, node_color=None):
-    node = self.tree.DuplicateElements(geometry=self, amount=amount, selection=self._get_selection(selection), domain=self._get_domain(domain, ('POINT', 'EDGE', 'FACE', 'SPLINE', 'INSTANCE')), node_label=node_label, node_color=node_color)
+def duplicate_elements(self, amount=None, selection=None, domain='POINT', node_label=None, node_color=None, **kwargs):
+    node = self.tree.DuplicateElements(geometry=self, amount=amount, selection=self._get_selection(selection), domain=self._get_domain(domain, ('POINT', 'EDGE', 'FACE', 'SPLINE', 'INSTANCE')), node_label=node_label, node_color=node_color, **kwargs)
     return node
 ```
 ### edge_angle
@@ -1539,8 +1564,8 @@ def duplicate_elements(self, amount=None, selection=None, domain='POINT', node_l
 #### Source code
 
 ``` python
-def edge_angle(self, node_label=None, node_color=None):
-    node = self.tree.EdgeAngle(node_label=node_label, node_color=node_color)
+def edge_angle(self, node_label=None, node_color=None, **kwargs):
+    node = self.tree.EdgeAngle(node_label=node_label, node_color=node_color, **kwargs)
     return node
 ```
 ### edge_paths_to_curves
@@ -1561,8 +1586,8 @@ def edge_angle(self, node_label=None, node_color=None):
 #### Source code
 
 ``` python
-def edge_paths_to_curves(self, start_vertices=None, next_vertex_index=None, node_label=None, node_color=None):
-    node = self.tree.EdgePathsToCurves(mesh=self, start_vertices=start_vertices, next_vertex_index=next_vertex_index, node_label=node_label, node_color=node_color)
+def edge_paths_to_curves(self, start_vertices=None, next_vertex_index=None, node_label=None, node_color=None, **kwargs):
+    node = self.tree.EdgePathsToCurves(mesh=self, start_vertices=start_vertices, next_vertex_index=next_vertex_index, node_label=node_label, node_color=node_color, **kwargs)
     return node.curves
 ```
 ### edge_paths_to_selection
@@ -1583,8 +1608,8 @@ def edge_paths_to_curves(self, start_vertices=None, next_vertex_index=None, node
 #### Source code
 
 ``` python
-def edge_paths_to_selection(self, start_vertices=None, next_vertex_index=None, node_label=None, node_color=None):
-    node = self.tree.EdgePathsToSelection(start_vertices=start_vertices, next_vertex_index=next_vertex_index, node_label=node_label, node_color=node_color)
+def edge_paths_to_selection(self, start_vertices=None, next_vertex_index=None, node_label=None, node_color=None, **kwargs):
+    node = self.tree.EdgePathsToSelection(start_vertices=start_vertices, next_vertex_index=next_vertex_index, node_label=node_label, node_color=node_color, **kwargs)
     return node.selection
 ```
 ### edge_vertices
@@ -1603,8 +1628,8 @@ def edge_paths_to_selection(self, start_vertices=None, next_vertex_index=None, n
 #### Source code
 
 ``` python
-def edge_vertices(self, node_label=None, node_color=None):
-    node = self.tree.EdgeVertices(node_label=node_label, node_color=node_color)
+def edge_vertices(self, node_label=None, node_color=None, **kwargs):
+    node = self.tree.EdgeVertices(node_label=node_label, node_color=node_color, **kwargs)
     return node
 ```
 ### edges_of_corner
@@ -1624,8 +1649,8 @@ def edge_vertices(self, node_label=None, node_color=None):
 #### Source code
 
 ``` python
-def edges_of_corner(self, corner_index=None, node_label=None, node_color=None):
-    node = self.tree.EdgesOfCorner(corner_index=corner_index, node_label=node_label, node_color=node_color)
+def edges_of_corner(self, corner_index=None, node_label=None, node_color=None, **kwargs):
+    node = self.tree.EdgesOfCorner(corner_index=corner_index, node_label=node_label, node_color=node_color, **kwargs)
     return node
 ```
 ### edges_of_vertex
@@ -1647,8 +1672,8 @@ def edges_of_corner(self, corner_index=None, node_label=None, node_color=None):
 #### Source code
 
 ``` python
-def edges_of_vertex(self, vertex_index=None, weights=None, sort_index=None, node_label=None, node_color=None):
-    node = self.tree.EdgesOfVertex(vertex_index=vertex_index, weights=weights, sort_index=sort_index, node_label=node_label, node_color=node_color)
+def edges_of_vertex(self, vertex_index=None, weights=None, sort_index=None, node_label=None, node_color=None, **kwargs):
+    node = self.tree.EdgesOfVertex(vertex_index=vertex_index, weights=weights, sort_index=sort_index, node_label=node_label, node_color=node_color, **kwargs)
     return node
 ```
 ### edges_to_face_groups
@@ -1668,8 +1693,8 @@ def edges_of_vertex(self, vertex_index=None, weights=None, sort_index=None, node
 #### Source code
 
 ``` python
-def edges_to_face_groups(self, boundary_edges=None, node_label=None, node_color=None):
-    node = self.tree.EdgesToFaceGroups(boundary_edges=boundary_edges, node_label=node_label, node_color=node_color)
+def edges_to_face_groups(self, boundary_edges=None, node_label=None, node_color=None, **kwargs):
+    node = self.tree.EdgesToFaceGroups(boundary_edges=boundary_edges, node_label=node_label, node_color=node_color, **kwargs)
     return node.face_group_id
 ```
 ### endpoint_selection
@@ -1690,8 +1715,8 @@ def edges_to_face_groups(self, boundary_edges=None, node_label=None, node_color=
 #### Source code
 
 ``` python
-def endpoint_selection(self, start_size=None, end_size=None, node_label=None, node_color=None):
-    node = self.tree.EndpointSelection(start_size=start_size, end_size=end_size, node_label=node_label, node_color=node_color)
+def endpoint_selection(self, start_size=None, end_size=None, node_label=None, node_color=None, **kwargs):
+    node = self.tree.EndpointSelection(start_size=start_size, end_size=end_size, node_label=node_label, node_color=node_color, **kwargs)
     return node.selection
 ```
 ### evaluate_at_index
@@ -1714,8 +1739,8 @@ def endpoint_selection(self, start_size=None, end_size=None, node_label=None, no
 #### Source code
 
 ``` python
-def evaluate_at_index(self, index=None, value=None, data_type='FLOAT', domain='POINT', node_label=None, node_color=None):
-    node = self.tree.EvaluateAtIndex(index=index, value=value, data_type=data_type, domain=self._get_domain(domain, ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color)
+def evaluate_at_index(self, index=None, value=None, data_type='FLOAT', domain='POINT', node_label=None, node_color=None, **kwargs):
+    node = self.tree.EvaluateAtIndex(index=index, value=value, data_type=data_type, domain=self._get_domain(domain, ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color, **kwargs)
     return node.value
 ```
 ### evaluate_at_index_boolean
@@ -1737,8 +1762,8 @@ def evaluate_at_index(self, index=None, value=None, data_type='FLOAT', domain='P
 #### Source code
 
 ``` python
-def evaluate_at_index_boolean(self, index=None, value=None, domain='POINT', node_label=None, node_color=None):
-    node = self.tree.EvaluateAtIndex(index=index, value=value, data_type='BOOLEAN', domain=self._get_domain(domain, ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color)
+def evaluate_at_index_boolean(self, index=None, value=None, domain='POINT', node_label=None, node_color=None, **kwargs):
+    node = self.tree.EvaluateAtIndex(index=index, value=value, data_type='BOOLEAN', domain=self._get_domain(domain, ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color, **kwargs)
     return node.value
 ```
 ### evaluate_at_index_color
@@ -1760,8 +1785,8 @@ def evaluate_at_index_boolean(self, index=None, value=None, domain='POINT', node
 #### Source code
 
 ``` python
-def evaluate_at_index_color(self, index=None, value=None, domain='POINT', node_label=None, node_color=None):
-    node = self.tree.EvaluateAtIndex(index=index, value=value, data_type='FLOAT_COLOR', domain=self._get_domain(domain, ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color)
+def evaluate_at_index_color(self, index=None, value=None, domain='POINT', node_label=None, node_color=None, **kwargs):
+    node = self.tree.EvaluateAtIndex(index=index, value=value, data_type='FLOAT_COLOR', domain=self._get_domain(domain, ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color, **kwargs)
     return node.value
 ```
 ### evaluate_at_index_float
@@ -1783,8 +1808,8 @@ def evaluate_at_index_color(self, index=None, value=None, domain='POINT', node_l
 #### Source code
 
 ``` python
-def evaluate_at_index_float(self, index=None, value=None, domain='POINT', node_label=None, node_color=None):
-    node = self.tree.EvaluateAtIndex(index=index, value=value, data_type='FLOAT', domain=self._get_domain(domain, ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color)
+def evaluate_at_index_float(self, index=None, value=None, domain='POINT', node_label=None, node_color=None, **kwargs):
+    node = self.tree.EvaluateAtIndex(index=index, value=value, data_type='FLOAT', domain=self._get_domain(domain, ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color, **kwargs)
     return node.value
 ```
 ### evaluate_at_index_int
@@ -1806,8 +1831,8 @@ def evaluate_at_index_float(self, index=None, value=None, domain='POINT', node_l
 #### Source code
 
 ``` python
-def evaluate_at_index_int(self, index=None, value=None, domain='POINT', node_label=None, node_color=None):
-    node = self.tree.EvaluateAtIndex(index=index, value=value, data_type='INT', domain=self._get_domain(domain, ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color)
+def evaluate_at_index_int(self, index=None, value=None, domain='POINT', node_label=None, node_color=None, **kwargs):
+    node = self.tree.EvaluateAtIndex(index=index, value=value, data_type='INT', domain=self._get_domain(domain, ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color, **kwargs)
     return node.value
 ```
 ### evaluate_at_index_quaternion
@@ -1829,8 +1854,8 @@ def evaluate_at_index_int(self, index=None, value=None, domain='POINT', node_lab
 #### Source code
 
 ``` python
-def evaluate_at_index_quaternion(self, index=None, value=None, domain='POINT', node_label=None, node_color=None):
-    node = self.tree.EvaluateAtIndex(index=index, value=value, data_type='QUATERNION', domain=self._get_domain(domain, ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color)
+def evaluate_at_index_quaternion(self, index=None, value=None, domain='POINT', node_label=None, node_color=None, **kwargs):
+    node = self.tree.EvaluateAtIndex(index=index, value=value, data_type='QUATERNION', domain=self._get_domain(domain, ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color, **kwargs)
     return node.value
 ```
 ### evaluate_at_index_vector
@@ -1852,8 +1877,8 @@ def evaluate_at_index_quaternion(self, index=None, value=None, domain='POINT', n
 #### Source code
 
 ``` python
-def evaluate_at_index_vector(self, index=None, value=None, domain='POINT', node_label=None, node_color=None):
-    node = self.tree.EvaluateAtIndex(index=index, value=value, data_type='FLOAT_VECTOR', domain=self._get_domain(domain, ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color)
+def evaluate_at_index_vector(self, index=None, value=None, domain='POINT', node_label=None, node_color=None, **kwargs):
+    node = self.tree.EvaluateAtIndex(index=index, value=value, data_type='FLOAT_VECTOR', domain=self._get_domain(domain, ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color, **kwargs)
     return node.value
 ```
 ### evaluate_on_domain
@@ -1875,8 +1900,8 @@ def evaluate_at_index_vector(self, index=None, value=None, domain='POINT', node_
 #### Source code
 
 ``` python
-def evaluate_on_domain(self, value=None, data_type='FLOAT', domain='POINT', node_label=None, node_color=None):
-    node = self.tree.EvaluateOnDomain(value=value, data_type=data_type, domain=self._get_domain(domain, ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color)
+def evaluate_on_domain(self, value=None, data_type='FLOAT', domain='POINT', node_label=None, node_color=None, **kwargs):
+    node = self.tree.EvaluateOnDomain(value=value, data_type=data_type, domain=self._get_domain(domain, ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color, **kwargs)
     return node.value
 ```
 ### evaluate_on_domain_boolean
@@ -1897,8 +1922,8 @@ def evaluate_on_domain(self, value=None, data_type='FLOAT', domain='POINT', node
 #### Source code
 
 ``` python
-def evaluate_on_domain_boolean(self, value=None, domain='POINT', node_label=None, node_color=None):
-    node = self.tree.EvaluateOnDomain(value=value, data_type='BOOLEAN', domain=self._get_domain(domain, ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color)
+def evaluate_on_domain_boolean(self, value=None, domain='POINT', node_label=None, node_color=None, **kwargs):
+    node = self.tree.EvaluateOnDomain(value=value, data_type='BOOLEAN', domain=self._get_domain(domain, ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color, **kwargs)
     return node.value
 ```
 ### evaluate_on_domain_color
@@ -1919,8 +1944,8 @@ def evaluate_on_domain_boolean(self, value=None, domain='POINT', node_label=None
 #### Source code
 
 ``` python
-def evaluate_on_domain_color(self, value=None, domain='POINT', node_label=None, node_color=None):
-    node = self.tree.EvaluateOnDomain(value=value, data_type='FLOAT_COLOR', domain=self._get_domain(domain, ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color)
+def evaluate_on_domain_color(self, value=None, domain='POINT', node_label=None, node_color=None, **kwargs):
+    node = self.tree.EvaluateOnDomain(value=value, data_type='FLOAT_COLOR', domain=self._get_domain(domain, ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color, **kwargs)
     return node.value
 ```
 ### evaluate_on_domain_float
@@ -1941,8 +1966,8 @@ def evaluate_on_domain_color(self, value=None, domain='POINT', node_label=None, 
 #### Source code
 
 ``` python
-def evaluate_on_domain_float(self, value=None, domain='POINT', node_label=None, node_color=None):
-    node = self.tree.EvaluateOnDomain(value=value, data_type='FLOAT', domain=self._get_domain(domain, ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color)
+def evaluate_on_domain_float(self, value=None, domain='POINT', node_label=None, node_color=None, **kwargs):
+    node = self.tree.EvaluateOnDomain(value=value, data_type='FLOAT', domain=self._get_domain(domain, ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color, **kwargs)
     return node.value
 ```
 ### evaluate_on_domain_int
@@ -1963,8 +1988,8 @@ def evaluate_on_domain_float(self, value=None, domain='POINT', node_label=None, 
 #### Source code
 
 ``` python
-def evaluate_on_domain_int(self, value=None, domain='POINT', node_label=None, node_color=None):
-    node = self.tree.EvaluateOnDomain(value=value, data_type='INT', domain=self._get_domain(domain, ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color)
+def evaluate_on_domain_int(self, value=None, domain='POINT', node_label=None, node_color=None, **kwargs):
+    node = self.tree.EvaluateOnDomain(value=value, data_type='INT', domain=self._get_domain(domain, ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color, **kwargs)
     return node.value
 ```
 ### evaluate_on_domain_quaternion
@@ -1985,8 +2010,8 @@ def evaluate_on_domain_int(self, value=None, domain='POINT', node_label=None, no
 #### Source code
 
 ``` python
-def evaluate_on_domain_quaternion(self, value=None, domain='POINT', node_label=None, node_color=None):
-    node = self.tree.EvaluateOnDomain(value=value, data_type='QUATERNION', domain=self._get_domain(domain, ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color)
+def evaluate_on_domain_quaternion(self, value=None, domain='POINT', node_label=None, node_color=None, **kwargs):
+    node = self.tree.EvaluateOnDomain(value=value, data_type='QUATERNION', domain=self._get_domain(domain, ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color, **kwargs)
     return node.value
 ```
 ### evaluate_on_domain_vector
@@ -2007,8 +2032,8 @@ def evaluate_on_domain_quaternion(self, value=None, domain='POINT', node_label=N
 #### Source code
 
 ``` python
-def evaluate_on_domain_vector(self, value=None, domain='POINT', node_label=None, node_color=None):
-    node = self.tree.EvaluateOnDomain(value=value, data_type='FLOAT_VECTOR', domain=self._get_domain(domain, ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color)
+def evaluate_on_domain_vector(self, value=None, domain='POINT', node_label=None, node_color=None, **kwargs):
+    node = self.tree.EvaluateOnDomain(value=value, data_type='FLOAT_VECTOR', domain=self._get_domain(domain, ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color, **kwargs)
     return node.value
 ```
 ### extrude_mesh
@@ -2032,8 +2057,8 @@ def evaluate_on_domain_vector(self, value=None, domain='POINT', node_label=None,
 #### Source code
 
 ``` python
-def extrude_mesh(self, offset=None, offset_scale=None, individual=None, selection=None, mode='FACES', node_label=None, node_color=None):
-    node = self.tree.ExtrudeMesh(mesh=self, offset=offset, offset_scale=offset_scale, individual=individual, selection=self._get_selection(selection), mode=self._get_domain(mode, ('VERTICES', 'EDGES', 'FACES')), node_label=node_label, node_color=node_color)
+def extrude_mesh(self, offset=None, offset_scale=None, individual=None, selection=None, mode='FACES', node_label=None, node_color=None, **kwargs):
+    node = self.tree.ExtrudeMesh(mesh=self, offset=offset, offset_scale=offset_scale, individual=individual, selection=self._get_selection(selection), mode=self._get_domain(mode, ('VERTICES', 'EDGES', 'FACES')), node_label=node_label, node_color=node_color, **kwargs)
     self.jump(node.mesh)
     return self
 ```
@@ -2054,8 +2079,8 @@ def extrude_mesh(self, offset=None, offset_scale=None, individual=None, selectio
 #### Source code
 
 ``` python
-def face_group_boundaries(self, face_group_id=None, node_label=None, node_color=None):
-    node = self.tree.FaceGroupBoundaries(face_group_id=face_group_id, node_label=node_label, node_color=node_color)
+def face_group_boundaries(self, face_group_id=None, node_label=None, node_color=None, **kwargs):
+    node = self.tree.FaceGroupBoundaries(face_group_id=face_group_id, node_label=node_label, node_color=node_color, **kwargs)
     return node.boundaries_edges
 ```
 ### face_neighbors
@@ -2074,8 +2099,8 @@ def face_group_boundaries(self, face_group_id=None, node_label=None, node_color=
 #### Source code
 
 ``` python
-def face_neighbors(self, node_label=None, node_color=None):
-    node = self.tree.FaceNeighbors(node_label=node_label, node_color=node_color)
+def face_neighbors(self, node_label=None, node_color=None, **kwargs):
+    node = self.tree.FaceNeighbors(node_label=node_label, node_color=node_color, **kwargs)
     return node
 ```
 ### face_of_corner
@@ -2095,8 +2120,8 @@ def face_neighbors(self, node_label=None, node_color=None):
 #### Source code
 
 ``` python
-def face_of_corner(self, corner_index=None, node_label=None, node_color=None):
-    node = self.tree.FaceOfCorner(corner_index=corner_index, node_label=node_label, node_color=node_color)
+def face_of_corner(self, corner_index=None, node_label=None, node_color=None, **kwargs):
+    node = self.tree.FaceOfCorner(corner_index=corner_index, node_label=node_label, node_color=node_color, **kwargs)
     return node
 ```
 ### fill_curve
@@ -2109,6 +2134,7 @@ def face_of_corner(self, corner_index=None, node_label=None, node_color=None):
 
 ##### Arguments
 
+- group_id : None
 - mode : 'TRIANGLES' in ('TRIANGLES', 'NGONS')
 - node_label : None
 - node_color : None
@@ -2116,8 +2142,8 @@ def face_of_corner(self, corner_index=None, node_label=None, node_color=None):
 #### Source code
 
 ``` python
-def fill_curve(self, mode='TRIANGLES', node_label=None, node_color=None):
-    node = self.tree.FillCurve(curve=self, mode=mode, node_label=node_label, node_color=node_color)
+def fill_curve(self, group_id=None, mode='TRIANGLES', node_label=None, node_color=None, **kwargs):
+    node = self.tree.FillCurve(curve=self, group_id=group_id, mode=mode, node_label=node_label, node_color=node_color, **kwargs)
     return node.mesh
 ```
 ### fillet_curve
@@ -2140,8 +2166,8 @@ def fill_curve(self, mode='TRIANGLES', node_label=None, node_color=None):
 #### Source code
 
 ``` python
-def fillet_curve(self, radius=None, limit_radius=None, count=None, mode='BEZIER', node_label=None, node_color=None):
-    node = self.tree.FilletCurve(curve=self, radius=radius, limit_radius=limit_radius, count=count, mode=mode, node_label=node_label, node_color=node_color)
+def fillet_curve(self, radius=None, limit_radius=None, count=None, mode='BEZIER', node_label=None, node_color=None, **kwargs):
+    node = self.tree.FilletCurve(curve=self, radius=radius, limit_radius=limit_radius, count=count, mode=mode, node_label=node_label, node_color=node_color, **kwargs)
     self.jump(node.curve)
     return self
 ```
@@ -2163,8 +2189,8 @@ def fillet_curve(self, radius=None, limit_radius=None, count=None, mode='BEZIER'
 #### Source code
 
 ``` python
-def fillet_curve_bezier(self, radius=None, limit_radius=None, node_label=None, node_color=None):
-    node = self.tree.FilletCurve(curve=self, radius=radius, limit_radius=limit_radius, mode='BEZIER', node_label=node_label, node_color=node_color)
+def fillet_curve_bezier(self, radius=None, limit_radius=None, node_label=None, node_color=None, **kwargs):
+    node = self.tree.FilletCurve(curve=self, radius=radius, limit_radius=limit_radius, mode='BEZIER', node_label=node_label, node_color=node_color, **kwargs)
     self.jump(node.curve)
     return self
 ```
@@ -2187,8 +2213,8 @@ def fillet_curve_bezier(self, radius=None, limit_radius=None, node_label=None, n
 #### Source code
 
 ``` python
-def fillet_curve_poly(self, count=None, radius=None, limit_radius=None, node_label=None, node_color=None):
-    node = self.tree.FilletCurve(curve=self, count=count, radius=radius, limit_radius=limit_radius, mode='POLY', node_label=node_label, node_color=node_color)
+def fillet_curve_poly(self, count=None, radius=None, limit_radius=None, node_label=None, node_color=None, **kwargs):
+    node = self.tree.FilletCurve(curve=self, count=count, radius=radius, limit_radius=limit_radius, mode='POLY', node_label=node_label, node_color=node_color, **kwargs)
     self.jump(node.curve)
     return self
 ```
@@ -2209,8 +2235,8 @@ def fillet_curve_poly(self, count=None, radius=None, limit_radius=None, node_lab
 #### Source code
 
 ``` python
-def flip_faces(self, selection=None, node_label=None, node_color=None):
-    node = self.tree.FlipFaces(mesh=self, selection=self._get_selection(selection), node_label=node_label, node_color=node_color)
+def flip_faces(self, selection=None, node_label=None, node_color=None, **kwargs):
+    node = self.tree.FlipFaces(mesh=self, selection=self._get_selection(selection), node_label=node_label, node_color=node_color, **kwargs)
     self.jump(node.mesh)
     return self
 ```
@@ -2224,7 +2250,8 @@ def flip_faces(self, selection=None, node_label=None, node_color=None):
 
 ##### Arguments
 
-- source_position : None
+- geometry : None
+- sample_position : None
 - target_element : 'FACES' in ('POINTS', 'EDGES', 'FACES')
 - node_label : None
 - node_color : None
@@ -2232,8 +2259,8 @@ def flip_faces(self, selection=None, node_label=None, node_color=None):
 #### Source code
 
 ``` python
-def geometry_proximity(self, source_position=None, target_element='FACES', node_label=None, node_color=None):
-    node = self.tree.GeometryProximity(target=self, source_position=source_position, target_element=self._get_domain(target_element, ('POINTS', 'EDGES', 'FACES')), node_label=node_label, node_color=node_color)
+def geometry_proximity(self, geometry=None, sample_position=None, target_element='FACES', node_label=None, node_color=None, **kwargs):
+    node = self.tree.GeometryProximity(geometry=geometry, sample_position=sample_position, target_element=self._get_domain(target_element, ('POINTS', 'EDGES', 'FACES')), node_label=node_label, node_color=node_color, **kwargs)
     return node
 ```
 ### geometry_to_instance
@@ -2253,8 +2280,8 @@ def geometry_proximity(self, source_position=None, target_element='FACES', node_
 #### Source code
 
 ``` python
-def geometry_to_instance(self, *args, node_label=None, node_color=None):
-    node = self.tree.GeometryToInstance(*args, geometry=self, node_label=node_label, node_color=node_color)
+def geometry_to_instance(self, *args, node_label=None, node_color=None, **kwargs):
+    node = self.tree.GeometryToInstance(*args, geometry=self, node_label=node_label, node_color=node_color, **kwargs)
     return node.instances
 ```
 ### handle_type_selection
@@ -2268,15 +2295,15 @@ def geometry_to_instance(self, *args, node_label=None, node_color=None):
 ##### Arguments
 
 - handle_type : 'AUTO' in ('FREE', 'AUTO', 'VECTOR', 'ALIGN')
-- mode : {'LEFT', 'RIGHT'}
+- mode : {'RIGHT', 'LEFT'}
 - node_label : None
 - node_color : None
 
 #### Source code
 
 ``` python
-def handle_type_selection(self, handle_type='AUTO', mode={'LEFT', 'RIGHT'}, node_label=None, node_color=None):
-    node = self.tree.HandleTypeSelection(handle_type=handle_type, mode=mode, node_label=node_label, node_color=node_color)
+def handle_type_selection(self, handle_type='AUTO', mode={'RIGHT', 'LEFT'}, node_label=None, node_color=None, **kwargs):
+    node = self.tree.HandleTypeSelection(handle_type=handle_type, mode=mode, node_label=node_label, node_color=node_color, **kwargs)
     return node.selection
 ```
 ### index_of_nearest
@@ -2297,9 +2324,31 @@ def handle_type_selection(self, handle_type='AUTO', mode={'LEFT', 'RIGHT'}, node
 #### Source code
 
 ``` python
-def index_of_nearest(self, position=None, group_id=None, node_label=None, node_color=None):
-    node = self.tree.IndexOfNearest(position=position, group_id=group_id, node_label=node_label, node_color=node_color)
+def index_of_nearest(self, position=None, group_id=None, node_label=None, node_color=None, **kwargs):
+    node = self.tree.IndexOfNearest(position=position, group_id=group_id, node_label=node_label, node_color=node_color, **kwargs)
     return node
+```
+### index_switch
+
+
+- node : [IndexSwitch](/docs/GeoNodes/IndexSwitch.md)
+- self : ARG0
+- jump : No
+- return : output
+
+##### Arguments
+
+- *args : 'ARG_NO_VALUE'
+- index : None
+- node_label : None
+- node_color : None
+
+#### Source code
+
+``` python
+def index_switch(self, *args, index=None, node_label=None, node_color=None, **kwargs):
+    node = self.tree.IndexSwitch(self, *args, index=index, data_type='GEOMETRY', node_label=node_label, node_color=node_color, **kwargs)
+    return node.output
 ```
 ### instance_on_points
 
@@ -2323,8 +2372,8 @@ def index_of_nearest(self, position=None, group_id=None, node_label=None, node_c
 #### Source code
 
 ``` python
-def instance_on_points(self, instance=None, pick_instance=None, instance_index=None, rotation=None, scale=None, selection=None, node_label=None, node_color=None):
-    node = self.tree.InstanceOnPoints(points=self, instance=instance, pick_instance=pick_instance, instance_index=instance_index, rotation=rotation, scale=scale, selection=self._get_selection(selection), node_label=node_label, node_color=node_color)
+def instance_on_points(self, instance=None, pick_instance=None, instance_index=None, rotation=None, scale=None, selection=None, node_label=None, node_color=None, **kwargs):
+    node = self.tree.InstanceOnPoints(points=self, instance=instance, pick_instance=pick_instance, instance_index=instance_index, rotation=rotation, scale=scale, selection=self._get_selection(selection), node_label=node_label, node_color=node_color, **kwargs)
     return node.instances
 ```
 ### instances_to_points
@@ -2346,8 +2395,8 @@ def instance_on_points(self, instance=None, pick_instance=None, instance_index=N
 #### Source code
 
 ``` python
-def instances_to_points(self, position=None, radius=None, selection=None, node_label=None, node_color=None):
-    node = self.tree.InstancesToPoints(instances=self, position=position, radius=radius, selection=self._get_selection(selection), node_label=node_label, node_color=node_color)
+def instances_to_points(self, position=None, radius=None, selection=None, node_label=None, node_color=None, **kwargs):
+    node = self.tree.InstancesToPoints(instances=self, position=position, radius=radius, selection=self._get_selection(selection), node_label=node_label, node_color=node_color, **kwargs)
     return node.points
 ```
 ### interpolate_curves
@@ -2372,8 +2421,8 @@ def instances_to_points(self, position=None, radius=None, selection=None, node_l
 #### Source code
 
 ``` python
-def interpolate_curves(self, guide_up=None, guide_group_id=None, points=None, point_up=None, point_group_id=None, max_neighbors=None, node_label=None, node_color=None):
-    node = self.tree.InterpolateCurves(guide_curves=self, guide_up=guide_up, guide_group_id=guide_group_id, points=points, point_up=point_up, point_group_id=point_group_id, max_neighbors=max_neighbors, node_label=node_label, node_color=node_color)
+def interpolate_curves(self, guide_up=None, guide_group_id=None, points=None, point_up=None, point_group_id=None, max_neighbors=None, node_label=None, node_color=None, **kwargs):
+    node = self.tree.InterpolateCurves(guide_curves=self, guide_up=guide_up, guide_group_id=guide_group_id, points=points, point_up=point_up, point_group_id=point_group_id, max_neighbors=max_neighbors, node_label=node_label, node_color=node_color, **kwargs)
     return node
 ```
 ### is_face_planar
@@ -2393,8 +2442,8 @@ def interpolate_curves(self, guide_up=None, guide_group_id=None, points=None, po
 #### Source code
 
 ``` python
-def is_face_planar(self, threshold=None, node_label=None, node_color=None):
-    node = self.tree.IsFacePlanar(threshold=threshold, node_label=node_label, node_color=node_color)
+def is_face_planar(self, threshold=None, node_label=None, node_color=None, **kwargs):
+    node = self.tree.IsFacePlanar(threshold=threshold, node_label=node_label, node_color=node_color, **kwargs)
     return node.planar
 ```
 ### join_geometry
@@ -2414,8 +2463,8 @@ def is_face_planar(self, threshold=None, node_label=None, node_color=None):
 #### Source code
 
 ``` python
-def join_geometry(self, *args, node_label=None, node_color=None):
-    node = self.tree.JoinGeometry(*args, geometry=self, node_label=node_label, node_color=node_color)
+def join_geometry(self, *args, node_label=None, node_color=None, **kwargs):
+    node = self.tree.JoinGeometry(*args, geometry=self, node_label=node_label, node_color=node_color, **kwargs)
     self.jump(node.geometry)
     return self
 ```
@@ -2436,8 +2485,8 @@ def join_geometry(self, *args, node_label=None, node_color=None):
 #### Source code
 
 ``` python
-def left_handle_type_selection(self, handle_type='AUTO', node_label=None, node_color=None):
-    node = self.tree.HandleTypeSelection(handle_type=handle_type, mode={'LEFT'}, node_label=node_label, node_color=node_color)
+def left_handle_type_selection(self, handle_type='AUTO', node_label=None, node_color=None, **kwargs):
+    node = self.tree.HandleTypeSelection(handle_type=handle_type, mode={'LEFT'}, node_label=node_label, node_color=node_color, **kwargs)
     return node.selection
 ```
 ### merge_by_distance
@@ -2459,8 +2508,8 @@ def left_handle_type_selection(self, handle_type='AUTO', node_label=None, node_c
 #### Source code
 
 ``` python
-def merge_by_distance(self, distance=None, selection=None, mode='ALL', node_label=None, node_color=None):
-    node = self.tree.MergeByDistance(geometry=self, distance=distance, selection=self._get_selection(selection), mode=mode, node_label=node_label, node_color=node_color)
+def merge_by_distance(self, distance=None, selection=None, mode='ALL', node_label=None, node_color=None, **kwargs):
+    node = self.tree.MergeByDistance(geometry=self, distance=distance, selection=self._get_selection(selection), mode=mode, node_label=node_label, node_color=node_color, **kwargs)
     self.jump(node.geometry)
     return self
 ```
@@ -2484,8 +2533,8 @@ def merge_by_distance(self, distance=None, selection=None, mode='ALL', node_labe
 #### Source code
 
 ``` python
-def mesh_difference(self, *args, mesh_2=None, self_intersection=None, hole_tolerant=None, node_label=None, node_color=None):
-    node = self.tree.MeshBoolean(*args, mesh_1=self, mesh_2=mesh_2, self_intersection=self_intersection, hole_tolerant=hole_tolerant, operation='DIFFERENCE', node_label=node_label, node_color=node_color)
+def mesh_difference(self, *args, mesh_2=None, self_intersection=None, hole_tolerant=None, node_label=None, node_color=None, **kwargs):
+    node = self.tree.MeshBoolean(*args, mesh_1=self, mesh_2=mesh_2, self_intersection=self_intersection, hole_tolerant=hole_tolerant, operation='DIFFERENCE', node_label=node_label, node_color=node_color, **kwargs)
     return node.mesh
 ```
 ### mesh_intersect
@@ -2507,8 +2556,8 @@ def mesh_difference(self, *args, mesh_2=None, self_intersection=None, hole_toler
 #### Source code
 
 ``` python
-def mesh_intersect(self, *args, self_intersection=None, hole_tolerant=None, node_label=None, node_color=None):
-    node = self.tree.MeshBoolean(*args, mesh_2=self, self_intersection=self_intersection, hole_tolerant=hole_tolerant, operation='INTERSECT', node_label=node_label, node_color=node_color)
+def mesh_intersect(self, *args, self_intersection=None, hole_tolerant=None, node_label=None, node_color=None, **kwargs):
+    node = self.tree.MeshBoolean(*args, mesh_2=self, self_intersection=self_intersection, hole_tolerant=hole_tolerant, operation='INTERSECT', node_label=node_label, node_color=node_color, **kwargs)
     return node.mesh
 ```
 ### mesh_island
@@ -2527,8 +2576,8 @@ def mesh_intersect(self, *args, self_intersection=None, hole_tolerant=None, node
 #### Source code
 
 ``` python
-def mesh_island(self, node_label=None, node_color=None):
-    node = self.tree.MeshIsland(node_label=node_label, node_color=node_color)
+def mesh_island(self, node_label=None, node_color=None, **kwargs):
+    node = self.tree.MeshIsland(node_label=node_label, node_color=node_color, **kwargs)
     return node
 ```
 ### mesh_to_curve
@@ -2548,8 +2597,8 @@ def mesh_island(self, node_label=None, node_color=None):
 #### Source code
 
 ``` python
-def mesh_to_curve(self, selection=None, node_label=None, node_color=None):
-    node = self.tree.MeshToCurve(mesh=self, selection=self._get_selection(selection), node_label=node_label, node_color=node_color)
+def mesh_to_curve(self, selection=None, node_label=None, node_color=None, **kwargs):
+    node = self.tree.MeshToCurve(mesh=self, selection=self._get_selection(selection), node_label=node_label, node_color=node_color, **kwargs)
     return node.curve
 ```
 ### mesh_to_points
@@ -2572,8 +2621,8 @@ def mesh_to_curve(self, selection=None, node_label=None, node_color=None):
 #### Source code
 
 ``` python
-def mesh_to_points(self, position=None, radius=None, selection=None, mode='VERTICES', node_label=None, node_color=None):
-    node = self.tree.MeshToPoints(mesh=self, position=position, radius=radius, selection=self._get_selection(selection), mode=self._get_domain(mode, ('VERTICES', 'EDGES', 'FACES', 'CORNERS')), node_label=node_label, node_color=node_color)
+def mesh_to_points(self, position=None, radius=None, selection=None, mode='VERTICES', node_label=None, node_color=None, **kwargs):
+    node = self.tree.MeshToPoints(mesh=self, position=position, radius=radius, selection=self._get_selection(selection), mode=self._get_domain(mode, ('VERTICES', 'EDGES', 'FACES', 'CORNERS')), node_label=node_label, node_color=node_color, **kwargs)
     return node.points
 ```
 ### mesh_to_volume
@@ -2597,8 +2646,8 @@ def mesh_to_points(self, position=None, radius=None, selection=None, mode='VERTI
 #### Source code
 
 ``` python
-def mesh_to_volume(self, density=None, voxel_amount=None, interior_band_width=None, voxel_size=None, resolution_mode='VOXEL_AMOUNT', node_label=None, node_color=None):
-    node = self.tree.MeshToVolume(mesh=self, density=density, voxel_amount=voxel_amount, interior_band_width=interior_band_width, voxel_size=voxel_size, resolution_mode=resolution_mode, node_label=node_label, node_color=node_color)
+def mesh_to_volume(self, density=None, voxel_amount=None, interior_band_width=None, voxel_size=None, resolution_mode='VOXEL_AMOUNT', node_label=None, node_color=None, **kwargs):
+    node = self.tree.MeshToVolume(mesh=self, density=density, voxel_amount=voxel_amount, interior_band_width=interior_band_width, voxel_size=voxel_size, resolution_mode=resolution_mode, node_label=node_label, node_color=node_color, **kwargs)
     return node.volume
 ```
 ### mesh_union
@@ -2620,8 +2669,8 @@ def mesh_to_volume(self, density=None, voxel_amount=None, interior_band_width=No
 #### Source code
 
 ``` python
-def mesh_union(self, *args, self_intersection=None, hole_tolerant=None, node_label=None, node_color=None):
-    node = self.tree.MeshBoolean(*args, mesh_2=self, self_intersection=self_intersection, hole_tolerant=hole_tolerant, operation='UNION', node_label=node_label, node_color=node_color)
+def mesh_union(self, *args, self_intersection=None, hole_tolerant=None, node_label=None, node_color=None, **kwargs):
+    node = self.tree.MeshBoolean(*args, mesh_2=self, self_intersection=self_intersection, hole_tolerant=hole_tolerant, operation='UNION', node_label=node_label, node_color=node_color, **kwargs)
     return node.mesh
 ```
 ### named_attribute
@@ -2642,8 +2691,8 @@ def mesh_union(self, *args, self_intersection=None, hole_tolerant=None, node_lab
 #### Source code
 
 ``` python
-def named_attribute(self, name=None, data_type='FLOAT', node_label=None, node_color=None):
-    node = self.tree.NamedAttribute(name=name, data_type=data_type, node_label=node_label, node_color=node_color)
+def named_attribute(self, name=None, data_type='FLOAT', node_label=None, node_color=None, **kwargs):
+    node = self.tree.NamedAttribute(name=name, data_type=data_type, node_label=node_label, node_color=node_color, **kwargs)
     return node.attribute
 ```
 ### named_boolean
@@ -2663,8 +2712,8 @@ def named_attribute(self, name=None, data_type='FLOAT', node_label=None, node_co
 #### Source code
 
 ``` python
-def named_boolean(self, name=None, node_label=None, node_color=None):
-    node = self.tree.NamedAttribute(name=name, data_type='BOOLEAN', node_label=node_label, node_color=node_color)
+def named_boolean(self, name=None, node_label=None, node_color=None, **kwargs):
+    node = self.tree.NamedAttribute(name=name, data_type='BOOLEAN', node_label=node_label, node_color=node_color, **kwargs)
     return node.attribute
 ```
 ### named_color
@@ -2684,8 +2733,8 @@ def named_boolean(self, name=None, node_label=None, node_color=None):
 #### Source code
 
 ``` python
-def named_color(self, name=None, node_label=None, node_color=None):
-    node = self.tree.NamedAttribute(name=name, data_type='FLOAT_COLOR', node_label=node_label, node_color=node_color)
+def named_color(self, name=None, node_label=None, node_color=None, **kwargs):
+    node = self.tree.NamedAttribute(name=name, data_type='FLOAT_COLOR', node_label=node_label, node_color=node_color, **kwargs)
     return node.attribute
 ```
 ### named_float
@@ -2705,8 +2754,8 @@ def named_color(self, name=None, node_label=None, node_color=None):
 #### Source code
 
 ``` python
-def named_float(self, name=None, node_label=None, node_color=None):
-    node = self.tree.NamedAttribute(name=name, data_type='FLOAT', node_label=node_label, node_color=node_color)
+def named_float(self, name=None, node_label=None, node_color=None, **kwargs):
+    node = self.tree.NamedAttribute(name=name, data_type='FLOAT', node_label=node_label, node_color=node_color, **kwargs)
     return node.attribute
 ```
 ### named_int
@@ -2726,8 +2775,8 @@ def named_float(self, name=None, node_label=None, node_color=None):
 #### Source code
 
 ``` python
-def named_int(self, name=None, node_label=None, node_color=None):
-    node = self.tree.NamedAttribute(name=name, data_type='INT', node_label=node_label, node_color=node_color)
+def named_int(self, name=None, node_label=None, node_color=None, **kwargs):
+    node = self.tree.NamedAttribute(name=name, data_type='INT', node_label=node_label, node_color=node_color, **kwargs)
     return node.attribute
 ```
 ### named_quaternion
@@ -2747,8 +2796,8 @@ def named_int(self, name=None, node_label=None, node_color=None):
 #### Source code
 
 ``` python
-def named_quaternion(self, name=None, node_label=None, node_color=None):
-    node = self.tree.NamedAttribute(name=name, data_type='QUATERNION', node_label=node_label, node_color=node_color)
+def named_quaternion(self, name=None, node_label=None, node_color=None, **kwargs):
+    node = self.tree.NamedAttribute(name=name, data_type='QUATERNION', node_label=node_label, node_color=node_color, **kwargs)
     return node.attribute
 ```
 ### named_vector
@@ -2768,8 +2817,8 @@ def named_quaternion(self, name=None, node_label=None, node_color=None):
 #### Source code
 
 ``` python
-def named_vector(self, name=None, node_label=None, node_color=None):
-    node = self.tree.NamedAttribute(name=name, data_type='FLOAT_VECTOR', node_label=node_label, node_color=node_color)
+def named_vector(self, name=None, node_label=None, node_color=None, **kwargs):
+    node = self.tree.NamedAttribute(name=name, data_type='FLOAT_VECTOR', node_label=node_label, node_color=node_color, **kwargs)
     return node.attribute
 ```
 ### offset_corner_in_face
@@ -2790,8 +2839,8 @@ def named_vector(self, name=None, node_label=None, node_color=None):
 #### Source code
 
 ``` python
-def offset_corner_in_face(self, corner_index=None, offset=None, node_label=None, node_color=None):
-    node = self.tree.OffsetCornerInFace(corner_index=corner_index, offset=offset, node_label=node_label, node_color=node_color)
+def offset_corner_in_face(self, corner_index=None, offset=None, node_label=None, node_color=None, **kwargs):
+    node = self.tree.OffsetCornerInFace(corner_index=corner_index, offset=offset, node_label=node_label, node_color=node_color, **kwargs)
     return node.corner_index
 ```
 ### offset_point_in_curve
@@ -2812,8 +2861,8 @@ def offset_corner_in_face(self, corner_index=None, offset=None, node_label=None,
 #### Source code
 
 ``` python
-def offset_point_in_curve(self, point_index=None, offset=None, node_label=None, node_color=None):
-    node = self.tree.OffsetPointInCurve(point_index=point_index, offset=offset, node_label=node_label, node_color=node_color)
+def offset_point_in_curve(self, point_index=None, offset=None, node_label=None, node_color=None, **kwargs):
+    node = self.tree.OffsetPointInCurve(point_index=point_index, offset=offset, node_label=node_label, node_color=node_color, **kwargs)
     return node
 ```
 ### points_of_curve
@@ -2835,8 +2884,8 @@ def offset_point_in_curve(self, point_index=None, offset=None, node_label=None, 
 #### Source code
 
 ``` python
-def points_of_curve(self, curve_index=None, weights=None, sort_index=None, node_label=None, node_color=None):
-    node = self.tree.PointsOfCurve(curve_index=curve_index, weights=weights, sort_index=sort_index, node_label=node_label, node_color=node_color)
+def points_of_curve(self, curve_index=None, weights=None, sort_index=None, node_label=None, node_color=None, **kwargs):
+    node = self.tree.PointsOfCurve(curve_index=curve_index, weights=weights, sort_index=sort_index, node_label=node_label, node_color=node_color, **kwargs)
     return node
 ```
 ### points_to_curves
@@ -2857,8 +2906,8 @@ def points_of_curve(self, curve_index=None, weights=None, sort_index=None, node_
 #### Source code
 
 ``` python
-def points_to_curves(self, curve_group_id=None, weight=None, node_label=None, node_color=None):
-    node = self.tree.PointsToCurves(points=self, curve_group_id=curve_group_id, weight=weight, node_label=node_label, node_color=node_color)
+def points_to_curves(self, curve_group_id=None, weight=None, node_label=None, node_color=None, **kwargs):
+    node = self.tree.PointsToCurves(points=self, curve_group_id=curve_group_id, weight=weight, node_label=node_label, node_color=node_color, **kwargs)
     return node.curves
 ```
 ### points_to_vertices
@@ -2878,8 +2927,8 @@ def points_to_curves(self, curve_group_id=None, weight=None, node_label=None, no
 #### Source code
 
 ``` python
-def points_to_vertices(self, selection=None, node_label=None, node_color=None):
-    node = self.tree.PointsToVertices(points=self, selection=self._get_selection(selection), node_label=node_label, node_color=node_color)
+def points_to_vertices(self, selection=None, node_label=None, node_color=None, **kwargs):
+    node = self.tree.PointsToVertices(points=self, selection=self._get_selection(selection), node_label=node_label, node_color=node_color, **kwargs)
     return node.mesh
 ```
 ### points_to_volume
@@ -2903,8 +2952,8 @@ def points_to_vertices(self, selection=None, node_label=None, node_color=None):
 #### Source code
 
 ``` python
-def points_to_volume(self, density=None, voxel_amount=None, radius=None, voxel_size=None, resolution_mode='VOXEL_AMOUNT', node_label=None, node_color=None):
-    node = self.tree.PointsToVolume(points=self, density=density, voxel_amount=voxel_amount, radius=radius, voxel_size=voxel_size, resolution_mode=resolution_mode, node_label=node_label, node_color=node_color)
+def points_to_volume(self, density=None, voxel_amount=None, radius=None, voxel_size=None, resolution_mode='VOXEL_AMOUNT', node_label=None, node_color=None, **kwargs):
+    node = self.tree.PointsToVolume(points=self, density=density, voxel_amount=voxel_amount, radius=radius, voxel_size=voxel_size, resolution_mode=resolution_mode, node_label=node_label, node_color=node_color, **kwargs)
     return node.volume
 ```
 ### raycast
@@ -2929,8 +2978,8 @@ def points_to_volume(self, density=None, voxel_amount=None, radius=None, voxel_s
 #### Source code
 
 ``` python
-def raycast(self, attribute=None, source_position=None, ray_direction=None, ray_length=None, data_type='FLOAT', mapping='INTERPOLATED', node_label=None, node_color=None):
-    node = self.tree.Raycast(target_geometry=self, attribute=attribute, source_position=source_position, ray_direction=ray_direction, ray_length=ray_length, data_type=data_type, mapping=mapping, node_label=node_label, node_color=node_color)
+def raycast(self, attribute=None, source_position=None, ray_direction=None, ray_length=None, data_type='FLOAT', mapping='INTERPOLATED', node_label=None, node_color=None, **kwargs):
+    node = self.tree.Raycast(target_geometry=self, attribute=attribute, source_position=source_position, ray_direction=ray_direction, ray_length=ray_length, data_type=data_type, mapping=mapping, node_label=node_label, node_color=node_color, **kwargs)
     return node
 ```
 ### raycast_boolean
@@ -2954,8 +3003,8 @@ def raycast(self, attribute=None, source_position=None, ray_direction=None, ray_
 #### Source code
 
 ``` python
-def raycast_boolean(self, attribute=None, source_position=None, ray_direction=None, ray_length=None, mapping='INTERPOLATED', node_label=None, node_color=None):
-    node = self.tree.Raycast(target_geometry=self, attribute=attribute, source_position=source_position, ray_direction=ray_direction, ray_length=ray_length, data_type='BOOLEAN', mapping=mapping, node_label=node_label, node_color=node_color)
+def raycast_boolean(self, attribute=None, source_position=None, ray_direction=None, ray_length=None, mapping='INTERPOLATED', node_label=None, node_color=None, **kwargs):
+    node = self.tree.Raycast(target_geometry=self, attribute=attribute, source_position=source_position, ray_direction=ray_direction, ray_length=ray_length, data_type='BOOLEAN', mapping=mapping, node_label=node_label, node_color=node_color, **kwargs)
     return node
 ```
 ### raycast_color
@@ -2979,8 +3028,8 @@ def raycast_boolean(self, attribute=None, source_position=None, ray_direction=No
 #### Source code
 
 ``` python
-def raycast_color(self, attribute=None, source_position=None, ray_direction=None, ray_length=None, mapping='INTERPOLATED', node_label=None, node_color=None):
-    node = self.tree.Raycast(target_geometry=self, attribute=attribute, source_position=source_position, ray_direction=ray_direction, ray_length=ray_length, data_type='FLOAT_COLOR', mapping=mapping, node_label=node_label, node_color=node_color)
+def raycast_color(self, attribute=None, source_position=None, ray_direction=None, ray_length=None, mapping='INTERPOLATED', node_label=None, node_color=None, **kwargs):
+    node = self.tree.Raycast(target_geometry=self, attribute=attribute, source_position=source_position, ray_direction=ray_direction, ray_length=ray_length, data_type='FLOAT_COLOR', mapping=mapping, node_label=node_label, node_color=node_color, **kwargs)
     return node
 ```
 ### raycast_float
@@ -3004,8 +3053,8 @@ def raycast_color(self, attribute=None, source_position=None, ray_direction=None
 #### Source code
 
 ``` python
-def raycast_float(self, attribute=None, source_position=None, ray_direction=None, ray_length=None, mapping='INTERPOLATED', node_label=None, node_color=None):
-    node = self.tree.Raycast(target_geometry=self, attribute=attribute, source_position=source_position, ray_direction=ray_direction, ray_length=ray_length, data_type='FLOAT', mapping=mapping, node_label=node_label, node_color=node_color)
+def raycast_float(self, attribute=None, source_position=None, ray_direction=None, ray_length=None, mapping='INTERPOLATED', node_label=None, node_color=None, **kwargs):
+    node = self.tree.Raycast(target_geometry=self, attribute=attribute, source_position=source_position, ray_direction=ray_direction, ray_length=ray_length, data_type='FLOAT', mapping=mapping, node_label=node_label, node_color=node_color, **kwargs)
     return node
 ```
 ### raycast_int
@@ -3029,8 +3078,8 @@ def raycast_float(self, attribute=None, source_position=None, ray_direction=None
 #### Source code
 
 ``` python
-def raycast_int(self, attribute=None, source_position=None, ray_direction=None, ray_length=None, mapping='INTERPOLATED', node_label=None, node_color=None):
-    node = self.tree.Raycast(target_geometry=self, attribute=attribute, source_position=source_position, ray_direction=ray_direction, ray_length=ray_length, data_type='INT', mapping=mapping, node_label=node_label, node_color=node_color)
+def raycast_int(self, attribute=None, source_position=None, ray_direction=None, ray_length=None, mapping='INTERPOLATED', node_label=None, node_color=None, **kwargs):
+    node = self.tree.Raycast(target_geometry=self, attribute=attribute, source_position=source_position, ray_direction=ray_direction, ray_length=ray_length, data_type='INT', mapping=mapping, node_label=node_label, node_color=node_color, **kwargs)
     return node
 ```
 ### raycast_quaternion
@@ -3054,8 +3103,8 @@ def raycast_int(self, attribute=None, source_position=None, ray_direction=None, 
 #### Source code
 
 ``` python
-def raycast_quaternion(self, attribute=None, source_position=None, ray_direction=None, ray_length=None, mapping='INTERPOLATED', node_label=None, node_color=None):
-    node = self.tree.Raycast(target_geometry=self, attribute=attribute, source_position=source_position, ray_direction=ray_direction, ray_length=ray_length, data_type='QUATERNION', mapping=mapping, node_label=node_label, node_color=node_color)
+def raycast_quaternion(self, attribute=None, source_position=None, ray_direction=None, ray_length=None, mapping='INTERPOLATED', node_label=None, node_color=None, **kwargs):
+    node = self.tree.Raycast(target_geometry=self, attribute=attribute, source_position=source_position, ray_direction=ray_direction, ray_length=ray_length, data_type='QUATERNION', mapping=mapping, node_label=node_label, node_color=node_color, **kwargs)
     return node
 ```
 ### raycast_vector
@@ -3079,8 +3128,8 @@ def raycast_quaternion(self, attribute=None, source_position=None, ray_direction
 #### Source code
 
 ``` python
-def raycast_vector(self, attribute=None, source_position=None, ray_direction=None, ray_length=None, mapping='INTERPOLATED', node_label=None, node_color=None):
-    node = self.tree.Raycast(target_geometry=self, attribute=attribute, source_position=source_position, ray_direction=ray_direction, ray_length=ray_length, data_type='FLOAT_VECTOR', mapping=mapping, node_label=node_label, node_color=node_color)
+def raycast_vector(self, attribute=None, source_position=None, ray_direction=None, ray_length=None, mapping='INTERPOLATED', node_label=None, node_color=None, **kwargs):
+    node = self.tree.Raycast(target_geometry=self, attribute=attribute, source_position=source_position, ray_direction=ray_direction, ray_length=ray_length, data_type='FLOAT_VECTOR', mapping=mapping, node_label=node_label, node_color=node_color, **kwargs)
     return node
 ```
 ### realize_instances
@@ -3099,8 +3148,8 @@ def raycast_vector(self, attribute=None, source_position=None, ray_direction=Non
 #### Source code
 
 ``` python
-def realize_instances(self, node_label=None, node_color=None):
-    node = self.tree.RealizeInstances(geometry=self, node_label=node_label, node_color=node_color)
+def realize_instances(self, node_label=None, node_color=None, **kwargs):
+    node = self.tree.RealizeInstances(geometry=self, node_label=node_label, node_color=node_color, **kwargs)
     self.jump(node.geometry)
     return self
 ```
@@ -3121,8 +3170,8 @@ def realize_instances(self, node_label=None, node_color=None):
 #### Source code
 
 ``` python
-def remove_named_attribute(self, name=None, node_label=None, node_color=None):
-    node = self.tree.RemoveNamedAttribute(geometry=self, name=name, node_label=node_label, node_color=node_color)
+def remove_named_attribute(self, name=None, node_label=None, node_color=None, **kwargs):
+    node = self.tree.RemoveNamedAttribute(geometry=self, name=name, node_label=node_label, node_color=node_color, **kwargs)
     self.jump(node.geometry)
     return self
 ```
@@ -3144,8 +3193,8 @@ def remove_named_attribute(self, name=None, node_label=None, node_color=None):
 #### Source code
 
 ``` python
-def replace_material(self, old=None, new=None, node_label=None, node_color=None):
-    node = self.tree.ReplaceMaterial(geometry=self, old=old, new=new, node_label=node_label, node_color=node_color)
+def replace_material(self, old=None, new=None, node_label=None, node_color=None, **kwargs):
+    node = self.tree.ReplaceMaterial(geometry=self, old=old, new=new, node_label=node_label, node_color=node_color, **kwargs)
     self.jump(node.geometry)
     return self
 ```
@@ -3169,8 +3218,8 @@ def replace_material(self, old=None, new=None, node_label=None, node_color=None)
 #### Source code
 
 ``` python
-def resample_curve(self, count=None, length=None, selection=None, mode='COUNT', node_label=None, node_color=None):
-    node = self.tree.ResampleCurve(curve=self, count=count, length=length, selection=self._get_selection(selection), mode=mode, node_label=node_label, node_color=node_color)
+def resample_curve(self, count=None, length=None, selection=None, mode='COUNT', node_label=None, node_color=None, **kwargs):
+    node = self.tree.ResampleCurve(curve=self, count=count, length=length, selection=self._get_selection(selection), mode=mode, node_label=node_label, node_color=node_color, **kwargs)
     self.jump(node.curve)
     return self
 ```
@@ -3191,8 +3240,8 @@ def resample_curve(self, count=None, length=None, selection=None, mode='COUNT', 
 #### Source code
 
 ``` python
-def reverse_curve(self, selection=None, node_label=None, node_color=None):
-    node = self.tree.ReverseCurve(curve=self, selection=self._get_selection(selection), node_label=node_label, node_color=node_color)
+def reverse_curve(self, selection=None, node_label=None, node_color=None, **kwargs):
+    node = self.tree.ReverseCurve(curve=self, selection=self._get_selection(selection), node_label=node_label, node_color=node_color, **kwargs)
     self.jump(node.curve)
     return self
 ```
@@ -3213,8 +3262,8 @@ def reverse_curve(self, selection=None, node_label=None, node_color=None):
 #### Source code
 
 ``` python
-def right_handle_type_selection(self, handle_type='AUTO', node_label=None, node_color=None):
-    node = self.tree.HandleTypeSelection(handle_type=handle_type, mode={'RIGHT'}, node_label=node_label, node_color=node_color)
+def right_handle_type_selection(self, handle_type='AUTO', node_label=None, node_color=None, **kwargs):
+    node = self.tree.HandleTypeSelection(handle_type=handle_type, mode={'RIGHT'}, node_label=node_label, node_color=node_color, **kwargs)
     return node.selection
 ```
 ### rotate_instances
@@ -3237,8 +3286,8 @@ def right_handle_type_selection(self, handle_type='AUTO', node_label=None, node_
 #### Source code
 
 ``` python
-def rotate_instances(self, rotation=None, pivot_point=None, local_space=None, selection=None, node_label=None, node_color=None):
-    node = self.tree.RotateInstances(instances=self, rotation=rotation, pivot_point=pivot_point, local_space=local_space, selection=self._get_selection(selection), node_label=node_label, node_color=node_color)
+def rotate_instances(self, rotation=None, pivot_point=None, local_space=None, selection=None, node_label=None, node_color=None, **kwargs):
+    node = self.tree.RotateInstances(instances=self, rotation=rotation, pivot_point=pivot_point, local_space=local_space, selection=self._get_selection(selection), node_label=node_label, node_color=node_color, **kwargs)
     self.jump(node.instances)
     return self
 ```
@@ -3265,8 +3314,8 @@ def rotate_instances(self, rotation=None, pivot_point=None, local_space=None, se
 #### Source code
 
 ``` python
-def sample_curve(self, value=None, factor=None, curve_index=None, length=None, data_type='FLOAT', mode='FACTOR', use_all_curves=False, node_label=None, node_color=None):
-    node = self.tree.SampleCurve(curves=self, value=value, factor=factor, curve_index=curve_index, length=length, data_type=data_type, mode=mode, use_all_curves=use_all_curves, node_label=node_label, node_color=node_color)
+def sample_curve(self, value=None, factor=None, curve_index=None, length=None, data_type='FLOAT', mode='FACTOR', use_all_curves=False, node_label=None, node_color=None, **kwargs):
+    node = self.tree.SampleCurve(curves=self, value=value, factor=factor, curve_index=curve_index, length=length, data_type=data_type, mode=mode, use_all_curves=use_all_curves, node_label=node_label, node_color=node_color, **kwargs)
     return node
 ```
 ### sample_curve_boolean
@@ -3290,8 +3339,8 @@ def sample_curve(self, value=None, factor=None, curve_index=None, length=None, d
 #### Source code
 
 ``` python
-def sample_curve_boolean(self, value=None, factor=None, curve_index=None, mode='FACTOR', use_all_curves=False, node_label=None, node_color=None):
-    node = self.tree.SampleCurve(curves=self, value=value, factor=factor, curve_index=curve_index, data_type='BOOLEAN', mode=mode, use_all_curves=use_all_curves, node_label=node_label, node_color=node_color)
+def sample_curve_boolean(self, value=None, factor=None, curve_index=None, mode='FACTOR', use_all_curves=False, node_label=None, node_color=None, **kwargs):
+    node = self.tree.SampleCurve(curves=self, value=value, factor=factor, curve_index=curve_index, data_type='BOOLEAN', mode=mode, use_all_curves=use_all_curves, node_label=node_label, node_color=node_color, **kwargs)
     return node
 ```
 ### sample_curve_boolean_factor
@@ -3314,8 +3363,8 @@ def sample_curve_boolean(self, value=None, factor=None, curve_index=None, mode='
 #### Source code
 
 ``` python
-def sample_curve_boolean_factor(self, value=None, factor=None, curve_index=None, use_all_curves=False, node_label=None, node_color=None):
-    node = self.tree.SampleCurve(curves=self, value=value, factor=factor, curve_index=curve_index, data_type='BOOLEAN', mode='FACTOR', use_all_curves=use_all_curves, node_label=node_label, node_color=node_color)
+def sample_curve_boolean_factor(self, value=None, factor=None, curve_index=None, use_all_curves=False, node_label=None, node_color=None, **kwargs):
+    node = self.tree.SampleCurve(curves=self, value=value, factor=factor, curve_index=curve_index, data_type='BOOLEAN', mode='FACTOR', use_all_curves=use_all_curves, node_label=node_label, node_color=node_color, **kwargs)
     return node
 ```
 ### sample_curve_boolean_length
@@ -3338,8 +3387,8 @@ def sample_curve_boolean_factor(self, value=None, factor=None, curve_index=None,
 #### Source code
 
 ``` python
-def sample_curve_boolean_length(self, value=None, length=None, curve_index=None, use_all_curves=False, node_label=None, node_color=None):
-    node = self.tree.SampleCurve(curves=self, value=value, length=length, curve_index=curve_index, data_type='BOOLEAN', mode='LENGTH', use_all_curves=use_all_curves, node_label=node_label, node_color=node_color)
+def sample_curve_boolean_length(self, value=None, length=None, curve_index=None, use_all_curves=False, node_label=None, node_color=None, **kwargs):
+    node = self.tree.SampleCurve(curves=self, value=value, length=length, curve_index=curve_index, data_type='BOOLEAN', mode='LENGTH', use_all_curves=use_all_curves, node_label=node_label, node_color=node_color, **kwargs)
     return node
 ```
 ### sample_curve_color
@@ -3363,8 +3412,8 @@ def sample_curve_boolean_length(self, value=None, length=None, curve_index=None,
 #### Source code
 
 ``` python
-def sample_curve_color(self, value=None, factor=None, curve_index=None, mode='FACTOR', use_all_curves=False, node_label=None, node_color=None):
-    node = self.tree.SampleCurve(curves=self, value=value, factor=factor, curve_index=curve_index, data_type='FLOAT_COLOR', mode=mode, use_all_curves=use_all_curves, node_label=node_label, node_color=node_color)
+def sample_curve_color(self, value=None, factor=None, curve_index=None, mode='FACTOR', use_all_curves=False, node_label=None, node_color=None, **kwargs):
+    node = self.tree.SampleCurve(curves=self, value=value, factor=factor, curve_index=curve_index, data_type='FLOAT_COLOR', mode=mode, use_all_curves=use_all_curves, node_label=node_label, node_color=node_color, **kwargs)
     return node
 ```
 ### sample_curve_color_factor
@@ -3387,8 +3436,8 @@ def sample_curve_color(self, value=None, factor=None, curve_index=None, mode='FA
 #### Source code
 
 ``` python
-def sample_curve_color_factor(self, value=None, factor=None, curve_index=None, use_all_curves=False, node_label=None, node_color=None):
-    node = self.tree.SampleCurve(curves=self, value=value, factor=factor, curve_index=curve_index, data_type='FLOAT_COLOR', mode='FACTOR', use_all_curves=use_all_curves, node_label=node_label, node_color=node_color)
+def sample_curve_color_factor(self, value=None, factor=None, curve_index=None, use_all_curves=False, node_label=None, node_color=None, **kwargs):
+    node = self.tree.SampleCurve(curves=self, value=value, factor=factor, curve_index=curve_index, data_type='FLOAT_COLOR', mode='FACTOR', use_all_curves=use_all_curves, node_label=node_label, node_color=node_color, **kwargs)
     return node
 ```
 ### sample_curve_color_length
@@ -3411,8 +3460,8 @@ def sample_curve_color_factor(self, value=None, factor=None, curve_index=None, u
 #### Source code
 
 ``` python
-def sample_curve_color_length(self, value=None, length=None, curve_index=None, use_all_curves=False, node_label=None, node_color=None):
-    node = self.tree.SampleCurve(curves=self, value=value, length=length, curve_index=curve_index, data_type='FLOAT_COLOR', mode='LENGTH', use_all_curves=use_all_curves, node_label=node_label, node_color=node_color)
+def sample_curve_color_length(self, value=None, length=None, curve_index=None, use_all_curves=False, node_label=None, node_color=None, **kwargs):
+    node = self.tree.SampleCurve(curves=self, value=value, length=length, curve_index=curve_index, data_type='FLOAT_COLOR', mode='LENGTH', use_all_curves=use_all_curves, node_label=node_label, node_color=node_color, **kwargs)
     return node
 ```
 ### sample_curve_float
@@ -3436,8 +3485,8 @@ def sample_curve_color_length(self, value=None, length=None, curve_index=None, u
 #### Source code
 
 ``` python
-def sample_curve_float(self, value=None, factor=None, curve_index=None, mode='FACTOR', use_all_curves=False, node_label=None, node_color=None):
-    node = self.tree.SampleCurve(curves=self, value=value, factor=factor, curve_index=curve_index, data_type='FLOAT', mode=mode, use_all_curves=use_all_curves, node_label=node_label, node_color=node_color)
+def sample_curve_float(self, value=None, factor=None, curve_index=None, mode='FACTOR', use_all_curves=False, node_label=None, node_color=None, **kwargs):
+    node = self.tree.SampleCurve(curves=self, value=value, factor=factor, curve_index=curve_index, data_type='FLOAT', mode=mode, use_all_curves=use_all_curves, node_label=node_label, node_color=node_color, **kwargs)
     return node
 ```
 ### sample_curve_float_factor
@@ -3460,8 +3509,8 @@ def sample_curve_float(self, value=None, factor=None, curve_index=None, mode='FA
 #### Source code
 
 ``` python
-def sample_curve_float_factor(self, value=None, factor=None, curve_index=None, use_all_curves=False, node_label=None, node_color=None):
-    node = self.tree.SampleCurve(curves=self, value=value, factor=factor, curve_index=curve_index, data_type='FLOAT', mode='FACTOR', use_all_curves=use_all_curves, node_label=node_label, node_color=node_color)
+def sample_curve_float_factor(self, value=None, factor=None, curve_index=None, use_all_curves=False, node_label=None, node_color=None, **kwargs):
+    node = self.tree.SampleCurve(curves=self, value=value, factor=factor, curve_index=curve_index, data_type='FLOAT', mode='FACTOR', use_all_curves=use_all_curves, node_label=node_label, node_color=node_color, **kwargs)
     return node
 ```
 ### sample_curve_float_length
@@ -3484,8 +3533,8 @@ def sample_curve_float_factor(self, value=None, factor=None, curve_index=None, u
 #### Source code
 
 ``` python
-def sample_curve_float_length(self, value=None, length=None, curve_index=None, use_all_curves=False, node_label=None, node_color=None):
-    node = self.tree.SampleCurve(curves=self, value=value, length=length, curve_index=curve_index, data_type='FLOAT', mode='LENGTH', use_all_curves=use_all_curves, node_label=node_label, node_color=node_color)
+def sample_curve_float_length(self, value=None, length=None, curve_index=None, use_all_curves=False, node_label=None, node_color=None, **kwargs):
+    node = self.tree.SampleCurve(curves=self, value=value, length=length, curve_index=curve_index, data_type='FLOAT', mode='LENGTH', use_all_curves=use_all_curves, node_label=node_label, node_color=node_color, **kwargs)
     return node
 ```
 ### sample_curve_int
@@ -3509,8 +3558,8 @@ def sample_curve_float_length(self, value=None, length=None, curve_index=None, u
 #### Source code
 
 ``` python
-def sample_curve_int(self, value=None, factor=None, curve_index=None, mode='FACTOR', use_all_curves=False, node_label=None, node_color=None):
-    node = self.tree.SampleCurve(curves=self, value=value, factor=factor, curve_index=curve_index, data_type='INT', mode=mode, use_all_curves=use_all_curves, node_label=node_label, node_color=node_color)
+def sample_curve_int(self, value=None, factor=None, curve_index=None, mode='FACTOR', use_all_curves=False, node_label=None, node_color=None, **kwargs):
+    node = self.tree.SampleCurve(curves=self, value=value, factor=factor, curve_index=curve_index, data_type='INT', mode=mode, use_all_curves=use_all_curves, node_label=node_label, node_color=node_color, **kwargs)
     return node
 ```
 ### sample_curve_int_factor
@@ -3533,8 +3582,8 @@ def sample_curve_int(self, value=None, factor=None, curve_index=None, mode='FACT
 #### Source code
 
 ``` python
-def sample_curve_int_factor(self, value=None, factor=None, curve_index=None, use_all_curves=False, node_label=None, node_color=None):
-    node = self.tree.SampleCurve(curves=self, value=value, factor=factor, curve_index=curve_index, data_type='INT', mode='FACTOR', use_all_curves=use_all_curves, node_label=node_label, node_color=node_color)
+def sample_curve_int_factor(self, value=None, factor=None, curve_index=None, use_all_curves=False, node_label=None, node_color=None, **kwargs):
+    node = self.tree.SampleCurve(curves=self, value=value, factor=factor, curve_index=curve_index, data_type='INT', mode='FACTOR', use_all_curves=use_all_curves, node_label=node_label, node_color=node_color, **kwargs)
     return node
 ```
 ### sample_curve_int_length
@@ -3557,8 +3606,8 @@ def sample_curve_int_factor(self, value=None, factor=None, curve_index=None, use
 #### Source code
 
 ``` python
-def sample_curve_int_length(self, value=None, length=None, curve_index=None, use_all_curves=False, node_label=None, node_color=None):
-    node = self.tree.SampleCurve(curves=self, value=value, length=length, curve_index=curve_index, data_type='INT', mode='LENGTH', use_all_curves=use_all_curves, node_label=node_label, node_color=node_color)
+def sample_curve_int_length(self, value=None, length=None, curve_index=None, use_all_curves=False, node_label=None, node_color=None, **kwargs):
+    node = self.tree.SampleCurve(curves=self, value=value, length=length, curve_index=curve_index, data_type='INT', mode='LENGTH', use_all_curves=use_all_curves, node_label=node_label, node_color=node_color, **kwargs)
     return node
 ```
 ### sample_curve_quaternion
@@ -3582,8 +3631,8 @@ def sample_curve_int_length(self, value=None, length=None, curve_index=None, use
 #### Source code
 
 ``` python
-def sample_curve_quaternion(self, value=None, factor=None, curve_index=None, mode='FACTOR', use_all_curves=False, node_label=None, node_color=None):
-    node = self.tree.SampleCurve(curves=self, value=value, factor=factor, curve_index=curve_index, data_type='QUATERNION', mode=mode, use_all_curves=use_all_curves, node_label=node_label, node_color=node_color)
+def sample_curve_quaternion(self, value=None, factor=None, curve_index=None, mode='FACTOR', use_all_curves=False, node_label=None, node_color=None, **kwargs):
+    node = self.tree.SampleCurve(curves=self, value=value, factor=factor, curve_index=curve_index, data_type='QUATERNION', mode=mode, use_all_curves=use_all_curves, node_label=node_label, node_color=node_color, **kwargs)
     return node
 ```
 ### sample_curve_quaternion_factor
@@ -3606,8 +3655,8 @@ def sample_curve_quaternion(self, value=None, factor=None, curve_index=None, mod
 #### Source code
 
 ``` python
-def sample_curve_quaternion_factor(self, value=None, factor=None, curve_index=None, use_all_curves=False, node_label=None, node_color=None):
-    node = self.tree.SampleCurve(curves=self, value=value, factor=factor, curve_index=curve_index, data_type='QUATERNION', mode='FACTOR', use_all_curves=use_all_curves, node_label=node_label, node_color=node_color)
+def sample_curve_quaternion_factor(self, value=None, factor=None, curve_index=None, use_all_curves=False, node_label=None, node_color=None, **kwargs):
+    node = self.tree.SampleCurve(curves=self, value=value, factor=factor, curve_index=curve_index, data_type='QUATERNION', mode='FACTOR', use_all_curves=use_all_curves, node_label=node_label, node_color=node_color, **kwargs)
     return node
 ```
 ### sample_curve_quaternion_length
@@ -3630,8 +3679,8 @@ def sample_curve_quaternion_factor(self, value=None, factor=None, curve_index=No
 #### Source code
 
 ``` python
-def sample_curve_quaternion_length(self, value=None, length=None, curve_index=None, use_all_curves=False, node_label=None, node_color=None):
-    node = self.tree.SampleCurve(curves=self, value=value, length=length, curve_index=curve_index, data_type='QUATERNION', mode='LENGTH', use_all_curves=use_all_curves, node_label=node_label, node_color=node_color)
+def sample_curve_quaternion_length(self, value=None, length=None, curve_index=None, use_all_curves=False, node_label=None, node_color=None, **kwargs):
+    node = self.tree.SampleCurve(curves=self, value=value, length=length, curve_index=curve_index, data_type='QUATERNION', mode='LENGTH', use_all_curves=use_all_curves, node_label=node_label, node_color=node_color, **kwargs)
     return node
 ```
 ### sample_curve_vector
@@ -3655,8 +3704,8 @@ def sample_curve_quaternion_length(self, value=None, length=None, curve_index=No
 #### Source code
 
 ``` python
-def sample_curve_vector(self, value=None, factor=None, curve_index=None, mode='FACTOR', use_all_curves=False, node_label=None, node_color=None):
-    node = self.tree.SampleCurve(curves=self, value=value, factor=factor, curve_index=curve_index, data_type='FLOAT_VECTOR', mode=mode, use_all_curves=use_all_curves, node_label=node_label, node_color=node_color)
+def sample_curve_vector(self, value=None, factor=None, curve_index=None, mode='FACTOR', use_all_curves=False, node_label=None, node_color=None, **kwargs):
+    node = self.tree.SampleCurve(curves=self, value=value, factor=factor, curve_index=curve_index, data_type='FLOAT_VECTOR', mode=mode, use_all_curves=use_all_curves, node_label=node_label, node_color=node_color, **kwargs)
     return node
 ```
 ### sample_curve_vector_factor
@@ -3679,8 +3728,8 @@ def sample_curve_vector(self, value=None, factor=None, curve_index=None, mode='F
 #### Source code
 
 ``` python
-def sample_curve_vector_factor(self, value=None, factor=None, curve_index=None, use_all_curves=False, node_label=None, node_color=None):
-    node = self.tree.SampleCurve(curves=self, value=value, factor=factor, curve_index=curve_index, data_type='FLOAT_VECTOR', mode='FACTOR', use_all_curves=use_all_curves, node_label=node_label, node_color=node_color)
+def sample_curve_vector_factor(self, value=None, factor=None, curve_index=None, use_all_curves=False, node_label=None, node_color=None, **kwargs):
+    node = self.tree.SampleCurve(curves=self, value=value, factor=factor, curve_index=curve_index, data_type='FLOAT_VECTOR', mode='FACTOR', use_all_curves=use_all_curves, node_label=node_label, node_color=node_color, **kwargs)
     return node
 ```
 ### sample_curve_vector_length
@@ -3703,8 +3752,8 @@ def sample_curve_vector_factor(self, value=None, factor=None, curve_index=None, 
 #### Source code
 
 ``` python
-def sample_curve_vector_length(self, value=None, length=None, curve_index=None, use_all_curves=False, node_label=None, node_color=None):
-    node = self.tree.SampleCurve(curves=self, value=value, length=length, curve_index=curve_index, data_type='FLOAT_VECTOR', mode='LENGTH', use_all_curves=use_all_curves, node_label=node_label, node_color=node_color)
+def sample_curve_vector_length(self, value=None, length=None, curve_index=None, use_all_curves=False, node_label=None, node_color=None, **kwargs):
+    node = self.tree.SampleCurve(curves=self, value=value, length=length, curve_index=curve_index, data_type='FLOAT_VECTOR', mode='LENGTH', use_all_curves=use_all_curves, node_label=node_label, node_color=node_color, **kwargs)
     return node
 ```
 ### sample_index
@@ -3728,8 +3777,8 @@ def sample_curve_vector_length(self, value=None, length=None, curve_index=None, 
 #### Source code
 
 ``` python
-def sample_index(self, value=None, index=None, clamp=False, data_type='FLOAT', domain='POINT', node_label=None, node_color=None):
-    node = self.tree.SampleIndex(geometry=self, value=value, index=index, clamp=clamp, data_type=data_type, domain=self._get_domain(domain, ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color)
+def sample_index(self, value=None, index=None, clamp=False, data_type='FLOAT', domain='POINT', node_label=None, node_color=None, **kwargs):
+    node = self.tree.SampleIndex(geometry=self, value=value, index=index, clamp=clamp, data_type=data_type, domain=self._get_domain(domain, ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color, **kwargs)
     return node.value
 ```
 ### sample_index_boolean
@@ -3752,8 +3801,8 @@ def sample_index(self, value=None, index=None, clamp=False, data_type='FLOAT', d
 #### Source code
 
 ``` python
-def sample_index_boolean(self, value=None, index=None, clamp=False, domain='POINT', node_label=None, node_color=None):
-    node = self.tree.SampleIndex(geometry=self, value=value, index=index, clamp=clamp, data_type='BOOLEAN', domain=self._get_domain(domain, ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color)
+def sample_index_boolean(self, value=None, index=None, clamp=False, domain='POINT', node_label=None, node_color=None, **kwargs):
+    node = self.tree.SampleIndex(geometry=self, value=value, index=index, clamp=clamp, data_type='BOOLEAN', domain=self._get_domain(domain, ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color, **kwargs)
     return node.value
 ```
 ### sample_index_color
@@ -3776,8 +3825,8 @@ def sample_index_boolean(self, value=None, index=None, clamp=False, domain='POIN
 #### Source code
 
 ``` python
-def sample_index_color(self, value=None, index=None, clamp=False, domain='POINT', node_label=None, node_color=None):
-    node = self.tree.SampleIndex(geometry=self, value=value, index=index, clamp=clamp, data_type='FLOAT_COLOR', domain=self._get_domain(domain, ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color)
+def sample_index_color(self, value=None, index=None, clamp=False, domain='POINT', node_label=None, node_color=None, **kwargs):
+    node = self.tree.SampleIndex(geometry=self, value=value, index=index, clamp=clamp, data_type='FLOAT_COLOR', domain=self._get_domain(domain, ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color, **kwargs)
     return node.value
 ```
 ### sample_index_float
@@ -3800,8 +3849,8 @@ def sample_index_color(self, value=None, index=None, clamp=False, domain='POINT'
 #### Source code
 
 ``` python
-def sample_index_float(self, value=None, index=None, clamp=False, domain='POINT', node_label=None, node_color=None):
-    node = self.tree.SampleIndex(geometry=self, value=value, index=index, clamp=clamp, data_type='FLOAT', domain=self._get_domain(domain, ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color)
+def sample_index_float(self, value=None, index=None, clamp=False, domain='POINT', node_label=None, node_color=None, **kwargs):
+    node = self.tree.SampleIndex(geometry=self, value=value, index=index, clamp=clamp, data_type='FLOAT', domain=self._get_domain(domain, ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color, **kwargs)
     return node.value
 ```
 ### sample_index_int
@@ -3824,8 +3873,8 @@ def sample_index_float(self, value=None, index=None, clamp=False, domain='POINT'
 #### Source code
 
 ``` python
-def sample_index_int(self, value=None, index=None, clamp=False, domain='POINT', node_label=None, node_color=None):
-    node = self.tree.SampleIndex(geometry=self, value=value, index=index, clamp=clamp, data_type='INT', domain=self._get_domain(domain, ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color)
+def sample_index_int(self, value=None, index=None, clamp=False, domain='POINT', node_label=None, node_color=None, **kwargs):
+    node = self.tree.SampleIndex(geometry=self, value=value, index=index, clamp=clamp, data_type='INT', domain=self._get_domain(domain, ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color, **kwargs)
     return node.value
 ```
 ### sample_index_quaternion
@@ -3848,8 +3897,8 @@ def sample_index_int(self, value=None, index=None, clamp=False, domain='POINT', 
 #### Source code
 
 ``` python
-def sample_index_quaternion(self, value=None, index=None, clamp=False, domain='POINT', node_label=None, node_color=None):
-    node = self.tree.SampleIndex(geometry=self, value=value, index=index, clamp=clamp, data_type='QUATERNION', domain=self._get_domain(domain, ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color)
+def sample_index_quaternion(self, value=None, index=None, clamp=False, domain='POINT', node_label=None, node_color=None, **kwargs):
+    node = self.tree.SampleIndex(geometry=self, value=value, index=index, clamp=clamp, data_type='QUATERNION', domain=self._get_domain(domain, ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color, **kwargs)
     return node.value
 ```
 ### sample_index_vector
@@ -3872,8 +3921,8 @@ def sample_index_quaternion(self, value=None, index=None, clamp=False, domain='P
 #### Source code
 
 ``` python
-def sample_index_vector(self, value=None, index=None, clamp=False, domain='POINT', node_label=None, node_color=None):
-    node = self.tree.SampleIndex(geometry=self, value=value, index=index, clamp=clamp, data_type='FLOAT_VECTOR', domain=self._get_domain(domain, ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color)
+def sample_index_vector(self, value=None, index=None, clamp=False, domain='POINT', node_label=None, node_color=None, **kwargs):
+    node = self.tree.SampleIndex(geometry=self, value=value, index=index, clamp=clamp, data_type='FLOAT_VECTOR', domain=self._get_domain(domain, ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color, **kwargs)
     return node.value
 ```
 ### sample_nearest
@@ -3894,8 +3943,8 @@ def sample_index_vector(self, value=None, index=None, clamp=False, domain='POINT
 #### Source code
 
 ``` python
-def sample_nearest(self, sample_position=None, domain='POINT', node_label=None, node_color=None):
-    node = self.tree.SampleNearest(geometry=self, sample_position=sample_position, domain=self._get_domain(domain, ('POINT', 'EDGE', 'FACE', 'CORNER')), node_label=node_label, node_color=node_color)
+def sample_nearest(self, sample_position=None, domain='POINT', node_label=None, node_color=None, **kwargs):
+    node = self.tree.SampleNearest(geometry=self, sample_position=sample_position, domain=self._get_domain(domain, ('POINT', 'EDGE', 'FACE', 'CORNER')), node_label=node_label, node_color=node_color, **kwargs)
     return node.index
 ```
 ### sample_nearest_surface
@@ -3917,8 +3966,8 @@ def sample_nearest(self, sample_position=None, domain='POINT', node_label=None, 
 #### Source code
 
 ``` python
-def sample_nearest_surface(self, value=None, sample_position=None, data_type='FLOAT', node_label=None, node_color=None):
-    node = self.tree.SampleNearestSurface(mesh=self, value=value, sample_position=sample_position, data_type=data_type, node_label=node_label, node_color=node_color)
+def sample_nearest_surface(self, value=None, sample_position=None, data_type='FLOAT', node_label=None, node_color=None, **kwargs):
+    node = self.tree.SampleNearestSurface(mesh=self, value=value, sample_position=sample_position, data_type=data_type, node_label=node_label, node_color=node_color, **kwargs)
     return node.value
 ```
 ### sample_nearest_surface_boolean
@@ -3939,8 +3988,8 @@ def sample_nearest_surface(self, value=None, sample_position=None, data_type='FL
 #### Source code
 
 ``` python
-def sample_nearest_surface_boolean(self, value=None, sample_position=None, node_label=None, node_color=None):
-    node = self.tree.SampleNearestSurface(mesh=self, value=value, sample_position=sample_position, data_type='BOOLEAN', node_label=node_label, node_color=node_color)
+def sample_nearest_surface_boolean(self, value=None, sample_position=None, node_label=None, node_color=None, **kwargs):
+    node = self.tree.SampleNearestSurface(mesh=self, value=value, sample_position=sample_position, data_type='BOOLEAN', node_label=node_label, node_color=node_color, **kwargs)
     return node.value
 ```
 ### sample_nearest_surface_color
@@ -3961,8 +4010,8 @@ def sample_nearest_surface_boolean(self, value=None, sample_position=None, node_
 #### Source code
 
 ``` python
-def sample_nearest_surface_color(self, value=None, sample_position=None, node_label=None, node_color=None):
-    node = self.tree.SampleNearestSurface(mesh=self, value=value, sample_position=sample_position, data_type='FLOAT_COLOR', node_label=node_label, node_color=node_color)
+def sample_nearest_surface_color(self, value=None, sample_position=None, node_label=None, node_color=None, **kwargs):
+    node = self.tree.SampleNearestSurface(mesh=self, value=value, sample_position=sample_position, data_type='FLOAT_COLOR', node_label=node_label, node_color=node_color, **kwargs)
     return node.value
 ```
 ### sample_nearest_surface_float
@@ -3983,8 +4032,8 @@ def sample_nearest_surface_color(self, value=None, sample_position=None, node_la
 #### Source code
 
 ``` python
-def sample_nearest_surface_float(self, value=None, sample_position=None, node_label=None, node_color=None):
-    node = self.tree.SampleNearestSurface(mesh=self, value=value, sample_position=sample_position, data_type='FLOAT', node_label=node_label, node_color=node_color)
+def sample_nearest_surface_float(self, value=None, sample_position=None, node_label=None, node_color=None, **kwargs):
+    node = self.tree.SampleNearestSurface(mesh=self, value=value, sample_position=sample_position, data_type='FLOAT', node_label=node_label, node_color=node_color, **kwargs)
     return node.value
 ```
 ### sample_nearest_surface_int
@@ -4005,8 +4054,8 @@ def sample_nearest_surface_float(self, value=None, sample_position=None, node_la
 #### Source code
 
 ``` python
-def sample_nearest_surface_int(self, value=None, sample_position=None, node_label=None, node_color=None):
-    node = self.tree.SampleNearestSurface(mesh=self, value=value, sample_position=sample_position, data_type='INT', node_label=node_label, node_color=node_color)
+def sample_nearest_surface_int(self, value=None, sample_position=None, node_label=None, node_color=None, **kwargs):
+    node = self.tree.SampleNearestSurface(mesh=self, value=value, sample_position=sample_position, data_type='INT', node_label=node_label, node_color=node_color, **kwargs)
     return node.value
 ```
 ### sample_nearest_surface_quaternion
@@ -4027,8 +4076,8 @@ def sample_nearest_surface_int(self, value=None, sample_position=None, node_labe
 #### Source code
 
 ``` python
-def sample_nearest_surface_quaternion(self, value=None, sample_position=None, node_label=None, node_color=None):
-    node = self.tree.SampleNearestSurface(mesh=self, value=value, sample_position=sample_position, data_type='QUATERNION', node_label=node_label, node_color=node_color)
+def sample_nearest_surface_quaternion(self, value=None, sample_position=None, node_label=None, node_color=None, **kwargs):
+    node = self.tree.SampleNearestSurface(mesh=self, value=value, sample_position=sample_position, data_type='QUATERNION', node_label=node_label, node_color=node_color, **kwargs)
     return node.value
 ```
 ### sample_nearest_surface_vector
@@ -4049,8 +4098,8 @@ def sample_nearest_surface_quaternion(self, value=None, sample_position=None, no
 #### Source code
 
 ``` python
-def sample_nearest_surface_vector(self, value=None, sample_position=None, node_label=None, node_color=None):
-    node = self.tree.SampleNearestSurface(mesh=self, value=value, sample_position=sample_position, data_type='FLOAT_VECTOR', node_label=node_label, node_color=node_color)
+def sample_nearest_surface_vector(self, value=None, sample_position=None, node_label=None, node_color=None, **kwargs):
+    node = self.tree.SampleNearestSurface(mesh=self, value=value, sample_position=sample_position, data_type='FLOAT_VECTOR', node_label=node_label, node_color=node_color, **kwargs)
     return node.value
 ```
 ### sample_uv_surface
@@ -4064,7 +4113,7 @@ def sample_nearest_surface_vector(self, value=None, sample_position=None, node_l
 ##### Arguments
 
 - value : None
-- source_uv_map : None
+- uv_map : None
 - sample_uv : None
 - data_type : 'FLOAT' in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN', 'QUATERNION')
 - node_label : None
@@ -4073,8 +4122,8 @@ def sample_nearest_surface_vector(self, value=None, sample_position=None, node_l
 #### Source code
 
 ``` python
-def sample_uv_surface(self, value=None, source_uv_map=None, sample_uv=None, data_type='FLOAT', node_label=None, node_color=None):
-    node = self.tree.SampleUVSurface(mesh=self, value=value, source_uv_map=source_uv_map, sample_uv=sample_uv, data_type=data_type, node_label=node_label, node_color=node_color)
+def sample_uv_surface(self, value=None, uv_map=None, sample_uv=None, data_type='FLOAT', node_label=None, node_color=None, **kwargs):
+    node = self.tree.SampleUVSurface(mesh=self, value=value, uv_map=uv_map, sample_uv=sample_uv, data_type=data_type, node_label=node_label, node_color=node_color, **kwargs)
     return node
 ```
 ### sample_uv_surface_boolean
@@ -4088,7 +4137,7 @@ def sample_uv_surface(self, value=None, source_uv_map=None, sample_uv=None, data
 ##### Arguments
 
 - value : None
-- source_uv_map : None
+- uv_map : None
 - sample_uv : None
 - node_label : None
 - node_color : None
@@ -4096,8 +4145,8 @@ def sample_uv_surface(self, value=None, source_uv_map=None, sample_uv=None, data
 #### Source code
 
 ``` python
-def sample_uv_surface_boolean(self, value=None, source_uv_map=None, sample_uv=None, node_label=None, node_color=None):
-    node = self.tree.SampleUVSurface(mesh=self, value=value, source_uv_map=source_uv_map, sample_uv=sample_uv, data_type='BOOLEAN', node_label=node_label, node_color=node_color)
+def sample_uv_surface_boolean(self, value=None, uv_map=None, sample_uv=None, node_label=None, node_color=None, **kwargs):
+    node = self.tree.SampleUVSurface(mesh=self, value=value, uv_map=uv_map, sample_uv=sample_uv, data_type='BOOLEAN', node_label=node_label, node_color=node_color, **kwargs)
     return node
 ```
 ### sample_uv_surface_color
@@ -4111,7 +4160,7 @@ def sample_uv_surface_boolean(self, value=None, source_uv_map=None, sample_uv=No
 ##### Arguments
 
 - value : None
-- source_uv_map : None
+- uv_map : None
 - sample_uv : None
 - node_label : None
 - node_color : None
@@ -4119,8 +4168,8 @@ def sample_uv_surface_boolean(self, value=None, source_uv_map=None, sample_uv=No
 #### Source code
 
 ``` python
-def sample_uv_surface_color(self, value=None, source_uv_map=None, sample_uv=None, node_label=None, node_color=None):
-    node = self.tree.SampleUVSurface(mesh=self, value=value, source_uv_map=source_uv_map, sample_uv=sample_uv, data_type='FLOAT_COLOR', node_label=node_label, node_color=node_color)
+def sample_uv_surface_color(self, value=None, uv_map=None, sample_uv=None, node_label=None, node_color=None, **kwargs):
+    node = self.tree.SampleUVSurface(mesh=self, value=value, uv_map=uv_map, sample_uv=sample_uv, data_type='FLOAT_COLOR', node_label=node_label, node_color=node_color, **kwargs)
     return node
 ```
 ### sample_uv_surface_float
@@ -4134,7 +4183,7 @@ def sample_uv_surface_color(self, value=None, source_uv_map=None, sample_uv=None
 ##### Arguments
 
 - value : None
-- source_uv_map : None
+- uv_map : None
 - sample_uv : None
 - node_label : None
 - node_color : None
@@ -4142,8 +4191,8 @@ def sample_uv_surface_color(self, value=None, source_uv_map=None, sample_uv=None
 #### Source code
 
 ``` python
-def sample_uv_surface_float(self, value=None, source_uv_map=None, sample_uv=None, node_label=None, node_color=None):
-    node = self.tree.SampleUVSurface(mesh=self, value=value, source_uv_map=source_uv_map, sample_uv=sample_uv, data_type='FLOAT', node_label=node_label, node_color=node_color)
+def sample_uv_surface_float(self, value=None, uv_map=None, sample_uv=None, node_label=None, node_color=None, **kwargs):
+    node = self.tree.SampleUVSurface(mesh=self, value=value, uv_map=uv_map, sample_uv=sample_uv, data_type='FLOAT', node_label=node_label, node_color=node_color, **kwargs)
     return node
 ```
 ### sample_uv_surface_int
@@ -4157,7 +4206,7 @@ def sample_uv_surface_float(self, value=None, source_uv_map=None, sample_uv=None
 ##### Arguments
 
 - value : None
-- source_uv_map : None
+- uv_map : None
 - sample_uv : None
 - node_label : None
 - node_color : None
@@ -4165,8 +4214,8 @@ def sample_uv_surface_float(self, value=None, source_uv_map=None, sample_uv=None
 #### Source code
 
 ``` python
-def sample_uv_surface_int(self, value=None, source_uv_map=None, sample_uv=None, node_label=None, node_color=None):
-    node = self.tree.SampleUVSurface(mesh=self, value=value, source_uv_map=source_uv_map, sample_uv=sample_uv, data_type='INT', node_label=node_label, node_color=node_color)
+def sample_uv_surface_int(self, value=None, uv_map=None, sample_uv=None, node_label=None, node_color=None, **kwargs):
+    node = self.tree.SampleUVSurface(mesh=self, value=value, uv_map=uv_map, sample_uv=sample_uv, data_type='INT', node_label=node_label, node_color=node_color, **kwargs)
     return node
 ```
 ### sample_uv_surface_quaternion
@@ -4180,7 +4229,7 @@ def sample_uv_surface_int(self, value=None, source_uv_map=None, sample_uv=None, 
 ##### Arguments
 
 - value : None
-- source_uv_map : None
+- uv_map : None
 - sample_uv : None
 - node_label : None
 - node_color : None
@@ -4188,8 +4237,8 @@ def sample_uv_surface_int(self, value=None, source_uv_map=None, sample_uv=None, 
 #### Source code
 
 ``` python
-def sample_uv_surface_quaternion(self, value=None, source_uv_map=None, sample_uv=None, node_label=None, node_color=None):
-    node = self.tree.SampleUVSurface(mesh=self, value=value, source_uv_map=source_uv_map, sample_uv=sample_uv, data_type='QUATERNION', node_label=node_label, node_color=node_color)
+def sample_uv_surface_quaternion(self, value=None, uv_map=None, sample_uv=None, node_label=None, node_color=None, **kwargs):
+    node = self.tree.SampleUVSurface(mesh=self, value=value, uv_map=uv_map, sample_uv=sample_uv, data_type='QUATERNION', node_label=node_label, node_color=node_color, **kwargs)
     return node
 ```
 ### sample_uv_surface_vector
@@ -4203,7 +4252,7 @@ def sample_uv_surface_quaternion(self, value=None, source_uv_map=None, sample_uv
 ##### Arguments
 
 - value : None
-- source_uv_map : None
+- uv_map : None
 - sample_uv : None
 - node_label : None
 - node_color : None
@@ -4211,8 +4260,8 @@ def sample_uv_surface_quaternion(self, value=None, source_uv_map=None, sample_uv
 #### Source code
 
 ``` python
-def sample_uv_surface_vector(self, value=None, source_uv_map=None, sample_uv=None, node_label=None, node_color=None):
-    node = self.tree.SampleUVSurface(mesh=self, value=value, source_uv_map=source_uv_map, sample_uv=sample_uv, data_type='FLOAT_VECTOR', node_label=node_label, node_color=node_color)
+def sample_uv_surface_vector(self, value=None, uv_map=None, sample_uv=None, node_label=None, node_color=None, **kwargs):
+    node = self.tree.SampleUVSurface(mesh=self, value=value, uv_map=uv_map, sample_uv=sample_uv, data_type='FLOAT_VECTOR', node_label=node_label, node_color=node_color, **kwargs)
     return node
 ```
 ### scale_elements
@@ -4237,8 +4286,8 @@ def sample_uv_surface_vector(self, value=None, source_uv_map=None, sample_uv=Non
 #### Source code
 
 ``` python
-def scale_elements(self, scale=None, center=None, axis=None, selection=None, domain='FACE', scale_mode='UNIFORM', node_label=None, node_color=None):
-    node = self.tree.ScaleElements(geometry=self, scale=scale, center=center, axis=axis, selection=self._get_selection(selection), domain=self._get_domain(domain, ('FACE', 'EDGE')), scale_mode=scale_mode, node_label=node_label, node_color=node_color)
+def scale_elements(self, scale=None, center=None, axis=None, selection=None, domain='FACE', scale_mode='UNIFORM', node_label=None, node_color=None, **kwargs):
+    node = self.tree.ScaleElements(geometry=self, scale=scale, center=center, axis=axis, selection=self._get_selection(selection), domain=self._get_domain(domain, ('FACE', 'EDGE')), scale_mode=scale_mode, node_label=node_label, node_color=node_color, **kwargs)
     self.jump(node.geometry)
     return self
 ```
@@ -4262,8 +4311,8 @@ def scale_elements(self, scale=None, center=None, axis=None, selection=None, dom
 #### Source code
 
 ``` python
-def scale_instances(self, scale=None, center=None, local_space=None, selection=None, node_label=None, node_color=None):
-    node = self.tree.ScaleInstances(instances=self, scale=scale, center=center, local_space=local_space, selection=self._get_selection(selection), node_label=node_label, node_color=node_color)
+def scale_instances(self, scale=None, center=None, local_space=None, selection=None, node_label=None, node_color=None, **kwargs):
+    node = self.tree.ScaleInstances(instances=self, scale=scale, center=center, local_space=local_space, selection=self._get_selection(selection), node_label=node_label, node_color=node_color, **kwargs)
     self.jump(node.instances)
     return self
 ```
@@ -4283,8 +4332,8 @@ def scale_instances(self, scale=None, center=None, local_space=None, selection=N
 #### Source code
 
 ``` python
-def separate_components(self, node_label=None, node_color=None):
-    node = self.tree.SeparateComponents(geometry=self, node_label=node_label, node_color=node_color)
+def separate_components(self, node_label=None, node_color=None, **kwargs):
+    node = self.tree.SeparateComponents(geometry=self, node_label=node_label, node_color=node_color, **kwargs)
     return node
 ```
 ### separate_geometry
@@ -4305,8 +4354,8 @@ def separate_components(self, node_label=None, node_color=None):
 #### Source code
 
 ``` python
-def separate_geometry(self, selection=None, domain='POINT', node_label=None, node_color=None):
-    node = self.tree.SeparateGeometry(geometry=self, selection=self._get_selection(selection), domain=self._get_domain(domain, ('POINT', 'EDGE', 'FACE', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color)
+def separate_geometry(self, selection=None, domain='POINT', node_label=None, node_color=None, **kwargs):
+    node = self.tree.SeparateGeometry(geometry=self, selection=self._get_selection(selection), domain=self._get_domain(domain, ('POINT', 'EDGE', 'FACE', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color, **kwargs)
     return node
 ```
 ### set_curve_normal
@@ -4319,16 +4368,17 @@ def separate_geometry(self, selection=None, domain='POINT', node_label=None, nod
 
 ##### Arguments
 
+- normal : None
 - selection : None
-- mode : 'MINIMUM_TWIST' in ('MINIMUM_TWIST', 'Z_UP')
+- mode : 'MINIMUM_TWIST' in ('MINIMUM_TWIST', 'Z_UP', 'FREE')
 - node_label : None
 - node_color : None
 
 #### Source code
 
 ``` python
-def set_curve_normal(self, selection=None, mode='MINIMUM_TWIST', node_label=None, node_color=None):
-    node = self.tree.SetCurveNormal(curve=self, selection=self._get_selection(selection), mode=mode, node_label=node_label, node_color=node_color)
+def set_curve_normal(self, normal=None, selection=None, mode='MINIMUM_TWIST', node_label=None, node_color=None, **kwargs):
+    node = self.tree.SetCurveNormal(curve=self, normal=normal, selection=self._get_selection(selection), mode=mode, node_label=node_label, node_color=node_color, **kwargs)
     self.jump(node.curve)
     return self
 ```
@@ -4350,8 +4400,8 @@ def set_curve_normal(self, selection=None, mode='MINIMUM_TWIST', node_label=None
 #### Source code
 
 ``` python
-def set_curve_radius(self, radius=None, selection=None, node_label=None, node_color=None):
-    node = self.tree.SetCurveRadius(curve=self, radius=radius, selection=self._get_selection(selection), node_label=node_label, node_color=node_color)
+def set_curve_radius(self, radius=None, selection=None, node_label=None, node_color=None, **kwargs):
+    node = self.tree.SetCurveRadius(curve=self, radius=radius, selection=self._get_selection(selection), node_label=node_label, node_color=node_color, **kwargs)
     self.jump(node.curve)
     return self
 ```
@@ -4373,8 +4423,8 @@ def set_curve_radius(self, radius=None, selection=None, node_label=None, node_co
 #### Source code
 
 ``` python
-def set_curve_tilt(self, tilt=None, selection=None, node_label=None, node_color=None):
-    node = self.tree.SetCurveTilt(curve=self, tilt=tilt, selection=self._get_selection(selection), node_label=node_label, node_color=node_color)
+def set_curve_tilt(self, tilt=None, selection=None, node_label=None, node_color=None, **kwargs):
+    node = self.tree.SetCurveTilt(curve=self, tilt=tilt, selection=self._get_selection(selection), node_label=node_label, node_color=node_color, **kwargs)
     self.jump(node.curve)
     return self
 ```
@@ -4398,8 +4448,8 @@ def set_curve_tilt(self, tilt=None, selection=None, node_label=None, node_color=
 #### Source code
 
 ``` python
-def set_handle_positions(self, position=None, offset=None, selection=None, mode='LEFT', node_label=None, node_color=None):
-    node = self.tree.SetHandlePositions(curve=self, position=position, offset=offset, selection=self._get_selection(selection), mode=mode, node_label=node_label, node_color=node_color)
+def set_handle_positions(self, position=None, offset=None, selection=None, mode='LEFT', node_label=None, node_color=None, **kwargs):
+    node = self.tree.SetHandlePositions(curve=self, position=position, offset=offset, selection=self._get_selection(selection), mode=mode, node_label=node_label, node_color=node_color, **kwargs)
     self.jump(node.curve)
     return self
 ```
@@ -4415,15 +4465,15 @@ def set_handle_positions(self, position=None, offset=None, selection=None, mode=
 
 - selection : None
 - handle_type : 'AUTO' in ('FREE', 'AUTO', 'VECTOR', 'ALIGN')
-- mode : {'LEFT', 'RIGHT'}
+- mode : {'RIGHT', 'LEFT'}
 - node_label : None
 - node_color : None
 
 #### Source code
 
 ``` python
-def set_handle_type(self, selection=None, handle_type='AUTO', mode={'LEFT', 'RIGHT'}, node_label=None, node_color=None):
-    node = self.tree.SetHandleType(curve=self, selection=self._get_selection(selection), handle_type=handle_type, mode=mode, node_label=node_label, node_color=node_color)
+def set_handle_type(self, selection=None, handle_type='AUTO', mode={'RIGHT', 'LEFT'}, node_label=None, node_color=None, **kwargs):
+    node = self.tree.SetHandleType(curve=self, selection=self._get_selection(selection), handle_type=handle_type, mode=mode, node_label=node_label, node_color=node_color, **kwargs)
     self.jump(node.curve)
     return self
 ```
@@ -4445,8 +4495,8 @@ def set_handle_type(self, selection=None, handle_type='AUTO', mode={'LEFT', 'RIG
 #### Source code
 
 ``` python
-def set_id(self, ID=None, selection=None, node_label=None, node_color=None):
-    node = self.tree.SetID(geometry=self, ID=ID, selection=self._get_selection(selection), node_label=node_label, node_color=node_color)
+def set_id(self, ID=None, selection=None, node_label=None, node_color=None, **kwargs):
+    node = self.tree.SetID(geometry=self, ID=ID, selection=self._get_selection(selection), node_label=node_label, node_color=node_color, **kwargs)
     self.jump(node.geometry)
     return self
 ```
@@ -4468,8 +4518,8 @@ def set_id(self, ID=None, selection=None, node_label=None, node_color=None):
 #### Source code
 
 ``` python
-def set_material(self, material=None, selection=None, node_label=None, node_color=None):
-    node = self.tree.SetMaterial(geometry=self, material=material, selection=self._get_selection(selection), node_label=node_label, node_color=node_color)
+def set_material(self, material=None, selection=None, node_label=None, node_color=None, **kwargs):
+    node = self.tree.SetMaterial(geometry=self, material=material, selection=self._get_selection(selection), node_label=node_label, node_color=node_color, **kwargs)
     self.jump(node.geometry)
     return self
 ```
@@ -4491,8 +4541,8 @@ def set_material(self, material=None, selection=None, node_label=None, node_colo
 #### Source code
 
 ``` python
-def set_material_index(self, material_index=None, selection=None, node_label=None, node_color=None):
-    node = self.tree.SetMaterialIndex(geometry=self, material_index=material_index, selection=self._get_selection(selection), node_label=node_label, node_color=node_color)
+def set_material_index(self, material_index=None, selection=None, node_label=None, node_color=None, **kwargs):
+    node = self.tree.SetMaterialIndex(geometry=self, material_index=material_index, selection=self._get_selection(selection), node_label=node_label, node_color=node_color, **kwargs)
     self.jump(node.geometry)
     return self
 ```
@@ -4514,8 +4564,8 @@ def set_material_index(self, material_index=None, selection=None, node_label=Non
 #### Source code
 
 ``` python
-def set_point_radius(self, radius=None, selection=None, node_label=None, node_color=None):
-    node = self.tree.SetPointRadius(points=self, radius=radius, selection=self._get_selection(selection), node_label=node_label, node_color=node_color)
+def set_point_radius(self, radius=None, selection=None, node_label=None, node_color=None, **kwargs):
+    node = self.tree.SetPointRadius(points=self, radius=radius, selection=self._get_selection(selection), node_label=node_label, node_color=node_color, **kwargs)
     self.jump(node.points)
     return self
 ```
@@ -4538,8 +4588,8 @@ def set_point_radius(self, radius=None, selection=None, node_label=None, node_co
 #### Source code
 
 ``` python
-def set_position(self, position=None, offset=None, selection=None, node_label=None, node_color=None):
-    node = self.tree.SetPosition(geometry=self, position=position, offset=offset, selection=self._get_selection(selection), node_label=node_label, node_color=node_color)
+def set_position(self, position=None, offset=None, selection=None, node_label=None, node_color=None, **kwargs):
+    node = self.tree.SetPosition(geometry=self, position=position, offset=offset, selection=self._get_selection(selection), node_label=node_label, node_color=node_color, **kwargs)
     self.jump(node.geometry)
     return self
 ```
@@ -4562,8 +4612,8 @@ def set_position(self, position=None, offset=None, selection=None, node_label=No
 #### Source code
 
 ``` python
-def set_shade_smooth(self, shade_smooth=None, selection=None, domain='FACE', node_label=None, node_color=None):
-    node = self.tree.SetShadeSmooth(geometry=self, shade_smooth=shade_smooth, selection=self._get_selection(selection), domain=self._get_domain(domain, ('EDGE', 'FACE')), node_label=node_label, node_color=node_color)
+def set_shade_smooth(self, shade_smooth=None, selection=None, domain='FACE', node_label=None, node_color=None, **kwargs):
+    node = self.tree.SetShadeSmooth(geometry=self, shade_smooth=shade_smooth, selection=self._get_selection(selection), domain=self._get_domain(domain, ('EDGE', 'FACE')), node_label=node_label, node_color=node_color, **kwargs)
     self.jump(node.geometry)
     return self
 ```
@@ -4585,8 +4635,8 @@ def set_shade_smooth(self, shade_smooth=None, selection=None, domain='FACE', nod
 #### Source code
 
 ``` python
-def set_spline_cyclic(self, cyclic=None, selection=None, node_label=None, node_color=None):
-    node = self.tree.SetSplineCyclic(geometry=self, cyclic=cyclic, selection=self._get_selection(selection), node_label=node_label, node_color=node_color)
+def set_spline_cyclic(self, cyclic=None, selection=None, node_label=None, node_color=None, **kwargs):
+    node = self.tree.SetSplineCyclic(geometry=self, cyclic=cyclic, selection=self._get_selection(selection), node_label=node_label, node_color=node_color, **kwargs)
     self.jump(node.geometry)
     return self
 ```
@@ -4608,8 +4658,8 @@ def set_spline_cyclic(self, cyclic=None, selection=None, node_label=None, node_c
 #### Source code
 
 ``` python
-def set_spline_resolution(self, resolution=None, selection=None, node_label=None, node_color=None):
-    node = self.tree.SetSplineResolution(geometry=self, resolution=resolution, selection=self._get_selection(selection), node_label=node_label, node_color=node_color)
+def set_spline_resolution(self, resolution=None, selection=None, node_label=None, node_color=None, **kwargs):
+    node = self.tree.SetSplineResolution(geometry=self, resolution=resolution, selection=self._get_selection(selection), node_label=node_label, node_color=node_color, **kwargs)
     self.jump(node.geometry)
     return self
 ```
@@ -4631,8 +4681,8 @@ def set_spline_resolution(self, resolution=None, selection=None, node_label=None
 #### Source code
 
 ``` python
-def set_spline_type(self, selection=None, spline_type='POLY', node_label=None, node_color=None):
-    node = self.tree.SetSplineType(curve=self, selection=self._get_selection(selection), spline_type=spline_type, node_label=node_label, node_color=node_color)
+def set_spline_type(self, selection=None, spline_type='POLY', node_label=None, node_color=None, **kwargs):
+    node = self.tree.SetSplineType(curve=self, selection=self._get_selection(selection), spline_type=spline_type, node_label=node_label, node_color=node_color, **kwargs)
     self.jump(node.curve)
     return self
 ```
@@ -4654,9 +4704,34 @@ def set_spline_type(self, selection=None, spline_type='POLY', node_label=None, n
 #### Source code
 
 ``` python
-def shortest_edge_paths(self, end_vertex=None, edge_cost=None, node_label=None, node_color=None):
-    node = self.tree.ShortestEdgePaths(end_vertex=end_vertex, edge_cost=edge_cost, node_label=node_label, node_color=node_color)
+def shortest_edge_paths(self, end_vertex=None, edge_cost=None, node_label=None, node_color=None, **kwargs):
+    node = self.tree.ShortestEdgePaths(end_vertex=end_vertex, edge_cost=edge_cost, node_label=node_label, node_color=node_color, **kwargs)
     return node
+```
+### sort_elements
+
+
+- node : [SortElements](/docs/GeoNodes/SortElements.md)
+- self : geometry
+- jump : geometry
+- return : self
+
+##### Arguments
+
+- group_id : None
+- sort_weight : None
+- selection : None
+- domain : 'POINT' in ('POINT', 'EDGE', 'FACE', 'CURVE', 'INSTANCE')
+- node_label : None
+- node_color : None
+
+#### Source code
+
+``` python
+def sort_elements(self, group_id=None, sort_weight=None, selection=None, domain='POINT', node_label=None, node_color=None, **kwargs):
+    node = self.tree.SortElements(geometry=self, group_id=group_id, sort_weight=sort_weight, selection=self._get_selection(selection), domain=self._get_domain(domain, ('POINT', 'EDGE', 'FACE', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color, **kwargs)
+    self.jump(node.geometry)
+    return self
 ```
 ### spline_length
 
@@ -4674,8 +4749,8 @@ def shortest_edge_paths(self, end_vertex=None, edge_cost=None, node_label=None, 
 #### Source code
 
 ``` python
-def spline_length(self, node_label=None, node_color=None):
-    node = self.tree.SplineLength(node_label=node_label, node_color=node_color)
+def spline_length(self, node_label=None, node_color=None, **kwargs):
+    node = self.tree.SplineLength(node_label=node_label, node_color=node_color, **kwargs)
     return node
 ```
 ### spline_parameter
@@ -4694,8 +4769,8 @@ def spline_length(self, node_label=None, node_color=None):
 #### Source code
 
 ``` python
-def spline_parameter(self, node_label=None, node_color=None):
-    node = self.tree.SplineParameter(node_label=node_label, node_color=node_color)
+def spline_parameter(self, node_label=None, node_color=None, **kwargs):
+    node = self.tree.SplineParameter(node_label=node_label, node_color=node_color, **kwargs)
     return node
 ```
 ### split_edges
@@ -4715,10 +4790,33 @@ def spline_parameter(self, node_label=None, node_color=None):
 #### Source code
 
 ``` python
-def split_edges(self, selection=None, node_label=None, node_color=None):
-    node = self.tree.SplitEdges(mesh=self, selection=self._get_selection(selection), node_label=node_label, node_color=node_color)
+def split_edges(self, selection=None, node_label=None, node_color=None, **kwargs):
+    node = self.tree.SplitEdges(mesh=self, selection=self._get_selection(selection), node_label=node_label, node_color=node_color, **kwargs)
     self.jump(node.mesh)
     return self
+```
+### split_to_instances
+
+
+- node : [SplitToInstances](/docs/GeoNodes/SplitToInstances.md)
+- self : geometry
+- jump : No
+- return : instances
+
+##### Arguments
+
+- group_id : None
+- selection : None
+- domain : 'POINT' in ('POINT', 'EDGE', 'FACE', 'CURVE', 'INSTANCE')
+- node_label : None
+- node_color : None
+
+#### Source code
+
+``` python
+def split_to_instances(self, group_id=None, selection=None, domain='POINT', node_label=None, node_color=None, **kwargs):
+    node = self.tree.SplitToInstances(geometry=self, group_id=group_id, selection=self._get_selection(selection), domain=self._get_domain(domain, ('POINT', 'EDGE', 'FACE', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color, **kwargs)
+    return node.instances
 ```
 ### store_named_attribute
 
@@ -4741,8 +4839,8 @@ def split_edges(self, selection=None, node_label=None, node_color=None):
 #### Source code
 
 ``` python
-def store_named_attribute(self, name=None, value=None, selection=None, data_type='FLOAT', domain='POINT', node_label=None, node_color=None):
-    node = self.tree.StoreNamedAttribute(geometry=self, name=name, value=value, selection=self._get_selection(selection), data_type=data_type, domain=self._get_domain(domain, ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color)
+def store_named_attribute(self, name=None, value=None, selection=None, data_type='FLOAT', domain='POINT', node_label=None, node_color=None, **kwargs):
+    node = self.tree.StoreNamedAttribute(geometry=self, name=name, value=value, selection=self._get_selection(selection), data_type=data_type, domain=self._get_domain(domain, ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color, **kwargs)
     self.jump(node.geometry)
     return self
 ```
@@ -4766,8 +4864,8 @@ def store_named_attribute(self, name=None, value=None, selection=None, data_type
 #### Source code
 
 ``` python
-def store_named_boolean(self, name=None, value=None, selection=None, domain='POINT', node_label=None, node_color=None):
-    node = self.tree.StoreNamedAttribute(geometry=self, name=name, value=value, selection=self._get_selection(selection), data_type='BOOLEAN', domain=self._get_domain(domain, ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color)
+def store_named_boolean(self, name=None, value=None, selection=None, domain='POINT', node_label=None, node_color=None, **kwargs):
+    node = self.tree.StoreNamedAttribute(geometry=self, name=name, value=value, selection=self._get_selection(selection), data_type='BOOLEAN', domain=self._get_domain(domain, ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color, **kwargs)
     self.jump(node.geometry)
     return self
 ```
@@ -4791,8 +4889,8 @@ def store_named_boolean(self, name=None, value=None, selection=None, domain='POI
 #### Source code
 
 ``` python
-def store_named_byte_color(self, name=None, value=None, selection=None, domain='POINT', node_label=None, node_color=None):
-    node = self.tree.StoreNamedAttribute(geometry=self, name=name, value=value, selection=self._get_selection(selection), data_type='BYTE_COLOR', domain=self._get_domain(domain, ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color)
+def store_named_byte_color(self, name=None, value=None, selection=None, domain='POINT', node_label=None, node_color=None, **kwargs):
+    node = self.tree.StoreNamedAttribute(geometry=self, name=name, value=value, selection=self._get_selection(selection), data_type='BYTE_COLOR', domain=self._get_domain(domain, ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color, **kwargs)
     self.jump(node.geometry)
     return self
 ```
@@ -4816,8 +4914,8 @@ def store_named_byte_color(self, name=None, value=None, selection=None, domain='
 #### Source code
 
 ``` python
-def store_named_float(self, name=None, value=None, selection=None, domain='POINT', node_label=None, node_color=None):
-    node = self.tree.StoreNamedAttribute(geometry=self, name=name, value=value, selection=self._get_selection(selection), data_type='FLOAT', domain=self._get_domain(domain, ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color)
+def store_named_float(self, name=None, value=None, selection=None, domain='POINT', node_label=None, node_color=None, **kwargs):
+    node = self.tree.StoreNamedAttribute(geometry=self, name=name, value=value, selection=self._get_selection(selection), data_type='FLOAT', domain=self._get_domain(domain, ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color, **kwargs)
     self.jump(node.geometry)
     return self
 ```
@@ -4841,8 +4939,8 @@ def store_named_float(self, name=None, value=None, selection=None, domain='POINT
 #### Source code
 
 ``` python
-def store_named_float2(self, name=None, value=None, selection=None, domain='POINT', node_label=None, node_color=None):
-    node = self.tree.StoreNamedAttribute(geometry=self, name=name, value=value, selection=self._get_selection(selection), data_type='FLOAT2', domain=self._get_domain(domain, ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color)
+def store_named_float2(self, name=None, value=None, selection=None, domain='POINT', node_label=None, node_color=None, **kwargs):
+    node = self.tree.StoreNamedAttribute(geometry=self, name=name, value=value, selection=self._get_selection(selection), data_type='FLOAT2', domain=self._get_domain(domain, ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color, **kwargs)
     self.jump(node.geometry)
     return self
 ```
@@ -4866,8 +4964,8 @@ def store_named_float2(self, name=None, value=None, selection=None, domain='POIN
 #### Source code
 
 ``` python
-def store_named_float_color(self, name=None, value=None, selection=None, domain='POINT', node_label=None, node_color=None):
-    node = self.tree.StoreNamedAttribute(geometry=self, name=name, value=value, selection=self._get_selection(selection), data_type='FLOAT_COLOR', domain=self._get_domain(domain, ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color)
+def store_named_float_color(self, name=None, value=None, selection=None, domain='POINT', node_label=None, node_color=None, **kwargs):
+    node = self.tree.StoreNamedAttribute(geometry=self, name=name, value=value, selection=self._get_selection(selection), data_type='FLOAT_COLOR', domain=self._get_domain(domain, ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color, **kwargs)
     self.jump(node.geometry)
     return self
 ```
@@ -4891,8 +4989,8 @@ def store_named_float_color(self, name=None, value=None, selection=None, domain=
 #### Source code
 
 ``` python
-def store_named_int(self, name=None, value=None, selection=None, domain='POINT', node_label=None, node_color=None):
-    node = self.tree.StoreNamedAttribute(geometry=self, name=name, value=value, selection=self._get_selection(selection), data_type='INT', domain=self._get_domain(domain, ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color)
+def store_named_int(self, name=None, value=None, selection=None, domain='POINT', node_label=None, node_color=None, **kwargs):
+    node = self.tree.StoreNamedAttribute(geometry=self, name=name, value=value, selection=self._get_selection(selection), data_type='INT', domain=self._get_domain(domain, ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color, **kwargs)
     self.jump(node.geometry)
     return self
 ```
@@ -4916,8 +5014,8 @@ def store_named_int(self, name=None, value=None, selection=None, domain='POINT',
 #### Source code
 
 ``` python
-def store_named_quaternion(self, name=None, value=None, selection=None, domain='POINT', node_label=None, node_color=None):
-    node = self.tree.StoreNamedAttribute(geometry=self, name=name, value=value, selection=self._get_selection(selection), data_type='QUATERNION', domain=self._get_domain(domain, ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color)
+def store_named_quaternion(self, name=None, value=None, selection=None, domain='POINT', node_label=None, node_color=None, **kwargs):
+    node = self.tree.StoreNamedAttribute(geometry=self, name=name, value=value, selection=self._get_selection(selection), data_type='QUATERNION', domain=self._get_domain(domain, ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color, **kwargs)
     self.jump(node.geometry)
     return self
 ```
@@ -4941,8 +5039,8 @@ def store_named_quaternion(self, name=None, value=None, selection=None, domain='
 #### Source code
 
 ``` python
-def store_named_vector(self, name=None, value=None, selection=None, domain='POINT', node_label=None, node_color=None):
-    node = self.tree.StoreNamedAttribute(geometry=self, name=name, value=value, selection=self._get_selection(selection), data_type='FLOAT_VECTOR', domain=self._get_domain(domain, ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color)
+def store_named_vector(self, name=None, value=None, selection=None, domain='POINT', node_label=None, node_color=None, **kwargs):
+    node = self.tree.StoreNamedAttribute(geometry=self, name=name, value=value, selection=self._get_selection(selection), data_type='FLOAT_VECTOR', domain=self._get_domain(domain, ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color, **kwargs)
     self.jump(node.geometry)
     return self
 ```
@@ -4963,8 +5061,8 @@ def store_named_vector(self, name=None, value=None, selection=None, domain='POIN
 #### Source code
 
 ``` python
-def subdivide_curve(self, cuts=None, node_label=None, node_color=None):
-    node = self.tree.SubdivideCurve(curve=self, cuts=cuts, node_label=node_label, node_color=node_color)
+def subdivide_curve(self, cuts=None, node_label=None, node_color=None, **kwargs):
+    node = self.tree.SubdivideCurve(curve=self, cuts=cuts, node_label=node_label, node_color=node_color, **kwargs)
     self.jump(node.curve)
     return self
 ```
@@ -4985,8 +5083,8 @@ def subdivide_curve(self, cuts=None, node_label=None, node_color=None):
 #### Source code
 
 ``` python
-def subdivide_mesh(self, level=None, node_label=None, node_color=None):
-    node = self.tree.SubdivideMesh(mesh=self, level=level, node_label=node_label, node_color=node_color)
+def subdivide_mesh(self, level=None, node_label=None, node_color=None, **kwargs):
+    node = self.tree.SubdivideMesh(mesh=self, level=level, node_label=node_label, node_color=node_color, **kwargs)
     self.jump(node.mesh)
     return self
 ```
@@ -5011,8 +5109,8 @@ def subdivide_mesh(self, level=None, node_label=None, node_color=None):
 #### Source code
 
 ``` python
-def subdivision_surface(self, level=None, edge_crease=None, vertex_crease=None, boundary_smooth='ALL', uv_smooth='PRESERVE_BOUNDARIES', node_label=None, node_color=None):
-    node = self.tree.SubdivisionSurface(mesh=self, level=level, edge_crease=edge_crease, vertex_crease=vertex_crease, boundary_smooth=boundary_smooth, uv_smooth=uv_smooth, node_label=node_label, node_color=node_color)
+def subdivision_surface(self, level=None, edge_crease=None, vertex_crease=None, boundary_smooth='ALL', uv_smooth='PRESERVE_BOUNDARIES', node_label=None, node_color=None, **kwargs):
+    node = self.tree.SubdivisionSurface(mesh=self, level=level, edge_crease=edge_crease, vertex_crease=vertex_crease, boundary_smooth=boundary_smooth, uv_smooth=uv_smooth, node_label=node_label, node_color=node_color, **kwargs)
     self.jump(node.mesh)
     return self
 ```
@@ -5034,8 +5132,8 @@ def subdivision_surface(self, level=None, edge_crease=None, vertex_crease=None, 
 #### Source code
 
 ``` python
-def switch(self, switch=None, true=None, node_label=None, node_color=None):
-    node = self.tree.Switch(switch=switch, false=self, true=true, input_type='GEOMETRY', node_label=node_label, node_color=node_color)
+def switch(self, switch=None, true=None, node_label=None, node_color=None, **kwargs):
+    node = self.tree.Switch(switch=switch, false=self, true=true, input_type='GEOMETRY', node_label=node_label, node_color=node_color, **kwargs)
     return node.output
 ```
 ### transform_geometry
@@ -5057,8 +5155,8 @@ def switch(self, switch=None, true=None, node_label=None, node_color=None):
 #### Source code
 
 ``` python
-def transform_geometry(self, translation=None, rotation=None, scale=None, node_label=None, node_color=None):
-    node = self.tree.TransformGeometry(geometry=self, translation=translation, rotation=rotation, scale=scale, node_label=node_label, node_color=node_color)
+def transform_geometry(self, translation=None, rotation=None, scale=None, node_label=None, node_color=None, **kwargs):
+    node = self.tree.TransformGeometry(geometry=self, translation=translation, rotation=rotation, scale=scale, node_label=node_label, node_color=node_color, **kwargs)
     self.jump(node.geometry)
     return self
 ```
@@ -5081,8 +5179,8 @@ def transform_geometry(self, translation=None, rotation=None, scale=None, node_l
 #### Source code
 
 ``` python
-def translate_instances(self, translation=None, local_space=None, selection=None, node_label=None, node_color=None):
-    node = self.tree.TranslateInstances(instances=self, translation=translation, local_space=local_space, selection=self._get_selection(selection), node_label=node_label, node_color=node_color)
+def translate_instances(self, translation=None, local_space=None, selection=None, node_label=None, node_color=None, **kwargs):
+    node = self.tree.TranslateInstances(instances=self, translation=translation, local_space=local_space, selection=self._get_selection(selection), node_label=node_label, node_color=node_color, **kwargs)
     self.jump(node.instances)
     return self
 ```
@@ -5106,8 +5204,8 @@ def translate_instances(self, translation=None, local_space=None, selection=None
 #### Source code
 
 ``` python
-def triangulate(self, minimum_vertices=None, selection=None, ngon_method='BEAUTY', quad_method='SHORTEST_DIAGONAL', node_label=None, node_color=None):
-    node = self.tree.Triangulate(mesh=self, minimum_vertices=minimum_vertices, selection=self._get_selection(selection), ngon_method=ngon_method, quad_method=quad_method, node_label=node_label, node_color=node_color)
+def triangulate(self, minimum_vertices=None, selection=None, ngon_method='BEAUTY', quad_method='SHORTEST_DIAGONAL', node_label=None, node_color=None, **kwargs):
+    node = self.tree.Triangulate(mesh=self, minimum_vertices=minimum_vertices, selection=self._get_selection(selection), ngon_method=ngon_method, quad_method=quad_method, node_label=node_label, node_color=node_color, **kwargs)
     self.jump(node.mesh)
     return self
 ```
@@ -5131,8 +5229,8 @@ def triangulate(self, minimum_vertices=None, selection=None, ngon_method='BEAUTY
 #### Source code
 
 ``` python
-def trim_curve(self, start=None, end=None, selection=None, mode='FACTOR', node_label=None, node_color=None):
-    node = self.tree.TrimCurve(curve=self, start=start, end=end, selection=self._get_selection(selection), mode=mode, node_label=node_label, node_color=node_color)
+def trim_curve(self, start=None, end=None, selection=None, mode='FACTOR', node_label=None, node_color=None, **kwargs):
+    node = self.tree.TrimCurve(curve=self, start=start, end=end, selection=self._get_selection(selection), mode=mode, node_label=node_label, node_color=node_color, **kwargs)
     self.jump(node.curve)
     return self
 ```
@@ -5157,8 +5255,8 @@ def trim_curve(self, start=None, end=None, selection=None, mode='FACTOR', node_l
 #### Source code
 
 ``` python
-def uv_unwrap(self, seam=None, margin=None, fill_holes=None, selection=None, method='ANGLE_BASED', node_label=None, node_color=None):
-    node = self.tree.UVUnwrap(seam=seam, margin=margin, fill_holes=fill_holes, selection=self._get_selection(selection), method=method, node_label=node_label, node_color=node_color)
+def uv_unwrap(self, seam=None, margin=None, fill_holes=None, selection=None, method='ANGLE_BASED', node_label=None, node_color=None, **kwargs):
+    node = self.tree.UVUnwrap(seam=seam, margin=margin, fill_holes=fill_holes, selection=self._get_selection(selection), method=method, node_label=node_label, node_color=node_color, **kwargs)
     return node.uv
 ```
 ### vertex_neighbors
@@ -5177,8 +5275,8 @@ def uv_unwrap(self, seam=None, margin=None, fill_holes=None, selection=None, met
 #### Source code
 
 ``` python
-def vertex_neighbors(self, node_label=None, node_color=None):
-    node = self.tree.VertexNeighbors(node_label=node_label, node_color=node_color)
+def vertex_neighbors(self, node_label=None, node_color=None, **kwargs):
+    node = self.tree.VertexNeighbors(node_label=node_label, node_color=node_color, **kwargs)
     return node
 ```
 ### vertex_of_corner
@@ -5198,8 +5296,8 @@ def vertex_neighbors(self, node_label=None, node_color=None):
 #### Source code
 
 ``` python
-def vertex_of_corner(self, corner_index=None, node_label=None, node_color=None):
-    node = self.tree.VertexOfCorner(corner_index=corner_index, node_label=node_label, node_color=node_color)
+def vertex_of_corner(self, corner_index=None, node_label=None, node_color=None, **kwargs):
+    node = self.tree.VertexOfCorner(corner_index=corner_index, node_label=node_label, node_color=node_color, **kwargs)
     return node
 ```
 ### viewer
@@ -5214,15 +5312,15 @@ def vertex_of_corner(self, corner_index=None, node_label=None, node_color=None):
 
 - value : None
 - data_type : 'FLOAT' in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN', 'QUATERNION')
-- domain : 'AUTO' in ('AUTO', 'POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
+- domain : 'AUTO' in ('AUTO', 'POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER')
 - node_label : None
 - node_color : None
 
 #### Source code
 
 ``` python
-def viewer(self, value=None, data_type='FLOAT', domain='AUTO', node_label=None, node_color=None):
-    node = self.tree.Viewer(geometry=self, value=value, data_type=data_type, domain=self._get_domain(domain, ('AUTO', 'POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color)
+def viewer(self, value=None, data_type='FLOAT', domain='AUTO', node_label=None, node_color=None, **kwargs):
+    node = self.tree.Viewer(geometry=self, value=value, data_type=data_type, domain=self._get_domain(domain, ('AUTO', 'POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER')), node_label=node_label, node_color=node_color, **kwargs)
     return node
 ```
 ### viewer_boolean
@@ -5236,15 +5334,15 @@ def viewer(self, value=None, data_type='FLOAT', domain='AUTO', node_label=None, 
 ##### Arguments
 
 - value : None
-- domain : 'AUTO' in ('AUTO', 'POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
+- domain : 'AUTO' in ('AUTO', 'POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER')
 - node_label : None
 - node_color : None
 
 #### Source code
 
 ``` python
-def viewer_boolean(self, value=None, domain='AUTO', node_label=None, node_color=None):
-    node = self.tree.Viewer(geometry=self, value=value, data_type='BOOLEAN', domain=self._get_domain(domain, ('AUTO', 'POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color)
+def viewer_boolean(self, value=None, domain='AUTO', node_label=None, node_color=None, **kwargs):
+    node = self.tree.Viewer(geometry=self, value=value, data_type='BOOLEAN', domain=self._get_domain(domain, ('AUTO', 'POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER')), node_label=node_label, node_color=node_color, **kwargs)
     return node
 ```
 ### viewer_color
@@ -5258,15 +5356,15 @@ def viewer_boolean(self, value=None, domain='AUTO', node_label=None, node_color=
 ##### Arguments
 
 - value : None
-- domain : 'AUTO' in ('AUTO', 'POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
+- domain : 'AUTO' in ('AUTO', 'POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER')
 - node_label : None
 - node_color : None
 
 #### Source code
 
 ``` python
-def viewer_color(self, value=None, domain='AUTO', node_label=None, node_color=None):
-    node = self.tree.Viewer(geometry=self, value=value, data_type='FLOAT_COLOR', domain=self._get_domain(domain, ('AUTO', 'POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color)
+def viewer_color(self, value=None, domain='AUTO', node_label=None, node_color=None, **kwargs):
+    node = self.tree.Viewer(geometry=self, value=value, data_type='FLOAT_COLOR', domain=self._get_domain(domain, ('AUTO', 'POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER')), node_label=node_label, node_color=node_color, **kwargs)
     return node
 ```
 ### viewer_float
@@ -5280,15 +5378,15 @@ def viewer_color(self, value=None, domain='AUTO', node_label=None, node_color=No
 ##### Arguments
 
 - value : None
-- domain : 'AUTO' in ('AUTO', 'POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
+- domain : 'AUTO' in ('AUTO', 'POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER')
 - node_label : None
 - node_color : None
 
 #### Source code
 
 ``` python
-def viewer_float(self, value=None, domain='AUTO', node_label=None, node_color=None):
-    node = self.tree.Viewer(geometry=self, value=value, data_type='FLOAT', domain=self._get_domain(domain, ('AUTO', 'POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color)
+def viewer_float(self, value=None, domain='AUTO', node_label=None, node_color=None, **kwargs):
+    node = self.tree.Viewer(geometry=self, value=value, data_type='FLOAT', domain=self._get_domain(domain, ('AUTO', 'POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER')), node_label=node_label, node_color=node_color, **kwargs)
     return node
 ```
 ### viewer_int
@@ -5302,15 +5400,15 @@ def viewer_float(self, value=None, domain='AUTO', node_label=None, node_color=No
 ##### Arguments
 
 - value : None
-- domain : 'AUTO' in ('AUTO', 'POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
+- domain : 'AUTO' in ('AUTO', 'POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER')
 - node_label : None
 - node_color : None
 
 #### Source code
 
 ``` python
-def viewer_int(self, value=None, domain='AUTO', node_label=None, node_color=None):
-    node = self.tree.Viewer(geometry=self, value=value, data_type='INT', domain=self._get_domain(domain, ('AUTO', 'POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color)
+def viewer_int(self, value=None, domain='AUTO', node_label=None, node_color=None, **kwargs):
+    node = self.tree.Viewer(geometry=self, value=value, data_type='INT', domain=self._get_domain(domain, ('AUTO', 'POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER')), node_label=node_label, node_color=node_color, **kwargs)
     return node
 ```
 ### viewer_quaternion
@@ -5324,15 +5422,15 @@ def viewer_int(self, value=None, domain='AUTO', node_label=None, node_color=None
 ##### Arguments
 
 - value : None
-- domain : 'AUTO' in ('AUTO', 'POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
+- domain : 'AUTO' in ('AUTO', 'POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER')
 - node_label : None
 - node_color : None
 
 #### Source code
 
 ``` python
-def viewer_quaternion(self, value=None, domain='AUTO', node_label=None, node_color=None):
-    node = self.tree.Viewer(geometry=self, value=value, data_type='QUATERNION', domain=self._get_domain(domain, ('AUTO', 'POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color)
+def viewer_quaternion(self, value=None, domain='AUTO', node_label=None, node_color=None, **kwargs):
+    node = self.tree.Viewer(geometry=self, value=value, data_type='QUATERNION', domain=self._get_domain(domain, ('AUTO', 'POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER')), node_label=node_label, node_color=node_color, **kwargs)
     return node
 ```
 ### viewer_vector
@@ -5346,15 +5444,15 @@ def viewer_quaternion(self, value=None, domain='AUTO', node_label=None, node_col
 ##### Arguments
 
 - value : None
-- domain : 'AUTO' in ('AUTO', 'POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
+- domain : 'AUTO' in ('AUTO', 'POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER')
 - node_label : None
 - node_color : None
 
 #### Source code
 
 ``` python
-def viewer_vector(self, value=None, domain='AUTO', node_label=None, node_color=None):
-    node = self.tree.Viewer(geometry=self, value=value, data_type='FLOAT_VECTOR', domain=self._get_domain(domain, ('AUTO', 'POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')), node_label=node_label, node_color=node_color)
+def viewer_vector(self, value=None, domain='AUTO', node_label=None, node_color=None, **kwargs):
+    node = self.tree.Viewer(geometry=self, value=value, data_type='FLOAT_VECTOR', domain=self._get_domain(domain, ('AUTO', 'POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER')), node_label=node_label, node_color=node_color, **kwargs)
     return node
 ```
 ### volume_to_mesh
@@ -5378,7 +5476,7 @@ def viewer_vector(self, value=None, domain='AUTO', node_label=None, node_color=N
 #### Source code
 
 ``` python
-def volume_to_mesh(self, threshold=None, adaptivity=None, voxel_amount=None, voxel_size=None, resolution_mode='GRID', node_label=None, node_color=None):
-    node = self.tree.VolumeToMesh(volume=self, threshold=threshold, adaptivity=adaptivity, voxel_amount=voxel_amount, voxel_size=voxel_size, resolution_mode=resolution_mode, node_label=node_label, node_color=node_color)
+def volume_to_mesh(self, threshold=None, adaptivity=None, voxel_amount=None, voxel_size=None, resolution_mode='GRID', node_label=None, node_color=None, **kwargs):
+    node = self.tree.VolumeToMesh(volume=self, threshold=threshold, adaptivity=adaptivity, voxel_amount=voxel_amount, voxel_size=voxel_size, resolution_mode=resolution_mode, node_label=node_label, node_color=node_color, **kwargs)
     return node.mesh
 ```

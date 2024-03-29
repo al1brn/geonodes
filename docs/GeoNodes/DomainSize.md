@@ -5,7 +5,7 @@
 
 
 ``` python
-DomainSize(geometry=None, component='MESH', node_label=None, node_color=None)
+DomainSize(geometry=None, component='MESH', node_label=None, node_color=None, **kwargs)
 ```
 ##### Arguments
 
@@ -19,9 +19,9 @@ DomainSize(geometry=None, component='MESH', node_label=None, node_color=None)
 ## Init
 
 ``` python
-def __init__(self, geometry=None, component='MESH', node_label=None, node_color=None):
+def __init__(self, geometry=None, component='MESH', node_label=None, node_color=None, **kwargs):
 
-    Node.__init__(self, 'GeometryNodeAttributeDomainSize', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'GeometryNodeAttributeDomainSize', node_label=node_label, node_color=node_color, **kwargs)
 
     self.component       = component
     self.geometry        = geometry

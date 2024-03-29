@@ -5,7 +5,7 @@
 
 
 ``` python
-SeparateXYZ(vector=None, node_label=None, node_color=None)
+SeparateXYZ(vector=None, node_label=None, node_color=None, **kwargs)
 ```
 ##### Arguments
 
@@ -18,9 +18,9 @@ SeparateXYZ(vector=None, node_label=None, node_color=None)
 ## Init
 
 ``` python
-def __init__(self, vector=None, node_label=None, node_color=None):
+def __init__(self, vector=None, node_label=None, node_color=None, **kwargs):
 
-    Node.__init__(self, 'ShaderNodeSeparateXYZ', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'ShaderNodeSeparateXYZ', node_label=node_label, node_color=node_color, **kwargs)
 
     self.vector          = vector
 ```

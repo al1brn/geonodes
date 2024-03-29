@@ -5,7 +5,7 @@
 
 
 ``` python
-MeshLine(count=None, start_location=None, offset=None, count_mode='TOTAL', mode='OFFSET', node_label=None, node_color=None)
+MeshLine(count=None, start_location=None, offset=None, count_mode='TOTAL', mode='OFFSET', node_label=None, node_color=None, **kwargs)
 ```
 ##### Arguments
 
@@ -22,9 +22,9 @@ MeshLine(count=None, start_location=None, offset=None, count_mode='TOTAL', mode=
 ## Init
 
 ``` python
-def __init__(self, count=None, start_location=None, offset=None, count_mode='TOTAL', mode='OFFSET', node_label=None, node_color=None):
+def __init__(self, count=None, start_location=None, offset=None, count_mode='TOTAL', mode='OFFSET', node_label=None, node_color=None, **kwargs):
 
-    Node.__init__(self, 'GeometryNodeMeshLine', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'GeometryNodeMeshLine', node_label=node_label, node_color=node_color, **kwargs)
 
     self.count_mode      = count_mode
     self.mode            = mode

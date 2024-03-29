@@ -5,7 +5,7 @@
 
 
 ``` python
-FilletCurve(curve=None, radius=None, limit_radius=None, count=None, mode='BEZIER', node_label=None, node_color=None)
+FilletCurve(curve=None, radius=None, limit_radius=None, count=None, mode='BEZIER', node_label=None, node_color=None, **kwargs)
 ```
 ##### Arguments
 
@@ -22,9 +22,9 @@ FilletCurve(curve=None, radius=None, limit_radius=None, count=None, mode='BEZIER
 ## Init
 
 ``` python
-def __init__(self, curve=None, radius=None, limit_radius=None, count=None, mode='BEZIER', node_label=None, node_color=None):
+def __init__(self, curve=None, radius=None, limit_radius=None, count=None, mode='BEZIER', node_label=None, node_color=None, **kwargs):
 
-    Node.__init__(self, 'GeometryNodeFilletCurve', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'GeometryNodeFilletCurve', node_label=node_label, node_color=node_color, **kwargs)
 
     self.mode            = mode
     self.curve           = curve

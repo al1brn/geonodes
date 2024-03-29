@@ -19,6 +19,7 @@ module : treestack
 - Trees offering groups management
 
 update : 2024/02/17
+update : 2024/03/29
 """
 
 import bpy

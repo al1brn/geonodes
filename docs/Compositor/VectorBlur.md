@@ -5,14 +5,14 @@
 
 
 ``` python
-VectorBlur(image=None, z=None, speed=None, factor=1.0, samples=32, speed_max=0, speed_min=0, tag_need_exec=None, use_curved=False, node_label=None, node_color=None)
+VectorBlur(image=None, z=None, speed=None, factor=0.25, samples=32, speed_max=0, speed_min=0, tag_need_exec=None, use_curved=False, node_label=None, node_color=None, **kwargs)
 ```
 ##### Arguments
 
 - image : None
 - z : None
 - speed : None
-- factor : 1.0
+- factor : 0.25
 - samples : 32
 - speed_max : 0
 - speed_min : 0
@@ -26,9 +26,9 @@ No implementation in sockets
 ## Init
 
 ``` python
-def __init__(self, image=None, z=None, speed=None, factor=1.0, samples=32, speed_max=0, speed_min=0, tag_need_exec=None, use_curved=False, node_label=None, node_color=None):
+def __init__(self, image=None, z=None, speed=None, factor=0.25, samples=32, speed_max=0, speed_min=0, tag_need_exec=None, use_curved=False, node_label=None, node_color=None, **kwargs):
 
-    Node.__init__(self, 'CompositorNodeVecBlur', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'CompositorNodeVecBlur', node_label=node_label, node_color=node_color, **kwargs)
 
     self.factor          = factor
     self.samples         = samples

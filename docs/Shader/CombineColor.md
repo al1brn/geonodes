@@ -5,7 +5,7 @@
 
 
 ``` python
-CombineColor(red=None, green=None, blue=None, mode='RGB', node_label=None, node_color=None)
+CombineColor(red=None, green=None, blue=None, mode='RGB', node_label=None, node_color=None, **kwargs)
 ```
 ##### Arguments
 
@@ -21,9 +21,9 @@ CombineColor(red=None, green=None, blue=None, mode='RGB', node_label=None, node_
 ## Init
 
 ``` python
-def __init__(self, red=None, green=None, blue=None, mode='RGB', node_label=None, node_color=None):
+def __init__(self, red=None, green=None, blue=None, mode='RGB', node_label=None, node_color=None, **kwargs):
 
-    Node.__init__(self, 'ShaderNodeCombineColor', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'ShaderNodeCombineColor', node_label=node_label, node_color=node_color, **kwargs)
 
     self.mode            = mode
     self.red             = red

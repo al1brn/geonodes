@@ -5,7 +5,7 @@
 
 
 ``` python
-CurveToMesh(curve=None, profile_curve=None, fill_caps=None, node_label=None, node_color=None)
+CurveToMesh(curve=None, profile_curve=None, fill_caps=None, node_label=None, node_color=None, **kwargs)
 ```
 ##### Arguments
 
@@ -20,9 +20,9 @@ CurveToMesh(curve=None, profile_curve=None, fill_caps=None, node_label=None, nod
 ## Init
 
 ``` python
-def __init__(self, curve=None, profile_curve=None, fill_caps=None, node_label=None, node_color=None):
+def __init__(self, curve=None, profile_curve=None, fill_caps=None, node_label=None, node_color=None, **kwargs):
 
-    Node.__init__(self, 'GeometryNodeCurveToMesh', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'GeometryNodeCurveToMesh', node_label=node_label, node_color=node_color, **kwargs)
 
     self.curve           = curve
     self.profile_curve   = profile_curve

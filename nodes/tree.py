@@ -20,6 +20,7 @@ module : tree
 - Texture for Texture Nodes Trees
 
 update : 2024/02/17
+update : 2024/03/29
 """
 
 from pprint import pprint
@@ -654,24 +655,13 @@ class Tree(StackedTree):
         
         from geonodes.nodes import dynamic
         
-        if True:
-            if not GeoNodes.INIT:
-                GeoNodes._setup()
-            if not Shader.INIT:
-                Shader._setup()
-            if not Compositor.INIT:
-                Compositor._setup()
+        if not GeoNodes.INIT:
+            GeoNodes._setup()
+        if not Shader.INIT:
+            Shader._setup()
+        if not Compositor.INIT:
+            Compositor._setup()
                 
-        else:
-            with GeoNodes("Doc") as tree:
-                pass
-            
-            with Shader("Doc") as tree:
-                pass
-            
-            with Compositor() as tree:
-                pass
-        
         dynamic.print_md_doc(folder)
 
         

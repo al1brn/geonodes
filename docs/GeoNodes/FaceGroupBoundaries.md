@@ -5,7 +5,7 @@
 
 
 ``` python
-FaceGroupBoundaries(face_group_id=None, node_label=None, node_color=None)
+FaceGroupBoundaries(face_group_id=None, node_label=None, node_color=None, **kwargs)
 ```
 ##### Arguments
 
@@ -18,9 +18,9 @@ FaceGroupBoundaries(face_group_id=None, node_label=None, node_color=None)
 ## Init
 
 ``` python
-def __init__(self, face_group_id=None, node_label=None, node_color=None):
+def __init__(self, face_group_id=None, node_label=None, node_color=None, **kwargs):
 
-    Node.__init__(self, 'GeometryNodeMeshFaceSetBoundaries', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'GeometryNodeMeshFaceSetBoundaries', node_label=node_label, node_color=node_color, **kwargs)
 
     self.face_group_id   = face_group_id
 ```

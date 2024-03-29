@@ -5,7 +5,7 @@
 
 
 ``` python
-ColorCorrection(image=None, mask=None, blue=True, green=True, highlights_contrast=1.0, highlights_gain=1.0, highlights_gamma=1.0, highlights_lift=0.0, highlights_saturation=1.0, master_contrast=1.0, master_gain=1.0, master_gamma=1.0, master_lift=0.0, master_saturation=1.0, midtones_contrast=1.0, midtones_end=0.699999988079071, midtones_gain=1.0, midtones_gamma=1.0, midtones_lift=0.0, midtones_saturation=1.0, midtones_start=0.20000000298023224, red=True, shadows_contrast=1.0, shadows_gain=1.0, shadows_gamma=1.0, shadows_lift=0.0, shadows_saturation=1.0, tag_need_exec=None, node_label=None, node_color=None)
+ColorCorrection(image=None, mask=None, blue=True, green=True, highlights_contrast=1.0, highlights_gain=1.0, highlights_gamma=1.0, highlights_lift=0.0, highlights_saturation=1.0, master_contrast=1.0, master_gain=1.0, master_gamma=1.0, master_lift=0.0, master_saturation=1.0, midtones_contrast=1.0, midtones_end=0.699999988079071, midtones_gain=1.0, midtones_gamma=1.0, midtones_lift=0.0, midtones_saturation=1.0, midtones_start=0.20000000298023224, red=True, shadows_contrast=1.0, shadows_gain=1.0, shadows_gamma=1.0, shadows_lift=0.0, shadows_saturation=1.0, tag_need_exec=None, node_label=None, node_color=None, **kwargs)
 ```
 ##### Arguments
 
@@ -45,9 +45,9 @@ No implementation in sockets
 ## Init
 
 ``` python
-def __init__(self, image=None, mask=None, blue=True, green=True, highlights_contrast=1.0, highlights_gain=1.0, highlights_gamma=1.0, highlights_lift=0.0, highlights_saturation=1.0, master_contrast=1.0, master_gain=1.0, master_gamma=1.0, master_lift=0.0, master_saturation=1.0, midtones_contrast=1.0, midtones_end=0.699999988079071, midtones_gain=1.0, midtones_gamma=1.0, midtones_lift=0.0, midtones_saturation=1.0, midtones_start=0.20000000298023224, red=True, shadows_contrast=1.0, shadows_gain=1.0, shadows_gamma=1.0, shadows_lift=0.0, shadows_saturation=1.0, tag_need_exec=None, node_label=None, node_color=None):
+def __init__(self, image=None, mask=None, blue=True, green=True, highlights_contrast=1.0, highlights_gain=1.0, highlights_gamma=1.0, highlights_lift=0.0, highlights_saturation=1.0, master_contrast=1.0, master_gain=1.0, master_gamma=1.0, master_lift=0.0, master_saturation=1.0, midtones_contrast=1.0, midtones_end=0.699999988079071, midtones_gain=1.0, midtones_gamma=1.0, midtones_lift=0.0, midtones_saturation=1.0, midtones_start=0.20000000298023224, red=True, shadows_contrast=1.0, shadows_gain=1.0, shadows_gamma=1.0, shadows_lift=0.0, shadows_saturation=1.0, tag_need_exec=None, node_label=None, node_color=None, **kwargs):
 
-    Node.__init__(self, 'CompositorNodeColorCorrection', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'CompositorNodeColorCorrection', node_label=node_label, node_color=node_color, **kwargs)
 
     self.blue            = blue
     self.green           = green

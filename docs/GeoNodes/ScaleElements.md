@@ -5,7 +5,7 @@
 
 
 ``` python
-ScaleElements(geometry=None, selection=None, scale=None, center=None, axis=None, domain='FACE', scale_mode='UNIFORM', node_label=None, node_color=None)
+ScaleElements(geometry=None, selection=None, scale=None, center=None, axis=None, domain='FACE', scale_mode='UNIFORM', node_label=None, node_color=None, **kwargs)
 ```
 ##### Arguments
 
@@ -24,9 +24,9 @@ ScaleElements(geometry=None, selection=None, scale=None, center=None, axis=None,
 ## Init
 
 ``` python
-def __init__(self, geometry=None, selection=None, scale=None, center=None, axis=None, domain='FACE', scale_mode='UNIFORM', node_label=None, node_color=None):
+def __init__(self, geometry=None, selection=None, scale=None, center=None, axis=None, domain='FACE', scale_mode='UNIFORM', node_label=None, node_color=None, **kwargs):
 
-    Node.__init__(self, 'GeometryNodeScaleElements', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'GeometryNodeScaleElements', node_label=node_label, node_color=node_color, **kwargs)
 
     self.domain          = domain
     self.scale_mode      = scale_mode

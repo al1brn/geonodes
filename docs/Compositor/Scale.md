@@ -5,7 +5,7 @@
 
 
 ``` python
-Scale(image=None, x=None, y=None, frame_method='STRETCH', offset_x=0.0, offset_y=0.0, space='RELATIVE', tag_need_exec=None, node_label=None, node_color=None)
+Scale(image=None, x=None, y=None, frame_method='STRETCH', offset_x=0.0, offset_y=0.0, space='RELATIVE', tag_need_exec=None, node_label=None, node_color=None, **kwargs)
 ```
 ##### Arguments
 
@@ -25,9 +25,9 @@ No implementation in sockets
 ## Init
 
 ``` python
-def __init__(self, image=None, x=None, y=None, frame_method='STRETCH', offset_x=0.0, offset_y=0.0, space='RELATIVE', tag_need_exec=None, node_label=None, node_color=None):
+def __init__(self, image=None, x=None, y=None, frame_method='STRETCH', offset_x=0.0, offset_y=0.0, space='RELATIVE', tag_need_exec=None, node_label=None, node_color=None, **kwargs):
 
-    Node.__init__(self, 'CompositorNodeScale', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'CompositorNodeScale', node_label=node_label, node_color=node_color, **kwargs)
 
     self.frame_method    = frame_method
     self.offset_x        = offset_x

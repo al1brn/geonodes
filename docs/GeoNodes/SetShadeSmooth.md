@@ -5,7 +5,7 @@
 
 
 ``` python
-SetShadeSmooth(geometry=None, selection=None, shade_smooth=None, domain='FACE', node_label=None, node_color=None)
+SetShadeSmooth(geometry=None, selection=None, shade_smooth=None, domain='FACE', node_label=None, node_color=None, **kwargs)
 ```
 ##### Arguments
 
@@ -21,9 +21,9 @@ SetShadeSmooth(geometry=None, selection=None, shade_smooth=None, domain='FACE', 
 ## Init
 
 ``` python
-def __init__(self, geometry=None, selection=None, shade_smooth=None, domain='FACE', node_label=None, node_color=None):
+def __init__(self, geometry=None, selection=None, shade_smooth=None, domain='FACE', node_label=None, node_color=None, **kwargs):
 
-    Node.__init__(self, 'GeometryNodeSetShadeSmooth', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'GeometryNodeSetShadeSmooth', node_label=node_label, node_color=node_color, **kwargs)
 
     self.domain          = domain
     self.geometry        = geometry

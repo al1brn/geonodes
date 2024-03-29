@@ -5,7 +5,7 @@
 
 
 ``` python
-VectorRotate(vector=None, center=None, axis=None, angle=None, rotation=None, invert=False, rotation_type='AXIS_ANGLE', node_label=None, node_color=None)
+VectorRotate(vector=None, center=None, axis=None, angle=None, rotation=None, invert=False, rotation_type='AXIS_ANGLE', node_label=None, node_color=None, **kwargs)
 ```
 ##### Arguments
 
@@ -24,9 +24,9 @@ VectorRotate(vector=None, center=None, axis=None, angle=None, rotation=None, inv
 ## Init
 
 ``` python
-def __init__(self, vector=None, center=None, axis=None, angle=None, rotation=None, invert=False, rotation_type='AXIS_ANGLE', node_label=None, node_color=None):
+def __init__(self, vector=None, center=None, axis=None, angle=None, rotation=None, invert=False, rotation_type='AXIS_ANGLE', node_label=None, node_color=None, **kwargs):
 
-    Node.__init__(self, 'ShaderNodeVectorRotate', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'ShaderNodeVectorRotate', node_label=node_label, node_color=node_color, **kwargs)
 
     self.invert          = invert
     self.rotation_type   = rotation_type

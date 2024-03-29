@@ -5,7 +5,7 @@
 
 
 ``` python
-EvaluateOnDomain(value=None, data_type='FLOAT', domain='POINT', node_label=None, node_color=None)
+EvaluateOnDomain(value=None, data_type='FLOAT', domain='POINT', node_label=None, node_color=None, **kwargs)
 ```
 ##### Arguments
 
@@ -20,9 +20,9 @@ EvaluateOnDomain(value=None, data_type='FLOAT', domain='POINT', node_label=None,
 ## Init
 
 ``` python
-def __init__(self, value=None, data_type='FLOAT', domain='POINT', node_label=None, node_color=None):
+def __init__(self, value=None, data_type='FLOAT', domain='POINT', node_label=None, node_color=None, **kwargs):
 
-    Node.__init__(self, 'GeometryNodeFieldOnDomain', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'GeometryNodeFieldOnDomain', node_label=node_label, node_color=node_color, **kwargs)
 
     self.data_type       = data_type
     self.domain          = domain

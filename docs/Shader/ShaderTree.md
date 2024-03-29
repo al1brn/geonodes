@@ -23,7 +23,7 @@
 - H : [HairBSDF](/docs/Shader/HairBSDF.md) [Holdout](/docs/Shader/Holdout.md) [HueSaturationValue](/docs/Shader/HueSaturationValue.md)
 - I : [InvertColor](/docs/Shader/InvertColor.md) [IESTexture](/docs/Shader/IESTexture.md) [ImageTexture](/docs/Shader/ImageTexture.md)
 - L : [LayerWeight](/docs/Shader/LayerWeight.md) [LightFalloff](/docs/Shader/LightFalloff.md) [LightPath](/docs/Shader/LightPath.md) [LightOutput](/docs/Shader/LightOutput.md) [LineStyleOutput](/docs/Shader/LineStyleOutput.md)
-- M : [MapRange](/docs/Shader/MapRange.md) [Mapping](/docs/Shader/Mapping.md) [Math](/docs/Shader/Math.md) [Mix](/docs/Shader/Mix.md) [MixShader](/docs/Shader/MixShader.md) [MaterialOutput](/docs/Shader/MaterialOutput.md) [MagicTexture](/docs/Shader/MagicTexture.md) [MusgraveTexture](/docs/Shader/MusgraveTexture.md)
+- M : [MapRange](/docs/Shader/MapRange.md) [Mapping](/docs/Shader/Mapping.md) [Math](/docs/Shader/Math.md) [Mix](/docs/Shader/Mix.md) [MixShader](/docs/Shader/MixShader.md) [MaterialOutput](/docs/Shader/MaterialOutput.md) [MagicTexture](/docs/Shader/MagicTexture.md)
 - N : [Normal](/docs/Shader/Normal.md) [NormalMap](/docs/Shader/NormalMap.md) [NoiseTexture](/docs/Shader/NoiseTexture.md)
 - O : [ObjectInfo](/docs/Shader/ObjectInfo.md)
 - P : [PrincipledHairBSDF](/docs/Shader/PrincipledHairBSDF.md) [PrincipledBSDF](/docs/Shader/PrincipledBSDF.md) [ParticleInfo](/docs/Shader/ParticleInfo.md) [PointInfo](/docs/Shader/PointInfo.md) [PointDensity](/docs/Shader/PointDensity.md) [PrincipledVolume](/docs/Shader/PrincipledVolume.md)
@@ -46,7 +46,7 @@
 - H : [hsv](#hsv) [hsl](#hsl)
 - I : [inverse_sqrt](#inverse_sqrt)
 - L : [log](#log) [less_than](#less_than)
-- M : [multiply](#multiply) [multiply_add](#multiply_add) [min](#min) [max](#max) [mod](#mod) [magic_texture](#magic_texture) [musgrave_texture](#musgrave_texture)
+- M : [multiply](#multiply) [multiply_add](#multiply_add) [min](#min) [max](#max) [mod](#mod) [magic_texture](#magic_texture)
 - N : [noise_texture](#noise_texture)
 - P : [power](#power) [pingpong](#pingpong)
 - R : [rgb](#rgb) [round](#round) [radians](#radians)
@@ -74,8 +74,8 @@
 #### Source code
 
 ``` python
-def abs(self, value=None, use_clamp=False, node_label=None, node_color=None):
-    node = self.Math(value=value, operation='ABSOLUTE', use_clamp=use_clamp, node_label=node_label, node_color=node_color)
+def abs(self, value=None, use_clamp=False, node_label=None, node_color=None, **kwargs):
+    node = self.Math(value=value, operation='ABSOLUTE', use_clamp=use_clamp, node_label=node_label, node_color=node_color, **kwargs)
     return node.value
 ```
 ### add
@@ -95,8 +95,8 @@ def abs(self, value=None, use_clamp=False, node_label=None, node_color=None):
 #### Source code
 
 ``` python
-def add(self, value=None, value_1=None, use_clamp=False, node_label=None, node_color=None):
-    node = self.Math(value=value, value_1=value_1, operation='ADD', use_clamp=use_clamp, node_label=node_label, node_color=node_color)
+def add(self, value=None, value_1=None, use_clamp=False, node_label=None, node_color=None, **kwargs):
+    node = self.Math(value=value, value_1=value_1, operation='ADD', use_clamp=use_clamp, node_label=node_label, node_color=node_color, **kwargs)
     return node.value
 ```
 ### arccos
@@ -115,8 +115,8 @@ def add(self, value=None, value_1=None, use_clamp=False, node_label=None, node_c
 #### Source code
 
 ``` python
-def arccos(self, value=None, use_clamp=False, node_label=None, node_color=None):
-    node = self.Math(value=value, operation='ARCCOSINE', use_clamp=use_clamp, node_label=node_label, node_color=node_color)
+def arccos(self, value=None, use_clamp=False, node_label=None, node_color=None, **kwargs):
+    node = self.Math(value=value, operation='ARCCOSINE', use_clamp=use_clamp, node_label=node_label, node_color=node_color, **kwargs)
     return node.value
 ```
 ### arcsin
@@ -135,8 +135,8 @@ def arccos(self, value=None, use_clamp=False, node_label=None, node_color=None):
 #### Source code
 
 ``` python
-def arcsin(self, value=None, use_clamp=False, node_label=None, node_color=None):
-    node = self.Math(value=value, operation='ARCSINE', use_clamp=use_clamp, node_label=node_label, node_color=node_color)
+def arcsin(self, value=None, use_clamp=False, node_label=None, node_color=None, **kwargs):
+    node = self.Math(value=value, operation='ARCSINE', use_clamp=use_clamp, node_label=node_label, node_color=node_color, **kwargs)
     return node.value
 ```
 ### arctan
@@ -155,8 +155,8 @@ def arcsin(self, value=None, use_clamp=False, node_label=None, node_color=None):
 #### Source code
 
 ``` python
-def arctan(self, value=None, use_clamp=False, node_label=None, node_color=None):
-    node = self.Math(value=value, operation='ARCTANGENT', use_clamp=use_clamp, node_label=node_label, node_color=node_color)
+def arctan(self, value=None, use_clamp=False, node_label=None, node_color=None, **kwargs):
+    node = self.Math(value=value, operation='ARCTANGENT', use_clamp=use_clamp, node_label=node_label, node_color=node_color, **kwargs)
     return node.value
 ```
 ### arctan2
@@ -176,8 +176,8 @@ def arctan(self, value=None, use_clamp=False, node_label=None, node_color=None):
 #### Source code
 
 ``` python
-def arctan2(self, value=None, value_1=None, use_clamp=False, node_label=None, node_color=None):
-    node = self.Math(value=value, value_1=value_1, operation='ARCTAN2', use_clamp=use_clamp, node_label=node_label, node_color=node_color)
+def arctan2(self, value=None, value_1=None, use_clamp=False, node_label=None, node_color=None, **kwargs):
+    node = self.Math(value=value, value_1=value_1, operation='ARCTAN2', use_clamp=use_clamp, node_label=node_label, node_color=node_color, **kwargs)
     return node.value
 ```
 ### brick_texture
@@ -210,8 +210,8 @@ def arctan2(self, value=None, value_1=None, use_clamp=False, node_label=None, no
 #### Source code
 
 ``` python
-def brick_texture(self, vector=None, color1=None, color2=None, mortar=None, scale=None, mortar_size=None, mortar_smooth=None, bias=None, brick_width=None, row_height=None, color_mapping=None, offset=0.5, offset_frequency=2, squash=1.0, squash_frequency=2, texture_mapping=None, node_label=None, node_color=None):
-    node = self.BrickTexture(vector=vector, color1=color1, color2=color2, mortar=mortar, scale=scale, mortar_size=mortar_size, mortar_smooth=mortar_smooth, bias=bias, brick_width=brick_width, row_height=row_height, color_mapping=color_mapping, offset=offset, offset_frequency=offset_frequency, squash=squash, squash_frequency=squash_frequency, texture_mapping=texture_mapping, node_label=node_label, node_color=node_color)
+def brick_texture(self, vector=None, color1=None, color2=None, mortar=None, scale=None, mortar_size=None, mortar_smooth=None, bias=None, brick_width=None, row_height=None, color_mapping=None, offset=0.5, offset_frequency=2, squash=1.0, squash_frequency=2, texture_mapping=None, node_label=None, node_color=None, **kwargs):
+    node = self.BrickTexture(vector=vector, color1=color1, color2=color2, mortar=mortar, scale=scale, mortar_size=mortar_size, mortar_smooth=mortar_smooth, bias=bias, brick_width=brick_width, row_height=row_height, color_mapping=color_mapping, offset=offset, offset_frequency=offset_frequency, squash=squash, squash_frequency=squash_frequency, texture_mapping=texture_mapping, node_label=node_label, node_color=node_color, **kwargs)
     return node.color
 ```
 ### ceil
@@ -230,8 +230,8 @@ def brick_texture(self, vector=None, color1=None, color2=None, mortar=None, scal
 #### Source code
 
 ``` python
-def ceil(self, value=None, use_clamp=False, node_label=None, node_color=None):
-    node = self.Math(value=value, operation='CEIL', use_clamp=use_clamp, node_label=node_label, node_color=node_color)
+def ceil(self, value=None, use_clamp=False, node_label=None, node_color=None, **kwargs):
+    node = self.Math(value=value, operation='CEIL', use_clamp=use_clamp, node_label=node_label, node_color=node_color, **kwargs)
     return node.value
 ```
 ### checker_texture
@@ -254,8 +254,8 @@ def ceil(self, value=None, use_clamp=False, node_label=None, node_color=None):
 #### Source code
 
 ``` python
-def checker_texture(self, vector=None, color1=None, color2=None, scale=None, color_mapping=None, texture_mapping=None, node_label=None, node_color=None):
-    node = self.CheckerTexture(vector=vector, color1=color1, color2=color2, scale=scale, color_mapping=color_mapping, texture_mapping=texture_mapping, node_label=node_label, node_color=node_color)
+def checker_texture(self, vector=None, color1=None, color2=None, scale=None, color_mapping=None, texture_mapping=None, node_label=None, node_color=None, **kwargs):
+    node = self.CheckerTexture(vector=vector, color1=color1, color2=color2, scale=scale, color_mapping=color_mapping, texture_mapping=texture_mapping, node_label=node_label, node_color=node_color, **kwargs)
     return node.curve
 ```
 ### combine_color
@@ -276,8 +276,8 @@ def checker_texture(self, vector=None, color1=None, color2=None, scale=None, col
 #### Source code
 
 ``` python
-def combine_color(self, red=None, green=None, blue=None, mode='RGB', node_label=None, node_color=None):
-    node = self.CombineColor(red=red, green=green, blue=blue, mode=mode, node_label=node_label, node_color=node_color)
+def combine_color(self, red=None, green=None, blue=None, mode='RGB', node_label=None, node_color=None, **kwargs):
+    node = self.CombineColor(red=red, green=green, blue=blue, mode=mode, node_label=node_label, node_color=node_color, **kwargs)
     return node.color
 ```
 ### combine_xyz
@@ -297,8 +297,8 @@ def combine_color(self, red=None, green=None, blue=None, mode='RGB', node_label=
 #### Source code
 
 ``` python
-def combine_xyz(self, x=None, y=None, z=None, node_label=None, node_color=None):
-    node = self.CombineXYZ(x=x, y=y, z=z, node_label=node_label, node_color=node_color)
+def combine_xyz(self, x=None, y=None, z=None, node_label=None, node_color=None, **kwargs):
+    node = self.CombineXYZ(x=x, y=y, z=z, node_label=node_label, node_color=node_color, **kwargs)
     return node.vector
 ```
 ### compare
@@ -319,8 +319,8 @@ def combine_xyz(self, x=None, y=None, z=None, node_label=None, node_color=None):
 #### Source code
 
 ``` python
-def compare(self, value=None, value_1=None, value_2=None, use_clamp=False, node_label=None, node_color=None):
-    node = self.Math(value=value, value_1=value_1, value_2=value_2, operation='COMPARE', use_clamp=use_clamp, node_label=node_label, node_color=node_color)
+def compare(self, value=None, value_1=None, value_2=None, use_clamp=False, node_label=None, node_color=None, **kwargs):
+    node = self.Math(value=value, value_1=value_1, value_2=value_2, operation='COMPARE', use_clamp=use_clamp, node_label=node_label, node_color=node_color, **kwargs)
     return node.value
 ```
 ### cos
@@ -339,8 +339,8 @@ def compare(self, value=None, value_1=None, value_2=None, use_clamp=False, node_
 #### Source code
 
 ``` python
-def cos(self, value=None, use_clamp=False, node_label=None, node_color=None):
-    node = self.Math(value=value, operation='COSINE', use_clamp=use_clamp, node_label=node_label, node_color=node_color)
+def cos(self, value=None, use_clamp=False, node_label=None, node_color=None, **kwargs):
+    node = self.Math(value=value, operation='COSINE', use_clamp=use_clamp, node_label=node_label, node_color=node_color, **kwargs)
     return node.value
 ```
 ### cosh
@@ -359,8 +359,8 @@ def cos(self, value=None, use_clamp=False, node_label=None, node_color=None):
 #### Source code
 
 ``` python
-def cosh(self, value=None, use_clamp=False, node_label=None, node_color=None):
-    node = self.Math(value=value, operation='COSH', use_clamp=use_clamp, node_label=node_label, node_color=node_color)
+def cosh(self, value=None, use_clamp=False, node_label=None, node_color=None, **kwargs):
+    node = self.Math(value=value, operation='COSH', use_clamp=use_clamp, node_label=node_label, node_color=node_color, **kwargs)
     return node.value
 ```
 ### degrees
@@ -379,8 +379,8 @@ def cosh(self, value=None, use_clamp=False, node_label=None, node_color=None):
 #### Source code
 
 ``` python
-def degrees(self, value=None, use_clamp=False, node_label=None, node_color=None):
-    node = self.Math(value=value, operation='DEGREES', use_clamp=use_clamp, node_label=node_label, node_color=node_color)
+def degrees(self, value=None, use_clamp=False, node_label=None, node_color=None, **kwargs):
+    node = self.Math(value=value, operation='DEGREES', use_clamp=use_clamp, node_label=node_label, node_color=node_color, **kwargs)
     return node.value
 ```
 ### divide
@@ -400,8 +400,8 @@ def degrees(self, value=None, use_clamp=False, node_label=None, node_color=None)
 #### Source code
 
 ``` python
-def divide(self, value=None, value_1=None, use_clamp=False, node_label=None, node_color=None):
-    node = self.Math(value=value, value_1=value_1, operation='DIVIDE', use_clamp=use_clamp, node_label=node_label, node_color=node_color)
+def divide(self, value=None, value_1=None, use_clamp=False, node_label=None, node_color=None, **kwargs):
+    node = self.Math(value=value, value_1=value_1, operation='DIVIDE', use_clamp=use_clamp, node_label=node_label, node_color=node_color, **kwargs)
     return node.value
 ```
 ### exp
@@ -420,8 +420,8 @@ def divide(self, value=None, value_1=None, use_clamp=False, node_label=None, nod
 #### Source code
 
 ``` python
-def exp(self, value=None, use_clamp=False, node_label=None, node_color=None):
-    node = self.Math(value=value, operation='EXPONENT', use_clamp=use_clamp, node_label=node_label, node_color=node_color)
+def exp(self, value=None, use_clamp=False, node_label=None, node_color=None, **kwargs):
+    node = self.Math(value=value, operation='EXPONENT', use_clamp=use_clamp, node_label=node_label, node_color=node_color, **kwargs)
     return node.value
 ```
 ### floor
@@ -440,8 +440,8 @@ def exp(self, value=None, use_clamp=False, node_label=None, node_color=None):
 #### Source code
 
 ``` python
-def floor(self, value=None, use_clamp=False, node_label=None, node_color=None):
-    node = self.Math(value=value, operation='FLOOR', use_clamp=use_clamp, node_label=node_label, node_color=node_color)
+def floor(self, value=None, use_clamp=False, node_label=None, node_color=None, **kwargs):
+    node = self.Math(value=value, operation='FLOOR', use_clamp=use_clamp, node_label=node_label, node_color=node_color, **kwargs)
     return node.value
 ```
 ### floored_modulo
@@ -461,8 +461,8 @@ def floor(self, value=None, use_clamp=False, node_label=None, node_color=None):
 #### Source code
 
 ``` python
-def floored_modulo(self, value=None, value_1=None, use_clamp=False, node_label=None, node_color=None):
-    node = self.Math(value=value, value_1=value_1, operation='FLOORED_MODULO', use_clamp=use_clamp, node_label=node_label, node_color=node_color)
+def floored_modulo(self, value=None, value_1=None, use_clamp=False, node_label=None, node_color=None, **kwargs):
+    node = self.Math(value=value, value_1=value_1, operation='FLOORED_MODULO', use_clamp=use_clamp, node_label=node_label, node_color=node_color, **kwargs)
     return node.value
 ```
 ### fract
@@ -481,8 +481,8 @@ def floored_modulo(self, value=None, value_1=None, use_clamp=False, node_label=N
 #### Source code
 
 ``` python
-def fract(self, value=None, use_clamp=False, node_label=None, node_color=None):
-    node = self.Math(value=value, operation='FRACT', use_clamp=use_clamp, node_label=node_label, node_color=node_color)
+def fract(self, value=None, use_clamp=False, node_label=None, node_color=None, **kwargs):
+    node = self.Math(value=value, operation='FRACT', use_clamp=use_clamp, node_label=node_label, node_color=node_color, **kwargs)
     return node.value
 ```
 ### gradient_texture
@@ -503,8 +503,8 @@ def fract(self, value=None, use_clamp=False, node_label=None, node_color=None):
 #### Source code
 
 ``` python
-def gradient_texture(self, vector=None, color_mapping=None, gradient_type='LINEAR', texture_mapping=None, node_label=None, node_color=None):
-    node = self.GradientTexture(vector=vector, color_mapping=color_mapping, gradient_type=gradient_type, texture_mapping=texture_mapping, node_label=node_label, node_color=node_color)
+def gradient_texture(self, vector=None, color_mapping=None, gradient_type='LINEAR', texture_mapping=None, node_label=None, node_color=None, **kwargs):
+    node = self.GradientTexture(vector=vector, color_mapping=color_mapping, gradient_type=gradient_type, texture_mapping=texture_mapping, node_label=node_label, node_color=node_color, **kwargs)
     return node.color
 ```
 ### greater_than
@@ -524,8 +524,8 @@ def gradient_texture(self, vector=None, color_mapping=None, gradient_type='LINEA
 #### Source code
 
 ``` python
-def greater_than(self, value=None, value_1=None, use_clamp=False, node_label=None, node_color=None):
-    node = self.Math(value=value, value_1=value_1, operation='GREATER_THAN', use_clamp=use_clamp, node_label=node_label, node_color=node_color)
+def greater_than(self, value=None, value_1=None, use_clamp=False, node_label=None, node_color=None, **kwargs):
+    node = self.Math(value=value, value_1=value_1, operation='GREATER_THAN', use_clamp=use_clamp, node_label=node_label, node_color=node_color, **kwargs)
     return node.value
 ```
 ### hsl
@@ -545,8 +545,8 @@ def greater_than(self, value=None, value_1=None, use_clamp=False, node_label=Non
 #### Source code
 
 ``` python
-def hsl(self, red=None, green=None, blue=None, node_label=None, node_color=None):
-    node = self.CombineColor(red=red, green=green, blue=blue, mode='HSL', node_label=node_label, node_color=node_color)
+def hsl(self, red=None, green=None, blue=None, node_label=None, node_color=None, **kwargs):
+    node = self.CombineColor(red=red, green=green, blue=blue, mode='HSL', node_label=node_label, node_color=node_color, **kwargs)
     return node.color
 ```
 ### hsv
@@ -566,8 +566,8 @@ def hsl(self, red=None, green=None, blue=None, node_label=None, node_color=None)
 #### Source code
 
 ``` python
-def hsv(self, red=None, green=None, blue=None, node_label=None, node_color=None):
-    node = self.CombineColor(red=red, green=green, blue=blue, mode='HSV', node_label=node_label, node_color=node_color)
+def hsv(self, red=None, green=None, blue=None, node_label=None, node_color=None, **kwargs):
+    node = self.CombineColor(red=red, green=green, blue=blue, mode='HSV', node_label=node_label, node_color=node_color, **kwargs)
     return node.color
 ```
 ### inverse_sqrt
@@ -586,8 +586,8 @@ def hsv(self, red=None, green=None, blue=None, node_label=None, node_color=None)
 #### Source code
 
 ``` python
-def inverse_sqrt(self, value=None, use_clamp=False, node_label=None, node_color=None):
-    node = self.Math(value=value, operation='INVERSE_SQRT', use_clamp=use_clamp, node_label=node_label, node_color=node_color)
+def inverse_sqrt(self, value=None, use_clamp=False, node_label=None, node_color=None, **kwargs):
+    node = self.Math(value=value, operation='INVERSE_SQRT', use_clamp=use_clamp, node_label=node_label, node_color=node_color, **kwargs)
     return node.value
 ```
 ### less_than
@@ -607,8 +607,8 @@ def inverse_sqrt(self, value=None, use_clamp=False, node_label=None, node_color=
 #### Source code
 
 ``` python
-def less_than(self, value=None, value_1=None, use_clamp=False, node_label=None, node_color=None):
-    node = self.Math(value=value, value_1=value_1, operation='LESS_THAN', use_clamp=use_clamp, node_label=node_label, node_color=node_color)
+def less_than(self, value=None, value_1=None, use_clamp=False, node_label=None, node_color=None, **kwargs):
+    node = self.Math(value=value, value_1=value_1, operation='LESS_THAN', use_clamp=use_clamp, node_label=node_label, node_color=node_color, **kwargs)
     return node.value
 ```
 ### log
@@ -628,8 +628,8 @@ def less_than(self, value=None, value_1=None, use_clamp=False, node_label=None, 
 #### Source code
 
 ``` python
-def log(self, value=None, value_1=None, use_clamp=False, node_label=None, node_color=None):
-    node = self.Math(value=value, value_1=value_1, operation='LOGARITHM', use_clamp=use_clamp, node_label=node_label, node_color=node_color)
+def log(self, value=None, value_1=None, use_clamp=False, node_label=None, node_color=None, **kwargs):
+    node = self.Math(value=value, value_1=value_1, operation='LOGARITHM', use_clamp=use_clamp, node_label=node_label, node_color=node_color, **kwargs)
     return node.value
 ```
 ### magic_texture
@@ -652,8 +652,8 @@ def log(self, value=None, value_1=None, use_clamp=False, node_label=None, node_c
 #### Source code
 
 ``` python
-def magic_texture(self, vector=None, scale=None, distortion=None, color_mapping=None, texture_mapping=None, turbulence_depth=2, node_label=None, node_color=None):
-    node = self.MagicTexture(vector=vector, scale=scale, distortion=distortion, color_mapping=color_mapping, texture_mapping=texture_mapping, turbulence_depth=turbulence_depth, node_label=node_label, node_color=node_color)
+def magic_texture(self, vector=None, scale=None, distortion=None, color_mapping=None, texture_mapping=None, turbulence_depth=2, node_label=None, node_color=None, **kwargs):
+    node = self.MagicTexture(vector=vector, scale=scale, distortion=distortion, color_mapping=color_mapping, texture_mapping=texture_mapping, turbulence_depth=turbulence_depth, node_label=node_label, node_color=node_color, **kwargs)
     return node.color
 ```
 ### max
@@ -673,8 +673,8 @@ def magic_texture(self, vector=None, scale=None, distortion=None, color_mapping=
 #### Source code
 
 ``` python
-def max(self, value=None, value_1=None, use_clamp=False, node_label=None, node_color=None):
-    node = self.Math(value=value, value_1=value_1, operation='MAXIMUM', use_clamp=use_clamp, node_label=node_label, node_color=node_color)
+def max(self, value=None, value_1=None, use_clamp=False, node_label=None, node_color=None, **kwargs):
+    node = self.Math(value=value, value_1=value_1, operation='MAXIMUM', use_clamp=use_clamp, node_label=node_label, node_color=node_color, **kwargs)
     return node.value
 ```
 ### min
@@ -694,8 +694,8 @@ def max(self, value=None, value_1=None, use_clamp=False, node_label=None, node_c
 #### Source code
 
 ``` python
-def min(self, value=None, value_1=None, use_clamp=False, node_label=None, node_color=None):
-    node = self.Math(value=value, value_1=value_1, operation='MINIMUM', use_clamp=use_clamp, node_label=node_label, node_color=node_color)
+def min(self, value=None, value_1=None, use_clamp=False, node_label=None, node_color=None, **kwargs):
+    node = self.Math(value=value, value_1=value_1, operation='MINIMUM', use_clamp=use_clamp, node_label=node_label, node_color=node_color, **kwargs)
     return node.value
 ```
 ### mod
@@ -715,8 +715,8 @@ def min(self, value=None, value_1=None, use_clamp=False, node_label=None, node_c
 #### Source code
 
 ``` python
-def mod(self, value=None, value_1=None, use_clamp=False, node_label=None, node_color=None):
-    node = self.Math(value=value, value_1=value_1, operation='MODULO', use_clamp=use_clamp, node_label=node_label, node_color=node_color)
+def mod(self, value=None, value_1=None, use_clamp=False, node_label=None, node_color=None, **kwargs):
+    node = self.Math(value=value, value_1=value_1, operation='MODULO', use_clamp=use_clamp, node_label=node_label, node_color=node_color, **kwargs)
     return node.value
 ```
 ### multiply
@@ -736,8 +736,8 @@ def mod(self, value=None, value_1=None, use_clamp=False, node_label=None, node_c
 #### Source code
 
 ``` python
-def multiply(self, value=None, value_1=None, use_clamp=False, node_label=None, node_color=None):
-    node = self.Math(value=value, value_1=value_1, operation='MULTIPLY', use_clamp=use_clamp, node_label=node_label, node_color=node_color)
+def multiply(self, value=None, value_1=None, use_clamp=False, node_label=None, node_color=None, **kwargs):
+    node = self.Math(value=value, value_1=value_1, operation='MULTIPLY', use_clamp=use_clamp, node_label=node_label, node_color=node_color, **kwargs)
     return node.value
 ```
 ### multiply_add
@@ -758,39 +758,9 @@ def multiply(self, value=None, value_1=None, use_clamp=False, node_label=None, n
 #### Source code
 
 ``` python
-def multiply_add(self, value=None, value_1=None, value_2=None, use_clamp=False, node_label=None, node_color=None):
-    node = self.Math(value=value, value_1=value_1, value_2=value_2, operation='MULTIPLY_ADD', use_clamp=use_clamp, node_label=node_label, node_color=node_color)
+def multiply_add(self, value=None, value_1=None, value_2=None, use_clamp=False, node_label=None, node_color=None, **kwargs):
+    node = self.Math(value=value, value_1=value_1, value_2=value_2, operation='MULTIPLY_ADD', use_clamp=use_clamp, node_label=node_label, node_color=node_color, **kwargs)
     return node.value
-```
-### musgrave_texture
-
-
-- node : [MusgraveTexture](/docs/Shader/MusgraveTexture.md)
-- return : height
-
-##### Arguments
-
-- vector : None
-- scale : None
-- detail : None
-- dimension : None
-- lacunarity : None
-- w : None
-- offset : None
-- gain : None
-- color_mapping : None
-- musgrave_dimensions : '3D' in ('1D', '2D', '3D', '4D')
-- musgrave_type : 'FBM' in ('MULTIFRACTAL', 'RIDGED_MULTIFRACTAL', 'HYBRID_MULTIFRACTAL', 'FBM', 'HETERO_TERRAIN')
-- texture_mapping : None
-- node_label : None
-- node_color : None
-
-#### Source code
-
-``` python
-def musgrave_texture(self, vector=None, scale=None, detail=None, dimension=None, lacunarity=None, w=None, offset=None, gain=None, color_mapping=None, musgrave_dimensions='3D', musgrave_type='FBM', texture_mapping=None, node_label=None, node_color=None):
-    node = self.MusgraveTexture(vector=vector, scale=scale, detail=detail, dimension=dimension, lacunarity=lacunarity, w=w, offset=offset, gain=gain, color_mapping=color_mapping, musgrave_dimensions=musgrave_dimensions, musgrave_type=musgrave_type, texture_mapping=texture_mapping, node_label=node_label, node_color=node_color)
-    return node.height
 ```
 ### noise_texture
 
@@ -807,8 +777,11 @@ def musgrave_texture(self, vector=None, scale=None, detail=None, dimension=None,
 - lacunarity : None
 - distortion : None
 - w : None
+- offset : None
+- gain : None
 - color_mapping : None
 - noise_dimensions : '3D' in ('1D', '2D', '3D', '4D')
+- noise_type : 'FBM' in ('MULTIFRACTAL', 'RIDGED_MULTIFRACTAL', 'HYBRID_MULTIFRACTAL', 'FBM', 'HETERO_TERRAIN')
 - normalize : True
 - texture_mapping : None
 - node_label : None
@@ -817,8 +790,8 @@ def musgrave_texture(self, vector=None, scale=None, detail=None, dimension=None,
 #### Source code
 
 ``` python
-def noise_texture(self, vector=None, scale=None, detail=None, roughness=None, lacunarity=None, distortion=None, w=None, color_mapping=None, noise_dimensions='3D', normalize=True, texture_mapping=None, node_label=None, node_color=None):
-    node = self.NoiseTexture(vector=vector, scale=scale, detail=detail, roughness=roughness, lacunarity=lacunarity, distortion=distortion, w=w, color_mapping=color_mapping, noise_dimensions=noise_dimensions, normalize=normalize, texture_mapping=texture_mapping, node_label=node_label, node_color=node_color)
+def noise_texture(self, vector=None, scale=None, detail=None, roughness=None, lacunarity=None, distortion=None, w=None, offset=None, gain=None, color_mapping=None, noise_dimensions='3D', noise_type='FBM', normalize=True, texture_mapping=None, node_label=None, node_color=None, **kwargs):
+    node = self.NoiseTexture(vector=vector, scale=scale, detail=detail, roughness=roughness, lacunarity=lacunarity, distortion=distortion, w=w, offset=offset, gain=gain, color_mapping=color_mapping, noise_dimensions=noise_dimensions, noise_type=noise_type, normalize=normalize, texture_mapping=texture_mapping, node_label=node_label, node_color=node_color, **kwargs)
     return node.fac
 ```
 ### pingpong
@@ -838,8 +811,8 @@ def noise_texture(self, vector=None, scale=None, detail=None, roughness=None, la
 #### Source code
 
 ``` python
-def pingpong(self, value=None, value_1=None, use_clamp=False, node_label=None, node_color=None):
-    node = self.Math(value=value, value_1=value_1, operation='PINGPONG', use_clamp=use_clamp, node_label=node_label, node_color=node_color)
+def pingpong(self, value=None, value_1=None, use_clamp=False, node_label=None, node_color=None, **kwargs):
+    node = self.Math(value=value, value_1=value_1, operation='PINGPONG', use_clamp=use_clamp, node_label=node_label, node_color=node_color, **kwargs)
     return node.value
 ```
 ### power
@@ -859,8 +832,8 @@ def pingpong(self, value=None, value_1=None, use_clamp=False, node_label=None, n
 #### Source code
 
 ``` python
-def power(self, value=None, value_1=None, use_clamp=False, node_label=None, node_color=None):
-    node = self.Math(value=value, value_1=value_1, operation='POWER', use_clamp=use_clamp, node_label=node_label, node_color=node_color)
+def power(self, value=None, value_1=None, use_clamp=False, node_label=None, node_color=None, **kwargs):
+    node = self.Math(value=value, value_1=value_1, operation='POWER', use_clamp=use_clamp, node_label=node_label, node_color=node_color, **kwargs)
     return node.value
 ```
 ### radians
@@ -879,8 +852,8 @@ def power(self, value=None, value_1=None, use_clamp=False, node_label=None, node
 #### Source code
 
 ``` python
-def radians(self, value=None, use_clamp=False, node_label=None, node_color=None):
-    node = self.Math(value=value, operation='RADIANS', use_clamp=use_clamp, node_label=node_label, node_color=node_color)
+def radians(self, value=None, use_clamp=False, node_label=None, node_color=None, **kwargs):
+    node = self.Math(value=value, operation='RADIANS', use_clamp=use_clamp, node_label=node_label, node_color=node_color, **kwargs)
     return node.value
 ```
 ### rgb
@@ -900,8 +873,8 @@ def radians(self, value=None, use_clamp=False, node_label=None, node_color=None)
 #### Source code
 
 ``` python
-def rgb(self, red=None, green=None, blue=None, node_label=None, node_color=None):
-    node = self.CombineColor(red=red, green=green, blue=blue, mode='RGB', node_label=node_label, node_color=node_color)
+def rgb(self, red=None, green=None, blue=None, node_label=None, node_color=None, **kwargs):
+    node = self.CombineColor(red=red, green=green, blue=blue, mode='RGB', node_label=node_label, node_color=node_color, **kwargs)
     return node.color
 ```
 ### round
@@ -920,8 +893,8 @@ def rgb(self, red=None, green=None, blue=None, node_label=None, node_color=None)
 #### Source code
 
 ``` python
-def round(self, value=None, use_clamp=False, node_label=None, node_color=None):
-    node = self.Math(value=value, operation='ROUND', use_clamp=use_clamp, node_label=node_label, node_color=node_color)
+def round(self, value=None, use_clamp=False, node_label=None, node_color=None, **kwargs):
+    node = self.Math(value=value, operation='ROUND', use_clamp=use_clamp, node_label=node_label, node_color=node_color, **kwargs)
     return node.value
 ```
 ### sign
@@ -940,8 +913,8 @@ def round(self, value=None, use_clamp=False, node_label=None, node_color=None):
 #### Source code
 
 ``` python
-def sign(self, value=None, use_clamp=False, node_label=None, node_color=None):
-    node = self.Math(value=value, operation='SIGN', use_clamp=use_clamp, node_label=node_label, node_color=node_color)
+def sign(self, value=None, use_clamp=False, node_label=None, node_color=None, **kwargs):
+    node = self.Math(value=value, operation='SIGN', use_clamp=use_clamp, node_label=node_label, node_color=node_color, **kwargs)
     return node.value
 ```
 ### sin
@@ -960,8 +933,8 @@ def sign(self, value=None, use_clamp=False, node_label=None, node_color=None):
 #### Source code
 
 ``` python
-def sin(self, value=None, use_clamp=False, node_label=None, node_color=None):
-    node = self.Math(value=value, operation='SINE', use_clamp=use_clamp, node_label=node_label, node_color=node_color)
+def sin(self, value=None, use_clamp=False, node_label=None, node_color=None, **kwargs):
+    node = self.Math(value=value, operation='SINE', use_clamp=use_clamp, node_label=node_label, node_color=node_color, **kwargs)
     return node.value
 ```
 ### sinh
@@ -980,8 +953,8 @@ def sin(self, value=None, use_clamp=False, node_label=None, node_color=None):
 #### Source code
 
 ``` python
-def sinh(self, value=None, use_clamp=False, node_label=None, node_color=None):
-    node = self.Math(value=value, operation='SINH', use_clamp=use_clamp, node_label=node_label, node_color=node_color)
+def sinh(self, value=None, use_clamp=False, node_label=None, node_color=None, **kwargs):
+    node = self.Math(value=value, operation='SINH', use_clamp=use_clamp, node_label=node_label, node_color=node_color, **kwargs)
     return node.value
 ```
 ### smooth_max
@@ -1002,8 +975,8 @@ def sinh(self, value=None, use_clamp=False, node_label=None, node_color=None):
 #### Source code
 
 ``` python
-def smooth_max(self, value=None, value_1=None, value_2=None, use_clamp=False, node_label=None, node_color=None):
-    node = self.Math(value=value, value_1=value_1, value_2=value_2, operation='SMOOTH_MAX', use_clamp=use_clamp, node_label=node_label, node_color=node_color)
+def smooth_max(self, value=None, value_1=None, value_2=None, use_clamp=False, node_label=None, node_color=None, **kwargs):
+    node = self.Math(value=value, value_1=value_1, value_2=value_2, operation='SMOOTH_MAX', use_clamp=use_clamp, node_label=node_label, node_color=node_color, **kwargs)
     return node.value
 ```
 ### smooth_min
@@ -1024,8 +997,8 @@ def smooth_max(self, value=None, value_1=None, value_2=None, use_clamp=False, no
 #### Source code
 
 ``` python
-def smooth_min(self, value=None, value_1=None, value_2=None, use_clamp=False, node_label=None, node_color=None):
-    node = self.Math(value=value, value_1=value_1, value_2=value_2, operation='SMOOTH_MIN', use_clamp=use_clamp, node_label=node_label, node_color=node_color)
+def smooth_min(self, value=None, value_1=None, value_2=None, use_clamp=False, node_label=None, node_color=None, **kwargs):
+    node = self.Math(value=value, value_1=value_1, value_2=value_2, operation='SMOOTH_MIN', use_clamp=use_clamp, node_label=node_label, node_color=node_color, **kwargs)
     return node.value
 ```
 ### snap
@@ -1045,8 +1018,8 @@ def smooth_min(self, value=None, value_1=None, value_2=None, use_clamp=False, no
 #### Source code
 
 ``` python
-def snap(self, value=None, value_1=None, use_clamp=False, node_label=None, node_color=None):
-    node = self.Math(value=value, value_1=value_1, operation='SNAP', use_clamp=use_clamp, node_label=node_label, node_color=node_color)
+def snap(self, value=None, value_1=None, use_clamp=False, node_label=None, node_color=None, **kwargs):
+    node = self.Math(value=value, value_1=value_1, operation='SNAP', use_clamp=use_clamp, node_label=node_label, node_color=node_color, **kwargs)
     return node.value
 ```
 ### sqrt
@@ -1065,8 +1038,8 @@ def snap(self, value=None, value_1=None, use_clamp=False, node_label=None, node_
 #### Source code
 
 ``` python
-def sqrt(self, value=None, use_clamp=False, node_label=None, node_color=None):
-    node = self.Math(value=value, operation='SQRT', use_clamp=use_clamp, node_label=node_label, node_color=node_color)
+def sqrt(self, value=None, use_clamp=False, node_label=None, node_color=None, **kwargs):
+    node = self.Math(value=value, operation='SQRT', use_clamp=use_clamp, node_label=node_label, node_color=node_color, **kwargs)
     return node.value
 ```
 ### subtract
@@ -1086,8 +1059,8 @@ def sqrt(self, value=None, use_clamp=False, node_label=None, node_color=None):
 #### Source code
 
 ``` python
-def subtract(self, value=None, value_1=None, use_clamp=False, node_label=None, node_color=None):
-    node = self.Math(value=value, value_1=value_1, operation='SUBTRACT', use_clamp=use_clamp, node_label=node_label, node_color=node_color)
+def subtract(self, value=None, value_1=None, use_clamp=False, node_label=None, node_color=None, **kwargs):
+    node = self.Math(value=value, value_1=value_1, operation='SUBTRACT', use_clamp=use_clamp, node_label=node_label, node_color=node_color, **kwargs)
     return node.value
 ```
 ### tan
@@ -1106,8 +1079,8 @@ def subtract(self, value=None, value_1=None, use_clamp=False, node_label=None, n
 #### Source code
 
 ``` python
-def tan(self, value=None, use_clamp=False, node_label=None, node_color=None):
-    node = self.Math(value=value, operation='TANGENT', use_clamp=use_clamp, node_label=node_label, node_color=node_color)
+def tan(self, value=None, use_clamp=False, node_label=None, node_color=None, **kwargs):
+    node = self.Math(value=value, operation='TANGENT', use_clamp=use_clamp, node_label=node_label, node_color=node_color, **kwargs)
     return node.value
 ```
 ### tanh
@@ -1126,8 +1099,8 @@ def tan(self, value=None, use_clamp=False, node_label=None, node_color=None):
 #### Source code
 
 ``` python
-def tanh(self, value=None, use_clamp=False, node_label=None, node_color=None):
-    node = self.Math(value=value, operation='TANH', use_clamp=use_clamp, node_label=node_label, node_color=node_color)
+def tanh(self, value=None, use_clamp=False, node_label=None, node_color=None, **kwargs):
+    node = self.Math(value=value, operation='TANH', use_clamp=use_clamp, node_label=node_label, node_color=node_color, **kwargs)
     return node.value
 ```
 ### trunc
@@ -1146,8 +1119,8 @@ def tanh(self, value=None, use_clamp=False, node_label=None, node_color=None):
 #### Source code
 
 ``` python
-def trunc(self, value=None, use_clamp=False, node_label=None, node_color=None):
-    node = self.Math(value=value, operation='TRUNC', use_clamp=use_clamp, node_label=node_label, node_color=node_color)
+def trunc(self, value=None, use_clamp=False, node_label=None, node_color=None, **kwargs):
+    node = self.Math(value=value, operation='TRUNC', use_clamp=use_clamp, node_label=node_label, node_color=node_color, **kwargs)
     return node.value
 ```
 ### vabs
@@ -1165,8 +1138,8 @@ def trunc(self, value=None, use_clamp=False, node_label=None, node_color=None):
 #### Source code
 
 ``` python
-def vabs(self, vector=None, node_label=None, node_color=None):
-    node = self.VectorMath(vector=vector, operation='ABSOLUTE', node_label=node_label, node_color=node_color)
+def vabs(self, vector=None, node_label=None, node_color=None, **kwargs):
+    node = self.VectorMath(vector=vector, operation='ABSOLUTE', node_label=node_label, node_color=node_color, **kwargs)
     return node.output_socket
 ```
 ### vadd
@@ -1185,8 +1158,8 @@ def vabs(self, vector=None, node_label=None, node_color=None):
 #### Source code
 
 ``` python
-def vadd(self, vector=None, vector_1=None, node_label=None, node_color=None):
-    node = self.VectorMath(vector=vector, vector_1=vector_1, operation='ADD', node_label=node_label, node_color=node_color)
+def vadd(self, vector=None, vector_1=None, node_label=None, node_color=None, **kwargs):
+    node = self.VectorMath(vector=vector, vector_1=vector_1, operation='ADD', node_label=node_label, node_color=node_color, **kwargs)
     return node.output_socket
 ```
 ### vceil
@@ -1204,8 +1177,8 @@ def vadd(self, vector=None, vector_1=None, node_label=None, node_color=None):
 #### Source code
 
 ``` python
-def vceil(self, vector=None, node_label=None, node_color=None):
-    node = self.VectorMath(vector=vector, operation='CEIL', node_label=node_label, node_color=node_color)
+def vceil(self, vector=None, node_label=None, node_color=None, **kwargs):
+    node = self.VectorMath(vector=vector, operation='CEIL', node_label=node_label, node_color=node_color, **kwargs)
     return node.output_socket
 ```
 ### vcos
@@ -1223,8 +1196,8 @@ def vceil(self, vector=None, node_label=None, node_color=None):
 #### Source code
 
 ``` python
-def vcos(self, vector=None, node_label=None, node_color=None):
-    node = self.VectorMath(vector=vector, operation='COSINE', node_label=node_label, node_color=node_color)
+def vcos(self, vector=None, node_label=None, node_color=None, **kwargs):
+    node = self.VectorMath(vector=vector, operation='COSINE', node_label=node_label, node_color=node_color, **kwargs)
     return node.output_socket
 ```
 ### vcross
@@ -1243,8 +1216,8 @@ def vcos(self, vector=None, node_label=None, node_color=None):
 #### Source code
 
 ``` python
-def vcross(self, vector=None, vector_1=None, node_label=None, node_color=None):
-    node = self.VectorMath(vector=vector, vector_1=vector_1, operation='CROSS_PRODUCT', node_label=node_label, node_color=node_color)
+def vcross(self, vector=None, vector_1=None, node_label=None, node_color=None, **kwargs):
+    node = self.VectorMath(vector=vector, vector_1=vector_1, operation='CROSS_PRODUCT', node_label=node_label, node_color=node_color, **kwargs)
     return node.output_socket
 ```
 ### vdistance
@@ -1263,8 +1236,8 @@ def vcross(self, vector=None, vector_1=None, node_label=None, node_color=None):
 #### Source code
 
 ``` python
-def vdistance(self, vector=None, vector_1=None, node_label=None, node_color=None):
-    node = self.VectorMath(vector=vector, vector_1=vector_1, operation='DISTANCE', node_label=node_label, node_color=node_color)
+def vdistance(self, vector=None, vector_1=None, node_label=None, node_color=None, **kwargs):
+    node = self.VectorMath(vector=vector, vector_1=vector_1, operation='DISTANCE', node_label=node_label, node_color=node_color, **kwargs)
     return node.output_socket
 ```
 ### vdivide
@@ -1283,8 +1256,8 @@ def vdistance(self, vector=None, vector_1=None, node_label=None, node_color=None
 #### Source code
 
 ``` python
-def vdivide(self, vector=None, vector_1=None, node_label=None, node_color=None):
-    node = self.VectorMath(vector=vector, vector_1=vector_1, operation='DIVIDE', node_label=node_label, node_color=node_color)
+def vdivide(self, vector=None, vector_1=None, node_label=None, node_color=None, **kwargs):
+    node = self.VectorMath(vector=vector, vector_1=vector_1, operation='DIVIDE', node_label=node_label, node_color=node_color, **kwargs)
     return node.output_socket
 ```
 ### vdot
@@ -1303,8 +1276,8 @@ def vdivide(self, vector=None, vector_1=None, node_label=None, node_color=None):
 #### Source code
 
 ``` python
-def vdot(self, vector=None, vector_1=None, node_label=None, node_color=None):
-    node = self.VectorMath(vector=vector, vector_1=vector_1, operation='DOT_PRODUCT', node_label=node_label, node_color=node_color)
+def vdot(self, vector=None, vector_1=None, node_label=None, node_color=None, **kwargs):
+    node = self.VectorMath(vector=vector, vector_1=vector_1, operation='DOT_PRODUCT', node_label=node_label, node_color=node_color, **kwargs)
     return node.output_socket
 ```
 ### vfaceforward
@@ -1324,8 +1297,8 @@ def vdot(self, vector=None, vector_1=None, node_label=None, node_color=None):
 #### Source code
 
 ``` python
-def vfaceforward(self, vector=None, vector_1=None, vector_2=None, node_label=None, node_color=None):
-    node = self.VectorMath(vector=vector, vector_1=vector_1, vector_2=vector_2, operation='FACEFORWARD', node_label=node_label, node_color=node_color)
+def vfaceforward(self, vector=None, vector_1=None, vector_2=None, node_label=None, node_color=None, **kwargs):
+    node = self.VectorMath(vector=vector, vector_1=vector_1, vector_2=vector_2, operation='FACEFORWARD', node_label=node_label, node_color=node_color, **kwargs)
     return node.output_socket
 ```
 ### vfloor
@@ -1343,8 +1316,8 @@ def vfaceforward(self, vector=None, vector_1=None, vector_2=None, node_label=Non
 #### Source code
 
 ``` python
-def vfloor(self, vector=None, node_label=None, node_color=None):
-    node = self.VectorMath(vector=vector, operation='FLOOR', node_label=node_label, node_color=node_color)
+def vfloor(self, vector=None, node_label=None, node_color=None, **kwargs):
+    node = self.VectorMath(vector=vector, operation='FLOOR', node_label=node_label, node_color=node_color, **kwargs)
     return node.output_socket
 ```
 ### vfrac
@@ -1362,8 +1335,8 @@ def vfloor(self, vector=None, node_label=None, node_color=None):
 #### Source code
 
 ``` python
-def vfrac(self, vector=None, node_label=None, node_color=None):
-    node = self.VectorMath(vector=vector, operation='FRACTION', node_label=node_label, node_color=node_color)
+def vfrac(self, vector=None, node_label=None, node_color=None, **kwargs):
+    node = self.VectorMath(vector=vector, operation='FRACTION', node_label=node_label, node_color=node_color, **kwargs)
     return node.output_socket
 ```
 ### vlength
@@ -1381,8 +1354,8 @@ def vfrac(self, vector=None, node_label=None, node_color=None):
 #### Source code
 
 ``` python
-def vlength(self, vector=None, node_label=None, node_color=None):
-    node = self.VectorMath(vector=vector, operation='LENGTH', node_label=node_label, node_color=node_color)
+def vlength(self, vector=None, node_label=None, node_color=None, **kwargs):
+    node = self.VectorMath(vector=vector, operation='LENGTH', node_label=node_label, node_color=node_color, **kwargs)
     return node.output_socket
 ```
 ### vmax
@@ -1401,8 +1374,8 @@ def vlength(self, vector=None, node_label=None, node_color=None):
 #### Source code
 
 ``` python
-def vmax(self, vector=None, vector_1=None, node_label=None, node_color=None):
-    node = self.VectorMath(vector=vector, vector_1=vector_1, operation='MAXIMUM', node_label=node_label, node_color=node_color)
+def vmax(self, vector=None, vector_1=None, node_label=None, node_color=None, **kwargs):
+    node = self.VectorMath(vector=vector, vector_1=vector_1, operation='MAXIMUM', node_label=node_label, node_color=node_color, **kwargs)
     return node.output_socket
 ```
 ### vmin
@@ -1421,8 +1394,8 @@ def vmax(self, vector=None, vector_1=None, node_label=None, node_color=None):
 #### Source code
 
 ``` python
-def vmin(self, vector=None, vector_1=None, node_label=None, node_color=None):
-    node = self.VectorMath(vector=vector, vector_1=vector_1, operation='MINIMUM', node_label=node_label, node_color=node_color)
+def vmin(self, vector=None, vector_1=None, node_label=None, node_color=None, **kwargs):
+    node = self.VectorMath(vector=vector, vector_1=vector_1, operation='MINIMUM', node_label=node_label, node_color=node_color, **kwargs)
     return node.output_socket
 ```
 ### vmod
@@ -1441,8 +1414,8 @@ def vmin(self, vector=None, vector_1=None, node_label=None, node_color=None):
 #### Source code
 
 ``` python
-def vmod(self, vector=None, vector_1=None, node_label=None, node_color=None):
-    node = self.VectorMath(vector=vector, vector_1=vector_1, operation='MODULO', node_label=node_label, node_color=node_color)
+def vmod(self, vector=None, vector_1=None, node_label=None, node_color=None, **kwargs):
+    node = self.VectorMath(vector=vector, vector_1=vector_1, operation='MODULO', node_label=node_label, node_color=node_color, **kwargs)
     return node.output_socket
 ```
 ### vmultiply
@@ -1461,8 +1434,8 @@ def vmod(self, vector=None, vector_1=None, node_label=None, node_color=None):
 #### Source code
 
 ``` python
-def vmultiply(self, vector=None, vector_1=None, node_label=None, node_color=None):
-    node = self.VectorMath(vector=vector, vector_1=vector_1, operation='MULTIPLY', node_label=node_label, node_color=node_color)
+def vmultiply(self, vector=None, vector_1=None, node_label=None, node_color=None, **kwargs):
+    node = self.VectorMath(vector=vector, vector_1=vector_1, operation='MULTIPLY', node_label=node_label, node_color=node_color, **kwargs)
     return node.output_socket
 ```
 ### vmultiply_add
@@ -1482,8 +1455,8 @@ def vmultiply(self, vector=None, vector_1=None, node_label=None, node_color=None
 #### Source code
 
 ``` python
-def vmultiply_add(self, vector=None, vector_1=None, vector_2=None, node_label=None, node_color=None):
-    node = self.VectorMath(vector=vector, vector_1=vector_1, vector_2=vector_2, operation='MULTIPLY_ADD', node_label=node_label, node_color=node_color)
+def vmultiply_add(self, vector=None, vector_1=None, vector_2=None, node_label=None, node_color=None, **kwargs):
+    node = self.VectorMath(vector=vector, vector_1=vector_1, vector_2=vector_2, operation='MULTIPLY_ADD', node_label=node_label, node_color=node_color, **kwargs)
     return node.output_socket
 ```
 ### vnormalize
@@ -1501,8 +1474,8 @@ def vmultiply_add(self, vector=None, vector_1=None, vector_2=None, node_label=No
 #### Source code
 
 ``` python
-def vnormalize(self, vector=None, node_label=None, node_color=None):
-    node = self.VectorMath(vector=vector, operation='NORMALIZE', node_label=node_label, node_color=node_color)
+def vnormalize(self, vector=None, node_label=None, node_color=None, **kwargs):
+    node = self.VectorMath(vector=vector, operation='NORMALIZE', node_label=node_label, node_color=node_color, **kwargs)
     return node.output_socket
 ```
 ### voronoi_texture
@@ -1534,8 +1507,8 @@ def vnormalize(self, vector=None, node_label=None, node_color=None):
 #### Source code
 
 ``` python
-def voronoi_texture(self, vector=None, scale=None, detail=None, roughness=None, lacunarity=None, randomness=None, exponent=None, smoothness=None, w=None, color_mapping=None, distance='EUCLIDEAN', feature='F1', normalize=False, texture_mapping=None, voronoi_dimensions='3D', node_label=None, node_color=None):
-    node = self.VoronoiTexture(vector=vector, scale=scale, detail=detail, roughness=roughness, lacunarity=lacunarity, randomness=randomness, exponent=exponent, smoothness=smoothness, w=w, color_mapping=color_mapping, distance=distance, feature=feature, normalize=normalize, texture_mapping=texture_mapping, voronoi_dimensions=voronoi_dimensions, node_label=node_label, node_color=node_color)
+def voronoi_texture(self, vector=None, scale=None, detail=None, roughness=None, lacunarity=None, randomness=None, exponent=None, smoothness=None, w=None, color_mapping=None, distance='EUCLIDEAN', feature='F1', normalize=False, texture_mapping=None, voronoi_dimensions='3D', node_label=None, node_color=None, **kwargs):
+    node = self.VoronoiTexture(vector=vector, scale=scale, detail=detail, roughness=roughness, lacunarity=lacunarity, randomness=randomness, exponent=exponent, smoothness=smoothness, w=w, color_mapping=color_mapping, distance=distance, feature=feature, normalize=normalize, texture_mapping=texture_mapping, voronoi_dimensions=voronoi_dimensions, node_label=node_label, node_color=node_color, **kwargs)
     return node.distance
 ```
 ### vproject
@@ -1554,8 +1527,8 @@ def voronoi_texture(self, vector=None, scale=None, detail=None, roughness=None, 
 #### Source code
 
 ``` python
-def vproject(self, vector=None, vector_1=None, node_label=None, node_color=None):
-    node = self.VectorMath(vector=vector, vector_1=vector_1, operation='PROJECT', node_label=node_label, node_color=node_color)
+def vproject(self, vector=None, vector_1=None, node_label=None, node_color=None, **kwargs):
+    node = self.VectorMath(vector=vector, vector_1=vector_1, operation='PROJECT', node_label=node_label, node_color=node_color, **kwargs)
     return node.output_socket
 ```
 ### vreflect
@@ -1574,8 +1547,8 @@ def vproject(self, vector=None, vector_1=None, node_label=None, node_color=None)
 #### Source code
 
 ``` python
-def vreflect(self, vector=None, vector_1=None, node_label=None, node_color=None):
-    node = self.VectorMath(vector=vector, vector_1=vector_1, operation='REFLECT', node_label=node_label, node_color=node_color)
+def vreflect(self, vector=None, vector_1=None, node_label=None, node_color=None, **kwargs):
+    node = self.VectorMath(vector=vector, vector_1=vector_1, operation='REFLECT', node_label=node_label, node_color=node_color, **kwargs)
     return node.output_socket
 ```
 ### vrefract
@@ -1595,8 +1568,8 @@ def vreflect(self, vector=None, vector_1=None, node_label=None, node_color=None)
 #### Source code
 
 ``` python
-def vrefract(self, vector=None, vector_1=None, scale=None, node_label=None, node_color=None):
-    node = self.VectorMath(vector=vector, vector_1=vector_1, scale=scale, operation='REFRACT', node_label=node_label, node_color=node_color)
+def vrefract(self, vector=None, vector_1=None, scale=None, node_label=None, node_color=None, **kwargs):
+    node = self.VectorMath(vector=vector, vector_1=vector_1, scale=scale, operation='REFRACT', node_label=node_label, node_color=node_color, **kwargs)
     return node.output_socket
 ```
 ### vscale
@@ -1615,8 +1588,8 @@ def vrefract(self, vector=None, vector_1=None, scale=None, node_label=None, node
 #### Source code
 
 ``` python
-def vscale(self, vector=None, scale=None, node_label=None, node_color=None):
-    node = self.VectorMath(vector=vector, scale=scale, operation='SCALE', node_label=node_label, node_color=node_color)
+def vscale(self, vector=None, scale=None, node_label=None, node_color=None, **kwargs):
+    node = self.VectorMath(vector=vector, scale=scale, operation='SCALE', node_label=node_label, node_color=node_color, **kwargs)
     return node.output_socket
 ```
 ### vsin
@@ -1634,8 +1607,8 @@ def vscale(self, vector=None, scale=None, node_label=None, node_color=None):
 #### Source code
 
 ``` python
-def vsin(self, vector=None, node_label=None, node_color=None):
-    node = self.VectorMath(vector=vector, operation='SINE', node_label=node_label, node_color=node_color)
+def vsin(self, vector=None, node_label=None, node_color=None, **kwargs):
+    node = self.VectorMath(vector=vector, operation='SINE', node_label=node_label, node_color=node_color, **kwargs)
     return node.output_socket
 ```
 ### vsnap
@@ -1654,8 +1627,8 @@ def vsin(self, vector=None, node_label=None, node_color=None):
 #### Source code
 
 ``` python
-def vsnap(self, vector=None, vector_1=None, node_label=None, node_color=None):
-    node = self.VectorMath(vector=vector, vector_1=vector_1, operation='SNAP', node_label=node_label, node_color=node_color)
+def vsnap(self, vector=None, vector_1=None, node_label=None, node_color=None, **kwargs):
+    node = self.VectorMath(vector=vector, vector_1=vector_1, operation='SNAP', node_label=node_label, node_color=node_color, **kwargs)
     return node.output_socket
 ```
 ### vsubtract
@@ -1674,8 +1647,8 @@ def vsnap(self, vector=None, vector_1=None, node_label=None, node_color=None):
 #### Source code
 
 ``` python
-def vsubtract(self, vector=None, vector_1=None, node_label=None, node_color=None):
-    node = self.VectorMath(vector=vector, vector_1=vector_1, operation='SUBTRACT', node_label=node_label, node_color=node_color)
+def vsubtract(self, vector=None, vector_1=None, node_label=None, node_color=None, **kwargs):
+    node = self.VectorMath(vector=vector, vector_1=vector_1, operation='SUBTRACT', node_label=node_label, node_color=node_color, **kwargs)
     return node.output_socket
 ```
 ### vtan
@@ -1693,8 +1666,8 @@ def vsubtract(self, vector=None, vector_1=None, node_label=None, node_color=None
 #### Source code
 
 ``` python
-def vtan(self, vector=None, node_label=None, node_color=None):
-    node = self.VectorMath(vector=vector, operation='TANGENT', node_label=node_label, node_color=node_color)
+def vtan(self, vector=None, node_label=None, node_color=None, **kwargs):
+    node = self.VectorMath(vector=vector, operation='TANGENT', node_label=node_label, node_color=node_color, **kwargs)
     return node.output_socket
 ```
 ### vwrap
@@ -1714,8 +1687,8 @@ def vtan(self, vector=None, node_label=None, node_color=None):
 #### Source code
 
 ``` python
-def vwrap(self, vector=None, vector_1=None, vector_2=None, node_label=None, node_color=None):
-    node = self.VectorMath(vector=vector, vector_1=vector_1, vector_2=vector_2, operation='WRAP', node_label=node_label, node_color=node_color)
+def vwrap(self, vector=None, vector_1=None, vector_2=None, node_label=None, node_color=None, **kwargs):
+    node = self.VectorMath(vector=vector, vector_1=vector_1, vector_2=vector_2, operation='WRAP', node_label=node_label, node_color=node_color, **kwargs)
     return node.output_socket
 ```
 ### wave_texture
@@ -1745,8 +1718,8 @@ def vwrap(self, vector=None, vector_1=None, vector_2=None, node_label=None, node
 #### Source code
 
 ``` python
-def wave_texture(self, vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, bands_direction='X', color_mapping=None, rings_direction='X', texture_mapping=None, wave_profile='SIN', wave_type='BANDS', node_label=None, node_color=None):
-    node = self.WaveTexture(vector=vector, scale=scale, distortion=distortion, detail=detail, detail_scale=detail_scale, detail_roughness=detail_roughness, phase_offset=phase_offset, bands_direction=bands_direction, color_mapping=color_mapping, rings_direction=rings_direction, texture_mapping=texture_mapping, wave_profile=wave_profile, wave_type=wave_type, node_label=node_label, node_color=node_color)
+def wave_texture(self, vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, bands_direction='X', color_mapping=None, rings_direction='X', texture_mapping=None, wave_profile='SIN', wave_type='BANDS', node_label=None, node_color=None, **kwargs):
+    node = self.WaveTexture(vector=vector, scale=scale, distortion=distortion, detail=detail, detail_scale=detail_scale, detail_roughness=detail_roughness, phase_offset=phase_offset, bands_direction=bands_direction, color_mapping=color_mapping, rings_direction=rings_direction, texture_mapping=texture_mapping, wave_profile=wave_profile, wave_type=wave_type, node_label=node_label, node_color=node_color, **kwargs)
     return node.curve
 ```
 ### white_noise_texture
@@ -1766,8 +1739,8 @@ def wave_texture(self, vector=None, scale=None, distortion=None, detail=None, de
 #### Source code
 
 ``` python
-def white_noise_texture(self, vector=None, w=None, noise_dimensions='3D', node_label=None, node_color=None):
-    node = self.WhiteNoiseTexture(vector=vector, w=w, noise_dimensions=noise_dimensions, node_label=node_label, node_color=node_color)
+def white_noise_texture(self, vector=None, w=None, noise_dimensions='3D', node_label=None, node_color=None, **kwargs):
+    node = self.WhiteNoiseTexture(vector=vector, w=w, noise_dimensions=noise_dimensions, node_label=node_label, node_color=node_color, **kwargs)
     return node.value
 ```
 ### wrap
@@ -1788,8 +1761,8 @@ def white_noise_texture(self, vector=None, w=None, noise_dimensions='3D', node_l
 #### Source code
 
 ``` python
-def wrap(self, value=None, value_1=None, value_2=None, use_clamp=False, node_label=None, node_color=None):
-    node = self.Math(value=value, value_1=value_1, value_2=value_2, operation='WRAP', use_clamp=use_clamp, node_label=node_label, node_color=node_color)
+def wrap(self, value=None, value_1=None, value_2=None, use_clamp=False, node_label=None, node_color=None, **kwargs):
+    node = self.Math(value=value, value_1=value_1, value_2=value_2, operation='WRAP', use_clamp=use_clamp, node_label=node_label, node_color=node_color, **kwargs)
     return node.value
 ```
 ### xyz
@@ -1809,7 +1782,7 @@ def wrap(self, value=None, value_1=None, value_2=None, use_clamp=False, node_lab
 #### Source code
 
 ``` python
-def xyz(self, x=None, y=None, z=None, node_label=None, node_color=None):
-    node = self.CombineXYZ(x=x, y=y, z=z, node_label=node_label, node_color=node_color)
+def xyz(self, x=None, y=None, z=None, node_label=None, node_color=None, **kwargs):
+    node = self.CombineXYZ(x=x, y=y, z=z, node_label=node_label, node_color=node_color, **kwargs)
     return node.vector
 ```

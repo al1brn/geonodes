@@ -5,7 +5,7 @@
 
 
 ``` python
-SetSplineResolution(geometry=None, selection=None, resolution=None, node_label=None, node_color=None)
+SetSplineResolution(geometry=None, selection=None, resolution=None, node_label=None, node_color=None, **kwargs)
 ```
 ##### Arguments
 
@@ -20,9 +20,9 @@ SetSplineResolution(geometry=None, selection=None, resolution=None, node_label=N
 ## Init
 
 ``` python
-def __init__(self, geometry=None, selection=None, resolution=None, node_label=None, node_color=None):
+def __init__(self, geometry=None, selection=None, resolution=None, node_label=None, node_color=None, **kwargs):
 
-    Node.__init__(self, 'GeometryNodeSetSplineResolution', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'GeometryNodeSetSplineResolution', node_label=node_label, node_color=node_color, **kwargs)
 
     self.geometry        = geometry
     self.selection       = selection

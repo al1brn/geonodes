@@ -5,7 +5,7 @@
 
 
 ``` python
-AttributeStatistic(geometry=None, selection=None, attribute=None, data_type='FLOAT', domain='POINT', node_label=None, node_color=None)
+AttributeStatistic(geometry=None, selection=None, attribute=None, data_type='FLOAT', domain='POINT', node_label=None, node_color=None, **kwargs)
 ```
 ##### Arguments
 
@@ -22,9 +22,9 @@ AttributeStatistic(geometry=None, selection=None, attribute=None, data_type='FLO
 ## Init
 
 ``` python
-def __init__(self, geometry=None, selection=None, attribute=None, data_type='FLOAT', domain='POINT', node_label=None, node_color=None):
+def __init__(self, geometry=None, selection=None, attribute=None, data_type='FLOAT', domain='POINT', node_label=None, node_color=None, **kwargs):
 
-    Node.__init__(self, 'GeometryNodeAttributeStatistic', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'GeometryNodeAttributeStatistic', node_label=node_label, node_color=node_color, **kwargs)
 
     self.data_type       = data_type
     self.domain          = domain

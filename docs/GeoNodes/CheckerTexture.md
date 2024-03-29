@@ -5,7 +5,7 @@
 
 
 ``` python
-CheckerTexture(vector=None, color1=None, color2=None, scale=None, color_mapping=None, texture_mapping=None, node_label=None, node_color=None)
+CheckerTexture(vector=None, color1=None, color2=None, scale=None, color_mapping=None, texture_mapping=None, node_label=None, node_color=None, **kwargs)
 ```
 ##### Arguments
 
@@ -23,9 +23,9 @@ CheckerTexture(vector=None, color1=None, color2=None, scale=None, color_mapping=
 ## Init
 
 ``` python
-def __init__(self, vector=None, color1=None, color2=None, scale=None, color_mapping=None, texture_mapping=None, node_label=None, node_color=None):
+def __init__(self, vector=None, color1=None, color2=None, scale=None, color_mapping=None, texture_mapping=None, node_label=None, node_color=None, **kwargs):
 
-    Node.__init__(self, 'ShaderNodeTexChecker', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'ShaderNodeTexChecker', node_label=node_label, node_color=node_color, **kwargs)
 
     self.color_mapping   = color_mapping
     self.texture_mapping = texture_mapping

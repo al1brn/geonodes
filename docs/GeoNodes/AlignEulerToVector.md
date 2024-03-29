@@ -5,7 +5,7 @@
 
 
 ``` python
-AlignEulerToVector(rotation=None, factor=None, vector=None, axis='X', pivot_axis='AUTO', node_label=None, node_color=None)
+AlignEulerToVector(rotation=None, factor=None, vector=None, axis='X', pivot_axis='AUTO', node_label=None, node_color=None, **kwargs)
 ```
 ##### Arguments
 
@@ -23,9 +23,9 @@ AlignEulerToVector(rotation=None, factor=None, vector=None, axis='X', pivot_axis
 ## Init
 
 ``` python
-def __init__(self, rotation=None, factor=None, vector=None, axis='X', pivot_axis='AUTO', node_label=None, node_color=None):
+def __init__(self, rotation=None, factor=None, vector=None, axis='X', pivot_axis='AUTO', node_label=None, node_color=None, **kwargs):
 
-    Node.__init__(self, 'FunctionNodeAlignEulerToVector', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'FunctionNodeAlignEulerToVector', node_label=node_label, node_color=node_color, **kwargs)
 
     self.axis            = axis
     self.pivot_axis      = pivot_axis

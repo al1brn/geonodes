@@ -5,7 +5,7 @@
 
 
 ``` python
-Cylinder(vertices=None, side_segments=None, fill_segments=None, radius=None, depth=None, fill_type='NGON', node_label=None, node_color=None)
+Cylinder(vertices=None, side_segments=None, fill_segments=None, radius=None, depth=None, fill_type='NGON', node_label=None, node_color=None, **kwargs)
 ```
 ##### Arguments
 
@@ -23,9 +23,9 @@ Cylinder(vertices=None, side_segments=None, fill_segments=None, radius=None, dep
 ## Init
 
 ``` python
-def __init__(self, vertices=None, side_segments=None, fill_segments=None, radius=None, depth=None, fill_type='NGON', node_label=None, node_color=None):
+def __init__(self, vertices=None, side_segments=None, fill_segments=None, radius=None, depth=None, fill_type='NGON', node_label=None, node_color=None, **kwargs):
 
-    Node.__init__(self, 'GeometryNodeMeshCylinder', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'GeometryNodeMeshCylinder', node_label=node_label, node_color=node_color, **kwargs)
 
     self.fill_type       = fill_type
     self.vertices        = vertices

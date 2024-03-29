@@ -5,7 +5,7 @@
 
 
 ``` python
-IcoSphere(radius=None, subdivisions=None, node_label=None, node_color=None)
+IcoSphere(radius=None, subdivisions=None, node_label=None, node_color=None, **kwargs)
 ```
 ##### Arguments
 
@@ -19,9 +19,9 @@ IcoSphere(radius=None, subdivisions=None, node_label=None, node_color=None)
 ## Init
 
 ``` python
-def __init__(self, radius=None, subdivisions=None, node_label=None, node_color=None):
+def __init__(self, radius=None, subdivisions=None, node_label=None, node_color=None, **kwargs):
 
-    Node.__init__(self, 'GeometryNodeMeshIcoSphere', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'GeometryNodeMeshIcoSphere', node_label=node_label, node_color=node_color, **kwargs)
 
     self.radius          = radius
     self.subdivisions    = subdivisions

@@ -25,7 +25,6 @@
 - [mix_value](#mix_value)
 - [rgb_curves](#rgb_curves)
 - [separate_color](#separate_color)
-- [switch](#switch)
 
 ## Methods
 
@@ -52,8 +51,8 @@
 #### Source code
 
 ``` python
-def mix(self, fac=None, image=None, image_1=None, blend_type='MIX', tag_need_exec=None, use_alpha=False, use_clamp=False, node_label=None, node_color=None):
-    node = self.tree.Mix(fac=fac, image=image, image_1=image_1, blend_type=blend_type, tag_need_exec=tag_need_exec, use_alpha=use_alpha, use_clamp=use_clamp, node_label=node_label, node_color=node_color)
+def mix(self, fac=None, image=None, image_1=None, blend_type='MIX', tag_need_exec=None, use_alpha=False, use_clamp=False, node_label=None, node_color=None, **kwargs):
+    node = self.tree.Mix(fac=fac, image=image, image_1=image_1, blend_type=blend_type, tag_need_exec=tag_need_exec, use_alpha=use_alpha, use_clamp=use_clamp, node_label=node_label, node_color=node_color, **kwargs)
     self.jump(node.result)
     return self
 ```
@@ -79,8 +78,8 @@ def mix(self, fac=None, image=None, image_1=None, blend_type='MIX', tag_need_exe
 #### Source code
 
 ``` python
-def mix_add(self, fac=None, image=None, image_1=None, tag_need_exec=None, use_alpha=False, use_clamp=False, node_label=None, node_color=None):
-    node = self.tree.Mix(fac=fac, image=image, image_1=image_1, blend_type='ADD', tag_need_exec=tag_need_exec, use_alpha=use_alpha, use_clamp=use_clamp, node_label=node_label, node_color=node_color)
+def mix_add(self, fac=None, image=None, image_1=None, tag_need_exec=None, use_alpha=False, use_clamp=False, node_label=None, node_color=None, **kwargs):
+    node = self.tree.Mix(fac=fac, image=image, image_1=image_1, blend_type='ADD', tag_need_exec=tag_need_exec, use_alpha=use_alpha, use_clamp=use_clamp, node_label=node_label, node_color=node_color, **kwargs)
     self.jump(node.result)
     return self
 ```
@@ -106,8 +105,8 @@ def mix_add(self, fac=None, image=None, image_1=None, tag_need_exec=None, use_al
 #### Source code
 
 ``` python
-def mix_burn(self, fac=None, image=None, image_1=None, tag_need_exec=None, use_alpha=False, use_clamp=False, node_label=None, node_color=None):
-    node = self.tree.Mix(fac=fac, image=image, image_1=image_1, blend_type='BURN', tag_need_exec=tag_need_exec, use_alpha=use_alpha, use_clamp=use_clamp, node_label=node_label, node_color=node_color)
+def mix_burn(self, fac=None, image=None, image_1=None, tag_need_exec=None, use_alpha=False, use_clamp=False, node_label=None, node_color=None, **kwargs):
+    node = self.tree.Mix(fac=fac, image=image, image_1=image_1, blend_type='BURN', tag_need_exec=tag_need_exec, use_alpha=use_alpha, use_clamp=use_clamp, node_label=node_label, node_color=node_color, **kwargs)
     self.jump(node.result)
     return self
 ```
@@ -133,8 +132,8 @@ def mix_burn(self, fac=None, image=None, image_1=None, tag_need_exec=None, use_a
 #### Source code
 
 ``` python
-def mix_color(self, fac=None, image=None, image_1=None, tag_need_exec=None, use_alpha=False, use_clamp=False, node_label=None, node_color=None):
-    node = self.tree.Mix(fac=fac, image=image, image_1=image_1, blend_type='COLOR', tag_need_exec=tag_need_exec, use_alpha=use_alpha, use_clamp=use_clamp, node_label=node_label, node_color=node_color)
+def mix_color(self, fac=None, image=None, image_1=None, tag_need_exec=None, use_alpha=False, use_clamp=False, node_label=None, node_color=None, **kwargs):
+    node = self.tree.Mix(fac=fac, image=image, image_1=image_1, blend_type='COLOR', tag_need_exec=tag_need_exec, use_alpha=use_alpha, use_clamp=use_clamp, node_label=node_label, node_color=node_color, **kwargs)
     self.jump(node.result)
     return self
 ```
@@ -160,8 +159,8 @@ def mix_color(self, fac=None, image=None, image_1=None, tag_need_exec=None, use_
 #### Source code
 
 ``` python
-def mix_darken(self, fac=None, image=None, image_1=None, tag_need_exec=None, use_alpha=False, use_clamp=False, node_label=None, node_color=None):
-    node = self.tree.Mix(fac=fac, image=image, image_1=image_1, blend_type='DARKEN', tag_need_exec=tag_need_exec, use_alpha=use_alpha, use_clamp=use_clamp, node_label=node_label, node_color=node_color)
+def mix_darken(self, fac=None, image=None, image_1=None, tag_need_exec=None, use_alpha=False, use_clamp=False, node_label=None, node_color=None, **kwargs):
+    node = self.tree.Mix(fac=fac, image=image, image_1=image_1, blend_type='DARKEN', tag_need_exec=tag_need_exec, use_alpha=use_alpha, use_clamp=use_clamp, node_label=node_label, node_color=node_color, **kwargs)
     self.jump(node.result)
     return self
 ```
@@ -187,8 +186,8 @@ def mix_darken(self, fac=None, image=None, image_1=None, tag_need_exec=None, use
 #### Source code
 
 ``` python
-def mix_difference(self, fac=None, image=None, image_1=None, tag_need_exec=None, use_alpha=False, use_clamp=False, node_label=None, node_color=None):
-    node = self.tree.Mix(fac=fac, image=image, image_1=image_1, blend_type='DIFFERENCE', tag_need_exec=tag_need_exec, use_alpha=use_alpha, use_clamp=use_clamp, node_label=node_label, node_color=node_color)
+def mix_difference(self, fac=None, image=None, image_1=None, tag_need_exec=None, use_alpha=False, use_clamp=False, node_label=None, node_color=None, **kwargs):
+    node = self.tree.Mix(fac=fac, image=image, image_1=image_1, blend_type='DIFFERENCE', tag_need_exec=tag_need_exec, use_alpha=use_alpha, use_clamp=use_clamp, node_label=node_label, node_color=node_color, **kwargs)
     self.jump(node.result)
     return self
 ```
@@ -214,8 +213,8 @@ def mix_difference(self, fac=None, image=None, image_1=None, tag_need_exec=None,
 #### Source code
 
 ``` python
-def mix_divide(self, fac=None, image=None, image_1=None, tag_need_exec=None, use_alpha=False, use_clamp=False, node_label=None, node_color=None):
-    node = self.tree.Mix(fac=fac, image=image, image_1=image_1, blend_type='DIVIDE', tag_need_exec=tag_need_exec, use_alpha=use_alpha, use_clamp=use_clamp, node_label=node_label, node_color=node_color)
+def mix_divide(self, fac=None, image=None, image_1=None, tag_need_exec=None, use_alpha=False, use_clamp=False, node_label=None, node_color=None, **kwargs):
+    node = self.tree.Mix(fac=fac, image=image, image_1=image_1, blend_type='DIVIDE', tag_need_exec=tag_need_exec, use_alpha=use_alpha, use_clamp=use_clamp, node_label=node_label, node_color=node_color, **kwargs)
     self.jump(node.result)
     return self
 ```
@@ -241,8 +240,8 @@ def mix_divide(self, fac=None, image=None, image_1=None, tag_need_exec=None, use
 #### Source code
 
 ``` python
-def mix_dodge(self, fac=None, image=None, image_1=None, tag_need_exec=None, use_alpha=False, use_clamp=False, node_label=None, node_color=None):
-    node = self.tree.Mix(fac=fac, image=image, image_1=image_1, blend_type='DODGE', tag_need_exec=tag_need_exec, use_alpha=use_alpha, use_clamp=use_clamp, node_label=node_label, node_color=node_color)
+def mix_dodge(self, fac=None, image=None, image_1=None, tag_need_exec=None, use_alpha=False, use_clamp=False, node_label=None, node_color=None, **kwargs):
+    node = self.tree.Mix(fac=fac, image=image, image_1=image_1, blend_type='DODGE', tag_need_exec=tag_need_exec, use_alpha=use_alpha, use_clamp=use_clamp, node_label=node_label, node_color=node_color, **kwargs)
     self.jump(node.result)
     return self
 ```
@@ -268,8 +267,8 @@ def mix_dodge(self, fac=None, image=None, image_1=None, tag_need_exec=None, use_
 #### Source code
 
 ``` python
-def mix_exclusion(self, fac=None, image=None, image_1=None, tag_need_exec=None, use_alpha=False, use_clamp=False, node_label=None, node_color=None):
-    node = self.tree.Mix(fac=fac, image=image, image_1=image_1, blend_type='EXCLUSION', tag_need_exec=tag_need_exec, use_alpha=use_alpha, use_clamp=use_clamp, node_label=node_label, node_color=node_color)
+def mix_exclusion(self, fac=None, image=None, image_1=None, tag_need_exec=None, use_alpha=False, use_clamp=False, node_label=None, node_color=None, **kwargs):
+    node = self.tree.Mix(fac=fac, image=image, image_1=image_1, blend_type='EXCLUSION', tag_need_exec=tag_need_exec, use_alpha=use_alpha, use_clamp=use_clamp, node_label=node_label, node_color=node_color, **kwargs)
     self.jump(node.result)
     return self
 ```
@@ -295,8 +294,8 @@ def mix_exclusion(self, fac=None, image=None, image_1=None, tag_need_exec=None, 
 #### Source code
 
 ``` python
-def mix_hue(self, fac=None, image=None, image_1=None, tag_need_exec=None, use_alpha=False, use_clamp=False, node_label=None, node_color=None):
-    node = self.tree.Mix(fac=fac, image=image, image_1=image_1, blend_type='HUE', tag_need_exec=tag_need_exec, use_alpha=use_alpha, use_clamp=use_clamp, node_label=node_label, node_color=node_color)
+def mix_hue(self, fac=None, image=None, image_1=None, tag_need_exec=None, use_alpha=False, use_clamp=False, node_label=None, node_color=None, **kwargs):
+    node = self.tree.Mix(fac=fac, image=image, image_1=image_1, blend_type='HUE', tag_need_exec=tag_need_exec, use_alpha=use_alpha, use_clamp=use_clamp, node_label=node_label, node_color=node_color, **kwargs)
     self.jump(node.result)
     return self
 ```
@@ -322,8 +321,8 @@ def mix_hue(self, fac=None, image=None, image_1=None, tag_need_exec=None, use_al
 #### Source code
 
 ``` python
-def mix_lighten(self, fac=None, image=None, image_1=None, tag_need_exec=None, use_alpha=False, use_clamp=False, node_label=None, node_color=None):
-    node = self.tree.Mix(fac=fac, image=image, image_1=image_1, blend_type='LIGHTEN', tag_need_exec=tag_need_exec, use_alpha=use_alpha, use_clamp=use_clamp, node_label=node_label, node_color=node_color)
+def mix_lighten(self, fac=None, image=None, image_1=None, tag_need_exec=None, use_alpha=False, use_clamp=False, node_label=None, node_color=None, **kwargs):
+    node = self.tree.Mix(fac=fac, image=image, image_1=image_1, blend_type='LIGHTEN', tag_need_exec=tag_need_exec, use_alpha=use_alpha, use_clamp=use_clamp, node_label=node_label, node_color=node_color, **kwargs)
     self.jump(node.result)
     return self
 ```
@@ -349,8 +348,8 @@ def mix_lighten(self, fac=None, image=None, image_1=None, tag_need_exec=None, us
 #### Source code
 
 ``` python
-def mix_linear_light(self, fac=None, image=None, image_1=None, tag_need_exec=None, use_alpha=False, use_clamp=False, node_label=None, node_color=None):
-    node = self.tree.Mix(fac=fac, image=image, image_1=image_1, blend_type='LINEAR_LIGHT', tag_need_exec=tag_need_exec, use_alpha=use_alpha, use_clamp=use_clamp, node_label=node_label, node_color=node_color)
+def mix_linear_light(self, fac=None, image=None, image_1=None, tag_need_exec=None, use_alpha=False, use_clamp=False, node_label=None, node_color=None, **kwargs):
+    node = self.tree.Mix(fac=fac, image=image, image_1=image_1, blend_type='LINEAR_LIGHT', tag_need_exec=tag_need_exec, use_alpha=use_alpha, use_clamp=use_clamp, node_label=node_label, node_color=node_color, **kwargs)
     self.jump(node.result)
     return self
 ```
@@ -376,8 +375,8 @@ def mix_linear_light(self, fac=None, image=None, image_1=None, tag_need_exec=Non
 #### Source code
 
 ``` python
-def mix_mix(self, fac=None, image=None, image_1=None, tag_need_exec=None, use_alpha=False, use_clamp=False, node_label=None, node_color=None):
-    node = self.tree.Mix(fac=fac, image=image, image_1=image_1, blend_type='MIX', tag_need_exec=tag_need_exec, use_alpha=use_alpha, use_clamp=use_clamp, node_label=node_label, node_color=node_color)
+def mix_mix(self, fac=None, image=None, image_1=None, tag_need_exec=None, use_alpha=False, use_clamp=False, node_label=None, node_color=None, **kwargs):
+    node = self.tree.Mix(fac=fac, image=image, image_1=image_1, blend_type='MIX', tag_need_exec=tag_need_exec, use_alpha=use_alpha, use_clamp=use_clamp, node_label=node_label, node_color=node_color, **kwargs)
     self.jump(node.result)
     return self
 ```
@@ -403,8 +402,8 @@ def mix_mix(self, fac=None, image=None, image_1=None, tag_need_exec=None, use_al
 #### Source code
 
 ``` python
-def mix_multiply(self, fac=None, image=None, image_1=None, tag_need_exec=None, use_alpha=False, use_clamp=False, node_label=None, node_color=None):
-    node = self.tree.Mix(fac=fac, image=image, image_1=image_1, blend_type='MULTIPLY', tag_need_exec=tag_need_exec, use_alpha=use_alpha, use_clamp=use_clamp, node_label=node_label, node_color=node_color)
+def mix_multiply(self, fac=None, image=None, image_1=None, tag_need_exec=None, use_alpha=False, use_clamp=False, node_label=None, node_color=None, **kwargs):
+    node = self.tree.Mix(fac=fac, image=image, image_1=image_1, blend_type='MULTIPLY', tag_need_exec=tag_need_exec, use_alpha=use_alpha, use_clamp=use_clamp, node_label=node_label, node_color=node_color, **kwargs)
     self.jump(node.result)
     return self
 ```
@@ -430,8 +429,8 @@ def mix_multiply(self, fac=None, image=None, image_1=None, tag_need_exec=None, u
 #### Source code
 
 ``` python
-def mix_overlay(self, fac=None, image=None, image_1=None, tag_need_exec=None, use_alpha=False, use_clamp=False, node_label=None, node_color=None):
-    node = self.tree.Mix(fac=fac, image=image, image_1=image_1, blend_type='OVERLAY', tag_need_exec=tag_need_exec, use_alpha=use_alpha, use_clamp=use_clamp, node_label=node_label, node_color=node_color)
+def mix_overlay(self, fac=None, image=None, image_1=None, tag_need_exec=None, use_alpha=False, use_clamp=False, node_label=None, node_color=None, **kwargs):
+    node = self.tree.Mix(fac=fac, image=image, image_1=image_1, blend_type='OVERLAY', tag_need_exec=tag_need_exec, use_alpha=use_alpha, use_clamp=use_clamp, node_label=node_label, node_color=node_color, **kwargs)
     self.jump(node.result)
     return self
 ```
@@ -457,8 +456,8 @@ def mix_overlay(self, fac=None, image=None, image_1=None, tag_need_exec=None, us
 #### Source code
 
 ``` python
-def mix_saturation(self, fac=None, image=None, image_1=None, tag_need_exec=None, use_alpha=False, use_clamp=False, node_label=None, node_color=None):
-    node = self.tree.Mix(fac=fac, image=image, image_1=image_1, blend_type='SATURATION', tag_need_exec=tag_need_exec, use_alpha=use_alpha, use_clamp=use_clamp, node_label=node_label, node_color=node_color)
+def mix_saturation(self, fac=None, image=None, image_1=None, tag_need_exec=None, use_alpha=False, use_clamp=False, node_label=None, node_color=None, **kwargs):
+    node = self.tree.Mix(fac=fac, image=image, image_1=image_1, blend_type='SATURATION', tag_need_exec=tag_need_exec, use_alpha=use_alpha, use_clamp=use_clamp, node_label=node_label, node_color=node_color, **kwargs)
     self.jump(node.result)
     return self
 ```
@@ -484,8 +483,8 @@ def mix_saturation(self, fac=None, image=None, image_1=None, tag_need_exec=None,
 #### Source code
 
 ``` python
-def mix_screen(self, fac=None, image=None, image_1=None, tag_need_exec=None, use_alpha=False, use_clamp=False, node_label=None, node_color=None):
-    node = self.tree.Mix(fac=fac, image=image, image_1=image_1, blend_type='SCREEN', tag_need_exec=tag_need_exec, use_alpha=use_alpha, use_clamp=use_clamp, node_label=node_label, node_color=node_color)
+def mix_screen(self, fac=None, image=None, image_1=None, tag_need_exec=None, use_alpha=False, use_clamp=False, node_label=None, node_color=None, **kwargs):
+    node = self.tree.Mix(fac=fac, image=image, image_1=image_1, blend_type='SCREEN', tag_need_exec=tag_need_exec, use_alpha=use_alpha, use_clamp=use_clamp, node_label=node_label, node_color=node_color, **kwargs)
     self.jump(node.result)
     return self
 ```
@@ -511,8 +510,8 @@ def mix_screen(self, fac=None, image=None, image_1=None, tag_need_exec=None, use
 #### Source code
 
 ``` python
-def mix_soft_light(self, fac=None, image=None, image_1=None, tag_need_exec=None, use_alpha=False, use_clamp=False, node_label=None, node_color=None):
-    node = self.tree.Mix(fac=fac, image=image, image_1=image_1, blend_type='SOFT_LIGHT', tag_need_exec=tag_need_exec, use_alpha=use_alpha, use_clamp=use_clamp, node_label=node_label, node_color=node_color)
+def mix_soft_light(self, fac=None, image=None, image_1=None, tag_need_exec=None, use_alpha=False, use_clamp=False, node_label=None, node_color=None, **kwargs):
+    node = self.tree.Mix(fac=fac, image=image, image_1=image_1, blend_type='SOFT_LIGHT', tag_need_exec=tag_need_exec, use_alpha=use_alpha, use_clamp=use_clamp, node_label=node_label, node_color=node_color, **kwargs)
     self.jump(node.result)
     return self
 ```
@@ -538,8 +537,8 @@ def mix_soft_light(self, fac=None, image=None, image_1=None, tag_need_exec=None,
 #### Source code
 
 ``` python
-def mix_subtract(self, fac=None, image=None, image_1=None, tag_need_exec=None, use_alpha=False, use_clamp=False, node_label=None, node_color=None):
-    node = self.tree.Mix(fac=fac, image=image, image_1=image_1, blend_type='SUBTRACT', tag_need_exec=tag_need_exec, use_alpha=use_alpha, use_clamp=use_clamp, node_label=node_label, node_color=node_color)
+def mix_subtract(self, fac=None, image=None, image_1=None, tag_need_exec=None, use_alpha=False, use_clamp=False, node_label=None, node_color=None, **kwargs):
+    node = self.tree.Mix(fac=fac, image=image, image_1=image_1, blend_type='SUBTRACT', tag_need_exec=tag_need_exec, use_alpha=use_alpha, use_clamp=use_clamp, node_label=node_label, node_color=node_color, **kwargs)
     self.jump(node.result)
     return self
 ```
@@ -565,8 +564,8 @@ def mix_subtract(self, fac=None, image=None, image_1=None, tag_need_exec=None, u
 #### Source code
 
 ``` python
-def mix_value(self, fac=None, image=None, image_1=None, tag_need_exec=None, use_alpha=False, use_clamp=False, node_label=None, node_color=None):
-    node = self.tree.Mix(fac=fac, image=image, image_1=image_1, blend_type='VALUE', tag_need_exec=tag_need_exec, use_alpha=use_alpha, use_clamp=use_clamp, node_label=node_label, node_color=node_color)
+def mix_value(self, fac=None, image=None, image_1=None, tag_need_exec=None, use_alpha=False, use_clamp=False, node_label=None, node_color=None, **kwargs):
+    node = self.tree.Mix(fac=fac, image=image, image_1=image_1, blend_type='VALUE', tag_need_exec=tag_need_exec, use_alpha=use_alpha, use_clamp=use_clamp, node_label=node_label, node_color=node_color, **kwargs)
     self.jump(node.result)
     return self
 ```
@@ -592,8 +591,8 @@ def mix_value(self, fac=None, image=None, image_1=None, tag_need_exec=None, use_
 #### Source code
 
 ``` python
-def rgb_curves(self, fac=None, image=None, black_level=None, white_level=None, mapping=None, tag_need_exec=None, node_label=None, node_color=None):
-    node = self.tree.RGBCurves(fac=fac, image=image, black_level=black_level, white_level=white_level, mapping=mapping, tag_need_exec=tag_need_exec, node_label=node_label, node_color=node_color)
+def rgb_curves(self, fac=None, image=None, black_level=None, white_level=None, mapping=None, tag_need_exec=None, node_label=None, node_color=None, **kwargs):
+    node = self.tree.RGBCurves(fac=fac, image=image, black_level=black_level, white_level=white_level, mapping=mapping, tag_need_exec=tag_need_exec, node_label=node_label, node_color=node_color, **kwargs)
     self.jump(node.color)
     return self
 ```
@@ -617,31 +616,7 @@ def rgb_curves(self, fac=None, image=None, black_level=None, white_level=None, m
 #### Source code
 
 ``` python
-def separate_color(self, image=None, mode='RGB', tag_need_exec=None, ycc_mode='ITUBT709', node_label=None, node_color=None):
-    node = self.tree.SeparateColor(image=image, mode=mode, tag_need_exec=tag_need_exec, ycc_mode=ycc_mode, node_label=node_label, node_color=node_color)
+def separate_color(self, image=None, mode='RGB', tag_need_exec=None, ycc_mode='ITUBT709', node_label=None, node_color=None, **kwargs):
+    node = self.tree.SeparateColor(image=image, mode=mode, tag_need_exec=tag_need_exec, ycc_mode=ycc_mode, node_label=node_label, node_color=node_color, **kwargs)
     return node
-```
-### switch
-
-
-- node : [Switch](/docs/Compositor/Switch.md)
-- self : false
-- jump : No
-- return : output
-
-##### Arguments
-
-- off : None
-- on : None
-- check : False
-- tag_need_exec : None
-- node_label : None
-- node_color : None
-
-#### Source code
-
-``` python
-def switch(self, off=None, on=None, check=False, tag_need_exec=None, node_label=None, node_color=None):
-    node = self.tree.Switch(off=off, on=on, check=check, tag_need_exec=tag_need_exec, node_label=node_label, node_color=node_color)
-    return node.output
 ```

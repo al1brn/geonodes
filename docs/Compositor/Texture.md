@@ -5,7 +5,7 @@
 
 
 ``` python
-Texture(offset=None, scale=None, node_output=0, tag_need_exec=None, texture=None, node_label=None, node_color=None)
+Texture(offset=None, scale=None, node_output=0, tag_need_exec=None, texture=None, node_label=None, node_color=None, **kwargs)
 ```
 ##### Arguments
 
@@ -22,9 +22,9 @@ No implementation in sockets
 ## Init
 
 ``` python
-def __init__(self, offset=None, scale=None, node_output=0, tag_need_exec=None, texture=None, node_label=None, node_color=None):
+def __init__(self, offset=None, scale=None, node_output=0, tag_need_exec=None, texture=None, node_label=None, node_color=None, **kwargs):
 
-    Node.__init__(self, 'CompositorNodeTexture', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'CompositorNodeTexture', node_label=node_label, node_color=node_color, **kwargs)
 
     self.node_output     = node_output
     self.tag_need_exec   = tag_need_exec

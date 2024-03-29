@@ -5,7 +5,7 @@
 
 
 ``` python
-Clamp(value=None, min=None, max=None, clamp_type='MINMAX', node_label=None, node_color=None)
+Clamp(value=None, min=None, max=None, clamp_type='MINMAX', node_label=None, node_color=None, **kwargs)
 ```
 ##### Arguments
 
@@ -21,9 +21,9 @@ Clamp(value=None, min=None, max=None, clamp_type='MINMAX', node_label=None, node
 ## Init
 
 ``` python
-def __init__(self, value=None, min=None, max=None, clamp_type='MINMAX', node_label=None, node_color=None):
+def __init__(self, value=None, min=None, max=None, clamp_type='MINMAX', node_label=None, node_color=None, **kwargs):
 
-    Node.__init__(self, 'ShaderNodeClamp', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'ShaderNodeClamp', node_label=node_label, node_color=node_color, **kwargs)
 
     self.clamp_type      = clamp_type
     self.value           = value

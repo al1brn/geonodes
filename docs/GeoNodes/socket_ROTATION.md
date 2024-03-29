@@ -15,6 +15,7 @@
 - [faceforward](#faceforward)
 - [floor](#floor)
 - [frac](#frac)
+- [index_switch](#index_switch)
 - [invert_rotation](#invert_rotation)
 - [length](#length)
 - [max](#max)
@@ -30,6 +31,7 @@
 - [rotate_euler](#rotate_euler)
 - [rotate_euler_axis_angle](#rotate_euler_axis_angle)
 - [rotate_euler_euler](#rotate_euler_euler)
+- [rotate_rotation](#rotate_rotation)
 - [rotation_to_axis_angle](#rotation_to_axis_angle)
 - [rotation_to_euler](#rotation_to_euler)
 - [rotation_to_quaternion](#rotation_to_quaternion)
@@ -60,8 +62,8 @@
 #### Source code
 
 ``` python
-def abs(self, node_label=None, node_color=None):
-    node = self.tree.VectorMath(vector=self, operation='ABSOLUTE', node_label=node_label, node_color=node_color)
+def abs(self, node_label=None, node_color=None, **kwargs):
+    node = self.tree.VectorMath(vector=self, operation='ABSOLUTE', node_label=node_label, node_color=node_color, **kwargs)
     return node.output_socket
 ```
 ### add
@@ -81,8 +83,8 @@ def abs(self, node_label=None, node_color=None):
 #### Source code
 
 ``` python
-def add(self, vector=None, node_label=None, node_color=None):
-    node = self.tree.VectorMath(vector=self, vector_1=vector, operation='ADD', node_label=node_label, node_color=node_color)
+def add(self, vector=None, node_label=None, node_color=None, **kwargs):
+    node = self.tree.VectorMath(vector=self, vector_1=vector, operation='ADD', node_label=node_label, node_color=node_color, **kwargs)
     return node.output_socket
 ```
 ### align_euler_to_vector
@@ -105,8 +107,8 @@ def add(self, vector=None, node_label=None, node_color=None):
 #### Source code
 
 ``` python
-def align_euler_to_vector(self, factor=None, vector=None, axis='X', pivot_axis='AUTO', node_label=None, node_color=None):
-    node = self.tree.AlignEulerToVector(rotation=self, factor=factor, vector=vector, axis=axis, pivot_axis=pivot_axis, node_label=node_label, node_color=node_color)
+def align_euler_to_vector(self, factor=None, vector=None, axis='X', pivot_axis='AUTO', node_label=None, node_color=None, **kwargs):
+    node = self.tree.AlignEulerToVector(rotation=self, factor=factor, vector=vector, axis=axis, pivot_axis=pivot_axis, node_label=node_label, node_color=node_color, **kwargs)
     return node.rotation
 ```
 ### ceil
@@ -125,8 +127,8 @@ def align_euler_to_vector(self, factor=None, vector=None, axis='X', pivot_axis='
 #### Source code
 
 ``` python
-def ceil(self, node_label=None, node_color=None):
-    node = self.tree.VectorMath(vector=self, operation='CEIL', node_label=node_label, node_color=node_color)
+def ceil(self, node_label=None, node_color=None, **kwargs):
+    node = self.tree.VectorMath(vector=self, operation='CEIL', node_label=node_label, node_color=node_color, **kwargs)
     return node.output_socket
 ```
 ### cos
@@ -145,8 +147,8 @@ def ceil(self, node_label=None, node_color=None):
 #### Source code
 
 ``` python
-def cos(self, node_label=None, node_color=None):
-    node = self.tree.VectorMath(vector=self, operation='COSINE', node_label=node_label, node_color=node_color)
+def cos(self, node_label=None, node_color=None, **kwargs):
+    node = self.tree.VectorMath(vector=self, operation='COSINE', node_label=node_label, node_color=node_color, **kwargs)
     return node.output_socket
 ```
 ### cross
@@ -166,8 +168,8 @@ def cos(self, node_label=None, node_color=None):
 #### Source code
 
 ``` python
-def cross(self, vector=None, node_label=None, node_color=None):
-    node = self.tree.VectorMath(vector=self, vector_1=vector, operation='CROSS_PRODUCT', node_label=node_label, node_color=node_color)
+def cross(self, vector=None, node_label=None, node_color=None, **kwargs):
+    node = self.tree.VectorMath(vector=self, vector_1=vector, operation='CROSS_PRODUCT', node_label=node_label, node_color=node_color, **kwargs)
     return node.output_socket
 ```
 ### distance
@@ -187,8 +189,8 @@ def cross(self, vector=None, node_label=None, node_color=None):
 #### Source code
 
 ``` python
-def distance(self, vector=None, node_label=None, node_color=None):
-    node = self.tree.VectorMath(vector=self, vector_1=vector, operation='DISTANCE', node_label=node_label, node_color=node_color)
+def distance(self, vector=None, node_label=None, node_color=None, **kwargs):
+    node = self.tree.VectorMath(vector=self, vector_1=vector, operation='DISTANCE', node_label=node_label, node_color=node_color, **kwargs)
     return node.output_socket
 ```
 ### divide
@@ -208,8 +210,8 @@ def distance(self, vector=None, node_label=None, node_color=None):
 #### Source code
 
 ``` python
-def divide(self, vector=None, node_label=None, node_color=None):
-    node = self.tree.VectorMath(vector=self, vector_1=vector, operation='DIVIDE', node_label=node_label, node_color=node_color)
+def divide(self, vector=None, node_label=None, node_color=None, **kwargs):
+    node = self.tree.VectorMath(vector=self, vector_1=vector, operation='DIVIDE', node_label=node_label, node_color=node_color, **kwargs)
     return node.output_socket
 ```
 ### dot
@@ -229,8 +231,8 @@ def divide(self, vector=None, node_label=None, node_color=None):
 #### Source code
 
 ``` python
-def dot(self, vector=None, node_label=None, node_color=None):
-    node = self.tree.VectorMath(vector=self, vector_1=vector, operation='DOT_PRODUCT', node_label=node_label, node_color=node_color)
+def dot(self, vector=None, node_label=None, node_color=None, **kwargs):
+    node = self.tree.VectorMath(vector=self, vector_1=vector, operation='DOT_PRODUCT', node_label=node_label, node_color=node_color, **kwargs)
     return node.output_socket
 ```
 ### faceforward
@@ -251,8 +253,8 @@ def dot(self, vector=None, node_label=None, node_color=None):
 #### Source code
 
 ``` python
-def faceforward(self, vector=None, vector_1=None, node_label=None, node_color=None):
-    node = self.tree.VectorMath(vector=self, vector_1=vector, vector_2=vector_1, operation='FACEFORWARD', node_label=node_label, node_color=node_color)
+def faceforward(self, vector=None, vector_1=None, node_label=None, node_color=None, **kwargs):
+    node = self.tree.VectorMath(vector=self, vector_1=vector, vector_2=vector_1, operation='FACEFORWARD', node_label=node_label, node_color=node_color, **kwargs)
     return node.output_socket
 ```
 ### floor
@@ -271,8 +273,8 @@ def faceforward(self, vector=None, vector_1=None, node_label=None, node_color=No
 #### Source code
 
 ``` python
-def floor(self, node_label=None, node_color=None):
-    node = self.tree.VectorMath(vector=self, operation='FLOOR', node_label=node_label, node_color=node_color)
+def floor(self, node_label=None, node_color=None, **kwargs):
+    node = self.tree.VectorMath(vector=self, operation='FLOOR', node_label=node_label, node_color=node_color, **kwargs)
     return node.output_socket
 ```
 ### frac
@@ -291,9 +293,31 @@ def floor(self, node_label=None, node_color=None):
 #### Source code
 
 ``` python
-def frac(self, node_label=None, node_color=None):
-    node = self.tree.VectorMath(vector=self, operation='FRACTION', node_label=node_label, node_color=node_color)
+def frac(self, node_label=None, node_color=None, **kwargs):
+    node = self.tree.VectorMath(vector=self, operation='FRACTION', node_label=node_label, node_color=node_color, **kwargs)
     return node.output_socket
+```
+### index_switch
+
+
+- node : [IndexSwitch](/docs/GeoNodes/IndexSwitch.md)
+- self : ARG0
+- jump : No
+- return : output
+
+##### Arguments
+
+- *args : 'ARG_NO_VALUE'
+- index : None
+- node_label : None
+- node_color : None
+
+#### Source code
+
+``` python
+def index_switch(self, *args, index=None, node_label=None, node_color=None, **kwargs):
+    node = self.tree.IndexSwitch(self, *args, index=index, data_type='ROTATION', node_label=node_label, node_color=node_color, **kwargs)
+    return node.output
 ```
 ### invert_rotation
 
@@ -311,8 +335,8 @@ def frac(self, node_label=None, node_color=None):
 #### Source code
 
 ``` python
-def invert_rotation(self, node_label=None, node_color=None):
-    node = self.tree.InvertRotation(rotation=self, node_label=node_label, node_color=node_color)
+def invert_rotation(self, node_label=None, node_color=None, **kwargs):
+    node = self.tree.InvertRotation(rotation=self, node_label=node_label, node_color=node_color, **kwargs)
     self.jump(node.rotation)
     return self
 ```
@@ -332,8 +356,8 @@ def invert_rotation(self, node_label=None, node_color=None):
 #### Source code
 
 ``` python
-def length(self, node_label=None, node_color=None):
-    node = self.tree.VectorMath(vector=self, operation='LENGTH', node_label=node_label, node_color=node_color)
+def length(self, node_label=None, node_color=None, **kwargs):
+    node = self.tree.VectorMath(vector=self, operation='LENGTH', node_label=node_label, node_color=node_color, **kwargs)
     return node.output_socket
 ```
 ### max
@@ -353,8 +377,8 @@ def length(self, node_label=None, node_color=None):
 #### Source code
 
 ``` python
-def max(self, vector=None, node_label=None, node_color=None):
-    node = self.tree.VectorMath(vector=self, vector_1=vector, operation='MAXIMUM', node_label=node_label, node_color=node_color)
+def max(self, vector=None, node_label=None, node_color=None, **kwargs):
+    node = self.tree.VectorMath(vector=self, vector_1=vector, operation='MAXIMUM', node_label=node_label, node_color=node_color, **kwargs)
     return node.output_socket
 ```
 ### min
@@ -374,8 +398,8 @@ def max(self, vector=None, node_label=None, node_color=None):
 #### Source code
 
 ``` python
-def min(self, vector=None, node_label=None, node_color=None):
-    node = self.tree.VectorMath(vector=self, vector_1=vector, operation='MINIMUM', node_label=node_label, node_color=node_color)
+def min(self, vector=None, node_label=None, node_color=None, **kwargs):
+    node = self.tree.VectorMath(vector=self, vector_1=vector, operation='MINIMUM', node_label=node_label, node_color=node_color, **kwargs)
     return node.output_socket
 ```
 ### mix
@@ -398,8 +422,8 @@ def min(self, vector=None, node_label=None, node_color=None):
 #### Source code
 
 ``` python
-def mix(self, factor=None, b=None, clamp_factor=True, clamp_result=False, node_label=None, node_color=None):
-    node = self.tree.Mix(factor=factor, a=self, b=b, blend_type='MIX', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='ROTATION', factor_mode='UNIFORM', node_label=node_label, node_color=node_color)
+def mix(self, factor=None, b=None, clamp_factor=True, clamp_result=False, node_label=None, node_color=None, **kwargs):
+    node = self.tree.Mix(factor=factor, a=self, b=b, blend_type='MIX', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='ROTATION', factor_mode='UNIFORM', node_label=node_label, node_color=node_color, **kwargs)
     self.jump(node.result)
     return self
 ```
@@ -420,8 +444,8 @@ def mix(self, factor=None, b=None, clamp_factor=True, clamp_result=False, node_l
 #### Source code
 
 ``` python
-def mod(self, vector=None, node_label=None, node_color=None):
-    node = self.tree.VectorMath(vector=self, vector_1=vector, operation='MODULO', node_label=node_label, node_color=node_color)
+def mod(self, vector=None, node_label=None, node_color=None, **kwargs):
+    node = self.tree.VectorMath(vector=self, vector_1=vector, operation='MODULO', node_label=node_label, node_color=node_color, **kwargs)
     return node.output_socket
 ```
 ### multiply
@@ -441,8 +465,8 @@ def mod(self, vector=None, node_label=None, node_color=None):
 #### Source code
 
 ``` python
-def multiply(self, vector=None, node_label=None, node_color=None):
-    node = self.tree.VectorMath(vector=self, vector_1=vector, operation='MULTIPLY', node_label=node_label, node_color=node_color)
+def multiply(self, vector=None, node_label=None, node_color=None, **kwargs):
+    node = self.tree.VectorMath(vector=self, vector_1=vector, operation='MULTIPLY', node_label=node_label, node_color=node_color, **kwargs)
     return node.output_socket
 ```
 ### multiply_add
@@ -463,8 +487,8 @@ def multiply(self, vector=None, node_label=None, node_color=None):
 #### Source code
 
 ``` python
-def multiply_add(self, vector=None, vector_1=None, node_label=None, node_color=None):
-    node = self.tree.VectorMath(vector=self, vector_1=vector, vector_2=vector_1, operation='MULTIPLY_ADD', node_label=node_label, node_color=node_color)
+def multiply_add(self, vector=None, vector_1=None, node_label=None, node_color=None, **kwargs):
+    node = self.tree.VectorMath(vector=self, vector_1=vector, vector_2=vector_1, operation='MULTIPLY_ADD', node_label=node_label, node_color=node_color, **kwargs)
     return node.output_socket
 ```
 ### normalize
@@ -483,8 +507,8 @@ def multiply_add(self, vector=None, vector_1=None, node_label=None, node_color=N
 #### Source code
 
 ``` python
-def normalize(self, node_label=None, node_color=None):
-    node = self.tree.VectorMath(vector=self, operation='NORMALIZE', node_label=node_label, node_color=node_color)
+def normalize(self, node_label=None, node_color=None, **kwargs):
+    node = self.tree.VectorMath(vector=self, operation='NORMALIZE', node_label=node_label, node_color=node_color, **kwargs)
     return node.output_socket
 ```
 ### project
@@ -504,8 +528,8 @@ def normalize(self, node_label=None, node_color=None):
 #### Source code
 
 ``` python
-def project(self, vector=None, node_label=None, node_color=None):
-    node = self.tree.VectorMath(vector=self, vector_1=vector, operation='PROJECT', node_label=node_label, node_color=node_color)
+def project(self, vector=None, node_label=None, node_color=None, **kwargs):
+    node = self.tree.VectorMath(vector=self, vector_1=vector, operation='PROJECT', node_label=node_label, node_color=node_color, **kwargs)
     return node.output_socket
 ```
 ### reflect
@@ -525,8 +549,8 @@ def project(self, vector=None, node_label=None, node_color=None):
 #### Source code
 
 ``` python
-def reflect(self, vector=None, node_label=None, node_color=None):
-    node = self.tree.VectorMath(vector=self, vector_1=vector, operation='REFLECT', node_label=node_label, node_color=node_color)
+def reflect(self, vector=None, node_label=None, node_color=None, **kwargs):
+    node = self.tree.VectorMath(vector=self, vector_1=vector, operation='REFLECT', node_label=node_label, node_color=node_color, **kwargs)
     return node.output_socket
 ```
 ### refract
@@ -547,8 +571,8 @@ def reflect(self, vector=None, node_label=None, node_color=None):
 #### Source code
 
 ``` python
-def refract(self, vector=None, scale=None, node_label=None, node_color=None):
-    node = self.tree.VectorMath(vector=self, vector_1=vector, scale=scale, operation='REFRACT', node_label=node_label, node_color=node_color)
+def refract(self, vector=None, scale=None, node_label=None, node_color=None, **kwargs):
+    node = self.tree.VectorMath(vector=self, vector_1=vector, scale=scale, operation='REFRACT', node_label=node_label, node_color=node_color, **kwargs)
     return node.output_socket
 ```
 ### rotate_euler
@@ -562,6 +586,9 @@ def refract(self, vector=None, scale=None, node_label=None, node_color=None):
 ##### Arguments
 
 - rotate_by : None
+- axis : None
+- angle : None
+- rotation_type : 'EULER' in ('AXIS_ANGLE', 'EULER')
 - space : 'OBJECT' in ('OBJECT', 'LOCAL')
 - node_label : None
 - node_color : None
@@ -569,8 +596,8 @@ def refract(self, vector=None, scale=None, node_label=None, node_color=None):
 #### Source code
 
 ``` python
-def rotate_euler(self, rotate_by=None, space='OBJECT', node_label=None, node_color=None):
-    node = self.tree.RotateEuler(rotation=self, rotate_by=rotate_by, space=space, node_label=node_label, node_color=node_color)
+def rotate_euler(self, rotate_by=None, axis=None, angle=None, rotation_type='EULER', space='OBJECT', node_label=None, node_color=None, **kwargs):
+    node = self.tree.RotateEuler(rotation=self, rotate_by=rotate_by, axis=axis, angle=angle, rotation_type=rotation_type, space=space, node_label=node_label, node_color=node_color, **kwargs)
     self.jump(node.rotation)
     return self
 ```
@@ -585,6 +612,9 @@ def rotate_euler(self, rotate_by=None, space='OBJECT', node_label=None, node_col
 ##### Arguments
 
 - rotate_by : None
+- axis : None
+- angle : None
+- rotation_type : 'EULER' in ('AXIS_ANGLE', 'EULER')
 - space : 'OBJECT' in ('OBJECT', 'LOCAL')
 - node_label : None
 - node_color : None
@@ -592,8 +622,8 @@ def rotate_euler(self, rotate_by=None, space='OBJECT', node_label=None, node_col
 #### Source code
 
 ``` python
-def rotate_euler_axis_angle(self, rotate_by=None, space='OBJECT', node_label=None, node_color=None):
-    node = self.tree.RotateEuler(rotation=self, rotate_by=rotate_by, space=space, node_label=node_label, node_color=node_color)
+def rotate_euler_axis_angle(self, rotate_by=None, axis=None, angle=None, rotation_type='EULER', space='OBJECT', node_label=None, node_color=None, **kwargs):
+    node = self.tree.RotateEuler(rotation=self, rotate_by=rotate_by, axis=axis, angle=angle, rotation_type=rotation_type, space=space, node_label=node_label, node_color=node_color, **kwargs)
     self.jump(node.rotation)
     return self
 ```
@@ -608,6 +638,9 @@ def rotate_euler_axis_angle(self, rotate_by=None, space='OBJECT', node_label=Non
 ##### Arguments
 
 - rotate_by : None
+- axis : None
+- angle : None
+- rotation_type : 'EULER' in ('AXIS_ANGLE', 'EULER')
 - space : 'OBJECT' in ('OBJECT', 'LOCAL')
 - node_label : None
 - node_color : None
@@ -615,8 +648,31 @@ def rotate_euler_axis_angle(self, rotate_by=None, space='OBJECT', node_label=Non
 #### Source code
 
 ``` python
-def rotate_euler_euler(self, rotate_by=None, space='OBJECT', node_label=None, node_color=None):
-    node = self.tree.RotateEuler(rotation=self, rotate_by=rotate_by, space=space, node_label=node_label, node_color=node_color)
+def rotate_euler_euler(self, rotate_by=None, axis=None, angle=None, rotation_type='EULER', space='OBJECT', node_label=None, node_color=None, **kwargs):
+    node = self.tree.RotateEuler(rotation=self, rotate_by=rotate_by, axis=axis, angle=angle, rotation_type=rotation_type, space=space, node_label=node_label, node_color=node_color, **kwargs)
+    self.jump(node.rotation)
+    return self
+```
+### rotate_rotation
+
+
+- node : [RotateRotation](/docs/GeoNodes/RotateRotation.md)
+- self : rotation
+- jump : rotation
+- return : self
+
+##### Arguments
+
+- rotate_by : None
+- rotation_space : 'GLOBAL' in ('GLOBAL', 'LOCAL')
+- node_label : None
+- node_color : None
+
+#### Source code
+
+``` python
+def rotate_rotation(self, rotate_by=None, rotation_space='GLOBAL', node_label=None, node_color=None, **kwargs):
+    node = self.tree.RotateRotation(rotation=self, rotate_by=rotate_by, rotation_space=rotation_space, node_label=node_label, node_color=node_color, **kwargs)
     self.jump(node.rotation)
     return self
 ```
@@ -636,8 +692,8 @@ def rotate_euler_euler(self, rotate_by=None, space='OBJECT', node_label=None, no
 #### Source code
 
 ``` python
-def rotation_to_axis_angle(self, node_label=None, node_color=None):
-    node = self.tree.RotationToAxisAngle(rotation=self, node_label=node_label, node_color=node_color)
+def rotation_to_axis_angle(self, node_label=None, node_color=None, **kwargs):
+    node = self.tree.RotationToAxisAngle(rotation=self, node_label=node_label, node_color=node_color, **kwargs)
     return node
 ```
 ### rotation_to_euler
@@ -656,8 +712,8 @@ def rotation_to_axis_angle(self, node_label=None, node_color=None):
 #### Source code
 
 ``` python
-def rotation_to_euler(self, node_label=None, node_color=None):
-    node = self.tree.RotationToEuler(rotation=self, node_label=node_label, node_color=node_color)
+def rotation_to_euler(self, node_label=None, node_color=None, **kwargs):
+    node = self.tree.RotationToEuler(rotation=self, node_label=node_label, node_color=node_color, **kwargs)
     return node
 ```
 ### rotation_to_quaternion
@@ -676,8 +732,8 @@ def rotation_to_euler(self, node_label=None, node_color=None):
 #### Source code
 
 ``` python
-def rotation_to_quaternion(self, node_label=None, node_color=None):
-    node = self.tree.RotationToQuaternion(rotation=self, node_label=node_label, node_color=node_color)
+def rotation_to_quaternion(self, node_label=None, node_color=None, **kwargs):
+    node = self.tree.RotationToQuaternion(rotation=self, node_label=node_label, node_color=node_color, **kwargs)
     return node
 ```
 ### scale
@@ -697,8 +753,8 @@ def rotation_to_quaternion(self, node_label=None, node_color=None):
 #### Source code
 
 ``` python
-def scale(self, scale=None, node_label=None, node_color=None):
-    node = self.tree.VectorMath(vector=self, scale=scale, operation='SCALE', node_label=node_label, node_color=node_color)
+def scale(self, scale=None, node_label=None, node_color=None, **kwargs):
+    node = self.tree.VectorMath(vector=self, scale=scale, operation='SCALE', node_label=node_label, node_color=node_color, **kwargs)
     return node.output_socket
 ```
 ### sin
@@ -717,8 +773,8 @@ def scale(self, scale=None, node_label=None, node_color=None):
 #### Source code
 
 ``` python
-def sin(self, node_label=None, node_color=None):
-    node = self.tree.VectorMath(vector=self, operation='SINE', node_label=node_label, node_color=node_color)
+def sin(self, node_label=None, node_color=None, **kwargs):
+    node = self.tree.VectorMath(vector=self, operation='SINE', node_label=node_label, node_color=node_color, **kwargs)
     return node.output_socket
 ```
 ### snap
@@ -738,8 +794,8 @@ def sin(self, node_label=None, node_color=None):
 #### Source code
 
 ``` python
-def snap(self, vector=None, node_label=None, node_color=None):
-    node = self.tree.VectorMath(vector=self, vector_1=vector, operation='SNAP', node_label=node_label, node_color=node_color)
+def snap(self, vector=None, node_label=None, node_color=None, **kwargs):
+    node = self.tree.VectorMath(vector=self, vector_1=vector, operation='SNAP', node_label=node_label, node_color=node_color, **kwargs)
     return node.output_socket
 ```
 ### subtract
@@ -759,8 +815,8 @@ def snap(self, vector=None, node_label=None, node_color=None):
 #### Source code
 
 ``` python
-def subtract(self, vector=None, node_label=None, node_color=None):
-    node = self.tree.VectorMath(vector=self, vector_1=vector, operation='SUBTRACT', node_label=node_label, node_color=node_color)
+def subtract(self, vector=None, node_label=None, node_color=None, **kwargs):
+    node = self.tree.VectorMath(vector=self, vector_1=vector, operation='SUBTRACT', node_label=node_label, node_color=node_color, **kwargs)
     return node.output_socket
 ```
 ### switch
@@ -781,8 +837,8 @@ def subtract(self, vector=None, node_label=None, node_color=None):
 #### Source code
 
 ``` python
-def switch(self, switch=None, true=None, node_label=None, node_color=None):
-    node = self.tree.Switch(switch=switch, false=self, true=true, input_type='ROTATION', node_label=node_label, node_color=node_color)
+def switch(self, switch=None, true=None, node_label=None, node_color=None, **kwargs):
+    node = self.tree.Switch(switch=switch, false=self, true=true, input_type='ROTATION', node_label=node_label, node_color=node_color, **kwargs)
     return node.output
 ```
 ### tan
@@ -801,8 +857,8 @@ def switch(self, switch=None, true=None, node_label=None, node_color=None):
 #### Source code
 
 ``` python
-def tan(self, node_label=None, node_color=None):
-    node = self.tree.VectorMath(vector=self, operation='TANGENT', node_label=node_label, node_color=node_color)
+def tan(self, node_label=None, node_color=None, **kwargs):
+    node = self.tree.VectorMath(vector=self, operation='TANGENT', node_label=node_label, node_color=node_color, **kwargs)
     return node.output_socket
 ```
 ### vector_curves
@@ -823,8 +879,8 @@ def tan(self, node_label=None, node_color=None):
 #### Source code
 
 ``` python
-def vector_curves(self, fac=None, mapping=None, node_label=None, node_color=None):
-    node = self.tree.VectorCurves(fac=fac, vector=self, mapping=mapping, node_label=node_label, node_color=node_color)
+def vector_curves(self, fac=None, mapping=None, node_label=None, node_color=None, **kwargs):
+    node = self.tree.VectorCurves(fac=fac, vector=self, mapping=mapping, node_label=node_label, node_color=node_color, **kwargs)
     self.jump(node.vector)
     return self
 ```
@@ -846,7 +902,7 @@ def vector_curves(self, fac=None, mapping=None, node_label=None, node_color=None
 #### Source code
 
 ``` python
-def wrap(self, vector=None, vector_1=None, node_label=None, node_color=None):
-    node = self.tree.VectorMath(vector=self, vector_1=vector, vector_2=vector_1, operation='WRAP', node_label=node_label, node_color=node_color)
+def wrap(self, vector=None, vector_1=None, node_label=None, node_color=None, **kwargs):
+    node = self.tree.VectorMath(vector=self, vector_1=vector, vector_2=vector_1, operation='WRAP', node_label=node_label, node_color=node_color, **kwargs)
     return node.output_socket
 ```

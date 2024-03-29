@@ -5,12 +5,13 @@
 
 
 ``` python
-SetCurveNormal(curve=None, selection=None, mode='MINIMUM_TWIST', node_label=None, node_color=None)
+SetCurveNormal(curve=None, selection=None, normal=None, mode='MINIMUM_TWIST', node_label=None, node_color=None, **kwargs)
 ```
 ##### Arguments
 
 - curve : None
 - selection : None
+- normal : None
 - mode : 'MINIMUM_TWIST'
 
 ## Implementation
@@ -20,11 +21,12 @@ SetCurveNormal(curve=None, selection=None, mode='MINIMUM_TWIST', node_label=None
 ## Init
 
 ``` python
-def __init__(self, curve=None, selection=None, mode='MINIMUM_TWIST', node_label=None, node_color=None):
+def __init__(self, curve=None, selection=None, normal=None, mode='MINIMUM_TWIST', node_label=None, node_color=None, **kwargs):
 
-    Node.__init__(self, 'GeometryNodeSetCurveNormal', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'GeometryNodeSetCurveNormal', node_label=node_label, node_color=node_color, **kwargs)
 
     self.mode            = mode
     self.curve           = curve
     self.selection       = selection
+    self.normal          = normal
 ```

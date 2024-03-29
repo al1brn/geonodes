@@ -5,7 +5,7 @@
 
 
 ``` python
-Blur(image=None, size=None, aspect_correction='NONE', factor=0.0, factor_x=0.0, factor_y=0.0, filter_type='GAUSS', size_x=0, size_y=0, tag_need_exec=None, use_bokeh=False, use_extended_bounds=False, use_gamma_correction=False, use_relative=False, use_variable_size=False, node_label=None, node_color=None)
+Blur(image=None, size=None, aspect_correction='NONE', factor=0.0, factor_x=0.0, factor_y=0.0, filter_type='GAUSS', size_x=0, size_y=0, tag_need_exec=None, use_bokeh=False, use_extended_bounds=False, use_gamma_correction=False, use_relative=False, use_variable_size=False, node_label=None, node_color=None, **kwargs)
 ```
 ##### Arguments
 
@@ -32,9 +32,9 @@ No implementation in sockets
 ## Init
 
 ``` python
-def __init__(self, image=None, size=None, aspect_correction='NONE', factor=0.0, factor_x=0.0, factor_y=0.0, filter_type='GAUSS', size_x=0, size_y=0, tag_need_exec=None, use_bokeh=False, use_extended_bounds=False, use_gamma_correction=False, use_relative=False, use_variable_size=False, node_label=None, node_color=None):
+def __init__(self, image=None, size=None, aspect_correction='NONE', factor=0.0, factor_x=0.0, factor_y=0.0, filter_type='GAUSS', size_x=0, size_y=0, tag_need_exec=None, use_bokeh=False, use_extended_bounds=False, use_gamma_correction=False, use_relative=False, use_variable_size=False, node_label=None, node_color=None, **kwargs):
 
-    Node.__init__(self, 'CompositorNodeBlur', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'CompositorNodeBlur', node_label=node_label, node_color=node_color, **kwargs)
 
     self.aspect_correction = aspect_correction
     self.factor          = factor

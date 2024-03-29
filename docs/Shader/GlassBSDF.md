@@ -5,7 +5,7 @@
 
 
 ``` python
-GlassBSDF(color=None, roughness=None, ior=None, normal=None, distribution='MULTI_GGX', node_label=None, node_color=None)
+GlassBSDF(color=None, roughness=None, ior=None, normal=None, distribution='MULTI_GGX', node_label=None, node_color=None, **kwargs)
 ```
 ##### Arguments
 
@@ -22,9 +22,9 @@ No implementation in sockets
 ## Init
 
 ``` python
-def __init__(self, color=None, roughness=None, ior=None, normal=None, distribution='MULTI_GGX', node_label=None, node_color=None):
+def __init__(self, color=None, roughness=None, ior=None, normal=None, distribution='MULTI_GGX', node_label=None, node_color=None, **kwargs):
 
-    Node.__init__(self, 'ShaderNodeBsdfGlass', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'ShaderNodeBsdfGlass', node_label=node_label, node_color=node_color, **kwargs)
 
     self.distribution    = distribution
     self.color           = color

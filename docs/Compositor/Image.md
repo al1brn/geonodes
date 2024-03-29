@@ -5,7 +5,7 @@
 
 
 ``` python
-Image(frame_duration=1, frame_offset=0, frame_start=1, has_layers=False, has_views=False, image=None, layer='', tag_need_exec=None, use_auto_refresh=True, use_cyclic=False, use_straight_alpha_output=False, view='', node_label=None, node_color=None)
+Image(frame_duration=1, frame_offset=0, frame_start=1, has_layers=False, has_views=False, image=None, layer='', tag_need_exec=None, use_auto_refresh=True, use_cyclic=False, use_straight_alpha_output=False, view='', node_label=None, node_color=None, **kwargs)
 ```
 ##### Arguments
 
@@ -29,9 +29,9 @@ No implementation in sockets
 ## Init
 
 ``` python
-def __init__(self, frame_duration=1, frame_offset=0, frame_start=1, has_layers=False, has_views=False, image=None, layer='', tag_need_exec=None, use_auto_refresh=True, use_cyclic=False, use_straight_alpha_output=False, view='', node_label=None, node_color=None):
+def __init__(self, frame_duration=1, frame_offset=0, frame_start=1, has_layers=False, has_views=False, image=None, layer='', tag_need_exec=None, use_auto_refresh=True, use_cyclic=False, use_straight_alpha_output=False, view='', node_label=None, node_color=None, **kwargs):
 
-    Node.__init__(self, 'CompositorNodeImage', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'CompositorNodeImage', node_label=node_label, node_color=node_color, **kwargs)
 
     self.frame_duration  = frame_duration
     self.frame_offset    = frame_offset

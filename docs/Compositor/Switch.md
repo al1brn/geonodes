@@ -5,7 +5,7 @@
 
 
 ``` python
-Switch(off=None, on=None, check=False, tag_need_exec=None, node_label=None, node_color=None)
+Switch(off=None, on=None, check=False, tag_need_exec=None, node_label=None, node_color=None, **kwargs)
 ```
 ##### Arguments
 
@@ -16,16 +16,14 @@ Switch(off=None, on=None, check=False, tag_need_exec=None, node_label=None, node
 
 ## Implementation
 
-- [RGBA](/docs/Compositor/socket_RGBA.md) : [switch](/docs/Compositor/socket_RGBA.md#switch)
-- [VALUE](/docs/Compositor/socket_VALUE.md) : [switch](/docs/Compositor/socket_VALUE.md#switch)
-- [VECTOR](/docs/Compositor/socket_VECTOR.md) : [switch](/docs/Compositor/socket_VECTOR.md#switch)
+No implementation in sockets
 
 ## Init
 
 ``` python
-def __init__(self, off=None, on=None, check=False, tag_need_exec=None, node_label=None, node_color=None):
+def __init__(self, off=None, on=None, check=False, tag_need_exec=None, node_label=None, node_color=None, **kwargs):
 
-    Node.__init__(self, 'CompositorNodeSwitch', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'CompositorNodeSwitch', node_label=node_label, node_color=node_color, **kwargs)
 
     self.check           = check
     self.tag_need_exec   = tag_need_exec

@@ -7,6 +7,7 @@
 - [brighter](#brighter)
 - [darker](#darker)
 - [equal](#equal)
+- [index_switch](#index_switch)
 - [mix](#mix)
 - [mix_add](#mix_add)
 - [mix_burn](#mix_burn)
@@ -52,8 +53,8 @@
 #### Source code
 
 ``` python
-def blur_attribute(self, iterations=None, weight=None, node_label=None, node_color=None):
-    node = self.tree.BlurAttribute(value=self, iterations=iterations, weight=weight, data_type='FLOAT_COLOR', node_label=node_label, node_color=node_color)
+def blur_attribute(self, iterations=None, weight=None, node_label=None, node_color=None, **kwargs):
+    node = self.tree.BlurAttribute(value=self, iterations=iterations, weight=weight, data_type='FLOAT_COLOR', node_label=node_label, node_color=node_color, **kwargs)
     return node.value
 ```
 ### brighter
@@ -74,8 +75,8 @@ def blur_attribute(self, iterations=None, weight=None, node_label=None, node_col
 #### Source code
 
 ``` python
-def brighter(self, b=None, mode='ELEMENT', node_label=None, node_color=None):
-    node = self.tree.Compare(a=self, b=b, data_type='RGBA', mode=mode, operation='BRIGHTER', node_label=node_label, node_color=node_color)
+def brighter(self, b=None, mode='ELEMENT', node_label=None, node_color=None, **kwargs):
+    node = self.tree.Compare(a=self, b=b, data_type='RGBA', mode=mode, operation='BRIGHTER', node_label=node_label, node_color=node_color, **kwargs)
     return node.result
 ```
 ### darker
@@ -96,8 +97,8 @@ def brighter(self, b=None, mode='ELEMENT', node_label=None, node_color=None):
 #### Source code
 
 ``` python
-def darker(self, b=None, mode='ELEMENT', node_label=None, node_color=None):
-    node = self.tree.Compare(a=self, b=b, data_type='RGBA', mode=mode, operation='DARKER', node_label=node_label, node_color=node_color)
+def darker(self, b=None, mode='ELEMENT', node_label=None, node_color=None, **kwargs):
+    node = self.tree.Compare(a=self, b=b, data_type='RGBA', mode=mode, operation='DARKER', node_label=node_label, node_color=node_color, **kwargs)
     return node.result
 ```
 ### equal
@@ -119,9 +120,31 @@ def darker(self, b=None, mode='ELEMENT', node_label=None, node_color=None):
 #### Source code
 
 ``` python
-def equal(self, b=None, epsilon=None, mode='ELEMENT', node_label=None, node_color=None):
-    node = self.tree.Compare(a=self, b=b, epsilon=epsilon, data_type='RGBA', mode=mode, operation='EQUAL', node_label=node_label, node_color=node_color)
+def equal(self, b=None, epsilon=None, mode='ELEMENT', node_label=None, node_color=None, **kwargs):
+    node = self.tree.Compare(a=self, b=b, epsilon=epsilon, data_type='RGBA', mode=mode, operation='EQUAL', node_label=node_label, node_color=node_color, **kwargs)
     return node.result
+```
+### index_switch
+
+
+- node : [IndexSwitch](/docs/GeoNodes/IndexSwitch.md)
+- self : ARG0
+- jump : No
+- return : output
+
+##### Arguments
+
+- *args : 'ARG_NO_VALUE'
+- index : None
+- node_label : None
+- node_color : None
+
+#### Source code
+
+``` python
+def index_switch(self, *args, index=None, node_label=None, node_color=None, **kwargs):
+    node = self.tree.IndexSwitch(self, *args, index=index, data_type='RGBA', node_label=node_label, node_color=node_color, **kwargs)
+    return node.output
 ```
 ### mix
 
@@ -144,8 +167,8 @@ def equal(self, b=None, epsilon=None, mode='ELEMENT', node_label=None, node_colo
 #### Source code
 
 ``` python
-def mix(self, factor=None, b=None, blend_type='MIX', clamp_factor=True, clamp_result=False, node_label=None, node_color=None):
-    node = self.tree.Mix(factor=factor, a=self, b=b, blend_type=blend_type, clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM', node_label=node_label, node_color=node_color)
+def mix(self, factor=None, b=None, blend_type='MIX', clamp_factor=True, clamp_result=False, node_label=None, node_color=None, **kwargs):
+    node = self.tree.Mix(factor=factor, a=self, b=b, blend_type=blend_type, clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM', node_label=node_label, node_color=node_color, **kwargs)
     self.jump(node.result)
     return self
 ```
@@ -169,8 +192,8 @@ def mix(self, factor=None, b=None, blend_type='MIX', clamp_factor=True, clamp_re
 #### Source code
 
 ``` python
-def mix_add(self, factor=None, b=None, clamp_factor=True, clamp_result=False, node_label=None, node_color=None):
-    node = self.tree.Mix(factor=factor, a=self, b=b, blend_type='ADD', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM', node_label=node_label, node_color=node_color)
+def mix_add(self, factor=None, b=None, clamp_factor=True, clamp_result=False, node_label=None, node_color=None, **kwargs):
+    node = self.tree.Mix(factor=factor, a=self, b=b, blend_type='ADD', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM', node_label=node_label, node_color=node_color, **kwargs)
     self.jump(node.result)
     return self
 ```
@@ -194,8 +217,8 @@ def mix_add(self, factor=None, b=None, clamp_factor=True, clamp_result=False, no
 #### Source code
 
 ``` python
-def mix_burn(self, factor=None, b=None, clamp_factor=True, clamp_result=False, node_label=None, node_color=None):
-    node = self.tree.Mix(factor=factor, a=self, b=b, blend_type='BURN', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM', node_label=node_label, node_color=node_color)
+def mix_burn(self, factor=None, b=None, clamp_factor=True, clamp_result=False, node_label=None, node_color=None, **kwargs):
+    node = self.tree.Mix(factor=factor, a=self, b=b, blend_type='BURN', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM', node_label=node_label, node_color=node_color, **kwargs)
     self.jump(node.result)
     return self
 ```
@@ -219,8 +242,8 @@ def mix_burn(self, factor=None, b=None, clamp_factor=True, clamp_result=False, n
 #### Source code
 
 ``` python
-def mix_color(self, factor=None, b=None, clamp_factor=True, clamp_result=False, node_label=None, node_color=None):
-    node = self.tree.Mix(factor=factor, a=self, b=b, blend_type='COLOR', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM', node_label=node_label, node_color=node_color)
+def mix_color(self, factor=None, b=None, clamp_factor=True, clamp_result=False, node_label=None, node_color=None, **kwargs):
+    node = self.tree.Mix(factor=factor, a=self, b=b, blend_type='COLOR', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM', node_label=node_label, node_color=node_color, **kwargs)
     self.jump(node.result)
     return self
 ```
@@ -244,8 +267,8 @@ def mix_color(self, factor=None, b=None, clamp_factor=True, clamp_result=False, 
 #### Source code
 
 ``` python
-def mix_darken(self, factor=None, b=None, clamp_factor=True, clamp_result=False, node_label=None, node_color=None):
-    node = self.tree.Mix(factor=factor, a=self, b=b, blend_type='DARKEN', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM', node_label=node_label, node_color=node_color)
+def mix_darken(self, factor=None, b=None, clamp_factor=True, clamp_result=False, node_label=None, node_color=None, **kwargs):
+    node = self.tree.Mix(factor=factor, a=self, b=b, blend_type='DARKEN', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM', node_label=node_label, node_color=node_color, **kwargs)
     self.jump(node.result)
     return self
 ```
@@ -269,8 +292,8 @@ def mix_darken(self, factor=None, b=None, clamp_factor=True, clamp_result=False,
 #### Source code
 
 ``` python
-def mix_difference(self, factor=None, b=None, clamp_factor=True, clamp_result=False, node_label=None, node_color=None):
-    node = self.tree.Mix(factor=factor, a=self, b=b, blend_type='DIFFERENCE', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM', node_label=node_label, node_color=node_color)
+def mix_difference(self, factor=None, b=None, clamp_factor=True, clamp_result=False, node_label=None, node_color=None, **kwargs):
+    node = self.tree.Mix(factor=factor, a=self, b=b, blend_type='DIFFERENCE', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM', node_label=node_label, node_color=node_color, **kwargs)
     self.jump(node.result)
     return self
 ```
@@ -294,8 +317,8 @@ def mix_difference(self, factor=None, b=None, clamp_factor=True, clamp_result=Fa
 #### Source code
 
 ``` python
-def mix_divide(self, factor=None, b=None, clamp_factor=True, clamp_result=False, node_label=None, node_color=None):
-    node = self.tree.Mix(factor=factor, a=self, b=b, blend_type='DIVIDE', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM', node_label=node_label, node_color=node_color)
+def mix_divide(self, factor=None, b=None, clamp_factor=True, clamp_result=False, node_label=None, node_color=None, **kwargs):
+    node = self.tree.Mix(factor=factor, a=self, b=b, blend_type='DIVIDE', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM', node_label=node_label, node_color=node_color, **kwargs)
     self.jump(node.result)
     return self
 ```
@@ -319,8 +342,8 @@ def mix_divide(self, factor=None, b=None, clamp_factor=True, clamp_result=False,
 #### Source code
 
 ``` python
-def mix_dodge(self, factor=None, b=None, clamp_factor=True, clamp_result=False, node_label=None, node_color=None):
-    node = self.tree.Mix(factor=factor, a=self, b=b, blend_type='DODGE', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM', node_label=node_label, node_color=node_color)
+def mix_dodge(self, factor=None, b=None, clamp_factor=True, clamp_result=False, node_label=None, node_color=None, **kwargs):
+    node = self.tree.Mix(factor=factor, a=self, b=b, blend_type='DODGE', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM', node_label=node_label, node_color=node_color, **kwargs)
     self.jump(node.result)
     return self
 ```
@@ -344,8 +367,8 @@ def mix_dodge(self, factor=None, b=None, clamp_factor=True, clamp_result=False, 
 #### Source code
 
 ``` python
-def mix_exclusion(self, factor=None, b=None, clamp_factor=True, clamp_result=False, node_label=None, node_color=None):
-    node = self.tree.Mix(factor=factor, a=self, b=b, blend_type='EXCLUSION', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM', node_label=node_label, node_color=node_color)
+def mix_exclusion(self, factor=None, b=None, clamp_factor=True, clamp_result=False, node_label=None, node_color=None, **kwargs):
+    node = self.tree.Mix(factor=factor, a=self, b=b, blend_type='EXCLUSION', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM', node_label=node_label, node_color=node_color, **kwargs)
     self.jump(node.result)
     return self
 ```
@@ -369,8 +392,8 @@ def mix_exclusion(self, factor=None, b=None, clamp_factor=True, clamp_result=Fal
 #### Source code
 
 ``` python
-def mix_hue(self, factor=None, b=None, clamp_factor=True, clamp_result=False, node_label=None, node_color=None):
-    node = self.tree.Mix(factor=factor, a=self, b=b, blend_type='HUE', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM', node_label=node_label, node_color=node_color)
+def mix_hue(self, factor=None, b=None, clamp_factor=True, clamp_result=False, node_label=None, node_color=None, **kwargs):
+    node = self.tree.Mix(factor=factor, a=self, b=b, blend_type='HUE', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM', node_label=node_label, node_color=node_color, **kwargs)
     self.jump(node.result)
     return self
 ```
@@ -394,8 +417,8 @@ def mix_hue(self, factor=None, b=None, clamp_factor=True, clamp_result=False, no
 #### Source code
 
 ``` python
-def mix_lighten(self, factor=None, b=None, clamp_factor=True, clamp_result=False, node_label=None, node_color=None):
-    node = self.tree.Mix(factor=factor, a=self, b=b, blend_type='LIGHTEN', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM', node_label=node_label, node_color=node_color)
+def mix_lighten(self, factor=None, b=None, clamp_factor=True, clamp_result=False, node_label=None, node_color=None, **kwargs):
+    node = self.tree.Mix(factor=factor, a=self, b=b, blend_type='LIGHTEN', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM', node_label=node_label, node_color=node_color, **kwargs)
     self.jump(node.result)
     return self
 ```
@@ -419,8 +442,8 @@ def mix_lighten(self, factor=None, b=None, clamp_factor=True, clamp_result=False
 #### Source code
 
 ``` python
-def mix_linear_light(self, factor=None, b=None, clamp_factor=True, clamp_result=False, node_label=None, node_color=None):
-    node = self.tree.Mix(factor=factor, a=self, b=b, blend_type='LINEAR_LIGHT', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM', node_label=node_label, node_color=node_color)
+def mix_linear_light(self, factor=None, b=None, clamp_factor=True, clamp_result=False, node_label=None, node_color=None, **kwargs):
+    node = self.tree.Mix(factor=factor, a=self, b=b, blend_type='LINEAR_LIGHT', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM', node_label=node_label, node_color=node_color, **kwargs)
     self.jump(node.result)
     return self
 ```
@@ -444,8 +467,8 @@ def mix_linear_light(self, factor=None, b=None, clamp_factor=True, clamp_result=
 #### Source code
 
 ``` python
-def mix_mix(self, factor=None, b=None, clamp_factor=True, clamp_result=False, node_label=None, node_color=None):
-    node = self.tree.Mix(factor=factor, a=self, b=b, blend_type='MIX', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM', node_label=node_label, node_color=node_color)
+def mix_mix(self, factor=None, b=None, clamp_factor=True, clamp_result=False, node_label=None, node_color=None, **kwargs):
+    node = self.tree.Mix(factor=factor, a=self, b=b, blend_type='MIX', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM', node_label=node_label, node_color=node_color, **kwargs)
     self.jump(node.result)
     return self
 ```
@@ -469,8 +492,8 @@ def mix_mix(self, factor=None, b=None, clamp_factor=True, clamp_result=False, no
 #### Source code
 
 ``` python
-def mix_multiply(self, factor=None, b=None, clamp_factor=True, clamp_result=False, node_label=None, node_color=None):
-    node = self.tree.Mix(factor=factor, a=self, b=b, blend_type='MULTIPLY', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM', node_label=node_label, node_color=node_color)
+def mix_multiply(self, factor=None, b=None, clamp_factor=True, clamp_result=False, node_label=None, node_color=None, **kwargs):
+    node = self.tree.Mix(factor=factor, a=self, b=b, blend_type='MULTIPLY', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM', node_label=node_label, node_color=node_color, **kwargs)
     self.jump(node.result)
     return self
 ```
@@ -494,8 +517,8 @@ def mix_multiply(self, factor=None, b=None, clamp_factor=True, clamp_result=Fals
 #### Source code
 
 ``` python
-def mix_overlay(self, factor=None, b=None, clamp_factor=True, clamp_result=False, node_label=None, node_color=None):
-    node = self.tree.Mix(factor=factor, a=self, b=b, blend_type='OVERLAY', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM', node_label=node_label, node_color=node_color)
+def mix_overlay(self, factor=None, b=None, clamp_factor=True, clamp_result=False, node_label=None, node_color=None, **kwargs):
+    node = self.tree.Mix(factor=factor, a=self, b=b, blend_type='OVERLAY', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM', node_label=node_label, node_color=node_color, **kwargs)
     self.jump(node.result)
     return self
 ```
@@ -519,8 +542,8 @@ def mix_overlay(self, factor=None, b=None, clamp_factor=True, clamp_result=False
 #### Source code
 
 ``` python
-def mix_saturation(self, factor=None, b=None, clamp_factor=True, clamp_result=False, node_label=None, node_color=None):
-    node = self.tree.Mix(factor=factor, a=self, b=b, blend_type='SATURATION', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM', node_label=node_label, node_color=node_color)
+def mix_saturation(self, factor=None, b=None, clamp_factor=True, clamp_result=False, node_label=None, node_color=None, **kwargs):
+    node = self.tree.Mix(factor=factor, a=self, b=b, blend_type='SATURATION', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM', node_label=node_label, node_color=node_color, **kwargs)
     self.jump(node.result)
     return self
 ```
@@ -544,8 +567,8 @@ def mix_saturation(self, factor=None, b=None, clamp_factor=True, clamp_result=Fa
 #### Source code
 
 ``` python
-def mix_screen(self, factor=None, b=None, clamp_factor=True, clamp_result=False, node_label=None, node_color=None):
-    node = self.tree.Mix(factor=factor, a=self, b=b, blend_type='SCREEN', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM', node_label=node_label, node_color=node_color)
+def mix_screen(self, factor=None, b=None, clamp_factor=True, clamp_result=False, node_label=None, node_color=None, **kwargs):
+    node = self.tree.Mix(factor=factor, a=self, b=b, blend_type='SCREEN', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM', node_label=node_label, node_color=node_color, **kwargs)
     self.jump(node.result)
     return self
 ```
@@ -569,8 +592,8 @@ def mix_screen(self, factor=None, b=None, clamp_factor=True, clamp_result=False,
 #### Source code
 
 ``` python
-def mix_soft_light(self, factor=None, b=None, clamp_factor=True, clamp_result=False, node_label=None, node_color=None):
-    node = self.tree.Mix(factor=factor, a=self, b=b, blend_type='SOFT_LIGHT', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM', node_label=node_label, node_color=node_color)
+def mix_soft_light(self, factor=None, b=None, clamp_factor=True, clamp_result=False, node_label=None, node_color=None, **kwargs):
+    node = self.tree.Mix(factor=factor, a=self, b=b, blend_type='SOFT_LIGHT', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM', node_label=node_label, node_color=node_color, **kwargs)
     self.jump(node.result)
     return self
 ```
@@ -594,8 +617,8 @@ def mix_soft_light(self, factor=None, b=None, clamp_factor=True, clamp_result=Fa
 #### Source code
 
 ``` python
-def mix_subtract(self, factor=None, b=None, clamp_factor=True, clamp_result=False, node_label=None, node_color=None):
-    node = self.tree.Mix(factor=factor, a=self, b=b, blend_type='SUBTRACT', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM', node_label=node_label, node_color=node_color)
+def mix_subtract(self, factor=None, b=None, clamp_factor=True, clamp_result=False, node_label=None, node_color=None, **kwargs):
+    node = self.tree.Mix(factor=factor, a=self, b=b, blend_type='SUBTRACT', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM', node_label=node_label, node_color=node_color, **kwargs)
     self.jump(node.result)
     return self
 ```
@@ -619,8 +642,8 @@ def mix_subtract(self, factor=None, b=None, clamp_factor=True, clamp_result=Fals
 #### Source code
 
 ``` python
-def mix_value(self, factor=None, b=None, clamp_factor=True, clamp_result=False, node_label=None, node_color=None):
-    node = self.tree.Mix(factor=factor, a=self, b=b, blend_type='VALUE', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM', node_label=node_label, node_color=node_color)
+def mix_value(self, factor=None, b=None, clamp_factor=True, clamp_result=False, node_label=None, node_color=None, **kwargs):
+    node = self.tree.Mix(factor=factor, a=self, b=b, blend_type='VALUE', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM', node_label=node_label, node_color=node_color, **kwargs)
     self.jump(node.result)
     return self
 ```
@@ -643,8 +666,8 @@ def mix_value(self, factor=None, b=None, clamp_factor=True, clamp_result=False, 
 #### Source code
 
 ``` python
-def not_equal(self, b=None, epsilon=None, mode='ELEMENT', node_label=None, node_color=None):
-    node = self.tree.Compare(a=self, b=b, epsilon=epsilon, data_type='RGBA', mode=mode, operation='NOT_EQUAL', node_label=node_label, node_color=node_color)
+def not_equal(self, b=None, epsilon=None, mode='ELEMENT', node_label=None, node_color=None, **kwargs):
+    node = self.tree.Compare(a=self, b=b, epsilon=epsilon, data_type='RGBA', mode=mode, operation='NOT_EQUAL', node_label=node_label, node_color=node_color, **kwargs)
     return node.result
 ```
 ### rgb_curves
@@ -665,8 +688,8 @@ def not_equal(self, b=None, epsilon=None, mode='ELEMENT', node_label=None, node_
 #### Source code
 
 ``` python
-def rgb_curves(self, fac=None, mapping=None, node_label=None, node_color=None):
-    node = self.tree.RGBCurves(fac=fac, color=self, mapping=mapping, node_label=node_label, node_color=node_color)
+def rgb_curves(self, fac=None, mapping=None, node_label=None, node_color=None, **kwargs):
+    node = self.tree.RGBCurves(fac=fac, color=self, mapping=mapping, node_label=node_label, node_color=node_color, **kwargs)
     self.jump(node.color)
     return self
 ```
@@ -687,8 +710,8 @@ def rgb_curves(self, fac=None, mapping=None, node_label=None, node_color=None):
 #### Source code
 
 ``` python
-def separate_color(self, mode='RGB', node_label=None, node_color=None):
-    node = self.tree.SeparateColor(color=self, mode=mode, node_label=node_label, node_color=node_color)
+def separate_color(self, mode='RGB', node_label=None, node_color=None, **kwargs):
+    node = self.tree.SeparateColor(color=self, mode=mode, node_label=node_label, node_color=node_color, **kwargs)
     return node
 ```
 ### switch
@@ -709,7 +732,7 @@ def separate_color(self, mode='RGB', node_label=None, node_color=None):
 #### Source code
 
 ``` python
-def switch(self, switch=None, true=None, node_label=None, node_color=None):
-    node = self.tree.Switch(switch=switch, false=self, true=true, input_type='RGBA', node_label=node_label, node_color=node_color)
+def switch(self, switch=None, true=None, node_label=None, node_color=None, **kwargs):
+    node = self.tree.Switch(switch=switch, false=self, true=true, input_type='RGBA', node_label=node_label, node_color=node_color, **kwargs)
     return node.output
 ```

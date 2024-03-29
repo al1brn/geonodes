@@ -5,16 +5,17 @@
 
 
 ``` python
-Kuwahara(image=None, eccentricity=1.0, sharpness=0.5, size=6, tag_need_exec=None, uniformity=4, variation='CLASSIC', node_label=None, node_color=None)
+Kuwahara(image=None, size=None, eccentricity=1.0, sharpness=0.5, tag_need_exec=None, uniformity=4, use_high_precision=False, variation='CLASSIC', node_label=None, node_color=None, **kwargs)
 ```
 ##### Arguments
 
 - image : None
+- size : None
 - eccentricity : 1.0
 - sharpness : 0.5
-- size : 6
 - tag_need_exec : None
 - uniformity : 4
+- use_high_precision : False
 - variation : 'CLASSIC'
 
 ## Implementation
@@ -24,15 +25,16 @@ No implementation in sockets
 ## Init
 
 ``` python
-def __init__(self, image=None, eccentricity=1.0, sharpness=0.5, size=6, tag_need_exec=None, uniformity=4, variation='CLASSIC', node_label=None, node_color=None):
+def __init__(self, image=None, size=None, eccentricity=1.0, sharpness=0.5, tag_need_exec=None, uniformity=4, use_high_precision=False, variation='CLASSIC', node_label=None, node_color=None, **kwargs):
 
-    Node.__init__(self, 'CompositorNodeKuwahara', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'CompositorNodeKuwahara', node_label=node_label, node_color=node_color, **kwargs)
 
     self.eccentricity    = eccentricity
     self.sharpness       = sharpness
-    self.size            = size
     self.tag_need_exec   = tag_need_exec
     self.uniformity      = uniformity
+    self.use_high_precision = use_high_precision
     self.variation       = variation
     self.image           = image
+    self.size            = size
 ```

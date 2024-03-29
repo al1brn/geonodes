@@ -5,7 +5,7 @@
 
 
 ``` python
-SeparateColor(color=None, mode='RGB', node_label=None, node_color=None)
+SeparateColor(color=None, mode='RGB', node_label=None, node_color=None, **kwargs)
 ```
 ##### Arguments
 
@@ -19,9 +19,9 @@ SeparateColor(color=None, mode='RGB', node_label=None, node_color=None)
 ## Init
 
 ``` python
-def __init__(self, color=None, mode='RGB', node_label=None, node_color=None):
+def __init__(self, color=None, mode='RGB', node_label=None, node_color=None, **kwargs):
 
-    Node.__init__(self, 'FunctionNodeSeparateColor', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'FunctionNodeSeparateColor', node_label=node_label, node_color=node_color, **kwargs)
 
     self.mode            = mode
     self.color           = color

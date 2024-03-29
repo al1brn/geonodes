@@ -5,7 +5,7 @@
 
 
 ``` python
-Translate(image=None, x=None, y=None, tag_need_exec=None, use_relative=False, wrap_axis='NONE', node_label=None, node_color=None)
+Translate(image=None, x=None, y=None, tag_need_exec=None, use_relative=False, wrap_axis='NONE', node_label=None, node_color=None, **kwargs)
 ```
 ##### Arguments
 
@@ -23,9 +23,9 @@ No implementation in sockets
 ## Init
 
 ``` python
-def __init__(self, image=None, x=None, y=None, tag_need_exec=None, use_relative=False, wrap_axis='NONE', node_label=None, node_color=None):
+def __init__(self, image=None, x=None, y=None, tag_need_exec=None, use_relative=False, wrap_axis='NONE', node_label=None, node_color=None, **kwargs):
 
-    Node.__init__(self, 'CompositorNodeTranslate', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'CompositorNodeTranslate', node_label=node_label, node_color=node_color, **kwargs)
 
     self.tag_need_exec   = tag_need_exec
     self.use_relative    = use_relative

@@ -17,6 +17,7 @@ Depending on their sockets, nodes can be automaticalley implemented as class soc
 The custom functions defined more accurate ways to implement nodes using add_function function:
 
 update : 2024/02/17
+update : 2024/03/29
 """
 
 from pprint import pprint
@@ -152,10 +153,7 @@ class C:
             targets = targets[data_type_socket]
             # Targets is an empty tuple : the values must be read from the parameter
             if isinstance(targets, tuple) and len(targets) == 0:
-                print("C.CODE")
-                print("Empty target", node_info.bl_idname, data_type_socket)
                 targets = tuple(node_info.enum_params[data_type_socket])
-                print("Empty target", targets)
         
         if isinstance(targets, tuple):
             
@@ -764,7 +762,9 @@ NODE_IMPLEMENTATIONS = {
     'SubdivideCurve'     : C.Meth('Geometry', 'curve',  jump='curve'),
     'SubdivideMesh'      : C.Meth('Geometry', 'mesh',   jump='mesh'),
     'SubdivisionSurface' : C.Meth('Geometry', 'mesh',   jump='mesh'),
-    'Switch'             : C.Meth({'input_type': ()}, 'false', ret_socket='output'),
+    'Switch'             : [C.Meth({'input_type': ()}, 'false', ret_socket='output', tree_type='GeometryNodeTree'),
+                            C.Meth('Rgba', 'off', ret_socket='image', tree_type='CompositorNodeTree')],
+                            
     'TransformGeometry'  : C.Meth('Geometry',              jump='geometry'),
     'TranslateInstances' : C.Meth('Geometry', 'instances', jump='instances'),
     'Triangulate'        : C.Meth('Geometry', 'mesh',      jump='mesh'),

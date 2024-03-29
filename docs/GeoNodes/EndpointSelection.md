@@ -5,7 +5,7 @@
 
 
 ``` python
-EndpointSelection(start_size=None, end_size=None, node_label=None, node_color=None)
+EndpointSelection(start_size=None, end_size=None, node_label=None, node_color=None, **kwargs)
 ```
 ##### Arguments
 
@@ -19,9 +19,9 @@ EndpointSelection(start_size=None, end_size=None, node_label=None, node_color=No
 ## Init
 
 ``` python
-def __init__(self, start_size=None, end_size=None, node_label=None, node_color=None):
+def __init__(self, start_size=None, end_size=None, node_label=None, node_color=None, **kwargs):
 
-    Node.__init__(self, 'GeometryNodeCurveEndpointSelection', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'GeometryNodeCurveEndpointSelection', node_label=node_label, node_color=node_color, **kwargs)
 
     self.start_size      = start_size
     self.end_size        = end_size

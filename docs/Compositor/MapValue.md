@@ -5,7 +5,7 @@
 
 
 ``` python
-MapValue(value=None, max=None, min=None, offset=None, size=None, tag_need_exec=None, use_max=False, use_min=False, node_label=None, node_color=None)
+MapValue(value=None, max=None, min=None, offset=None, size=None, tag_need_exec=None, use_max=False, use_min=False, node_label=None, node_color=None, **kwargs)
 ```
 ##### Arguments
 
@@ -25,9 +25,9 @@ No implementation in sockets
 ## Init
 
 ``` python
-def __init__(self, value=None, max=None, min=None, offset=None, size=None, tag_need_exec=None, use_max=False, use_min=False, node_label=None, node_color=None):
+def __init__(self, value=None, max=None, min=None, offset=None, size=None, tag_need_exec=None, use_max=False, use_min=False, node_label=None, node_color=None, **kwargs):
 
-    Node.__init__(self, 'CompositorNodeMapValue', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'CompositorNodeMapValue', node_label=node_label, node_color=node_color, **kwargs)
 
     self.max             = max
     self.min             = min

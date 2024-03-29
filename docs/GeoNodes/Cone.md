@@ -5,7 +5,7 @@
 
 
 ``` python
-Cone(vertices=None, side_segments=None, fill_segments=None, radius_top=None, radius_bottom=None, depth=None, fill_type='NGON', node_label=None, node_color=None)
+Cone(vertices=None, side_segments=None, fill_segments=None, radius_top=None, radius_bottom=None, depth=None, fill_type='NGON', node_label=None, node_color=None, **kwargs)
 ```
 ##### Arguments
 
@@ -24,9 +24,9 @@ Cone(vertices=None, side_segments=None, fill_segments=None, radius_top=None, rad
 ## Init
 
 ``` python
-def __init__(self, vertices=None, side_segments=None, fill_segments=None, radius_top=None, radius_bottom=None, depth=None, fill_type='NGON', node_label=None, node_color=None):
+def __init__(self, vertices=None, side_segments=None, fill_segments=None, radius_top=None, radius_bottom=None, depth=None, fill_type='NGON', node_label=None, node_color=None, **kwargs):
 
-    Node.__init__(self, 'GeometryNodeMeshCone', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'GeometryNodeMeshCone', node_label=node_label, node_color=node_color, **kwargs)
 
     self.fill_type       = fill_type
     self.vertices        = vertices

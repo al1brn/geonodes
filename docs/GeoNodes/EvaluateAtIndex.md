@@ -5,7 +5,7 @@
 
 
 ``` python
-EvaluateAtIndex(index=None, value=None, data_type='FLOAT', domain='POINT', node_label=None, node_color=None)
+EvaluateAtIndex(index=None, value=None, data_type='FLOAT', domain='POINT', node_label=None, node_color=None, **kwargs)
 ```
 ##### Arguments
 
@@ -21,9 +21,9 @@ EvaluateAtIndex(index=None, value=None, data_type='FLOAT', domain='POINT', node_
 ## Init
 
 ``` python
-def __init__(self, index=None, value=None, data_type='FLOAT', domain='POINT', node_label=None, node_color=None):
+def __init__(self, index=None, value=None, data_type='FLOAT', domain='POINT', node_label=None, node_color=None, **kwargs):
 
-    Node.__init__(self, 'GeometryNodeFieldAtIndex', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'GeometryNodeFieldAtIndex', node_label=node_label, node_color=node_color, **kwargs)
 
     self.data_type       = data_type
     self.domain          = domain

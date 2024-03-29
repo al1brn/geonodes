@@ -5,7 +5,7 @@
 
 
 ``` python
-PrincipledBSDF(base_color=None, metallic=None, roughness=None, ior=None, alpha=None, normal=None, subsurface_weight=None, subsurface_radius=None, subsurface_scale=None, subsurface_anisotropy=None, specular_ior_level=None, specular_tint=None, anisotropic=None, anisotropic_rotation=None, tangent=None, transmission_weight=None, coat_weight=None, coat_roughness=None, coat_ior=None, coat_tint=None, coat_normal=None, sheen_weight=None, sheen_roughness=None, sheen_tint=None, emission_color=None, emission_strength=None, subsurface_ior=None, distribution='MULTI_GGX', subsurface_method='RANDOM_WALK', node_label=None, node_color=None)
+PrincipledBSDF(base_color=None, metallic=None, roughness=None, ior=None, alpha=None, normal=None, subsurface_weight=None, subsurface_radius=None, subsurface_scale=None, subsurface_anisotropy=None, specular_ior_level=None, specular_tint=None, anisotropic=None, anisotropic_rotation=None, tangent=None, transmission_weight=None, coat_weight=None, coat_roughness=None, coat_ior=None, coat_tint=None, coat_normal=None, sheen_weight=None, sheen_roughness=None, sheen_tint=None, emission_color=None, emission_strength=None, subsurface_ior=None, distribution='MULTI_GGX', subsurface_method='RANDOM_WALK', node_label=None, node_color=None, **kwargs)
 ```
 ##### Arguments
 
@@ -46,9 +46,9 @@ No implementation in sockets
 ## Init
 
 ``` python
-def __init__(self, base_color=None, metallic=None, roughness=None, ior=None, alpha=None, normal=None, subsurface_weight=None, subsurface_radius=None, subsurface_scale=None, subsurface_anisotropy=None, specular_ior_level=None, specular_tint=None, anisotropic=None, anisotropic_rotation=None, tangent=None, transmission_weight=None, coat_weight=None, coat_roughness=None, coat_ior=None, coat_tint=None, coat_normal=None, sheen_weight=None, sheen_roughness=None, sheen_tint=None, emission_color=None, emission_strength=None, subsurface_ior=None, distribution='MULTI_GGX', subsurface_method='RANDOM_WALK', node_label=None, node_color=None):
+def __init__(self, base_color=None, metallic=None, roughness=None, ior=None, alpha=None, normal=None, subsurface_weight=None, subsurface_radius=None, subsurface_scale=None, subsurface_anisotropy=None, specular_ior_level=None, specular_tint=None, anisotropic=None, anisotropic_rotation=None, tangent=None, transmission_weight=None, coat_weight=None, coat_roughness=None, coat_ior=None, coat_tint=None, coat_normal=None, sheen_weight=None, sheen_roughness=None, sheen_tint=None, emission_color=None, emission_strength=None, subsurface_ior=None, distribution='MULTI_GGX', subsurface_method='RANDOM_WALK', node_label=None, node_color=None, **kwargs):
 
-    Node.__init__(self, 'ShaderNodeBsdfPrincipled', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'ShaderNodeBsdfPrincipled', node_label=node_label, node_color=node_color, **kwargs)
 
     self.distribution    = distribution
     self.subsurface_method = subsurface_method

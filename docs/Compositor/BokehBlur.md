@@ -5,7 +5,7 @@
 
 
 ``` python
-BokehBlur(image=None, bokeh=None, size=None, bounding_box=None, blur_max=16.0, tag_need_exec=None, use_extended_bounds=False, use_variable_size=False, node_label=None, node_color=None)
+BokehBlur(image=None, bokeh=None, size=None, bounding_box=None, blur_max=16.0, tag_need_exec=None, use_extended_bounds=False, use_variable_size=False, node_label=None, node_color=None, **kwargs)
 ```
 ##### Arguments
 
@@ -25,9 +25,9 @@ No implementation in sockets
 ## Init
 
 ``` python
-def __init__(self, image=None, bokeh=None, size=None, bounding_box=None, blur_max=16.0, tag_need_exec=None, use_extended_bounds=False, use_variable_size=False, node_label=None, node_color=None):
+def __init__(self, image=None, bokeh=None, size=None, bounding_box=None, blur_max=16.0, tag_need_exec=None, use_extended_bounds=False, use_variable_size=False, node_label=None, node_color=None, **kwargs):
 
-    Node.__init__(self, 'CompositorNodeBokehBlur', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'CompositorNodeBokehBlur', node_label=node_label, node_color=node_color, **kwargs)
 
     self.blur_max        = blur_max
     self.tag_need_exec   = tag_need_exec

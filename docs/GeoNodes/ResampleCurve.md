@@ -5,7 +5,7 @@
 
 
 ``` python
-ResampleCurve(curve=None, selection=None, count=None, length=None, mode='COUNT', node_label=None, node_color=None)
+ResampleCurve(curve=None, selection=None, count=None, length=None, mode='COUNT', node_label=None, node_color=None, **kwargs)
 ```
 ##### Arguments
 
@@ -22,9 +22,9 @@ ResampleCurve(curve=None, selection=None, count=None, length=None, mode='COUNT',
 ## Init
 
 ``` python
-def __init__(self, curve=None, selection=None, count=None, length=None, mode='COUNT', node_label=None, node_color=None):
+def __init__(self, curve=None, selection=None, count=None, length=None, mode='COUNT', node_label=None, node_color=None, **kwargs):
 
-    Node.__init__(self, 'GeometryNodeResampleCurve', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'GeometryNodeResampleCurve', node_label=node_label, node_color=node_color, **kwargs)
 
     self.mode            = mode
     self.curve           = curve

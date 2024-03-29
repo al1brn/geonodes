@@ -43,7 +43,6 @@
 - [snap](#snap)
 - [sqrt](#sqrt)
 - [subtract](#subtract)
-- [switch](#switch)
 - [tan](#tan)
 - [tanh](#tanh)
 - [trunc](#trunc)
@@ -69,8 +68,8 @@
 #### Source code
 
 ``` python
-def abs(self, tag_need_exec=None, use_clamp=False, node_label=None, node_color=None):
-    node = self.tree.Math(value=self, operation='ABSOLUTE', tag_need_exec=tag_need_exec, use_clamp=use_clamp, node_label=node_label, node_color=node_color)
+def abs(self, tag_need_exec=None, use_clamp=False, node_label=None, node_color=None, **kwargs):
+    node = self.tree.Math(value=self, operation='ABSOLUTE', tag_need_exec=tag_need_exec, use_clamp=use_clamp, node_label=node_label, node_color=node_color, **kwargs)
     return node.value
 ```
 ### add
@@ -92,8 +91,8 @@ def abs(self, tag_need_exec=None, use_clamp=False, node_label=None, node_color=N
 #### Source code
 
 ``` python
-def add(self, value=None, tag_need_exec=None, use_clamp=False, node_label=None, node_color=None):
-    node = self.tree.Math(value=self, value_1=value, operation='ADD', tag_need_exec=tag_need_exec, use_clamp=use_clamp, node_label=node_label, node_color=node_color)
+def add(self, value=None, tag_need_exec=None, use_clamp=False, node_label=None, node_color=None, **kwargs):
+    node = self.tree.Math(value=self, value_1=value, operation='ADD', tag_need_exec=tag_need_exec, use_clamp=use_clamp, node_label=node_label, node_color=node_color, **kwargs)
     return node.value
 ```
 ### arccos
@@ -114,8 +113,8 @@ def add(self, value=None, tag_need_exec=None, use_clamp=False, node_label=None, 
 #### Source code
 
 ``` python
-def arccos(self, tag_need_exec=None, use_clamp=False, node_label=None, node_color=None):
-    node = self.tree.Math(value=self, operation='ARCCOSINE', tag_need_exec=tag_need_exec, use_clamp=use_clamp, node_label=node_label, node_color=node_color)
+def arccos(self, tag_need_exec=None, use_clamp=False, node_label=None, node_color=None, **kwargs):
+    node = self.tree.Math(value=self, operation='ARCCOSINE', tag_need_exec=tag_need_exec, use_clamp=use_clamp, node_label=node_label, node_color=node_color, **kwargs)
     return node.value
 ```
 ### arcsin
@@ -136,8 +135,8 @@ def arccos(self, tag_need_exec=None, use_clamp=False, node_label=None, node_colo
 #### Source code
 
 ``` python
-def arcsin(self, tag_need_exec=None, use_clamp=False, node_label=None, node_color=None):
-    node = self.tree.Math(value=self, operation='ARCSINE', tag_need_exec=tag_need_exec, use_clamp=use_clamp, node_label=node_label, node_color=node_color)
+def arcsin(self, tag_need_exec=None, use_clamp=False, node_label=None, node_color=None, **kwargs):
+    node = self.tree.Math(value=self, operation='ARCSINE', tag_need_exec=tag_need_exec, use_clamp=use_clamp, node_label=node_label, node_color=node_color, **kwargs)
     return node.value
 ```
 ### arctan
@@ -158,8 +157,8 @@ def arcsin(self, tag_need_exec=None, use_clamp=False, node_label=None, node_colo
 #### Source code
 
 ``` python
-def arctan(self, tag_need_exec=None, use_clamp=False, node_label=None, node_color=None):
-    node = self.tree.Math(value=self, operation='ARCTANGENT', tag_need_exec=tag_need_exec, use_clamp=use_clamp, node_label=node_label, node_color=node_color)
+def arctan(self, tag_need_exec=None, use_clamp=False, node_label=None, node_color=None, **kwargs):
+    node = self.tree.Math(value=self, operation='ARCTANGENT', tag_need_exec=tag_need_exec, use_clamp=use_clamp, node_label=node_label, node_color=node_color, **kwargs)
     return node.value
 ```
 ### arctan2
@@ -181,8 +180,8 @@ def arctan(self, tag_need_exec=None, use_clamp=False, node_label=None, node_colo
 #### Source code
 
 ``` python
-def arctan2(self, value=None, tag_need_exec=None, use_clamp=False, node_label=None, node_color=None):
-    node = self.tree.Math(value=self, value_1=value, operation='ARCTAN2', tag_need_exec=tag_need_exec, use_clamp=use_clamp, node_label=node_label, node_color=node_color)
+def arctan2(self, value=None, tag_need_exec=None, use_clamp=False, node_label=None, node_color=None, **kwargs):
+    node = self.tree.Math(value=self, value_1=value, operation='ARCTAN2', tag_need_exec=tag_need_exec, use_clamp=use_clamp, node_label=node_label, node_color=node_color, **kwargs)
     return node.value
 ```
 ### ceil
@@ -203,8 +202,8 @@ def arctan2(self, value=None, tag_need_exec=None, use_clamp=False, node_label=No
 #### Source code
 
 ``` python
-def ceil(self, tag_need_exec=None, use_clamp=False, node_label=None, node_color=None):
-    node = self.tree.Math(value=self, operation='CEIL', tag_need_exec=tag_need_exec, use_clamp=use_clamp, node_label=node_label, node_color=node_color)
+def ceil(self, tag_need_exec=None, use_clamp=False, node_label=None, node_color=None, **kwargs):
+    node = self.tree.Math(value=self, operation='CEIL', tag_need_exec=tag_need_exec, use_clamp=use_clamp, node_label=node_label, node_color=node_color, **kwargs)
     return node.value
 ```
 ### color_ramp
@@ -225,8 +224,8 @@ def ceil(self, tag_need_exec=None, use_clamp=False, node_label=None, node_color=
 #### Source code
 
 ``` python
-def color_ramp(self, color_ramp=None, tag_need_exec=None, node_label=None, node_color=None):
-    node = self.tree.ColorRamp(fac=self, color_ramp=color_ramp, tag_need_exec=tag_need_exec, node_label=node_label, node_color=node_color)
+def color_ramp(self, color_ramp=None, tag_need_exec=None, node_label=None, node_color=None, **kwargs):
+    node = self.tree.ColorRamp(fac=self, color_ramp=color_ramp, tag_need_exec=tag_need_exec, node_label=node_label, node_color=node_color, **kwargs)
     return node.value
 ```
 ### compare
@@ -249,8 +248,8 @@ def color_ramp(self, color_ramp=None, tag_need_exec=None, node_label=None, node_
 #### Source code
 
 ``` python
-def compare(self, value=None, value_1=None, tag_need_exec=None, use_clamp=False, node_label=None, node_color=None):
-    node = self.tree.Math(value=self, value_1=value, value_2=value_1, operation='COMPARE', tag_need_exec=tag_need_exec, use_clamp=use_clamp, node_label=node_label, node_color=node_color)
+def compare(self, value=None, value_1=None, tag_need_exec=None, use_clamp=False, node_label=None, node_color=None, **kwargs):
+    node = self.tree.Math(value=self, value_1=value, value_2=value_1, operation='COMPARE', tag_need_exec=tag_need_exec, use_clamp=use_clamp, node_label=node_label, node_color=node_color, **kwargs)
     return node.value
 ```
 ### cos
@@ -271,8 +270,8 @@ def compare(self, value=None, value_1=None, tag_need_exec=None, use_clamp=False,
 #### Source code
 
 ``` python
-def cos(self, tag_need_exec=None, use_clamp=False, node_label=None, node_color=None):
-    node = self.tree.Math(value=self, operation='COSINE', tag_need_exec=tag_need_exec, use_clamp=use_clamp, node_label=node_label, node_color=node_color)
+def cos(self, tag_need_exec=None, use_clamp=False, node_label=None, node_color=None, **kwargs):
+    node = self.tree.Math(value=self, operation='COSINE', tag_need_exec=tag_need_exec, use_clamp=use_clamp, node_label=node_label, node_color=node_color, **kwargs)
     return node.value
 ```
 ### cosh
@@ -293,8 +292,8 @@ def cos(self, tag_need_exec=None, use_clamp=False, node_label=None, node_color=N
 #### Source code
 
 ``` python
-def cosh(self, tag_need_exec=None, use_clamp=False, node_label=None, node_color=None):
-    node = self.tree.Math(value=self, operation='COSH', tag_need_exec=tag_need_exec, use_clamp=use_clamp, node_label=node_label, node_color=node_color)
+def cosh(self, tag_need_exec=None, use_clamp=False, node_label=None, node_color=None, **kwargs):
+    node = self.tree.Math(value=self, operation='COSH', tag_need_exec=tag_need_exec, use_clamp=use_clamp, node_label=node_label, node_color=node_color, **kwargs)
     return node.value
 ```
 ### degrees
@@ -315,8 +314,8 @@ def cosh(self, tag_need_exec=None, use_clamp=False, node_label=None, node_color=
 #### Source code
 
 ``` python
-def degrees(self, tag_need_exec=None, use_clamp=False, node_label=None, node_color=None):
-    node = self.tree.Math(value=self, operation='DEGREES', tag_need_exec=tag_need_exec, use_clamp=use_clamp, node_label=node_label, node_color=node_color)
+def degrees(self, tag_need_exec=None, use_clamp=False, node_label=None, node_color=None, **kwargs):
+    node = self.tree.Math(value=self, operation='DEGREES', tag_need_exec=tag_need_exec, use_clamp=use_clamp, node_label=node_label, node_color=node_color, **kwargs)
     return node.value
 ```
 ### divide
@@ -338,8 +337,8 @@ def degrees(self, tag_need_exec=None, use_clamp=False, node_label=None, node_col
 #### Source code
 
 ``` python
-def divide(self, value=None, tag_need_exec=None, use_clamp=False, node_label=None, node_color=None):
-    node = self.tree.Math(value=self, value_1=value, operation='DIVIDE', tag_need_exec=tag_need_exec, use_clamp=use_clamp, node_label=node_label, node_color=node_color)
+def divide(self, value=None, tag_need_exec=None, use_clamp=False, node_label=None, node_color=None, **kwargs):
+    node = self.tree.Math(value=self, value_1=value, operation='DIVIDE', tag_need_exec=tag_need_exec, use_clamp=use_clamp, node_label=node_label, node_color=node_color, **kwargs)
     return node.value
 ```
 ### exp
@@ -360,8 +359,8 @@ def divide(self, value=None, tag_need_exec=None, use_clamp=False, node_label=Non
 #### Source code
 
 ``` python
-def exp(self, tag_need_exec=None, use_clamp=False, node_label=None, node_color=None):
-    node = self.tree.Math(value=self, operation='EXPONENT', tag_need_exec=tag_need_exec, use_clamp=use_clamp, node_label=node_label, node_color=node_color)
+def exp(self, tag_need_exec=None, use_clamp=False, node_label=None, node_color=None, **kwargs):
+    node = self.tree.Math(value=self, operation='EXPONENT', tag_need_exec=tag_need_exec, use_clamp=use_clamp, node_label=node_label, node_color=node_color, **kwargs)
     return node.value
 ```
 ### floor
@@ -382,8 +381,8 @@ def exp(self, tag_need_exec=None, use_clamp=False, node_label=None, node_color=N
 #### Source code
 
 ``` python
-def floor(self, tag_need_exec=None, use_clamp=False, node_label=None, node_color=None):
-    node = self.tree.Math(value=self, operation='FLOOR', tag_need_exec=tag_need_exec, use_clamp=use_clamp, node_label=node_label, node_color=node_color)
+def floor(self, tag_need_exec=None, use_clamp=False, node_label=None, node_color=None, **kwargs):
+    node = self.tree.Math(value=self, operation='FLOOR', tag_need_exec=tag_need_exec, use_clamp=use_clamp, node_label=node_label, node_color=node_color, **kwargs)
     return node.value
 ```
 ### floored_modulo
@@ -405,8 +404,8 @@ def floor(self, tag_need_exec=None, use_clamp=False, node_label=None, node_color
 #### Source code
 
 ``` python
-def floored_modulo(self, value=None, tag_need_exec=None, use_clamp=False, node_label=None, node_color=None):
-    node = self.tree.Math(value=self, value_1=value, operation='FLOORED_MODULO', tag_need_exec=tag_need_exec, use_clamp=use_clamp, node_label=node_label, node_color=node_color)
+def floored_modulo(self, value=None, tag_need_exec=None, use_clamp=False, node_label=None, node_color=None, **kwargs):
+    node = self.tree.Math(value=self, value_1=value, operation='FLOORED_MODULO', tag_need_exec=tag_need_exec, use_clamp=use_clamp, node_label=node_label, node_color=node_color, **kwargs)
     return node.value
 ```
 ### fract
@@ -427,8 +426,8 @@ def floored_modulo(self, value=None, tag_need_exec=None, use_clamp=False, node_l
 #### Source code
 
 ``` python
-def fract(self, tag_need_exec=None, use_clamp=False, node_label=None, node_color=None):
-    node = self.tree.Math(value=self, operation='FRACT', tag_need_exec=tag_need_exec, use_clamp=use_clamp, node_label=node_label, node_color=node_color)
+def fract(self, tag_need_exec=None, use_clamp=False, node_label=None, node_color=None, **kwargs):
+    node = self.tree.Math(value=self, operation='FRACT', tag_need_exec=tag_need_exec, use_clamp=use_clamp, node_label=node_label, node_color=node_color, **kwargs)
     return node.value
 ```
 ### greater_than
@@ -450,8 +449,8 @@ def fract(self, tag_need_exec=None, use_clamp=False, node_label=None, node_color
 #### Source code
 
 ``` python
-def greater_than(self, value=None, tag_need_exec=None, use_clamp=False, node_label=None, node_color=None):
-    node = self.tree.Math(value=self, value_1=value, operation='GREATER_THAN', tag_need_exec=tag_need_exec, use_clamp=use_clamp, node_label=node_label, node_color=node_color)
+def greater_than(self, value=None, tag_need_exec=None, use_clamp=False, node_label=None, node_color=None, **kwargs):
+    node = self.tree.Math(value=self, value_1=value, operation='GREATER_THAN', tag_need_exec=tag_need_exec, use_clamp=use_clamp, node_label=node_label, node_color=node_color, **kwargs)
     return node.value
 ```
 ### inverse_sqrt
@@ -472,8 +471,8 @@ def greater_than(self, value=None, tag_need_exec=None, use_clamp=False, node_lab
 #### Source code
 
 ``` python
-def inverse_sqrt(self, tag_need_exec=None, use_clamp=False, node_label=None, node_color=None):
-    node = self.tree.Math(value=self, operation='INVERSE_SQRT', tag_need_exec=tag_need_exec, use_clamp=use_clamp, node_label=node_label, node_color=node_color)
+def inverse_sqrt(self, tag_need_exec=None, use_clamp=False, node_label=None, node_color=None, **kwargs):
+    node = self.tree.Math(value=self, operation='INVERSE_SQRT', tag_need_exec=tag_need_exec, use_clamp=use_clamp, node_label=node_label, node_color=node_color, **kwargs)
     return node.value
 ```
 ### less_than
@@ -495,8 +494,8 @@ def inverse_sqrt(self, tag_need_exec=None, use_clamp=False, node_label=None, nod
 #### Source code
 
 ``` python
-def less_than(self, value=None, tag_need_exec=None, use_clamp=False, node_label=None, node_color=None):
-    node = self.tree.Math(value=self, value_1=value, operation='LESS_THAN', tag_need_exec=tag_need_exec, use_clamp=use_clamp, node_label=node_label, node_color=node_color)
+def less_than(self, value=None, tag_need_exec=None, use_clamp=False, node_label=None, node_color=None, **kwargs):
+    node = self.tree.Math(value=self, value_1=value, operation='LESS_THAN', tag_need_exec=tag_need_exec, use_clamp=use_clamp, node_label=node_label, node_color=node_color, **kwargs)
     return node.value
 ```
 ### log
@@ -518,8 +517,8 @@ def less_than(self, value=None, tag_need_exec=None, use_clamp=False, node_label=
 #### Source code
 
 ``` python
-def log(self, value=None, tag_need_exec=None, use_clamp=False, node_label=None, node_color=None):
-    node = self.tree.Math(value=self, value_1=value, operation='LOGARITHM', tag_need_exec=tag_need_exec, use_clamp=use_clamp, node_label=node_label, node_color=node_color)
+def log(self, value=None, tag_need_exec=None, use_clamp=False, node_label=None, node_color=None, **kwargs):
+    node = self.tree.Math(value=self, value_1=value, operation='LOGARITHM', tag_need_exec=tag_need_exec, use_clamp=use_clamp, node_label=node_label, node_color=node_color, **kwargs)
     return node.value
 ```
 ### map_range
@@ -544,8 +543,8 @@ def log(self, value=None, tag_need_exec=None, use_clamp=False, node_label=None, 
 #### Source code
 
 ``` python
-def map_range(self, from_min=None, from_max=None, to_min=None, to_max=None, tag_need_exec=None, use_clamp=False, node_label=None, node_color=None):
-    node = self.tree.MapRange(value=self, from_min=from_min, from_max=from_max, to_min=to_min, to_max=to_max, tag_need_exec=tag_need_exec, use_clamp=use_clamp, node_label=node_label, node_color=node_color)
+def map_range(self, from_min=None, from_max=None, to_min=None, to_max=None, tag_need_exec=None, use_clamp=False, node_label=None, node_color=None, **kwargs):
+    node = self.tree.MapRange(value=self, from_min=from_min, from_max=from_max, to_min=to_min, to_max=to_max, tag_need_exec=tag_need_exec, use_clamp=use_clamp, node_label=node_label, node_color=node_color, **kwargs)
     return node.result
 ```
 ### max
@@ -567,8 +566,8 @@ def map_range(self, from_min=None, from_max=None, to_min=None, to_max=None, tag_
 #### Source code
 
 ``` python
-def max(self, value=None, tag_need_exec=None, use_clamp=False, node_label=None, node_color=None):
-    node = self.tree.Math(value=self, value_1=value, operation='MAXIMUM', tag_need_exec=tag_need_exec, use_clamp=use_clamp, node_label=node_label, node_color=node_color)
+def max(self, value=None, tag_need_exec=None, use_clamp=False, node_label=None, node_color=None, **kwargs):
+    node = self.tree.Math(value=self, value_1=value, operation='MAXIMUM', tag_need_exec=tag_need_exec, use_clamp=use_clamp, node_label=node_label, node_color=node_color, **kwargs)
     return node.value
 ```
 ### min
@@ -590,8 +589,8 @@ def max(self, value=None, tag_need_exec=None, use_clamp=False, node_label=None, 
 #### Source code
 
 ``` python
-def min(self, value=None, tag_need_exec=None, use_clamp=False, node_label=None, node_color=None):
-    node = self.tree.Math(value=self, value_1=value, operation='MINIMUM', tag_need_exec=tag_need_exec, use_clamp=use_clamp, node_label=node_label, node_color=node_color)
+def min(self, value=None, tag_need_exec=None, use_clamp=False, node_label=None, node_color=None, **kwargs):
+    node = self.tree.Math(value=self, value_1=value, operation='MINIMUM', tag_need_exec=tag_need_exec, use_clamp=use_clamp, node_label=node_label, node_color=node_color, **kwargs)
     return node.value
 ```
 ### mix
@@ -616,8 +615,8 @@ def min(self, value=None, tag_need_exec=None, use_clamp=False, node_label=None, 
 #### Source code
 
 ``` python
-def mix(self, fac=None, image=None, image_1=None, tag_need_exec=None, use_alpha=False, use_clamp=False, node_label=None, node_color=None):
-    node = self.tree.Mix(fac=fac, image=image, image_1=image_1, blend_type='MIX', tag_need_exec=tag_need_exec, use_alpha=use_alpha, use_clamp=use_clamp, node_label=node_label, node_color=node_color)
+def mix(self, fac=None, image=None, image_1=None, tag_need_exec=None, use_alpha=False, use_clamp=False, node_label=None, node_color=None, **kwargs):
+    node = self.tree.Mix(fac=fac, image=image, image_1=image_1, blend_type='MIX', tag_need_exec=tag_need_exec, use_alpha=use_alpha, use_clamp=use_clamp, node_label=node_label, node_color=node_color, **kwargs)
     self.jump(node.result)
     return self
 ```
@@ -640,8 +639,8 @@ def mix(self, fac=None, image=None, image_1=None, tag_need_exec=None, use_alpha=
 #### Source code
 
 ``` python
-def mod(self, value=None, tag_need_exec=None, use_clamp=False, node_label=None, node_color=None):
-    node = self.tree.Math(value=self, value_1=value, operation='MODULO', tag_need_exec=tag_need_exec, use_clamp=use_clamp, node_label=node_label, node_color=node_color)
+def mod(self, value=None, tag_need_exec=None, use_clamp=False, node_label=None, node_color=None, **kwargs):
+    node = self.tree.Math(value=self, value_1=value, operation='MODULO', tag_need_exec=tag_need_exec, use_clamp=use_clamp, node_label=node_label, node_color=node_color, **kwargs)
     return node.value
 ```
 ### multiply
@@ -663,8 +662,8 @@ def mod(self, value=None, tag_need_exec=None, use_clamp=False, node_label=None, 
 #### Source code
 
 ``` python
-def multiply(self, value=None, tag_need_exec=None, use_clamp=False, node_label=None, node_color=None):
-    node = self.tree.Math(value=self, value_1=value, operation='MULTIPLY', tag_need_exec=tag_need_exec, use_clamp=use_clamp, node_label=node_label, node_color=node_color)
+def multiply(self, value=None, tag_need_exec=None, use_clamp=False, node_label=None, node_color=None, **kwargs):
+    node = self.tree.Math(value=self, value_1=value, operation='MULTIPLY', tag_need_exec=tag_need_exec, use_clamp=use_clamp, node_label=node_label, node_color=node_color, **kwargs)
     return node.value
 ```
 ### multiply_add
@@ -687,8 +686,8 @@ def multiply(self, value=None, tag_need_exec=None, use_clamp=False, node_label=N
 #### Source code
 
 ``` python
-def multiply_add(self, value=None, value_1=None, tag_need_exec=None, use_clamp=False, node_label=None, node_color=None):
-    node = self.tree.Math(value=self, value_1=value, value_2=value_1, operation='MULTIPLY_ADD', tag_need_exec=tag_need_exec, use_clamp=use_clamp, node_label=node_label, node_color=node_color)
+def multiply_add(self, value=None, value_1=None, tag_need_exec=None, use_clamp=False, node_label=None, node_color=None, **kwargs):
+    node = self.tree.Math(value=self, value_1=value, value_2=value_1, operation='MULTIPLY_ADD', tag_need_exec=tag_need_exec, use_clamp=use_clamp, node_label=node_label, node_color=node_color, **kwargs)
     return node.value
 ```
 ### pingpong
@@ -710,8 +709,8 @@ def multiply_add(self, value=None, value_1=None, tag_need_exec=None, use_clamp=F
 #### Source code
 
 ``` python
-def pingpong(self, value=None, tag_need_exec=None, use_clamp=False, node_label=None, node_color=None):
-    node = self.tree.Math(value=self, value_1=value, operation='PINGPONG', tag_need_exec=tag_need_exec, use_clamp=use_clamp, node_label=node_label, node_color=node_color)
+def pingpong(self, value=None, tag_need_exec=None, use_clamp=False, node_label=None, node_color=None, **kwargs):
+    node = self.tree.Math(value=self, value_1=value, operation='PINGPONG', tag_need_exec=tag_need_exec, use_clamp=use_clamp, node_label=node_label, node_color=node_color, **kwargs)
     return node.value
 ```
 ### power
@@ -733,8 +732,8 @@ def pingpong(self, value=None, tag_need_exec=None, use_clamp=False, node_label=N
 #### Source code
 
 ``` python
-def power(self, value=None, tag_need_exec=None, use_clamp=False, node_label=None, node_color=None):
-    node = self.tree.Math(value=self, value_1=value, operation='POWER', tag_need_exec=tag_need_exec, use_clamp=use_clamp, node_label=node_label, node_color=node_color)
+def power(self, value=None, tag_need_exec=None, use_clamp=False, node_label=None, node_color=None, **kwargs):
+    node = self.tree.Math(value=self, value_1=value, operation='POWER', tag_need_exec=tag_need_exec, use_clamp=use_clamp, node_label=node_label, node_color=node_color, **kwargs)
     return node.value
 ```
 ### radians
@@ -755,8 +754,8 @@ def power(self, value=None, tag_need_exec=None, use_clamp=False, node_label=None
 #### Source code
 
 ``` python
-def radians(self, tag_need_exec=None, use_clamp=False, node_label=None, node_color=None):
-    node = self.tree.Math(value=self, operation='RADIANS', tag_need_exec=tag_need_exec, use_clamp=use_clamp, node_label=node_label, node_color=node_color)
+def radians(self, tag_need_exec=None, use_clamp=False, node_label=None, node_color=None, **kwargs):
+    node = self.tree.Math(value=self, operation='RADIANS', tag_need_exec=tag_need_exec, use_clamp=use_clamp, node_label=node_label, node_color=node_color, **kwargs)
     return node.value
 ```
 ### round
@@ -777,8 +776,8 @@ def radians(self, tag_need_exec=None, use_clamp=False, node_label=None, node_col
 #### Source code
 
 ``` python
-def round(self, tag_need_exec=None, use_clamp=False, node_label=None, node_color=None):
-    node = self.tree.Math(value=self, operation='ROUND', tag_need_exec=tag_need_exec, use_clamp=use_clamp, node_label=node_label, node_color=node_color)
+def round(self, tag_need_exec=None, use_clamp=False, node_label=None, node_color=None, **kwargs):
+    node = self.tree.Math(value=self, operation='ROUND', tag_need_exec=tag_need_exec, use_clamp=use_clamp, node_label=node_label, node_color=node_color, **kwargs)
     return node.value
 ```
 ### sign
@@ -799,8 +798,8 @@ def round(self, tag_need_exec=None, use_clamp=False, node_label=None, node_color
 #### Source code
 
 ``` python
-def sign(self, tag_need_exec=None, use_clamp=False, node_label=None, node_color=None):
-    node = self.tree.Math(value=self, operation='SIGN', tag_need_exec=tag_need_exec, use_clamp=use_clamp, node_label=node_label, node_color=node_color)
+def sign(self, tag_need_exec=None, use_clamp=False, node_label=None, node_color=None, **kwargs):
+    node = self.tree.Math(value=self, operation='SIGN', tag_need_exec=tag_need_exec, use_clamp=use_clamp, node_label=node_label, node_color=node_color, **kwargs)
     return node.value
 ```
 ### sin
@@ -821,8 +820,8 @@ def sign(self, tag_need_exec=None, use_clamp=False, node_label=None, node_color=
 #### Source code
 
 ``` python
-def sin(self, tag_need_exec=None, use_clamp=False, node_label=None, node_color=None):
-    node = self.tree.Math(value=self, operation='SINE', tag_need_exec=tag_need_exec, use_clamp=use_clamp, node_label=node_label, node_color=node_color)
+def sin(self, tag_need_exec=None, use_clamp=False, node_label=None, node_color=None, **kwargs):
+    node = self.tree.Math(value=self, operation='SINE', tag_need_exec=tag_need_exec, use_clamp=use_clamp, node_label=node_label, node_color=node_color, **kwargs)
     return node.value
 ```
 ### sinh
@@ -843,8 +842,8 @@ def sin(self, tag_need_exec=None, use_clamp=False, node_label=None, node_color=N
 #### Source code
 
 ``` python
-def sinh(self, tag_need_exec=None, use_clamp=False, node_label=None, node_color=None):
-    node = self.tree.Math(value=self, operation='SINH', tag_need_exec=tag_need_exec, use_clamp=use_clamp, node_label=node_label, node_color=node_color)
+def sinh(self, tag_need_exec=None, use_clamp=False, node_label=None, node_color=None, **kwargs):
+    node = self.tree.Math(value=self, operation='SINH', tag_need_exec=tag_need_exec, use_clamp=use_clamp, node_label=node_label, node_color=node_color, **kwargs)
     return node.value
 ```
 ### smooth_max
@@ -867,8 +866,8 @@ def sinh(self, tag_need_exec=None, use_clamp=False, node_label=None, node_color=
 #### Source code
 
 ``` python
-def smooth_max(self, value=None, value_1=None, tag_need_exec=None, use_clamp=False, node_label=None, node_color=None):
-    node = self.tree.Math(value=self, value_1=value, value_2=value_1, operation='SMOOTH_MAX', tag_need_exec=tag_need_exec, use_clamp=use_clamp, node_label=node_label, node_color=node_color)
+def smooth_max(self, value=None, value_1=None, tag_need_exec=None, use_clamp=False, node_label=None, node_color=None, **kwargs):
+    node = self.tree.Math(value=self, value_1=value, value_2=value_1, operation='SMOOTH_MAX', tag_need_exec=tag_need_exec, use_clamp=use_clamp, node_label=node_label, node_color=node_color, **kwargs)
     return node.value
 ```
 ### smooth_min
@@ -891,8 +890,8 @@ def smooth_max(self, value=None, value_1=None, tag_need_exec=None, use_clamp=Fal
 #### Source code
 
 ``` python
-def smooth_min(self, value=None, value_1=None, tag_need_exec=None, use_clamp=False, node_label=None, node_color=None):
-    node = self.tree.Math(value=self, value_1=value, value_2=value_1, operation='SMOOTH_MIN', tag_need_exec=tag_need_exec, use_clamp=use_clamp, node_label=node_label, node_color=node_color)
+def smooth_min(self, value=None, value_1=None, tag_need_exec=None, use_clamp=False, node_label=None, node_color=None, **kwargs):
+    node = self.tree.Math(value=self, value_1=value, value_2=value_1, operation='SMOOTH_MIN', tag_need_exec=tag_need_exec, use_clamp=use_clamp, node_label=node_label, node_color=node_color, **kwargs)
     return node.value
 ```
 ### snap
@@ -914,8 +913,8 @@ def smooth_min(self, value=None, value_1=None, tag_need_exec=None, use_clamp=Fal
 #### Source code
 
 ``` python
-def snap(self, value=None, tag_need_exec=None, use_clamp=False, node_label=None, node_color=None):
-    node = self.tree.Math(value=self, value_1=value, operation='SNAP', tag_need_exec=tag_need_exec, use_clamp=use_clamp, node_label=node_label, node_color=node_color)
+def snap(self, value=None, tag_need_exec=None, use_clamp=False, node_label=None, node_color=None, **kwargs):
+    node = self.tree.Math(value=self, value_1=value, operation='SNAP', tag_need_exec=tag_need_exec, use_clamp=use_clamp, node_label=node_label, node_color=node_color, **kwargs)
     return node.value
 ```
 ### sqrt
@@ -936,8 +935,8 @@ def snap(self, value=None, tag_need_exec=None, use_clamp=False, node_label=None,
 #### Source code
 
 ``` python
-def sqrt(self, tag_need_exec=None, use_clamp=False, node_label=None, node_color=None):
-    node = self.tree.Math(value=self, operation='SQRT', tag_need_exec=tag_need_exec, use_clamp=use_clamp, node_label=node_label, node_color=node_color)
+def sqrt(self, tag_need_exec=None, use_clamp=False, node_label=None, node_color=None, **kwargs):
+    node = self.tree.Math(value=self, operation='SQRT', tag_need_exec=tag_need_exec, use_clamp=use_clamp, node_label=node_label, node_color=node_color, **kwargs)
     return node.value
 ```
 ### subtract
@@ -959,33 +958,9 @@ def sqrt(self, tag_need_exec=None, use_clamp=False, node_label=None, node_color=
 #### Source code
 
 ``` python
-def subtract(self, value=None, tag_need_exec=None, use_clamp=False, node_label=None, node_color=None):
-    node = self.tree.Math(value=self, value_1=value, operation='SUBTRACT', tag_need_exec=tag_need_exec, use_clamp=use_clamp, node_label=node_label, node_color=node_color)
+def subtract(self, value=None, tag_need_exec=None, use_clamp=False, node_label=None, node_color=None, **kwargs):
+    node = self.tree.Math(value=self, value_1=value, operation='SUBTRACT', tag_need_exec=tag_need_exec, use_clamp=use_clamp, node_label=node_label, node_color=node_color, **kwargs)
     return node.value
-```
-### switch
-
-
-- node : [Switch](/docs/Compositor/Switch.md)
-- self : false
-- jump : No
-- return : output
-
-##### Arguments
-
-- off : None
-- on : None
-- check : False
-- tag_need_exec : None
-- node_label : None
-- node_color : None
-
-#### Source code
-
-``` python
-def switch(self, off=None, on=None, check=False, tag_need_exec=None, node_label=None, node_color=None):
-    node = self.tree.Switch(off=off, on=on, check=check, tag_need_exec=tag_need_exec, node_label=node_label, node_color=node_color)
-    return node.output
 ```
 ### tan
 
@@ -1005,8 +980,8 @@ def switch(self, off=None, on=None, check=False, tag_need_exec=None, node_label=
 #### Source code
 
 ``` python
-def tan(self, tag_need_exec=None, use_clamp=False, node_label=None, node_color=None):
-    node = self.tree.Math(value=self, operation='TANGENT', tag_need_exec=tag_need_exec, use_clamp=use_clamp, node_label=node_label, node_color=node_color)
+def tan(self, tag_need_exec=None, use_clamp=False, node_label=None, node_color=None, **kwargs):
+    node = self.tree.Math(value=self, operation='TANGENT', tag_need_exec=tag_need_exec, use_clamp=use_clamp, node_label=node_label, node_color=node_color, **kwargs)
     return node.value
 ```
 ### tanh
@@ -1027,8 +1002,8 @@ def tan(self, tag_need_exec=None, use_clamp=False, node_label=None, node_color=N
 #### Source code
 
 ``` python
-def tanh(self, tag_need_exec=None, use_clamp=False, node_label=None, node_color=None):
-    node = self.tree.Math(value=self, operation='TANH', tag_need_exec=tag_need_exec, use_clamp=use_clamp, node_label=node_label, node_color=node_color)
+def tanh(self, tag_need_exec=None, use_clamp=False, node_label=None, node_color=None, **kwargs):
+    node = self.tree.Math(value=self, operation='TANH', tag_need_exec=tag_need_exec, use_clamp=use_clamp, node_label=node_label, node_color=node_color, **kwargs)
     return node.value
 ```
 ### trunc
@@ -1049,8 +1024,8 @@ def tanh(self, tag_need_exec=None, use_clamp=False, node_label=None, node_color=
 #### Source code
 
 ``` python
-def trunc(self, tag_need_exec=None, use_clamp=False, node_label=None, node_color=None):
-    node = self.tree.Math(value=self, operation='TRUNC', tag_need_exec=tag_need_exec, use_clamp=use_clamp, node_label=node_label, node_color=node_color)
+def trunc(self, tag_need_exec=None, use_clamp=False, node_label=None, node_color=None, **kwargs):
+    node = self.tree.Math(value=self, operation='TRUNC', tag_need_exec=tag_need_exec, use_clamp=use_clamp, node_label=node_label, node_color=node_color, **kwargs)
     return node.value
 ```
 ### wrap
@@ -1073,7 +1048,7 @@ def trunc(self, tag_need_exec=None, use_clamp=False, node_label=None, node_color
 #### Source code
 
 ``` python
-def wrap(self, value=None, value_1=None, tag_need_exec=None, use_clamp=False, node_label=None, node_color=None):
-    node = self.tree.Math(value=self, value_1=value, value_2=value_1, operation='WRAP', tag_need_exec=tag_need_exec, use_clamp=use_clamp, node_label=node_label, node_color=node_color)
+def wrap(self, value=None, value_1=None, tag_need_exec=None, use_clamp=False, node_label=None, node_color=None, **kwargs):
+    node = self.tree.Math(value=self, value_1=value, value_2=value_1, operation='WRAP', tag_need_exec=tag_need_exec, use_clamp=use_clamp, node_label=node_label, node_color=node_color, **kwargs)
     return node.value
 ```

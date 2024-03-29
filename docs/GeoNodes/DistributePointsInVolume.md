@@ -5,7 +5,7 @@
 
 
 ``` python
-DistributePointsInVolume(volume=None, density=None, seed=None, spacing=None, threshold=None, mode='DENSITY_RANDOM', node_label=None, node_color=None)
+DistributePointsInVolume(volume=None, density=None, seed=None, spacing=None, threshold=None, mode='DENSITY_RANDOM', node_label=None, node_color=None, **kwargs)
 ```
 ##### Arguments
 
@@ -23,9 +23,9 @@ DistributePointsInVolume(volume=None, density=None, seed=None, spacing=None, thr
 ## Init
 
 ``` python
-def __init__(self, volume=None, density=None, seed=None, spacing=None, threshold=None, mode='DENSITY_RANDOM', node_label=None, node_color=None):
+def __init__(self, volume=None, density=None, seed=None, spacing=None, threshold=None, mode='DENSITY_RANDOM', node_label=None, node_color=None, **kwargs):
 
-    Node.__init__(self, 'GeometryNodeDistributePointsInVolume', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'GeometryNodeDistributePointsInVolume', node_label=node_label, node_color=node_color, **kwargs)
 
     self.mode            = mode
     self.volume          = volume

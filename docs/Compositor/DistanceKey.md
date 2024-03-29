@@ -5,7 +5,7 @@
 
 
 ``` python
-DistanceKey(image=None, key_color=None, channel='RGB', falloff=0.10000000149011612, tag_need_exec=None, tolerance=0.10000000149011612, node_label=None, node_color=None)
+DistanceKey(image=None, key_color=None, channel='RGB', falloff=0.10000000149011612, tag_need_exec=None, tolerance=0.10000000149011612, node_label=None, node_color=None, **kwargs)
 ```
 ##### Arguments
 
@@ -23,9 +23,9 @@ No implementation in sockets
 ## Init
 
 ``` python
-def __init__(self, image=None, key_color=None, channel='RGB', falloff=0.10000000149011612, tag_need_exec=None, tolerance=0.10000000149011612, node_label=None, node_color=None):
+def __init__(self, image=None, key_color=None, channel='RGB', falloff=0.10000000149011612, tag_need_exec=None, tolerance=0.10000000149011612, node_label=None, node_color=None, **kwargs):
 
-    Node.__init__(self, 'CompositorNodeDistanceMatte', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'CompositorNodeDistanceMatte', node_label=node_label, node_color=node_color, **kwargs)
 
     self.channel         = channel
     self.falloff         = falloff

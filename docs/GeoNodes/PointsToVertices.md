@@ -5,7 +5,7 @@
 
 
 ``` python
-PointsToVertices(points=None, selection=None, node_label=None, node_color=None)
+PointsToVertices(points=None, selection=None, node_label=None, node_color=None, **kwargs)
 ```
 ##### Arguments
 
@@ -19,9 +19,9 @@ PointsToVertices(points=None, selection=None, node_label=None, node_color=None)
 ## Init
 
 ``` python
-def __init__(self, points=None, selection=None, node_label=None, node_color=None):
+def __init__(self, points=None, selection=None, node_label=None, node_color=None, **kwargs):
 
-    Node.__init__(self, 'GeometryNodePointsToVertices', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'GeometryNodePointsToVertices', node_label=node_label, node_color=node_color, **kwargs)
 
     self.points          = points
     self.selection       = selection

@@ -5,7 +5,7 @@
 
 
 ``` python
-ExtrudeMesh(mesh=None, selection=None, offset=None, offset_scale=None, individual=None, mode='FACES', node_label=None, node_color=None)
+ExtrudeMesh(mesh=None, selection=None, offset=None, offset_scale=None, individual=None, mode='FACES', node_label=None, node_color=None, **kwargs)
 ```
 ##### Arguments
 
@@ -23,9 +23,9 @@ ExtrudeMesh(mesh=None, selection=None, offset=None, offset_scale=None, individua
 ## Init
 
 ``` python
-def __init__(self, mesh=None, selection=None, offset=None, offset_scale=None, individual=None, mode='FACES', node_label=None, node_color=None):
+def __init__(self, mesh=None, selection=None, offset=None, offset_scale=None, individual=None, mode='FACES', node_label=None, node_color=None, **kwargs):
 
-    Node.__init__(self, 'GeometryNodeExtrudeMesh', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'GeometryNodeExtrudeMesh', node_label=node_label, node_color=node_color, **kwargs)
 
     self.mode            = mode
     self.mesh            = mesh

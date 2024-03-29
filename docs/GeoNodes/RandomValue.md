@@ -5,7 +5,7 @@
 
 
 ``` python
-RandomValue(min=None, max=None, ID=None, seed=None, probability=None, data_type='FLOAT', node_label=None, node_color=None)
+RandomValue(min=None, max=None, ID=None, seed=None, probability=None, data_type='FLOAT', node_label=None, node_color=None, **kwargs)
 ```
 ##### Arguments
 
@@ -23,9 +23,9 @@ RandomValue(min=None, max=None, ID=None, seed=None, probability=None, data_type=
 ## Init
 
 ``` python
-def __init__(self, min=None, max=None, ID=None, seed=None, probability=None, data_type='FLOAT', node_label=None, node_color=None):
+def __init__(self, min=None, max=None, ID=None, seed=None, probability=None, data_type='FLOAT', node_label=None, node_color=None, **kwargs):
 
-    Node.__init__(self, 'FunctionNodeRandomValue', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'FunctionNodeRandomValue', node_label=node_label, node_color=node_color, **kwargs)
 
     self.data_type       = data_type
     self.min             = min

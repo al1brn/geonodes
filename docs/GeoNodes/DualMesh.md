@@ -5,7 +5,7 @@
 
 
 ``` python
-DualMesh(mesh=None, keep_boundaries=None, node_label=None, node_color=None)
+DualMesh(mesh=None, keep_boundaries=None, node_label=None, node_color=None, **kwargs)
 ```
 ##### Arguments
 
@@ -19,9 +19,9 @@ DualMesh(mesh=None, keep_boundaries=None, node_label=None, node_color=None)
 ## Init
 
 ``` python
-def __init__(self, mesh=None, keep_boundaries=None, node_label=None, node_color=None):
+def __init__(self, mesh=None, keep_boundaries=None, node_label=None, node_color=None, **kwargs):
 
-    Node.__init__(self, 'GeometryNodeDualMesh', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'GeometryNodeDualMesh', node_label=node_label, node_color=node_color, **kwargs)
 
     self.mesh            = mesh
     self.keep_boundaries = keep_boundaries

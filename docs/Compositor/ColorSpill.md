@@ -5,7 +5,7 @@
 
 
 ``` python
-ColorSpill(image=None, fac=None, channel='G', limit_channel='R', limit_method='SIMPLE', ratio=1.0, tag_need_exec=None, unspill_blue=0.0, unspill_green=0.0, unspill_red=0.0, use_unspill=False, node_label=None, node_color=None)
+ColorSpill(image=None, fac=None, channel='G', limit_channel='R', limit_method='SIMPLE', ratio=1.0, tag_need_exec=None, unspill_blue=0.0, unspill_green=0.0, unspill_red=0.0, use_unspill=False, node_label=None, node_color=None, **kwargs)
 ```
 ##### Arguments
 
@@ -28,9 +28,9 @@ No implementation in sockets
 ## Init
 
 ``` python
-def __init__(self, image=None, fac=None, channel='G', limit_channel='R', limit_method='SIMPLE', ratio=1.0, tag_need_exec=None, unspill_blue=0.0, unspill_green=0.0, unspill_red=0.0, use_unspill=False, node_label=None, node_color=None):
+def __init__(self, image=None, fac=None, channel='G', limit_channel='R', limit_method='SIMPLE', ratio=1.0, tag_need_exec=None, unspill_blue=0.0, unspill_green=0.0, unspill_red=0.0, use_unspill=False, node_label=None, node_color=None, **kwargs):
 
-    Node.__init__(self, 'CompositorNodeColorSpill', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'CompositorNodeColorSpill', node_label=node_label, node_color=node_color, **kwargs)
 
     self.channel         = channel
     self.limit_channel   = limit_channel

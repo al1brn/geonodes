@@ -5,12 +5,15 @@
 
 
 ``` python
-RotateEuler(rotation=None, rotate_by=None, space='OBJECT', node_label=None, node_color=None)
+RotateEuler(rotation=None, rotate_by=None, axis=None, angle=None, rotation_type='EULER', space='OBJECT', node_label=None, node_color=None, **kwargs)
 ```
 ##### Arguments
 
 - rotation : None
 - rotate_by : None
+- axis : None
+- angle : None
+- rotation_type : 'EULER'
 - space : 'OBJECT'
 
 ## Implementation
@@ -21,11 +24,14 @@ RotateEuler(rotation=None, rotate_by=None, space='OBJECT', node_label=None, node
 ## Init
 
 ``` python
-def __init__(self, rotation=None, rotate_by=None, space='OBJECT', node_label=None, node_color=None):
+def __init__(self, rotation=None, rotate_by=None, axis=None, angle=None, rotation_type='EULER', space='OBJECT', node_label=None, node_color=None, **kwargs):
 
-    Node.__init__(self, 'FunctionNodeRotateEuler', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'FunctionNodeRotateEuler', node_label=node_label, node_color=node_color, **kwargs)
 
+    self.rotation_type   = rotation_type
     self.space           = space
     self.rotation        = rotation
     self.rotate_by       = rotate_by
+    self.axis            = axis
+    self.angle           = angle
 ```

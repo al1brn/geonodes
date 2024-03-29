@@ -5,7 +5,7 @@
 
 
 ``` python
-Script(bytecode='', bytecode_hash='', filepath='', mode='INTERNAL', script=None, use_auto_update=False, node_label=None, node_color=None)
+Script(bytecode='', bytecode_hash='', filepath='', mode='INTERNAL', script=None, use_auto_update=False, node_label=None, node_color=None, **kwargs)
 ```
 ##### Arguments
 
@@ -23,9 +23,9 @@ No implementation in sockets
 ## Init
 
 ``` python
-def __init__(self, bytecode='', bytecode_hash='', filepath='', mode='INTERNAL', script=None, use_auto_update=False, node_label=None, node_color=None):
+def __init__(self, bytecode='', bytecode_hash='', filepath='', mode='INTERNAL', script=None, use_auto_update=False, node_label=None, node_color=None, **kwargs):
 
-    Node.__init__(self, 'ShaderNodeScript', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'ShaderNodeScript', node_label=node_label, node_color=node_color, **kwargs)
 
     self.bytecode        = bytecode
     self.bytecode_hash   = bytecode_hash

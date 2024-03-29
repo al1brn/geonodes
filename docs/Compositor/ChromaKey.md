@@ -5,7 +5,7 @@
 
 
 ``` python
-ChromaKey(image=None, key_color=None, gain=1.0, lift=0.0, shadow_adjust=0.0, tag_need_exec=None, threshold=0.1745329201221466, tolerance=0.5235987901687622, node_label=None, node_color=None)
+ChromaKey(image=None, key_color=None, gain=1.0, lift=0.0, shadow_adjust=0.0, tag_need_exec=None, threshold=0.1745329201221466, tolerance=0.5235987901687622, node_label=None, node_color=None, **kwargs)
 ```
 ##### Arguments
 
@@ -25,9 +25,9 @@ No implementation in sockets
 ## Init
 
 ``` python
-def __init__(self, image=None, key_color=None, gain=1.0, lift=0.0, shadow_adjust=0.0, tag_need_exec=None, threshold=0.1745329201221466, tolerance=0.5235987901687622, node_label=None, node_color=None):
+def __init__(self, image=None, key_color=None, gain=1.0, lift=0.0, shadow_adjust=0.0, tag_need_exec=None, threshold=0.1745329201221466, tolerance=0.5235987901687622, node_label=None, node_color=None, **kwargs):
 
-    Node.__init__(self, 'CompositorNodeChromaMatte', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'CompositorNodeChromaMatte', node_label=node_label, node_color=node_color, **kwargs)
 
     self.gain            = gain
     self.lift            = lift

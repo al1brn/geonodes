@@ -5,7 +5,7 @@
 
 
 ``` python
-WhiteNoiseTexture(vector=None, w=None, noise_dimensions='3D', node_label=None, node_color=None)
+WhiteNoiseTexture(vector=None, w=None, noise_dimensions='3D', node_label=None, node_color=None, **kwargs)
 ```
 ##### Arguments
 
@@ -20,9 +20,9 @@ WhiteNoiseTexture(vector=None, w=None, noise_dimensions='3D', node_label=None, n
 ## Init
 
 ``` python
-def __init__(self, vector=None, w=None, noise_dimensions='3D', node_label=None, node_color=None):
+def __init__(self, vector=None, w=None, noise_dimensions='3D', node_label=None, node_color=None, **kwargs):
 
-    Node.__init__(self, 'ShaderNodeTexWhiteNoise', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'ShaderNodeTexWhiteNoise', node_label=node_label, node_color=node_color, **kwargs)
 
     self.noise_dimensions = noise_dimensions
     self.vector          = vector

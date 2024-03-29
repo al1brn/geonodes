@@ -5,7 +5,7 @@
 
 
 ``` python
-Switch(switch=None, false=None, true=None, input_type='GEOMETRY', node_label=None, node_color=None)
+Switch(switch=None, false=None, true=None, input_type='GEOMETRY', node_label=None, node_color=None, **kwargs)
 ```
 ##### Arguments
 
@@ -22,20 +22,20 @@ Switch(switch=None, false=None, true=None, input_type='GEOMETRY', node_label=Non
 - [IMAGE](/docs/GeoNodes/socket_IMAGE.md) : [switch](/docs/GeoNodes/socket_IMAGE.md#switch)
 - [INT](/docs/GeoNodes/socket_INT.md) : [switch](/docs/GeoNodes/socket_INT.md#switch)
 - [MATERIAL](/docs/GeoNodes/socket_MATERIAL.md) : [switch](/docs/GeoNodes/socket_MATERIAL.md#switch)
+- [MENU](/docs/GeoNodes/socket_MENU.md) : [switch](/docs/GeoNodes/socket_MENU.md#switch)
 - [OBJECT](/docs/GeoNodes/socket_OBJECT.md) : [switch](/docs/GeoNodes/socket_OBJECT.md#switch)
 - [RGBA](/docs/GeoNodes/socket_RGBA.md) : [switch](/docs/GeoNodes/socket_RGBA.md#switch)
 - [ROTATION](/docs/GeoNodes/socket_ROTATION.md) : [switch](/docs/GeoNodes/socket_ROTATION.md#switch)
 - [STRING](/docs/GeoNodes/socket_STRING.md) : [switch](/docs/GeoNodes/socket_STRING.md#switch)
-- [TEXTURE](/docs/GeoNodes/socket_TEXTURE.md) : [switch](/docs/GeoNodes/socket_TEXTURE.md#switch)
 - [VALUE](/docs/GeoNodes/socket_VALUE.md) : [switch](/docs/GeoNodes/socket_VALUE.md#switch)
 - [VECTOR](/docs/GeoNodes/socket_VECTOR.md) : [switch](/docs/GeoNodes/socket_VECTOR.md#switch)
 
 ## Init
 
 ``` python
-def __init__(self, switch=None, false=None, true=None, input_type='GEOMETRY', node_label=None, node_color=None):
+def __init__(self, switch=None, false=None, true=None, input_type='GEOMETRY', node_label=None, node_color=None, **kwargs):
 
-    Node.__init__(self, 'GeometryNodeSwitch', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'GeometryNodeSwitch', node_label=node_label, node_color=node_color, **kwargs)
 
     self.input_type      = input_type
     self.switch          = switch

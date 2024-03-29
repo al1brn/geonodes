@@ -5,7 +5,7 @@
 
 
 ``` python
-StringLength(string=None, node_label=None, node_color=None)
+StringLength(string=None, node_label=None, node_color=None, **kwargs)
 ```
 ##### Arguments
 
@@ -18,9 +18,9 @@ StringLength(string=None, node_label=None, node_color=None)
 ## Init
 
 ``` python
-def __init__(self, string=None, node_label=None, node_color=None):
+def __init__(self, string=None, node_label=None, node_color=None, **kwargs):
 
-    Node.__init__(self, 'FunctionNodeStringLength', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'FunctionNodeStringLength', node_label=node_label, node_color=node_color, **kwargs)
 
     self.string          = string
 ```

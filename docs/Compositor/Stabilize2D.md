@@ -5,7 +5,7 @@
 
 
 ``` python
-Stabilize2D(image=None, clip=None, filter_type='BILINEAR', invert=False, tag_need_exec=None, node_label=None, node_color=None)
+Stabilize2D(image=None, clip=None, filter_type='BILINEAR', invert=False, tag_need_exec=None, node_label=None, node_color=None, **kwargs)
 ```
 ##### Arguments
 
@@ -22,9 +22,9 @@ No implementation in sockets
 ## Init
 
 ``` python
-def __init__(self, image=None, clip=None, filter_type='BILINEAR', invert=False, tag_need_exec=None, node_label=None, node_color=None):
+def __init__(self, image=None, clip=None, filter_type='BILINEAR', invert=False, tag_need_exec=None, node_label=None, node_color=None, **kwargs):
 
-    Node.__init__(self, 'CompositorNodeStabilize', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'CompositorNodeStabilize', node_label=node_label, node_color=node_color, **kwargs)
 
     self.clip            = clip
     self.filter_type     = filter_type

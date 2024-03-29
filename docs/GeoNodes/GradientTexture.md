@@ -5,7 +5,7 @@
 
 
 ``` python
-GradientTexture(vector=None, color_mapping=None, gradient_type='LINEAR', texture_mapping=None, node_label=None, node_color=None)
+GradientTexture(vector=None, color_mapping=None, gradient_type='LINEAR', texture_mapping=None, node_label=None, node_color=None, **kwargs)
 ```
 ##### Arguments
 
@@ -21,9 +21,9 @@ GradientTexture(vector=None, color_mapping=None, gradient_type='LINEAR', texture
 ## Init
 
 ``` python
-def __init__(self, vector=None, color_mapping=None, gradient_type='LINEAR', texture_mapping=None, node_label=None, node_color=None):
+def __init__(self, vector=None, color_mapping=None, gradient_type='LINEAR', texture_mapping=None, node_label=None, node_color=None, **kwargs):
 
-    Node.__init__(self, 'ShaderNodeTexGradient', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'ShaderNodeTexGradient', node_label=node_label, node_color=node_color, **kwargs)
 
     self.color_mapping   = color_mapping
     self.gradient_type   = gradient_type

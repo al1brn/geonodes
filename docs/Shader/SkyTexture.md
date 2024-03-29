@@ -5,7 +5,7 @@
 
 
 ``` python
-SkyTexture(vector=None, air_density=1.0, altitude=0.0, color_mapping=None, dust_density=1.0, ground_albedo=0.30000001192092896, ozone_density=1.0, sky_type='NISHITA', sun_direction=(0.0, 0.0, 1.0), sun_disc=True, sun_elevation=0.2617993950843811, sun_intensity=1.0, sun_rotation=0.0, sun_size=0.009512044489383698, texture_mapping=None, turbidity=2.200000047683716, node_label=None, node_color=None)
+SkyTexture(vector=None, air_density=1.0, altitude=0.0, color_mapping=None, dust_density=1.0, ground_albedo=0.30000001192092896, ozone_density=1.0, sky_type='NISHITA', sun_direction=(0.0, 0.0, 1.0), sun_disc=True, sun_elevation=0.2617993950843811, sun_intensity=1.0, sun_rotation=0.0, sun_size=0.009512044489383698, texture_mapping=None, turbidity=2.200000047683716, node_label=None, node_color=None, **kwargs)
 ```
 ##### Arguments
 
@@ -33,9 +33,9 @@ No implementation in sockets
 ## Init
 
 ``` python
-def __init__(self, vector=None, air_density=1.0, altitude=0.0, color_mapping=None, dust_density=1.0, ground_albedo=0.30000001192092896, ozone_density=1.0, sky_type='NISHITA', sun_direction=(0.0, 0.0, 1.0), sun_disc=True, sun_elevation=0.2617993950843811, sun_intensity=1.0, sun_rotation=0.0, sun_size=0.009512044489383698, texture_mapping=None, turbidity=2.200000047683716, node_label=None, node_color=None):
+def __init__(self, vector=None, air_density=1.0, altitude=0.0, color_mapping=None, dust_density=1.0, ground_albedo=0.30000001192092896, ozone_density=1.0, sky_type='NISHITA', sun_direction=(0.0, 0.0, 1.0), sun_disc=True, sun_elevation=0.2617993950843811, sun_intensity=1.0, sun_rotation=0.0, sun_size=0.009512044489383698, texture_mapping=None, turbidity=2.200000047683716, node_label=None, node_color=None, **kwargs):
 
-    Node.__init__(self, 'ShaderNodeTexSky', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'ShaderNodeTexSky', node_label=node_label, node_color=node_color, **kwargs)
 
     self.air_density     = air_density
     self.altitude        = altitude

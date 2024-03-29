@@ -5,7 +5,7 @@
 
 
 ``` python
-EdgePathsToCurves(mesh=None, start_vertices=None, next_vertex_index=None, node_label=None, node_color=None)
+EdgePathsToCurves(mesh=None, start_vertices=None, next_vertex_index=None, node_label=None, node_color=None, **kwargs)
 ```
 ##### Arguments
 
@@ -20,9 +20,9 @@ EdgePathsToCurves(mesh=None, start_vertices=None, next_vertex_index=None, node_l
 ## Init
 
 ``` python
-def __init__(self, mesh=None, start_vertices=None, next_vertex_index=None, node_label=None, node_color=None):
+def __init__(self, mesh=None, start_vertices=None, next_vertex_index=None, node_label=None, node_color=None, **kwargs):
 
-    Node.__init__(self, 'GeometryNodeEdgePathsToCurves', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'GeometryNodeEdgePathsToCurves', node_label=node_label, node_color=node_color, **kwargs)
 
     self.mesh            = mesh
     self.start_vertices  = start_vertices

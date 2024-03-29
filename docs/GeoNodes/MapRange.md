@@ -5,7 +5,7 @@
 
 
 ``` python
-MapRange(value=None, from_min=None, from_max=None, to_min=None, to_max=None, vector=None, steps=None, clamp=True, data_type='FLOAT', interpolation_type='LINEAR', node_label=None, node_color=None)
+MapRange(value=None, from_min=None, from_max=None, to_min=None, to_max=None, vector=None, steps=None, clamp=True, data_type='FLOAT', interpolation_type='LINEAR', node_label=None, node_color=None, **kwargs)
 ```
 ##### Arguments
 
@@ -29,9 +29,9 @@ MapRange(value=None, from_min=None, from_max=None, to_min=None, to_max=None, vec
 ## Init
 
 ``` python
-def __init__(self, value=None, from_min=None, from_max=None, to_min=None, to_max=None, vector=None, steps=None, clamp=True, data_type='FLOAT', interpolation_type='LINEAR', node_label=None, node_color=None):
+def __init__(self, value=None, from_min=None, from_max=None, to_min=None, to_max=None, vector=None, steps=None, clamp=True, data_type='FLOAT', interpolation_type='LINEAR', node_label=None, node_color=None, **kwargs):
 
-    Node.__init__(self, 'ShaderNodeMapRange', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'ShaderNodeMapRange', node_label=node_label, node_color=node_color, **kwargs)
 
     self.clamp           = clamp
     self.data_type       = data_type

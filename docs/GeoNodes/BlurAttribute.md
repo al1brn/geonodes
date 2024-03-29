@@ -5,7 +5,7 @@
 
 
 ``` python
-BlurAttribute(value=None, iterations=None, weight=None, data_type='FLOAT', node_label=None, node_color=None)
+BlurAttribute(value=None, iterations=None, weight=None, data_type='FLOAT', node_label=None, node_color=None, **kwargs)
 ```
 ##### Arguments
 
@@ -25,9 +25,9 @@ BlurAttribute(value=None, iterations=None, weight=None, data_type='FLOAT', node_
 ## Init
 
 ``` python
-def __init__(self, value=None, iterations=None, weight=None, data_type='FLOAT', node_label=None, node_color=None):
+def __init__(self, value=None, iterations=None, weight=None, data_type='FLOAT', node_label=None, node_color=None, **kwargs):
 
-    Node.__init__(self, 'GeometryNodeBlurAttribute', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'GeometryNodeBlurAttribute', node_label=node_label, node_color=node_color, **kwargs)
 
     self.data_type       = data_type
     self.value           = value

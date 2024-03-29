@@ -5,7 +5,7 @@
 
 
 ``` python
-NoiseTexture(vector=None, scale=None, detail=None, roughness=None, lacunarity=None, distortion=None, w=None, color_mapping=None, noise_dimensions='3D', normalize=True, texture_mapping=None, node_label=None, node_color=None)
+NoiseTexture(vector=None, scale=None, detail=None, roughness=None, lacunarity=None, distortion=None, w=None, offset=None, gain=None, color_mapping=None, noise_dimensions='3D', noise_type='FBM', normalize=True, texture_mapping=None, node_label=None, node_color=None, **kwargs)
 ```
 ##### Arguments
 
@@ -16,8 +16,11 @@ NoiseTexture(vector=None, scale=None, detail=None, roughness=None, lacunarity=No
 - lacunarity : None
 - distortion : None
 - w : None
+- offset : None
+- gain : None
 - color_mapping : None
 - noise_dimensions : '3D'
+- noise_type : 'FBM'
 - normalize : True
 - texture_mapping : None
 
@@ -28,12 +31,13 @@ NoiseTexture(vector=None, scale=None, detail=None, roughness=None, lacunarity=No
 ## Init
 
 ``` python
-def __init__(self, vector=None, scale=None, detail=None, roughness=None, lacunarity=None, distortion=None, w=None, color_mapping=None, noise_dimensions='3D', normalize=True, texture_mapping=None, node_label=None, node_color=None):
+def __init__(self, vector=None, scale=None, detail=None, roughness=None, lacunarity=None, distortion=None, w=None, offset=None, gain=None, color_mapping=None, noise_dimensions='3D', noise_type='FBM', normalize=True, texture_mapping=None, node_label=None, node_color=None, **kwargs):
 
-    Node.__init__(self, 'ShaderNodeTexNoise', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'ShaderNodeTexNoise', node_label=node_label, node_color=node_color, **kwargs)
 
     self.color_mapping   = color_mapping
     self.noise_dimensions = noise_dimensions
+    self.noise_type      = noise_type
     self.normalize       = normalize
     self.texture_mapping = texture_mapping
     self.vector          = vector
@@ -43,4 +47,6 @@ def __init__(self, vector=None, scale=None, detail=None, roughness=None, lacunar
     self.lacunarity      = lacunarity
     self.distortion      = distortion
     self.w               = w
+    self.offset          = offset
+    self.gain            = gain
 ```

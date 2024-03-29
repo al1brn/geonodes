@@ -5,7 +5,7 @@
 
 
 ``` python
-CurveToPoints(curve=None, count=None, length=None, mode='COUNT', node_label=None, node_color=None)
+CurveToPoints(curve=None, count=None, length=None, mode='COUNT', node_label=None, node_color=None, **kwargs)
 ```
 ##### Arguments
 
@@ -21,9 +21,9 @@ CurveToPoints(curve=None, count=None, length=None, mode='COUNT', node_label=None
 ## Init
 
 ``` python
-def __init__(self, curve=None, count=None, length=None, mode='COUNT', node_label=None, node_color=None):
+def __init__(self, curve=None, count=None, length=None, mode='COUNT', node_label=None, node_color=None, **kwargs):
 
-    Node.__init__(self, 'GeometryNodeCurveToPoints', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'GeometryNodeCurveToPoints', node_label=node_label, node_color=node_color, **kwargs)
 
     self.mode            = mode
     self.curve           = curve

@@ -23,6 +23,7 @@ module : nodeinfo
 The dynamic building is triggered by the instanciation of a Tree class by calling nodeinfo.tree_class_setup.
 
 update : 2024/02/17
+update : 2024/03/29
 """
 
 from pprint import pprint

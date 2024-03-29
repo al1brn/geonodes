@@ -5,7 +5,7 @@
 
 
 ``` python
-ValueToString(value=None, decimals=None, node_label=None, node_color=None)
+ValueToString(value=None, decimals=None, node_label=None, node_color=None, **kwargs)
 ```
 ##### Arguments
 
@@ -20,9 +20,9 @@ ValueToString(value=None, decimals=None, node_label=None, node_color=None)
 ## Init
 
 ``` python
-def __init__(self, value=None, decimals=None, node_label=None, node_color=None):
+def __init__(self, value=None, decimals=None, node_label=None, node_color=None, **kwargs):
 
-    Node.__init__(self, 'FunctionNodeValueToString', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'FunctionNodeValueToString', node_label=node_label, node_color=node_color, **kwargs)
 
     self.value           = value
     self.decimals        = decimals

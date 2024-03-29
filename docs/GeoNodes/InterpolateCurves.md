@@ -5,7 +5,7 @@
 
 
 ``` python
-InterpolateCurves(guide_curves=None, guide_up=None, guide_group_id=None, points=None, point_up=None, point_group_id=None, max_neighbors=None, node_label=None, node_color=None)
+InterpolateCurves(guide_curves=None, guide_up=None, guide_group_id=None, points=None, point_up=None, point_group_id=None, max_neighbors=None, node_label=None, node_color=None, **kwargs)
 ```
 ##### Arguments
 
@@ -24,9 +24,9 @@ InterpolateCurves(guide_curves=None, guide_up=None, guide_group_id=None, points=
 ## Init
 
 ``` python
-def __init__(self, guide_curves=None, guide_up=None, guide_group_id=None, points=None, point_up=None, point_group_id=None, max_neighbors=None, node_label=None, node_color=None):
+def __init__(self, guide_curves=None, guide_up=None, guide_group_id=None, points=None, point_up=None, point_group_id=None, max_neighbors=None, node_label=None, node_color=None, **kwargs):
 
-    Node.__init__(self, 'GeometryNodeInterpolateCurves', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'GeometryNodeInterpolateCurves', node_label=node_label, node_color=node_color, **kwargs)
 
     self.guide_curves    = guide_curves
     self.guide_up        = guide_up

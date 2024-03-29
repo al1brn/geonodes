@@ -5,7 +5,7 @@
 
 
 ``` python
-EdgesToFaceGroups(boundary_edges=None, node_label=None, node_color=None)
+EdgesToFaceGroups(boundary_edges=None, node_label=None, node_color=None, **kwargs)
 ```
 ##### Arguments
 
@@ -18,9 +18,9 @@ EdgesToFaceGroups(boundary_edges=None, node_label=None, node_color=None)
 ## Init
 
 ``` python
-def __init__(self, boundary_edges=None, node_label=None, node_color=None):
+def __init__(self, boundary_edges=None, node_label=None, node_color=None, **kwargs):
 
-    Node.__init__(self, 'GeometryNodeEdgesToFaceGroups', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'GeometryNodeEdgesToFaceGroups', node_label=node_label, node_color=node_color, **kwargs)
 
     self.boundary_edges  = boundary_edges
 ```

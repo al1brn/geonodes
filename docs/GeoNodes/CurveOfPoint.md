@@ -5,7 +5,7 @@
 
 
 ``` python
-CurveOfPoint(point_index=None, node_label=None, node_color=None)
+CurveOfPoint(point_index=None, node_label=None, node_color=None, **kwargs)
 ```
 ##### Arguments
 
@@ -18,9 +18,9 @@ CurveOfPoint(point_index=None, node_label=None, node_color=None)
 ## Init
 
 ``` python
-def __init__(self, point_index=None, node_label=None, node_color=None):
+def __init__(self, point_index=None, node_label=None, node_color=None, **kwargs):
 
-    Node.__init__(self, 'GeometryNodeCurveOfPoint', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'GeometryNodeCurveOfPoint', node_label=node_label, node_color=node_color, **kwargs)
 
     self.point_index     = point_index
 ```

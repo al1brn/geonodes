@@ -5,7 +5,7 @@
 
 
 ``` python
-SetMaterialIndex(geometry=None, selection=None, material_index=None, node_label=None, node_color=None)
+SetMaterialIndex(geometry=None, selection=None, material_index=None, node_label=None, node_color=None, **kwargs)
 ```
 ##### Arguments
 
@@ -20,9 +20,9 @@ SetMaterialIndex(geometry=None, selection=None, material_index=None, node_label=
 ## Init
 
 ``` python
-def __init__(self, geometry=None, selection=None, material_index=None, node_label=None, node_color=None):
+def __init__(self, geometry=None, selection=None, material_index=None, node_label=None, node_color=None, **kwargs):
 
-    Node.__init__(self, 'GeometryNodeSetMaterialIndex', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'GeometryNodeSetMaterialIndex', node_label=node_label, node_color=node_color, **kwargs)
 
     self.geometry        = geometry
     self.selection       = selection

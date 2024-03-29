@@ -5,7 +5,7 @@
 
 
 ``` python
-HueCorrect(fac=None, image=None, mapping=None, tag_need_exec=None, node_label=None, node_color=None)
+HueCorrect(fac=None, image=None, mapping=None, tag_need_exec=None, node_label=None, node_color=None, **kwargs)
 ```
 ##### Arguments
 
@@ -21,9 +21,9 @@ No implementation in sockets
 ## Init
 
 ``` python
-def __init__(self, fac=None, image=None, mapping=None, tag_need_exec=None, node_label=None, node_color=None):
+def __init__(self, fac=None, image=None, mapping=None, tag_need_exec=None, node_label=None, node_color=None, **kwargs):
 
-    Node.__init__(self, 'CompositorNodeHueCorrect', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'CompositorNodeHueCorrect', node_label=node_label, node_color=node_color, **kwargs)
 
     self.mapping         = mapping
     self.tag_need_exec   = tag_need_exec

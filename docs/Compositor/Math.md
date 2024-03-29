@@ -5,7 +5,7 @@
 
 
 ``` python
-Math(value=None, value_1=None, value_2=None, operation='ADD', tag_need_exec=None, use_clamp=False, node_label=None, node_color=None)
+Math(value=None, value_1=None, value_2=None, operation='ADD', tag_need_exec=None, use_clamp=False, node_label=None, node_color=None, **kwargs)
 ```
 ##### Arguments
 
@@ -24,9 +24,9 @@ Math(value=None, value_1=None, value_2=None, operation='ADD', tag_need_exec=None
 ## Init
 
 ``` python
-def __init__(self, value=None, value_1=None, value_2=None, operation='ADD', tag_need_exec=None, use_clamp=False, node_label=None, node_color=None):
+def __init__(self, value=None, value_1=None, value_2=None, operation='ADD', tag_need_exec=None, use_clamp=False, node_label=None, node_color=None, **kwargs):
 
-    Node.__init__(self, 'CompositorNodeMath', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'CompositorNodeMath', node_label=node_label, node_color=node_color, **kwargs)
 
     self.operation       = operation
     self.tag_need_exec   = tag_need_exec

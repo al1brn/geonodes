@@ -5,7 +5,7 @@
 
 
 ``` python
-SubdivisionSurface(mesh=None, level=None, edge_crease=None, vertex_crease=None, boundary_smooth='ALL', uv_smooth='PRESERVE_BOUNDARIES', node_label=None, node_color=None)
+SubdivisionSurface(mesh=None, level=None, edge_crease=None, vertex_crease=None, boundary_smooth='ALL', uv_smooth='PRESERVE_BOUNDARIES', node_label=None, node_color=None, **kwargs)
 ```
 ##### Arguments
 
@@ -23,9 +23,9 @@ SubdivisionSurface(mesh=None, level=None, edge_crease=None, vertex_crease=None, 
 ## Init
 
 ``` python
-def __init__(self, mesh=None, level=None, edge_crease=None, vertex_crease=None, boundary_smooth='ALL', uv_smooth='PRESERVE_BOUNDARIES', node_label=None, node_color=None):
+def __init__(self, mesh=None, level=None, edge_crease=None, vertex_crease=None, boundary_smooth='ALL', uv_smooth='PRESERVE_BOUNDARIES', node_label=None, node_color=None, **kwargs):
 
-    Node.__init__(self, 'GeometryNodeSubdivisionSurface', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'GeometryNodeSubdivisionSurface', node_label=node_label, node_color=node_color, **kwargs)
 
     self.boundary_smooth = boundary_smooth
     self.uv_smooth       = uv_smooth

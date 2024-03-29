@@ -5,11 +5,12 @@
 
 
 ``` python
-FillCurve(curve=None, mode='TRIANGLES', node_label=None, node_color=None)
+FillCurve(curve=None, group_id=None, mode='TRIANGLES', node_label=None, node_color=None, **kwargs)
 ```
 ##### Arguments
 
 - curve : None
+- group_id : None
 - mode : 'TRIANGLES'
 
 ## Implementation
@@ -19,10 +20,11 @@ FillCurve(curve=None, mode='TRIANGLES', node_label=None, node_color=None)
 ## Init
 
 ``` python
-def __init__(self, curve=None, mode='TRIANGLES', node_label=None, node_color=None):
+def __init__(self, curve=None, group_id=None, mode='TRIANGLES', node_label=None, node_color=None, **kwargs):
 
-    Node.__init__(self, 'GeometryNodeFillCurve', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'GeometryNodeFillCurve', node_label=node_label, node_color=node_color, **kwargs)
 
     self.mode            = mode
     self.curve           = curve
+    self.group_id        = group_id
 ```

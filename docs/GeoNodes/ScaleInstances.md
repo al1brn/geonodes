@@ -5,7 +5,7 @@
 
 
 ``` python
-ScaleInstances(instances=None, selection=None, scale=None, center=None, local_space=None, node_label=None, node_color=None)
+ScaleInstances(instances=None, selection=None, scale=None, center=None, local_space=None, node_label=None, node_color=None, **kwargs)
 ```
 ##### Arguments
 
@@ -22,9 +22,9 @@ ScaleInstances(instances=None, selection=None, scale=None, center=None, local_sp
 ## Init
 
 ``` python
-def __init__(self, instances=None, selection=None, scale=None, center=None, local_space=None, node_label=None, node_color=None):
+def __init__(self, instances=None, selection=None, scale=None, center=None, local_space=None, node_label=None, node_color=None, **kwargs):
 
-    Node.__init__(self, 'GeometryNodeScaleInstances', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'GeometryNodeScaleInstances', node_label=node_label, node_color=node_color, **kwargs)
 
     self.instances       = instances
     self.selection       = selection

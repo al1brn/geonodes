@@ -5,7 +5,7 @@
 
 
 ``` python
-SetSplineType(curve=None, selection=None, spline_type='POLY', node_label=None, node_color=None)
+SetSplineType(curve=None, selection=None, spline_type='POLY', node_label=None, node_color=None, **kwargs)
 ```
 ##### Arguments
 
@@ -20,9 +20,9 @@ SetSplineType(curve=None, selection=None, spline_type='POLY', node_label=None, n
 ## Init
 
 ``` python
-def __init__(self, curve=None, selection=None, spline_type='POLY', node_label=None, node_color=None):
+def __init__(self, curve=None, selection=None, spline_type='POLY', node_label=None, node_color=None, **kwargs):
 
-    Node.__init__(self, 'GeometryNodeCurveSplineType', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'GeometryNodeCurveSplineType', node_label=node_label, node_color=node_color, **kwargs)
 
     self.spline_type     = spline_type
     self.curve           = curve

@@ -5,7 +5,7 @@
 
 
 ``` python
-Cube(size=None, vertices_x=None, vertices_y=None, vertices_z=None, node_label=None, node_color=None)
+Cube(size=None, vertices_x=None, vertices_y=None, vertices_z=None, node_label=None, node_color=None, **kwargs)
 ```
 ##### Arguments
 
@@ -21,9 +21,9 @@ Cube(size=None, vertices_x=None, vertices_y=None, vertices_z=None, node_label=No
 ## Init
 
 ``` python
-def __init__(self, size=None, vertices_x=None, vertices_y=None, vertices_z=None, node_label=None, node_color=None):
+def __init__(self, size=None, vertices_x=None, vertices_y=None, vertices_z=None, node_label=None, node_color=None, **kwargs):
 
-    Node.__init__(self, 'GeometryNodeMeshCube', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'GeometryNodeMeshCube', node_label=node_label, node_color=node_color, **kwargs)
 
     self.size            = size
     self.vertices_x      = vertices_x

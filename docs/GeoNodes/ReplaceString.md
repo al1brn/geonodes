@@ -5,7 +5,7 @@
 
 
 ``` python
-ReplaceString(string=None, find=None, replace=None, node_label=None, node_color=None)
+ReplaceString(string=None, find=None, replace=None, node_label=None, node_color=None, **kwargs)
 ```
 ##### Arguments
 
@@ -20,9 +20,9 @@ ReplaceString(string=None, find=None, replace=None, node_label=None, node_color=
 ## Init
 
 ``` python
-def __init__(self, string=None, find=None, replace=None, node_label=None, node_color=None):
+def __init__(self, string=None, find=None, replace=None, node_label=None, node_color=None, **kwargs):
 
-    Node.__init__(self, 'FunctionNodeReplaceString', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'FunctionNodeReplaceString', node_label=node_label, node_color=node_color, **kwargs)
 
     self.string          = string
     self.find            = find

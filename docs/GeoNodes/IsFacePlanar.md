@@ -5,7 +5,7 @@
 
 
 ``` python
-IsFacePlanar(threshold=None, node_label=None, node_color=None)
+IsFacePlanar(threshold=None, node_label=None, node_color=None, **kwargs)
 ```
 ##### Arguments
 
@@ -18,9 +18,9 @@ IsFacePlanar(threshold=None, node_label=None, node_color=None)
 ## Init
 
 ``` python
-def __init__(self, threshold=None, node_label=None, node_color=None):
+def __init__(self, threshold=None, node_label=None, node_color=None, **kwargs):
 
-    Node.__init__(self, 'GeometryNodeInputMeshFaceIsPlanar', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'GeometryNodeInputMeshFaceIsPlanar', node_label=node_label, node_color=node_color, **kwargs)
 
     self.threshold       = threshold
 ```

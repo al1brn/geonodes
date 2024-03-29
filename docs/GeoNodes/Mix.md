@@ -5,7 +5,7 @@
 
 
 ``` python
-Mix(factor=None, a=None, b=None, blend_type='MIX', clamp_factor=True, clamp_result=False, data_type='FLOAT', factor_mode='UNIFORM', node_label=None, node_color=None)
+Mix(factor=None, a=None, b=None, blend_type='MIX', clamp_factor=True, clamp_result=False, data_type='FLOAT', factor_mode='UNIFORM', node_label=None, node_color=None, **kwargs)
 ```
 ##### Arguments
 
@@ -29,9 +29,9 @@ Mix(factor=None, a=None, b=None, blend_type='MIX', clamp_factor=True, clamp_resu
 ## Init
 
 ``` python
-def __init__(self, factor=None, a=None, b=None, blend_type='MIX', clamp_factor=True, clamp_result=False, data_type='FLOAT', factor_mode='UNIFORM', node_label=None, node_color=None):
+def __init__(self, factor=None, a=None, b=None, blend_type='MIX', clamp_factor=True, clamp_result=False, data_type='FLOAT', factor_mode='UNIFORM', node_label=None, node_color=None, **kwargs):
 
-    Node.__init__(self, 'ShaderNodeMix', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'ShaderNodeMix', node_label=node_label, node_color=node_color, **kwargs)
 
     self.blend_type      = blend_type
     self.clamp_factor    = clamp_factor

@@ -5,7 +5,7 @@
 
 
 ``` python
-TrackPosition(clip=None, frame_relative=0, position='ABSOLUTE', tag_need_exec=None, track_name='', tracking_object='', node_label=None, node_color=None)
+TrackPosition(clip=None, frame_relative=0, position='ABSOLUTE', tag_need_exec=None, track_name='', tracking_object='', node_label=None, node_color=None, **kwargs)
 ```
 ##### Arguments
 
@@ -23,9 +23,9 @@ No implementation in sockets
 ## Init
 
 ``` python
-def __init__(self, clip=None, frame_relative=0, position='ABSOLUTE', tag_need_exec=None, track_name='', tracking_object='', node_label=None, node_color=None):
+def __init__(self, clip=None, frame_relative=0, position='ABSOLUTE', tag_need_exec=None, track_name='', tracking_object='', node_label=None, node_color=None, **kwargs):
 
-    Node.__init__(self, 'CompositorNodeTrackPos', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'CompositorNodeTrackPos', node_label=node_label, node_color=node_color, **kwargs)
 
     self.clip            = clip
     self.frame_relative  = frame_relative

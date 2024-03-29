@@ -5,7 +5,7 @@
 
 
 ``` python
-Grid(size_x=None, size_y=None, vertices_x=None, vertices_y=None, node_label=None, node_color=None)
+Grid(size_x=None, size_y=None, vertices_x=None, vertices_y=None, node_label=None, node_color=None, **kwargs)
 ```
 ##### Arguments
 
@@ -21,9 +21,9 @@ Grid(size_x=None, size_y=None, vertices_x=None, vertices_y=None, node_label=None
 ## Init
 
 ``` python
-def __init__(self, size_x=None, size_y=None, vertices_x=None, vertices_y=None, node_label=None, node_color=None):
+def __init__(self, size_x=None, size_y=None, vertices_x=None, vertices_y=None, node_label=None, node_color=None, **kwargs):
 
-    Node.__init__(self, 'GeometryNodeMeshGrid', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'GeometryNodeMeshGrid', node_label=node_label, node_color=node_color, **kwargs)
 
     self.size_x          = size_x
     self.size_y          = size_y

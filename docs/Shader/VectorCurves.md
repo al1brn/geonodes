@@ -5,7 +5,7 @@
 
 
 ``` python
-VectorCurves(fac=None, vector=None, mapping=None, node_label=None, node_color=None)
+VectorCurves(fac=None, vector=None, mapping=None, node_label=None, node_color=None, **kwargs)
 ```
 ##### Arguments
 
@@ -21,9 +21,9 @@ VectorCurves(fac=None, vector=None, mapping=None, node_label=None, node_color=No
 ## Init
 
 ``` python
-def __init__(self, fac=None, vector=None, mapping=None, node_label=None, node_color=None):
+def __init__(self, fac=None, vector=None, mapping=None, node_label=None, node_color=None, **kwargs):
 
-    Node.__init__(self, 'ShaderNodeVectorCurve', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'ShaderNodeVectorCurve', node_label=node_label, node_color=node_color, **kwargs)
 
     self.mapping         = mapping
     self.fac             = fac

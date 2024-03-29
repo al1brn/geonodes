@@ -5,7 +5,7 @@
 
 
 ``` python
-VolumeToMesh(volume=None, threshold=None, adaptivity=None, voxel_amount=None, voxel_size=None, resolution_mode='GRID', node_label=None, node_color=None)
+VolumeToMesh(volume=None, threshold=None, adaptivity=None, voxel_amount=None, voxel_size=None, resolution_mode='GRID', node_label=None, node_color=None, **kwargs)
 ```
 ##### Arguments
 
@@ -23,9 +23,9 @@ VolumeToMesh(volume=None, threshold=None, adaptivity=None, voxel_amount=None, vo
 ## Init
 
 ``` python
-def __init__(self, volume=None, threshold=None, adaptivity=None, voxel_amount=None, voxel_size=None, resolution_mode='GRID', node_label=None, node_color=None):
+def __init__(self, volume=None, threshold=None, adaptivity=None, voxel_amount=None, voxel_size=None, resolution_mode='GRID', node_label=None, node_color=None, **kwargs):
 
-    Node.__init__(self, 'GeometryNodeVolumeToMesh', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'GeometryNodeVolumeToMesh', node_label=node_label, node_color=node_color, **kwargs)
 
     self.resolution_mode = resolution_mode
     self.volume          = volume

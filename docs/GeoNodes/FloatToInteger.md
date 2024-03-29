@@ -5,7 +5,7 @@
 
 
 ``` python
-FloatToInteger(float=None, rounding_mode='ROUND', node_label=None, node_color=None)
+FloatToInteger(float=None, rounding_mode='ROUND', node_label=None, node_color=None, **kwargs)
 ```
 ##### Arguments
 
@@ -19,9 +19,9 @@ FloatToInteger(float=None, rounding_mode='ROUND', node_label=None, node_color=No
 ## Init
 
 ``` python
-def __init__(self, float=None, rounding_mode='ROUND', node_label=None, node_color=None):
+def __init__(self, float=None, rounding_mode='ROUND', node_label=None, node_color=None, **kwargs):
 
-    Node.__init__(self, 'FunctionNodeFloatToInt', node_label=node_label, node_color=node_color)
+    Node.__init__(self, 'FunctionNodeFloatToInt', node_label=node_label, node_color=node_color, **kwargs)
 
     self.rounding_mode   = rounding_mode
     self.float           = float

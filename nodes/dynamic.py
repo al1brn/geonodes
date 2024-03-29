@@ -287,15 +287,15 @@ class Dynamic:
         # Method
         
         if func['cat'] == 'METHOD':
-        
+            
             with doc.bullets(item_len=["node"] + [k for k in func['kwargs']]) as bs:
                 bs.add("node", doc.page_link(func['node_class_name']))
                 for k, v in func['kwargs'].items():
                     k_ = 'self' if k == 'self_socket' else k
                     bs.add(k_, v)
-            
+                    
             Dynamic.print_args(doc, func['args'])
-            
+
             doc.header("Source code", 3)
             doc.source(func['code'])
         
@@ -326,13 +326,10 @@ class Dynamic:
         else:
             doc = target_doc
             
-        # DEBUG            
-        #doc = Doc.MarkDown()
-        
         tree_type = self.dyn_class.TREE_TYPE
-        
+
         doc.header(f"Tree {self.class_name} ({tree_type})", 0)
-        
+
         # ----------------------------------------------------------------------------------------------------
         # The whole Tree
 
@@ -347,28 +344,28 @@ class Dynamic:
             links = {class_name: doc.page_link(class_name, "socket_"+class_name) for class_name in constants.SOCKETS[tree_type]}
             with doc.bullets() as bullets:
                 bullets.alphabetical(links, len(links))
-                
+
             # ----- Node classes
             
             doc.header("Node classes", 2)
-            
+
             links = {dyn.node_info.class_name: doc.page_link(dyn.node_info.class_name, dyn.node_info.class_name) for bl_idname, dyn in constants.NODES[tree_type].items()}
             with doc.bullets() as bullets:
                 bullets.alphabetical(links)
-                
+
             # ----- Global function
             
             doc.header("Functions", 2)
-
+            
             links = {name: doc.title_link(name) for name in self.methods.keys()}
             with doc.bullets() as bullets:
                 bullets.alphabetical(links)
-                
+
             # ----- All the functions if MarkDown
             
             if doc.is_md:
                 doc.header("Functions", 1)
-                
+
                 for name in sorted(self.methods.keys()):
                     func = self.methods[name]
                     doc.header(f"{name}", 2)
@@ -378,6 +375,7 @@ class Dynamic:
         # A specific function
         
         else:
+
             func = self.methods.get(function)
             if func is None:
                 doc.descr(f"Sorry, no function named '{function}' found in tree '{type(self).__name__}'.")
@@ -438,9 +436,10 @@ class Dynamic:
                         
                 if globs is not None:
                     bullets.add("Functions", " ".join(globs))
-
-        doc.header("Init", 1)
-        doc.source(func['code'])
+                    
+        if func is not None:
+            doc.header("Init", 1)
+            doc.source(func['code'])
         
         # ----------------------------------------------------------------------------------------------------
         # Print the doc
@@ -563,12 +562,12 @@ def print_md_doc(folder):
         print()
         
         tree_class = dyn_tree.dyn_class
-        
+
         link_root = f"/docs/{tree_class.__name__}"
         file_root = root / tree_class.__name__
-        
+
         doc = Doc.MarkDown(link_root=link_root)
-        
+
         # ----- Tree class
         
         dyn_tree.tree_print_doc(None, target_doc=doc)
@@ -594,7 +593,6 @@ def print_md_doc(folder):
             
             dyn.node_print_doc(target_doc=doc)
             doc.done(file_name=file_root / f"{class_name}.md")
-        
         
     print("\nDocumentation built")
         
