@@ -18,6 +18,9 @@ blender_version = (4, 0, 2)
 # -----------------------------------------------------------------------------------------------------------------------------
 # Scipy is required
 
+import pip
+pip.main(['install', 'scipy', '--user'])
+
 try:
     from scipy.spatial.transform import RotationSpline
     from scipy.spatial.transform import Rotation

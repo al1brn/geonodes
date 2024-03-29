@@ -155,7 +155,8 @@ SOCKET_CLASS_DEFAULT_SOCKET_NAME = {
     'GEOMETRY'   : 'geometry', 
     'COLLECTION' : 'collection', 
     'TEXTURE'    : 'texture', 
-    'MATERIAL'   : 'material',  
+    'MATERIAL'   : 'material',
+    'MENU'       : 'menu',
     }
 
 DATA_TYPE_TO_SOCKET_CLASS_NAME = { # DATA_TYPE_CLASSES
@@ -172,6 +173,7 @@ DATA_TYPE_TO_SOCKET_CLASS_NAME = { # DATA_TYPE_CLASSES
     'COLLECTION' : 'COLLECTION', 
     'TEXTURE'    : 'TEXTURE', 
     'MATERIAL'   : 'MATERIAL',
+    'MENU'       : 'MENU',
     }
 
 # Legacy
@@ -191,7 +193,8 @@ SOCKET_CLASS_NAME_SHORTCUTS = {
     'Geometry'   : 'GEOMETRY', 
     'Collection' : 'COLLECTION', 
     'Texture'    : 'TEXTURE', 
-    'Mat'        : 'MATERIAL', 
+    'Mat'        : 'MATERIAL',
+    'Menu'       : 'MENU',
     }
 
 # ====================================================================================================

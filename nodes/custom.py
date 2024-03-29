@@ -150,6 +150,12 @@ class C:
         if isinstance(targets, dict):
             data_type_socket = list(targets.keys())[0]
             targets = targets[data_type_socket]
+            # Targets is an empty tuple : the values must be read from the parameter
+            if isinstance(targets, tuple) and len(targets) == 0:
+                print("C.CODE")
+                print("Empty target", node_info.bl_idname, data_type_socket)
+                targets = tuple(node_info.enum_params[data_type_socket])
+                print("Empty target", targets)
         
         if isinstance(targets, tuple):
             
@@ -516,7 +522,7 @@ NODE_IMPLEMENTATIONS = {
                             C.Glob('MODE', ret_socket='color', loops=["mode"])],
     'CombineXYZ'         : [C.Glob(ret_socket='vector'),
                             C.Glob('xyz', ret_socket='vector')],
-    'Compare'            : C.Meth({'data_type': ('FLOAT', 'INT', 'VECTOR', 'STRING', 'RGBA')}, 'a', ret_socket='result', name='OPERATION', loops=['operation']),
+    'Compare'            : C.Meth({'data_type': ()}, 'a', ret_socket='result', name='OPERATION', loops=['operation']),
     'Cone'               : C.Glob(ret_socket='mesh'),
     'ConvexHull'         : C.Meth('Geometry', ret_socket='convex_hull'),
     'CornersOfEdge'      : C.Meth('Geometry', None),
@@ -758,7 +764,7 @@ NODE_IMPLEMENTATIONS = {
     'SubdivideCurve'     : C.Meth('Geometry', 'curve',  jump='curve'),
     'SubdivideMesh'      : C.Meth('Geometry', 'mesh',   jump='mesh'),
     'SubdivisionSurface' : C.Meth('Geometry', 'mesh',   jump='mesh'),
-    'Switch'             : C.Meth({'input_type': ('FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'ROTATION', 'STRING', 'RGBA', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'TEXTURE', 'MATERIAL')}, 'false', ret_socket='output'),
+    'Switch'             : C.Meth({'input_type': ()}, 'false', ret_socket='output'),
     'TransformGeometry'  : C.Meth('Geometry',              jump='geometry'),
     'TranslateInstances' : C.Meth('Geometry', 'instances', jump='instances'),
     'Triangulate'        : C.Meth('Geometry', 'mesh',      jump='mesh'),

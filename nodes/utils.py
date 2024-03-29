@@ -382,6 +382,24 @@ def get_value_socket_type(value):
     
     else:
         raise Exception(f"Python value '{value}' of type {type(value).__name__} doesn't match any socket type in {constants.all_socket_classes(constants.get_tree_type())}")
+        
+def get_type_from_sockets(value):
+    if isinstance(value, list):
+        stypes = {}
+        imax   = 0
+        res    = 'GEOMETRY'
+        for v in value:
+            stype = get_value_socket_type(v)
+            if stype in stypes:
+                stypes[stype] += 1
+            else:
+                stypes[stype] = 1
+            if imax < stypes[stype]:
+                imax = stypes[stype]
+                res  = stype
+        return res
+    else:
+        return get_value_socket_type(value)
 
 # ====================================================================================================
 # Socket bl_idname from a value

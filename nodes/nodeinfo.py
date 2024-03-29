@@ -399,7 +399,6 @@ class NodeInfo:
         if bnode.bl_idname == 'GeometryNodeIndexSwitch':
             bnode.index_switch_items.clear()
         elif bnode.bl_idname == 'GeometryNodeMenuSwitch':
-            print(dir(bnode))
             bnode.enum_definition.enum_items.clear()
             
         
@@ -1004,15 +1003,19 @@ class NodeInfo:
         
         root_class = treestack.Node
         gen_init   = True
+        descr      = None
         
         if self.bl_idname == 'GeometryNodeIndexSwitch':
             root_class = treestack.IndexSwitchNode
             gen_init   = False
+            descr      = root_class.__init__.__doc__
         elif  self.bl_idname == 'GeometryNodeMenuSwitch':
             root_class = treestack.MenuSwitchNode
             gen_init   = False
+            descr      = root_class.__init__.__doc__
 
-        self.dynamic = dynamic.Dynamic.NewNode(self, root_class, descr=None)
+        self.dynamic = dynamic.Dynamic.NewNode(self, root_class, descr=descr)
+        descr = None
         
         if False:
             args = self.build_meth_args()
@@ -1044,7 +1047,6 @@ class NodeInfo:
         
         setattr(self.node_class, 'DOMAIN_PARAM',  self.domain_param)
         setattr(self.node_class, 'DOMAIN_VALUES', self.domain_values)
-        
         
         # ----- Sockets and parameters properties
         

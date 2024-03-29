@@ -508,15 +508,51 @@ class Node(object):
 # Index Switch
         
 class IndexSwitchNode(Node):
-    
-    def __init__(self, *args, index=None, data_type='GEOMETRY', node_label=None, node_color=None, **kwargs):
+    def __init__(self, *args, index=None, data_type=None, node_label=None, node_color=None, **kwargs):
+        """#1 Node IndexSwitch
+        
+        - Node name : 'Index Switch'
+        - bl_idname : [GeometryNodeMenuSwitch](https://docs.blender.org/api/current/bpy.types.GeometryNodeIndexSwitch.html)
+        
+        ``` python
+        IndexSwitch(*args, index=None, data_type=None, node_label=None, node_color=None, **kwargs)
+        ```
+        
+        ## Arguments
+        - args (Sockets) : the sockets to pick into
+        - index (integer Socket) : selection index
+        - data_type (str=None) : type of value sockets. If None, data_type is deduced from kwargs data types
+        - kwargs : socket name -> socket to select from
+        
+        > [!NOTE]
+        > The total number of sockets is the sum of the number of items in args and in kwargs
+        
+        > [!CAUTION]
+        > Keys of kwargs dict must be a socket number : `**_0**`, `**_1**`, `**_2**`, ... 
+        
+        ## Example
+        
+        In the following example, the node is initialized with a list of 3 geometries passed as non keyed arguments
+        and one addtional geometry passed as keyed argument.
+        
+        ``` python
+        with GeoNodes("Test") as tree:
+            
+            node = tree.IndexSwitch(
+                tree.ico_sphere(), tree.cube(), tree.cone(),
+                index = tree.integer_input("Shape", 0),
+                _1 = tree.ig)
+                
+            tree.og = node.output
+        ```
+        """  
         
         bnode = constants.current_tree().btree.nodes.new(type='GeometryNodeIndexSwitch')
         bnode.index_switch_items.clear()
         
         super().__init__(bnode, node_label=node_label, node_color=node_color)
         
-        self.data_type = data_type
+        self.data_type = utils.get_type_from_sockets(list(args) + list(kwargs.values())) if data_type is None else data_type
         self.index = index
         
         # ----- Create the entries
@@ -575,14 +611,78 @@ class IndexSwitchNode(Node):
         
 class MenuSwitchNode(Node):
     
-    def __init__(self, menu=None, data_type='GEOMETRY', node_label=None, node_color=None, **kwargs):
+    def __init__(self, menu=None, data_type=None, node_label=None, node_color=None, **kwargs):
+        """#1 Node MenuSwicth
+        
+        - Node name : 'Menu Switch'
+        - bl_idname : [GeometryNodeMenuSwitch](https://docs.blender.org/api/current/bpy.types.GeometryNodeMenuSwitch.html)
+        
+        ``` python
+        MenuSwitch(menu=None, data_type=None, node_label=None, node_color=None, **kwargs)
+        ```
+        
+        ## Arguments
+        - menu (Socket=None) : Socket Menu
+        - data_type (str=None) : type of value sockets. If None, data_type is deduced from kwargs data types
+        - kwargs : socket name -> socket to select from menu
+        
+        ## Default sockets
+        
+        In the editor, this node is created with predefined sockets name A and B.
+        Here, there is no predefined sockets. The names can be freely chosen.
+        
+        ## Menu socket
+        
+        Generally, the menu socket is read from group input. There is two manners to create a group input dedicated
+        to the menu socket.
+        
+        The first way is to explicitly create a menu socket with `tree.menu_input`. Since this method needs an
+        existing socket, it must be created afterwards.
+        
+        As a reminder, input sockets are write only attributes. To get an input socket, it is necessary to use
+        the `inputs` list.
+        
+        ``` python
+        with GeoNodes("Test") as tree:
+            switch_node = tree.MenuSwitch(sphere=tree.ico_sphere(), cube=tree.cube(), cone=tree.cone())
+            # Input sockets are write only
+            tree.menu_input("Shape", switch_node.inputs["Menu"])
+            tree.og = switch_node.output
+        ```
+        
+        Since there is only one input menu, it is possible to pass directly the node rather than its menu socket:
+            
+        ``` python
+        with GeoNodes("Test") as tree:
+            switch_node = tree.MenuSwitch(sphere=tree.ico_sphere(), cube=tree.cube(), cone=tree.cone())
+            # menu_input method will take the first input menu socket
+            tree.menu_input("Shape", switch_node)
+            tree.og = switch_node.output
+        ```
+        
+        ## Dynamic creation
+        
+        The other way to create the group menu socket is to use the method `input_for_socket` as value
+        for the `menu` socket. This method accepts the name of the socket to create as an argument.
+        The following code is equivalent as the two previous pieces:
+            
+        ``` python
+        switch_node = tree.MenuSwitch(
+            menu   = tree.input_for_socket("Shape"),
+            sphere = tree.ico_sphere(),
+            cube   = tree.cube(),
+            cone   = tree.cone())
+        
+        tree.og = switch_node.output
+        ```
+        """
         
         bnode = constants.current_tree().btree.nodes.new(type='GeometryNodeMenuSwitch')
         bnode.enum_definition.enum_items.clear()
         
         super().__init__(bnode, node_label=node_label, node_color=node_color)
         
-        self.data_type = data_type
+        self.data_type = utils.get_type_from_sockets(list(kwargs.values())) if data_type is None else data_type
         
         # ----- Create the entries
         
