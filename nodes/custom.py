@@ -649,7 +649,7 @@ NODE_IMPLEMENTATIONS = {
     'OffsetPointInCurve' : C.Meth('Geometry', None),
     'OffsetSDFVolume'    : None,
     'PackUVIslands'      : C.Meth('Vect', 'uv', jump='uv'),
-    'Points'             : C.Glob(ret_socket='geometry'),
+    'Points'             : C.Glob(ret_socket='points'),
     'PointsOfCurve'      : C.Meth('Geometry', None),
     'PointsToCurves'     : C.Meth('Geometry', 'points', ret_socket='curves'),
     'PointsToSDFVolume'  : None,

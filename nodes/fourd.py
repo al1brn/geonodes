@@ -1378,7 +1378,7 @@ def build_extrusions():
         # Points at origin to instantiate the meshes
         
         count = curve.domain_size(component='CURVE').point_count
-        pts = tree.Points(count).geometry
+        pts = tree.points(count)
         pts.position = 0
         
         # ---------------------------------------------------------------------------
