@@ -1015,7 +1015,7 @@ class NodeInfo:
             gen_init   = False
             descr      = root_class.__init__.__doc__
 
-        self.dynamic = dynamic.Dynamic.NewNode(self, root_class, descr=descr)
+        self.dynamic = dynamic.Dynamic.NewNode(self, root_class, descr=documentation.left_translate(descr))
         descr = None
         
         if False:

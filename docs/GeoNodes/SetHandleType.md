@@ -5,14 +5,14 @@
 
 
 ``` python
-SetHandleType(curve=None, selection=None, handle_type='AUTO', mode={'RIGHT', 'LEFT'}, node_label=None, node_color=None, **kwargs)
+SetHandleType(curve=None, selection=None, handle_type='AUTO', mode={'LEFT', 'RIGHT'}, node_label=None, node_color=None, **kwargs)
 ```
 ##### Arguments
 
 - curve : None
 - selection : None
 - handle_type : 'AUTO'
-- mode : {'RIGHT', 'LEFT'}
+- mode : {'LEFT', 'RIGHT'}
 
 ## Implementation
 
@@ -21,7 +21,7 @@ SetHandleType(curve=None, selection=None, handle_type='AUTO', mode={'RIGHT', 'LE
 ## Init
 
 ``` python
-def __init__(self, curve=None, selection=None, handle_type='AUTO', mode={'RIGHT', 'LEFT'}, node_label=None, node_color=None, **kwargs):
+def __init__(self, curve=None, selection=None, handle_type='AUTO', mode={'LEFT', 'RIGHT'}, node_label=None, node_color=None, **kwargs):
 
     Node.__init__(self, 'GeometryNodeCurveSetHandles', node_label=node_label, node_color=node_color, **kwargs)
 

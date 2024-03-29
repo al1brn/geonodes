@@ -3,43 +3,39 @@
 - Node name : 'Index Switch'
 - bl_idname : [GeometryNodeIndexSwitch](https://docs.blender.org/api/current/bpy.types.GeometryNodeIndexSwitch.html)
 
-> #1 Node IndexSwitch
+> 
+``` python
+IndexSwitch(*args, index=None, data_type=None, node_label=None, node_color=None, **kwargs)
+```
+
+## Arguments
+- args (Sockets) : the sockets to pick into
+- index (integer Socket) : selection index
+- data_type (str=None) : type of value sockets. If None, data_type is deduced from kwargs data types
+- kwargs : socket name -> socket to select from
+
+> [!NOTE]
+> The total number of sockets is the sum of the number of items in args and in kwargs
+
+> [!CAUTION]
+> Keys of kwargs dict must be a socket number : `**_0**`, `**_1**`, `**_2**`, ... 
+
+## Example
+
+In the following example, the node is initialized with a list of 3 geometries passed as non keyed arguments
+and one addtional geometry passed as keyed argument.
+
+``` python
+with GeoNodes("Test") as tree:
+    
+    node = tree.IndexSwitch(
+        tree.ico_sphere(), tree.cube(), tree.cone(),
+        index = tree.integer_input("Shape", 0),
+        _1 = tree.ig)
         
-        - Node name : 'Index Switch'
-        - bl_idname : [GeometryNodeMenuSwitch](https://docs.blender.org/api/current/bpy.types.GeometryNodeIndexSwitch.html)
-        
-        ``` python
-        IndexSwitch(*args, index=None, data_type=None, node_label=None, node_color=None, **kwargs)
-        ```
-        
-        ## Arguments
-        - args (Sockets) : the sockets to pick into
-        - index (integer Socket) : selection index
-        - data_type (str=None) : type of value sockets. If None, data_type is deduced from kwargs data types
-        - kwargs : socket name -> socket to select from
-        
-        > [!NOTE]
-        > The total number of sockets is the sum of the number of items in args and in kwargs
-        
-        > [!CAUTION]
-        > Keys of kwargs dict must be a socket number : `**_0**`, `**_1**`, `**_2**`, ... 
-        
-        ## Example
-        
-        In the following example, the node is initialized with a list of 3 geometries passed as non keyed arguments
-        and one addtional geometry passed as keyed argument.
-        
-        ``` python
-        with GeoNodes("Test") as tree:
-            
-            node = tree.IndexSwitch(
-                tree.ico_sphere(), tree.cube(), tree.cone(),
-                index = tree.integer_input("Shape", 0),
-                _1 = tree.ig)
-                
-            tree.og = node.output
-        ```
-        
+    tree.og = node.output
+```
+
 
 ## Implementation
 

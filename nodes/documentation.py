@@ -36,6 +36,24 @@ class Link:
         
         elif target == 'MD':
             return f"[{self.name}]({self.link})"
+        
+# ====================================================================================================
+# Left translated
+#
+# Translate to left an inline comment to be compatible with MarkDown
+#
+
+def left_translate(text):
+    if text is None:
+        return None
+    
+    lines = text.split('\n')
+    n = 0
+    for line in lines:
+        if line.strip() != "":
+            n = len(line) - len(line.lstrip())
+            break
+    return "\n".join([line[n:] for line in lines])
     
 # ====================================================================================================
 # Split a big line in several lines

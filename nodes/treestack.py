@@ -510,11 +510,7 @@ class Node(object):
         
 class IndexSwitchNode(Node):
     def __init__(self, *args, index=None, data_type=None, node_label=None, node_color=None, **kwargs):
-        """#1 Node IndexSwitch
-        
-        - Node name : 'Index Switch'
-        - bl_idname : [GeometryNodeMenuSwitch](https://docs.blender.org/api/current/bpy.types.GeometryNodeIndexSwitch.html)
-        
+        """
         ``` python
         IndexSwitch(*args, index=None, data_type=None, node_label=None, node_color=None, **kwargs)
         ```
@@ -613,11 +609,7 @@ class IndexSwitchNode(Node):
 class MenuSwitchNode(Node):
     
     def __init__(self, menu=None, data_type=None, node_label=None, node_color=None, **kwargs):
-        """#1 Node MenuSwicth
-        
-        - Node name : 'Menu Switch'
-        - bl_idname : [GeometryNodeMenuSwitch](https://docs.blender.org/api/current/bpy.types.GeometryNodeMenuSwitch.html)
-        
+        """
         ``` python
         MenuSwitch(menu=None, data_type=None, node_label=None, node_color=None, **kwargs)
         ```
