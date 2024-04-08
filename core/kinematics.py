@@ -23,7 +23,7 @@ from geonodes import KDTree
 
 from geonodes.maths.transformations import Transformations, axis_vector, normalize
 from geonodes.maths.functions import Function, keyed
-from geonodes.maths import distribs
+from geonodes.maths import distribs, minmax
 
 from geonodes.core.simulation import Action, Simulation
 from geonodes.core.cloud import Cloud
@@ -66,10 +66,19 @@ class Force(Action):
 # ====================================================================================================
 # Utilities
 
+"""
+
 def min_hard(value, max_value, a=1., return_ratio=False):
     if return_ratio:
         return min_hard(value, max_value)/value
     return np.minimum(max_value, value)
+
+def min_hard_continuous(value, max_value, a=1., return_ratio=False):
+    if return_ratio:
+        return min_hard_continuous(value, max_value, a=a)/value
+    
+    p = 1/(1 + np.exp(10*(value/max_value - 1)))
+    return value*p + (1-p)*max_value
 
 # More accurate for speeds
 
@@ -91,7 +100,7 @@ def min_sigmoid(value, max_value, a=1., return_ratio=False):
     a *= .02
     return np.minimum(value, 2*max_value*(1/(1 + np.exp(-a*value)) - .5))
 
-def minimize_vectors(vs, max_norm, smooth='SIGMOID', a=1.):
+def minimize_vectors(vs, max_norm, smooth='HARD_CONTINUS', a=1.):
     if max_norm is None:
         return vs
     
@@ -99,10 +108,15 @@ def minimize_vectors(vs, max_norm, smooth='SIGMOID', a=1.):
         f = min_sigmoid
     elif smooth == 'ATAN':
         f = min_atan
+    elif smooth == 'HARD_CONTINUS':
+        f = min_hard_continuous
     else:
         f = min_hard
         
     return vs * f(np.maximum(.01, np.linalg.norm(vs, axis=-1)), max_norm, a=1., return_ratio=True)[..., None]
+
+
+"""
 
 # =============================================================================================================================
 # Create / kill points
@@ -404,7 +418,11 @@ def viscosity(simulation, factor=1., power=2, max_force=None, fluid_speed=None):
 
     # ----- Minimize the force
 
-    force = min_atan(force, max_f)
+    if True:    
+        force = minmax.minimize_vectors(force, max_f, delta=1.)
+    else:
+        force = min_atan(force, max_f)
+        
 
     return dirs*(-force[:, None])
     
@@ -546,9 +564,9 @@ def add_vortex(self,
 
 class Kinematics(Simulation):
     
-    def __init__(self, geometry=None, count_down=False, max_force=None, max_acc=None, max_speed=None, seed=0):
+    def __init__(self, geometry=None, init_func=None, count_down=False, max_force=None, max_acc=None, min_speed=None, max_speed=None, seed=0):
         
-        super().__init__(seed=seed)
+        super().__init__(init_func=init_func, seed=seed)
         
         if geometry is None:
             self.geometry = Cloud()
@@ -559,6 +577,7 @@ class Kinematics(Simulation):
         self.count_down = count_down
         self.max_force  = max_force
         self.max_acc    = max_acc
+        self.min_speed  = min_speed
         self.max_speed  = max_speed
 
         self.points.new_vector_attribute('speed',        default=(0, 0, 0))
@@ -592,10 +611,9 @@ class Kinematics(Simulation):
     # ====================================================================================================
     # After each simulation loop: update position and speed
     
-    def after(self):
+    def exec_step(self):
         
-        super().after()
-        
+        super().exec_step()
         
         # ----- Update the speed and move the particles
         
@@ -609,11 +627,12 @@ class Kinematics(Simulation):
                 print(f"CAUTION Simulation acceleration: {nan_count} nan values encountered in acceleration")
         
         if self.max_acc is not None:
-            acc = minimize_vectors(acc, self.max_acc, 'SIGMOID')
+            acc = minmax.minimize_vectors(acc, self.max_acc, delta=1)
             
-        new_speed = self.points.speed + acc*self.dt
-        if self.max_speed is not None:
-            new_speed = self.minimize_vectors(new_speed, self.max_speed, 'ATAN')
+        new_speed = self.points.speed + acc*self.dt     
+        #print("EXEC_STEP BEF", np.linalg.norm(new_speed, axis=-1)[:5])
+        new_speed = minmax.clip_vectors(new_speed, self.min_speed, self.max_speed, delta=.1)
+        #print("EXEC_STEP AFT", np.linalg.norm(new_speed, axis=-1)[:5])
             
         self.points.position += (self.points.speed + new_speed)*(self.dt/2)
         self.points.speed = new_speed
@@ -928,10 +947,10 @@ class Kinematics(Simulation):
     def to_mesh_object(self, spec, model=None, update=False, attributes=[], shade_smooth=True):
         
         import bpy
-        from geonodes.core.meshbuilder import MeshBuilder
+        #from geonodes.core.meshbuilder import MeshBuilder
         
-        if model is not None and isinstance(model, (str, bpy.types.Object)):
-            model = MeshBuilder.FromObject(model)
+        #if model is not None and isinstance(model, (str, bpy.types.Object)):
+        #    model = MeshBuilder.FromObject(model)
             
         # ----------------------------------------------------------------------------------------------------
         # Update an existing mesh with the proper number of vertices

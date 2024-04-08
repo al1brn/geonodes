@@ -79,9 +79,6 @@ if True: # RELOAD
 
 from .nodes.tree import GeoNodes, Shader, Compositor
 from .nodes.fourd import build4D
-#from .nodes.treestack import Trees
-#from .nodes.zones import Simulation, Repeat
-#from .nodes.constants import current_tree, dump_stack
 
 # =============================================================================================================================
 # Python geometry
@@ -143,7 +140,8 @@ from .core.curve import Curve
 from .core.text import Text
 from .core.instances import Instances
 from .core.shapekeys import ShapeKeys
-from .core.parameters import new_param_group, param_group
+from .core.parameters import new_param_group, param_group, ObjectParams
+from .core.overlay import Overlay
 
 from .core.bingrid import BinGrid
 from .core.simulation import Simulation

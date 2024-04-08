@@ -18,7 +18,7 @@ Mesh, Curve, Instances and Cloud then manage the relationshp between the domains
 import bpy
 
 import numpy as np
-from geonodes import Rotation
+from geonodes import Rotation, KDTree
 
 from geonodes.maths.transformations import Transformations, axis_vector, axis_index
 from geonodes.maths import splinesmaths
@@ -1095,6 +1095,37 @@ class Domain:
             axis = axis * angle[:, None]
     
         return self.transform(Transformations(rotation=Rotation.from_rotvec(axis)), pivot=pivot)
+    
+    # =============================================================================================================================
+    # KDTree
+    
+    def kd_tree(self):
+        return KDTree(self.position)
+    
+    def nearest(self, count=1, kd_tree=None):
+
+        kdt = self.kd_tree() if kd_tree is None else kd_tree
+
+        dist, inds = kdt.query(kdt.data, count+1)
+        if count == 1:
+            return dist[:, 1], inds[:, 1]
+        else:
+            return dist[:, 1:], inds[:, 1:]
+        
+    def ball_point(self, r=1., remove_self=False, kd_tree=None):
+
+        kdt = self.kd_tree() if kd_tree is None else kd_tree
+        
+        a = kdt.query_ball_point(self.position, r=r, return_sorted=False)
+        if remove_self:
+            for i, l in enumerate(a):
+                l.remove(i)
+            
+        return a
+    
+    
+    
+    
 
 # ====================================================================================================
 # Point Domain        
@@ -2277,10 +2308,11 @@ class SplineDomain(FaceSplineDomain):
         -------
             - list of BSpline functions
         """
+        
         funcs = splinesmaths.BSplines()
         
         for i, (curve_type, loop_start, loop_total, cyclic, resolution) in enumerate(zip(self.curve_type, self.loop_start, self.loop_total, self.cyclic, self.resolution)):
-
+            
             if curve_type == blender.BEZIER:
                 funcs.append(splinesmaths.Bezier(self.points.position[loop_start:loop_start + loop_total], cyclic=cyclic, resolution=resolution,
                                 lefts  = self.points.handle_left[loop_start:loop_start + loop_total],

@@ -57,22 +57,29 @@ TAU = np.pi*2
 # Actions are called at each loop.
 # An Action maintains a enabled flag which can incremented / decremented to disable or reenabled the action
 # Action have a start time and a duration. By default, start time is 0 and duration is None for actions always active.
+#
+# Main loop is made of
+#
+# def step():
+#   actions : after = False
+#   exec_step()
+#   actions : after = True
 
 class Action:
     NOT_STARTED = 0
     ACTIVE      = 1
     DONE        = 2
     
-    def __init__(self, func, *args, top=0, duration=None, **kwargs):
+    def __init__(self, func, *args, top=0, duration=None, after=False, **kwargs):
         """ An action is a function called at each loop.
         
         The function must accept simulation as first argument.
         
-        Here after is an example of function simulating gravity;
+        Hereafter is an example of function simulating gravity;
         
         ``` python
         def gravity(simulation, g=-9.86):
-            simulation.points.postion += (0, 0, g*simulation.dt)
+            simulation.points.position += (0, 0, g*simulation.dt)
         ````
         
         Arguments
@@ -80,6 +87,7 @@ class Action:
             - func (function (simulation, *args, **kwargs)) : the function to call at each loop
             - top (float=0) : start time
             - duration (float=None) : duration. Never interrupted if None, is called once if equal to 0.
+            - bef_after (int=0) : when the action is called : PREPARE = -1, RUN = 0, FINISH = 1
             - *args : args to pass to the function
             _ **kwargs : keyword arguments to pass to the function
         """
@@ -88,13 +96,15 @@ class Action:
         self.args       = args
         self.kwargs     = kwargs
         
-        self.enabled     = 0
+        self.enabled    = 0
+        self.after      = after
         
         # ----- Event specific
         
         self.status      = Action.NOT_STARTED
         self.top         = top
         self.duration    = duration
+        self.first_call  = True
         
     # ====================================================================================================
     # Representation
@@ -115,7 +125,8 @@ class Action:
     # Reset
 
     def reset(self):
-        self.status = Action.NOT_STARTED
+        self.status     = Action.NOT_STARTED
+        self.first_call = True
         
     # ====================================================================================================
     # Enabling / disabling
@@ -169,6 +180,20 @@ class Action:
         
     # ====================================================================================================
     # Call the action from the simulation
+    
+    def call(self, simulation):
+        
+        t = simulation.t
+        
+        elapsed = 0 if self.first_call else t - self.start_time
+        simulation.elapsed = elapsed
+        
+        args   = [functions.keyed(arg,  t=elapsed) for arg in self.args]
+        kwargs = {k: functions.keyed(v, t=elapsed) for k, v in self.kwargs.items()}
+        
+        res = self.func(simulation, *args, **kwargs)
+
+        return res
         
     def __call__(self, simulation):
         
@@ -203,21 +228,23 @@ class Action:
             self.start(t)
             
         # ----- Call
-            
-        elapsed = 0 if self.first_call else t - self.start_time
-        simulation.elapsed = elapsed
         
-        if False:
-            args = self.args
-            kwargs = self.kwargs
+        if True:
+            res = self.call(simulation)
+            self.first_call = False
+            
+            return res
         else:
+            elapsed = 0 if self.first_call else t - self.start_time
+            simulation.elapsed = elapsed
+            
             args   = [functions.keyed(arg,  t=elapsed) for arg in self.args]
             kwargs = {k: functions.keyed(v, t=elapsed) for k, v in self.kwargs.items()}
-        
-        res = self.func(simulation, *args, **kwargs)
-        self.first_call = False
-
-        return res
+            
+            res = self.func(simulation, *args, **kwargs)
+            self.first_call = False
+    
+            return res
     
 # =============================================================================================================================
 # Simulation
@@ -225,12 +252,13 @@ class Action:
 # A simulation is a list of actions
 
 class Simulation(list):
-    def __init__(self, seed=0):
+    def __init__(self, init_func=None, seed=0):
         
         super().__init__()
-
+        
+        self.init_func  = init_func
         self.init_seed  = seed
-        self.rng = np.random.default_rng(self.init_seed)
+        self.rng        = np.random.default_rng(self.init_seed)
         
         self.t          = 0.
         self.elapsed    = None
@@ -253,6 +281,11 @@ class Simulation(list):
             action.reset()
             t0 = min(t0, action.top)
         self.t = t0
+        
+        # Initialization
+        
+        if self.init_func is not None:
+            self.init_func(self)
 
     # ====================================================================================================
     # Randomness
@@ -288,20 +321,32 @@ class Simulation(list):
         else:
             return func
         
-    def add_action(self, func, *args, top=0, duration=None, **kwargs):
-        self.append(Action(self.str_to_func(func), *args, top=top, duration=duration, **kwargs))
+    def add_action(self, func, *args, top=0, duration=None, after=False, **kwargs):
+        self.append(Action(self.str_to_func(func), *args, top=top, duration=duration, after=after, **kwargs))
     
-    def add_event(self, func, *args, top=0, **kwargs):
-        self.append(Action(self.str_to_func(func), *args, top=top, duration=None, **kwargs))
-    
+    def add_event(self, func, *args, top=0, after=False, **kwargs):
+        self.append(Action(self.str_to_func(func), *args, top=top, duration=None, after=after, **kwargs))
+        
+    """
     # ====================================================================================================
     # Minimization
     
     @staticmethod
     def min_hard(value, max_value, a=1., return_ratio=False):
         if return_ratio:
-            return min_hard(value, max_value)/value
+            return Simulation.min_hard(value, max_value)/value
         return np.minimum(max_value, value)
+    
+    @staticmethod
+    def min_hard_continuous(value, max_value, a=1., return_ratio=False):
+        if return_ratio:
+            return Simulation.min_hard_continuous(value, max_value, a=a)/value
+        
+        # Hard
+        #return np.minimum(value, max_value)
+        
+        p = 1/(1 + np.exp(10*(np.minimum(value/max_value, 10) - 1)))
+        return value*p + (1-p)*max_value
 
     # More accurate for speeds
     
@@ -331,10 +376,47 @@ class Simulation(list):
             f = Simulation.min_sigmoid
         elif smooth == 'ATAN':
             f = Simulation.min_atan
+        elif smooth == 'HARD_CONTINUOUS':
+            f = Simulation.min_hard_continuous
         else:
             f = Simulation.min_hard
             
         return vs * f(np.maximum(.01, np.linalg.norm(vs, axis=-1)), max_norm, a=1., return_ratio=True)[..., None]
+    
+    # ====================================================================================================
+    # Maximization
+    
+    @staticmethod
+    def max_hard_continuous(value, min_value, return_ratio=False):
+        if return_ratio:
+            return Simulation.max_hard_continuous(value, min_value)/value
+        
+        # Hard
+        return np.minimum(value, min_value)
+        
+        p = 1/(1 + np.exp(10*(np.minimum(value/min_value, 10) - 1)))
+        return min_value*p + (1-p)*value
+    
+    @staticmethod
+    def maximize_vectors(vs, min_norm, smooth='SIGMOID', a=1.):
+        if min_norm is None:
+            return vs
+        
+        f = Simulation.max_hard_continuous
+            
+        return vs * f(np.linalg.norm(vs, axis=-1), min_norm, return_ratio=True)[..., None]
+
+    # ====================================================================================================
+    # Maximization
+    
+    @staticmethod
+    def clip_vectors(value, min_value=None, max_value=None):
+        if min_value is not None:
+            value = Simulation.maximize_vectors(value, min_value)
+        if max_value is not None:
+            value = Simulation.min_hard_continuous(value, max_value)
+        return value
+    """
     
     # ====================================================================================================
     # Forces and acceleration
@@ -346,12 +428,9 @@ class Simulation(list):
     # Simulation
     
     # ----------------------------------------------------------------------------------------------------
-    # Called before and after the actions
+    # Function called in the step
     
-    def before(self):
-        pass
-    
-    def after(self):
+    def exec_step(self):
         pass
     
     # ----------------------------------------------------------------------------------------------------
@@ -386,13 +465,21 @@ class Simulation(list):
         for _ in range(count):
             for i in range(sub_steps):
                 
-                self.before()
-                
                 for action in self:
+                    if action.after:
+                        continue
                     self.elapsed = None
                     action(self)
                     
-                self.after()
+                self.exec_step()
+                
+                for action in self:
+                    if not action.after:
+                        continue
+                    self.elapsed = None
+                    action(self)
+                    
+                # ----- Next t
                         
                 self.t += dt_
                 self.step_count += 1

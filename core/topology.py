@@ -515,6 +515,8 @@ def cone(radius=1, depth=2, x_count=16, y_count=1, z_count=2, caps='NGON'):
         
     if caps is not None and caps != 'NONE':
         bot_comp = cap(np.arange(x_count), nverts, radius=radius, y_count=y_count, fans=caps in ['FANS', 'TRIANGLES', 'TRIANGLE_FAN'], clockwise=True)
+        bot_comp['verts'][..., 2] = -depth/2
+        
         
         comps['verts']   = np.append(comps['verts'],   bot_comp['verts'],   axis=0)
         comps['corners'] = np.append(comps['corners'], bot_comp['corners'], axis=0)
@@ -543,7 +545,9 @@ def cylinder(radius=1, radius1=None, depth=2, x_count=16, y_count=1, z_count=2, 
         ag    = np.linspace(0, 2*np.pi, x_count, endpoint=False)
         verts = np.resize(np.stack((np.cos(ag), np.sin(ag), np.zeros_like(ag)), axis=-1), (z_count, x_count, 3))
         verts[..., 2] = np.linspace(-depth/2, depth/2, z_count)[:, None]
-        if radius1 is not None:
+        if radius1 is None:
+            verts[..., :2] *= radius
+        else:
             verts[..., :2] *= np.linspace(1, radius1/radius, z_count)[:, None, None]
     else:
         assert(np.shape(verts)==(z_count, x_count, 3))

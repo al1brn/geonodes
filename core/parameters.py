@@ -17,7 +17,7 @@ order to perform animations.
 
 User can use existing properties of a control object, such as the location of an empty.
 
-A more userfriendly way is to create parameters which can be set anc keyed in the object property panel.
+A more userfriendly way is to create parameters which can be set and keyed in the object property panel.
 
 This panel is named "GeoPy Parameters" and is displayed in the object property panel.
 
@@ -25,8 +25,9 @@ When a property is needed, it is created as a Custom Property of the object.
 The name of this Custom Property is prefixed by a group prefix in order to allow several groups of
 parameters to coexist.
 
-for instance, a transformation need as 'scale' parameter and another transformation needs also a 'scale' parameter.
-These two differents parameters can defined in to groups when the two transformations are performed on the same  object.
+For instance, a transformation need as 'scale' parameter and another transformation needs also a 'scale' parameter.
+These two differents parameters can be defined in two groups when the two transformations are performed on
+the same object.
 
 Here after is the pseudo code to create and use user parameters
 
@@ -85,6 +86,16 @@ from geonodes.core import blender
 
 GROUPS = {}
 
+def get_group_by_name(name):
+    return GROUPS.get(name)
+
+def get_group_by_prefix(prefix):
+    for item in GROUPS.values():
+        if item.prefix == prefix:
+            return item
+    return None
+
+
 OBJ_GROUP_LIST = "gp Groups"
 
 PROP_SUBTYPES = ['NONE', 'FILE_PATH', 'DIR_PATH', 'FILE_NAME', 'BYTE_STRING', 'PASSWORD', 'PIXEL', 
@@ -97,7 +108,7 @@ PROP_SUBTYPES = ['NONE', 'FILE_PATH', 'DIR_PATH', 'FILE_NAME', 'BYTE_STRING', 'P
 # One custom property
 
 class CustomProp:
-    def __init__(self, prefix, name, value, description="", **attrs):
+    def __init__(self, prefix, name, value, description="", panel=None, **attrs):
         """ A Custom property.
         
         Arguments
@@ -114,6 +125,7 @@ class CustomProp:
         self.gp_name     = f"{self.prefix} {self.name}"
         self.value       = value
         self.description = description
+        self.panel       = panel
         self.attrs       = attrs
         
     def to_object(self, spec, override=False):
@@ -127,12 +139,13 @@ class CustomProp:
         obj = blender.get_object(spec)
         
         cur = obj.get(self.gp_name)
+        
         if cur is None or override:
             obj[self.gp_name] = self.value
             
         if len(self.attrs):
             id_prop = obj.id_properties_ui(self.gp_name)
-            id_prop.update(**self.attrs)
+            id_prop.update(description=self.description, **self.attrs)
             
     def to_panel(self, layout, obj):
         """ Write the property into a layout.
@@ -188,11 +201,15 @@ class CustomProps(dict):
         super().__init__()
         self.prefix = prefix
         self.name   = name
+        self.panels = []
         
     def __str__(self):
         return f"<Parameters group '{self.name}' : {list(self.keys())}>"
+    
+    def add_panel(self, *name):
+        self.panels.extend(name)
         
-    def new(self, name, value, description="", **attrs):
+    def new(self, name, value, description="", panel=None, **attrs):
         """ Create a new property in the group.
 
         Arguments
@@ -207,7 +224,10 @@ class CustomProps(dict):
             - CustomProp
         """
         
-        self[name] = CustomProp(self.prefix, name, value, description=description, **attrs)
+        self[name] = CustomProp(self.prefix, name, value, description=description, panel=panel, **attrs)
+        if panel is not None and panel not in self.panels:
+            self.panels.append(panel)
+            
         return self.name
         
     def get_value(self, spec, name, frame=None):
@@ -257,9 +277,30 @@ class CustomProps(dict):
             - layout (bpy.types.UILayout) : the layout
             - obj (bpy.types.Object) : the object
         """
-       
+        
+        # ----- Properties without panel
+
         for cprop in self.values():
-            cprop.to_panel(layout, obj)
+            if cprop.panel is None:
+                cprop.to_panel(layout, obj)
+                
+        # ----- Properties within panel
+        
+        for panel_name in self.panels:
+            if True:
+                header, panel = layout.panel(self.prefix + panel_name, default_closed=False)
+                header.label(text=panel_name)
+            else:
+                box = layout.box()
+                box.label(text=panel_name)
+                panel = box
+            
+            for cprop in self.values():
+                if panel is None:
+                    continue
+                if cprop.panel == panel_name:
+                    cprop.to_panel(panel, obj)
+            
             
 # ====================================================================================================
 # Create a property group
@@ -317,10 +358,14 @@ def new_param_group(name):
         - CustomProps
     """
     
+    cprops = GROUPS.get(name)
+    if cprops is not None:
+        cprops.clear()
+        return cprops
+
     prefix = f"gp{len(GROUPS)}"
-    cprops = CustomProps(prefix, name)
-    GROUPS[prefix] = cprops
-    return cprops
+    GROUPS[name] = CustomProps(prefix, name)
+    return GROUPS[name]
 
 # ====================================================================================================
 # Get a Group by its name
@@ -337,6 +382,12 @@ def param_group(name):
         - CustomProps
     """
     
+    try:
+        return GROUPS[name]
+    except:
+        raise Exception(f"Group named {name} nor found in {list(GROUPS.keys())}")
+    
+    
     names = []
     for group in GROUPS.values():
         if group.name == name:
@@ -344,13 +395,31 @@ def param_group(name):
         names.append(name)
         
     raise Exception(f"Group named {name} nor found in {names}")
+    
+# ====================================================================================================
+# ObjectParams
+
+class ObjectParams:
+    def __init__(self, obj, name):
+        self.obj    = blender.get_object(obj)
+        self.cprops = param_group(name)
+        self.cprops.to_object(self.obj, override=False)
+        
+    def get_value(self, name, frame=None):
+        return cprops.get_value(self.obj, name, frame=frame)
+    
+    def __getattr__(self, name):
+        for key, cprop in self.cprops.items():
+            if key.lower().replace(' ', '_') == name:
+                return cprop.get_value(self.obj, frame=None)
+    
             
 # ====================================================================================================
 # Layout
             
-class GeoPyPanel(bpy.types.Panel):
-    """GeoPy parameters"""
-    bl_label = "GeoPy Parameters"
+class GeoNodesPanel(bpy.types.Panel):
+    """GeoNodes parameters"""
+    bl_label = "GeoNodes Parameters"
     bl_idname = "OBJECT_PT_layout"
     bl_space_type = 'PROPERTIES'
     bl_region_type = 'WINDOW'
@@ -383,25 +452,33 @@ class GeoPyPanel(bpy.types.Panel):
         # ----- Loop on the groups
         
         for prefix in groups.split("|"):
-            #if not first:
-            #    layout.split()
-            #first = False
-            box = layout.box()
-            cprops = GROUPS.get(prefix)
-            if cprops is None:
-                box.row().label(text=f"Prefix {prefix} not initialized...")
+            if True:
+                header, panel = layout.panel(prefix, default_closed=False)
             else:
-                box.row().label(text=cprops.name)
-                cprops.to_panel(box, obj)
+                box = layout.box()
+                panel = box
+                
+            cprops = get_group_by_prefix(prefix)
+            if cprops is None:
+                if True:
+                    header.row().label(text=f"Prefix {prefix} not initialized...")
+                else:
+                    panel.row().label(text=f"Prefix {prefix} not initialized...")
+            else:
+                if True:
+                    header.row().label(text=cprops.name)
+                else:
+                    panel.row().label(text=cprops.name)
+                cprops.to_panel(panel, obj)
 
 
 
 def register():
-    bpy.utils.register_class(GeoPyPanel)
+    bpy.utils.register_class(GeoNodesPanel)
 
 
 def unregister():
-    bpy.utils.unregister_class(GeoPyPanel)
+    bpy.utils.unregister_class(GeoNodesPanel)
 
 try:
     unregister()

@@ -510,7 +510,7 @@ class Curve(Geometry):
         """
         
         for other in others:
-        
+            
             # ----------------------------------------------------------------------------------------------------
             # Vertices
             
@@ -520,8 +520,10 @@ class Curve(Geometry):
             # ----------------------------------------------------------------------------------------------------
             # Splines
             
-            s_ofs = self.splines.size
+            s_ofs    = self.splines.size
+            nsplines = len(self.splines)
             self.splines.attributes.append(other.splines.attributes)
+            self.splines[nsplines:].loop_start += v_ofs
             
             # ----- Materials
             
@@ -579,7 +581,7 @@ class Curve(Geometry):
                 splines_dict[name] = [value]*nsplines
             else:
                 if len(value) != nsplines:
-                    raise RuntimeError(f"Curve.add error: the argument '{name}' of length {len(values)} should have a length of {nsplines}.")
+                    raise RuntimeError(f"Curve.add error: the argument '{name}' of length {len(value)} should have a length of {nsplines}.")
                 splines_dict[name] = value
                 
         add_spline_attr('material_index',  material_index)
@@ -821,8 +823,153 @@ class Curve(Geometry):
         vs[:, 1, :2] = np.einsum('...ij, ...j', M[None], vs[:, 1, :2])
         
         return cls().add(points=np.reshape(vs, (2*points, 3)), curve_type='POLY', cyclic=True)
-        
     
+    # =============================================================================================================================
+    # Vector Field
+    
+    @classmethod
+    def FieldLine(cls, field_func, start_point, max_len=10., prec=.01, sub_steps=10):
+        
+        pts = [start_point]
+        rs  = [np.linalg.norm(field_func(start_point))]
+        p   = np.array(start_point)
+        l   = 0.
+        for _ in range(10000):
+            for _ in range(sub_steps):
+            
+                # ----- Vector at current location
+                v0 = field_func(p)
+            
+                # ----- Precision along this vector
+                norm  = np.sqrt(np.dot(v0, v0))
+                factor = prec/norm
+                v0 *= factor
+                
+                # ----- Average with target vector for more accurracy
+                v1 = field_func(p + v0)*factor
+                v = (v0 + v1)/2
+                
+                # ----- Next point
+                p += v
+                
+            # ----- Segment length
+                
+            v = p - pts[-1]
+            l += np.sqrt(np.dot(v, v))
+            
+            # ----- Add a new point
+            
+            pts.append(np.array(p))
+            rs.append(norm)
+            
+            # ----- Done if loop or max_len is reached
+            
+            v = p - start_point
+            cyclic = np.sqrt(np.dot(v, v)) < prec*(sub_steps-1)
+            if cyclic or l >= max_len:
+                pts.append(np.array(start_point))
+                break
+            
+        if cyclic:
+            pts.pop()
+            
+        line = cls().add(pts, curve_type='POLY', cyclic=cyclic)
+        line.points.radius = rs
+        
+        return line
+    
+    @classmethod
+    def FieldLines(cls, field_func, start_points, max_len=10., end_points=None, only_closed=True, prec=.01, sub_steps=10):
+        
+        count = 10000
+        sub_steps = max(sub_steps, 2)
+        
+        npoints = len(start_points)
+        
+        pts       = np.empty((len(start_points), count+1, 3), float)
+        pts[:, 0] = start_points
+        radius       = np.ones((len(start_points), count+1), float)
+        radius[:, 0] = np.linalg.norm(field_func(start_points), axis=-1)
+        
+        lens   = np.zeros(len(start_points), float)
+        loops  = np.zeros(len(start_points), bool)
+        counts = np.ones(len(start_points), int)*(count+1)
+        dones  = np.zeros(len(start_points), bool)
+        closed = np.zeros(len(start_points), bool)
+        
+        p = np.array(start_points)
+        for i in range(count):
+            for _ in range(sub_steps):
+                
+                # ----- Vector at current location
+                v0 = field_func(p)
+            
+                # ----- Precision along this vector
+                norm   = np.linalg.norm(v0, axis=-1)
+                factor = prec/norm
+                v0 *= factor[..., None]
+                
+                # ----- Average with target vector for more accurracy
+                v1 = field_func(p + v0)*(factor[..., None])
+                v = (v0 + v1)/2
+                
+                # ----- Next point
+                p += v
+                
+            # ----- Segment length
+    
+            lens += np.linalg.norm(p - pts[:, i], axis=-1)
+            
+            # ----- Add a new point
+            
+            pts[:, i+1] = p
+            radius[:, i+1] = norm
+            
+            # ----- Done if loop or max_len is reached
+            
+            # Loop
+            
+            ok_loop = np.logical_and(
+                np.linalg.norm(p - start_points, axis=-1) < prec*(sub_steps - 1),
+                np.logical_not(loops))
+            loops[ok_loop]  = True
+            
+            counts[ok_loop] = i+1
+            closed[ok_loop] = True
+            dones[ok_loop]  = True
+            
+            # Reaches an end point
+            
+            if end_points is not None:
+                ds       = np.linalg.norm(p[:, None] - end_points[None], axis=-1)
+                min_inds = np.argmin(ds, axis=1)
+                min_ds = ds[np.arange(npoints), min_inds]
+                
+                sel = np.logical_and(min_ds < prec*(sub_steps - 1), np.logical_not(dones))
+    
+                counts[sel] = i+2
+                closed[sel] = True
+                dones[sel]  = True
+            
+            # Max length
+            
+            ok_len = np.logical_and(lens >= max_len, np.logical_not(dones))
+            
+            counts[ok_len] = i+2
+            dones[ok_len]  = True
+            
+            if np.prod(dones):
+                break
+
+        lines = cls()
+        for i in range(len(pts)):
+            if only_closed and not closed[i]:
+                continue
+            
+            lines.add(pts[i, :counts[i]], curve_type='POLY', cyclic=loops[i])
+            lines.splines[-1].get_points().radius = radius[i, :counts[i]]
+            
+        return lines
     
     # =============================================================================================================================
     # =============================================================================================================================
@@ -879,7 +1026,7 @@ class Curve(Geometry):
             bbone = func.sample_points
             if cyclic:
                 bbone = bbone[:-1]
-            
+                
             # Locate, scale and rotate the rings
             
             radius = func.sample_value(self.splines[i_spline].get_points().radius)(np.linspace(0, 1, len(bbone)))
@@ -916,10 +1063,12 @@ class Curve(Geometry):
                 if name in ['position', 'w', 'radius']:
                     continue
                 
+                vals = func.sample_value(getattr(self.splines[i_spline].get_points(), name))(np.linspace(0, 1, len(bbone)))
+                
                 meshed.points.attributes.copy_attribute(self.points.attributes, name)
-                setattr(meshed.points, name, getattr(self.points, name))
-            
-            # Join the new spline
+                setattr(meshed.points, name, vals)
+                
+            # Join the new meshed spline
             mesh.join(meshed)
             
         return mesh

@@ -22,7 +22,7 @@ from contextlib import contextmanager
 import numpy as np
 
 
-from geonodes.maths.transformations import Transformations
+from geonodes.maths.transformations import Transformations, tracker
 
 from geonodes.core import blender
 from geonodes.core import topology
@@ -1451,6 +1451,91 @@ class Mesh(Geometry):
             mesh.points.position = transformation @ mesh.points.position
         
         return mesh    
+    
+    # =============================================================================================================================
+    # Arrow
+    
+    @classmethod
+    def Arrow(cls, vector=(0, 0, 1), radius=.05, angle=24., segments=8, adjust_norm=None, materials=None):
+        
+        height = np.linalg.norm(vector)
+        if type(adjust_norm).__name__ == 'function':
+            height = adjust_norm(height)
+        elif adjust_norm is not None:
+            height = min(adjust_norm, height)
+    
+        head_radius = 3*radius
+        head_height = head_radius/np.tan(np.radians(angle))
+        
+        cyl_height = height - head_height*.8
+        
+        cyl  = cls.Cylinder(vertices=segments, side_segments=2, radius=radius, depth=cyl_height, transformation=Transformations(position=(0, 0, cyl_height/2)), materials=materials)
+        cyl.points[[segments + i for i in range(segments)]].position -= (0, 0, cyl_height/2 - .01)
+        
+        cone = cls.Cone(vertices=segments, side_segments=2, fill_segments=1, radius_top=0, radius_bottom=head_radius, depth=head_height, fill_type='TRIANGLE_FAN', materials=materials)
+        cone.points[-1].position += (0, 0, head_height/10)
+        cone.points.position += (0, 0, height - head_height/2)
+        
+        arrow = cyl.join(cone)
+        arrow.points.position = tracker(vector, track_axis='Z') @ arrow.points.position 
+        
+        return arrow
+    
+    @classmethod
+    def VectorField(cls, locations, vectors, radius=.05, angle=24., segments=8, adjust_norm=10., materials=None):
+    
+        cyl_height  = 1.
+        head_radius = 3*radius
+        head_height = head_radius/np.tan(np.radians(angle))
+        
+        # ----------------------------------------------------------------------------------------------------
+        # Base models
+        
+        # ----- Cylinder model
+    
+        cyl = cls.Cylinder(vertices=segments, side_segments=2, radius=radius, depth=cyl_height, transformation=Transformations(position=(0, 0, cyl_height/2)), materials=materials)
+        cyl.points[[segments + i for i in range(segments)]].position -= (0, 0, cyl_height/2 - .01)
+        
+        # ----- Head model
+    
+        cone = cls.Cone(vertices=segments, side_segments=2, fill_segments=1, radius_top=0, radius_bottom=head_radius, depth=head_height, fill_type='TRIANGLE_FAN', materials=materials)
+        cone.points[-1].position += (0, 0, head_height/10)
+    
+        # ----------------------------------------------------------------------------------------------------
+        # Duplicate the models
+        
+        n = len(locations)
+        
+        cyls  = cyl * n
+        cones = cone * n
+    
+        cyls_pos  = np.reshape(cyls.points.position, (n, len(cyl.points),   3))
+        cones_pos = np.reshape(cones.points.position,(n, len(cone.points),  3))
+        
+        # ----- Locate properly the cylinders and the cones
+        
+        heights = np.linalg.norm(vectors, axis=-1)
+        if type(adjust_norm).__name__ == 'function':
+            heights = adjust_norm(heights)
+        elif adjust_norm is not None:
+            heights = np.minimum(adjust_norm, heights)
+        
+        cyls_pos[:, -segments:, 2] = (heights - head_height*.8)[:, None]
+        cones_pos[..., 2] += np.maximum(0, (heights - head_height/2))[:, None]
+    
+        # ----- Orient them toward the vectors
+        
+        trf = tracker(vectors, track_axis='Z')
+        cyls.points.transform(trf)
+        cones.points.transform(trf)
+        
+        # ----- And to their locations
+        
+        cyls.points.translate(locations)
+        cones.points.translate(locations)
+        
+        return cyls.join(cones)
+        
     
     # ----------------------------------------------------------------------------------------------------
     # Chain Link

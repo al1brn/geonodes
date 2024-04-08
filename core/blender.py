@@ -208,7 +208,9 @@ def create_curve_object(name, collection=None):
     if obj is None:
         new = True
         curve = bpy.data.curves.new("Curve", type='CURVE')
+        curve.dimensions = '3D'
         obj  = bpy.data.objects.new(name, curve)
+        
         
     if collection is None:
         if new:
