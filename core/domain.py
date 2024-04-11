@@ -2001,6 +2001,14 @@ class FaceDomain(FaceSplineDomain):
         
         return surf
     
+    # ====================================================================================================
+    # As a list of sequences
+    
+    def sequences(self):
+        inds = list(self.corners.vertex_index)
+        return [inds[lstart:lstart+ltotal] for (lstart, ltotal) in zip(self.loop_start, self.loop_total)]
+    
+    
 # ====================================================================================================
 # Edge Domain
 

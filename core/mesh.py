@@ -15,6 +15,7 @@ Mesh geometry.
 """
 
 import bpy
+from mathutils.bvhtree import BVHTree
 from mathutils import Vector
 import bmesh
 
@@ -2265,6 +2266,31 @@ class Mesh(Geometry):
         bpy.data.meshes.remove(mesh)
         
         return res
+    
+    # =============================================================================================================================
+    # =============================================================================================================================
+    # BVHTree
+    # =============================================================================================================================
+    
+    def bvh_tree(self, count=None):
+        if count is None:
+            return BVHTree.FromPolygons(self.points.position, self.faces.sequences(), all_triangles=False, epsilon=0.0)
+
+        else:
+            pos    = self.points.position
+            pos    = np.reshape(pos, (count, len(pos)//count, 3))
+            
+            nfaces = len(self.faces)//count
+            inds   = list(self.corners.vertex_index)
+            faces  = [inds[lstart:lstart+ltotal] for (lstart, ltotal) in zip(self.faces.loop_start[:nfaces], self.faces.loop_total[:nfaces])]
+            
+            return [BVHTree.FromPolygons(pos[i], faces, all_triangles=False, epsilon=0.0) for i in range(count)]
+            
+            
+            
+        
+            
+    
             
 
         
