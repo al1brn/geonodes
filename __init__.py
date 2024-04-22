@@ -94,6 +94,7 @@ from .maths import splinesmaths, distribs
 from .maths.functions import Easing, Function, keyed
 from .maths.noise import Noise
 from .maths.transformations import normalize, axis_vector, get_plane, rotation_to, tracker, axis_index, angle_with, Transformations
+from .maths import field
 
 # ----- Core
 

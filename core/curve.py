@@ -879,7 +879,7 @@ class Curve(Geometry):
         return line
     
     @classmethod
-    def FieldLines(cls, field_func, start_points, max_len=10., end_points=None, only_closed=True, prec=.01, sub_steps=10):
+    def FieldLines(cls, field_func, start_points, max_len=10., end_points=None, end_box=None, max_strength=1., only_closed=True, prec=.01, sub_steps=10):
         
         count = 10000
         sub_steps = max(sub_steps, 2)
@@ -891,14 +891,16 @@ class Curve(Geometry):
         radius       = np.ones((len(start_points), count+1), float)
         radius[:, 0] = np.linalg.norm(field_func(start_points), axis=-1)
         
-        lens   = np.zeros(len(start_points), float)
-        loops  = np.zeros(len(start_points), bool)
-        counts = np.ones(len(start_points), int)*(count+1)
-        dones  = np.zeros(len(start_points), bool)
-        closed = np.zeros(len(start_points), bool)
+        lens   = np.zeros(npoints, float)
+        loops  = np.zeros(npoints, bool)
+        counts = np.ones( npoints, int)*(count+1)
+        dones  = np.zeros(npoints, bool)
+        closed = np.zeros(npoints, bool)
         
         p = np.array(start_points)
         for i in range(count):
+            
+            ok_norm = np.ones(npoints, bool)
             for _ in range(sub_steps):
                 
                 # ----- Vector at current location
@@ -909,12 +911,14 @@ class Curve(Geometry):
                 factor = prec/norm
                 v0 *= factor[..., None]
                 
+                ok_norm = np.logical_and(ok_norm, norm < max_strength)
+                
                 # ----- Average with target vector for more accurracy
                 v1 = field_func(p + v0)*(factor[..., None])
-                v = (v0 + v1)/2
+                v  = (v0 + v1)/2
                 
                 # ----- Next point
-                p += v
+                p[ok_norm] += v[ok_norm]
                 
             # ----- Segment length
     
@@ -924,6 +928,12 @@ class Curve(Geometry):
             
             pts[:, i+1] = p
             radius[:, i+1] = norm
+            
+            # ----- Max norm is reached
+            
+            max_reached = np.logical_and(np.logical_not(ok_norm), np.logical_not(dones))
+            counts[max_reached] = i+1
+            dones[max_reached]  = True
             
             # ----- Done if loop or max_len is reached
             
@@ -943,13 +953,31 @@ class Curve(Geometry):
             if end_points is not None:
                 ds       = np.linalg.norm(p[:, None] - end_points[None], axis=-1)
                 min_inds = np.argmin(ds, axis=1)
-                min_ds = ds[np.arange(npoints), min_inds]
+                min_ds   = ds[np.arange(npoints), min_inds]
                 
                 sel = np.logical_and(min_ds < prec*(sub_steps - 1), np.logical_not(dones))
     
                 counts[sel] = i+2
                 closed[sel] = True
                 dones[sel]  = True
+                
+            # Reaches end box
+            
+            if end_box is not None:
+                sel = np.logical_and(
+                        np.logical_and(
+                            np.logical_and(p[:, 0]>end_box[0], p[:, 0]<end_box[3]),
+                            np.logical_and(p[:, 1]>end_box[1], p[:, 1]<end_box[4])
+                            ),
+                        np.logical_and(
+                            np.logical_and(p[:, 2]>end_box[2], p[:, 2]<end_box[5]),
+                            np.logical_not(dones)
+                            )
+                        )
+                counts[sel] = i+1
+                dones[sel]  = True
+                
+            # 
             
             # Max length
             

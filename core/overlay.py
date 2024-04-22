@@ -22,7 +22,7 @@ class Overlay(dict):
     
     OVERLAYS = []
     
-    def __init__(self, corner=(0, 0), font_size=20, font_color=(1., 1., 1.), clear=False):
+    def __init__(self, corner=(0, 0), font_size=20, font_color=(1., 1., 1.), clear=True):
         
         if clear:
             Overlay.hide_all()
@@ -71,6 +71,9 @@ class Overlay(dict):
     def display_array(self, name, a, prec=2):
         self[name] = f"min: {np.min(a):.{prec}f}, avg: {np.average(a):.{prec}f}, max: {np.max(a):.{prec}f}"
         
+    def display_line(self, name, line):
+        self[name + "_LINE"] = line
+        
     # ----------------------------------------------------------------------------------------------------
     # Draw
             
@@ -93,6 +96,16 @@ class Overlay(dict):
         val_size = max([blf.dimensions(font_id, value)[0] for value in self.values() if value is not None])
         
         for name, value in self.items():
+            
+            # ----- Just a string
+            
+            if name[-5:] == '_LINE':
+                blf.position(font_id, left_margin, y, 0)
+                blf.draw(font_id, value)
+                continue
+            
+            # ----- Couple (name, value)
+            
             blf.position(font_id, left_margin, y, 0)
             blf.draw(font_id, name)
             
