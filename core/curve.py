@@ -983,13 +983,13 @@ class Curve(Geometry):
                 center = np.average(charge_locations, axis=0)
                 bbox0, bbox1 = np.min(charge_locations, axis=0), np.max(charge_locations, axis=0)
                 radius = 1.3*max(np.linalg.norm(bbox1 - center), np.linalg.norm(bbox0 - center))
+                print("CURVE", plane)
                 if plane is None:
                     start_points, _ = distribs.ball_dist(radius=radius, count=count, seed=rng.integers(1<<63))
                     start_points += center
                 else:
                     start_points, _ = distribs.disk_dist(radius=radius, count=count, seed=rng.integers(1<<63))
                     start_points = rotate_xy_into_plane(start_points, plane=plane, origin=plane_center)
-
 
         else:
             count = len(start_points)
