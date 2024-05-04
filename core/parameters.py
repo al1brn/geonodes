@@ -83,7 +83,7 @@ gp.engine.go(update)
 
 import bpy
 import idprop
-from geonodes.core import blender
+from geonodes.core import blender, engine
 
 GROUPS = {}
 
@@ -174,6 +174,11 @@ class CustomProp:
         -------
             - value
         """
+
+        # ----- If frame is None, default is to get from Engine if rendering in progress
+
+        if frame is None and engine.Engine.rendering:
+            frame = engine.Engine.frame
 
         if frame is None:
             v = obj.get(self.gp_name)
