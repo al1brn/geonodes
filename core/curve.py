@@ -29,6 +29,7 @@ from geonodes.maths.transformations import Transformations, tracker, rotate_xy_i
 from geonodes.maths import field, distribs
 
 from geonodes.core.geometry import Geometry
+from geonodes.core.attributes import AttrVectors
 from geonodes.core.domain import ControlPointDomain, SplineDomain
 
 
@@ -930,7 +931,7 @@ class Curve(Geometry):
     # Lines of electric field
 
     @classmethod
-    def ElectricFieldLines(cls, charge_locations, charges=1., field_func=None,
+    def ElectricFieldLines(cls, charge_locations, charges=1., field_color=True,
                            count=100, start_points=None, plane=None, plane_center=(0, 0, 0),
                            frag_length=None, frag_scale=None, max_points=1000,
                            precision=.1, sub_steps=10, seed=None):
@@ -941,8 +942,7 @@ class Curve(Geometry):
         ----------
             - charge_locations (array (n, 3) of vectors) : where the charges are located
             - charges (float or array (n) of floats = 1) : the charges
-            - field_func (function of template (points=array(n, 3)) -> Vectors = None) :
-                 the field function. electric field if None.
+            - field_color (bool = True) : manage the field_color attribute
             - count (int = 100) : number of lines to create. Overriden by len(start_points) if not None
             - start_points (array (s, 3) of vectors = None) : the starting points to compute the lines from
             - plane (vector = None) = restrict start points to a plane defined by its perpendicular
@@ -954,17 +954,17 @@ class Curve(Geometry):
         """
 
         # ----------------------------------------------------------------------------------------------------
-        # Preparation
+        # Field function
+
+        poles = AttrVectors(charge_locations, charge=charges)
+        field_func = lambda points, return_color=False: field.electric_field(points,
+                            locations=poles.co, charges=poles.charge, return_color=return_color)
+
+        # ----------------------------------------------------------------------------------------------------
+        # Starting points
 
         rng = np.random.default_rng(seed=seed)
-
-        n_charges = len(charge_locations)
-        charges_4 = np.empty((n_charges, 4))
-        charges_4[:, :3] = charge_locations
-        charges_4[:, 3] = charges
-
-        if field_func is None:
-            field_func = lambda p: field.electric_field(p, charges=charges_4)
+        n_charges = len(poles)
 
         backwards = rng.choice([True, False], count)
         if start_points is None:
@@ -976,12 +976,12 @@ class Curve(Geometry):
                     start_points = rotate_xy_into_plane(start_points, plane=plane, origin=plane_center)
 
                 inds = rng.integers(0, n_charges, count)
-                start_points += np.array(charge_locations)[inds]
-                backwards[:] = charges_4[inds, 3] < 0
+                start_points += poles.co[inds]
+                backwards[:] = poles.charge[inds] < 0
 
             else:
-                center = np.average(charge_locations, axis=0)
-                bbox0, bbox1 = np.min(charge_locations, axis=0), np.max(charge_locations, axis=0)
+                center = np.average(poles.co, axis=0)
+                bbox0, bbox1 = np.min(poles.co, axis=0), np.max(poles.co, axis=0)
                 radius = 1.3*max(np.linalg.norm(bbox1 - center), np.linalg.norm(bbox0 - center))
 
                 if plane is None:
@@ -992,7 +992,10 @@ class Curve(Geometry):
                     start_points = rotate_xy_into_plane(start_points, plane=plane, origin=plane_center)
 
         else:
-            count = len(start_points)
+            if len(np.shape(start_points)) == 1:
+                count = 1
+            else:
+                count = len(start_points)
 
         # ----------------------------------------------------------------------------------------------------
         # Field lines
@@ -1000,6 +1003,7 @@ class Curve(Geometry):
         lines = field.field_lines(field_func,
             start_points    = start_points,
             backwards       = backwards,
+            return_color    = field_color,
             max_length      = frag_length,
             length_scale    = frag_scale,
             end_points      = charge_locations,
@@ -1010,9 +1014,10 @@ class Curve(Geometry):
             )
 
         curves = cls()
-        for points, radius, cyclic in lines:
-            curves.add(points, curve_type='POLY', cyclic=cyclic)
-            curves.splines[-1].get_points().radius = radius
+        for avects, cyclic in lines:
+            curves.add(avects.co, curve_type='POLY', cyclic=cyclic)
+            curves.splines[-1].get_points().radius = avects.radius
+            curves.splines[-1].get_points().tilt = avects.color
 
         return curves
 
@@ -1020,7 +1025,7 @@ class Curve(Geometry):
     # Lines of magnetic field
 
     @classmethod
-    def MagneticFieldLines(cls, magnet_locations, moments=(1, 0, 0), field_func=None,
+    def MagneticFieldLines(cls, magnet_locations, moments=(1, 0, 0), field_color=True,
                            count=100, start_points=None, plane=None, plane_center=(0, 0, 0),
                            frag_length=None, frag_scale=None, max_points=1000,
                            precision=.1, sub_steps=10, seed=None):
@@ -1031,8 +1036,7 @@ class Curve(Geometry):
         ----------
             - magnet_locations (array (n, 3) of vectors) : where the bipoles are located
             - moments (vector or array (n) of vectors = (1, 0, 0)) : the moments of the magnets
-            - field_func (function of template (points=array(n, 3)) -> Vectors = None) :
-                 the field function. magnetic field if None.
+            - field_color (bool = True) : manage the field_color attribute
             - count (int = 100) : number of lines to create. Overriden by len(start_points) if not None
             - start_points (array (s, 3) of vectors = None) : the starting points to compute the lines from
             - plane (vector = None) = restrict start points to a plane defined by its perpendicular
@@ -1044,36 +1048,36 @@ class Curve(Geometry):
         """
 
         # ----------------------------------------------------------------------------------------------------
-        # Preparation
+        # Field function
+
+        magnets = AttrVectors(magnet_locations, moment=moments)
+        field_func = lambda points, return_color=False: field.magnetic_field(points,
+                            locations=magnets.co, moments=magnets.moment, return_color=return_color)
+
+        # ----------------------------------------------------------------------------------------------------
+        # Starting points
 
         rng = np.random.default_rng(seed=seed)
-
-        n_magnets = len(magnet_locations)
-        dipoles = np.empty((n_magnets, 2, 3))
-        dipoles[:, 0] = magnet_locations
-        dipoles[:, 1] = moments
-
-        if field_func is None:
-            field_func = lambda p: field.magnetic_field(p, dipoles=dipoles)
+        n_magnets = len(magnets)
 
         backwards = rng.choice([True, False], count)
         if start_points is None:
             if frag_length is None:
                 if plane is None:
-                    start_points, _ = distribs.sphere_dist(radius=precision, count=count, seed=rng.integers(1<<63))
+                    start_points, _ = distribs.sphere_dist(radius=precision*10, count=count, seed=rng.integers(1<<63))
                 else:
-                    start_points, _ = distribs.circle_dist(radius=precision, count=count, seed=rng.integers(1<<63))
+                    start_points, _ = distribs.circle_dist(radius=precision*10, count=count, seed=rng.integers(1<<63))
                     start_points = rotate_xy_into_plane(start_points, plane=plane, origin=plane_center)
 
                 inds = rng.integers(0, n_magnets, count)
-                mag_locs = np.array(magnet_locations)[inds]
-                backwards[:] = np.einsum('...i, ...i', start_points, dipoles[inds, 1]) < 0
+                mag_locs = magnets.co[inds]
+                backwards[:] = np.einsum('...i, ...i', start_points, magnets.moment[inds]) < 0
                 start_points += mag_locs
 
             else:
-                center = np.average(magnet_locations, axis=0)
-                bbox0, bbox1 = np.min(magnet_locations, axis=0), np.max(magnet_locations, axis=0)
-                radius = 1.3*max(np.linalg.norm(bbox1 - center), np.linalg.norm(bbox0 - center))
+                center = np.average(magnets.co, axis=0)
+                bbox0, bbox1 = np.min(magnets.co, axis=0), np.max(magnets.co, axis=0)
+                radius = 1.3*max(1., max(np.linalg.norm(bbox1 - center), np.linalg.norm(bbox0 - center)))
 
                 if plane is None:
                     start_points, _ = distribs.ball_dist(radius=radius, count=count, seed=rng.integers(1<<63))
@@ -1083,7 +1087,10 @@ class Curve(Geometry):
                     start_points = rotate_xy_into_plane(start_points, plane=plane, origin=plane_center)
 
         else:
-            count = len(start_points)
+            if len(np.shape(start_points)) == 1:
+                count = 1
+            else:
+                count = len(start_points)
 
         # ----------------------------------------------------------------------------------------------------
         # Field lines
@@ -1091,6 +1098,7 @@ class Curve(Geometry):
         lines = field.field_lines(field_func,
             start_points    = start_points,
             backwards       = backwards,
+            return_color    = field_color,
             max_length      = frag_length,
             length_scale    = frag_scale,
             end_points      = magnet_locations,
@@ -1101,9 +1109,10 @@ class Curve(Geometry):
             )
 
         curves = cls()
-        for points, radius, cyclic in lines:
-            curves.add(points, curve_type='POLY', cyclic=cyclic)
-            curves.splines[-1].get_points().radius = radius
+        for avects, cyclic in lines:
+            curves.add(avects.co, curve_type='POLY', cyclic=cyclic)
+            curves.splines[-1].get_points().radius = avects.radius
+            curves.splines[-1].get_points().tilt = avects.color
 
         return curves
 

@@ -31,15 +31,15 @@ try:
     from scipy.interpolate import CubicSpline, BSpline, make_interp_spline, splder
 
     OK_SCIPY = True
-    
+
 except:
     print("CAUTION: Module 'scipy' not installed in Blender. Some features will crash...")
     OK_SCIPY = False
-    
+
     class ScipyMissing:
         def __init__(self, *args, **kwargs):
             raise Exception("Module scipy is not installed in Blender")
-    
+
     RotationSpline     = ScipyMissing
     Rotation           = ScipyMissing
     KDTree             = ScipyMissing
@@ -47,33 +47,33 @@ except:
     BSpline            = ScipyMissing
     make_interp_spline = ScipyMissing
     splder             = ScipyMissing
-    
-    
+
+
 
 
 if True: # RELOAD
 
     # ----- Reload
-    
+
     from importlib import reload
-    
+
     from .maths import splinesmaths
     from .maths import distribs
     from .maths import functions
     from .maths import noise
     from .maths import primes
     from .maths import transformations
-    
+
     reload(blender)
     reload(engine)
-    
+
     reload(splinesmaths)
     reload(distribs)
     reload(functions)
     reload(noise)
     reload(primes)
     reload(transformations)
-    
+
 # =============================================================================================================================
 # Nodes generator
 
@@ -84,7 +84,7 @@ from .nodes.fourd import build4D
 # Python geometry
 
 # ----- Maths
-    
+
 # Maths modules
 
 from .maths import splinesmaths, distribs
@@ -114,7 +114,7 @@ if True:
     from .core import bingrid
     from .core import simulation
     from .core import kinematics
-    
+
     reload(camera)
 
     reload(domain)
@@ -126,13 +126,15 @@ if True:
     reload(instances)
     reload(shapekeys)
     reload(parameters)
-    
+
     reload(bingrid)
     reload(simulation)
     reload(kinematics)
 
 
 from .core.camera import Camera
+
+from .core.attributes import AttrVectors
 
 from .core.geometry import Geometry
 from .core.cloud import Cloud
@@ -147,12 +149,3 @@ from .core.overlay import Overlay
 from .core.bingrid import BinGrid
 from .core.simulation import Simulation
 from .core.kinematics import Kinematics
-    
-
-
-
-
-
-
-
-

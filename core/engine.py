@@ -40,9 +40,7 @@ class Engine:
     subframe    = 0
 
     rendering   = False
-
-
-    depsgraph  = None
+    depsgraph   = None
 
     # ----- List of functions to call: couple of (func, setup)
 

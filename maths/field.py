@@ -38,51 +38,217 @@ def radial_field(points, power=1, factor=1.):
 # =============================================================================================================================
 # Electric field
 
-def electric_field(points, charges=(0, 0, 0, 1), epsilon0 = 1.):
+def electric_field(points, locations=(0, 0, 0), charges=1, epsilon0=1., return_color=False):
+
+    # ----- Field at a single point
 
     if np.shape(points) == (3,):
-        return electric_field([points], charges=charges, epsilon0=epsilon0)[0]
+        v = electric_field([points], locations=locations, charges=charges, epsilon0=epsilon0, return_color=return_color)
+        if return_color:
+            return v
+        else:
+            return v[0]
 
-    charges = np.array(charges, float)
-    if len(charges.shape) == 1:
-        charges = np.reshape(charges, (1,) + np.shape(charges))
+    # ----- Make sure locations is a proper array
 
-    v = np.array(points)[:, None] - charges[None, :, :-1]
+    locations = np.array(locations, float)
+    if len(locations.shape) == 1:
+        locations = np.reshape(locations, (1,) + np.shape(locations))
 
+    # ----- Return color : need to compute posive and negative field to compare them
+
+    if return_color:
+
+        # Compute the field
+        v = electric_field(points, locations=locations, charges=charges, return_color=False)
+
+        from geonodes import AttrVectors
+
+        if np.shape(charges) == ():
+            color = -1. if charges < 0 else 1.
+        else:
+            # Compute field from negative charges
+            charges = np.array(charges, float)
+            neg_sel = charges < 0
+            if np.sum(neg_sel) > 0:
+                neg_locs = locations[neg_sel]
+                neg_charges = charges[neg_sel]
+                neg_v = electric_field(points, locations=neg_locs, charges=neg_charges, return_color=False)
+                pos_v = v - neg_v
+                neg_norm = np.linalg.norm(neg_v, axis=-1)
+                pos_norm = np.linalg.norm(pos_v, axis=-1)
+                color = pos_norm - neg_norm
+            else:
+                color = 1.
+
+            return AttrVectors(v, color=color)
+
+    # ----- Field computation
+
+    # All vectors form charge locations to points
+    v = np.array(points)[:, None] - locations[None]
+
+    # Vector norms
     norm = np.linalg.norm(v, axis=-1)
     norm[norm < .001] = 1.
     v /= (norm**3)[..., None]
-    v *= charges[None, :, -1][..., None]
 
+    # Multiply by the charges
+    if np.shape(charges) == ():
+        v *= charges
+    else:
+        v *= np.array(charges)[None, :, None]
+
+    # Return vectors
     return np.sum(v, axis=1)*(1/4/np.pi/epsilon0)
 
 # =============================================================================================================================
-# Magnet field
+# Magnetic field
 
-def magnetic_field(points, dipoles=[(0., 0., 0.), (1., 0., 0.)], mu0=1.):
+def magnetic_field(points, locations=(0, 0, 0), moments=(1, 0, 0), mu0=1., return_color=False):
+
+    # ----- Field at a single point
+
+    if np.shape(points) == (3,):
+        v = magnetic_field([points], locations=locations, moments=moments, mu0=mu0, return_color=return_color)
+        if return_color:
+            return v
+        else:
+            return v[0]
 
     # ---------------------------------------------------------------------------
     # Normalize inputs
 
-    count = 1 if len(np.shape(dipoles)) == 2 else len(dipoles)
-    n = 1 if len(np.shape(points)) == 1 else len(points)
+    locations = np.array(locations, float)
+    if len(locations.shape) == 1:
+        locations = np.reshape(locations, (1,) + np.shape(locations))
 
-    dipoles = np.reshape(dipoles, (count, 2, 3))
-    points  = np.reshape(points, (n, 3))
+    moments_ = np.array(locations)
+    moments_[:] = moments
+    moments = moments_
 
     # ---------------------------------------------------------------------------
     # Compute field
 
-    v = np.array(points)[:, None] - dipoles[None, :, 0]
+    v = np.array(points)[:, None] - locations[None, :]
 
     norm = np.linalg.norm(v, axis=-1)
     norm[norm < .001] = 1.
     er = v/norm[..., None]
 
-    f_r = np.einsum('...i, ...i', er, dipoles[None, :, 1])
-    f_n = np.cross(er, np.cross(er, dipoles[None, :, 1]))
+    norm2 = (1/norm**2)
 
-    return np.sum((er*f_r[..., None] + f_n)/((norm**2)[..., None]), axis=1)*(mu0/4/np.pi)
+    f_r = np.einsum('...i, ...i', er, moments[None, :])*norm2
+    f_n = np.cross(er, np.cross(er, moments[None, :]))*norm2[..., None]
+
+    del norm2
+
+    color = np.sum(f_r, axis=1)
+
+    vect = np.sum(er*f_r[..., None] + f_n, axis=1)*(mu0/4/np.pi)
+
+    if return_color:
+        from geonodes import AttrVectors
+        return AttrVectors(vect, color=color)
+
+    else:
+        return vect
+
+
+
+# -----------------------------------------------------------------------------------------------------------------------------
+# A a dipole : uses the electric field
+
+def magnetic_field_FROM_ELECTRIC(points, locations=(0, 0, 0), moments=(1, 0, 0), distance=.1, mu0=1., return_color=False):
+
+    n = 1 if len(np.shape(locations)) == 1 else len(locations)
+    charge_locations = np.empty((2*n, 3), float)
+    dirs = np.resize(moments, (n, 3))
+    norms = np.linalg.norm(dirs, axis=-1)
+    dirs *= ((distance/2)/norms)[:, None]
+
+    charge_locations[:n] = locations - dirs
+    charge_locations[n:] = locations + dirs
+
+    return electric_field(points, locations=charge_locations, charges=np.append(norms, -norms), epsilon0=1/mu0, return_color=return_color)
+
+
+
+
+
+
+
+
+# OLD VERSION
+
+def magnetic_field_OLD(points, locations=(0, 0, 0), moments=(1, 0, 0), mu0=1., return_color=False):
+
+    # ----- Field at a single point
+
+    if np.shape(points) == (3,):
+        v = magnetic_field([points], locations=locations, moments=moments, mu0=mu0, return_color=return_color)
+        if return_color:
+            return v
+        else:
+            return v[0]
+
+    # ---------------------------------------------------------------------------
+    # Normalize inputs
+
+    locations = np.array(locations, float)
+    if len(locations.shape) == 1:
+        locations = np.reshape(locations, (1,) + np.shape(locations))
+
+    moments_ = np.array(locations)
+    moments_[:] = moments
+    moments = moments_
+
+    # ---------------------------------------------------------------------------
+    # Compute field
+
+    v = np.array(points)[:, None] - locations[None, :]
+
+    norm = np.linalg.norm(v, axis=-1)
+    norm[norm < .001] = 1.
+    er = v/norm[..., None]
+
+    if True:
+        norm2 = (1/norm**2)
+
+        f_r = np.einsum('...i, ...i', er, moments[None, :])*norm2
+        f_n = np.cross(er, np.cross(er, moments[None, :]))*norm2[..., None]
+
+        del norm2
+
+        color = np.sum(f_r, axis=1)
+
+        vect = np.sum(er*f_r[..., None] + f_n, axis=1)*(mu0/4/np.pi)
+
+        if return_color:
+            from geonodes import AttrVectors
+            return AttrVectors(vect, color=color)
+
+        else:
+            return vect
+
+
+    else:
+        f_r = np.einsum('...i, ...i', er, moments[None, :])
+        f_n = np.cross(er, np.cross(er, moments[None, :]))
+
+        vect = np.sum((er*f_r[..., None] + f_n)/((norm**2)[..., None]), axis=1)*(mu0/4/np.pi)
+
+        if return_color:
+
+            from geonodes import AttrVectors
+
+            return AttrVectors(vect, color=1)
+
+            #return vect, np.sum(f_r/norm**2, axis=-1)
+        else:
+            return vect
+
+        #return np.sum((er*f_r[..., None] + f_n)/((norm**2)[..., None]), axis=1)*(mu0/4/np.pi)
 
 # =============================================================================================================================
 # Derivatives
@@ -165,7 +331,7 @@ def div2(field, points, dt=.01):
 # ====================================================================================================
 # Field lines
 
-def field_lines(field_func, start_points, backwards=False, max_length=None, length_scale=None, end_points=None, zero=1e-6, max_points=1000, precision=.1, sub_steps=10, seed=0, **kwargs):
+def field_lines(field_func, start_points, backwards=False, return_color=False, max_length=None, length_scale=None, end_points=None, zero=1e-6, max_points=1000, precision=.1, sub_steps=10, seed=0, **kwargs):
 
     """ Compute the lines of field
 
@@ -174,6 +340,7 @@ def field_lines(field_func, start_points, backwards=False, max_length=None, leng
         - field_func (function of template (array of vectors, **kwargs) -> array of vectors) : the field function
         - start_points (array of vectors) : lines starting points
         - backwards (bool = False) : build lines backwards
+        - return_color (bool = False) : manage 'color' attribute along the field
         - max_length (float = None) : max line lengths
         - length_scale (float = None) : line length scale if random length scale around central value
         - end_points (array of vectors) : points where lines must end
@@ -184,7 +351,7 @@ def field_lines(field_func, start_points, backwards=False, max_length=None, leng
 
     Returns :
     ---------
-        - list of (array of vectors, array of floats, bool) : splines points, points radius, is_cyclic
+        - list of (AttrVectors, bool) : (points with attributes 'radius' and 'color', is_cyclic)
     """
 
     # ----------------------------------------------------------------------------------------------------
@@ -223,17 +390,35 @@ def field_lines(field_func, start_points, backwards=False, max_length=None, leng
 
     points = np.zeros((count, max_points, 3), float)
     points[:, 0] = start_points
+
+    # ----- Radius and colors
     radius = np.ones((count, max_points), float)
-    radius[:, 0] = np.linalg.norm(field_func(start_points, **kwargs), axis=-1)
+    colors = np.zeros((count, max_points), float)
+
+    if return_color:
+        avects = field_func(start_points, return_color=True, **kwargs)
+
+        radius[:, 0] = np.linalg.norm(avects.co, axis=-1)
+        colors[:, 0] = avects.color
+    else:
+        radius[:, 0] = np.linalg.norm(field_func(start_points, **kwargs), axis=-1)
+
+    # ----- Lengths and counts
     lengths = np.zeros(count, float)
-    counts = np.ones(count, int)
+    counts  = np.ones(count, int)
+
+    # ----- Lines which are not finished
 
     alive  = np.ones(count, bool)
 
-    def add_points(point_index, pts, norm):
+    # ---------------------------------------------------------------------------
+    # Add a point with its attributes
+
+    def add_points(point_index, pts, norm, cols):
 
         points[:, point_index] = pts
         radius[:, point_index] = norm
+        colors[:, point_index] = cols
         lengths[alive] += np.linalg.norm(pts - points[:, point_index-1], axis=-1)[alive]
         counts[alive] += 1
 
@@ -249,7 +434,9 @@ def field_lines(field_func, start_points, backwards=False, max_length=None, leng
     # ----------------------------------------------------------------------------------------------------
     # Loop
 
-    pts = np.array(start_points)
+    pts  = np.array(start_points)
+    norm = None
+    cols = 0
     for point_index in range(1, max_points):
 
         # ----- Sub steps
@@ -257,7 +444,12 @@ def field_lines(field_func, start_points, backwards=False, max_length=None, leng
         for _ in range(sub_steps):
 
             # ----- Vector at current location
-            v0 = field_func(pts, **kwargs)
+            if return_color:
+                avects = field_func(pts, return_color=True, **kwargs)
+                v0, cols = np.array(avects.co), avects.color
+            else:
+                v0 = field_func(pts, **kwargs)
+
             if has_backwards:
                 v0 *= rev
 
@@ -296,19 +488,35 @@ def field_lines(field_func, start_points, backwards=False, max_length=None, leng
 
         # ----- Add the point
 
-        add_points(point_index, pts, norm)
+        add_points(point_index, pts, norm, cols)
 
     # ----------------------------------------------------------------------------------------------------
     # Return the lines
 
+    from geonodes import AttrVectors
+
     lines = []
     for line_index, n in enumerate(counts):
+
         closed = np.linalg.norm(points[line_index, n-1] - points[line_index, 0]) <= precision
+        v_co     = points[line_index, :n]
+        v_radius = radius[line_index, :n]
+        v_color = colors[line_index, :n]
+
         ok_flip = has_backwards and rev[line_index]
+
         if ok_flip:
-            lines.append((np.flip(points[line_index, :n], axis=0), np.flip(radius[line_index, :n]), closed))
-        else:
-            lines.append((points[line_index, :n], radius[line_index, :n], closed))
+            v_co     = np.flip(v_co, axis=0)
+            v_radius = np.flip(v_radius)
+            v_color  = np.flip(v_color)
+
+        lines.append((AttrVectors(v_co, radius=v_radius, color=v_color), closed))
+
+        if False:
+            if ok_flip:
+                lines.append((np.flip(points[line_index, :n], axis=0), np.flip(radius[line_index, :n]), closed, cols))
+            else:
+                lines.append((points[line_index, :n], radius[line_index, :n], closed, cols))
 
     if single:
         return lines[0]
