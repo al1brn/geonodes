@@ -1026,7 +1026,7 @@ class Curve(Geometry):
 
     @classmethod
     def MagneticFieldLines(cls, magnet_locations, moments=(1, 0, 0), field_color=True,
-                           count=100, start_points=None, plane=None, plane_center=(0, 0, 0),
+                           count=100, start_points=None, min_width=.3, plane=None, plane_center=(0, 0, 0),
                            frag_length=None, frag_scale=None, max_points=1000,
                            precision=.1, sub_steps=10, seed=None):
 
@@ -1039,6 +1039,7 @@ class Curve(Geometry):
             - field_color (bool = True) : manage the field_color attribute
             - count (int = 100) : number of lines to create. Overriden by len(start_points) if not None
             - start_points (array (s, 3) of vectors = None) : the starting points to compute the lines from
+            - min_width (float = .3) : min width for volume generation when magnet locations are in a plane
             - plane (vector = None) = restrict start points to a plane defined by its perpendicular
             - plane_center (vector = (0, 0, 0)) : center of the plane
             - frag_length (float=None) : length of fragments, None for full lines
@@ -1080,8 +1081,11 @@ class Curve(Geometry):
                 radius = 1.3*max(1., max(np.linalg.norm(bbox1 - center), np.linalg.norm(bbox0 - center)))
 
                 if plane is None:
-                    start_points, _ = distribs.ball_dist(radius=radius, count=count, seed=rng.integers(1<<63))
-                    start_points += center
+                    dims = np.maximum(bbox1 - bbox0, (min_width, min_width, min_width))
+                    center = (bbox0 + bbox1)/2
+                    bbox0, bbox1 = center - dims, center + dims
+
+                    start_points, _ = distribs.cube_dist(corner0=bbox0, corner1=bbox1, count=count, seed=rng.integers(1<<63))
                 else:
                     start_points, _ = distribs.disk_dist(radius=radius, count=count, seed=rng.integers(1<<63))
                     start_points = rotate_xy_into_plane(start_points, plane=plane, origin=plane_center)
