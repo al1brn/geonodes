@@ -1083,7 +1083,7 @@ class Curve(Geometry):
                 if plane is None:
                     dims = np.maximum(bbox1 - bbox0, (min_width, min_width, min_width))
                     center = (bbox0 + bbox1)/2
-                    bbox0, bbox1 = center - dims, center + dims
+                    bbox0, bbox1 = center - 1.3*dims, center + 1.3*dims
 
                     start_points, _ = distribs.cube_dist(corner0=bbox0, corner1=bbox1, count=count, seed=rng.integers(1<<63))
                 else:
