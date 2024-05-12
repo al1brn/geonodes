@@ -1327,7 +1327,7 @@ def get_value_at_frame(frame, spec, name, index=-1):
             # ----- Vector
             if hasattr(ref_value, '__len__'):
                 if index >= 0:
-                    return type_convert(fcurve.evaluate(frame))
+                    return fcurve.evaluate(frame)
 
                 else:
                     v = [fcurve.evaluate(frame)]
