@@ -28,7 +28,7 @@ from geonodes.maths.transformations import Transformations, tracker
 from geonodes.core import blender
 from geonodes.core import topology
 from geonodes.core.geometry import Geometry
-from geonodes.core.domain import PointDomain, CornerDomain, FaceDomain
+from geonodes.core.domain import PointDomain, CornerDomain, FaceDomain, reduce_indices
 
 
 DATA_TEMP_NAME = "GEOPY_TEMP"
@@ -2130,6 +2130,99 @@ class Mesh(Geometry):
 
         self.points.delete(pt_inds)
         self.corners.vertex_index = ren[self.corners.vertex_index]
+
+    # =============================================================================================================================
+    # Separate islands
+
+    # ----------------------------------------------------------------------------------------------------
+    # Separate faces
+
+    def separate_faces(self, face_indices):
+
+        # Vertex indices
+
+        vert_inds = []
+        for ls, lt in zip(self.faces[face_indices].loop_start, self.faces[face_indices].loop_total):
+            vert_inds.extend(list(self.corners[ls:ls+lt].vertex_index))
+        vert_inds = np.array(vert_inds)
+
+        # Reduce to the used vertices
+
+        new_vert_inds = reduce_indices(vert_inds)
+
+        # The extracted vertices
+
+        verts = self.points.position[sorted(list(set(vert_inds)))]
+
+        # Extracted mesh
+
+        sizes = self.faces.loop_total[face_indices]
+
+        assert(np.max(new_vert_inds)==len(verts)-1)
+        assert(np.sum(sizes) == len(new_vert_inds))
+
+        return Mesh(
+                verts           = verts,
+                corners         = new_vert_inds,
+                sizes           = sizes,
+                materials       = self.materials,
+                material_index  = self.faces.material_index[face_indices],
+                )
+
+    # ----------------------------------------------------------------------------------------------------
+    # Separate islands
+
+    def separate_islands(self):
+
+        # ----------------------------------------------------------------------------------------------------
+        # Island class
+
+        class Island:
+            def __init__(self, vert_indices, face_index):
+                self.vert_indices = set(vert_indices)
+                self.face_indices = [face_index]
+
+            def __str__(self):
+                return f"faces: {self.face_indices}, verts: {self.vert_indices}"
+
+            def add(self, vert_indices, face_index):
+                self.vert_indices.update(vert_indices)
+                self.face_indices.append(face_index)
+
+            def merge(self, other):
+                self.vert_indices.update(other.vert_indices)
+                self.face_indices += other.face_indices
+
+        # ----------------------------------------------------------------------------------------------------
+        # Main
+
+        # ----- Loop on faces to merge connected faces in their island
+
+        islands = []
+        indices = np.array(self.corners.vertex_index)
+
+        for face_index, (vert_index, face_len) in enumerate(zip(self.faces.loop_start, self.faces.loop_total)):
+
+            vert_indices = set(indices[vert_index:vert_index + face_len])
+            to_merge = []
+            for island in islands:
+                if not island.vert_indices.isdisjoint(vert_indices):
+                    to_merge.append(island)
+
+            if len(to_merge) == 0:
+                islands.append(Island(vert_indices, face_index))
+
+            else:
+                to_merge[0].add(vert_indices, face_index)
+
+                for i in range(1, len(to_merge)):
+                    island = to_merge[i]
+                    islands.remove(island)
+                    to_merge[0].merge(island)
+
+        # ----- Build one mesh per island
+
+        return [self.separate_faces(island.face_indices) for island in islands]
 
     # ====================================================================================================
     # Remove doubles
