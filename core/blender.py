@@ -19,6 +19,7 @@ import numpy as np
 import bpy
 import bmesh
 import idprop
+from mathutils import Vector
 
 # ====================================================================================================
 # Get Blender things from spec. The spec can be the name of the thing itself
@@ -1305,52 +1306,39 @@ def get_value_at_frame(frame, spec, name, index=-1):
     obj = get_object(spec)
     data, data_path, index = data_path_index(obj, name, index)
 
+    # ----- Ref value
+
     if '[' in data_path:
         ref_value = eval(f"data{data_path}")
     else:
         ref_value = getattr(data, data_path)
 
-    if isinstance(ref_value, idprop.types.IDPropertyArray):
-        ref_value = list(ref_value)
-        type_convert = float
-    else:
-        type_convert = type(ref_value)
+    # ----- Target is a Vector or a list and we need all components
+
+    if hasattr(ref_value, '__len__') and index == -1:
+        v = []
+        for i in range(len(ref_value)):
+            v.append(get_value_at_frame(frame, data, data_path, index=i))
+
+        if isinstance(ref_value, idprop.types.IDPropertyArray):
+            return list(v)
+        elif isinstance(ref_value, Vector):
+            return Vector(v)
+        else:
+            return v
+
+    # ----- Only a single value is required
 
     fcurve = get_fcurve(data, data_path, index, create=False)
 
     if fcurve is None:
-        return ref_value
-
-    else:
-        if True:
-
-            # ----- Vector
-            if hasattr(ref_value, '__len__'):
-                if index >= 0:
-                    return fcurve.evaluate(frame)
-
-                else:
-                    v = [fcurve.evaluate(frame)]
-                    for i in range(1, len(ref_value)):
-                        v.append(get_value_at_frame(frame, data, data_path, i))
-                    return v
-
-            else:
-                return type_convert(fcurve.evaluate(frame))
-
-        # OLD OLD OLD OLD OLD
+        if index >= 0:
+            return ref_value[index]
         else:
-            if index >= 0:
-                return fcurve.evaluate(frame)
+            return ref_value
+    else:
+        return fcurve.evaluate(frame)
 
-            if hasattr(ref_value, '__len__'):
-                v = [fcurve.evaluate(frame)]
-                for i in range(1, len(ref_value)):
-                    v.append(get_value_at_frame(frame, data, data_path, i))
-                return v
-
-            else:
-                return ref_value
 
 
 # ====================================================================================================
