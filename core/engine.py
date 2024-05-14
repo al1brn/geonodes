@@ -7,6 +7,7 @@ Created on Tue Sep 27 16:33:23 2022
 """
 
 import bpy
+from bpy.types import Depsgraph
 
 # ====================================================================================================
 # Wrap a scene to offer additional features:
@@ -100,7 +101,8 @@ class Engine:
     def get_evaluated(spec):
         obj = bpy.data.objects[spec] if isinstance(spec, str) else spec
         if Engine.depsgraph is None:
-            return obj
+            depsgraph = bpy.context.evaluated_depsgraph_get()
+            return obj.evaluated_get(depsgraph)
         else:
             return obj.evaluated_get(Engine.depsgraph)
 

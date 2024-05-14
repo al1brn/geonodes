@@ -2178,9 +2178,6 @@ class Mesh(Geometry):
         # ----- Transfer the attributes
 
         vert_inds = sorted(list(set(vert_inds)))
-        print("points", len(vert_inds), len(mesh.points))
-        print("corners", len(corner_inds), len(mesh.corners))
-        print("faces", len(face_indices), len(mesh.faces))
         mesh.points.attributes.copy_from(self.points.attributes, vert_inds, only_new=True)
         mesh.corners.attributes.copy_from(self.corners.attributes, corner_inds, only_new=True)
         mesh.faces.attributes.copy_from(self.faces.attributes, face_indices, only_new=True)

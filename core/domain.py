@@ -1240,6 +1240,13 @@ class PointDomain(Domain):
         self.position[..., 2] = value
 
 
+    @property
+    def bounding_box(self):
+        if len(self):
+            return np.min(self.position, axis=0), np.max(self.position, axis=0)
+        else:
+            return np.zeros(3, float), np.zeros(3, float)
+
     # =============================================================================================================================
     # Simple transformations
 
