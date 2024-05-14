@@ -2141,10 +2141,16 @@ class Mesh(Geometry):
 
         # Vertex indices
 
-        vert_inds = []
-        for ls, lt in zip(self.faces[face_indices].loop_start, self.faces[face_indices].loop_total):
-            vert_inds.extend(list(self.corners[ls:ls+lt].vertex_index))
-        vert_inds = np.array(vert_inds)
+        if True:
+            corner_inds = []
+            for ls, lt in zip(self.faces[face_indices].loop_start, self.faces[face_indices].loop_total):
+                corner_inds.extend([ls + i for i in range(lt)])
+            vert_inds = self.corners.vertex_index[corner_inds]
+        else:
+            vert_inds   = []
+            for ls, lt in zip(self.faces[face_indices].loop_start, self.faces[face_indices].loop_total):
+                vert_inds.extend(list(self.corners[ls:ls+lt].vertex_index))
+            vert_inds = np.array(vert_inds)
 
         # Reduce to the used vertices
 
@@ -2161,13 +2167,25 @@ class Mesh(Geometry):
         assert(np.max(new_vert_inds)==len(verts)-1)
         assert(np.sum(sizes) == len(new_vert_inds))
 
-        return Mesh(
+        mesh = Mesh(
                 verts           = verts,
                 corners         = new_vert_inds,
                 sizes           = sizes,
                 materials       = self.materials,
-                material_index  = self.faces.material_index[face_indices],
+                #material_index  = self.faces.material_index[face_indices],
                 )
+
+        # ----- Transfer the attributes
+
+        vert_inds = sorted(list(set(vert_inds)))
+        print("points", len(vert_inds), len(mesh.points))
+        print("corners", len(corner_inds), len(mesh.corners))
+        print("faces", len(face_indices), len(mesh.faces))
+        mesh.points.attributes.copy_from(self.points.attributes, vert_inds, only_new=True)
+        mesh.corners.attributes.copy_from(self.corners.attributes, corner_inds, only_new=True)
+        mesh.faces.attributes.copy_from(self.faces.attributes, face_indices, only_new=True)
+
+        return mesh
 
     # ----------------------------------------------------------------------------------------------------
     # Separate islands
@@ -2178,20 +2196,24 @@ class Mesh(Geometry):
         # Island class
 
         class Island:
-            def __init__(self, vert_indices, face_index):
-                self.vert_indices = set(vert_indices)
+            def __init__(self, mesh, uniqs, face_index):
+                self.mesh         = mesh
+                self.uniqs        = set(uniqs)
                 self.face_indices = [face_index]
 
             def __str__(self):
-                return f"faces: {self.face_indices}, verts: {self.vert_indices}"
+                return f"faces: {self.face_indices}, uniqs: {self.uniqs}"
 
-            def add(self, vert_indices, face_index):
-                self.vert_indices.update(vert_indices)
+            def add(self, uniqs, face_index):
+                self.uniqs.update(uniqs)
                 self.face_indices.append(face_index)
 
             def merge(self, other):
-                self.vert_indices.update(other.vert_indices)
+                self.uniqs.update(other.uniqs)
                 self.face_indices += other.face_indices
+
+            def to_mesh(self):
+                return self.mesh.separate_faces(self.face_indices)
 
         # ----------------------------------------------------------------------------------------------------
         # Main
@@ -2203,17 +2225,18 @@ class Mesh(Geometry):
 
         for face_index, (vert_index, face_len) in enumerate(zip(self.faces.loop_start, self.faces.loop_total)):
 
-            vert_indices = set(indices[vert_index:vert_index + face_len])
+            vert_indices = indices[vert_index:vert_index + face_len]
+            uniqs = set(vert_indices)
             to_merge = []
             for island in islands:
-                if not island.vert_indices.isdisjoint(vert_indices):
+                if not island.uniqs.isdisjoint(uniqs):
                     to_merge.append(island)
 
             if len(to_merge) == 0:
-                islands.append(Island(vert_indices, face_index))
+                islands.append(Island(self, uniqs, face_index))
 
             else:
-                to_merge[0].add(vert_indices, face_index)
+                to_merge[0].add(uniqs, face_index)
 
                 for i in range(1, len(to_merge)):
                     island = to_merge[i]
@@ -2222,7 +2245,7 @@ class Mesh(Geometry):
 
         # ----- Build one mesh per island
 
-        return [self.separate_faces(island.face_indices) for island in islands]
+        return [island.to_mesh() for island in islands]
 
     # ====================================================================================================
     # Remove doubles

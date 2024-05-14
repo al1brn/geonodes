@@ -712,6 +712,36 @@ class Attributes:
         for name, info in attributes.infos.items():
             self.new(name, info.data_type, info.default, transfer=info.transfer)
 
+    def get_selection(self, index):
+
+        attrs = Attributes(domain=self.domain, cache=self.cache)
+
+        attrs.infos  = {name: info.clone() for name, info in self.infos.items()}
+        attrs.arrays = [None if ca is None else CachedArray.FromArray(ca[index], cache=self.cache) for ca in self.arrays]
+        attrs.dims   = list(self.dims)
+
+        if hasattr(self, 'ID'):
+            attrs.ID = self.ID
+
+        return attrs
+
+    def copy_from(self, other, selection=None, exclude=[], only_new=False):
+
+        # ----- Copy the non excluded names
+
+        for name, info in other.infos.items():
+            if name in exclude:
+                continue
+            if only_new and name in self.names:
+                continue
+
+            self.new(name, info.data_type, info.default, transfer=info.transfer)
+
+            if selection is None:
+                self[name] = other[name]
+            else:
+                self[name] = other[name][selection]
+
     # ====================================================================================================
     # Append other attributes
 
@@ -792,8 +822,6 @@ class Attributes:
                 self.new(name, binfo['data_type'], 0, transfer=True)
 
             self[name] = get_attribute(data, name)
-
-
 
     # ====================================================================================================
     # Assign to blender mesh
