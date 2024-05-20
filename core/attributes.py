@@ -222,7 +222,7 @@ class DynamicRecArray(object):
         if count <= 1 or len(self) == 0:
             return
 
-        new_length = self._length*n
+        new_length = self._length*count
         new_size   = new_length
 
         self._data   = np.resize(self._data[:self._length], new_size)
