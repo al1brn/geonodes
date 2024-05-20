@@ -2130,10 +2130,35 @@ class ControlPointDomain(Domain):
 
     @property
     def points4(self):
-        return self.attributes.over_get('position', 4, selection=self._selector)
+        points = self.position
+        n = len(points)
+        if n == 0:
+            return np.zeros((0, 4), float)
+
+        else:
+            points4 = np.empty((n, 4), float)
+            points4[:, :3] = points
+            del points
+            points4[:, 3] = self.w
+            return points4
+
+        #return self.attributes.over_get('position', 4, selection=self._selector)
 
     @points4.setter
     def points4(self, value):
+        if not isinstance(value, np.ndarray):
+            value = np.array(value)
+
+        if np.shape(value)[-1] == 3:
+            self.position = value
+            self.w        = 1
+        else:
+            self.position = value[:, :3]
+            self.w        = value[:, 3]
+
+        return
+
+
         if np.shape(value)[-1] == 3:
             a = np.ones(np.shape(value)[:-1] + (4,))
             a[..., :3] = value

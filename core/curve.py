@@ -84,31 +84,18 @@ class Curve(Geometry):
         # Set the points
 
         total = sum([len(spline_points['points']) for spline_points in points])
-        if False:
-            ok_radius = False
-            ok_tilt   = False
-            for spline_points in points:
-                total += len(spline_points['points'])
-                if spline_points.get('radius') is not None:
-                    ok_radius = True
-                if spline_points.get('tilt') is not None:
-                    ok_tilt = True
-
-            if ok_radius:
-                _ = self.points.radius
-            if ok_tilt:
-                _ = self.points.tilt
-
         self.points.add(total)
 
         offset = 0
         for i_spline, (curve_type, spline_points) in enumerate(zip(types, points)):
 
             count = len(spline_points['points'])
+            self.splines.loop_start[i_spline] = offset
             self.splines.loop_total[i_spline] = count
 
             if curve_type == blender.BEZIER:
                 self.points.attributes['position'][offset:offset+count] = spline_points['points']
+
             else:
                 pts = spline_points['points']
                 if np.shape(pts)[-1] == 3:
@@ -514,17 +501,17 @@ class Curve(Geometry):
         for other in others:
 
             # ----------------------------------------------------------------------------------------------------
-            # Vertices
+            # Points
 
             v_ofs = self.points.size
-            self.points.attributes.append(other.points.attributes)
+            self.points.attributes.join(other.points.attributes)
 
             # ----------------------------------------------------------------------------------------------------
             # Splines
 
             s_ofs    = self.splines.size
             nsplines = len(self.splines)
-            self.splines.attributes.append(other.splines.attributes)
+            self.splines.attributes.join(other.splines.attributes)
             self.splines[nsplines:].loop_start += v_ofs
 
             # ----- Materials
@@ -558,7 +545,9 @@ class Curve(Geometry):
             def check(attr_name, attr, item_shape):
                 if attr is None:
                     return None
-                if item_shape == () and np.shape(attr) == ():
+                #if item_shape == () and np.shape(attr) == ():
+                #    return [attr] * npoints
+                if item_shape == np.shape(attr):
                     return [attr] * npoints
                 if np.shape(attr) != (npoints,) + item_shape:
                     raise RuntimeError(f"Curve.add error: 'points' argument is shaped {np.shape(points)[1:]} but the argument '{attr_name}' is shaped {np.shape(attr)}.")
@@ -567,7 +556,9 @@ class Curve(Geometry):
             handle_left       = check('handle_left',       handle_left,      (3,))
             handle_right      = check('handle_right',      handle_right,     (3,))
             handle_type_left  = check('handle_type_left',  handle_type_left, ())
-            handle_type_right = check('handle_type_right', handle_type_right, ())
+            handle_type_right = check('handle_type_right', handle_type_right,())
+            radius            = check('radius',            radius,           ())
+            tilt              = check('tilt',              tilt,             ())
 
         if len(curve_type) != nsplines:
             raise RuntimeError(f"Curve.add error: the number of splines given by 'points' argument (nsplines) differs from the number given by 'curve_type' argument ({len(curve_type)})")
@@ -579,6 +570,7 @@ class Curve(Geometry):
         def add_spline_attr(name, value):
             if value is None:
                 return
+
             if np.shape(value) == ():
                 splines_dict[name] = [value]*nsplines
             else:
@@ -587,8 +579,8 @@ class Curve(Geometry):
                 splines_dict[name] = value
 
         add_spline_attr('material_index',  material_index)
-        add_spline_attr('radius',          radius)
-        add_spline_attr('tilt',            tilt)
+        #add_spline_attr('radius',          radius)
+        #add_spline_attr('tilt',            tilt)
         add_spline_attr('cyclic',          cyclic)
         add_spline_attr('resolution',      resolution)
 
@@ -598,6 +590,8 @@ class Curve(Geometry):
             if handle_right      is not None: splines_dict['points'][i]['handle_right']      = handle_right[i]
             if handle_type_left  is not None: splines_dict['points'][i]['handle_type_left']  = handle_type_left[i]
             if handle_type_right is not None: splines_dict['points'][i]['handle_type_right'] = handle_type_right[i]
+            if radius is not None:            splines_dict['points'][i]['radius']            = radius[i]
+            if tilt is not None:              splines_dict['points'][i]['tilt']              = tilt[i]
 
         self.join(Curve(**splines_dict))
 
@@ -1015,9 +1009,9 @@ class Curve(Geometry):
 
         curves = cls()
         for avects, cyclic in lines:
-            curves.add(avects.co, curve_type='POLY', cyclic=cyclic)
-            curves.splines[-1].get_points().radius = avects.radius
-            curves.splines[-1].get_points().tilt = avects.color
+            if len(avects) <= 1:
+                continue
+            curves.add(avects.co, curve_type='POLY', cyclic=cyclic, radius=avects.radius, tilt=avects.color)
 
         return curves
 
@@ -1114,9 +1108,9 @@ class Curve(Geometry):
 
         curves = cls()
         for avects, cyclic in lines:
-            curves.add(avects.co, curve_type='POLY', cyclic=cyclic)
-            curves.splines[-1].get_points().radius = avects.radius
-            curves.splines[-1].get_points().tilt = avects.color
+            if len(avects) <= 1:
+                continue
+            curves.add(avects.co, curve_type='POLY', cyclic=cyclic, radius=avects.radius, tilt=avects.color)
 
         return curves
 

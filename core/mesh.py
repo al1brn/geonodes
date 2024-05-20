@@ -605,20 +605,20 @@ class Mesh(Geometry):
             # Vertices
 
             v_ofs = self.points.size
-            self.points.attributes.append(other.points.attributes)
+            self.points.attributes.join(other.points.attributes)
 
             # ----------------------------------------------------------------------------------------------------
             # Corners
 
             c_ofs = self.corners.size
-            self.corners.attributes.append(other.corners.attributes)
+            self.corners.attributes.join(other.corners.attributes)
             self.corners.vertex_index[c_ofs:] += v_ofs
 
             # ----------------------------------------------------------------------------------------------------
             # Faces
 
             f_ofs = self.faces.size
-            self.faces.attributes.append(other.faces.attributes)
+            self.faces.attributes.join(other.faces.attributes)
             self.faces.loop_start[f_ofs:] += c_ofs
 
             # ----- Materials
@@ -2178,9 +2178,9 @@ class Mesh(Geometry):
         # ----- Transfer the attributes
 
         vert_inds = sorted(list(set(vert_inds)))
-        mesh.points.attributes.copy_from(self.points.attributes, vert_inds, only_new=True)
-        mesh.corners.attributes.copy_from(self.corners.attributes, corner_inds, only_new=True)
-        mesh.faces.attributes.copy_from(self.faces.attributes, face_indices, only_new=True)
+        mesh.points.attributes.copy_from(self.points.attributes,   vert_inds,    only_new=True)
+        mesh.corners.attributes.copy_from(self.corners.attributes, corner_inds,  only_new=True)
+        mesh.faces.attributes.copy_from(self.faces.attributes,     face_indices, only_new=True)
 
         return mesh
 

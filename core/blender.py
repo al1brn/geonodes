@@ -887,6 +887,325 @@ def change_material_image(model, new_name, image, image_nodes=None):
 
     return mat1
 
+# =============================================================================================================================
+# Mesh Attributes
+
+# ----------------------------------------------------------------------------------------------------
+# Attribute exists
+
+def attribute_exists(spec, name):
+    """ Test if an attribute exists.
+
+    Arguments
+    ---------
+        - spec (str or data) : valid spec for object or data
+        - name (str) : attribute name
+
+    Returns
+    -------
+        - bool : True if exists, False otherwise
+    """
+
+    data = get_data(spec)
+    return data.attributes.get(name) is not None
+
+# ----------------------------------------------------------------------------------------------------
+# Attribute info
+
+def get_attribute_info(spec, name):
+    """ Get the attribute info.
+
+    Arguments
+    ---------
+        - spec (str or data) : valid spec for object or data
+        - name (str) : attribute name
+
+    Returns
+    -------
+        - dict with attribute informations, None if the attribute doesn't exist
+    """
+
+    data = get_data(spec)
+    battr = data.attributes.get(name)
+    if battr is None:
+        return None
+
+    return {
+        'domain'    : battr.domain,
+        'name'      : name,
+        'data_type' : battr.data_type,
+        'count'     : len(battr.data),
+        'battr'     : battr,
+        }
+
+# ----------------------------------------------------------------------------------------------------
+# List of attributes
+
+def get_attribute_names(spec):
+    """ Get the name of the attributes of an object.
+
+    Arguments
+    ---------
+        - spec (str or data) : valid spec for object or data
+
+    Returns
+    -------
+        - list of strs : attribute names
+    """
+
+    data = get_data(spec)
+    return list(data.attributes.keys())
+
+# ----------------------------------------------------------------------------------------------------
+# List of attributes
+
+def get_attributes(spec):
+    """ Get all the informations of the attributes of a Blender object.
+
+    Arguments
+    ---------
+        - spec (str or data) : valid spec for object or data
+
+    Returns
+    -------
+        - dict of dicts : attribute informations.
+    """
+
+    data = get_data(spec)
+    return {name: get_attribute_info(data, name) for name in get_attribute_names(data)}
+
+# ----------------------------------------------------------------------------------------------------
+# Delete an attribute
+
+def delete_attribute(spec, name):
+    """ Delete an attribute.
+
+    Arguments
+    ---------
+        - spec (str or data) : valid spec for object or data
+        - name (str) : attribute name
+    """
+
+    data = get_data(spec)
+
+    battr = data.attributes.get(name)
+    if battr is not None:
+        data.attributes.remove(battr)
+
+# ----------------------------------------------------------------------------------------------------
+# Create an attribute
+
+def create_attribute(spec, name, data_type, domain='POINT', value=None):
+    """ Create an attribute into a Blender object.
+
+    Note that if the attribute already exists, it is deleted.
+
+    Arguments
+    ---------
+        - spec (str or data) : valid spec for object or data
+        - name (str) : attribute name
+        - data_type (str) : attribute data type
+        - domain (str='POINT') : domain of creation
+        - value (any=None) : default value
+    """
+
+    data = get_data(spec)
+
+    battr = data.attributes.get(name)
+    if battr is None:
+        data.attributes.new(name, type=data_type, domain=domain)
+
+    if value is not None:
+        set_attribute(data, name, value)
+
+
+def create_float_attribute(spec, name, domain='POINT', value=None):
+    """ Create a float attribute into a Blender object.
+
+    Arguments
+    ---------
+        - spec (str or data) : valid spec for object or data
+        - name (str) : attribute name
+        - domain (str='POINT') : domain of creation
+        - value (any=None) : default value
+    """
+
+    create_attribute(spec, name, data_type='FLOAT', domain=domain, value=value)
+
+def create_int_attribute(spec, name, domain='POINT', value=None):
+    """ Create an int attribute into a Blender object.
+
+    Arguments
+    ---------
+        - spec (str or data) : valid spec for object or data
+        - name (str) : attribute name
+        - domain (str='POINT') : domain of creation
+        - value (any=None) : default value
+    """
+    create_attribute(spec, name, data_type='INT', domain=domain, value=value)
+
+def create_bool_attribute(spec, name, domain='POINT', value=None):
+    """ Create a bool attribute into a Blender object.
+
+    Arguments
+    ---------
+        - spec (str or data) : valid spec for object or data
+        - name (str) : attribute name
+        - domain (str='POINT') : domain of creation
+        - value (any=None) : default value
+    """
+    create_attribute(spec, name, data_type='BOOLEAN', domain=domain, value=value)
+
+def create_vector_attribute(spec, name, domain='POINT', value=None):
+    """ Create a vector attribute into a Blender object.
+
+    Arguments
+    ---------
+        - spec (str or data) : valid spec for object or data
+        - name (str) : attribute name
+        - domain (str='POINT') : domain of creation
+        - value (any=None) : default value
+    """
+    create_attribute(spec, name, data_type='FLOAT_VECTOR', domain=domain, value=value)
+
+def create_vector2_attribute(spec, name, domain='CORNER', value=None):
+    """ Create a vector2 attribute into a Blender object.
+
+    Arguments
+    ---------
+        - spec (str or data) : valid spec for object or data
+        - name (str) : attribute name
+        - domain (str='POINT') : domain of creation
+        - value (any=None) : default value
+    """
+    create_attribute(spec, name, data_type='FLOAT2', domain=domain, value=value)
+
+def create_color_attribute(spec, name, domain='POINT', value=None):
+    """ Create a float color attribute into a Blender object.
+
+    Arguments
+    ---------
+        - spec (str or data) : valid spec for object or data
+        - name (str) : attribute name
+        - domain (str='POINT') : domain of creation
+        - value (any=None) : default value
+    """
+    create_attribute(spec, name, data_type='FLOAT_COLOR', domain=domain, value=value)
+
+def create_rgb_color_attribute(spec, name, domain='POINT', value=None):
+    """ Create a rgb color attribute into a Blender object.
+
+    Arguments
+    ---------
+        - spec (str or data) : valid spec for object or data
+        - name (str) : attribute name
+        - domain (str='POINT') : domain of creation
+        - value (any=None) : default value
+    """
+    create_attribute(spec, name, data_type='BYTE_COLOR', domain=domain, value=value)
+
+# ----------------------------------------------------------------------------------------------------
+# Get the attribute value
+
+TYPES = {
+    'FLOAT'         : {'dtype': float,  'size': 1, 'shape': (),   'name': 'value'},
+    'INT'           : {'dtype': int,    'size': 1, 'shape': (),   'name': 'value'},
+    'FLOAT_VECTOR'  : {'dtype': float,  'size': 3, 'shape': (3,), 'name': 'vector'},
+    'FLOAT_COLOR'   : {'dtype': float,  'size': 4, 'shape': (4,), 'name': 'color'},
+    'BYTE_COLOR'    : {'dtype': 'u1',   'size': 4, 'shape': (4,), 'name': 'color_srgb'},
+    'STRING'        : {'dtype': 'U128', 'size': 0, 'shape': (),   'name': 'value'},
+    'BOOLEAN'       : {'dtype': bool,   'size': 1, 'shape': (),   'name': 'value'},
+    'FLOAT2'        : {'dtype': float,  'size': 2, 'shape': (2,), 'name': 'vector'},
+    'INT8'          : {'dtype': int,    'size': 1, 'shape': (),   'name': 'value'},
+    'INT32_2D'      : {'dtype': int,    'size': 2, 'shape': (2,), 'name': 'value'},
+    }
+
+def get_attribute(spec, name):
+
+    data  = get_data(spec)
+    battr = data.attributes[name]
+    n     = len(battr.data)
+
+    value_size = TYPES[battr.data_type]['size']
+    value_name = TYPES[battr.data_type]['name']
+    value_type = TYPES[battr.data_type]['dtype']
+
+    # ----- String
+
+    if battr.data_type == 'STRING':
+        return [str(item.value) for item in battr.data]
+
+    # ----- Byte color = read a float ansd store u8
+
+    elif battr.data_type == 'BYTE_COLOR':
+        a = np.empty(n*4, dtype=float)
+        battr.data.foreach_get('color_srgb', a)
+        return np.reshape(np.clip(a*255, 0, 255).astype(value_type), (n, 4))
+
+    # ------ Other toes
+
+    else:
+        a = np.empty(n*value_size, dtype=value_type)
+        battr.data.foreach_get(value_name, a)
+
+        return np.reshape(a, (n,) + TYPES[battr.data_type]['shape'])
+
+# ----------------------------------------------------------------------------------------------------
+# Set attribute value
+
+def set_attribute(spec, name, value):
+
+    data  = get_data(spec)
+    battr = data.attributes[name]
+    n     = len(battr.data)
+
+    value_size = TYPES[battr.data_type]['size']
+    value_name = TYPES[battr.data_type]['name']
+    value_type = TYPES[battr.data_type]['dtype']
+
+    # ----- String
+
+    if battr.data_type == 'STRING':
+        if isinstance(value, str):
+            for i in range(n):
+                battr.data[i].value = value
+
+        elif len(value) == 1:
+            for i in range(n):
+                battr.data[i].value = value[0]
+
+        else:
+            for i in range(n):
+                battr.data[i].value = value[i]
+
+        return
+
+    # ----- Byte color type : internal is u8 -> need conversion to float
+
+    if battr.data_type == 'BYTE_COLOR':
+        if isinstance(value, np.ndarray):
+            value = value/255
+        else:
+            value = np.array(value)/255
+        value_type = float
+
+    # ----- Set the array to the layer
+
+    if n*value_size == np.size(value):
+        battr.data.foreach_set(value_name, np.reshape(value, np.size(value)).astype(value_type))
+
+    else:
+        nvalues = np.size(value)//value_size
+        if n % nvalues != 0:
+            raise Exception(f"Set Attribute Error: Object attribute '{name}' len is {n} (size={n*value_size}). Impossible to set with value of shape {np.shape(value)} (size={np.size(value)}).")
+
+        item_size = n//nvalues
+        a = np.empty((nvalues, item_size, value_size), dtype=value_type)
+        a[:] = np.reshape(value, (nvalues, 1, value_size))
+
+        battr.data.foreach_set(value_name, np.reshape(a, np.size(a)))
+
+
 
 # ====================================================================================================
 # Pillow image
