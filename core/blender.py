@@ -540,57 +540,57 @@ def get_spline_points(bl_spline):
         coll.foreach_get(attr, a)
         return np.reshape(a, (len(coll),) + shape)
 
-    points = {'type': SPLINE_TYPES.index(bl_spline.type)}
+    spline = {'type': SPLINE_TYPES.index(bl_spline.type)}
 
     if bl_spline.type == 'BEZIER':
-        points['points']            = read(bl_spline.bezier_points, 'co',                float, (3,))
+        spline['points']            = read(bl_spline.bezier_points, 'co',                float, (3,))
 
-        points['handle_left']       = read(bl_spline.bezier_points, 'handle_left',       float, (3,))
-        points['handle_right']      = read(bl_spline.bezier_points, 'handle_right',      float, (3,))
+        spline['handle_left']       = read(bl_spline.bezier_points, 'handle_left',       float, (3,))
+        spline['handle_right']      = read(bl_spline.bezier_points, 'handle_right',      float, (3,))
         # Key name is the one of Geometry Nodes which is different from python name
-        points['handle_type_left']  = read(bl_spline.bezier_points, 'handle_left_type',  int,   ())
-        points['handle_type_right'] = read(bl_spline.bezier_points, 'handle_right_type', int,   ())
+        spline['handle_type_left']  = read(bl_spline.bezier_points, 'handle_left_type',  int,   ())
+        spline['handle_type_right'] = read(bl_spline.bezier_points, 'handle_right_type', int,   ())
 
-        points['radius']      = read(bl_spline.bezier_points, 'radius',            float, ())
-        points['tilt']        = read(bl_spline.bezier_points, 'tilt',              float, ())
+        spline['radius']      = read(bl_spline.bezier_points, 'radius',            float, ())
+        spline['tilt']        = read(bl_spline.bezier_points, 'tilt',              float, ())
 
     else:
-        points['points']      = read(bl_spline.points, 'co',     float, (4,))
+        spline['points']      = read(bl_spline.points, 'co',     float, (4,))
 
-        points['radius']      = read(bl_spline.points, 'radius', float, ())
-        points['tilt']        = read(bl_spline.points, 'tilt',   float, ())
+        spline['radius']      = read(bl_spline.points, 'radius', float, ())
+        spline['tilt']        = read(bl_spline.points, 'tilt',   float, ())
 
-    return points
+    return spline
 
 # ----------------------------------------------------------------------------------------------------
 # Set the points of a Blender spline
 
-def set_spline_points(bl_spline, points):
+def set_spline_points(bl_spline, spline):
 
     def write(coll, attr, a):
         if a is None:
             return
         coll.foreach_set(attr, np.reshape(a, np.size(a)))
 
-    if points is None:
+    if spline is None:
         return
 
     if bl_spline.type == 'BEZIER':
-        write(bl_spline.bezier_points, 'co',                points['points'])
-        write(bl_spline.bezier_points, 'handle_left',       points.get('handle_left'))
-        write(bl_spline.bezier_points, 'handle_right',      points.get('handle_right'))
+        write(bl_spline.bezier_points, 'co',                spline['points'])
+        write(bl_spline.bezier_points, 'handle_left',       spline.get('handle_left'))
+        write(bl_spline.bezier_points, 'handle_right',      spline.get('handle_right'))
         # Key name is the one of Geometry Nodes which is different from python name
-        write(bl_spline.bezier_points, 'handle_left_type',  points.get('handle_type_left'))
-        write(bl_spline.bezier_points, 'handle_right_type', points.get('handle_type_right'))
+        write(bl_spline.bezier_points, 'handle_left_type',  spline.get('handle_type_left'))
+        write(bl_spline.bezier_points, 'handle_right_type', spline.get('handle_type_right'))
 
-        write(bl_spline.bezier_points, 'radius', points.get('radius'))
-        write(bl_spline.bezier_points, 'tilt',   points.get('tilt'))
+        write(bl_spline.bezier_points, 'radius', spline.get('radius'))
+        write(bl_spline.bezier_points, 'tilt',   spline.get('tilt'))
 
     else:
-        write(bl_spline.points, 'co',     points['points'])
+        write(bl_spline.points, 'co',     spline['points'])
 
-        write(bl_spline.points, 'radius', points.get('radius'))
-        write(bl_spline.points, 'tilt',   points.get('tilt'))
+        write(bl_spline.points, 'radius', spline.get('radius'))
+        write(bl_spline.points, 'tilt',   spline.get('tilt'))
 
 
 # ----------------------------------------------------------------------------------------------------
@@ -601,32 +601,50 @@ def get_splines(spec):
 
     Attribute names not starting with _ char are Blender spline attributes.
 
+    Returns a dictionary with the following entries:
+        - types array of ints) : the spline types
+        - cyclic (array of bools) : splines are cyclic or not
+        - resolution (array of ints) : spline resolutions
+        - material_index (array of ints) : spline material indices
+        - splines (array of dicts) : see below
+
+    *'types'* is the only mandatory attribute. The length of this array gives the number of splines.
+    If the object has no spline, the dictionary {'types': []} is returned.
+
+    The spline dictionaries have the following entries:
+        - points (array of 3-vectors or 4-vectors) : point positions
+        - radius (array of floats) : point radius
+        - tilt (array of floats) : point tilts
+        - handle_left (array of 3-vectors or 4-vectors) : left handle positions
+        - handle_right (array of 3-vectors or 4-vectors) : right handle positions
+        - handle_type_left (array of ints) : left handle types
+        - handle_type right (array of ints) : right handle types
+
     Arguments
     ---------
         - spec (str or Curve Object) : the Curve object
-        - with_points (bool=True) : Read the splines points
 
     Returns
     -------
-        - array of dictionaries : one dictionary per spline
+        - A dictionary containing the splines data
     """
 
     bl_splines = get_curve(spec).splines
     nsplines   = len(bl_splines)
     if nsplines == 0:
-        return {'type': []}
+        return {'types': []}
 
     # ----------------------------------------------------------------------------------------------------
     # Prepare the dictionary
 
-    splines_dict = {'types' : [0]*nsplines, 'points' : [None]*nsplines}
+    splines_dict = {'types' : [0]*nsplines, 'splines' : [None]*nsplines}
 
     # ----------------------------------------------------------------------------------------------------
-    # Loop on the splines to read the types and the number fo points
+    # Loop on the splines to read the types and the number of points
 
     for i, bl_spline in enumerate(bl_splines):
-        splines_dict['types' ][i] = SPLINE_TYPES.index(bl_spline.type)
-        splines_dict['points'][i] = get_spline_points(bl_spline)
+        splines_dict['types'  ][i] = SPLINE_TYPES.index(bl_spline.type)
+        splines_dict['splines'][i] = get_spline_points(bl_spline)
 
     # ----------------------------------------------------------------------------------------------------
     # Read the splines attributes
@@ -667,11 +685,11 @@ def set_splines(spec, splines_dict, update=True):
     # ----------------------------------------------------------------------------------------------------
     # Loop on the splines
 
-    for i, (spline_type, points) in enumerate(zip(splines_dict['types'], splines_dict['points'])):
+    for i, (spline_type, spline) in enumerate(zip(splines_dict['types'], splines_dict['splines'])):
 
         # Create if update
         if update:
-            count = len(points['points'])
+            count = len(spline['points'])
             bl_spline = bl_splines.new(SPLINE_TYPES[spline_type])
             if spline_type == BEZIER:
                 bl_spline.bezier_points.add(count - len(bl_spline.bezier_points))
@@ -680,7 +698,7 @@ def set_splines(spec, splines_dict, update=True):
 
         # Transfer the points
         bl_spline = bl_splines[i]
-        set_spline_points(bl_spline, points)
+        set_spline_points(bl_spline, spline)
 
     # ----------------------------------------------------------------------------------------------------
     # Write the splines attributes

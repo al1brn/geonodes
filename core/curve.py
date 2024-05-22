@@ -40,15 +40,19 @@ DATA_TEMP_NAME = "GEOPY_TEMP"
 
 class Curve(Geometry):
 
-    def __init__(self, materials=None, types=None, points=None, **attributes):
+    def __init__(self, types=None, splines=None, cyclic=None, resolution=None, material_index=None, materials=None, **attributes):
+    #def __init__(self, materials=None, types=None, points=None, **attributes):
         """ Curve geometry.
 
         Arguments
         ---------
-            - types (list of ints=None) : spline types in [BEZIER=0, POLY=1, NURBS=2]
-            - points (splines dictionnary = None) : splines points dictionnary
-            - materials (list of str = None)
-            - attributes : spline attributes
+            - types (array of ints = None) : spline types in [BEZIER=0, POLY=1, NURBS=2]
+            - points (array of spline dictionnaries = None) : array of splines dictionnary
+            - cyclic (array of bools = None) : splines are cyclic
+            - resolution (array of ints = None) : splines resolution
+            - material_index (arrays of ints = None) : material indices
+            - materials (list of strs = None) : materials list
+            - attributes : custom spline attributes
         """
 
         self.points  = ControlPointDomain.New()
@@ -77,17 +81,33 @@ class Curve(Geometry):
             return
 
         self.splines.add(nsplines, curve_type=types)
-        for name, value in attributes.items():
-            setattr(self.splines, name, value)
+
+        # ----------------------------------------------------------------------------------------------------
+        # Spline attributes
+
+        if cyclic is not None:
+            setattr(self.splines, 'cyclic', cyclic)
+
+        if resolution is not None:
+            setattr(self.splines, 'resolution', resolution)
+
+        if material_index is not None:
+            setattr(self.splines, 'material_index', material_index)
+
+        for attr_name, attr_value in attributes.items():
+            setattr(self.splines, attr_name, attr_value)
 
         # ----------------------------------------------------------------------------------------------------
         # Set the points
 
-        total = sum([len(spline_points['points']) for spline_points in points])
+        if splines is None or len(splines) != nsplines:
+            raise Exception(f"Curve init error: the Curve is initialized with {nsplines}. The 'splines' argument must be an array of {nsplines} dicts.")
+
+        total = sum([len(spline_points['points']) for spline_points in splines])
         self.points.add(total)
 
         offset = 0
-        for i_spline, (curve_type, spline_points) in enumerate(zip(types, points)):
+        for i_spline, (curve_type, spline_points) in enumerate(zip(types, splines)):
 
             count = len(spline_points['points'])
             self.splines.loop_start[i_spline] = offset
@@ -101,7 +121,7 @@ class Curve(Geometry):
                 if np.shape(pts)[-1] == 3:
                     self.points.position[offset:offset+count] = pts
                 else:
-                    self.points.points4[offset:offset+count] = pts
+                    self.points[offset:offset+count].points4 = pts
 
             for name in ['handle_left', 'handle_right', 'handle_type_left', 'handle_type_right', 'radius', 'tilt']:
                 a = spline_points.get(name)
@@ -220,7 +240,7 @@ class Curve(Geometry):
             - mesh (Blender Mesh instance) : the mesh to load
         """
 
-        return cls(materials=[mat.name for mat in data.materials], **blender.get_splines(data))
+        return cls(**blender.get_splines(data), materials=[mat.name for mat in data.materials])
 
 
     # ====================================================================================================
@@ -318,9 +338,9 @@ class Curve(Geometry):
     def components(self):
 
         if len(self.splines) == 0:
-            return {'types': [], 'points': []}
+            return {'types': [], 'splines': []}
 
-        splines_dict = {'types': self.splines.curve_type, 'points': [None]*len(self.splines), 'materials': [name for name in self.materials]}
+        splines_dict = {'types': self.splines.curve_type, 'splines': [None]*len(self.splines), 'materials': [name for name in self.materials]}
 
         # ----------------------------------------------------------------------------------------------------
         # Splines attributes
@@ -337,7 +357,7 @@ class Curve(Geometry):
         for i_spline, (curve_type, count) in enumerate(zip(self.splines.curve_type, self.splines.loop_total)):
 
             spline_points = {}
-            splines_dict['points'][i_spline] = spline_points
+            splines_dict['splines'][i_spline] = spline_points
 
             if curve_type == blender.BEZIER:
                 spline_points['points'] = np.array(self.points.attributes['position'][offset:offset+count])
@@ -524,7 +544,7 @@ class Curve(Geometry):
         return self
 
     # =============================================================================================================================
-    # add splines
+    # Add splines
 
     def add(self, points, curve_type='POLY',
             material_index=None, radius=None, tilt=None, cyclic=None, resolution=None,
@@ -565,7 +585,7 @@ class Curve(Geometry):
 
         # ----- Build the splines dict
 
-        splines_dict = {'types': [blender.SPLINE_TYPES.index(ctype.upper()) for ctype in curve_type], 'points': [None]*nsplines}
+        splines_dict = {'types': [blender.SPLINE_TYPES.index(ctype.upper()) for ctype in curve_type], 'splines': [None]*nsplines}
 
         def add_spline_attr(name, value):
             if value is None:
@@ -579,19 +599,17 @@ class Curve(Geometry):
                 splines_dict[name] = value
 
         add_spline_attr('material_index',  material_index)
-        #add_spline_attr('radius',          radius)
-        #add_spline_attr('tilt',            tilt)
         add_spline_attr('cyclic',          cyclic)
         add_spline_attr('resolution',      resolution)
 
         for i, pts in enumerate(points):
-            splines_dict['points'][i] = {'points': pts}
-            if handle_left       is not None: splines_dict['points'][i]['handle_left']       = handle_left[i]
-            if handle_right      is not None: splines_dict['points'][i]['handle_right']      = handle_right[i]
-            if handle_type_left  is not None: splines_dict['points'][i]['handle_type_left']  = handle_type_left[i]
-            if handle_type_right is not None: splines_dict['points'][i]['handle_type_right'] = handle_type_right[i]
-            if radius is not None:            splines_dict['points'][i]['radius']            = radius[i]
-            if tilt is not None:              splines_dict['points'][i]['tilt']              = tilt[i]
+            splines_dict['splines'][i] = {'points': pts}
+            if handle_left       is not None: splines_dict['splines'][i]['handle_left']       = handle_left[i]
+            if handle_right      is not None: splines_dict['splines'][i]['handle_right']      = handle_right[i]
+            if handle_type_left  is not None: splines_dict['splines'][i]['handle_type_left']  = handle_type_left[i]
+            if handle_type_right is not None: splines_dict['splines'][i]['handle_type_right'] = handle_type_right[i]
+            if radius is not None:            splines_dict['splines'][i]['radius']            = radius[i]
+            if tilt is not None:              splines_dict['splines'][i]['tilt']              = tilt[i]
 
         self.join(Curve(**splines_dict))
 

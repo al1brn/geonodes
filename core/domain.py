@@ -124,6 +124,19 @@ class Domain:
             self._owner.init_selection(self)
 
     # ====================================================================================================
+    # Iteration
+
+    def __iter__(self):
+        self._iter_current = 0
+        return self
+
+    def __next__(self):
+        if self._iter_current < len(self):
+            self._iter_current += 1
+            return self[self._iter_current - 1]
+        raise StopIteration
+
+    # ====================================================================================================
     # Selection : common methods
 
     # ----- Flag property
@@ -2313,7 +2326,6 @@ class SplineDomain(FaceSplineDomain):
 
     # ====================================================================================================
     # Properties
-
 
     @property
     def position(self):
