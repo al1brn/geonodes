@@ -998,8 +998,8 @@ class Curve(Geometry):
         # Field function
 
         poles = AttrVectors(charge_locations, charge=charges)
-        field_func = lambda points, return_color=False: field.electric_field(points,
-                            locations=poles.co, charges=poles.charge, return_color=return_color)
+        field_func = lambda points: field.electric_field(points,
+                            locations=poles.co, charges=poles.charge)
 
         # ----------------------------------------------------------------------------------------------------
         # Starting points
@@ -1044,7 +1044,6 @@ class Curve(Geometry):
         lines = field.field_lines(field_func,
             start_points    = start_points,
             backwards       = backwards,
-            return_color    = field_color,
             max_length      = frag_length,
             length_scale    = frag_scale,
             end_points      = charge_locations,
@@ -1054,13 +1053,7 @@ class Curve(Geometry):
             seed            = rng.integers(1 << 63),
             )
 
-        curves = cls()
-        for avects, cyclic in lines:
-            if len(avects) <= 1:
-                continue
-            curves.add(avects.co, curve_type='POLY', cyclic=cyclic, radius=avects.radius, tilt=avects.color)
-
-        return curves
+        return cls(**lines)
 
     # =============================================================================================================================
     # Lines of magnetic field
@@ -1093,8 +1086,8 @@ class Curve(Geometry):
         # Field function
 
         magnets = AttrVectors(magnet_locations, moment=moments)
-        field_func = lambda points, return_color=False: field.magnetic_field(points,
-                            locations=magnets.co, moments=magnets.moment, return_color=return_color)
+        field_func = lambda points: field.magnetic_field(points,
+                            locations=magnets.co, moments=magnets.moment)
 
         # ----------------------------------------------------------------------------------------------------
         # Starting points
@@ -1143,7 +1136,6 @@ class Curve(Geometry):
         lines = field.field_lines(field_func,
             start_points    = start_points,
             backwards       = backwards,
-            return_color    = field_color,
             max_length      = frag_length,
             length_scale    = frag_scale,
             end_points      = magnet_locations,
@@ -1153,13 +1145,7 @@ class Curve(Geometry):
             seed            = rng.integers(1 << 63),
             )
 
-        curves = cls()
-        for avects, cyclic in lines:
-            if len(avects) <= 1:
-                continue
-            curves.add(avects.co, curve_type='POLY', cyclic=cyclic, radius=avects.radius, tilt=avects.color)
-
-        return curves
+        return cls(**lines)
 
     # =============================================================================================================================
     # =============================================================================================================================
