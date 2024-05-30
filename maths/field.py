@@ -38,16 +38,56 @@ def radial_field(points, power=1, factor=1.):
 # =============================================================================================================================
 # Electric field
 
-def electric_field(points, locations=(0, 0, 0), charges=1, epsilon0=1., return_color=False):
+def electric_field(points, locations=(0, 0, 0), charges=1., epsilon0=1.):
+    """ Compute the electric field produced by charges at locations.
 
-    # ----- Field at a single point
+    Arguments
+    ---------
+    - points (array of vectors) : points where to compute the field
+    - locations (array of vectors = (0., 0., 0.)) : locations of the electric charges
+    - charges (array of floats = 1.) : electric charges
+    - epsilon0 (float = 1.) : epsilon0 constant
+
+    Returns
+    -------
+    - array of vectors, array of floats or vector, float
+    """
+
+    K = 1/4/np.pi/epsilon0
+
+    # ====================================================================================================
+    # Single point algorithm
 
     if np.shape(points) == (3,):
-        v = electric_field([points], locations=locations, charges=charges, epsilon0=epsilon0, return_color=return_color)
-        if return_color:
-            return v
+
+        # ----- Single charge
+
+        if np.shape(locations) == (3,):
+            v = np.array(points) - np.array(locations)
+            n = max(np.linalg.norm(v), 1e-4)
+            return v*(K*charges/n**3), charges/n**2
+
+        # ----- Multiple charges
+
+        v = points - np.array(locations, float)
+        n = np.linalg.norm(v, axis=-1)
+        v /= n[:, None]**3
+
+        if np.shape(charges) == (1,):
+            v *= charges
+            charges = np.resize(charges, len(locations))
+        elif isinstance(charges, np.ndarray):
+            v *= charges[:, None]
         else:
-            return v[0]
+            v *= np.array(charges)[:, None]
+
+        E = np.sum(v, axis=0)
+
+        E_pos = np.sum(v[charges > 0], axis=0)
+        return E*K, np.linalg.norm(E_pos) - np.linalg.norm(E - E_pos)
+
+    # ====================================================================================================
+    # Multiple points algorithm
 
     # ----- Make sure locations is a proper array
 
@@ -55,8 +95,116 @@ def electric_field(points, locations=(0, 0, 0), charges=1, epsilon0=1., return_c
     if len(locations.shape) == 1:
         locations = np.reshape(locations, (1,) + np.shape(locations))
 
-    # ----- Return color : need to compute posive and negative field to compare them
+    # ----- Compute the electric field separating negative and positive charges to
+    # compute the "color" attribute
 
+    charges_count = len(locations)
+    if np.shape(charges) in [(), (1,), (charges_count,)]:
+        charges = np.resize(charges, charges_count)
+    else:
+        raise AttributeError(f"electric_field error: 'locations' attributes has {charges_count} locations which is not compatible with the number of charges {np.shape(charges)}")
+
+    E_pos = np.zeros((len(points), 3), float)
+    E_neg = np.array(E_pos)
+    for location, charge in zip(locations, charges):
+        v = points - location
+        n = np.maximum(np.linalg.norm(v, axis=-1), 1e-4)
+        v /= (n**3)[:, None]
+        if charge > 0:
+            E_pos += v*charge
+        else:
+            E_neg += v*charge
+
+    # ----------------------------------------------------------------------------------------------------
+    # Color attribute
+
+    return (E_pos + E_neg)*K, np.linalg.norm(E_pos) - np.linalg.norm(E_neg)
+
+# =============================================================================================================================
+# Electric field
+
+def electric_field_NP(points, locations=(0, 0, 0), charges=1, epsilon0=1.):
+    """ Compute the electric field produced by charges at locations.
+
+    -------------------------------------------------------------------------------------
+    NUMPY version which is less efficient than the naive implementation with python loops
+    -------------------------------------------------------------------------------------
+
+    Arguments
+    ---------
+    - points (array of vectors) : points where to compute the field
+    - locations (array of vectors = (0., 0., 0.)) : locations of the electric charges
+    - charges (array of floats = 1.) : electric charges
+    - epsilon0 (float = 1.) : epsilon0 constant
+    - return_color (bool = False) : return color attribute in an AttrVectors array of True
+
+    Returns
+    -------
+    - array of vectors and, if return_color is True, an array of floats
+    """
+
+    # ----- Field at a single point
+
+    if np.shape(points) == (3,):
+        E, color = electric_field_NP([points], locations=locations, charges=charges, epsilon0=epsilon0)
+        return E[0], color[0]
+
+    # ----- Make sure locations and charges are proper arrays
+
+    locations = np.array(locations, float)
+    if len(locations.shape) == 1:
+        locations = np.reshape(locations, (1,) + np.shape(locations))
+
+    if np.shape(charges) == ():
+        charges_ = charges
+        charges = np.zeros(len(locations), float)
+        charges[:] = charges_
+
+    elif np.shape(charges) == (1,):
+        charges = np.resize(charges, len(locations)).astype(float)
+
+    elif not isinstance(charges, np.ndarray):
+        charges = np.array(charges)
+
+    # ----- Compute posive and negative fields separately to compare them
+
+    i_neg = charges < 0
+    i_pos = np.logical_not(i_neg)
+
+    E = np.zeros((2, len(points), 3), float)
+    indices = i_neg
+    for i_E in range(2):
+        if np.sum(indices) == 0:
+            indices = i_pos
+            continue
+
+        locs = locations[indices]
+        chgs = charges[indices]
+
+        # All vectors form charge locations to points
+        v = np.array(points)[:, None] - locs[None]
+
+        # Vector norms
+        norm = np.linalg.norm(v, axis=-1)
+        norm[norm < .001] = 1.
+        v /= (norm**3)[..., None]
+
+        # Multiply by the charges
+        v *= chgs[None, :, None]
+
+        # Electric field
+        E[i_E] = np.sum(v, axis=1)
+
+        # ----- Neg to pos
+        indices = i_pos
+
+    # ----- Resulting field
+
+    colors = np.linalg.norm(E[1], axis=-1) - np.linalg.norm(E[0], axis=-1)
+
+    return (E[0] + E[1])*(1/4/np.pi/epsilon0), colors
+
+    """
     if return_color:
 
         # Compute the field
@@ -101,20 +249,96 @@ def electric_field(points, locations=(0, 0, 0), charges=1, epsilon0=1., return_c
 
     # Return vectors
     return np.sum(v, axis=1)*(1/4/np.pi/epsilon0)
+    """
 
 # =============================================================================================================================
 # Magnetic field
 
-def magnetic_field(points, locations=(0, 0, 0), moments=(1, 0, 0), mu0=1., return_color=False):
+def magnetic_field(points, locations=(0, 0, 0), moments=(1, 0, 0), mu0=1.):
+    """ Compute the magnetic field produced by magnetic moments at locations.
+
+    Arguments
+    ---------
+    - points (array of vectors) : points where to compute the field
+    - locations (array of vectors = (0., 0., 0.)) : locations of the magnetic moments
+    - moments (array of vectors = (1., 0., 0.)) : magnetic moments
+    - mu0 (float = 1.) : mu0 constant
+
+    Returns
+    -------
+    - array of vectors and, if return_color is True, an array of floats
+    """
 
     # ----- Field at a single point
 
     if np.shape(points) == (3,):
-        v = magnetic_field([points], locations=locations, moments=moments, mu0=mu0, return_color=return_color)
-        if return_color:
-            return v
-        else:
-            return v[0]
+        v, col = magnetic_field([points], locations=locations, moments=moments, mu0=mu0)
+        return v[0], col[0]
+
+    if not isinstance(points, np.ndarray):
+        points = np.array(points)
+
+    # ---------------------------------------------------------------------------
+    # Normalize inputs
+
+    locations = np.array(locations, float)
+    if len(locations.shape) == 1:
+        locations = np.reshape(locations, (1,) + np.shape(locations))
+
+    moments_ = np.array(locations)
+    moments_[:] = moments
+    moments = moments_
+
+    # ---------------------------------------------------------------------------
+    # Compute field
+
+    B = np.zeros((len(points), 3), float)
+    color = np.zeros(len(points), float)
+    for location, moment in zip(locations, moments):
+
+        v = points - location
+        n = np.maximum(np.linalg.norm(v, axis=-1), 1e-4)
+
+        er = v/n[:, None]
+        n2 = 1/(n*n)
+
+        f_r = np.einsum('...i, ...i', er, moment)*n2
+        f_n = np.cross(er, np.cross(er, moment))*n2[:, None]
+
+        del n2
+
+        B += (er*f_r[:, None] + f_n)*(mu0/4/np.pi)
+        color += f_r
+
+    return B, color
+
+# =============================================================================================================================
+# Magnetic field
+
+def magnetic_field_NP(points, locations=(0, 0, 0), moments=(1, 0, 0), mu0=1.):
+    """ Compute the magnetic field produced by magnetic moments at locations.
+
+    -------------------------------------------------------------------------------------
+    NUMPY version which is less efficient than the naive implementation with python loops
+    -------------------------------------------------------------------------------------
+
+    Arguments
+    ---------
+    - points (array of vectors) : points where to compute the field
+    - locations (array of vectors = (0., 0., 0.)) : locations of the magnetic moments
+    - moments (array of vectors = (1., 0., 0.)) : magnetic moments
+    - mu0 (float = 1.) : mu0 constant
+
+    Returns
+    -------
+    - array of vectors or AttrVectors if return_color is True
+    """
+
+    # ----- Field at a single point
+
+    if np.shape(points) == (3,):
+        v, col = magnetic_field([points], locations=locations, moments=moments, mu0=mu0)
+        return v[0], col[0]
 
     # ---------------------------------------------------------------------------
     # Normalize inputs
@@ -147,14 +371,7 @@ def magnetic_field(points, locations=(0, 0, 0), moments=(1, 0, 0), mu0=1., retur
 
     vect = np.sum(er*f_r[..., None] + f_n, axis=1)*(mu0/4/np.pi)
 
-    if return_color:
-        from geonodes import AttrVectors
-        return AttrVectors(vect, color=color)
-
-    else:
-        return vect
-
-
+    return vect, color
 
 # -----------------------------------------------------------------------------------------------------------------------------
 # A a dipole : uses the electric field
@@ -171,84 +388,6 @@ def magnetic_field_FROM_ELECTRIC(points, locations=(0, 0, 0), moments=(1, 0, 0),
     charge_locations[n:] = locations + dirs
 
     return electric_field(points, locations=charge_locations, charges=np.append(norms, -norms), epsilon0=1/mu0, return_color=return_color)
-
-
-
-
-
-
-
-
-# OLD VERSION
-
-def magnetic_field_OLD(points, locations=(0, 0, 0), moments=(1, 0, 0), mu0=1., return_color=False):
-
-    # ----- Field at a single point
-
-    if np.shape(points) == (3,):
-        v = magnetic_field([points], locations=locations, moments=moments, mu0=mu0, return_color=return_color)
-        if return_color:
-            return v
-        else:
-            return v[0]
-
-    # ---------------------------------------------------------------------------
-    # Normalize inputs
-
-    locations = np.array(locations, float)
-    if len(locations.shape) == 1:
-        locations = np.reshape(locations, (1,) + np.shape(locations))
-
-    moments_ = np.array(locations)
-    moments_[:] = moments
-    moments = moments_
-
-    # ---------------------------------------------------------------------------
-    # Compute field
-
-    v = np.array(points)[:, None] - locations[None, :]
-
-    norm = np.linalg.norm(v, axis=-1)
-    norm[norm < .001] = 1.
-    er = v/norm[..., None]
-
-    if True:
-        norm2 = (1/norm**2)
-
-        f_r = np.einsum('...i, ...i', er, moments[None, :])*norm2
-        f_n = np.cross(er, np.cross(er, moments[None, :]))*norm2[..., None]
-
-        del norm2
-
-        color = np.sum(f_r, axis=1)
-
-        vect = np.sum(er*f_r[..., None] + f_n, axis=1)*(mu0/4/np.pi)
-
-        if return_color:
-            from geonodes import AttrVectors
-            return AttrVectors(vect, color=color)
-
-        else:
-            return vect
-
-
-    else:
-        f_r = np.einsum('...i, ...i', er, moments[None, :])
-        f_n = np.cross(er, np.cross(er, moments[None, :]))
-
-        vect = np.sum((er*f_r[..., None] + f_n)/((norm**2)[..., None]), axis=1)*(mu0/4/np.pi)
-
-        if return_color:
-
-            from geonodes import AttrVectors
-
-            return AttrVectors(vect, color=1)
-
-            #return vect, np.sum(f_r/norm**2, axis=-1)
-        else:
-            return vect
-
-        #return np.sum((er*f_r[..., None] + f_n)/((norm**2)[..., None]), axis=1)*(mu0/4/np.pi)
 
 # =============================================================================================================================
 # Derivatives
@@ -331,9 +470,77 @@ def div2(field, points, dt=.01):
 # ====================================================================================================
 # Field lines
 
+# ----------------------------------------------------------------------------------------------------
+# Compute starting points around charge locations
+# Return start_points and backwards arguments
+
+def get_start_points(locations, charges=1, count=100, distance=.1, electric=True, seed=0):
+    """ Compute field line starting points around the charges or magnetic moment locations.
+
+    Arguments
+    ---------
+    - location (arrayc of vectors) : charges / moments locations
+    - charges (float or array of floats or vector or array of vectors) : the charges or moments
+    - count (int = 100) : number of starting points to create
+    - distance (float = .1) : distance to the centers
+    - electric (bool = True) : locations are electric charges (True) or magnetic moments (False)
+    - seed (any = 0) : random seed
+
+    Returns
+    -------
+    - Array of vectors, array of bools : line strat points and backwards flag
+    """
+
+    from geonodes.maths import distribs
+
+    points, _ = distribs.sphere_dist(radius=distance, count=count, seed=seed)
+
+    # ----- One single location
+
+    if np.shape(locations) == (3,):
+        if electric:
+            return locations + points, [charges < 0] * count
+        else:
+            charges = np.reshape(charges, (3,))
+            return locations + points, np.einsum('i, ...i', charges, points) < 0
+
+    # ----- Several locations
+
+    # Move points around random locations
+
+    n = len(locations)
+    rng = np.random.default_rng(seed+1)
+    inds = rng.integers(0, n, count)
+
+    # Charges as a proper array
+
+    if electric:
+        if np.size(charges) == 1:
+            charges = np.resize(charges, len(locations))
+        elif not isinstance(charges, np.ndarray):
+            charges = np.array(charges)
+
+        return points + np.array(locations)[inds], charges[inds] < 0
+
+    else:
+        if np.size(charges) == 3:
+            charges = np.resize(charges, (len(locations), 3))
+        elif not isinstance(charges, np.ndarray):
+            charges = np.array(charges)
+
+        return points + np.array(locations)[inds], np.einsum('...i, ...i', charges[inds], points) < 0
+
+
+# ----------------------------------------------------------------------------------------------------
+# Compute the lines of field
+
 def field_lines(field_func, start_points, backwards=False, return_color=False, max_length=None, length_scale=None, end_points=None, zero=1e-6, max_points=1000, precision=.1, sub_steps=10, seed=0, **kwargs):
 
-    """ Compute the lines of field
+    """ Com pute the lines of field
+
+    ---------------------------------------------------------------
+    NUMPY VERSION : seams to be better than the python loop version
+    ---------------------------------------------------------------
 
     Arguments :
     -----------
@@ -351,7 +558,7 @@ def field_lines(field_func, start_points, backwards=False, return_color=False, m
 
     Returns :
     ---------
-        - list of (AttrVectors, bool) : (points with attributes 'radius' and 'color', is_cyclic)
+        - Splines dictionary with keys {'types': [], 'cyclic':  [], 'splines': [{'points':, 'radius':, 'tilt': }]}
     """
 
     # ----------------------------------------------------------------------------------------------------
@@ -395,13 +602,9 @@ def field_lines(field_func, start_points, backwards=False, return_color=False, m
     radius = np.ones((count, max_points), float)
     colors = np.zeros((count, max_points), float)
 
-    if return_color:
-        avects = field_func(start_points, return_color=True, **kwargs)
-
-        radius[:, 0] = np.linalg.norm(avects.co, axis=-1)
-        colors[:, 0] = avects.color
-    else:
-        radius[:, 0] = np.linalg.norm(field_func(start_points, **kwargs), axis=-1)
+    vect, col = field_func(start_points, **kwargs)
+    radius[:, 0] = np.linalg.norm(vect, axis=-1)
+    colors[:, 0] = col
 
     # ----- Lengths and counts
     lengths = np.zeros(count, float)
@@ -444,11 +647,7 @@ def field_lines(field_func, start_points, backwards=False, return_color=False, m
         for _ in range(sub_steps):
 
             # ----- Vector at current location
-            if return_color:
-                avects = field_func(pts, return_color=True, **kwargs)
-                v0, cols = np.array(avects.co), avects.color
-            else:
-                v0 = field_func(pts, **kwargs)
+            v0, cols = field_func(pts, **kwargs)
 
             if has_backwards:
                 v0 *= rev
@@ -464,7 +663,8 @@ def field_lines(field_func, start_points, backwards=False, return_color=False, m
             v0 *= factor[..., None]
 
             # ----- Average with target vector for more accurracy
-            v1 = field_func(pts + v0, **kwargs)*(factor[..., None])
+            v1, _ = field_func(pts + v0, **kwargs)
+            v1 *=(factor[..., None])
             if has_backwards:
                 v1 *= rev
             v  = (v0 + v1)/2
@@ -491,98 +691,627 @@ def field_lines(field_func, start_points, backwards=False, return_color=False, m
         add_points(point_index, pts, norm, cols)
 
     # ----------------------------------------------------------------------------------------------------
-    # Return the lines
+    # Return the lines as a dict
 
-    from geonodes import AttrVectors
+    splines = {'types': [1]*len(counts), 'cyclic': [False]*len(counts), 'splines': []}
 
-    lines = []
     for line_index, n in enumerate(counts):
 
-        closed = np.linalg.norm(points[line_index, n-1] - points[line_index, 0]) <= precision
-        v_co     = points[line_index, :n]
-        v_radius = radius[line_index, :n]
-        v_color = colors[line_index, :n]
+        splines['cyclic'] = np.linalg.norm(points[line_index, n-1] - points[line_index, 0]) <= precision
+        if has_backwards and rev[line_index]:
+            splines['splines'].append({
+                'points': points[line_index, :n],
+                'radius': radius[line_index, :n],
+                'tilt'  : colors[line_index, :n],
+            })
+        else:
+            splines['splines'].append({
+                'points': np.flip(points[line_index, :n]),
+                'radius': np.flip(radius[line_index, :n]),
+                'tilt'  : np.flip(colors[line_index, :n]),
+            })
 
-        ok_flip = has_backwards and rev[line_index]
+    return splines
 
-        if ok_flip:
-            v_co     = np.flip(v_co, axis=0)
-            v_radius = np.flip(v_radius)
-            v_color  = np.flip(v_color)
 
-        lines.append((AttrVectors(v_co, radius=v_radius, color=v_color), closed))
+# -----------------------------------------------------------------------------------------------------------------------------
+# Compute the lines of field with loops in python
 
-        if False:
-            if ok_flip:
-                lines.append((np.flip(points[line_index, :n], axis=0), np.flip(radius[line_index, :n]), closed, cols))
-            else:
-                lines.append((points[line_index, :n], radius[line_index, :n], closed, cols))
+def field_lines_PY_LOOP(field_func, start_points, backwards=False, max_length=None, length_scale=None, end_points=None, zero=1e-6, max_points=1000, precision=.1, sub_steps=10, seed=0, **kwargs):
 
+    """ Compute the lines of field
+
+    ---------------------------------------------------------------
+    PYTHON LOOP Version : seams to be slower than the numpy version
+    ---------------------------------------------------------------
+
+    Arguments :
+    -----------
+        - field_func (function of template (array of vectors, **kwargs) -> array of vectors) : the field function
+        - start_points (array of vectors) : lines starting points
+        - backwards (bool = False) : build lines backwards
+        - max_length (float = None) : max line lengths
+        - length_scale (float = None) : line length scale if random length scale around central value
+        - end_points (array of vectors) : points where lines must end
+        - zero (float = 1e-6) : value below which the field is null
+        - max_points (int = 1000) : max number of points per spline
+        - precision (float = 0.1) : step length
+        - sub_steps (int = 10) : number of sub steps
+
+    Returns :
+    ---------
+        - Splines dictionary with keys {'types': [], 'cyclic':  [], 'splines': [{'points':, 'radius':, 'tilt': }]}
+    """
+
+    # ----------------------------------------------------------------------------------------------------
+    # Prepare variables
+
+    rng = np.random.default_rng(seed)
+
+    if not isinstance(start_points, np.ndarray):
+        start_points = np.array(start_points, float)
+
+    single = np.shape(start_points) == (3,)
     if single:
-        return lines[0]
+        start_points = np.reshape(start_points, (1, 3))
+
+    count = len(start_points)
+
+    if max_length is not None and length_scale is not None:
+        rng = np.random.default_rng(seed)
+        max_lengths = rng.normal(max_length, length_scale, count)
     else:
-        return lines
+        max_lengths = [max_length]*count
+
+    if not isinstance(end_points, np.ndarray):
+        end_points = np.array(end_points, float)
+
+    sub_steps = max(sub_steps, 1)
+    prec = precision / sub_steps
+
+    backs = np.empty(count, bool)
+    backs[:] = backwards
+    has_backwards = np.sum(backs) > 0
+    if has_backwards:
+        rev = np.ones((count, 1), int)
+        rev[backs, 0] = -1
+
+    # ====================================================================================================
+    # Core function building a line in a given direction
+    # Makes use of global arrays verts, radius and colors to avoid multiple array creations
+    # - arrays are created one at max size
+    # - copied at the final size for each spline
+
+    verts  = np.empty((max_points, 3), float)
+    radius = np.empty(max_points, float)
+    colors = np.empty(max_points, float)
+
+    def build_spline(start_point, max_length, back):
+
+        # ----- Initial point
+
+        vect, col = field_func(start_point, return_color=True, **kwargs)
+        verts[0], radius[0], colors[0] = np.array(start_point), np.linalg.norm(vect), col
+
+        length  = 0.
+        cyclic  = False
+        cur_loc = np.array(start_point)
+        count   = 0
+        stop    = False
+
+        for i_vertex in range(1, max_points):
+
+            # ----------------------------------------------------------------------------------------------------
+            # Sub steps
+
+            for _ in range(sub_steps):
+
+                # Vector at current location
+
+                v0 = field_func(cur_loc, return_color=False, **kwargs)
+
+                # Factor to have a length equal to prec
+
+                norm = np.linalg.norm(v0)
+                if norm < zero:
+                    stop = True
+                    break
+
+                factor = -prec/norm if back else prec/norm
+                v0 *= factor
+
+                # Vector at next location
+
+                v1 = field_func(cur_loc + v0, return_color=False, **kwargs)*factor
+
+                # Actuel step is the average of these two vectors
+
+                cur_loc += (v0 + v1)/2
+
+            # ----------------------------------------------------------------------------------------------------
+            # Add the point
+
+            vect, col = field_func(cur_loc, return_color=True, **kwargs)
+            verts[i_vertex], radius[i_vertex], colors[i_vertex] = np.array(cur_loc), np.linalg.norm(vect), col
+            length += precision
+
+            # ----------------------------------------------------------------------------------------------------
+            # Exit loop conditions
+
+            if i_vertex > 2:
+                ds = np.linalg.norm(cur_loc - start_point)
+                if ds <= precision:
+                    cyclic = True
+                    stop   = True
+
+            # ----- Line reaches one starting point
+
+            if end_points is not None:
+                ds  = np.linalg.norm(cur_loc - end_points, axis=-1)
+                if np.any(ds <= precision):
+                    stop   = True
+
+            # ----- Max length is reached
+
+            if max_length is not None and length >= max_length:
+                stop = True
+
+            # ----- Stop condition is reached
+
+            count = i_vertex + 1
+            if stop:
+                break
+
+        # ----------------------------------------------------------------------------------------------------
+        # Return the result
+
+        if back:
+            return {'spline' : {
+                        'points' : np.flip(np.array(verts[:count])),
+                        'radius' : np.flip(np.array(radius[:count])),
+                        'tilt'   : np.flip(np.array(colors[:count])),
+                        },
+                    'cyclic' : cyclic,
+                    }
+        else:
+            return {'spline': {
+                        'points' : np.array(verts[:count]),
+                        'radius' : np.array(radius[:count]),
+                        'tilt'   : np.array(colors[:count]),
+                        },
+                    'cyclic' : cyclic,
+                    }
+
+    # ====================================================================================================
+    # Loop on the field lines
+
+    splines = {'splines': [], 'cyclic': []}
+
+    for start_point, max_length, back in zip(start_points, max_lengths, backs):
+
+        spline = build_spline(start_point, max_length, back)
+        if len(spline['spline']['points']) > 2:
+            splines['cyclic'].append(spline['cyclic'])
+            splines['splines'].append(spline['spline'])
+
+    splines['types'] = [1]*len(splines['cyclic'])
+
+    return splines
+
+# -----------------------------------------------------------------------------------------------------------------------------
+# Compute the lines of field as bezier curves
+# Less precise but quicker (hope so)
+
+def bezier_field_lines(field_func, start_points, backwards=False, max_length=None, length_scale=None, end_points=None, zero=1e-6, max_points=1000, factor=1., seed=0, **kwargs):
+
+    """ Compute the lines of field as Bezier curves
+
+    Arguments :
+    -----------
+        - field_func (function of template (array of vectors, **kwargs) -> array of vectors) : the field function
+        - start_points (array of vectors) : lines starting points
+        - backwards (bool = False) : build lines backwards
+        - max_length (float = None) : max line lengths
+        - length_scale (float = None) : line length scale if random length scale around central value
+        - end_points (array of vectors) : points where lines must end
+        - zero (float = 1e-6) : value below which the field is null
+        - max_points (int = 1000) : max number of points per spline
+        - factor (float = 1.) : step length
+
+    Returns :
+    ---------
+        - Splines dictionary with keys {'types': [], 'cyclic':  [], 'splines': [{'points':, 'radius':, 'tilt': }]}
+    """
+
+    # ----------------------------------------------------------------------------------------------------
+    # Prepare variables
+
+    # Start points
+
+    if not isinstance(start_points, np.ndarray):
+        start_points = np.array(start_points, float)
+
+    single = np.shape(start_points) == (3,)
+    if single:
+        start_points = np.reshape(start_points, (1, 3))
+
+    count = len(start_points)
+
+    # Max lengths
+
+    if max_length is not None and length_scale is not None:
+        rng = np.random.default_rng(seed)
+        max_lengths = rng.normal(max_length, length_scale, count)
+    else:
+        max_lengths = [max_length]*count
+
+    # End points
+
+    if not isinstance(end_points, np.ndarray):
+        end_points = np.array(end_points, float)
+
+    # Backwards directions
+
+    backs = np.empty(count, bool)
+    backs[:] = backwards
+    has_backwards = np.sum(backs) > 0
+    if has_backwards:
+        rev = np.ones((count, 1), int)
+        rev[backs, 0] = -1
+
+    # ----------------------------------------------------------------------------------------------------
+    # Core function building a line in a given direction
+    # Makes use of global arrays verts, radius and colors to avoid multiple array creations
+    # - arrays are created one at max size
+    # - copied at the final size for each spline
+
+    verts    = np.empty((max_points, 3), float)
+    radius   = np.empty(max_points, float)
+    colors   = np.empty(max_points, float)
+
+    def build_spline(start_point, max_length, back):
+
+        # ----------------------------------------------------------------------------------------------------
+        # Compute the shift vector from the field vector
+        # Returns : shift vector, norm
+
+        def shift_vector(vect):
+            n = np.linalg.norm(vect)
+            if n < zero:
+                return (0., 0., 0.), 0.
+
+            if back:
+                vect = -vect
+
+            if True or n > 1:
+                return vect*(factor/n), factor
+            else:
+                return vect*factor, n*factor
+
+        # ----------------------------------------------------------------------------------------------------
+        # Is a segment [cur_loc, next_loc] close to points (end points or start_point)
+
+        def segment_close_to(cur_loc, next_loc, points):
+
+            # ----- Unary vector on the segment
+            vect = next_loc - cur_loc
+            norm = np.linalg.norm(vect)
+            null_segment = norm < 1e-6
+            if not null_segment:
+                vect /= norm
+
+            dmin = max(factor, norm)
+
+            # ----- Loop on the points
+            if np.shape(points) == (3,):
+                points = [points]
+
+            for point in points:
+                v = point - cur_loc
+                n = np.linalg.norm(v)
+                if null_segment:
+                    if n < dmin:
+                        return point
+                else:
+                    dist = np.dot(vect, v)
+                    if dist < 0 or dist > dmin:
+                        continue
+
+                    perp = np.linalg.norm(np.cross(vect, v))
+                    if perp < dmin:
+                        return point
+
+            # ----- No close point found
+
+            return None
+
+        # ----------------------------------------------------------------------------------------------------
+        # Build core
+
+        # ----- Initial point
+
+        vect, col = field_func(start_point, **kwargs)
+        v0, norm = shift_vector(vect)
+        verts[0], radius[0], colors[0] = np.array(start_point), norm, col
+
+        if norm < zero:
+            return {}
+
+        # ----- Loop variables
+
+        length  = 0.
+        cyclic  = False
+        cur_loc = np.array(start_point)
+        count   = 0
+
+        # ----- Loop
+
+        for i_vertex in range(1, max_points):
+
+            # First approx : let's shift of v0 and let's compute the field at that location
+            v1, _ = shift_vector(field_func(cur_loc + v0, **kwargs)[0])
+
+            # Second approx let's use the average tangent
+
+            next_loc = cur_loc + (v0 + v1)/2
+
+            vect, col = field_func(next_loc, **kwargs)
+            v0, norm = shift_vector(vect)
+            verts[i_vertex], radius[i_vertex], colors[i_vertex] = np.array(cur_loc), norm, col
+
+            length += norm
+            count = i_vertex + 1
+
+            # ----------------------------------------------------------------------------------------------------
+            # Exit loop conditions
+
+            # ----- Vector is null
+
+            if norm < zero:
+                break
+
+            # ----- Line back to the starting point
+
+            if i_vertex > 2:
+                pt = segment_close_to(cur_loc, next_loc, start_point)
+                if pt is not None:
+                    cyclic = True
+                    break
+
+            # ----- Line reaches and end point
+
+            if end_points is not None:
+                pt = segment_close_to(cur_loc, next_loc, end_points)
+                if pt is not None:
+                    v = pt - next_loc
+                    verts[count], radius[count], colors[count] = np.array(pt), np.linalg.norm(v), col
+                    count += 1
+                    break
+
+            # ----- Max length is reached
+
+            if max_length is not None and length >= max_length:
+                break
+
+            # ----- Update location
+
+            cur_loc = next_loc
+
+        # ----------------------------------------------------------------------------------------------------
+        # Return the result
+
+        return {'spline' : {
+                    'points'      : np.array(verts[:count]),
+                    'radius'      : np.array(radius[:count]),
+                    'tilt'        : np.array(colors[:count]),
+                    },
+                'cyclic' : cyclic,
+                }
+
+    # ----------------------------------------------------------------------------------------------------
+    # Main : loop on the field lines
+
+    splines = {'splines': [], 'cyclic': []}
+
+    for start_point, max_length, back in zip(start_points, max_lengths, backs):
+
+        spline = build_spline(start_point, max_length, back)
+        if len(spline['spline']['points']) > 2:
+            splines['cyclic'].append(spline['cyclic'])
+            splines['splines'].append(spline['spline'])
+
+    splines['types'] = [0]*len(splines['cyclic'])
+
+    return splines
 
 # =============================================================================================================================
 # Tests
 
-def test_div(r=1.):
+# -----------------------------------------------------------------------------------------------------------------------------
+# Different field tests
+# def electric_field(points, locations=(0, 0, 0), charges=1., epsilon0=1.):
+# def electric_field_NP(points, locations=(0, 0, 0), charges=1, epsilon0=1.):
+# def magnetic_field(points, locations=(0, 0, 0), moments=(1, 0, 0), mu0=1.):
+# def magnetic_field_NP(points, locations=(0, 0, 0), moments=(1, 0, 0), mu0=1.):
+#
+# def field_lines(field_func, start_points, backwards=False, return_color=False, max_length=None, length_scale=None, end_points=None, zero=1e-6, max_points=1000, precision=.1, sub_steps=10, seed=0, **kwargs):
+# def bezier_field_lines(field_func, start_points, backwards=False, max_length=None, length_scale=None, end_points=None, zero=1e-6, max_points=1000, factor=1., seed=0, **kwargs):
 
-    def print_a(title, a):
-        print(title, ":\n", ", ".join([f"{v:.3f}" for v in a]), "\n")
+def test_fields(electric=True, base_tests=True, perf_tests=True):
 
-    count = 12
-    ag = np.linspace(0, 2*np.pi, count, endpoint=False)
-    pts = np.zeros((count, 3), float)
-    pts[:, 0] = r*np.cos(ag)
-    pts[:, 1] = r*np.sin(ag)
+    import geonodes as gn
+    from time import time
 
-    a = div(constant_field, pts)
-    print_a("Constant field", a)
+    # ----------------------------------------------------------------------------------------------------
+    # Test a field function to build poly and bezier lines
 
-    for power, expected in zip([0, 1, 3], ["3", f"{2/r:.3f}", "0"]):
-        print('-'*70)
-        a = div(lambda v: radial_field(v, power=power), pts)
-        print_a(f"Radial field, power={power}, expected: {expected}", a)
+    def test_func(name, field_func, start_points, backs, locations, lines_algo='BOTH', **kwargs):
 
-        a = div2(lambda v: radial_field(v, power=power), pts)
-        print_a(f"Radial field, power={power}, expected: {expected}", a)
+        ok_poly   = lines_algo in ['BOTH', 'POLY']
+        ok_bezier = lines_algo in ['BOTH', 'BEZIER']
+
+        if ok_poly:
+            t0 = time()
+            poly = field_lines(field_func,
+                start_points = start_points,
+                backwards    = backs,
+                max_length   = None,
+                length_scale = None,
+                end_points   = locations,
+                zero         = 1e-6,
+                max_points   = 1000,
+                precision    = .1,
+                sub_steps    = 10,
+                seed         = 0,
+                locations    = locations,
+                **kwargs)
+
+            duration = time() - t0
+            print(f"{name} : poly   = {duration:.1f}")
+
+            gn.Curve(**poly).to_object(  f"{name} {len(start_points)} - Poly")
+
+        if ok_bezier:
+            t0 = time()
+            bezier = bezier_field_lines(field_func,
+                start_points = start_points,
+                backwards    = backs,
+                max_length   = None,
+                length_scale = None,
+                end_points   = locations,
+                zero         = 1e-6,
+                max_points   = 1000,
+                factor       = 1.,
+                seed         = 0,
+                locations    = locations,
+                **kwargs)
+
+            duration = time() - t0
+            print(f"{name} : bezier = {duration:.1f}")
+
+            gn.Curve(**bezier).to_object(  f"{name} {len(start_points)} - Bezier")
 
 
+    rng = np.random.default_rng(0)
+
+    # ----------------------------------------------------------------------------------------------------
+    # Electric field
+
+    CHARGES_MAX = 50
+    locations = rng.uniform(-10, 10, (CHARGES_MAX, 3))
+
+    sphere = gn.Mesh.UVSphere(radius=.5) * CHARGES_MAX
+    sphere.points.translate(locations)
+    sphere.to_object("Charges")
+
+    if electric:
+        print("Electric field")
+        prefix = 'EL'
+
+        charges   = rng.uniform(-10, 10, CHARGES_MAX)
+        charges[0] = -1
+        charges[1] = 1
+
+        kwargs  = {'epsilon0': 1., 'charges': None}
+        ch_name = 'charges'
+        fstd    = electric_field
+        f_np    = electric_field_NP
+        dist    = .1
+
+    else:
+        print("Magnetic field")
+        prefix = 'MG'
+
+        charges = rng.uniform(-1, 1, (CHARGES_MAX, 3))
+
+        kwargs  = {'mu0': 1., 'moments': None}
+        ch_name = 'moments'
+        fstd    = magnetic_field
+        f_np    = magnetic_field_NP
+        dist    = 1.
+
+    if base_tests:
+        print("Base test : does it work ?")
+        print()
+
+        for q_count, lines_count in zip([1, 2, 5], [100, 100, 100]):
+            start_points, backs = get_start_points(locations[:q_count], charges[:q_count], distance=dist, count=lines_count, electric=electric)
+            kwargs[ch_name] = charges[:q_count]
+            test_func(f"{prefix} {q_count} STD {lines_count} lines", fstd, start_points, backs, locations[:q_count], **kwargs)
+            test_func(f"{prefix} {q_count} NPY {lines_count} lines", f_np, start_points, backs, locations[:q_count], **kwargs)
+
+    if perf_tests:
+        print("\nPerformance test")
+        for lines_count in [1, 10, 100, 500, 1000]:
+            for q_count in [1, 2, 5, 10, 25, 50]:
+                start_points, backs = get_start_points(locations[:q_count], charges[:q_count], distance=dist, count=lines_count, electric=electric)
+                kwargs[ch_name] = charges[:q_count]
+                test_func(f"{prefix} {q_count} STD {lines_count} lines", fstd, start_points, backs, locations[:q_count], lines_algo='POLY', **kwargs)
+                test_func(f"{prefix} {q_count} NPY {lines_count} lines", f_np, start_points, backs, locations[:q_count], lines_algo='POLY', **kwargs)
 
 
+"""
+Performance test
+Algo	Charges	Lines	Time
+EF	1	1	0,6
+EF	2	1	0,8
+EF	5	1	1,2
+EF	10	1	2
+EF	25	1	4,3
+EF	50	1	8,1
+EF	1	10	0,6
+EF	2	10	0,8
+EF	5	10	1,3
+EF	10	10	2,1
+EF	25	10	4,6
+EF	50	10	8,7
+EF	1	100	0,7
+EF	2	100	1
+EF	5	100	1,7
+EF	10	100	2,8
+EF	25	100	6,2
+EF	50	100	11,8
+EF	1	500	1,2
+EF	2	500	1,8
+EF	5	500	3,3
+EF	10	500	5,8
+EF	25	500	13,2
+EF	50	500	25,5
+EF	1	1000	1,7
+EF	2	1000	2,8
+EF	5	1000	5,3
+EF	10	1000	9,5
+EF	25	1000	22,3
+EF	50	1000	42,5
+NP	1	1	0,9
+NP	2	1	1,1
+NP	5	1	1,1
+NP	10	1	1,1
+NP	25	1	1,1
+NP	50	1	1,1
+NP	1	10	0,9
+NP	2	10	1,1
+NP	5	10	1,2
+NP	10	10	1,2
+NP	25	10	1,4
+NP	50	10	1,7
+NP	1	100	1
+NP	2	100	1,3
+NP	5	100	1,9
+NP	10	100	2,3
+NP	25	100	3,8
+NP	50	100	6,3
+NP	1	500	1,6
+NP	2	500	2,3
+NP	5	500	4,9
+NP	10	500	7,1
+NP	25	500	14,2
+NP	50	500	25
+NP	1	1000	2,3
+NP	2	1000	3,5
+NP	5	1000	8,9
+NP	10	1000	12,8
+NP	25	1000	26,8
+NP	50	1000	48,4
 
-
-
-
-
-def tests():
-    import matplotlib.pyplot as plt
-
-    def draw_field(points, vectors, fmt='-'):
-        for p, v in zip(points, vectors):
-            plt.plot([p[0], p[0] + v[0]], [p[1], p[1] + v[1]], fmt)
-
-
-    charges = ((-1, 0, 0, -1), (1, 0, 0, 1))
-    #charges = charges[0]
-
-
-    for r in np.linspace(2, 5, 3):
-        count = 30
-        ag = np.linspace(0, 2*np.pi, count, endpoint=False)
-        pts = np.zeros((count, 3), float)
-        pts[:, 0] = r*np.cos(ag)
-        pts[:, 1] = r*np.sin(ag)
-
-        if False:
-            E = electric_field(pts, charges=charges, epsilon0=.01)
-        else:
-            E = radial_field(pts, power=2, factor=2)
-
-        draw_field(pts, E, fmt='-k')
-
-    plt.show()
-
-#tests()
-#test_div(r=10)
+"""

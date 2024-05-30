@@ -95,6 +95,18 @@ class DynamicRecArray(object):
         else:
             return self._data.dtype.names
 
+    def attr_size(self, name):
+        try:
+            shape = self._data[name].shape
+            if len(shape) == 1:
+                return 1
+            else:
+                return shape[-1]
+        except:
+            print(f"Error with attribute name '{name}' in {self}")
+            raise
+
+
     @property
     def data(self):
         """ The structured array.
@@ -774,14 +786,25 @@ class Attributes(DynamicRecArray):
     def python_name(name):
         return name.replace(' ', '_')
 
-    def add(self, count, **attrs):
+    def add(self, count=None, **attrs):
         """ Add items.
 
         Arguments
         ---------
-            - count (int) : number of items to add
+            - count (int=None) : number of items to add. Count is taken form attrs len if None
             - **attrs (attribute name: value) : value to set to the newly created items
         """
+
+        # ----- Count the number of records to add based on the attributes shapes
+        # The attributes can broadcasted to the number of created vectors
+
+        if count is None:
+            count = 0
+            for attr_name in self.names:
+                pyname = Attributes.python_name(attr_name)
+                if pyname in attrs.keys():
+                    n = np.size(attrs[pyname]) // self.attr_size(attr_name)
+                    count = max(n, count)
 
         if count < 1:
             return
@@ -939,7 +962,10 @@ class AttrVectors(Attributes):
 
         self.new_vector("co")
         if vectors is not None:
-            self.add(count=len(vectors), co=vectors)
+            if np.shape(vectors) == (3,):
+                self.add(count=1, co=vectors)
+            else:
+                self.add(count=len(vectors), co=vectors)
 
         n = len(self)
         for k, v in kwargs.items():

@@ -26,6 +26,7 @@ from geonodes.core import blender
 from geonodes.core import topology
 
 from geonodes.maths.transformations import Transformations, tracker, rotate_xy_into_plane
+from geonodes.maths.splinesmaths import Bezier
 from geonodes.maths import field, distribs
 
 from geonodes.core.geometry import Geometry
@@ -47,7 +48,7 @@ class Curve(Geometry):
         Arguments
         ---------
             - types (array of ints = None) : spline types in [BEZIER=0, POLY=1, NURBS=2]
-            - points (array of spline dictionnaries = None) : array of splines dictionnary
+            - splines (array of spline dictionnaries = None) : array of splines dictionnary
             - cyclic (array of bools = None) : splines are cyclic
             - resolution (array of ints = None) : splines resolution
             - material_index (arrays of ints = None) : material indices
@@ -123,12 +124,37 @@ class Curve(Geometry):
                 else:
                     self.points[offset:offset+count].points4 = pts
 
+            ok_left  = False
+            ok_right = False
+
             for name in ['handle_left', 'handle_right', 'handle_type_left', 'handle_type_right', 'radius', 'tilt']:
+
                 a = spline_points.get(name)
                 if a is not None:
+
+                    if name == 'handle_left':
+                        ok_left = True
+                    if name == 'handle_right':
+                        ok_right = True
+
                     if not self.points.attributes.exists(name):
                         _ = getattr(self.points, name)
                     self.points.attributes[name][offset:offset+count] = a
+
+            # ----- Bezier handles
+
+            if curve_type == blender.BEZIER and (not ok_left or not ok_right):
+                lefts, rights = Bezier.get_handles(spline_points['points'], cyclic=cyclic)
+                if not ok_left:
+                    if not self.points.attributes.exists('handle_left'):
+                        _ = getattr(self.points, 'handle_left')
+                    self.points.attributes['handle_left'][offset:offset+count] = lefts
+                if not ok_right:
+                    if not self.points.attributes.exists('handle_right'):
+                        _ = getattr(self.points, 'handle_right')
+                    self.points.attributes['handle_right'][offset:offset+count] = rights
+
+            # ----- Next spline
 
             offset += count
 
@@ -896,7 +922,7 @@ class Curve(Geometry):
     # =============================================================================================================================
     # Lines of field
 
-    # =============================================================================================================================
+    # -----------------------------------------------------------------------------------------------------------------------------
     # Lines of field
 
     @classmethod
@@ -920,7 +946,7 @@ class Curve(Geometry):
             - sub_steps (int = 10) : number of sub steps
         """
 
-        lines = field.field_lines(field_func, start_points,
+        splines = field.field_lines(field_func, start_points,
             backwards       = backwards,
             max_length      = max_length,
             length_scale    = length_scale,
@@ -932,10 +958,13 @@ class Curve(Geometry):
             seed            = seed,
             **kwargs)
 
+        return cls(**splines)
+
         curves = cls()
-        for points, radius, cyclic in lines:
-            curves.add(points, curve_type='POLY', cyclic=cyclic)
-            curves.splines[-1].get_points().radius = radius
+        for avects, cyclic in lines:
+            if len(avects) <= 1:
+                continue
+            curves.add(avects.co, curve_type='POLY', cyclic=cyclic, radius=avects.radius, tilt=avects.color)
 
         return curves
 

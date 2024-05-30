@@ -1483,7 +1483,7 @@ class Mesh(Geometry):
         return arrow
 
     @classmethod
-    def VectorField(cls, locations, vectors, radius=.05, scale_length=1., angle=24., segments=8, adjust_norm=None, materials=None):
+    def VectorField(cls, locations, vectors, radius=.05, scale_length=1., angle=24., segments=8, head=None, adjust_norm=None, materials=None):
 
         """ Create an arrow at each location corresponding to the vectors.
 
@@ -1500,6 +1500,7 @@ class Mesh(Geometry):
             - radius (float = .05) : arrow radius
             - angle (float = 24) : head radius in degrees
             - segments (int = 8) : number of segments for the section
+            - head (mesh = None) : mesh model for the head. Create a cone if None
             - adjust_norm (max length or function = None) : max arrow length or function transforming
                 the vector length into arrow length
             - scale_length (float = 1.) : arrow length below which the arrow radius is scaled
@@ -1523,8 +1524,12 @@ class Mesh(Geometry):
 
         # ----- Head model
 
-        cone = cls.Cone(vertices=segments, side_segments=2, fill_segments=1, radius_top=0, radius_bottom=head_radius, depth=head_height, fill_type='TRIANGLE_FAN', materials=materials)
-        cone.points[-1].position += (0, 0, head_height/10)
+        if head is None:
+            cone = cls.Cone(vertices=segments, side_segments=2, fill_segments=1, radius_top=0, radius_bottom=head_radius, depth=head_height, fill_type='TRIANGLE_FAN', materials=materials)
+            cone.points[-1].position += (0, 0, head_height/10)
+        else:
+            cone = head
+
 
         # ----------------------------------------------------------------------------------------------------
         # Vectors lengths
