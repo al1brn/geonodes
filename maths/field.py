@@ -562,6 +562,16 @@ def field_lines(field_func, start_points, backwards=False, return_color=False, m
     """
 
     # ----------------------------------------------------------------------------------------------------
+    # Field function can return a couple (vectors, colors) or just vectors
+
+    def call_field_func(points, **kwargs):
+        a = field_func(points, **kwargs)
+        if isinstance(a, tuple):
+            return a
+        else:
+            return a, 0.
+
+    # ----------------------------------------------------------------------------------------------------
     # Prepare variables
 
     rng = np.random.default_rng(seed)
@@ -602,7 +612,7 @@ def field_lines(field_func, start_points, backwards=False, return_color=False, m
     radius = np.ones((count, max_points), float)
     colors = np.zeros((count, max_points), float)
 
-    vect, col = field_func(start_points, **kwargs)
+    vect, col = call_field_func(start_points, **kwargs)
     radius[:, 0] = np.linalg.norm(vect, axis=-1)
     colors[:, 0] = col
 
@@ -647,7 +657,7 @@ def field_lines(field_func, start_points, backwards=False, return_color=False, m
         for _ in range(sub_steps):
 
             # ----- Vector at current location
-            v0, cols = field_func(pts, **kwargs)
+            v0, cols = call_field_func(pts, **kwargs)
 
             if has_backwards:
                 v0 *= rev
@@ -663,7 +673,7 @@ def field_lines(field_func, start_points, backwards=False, return_color=False, m
             v0 *= factor[..., None]
 
             # ----- Average with target vector for more accurracy
-            v1, _ = field_func(pts + v0, **kwargs)
+            v1, _ = call_field_func(pts + v0, **kwargs)
             v1 *=(factor[..., None])
             if has_backwards:
                 v1 *= rev
@@ -1248,70 +1258,3 @@ def test_fields(electric=True, base_tests=True, perf_tests=True):
                 kwargs[ch_name] = charges[:q_count]
                 test_func(f"{prefix} {q_count} STD {lines_count} lines", fstd, start_points, backs, locations[:q_count], lines_algo='POLY', **kwargs)
                 test_func(f"{prefix} {q_count} NPY {lines_count} lines", f_np, start_points, backs, locations[:q_count], lines_algo='POLY', **kwargs)
-
-
-"""
-Performance test
-Algo	Charges	Lines	Time
-EF	1	1	0,6
-EF	2	1	0,8
-EF	5	1	1,2
-EF	10	1	2
-EF	25	1	4,3
-EF	50	1	8,1
-EF	1	10	0,6
-EF	2	10	0,8
-EF	5	10	1,3
-EF	10	10	2,1
-EF	25	10	4,6
-EF	50	10	8,7
-EF	1	100	0,7
-EF	2	100	1
-EF	5	100	1,7
-EF	10	100	2,8
-EF	25	100	6,2
-EF	50	100	11,8
-EF	1	500	1,2
-EF	2	500	1,8
-EF	5	500	3,3
-EF	10	500	5,8
-EF	25	500	13,2
-EF	50	500	25,5
-EF	1	1000	1,7
-EF	2	1000	2,8
-EF	5	1000	5,3
-EF	10	1000	9,5
-EF	25	1000	22,3
-EF	50	1000	42,5
-NP	1	1	0,9
-NP	2	1	1,1
-NP	5	1	1,1
-NP	10	1	1,1
-NP	25	1	1,1
-NP	50	1	1,1
-NP	1	10	0,9
-NP	2	10	1,1
-NP	5	10	1,2
-NP	10	10	1,2
-NP	25	10	1,4
-NP	50	10	1,7
-NP	1	100	1
-NP	2	100	1,3
-NP	5	100	1,9
-NP	10	100	2,3
-NP	25	100	3,8
-NP	50	100	6,3
-NP	1	500	1,6
-NP	2	500	2,3
-NP	5	500	4,9
-NP	10	500	7,1
-NP	25	500	14,2
-NP	50	500	25
-NP	1	1000	2,3
-NP	2	1000	3,5
-NP	5	1000	8,9
-NP	10	1000	12,8
-NP	25	1000	26,8
-NP	50	1000	48,4
-
-"""
