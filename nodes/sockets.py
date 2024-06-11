@@ -196,12 +196,19 @@ class Socket:
             if self.bsocket.type == 'MENU':
                 if def_value is None:
                     return
-                enum_items = self.bsocket.node.enum_definition.enum_items
-                for i, item in enumerate(enum_items):
-                    if get_bsock_name(item).lower() == str(def_value).lower():
-                        self.bsocket.default_value = get_bsock_name(item)
-                        return
-                raise Exception(f"Invalid item name for Socket Menu: '{str(def_value)}' not in {[get_bsock_name(item) for item in enum_items]}")
+                try:
+                    self.bsocket.default_value = value
+                except:
+                    raise AttributeError(f"Value '{value}' is not a valid item for the menu {self}")
+
+                # NOT SURE ITS OLD. Perhaps bugged ??
+                if False:
+                    enum_items = self.bsocket.node.enum_definition.enum_items
+                    for i, item in enumerate(enum_items):
+                        if get_bsock_name(item).lower() == str(def_value).lower():
+                            self.bsocket.default_value = get_bsock_name(item)
+                            return
+                    raise Exception(f"Invalid item name for Socket Menu: '{str(def_value)}' not in {[get_bsock_name(item) for item in enum_items]}")
 
             # ----- Something else
 
