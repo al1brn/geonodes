@@ -284,6 +284,17 @@ class Attributes(DynamicRecArray):
             s += f"\n   - {name:10s}: {info['data_type']:12s} transfer {'True ' if info['transfer'] else 'False'} default: {info['default']}"
         return s + "\n>"
 
+    def __repr__(self):
+        s = f"<Attributes: {len(self.names)}, entries: {len(self)}:"
+        for name, info in self.infos.items():
+            s += f"\n   - {name:10s}: {info['data_type']:12s} transfer {'True ' if info['transfer'] else 'False'} default: {info['default']}"
+
+        s += "\n\n"
+        for name in self.infos.keys():
+            s += f"{name} : " + str(self._data[name][:len(self)]) + "\n"
+
+        return s + "\n>"
+
     # ====================================================================================================
     # Serialization
 

@@ -650,6 +650,7 @@ def field_lines(field_func, start_points, backwards=False, return_color=False, m
     pts  = np.array(start_points)
     norm = None
     cols = 0
+
     for point_index in range(1, max_points):
 
         # ----- Sub steps
@@ -707,8 +708,9 @@ def field_lines(field_func, start_points, backwards=False, return_color=False, m
 
     for line_index, n in enumerate(counts):
 
-        splines['cyclic'] = np.linalg.norm(points[line_index, n-1] - points[line_index, 0]) <= precision
-        if has_backwards and rev[line_index]:
+        splines['cyclic'][line_index] = np.linalg.norm(points[line_index, n-1] - points[line_index, 0]) <= precision
+
+        if True or (has_backwards and rev[line_index]):
             splines['splines'].append({
                 'points': points[line_index, :n],
                 'radius': radius[line_index, :n],

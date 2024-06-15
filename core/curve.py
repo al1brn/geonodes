@@ -1007,8 +1007,8 @@ class Curve(Geometry):
         rng = np.random.default_rng(seed=seed)
         n_charges = len(poles)
 
-        backwards = rng.choice([True, False], count)
         if start_points is None:
+            backwards = rng.choice([True, False], count)
             if frag_length is None:
                 if plane is None:
                     start_points, _ = distribs.sphere_dist(radius=precision, count=count, seed=rng.integers(1<<63))
@@ -1037,6 +1037,14 @@ class Curve(Geometry):
                 count = 1
             else:
                 count = len(start_points)
+            backwards = rng.choice([True, False], count)
+
+        # ----------------------------------------------------------------------------------------------------
+        # Full lines if frag_length is None
+
+        full_lines = frag_length is None
+        if full_lines:
+            backwards[:] = False
 
         # ----------------------------------------------------------------------------------------------------
         # Field lines
@@ -1052,6 +1060,38 @@ class Curve(Geometry):
             sub_steps       = sub_steps,
             seed            = rng.integers(1 << 63),
             )
+
+        # ----------------------------------------------------------------------------------------------------
+        # Twice il full lines
+
+        if full_lines:
+
+            # ----- Exclude cyclic lines which are done
+
+            open_lines = np.logical_not(lines['cyclic'] )
+
+            # ----- Backwards lines
+
+            backwards[:] = True
+            back_lines = field.field_lines(field_func,
+                start_points    = start_points[open_lines],
+                backwards       = backwards[open_lines],
+                max_length      = frag_length,
+                length_scale    = frag_scale,
+                end_points      = charge_locations,
+                max_points      = max_points,
+                precision       = precision,
+                sub_steps       = sub_steps,
+                seed            = rng.integers(1 << 63),
+                )
+
+            # ----- Merge the two dictionnaries
+
+            all_lines = {'types':   list(lines['types']) + list(back_lines['types']),
+                         'cyclic':  list(lines['cyclic']) + list(back_lines['cyclic']),
+                         'splines': lines['splines'] + back_lines['splines'],
+                        }
+            lines = all_lines
 
         return cls(**lines)
 
