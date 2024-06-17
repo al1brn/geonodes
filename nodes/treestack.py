@@ -22,6 +22,8 @@ update : 2024/02/17
 update : 2024/03/29
 """
 
+import inspect
+from pathlib import Path
 import bpy
 import mathutils
 from pprint import pprint
@@ -268,6 +270,92 @@ class StackedTree:
 # ====================================================================================================
 # Node created in the current tree
 
+# ----------------------------------------------------------------------------------------------------
+# Try to get a source code variable name as node label
+
+def get_source_code_var_name():
+
+    # ----------------------------------------------------------------------------------------------------
+    # Get the var name from simple syntax :
+    # var_name = node_creation
+
+    def get_var_name(line):
+        parts = line.split('=')
+        if len(parts) > 1:
+            var_name = parts[0].strip()
+
+            # ----- syntax var += ...
+
+            if var_name[-1] in ['+', '-', '*', '/', '&', '|']:
+                var_name = var_name[:-1]
+
+            # ----- Is it a var name ?
+
+            try:
+                exec(f"_dummy_{var_name} = None")
+            except:
+                return None
+
+            return var_name
+        else:
+            return None
+
+    # ----------------------------------------------------------------------------------------------------
+    # Loop on the stack
+    #
+    # Doesn't interpret the two first frames:
+    # - frame 0 : this function
+    # - frame 1 : calling this function
+    # - frame 2 : could be the one
+
+    for i_frame, frame_info in enumerate(inspect.stack()[2:]):
+
+        #print("TREESTACK", frame_info.filename)
+
+        # ----- Generated source code
+
+        if frame_info.filename == '<string>':
+            continue
+
+        # ----- Module
+
+        path = Path(frame_info.filename)
+        if path.stem in ['utils', 'custom', 'sockets', 'treestack', 'tree']:
+            continue
+
+        # ----- Python embedded in a blend file
+        # "file.blend/text_name" or "/text_name"" if the file is not saved
+
+        if len(frame_info.filename.split('/')) == 2:
+            blend_text = True
+            text_key   = frame_info.filename[1:]
+        else:
+            blend_file = path.parents[0]
+            blend_text = blend_file.exists() and not blend_file.is_dir()
+            if blend_text:
+                text_key = path.stem
+
+        # ----- Read from blend text or from the file
+
+        if blend_text:
+            lines = bpy.data.texts[text_key].lines
+            line  = lines[frame_info.lineno - 1].body
+        else:
+            with open(frame_info.filename, 'r') as f:
+                lines = f.readlines()
+            line = lines[frame_info.lineno - 1]
+
+        # ----- Look for var_name = ....
+
+        var_name = get_var_name(line)
+        if var_name is not None:
+            return var_name
+
+    return None
+
+# ----------------------------------------------------------------------------------------------------
+# The base Node class
+
 class Node(object):
 
     def __init__(self, bl_idname, node_label=None, node_color=None, **kwargs):
@@ -277,6 +365,9 @@ class Node(object):
             self.bnode = self.tree.btree.nodes.new(type=bl_idname)
         else:
             self.bnode = bl_idname
+
+        if node_label is None:
+            node_label = get_source_code_var_name()
 
         self.node_label = node_label
         self.node_color = node_color

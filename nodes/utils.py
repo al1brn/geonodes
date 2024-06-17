@@ -248,7 +248,7 @@ def value_for(value, socket_type):
         except:
             pass
 
-        return constants.current_tree().CombineXYZ(v[0], v[1], v[2]).output_socket
+        return constants.current_tree().CombineXYZ(v[0], v[1], v[2], node_label='Combine XYZ').output_socket
 
     elif socket_type in ['NodeSocketColor']:
 

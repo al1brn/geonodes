@@ -81,6 +81,8 @@ class Tree(StackedTree):
 
         super().__init__()
 
+        self.rng = np.random.default_rng(0)
+
         self.is_group = is_group
 
         # ----- Load the btree
@@ -386,6 +388,13 @@ class Tree(StackedTree):
             out_socket = socket_class(self.output_node.bnode.inputs[io_socket.identifier])
             out_socket._set_value(socket)
 
+    # ====================================================================================================
+    # Frame
+
+    def layout(self, node_label="Frame", node_color=None, label_size=None):
+        if node_color is None:
+            node_color = tuple(self.rng.uniform(0., .3, 3))
+        return self.Frame(label_size=label_size, node_label=node_label, node_color=node_color)
 
     # ====================================================================================================
     # Short cuts
@@ -763,8 +772,8 @@ class GeoNodes(Tree):
     # ====================================================================================================
     # Frame
 
-    def layout(self, node_label="Frame", node_color=(.1, .2, .2), label_size=None):
-        return self.Frame(label_size=label_size, node_label=node_label, node_color=node_color)
+    #def layout(self, node_label="Frame", node_color=(.1, .2, .2), label_size=None):
+    #    return self.Frame(label_size=label_size, node_label=node_label, node_color=node_color)
 
     # ====================================================================================================
     # Simulation and Repeat

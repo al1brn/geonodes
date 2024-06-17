@@ -53,7 +53,7 @@ def current_tree(bl_idname=None):
         return TREE_STACK[-1]
     else:
         raise Exception(f"Tree stack is empty: not Tree has been initialized. Impossible to create node '{bl_idname}'.")
-        
+
 def current_tree_type(bl_idname=None):
     return type(current_tree(bl_idname).btree).__name__
 
@@ -62,7 +62,7 @@ def dump_stack(title="Dump stack"):
     for tree in TREE_STACK:
         print(tree)
     print()
-    
+
 # ====================================================================================================
 # System Colors
 
@@ -79,8 +79,8 @@ NODE_COLORS = {
 
 TREE_TYPES = [
     'GeometryNodeTree',
-    'ShaderNodeTree', 
-    'CompositorNodeTree', 
+    'ShaderNodeTree',
+    'CompositorNodeTree',
     'TextureNodeTree',
     ]
 
@@ -110,7 +110,8 @@ STANDARD_NODE_ATTRS = [
    'parent', 'poll', 'poll_instance', 'rna_type', 'select', 'show_options', 'show_preview',
    'show_texture', 'socket_value_update', 'type', 'update', 'use_custom_color',
    'width', 'width_hidden',
-   'index_switch_items', 'enum_definition', 'bake_items', 'active_index', 'active_item']
+   'index_switch_items', 'enum_definition', 'bake_items', 'active_index', 'active_item',
+   'is_active_output']
 
 # ====================================================================================================
 # Gives the Blender socket type from a python type or a node socket type
@@ -120,22 +121,22 @@ TYPE_TO_SOCKET_BL_ID = {  # OLD = BLENDER_SOCKET_CLASSES
     int             : 'NodeSocketInt',
     float           : 'NodeSocketFloat',
     str             : 'NodeSocketString',
-    
+
     'BOOLEAN'       : 'NodeSocketBool',
     'INT'           : 'NodeSocketInt',
     'FLOAT'         : 'NodeSocketFloat',
     'VECTOR'        : 'NodeSocketVector',
     'COLOR'         : 'NodeSocketColor',
     'STRING'        : 'NodeSocketString',
-    
+
     'GEOMETRY'      : 'NodeSocketGeometry',
-    
+
     'COLLECTION'    : 'NodeSocketCollection',
     'IMAGE'         : 'NodeSocketImage',
     'MATERIAL'      : 'NodeSocketMaterial',
     'OBJECT'        : 'NodeSocketObject',
     'TEXTURE'       : 'NodeSocketTexture',
-    
+
     'MENU'          : 'NodeSocketMenu',
     }
 
@@ -143,36 +144,36 @@ TYPE_TO_SOCKET_BL_ID = {  # OLD = BLENDER_SOCKET_CLASSES
 # Default (more frequent !) socket name per type
 
 SOCKET_CLASS_DEFAULT_SOCKET_NAME = {
-    'VALUE'      : 'value', 
-    'INT'        : 'integer', 
-    'BOOLEAN'    : 'boolean', 
-    'VECTOR'     : 'vector', 
-    'ROTATION'   : 'rotation', 
-    'STRING'     : 'string', 
-    'RGBA'       : 'color', 
+    'VALUE'      : 'value',
+    'INT'        : 'integer',
+    'BOOLEAN'    : 'boolean',
+    'VECTOR'     : 'vector',
+    'ROTATION'   : 'rotation',
+    'STRING'     : 'string',
+    'RGBA'       : 'color',
     'SHADER'     : 'shader',
-    'OBJECT'     : 'object', 
-    'IMAGE'      : 'image', 
-    'GEOMETRY'   : 'geometry', 
-    'COLLECTION' : 'collection', 
-    'TEXTURE'    : 'texture', 
+    'OBJECT'     : 'object',
+    'IMAGE'      : 'image',
+    'GEOMETRY'   : 'geometry',
+    'COLLECTION' : 'collection',
+    'TEXTURE'    : 'texture',
     'MATERIAL'   : 'material',
     'MENU'       : 'menu',
     }
 
 DATA_TYPE_TO_SOCKET_CLASS_NAME = { # DATA_TYPE_CLASSES
-    'FLOAT'      : 'VALUE', 
-    'INT'        : 'INT', 
-    'BOOLEAN'    : 'BOOLEAN', 
-    'VECTOR'     : 'VECTOR', 
-    'ROTATION'   : 'ROTATION', 
-    'STRING'     : 'STRING', 
-    'RGBA'       : 'RGBA', 
-    'OBJECT'     : 'OBJECT', 
-    'IMAGE'      : 'IMAGE', 
-    'GEOMETRY'   : 'GEOMETRY', 
-    'COLLECTION' : 'COLLECTION', 
-    'TEXTURE'    : 'TEXTURE', 
+    'FLOAT'      : 'VALUE',
+    'INT'        : 'INT',
+    'BOOLEAN'    : 'BOOLEAN',
+    'VECTOR'     : 'VECTOR',
+    'ROTATION'   : 'ROTATION',
+    'STRING'     : 'STRING',
+    'RGBA'       : 'RGBA',
+    'OBJECT'     : 'OBJECT',
+    'IMAGE'      : 'IMAGE',
+    'GEOMETRY'   : 'GEOMETRY',
+    'COLLECTION' : 'COLLECTION',
+    'TEXTURE'    : 'TEXTURE',
     'MATERIAL'   : 'MATERIAL',
     'MENU'       : 'MENU',
     }
@@ -181,19 +182,19 @@ DATA_TYPE_TO_SOCKET_CLASS_NAME = { # DATA_TYPE_CLASSES
 
 SOCKET_CLASS_NAME_SHORTCUTS = {
     'Custom'     : 'CUSTOM',
-    'Float'      : 'VALUE', 
-    'Int'        : 'INT', 
-    'Bool'       : 'BOOLEAN', 
-    'Vect'       : 'VECTOR', 
-    'Rot'        : 'ROTATION', 
-    'Str'        : 'STRING', 
-    'Col'        : 'RGBA', 
+    'Float'      : 'VALUE',
+    'Int'        : 'INT',
+    'Bool'       : 'BOOLEAN',
+    'Vect'       : 'VECTOR',
+    'Rot'        : 'ROTATION',
+    'Str'        : 'STRING',
+    'Col'        : 'RGBA',
     'Shader'     : 'SHADER',
-    'Object'     : 'OBJECT', 
-    'Img'        : 'IMAGE', 
-    'Geometry'   : 'GEOMETRY', 
-    'Collection' : 'COLLECTION', 
-    'Texture'    : 'TEXTURE', 
+    'Object'     : 'OBJECT',
+    'Img'        : 'IMAGE',
+    'Geometry'   : 'GEOMETRY',
+    'Collection' : 'COLLECTION',
+    'Texture'    : 'TEXTURE',
     'Mat'        : 'MATERIAL',
     'Menu'       : 'MENU',
     }
@@ -202,26 +203,26 @@ SOCKET_CLASS_NAME_SHORTCUTS = {
 # Nodes with in / out custom sockets
 
 CUSTOM_INPUT_SOCKETS = [
-    
+
     'ShaderNodeGroup',
     'CompositorNodeGroup',
     'GeometryNodeGroup',
-    
-    'GeometryNodeSimulationInput', 
+
+    'GeometryNodeSimulationInput',
     'GeometryNodeSimulationOutput',
     'GeometryNodeRepeatInput',
     'GeometryNodeRepeatOutput',
-    
+
     'GeometryNodeMenuSwitch',
     ]
 
 CUSTOM_OUTPUT_SOCKETS = [
-    
+
     'ShaderNodeGroup',
     'CompositorNodeGroup',
-    'GeometryNodeGroup', 
-    
-    'GeometryNodeSimulationInput', 
+    'GeometryNodeGroup',
+
+    'GeometryNodeSimulationInput',
     'GeometryNodeSimulationOutput',
     'GeometryNodeRepeatInput',
     'GeometryNodeRepeatOutput',
@@ -250,8 +251,8 @@ NO_DOC_NODES = [
     'ShaderNodeGroup',
     'CompositorNodeGroup',
     'GeometryNodeGroup',
-    
-    'GeometryNodeSimulationInput', 
+
+    'GeometryNodeSimulationInput',
     'GeometryNodeSimulationOutput',
     'GeometryNodeRepeatInput',
     'GeometryNodeRepeatOutput',
@@ -317,7 +318,7 @@ BL_ID_SOCKET_TO_TYPE = {
              'NodeSocketVectorTranslation'  : 'VECTOR',
              'NodeSocketVectorVelocity'     : 'VECTOR',
              'NodeSocketVectorXYZ'          : 'VECTOR',
-             'NodeSocketVirtual'            : 'CUSTOM', 
+             'NodeSocketVirtual'            : 'CUSTOM',
         },
     'TextureNodeTree' : {
              'NodeSocketColor'              : 'RGBA',
@@ -328,7 +329,7 @@ BL_ID_SOCKET_TO_TYPE = {
              'NodeSocketVectorDirection'    : 'VECTOR',
              'NodeSocketVectorTranslation'  : 'VECTOR',
              'NodeSocketVectorXYZ'          : 'VECTOR',
-             'NodeSocketVirtual'            : 'CUSTOM', 
+             'NodeSocketVirtual'            : 'CUSTOM',
         },
     }
 
@@ -367,7 +368,7 @@ def get_node_class(tree_type, bl_idname):
         raise AttributeError(f"Node bl_idname {bl_idname} not found for tree type {tree_type}")
     else:
         return dyn.dyn_class
-    
+
 def print_node_bl_idnames(tree_type):
     for blid, dyn in NODES[tree_type].items():
         print(f"{dyn.node_info.class_name:20s}: {blid}")
@@ -382,9 +383,9 @@ SOCKETS = {tree_type: {} for tree_type in TREE_TYPES}
 
 def get_socket_class_name(socket_type):
     return socket_type
-    
-    
-    
+
+
+
     #class_name = DATA_TYPE_TO_SOCKET_CLASS_NAME.get(socket_type)
     class_name = TYPE_TO_SOCKET_CLASS_NAME.get(socket_type)
     if class_name is None:
@@ -395,13 +396,13 @@ def get_socket_class(socket_type):
     if len(TREE_STACK):
         tree_type = TREE_STACK[0].TREE_TYPE
         return SOCKETS[tree_type][socket_type].dyn_class
-    
-    
+
+
         tree_type = TREE_STACK[0].TREE_TYPE
         return SOCKETS[tree_type][get_socket_class_name(socket_type)].dyn_class
     else:
         return None
-    
+
 def get_socket_class_from_bl_idname(tree_type, bl_idname):
     return get_socket_class(BL_ID_SOCKET_TO_TYPE[tree_type][bl_idname])
 
@@ -421,45 +422,45 @@ GLOBAL = {tree_type: {} for tree_type in TREE_TYPES}
 CROSS_REF = {tree_type: {} for tree_type in TREE_TYPES}
 
 def cross_ref(tree_type, node_class_name, target_class_name, name):
-    
+
     # Node class name entry
-    
+
     dct = CROSS_REF[tree_type].get(node_class_name)
     if dct is None:
         dct = {}
         CROSS_REF[tree_type][node_class_name] = dct
-        
+
     # Socket class name entry
-        
+
     if target_class_name is None:
         target_class_name = 'GLOBAL'
-        
+
     names = dct.get(target_class_name)
     if names is None:
         names = []
         dct[target_class_name] = names
-        
+
     names.append(name)
-    
+
     #print("constants.cross_ref", target_class_name)
-    
+
 # =============================================================================================================================
-# Reset    
-    
+# Reset
+
 def reset():
-    
+
     for tree_type, dyn_tree in TREES.items():
-        
+
         tree_class = dyn_tree.dyn_class
-        
+
         # ----- Remove the node classes
-        
+
         for bl_idname, dyn in NODES[tree_type].items():
             delattr(tree_class, dyn.node_info.class_name)
         NODES[tree_type].clear()
 
         # ----- Remove the socket classes
-        
+
         for class_name in SOCKETS[tree_type].keys():
             delattr(tree_class, class_name)
         SOCKETS[tree_type].clear()
@@ -469,90 +470,90 @@ def reset():
         for name in GLOBAL[tree_type].keys():
             delattr(tree_class, name)
         GLOBAL[tree_type].clear()
-        
+
         # ----- Clear the cross references
-        
+
         CROSS_REF[tree_type].clear()
-        
+
         # ----- Reinit the tree class
-        
+
         tree_class.INIT = False
-        
+
     # ----- Remove the trees
-        
+
     TREES.clear()
-    
-    
-    
-# OLD OLD OLD OLD OLD OLD OLD OLD OLD OLD OLD OLD OLD OLD OLD OLD OLD OLD 
+
+
+
+# OLD OLD OLD OLD OLD OLD OLD OLD OLD OLD OLD OLD OLD OLD OLD OLD OLD OLD
 
 SOCKET_CLASS_DEFAULT_SOCKET_NAME_OLD = {
-    'Float'      : 'value', 
-    'Int'        : 'integer', 
-    'Bool'       : 'boolean', 
-    'Vect'       : 'vector', 
-    'Rot'        : 'rotation', 
-    'Str'        : 'string', 
-    'Col'        : 'color', 
+    'Float'      : 'value',
+    'Int'        : 'integer',
+    'Bool'       : 'boolean',
+    'Vect'       : 'vector',
+    'Rot'        : 'rotation',
+    'Str'        : 'string',
+    'Col'        : 'color',
     'Shader'     : 'shader',
-    'Object'     : 'object', 
-    'Img'        : 'image', 
-    'Geometry'   : 'geometry', 
-    'Collection' : 'collection', 
-    'Texture'    : 'texture', 
-    'Mat'        : 'material',  
+    'Object'     : 'object',
+    'Img'        : 'image',
+    'Geometry'   : 'geometry',
+    'Collection' : 'collection',
+    'Texture'    : 'texture',
+    'Mat'        : 'material',
     }
 
 
 TYPE_TO_SOCKET_CLASS_NAME_OLD = { # SOCKET_CLASS_NAMES
     'CUSTOM'     : 'Custom',
-    'VALUE'      : 'Float', 
-    'INT'        : 'Int', 
-    'BOOLEAN'    : 'Bool', 
-    'VECTOR'     : 'Vect', 
-    'ROTATION'   : 'Rot', 
-    'STRING'     : 'Str', 
-    'RGBA'       : 'Col', 
+    'VALUE'      : 'Float',
+    'INT'        : 'Int',
+    'BOOLEAN'    : 'Bool',
+    'VECTOR'     : 'Vect',
+    'ROTATION'   : 'Rot',
+    'STRING'     : 'Str',
+    'RGBA'       : 'Col',
     'SHADER'     : 'Shader',
-    'OBJECT'     : 'Object', 
-    'IMAGE'      : 'Img', 
-    'GEOMETRY'   : 'Geometry', 
-    'COLLECTION' : 'Collection', 
-    'TEXTURE'    : 'Texture', 
-    'MATERIAL'   : 'Mat', 
+    'OBJECT'     : 'Object',
+    'IMAGE'      : 'Img',
+    'GEOMETRY'   : 'Geometry',
+    'COLLECTION' : 'Collection',
+    'TEXTURE'    : 'Texture',
+    'MATERIAL'   : 'Mat',
     }
 
 TYPE_TO_SOCKET_CLASS_NAME_LEGACY = { # SOCKET_CLASS_NAMES
     'CUSTOM'     : 'CUSTOM',
-    'VALUE'      : 'VALUE', 
-    'INT'        : 'INT', 
-    'BOOLEAN'    : 'BOOLEAN', 
-    'VECTOR'     : 'VECTOR', 
-    'ROTATION'   : 'ROTATION', 
-    'STRING'     : 'STRING', 
-    'RGBA'       : 'RGBA', 
+    'VALUE'      : 'VALUE',
+    'INT'        : 'INT',
+    'BOOLEAN'    : 'BOOLEAN',
+    'VECTOR'     : 'VECTOR',
+    'ROTATION'   : 'ROTATION',
+    'STRING'     : 'STRING',
+    'RGBA'       : 'RGBA',
     'SHADER'     : 'SHADER',
-    'OBJECT'     : 'OBJECT', 
-    'IMAGE'      : 'IMAGE', 
-    'GEOMETRY'   : 'GEOMETRY', 
-    'COLLECTION' : 'COLLECTION', 
-    'TEXTURE'    : 'TEXTURE', 
-    'MATERIAL'   : 'MATERIAL', 
+    'OBJECT'     : 'OBJECT',
+    'IMAGE'      : 'IMAGE',
+    'GEOMETRY'   : 'GEOMETRY',
+    'COLLECTION' : 'COLLECTION',
+    'TEXTURE'    : 'TEXTURE',
+    'MATERIAL'   : 'MATERIAL',
     }
 
 DATA_TYPE_TO_SOCKET_CLASS_NAME_OLD = { # DATA_TYPE_CLASSES
-    'FLOAT'      : 'Float', 
-    'INT'        : 'Int', 
-    'BOOLEAN'    : 'Bool', 
-    'VECTOR'     : 'Vect', 
-    'ROTATION'   : 'Rot', 
-    'STRING'     : 'Str', 
-    'RGBA'       : 'Col', 
-    'OBJECT'     : 'Object', 
-    'IMAGE'      : 'Img', 
-    'GEOMETRY'   : 'Geometry', 
-    'COLLECTION' : 'Collection', 
-    'TEXTURE'    : 'Texture', 
+    'FLOAT'      : 'Float',
+    'INT'        : 'Int',
+    'BOOLEAN'    : 'Bool',
+    'VECTOR'     : 'Vect',
+    'ROTATION'   : 'Rot',
+    'STRING'     : 'Str',
+    'RGBA'       : 'Col',
+    'OBJECT'     : 'Object',
+    'IMAGE'      : 'Img',
+    'GEOMETRY'   : 'Geometry',
+    'COLLECTION' : 'Collection',
+    'TEXTURE'    : 'Texture',
     'MATERIAL'   : 'Mat',
     }
 
@@ -583,35 +584,3 @@ NO_INPUT_NODES = list(CONSTANT_NODES.keys()) + [
     'Group',
     ]
 """
-
-
-    
-        
-        
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-     
-        
-        
-    
-    
-    
-    
-    
-
-
-
-
-
-
-
-
